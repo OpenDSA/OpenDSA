@@ -1,25 +1,61 @@
 {
   "translations": {
+    "en": {
+      "sc1": "Let's take a look at the private data members for class <code>AList</code>.",
+      "sc2": "First, notice that class <code>AList</code> implements the <code>List</code> interface. This means that <code>AList</code> is required to give implementations for all of the methods listed as part of the <code>List</code> interface.",
+      "sc3": "The first of the private data members is <code>listArray</code>, the array which holds the list elements. Because <code>listArray</code> must be allocated at some fixed size, the size of the array must be known when the list object is created.",
+      "sc4": "An optional parameter is declared for the <code>AList</code> constructor. With this parameter, the user can indicate the maximum number of elements permitted in the list. If no parameter is given, then it takes the value <code>defaultSize</code>, which is assumed to be a suitably defined constant value.",
+      "sc5": "Because each list can have a differently sized array, each list must remember its maximum permitted size. Data member <code>maxSize</code> serves this purpose.",
+      "sc6": "At any given time the list actually holds some number of elements that can be less than the maximum allowed by the array. This value is stored in <code>listSize</code>.",
+      "sc7": "Data member <code>curr</code> stores the current position.",
+      "sc8": "Because <code>listArray</code>, <code>maxSize</code>, <code>listSize</code>, and <code>curr</code> are all declared to be <code>private</code>, they may only be accessed by methods of Class <code>AList</code>."
+    }
   },
   "code": {
-    "java": [{
-      "url": "../PointersSushma/Employee.java",
+    "processing": [{
+      "url": "../../../SourceCode/Processing/Lists/AList.pde",
       "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: test *** */",
-      "endBefore": "/* *** ODSAendTag: test *** */",
+      "startAfter": "/* *** ODSATag: AListVars *** */",
+      "endBefore": "/* *** ODSAendTag: AListVars *** */",
       "tags": {
         "sig": 1,
-        "checknull": 2,
-        "checkgreater": 3,
-        "visitleft": 4,
-        "checkequal": 5,
-        "found": 6,
-        "visitright": 7,
-        "end": 8
+        "listArray": 2,
+        "default": 3,
+        "maxSize": 4,
+        "listSize": 5,
+        "curr": 6
+      }
+    }],
+    "java": [{
+      "url": "../../../SourceCode/Java/Lists/AList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AListVars *** */",
+      "endBefore": "/* *** ODSAendTag: AListVars *** */",
+      "tags": {
+        "sig": 1,
+        "listArray": 2,
+        "default": 3,
+        "maxSize": 4,
+        "listSize": 5,
+        "curr": 6
       }
     }],
     "java_generic": [{
-      "url": "../PointersSushma/Employee.java",
+      "url": "../../../SourceCode/Java_Generic/Lists/AList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AListVars *** */",
+      "endBefore": "/* *** ODSAendTag: AListVars *** */",
+      "tags": {
+        "sig": 1,
+        "listArray": 2,
+        "default": 3,
+        "maxSize": 4,
+        "listSize": 5,
+        "curr": 6
+      }
+    }],
+    "c++": [{
+      "url": "../../../SourceCode/C++/Lists/AList.h",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AListVars *** */",
       "endBefore": "/* *** ODSAendTag: AListVars *** */",
