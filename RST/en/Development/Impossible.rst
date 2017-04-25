@@ -447,7 +447,7 @@ loop code will never be executed.
 Programmers find this special case useful enough to make it worth
 including in the compiler.
 However, it is not possible to write a computer program that can
-check for <em>all</em> input programs whether a specified line of code
+check for **all** input programs whether a specified line of code
 will be executed when the program is given some specified input.
 
 Another unsolvable problem is whether a program contains a computer
