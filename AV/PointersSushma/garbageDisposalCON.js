@@ -140,10 +140,22 @@ $(document).ready(function() {
   rect3 = av.g.rect(xPosition + 550, yPosition + 385, widthSmall, lengthSmall, {stroke: "gray"});
   thirdArrow.hide();
   labelThird.hide();
-  //creating the x's
-
   av.step();
   //Slide 15
+  var xline1 = av.g.line(xPosition + 530, yPosition + 160, xPosition + 550 + widthSmall + 20, yPosition + 175 + lengthSmall + 10, {"stroke-width": 3});
+  var xline2 = av.g.line(xPosition + 550 + widthSmall + 20, yPosition + 160, xPosition + 530, yPosition + 175 + lengthSmall + 10, {"stroke-width": 3});
+  var yline1 = av.g.line(xPosition + 530, yPosition + 265, xPosition + 550 + widthSmall + 20, yPosition + 280 + lengthSmall + 10, {"stroke-width": 3});
+  var yline2 = av.g.line(xPosition + 550 + widthSmall + 20, yPosition + 265, xPosition + 530, yPosition + 280 + lengthSmall + 10, {"stroke-width": 3});
+  var zline1 = av.g.line(xPosition + 530, yPosition + 370, xPosition + 550 + widthSmall + 20, yPosition + 385 + lengthSmall + 10, {"stroke-width": 3});
+  var zline2 = av.g.line(xPosition + 550 + widthSmall + 20, yPosition + 370, xPosition + 530, yPosition + 385 + lengthSmall + 10, {"stroke-width": 3});
+  av.step();
+  //Slide 16
+  xline1.hide();
+  xline2.hide();
+  yline1.hide();
+  yline2.hide();
+  zline1.hide();
+  zline2.hide();
   rect1.hide();
   rect1 = av.g.rect(xPosition + 550, yPosition + 175, widthSmall, lengthSmall);
   rect2.hide();
@@ -158,7 +170,7 @@ $(document).ready(function() {
   labelAlexPay = av.label("1000", {top: yPosition + 195, left: xPosition + 540 + (widthSmall / 2) - 10});
   av.umsg("Now we need to define a new object but there is not enough space for it. This will trigger Garbage Collector to start looking for objects that are unreferenced. This will lead to removing 3 objects from heap memory. After that the last object will be created in the available space in heap memory");
   av.step();
-  //Slide 16
+  //Slide 17
   av.umsg("At the end of this method, there is only one object remaining, which is el. This object will not be selected by Garbage Collector because it is passed to the method and has another reference in another place. The last object will be unreferenced and will be removed by Garbage Collector at any time");
   rect1.hide();
   labelFirst.hide();
