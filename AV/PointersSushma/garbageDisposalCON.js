@@ -111,7 +111,7 @@ $(document).ready(function() {
   rect1.hide();
   firstArrow.hide();
   labelFirst.hide();
-  rect1 = av.g.rect(xPosition + 550, yPosition + 175, widthSmall, lengthSmall, {stroke: "gray"});
+  rect1 = av.g.rect(xPosition + 550, yPosition + 175, widthSmall, lengthSmall, {stroke: "silver"});
   av.step();
   //Slide 12
   av.umsg("Now new objects will be added to heap memory");
@@ -130,14 +130,14 @@ $(document).ready(function() {
   //Slide 13
   av.umsg("Now reference second points to third object. Thus the object (John, 2000) is unreferenced. Now we have 2 objects that are subject to Garbage Collection removal");
   rect2.hide();
-  rect2 = av.g.rect(xPosition + 550, yPosition + 280, widthSmall, lengthSmall, {stroke: "gray"});
+  rect2 = av.g.rect(xPosition + 550, yPosition + 280, widthSmall, lengthSmall, {stroke: "silver"});
   labelSecond.hide();
   secondArrow.hide();
   av.step();
   //Slide 14
   av.umsg("After the end of this block, the scope of the third and second will end. The object (Sam, 3000) will be unreferenced");
   rect3.hide();
-  rect3 = av.g.rect(xPosition + 550, yPosition + 385, widthSmall, lengthSmall, {stroke: "gray"});
+  rect3 = av.g.rect(xPosition + 550, yPosition + 385, widthSmall, lengthSmall, {stroke: "silver"});
   thirdArrow.hide();
   labelThird.hide();
   av.step();
@@ -166,6 +166,8 @@ $(document).ready(function() {
   labelSam4.hide();
   labelJohn.hide();
   labelJohnPay.hide();
+  firstArrow.show();
+  labelFirst = av.label("<tt>last</tt>", {top: yPosition + 175 + (lengthSmall / 2) - 30, left: xPosition + 435});
   labelAlex = av.label("Fox", {top: yPosition + 175, left: xPosition + 550 + (widthSmall / 2) - 15});
   labelAlexPay = av.label("1000", {top: yPosition + 195, left: xPosition + 540 + (widthSmall / 2) - 10});
   av.umsg("Now we need to define a new object but there is not enough space for it. This will trigger Garbage Collector to start looking for objects that are unreferenced. This will lead to removing 3 objects from heap memory. After that the last object will be created in the available space in heap memory");
@@ -176,6 +178,6 @@ $(document).ready(function() {
   labelFirst.hide();
   secondArrow.hide();
   firstArrow.hide();
-  rect1 = av.g.rect(xPosition + 550, yPosition + 175, widthSmall, lengthSmall, {stroke: "gray"});
+  rect1 = av.g.rect(xPosition + 550, yPosition + 175, widthSmall, lengthSmall, {stroke: "silver"});
   av.recorded();
 });
