@@ -181,6 +181,7 @@ It just changes which pointee a reference refers to.
 
 .. _numptrsecondlFig:
 
+
 .. inlineav:: empRefsecondCON dgm
 
 After the assignment, testing for ``(second == empRef)`` would return
