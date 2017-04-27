@@ -19,6 +19,9 @@ $(document).ready(function() {
   av.g.line(140 + xleft, 75, 195 + xleft, 75,
             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
 
+  av.g.line(260 + xleft, 10, 260 + xleft, 100,
+            {"stroke-width": 3});
+
   // Right part
   av.label("$>L_{\\#}$", {top: 50, left: xleft + 300});
   av.label("$M$", {top: 50, left: xleft + 400});

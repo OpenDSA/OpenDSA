@@ -158,7 +158,7 @@
       nullNode = av.ds.array([""], {top: topP, left: nullP});
       johnNode = av.ds.array(["John, 1000"], {top: topP, left: johnP});
       samNode = av.ds.array(["Sam, 2000"], {top: topP, left: samP});
-      nullNode.css(0, {"border-width": 0, "background-color": "transparent"});
+      nullNode.css(0, {"box-shadow": "none", "border-width": 0, "background-color": "transparent"});
 
       // Create pointers
       empRef = pointerEX1PRO.setPointer("empRef", nullNode);
