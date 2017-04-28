@@ -560,7 +560,7 @@ if __name__ == "__main__":
     parser.add_option("-s", "--slides", help="Causes configure.py to create slides",dest="slides", action="store_true", default=False)
     parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it", dest="dry_run", action="store_true", default=False)
     parser.add_option("-b", help="Accepts a custom directory name instead of using the config file's name.",dest="output_directory", default=None)
-    parser.add_option("--local", help="Causes the compiled book to work in local mode, which means no communication with the server",dest="local", action="store_true", default=False)
+    parser.add_option("--local", help="Causes the compiled book to work in local mode, which means no communication with the server",dest="local", action="store_true", default=True)
     parser.add_option("--no-lms", help="Compile book without changing internal links required by LMS",dest="no_lms", action="store_true", default=False)
     (options, args) = parser.parse_args()
 
