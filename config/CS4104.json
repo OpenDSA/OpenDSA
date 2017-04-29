@@ -519,6 +519,10 @@
       "Development/Impossible": {
         "long_name": "Unsolveable Problems",
         "sections": {}
+      },
+      "SeniorAlgAnal/Turing": {
+        "long_name": "Turing Machines",
+        "sections": {}
       }
     },
     "Appendix": {
