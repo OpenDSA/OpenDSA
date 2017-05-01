@@ -93,7 +93,7 @@ $(document).ready(function() {
   //Slide 9
   av.umsg("Object first will dynamically allocated memory from heap memory");
   var rect1 = av.g.rect(xPosition + 550, yPosition + 175, widthSmall, lengthSmall);
-  var labelAlex = av.label("Alex", {top: yPosition + 175, left: xPosition + 550 + (widthSmall / 2) - 15});
+  var labelAlex = av.label("Alex", {top: yPosition + 175, left: xPosition + 550 + (widthSmall / 2) - 15, color: "green"});
   var labelAlexPay = av.label("1500", {top: yPosition + 195, left: xPosition + 540 + (widthSmall / 2) - 10});
   firstArrow.show();
   var labelFirst = av.label("<tt>first</tt>", {top: yPosition + 175 + (lengthSmall / 2) - 30, left: xPosition + 435});
@@ -120,7 +120,7 @@ $(document).ready(function() {
   labelFirst.hide();
   firstArrow.hide();
   thirdArrow.show();
-  var labelThird = av.label("<tt>third</tt>", {top: yPosition + 385 + (lengthSmall / 2) - 20, left: xPosition + 435});
+  var labelThird = av.label("<tt>third</tt>", {top: yPosition + 385 + (lengthSmall / 2) - 20, left: xPosition + 435, stroke: "silver"});
   labelJohn = av.label("John", {top: yPosition + 280, left: xPosition + 545 + (widthSmall / 2) - 10});
   labelJohnPay = av.label("2000", {top: yPosition + 300, left: xPosition + 540 + (widthSmall / 2) - 10});
   var rect3 = av.g.rect(xPosition + 550, yPosition + 385, widthSmall, lengthSmall);
@@ -135,37 +135,31 @@ $(document).ready(function() {
   secondArrow.hide();
   av.step();
   //Slide 14
-  av.umsg("After the end of this block, the scope of the third and second will end. The object (Sam, 3000) will be unreferenced");
-  rect3.hide();
-  rect3 = av.g.rect(xPosition + 550, yPosition + 385, widthSmall, lengthSmall, {stroke: "silver"});
-  thirdArrow.hide();
-  labelThird.hide();
-  av.step();
-  //Slide 15
   var xline1 = av.g.line(xPosition + 530, yPosition + 160, xPosition + 550 + widthSmall + 20, yPosition + 175 + lengthSmall + 10, {"stroke-width": 3});
   var xline2 = av.g.line(xPosition + 550 + widthSmall + 20, yPosition + 160, xPosition + 530, yPosition + 175 + lengthSmall + 10, {"stroke-width": 3});
   var yline1 = av.g.line(xPosition + 530, yPosition + 265, xPosition + 550 + widthSmall + 20, yPosition + 280 + lengthSmall + 10, {"stroke-width": 3});
   var yline2 = av.g.line(xPosition + 550 + widthSmall + 20, yPosition + 265, xPosition + 530, yPosition + 280 + lengthSmall + 10, {"stroke-width": 3});
-  var zline1 = av.g.line(xPosition + 530, yPosition + 370, xPosition + 550 + widthSmall + 20, yPosition + 385 + lengthSmall + 10, {"stroke-width": 3});
-  var zline2 = av.g.line(xPosition + 550 + widthSmall + 20, yPosition + 370, xPosition + 530, yPosition + 385 + lengthSmall + 10, {"stroke-width": 3});
+  av.step();
+  //Slie 15
+  rect1.hide();
+  rect2.hide();
+  labelJohn.hide();
+  labelJohnPay.hide();
+  labelAlex.hide();
+  labelAlexPay.hide();
+  xline1.hide();
+  xline2.hide();
+  yline1.hide();
+  yline2.hide();
   av.step();
   //Slide 16
   xline1.hide();
   xline2.hide();
   yline1.hide();
   yline2.hide();
-  zline1.hide();
-  zline2.hide();
   rect1.hide();
   rect1 = av.g.rect(xPosition + 550, yPosition + 175, widthSmall, lengthSmall);
   rect2.hide();
-  rect3.hide();
-  labelAlex.hide();
-  labelAlexPay.hide();
-  labelSamPay4.hide();
-  labelSam4.hide();
-  labelJohn.hide();
-  labelJohnPay.hide();
   firstArrow.show();
   labelFirst = av.label("<tt>last</tt>", {top: yPosition + 175 + (lengthSmall / 2) - 30, left: xPosition + 435});
   labelAlex = av.label("Fox", {top: yPosition + 175, left: xPosition + 550 + (widthSmall / 2) - 15});
