@@ -382,6 +382,29 @@ huge collection of technical books including the entire O'Reilly
 catalog.
 
 
+-----------------
+Simple Web Server
+-----------------
+
+Once you are able to compile a book or create an exercise on your
+computer, you will probably want to look at it in your web browser.
+Unfortunately, much of the infrastructure only works when run through
+a web server.
+Since most people do not normally run a web server (like Apache) on
+their own computer, will need something simple that you can use
+instead.
+At the top level of the OpenDSA repository there is a script named
+``WebServer`` that you can use.
+Just open a console window for the web server, go to the top level of
+your copy of the OpenDSA repository, and run the script (on
+Linux or Mac) or paste the Python command into the console (on
+Windows) to start up the simple Python web server.
+Then, open your browser to the URL listed in the comments of the
+``WebServer`` script file.
+This should show you the top level directory structure for the OpenDSA
+repository.
+
+
 ---------
 Debugging
 ---------
