@@ -12,6 +12,9 @@
 .. odsalink:: AV/SeniorAlgAnal/Turing3CON.css
 .. odsalink:: AV/SeniorAlgAnal/Turing4CON.css
 .. odsalink:: AV/SeniorAlgAnal/Turing5CON.css
+.. odsalink:: AV/SeniorAlgAnal/TuringExt1CON.css
+.. odsalink:: AV/SeniorAlgAnal/TuringExt2CON.css
+.. odsalink:: AV/SeniorAlgAnal/TuringExt3CON.css
 
 Turing Machines
 ===============
@@ -414,8 +417,80 @@ Here are some basic machines and notation
 
    Shift a string right.
 
+
+Turing Machine Extensions
+-------------------------
+
+When we give extentions or new functionality to a computing system,
+sometimes they change something fundamental about the capabilies of
+the system.
+For example, when we add non-determinism to an algorithm, we **might**
+change the cost of the underlying problem from exponential to
+polynomial time.
+But, other changes do nothing fundamental.
+In terms of Turing machines, our concern is what the machine can do,
+rather than how long it takes to do it.
+Does non-determinism help us to solve the Halting problem?
+No.
+Likewise, the following extensions do not increase the power of Turing
+Machines.
+
+* Provide a two-way infinite tape
+
+  .. inlineav:: TuringExt1CON dgm
+     :align: center
+
+  This does not give Turing machines new capability.
+  To make this clear, we can simulate the behavior of a two-way
+  infinite tape using a standard one-way infinite tape.
+  Just bend infinite tape in the middle, and store both directions of
+  the tape into a single cell.
+  This requires a greatly expanded alphabet, because we now need to be
+  able to represent any combination of two characters.
+  This will need more states, and probably more time.
+  But it does not allow anything new in terms of capability.
+
+* Multiple tapes (each with its own head)
+
+  Again, we can simulate this with encoding multiple symbols into a
+  single table cell.
+  For example, to simulate two tapes (each with a head), we encode in
+  each cell the corresponding two symbols, and a two binary markers to
+  indicate if the tape head is currently in the corresponding cell of
+  the two tapes.
+
+  .. inlineav:: TuringExt2CON dgm
+     :align: center
+
+* Multiple heads on one tape
+
+  This is easier than encoding multiple tapes.
+  We merely encode the heads onto the tape, and simulate moving them
+  around.
+
+* A two-dimensional ``tape''
+
+  All that we need to do is find a mapping from 2D to 1D, which is
+  fairly easy.
+  One approach is to work in diagonals, in the order (0, 0), (0, 1),
+  (1, 0), (0, 2), (1, 1), (2, 0), and so on.
+
+  .. inlineav:: TuringExt3CON dgm
+     :align: center
+
+* Non-determinism
+
+  We can simulate nondeterministic behavior in sequence, doing all
+  length 1 computations, then length 2, etc., until we reach a halt
+  state for one of the non-deteriministic choices.
+  So we see that while non-determinism can save a lot of time, it does
+  not change what can (eventually) be done.
+
 .. odsascript:: AV/SeniorAlgAnal/Turing1CON.js
 .. odsascript:: AV/SeniorAlgAnal/Turing2CON.js
 .. odsascript:: AV/SeniorAlgAnal/Turing3CON.js
 .. odsascript:: AV/SeniorAlgAnal/Turing4CON.js
 .. odsascript:: AV/SeniorAlgAnal/Turing5CON.js
+.. odsascript:: AV/SeniorAlgAnal/TuringExt1CON.js
+.. odsascript:: AV/SeniorAlgAnal/TuringExt2CON.js
+.. odsascript:: AV/SeniorAlgAnal/TuringExt3CON.js

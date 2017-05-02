@@ -29,7 +29,6 @@ $(document).ready(function() {
   av.g.line(340 + xleft, 75, 395 + xleft, 75,
             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
 
-
   av.displayInit();
   av.recorded();
 });
