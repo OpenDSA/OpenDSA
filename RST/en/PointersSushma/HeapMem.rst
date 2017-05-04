@@ -13,9 +13,6 @@
    .. odsascript:: AV/PointersSushma/LocalHeapdealoc.css
    .. odsascript:: AV/PointersSushma/LocalHeapintptr42.css
    .. odsascript:: AV/PointersSushma/garbageDisposalCON.css
-   .. odsascript:: AV/List/alistCON.css
-
-
 
 
 Heap Memory
@@ -103,15 +100,10 @@ for garbage collection one object A set to ``null``. Here is an example:
 
 .. codeinclude:: PointersBook/Date
 
-
-
-
-
 .. inlineav:: garbageDisposalCON ss
    :output: show
 
-.. inlineav:: alistVarsCON ss
-   :output: show
+
 What Does The Heap Look Like?
 -----------------------------
 
@@ -349,4 +341,3 @@ and conveniently the way local memory does.
 .. odsascript:: AV/PointersSushma/LocalHeapdealoc.js
 .. odsascript:: AV/PointersSushma/LocalHeapintptr42.js
 .. odsascript:: AV/PointersSushma/garbageDisposalCON.js
-.. odsascript:: AV/List/alistVarsCON.js
