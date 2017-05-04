@@ -18,7 +18,7 @@ $(document).ready(function() {
   //gv.g.line(230, 150, 100, 400, {"stroke-width": 3});
   gv.label("John", {top: yPositionR1 - 8, left: xPosition + 25});
   gv.label("1000", {top: yPositionR1 + 12, left: xPosition + 25});
-  gv.label("<tt>empPtr</tt>",  {top: yPositionR2 - 11, left: xPosition - 55});
+  gv.label("<tt>empPtr</tt>",  {top: yPositionR2 - 11, left: xPosition - 45});
 
   gv.g.path(["M", xPosition + length1 - 10, yPositionR2 + (width / 2),
              "C", xPosition + length1 + 40, yPositionR2 + (width / 2) + 5,

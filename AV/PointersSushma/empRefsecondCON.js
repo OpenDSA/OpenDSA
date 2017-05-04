@@ -25,7 +25,7 @@ $(document).ready(function() {
   gv.label("John", {top: yPositionR1 - (width / 2) + 8, left: xPosition + 25});
   gv.label("1000", {top: yPositionR1 - (width / 2) + 25, left: xPosition + 25});
   gv.label("<tt>empRef</tt>",
-           {top: yPositionR2 - (width / 2) + 3, left: xPosition - 55});
+           {top: yPositionR2 - (width / 2) + 3, left: xPosition - 45});
 
   //first arrow
   gv.g.path(["M", xPosition + length1 - 10, yPositionR2 + (width / 2),

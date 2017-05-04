@@ -13,7 +13,7 @@ $(document).ready(function() {
   av.g.line(xPosition, yPosition + width, xPosition + length1, yPosition,
             {"stroke-width": 2});
   av.g.rect(xPosition, yPositionR2, length1, width - 20);
-  av.label("<tt>empRef</tt>",  {top: yPositionR2 - 11, left: xPosition - 55});
+  av.label("<tt>empRef</tt>",  {top: yPositionR2 - 11, left: xPosition - 45});
   av.g.path(["M", xPosition + length1 - 10, yPositionR2 + (width / 2),
              "C", xPosition + length1 + 40, yPositionR2 + (width / 2) + 5,
                   xPosition + length1 + 35, yPositionR2 - 10,

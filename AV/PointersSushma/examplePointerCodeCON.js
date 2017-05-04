@@ -5,11 +5,23 @@ $(document).ready(function() {
   "use strict";
   var av_name = "examplePointerCodeCON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var av;
-  av = new JSAV(av_name);
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;            // get the code object
+  var av = new JSAV(av_name);
 
   // Slide 1
-  var xPosition = 425;
+  var pseudo = av.code(code[0]);
+  pseudo.element.css({
+    position: "absolute",
+    top: -10,
+    left: -10
+  });
+  pseudo.highlight("empPtr1");
+  pseudo.highlight("employee1");
+  pseudo.highlight("employee2");
+  pseudo.highlight("empPtr2");
+  var xPosition = 450;
   var xPosition2 = xPosition + 200;
   var yPositionR1 = 10;
   var yPositionR2 = yPositionR1 + 70;
@@ -58,6 +70,12 @@ $(document).ready(function() {
   av.step();
 
   // Slide 2
+  pseudo.unhighlight("empPtr1");
+  pseudo.unhighlight("employee1");
+  pseudo.unhighlight("employee2");
+  pseudo.unhighlight("empPtr2");
+  pseudo.highlight("emp1");
+  pseudo.highlight("emp2");
   x1.hide();
   x2.hide();
   x3.hide();
@@ -81,6 +99,12 @@ $(document).ready(function() {
   av.step();
 
   // Slide 3
+  pseudo.unhighlight("emp1");
+  pseudo.unhighlight("emp2");
+  pseudo.highlight("equal");
+  pseudo.highlight("equal2");
+  pseudo.highlight("sam");
+
   arrow1.hide();
   arrow1triangle.hide();
   arrow1 = av.g.line(xPosition2 + 20, yPositionR1 + (width / 2), xPosition + length1 + 20, yPositionR1 + (width / 2), {"stroke-width": 2, stroke: "gray"});
@@ -97,6 +121,7 @@ $(document).ready(function() {
                  [xPosition + length1 + 20 - 5 + 5 - 5, yPositionR2 + (width / 2) - 4 - 3 - 5 - 3]], {fill: "black"});
   av.step();
   //bad PointerSlide
+  pseudo.hide();
   emp1.hide();
   emp2.hide();
   emp3.hide();
@@ -127,7 +152,7 @@ $(document).ready(function() {
   av.g.rect(xPositionBAD, yPositionR1BAD, length1BAD, widthBAD);
 
   av.g.rect(xPositionBAD, yPositionR1BAD, length1BAD, widthBAD);
-  av.label("POW!!!",  {top: yPositionR1BAD + 60, left: xPositionBAD + 170});
+  av.label("POW!!!",  {top: yPositionR1BAD + 100, left: xPositionBAD + 170});
   //creating the x's
   av.g.line(xPositionBAD + 10, yPositionR1BAD + 25, xPositionBAD + 30, yPositionR1BAD + 3, {"stroke-width": 2});
   av.g.line(xPositionBAD + 10, yPositionR1BAD + 3, xPositionBAD + 30, yPositionR1BAD + 25, {"stroke-width": 2});
@@ -141,5 +166,7 @@ $(document).ready(function() {
   av.g.line(xPositionBAD + length1BAD - 5, yPositionR1BAD + widthBAD - 3, xPositionBAD + length1BAD + 60, yPositionR1BAD + widthBAD + 40, {"stroke-width": 3});
   av.g.polyline([[xPositionBAD + length1BAD + 50, yPositionR1BAD + widthBAD + 43], [xPositionBAD + length1BAD + 65, yPositionR1BAD + widthBAD + 45],
     [xPositionBAD + length1BAD + 69, yPositionR1BAD + widthBAD + 35]], {fill: "black"});
+  av.g.polyline([[xPositionBAD + length1BAD + 30, yPositionR1BAD + widthBAD + 75], [xPositionBAD + length1BAD - 10, yPositionR1BAD + widthBAD + 95],
+    [xPositionBAD + length1BAD + 70, yPositionR1BAD + widthBAD + 115], [xPositionBAD + length1BAD + 10, yPositionR1BAD + widthBAD + 120], [xPositionBAD + length1BAD + 30, yPositionR1BAD + widthBAD + 140], [xPositionBAD + length1BAD + 40, yPositionR1BAD + widthBAD + 170], [xPositionBAD + length1BAD + 60, yPositionR1BAD + widthBAD + 190]]);
   av.recorded();
 });

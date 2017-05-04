@@ -9,7 +9,7 @@ $(document).ready(function() {
   var length1 = 125;
   var width = 30;
   av.g.rect(xPosition, yPosition, length1, width);
-  av.label("<tt>num</tt>",  {top: yPosition - (width / 2) + 5, left: xPosition - 35});
+  av.label("<tt>num</tt>",  {top: yPosition - (width / 2) + 5, left: xPosition - 25});
   av.label("42", {top: yPosition - (width / 2) + 5, left: xPosition + 50});
   av.displayInit();
   av.recorded();

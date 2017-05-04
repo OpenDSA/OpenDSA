@@ -19,7 +19,7 @@ $(document).ready(function() {
             yPositionR2 + width + 15, {"stroke-width": 3, stroke: "gray"});
 
   //text
-  gv.label("<tt>empRef</tt>", {top: yPositionR2 - (width / 2) + 5, left: xPosition - 56});
+  gv.label("<tt>empRef</tt>", {top: yPositionR2 - (width / 2) + 5, left: xPosition - 46});
   gv.label("A simple <tt>Employee</tt> object. The current value is the string `John` for the name and 1000 for the salary. This object also plays the role of pointee for <tt>empRef</tt>. ",
            {top: yPositionR1 - 55, left: xPosition + 155});
   gv.label("A reference variable. The current value is a reference to the <tt>Employee</tt> object in the box above.",

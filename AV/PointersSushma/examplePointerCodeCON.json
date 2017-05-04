@@ -1,0 +1,26 @@
+{
+  "translations": {
+    "en": {
+    }
+  },
+  "code":
+  {
+    "java": [{
+      "url": "../../../SourceCode/Java/Pointers/Employee.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: examplePointerCode *** */",
+      "endBefore": "/* *** ODSAendTag: examplePointerCode *** */",
+      "tags": {
+        "empPtr1": 3,
+        "employee1": 4,
+        "employee2": 5,
+        "empPtr2": 6,
+        "emp1": 7,
+        "emp2": 8,
+        "equal": 9,
+        "equal2":10,
+        "sam":11
+      }
+    }]
+  }
+}
