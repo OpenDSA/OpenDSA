@@ -113,6 +113,12 @@ $(document).ready(function() {
   firstArrow.hide();
   labelFirst.hide();
   rect1 = av.g.rect(xPosition + 550, yPosition + 175, widthSmall, lengthSmall, {stroke: "silver"});
+  labelAlex.element.css({
+    color: "silver"
+  });
+  labelAlexPay.element.css({
+    color: "silver"
+  });
   av.step();
   //Slide 12
   pseudo.setCurrentLine("third");
