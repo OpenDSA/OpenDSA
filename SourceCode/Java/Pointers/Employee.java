@@ -57,19 +57,53 @@
          salary = newSalary;
      }
 
-     /* *** ODSATag: test *** */
-     void test(Employee 1) // T1
-     {
-       Employee first = new Employee("Alex", 1500); //T2
-       if (e1.getSalary() > firstEmp.getSalary())
-       {
-         Employee second = new Employee("John", 2000); //T3
-         first = null; //T4
-         Employee third = new Employee("Sam", 3000); //T5
-         second = Third; //T6
-       } //T7
-       Employee last = new Employee("Fox", 1000); //T8
-     } //T9
-     /* *** ODSAendTag: test *** */
+/* *** ODSATag: test *** */
+void test(Employee e1) // T1
+{
+  Employee first = new Employee("Alex", 1500); //T2
+  if (e1.getSalary() > firstEmp.getSalary())
+  {
+    Employee second = new Employee("John", 2000); //T3
+    first = null; //T4
+    Employee third = new Employee("Sam", 3000); //T5
+    second = third; //T6
+  } //T7
+  Employee last = new Employee("Fox", 1000); //T8
+} //T9
+/* *** ODSAendTag: test *** */
+
+     /* *** ODSATag: BecomingNull *** */
+     Employee first = new Employee("Alex", 1500);
+     first = null;
+     /* *** ODSAendTag: BecomingNull *** */
+
+     /* *** ODSATag: AnotherReference *** */
+     Employee second = new Employee("John", 2000);
+     Employee second = new Employee("Sam",3000);
+     second = third;
+     //In this case, the Employee object ("John", 2000) has no reference.
+    /* *** ODSAendTag: AnotherReference *** */
+
+    /* *** ODSATag: anonymous *** */
+    //In this case when defining an object without a reference to point at like:
+    new Employee("Ali", 1000);
+   /* *** ODSAendTag: anonymous *** */
+
+/* *** ODSATag: examplePointerCode *** */
+void examplePointers()
+{
+  Employee empPtr1;
+  Employee employee1 = new Employee("John", 1000);
+  Employee employee2 = new Employee("Alex", 1000);
+  Employee empPtr2 = null;
+  empPr1 = employee1;
+  empPtr2 = employee2;
+  employee2 = empPtr2;
+  empPtr2 = empPtr1;
+  empPtr2.setName("Sam");
+}
+
+/* *** ODSAendTag: examplePointerCode *** */
+
  }
  /* *** ODSAendTag: Employee *** */
