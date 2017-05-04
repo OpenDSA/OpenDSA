@@ -6,9 +6,11 @@
  /**
   * Employee is a class used in this tutorial to explain various references concepts
   */
+/* *** ODSATag: EmployeeVars *** */
  class Employee {
      String name;
      int salary;
+/* *** ODSAendTag: EmployeeVars *** */
 
      /**
       * class constructor to initialize name and salary fields

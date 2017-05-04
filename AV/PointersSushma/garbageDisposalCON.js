@@ -19,8 +19,7 @@ $(document).ready(function() {
   var lengthSmall = 65;
   // Load the config object with interpreter and code created by odsaUtils.js
   // Slide 1
-  av.umsg(interpret("This slide show will explain Java Garbage Collection"));
-  pseudo.setCurrentLine("listArray");
+  av.umsg("This slide show will explain Java Garbage Collection");
   //creating the arrows
   var e1Arrow = av.g.line(xPosition + 490,  yPosition + (lengthSmall / 2) + 70, xPosition + 540,
             yPosition + (lengthSmall / 2) + 70,
