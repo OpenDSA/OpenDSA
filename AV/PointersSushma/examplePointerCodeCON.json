@@ -21,6 +21,14 @@
         "equal2":10,
         "sam":11
       }
+    },
+    {
+      "url": "../../../SourceCode/Java/Pointers/Employee.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: badPointerCode *** */",
+      "endBefore": "/* *** ODSAendTag: badPointerCode *** */",
+      "tags": {
+        }
     }]
   }
 }

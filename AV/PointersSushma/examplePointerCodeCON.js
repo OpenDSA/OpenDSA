@@ -17,6 +17,7 @@ $(document).ready(function() {
     top: -10,
     left: -10
   });
+  av.umsg("Allocates three Employee objects and two reference objects. Both reference objects start out as null.")
   pseudo.highlight("empPtr1");
   pseudo.highlight("employee1");
   pseudo.highlight("employee2");
@@ -70,6 +71,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 2
+  av.umsg("The reference objects now have references. Both reference objects now point to Employee objects.")
   pseudo.unhighlight("empPtr1");
   pseudo.unhighlight("employee1");
   pseudo.unhighlight("employee2");
@@ -99,6 +101,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 3
+  av.umsg("Now we mix things up. We retrieve <tt>empPtr2's</tt> reference value and put it in employee2. Then, change <tt>empPtr2</tt> to share with <tt>empPtr1</tt>. Then dereference <tt>empPtr2</tt> to set its reference to Sam")
   pseudo.unhighlight("emp1");
   pseudo.unhighlight("emp2");
   pseudo.highlight("equal");
@@ -121,6 +124,14 @@ $(document).ready(function() {
                  [xPosition + length1 + 20 - 5 + 5 - 5, yPositionR2 + (width / 2) - 4 - 3 - 5 - 3]], {fill: "black"});
   av.step();
   //bad PointerSlide
+  av.umsg("The dereference is a serious runtime error of type NullPointException");
+  pseudo.hide();
+  var pseudo1 = av.code(code[1]);
+  pseudo1.element.css({
+    position: "absolute",
+    top: -10,
+    left: -10
+  });
   pseudo.hide();
   emp1.hide();
   emp2.hide();
@@ -145,28 +156,44 @@ $(document).ready(function() {
   arrow3triangle.hide();
   //bad pointer visualization
   var xPositionBAD = 475;
+  var xPositionBAD1 = 370;
   var yPositionR1BAD = 10;
+  var yPositionR2BAD = 20;
   var length1BAD = 100;
   var widthBAD = 30;
 
-  av.g.rect(xPositionBAD, yPositionR1BAD, length1BAD, widthBAD);
+  av.g.rect(xPositionBAD1, yPositionR2BAD, length1BAD, widthBAD);
 
-  av.g.rect(xPositionBAD, yPositionR1BAD, length1BAD, widthBAD);
-  av.label("POW!!!",  {top: yPositionR1BAD + 100, left: xPositionBAD + 170});
+  //av.g.rect(xPositionBAD, yPositionR1BAD, length1BAD, widthBAD);
+  av.label("POW!!!",  {top: yPositionR2BAD + 120, left: xPositionBAD + 190});
   //creating the x's
-  av.g.line(xPositionBAD + 10, yPositionR1BAD + 25, xPositionBAD + 30, yPositionR1BAD + 3, {"stroke-width": 2});
-  av.g.line(xPositionBAD + 10, yPositionR1BAD + 3, xPositionBAD + 30, yPositionR1BAD + 25, {"stroke-width": 2});
+  av.g.line(xPositionBAD1 + 10, yPositionR2BAD + 25, xPositionBAD1 + 30, yPositionR2BAD + 3, {"stroke-width": 2});
+  av.g.line(xPositionBAD1 + 10, yPositionR2BAD + 3, xPositionBAD1 + 30, yPositionR2BAD + 25, {"stroke-width": 2});
 
-  av.g.line(xPositionBAD + 40, yPositionR1BAD + 25, xPositionBAD + 60, yPositionR1BAD + 3, {"stroke-width": 2});
-  av.g.line(xPositionBAD + 40, yPositionR1BAD + 3, xPositionBAD + 60, yPositionR1BAD + 25, {"stroke-width": 2});
+  av.g.line(xPositionBAD1 + 40, yPositionR2BAD + 25, xPositionBAD1 + 60, yPositionR2BAD + 3, {"stroke-width": 2});
+  av.g.line(xPositionBAD1 + 40, yPositionR2BAD + 3, xPositionBAD1 + 60, yPositionR2BAD + 25, {"stroke-width": 2});
 
-  av.g.line(xPositionBAD + 70, yPositionR1BAD + 25, xPositionBAD + 90, yPositionR1BAD + 3, {"stroke-width": 2});
-  av.g.line(xPositionBAD + 70, yPositionR1BAD + 3, xPositionBAD + 90, yPositionR1BAD + 25, {"stroke-width": 2});
+  av.g.line(xPositionBAD1 + 70, yPositionR2BAD + 25, xPositionBAD1 + 90, yPositionR2BAD + 3, {"stroke-width": 2});
+  av.g.line(xPositionBAD1 + 70, yPositionR2BAD + 3, xPositionBAD1 + 90, yPositionR2BAD + 25, {"stroke-width": 2});
 
-  av.g.line(xPositionBAD + length1BAD - 5, yPositionR1BAD + widthBAD - 3, xPositionBAD + length1BAD + 60, yPositionR1BAD + widthBAD + 40, {"stroke-width": 3});
-  av.g.polyline([[xPositionBAD + length1BAD + 50, yPositionR1BAD + widthBAD + 43], [xPositionBAD + length1BAD + 65, yPositionR1BAD + widthBAD + 45],
-    [xPositionBAD + length1BAD + 69, yPositionR1BAD + widthBAD + 35]], {fill: "black"});
-  av.g.polyline([[xPositionBAD + length1BAD + 30, yPositionR1BAD + widthBAD + 75], [xPositionBAD + length1BAD - 10, yPositionR1BAD + widthBAD + 95],
-    [xPositionBAD + length1BAD + 70, yPositionR1BAD + widthBAD + 115], [xPositionBAD + length1BAD + 10, yPositionR1BAD + widthBAD + 120], [xPositionBAD + length1BAD + 30, yPositionR1BAD + widthBAD + 140], [xPositionBAD + length1BAD + 40, yPositionR1BAD + widthBAD + 170], [xPositionBAD + length1BAD + 60, yPositionR1BAD + widthBAD + 190]]);
+  av.g.line(xPositionBAD1 + length1BAD - 5, yPositionR2BAD + widthBAD - 3, xPositionBAD1 + length1BAD + 60, yPositionR2BAD + widthBAD + 40, {"stroke-width": 3});
+  av.g.polyline([[xPositionBAD1 + length1BAD + 50, yPositionR2BAD + widthBAD + 43], [xPositionBAD1 + length1BAD + 65, yPositionR2BAD + widthBAD + 45],
+    [xPositionBAD1 + length1BAD + 69, yPositionR2BAD + widthBAD + 35]], {fill: "black"});
+  av.g.polyline([[xPositionBAD + length1BAD + 30, yPositionR1BAD + widthBAD + 55],
+    [xPositionBAD + length1BAD - 10, yPositionR1BAD + widthBAD + 95],
+    [xPositionBAD + length1BAD + 30, yPositionR1BAD + widthBAD + 125],
+    [xPositionBAD + length1BAD - 10, yPositionR1BAD + widthBAD + 155],
+    [xPositionBAD + length1BAD + 30, yPositionR1BAD + widthBAD + 185],
+    [xPositionBAD + length1BAD + 100, yPositionR1BAD + widthBAD + 210],
+    [xPositionBAD + length1BAD + 130, yPositionR1BAD + widthBAD + 170],
+    [xPositionBAD + length1BAD + 160, yPositionR1BAD + widthBAD + 210],
+    [xPositionBAD + length1BAD + 200, yPositionR1BAD + widthBAD + 150],
+    [xPositionBAD + length1BAD + 250, yPositionR1BAD + widthBAD + 120],
+    [xPositionBAD + length1BAD + 210, yPositionR1BAD + widthBAD + 110],
+    [xPositionBAD + length1BAD + 250, yPositionR1BAD + widthBAD + 50],
+    [xPositionBAD + length1BAD + 210, yPositionR1BAD + widthBAD + 35],
+    [xPositionBAD + length1BAD + 170, yPositionR1BAD + widthBAD + 15],
+    [xPositionBAD + length1BAD + 70, yPositionR1BAD + widthBAD + 12],
+    [xPositionBAD + length1BAD + 30, yPositionR1BAD + widthBAD + 55]], {"stroke-width": 3, stroke: "red"});
   av.recorded();
 });
