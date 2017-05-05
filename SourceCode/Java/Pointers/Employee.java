@@ -105,5 +105,10 @@ void examplePointers()
 
 /* *** ODSAendTag: examplePointerCode *** */
 
+/* *** ODSATag: badPointerCode *** */
+Employee badPointer = null;
+System.out.println(badPoint.getName()); 
+
+/* *** ODSAendTag: badPointerCode *** */
  }
  /* *** ODSAendTag: Employee *** */
