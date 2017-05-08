@@ -12,7 +12,7 @@
 .. index:: ! Non-deterministic Pushdown Automaton Editor
 
 Non-deterministic Pushdown Automaton Editor
-==========
+===========================================
 
 Non-deterministic Pushdown Automaton Editor
 

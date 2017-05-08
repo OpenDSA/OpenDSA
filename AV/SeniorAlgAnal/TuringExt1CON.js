@@ -55,8 +55,8 @@ $(document).ready(function() {
   }
 
   av.label("$\\$$", {top: ytop - 15, left: xleft + 215});
-  av.label("$a$", {top: ytop - 5, left: xleft + 235});
-  av.label("$b$", {top: ytop - 5, left: xleft + 255});
+  av.label("$b$", {top: ytop - 5, left: xleft + 235});
+  av.label("$a$", {top: ytop - 5, left: xleft + 255});
   av.label("$c$", {top: ytop - 25, left: xleft + 235});
   av.label("$d$", {top: ytop - 25, left: xleft + 255});
   av.label("$e$", {top: ytop - 25, left: xleft + 275});

@@ -10,8 +10,8 @@
 .. odsalink:: AV/SeniorAlgAnal/Turing1CON.css
 .. odsalink:: AV/SeniorAlgAnal/Turing2CON.css
 .. odsalink:: AV/SeniorAlgAnal/Turing3CON.css
-.. odsalink:: AV/SeniorAlgAnal/Turing4CON.css
-.. odsalink:: AV/SeniorAlgAnal/Turing5CON.css
+.. odsalink:: AV/SeniorAlgAnal/TuringCopyCON.css
+.. odsalink:: AV/SeniorAlgAnal/TuringShiftCON.css
 .. odsalink:: AV/SeniorAlgAnal/TuringExt1CON.css
 .. odsalink:: AV/SeniorAlgAnal/TuringExt2CON.css
 .. odsalink:: AV/SeniorAlgAnal/TuringExt3CON.css
@@ -400,7 +400,7 @@ Here are some basic machines and notation
 
 |
 
-.. inlineav:: Turing4CON dgm
+.. inlineav:: TuringCopyCON dgm
    :align: center
 
    Copy Machine: Transform :math:`\#w\underline{\#}` into
@@ -412,7 +412,7 @@ Here are some basic machines and notation
 
 |
 
-.. inlineav:: Turing5CON dgm
+.. inlineav:: TuringShiftCON dgm
    :align: center
 
    Shift a string right.
@@ -489,8 +489,8 @@ Machines.
 .. odsascript:: AV/SeniorAlgAnal/Turing1CON.js
 .. odsascript:: AV/SeniorAlgAnal/Turing2CON.js
 .. odsascript:: AV/SeniorAlgAnal/Turing3CON.js
-.. odsascript:: AV/SeniorAlgAnal/Turing4CON.js
-.. odsascript:: AV/SeniorAlgAnal/Turing5CON.js
+.. odsascript:: AV/SeniorAlgAnal/TuringCopyCON.js
+.. odsascript:: AV/SeniorAlgAnal/TuringShiftCON.js
 .. odsascript:: AV/SeniorAlgAnal/TuringExt1CON.js
 .. odsascript:: AV/SeniorAlgAnal/TuringExt2CON.js
 .. odsascript:: AV/SeniorAlgAnal/TuringExt3CON.js

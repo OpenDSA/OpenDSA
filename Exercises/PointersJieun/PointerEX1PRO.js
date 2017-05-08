@@ -139,12 +139,8 @@
       // Set up the display
       av = new JSAV("PointerEX1PRO");
       var codes = [];
-      codes[0] = "Employee johnRef = new Employee(\"John\", 1000);";
-      codes[1] = "Employee samRef = new Employee(\"Sam\", 2000);";
-      codes[2] = "Employee empRef;";
-      codes[3] = "";
-      codes[4] = "empRef = johnRef;";
-      codes[5] = "johnRef = null;";
+      codes[0] = "empRef = johnRef;";
+      codes[1] = "johnRef = null;";
       av.code(codes);
 
       var width = 60;

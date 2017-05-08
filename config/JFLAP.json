@@ -88,6 +88,40 @@
         "long_name": "Finite Automaton Exercise Generator",
         "sections": {}
       }
+    },
+    "Martin Tamayo": {
+      "JFLAP/MartinTamayo": {
+        "long_name": "Martin's AVs",
+        "sections": {
+          "Finite Accepter": {
+            "FAEditor": {
+              "long_name": "Finite Automata Editor",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Mealy Machine": {
+            "MealyEditor": {
+              "long_name": "Mealy Machine Editor",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Moore Machine": {
+            "MooreEditor": {
+              "long_name": "Moore Machine Editor",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          }
+        }
+      }
     }
   }
 }

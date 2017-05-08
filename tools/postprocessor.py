@@ -213,7 +213,7 @@ def break_up_sections(path, module_data, config):
   # KILL MATHJAX
   #'''Helpful for debugging, because MathJax takes forever to load'''
   #for possible_math_jax in soup.find_all('script'):
-  #  if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdn.mathjax.org/mathjax'):
+  #  if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdnjs.cloudflare.com/ajax/libs/mathjax'):
   #    possible_math_jax.extract()
 
 
