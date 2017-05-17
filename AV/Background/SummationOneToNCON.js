@@ -85,10 +85,31 @@ $(document).ready(function() {
   rect53.removeClass("highlight");
   rect54.removeClass("highlight");
   rect55.removeClass("highlight");
-  av.label("|---------------- $n$ ------------------|",
-           {top: topAlign + 25, left: leftAlign + 20}).addClass("sizeLabel");
-  av.label("|------- $n$ -------|",
-           {top: topAlign - 60, left: leftAlign + 5 * rectWidth - 35}).addClass("sizeLabel").addClass("rotated");
+
+  av.g.line(leftAlign + 0.25 * rectWidth, topAlign + 2.25 * rectHeight,
+            leftAlign + 2.25 * rectWidth, topAlign + 2.25 * rectHeight,
+            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
+
+  av.label ("$n$", 
+            {top: topAlign + rectHeight,
+             left: leftAlign + 2.35 * rectWidth});
+
+  av.g.line(leftAlign + 2.75 * rectWidth, topAlign + 2.25 * rectHeight,
+            leftAlign + 4.75 * rectWidth, topAlign + 2.25 * rectHeight,
+            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+
+
+  av.g.line(leftAlign + 5.25 * rectWidth, topAlign - 3.75 * rectHeight,
+            leftAlign + 5.25 * rectWidth, topAlign - 1.75 * rectHeight,
+            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
+
+  av.label ("$n$", 
+            {top: topAlign - 2.35 * rectHeight,
+             left: leftAlign + 5.15 * rectWidth});
+
+  av.g.line(leftAlign + 5.25 * rectWidth, topAlign - 0.75 * rectHeight,
+            leftAlign + 5.25 * rectWidth, topAlign + rectHeight,
+            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
   av.step();
 
   //Slide 9
