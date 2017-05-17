@@ -21,7 +21,20 @@ $(document).ready(function() {
 
   // Slide 2
   av.umsg(interpret("sc2"));
-  var nLabel = av.label("|--------------------------- $n$ ---------------------------|", {left: leftAlign + 22, top: topAlign + 60});
+  
+
+  var nLine1 = av.g.line(leftAlign + 10, topAlign,
+            leftAlign + 155, topAlign,
+            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
+
+  var nLabel = av.label ("$n$", 
+            {top: topAlign - 30, left: leftAlign + 165});
+
+  var nLine2 = av.g.line(leftAlign + 195, topAlign,
+            leftAlign + 340, topAlign,
+            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  
+
   var count = 0;
   while (count < arraySize) {
     var value = Math.round(Math.random() * 10) + 1;
@@ -67,6 +80,9 @@ $(document).ready(function() {
   av.umsg(interpret("sc7"));
   arr.hide();
   nLabel.hide();
+  nLine1.hide();
+  nLine2.hide();
+
   pointer.hide();
   topAlign = 15;
   var arr1 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 25, indexed: true});
