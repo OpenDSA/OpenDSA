@@ -67,6 +67,8 @@ and their relationships.
       \mathbf{P}\,-\,\mathbf{Q} &
         \mbox{Set difference: all elements of set}
         \ \mathbf{P}\ \mbox{NOT in set}\ \mathbf{Q}\\
+      \mathbf{P}\,\times\,\mathbf{Q} &
+        \mbox{Set (Cartesian) Product: yields a set of ordered pairs}\\
       \end{array}
 
 Here are some examples of this notation in use.
@@ -101,6 +103,14 @@ Finally, the set {5, 3, 2} is indistinguishable from set
 :math:`\mathbf{P}`, because sets have no concept of order.
 Likewise, set {2, 3, 2, 5} is also indistinguishable from 
 :math:`\mathbf{P}`, because sets have no concept of duplicate elements.
+
+The :term:`set product` or :term:`Cartesian product` of two sets
+:math:`\mathbf{Q} \times \mathbf{P}` is a set of ordered pairs.
+For our example sets, the set product would be
+
+.. math::
+
+   \{(2, 5),\ (2, 10),\ (3, 5),\ (3, 10),\ (5, 5),\ (5, 10)\}.
 
 The :term:`powerset` of a set :math:`\mathbf{S}` is the set of all
 possible subsets for :math:`\mathbf{S}`.

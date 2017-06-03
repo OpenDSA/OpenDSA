@@ -468,7 +468,7 @@ Machines.
   We merely encode the heads onto the tape, and simulate moving them
   around.
 
-* A two-dimensional ``tape''
+* A two-dimensional "tape"
 
   All that we need to do is find a mapping from 2D to 1D, which is
   fairly easy.

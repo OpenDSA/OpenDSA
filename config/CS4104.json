@@ -516,7 +516,7 @@
         "long_name": "Coping with NP-complete problems",
         "sections": {}
       },
-      "Development/Impossible": {
+      "SeniorAlgAnal/Impossible": {
         "long_name": "Unsolveable Problems",
         "sections": {}
       },

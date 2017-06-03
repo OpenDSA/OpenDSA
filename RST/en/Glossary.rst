@@ -620,7 +620,11 @@ Glossary
       :term:`buffer pool`.
 
    call stack
-      Known also as execution stack. A stack that stores the function call sequence and the return address for each function.
+      Known also as execution stack. A stack that stores the function
+      call sequence and the return address for each function.
+
+   Cartesian product
+      For sets, this is another name for the :term:`set product`.
 
    ceiling
       Written :math:`\lceil x \rceil`, for real value :math:`x` the
@@ -3672,6 +3676,16 @@ Glossary
       A collection of distinguishable :term:`members <member>` or
       :term:`elements <element>`.
 
+   set product
+      Written :math:`\mathbf{Q} \times \mathbf{P}`, the set product is
+      a set of ordered pairs such that ordered pair :math:`(a, b)` is
+      in the product whenever :math:`a \in \mathbf{P}` and
+      :math:`b \in \mathbf{Q}`.
+      For example, when :math:`\mathbf{P} = \{2, 3, 5\}` and
+      :math:`\mathbf{Q} = \{5, 10\}`,
+      :math:`\mathbf{Q} \times \mathbf{P} =
+      \{(2, 5),\ (2, 10),\ (3, 5),\ (3, 10),\ (5, 5),\ (5, 10)\}`.
+
    shallow copy
       Copying the :term:`reference` or :term:`pointer`
       value without copying the actual content.
@@ -3682,7 +3696,7 @@ Glossary
       :term:`worst case` cost.
 
    shifting method
-      A technique for finding a :term:`closed form solution` to a
+      A technique for finding a :term:`closed-form solution` to a
       :term:`summation` or :term:`recurrence relation`.
 
    shortest path

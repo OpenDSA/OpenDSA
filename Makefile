@@ -119,6 +119,9 @@ CS4104: min
 CS4104raw: min
 	python $(CONFIG_SCRIPT) config/CS4104raw.json --no-lms
 
+FL: min
+	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
+
 CS3slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
 
