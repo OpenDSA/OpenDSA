@@ -1,12 +1,10 @@
 /*global ODSA */
 "use strict";
 // Show how to decode the word "DEED"
-$(document).ready(function() {
+$(document).ready(function () {
   // Constructs the standard tree used in the slideshow
   function construct_tree(av) {
-    var t = av.ds.binarytree({
-      nodegap: 25
-    });
+    var t = av.ds.binarytree({nodegap: 25});
     var r = t.root("");
 
     // constructs tree
@@ -50,11 +48,9 @@ $(document).ready(function() {
   }
 
   var av_name = "huffmanDecodeCON";
-  var config = ODSA.UTILS.loadConfig({
-      "av_name": av_name,
-      "json_path": "/AV/Binary/huffman.json"
-    }),
-    interpret = config.interpreter; // get the interpreter
+  var config = ODSA.UTILS.loadConfig(
+                {"av_name": av_name, "json_path": "/AV/Binary/huffman.json"}),
+      interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
 
   var t = construct_tree(av);
