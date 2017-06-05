@@ -3,7 +3,7 @@
 $(document).ready(function () {
   var av_name = "GneighborCON";
   var interpret = ODSA.UTILS.loadConfig({"av_name": av_name,
-                    "json_path": "AV/Graph/GraphDefCON.json"}).interpreter;
+                    "json_path": "/AV/Graph/GraphDefCON.json"}).interpreter;
   var av = new JSAV(av_name, {"animationMode" : "none"});
 
   var gTop = -5;
@@ -14,7 +14,7 @@ $(document).ready(function () {
 
   // Lines for visual break up
   av.g.line(425, gTop, 425, gHeight).addClass("borderEdge");
-	
+
   var graphA = av.ds.graph({left: gLeft, top: gTop, directed: false,
                             width: gWidth, height: gHeight});
 

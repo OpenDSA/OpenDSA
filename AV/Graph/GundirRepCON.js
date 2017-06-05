@@ -2,11 +2,11 @@
 $(document).ready(function () {
   var av_name = "GundirRepCON";
   var interpret = ODSA.UTILS.loadConfig({"av_name": av_name,
-                         "json_path": "AV/Graph/GraphDefCON.json"}).interpreter;
+                         "json_path": "/AV/Graph/GraphDefCON.json"}).interpreter;
   var av = new JSAV(av_name, {"animationMode" : "none"});
 
-  //set up graph 
-  var gTop = 0; 
+  //set up graph
+  var gTop = 0;
   var gLeft = 80;
   var lTop = 180;
 
@@ -26,19 +26,19 @@ $(document).ready(function () {
   graph.addEdge(node4, node1);
   graph.layout();
 
-  //set up adjancey matrix 
+  //set up adjancey matrix
   var a = av.label("Adajceny Matrix", {top: lTop, left: 355}).show();
 
     var mat = av.ds.matrix([[ , 1, , ,1], [1 , , , 1 , 1], [ , , , 1 , 1],
-                            [ , 1,1 , , ,], [1, 1, 1, , ,]], 
+                            [ , 1,1 , , ,], [1, 1, 1, , ,]],
                          {style: "table", top: gTop + 20, left: gLeft + 250});
 
   var row = av.label(" 0 1 2 3 4", {top: gTop, left: gLeft + 265}).addClass("addSpace");
   var col = av.label(" 0  1  2  3  4", {top: gTop + 90, left: gLeft + 170}).addClass("vertical-text").addClass("addSpace");
   mat.layout();
 
-  //set up list representation 
-  var aTop = 0; 
+  //set up list representation
+  var aTop = 0;
   var aLeft = gLeft + 500;
 
   var aList = av.ds.array([, , , , ,],
@@ -64,7 +64,7 @@ $(document).ready(function () {
   list1.add(1, "3");
   list1.add(2, "4");
   list1.layout();
-    
+
   // set up Vertex 2 linked list
   var list2 = av.ds.list({top: listTop + listGap * 2, left: listLeft});
   list2.addFirst("3");
@@ -84,9 +84,9 @@ $(document).ready(function () {
   list4.add(2, "2");
   list4.layout();
 
-  //add lines connect array to list 
+  //add lines connect array to list
   av.g.line(arrowLeft, arrowTop, arrowLeft + 45, arrowTop,
-            {'arrow-end': 'classic-wide-long', 'stroke-width': 2}); 
+            {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
   av.g.line(arrowLeft, arrowTop + listGap * 1, arrowLeft + 45, arrowTop + listGap * 1,
             {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
   av.g.line(arrowLeft, arrowTop + listGap * 2, arrowLeft + 45, arrowTop + listGap * 2,

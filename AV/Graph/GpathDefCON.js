@@ -3,7 +3,7 @@
 $(document).ready(function () {
   var av_name = "GpathDefCON";
   var interpret = ODSA.UTILS.loadConfig({"av_name": av_name,
-                         "json_path": "AV/Graph/GraphDefCON.json"}).interpreter;
+                         "json_path": "/AV/Graph/GraphDefCON.json"}).interpreter;
   var av = new JSAV(av_name, {"animationMode" : "none"});
 
   var gTop = -5;

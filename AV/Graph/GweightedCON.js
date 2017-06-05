@@ -2,11 +2,11 @@
 $(document).ready(function () {
   var av_name = "GweightedCON";
   var interpret = ODSA.UTILS.loadConfig({"av_name": av_name,
-                         "json_path": "AV/Graph/GraphDefCON.json"}).interpreter;
+                         "json_path": "/AV/Graph/GraphDefCON.json"}).interpreter;
   var av = new JSAV(av_name, {"animationMode" : "none"});
 
-  //set up graph 
-  var gTop = 0; 
+  //set up graph
+  var gTop = 0;
   var gLeft = 80;
   var lTop = 180;
 
@@ -26,19 +26,19 @@ $(document).ready(function () {
   graph.addEdge(node4, node1, {weight: 1});
   graph.layout();
 
-  //set up adjancey matrix 
+  //set up adjancey matrix
   var a = av.label("Adajceny Matrix: Weights", {top: lTop, left: 310}).show();
 
   var mat = av.ds.matrix([[ , 3, , , 4], [ , , , 3, ,], [ , , , , 1],
-                          [ , , 7, , ,], [ , 1, , , ,]], 
+                          [ , , 7, , ,], [ , 1, , , ,]],
                          {style: "table", top: gTop + 20, left: gLeft + 250});
 
   var row = av.label(" 0 1 2 3 4", {top: gTop, left: gLeft + 265}).addClass("addSpace");
   var col = av.label(" 0  1  2  3  4", {top: gTop + 90, left: gLeft + 170}).addClass("vertical-text").addClass("addSpace");
   mat.layout();
 
-  // Set up list representation 
-  var aTop = 0; 
+  // Set up list representation
+  var aTop = 0;
   var aLeft = gLeft + 500;
 
   var aList = av.ds.array([, , , , ,],
@@ -62,25 +62,25 @@ $(document).ready(function () {
   var list1 = av.ds.list({top: listTop + listGap * 1, left: listLeft});
   list1.addFirst("3|3");
   list1.layout();
-    
+
   // set up Vertex 2 linked list
   var list2 = av.ds.list({top: listTop + listGap * 2, left: listLeft});
   list2.addFirst("4|1");
   list2.layout();
 
-  // set up Vertex 3 linked list 
+  // set up Vertex 3 linked list
   var list3 = av.ds.list({top: listTop + listGap * 3, left: listLeft});
   list3.addFirst("2|7");
   list3.layout();
 
-  // set up Vertex 4 linked list 
+  // set up Vertex 4 linked list
   var list4 = av.ds.list({top: listTop + listGap * 4, left: listLeft});
   list4.addFirst("1|1");
   list4.layout();
 
-  //add lines connect array to list 
+  //add lines connect array to list
   av.g.line(arrowLeft, arrowTop, arrowLeft + 45, arrowTop,
-            {'arrow-end': 'classic-wide-long', 'stroke-width': 2}); 
+            {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
   av.g.line(arrowLeft, arrowTop + listGap * 1, arrowLeft + 45, arrowTop + listGap * 1,
             {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
   av.g.line(arrowLeft, arrowTop + listGap * 2, arrowLeft + 45, arrowTop + listGap * 2,
