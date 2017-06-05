@@ -1,6 +1,6 @@
 "use strict";
 /*global alert: true, ODSA, console */
-$(document).ready(function () {
+$(document).ready(function() {
   // Process About button: Pop up a message with an Alert
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
@@ -13,16 +13,20 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"json_path": "AV/Binary/huffman.json"}),
-      interpret = config.interpreter,       // get the interpreter
-      settings = config.getSettings();      // Settings for the AV
+  var config = ODSA.UTILS.loadConfig({
+      "json_path": "/AV/Binary/huffman.json"
+    }),
+    interpret = config.interpreter, // get the interpreter
+    settings = config.getSettings(); // Settings for the AV
 
   // Create a JSAV instance
-  var av = new JSAV($('.avcontainer'), {settings: settings});
+  var av = new JSAV($('.avcontainer'), {
+    settings: settings
+  });
 
-  var freqs = [ 30,  42, 90,   7,  42,  24,  37,   2], // The frequency counts
-      chars = ["X", "D", "E", "K", "L", "M", "U", "Z"],  // The characters
-      trees = [];   // Pointers to all of the partial Huffman trees
+  var freqs = [30, 42, 90, 7, 42, 24, 37, 2], // The frequency counts
+    chars = ["X", "D", "E", "K", "L", "M", "U", "Z"], // The characters
+    trees = []; // Pointers to all of the partial Huffman trees
 
   var codeArray = [];
 
@@ -31,7 +35,9 @@ $(document).ready(function () {
   var root;
   for (var i = 0; i < freqs.length; i++) {
     value = freqs[i] + "<br>" + chars[i];
-    trees[i] = av.ds.binarytree({center: false});
+    trees[i] = av.ds.binarytree({
+      center: false
+    });
     root = trees[i].root();
     root.value(value);
     root.freq = freqs[i];
@@ -62,10 +68,14 @@ $(document).ready(function () {
 
   trees[0].hide();
   av.umsg(interpret("av_c5"));
-  var matrixData = [ ["<b>Char</b>", "<b>Freq</b>", "<b>Code</b>", "<b>Bits</b>"] ];
+  var matrixData = [
+    ["<b>Char</b>", "<b>Freq</b>", "<b>Code</b>", "<b>Bits</b>"]
+  ];
   for (var i = 0; i < freqs.length; i++) {
     matrixData.push([chars[i], freqs[i], codeArray[i], codeArray[i].length]);
   }
-  var theMatrix = new av.ds.matrix(matrixData, {style: "plain"});
+  var theMatrix = new av.ds.matrix(matrixData, {
+    style: "plain"
+  });
   av.recorded(); // done recording changes, will rewind
 });
