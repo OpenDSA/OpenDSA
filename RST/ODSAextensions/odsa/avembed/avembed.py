@@ -116,6 +116,7 @@ def loadTable():
   except IOError:
     print 'ERROR: No table.json file.'
 
+
 def embedlocal(av_path):
   embed=[]
   av_fullname = os.path.basename(av_path)

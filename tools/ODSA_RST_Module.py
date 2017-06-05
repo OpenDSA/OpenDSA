@@ -162,7 +162,6 @@ def isSlideConf(item):
 
   return False
 
-
 def get_directive_type(directive):
   if isTable(directive):
     return 'table'
@@ -207,7 +206,6 @@ def update_counters(label_line, dir_type, mod_num, num_ref_map, counters):
 
   return (num_ref_map, counters)
 
-
 def process_ref_chap(extension, line, book_objects, start_space, last):
   """
     method responsible of converting :ref: and :chap: to :term: when
@@ -241,7 +239,6 @@ def process_ref_chap(extension, line, book_objects, start_space, last):
         line_t = line_t.replace(rel_labels, newDir)
     line_t = ' ' * start_space + line_t + last
   return line_t
-
 
 class ODSA_RST_Module:
 
