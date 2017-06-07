@@ -210,6 +210,7 @@ Summary Exercise: CS3
 
 if __name__ == '__main__':
   from docutils.core import publish_parts
+  import xmltodict
 
   directives.register_directive('avembed',avembed)
   directives.register_directive('avmetadata',avmetadata)
@@ -221,5 +222,7 @@ if __name__ == '__main__':
           'initial_header_level': 2},
           writer_name="xml")
 
-  print doc_parts['whole']
+  doc = xmltodict.parse(doc_parts['whole'])
+  print(json.dumps(doc))
+  # print doc_parts['whole']
 
