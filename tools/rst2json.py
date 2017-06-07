@@ -14,20 +14,14 @@
 
 __author__ = 'hshahin'
 
-from docutils import nodes
-from docutils.parsers.rst import directives
+import sys, os
+from docutils import nodes, utils
 from docutils.parsers.rst import Directive
-import os, sys
-from xml.dom.minidom import parse, parseString # Can be removed when embedlocal is gone
+from docutils.parsers.rst import directives, states
 import json
+import xmltodict
+from collections import OrderedDict
 
-def setup(app):
-    app.add_directive('avembed',avembed)
-
-# Must use the exercise name as the ID of the container (required for
-# client-side framework processing and as an anchor for hyperlinking
-# directly to the exercise)
-# The div with ID '[exer_name]_iframe' is a placeholder that is replaced after the page finishes loading
 avembed_element= '''\
 <avembed
     type="%(type)s"
@@ -37,15 +31,6 @@ avembed_element= '''\
     required="True"
     threshold="%(threshold)s">
 </avembed>
-'''
-
-avmetadata_element= '''\
-<avmetadata
-    author="%(author)s"
-    topic="%(topic)s"
-    requires="%(requires)s"
-    satisfies="%(satisfies)s">
-</avmetadata>
 '''
 
 extertool_element= '''\
@@ -67,6 +52,10 @@ inlineav_element = '''\
     threshold="%(threshold)s">
 </inlineav>
 '''
+
+odsalink_element = '''<odsalink>%(odsalink)s</odsalink>'''
+
+odsascript_element = '''<odsascript>%(odsascript)s</odsascript>'''
 
 
 # Prints the given string to standard error
@@ -114,8 +103,7 @@ class avmetadata(Directive):
 
     def run(self):
         """ Restructured text extension for collecting  AVs metadata nothing is written in the output html file """
-        res = avmetadata_element % (self.options)
-        return [nodes.raw('', res, format='xml')]
+        return [nodes.raw('', '<avmetadata>null</avmetadata>', format='xml')]
 
 
 class extrtoolembed(Directive):
@@ -140,6 +128,7 @@ class inlineav(Directive):
   optional_arguments = 7
   final_argument_whitespace = True
   option_spec = {
+                  'output': directives.unchanged,
                   'long_name': directives.unchanged,
                   'points': directives.unchanged,
                   'required': directives.unchanged,
@@ -168,61 +157,218 @@ class inlineav(Directive):
     res = inlineav_element % (self.options)
     return [nodes.raw('', res, format='xml')]
 
+class odsalink(Directive):
+    required_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec = {}
 
-source = """\
-.. This file is part of the OpenDSA eTextbook project. See
-.. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
-.. distributed under an MIT open source license.
-
-.. avmetadata::
-   :author: Cliff Shaffer
-   :requires: algorithm analysis; analyzing programs; analyzing problems; analysis misunderstandings; space analysis introduction
-   :satisfies: algorithm analysis review
-   :topic: Algorithm Analysis
+    def run(self):
+      # """ Restructured text extension for including CSS and other libraries """
+      self.options['odsalink'] = self.arguments[0]
+      res = odsalink_element % (self.options)
+      return [nodes.raw('', res, format='xml')]
 
 
-Algorithm Analysis Summary Exercises
-====================================
+class odsascript(Directive):
+    required_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec = {}
 
-Summary Exercise: CS2
----------------------
+    def run(self):
+      # """ Restructured text extension for including CSS and other libraries """
+      self.options['odsascript'] = self.arguments[0]
+      res = odsascript_element % (self.options)
+      return [nodes.raw('', res, format='xml')]
 
-.. avembed:: Exercises/AlgAnal/AlgAnalCS2Summ.html ka
+class index(Directive):
+    required_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec = {}
 
-Summary Exercise: CS3
----------------------
+    def run(self):
+      # """ Restructured text extension for including CSS and other libraries """
+      return [nodes.raw('', '<index>null</index>', format='xml')]
 
-.. avembed:: Exercises/AlgAnal/AlgAnalCS3Summ.html ka
+class codeinclude(Directive):
+    required_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec = {}
 
-.. extrtoolembed::
-   :resource_name: List ADT Programming Exercise
-   :resource_type: external_assignment
-   :learning_tool: code-workout
-   :points: 1.0
+    def run(self):
+      # """ Restructured text extension for including CSS and other libraries """
+      return [nodes.raw('', '<codeinclude>null</codeinclude>', format='xml')]
 
-.. inlineav:: BinExampCON dgm
-.. inlineav:: preorderCON ss
-.. inlineav:: postorderCON ss
-.. inlineav:: inorderCON ss
+class todo(Directive):
+    required_arguments = 0
+    optional_arguments = 3
+    final_argument_whitespace = True
+    has_content = True
+    option_spec = {
+                  'type': directives.unchanged,
+                  'tag': directives.unchanged
+                  }
 
-"""
+    def run(self):
+      # """ Restructured text extension for including CSS and other libraries """
+      return [nodes.raw('', '<todo>null</todo>', format='xml')]
+
+class odsafig(Directive):
+    '''
+    '''
+    # option_spec = Image.option_spec.copy()
+    option_spec = {
+                  'figwidth_value': directives.unchanged,
+                  'figclass': directives.unchanged,
+                  'align': directives.unchanged,
+                  'capalign': directives.unchanged,
+                  'figwidth': directives.unchanged,
+                  'alt': directives.unchanged,
+                  'width': directives.unchanged
+                  }
+
+    has_content = True
+
+    def run(self):
+      # """ Restructured text extension for including CSS and other libraries """
+      return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
+
+def extract_mod_config(mod_json):
+  '''
+  '''
+  # validate mod_json
+  mod_config = {}
+  mod_config['long_name'] = ""
+  mod_config['sections'] = OrderedDict()
+  one_sec_only = False
+  one_sec_name = None
+
+  for k, v in mod_json['document'].iteritems():
+    if k == 'title':
+      mod_config['long_name'] = v
+
+    if k == 'subtitle':
+      one_sec_only = True
+      one_sec_name = v['#text']
+      mod_config['sections'][one_sec_name] = OrderedDict()
+
+    if k == 'raw' and one_sec_only = True:
+      mod_config['sections'][one_sec_name] = extract_exs_config(v)
+
+    if k == 'section' and one_sec_only = False:
+      mod_config['sections'] = extract_sec_config(v)
+
+  return mod_config
+
+def extract_sec_config(sec_json):
+  '''
+  '''
+  sections_config = OrderedDict()
+  for x in sec_json:
+    sec_title = None
+    for k, v in x.iteritems():
+      if k == 'title':
+        sec_title = v
+
+      if k == 'raw':
+        sections_config[sec_title] = OrderedDict()
+        sections_config[sec_title] = extract_exs_config(v)
+
+  return sections_config
+
+def extract_exs_config(exs_json):
+  '''
+  '''
+  exs_config = OrderedDict()
+  for x in exs_json:
+    if isinstance(x, dict) and 'avembed' in x.keys():
+      ex_obj = x['avembed']
+      exer_name = ex_obj['@exer_name']
+      exs_config[exer_name] = OrderedDict()
+      exs_config[exer_name]['long_name'] = ex_obj['@long_name']
+      exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
+      exs_config[exer_name]['points'] = float(ex_obj['@points'])
+      threshold = float(ex_obj['@threshold'])
+      exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
+
+    if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ss":
+      ex_obj = x['inlineav']
+      exer_name = ex_obj['@exer_name']
+      exs_config[exer_name] = OrderedDict()
+      exs_config[exer_name]['long_name'] = ex_obj['@long_name']
+      exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
+      exs_config[exer_name]['points'] = float(ex_obj['@points'])
+      exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
+
+    if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "dgm":
+      ex_obj = x['inlineav']
+      exer_name = ex_obj['@exer_name']
+      exs_config[exer_name] = OrderedDict()
+
+  return exs_config
+
+def absoluteFilePaths(directory):
+  '''
+  '''
+  files = []
+  for dirpath,_,filenames in os.walk(directory):
+    for f in filenames:
+      files.append(os.path.abspath(os.path.join(dirpath, f)))
+  return files
 
 if __name__ == '__main__':
   from docutils.core import publish_parts
-  import xmltodict
 
   directives.register_directive('avembed',avembed)
   directives.register_directive('avmetadata',avmetadata)
   directives.register_directive('extrtoolembed',extrtoolembed)
   directives.register_directive('inlineav',inlineav)
+  directives.register_directive('odsalink',odsalink)
+  directives.register_directive('odsascript',odsascript)
+  directives.register_directive('index',index)
+  directives.register_directive('codeinclude',codeinclude)
+  directives.register_directive('todo',todo)
+  directives.register_directive('odsafig',odsafig)
 
-  doc_parts = publish_parts(source,
-          settings_overrides={'output_encoding': 'utf8',
-          'initial_header_level': 2},
-          writer_name="xml")
+  rst_fname = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/RST/en/Sorting/Quicksort.rst"
+  rst_dir = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/RST/en/Sorting"
 
-  doc = xmltodict.parse(doc_parts['whole'])
-  print(json.dumps(doc))
-  # print doc_parts['whole']
+  files = absoluteFilePaths(rst_dir)
+  # print(files)
 
+  everything_config = OrderedDict()
+  everything_config['chapters'] = OrderedDict()
+  everything_config['chapters']['Sorting'] = OrderedDict()
+
+  for x in files:
+    with open(x, 'r') as rstfile:
+      source=rstfile.read()
+
+    doc_parts = publish_parts(source,
+                settings_overrides={'output_encoding': 'utf8',
+                'initial_header_level': 2},
+                writer_name="xml")
+
+    mod_json = xmltodict.parse(doc_parts['whole'])
+    mod_config = extract_mod_config(mod_json)
+
+    rst_fname = os.path.basename(x).partition('.')[0]
+    rst_dir_name = x.split('/')[-2]
+
+    # print(rst_fname)
+    # print(rst_dir_name)
+
+    everything_config['chapters']['Sorting'][rst_dir_name+'/'+rst_fname] = mod_config
+
+    basename = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/"
+    json_fname = basename+rst_fname+".json"
+    with open(json_fname, 'w') as outfile:
+      json.dump(mod_json, outfile)
+    xml_fname = basename+rst_fname+".xml"
+    with open(xml_fname, 'w') as outfile:
+      outfile.write(doc_parts['whole'])
+
+  print(json.dumps(everything_config))
