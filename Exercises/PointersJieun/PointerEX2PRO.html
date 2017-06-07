@@ -4,26 +4,26 @@
   -->
 
 <!DOCTYPE html>
-<html data-require="jsav math PointerEX1PRO LinkList">
+<html data-require="jsav math PointerEX2PRO LinkList">
   <head>
-    <title>Pointer Exercise 1</title>
+    <title>Pointer Exercise 2</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #PointerEX1PRO .jsavnode {
+      #PointerEX2PRO .jsavnode {
         min-width: 100px !important;
         min-height: 80px !important;
       }
-      #PointerEX1PRO .nullBox {      /* For the null nodes */
+      #PointerEX2PRO .nullBox {      /* For the null nodes */
         border: 0;
         box-shadow: none;
       }
-      #PointerEX1PRO .jsavpointer {
+      #PointerEX2PRO .jsavpointer {
         width: 40px;
         text-align: center;
         cursor: pointer;
       }
-      #PointerEX1PRO .highlight {      /* For the pointer */
+      #PointerEX2PRO .highlight {      /* For the pointer */
         background-color: yellow;
       }
 
@@ -34,32 +34,32 @@
 
     <div class="exercise">
       <div class="vars">
-        <var id="JSAV">pointerEX1PRO.initJSAV()</var>
+        <var id="JSAV">pointerEX2PRO.initJSAV()</var>
       </div>
 
       <div class="problems">
-        <div id="PointerEX1PROp"> <!-- Supresses answer box -->
+        <div id="pointerEX2PROp"> <!-- Supresses answer box -->
           <p class="problem">Your task in this exercise is to show the
             behavior for some code.</p>
           <div class="question">
             <p>The following lines of code will set up the picture
             below:<br/></p>
-            <tt>Employee johnRef = new Employee("John", 1000);</tt><br/>
-            <tt>Employee samRef = new Employee("Sam", 2000);</tt><br/>
-            <tt>Employee empRef;</tt><br/>
-            <p>Now, modify the picture below to show the effects of
-            executing the following lines of code.</p>
-            <div id="PointerEX1PRO" class="jsavcanvas"></div>
+            <tt>Employee first = new Employee ("John", 1000);</tt><br/>
+            <tt>Employee second = new Employee("Sam", 2000);</tt><br/>
+            <tt>Employee third;</tt><br/>
+            <p>Now, modify the draw below to show the effects of
+            executing the following lines of code.<br/> What is the result of the following code?</p>
+            <div id="PointerEX2PRO" class="jsavcanvas"></div>
             <input id="reset" type="button" value="Reset" />
-            <input id="makenull" type="button" value="makenull" />
+            <input id="setSalary" type="button" value="setSalary(3000)" />
           </div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [pointerEX1PRO.userInput] </div>
+            <div class="guess"> [pointerEX2PRO.userInput] </div>
             <div class="validator-function">
-              if (!pointerEX1PRO.checkAnswer() && !guess[0]) {
+              if (!pointerEX2PRO.checkAnswer() && !guess[0]) {
                 return ""; // User did not click, and correct answer is not
                            // initial array state
-              } else {return pointerEX1PRO.checkAnswer();}
+              } else {return pointerEX2PRO.checkAnswer();}
             </div>
           </div>
           <div class="hints">
