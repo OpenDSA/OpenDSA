@@ -193,6 +193,7 @@ run time, then make a quick drawing to work out your ideas.
 This tutorial uses a lot of drawings to show how references work.
 You should too.
 
+.. avembed:: Exercises/PointersJieun/PointerEX1PRO.html ka
 
 Sharing
 -------
