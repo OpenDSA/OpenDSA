@@ -20,9 +20,6 @@ Solve following exercise.
 .. TODO::
    :type: Exercise
 
-.. avembed:: Exercises/PointersJieun/PointerEX1PRO.html ka
+.. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
 
-.. avembed:: Exercises/PointersJieun/PointerEX2PRO.html ka
-
-
-
+.. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
