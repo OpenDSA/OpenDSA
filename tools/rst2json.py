@@ -100,7 +100,8 @@ class avmetadata(Directive):
     option_spec = {'author':directives.unchanged,
                    'topic': directives.unchanged,
                    'requires': directives.unchanged,
-                   'satisfies': directives.unchanged
+                   'satisfies': directives.unchanged,
+                   'prerequisites': directives.unchanged
                    }
 
     def run(self):
@@ -230,6 +231,29 @@ class todo(Directive):
       # """ Restructured text extension for including CSS and other libraries """
       return [nodes.raw('', '<todo>null</todo>', format='xml')]
 
+class glossary(Directive):
+    required_arguments = 0
+    optional_arguments = 3
+    final_argument_whitespace = True
+    has_content = True
+    option_spec = {
+                  'sorted': directives.unchanged
+                  }
+
+    def run(self):
+      # """ Restructured text extension for including CSS and other libraries """
+      return [nodes.raw('', '<glossary>null</glossary>', format='xml')]
+
+class only(Directive):
+    required_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = True
+    has_content = True
+
+    def run(self):
+      # """ Restructured text extension for including CSS and other libraries """
+      return [nodes.raw('', '<only>null</only>', format='xml')]
+
 class odsafig(Directive):
     '''
     '''
@@ -240,6 +264,7 @@ class odsafig(Directive):
                   'capalign': directives.unchanged,
                   'figwidth': directives.unchanged,
                   'alt': directives.unchanged,
+                  'scale': directives.unchanged,
                   'width': directives.unchanged
                   }
 
@@ -385,6 +410,8 @@ def register():
     directives.register_directive('index',index)
     directives.register_directive('codeinclude',codeinclude)
     directives.register_directive('todo',todo)
+    directives.register_directive('only',only)
+    directives.register_directive('glossary',glossary)
     directives.register_directive('odsafig',odsafig)
 
 def absoluteFilePaths(directory):
@@ -393,28 +420,93 @@ def absoluteFilePaths(directory):
   files = []
   for dirpath,_,filenames in os.walk(directory):
     for f in filenames:
+      if f.partition('.')[2] != 'rst':
+        continue
       files.append(os.path.abspath(os.path.join(dirpath, f)))
+
   return files
+
+def sort_by_keys(dct,):
+  '''
+  '''
+  new_dct = OrderedDict({})
+  for key, val in sorted(dct.items(), key=lambda (key, val): key):
+      if isinstance(val, dict):
+          new_dct[key] = sort_by_keys(val)
+      else:
+          new_dct[key] = val
+  return new_dct
+
 
 if __name__ == '__main__':
 
   register()
 
-  rst_dir = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/RST/en/Binary"
-  files = absoluteFilePaths(rst_dir)
+  chapters_names = {
+    "SeniorAlgAnal":"Advanced Analysis",
+    "AlgAnal":"Algorithm Analysis",
+    "test":"Algorithms",
+    "test":"Appendix",
+    "test":"Binary Trees",
+    "test":"Biographies",
+    "test":"Design I",
+    "test":"Design II",
+    "test":"File Processing",
+    "test":"Functional Programming",
+    "test":"General Trees",
+    "test":"Grammars",
+    "test":"Graphs",
+    "test":"Hashing",
+    "test":"Indexing",
+    "test":"Interpreting the Functional Language SLang 1",
+    "test":"Interpreting the Imperative Language SLang 2",
+    "test":"Interpreting the Object-Oriented Language SLang 3",
+    "test":"Introduction",
+    "test":"Lambda Calculus",
+    "test":"Limits to Computing",
+    "test":"Linear Structures",
+    "test":"Lower Bounds",
+    "test":"Mathematical Background",
+    "test":"Memory Management",
+    "test":"Miscellaneous",
+    "test":"Pointers",
+    "test":"Preface",
+    "test":"Programming Tutorials",
+    "test":"Recursion",
+    "test":"Search Structures",
+    "test":"Searching",
+    "test":"Searching I",
+    "test":"Senior Algorithms Course",
+    "test":"Sorting",
+    "test":"Spatial Data Structures"
+}
+  # rst_chapter = 'Hashing'
+  rst_dir = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/RST/en/"
   json_xml_path = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/"
+  execluded_files = ['Bibliography','Glossary','Gradebook','GraphDefs','Intro','RegisterBook','Status', 'ListLinked_Jieun', 'AnalTuning', 'StringSearchBoyerMoore', 'ToDo', 'StringSearchKMP', 'Summations']
+  execluded_dirs = ['PointersSushma', 'Biography', 'C2GEN',
+  'Design',
+  'JFLAP', 'SlidesCanvas', 'Tutorials', 'Pointers', 'PointersJava', 'Slides', 'General', 'F16', 'Spatial']
+  files = absoluteFilePaths(rst_dir)
 
   everything_config = OrderedDict()
   everything_config['chapters'] = OrderedDict()
-  everything_config['chapters']['Binary Trees'] = OrderedDict()
+  # everything_config['chapters'][rst_chapter] = OrderedDict()
 
   for x in files:
     with open(x, 'r') as rstfile:
       source=rstfile.read()
 
-    source = source.replace(':term:', '').replace(':ref:', '').replace(':num:', '').replace('[KnuthV3]_','').replace(':index:','').replace('|---|','').replace(' --- ','')
+    source = source.replace(':numref:', '').replace(':term:', '').replace(':dfn:', '').replace(':chap:', '').replace(':ref:', '').replace(':num:', '').replace('[KnuthV3]_','').replace(':index:','').replace('|---|','').replace(' --- ','')
+
+
     rst_fname = os.path.basename(x).partition('.')[0]
+    if rst_fname in execluded_files:
+      continue
+
     rst_dir_name = x.split('/')[-2]
+    if rst_dir_name in execluded_dirs:
+      continue
 
     print('Processing '+rst_dir_name+'/'+rst_fname+'.rst')
 
@@ -426,7 +518,10 @@ if __name__ == '__main__':
     mod_json = xmltodict.parse(rst_parts['whole'])
     mod_config = extract_mod_config(mod_json)
 
-    everything_config['chapters']['Binary Trees'][rst_dir_name+'/'+rst_fname] = mod_config
+    # print(rst_dir_name)
+    # print(rst_fname)
+    everything_config['chapters'][rst_dir_name] = OrderedDict()
+    everything_config['chapters'][rst_dir_name][rst_dir_name+'/'+rst_fname] = mod_config
 
     xml_fname = json_xml_path+rst_fname+".xml"
     with open(xml_fname, 'w') as outfile:
@@ -437,40 +532,19 @@ if __name__ == '__main__':
       json.dump(mod_json, outfile)
 
 
-  def sort_by_keys(dct,):
-      new_dct = OrderedDict({})
-      for key, val in sorted(dct.items(), key=lambda (key, val): key):
-          if isinstance(val, dict):
-              new_dct[key] = sort_by_keys(val)
-          else:
-              new_dct[key] = val
-      return new_dct
-
-
-  everything_config['chapters']['Binary Trees'] = sort_by_keys(everything_config['chapters']['Binary Trees'])
-
-  # everything_config['chapters']['Binary Trees'] = OrderedDict(sorted(everything_config['chapters']['Binary Trees'].items()))
-
-  # for k, v in everything_config['chapters']['Binary Trees'].iteritems():
-  #   everything_config['chapters']['Binary Trees'][k]['sections'] = OrderedDict(sorted(everything_config['chapters']['Binary Trees'][k]['sections'].items()))
-  #   for sec_k, sec_v in everything_config['chapters']['Binary Trees'][k]['sections'].iteritems():
-  #     everything_config['chapters']['Binary Trees'][k]['sections'][sec_k] = OrderedDict(sorted(everything_config['chapters']['Binary Trees'][k]['sections'][sec_k].items()))
+  everything_config = sort_by_keys(everything_config)
 
   out_fname = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/quicksort_json_gen.json"
   with open(out_fname, 'w') as outfile:
     json.dump(everything_config, outfile)
 
-  cs3_fname = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/quicksort_json_cs3.json"
-  with open(cs3_fname) as data_file:
-      cs3_json = json.load(data_file)
+  orig_config_path = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/Everything.json"
+  with open(orig_config_path) as data_file:
+      orig_config_fname = json.load(data_file)
 
-  cs3_json['chapters']['Binary Trees'] = sort_by_keys(cs3_json['chapters']['Binary Trees'])
-  # cs3_json['chapters']['Binary Trees'] = OrderedDict(sorted(cs3_json['chapters']['Binary Trees'].items()))
+  orig_config_fname = sort_by_keys(orig_config_fname)
 
-  # for k, v in cs3_json['chapters']['Binary Trees'].iteritems():
-  #   cs3_json['chapters']['Binary Trees'][k]['sections'] = OrderedDict(sorted(cs3_json['chapters']['Binary Trees'][k]['sections'].items()))
-  #   for sec_k, sec_v in cs3_json['chapters']['Binary Trees'][k]['sections'].iteritems():
-  #     cs3_json['chapters']['Binary Trees'][k]['sections'][sec_k] = OrderedDict(sorted(cs3_json['chapters']['Binary Trees'][k]['sections'][sec_k].items()))
+  with open(orig_config_path, 'w') as outfile:
+    json.dump(orig_config_fname, outfile)
 
-  with open(cs3_fname, 'w') as outfile:
-    json.dump(cs3_json, outfile)
+
