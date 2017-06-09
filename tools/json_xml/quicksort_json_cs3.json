@@ -1,0 +1,419 @@
+{
+  "chapters": {
+    "Binary Trees": {
+      "Binary/BST": {
+        "long_name": "Binary Search Trees",
+        "sections": {
+          "BST Analysis": {
+            "BSTSumm": {
+              "long_name": "BST Question Summary",
+              "points": 1,
+              "required": true,
+              "threshold": 2
+            }
+          },
+          "BST Insert": {
+            "BSTinsertCON": {
+              "long_name": "BST Insert Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "BSTinsertPRO": {
+              "exer_options": {
+                "JXOP-code": "none",
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "undo"
+              },
+              "long_name": "BST Insert Proficiency Exercise",
+              "points": 1.0,
+              "required": true,
+              "threshold": 0.9
+            }
+          },
+          "BST Remove": {
+            "BSTdeletemaxCON": {
+              "long_name": "BST deletemax Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "BSTremoveCON": {
+              "long_name": "BST remove Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "BSTremovePRO": {
+              "exer_options": {
+                "JXOP-code": "none",
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "undo"
+              },
+              "long_name": "BST Remove Proficiency Exercise",
+              "points": 2.0,
+              "required": true,
+              "threshold": 0.9
+            }
+          },
+          "Binary Search Tree Definition": {
+            "BSTsearchCON": {
+              "long_name": "BST Search Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "BSTsearchPRO": {
+              "exer_options": {
+                "JXOP-code": "none",
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "undo"
+              },
+              "long_name": "BST Search Proficiency Exercise",
+              "points": 1.0,
+              "required": true,
+              "threshold": 0.9
+            }
+          }
+        }
+      },
+      "Binary/BSTDict": {
+        "long_name": "Dictionary Implementation with BST",
+        "sections": {}
+      },
+      "Binary/BinaryChapSumm": {
+        "long_name": "Binary Tree Chapter Summary",
+        "sections": {
+          "Summary Questions": {
+            "BinaryChapSumm": {
+              "long_name": "BinaryChapSumm",
+              "points": 2.0,
+              "required": true,
+              "showhide": "show",
+              "threshold": 10
+            }
+          }
+        }
+      },
+      "Binary/BinaryTree": {
+        "long_name": "Binary Tree Terminology",
+        "sections": {
+          "Definitions and Properties": {
+            "BinDiffCON": {},
+            "BinExampCON": {},
+            "DefSumm": {
+              "long_name": "Tree Definition Summary Exercises",
+              "points": 2,
+              "required": false,
+              "threshold": 8
+            },
+            "FullCompCON": {}
+          },
+          "Practice Questions": {
+            "Treeprobs": {
+              "long_name": "Tree/Node Exercises",
+              "points": 1,
+              "required": true,
+              "showhide": "show",
+              "threshold": 4
+            }
+          }
+        }
+      },
+      "Binary/BinaryTreeFullThm": {
+        "long_name": "Full Binary Tree Theorem",
+        "sections": {}
+      },
+      "Binary/BinaryTreeImpl": {
+        "long_name": "Full Binary Tree Node Implementations",
+        "sections": {
+          "Binary Tree Node Implementations": {
+            "expressionTraversalCON": {
+              "long_name": "Expression Tree Traversal Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Binary/BinaryTreeIntro": {
+        "long_name": "Binary Trees Chapter Introduction",
+        "sections": {}
+      },
+      "Binary/BinaryTreeNodeSpace": {
+        "long_name": "Full Binary Tree Node Space Requirements",
+        "sections": {
+          "Binary Tree Space Requirements": {
+            "TreeOverheadFIB": {
+              "long_name": "Tree Overhead Exercise",
+              "points": 2,
+              "required": true,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Binary/BinaryTreeTraversal": {
+        "long_name": "Binary Tree Traversals",
+        "sections": {
+          "Binary Tree Traversals": {
+            "BinExampCON": {},
+            "inorderCON": {
+              "long_name": "Inorder Traversal Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "postorderCON": {
+              "long_name": "Postorder Traversal Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "preorderCON": {
+              "long_name": "Preorder Traversal Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            }
+          },
+          "Implementation": {
+            "btTravInorderPRO": {
+              "exer_options": {
+                "JXOP-code": "none"
+              },
+              "long_name": "Binary Tree Inorder Traversal Exercise",
+              "points": 1.0,
+              "required": true,
+              "threshold": 0.9
+            }
+          },
+          "Postorder Traversal Practice": {
+            "btTravPostorderPRO": {
+              "exer_options": {
+                "JXOP-code": "none"
+              },
+              "long_name": "Binary Tree Postorder Traversal Exercise",
+              "points": 1.0,
+              "required": true,
+              "threshold": 0.9
+            }
+          },
+          "Preorder Traversal Practice": {
+            "btTravPreorderPRO": {
+              "exer_options": {
+                "JXOP-code": "none"
+              },
+              "long_name": "Binary Tree Preorder Traversal Exercise",
+              "points": 1.0,
+              "required": true,
+              "threshold": 0.9
+            }
+          },
+          "Summary Questions": {
+            "TravSumm": {
+              "long_name": "Tree Traversal Summary Questions",
+              "points": 1.0,
+              "required": true,
+              "threshold": 3
+            }
+          }
+        }
+      },
+      "Binary/CompleteTree": {
+        "long_name": "Array Implementation for Complete Trees",
+        "sections": {
+          "Array Implementation for Complete Binary Trees": {
+            "CompleteFIB": {
+              "long_name": "Complete Tree Exercise",
+              "points": 1,
+              "required": true,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Binary/Composite": {
+        "long_name": "Composite Design Pattern",
+        "sections": {
+          "Composite-based Expression Tree": {
+            "compositeTraversalCON": {
+              "long_name": "Composite Expression Tree Traversal Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Binary/Heaps": {
+        "long_name": "Heaps and Priority Queues",
+        "sections": {
+          "Building a Heap": {
+            "heapbuildCON": {
+              "long_name": "Heapbuild Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "heapbuildPRO": {
+              "exer_options": {
+                "JXOP-code": "none"
+              },
+              "long_name": "Heap Build Proficiency Exercise",
+              "points": 1.0,
+              "required": true,
+              "threshold": 0.9
+            },
+            "heapbuildProofCON": {
+              "long_name": "Heap build analysis proof Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            }
+          },
+          "Heaps and Priority Queues": {
+            "heapinsertCON": {
+              "long_name": "Heap insert Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "heapinsertPRO": {
+              "exer_options": {
+                "JXOP-code": "none"
+              },
+              "long_name": "Heap Insert Proficiency Exercise",
+              "points": 2.0,
+              "required": true,
+              "threshold": 0.9
+            }
+          },
+          "Priority Queues": {
+            "HeapSumm": {
+              "long_name": "Heap Question Summary",
+              "points": 2.0,
+              "required": true,
+              "threshold": 5
+            }
+          },
+          "Removing from the heap": {
+            "heapmaxCON": {
+              "long_name": "Remove Max Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "heapremoveCON": {
+              "long_name": "Remove Any Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "heapremovePRO": {
+              "exer_options": {
+                "JXOP-code": "none"
+              },
+              "long_name": "Heap Remove Exercise",
+              "points": 2.0,
+              "required": true,
+              "threshold": 0.9
+            }
+          }
+        }
+      },
+      "Binary/HuffProof": {
+        "long_name": "Proof for Huffman Coding",
+        "sections": {
+          "Proof of Optimality for Huffman Coding": {
+            "HuffProofCON": {}
+          }
+        }
+      },
+      "Binary/Huffman": {
+        "long_name": "Huffman Coding Trees",
+        "sections": {
+          "Huffman Coding Trees": {
+            "HuffmanDecodePRO": {
+              "long_name": "Huffman Decoding Proficiency Exercise",
+              "points": 1.0,
+              "required": true,
+              "threshold": 5
+            },
+            "huffmanBuildCON": {
+              "long_name": "Huffman Coding Tree Slideshow: Build",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "huffmanCodesCON": {
+              "long_name": "Huffman Coding Tree Slideshow: Setting Codes",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "huffmanDecodeCON": {
+              "long_name": "Huffman Coding Tree Slideshow: Decoding",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "huffmanLabelCON": {
+              "long_name": "Huffman Coding Tree Slideshow: Label Edges",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Binary/RecursiveDS": {
+        "long_name": "Binary Tree as a Recursive Data Structure",
+        "sections": {
+          "Binary Tree as a Recursive Data Structure": {
+            "BinRecDSCON": {},
+            "ListRecDSCON": {},
+            "SumBinaryTreeCON": {
+              "long_name": "Sum values in a Binary Tree Slide Show",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Binary/TreeTrie": {
+        "long_name": "Trees versus Tries",
+        "sections": {
+          "Trees versus Tries": {
+            "TreeTimelineCON": {
+              "long_name": "Tree timeline Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            },
+            "TrieTimelineCON": {
+              "long_name": "Trie timeline Slideshow",
+              "points": 0.0,
+              "required": false,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Binary/WritingTraversals": {
+        "long_name": "Implementing Tree Traversals",
+        "sections": {
+          "Binary Tree Increment By One Exercise": {
+            "learning_tool": "code-workout",
+            "points": 1.0,
+            "resource_name": "",
+            "resource_type": "external_assignment"
+          },
+          "Implementing Tree Traversals": {}
+        }
+      }
+    }
+  }
+}
