@@ -1,4 +1,4 @@
-# Copyright (C) 2012 Eric Fouh
+# Copyright (C) 2017 Hossameldin Shahin
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the MIT License as published by
@@ -12,15 +12,17 @@
 #
 #
 
-__author__ = 'hshahin'
+__author__ = 'Hossameldin Shahin'
 
 import sys, os
+import json
+import xmltodict
 from docutils import nodes, utils
 from docutils.parsers.rst import Directive
 from docutils.parsers.rst import directives, states
-import json
-import xmltodict
 from collections import OrderedDict
+from docutils.core import publish_parts
+
 
 avembed_element= '''\
 <avembed
@@ -35,7 +37,7 @@ avembed_element= '''\
 
 extertool_element= '''\
 <extertool
-    resource_name="%(resource_name)s"
+    resource_name=%(resource_name)s
     resource_type="%(resource_type)s"
     learning_tool="%(learning_tool)s"
     points="%(points)s">
@@ -107,8 +109,8 @@ class avmetadata(Directive):
 
 
 class extrtoolembed(Directive):
-  required_arguments = 0
-  optional_arguments = 3
+  required_arguments = 1
+  optional_arguments = 0
   final_argument_whitespace = True
   has_content = True
   option_spec = {
@@ -119,6 +121,17 @@ class extrtoolembed(Directive):
                  }
 
   def run(self):
+
+    resource_name = self.arguments[0]
+    if 'resource_name' not in self.options or self.options['resource_name'] == '':
+      self.options['resource_name'] = resource_name
+    if 'resource_type' not in self.options or self.options['resource_type'] == '':
+      self.options['resource_type'] = 'external_assignment'
+    if 'learning_tool' not in self.options or self.options['learning_tool'] == '':
+      self.options['learning_tool'] = 'code-workout'
+    if 'points' not in self.options or self.options['points'] == '':
+      self.options['points'] = 1
+
     res = extertool_element % (self.options)
     return [nodes.raw('', res, format='xml')]
 
@@ -132,7 +145,8 @@ class inlineav(Directive):
                   'long_name': directives.unchanged,
                   'points': directives.unchanged,
                   'required': directives.unchanged,
-                  'threshold': directives.unchanged
+                  'threshold': directives.unchanged,
+                  'align': directives.unchanged
                 }
   has_content = True
 
@@ -219,7 +233,6 @@ class todo(Directive):
 class odsafig(Directive):
     '''
     '''
-    # option_spec = Image.option_spec.copy()
     option_spec = {
                   'figwidth_value': directives.unchanged,
                   'figclass': directives.unchanged,
@@ -233,7 +246,6 @@ class odsafig(Directive):
     has_content = True
 
     def run(self):
-      # """ Restructured text extension for including CSS and other libraries """
       return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
 
 def extract_mod_config(mod_json):
@@ -255,10 +267,10 @@ def extract_mod_config(mod_json):
       one_sec_name = v['#text']
       mod_config['sections'][one_sec_name] = OrderedDict()
 
-    if k == 'raw' and one_sec_only = True:
+    if k == 'raw' and one_sec_only == True:
       mod_config['sections'][one_sec_name] = extract_exs_config(v)
 
-    if k == 'section' and one_sec_only = False:
+    if k == 'section' and one_sec_only == False:
       mod_config['sections'] = extract_sec_config(v)
 
   return mod_config
@@ -272,10 +284,21 @@ def extract_sec_config(sec_json):
     for k, v in x.iteritems():
       if k == 'title':
         sec_title = v
+        sections_config[sec_title] = OrderedDict()
 
       if k == 'raw':
-        sections_config[sec_title] = OrderedDict()
-        sections_config[sec_title] = extract_exs_config(v)
+        sections_config[sec_title].update(extract_exs_config(v))
+
+      if k == 'section':
+        if isinstance(v, list):
+          for sub_sec_v in v:
+            if 'raw' in sub_sec_v.keys():
+              sections_config[sec_title].update(extract_exs_config(sub_sec_v['raw']))
+        elif isinstance(v, dict):
+          if 'raw' in v.keys():
+            sections_config[sec_title].update(extract_exs_config(v['raw']))
+    if 'extertool' in sections_config[sec_title].keys():
+      sections_config[sec_title] = sections_config[sec_title]['extertool']
 
   return sections_config
 
@@ -283,32 +306,86 @@ def extract_exs_config(exs_json):
   '''
   '''
   exs_config = OrderedDict()
-  for x in exs_json:
-    if isinstance(x, dict) and 'avembed' in x.keys():
-      ex_obj = x['avembed']
+  if isinstance(exs_json, list):
+    for x in exs_json:
+      if isinstance(x, dict) and 'avembed' in x.keys():
+        ex_obj = x['avembed']
+        exer_name = ex_obj['@exer_name']
+        exs_config[exer_name] = OrderedDict()
+        threshold = float(ex_obj['@threshold'])
+        exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
+        exs_config[exer_name]['long_name'] = ex_obj['@long_name']
+        exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
+        exs_config[exer_name]['points'] = float(ex_obj['@points'])
+
+      if isinstance(x, dict) and 'extertool' in x.keys():
+        ex_obj = x['extertool']
+        exs_config['extertool'] = OrderedDict()
+        exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
+        exs_config['extertool']['points'] = float(ex_obj['@points'])
+        exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
+        exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
+
+      if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ss":
+        ex_obj = x['inlineav']
+        exer_name = ex_obj['@exer_name']
+        exs_config[exer_name] = OrderedDict()
+        exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
+        exs_config[exer_name]['long_name'] = ex_obj['@long_name']
+        exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
+        exs_config[exer_name]['points'] = float(ex_obj['@points'])
+
+      if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "dgm":
+        ex_obj = x['inlineav']
+        exer_name = ex_obj['@exer_name']
+        exs_config[exer_name] = OrderedDict()
+  elif isinstance(exs_json, dict):
+    if 'avembed' in exs_json.keys():
+      ex_obj = exs_json['avembed']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
-      exs_config[exer_name]['long_name'] = ex_obj['@long_name']
-      exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
-      exs_config[exer_name]['points'] = float(ex_obj['@points'])
       threshold = float(ex_obj['@threshold'])
       exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
-
-    if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ss":
-      ex_obj = x['inlineav']
-      exer_name = ex_obj['@exer_name']
-      exs_config[exer_name] = OrderedDict()
       exs_config[exer_name]['long_name'] = ex_obj['@long_name']
       exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
-      exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
 
-    if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "dgm":
-      ex_obj = x['inlineav']
+    if 'extertool' in exs_json.keys():
+      ex_obj = exs_json['extertool']
+      exs_config['extertool'] = OrderedDict()
+      exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
+      exs_config['extertool']['points'] = float(ex_obj['@points'])
+      exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
+      exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
+
+    if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ss":
+      ex_obj = exs_json['inlineav']
+      exer_name = ex_obj['@exer_name']
+      exs_config[exer_name] = OrderedDict()
+      exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
+      exs_config[exer_name]['long_name'] = ex_obj['@long_name']
+      exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
+      exs_config[exer_name]['points'] = float(ex_obj['@points'])
+
+    if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "dgm":
+      ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
 
+
   return exs_config
+
+def register():
+    directives.register_directive('avembed',avembed)
+    directives.register_directive('avmetadata',avmetadata)
+    directives.register_directive('extrtoolembed',extrtoolembed)
+    directives.register_directive('inlineav',inlineav)
+    directives.register_directive('odsalink',odsalink)
+    directives.register_directive('odsascript',odsascript)
+    directives.register_directive('index',index)
+    directives.register_directive('codeinclude',codeinclude)
+    directives.register_directive('todo',todo)
+    directives.register_directive('odsafig',odsafig)
 
 def absoluteFilePaths(directory):
   '''
@@ -320,55 +397,80 @@ def absoluteFilePaths(directory):
   return files
 
 if __name__ == '__main__':
-  from docutils.core import publish_parts
 
-  directives.register_directive('avembed',avembed)
-  directives.register_directive('avmetadata',avmetadata)
-  directives.register_directive('extrtoolembed',extrtoolembed)
-  directives.register_directive('inlineav',inlineav)
-  directives.register_directive('odsalink',odsalink)
-  directives.register_directive('odsascript',odsascript)
-  directives.register_directive('index',index)
-  directives.register_directive('codeinclude',codeinclude)
-  directives.register_directive('todo',todo)
-  directives.register_directive('odsafig',odsafig)
+  register()
 
-  rst_fname = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/RST/en/Sorting/Quicksort.rst"
-  rst_dir = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/RST/en/Sorting"
-
+  rst_dir = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/RST/en/Binary"
   files = absoluteFilePaths(rst_dir)
-  # print(files)
+  json_xml_path = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/"
 
   everything_config = OrderedDict()
   everything_config['chapters'] = OrderedDict()
-  everything_config['chapters']['Sorting'] = OrderedDict()
+  everything_config['chapters']['Binary Trees'] = OrderedDict()
 
   for x in files:
     with open(x, 'r') as rstfile:
       source=rstfile.read()
 
-    doc_parts = publish_parts(source,
+    source = source.replace(':term:', '').replace(':ref:', '').replace(':num:', '').replace('[KnuthV3]_','').replace(':index:','').replace('|---|','').replace(' --- ','')
+    rst_fname = os.path.basename(x).partition('.')[0]
+    rst_dir_name = x.split('/')[-2]
+
+    print('Processing '+rst_dir_name+'/'+rst_fname+'.rst')
+
+    rst_parts = publish_parts(source,
                 settings_overrides={'output_encoding': 'utf8',
                 'initial_header_level': 2},
                 writer_name="xml")
 
-    mod_json = xmltodict.parse(doc_parts['whole'])
+    mod_json = xmltodict.parse(rst_parts['whole'])
     mod_config = extract_mod_config(mod_json)
 
-    rst_fname = os.path.basename(x).partition('.')[0]
-    rst_dir_name = x.split('/')[-2]
+    everything_config['chapters']['Binary Trees'][rst_dir_name+'/'+rst_fname] = mod_config
 
-    # print(rst_fname)
-    # print(rst_dir_name)
+    xml_fname = json_xml_path+rst_fname+".xml"
+    with open(xml_fname, 'w') as outfile:
+      outfile.write(rst_parts['whole'])
 
-    everything_config['chapters']['Sorting'][rst_dir_name+'/'+rst_fname] = mod_config
-
-    basename = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/"
-    json_fname = basename+rst_fname+".json"
+    json_fname = json_xml_path+rst_fname+".json"
     with open(json_fname, 'w') as outfile:
       json.dump(mod_json, outfile)
-    xml_fname = basename+rst_fname+".xml"
-    with open(xml_fname, 'w') as outfile:
-      outfile.write(doc_parts['whole'])
 
-  print(json.dumps(everything_config))
+
+  def sort_by_keys(dct,):
+      new_dct = OrderedDict({})
+      for key, val in sorted(dct.items(), key=lambda (key, val): key):
+          if isinstance(val, dict):
+              new_dct[key] = sort_by_keys(val)
+          else:
+              new_dct[key] = val
+      return new_dct
+
+
+  everything_config['chapters']['Binary Trees'] = sort_by_keys(everything_config['chapters']['Binary Trees'])
+
+  # everything_config['chapters']['Binary Trees'] = OrderedDict(sorted(everything_config['chapters']['Binary Trees'].items()))
+
+  # for k, v in everything_config['chapters']['Binary Trees'].iteritems():
+  #   everything_config['chapters']['Binary Trees'][k]['sections'] = OrderedDict(sorted(everything_config['chapters']['Binary Trees'][k]['sections'].items()))
+  #   for sec_k, sec_v in everything_config['chapters']['Binary Trees'][k]['sections'].iteritems():
+  #     everything_config['chapters']['Binary Trees'][k]['sections'][sec_k] = OrderedDict(sorted(everything_config['chapters']['Binary Trees'][k]['sections'][sec_k].items()))
+
+  out_fname = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/quicksort_json_gen.json"
+  with open(out_fname, 'w') as outfile:
+    json.dump(everything_config, outfile)
+
+  cs3_fname = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/quicksort_json_cs3.json"
+  with open(cs3_fname) as data_file:
+      cs3_json = json.load(data_file)
+
+  cs3_json['chapters']['Binary Trees'] = sort_by_keys(cs3_json['chapters']['Binary Trees'])
+  # cs3_json['chapters']['Binary Trees'] = OrderedDict(sorted(cs3_json['chapters']['Binary Trees'].items()))
+
+  # for k, v in cs3_json['chapters']['Binary Trees'].iteritems():
+  #   cs3_json['chapters']['Binary Trees'][k]['sections'] = OrderedDict(sorted(cs3_json['chapters']['Binary Trees'][k]['sections'].items()))
+  #   for sec_k, sec_v in cs3_json['chapters']['Binary Trees'][k]['sections'].iteritems():
+  #     cs3_json['chapters']['Binary Trees'][k]['sections'][sec_k] = OrderedDict(sorted(cs3_json['chapters']['Binary Trees'][k]['sections'][sec_k].items()))
+
+  with open(cs3_fname, 'w') as outfile:
+    json.dump(cs3_json, outfile)
