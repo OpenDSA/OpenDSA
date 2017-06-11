@@ -54,16 +54,16 @@ determine what we are measuring (the best, worst, or average case) and
 also our description for what we know about the growth rate of that
 cost measure (big-Oh, :math:`\Omega`, or :math:`\Theta`).
 
-The upper bound for an algorithm is not the same as the worst case for 
+The upper bound for an algorithm is not the same as the worst case for
 that algorithm for a given input of size :math:`n`.
 What is being bounded is not the actual cost (which you can
-determine for a given value of :math:`n`), but rather the 
+determine for a given value of :math:`n`), but rather the
 **growth rate** for the cost.
-There cannot be a growth rate for a single point, such as a particular 
+There cannot be a growth rate for a single point, such as a particular
 value of :math:`n`.
 The growth **rate** applies to the **change** in cost as a
 **change** in input size occurs.
-Likewise, the lower bound is not the same as the best case for a given 
+Likewise, the lower bound is not the same as the best case for a given
 size :math:`n`.
 
 Another common misconception is thinking that the best case for an
@@ -93,10 +93,9 @@ worst, and average cases as the input size grows.
    It is *not* correct to say that the best case occurs when
    :math:`n=1`.
 
-.. topic:: Example
 
-   .. inlineav:: MisunderstandingsGraphCON ss
-      :output: show
+.. inlineav:: MisunderstandingsGraphCON ss
+   :output: show
 
 .. avembed:: Exercises/AlgAnal/MisSumm.html ka
 

@@ -13,6 +13,9 @@
 .. odsalink:: AV/Background/LinearRecurrencesNCON.css
 
 Recurrence Relations
+====================
+
+Recurrence Relations
 --------------------
 
 The running time for a recursive algorithm is most easily expressed by
