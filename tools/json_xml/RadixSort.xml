@@ -90,7 +90,7 @@ on the <math>i</math>'th iteration.</paragraph><raw format="xml" xml:space="pres
     required="True"
     threshold="1.0">
 </avembed>
-</raw></section><section ids="radix-sort-analysis" names="radix\ sort\ analysis"><title>Radix Sort Analysis</title><raw format="xml" xml:space="preserve"><inlineav
+</raw><section ids="radix-sort-analysis" names="radix\ sort\ analysis"><title>Radix Sort Analysis</title><raw format="xml" xml:space="preserve"><inlineav
     type="ss"
     exer_name="RadixSortAnalysisCON"
     long_name="RadixSortAnalysisCON"
@@ -167,4 +167,4 @@ appropriate for these situations.</paragraph><raw format="xml" xml:space="preser
     required="True"
     threshold="5">
 </avembed>
-</raw><raw format="xml" xml:space="preserve"><odsascript>AV/Development/RadixSortAnalysisCON.js</odsascript></raw></section></document>
+</raw><raw format="xml" xml:space="preserve"><odsascript>AV/Development/RadixSortAnalysisCON.js</odsascript></raw></section></section></document>
