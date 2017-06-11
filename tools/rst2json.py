@@ -569,7 +569,7 @@ if __name__ == '__main__':
       everything_config['chapters'][chapters_names[rst_dir_name]] = OrderedDict()
     everything_config['chapters'][chapters_names[rst_dir_name]][rst_dir_name+'/'+rst_fname] = mod_config
 
-    xml_fname = json_xml_path+rst_fname+".xml"
+    xml_fname = json_xml_path+'/'+rst_fname+".xml"
 
     # if rst_fname == 'StringSearchBoyerMoore':
     #   print(rst_parts['whole'])
@@ -577,7 +577,7 @@ if __name__ == '__main__':
     with open(xml_fname, 'w') as outfile:
       outfile.write(rst_parts['whole'].encode('utf8'))
 
-    json_fname = json_xml_path+rst_fname+".json"
+    json_fname = json_xml_path+'/'+rst_fname+".json"
     with open(json_fname, 'w') as outfile:
       json.dump(mod_json, outfile)
 
