@@ -3,7 +3,7 @@
 .. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
    :requires: Local memory
    :satisfies: Heap Memory
@@ -27,7 +27,7 @@ until the programmer explicitly requests that it be deallocated.
 Nothing happens automatically.
 So the programmer has much greater control of memory, but with greater
 responsibility since the memory must now be actively managed.
-The advantages of heap memory are: 
+The advantages of heap memory are:
 
 * **Lifetime**. Because the programmer now controls exactly when memory
   is allocated and deallocated, it is possible to build a data
@@ -68,18 +68,18 @@ allocation and deallocation in the heap.
 Allocation
 ~~~~~~~~~~
 
-The heap is a large area of memory available for use by the program. 
+The heap is a large area of memory available for use by the program.
 The program can request areas, or "blocks", of memory for its use
 within the heap.
-In order to allocate a block of some size, the program makes an explicit request by calling the heap :term:`allocation` function. 
+In order to allocate a block of some size, the program makes an explicit request by calling the heap :term:`allocation` function.
 The allocation function reserves a block of memory of the requested size in the heap and returns a pointer to it. Suppose a program makes three allocation requests to allocate memory to hold three separate GIF images in the heap each of which takes 1024 bytes of memory. After the three allocation requests, memory might look like.
 
 .. odsafig:: Images/LocalHeapaloc.png
    :width: 400
    :align: center
    :capalign: justify
-   :figwidth: 100% 
-   
+   :figwidth: 100%
+
 Each allocation request reserves a contiguous area of the requested size in the heap and
 returns a pointer to that new block to the program. Since each block is always referred to
 by a pointer, the block always plays the role of a "pointee" (Section 1) and the program
@@ -95,27 +95,27 @@ to be committed and so are "free" and are available to satisfy allocation reques
 heap manager has its own, private data structures to record what areas of the heap are
 committed to what purpose at any moment  The heap manager satisfies each allocation
 request from the pool of free memory and updates its private data structures to record
-which areas of the heap are in use. 
+which areas of the heap are in use.
 
 Deallocation
 ~~~~~~~~~~~~
 
-When the program is finished using a block of memory, it makes an explicit 
+When the program is finished using a block of memory, it makes an explicit
 deallocation request to indicate to the heap manager that the program is now finished with that block.
 The heap manager updates its private data structures to show that the area of memory
 occupied by the block is free again and so may be re-used to satisfy future allocation
 requests. Here's what the heap would look like if the program deallocates the second of
-the three blocks.   	
+the three blocks.
 
 .. odsafig:: Images/LocalHeapdealoc.png
    :width: 300
    :align: center
    :capalign: justify
-   :figwidth: 100% 
-   
+   :figwidth: 100%
+
 After the deallocation, the pointer continues to point to the now deallocated block. The
-program must not access the deallocated pointee. This is why the pointer is drawn in gray
-|---| the pointer is there, but it must not be used. Sometimes the code will set the pointer to
+program must not access the deallocated pointee. This is why the pointer is drawn in gray |---|
+the pointer is there, but it must not be used. Sometimes the code will set the pointer to
 NULL immediately after the deallocation to make explicit the fact that it is no longer
 valid.
 
@@ -192,7 +192,7 @@ Although the syntax varies between languages, the roles of
    The C operator ``sizeof()`` is a convenient way to compute the size
    in bytes of a type |---| ``sizeof(int)`` for an  int pointee,
    ``sizeof(struct fraction)`` for a ``struct fraction`` pointee.
-	
+
    ``void free(void* heapBlockPointer);``
    The ``free()`` function takes a pointer t a heap block and returns
    it to the free pool for later reuse. The pointer passed to
@@ -207,15 +207,15 @@ Although the syntax varies between languages, the roles of
    deallocates all of the memory it allocates, then every call to
    ``malloc()`` will later be matched by exactly one call to
    ``free()`` As a practical matter however, it is not always
-   necessary for a program to deallocate every block it allocates
-   |---| see "Memory Leaks" below.
-	
+   necessary for a program to deallocate every block it allocates |---| see
+   "Memory Leaks" below.
+
 
 Simple Heap Example
 -------------------
-Here is a simple example which allocates an 
-``int`` block in the heap, stores the number 42 in the block, and then deallocates it. 
-This is the simplest possible example of heap block allocation, use, and deallocation. 
+Here is a simple example which allocates an
+``int`` block in the heap, stores the number 42 in the block, and then deallocates it.
+This is the simplest possible example of heap block allocation, use, and deallocation.
 The example shows the state of memory at three different times during the execution of the above code. The stack and heap are shown
 separately in the drawing |---| a drawing for code which uses stack and heap memory needs
 to distinguish between the two areas to be accurate since the rules which govern the two
@@ -235,8 +235,8 @@ difference.
    :width: 300
    :align: center
    :capalign: justify
-   :figwidth: 100% 
-   
+   :figwidth: 100%
+
 
 
 ::
@@ -246,13 +246,13 @@ difference.
 	 intPtr = malloc(sizeof(int));
 	 *intPtr = 42;
 	 // T2
-	 
+
 .. odsafig:: Images/LocalHeapintptr42.png
    :width: 300
    :align: center
    :capalign: justify
-   :figwidth: 100% 
-   
+   :figwidth: 100%
+
 
 ::
 
@@ -262,15 +262,15 @@ difference.
 	 // why the pointer is shown in gray).
 	 free(intPtr);
 	 // T3
-	 
+
 .. odsafig:: Images/LocalHeapintptr.png
    :width: 300
    :align: center
    :capalign: justify
-   :figwidth: 100% 	 
-   
-   
-   
+   :figwidth: 100%
+
+
+
 Simple Heap Observations
 ------------------------
 
@@ -300,8 +300,8 @@ Simple Heap Observations
 
 * When the function exits, its local variable intPtr will be
   automatically deallocated following the usual rules for local
-  variables (Section 2). So this function has tidy memory behavior
-  |---| all of the memory it allocates while running (its local
+  variables (Section 2). So this function has tidy memory behavior |---|
+  all of the memory it allocates while running (its local
   variable, its one heap block) is deallocated by the time it exits.
 
 
@@ -310,11 +310,11 @@ Heap Array
 
 In the C language, it's convenient to allocate an array in the heap,
 since C can treat any pointer as an array.
-The size of the array memory block is the size of each element (as 
+The size of the array memory block is the size of each element (as
 computed by the ``sizeof()`` operator) multiplied by the number of
 elements (See CS Education Library/101 The C Language, for a complete
 discussion of C, and arrays and pointers in particular).
-So the following code heap allocates an array of 100 
+So the following code heap allocates an array of 100
 ``struct fraction``'s in the heap, sets them all to 22/7, and
 deallocates the heap array.
 
@@ -333,7 +333,7 @@ deallocates the heap array.
 	  // Deallocate the whole array
 	  free(fracts);
 	}
-	
+
 Heap String Example
 -------------------
 Here is a more useful heap array example. The ``StringCopy()`` function takes a C string,
@@ -356,7 +356,7 @@ takes over ownership of the new string and is responsible for freeing it.
 	  newString = malloc(sizeof(char)*len); 	// elem-size * number-of-elements
 	  assert(newString != NULL); 	// simplistic error check (a good habit)
 	  strcpy(newString, string); 	// copy the passed in string to the block
-	  
+
 	  return(newString); 	// return a ptr to the block
 	}
 
@@ -387,7 +387,7 @@ Memory Leaks
 What happens if some memory is heap allocated, but never deallocated?
 A program which forgets to deallocate a block is said to have a
 :term:`memory leak` which may or may not be a serious problem.
-The result will be that the heap gradually fill up as there 
+The result will be that the heap gradually fill up as there
 continue to be allocation requests, but no deallocation requests to
 return blocks for re-use.
 For a program which runs, computes something, and exits immediately, memory leaks
@@ -410,7 +410,7 @@ Ownership
 ``StringCopy()`` allocates the heap block, but it does not deallocate it. This is so the caller
 can use the new string. However, this introduces the problem that somebody does need to
 remember to deallocate the block, and it is not going to be ``StringCopy()``. That is why the
-comment for ``StringCopy()`` mentions specifically that the caller is taking on 
+comment for ``StringCopy()`` mentions specifically that the caller is taking on
 ownership  of the block. Every block of memory has exactly one "owner" who takes responsibility for
 deallocating it. Other entities can have pointers, but they are just sharing. There's only
 one owner, and the comment for ``StringCopy()`` makes it clear that ownership is being
@@ -430,7 +430,7 @@ The two common patterns for ownership are:
   ownership. The callee can access things while it runs, and
   allocate and deallocate its own memory, but it should not disrupt
   the caller's memory.
-	
+
 * **Callee allocated and returned**. The callee allocates some memory
   and returns it to the caller. This happens because the result of the
   callee computation needs new memory to be stored or

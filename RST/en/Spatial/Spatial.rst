@@ -12,6 +12,9 @@
 Spatial Data Structures:
 ========================
 
+Spatial Data Structures:
+------------------------
+
 Search trees such as :term:`BSTs <BST>`, :term:`AVL trees <AVL Tree>`,
 :term:`splay trees <Splay Tree>`, :term:`2-3 Trees <2-3 tree>`,
 :term:`B-trees <B-tree>`, and :term:`tries <trie>` are designed for

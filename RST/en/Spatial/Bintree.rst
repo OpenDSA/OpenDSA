@@ -14,6 +14,9 @@
 The Bintree
 ===========
 
+The Bintree
+-----------
+
 This module presents a spatial data structure for storing
 point data in two or more dimensions, called the Bintree.
 The Bintree is a natural extension of the BST to

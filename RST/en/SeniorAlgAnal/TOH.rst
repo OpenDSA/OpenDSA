@@ -46,11 +46,11 @@ unusually easy to discuss its analysis.
 First, there is only one problem instance of a given size.
 Second, there is essentially only one optimal algorithm,
 and it is simple for us to recognize this to be a fact.
-This avoids a lot of the complication that we normally 
+This avoids a lot of the complication that we normally
 encounter in the analysis process, even when considering the simplest
 of problems.
 In other words, Towers of Hanoi is easy to analyze, which is different
-from being easy to solve, and which is also different from 
+from being easy to solve, and which is also different from
 having "easy cost" (that is, being cheap to run).
 These three aspects of being easy or hard
 (ability to analyze, ability to find a solution, and cost to run) are
@@ -72,7 +72,7 @@ completely independent.
    **Output:** A series of moves that solves the problem.
 
 .. inlineav:: TOHfigCON dgm
-   :output: show 
+   :output: show
 
 
 The Model
@@ -178,8 +178,8 @@ the problem is also the number of disks, there is only one input
 instance of size :math:`n`.
 So we do not need to worry about complicating issues related to
 whether we are concerned with the worst, best, or average case costs.
-This is one of the reasons why we picked this problem to discuss first
-|---| we don't have the complexity of a range of inputs for a
+This is one of the reasons why we picked this problem to discuss first |---|
+we don't have the complexity of a range of inputs for a
 given size :math:`n`.
 
 Given an algorithm to solve the problem, we want to know what the

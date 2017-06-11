@@ -8,7 +8,7 @@
    :requires: growth rate
    :satisfies: best and worst case
    :topic: Algorithm Analysis
-   
+
 .. odsalink:: AV/AlgAnal/AnalCasesCON.css
 
 Best, Worst, and Average Cases
@@ -52,8 +52,8 @@ fails to perform quickly enough when all :math:`n` airplanes are coming
 from the same direction.
 
 For other applications |---| particularly when we wish to aggregate
-the cost of running the program many times on many different inputs
-|---| worst-case analysis might not be a representative measure of the
+the cost of running the program many times on many different inputs |---|
+worst-case analysis might not be a representative measure of the
 algorithm's performance.
 Often we prefer to know the average-case running time.
 This means that we would like to know the *typical* behavior of
@@ -72,7 +72,7 @@ necessarily examine half of the array values in the average case.
 The characteristics of a data distribution have a significant effect
 on many search algorithms, such as those based on
 :ref:`hashing <hashing> <HashIntro>` and search trees such as the
-:ref:`BST <binary search tree> <BST>`. 
+:ref:`BST <binary search tree> <BST>`.
 Incorrect assumptions about data distribution can have disastrous
 consequences on a program's space or time performance.
 Unusual data distributions can also be used to advantage,
@@ -85,5 +85,5 @@ Otherwise, we often desire an average-case analysis if we know enough
 about the distribution of our input to compute the average case.
 If not, then we must resort to worst-case analysis.
 
-.. odsascript:: AV/AlgAnal/AnalCasesSameCON.js	  
-.. odsascript:: AV/AlgAnal/AnalCasesDiffCON.js	  
+.. odsascript:: AV/AlgAnal/AnalCasesSameCON.js
+.. odsascript:: AV/AlgAnal/AnalCasesDiffCON.js

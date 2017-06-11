@@ -3,10 +3,10 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Cliff Shaffer
    :topic: Turing Machines
-   
+
 .. odsalink:: AV/SeniorAlgAnal/Turing1CON.css
 .. odsalink:: AV/SeniorAlgAnal/Turing2CON.css
 .. odsalink:: AV/SeniorAlgAnal/Turing3CON.css
@@ -105,7 +105,7 @@ enter state :math:`p` and
    * :math:`s = q_0`
    * :math:`\delta =`
 
-     .. math::     
+     .. math::
 
         \begin{array}{lll}
         \hline
@@ -468,7 +468,7 @@ Machines.
   We merely encode the heads onto the tape, and simulate moving them
   around.
 
-* A two-dimensional ``tape''
+* A two-dimensional ``tape``
 
   All that we need to do is find a mapping from 2D to 1D, which is
   fairly easy.

@@ -81,7 +81,7 @@ generalized from the notation for binary trees.
 
 Each node in a tree has precisely one parent, except for the root,
 which has no parent.
-From this observation, it immediately follows that a tree with 
+From this observation, it immediately follows that a tree with
 :math:`n` nodes must have :math:`n-1` edges because each node, aside
 from the root, has one edge connecting that node to its parent.
 
@@ -117,7 +117,7 @@ preferred.
 An alternative is to provide access to the first (or leftmost) child
 of a node, and to provide access to the next (or right) sibling of a
 node.
-Here are the class declarations for general trees and 
+Here are the class declarations for general trees and
 their nodes.
 Based on these two access functions, the children of a node can be
 traversed like a list.
@@ -149,8 +149,8 @@ Inorder traversal does not have a natural definition for the
 general tree, because there is no particular number of children for an
 internal node.
 An arbitrary definition |---| such as visit the leftmost subtree in
-inorder, then the root, then visit the remaining subtrees in inorder
-|---| can be invented.
+inorder, then the root, then visit the remaining subtrees in inorder |---|
+can be invented.
 However, inorder traversals are generally not useful with
 general trees.
 

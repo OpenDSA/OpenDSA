@@ -3,7 +3,7 @@
 .. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
    :requires: Pointer intro
    :satisfies: Local memory
@@ -58,7 +58,7 @@ The most common variables you use are :term:`local variables` within
 functions such as the variables ``num`` and ``result`` in the
 following function.
 All of the local variables and parameters taken together are called
-its :term:`local storage` or just its "locals", such as 
+its :term:`local storage` or just its "locals", such as
 ``num`` and ``result`` in the following code...
 
 ::
@@ -69,7 +69,7 @@ its :term:`local storage` or just its "locals", such as
 	  result = num * num;
 	  return result;
 	}
-	
+
 The variables are called "local" to capture the idea that their lifetime is tied to the
 function where they are declared. Whenever the function runs, its local variables are
 allocated. When the function exits, its locals are deallocated. For the above example, that
@@ -106,7 +106,7 @@ Here is a more detailed version of the rules of local storage:
    allocated. That locals are available	("scoped") only within their
    owning function is known as :term:`lexical scoping` and pretty much
    all    languages do it that way now.
-	
+
 
 Examples
 --------
@@ -126,7 +126,7 @@ Here is a simple example of the lifetime of local storage.
 	  Bar(i + a); // (3) Locals continue to exist undisturbed,
 	}  // even during calls to other functions.
   } // (4) The locals are all deallocated when the function exits.
-	
+
 Here is a larger example which shows how the simple rule "the locals
 are allocated when their function begins running and are deallocated
 when it exits" can build more complex behavior.
@@ -134,7 +134,7 @@ You will need a firm grasp of how local allocation works to understand the
 material in later modules.
 The drawing shows the sequence of allocations and deallocations which
 result when the function X() calls the function Y() twice.
-The points in time T1, T2, etc. are marked in 
+The points in time T1, T2, etc. are marked in
 the code and the state of memory at that time is shown in the drawing.
 
 ::
@@ -143,27 +143,27 @@ the code and the state of memory at that time is shown in the drawing.
     int a = 1;
     int b = 2;
     //T1
-    
+
     Y(a);
     //T3
     Y(b);
-    
+
    //T5
   }
-  
+
   void Y(int p) {
     int q;
     q = p + 2;
     //T2 (first time through), T4 (second time through)
   }
-  
+
 
 
 .. odsafig:: Images/T1-T5.png
    :width: 600
    :align: center
    :capalign: justify
-   :figwidth: 100%     	
+   :figwidth: 100%
 
 
 (optional extra...) The drawing shows the sequence of the locals being allocated and
@@ -245,7 +245,7 @@ The Ampersand (&) Bug |---| TAB
 
 Now that you understand the allocation schedule of locals, you can
 appreciate one of the more ugly bugs possible in C and C++.
-What is wrong with the following code where the 
+What is wrong with the following code where the
 function ``Victim()`` calls the function ``TAB()``?
 To see the problem, it may be useful to make
 a drawing to trace the local storage of the two functions.
@@ -273,7 +273,7 @@ deallocated. We are essentially running into the "lifetime" constraint of local 
 We want the int to exist, but it gets deallocated automatically. Not all uses of & between
 functions are incorrect |---| only when used to pass a pointer back to the caller. The correct
 uses of `&` are discussed in section 3, and the way to pass a pointer back to the caller is
-shown in section 4.	
+shown in section 4.
 
 Local Memory Summary
 ~~~~~~~~~~~~~~~~~~~~
@@ -307,7 +307,7 @@ To call a function such as ``foo(6, x+1)``:
    address") and switch execution to ``foo()``.
 
 4. ``foo()`` executes with its local block conveniently available at
-   the end of the call stack. 
+   the end of the call stack.
 
 5. When ``foo()`` is finished, it exits by popping its locals off the
    stack and "returns" to the caller using the previously stored
@@ -319,6 +319,7 @@ function call process:
 
 * This is why infinite recursion results in a "Stack Overflow Error"
   |---| the code keeps calling and calling resulting in steps (1) (2)
+
   (3), (1) (2) (3), but never a step (4)....eventually the call stack
   runs out of memory.
 

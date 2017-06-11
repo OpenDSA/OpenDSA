@@ -105,6 +105,7 @@ value.
 
 Another, more general approach is to supply a function or class
 |---| called a :term:`comparator` |---|
+
 whose job is to extract the key from the record.
 A comparator function can be passed in as a parameter, such as in a
 call to a sorting function.
@@ -168,7 +169,7 @@ Here are some review questions to test your knowledge from this module.
 
 .. [#] One example of a situation where it is not possible to write a
        function that extracts a key from a record is when we have a
-       collection of records that describe books in a library. 
+       collection of records that describe books in a library.
        One of the fields for such a record might be a list of subject
        keywords, where the typical record stores a few keywords.
        Our dictionary might be implemented as a list of records sorted

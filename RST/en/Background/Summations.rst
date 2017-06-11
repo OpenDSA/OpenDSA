@@ -72,57 +72,39 @@ comfortable with it.
 Here is a list of useful summations, along with their closed-form solutions.
 
 .. math::
-   :label: sum1
-
    \sum_{i = 1}^{n} i &=& \frac{n (n+1)}{2}.
 
 .. math::
-   :label: sum2
-
    \sum_{i = 1}^{n} i^2 &=& \frac{2 n^3 + 3 n^2 + n}{6} =
    \frac{n(2n + 1)(n + 1)}{6}.
 
 .. math::
-   :label: sum3
-
    \sum_{i = 1}^{\log n} n &=& n \log n.
 
 .. math::
-   :label: sum4
-
    \sum_{i = 0}^\infty a^i &=& \frac{1}{1-a}\ \mbox{for}
    \ 0 < a < 1.
 
 .. math::
-   :label: sum5
-
    \sum_{i=0}^{n} a^i &=& \frac{a^{n+1} - 1}{a - 1}\ \mbox{for}
    \ a \neq 1.
 
 As special cases to this last summation, we have the following two:
 
 .. math::
-   :label: sum6
-
    \sum_{i = 1}^{n} \frac{1}{2^i} &=& 1 - \frac{1}{2^n},
 
 .. math::
-   :label: sum7
-
    \sum_{i = 0}^{n} 2^i &=& 2^{n+1} - 1.
 
 As a corollary to :eq:`sum7`,
 
 .. math::
-   :label: sum8
-
    \sum_{i = 0}^{\log n} 2^i &=& 2^{\log n + 1} - 1 = 2n - 1.
 
 Finally,
 
 .. math::
-   :label: IHalvesSum
-
    \sum_{i=1}^{n} \frac{i}{2^i} &=& 2 - \frac{n+2}{2^n}.
 
 The sum of reciprocals from 1 to :math:`n`, called the
@@ -132,8 +114,6 @@ To be more precise, as :math:`n` grows,
 the summation grows closer to
 
 .. math::
-   :label: sum10
-
    {\cal H}_n \approx \log_e n + \gamma + \frac{1}{2n},
 
 where :math:`\gamma` is Euler's constant and has the value 0.5772...
