@@ -294,16 +294,31 @@ def extract_mod_config(mod_json):
     if k == 'title':
       mod_config['long_name'] = v
 
+    # 'subtitle' is uded when the rst file contains only one section
     if k == 'subtitle':
       one_sec_only = True
       one_sec_name = v['#text']
       mod_config['sections'][one_sec_name] = OrderedDict()
 
+    # The rst file contains only one section and all exercises are defined
+    # directly under this section
     if k == 'raw' and one_sec_only == True:
       mod_config['sections'][one_sec_name] = extract_exs_config(v)
 
+    # The rst file contains only one section which has in one or more subsections
+    if k == 'section' and one_sec_only == True:
+      # mod_config['sections'][one_sec_name] = extract_exs_config(v)
+      if isinstance(v, list):
+        for sub_sec_v in v:
+          if 'raw' in sub_sec_v.keys():
+            mod_config['sections'][one_sec_name].update(extract_exs_config(sub_sec_v['raw']))
+      elif isinstance(v, dict):
+        if 'raw' in v.keys():
+          mod_config['sections'][one_sec_name].update(extract_exs_config(v['raw']))
+
     if k == 'section' and one_sec_only == False:
       mod_config['sections'] = extract_sec_config(v)
+
 
   return mod_config
 
@@ -505,14 +520,12 @@ if __name__ == '__main__':
       "Bounds": "Lower Bounds",
       "NP": "Limits to Computing"
       }
-  # rst_chapter = 'Hashing'
-
 
   # rst_dir = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/RST/en/"
   rst_dir = os.path.abspath('../RST/en/')
   # json_xml_path = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/"
   json_xml_path = os.path.abspath('json_xml/')
-  execluded_files = ['Intro', 'Status', 'Bibliography', 'Glossary', 'ToDo']
+  execluded_files = ['Intro', 'Status', 'Bibliography', 'Glossary', 'ToDo', 'cs342_uwosh']
   files = absoluteFilePaths(rst_dir)
 
   everything_config = OrderedDict()
@@ -552,7 +565,8 @@ if __name__ == '__main__':
 
     # print(rst_dir_name)
     # print(rst_fname)
-    everything_config['chapters'][chapters_names[rst_dir_name]] = OrderedDict()
+    if chapters_names[rst_dir_name] not in everything_config['chapters'].keys():
+      everything_config['chapters'][chapters_names[rst_dir_name]] = OrderedDict()
     everything_config['chapters'][chapters_names[rst_dir_name]][rst_dir_name+'/'+rst_fname] = mod_config
 
     xml_fname = json_xml_path+rst_fname+".xml"
@@ -572,7 +586,7 @@ if __name__ == '__main__':
   everything_config = sort_by_keys(everything_config)
 
   # out_fname = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/quicksort_json_gen.json"
-  out_fname = os.path.abspath('json_xml/quicksort_json_gen.json')
+  out_fname = os.path.abspath('json_xml/Everything_gen.json')
   with open(out_fname, 'w') as outfile:
     json.dump(everything_config, outfile)
 
