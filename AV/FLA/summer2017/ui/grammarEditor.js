@@ -72,8 +72,14 @@ $(document).ready(function () {
   
   // handler for grammar editing
   var matrixClickHandler = function(index, index2) {
-    if ((row != index || col != index2) && fi) {
+    console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi);
+
+    //2017 Summer COMMENT: I am Very Confused about the reason for this line and the need for both index and row, index2 and col
+    // if ((row != index || col != index2) && fi) {
+
+    if (fi) {
       var input = fi.val();
+      console.log("fi.val(): " + fi.val());
       var regex = new RegExp(emptystring, g);
       input = input.replace(regex, "");
       input = input.replace(regex, "!");
@@ -82,19 +88,22 @@ $(document).ready(function () {
       }
       if (input === "" && col === 0) {
         alert('Invalid left-hand side.');
-        return;
       } 
       if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
         alert('This production already exists.');
-        return;
       }
       fi.remove();
       m.value(row, col, input);
       arr[row][col] = input;
       layoutTable(m, 2);
     }
-  
-    if ($('.jsavmatrix').hasClass('deleteMode') && index !== lastRow) {
+    console.log(arr);
+
+    if ($('.jsavmatrix').hasClass('deleteMode')) {
+      if(index === 0){
+        alert("Can't delete the last row");
+        return;
+      }
       // recreates the matrix when deleting a row...
       arr.splice(index, 1);
       lastRow--;
@@ -106,8 +115,20 @@ $(document).ready(function () {
         return;
       }
       focus(index, index2);
+    } else if ($('.jsavmatrix').hasClass('addrowMode')) {
+      addRow(index);
     }
+
   };
+
+
+  function addRow(index){
+    var newProduction = addProduction(index);
+    layoutTable(m);
+    // if (newProduction) {
+    //   focus(index + 1, 0);
+    // }
+  }
 
   function focus(index, index2) {
     row = index; col = index2;
@@ -134,17 +155,17 @@ $(document).ready(function () {
         var regex = new RegExp(emptystring, g);
         input = input.replace(regex, "");
         input = input.replace(regex, "!");
-        if (input === "" && index2 === 2) {
-          input = emptystring;
-        }
-        if (input === "" && col === 0) {
-          alert('Invalid left-hand side.');
-          return;
-        } 
-        if (index2 == 2 && _.find(arr, function(x) { return x[0] == arr[index][0] && x[2] == input && arr.indexOf(x) !== index;})) {
-          alert('This production already exists.');
-          return;
-        }
+        // if (input === "" && index2 === 2) {
+        //   input = emptystring;
+        // }
+        // if (input === "" && col === 0) {
+        //   alert('Invalid left-hand side.');
+        //   return;
+        // } 
+        // if (index2 == 2 && _.find(arr, function(x) { return x[0] == arr[index][0] && x[2] == input && arr.indexOf(x) !== index;})) {
+        //   alert('This production already exists.');
+        //   return;
+        // }
         fi.remove();
         m.value(index, index2, input);
         arr[index][index2] = input;
@@ -156,11 +177,7 @@ $(document).ready(function () {
           }
           else {
             // adding a new production
-            var newProduction = addProduction(index);
-            layoutTable(m);
-            if (newProduction) {
-              focus(index + 1, 0);
-            }
+            addRow(index);
           }
           break;
         case 37:
@@ -1530,14 +1547,22 @@ $(document).ready(function () {
   var editMode = function() {
     $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
+    $('.jsavmatrix').removeClass("addrowMode");
     $("#mode").html('Editing');
   };
   var deleteMode = function() {
     $('#firstinput').remove();
     $('.jsavmatrix').addClass("deleteMode");
+    $('.jsavmatrix').removeClass("addrowMode");
     $('.jsavmatrix').removeClass("editMode");
     $("#mode").html('Deleting');
   };
+  var addrowMode = function(){
+    $('.jsavmatrix').addClass("addrowMode");
+    $('.jsavmatrix').removeClass("deleteMode");
+    $('.jsavmatrix').removeClass("editMode");
+    $("#mode").html('Adding');
+  }
 
   //=================================
   // Transformations (automatic)
@@ -3274,6 +3299,7 @@ $(document).ready(function () {
   });
   $('#editbutton').click(editMode);
   $('#deletebutton').click(deleteMode);
+  $('#addrowbutton').click(addrowMode)
   $('#bfpbutton').click(bfParse);
   $('#llbutton').click(llParse);
   $('#slrbutton').click(slrParse);
