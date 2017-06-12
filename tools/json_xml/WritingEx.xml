@@ -5,24 +5,24 @@
     resource_name='Recursion Programming Exercise: Cannonballs'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw></section><section ids="recursion-programming-exercise-check-palindrome" names="recursion\ programming\ exercise:\ check\ palindrome"><title>Recursion Programming Exercise: Check Palindrome</title><raw format="xml" xml:space="preserve"><extertool
     resource_name='Recursion Programming Exercise: Check Palindrome'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw></section><section ids="recursion-programming-exercise-subset-sum" names="recursion\ programming\ exercise:\ subset\ sum"><title>Recursion Programming Exercise: Subset Sum</title><raw format="xml" xml:space="preserve"><extertool
     resource_name='Recursion Programming Exercise: Subset Sum'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw></section><section ids="recursion-programming-exercise-pascal-triangle" names="recursion\ programming\ exercise:\ pascal\ triangle"><title>Recursion Programming Exercise: Pascal Triangle</title><raw format="xml" xml:space="preserve"><extertool
     resource_name='Recursion Programming Exercise: Pascal Triangle'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw></section></document>

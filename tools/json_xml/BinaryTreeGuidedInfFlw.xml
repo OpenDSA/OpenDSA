@@ -35,6 +35,6 @@ than just a single path, but not all of the nodes.</paragraph><raw format="xml" 
     resource_name='Binary Search Tree Small Count Exercise'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw><raw format="xml" xml:space="preserve"><odsascript>AV/BTRecurTutor/IneffBinaryTreeRangeCON.js</odsascript></raw></section></document>

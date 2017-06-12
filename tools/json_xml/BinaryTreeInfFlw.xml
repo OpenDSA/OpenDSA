@@ -24,7 +24,7 @@ each recursive call must adjust that value (by adding one).</paragraph></section
     resource_name='Binary Tree Set Depth Exercise'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw></section><section ids="collect-and-return" names="collect-and-return"><title>Collect-and-return</title><paragraph>Collect-and-return requires that we communicate information back up
 the tree to the caller.
@@ -55,19 +55,19 @@ Another common mistake is to not return a value.</paragraph><raw format="xml" xm
     resource_name='Binary Tree Check Sum Exercise'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw></section><section ids="binary-tree-leaf-nodes-count-exercise" names="binary\ tree\ leaf\ nodes\ count\ exercise"><title>Binary Tree Leaf Nodes Count Exercise</title><raw format="xml" xml:space="preserve"><extertool
     resource_name='Binary Tree Leaf Nodes Count Exercise'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw></section><section ids="binary-tree-sum-nodes-exercise" names="binary\ tree\ sum\ nodes\ exercise"><title>Binary Tree Sum Nodes Exercise</title><raw format="xml" xml:space="preserve"><extertool
     resource_name='Binary Tree Sum Nodes Exercise'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw></section><section ids="combining-information-flows" names="combining\ information\ flows"><title>Combining Information Flows</title><paragraph>Many functions require both that information be passed in, and that
 information be passed back.
@@ -82,7 +82,7 @@ Return True if and only if one of the children returns True.</paragraph></sectio
     resource_name='Binary Tree Check Value Exercise'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw></section><section ids="combination-problems" names="combination\ problems"><title>Combination Problems</title><paragraph>Slightly more complicated problems combine what we have seen so far.
 Information passing down the tree changes from node to node.
@@ -90,18 +90,18 @@ Data passed back up the tree uses the collect-and-return paradigm.</paragraph></
     resource_name='Binary Tree Height Exercise'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw></section><section ids="binary-tree-get-difference-exercise" names="binary\ tree\ get\ difference\ exercise"><title>Binary Tree Get Difference Exercise</title><raw format="xml" xml:space="preserve"><extertool
     resource_name='Binary Tree Get Difference Exercise'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw></section><section ids="binary-tree-has-path-sum-exercise" names="binary\ tree\ has\ path\ sum\ exercise"><title>Binary Tree Has Path Sum Exercise</title><raw format="xml" xml:space="preserve"><extertool
     resource_name='Binary Tree Has Path Sum Exercise'
     resource_type="external_assignment"
     learning_tool="code-workout"
-    points="1">
+    points="2.0">
 </extertool>
 </raw><raw format="xml" xml:space="preserve"><odsascript>AV/Binary/BinaryTreeMistakesCON.js</odsascript></raw></section></document>
