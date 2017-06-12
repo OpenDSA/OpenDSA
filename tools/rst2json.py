@@ -17,12 +17,41 @@ __author__ = 'Hossameldin Shahin'
 import sys, os
 import json
 import xmltodict
+import re
 from docutils import nodes, utils
 from docutils.parsers.rst import Directive
 from docutils.parsers.rst import directives, states
 from collections import OrderedDict
 from docutils.core import publish_parts
+from optparse import OptionParser
 
+folder_names = {
+    "Background": "Introduction and Mathematical Background",
+    "Biography": "Biographies",
+    "Tutorials": "Programming Tutorials",
+    "Design": "Design I and II",
+    "Pointers": "Pointers",
+    "Searching": "Searching I and II",
+    "AlgAnal": "Algorithm Analysis",
+    "List": "Linear Structures",
+    "RecurTutor": "Recursion",
+    "Binary": "Binary Trees",
+    "BTRecurTutor": "Binary Trees Recursion",
+    "Sorting": "Sorting",
+    "Files": "File Processing",
+    "Hashing": "Hashing",
+    "MemManage": "Memory Management",
+    "Indexing": "Indexing",
+    "General": "General Trees",
+    "Graph": "Graphs",
+    "PL": "Programming Languages",
+    "Spatial": "Spatial Data Structures",
+    "SeniorAlgAnal": "Advanced Analysis",
+    "Development": "Under Development",
+    "SearchStruct": "Search Structures",
+    "Bounds": "Lower Bounds",
+    "NP": "Limits to Computing"
+    }
 
 avembed_element= '''\
 <avembed
@@ -458,6 +487,27 @@ def absoluteFilePaths(directory):
 
   return files
 
+def add_header(config):
+  '''
+  '''
+  config['title'] = "OpenDSA entire modules"
+  config['desc'] = "OpenDSA entire modules"
+  config['build_dir'] = "Books"
+  config['code_dir'] = "SourceCode/"
+  config['code_lang'] = {
+                        "Java": {"ext": ["java"], "label": "Java", "lang": "java"},
+                        "Processing": {"ext": ["pde"],"label": "Processing", "lang": "java"},
+                        "Java_Generic": {"ext": ["java"],"label": "Java (Generic)","lang": "java"},
+                        "C++": {"ext": ["cpp","h"],"label": "C++","lang": "C++"}
+                        }
+  config['lang'] = "en"
+  config['build_JSAV'] = False
+  config['suppress_todo'] = False
+  config['dispModComp'] = False
+  config['glob_exer_options'] = {"JXOP-debug": "true"}
+
+  return config
+
 def add_chapter(config, chapter_name):
   '''
   '''
@@ -471,24 +521,26 @@ def add_chapter(config, chapter_name):
                 "long_name": "OpenDSA Content Status",
                 "sections": {}
             }
-        }
+          }
 
   elif chapter_name == "Appendix":
     config["chapters"]["Appendix"] = {
-            "Glossary": {
-                "long_name": "Glossary",
-                "sections": {}
-            },
-            "Bibliography": {
-                "long_name": "Bibliography",
-                "sections": {}
-            }
+        "Glossary": {
+            "long_name": "Glossary",
+            "sections": {}
+        },
+        "Bibliography": {
+            "long_name": "Bibliography",
+            "sections": {}
         }
+      }
 
   return config
 
 def sort_by_keys(dct,):
   '''
+  Sort dict recursively by keys. Used during development to compare
+  the generated file with the original file
   '''
   new_dct = OrderedDict({})
   for key, val in sorted(dct.items(), key=lambda (key, val): key):
@@ -498,63 +550,68 @@ def sort_by_keys(dct,):
           new_dct[key] = val
   return new_dct
 
+def remove_markup(source):
+  '''
+  remove unnecessary markups in the rst files
+  '''
+  source = source.replace(' --- ','')
+  source = source.replace('|---|','')
+  source = re.sub(r"\:[a-zA-Z]+\:", '',source, flags=re.MULTILINE)
+  source = re.sub(r"\[.+\]\_", '',source, flags=re.MULTILINE)
+
+  return source
+
+def reorder_orig_config():
+  '''
+  '''
+  orig_config_path = os.path.abspath('tools/json_xml/Everything.json')
+  with open(orig_config_path) as data_file:
+      orig_config_fname = json.load(data_file)
+
+  orig_config_fname = sort_by_keys(orig_config_fname)
+
+  with open(orig_config_path, 'w') as outfile:
+    json.dump(orig_config_fname, outfile)
+
+
+def save_debug_files(xml_str, json_str, rst_fname):
+  '''
+  '''
+  json_xml_path = os.path.abspath('tools/json_xml')
+
+  xml_fname = json_xml_path+'/'+rst_fname+".xml"
+  json_fname = json_xml_path+'/'+rst_fname+".json"
+
+  with open(xml_fname, 'w') as outfile:
+    outfile.write(xml_str.encode('utf8'))
+
+  with open(json_fname, 'w') as outfile:
+    json.dump(json_str, outfile)
+
 
 if __name__ == '__main__':
 
+  parser = OptionParser()
+  parser.add_option("-d", "--dev", help="Causes rst2json.py to run in development mode",dest="dev_mode", action="store_true", default=False)
+  (options, args) = parser.parse_args()
+
   register()
 
-  folder_names = {
-      "Background": "Introduction and Mathematical Background",
-      "Biography": "Biographies",
-      "Tutorials": "Programming Tutorials",
-      "Design": "Design I and II",
-      "Pointers": "Pointers",
-      "Searching": "Searching I and II",
-      "AlgAnal": "Algorithm Analysis",
-      "List": "Linear Structures",
-      "RecurTutor": "Recursion",
-      "Binary": "Binary Trees",
-      "BTRecurTutor": "Binary Trees Recursion",
-      "Sorting": "Sorting",
-      "Files": "File Processing",
-      "Hashing": "Hashing",
-      "MemManage": "Memory Management",
-      "Indexing": "Indexing",
-      "General": "General Trees",
-      "Graph": "Graphs",
-      "PL": "Programming Languages",
-      "Spatial": "Spatial Data Structures",
-      "SeniorAlgAnal": "Advanced Analysis",
-      "Development": "Under Development",
-      "SearchStruct": "Search Structures",
-      "Bounds": "Lower Bounds",
-      "NP": "Limits to Computing"
-      }
-
-  # rst_dir = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/RST/en/"
-  rst_dir = os.path.abspath('../RST/en/')
-  # json_xml_path = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/"
-  json_xml_path = os.path.abspath('json_xml/')
+  rst_dir = os.path.abspath('RST/en/')
   execluded_files = ['Intro', 'Status', 'Bibliography', 'Glossary', 'ToDo',
                      'cs342_uwosh', 'Quicksort_exs']
   files = absoluteFilePaths(rst_dir)
 
   everything_config = OrderedDict()
+  everything_config = add_header(everything_config)
   everything_config['chapters'] = OrderedDict()
-
   everything_config = add_chapter(everything_config, "Preface")
 
   for x in files:
     with open(x, 'r') as rstfile:
       source=rstfile.read()
 
-    source = source.replace(':numref:', '').replace(':term:', '').replace(':dfn:', '')
-    source = source.replace(':chap:', '').replace(':ref:', '').replace(':num:', '')
-    source = source.replace(':abbr:','').replace(':eq:', '')
-    source = source.replace('[KnuthV3]_','').replace(':index:','').replace('|---|','')
-    source = source.replace(' --- ','').replace('[Tarjan75]_','').replace('[GalilItaliano91]_','')
-    source = source.replace('[Booch]_','').replace('[Bloch]_','').replace('[Bacon]_', '')
-    source = source.replace('[Gauss65]_','')
+    source = remove_markup(source)
 
     rst_fname = os.path.basename(x).partition('.')[0]
     if rst_fname in execluded_files:
@@ -574,41 +631,20 @@ if __name__ == '__main__':
     mod_json = xmltodict.parse(rst_parts['whole'])
     mod_config = extract_mod_config(mod_json)
 
-    # print(rst_dir_name)
-    # print(rst_fname)
     if folder_names[rst_dir_name] not in everything_config['chapters'].keys():
       everything_config['chapters'][folder_names[rst_dir_name]] = OrderedDict()
     everything_config['chapters'][folder_names[rst_dir_name]][rst_dir_name+'/'+rst_fname] = mod_config
 
-    xml_fname = json_xml_path+'/'+rst_fname+".xml"
-
-    # if rst_fname == 'StringSearchBoyerMoore':
-    #   print(rst_parts['whole'])
-
-    with open(xml_fname, 'w') as outfile:
-      outfile.write(rst_parts['whole'].encode('utf8'))
-
-    json_fname = json_xml_path+'/'+rst_fname+".json"
-    with open(json_fname, 'w') as outfile:
-      json.dump(mod_json, outfile)
-
+    if options.dev_mode:
+      save_debug_files(rst_parts['whole'], mod_json, rst_fname)
 
   everything_config = add_chapter(everything_config, "Appendix")
-  everything_config = sort_by_keys(everything_config)
+  if options.dev_mode:
+    everything_config = sort_by_keys(everything_config)
 
-  # out_fname = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/quicksort_json_gen.json"
-  out_fname = os.path.abspath('json_xml/Everything_gen.json')
+  out_fname = os.path.abspath('config/Everything_generated.json')
   with open(out_fname, 'w') as outfile:
     json.dump(everything_config, outfile)
 
-  # orig_config_path = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/Everything.json"
-  orig_config_path = os.path.abspath('json_xml/Everything.json')
-  with open(orig_config_path) as data_file:
-      orig_config_fname = json.load(data_file)
-
-  orig_config_fname = sort_by_keys(orig_config_fname)
-
-  with open(orig_config_path, 'w') as outfile:
-    json.dump(orig_config_fname, outfile)
-
-
+  if options.dev_mode:
+    reorder_orig_config()
