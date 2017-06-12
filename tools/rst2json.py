@@ -131,7 +131,7 @@ class extrtoolembed(Directive):
     if 'learning_tool' not in self.options or self.options['learning_tool'] == '':
       self.options['learning_tool'] = 'code-workout'
     if 'points' not in self.options or self.options['points'] == '':
-      self.options['points'] = 1
+      self.options['points'] = 2.0
 
     res = extertool_element % (self.options)
     return [nodes.raw('', res, format='xml')]
@@ -291,10 +291,10 @@ def extract_mod_config(mod_json):
   one_sec_name = None
 
   for k, v in mod_json['document'].iteritems():
-    if k == 'title':
-      mod_config['long_name'] = v
+    if k == '@title':
+      mod_config['long_name'] = v.replace('\\','')
 
-    # 'subtitle' is uded when the rst file contains only one section
+    # 'subtitle' is used when the rst file contains only one section
     if k == 'subtitle':
       one_sec_only = True
       one_sec_name = v['#text']
@@ -312,6 +312,16 @@ def extract_mod_config(mod_json):
         for sub_sec_v in v:
           if 'raw' in sub_sec_v.keys():
             mod_config['sections'][one_sec_name].update(extract_exs_config(sub_sec_v['raw']))
+
+          # Sometimes exercises are defined under a topic directive
+          if 'topic' in sub_sec_v.keys() and isinstance(sub_sec_v['topic'], list):
+            for topic in sub_sec_v['topic']:
+              if 'raw' in topic.keys():
+                mod_config['sections'][one_sec_name].update(extract_exs_config(topic['raw']))
+          elif 'topic' in sub_sec_v.keys() and isinstance(sub_sec_v['topic'], dict):
+              if 'raw' in sub_sec_v['topic'].keys():
+                mod_config['sections'][one_sec_name].update(extract_exs_config(sub_sec_v['topic']['raw']))
+
       elif isinstance(v, dict):
         if 'raw' in v.keys():
           mod_config['sections'][one_sec_name].update(extract_exs_config(v['raw']))
@@ -493,7 +503,7 @@ if __name__ == '__main__':
 
   register()
 
-  chapters_names = {
+  folder_names = {
       "Background": "Introduction and Mathematical Background",
       "Biography": "Biographies",
       "Tutorials": "Programming Tutorials",
@@ -525,7 +535,8 @@ if __name__ == '__main__':
   rst_dir = os.path.abspath('../RST/en/')
   # json_xml_path = "/home/hshahin/workspaces/OpenDSA-DevStack/OpenDSA/tools/json_xml/"
   json_xml_path = os.path.abspath('json_xml/')
-  execluded_files = ['Intro', 'Status', 'Bibliography', 'Glossary', 'ToDo', 'cs342_uwosh']
+  execluded_files = ['Intro', 'Status', 'Bibliography', 'Glossary', 'ToDo',
+                     'cs342_uwosh', 'Quicksort_exs']
   files = absoluteFilePaths(rst_dir)
 
   everything_config = OrderedDict()
@@ -550,7 +561,7 @@ if __name__ == '__main__':
       continue
 
     rst_dir_name = x.split('/')[-2]
-    if rst_dir_name not in chapters_names.keys():
+    if rst_dir_name not in folder_names.keys():
       continue
 
     print('Processing '+rst_dir_name+'/'+rst_fname+'.rst')
@@ -565,9 +576,9 @@ if __name__ == '__main__':
 
     # print(rst_dir_name)
     # print(rst_fname)
-    if chapters_names[rst_dir_name] not in everything_config['chapters'].keys():
-      everything_config['chapters'][chapters_names[rst_dir_name]] = OrderedDict()
-    everything_config['chapters'][chapters_names[rst_dir_name]][rst_dir_name+'/'+rst_fname] = mod_config
+    if folder_names[rst_dir_name] not in everything_config['chapters'].keys():
+      everything_config['chapters'][folder_names[rst_dir_name]] = OrderedDict()
+    everything_config['chapters'][folder_names[rst_dir_name]][rst_dir_name+'/'+rst_fname] = mod_config
 
     xml_fname = json_xml_path+'/'+rst_fname+".xml"
 
