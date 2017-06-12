@@ -3,12 +3,14 @@
 .. Copyright (c) 2012-13 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Tom Naps and Sam Micka
 
 Rabin-Karp String Search Algorithm [Draft]
 ===========================================
 
+Rabin-Karp String Search Algorithm [Draft]
+------------------------------------------
 ..
 ..
 
@@ -23,7 +25,7 @@ integer :math:`\hat{c}` in the range :math:`0 \ldots c - 1`.  Then a
 
 .. math::
 
- \widehat{s_0} \times C^{n-1} + \widehat{s_1} \times C^{n-2} + \ldots + \widehat{s_{n-2}} \times C + \widehat{s_{n-1}} \times C^0 
+ \widehat{s_0} \times C^{n-1} + \widehat{s_1} \times C^{n-2} + \ldots + \widehat{s_{n-2}} \times C + \widehat{s_{n-1}} \times C^0
 
 Suppose that we call this a string's "magic number".  In effect it
 associates each string with a unique number in the base :math:`C`
@@ -36,7 +38,7 @@ condition.
 
 Slideshow for Horner's Method algorithm for computing Rabin-Karp "magic number" for a string
 
-.. avembed:: AV/Development/Rabin_Karp_Horner_Slideshow.html ss 
+.. avembed:: AV/Development/Rabin_Karp_Horner_Slideshow.html ss
 
 To check your understanding of this "magic number" computation try the
 following exercise in using Horner's Method to compute a string's

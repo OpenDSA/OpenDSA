@@ -12,6 +12,9 @@
 Writing JUnit Tests
 ===================
 
+Writing JUnit Tests
+-------------------
+
 We have reviewed good design for test code and how to design modular and
 meaningful test code. This tutorial will show a basic series of tests on a
 binary search tree.

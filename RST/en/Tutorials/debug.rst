@@ -13,6 +13,9 @@
 Debugging In Eclipse
 ====================
 
+Debugging In Eclipse
+~~~~~~~~~~~~~~~~~~~~
+
 In this tutorial we will show basic debugging steps. To begin debugging a
 program, select the Debug mode by clicking the icon circled in blue below.
 
@@ -45,19 +48,19 @@ Debugging Terms
 1. Resume - Resuming will run the code until another breakpoint is hit or until
 the program finishes (see Figure 2 for icon).
 
-2. Step Into - Stepping into will drop you into the next function called. For 
+2. Step Into - Stepping into will drop you into the next function called. For
 example, stepping into the bst.add() call in the above image will take you to
 the bst class and inside the add method (see Figure 2 for icon).
 
 3. Step Over - Stepping Over will execute the current line of code and progress
 to the next line of code, stopping there (see Figure 2 for icon).
 
-4. Step Return - Code will be executed until the next return statement (see 
+4. Step Return - Code will be executed until the next return statement (see
 Figure 2 for icon).
 
-5. Breakpoint - A breakpoint is a stopping point in your code. When you set a 
+5. Breakpoint - A breakpoint is a stopping point in your code. When you set a
 breakpoint, the debugger will stop execution anytime it reaches there. You may
-add a breakpoint by clicking on the left hand side bar of the Eclipse code 
+add a breakpoint by clicking on the left hand side bar of the Eclipse code
 window (see Figure 1).
 
 .. odsafig:: Images/DebugList.png
@@ -85,13 +88,13 @@ In other words, for a region of memory, what does it represent and what informat
 does it contain?
 Doing so can be difficult due to a combination of factors.
 So how do we meaningfully analyze a chunk of bytes?
-Consider the following code. 
+Consider the following code.
 
 .. codeinclude:: Java/Tutorials/MainByteArrayDebug.java
 
 This program spawns a 1000 byte array and then places 1 of
 27 characters chosen randomly in a position randomly chosen in one of the 1000
-places. Suppose you wanted to look at the contents of the byte array. How would 
+places. Suppose you wanted to look at the contents of the byte array. How would
 you do this?
 Eclipse let's do it with a memory dump in the variable window
 (shown in Figure 1).

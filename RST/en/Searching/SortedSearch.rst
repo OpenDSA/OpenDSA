@@ -358,7 +358,7 @@ algorithm instead.
 One possibility is that we know something about the distribution of
 the data in the array.
 If each position in **L** is equally likely to hold :math:`K`
-(equivalently, the data are 
+(equivalently, the data are
 well distributed along the full key range), then an
 :ref:`interpolation search <interpolation search> <SortedSearch>`
 is :math:`\Theta(\log \log n)` in the average case.
@@ -373,10 +373,6 @@ Finally, if we know all search requests in advance, we might prefer to
 sort the list by frequency and do linear search in extreme search
 distributions, or use a
 :ref:`self-organizing list <self-organizing list> <SelfOrg>`.
-
-
-
-
 
 
 Interpolation and Quadratic Binary Search
@@ -423,7 +419,7 @@ The next check is made based on the new computation.
 This proceeds until either the desired record is found, or the array
 is narrowed until no records are left.
 
-A variation on dictionary search is known as 
+A variation on dictionary search is known as
 :math:`Quadratic Binary Search` (QBS),
 and we will analyze this in detail because its analysis is easier than
 that of the general dictionary search.
@@ -485,7 +481,7 @@ We now show that this is the same as
    &=& 1 \mathbf{P}_1 + 2 \mathbf{P}_2 + 3 \mathbf{P}_3 + \cdots +
        \sqrt{n} \mathbf{P}_{\sqrt{n}}
 
-We require at least two probes to set the bounds, so the cost is 
+We require at least two probes to set the bounds, so the cost is
 
 .. math::
 
@@ -545,7 +541,7 @@ in the two algorithms might differ by more than the log of the log of
 the input size.
 
 For our two algorithms, let us look further and check the actual
-number of comparisons used. 
+number of comparisons used.
 For binary search, we need about :math:`\log n-1` total comparisons.
 Quadratic binary search requires about :math:`2.4 \log \log n`
 comparisons.
