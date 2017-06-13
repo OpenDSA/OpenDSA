@@ -3,12 +3,12 @@
   "use strict";
 
   var av, // The JSAV object
-      nullNode, // Used to trace the node pointed by 'third' pointer.
-      johnNode, // Used to trace the node pointed by 'first' pointer.
-      samNode, // Used to trace the node pointed by 'second' pointer.
-      first,
-      second,
-      third,
+      nullNode, // Used to trace the node pointed by 'empRef' pointer.
+      johnNode, // Used to trace the node pointed by 'johnRef' pointer.
+      samNode, // Used to trace the node pointed by 'samRef' pointer.
+      empRef,
+      johnRef,
+      samRef,
       selected_pointer, // Remember pointer object that has been selected by user for swap
       selected_node; // Remember node that has been selected by user for swap
 
@@ -64,19 +64,20 @@
         // Handler for clicking on a pointer object
     pclick: function(pointer) {
       if (selected_pointer === null) { // No currently selected pointer object
-        if (selected_node !== null) { // Release previously selected node value
-          selected_node.removeClass(0, "bgColor");
-          selected_node = null;
-        }
         selected_pointer = pointer;
-        selected_pointer.element.addClass("highlight");
+        selected_pointer.element.addClass("highlightpointer");
       } else if (selected_pointer === pointer) { // Re-clicked slected pointer
-        selected_pointer.element.removeClass("highlight");
+        selected_pointer.element.removeClass("highlightpointer");
         selected_pointer = null;
       } else { // Reselecting a new pointer
-        selected_pointer.element.removeClass("highlight");
+        selected_pointer.element.removeClass("highlightpointer");
         selected_pointer = pointer;
-        selected_pointer.element.addClass("highlight");
+        selected_pointer.element.addClass("highlightpointer");
+      }
+
+      if(selected_node !== null){
+        selected_node = null;
+        selected_node.removeClass([0], "highlightbox");
       }
       pointerEX2PRO.userInput = true;
     },
@@ -86,52 +87,41 @@
         if(selected_pointer.target() !== this){
           pointerEX2PRO.setPointer(selected_pointer.element.text(), this, selected_pointer);
         }
-          selected_pointer.removeClass("highlight");
+          selected_pointer.removeClass("highlightpointer");
           selected_pointer = null;
+      } else {
+        if(selected_node !== null){
+          selected_node.removeClass([0], "highlightbox");
+          if(selected_node !== this){
+            selected_node = this;
+            selected_node.addClass([0], "highlightbox");
+          } else {
+            selected_node = null;
+          }
+        } else {
+          selected_node = this;
+          selected_node.addClass([0], "highlightbox");
+        }
       }
 
       pointerEX2PRO.userInput = true;
     },
 
     setSalaryClickHandler: function(){
-      if(selected_pointer !== null){
-        if(selected_pointer.target() === johnNode){
-          johnNode[0].label("John, 3000")
-        }
-          selected_pointer.removeClass("highlight");
-          selected_pointer = null;
-      }
+      johnNode.value(0, "John, 4000");
       pointerEX2PRO.userInput = true;
     },
-
-    labelClickHandler: function(){
-      if(selected_pointer !== null){
-        if(this.hasClass("samLabel")){
-          if(selected_pointer.target() !== samNode){
-            pointerEX2PRO.setPointer(selected_pointer.element.text(), samNode, selected_pointer);
-          }
-        } else if(this.hasClass("johnLabel")){
-          if(selected_pointer.target() !== johnNode){
-            pointerEX2PRO.setPointer(selected_pointer.element.text(), johnNode, selected_pointer);
-          }
-        }
-          selected_pointer.removeClass("highlight");
-          selected_pointer = null;
-      }
-      pointerEX2PRO.userInput = true;
-    },
-
 
 
       // Reinitialize the exercise.
     reset: function() {
       // JSAV-List position.
-      var leftMargin = 50,
-          topMargin = 250;
+      var leftMargin = 70,
+          topMargin = 150;
       // Reset the value of global variables.
       pointerEX2PRO.userInput = false;
-      selected_node = null;
       selected_pointer = null;
+      selected_node = null;
 
       // Clear the old JSAV canvas.
       if ($("#PointerEX2PRO")) { $("#PointerEX2PRO").empty(); }
@@ -144,24 +134,23 @@
       av.code(codes);
 
       var width = 60;
-      var wGap = 170;
 
       var topP = topMargin;
-
       var johnP = leftMargin;
-      var samP = johnP + wGap;
-      var nullP = samP + wGap;
+      var samP = johnP + 170;
+      var nullP = samP + 170;
 
       // Create nodes
       nullNode = av.ds.array([""], {top: topP, left: nullP});
       johnNode = av.ds.array(["John, 1000"], {top: topP, left: johnP});
       samNode = av.ds.array(["Sam, 2000"], {top: topP, left: samP});
-      nullNode.css(0, {"box-shadow": "none", "border-width": 0, "background-color": "transparent"});
+      nullNode.addClass([0], "nullBox"); //remove null node's boarder
+      // johnNode.value(0, "John, 3000");
 
       // Create pointers
-      first = pointerEX2PRO.setPointer("first", johnNode);
-      second = pointerEX2PRO.setPointer("second", samNode);
-      third = pointerEX2PRO.setPointer("thrid", nullNode);
+      johnRef = pointerEX2PRO.setPointer("first", johnNode);
+      samRef = pointerEX2PRO.setPointer("second", samNode);
+      empRef = pointerEX2PRO.setPointer("third", nullNode);
 
       av.displayInit();
       av.recorded();
@@ -172,7 +161,6 @@
 
     // Initialise the exercise
     initJSAV: function() {
-
       pointerEX2PRO.reset();
 
       $("#setSalary").click(function() {
@@ -189,11 +177,11 @@
     checkAnswer: function() {
       if(nullNode.llist_pleft != null ^ nullNode.llist_pright != null){
         if(nullNode.llist_pleft != null){
-            if(nullNode.llist_pleft.element.text() != "first"){
+            if(nullNode.llist_pleft.element.text() != "johnRef"){
               return false;
             }
           } else {
-            if(nullNode.llist_pright.element.text() != "first"){
+            if(nullNode.llist_pright.element.text() != "johnRef"){
               return false;
             }
           }
@@ -203,11 +191,11 @@
 
         if(johnNode.llist_pleft != null ^ johnNode.llist_pright != null){
           if(johnNode.llist_pleft != null){
-              if(johnNode.llist_pleft.element.text() != "third"){
+              if(johnNode.llist_pleft.element.text() != "empRef"){
                 return false;
               }
             } else {
-              if(johnNode.llist_pright.element.text() != "third"){
+              if(johnNode.llist_pright.element.text() != "empRef"){
                 return false;
               }
             }
@@ -217,11 +205,11 @@
 
           if(samNode.llist_pleft != null ^ samNode.llist_pright != null){
             if(samNode.llist_pleft != null){
-                if(samNode.llist_pleft.element.text() != "second"){
+                if(samNode.llist_pleft.element.text() != "samRef"){
                   return false;
                 }
               } else {
-                if(samNode.llist_pright.element.text() != "second"){
+                if(samNode.llist_pright.element.text() != "samRef"){
                   return false;
                 }
               }

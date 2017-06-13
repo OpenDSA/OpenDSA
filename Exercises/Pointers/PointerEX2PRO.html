@@ -15,17 +15,24 @@
         min-height: 80px !important;
       }
       #PointerEX2PRO .nullBox {      /* For the null nodes */
-        border: 0;
         box-shadow: none;
+        border-width: 0;
+        background-color: transparent;
       }
       #PointerEX2PRO .jsavpointer {
         width: 40px;
         text-align: center;
         cursor: pointer;
       }
-      #PointerEX2PRO .highlight {      /* For the pointer */
+      #PointerEX2PRO .highlightpointer {      /* For the pointer */
         background-color: yellow;
       }
+
+      #PointerEX2PRO .highlightbox {      /* For the pointer */
+        background-color: yellow;
+      }
+
+
 
     </style>
   </head>
@@ -38,17 +45,17 @@
       </div>
 
       <div class="problems">
-        <div id="pointerEX2PROp"> <!-- Supresses answer box -->
+        <div id="PointerEX2PROp"> <!-- Supresses answer box -->
           <p class="problem">Your task in this exercise is to show the
             behavior for some code.</p>
           <div class="question">
             <p>The following lines of code will set up the picture
             below:<br/></p>
-            <tt>Employee first = new Employee ("John", 1000);</tt><br/>
+            <tt>Employee first = new Employee("John", 1000);</tt><br/>
             <tt>Employee second = new Employee("Sam", 2000);</tt><br/>
             <tt>Employee third;</tt><br/>
-            <p>Now, modify the draw below to show the effects of
-            executing the following lines of code.<br/> What is the result of the following code?</p>
+            <p>Now, modify the picture below to show the effects of
+            executing the following lines of code.</p>
             <div id="PointerEX2PRO" class="jsavcanvas"></div>
             <input id="reset" type="button" value="Reset" />
             <input id="setSalary" type="button" value="setSalary(3000)" />

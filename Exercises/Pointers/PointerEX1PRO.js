@@ -9,8 +9,8 @@
       empRef,
       johnRef,
       samRef,
-      selected_pointer, // Remember pointer object that has been selected by user for swap
-      selected_node; // Remember node that has been selected by user for swap
+      selected_pointer; // Remember pointer object that has been selected by user for swap
+
 
   var pointerEX1PRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
@@ -64,10 +64,6 @@
         // Handler for clicking on a pointer object
     pclick: function(pointer) {
       if (selected_pointer === null) { // No currently selected pointer object
-        if (selected_node !== null) { // Release previously selected node value
-          selected_node.removeClass(0, "bgColor");
-          selected_node = null;
-        }
         selected_pointer = pointer;
         selected_pointer.element.addClass("highlight");
       } else if (selected_pointer === pointer) { // Re-clicked slected pointer
@@ -126,11 +122,10 @@
       // Reinitialize the exercise.
     reset: function() {
       // JSAV-List position.
-      var leftMargin = 50,
-          topMargin = 250;
+      var leftMargin = 70,
+          topMargin = 150;
       // Reset the value of global variables.
       pointerEX1PRO.userInput = false;
-      selected_node = null;
       selected_pointer = null;
 
       // Clear the old JSAV canvas.
@@ -154,7 +149,7 @@
       nullNode = av.ds.array([""], {top: topP, left: nullP});
       johnNode = av.ds.array(["John, 1000"], {top: topP, left: johnP});
       samNode = av.ds.array(["Sam, 2000"], {top: topP, left: samP});
-      nullNode.css(0, {"box-shadow": "none", "border-width": 0, "background-color": "transparent"});
+      nullNode.addClass([0], "nullBox"); //remove null node's boarder
 
       // Create pointers
       empRef = pointerEX1PRO.setPointer("empRef", nullNode);
@@ -170,7 +165,6 @@
 
     // Initialise the exercise
     initJSAV: function() {
-
       pointerEX1PRO.reset();
 
       $("#makenull").click(function() {
