@@ -79,7 +79,6 @@ $(document).ready(function () {
 
     if (fi) {
       var input = fi.val();
-      console.log("fi.val(): " + fi.val());
       var regex = new RegExp(emptystring, g);
       input = input.replace(regex, "");
       input = input.replace(regex, "!");
@@ -97,8 +96,6 @@ $(document).ready(function () {
       arr[row][col] = input;
       layoutTable(m, 2);
     }
-    console.log(arr);
-
     if ($('.jsavmatrix').hasClass('deleteMode')) {
       if(index === 0){
         alert("Can't delete the last row");
@@ -809,10 +806,15 @@ $(document).ready(function () {
       } while (table[temp] && temp);
       results.reverse();
       // set up display
-      derivationTable = new jsav.ds.matrix(results, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
-      parseTree = new jsav.ds.tree({left: "30px", relativeTo: derivationTable, anchor: "right top"});
+      // derivationTable = new jsav.ds.matrix(results, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+
+      derivationTable = new jsav.ds.matrix(results, {style: "table"});
+      // parseTree = new jsav.ds.tree({left: "30px", relativeTo: derivationTable, anchor: "right top"});
+      parseTree = new jsav.ds.tree();
       temp = [parseTree.root(productions[0][0])];
       $("#bfpbutton").hide();
+
+      console.log("derivation table: " + derivationTable);
 
       var displayOrder = [];  // order in which to display the nodes of the parse tree
       // create the parse tree using the derivation table
@@ -1444,6 +1446,7 @@ $(document).ready(function () {
     $("#mode").html('');
     $('#editbutton').hide();
     $('#deletebutton').hide();
+    $('#addrowbutton').hide();
     $('#convertRLGbutton').hide();
     $('#convertCFGbutton').hide();
     $('#transformbutton').hide();
