@@ -3,12 +3,9 @@
   "use strict";
 
   var av, // The JSAV object
-      nullNode, // Used to trace the node pointed by 'empRef' pointer.
-      johnNode, // Used to trace the node pointed by 'johnRef' pointer.
-      samNode, // Used to trace the node pointed by 'samRef' pointer.
-      empRef,
-      johnRef,
-      samRef,
+      johnNode,
+      samNode,
+      nullNode,
       selected_pointer, // Remember pointer object that has been selected by user for swap
       selected_node; // Remember node that has been selected by user for swap
 
@@ -64,6 +61,10 @@
         // Handler for clicking on a pointer object
     pclick: function(pointer) {
       if (selected_pointer === null) { // No currently selected pointer object
+        if(selected_node !== null){
+          selected_node.removeClass([0], "highlightbox");
+          selected_node = null;
+        }
         selected_pointer = pointer;
         selected_pointer.element.addClass("highlightpointer");
       } else if (selected_pointer === pointer) { // Re-clicked slected pointer
@@ -73,11 +74,6 @@
         selected_pointer.element.removeClass("highlightpointer");
         selected_pointer = pointer;
         selected_pointer.element.addClass("highlightpointer");
-      }
-
-      if(selected_node !== null){
-        selected_node = null;
-        selected_node.removeClass([0], "highlightbox");
       }
       pointerEX2PRO.userInput = true;
     },
@@ -108,7 +104,13 @@
     },
 
     setSalaryClickHandler: function(){
-      johnNode.value(0, "John, 4000");
+      if(selected_node !== null){
+        if(selected_node === johnNode){
+          johnNode.value(0, "John, 3000");
+        } else if (selected_node === samNode){
+          samNode.value(0, "Sam, 3000");
+        }
+      }
       pointerEX2PRO.userInput = true;
     },
 
@@ -145,12 +147,11 @@
       johnNode = av.ds.array(["John, 1000"], {top: topP, left: johnP});
       samNode = av.ds.array(["Sam, 2000"], {top: topP, left: samP});
       nullNode.addClass([0], "nullBox"); //remove null node's boarder
-      // johnNode.value(0, "John, 3000");
 
       // Create pointers
-      johnRef = pointerEX2PRO.setPointer("first", johnNode);
-      samRef = pointerEX2PRO.setPointer("second", samNode);
-      empRef = pointerEX2PRO.setPointer("third", nullNode);
+      pointerEX2PRO.setPointer("first", johnNode);
+      pointerEX2PRO.setPointer("second", samNode);
+      pointerEX2PRO.setPointer("third", nullNode);
 
       av.displayInit();
       av.recorded();
@@ -175,48 +176,22 @@
 
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function() {
-      if(nullNode.llist_pleft != null ^ nullNode.llist_pright != null){
-        if(nullNode.llist_pleft != null){
-            if(nullNode.llist_pleft.element.text() != "johnRef"){
-              return false;
-            }
-          } else {
-            if(nullNode.llist_pright.element.text() != "johnRef"){
-              return false;
-            }
-          }
-        } else {
+      if(johnNode.llist_pleft.element.text() !== "first"){
+        return false;
+      } else if (johnNode.llist_pright.element.text() !== "third"){
+        return false;
+      } else if (samNode.llist_pleft.element.text() !== "second"){
+        // console.error(samNode.llist_pleft.element.text());
+        return false;
+      } else {
+        if (johnNode.value(0) !== "John, 3000"){
+          console.error(johnNode.value(0));
+          return false;
+        } else if (samNode.value(0) !== "Sam, 2000"){
           return false;
         }
-
-        if(johnNode.llist_pleft != null ^ johnNode.llist_pright != null){
-          if(johnNode.llist_pleft != null){
-              if(johnNode.llist_pleft.element.text() != "empRef"){
-                return false;
-              }
-            } else {
-              if(johnNode.llist_pright.element.text() != "empRef"){
-                return false;
-              }
-            }
-          } else {
-            return false;
-          }
-
-          if(samNode.llist_pleft != null ^ samNode.llist_pright != null){
-            if(samNode.llist_pleft != null){
-                if(samNode.llist_pleft.element.text() != "samRef"){
-                  return false;
-                }
-              } else {
-                if(samNode.llist_pright.element.text() != "samRef"){
-                  return false;
-                }
-              }
-            } else {
-              return false;
-            }
-        return true;
+      }
+      return true;
     },
   };
 
