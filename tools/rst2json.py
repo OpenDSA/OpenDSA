@@ -502,7 +502,8 @@ def add_header(config):
                         }
   config['lang'] = "en"
   config['build_JSAV'] = False
-  config['suppress_todo'] = False
+  config['build_cmap'] = False
+  config['suppress_todo'] = True
   config['dispModComp'] = False
   config['glob_exer_options'] = {"JXOP-debug": "true"}
 
