@@ -9,12 +9,12 @@
    :satisfies: debugging
    :topic:
 
-========================
+
 Common Debugging Methods
 ========================
 
 Common Debugging Methods
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 When tracking down bugs in your code, there are a number of methods that
 programmers can make use of. These methods all have different strengths, but

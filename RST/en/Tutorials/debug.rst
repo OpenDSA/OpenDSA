@@ -9,12 +9,11 @@
    :satisfies: Eclipse debugging
    :topic:
 
-====================
 Debugging In Eclipse
 ====================
 
 Debugging In Eclipse
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 In this tutorial we will show basic debugging steps. To begin debugging a
 program, select the Debug mode by clicking the icon circled in blue below.
