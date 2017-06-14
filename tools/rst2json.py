@@ -564,7 +564,7 @@ def remove_markup(source):
 def reorder_orig_config():
   '''
   '''
-  orig_config_path = os.path.abspath('tools/json_xml/Everything.json')
+  orig_config_path = os.path.abspath('tools/json_xml/CS2.json')
   with open(orig_config_path) as data_file:
       orig_config_fname = json.load(data_file)
 
@@ -599,7 +599,9 @@ if __name__ == '__main__':
 
   rst_dir = os.path.abspath('RST/en/')
   execluded_files = ['Intro', 'Status', 'Bibliography', 'Glossary', 'ToDo',
-                     'cs342_uwosh', 'Quicksort_exs', 'NPComplete_old', 'LambdaCalculus']
+                     'cs342_uwosh', 'Quicksort_exs', 'NPComplete_old',
+                     'LambdaCalculus', 'ListDataStructure']
+
   files = absoluteFilePaths(rst_dir)
 
   everything_config = OrderedDict()
@@ -642,7 +644,12 @@ if __name__ == '__main__':
   if options.dev_mode:
     everything_config = sort_by_keys(everything_config)
 
-  out_fname = os.path.abspath('config/Everything_generated.json')
+
+  if options.dev_mode:
+    out_fname = os.path.abspath('tools/json_xml/Everything_generated.json')
+  else:
+    out_fname = os.path.abspath('config/Everything_generated.json')
+
   with open(out_fname, 'w') as outfile:
     json.dump(everything_config, outfile)
 

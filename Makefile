@@ -92,6 +92,9 @@ min: nomin
 
 Plain: EverythingPlain CS2Plain CS3Plain PLPlain
 
+EverythingGen: min
+	python $(CONFIG_SCRIPT) config/Everything_generated.json --no-lms
+
 EverythingPlain: min
 	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
 
@@ -100,6 +103,9 @@ test: min
 
 CS2Plain: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
+
+CS2LMS: min
+	python $(CONFIG_SCRIPT) config/CS2.json
 
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
