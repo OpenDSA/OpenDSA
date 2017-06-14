@@ -4670,7 +4670,7 @@
                 "long_name": "Problem Bounds",
                 "sections": {}
             },
-            "Development/GrowthRate": {
+            "SeniorAlgAnal/GrowthRate": {
                 "long_name": "Growth Rates Review",
                 "sections": {}
             },
@@ -4831,13 +4831,13 @@
             }
         },
         "Advanced Analysis": {
-            "Development/AmortAnal": {
+            "SeniorAlgAnal/AmortAnal": {
                 "long_name": "Amortized Analysis",
                 "sections": {}
             }
         },
         "Algorithms": {
-            "Development/DynamicProgramming": {
+            "SeniorAlgAnal/DynamicProgramming": {
                 "long_name": "Dynamic Programming",
                 "sections": {}
             },
@@ -4949,11 +4949,7 @@
                 "long_name": "Rabin-Karp String Search Algorithm",
                 "sections": {}
             },
-            "Development/RandomIntro": {
-                "long_name": "Introduction to Randomized Algorithms",
-                "sections": {}
-            },
-            "Development/RandomNums": {
+            "SeniorAlgAnal/RandomNums": {
                 "long_name": "Random Numbers",
                 "sections": {}
             }
@@ -5274,7 +5270,7 @@
                 "long_name": "Coping with NP-complete problems",
                 "sections": {}
             },
-            "Development/Impossible": {
+            "SeniorAlgAnal/Impossible": {
                 "long_name": "Unsolveable Problems",
                 "sections": {}
             }
