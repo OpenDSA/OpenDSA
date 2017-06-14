@@ -1,0 +1,86 @@
+<!--
+    Linked List Deletion mini-proficiency exercise.
+    Written by Jieun Chon and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math PointerEX3PRO LinkList">
+  <head>
+    <title>Pointer Exercise 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #PointerEX3PRO .jsavnode {
+        min-width: 50px !important;
+        min-height: 40px !important;
+      }
+      #PointerEX3PRO .nullBox {      /* For the null nodes */
+        box-shadow: none;
+        border-width: 0;
+        background-color: transparent;
+      }
+      #PointerEX3PRO .jsavpointer {
+        width: 40px;
+        text-align: center;
+        cursor: pointer;
+      }
+      #PointerEX3PRO .highlightpointer {      /* For the pointer */
+        background-color: yellow;
+      }
+
+      #PointerEX3PRO .highlightbox {      /* For the pointer */
+        background-color: yellow;
+      }
+
+
+
+    </style>
+  </head>
+
+  <body data-height="900" data-width="950">
+
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">pointerEX3PRO.initJSAV()</var>
+      </div>
+
+      <div class="problems">
+        <div id="PointerEX3PROp"> <!-- Supresses answer box -->
+          <p class="problem">Your task in this exercise is to show the
+            behavior for some code.</p>
+          <div class="question">
+            <p>The following lines of code will set up the picture
+            below:<br/></p>
+            <tt>Original Code:</tt><br/>
+            <tt>&emsp;&emsp;Link first;</tt><br/>
+            <tt></tt><br/>
+            <tt>Link {</tt><br/>
+            <tt>&emsp;&emsp;public Object value;</tt><br/>
+            <tt>&emsp;&emsp;public Link next;</tt><br/>
+            <tt>}</tt><br/>
+
+
+            <p>Now, modify the picture below to show the effects of
+            executing the following lines of code.</p>
+            <div id="PointerEX3PRO" class="jsavcanvas"></div>
+            <input id="reset" type="button" value="Reset" />
+            <input id="newLink" type="button" value="newLink" />
+            <input id="newEmployee" type="button" value="newEmployee" />
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [pointerEX3PRO.userInput] </div>
+            <div class="validator-function">
+              if (!pointerEX3PRO.checkAnswer() && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else {return pointerEX3PRO.checkAnswer();}
+            </div>
+          </div>
+          <div class="hints">
+            <p>No hints</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

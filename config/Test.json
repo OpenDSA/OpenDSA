@@ -83,6 +83,15 @@
         }
       }
     },
+
+    "06 LinkedList": {
+      "List/ListLinked_Jieun": {
+        "long_name": "Linked List",
+        "sections": {
+        }
+      }
+    },
+
     "Turing Machines": {
       "SeniorAlgAnal/Turing": {
         "long_name": "Turing Machines",

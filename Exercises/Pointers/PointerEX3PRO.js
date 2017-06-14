@@ -3,13 +3,15 @@
   "use strict";
 
   var av, // The JSAV object
-      johnNode,
-      samNode,
       nullNode,
+      list,
+      list_size,
+      headNode,
+      tailNode,
       selected_pointer, // Remember pointer object that has been selected by user for swap
       selected_node; // Remember node that has been selected by user for swap
 
-  var pointerEX2PRO = {
+  var pointerEX3PRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
 
     // Helper function for setting pointer
@@ -25,12 +27,12 @@
       //Create Right Pointer
       var pointerRight = {visible: true, anchor: "right top",
                           myAnchor: "left bottom",
-                          left: -5, top: -20};
+                          left: -10, top: -10};
 
       //Create Left Pointer
       var pointerLeft = {visible: true, anchor: "left top",
                          myAnchor: "right bottom",
-                         left: 15, top: -20};
+                         left: 30, top: -10};
 
       //Remove old pointer and copy it to create again
       if (oldpointer) {
@@ -49,11 +51,11 @@
       // (when there is already left pointer for the node)
       if (!newnode.llist_pleft) {
         newnode.llist_pleft = newnode.jsav.pointer(pname, newnode, pointerLeft);
-        newnode.llist_pleft.click(pointerEX2PRO.pclick);
+        newnode.llist_pleft.click(pointerEX3PRO.pclick);
         return newnode.llist_pleft;
       } else if (!newnode.llist_pright) {
         newnode.llist_pright = newnode.jsav.pointer(pname, newnode, pointerRight);
-        newnode.llist_pright.click(pointerEX2PRO.pclick);
+        newnode.llist_pright.click(pointerEX3PRO.pclick);
         return newnode.llist_pright;
       }
     },
@@ -75,13 +77,13 @@
         selected_pointer = pointer;
         selected_pointer.element.addClass("highlightpointer");
       }
-      pointerEX2PRO.userInput = true;
+      pointerEX3PRO.userInput = true;
     },
 
     clickHandler: function(){
       if(selected_pointer !== null){
         if(selected_pointer.target() !== this){
-          pointerEX2PRO.setPointer(selected_pointer.element.text(), this, selected_pointer);
+          pointerEX3PRO.setPointer(selected_pointer.element.text(), this, selected_pointer);
         }
           selected_pointer.removeClass("highlightpointer");
           selected_pointer = null;
@@ -100,20 +102,31 @@
         }
       }
 
-      pointerEX2PRO.userInput = true;
+      pointerEX3PRO.userInput = true;
     },
 
-    setSalary: function(){
+    newLink: function(){
+      if(headNode === null){
+        list.addLast("");
+        list.layout();
+        headNode = list.get(0);
+      } else if (tailNode === null){
+        list.addLast("");
+        list.layout();
+        tailNode = list.get(1);
+      }
+      pointerEX3PRO.userInput = true;
+    },
+
+    newEmployee: function(){
       if(selected_node !== null){
         if(selected_node === johnNode){
           johnNode.value(0, "John, 3000");
         } else if (selected_node === samNode){
           samNode.value(0, "Sam, 3000");
         }
-        selected_node.removeClass([0], "highlightbox");
-        selected_node = null;
       }
-      pointerEX2PRO.userInput = true;
+      pointerEX3PRO.userInput = true;
     },
 
 
@@ -123,79 +136,69 @@
       var leftMargin = 70,
           topMargin = 150;
       // Reset the value of global variables.
-      pointerEX2PRO.userInput = false;
+      pointerEX3PRO.userInput = false;
       selected_pointer = null;
       selected_node = null;
 
       // Clear the old JSAV canvas.
-      if ($("#PointerEX2PRO")) { $("#PointerEX2PRO").empty(); }
+      if ($("#PointerEX3PRO")) { $("#PointerEX3PRO").empty(); }
 
       // Set up the display
-      av = new JSAV("PointerEX2PRO");
+      av = new JSAV("PointerEX3PRO");
       var codes = [];
-      codes[0] = "third = first;";
-      codes[1] = "third.setSalary(3000);";
+      codes[0] = "first = new Link(null, null);";
+      codes[1] = "first.value = new Employee(John, 1000);";
+      codes[2] = "first.next = new Link(null, null);";
       av.code(codes);
 
       var width = 60;
 
       var topP = topMargin;
-      var johnP = leftMargin;
-      var samP = johnP + 170;
-      var nullP = samP + 170;
+      var nullP = leftMargin;
+      var linkP = nullP + 100;
 
       // Create nodes
       nullNode = av.ds.array([""], {top: topP, left: nullP});
-      johnNode = av.ds.array(["John, 1000"], {top: topP, left: johnP});
-      samNode = av.ds.array(["Sam, 2000"], {top: topP, left: samP});
       nullNode.addClass([0], "nullBox"); //remove null node's boarder
 
       // Create pointers
-      pointerEX2PRO.setPointer("first", johnNode);
-      pointerEX2PRO.setPointer("second", samNode);
-      pointerEX2PRO.setPointer("third", nullNode);
+      pointerEX3PRO.setPointer("first", nullNode);
 
+      list = av.ds.list({nodegap: 30, top: topP, left: linkP});
+      list_size = 0;
+      headNode = null;
+      tailNode = null;
+
+      list.layout();
       av.displayInit();
       av.recorded();
 
-      johnNode.click(pointerEX2PRO.clickHandler);
-      samNode.click(pointerEX2PRO.clickHandler);
+      list.click(pointerEX3PRO.clickHandler);
     },
 
     // Initialise the exercise
     initJSAV: function() {
-      pointerEX2PRO.reset();
+      pointerEX3PRO.reset();
 
-      $("#setSalary").click(function() {
-        pointerEX2PRO.setSalary();
+      $("#newLink").click(function() {
+        pointerEX3PRO.newLink();
+      });
+
+      $("#newEmployee").click(function() {
+        pointerEX3PRO.newEmployee();
       });
 
       // Set up handler for reset button
       $("#reset").click(function() {
-        pointerEX2PRO.reset();
+        pointerEX3PRO.reset();
       });
     },
 
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function() {
-      if(johnNode.llist_pleft.element.text() !== "first"){
-        return false;
-      } else if (johnNode.llist_pright.element.text() !== "third"){
-        return false;
-      } else if (samNode.llist_pleft.element.text() !== "second"){
-        // console.error(samNode.llist_pleft.element.text());
-        return false;
-      } else {
-        if (johnNode.value(0) !== "John, 3000"){
-          console.error(johnNode.value(0));
-          return false;
-        } else if (samNode.value(0) !== "Sam, 2000"){
-          return false;
-        }
-      }
       return true;
     },
   };
 
-  window.pointerEX2PRO = window.pointerEX2PRO || pointerEX2PRO;
+  window.pointerEX3PRO = window.pointerEX3PRO || pointerEX3PRO;
 }());
