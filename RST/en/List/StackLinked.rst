@@ -38,19 +38,23 @@ Linked Stack Push
 ~~~~~~~~~~~~~~~~~
 
 .. inlineav:: lstackPushCON ss
+   :long_name: Linked stack push
    :output: show
    
 .. avembed:: Exercises/List/LstackPushPRO.html ka
+   :long_name: Linked Stack Push Exercise
 
 
 Linked Stack Pop
 ----------------
 
 .. inlineav:: lstackPopCON ss
+   :long_name: Linked stack pop
    :output: show
    
 
 .. avembed:: Exercises/List/LstackPopPRO.html ka
+   :long_name: Linked Stack Pop Exercise
 
    
 Comparison of Array-Based and Linked Stacks

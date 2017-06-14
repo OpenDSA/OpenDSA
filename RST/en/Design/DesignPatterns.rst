@@ -249,3 +249,4 @@ Summary Questions
 ~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/Design/DesignPatternSumm.html ka
+   :long_name: Design Patterns Summary Exercise

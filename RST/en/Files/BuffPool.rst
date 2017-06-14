@@ -113,6 +113,7 @@ information requests can be satisfied from the buffer pool rather
 than requiring new information to be read from disk.
 
 .. inlineav:: buffintroCON ss
+   :long_name: Buffer Pool Introduction Slideshow
    :align: center
    :output: show
 
@@ -186,6 +187,7 @@ special knowledge about information access patterns for an application
 suggests a special-purpose buffer management scheme.
 
 .. inlineav:: LRUCON ss
+   :long_name: LRU Replacement Slideshow
    :align: center
    :output: show
 
@@ -215,6 +217,7 @@ At the time when the block is flushed from the buffer pool, it is
 written to disk if and only if the dirty bit has been turned on.
 
 .. inlineav:: LRUwriteCON ss
+   :long_name: LRU Replacement with write Slideshow
    :align: center
    :output: show
 
@@ -236,6 +239,7 @@ Here is a visualization to let you experiment with the various buffer
 pool replacement strategies.
 
 .. avembed:: AV/Files/BufferPoolAV.html ss
+   :long_name: Buffer Pool Visualization
 
 .. The following exercise needs to be completed, so that this can be
 .. added back in.

@@ -27,23 +27,28 @@ Here is the linked queue class declaration.
 |
 
 .. inlineav:: lqueueIntroCON ss
+   :long_name: Linked Queue Intro
    :output: show    
    
 |
 
 .. inlineav:: lqueueEnqueueCON ss
+   :long_name: Linked Queue Enqueue
    :output: show   
    
 .. avembed:: Exercises/List/LqueueEnqueuePRO.html ka
+   :long_name: Linked Queue Enqueue Exercise
 
 
 Linked Dequeue
 --------------
 
 .. inlineav:: lqueueDequeueCON ss
+   :long_name: Linked Queue Dequeue
    :output: show 
    
 .. avembed:: Exercises/List/LqueueDequeuePRO.html ka
+   :long_name: Linked Queue Dequeue Exercise
 
 
 Comparison of Array-Based and Linked Queues
@@ -61,6 +66,7 @@ Stack and Queue Summary Questions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/List/StackQSumm.html ka
+   :long_name: Stack/Queue Summary Exercise
 
 
 .. odsascript:: AV/List/llist.js

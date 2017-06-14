@@ -81,6 +81,7 @@ record (as will be the case for each of the sublists beginning with
 records 4 through 7), then we can skip processing them.
 
 .. inlineav:: shellsortCON1 ss
+   :long_name: Shellsort Slideshow 1
    :output: show
 
 Shellsort will sort each of these sublists of length 2 using Insertion
@@ -93,6 +94,7 @@ They are swapped if necessary to put them in sort order.
 the two items are being compared you won't see anything yellow anymore!)
 
 .. inlineav:: shellsortCON2 ss
+   :long_name: Shellsort Slideshow 2
    :output: show
 
 At the end of the first pass, the resulting array is "a little better
@@ -114,12 +116,14 @@ As you click through the slides, you will see the sublists for
 increment size 4.
 
 .. inlineav:: shellsortCON4 ss
+   :long_name: Shellsort Slideshow 3
    :output: show
 
 Each sublist of 3 records would also be sorted using an Insertion
 Sort, as shown next.
 
 .. inlineav:: shellsortCON5 ss
+   :long_name: Shellsort Slideshow 4
    :output: show
 
 At the end of processing sublists with increment 4, the array is
@@ -133,6 +137,7 @@ positions and the other consisting of the even positions.
 As usual, we sort the sublists using Insertion Sort.
 
 .. inlineav:: shellsortCON7 ss
+   :long_name: Shellsort Slideshow 5
    :output: show
 
 At this point, we are getting close to sorted.
@@ -146,6 +151,7 @@ so this final call to Insertion Sort runs far faster than if we had
 run Insertion Sort on the original array.
 
 .. inlineav:: shellsortCON9 ss
+   :long_name: Shellsort Slideshow 6
    :output: show
 
 Finally, the array is sorted.
@@ -158,6 +164,7 @@ Here is a code implementation for Shellsort.
 Now, test your understanding of the sublist concept.
 
 .. avembed:: Exercises/Sorting/ShellsortSublistSumm.html ka
+   :long_name: Shellsort Sublist Proficency Exercise
 
 
 Putting It Together
@@ -178,10 +185,12 @@ Use this visualization to make sure that you understand how Shellsort
 works.
 
 .. avembed:: AV/Sorting/shellsortAV.html ss
+   :long_name: Shellsort Visualization
 
 Next, let's review what makes for a legal increment series.
 
 .. avembed:: Exercises/Sorting/ShellsortSeries.html ka
+   :long_name: Shellsort Series Exercise
 
 
 Shellsort Practice Exercise
@@ -191,6 +200,7 @@ Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/shellsortPRO.html pe
+   :long_name: Shellsort Proficiency Exercise
 
 
 Optimizing Shellsort
@@ -217,6 +227,7 @@ Now you are ready to try out some different increment series to see
 how they affect the cost of Shellsort.
 
 .. avembed:: AV/Sorting/shellsortPerf.html pe
+   :long_name: Shellsort Performance Activity
 
 A theoretical analysis of Shellsort is difficult, so we must accept
 without proof that the average-case performance of Shellsort
@@ -239,6 +250,7 @@ Shellsort Summary Questions
 Here are some review questions to check that you understand Shellsort.
 
 .. avembed:: Exercises/Sorting/ShellsortSumm.html ka
+   :long_name: Shellsort Summary Exercise
 
 If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good

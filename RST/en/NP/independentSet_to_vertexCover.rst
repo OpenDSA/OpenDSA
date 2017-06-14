@@ -20,6 +20,7 @@ problem can be reduced to an instance of Vertex Cover problem
 in polynomial time.
  
 .. inlineav:: IStoVCCON ss
+   :long_name: IS to VC Reduction
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 

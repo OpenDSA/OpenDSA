@@ -24,6 +24,7 @@ multiplication operators. To get credit for this randomized problem,
 you must solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP18part1.html ka
+   :long_name: RP set #18, question #1
 
 Church Booleans
 ---------------
@@ -35,6 +36,7 @@ This problem is about a possible representation for the ternary IF/THEN/ELSE
 operator.
 
 .. avembed:: Exercises/PL/RP18part2.html ka
+   :long_name: RP set #18, question #2
 
 RP 18 Part 3
 ------------
@@ -43,5 +45,6 @@ This problem is about a possible representation for the binary OR
 operator.
 
 .. avembed:: Exercises/PL/RP18part3.html ka
+   :long_name: RP set #18, question #3
 
 

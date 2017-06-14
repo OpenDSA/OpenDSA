@@ -84,6 +84,7 @@ To find the record with key value ``k``, look in
 ``HT[k]``.
 
 .. inlineav:: hashIntroCON1 ss
+   :long_name: Hashing Intro Slideshow
    :output: show
 
 In most applications, there are many more values in the key range

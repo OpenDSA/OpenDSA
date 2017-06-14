@@ -131,3 +131,4 @@ Here are a few multiple choice questions that ask you to
 compare the sorting algorithms that we learned about in this chapter.
 
 .. avembed:: Exercises/Sorting/SortAlgCompSumm.html ka
+   :long_name: Sort Comparison Summary Exercise

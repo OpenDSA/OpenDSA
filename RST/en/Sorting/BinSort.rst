@@ -38,6 +38,7 @@ numbers 0 through :math:`n-1`.
    :tag: simplebinsort
 
 .. inlineav:: binsortS1CON ss
+   :long_name: Binsort Slideshow 1
    :output: show
 
 Here the key value is used to determine the
@@ -81,6 +82,7 @@ This version of Binsort can sort any collection of records whose key
 values fall in the range from 0 to ``MaxKeyValue``.
 
 .. inlineav:: binsortS2CON ss
+   :long_name: Binsort Slideshow 2
    :output: show
 
 The total work required is simply that needed to place each record

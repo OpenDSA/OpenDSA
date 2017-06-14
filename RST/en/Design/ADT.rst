@@ -303,5 +303,6 @@ The interface becomes a form of communication between the two programmers.
    is possible.
 
 .. avembed:: Exercises/Design/IntroADTSumm.html ka
+   :long_name: ADT Summary Questions
 
 .. odsascript:: AV/Design/ADTCON.js

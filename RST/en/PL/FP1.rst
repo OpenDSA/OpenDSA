@@ -27,6 +27,7 @@ problems are in this section.
 This problem deals with the syntax and semantics of the ``fp.cons`` function.
 
 .. avembed:: Exercises/PL/RP5part2.html ka
+   :long_name: RP set #5, question #2
 
 RP 5 part 3
 -----------
@@ -38,6 +39,7 @@ with it.
 
 
 .. avembed:: Exercises/PL/RP5part3.html ka
+   :long_name: RP set #5, question #3
 
 
 RP 5 part 4
@@ -47,6 +49,7 @@ This problem deals with the syntax and semantics of the ``fp.hd``,
 ``fp.tl``, and ``fp.isEq`` functions.
 
 .. avembed:: Exercises/PL/RP5part4.html ka
+   :long_name: RP set #5, question 4
 
 RP 5 part 5
 -----------
@@ -55,3 +58,4 @@ This problem once more helps you review the semantics of the ``fp.hd``,
 ``fp.tl``, and ``fp.cons`` functions.
 
 .. avembed:: Exercises/PL/RP5part5.html ka
+   :long_name: RP set #5, question 5

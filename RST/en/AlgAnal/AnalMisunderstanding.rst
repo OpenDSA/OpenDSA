@@ -95,8 +95,10 @@ worst, and average cases as the input size grows.
 
 
 .. inlineav:: MisunderstandingsGraphCON ss
+   :long_name: Example's graph Visualization
    :output: show
 
 .. avembed:: Exercises/AlgAnal/MisSumm.html ka
+   :long_name: Common Misconceptions Exercise
 
 .. odsascript:: AV/AlgAnal/MisunderstandingsGraphCON.js

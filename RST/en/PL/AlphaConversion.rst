@@ -165,6 +165,7 @@ following exercise. To earn credit for it, you will have to solve it
 correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP15part1.html ka
+   :long_name: RP set #15, question #1
 
 In conclusion, :math:`\alpha`-conversion simply replaces the name of a
 function parameter with a completely new name in order to avoid

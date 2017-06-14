@@ -16,9 +16,11 @@ Exercise 1
 ----------
 
 .. avembed:: AV/Development/redBlackTreeColoring.html ss
+   :long_name: Red-Black Tree Coloring Exercise
 
 
 Exercise 2
 ----------
 
 .. avembed:: AV/Development/redBlackTreePRO.html pe
+   :long_name: Red-Black Tree Proficiency Exercise

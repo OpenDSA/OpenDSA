@@ -53,6 +53,7 @@ Note that both of the slide-shows above produce valid parse trees for this gramm
 The review problem set for this module contains four review problems, the first three of which refer to the same grammar.  The first problem is about determining how many parse trees a given string has in a given grammar.
 
 .. avembed:: Exercises/PL/RP2part1.html ka
+   :long_name: RP set #2, question #1
 
 RP 2 part 2
 -----------
@@ -61,6 +62,7 @@ This problem is again about determining how many parse trees a given string
 has in a given grammar.
 
 .. avembed:: Exercises/PL/RP2part2.html ka
+   :long_name: RP set #2, question #2
 
 RP 2 part 3
 -----------
@@ -69,6 +71,7 @@ This problem is once more about determining how many parse trees a
 given string has in a given grammar.
 
 .. avembed:: Exercises/PL/RP2part3.html ka
+   :long_name: RP set #2, question #3
 
 RP 2 part 4
 -----------
@@ -77,5 +80,6 @@ This problem will help you discover ambiguities in grammars as well as
 convince yourself that a grammar is not ambiguous.
 
 .. avembed:: Exercises/PL/RP2part4.html ka
+   :long_name: RP set #2, question #4
 .. odsascript:: AV/PL/AV/parseTree5a.js   	     
 .. odsascript:: AV/PL/AV/parseTree5b.js   	     

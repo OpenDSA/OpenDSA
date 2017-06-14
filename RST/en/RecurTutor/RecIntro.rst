@@ -89,6 +89,7 @@ and then :term:`delegate <delegation mental model for recursion>`
 the rest to some helper, as in this example.
 
 .. inlineav:: recurIntroDelegateCON ss
+   :long_name: Recursion Introduction Slideshow 1
    :output: show  
 
 Let's look deeper into the details of what your friend does when
@@ -99,6 +100,7 @@ But when you are writing your own recursive functions,
 you shouldn't worry about all of these details.)
 
 .. inlineav:: recurIntroDetailsCON ss
+   :long_name: Recursion Introduction Slideshow 2
    :output: show  
 
 In order to understand recursion, you need to be able to do two

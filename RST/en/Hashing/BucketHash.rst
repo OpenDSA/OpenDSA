@@ -58,11 +58,13 @@ If many records are in the overflow bucket, this will be an
 expensive process.
 
 .. inlineav:: buckethashCON1 ss
+   :long_name: Bucket Hashing Slideshow 1
    :output: show
 
 Now you can try it yourself.
 
 .. avembed:: Exercises/Hashing/HashBucketPRO.html ka
+   :long_name: Bucket Hashing Proficiency Exercise
 
 
 An Alternate Approach
@@ -79,6 +81,7 @@ because any slot can be a home position rather than just the first slot
 in the bucket.
 
 .. inlineav:: buckethashCON2 ss
+   :long_name: Bucket Hashing Slideshow 2
    :output: show
 
 
@@ -95,6 +98,7 @@ Naturally, overflow should be kept small to minimize unnecessary disk
 accesses.
 
 .. avembed:: Exercises/Hashing/HashBucket2PRO.html ka
+   :long_name: Alternate Bucket Hashing Proficiency Exercise
 
 .. odsascript:: AV/Hashing/buckethashCON1.js
 .. odsascript:: AV/Hashing/buckethashCON2.js

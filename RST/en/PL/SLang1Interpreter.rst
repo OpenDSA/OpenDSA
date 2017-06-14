@@ -15,6 +15,7 @@ RP 22 Part 1
 This problem will help you review the behavior of our SLang 1 interpreter.
 
 .. avembed:: Exercises/PL/RP22part1.html ka
+   :long_name: RP set #22, question #1
 
 RP 22 Part 2
 ------------
@@ -24,3 +25,4 @@ interpreter. To earn credit for it, you must complete this randomized
 problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP22part2.html ka
+   :long_name: RP set #22, question #2

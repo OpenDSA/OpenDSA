@@ -295,6 +295,7 @@ Here is an exercise to see if you get the basic idea of
 :math:`\mathrm{B}^+` tree insertion.
 
 .. avembed:: AV/Indexing/bPlusTreeInsertPRO.html pe
+   :long_name: B+ Tree Proficiency Exercise
 
 To delete record :math:`R` from the :math:`\mathrm{B}^+` tree,
 first locate the leaf :math:`L` that contains :math:`R`.

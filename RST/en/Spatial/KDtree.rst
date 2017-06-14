@@ -356,6 +356,7 @@ Here is a visualization of building a kd-tree.
 </p>
 
 .. avembed:: AV/Development/kd-treeAV.html ss
+   :long_name: KD tree Visualization
 
 Here is a version where you can click to get the node inserted.
 
@@ -365,6 +366,7 @@ Here is a version where you can click to get the node inserted.
    This can probably replace the static visualization.
 
 .. avembed:: AV/Development/kd-interact.html ss
+   :long_name: KD tree Interaction
 
 
 .. TODO::

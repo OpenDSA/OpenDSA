@@ -201,3 +201,4 @@ structures that can perform all three key operations of insert,
 search, and delete in :math:`\Theta(\log n)` time.
 
 .. avembed:: Exercises/Design/DesignDictionarySumm.html ka
+   :long_name: Dictionary Summary Exercise

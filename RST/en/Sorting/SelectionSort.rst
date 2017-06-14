@@ -49,6 +49,7 @@ Here is an implementation for Selection Sort.
 Consider the example of the following array.
 
 .. inlineav:: selectionsortS1CON ss
+   :long_name: Selection Sort Slideshow 1
    :output: show
 
 Now we continue with the second pass.
@@ -56,6 +57,7 @@ However, since the largest record is already at the right end,
 we will not need to look at it again.
 
 .. inlineav:: selectionsortS2CON ss
+   :long_name: Selection Sort Slideshow 2
    :output: show
 
 Selection Sort continues in this way until the entire array is sorted.
@@ -63,10 +65,12 @@ Selection Sort continues in this way until the entire array is sorted.
 The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/selectionsortAV.html ss
+   :long_name: Selection Sort Visualization
 
 Now try for yourself to see if you understand how Selection Sort works.
 
 .. avembed:: Exercises/Sorting/SelsortPRO.html ka
+   :long_name: Selection Sort Proficiency Exercise
 
 
 Selection Sort Analysis
@@ -86,6 +90,7 @@ This visualization analyzes the number of
 comparisons and swaps required by Selection Sort.
 
 .. inlineav:: SelectionSortAnalysisCON ss
+   :long_name: Selection Sort Analysis Slideshow
    :output: show
 
 There is another approach to keeping the cost of swapping records low,
@@ -125,6 +130,7 @@ Here are some review questions to check how well you understand
 Selection Sort.
 
 .. avembed:: Exercises/Sorting/SelsortSumm.html ka
+   :long_name: Selection Sort Summary Exercise
 
 .. odsascript:: AV/Sorting/selectionsortS1CON.js
 .. odsascript:: AV/Sorting/selectionsortS2CON.js

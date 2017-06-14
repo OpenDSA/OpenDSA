@@ -29,6 +29,7 @@ and anonymous functions. This problem is randomized. You must solve it
 correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP9part1.html ka
+   :long_name: RP set #9, question #1
 
 RP 9 part 2
 -----------
@@ -38,6 +39,7 @@ This problem is about higher-order functions and scoping rules. It uses
 closures and anonymous functions.
 
 .. avembed:: Exercises/PL/RP9part2.html ka
+   :long_name: RP set #9, question #2
 
 
 RP 9 part 3
@@ -47,6 +49,7 @@ This problem uses the same code as the previous problem and illustrates
 the same topics.
 
 .. avembed:: Exercises/PL/RP9part3.html ka
+   :long_name: RP set #9, question #3
 
 RP 9 part 4
 -----------
@@ -55,3 +58,4 @@ This problem uses the same code as the previous two problems but
 focuses on the difference between static and dynamic binding rules.
 
 .. avembed:: Exercises/PL/RP9part4.html ka
+   :long_name: RP set #9, question #4

@@ -80,9 +80,11 @@ Member ``findhelp`` has the desired form for this recursive
 subroutine and is implemented as follows.
 
 .. inlineav:: BSTsearchCON ss
+   :long_name: BST Search Slideshow
    :output: show
 
 .. avembed:: AV/Binary/BSTsearchPRO.html pe
+   :long_name: BST Search Proficiency Exercise
 
 
 BST Insert
@@ -91,6 +93,7 @@ BST Insert
 Now we look at how to insert a new node into the BST.
 
 .. inlineav:: BSTinsertCON ss
+   :long_name: BST Insert Slideshow
    :output: show
 
 Note that, except for the last node in the path, ``inserthelp``
@@ -126,6 +129,7 @@ possible.
 This keeps the average cost of a BST operation low.
 
 .. avembed:: AV/Binary/BSTinsertPRO.html pe
+   :long_name: BST Insert Proficiency Exercise
 
 
 BST Remove
@@ -140,6 +144,7 @@ value.
 This routine will be used later by the general node removal function.
 
 .. inlineav:: BSTdeletemaxCON ss
+   :long_name: BST deletemax Slideshow
    :output: show
 
 The return value of the ``deletemax`` method is the subtree of
@@ -184,6 +189,7 @@ If either of these values replace the one being removed,
 then the BST property is maintained.
 
 .. inlineav:: BSTremoveCON ss
+   :long_name: BST remove Slideshow
    :output: show
 
 When duplicate node values do not appear in the tree, it makes no
@@ -205,6 +211,7 @@ Tree Property if equal values appear in the left subtree.
        least value from its right subtree.
 
 .. avembed:: AV/Binary/BSTremovePRO.html ss
+   :long_name: BST Remove Proficiency Exercise
 
 
 BST Analysis
@@ -263,6 +270,7 @@ There also exist other types of search trees that are guaranteed to
 remain balanced, such as the :ref:`2-3 Tree <2-3 tree> <TwoThreeTree>`.
 
 .. avembed:: Exercises/Binary/BSTSumm.html ka
+   :long_name: BST Question Summary
 
 .. odsascript:: AV/Binary/BSTsearchCON.js
 .. odsascript:: AV/Binary/BSTinsertCON.js

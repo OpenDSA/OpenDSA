@@ -165,6 +165,7 @@ sort function.
 Here are some review questions to test your knowledge from this module.
 
 .. avembed:: Exercises/Design/CompareSumm.html ka
+   :long_name: Record Comparison Summary Exercise
 
 
 .. [#] One example of a situation where it is not possible to write a

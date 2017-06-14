@@ -178,3 +178,4 @@ slower growth rate provides a greater benefit in terms of larger
 problem size that can run in a certain time on the new computer.
 
 .. avembed:: Exercises/AlgAnal/FasterCorASumm.html ka
+   :long_name: Faster Computer or Faster Algorithm Exercise

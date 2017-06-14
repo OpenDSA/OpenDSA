@@ -27,9 +27,11 @@ and so must implement all of the member functions of ``List``.
 |
 
 .. inlineav:: alistVarsCON ss
+   :long_name: Array-based List Variables Slideshow
    :output: show
 
 .. inlineav:: alistIntroCON ss
+   :long_name: Array-based List Intro Slideshow
    :output: show
 
 
@@ -41,6 +43,7 @@ elements in contiguous cells of the array, the ``insert``, ``append``,
 and ``remove`` methods must maintain this property.
 
 .. inlineav:: alistInsertCON ss
+   :long_name: Array-based List Insertion Slideshow
    :output: show
 
 
@@ -48,12 +51,14 @@ Insert Practice Exericse
 ------------------------
 
 .. avembed:: Exercises/List/AlistInsertPRO.html ka
+   :long_name: Array-based List Insert Exercise
 
 
 Append and Remove
 -----------------
 
 .. inlineav:: alistAppendCON ss
+   :long_name: Array-based List Append Slideshow
    :output: show
 
 Removing an element from the head of the list is
@@ -64,6 +69,7 @@ If we want to remove the element at position :math:`i`, then
 following slideshow. 
 
 .. inlineav:: alistRemoveCON ss
+   :long_name: Array-based List Remove
    :output: show
 
 In the average case, insertion or removal each requires moving half
@@ -74,6 +80,7 @@ Remove Practice Exericise
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/List/AlistRemovePRO.html ka
+   :long_name: Array-based List Remove Exercise
 
 Aside from ``insert`` and ``remove``, the only other operations that
 might require more than constant time are the constructor and
@@ -87,6 +94,7 @@ Array-based List Practice Questions
 -----------------------------------
 
 .. avembed:: Exercises/List/ALSumm.html ka
+   :long_name: Array-based List Summary
 
 .. odsascript:: AV/List/alistVarsCON.js
 .. odsascript:: AV/List/alistIntroCON.js

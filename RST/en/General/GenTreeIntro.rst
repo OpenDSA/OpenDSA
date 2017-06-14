@@ -155,6 +155,7 @@ However, inorder traversals are generally not useful with
 general trees.
 
 .. inlineav:: GenTreePreTravCON ss
+   :long_name: General Tree Preorder Traversal Slideshow
    :output: show
 
 To perform a preorder traversal, it is necessary to visit each of the
@@ -165,6 +166,7 @@ From :math:`T`, we can move to :math:`T`'s right sibling, and then
 to that node's right sibling, and so on.
 
 .. inlineav:: GenTreePostTravCON ss
+   :long_name: General Tree Postorder Traversal Slideshow
    :output: show
 
 To perform a preorder traversal, it is necessary to visit each of the

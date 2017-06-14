@@ -63,10 +63,12 @@ Since this appears so often, it will help you later if you can get
 comfortable with it.
 
 .. inlineav:: SummationOneToNCON ss
+   :long_name: Summation of the first N Integers visualization
    :output: show
 
 
 .. inlineav:: SummationTwoPowerICON ss
+   :long_name: Summation Two Power I visualization
    :output: show
 
 Here is a list of useful summations, along with their closed-form solutions.

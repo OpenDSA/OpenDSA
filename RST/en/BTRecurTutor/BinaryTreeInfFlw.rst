@@ -99,6 +99,7 @@ returned value.
 Another common mistake is to not return a value.
 
 .. inlineav:: BinaryTreeMistakesCON ss
+   :long_name: Binary Tree Common Mistakes Slideshow
    :output: show
 
 

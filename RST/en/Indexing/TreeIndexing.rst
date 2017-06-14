@@ -87,6 +87,7 @@ Each update should affect only a few blocks, or its cost will be
 too high.
 
 .. inlineav:: pagedBSTCON ss
+   :long_name: Paged BST Slideshow
    :output: show
 
 As you can see from this slideshow,
@@ -94,6 +95,7 @@ adopting a rule such as requiring the BST to be complete can cause a
 great deal of rearranging of data within the tree.
 
 .. inlineav:: rebalanceBSTCON ss
+   :long_name: Paged BST With Disk Accesses Slideshow
    :output: show
 
 We can solve these problems by selecting another tree structure that
@@ -111,6 +113,7 @@ leads to the :ref:`B-tree <B-tree> <BTree>`, which is by far the
 most widely used indexing method today.
 
 .. avembed:: Exercises/Indexing/TreeIndexing.html ka
+   :long_name: Tree Indexing Proficiency Exercise
 
 .. odsascript:: AV/Indexing/pagedBSTCON.js
 .. odsascript:: AV/Indexing/rebalanceBSTCON.js

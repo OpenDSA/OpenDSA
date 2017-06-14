@@ -26,6 +26,7 @@ The review problem set for today contains four review problems.
 This first problem is about function composition.
 
 .. avembed:: Exercises/PL/RP10part1.html ka
+   :long_name: RP set #10, question #1
 
 RP 10 part 2
 ------------
@@ -33,6 +34,7 @@ RP 10 part 2
 This problem is about both currying and function composition.
 
 .. avembed:: Exercises/PL/RP10part2.html ka
+   :long_name: RP set #10, question #2
 
 
 RP 10 part 3
@@ -41,6 +43,7 @@ RP 10 part 3
 This problem is about the mapping pattern.
 
 .. avembed:: Exercises/PL/RP10part3.html ka
+   :long_name: RP set #10, question #3
 
 RP 10 part 4
 ------------
@@ -50,3 +53,4 @@ This problem will give you intensive practice with the ``curry`` and
 three times in a row.
 
 .. avembed:: Exercises/PL/RP10part4.html ka
+   :long_name: RP set #10, question #4

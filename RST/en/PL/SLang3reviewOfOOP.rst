@@ -17,6 +17,7 @@ This problem will help you review the basics of object-oriented
 programming in Java.
 
 .. avembed:: Exercises/PL/RP34part1.html ka
+   :long_name: RP set #34, question #1
 
 RP 34 Part 2
 ------------
@@ -25,6 +26,7 @@ This problem will help you review the basics of object-oriented
 programming in Java.
 
 .. avembed:: Exercises/PL/RP34part2.html ka
+   :long_name: RP set #34, question #2
 
 RP 34 Part 3
 ------------
@@ -33,3 +35,4 @@ This problem will help you review the basics of object-oriented
 programming in Java.
 
 .. avembed:: Exercises/PL/RP34part3.html ka
+   :long_name: RP set #34, question #3

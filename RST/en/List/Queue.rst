@@ -49,16 +49,19 @@ A simple conversion of the array-based list implementation is not
 efficient.
 
 .. inlineav:: aqueueFirstCON ss
+   :long_name: Array-based Queue Positions Slideshow
    :output: show
 
 |
 
 .. inlineav:: aqueueDriftCON ss
+   :long_name: Array-based Queue Drift Slideshow
    :output: show
 
 |
 
 .. inlineav:: aqueueBadCON ss
+   :long_name: Array-based Queue Bad Representation Slideshow
    :output: show
 
 
@@ -66,11 +69,13 @@ The Circular Queue
 ~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: aqueueCircularCON ss
+   :long_name: Circular Array-based Queue Slideshow
    :output: show
 
 |
 
 .. inlineav:: aqueueEmptyCON ss
+   :long_name: Empty Circular Array-based Queue Slideshow
    :output: show
 
 If the value of ``front`` is fixed, then :math:`n+1` different
@@ -106,6 +111,7 @@ Array-based Queue Implementation
 --------------------------------
 
 .. inlineav:: aqueueVarCON ss
+   :long_name: Array-based Queue Variables Slideshow
    :output: show
 
 In this implementation, the front of the queue is defined to be toward
@@ -117,12 +123,14 @@ and ``dequeue`` increments the front pointer.
 Implementation of all member functions is straightforward.
 
 .. avembed:: Exercises/List/AqueueEnqueuePRO.html ka
+   :long_name: Array-based Queue Enqueue Exercise
 
 
 Array-based Dequeue Practice
 ----------------------------
 
 .. avembed:: Exercises/List/AqueueDequeuePRO.html ka
+   :long_name: Array-based Queue Dequeue Exercise
 
 .. odsascript:: DataStructures/CircularQueue.js
 .. odsascript:: AV/List/aqueueFirstCON.js

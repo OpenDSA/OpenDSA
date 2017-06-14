@@ -130,3 +130,4 @@ and :math:`\log 1.74 < 1`, which is a total of 4 log operations.
 Here is some practice with manipulating logarithms.
 
 .. avembed:: Exercises/Background/MathLogSumm.html ka
+   :long_name: Logarithms Practice Questions

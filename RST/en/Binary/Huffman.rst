@@ -172,6 +172,7 @@ construction process for the eight letters of
 Table :num:`Table #FreqExamp`. [#]_
 
 .. inlineav:: huffmanBuildCON ss
+   :long_name: Huffman Coding Tree Slideshow: Build
    :output: show
 
 Here is the implementation for Huffman tree nodes.
@@ -226,6 +227,7 @@ child, and '1' to edges connecting a node with its right child.
 This process is illustrated by the following slideshow.
 
 .. inlineav:: huffmanLabelCON ss 
+   :long_name: Huffman Coding Tree Slideshow: Label Edges
    :output: show
 
 
@@ -237,6 +239,7 @@ simple matter to generate the codes for each letter (since each letter
 corresponds to a leaf node in the tree).
 
 .. inlineav:: huffmanCodesCON ss 
+   :long_name: Huffman Coding Tree Slideshow: Setting Codes
    :output: show
 
 Now that we have a code for each letter,
@@ -266,6 +269,7 @@ The following slideshow shows an example for how to decode a message
 by traversing the tree appropriately.
 
 .. inlineav:: huffmanDecodeCON ss
+   :long_name: Huffman Coding Tree Slideshow: Decoding
    :output: show
 
 
@@ -273,6 +277,7 @@ Decoding Practice
 -----------------
 
 .. avembed:: Exercises/Binary/HuffmanDecodePRO.html ka
+   :long_name: Huffman Decoding Proficiency Exercise
 
 
 How efficient is Huffman coding?

@@ -61,6 +61,7 @@ The sorting algorithms will simply assume that the records are
 Here we see the first few iterations of Insertion Sort.
 
 .. inlineav:: insertionsortCON ss
+   :long_name: Insertion Sort Slideshow
    :output: show
 
 This continues on with each record in turn.
@@ -73,25 +74,30 @@ encountered, ``inssort`` is done with that record because all
 records to its left in the array must have smaller keys.
 
 .. avembed:: AV/Sorting/insertionsortAV.html ss
+   :long_name: Insertion Sort Visualization
 
 
 .. avembed:: Exercises/Sorting/InssortPRO.html ka
+   :long_name: Insertion Sort Proficiency Exercise
 
 
 Insertion Sort Analysis
 -----------------------
 
 .. inlineav:: InsertionSortWorstCaseCON ss
+   :long_name: Insertion Sort Worst Case Slideshow
    :output: show
 
 |
 
 .. inlineav:: InsertionSortBestCaseCON ss
+   :long_name: Insertion Sort Best Case Slideshow
    :output: show
 
 |
 
 .. inlineav:: InsertionSortAverageCaseCON ss
+   :long_name: Insertion Sort Average Case Slideshow
    :output: show
 
 While the best case is significantly faster than the average and worst
@@ -146,6 +152,7 @@ where you will need to sort many small arrays.
 Actually, it happens a lot.
 
 .. avembed:: Exercises/Sorting/InssortSumm.html ka
+   :long_name: Insertion Sort Summary Exercise
 
 See |external_link| for a discussion on how the relative costs of search and insert can
 affect what is the best sort algorithm to use.

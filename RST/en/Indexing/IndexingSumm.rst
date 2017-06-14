@@ -17,6 +17,7 @@ Indexing Summary
 Here are some review questions.
 
 .. avembed:: Exercises/Indexing/IndexChoice.html ka
+   :long_name: Choosing an Index
 
 .. TODO::
    :type: Exercise

@@ -18,11 +18,13 @@ Best, Worst, and Average Cases
 ------------------------------
 
 .. inlineav:: AnalCasesSameCON ss
+   :long_name: Simple analysis cases slideshow
    :output: show
 
 |
 
 .. inlineav:: AnalCasesDiffCON ss
+   :long_name: Best, Worst, and Average cases slideshow
    :output: show
 
 When analyzing an algorithm, should we study the best, worst, or

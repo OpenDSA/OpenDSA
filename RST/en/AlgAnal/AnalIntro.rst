@@ -335,11 +335,13 @@ resources consumed by an algorithm.
       \end{array}
 
 .. avembed:: Exercises/AlgAnal/CompareGrowth.html ka
+   :long_name: Comparing Growth Rates Exercise
 
 Growth Rates Ordering Exercise
 ------------------------------
 
 .. avembed:: Exercises/AlgAnal/GrowthRatesPRO.html ka
+   :long_name: Growth Rates Ordering Exercise
 
 .. todo::
    :type: AV

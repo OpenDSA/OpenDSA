@@ -69,14 +69,17 @@ record with key value greater than the current record's key value
 appears before it.
 
 .. avembed:: Exercises/Sorting/FindInversionsPRO.html ka
+   :long_name: Inversions Proficiency Exercise
 
 
 Analysis
 --------
 
 .. inlineav:: ExchangeSortCON ss
+   :long_name: Exchange Sort Analysis Slideshow
    :output: show
 
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka
+   :long_name: Exchange Sorting Summary Exercise
 
 .. odsascript:: AV/Sorting/ExchangeSortCON.js

@@ -38,11 +38,13 @@ reprsentation similar to what the Huffman coding tree does.
 The following slideshows present this in more detail.
 
 .. inlineav:: TreeTimelineCON ss
+   :long_name: Tree timeline Slideshow
    :output: show
 
 |
 
 .. inlineav:: TrieTimelineCON ss
+   :long_name: Trie timeline Slideshow
    :output: show
 
 .. odsascript:: AV/Development/TreeTimelineCON.js

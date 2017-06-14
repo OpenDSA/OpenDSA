@@ -141,12 +141,14 @@ is an example of a full binary tree.
        level of a complete binary tree is as wide as possible.
 
 .. avembed:: Exercises/Binary/DefSumm.html ka
+   :long_name: Tree Definition Summary Exercises
 
 
 Practice Questions
 ------------------
 
 .. avembed:: Exercises/Binary/Treeprobs.html ka
+   :long_name: Tree/Node Exercises
 
 .. odsascript:: AV/Binary/BinExampCON.js
 .. odsascript:: AV/Binary/BinDiffCON.js

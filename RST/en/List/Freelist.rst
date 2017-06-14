@@ -46,6 +46,7 @@ So we see that the freelist is simply
 an application of a :ref:`linked stack <linked stack> <StackLinked>`.
 
 .. inlineav:: listFreeCON ss
+   :long_name: Freelist Slideshow 1
    :output: show
 
 Freelists are particularly useful for linked lists that periodically
