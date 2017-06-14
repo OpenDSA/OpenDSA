@@ -14,7 +14,7 @@ Other Spatial Data Structures
 
 The differences between the :term:`kd tree` and the
 :term:`PR quadtree` illustrate many of the design choices encountered
-when creating :term:`spatial data structures`. 
+when creating :term:`spatial data structures`.
 The kd tree provides an :term:`object space decomposition` of the
 region, while the PR quadtree provides a :term:`key space decomposition`
 (thus, it is a :term:`trie`).
@@ -62,7 +62,7 @@ is shown in Figure :num:`Figure #PtQuadFig`.
    the point quadtree of Figure :num:`Figure #PtQuadFig`.
 
 
-.. _PtQuadFIg:
+.. _PtQuadFig:
 
 .. odsafig:: Images/PtQuad.png
    :width: 500
