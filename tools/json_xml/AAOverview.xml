@@ -103,8 +103,8 @@ for (i=1; i&lt;=n; i++)
   sum = sum + n;</literal_block><paragraph>The number of assignments made is</paragraph><math_block xml:space="preserve">1 + \sum_{i=1}^{n} 1 = n + 1</math_block><paragraph>Now, there is a lot of room for quibbling here.
 Depending on how you want to deal with loop variables,
 you might want to say that the number of assignments is
-<math>2n + 1</math>.
-This makes a difference of <math>n+1</math> vs <math>2n+1</math>.
+<title_reference>2n + 1</title_reference>.
+This makes a difference of <title_reference>n+1</title_reference> vs <title_reference>2n+1</title_reference>.
 Does it matter?
 Not so much.
 We didn't know the exact amount of time for an operation
@@ -119,7 +119,7 @@ doing an ordinary assignment.
 But really none of this matters when compared against the fundamental
 recognition that the cost of this algorithm is proportional to the
 input size (in this case, the value of the input variable).
-<math>n+1</math> and <math>2n+1</math> both have linear growth rate,
+<title_reference>n+1</title_reference> and <title_reference>2n+1</title_reference> both have linear growth rate,
 so they are both equally predictive of the growth rate for the
 algorithm.
 If we all agree that this approch to squaring a number has a linear
@@ -137,7 +137,7 @@ In this case, is our model that assignment has contant time cost still
 good?
 Think about this.</paragraph><paragraph>As another example of modeling:
 Consider a problem that works on a list, and an important basic
-operation is accessing the <math>i\mathrm{th}</math> record on the list.
+operation is accessing the <title_reference>imathrm{th}</title_reference> record on the list.
 We can take as our model that such an access requires one unit of
 work.
 If the list is implemented using an array in memory, then we probably

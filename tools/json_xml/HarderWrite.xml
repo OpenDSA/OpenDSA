@@ -13,7 +13,7 @@ Given an <literal>int</literal> array named <literal>set</literal>, function
 For example, given the number 3, 8, 1, 7, and -3, with <literal>sum = 4</literal>,
 the result is <literal>true</literal> because the values 3 and 1 sum to 4.
 If <literal>sum = 6</literal>, then the result will be <literal>true</literal> because the
-<math>8 + 1 + -3 = 6</math>.
+<title_reference>8 + 1 + -3 = 6</title_reference>.
 On the other hand, if <literal>sum = 2</literal> then the result is <literal>false</literal>
 there is no combination of the five numbers that adds up to 2.
 In this code, variable <literal>n</literal> is the number of values that we look
@@ -26,4 +26,4 @@ given basketball score.
 Recall that in Basketball, it is possible to get points in
 increments of 1, 2, or 3.
 So if <literal>n = 3</literal>, then <literal>paths</literal> will return 4, since there are four
-different ways to accumulate 3 points: <math>1+1+1, 1+2, 2+1,</math> and 3.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>This function has three base cases and three recursive calls.</paragraph></topic></document>
+different ways to accumulate 3 points: <title_reference>1+1+1, 1+2, 2+1,</title_reference> and 3.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>This function has three base cases and three recursive calls.</paragraph></topic></document>

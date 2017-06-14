@@ -66,13 +66,13 @@ process of sorting large files stored on disk.</paragraph><paragraph>This chapte
 for sorting a collection of records that fit into the computer's
 main memory.
 It begins with a discussion of three simple, but relatively slow,
-algorithms that require <math>\Theta(n^2)</math>
-time in the average and worst cases to sort <math>n</math> records.
+algorithms that require <title_reference>Theta(n^2)</title_reference>
+time in the average and worst cases to sort <title_reference>n</title_reference> records.
 Several algorithms with considerably better performance are then
-presented, some with <math>\Theta(n \log n)</math> worst-case running
+presented, some with <title_reference>Theta(n log n)</title_reference> worst-case running
 time.
 The final sorting method presented requires only
-<math>\Theta(n)</math> worst-case time under special conditions
+<title_reference>Theta(n)</title_reference> worst-case time under special conditions
 (but it cannot run that fast in the general case).
 The chapter concludes with a proof that sorting in general
-requires <math>\Omega(n \log n)</math> time in the worst case.</paragraph></document>
+requires <title_reference>Omega(n log n)</title_reference> time in the worst case.</paragraph></document>

@@ -19,7 +19,7 @@ worthwhile when you have incomplete knowledge about the thing being
 measured.
 If this distinction is still not clear,
 then you should <title_reference>read about analyzing problems &lt;AnalProblem&gt;</title_reference>.
-We use <math>\Theta</math>-notation to indicate that there is no meaningful
+We use <title_reference>Theta</title_reference>-notation to indicate that there is no meaningful
 difference between what we know about the growth rates of the upper
 and lower bound (which is usually the case for simple algorithms).</paragraph><paragraph>It is a common mistake to confuse the concepts of upper bound or
 lower bound on the one hand, and <title_reference>worst case</title_reference> or
@@ -32,38 +32,38 @@ In contrast, upper and lower bounds describe our understanding of the
 So to define the growth rate for an algorithm or problem, we need to
 determine what we are measuring (the best, worst, or average case) and
 also our description for what we know about the growth rate of that
-cost measure (big-Oh, <math>\Omega</math>, or <math>\Theta</math>).</paragraph><paragraph>The upper bound for an algorithm is not the same as the worst case for
-that algorithm for a given input of size <math>n</math>.
+cost measure (big-Oh, <title_reference>Omega</title_reference>, or <title_reference>Theta</title_reference>).</paragraph><paragraph>The upper bound for an algorithm is not the same as the worst case for
+that algorithm for a given input of size <title_reference>n</title_reference>.
 What is being bounded is not the actual cost (which you can
-determine for a given value of <math>n</math>), but rather the
+determine for a given value of <title_reference>n</title_reference>), but rather the
 <strong>growth rate</strong> for the cost.
 There cannot be a growth rate for a single point, such as a particular
-value of <math>n</math>.
+value of <title_reference>n</title_reference>.
 The growth <strong>rate</strong> applies to the <strong>change</strong> in cost as a
 <strong>change</strong> in input size occurs.
 Likewise, the lower bound is not the same as the best case for a given
-size <math>n</math>.</paragraph><paragraph>Another common misconception is thinking that the best case for an
+size <title_reference>n</title_reference>.</paragraph><paragraph>Another common misconception is thinking that the best case for an
 algorithm occurs when the input size is as small as possible, or that
 the worst case occurs when the input size is as large as possible.
 What is correct is that best- and worse-case instances exist for
 each possible size of input.
-That is, for all inputs of a given size, say <math>i</math>,
-one (or more) of the inputs of size <math>i</math> is the best and one
-(or more) of the inputs of size <math>i</math> is the worst.
+That is, for all inputs of a given size, say <title_reference>i</title_reference>,
+one (or more) of the inputs of size <title_reference>i</title_reference> is the best and one
+(or more) of the inputs of size <title_reference>i</title_reference> is the worst.
 Often (but not always!), we can characterize the best input case for
 an arbitrary size, and we can characterize the worst input case for an
 arbitrary size.
 Ideally, we can determine the growth rate for the characterized best,
 worst, and average cases as the input size grows.</paragraph><topic><title>Example</title><paragraph>What is the growth rate of the best case for sequential search?
-For any array of size <math>n</math>, the best case occurs when the
+For any array of size <title_reference>n</title_reference>, the best case occurs when the
 value we are looking for appears in the first position of the
 array.
 This is true regardless of the size of the array.
-Thus, the best case (for arbitrary size <math>n</math>) occurs when the
-desired value is in the first of <math>n</math> positions, and its cost
+Thus, the best case (for arbitrary size <title_reference>n</title_reference>) occurs when the
+desired value is in the first of <title_reference>n</title_reference> positions, and its cost
 is 1.
 It is <emphasis>not</emphasis> correct to say that the best case occurs when
-<math>n=1</math>.</paragraph></topic><raw format="xml" xml:space="preserve"><inlineav
+<title_reference>n=1</title_reference>.</paragraph></topic><raw format="xml" xml:space="preserve"><inlineav
     type="ss"
     exer_name="MisunderstandingsGraphCON"
     long_name="MisunderstandingsGraphCON"

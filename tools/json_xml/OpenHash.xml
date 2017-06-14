@@ -36,15 +36,15 @@ Ordering the list by key value provides an advantage in the case of an
 unsuccessful search, because we know to stop searching the list once we
 encounter a key that is greater than the one being searched for.
 If records on the list are unordered or ordered by frequency, then an
-unsuccessful search will need to visit every record on the list.</paragraph><paragraph>Given a table of size <math>M</math> storing <math>N</math> records,
+unsuccessful search will need to visit every record on the list.</paragraph><paragraph>Given a table of size <title_reference>M</title_reference> storing <title_reference>N</title_reference> records,
 the hash function will (ideally) spread the records evenly among the
-<math>M</math> positions in
-the table, yielding on average <math>N/M</math> records for each list.
+<title_reference>M</title_reference> positions in
+the table, yielding on average <title_reference>N/M</title_reference> records for each list.
 Assuming that the table has more slots than there are records to be
 stored, we can hope that few slots will contain more than one record.
 In the case where a list is empty or has only one record,
 a search requires only one access to the list.
-Thus, the average cost for hashing should be <math>\Theta(1</math>).
+Thus, the average cost for hashing should be <title_reference>Theta(1</title_reference>).
 However, if clustering causes many records to hash to only a few of
 the slots, then the cost to access a record will be much higher
 because many elements on the linked list must be searched.</paragraph><paragraph>Open hashing is most appropriate when the hash table is kept in main

@@ -4,8 +4,8 @@
 <document ids="other-memory-allocation-methods" names="other\ memory\ allocation\ methods" source="&lt;string&gt;" title="Other Memory Allocation Methods"><title>Other Memory Allocation Methods</title><comment xml:space="preserve">This file is part of the OpenDSA eTextbook project. See</comment><comment xml:space="preserve">http://algoviz.org/OpenDSA for more details.</comment><comment xml:space="preserve">Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and</comment><comment xml:space="preserve">distributed under an MIT open source license.</comment><raw format="xml" xml:space="preserve"><avmetadata>null</avmetadata></raw><section ids="buddy-methods" names="buddy\ methods"><title>Buddy Methods</title><paragraph>Sequential-fit methods rely on a linked list of free blocks, which
 must be searched for a suitable block at each memory request.
 Thus, the time to find a suitable free block would be
-<math>\Theta(n)</math> in the worst case for a freelist containing
-<math>n</math> blocks.
+<title_reference>Theta(n)</title_reference> in the worst case for a freelist containing
+<title_reference>n</title_reference> blocks.
 Merging adjacent free blocks is somewhat complicated.
 Finally, we must either use additional space for the linked list, or
 use space within the memory pool to support the memory manager
@@ -19,37 +19,37 @@ Searching for a block of the proper size is efficient,
 merging adjacent free blocks is simple,
 and no tag or other information fields need be stored within reserved
 blocks.
-The buddy system assumes that memory is of size <math>2^N</math> for some
-integer <math>N</math>.
-Both free and reserved blocks will always be of size <math>2^k</math> for
-<math>k &lt; N</math>.
+The buddy system assumes that memory is of size <title_reference>2^N</title_reference> for some
+integer <title_reference>N</title_reference>.
+Both free and reserved blocks will always be of size <title_reference>2^k</title_reference> for
+<title_reference>k &lt; N</title_reference>.
 At any given time, there might be both free and reserved blocks of
 various sizes.
 The buddy system keeps a separate list for free blocks of each size.
-There can be at most <math>N</math> such lists, because there can only be
-<math>N</math> distinct block sizes.
+There can be at most <title_reference>N</title_reference> such lists, because there can only be
+<title_reference>N</title_reference> distinct block sizes.
 &lt;/p&gt;</paragraph><paragraph>&lt;p&gt;
-When a request comes in for <math>m</math> words, we first determine the
-smallest value of <math>k</math> such that <math>2^k &gt; m</math>.
-A block of size <math>2^k</math> is selected from the free list for
+When a request comes in for <title_reference>m</title_reference> words, we first determine the
+smallest value of <title_reference>k</title_reference> such that <title_reference>2^k &gt; m</title_reference>.
+A block of size <title_reference>2^k</title_reference> is selected from the free list for
 that block size if one exists.
 The buddy system does not worry about internal fragmentation:
-The entire block of size <math>2^k</math> is allocated.</paragraph><paragraph>If no block of size <math>2^k</math> exists,
+The entire block of size <title_reference>2^k</title_reference> is allocated.</paragraph><paragraph>If no block of size <title_reference>2^k</title_reference> exists,
 the next larger block is located.
 This block is split in half (repeatedly if necessary) until the
-desired block of size <math>2^k</math> is created.
+desired block of size <title_reference>2^k</title_reference> is created.
 Any other blocks generated as a by-product of this splitting process
 are placed on the appropriate freelists.</paragraph><paragraph>The disadvantage of the buddy system is that it allows internal
 fragmentation.
 For example, a request for 257 words will require a block of size 512.
 The primary advantages of the buddy system are:</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph>There is less external fragmentation.</paragraph></list_item><list_item><paragraph>Search for a block of the right size is
 cheaper than, say, best fit because we need only find the first
-available block on the block list for blocks of size <math>2^k</math>.</paragraph></list_item><list_item><paragraph>Merging adjacent free blocks is easy.</paragraph></list_item></enumerated_list><paragraph>The reason why this method is called the buddy system is because
+available block on the block list for blocks of size <title_reference>2^k</title_reference>.</paragraph></list_item><list_item><paragraph>Merging adjacent free blocks is easy.</paragraph></list_item></enumerated_list><paragraph>The reason why this method is called the buddy system is because
 of the way that merging takes place.
-The <math>buddy</math> for any block of size <math>2^k</math> is another
+The <title_reference>buddy</title_reference> for any block of size <title_reference>2^k</title_reference> is another
 block of the same size, and with the same address
 (i.e., the byte position in memory, read as a binary value)
-except that the <math>k</math> th bit is reversed.
+except that the <title_reference>k</title_reference> th bit is reversed.
 For example, the block of size 8 with beginning address 0000
 in the figure below, has buddy with address 1000.
 Likewise the block of size 4 with

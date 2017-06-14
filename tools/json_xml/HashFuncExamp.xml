@@ -20,10 +20,10 @@ Because these bits are likely to be poorly distributed
 (as an example, a high percentage of the keys might be even numbers,
 which means that the low order bit is zero),
 the result will also be poorly distributed.
-This example shows that the size of the table <math>M</math>
+This example shows that the size of the table <title_reference>M</title_reference>
 can have a big effect on the performance of a hash system because the table size
 is typically used as the modulus to ensure that the hash
-function produces a number in the range 0 to <math>M-1</math>.</paragraph></section><section ids="binning" names="binning"><title>Binning</title><paragraph>Say we are given keys in the range 0 to 999, and have a hash table of
+function produces a number in the range 0 to <title_reference>M-1</title_reference>.</paragraph></section><section ids="binning" names="binning"><title>Binning</title><paragraph>Say we are given keys in the range 0 to 999, and have a hash table of
 size 10.
 In this case, a possible hash function might simply divide the key
 value by 100.
@@ -48,11 +48,11 @@ on the first letter in the string.</paragraph><raw format="xml" xml:space="prese
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>In general with binning we store the record with key value <math>i</math>
-at array position <math>i/X</math> for some value <math>X</math>
+</raw><paragraph>In general with binning we store the record with key value <title_reference>i</title_reference>
+at array position <title_reference>i/X</title_reference> for some value <title_reference>X</title_reference>
 (using integer division).
 A problem with Binning is that we have to know the key range so that
-we can figure out what value to use for <math>X</math>.
+we can figure out what value to use for <title_reference>X</title_reference>.
 Let's assume that the keys are all in the range 0 to 999.
 Then we want to divide key values by 100 so that the result is in the
 range 0 to 9.
@@ -88,8 +88,8 @@ slot are near the tails, and some are near the center.
 Thus, each table slot is equally likely (roughly) to get a key value.</paragraph><target refid="hashnormal"></target><raw format="xml" ids="hashnormal" names="hashnormal" xml:space="preserve"><odsafig>null</odsafig></raw></section><section ids="the-mid-square-method" names="the\ mid-square\ method"><title>The Mid-Square Method</title><paragraph>A good hash function to use with integer key values is the
 <title_reference>mid-square method</title_reference>.
 The mid-square method squares the key value, and then takes out the middle
-<math>r</math> bits of the result, giving a value in the range
-0 to <math>2^{r}-1</math>.
+<title_reference>r</title_reference> bits of the result, giving a value in the range
+0 to <title_reference>2^{r}-1</title_reference>.
 This works well because most or all bits of the key value contribute to
 the result.
 For example, consider records whose keys are 4-digit numbers in base
@@ -97,7 +97,7 @@ For example, consider records whose keys are 4-digit numbers in base
 The goal is to hash these key values to a table of size 100
 (i.e., a range of 0 to 99).
 This range is equivalent to two digits in base 10.
-That is, <math>r = 2</math>.
+That is, <title_reference>r = 2</title_reference>.
 If the input is the number 4567, squaring yields an 8-digit number,
 20857489.
 The middle two digits of this result are 57.
@@ -128,7 +128,7 @@ We start with a simple summation function:</paragraph><literal_block xml:space="
     sum += ch[i];
   return sum % M;
 }</literal_block><paragraph>This function sums the ASCII values of the letters in a string.
-If the hash table size <math>M</math> is small compared to the
+If the hash table size <title_reference>M</title_reference> is small compared to the
 resulting summations, then this hash function should do a
 good job of distributing strings evenly among the hash table slots,
 because it gives equal weight to all characters in the string.
@@ -138,8 +138,8 @@ Note that the order of the characters in the string has no effect on
 the result.
 A similar method for integers would add the digits of the key
 value, assuming that there are enough digits to</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph>keep any one or two digits with bad distribution from skewing the
-results of the process and</paragraph></list_item><list_item><paragraph>generate a sum much larger than <math>M</math>.</paragraph></list_item></enumerated_list><paragraph>As with many other hash functions, the final step is to apply the
-modulus operator to the result, using table size <math>M</math> to generate
+results of the process and</paragraph></list_item><list_item><paragraph>generate a sum much larger than <title_reference>M</title_reference>.</paragraph></list_item></enumerated_list><paragraph>As with many other hash functions, the final step is to apply the
+modulus operator to the result, using table size <title_reference>M</title_reference> to generate
 a value within the table range.
 If the sum is not sufficiently large, then the modulus operator will
 yield a poor distribution.
@@ -185,7 +185,7 @@ It processes the string four bytes at a time, and interprets each of
 the four-byte chunks as a single long integer value.
 The integer values for the four-byte chunks are added together.
 In the end, the resulting sum is converted to the range 0 to
-<math>M-1</math> using the modulus operator.</paragraph><paragraph>For example, if the string "aaaabbbb" is passed to <literal>sfold</literal>,
+<title_reference>M-1</title_reference> using the modulus operator.</paragraph><paragraph>For example, if the string "aaaabbbb" is passed to <literal>sfold</literal>,
 then the first four bytes ("aaaa") will be interpreted as the
 integer value 1,633,771,873,
 and the next four bytes ("bbbb") will be

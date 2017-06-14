@@ -30,18 +30,18 @@ Each linked list element contains a pointer to one child.
 Thus, the leftmost child of a node can be found directly because it is
 the first element in the linked list.
 However, to find the right sibling for a node is more difficult.
-Consider the case of a node <math>M</math> and its parent <math>P</math>.
-To find <math>M</math> 's right sibling, we must move down the child list
-of <math>P</math> until the linked list element storing the pointer
-to <math>M</math> has been found.
+Consider the case of a node <title_reference>M</title_reference> and its parent <title_reference>P</title_reference>.
+To find <title_reference>M</title_reference> 's right sibling, we must move down the child list
+of <title_reference>P</title_reference> until the linked list element storing the pointer
+to <title_reference>M</title_reference> has been found.
 Going one step further takes us to the linked list element that stores
-a pointer to <math>M</math> 'sright sibling.
-Thus, in the worst case, to find <math>M</math> 's right sibling requires
-that all children of <math>M</math> 's parent be searched.</paragraph><paragraph>Combining trees using this representation is difficult if each tree
+a pointer to <title_reference>M</title_reference> 'sright sibling.
+Thus, in the worst case, to find <title_reference>M</title_reference> 's right sibling requires
+that all children of <title_reference>M</title_reference> 's parent be searched.</paragraph><paragraph>Combining trees using this representation is difficult if each tree
 is stored in a separate node array.
 If the nodes of both trees are stored in a single node array, then
-adding tree <math>\mathbf{T}</math> as a subtree of node <math>R</math> is done
-by simply adding the root of <math>\mathbf{T}</math> to <math>R</math> 's list
+adding tree <title_reference>mathbf{T}</title_reference> as a subtree of node <title_reference>R</title_reference> is done
+by simply adding the root of <title_reference>mathbf{T}</title_reference> to <title_reference>R</title_reference> 's list
 of children.</paragraph></section><section ids="the-left-child-right-sibling-implementation" names="the\ left-child/right-sibling\ implementation"><title>The Left-Child/Right-Sibling Implementation</title><paragraph>With the "list of children" implementation, it is difficult to
 access a node's right sibling.
 Figure <title_reference>Figure #Explicit</title_reference> presents an improvement.
@@ -87,11 +87,11 @@ free store and return the old copy of the node to free store for
 later reuse.
 This works especially well in a language with built-in garbage
 collection such as Java.
-For example, assume that a node <math>M</math> initially has two children,
-and that space for two child pointers is allocated when <math>M</math> is
+For example, assume that a node <title_reference>M</title_reference> initially has two children,
+and that space for two child pointers is allocated when <title_reference>M</title_reference> is
 created.
-If a third child is added to <math>M</math>, space for a new node with
-three child pointers can be allocated, the contents of <math>M</math> is
+If a third child is added to <title_reference>M</title_reference>, space for a new node with
+three child pointers can be allocated, the contents of <title_reference>M</title_reference> is
 copied over to the new space, and the old space is then returned to
 free store.
 As an alternative to relying on the system's garbage collector,

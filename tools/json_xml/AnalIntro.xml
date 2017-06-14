@@ -85,10 +85,10 @@ A basic operation must have the property that its time to
 complete does not depend on the particular values of its operands.
 Adding or comparing two integer variables are examples of basic
 operations in most programming languages.
-Summing the contents of an array containing <math>n</math> integers is not,
-because the cost depends on the value of <math>n</math>
+Summing the contents of an array containing <title_reference>n</title_reference> integers is not,
+because the cost depends on the value of <title_reference>n</title_reference>
 (i.e., the size of the input).</paragraph><target refid="seqmax"></target><topic ids="seqmax" names="seqmax"><title>Example</title><paragraph>Consider a simple algorithm to solve the problem of finding the
-largest value in an array of <math>n</math> integers.
+largest value in an array of <title_reference>n</title_reference> integers.
 The algorithm looks at each integer in turn, saving the position of
 the largest value seen so far.
 This algorithm is called the <emphasis>largest-value sequential search</emphasis>
@@ -99,24 +99,24 @@ of the largest value seen so far.
 It is reasonable to assume that it takes a fixed amount of time to
 do one such comparison, regardless of the value of the two
 integers or their positions in the array.</paragraph><paragraph>Because the most important factor affecting running time is
-normally size of the input, for a given input size <math>n</math> we
-often express the time <math>\mathbf{T}</math> to  run the algorithm as
-a function of <math>n</math>, written as <math>\mathbf{T}(n)</math>.
-We will always assume <math>\mathbf{T}(n)</math> is a non-negative
-value.</paragraph><paragraph>Let us call <math>c</math> the amount of time required to compare two
+normally size of the input, for a given input size <title_reference>n</title_reference> we
+often express the time <title_reference>mathbf{T}</title_reference> to  run the algorithm as
+a function of <title_reference>n</title_reference>, written as <title_reference>mathbf{T}(n)</title_reference>.
+We will always assume <title_reference>mathbf{T}(n)</title_reference> is a non-negative
+value.</paragraph><paragraph>Let us call <title_reference>c</title_reference> the amount of time required to compare two
 integers in function <literal>largest</literal>.
-We do not care right now what the precise value of <math>c</math> might
+We do not care right now what the precise value of <title_reference>c</title_reference> might
 be.
 Nor are we concerned with the time required to increment
-variable <math>i</math> because this must be done for each value in the
+variable <title_reference>i</title_reference> because this must be done for each value in the
 array, or the time for the actual assignment when a larger value is
 found, or the little bit of extra time taken to initialize
 <literal>currlarge</literal>.
 We just want a reasonable approximation for the time taken to
 execute the algorithm.
 The total time to run <literal>largest</literal> is therefore approximately
-<math>cn</math>, because we must make <math>n</math> comparisons,
-with each comparison costing <math>c</math> time.
+<title_reference>cn</title_reference>, because we must make <title_reference>n</title_reference> comparisons,
+with each comparison costing <title_reference>c</title_reference> time.
 We say that function <literal>largest</literal>
 (and by extension, the largest-value sequential search algorithm for
 any typical implementation) has a running time expressed
@@ -126,27 +126,27 @@ integer array to a variable is simply the time required to copy the
 value of the first array value.
 We can assume this assignment takes a constant amount of time
 regardless of the value.
-Let us call <math>c_1</math> the amount of time necessary to copy an
+Let us call <title_reference>c_1</title_reference> the amount of time necessary to copy an
 integer.
 No matter how large the array on a typical computer
 (given reasonable conditions for memory and array size), the time
 to copy the value from the first position of the array is always
-<math>c_1</math>.
-Thus, the equation for this algorithm is simply</paragraph><math_block xml:space="preserve">\mathbf{T}(n) = c_1,</math_block><paragraph>indicating that the size of the input <math>n</math> has no effect on
+<title_reference>c_1</title_reference>.
+Thus, the equation for this algorithm is simply</paragraph><math_block xml:space="preserve">\mathbf{T}(n) = c_1,</math_block><paragraph>indicating that the size of the input <title_reference>n</title_reference> has no effect on
 the running time.
 This is called a <title_reference>constant running time</title_reference>.</paragraph></topic><topic><title>Example</title><paragraph>Consider the following code:</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>What is the running time for this code fragment?
-Clearly it takes longer to run when <math>n</math> is larger.
+Clearly it takes longer to run when <title_reference>n</title_reference> is larger.
 The basic operation in this example is the
 increment operation for variable <literal>sum</literal>.
 We can assume that incrementing takes constant time;
-call this time <math>c_2</math>.
+call this time <title_reference>c_2</title_reference>.
 (We can ignore the time required to initialize <literal>sum</literal>,
 and to increment the loop counters <literal>i</literal> and <literal>j</literal>.
 In practice, these costs can safely be bundled into time
-<math>c_2</math>.)
-The total number of increment operations is <math>n^2</math>.
+<title_reference>c_2</title_reference>.)
+The total number of increment operations is <title_reference>n^2</title_reference>.
 Thus, we say that the running time is
-<math>\mathbf{T}(n) = c_2 n^2</math>.</paragraph></topic></section><section ids="growth-rates" names="growth\ rates"><title>Growth Rates</title><paragraph>The <title_reference>growth rate</title_reference> for an algorithm is the rate at which the cost
+<title_reference>mathbf{T}(n) = c_2 n^2</title_reference>.</paragraph></topic></section><section ids="growth-rates" names="growth\ rates"><title>Growth Rates</title><paragraph>The <title_reference>growth rate</title_reference> for an algorithm is the rate at which the cost
 of the algorithm grows as the size of its input grows.
 The following figure shows a graph for six equations,
 each meant to describe the running time for a particular program or
@@ -168,46 +168,46 @@ algorithms are shown.</paragraph><target refid="runtimegraph"></target><raw form
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>The two equations labeled <math>10n</math> and <math>20n</math> are graphed by
+</raw><paragraph>The two equations labeled <title_reference>10n</title_reference> and <title_reference>20n</title_reference> are graphed by
 straight lines.
-A growth rate of <math>cn</math> (for <math>c</math> any positive constant) is
+A growth rate of <title_reference>cn</title_reference> (for <title_reference>c</title_reference> any positive constant) is
 often referred to as a <title_reference>linear growth rate</title_reference> or running time.
-This means that as the value of <math>n</math> grows, the running time of
+This means that as the value of <title_reference>n</title_reference> grows, the running time of
 the algorithm grows in the same proportion.
-Doubling the value of <math>n</math> roughly doubles the running time.
+Doubling the value of <title_reference>n</title_reference> roughly doubles the running time.
 An algorithm whose running-time equation has a highest-order term
-containing a factor of <math>n^2</math> is said to have a
+containing a factor of <title_reference>n^2</title_reference> is said to have a
 <title_reference>quadratic growth rate</title_reference>.
-In the figure, the line labeled <math>2n^2</math>
+In the figure, the line labeled <title_reference>2n^2</title_reference>
 represents a quadratic growth rate.
-The line labeled <math>2^n</math> represents an
+The line labeled <title_reference>2^n</title_reference> represents an
 <title_reference>exponential growth rate</title_reference>.
-This name comes from the fact that <math>n</math> appears in the exponent.
-The line labeled <math>n!</math> also grows exponentially.</paragraph><paragraph>As you can see from the figure,
+This name comes from the fact that <title_reference>n</title_reference> appears in the exponent.
+The line labeled <title_reference>n!</title_reference> also grows exponentially.</paragraph><paragraph>As you can see from the figure,
 the difference between an algorithm whose running time has cost
-<math>\mathbf{T}(n) = 10n</math> and another with cost
-<math>\mathbf{T}(n) = 2n^2</math> becomes tremendous as <math>n</math> grows.
-For <math>n &gt; 5</math>, the algorithm with running time
-<math>\mathbf{T}(n) = 2n^2</math> is already much slower.
-This is despite the fact that <math>10n</math> has a greater constant
-factor than <math>2n^2</math>.
-Comparing the two curves marked <math>20n</math> and <math>2n^2</math> shows
+<title_reference>mathbf{T}(n) = 10n</title_reference> and another with cost
+<title_reference>mathbf{T}(n) = 2n^2</title_reference> becomes tremendous as <title_reference>n</title_reference> grows.
+For <title_reference>n &gt; 5</title_reference>, the algorithm with running time
+<title_reference>mathbf{T}(n) = 2n^2</title_reference> is already much slower.
+This is despite the fact that <title_reference>10n</title_reference> has a greater constant
+factor than <title_reference>2n^2</title_reference>.
+Comparing the two curves marked <title_reference>20n</title_reference> and <title_reference>2n^2</title_reference> shows
 that changing the constant factor for one of the equations only shifts
 the point at which the two curves cross.
-For <math>n&gt;10</math>, the algorithm with cost <math>\mathbf{T}(n) = 2n^2</math>
-is slower than the algorithm with cost <math>\mathbf{T}(n) = 20n</math>.
+For <title_reference>n&gt;10</title_reference>, the algorithm with cost <title_reference>mathbf{T}(n) = 2n^2</title_reference>
+is slower than the algorithm with cost <title_reference>mathbf{T}(n) = 20n</title_reference>.
 This graph also shows that the equation
-<math>\mathbf{T}(n) = 5 n \log n</math>
-grows somewhat more quickly than both <math>\mathbf{T}(n) = 10 n</math> and
-<math>\mathbf{T}(n) = 20 n</math>, but not nearly so quickly as the
-equation <math>\mathbf{T}(n) = 2n^2</math>.
-For constants <math>a, b &gt; 1, n^a</math> grows faster than either
-<math>\log^b n</math> or <math>\log n^b</math>.
-Finally, algorithms with cost <math>\mathbf{T}(n) = 2^n</math> or
-<math>\mathbf{T}(n) = n!</math> are prohibitively expensive for even modest
-values of <math>n</math>.
-Note that for constants <math>a, b \geq 1, a^n</math> grows faster than
-<math>n^b</math>.</paragraph><paragraph>We can get some further insight into relative growth rates for various
+<title_reference>mathbf{T}(n) = 5 n log n</title_reference>
+grows somewhat more quickly than both <title_reference>mathbf{T}(n) = 10 n</title_reference> and
+<title_reference>mathbf{T}(n) = 20 n</title_reference>, but not nearly so quickly as the
+equation <title_reference>mathbf{T}(n) = 2n^2</title_reference>.
+For constants <title_reference>a, b &gt; 1, n^a</title_reference> grows faster than either
+<title_reference>log^b n</title_reference> or <title_reference>log n^b</title_reference>.
+Finally, algorithms with cost <title_reference>mathbf{T}(n) = 2^n</title_reference> or
+<title_reference>mathbf{T}(n) = n!</title_reference> are prohibitively expensive for even modest
+values of <title_reference>n</title_reference>.
+Note that for constants <title_reference>a, b geq 1, a^n</title_reference> grows faster than
+<title_reference>n^b</title_reference>.</paragraph><paragraph>We can get some further insight into relative growth rates for various
 algorithms from the following table.
 Most of the growth rates that appear in typical algorithms are shown,
 along with some representative input sizes.

@@ -4,7 +4,7 @@
 <document dupnames="kruskal's\ algorithm" ids="kruskal-s-algorithm" source="&lt;string&gt;" title="Kruskal's Algorithm"><title>Kruskal's Algorithm</title><subtitle dupnames="kruskal's\ algorithm" ids="id1">Kruskal's Algorithm</subtitle><comment xml:space="preserve">This file is part of the OpenDSA eTextbook project. See</comment><comment xml:space="preserve">http://algoviz.org/OpenDSA for more details.</comment><comment xml:space="preserve">Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and</comment><comment xml:space="preserve">distributed under an MIT open source license.</comment><raw format="xml" xml:space="preserve"><avmetadata>null</avmetadata></raw><paragraph>Our next MCST algorithm is commonly referred to as
 <title_reference>Kruskal's algorithm</title_reference>.
 Kruskal's algorithm is also a simple, greedy algorithm.
-First partition the set of vertices into <math>|\mathbf{V}|</math>
+First partition the set of vertices into <title_reference>|mathbf{V}|</title_reference>
 <title_reference>disjoint sets &lt;UNION/FIND&gt; &lt;UnionFind&gt;</title_reference>,
 each consisting of one vertex.
 Then process the edges in order of weight.
@@ -34,13 +34,13 @@ process the edges.
 The <literal>differ</literal> and <literal>UNION</literal> functions are nearly
 constant in time if path compression and weighted union is used.
 Thus, the total cost of the algorithm is
-<math>\Theta(|\mathbf{E}| \log |\mathbf{E}|)</math> in the worst case,
+<title_reference>Theta(|mathbf{E}| log |mathbf{E}|)</title_reference> in the worst case,
 when nearly all edges must be processed before all the edges of the
 spanning tree are found and the algorithm can stop.
 More often the edges of the spanning tree are the shorter ones,and
-only about <math>|\mathbf{V}|</math> edges must be processed.
+only about <title_reference>|mathbf{V}|</title_reference> edges must be processed.
 If so, the cost is often close to
-<math>\Theta(|\mathbf{V}| \log |\mathbf{E}|)</math> in the average case.</paragraph><raw format="xml" xml:space="preserve"><avembed
+<title_reference>Theta(|mathbf{V}| log |mathbf{E}|)</title_reference> in the average case.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="pe"
     exer_name="KruskalPE"
     long_name="KruskalPE"

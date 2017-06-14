@@ -80,7 +80,7 @@ the disks, the world will end.</paragraph><raw format="xml" xml:space="preserve"
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>The Towers of Hanoi puzzle begins with three poles and <math>n</math>
+</raw><paragraph>The Towers of Hanoi puzzle begins with three poles and <title_reference>n</title_reference>
 rings, where all rings start on the leftmost pole (labeled Pole A).
 The rings each have a different size, and are stacked in order of
 decreasing size with the largest ring at the bottom, as shown in
@@ -97,15 +97,15 @@ It is not possible to do this without first moving the bottom
 (largest) ring to Pole B.
 To do that, Pole B must be empty, and only the bottom ring can be on
 Pole A.
-The remaining <math>n-1</math> rings must be stacked up in order
+The remaining <title_reference>n-1</title_reference> rings must be stacked up in order
 on Pole C, as shown in part (b) of the figure.
 How can you do this?
-Assume that a function <math>X</math> is available to solve the
-problem of moving the top <math>n-1</math> rings from Pole A to Pole C.
+Assume that a function <title_reference>X</title_reference> is available to solve the
+problem of moving the top <title_reference>n-1</title_reference> rings from Pole A to Pole C.
 Then move the bottom ring from Pole A to Pole B.
-Finally, again use function <math>X</math> to move the
-remaining <math>n-1</math> rings from Pole C to Pole B.
-In both cases, "function <math>X</math>" is simply the Towers of Hanoi
+Finally, again use function <title_reference>X</title_reference> to move the
+remaining <title_reference>n-1</title_reference> rings from Pole C to Pole B.
+In both cases, "function <title_reference>X</title_reference>" is simply the Towers of Hanoi
 function called on a smaller version of the problem.</paragraph><paragraph>The secret to success is relying on the Towers of Hanoi
 algorithm to do the work for you.
 You need not be concerned about the gory details of <emphasis>how</emphasis> the

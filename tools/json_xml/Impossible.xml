@@ -14,30 +14,30 @@ be useful to know if executing the program on that input will result
 in an infinite loop without actually running the program.</paragraph><paragraph>Unfortunately, the <title_reference>Halting Problem</title_reference>, as this is called, cannot
 be solved.
 There will never be a computer program that can positively determine,
-for an arbitrary program <math>P</math>, if <math>P</math>
+for an arbitrary program <title_reference>P</title_reference>, if <title_reference>P</title_reference>
 will halt for all input.
 Nor will there even be a computer program that can positively
-determine if arbitrary program <math>P</math> will halt for a specified
-input <math>I</math>.
+determine if arbitrary program <title_reference>P</title_reference> will halt for a specified
+input <title_reference>I</title_reference>.
 How can this be?
 Programmers look at programs regularly to determine if they will
 halt.
 Surely this can be automated.
 As a warning to those who believe any program can be analyzed in this
 way, carefully examine the following code fragment before reading on.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>This is a famous piece of code.
-The sequence of values that is assigned to <math>n</math> by this code is
+The sequence of values that is assigned to <title_reference>n</title_reference> by this code is
 sometimes called the <title_reference>Collatz sequence</title_reference> for input value
-<math>n</math>.
-Does this code fragment halt for all values of <math>n</math>?
+<title_reference>n</title_reference>.
+Does this code fragment halt for all values of <title_reference>n</title_reference>?
 Nobody knows the answer.
 Every input that has been tried halts.
 But does it always halt?
 Note that for this code fragment, because we do not know if it halts,
 we also do not know an upper bound for its running time.
 As for the lower bound, we can easily show
-<math>\Omega(\log n)</math>.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>Personally, I have faith that someday some smart person will
+<title_reference>Omega(log n)</title_reference>.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>Personally, I have faith that someday some smart person will
 completely analyze the Collatz function, proving once and for all
-that the code fragment halts for all values of <math>n</math>.
+that the code fragment halts for all values of <title_reference>n</title_reference>.
 Doing so may well give us techniques that advance our ability to do
 algorithm analysis in general.
 Unfortunately, proofs from <title_reference>computability</title_reference>  the branch of
@@ -63,9 +63,9 @@ If we can find a way to assign all of the set members to bins, then the
 set is countable.
 For example, consider the set of positive even integers 2, 4, and so
 on.
-We can assign an integer <math>i</math> to bin <math>i/2</math>
+We can assign an integer <title_reference>i</title_reference> to bin <title_reference>i/2</title_reference>
 (or, if we don't mind skipping some bins, then we can assign even
-number <math>i</math> to bin <math>i</math>).
+number <title_reference>i</title_reference> to bin <title_reference>i</title_reference>).
 Thus, the set of even integers is countable.
 This should be no surprise, because intuitively there are "fewer"
 positive even integers than there are positive integers,
@@ -73,16 +73,16 @@ even though both are infinite sets.
 But there are not really any more positive integers than
 there are positive even integers, because we can uniquely assign every
 positive integer to some positive even integer by simply assigning
-positive integer <math>i</math> to positive even integer <math>2i</math>.</paragraph><paragraph>On the other hand, the set of all integers is also countable, even
+positive integer <title_reference>i</title_reference> to positive even integer <title_reference>2i</title_reference>.</paragraph><paragraph>On the other hand, the set of all integers is also countable, even
 though this set appears to be bigger than the set of positive
 integers.
 This is true because we can assign 0 to positive integer 1, 1 to
 positive integer 2, -1 to positive integer 3, 2 to positive integer 4,
 -2 to positive integer 5, and so on.
-In general, assign positive integer value <math>i</math> to positive
+In general, assign positive integer value <title_reference>i</title_reference> to positive
 integer
-value <math>2i</math>, and assign negative integer value <math>-i</math> to
-positive integer value <math>2i+1</math>.
+value <title_reference>2i</title_reference>, and assign negative integer value <title_reference>-i</title_reference> to
+positive integer value <title_reference>2i+1</title_reference>.
 We will never run out of positive integers to assign, and we know
 exactly which positive integer every integer is assigned to.
 Because every integer gets an assignment, the set of integers is
@@ -90,17 +90,17 @@ countably infinite.</paragraph><paragraph>Are the number of programs countable o
 A program can be viewed as simply a string of characters (including
 special punctuation, spaces, and line breaks).
 Let us assume that the number of different characters that can appear
-in a program is <math>P</math>.
-(Using the ASCII character set, <math>P</math> must be less than 128,
+in a program is <title_reference>P</title_reference>.
+(Using the ASCII character set, <title_reference>P</title_reference> must be less than 128,
 but the actual number does not matter).
 If the number of strings is countable, then surely the number of
 programs is also countable.
 We can assign strings to the bins as follows.
 Assign the null string to the first bin.
 Now, take all strings of one character, and assign them to the next
-<math>P</math> bins in "alphabetic" or ASCII code order.
+<title_reference>P</title_reference> bins in "alphabetic" or ASCII code order.
 Next, take all strings of two characters, and assign them to the next
-<math>P^2</math> bins, again in ASCII code order working from left to
+<title_reference>P^2</title_reference> bins, again in ASCII code order working from left to
 right.
 Strings of three characters are likewise assigned to bins, then
 strings of length four, and so on.
@@ -147,7 +147,7 @@ regardless of the input value.
 Bin 2 could store the function that returns its input.
 Bin 3 could store the function that doubles its input and adds 5.
 Bin 4 could store a function for which we can see no simple
-relationship between input and output. <footnote_reference auto="1" ids="id1" refid="id2">1</footnote_reference>
+relationship between input and output.
 These four functions as assigned to the first four bins are shown in
 Figure <title_reference>Figure #FuncAssign</title_reference>.</paragraph><target refid="funcassign"></target><raw format="xml" ids="funcassign" names="funcassign" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>Can we assign every function to a bin?
 The answer is no, because there is always a way to create a new
@@ -157,22 +157,22 @@ that they claim includes all of the functions.
 We can build a new function that has not been assigned to any bin, as
 follows.
 Take the output value for input 1 from the function in the first bin.
-Call this value <math>F_1(1)</math>.
+Call this value <title_reference>F_1(1)</title_reference>.
 Add 1 to it, and assign the result as the output of a new
 function for input value 1.
 Regardless of the remaining values assigned to our new function, it
 must be different from the first function in the table, because the
 two give different outputs for input 1.
 Now take the output value for 2 from the second function in the table
-(known as <math>F_2(2)</math>).
+(known as <title_reference>F_2(2)</title_reference>).
 Add 1 to this value and assign it as the output for 2 in our new
 function.
 Thus, our new function must be different from the function of Bin 2,
 because they will differ at least at the second value.
-Continue in this manner, assigning <math>F_{new}(i) = F_i(i) + 1</math> for
-all values <math>i</math>.
-Thus, the new function must be different from any function <math>F_i</math>
-at least at position <math>i</math>.
+Continue in this manner, assigning <title_reference>F_{new}(i) = F_i(i) + 1</title_reference> for
+all values <title_reference>i</title_reference>.
+Thus, the new function must be different from any function <title_reference>F_i</title_reference>
+at least at position <title_reference>i</title_reference>.
 This procedure for constructing a new function not already in the
 table is called <title_reference>diagonalization</title_reference>.
 Because the new function is different from every other function, it
@@ -261,44 +261,44 @@ Recall that our proof for the Halting Problem involved functions
 that took as parameters a string representing a program and another
 string representing an input.
 Consider another function <literal>combine</literal> that takes a program
-<math>P</math> and an input string <math>I</math> as parameters.
-Function <literal>combine</literal> modifies <math>P</math> to store <math>I</math>
-as a static variable <math>S</math> and further modifies all calls
-to input functions within <math>P</math> to instead get their input from
-<math>S</math>.
-Call the resulting program <math>P'</math>.
+<title_reference>P</title_reference> and an input string <title_reference>I</title_reference> as parameters.
+Function <literal>combine</literal> modifies <title_reference>P</title_reference> to store <title_reference>I</title_reference>
+as a static variable <title_reference>S</title_reference> and further modifies all calls
+to input functions within <title_reference>P</title_reference> to instead get their input from
+<title_reference>S</title_reference>.
+Call the resulting program <title_reference>P'</title_reference>.
 It should take no stretch of the imagination to believe that any
 decent compiler could be modified to take computer programs and
 input strings and produce a new computer program that has been
 modified in this way.
-Now, take <math>P'</math> and feed it to <literal>Ehalt</literal>.
-If <literal>Ehalt</literal> says that <math>P'</math> will halt, then we know that
-<math>P</math> would halt on input <math>I</math>.
+Now, take <title_reference>P'</title_reference> and feed it to <literal>Ehalt</literal>.
+If <literal>Ehalt</literal> says that <title_reference>P'</title_reference> will halt, then we know that
+<title_reference>P</title_reference> would halt on input <title_reference>I</title_reference>.
 In other words, we now have a procedure for solving the original
 Halting Problem.
 The only assumption that we made was the existence of <literal>Ehalt</literal>.
 Thus, the problem of determining if a program will halt on no input
-must be unsolvable.</paragraph></topic><topic><title>Example</title><paragraph>For arbitrary program <math>P</math>, does there exist <strong>any</strong> input for
-which <math>P</math> halts?</paragraph><paragraph><strong>Proof by contradiction:</strong></paragraph><paragraph>This problem is also uncomputable.
+must be unsolvable.</paragraph></topic><topic><title>Example</title><paragraph>For arbitrary program <title_reference>P</title_reference>, does there exist <strong>any</strong> input for
+which <title_reference>P</title_reference> halts?</paragraph><paragraph><strong>Proof by contradiction:</strong></paragraph><paragraph>This problem is also uncomputable.
 Assume that we had a function <literal>Ahalt</literal> that, when given program
-<math>P</math> as input would determine if there is some input for which
-<math>P</math> halts.
+<title_reference>P</title_reference> as input would determine if there is some input for which
+<title_reference>P</title_reference> halts.
 We could modify our compiler (or write a function as part of a
-program) to take <math>P</math> and some input string <math>w</math>, and
-modify it so that <math>w</math> is hardcoded inside <math>P</math>,
-with <math>P</math> reading no input.
-Call this modified program <math>P'</math>.
-Now, <math>P'</math> always behaves the same way regardless of its
+program) to take <title_reference>P</title_reference> and some input string <title_reference>w</title_reference>, and
+modify it so that <title_reference>w</title_reference> is hardcoded inside <title_reference>P</title_reference>,
+with <title_reference>P</title_reference> reading no input.
+Call this modified program <title_reference>P'</title_reference>.
+Now, <title_reference>P'</title_reference> always behaves the same way regardless of its
 input, because it ignores all input.
-However, because <math>w</math> is now hardwired inside of <math>P'</math>,
-the behavior we get is that of <math>P</math> when given <math>w</math> as
+However, because <title_reference>w</title_reference> is now hardwired inside of <title_reference>P'</title_reference>,
+the behavior we get is that of <title_reference>P</title_reference> when given <title_reference>w</title_reference> as
 input.
-So, <math>P'</math> will halt on any arbitrary input if and only if
-<math>P</math> would halt on input <math>w</math>.
-We now feed <math>P'</math> to function <literal>Ahalt</literal>.
-If <literal>Ahalt</literal> could determine that <math>P'</math> halts on some
-input, then that is the same as determining that <math>P</math> halts on
-input <math>w</math>.
+So, <title_reference>P'</title_reference> will halt on any arbitrary input if and only if
+<title_reference>P</title_reference> would halt on input <title_reference>w</title_reference>.
+We now feed <title_reference>P'</title_reference> to function <literal>Ahalt</literal>.
+If <literal>Ahalt</literal> could determine that <title_reference>P'</title_reference> halts on some
+input, then that is the same as determining that <title_reference>P</title_reference> halts on
+input <title_reference>w</title_reference>.
 But we know that that is impossible.
 Therefore, <literal>Ahalt</literal> cannot exist.</paragraph></topic><paragraph>There are many things that we would like to have a computer do
 that are unsolvable.
@@ -330,7 +330,7 @@ determine if a program contains a particular virus, at least for the
 ones that are now known.
 Real virus checkers do a pretty good job,
 but, it will always be possible for malicious people to invent new
-viruses that no existing virus checker can recognize.</paragraph><footnote auto="1" backrefs="id1" ids="id2" names="1"><label>1</label><paragraph>There is no requirement for a function to have any discernible
+viruses that no existing virus checker can recognize.</paragraph><footnote auto="1" ids="id1" names="1"><label>1</label><paragraph>There is no requirement for a function to have any discernible
 relationship between input and output.
 A function is simply a mapping of inputs to outputs, with no
 constraint on how the mapping is determined.</paragraph></footnote></section></document>

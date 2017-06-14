@@ -6,28 +6,28 @@ should be viewed as a BST with the following additional property:
 For every node, the heights of its left and right subtrees differ by
 at most 1.
 As long as the tree maintains this property, if the tree contains
-<math>n</math> nodes, then it has a depth of at most <math>O(\log n)</math>.
-As a result, search for any node will cost <math>O(\log n)</math>,
+<title_reference>n</title_reference> nodes, then it has a depth of at most <title_reference>O(log n)</title_reference>.
+As a result, search for any node will cost <title_reference>O(log n)</title_reference>,
 and if the updates can be done in time proportional to the depth of
 the node inserted or deleted, then updates will also cost
-<math>O(\log n)</math>, even in the worst case.</paragraph><paragraph>The key to making the AVL tree work is to alter the insert and delete
+<title_reference>O(log n)</title_reference>, even in the worst case.</paragraph><paragraph>The key to making the AVL tree work is to alter the insert and delete
 routines so as to maintain the balance property.
 Of course, to be practical, we must be able to implement the revised
-update routines in <math>\Theta(\log n)</math> time.</paragraph><target refid="avlinsert"></target><raw format="xml" ids="avlinsert" names="avlinsert" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>Consider what happens when we insert a node with key value 5,
+update routines in <title_reference>Theta(log n)</title_reference> time.</paragraph><target refid="avlinsert"></target><raw format="xml" ids="avlinsert" names="avlinsert" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>Consider what happens when we insert a node with key value 5,
 as shown in Figure <title_reference>Figure #AVLinsert</title_reference>.
 The tree on the left meets the AVL tree balance requirements.
 After the insertion, two nodes no longer meet the requirements.
 Because the original tree met the balance requirement, nodes in the
 new tree can only be unbalanced by a difference of at most 2 in the
 subtrees.
-For the bottommost unbalanced node, call it <math>S</math>, there are 4
+For the bottommost unbalanced node, call it <title_reference>S</title_reference>, there are 4
 cases:</paragraph><enumerated_list enumtype="arabic" prefix="(" suffix=")"><list_item><paragraph>The extra node is in the left child of the left child of
-<math>S</math>.</paragraph></list_item><list_item><paragraph>The extra node is in the right child of the left child of
-<math>S</math>.</paragraph></list_item><list_item><paragraph>The extra node is in the left child of the right child of
-<math>S</math>.</paragraph></list_item><list_item><paragraph>The extra node is in the right child of the right child of
-<math>S</math>.</paragraph></list_item></enumerated_list><paragraph>Cases 1 and 4 are symmetrical, as are cases 2 and 3.
+<title_reference>S</title_reference>.</paragraph></list_item><list_item><paragraph>The extra node is in the right child of the left child of
+<title_reference>S</title_reference>.</paragraph></list_item><list_item><paragraph>The extra node is in the left child of the right child of
+<title_reference>S</title_reference>.</paragraph></list_item><list_item><paragraph>The extra node is in the right child of the right child of
+<title_reference>S</title_reference>.</paragraph></list_item></enumerated_list><paragraph>Cases 1 and 4 are symmetrical, as are cases 2 and 3.
 Note also that the unbalanced nodes must be on the path from
-the root to the newly inserted node.</paragraph><paragraph>Our problem now is how to balance the tree in <math>O(\log n)</math> time.
+the root to the newly inserted node.</paragraph><paragraph>Our problem now is how to balance the tree in <title_reference>O(log n)</title_reference> time.
 It turns out that we can do this using a series of local operations
 known as <title_reference>rotations &lt;rotation&gt;</title_reference>.
 Cases 1 and 4 can be fixed using a <title_reference>single rotation</title_reference>,

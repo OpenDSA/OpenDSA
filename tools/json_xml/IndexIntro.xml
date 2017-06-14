@@ -8,7 +8,7 @@ search keys, requiring the ability to insert, delete, and search for
 records.
 Hashing provides outstanding performance for such
 situations, but only in the limited case in which all searches are of
-the form "find the record with key value <math>K</math>".
+the form "find the record with key value <title_reference>K</title_reference>".
 Many applications require more general search capabilities.
 One example is a range query
 search for all records whose key lies within some range.

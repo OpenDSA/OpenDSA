@@ -9,29 +9,29 @@ Summations are simply the sum of costs for some function applied to a
 range of parameter values.
 Summations are typically written with the following "Sigma"
 notation:</paragraph><math_block xml:space="preserve">\sum_{i=1}^{n} f(i).</math_block><paragraph>This notation indicates that we are summing the value of
-<math>f(i)</math> over some range of (integer) values.
+<title_reference>f(i)</title_reference> over some range of (integer) values.
 The parameter to the expression and its initial value are indicated
-below the <math>\sum</math> symbol.
-Here, the notation <math>i=1</math> indicates that the parameter is
-<math>i</math> and that it begins with the value 1.
-At the top of the <math>\sum</math> symbol is the expression <math>n</math>.
-This indicates the maximum value for the parameter <math>i</math>.
-Thus, this notation means to sum the values of <math>f(i)</math> as
-<math>i</math> ranges across the integers from 1 through <math>n</math>.
+below the <title_reference>sum</title_reference> symbol.
+Here, the notation <title_reference>i=1</title_reference> indicates that the parameter is
+<title_reference>i</title_reference> and that it begins with the value 1.
+At the top of the <title_reference>sum</title_reference> symbol is the expression <title_reference>n</title_reference>.
+This indicates the maximum value for the parameter <title_reference>i</title_reference>.
+Thus, this notation means to sum the values of <title_reference>f(i)</title_reference> as
+<title_reference>i</title_reference> ranges across the integers from 1 through <title_reference>n</title_reference>.
 This can also be written
-<math>f(1) + f(2) + \cdots + f(n-1) + f(n)</math>.
+<title_reference>f(1) + f(2) + cdots + f(n-1) + f(n)</title_reference>.
 Within a sentence, Sigma notation is typeset as
-<math>\sum_{i=1}^{n} f(i)</math>.</paragraph><paragraph>Given a summation, you often wish to replace it with an algebraic
+<title_reference>sum_{i=1}^{n} f(i)</title_reference>.</paragraph><paragraph>Given a summation, you often wish to replace it with an algebraic
 equation with the same value as the summation.
 This is known as a <title_reference>closed-form solution</title_reference>,
 and the process of replacing the summation with its closed-form
 solution is known as solving the summation.
 For example, the summation
-<math>\sum_{i=1}^{n} 1</math>
-is simply the expression "1" summed <math>n</math> times
-(remember that <math>i</math> ranges from 1 to <math>n</math>).
-Because the sum of <math>n</math> 1s is <math>n</math>,
-the closed-form solution is <math>n</math>.</paragraph><paragraph>Here is an explanation about the closed form solution of one summation
+<title_reference>sum_{i=1}^{n} 1</title_reference>
+is simply the expression "1" summed <title_reference>n</title_reference> times
+(remember that <title_reference>i</title_reference> ranges from 1 to <title_reference>n</title_reference>).
+Because the sum of <title_reference>n</title_reference> 1s is <title_reference>n</title_reference>,
+the closed-form solution is <title_reference>n</title_reference>.</paragraph><paragraph>Here is an explanation about the closed form solution of one summation
 that you will see many times in this book.
 Since this appears so often, it will help you later if you can get
 comfortable with it.</paragraph><raw format="xml" xml:space="preserve"><inlineav
@@ -53,11 +53,11 @@ comfortable with it.</paragraph><raw format="xml" xml:space="preserve"><inlineav
 </raw><paragraph>Here is a list of useful summations, along with their closed-form solutions.</paragraph><math_block xml:space="preserve">\sum_{i = 1}^{n} i &amp;=&amp; \frac{n (n+1)}{2}.</math_block><math_block xml:space="preserve">\sum_{i = 1}^{n} i^2 &amp;=&amp; \frac{2 n^3 + 3 n^2 + n}{6} =
 \frac{n(2n + 1)(n + 1)}{6}.</math_block><math_block xml:space="preserve">\sum_{i = 1}^{\log n} n &amp;=&amp; n \log n.</math_block><math_block xml:space="preserve">\sum_{i = 0}^\infty a^i &amp;=&amp; \frac{1}{1-a}\ \mbox{for}
 \ 0 &lt; a &lt; 1.</math_block><math_block xml:space="preserve">\sum_{i=0}^{n} a^i &amp;=&amp; \frac{a^{n+1} - 1}{a - 1}\ \mbox{for}
-\ a \neq 1.</math_block><paragraph>As special cases to this last summation, we have the following two:</paragraph><math_block xml:space="preserve">\sum_{i = 1}^{n} \frac{1}{2^i} &amp;=&amp; 1 - \frac{1}{2^n},</math_block><math_block xml:space="preserve">\sum_{i = 0}^{n} 2^i &amp;=&amp; 2^{n+1} - 1.</math_block><paragraph>As a corollary to <title_reference>sum7</title_reference>,</paragraph><math_block xml:space="preserve">\sum_{i = 0}^{\log n} 2^i &amp;=&amp; 2^{\log n + 1} - 1 = 2n - 1.</math_block><paragraph>Finally,</paragraph><math_block xml:space="preserve">\sum_{i=1}^{n} \frac{i}{2^i} &amp;=&amp; 2 - \frac{n+2}{2^n}.</math_block><paragraph>The sum of reciprocals from 1 to <math>n</math>, called the
-<title_reference>Harmonic Series</title_reference> and written <math>{\cal H}_n</math>, has a value
-between <math>\log_e n</math> and <math>\log_e n + 1</math>.
-To be more precise, as <math>n</math> grows,
-the summation grows closer to</paragraph><math_block xml:space="preserve">{\cal H}_n \approx \log_e n + \gamma + \frac{1}{2n},</math_block><paragraph>where <math>\gamma</math> is Euler's constant and has the value 0.5772...</paragraph><paragraph>Most of these equalities can be proved easily by a
+\ a \neq 1.</math_block><paragraph>As special cases to this last summation, we have the following two:</paragraph><math_block xml:space="preserve">\sum_{i = 1}^{n} \frac{1}{2^i} &amp;=&amp; 1 - \frac{1}{2^n},</math_block><math_block xml:space="preserve">\sum_{i = 0}^{n} 2^i &amp;=&amp; 2^{n+1} - 1.</math_block><paragraph>As a corollary to <title_reference>sum7</title_reference>,</paragraph><math_block xml:space="preserve">\sum_{i = 0}^{\log n} 2^i &amp;=&amp; 2^{\log n + 1} - 1 = 2n - 1.</math_block><paragraph>Finally,</paragraph><math_block xml:space="preserve">\sum_{i=1}^{n} \frac{i}{2^i} &amp;=&amp; 2 - \frac{n+2}{2^n}.</math_block><paragraph>The sum of reciprocals from 1 to <title_reference>n</title_reference>, called the
+<title_reference>Harmonic Series</title_reference> and written <title_reference>{cal H}_n</title_reference>, has a value
+between <title_reference>log_e n</title_reference> and <title_reference>log_e n + 1</title_reference>.
+To be more precise, as <title_reference>n</title_reference> grows,
+the summation grows closer to</paragraph><math_block xml:space="preserve">{\cal H}_n \approx \log_e n + \gamma + \frac{1}{2n},</math_block><paragraph>where <title_reference>gamma</title_reference> is Euler's constant and has the value 0.5772...</paragraph><paragraph>Most of these equalities can be proved easily by a
 <title_reference>proof by induction &lt;Proofs&gt;</title_reference>.
 Unfortunately, induction does not help us derive a closed-form
 solution.

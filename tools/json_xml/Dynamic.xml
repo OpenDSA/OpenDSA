@@ -21,23 +21,23 @@ on the freelist must be found that is large enough to service the
 request.
 If no such block is found, then the memory manager must resort to a
 <title_reference>failure policy &lt;failure policy&gt; &lt;Garbage&gt;</title_reference> such as
-<title_reference>garbage collection</title_reference>.</paragraph><paragraph>If there is a request for <math>m</math> words, and no block exists of
-exactly size <math>m</math>, then a larger block must be used instead.
+<title_reference>garbage collection</title_reference>.</paragraph><paragraph>If there is a request for <title_reference>m</title_reference> words, and no block exists of
+exactly size <title_reference>m</title_reference>, then a larger block must be used instead.
 One possibility in this case is that the entire block is given away
 to the memory allocation request.
 This might be desirable when the size of the block is only slightly
 larger than the request.
 This is because saving a tiny block that is too small to be useful for
 a future memory request might not be worthwhile.
-Alternatively, for a free block of size <math>k</math>,
-with <math>k &gt; m</math>, up to <math>k - m</math> space may be
+Alternatively, for a free block of size <title_reference>k</title_reference>,
+with <title_reference>k &gt; m</title_reference>, up to <title_reference>k - m</title_reference> space may be
 retained by the memory manager to form a new free
 block, while the rest is used to service the request.</paragraph><paragraph>Memory managers can suffer from two types of fragmentation.
 <title_reference>External fragmentation</title_reference>
 occurs when a series of memory requests result in lots of small free
 blocks, no one of which is useful for servicing typical requests.
-<title_reference>Internal fragmentation</title_reference> occurs when more than <math>m</math> words
-are allocated to a request for <math>m</math> words, wasting free storage.
+<title_reference>Internal fragmentation</title_reference> occurs when more than <title_reference>m</title_reference> words
+are allocated to a request for <title_reference>m</title_reference> words, wasting free storage.
 The difference between internal and external fragmentation is
 illustrated by this figure.
 The small white block labeled "External fragmentation" is too small

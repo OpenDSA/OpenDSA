@@ -25,26 +25,26 @@ multidimensional coordinates, such as locations in 2D or 3D space.</paragraph><t
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>We define the discriminator at level <math>i</math> to be <math>i \bmod k</math>
-for <math>k</math> dimensions.
-For example, assume that we store data organized by <math>xy</math>
+</raw><paragraph>We define the discriminator at level <title_reference>i</title_reference> to be <title_reference>i bmod k</title_reference>
+for <title_reference>k</title_reference> dimensions.
+For example, assume that we store data organized by <title_reference>xy</title_reference>
 coordinates.
-In this case, <math>k</math> is 2 (there are two dimensions), with the
-<math>x</math> coordinate field arbitrarily designated key 0, and the
-<math>y</math> coordinate field designated key 1.
-At each level, the discriminator alternates between <math>x</math> and <math>y</math>.
-Thus, a node <math>N</math> at level 0 (the root) would split
+In this case, <title_reference>k</title_reference> is 2 (there are two dimensions), with the
+<title_reference>x</title_reference> coordinate field arbitrarily designated key 0, and the
+<title_reference>y</title_reference> coordinate field designated key 1.
+At each level, the discriminator alternates between <title_reference>x</title_reference> and <title_reference>y</title_reference>.
+Thus, a node <title_reference>N</title_reference> at level 0 (the root) would split
 the world in half with a vertical split.
-Records with <math>x</math> coordinates in the lower half would be on the
+Records with <title_reference>x</title_reference> coordinates in the lower half would be on the
 left side of the dividing line, and thus in the left subtree.
-Records with <math>x</math> coordinates in the upper half would be on the
+Records with <title_reference>x</title_reference> coordinates in the upper half would be on the
 right side of the dividing line, and thus in the right subtree.
-At this stage, the <math>y</math> coordinate value would play no role.</paragraph><paragraph>At level 1, the <math>y</math> coordinate becomes the descriminator.
+At this stage, the <title_reference>y</title_reference> coordinate value would play no role.</paragraph><paragraph>At level 1, the <title_reference>y</title_reference> coordinate becomes the descriminator.
 In other words, the left half of the world will be split horizontally
 in half if necessary.</paragraph><paragraph>A leaf node in the Bintree can either be empty, or it can contain one
 data point (in which case it is referred to as being full).
 Splitting takes place whenever a point is to be inserted into a leaf
-node that already contains a point.</paragraph><paragraph>Searching a Bintree for the record with a specified <math>xy</math>
+node that already contains a point.</paragraph><paragraph>Searching a Bintree for the record with a specified <title_reference>xy</title_reference>
 coordinate is like searching a BST, except that each level of the
 Bintree is associated with a particular discriminator.
 If the search process reaches a <literal>null</literal> pointer, then
@@ -54,32 +54,32 @@ The Bintree search procedure is followed until a leaf node is found.
 If the leaf node is empty, then it can store the new point.
 If the leaf node already contains a point, then some additional work
 needs to be done.
-Call the point already stored in the Bintree <math>A</math>, and the new
-node that we want to insert <math>B</math>.
+Call the point already stored in the Bintree <title_reference>A</title_reference>, and the new
+node that we want to insert <title_reference>B</title_reference>.
 We must split the node containing A into two, replacing it with a new
 internal node and two leaf children.
-Record <math>A</math> is then placed in the appropriate child, and we
+Record <title_reference>A</title_reference> is then placed in the appropriate child, and we
 restart the insertion from the new internal node.
-If <math>B</math> falls within in the newly created empty leaf node, then
+If <title_reference>B</title_reference> falls within in the newly created empty leaf node, then
 it can be inserted there.
-But if <math>B</math> falls within the newly created leaf node that just
-received <math>A</math>, then the splitting process must repeat.
-Depending on how far apart <math>A</math> and <math>B</math> are, it is possible
+But if <title_reference>B</title_reference> falls within the newly created leaf node that just
+received <title_reference>A</title_reference>, then the splitting process must repeat.
+Depending on how far apart <title_reference>A</title_reference> and <title_reference>B</title_reference> are, it is possible
 that many splits are required.</paragraph><paragraph>Deleting from a Bintree requires that sibling leaf nodes be merged
 together if they are empty.
 Just like an insert operation can cause many levels of splitting, a
 delete operation can cause many levels of merging.</paragraph><paragraph>Assume that we want to print out a list of all records that are within
-a certain distance <math>d</math> of a given point <math>P</math>.
-We will use Euclidean distance, that is, point <math>P</math> is defined to
-be within distance <math>d</math> of point <math>N</math> if
-<math>\sqrt{(P_x - N_x)^2 + (P_y - N_y)^2} \leq d</math>. <footnote_reference auto="1" ids="id2" refid="id3">1</footnote_reference></paragraph><paragraph>Search proceeds by means of a "directed" traversal.
+a certain distance <title_reference>d</title_reference> of a given point <title_reference>P</title_reference>.
+We will use Euclidean distance, that is, point <title_reference>P</title_reference> is defined to
+be within distance <title_reference>d</title_reference> of point <title_reference>N</title_reference> if
+<title_reference>sqrt{(P_x - N_x)^2 + (P_y - N_y)^2} leq d</title_reference>.</paragraph><paragraph>Search proceeds by means of a "directed" traversal.
 When we visit a node of the tree, we only proceed if
 the bounding box for the search circle intersects the bounding box for
 the node.
 If it does not, we stop and return.
 If it does intersect an internal node, we visit the node's children.
 If it is a leaf node, then we ask whether the data point it contains
-is within distance <math>d</math> of the search point.
+is within distance <title_reference>d</title_reference> of the search point.
 In the average case, the number of nodes that must be visited during a
 range query is linear on the number of data records that fall within
 the query circle.</paragraph><section ids="implementation-concerns" names="implementation\ concerns"><title>Implementation Concerns</title><paragraph>Let us now consider how the structure of the Bintree affects the
@@ -193,6 +193,6 @@ to your browser to run it.</paragraph><raw format="html" xml:space="preserve">&l
      frameborder="1" marginwidth="0" marginheight="0"
      scrolling="no"&gt;
 &lt;/iframe&gt;
-&lt;/center&gt;</raw><footnote auto="1" backrefs="id2" ids="id3" names="1"><label>1</label><paragraph>A more efficient computation is
-<math>(P_x - N_x)^2 + (P_y - N_y)^2 \leq d^2</math>.
+&lt;/center&gt;</raw><footnote auto="1" ids="id2" names="1"><label>1</label><paragraph>A more efficient computation is
+<title_reference>(P_x - N_x)^2 + (P_y - N_y)^2 leq d^2</title_reference>.
 This avoids performing a square root function.</paragraph></footnote><raw format="xml" xml:space="preserve"><odsascript>AV/Development/bintreeCON.js</odsascript></raw></section></document>

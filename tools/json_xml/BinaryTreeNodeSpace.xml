@@ -15,14 +15,14 @@ whether the leaves store child pointers, and whether the tree is a
 every node has two pointers to its children (even when the children
 are NULL).
 This implementation requires total space amounting to
-<math>n(2P + D)</math> for a tree of <math>n</math> nodes.
-Here, <math>P</math> stands for the amount of space required by a pointer,
-and <math>D</math> stands for the amount of space required by a data value.
-The total overhead space will be <math>2Pn</math> for the entire tree.
-Thus, the overhead fraction will be <math>2P/(2P + D)</math>.
+<title_reference>n(2P + D)</title_reference> for a tree of <title_reference>n</title_reference> nodes.
+Here, <title_reference>P</title_reference> stands for the amount of space required by a pointer,
+and <title_reference>D</title_reference> stands for the amount of space required by a data value.
+The total overhead space will be <title_reference>2Pn</title_reference> for the entire tree.
+Thus, the overhead fraction will be <title_reference>2P/(2P + D)</title_reference>.
 The actual value for this expression depends on the relative size of
 pointers versus data fields.
-If we arbitrarily assume that <math>P = D</math>, then a binary tree
+If we arbitrarily assume that <title_reference>P = D</title_reference>, then a binary tree
 has about two thirds of its total space taken up in overhead.
 Worse yet, the Full Binary Tree Theorem tells us that about half of
 the pointers are "wasted" NULL values that serve only to indicate tree
@@ -31,7 +31,7 @@ implementation is not to store any actual
 data in a node, but rather a pointer to the data record.
 In this case, each node will typically store three pointers, all of
 which are overhead, resulting in an overhead fraction of
-<math>3P/(3P + D)</math>.</paragraph><paragraph>If only leaves store data values, then the fraction of total space
+<title_reference>3P/(3P + D)</title_reference>.</paragraph><paragraph>If only leaves store data values, then the fraction of total space
 devoted to overhead depends on whether the tree is
 full.
 If the tree is not full, then conceivably there might only be one leaf
@@ -46,7 +46,7 @@ Again assume the tree stores a pointer to the data field.
 Because about half of the nodes are leaves and half internal nodes,
 and because only internal nodes now have child pointers, the
 overhead fraction in this case will be approximately</paragraph><math_block xml:space="preserve">\frac{\frac{n}{2} (2P)}{\frac{n}{2} (2P) + Dn} =
-\frac{P}{P + D}</math_block><paragraph>If <math>P = D</math>, the overhead drops to about one half of the
+\frac{P}{P + D}</math_block><paragraph>If <title_reference>P = D</title_reference>, the overhead drops to about one half of the
 total space.
 However, if only leaf nodes store useful information, the overhead
 fraction for this implementation is actually three quarters of the
@@ -55,8 +55,8 @@ at the leaf nodes, a better implementation would have
 the internal nodes store two pointers and no data
 field while the leaf nodes store only a pointer to the data field.
 This implementation requires</paragraph><math_block xml:space="preserve">\frac{n}{2}2P + \frac{n}{2}(P+D)</math_block><paragraph>units of space.
-If <math>P = D</math>, then the overhead is
-<math>3P/(3P + D) = 3/4</math>.
+If <title_reference>P = D</title_reference>, then the overhead is
+<title_reference>3P/(3P + D) = 3/4</title_reference>.
 It might seem counter-intuitive that the overhead ratio has gone up
 while the total amount of space has gone down.
 The reason is because we have changed our definition of "data" to

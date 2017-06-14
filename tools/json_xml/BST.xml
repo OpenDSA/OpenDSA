@@ -6,10 +6,10 @@ is a <title_reference>binary tree</title_reference> that conforms to the
 following condition, known
 as the <title_reference>binary search tree property</title_reference>.
 All <title_reference>nodes &lt;node&gt;</title_reference> stored in the left subtree of a node whose
-<title_reference>key</title_reference> value is <math>K</math> have key values
-less than or equal to <math>K</math>.
+<title_reference>key</title_reference> value is <title_reference>K</title_reference> have key values
+less than or equal to <title_reference>K</title_reference>.
 All nodes stored in the right subtree of a node whose key value
-is <math>K</math> have key values greater than <math>K</math>.
+is <title_reference>K</title_reference> have key values greater than <title_reference>K</title_reference>.
 Figure <title_reference>Figure #BSTShape</title_reference> shows two BSTs for a collection of
 values.
 One consequence of the binary search tree property is that if the BST
@@ -79,8 +79,8 @@ A new element is added to the BST as a new leaf node,
 potentially increasing the depth of the tree.
 Figure <title_reference>Figure #BSTShape</title_reference> illustrates two BSTs for a collection
 of values.
-It is possible for the BST containing <math>n</math> nodes to be a chain of
-nodes with height <math>n</math>.
+It is possible for the BST containing <title_reference>n</title_reference> nodes to be a chain of
+nodes with height <title_reference>n</title_reference>.
 This would happen if, for example, all elements were inserted in
 sorted order.
 In general, it is preferable for a BST to be as shallow as
@@ -113,22 +113,22 @@ Similar to the <literal>inserthelp</literal> method, each node on the path back 
 the root has its right child pointer reassigned to the subtree
 resulting from its call to the <literal>deletemax</literal> method.</paragraph><paragraph>A useful companion method is <literal>getmax</literal> which returns a
 pointer to the node containing the maximum value in the subtree.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>Now we are ready for the <literal>removehelp</literal> method.
-Removing a node with given key value <math>R</math> from the BST
-requires that we first find <math>R</math> and then remove it from the
+Removing a node with given key value <title_reference>R</title_reference> from the BST
+requires that we first find <title_reference>R</title_reference> and then remove it from the
 tree.
 So, the first part of the remove operation is a search to find
-<math>R</math>.
-Once <math>R</math> is found, there are several possibilities.
-If <math>R</math> has no children, then <math>R</math>'s parent has its
+<title_reference>R</title_reference>.
+Once <title_reference>R</title_reference> is found, there are several possibilities.
+If <title_reference>R</title_reference> has no children, then <title_reference>R</title_reference>'s parent has its
 pointer set to NULL.
-If <math>R</math> has one child, then <math>R</math>'s parent has
-its pointer set to <math>R</math>'s child (similar to <literal>deletemax</literal>).
-The problem comes if <math>R</math> has two children.
-One simple approach, though expensive, is to set <math>R</math>'s parent to
-point to one of <math>R</math>'s subtrees, and then reinsert the remaining
+If <title_reference>R</title_reference> has one child, then <title_reference>R</title_reference>'s parent has
+its pointer set to <title_reference>R</title_reference>'s child (similar to <literal>deletemax</literal>).
+The problem comes if <title_reference>R</title_reference> has two children.
+One simple approach, though expensive, is to set <title_reference>R</title_reference>'s parent to
+point to one of <title_reference>R</title_reference>'s subtrees, and then reinsert the remaining
 subtree's nodes one at a time.
 A better alternative is to find a value in one of the
-subtrees that can replace the value in <math>R</math>.</paragraph><paragraph>Thus, the question becomes:
+subtrees that can replace the value in <title_reference>R</title_reference>.</paragraph><paragraph>Thus, the question becomes:
 Which value can substitute for the one being removed?
 It cannot be any arbitrary value, because we must preserve the BST
 property without making major changes to the structure of the tree.
@@ -149,15 +149,15 @@ then the BST property is maintained.</paragraph><raw format="xml" xml:space="pre
 difference whether the replacement is the greatest value from the
 left subtree or the least value from the right subtree.
 If duplicates are stored in the left subtree, then we must select
-the replacement from the <emphasis>left</emphasis> subtree. <footnote_reference auto="1" ids="id1" refid="id2">1</footnote_reference>
-To see why, call the least value in the right subtree <math>L</math>.
-If multiple nodes in the right subtree have value <math>L</math>,
-selecting <math>L</math> as the replacement value for the root of the
+the replacement from the <emphasis>left</emphasis> subtree.
+To see why, call the least value in the right subtree <title_reference>L</title_reference>.
+If multiple nodes in the right subtree have value <title_reference>L</title_reference>,
+selecting <title_reference>L</title_reference> as the replacement value for the root of the
 subtree will result in a tree with equal values to the right of the
-node now containing <math>L</math>.
+node now containing <title_reference>L</title_reference>.
 Selecting the greatest value from the left subtree does not
 have a similar problem, because it does not violate the Binary Search
-Tree Property if equal values appear in the left subtree.</paragraph><footnote auto="1" backrefs="id1" ids="id2" names="1"><label>1</label><paragraph>Alternatively, if we prefer to store duplicate values in the
+Tree Property if equal values appear in the left subtree.</paragraph><footnote auto="1" ids="id1" names="1"><label>1</label><paragraph>Alternatively, if we prefer to store duplicate values in the
 right subtree, then we must replace a deleted node with the
 least value from its right subtree.</paragraph></footnote><raw format="xml" xml:space="preserve"><avembed
     type="ss"
@@ -177,25 +177,25 @@ the depth of the deepest node in the tree.
 This is why it is desirable to keep BSTs
 <title_reference>balanced &lt;balanced tree&gt;</title_reference>, that is, with least possible
 height.
-If a binary tree is balanced, then the height for a tree of <math>n</math>
-nodes is approximately <math>\log n</math>.
+If a binary tree is balanced, then the height for a tree of <title_reference>n</title_reference>
+nodes is approximately <title_reference>log n</title_reference>.
 However, if the tree is completely unbalanced, for example in the
-shape of a linked list, then the height for a tree with <math>n</math>
-nodes can be as great as <math>n</math>.
+shape of a linked list, then the height for a tree with <title_reference>n</title_reference>
+nodes can be as great as <title_reference>n</title_reference>.
 Thus, a balanced BST will in the average case have operations costing
-<math>\Theta(\log n)</math>, while a badly unbalanced BST can have
-operations in the worst case costing <math>\Theta(n)</math>.
-Consider the situation where we construct a BST of <math>n</math> nodes
+<title_reference>Theta(log n)</title_reference>, while a badly unbalanced BST can have
+operations in the worst case costing <title_reference>Theta(n)</title_reference>.
+Consider the situation where we construct a BST of <title_reference>n</title_reference> nodes
 by inserting records one at a time.
 If we are fortunate to have them arrive in an order that results in a
 balanced tree (a "random" order is likely to be good
 enough for this purpose), then each insertion will cost on average
-<math>\Theta(\log n)</math>, for a total cost of
-<math>\Theta(n \log n)</math>.
+<title_reference>Theta(log n)</title_reference>, for a total cost of
+<title_reference>Theta(n log n)</title_reference>.
 However, if the records are inserted in order of increasing value,
-then the resulting tree will be a chain of height <math>n</math>.
+then the resulting tree will be a chain of height <title_reference>n</title_reference>.
 The cost of insertion in this case will be
-<math>\sum_{i=1}^{n} i = \Theta(n^2)</math>.</paragraph><paragraph>Traversing a BST costs <math>\Theta(n)</math> regardless of the shape of
+<title_reference>sum_{i=1}^{n} i = Theta(n^2)</title_reference>.</paragraph><paragraph>Traversing a BST costs <title_reference>Theta(n)</title_reference> regardless of the shape of
 the tree.
 Each node is visited exactly once, and each child pointer
 is followed exactly once.</paragraph><paragraph>Below is an example traversal, named <literal>printhelp</literal>.

@@ -14,7 +14,7 @@ you can then sort each pile by date relatively quickly, because each
 pile is fairly small.
 This is the basic idea behind a <title_reference>Binsort</title_reference>.</paragraph><paragraph>Let's start with an especially easy situation.
 Consider the following code fragment to sort a permutation of the
-numbers 0 through <math>n-1</math>.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><raw format="xml" xml:space="preserve"><inlineav
+numbers 0 through <title_reference>n-1</title_reference>.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><raw format="xml" xml:space="preserve"><inlineav
     type="ss"
     exer_name="binsortS1CON"
     long_name="binsortS1CON"
@@ -27,12 +27,12 @@ position for a record in the final sorted array.
 This is the most basic example of a <title_reference>Binsort</title_reference>,
 where key values are used to assign records to bins.
 This algorithm is extremely efficient,
-always taking <math>\Theta(n)</math> time
+always taking <title_reference>Theta(n)</title_reference> time
 regardless of the initial ordering of the keys.
 This is far better than the performance of any sorting
 algorithm that we have seen so far.
 The problem is that this algorithm has limited use because it
-works only for a permutation of the numbers from 0 to <math>n-1</math>.</paragraph><paragraph>We can extend this simple version of the Binsort algorithm to be more
+works only for a permutation of the numbers from 0 to <title_reference>n-1</title_reference>.</paragraph><paragraph>We can extend this simple version of the Binsort algorithm to be more
 useful.
 Because Binsort must perform direct computation on the key value (as
 opposed to just asking which of two records comes first as our
@@ -41,11 +41,11 @@ we will assume that the records use an integer key type.</paragraph><paragraph>T
 keys.
 This can be done by turning array slots into arbitrary-length bins by
 turning array <literal>B</literal> into an array of linked lists.
-In this way, all records with key value <math>i</math> can be placed in bin
+In this way, all records with key value <title_reference>i</title_reference> can be placed in bin
 <literal>B[i]</literal>.
-A second extension allows for a key range greater than <math>n</math>.
-For example, a set of <math>n</math> records might have keys in the range 1
-to <math>2n</math>.
+A second extension allows for a key range greater than <title_reference>n</title_reference>.
+For example, a set of <title_reference>n</title_reference> records might have keys in the range 1
+to <title_reference>2n</title_reference>.
 The only requirement is that each possible key value have a
 corresponding bin in <literal>B</literal>.
 We assume that we know that the range of possible keys is between
@@ -62,7 +62,7 @@ values fall in the range from 0 to <literal>MaxKeyValue</literal>.</paragraph><r
 </raw><paragraph>The total work required is simply that needed to place each record
 into the appropriate bin and then take all of the records out of the
 bins.
-Thus, we need to process each record twice, for <math>\Theta(n)</math>
+Thus, we need to process each record twice, for <title_reference>Theta(n)</title_reference>
 work.</paragraph><paragraph>Does that cost analysis really make sense?
 Actually, that last statement is <strong>wrong</strong>,
 because it neglects a crucial observation.
@@ -71,13 +71,13 @@ every bin to see if it contains a record.
 Thus, the algorithm must process <literal>MaxKeyValue</literal> bins,
 regardless of how many of them actually hold records.
 If <literal>MaxKeyValue</literal>
-is small compared to <math>n</math>, then this is not a great expense.
-Suppose that <literal>MaxKeyValue</literal> <math>= n^2</math>.
+is small compared to <title_reference>n</title_reference>, then this is not a great expense.
+Suppose that <literal>MaxKeyValue</literal> <title_reference>= n^2</title_reference>.
 In this case, the total amount of work done will be
-<math>\Theta(n + n^2) = \Theta(n^2)</math>.
+<title_reference>Theta(n + n^2) = Theta(n^2)</title_reference>.
 This results in a poor sorting algorithm.
 And the algorithm becomes even worse as the disparity between
-<math>n</math> and <literal>MaxKeyValue</literal> increases.
+<title_reference>n</title_reference> and <literal>MaxKeyValue</literal> increases.
 In addition, a large key range requires an unacceptably large array
 <literal>B</literal>.
 Thus, even the extended Binsort is useful only for a limited key

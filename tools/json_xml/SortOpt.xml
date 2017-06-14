@@ -7,7 +7,7 @@ to optimize their sorting code to run faster.
 Of course all quadratic sorts (Insertion Sort, Bubble Sort and
 Selection Sort) are relatively slow.
 Each has (as the name "quadratic suggests)
-<math>\Theta(n^2)</math> worst case running time.
+<title_reference>Theta(n^2)</title_reference> worst case running time.
 The best way to speed them up is to find a better sorting algorithm.
 Nonetheless, there have been many suggestions given over the years
 about how to speed up one or another of these particular algorithms.
@@ -88,8 +88,8 @@ That is to check during each iteration of the outer loop to see if any
 swaps took place during that iteration, and quit if not
 (since we know the list is ordered at this point).
 We can improve on this idea even more by recognizing that if the last
-swap done affects the values at positions <math>i</math> and <math>i+1</math>,
-no swaps could happen to values a positions greater than <math>i</math>.
+swap done affects the values at positions <title_reference>i</title_reference> and <title_reference>i+1</title_reference>,
+no swaps could happen to values a positions greater than <title_reference>i</title_reference>.
 Thus, we never need to check higher-positioned values again, which
 could save many iterations even if there are a few swaps lower down.
 Here is code to implement this approach.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>The problem with this idea is that a considerable amount of effort
@@ -111,17 +111,17 @@ cost to compare records is lower than it would be if we had to get a
 field out of a more complex object.</paragraph><paragraph>It is also true that tracking the last swap position can substantially
 improve the best case cost.
 In fact, tracking the last swap position makes the best case cost of
-Bubble Sort to be only <math>\Theta(n)</math>.
+Bubble Sort to be only <title_reference>Theta(n)</title_reference>.
 But going out of one's way to artificially improve the best case has
 dubious value if doing so imposes additional cost on nearly all other
 inputs.
 Note that we could nominally convert <emphasis>any</emphasis> sorting algorithm to
-have a best-case cost of <math>\Theta(n)</math> by simply adding code at
+have a best-case cost of <title_reference>Theta(n)</title_reference> by simply adding code at
 the beginning that checks if the list is already sorted.
 It should be obvious that this is a waste of time, even though it has
 the (small) possibility of winning big.
 Unlike Insertion Sort whose best case cost is naturally
-<math>\Theta(n)</math> and whose time increases in proportion to how "out
+<title_reference>Theta(n)</title_reference> and whose time increases in proportion to how "out
 of order" the list is,
 the number of iterations avoided by swap checking in Bubble Sort
 is sensitive to the detailed placements of the out-of-order records.
@@ -144,12 +144,12 @@ with the two position parameters being the same.
 The net effect is that the work done by <literal>swap</literal> will not change
 anything in the array, and this is a waste of time.
 Thus, the total number of swaps done by Selection Sort is always
-<math>n-1</math> in the best, average and worst cases.
+<title_reference>n-1</title_reference> in the best, average and worst cases.
 It might seem like a good idea to test if the positions are the same
 before calling <literal>swap</literal>, especially since Selection Sort's claim to
 fame is its low number of swaps.
 Actually, we can't expect this to ever make much difference since we
-are talking about <math>\Theta(n)</math> actions within <math>\Theta(n^2)</math>
+are talking about <title_reference>Theta(n)</title_reference> actions within <title_reference>Theta(n^2)</title_reference>
 total steps, an inconsequential fraction.
 The other consideration is whether this is could typically be expected
 to save time even when just considering the time needed to do the

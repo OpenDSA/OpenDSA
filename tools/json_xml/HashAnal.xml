@@ -31,33 +31,33 @@ As the table fills up, more and more records are likely to be located
 ever further from their home positions.</paragraph><paragraph>From this discussion, we see that the expected cost of hashing is a
 function of how full the table is.
 Define the <title_reference>load factor</title_reference>
-for the table as <math>\alpha = N/M</math>,
-where <math>N</math> is the number of records currently in the table.</paragraph><paragraph>An estimate of the expected cost for an insertion (or an unsuccessful
-search) can be derived analytically as a function of <math>\alpha</math> in the
+for the table as <title_reference>alpha = N/M</title_reference>,
+where <title_reference>N</title_reference> is the number of records currently in the table.</paragraph><paragraph>An estimate of the expected cost for an insertion (or an unsuccessful
+search) can be derived analytically as a function of <title_reference>alpha</title_reference> in the
 case where we assume that the probe sequence follows a random
 permutation of the slots in the hash
 table.
 Assuming that every slot in the table has equal probability of being
 the home slot for the next record,
 the probability of finding the home position occupied is
-<math>\alpha</math>.
+<title_reference>alpha</title_reference>.
 The probability of finding both the home position occupied and the
-next slot on the probe sequence occupied is <math>(N(N-1))/(M(M-1))</math>.
-The probability of <math>i</math> collisions is
-<math>(N(N-1) ... (N-i+1))/(M(M-1) ... (M-i+1))</math>.
-If <math>N</math> and <math>M</math> are large,
-then this is approximately <math>(N/M)^i</math>.
+next slot on the probe sequence occupied is <title_reference>(N(N-1))/(M(M-1))</title_reference>.
+The probability of <title_reference>i</title_reference> collisions is
+<title_reference>(N(N-1) ... (N-i+1))/(M(M-1) ... (M-i+1))</title_reference>.
+If <title_reference>N</title_reference> and <title_reference>M</title_reference> are large,
+then this is approximately <title_reference>(N/M)^i</title_reference>.
 The expected number of probes is one plus the sum over
-<math>i &gt;= 1</math> of the probability of <math>i</math> collisions,
+<title_reference>i &gt;= 1</title_reference> of the probability of <title_reference>i</title_reference> collisions,
 which is approximately</paragraph><math_block xml:space="preserve">1 + \sum_{i=1}^\infty (N/M)^i = 1/(1-\alpha).</math_block><paragraph>The cost for a successful search (or a deletion) has the same cost as
 originally inserting that record.
 However, the expected value for the insertion cost depends on the
-value of <math>\alpha</math> not at the time of deletion, but rather at the time
+value of <title_reference>alpha</title_reference> not at the time of deletion, but rather at the time
 of the original insertion.
 We can derive an estimate of this cost (essentially an average over all
 the insertion costs) by integrating from 0 to the current value of
-<math>\alpha</math>, yielding a result of
-<math>(1/\alpha) \log_e 1/(1-\alpha).</math></paragraph><paragraph>It is important to realize that these equations represent the expected
+<title_reference>alpha</title_reference>, yielding a result of
+<title_reference>(1/alpha) log_e 1/(1-alpha).</title_reference></paragraph><paragraph>It is important to realize that these equations represent the expected
 cost for operations when using the unrealistic assumption that the
 probe sequence is based on a random permutation of the slots in the
 hash table.
@@ -65,13 +65,13 @@ We thereby avoid all the expense that results from a less-than-perfect
 collision resolution policy.
 Thus, these costs are lower-bound estimates in the average case.
 The true average cost under linear
-probing is <math>.5(1 + 1/(1-\alpha)^2)</math> for
+probing is <title_reference>.5(1 + 1/(1-alpha)^2)</title_reference> for
 insertions or unsuccessful searches and
-<math>.5(1 + 1/(1-\alpha))</math> for deletions or successful
+<title_reference>.5(1 + 1/(1-alpha))</title_reference> for deletions or successful
 searches.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw><target refid="hashplot"></target><raw format="xml" ids="hashplot" names="hashplot" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>Figure <title_reference>Figure #HashPlot</title_reference>
 shows how the expected number of record accesses grows as
-<math>\alpha</math> grows.
-The horizontal axis is the value for <math>\alpha</math> , the vertical axis
+<title_reference>alpha</title_reference> grows.
+The horizontal axis is the value for <title_reference>alpha</title_reference> , the vertical axis
 is the expected number of accesses to the hash table.
 Solid lines show the cost for "random" probing (a theoretical lower
 bound on the cost), while dashed lines
@@ -84,9 +84,9 @@ the two rightmost lines show the cost for deletion
 hashing when the table is not too full is typically close to one
 record access.
 This is extraordinarily efficient, much better than
-binary search which requires <math>\log n</math> record accesses.
-As <math>\alpha</math> increases, so does the expected cost.
-For small values of <math>\alpha</math>, the expected cost is low.
+binary search which requires <title_reference>log n</title_reference> record accesses.
+As <title_reference>alpha</title_reference> increases, so does the expected cost.
+For small values of <title_reference>alpha</title_reference>, the expected cost is low.
 It remains below two until the hash table is about half full.
 When the table is nearly empty, adding a new record to the table
 does not increase the cost of future search operations by much.

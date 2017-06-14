@@ -6,7 +6,7 @@ Bubble Sort is often taught to novice programmers in
 introductory computer science courses.
 This is unfortunate, because Bubble Sort has no redeeming features
 whatsoever.
-It is rather slow, even compared to the other <math>\Theta(n^2)</math>
+It is rather slow, even compared to the other <title_reference>Theta(n^2)</title_reference>
 sorts that are commonly known.
 It is not particularly intutitive --
 nobody is going to come naturally to Bubble Sort as a way to sort
@@ -79,7 +79,7 @@ in the best, average, and worst cases.</paragraph><paragraph>The number of swaps
 record's value is less than that of the record immediately preceding
 it in the array.
 We can expect this to occur for about half the comparisons in the
-average case, leading to <math>\Theta(n^2)</math> for the
+average case, leading to <title_reference>Theta(n^2)</title_reference> for the
 expected number of swaps.
 The actual number of swaps performed by Bubble Sort will be identical
 to that performed by Insertion Sort.</paragraph><paragraph>Here are some review questions to check your understanding of

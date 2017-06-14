@@ -89,7 +89,7 @@ an (unsorted) array-based list.</paragraph><raw format="xml" xml:space="preserve
 list"), we can easily see that <literal>insert</literal>
 is a constant-time operation, because it simply inserts the new record
 at the end of the list.
-However, <literal>find</literal>, and <literal>remove</literal> both require <math>\Theta(n)</math> time
+However, <literal>find</literal>, and <literal>remove</literal> both require <title_reference>Theta(n)</title_reference> time
 in the average and worst cases, because we need to do a sequential
 search.
 Method <literal>remove</literal> in particular must touch every record in the
@@ -113,12 +113,12 @@ list than in an unsorted list.
 Likewise, the user cannot be permitted to append elements onto the
 list.
 For these reasons, a sorted list cannot be implemented with
-straightforward inheritance from the <literal>List</literal> ADT.</paragraph><paragraph>The cost for <literal>find</literal> in a sorted list is <math>\Theta(\log n)</math> for a
-list of length <math>n</math>.
+straightforward inheritance from the <literal>List</literal> ADT.</paragraph><paragraph>The cost for <literal>find</literal> in a sorted list is <title_reference>Theta(log n)</title_reference> for a
+list of length <title_reference>n</title_reference>.
 This is a great improvement over the cost of <literal>find</literal> in an
 unsorted list.
 Unfortunately, the cost of <literal>insert</literal> changes from constant time in
-the unsorted list to <math>\Theta(n)</math> time in the sorted list.
+the unsorted list to <title_reference>Theta(n)</title_reference> time in the sorted list.
 Whether the sorted list implementation for the dictionary ADT is more
 or less efficient than the unsorted list implementation depends on the
 relative number of
@@ -126,14 +126,14 @@ relative number of
 If many more <literal>find</literal> operations than <literal>insert</literal> operations are
 used, then it might be worth using a sorted list to implement the
 dictionary.
-In both cases, <literal>remove</literal> requires <math>\Theta(n)</math> time in the worst
+In both cases, <literal>remove</literal> requires <title_reference>Theta(n)</title_reference> time in the worst
 and average cases.
 Even if we used binary search to cut down on the time to find the
 record prior to removal, we would still need to shift down the
 remaining records in the list to fill the gap left by the
 <literal>remove</literal> operation.</paragraph><paragraph><title_reference>Search trees &lt;search tree&gt; &lt;BST&gt;</title_reference> are search
 structures that can perform all three key operations of insert,
-search, and delete in <math>\Theta(\log n)</math> time.</paragraph><raw format="xml" xml:space="preserve"><avembed
+search, and delete in <title_reference>Theta(log n)</title_reference> time.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="ka"
     exer_name="DesignDictionarySumm"
     long_name="DesignDictionarySumm"

@@ -6,7 +6,7 @@ Algorithm Analysis, or Theory of Algorithms.</paragraph></section><section ids="
 number of Computer Science topics</paragraph><paragraph>You should have had a course in Discrete Math, covering at least the
 following:</paragraph><bullet_list bullet="*"><list_item><paragraph>Basic proof techniques like proof by contradition and induction.</paragraph></list_item><list_item><paragraph>Basic techniques for solving summations and recurrence relations</paragraph></list_item><list_item><paragraph>Set theory and relations</paragraph></list_item></bullet_list><paragraph>You should have had a course in Data Structures to cover at least the
 following:</paragraph><bullet_list bullet="*"><list_item><paragraph>Basic algorithm analysis, including big-oh, big-Omega, and
-<math>\Theta</math> notations.</paragraph></list_item><list_item><paragraph>Basic data structures and algorithms including lists, search
+<title_reference>Theta</title_reference> notations.</paragraph></list_item><list_item><paragraph>Basic data structures and algorithms including lists, search
 structures such as BSTs, sorting algorithms, heaps, hashing, and
 basic graph algorithms.</paragraph></list_item></bullet_list></section><section ids="what-we-will-do" names="what\ we\ will\ do"><title>What we will do</title><paragraph>Major topics/goals for this course include:</paragraph><bullet_list bullet="*"><list_item><paragraph>Getting a good understanding of upper and (especially) lower bounds
 for an algorithm or problem.</paragraph></list_item><list_item><paragraph>Lower bounds proofs.</paragraph></list_item><list_item><paragraph>Analysis techniques, including solving a lot of summations and

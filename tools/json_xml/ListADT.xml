@@ -34,12 +34,12 @@ so we will use the same angle bracket notation that is normally used
 to represent <title_reference>sequences &lt;sequence&gt;</title_reference>.
 To be consistent with standard array indexing, the first position
 on the list is denoted as 0.
-Thus, if there are <math>n</math> elements in the list, they are given
-positions 0 through <math>n-1</math> as
-<math>\langle\ a_0,\ a_1,\ ...,\ a_{n-1}\ \rangle</math>.
+Thus, if there are <title_reference>n</title_reference> elements in the list, they are given
+positions 0 through <title_reference>n-1</title_reference> as
+<title_reference>langlea_0,a_1,...,a_{n-1}rangle</title_reference>.
 The subscript indicates an element's position within the list.
 Using this notation, the empty list would appear as
-<math>\langle\ \rangle</math>.</paragraph><section ids="defining-the-adt" names="defining\ the\ adt"><title>Defining the ADT</title><paragraph>What basic operations do we want our lists to support?
+<title_reference>langlerangle</title_reference>.</paragraph><section ids="defining-the-adt" names="defining\ the\ adt"><title>Defining the ADT</title><paragraph>What basic operations do we want our lists to support?
 Our common intuition about lists tells us that a list should be able
 to grow and shrink in size as we insert and remove elements.
 We should be able to insert and remove elements from anywhere in

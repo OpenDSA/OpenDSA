@@ -32,17 +32,17 @@ rightmost non-blank tape.
 Naturally, there must be a finite number of non-blank symbols on the
 tape.
 The <title_reference>alphabet</title_reference> of the machine consists of some letters,
-including the special symbol <math>\#</math> which means a blank symbol on the
+including the special symbol <title_reference>#</title_reference> which means a blank symbol on the
 given square.</paragraph><paragraph>A Turing machine is formally defined as a quadruple
-(<math>K</math>, <math>\Sigma</math>, $delta$, $s$) where</paragraph><bullet_list bullet="*"><list_item><paragraph><math>K</math> is a finite set of states (not including <math>h</math>, the
-halt state).</paragraph></list_item><list_item><paragraph><math>\Sigma</math> is an alphabet (containing <math>\#</math>, not <math>L</math>
-or <math>R</math>).</paragraph></list_item><list_item><paragraph><math>s \in K</math> is the :term`initial state`.</paragraph></list_item><list_item><paragraph><math>\delta</math> is a function from <math>K \times \Sigma</math> to
-<math>(K \cup \{h\}) \times (\Sigma \cup \{L, R\})</math>.</paragraph></list_item></bullet_list><paragraph>Note that including <math>\#</math> in the language is for convenience
+(<title_reference>K</title_reference>, <title_reference>Sigma</title_reference>, $delta$, $s$) where</paragraph><bullet_list bullet="*"><list_item><paragraph><title_reference>K</title_reference> is a finite set of states (not including <title_reference>h</title_reference>, the
+halt state).</paragraph></list_item><list_item><paragraph><title_reference>Sigma</title_reference> is an alphabet (containing <title_reference>#</title_reference>, not <title_reference>L</title_reference>
+or <title_reference>R</title_reference>).</paragraph></list_item><list_item><paragraph><title_reference>s in K</title_reference> is the :term`initial state`.</paragraph></list_item><list_item><paragraph><title_reference>delta</title_reference> is a function from <title_reference>K times Sigma</title_reference> to
+<title_reference>(K cup {h}) times (Sigma cup {L, R})</title_reference>.</paragraph></list_item></bullet_list><paragraph>Note that including <title_reference>#</title_reference> in the language is for convenience
 only.
-We want to be able to read our specifications without being confused.</paragraph><paragraph>If <math>q \in K</math>, <math>a \in \Sigma</math> and
-<math>\delta(q, a) = (p, b)</math>,
-then when in state <math>q</math> and scanning <math>a</math>,
-enter state <math>p</math> and</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph>If <math>b \in \Sigma</math> then replace <math>a</math> with <math>b</math>.</paragraph></list_item><list_item><paragraph>Else (<math>b</math> is <math>L</math> or <math>R</math>): move head.</paragraph></list_item></enumerated_list><topic><title>Example</title><paragraph><math>M = (K, \Sigma, \delta, s)</math> where</paragraph><bullet_list bullet="*"><list_item><paragraph><math>K = \{q_0, q_1\}</math>,</paragraph></list_item><list_item><paragraph><math>\Sigma = \{a, \#\}</math>,</paragraph></list_item><list_item><paragraph><math>s = q_0</math></paragraph></list_item><list_item><paragraph><math>\delta =</math></paragraph><math_block xml:space="preserve">\begin{array}{lll}
+We want to be able to read our specifications without being confused.</paragraph><paragraph>If <title_reference>q in K</title_reference>, <title_reference>a in Sigma</title_reference> and
+<title_reference>delta(q, a) = (p, b)</title_reference>,
+then when in state <title_reference>q</title_reference> and scanning <title_reference>a</title_reference>,
+enter state <title_reference>p</title_reference> and</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph>If <title_reference>b in Sigma</title_reference> then replace <title_reference>a</title_reference> with <title_reference>b</title_reference>.</paragraph></list_item><list_item><paragraph>Else (<title_reference>b</title_reference> is <title_reference>L</title_reference> or <title_reference>R</title_reference>): move head.</paragraph></list_item></enumerated_list><topic><title>Example</title><paragraph><title_reference>M = (K, Sigma, delta, s)</title_reference> where</paragraph><bullet_list bullet="*"><list_item><paragraph><title_reference>K = {q_0, q_1}</title_reference>,</paragraph></list_item><list_item><paragraph><title_reference>Sigma = {a, #}</title_reference>,</paragraph></list_item><list_item><paragraph><title_reference>s = q_0</title_reference></paragraph></list_item><list_item><paragraph><title_reference>delta =</title_reference></paragraph><math_block xml:space="preserve">\begin{array}{lll}
 \hline
 q&amp;\sigma&amp;\delta(q, \sigma)\\
 \hline
@@ -50,22 +50,22 @@ q_0&amp;a&amp;(q_1, \#)\\
 q_0&amp;\#&amp;(h, \#)\\
 q_1&amp;a&amp;(q_0, a)\\
 q_1&amp;\#&amp;(q_0, R)\\
-\end{array}</math_block></list_item></bullet_list><paragraph>Note that state <math>(q_1, a)</math> cannot happen if the start state
-is <math>q_0</math>.
-This is included only for completness (to make <math>\delta</math> a
-total function.</paragraph><paragraph>This machine will scan right, changing any <math>a</math> that it sees
-to a <math>\#</math>.
-When it first hits a <math>\#</math>, it will halt.</paragraph></topic><topic><title>Example</title><paragraph><math>M = (K, \Sigma, \delta, s)</math> where</paragraph><bullet_list bullet="*"><list_item><paragraph><math>K = \{q_0\}</math>,</paragraph></list_item><list_item><paragraph><math>\Sigma = \{a, \#\}</math>,</paragraph></list_item><list_item><paragraph><math>s = q_0</math>,</paragraph></list_item><list_item><paragraph><math>\delta =</math></paragraph><math_block xml:space="preserve">\begin{array}{lll}
+\end{array}</math_block></list_item></bullet_list><paragraph>Note that state <title_reference>(q_1, a)</title_reference> cannot happen if the start state
+is <title_reference>q_0</title_reference>.
+This is included only for completness (to make <title_reference>delta</title_reference> a
+total function.</paragraph><paragraph>This machine will scan right, changing any <title_reference>a</title_reference> that it sees
+to a <title_reference>#</title_reference>.
+When it first hits a <title_reference>#</title_reference>, it will halt.</paragraph></topic><topic><title>Example</title><paragraph><title_reference>M = (K, Sigma, delta, s)</title_reference> where</paragraph><bullet_list bullet="*"><list_item><paragraph><title_reference>K = {q_0}</title_reference>,</paragraph></list_item><list_item><paragraph><title_reference>Sigma = {a, #}</title_reference>,</paragraph></list_item><list_item><paragraph><title_reference>s = q_0</title_reference>,</paragraph></list_item><list_item><paragraph><title_reference>delta =</title_reference></paragraph><math_block xml:space="preserve">\begin{array}{lll}
 \hline
 q&amp;\sigma&amp;\delta(q, \sigma)\\
 \hline
 q_0&amp;a&amp;(q_0, L)\\
 q_0&amp;\#&amp;(h, \#)\\
-\end{array}</math_block></list_item></bullet_list><paragraph>This machine will scan left until it encounters <math>\#</math>, and
-then halt.</paragraph></topic></section><section ids="interpreting-turing-machines" names="interpreting\ turing\ machines"><title>Interpreting Turing Machines</title><paragraph>A <title_reference>configuration</title_reference> for a Turing machine looks like this:</paragraph><math_block xml:space="preserve">(q, aaba\#\underline{\#}a)</math_block><paragraph>A <title_reference>halted configuration</title_reference> occurs when <math>q</math> is <math>h</math>, the
+\end{array}</math_block></list_item></bullet_list><paragraph>This machine will scan left until it encounters <title_reference>#</title_reference>, and
+then halt.</paragraph></topic></section><section ids="interpreting-turing-machines" names="interpreting\ turing\ machines"><title>Interpreting Turing Machines</title><paragraph>A <title_reference>configuration</title_reference> for a Turing machine looks like this:</paragraph><math_block xml:space="preserve">(q, aaba\#\underline{\#}a)</math_block><paragraph>A <title_reference>halted configuration</title_reference> occurs when <title_reference>q</title_reference> is <title_reference>h</title_reference>, the
 halt state.</paragraph><paragraph>A <title_reference>hanging configuration</title_reference> occurs when the I/O head moves to the
 left from the left-most square of the tape.</paragraph><paragraph>A <title_reference>computation</title_reference> is a sequence of configurations for some
-length <math>n \geq 0</math>.
+length <title_reference>n geq 0</title_reference>.
 Execution on the first machine example from the starting configuration
 show would appear as follows:</paragraph><math_block xml:space="preserve">\begin{eqnarray*}
 (q_0, \underline{a}aaa) &amp;\vdash_M&amp;(q_1, \underline{\#}aaa)\\
@@ -77,23 +77,23 @@ show would appear as follows:</paragraph><math_block xml:space="preserve">\begin
 &amp;\vdash_M&amp;(q_1, \#\#\#\underline{\#})\\
 &amp;\vdash_M&amp;(q_0, \#\#\#\#\underline{\#})\\
 &amp;\vdash_M&amp;(h, \#\#\#\#\underline{\#})\\
-\end{eqnarray*}</math_block><paragraph><math>M</math> is said to <strong>halt on input :math:`w`</strong> iff
-<math>(s, \#w\underline{\#})</math> yields some halted configuration.</paragraph><paragraph><math>M</math> is said to <strong>hang on input :math:`w`</strong> if
-<math>(s, \#w\underline{\#})</math> yields some hanging configuration.
+\end{eqnarray*}</math_block><paragraph><title_reference>M</title_reference> is said to <strong>halt on input `w`</strong> iff
+<title_reference>(s, #wunderline{#})</title_reference> yields some halted configuration.</paragraph><paragraph><title_reference>M</title_reference> is said to <strong>hang on input `w`</strong> if
+<title_reference>(s, #wunderline{#})</title_reference> yields some hanging configuration.
 That means <emphasis>either</emphasis> move left from left end <emphasis>or</emphasis> go into an infinite loop.</paragraph><paragraph>Turing machines compute functions from strings to strings.
-Formally: Let <math>f</math> be a function from <math>\Sigma^*_0</math> to
-<math>\Sigma^*_1</math>.
-Turing machine <math>M</math> is said to <strong>compute</strong> <math>f</math> when,
-for any <math>w \in \Sigma^*_0</math>, if <math>f(w) = u</math> then</paragraph><math_block xml:space="preserve">(s, \#w\underline{\#}) \vdash^*_M (h, \#u\underline{\#}).</math_block><paragraph>Such a function <math>f</math> is said to be a <title_reference>Turing-computable function</title_reference>.</paragraph><paragraph>Here is how we express multiple parameters:
-For <math>f(w_1, ..., w_k) = u</math>,</paragraph><math_block xml:space="preserve">(s, \#w_1\#w_2\#...\#w_k\underline{\#}) \vdash^*_M (h, \#u\underline{\#}).</math_block><paragraph>One way to express functions on natural numbers is to represent a
+Formally: Let <title_reference>f</title_reference> be a function from <title_reference>Sigma^*_0</title_reference> to
+<title_reference>Sigma^*_1</title_reference>.
+Turing machine <title_reference>M</title_reference> is said to <strong>compute</strong> <title_reference>f</title_reference> when,
+for any <title_reference>w in Sigma^*_0</title_reference>, if <title_reference>f(w) = u</title_reference> then</paragraph><math_block xml:space="preserve">(s, \#w\underline{\#}) \vdash^*_M (h, \#u\underline{\#}).</math_block><paragraph>Such a function <title_reference>f</title_reference> is said to be a <title_reference>Turing-computable function</title_reference>.</paragraph><paragraph>Here is how we express multiple parameters:
+For <title_reference>f(w_1, ..., w_k) = u</title_reference>,</paragraph><math_block xml:space="preserve">(s, \#w_1\#w_2\#...\#w_k\underline{\#}) \vdash^*_M (h, \#u\underline{\#}).</math_block><paragraph>One way to express functions on natural numbers is to represent a
 number using <title_reference>unary notation</title_reference>.
 (Remember, we are not concerned about is efficient, we are concerned
 about what is possible.)
 In this case, we represent the value 0 as an empty string.
-We say that <math>f: \mathbb{N} \rightarrow \mathbb{N}</math>
-is computed by <math>M</math> if <math>M</math>
-computes <math>f': \{I\}^* \rightarrow \{I\}^*</math> where
-<math>f'(I^n) = I^{f(n)}</math> for each <math>n \in \mathbb{N}</math>.</paragraph><topic><title>Example</title><paragraph>Compute <math>f(n) = n + 1</math> for each <math>n \in \mathbb{N}</math>.</paragraph><math_block xml:space="preserve">\begin{array}{lll}
+We say that <title_reference>f: mathbb{N} rightarrow mathbb{N}</title_reference>
+is computed by <title_reference>M</title_reference> if <title_reference>M</title_reference>
+computes <title_reference>f': {I}^* rightarrow {I}^*</title_reference> where
+<title_reference>f'(I^n) = I^{f(n)}</title_reference> for each <title_reference>n in mathbb{N}</title_reference>.</paragraph><topic><title>Example</title><paragraph>Compute <title_reference>f(n) = n + 1</title_reference> for each <title_reference>n in mathbb{N}</title_reference>.</paragraph><math_block xml:space="preserve">\begin{array}{lll}
 \hline
 q&amp;\sigma&amp;\delta(q, \sigma)\\
 \hline
@@ -101,28 +101,28 @@ q_0&amp;I&amp;(h, R)\\
 q_0&amp;\#&amp;(q_0, I)\\
 \end{array}</math_block><paragraph>An example computation:</paragraph><math_block xml:space="preserve">(q_0, \#II\underline{\#}) \vdash_M (q_0, \#II\underline{I}) \vdash_M
 (h, \#III\underline{\#}).</math_block><paragraph>In general,
-<math>(q_0, \#I^n\underline{\#}) \vdash^*_M (h, \#I^{n+1}\underline{\#})</math>.
-What about <math>n = 0</math>?
-The input is no marks in unary, and it works OK.</paragraph></topic></section><section ids="turing-decideable-vs-turing-acceptable-languages" names="turing-decideable\ vs.\ turing-acceptable\ languages"><title>Turing-Decideable vs. Turing-Acceptable Languages</title><paragraph>A language <math>L \subset \Sigma_0^*</math> is <title_reference>Turing-decidable</title_reference>
-iff function <math>\chi_L: \Sigma^*_0 \rightarrow \{\fbox{Y}, \fbox{N}\}</math>
-is Turing-computable, where for each <math>w \in \Sigma^*_0</math>,</paragraph><math_block xml:space="preserve">\chi_L(w) = \left\{
+<title_reference>(q_0, #I^nunderline{#}) vdash^*_M (h, #I^{n+1}underline{#})</title_reference>.
+What about <title_reference>n = 0</title_reference>?
+The input is no marks in unary, and it works OK.</paragraph></topic></section><section ids="turing-decideable-vs-turing-acceptable-languages" names="turing-decideable\ vs.\ turing-acceptable\ languages"><title>Turing-Decideable vs. Turing-Acceptable Languages</title><paragraph>A language <title_reference>L subset Sigma_0^*</title_reference> is <title_reference>Turing-decidable</title_reference>
+iff function <title_reference>chi_L: Sigma^*_0 rightarrow {fbox{Y}, fbox{N}}</title_reference>
+is Turing-computable, where for each <title_reference>w in Sigma^*_0</title_reference>,</paragraph><math_block xml:space="preserve">\chi_L(w) = \left\{
 \begin{array}{ll}
 \fbox{Y} &amp; \mbox{if $w \in L$}\\
 \fbox{N}  &amp; \mbox{otherwise}
 \end{array}
-\right.</math_block><paragraph>Example: Let <math>\Sigma_0 = \{a\}</math>, and let
-<math>L = \{w \in \Sigma^*_0: |w|\ \mbox{is even}\}</math>.</paragraph><paragraph><math>M</math> erases the marks from right to left, with current parity
+\right.</math_block><paragraph>Example: Let <title_reference>Sigma_0 = {a}</title_reference>, and let
+<title_reference>L = {w in Sigma^*_0: |w|mbox{is even}}</title_reference>.</paragraph><paragraph><title_reference>M</title_reference> erases the marks from right to left, with current parity
 encode by state.
-Once blank at left is reached, mark <math>\fbox{Y}</math> or
-<math>\fbox{N}</math> as appropriate.</paragraph><paragraph>There are many views of computation.
+Once blank at left is reached, mark <title_reference>fbox{Y}</title_reference> or
+<title_reference>fbox{N}</title_reference> as appropriate.</paragraph><paragraph>There are many views of computation.
 One is functions mapping input to output
-(<math>N \rightarrow N</math>, or
+(<title_reference>N rightarrow N</title_reference>, or
 strings to strings, for examples).
-Another is deciding if a string is in a language.</paragraph><paragraph><math>M</math> <title_reference>accepts</title_reference> a string <math>w</math> if <math>M</math> halts on
-input <math>w</math>.</paragraph><bullet_list bullet="*"><list_item><paragraph><math>M</math> accepts a language iff :math:M` halts on <math>w</math> iff
-<math>w \in L</math>.</paragraph></list_item><list_item><paragraph>A language is <math>Turing-acceptable</math> if there is some Turing
-machine that accepts it.</paragraph></list_item></bullet_list><paragraph>Example: <math>\Sigma_0 = \{a, b\}</math>,
-<math>L = \{w \in \Sigma^*_0: w\ \mbox{contains at least one}\ a\}</math>.</paragraph><math_block xml:space="preserve">\begin{array}{lll}
+Another is deciding if a string is in a language.</paragraph><paragraph><title_reference>M</title_reference> <title_reference>accepts</title_reference> a string <title_reference>w</title_reference> if <title_reference>M</title_reference> halts on
+input <title_reference>w</title_reference>.</paragraph><bullet_list bullet="*"><list_item><paragraph><title_reference>M</title_reference> accepts a language iff M` halts on <title_reference>w</title_reference> iff
+<title_reference>w in L</title_reference>.</paragraph></list_item><list_item><paragraph>A language is <title_reference>Turing-acceptable</title_reference> if there is some Turing
+machine that accepts it.</paragraph></list_item></bullet_list><paragraph>Example: <title_reference>Sigma_0 = {a, b}</title_reference>,
+<title_reference>L = {w in Sigma^*_0: wmbox{contains at least one}a}</title_reference>.</paragraph><math_block xml:space="preserve">\begin{array}{lll}
 \hline
 q&amp;\sigma&amp;\delta(q, \sigma)\\
 \hline
@@ -132,29 +132,29 @@ q_0&amp;\#&amp;(q_0, L)\\
 \hline
 \end{array}</math_block><paragraph>Is this language Turing decidable?
 Of course. Instead of just running left, invoke another state that
-means "seen an <math>a</math>", and print <math>\fbox{Y}</math> if we reach
-<math>\#</math> in that state, <math>\fbox{N}</math> otherwise.</paragraph><paragraph>Every Turing-decidable language is Turing-acceptable,
-because if the machine would have printed <math>\fbox{Y}</math>,
+means "seen an <title_reference>a</title_reference>", and print <title_reference>fbox{Y}</title_reference> if we reach
+<title_reference>#</title_reference> in that state, <title_reference>fbox{N}</title_reference> otherwise.</paragraph><paragraph>Every Turing-decidable language is Turing-acceptable,
+because if the machine would have printed <title_reference>fbox{Y}</title_reference>,
 then the machine can halt instead,
-or if the machine would have printed <math>\fbox{N}</math>,
+or if the machine would have printed <title_reference>fbox{N}</title_reference>,
 then it can hang left.</paragraph><paragraph>Is every Turing-acceptible language Turing decidable?
 This is the Halting Problem.</paragraph><paragraph>Of course, if the Turing-acceptible language would halt,
-we write <math>\fbox{Y}</math>.
+we write <title_reference>fbox{Y}</title_reference>.
 But if the Turing-acceptible language would hang,
-can we <emphasis>always</emphasis> replace it with logic to write <math>\fbox{N}</math>
+can we <emphasis>always</emphasis> replace it with logic to write <title_reference>fbox{N}</title_reference>
 instead?
-Example: Collatz function.</paragraph></section><section ids="making-more-complicated-machines" names="making\ more\ complicated\ machines"><title>Making More Complicated Machines</title><paragraph><strong>Lemma</strong>: If</paragraph><math_block xml:space="preserve">(q_1, w_1\underline{a_1}u_1) \vdash_M^* (q_2, ww_2\underline{a_2}u_2)</math_block><paragraph>for string <math>w</math> and</paragraph><math_block xml:space="preserve">(q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3),</math_block><paragraph>then</paragraph><math_block xml:space="preserve">(q_1, w_1\underline{a_1}u_1) \vdash^*_M (q_3, ww_3\underline{a_3}u_3).</math_block><paragraph>Insight: Since
-<math>(q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3)</math>,
-this computation must take place without moving the head left of <math>w_2</math>
+Example: Collatz function.</paragraph></section><section ids="making-more-complicated-machines" names="making\ more\ complicated\ machines"><title>Making More Complicated Machines</title><paragraph><strong>Lemma</strong>: If</paragraph><math_block xml:space="preserve">(q_1, w_1\underline{a_1}u_1) \vdash_M^* (q_2, ww_2\underline{a_2}u_2)</math_block><paragraph>for string <title_reference>w</title_reference> and</paragraph><math_block xml:space="preserve">(q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3),</math_block><paragraph>then</paragraph><math_block xml:space="preserve">(q_1, w_1\underline{a_1}u_1) \vdash^*_M (q_3, ww_3\underline{a_3}u_3).</math_block><paragraph>Insight: Since
+<title_reference>(q_2, w_2underline{a_2}u_2) vdash^*_M (q_3, w_3underline{a_3}u_3)</title_reference>,
+this computation must take place without moving the head left of <title_reference>w_2</title_reference>
 The machine cannot "sense" the left end of the tape.
 (And if it had moved left, it would have hung.)
-Thus, the head won't move left of <math>w_2</math> even if it is not at the
+Thus, the head won't move left of <title_reference>w_2</title_reference> even if it is not at the
 left end of the tape.</paragraph><paragraph>This means that Turing machine computations can be combined into
-larger machines:</paragraph><bullet_list bullet="*"><list_item><paragraph><math>M_2</math> prepares string as input to <math>M_1</math>.</paragraph></list_item><list_item><paragraph><math>M_2</math> passes control to <math>M_1</math> with I/O head at end of input.</paragraph></list_item><list_item><paragraph><math>M_2</math> retrieves control when <math>M_1</math> has completed.</paragraph></list_item></bullet_list><paragraph>Here are some basic machines and notation</paragraph><bullet_list bullet="*"><list_item><paragraph><math>|\Sigma|</math> symbol-writing machines (one for each symbol):
-Any give letter <math>\sigma</math> has a symbol-writing machine named
-<math>\sigma</math>.</paragraph></list_item><list_item><paragraph>Head-moving machines, named <math>R</math> and <math>L</math>, move the head
-appropriately.</paragraph></list_item><list_item><paragraph>Start state indicated with <math>&gt;</math>.</paragraph></list_item><list_item><paragraph>Transitions on anything other than (for example) <math>\#</math> are
-labeled <math>\overline{\#}</math></paragraph></list_item><list_item><paragraph>Multiple copies of a machine get a superscript: <math>R^2</math> means
+larger machines:</paragraph><bullet_list bullet="*"><list_item><paragraph><title_reference>M_2</title_reference> prepares string as input to <title_reference>M_1</title_reference>.</paragraph></list_item><list_item><paragraph><title_reference>M_2</title_reference> passes control to <title_reference>M_1</title_reference> with I/O head at end of input.</paragraph></list_item><list_item><paragraph><title_reference>M_2</title_reference> retrieves control when <title_reference>M_1</title_reference> has completed.</paragraph></list_item></bullet_list><paragraph>Here are some basic machines and notation</paragraph><bullet_list bullet="*"><list_item><paragraph><title_reference>|Sigma|</title_reference> symbol-writing machines (one for each symbol):
+Any give letter <title_reference>sigma</title_reference> has a symbol-writing machine named
+<title_reference>sigma</title_reference>.</paragraph></list_item><list_item><paragraph>Head-moving machines, named <title_reference>R</title_reference> and <title_reference>L</title_reference>, move the head
+appropriately.</paragraph></list_item><list_item><paragraph>Start state indicated with <title_reference>&gt;</title_reference>.</paragraph></list_item><list_item><paragraph>Transitions on anything other than (for example) <title_reference>#</title_reference> are
+labeled <title_reference>overline{#}</title_reference></paragraph></list_item><list_item><paragraph>Multiple copies of a machine get a superscript: <title_reference>R^2</title_reference> means
 move right twice.</paragraph></list_item></bullet_list><raw format="xml" xml:space="preserve"><inlineav
     type="dgm"
     exer_name="Turing1CON"

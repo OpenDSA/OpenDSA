@@ -4,46 +4,46 @@
 <document ids="all-pairs-shortest-paths" names="all-pairs\ shortest\ paths" source="&lt;string&gt;" title="All-Pairs Shortest Paths"><title>All-Pairs Shortest Paths</title><comment xml:space="preserve">This file is part of the OpenDSA eTextbook project. See</comment><comment xml:space="preserve">http://algoviz.org/OpenDSA for more details.</comment><comment xml:space="preserve">Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and</comment><comment xml:space="preserve">distributed under an MIT open source license.</comment><raw format="xml" xml:space="preserve"><avmetadata>null</avmetadata></raw><paragraph>We next consider the problem of finding the shortest distance
 between all pairs of vertices in the graph, called
 the <title_reference>all-pairs shortest paths problem</title_reference>.
-To be precise, for every <math>u, v \in \mathbf{V}</math>,
-calculate <math>d(u, v)</math>.</paragraph><paragraph>One solution is to run <title_reference>Dijkstra's algorithm</title_reference>
+To be precise, for every <title_reference>u, v in mathbf{V}</title_reference>,
+calculate <title_reference>d(u, v)</title_reference>.</paragraph><paragraph>One solution is to run <title_reference>Dijkstra's algorithm</title_reference>
 for finding the <title_reference>shortest path &lt;single-source shortest paths problem&gt;</title_reference>
-<math>|\mathbf{V}|</math> times, each
+<title_reference>|mathbf{V}|</title_reference> times, each
 time computing the shortest path from a different start vertex.
-If <math>\mathbf{G}</math> is sparse
-(that is, <math>|\mathbf{E}| = \Theta(|\mathbf{V}|)</math>)
+If <title_reference>mathbf{G}</title_reference> is sparse
+(that is, <title_reference>|mathbf{E}| = Theta(|mathbf{V}|)</title_reference>)
 then this is a good solution, because the total cost will be
-<math>\Theta(|\mathbf{V}|^2 + |\mathbf{V}||\mathbf{E}| \log
-|\mathbf{V}|) = \Theta(|\mathbf{V}|^2 \log |\mathbf{V}|)</math>
+<title_reference>Theta(|mathbf{V}|^2 + |mathbf{V}||mathbf{E}| log
+|mathbf{V}|) = Theta(|mathbf{V}|^2 log |mathbf{V}|)</title_reference>
 for the version of Dijkstra's algorithm based on priority queues.
 For a dense graph, the priority queue version of Dijkstra's algorithm
-yields a cost of <math>\Theta(|\mathbf{V}|^3 \log |\mathbf{V}|)</math>,
+yields a cost of <title_reference>Theta(|mathbf{V}|^3 log |mathbf{V}|)</title_reference>,
 but the version using <literal>MinVertex</literal> yields a cost
-of <math>\Theta(|\mathbf{V}|^3)</math>.</paragraph><paragraph>Another solution that limits processing time to
-<math>\Theta(|\mathbf{V}|^3)</math>
+of <title_reference>Theta(|mathbf{V}|^3)</title_reference>.</paragraph><paragraph>Another solution that limits processing time to
+<title_reference>Theta(|mathbf{V}|^3)</title_reference>
 regardless of the number of edges is known as Floyd's algorithm.
 It is an example of dynamic programming.
 The chief problem with solving this problem is organizing the search
 process so that we do not repeatedly solve the same subproblems.
-We will do this organization through the use of the <math>k</math>-path.
-Define a <title_reference>k-path</title_reference> from vertex <math>v</math> to vertex
-<math>u</math> to be any path whose intermediate vertices (aside from
-<math>v</math> and <math>u</math>) all have indices less than <math>k</math>.
-A 0-path is defined to be a direct edge from <math>v</math> to <math>u</math>.
+We will do this organization through the use of the <title_reference>k</title_reference>-path.
+Define a <title_reference>k-path</title_reference> from vertex <title_reference>v</title_reference> to vertex
+<title_reference>u</title_reference> to be any path whose intermediate vertices (aside from
+<title_reference>v</title_reference> and <title_reference>u</title_reference>) all have indices less than <title_reference>k</title_reference>.
+A 0-path is defined to be a direct edge from <title_reference>v</title_reference> to <title_reference>u</title_reference>.
 Figure <title_reference>Figure #FloydExamp</title_reference> illustrates the concept of
-<math>k</math>-paths.</paragraph><target refid="floydexamp"></target><raw format="xml" ids="floydexamp" names="floydexamp" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>Define <math>{\rm D}_k(v, u)</math> to be the length of the shortest
-<math>k</math>-path from vertex <math>v</math> to vertex <math>u</math>.
-Assume that we already know the shortest <math>k</math>-path from <math>v</math>
-to <math>u</math>.
-The shortest <math>(k+1)</math>-path either goes through vertex <math>k</math>
+<title_reference>k</title_reference>-paths.</paragraph><target refid="floydexamp"></target><raw format="xml" ids="floydexamp" names="floydexamp" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>Define <title_reference>{rm D}_k(v, u)</title_reference> to be the length of the shortest
+<title_reference>k</title_reference>-path from vertex <title_reference>v</title_reference> to vertex <title_reference>u</title_reference>.
+Assume that we already know the shortest <title_reference>k</title_reference>-path from <title_reference>v</title_reference>
+to <title_reference>u</title_reference>.
+The shortest <title_reference>(k+1)</title_reference>-path either goes through vertex <title_reference>k</title_reference>
 or it does not.
-If it does go through <math>k</math>, then the best path is
-the best <math>k</math>-path from <math>v</math> to <math>k</math> followed by the
-best <math>k</math>-path from <math>k</math> to <math>u</math>.
-Otherwise, we should keep the best <math>k</math>-path seen before.
+If it does go through <title_reference>k</title_reference>, then the best path is
+the best <title_reference>k</title_reference>-path from <title_reference>v</title_reference> to <title_reference>k</title_reference> followed by the
+best <title_reference>k</title_reference>-path from <title_reference>k</title_reference> to <title_reference>u</title_reference>.
+Otherwise, we should keep the best <title_reference>k</title_reference>-path seen before.
 Floyd's algorithm simply checks all of the possibilities in a triple
 loop.
 Here is the implementation for Floyd's algorithm.
 At the end of the algorithm, array <literal>D</literal> stores the all-pairs shortest
-distances.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>Clearly this algorithm requires <math>\Theta(|\mathbf{V}|^3)</math> running
+distances.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>Clearly this algorithm requires <title_reference>Theta(|mathbf{V}|^3)</title_reference> running
 time, and it is the best choice for dense graphs because it is
 (relatively) fast and easy to implement.</paragraph></document>

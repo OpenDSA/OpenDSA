@@ -34,22 +34,22 @@ Thus, the BST implicitly implements a "divide and conquer" approach
 to sorting the left and right subtrees.
 Quicksort implements this same concept in a much more efficient way.</paragraph><raw format="xml" xml:space="preserve"><index>null</index></raw><paragraph>Quicksort first selects a value called the <title_reference>pivot</title_reference>.
 (This is conceptually like the root node's value in the BST.)
-Assume that the input array contains <math>k</math> records with key values
+Assume that the input array contains <title_reference>k</title_reference> records with key values
 less than the pivot.
-The records are then rearranged in such a way that the <math>k</math>
+The records are then rearranged in such a way that the <title_reference>k</title_reference>
 values less than the pivot are placed in the first, or leftmost,
-<math>k</math> positions in the array, and the values greater than or equal
-to the pivot are placed in the last, or rightmost, <math>n-k</math>
+<title_reference>k</title_reference> positions in the array, and the values greater than or equal
+to the pivot are placed in the last, or rightmost, <title_reference>n-k</title_reference>
 positions.
 This is called a <title_reference>partition</title_reference> of the array.
 The values placed in a given partition need not (and typically will
 not) be sorted with respect to each other.
 All that is required is that all values end up in the correct
 partition.
-The pivot value itself is placed in position <math>k</math>.
+The pivot value itself is placed in position <title_reference>k</title_reference>.
 Quicksort then proceeds to sort the resulting subarrays now on either
-side of the pivot, one of size <math>k</math> and the other of size
-<math>n-k-1</math>.
+side of the pivot, one of size <title_reference>k</title_reference> and the other of size
+<title_reference>n-k-1</title_reference>.
 How are these values sorted?
 Because Quicksort is such a good algorithm, using Quicksort on
 the subarrays would be appropriate.</paragraph><paragraph>Unlike some of the sorts that we have seen earlier in this chapter,
@@ -74,7 +74,7 @@ By doing so, we guarantee that at least one value (the pivot) will not
 be processed in the recursive calls to <literal>qsort</literal>.
 Even if a bad pivot is selected, yielding a completely empty
 partition to one side of the pivot, the larger partition will contain
-at most <math>n-1</math> records.</paragraph><paragraph>Selecting a pivot can be done in many ways.
+at most <title_reference>n-1</title_reference> records.</paragraph><paragraph>Selecting a pivot can be done in many ways.
 The simplest is to use the first key.
 However, if the input is sorted or reverse sorted, this will produce a
 poor partitioning with all values to one side of the pivot.
@@ -187,7 +187,7 @@ We make one reasonable simplifying assumption:
 At each partition step, the pivot is
 equally likely to end in any position in the (sorted) array.
 In other words, the pivot is equally likely to break an array into
-partitions of sizes 0 and <math>n-1</math>, or 1 and <math>n-2</math>, and so
+partitions of sizes 0 and <title_reference>n-1</title_reference>, or 1 and <title_reference>n-2</title_reference>, and so
 on.</paragraph><paragraph>Given this assumption, the average-case cost is computed from the
 following equation:</paragraph><math_block xml:space="preserve">{\bf T}(n) = cn + \frac{1}{n}\sum_{k=0}^{n-1}[{\bf T}(k) +
 {\bf T}(n - 1 - k)],
@@ -203,25 +203,25 @@ relation was formed.</paragraph><raw format="xml" xml:space="preserve"><inlineav
 </raw><paragraph>This is an unusual situation that the average case cost and the worst
 case cost have asymptotically different growth rates.
 Consider what "average case" actually means.
-We compute an average cost for inputs of size <math>n</math> by summing up
-for every possible input of size <math>n</math> the product of the running
+We compute an average cost for inputs of size <title_reference>n</title_reference> by summing up
+for every possible input of size <title_reference>n</title_reference> the product of the running
 time cost of that input times the probability that that input will
 occur.
 To simplify things, we assumed that every permutation is equally
 likely to occur.
 Thus, finding the average means summing up the cost for every
 permutation and dividing by the number of permuations
-(which is <math>n!</math>).
-We know that some of these <math>n!</math> inputs cost <math>O(n^2)</math>.
+(which is <title_reference>n!</title_reference>).
+We know that some of these <title_reference>n!</title_reference> inputs cost <title_reference>O(n^2)</title_reference>.
 But the sum of all the permutation costs has to be
-<math>(n!)(O(n \log n))</math>.
+<title_reference>(n!)(O(n log n))</title_reference>.
 Given the extremely high cost of the worst inputs, there must be
 very few of them.
 In fact, there cannot be a constant fraction of the inputs with cost
-<math>O(n^2)</math>.
-If even, say, 1% of the inputs have cost <math>O(n^2)</math>, this would
-lead to an average cost of <math>O(n^2)</math>.
-Thus, as <math>n</math> grows, the fraction of inputs with high cost must
+<title_reference>O(n^2)</title_reference>.
+If even, say, 1% of the inputs have cost <title_reference>O(n^2)</title_reference>, this would
+lead to an average cost of <title_reference>O(n^2)</title_reference>.
+Thus, as <title_reference>n</title_reference> grows, the fraction of inputs with high cost must
 be going toward a limit of zero.
 We can conclude that Quicksort will run fast if
 we can avoid those very few bad input permutations.
@@ -245,7 +245,7 @@ to get a bad input by chance, and it is quite cheap to implement.
 This is in sharp contrast to selecting the first or last record as
 the pivot, which would yield bad performance for many permutations
 that are nearly sorted or nearly reverse sorted.</paragraph><paragraph>A significant improvement can be gained by recognizing that
-Quicksort is relatively slow when <math>n</math> is small.
+Quicksort is relatively slow when <title_reference>n</title_reference> is small.
 This might not seem to be relevant if most of the time we sort
 large arrays, nor should it matter how long Quicksort takes in the
 rare instance when a small array is sorted because it will be fast

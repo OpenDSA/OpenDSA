@@ -12,7 +12,7 @@ From the following list, which appears to be a sequence of "random"
 numbers?</paragraph><bullet_list bullet="*"><list_item><paragraph>1, 1, 1, 1, 1, 1, 1, 1, 1, ...</paragraph></list_item><list_item><paragraph>1, 2, 3, 4, 5, 6, 7, 8, 9, ...</paragraph></list_item><list_item><paragraph>2, 7, 1, 8, 2, 8, 1, 8, 2, ...</paragraph></list_item></bullet_list><paragraph>In fact, all three happen to be the beginning of a some sequence in
 which one could continue the pattern to generate more values (in case
 you do not recognize it, the third one is the initial digits of the
-irrational constant <math>e</math>).
+irrational constant <title_reference>e</title_reference>).
 Viewed as a series of digits, ideally every possible sequence has
 equal probability of being generated (even the three sequences
 above).
@@ -21,24 +21,24 @@ it out. This is the <title_reference>equidistribution</title_reference> property
 "random enough" sequences.
 A sequence is <title_reference>pseudorandom</title_reference> if no future term can be predicted
 in polynomial time, given all past terms.</paragraph><paragraph>Most computer systems use a deterministic algorithm to select
-pseudorandom numbers.  <footnote_reference auto="1" ids="id2" refid="id3">1</footnote_reference>
+pseudorandom numbers.
 The most commonly used approach historically is known as the
 <title_reference>Linear Congruential Method</title_reference> (LCM).
 The LCM method is quite simple.
-We begin by picking a <title_reference>seed</title_reference> that we will call <math>r(1)</math>.
-Then, we can compute successive terms as follows.</paragraph><math_block xml:space="preserve">r(i) = (r(i-1)\times b) \bmod t</math_block><paragraph>where <math>b</math> and <math>t</math> are constants.</paragraph><paragraph>By definition of the <math>\bmod</math> function, all generated numbers
-must be in the range 0 to <math>t-1</math>.
-Now, consider what happens when <math>r(i) = r(j)</math> for values
-<math>i</math> and <math>j</math>.
-Of course then <math>r(i+1) = r(j+1)</math> which means that we have a
+We begin by picking a <title_reference>seed</title_reference> that we will call <title_reference>r(1)</title_reference>.
+Then, we can compute successive terms as follows.</paragraph><math_block xml:space="preserve">r(i) = (r(i-1)\times b) \bmod t</math_block><paragraph>where <title_reference>b</title_reference> and <title_reference>t</title_reference> are constants.</paragraph><paragraph>By definition of the <title_reference>bmod</title_reference> function, all generated numbers
+must be in the range 0 to <title_reference>t-1</title_reference>.
+Now, consider what happens when <title_reference>r(i) = r(j)</title_reference> for values
+<title_reference>i</title_reference> and <title_reference>j</title_reference>.
+Of course then <title_reference>r(i+1) = r(j+1)</title_reference> which means that we have a
 repeating cycle.</paragraph><paragraph>Since the values coming out of the random number generator are between
-0 and <math>t-1</math>, the longest cycle that we can hope for has length
-<math>t</math>.
-In fact, since <math>r(0) = 0</math>, it cannot even be quite this long.
+0 and <title_reference>t-1</title_reference>, the longest cycle that we can hope for has length
+<title_reference>t</title_reference>.
+In fact, since <title_reference>r(0) = 0</title_reference>, it cannot even be quite this long.
 It turns out that to get a good result, it is crucial to pick good
-values for both <math>b</math> and <math>t</math>.
-To see why, consider the following example.</paragraph><topic><title>Example</title><paragraph>Given a <math>t</math> value of 13, we can get very different results
-depending on the <math>b</math> value that we pick, in ways that are
+values for both <title_reference>b</title_reference> and <title_reference>t</title_reference>.
+To see why, consider the following example.</paragraph><topic><title>Example</title><paragraph>Given a <title_reference>t</title_reference> value of 13, we can get very different results
+depending on the <title_reference>b</title_reference> value that we pick, in ways that are
 hard to predict.</paragraph><math_block xml:space="preserve">r(i) = 6r(i-1) \bmod 13 =
 \quad ..., 1, 6, 10, 8, 9, 2, 12, 7, 3, 5, 4, 11, 1, ...\\</math_block><math_block xml:space="preserve">r(i) = 7r(i-1) \bmod 13 =
 \quad ..., 1, 7, 10, 5, 9, 11, 12, 6, 3, 8, 4, 2, 1, ...\\</math_block><math_block xml:space="preserve">\begin{eqnarray}
@@ -46,12 +46,12 @@ r(i) = 5r(i-1) \bmod 13 &amp;=&amp; ..., 1, 5, 12, 8, 1, ...\\
 &amp;&amp; ..., 2, 10, 11, 3, 2, ...\\
 &amp;&amp; ..., 4, 7, 9, 6, 4, ...\\
 &amp;&amp; ..., 0, 0, ...\\
-\end{eqnarray}</math_block><paragraph>In the case of <math>b=5</math>, the generator goes through only a short
+\end{eqnarray}</math_block><paragraph>In the case of <title_reference>b=5</title_reference>, the generator goes through only a short
 sequence before repeating, with the series depending on the seed value
 chosen.
-Clearly, a <math>b</math> value of 5 is far inferior to <math>b</math> values
+Clearly, a <title_reference>b</title_reference> value of 5 is far inferior to <title_reference>b</title_reference> values
 of 6 or 7 in this example.</paragraph></topic><paragraph>If you would like to write a simple LCM random number generator of
-your own, an effective one can be made with the following formula.</paragraph><math_block xml:space="preserve">r(i) = 16807 r(i-1) \bmod 2^{31} - 1.</math_block><footnote auto="1" backrefs="id2" ids="id3" names="1"><label>1</label><paragraph>Another approach is based on
+your own, an effective one can be made with the following formula.</paragraph><math_block xml:space="preserve">r(i) = 16807 r(i-1) \bmod 2^{31} - 1.</math_block><footnote auto="1" ids="id2" names="1"><label>1</label><paragraph>Another approach is based on
 using a computer chip that generates random numbers resulting
 from "thermal noise" in the system.
 Time will tell if this approach replaces deterministic approaches.</paragraph></footnote></document>

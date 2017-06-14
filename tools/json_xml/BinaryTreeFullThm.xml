@@ -11,20 +11,20 @@ More generally, binary tree implementations might require some amount
 of space for internal nodes, and a different amount for leaf nodes.
 Thus, to compute the space required by such implementations, it is
 useful to know the minimum and maximum fraction of the nodes that are
-leaves in a tree containing <math>n</math> internal nodes.</paragraph><paragraph>Unfortunately, this fraction is not fixed.
-A binary tree of <math>n</math> internal nodes might have only one leaf.
+leaves in a tree containing <title_reference>n</title_reference> internal nodes.</paragraph><paragraph>Unfortunately, this fraction is not fixed.
+A binary tree of <title_reference>n</title_reference> internal nodes might have only one leaf.
 This occurs when the internal nodes are arranged in a chain ending
 in a single leaf as shown in Figure <title_reference>Figure #OneLeaf</title_reference>.
 In this example, the number of leaves is low because each
 internal node has only one non-empty child.
-To find an upper bound on the number of leaves for a tree of <math>n</math>
+To find an upper bound on the number of leaves for a tree of <title_reference>n</title_reference>
 internal nodes, first note that the upper bound will occur when each
 internal node has two non-empty children, that is, when the tree is
 full.
 However, this observation does not tell what shape of tree will yield
 the highest percentage of non-empty leaves.
 It turns out not to matter, because all full binary trees with
-<math>n</math> internal nodes have the same number of leaves.
+<title_reference>n</title_reference> internal nodes have the same number of leaves.
 This fact allows us to compute the space requirements for a full
 binary tree implementation whose leaves require a different amount of
 space from its internal nodes.</paragraph><target refid="oneleaf"></target><raw format="xml" ids="oneleaf" names="oneleaf" xml:space="preserve"><odsafig>null</odsafig></raw><raw format="xml" xml:space="preserve"><inlineav
@@ -39,36 +39,36 @@ space from its internal nodes.</paragraph><target refid="oneleaf"></target><raw 
 The number of leaves in a non-empty full binary tree is one
 more than the number of internal nodes.</paragraph><paragraph><strong>Proof:</strong>
 The proof is by <title_reference>mathematical induction &lt;proof by induction&gt;</title_reference>
-on <math>n</math>, the number of internal nodes.
+on <title_reference>n</title_reference>, the number of internal nodes.
 This is an example of the style of induction proof
-where we reduce from an arbitrary instance of size <math>n</math> to an
-instance of size <math>n-1</math> that meets the induction hypothesis.</paragraph><enumerated_list enumtype="lowerroman" prefix="" suffix=")"><list_item><paragraph><strong>Base Cases:</strong> The non-empty tree with zero internal nodes has
+where we reduce from an arbitrary instance of size <title_reference>n</title_reference> to an
+instance of size <title_reference>n-1</title_reference> that meets the induction hypothesis.</paragraph><enumerated_list enumtype="lowerroman" prefix="" suffix=")"><list_item><paragraph><strong>Base Cases:</strong> The non-empty tree with zero internal nodes has
 one leaf node.
 A full binary tree with one internal node has two leaf nodes.
-Thus, the base cases for <math>n = 0</math> and <math>n = 1</math> conform
+Thus, the base cases for <title_reference>n = 0</title_reference> and <title_reference>n = 1</title_reference> conform
 to the theorem.</paragraph></list_item><list_item><paragraph><strong>Induction Hypothesis:</strong> Assume that any full binary
-tree <math>\mathbf{T}</math> containing <math>n-1</math> internal nodes
-has <math>n</math> leaves.</paragraph></list_item><list_item><paragraph><strong>Induction Step:</strong>
-Given tree <math>\mathbf{T}</math> with <math>n</math> internal nodes,
-select an internal node <math>I</math> whose children are both leaf
+tree <title_reference>mathbf{T}</title_reference> containing <title_reference>n-1</title_reference> internal nodes
+has <title_reference>n</title_reference> leaves.</paragraph></list_item><list_item><paragraph><strong>Induction Step:</strong>
+Given tree <title_reference>mathbf{T}</title_reference> with <title_reference>n</title_reference> internal nodes,
+select an internal node <title_reference>I</title_reference> whose children are both leaf
 nodes.
-Remove both of <math>I</math>'s children, making <math>I</math> a leaf
+Remove both of <title_reference>I</title_reference>'s children, making <title_reference>I</title_reference> a leaf
 node.
-Call the new tree <math>\mathbf{T}'</math>.
-<math>\mathbf{T}'</math> has <math>n-1</math> internal nodes.
-From the induction hypothesis, <math>\mathbf{T}'</math> has
-<math>n</math> leaves.
-Now, restore <math>I</math>'s two children.
-We once again have tree <math>\mathbf{T}</math> with <math>n</math>
+Call the new tree <title_reference>mathbf{T}'</title_reference>.
+<title_reference>mathbf{T}'</title_reference> has <title_reference>n-1</title_reference> internal nodes.
+From the induction hypothesis, <title_reference>mathbf{T}'</title_reference> has
+<title_reference>n</title_reference> leaves.
+Now, restore <title_reference>I</title_reference>'s two children.
+We once again have tree <title_reference>mathbf{T}</title_reference> with <title_reference>n</title_reference>
 internal nodes.
-How many leaves does <math>\mathbf{T}</math> have?
-Because <math>\mathbf{T}'</math> has <math>n</math> leaves, adding the two
-children yields <math>n+2</math>.
-However, node <math>I</math> counted as one of the leaves in
-<math>\mathbf{T}'</math> and has now become an internal node.
-Thus, tree <math>\mathbf{T}</math> has <math>n+1</math> leaf nodes and
-<math>n</math> internal nodes.</paragraph></list_item></enumerated_list><paragraph>By mathematical induction the theorem holds for all values of
-<math>n &gt; 0</math>.</paragraph></topic><paragraph>When analyzing the space requirements for a binary tree
+How many leaves does <title_reference>mathbf{T}</title_reference> have?
+Because <title_reference>mathbf{T}'</title_reference> has <title_reference>n</title_reference> leaves, adding the two
+children yields <title_reference>n+2</title_reference>.
+However, node <title_reference>I</title_reference> counted as one of the leaves in
+<title_reference>mathbf{T}'</title_reference> and has now become an internal node.
+Thus, tree <title_reference>mathbf{T}</title_reference> has <title_reference>n+1</title_reference> leaf nodes and
+<title_reference>n</title_reference> internal nodes.</paragraph></list_item></enumerated_list><paragraph>By mathematical induction the theorem holds for all values of
+<title_reference>n &gt; 0</title_reference>.</paragraph></topic><paragraph>When analyzing the space requirements for a binary tree
 implementation,
 it is useful to know how many empty subtrees a tree contains.
 A simple extension of the Full Binary Tree Theorem tells us exactly
@@ -77,32 +77,32 @@ full or not.
 Here are two approaches to proving the following theorem, and
 each suggests a useful way of thinking about binary trees.</paragraph><target refid="subtreethrm"></target><topic ids="subtreethrm" names="subtreethrm"><title>Theorem</title><paragraph>The number of empty subtrees in a non-empty binary tree is one
 more than the number of nodes in the tree.</paragraph><paragraph><strong>Proof 1:</strong>
-Take an arbitrary binary tree <math>\mathbf{T}</math> and replace
+Take an arbitrary binary tree <title_reference>mathbf{T}</title_reference> and replace
 every empty subtree with a leaf node.
-Call the new tree <math>\mathbf{T}'</math>.
-All nodes originally in <math>\mathbf{T}</math> will be internal
-nodes in <math>\mathbf{T}'</math> (because even the leaf nodes of
-<math>\mathbf{T}</math> have children in <math>\mathbf{T}'</math>).
-<math>\mathbf{T}'</math> is a full binary tree, because every
-internal node of <math>\mathbf{T}</math> now must have two children
-in <math>\mathbf{T}'</math>, and each leaf node
-in <math>\mathbf{T}</math> must have two children in
-<math>\mathbf{T}'</math> (the leaves just added).
+Call the new tree <title_reference>mathbf{T}'</title_reference>.
+All nodes originally in <title_reference>mathbf{T}</title_reference> will be internal
+nodes in <title_reference>mathbf{T}'</title_reference> (because even the leaf nodes of
+<title_reference>mathbf{T}</title_reference> have children in <title_reference>mathbf{T}'</title_reference>).
+<title_reference>mathbf{T}'</title_reference> is a full binary tree, because every
+internal node of <title_reference>mathbf{T}</title_reference> now must have two children
+in <title_reference>mathbf{T}'</title_reference>, and each leaf node
+in <title_reference>mathbf{T}</title_reference> must have two children in
+<title_reference>mathbf{T}'</title_reference> (the leaves just added).
 The Full Binary Tree Theorem tells us that the number of leaves
 in a full binary tree is one more than the number of internal
 nodes.
 Thus, the number of new leaves that were added to create
-<math>\mathbf{T}'</math> is one more than the number of nodes in
-<math>\mathbf{T}</math>.
-Each leaf node in <math>\mathbf{T}'</math> corresponds to an
-empty subtree in <math>\mathbf{T}</math>.
-Thus, the number of empty subtrees in <math>\mathbf{T}</math> is one
-more than the number of nodes in <math>\mathbf{T}</math>.</paragraph><paragraph><strong>Proof 2:</strong>
-By definition, every node in binary tree <math>\mathbf{T}</math> has
-two children, for a total of <math>2n</math> children in a tree of
-<math>n</math> nodes.
+<title_reference>mathbf{T}'</title_reference> is one more than the number of nodes in
+<title_reference>mathbf{T}</title_reference>.
+Each leaf node in <title_reference>mathbf{T}'</title_reference> corresponds to an
+empty subtree in <title_reference>mathbf{T}</title_reference>.
+Thus, the number of empty subtrees in <title_reference>mathbf{T}</title_reference> is one
+more than the number of nodes in <title_reference>mathbf{T}</title_reference>.</paragraph><paragraph><strong>Proof 2:</strong>
+By definition, every node in binary tree <title_reference>mathbf{T}</title_reference> has
+two children, for a total of <title_reference>2n</title_reference> children in a tree of
+<title_reference>n</title_reference> nodes.
 Every node except the root node has one parent, for a total of
-<math>n-1</math> nodes with parents.
-In other words, there are <math>n-1</math> non-empty children.
-Because the total number of children is <math>2n</math>, the remaining
-<math>n+1</math> children must be empty.</paragraph></topic><raw format="xml" xml:space="preserve"><odsascript>AV/Binary/UnaryTreeExampleCON.js</odsascript></raw></document>
+<title_reference>n-1</title_reference> nodes with parents.
+In other words, there are <title_reference>n-1</title_reference> non-empty children.
+Because the total number of children is <title_reference>2n</title_reference>, the remaining
+<title_reference>n+1</title_reference> children must be empty.</paragraph></topic><raw format="xml" xml:space="preserve"><odsascript>AV/Binary/UnaryTreeExampleCON.js</odsascript></raw></document>

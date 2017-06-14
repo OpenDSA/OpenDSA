@@ -4,27 +4,27 @@
 <document ids="amortized-analysis" names="amortized\ analysis" source="&lt;string&gt;" title="Amortized Analysis"><title>Amortized Analysis</title><comment xml:space="preserve">This file is part of the OpenDSA eTextbook project. See</comment><comment xml:space="preserve">http://algoviz.org/OpenDSA for more details.</comment><comment xml:space="preserve">Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and</comment><comment xml:space="preserve">distributed under an MIT open source license.</comment><raw format="xml" xml:space="preserve"><avmetadata>null</avmetadata></raw><paragraph>This module presents the concept of <title_reference>amortized analysis</title_reference>,
 which is the analysis for a series of operations taken as a whole.
 In particular, amortized analysis allows us to deal with the
-situation where the worst-case cost for <math>n</math> operations is less
-than <math>n</math> times the worst-case cost of any one operation.
+situation where the worst-case cost for <title_reference>n</title_reference> operations is less
+than <title_reference>n</title_reference> times the worst-case cost of any one operation.
 Rather than focusing on the individual cost of each operation
 independently and summing them, amortized analysis looks at the
 cost of the entire series and "charges" each individual operation
 with a share of the total cost.</paragraph><paragraph>We can apply the technique of amortized analysis in the case of
 a series of sequential searches in an unsorted array.
-For <math>n</math> random searches, the average-case cost for each search
-is <math>n/2</math>, and so the <emphasis>expected</emphasis> total cost for the series is
-<math>n^2/2</math>.
+For <title_reference>n</title_reference> random searches, the average-case cost for each search
+is <title_reference>n/2</title_reference>, and so the <emphasis>expected</emphasis> total cost for the series is
+<title_reference>n^2/2</title_reference>.
 Unfortunately, in the worst case all of the searches would
 be to the last item in the array.
-In this case, each search costs <math>n</math> for a total worst-case cost
-of <math>n^2</math>.
-Compare this to the cost for a series of <math>n</math> searches such that
+In this case, each search costs <title_reference>n</title_reference> for a total worst-case cost
+of <title_reference>n^2</title_reference>.
+Compare this to the cost for a series of <title_reference>n</title_reference> searches such that
 each item in the array is searched for precisely once.
 In this situation, some of the searches <emphasis>must</emphasis> be expensive, but
 also some searches <emphasis>must</emphasis> be cheap.
 The total number of searches, in the best, average, and worst case,
 for this problem must be
-<math>\sum_{i=i}^n i \approx n^2/2</math>.
+<title_reference>sum_{i=i}^n i approx n^2/2</title_reference>.
 This is a factor of two better than the more pessimistic analysis that
 charges each operation in the series with its worst-case cost.</paragraph><paragraph>As another example of amortized analysis, consider the process of
 incrementing a binary counter.
@@ -33,15 +33,15 @@ the high-order (leftmost) bit, changing 1s to 0s until the first 0
 is encountered.
 This 0 is changed to a 1, and the increment operation is done.
 Below is an implementation for the increment operation,
-assuming that a binary number of length <math>n</math> is stored in array
-<title_reference>A</title_reference> of length <math>n</math>.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>If we count from 0 through <math>2^n - 1</math>, (requiring a counter with
-at least <math>n</math> bits), what is the average cost for an increment
+assuming that a binary number of length <title_reference>n</title_reference> is stored in array
+<title_reference>A</title_reference> of length <title_reference>n</title_reference>.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>If we count from 0 through <title_reference>2^n - 1</title_reference>, (requiring a counter with
+at least <title_reference>n</title_reference> bits), what is the average cost for an increment
 operation in terms of the number of bits processed?
-Naive worst-case analysis says that if all <math>n</math> bits are 1
-(except for the high-order bit), then <math>n</math> bits need to be
+Naive worst-case analysis says that if all <title_reference>n</title_reference> bits are 1
+(except for the high-order bit), then <title_reference>n</title_reference> bits need to be
 processed.
-Thus, if there are <math>2^n</math> increments, then the cost is
-<math>n 2^n</math>.
+Thus, if there are <title_reference>2^n</title_reference> increments, then the cost is
+<title_reference>n 2^n</title_reference>.
 However, this is much too high, because it is rare for so many bits to
 be processed.
 In fact, half of the time the low-order bit is 0, and so only that
@@ -53,17 +53,17 @@ the bit to its left is flipped half the time,
 the next bit one quarter of the time, and so on.
 We can capture this with the summation (charging costs to bits going
 from right to left)</paragraph><math_block xml:space="preserve">\sum_{i=0}^{n-1} \frac{1}{2^i} &lt; 2.</math_block><paragraph>In other words, the average number of bits flipped on each
-increment is 2, leading to a total cost of only <math>2 \cdot 2^n</math>
-for a series of <math>2^n</math> increments.</paragraph><paragraph>A useful concept for amortized analysis is illustrated by a simple
+increment is 2, leading to a total cost of only <title_reference>2 cdot 2^n</title_reference>
+for a series of <title_reference>2^n</title_reference> increments.</paragraph><paragraph>A useful concept for amortized analysis is illustrated by a simple
 variation on the stack data structure, where the <title_reference>pop</title_reference> function
-is slightly modified to take a second parameter <math>k</math> indicating
-that <math>k</math> pop operations are to be performed.</paragraph><paragraph>The "local" worst-case analysis for <title_reference>multipop</title_reference> is <math>\Theta(n)</math>
-for <math>n</math> elements in the stack.
-Thus, if there are <math>m_1</math> calls to <title_reference>push</title_reference> and <math>m_2</math> calls
+is slightly modified to take a second parameter <title_reference>k</title_reference> indicating
+that <title_reference>k</title_reference> pop operations are to be performed.</paragraph><paragraph>The "local" worst-case analysis for <title_reference>multipop</title_reference> is <title_reference>Theta(n)</title_reference>
+for <title_reference>n</title_reference> elements in the stack.
+Thus, if there are <title_reference>m_1</title_reference> calls to <title_reference>push</title_reference> and <title_reference>m_2</title_reference> calls
 to <title_reference>multipop</title_reference>, then the naive worst-case cost for the series of
-operation is <math>m_1 + m_2\cdot n = m_1 + m_2 \cdot m_1</math>.
+operation is <title_reference>m_1 + m_2cdot n = m_1 + m_2 cdot m_1</title_reference>.
 This analysis is unreasonably pessimistic.
-Clearly it is not really possible to pop <math>m_1</math> elements each
+Clearly it is not really possible to pop <title_reference>m_1</title_reference> elements each
 time <title_reference>multipop</title_reference> is called.
 Analysis that focuses on single operations cannot deal with this
 global limit, and so we turn to amortized analysis to model the
@@ -83,7 +83,7 @@ First, each of the <title_reference>push</title_reference> operations takes cons
 Second, each <title_reference>multipop</title_reference> operation takes a constant time in
 overhead, regardless of the number of items popped on that call.
 Finally, we count the sum of the potentials expended by all
-<title_reference>multipop</title_reference> operations, which is at most <math>m_1</math>, the number of
+<title_reference>multipop</title_reference> operations, which is at most <title_reference>m_1</title_reference>, the number of
 <title_reference>push</title_reference> operations.
 This total cost can therefore be expressed as</paragraph><math_block xml:space="preserve">m_1 + (m_2 + m_1) = \Theta(m_1 + m_2).</math_block><paragraph>A similar argument was used in our analysis for the partition function
 in the <title_reference>Quicksort &lt;Quicksort&gt; &lt;Quicksort&gt;</title_reference> algorithm.
@@ -101,44 +101,44 @@ positions of records to change, because the most-frequently accessed
 record is first (and thus has least cost), followed by the next most
 frequently accessed record, and so on.</paragraph><target refid="mtfthm"></target><topic ids="mtfthm" names="mtfthm"><title>Theorem</title><paragraph><strong>Theorem:</strong>
 The total number of comparisons required by any series
-<math>S</math> of <math>n</math> or more searches on a self-organizing list
-of length <math>n</math> using the  move-to-front heuristic is never
+<title_reference>S</title_reference> of <title_reference>n</title_reference> or more searches on a self-organizing list
+of length <title_reference>n</title_reference> using the  move-to-front heuristic is never
 more than twice the total number of comparisons required when
-series <math>S</math> is applied to the list stored in its optimal
+series <title_reference>S</title_reference> is applied to the list stored in its optimal
 static order.</paragraph><paragraph><strong>Proof:</strong>
 Each comparison of the search key with a record in the list is
 either successful or unsuccessful.
-For <math>m</math> searches, there must be exactly <math>m</math> successful
+For <title_reference>m</title_reference> searches, there must be exactly <title_reference>m</title_reference> successful
 comparisons for both the self-organizing list and the static list.
 The total number of unsuccessful comparisons in the self-organizing
 list is the sum, over all pairs of distinct keys, of the number of
-unsuccessful comparisons made between that pair.</paragraph><paragraph>Consider a particular pair of keys: <math>A</math> and <math>B</math>.
-For any sequence of searches <math>S</math>, the total number of
-(unsuccessful) comparisons between <math>A</math> and <math>B</math> is
-identical to the number of comparisons between <math>A</math> and
-<math>B</math> required for the subsequence of <math>S</math> made up only of
-searches for <math>A</math> or <math>B</math>.
-Call this subsequence <math>S_{AB}</math>.
+unsuccessful comparisons made between that pair.</paragraph><paragraph>Consider a particular pair of keys: <title_reference>A</title_reference> and <title_reference>B</title_reference>.
+For any sequence of searches <title_reference>S</title_reference>, the total number of
+(unsuccessful) comparisons between <title_reference>A</title_reference> and <title_reference>B</title_reference> is
+identical to the number of comparisons between <title_reference>A</title_reference> and
+<title_reference>B</title_reference> required for the subsequence of <title_reference>S</title_reference> made up only of
+searches for <title_reference>A</title_reference> or <title_reference>B</title_reference>.
+Call this subsequence <title_reference>S_{AB}</title_reference>.
 In other words, including searches for other keys does not
-affect the relative position of <math>A</math> and <math>B</math> and so does
+affect the relative position of <title_reference>A</title_reference> and <title_reference>B</title_reference> and so does
 not affect the relative contribution to the total cost of the
-unsuccessful comparisons between <math>A</math> and <math>B</math>.</paragraph><paragraph>The number of unsuccessful comparisons between <math>A</math> and
-<math>B</math> made by the move-to-front heuristic on subsequence
-<math>S_{AB}</math> is at most twice the number of unsuccessful
-comparisons between <math>A</math> and <math>B</math> required
-when <math>S_{AB}</math> is applied to the optimal static
+unsuccessful comparisons between <title_reference>A</title_reference> and <title_reference>B</title_reference>.</paragraph><paragraph>The number of unsuccessful comparisons between <title_reference>A</title_reference> and
+<title_reference>B</title_reference> made by the move-to-front heuristic on subsequence
+<title_reference>S_{AB}</title_reference> is at most twice the number of unsuccessful
+comparisons between <title_reference>A</title_reference> and <title_reference>B</title_reference> required
+when <title_reference>S_{AB}</title_reference> is applied to the optimal static
 ordering for the list.
-To see this, assume that <math>S_{AB}</math> contains
-<math>i</math> <math>A</math> s and <math>j</math> <math>B</math> s,
-with <math>i \leq j</math>.
-Under the optimal static ordering, <math>i</math> unsuccessful
-comparisons are required because <math>B</math> must appear before
-<math>A</math> in the list (because its access frequency is higher).
+To see this, assume that <title_reference>S_{AB}</title_reference> contains
+<title_reference>i</title_reference> <title_reference>A</title_reference> s and <title_reference>j</title_reference> <title_reference>B</title_reference> s,
+with <title_reference>i leq j</title_reference>.
+Under the optimal static ordering, <title_reference>i</title_reference> unsuccessful
+comparisons are required because <title_reference>B</title_reference> must appear before
+<title_reference>A</title_reference> in the list (because its access frequency is higher).
 Move-to-front will yield an unsuccessful comparison whenever the
-request sequence changes from <math>A</math> to <math>B</math> or from
-<math>B</math> to <math>A</math>.
-The total number of such changes possible is <math>2i</math> because
-each change involves an <math>A</math> and each <math>A</math> can be part of
+request sequence changes from <title_reference>A</title_reference> to <title_reference>B</title_reference> or from
+<title_reference>B</title_reference> to <title_reference>A</title_reference>.
+The total number of such changes possible is <title_reference>2i</title_reference> because
+each change involves an <title_reference>A</title_reference> and each <title_reference>A</title_reference> can be part of
 at most two changes.</paragraph><paragraph>Because the total number of unsuccessful comparisons required by
 move-to-front for any given pair of keys is at most twice that
 required by the optimal static ordering, the total number of

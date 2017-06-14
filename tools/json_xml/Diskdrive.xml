@@ -50,7 +50,7 @@ States, with the plane flying at a height of one meter!</paragraph><paragraph>A 
 several read/write heads, as shown in
 Figure <title_reference>Figure #Platters</title_reference> (a).
 Each head is  attached to an <title_reference>arm</title_reference>, which connects to the
-<title_reference>boom</title_reference>. <footnote_reference auto="1" ids="id2" refid="id3">1</footnote_reference>
+<title_reference>boom</title_reference>.
 The boom moves all of the heads in or out together.
 When the heads are in some position over the platters, there are data
 on each platter directly accessible to each head.
@@ -286,7 +286,7 @@ and why so-called "disk defragmenters" can speed up file
 processing time.
 File fragmentation happens most commonly when the disk is nearly full
 and the file manager must search for free space
-whenever a file is created or changed.</paragraph></topic></section><section ids="notes" names="notes"><title>Notes</title><footnote auto="1" backrefs="id2" ids="id3" names="1"><label>1</label><paragraph>This arrangement, while typical, is not necessarily true for
+whenever a file is created or changed.</paragraph></topic></section><section ids="notes" names="notes"><title>Notes</title><footnote auto="1" ids="id2" names="1"><label>1</label><paragraph>This arrangement, while typical, is not necessarily true for
 all disk drives.
 Nearly everything said here about the physical arrangement of
 disk drives represents a typical engineering compromise, not a

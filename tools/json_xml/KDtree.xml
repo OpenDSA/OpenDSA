@@ -11,33 +11,33 @@ In principle, the kd tree could be used to unify key searching across
 any arbitrary set of keys such as name and zipcode.
 But in practice, it is nearly always used to support search on
 multi-dimensional coordinates, such as locations in 2D or 3D space.
-We define the discriminator at level <math>i</math> to be
-<math>i</math> mod <math>k</math> for <math>k</math> dimensions.
+We define the discriminator at level <title_reference>i</title_reference> to be
+<title_reference>i</title_reference> mod <title_reference>k</title_reference> for <title_reference>k</title_reference> dimensions.
 For example, assume that we store data organized by
-<math>xy</math>-coordinates.
-In this case, <math>k:math:</math> is 2 (there are two coordinates),
-with the <math>x</math>-coordinate field arbitrarily designated key 0,
-and the <math>y</math>-coordinate field designated key 1.
-At each level, the discriminator alternates between <math>x</math> and
-<math>y</math>.
-Thus, a node <math>N</math> at level 0 (the root) would have in its left
-subtree only nodes whose <math>x</math> values are less than
-<math>N_x</math> (because <math>x</math> is search key 0, and
-<math>0 \mod 2 = 0</math>).
-The right subtree would contain nodes whose <math>x</math> values are
-greater than <math>N_x</math>.
-A node <math>M</math> at level 1 would have in its left subtree only
-nodes whose <math>y</math> values are less than <math>M_y</math>.
-There is no restriction on the relative values of <math>M_x</math> and the
-<math>x</math> values of <math>M</math> 's descendants, because branching
-decisions made at <math>M</math> are based solely on the <math>y</math>
+<title_reference>xy</title_reference>-coordinates.
+In this case, <title_reference>k</title_reference> is 2 (there are two coordinates),
+with the <title_reference>x</title_reference>-coordinate field arbitrarily designated key 0,
+and the <title_reference>y</title_reference>-coordinate field designated key 1.
+At each level, the discriminator alternates between <title_reference>x</title_reference> and
+<title_reference>y</title_reference>.
+Thus, a node <title_reference>N</title_reference> at level 0 (the root) would have in its left
+subtree only nodes whose <title_reference>x</title_reference> values are less than
+<title_reference>N_x</title_reference> (because <title_reference>x</title_reference> is search key 0, and
+<title_reference>0 mod 2 = 0</title_reference>).
+The right subtree would contain nodes whose <title_reference>x</title_reference> values are
+greater than <title_reference>N_x</title_reference>.
+A node <title_reference>M</title_reference> at level 1 would have in its left subtree only
+nodes whose <title_reference>y</title_reference> values are less than <title_reference>M_y</title_reference>.
+There is no restriction on the relative values of <title_reference>M_x</title_reference> and the
+<title_reference>x</title_reference> values of <title_reference>M</title_reference> 's descendants, because branching
+decisions made at <title_reference>M</title_reference> are based solely on the <title_reference>y</title_reference>
 coordinate.
 Figure <title_reference>Figure #kdExamp</title_reference> shows an example of how a collection
 of two-dimensional points would be stored in a kd tree.</paragraph><target refid="kdexamp"></target><raw format="xml" ids="kdexamp" names="kdexamp" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>In Figure <title_reference>Figure #kdExamp</title_reference>, the region containing the points
-is (arbitrarily) restricted to a <math>128 \times 128</math> square, and
+is (arbitrarily) restricted to a <title_reference>128 times 128</title_reference> square, and
 each internal node splits the search space.
 Each split is shown by a line, vertical for nodes with
-<math>x</math> discriminators and horizontal for nodes with <math>y</math>
+<title_reference>x</title_reference> discriminators and horizontal for nodes with <title_reference>y</title_reference>
 discriminators.
 The root node splits the space into two parts;
 its children further subdivide the space into smaller parts.
@@ -47,32 +47,32 @@ rectangles that show the extent of where nodes can fall in the
 various subtrees.</paragraph><paragraph>Searching a kd tree for the record with a specified xy-coordinate
 is like searching a BST, except that each level of the
 kd tree is associated with a particular discriminator.</paragraph><topic><title>Example</title><paragraph>Consider searching the kd tree for a
-record located at <math>P = (69, 50)</math>.
-First compare <math>P</math> with the point stored at
-the root (record <math>A</math> in Figure <title_reference>Figure #kdExamp</title_reference>).
-If <math>P</math> matches the location of :math:A`,
+record located at <title_reference>P = (69, 50)</title_reference>.
+First compare <title_reference>P</title_reference> with the point stored at
+the root (record <title_reference>A</title_reference> in Figure <title_reference>Figure #kdExamp</title_reference>).
+If <title_reference>P</title_reference> matches the location of A`,
 then the search is successful.
 In this example the positions do not match
-(<math>A</math> 's location (40, 45) is not the same as (69, 50)),
+(<title_reference>A</title_reference> 's location (40, 45) is not the same as (69, 50)),
 so the search must continue.
-The <math>x</math> value of <math>A</math> is compared with that of
-<math>P</math> to determine in which direction to branch.
-Because <math>A_x</math>'s value of 40 is less than
-<math>P</math>'s <math>x</math> value of 69, we branch to the right subtree
-(all cities with <math>x</math> value greater than or equal to 40 are in
+The <title_reference>x</title_reference> value of <title_reference>A</title_reference> is compared with that of
+<title_reference>P</title_reference> to determine in which direction to branch.
+Because <title_reference>A_x</title_reference>'s value of 40 is less than
+<title_reference>P</title_reference>'s <title_reference>x</title_reference> value of 69, we branch to the right subtree
+(all cities with <title_reference>x</title_reference> value greater than or equal to 40 are in
 the right subtree).
-<math>A_y</math> does not affect the decision on which way to
+<title_reference>A_y</title_reference> does not affect the decision on which way to
 branch at this level.
-At the second level, <math>P</math> does not match record <math>C</math>'s
+At the second level, <title_reference>P</title_reference> does not match record <title_reference>C</title_reference>'s
 position, so another branch must be taken.
-However, at this level we branch based on the relative <math>y</math>
-values of point <math>P</math> and record <math>C</math>
-(because <math>1 \mod 2 = 1</math>, which corresponds to the
-<math>y</math>-coordinate).
-Because <math>C_y</math>'s value of 10 is less than <math>P_y</math>'s value
+However, at this level we branch based on the relative <title_reference>y</title_reference>
+values of point <title_reference>P</title_reference> and record <title_reference>C</title_reference>
+(because <title_reference>1 mod 2 = 1</title_reference>, which corresponds to the
+<title_reference>y</title_reference>-coordinate).
+Because <title_reference>C_y</title_reference>'s value of 10 is less than <title_reference>P_y</title_reference>'s value
 of 50, we branch to the right.
-At this point, <math>P</math> is compared against the position
-of <math>D</math>.
+At this point, <title_reference>P</title_reference> is compared against the position
+of <title_reference>D</title_reference>.
 A match is made and the search is successful.</paragraph><paragraph>If the search process reaches a <literal>NULL</literal> pointer, then
 that point is not contained in the tree.
 Here is a kd tree search implementation,
@@ -92,41 +92,41 @@ BST insertion.
 The kd tree search procedure is followed until a <literal>NULL</literal> pointer is
 found, indicating the proper place to insert the new node.</paragraph><topic><title>Example</title><paragraph>Inserting a record at location (10, 50) in the
 kd tree of Figure <title_reference>Figure #kdExamp</title_reference> first requires a search
-to the node containing record <math>B</math>.
-At this point, the new record is inserted into <math>B</math>'s left
+to the node containing record <title_reference>B</title_reference>.
+At this point, the new record is inserted into <title_reference>B</title_reference>'s left
 subtree.</paragraph></topic><paragraph>Deleting a node from a kd tree is similar to deleting from a BST,
 but slightly harder.
 As with deleting from a BST, the first step is to find the node
-(call it <math>N</math>) to be deleted.
-It is then necessary to find a descendant of <math>N</math> which can be
-used to replace <math>N</math> in the tree.
-If <math>N</math> has no children, then <math>N</math> is replaced with a
+(call it <title_reference>N</title_reference>) to be deleted.
+It is then necessary to find a descendant of <title_reference>N</title_reference> which can be
+used to replace <title_reference>N</title_reference> in the tree.
+If <title_reference>N</title_reference> has no children, then <title_reference>N</title_reference> is replaced with a
 <literal>NULL</literal> pointer.
-Note that if <math>N</math> has one child that in turn has children, we
-cannot simply assign <math>N</math>'s parent to point to <math>N</math>'s
+Note that if <title_reference>N</title_reference> has one child that in turn has children, we
+cannot simply assign <title_reference>N</title_reference>'s parent to point to <title_reference>N</title_reference>'s
 child as would be done in the BST.
 To do so would change the level of all nodes in the subtree, and thus
 the discriminator used for a search would also change.
 The result is that the subtree would no longer be a kd tree because a
 node's children might now violate the BST property for that
-discriminator.</paragraph><paragraph>Similar to BST deletion, the record stored in <math>N</math> should
-be replaced either by the record in <math>N</math>'s right subtree with
+discriminator.</paragraph><paragraph>Similar to BST deletion, the record stored in <title_reference>N</title_reference> should
+be replaced either by the record in <title_reference>N</title_reference>'s right subtree with
 the least value of &lt;var&gt;N&lt;/var&gt;'s discriminator, or by the record in
-<math>N</math>'s left subtree with the greatest value for this
+<title_reference>N</title_reference>'s left subtree with the greatest value for this
 discriminator.
-Assume that <math>N</math> was at an odd level and therefore <math>y</math> is
+Assume that <title_reference>N</title_reference> was at an odd level and therefore <title_reference>y</title_reference> is
 the discriminator.
-<math>N</math> could then be replaced by the record in its right subtree
-with the least <math>y</math> value (call it <math>Y_{min}</math>).
+<title_reference>N</title_reference> could then be replaced by the record in its right subtree
+with the least <title_reference>y</title_reference> value (call it <title_reference>Y_{min}</title_reference>).
 The problem is that &lt;var&gt;Y&lt;/var&gt;&lt;sub&gt;min&lt;/sub&gt; is not necessarily the
 leftmost node, as it would be in the BST.
-A modified search procedure to find the least <math>y</math> value in the
+A modified search procedure to find the least <title_reference>y</title_reference> value in the
 left subtree must be used to find it instead.
 The implementation for <literal>findmin</literal> is shown next.
 A recursive call to the delete routine will then remove
 :math`Y_{min}` from the tree.
-Finally, <math>Y_{min}</math>'s record is substituted for the
-record in node <math>N</math>.</paragraph><literal_block xml:space="preserve">private KDNode&lt;E&gt;
+Finally, <title_reference>Y_{min}</title_reference>'s record is substituted for the
+record in node <title_reference>N</title_reference>.</paragraph><literal_block xml:space="preserve">private KDNode&lt;E&gt;
 findmin(KDNode&lt;E&gt; rt, int descrim, int level) {
   KDNode&lt;E&gt; temp1, temp2;
   int[] key1 = null;
@@ -156,30 +156,30 @@ discriminator.</paragraph><paragraph>Note that we can replace the node to be del
 node from the right subtree only if the right subtree exists.
 If it does not, then a suitable replacement must be found in the left
 subtree.
-Unfortunately, it is not satisfactory to replace <math>N</math>'s record
+Unfortunately, it is not satisfactory to replace <title_reference>N</title_reference>'s record
 with the record having the greatest value for the discriminator in the
 left subtree, because this new value might be duplicated.
 If so, then we would have equal values for the discriminator in
-<math>N</math>'s left subtree, which violates the ordering rules for the
+<title_reference>N</title_reference>'s left subtree, which violates the ordering rules for the
 kd tree.
 Fortunately, there is a simple solution to the problem.
-We first move the left subtree of node <math>N</math> to become the
-right subtree (i.e., we simply swap the values of <math>N</math>'s left
+We first move the left subtree of node <title_reference>N</title_reference> to become the
+right subtree (i.e., we simply swap the values of <title_reference>N</title_reference>'s left
 and right child pointers).
 At this point, we proceed with the normal deletion process, replacing
 the record of &lt;var&gt;N&lt;/var&gt; to be deleted with the record containing
 the <strong>least</strong> value of the discriminator from what is now
-<math>N</math>'s right subtree.</paragraph><paragraph>Assume that we want to print out a list of all records that are within
-a certain distance <math>d</math> of a given point <math>P</math>.
-We will use Euclidean distance, that is, point <math>P</math> is defined
-to be within distance <math>d</math> of point <math>N</math>
-if <math>\sqrt{(P_x - N_x)^2 + (P_y - N_y)^2} \leq d.</math> <footnote_reference auto="1" ids="id2" refid="id3">1</footnote_reference></paragraph><paragraph>If the search process reaches a node whose key value for the
-discriminator is more than <math>d</math> above the corresponding value in
+<title_reference>N</title_reference>'s right subtree.</paragraph><paragraph>Assume that we want to print out a list of all records that are within
+a certain distance <title_reference>d</title_reference> of a given point <title_reference>P</title_reference>.
+We will use Euclidean distance, that is, point <title_reference>P</title_reference> is defined
+to be within distance <title_reference>d</title_reference> of point <title_reference>N</title_reference>
+if <title_reference>sqrt{(P_x - N_x)^2 + (P_y - N_y)^2} leq d.</title_reference></paragraph><paragraph>If the search process reaches a node whose key value for the
+discriminator is more than <title_reference>d</title_reference> above the corresponding value in
 the search key, then it is not possible that any record in the right
-subtree can be within distance <math>d</math> of the search key because all
+subtree can be within distance <title_reference>d</title_reference> of the search key because all
 key values in that dimension are always too great.
 Similarly, if the current node's key value in the discriminator
-is <math>d</math> less than that for the search key value, then no record in
+is <title_reference>d</title_reference> less than that for the search key value, then no record in
 the left subtree can be within the radius.
 In~such cases, the subtree in question need not be searched,
 potentially saving much time.
@@ -189,42 +189,42 @@ the query circle.</paragraph><topic><title>Example</title><paragraph>We will now
 Figure <title_reference>Figure #kdSearch</title_reference> within 25 units of the point
 (25, 65).
 The search begins with the root node, which contains record
-<math>A</math>.
+<title_reference>A</title_reference>.
 Because (40, 45) is exactly 25 units from the search point, it will
 be reported.
 The search procedure then determines which branches of the tree to
 take.
 The search circle extends to both the left and the right of
-<math>A</math>'s (vertical) dividing line, so both branches of the tree
+<title_reference>A</title_reference>'s (vertical) dividing line, so both branches of the tree
 must be searched.
 The left subtree is processed first.
-Here, record <math>B</math> is checked and found to fall within the
+Here, record <title_reference>B</title_reference> is checked and found to fall within the
 search circle.
-Because the node storing <math>B</math> has no children, processing of
+Because the node storing <title_reference>B</title_reference> has no children, processing of
 the left subtree is complete.
-Processing of <math>A&lt;</math>'s right subtree now begins.
-The coordinates of record <math>C</math> are checked and found not to
+Processing of <title_reference>A&lt;</title_reference>'s right subtree now begins.
+The coordinates of record <title_reference>C</title_reference> are checked and found not to
 fall within the circle.
 Thus, it should not be reported.
-However, it is possible that cities within <math>C</math>'s subtrees
-could fall within the search circle even if <math>C</math> does not.
-As <math>C</math> is at level 1, the discriminator at this level is the
-<math>y</math>-coordinate.
-Because <math>65-25 &gt; 10</math>, no record in <math>C</math>'s left subtree
-(i.e., records above <math>C</math>) could possibly be in the search
+However, it is possible that cities within <title_reference>C</title_reference>'s subtrees
+could fall within the search circle even if <title_reference>C</title_reference> does not.
+As <title_reference>C</title_reference> is at level 1, the discriminator at this level is the
+<title_reference>y</title_reference>-coordinate.
+Because <title_reference>65-25 &gt; 10</title_reference>, no record in <title_reference>C</title_reference>'s left subtree
+(i.e., records above <title_reference>C</title_reference>) could possibly be in the search
 circle.
-Thus, <math>C</math>'s left subtree (if it had one) need not be
+Thus, <title_reference>C</title_reference>'s left subtree (if it had one) need not be
 searched.
-However, cities in <math>C</math>'s right subtree could fall within the
+However, cities in <title_reference>C</title_reference>'s right subtree could fall within the
 circle.
-Thus, search proceeds to the node containing record <math>D</math>.
-Again, <math>D</math> is outside the search circle.
-Because <math>25+25 &lt; 69</math>, no record in <math>D&lt;</math>'s right subtree
+Thus, search proceeds to the node containing record <title_reference>D</title_reference>.
+Again, <title_reference>D</title_reference> is outside the search circle.
+Because <title_reference>25+25 &lt; 69</title_reference>, no record in <title_reference>D&lt;</title_reference>'s right subtree
 could be within the search circle.
-Thus, only <math>D</math>'s left subtree need be searched.
-This leads to comparing record <math>E</math>'s coordinates against the
+Thus, only <title_reference>D</title_reference>'s left subtree need be searched.
+This leads to comparing record <title_reference>E</title_reference>'s coordinates against the
 search circle.
-Record <math>E</math> falls outside the search circle, and processing is
+Record <title_reference>E</title_reference> falls outside the search circle, and processing is
 complete.
 So we see that we only search subtrees whose rectangles fall within
 the search circle.</paragraph></topic><target refid="kdsearch"></target><raw format="xml" ids="kdsearch" names="kdsearch" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>Here is an implementation for the region search method.</paragraph><literal_block xml:space="preserve">private void rshelp(KDNode&lt;E&gt; rt, int[] point,
@@ -241,7 +241,7 @@ the search circle.</paragraph></topic><target refid="kdsearch"></target><raw for
 check the Euclidean distance between the node's record and the query
 point.
 It is not enough to simply check that the differences between the
-<math>x</math>- and <math>y</math>-coordinates are each less than the query
+<title_reference>x</title_reference>- and <title_reference>y</title_reference>-coordinates are each less than the query
 distances because the the record could still be outside the search
 circle, as illustrated by Figure <title_reference>Figure #InCirc</title_reference>.</paragraph><target refid="incirc"></target><raw format="xml" ids="incirc" names="incirc" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>Here is a visualization of building a kd-tree.
 &lt;/p&gt;</paragraph><raw format="xml" xml:space="preserve"><avembed
@@ -260,6 +260,6 @@ circle, as illustrated by Figure <title_reference>Figure #InCirc</title_referenc
     required="True"
     threshold="1.0">
 </avembed>
-</raw><raw format="xml" xml:space="preserve"><todo>null</todo></raw><footnote auto="1" backrefs="id2" ids="id3" names="1"><label>1</label><paragraph>A more efficient computation is
-<math>(P_x - N_x)^2 + (P_y - N_y)^{2} \leq d^{2}</math>.
+</raw><raw format="xml" xml:space="preserve"><todo>null</todo></raw><footnote auto="1" ids="id2" names="1"><label>1</label><paragraph>A more efficient computation is
+<title_reference>(P_x - N_x)^2 + (P_y - N_y)^{2} leq d^{2}</title_reference>.
 This avoids performing a square root function.</paragraph></footnote></document>

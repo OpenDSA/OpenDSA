@@ -18,23 +18,23 @@ problems of a useful size.</paragraph><paragraph>Consider the
 <title_reference>Knapsack problem &lt;knapsack problem&gt; &lt;DynamicProgramming&gt;</title_reference>.
 We have a
 <title_reference>dynamic programming &lt;dynamic programming&gt; &lt;DynamicProgramming&gt;</title_reference>
-algorithm whose cost is <math>\Theta(nK)</math> for <math>n</math> objects being
-fit into a knapsack of size <math>K</math>.
+algorithm whose cost is <title_reference>Theta(nK)</title_reference> for <title_reference>n</title_reference> objects being
+fit into a knapsack of size <title_reference>K</title_reference>.
 But it turns out that Knapsack is NP-complete.
 Isn't this a contradiction?
-Not when we consider the relationship between <math>n</math> and
-<math>K</math>.
-How big is <math>K</math>?
-Input size is typically <math>O(n \lg K)</math> because the item sizes are
-smaller than <math>K</math>.
-Thus, <math>\Theta(nK)</math> is exponential on input size.</paragraph><paragraph>This dynamic programming algorithm is tractable if the numbers are
+Not when we consider the relationship between <title_reference>n</title_reference> and
+<title_reference>K</title_reference>.
+How big is <title_reference>K</title_reference>?
+Input size is typically <title_reference>O(n lg K)</title_reference> because the item sizes are
+smaller than <title_reference>K</title_reference>.
+Thus, <title_reference>Theta(nK)</title_reference> is exponential on input size.</paragraph><paragraph>This dynamic programming algorithm is tractable if the numbers are
 "reasonable".
 That is, we can successfully find solutions to the problem when
-<math>nK</math> is in the thousands.
+<title_reference>nK</title_reference> is in the thousands.
 Such an algorithm is called a <title_reference>pseudo-polynomial</title_reference> time
 algorithm.
 This is different from TRAVELING SALESMAN which cannot possibly be
-solved when <math>n = 100</math> given current algorithms.</paragraph><paragraph>A second approach to handling NP-complete problems is to solve a
+solved when <title_reference>n = 100</title_reference> given current algorithms.</paragraph><paragraph>A second approach to handling NP-complete problems is to solve a
 special instance of the problem that is not so hard.
 For example, many problems on graphs are NP-complete, but the same
 problem on certain restricted types of graphs is not as difficult.
@@ -50,8 +50,8 @@ solution.
 Several geometric problems require only polynomial time in two
 dimensions, but are NP-complete in three dimensions or more.
 KNAPSACK is considered to run in polynomial time if the numbers
-(and <math>K</math>) are "small".
-Small here means that they are polynomial on <math>n</math>,
+(and <title_reference>K</title_reference>) are "small".
+Small here means that they are polynomial on <title_reference>n</title_reference>,
 the number of items.</paragraph><paragraph>In general, if we want to guarantee that we get the correct answer for
 an NP-complete problem, we potentially need to examine all of the
 (exponential number of) possible solutions.
@@ -64,8 +64,8 @@ attempts to organize the processing of all the subproblems to a
 problem so that the work is done efficiently.</paragraph><paragraph>If we need to do a brute-force search of the entire solution space, we
 can use <title_reference>backtracking</title_reference> to visit all of the possible solutions
 organized in a solution tree.
-For example, SATISFIABILITY has <math>2^n</math> possible ways to assign
-truth values to the <math>n</math> variables contained in the Boolean
+For example, SATISFIABILITY has <title_reference>2^n</title_reference> possible ways to assign
+truth values to the <title_reference>n</title_reference> variables contained in the Boolean
 expression being satisfied.
 We can view this as a tree of solutions by considering that we have a
 choice of making the first variable TRUE or FALSE.
@@ -83,7 +83,7 @@ that satisfies the expression or exhaust the
 tree.
 In some cases we avoid processing many potential solutions, or find a
 solution quickly.
-In others, we end up visiting a large portion of the <math>2^n</math>
+In others, we end up visiting a large portion of the <title_reference>2^n</title_reference>
 possible solutions.</paragraph><paragraph><title_reference>Banch-and-Bounds</title_reference> is an extension of backtracking that applies
 to <title_reference>optimization problems</title_reference> such as TRAVELING SALESMAN where we
 are trying to find the shortest tour through the
@@ -117,8 +117,8 @@ such that the answer will be within a certain
 percentage of the best possible answer.
 For example, consider this simple heuristic for the VERTEX COVER
 problem:
-Let <math>M</math> be a maximal (not necessarily maximum) <title_reference>matching</title_reference>
-in <math>G</math>.
+Let <title_reference>M</title_reference> be a maximal (not necessarily maximum) <title_reference>matching</title_reference>
+in <title_reference>G</title_reference>.
 A matching pairs vertices (with connecting edges) so that no
 vertex is paired with more than one partner.
 Maximal means to pick as many pairs as possible, selecting them in
@@ -126,7 +126,7 @@ some order until there are no more available pairs to select.
 Maximum means the matching that gives the most pairs possible for a
 given graph.
 If OPT is the size of a minimum vertex cover, then
-<math>|M| \leq 2 \cdot \mbox{OPT}</math>
+<title_reference>|M| leq 2 cdot mbox{OPT}</title_reference>
 because at least one endpoint of every matched edge must be in
 <emphasis>any</emphasis> vertex cover.</paragraph><paragraph>A better example of a guaranteed bound on a solution comes
 from simple heuristics to solve the BIN PACKING
@@ -138,7 +138,7 @@ problem.</paragraph><comment xml:space="preserve">topic: BIN PACKING
 
 **Output&lt;/b&gt;** An assignment of numbers to bins that
 requires the fewest possible bins.</comment><paragraph>BIN PACKING in its decision form (i.e., asking if the items can be
-packed in less than <math>k</math> bins) is known to be NP-complete.
+packed in less than <title_reference>k</title_reference> bins) is known to be NP-complete.
 One simple heuristic for solving this problem is to use a
 "first fit" approach.
 We put the first number in the first bin.
@@ -152,9 +152,9 @@ full.
 However, this "first fit" heuristic can give us a result that is
 much worse than optimal.
 Consider the following collection of numbers: 6 of
-<math>1/7 + \epsilon</math>, 6 of <math>1/3 + \epsilon</math>,
-and 6 of <math>1/2 + \epsilon</math>, where
-<math>\epsilon</math> is a small, positive number.
+<title_reference>1/7 + epsilon</title_reference>, 6 of <title_reference>1/3 + epsilon</title_reference>,
+and 6 of <title_reference>1/2 + epsilon</title_reference>, where
+<title_reference>epsilon</title_reference> is a small, positive number.
 Properly organized, this requires 6 bins.
 But if done wrongly, we might end up putting the numbers into 10 bins.</paragraph><paragraph>A better heuristic is to use decreasing first fit.
 This is the same as first fit, except that we keep the bins sorted

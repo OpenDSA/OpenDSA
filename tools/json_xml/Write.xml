@@ -27,7 +27,7 @@ the larger problem.</paragraph><paragraph>Here are the basic four steps that you
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><topic><title>Example</title><paragraph>Our example for summing the first <math>n</math> numbers of an array
+</raw><topic><title>Example</title><paragraph>Our example for summing the first <title_reference>n</title_reference> numbers of an array
 could have been written just as easily using a loop.
 Here is an example of a function that is more naturally written
 using recursion.</paragraph><paragraph>The following code computes the Fibonacci sequence for a given number.

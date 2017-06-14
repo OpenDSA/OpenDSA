@@ -17,16 +17,16 @@ Priority is indicated by a particular value associated with the job
 we call this a <title_reference>priority queue</title_reference>.
 A normal queue data structure will not implement a priority queue
 efficiently because search for the element with highest priority will
-take <math>\Theta(n)</math> time.
-A list, whether sorted or not, will also require <math>\Theta(n)</math>
+take <title_reference>Theta(n)</title_reference> time.
+A list, whether sorted or not, will also require <title_reference>Theta(n)</title_reference>
 time for either insertion or removal.
 A BST that organizes records by priority could be used, with the total
-of <math>n</math> inserts and <math>n</math> remove operations
-requiring <math>\Theta(n \log n)</math> time in the average case.
+of <title_reference>n</title_reference> inserts and <title_reference>n</title_reference> remove operations
+requiring <title_reference>Theta(n log n)</title_reference> time in the average case.
 However, there is always the possibility that the BST will become
 unbalanced, leading to bad performance.
 Instead, we would like to find a data structure that is guaranteed to
-have good performance for this special application.</paragraph><paragraph>This section presents the <title_reference>heap</title_reference> data structure. <footnote_reference auto="1" ids="id2" refid="id3">1</footnote_reference>
+have good performance for this special application.</paragraph><paragraph>This section presents the <title_reference>heap</title_reference> data structure.
 A heap is defined by two properties.
 First, it is a complete binary tree,
 so heaps are nearly always implemented using the
@@ -92,9 +92,9 @@ size allowed for the heap (the size of the array).</paragraph><paragraph>Method 
 Members <literal>leftchild</literal>, <literal>rightchild</literal>,
 and <literal>parent</literal> return the position (actually, the array index)
 for the left child, right child, and parent of the position passed,
-respectively.</paragraph><footnote auto="1" backrefs="id2" ids="id3" names="1"><label>1</label><paragraph>Note that the term "heap" is also sometimes used to refer to
+respectively.</paragraph><footnote auto="1" ids="id2" names="1"><label>1</label><paragraph>Note that the term "heap" is also sometimes used to refer to
 <title_reference>free store</title_reference>.</paragraph></footnote><paragraph>One way to build a heap is to insert the elements one at a time.
-Method <literal>insert</literal> will insert a new element <math>V</math> into
+Method <literal>insert</literal> will insert a new element <title_reference>V</title_reference> into
 the heap.</paragraph><raw format="xml" xml:space="preserve"><inlineav
     type="ss"
     exer_name="heapinsertCON"
@@ -109,36 +109,36 @@ through the heap.
 However, this approach is not likely to work because the heap must
 maintain the shape of a complete binary tree.
 Equivalently, if the heap takes up the first
-<math>n</math> positions of its array prior to the call to
+<title_reference>n</title_reference> positions of its array prior to the call to
 <literal>insert</literal>,
-it must take up the first <math>n+1</math> positions after.
-To accomplish this, <literal>insert</literal> first places <math>V</math> at
-position <math>n</math> of the array.
-Of course, <math>V</math> is unlikely to be in the correct position.
-To move <math>V</math> to the right place, it is compared to its
+it must take up the first <title_reference>n+1</title_reference> positions after.
+To accomplish this, <literal>insert</literal> first places <title_reference>V</title_reference> at
+position <title_reference>n</title_reference> of the array.
+Of course, <title_reference>V</title_reference> is unlikely to be in the correct position.
+To move <title_reference>V</title_reference> to the right place, it is compared to its
 parent's value.
-If the value of <math>V</math> is less than or equal to the value of its
+If the value of <title_reference>V</title_reference> is less than or equal to the value of its
 parent, then it is in the correct place and the insert routine is
 finished.
-If the value of <math>V</math> is greater than that of its parent, then
+If the value of <title_reference>V</title_reference> is greater than that of its parent, then
 the two elements swap positions.
-From here, the process of comparing <math>V</math> to its (current)
-parent continues until <math>V</math> reaches its correct position.</paragraph><paragraph>Since the heap is a complete binary tree, its height is guaranteed to
+From here, the process of comparing <title_reference>V</title_reference> to its (current)
+parent continues until <title_reference>V</title_reference> reaches its correct position.</paragraph><paragraph>Since the heap is a complete binary tree, its height is guaranteed to
 be the minimum possible.
-In particular, a heap containing <math>n</math> nodes will have a height of
-<math>\Theta(\log n)</math>.
+In particular, a heap containing <title_reference>n</title_reference> nodes will have a height of
+<title_reference>Theta(log n)</title_reference>.
 Intuitively, we can see that this must be true because each level that
 we add will slightly more than double the number of nodes in the tree
-(the <math>i</math> th level has <math>2^i</math> nodes,
-and the sum of the first <math>i</math> levels is <math>2^{i+1}-1</math>).
-Starting at 1, we can double only <math>\log n</math> times to reach a
-value of <math>n</math>.
-To be precise, the height of a heap with <math>n</math> nodes is
-<math>\lceil \log n + 1 \rceil</math>.</paragraph><paragraph>Each call to <literal>insert</literal> takes <math>\Theta(\log n)</math> time in the
+(the <title_reference>i</title_reference> th level has <title_reference>2^i</title_reference> nodes,
+and the sum of the first <title_reference>i</title_reference> levels is <title_reference>2^{i+1}-1</title_reference>).
+Starting at 1, we can double only <title_reference>log n</title_reference> times to reach a
+value of <title_reference>n</title_reference>.
+To be precise, the height of a heap with <title_reference>n</title_reference> nodes is
+<title_reference>lceil log n + 1 rceil</title_reference>.</paragraph><paragraph>Each call to <literal>insert</literal> takes <title_reference>Theta(log n)</title_reference> time in the
 worst case, because the value being inserted can move at most the
 distance from the bottom of the tree to the top of the tree.
-Thus, to insert <math>n</math> values into the heap, if we insert them
-one at a time, will take <math>\Theta(n \log n)</math> time in the
+Thus, to insert <title_reference>n</title_reference> values into the heap, if we insert them
+one at a time, will take <title_reference>Theta(n log n)</title_reference> time in the
 worst case.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="pe"
     exer_name="heapinsertPRO"
@@ -147,7 +147,7 @@ worst case.</paragraph><raw format="xml" xml:space="preserve"><avembed
     required="True"
     threshold="0.9">
 </avembed>
-</raw></section><section ids="building-a-heap" names="building\ a\ heap"><title>Building a Heap</title><paragraph>If all <math>n</math> values are available at the beginning of the
+</raw></section><section ids="building-a-heap" names="building\ a\ heap"><title>Building a Heap</title><paragraph>If all <title_reference>n</title_reference> values are available at the beginning of the
 building process, we can build the heap faster than just
 inserting the values into the heap one by one.
 Consider this example, with two possible ways to heapify an initial
@@ -157,14 +157,14 @@ the input values require fewer exchanges than others to build the
 heap.
 So, how do we pick the best rearrangement?</paragraph><paragraph>One good algorithm stems from induction.
 Suppose that the left and right subtrees of the root are already
-heaps, and <math>R</math> is the name of the element at the root.
-This situation is illustrated by this figure:</paragraph><target refid="heapinduct"></target><raw format="xml" ids="heapinduct" names="heapinduct" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>In this case there are two possibilities.</paragraph><enumerated_list enumtype="arabic" prefix="(" suffix=")"><list_item><paragraph><math>R</math> has a value greater than or equal to its two
-children. In this case, construction is complete.</paragraph></list_item><list_item><paragraph><math>R</math> has a value less than one or both of its children.</paragraph></list_item></enumerated_list><paragraph><math>R</math> should be exchanged with the child that has
+heaps, and <title_reference>R</title_reference> is the name of the element at the root.
+This situation is illustrated by this figure:</paragraph><target refid="heapinduct"></target><raw format="xml" ids="heapinduct" names="heapinduct" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>In this case there are two possibilities.</paragraph><enumerated_list enumtype="arabic" prefix="(" suffix=")"><list_item><paragraph><title_reference>R</title_reference> has a value greater than or equal to its two
+children. In this case, construction is complete.</paragraph></list_item><list_item><paragraph><title_reference>R</title_reference> has a value less than one or both of its children.</paragraph></list_item></enumerated_list><paragraph><title_reference>R</title_reference> should be exchanged with the child that has
 greater value.
-The result will be a heap, except that <math>R</math>
+The result will be a heap, except that <title_reference>R</title_reference>
 might still be less than one or both of its (new) children.
 In this case, we simply continue the process of "pushing down"
-<math>R</math> until it reaches a level where it is greater than its
+<title_reference>R</title_reference> until it reaches a level where it is greater than its
 children, or is a leaf node.
 This process is implemented by the private method
 <literal>siftdown</literal>.</paragraph><paragraph>This approach assumes that the subtrees are already heaps,
@@ -207,11 +207,11 @@ The maximum sum of total distances that elements can go is
 therefore</paragraph><math_block xml:space="preserve">\sum_{i=1}^{\log n} (i-1)\frac{n}{2^i}
 = \frac{n}{2}\sum_{i=1}^{\log n} \frac{i-1}{2^{i-1}}.</math_block><paragraph>This <title_reference>summation is known &lt;summation&gt; &lt;Summations&gt;</title_reference>
 to have a closed-form solution of approximately 2,
-so this algorithm takes <math>\Theta(n)</math> time in the worst case.
+so this algorithm takes <title_reference>Theta(n)</title_reference> time in the worst case.
 This is far better than building the heap one element at a time,
-which would cost <math>\Theta(n \log n)</math> in the worst case.
-It is also faster than the <math>\Theta(n \log n)</math> average-case
-time and <math>\Theta(n^2)</math> worst-case time required to build the
+which would cost <title_reference>Theta(n log n)</title_reference> in the worst case.
+It is also faster than the <title_reference>Theta(n log n)</title_reference> average-case
+time and <title_reference>Theta(n^2)</title_reference> worst-case time required to build the
 BST.</paragraph><raw format="xml" xml:space="preserve"><inlineav
     type="ss"
     exer_name="heapbuildProofCON"
@@ -228,8 +228,8 @@ BST.</paragraph><raw format="xml" xml:space="preserve"><inlineav
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>Because the heap is <math>\log n</math> levels deep, the cost of deleting
-the maximum element is <math>\Theta(\log n)</math> in the average and worst
+</raw><paragraph>Because the heap is <title_reference>log n</title_reference> levels deep, the cost of deleting
+the maximum element is <title_reference>Theta(log n)</title_reference> in the average and worst
 cases.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="pe"
     exer_name="heapremovePRO"

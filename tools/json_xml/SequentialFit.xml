@@ -30,8 +30,8 @@ To do so, each unallocated block must be large enough to hold these
 pointers.
 In addition, it is usually worthwhile to let the memory manager add a
 few bytes of space to each reserved block for its own purposes.
-In other words, a request for <math>m</math> bytes of space might result in
-slightly more than <math>m</math> bytes being allocated by the memory
+In other words, a request for <title_reference>m</title_reference> bytes of space might result in
+slightly more than <title_reference>m</title_reference> bytes being allocated by the memory
 manager, with the extra bytes used by the memory manager itself rather
 than the requester.
 We will assume that all memory blocks are organized as shown in
@@ -47,15 +47,15 @@ bit at the end of the block.
 Finally, free blocks have left and right pointers to their neighbors
 in the free block list.</paragraph><target refid="memtags"></target><raw format="xml" ids="memtags" names="memtags" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>The information fields associated with each block permit the memory
 manager to allocate and deallocate blocks as needed.
-When a request comes in for <math>m</math> words of storage, the memory
+When a request comes in for <title_reference>m</title_reference> words of storage, the memory
 manager searches the linked list of free blocks until it finds a
 "suitable" block for allocation.
 How it determines which block is suitable will be discussed below.
-If the block contains exactly <math>m</math> words (plus space for the tag
+If the block contains exactly <title_reference>m</title_reference> words (plus space for the tag
 and size fields), then it is removed from the freelist.
-If the block (of size <math>k</math>) is large enough,
-then the remaining <math>k - m</math> words are reserved as a block on the
-freelist, in the current location.</paragraph><paragraph>When a block <math>F</math> is freed, it must be merged into the freelist.
+If the block (of size <title_reference>k</title_reference>) is large enough,
+then the remaining <title_reference>k - m</title_reference> words are reserved as a block on the
+freelist, in the current location.</paragraph><paragraph>When a block <title_reference>F</title_reference> is freed, it must be merged into the freelist.
 If we do not care about merging adjacent free blocks, then this
 is a simple insertion into the doubly linked list of free blocks.
 However, we would like to merge adjacent blocks, because
@@ -64,19 +64,19 @@ possible size.
 Merging is easily done due to the tag and size fields stored at the
 ends of each block, as illustrated by the figure below.
 Here, the memory manager first checks the unit of memory immediately
-preceding block <math>F</math> to see if the preceding block (call
-it <math>P</math>) is also free.
-If it is, then the memory unit before <math>P</math> 's tag bit stores
-the size of <math>P</math>, thus indicating the position for the beginning
+preceding block <title_reference>F</title_reference> to see if the preceding block (call
+it <title_reference>P</title_reference>) is also free.
+If it is, then the memory unit before <title_reference>P</title_reference> 's tag bit stores
+the size of <title_reference>P</title_reference>, thus indicating the position for the beginning
 of the block in memory.
-<math>P</math> can then simply have its size extended to include
-block <math>F</math>.
-If block <math>P</math> is not free, then we just add block <math>F</math> to
+<title_reference>P</title_reference> can then simply have its size extended to include
+block <title_reference>F</title_reference>.
+If block <title_reference>P</title_reference> is not free, then we just add block <title_reference>F</title_reference> to
 the freelist.
-Finally, we also check the bit following the end of block <math>F</math>.
-If this bit indicates that the following block (call it <math>S</math>) is
-free, then <math>S</math> is removed from the freelist and the size
-of <math>F</math> is extended appropriately.</paragraph><target refid="memex"></target><raw format="xml" ids="memex" names="memex" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>We now consider how a "suitable" free block is selected to service a
+Finally, we also check the bit following the end of block <title_reference>F</title_reference>.
+If this bit indicates that the following block (call it <title_reference>S</title_reference>) is
+free, then <title_reference>S</title_reference> is removed from the freelist and the size
+of <title_reference>F</title_reference> is extended appropriately.</paragraph><target refid="memex"></target><raw format="xml" ids="memex" names="memex" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>We now consider how a "suitable" free block is selected to service a
 memory request.
 To illustrate the process, assume that we have a memory pool with 200
 units of storage. After some series of allocation requests and releases,

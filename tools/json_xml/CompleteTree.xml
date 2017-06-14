@@ -10,7 +10,7 @@ for <title_reference>complete binary trees &lt;complete binary tree&gt;</title_r
 Recall that complete binary trees have all levels except the bottom
 filled out completely, and the bottom level has all of its nodes filled
 in from left to right.
-Thus, a complete binary tree of <math>n</math> nodes has only one possible
+Thus, a complete binary tree of <title_reference>n</title_reference> nodes has only one possible
 shape.
 You might think that a complete binary tree is such an unusual
 occurrence that there is no reason to develop a special
@@ -50,18 +50,18 @@ the parent, sibling, and children of the node.</paragraph><math_block xml:space=
 \end{array}</math_block><paragraph>Looking at the table, you should see a pattern
 regarding the positions of a node's relatives within the array.
 Simple formulas can be derived for calculating the array index
-for each relative of a node <math>R</math> from <math>R</math>'s index.
+for each relative of a node <title_reference>R</title_reference> from <title_reference>R</title_reference>'s index.
 No explicit pointers are necessary to reach a node's left or
 right child.
 This means there is no overhead to the array implementation if the
-array is selected to be of size <math>n</math> for a tree of <math>n</math>
+array is selected to be of size <title_reference>n</title_reference> for a tree of <title_reference>n</title_reference>
 nodes.</paragraph><paragraph>The formulae for calculating the array indices of the various
 relatives of a node are as follows.
-The total number of nodes in the tree is <math>n</math>.
-The index of the node in question is <math>r</math>,
-which must fall in the range 0 to <math>n-1</math>.</paragraph><bullet_list bullet="*"><list_item><paragraph>Parent(<math>r</math>) <math>= \lfloor(r - 1)/2\rfloor</math>
-if <math>r \neq 0</math>.</paragraph></list_item><list_item><paragraph>Left child(<math>r</math>) <math>= 2r + 1</math> if <math>2r + 1 \leq n</math>.</paragraph></list_item><list_item><paragraph>Right child(<math>r</math>) <math>= 2r + 2</math> if <math>2r + 2 \leq n</math>.</paragraph></list_item><list_item><paragraph>Left sibling(<math>r</math>) <math>= r - 1</math> if <math>r</math> is even.</paragraph></list_item><list_item><paragraph>Right sibling(<math>r</math>) <math>= r + 1</math> if <math>r</math>
-is odd and <math>r + 1 \leq n</math>.</paragraph></list_item></bullet_list><raw format="xml" xml:space="preserve"><avembed
+The total number of nodes in the tree is <title_reference>n</title_reference>.
+The index of the node in question is <title_reference>r</title_reference>,
+which must fall in the range 0 to <title_reference>n-1</title_reference>.</paragraph><bullet_list bullet="*"><list_item><paragraph>Parent(<title_reference>r</title_reference>) <title_reference>= lfloor(r - 1)/2rfloor</title_reference>
+if <title_reference>r neq 0</title_reference>.</paragraph></list_item><list_item><paragraph>Left child(<title_reference>r</title_reference>) <title_reference>= 2r + 1</title_reference> if <title_reference>2r + 1 leq n</title_reference>.</paragraph></list_item><list_item><paragraph>Right child(<title_reference>r</title_reference>) <title_reference>= 2r + 2</title_reference> if <title_reference>2r + 2 leq n</title_reference>.</paragraph></list_item><list_item><paragraph>Left sibling(<title_reference>r</title_reference>) <title_reference>= r - 1</title_reference> if <title_reference>r</title_reference> is even.</paragraph></list_item><list_item><paragraph>Right sibling(<title_reference>r</title_reference>) <title_reference>= r + 1</title_reference> if <title_reference>r</title_reference>
+is odd and <title_reference>r + 1 leq n</title_reference>.</paragraph></list_item></bullet_list><raw format="xml" xml:space="preserve"><avembed
     type="ka"
     exer_name="CompleteFIB"
     long_name="CompleteFIB"

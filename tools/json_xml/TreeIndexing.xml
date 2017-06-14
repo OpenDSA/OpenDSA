@@ -19,12 +19,12 @@ option for implementing both primary and secondary key indices.</paragraph><para
 Even under relatively good conditions, the depth of leaf nodes
 can easily vary by a factor of two.
 This might not be a significant concern when the tree is stored in
-main memory because the time required is still <math>\Theta(\log n)</math>
+main memory because the time required is still <title_reference>Theta(log n)</title_reference>
 for search and update.
 When the tree is stored on disk, however, the depth of nodes in the
 tree becomes crucial.
-Every time a BST node <math>B</math> is visited, it is necessary to visit
-all nodes along the path from the root to <math>B</math>.
+Every time a BST node <title_reference>B</title_reference> is visited, it is necessary to visit
+all nodes along the path from the root to <title_reference>B</title_reference>.
 Each node on this path must be retrieved from disk.
 Each disk access returns a block of information.
 If a node is on the same block as its parent, then the cost to find

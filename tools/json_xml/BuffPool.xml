@@ -5,10 +5,10 @@
 rotating at 5400 rpm, <title_reference>average seek time</title_reference> of 9.5ms,
 and <title_reference>track-to-track seek time</title_reference> of 2.2ms,
 we can calculate that it takes about
-<math>9.5 + 11.1 \times 1.5 = 26.2</math> ms
+<title_reference>9.5 + 11.1 times 1.5 = 26.2</title_reference> ms
 to read one <title_reference>track</title_reference> of data on average.
 It takes about
-<math>9.5 + 11.1/2 + (1/256)\times11.1 = 15.1</math> ms on average
+<title_reference>9.5 + 11.1/2 + (1/256)times11.1 = 15.1</title_reference> ms on average
 to read a single <title_reference>sector</title_reference> of data.
 This is a good savings (slightly over half the time), but
 less than 1% of the data on the track are read.

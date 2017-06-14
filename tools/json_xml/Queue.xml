@@ -61,26 +61,26 @@ efficient.</paragraph><raw format="xml" xml:space="preserve"><inlineav
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>If the value of <literal>front</literal> is fixed, then <math>n+1</math> different
-values for <literal>rear</literal> are needed to distinguish among the <math>n+1</math>
+</raw><paragraph>If the value of <literal>front</literal> is fixed, then <title_reference>n+1</title_reference> different
+values for <literal>rear</literal> are needed to distinguish among the <title_reference>n+1</title_reference>
 states.
-However, there are only <math>n</math> possible values for <literal>rear</literal> unless
+However, there are only <title_reference>n</title_reference> possible values for <literal>rear</literal> unless
 we invent a special case for, say, empty queues.
 This is an example of the <title_reference>Pigeonhole Principle</title_reference>.
-The Pigeonhole Principle states that, given <math>n</math> pigeonholes
-and <math>n+1</math> pigeons, when all of the pigeons go into the holes we
+The Pigeonhole Principle states that, given <title_reference>n</title_reference> pigeonholes
+and <title_reference>n+1</title_reference> pigeons, when all of the pigeons go into the holes we
 can be sure that at least one hole contains more than one pigeon.
-In similar manner, we can be sure that two of the <math>n+1</math> states
-are indistinguishable by the <math>n</math> relative values of <literal>front</literal>
+In similar manner, we can be sure that two of the <title_reference>n+1</title_reference> states
+are indistinguishable by the <title_reference>n</title_reference> relative values of <literal>front</literal>
 and <literal>rear</literal>.
 We must seek some other way to distinguish full from empty queues.</paragraph><paragraph>One obvious solution is to keep an explicit count of the number of
 elements in the queue, or at least a Boolean variable that indicates
 whether the queue is empty or not.
-Another solution is to make the array be of size <math>n+1</math>,
-and only allow <math>n</math> elements to be stored.
+Another solution is to make the array be of size <title_reference>n+1</title_reference>,
+and only allow <title_reference>n</title_reference> elements to be stored.
 Which of these solutions to adopt is purely a matter of the
 implementor's taste in such affairs.
-Our choice here is to use an array of size <math>n+1</math>.</paragraph><paragraph>Here is an array-based queue implementation.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw></section></section><section ids="array-based-queue-implementation" names="array-based\ queue\ implementation"><title>Array-based Queue Implementation</title><raw format="xml" xml:space="preserve"><inlineav
+Our choice here is to use an array of size <title_reference>n+1</title_reference>.</paragraph><paragraph>Here is an array-based queue implementation.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw></section></section><section ids="array-based-queue-implementation" names="array-based\ queue\ implementation"><title>Array-based Queue Implementation</title><raw format="xml" xml:space="preserve"><inlineav
     type="ss"
     exer_name="aqueueVarCON"
     long_name="aqueueVarCON"

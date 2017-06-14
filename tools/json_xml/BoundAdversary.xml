@@ -15,40 +15,40 @@ Unlike our analysis for most problems, this time we are going to count
 the exact number of comparisons involved and attempt to minimize this
 count.
 A simple algorithm for finding the second largest is to first find the
-maximum (in <math>n-1</math> comparisons), discard it, and then find the
-maximum of the remaining elements (in <math>n-2</math> comparisons) for a total
-cost of <math>2n-3</math> comparisons.
+maximum (in <title_reference>n-1</title_reference> comparisons), discard it, and then find the
+maximum of the remaining elements (in <title_reference>n-2</title_reference> comparisons) for a total
+cost of <title_reference>2n-3</title_reference> comparisons.
 Is this optimal?
 That seems doubtful, but let us now proceed to the step of attempting
-to prove a lower bound.</paragraph><topic><title>Theorem</title><paragraph>The lower bound for finding the second largest value is <math>2n-3</math>.</paragraph></topic><topic><title>Proof</title><paragraph>Any element that loses to anything other than the maximum cannot be
+to prove a lower bound.</paragraph><topic><title>Theorem</title><paragraph>The lower bound for finding the second largest value is <title_reference>2n-3</title_reference>.</paragraph></topic><topic><title>Proof</title><paragraph>Any element that loses to anything other than the maximum cannot be
 second.
 So, the only candidates for second place are those that lost to the
 maximum.
 Function <literal>largest</literal> might compare the maximum element  to
-<math>n-1</math> others.
-Thus, we might need <math>n-2</math> additional comparisons to find the
+<title_reference>n-1</title_reference> others.
+Thus, we might need <title_reference>n-2</title_reference> additional comparisons to find the
 second largest.</paragraph></topic><paragraph>This proof is wrong.
 It exhibits the <title_reference>necessary fallacy</title_reference>:
 "Our algorithm does something, therefore all algorithms solving
 the problem must do the same."</paragraph><paragraph>This leaves us with our best lower bounds argument at the moment
 being that finding the second largest must cost at least as much as
-finding the largest, or <math>n-1</math>.
+finding the largest, or <title_reference>n-1</title_reference>.
 Let us take another try at finding a better algorithm by adopting a
 strategy of divide and conquer.
 What if we break the list into halves, and run <title_reference>largest</title_reference> on each
 half?
 We can then compare the two winners (we have now used a total of
-<math>n-1</math> comparisons), and remove the winner from its half.
+<title_reference>n-1</title_reference> comparisons), and remove the winner from its half.
 Another call to <literal>largest</literal> on the winner's half yields its second
 best.
 A final comparison against the winner of the other half gives us the
 true second place winner.
-The total cost is <math>\lceil 3n/2\rceil - 2</math>.
+The total cost is <title_reference>lceil 3n/2rceil - 2</title_reference>.
 Is this optimal?
 What if we break the list into four pieces?
-The best would be <math>\lceil 5n/4\rceil</math>.
+The best would be <title_reference>lceil 5n/4rceil</title_reference>.
 What if we break the list into eight pieces?
-Then the cost would be about <math>\lceil 9n/8\rceil</math>.
+Then the cost would be about <title_reference>lceil 9n/8rceil</title_reference>.
 Notice that as we break the list into more parts,
 comparisons among the winners of the parts becomes a larger concern.</paragraph><paragraph>Looking at this another way, the only candidates for second place
 are losers to the eventual winner, and our goal is to have as few of
@@ -61,14 +61,14 @@ values.
 So we would like to arrange our comparisons to be against
 "equally strong" competitors.
 We can do all of this with a defit{binomial tree}.
-A binomial tree of height <math>m</math> has <math>2^m</math> nodes.
-Either it is a single node (if <math>m=0</math>), or else it is
-two height <math>m-1</math> binomial trees with one tree's root becoming
+A binomial tree of height <title_reference>m</title_reference> has <title_reference>2^m</title_reference> nodes.
+Either it is a single node (if <title_reference>m=0</title_reference>), or else it is
+two height <title_reference>m-1</title_reference> binomial trees with one tree's root becoming
 a child of the other.
 Figure <title_reference>Figure #BinomialTree</title_reference> illustrates how a binomial tree
 with eight nodes would be constructed.</paragraph><target refid="binomialtree"></target><raw format="xml" ids="binomialtree" names="binomialtree" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>The resulting algorithm is simple in principle:
-Build the binomial tree for all <math>n</math> elements, and then compare
-the <math>\lceil \log n\rceil</math> children of the root to find second
+Build the binomial tree for all <title_reference>n</title_reference> elements, and then compare
+the <title_reference>lceil log nrceil</title_reference> children of the root to find second
 place.
 We could store the binomial tree as an explicit tree structure, and
 easily build it in time linear on the number of comparisons as each
@@ -76,9 +76,9 @@ comparison requires one link be added.
 Because the shape of a binomial tree is heavily constrained,
 we can also store the binomial tree implicitly in an array, much as we
 do for a heap.
-Assume that two trees, each with <math>2^k</math> nodes, are in the array.
+Assume that two trees, each with <title_reference>2^k</title_reference> nodes, are in the array.
 The first tree is in positions 1 to :math`2^k`.
-The second tree is in positions <math>2^k+1</math> to <math>2^{k+1}</math>.
+The second tree is in positions <title_reference>2^k+1</title_reference> to <title_reference>2^{k+1}</title_reference>.
 The root of each subtree is in the final array position for that
 subtree.</paragraph><paragraph>To join two trees, we simply
 compare the roots of the subtrees.
@@ -86,7 +86,7 @@ If necessary, swap the subtrees so that tree with the the larger root
 element becomes the second subtree.
 This trades space (we only need space for the data values, no node
 pointers) for time (in the worst case, all of the data swapping might
-cost <math>O(n \log n)</math>, though this does not affect the number of
+cost <title_reference>O(n log n)</title_reference>, though this does not affect the number of
 comparisons required).
 Note that for some applications, this is an important observation that
 the array's data swapping requires no comparisons.
@@ -94,10 +94,10 @@ If a comparison is simply a check between two integers, then of course
 moving half the values within the array is too expensive.
 But if a comparison requires that a competition be held between two
 sports teams, then the cost of a little bit (or even a lot) of book
-keeping becomes irrelevent.</paragraph><paragraph>Because the binomial tree's root has <math>\log n</math> children,
-and building the tree requires <math>n-1</math> comparisons,
+keeping becomes irrelevent.</paragraph><paragraph>Because the binomial tree's root has <title_reference>log n</title_reference> children,
+and building the tree requires <title_reference>n-1</title_reference> comparisons,
 the number of comparisons required by this algorithm is
-<math>n + \lceil \log n \rceil - 2</math>.
+<title_reference>n + lceil log n rceil - 2</title_reference>.
 This is clearly better than our previous algorithm.
 Is it optimal?</paragraph><paragraph>We now go back to trying to improve the lower bounds proof.
 To do this, we introduce the concept of an <title_reference>adversary</title_reference>.
@@ -137,17 +137,17 @@ The adversary can make any decision it chooses, so long as at least
 one word in the dictionary is consistent with all of the decisions.
 In this way, the adversary can hope to make the player guess as many
 letters as possible.</paragraph><paragraph>Before explaining how the adversary plays a role in our lower bounds
-proof, first observe that at least <math>n-1</math> values must lose at
+proof, first observe that at least <title_reference>n-1</title_reference> values must lose at
 least once.
-This requires at least <math>n-1</math> compares.
-In addition, at least <math>k-1</math> values must lose to the second
+This requires at least <title_reference>n-1</title_reference> compares.
+In addition, at least <title_reference>k-1</title_reference> values must lose to the second
 largest value.
-That is, <math>k</math> direct losers to the winner must be compared.
-There must be at least <math>n + k - 2</math> comparisons.
-The question is: How low can we make <math>k</math>?</paragraph><paragraph>Call the <strong>strength</strong> of element <literal>A[i]</literal> the number of
+That is, <title_reference>k</title_reference> direct losers to the winner must be compared.
+There must be at least <title_reference>n + k - 2</title_reference> comparisons.
+The question is: How low can we make <title_reference>k</title_reference>?</paragraph><paragraph>Call the <strong>strength</strong> of element <literal>A[i]</literal> the number of
 elements that <literal>A[i]</literal> is (known to be) bigger than.
-If <literal>A[i]</literal> has strength <math>a</math>, and <literal>A[j]</literal> has
-strength <math>b</math>, then the winner has strength <math>a + b + 1</math>.
+If <literal>A[i]</literal> has strength <title_reference>a</title_reference>, and <literal>A[j]</literal> has
+strength <title_reference>b</title_reference>, then the winner has strength <title_reference>a + b + 1</title_reference>.
 The algorithm gets to know the (current) strengths for each element,
 and it gets to pick which two elements are compared next.
 The adversary gets to decide who wins any given comparison.
@@ -162,10 +162,10 @@ strategy is to maximize the minimum improvement in strength by
 balancing the strengths of any two competitors.
 From the algorithm's point of view, the best outcome is that an
 element doubles in strength.
-This happens whenever <math>a = b</math>, where <math>a</math> and <math>b</math> are
+This happens whenever <title_reference>a = b</title_reference>, where <title_reference>a</title_reference> and <title_reference>b</title_reference> are
 the strengths of the two elements being compared.
 All strengths begin at zero, so the winner must make at least
-<math>k</math> comparisons when <math>2^{k-1} &lt; n \leq 2^k</math>.
-Thus, there must be at least <math>n + \lceil \log n\rceil - 2</math>
+<title_reference>k</title_reference> comparisons when <title_reference>2^{k-1} &lt; n leq 2^k</title_reference>.
+Thus, there must be at least <title_reference>n + lceil log nrceil - 2</title_reference>
 comparisons.
 So our algorithm is optimal.</paragraph></document>

@@ -23,7 +23,7 @@ The Skip List is easier to implement than known balanced tree
 structures.
 The Skip List is not guaranteed to provide good performance
 (where good performance is defined as
-<math>\Theta(\log n)</math> search, insertion, and deletion time), but it
+<title_reference>Theta(log n)</title_reference> search, insertion, and deletion time), but it
 will provide good performance with extremely high probability
 (unlike the BST which has a good chance of performing poorly).
 As such it represents a good compromise between difficulty of
@@ -38,13 +38,13 @@ implementation and performance.</paragraph><raw format="xml" xml:space="preserve
 </raw><paragraph>We can continue adding pointers to selected nodes in this waygive
 a third pointer to every fourth node, give a fourth pointer to every
 eighth node, and so on   until we reach the
-ultimate of <math>\log n</math> pointers in the first and middle nodes for
-a list of <math>n</math> nodes.
+ultimate of <title_reference>log n</title_reference> pointers in the first and middle nodes for
+a list of <title_reference>n</title_reference> nodes.
 To search, start with the bottom row of pointers, going as far as
 possible and skipping many nodes at a time.
 Then, shift up to shorter and shorter steps as required.
 With this arrangement, the worst-case number of accesses is
-<math>\Theta(\log n)</math>.</paragraph><paragraph>We will store with each Skip List node an array
+<title_reference>Theta(log n)</title_reference>.</paragraph><paragraph>We will store with each Skip List node an array
 named <literal>forward</literal> that stores the pointers.
 Position <literal>forward[0]</literal> stores a level 0 pointer,
 <literal>forward[1]</literal> stores a level 1 pointer, and so on.
@@ -96,12 +96,12 @@ pointers adjusted to point around the node being deleted.</paragraph><raw format
 <literal>randomLevel</literal>, or a low level.
 It is possible that many nodes in the Skip List could have many
 pointers, leading to unnecessary insert cost and yielding poor
-(i.e., <math>\Theta(n)</math> performance during search, because not many
+(i.e., <title_reference>Theta(n)</title_reference> performance during search, because not many
 nodes will be skipped.
 Conversely, too many nodes could have a low level.
 In the worst case, all nodes could be at level 0, equivalent to a
 regular linked list.
-If so, search will again require <math>\Theta(n)</math> time.
+If so, search will again require <title_reference>Theta(n)</title_reference> time.
 However, the probability that performance will be poor is quite low.
 There is only one chance in 1024 that ten nodes in a row will be at
 level 0.
@@ -110,14 +110,14 @@ The motto of probabilistic data structures such as the Skip List is
 We simply accept the results of <literal>randomLevel</literal> and expect that
 probability will eventually work in our favor.
 The advantage of this approach is that the algorithms are simple,
-while requiring only <math>\Theta(\log n)</math> time for all operations in
+while requiring only <title_reference>Theta(log n)</title_reference> time for all operations in
 the average case.</paragraph><paragraph>In practice, the Skip List will probably have better
 performance than a BST.
 The BST can have bad performance caused by the order in which data are
 inserted.
-For example, if <math>n</math> nodes are inserted into a BST in ascending
+For example, if <title_reference>n</title_reference> nodes are inserted into a BST in ascending
 order of their key values, then the BST will look like a linked list
-with the deepest node at depth <math>n-1</math>.
+with the deepest node at depth <title_reference>n-1</title_reference>.
 If the data inserted over the life of the BST could be randomly
 ordered, then the probability distribution for the cost of the insert
 and search operations would be similar to that of the Skip List.
@@ -131,7 +131,7 @@ selected.
 As the number of nodes in the Skip List increases, the probability of
 encountering the worst case decreases geometrically.
 Thus, the Skip List illustrates a tension between the theoretical
-worst case (in this case, <math>\Theta(n)</math> for a Skip List
+worst case (in this case, <title_reference>Theta(n)</title_reference> for a Skip List
 operation), and a rapidly increasing probability of average-case
-performance of <math>\Theta(\log n)</math>, that characterizes
+performance of <title_reference>Theta(log n)</title_reference>, that characterizes
 probabilistic data structures.</paragraph><raw format="xml" xml:space="preserve"><odsascript>DataStructures/SkipList.js</odsascript></raw><raw format="xml" xml:space="preserve"><odsascript>AV/SearchStruct/SkipListIntroCON.js</odsascript></raw><raw format="xml" xml:space="preserve"><odsascript>AV/SearchStruct/SkipListInsertCON.js</odsascript></raw><raw format="xml" xml:space="preserve"><odsascript>AV/SearchStruct/SkipListRmvCON.js</odsascript></raw></document>

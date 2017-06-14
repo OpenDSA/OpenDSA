@@ -8,17 +8,17 @@ pass might be tricky.
 Here is an example with checking to see if a given binary tree follows
 the rules for a BST.</paragraph><topic><title>Example</title><paragraph>A more difficult example is illustrated by the following problem.
 Given an arbitrary binary tree we wish to determine if,
-for every node <math>A</math>, are all nodes in <math>A</math>'s left
-subtree less than the value of <math>A</math>, and are all nodes in
-<math>A</math>'s right subtree greater than the value of <math>A</math>?
+for every node <title_reference>A</title_reference>, are all nodes in <title_reference>A</title_reference>'s left
+subtree less than the value of <title_reference>A</title_reference>, and are all nodes in
+<title_reference>A</title_reference>'s right subtree greater than the value of <title_reference>A</title_reference>?
 (This happens to be the definition for a binary search tree.)
 Unfortunately, to make this decision we need to know some context
 that is not available just by looking at the node's parent or
 children.</paragraph><target refid="bstcheckfig"></target><raw format="xml" ids="bstcheckfig" names="bstcheckfig" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>As shown by Figure <title_reference>Figure #BSTCheckFig</title_reference>,
-it is not enough to verify that <math>A</math>'s left child has a value
-less than that of <math>A</math>, and that <math>A</math>'s right child
+it is not enough to verify that <title_reference>A</title_reference>'s left child has a value
+less than that of <title_reference>A</title_reference>, and that <title_reference>A</title_reference>'s right child
 has a greater value.
-Nor is it enough to verify that <math>A</math> has a value consistent
+Nor is it enough to verify that <title_reference>A</title_reference> has a value consistent
 with that of its parent.
 In fact, we need to know information about what range of values is
 legal for a given node.

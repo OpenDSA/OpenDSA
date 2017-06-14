@@ -5,15 +5,15 @@
 terms and concepts, as a place for reference when needed.</paragraph><paragraph><strong>Units of measure:</strong>
 OpenDSA modules use the following notation for units of measure.
 "B" will be used as an abbreviation for bytes, "b" for bits,
-"KB" for kilobytes <math>(2^{10} = 1024</math> bytes),
-"MB" for megabytes <math>(2^{20}</math> bytes)
-"GB" for gigabytes <math>(2^{30}</math> bytes)
+"KB" for kilobytes <title_reference>(2^{10} = 1024</title_reference> bytes),
+"MB" for megabytes <title_reference>(2^{20}</title_reference> bytes)
+"GB" for gigabytes <title_reference>(2^{30}</title_reference> bytes)
 and "ms" for milliseconds
 (a millisecond is 1/1000 of a second).
 Spaces are not placed between the number and the unit abbreviation
 when a power of two is intended.
 Thus a disk drive of size 25 gigabytes (where a gigabyte is intended
-as <math>2^{30}</math> bytes) will be written as "25GB".
+as <title_reference>2^{30}</title_reference> bytes) will be written as "25GB".
 Spaces are used when a decimal value is intended.
 An amount of 2000 bits would therefore be written "2 Kb" while
 "2Kb" represents 2048 bits.
@@ -21,44 +21,44 @@ An amount of 2000 bits would therefore be written "2 Kb" while
 Note that in this book large amounts of storage are nearly always
 measured in powers of two and times in powers of
 ten.</paragraph><paragraph><strong>Factorial function:</strong>
-The <title_reference>factorial</title_reference> function, written <math>n!</math> for <math>n</math> an
+The <title_reference>factorial</title_reference> function, written <title_reference>n!</title_reference> for <title_reference>n</title_reference> an
 integer greater than 0, is the product of
-the integers between 1 and <math>n</math>, inclusive.
-Thus, <math>5! = 1 \cdot 2 \cdot 3 \cdot 4 \cdot 5 = 120</math>.
-As a special case, <math>0! = 1</math>.
-The factorial function grows quickly as <math>n</math> becomes larger.
+the integers between 1 and <title_reference>n</title_reference>, inclusive.
+Thus, <title_reference>5! = 1 cdot 2 cdot 3 cdot 4 cdot 5 = 120</title_reference>.
+As a special case, <title_reference>0! = 1</title_reference>.
+The factorial function grows quickly as <title_reference>n</title_reference> becomes larger.
 Because computing the factorial function directly is a time-consuming
 process, it can be useful to have an equation that provides a
 good approximation.
 Stirling's approximation states that
-<math>n! \approx \sqrt{2\pi n}(\frac{n}{e})^n</math>,
-where <math>e \approx 2.71828</math>
-(<math>e</math> is the base for the system of natural logarithms) <footnote_reference auto="1" ids="id1" refid="id2">1</footnote_reference>.
-Thus we see that while <math>n!</math> grows
-slower than <math>n^n</math> (because <math>\sqrt{2\pi n}/e^n &lt; 1</math>),
-it grows faster than <math>c^n</math> for any positive integer constant
-<math>c</math>.</paragraph><paragraph><strong>Permutations:</strong>
-A <title_reference>permutation</title_reference> of a sequence <math>\mathbf{S}</math>
-is simply the members of <math>\mathbf{S}</math> arranged in some order.
-For example, a permutation of the integers 1 through <math>n</math> would
+<title_reference>n! approx sqrt{2pi n}(frac{n}{e})^n</title_reference>,
+where <title_reference>e approx 2.71828</title_reference>
+(<title_reference>e</title_reference> is the base for the system of natural logarithms) .
+Thus we see that while <title_reference>n!</title_reference> grows
+slower than <title_reference>n^n</title_reference> (because <title_reference>sqrt{2pi n}/e^n &lt; 1</title_reference>),
+it grows faster than <title_reference>c^n</title_reference> for any positive integer constant
+<title_reference>c</title_reference>.</paragraph><paragraph><strong>Permutations:</strong>
+A <title_reference>permutation</title_reference> of a sequence <title_reference>mathbf{S}</title_reference>
+is simply the members of <title_reference>mathbf{S}</title_reference> arranged in some order.
+For example, a permutation of the integers 1 through <title_reference>n</title_reference> would
 be those values arranged in some order.
-If the sequence contains <math>n</math> distinct members, then there are
-<math>n!</math> different permutations for the sequence.
-This is because there are <math>n</math> choices for the first member in
-the permutation; for each choice of first member there are <math>n-1</math>
+If the sequence contains <title_reference>n</title_reference> distinct members, then there are
+<title_reference>n!</title_reference> different permutations for the sequence.
+This is because there are <title_reference>n</title_reference> choices for the first member in
+the permutation; for each choice of first member there are <title_reference>n-1</title_reference>
 choices for the second member, and so on.
 Sometimes one would like to obtain a <title_reference>random permutation</title_reference> for a
-sequence, that is, one of the <math>n!</math> possible permutations is
+sequence, that is, one of the <title_reference>n!</title_reference> possible permutations is
 selected in such a way that each permutation has equal probability of
 being selected.
 A simple function for generating a random permutation is as
 follows.
-Here, the <math>n</math> values of the sequence are stored in
-positions 0 through <math>n-1</math> of array <literal>A</literal>,
+Here, the <title_reference>n</title_reference> values of the sequence are stored in
+positions 0 through <title_reference>n-1</title_reference> of array <literal>A</literal>,
 function <literal>swap(A, i, j)</literal>
 exchanges elements <literal>i</literal> and <literal>j</literal> in array <literal>A</literal>,
 and <literal>Random(n)</literal> returns an integer value in the range 0 to
-<math>n-1</math>.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph><strong>Boolean variables:</strong>
+<title_reference>n-1</title_reference>.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph><strong>Boolean variables:</strong>
 A <title_reference>Boolean variable</title_reference>
 is a variable that takes on one of the two values <literal>True</literal> and
 <literal>False</literal>.
@@ -70,49 +70,49 @@ correspondence between 0 and False, because these are logically
 distinct objects of different types.</paragraph><paragraph><strong>Logic Notation:</strong>
 We will occasionally make use of the notation of symbolic or Boolean
 logic.
-<math>A \Rightarrow B</math> means "<math>A</math> implies <math>B</math>" or
-"If <math>A</math> then <math>B</math>".
-<math>A \Leftrightarrow B</math> means "<math>A</math> if and only if <math>B</math>"
-or "<math>A</math> is equivalent to <math>B</math>".
-<math>A \vee B</math> means "<math>A</math> or <math>B</math>"
+<title_reference>A Rightarrow B</title_reference> means "<title_reference>A</title_reference> implies <title_reference>B</title_reference>" or
+"If <title_reference>A</title_reference> then <title_reference>B</title_reference>".
+<title_reference>A Leftrightarrow B</title_reference> means "<title_reference>A</title_reference> if and only if <title_reference>B</title_reference>"
+or "<title_reference>A</title_reference> is equivalent to <title_reference>B</title_reference>".
+<title_reference>A vee B</title_reference> means "<title_reference>A</title_reference> or <title_reference>B</title_reference>"
 (useful both in the context of symbolic
 logic or when performing a Boolean operation).
-<math>A \wedge B</math> means "<math>A</math> and <math>B</math>".
-<math>\sim\!A</math> and <math>\overline{A}</math> both mean "not <math>A</math>" or
-the negation of <math>A</math> where <math>A</math> is a Boolean variable.</paragraph><paragraph><strong>Floor and ceiling:</strong>
-The <title_reference>floor</title_reference> of <math>x</math> (written <math>\lfloor x \rfloor</math>)
-takes real value <math>x</math> and returns the greatest
-integer <math>\leq x</math>.
-For example, <math>\lfloor 3.4 \rfloor = 3</math>,
-as does <math>\lfloor 3.0 \rfloor</math>,
-while <math>\lfloor -3.4 \rfloor = -4</math> and
-<math>\lfloor -3.0 \rfloor = -3</math>.
-The <title_reference>ceiling</title_reference> of <math>x</math> (written
-<math>\lceil x \rceil</math>) takes real value <math>x</math> and returns the
-least integer <math>\geq x</math>.
-For example, <math>\lceil 3.4 \rceil = 4</math>, as does
-<math>\lceil 4.0 \rceil</math>,
-while <math>\lceil -3.4 \rceil = \lceil -3.0 \rceil = -3</math>.</paragraph><paragraph><strong>Modulus function:</strong>
+<title_reference>A wedge B</title_reference> means "<title_reference>A</title_reference> and <title_reference>B</title_reference>".
+<title_reference>sim!A</title_reference> and <title_reference>overline{A}</title_reference> both mean "not <title_reference>A</title_reference>" or
+the negation of <title_reference>A</title_reference> where <title_reference>A</title_reference> is a Boolean variable.</paragraph><paragraph><strong>Floor and ceiling:</strong>
+The <title_reference>floor</title_reference> of <title_reference>x</title_reference> (written <title_reference>lfloor x rfloor</title_reference>)
+takes real value <title_reference>x</title_reference> and returns the greatest
+integer <title_reference>leq x</title_reference>.
+For example, <title_reference>lfloor 3.4 rfloor = 3</title_reference>,
+as does <title_reference>lfloor 3.0 rfloor</title_reference>,
+while <title_reference>lfloor -3.4 rfloor = -4</title_reference> and
+<title_reference>lfloor -3.0 rfloor = -3</title_reference>.
+The <title_reference>ceiling</title_reference> of <title_reference>x</title_reference> (written
+<title_reference>lceil x rceil</title_reference>) takes real value <title_reference>x</title_reference> and returns the
+least integer <title_reference>geq x</title_reference>.
+For example, <title_reference>lceil 3.4 rceil = 4</title_reference>, as does
+<title_reference>lceil 4.0 rceil</title_reference>,
+while <title_reference>lceil -3.4 rceil = lceil -3.0 rceil = -3</title_reference>.</paragraph><paragraph><strong>Modulus function:</strong>
 The <title_reference>modulus</title_reference> (or <title_reference>mod</title_reference>) function returns the remainder of
 an integer division.
-Sometimes written <math>n \bmod m</math> in mathematical expressions,
+Sometimes written <title_reference>n bmod m</title_reference> in mathematical expressions,
 the syntax in many programming languages is <literal>n % m</literal>.
-From the definition of remainder, <math>n \bmod m</math> is the integer
-<math>r</math> such that <math>n = qm + r</math> for <math>q</math> an integer,
-and <math>|r| &lt; |m|</math>.
-Therefore, the result of <math>n \bmod m</math> must be between 0 and
-<math>m-1</math> when <math>n</math> and <math>m</math> are positive integers.
-For example, <math>5 \bmod 3 = 2</math>; <math>25 \bmod 3 = 1</math>,
-<math>5 \bmod 7 = 5</math>, and <math>5 \bmod 5 = 0</math>.</paragraph><paragraph>There is more than one way to assign values to <math>q</math>
-and <math>r</math>, depending on how integer division is interpreted.
+From the definition of remainder, <title_reference>n bmod m</title_reference> is the integer
+<title_reference>r</title_reference> such that <title_reference>n = qm + r</title_reference> for <title_reference>q</title_reference> an integer,
+and <title_reference>|r| &lt; |m|</title_reference>.
+Therefore, the result of <title_reference>n bmod m</title_reference> must be between 0 and
+<title_reference>m-1</title_reference> when <title_reference>n</title_reference> and <title_reference>m</title_reference> are positive integers.
+For example, <title_reference>5 bmod 3 = 2</title_reference>; <title_reference>25 bmod 3 = 1</title_reference>,
+<title_reference>5 bmod 7 = 5</title_reference>, and <title_reference>5 bmod 5 = 0</title_reference>.</paragraph><paragraph>There is more than one way to assign values to <title_reference>q</title_reference>
+and <title_reference>r</title_reference>, depending on how integer division is interpreted.
 The most common mathematical definition computes the mod function as
-<math>n \bmod m = n - m\lfloor n/m\rfloor</math>.
-In this case, <math>-3 \bmod 5 = 2</math>.
+<title_reference>n bmod m = n - mlfloor n/mrfloor</title_reference>.
+In this case, <title_reference>-3 bmod 5 = 2</title_reference>.
 However, Java and C++ compilers typically use the underlying
 processor's machine instruction for computing integer arithmetic.
 On many computers this is done by truncating the resulting fraction,
-meaning <math>n \bmod m = n - m (\mathrm{trunc}(n/m))</math>.
-Under this definition, <math>-3 \bmod 5 = -3</math>.
+meaning <title_reference>n bmod m = n - m (mathrm{trunc}(n/m))</title_reference>.
+Under this definition, <title_reference>-3 bmod 5 = -3</title_reference>.
 Another language might do something different.</paragraph><paragraph>Unfortunately, for many applications this is not what the user wants
 or expects.
 For example, many <title_reference>hash systems &lt;hash system&gt; &lt;HashFunc&gt;</title_reference>
@@ -123,4 +123,4 @@ the hash table, not a negative number.
 Implementers of hash functions must either insure that the
 result of the computation is always positive, or else add the hash
 table size to the result of the modulo function when that result is
-negative.</paragraph><footnote auto="1" backrefs="id1" ids="id2" names="1"><label>1</label><paragraph>The symbol "<math>\approx</math>" means "approximately equal."</paragraph></footnote></document>
+negative.</paragraph><footnote auto="1" ids="id1" names="1"><label>1</label><paragraph>The symbol "<title_reference>approx</title_reference>" means "approximately equal."</paragraph></footnote></document>

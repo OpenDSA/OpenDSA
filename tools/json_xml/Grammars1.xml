@@ -17,7 +17,7 @@ the grammar.</paragraph></list_item><list_item><paragraph>A set of productions. 
 the syntactical composition of the non-terminals from the
 previous point. The productions take the form:</paragraph></list_item></bullet_list></block_quote><math_block xml:space="preserve">\begin{eqnarray*}
 &lt;nonterminal&gt; &amp;::=&amp; String \; of \; terminals \; and/or \; nonterminals\\
-\end{eqnarray*}</math_block><paragraph>We say that the non-terminal on the left of such a production <emphasis>derives</emphasis> the string on the right.</paragraph><paragraph>An example of a context-free grammar should help to clarify this three-part definition.   By convention the non-terminal on the left of the first production is the start symbol, and that is what ultimately must be parsed to have a complete expression in the language.   Hence in the example below, <math>&lt;exp&gt;</math> is the start symbol.</paragraph><target refid="eg1"></target><section ids="example-grammar-1 eg1" names="example\ grammar\ 1 eg1"><title>Example Grammar 1</title><math_block xml:space="preserve">\begin{eqnarray*}
+\end{eqnarray*}</math_block><paragraph>We say that the non-terminal on the left of such a production <emphasis>derives</emphasis> the string on the right.</paragraph><paragraph>An example of a context-free grammar should help to clarify this three-part definition.   By convention the non-terminal on the left of the first production is the start symbol, and that is what ultimately must be parsed to have a complete expression in the language.   Hence in the example below, <title_reference>&lt;exp&gt;</title_reference> is the start symbol.</paragraph><target refid="eg1"></target><section ids="example-grammar-1 eg1" names="example\ grammar\ 1 eg1"><title>Example Grammar 1</title><math_block xml:space="preserve">\begin{eqnarray*}
 &lt;exp&gt; &amp;::=&amp; &lt;trm&gt;\\
 &amp;|&amp; &lt;exp&gt; + &lt;trm&gt; \\
 &amp;|&amp; &lt;exp&gt; - &lt;trm&gt; \\
@@ -27,11 +27,11 @@ previous point. The productions take the form:</paragraph></list_item></bullet_l
 &amp;|&amp; ( &lt;exp&gt; ) \\
 &lt;pri&gt; &amp;:==&amp; A | B | C | \ldots | X | Y | Z
 \end{eqnarray*}</math_block><paragraph>This is essentially a grammar for algebraic expressions with variables
-(that is, the <math>&lt;pri&gt;</math> non-terminal) allowed to be a single upper-case
-letter.  When reading a grammar, the vertical bar <math>|</math> means
-"or".  Hence <math>&lt;pri&gt;</math> can be A or B or C ...  The <math>&lt;trm&gt;</math>
-non-terminal must either be a <math>&lt;pri&gt;</math> or a parenthesized
-<math>&lt;exp&gt;</math>.  A derivation of the expression <math>A + B * C</math>
+(that is, the <title_reference>&lt;pri&gt;</title_reference> non-terminal) allowed to be a single upper-case
+letter.  When reading a grammar, the vertical bar <title_reference>|</title_reference> means
+"or".  Hence <title_reference>&lt;pri&gt;</title_reference> can be A or B or C ...  The <title_reference>&lt;trm&gt;</title_reference>
+non-terminal must either be a <title_reference>&lt;pri&gt;</title_reference> or a parenthesized
+<title_reference>&lt;exp&gt;</title_reference>.  A derivation of the expression <title_reference>A + B * C</title_reference>
 according to this grammar proceeds as illustrated in the following
 slide show, with the final result being a <emphasis>parse tree</emphasis>.  You should step
 through all the slides, making sure that at each step you understand
@@ -46,7 +46,7 @@ the production that is being applied to "grow" the parse tree.</paragraph><raw f
 </raw><paragraph>Note that, in a complete parse tree, leaf nodes are always terminals,
 and a traversal of the tree that would output these leaf nodes
 would reproduce the expression being parsed.  This is indicated by the red
-highlighting in the above slide-show.</paragraph><paragraph>The following set of four review problems for this module should be completed before you go on.   In these review problems, the symbol <math>\epsilon</math> is used to represent the <emphasis>empty production</emphasis>.   When <math>\epsilon</math> appears on the right of a production, it means that one of the possibilities for the non-terminal on the left side of the production is for it to derive the empty string, that is, the string with no characters.  This is typically used when the syntax for the language being parsed allows the option of the non-terminal not appearing at all.   Often with productions that are recursive, it provides a way for the recursion to bottom out -- similar to the way a recursive termination condition would work in a recursive algorithm.</paragraph><paragraph>The first problem is about building a parse tree given a grammar and a string.</paragraph><raw format="xml" xml:space="preserve"><avembed
+highlighting in the above slide-show.</paragraph><paragraph>The following set of four review problems for this module should be completed before you go on.   In these review problems, the symbol <title_reference>epsilon</title_reference> is used to represent the <emphasis>empty production</emphasis>.   When <title_reference>epsilon</title_reference> appears on the right of a production, it means that one of the possibilities for the non-terminal on the left side of the production is for it to derive the empty string, that is, the string with no characters.  This is typically used when the syntax for the language being parsed allows the option of the non-terminal not appearing at all.   Often with productions that are recursive, it provides a way for the recursion to bottom out -- similar to the way a recursive termination condition would work in a recursive algorithm.</paragraph><paragraph>The first problem is about building a parse tree given a grammar and a string.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="ka"
     exer_name="RP1part1"
     long_name="RP1part1"

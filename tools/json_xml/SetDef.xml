@@ -14,9 +14,9 @@ Each member of a set is either a <title_reference>primitive element</title_refer
 base type or is a set itself.
 There is no concept of duplication in a set.
 Each value from the base type is either in the set or not in the set.
-For example, a set named <math>\mathbf{P}</math> might consist of the three
+For example, a set named <title_reference>mathbf{P}</title_reference> might consist of the three
 integers 7, 11, and 42.
-In this case, <math>\mathbf{P}</math>'s members are 7, 11, and 42, and the
+In this case, <title_reference>mathbf{P}</title_reference>'s members are 7, 11, and 42, and the
 base type is integer.</paragraph><paragraph>The following table shows the symbols commonly used to express sets
 and their relationships.</paragraph><target refid="setnotation"></target><topic ids="setnotation" names="setnotation"><title>Table</title><math_block xml:space="preserve">\begin{array}{l|l}
 \{1, 4\}&amp; \mbox{A set composed of the members 1 and 4}\\
@@ -43,37 +43,37 @@ and their relationships.</paragraph><target refid="setnotation"></target><topic 
   \mbox{Set difference: all elements of set}
   \ \mathbf{P}\ \mbox{NOT in set}\ \mathbf{Q}\\
 \end{array}</math_block></topic><paragraph>Here are some examples of this notation in use.
-First define two sets, <math>\mathbf{P}</math> and <math>\mathbf{Q}</math>.</paragraph><math_block xml:space="preserve">\mathbf{P} = \{2, 3, 5\}, \qquad \mathbf{Q} = \{5, 10\}.</math_block><paragraph><math>|\mathbf{P}| = 3</math>  (because <math>\mathbf{P}</math> has three
-members) and <math>|\mathbf{Q}| = 2</math>
-(because <math>\mathbf{Q}</math> has two members).
-The union of <math>\mathbf{P}</math> and <math>\mathbf{Q}</math>, written
-<math>\mathbf{P} \cup \mathbf{Q}</math>, is the set of elements in either
-<math>\mathbf{P}</math> or <math>\mathbf{Q}</math>, which is {2, 3, 5, 10}.
-The intersection of <math>\mathbf{P}</math> and <math>\mathbf{Q}</math>,
-written <math>\mathbf{P} \cap \mathbf{Q}</math>, is the set of elements that
-appear in both <math>\mathbf{P}</math> and <math>\mathbf{Q}</math>, which is {5}.
-The set difference of <math>\mathbf{P}</math> and <math>\mathbf{Q}</math>,
-written <math>\mathbf{P} - \mathbf{Q}</math>,
-is the set of elements that occur in <math>\mathbf{P}</math> but not in
-<math>\mathbf{Q}</math>, which is {2, 3}.
+First define two sets, <title_reference>mathbf{P}</title_reference> and <title_reference>mathbf{Q}</title_reference>.</paragraph><math_block xml:space="preserve">\mathbf{P} = \{2, 3, 5\}, \qquad \mathbf{Q} = \{5, 10\}.</math_block><paragraph><title_reference>|mathbf{P}| = 3</title_reference>  (because <title_reference>mathbf{P}</title_reference> has three
+members) and <title_reference>|mathbf{Q}| = 2</title_reference>
+(because <title_reference>mathbf{Q}</title_reference> has two members).
+The union of <title_reference>mathbf{P}</title_reference> and <title_reference>mathbf{Q}</title_reference>, written
+<title_reference>mathbf{P} cup mathbf{Q}</title_reference>, is the set of elements in either
+<title_reference>mathbf{P}</title_reference> or <title_reference>mathbf{Q}</title_reference>, which is {2, 3, 5, 10}.
+The intersection of <title_reference>mathbf{P}</title_reference> and <title_reference>mathbf{Q}</title_reference>,
+written <title_reference>mathbf{P} cap mathbf{Q}</title_reference>, is the set of elements that
+appear in both <title_reference>mathbf{P}</title_reference> and <title_reference>mathbf{Q}</title_reference>, which is {5}.
+The set difference of <title_reference>mathbf{P}</title_reference> and <title_reference>mathbf{Q}</title_reference>,
+written <title_reference>mathbf{P} - mathbf{Q}</title_reference>,
+is the set of elements that occur in <title_reference>mathbf{P}</title_reference> but not in
+<title_reference>mathbf{Q}</title_reference>, which is {2, 3}.
 Note that
-<math>\mathbf{P} \cup \mathbf{Q} = \mathbf{Q} \cup \mathbf{P}</math>
+<title_reference>mathbf{P} cup mathbf{Q} = mathbf{Q} cup mathbf{P}</title_reference>
 and that
-<math>\mathbf{P} \cap \mathbf{Q} = \mathbf{Q} \cap \mathbf{P}</math>,
+<title_reference>mathbf{P} cap mathbf{Q} = mathbf{Q} cap mathbf{P}</title_reference>,
 but in general
-<math>\mathbf{P} - \mathbf{Q} \neq \mathbf{Q} - \mathbf{P}</math>.
+<title_reference>mathbf{P} - mathbf{Q} neq mathbf{Q} - mathbf{P}</title_reference>.
 In this example,
-<math>\mathbf{Q} - \mathbf{P}  = \{10\}</math>.
+<title_reference>mathbf{Q} - mathbf{P}  = {10}</title_reference>.
 Finally, the set {5, 3, 2} is indistinguishable from set
-<math>\mathbf{P}</math>, because sets have no concept of order.
+<title_reference>mathbf{P}</title_reference>, because sets have no concept of order.
 Likewise, set {2, 3, 2, 5} is also indistinguishable from
-<math>\mathbf{P}</math>, because sets have no concept of duplicate elements.</paragraph><paragraph>The <title_reference>powerset</title_reference> of a set <math>\mathbf{S}</math> is the set of all
-possible subsets for <math>\mathbf{S}</math>.
-Consider the set <math>\mathbf{S} = \{ a, b, c \}</math>.
-The powerset of <math>\mathbf{S}</math> is</paragraph><math_block xml:space="preserve">\{ \emptyset,\ \{a\},\ \{b\},\ \{c\},\ \{a, b\},
+<title_reference>mathbf{P}</title_reference>, because sets have no concept of duplicate elements.</paragraph><paragraph>The <title_reference>powerset</title_reference> of a set <title_reference>mathbf{S}</title_reference> is the set of all
+possible subsets for <title_reference>mathbf{S}</title_reference>.
+Consider the set <title_reference>mathbf{S} = { a, b, c }</title_reference>.
+The powerset of <title_reference>mathbf{S}</title_reference> is</paragraph><math_block xml:space="preserve">\{ \emptyset,\ \{a\},\ \{b\},\ \{c\},\ \{a, b\},
 \ \{a, c\},\ \{b, c\},\ \{a, b, c\}\}.</math_block><paragraph>A collection of elements with no order (like a set), but with
 duplicate-valued elements is called a
-<title_reference>bag</title_reference> <footnote_reference auto="1" ids="id1" refid="id2">1</footnote_reference>.
+<title_reference>bag</title_reference> .
 To distinguish bags from sets, we will use square brackets [] around
 a bag's elements.
 For example, bag [3, 4, 5, 4] is distinct from bag [3, 4, 5],
@@ -86,42 +86,42 @@ A sequence is also sometimes called a <title_reference>tuple</title_reference> o
 <title_reference>vector</title_reference>.
 In a sequence, there is a 0th element, a 1st element, 2nd element, and
 so on.
-We will use angle brackets <math>\langle\rangle</math> to enclose the
+We will use angle brackets <title_reference>langlerangle</title_reference> to enclose the
 elements of a sequence.
-For example, <math>\langle3, 4, 5, 4\rangle</math> is a sequence.
-Note that sequence <math>\langle3, 5, 4, 4\rangle</math> is distinct from
-sequence <math>\langle3, 4, 5, 4\rangle</math>, and both are distinct from
-sequence <math>\langle3, 4, 5\rangle</math>.</paragraph><footnote auto="1" backrefs="id1" ids="id2" names="1"><label>1</label><paragraph>The object referred to here as a
+For example, <title_reference>langle3, 4, 5, 4rangle</title_reference> is a sequence.
+Note that sequence <title_reference>langle3, 5, 4, 4rangle</title_reference> is distinct from
+sequence <title_reference>langle3, 4, 5, 4rangle</title_reference>, and both are distinct from
+sequence <title_reference>langle3, 4, 5rangle</title_reference>.</paragraph><footnote auto="1" ids="id1" names="1"><label>1</label><paragraph>The object referred to here as a
 bag is sometimes called a
 <title_reference>multilist &lt;multilist&gt; &lt;Multilists&gt;</title_reference>.
 But, the term multilist also refers to a list that may contain
-sublists.</paragraph></footnote></section><section ids="relations" names="relations"><title>Relations</title><paragraph>A <title_reference>relation</title_reference> <math>R</math> over set <math>\mathbf{S}</math> is a set of
-ordered pairs from <math>\mathbf{S}</math>.
-As an example of a relation, if <math>\mathbf{S}</math> is
-<math>\{a, b, c\}</math>, then</paragraph><math_block xml:space="preserve">\{ \langle a, c\rangle, \langle b, c\rangle, \langle c, b\rangle \}</math_block><paragraph>is a relation, and</paragraph><math_block xml:space="preserve">\{ \langle a, a\rangle, \langle a, c\rangle, \langle b, b\rangle,
+sublists.</paragraph></footnote></section><section ids="relations" names="relations"><title>Relations</title><paragraph>A <title_reference>relation</title_reference> <title_reference>R</title_reference> over set <title_reference>mathbf{S}</title_reference> is a set of
+ordered pairs from <title_reference>mathbf{S}</title_reference>.
+As an example of a relation, if <title_reference>mathbf{S}</title_reference> is
+<title_reference>{a, b, c}</title_reference>, then</paragraph><math_block xml:space="preserve">\{ \langle a, c\rangle, \langle b, c\rangle, \langle c, b\rangle \}</math_block><paragraph>is a relation, and</paragraph><math_block xml:space="preserve">\{ \langle a, a\rangle, \langle a, c\rangle, \langle b, b\rangle,
 \langle b, c\rangle, \langle c, c\rangle \}</math_block><paragraph>is a different relation.
-If tuple <math>\langle x, y\rangle</math> is in relation <math>R</math>, we may
-use the infix notation <math>xRy</math>.
-We often use relations such as the less than operator (<math>&lt;</math>) on
+If tuple <title_reference>langle x, yrangle</title_reference> is in relation <title_reference>R</title_reference>, we may
+use the infix notation <title_reference>xRy</title_reference>.
+We often use relations such as the less than operator (<title_reference>&lt;</title_reference>) on
 the natural numbers, which includes ordered pairs such as
-<math>\langle1, 3\rangle</math> and
-<math>\langle2, 23\rangle</math>, but not <math>\langle3, 2\rangle</math> or
-<math>\langle2, 2\rangle</math>.
+<title_reference>langle1, 3rangle</title_reference> and
+<title_reference>langle2, 23rangle</title_reference>, but not <title_reference>langle3, 2rangle</title_reference> or
+<title_reference>langle2, 2rangle</title_reference>.
 Rather than writing the relationship in terms of ordered pairs, we
-typically use an infix notation for such relations, writing <math>1&lt;3</math>.</paragraph><paragraph>Define the properties of relations as follows, with <math>R</math> a
-binary relation over set <math>\mathbf{S}</math>.</paragraph><bullet_list bullet="*"><list_item><paragraph><math>R</math> is <title_reference>reflexive</title_reference> if <math>aRa</math>
-for all <math>a \in \mathbf{S}</math>.</paragraph></list_item><list_item><paragraph><math>R</math> is <title_reference>irreflexive</title_reference> if <math>aRa</math> is not true
-for all <math>a \in \mathbf{S}</math>.</paragraph></list_item><list_item><paragraph><math>R</math> is <title_reference>symmetric</title_reference> if whenever <math>aRb</math>,
-then <math>bRa</math>, for all <math>a, b \in \mathbf{S}</math>.</paragraph></list_item><list_item><paragraph><math>R</math> is <title_reference>antisymmetric</title_reference> if whenever <math>aRb</math>
-and <math>bRa</math>, then <math>a = b</math>, for all
-<math>a, b \in \mathbf{S}</math>.</paragraph></list_item><list_item><paragraph><math>R</math> is <title_reference>transitive</title_reference> if whenever <math>aRb</math> and
-<math>bRc</math>, then <math>aRc</math>, for all
-<math>a, b, c \in \mathbf{S}</math>.</paragraph></list_item></bullet_list><paragraph>As examples, for the natural numbers, <math>&lt;</math> is
+typically use an infix notation for such relations, writing <title_reference>1&lt;3</title_reference>.</paragraph><paragraph>Define the properties of relations as follows, with <title_reference>R</title_reference> a
+binary relation over set <title_reference>mathbf{S}</title_reference>.</paragraph><bullet_list bullet="*"><list_item><paragraph><title_reference>R</title_reference> is <title_reference>reflexive</title_reference> if <title_reference>aRa</title_reference>
+for all <title_reference>a in mathbf{S}</title_reference>.</paragraph></list_item><list_item><paragraph><title_reference>R</title_reference> is <title_reference>irreflexive</title_reference> if <title_reference>aRa</title_reference> is not true
+for all <title_reference>a in mathbf{S}</title_reference>.</paragraph></list_item><list_item><paragraph><title_reference>R</title_reference> is <title_reference>symmetric</title_reference> if whenever <title_reference>aRb</title_reference>,
+then <title_reference>bRa</title_reference>, for all <title_reference>a, b in mathbf{S}</title_reference>.</paragraph></list_item><list_item><paragraph><title_reference>R</title_reference> is <title_reference>antisymmetric</title_reference> if whenever <title_reference>aRb</title_reference>
+and <title_reference>bRa</title_reference>, then <title_reference>a = b</title_reference>, for all
+<title_reference>a, b in mathbf{S}</title_reference>.</paragraph></list_item><list_item><paragraph><title_reference>R</title_reference> is <title_reference>transitive</title_reference> if whenever <title_reference>aRb</title_reference> and
+<title_reference>bRc</title_reference>, then <title_reference>aRc</title_reference>, for all
+<title_reference>a, b, c in mathbf{S}</title_reference>.</paragraph></list_item></bullet_list><paragraph>As examples, for the natural numbers, <title_reference>&lt;</title_reference> is
 irreflexive (because :math`aRa` is never true),
-antisymmetric (because there is no case where <math>aRb</math> and
-<math>bRa</math>), and transitive.
-Relation <math>\leq</math> is reflexive, antisymmetric, and transitive.
-Relation <math>=</math> is reflexive, symmetric (and antisymmetric!),
+antisymmetric (because there is no case where <title_reference>aRb</title_reference> and
+<title_reference>bRa</title_reference>), and transitive.
+Relation <title_reference>leq</title_reference> is reflexive, antisymmetric, and transitive.
+Relation <title_reference>=</title_reference> is reflexive, symmetric (and antisymmetric!),
 and transitive.
 For people, the relation "is a sibling of" is symmetric and
 transitive.
@@ -135,25 +135,25 @@ it is not reflexive.</paragraph><raw format="xml" xml:space="preserve"><avembed
     required="True"
     threshold="5">
 </avembed>
-</raw></section><section ids="equivalence-relations" names="equivalence\ relations"><title>Equivalence Relations</title><paragraph><math>R</math> is an <title_reference>equivalence relation</title_reference> on set <math>\mathbf{S}</math>
+</raw></section><section ids="equivalence-relations" names="equivalence\ relations"><title>Equivalence Relations</title><paragraph><title_reference>R</title_reference> is an <title_reference>equivalence relation</title_reference> on set <title_reference>mathbf{S}</title_reference>
 if it is reflexive, symmetric, and transitive.
 An equivalence relation can be used to partition a set into
 <title_reference>equivalence classes &lt;equivalence class&gt;</title_reference>.
-If two elements <math>a</math> and <math>b</math> are equivalent to each other,
-we write <math>a \equiv b</math>.
-A <title_reference>partition</title_reference> of a set <math>\mathbf{S}</math> is a collection of
+If two elements <title_reference>a</title_reference> and <title_reference>b</title_reference> are equivalent to each other,
+we write <title_reference>a equiv b</title_reference>.
+A <title_reference>partition</title_reference> of a set <title_reference>mathbf{S}</title_reference> is a collection of
 subsets that are <title_reference>disjoint</title_reference> from each other and whose union is
-<math>\mathbf{S}</math>.
-An <title_reference>equivalence relation</title_reference> on set <math>\mathbf{S}</math> partitions
+<title_reference>mathbf{S}</title_reference>.
+An <title_reference>equivalence relation</title_reference> on set <title_reference>mathbf{S}</title_reference> partitions
 the set into disjoint subsets whose elements are equivalent.
 The <title_reference>UNION/FIND &lt;UNION/FIND&gt; &lt;UnionFind&gt;</title_reference> algorithm efficiently
 maintains equivalence classes on a set.
 One application for such <title_reference>disjoint sets</title_reference>
-computing a <title_reference>minimal cost spanning tree &lt;MCST&gt; &lt;MCST&gt;</title_reference>.</paragraph><topic><title>Example</title><paragraph>For the integers, <math>=</math> is an equivalence relation that
+computing a <title_reference>minimal cost spanning tree &lt;MCST&gt; &lt;MCST&gt;</title_reference>.</paragraph><topic><title>Example</title><paragraph>For the integers, <title_reference>=</title_reference> is an equivalence relation that
 partitions each element into a distinct subset.
-In other words, for any integer <math>a</math>, three things are true.</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph><math>a = a</math>,</paragraph></list_item><list_item><paragraph>if <math>a = b</math> then <math>b = a</math>, and</paragraph></list_item><list_item><paragraph>if <math>a = b</math> and <math>b = c</math>, then <math>a = c</math>.</paragraph></list_item></enumerated_list><paragraph>Of course, for distinct integers <math>a</math>, <math>b</math>, and <math>c</math>
-there are never cases where <math>a = b</math>, <math>b = a</math>, or
-<math>b = c</math>.
+In other words, for any integer <title_reference>a</title_reference>, three things are true.</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph><title_reference>a = a</title_reference>,</paragraph></list_item><list_item><paragraph>if <title_reference>a = b</title_reference> then <title_reference>b = a</title_reference>, and</paragraph></list_item><list_item><paragraph>if <title_reference>a = b</title_reference> and <title_reference>b = c</title_reference>, then <title_reference>a = c</title_reference>.</paragraph></list_item></enumerated_list><paragraph>Of course, for distinct integers <title_reference>a</title_reference>, <title_reference>b</title_reference>, and <title_reference>c</title_reference>
+there are never cases where <title_reference>a = b</title_reference>, <title_reference>b = a</title_reference>, or
+<title_reference>b = c</title_reference>.
 So the requirements for symmetry and transitivity are never
 violated, and therefore the relation is symmetric and transitive.</paragraph></topic><topic><title>Example</title><paragraph>If we clarify the definition of sibling to mean that a person is
 a sibling of him- or herself, then the sibling relation is an
@@ -161,17 +161,17 @@ equivalence relation that partitions the set of people.</paragraph></topic><topi
 to define an equivalence relation.
 For the set of integers, use the modulus function
 to define a binary relation such that two numbers
-<math>x</math> and <math>y</math> are in the relation if and only if
-<math>x \bmod m = y \bmod m</math>.
-Thus, for <math>m = 4</math>, <math>\langle1, 5\rangle</math> is in the
-relation because <math>1 \bmod 4 = 5 \bmod 4</math>.
+<title_reference>x</title_reference> and <title_reference>y</title_reference> are in the relation if and only if
+<title_reference>x bmod m = y bmod m</title_reference>.
+Thus, for <title_reference>m = 4</title_reference>, <title_reference>langle1, 5rangle</title_reference> is in the
+relation because <title_reference>1 bmod 4 = 5 bmod 4</title_reference>.
 We see that modulus used in this way defines an equivalence
 relation on the integers, and this relation can be used to
-partition the integers into <math>m</math> equivalence classes.
-This relation is an equivalence relation because</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph><math>x \bmod m = x \bmod m</math> for all <math>x</math>;</paragraph></list_item><list_item><paragraph>if <math>x \bmod m = y \bmod m</math>,
-then <math>y \bmod m = x \bmod m</math>; and</paragraph></list_item><list_item><paragraph>if <math>x \bmod m = y \bmod m</math> and
-<math>y \bmod m = z \bmod m</math>, then
-<math>x \bmod m = z \bmod m</math>.</paragraph></list_item></enumerated_list></topic><raw format="xml" xml:space="preserve"><avembed
+partition the integers into <title_reference>m</title_reference> equivalence classes.
+This relation is an equivalence relation because</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph><title_reference>x bmod m = x bmod m</title_reference> for all <title_reference>x</title_reference>;</paragraph></list_item><list_item><paragraph>if <title_reference>x bmod m = y bmod m</title_reference>,
+then <title_reference>y bmod m = x bmod m</title_reference>; and</paragraph></list_item><list_item><paragraph>if <title_reference>x bmod m = y bmod m</title_reference> and
+<title_reference>y bmod m = z bmod m</title_reference>, then
+<title_reference>x bmod m = z bmod m</title_reference>.</paragraph></list_item></enumerated_list></topic><raw format="xml" xml:space="preserve"><avembed
     type="ka"
     exer_name="SetTFequivrel"
     long_name="SetTFequivrel"
@@ -187,20 +187,20 @@ If the relation is <title_reference>irreflexive</title_reference>, it is called 
 <title_reference>strict partial order</title_reference>.
 The set on which the partial order is defined is called a
 <title_reference>partially ordered set</title_reference> or a <title_reference>poset</title_reference>.
-Elements <math>x</math> and <math>y</math> of a set are <title_reference>comparable</title_reference> under
-a given relation <math>R</math> if either <math>xRy</math> or <math>yRx</math>.
+Elements <title_reference>x</title_reference> and <title_reference>y</title_reference> of a set are <title_reference>comparable</title_reference> under
+a given relation <title_reference>R</title_reference> if either <title_reference>xRy</title_reference> or <title_reference>yRx</title_reference>.
 If every pair of distinct elements in a partial order are comparable,
-then the order is called a <title_reference>total order</title_reference> or <title_reference>linear order</title_reference>.</paragraph><topic><title>Example</title><paragraph>For the integers, relations <math>&lt;</math> and <math>\leq</math> define
+then the order is called a <title_reference>total order</title_reference> or <title_reference>linear order</title_reference>.</paragraph><topic><title>Example</title><paragraph>For the integers, relations <title_reference>&lt;</title_reference> and <title_reference>leq</title_reference> define
 partial orders.
-Operation <math>&lt;</math> is a total order because, for every pair of
-integers <math>x</math> and <math>y</math> such that <math>x \neq y</math>,
-either <math>x &lt; y</math> or <math>y &lt; x</math>.
-Likewise, <math>\leq</math> is a total order because,
-for every pair of integers <math>x</math> and <math>y</math> such that
-<math>x \neq y</math>, either <math>x \leq y</math> or <math>y \leq x</math>.</paragraph></topic><topic><title>Example</title><paragraph>For the powerset of the integers, the subset
+Operation <title_reference>&lt;</title_reference> is a total order because, for every pair of
+integers <title_reference>x</title_reference> and <title_reference>y</title_reference> such that <title_reference>x neq y</title_reference>,
+either <title_reference>x &lt; y</title_reference> or <title_reference>y &lt; x</title_reference>.
+Likewise, <title_reference>leq</title_reference> is a total order because,
+for every pair of integers <title_reference>x</title_reference> and <title_reference>y</title_reference> such that
+<title_reference>x neq y</title_reference>, either <title_reference>x leq y</title_reference> or <title_reference>y leq x</title_reference>.</paragraph></topic><topic><title>Example</title><paragraph>For the powerset of the integers, the subset
 operator defines a partial order (because it is antisymmetric and
 transitive).
-For example, <math>\{1, 2\}\subseteq\{1, 2, 3\}</math>.
+For example, <title_reference>{1, 2}subseteq{1, 2, 3}</title_reference>.
 However, sets {1, 2} and {1, 3} are not comparable by the
 subset operator, because neither is a subset of the other.
 Therefore, the subset operator does not define a total order on the

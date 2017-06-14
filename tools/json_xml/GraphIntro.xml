@@ -23,21 +23,21 @@ core graph algorithms including traversal, topological sort, shortest
 paths algorithms, and algorithms to find the minimal-cost spanning tree.
 Besides being useful and interesting in their own right, these
 algorithms illustrate the use of many other data structures presented
-throughout the course.</paragraph><footnote auto="1" backrefs="id2" ids="id1" names="1"><label>1</label><paragraph>Some graph applications require that a given pair of vertices
+throughout the course.</paragraph><footnote auto="1" ids="id1" names="1"><label>1</label><paragraph>Some graph applications require that a given pair of vertices
 can have multiple or parallel edges connecting them, or that a
 vertex can have an edge to itself.
 However, the applications discussed here do not require
 either of these special cases.
 To simplify our graph API, we will assume that there are no
-dupicate edges, and no edges that connect a node to itself.</paragraph></footnote><paragraph>A <title_reference>graph</title_reference> <math>\mathbf{G} = (\mathbf{V}, \mathbf{E})</math> consists
-of a set of <title_reference>vertices &lt;vertex&gt;</title_reference> <math>\mathbf{V}</math> and a set of
-<title_reference>edges &lt;edge&gt;</title_reference> <math>\mathbf{E}</math>,
-such that each edge in <math>\mathbf{E}</math> is a connection between a
-pair of vertices in <math>\mathbf{V}</math>. <footnote_reference auto="1" ids="id2" refid="id1">1</footnote_reference>
-The number of vertices is written <math>|\mathbf{V}|</math>, and the number
-of edges is written <math>|\mathbf{E}|</math>.
-<math>|\mathbf{E}|</math> can range from zero to a maximum of
-<math>|\mathbf{V}|^2 - |\mathbf{V}|</math>.</paragraph><paragraph>A graph whose edges are not directed is called an
+dupicate edges, and no edges that connect a node to itself.</paragraph></footnote><paragraph>A <title_reference>graph</title_reference> <title_reference>mathbf{G} = (mathbf{V}, mathbf{E})</title_reference> consists
+of a set of <title_reference>vertices &lt;vertex&gt;</title_reference> <title_reference>mathbf{V}</title_reference> and a set of
+<title_reference>edges &lt;edge&gt;</title_reference> <title_reference>mathbf{E}</title_reference>,
+such that each edge in <title_reference>mathbf{E}</title_reference> is a connection between a
+pair of vertices in <title_reference>mathbf{V}</title_reference>.
+The number of vertices is written <title_reference>|mathbf{V}|</title_reference>, and the number
+of edges is written <title_reference>|mathbf{E}|</title_reference>.
+<title_reference>|mathbf{E}|</title_reference> can range from zero to a maximum of
+<title_reference>|mathbf{V}|^2 - |mathbf{V}|</title_reference>.</paragraph><paragraph>A graph whose edges are not directed is called an
 <title_reference>undirected graph</title_reference>, as shown in part (a) of the following figure.
 A graph with edges directed from one vertex to another
 (as in (b)) is called a <title_reference>directed graph</title_reference> or <title_reference>digraph</title_reference>.
@@ -53,17 +53,17 @@ A graph whose edges have weights
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>An edge connecting Vertices <math>a</math> and <math>b</math> is written
-<math>(a, b)</math>.
-Such an edge is said to be <title_reference>incident</title_reference> with Vertices <math>a</math>
-and <math>b</math>.
+</raw><paragraph>An edge connecting Vertices <title_reference>a</title_reference> and <title_reference>b</title_reference> is written
+<title_reference>(a, b)</title_reference>.
+Such an edge is said to be <title_reference>incident</title_reference> with Vertices <title_reference>a</title_reference>
+and <title_reference>b</title_reference>.
 The two vertices are said to be <title_reference>adjacent</title_reference>.
-If the edge is directed from <math>a</math> to <math>b</math>,
-then we say that <math>a</math> is adjacent to <math>b</math>,
-and <math>b</math> is adjacent from <math>a</math>.
+If the edge is directed from <title_reference>a</title_reference> to <title_reference>b</title_reference>,
+then we say that <title_reference>a</title_reference> is adjacent to <title_reference>b</title_reference>,
+and <title_reference>b</title_reference> is adjacent from <title_reference>a</title_reference>.
 The <title_reference>degree</title_reference> of a vertex is the number of edges it is incident
 with.
-For example, Vertex <math>e</math> below has a degree of three.</paragraph><paragraph>In a directed graph, the <title_reference>out degree</title_reference> for a vertex is the number
+For example, Vertex <title_reference>e</title_reference> below has a degree of three.</paragraph><paragraph>In a directed graph, the <title_reference>out degree</title_reference> for a vertex is the number
 of neighbors adjacent from it (or the number of edges going out from
 it), while the <title_reference>in degree</title_reference> is the number of neighbors adjacent
 to it (or the number of edges coming in to it).
@@ -76,14 +76,14 @@ and its out degree is one.</paragraph><raw format="xml" xml:space="preserve"><in
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>A sequence of vertices <math>v_1, v_2, ..., v_n</math>
-forms a <title_reference>path</title_reference> of length <math>n-1</math> if there exist edges from
-<math>v_i</math> to <math>v_{i+1}</math> for <math>1 \leq i &lt; n</math>.
+</raw><paragraph>A sequence of vertices <title_reference>v_1, v_2, ..., v_n</title_reference>
+forms a <title_reference>path</title_reference> of length <title_reference>n-1</title_reference> if there exist edges from
+<title_reference>v_i</title_reference> to <title_reference>v_{i+1}</title_reference> for <title_reference>1 leq i &lt; n</title_reference>.
 A path is a <title_reference>simple path</title_reference> if all vertices on the path are
 distinct.
 The <title_reference>length</title_reference> of a path is the number of edges it contains.
 A <title_reference>cycle</title_reference> is a path of length three or more that connects
-some vertex <math>v_1</math> to itself.
+some vertex <title_reference>v_1</title_reference> to itself.
 A cycle is a <title_reference>simple cycle</title_reference> if the path is simple, except for
 the first and last vertices being the same.</paragraph><raw format="xml" xml:space="preserve"><inlineav
     type="dgm"
@@ -110,13 +110,13 @@ with three connected components.</paragraph><target refid="concom"></target><raw
 while a graph with many edges is called a <title_reference>dense graph</title_reference>.
 A graph containing all possible edges is said to be a
 <title_reference>complete graph</title_reference>.
-A <title_reference>subgraph</title_reference> <math>\mathbf{S}</math> is formed from graph
-<math>\mathbf{G}</math> by selecting a subset <math>\mathbf{V}_s</math> of
-<math>\mathbf{G}</math>'s vertices and a subset
-<math>\mathbf{E}_s</math> of <math>\mathbf{G}</math> 's edges such that for every
-edge <math>e  \in \mathbf{E}_s</math>,
-both vertices of <math>e</math> are in <math>\mathbf{V}_s</math>.
-Any subgraph of <math>V</math> where all vertices in the graph connect to
+A <title_reference>subgraph</title_reference> <title_reference>mathbf{S}</title_reference> is formed from graph
+<title_reference>mathbf{G}</title_reference> by selecting a subset <title_reference>mathbf{V}_s</title_reference> of
+<title_reference>mathbf{G}</title_reference>'s vertices and a subset
+<title_reference>mathbf{E}_s</title_reference> of <title_reference>mathbf{G}</title_reference> 's edges such that for every
+edge <title_reference>e  in mathbf{E}_s</title_reference>,
+both vertices of <title_reference>e</title_reference> are in <title_reference>mathbf{V}_s</title_reference>.
+Any subgraph of <title_reference>V</title_reference> where all vertices in the graph connect to
 all other vertices in the subgraph is called a <title_reference>clique</title_reference>.</paragraph><raw format="xml" xml:space="preserve"><inlineav
     type="dgm"
     exer_name="GsparseDefCON"
@@ -130,23 +130,23 @@ Thus, a directed graph without cycles is called a
 <title_reference>directed acyclic graph</title_reference> or <title_reference>DAG</title_reference>.</paragraph><paragraph>A <title_reference>free tree</title_reference> is a connected, undirected graph with no simple
 cycles.
 An equivalent definition is that
-a free tree is connected and has <math>|\mathbf{V}| - 1</math> edges.</paragraph></section><section ids="graph-representations" names="graph\ representations"><title>Graph Representations</title><paragraph>There are two commonly used methods for representing graphs.
+a free tree is connected and has <title_reference>|mathbf{V}| - 1</title_reference> edges.</paragraph></section><section ids="graph-representations" names="graph\ representations"><title>Graph Representations</title><paragraph>There are two commonly used methods for representing graphs.
 The <title_reference>adjacency matrix</title_reference> for a graph is a
-<math>|\mathbf{V}| \times |\mathbf{V}|</math> array.
-We typically label the vertices from <math>v_0</math> through
-<math>v_{|\mathbf{V}|-1}</math>.
-Row <math>i</math> of the adjacency matrix contains entries for
-Vertex <math>v_i</math>.
-Column <math>j</math> in row <math>i</math> is marked if there is an edge
-from <math>v_i</math> to <math>v_j</math> and is not marked otherwise.
+<title_reference>|mathbf{V}| times |mathbf{V}|</title_reference> array.
+We typically label the vertices from <title_reference>v_0</title_reference> through
+<title_reference>v_{|mathbf{V}|-1}</title_reference>.
+Row <title_reference>i</title_reference> of the adjacency matrix contains entries for
+Vertex <title_reference>v_i</title_reference>.
+Column <title_reference>j</title_reference> in row <title_reference>i</title_reference> is marked if there is an edge
+from <title_reference>v_i</title_reference> to <title_reference>v_j</title_reference> and is not marked otherwise.
 The space requirements for the adjacency matrix are
-<math>\Theta(|\mathbf{V}|^2)</math>.</paragraph><paragraph>The second common representation for graphs is the
+<title_reference>Theta(|mathbf{V}|^2)</title_reference>.</paragraph><paragraph>The second common representation for graphs is the
 <title_reference>adjacency list</title_reference>.
 The adjacency list is an array of linked lists.
-The array is <math>|\mathbf{V}|</math> items long, with position <math>i</math>
-storing a pointer to the linked list of edges for Vertex <math>v_i</math>.
+The array is <title_reference>|mathbf{V}|</title_reference> items long, with position <title_reference>i</title_reference>
+storing a pointer to the linked list of edges for Vertex <title_reference>v_i</title_reference>.
 This linked list represents the edges by the vertices that are
-adjacent to Vertex <math>v_i</math>.</paragraph><paragraph>Here is an example of the two representations on a directed graph.
+adjacent to Vertex <title_reference>v_i</title_reference>.</paragraph><paragraph>Here is an example of the two representations on a directed graph.
 The entry for Vertex 0 stores 1 and 4 because there are two edges
 in the graph leaving Vertex 0, with one going to Vertex 1 and one
 going to Vertex 4.
@@ -162,9 +162,9 @@ because this edge comes into Vertex 2 rather than going out.</paragraph><target 
 </inlineav>
 </raw><paragraph>Both the adjacency matrix and the adjacency list can be used to store
 directed or undirected graphs.
-Each edge of an undirected graph connecting Vertices <math>u</math>
-and <math>v</math> is represented by two directed edges: one from
-<math>u</math> to <math>v</math> and one from <math>v</math> to <math>u</math>.
+Each edge of an undirected graph connecting Vertices <title_reference>u</title_reference>
+and <title_reference>v</title_reference> is represented by two directed edges: one from
+<title_reference>u</title_reference> to <title_reference>v</title_reference> and one from <title_reference>v</title_reference> to <title_reference>u</title_reference>.
 Here is an example of the two representations on an undirected graph.
 We see that there are twice as many edge entries in both the adjacency
 matrix and the adjacency list.
@@ -182,7 +182,7 @@ number of edges and the number of vertices in the graph.
 There must be an array entry for each vertex (even if the vertex is
 not adjacent to any other vertex and thus has no elements on its
 linked list), and each edge must appear on one of the lists.
-Thus, the cost is <math>\Theta(|\mathbf{V}| + |\mathbf{E}|)</math>.</paragraph><paragraph>Sometimes we want to store weights or distances with each each edge,
+Thus, the cost is <title_reference>Theta(|mathbf{V}| + |mathbf{E}|)</title_reference>.</paragraph><paragraph>Sometimes we want to store weights or distances with each each edge,
 such as in Figure <title_reference>Figure #GraphTerms</title_reference> (c).
 This is easy with the adjacency matrix, where we will just store
 values for the weights in the matrix.
@@ -224,11 +224,11 @@ Sparse graphs are likely to have their adjacency list representation
 be more space efficient.</paragraph><topic><title>Example</title><paragraph>Assume that a vertex index requires two bytes, a pointer requires
 four bytes, and an edge weight requires two bytes.
 Then the adjacency matrix for the directed graph above
-requires <math>2 |\mathbf{V}^2| = 50</math> bytes while the adjacency list
-requires <math>4 |\mathbf{V}| + 6 |\mathbf{E}| = 56</math> bytes.
+requires <title_reference>2 |mathbf{V}^2| = 50</title_reference> bytes while the adjacency list
+requires <title_reference>4 |mathbf{V}| + 6 |mathbf{E}| = 56</title_reference> bytes.
 For the undirected version of the graph above, the adjacency
 matrix requires the same space as before, while the adjacency list
-requires <math>4 |\mathbf{V}| + 6 |\mathbf{E}| = 92</math> bytes
+requires <title_reference>4 |mathbf{V}| + 6 |mathbf{E}| = 92</title_reference> bytes
 (because there are now 12 edges represented instead of 6).</paragraph></topic><raw format="xml" xml:space="preserve"><avembed
     type="ka"
     exer_name="GspaceCalcSumm"
@@ -244,11 +244,11 @@ to visit each neighbor of each vertex.
 Using the adjacency list, only the actual edges connecting a vertex to
 its neighbors are examined.
 However, the adjacency matrix must look at each of its
-<math>|\mathbf{V}|</math>
+<title_reference>|mathbf{V}|</title_reference>
 potential edges, yielding a total cost of
-<math>\Theta(|\mathbf{V}^2|)</math>
+<title_reference>Theta(|mathbf{V}^2|)</title_reference>
 time when the algorithm might otherwise require only
-<math>\Theta(|\mathbf{V}| + |\mathbf{E}|)</math> time.
+<title_reference>Theta(|mathbf{V}| + |mathbf{E}|)</title_reference> time.
 This is a considerable disadvantage when the graph is sparse,
 but not when the graph is closer to full.</paragraph></section><section ids="graph-terminology-questions" names="graph\ terminology\ questions"><title>Graph Terminology Questions</title><raw format="xml" xml:space="preserve"><avembed
     type="ka"

@@ -24,17 +24,17 @@ One example of a hard problem is
 It is easy to understand this problem and its solution.
 It is also easy to write a program to solve this problem.
 But, it takes an extremely long time to run for any "reasonably"
-large value of <math>n</math>.
+large value of <title_reference>n</title_reference>.
 Try running a program to solve Towers of Hanoi for only 30 disks!</paragraph><paragraph>The Towers of Hanoi problem takes exponential time, that is, its
-running time is <math>\Theta(2^n)</math>.
+running time is <title_reference>Theta(2^n)</title_reference>.
 This is radically different from an algorithm that takes
-<math>\Theta(n \log n)</math> time or <math>\Theta(n^2)</math> time.
+<title_reference>Theta(n log n)</title_reference> time or <title_reference>Theta(n^2)</title_reference> time.
 It is even radically different from a problem that takes
-<math>\Theta(n^4)</math> time.
+<title_reference>Theta(n^4)</title_reference> time.
 These are all examples of polynomial running time, because the
 exponents for all terms of these equations are constants.
 If we buy a new computer that runs twice as fast,
-the size of problem with complexity <math>\Theta(n^4)</math> that we can
+the size of problem with complexity <title_reference>Theta(n^4)</title_reference> that we can
 solve in a certain amount of time is increased by the fourth root of
 two.
 In other words, there is a multiplicative factor increase, even if it
@@ -43,7 +43,7 @@ This is true for any algorithm whose running time can be represented
 by a polynomial.</paragraph><paragraph>Consider what happens if you buy a computer that is twice as fast and
 try to solve a bigger Towers of Hanoi problem in a given amount of
 time.
-Because its complexity is <math>\Theta(2^n)</math>, we can solve a problem
+Because its complexity is <title_reference>Theta(2^n)</title_reference>, we can solve a problem
 only one disk bigger!
 There is no multiplicative factor, and this is true for any
 exponential algorithm:
@@ -64,17 +64,17 @@ they can run reasonably large inputs in reasonable time.
 In contrast, most algorithms requiring exponential time are not
 practical to run even for fairly modest sizes of input.
 One could argue that a program with high polynomial degree
-(such as <math>n^{100}</math>) is not practical, while an exponential-time
-program with cost <math>1.001^n</math> is practical.
+(such as <title_reference>n^{100}</title_reference>) is not practical, while an exponential-time
+program with cost <title_reference>1.001^n</title_reference> is practical.
 But the reality is that we know of almost no problems where the best
 polynomial-time algorithm has high degree (they nearly all have
 degree four or less), while almost no exponential-time algorithms
-(whose cost is <math>(O(c^n))</math> have their constant <math>c</math> close to
+(whose cost is <title_reference>(O(c^n))</title_reference> have their constant <title_reference>c</title_reference> close to
 one.
 So there is not much gray area between polynomial and
 exponential time algorithms in practice.</paragraph><paragraph>For the purposes of this Module, we define a <title_reference>hard algorithm</title_reference>
 to be one that runs in exponential time, that is, in
-<math>\Omega(c^n)</math> for some constant <math>c &gt; 1</math>.
+<title_reference>Omega(c^n)</title_reference> for some constant <title_reference>c &gt; 1</title_reference>.
 A definition for a hard <emphasis>problem</emphasis> will be presented soon.</paragraph></section><section ids="the-theory-of-np-completeness" names="the\ theory\ of\ np-completeness"><title>The Theory of NP-Completeness</title><paragraph>Imagine a magical computer that works by guessing the correct
 solution from among all of the possible solutions to a problem.
 Another way to look at this is to imagine a super parallel computer
@@ -104,9 +104,9 @@ Thus, problems in NP are those problems that can be solved
 in polynomial time on a non-deterministic machine.</paragraph><paragraph>Not all problems requiring exponential time on a regular
 computer are in NP.
 For example, Towers of Hanoi is <emphasis>not</emphasis> in NP, because it must
-print out <math>O(2^n)</math> moves for <math>n</math> disks.
+print out <title_reference>O(2^n)</title_reference> moves for <title_reference>n</title_reference> disks.
 A non-deterministic machine cannot "guess" and print the correct
-answer in less time.</paragraph><paragraph>On the other hand, consider the TRAVELING SALESMAN problem.</paragraph><topic><title>Problem</title><paragraph>TRAVELING SALESMAN (1)</paragraph><paragraph><strong>Input:</strong> A complete, directed graph <math>G</math> with
+answer in less time.</paragraph><paragraph>On the other hand, consider the TRAVELING SALESMAN problem.</paragraph><topic><title>Problem</title><paragraph>TRAVELING SALESMAN (1)</paragraph><paragraph><strong>Input:</strong> A complete, directed graph <title_reference>G</title_reference> with
 positive distances assigned to each edge in the graph.</paragraph><paragraph><strong>Output:</strong> The shortest simple cycle that includes every vertex.</paragraph></topic><paragraph>Figure <title_reference>Figure #Sales</title_reference> illustrates this problem.
 Five vertices are shown, with edges and associated costs between each
 pair of edges.
@@ -126,16 +126,16 @@ such cycle.
 However, we can solve a variant of this problem cast in the form
 of a <title_reference>decision problem</title_reference>.
 A decision problem is simply one whose answer is either YES or NO.
-The decision problem form of TRAVELING SALESMAN is as follows.</paragraph><topic><title>Problem</title><paragraph>TRAVELING SALESMAN (2)</paragraph><paragraph><strong>Input:</strong> A complete, directed graph <math>G</math> with
+The decision problem form of TRAVELING SALESMAN is as follows.</paragraph><topic><title>Problem</title><paragraph>TRAVELING SALESMAN (2)</paragraph><paragraph><strong>Input:</strong> A complete, directed graph <title_reference>G</title_reference> with
 positive distances assigned to each edge in the graph, and an
-integer <math>k</math>.</paragraph><paragraph><strong>Output:</strong> YES if there is a simple cycle with total
-distance <math>\leq k</math> containing every vertex in <math>G</math>,
+integer <title_reference>k</title_reference>.</paragraph><paragraph><strong>Output:</strong> YES if there is a simple cycle with total
+distance <title_reference>leq k</title_reference> containing every vertex in <title_reference>G</title_reference>,
 and NO otherwise.</paragraph></topic><paragraph>We can solve this version of the problem in polynomial time with a
 non-deterministic computer.
 The non-deterministic algorithm simply checks all of the possible
 subsets of edges in the graph, in parallel.
 If any subset of the edges is an appropriate cycle of total length
-less than or equal to <math>k</math>, the answer is YES; otherwise the
+less than or equal to <title_reference>k</title_reference>, the answer is YES; otherwise the
 answer is NO.
 Note that it is only necessary that <emphasis>some</emphasis> subset meet the
 requirement; it does not matter how many subsets fail.
@@ -143,7 +143,7 @@ Checking a particular subset is done in polynomial time by adding the
 distances of the edges and verifying that the edges form a cycle that
 visits each vertex exactly once.
 Thus, the checking algorithm runs in polynomial time.
-Unfortunately, there are <math>2^{|{\mathrm E}|}</math> subsets to check,
+Unfortunately, there are <title_reference>2^{|{mathrm E}|}</title_reference> subsets to check,
 so this algorithm cannot be converted to a polynomial time algorithm
 on a regular computer.
 Nor does anybody in the world know of any other polynomial time
@@ -161,14 +161,14 @@ that if anybody ever finds the solution to any one of them that runs
 in polynomial time on a regular computer, then by a series of
 reductions, every other problem that is in NP can also be
 solved in polynomial time on a regular computer!</paragraph><paragraph>Define a problem to be <title_reference>NP-hard</title_reference> if <emphasis>any</emphasis> problem in NP
-can be reduced to <math>X</math> in polynomial time.
-Thus, <math>X</math> is <emphasis>as hard as</emphasis> any problem in NP.
-A problem <math>X</math> is defined to be NP-complete if</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph><math>X</math> is in NP, and</paragraph></list_item><list_item><paragraph><math>X</math> is NP-hard.</paragraph></list_item></enumerated_list><paragraph>The requirement that a problem be NP-hard might seem to be impossible,
+can be reduced to <title_reference>X</title_reference> in polynomial time.
+Thus, <title_reference>X</title_reference> is <emphasis>as hard as</emphasis> any problem in NP.
+A problem <title_reference>X</title_reference> is defined to be NP-complete if</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph><title_reference>X</title_reference> is in NP, and</paragraph></list_item><list_item><paragraph><title_reference>X</title_reference> is NP-hard.</paragraph></list_item></enumerated_list><paragraph>The requirement that a problem be NP-hard might seem to be impossible,
 but in fact there are hundreds of such problems,
 including TRAVELING SALESMAN.
-Another such problem is called K-CLIQUE.</paragraph><topic><title>Problem</title><paragraph>K-CLIQUE</paragraph><paragraph><strong>Input:</strong> An arbitrary undirected graph <math>G</math> and an
-integer <math>k</math>.</paragraph><paragraph><strong>Output:</strong> YES if there is a complete subgraph of at
-least <math>k</math> vertices, and NO otherwise.</paragraph></topic><raw format="xml" xml:space="preserve"><avembed
+Another such problem is called K-CLIQUE.</paragraph><topic><title>Problem</title><paragraph>K-CLIQUE</paragraph><paragraph><strong>Input:</strong> An arbitrary undirected graph <title_reference>G</title_reference> and an
+integer <title_reference>k</title_reference>.</paragraph><paragraph><strong>Output:</strong> YES if there is a complete subgraph of at
+least <title_reference>k</title_reference> vertices, and NO otherwise.</paragraph></topic><raw format="xml" xml:space="preserve"><avembed
     type="ss"
     exer_name="clique"
     long_name="clique"
@@ -216,7 +216,7 @@ an even bigger class of problems because all problems solvable in
 polynomial time are solvable in exponential time.
 Thus, we can view the world of exponential-time-or-better problems in
 terms of Figure <title_reference>Figure #Complex</title_reference>.</paragraph><target refid="complex"></target><raw format="xml" ids="complex" names="complex" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>The most important unanswered question in theoretical computer
-science is whether <math>P = NP</math>.
+science is whether <title_reference>P = NP</title_reference>.
 If they are equal, then there is a polynomial time
 algorithm for TRAVELING SALESMAN and all related problems.
 Because TRAVELING SALESMAN is known to be NP-complete, if a
@@ -225,4 +225,4 @@ polynomial time algorithm were to be found for this problem, then
 time.
 Conversely, if we were able to prove that TRAVELING SALESMAN has an
 exponential time lower bound, then we would know that
-<math>P \neq NP</math>.</paragraph></section></document>
+<title_reference>P neq NP</title_reference>.</paragraph></section></document>

@@ -12,7 +12,7 @@ when the graph is created, but that edges can be added and removed.
 The <literal>init</literal> method sets (or resets) the number of nodes in the graph,
 and creates necessary space for the adjacency matrix or adjacency list.</paragraph><paragraph>Vertices are defined by an integer index value.
 In other words, there is a Vertex 0, Vertex 1, and so on through
-Vertex <math>n-1</math>.
+Vertex <title_reference>n-1</title_reference>.
 We can assume that the graph's client application stores any additional
 information of interest about a given vertex elsewhere, such as a name
 or application-dependent value.
@@ -38,7 +38,7 @@ Again, an edge is identified by its two incident vertices.
 because this value is used to indicate a non-existent edge, nor are
 negative edge weights permitted.
 Functions <literal>getValue</literal> and <literal>setValue</literal> get and set, respectively,
-a requested value for Vertex <math>v</math>.
+a requested value for Vertex <title_reference>v</title_reference>.
 In our example applications the most frequent use of these methods
 will be to indicate whether a given node has previously been visited
 in the process of the algorithm</paragraph><paragraph>Nearly every graph algorithm presented in this chapter will require
@@ -58,13 +58,13 @@ The graph can be built up by using the <literal>addEdge</literal> function
 provided by the ADT.</paragraph><paragraph>Here is an implementation for the adjacency matrix.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>Array <literal>nodeValues</literal> stores the information manipulated by the
 <literal>setValue</literal> and <literal>getValue</literal> functions.
 The edge matrix is implemented as an integer array of size
-<math>n \times n</math> for a graph of <math>n</math> vertices.
-Position <math>(i, j)</math> in the matrix stores the weight for edge
-<math>(i, j)</math> if it exists.
-A weight of zero for edge <math>(i, j)</math> is used to indicate that no
-edge connects Vertices <math>i</math> and <math>j</math>.</paragraph><paragraph>Given a vertex <math>v</math>, the <literal>neighbors</literal> method scans through row
+<title_reference>n times n</title_reference> for a graph of <title_reference>n</title_reference> vertices.
+Position <title_reference>(i, j)</title_reference> in the matrix stores the weight for edge
+<title_reference>(i, j)</title_reference> if it exists.
+A weight of zero for edge <title_reference>(i, j)</title_reference> is used to indicate that no
+edge connects Vertices <title_reference>i</title_reference> and <title_reference>j</title_reference>.</paragraph><paragraph>Given a vertex <title_reference>v</title_reference>, the <literal>neighbors</literal> method scans through row
 <literal>v</literal> of the matix to locate the positions of the various neighbors.
-If no edge is incident on <math>v</math>, then returned neighbor array will
+If no edge is incident on <title_reference>v</title_reference>, then returned neighbor array will
 have length 0.
 Functions <literal>addEdge</literal> and <literal>removeEdge</literal> adjust the
 appropriate value in the array.
@@ -81,4 +81,4 @@ in principle, with the key functions being <literal>addEdge</literal>,
 They simply start at the beginning of the adjacency list and move
 along it until the desired vertex has been found.
 Private method find is a utility for finding the last edge preceding
-the one that holds vertex <math>v</math> if that exists.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw></document>
+the one that holds vertex <title_reference>v</title_reference> if that exists.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw></document>

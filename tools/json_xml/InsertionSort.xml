@@ -15,7 +15,7 @@ For each iteration, the current record is inserted in turn at the
 correct position within a sorted list composed of those records
 already processed.
 Here is an implementation.
-The input is an array named <literal>A</literal> that stores <math>n</math> records.</paragraph><target refid="introduction"></target><raw format="xml" ids="introduction" names="introduction" xml:space="preserve"><codeinclude>null</codeinclude></raw><target refid="practice"></target><paragraph ids="practice" names="practice">(Note that to make the explanation for these sorting algorithms as
+The input is an array named <literal>A</literal> that stores <title_reference>n</title_reference> records.</paragraph><target refid="introduction"></target><raw format="xml" ids="introduction" names="introduction" xml:space="preserve"><codeinclude>null</codeinclude></raw><target refid="practice"></target><paragraph ids="practice" names="practice">(Note that to make the explanation for these sorting algorithms as
 simple as possible, our visualizations will show the array as though
 it stored simple integers rather than more complex records.
 But you should realize that in practice, there is rarely any point
@@ -34,11 +34,11 @@ The sorting algorithms will simply assume that the records are
     threshold="1.0">
 </inlineav>
 </raw><paragraph>This continues on with each record in turn.
-Call the current record <math>x</math>.
+Call the current record <title_reference>x</title_reference>.
 Insertion Sort will move it to the left so
 long as its value is less than that of the record immediately
 preceding it.
-As soon as a key value less than or equal to <math>x</math> is
+As soon as a key value less than or equal to <title_reference>x</title_reference> is
 encountered, <literal>inssort</literal> is done with that record because all
 records to its left in the array must have smaller keys.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="ss"
@@ -101,10 +101,10 @@ Each time through the inner <literal>for</literal> loop yields both a
 comparison and a swap, except the last (i.e., the comparison that
 fails the inner <literal>for</literal> loop's test), which has no swap.
 Thus, the number of swaps for the entire sort operation is
-<math>n-1</math> less than the number of comparisons.
-This is 0 in the best case, and <math>\Theta(n^2)</math> in the
+<title_reference>n-1</title_reference> less than the number of comparisons.
+This is 0 in the best case, and <title_reference>Theta(n^2)</title_reference> in the
 average and worst cases.</paragraph><paragraph>Later we will see algorithms whose growth rate is much
-better than <math>\Theta(n^2)</math>.
+better than <title_reference>Theta(n^2)</title_reference>.
 Thus for larger arrays, Insertion Sort will not be so good a
 performer as other algorithms.
 So Insertion Sort is not the best sorting algorithm to use in most

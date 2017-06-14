@@ -15,7 +15,7 @@ Each subclass then implements its own appropriate behavior for its
 role in a traversal.
 The whole traversal process is called by invoking <literal>traverse</literal>
 on the root node, which in turn invokes <literal>traverse</literal> on its
-children.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><comment xml:space="preserve">.. inlineav:: compositeTraversalCON ss</comment><comment xml:space="preserve">:output: show</comment><paragraph>When comparing the composite implementation to
+children.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><comment xml:space="preserve">.. inlineav:: compositeTraversalCON ss</comment><comment xml:space="preserve">show</comment><paragraph>When comparing the composite implementation to
 the <title_reference>procedural approach &lt;procedural&gt; &lt;BinaryTreeImpl&gt;</title_reference>,
 each has advantages and disadvantages.
 The non-composite approach does not require that the node classes know

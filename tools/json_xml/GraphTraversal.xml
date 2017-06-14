@@ -46,12 +46,12 @@ we can continue the traversal from another unvisited vertex.
 Note that this process works regardless of whether the graph is
 directed or undirected.
 To ensure visiting all vertices, <literal>graphTraverse</literal> could be called
-as follows on a graph <math>\mathbf{G}</math>:</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>Function <literal>doTraversal</literal> might be implemented by using
+as follows on a graph <title_reference>mathbf{G}</title_reference>:</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>Function <literal>doTraversal</literal> might be implemented by using
 one of the graph traversals described next.</paragraph></section><section ids="depth-first-search" names="depth-first\ search"><title>Depth-First Search</title><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>The first method of organized graph traversal is called
 <title_reference>depth-first search</title_reference> (DFS).
-Whenever a vertex <math>v</math> is visited during the search,
-DFS will recursively visit all of <math>v</math> 's unvisited neighbors.
-Equivalently, DFS will add all edges leading out of <math>v</math> to a
+Whenever a vertex <title_reference>v</title_reference> is visited during the search,
+DFS will recursively visit all of <title_reference>v</title_reference> 's unvisited neighbors.
+Equivalently, DFS will add all edges leading out of <title_reference>v</title_reference> to a
 stack.
 The next vertex to be visited is determined by popping the stack and
 following that edge.
@@ -86,7 +86,7 @@ it, resulting in a depth-first search tree.</paragraph><raw format="xml" xml:spa
 In an undirected graph, DFS processes each edge from both
 directions.
 Each vertex must be visited, but only once, so the total cost is
-<math>\Theta(|\mathbf{V}| + |\mathbf{E}|)</math>.</paragraph><paragraph>Here is an exercise to practice DFS.</paragraph><raw format="xml" xml:space="preserve"><avembed
+<title_reference>Theta(|mathbf{V}| + |mathbf{E}|)</title_reference>.</paragraph><paragraph>Here is an exercise to practice DFS.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="pe"
     exer_name="graphDFSPE"
     long_name="graphDFSPE"

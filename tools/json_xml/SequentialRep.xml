@@ -15,7 +15,7 @@ list, processing nodes sequentially in whatever order they are stored
 until the desired node is reached.
 Thus, one primary virtue of the other implementations discussed in
 this section is lost: efficient access
-(typically <math>\Theta(\log n)</math> time) to arbitrary nodes in the
+(typically <title_reference>Theta(log n)</title_reference> time) to arbitrary nodes in the
 tree.
 Sequential tree implementations are ideal for archiving trees on disk
 for later use because they save space, and the tree structure can
@@ -95,13 +95,13 @@ However, any sequential implementation must recognize when a leaf node
 has been reached, that is, a leaf node indicates the end of a subtree.
 One way to do this is to explicitly list with each node whether it is
 an internal node or a leaf.
-If a node <math>X</math> is an internal node, then we know that its two
-children (which may be subtrees) immediately follow <math>X</math> in the
+If a node <title_reference>X</title_reference> is an internal node, then we know that its two
+children (which may be subtrees) immediately follow <title_reference>X</title_reference> in the
 node list.
-If <math>X</math> is a leaf node, then the next node in the list is the
-right child of some ancestor of <math>X</math>, not the right child
-of <math>X</math>.
-In particular, the next node will be the child of <math>X</math> 's most
+If <title_reference>X</title_reference> is a leaf node, then the next node in the list is the
+right child of some ancestor of <title_reference>X</title_reference>, not the right child
+of <title_reference>X</title_reference>.
+In particular, the next node will be the child of <title_reference>X</title_reference> 's most
 recent ancestor that has not yet seen its right child.
 However, this assumes that each internal node does in fact have two
 children, in other words, that the tree is
@@ -120,8 +120,8 @@ implementation, and so requires less overhead.</paragraph><raw format="xml" xml:
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>Storing <math>n</math> extra bits can be a considerable savings over
-storing <math>n</math> <literal>null</literal> values.
+</raw><paragraph>Storing <title_reference>n</title_reference> extra bits can be a considerable savings over
+storing <title_reference>n</title_reference> <literal>null</literal> values.
 In the example above, each node was shown with a
 mark if it is internal, or no mark if it is a leaf.
 This requires that each node value has space to store the mark bit.
@@ -188,8 +188,8 @@ general tree with at most two children.
 Every binary tree node has a left and a right child, though either or
 both might be empty.
 So this representation cannot let us distinguish whether node
-<math>D</math> in Figure <title_reference>Figure #BinExampb</title_reference> is the left or right
-child of node <math>B</math>.</paragraph><raw format="xml" xml:space="preserve"><avembed
+<title_reference>D</title_reference> in Figure <title_reference>Figure #BinExampb</title_reference> is the left or right
+child of node <title_reference>B</title_reference>.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="ka"
     exer_name="SequentialTreeGenTreePRO"
     long_name="SequentialTreeGenTreePRO"

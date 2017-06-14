@@ -7,7 +7,7 @@ The BST requires more space than the other sorting methods and will
 be slower than Quicksort or Mergesort due to the relative expense of
 inserting values into the tree.
 There is also the possibility that the BST might be unbalanced,
-leading to a <math>\Theta(n^2)</math> worst-case running time.
+leading to a <title_reference>Theta(n^2)</title_reference> worst-case running time.
 Subtree balance in the BST is closely related to Quicksort's partition
 step.
 Quicksort's pivot serves roughly the same purpose as the BST root
@@ -28,7 +28,7 @@ The complete binary tree is balanced, its array representation is
 space efficient, and we can load all values into the tree at once,
 taking advantage of the efficient <literal>buildheap</literal> function.
 The asymptotic performance of Heapsort when all of the records have
-unique key values is <math>\Theta(n \log n)</math> in the best, average,
+unique key values is <title_reference>Theta(n log n)</title_reference> in the best, average,
 and worst cases.
 It is not as fast as Quicksort in the average case (by a constant
 factor), but Heapsort has special properties that will make it
@@ -72,14 +72,14 @@ Can you reproduce its behavior?</paragraph><raw format="xml" xml:space="preserve
 than Quicksort's series of partitions), Heapsort
 has one special advantage over the other sorts studied so far.
 Building the heap is relatively cheap, requiring
-<math>\Theta(n)</math> time.
+<title_reference>Theta(n)</title_reference> time.
 Removing the maximum-valued record from the heap requires
-<math>\Theta(\log n)</math> time.
-Thus, if we wish to find the <math>k</math> records with the largest
+<title_reference>Theta(log n)</title_reference> time.
+Thus, if we wish to find the <title_reference>k</title_reference> records with the largest
 key values in an array, we can do so in time
-<math>\Theta(n + k \log n)</math>.
-If <math>k</math> is small, this is a substantial improvement over the time
-required to find the <math>k</math> largest-valued records using one of the
+<title_reference>Theta(n + k log n)</title_reference>.
+If <title_reference>k</title_reference> is small, this is a substantial improvement over the time
+required to find the <title_reference>k</title_reference> largest-valued records using one of the
 other sorting methods described earlier (many of which would require
 sorting all of the array first).
 One situation where we are able to take advantage of this concept is

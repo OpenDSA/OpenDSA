@@ -27,9 +27,9 @@ from first principles.
 Our most  significant example of a lower bounds argument so far is the
 <title_reference>sorting lower bound proof &lt;sorting lower bound&gt; &lt;SortingLowerBound&gt;</title_reference>,
 which shows that the problem of sorting has a lower bound of
-<math>O(n \log n)</math> in the <title_reference>worst case</title_reference>.</paragraph><paragraph>The lower bound for the problem is the tightest (highest) lower bound
+<title_reference>O(n log n)</title_reference> in the <title_reference>worst case</title_reference>.</paragraph><paragraph>The lower bound for the problem is the tightest (highest) lower bound
 that we can prove <strong>for all possible algorithms</strong> that solve the
-problem. <footnote_reference auto="1" ids="id1" refid="id2">1</footnote_reference>
+problem.
 This can be a difficult bar, given that we cannot possibly know all
 algorithms for any problem, because there are theoretically an
 infinite number.
@@ -37,10 +37,10 @@ However, we can often recognize a simple lower bound based on the
 amount of input that must be examined.
 For example, we can argue that the lower bound for any algorithm to
 find the maximum-valued element in an unsorted list must be
-<math>\Omega(n)</math> because any algorithm must examine all of the inputs
+<title_reference>Omega(n)</title_reference> because any algorithm must examine all of the inputs
 to be sure that it actually finds the maximum value.</paragraph><paragraph>In the case of maximum finding, the fact that we know of a simple
-algorithm that runs in <math>O(n)</math> time, combined with the fact that
-any algorithm needs <math>\Omega(n)</math> time, is significant.
+algorithm that runs in <title_reference>O(n)</title_reference> time, combined with the fact that
+any algorithm needs <title_reference>Omega(n)</title_reference> time, is significant.
 Because our upper and lower bounds meet (within a constant factor),
 we know that we indeed have a "good" algorithm for solving the
 problem.
@@ -56,64 +56,64 @@ merely a "tuning" of Mergesort either.
 Quicksort is a substantially different approach to sorting.
 So even when our upper and lower bounds for a problem meet,
 there are still benefits to be gained from a new, clever algorithm.</paragraph></section><section ids="analyzing-problems" names="analyzing\ problems"><title>Analyzing Problems</title><paragraph>Our first example for analyzing a problem was Towers of Hanoi.
-This had the advantage that for a given input size <math>n</math>, there
-was only one input (the value <math>n</math>).
+This had the advantage that for a given input size <title_reference>n</title_reference>, there
+was only one input (the value <title_reference>n</title_reference>).
 Of course, this is not always true.
 For example, there are a number of ways to think about the input to
-the problem of finding the maximum value in an array of <math>n</math>
+the problem of finding the maximum value in an array of <title_reference>n</title_reference>
 records.
-We could consider an array of <math>n</math> arbitrary values,
-in which there are an infinite number of inputs of size <math>n</math>.
+We could consider an array of <title_reference>n</title_reference> arbitrary values,
+in which there are an infinite number of inputs of size <title_reference>n</title_reference>.
 It might be hard for us to understand the analysis of some problem if
 we cannot even enumerate all of the possible inputs.
 So we might prefer a simpler model that we believe will not change the
 underlying behavor.
 For example, we could assume that the input is some permutation of the
-values from 1 to <math>n</math>.
+values from 1 to <title_reference>n</title_reference>.
 While we probably do not want to restrict our find algorithm to such
 input, if all we care about for analysis purposes is the position of
 the biggest value within the array, then a permutation of the values
-from 1 to <math>n</math> might make it easier for us to think through all
+from 1 to <title_reference>n</title_reference> might make it easier for us to think through all
 of the possibilities.</paragraph><paragraph>Another complicating factor that might or might not arise is that
 different inputs of a given size might have different costs.
 For example, we probably realize that to find the maximum value in the
 array, we need to look at all values of the array.
 So, the order of the values does not really affect the time required.
 However, consider if our problem is to find where in the array the
-record with value <math>X</math> appears, if any such record exists.
-Now, not only are there many possible inputs of size <math>n</math>, but
+record with value <title_reference>X</title_reference> appears, if any such record exists.
+Now, not only are there many possible inputs of size <title_reference>n</title_reference>, but
 those inputs have different costs when using, for example, a simple
 sequential search from the start of the array.
 This is why we need the concepts of best, average, and worst case
 inputs.</paragraph><paragraph>To make things even worse, the cost to solve the problem for a
 given input depends on the algorithm that we use!
-For example, which input of size <math>n</math> is the worst is different
+For example, which input of size <title_reference>n</title_reference> is the worst is different
 for the algorithm that moves sequentially through the array from the
 start to the end, as opposed to the algorithm that moves sequentially
 through the array from the end to the start.</paragraph><paragraph>The <title_reference>worst-case cost &lt;worst case&gt;</title_reference> (for all input of size $n$)
 is the maximum cost for the algorithm over all problem instances of
-size <math>n</math>.
+size <title_reference>n</title_reference>.
 The <title_reference>best-case cost &lt;best case&gt;</title_reference> (for all input of size $n$)
 is the minimum cost for the algorithm over all problem instances of
-size <math>n</math>.
+size <title_reference>n</title_reference>.
 It is possible that the {best, worst} case cost changes
-radically with <math>n</math>.
-That is, even <math>n</math> might have a very different cost from odd
-<math>n</math>.</paragraph><paragraph>We will use the following notation at varous times this semester.
-<math>\mathcal{A}</math> is an algorithm.
-<math>I_n</math> is the set of all possible inputs to <math>\mathcal{A}</math>
-of size <math>n</math>.
-<math>I</math> is an input in <math>I_n</math>.
-<math>f_\mathcal{A}</math> is a function that expresses the resource cost
-of algorithm <math>\mathcal{A}</math>.
+radically with <title_reference>n</title_reference>.
+That is, even <title_reference>n</title_reference> might have a very different cost from odd
+<title_reference>n</title_reference>.</paragraph><paragraph>We will use the following notation at varous times this semester.
+<title_reference>mathcal{A}</title_reference> is an algorithm.
+<title_reference>I_n</title_reference> is the set of all possible inputs to <title_reference>mathcal{A}</title_reference>
+of size <title_reference>n</title_reference>.
+<title_reference>I</title_reference> is an input in <title_reference>I_n</title_reference>.
+<title_reference>f_mathcal{A}</title_reference> is a function that expresses the resource cost
+of algorithm <title_reference>mathcal{A}</title_reference>.
 Using this notation, we can define the worst and best case costs as:</paragraph><math_block xml:space="preserve">\mbox{worst cost}(\mathcal{A}) = \max_{I \in I_n}
 f_{\mathcal{A}}(I).</math_block><math_block xml:space="preserve">\mbox{best cost}(\mathcal{A}) = \min_{I \in I_n}
-f_{\mathcal{A}}(I).</math_block><paragraph>This point that we are considering all of the inputs of size <math>n</math>
+f_{\mathcal{A}}(I).</math_block><paragraph>This point that we are considering all of the inputs of size <title_reference>n</title_reference>
 is crucial.
-In other words, we don't pick the <math>n</math> for which the best
+In other words, we don't pick the <title_reference>n</title_reference> for which the best
 (or worst) case occurs.
 So it would be wrong to say something like
-"The best case is when <math>n=1</math>."</paragraph><raw format="xml" xml:space="preserve"><inlineav
+"The best case is when <title_reference>n=1</title_reference>."</paragraph><raw format="xml" xml:space="preserve"><inlineav
     type="dgm"
     exer_name="SimpleCostsCON"
     long_name="SimpleCostsCON"
@@ -127,11 +127,11 @@ We might model this as half way between the best and worst case costs,
 but this is not often correct.
 (Think about what circumstances would make it correct, and some
 situations where it would not be correct.)
-To account for the true average cost for input of size <math>n</math>,
+To account for the true average cost for input of size <title_reference>n</title_reference>,
 we have to consider the entire collection of such inputs.
 For each one of these, we need its relative frequency, and its cost.
 Frequencies for inputs can be hard to determine!
-For example, the average cost of sequential search is <math>(n+1)/2</math>,
+For example, the average cost of sequential search is <title_reference>(n+1)/2</title_reference>,
 but <strong>only</strong> if every position of the array is equally likely to hold
 the value that we are looking for.
 And what do we do about the situation where the value is not even in
@@ -147,19 +147,19 @@ theory) algorithms that solve the problem.
 Recall that to analyze any problem, we have to define a model that
 includes the definition for problem size and the definition for
 solution cost.
-Call such a model <math>\mathcal{M}</math>.
-Then, <math>\mathcal{A_M}</math> is the set of all algorithms that solve
-the problem under model <math>\mathcal{M}</math>.
+Call such a model <title_reference>mathcal{M}</title_reference>.
+Then, <title_reference>mathcal{A_M}</title_reference> is the set of all algorithms that solve
+the problem under model <title_reference>mathcal{M}</title_reference>.
 Then, the lower bound of a problem in the <strong>worst case</strong> is:</paragraph><math_block xml:space="preserve">\min_{{\mathcal A} \in {\mathcal A}_M} \left\{
 \max_{I \in I_n} f_{\mathcal A}(I)\right\}</math_block><section ids="modeling-the-inputs" names="modeling\ the\ inputs"><title>Modeling the Inputs</title><paragraph>Especially when trying to come to grips with what the average case
 cost of the algorithm will be, it might be easier to think about what
 is going on if we simplify the model that we use for the class of
 inputs that we are considering.</paragraph><paragraph>Think about the seemingly simple problem of finding the value
-<math>X</math> in an (unsorted) array of <math>n</math> records.
+<title_reference>X</title_reference> in an (unsorted) array of <title_reference>n</title_reference> records.
 What are the inputs to this problem?
-Of course, an array of <math>n</math> records!
+Of course, an array of <title_reference>n</title_reference> records!
 But what does that mean if we try to enumerate all of the inputs of
-size <math>n</math>?
+size <title_reference>n</title_reference>?
 How many such inputs are there?</paragraph><paragraph>Well, if each position in the array can take any value, then there are
 an infinite number of values for each position.
 Even if we restrict these values to something like a 64-bit integer,
@@ -167,34 +167,34 @@ it is still a lot of possibilities to consider!</paragraph><paragraph>Given the 
 inputs, we might want to consider instead analyzing a simpler set of
 inputs.
 For example, we might decide to only consider (for analysis purposes)
-that the input is a permuation of the numbers 1 to <math>n</math>.
+that the input is a permuation of the numbers 1 to <title_reference>n</title_reference>.
 The argument here might be that we don't care about the actual values
-in the array. We only care about whether a given value is <math>X</math> or
+in the array. We only care about whether a given value is <title_reference>X</title_reference> or
 not, and so we can simplify the inputs that we consider.</paragraph><paragraph>There are two dangers that we have to be aware of when doing such a
 simplification.
 First, our simplification has to still reflect reality.
-If we simplify an array of <math>n</math> numbers as a permutation of the
-numbers 1 to <math>n</math>, then we eliminate the inputs that have
+If we simplify an array of <title_reference>n</title_reference> numbers as a permutation of the
+numbers 1 to <title_reference>n</title_reference>, then we eliminate the inputs that have
 duplicates.
 That might make for a wrong analysis.
 Second, we have to separate the issue of inputs for the purpose of
 analysis from inputs for the purpose of solving a problem.
 In the case of sorting, we might want to analyze behavior on a
-collection of <math>n</math> records each with a unique key value.
+collection of <title_reference>n</title_reference> records each with a unique key value.
 Since we don't care about the actual key values, we might simplify
 this to some permuation of a set of records with key values 1 to
-<math>n</math>.
+<title_reference>n</title_reference>.
 But, sorting a collection of records whose keys are known to be a
-permuation of the values 1 to <math>n</math> is much simpler than sorting a
-collection of <math>n</math> arbitrary records!
+permuation of the values 1 to <title_reference>n</title_reference> is much simpler than sorting a
+collection of <title_reference>n</title_reference> arbitrary records!
 For example, we can sort the permutation in linear time with a simple
-Binsort.</paragraph><paragraph>Going back to the example of finding value <math>X</math> in an array of
-<math>n</math> records,
+Binsort.</paragraph><paragraph>Going back to the example of finding value <title_reference>X</title_reference> in an array of
+<title_reference>n</title_reference> records,
 we might want to consider a model that only considers the position of
-the first occcurance of <math>X</math> in the array.
-In other words, we lump all inputs whose first occurance of <math>X</math>
+the first occcurance of <title_reference>X</title_reference> in the array.
+In other words, we lump all inputs whose first occurance of <title_reference>X</title_reference>
 is in the first position into one input.
-All inputs whose first occurance of <math>X</math> is in the second
+All inputs whose first occurance of <title_reference>X</title_reference> is in the second
 position is another input.
 And so on.
 Then we can analyze the cost only for those "groups" of inputs that we
@@ -202,8 +202,8 @@ care about.
 Of course, we might have difficulty deciding what the proper
 frequencies are for each of these synthetic input groups.
 Perhaps it is reasonable to say that each position in the array has
-equal probability of holding the first occurrance of <math>X</math>.
-Or perhaps it is not.</paragraph><footnote auto="1" backrefs="id1" ids="id2" names="1"><label>1</label><paragraph>Throughout this discussion, it should be
+equal probability of holding the first occurrance of <title_reference>X</title_reference>.
+Or perhaps it is not.</paragraph><footnote auto="1" ids="id1" names="1"><label>1</label><paragraph>Throughout this discussion, it should be
 understood that any mention of bounds must specify what class
 of inputs are being considered.
 Do we mean the bound for the worst case input?

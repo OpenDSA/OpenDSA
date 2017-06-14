@@ -13,24 +13,24 @@ For any Huffman tree built by function <literal>buildHuff</literal> containing a
 least two letters, the two letters with least frequency are stored
 in sibling nodes whose depth is at least as deep as any other leaf
 nodes in the tree.</paragraph><paragraph><strong>Proof:</strong>
-Call the two letters with least frequency <math>l_1</math>
-and <math>l_2</math>.
+Call the two letters with least frequency <title_reference>l_1</title_reference>
+and <title_reference>l_2</title_reference>.
 They must be siblings because <literal>buildHuff</literal>
 selects them in the first step of the construction process.
-Assume that <math>l_1</math> and <math>l_2</math> are
+Assume that <title_reference>l_1</title_reference> and <title_reference>l_2</title_reference> are
 not the deepest nodes in the tree.
 In this case, the Huffman tree must either look as shown in
 Figure <title_reference>Figure #HProof</title_reference>, or effectively symmetrical to
 this.
-For this situation to occur, the parent of <math>l_1</math>
-and <math>l_2</math>,
-labeled <math>V</math>, must have greater weight than the node
-labeled <math>X</math>.
+For this situation to occur, the parent of <title_reference>l_1</title_reference>
+and <title_reference>l_2</title_reference>,
+labeled <title_reference>V</title_reference>, must have greater weight than the node
+labeled <title_reference>X</title_reference>.
 Otherwise, function <literal>buildHuff</literal> would have selected node
-<math>V</math> in place of node <math>X</math> as the child of node
-<math>U</math>.
-However, this is impossible because <math>l_1</math> and
-<math>l_2</math> are the letters with least frequency.</paragraph><target refid="hproof"></target><raw format="xml" ids="hproof" names="hproof" xml:space="preserve"><inlineav
+<title_reference>V</title_reference> in place of node <title_reference>X</title_reference> as the child of node
+<title_reference>U</title_reference>.
+However, this is impossible because <title_reference>l_1</title_reference> and
+<title_reference>l_2</title_reference> are the letters with least frequency.</paragraph><target refid="hproof"></target><raw format="xml" ids="hproof" names="hproof" xml:space="preserve"><inlineav
     type="dgm"
     exer_name="HuffProofCON"
     long_name="HuffProofCON"
@@ -41,32 +41,32 @@ However, this is impossible because <math>l_1</math> and
 </raw><paragraph>Here is the proof.</paragraph><block_quote><paragraph><strong>Theorem:</strong>
 Function <literal>buildHuff</literal> builds the Huffman tree with the minimum
 external path weight for the given set of letters.</paragraph><paragraph><strong>Proof:</strong>
-The proof is by induction on <math>n</math>, the number of letters.</paragraph><bullet_list bullet="*"><list_item><paragraph><strong>Base Case:</strong> For <math>n = 2</math>, the Huffman tree must have the
+The proof is by induction on <title_reference>n</title_reference>, the number of letters.</paragraph><bullet_list bullet="*"><list_item><paragraph><strong>Base Case:</strong> For <title_reference>n = 2</title_reference>, the Huffman tree must have the
 minimum external path weight because there are only two possible
 trees, each with identical weighted path lengths for the two
 leaves.</paragraph></list_item><list_item><paragraph><strong>Induction Hypothesis:</strong> Assume that any tree created by
-<literal>buildHuff</literal> that contains <math>n-1</math> leaves has minimum
-external path length.</paragraph></list_item><list_item><paragraph><strong>Induction Step:</strong> Given a Huffman tree <math>\mathbf{T}</math>
-built by <literal>buildHuff</literal> with <math>n</math> leaves,
-<math>n \geq 2</math>, suppose that
-<math>w_1 \leq w_2 \leq ... \leq w_n</math> where
-<math>w_1</math> to <math>w_n</math> are the weights of the letters.
-Call <math>V</math> the parent of the letters with frequencies
-<math>w_1</math> and <math>w_2</math>.
+<literal>buildHuff</literal> that contains <title_reference>n-1</title_reference> leaves has minimum
+external path length.</paragraph></list_item><list_item><paragraph><strong>Induction Step:</strong> Given a Huffman tree <title_reference>mathbf{T}</title_reference>
+built by <literal>buildHuff</literal> with <title_reference>n</title_reference> leaves,
+<title_reference>n geq 2</title_reference>, suppose that
+<title_reference>w_1 leq w_2 leq ... leq w_n</title_reference> where
+<title_reference>w_1</title_reference> to <title_reference>w_n</title_reference> are the weights of the letters.
+Call <title_reference>V</title_reference> the parent of the letters with frequencies
+<title_reference>w_1</title_reference> and <title_reference>w_2</title_reference>.
 From the lemma, we know that the leaf nodes containing the
-letters with frequencies <math>w_1</math> and <math>w_2</math> are as
-deep as any nodes in <math>\mathbf{T}</math>.
+letters with frequencies <title_reference>w_1</title_reference> and <title_reference>w_2</title_reference> are as
+deep as any nodes in <title_reference>mathbf{T}</title_reference>.
 If any other leaf nodes in the tree were deeper, we could reduce
-their weighted path length by swapping them with <math>w_1</math> or
-<math>w_2</math>.
+their weighted path length by swapping them with <title_reference>w_1</title_reference> or
+<title_reference>w_2</title_reference>.
 But the lemma tells us that no such deeper nodes exist.
-Call <math>\mathbf{T}'</math> the Huffman tree that is
-identical to <math>\mathbf{T}</math> except that node <math>V</math> is
-replaced with a leaf node <math>V'</math> whose weight is
-<math>w_1 + w_2</math>.
-By the induction hypothesis, <math>\mathbf{T}'</math> has minimum
+Call <title_reference>mathbf{T}'</title_reference> the Huffman tree that is
+identical to <title_reference>mathbf{T}</title_reference> except that node <title_reference>V</title_reference> is
+replaced with a leaf node <title_reference>V'</title_reference> whose weight is
+<title_reference>w_1 + w_2</title_reference>.
+By the induction hypothesis, <title_reference>mathbf{T}'</title_reference> has minimum
 external path length.
-Returning the children to <math>V'</math> restores tree
-<math>\mathbf{T}</math>, which must also have minimum external path
+Returning the children to <title_reference>V'</title_reference> restores tree
+<title_reference>mathbf{T}</title_reference>, which must also have minimum external path
 length.</paragraph></list_item></bullet_list><paragraph>Thus by mathematical induction, function <literal>buildHuff</literal> creates
 the Huffman tree with minimum external path length.</paragraph></block_quote><raw format="xml" xml:space="preserve"><todo>null</todo></raw><raw format="xml" xml:space="preserve"><odsascript>AV/Binary/HuffProofCON.js</odsascript></raw></document>

@@ -26,31 +26,31 @@ whereas in object-oriented programming it is to break down a programming task in
 The most important distinction is that while procedural programming uses procedures
 to operate on data structures, object-oriented programming bundles the two together,
 so an <strong>object</strong>, which is an <strong>instance of a class</strong>, operates on its "own" data structure.</paragraph><section ids="principles-of-object-oriented-programming" names="principles\ of\ object\ oriented\ programming"><title>Principles of Object Oriented Programming</title><paragraph>There are many views on the main features and motivations for object
-oriented programming <footnote_reference auto="1" ids="id2" refid="id4">1</footnote_reference> <footnote_reference auto="1" ids="id3" refid="id5">2</footnote_reference>.
-There are 4 principles that apply to most:</paragraph><field_list><field><field_name>Encapsulation</field_name><field_body><paragraph>Encapsulation refers to the creation of self-contained modules (classes)
+oriented programming .
+There are 4 principles that apply to most:</paragraph><block_quote><paragraph>Encapsulation refers to the creation of self-contained modules (classes)
 that bind processing functions to its data members.
 The data within each class is kept private.
 Each class defines rules for what is publicly visible and
-what modifications are allowed.</paragraph></field_body></field><field><field_name>Inheritance</field_name><field_body><paragraph>Classes may be created in hierarchies, and inheritance lets the
+what modifications are allowed.</paragraph><paragraph>Classes may be created in hierarchies, and inheritance lets the
 structure and methods in one class pass down the <title_reference>class hierarchy</title_reference>.
 By <emphasis>inheriting</emphasis> code, complex behaviors emerge
 through the reuse of code in a parent class.
 If a step is added at the bottom of a hierarchy,
 only the processing and data associated with that unique step must be added.
 Everything else above that step may be inherited.
-Reuse is considered a major advantage of object orientation.</paragraph></field_body></field><field><field_name>Polymorphism</field_name><field_body><paragraph>Object oriented programming lets programmers create procedures for
+Reuse is considered a major advantage of object orientation.</paragraph><paragraph>Object oriented programming lets programmers create procedures for
 objects whose exact type is not known until runtime.
 For example, a screen cursor may change its shape from an arrow to a
 line depending on the program mode.
 The routine to move the cursor on screen in response to mouse movement can
 be written for "cursor", and polymorphism lets that cursor take simulating
 system behaviour.
-It can be also described as many shapes of same object.</paragraph></field_body></field><field><field_name>Abstraction</field_name><field_body><paragraph>An abstraction denotes the essential characteristics of an object that distinguish it from all
+It can be also described as many shapes of same object.</paragraph><paragraph>An abstraction denotes the essential characteristics of an object that distinguish it from all
 other kinds of object and thus provide crisply defined conceptual
 boundaries, relative to the perspective of the viewer.</paragraph><paragraph>Abstraction denotes a model, a view, or some other focused representation
 for an actual item. Its the development of a software object to represent
 an object we can find in the real world.
-Encapsulation hides the details of that implementation.</paragraph></field_body></field></field_list><footnote auto="1" backrefs="id2" ids="id4" names="1"><label>1</label><paragraph><reference name="Wikipedia OO fundamental concepts" refuri="https://en.wikipedia.org/wiki/Object-oriented_programming#Fundamental_features_and_concepts">Wikipedia OO fundamental concepts</reference><target ids="wikipedia-oo-fundamental-concepts" names="wikipedia\ oo\ fundamental\ concepts" refuri="https://en.wikipedia.org/wiki/Object-oriented_programming#Fundamental_features_and_concepts"></target></paragraph></footnote><footnote auto="1" backrefs="id3" ids="id5" names="2"><label>2</label><paragraph><reference name="SOLID" refuri="http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29">SOLID</reference><target ids="solid" names="solid" refuri="http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29"></target> Object oriented design</paragraph></footnote></section><section ids="encapsulation" names="encapsulation"><title>Encapsulation</title><paragraph>Consider the following example:</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>It's clearly a bad idea to allow people to set the shipping weight to a negative value.
+Encapsulation hides the details of that implementation.</paragraph></block_quote><footnote auto="1" ids="id2" names="1"><label>1</label><paragraph><reference name="Wikipedia OO fundamental concepts" refuri="https://en.wikipedia.org/wiki/Object-oriented_programming#Fundamental_features_and_concepts">Wikipedia OO fundamental concepts</reference><target ids="wikipedia-oo-fundamental-concepts" names="wikipedia\ oo\ fundamental\ concepts" refuri="https://en.wikipedia.org/wiki/Object-oriented_programming#Fundamental_features_and_concepts"></target></paragraph></footnote><footnote auto="1" ids="id3" names="2"><label>2</label><paragraph><reference name="SOLID" refuri="http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29">SOLID</reference><target ids="solid" names="solid" refuri="http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29"></target> Object oriented design</paragraph></footnote></section><section ids="encapsulation" names="encapsulation"><title>Encapsulation</title><paragraph>Consider the following example:</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>It's clearly a bad idea to allow people to set the shipping weight to a negative value.
 How can you change this class to prevent problems like this from happening?
 Your only choice is to make the <emphasis>weight</emphasis> private and write a method that allows
 the class to set limits on weight.  But since you have already declared <emphasis>weight</emphasis>

@@ -15,16 +15,16 @@ Typically, each such key has its own one-dimensional index,
 and any given search query searches one of these independent
 indices as appropriate.</paragraph><section ids="multdimensional-keys" names="multdimensional\ keys"><title>Multdimensional Keys</title><paragraph>A multidimensional search key presents a rather different concept.
 Imagine that we have a database of city records, where
-each city has a name and an <math>xy</math> coordinate.
+each city has a name and an <title_reference>xy</title_reference> coordinate.
 A BST or splay tree provides good performance for searches on city
 name, which is a one-dimensional key.
-Separate BSTs could be used to index the <math>x</math> and <math>y</math>
+Separate BSTs could be used to index the <title_reference>x</title_reference> and <title_reference>y</title_reference>
 coordinates.
 This would allow us to insert and delete cities, and locate them by
 name or by one coordinate.
 However, search on one of the two coordinates is not a natural way to
 view search in a two-dimensional space.
-Another option is to combine the <math>xy</math> coordinates into a single
+Another option is to combine the <title_reference>xy</title_reference> coordinates into a single
 key, say by concatenating the two coordinates, and
 index cities by the resulting key in a BST.
 That would allow search by coordinate, but would not allow for an
@@ -53,7 +53,7 @@ The <title_reference>PR quadtree</title_reference> uses
 of <title_reference>trie</title_reference>.
 It is a binary tree only for one-dimensional keys (in which case it
 is a trie with a binary alphabet).
-For <math>d</math> dimensions it has <math>2^d</math> branches.
+For <title_reference>d</title_reference> dimensions it has <title_reference>2^d</title_reference> branches.
 Thus, in two dimensions, the PR quadtree
 has four branches (hence the name "quadtree"), splitting space into
 four equal-sized quadrants at each branch.
@@ -62,4 +62,4 @@ Two other variations on these data structures are the
 <title_reference>point quadtree</title_reference>.
 These four structures cover all four combinations of object versus key
 space decomposition on the one hand, and multi-level binary versus
-<math>2^d</math>-way branching on the other.</paragraph></section></document>
+<title_reference>2^d</title_reference>-way branching on the other.</paragraph></section></document>

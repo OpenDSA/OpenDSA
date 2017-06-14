@@ -31,13 +31,13 @@ Chapter <title_reference>Graphs</title_reference> is an example of such a set re
 </raw><paragraph>If the set fits within a single computer word, then
 set union, intersection,
 and difference can be performed by logical bit-wise operations.
-The union of sets <math>A</math> and <math>B</math> is the bit-wise OR function
+The union of sets <title_reference>A</title_reference> and <title_reference>B</title_reference> is the bit-wise OR function
 (whose symbol is <literal>|</literal> in Java).
-The intersection of sets <math>A</math> and <math>B</math> is the bit-wise AND
+The intersection of sets <title_reference>A</title_reference> and <title_reference>B</title_reference> is the bit-wise AND
 function (whose symbol is <literal>&amp;</literal> in Java).
 For example, if we would like to compute the set of numbers between
 0 and 15 that are both prime and odd numbers, we need only compute the
-expression</paragraph><math_block xml:space="preserve">0011010100010100\ \&amp;\ 0101010101010101.</math_block><paragraph>The set difference <math>A - B</math> can be implemented in Java using
+expression</paragraph><math_block xml:space="preserve">0011010100010100\ \&amp;\ 0101010101010101.</math_block><paragraph>The set difference <title_reference>A - B</title_reference> can be implemented in Java using
 the expression <literal>A&amp;~B</literal> (<literal>~</literal> is the symbol for bit-wise negation).
 For larger sets that do not fit into a single computer word, the
 equivalent operations can be performed in turn on the series of words

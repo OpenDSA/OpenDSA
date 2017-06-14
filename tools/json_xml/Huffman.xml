@@ -13,10 +13,10 @@ For example, the standard <title_reference>ASCII coding &lt;ASCII character codi
 scheme assigns a unique eight-bit value to each character.
 It takes a certain minimum number of bits to provide enough unique
 codes so that we have a different one for each character.
-For example, it takes <math>\left\lceil log\ 128\right\rceil</math>
+For example, it takes <title_reference>leftlceil log128rightrceil</title_reference>
 or seven bits to provide the 128 unique codes needed
-to represent the 128 symbols of the ASCII character set. <footnote_reference auto="1" ids="id2" refid="id3">1</footnote_reference></paragraph><paragraph>The requirement for <math>\left \lceil log\ n \right\rceil</math> bits to
-represent <math>n</math> unique code values assumes that all codes will be
+to represent the 128 symbols of the ASCII character set.</paragraph><paragraph>The requirement for <title_reference>left lceil logn rightrceil</title_reference> bits to
+represent <title_reference>n</title_reference> unique code values assumes that all codes will be
 the same length, as are ASCII codes.
 These are called <title_reference>fixed-length codes &lt;fixed-length coding&gt;</title_reference>.
 If all characters were used equally often, then a fixed-length coding
@@ -64,7 +64,7 @@ compression (there are better methods), Huffman coding gives the
 flavor of such coding schemes.
 One motivation for studying Huffman coding is because it provides our
 first opportunity to see a type of tree structure referred to as a
-<title_reference>search trie</title_reference>.</paragraph><footnote auto="1" backrefs="id2" ids="id3" names="1"><label>1</label><paragraph>To keep things simple, these examples for building Huffman
+<title_reference>search trie</title_reference>.</paragraph><footnote auto="1" ids="id2" names="1"><label>1</label><paragraph>To keep things simple, these examples for building Huffman
 trees uses a <title_reference>sorted list</title_reference> to keep the partial Huffman trees
 ordered by frequency.
 But a real implementation would use a <title_reference>heap</title_reference> to implement a
@@ -90,11 +90,11 @@ minimum sum of weighted path lengths for the given set of leaves.
 A letter with high weight should have low depth, so that it will count
 the least against the total path length.
 As a result, another letter might be pushed deeper in the tree if it
-has less weight.</paragraph><paragraph>The process of building the Huffman tree for <math>n</math> letters is
+has less weight.</paragraph><paragraph>The process of building the Huffman tree for <title_reference>n</title_reference> letters is
 quite simple.
-First, create a collection of <math>n</math> initial Huffman trees,
+First, create a collection of <title_reference>n</title_reference> initial Huffman trees,
 each of which is a single leaf node containing one of the letters.
-Put the <math>n</math> partial trees onto a priority queue
+Put the <title_reference>n</title_reference> partial trees onto a priority queue
 organized by weight (frequency).
 Next, remove the first two trees (the ones with lowest weight) from
 the priority queue.
@@ -110,7 +110,7 @@ been combined into one.</paragraph><target refid="freqexamp"></target><topic ids
 \hline
 \end{array}</math_block></topic><paragraph>The following slideshow illustrates the Huffman tree
 construction process for the eight letters of
-Table <title_reference>Table #FreqExamp</title_reference>. <footnote_reference auto="1" ids="id4" refid="id5">2</footnote_reference></paragraph><raw format="xml" xml:space="preserve"><inlineav
+Table <title_reference>Table #FreqExamp</title_reference>.</paragraph><raw format="xml" xml:space="preserve"><inlineav
     type="ss"
     exer_name="huffmanBuildCON"
     long_name="huffmanBuildCON"
@@ -133,7 +133,7 @@ trees are taken off the heap and placed in variables <literal>temp1</literal> an
 <literal>temp2</literal>.
 A tree is created (<literal>temp3</literal>) such that the left and right subtrees
 are <literal>temp1</literal> and <literal>temp2</literal>, respectively.
-Finally, <literal>temp3</literal> is returned to <literal>fl</literal>.</paragraph><footnote auto="1" backrefs="id4" ids="id5" names="2"><label>2</label><paragraph>ASCII coding actually uses 8 bits per character.
+Finally, <literal>temp3</literal> is returned to <literal>fl</literal>.</paragraph><footnote auto="1" ids="id3" names="2"><label>2</label><paragraph>ASCII coding actually uses 8 bits per character.
 Seven bits are used to represent the 128 codes of the ASCII
 character set.
 The eigth bit as a <title_reference>parity</title_reference> bit, that can be used to
@@ -224,16 +224,16 @@ Letter M has a code length of five, and is expected to appear
 Finally, letters K and Z have code lengths of six,
 and together are expected to appear only 9 times in 306 letters.
 The average expected cost per character is simply the sum of
-the cost for each character (<math>c_i</math>) times the probability of
-its occurring (<math>p_i</math>), or
-<math>c_1 p_1 + c_2 p_2 + \cdots + c_n p_n.</math>
+the cost for each character (<title_reference>c_i</title_reference>) times the probability of
+its occurring (<title_reference>p_i</title_reference>), or
+<title_reference>c_1 p_1 + c_2 p_2 + cdots + c_n p_n.</title_reference>
 This can be reorganized as
-<math>\frac{c_1 f_1 + c_2 f_2 + \cdots + c_n f_n}{f_T}</math>,
-where <math>f_i</math> is the (relative) frequency of letter
-<math>i</math> and <math>f_T</math> is the total for all letter frequencies.
+<title_reference>frac{c_1 f_1 + c_2 f_2 + cdots + c_n f_n}{f_T}</title_reference>,
+where <title_reference>f_i</title_reference> is the (relative) frequency of letter
+<title_reference>i</title_reference> and <title_reference>f_T</title_reference> is the total for all letter frequencies.
 For this set of frequencies, the expected cost per letter is
-<math>[(1 \times 120) + (3 \times 121) + (4 \times 32) + (5 \times 24) + (6 \times 9)]/306 = 785/306 \approx 2.57.</math></paragraph><paragraph>A fixed-length code for these eight characters would require
-<math>\log 8 = 3</math> bits per letter as opposed to about 2.57 bits
+<title_reference>[(1 times 120) + (3 times 121) + (4 times 32) + (5 times 24) + (6 times 9)]/306 = 785/306 approx 2.57.</title_reference></paragraph><paragraph>A fixed-length code for these eight characters would require
+<title_reference>log 8 = 3</title_reference> bits per letter as opposed to about 2.57 bits
 per letter for Huffman coding.
 Thus, Huffman coding is expected to save about 14% for this set of
 letters.</paragraph></topic><paragraph>Huffman coding for all ASCII symbols should do better than this

@@ -23,34 +23,34 @@ Further subroutine calls add to the stack.
 Each return from a subroutine <title_reference>pops &lt;pop&gt;</title_reference> the top activation
 record off the stack.
 As an example, here is a recursive implementation for the factorial
-function.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>Here is an illustration for how the internal processing works.</paragraph><target refid="recurstack"></target><raw format="xml" ids="recurstack" names="recurstack" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph><math>\beta</math> values indicate the address of the program instruction
+function.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>Here is an illustration for how the internal processing works.</paragraph><target refid="recurstack"></target><raw format="xml" ids="recurstack" names="recurstack" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph><title_reference>beta</title_reference> values indicate the address of the program instruction
 to return to after completing the current function call.
 On each recursive function call to <literal>fact</literal>, both the return
 address and the current value of <literal>n</literal> must be saved.
 Each return from <literal>fact</literal> pops the top activation record off the
 stack.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>Consider what happens when we call <literal>fact</literal> with the value 4.
-We use <math>\beta</math> to indicate the address of the program
+We use <title_reference>beta</title_reference> to indicate the address of the program
 instruction where the call to <literal>fact</literal> is made.
-Thus, the stack must first store the address <math>\beta</math>, and the
+Thus, the stack must first store the address <title_reference>beta</title_reference>, and the
 value 4 is passed to <literal>fact</literal>.
 Next, a recursive call to <literal>fact</literal> is made, this time with value 3.
 We will name the program address from which the call is
-made <math>\beta_1</math>.
-The address <math>\beta_1</math>, along with the current value for
-<math>n</math> (which is 4), is saved on the stack.
+made <title_reference>beta_1</title_reference>.
+The address <title_reference>beta_1</title_reference>, along with the current value for
+<title_reference>n</title_reference> (which is 4), is saved on the stack.
 Function <literal>fact</literal> is invoked with input parameter 3.</paragraph><paragraph>In similar manner, another recursive call is made with input
 parameter 2, requiring that the address from which the call is made
-(say <math>\beta_2</math>) and the current value for <math>n</math> (which is 3)
+(say <title_reference>beta_2</title_reference>) and the current value for <title_reference>n</title_reference> (which is 3)
 are stored on the stack.
 A final recursive call with input parameter 1 is made, requiring that
-the stack store the calling address (say <math>\beta_3</math>) and current
+the stack store the calling address (say <title_reference>beta_3</title_reference>) and current
 value (which is 2).</paragraph><paragraph>At this point, we have reached the base case for <literal>fact</literal>, and so
 the recursion begins to unwind.
 Each return from <literal>fact</literal> involves popping the stored value for
-<math>n</math> from the stack, along with the return address from the
+<title_reference>n</title_reference> from the stack, along with the return address from the
 function call.
 The return value for <literal>fact</literal> is multiplied by the restored value
-for <math>n</math>, and the result is returned.</paragraph><paragraph>Because an activation record must be created and placed onto the stack
+for <title_reference>n</title_reference>, and the result is returned.</paragraph><paragraph>Because an activation record must be created and placed onto the stack
 for each subroutine call, making subroutine calls is a relatively
 expensive operation.
 While recursion is often used to make implementation easy and clear,
@@ -58,7 +58,7 @@ sometimes you might want to eliminate the overhead imposed by the
 recursive function calls.
 In some cases, such as the factorial function above,
 recursion can easily be replaced by iteration.</paragraph><target refid="stackfact"></target><topic ids="stackfact" names="stackfact"><title>Example</title><paragraph>As a simple example of replacing recursion with a stack, consider
-the following non-recursive version of the factorial function.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>Here, we simply push successively smaller values of <math>n</math> onto
+the following non-recursive version of the factorial function.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph>Here, we simply push successively smaller values of <title_reference>n</title_reference> onto
 the stack until the base case is reached, then repeatedly pop off
 the stored values and multiply them into the result.</paragraph></topic><paragraph>An iterative form of the factorial function is both
 simpler and faster than the version shown in the example.
@@ -73,8 +73,8 @@ also require recursion.
 Fortunately, it is always possible to imitate recursion with a stack.
 Let us now turn to a non-recursive version of the Towers of
 Hanoi function, which cannot be done iteratively.</paragraph><topic><title>Example</title><paragraph>Here is a recursive implementation for Towers of Hanoi.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><paragraph><literal>TOH</literal> makes two recursive calls:
-one to move <math>n-1</math> rings off the bottom ring, and another to
-move these <math>n-1</math> rings back to the goal pole.
+one to move <title_reference>n-1</title_reference> rings off the bottom ring, and another to
+move these <title_reference>n-1</title_reference> rings back to the goal pole.
 We can eliminate the recursion by using a stack to store a
 representation of the three operations that <literal>TOH</literal> must perform:
 two recursive calls and a move operation.
@@ -91,12 +91,12 @@ information about two poles.
 Thus, there are two constructors: one to store the state when
 imitating a recursive call, and one to store the state for a move
 operation.</paragraph><paragraph>An array-based stack is used because we know that the stack
-will need to store exactly <math>2n+1</math> elements.
+will need to store exactly <title_reference>2n+1</title_reference> elements.
 The new version of <literal>TOH</literal> begins by placing on the stack a
-description of the initial problem for <math>n</math> rings.
+description of the initial problem for <title_reference>n</title_reference> rings.
 The rest of the function is simply a <literal>while</literal> loop that pops the
 stack and executes the appropriate operation.
-In the case of a <literal>TOH</literal> operation (for <math>n&gt;0</math>), we store on
+In the case of a <literal>TOH</literal> operation (for <title_reference>n&gt;0</title_reference>), we store on
 the stack representations for the three operations executed by the
 recursive version.
 However, these operations must be placed on the stack in reverse

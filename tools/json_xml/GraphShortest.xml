@@ -15,22 +15,22 @@ length of the shortest path between two specified vertices.
 This is not a trivial problem, because the shortest path may not be
 along the edge (if any) connecting two vertices, but rather may be
 along a path involving one or more intermediate vertices.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>For example, in Figure <title_reference>Figure #DistExamp</title_reference>,
-the cost of the path from <math>A</math> to <math>B</math> to <math>D</math> is 15.
-The cost of the edge directly from <math>A</math> to <math>D</math> is 20.
-The cost of the path from <math>A</math> to <math>C</math> to <math>B</math> to
-<math>D</math> is 10.
-Thus, the shortest path from <math>A</math> to <math>D</math> is 10
-(rather than along the edge connecting <math>A</math> to <math>D</math>).
-We use the notation <math>\mathbf{d}(A, D) = 10</math> to indicate that the
-shortest distance from <math>A</math> to <math>D</math> is 10.
-In Figure <title_reference>Figure #DistExamp</title_reference>, there is no path from <math>E</math> to
-<math>B</math>, so we set <math>\mathbf{d}(E, B) = \infty</math>.
-We define <math>\mathbf{w}(A, D) = 20</math> to be the weight of edge
-<math>(A, D)</math>, that is, the weight of the direct connection
-from <math>A</math> to <math>D</math>.
-Because there is no edge from <math>E</math> to <math>B</math>,
-<math>\mathbf{w}(E, B) = \infty</math>.
-Note that <math>\mathbf{w}(D, A) = \infty</math> because the graph of
+the cost of the path from <title_reference>A</title_reference> to <title_reference>B</title_reference> to <title_reference>D</title_reference> is 15.
+The cost of the edge directly from <title_reference>A</title_reference> to <title_reference>D</title_reference> is 20.
+The cost of the path from <title_reference>A</title_reference> to <title_reference>C</title_reference> to <title_reference>B</title_reference> to
+<title_reference>D</title_reference> is 10.
+Thus, the shortest path from <title_reference>A</title_reference> to <title_reference>D</title_reference> is 10
+(rather than along the edge connecting <title_reference>A</title_reference> to <title_reference>D</title_reference>).
+We use the notation <title_reference>mathbf{d}(A, D) = 10</title_reference> to indicate that the
+shortest distance from <title_reference>A</title_reference> to <title_reference>D</title_reference> is 10.
+In Figure <title_reference>Figure #DistExamp</title_reference>, there is no path from <title_reference>E</title_reference> to
+<title_reference>B</title_reference>, so we set <title_reference>mathbf{d}(E, B) = infty</title_reference>.
+We define <title_reference>mathbf{w}(A, D) = 20</title_reference> to be the weight of edge
+<title_reference>(A, D)</title_reference>, that is, the weight of the direct connection
+from <title_reference>A</title_reference> to <title_reference>D</title_reference>.
+Because there is no edge from <title_reference>E</title_reference> to <title_reference>B</title_reference>,
+<title_reference>mathbf{w}(E, B) = infty</title_reference>.
+Note that <title_reference>mathbf{w}(D, A) = infty</title_reference> because the graph of
 Figure <title_reference>Figure #DistExamp</title_reference> is directed.
 We assume that all weights are positive.</paragraph><target refid="distexamp"></target><raw format="xml" ids="distexamp" names="distexamp" xml:space="preserve"><inlineav
     type="dgm"
@@ -42,14 +42,14 @@ We assume that all weights are positive.</paragraph><target refid="distexamp"></
 </inlineav>
 </raw><section ids="single-source-shortest-paths" names="single-source\ shortest\ paths"><title>Single-Source Shortest Paths</title><paragraph>We will now present an algorithm to solve the
 <title_reference>single-source shortest paths problem</title_reference>.
-Given Vertex <math>S</math> in Graph <math>\mathbf{G}</math>,
-find a shortest path from <math>S</math> to every other vertex in
-<math>\mathbf{G}</math>.
+Given Vertex <title_reference>S</title_reference> in Graph <title_reference>mathbf{G}</title_reference>,
+find a shortest path from <title_reference>S</title_reference> to every other vertex in
+<title_reference>mathbf{G}</title_reference>.
 We might want only the shortest path between two vertices,
-<math>S</math> and <math>T</math>.
+<title_reference>S</title_reference> and <title_reference>T</title_reference>.
 However in the worst case, finding the shortest path from
-<math>S</math> to <math>T</math> requires us to find the shortest paths from
-<math>S</math> to every other vertex as well.
+<title_reference>S</title_reference> to <title_reference>T</title_reference> requires us to find the shortest paths from
+<title_reference>S</title_reference> to every other vertex as well.
 So there is no better algorithm (in the worst case) for
 finding the shortest path to a single vertex than to find shortest
 paths to all vertices.
@@ -67,39 +67,39 @@ search.
 When weights are added, BFS will not give the correct answer.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>One approach to solving this problem when the edges have
 differing weights might be to process the
 vertices in a fixed order.
-Label the vertices <math>v_0</math> to <math>v_{n-1}</math>, with
-<math>S = v_0</math>.
-When processing Vertex <math>v_1</math>, we take the edge connecting
-<math>v_0</math> and <math>v_1</math>.
-When processing <math>v_2</math>, we consider the shortest distance from
-<math>v_0</math> to <math>v_2</math> and compare that to the shortest
-distance from <math>v_0</math> to <math>v_1</math> to <math>v_2</math>.
-When processing Vertex <math>v_i</math>, we consider the shortest
-path for Vertices <math>v_0</math> through <math>v_{i-1}</math> that have
+Label the vertices <title_reference>v_0</title_reference> to <title_reference>v_{n-1}</title_reference>, with
+<title_reference>S = v_0</title_reference>.
+When processing Vertex <title_reference>v_1</title_reference>, we take the edge connecting
+<title_reference>v_0</title_reference> and <title_reference>v_1</title_reference>.
+When processing <title_reference>v_2</title_reference>, we consider the shortest distance from
+<title_reference>v_0</title_reference> to <title_reference>v_2</title_reference> and compare that to the shortest
+distance from <title_reference>v_0</title_reference> to <title_reference>v_1</title_reference> to <title_reference>v_2</title_reference>.
+When processing Vertex <title_reference>v_i</title_reference>, we consider the shortest
+path for Vertices <title_reference>v_0</title_reference> through <title_reference>v_{i-1}</title_reference> that have
 already been processed.
-Unfortunately, the true shortest path to <math>v_i</math> might go
-through Vertex <title_reference>v_j</title_reference> for <math>j &gt; i</math>.
+Unfortunately, the true shortest path to <title_reference>v_i</title_reference> might go
+through Vertex <title_reference>v_j</title_reference> for <title_reference>j &gt; i</title_reference>.
 Such a path will not be considered by this algorithm.
 However, the problem would not occur if we process the vertices in
-order of distance from <math>S</math>.
-Assume that we have processed in order of distance from <math>S</math> to
-the first <math>i-1</math> vertices that are closest to <math>S</math>;
-call this set of vertices <math>\mathbf{S}</math>.
-We are now about to process the <math>i</math> th closest vertex; call
-it <math>X</math>.</paragraph><paragraph>A shortest path from <math>S</math> to <math>X</math> must have its next-to-last
-vertex in <math>S</math>.
+order of distance from <title_reference>S</title_reference>.
+Assume that we have processed in order of distance from <title_reference>S</title_reference> to
+the first <title_reference>i-1</title_reference> vertices that are closest to <title_reference>S</title_reference>;
+call this set of vertices <title_reference>mathbf{S}</title_reference>.
+We are now about to process the <title_reference>i</title_reference> th closest vertex; call
+it <title_reference>X</title_reference>.</paragraph><paragraph>A shortest path from <title_reference>S</title_reference> to <title_reference>X</title_reference> must have its next-to-last
+vertex in <title_reference>S</title_reference>.
 Thus,</paragraph><math_block xml:space="preserve">\mathbf{d}(S, X) =
-\min_{U \in \mathbf{S}}(\mathbf{d}(S, U) + \mathbf{w}(U, X)).</math_block><paragraph>In other words, the shortest path from <math>S</math> to <math>X</math> is the
-minimum over all paths that go from <math>S</math> to <math>U</math>, then have an
-edge from <math>U</math> to <math>X</math>, where <math>U</math> is some vertex
-in <math>\mathbf{S}</math>.</paragraph><paragraph>This solution is usually referred to as Dijkstra's algorithm.
+\min_{U \in \mathbf{S}}(\mathbf{d}(S, U) + \mathbf{w}(U, X)).</math_block><paragraph>In other words, the shortest path from <title_reference>S</title_reference> to <title_reference>X</title_reference> is the
+minimum over all paths that go from <title_reference>S</title_reference> to <title_reference>U</title_reference>, then have an
+edge from <title_reference>U</title_reference> to <title_reference>X</title_reference>, where <title_reference>U</title_reference> is some vertex
+in <title_reference>mathbf{S}</title_reference>.</paragraph><paragraph>This solution is usually referred to as Dijkstra's algorithm.
 It works by maintaining a distance estimate
-<math>\mathbf{D}(X)</math> for all vertices <math>X</math> in <math>\mathbf{V}</math>.
-The elements of <math>\mathbf{D}</math> are initialized to the value
+<title_reference>mathbf{D}(X)</title_reference> for all vertices <title_reference>X</title_reference> in <title_reference>mathbf{V}</title_reference>.
+The elements of <title_reference>mathbf{D}</title_reference> are initialized to the value
 <literal>INFINITE</literal>.
-Vertices are processed in order of distance from <math>S</math>.
-Whenever a vertex <math>v</math> is processed, <math>\mathbf{D}(X)</math> is
-updated for every neighbor <math>X</math> of <math>V</math>.
+Vertices are processed in order of distance from <title_reference>S</title_reference>.
+Whenever a vertex <title_reference>v</title_reference> is processed, <title_reference>mathbf{D}(X)</title_reference> is
+updated for every neighbor <title_reference>X</title_reference> of <title_reference>V</title_reference>.
 Here is an implementation for Dijkstra's
 algorithm.
 At the end, array <literal>D</literal> will contain the shortest distance values.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><raw format="xml" xml:space="preserve"><avembed
@@ -114,18 +114,18 @@ At the end, array <literal>D</literal> will contain the shortest distance values
 unvisited vertex with minimum distance value during each pass through
 the main <literal>for</literal> loop.
 The first method is simply to scan through the list of
-<math>|\mathbf{V}|</math> vertices searching for the minimum value, as
-follows:</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>Because this scan is done <math>|\mathbf{V}|</math> times,
+<title_reference>|mathbf{V}|</title_reference> vertices searching for the minimum value, as
+follows:</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>Because this scan is done <title_reference>|mathbf{V}|</title_reference> times,
 and because each edge requires a constant-time update to <literal>D</literal>,
 the total cost for this approach
-is <math>\Theta(|\mathbf{V}|^2 + |\mathbf{E}|) =
-\Theta(|\mathbf{V}|^2)</math>,
-because <math>|\mathbf{E}|</math> is in <math>O(|\mathbf{V}|^2)</math>.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>An alternative approach is to store unprocessed vertices in a
+is <title_reference>Theta(|mathbf{V}|^2 + |mathbf{E}|) =
+Theta(|mathbf{V}|^2)</title_reference>,
+because <title_reference>|mathbf{E}|</title_reference> is in <title_reference>O(|mathbf{V}|^2)</title_reference>.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>An alternative approach is to store unprocessed vertices in a
 min-heap ordered by their distance from the processed vertices.
 The next-closest vertex can be found in the heap in
-<math>\Theta(\log |\mathbf{V}|)</math> time.
-Every time we modify <math>\mathbf{D}(X)</math>,
-we could reorder <math>X</math> in
+<title_reference>Theta(log |mathbf{V}|)</title_reference> time.
+Every time we modify <title_reference>mathbf{D}(X)</title_reference>,
+we could reorder <title_reference>X</title_reference> in
 the heap by deleting and reinserting it.
 This is an example of a <title_reference>priority queue &lt;priority queue&gt; &lt;Heaps&gt;</title_reference>
 with priority update.
@@ -139,23 +139,23 @@ found first, and greater distance values found later will be ignored
 because the vertex will already be marked as <literal>VISITED</literal>.
 The only disadvantage to repeatedly inserting distance values in this
 way is that it will raise the number of elements in the heap from
-<math>\Theta(|\mathbf{V}|)</math> to <math>\Theta(|\mathbf{E}|)</math>
+<title_reference>Theta(|mathbf{V}|)</title_reference> to <title_reference>Theta(|mathbf{E}|)</title_reference>
 in the worst case.
 But in practice this only adds a slight increase to the depth of the
 heap.
 The time complexity is
-<math>\Theta((|\mathbf{V}| + |\mathbf{E}|) \log |\mathbf{E}|)</math>,
+<title_reference>Theta((|mathbf{V}| + |mathbf{E}|) log |mathbf{E}|)</title_reference>,
 because for each edge that we process we must reorder the heap.
 We use the <literal>KVPair</literal> class to store key-value pairs in the heap, with
 the edge weight as the key and the target vertex as the value.
 here is the implementation for Dijkstra's algorithm using a heap.</paragraph><raw format="xml" xml:space="preserve"><codeinclude>null</codeinclude></raw><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>Using <literal>MinVertex</literal> to scan the vertex list for the minimum value
 is more efficient when the graph is dense, that is, when
-<math>|\mathbf{E}|</math> approaches <math>|\mathbf{V}|^2</math>.
+<title_reference>|mathbf{E}|</title_reference> approaches <title_reference>|mathbf{V}|^2</title_reference>.
 Using a heap is more efficient when the graph is sparse
 because its cost is
-<math>\Theta((|\mathbf{V}| + |\mathbf{E}|) \log |\mathbf{E}|)</math>.
+<title_reference>Theta((|mathbf{V}| + |mathbf{E}|) log |mathbf{E}|)</title_reference>.
 However, when the graph is dense, this cost can become as great as
-<math>\Theta(|\mathbf{V}|^2 \log |\mathbf{E}|) = \Theta(|V|^2 \log |V|)</math>.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>Now you can practice using Dijkstra's algorithm.</paragraph><raw format="xml" xml:space="preserve"><avembed
+<title_reference>Theta(|mathbf{V}|^2 log |mathbf{E}|) = Theta(|V|^2 log |V|)</title_reference>.</paragraph><raw format="xml" xml:space="preserve"><todo>null</todo></raw><paragraph>Now you can practice using Dijkstra's algorithm.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="pe"
     exer_name="DijkstraPE"
     long_name="DijkstraPE"

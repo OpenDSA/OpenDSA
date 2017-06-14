@@ -48,8 +48,8 @@ and <literal>remove</literal> methods must maintain this property.</paragraph><r
 </raw><paragraph>Removing an element from the head of the list is
 similar to insert in that all remaining elements  must shift toward
 the head by one position to fill in the gap.
-If we want to remove the element at position <math>i</math>, then
-<math>n - i - 1</math> elements must shift toward the head, as shown in the
+If we want to remove the element at position <title_reference>i</title_reference>, then
+<title_reference>n - i - 1</title_reference> elements must shift toward the head, as shown in the
 following slideshow.</paragraph><raw format="xml" xml:space="preserve"><inlineav
     type="ss"
     exer_name="alistRemoveCON"
@@ -59,7 +59,7 @@ following slideshow.</paragraph><raw format="xml" xml:space="preserve"><inlineav
     threshold="1.0">
 </inlineav>
 </raw><paragraph>In the average case, insertion or removal each requires moving half
-of the elements, which is <math>\Theta(n)</math>.</paragraph><section ids="remove-practice-exericise" names="remove\ practice\ exericise"><title>Remove Practice Exericise</title><raw format="xml" xml:space="preserve"><avembed
+of the elements, which is <title_reference>Theta(n)</title_reference>.</paragraph><section ids="remove-practice-exericise" names="remove\ practice\ exericise"><title>Remove Practice Exericise</title><raw format="xml" xml:space="preserve"><avembed
     type="ka"
     exer_name="AlistRemovePRO"
     long_name="AlistRemovePRO"
@@ -72,7 +72,7 @@ might require more than constant time are the constructor and
 <literal>clear</literal>.
 The other methods for Class <literal>AList</literal> simply
 access the current list element or move the current position.
-They all require <math>\Theta(1)</math> time.</paragraph></section></section><section ids="array-based-list-practice-questions" names="array-based\ list\ practice\ questions"><title>Array-based List Practice Questions</title><raw format="xml" xml:space="preserve"><avembed
+They all require <title_reference>Theta(1)</title_reference> time.</paragraph></section></section><section ids="array-based-list-practice-questions" names="array-based\ list\ practice\ questions"><title>Array-based List Practice Questions</title><raw format="xml" xml:space="preserve"><avembed
     type="ka"
     exer_name="ALSumm"
     long_name="ALSumm"

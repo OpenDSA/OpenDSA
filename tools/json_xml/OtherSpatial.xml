@@ -12,12 +12,12 @@ PR quadtree stores records only at the leaf nodes.
 Finally, the two trees have different structures.
 The kd tree is a binary tree (and need not be full),
 while the PR quadtree is a <title_reference>full tree</title_reference> with
-<math>2^d</math> branches (in the two-dimensional case, <math>2^2 = 4</math>).
+<title_reference>2^d</title_reference> branches (in the two-dimensional case, <title_reference>2^2 = 4</title_reference>).
 Consider the extension of this concept to three dimensions.
 A kd tree for three dimensions would alternate the discriminator
-through the <math>x</math>, <math>y</math>, and <math>z</math> dimensions.
+through the <title_reference>x</title_reference>, <title_reference>y</title_reference>, and <title_reference>z</title_reference> dimensions.
 The three-dimensional equivalent of the PR quadtree would be a tree
-with <math>2^3</math> or eight branches.
+with <title_reference>2^3</title_reference> or eight branches.
 Such a tree is called an <title_reference>octree</title_reference>.</paragraph><paragraph>We can also devise a binary trie based on a key space decomposition in
 each dimension, or a quadtree that uses the two-dimensional equivalent
 to an object space decomposition.
@@ -52,9 +52,9 @@ rectangle object, or objects of arbitrary shape (such as polygons in
 two dimensions or polyhedra in three dimensions).
 A simple, yet effective, data structure for storing rectangles or
 arbitrary polygonal shapes can be derived from the PR quadtree.
-Pick a threshold value <math>c</math>, and subdivide any region into four
-quadrants if it contains more than <math>c</math> objects.
-A special case must be dealt with when more than <math>c</math> objects
+Pick a threshold value <title_reference>c</title_reference>, and subdivide any region into four
+quadrants if it contains more than <title_reference>c</title_reference> objects.
+A special case must be dealt with when more than <title_reference>c</title_reference> objects
 intersect.</paragraph><paragraph>Some of the most interesting developments in spatial data structures
 have to do with adapting them for disk-based applications.
 However, all such disk-based implementations boil down to storing the

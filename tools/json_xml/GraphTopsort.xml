@@ -51,8 +51,8 @@ edges that lead to each vertex (i.e., count the number of
 prerequisites for each vertex).
 All vertices with no prerequisites are placed on the queue.
 We then begin processing the queue.
-When Vertex <math>v</math> is taken off of the queue, it is printed, and all
-neighbors of <math>v</math> (that is, all vertices that have <math>v</math> as a
+When Vertex <title_reference>v</title_reference> is taken off of the queue, it is printed, and all
+neighbors of <title_reference>v</title_reference> (that is, all vertices that have <title_reference>v</title_reference> as a
 prerequisite) have their counts decremented by one.
 Place on the queue any neighbor whose count becomes zero.
 If the queue becomes empty without printing all of the vertices, then

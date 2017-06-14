@@ -37,14 +37,14 @@ leaf nodes store three pointers each.
 We can use a <title_reference>class hierarcy &lt;class hierarchy&gt; &lt;BinaryTreeImpl&gt;</title_reference>
 to implement separate internal and leaf node types.</paragraph><paragraph>From the defining rules for 2-3 trees we can derive relationships
 between the number of nodes in the tree and the depth of the tree.
-A 2-3 tree of height <math>k</math> has at least <math>2^{k-1}</math> leaves,
+A 2-3 tree of height <title_reference>k</title_reference> has at least <title_reference>2^{k-1}</title_reference> leaves,
 because if every internal node has two children it degenerates to the
 shape of a complete binary tree.
-A 2-3 tree of height <math>k</math> has at most <math>3^{k-1}</math> leaves,
+A 2-3 tree of height <title_reference>k</title_reference> has at most <title_reference>3^{k-1}</title_reference> leaves,
 because each internal node can have at most three children.</paragraph><paragraph>Searching for a value in a 2-3 tree is similar to searching in a BST.
 Search begins at the root.
-If the root does not contain the search key <math>K</math>, then the search
-progresses to the only subtree that can possibly contain <math>K</math>.
+If the root does not contain the search key <title_reference>K</title_reference>, then the search
+progresses to the only subtree that can possibly contain <title_reference>K</title_reference>.
 The value(s) stored in the root node determine which is the correct
 subtree.
 For example, if searching for the value 30 in the tree of
@@ -76,23 +76,23 @@ illustrated in the following visualization.</paragraph><target refid="tteasyin">
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>If we insert the new record into a leaf node <math>L</math> that already
+</raw><paragraph>If we insert the new record into a leaf node <title_reference>L</title_reference> that already
 contains two records, then more space must be created.
-Consider the two records of node <math>L</math> and the record to be
+Consider the two records of node <title_reference>L</title_reference> and the record to be
 inserted without further concern for which two
-were already in <math>L</math> and which is the new record.
-The first step is to split <math>L</math> into two nodes.
-Thus, a new node  call it <math>L'</math>  must be created from
+were already in <title_reference>L</title_reference> and which is the new record.
+The first step is to split <title_reference>L</title_reference> into two nodes.
+Thus, a new node  call it <title_reference>L'</title_reference>  must be created from
 free store.
-<math>L</math> receives the record with the least of the three key values.
-<math>L'</math> receives the greatest of the three.
+<title_reference>L</title_reference> receives the record with the least of the three key values.
+<title_reference>L'</title_reference> receives the greatest of the three.
 The record with the middle of the three key value is passed up to the
-parent node along with a pointer to <math>L'</math>.
+parent node along with a pointer to <title_reference>L'</title_reference>.
 This is called a <title_reference>promotion</title_reference>.
 The promoted key is then inserted into the parent.
 If the parent currently contains only one record (and thus has only
 two children), then the promoted record and the pointer to
-<math>L'</math> are simply added to the parent node.
+<title_reference>L'</title_reference> are simply added to the parent node.
 If the parent is full, then the split-and-promote process is repeated.
 Here is an example of a a simple promotion.</paragraph><target refid="ttpromote"></target><raw format="xml" ids="ttpromote" names="ttpromote" xml:space="preserve"><inlineav
     type="ss"
@@ -157,9 +157,9 @@ When all leaf nodes are at the same level, we say that a tree is
 <title_reference>height balanced</title_reference>.
 Because the 2-3 tree is height balanced, and every internal node has
 at least two children, we know that the maximum depth of the tree
-is <math>\log n</math>.
+is <title_reference>log n</title_reference>.
 Thus, all 2-3 tree insert, find, and delete operations require
-<math>\Theta(\log n)</math> time.</paragraph><paragraph>Here is a visualization for the 2-3 tree.
+<title_reference>Theta(log n)</title_reference> time.</paragraph><paragraph>Here is a visualization for the 2-3 tree.
 Actually, the visualization is more general than just a 2-3 tree.
 To see how a 2-3 would behave, be sure to use the "Max Degree = 3"
 setting.</paragraph><raw format="html" xml:space="preserve">&lt;center&gt;

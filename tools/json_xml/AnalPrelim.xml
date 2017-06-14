@@ -66,11 +66,11 @@ OpenDSA modules cover many problems, and for several of these
 problems we will see more than one algorithm.
 For the important problem of sorting there are over a dozen commonly
 known algorithms!</paragraph><paragraph>The advantage of knowing several solutions to a problem is that
-solution <math>\mathbf{A}</math> might be more efficient than solution
-<math>\mathbf{B}</math> for a specific variation of the problem, or for a
+solution <title_reference>mathbf{A}</title_reference> might be more efficient than solution
+<title_reference>mathbf{B}</title_reference> for a specific variation of the problem, or for a
 specific class of inputs to the problem, while solution
-<math>\mathbf{B}</math> might be more efficient than
-<math>\mathbf{A}</math> for another variation or class of inputs.
+<title_reference>mathbf{B}</title_reference> might be more efficient than
+<title_reference>mathbf{A}</title_reference> for another variation or class of inputs.
 For example, one sorting algorithm might be the best
 for sorting a small collection of integers (which is important if you
 need to do this many times).

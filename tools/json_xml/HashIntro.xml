@@ -8,9 +8,9 @@ When properly implemented, these operations can be performed
 in constant time.
 In fact, a properly tuned hash system typically looks at only
 one or two records for each search, insert, or delete operation.
-This is far better than the <math>O(\log n)</math> average cost required
-to do a binary search on a sorted array of <math>n</math> records,
-or the <math>O(\log n)</math> average cost required to do an operation
+This is far better than the <title_reference>O(log n)</title_reference> average cost required
+to do a binary search on a sorted array of <title_reference>n</title_reference> records,
+or the <title_reference>O(log n)</title_reference> average cost required to do an operation
 on a binary search tree.
 However, even though hashing is based on a very simple idea,
 it is surprisingly difficult to implement properly.
@@ -28,10 +28,10 @@ satisfies the needs of the address calculation, records are
 not ordered by value.
 A position in the hash table is also known as a <title_reference>slot</title_reference>.
 The number of slots in hash table <literal>HT</literal> will be denoted by the
-variable <math>M</math> with slots numbered from 0 to <math>M-1</math>.</paragraph><paragraph>The goal for a hashing system is to arrange things such that,
-for any key value <literal>K</literal> and some hash function <math>h</math>,
-<math>i = \mathbf{h}(K)</math> is a slot in the table such that
-<math>0 &lt;= i &lt; M</math>,
+variable <title_reference>M</title_reference> with slots numbered from 0 to <title_reference>M-1</title_reference>.</paragraph><paragraph>The goal for a hashing system is to arrange things such that,
+for any key value <literal>K</literal> and some hash function <title_reference>h</title_reference>,
+<title_reference>i = mathbf{h}(K)</title_reference> is a slot in the table such that
+<title_reference>0 &lt;= i &lt; M</title_reference>,
 and we have the key of the record stored at
 <literal>HT[i]</literal> equal to <literal>K</literal>.</paragraph><paragraph>Hashing is not good for applications where multiple
 records with the same key value are permitted.
@@ -50,11 +50,11 @@ to hashing and it is easy to devise an inefficient implementation.
 Hashing is suitable for both in-memory and disk-based searching and
 is one of the two most widely used methods for organizing large
 databases stored on disk (the other is the B-tree).</paragraph><paragraph>As a simple (though unrealistic) example of hashing,
-consider storing <math>n</math> records, each with a unique key value in
-the range 0 to <math>n-1</math>.
+consider storing <title_reference>n</title_reference> records, each with a unique key value in
+the range 0 to <title_reference>n-1</title_reference>.
 A record with key <literal>k</literal> can be stored in
 <literal>HT[k]</literal>, and so the hash function is
-<math>\mathbf{h}(k) = k</math>.
+<title_reference>mathbf{h}(k) = k</title_reference>.
 To find the record with key value <literal>k</literal>, look in
 <literal>HT[k]</literal>.</paragraph><raw format="xml" xml:space="preserve"><inlineav
     type="ss"
@@ -76,13 +76,13 @@ Instead, we must devise a hash function that allows us to store the
 records in a much smaller table.
 Because the key range is larger than the size of the table,
 at least some of the slots must be mapped to from multiple key values.
-Given a hash function <strong>h</strong> and two keys <math>k_1</math> and
-<math>k_2</math>, if
-<math>\mathbf{h}(k_1) = \beta = \mathbf{h}(k_2)</math>
-where <math>\beta</math> is a slot in
-the table, then we say that <math>k_1</math> and <math>k_2</math> have a
-<title_reference>collision</title_reference> at slot <math>\beta</math> under hash function <strong>h</strong>.</paragraph><paragraph>Finding a record with key value <literal>K</literal> in a database organized by hashing
-follows a two-step procedure:</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph>Compute the table location <math>\mathbf{h}(K)</math>.</paragraph></list_item><list_item><paragraph>Starting with slot <math>\mathbf{h}(K)</math>, locate the record
+Given a hash function <strong>h</strong> and two keys <title_reference>k_1</title_reference> and
+<title_reference>k_2</title_reference>, if
+<title_reference>mathbf{h}(k_1) = beta = mathbf{h}(k_2)</title_reference>
+where <title_reference>beta</title_reference> is a slot in
+the table, then we say that <title_reference>k_1</title_reference> and <title_reference>k_2</title_reference> have a
+<title_reference>collision</title_reference> at slot <title_reference>beta</title_reference> under hash function <strong>h</strong>.</paragraph><paragraph>Finding a record with key value <literal>K</literal> in a database organized by hashing
+follows a two-step procedure:</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph>Compute the table location <title_reference>mathbf{h}(K)</title_reference>.</paragraph></list_item><list_item><paragraph>Starting with slot <title_reference>mathbf{h}(K)</title_reference>, locate the record
 containing key <literal>K</literal> using (if necessary) a
 <title_reference>collision resolution &lt;collision resolution&gt; &lt;HashCSimple&gt;</title_reference>
 policy .</paragraph></list_item></enumerated_list><raw format="xml" xml:space="preserve"><odsascript>AV/Hashing/hashIntroCON.js</odsascript></raw></document>

@@ -6,22 +6,22 @@ algorithms might speed things up, although perhaps at the expense of
 accuracy.
 But often we can reduce the possibility for error to be as low as we
 like, while still speeding up the algorithm.</paragraph><paragraph>The <title_reference>lower bound for maximum finding &lt;maximum lower bound&gt; &lt;LowerBound&gt;</title_reference>
-in an unsorted list is <math>\Omega(n)</math>.
+in an unsorted list is <title_reference>Omega(n)</title_reference>.
 This is the least time needed to be certain that we have found the
 maximum value.
 But what if we are willing to relax our requirement for certainty?
 The first question is: What do we mean by this?
 There are many aspects to "certainty" and we might relax the
 requirement in various ways.</paragraph><paragraph>There are several possible guarantees that we might require from an
-algorithm that produces <math>X</math> as the maximum value, when the true
-maximum is <math>Y</math>.</paragraph><bullet_list bullet="*"><list_item><paragraph>So far we have assumed that we require <math>X</math> to equal <math>Y</math>.
+algorithm that produces <title_reference>X</title_reference> as the maximum value, when the true
+maximum is <title_reference>Y</title_reference>.</paragraph><bullet_list bullet="*"><list_item><paragraph>So far we have assumed that we require <title_reference>X</title_reference> to equal <title_reference>Y</title_reference>.
 This is known as an exact or <title_reference>deterministic algorithm</title_reference> to
-solve the problem.</paragraph></list_item><list_item><paragraph>We could relax this and require only that <math>X</math> 's rank is
-"close to" <math>Y</math> 's rank (perhaps within a fixed distance or
+solve the problem.</paragraph></list_item><list_item><paragraph>We could relax this and require only that <title_reference>X</title_reference> 's rank is
+"close to" <title_reference>Y</title_reference> 's rank (perhaps within a fixed distance or
 percentage).
-This is known as an <title_reference>approximation algorithm</title_reference>.</paragraph></list_item><list_item><paragraph>We could require that <math>X</math> is "usually" <math>Y</math>.
-This is known as a <title_reference>probabilistic algorithm</title_reference>.</paragraph></list_item><list_item><paragraph>Finally, we could require only that <math>X</math> 's rank is "usually"
-"close" to <math>Y</math> 's rank.
+This is known as an <title_reference>approximation algorithm</title_reference>.</paragraph></list_item><list_item><paragraph>We could require that <title_reference>X</title_reference> is "usually" <title_reference>Y</title_reference>.
+This is known as a <title_reference>probabilistic algorithm</title_reference>.</paragraph></list_item><list_item><paragraph>Finally, we could require only that <title_reference>X</title_reference> 's rank is "usually"
+"close" to <title_reference>Y</title_reference> 's rank.
 This is known as a <title_reference>heuristic algorithm</title_reference>.</paragraph></list_item></bullet_list><paragraph>There are also different ways that we might choose to sacrifice
 reliability for speed.
 These types of algorithms also have names.</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph><title_reference>Las Vegas Algorithms</title_reference>:
@@ -36,21 +36,21 @@ gives up its guarantee of getting the best value in exchange for an
 improved running time.
 This is an example of a <title_reference>probabilistic algorithm</title_reference>, since it
 includes steps that are affected by random events.
-Choose <math>m</math> elements at random, and pick the best one of those as
+Choose <title_reference>m</title_reference> elements at random, and pick the best one of those as
 the answer.
-For large <math>n</math>, if <math>m \approx \log n</math>, the answer is pretty
+For large <title_reference>n</title_reference>, if <title_reference>m approx log n</title_reference>, the answer is pretty
 good.
-The cost is <math>m-1</math> compares (since we must find the maximum of
-<math>m</math> values).
+The cost is <title_reference>m-1</title_reference> compares (since we must find the maximum of
+<title_reference>m</title_reference> values).
 But we don't know for sure what we will get.
 However, we can estimate that the rank will be about
-<math>\frac{mn}{m+1}</math>.
-For example, if <math>n = 1,000,000</math> and <math>m = \log n = 20</math>,
+<title_reference>frac{mn}{m+1}</title_reference>.
+For example, if <title_reference>n = 1,000,000</title_reference> and <title_reference>m = log n = 20</title_reference>,
 then we expect that the largest of the 20 randomly selected values be
-among the top 5% of the <math>n</math> values.</paragraph><paragraph>Next, consider a slightly different problem where the goal is to
-pick a number in the upper half of <math>n</math> values.
-We would pick the maximum from among the first <math>\frac{n+1}{2}</math>
-values for a cost of <math>n/2</math> comparisons.
+among the top 5% of the <title_reference>n</title_reference> values.</paragraph><paragraph>Next, consider a slightly different problem where the goal is to
+pick a number in the upper half of <title_reference>n</title_reference> values.
+We would pick the maximum from among the first <title_reference>frac{n+1}{2}</title_reference>
+values for a cost of <title_reference>n/2</title_reference> comparisons.
 Can we do better than this?
 Not if we want to guarantee getting the correct answer.
 But if we are willing to accept near certainty instead of absolute
@@ -61,12 +61,12 @@ in the upper half only when both numbers we choose happen to be in the
 lower half).
 Is a probability of 3/4 not good enough?
 Then we simply pick more numbers!
-For <math>k</math> numbers, the greatest is in upper half with probability
-<math>1 - \frac{1}{2^k}</math>, regardless of the number <math>n</math> that we
-pick from, so long as <math>n</math> is much larger than <math>k</math>
+For <title_reference>k</title_reference> numbers, the greatest is in upper half with probability
+<title_reference>1 - frac{1}{2^k}</title_reference>, regardless of the number <title_reference>n</title_reference> that we
+pick from, so long as <title_reference>n</title_reference> is much larger than <title_reference>k</title_reference>
 (otherwise the chances might become even better).
 If we pick ten numbers, then the chance of failure is only one in
-<math>2^{10} = 1024</math>.
+<title_reference>2^{10} = 1024</title_reference>.
 What if we really want to be sure, because lives depend on drawing a
 number from the upper half?
 If we pick 30 numbers, we can fail only one time in a billion.
@@ -74,5 +74,5 @@ If we pick enough numbers, then the chance of picking a small
 number is less than the chance of the power failing during the
 computation.
 Picking 100 numbers means that we can fail only one time in
-<math>10^{100}</math> which is less than the chance any plausible
+<title_reference>10^{100}</title_reference> which is less than the chance any plausible
 disaster that you can imagine will disrupt the process.</paragraph></document>

@@ -20,9 +20,9 @@ This empty space is the overhead required by the array-based list.
 need space for the objects actually on the list.
 There is no limit to the number of elements on a linked list,
 as long as there is <title_reference>free store</title_reference> memory available.
-The amount of space required by a linked list is <math>\Theta(n)</math>,
+The amount of space required by a linked list is <title_reference>Theta(n)</title_reference>,
 while the space required by the array-based list implementation is
-<math>\Omega(n)</math>, but can be greater.</paragraph><paragraph>Array-based lists have the advantage that there is no wasted
+<title_reference>Omega(n)</title_reference>, but can be greater.</paragraph><paragraph>Array-based lists have the advantage that there is no wasted
 space for an individual element.
 Linked lists require that an extra pointer for the <literal>next</literal> field be
 added to every list node.
@@ -35,29 +35,29 @@ The array-based list will then be more space efficient, by a
 constant factor, than the linked implementation.</paragraph><paragraph>A simple formula can be used to determine whether the array-based list
 or the linked list implementation will be more space efficient in a
 particular situation.
-Call <math>n</math> the number of elements currently in the list,
-<math>P</math> the size of a pointer in storage units
-(typically four bytes), <math>E</math> the size of a data element in
+Call <title_reference>n</title_reference> the number of elements currently in the list,
+<title_reference>P</title_reference> the size of a pointer in storage units
+(typically four bytes), <title_reference>E</title_reference> the size of a data element in
 storage units (this could be anything, from one bit for a Boolean
 variable on up to thousands of bytes or more for complex records),
-and <math>D</math> the maximum number of list elements that can be stored
+and <title_reference>D</title_reference> the maximum number of list elements that can be stored
 in the array.
-The amount of space required for the array-based list is <math>DE</math>,
+The amount of space required for the array-based list is <title_reference>DE</title_reference>,
 regardless of the number of elements actually stored in the list at
 any given time.
-The amount of space required for the linked list is <math>n(P + E)</math>.
-The smaller of these expressions for a given value <math>n</math>
-determines the more space-efficient implementation for <math>n</math>
+The amount of space required for the linked list is <title_reference>n(P + E)</title_reference>.
+The smaller of these expressions for a given value <title_reference>n</title_reference>
+determines the more space-efficient implementation for <title_reference>n</title_reference>
 elements.
 In general, the linked implementation requires less space than the
 array-based implementation when relatively few elements are in the
 list.
 Conversely, the array-based implementation becomes more space
 efficient when the array is close to full.
-Using the equation, we can solve for <math>n</math> to determine the
+Using the equation, we can solve for <title_reference>n</title_reference> to determine the
 <title_reference>break-even point</title_reference> beyond which the array-based implementation
 is more space efficient in any particular situation.
-This occurs when</paragraph><math_block xml:space="preserve">n &gt; DE/(P + E).</math_block><paragraph>If <math>P = E</math>, then the break-even point is at <math>D/2</math>.
+This occurs when</paragraph><math_block xml:space="preserve">n &gt; DE/(P + E).</math_block><paragraph>If <title_reference>P = E</title_reference>, then the break-even point is at <title_reference>D/2</title_reference>.
 This would happen if the element field is either a four-byte
 <literal>int</literal> value or a pointer, and the <literal>next</literal> field is a typical
 four-byte pointer.
@@ -80,20 +80,20 @@ certain limit.</paragraph><raw format="xml" xml:space="preserve"><avembed
 </raw></section><section ids="time-comparison" names="time\ comparison"><title>Time Comparison</title><paragraph>Array-based lists are faster for access by position.
 Positions can easily be adjusted forwards or backwards by
 the <literal>next</literal> and <literal>prev</literal> methods.
-These operations always take <math>\Theta(1)</math> time.
+These operations always take <title_reference>Theta(1)</title_reference> time.
 In contrast, singly linked lists have no explicit access to the
 previous element, and access by position requires that we march
 down the list from the front (or the current position) to the
 specified position.
-Both of these operations require <math>\Theta(n)</math> time in the average
+Both of these operations require <title_reference>Theta(n)</title_reference> time in the average
 and worst cases, if we assume that each position on the list is
 equally likely to be accessed on any call to <literal>prev</literal> or
 <literal>moveToPos</literal>.</paragraph><paragraph>Given a pointer to a suitable location in the list,
 the <literal>insert</literal> and <literal>remove</literal> methods for linked lists
-require only <math>\Theta(1)</math> time.
+require only <title_reference>Theta(1)</title_reference> time.
 Array-based lists must shift the remainder of the list up or down
 within the array.
-This requires <math>\Theta(n)</math> time in the average and worst cases.
+This requires <title_reference>Theta(n)</title_reference> time in the average and worst cases.
 For many applications, the time to insert and delete elements
 dominates all other operations.
 For this reason, linked lists are often preferred to array-based

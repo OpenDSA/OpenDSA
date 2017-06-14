@@ -5,32 +5,32 @@
 in the 1970s by D. E. Knuth, J. H. Morris, and V. R. Pratt.
 Consequently, it is known as the Knuth‑Morris‑Pratt (or KMP)
 algorithm.  The key to its search efficiency is the following.  When a
-mismatch occurs in a particular alignment at index <math>p</math> of
-<math>sub</math>, then we must look to the character matches that occurred
-in the portion of <math>sub</math> preceding index <math>p</math>.  We are
-seeking a substring of sub in the portion of <math>sub</math> immediately
-prior to index <math>p</math> that matches a leading substring of
-<math>sub</math>.  Once found, <math>sub</math> may be realigned so that this
+mismatch occurs in a particular alignment at index <title_reference>p</title_reference> of
+<title_reference>sub</title_reference>, then we must look to the character matches that occurred
+in the portion of <title_reference>sub</title_reference> preceding index <title_reference>p</title_reference>.  We are
+seeking a substring of sub in the portion of <title_reference>sub</title_reference> immediately
+prior to index <title_reference>p</title_reference> that matches a leading substring of
+<title_reference>sub</title_reference>.  Once found, <title_reference>sub</title_reference> may be realigned so that this
 leading substring overlays what had been the matching substring
-immediately prior to index <math>p</math>. The character‑by‑character
+immediately prior to index <title_reference>p</title_reference>. The character‑by‑character
 comparison can then proceed from the position of the prior mismatch.</paragraph><paragraph>Its use requires an initial pass through the string sub to determine
 the appropriate amount of realignment when a mismatch occurs at
-position <math>p</math> in <math>sub</math>. Note that this determination is
-dependent only on <math>sub</math>, not at all on <math>master</math>. In
-effect, for each index <math>p</math>, we seek the longest sequence of
-characters immediately preceding position <math>p</math> that matches a
-sequence at the beginning of <math>sub</math>. We must qualify this
+position <title_reference>p</title_reference> in <title_reference>sub</title_reference>. Note that this determination is
+dependent only on <title_reference>sub</title_reference>, not at all on <title_reference>master</title_reference>. In
+effect, for each index <title_reference>p</title_reference>, we seek the longest sequence of
+characters immediately preceding position <title_reference>p</title_reference> that matches a
+sequence at the beginning of <title_reference>sub</title_reference>. We must qualify this
 slightly to avoid problems in the degenerate case, in which all
-characters preceding position <math>p</math> are the same.  When this
-occurs, we restart the matching pass through sub at position <math>p
-‑ 1</math>.  In other words, we specifically seek the maximum sequence of
-characters immediately preceding index <math>p</math> with length less than
-<math>p</math> such that this sequence matches a sequence at the beginning
-of <math>sub</math>.  We will store, for each index <math>p</math>, the length
-of such a sequence in an array called <math>align</math>.  Given this
-definition of the <math>align</math> array, the following slideshow
+characters preceding position <title_reference>p</title_reference> are the same.  When this
+occurs, we restart the matching pass through sub at position <title_reference>p
+‑ 1</title_reference>.  In other words, we specifically seek the maximum sequence of
+characters immediately preceding index <title_reference>p</title_reference> with length less than
+<title_reference>p</title_reference> such that this sequence matches a sequence at the beginning
+of <title_reference>sub</title_reference>.  We will store, for each index <title_reference>p</title_reference>, the length
+of such a sequence in an array called <title_reference>align</title_reference>.  Given this
+definition of the <title_reference>align</title_reference> array, the following slideshow
 indicates how the KMP algorithm would work with a particular
-<math>master</math> and <math>sub</math> string.</paragraph><comment xml:space="preserve">Slideshow for KMP search algorithm</comment><raw format="xml" xml:space="preserve"><avembed
+<title_reference>master</title_reference> and <title_reference>sub</title_reference> string.</paragraph><comment xml:space="preserve">Slideshow for KMP search algorithm</comment><raw format="xml" xml:space="preserve"><avembed
     type="ss"
     exer_name="KMP_Slideshow"
     long_name="KMP_Slideshow"
@@ -56,13 +56,13 @@ progress by trying the following exercise.</paragraph><comment xml:space="preser
     required="True"
     threshold="5">
 </avembed>
-</raw><paragraph>The creation of the <math>align</math> is itself an interesting algorithm
-and requires some explanation.  Since <math>align[p]</math> must be less
-than <math>p</math>, we start by initializing <math>align[0]</math> to ‑1 and
-<math>align[1]</math> to 0.  Since the align array is computed for
-successive values of <math>p</math>, <math>align[p ‑ 1]</math> will have been
-computed by the time we attempt to compute <math>align[p]</math>, allowing
-us to iterate through the computation of the <math>align</math> array as
+</raw><paragraph>The creation of the <title_reference>align</title_reference> is itself an interesting algorithm
+and requires some explanation.  Since <title_reference>align[p]</title_reference> must be less
+than <title_reference>p</title_reference>, we start by initializing <title_reference>align[0]</title_reference> to ‑1 and
+<title_reference>align[1]</title_reference> to 0.  Since the align array is computed for
+successive values of <title_reference>p</title_reference>, <title_reference>align[p ‑ 1]</title_reference> will have been
+computed by the time we attempt to compute <title_reference>align[p]</title_reference>, allowing
+us to iterate through the computation of the <title_reference>align</title_reference> array as
 indicated in the following slideshow.</paragraph><comment xml:space="preserve">If the test indicated in Figure 2.17 fails, we will then seek a</comment><comment xml:space="preserve">leading substring of the shaded portion on the left of Figure 2.17</comment><comment xml:space="preserve">that matches a substring ending at position p ‑ 1.  Working within the</comment><comment xml:space="preserve">shaded portion on the left of Figure 2.17 (that is, with the</comment><comment xml:space="preserve">characters at the beginning of sub) we know that the leading align[q]</comment><comment xml:space="preserve">characters on the left of this shaded portion exactly match the</comment><comment xml:space="preserve">characters in the align[q] positions preceding q.  This follows from</comment><comment xml:space="preserve">the definition of the values already stored in the align array.  We</comment><comment xml:space="preserve">also know that the two shaded substrings in Figure 2.17 must</comment><comment xml:space="preserve">match. Combining these facts, we conclude that the first align[q]</comment><comment xml:space="preserve">characters in sub exactly match the sequence of align[q] characters</comment><comment xml:space="preserve">preceding position p ‑ 1 in Figure 2.17.  Consequently, if we reset q</comment><comment xml:space="preserve">to align[q], then align[p] will equal q + 1 provided sub.charAt(q)</comment><comment xml:space="preserve">equals sub.charAt(p – 1).  This logic is iterated until sub.charAt(q)</comment><comment xml:space="preserve">equals sub.charAt(p – 1) or until q becomes negative, as indicated in</comment><comment xml:space="preserve">Figure 2.18.</comment><comment xml:space="preserve"></comment><comment xml:space="preserve"></comment><comment xml:space="preserve"></comment><comment xml:space="preserve">Slideshow for creation of alignment array</comment><raw format="xml" xml:space="preserve"><avembed
     type="ss"
     exer_name="KMP_align_array_slideshow"
@@ -72,14 +72,14 @@ indicated in the following slideshow.</paragraph><comment xml:space="preserve">I
     threshold="1.0">
 </avembed>
 </raw><paragraph>The preceding slideshow has illustrated the following pseudocode
-for the computation of the <math>align</math> array in the KMP algorithm::</paragraph><literal_block xml:space="preserve">align[0] = -1
+for the computation of the <title_reference>align</title_reference> array in the KMP algorithm::</paragraph><literal_block xml:space="preserve">align[0] = -1
 align[1] = 0
 L = string.length
 for(p = 2; p &lt; L; p++):
   q = align[p-1]
   while((q&gt;= 0) and (string[q] != string[p-1])):
     q = align[q]
-  align[p] = q+1</literal_block><paragraph>See if you can predict how one step in this <math>align</math> algorithm would
+  align[p] = q+1</literal_block><paragraph>See if you can predict how one step in this <title_reference>align</title_reference> algorithm would
 progress by trying the following exercise.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="ka"
     exer_name="KMP_Alignment_Array_Exercise"

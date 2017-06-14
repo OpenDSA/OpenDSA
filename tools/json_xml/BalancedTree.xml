@@ -5,11 +5,11 @@
 practical use as a search structure.
 That is the fact that it can easily become unbalanced, so that some
 nodes are deep in the tree.
-In fact, it is possible for a BST with <math>n</math> nodes to have a depth
-of <math>n</math>, making it no faster to search in the worst case than a
+In fact, it is possible for a BST with <title_reference>n</title_reference> nodes to have a depth
+of <title_reference>n</title_reference>, making it no faster to search in the worst case than a
 linked list.
 If we could keep the tree balanced in some way, then search cost would
-only be <math>\Theta(\log n)</math>, a huge improvement.</paragraph><paragraph>One solution to this problem is to adopt another search
+only be <title_reference>Theta(log n)</title_reference>, a huge improvement.</paragraph><paragraph>One solution to this problem is to adopt another search
 tree structure instead of using a BST at all.
 An example of such an alternative tree structure is the
 <title_reference>2-3 Tree &lt;2-3 Tree&gt; &lt;TwoThreeTree&gt;</title_reference>

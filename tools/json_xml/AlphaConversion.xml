@@ -4,70 +4,70 @@
 <document dupnames="alpha-conversion" ids="id1 alpha-conversion" names="alpha-conversion" source="&lt;string&gt;" title="Alpha-Conversion"><title>Alpha-Conversion</title><comment xml:space="preserve">This file is part of the OpenDSA eTextbook project. See</comment><comment xml:space="preserve">http://algoviz.org/OpenDSA for more details.</comment><comment xml:space="preserve">Copyright (c) 2012-13 by the OpenDSA Project Contributors, and</comment><comment xml:space="preserve">distributed under an MIT open source license.</comment><raw format="xml" xml:space="preserve"><avmetadata>null</avmetadata></raw><target refid="alpha-conversion"></target><section ids="alpha-conversion-rule" names="alpha-conversion\ rule"><title>Alpha-Conversion Rule</title><paragraph>We now turn our attention back to the semantics of the lambda calculus
 by focusing on how <title_reference>free-and-bound-variables</title_reference> in lambda
 expressions impact their meaning. Let us first consider bound variable
-occurrences first.</paragraph><paragraph>When a variable occurrence <math>x</math> is bound to a binding occurrence,
-the meaning of <math>x</math> depends on the fact that it appears inside
+occurrences first.</paragraph><paragraph>When a variable occurrence <title_reference>x</title_reference> is bound to a binding occurrence,
+the meaning of <title_reference>x</title_reference> depends on the fact that it appears inside
 the body of a function and is the name of its parameter. Therefore,
-the value of <math>x</math> is completely determined by and will be equal
+the value of <title_reference>x</title_reference> is completely determined by and will be equal
 to whatever argument is passed into the function when it is called. In
 other words, when a variable occurrence is bound in a given
 expression, its meaning is well defined within this expression. In the
 following JavaScript function, for example:</paragraph><literal_block classes="code" xml:space="preserve">function f(x) {
      return 2 + x - y * x;
-}</literal_block><paragraph>the value of <math>x</math> is not known until the function is called, but
-at run time, say when we run the following program:</paragraph><literal_block classes="code" xml:space="preserve">f(12);</literal_block><paragraph>the meaning of <math>x</math> is unambiguous: its value is 12. In contrast,
-the meaning of <math>y</math> is not well-defined within <literal classes="code">f</literal>, because
-the occurrence of <math>y</math> in the body of <literal classes="code">f</literal> is free. This
+}</literal_block><paragraph>the value of <title_reference>x</title_reference> is not known until the function is called, but
+at run time, say when we run the following program:</paragraph><literal_block classes="code" xml:space="preserve">f(12);</literal_block><paragraph>the meaning of <title_reference>x</title_reference> is unambiguous: its value is 12. In contrast,
+the meaning of <title_reference>y</title_reference> is not well-defined within <title_reference>f</title_reference>, because
+the occurrence of <title_reference>y</title_reference> in the body of <title_reference>f</title_reference> is free. This
 example illustrates the crucial difference between free and bound
 variables in terms of semantics.</paragraph><paragraph>Now, the name of a function's parameter is chosen by the programmer to
 be short but evocative of the value that it stands for. So, in the
 example above, the programmer could have chosen to call the parameter
-<literal classes="code">time</literal> or <literal classes="code">t</literal>, yielding two other versions of this
+<title_reference>time</title_reference> or <title_reference>t</title_reference>, yielding two other versions of this
 function:</paragraph><literal_block classes="code" xml:space="preserve">function f(time) {                                  function f(t) {
      return 2 + time - y * time;                         return 2 + t - y * t;
-}                                                   }</literal_block><paragraph>The key point is that all three versions of the function <literal classes="code">f</literal>
+}                                                   }</literal_block><paragraph>The key point is that all three versions of the function <title_reference>f</title_reference>
 behave identically. They have the same meaning. A bound variable is
 just a placeholder for a value. The name of the placeholder does not
 matter as long as it is used consistently throughout the body of the
 function. The fact that bound variables can be renamed without
 changing the meaning of the function is embodied in the following rule
-of the lambda calculus.</paragraph><block_quote><raw format="xml" xml:space="preserve"><index>null</index></raw><paragraph><math>\alpha</math>-conversion (where <math>\alpha</math> is the lowercase
+of the lambda calculus.</paragraph><block_quote><raw format="xml" xml:space="preserve"><index>null</index></raw><paragraph><title_reference>alpha</title_reference>-conversion (where <title_reference>alpha</title_reference> is the lowercase
 Greek letter <title_reference>alpha</title_reference>) is the process of renaming the parameter
-in a function abstraction.</paragraph></block_quote><paragraph>For example, consider the identity function:</paragraph><math_block xml:space="preserve">\lambda x.x</math_block><paragraph>We can <math>\alpha</math>-convert this function using the variable
-<math>y</math> to yield the semantically identical function:</paragraph><math_block xml:space="preserve">\lambda y.y</math_block><paragraph>Of course, in this case, we could have <math>\alpha</math>-converted
-using any other variable, say <math>z</math>:</paragraph><math_block xml:space="preserve">\lambda z.z</math_block><paragraph>However, it is important to keep in mind that
-<math>\alpha</math>-conversion must not change the meaning of the function
+in a function abstraction.</paragraph></block_quote><paragraph>For example, consider the identity function:</paragraph><math_block xml:space="preserve">\lambda x.x</math_block><paragraph>We can <title_reference>alpha</title_reference>-convert this function using the variable
+<title_reference>y</title_reference> to yield the semantically identical function:</paragraph><math_block xml:space="preserve">\lambda y.y</math_block><paragraph>Of course, in this case, we could have <title_reference>alpha</title_reference>-converted
+using any other variable, say <title_reference>z</title_reference>:</paragraph><math_block xml:space="preserve">\lambda z.z</math_block><paragraph>However, it is important to keep in mind that
+<title_reference>alpha</title_reference>-conversion must not change the meaning of the function
 it operates on. In particular, all free variables inside the function
-must remain free after <math>\alpha</math>-conversion. This means that we
+must remain free after <title_reference>alpha</title_reference>-conversion. This means that we
 are not always allowed to pick just <emphasis>any</emphasis> variable when
-<math>\alpha</math>-converting a lambda abstraction. Consider the following example:</paragraph><math_block xml:space="preserve">(\lambda x.y\ x)</math_block><paragraph>This expression is a function application in which the constant
-function that always returns <math>y</math> (a free variable) is called on
-<math>x</math> (also a free variable). Can we <math>\alpha</math>-convert this
+<title_reference>alpha</title_reference>-converting a lambda abstraction. Consider the following example:</paragraph><math_block xml:space="preserve">(\lambda x.y\ x)</math_block><paragraph>This expression is a function application in which the constant
+function that always returns <title_reference>y</title_reference> (a free variable) is called on
+<title_reference>x</title_reference> (also a free variable). Can we <title_reference>alpha</title_reference>-convert this
 expression?  No, because it is a function application. However, we can
-<math>\alpha</math>-convert its first component, since it is a lambda
+<title_reference>alpha</title_reference>-convert its first component, since it is a lambda
 abstraction. Let's do so. Which variable can we choose? First, we will
-<math>\alpha</math>-convert with the variable <math>z</math>, yielding:</paragraph><math_block xml:space="preserve">(\lambda z.y\ x)</math_block><paragraph>This is perfectly acceptable. The meaning has not changed. In both
+<title_reference>alpha</title_reference>-convert with the variable <title_reference>z</title_reference>, yielding:</paragraph><math_block xml:space="preserve">(\lambda z.y\ x)</math_block><paragraph>This is perfectly acceptable. The meaning has not changed. In both
 this version and the original version of the application, the final
-value of the application will be <math>y</math>, since the function being
-called ignores its argument and always returns <math>y</math>.</paragraph><paragraph>However, if we <math>\alpha</math>-convert the lambda abstraction with the
-variable <math>y</math>, we get:</paragraph><math_block xml:space="preserve">(\lambda y.y\ x)</math_block><paragraph>This is not acceptable. The meaning has changed. In this version, the
-identity function is being applied to and will return <math>x</math>,
-instead of <math>y</math>.  Recall that, in the original application, both
-<math>y</math> (the body of the function) and <math>x</math> (the argument of
+value of the application will be <title_reference>y</title_reference>, since the function being
+called ignores its argument and always returns <title_reference>y</title_reference>.</paragraph><paragraph>However, if we <title_reference>alpha</title_reference>-convert the lambda abstraction with the
+variable <title_reference>y</title_reference>, we get:</paragraph><math_block xml:space="preserve">(\lambda y.y\ x)</math_block><paragraph>This is not acceptable. The meaning has changed. In this version, the
+identity function is being applied to and will return <title_reference>x</title_reference>,
+instead of <title_reference>y</title_reference>.  Recall that, in the original application, both
+<title_reference>y</title_reference> (the body of the function) and <title_reference>x</title_reference> (the argument of
 the function call) are free variables, which means that their meaning
 is not specified in this code fragment but must be provided by the
 context, that is, the larger program in which this application is
-embedded. In this larger program, <math>x</math> and <math>y</math> may well be
+embedded. In this larger program, <title_reference>x</title_reference> and <title_reference>y</title_reference> may well be
 bound to different values. Therefore, they do not have the same
-meaning and cannot be interchanged.</paragraph><paragraph>So what went wrong when we <math>\alpha</math>-converted the expression
-<math>\lambda x.y</math> using the variable <math>y</math> to yield
-<math>\lambda y.y</math>? The variable <math>y</math> in the body of the
-abstraction went from being free to being bound. We say that <math>y</math>
+meaning and cannot be interchanged.</paragraph><paragraph>So what went wrong when we <title_reference>alpha</title_reference>-converted the expression
+<title_reference>lambda x.y</title_reference> using the variable <title_reference>y</title_reference> to yield
+<title_reference>lambda y.y</title_reference>? The variable <title_reference>y</title_reference> in the body of the
+abstraction went from being free to being bound. We say that <title_reference>y</title_reference>
 underwent <title_reference>variable capture</title_reference> or, more simply, that it was
 <emphasis>captured</emphasis>.</paragraph><paragraph>Since variable captures alter the meaning of lambda expressions, we
 must avoid them at all costs. Fortunately, this is easy to achieve,
-using the following rule:</paragraph><block_quote><paragraph>When <math>\alpha</math>-converting a lambda abstraction, always choose
+using the following rule:</paragraph><block_quote><paragraph>When <title_reference>alpha</title_reference>-converting a lambda abstraction, always choose
 a <emphasis>new</emphasis> variable, that is, a variable that does not occur in the body
-of the function being <math>\alpha</math>-converted.</paragraph></block_quote></section><section ids="rp-15-part-1" names="rp\ 15\ part\ 1"><title>RP 15 part 1</title><paragraph>To practice the process of <math>\alpha</math>-conversion, complete the
+of the function being <title_reference>alpha</title_reference>-converted.</paragraph></block_quote></section><section ids="rp-15-part-1" names="rp\ 15\ part\ 1"><title>RP 15 part 1</title><paragraph>To practice the process of <title_reference>alpha</title_reference>-conversion, complete the
 following exercise. To earn credit for it, you will have to solve it
 correctly three times in a row.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="ka"
@@ -77,9 +77,9 @@ correctly three times in a row.</paragraph><raw format="xml" xml:space="preserve
     required="True"
     threshold="5">
 </avembed>
-</raw><paragraph>In conclusion, <math>\alpha</math>-conversion simply replaces the name of a
+</raw><paragraph>In conclusion, <title_reference>alpha</title_reference>-conversion simply replaces the name of a
 function parameter with a completely new name in order to avoid
-variable captures. <math>\alpha</math>-conversion will be quite useful to
+variable captures. <title_reference>alpha</title_reference>-conversion will be quite useful to
 us in the next section where we describe the main algorithm for
 determining the meaning of a lambda calculus program, namely the
 process of substitution.</paragraph></section></document>

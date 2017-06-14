@@ -5,26 +5,26 @@
 two kinds of variable occurrences: variable declaration and variable
 use. In the following JavaScript code fragment, for example:</paragraph><literal_block classes="code" xml:space="preserve">function (x) {
    return x + y;
-}</literal_block><paragraph>there are two occurrences of the variable <math>x</math>. The first
-occurrence of <math>x</math> (between parentheses) is the <emphasis>declaration</emphasis> of
-the parameter <math>x</math>, that is, the place where the variable is
+}</literal_block><paragraph>there are two occurrences of the variable <title_reference>x</title_reference>. The first
+occurrence of <title_reference>x</title_reference> (between parentheses) is the <emphasis>declaration</emphasis> of
+the parameter <title_reference>x</title_reference>, that is, the place where the variable is
 first introduced into the program. In contrast, the second occurrence
-of <math>x</math> is a <emphasis>use</emphasis> of the variable <math>x</math> (more precisely,
-<math>x</math> is being used as an operand for an addition operation). Is
-the occurrence of <math>y</math> in this program a variable declaration or a
+of <title_reference>x</title_reference> is a <emphasis>use</emphasis> of the variable <title_reference>x</title_reference> (more precisely,
+<title_reference>x</title_reference> is being used as an operand for an addition operation). Is
+the occurrence of <title_reference>y</title_reference> in this program a variable declaration or a
 variable use?</paragraph><paragraph>Each variable declaration defines a <title_reference>scope</title_reference> for that variable,
 that is, the section(s) of the program in which this variable is
 defined and usable. In the example above, the scope of the variable
-<math>x</math> is the body of the function. When the use of a variable, say
-<math>x</math>, appears within the scope of a declaration of <math>x</math>, we
+<title_reference>x</title_reference> is the body of the function. When the use of a variable, say
+<title_reference>x</title_reference>, appears within the scope of a declaration of <title_reference>x</title_reference>, we
 say that the former is <title_reference>bound</title_reference> to the latter, and the latter is
 the <title_reference>binding occurrence</title_reference> of the variable. So, in the example
-above, the declaration of <math>x</math> in parentheses is the binding
-occurrence of this variable and the use <math>x</math> on the next line is
+above, the declaration of <title_reference>x</title_reference> in parentheses is the binding
+occurrence of this variable and the use <title_reference>x</title_reference> on the next line is
 bound to this binding occurrence. A variable that is not bound is said
-to be <title_reference>free</title_reference>.  In the example above, the occurrence of <math>y</math>
+to be <title_reference>free</title_reference>.  In the example above, the occurrence of <title_reference>y</title_reference>
 is free in the body of the function, since this function does not
-contain any binding occurrence (i.e., declaration) of <math>y</math>.</paragraph><paragraph>Since there may be several declarations of a variable <math>x</math> inside
+contain any binding occurrence (i.e., declaration) of <title_reference>y</title_reference>.</paragraph><paragraph>Since there may be several declarations of a variable <title_reference>x</title_reference> inside
 a given program, there cannot be any ambiguity about which declaration
 of the variable each use of it is bound to. This is why each
 programming language must define a binding scheme. The lambda
@@ -37,18 +37,17 @@ use.</paragraph><paragraph>We are now ready to discuss the concepts of declarati
 variables, binding occurrence, free and bound variables, and lexical
 scoping in the context of the lambda calculus. Consider the following
 example:</paragraph><math_block xml:space="preserve">\lambda y.(\lambda x.x\ (y\ x))</math_block><paragraph>This lambda expression is a lambda abstraction whose parameter is
-<math>y</math> and whose body is the application of the identity function
-to the expression <math>(y\ x)</math>. Therefore, the <math>y</math> after the
-<math>\lambda</math> is the binding occurrence of the variable
-<math>y</math>. The scope of this declaration is <math>(\lambda x.x\ (y\
-x))</math>, which implies that the rightmost occurrence of <math>y</math> is
+<title_reference>y</title_reference> and whose body is the application of the identity function
+to the expression <title_reference>(yx)</title_reference>. Therefore, the <title_reference>y</title_reference> after the
+<title_reference>lambda</title_reference> is the binding occurrence of the variable
+<title_reference>y</title_reference>. The scope of this declaration is <title_reference>(lambda x.x(yx))</title_reference>, which implies that the rightmost occurrence of <title_reference>y</title_reference> is
 bound to the leftmost binding occurrence. In contrast, the scope of the
-binding occurrence of <math>x</math> in <math>\lambda x.x</math> is just the
-second <math>x</math> in it (that is, as always, the body of the lambda
-abstraction). As a result, the third, rightmost occurrence of <math>x</math>
-in the expression above is free: it is a use of <math>x</math> that
-does not belong to the scope of any declarations of <math>x</math>.</paragraph><paragraph>To summarize this example, going from left to right, the first
-occurrence of <math>x</math> is its binding occurrence, the second one is
+binding occurrence of <title_reference>x</title_reference> in <title_reference>lambda x.x</title_reference> is just the
+second <title_reference>x</title_reference> in it (that is, as always, the body of the lambda
+abstraction). As a result, the third, rightmost occurrence of <title_reference>x</title_reference>
+in the expression above is free: it is a use of <title_reference>x</title_reference> that
+does not belong to the scope of any declarations of <title_reference>x</title_reference>.</paragraph><paragraph>To summarize this example, going from left to right, the first
+occurrence of <title_reference>x</title_reference> is its binding occurrence, the second one is
 bound to the first one, and the third one is free. This example
 illustrates the fact that it is possible for any variable to occur
 both free and bound within the same expression. Therefore, it can be
@@ -82,29 +81,29 @@ pertaining to  lambda calculus, we need only consider the three types of
 lambda expressions defined in the lambda calculus grammar (see
 <title_reference>BNF grammar &lt;BNF grammar&gt; &lt;BNF-grammar-for-LC&gt;</title_reference>).
 For example, we say that any variable
-<math>x</math> occurs <title_reference>free</title_reference> in any lambda expression
-<math>E</math> if and only if:</paragraph><block_quote><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph><math>E</math> is a variable and <math>E</math> is identical to <math>x</math>, or</paragraph></list_item><list_item><paragraph><math>E</math> is of the form <math>(E_1\ E_2)</math> and <math>x</math> occurs
-free in either <math>E_1</math> or <math>E_2</math> (or both), or</paragraph></list_item><list_item><paragraph><math>E</math> is of the form <math>\lambda y.E'</math> where <math>y</math> is
-different from <math>x</math> and <math>x</math> occurs free in <math>E'</math>.</paragraph></list_item></enumerated_list></block_quote><paragraph>Notice that the recursion in cases 2 and 3 above mirrors the recursion
+<title_reference>x</title_reference> occurs <title_reference>free</title_reference> in any lambda expression
+<title_reference>E</title_reference> if and only if:</paragraph><block_quote><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph><title_reference>E</title_reference> is a variable and <title_reference>E</title_reference> is identical to <title_reference>x</title_reference>, or</paragraph></list_item><list_item><paragraph><title_reference>E</title_reference> is of the form <title_reference>(E_1E_2)</title_reference> and <title_reference>x</title_reference> occurs
+free in either <title_reference>E_1</title_reference> or <title_reference>E_2</title_reference> (or both), or</paragraph></list_item><list_item><paragraph><title_reference>E</title_reference> is of the form <title_reference>lambda y.E'</title_reference> where <title_reference>y</title_reference> is
+different from <title_reference>x</title_reference> and <title_reference>x</title_reference> occurs free in <title_reference>E'</title_reference>.</paragraph></list_item></enumerated_list></block_quote><paragraph>Notice that the recursion in cases 2 and 3 above mirrors the recursion
 in the lambda calculus grammar. The following table illustrates
-all cases of this definition.</paragraph><table classes="colwidths-given"><tgroup cols="4"><colspec colwidth="1"></colspec><colspec colwidth="1"></colspec><colspec colwidth="2"></colspec><colspec colwidth="8"></colspec><thead><row><entry><paragraph><math>E</math></paragraph></entry><entry><paragraph>Case</paragraph></entry><entry><paragraph>Does <math>x</math> occur free in <math>E</math>?</paragraph></entry><entry><paragraph>Explanation</paragraph></entry></row></thead><tbody><row><entry><paragraph><math>x</math></paragraph></entry><entry><paragraph>1</paragraph></entry><entry><paragraph>yes, because ...</paragraph></entry><entry><paragraph>... <math>x</math> appears in (is equal to) <math>E</math> and <math>E</math>
-does not contain any binding occurrences (no <math>\lambda</math>).</paragraph></entry></row><row><entry><paragraph><math>y</math></paragraph></entry><entry><paragraph>1</paragraph></entry><entry><paragraph>no, because ...</paragraph></entry><entry><paragraph>... <math>x</math> does not occur in <math>E</math> and thus cannot occur free
-in it.</paragraph></entry></row><row><entry><paragraph><math>(x\ y)</math></paragraph></entry><entry><paragraph>2</paragraph></entry><entry><paragraph>yes, because ...</paragraph></entry><entry><paragraph>... <math>x</math> occurs free in the first component of the function
-application (recursive application of case 1).</paragraph></entry></row><row><entry><paragraph><math>(y\ x)</math></paragraph></entry><entry><paragraph>2</paragraph></entry><entry><paragraph>yes, because ...</paragraph></entry><entry><paragraph>... <math>x</math> occurs free in the second component of the function
-application (recursive application of case 1).</paragraph></entry></row><row><entry><paragraph><math>(y\ z)</math></paragraph></entry><entry><paragraph>2</paragraph></entry><entry><paragraph>no, because ...</paragraph></entry><entry><paragraph>... <math>x</math> occurs free in neither the first nor the second component
-of the function application (doubly recursive application of case 1).</paragraph></entry></row><row><entry><paragraph><math>\lambda z.x</math></paragraph></entry><entry><paragraph>3</paragraph></entry><entry><paragraph>yes, because ...</paragraph></entry><entry><paragraph>... <math>x</math> is different from <math>z</math> (the parameter of the lambda
-abstraction) and <math>x</math> occurs free in the body of the lambda
+all cases of this definition.</paragraph><table><title>1 1 2 8</title><tgroup cols="4"><colspec colwidth="25"></colspec><colspec colwidth="25"></colspec><colspec colwidth="25"></colspec><colspec colwidth="25"></colspec><thead><row><entry><paragraph><title_reference>E</title_reference></paragraph></entry><entry><paragraph>Case</paragraph></entry><entry><paragraph>Does <title_reference>x</title_reference> occur free in <title_reference>E</title_reference>?</paragraph></entry><entry><paragraph>Explanation</paragraph></entry></row></thead><tbody><row><entry><paragraph><title_reference>x</title_reference></paragraph></entry><entry><paragraph>1</paragraph></entry><entry><paragraph>yes, because ...</paragraph></entry><entry><paragraph>... <title_reference>x</title_reference> appears in (is equal to) <title_reference>E</title_reference> and <title_reference>E</title_reference>
+does not contain any binding occurrences (no <title_reference>lambda</title_reference>).</paragraph></entry></row><row><entry><paragraph><title_reference>y</title_reference></paragraph></entry><entry><paragraph>1</paragraph></entry><entry><paragraph>no, because ...</paragraph></entry><entry><paragraph>... <title_reference>x</title_reference> does not occur in <title_reference>E</title_reference> and thus cannot occur free
+in it.</paragraph></entry></row><row><entry><paragraph><title_reference>(xy)</title_reference></paragraph></entry><entry><paragraph>2</paragraph></entry><entry><paragraph>yes, because ...</paragraph></entry><entry><paragraph>... <title_reference>x</title_reference> occurs free in the first component of the function
+application (recursive application of case 1).</paragraph></entry></row><row><entry><paragraph><title_reference>(yx)</title_reference></paragraph></entry><entry><paragraph>2</paragraph></entry><entry><paragraph>yes, because ...</paragraph></entry><entry><paragraph>... <title_reference>x</title_reference> occurs free in the second component of the function
+application (recursive application of case 1).</paragraph></entry></row><row><entry><paragraph><title_reference>(yz)</title_reference></paragraph></entry><entry><paragraph>2</paragraph></entry><entry><paragraph>no, because ...</paragraph></entry><entry><paragraph>... <title_reference>x</title_reference> occurs free in neither the first nor the second component
+of the function application (doubly recursive application of case 1).</paragraph></entry></row><row><entry><paragraph><title_reference>lambda z.x</title_reference></paragraph></entry><entry><paragraph>3</paragraph></entry><entry><paragraph>yes, because ...</paragraph></entry><entry><paragraph>... <title_reference>x</title_reference> is different from <title_reference>z</title_reference> (the parameter of the lambda
+abstraction) and <title_reference>x</title_reference> occurs free in the body of the lambda
 abstraction (recursive application of case 1). Note that the body is what
 is left of the lambda abstraction after the binding occurrence (i.e.,
-<math>\lambda z.</math>) is removed.</paragraph></entry></row><row><entry><paragraph><math>\lambda z.z</math></paragraph></entry><entry><paragraph>3</paragraph></entry><entry><paragraph>no, because ...</paragraph></entry><entry><paragraph>... <math>x</math> is different from <math>z</math> (the parameter of the lambda
-abstraction) and <math>x</math> does not occur (at all, and thus not free
-either) in the body of the lambda abstraction.</paragraph></entry></row><row><entry><paragraph><math>\lambda z.\lambda x.x</math></paragraph></entry><entry><paragraph>3</paragraph></entry><entry><paragraph>no, because ...</paragraph></entry><entry><paragraph>... <math>x</math> is different from <math>z</math> (the parameter of the lambda
-abstraction) but <math>x</math> does not occur free in the body of the lambda
+<title_reference>lambda z.</title_reference>) is removed.</paragraph></entry></row><row><entry><paragraph><title_reference>lambda z.z</title_reference></paragraph></entry><entry><paragraph>3</paragraph></entry><entry><paragraph>no, because ...</paragraph></entry><entry><paragraph>... <title_reference>x</title_reference> is different from <title_reference>z</title_reference> (the parameter of the lambda
+abstraction) and <title_reference>x</title_reference> does not occur (at all, and thus not free
+either) in the body of the lambda abstraction.</paragraph></entry></row><row><entry><paragraph><title_reference>lambda z.lambda x.x</title_reference></paragraph></entry><entry><paragraph>3</paragraph></entry><entry><paragraph>no, because ...</paragraph></entry><entry><paragraph>... <title_reference>x</title_reference> is different from <title_reference>z</title_reference> (the parameter of the lambda
+abstraction) but <title_reference>x</title_reference> does not occur free in the body of the lambda
 abstraction (recursive application of case 3). Note that the body in
-this case is the lambda abstraction <math>\lambda x.x</math>.</paragraph></entry></row><row><entry><paragraph><math>\lambda x.y</math> or <math>\lambda x.x</math></paragraph></entry><entry><paragraph>3</paragraph></entry><entry><paragraph>no, because ...</paragraph></entry><entry><paragraph>... <math>x</math> is identical to the parameter of the lambda
-abstraction <math>E</math>. <math>x</math> cannot be free in <math>E</math>
-since any free occurrences of <math>x</math> in the body of <math>E</math>
-would become bound in <math>E</math> by the leading binding
-occurrence of <math>x</math>.</paragraph></entry></row></tbody></tgroup></table><paragraph>The reason we devoted a whole section to the notions of free and bound
+this case is the lambda abstraction <title_reference>lambda x.x</title_reference>.</paragraph></entry></row><row><entry><paragraph><title_reference>lambda x.y</title_reference> or <title_reference>lambda x.x</title_reference></paragraph></entry><entry><paragraph>3</paragraph></entry><entry><paragraph>no, because ...</paragraph></entry><entry><paragraph>... <title_reference>x</title_reference> is identical to the parameter of the lambda
+abstraction <title_reference>E</title_reference>. <title_reference>x</title_reference> cannot be free in <title_reference>E</title_reference>
+since any free occurrences of <title_reference>x</title_reference> in the body of <title_reference>E</title_reference>
+would become bound in <title_reference>E</title_reference> by the leading binding
+occurrence of <title_reference>x</title_reference>.</paragraph></entry></row></tbody></tgroup></table><paragraph>The reason we devoted a whole section to the notions of free and bound
 variables is because we will invoke them repeatedly throughout this
 chapter, starting in the next section.</paragraph></section></document>

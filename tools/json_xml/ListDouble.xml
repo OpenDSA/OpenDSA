@@ -89,8 +89,8 @@ Thus, this is an example of a
 space/time tradeoff.
 It is based on observing that, if we store the sum of two values,
 then we can get either value back by subtracting the other.
-That is, if we store <math>a + b</math> in variable <math>c</math>, then
-<math>b = c - a</math> and <math>a = c - b</math>.
+That is, if we store <title_reference>a + b</title_reference> in variable <title_reference>c</title_reference>, then
+<title_reference>b = c - a</title_reference> and <title_reference>a = c - b</title_reference>.
 Of course, to recover one of the values out of the stored summation,
 the other value must be supplied.
 A pointer to the first node in the list, along with the value of one

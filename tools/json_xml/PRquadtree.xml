@@ -28,53 +28,53 @@ and the corresponding PR quadtree in
 Figure <title_reference>Figure #PRExamp</title_reference> (b).
 The decomposition process demands a fixed key range.
 In this example, the region is assumed to be of size
-<math>128 \times 128</math>.
+<title_reference>128 times 128</title_reference>.
 Note that the internal nodes of the PR quadtree are used solely to
 indicate decomposition of the region; internal nodes do not store data
 records.
 Because the decomposition lines are predetermined (i.e, key-space
-decomposition is used), the PR quadtree is a trie.</paragraph><paragraph>Search for a record matching point <math>Q</math> in the PR quadtree is
+decomposition is used), the PR quadtree is a trie.</paragraph><paragraph>Search for a record matching point <title_reference>Q</title_reference> in the PR quadtree is
 straightforward.
 Beginning at the root, we continuously branch to the quadrant that
-contains <math>Q</math> until our search reaches a leaf node.
+contains <title_reference>Q</title_reference> until our search reaches a leaf node.
 If the root is a leaf, then just check to see if the node's data
-record matches point <math>Q</math>.
+record matches point <title_reference>Q</title_reference>.
 If the root is an internal node, proceed to the child that contains
 the search coordinate.
 For example, the NW quadrant of Figure <title_reference>Figure #PRExamp</title_reference> contains
-points whose <math>x</math> and <math>y</math> values each fall in the range 0 to 63.
-The NE quadrant contains points whose <math>x</math> value falls in the range
-64 to 127, and whose <math>y</math> value falls in the range 0 to 63.
+points whose <title_reference>x</title_reference> and <title_reference>y</title_reference> values each fall in the range 0 to 63.
+The NE quadrant contains points whose <title_reference>x</title_reference> value falls in the range
+64 to 127, and whose <title_reference>y</title_reference> value falls in the range 0 to 63.
 If the root's child is a leaf node, then that child is checked to see
-if <math>Q</math> has been found.
+if <title_reference>Q</title_reference> has been found.
 If the child is another internal node, the search process continues
 through the tree until a leaf node is found.
-If this leaf node stores a record whose position matches <math>Q</math> then
-the query is successful; otherwise <math>Q</math> is not in the tree.</paragraph><paragraph>Inserting record <math>P</math> into the PR quadtree is performed by first
-locating the leaf node that contains the location of <math>P</math>.
-If this leaf node is empty, then <math>P</math> is stored at this
+If this leaf node stores a record whose position matches <title_reference>Q</title_reference> then
+the query is successful; otherwise <title_reference>Q</title_reference> is not in the tree.</paragraph><paragraph>Inserting record <title_reference>P</title_reference> into the PR quadtree is performed by first
+locating the leaf node that contains the location of <title_reference>P</title_reference>.
+If this leaf node is empty, then <title_reference>P</title_reference> is stored at this
 leaf.
-If the leaf already contains <math>P</math> (or a record with <math>P</math>'s
+If the leaf already contains <title_reference>P</title_reference> (or a record with <title_reference>P</title_reference>'s
 coordinates), then a duplicate record should be reported.
 If the leaf node already contains another record, then the node
-must be repeatedly decomposed until the existing record and <math>P</math>
+must be repeatedly decomposed until the existing record and <title_reference>P</title_reference>
 fall into different leaf nodes.
-Figure <title_reference>Figure #PRinsert</title_reference> shows an example of such an insertion.</paragraph><target refid="prinsert"></target><raw format="xml" ids="prinsert" names="prinsert" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>Deleting a record <math>P</math> is performed by first locating the
-node <math>N</math> of the PR quadtree that contains <math>P</math>.
-Node <math>N</math> is then changed to be empty.
-The next step is to look at <math>N</math>'s three siblings.
-<math>N</math> and its siblings must be merged together to form a single
-node <math>N'</math> if only one point is contained among them.
+Figure <title_reference>Figure #PRinsert</title_reference> shows an example of such an insertion.</paragraph><target refid="prinsert"></target><raw format="xml" ids="prinsert" names="prinsert" xml:space="preserve"><odsafig>null</odsafig></raw><paragraph>Deleting a record <title_reference>P</title_reference> is performed by first locating the
+node <title_reference>N</title_reference> of the PR quadtree that contains <title_reference>P</title_reference>.
+Node <title_reference>N</title_reference> is then changed to be empty.
+The next step is to look at <title_reference>N</title_reference>'s three siblings.
+<title_reference>N</title_reference> and its siblings must be merged together to form a single
+node <title_reference>N'</title_reference> if only one point is contained among them.
 This merging process continues until some level is reached at which
 at least two points are contained in the subtrees represented by
-node <math>N'</math> and its siblings.
-For example, if point <math>C</math> is to be deleted from the PR quadtree
+node <title_reference>N'</title_reference> and its siblings.
+For example, if point <title_reference>C</title_reference> is to be deleted from the PR quadtree
 representing Figure <title_reference>Figure #PRinsert</title_reference> (b), the resulting node must
 be merged with its siblings, and that larger node again merged with
 its siblings to restore the PR quadtree to the decomposition of
 Figure <title_reference>Figure #PRinsert</title_reference> (a).</paragraph><paragraph>Region search is easily performed with the PR quadtree.
-To locate all points within radius <math>r</math> of query
-point <math>Q</math>, begin at the root.
+To locate all points within radius <title_reference>r</title_reference> of query
+point <title_reference>Q</title_reference>, begin at the root.
 If the root is an empty leaf node, then no data points are found.
 If the root is a leaf containing a data record, then the location of
 the data point is examined to determine if it falls within the

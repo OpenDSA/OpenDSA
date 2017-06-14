@@ -12,21 +12,21 @@ factorial function:</paragraph><math_block xml:space="preserve">n! = (n-1)! \cdo
 sequence:</paragraph><block_quote><math_block xml:space="preserve">\mbox{Fib}(n) = \mbox{Fib}(n-1) + \mbox{Fib}(n-2)\ \mbox{for}\ n&gt;2;
 \quad\mbox{Fib}(1) = \mbox{Fib}(2) = 1.</math_block></block_quote><paragraph>From this definition, the first seven numbers of the
 Fibonacci sequence are</paragraph><math_block xml:space="preserve">1, 1, 2, 3, 5, 8,\ \mbox{and}\ 13.</math_block><paragraph>Notice that this definition contains two parts: the general
-definition for <math>\mbox{Fib}(n)</math> and the base cases for
-<math>\mbox{Fib}(1)</math> and <math>\mbox{Fib}(2)</math>.
+definition for <title_reference>mbox{Fib}(n)</title_reference> and the base cases for
+<title_reference>mbox{Fib}(1)</title_reference> and <title_reference>mbox{Fib}(2)</title_reference>.
 Likewise, the definition for factorial contains a recursive part and
 base cases.</paragraph><paragraph>Recurrence relations are often used to model the cost of recursive
 functions.
 For example, the number of multiplications required by a recursive
 version of the factorial function for an input of size
-<math>n</math> will be zero when <math>n = 0</math> or <math>n = 1</math> (the base
+<title_reference>n</title_reference> will be zero when <title_reference>n = 0</title_reference> or <title_reference>n = 1</title_reference> (the base
 cases), and it will be one plus the cost of calling <literal>fact</literal> on a
-value of <math>n-1</math>.
+value of <title_reference>n-1</title_reference>.
 This can be defined using the following recurrence:</paragraph><math_block xml:space="preserve">\mathbf{T}(n) = \mathbf{T}(n-1) + 1\ \mbox{for}\ n&gt;1;
 \quad \mathbf{T}(0) = \mathbf{T}(1) = 0.</math_block><paragraph>As with summations, we typically wish to replace the recurrence
 relation with a closed-form solution.
 One approach is to expand the recurrence by replacing any
-occurrences of <math>\mathbf{T}</math> on the right-hand side with its
+occurrences of <title_reference>mathbf{T}</title_reference> on the right-hand side with its
 definition.</paragraph><raw format="xml" xml:space="preserve"><inlineav
     type="ss"
     exer_name="LinearRecurrencesCON"

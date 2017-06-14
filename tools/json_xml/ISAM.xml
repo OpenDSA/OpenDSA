@@ -12,11 +12,11 @@ somehow be broken into pieces such that individual updates affect only
 a part of the index.
 This concept will be pursued throughout the rest of this chapter,
 eventually culminating in the
-<math>\mathrm{B}^+</math> Tree
+<title_reference>mathrm{B}^+</title_reference> Tree
 the most widely used indexing method today.
 But first, we begin by studying ISAM, an early attempt to solve the
 problem of large databases requiring frequent update.
-Its weaknesses help to illustrate why the <math>\mathrm{B}^+</math> Tree
+Its weaknesses help to illustrate why the <title_reference>mathrm{B}^+</title_reference> Tree
 works so well.</paragraph><paragraph>Before the invention of effective tree indexing
 schemes, a variety of disk-based indexing methods were in use.
 All were rather cumbersome, largely because no adequate method for

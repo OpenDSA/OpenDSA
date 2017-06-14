@@ -11,18 +11,18 @@ find the record within a collection of records that has
 a particular key value, or those records in a collection whose key
 values meet some criterion such as falling within a range of
 values.</paragraph><paragraph>We can define searching formally as follows.
-Suppose that we have a collection <strong>L</strong> of <math>n</math> records of the
-form</paragraph><math_block xml:space="preserve">(k_1, I_1), (k_2, I_2), ..., (k_n, I_n)</math_block><paragraph>where <math>I_j</math> is information associated with key <math>k_j</math>
-from record <math>j</math> for <math>1 \leq j \leq n</math>.
-Given a particular key value <math>K</math>,
+Suppose that we have a collection <strong>L</strong> of <title_reference>n</title_reference> records of the
+form</paragraph><math_block xml:space="preserve">(k_1, I_1), (k_2, I_2), ..., (k_n, I_n)</math_block><paragraph>where <title_reference>I_j</title_reference> is information associated with key <title_reference>k_j</title_reference>
+from record <title_reference>j</title_reference> for <title_reference>1 leq j leq n</title_reference>.
+Given a particular key value <title_reference>K</title_reference>,
 the <title_reference>search problem</title_reference> is to locate a record
-<math>(k_j, I_j)</math> in <strong>L</strong> such that <math>k_j = K</math>
+<title_reference>(k_j, I_j)</title_reference> in <strong>L</strong> such that <title_reference>k_j = K</title_reference>
 (if one exists).
 <title_reference>Searching</title_reference> is a systematic method for
-locating the record (or records) with key value <math>k_j = K</math>.</paragraph><paragraph>A <title_reference>successful search</title_reference> is one in which a record with key
-<math>k_j = K</math> is found.
+locating the record (or records) with key value <title_reference>k_j = K</title_reference>.</paragraph><paragraph>A <title_reference>successful search</title_reference> is one in which a record with key
+<title_reference>k_j = K</title_reference> is found.
 An <title_reference>unsuccessful search</title_reference> is one in which no record with
-<math>k_j = K</math> is found (and no such record exists).</paragraph><paragraph>An <title_reference>exact-match query</title_reference> is a search for the record whose key
+<title_reference>k_j = K</title_reference> is found (and no such record exists).</paragraph><paragraph>An <title_reference>exact-match query</title_reference> is a search for the record whose key
 value matches a specified key value.
 A <title_reference>range query</title_reference> is a search for all records whose key value
 falls within a specified range of key values.</paragraph><paragraph>We can categorize search algorithms into three general

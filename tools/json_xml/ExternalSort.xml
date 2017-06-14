@@ -157,7 +157,7 @@ followed by processing of sub-subarrays, and so on.
 As the subarrays get smaller, processing quickly approaches
 random access to the disk drive.
 Even with maximum use of the buffer pool, Quicksort still must read
-and write each record <math>\log n</math> times on average.
+and write each record <title_reference>log n</title_reference> times on average.
 We can do much better.
 Finally, even if the virtual memory manager can give good performance
 using a standard Quicksort, this will come at the cost of using a lot
@@ -207,9 +207,9 @@ for each file.
 This typically means that each of the input and output files must be
 on separate disk drives, requiring a total of four disk drives for
 maximum efficiency.</paragraph></section><section ids="improving-performance" names="improving\ performance"><title>Improving Performance</title><paragraph>The external Mergesort algorithm just described requires that
-<math>\log n</math> passes be made to sort a file of <math>n</math> records.
+<title_reference>log n</title_reference> passes be made to sort a file of <title_reference>n</title_reference> records.
 Thus, each record must be read from disk and written to disk
-<math>\log n</math> times.
+<title_reference>log n</title_reference> times.
 The number of passes can be significantly reduced by observing that
 it is not necessary to use Mergesort on small runs.
 A simple modification is to read in a block of data, sort it in
@@ -245,19 +245,19 @@ As mentioned previously, a simple approach is to
 allocate as much RAM as possible to a large array, fill this array
 from disk, and sort the array using
 Quicksort.
-Thus, if the size of memory available for the array is <math>M</math>
+Thus, if the size of memory available for the array is <title_reference>M</title_reference>
 records,
 then the input file can be broken into initial runs of length <title_reference>M</title_reference>.
 A better approach is to use an algorithm called
 <title_reference>replacement selection</title_reference> that, on average, creates runs of
-<math>2M</math> records in length.
+<title_reference>2M</title_reference> records in length.
 Replacement selection is actually a slight variation on the Heapsort
 algorithm.
 The fact that Heapsort is slower than Quicksort is
 irrelevant in this context because I/O time will dominate the total
 running time of any reasonable external sorting algorithm.
 Building longer initial runs will reduce the total I/O time required.</paragraph><paragraph>Replacement selection views RAM as consisting of an array of
-size <math>M</math> in addition to an input buffer and an output buffer.
+size <title_reference>M</title_reference> in addition to an input buffer and an output buffer.
 (Additional I/O buffers might be desirable if the
 operating system supports double buffering,
 because replacement selection does sequential
@@ -282,14 +282,14 @@ This process is illustrated by Figure <title_reference>Figure #RSOver</title_ref
     threshold="1.0">
 </inlineav>
 </raw><paragraph>Replacement selection works as follows.
-Assume that the main processing is done in an array of size <math>M</math>
+Assume that the main processing is done in an array of size <title_reference>M</title_reference>
 records.</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph>Fill the array from disk.  Set <literal>LAST = M-1</literal>.</paragraph></list_item><list_item><paragraph>Build a min-heap.
 (Recall that a min-heap is defined such that the
 record at each node has a key value <emphasis>less</emphasis> than the key values of
 its children.)</paragraph></list_item><list_item><paragraph>Repeat until the array is empty:</paragraph><enumerated_list enumtype="loweralpha" prefix="(" suffix=")"><list_item><paragraph>Send the record with the minimum key value (the root) to the
-output buffer.</paragraph></list_item><list_item><paragraph>Let <math>R</math> be the next record in the input buffer.
-If <math>R</math> 's key value is greater than the key value just output ...</paragraph><enumerated_list enumtype="lowerroman" prefix="" suffix="."><list_item><paragraph>Then place <math>R</math> at the root.</paragraph></list_item><list_item><paragraph>Else replace the root with the record in array position
-<literal>LAST</literal>, and place <math>R</math> at position <literal>LAST</literal>.
+output buffer.</paragraph></list_item><list_item><paragraph>Let <title_reference>R</title_reference> be the next record in the input buffer.
+If <title_reference>R</title_reference> 's key value is greater than the key value just output ...</paragraph><enumerated_list enumtype="lowerroman" prefix="" suffix="."><list_item><paragraph>Then place <title_reference>R</title_reference> at the root.</paragraph></list_item><list_item><paragraph>Else replace the root with the record in array position
+<literal>LAST</literal>, and place <title_reference>R</title_reference> at position <literal>LAST</literal>.
 Set <literal>LAST = LAST - 1</literal>.</paragraph></list_item></enumerated_list></list_item><list_item><paragraph>Sift down the root to reorder the heap.</paragraph></list_item></enumerated_list></list_item></enumerated_list><paragraph>When the test at step 3(b) is successful, a new record is added
 to the heap, eventually to be output as part of the run.
 As long as records coming from the input file have key values
@@ -317,14 +317,14 @@ by replacement selection.</paragraph><raw format="xml" xml:space="preserve"><inl
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>It should be clear that the minimum length of a run will be <math>M</math>
-records if the size of the heap is <math>M</math>, because at least those
+</raw><paragraph>It should be clear that the minimum length of a run will be <title_reference>M</title_reference>
+records if the size of the heap is <title_reference>M</title_reference>, because at least those
 records originally in the heap will be part of the run.
 Under good conditions (e.g., if the input is sorted), then an
 arbitrarily long run is possible.
 In fact, the entire file could be processed as one run.
 If conditions are bad (e.g., if the input is reverse sorted),
-then runs of only size <math>M</math> result.</paragraph><paragraph>What is the expected length of a run generated by replacement
+then runs of only size <title_reference>M</title_reference> result.</paragraph><paragraph>What is the expected length of a run generated by replacement
 selection?
 It can be deduced from an analogy called the
 <title_reference>snowplow argument</title_reference>.
@@ -336,19 +336,19 @@ Immediately behind the plow, the track is empty because it was just
 plowed.
 The greatest level of snow on the track is immediately in front of the
 plow, because this is the place least recently plowed.
-At any instant, there is a certain amount of snow <math>S</math> on the
+At any instant, there is a certain amount of snow <title_reference>S</title_reference> on the
 track.
 Snow is constantly falling throughout the track at a steady rate,
 with some snow falling "in front" of the plow and some "behind"
 the plow.
 (On a circular track, everything is actually "in front" of
 the plow, but Figure~ref{SnowPlow} illustrates the idea.)
-During the next revolution of the plow, all snow <math>S</math> on the
+During the next revolution of the plow, all snow <title_reference>S</title_reference> on the
 track is removed, plus half of what falls.
 Because everything is assumed to be in steady state, after one
-revolution <math>S</math> snow is still on the track, so <math>2S</math> snow
-must fall during a revolution, and <math>2S</math> snow is removed during a
-revolution (leaving <math>S</math> snow behind).</paragraph><target refid="snowplow"></target><raw format="xml" ids="snowplow" names="snowplow" xml:space="preserve"><inlineav
+revolution <title_reference>S</title_reference> snow is still on the track, so <title_reference>2S</title_reference> snow
+must fall during a revolution, and <title_reference>2S</title_reference> snow is removed during a
+revolution (leaving <title_reference>S</title_reference> snow behind).</paragraph><target refid="snowplow"></target><raw format="xml" ids="snowplow" names="snowplow" xml:space="preserve"><inlineav
     type="dgm"
     exer_name="extSortSnowCON"
     long_name="extSortSnowCON"
@@ -380,11 +380,11 @@ change the length of the run.</paragraph><raw format="xml" xml:space="preserve">
 </avembed>
 </raw></section></section><section ids="multiway-merging" names="multiway\ merging"><title>Multiway Merging</title><paragraph>The second stage of a typical external sorting algorithm merges the
 runs created by the first stage.
-Assume that we have <math>R</math> runs to merge.
-If a simple two-way merge is used, then <math>R</math> runs
-(regardless of their sizes) will require <math>\log R</math> passes through
+Assume that we have <title_reference>R</title_reference> runs to merge.
+If a simple two-way merge is used, then <title_reference>R</title_reference> runs
+(regardless of their sizes) will require <title_reference>log R</title_reference> passes through
 the file.
-While <math>R</math> should be much less than the total number of records
+While <title_reference>R</title_reference> should be much less than the total number of records
 (because the initial runs should each contain many records),
 we would like to reduce still further the number of passes required
 to merge the runs together.
@@ -401,9 +401,9 @@ merge process.</paragraph><paragraph>We can make better use of this space and at
 reduce the number of passes needed to merge the runs if we merge
 several runs at a time.
 Multiway merging is similar to two-way merging.
-If we have <math>B</math> runs to merge, with a block from each run
-available in memory, then the <math>B</math>-way merge algorithm simply
-looks at <math>B</math> values (the front-most value for each input run)
+If we have <title_reference>B</title_reference> runs to merge, with a block from each run
+available in memory, then the <title_reference>B</title_reference>-way merge algorithm simply
+looks at <title_reference>B</title_reference> values (the front-most value for each input run)
 and selects the smallest one to output.
 This value is removed from its run, and the process is repeated.
 When the current block for any run is exhausted, the next block from
@@ -446,19 +446,19 @@ initial runs in one pass, and multiway merging can merge all runs in
 one pass, yielding a total cost of two passes.
 However, for truly large files, there might be too many runs for each
 to get a block in memory.
-If there is room to allocate <math>B</math> blocks for a <math>B</math>-way
-merge, and the number of runs <math>R</math> is greater than <math>B</math>,
+If there is room to allocate <title_reference>B</title_reference> blocks for a <title_reference>B</title_reference>-way
+merge, and the number of runs <title_reference>R</title_reference> is greater than <title_reference>B</title_reference>,
 then it will be necessary to do multiple merge passes.
-In other words, the first <math>B</math> runs are merged, then the next
-<math>B</math>, and so on.
+In other words, the first <title_reference>B</title_reference> runs are merged, then the next
+<title_reference>B</title_reference>, and so on.
 These super-runs are then merged by subsequent passes,
-<math>B</math> super-runs at a time.</paragraph><paragraph>How big a file can be merged in one pass?
-Assuming <math>B</math> blocks were allocated to the heap for
-replacement selection (resulting in runs of average length <math>2B</math>
-blocks), followed by a <math>B</math>-way merge, we can process
+<title_reference>B</title_reference> super-runs at a time.</paragraph><paragraph>How big a file can be merged in one pass?
+Assuming <title_reference>B</title_reference> blocks were allocated to the heap for
+replacement selection (resulting in runs of average length <title_reference>2B</title_reference>
+blocks), followed by a <title_reference>B</title_reference>-way merge, we can process
 on average a file of size (2B^2) blocks in a single multiway merge.
-<math>2B^{k+1}</math> blocks on average can be processed in <math>k</math>
-<math>B</math>-way merges.
+<title_reference>2B^{k+1}</title_reference> blocks on average can be processed in <title_reference>k</title_reference>
+<title_reference>B</title_reference>-way merges.
 To gain some appreciation for how quickly this grows, assume that we
 have available 0.5MB of working memory, and that a block is
 4KB, yielding 128 blocks in working memory.
@@ -468,7 +468,7 @@ Thus, a file of size 128MB can, on average, be processed in two
 passes (one to build the runs, one to do the merge) with only
 0.5MB of working memory.
 As another example, assume blocks are 1KB long and working memory
-is 1MB <math>=</math> 1024 blocks.
+is 1MB <title_reference>=</title_reference> 1024 blocks.
 Then 1024 runs of average length 2MB (which is about 2GB) can be
 combined in a single merge pass.
 A larger block size would reduce the size of the file that can be
@@ -485,7 +485,7 @@ sort various-sized files for the following implementations:
 (1) standard Mergesort with two input runs and two output runs,
 (2) two-way Mergesort with large initial runs (limited by the size of
 available memory),
-and (3) <math>R</math>-way Mergesort performed after generating large
+and (3) <title_reference>R</title_reference>-way Mergesort performed after generating large
 initial runs.
 In each case, the file was composed of a series of four-byte records
 (a two-byte key and a two-byte data value),
@@ -494,9 +494,9 @@ We can see from this table that using even a modest memory size (two
 blocks) to create initial runs results in a tremendous savings in
 time.
 Doing 4-way merges of the runs provides another considerable speedup,
-however large-scale multi-way merges for <math>R</math> beyond about 4 or 8
+however large-scale multi-way merges for <title_reference>R</title_reference> beyond about 4 or 8
 runs does not help much because a lot of time is spent determining
-which is the next smallest element among the <math>R</math> runs.</paragraph><target refid="exsorttimes"></target><topic ids="exsorttimes" names="exsorttimes"><title>Table</title><paragraph>A comparison of three external sorts on a collection of small
+which is the next smallest element among the <title_reference>R</title_reference> runs.</paragraph><target refid="exsorttimes"></target><topic ids="exsorttimes" names="exsorttimes"><title>Table</title><paragraph>A comparison of three external sorts on a collection of small
 records for files of various sizes.
 Each entry in the table shows time in seconds and total number of
 blocks read and written by the program.

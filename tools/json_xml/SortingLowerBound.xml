@@ -19,28 +19,28 @@ that must be written.
 Certainly no algorithm can be more efficient than the problem's
 I/O time.
 From this we see that the sorting problem cannot be solved by
-<emphasis>any</emphasis> algorithm in less than <math>\Omega(n)</math> time because it
-takes at least <math>n</math> steps to read and write the <math>n</math> values
+<emphasis>any</emphasis> algorithm in less than <title_reference>Omega(n)</title_reference> time because it
+takes at least <title_reference>n</title_reference> steps to read and write the <title_reference>n</title_reference> values
 to be sorted.
 Alternatively, any sorting algorithm must at least look at every input
 value to recognize whether the input values are in sorted order.
 So, based on our current knowledge of sorting algorithms and the
 size of the input, we know that the <emphasis>problem</emphasis> of sorting is
-bounded by <math>\Omega(n)</math> and <math>O(n \log n)</math>.</paragraph><paragraph>Computer scientists have spent much time devising efficient
+bounded by <title_reference>Omega(n)</title_reference> and <title_reference>O(n log n)</title_reference>.</paragraph><paragraph>Computer scientists have spent much time devising efficient
 general-purpose sorting algorithms, but no one has ever found one
-that is faster than <math>O(n \log n)</math> in the worst or average
+that is faster than <title_reference>O(n log n)</title_reference> in the worst or average
 cases.
 Should we keep searching for a faster sorting algorithm?
 Or can we prove that there is no faster sorting algorithm by finding
 a tighter lower bound?</paragraph><paragraph>This section presents one of the most important and most useful
 proofs in computer science:
 No sorting algorithm based on key comparisons can possibly be
-faster than <math>\Omega(n \log n)</math> in the worst case.
+faster than <title_reference>Omega(n log n)</title_reference> in the worst case.
 This proof is important for three reasons.
 First, knowing that widely used sorting algorithms are asymptotically
 optimal is reassuring.
 In particular, it means that you need not bang your head against
-the wall searching for an <math>O(n)</math> sorting algorithm.
+the wall searching for an <title_reference>O(n)</title_reference> sorting algorithm.
 (Or at least not one that is in any way based on key comparisons.
 But it is hard to imagine how to sort without any comparisons.
 Even Radix Sort is does comparisons, though in quite a different way.)
@@ -72,8 +72,8 @@ Thus, empirical evidence suggests that comparison-based sorting is a
 good approach.</paragraph><paragraph>(Actually, the truth is stronger than this statement implies.
 In reality, Radix Sort relies on comparisons as well and so can be
 modeled by the technique used in this section.
-The result is an <math>\Omega(n \log n)</math> bound in the general case
-even for algorithms that look like Radix Sort.)</paragraph><paragraph>The proof that any comparison sort requires <math>\Omega(n \log n)</math>
+The result is an <title_reference>Omega(n log n)</title_reference> bound in the general case
+even for algorithms that look like Radix Sort.)</paragraph><paragraph>The proof that any comparison sort requires <title_reference>Omega(n log n)</title_reference>
 comparisons in the worst case is structured as follows.
 First, comparison-based decisions can be modeled as the
 branches in a tree.
@@ -81,9 +81,9 @@ This means that any sorting algorithm based on comparisons between
 records can be viewed as a binary tree whose nodes correspond to the
 comparisons, and whose branches correspond to the possible outcomes.
 Next, the minimum number of leaves in the resulting tree is
-shown to be the factorial of <math>n</math>.
-Finally, the minimum depth of a tree with <math>n!</math> leaves is shown
-to be in <math>\Omega(n \log n)</math>.</paragraph><paragraph>Before presenting the proof of an <math>\Omega(n \log n)</math> lower bound
+shown to be the factorial of <title_reference>n</title_reference>.
+Finally, the minimum depth of a tree with <title_reference>n!</title_reference> leaves is shown
+to be in <title_reference>Omega(n log n)</title_reference>.</paragraph><paragraph>Before presenting the proof of an <title_reference>Omega(n log n)</title_reference> lower bound
 for sorting, we first must define the concept of a
 <title_reference>decision tree</title_reference>.
 A decision tree is a binary tree that can model the processing for any
@@ -103,17 +103,17 @@ sorting lower bound proof.</paragraph><raw format="xml" xml:space="preserve"><in
     required="True"
     threshold="1.0">
 </inlineav>
-</raw><paragraph>Any sorting algorithm requiring <math>\Omega(n \log n)</math> comparisons
-in the worst case requires <math>\Omega(n \log n)</math> running time in
+</raw><paragraph>Any sorting algorithm requiring <title_reference>Omega(n log n)</title_reference> comparisons
+in the worst case requires <title_reference>Omega(n log n)</title_reference> running time in
 the worst case.
-Because any sorting algorithm requires <math>\Omega(n \log n)</math> running
+Because any sorting algorithm requires <title_reference>Omega(n log n)</title_reference> running
 time,
-the problem of sorting also requires <math>\Omega(n \log n)</math> time.
-We already know of sorting algorithms with <math>O(n \log n)</math> running
+the problem of sorting also requires <title_reference>Omega(n log n)</title_reference> time.
+We already know of sorting algorithms with <title_reference>O(n log n)</title_reference> running
 time, so we can conclude that the problem of sorting requires
-<math>\Theta(n \log n)</math> time.
+<title_reference>Theta(n log n)</title_reference> time.
 As a corollary, we know that no comparison-based sorting algorithm can
-improve on existing <math>\Theta(n \log n)</math> time sorting algorithms by
+improve on existing <title_reference>Theta(n log n)</title_reference> time sorting algorithms by
 more than a constant factor.</paragraph><paragraph>Here are some review questions to check that you understand
 this proof.</paragraph><raw format="xml" xml:space="preserve"><avembed
     type="ka"

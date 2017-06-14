@@ -8,8 +8,8 @@ records by expected frequency of access.
 While the benefits might not be as great as when sorted by key
 value, the cost to organize (at least approximately) by frequency of
 access can be much cheaper,
-and thus can speed up <title_reference>sequential search</title_reference> in some situations.</paragraph><paragraph>Assume that we know, for each key <math>k_i</math>, the probability
-<math>p_i</math> that the record with key <math>k_i</math> will be requested.
+and thus can speed up <title_reference>sequential search</title_reference> in some situations.</paragraph><paragraph>Assume that we know, for each key <title_reference>k_i</title_reference>, the probability
+<title_reference>p_i</title_reference> that the record with key <title_reference>k_i</title_reference> will be requested.
 Assume also that the list is ordered so that the most frequently
 requested record is first, then the next most frequently requested
 record, and so on.
@@ -18,25 +18,25 @@ first position.
 Over the course of many searches, the expected number of comparisons
 required for one search is</paragraph><math_block xml:space="preserve">\overline{C}_n = 1 p_0 + 2 p_1 + ... + n p_{n-1}.</math_block><paragraph>In other words, the cost to access the record in
 <strong>L</strong> [0] is 1 (because one key value is looked at), and the
-probability of this occurring is <math>p_0</math>.
+probability of this occurring is <title_reference>p_0</title_reference>.
 The cost to access the record in <strong>L</strong> [1] is 2 (because
 we must look at the first and the second records' key values),
-with probability <math>p_1</math>, and so on.
-For <math>n</math> records, assuming that all searches are
-for records that actually exist, the probabilities <math>p_0</math> through
-<math>p_{n-1}</math> must sum to one.</paragraph><paragraph>Certain probability distributions give easily computed results.</paragraph><topic><title>Example</title><paragraph>Calculate the expected cost to search a list
+with probability <title_reference>p_1</title_reference>, and so on.
+For <title_reference>n</title_reference> records, assuming that all searches are
+for records that actually exist, the probabilities <title_reference>p_0</title_reference> through
+<title_reference>p_{n-1}</title_reference> must sum to one.</paragraph><paragraph>Certain probability distributions give easily computed results.</paragraph><topic><title>Example</title><paragraph>Calculate the expected cost to search a list
 when each record has equal chance of being accessed (the classic
 sequential search through an unsorted list).
-Setting <math>p_i = 1/n</math> yields</paragraph><math_block xml:space="preserve">\overline{C}_n = \sum_{i=1}^n i/n = (n+1)/2.</math_block><paragraph>This result matches our expectation that half the records will be
+Setting <title_reference>p_i = 1/n</title_reference> yields</paragraph><math_block xml:space="preserve">\overline{C}_n = \sum_{i=1}^n i/n = (n+1)/2.</math_block><paragraph>This result matches our expectation that half the records will be
 accessed on average by normal sequential search.
 If the records truly have equal access probabilities, then ordering
 records by frequency yields no benefit.
 In the <title_reference>more general case &lt;SortedSearch&gt;</title_reference>,
-we must consider the probability (labeled <math>p_n</math>) that
+we must consider the probability (labeled <title_reference>p_n</title_reference>) that
 the search key does not match that for any record in the array.
 In that case, the general formula gives us</paragraph><math_block xml:space="preserve">(1-p_n) \frac{n+1}{2} + p_n n =
 \frac{n + 1 - p_n n - p_n + 2 p_n n}{2} =
-\frac{n + 1 + p_n (n - 1)}{2}.</math_block><paragraph>Thus, <math>\frac{n+1}{2} \leq \overline{C}_n \leq n</math>,
+\frac{n + 1 + p_n (n - 1)}{2}.</math_block><paragraph>Thus, <title_reference>frac{n+1}{2} leq overline{C}_n leq n</title_reference>,
 depending on the value of (p_0).</paragraph></topic><paragraph>A geometric probability distribution can yield quite different
 results.</paragraph><topic><title>Example</title><paragraph>Calculate the expected cost for searching a list ordered by
 frequency when the probabilities are defined as</paragraph><math_block xml:space="preserve">p_i = \left\{ \begin{array}{ll}
@@ -71,8 +71,8 @@ cities (i.e., view the relative proportions for the populations as
 equivalent to the "frequency of use").
 Zipf distributions are related to the
 <title_reference>Harmonic Series &lt;Harmonic series&gt; &lt;Summations&gt;</title_reference>.
-Define the Zipf frequency for item <math>i</math> in the distribution for
-<math>n</math> records as <math>1/(i {\cal H}_n)</math>.
+Define the Zipf frequency for item <title_reference>i</title_reference> in the distribution for
+<title_reference>n</title_reference> records as <title_reference>1/(i {cal H}_n)</title_reference>.
 The expected cost for the series whose members follow this Zipf
 distribution will be</paragraph><math_block xml:space="preserve">\overline{C}_n = \sum_{i=1}^n i/i {\cal H}_n = n/{\cal H}_n \approx
 n/\log_e n.</math_block><paragraph>When a frequency distribution follows the 80/20 rule, the
@@ -151,9 +151,9 @@ near the end of the array will result in a
 large number of records (slightly) changing position.
 Move-to-front's cost is bounded in the sense that it requires at
 most twice the number of accesses required by the
-<title_reference>optimal static ordering</title_reference> for <math>n</math> records when at least
-<math>n</math> searches are performed.
-In other words, if we had known the series of (at least <math>n</math>)
+<title_reference>optimal static ordering</title_reference> for <title_reference>n</title_reference> records when at least
+<title_reference>n</title_reference> searches are performed.
+In other words, if we had known the series of (at least <title_reference>n</title_reference>)
 searches in advance and had stored the records in order of frequency
 so as to minimize the total cost for these accesses, this cost would
 be at least half the cost required by the move-to-front heuristic.
@@ -195,12 +195,12 @@ frequency of access.
 Unfortunately, there are some pathological sequences of access that
 can make transpose perform poorly.
 Consider the case where the last record of the list
-(call it <math>X</math>) is accessed.
+(call it <title_reference>X</title_reference>) is accessed.
 This record is then swapped with the next-to-last record
-(call it <math>Y</math>), making <math>Y</math> the last record.
-If <math>Y</math> is now accessed, it swaps with <math>X</math>.
-A repeated series of accesses alternating between <math>X</math>
-and <math>Y</math> will continually search to the end of the list,
+(call it <title_reference>Y</title_reference>), making <title_reference>Y</title_reference> the last record.
+If <title_reference>Y</title_reference> is now accessed, it swaps with <title_reference>X</title_reference>.
+A repeated series of accesses alternating between <title_reference>X</title_reference>
+and <title_reference>Y</title_reference> will continually search to the end of the list,
 because neither record will ever make progress toward the front.
 However, such pathological cases are unusual in practice.
 A variation on transpose would be to move the accessed record
@@ -222,7 +222,7 @@ forward in the list by some fixed number of steps.</paragraph><raw format="xml" 
 </avembed>
 </raw></section><section ids="an-example" names="an\ example"><title>An Example</title><paragraph>While self-organizing lists do not generally perform as well
 as search trees or a sorted list, both of which require
-<math>O(\log n)</math> search time, there are many situations in which
+<title_reference>O(log n)</title_reference> search time, there are many situations in which
 self-organizing lists prove a valuable tool.
 Obviously they have an advantage over sorted lists in that they need
 not be sorted.
@@ -236,7 +236,7 @@ Finally, in the case of an application where sequential
 search is "almost" fast enough, changing an
 unsorted list to a self-organizing list might speed the
 application enough at a minor cost in additional code.</paragraph><paragraph>As an example of applying self-organizing lists, consider an
-algorithm for compressing and transmitting messages. <footnote_reference auto="1" ids="id1" refid="id2">1</footnote_reference>
+algorithm for compressing and transmitting messages.
 The list is self-organized by the move-to-front rule.
 Transmission is in the form of words and numbers, by the following
 rules:</paragraph><enumerated_list enumtype="arabic" prefix="" suffix="."><list_item><paragraph>If the word has been seen before, transmit the current position of
@@ -268,7 +268,7 @@ pointer to the location in the file of the first occurrence of the
 string.
 The codes are stored in a self-organizing list in order to speed
 up the time required to search for a string that has previously been
-seen.</paragraph><footnote auto="1" backrefs="id1" ids="id2" names="1"><label>1</label><paragraph>The compression algorithm and the example used both come from
+seen.</paragraph><footnote auto="1" ids="id1" names="1"><label>1</label><paragraph>The compression algorithm and the example used both come from
 the following paper:
 J.L. Bentley, D.D. Sleator, R.E. Tarjan, and V.K. Wei,
 "A Locally Adaptive Data Compression Scheme",
