@@ -1,0 +1,44 @@
+#playButton {
+	background-color: #000033;
+	color: white;
+}
+#functionality {
+	margin-left: 20px;
+}
+#mode {
+	margin-top: 10px;
+	height: 20px;
+}
+#jsavoutput {
+	margin-top: 0;
+}
+#edge, #editEdge {
+	text-align: center;
+	background-color: white;
+	width: 150px;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	z-index: 1000;
+	display: none;
+}
+#direction, #dir {
+	background-color: white;
+	width: 100%;
+	border: none;
+}
+#toRead, #toWrite, #read, #write {
+	width: 90%;
+	text-align: center;
+	border: none;
+}
+#editEdge {
+	width: 200px;
+	transform: translate(-30%, -120%);
+}
+#editEdge > tbody > tr {
+	width: 25%;
+}
+#deleteEdge {
+	padding: 0;
+	border: 0;
+}

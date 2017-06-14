@@ -16,7 +16,7 @@ $(document).ready(function() {
   //////////////////////////////////////////////////////////////////
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({
-      "json_path": "AV/Development/huffmanCustomBuildAV.json"
+      "json_path": "/AV/Development/huffmanCustomBuildAV.json"
     }),
     interpret = config.interpreter; // get the interpreter
 

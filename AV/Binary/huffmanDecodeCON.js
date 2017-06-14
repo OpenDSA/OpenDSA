@@ -49,7 +49,7 @@ $(document).ready(function () {
 
   var av_name = "huffmanDecodeCON";
   var config = ODSA.UTILS.loadConfig(
-                {"av_name": av_name, "json_path": "AV/Binary/huffman.json"}),
+                {"av_name": av_name, "json_path": "/AV/Binary/huffman.json"}),
       interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
 
@@ -64,7 +64,7 @@ $(document).ready(function () {
   // Slide 2
   av.umsg(interpret("av_c9"));
   av.step();
-  
+
   // Slide 3
   av.umsg(interpret("av_c10") + interpret("av_c11"));
   r.highlight();

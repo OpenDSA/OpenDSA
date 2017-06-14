@@ -1,7 +1,6 @@
 {
-  "title": "CSE017 Fall 2016",
-  "desc": "CSE017 Fall 2016",
-  "inst_book_id": 16,
+  "title": "CSE017",
+  "desc": "CSE017",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "tabbed_codeinc": false,
@@ -116,6 +115,7 @@
       "RecurTutor/CodeCompletionEx": {
         "long_name": "Code Completion Exercises",
         "sections": {
+          "Introduction": {},
           "Recursion Programming Exercise: Largest": {
             "learning_tool": "code-workout",
             "resource_type": "external_assignment",

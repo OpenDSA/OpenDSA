@@ -72,11 +72,9 @@ $(document).ready(function() {
   //formula for y
   // var y = 450 - Math.sqrt(400 - Math.pow((x - 410), 2));
 
-var poly = "M 10, 450 A 50 50 0 1 1 810 450";
-av.g.path(poly, {"stroke-width": 1, stroke: "gray"});
-
+  var poly = "M 10, 450 A 50 50 0 1 1 810 450";
+  av.g.path(poly, {"stroke-width": 1, stroke: "gray"});
 
   av.displayInit();
-	av.recorded();
-
+  av.recorded();
 });

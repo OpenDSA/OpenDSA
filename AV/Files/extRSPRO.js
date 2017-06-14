@@ -303,7 +303,7 @@ $(document).ready(function() {
   //////////////////////////////////////////////////////////////////
   // Load the interpreter created by odsaAV.js
   var config = ODSA.UTILS.loadConfig({
-      "json_path": "AV/Files/extRSPRO.json"
+      "json_path": "/AV/Files/extRSPRO.json"
     }),
     interpret = config.interpreter, // get the interpreter
     settings = config.getSettings(); // Settings for the AV
