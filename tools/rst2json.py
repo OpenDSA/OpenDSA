@@ -57,7 +57,7 @@ avembed_element= '''\
 <avembed
     type="%(type)s"
     exer_name="%(exer_name)s"
-    long_name="%(exer_name)s"
+    long_name="%(long_name)s"
     points="%(points)s"
     required="True"
     threshold="%(threshold)s">
@@ -77,7 +77,7 @@ inlineav_element = '''\
 <inlineav
     type="%(type)s"
     exer_name="%(exer_name)s"
-    long_name="%(exer_name)s"
+    long_name="%(long_name)s"
     points="%(points)s"
     required="True"
     threshold="%(threshold)s">
@@ -98,7 +98,11 @@ class avembed(Directive):
   required_arguments = 2
   optional_arguments = 0
   final_argument_whitespace = True
+  option_spec = {
+                  'long_name': directives.unchanged
+                }
   has_content = True
+
 
   def run(self):
     """ Restructured text extension for inserting embedded AVs with show/hide button """
@@ -115,6 +119,9 @@ class avembed(Directive):
     elif self.options['type'] == 'ss':
       self.options['points'] = 0.0
       self.options['threshold'] = 1.0
+
+    if 'long_name' not in self.options:
+      self.options['long_name'] = self.options['exer_name']
 
     res = avembed_element % (self.options)
 
@@ -572,7 +579,7 @@ def reorder_orig_config():
   orig_config_fname = sort_by_keys(orig_config_fname)
 
   with open(orig_config_path, 'w') as outfile:
-    json.dump(orig_config_fname, outfile)
+    json.dump(orig_config_fname, outfile, indent=2)
 
 
 def save_debug_files(xml_str, json_str, rst_fname):
@@ -587,7 +594,7 @@ def save_debug_files(xml_str, json_str, rst_fname):
     outfile.write(xml_str.encode('utf8'))
 
   with open(json_fname, 'w') as outfile:
-    json.dump(json_str, outfile)
+    json.dump(json_str, outfile, indent=2)
 
 
 if __name__ == '__main__':
@@ -610,6 +617,9 @@ if __name__ == '__main__':
   everything_config['chapters'] = OrderedDict()
   everything_config = add_chapter(everything_config, "Preface")
 
+  current_dir = None
+  print('Generating Everything_generated.json configuration file ...')
+
   for x in files:
     with open(x, 'r') as rstfile:
       source=rstfile.read()
@@ -624,7 +634,9 @@ if __name__ == '__main__':
     if rst_dir_name not in folder_names.keys():
       continue
 
-    print('Processing '+rst_dir_name+'/'+rst_fname+'.rst')
+    if not current_dir == rst_dir_name:
+      current_dir = rst_dir_name
+      print('Processing directory '+ rst_dir_name )
 
     rst_parts = publish_parts(source,
                 settings_overrides={'output_encoding': 'utf8',
@@ -652,7 +664,7 @@ if __name__ == '__main__':
     out_fname = os.path.abspath('config/Everything_generated.json')
 
   with open(out_fname, 'w') as outfile:
-    json.dump(everything_config, outfile)
+    json.dump(everything_config, outfile, indent=2)
 
   if options.dev_mode:
     reorder_orig_config()
