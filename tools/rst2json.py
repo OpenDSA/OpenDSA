@@ -599,7 +599,7 @@ if __name__ == '__main__':
 
   rst_dir = os.path.abspath('RST/en/')
   execluded_files = ['Intro', 'Status', 'Bibliography', 'Glossary', 'ToDo',
-                     'cs342_uwosh', 'Quicksort_exs']
+                     'cs342_uwosh', 'Quicksort_exs', 'NPComplete_old', 'LambdaCalculus']
   files = absoluteFilePaths(rst_dir)
 
   everything_config = OrderedDict()
