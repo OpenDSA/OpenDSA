@@ -131,6 +131,7 @@ Glossary
       :term:`asymptotic algorithm analysis`, generally used as a
       synonym for :term:`asymptotic analysis`.
 
+   allocated
    allocation
       Reserving memory for an object in the Heap memory.
 
@@ -246,9 +247,11 @@ Glossary
       Similar to a :term:`Splay Tree` in that it uses the concept of
       :term:`rotations <rotation>` in the insert and remove operations.
 
-   automatic variables
-       When program flow enters and leaves the variable's scope, automatic variables will be allocated and de-allocated automatically.
-
+   automatic variable
+      A synonym for :term:`local variable`.
+      When program flow enters and leaves the variable's scope,
+      automatic variables will be allocated and de-allocated
+      automatically.
 
    B$^+$-tree
       The most commonly implemented form of :term:`B-tree`.
@@ -957,8 +960,9 @@ Glossary
       A type together with a collection of operations to manipulate
       the type.
 
+   deallocated
    deallocation
-      Free the memory allocated by an unused object.
+      Free the memory allocated to an unused object.
 
    decision tree
       A theoretical construct for modeling the behavior of algorithms.
@@ -2220,11 +2224,13 @@ Glossary
       The root is the only node at level 0, and its depth is 0.
 
    lexical scoping
-      Lexical scoping, also known as static scoping, of a variable so that it may only referenced in the block of code
-      in which the variable is defined.
+      Lexical scoping, also known as static scoping, of a variable so
+      that it may only referenced in the block of code in which the
+      variable is defined.
 
    lifetime
-      For a variable, lifetime is the amount of time it will exist before it is destroyed.
+      For a variable, lifetime is the amount of time it will exist
+      before it is destroyed.
 
    linear growth rate
       For input size :math:`n`, a growth rate of :math:`cn` (for
@@ -2832,7 +2838,7 @@ Glossary
       data from :term:`backing storage`, which is the fundamental unit
       of I/O.
 
-   parameters
+   parameter
       The values making up an input to a :term:`function`.
 
    parent
@@ -2886,10 +2892,13 @@ Glossary
       length :math:`i`.
 
    pass by value
-      A copy of a variable is passed to the called function. So, any modifications will not affect the original variable.
+      A copy of a variable is passed to the called function. So, any
+      modifications will not affect the original variable.
 
    pass by reference
-      A reference to the variable is passed to the called function. So, any modifications will affect the original variable.
+      A reference to the variable is passed to the called
+      function. So, any modifications will affect the original
+      variable.
 
    path
       In :term:`tree` or :term:`graph` terminology,
@@ -3414,7 +3423,9 @@ Glossary
       references.
 
    reference parameter
-      a :term:`function` of :term:`method` parameter that can be modified inside the function or method.
+      A :term:`parameter` that has been
+      :term:`passed by reference <pass by reference>`.
+      Such a parameter can be modified inside the function or method.
 
    reflexive
       In set notation, binary relation :math:`R` on set :math:`S` is
@@ -3915,6 +3926,10 @@ Glossary
    stack frame
       Frame of data that pushed into and poped from call stack
 
+
+   stack variable
+      Another name for a :term:`local variable`.
+
    stale pointer
       Within the context of a :term:`buffer pool` or
       :term:`memory manager`, this refers to a reference to a
@@ -4285,6 +4300,12 @@ Glossary
       for different situations (such as the :term:`best case` or
       :term:`worst case`), we typically have to specify which
       situation we are referring to.
+
+   value parameter
+      A :term:`parameter` that has been
+      :term:`passed by value <pass by value>`.
+      Changing such a parameter inside the function or method will not
+      affect the value of the calling parameter.
 
    variable-length coding
       :to-term: Huffman codes :label: example

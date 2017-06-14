@@ -9,6 +9,12 @@
    :satisfies: Heap Memory
    :topic: Pointers
 
+   .. odsascript:: AV/PointersSushma/LocalHeapaloc.css
+   .. odsascript:: AV/PointersSushma/LocalHeapdealoc.css
+   .. odsascript:: AV/PointersSushma/LocalHeapintptr42.css
+   .. odsascript:: AV/PointersSushma/garbageDisposalCON.css
+
+
 Heap Memory
 ===========
 
@@ -57,42 +63,52 @@ Java Garbage Collection
 -----------------------
 The following are some important points about Garbage Collection:
 
-* Garbage collection is a mechanism that is frequently invoked by the Java Virtual
-Machine to get ride of the unused heap memory objects. It removes every object
-that is not being used by the running Java program anymore. The results of this
-process is freeing up the memory so other new objects can use that piece of memory.
+* Garbage collection is a mechanism that is frequently invoked by the
+  Java Virtual Machine to get ride of the unused heap memory
+  objects. It removes every object that is not being used by the
+  running Java program anymore. The results of this process is freeing
+  up the memory so other new objects can use that piece of memory.
 
-* In other programming languages like C and C++, it is the responsibility of the
-programmer to take care of freeing up the memory from unused objects and arrays,
-this process consumes programmer's time and increase code complexity. In the other
-hand, garbage collection makes programming more easily by taking care of the memory
-management for the programmer and makes the programmer focusing only on programming.
+* In other programming languages like C and C++, it is the
+  responsibility of the programmer to take care of freeing up the
+  memory from unused objects and arrays, this process consumes
+  programmer's time and increase code complexity. In the other hand,
+  garbage collection makes programming more easily by taking care of
+  the memory management for the programmer and makes the programmer
+  focusing only on programming.
 
-* Before removing an object from memory garbage collection invokes finalize() method
-of that object and gives an opportunity to perform any sort of cleanup required. If
-the programmer do not override this method, the default finializer method will be
-invoked (the method defined in ``Object`` class).
+* Before removing an object from memory garbage collection invokes
+  finalize() method of that object and gives an opportunity to perform
+  any sort of cleanup required. If the programmer do not override this
+  method, the default finializer method will be invoked (the method
+  defined in ``Object`` class).
 
-* Java Virtual Machine invokes the garbage collection based on the size of the
-dynamically allocated memory from the heap.
+* Java Virtual Machine invokes the garbage collection based on the
+  size of the dynamically allocated memory from the heap.
 
-* Programmers can use some methods like System.gc() and Runtime.gc() to send request
-of garbage collection to Java Virtual Machine.
+* Programmers can use some methods like System.gc() and Runtime.gc()
+  to send request of garbage collection to Java Virtual Machine.
 
 The following are some cases that make an object subject to be removed from heap
 memory by garbage collection:
 
 * When the programmer sets all references to an object to ``null``.
 
-* If the object is defined inside a block of code and all references to that object
-are out of scoop after the execution of that block. Here is an example
+* If the object is defined inside a block of code and all references
+  to that object are out of scoop after the execution of that
+  block. Here is an example
 
-.. codeinclude:: PointersBook/Scoop
+  .. codeinclude:: PointersBook/Scoop
 
-* If an object A contains a reference to another object B. Object B will be eligible
-for garbage collection one object A set to ``null``. Here is an example:
+* If an object A contains a reference to another object B. Object B
+  will be eligible for garbage collection one object A set to
+  ``null``. Here is an example:
 
 .. codeinclude:: PointersBook/Date
+
+.. inlineav:: garbageDisposalCON ss
+   :output: show
+
 
 What Does The Heap Look Like?
 -----------------------------
@@ -118,6 +134,8 @@ the three allocation requests, memory might look like.
    :align: center
    :capalign: justify
    :figwidth: 100%
+
+.. inlineav:: LocalHeapaloc dgm
 
 Each allocation request reserves a contiguous area of the requested size in the heap and
 returns a pointer to that new block to the program. Since each block is always referred to
@@ -152,6 +170,11 @@ the second of the three blocks.
    :align: center
    :capalign: justify
    :figwidth: 100%
+
+.. inlineav:: LocalHeapdealoc dgm
+
+
+
 
 After the deallocation, the pointer continues to point to the now deallocated block. The
 program must not access the deallocated pointee. This is why the pointer is drawn in gray
@@ -241,7 +264,8 @@ the lifetime of the heap block, and the drawing needs to reflect that difference
    :capalign: justify
    :figwidth: 100%
 
-
+.. inlineav:: LocalHeapintptr42 ss
+   :output: show
 
 Simple Heap Observations
 ------------------------
@@ -318,3 +342,8 @@ can be used to build linked structures such as linked lists and binary trees. Th
 disadvantage of heap memory is that  the program must make explicit allocation
 calls to manage the heap memory. The heap memory does not operate automatically
 and conveniently the way local memory does.
+
+.. odsascript:: AV/PointersSushma/LocalHeapaloc.js
+.. odsascript:: AV/PointersSushma/LocalHeapdealoc.js
+.. odsascript:: AV/PointersSushma/LocalHeapintptr42.js
+.. odsascript:: AV/PointersSushma/garbageDisposalCON.js

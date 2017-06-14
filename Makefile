@@ -161,9 +161,6 @@ Pointers: min
 PointersBook: min
 	python $(CONFIG_SCRIPT) config/PointersBook.json --no-lms
 
-PointersSushma: min
-	python $(CONFIG_SCRIPT) config/PointersSushma.json --no-lms
-
 CS3_exs: min
 	python $(CONFIG_SCRIPT) config/CS3_exs.json --no-lms
 

@@ -43,7 +43,7 @@ You can get the same effect by copying information back and forth, but
 pointers solve the problem better.
 Second, pointers enable complex linked data structures like
 :term:`linked lists <linked list>` and
-:term:`binary trees <binary tree>`. 
+:term:`binary trees <binary tree>`.
 
 
 What is a Reference?
@@ -84,7 +84,7 @@ It does not store a simple value directly.
 Instead, a reference variable stores a :term:`reference` to some
 :term:`object`.
 The object that the reference refers to is sometimes known as its
-:term:`pointee`. 
+:term:`pointee`.
 In the next figure, the reference variable (called ``empRef``) is
 shown as a box that contains the beginning of a directed line, which
 leads to its pointee (an ``Employee`` object, shown as the box storing
@@ -109,15 +109,15 @@ In Java, Objects and Arrays are non-primitive data types,
 and they are always accessed by references.
 Java automatically uses references behind the scenes for such complex
 types, and no reference-specific syntax used.
-You just need to realize that assignment operations like 
+You just need to realize that assignment operations like
 ``a = b`` will automatically be implemented with references if ``a`` and
 ``b`` are arrays or objects.
 Assignments and parameters with arrays and objects are intrinsically
 shallow or shared |---| see the Deep vs. Shallow Copy material below.
 
 
-Referencing and  Dereferencing
-------------------------------
+Referencing and Dereferencing
+-----------------------------
 
 :term:`Dereferencing <dereference>` means to follow a reference to get
 the value of its pointee.
@@ -193,7 +193,7 @@ run time, then make a quick drawing to work out your ideas.
 This tutorial uses a lot of drawings to show how references work.
 You should too.
 
-.. avembed:: Exercises/PointersJieun/PointerEX1PRO.html ka
+.. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
 
 Sharing
 -------
@@ -232,7 +232,7 @@ copy without interfering with the other copy.
 But deep copies run slower because of all the copying.
 And if the second function was **meant** to modify the copy for every
 user of the object, then deep copy won't let this happen.
-The drawing below shows shallow and deep copying between two functions, 
+The drawing below shows shallow and deep copying between two functions,
 ``A()`` and ``B()``.
 In the shallow case, the smiley face is shared by passing a reference
 between the two.
@@ -296,7 +296,7 @@ One way to think about reference code is that it operates at two
 levels |---| reference level and pointee level.
 The trick is that **both** levels need to be initialized and connected
 for things to work.
-(1) The reference must be allocated, 
+(1) The reference must be allocated,
 (2) The pointee must be allocated, and (3) the reference must be
 assigned to point to the pointee.
 It's rare to forget step (1).
@@ -365,7 +365,7 @@ Dereference the reference
 
 Anytime a reference variable appears anywhere **other** than the left
 side of an assignment statement, it is
-:term:`dereferenced <dereference>`. 
+:term:`dereferenced <dereference>`.
 This is really no different than how a primitive variable like an
 ``int`` is used.
 Consider the following code::
@@ -432,7 +432,7 @@ No matter how complex a reference structure gets, the list of rules remains shor
 * The dereference operation on a reference accesses its pointee.
   A reference may only be dereferenced after it has been assigned to
   refer to a pointee.
-  Most reference bugs involve violating this one rule. 
+  Most reference bugs involve violating this one rule.
 
 * Allocating a reference does not automatically assign it to refer to
   a pointee.
