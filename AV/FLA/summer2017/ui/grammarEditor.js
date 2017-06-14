@@ -97,7 +97,7 @@ $(document).ready(function () {
       layoutTable(m, 2);
     }
     if ($('.jsavmatrix').hasClass('deleteMode')) {
-      if(index === 0 && arr.length === 1){
+      if(index === 0){
         alert("Can't delete the last row");
         return;
       }
@@ -3551,8 +3551,7 @@ $(document).ready(function () {
   });
   $('#editbutton').click(editMode);
   $('#deletebutton').click(deleteMode);
-  $('#addrowbutton').click(addrowMode);
-  $('#addrowbutton').click(addRows);
+  $('#addrowbutton').click(addrowMode)
   $('#bfpbutton').click(bfParse);
   $('#llbutton').click(llParse);
   $('#slrbutton').click(slrParse);
@@ -3565,7 +3564,6 @@ $(document).ready(function () {
   $('#addExerciseButton').click(addExercise);
 
   $('#identifybutton').click(identifyGrammar);
-  $('#clearbutton').click(clearAll);
 
   $(document).click(defocus);
   $(document).keyup(function(e) {
@@ -3752,17 +3750,6 @@ $(document).ready(function () {
       alert('This grammar is a Context-Free Grammar');
       return;
     }
-  }
-
-  function addRows(){
-    //addProduction(lastRow);
-    m._arrays[lastRow + 1].show();
-    lastRow++;
-  }
-
-  function clearAll(){
-    //Clear all grammar
-    window.location.href = '';
   }
 
 });
