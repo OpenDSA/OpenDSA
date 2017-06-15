@@ -9,13 +9,15 @@
    :satisfies: Local memory
    :topic: Pointers
 
+   .. odsalink:: AV/PointersSushma/T1-T5CON.css
+
 Local Memory
 ============
 
 Thanks For The Memory: Allocation and Deallocation
 --------------------------------------------------
 
-:term:`Local variable`s are the programming structure
+:term:`Local variables <local variable>` are the programming structure
 everyone uses but no one thinks about.
 You think about them a little when first mastering the syntax.
 But after a few weeks, the variables are so automatic that you soon
@@ -36,14 +38,14 @@ It is not the case that every variable in a program has a permanently
 assigned area of memory.
 Instead, modern languages are smart about giving memory to a variable
 only when necessary.
-The terminology is that a variable is allocated when it is given an
+The terminology is that a variable is :term:`allocated` when it is given an
 area of memory to store its value.
 While the variable is allocated, it can operate as a variable
 in the usual way to hold a value.
-A variable is deallocated when the system reclaims the memory
+A variable is :term:`deallocated` when the system reclaims the memory
 from the variable, so it no longer has an area to store its value.
 For a variable, the period of time from its allocation until its
-:term:`deallocation` is called its :term:`lifetime`.
+deallocation is called its :term:`lifetime`.
 
 The most common memory related error is using a deallocated variable.
 For local variables, modern languages automatically protect against
@@ -129,10 +131,13 @@ the code and the state of memory at that time is shown in the drawing.
    :capalign: justify
    :figwidth: 100%
 
+.. inlineav:: T1-T5CON ss
+   :output: show
+
 
 (optional extra...) The drawing shows the sequence of the locals being allocated and
 deallocated |---| in effect the drawing shows the operation over time of
-the :term:` runtime stack` which is the data structure which the
+the :term:`runtime stack` which is the data structure which the
 system uses to implement local storage.
 
 
@@ -147,7 +152,7 @@ This independence of local storage is the root cause of both its
 advantages and disadvantages.
 
 Advantages Of Locals
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Locals are great for 90% of a program's memory needs:
 
@@ -196,10 +201,12 @@ There are two disadvantages of Locals:
 Synonyms For "Local"
 ~~~~~~~~~~~~~~~~~~~~
 
-Local variables are also known as :term:`automatic variables` since
+Local variables are also known as
+:term:`automatic variables <automatic variable>` since
 their allocation and deallocation is done automatically as part of the
 function call mechanism.
-Local variables are also sometimes known as stack variables.
+Local variables are also sometimes known as
+:term:`stack variables <stack variable>`
 because, at a low level, languages almost always implement local
 variables using a stack structure in memory.
 
@@ -270,3 +277,6 @@ function call process:
   registers and others through the stack, so the overall process is
   complex. However, the apparent the lifetime of the variables will
   always follow the "stack" model presented here.
+
+
+.. odsascript:: AV/PointersSushma/T1-T5CON.js

@@ -6,11 +6,8 @@
       nullNode, // Used to trace the node pointed by 'empRef' pointer.
       johnNode, // Used to trace the node pointed by 'johnRef' pointer.
       samNode, // Used to trace the node pointed by 'samRef' pointer.
-      empRef,
-      johnRef,
-      samRef,
-      selected_pointer, // Remember pointer object that has been selected by user for swap
-      selected_node; // Remember node that has been selected by user for swap
+      selected_pointer;
+
 
   var pointerEX1PRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
@@ -64,10 +61,6 @@
         // Handler for clicking on a pointer object
     pclick: function(pointer) {
       if (selected_pointer === null) { // No currently selected pointer object
-        if (selected_node !== null) { // Release previously selected node value
-          selected_node.removeClass(0, "bgColor");
-          selected_node = null;
-        }
         selected_pointer = pointer;
         selected_pointer.element.addClass("highlight");
       } else if (selected_pointer === pointer) { // Re-clicked slected pointer
@@ -93,7 +86,7 @@
       pointerEX1PRO.userInput = true;
     },
 
-    nullClickHandler: function(){
+    makenull: function(){
       if(selected_pointer !== null){
         if(selected_pointer.target() !== nullNode){
           pointerEX1PRO.setPointer(selected_pointer.element.text(), nullNode, selected_pointer);
@@ -126,11 +119,10 @@
       // Reinitialize the exercise.
     reset: function() {
       // JSAV-List position.
-      var leftMargin = 50,
-          topMargin = 250;
+      var leftMargin = 70,
+          topMargin = 150;
       // Reset the value of global variables.
       pointerEX1PRO.userInput = false;
-      selected_node = null;
       selected_pointer = null;
 
       // Clear the old JSAV canvas.
@@ -154,12 +146,12 @@
       nullNode = av.ds.array([""], {top: topP, left: nullP});
       johnNode = av.ds.array(["John, 1000"], {top: topP, left: johnP});
       samNode = av.ds.array(["Sam, 2000"], {top: topP, left: samP});
-      nullNode.css(0, {"box-shadow": "none", "border-width": 0, "background-color": "transparent"});
+      nullNode.addClass([0], "nullBox"); //remove null node's boarder
 
       // Create pointers
-      empRef = pointerEX1PRO.setPointer("empRef", nullNode);
-      johnRef = pointerEX1PRO.setPointer("johnRef", johnNode);
-      samRef = pointerEX1PRO.setPointer("samRef", samNode);
+      pointerEX1PRO.setPointer("empRef", nullNode);
+      pointerEX1PRO.setPointer("johnRef", johnNode);
+      pointerEX1PRO.setPointer("samRef", samNode);
 
       av.displayInit();
       av.recorded();
@@ -170,11 +162,10 @@
 
     // Initialise the exercise
     initJSAV: function() {
-
       pointerEX1PRO.reset();
 
       $("#makenull").click(function() {
-        pointerEX1PRO.nullClickHandler();
+        pointerEX1PRO.makenull();
       });
 
       // Set up handler for reset button
@@ -185,48 +176,14 @@
 
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function() {
-      if(nullNode.llist_pleft != null ^ nullNode.llist_pright != null){
-        if(nullNode.llist_pleft != null){
-            if(nullNode.llist_pleft.element.text() != "johnRef"){
-              return false;
-            }
-          } else {
-            if(nullNode.llist_pright.element.text() != "johnRef"){
-              return false;
-            }
-          }
-        } else {
-          return false;
-        }
-
-        if(johnNode.llist_pleft != null ^ johnNode.llist_pright != null){
-          if(johnNode.llist_pleft != null){
-              if(johnNode.llist_pleft.element.text() != "empRef"){
-                return false;
-              }
-            } else {
-              if(johnNode.llist_pright.element.text() != "empRef"){
-                return false;
-              }
-            }
-          } else {
-            return false;
-          }
-
-          if(samNode.llist_pleft != null ^ samNode.llist_pright != null){
-            if(samNode.llist_pleft != null){
-                if(samNode.llist_pleft.element.text() != "samRef"){
-                  return false;
-                }
-              } else {
-                if(samNode.llist_pright.element.text() != "samRef"){
-                  return false;
-                }
-              }
-            } else {
-              return false;
-            }
-        return true;
+      if(nullNode.llist_pleft.element.text() !== "johnRef"){
+        return false;
+      } else if(johnNode.llist_pright.element.text() !== "empRef"){
+        return false;
+      } else if (samNode.llist_pleft.element.text() != "samRef"){
+        return false;
+      }
+      return true;
     },
   };
 

@@ -23,3 +23,5 @@ Solve following exercise.
 .. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
 
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
+
+.. avembed:: Exercises/Pointers/PointerEX3PRO.html ka
