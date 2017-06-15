@@ -10,7 +10,6 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-#
 
 __author__ = 'Hossameldin Shahin'
 
@@ -85,13 +84,7 @@ inlineav_element = '''\
 '''
 
 odsalink_element = '''<odsalink>%(odsalink)s</odsalink>'''
-
 odsascript_element = '''<odsascript>%(odsascript)s</odsascript>'''
-
-
-# Prints the given string to standard error
-def print_err(err_msg):
-  sys.stderr.write('%s\n' % err_msg)
 
 
 class avembed(Directive):
@@ -342,6 +335,12 @@ class odsafig(Directive):
 
   def run(self):
     return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
+
+
+def print_err(err_msg):
+  '''
+  '''
+  sys.stderr.write('%s\n' % err_msg)
 
 
 def extract_mod_config(mod_json):
@@ -699,9 +698,7 @@ if __name__ == '__main__':
   register()
 
   rst_dir = os.path.abspath('RST/en/')
-  execluded_files = ['Intro', 'Status', 'Bibliography', 'Glossary', 'ToDo',
-                     'cs342_uwosh', 'Quicksort_exs', 'NPComplete_old',
-                     'LambdaCalculus', 'ListDataStructure']
+  execluded_files = ['Intro', 'Status', 'Bibliography', 'Glossary', 'ToDo']
 
   files = absoluteFilePaths(rst_dir)
 
@@ -711,7 +708,7 @@ if __name__ == '__main__':
   everything_config = add_chapter(everything_config, "Preface")
 
   current_dir = None
-  print('Generating Everything_generated.json configuration file ...')
+  print('Generating configuration files ...')
 
   for x in files:
     with open(x, 'r') as rstfile:
