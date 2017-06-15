@@ -92,6 +92,8 @@ min: nomin
 
 Plain: EverythingPlain CS2Plain CS3Plain PLPlain
 
+Generated: EverythingGen CS2Plain CS3Plain CS4104 FL CSCI204 JFLAP
+
 EverythingGen: min
 	python $(CONFIG_SCRIPT) config/Everything_generated.json --no-lms
 
@@ -102,7 +104,7 @@ test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
 CS2Plain: min
-	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
+	python $(CONFIG_SCRIPT) config/CS2_generated.json --no-lms
 
 CS2LMS: min
 	python $(CONFIG_SCRIPT) config/CS2.json
@@ -111,7 +113,7 @@ CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
 
 CS3Plain: min
-	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
+	python $(CONFIG_SCRIPT) config/CS3_generated.json --no-lms
 
 ECE252: min
 	python $(CONFIG_SCRIPT) config/ECE252.json --no-lms
@@ -120,13 +122,13 @@ PLPlain: min
 	python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
 CS4104: min
-	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
+	python $(CONFIG_SCRIPT) config/CS4104_generated.json --no-lms
 
 CS4104raw: min
 	python $(CONFIG_SCRIPT) config/CS4104raw.json --no-lms
 
 FL: min
-	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
+	python $(CONFIG_SCRIPT) config/FormalLang_generated.json --no-lms
 
 CS3slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
@@ -144,7 +146,7 @@ CS271-UWO: min
 	python $(CONFIG_SCRIPT) config/CS271-UWO.json --no-lms
 
 CSCI204: min
-	python $(CONFIG_SCRIPT) config/CSCI204.json --no-lms
+	python $(CONFIG_SCRIPT) config/CSCI204_generated.json --no-lms
 
 CSCI115: min
 	python $(CONFIG_SCRIPT) config/CSCI115.json --no-lms
@@ -174,7 +176,7 @@ CS3_exs: min
 	python $(CONFIG_SCRIPT) config/CS3_exs.json --no-lms
 
 JFLAP: min
-	python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
+	python $(CONFIG_SCRIPT) config/JFLAP_generated.json --no-lms
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
