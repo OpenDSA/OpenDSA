@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Hossameldin Shahin
+
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the MIT License as published by
@@ -129,20 +129,22 @@ class avembed(Directive):
 
 
 class avmetadata(Directive):
-    required_arguments = 0
-    optional_arguments = 3
-    final_argument_whitespace = True
-    has_content = True
-    option_spec = {'author':directives.unchanged,
-                   'topic': directives.unchanged,
-                   'requires': directives.unchanged,
-                   'satisfies': directives.unchanged,
-                   'prerequisites': directives.unchanged
-                   }
+  '''
+  '''
+  required_arguments = 0
+  optional_arguments = 3
+  final_argument_whitespace = True
+  has_content = True
+  option_spec = {'author':directives.unchanged,
+                 'topic': directives.unchanged,
+                 'requires': directives.unchanged,
+                 'satisfies': directives.unchanged,
+                 'prerequisites': directives.unchanged
+                 }
 
-    def run(self):
-        """ Restructured text extension for collecting  AVs metadata nothing is written in the output html file """
-        return [nodes.raw('', '<avmetadata>null</avmetadata>', format='xml')]
+  def run(self):
+      """ Restructured text extension for collecting  AVs metadata nothing is written in the output html file """
+      return [nodes.raw('', '<avmetadata>null</avmetadata>', format='xml')]
 
 
 class extrtoolembed(Directive):
@@ -208,113 +210,135 @@ class inlineav(Directive):
     res = inlineav_element % (self.options)
     return [nodes.raw('', res, format='xml')]
 
-class odsalink(Directive):
-    required_arguments = 1
-    optional_arguments = 0
-    final_argument_whitespace = True
-    option_spec = {}
 
-    def run(self):
-      # """ Restructured text extension for including CSS and other libraries """
-      self.options['odsalink'] = self.arguments[0]
-      res = odsalink_element % (self.options)
-      return [nodes.raw('', res, format='xml')]
+class odsalink(Directive):
+  '''
+  '''
+  required_arguments = 1
+  optional_arguments = 0
+  final_argument_whitespace = True
+  option_spec = {}
+
+  def run(self):
+    # """ Restructured text extension for including CSS and other libraries """
+    self.options['odsalink'] = self.arguments[0]
+    res = odsalink_element % (self.options)
+    return [nodes.raw('', res, format='xml')]
 
 
 class odsascript(Directive):
-    required_arguments = 1
-    optional_arguments = 0
-    final_argument_whitespace = True
-    option_spec = {}
+  '''
+  '''
+  required_arguments = 1
+  optional_arguments = 0
+  final_argument_whitespace = True
+  option_spec = {}
 
-    def run(self):
-      # """ Restructured text extension for including CSS and other libraries """
-      self.options['odsascript'] = self.arguments[0]
-      res = odsascript_element % (self.options)
-      return [nodes.raw('', res, format='xml')]
+  def run(self):
+    # """ Restructured text extension for including CSS and other libraries """
+    self.options['odsascript'] = self.arguments[0]
+    res = odsascript_element % (self.options)
+    return [nodes.raw('', res, format='xml')]
+
 
 class index(Directive):
-    required_arguments = 1
-    optional_arguments = 0
-    final_argument_whitespace = True
-    option_spec = {}
+  '''
+  '''
+  required_arguments = 1
+  optional_arguments = 0
+  final_argument_whitespace = True
+  option_spec = {}
 
-    def run(self):
-      # """ Restructured text extension for including CSS and other libraries """
-      return [nodes.raw('', '<index>null</index>', format='xml')]
+  def run(self):
+    # """ Restructured text extension for including CSS and other libraries """
+    return [nodes.raw('', '<index>null</index>', format='xml')]
+
 
 class codeinclude(Directive):
-    required_arguments = 1
-    optional_arguments = 0
-    final_argument_whitespace = True
-    option_spec = {}
+  '''
+  '''
+  required_arguments = 1
+  optional_arguments = 0
+  final_argument_whitespace = True
+  option_spec = {}
 
-    def run(self):
-      # """ Restructured text extension for including CSS and other libraries """
-      return [nodes.raw('', '<codeinclude>null</codeinclude>', format='xml')]
+  def run(self):
+    # """ Restructured text extension for including CSS and other libraries """
+    return [nodes.raw('', '<codeinclude>null</codeinclude>', format='xml')]
+
 
 class todo(Directive):
-    required_arguments = 0
-    optional_arguments = 3
-    final_argument_whitespace = True
-    has_content = True
-    option_spec = {
-                  'type': directives.unchanged,
-                  'tag': directives.unchanged
-                  }
+  '''
+  '''
+  required_arguments = 0
+  optional_arguments = 3
+  final_argument_whitespace = True
+  has_content = True
+  option_spec = {
+                'type': directives.unchanged,
+                'tag': directives.unchanged
+                }
 
-    def run(self):
-      # """ Restructured text extension for including CSS and other libraries """
-      return [nodes.raw('', '<todo>null</todo>', format='xml')]
+  def run(self):
+    # """ Restructured text extension for including CSS and other libraries """
+    return [nodes.raw('', '<todo>null</todo>', format='xml')]
+
 
 class glossary(Directive):
-    required_arguments = 0
-    optional_arguments = 3
-    final_argument_whitespace = True
-    has_content = True
-    option_spec = {
-                  'sorted': directives.unchanged
-                  }
+  '''
+  '''
+  required_arguments = 0
+  optional_arguments = 3
+  final_argument_whitespace = True
+  has_content = True
+  option_spec = {
+                'sorted': directives.unchanged
+                }
 
-    def run(self):
-      # """ Restructured text extension for including CSS and other libraries """
-      return [nodes.raw('', '<glossary>null</glossary>', format='xml')]
+  def run(self):
+    # """ Restructured text extension for including CSS and other libraries """
+    return [nodes.raw('', '<glossary>null</glossary>', format='xml')]
+
 
 class only(Directive):
-    required_arguments = 1
-    optional_arguments = 0
-    required_arguments = 1
-    optional_arguments = 0
-    final_argument_whitespace = True
-    has_content = True
+  '''
+  '''
+  required_arguments = 1
+  optional_arguments = 0
+  required_arguments = 1
+  optional_arguments = 0
+  final_argument_whitespace = True
+  has_content = True
 
-    def run(self):
-      # """ Restructured text extension for including CSS and other libraries """
-      return [nodes.raw('', '<only>null</only>', format='xml')]
+  def run(self):
+    # """ Restructured text extension for including CSS and other libraries """
+    return [nodes.raw('', '<only>null</only>', format='xml')]
+
 
 class odsafig(Directive):
-    '''
-    '''
-    required_arguments = 0
-    optional_arguments = 1
-    final_argument_whitespace = True
-    has_content = True
-    option_spec = {
-                  'figwidth_value': directives.unchanged,
-                  'figclass': directives.unchanged,
-                  'align': directives.unchanged,
-                  'capalign': directives.unchanged,
-                  'figwidth': directives.unchanged,
-                  'alt': directives.unchanged,
-                  'scale': directives.unchanged,
-                  'width': directives.unchanged,
-                  'height': directives.unchanged
-                  }
+  '''
+  '''
+  required_arguments = 0
+  optional_arguments = 1
+  final_argument_whitespace = True
+  has_content = True
+  option_spec = {
+                'figwidth_value': directives.unchanged,
+                'figclass': directives.unchanged,
+                'align': directives.unchanged,
+                'capalign': directives.unchanged,
+                'figwidth': directives.unchanged,
+                'alt': directives.unchanged,
+                'scale': directives.unchanged,
+                'width': directives.unchanged,
+                'height': directives.unchanged
+                }
 
-    has_content = True
+  has_content = True
 
-    def run(self):
-      return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
+  def run(self):
+    return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
+
 
 def extract_mod_config(mod_json):
   '''
@@ -368,6 +392,7 @@ def extract_mod_config(mod_json):
 
   return mod_config
 
+
 def extract_sec_config(sec_json):
   '''
   '''
@@ -394,6 +419,7 @@ def extract_sec_config(sec_json):
       sections_config[sec_title] = sections_config[sec_title]['extertool']
 
   return sections_config
+
 
 def extract_exs_config(exs_json):
   '''
@@ -468,19 +494,23 @@ def extract_exs_config(exs_json):
 
   return exs_config
 
+
 def register():
-    directives.register_directive('avembed',avembed)
-    directives.register_directive('avmetadata',avmetadata)
-    directives.register_directive('extrtoolembed',extrtoolembed)
-    directives.register_directive('inlineav',inlineav)
-    directives.register_directive('odsalink',odsalink)
-    directives.register_directive('odsascript',odsascript)
-    directives.register_directive('index',index)
-    directives.register_directive('codeinclude',codeinclude)
-    directives.register_directive('todo',todo)
-    directives.register_directive('only',only)
-    directives.register_directive('glossary',glossary)
-    directives.register_directive('odsafig',odsafig)
+  '''
+  '''
+  directives.register_directive('avembed',avembed)
+  directives.register_directive('avmetadata',avmetadata)
+  directives.register_directive('extrtoolembed',extrtoolembed)
+  directives.register_directive('inlineav',inlineav)
+  directives.register_directive('odsalink',odsalink)
+  directives.register_directive('odsascript',odsascript)
+  directives.register_directive('index',index)
+  directives.register_directive('codeinclude',codeinclude)
+  directives.register_directive('todo',todo)
+  directives.register_directive('only',only)
+  directives.register_directive('glossary',glossary)
+  directives.register_directive('odsafig',odsafig)
+
 
 def absoluteFilePaths(directory):
   '''
@@ -493,6 +523,7 @@ def absoluteFilePaths(directory):
       files.append(os.path.abspath(os.path.join(dirpath, f)))
 
   return files
+
 
 def add_header(config):
   '''
@@ -515,6 +546,7 @@ def add_header(config):
   config['glob_exer_options'] = {"JXOP-debug": "true"}
 
   return config
+
 
 def add_chapter(config, chapter_name):
   '''
@@ -545,6 +577,7 @@ def add_chapter(config, chapter_name):
 
   return config
 
+
 def sort_by_keys(dct,):
   '''
   Sort dict recursively by keys. Used during development to compare
@@ -558,6 +591,7 @@ def sort_by_keys(dct,):
           new_dct[key] = val
   return new_dct
 
+
 def remove_markup(source):
   '''
   remove unnecessary markups in the rst files
@@ -568,6 +602,7 @@ def remove_markup(source):
   source = re.sub(r"\[.+\]\_", '',source, flags=re.MULTILINE)
 
   return source
+
 
 def reorder_orig_config():
   '''
@@ -597,11 +632,59 @@ def save_debug_files(xml_str, json_str, rst_fname):
     json.dump(json_str, outfile, indent=2)
 
 
+def save_generated_config(everything_config, ref_config_fname, ref_config_path):
+  '''
+  '''
+  # load reference config file
+  with open(ref_config_path) as data_file:
+    ref_config = json.load(data_file, object_pairs_hook=OrderedDict)
+
+
+  if options.dev_mode:
+    out_fname = os.path.abspath('tools/json_xml/' + ref_config_fname + '.json')
+  else:
+    out_fname = os.path.abspath('config/' + ref_config_fname + '_generated.json')
+
+  for ch_k, ch_obj in ref_config['chapters'].iteritems():
+    chapter_obj = OrderedDict()
+    if isinstance(ch_obj, list):
+      chapter_obj = collect_mods(everything_config, ch_obj)
+    ref_config['chapters'][ch_k] = chapter_obj
+
+  with open(out_fname, 'w') as outfile:
+    json.dump(ref_config, outfile, indent=2)
+
+
+def collect_mods(everything_config, mod_list):
+  '''
+  '''
+  ch_config = OrderedDict()
+  for mod in mod_list:
+    for ch_k, ch_obj in everything_config['chapters'].iteritems():
+      if mod in ch_obj.keys():
+        ch_config[mod] = ch_obj[mod]
+
+  return ch_config
+
+
 if __name__ == '__main__':
 
   parser = OptionParser()
   parser.add_option("-d", "--dev", help="Causes rst2json.py to run in development mode",dest="dev_mode", action="store_true", default=False)
   (options, args) = parser.parse_args()
+
+  # Process script arguments
+  if len(args) != 1:
+      print_err(
+          "Usage: " + sys.argv[0] + " [-d] simple_config_file")
+      sys.exit(1)
+
+  simple_config_file = args[0]
+  simple_config_path = "config/"+simple_config_file+".json"
+
+  if not os.path.exists(simple_config_path):
+      print_err("Error: Simple configuration file \"%s\" doesn't exist uner config folder\n" % simple_config_file)
+      sys.exit(1)
 
   register()
 
@@ -657,14 +740,7 @@ if __name__ == '__main__':
   if options.dev_mode:
     everything_config = sort_by_keys(everything_config)
 
-
-  if options.dev_mode:
-    out_fname = os.path.abspath('tools/json_xml/Everything_generated.json')
-  else:
-    out_fname = os.path.abspath('config/Everything_generated.json')
-
-  with open(out_fname, 'w') as outfile:
-    json.dump(everything_config, outfile, indent=2)
+  save_generated_config(everything_config, simple_config_file, simple_config_path)
 
   if options.dev_mode:
     reorder_orig_config()
