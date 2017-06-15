@@ -96,7 +96,7 @@ def print_err(err_msg):
 
 class avembed(Directive):
   required_arguments = 2
-  optional_arguments = 0
+  optional_arguments = 1
   final_argument_whitespace = True
   option_spec = {
                   'long_name': directives.unchanged
@@ -132,7 +132,7 @@ class avmetadata(Directive):
   '''
   '''
   required_arguments = 0
-  optional_arguments = 3
+  optional_arguments = 8
   final_argument_whitespace = True
   has_content = True
   option_spec = {'author':directives.unchanged,
@@ -177,17 +177,18 @@ class extrtoolembed(Directive):
 
 class inlineav(Directive):
   required_arguments = 2
-  optional_arguments = 7
+  optional_arguments = 6
   final_argument_whitespace = True
   option_spec = {
-                  'output': directives.unchanged,
                   'long_name': directives.unchanged,
+                  'output': directives.unchanged,
+                  'align': directives.unchanged,
                   'points': directives.unchanged,
                   'required': directives.unchanged,
-                  'threshold': directives.unchanged,
-                  'align': directives.unchanged
+                  'threshold': directives.unchanged
                 }
   has_content = True
+
 
   def run(self):
     """ Restructured text extension for including inline JSAV content on module pages """
@@ -206,6 +207,9 @@ class inlineav(Directive):
 
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
+
+    self.options['align'] = None
+    self.options['output'] = None
 
     res = inlineav_element % (self.options)
     return [nodes.raw('', res, format='xml')]
@@ -319,7 +323,7 @@ class odsafig(Directive):
   '''
   '''
   required_arguments = 0
-  optional_arguments = 1
+  optional_arguments = 9
   final_argument_whitespace = True
   has_content = True
   option_spec = {
@@ -431,28 +435,28 @@ def extract_exs_config(exs_json):
         ex_obj = x['avembed']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
-        threshold = float(ex_obj['@threshold'])
-        exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
         exs_config[exer_name]['long_name'] = ex_obj['@long_name']
         exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
+        threshold = float(ex_obj['@threshold'])
+        exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
 
       if isinstance(x, dict) and 'extertool' in x.keys():
         ex_obj = x['extertool']
         exs_config['extertool'] = OrderedDict()
         exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
-        exs_config['extertool']['points'] = float(ex_obj['@points'])
-        exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
         exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
+        exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
+        exs_config['extertool']['points'] = float(ex_obj['@points'])
 
       if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ss":
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
-        exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
         exs_config[exer_name]['long_name'] = ex_obj['@long_name']
         exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
+        exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
 
       if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "dgm":
         ex_obj = x['inlineav']
@@ -463,28 +467,28 @@ def extract_exs_config(exs_json):
       ex_obj = exs_json['avembed']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
-      threshold = float(ex_obj['@threshold'])
-      exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
       exs_config[exer_name]['long_name'] = ex_obj['@long_name']
       exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
+      threshold = float(ex_obj['@threshold'])
+      exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
 
     if 'extertool' in exs_json.keys():
       ex_obj = exs_json['extertool']
       exs_config['extertool'] = OrderedDict()
       exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
-      exs_config['extertool']['points'] = float(ex_obj['@points'])
-      exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
       exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
+      exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
+      exs_config['extertool']['points'] = float(ex_obj['@points'])
 
     if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ss":
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
-      exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
       exs_config[exer_name]['long_name'] = ex_obj['@long_name']
       exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
+      exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
 
     if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "dgm":
       ex_obj = exs_json['inlineav']
@@ -632,27 +636,31 @@ def save_debug_files(xml_str, json_str, rst_fname):
     json.dump(json_str, outfile, indent=2)
 
 
-def save_generated_config(everything_config, ref_config_fname, ref_config_path):
+def save_generated_config(everything_config, ref_configs):
   '''
   '''
   # load reference config file
-  with open(ref_config_path) as data_file:
-    ref_config = json.load(data_file, object_pairs_hook=OrderedDict)
+  for config in simple_configs:
+    ref_config_path = "config/"+config+".json"
 
 
-  if options.dev_mode:
-    out_fname = os.path.abspath('tools/json_xml/' + ref_config_fname + '.json')
-  else:
-    out_fname = os.path.abspath('config/' + ref_config_fname + '_generated.json')
+    with open(ref_config_path) as data_file:
+      ref_config = json.load(data_file, object_pairs_hook=OrderedDict)
 
-  for ch_k, ch_obj in ref_config['chapters'].iteritems():
-    chapter_obj = OrderedDict()
-    if isinstance(ch_obj, list):
-      chapter_obj = collect_mods(everything_config, ch_obj)
-    ref_config['chapters'][ch_k] = chapter_obj
 
-  with open(out_fname, 'w') as outfile:
-    json.dump(ref_config, outfile, indent=2)
+    if options.dev_mode:
+      out_fname = os.path.abspath('tools/json_xml/' + config + '.json')
+    else:
+      out_fname = os.path.abspath('config/' + config.partition('_')[0] + '_generated.json')
+
+    for ch_k, ch_obj in ref_config['chapters'].iteritems():
+      chapter_obj = OrderedDict()
+      if isinstance(ch_obj, list):
+        chapter_obj = collect_mods(everything_config, ch_obj)
+      ref_config['chapters'][ch_k] = chapter_obj
+
+    with open(out_fname, 'w') as outfile:
+      json.dump(ref_config, outfile, indent=2)
 
 
 def collect_mods(everything_config, mod_list):
@@ -676,15 +684,17 @@ if __name__ == '__main__':
   # Process script arguments
   if len(args) != 1:
       print_err(
-          "Usage: " + sys.argv[0] + " [-d] simple_config_file")
+          "Usage: " + sys.argv[0] + " [-d] simple_configs")
       sys.exit(1)
 
-  simple_config_file = args[0]
-  simple_config_path = "config/"+simple_config_file+".json"
+  simple_configs = args[0]
+  simple_configs = simple_configs.split("|")
 
-  if not os.path.exists(simple_config_path):
-      print_err("Error: Simple configuration file \"%s\" doesn't exist uner config folder\n" % simple_config_file)
-      sys.exit(1)
+  for config in simple_configs:
+    simple_config_path = "config/"+config+".json"
+    if not os.path.exists(simple_config_path):
+        print_err("Error: Simple configuration file \"%s.json\" doesn't exist uner config folder\n" % config)
+        sys.exit(1)
 
   register()
 
@@ -740,7 +750,7 @@ if __name__ == '__main__':
   if options.dev_mode:
     everything_config = sort_by_keys(everything_config)
 
-  save_generated_config(everything_config, simple_config_file, simple_config_path)
+  save_generated_config(everything_config, simple_configs)
 
   if options.dev_mode:
     reorder_orig_config()
