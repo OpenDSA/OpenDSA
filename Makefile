@@ -198,7 +198,7 @@ pull:
 	make -s -C JSAV
 	make -s min
 	cd Doc; make
-	python tools/rst2json.py "CS2_simple|CS3_simple|Everything_simple|CS240_simple|CS4104_simple|FormalLang_simple"
+	python tools/rst2json.py "CS2_simple|CS3_simple|Everything_simple|CS240_simple|CS4104_simple|FormalLang_simple|JFLAP_simple|CSCI204_simple"
 
 lib/odsaUtils-min.js: lib/odsaUtils.js
 	@echo 'Minimizing lib/odsaUtils.js'
