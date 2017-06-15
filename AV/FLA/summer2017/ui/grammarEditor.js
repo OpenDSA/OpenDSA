@@ -72,7 +72,7 @@ $(document).ready(function () {
 
   // handler for grammar editing
   var matrixClickHandler = function(index, index2) {
-    console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi);
+    console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
 
     //2017 Summer COMMENT: I am Very Confused about the reason for this line and the need for both index and row, index2 and col
     // if ((row != index || col != index2) && fi) {
@@ -646,10 +646,12 @@ $(document).ready(function () {
   // brute force parsing
   function bfParse() {
 
-    if(checkLHSVariables()){
-      alert('Your production is unrestricted on the left hand side');
-      return;
-    }
+    // if(checkLHSVariables()){
+    //   alert('Your production is unrestricted on the left hand side');
+    //   return;
+    // }
+
+    console.log("m is: " + m + " arr is: " + arr)
 
     // get productions (gets a clone of the grammar with the empty rows removed)
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
@@ -662,7 +664,8 @@ $(document).ready(function () {
     if (inputString === null) {
       return;
     }
-    startParse(m, parseTree);
+    // startParse(m, parseTree);
+    startParse();
     $('#bfpbutton').show();
     /*
     Set the height of the canvas manually:
@@ -1101,13 +1104,27 @@ $(document).ready(function () {
       index++;
     }
 
-    var conflict = _.filter(conflictTable, function(row) {return _.filter(row, function(entry) {return entry.length > 1;});});
+    // var conflict = _.filter(conflictTable, function(row) {return _.filter(row, function(entry) {return entry.length > 1;});});
+
+    var conflict = _.filter(conflictTable, function() {
+      for (var r = 0; r < conflictTable.length; r++) {
+        for (var c = 0; c < conflictTable[r].length; c++) {
+          if (conflictTable[r][c].length > 1){
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+
+    console.log(conflict);
 
     modelDFA.hide();
     $('#followbutton').show();
     $('.jsavcontrols').hide();
 
     if (conflict.length > 0) {
+      console.log("conflict.length: " + conflict.length);
       var contin = confirm("This grammar is not SLR(1)\nContinue?");
       if (!contin) {
         $('#backbutton').click();
@@ -1450,6 +1467,7 @@ $(document).ready(function () {
     $('#convertRLGbutton').hide();
     $('#convertCFGbutton').hide();
     $('#transformbutton').hide();
+    $('#addExerciseButton').hide();
 
     $('#identifybutton').hide();
 
