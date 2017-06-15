@@ -42,9 +42,7 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "Preface": {
-      "Intro"
-    },
+    "Preface": ["Intro"],
     "Introduction": ["Background/IntroDSA", "Design/ADT"],
     "Mathematical Background": ["Background/MathpreIntro", "Background/MiscMath", "Background/Logarithms", "Background/Estimation", "Background/MathpreSumm"],
     "Algorithm Analysis": ["AlgAnal/AnalChap", "AlgAnal/AnalPrelim", "AlgAnal/AnalIntro", "AlgAnal/AnalCases", "AlgAnal/AnalCompvsAlg", "AlgAnal/AnalAsymptotic", "AlgAnal/AnalProgram", "AlgAnal/AnalMultiple", "AlgAnal/AnalSpace", "AlgAnal/AnalTuning", "AlgAnal/AlgAnalSumm"],

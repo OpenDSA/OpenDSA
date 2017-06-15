@@ -50,7 +50,7 @@ folder_names = {
     "SearchStruct": "Search Structures",
     "Bounds": "Lower Bounds",
     "NP": "Limits to Computing",
-    "FormalLang": "Formal languages"
+    "FormalLang": "Formal Languages"
     }
 
 avembed_element= '''\
@@ -639,8 +639,12 @@ def save_debug_files(xml_str, json_str, rst_fname):
 def save_generated_config(everything_config, ref_configs):
   '''
   '''
+  print('Generating configuration files ...')
+
   # load reference config file
   for config in simple_configs:
+    print('Processing %s configuration file' %config)
+
     ref_config_path = "config/"+config+".json"
 
 
@@ -709,7 +713,6 @@ if __name__ == '__main__':
   everything_config = add_chapter(everything_config, "Preface")
 
   current_dir = None
-  print('Generating configuration files ...')
 
   for x in files:
     with open(x, 'r') as rstfile:
