@@ -49,7 +49,8 @@ folder_names = {
     "Development": "Under Development",
     "SearchStruct": "Search Structures",
     "Bounds": "Lower Bounds",
-    "NP": "Limits to Computing"
+    "NP": "Limits to Computing",
+    "FormalLang": "Formal languages"
     }
 
 avembed_element= '''\
