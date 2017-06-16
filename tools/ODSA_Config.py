@@ -523,6 +523,9 @@ class ODSA_Config:
         else:
             self.book_name = output_directory
 
+        if self.book_name.endswith('_generated'):
+            self.book_name = self.book_name[:-len('_generated')]
+
         self.odsa_dir = get_odsa_dir()
 
         # Set the output directories needed for the build process

@@ -636,13 +636,16 @@ def save_debug_files(xml_str, json_str, rst_fname):
     json.dump(json_str, outfile, indent=2)
 
 
-def save_generated_config(everything_config):
+def save_generated_config(everything_config, simple_configs):
   '''
   '''
   print('Generating configuration files ...\n')
 
   config_dir = os.path.abspath('config')
-  config_files = absoluteFilePaths(config_dir, "json")
+  if simple_configs != None:
+    config_files = [config_dir+'/'+s+'_simple.json' for s in simple_configs]
+  else:
+    config_files = absoluteFilePaths(config_dir, "json")
 
   for config_path in config_files:
     config_fname = os.path.basename(config_path).partition('.')[0]
@@ -685,6 +688,18 @@ if __name__ == '__main__':
   parser = OptionParser()
   parser.add_option("-d", "--dev", help="Causes rst2json.py to run in development mode",dest="dev_mode", action="store_true", default=False)
   (options, args) = parser.parse_args()
+
+  simple_configs = None
+
+  if len(args) > 0:
+    simple_configs = args[0]
+    simple_configs = simple_configs.split("|")
+
+    for config in simple_configs:
+      simple_config_path = "config/"+config+"_simple.json"
+      if not os.path.exists(simple_config_path):
+          print_err("Error: Simple configuration file \"%s_simple.json\" doesn't exist uner config folder\n" % config)
+          sys.exit(1)
 
   register()
 
@@ -737,7 +752,7 @@ if __name__ == '__main__':
   if options.dev_mode:
     everything_config = sort_by_keys(everything_config)
 
-  save_generated_config(everything_config)
+  save_generated_config(everything_config, simple_configs)
 
   if options.dev_mode:
     reorder_orig_config()
