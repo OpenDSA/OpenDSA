@@ -3,7 +3,10 @@
   "use strict";
 
   var av, // The JSAV object
-      nullNode, // Used to trace the node pointed by 'empRef' pointer.
+      nullNode1, // Used to trace the node pointed by 'empRef' pointer.
+      nullNode2,
+      nullNode3,
+      nullchecker,
       johnNode, // Used to trace the node pointed by 'johnRef' pointer.
       samNode, // Used to trace the node pointed by 'samRef' pointer.
       selected_pointer;
@@ -66,10 +69,10 @@
       } else if (selected_pointer === pointer) { // Re-clicked slected pointer
         selected_pointer.element.removeClass("highlight");
         selected_pointer = null;
-      } else { // Reselecting a new pointer
+      } else { // pointer points another pointer
+        pointerEX1PRO.setPointer(selected_pointer.element.text(), pointer, selected_pointer);
         selected_pointer.element.removeClass("highlight");
-        selected_pointer = pointer;
-        selected_pointer.element.addClass("highlight");
+        selected_pointer = null;
       }
       pointerEX1PRO.userInput = true;
     },
@@ -88,8 +91,16 @@
 
     makenull: function(){
       if(selected_pointer !== null){
-        if(selected_pointer.target() !== nullNode){
-          pointerEX1PRO.setPointer(selected_pointer.element.text(), nullNode, selected_pointer);
+        var target = selected_pointer.target();
+        if(target !== nullNode1 && target != nullNode2 && target != nullNode3){
+          if(!nullNode1.llist_pleft){
+              pointerEX1PRO.setPointer(selected_pointer.element.text(), nullNode1, selected_pointer);
+          } else if (!nullNode2.llist_pleft){
+            pointerEX1PRO.setPointer(selected_pointer.element.text(), nullNode2, selected_pointer);
+          } else {
+            pointerEX1PRO.setPointer(selected_pointer.element.text(), nullNode3, selected_pointer);
+          }
+
         }
           selected_pointer.removeClass("highlight");
           selected_pointer = null;
@@ -143,13 +154,19 @@
       var samP = johnP + 170;
 
       // Create nodes
-      nullNode = av.ds.array([""], {top: topP, left: nullP});
       johnNode = av.ds.array(["John, 1000"], {top: topP, left: johnP});
       samNode = av.ds.array(["Sam, 2000"], {top: topP, left: samP});
-      nullNode.addClass([0], "nullBox"); //remove null node's boarder
+
+      //create null nodes.
+      nullNode1 = av.ds.array([""], {top: topP - 40, left: nullP});
+      nullNode2 = av.ds.array([""], {top: topP, left: nullP});
+      nullNode3 = av.ds.array([""], {top: topP + 40, left: nullP});
+      nullNode1.addClass([0], "nullBox"); //remove null node's boarder
+      nullNode2.addClass([0], "nullBox"); //remove null node's boarder
+      nullNode3.addClass([0], "nullBox"); //remove null node's boarder
 
       // Create pointers
-      pointerEX1PRO.setPointer("empRef", nullNode);
+      pointerEX1PRO.setPointer("empRef", nullNode1);
       pointerEX1PRO.setPointer("johnRef", johnNode);
       pointerEX1PRO.setPointer("samRef", samNode);
 
@@ -176,7 +193,7 @@
 
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function() {
-      if(nullNode.llist_pleft.element.text() !== "johnRef"){
+      if(nullNode1.llist_pleft.element.text() !== "johnRef"){
         return false;
       } else if(johnNode.llist_pright.element.text() !== "empRef"){
         return false;

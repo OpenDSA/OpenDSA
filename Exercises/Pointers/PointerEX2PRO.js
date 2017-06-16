@@ -1,4 +1,9 @@
 /*global JSAV, window */
+
+// TODO: generate pop-up text field for the case of clicking setSalary Button.
+//  "trigger a pop-up text field that the user types into, and then the value for that object gets set."
+//  " it would be better to click on the value field and then type 3000, instead of having a button that automatically sets it to 3000."
+
 (function() {
   "use strict";
 
@@ -70,10 +75,10 @@
       } else if (selected_pointer === pointer) { // Re-clicked slected pointer
         selected_pointer.element.removeClass("highlightpointer");
         selected_pointer = null;
-      } else { // Reselecting a new pointer
+      } else { // Pointing to another pointer.
+        pointerEX2PRO.setPointer(selected_pointer.element.text(), pointer, selected_pointer);
         selected_pointer.element.removeClass("highlightpointer");
-        selected_pointer = pointer;
-        selected_pointer.element.addClass("highlightpointer");
+        selected_pointer = null;
       }
       pointerEX2PRO.userInput = true;
     },

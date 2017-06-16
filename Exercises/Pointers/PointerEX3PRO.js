@@ -1,4 +1,12 @@
 /*global JSAV, window */
+//TODO: Create pop-up window for the newEmployee button.
+// "If you want to set the value for a field,
+// one possibility would be to click on something,
+// and have that trigger a pop-up text field that
+// the user types into, and then the value for that object
+// gets set."
+
+
 (function() {
   "use strict";
 
@@ -8,6 +16,10 @@
       list_size,
       headNode,
       tailNode,
+      johnNode,
+      topP,
+      linkP,
+      emp,
       selected_pointer, // Remember pointer object that has been selected by user for swap
       selected_node; // Remember node that has been selected by user for swap
 
@@ -27,12 +39,12 @@
       //Create Right Pointer
       var pointerRight = {visible: true, anchor: "right top",
                           myAnchor: "left bottom",
-                          left: -10, top: -10};
+                          left: -10, top: -20};
 
       //Create Left Pointer
       var pointerLeft = {visible: true, anchor: "left top",
                          myAnchor: "right bottom",
-                         left: 30, top: -10};
+                         left: 30, top: -20};
 
       //Remove old pointer and copy it to create again
       if (oldpointer) {
@@ -64,7 +76,7 @@
     pclick: function(pointer) {
       if (selected_pointer === null) { // No currently selected pointer object
         if(selected_node !== null){
-          selected_node.removeClass([0], "highlightbox");
+          selected_node.unhighlight();
           selected_node = null;
         }
         selected_pointer = pointer;
@@ -89,29 +101,38 @@
           selected_pointer = null;
       } else {
         if(selected_node !== null){
-          selected_node.removeClass([0], "highlightbox");
+          selected_node.unhighlight();
           if(selected_node !== this){
-            selected_node = this;
-            selected_node.addClass([0], "highlightbox");
+            if(this === johnNode){
+              //draw arrow
+              var pos1 = $("#" + selected_node.id()).position();
+              av.g.line(linkP + 45, topP + 45, linkP + 45, topP + 110, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+
+              selected_node = null;
+            } else {
+              selected_node = this;
+              selected_node.highlight();
+            }
           } else {
             selected_node = null;
           }
         } else {
           selected_node = this;
-          selected_node.addClass([0], "highlightbox");
+          selected_node.highlight();
         }
       }
 
       pointerEX3PRO.userInput = true;
     },
 
+
     newLink: function(){
       if(headNode === null){
-        list.addLast("");
+        list.addLast("Link");
         list.layout();
         headNode = list.get(0);
       } else if (tailNode === null){
-        list.addLast("");
+        list.addLast("Link");
         list.layout();
         tailNode = list.get(1);
       }
@@ -119,13 +140,10 @@
     },
 
     newEmployee: function(){
-      if(selected_node !== null){
-        if(selected_node === johnNode){
-          johnNode.value(0, "John, 3000");
-        } else if (selected_node === samNode){
-          samNode.value(0, "Sam, 3000");
-        }
-      }
+      //create employee node
+      johnNode = av.ds.array(["John, 1000"], {top: topP + 90, left: linkP});
+      johnNode.addClass([0], "johnNode");
+      johnNode.click(pointerEX3PRO.clickHandler);
       pointerEX3PRO.userInput = true;
     },
 
@@ -153,23 +171,26 @@
 
       var width = 60;
 
-      var topP = topMargin;
       var nullP = leftMargin;
-      var linkP = nullP + 100;
+      topP = topMargin;
+      linkP = nullP + 100;
 
       // Create nodes
       nullNode = av.ds.array([""], {top: topP, left: nullP});
       nullNode.addClass([0], "nullBox"); //remove null node's boarder
 
+      var n = av.ds.array([""], {top: topP + 100, left: nullP});
+      n.addClass([0], "nullBox"); //remove null node's boarder
+
       // Create pointers
       pointerEX3PRO.setPointer("first", nullNode);
 
-      list = av.ds.list({nodegap: 30, top: topP, left: linkP});
       list_size = 0;
-      headNode = null;
-      tailNode = null;
-
+      //create list
+      link1 = av.ds.list({nodegap: 30, top: topP, left: linkP});
+      link2 = av.ds.list({nodegap: 30, top: topP, left: linkP});
       list.layout();
+
       av.displayInit();
       av.recorded();
 
@@ -192,6 +213,7 @@
       $("#reset").click(function() {
         pointerEX3PRO.reset();
       });
+
     },
 
     // Check user's answer for correctness: User's array must match answer
