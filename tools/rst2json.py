@@ -641,21 +641,29 @@ def save_generated_config(everything_config, ref_configs):
   '''
   print('Generating configuration files ...')
 
+  config_dir = os.path.abspath('config')
+
+  config_files = absoluteFilePaths(config_dir)
+
+  for config_path in config_files:
+    config_fname = config_path.partition('.')[0].partition('_')[1]
+    if "_simple" in config_fname:
+
   # load reference config file
-  for config in simple_configs:
-    print('Processing %s configuration file' %config)
+  # for config in simple_configs:
+    print('Processing %s configuration file' %config_fname)
 
-    ref_config_path = "config/"+config+".json"
+    # ref_config_path = "config/"+config+".json"
 
 
-    with open(ref_config_path) as data_file:
+    with open(config_path) as data_file:
       ref_config = json.load(data_file, object_pairs_hook=OrderedDict)
 
 
     if options.dev_mode:
-      out_fname = os.path.abspath('tools/json_xml/' + config + '.json')
+      out_fname = os.path.abspath('tools/json_xml/' + config_fname + '.json')
     else:
-      out_fname = os.path.abspath('config/' + config.partition('_')[0] + '_generated.json')
+      out_fname = os.path.abspath('config/' + config_fname.partition('_')[0] + '_generated.json')
 
     for ch_k, ch_obj in ref_config['chapters'].iteritems():
       chapter_obj = OrderedDict()
@@ -691,14 +699,14 @@ if __name__ == '__main__':
           "Usage: " + sys.argv[0] + " [-d] simple_configs")
       sys.exit(1)
 
-  simple_configs = args[0]
-  simple_configs = simple_configs.split("|")
+  # simple_configs = args[0]
+  # simple_configs = simple_configs.split("|")
 
-  for config in simple_configs:
-    simple_config_path = "config/"+config+".json"
-    if not os.path.exists(simple_config_path):
-        print_err("Error: Simple configuration file \"%s.json\" doesn't exist uner config folder\n" % config)
-        sys.exit(1)
+  # for config in simple_configs:
+  #   simple_config_path = "config/"+config+".json"
+  #   if not os.path.exists(simple_config_path):
+  #       print_err("Error: Simple configuration file \"%s.json\" doesn't exist uner config folder\n" % config)
+  #       sys.exit(1)
 
   register()
 
