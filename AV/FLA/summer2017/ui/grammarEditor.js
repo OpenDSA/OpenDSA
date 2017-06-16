@@ -2874,13 +2874,11 @@ $(document).ready(function () {
       return;
     }
     var productions = _.filter(arr, function(x) { return x[0];});
-    console.log(productions);
     startParse();
     $('.jsavcontrols').hide();
     $('#completeallbutton').show();
     $(m.element).css("margin-left", "auto");
     jsav.umsg('Complete the FA.');
-    console.log(m);
     // keep a map of variables to FA states
     var nodeMap = {};
     builtDFA = jsav.ds.fa({width: '90%', height: 440, layout: "automatic"});
@@ -2927,7 +2925,6 @@ $(document).ready(function () {
 
     var completeConvertToFA = function() {
       for (var i = 0; i < productions.length; i++) {
-        console.log('i: ' + i);
         // if the current production is not finished yet
         if (!m.isHighlight(i)){
           var start = nodeMap[productions[i][0]];
@@ -2935,11 +2932,13 @@ $(document).ready(function () {
           //if there is no capital letter, then go to final state
           if(variables.indexOf(rhs[rhs.length-1]) === -1){
             var end = f;
+            var w = rhs;
           } else {
             var end = nodeMap[rhs[rhs.length-1]];
+            var w = rhs.substring(0, rhs.length-1);
           }
           m.highlight(i);
-          var newEdge = builtDFA.addEdge(start, end, {weight: rhs.substring(0, rhs.length-1)});
+          var newEdge = builtDFA.addEdge(start, end, {weight: w});
           if (newEdge) {
             newEdge.layout();
             checkDone();
