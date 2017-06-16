@@ -195,6 +195,11 @@ You should too.
 
 .. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
 
+|
+
+.. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
+
+
 Sharing
 -------
 
@@ -509,6 +514,30 @@ use are very different.
 Oh well.
 Try to remember to assign your references to refer to pointees.
 But don't be surprised when you forget, and your program breaks.
+
+
+Link Nodes
+----------
+
+In this section, we introduce the idea of a **link node**.
+This has some sort of value field, and a pointer to another link
+node.
+Later, you will learn about :term:`linked lists`, that are made from
+such link nodes.
+For now, well just use them as a simple way to connect some objects
+together.
+
+Here is a class definition for a link object.
+
+.. TODO::
+   :type: Code
+
+   Code here for link nodes.
+
+Here are some exercises to practice manipulating link nodes.
+
+.. avembed:: Exercises/Pointers/PointerEX3PRO.html ka
+
 
 .. odsascript:: AV/PointersSushma/num42CON.js
 .. odsascript:: AV/PointersSushma/employeeEmpRefCON.js

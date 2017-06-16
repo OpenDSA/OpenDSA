@@ -241,13 +241,9 @@
         }
       },
       "Pointers/Exercises": {
-        "long_name": "Exercises",
+        "long_name": "Pointers Exercises",
         "sections": {
-          "FindNode Pointer Programming Exercise": {
-            "learning_tool": "code-workout",
-            "resource_type": "external_assignment",
-            "resource_name": "",
-            "points": 1.0
+          "Exercises": {
           }
         }
       }
@@ -5004,7 +5000,7 @@
       "Bounds/BoundiBest": {
         "long_name": "Finding ith Best Element",
         "sections": {}
-      }
+      },
       "Bounds/SortingOptimal": {
         "long_name": "Optimal Sorting",
         "sections": {}
