@@ -98,13 +98,13 @@ memory by garbage collection:
   to that object are out of scoop after the execution of that
   block. Here is an example
 
-  .. codeinclude:: PointersBook/Scoop
+  .. codeinclude:: Pointers/Scoop
 
 * If an object A contains a reference to another object B. Object B
   will be eligible for garbage collection one object A set to
   ``null``. Here is an example:
 
-.. codeinclude:: PointersBook/Date
+.. codeinclude:: Pointers/Date
 
 .. inlineav:: garbageDisposalCON ss
    :output: show
@@ -237,7 +237,7 @@ two areas to be accurate since the rules which govern the two areas are so diffe
 In this case, the lifetime of the local variable empPtr is totally separate from
 the lifetime of the heap block, and the drawing needs to reflect that difference.
 
-.. codeinclude:: PointersBook/SimpleHeapExampleT1
+.. codeinclude:: Pointers/SimpleHeapExampleT1
 
 .. odsafig:: Images/LocalHeapintptrxxx.png
    :width: 300
@@ -247,7 +247,7 @@ the lifetime of the heap block, and the drawing needs to reflect that difference
 
 
 
-.. codeinclude:: PointersBook/SimpleHeapExampleT2
+.. codeinclude:: Pointers/SimpleHeapExampleT2
 
 .. odsafig:: Images/LocalHeapintptr42.png
    :width: 300
@@ -256,7 +256,7 @@ the lifetime of the heap block, and the drawing needs to reflect that difference
    :figwidth: 100%
 
 
-.. codeinclude:: PointersBook/SimpleHeapExampleT3
+.. codeinclude:: Pointers/SimpleHeapExampleT3
 
 .. odsafig:: Images/LocalHeapintptr.png
    :width: 300
@@ -303,20 +303,25 @@ of the array memory block is the size of each element multiplied by the number o
 elements. So the following code heap allocates an array of 100
 ``Fractions``'s in the heap, sets them all to 22/7, and deallocates the heap array.
 
-.. codeinclude:: PointersBook/Fraction
+.. codeinclude:: Pointers/Fraction
+
 
 Heap Array Observations
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 In the previous example the array is diamically allocated memory in two steps:
 
-* The first step when the array is created using ``fracts =  new Fraction[100];``.
-This line is used to allocate dynamic array of 100 reference to ``Fractions``. All
-references are initialized to ``null``.
+* The first step when the array is created using
+  ``fracts =  new Fraction[100];``. 
+  This line is used to allocate dynamic array of 100 reference to
+  ``Fractions``.
+  All references are initialized to ``null``.
 
-* The second step was inside the loop. Every loop iteration uses ``new`` to dynamically
-allocate an ``object`` of type ``Fraction``. The initial value of eacth object determined
-by the values sent to the Fraction constructor.
+* The second step was inside the loop.
+  Every loop iteration uses ``new`` to dynamically allocate an
+  ``object`` of type ``Fraction``.
+  The initial value of eacth object determined 
+  by the values sent to the Fraction constructor.
 
 
 Memory Leaks

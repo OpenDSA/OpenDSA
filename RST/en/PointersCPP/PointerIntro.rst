@@ -22,6 +22,9 @@ verbatim translation into the OpenDSA system of a document written by
 Nick Parlante of Stanford University, and used by permission of the
 author.
 
+This version of the book is focussed on pointers in C/C++.
+There is a Java version of the book, that is further along in development.
+
 "`Pointers and Memory
 <http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
 by Nick Parlante, Copyright 1998-2000,
@@ -34,6 +37,9 @@ Our goals for this project include the following:
   exercises. Our inspiration for these is the
   `JhavePop <http://jhave.org/jhavepop/>`_, whose authors are
   collaborators within the OpenDSA project.
+* A substantial number of small exercises that show a few lines of
+  code and ask the reader to manipulate a visual interface to show the
+  effects of the code.
 * Automated feedback including program visualizations for student
   answers to the programming exercises. We are currently experimenting
   with integrating Philip Guo's

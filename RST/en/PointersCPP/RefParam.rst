@@ -88,7 +88,7 @@ it. Instead, each function can receives a pointer to ``netWorth``.
 Each function can see the current value of `netWorth` by dereferencing its pointer. More importantly, each function can change the net 
 ``worth``  |---| just dereference the pointer to the centralized  ``netWorth`` and change it directly. Everyone agrees what
 the current value of ``netWorth``  because it exists in only one place |---| everyone has a pointer to the one master copy. The following memory drawing shows `A()` and `B()`
-functions changed to use :term:`reference parameters`.
+functions changed to use :term:`reference parameters <reference parameter>`.
 As before, T1, T2, and T3 correspond to points in the code (below),
 but you can study the memory structure without looking at the code
 yet.

@@ -334,8 +334,10 @@ deallocates the heap array.
 	  free(fracts);
 	}
 	
+
 Heap String Example
 -------------------
+
 Here is a more useful heap array example. The ``StringCopy()`` function takes a C string,
 makes a copy of that string in the heap, and returns a pointer to the new string. The caller
 takes over ownership of the new string and is responsible for freeing it.

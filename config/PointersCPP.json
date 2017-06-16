@@ -1,15 +1,16 @@
 {
-  "title": "OpenDSA PintersBook",
-  "desc": "OpenDSA Java Pointers Book",
+  "title": "Introduction to Pointers for C++",
+  "desc": "Introduction to Pointers for C++",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Java": {
+    "C++": {
       "ext": [
-        "java"
+        "cpp",
+        "h"
       ],
-      "label": "Java",
-      "lang": "java"
+      "label": "C++",
+      "lang": "C++"
     }
   },
   "lang": "en",
@@ -20,33 +21,28 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "PointersJava": {
-      "PointersJava/PointerIntro": {
+    "Pointers": {
+      "PointersCPP/PointerIntro": {
         "long_name": "Pointers Chapter Introduction",
         "sections": {}
       },
-      "PointersJava/BasicPointers": {
+      "PointersCPP/BasicPointers": {
         "long_name": "Basic References",
         "sections": {
-          "What is a Pointer?": {},
-          "What is a Reference?": {},
-          "Data Types in Java": {},
-          "Referencing and Dereferencing": {},
-          "The ``Employee`` Class": {},
-          "Reference Assignments": {},
-          "Sharing": {},
-          "Shallow and Deep Copying": {},
-          "Bad References": {},
+          "What is a pointer?": {},
+          "Pointer Reference and Dereference": {},
+          "Pointer Assignment": {},
+          "Bad Pointers": {},
           "Syntax": {},
-          "Example Reference Code": {},
-          "Bad reference Example": {},
-          "Reference Rules Summary": {},
-          "Java References Features": {},
-          "How Are References Implemented In The Machine?": {},
-          "Why Are Bad Reference Bugs So Common?": {}
+          "Example Pointer Code": {},
+          "Pointer Rules Summary": {},
+          "How Do Pointers Work In Java?": {},
+          "How Are Pointers Implemented In The Machine?": {},
+          "The Term 'Reference'": {},
+          "Why Are Bad Pointer Bugs So Common?": {}
         }
       },
-      "PointersJava/LocalMem": {
+      "PointersCPP/LocalMem": {
         "long_name": "Local Memory",
         "sections": {
           "Thanks For The Memory: Allocation and Deallocation": {},
@@ -56,36 +52,37 @@
           "How Does The Function Call Stack Work?": {}
         }
       },
-      "PointersJava/RefParam": {
+      "PointersCPP/RefParam": {
         "long_name": "Reference Parameters",
         "sections": {
           "Reference Parameters": {},
           "Passing By Reference": {},
           "Simple Reference Parameter Example: Swap()": {},
-          "Java is always pass-by-value": {},
-          "Reference Parameter Summary": {}
+          "More Syntax": {},
+          "Reference Parameter Summary": {},
+          "Reference Parameters in Java": {},
+          "Reference Parameters in C++": {}
         }
       },
-      "PointersJava/HeapMem": {
+      "PointersCPP/HeapMem": {
         "long_name": "Heap Memory",
         "sections": {
           "Heap Memory": {},
-	  "Java Garbage Collection":{},
           "What Does The Heap Look Like?": {},
           "Programming The Heap": {},
+          "C Specifics": {},
           "Simple Heap Example": {},
           "Simple Heap Observations": {},
           "Heap Array": {},
+          "Heap String Example": {},
           "Memory Leaks": {},
+          "Ownership": {},
           "Heap Memory Summary": {}
         }
       },
-      "PointersJava/Exercises": {
-        "long_name": "Pointers Exercises",
-        "sections": {
-          "Exercises": {
-          }
-        }
+      "PointersCPP/Exercises": {
+        "long_name": "Exercises",
+        "sections": {}
       }
     },
     "Appendix": {

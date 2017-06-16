@@ -45,7 +45,7 @@ between inputs (the :term:`domain`) and outputs (the :term:`range`).
 An input to a function might be a single value or a
 collection of information.
 The values making up an input are called the
-:term:`parameters` of the function.
+:term:`parameters <parameter>` of the function.
 A specific selection of values for the parameters is called an
 :term:`instance <problem instance>` of the problem.
 For example, the input parameter to a sorting function might be an

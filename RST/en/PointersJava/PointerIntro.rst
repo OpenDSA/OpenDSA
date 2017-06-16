@@ -12,20 +12,22 @@
 Pointers Chapter Introduction
 =============================
 
-What you see in this chapter is an extremely early version of our
+What you see in this chapter is an early version of our
 Pointer Tutorial project.
 We have ambitious goals for this material, but it will take us some
 time to realize them.
 
-The prose and images in this initial version are essentially a
-verbatim translation into the OpenDSA system of a document written by
-Nick Parlante of Stanford University, and used by permission of the
-author.
+The prose and images in this version originally came from 
+a document written by Nick Parlante of Stanford University, and used
+by permission of the author.
 
 "`Pointers and Memory
 <http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
 by Nick Parlante, Copyright 1998-2000,
 Stanford CS Education Library.
+
+This version of the book is focussed on pointers in Java.
+The orginal version of the material was written for C/CPP.
 
 Our goals for this project include the following:
 
@@ -34,6 +36,9 @@ Our goals for this project include the following:
   exercises. Our inspiration for these is the
   `JhavePop <http://jhave.org/jhavepop/>`_, whose authors are
   collaborators within the OpenDSA project.
+* A substantial number of small exercises that show a few lines of
+  code and ask the reader to manipulate a visual interface to show the
+  effects of the code.
 * Automated feedback including program visualizations for student
   answers to the programming exercises. We are currently experimenting
   with integrating Philip Guo's

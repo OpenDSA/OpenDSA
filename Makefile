@@ -90,34 +90,31 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-Plain: EverythingPlain CS2Plain CS3Plain PLPlain
-
-EverythingPlain: min
-	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
+Plain: Everything CS2 CS3 PL
 
 test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
-CS2Plain: min
+Everything: min
+	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
+
+CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
 
-CS3Plain: min
+CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
 ECE252: min
 	python $(CONFIG_SCRIPT) config/ECE252.json --no-lms
 
-PLPlain: min
+PL: min
 	python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
 CS4104: min
 	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
-
-CS4104raw: min
-	python $(CONFIG_SCRIPT) config/CS4104raw.json --no-lms
 
 FL: min
 	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
@@ -158,11 +155,11 @@ SDAP13: min
 simple_demo: min
 	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
 
-Pointers: min
-	python $(CONFIG_SCRIPT) config/Pointers.json --no-lms
+PointersCPP: min
+	python $(CONFIG_SCRIPT) config/PointersCPP.json --no-lms
 
-PointersBook: min
-	python $(CONFIG_SCRIPT) config/PointersBook.json --no-lms
+PointersJava: min
+	python $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
 
 CS3_exs: min
 	python $(CONFIG_SCRIPT) config/CS3_exs.json --no-lms

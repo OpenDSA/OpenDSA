@@ -232,7 +232,8 @@ There are two disadvantages of Locals:
 Synonyms For "Local"
 ~~~~~~~~~~~~~~~~~~~~
 
-Local variables are also known as :term:`automatic variables` since
+Local variables are also known as
+:term:`automatic variables <automatic variable>` since
 their allocation and deallocation is done automatically as part of the
 function call mechanism.
 Local variables are also sometimes known as :term`stack variables`

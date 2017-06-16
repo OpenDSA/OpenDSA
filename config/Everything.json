@@ -181,28 +181,33 @@
         }
       }
     },
-    "Pointers": {
-      "Pointers/PointerIntro": {
+    "Introduction to Pointers in Java": {
+      "PointersJava/PointerIntro": {
         "long_name": "Pointers Chapter Introduction",
         "sections": {}
       },
-      "Pointers/BasicPointers": {
-        "long_name": "Basic Pointers",
+      "PointersJava/BasicPointers": {
+        "long_name": "Basic References",
         "sections": {
-          "What is a pointer?": {},
-          "Pointer Reference and Dereference": {},
-          "Pointer Assignment": {},
-          "Bad Pointers": {},
+          "What is a Pointer?": {},
+          "What is a Reference?": {},
+          "Data Types in Java": {},
+          "Referencing and Dereferencing": {},
+          "The ``Employee`` Class": {},
+          "Reference Assignments": {},
+          "Sharing": {},
+          "Shallow and Deep Copying": {},
+          "Bad References": {},
           "Syntax": {},
-          "Example Pointer Code": {},
-          "Pointer Rules Summary": {},
-          "How Do Pointers Work In Java?": {},
-          "How Are Pointers Implemented In The Machine?": {},
-          "The Term 'Reference'": {},
-          "Why Are Bad Pointer Bugs So Common?": {}
+          "Example Reference Code": {},
+          "Bad reference Example": {},
+          "Reference Rules Summary": {},
+          "Java References Features": {},
+          "How Are References Implemented In The Machine?": {},
+          "Why Are Bad Reference Bugs So Common?": {}
         }
       },
-      "Pointers/LocalMem": {
+      "PointersJava/LocalMem": {
         "long_name": "Local Memory",
         "sections": {
           "Thanks For The Memory: Allocation and Deallocation": {},
@@ -212,35 +217,31 @@
           "How Does The Function Call Stack Work?": {}
         }
       },
-      "Pointers/RefParam": {
+      "PointersJava/RefParam": {
         "long_name": "Reference Parameters",
         "sections": {
           "Reference Parameters": {},
           "Passing By Reference": {},
           "Simple Reference Parameter Example: Swap()": {},
-          "More Syntax": {},
-          "Reference Parameter Summary": {},
-          "Reference Parameters in Java": {},
-          "Reference Parameters in C++": {}
+          "Java is always pass-by-value": {},
+          "Reference Parameter Summary": {}
         }
       },
-      "Pointers/HeapMem": {
+      "PointersJava/HeapMem": {
         "long_name": "Heap Memory",
         "sections": {
           "Heap Memory": {},
+	  "Java Garbage Collection":{},
           "What Does The Heap Look Like?": {},
           "Programming The Heap": {},
-          "C Specifics": {},
           "Simple Heap Example": {},
           "Simple Heap Observations": {},
           "Heap Array": {},
-          "Heap String Example": {},
           "Memory Leaks": {},
-          "Ownership": {},
           "Heap Memory Summary": {}
         }
       },
-      "Pointers/Exercises": {
+      "PointersJava/Exercises": {
         "long_name": "Pointers Exercises",
         "sections": {
           "Exercises": {
@@ -4971,14 +4972,6 @@
       },
       "Development/StringSearchRabinKarp": {
         "long_name": "Rabin-Karp String Search Algorithm",
-        "sections": {}
-      },
-      "Development/RandomIntro": {
-        "long_name": "Introduction to Randomized Algorithms",
-        "sections": {}
-      },
-      "Development/RandomNums": {
-        "long_name": "Random Numbers",
         "sections": {}
       }
     },
