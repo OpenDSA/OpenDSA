@@ -162,7 +162,6 @@ def isSlideConf(item):
 
   return False
 
-
 def get_directive_type(directive):
   if isTable(directive):
     return 'table'
@@ -207,7 +206,6 @@ def update_counters(label_line, dir_type, mod_num, num_ref_map, counters):
 
   return (num_ref_map, counters)
 
-
 def process_ref_chap(extension, line, book_objects, start_space, last):
   """
     method responsible of converting :ref: and :chap: to :term: when
@@ -241,7 +239,6 @@ def process_ref_chap(extension, line, book_objects, start_space, last):
         line_t = line_t.replace(rel_labels, newDir)
     line_t = ' ' * start_space + line_t + last
   return line_t
-
 
 class ODSA_RST_Module:
 
@@ -456,7 +453,7 @@ class ODSA_RST_Module:
                 exer_conf = exercises[av_name]
 
                 # List of valid options for inlineav directive
-                options = ['long_name', 'points', 'required', 'threshold']
+                options = ['points', 'required', 'threshold']
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
                 mod_data[i] += ''.join(rst_options)
@@ -494,7 +491,7 @@ class ODSA_RST_Module:
                 exer_conf = exercises[av_name]
 
                 # List of valid options for avembed directive
-                options = ['long_name', 'points', 'required', 'showhide', 'threshold', 'external_url']
+                options = ['points', 'required', 'showhide', 'threshold', 'external_url']
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 

@@ -101,6 +101,9 @@ Everything: min
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
+CS2LMS: min
+	python $(CONFIG_SCRIPT) config/CS2.json
+
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
 
@@ -182,6 +185,9 @@ nomin:
 	@cp lib/odsaKA.css lib/odsaKA-min.css
 	@cp lib/gradebook.css lib/gradebook-min.css
 
+rst2json:
+	python tools/rst2json.py
+
 pull:
 	git pull
 	git submodule init
@@ -189,6 +195,7 @@ pull:
 	make -s -C JSAV
 	make -s min
 	cd Doc; make
+	python tools/rst2json.py
 
 lib/odsaUtils-min.js: lib/odsaUtils.js
 	@echo 'Minimizing lib/odsaUtils.js'

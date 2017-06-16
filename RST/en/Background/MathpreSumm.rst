@@ -11,6 +11,10 @@
 Chapter Summary Questions
 =========================
 
+Chapter Summary Questions
+-------------------------
+
 Here are some practice questions for the modules in this chapter.
 
 .. avembed:: Exercises/Background/MathBgSumm.html ka
+   :long_name: Math Background Summary Questions

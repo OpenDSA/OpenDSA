@@ -29,3 +29,4 @@ Alternatively, the series of requests 600, 500, 700, 900 can be
 serviced by best fit but not by first fit on this same freelist.
 
 .. avembed:: AV/MemManage/firstFitAV.html ss
+   :long_name: Sequential Fit Visualization

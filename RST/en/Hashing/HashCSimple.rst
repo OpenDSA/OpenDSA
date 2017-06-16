@@ -115,6 +115,7 @@ candidates for inserting a new record before the probe sequence
 returns to the home position.
 
 .. inlineav:: linProbeCON1 ss
+   :long_name: Linear Probing Slideshow 1
    :output: show
 
 Can you see any reason why this might not be the best approach
@@ -134,6 +135,7 @@ methods.
 The main problem is illustrated by the next slideshow.
 
 .. inlineav:: linProbeCON2 ss
+   :long_name: Linear Probing Slideshow 2
    :output: show
 
 Again, the ideal behavior for a collision resolution mechanism is that
@@ -148,6 +150,7 @@ The objection to primary clustering is that it leads to
 long probe sequences.
 
 .. avembed:: Exercises/Hashing/HashLinearPPRO.html ka
+   :long_name: Linear Probing Proficiency Exercise
 
 .. odsascript:: AV/Hashing/linProbeCON1.js
 .. odsascript:: AV/Hashing/linProbeCON2.js

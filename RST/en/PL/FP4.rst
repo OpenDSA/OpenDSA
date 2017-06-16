@@ -24,6 +24,7 @@ This first problem is based on the ``split`` function that was previously
 described.
 
 .. avembed:: Exercises/PL/RP8part1.html ka
+   :long_name: RP set #8, question #1
 
 RP 8 part 2
 -----------
@@ -32,6 +33,7 @@ This problem will have you use the ``split`` function to implement an
 efficient sorting algorithm.
 
 .. avembed:: Exercises/PL/RP8part2.html ka
+   :long_name: RP set #8, question #2
 
 RP 8 part 3
 -----------
@@ -40,3 +42,4 @@ This problem will give you a lot more practice with the accumulator pattern.
 It is a randomized problem. You have to solve it three times in a row.
 
 .. avembed:: Exercises/PL/RP8part3.html ka
+   :long_name: RP set #8, question #3

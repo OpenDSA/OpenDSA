@@ -22,6 +22,7 @@ credit for it, you will have to solve it correctly three times in a
 row.
 
 .. avembed:: Exercises/PL/RP16part1.html ka
+   :long_name: RP set #16, question #1
 
 RP 16 Part 2
 ------------
@@ -32,6 +33,7 @@ and prepare to reduce them by determining whether an
 have to solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP16part2.html ka
+   :long_name: RP set #16, question #2
 
 
 RP 16 Part 3
@@ -42,4 +44,5 @@ This randomized problem will make you practice performing
 solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP16part3.html ka
+   :long_name: RP set #16, question #3
 

@@ -462,6 +462,7 @@ induction hypothesis.
    **Proof:**
 
    .. inlineav:: TwoColoringProofCON ss
+      :long_name: Two Coloring Proof Slideshow
       :output: show
 
 Compare the proof in Example :num:`Example #ThmRegion` with that in

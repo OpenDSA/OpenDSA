@@ -43,6 +43,7 @@ The recursive relationships used to define a structure provide a
 natural model for any recursive algorithm on the structure.
 
 .. inlineav:: SumBinaryTreeCON ss
+   :long_name: Sum values in a Binary Tree Slide Show
    :output: show
 
 .. odsascript:: AV/Binary/ListRecDSCON.js

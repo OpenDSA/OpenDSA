@@ -56,6 +56,7 @@ To get credit for the exercise, answer the following two questions:
   that must be inserted before the probability of a collision reaches 50%?
 
 .. avembed:: AV/Hashing/Birthday.html pe
+   :long_name: Birthday Problem Calculator
 
 To be practical, a database organized by hashing must store records in a
 hash table that is not so large that it wastes space.

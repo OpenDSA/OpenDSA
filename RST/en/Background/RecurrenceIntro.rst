@@ -13,6 +13,9 @@
 .. odsalink:: AV/Background/LinearRecurrencesNCON.css
 
 Recurrence Relations
+====================
+
+Recurrence Relations
 --------------------
 
 The running time for a recursive algorithm is most easily expressed by
@@ -70,6 +73,7 @@ occurrences of :math:`\mathbf{T}` on the right-hand side with its
 definition.
 
 .. inlineav:: LinearRecurrencesCON ss
+   :long_name: Linear Recurrences Slideshow
    :output: show
 
 
@@ -82,6 +86,7 @@ A slightly more complicated recurrence is
 Again, we will use expansion to help us find a closed form solution.
 
 .. inlineav:: LinearRecurrencesNCON ss
+   :long_name: Linear Recurrences Slideshow (n)
    :output: show
 
 .. odsascript:: AV/Background/LinearRecurrencesCON.js

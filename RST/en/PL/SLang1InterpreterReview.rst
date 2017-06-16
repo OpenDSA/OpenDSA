@@ -17,3 +17,4 @@ SLang 1 interpreter. Solve it correctly three times in a row to get
 credit for it.
 
 .. avembed:: Exercises/PL/RP24part1.html ka
+   :long_name: RP set #24, question #1

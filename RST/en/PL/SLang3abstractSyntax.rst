@@ -18,3 +18,4 @@ for SLang 3 programs. To get credit for this randomized problem, you must
 complete it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP35part2.html ka
+   :long_name: RP set #35, question #2

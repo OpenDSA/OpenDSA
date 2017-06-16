@@ -27,6 +27,7 @@ of sixteen slots::
 Here "%" is the symbol for the mod function.
 
 .. inlineav:: hashFuncExCON1 ss
+   :long_name: Hash Function Slideshow 1
    :output: show
 
 Recall that the values 0 to 15 can be represented with four bits
@@ -68,6 +69,7 @@ A similar, analogous problem arises if we were instead hashing strings based
 on the first letter in the string.
 
 .. inlineav:: hashFuncExCON2 ss
+   :long_name: Hash Function Slideshow 2
    :output: show
 
 In general with binning we store the record with key value :math:`i`
@@ -176,6 +178,7 @@ Here is a little calculator for you to see how this works.
 Start with '4567' as an example.
 
 .. avembed:: AV/Hashing/MidSquare.html pe
+   :long_name: Mid-Square Calculator
 
 
 A Simple Hash Function for Strings
@@ -231,6 +234,7 @@ slots.
 Now you can try it out with this calculator.
 
 .. avembed:: AV/Hashing/StringSimple.html pe
+   :long_name: Simple String Folding Calculator
 
 
 String Folding
@@ -280,6 +284,7 @@ to hash to slot 75 in the table.
 Now you can try it out with this calculator.
 
 .. avembed:: AV/Hashing/StringSfold.html pe
+   :long_name: Improved String Folding Calculator
 
 For any sufficiently long string, the sum for the integer
 quantities will typically cause a 32-bit integer to overflow
@@ -307,6 +312,7 @@ You should use the calculators above for the more complicated hash
 functions.
 
 .. avembed:: Exercises/Hashing/HashFuncFIBSumm.html ka
+   :long_name: Hash Function Pick Slot Summary
 
 
 Hash Function Review Questions
@@ -315,6 +321,7 @@ Hash Function Review Questions
 Here are some review questions.
 
 .. avembed:: Exercises/Hashing/HashFuncSumm.html ka
+   :long_name: Hash Function Summary Exercise
 
 .. odsascript:: AV/Hashing/hashFuncExCON1.js
 .. odsascript:: AV/Hashing/hashFuncExCON2.js

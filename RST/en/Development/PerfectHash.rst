@@ -34,6 +34,7 @@ the hash method, select any collision resolution method, and select a
 hash table of size 15.
 
 .. avembed:: AV/Development/perfectHashAV.html ss
+   :long_name: Perfect Hashing Visualization
 
 .. TODO::
    :type: AV

@@ -79,6 +79,7 @@ The initial call to ``mergesort`` would be
 Here is a visualization for the merge step.
 
 .. inlineav:: mergeImplS1CON ss
+   :long_name: Mergesort Implementation Slideshow 1
    :output: show
 
 An optimized Mergesort implementation is shown below.
@@ -98,9 +99,11 @@ the array is smaller than a value defined by ``THRESHOLD``.
 Here is a visualization for the optimized merge step.
 
 .. inlineav:: mergeImplS2CON ss
+   :long_name: Mergesort Implementation Slideshow 2
    :output: show
 
 .. avembed:: Exercises/Sorting/MergesortSumm.html ka
+   :long_name: Mergesort Summary Exercise
 
 .. odsascript:: AV/Sorting/mergeImplS1CON.js
 .. odsascript:: AV/Sorting/mergeImplS2CON.js

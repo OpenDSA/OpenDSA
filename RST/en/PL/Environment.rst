@@ -22,6 +22,7 @@ This problem provides practice determining to which value a SLang
 randomized problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP21part3.html ka
+   :long_name: RP set #21, question #3
 
 RP 21 Part 4
 ------------
@@ -31,6 +32,7 @@ earn credit for it, you must complete this randomized problem
 correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP21part4.html ka
+   :long_name: RP set #21, question #4
 
 
 RP 21 Part 5
@@ -41,4 +43,5 @@ interpreter. To earn credit for it, you must complete this randomized
 problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP21part5.html ka
+   :long_name: RP set #21, question #5
 

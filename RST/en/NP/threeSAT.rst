@@ -18,11 +18,13 @@
 3-CNF SATISFIABILITY PROBLEM (3-SAT)
 
 .. inlineav:: threeSATCON ss
+   :long_name: 3-Satisfiability
     :output: show
 
 Try out an instance of the 3-SAT problem on your own.
 
 .. avembed:: Exercises/Development/threeSAT_KA.html ka
+   :long_name: Practice Exercise for 3-SAT
 
 .. odsascript:: AV/Development/NP/threeSATCON.js
 

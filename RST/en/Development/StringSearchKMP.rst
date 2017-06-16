@@ -3,11 +3,14 @@
 .. Copyright (c) 2012-13 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Tom Naps and Sam Micka
 
 KMP String Search Algorithm
 ===========================
+
+KMP String Search Algorithm
+---------------------------
 
 This apparently more efficient string search algorithm was discovered
 in the 1970s by D. E. Knuth, J. H. Morris, and V. R. Pratt.
@@ -42,7 +45,7 @@ of :math:`sub`.  We will store, for each index :math:`p`, the length
 of such a sequence in an array called :math:`align`.  Given this
 definition of the :math:`align` array, the following slideshow
 indicates how the KMP algorithm would work with a particular
-:math:`master` and :math:`sub` string. 
+:math:`master` and :math:`sub` string.
 
 .. Slideshow for KMP search algorithm
 
@@ -96,9 +99,9 @@ indicated in the following slideshow.
 .. equals sub.charAt(p – 1).  This logic is iterated until sub.charAt(q)
 .. equals sub.charAt(p – 1) or until q becomes negative, as indicated in
 .. Figure 2.18.
-.. 
-.. 
-.. 
+..
+..
+..
 .. Slideshow for creation of alignment array
 
 .. avembed:: AV/Development/KMP_align_array_slideshow.html ss
@@ -106,13 +109,13 @@ indicated in the following slideshow.
 The preceding slideshow has illustrated the following pseudocode
 for the computation of the :math:`align` array in the KMP algorithm:::
 
-  align[0] = -1 
-  align[1] = 0 
-  L = string.length 
-  for(p = 2; p < L; p++): 
-    q = align[p-1] 
-    while((q>= 0) and (string[q] != string[p-1])): 
-      q = align[q] 
+  align[0] = -1
+  align[1] = 0
+  L = string.length
+  for(p = 2; p < L; p++):
+    q = align[p-1]
+    while((q>= 0) and (string[q] != string[p-1])):
+      q = align[q]
     align[p] = q+1
 
 See if you can predict how one step in this :math:`align` algorithm would

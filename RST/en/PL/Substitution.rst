@@ -105,6 +105,7 @@ since both :math:`p` and :math:`b` are equal to the same variable
 :math:`u`. So, the algorithm returns :math:`\lambda y.(y\ x)`.
 
 .. .. inlineav:: substCase1b ss
+      :long_name: Slideshow
 ..    :output: show
 
 
@@ -137,6 +138,7 @@ this randomized problem, you must solve it correctly three times in
 a row.
 
 .. avembed:: Exercises/PL/RP15part2.html ka
+   :long_name: RP set #15, question #2
 
 RP 15 part 3
 ------------
@@ -147,5 +149,6 @@ this randomized problem, you must solve it correctly three times in
 a row.
 
 .. avembed:: Exercises/PL/RP15part3.html ka
+   :long_name: RP set #15, question #3
 
 .. .. odsascript:: AV/PL/AV/substCase1b.js

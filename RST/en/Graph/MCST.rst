@@ -111,6 +111,7 @@ The implementation above also contains calls to
 MCST.
 
 .. avembed:: AV/Graph/PrimAV.html ss
+   :long_name: Prim's Algorithm Visualization
 
 
 Prim's Algorithm Alternative Implementation
@@ -134,6 +135,7 @@ the :term:`heap` stores ``DijkElem`` objects.
 Here is an AV that lets you try Prim's algorithm on other graphs.
 
 .. avembed:: AV/Graph/PrimAVPQ.html ss
+   :long_name: Prim's with Priority Queue Algorithm Visualization
 
 Prim's algorithm is an example of a greedy
 algorithm.
@@ -203,6 +205,7 @@ cost?
    would form a cycle.
 
 .. avembed:: AV/Graph/PrimAVPE.html pe
+   :long_name: Prim's Algorithm Proficiency Exercise
 
 .. TODO::
    :type: Exercise

@@ -46,11 +46,13 @@ However, the new record would actually be inserted into the slot of
 the first tombstone encountered.
 
 .. inlineav:: hashdelCON ss
+   :long_name: Hash Deletion Slideshow
    :output: show
 
 Here is a practice exercise.
 
 .. avembed:: AV/Hashing/HashingDelPRO.html pe
+   :long_name: Hash Deletion Proficiency Exercise
 
 The use of tombstones allows searches to work correctly and allows
 reuse of deleted slots.
@@ -101,6 +103,7 @@ Hashing Deletion Summary Questions
 Now here are some practice questions.
 
 .. avembed:: Exercises/Hashing/HashDelSumm.html ka
+   :long_name: Hash Deletion Summary Exercise
 
 Congratulations! You have reached the end of the hashing tutorial.
 In summary, a properly tuned hashing system will return records with

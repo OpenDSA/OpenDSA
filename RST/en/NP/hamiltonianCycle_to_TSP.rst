@@ -20,6 +20,7 @@ problem can be reduced to an instance of Traveling Salesman problem in
 polynomial time.
  
 .. inlineav:: HCtoTSPCON ss
+   :long_name: HC to TSP Reduction
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 

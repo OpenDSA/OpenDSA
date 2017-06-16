@@ -213,9 +213,11 @@ remain near the front of the list regardless of further access
 history.
 
 .. inlineav:: SelforgCON1 ss
+   :long_name: Self-organizing List Slideshow: Frequency Count
    :output: show
 
 .. avembed:: Exercises/Development/SelfOrgCounterPro.html ka
+   :long_name: Self-organizing List Counter Proficiency Exercise
 
 
 Move to Front
@@ -250,9 +252,11 @@ sequential order, especially if that sequential order is then
 repeated multiple times.
 
 .. inlineav:: SelforgCON2 ss
+   :long_name: Self-organizing List Slideshow: Move-to-front
    :output: show
 
 .. avembed:: Exercises/Development/SelfOrgMove-to-FrontPro.html ka
+   :long_name: Self-organizing List Move-to-front Proficiency Exercise
 
 
 Transpose
@@ -284,9 +288,11 @@ A variation on transpose would be to move the accessed record
 forward in the list by some fixed number of steps.
 
 .. inlineav:: SelforgCON3 ss
+   :long_name: Self-organizing List Slideshow: Transpose
    :output: show
 
 .. avembed:: Exercises/Development/SelfOrgTransposePro.html ka
+   :long_name: Self-organizing List Transpose Proficiency Exercise
 
 
 An Example

@@ -344,6 +344,7 @@ Introduction Summary Questions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/Background/IntroSumm.html ka
+   :long_name: Introduction Summary Questions
 
 
 Some Software Engineering Topics

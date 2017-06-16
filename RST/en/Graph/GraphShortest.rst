@@ -155,6 +155,7 @@ At the end, array ``D`` will contain the shortest distance values.
    :tag: GraphDijk1
 
 .. avembed:: AV/Graph/DijkstraAV.html ss
+   :long_name: Dijkstra's Algorithm Visualization
 
 There are two reasonable solutions to the key issue of finding the
 unvisited vertex with minimum distance value during each pass through
@@ -249,6 +250,7 @@ However, when the graph is dense, this cost can become as great as
 Now you can practice using Dijkstra's algorithm.
 
 .. avembed:: AV/Graph/DijkstraPE.html pe
+   :long_name: Dijkstra's Algorithm Proficiency Exercise
 
 .. TODO::
    :type: Exercise

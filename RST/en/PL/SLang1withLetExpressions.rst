@@ -17,6 +17,7 @@ sugar*. Solve it correctly three times in a row to get
 credit for it.
 
 .. avembed:: Exercises/PL/RP25part1.html ka
+   :long_name: RP set #25, question #1
 
 RP 25 Part 2
 ------------
@@ -26,6 +27,7 @@ This randomized problem focuses on the evaluation of nested
 credit for it.
 
 .. avembed:: Exercises/PL/RP25part2.html ka
+   :long_name: RP set #25, question #2
 
 RP 25 Part 3
 ------------
@@ -35,3 +37,4 @@ This randomized problem focuses on the evaluation of nested
 credit for it.
 
 .. avembed:: Exercises/PL/RP25part3.html ka
+   :long_name: RP set #25, question #3

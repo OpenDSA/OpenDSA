@@ -23,3 +23,4 @@ This randomized problem is about the MapReduce model.
 You must solve it correctly three times in a row to earn credit for it.
 
 .. avembed:: Exercises/PL/RP12part1.html ka
+   :long_name: RP set #12, question #1

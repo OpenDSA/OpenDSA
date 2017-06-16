@@ -112,3 +112,4 @@ which must fall in the range 0 to :math:`n-1`.
   is odd and :math:`r + 1 \leq n`.
 
 .. avembed:: Exercises/Binary/CompleteFIB.html ka
+   :long_name: Complete Tree Exercise

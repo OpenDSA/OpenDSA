@@ -217,6 +217,7 @@ reflexive; if we define a person not to be a sibling of himself, then
 it is not reflexive.
 
 .. avembed:: Exercises/Background/SetTFrelation.html ka
+   :long_name: Relations Exercise
 
 
 Equivalence Relations
@@ -287,6 +288,7 @@ computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
       :math:`x \bmod m = z \bmod m`.
 
 .. avembed:: Exercises/Background/SetTFequivrel.html ka
+   :long_name: Equivalence Exercise
 
 
 Partial Orders
@@ -328,3 +330,4 @@ then the order is called a :term:`total order` or :term:`linear order`.
    powerset of the integers.
 
 .. avembed:: Exercises/Background/SetTFpartialorder.html ka
+   :long_name: PartialOrder Exercise

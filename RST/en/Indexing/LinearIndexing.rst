@@ -36,6 +36,7 @@ database records, because it is amenable to
 :ref:`binary search <binary search> <ProgAnal>`.
 
 .. inlineav:: varindexCON ss
+   :long_name: Simple linear index Slideshow
    :output: show
 
 If the database contains enough records, the linear index might
@@ -76,6 +77,7 @@ one from the index file and one from the database file for the actual
 record.
 
 .. inlineav:: linindexCON ss
+   :long_name: Two-level linear index Slideshow
    :output: show
    :align: justify
 
@@ -92,6 +94,7 @@ record.
    second entry of the second-level index is key value 2003.
 
 .. avembed:: AV/Indexing/linearIndexingPRO.html pe
+   :long_name: Linear Indexing Proficiency Exercise
 
 Every time a record is inserted to or deleted from the database,
 all associated secondary indices must be updated.

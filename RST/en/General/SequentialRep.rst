@@ -83,9 +83,11 @@ the tree structure.
    Sample binary tree for sequential tree implementation examples.
 
 .. inlineav:: SequentialTreeCON ss
+   :long_name: First sequential representation Slideshow
    :output: show
 
 .. avembed:: Exercises/General/SequentialTreePRO.html ka
+   :long_name: First Sequential Representation Exercise
 
 
 Alternative Sequential Representation
@@ -133,6 +135,7 @@ Note that a full binary tree stores no ``null`` values with this
 implementation, and so requires less overhead.
 
 .. inlineav:: SequentialTreeAltCON ss
+   :long_name: Second sequential representation Slideshow
    :output: show
 
 Storing :math:`n` extra bits can be a considerable savings over
@@ -148,6 +151,7 @@ Then the high-order (sign) bit of the integer value could be used as
 the mark bit.
 
 .. avembed:: Exercises/General/SequentialTreeAltPRO.html ka
+   :long_name: Alternate Sequential Representation Exercise
 
 
 Bit Vector Representation
@@ -161,9 +165,11 @@ A value of "1" could indicate an internal node, and "0" could indicate
 a leaf node.
 
 .. inlineav:: SequentialTreeBitsCON ss
+   :long_name: Bit vector sequential representation Slideshow
    :output: show
 
 .. avembed:: Exercises/General/SequentialTreeBitVectorPRO.html ka
+   :long_name: Bit Vector Sequential Representation Exercise
 
 
 General Tree Sequential Representation
@@ -186,6 +192,7 @@ A leaf node that is also the last child for its parent would indicate
 this by two or more successive ")" symbols.
 
 .. inlineav:: SequentialGenTreeCON ss
+   :long_name: General Tree sequential representation Slideshow
    :output: show
 
 Note that this representation for serializing general trees cannot be
@@ -199,6 +206,7 @@ So this representation cannot let us distinguish whether node
 child of node :math:`B`.
 
 .. avembed:: Exercises/General/SequentialTreeGenTreePRO.html ka
+   :long_name: General Tree Sequential Representation Exercise
 
 .. odsascript:: AV/Binary/BinExampCON.js
 .. odsascript:: AV/General/SequentialTreeCON.js

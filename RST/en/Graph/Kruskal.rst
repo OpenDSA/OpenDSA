@@ -27,6 +27,7 @@ if the edge connects two vertices in different disjoint sets.
 This process is repeated until only one disjoint set remains.
 
 .. avembed:: AV/Development/KruskalUFAV.html ss
+   :long_name: Kruskal's Algorithm Visualization
 
 The edges can be processed in order of weight by using a
 min-heap.
@@ -60,10 +61,11 @@ If so, the cost is often close to
 :math:`\Theta(|\mathbf{V}| \log |\mathbf{E}|)` in the average case.
 
 .. avembed:: AV/Development/KruskalPE.html pe
+   :long_name: Kruskal's Algorithm Proficiency Exercise
 
 .. TODO::
    :type: Exercise
 
     Summary battery of questions for Prim's and Kruskal's algorithms.
 
-.. odsascript:: AV/Development/MCSTCON.js
+.. odsascript:: AV/Graph/MCSTCON.js

@@ -79,6 +79,7 @@ J1, J3, J2, J6, J4, J5, J7.
 Here is another example.
 
 .. avembed:: AV/Graph/topSort.html ss
+   :long_name: Topological Sort (DFS) visualization
 
 
 Queue-based Solution
@@ -115,6 +116,7 @@ Here is the code to implement the queue-based topological sort:
    :tag: TopsortBFS
 
 .. avembed:: AV/Graph/qTopSort.html ss
+   :long_name: Topological Sort (Queue) visualization
 
 .. TODO::
    :type: Proficiency Exercise

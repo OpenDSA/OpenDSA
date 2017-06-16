@@ -18,11 +18,13 @@ The Clique Problem
 CLIQUE PROBLEM  
 
 .. inlineav:: cliqueCON ss
+   :long_name: Clique
    :output: show
 
 Try out an instance of the Clique problem on your own.
 
 .. avembed:: Exercises/Development/clique_KA.html ka
+   :long_name: Practice Exercise for Clique
 
 
 .. odsascript:: AV/Development/NP/cliqueCON.js

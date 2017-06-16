@@ -44,6 +44,7 @@ src
 
 # Ignore LMS course configuration files
 config/temp/temp*.*
+config/*_generated.json
 
 # cache files for sublime text
 *.tmlanguage.cache

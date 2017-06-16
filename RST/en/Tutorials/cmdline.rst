@@ -84,3 +84,4 @@ If you are using Windows the native Command Prompt does not have a man command.*
 .. Give the terminal a try.
 
 .. .. avembed:: AV/Tutorials/terminal.html ka
+      :long_name: Terminal

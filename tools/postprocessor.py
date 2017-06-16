@@ -180,6 +180,7 @@ def update_TermDef(glossary_file, terms_dict):
 
 triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
 def break_up_sections(path, module_data, config):
+  print(path)
   book_name = config.book_name
   sections = module_data['sections']
   module_map = config['module_map']

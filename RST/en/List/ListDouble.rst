@@ -83,6 +83,7 @@ singly linked list counterparts (since there is an extra pointer in
 each node to deal with), they tend to be easier to understand.
 
 .. inlineav:: dlistInsertCON ss
+   :long_name: Doubly Linked List Insert
    :output: show   
    
 
@@ -90,6 +91,7 @@ Append
 ~~~~~~
 
 .. inlineav:: dlistAppendCON ss
+   :long_name: Doubly Linked List Append
    :output: show  
    
 
@@ -97,6 +99,7 @@ Remove
 ~~~~~~
 
 .. inlineav:: dlistRemoveCON ss
+   :long_name: Doubly Linked List Remove
    :output: show
    
 
@@ -104,6 +107,7 @@ Prev
 ~~~~
 
 .. inlineav:: dlistPrevCON ss
+   :long_name: Doubly Linked List Prev
    :output: show
    
 The only disadvantage of the doubly linked list as compared to the

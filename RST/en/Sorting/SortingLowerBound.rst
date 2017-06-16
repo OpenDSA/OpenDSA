@@ -132,6 +132,7 @@ Here is a Visualization that illustrates decision trees and the
 sorting lower bound proof.
 
 .. inlineav:: SortingLowerBoundCON ss
+   :long_name: Sorting Lower Bound Slideshow
    :output: show
 
 Any sorting algorithm requiring :math:`\Omega(n \log n)` comparisons
@@ -151,5 +152,6 @@ Here are some review questions to check that you understand
 this proof.
 
 .. avembed:: Exercises/Sorting/SortBoundSumm.html ka
+   :long_name: Lower Bounds Summary Exercise
 
 .. odsascript:: AV/Development/SortingLowerBoundCON.js

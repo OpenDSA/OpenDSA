@@ -10,7 +10,7 @@
    :topic: pointer
 
 Pointer Exercise
-============
+================
 
 Linked Lists
 ------------

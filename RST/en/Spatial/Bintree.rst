@@ -14,6 +14,9 @@
 The Bintree
 ===========
 
+The Bintree
+-----------
+
 This module presents a spatial data structure for storing
 point data in two or more dimensions, called the Bintree.
 The Bintree is a natural extension of the BST to
@@ -227,6 +230,7 @@ Below is a visualization of the Bintree. Use this visualization to
 help understand how the Bintree data structure works.
 
 .. avembed:: AV/Development/bintreeAV.html ss
+   :long_name: Bintree Visualization
 
 Below is another visualization of the Bintree. Be careful when using this.
 You must set "Bucket Capacity" to be 1, otherwise you will not see the

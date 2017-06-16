@@ -32,3 +32,4 @@ fragmentation while it minimizes the chance of not being able to
 service an occasional large request.
 
 .. avembed:: AV/MemManage/firstFitAV.html ss
+   :long_name: Best Fit Visualization

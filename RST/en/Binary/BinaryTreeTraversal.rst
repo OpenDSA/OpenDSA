@@ -57,6 +57,7 @@ This is called a :term:`preorder traversal`.
    any node of the right subtree.
 
 .. inlineav:: preorderCON ss
+   :long_name: Preorder Traversal Slideshow
    :output: show
 
 
@@ -80,6 +81,7 @@ This is called a :term:`postorder traversal`.
    **D B G E H I F C A**.
 
 .. inlineav:: postorderCON ss
+   :long_name: Postorder Traversal Slideshow
    :output: show
 
 
@@ -100,6 +102,7 @@ this traversal to print all nodes in ascending order of value.
    **B D A G E C H F I**.
 
 .. inlineav:: inorderCON ss
+   :long_name: Inorder Traversal Slideshow
    :output: show
 
 
@@ -152,24 +155,28 @@ They simply change the order in which the node and its children are
 visited, as appropriate.
 
 .. avembed:: AV/Binary/btTravInorderPRO.html pe
+   :long_name: Binary Tree Inorder Traversal Exercise
 
 
 Postorder Traversal Practice
 ----------------------------
 
 .. avembed:: AV/Binary/btTravPostorderPRO.html pe
+   :long_name: Binary Tree Postorder Traversal Exercise
 
 
 Preorder Traversal Practice
 ---------------------------
 
 .. avembed:: AV/Binary/btTravPreorderPRO.html pe
+   :long_name: Binary Tree Preorder Traversal Exercise
 
 
 Summary Questions
 -----------------
 
 .. avembed:: Exercises/Binary/TravSumm.html ka
+   :long_name: Tree Traversal Summary Questions
 
 .. odsascript:: AV/Binary/BinExampCON.js
 .. odsascript:: AV/Binary/inorderCON.js

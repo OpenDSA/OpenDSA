@@ -58,6 +58,7 @@ Here is an implementation.
 |
 
 .. inlineav:: bubblesortS1CON ss
+   :long_name: Bubble Sort Slideshow 1
    :output: show
 
 Now we continue with the second pass. However, since the largest
@@ -65,6 +66,7 @@ record has "bubbled" to the very right, we will not need to look at
 it again.
 
 .. inlineav:: bubblesortS2CON ss
+   :long_name: Bubble Sort Slideshow 2
    :output: show
 
 Bubble Sort continues in this way until the entire array is sorted.
@@ -73,10 +75,12 @@ The following visualization shows the complete Bubble Sort.
 You can input your own data if you like.
 
 .. avembed:: AV/Sorting/bubblesortAV.html ss
+   :long_name: Bubble Sort Visualization
 
 Now try for yourself to see if you understand how Bubble Sort works.
 
 .. avembed:: Exercises/Sorting/BubsortPRO.html ka
+   :long_name: Bubble Sort Proficiency Exercise
 
 
 Bubble Sort Analysis
@@ -86,6 +90,7 @@ The following visualization illustrates the running time analysis of
 Bubble Sort.
 
 .. inlineav:: BubbleSortAnalysisCON ss
+   :long_name: Bubble Sort Analysis Slideshow
    :output: show
 
 Thus, Bubble Sort's running time is roughly the same
@@ -104,6 +109,7 @@ Here are some review questions to check your understanding of
 Bubble Sort. 
  
 .. avembed:: Exercises/Sorting/BubsortSumm.html ka
+   :long_name: Bubble Sort Summary Exercise
 
 .. odsascript:: AV/Sorting/bubblesortS1CON.js
 .. odsascript:: AV/Sorting/bubblesortS2CON.js

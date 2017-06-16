@@ -27,6 +27,7 @@ In this way, records with adjacent home positions will not follow the
 same probe sequence.
 
 .. inlineav:: collisionCON1 ss
+   :long_name: Linear Probing By Steps Slideshow 1
    :output: show
 
 One quality of a good probe sequence is that it will cycle through
@@ -62,11 +63,13 @@ When :math:`M = 11`, any value for :math:`c` between 1 and 10 generates a
 probe sequence that visits all slots for every key.
 
 .. inlineav:: collisionCON2 ss
+   :long_name: Linear Probing By Steps Slideshow 2
    :output: show
 
 Now you can practice linear probing by different step sizes.
 
 .. avembed:: Exercises/Hashing/HashLinearStepPPRO.html ka
+   :long_name: Linear Probing By Steps Proficiency Exercise
 
 
 Pseudo-Random Probing
@@ -110,16 +113,19 @@ random permutation of the values from 1 to :math:`M - 1` in slots 1 to
 :math:`M - 1`.
 
 .. inlineav:: collisionCON3 ss
+   :long_name: Pseudo-Random Probing Slideshow
    :output: show
 
 Here is a practice exercise for pseudo-random probing.
 
 .. avembed:: Exercises/Hashing/HashPseudoRandomPPRO.html ka
+   :long_name: Pseudo-Random Probing Proficiency Exercise
 
 Pseudo-random probing exhibits another desirable feature in a hash
 function.
 
 .. inlineav:: collisionCON4 ss
+   :long_name: Avoiding the Train
    :output: show
 
 
@@ -141,16 +147,19 @@ Then the :math:`i` th value in the probe sequence would be
 :math:`(\textbf{h}(K) + i^2) \mod M`.
 
 .. inlineav:: collisionCON5 ss
+   :long_name: Quadratic Probing Slideshow
    :output: show
 
 Now you can practice quadratic probing.
 
 .. avembed:: Exercises/Hashing/HashQuadraticPPRO.html ka
+   :long_name: Quadratic Probing Proficiency Exercise
 
 There is one problem with quadratic probing: Its probe sequence
 typically will not visit all slots in the hash table.
 
 .. inlineav:: collisionCON6 ss
+   :long_name: Quadratic Probing Problem
    :output: show
 
 
@@ -236,17 +245,20 @@ We can get that result with this secondary hash function:
 :math:`\textbf{h}_2(k) = (((k/M) \mod (M/2)) * 2) + 1`. [#]_
 
 .. inlineav:: collisionCON7 ss
+   :long_name: Double Hashing Slideshow 2
    :output: show
 
 |
 
 .. inlineav:: collisionCON8 ss
+   :long_name: Double Hashing Slideshow 3
    :output: show
 
 
 Now you can try it.
 
 .. avembed:: Exercises/Hashing/HashDoublePPRO.html ka
+   :long_name: Double Hashing Proficiency Exercise
 
 .. TODO::
    :type: AV

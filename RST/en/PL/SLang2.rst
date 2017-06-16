@@ -18,6 +18,7 @@ credit for it, you must complete this randomized problem
 correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP26part1.html ka
+   :long_name: RP set #26, question #1
 
 RP 27 Part 1
 ------------
@@ -28,3 +29,4 @@ structures used to implement the AST. To earn credit for it, you must
 complete this randomized problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP27part1.html ka
+   :long_name: RP set #27, question #1

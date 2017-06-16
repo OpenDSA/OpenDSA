@@ -24,6 +24,7 @@ The review problem set for today contains four review problems.
 This first problem deals with the filtering pattern.
 
 .. avembed:: Exercises/PL/RP11part1.html ka
+   :long_name: RP set #11, question #1
 
 RP 11 part 2
 ------------
@@ -31,6 +32,7 @@ RP 11 part 2
 This problem deals with the folding pattern.
 
 .. avembed:: Exercises/PL/RP11part2.html ka
+   :long_name: RP set #11, question #2
 
 
 RP 11 part 3
@@ -39,6 +41,7 @@ RP 11 part 3
 This problem uses both the mapping and the folding patterns.
 
 .. avembed:: Exercises/PL/RP11part3.html ka
+   :long_name: RP set #11, question #3
 
 
 RP 11 part 4
@@ -49,3 +52,4 @@ pattern. This problem is randomized and must be solved three times in
 a row.
 
 .. avembed:: Exercises/PL/RP11part4.html ka
+   :long_name: RP set #11, question #4

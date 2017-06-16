@@ -79,6 +79,7 @@ To illustrate this, let us consider another problem.
    make a pair, and so on.
 
 .. avembed:: AV/Development/NP/pairToSortReduction.html ss
+   :long_name: Reduction of Pairing to Sorting
 
 Figure :num:`Figure #Pair` illustrates PAIRING.
 One way to solve PAIRING is to use an existing sorting
@@ -228,6 +229,7 @@ Next is a slideshow that shows the steps for
 the reduction of **SORTING** to **PAIRING**.
 
 .. avembed:: AV/Development/NP/sortToPairReduction.html ss
+   :long_name: Reduction of Sorting to Pairing
 
 It is important to note that the reduction process does not give us
 an algorithm for solving either problem by itself.
@@ -372,6 +374,7 @@ matrices :math:`A` and :math:`B` together.
 The following slideshow illustrates this reduction process.
 
 .. avembed:: AV/Development/NP/matrixMulReduction.html ss
+   :long_name: Matrix Multiplication
 
 .. [#] The transpose operation
        takes position :math:`ij` of the original matrix and places it

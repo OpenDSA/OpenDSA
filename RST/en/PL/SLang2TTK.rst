@@ -18,3 +18,4 @@ technique. To earn credit for it, you must complete this randomized
 problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP28part1.html ka
+   :long_name: RP set #28, question #1

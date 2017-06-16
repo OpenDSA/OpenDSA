@@ -141,6 +141,7 @@ Method ``insert`` will insert a new element :math:`V` into
 the heap.
 
 .. inlineav:: heapinsertCON ss
+   :long_name: Heap insert Slideshow
    :output: show
 
 You might expect the heap insertion process to be similar to the
@@ -186,6 +187,7 @@ one at a time, will take :math:`\Theta(n \log n)` time in the
 worst case.
 
 .. avembed:: AV/Binary/heapinsertPRO.html pe
+   :long_name: Heap Insert Proficiency Exercise
 
 
 Building a Heap
@@ -267,11 +269,13 @@ first internal node.
 Here is a visualization of the heap build process.
 
 .. inlineav:: heapbuildCON ss
+   :long_name: Heapbuild Slideshow
    :output: show
 
 Method ``buildHeap`` implements the building algorithm.
 
 .. avembed:: AV/Binary/heapbuildPRO.html pe
+   :long_name: Heap Build Proficiency Exercise
 
 What is the cost of ``buildHeap``?
 Clearly it is the sum of the costs for the calls to ``siftdown``.
@@ -302,6 +306,7 @@ time and :math:`\Theta(n^2)` worst-case time required to build the
 BST.
 
 .. inlineav:: heapbuildProofCON ss
+   :long_name: Heap build analysis proof Slideshow
    :output: show
 
 
@@ -309,6 +314,7 @@ Removing from the heap
 ----------------------
 
 .. inlineav:: heapmaxCON ss
+   :long_name: Remove Max Slideshow
    :output: show
 
 Because the heap is :math:`\log n` levels deep, the cost of deleting
@@ -316,10 +322,12 @@ the maximum element is :math:`\Theta(\log n)` in the average and worst
 cases.
 
 .. avembed:: AV/Binary/heapremovePRO.html pe
+   :long_name: Heap Remove Exercise
 
 |
 
 .. inlineav:: heapremoveCON ss
+   :long_name: Remove Any Slideshow
    :output: show
 
 
@@ -356,6 +364,7 @@ and
 :ref:`minimal-cost spanning tree <minimal-cost spanning tree> <MCST>`.
 
 .. avembed:: Exercises/Binary/HeapSumm.html ka
+   :long_name: Heap Question Summary
 
 For a story about Priority Queues and dragons, see |external_link|.
 

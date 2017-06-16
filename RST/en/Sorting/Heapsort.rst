@@ -59,6 +59,7 @@ particularly useful for
 used when sorting data sets too large to fit in main memory.
 
 .. inlineav:: heapsortCON ss
+   :long_name: Heapsort Slideshow
    :output: show
 
 A complete implementation is as follows.
@@ -69,6 +70,7 @@ A complete implementation is as follows.
 Here is a warmup practice exercise for Heapsort.
 
 .. avembed:: Exercises/Sorting/HeapsortStepPRO.html ka
+   :long_name: Heapsort RemoveMax Proficiency Exercise
 
 
 Heapsort Proficiency Practice
@@ -78,6 +80,7 @@ Now test yourself to see how well you understand Heapsort.
 Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/heapsortPRO.html pe
+   :long_name: Heapsort Proficiency Exercise
 
 
 Heapsort Analysis
@@ -86,6 +89,7 @@ Heapsort Analysis
 This visualization presents the running time analysis of Heap Sort       
 
 .. inlineav:: HeapSortAnalysisCON ss
+   :long_name: Heapsort Analysis Slideshow
    :output: show
 
 While typically slower than Quicksort by a constant factor
@@ -113,6 +117,7 @@ is complete.
 Thus, only a relatively small fraction of the edges need be sorted.
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
+   :long_name: Heapsort Summary Exercise
 
 .. odsascript:: DataStructures/binaryheap.js
 .. odsascript:: AV/Sorting/heapsortCON.js

@@ -27,6 +27,7 @@ must solve it correctly three times in a row to earn the point
 associated with it.
 
 .. avembed:: Exercises/PL/RP6part1.html ka
+   :long_name: RP set #6, question #1
 
 RP 6 part 2
 -----------
@@ -34,6 +35,7 @@ RP 6 part 2
 This problem asks you to modify the ``removeFirst`` function.
 
 .. avembed:: Exercises/PL/RP6part2.html ka
+   :long_name: RP set #6, question #2
 
 
 RP 6 part 3
@@ -42,3 +44,4 @@ RP 6 part 3
 This problem asks you to modify the ``subst`` function.
 
 .. avembed:: Exercises/PL/RP6part3.html ka
+   :long_name: RP set #6, question #3

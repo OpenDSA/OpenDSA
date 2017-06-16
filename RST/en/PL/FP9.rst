@@ -25,6 +25,7 @@ This first problem is about a recursive function to compute the
 greatest common divisor (or :math:`gcd`) of two integers.
 
 .. avembed:: Exercises/PL/RP13part1.html ka
+   :long_name: RP set #13, question #1
 
 RP 13 part 2
 ------------
@@ -36,6 +37,7 @@ problem uses the :math:`gcd` function introduced in the first problem
 in this set, but you do not need to remember how it was implemented.
 
 .. avembed:: Exercises/PL/RP13part2.html ka
+   :long_name: RP set #13, question #2
 
 RP 13 part 3
 ------------
@@ -47,6 +49,7 @@ problem uses the :math:`gcd` function introduced in the first problem
 in this set, but you do not need to remember how it was implemented.
 
 .. avembed:: Exercises/PL/RP13part3.html ka
+   :long_name: RP set #13, question #3
 
 RP 13 part 4
 ------------
@@ -58,6 +61,7 @@ problem uses the :math:`gcd` function introduced in the first problem
 in this set, but you do not need to remember how it was implemented.
 
 .. avembed:: Exercises/PL/RP13part4.html ka
+   :long_name: RP set #13, question #4
 
 
 RP 13 part 5
@@ -68,3 +72,4 @@ recursive functions in the continuation-passing style. To get credit
 for it, you must solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP13part5.html ka
+   :long_name: RP set #13, question #45

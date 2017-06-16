@@ -19,6 +19,7 @@ Here are some general practice questions about various data structures
 in this chapter.
 
 .. avembed:: Exercises/List/ListdsSumm.html ka
+   :long_name: List Data Structures General Questions
 
 Chapter Review Questions
 ------------------------
@@ -26,3 +27,4 @@ Chapter Review Questions
 Here is a summary exercise with questions from everything in this chapter.
 
 .. avembed:: Exercises/List/ListChapterSumm.html ka
+   :long_name: List Chapter Summary
