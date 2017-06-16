@@ -2876,6 +2876,7 @@ $(document).ready(function () {
     var productions = _.filter(arr, function(x) { return x[0];});
     startParse();
     $('.jsavcontrols').hide();
+    $('#completeallbutton').show();
     $(m.element).css("margin-left", "auto");
     jsav.umsg('Complete the FA.');
     // keep a map of variables to FA states
@@ -2912,6 +2913,7 @@ $(document).ready(function () {
         var w = next.weight().split('<br>');
         tCount = tCount + w.length;
       }
+      console.log("tCount: " + tCount + " productions.length: " + productions.length);
       if (tCount === productions.length) {
         var confirmed = confirm('Finished! Export?');
         if (confirmed) {
@@ -2919,6 +2921,33 @@ $(document).ready(function () {
         }
       }
     };
+
+
+    var completeConvertToFA = function() {
+      for (var i = 0; i < productions.length; i++) {
+        console.log('i: ' + i);
+        // if the current production is not finished yet
+        if (!m.isHighlight(i)){
+          var start = nodeMap[productions[i][0]];
+          var rhs = productions[i][2];
+          //if there is no capital letter, then go to final state
+          if(variables.indexOf(rhs[rhs.length-1]) === -1){
+            var end = f;
+          } else {
+            var end = nodeMap[rhs[rhs.length-1]];
+          }
+          m.highlight(i);
+          var newEdge = builtDFA.addEdge(start, end, {weight: rhs.substring(0, rhs.length-1)});
+          if (newEdge) {
+            newEdge.layout();
+            checkDone();
+          }          
+        }
+      }
+    }
+
+    $('#completeallbutton').click(completeConvertToFA);
+
     // handler for the nodes of the FA
     var convertDfaHandler = function (e) {
       // adding transitions
@@ -3580,8 +3609,9 @@ $(document).ready(function () {
   $('#convertCFGbutton').click(convertToPDA);
   $('#multipleButton').click(toggleMultiple);
   $('#addExerciseButton').click(addExercise);
-
   $('#identifybutton').click(identifyGrammar);
+
+  $('#completeallbutton').hide();
 
   $(document).click(defocus);
   $(document).keyup(function(e) {
