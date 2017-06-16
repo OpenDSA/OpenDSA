@@ -25,6 +25,7 @@ clean:
 	- $(RM) Scripts/*~
 	- $(RM) config/*~
 
+
 alllint: csslint lint jsonlint
 
 csslint:
@@ -92,23 +93,25 @@ min: nomin
 
 Plain: Everything CS2 CS3 PL
 
+test_generated: Everything CS2 CS3 CS4104 FormalLang
+
 test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
 Everything: min
-	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/Everything_generated.json --no-lms
 
 CS2: min
-	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
-
-CS2LMS: min
-	python $(CONFIG_SCRIPT) config/CS2.json
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/CS2_generated.json --no-lms
 
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
 
 CS3: min
-	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/CS3_generated.json --no-lms
 
 ECE252: min
 	python $(CONFIG_SCRIPT) config/ECE252.json --no-lms
@@ -117,10 +120,12 @@ PL: min
 	python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
 CS4104: min
-	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/CS4104_generated.json --no-lms
 
-FL: min
-	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
+FormalLang: min
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/FormalLang_generated.json --no-lms
 
 CS3slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
@@ -171,7 +176,8 @@ CS3_exs: min
 	python $(CONFIG_SCRIPT) config/CS3_exs.json --no-lms
 
 JFLAP: min
-	python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/JFLAP_generated.json --no-lms
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
@@ -198,7 +204,7 @@ pull:
 	make -s -C JSAV
 	make -s min
 	cd Doc; make
-	python tools/rst2json.py
+
 
 lib/odsaUtils-min.js: lib/odsaUtils.js
 	@echo 'Minimizing lib/odsaUtils.js'
