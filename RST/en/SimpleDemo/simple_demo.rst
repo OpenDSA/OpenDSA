@@ -6,9 +6,9 @@
 .. avmetadata:: 
    :author: Tom Naps
 
-===============================================================================================
-Illustrate slide shows and KA exercises in a Simple Demonstration of an OpenDSA learning module
-===============================================================================================
+=======================================
+Slide Shows and KA Exercises in OpenDSA
+=======================================
 
 Introduction
 ------------
