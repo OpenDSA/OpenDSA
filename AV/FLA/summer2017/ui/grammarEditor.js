@@ -1727,7 +1727,7 @@ $(document).ready(function () {
     $('#slrbutton').hide();
     $('#files').hide();
     $(m.element).css("margin-left", "50px");
-    m._arrays[lastRow].hide();
+    // m._arrays[lastRow].hide();
   };
 
   var replaceCharAt = function (str, index, ch) {
@@ -2874,11 +2874,13 @@ $(document).ready(function () {
       return;
     }
     var productions = _.filter(arr, function(x) { return x[0];});
+    console.log(productions);
     startParse();
     $('.jsavcontrols').hide();
     $('#completeallbutton').show();
     $(m.element).css("margin-left", "auto");
     jsav.umsg('Complete the FA.');
+    console.log(m);
     // keep a map of variables to FA states
     var nodeMap = {};
     builtDFA = jsav.ds.fa({width: '90%', height: 440, layout: "automatic"});
