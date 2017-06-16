@@ -131,6 +131,9 @@ CS3notes: min
 testcmapPlain: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
 
+CS150: min
+	python $(CONFIG_SCRIPT) config/CS150.json --no-lms
+
 CS260: min
 	python $(CONFIG_SCRIPT) config/CS260.json --no-lms
 
