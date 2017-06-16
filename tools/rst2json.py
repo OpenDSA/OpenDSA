@@ -516,13 +516,13 @@ def register():
   directives.register_directive('odsafig',odsafig)
 
 
-def absoluteFilePaths(directory):
+def absoluteFilePaths(directory, file_extension):
   '''
   '''
   files = []
   for dirpath,_,filenames in os.walk(directory):
     for f in filenames:
-      if f.partition('.')[2] != 'rst':
+      if f.partition('.')[2] != file_extension:
         continue
       files.append(os.path.abspath(os.path.join(dirpath, f)))
 
@@ -636,43 +636,36 @@ def save_debug_files(xml_str, json_str, rst_fname):
     json.dump(json_str, outfile, indent=2)
 
 
-def save_generated_config(everything_config, ref_configs):
+def save_generated_config(everything_config):
   '''
   '''
-  print('Generating configuration files ...')
+  print('Generating configuration files ...\n')
 
   config_dir = os.path.abspath('config')
-
-  config_files = absoluteFilePaths(config_dir)
+  config_files = absoluteFilePaths(config_dir, "json")
 
   for config_path in config_files:
-    config_fname = config_path.partition('.')[0].partition('_')[1]
-    if "_simple" in config_fname:
+    config_fname = os.path.basename(config_path).partition('.')[0]
+    if config_fname.endswith("_simple"):
 
-  # load reference config file
-  # for config in simple_configs:
-    print('Processing %s configuration file' %config_fname)
+      print('Processing %s configuration file' %config_fname)
 
-    # ref_config_path = "config/"+config+".json"
+      with open(config_path) as data_file:
+        ref_config = json.load(data_file, object_pairs_hook=OrderedDict)
 
+      if options.dev_mode:
+        out_fname = os.path.abspath('tools/json_xml/' + config_fname + '.json')
+      else:
+        out_fname = os.path.abspath('config/' + config_fname.partition('_')[0] + '_generated.json')
 
-    with open(config_path) as data_file:
-      ref_config = json.load(data_file, object_pairs_hook=OrderedDict)
+      for ch_k, ch_obj in ref_config['chapters'].iteritems():
+        chapter_obj = OrderedDict()
+        if isinstance(ch_obj, list):
+          chapter_obj = collect_mods(everything_config, ch_obj)
+        ref_config['chapters'][ch_k] = chapter_obj
 
-
-    if options.dev_mode:
-      out_fname = os.path.abspath('tools/json_xml/' + config_fname + '.json')
-    else:
-      out_fname = os.path.abspath('config/' + config_fname.partition('_')[0] + '_generated.json')
-
-    for ch_k, ch_obj in ref_config['chapters'].iteritems():
-      chapter_obj = OrderedDict()
-      if isinstance(ch_obj, list):
-        chapter_obj = collect_mods(everything_config, ch_obj)
-      ref_config['chapters'][ch_k] = chapter_obj
-
-    with open(out_fname, 'w') as outfile:
-      json.dump(ref_config, outfile, indent=2)
+      with open(out_fname, 'w') as outfile:
+        json.dump(ref_config, outfile, indent=2)
 
 
 def collect_mods(everything_config, mod_list):
@@ -693,27 +686,12 @@ if __name__ == '__main__':
   parser.add_option("-d", "--dev", help="Causes rst2json.py to run in development mode",dest="dev_mode", action="store_true", default=False)
   (options, args) = parser.parse_args()
 
-  # Process script arguments
-  if len(args) != 1:
-      print_err(
-          "Usage: " + sys.argv[0] + " [-d] simple_configs")
-      sys.exit(1)
-
-  # simple_configs = args[0]
-  # simple_configs = simple_configs.split("|")
-
-  # for config in simple_configs:
-  #   simple_config_path = "config/"+config+".json"
-  #   if not os.path.exists(simple_config_path):
-  #       print_err("Error: Simple configuration file \"%s.json\" doesn't exist uner config folder\n" % config)
-  #       sys.exit(1)
-
   register()
 
   rst_dir = os.path.abspath('RST/en/')
   execluded_files = ['Intro', 'Status', 'Bibliography', 'Glossary', 'ToDo']
 
-  files = absoluteFilePaths(rst_dir)
+  files = absoluteFilePaths(rst_dir, "rst")
 
   everything_config = OrderedDict()
   everything_config = add_header(everything_config)
@@ -759,7 +737,7 @@ if __name__ == '__main__':
   if options.dev_mode:
     everything_config = sort_by_keys(everything_config)
 
-  save_generated_config(everything_config, simple_configs)
+  save_generated_config(everything_config)
 
   if options.dev_mode:
     reorder_orig_config()
