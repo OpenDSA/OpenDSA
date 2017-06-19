@@ -20,7 +20,7 @@
   var llistInsertPRO = {
     userInput: null, // Boolean: True iff user ever did anything
 
-    // Draw a link onnecting two nodes in "jsav" pane
+    // Draw a link connecting two nodes in "jsav" pane
     connect: function(obj1, obj2, jsav) {
       if (obj1 === obj2) { return; }
       llistInsertPRO.connection(obj1, obj2, jsav);
