@@ -132,3 +132,4 @@ problem.
        sorting is :math:`\Theta(n \log n)` rather than :math:`\Theta(n)`.
 
 .. avembed:: Exercises/AlgAnal/AnalProblemSumm.html ka
+   :long_name: Problem Analysis Exercise

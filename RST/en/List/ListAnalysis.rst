@@ -102,6 +102,7 @@ become, and can be confident that the list will never grow beyond a
 certain limit.
 
 .. avembed:: Exercises/List/ListOverhead.html ka
+   :long_name: Breakeven Point Exercise
 
 
 Time Comparison
@@ -162,3 +163,4 @@ Practice Questions
 ~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/List/LLSumm.html ka
+   :long_name: Linked List Summary Exercise

@@ -28,6 +28,7 @@ duplicated, the more likely that pointers to shared elements is the
 better approach.
 
 .. inlineav:: listElementDataCON ss
+   :long_name: List Element Data
    :output: show
 
 
@@ -64,6 +65,7 @@ compiler from enforcing any type restrictions.
 In C++, a similar effect can be achieved by using ``void*`` pointers.
 
 .. inlineav:: listElementTypeCON ss
+   :long_name: List Element Type
    :output: show
    
 
@@ -76,6 +78,7 @@ This is a serious concern in a language like C++ that does not support
 automatic garbage collection.
 
 .. inlineav:: listElementDeleteCON ss
+   :long_name: List Element Delete
    :output: show 
    
 
@@ -83,6 +86,7 @@ Practice Questions
 ~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/List/ListSumm.html ka
+   :long_name: List Summary Questions
    
 .. odsascript:: AV/List/listElementDataCON.js
 .. odsascript:: AV/List/listElementTypeCON.js

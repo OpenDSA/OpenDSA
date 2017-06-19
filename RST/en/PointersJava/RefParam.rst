@@ -56,7 +56,7 @@ Here is the code and memory drawing for a simple, but incorrect implementation w
 code and the state of memory is shown for each state...
 
 
-.. codeinclude:: PointersBook/BillGatesByValue
+.. codeinclude:: Pointers/BillGatesByValue
 
 .. odsafig:: Images/T1-T3.png
    :width: 600
@@ -97,13 +97,17 @@ has a reference to the one master copy.
 Passing By Reference
 --------------------
 
-Again, Java always passes parameters by value. If the passed parameters are ``objects``
- or ``arrays`` the value of the parameter will be a copy of the address of that ``object``
- or ``array``. So, in this case the inner values of it can be modified directly in the
- callee function.
-Here are the steps to use in the code to pass ``objects`` or ``arrays`` strategy:
+Again, Java always passes parameters by value.
+If the passed parameters are ``objects`` or ``arrays`` then the value
+of the parameter will be a copy of the address of that ``object``  or
+``array``.
+So, in this case the inner values of it can be modified directly in the
+callee function.
+Here are the steps to use in the code to pass ``objects`` or
+``arrays`` strategy:
 
-* Have a single copy of the value of interest. The single "master" copy.
+* Have a single copy of the value of interest.
+  The single "master" copy.
 * Pass references to that value to any function which wants to see or
   change the value.
 * Functions can dereference their reference to see or change the value
@@ -113,17 +117,20 @@ Here are the steps to use in the code to pass ``objects`` or ``arrays`` strategy
   really are changing the master value. If a function wants a local
   copy to change safely, the function must explicitly allocate and
   initialize such a local copy.
-* Any changes to the reference value of the function's parameter will not affect the
-  original value of that reference in the caller function. As it was mentioned before,
-  Java sends all parameters by ``value``. Later in this section this topic will be explained
-  by example.
+* Any changes to the reference value of the function's parameter will
+  not affect the original value of that reference in the caller
+  function.
+  As it was mentioned before, Java sends all parameters by
+  ``value``.
+  Later in this section this topic will be explained by example.
+
 
 Bill Gates By Reference
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is the Bill Gates example written to use reference parameters.
 
-.. codeinclude:: PointersBook/BillGatesBillions
+.. codeinclude:: Pointers/BillGatesBillions
 
 
 Don't Make Copies
@@ -154,7 +161,7 @@ Swap With Arrays
 If we want to exchange the first and last ``int``s in an array. ``Swap()`` takes ``int[]`` array,
 two indices for the elements to be swaped.
 
-.. codeinclude:: PointersBook/SwapWithArrays
+.. codeinclude:: Pointers/SwapWithArrays
 
 This example will show that Java sendes the reference (by value) to the callee function and the callee
 function was able to change the values of array elements.
@@ -162,19 +169,25 @@ function was able to change the values of array elements.
 Java is always pass-by-value
 ----------------------------
 This section will explain this term in more details by examples.
-As mentioned before, Java passes all parameters by value. There are two types of parameters.
+As mentioned before, Java passes all parameters by value.
+There are two types of parameters.
 
-* Value data types like int, float, double, boolean, ... etc. These parameteres
-  are passed by copying the value of the parameteres.
-* Reference data types like ``objects`` and ``arrays``. These parameters are passed by
-  copying the reference of the parameteres.
-The following example will demonstrate the idea of passing arrays and objects is done
-by copying their reference. In the example, the callee function will change the reference
-of the array by creating a new array. In this case, the caller function will access the original
-array. The reseon is that the callee function changed the copy of the reference not
-the original reference to the array.
+* Value data types like int, float, double, boolean, ... etc.
+  These parameteres are passed by copying the value of the parameteres.
+* Reference data types like ``objects`` and ``arrays``.
+  These parameters are passed by copying the reference of the parameteres.
 
-.. codeinclude:: PointersBook/JavaPassByValue
+The following example will demonstrate the idea of passing arrays and
+objects is done by copying their reference.
+In the example, the callee function will change the reference 
+of the array by creating a new array.
+In this case, the caller function will access the original 
+array.
+The reseon is that the callee function changed the copy of the
+reference not the original reference to the array.
+
+.. codeinclude:: Pointers/JavaPassByValue
+
 
 Reference Parameter Summary
 ---------------------------

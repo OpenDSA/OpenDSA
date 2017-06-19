@@ -305,6 +305,7 @@ Summary
 ~~~~~~~
 
 .. inlineav:: UpperBoundCON ss
+   :long_name: Upper Bounds visualization
    :output: show
 
 
@@ -312,5 +313,6 @@ Practice Questions
 ~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/AlgAnal/UpperBoundsSumm.html ka
+   :long_name: Asymptotic Analysis and Upper Bounds Exercise
 
 .. odsascript:: AV/AlgAnal/UpperBoundCON.js

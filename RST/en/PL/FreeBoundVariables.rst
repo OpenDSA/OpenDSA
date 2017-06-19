@@ -101,6 +101,7 @@ variables in lambda expressions. To get credit for this randomized
 problem, you must solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP14part4.html ka
+   :long_name: RP set #14, question #4
 
 RP 14 part 5
 ------------
@@ -111,6 +112,7 @@ problem, you must solve it correctly three times in a row.
 
 
 .. avembed:: Exercises/PL/RP14part5.html ka
+   :long_name: RP set #14, question #5
 
 
 Formal Definition of Free Variables

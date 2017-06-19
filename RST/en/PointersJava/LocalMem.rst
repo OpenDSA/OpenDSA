@@ -63,7 +63,7 @@ All of the local variables and parameters taken together are called
 its :term:`local storage` or just its "locals", such as
 ``num`` and ``result`` in the following code...
 
-.. codeinclude:: PointersBook/LocalMemory
+.. codeinclude:: Pointers/LocalMemory
 
 
 The variables are called "local" to capture the idea that their lifetime is tied
@@ -110,7 +110,7 @@ Examples
 
 Here is a simple example of the lifetime of local storage.
 
-.. codeinclude:: PointersBook/LocalStorageLifeTime
+.. codeinclude:: Pointers/LocalStorageLifeTime
 
 Here is a larger example which shows how the simple rule "the locals
 are allocated when their function begins running and are deallocated
@@ -122,7 +122,7 @@ result when the function X() calls the function Y() twice.
 The points in time T1, T2, etc. are marked in
 the code and the state of memory at that time is shown in the drawing.
 
-.. codeinclude:: PointersBook/LifeTimeLargerExample
+.. codeinclude:: Pointers/LifeTimeLargerExample
 
 
 .. odsafig:: Images/T1-T5.png

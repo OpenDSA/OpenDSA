@@ -236,11 +236,13 @@ If the limit goes to some constant other than zero, then
    Thus, :math:`n^2` is in :math:`\Omega(2n\log n)`.
 
 .. inlineav:: LowerBoundCON ss
+   :long_name: Lower Bounds visualization
    :output: show
 
 Summary Exercise
 ~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/AlgAnal/LowerThetaSumm.html ka
+   :long_name: Lower Bounds and Theta Notation Exercise
 
 .. odsascript:: AV/AlgAnal/LowerBoundCON.js

@@ -29,6 +29,7 @@ evaluation strategies that we discussed. To get credit for this
 randomized exercise, you must solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP17part1.html ka
+   :long_name: RP set #17, question #1
 
 RP 17 Part 2
 ------------
@@ -39,6 +40,7 @@ discussed. To get credit for this randomized exercise, you must solve
 it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP17part2.html ka
+   :long_name: RP set #17, question #2
 
 RP 17 Part 3
 ------------
@@ -57,6 +59,7 @@ get credit for the current problem instance. To get another chance for
 credit, start a new problem instance by clicking the *Reset* button.
 	 
 .. avembed:: AV/PL/RP17part3applicativeOrderPRO.html pe
+   :long_name: Applicative-order reduction Proficiency Exercise
 
 RP 17 Part 4
 ------------
@@ -76,5 +79,6 @@ new problem instance by clicking the *Reset* button.
 
 
 .. avembed:: AV/PL/RP17part4normalOrderPRO.html pe
+   :long_name: Normal-order reduction Proficiency Exercise
 
 

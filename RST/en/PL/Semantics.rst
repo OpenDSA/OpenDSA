@@ -213,3 +213,4 @@ This problem is about the semantic equivalence between lambda
 expressions and JavaScript expressions.
 
 .. avembed:: Exercises/PL/RP14part3.html ka
+   :long_name: RP set #14, question #3

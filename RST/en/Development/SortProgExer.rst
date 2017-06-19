@@ -11,6 +11,9 @@
 Sorting Chapter Programming Exercises [SB]
 ==========================================
 
+Sorting Chapter Programming Exercises [SB]
+------------------------------------------
+
 .. todo::
    :type: Coding Exercise
 

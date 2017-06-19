@@ -45,7 +45,7 @@ between inputs (the :term:`domain`) and outputs (the :term:`range`).
 An input to a function might be a single value or a
 collection of information.
 The values making up an input are called the
-:term:`parameters` of the function.
+:term:`parameters <parameter>` of the function.
 A specific selection of values for the parameters is called an
 :term:`instance <problem instance>` of the problem.
 For example, the input parameter to a sorting function might be an
@@ -203,6 +203,7 @@ in a programming language.
 The following slideshow should help you to visualize the differences.
 
 .. inlineav:: ProblemAlgorithmCON ss
+   :long_name: Problem, Algorithm, and Program definitions Slideshow
    :output: show
 
 
@@ -210,5 +211,6 @@ Summary Questions
 ~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/AlgAnal/AnalPrelimSumm.html ka 
+   :long_name: Problems, Algorithms, Programs Exercise
 
 .. odsascript:: AV/AlgAnal/ProblemAlgorithmCON.js

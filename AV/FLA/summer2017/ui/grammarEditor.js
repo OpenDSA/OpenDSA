@@ -72,7 +72,7 @@ $(document).ready(function () {
 
   // handler for grammar editing
   var matrixClickHandler = function(index, index2) {
-    console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi);
+    console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
 
     //2017 Summer COMMENT: I am Very Confused about the reason for this line and the need for both index and row, index2 and col
     // if ((row != index || col != index2) && fi) {
@@ -645,10 +645,13 @@ $(document).ready(function () {
 
   // brute force parsing
   function bfParse() {
-    if(checkLHSVariables()){
-      alert('Your production is unrestricted on the left hand side');
-      return;
-    }
+
+    // if(checkLHSVariables()){
+    //   alert('Your production is unrestricted on the left hand side');
+    //   return;
+    // }
+
+    console.log("m is: " + m + " arr is: " + arr)
 
     // get productions (gets a clone of the grammar with the empty rows removed)
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
@@ -880,7 +883,6 @@ $(document).ready(function () {
       jsav.umsg('"' + inputString + '" rejected');
     }
   };
-
 
   function mbfParse(productions){
     //var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
@@ -1231,13 +1233,27 @@ $(document).ready(function () {
       index++;
     }
 
-    var conflict = _.filter(conflictTable, function(row) {return _.filter(row, function(entry) {return entry.length > 1;});});
+    // var conflict = _.filter(conflictTable, function(row) {return _.filter(row, function(entry) {return entry.length > 1;});});
+
+    var conflict = _.filter(conflictTable, function() {
+      for (var r = 0; r < conflictTable.length; r++) {
+        for (var c = 0; c < conflictTable[r].length; c++) {
+          if (conflictTable[r][c].length > 1){
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+
+    console.log(conflict);
 
     modelDFA.hide();
     $('#followbutton').show();
     $('.jsavcontrols').hide();
 
     if (conflict.length > 0) {
+      console.log("conflict.length: " + conflict.length);
       var contin = confirm("This grammar is not SLR(1)\nContinue?");
       if (!contin) {
         $('#backbutton').click();
@@ -1580,6 +1596,7 @@ $(document).ready(function () {
     $('#convertRLGbutton').hide();
     $('#convertCFGbutton').hide();
     $('#transformbutton').hide();
+    $('#addExerciseButton').hide();
 
     $('#identifybutton').hide();
     $('#clearbutton').hide();
@@ -1592,7 +1609,7 @@ $(document).ready(function () {
     $('#slrbutton').hide();
     $('#files').hide();
     $(m.element).css("margin-left", "50px");
-    m._arrays[lastRow].hide();
+    // m._arrays[lastRow].hide();
   };
 
   var replaceCharAt = function (str, index, ch) {
@@ -2741,6 +2758,7 @@ $(document).ready(function () {
     var productions = _.filter(arr, function(x) { return x[0];});
     startParse();
     $('.jsavcontrols').hide();
+    $('#completeallbutton').show();
     $(m.element).css("margin-left", "auto");
     jsav.umsg('Complete the FA.');
     // keep a map of variables to FA states
@@ -2777,6 +2795,7 @@ $(document).ready(function () {
         var w = next.weight().split('<br>');
         tCount = tCount + w.length;
       }
+      console.log("tCount: " + tCount + " productions.length: " + productions.length);
       if (tCount === productions.length) {
         var confirmed = confirm('Finished! Export?');
         if (confirmed) {
@@ -2784,6 +2803,34 @@ $(document).ready(function () {
         }
       }
     };
+
+
+    var completeConvertToFA = function() {
+      for (var i = 0; i < productions.length; i++) {
+        // if the current production is not finished yet
+        if (!m.isHighlight(i)){
+          var start = nodeMap[productions[i][0]];
+          var rhs = productions[i][2];
+          //if there is no capital letter, then go to final state
+          if(variables.indexOf(rhs[rhs.length-1]) === -1){
+            var end = f;
+            var w = rhs;
+          } else {
+            var end = nodeMap[rhs[rhs.length-1]];
+            var w = rhs.substring(0, rhs.length-1);
+          }
+          m.highlight(i);
+          var newEdge = builtDFA.addEdge(start, end, {weight: w});
+          if (newEdge) {
+            newEdge.layout();
+            checkDone();
+          }
+        }
+      }
+    }
+
+    $('#completeallbutton').click(completeConvertToFA);
+
     // handler for the nodes of the FA
     var convertDfaHandler = function (e) {
       // adding transitions
@@ -3448,9 +3495,10 @@ $(document).ready(function () {
   $('#convertCFGbutton').click(convertToPDA);
   $('#multipleButton').click(toggleMultiple);
   $('#addExerciseButton').click(addExercise);
-
   $('#identifybutton').click(identifyGrammar);
   $('#clearbutton').click(clearAll);
+
+  $('#completeallbutton').hide();
 
   $(document).click(defocus);
   $(document).keyup(function(e) {

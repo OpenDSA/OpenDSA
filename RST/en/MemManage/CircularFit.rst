@@ -21,3 +21,4 @@ This modification reduces the number of unnecessary searches through
 small blocks that were passed over by previous requests.
 
 .. avembed:: AV/MemManage/firstFitAV.html ss
+   :long_name: Circular First Fit Visualization

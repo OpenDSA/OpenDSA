@@ -18,3 +18,4 @@ Here is a complete set of review questions, taken from all of the
 questions in the modules of this chapter.
 
 .. avembed:: Exercises/Sorting/SortChapterSumm.html ka
+   :long_name: Sorting Chapter Summary Exercise

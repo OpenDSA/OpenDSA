@@ -1,0 +1,52 @@
+{
+  "title": "JFLAP",
+  "desc": "JFLAP",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "build_cmap": false,
+  "suppress_todo": true,
+  "assumes": "recursion",
+  "dispModComp": true,
+  "glob_exer_options": {},
+  "chapters": {
+    "Introduction": ["JFLAP/Introduction"],
+    "Finite Automata": ["JFLAP/FAEditor", "JFLAP/NPDAEditor", "JFLAP/TMEditor"],
+    "Grammar": ["JFLAP/GrammarEditor"],
+    "Regular Expression": ["JFLAP/REtoFA"],
+    "Sections": ["JFLAP/FATester", "JFLAP/FAFixer", "JFLAP/ExerciseGenerator"],
+    "Martin Tamayo": ["JFLAP/MartinTamayo"]
+  }
+}

@@ -68,37 +68,15 @@
       }
     },
 
-    "04 Pointer exercises": {
-      "PointersSushma/BasicPointers": {
+    "04 Pointers": {
+      "PointersCPP/Exercises_J": {
         "long_name": "pointer",
         "sections": {
         }
       }
     },
 
-    "05 Pointers": {
-      "Pointers/Exercises_J": {
-        "long_name": "pointer",
-        "sections": {
-        }
-      }
-    },
 
-    "06 LinkedList": {
-      "List/ListLinked_Jieun": {
-        "long_name": "Linked List",
-        "sections": {
-        }
-      }
-    },
-
-    "Turing Machines": {
-      "SeniorAlgAnal/Turing": {
-        "long_name": "Turing Machines",
-        "sections": {
-        }
-      }
-    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",

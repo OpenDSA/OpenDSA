@@ -150,7 +150,7 @@ The ``Employee`` Class
 We are going to use the ``Employee`` object for a lot of our examples,
 so let's introduce it now.
 
-.. codeinclude:: PointersBook/BasicPointers/PointerExample
+.. codeinclude:: Pointers/PointerExample
    :tag: EmployeeClass
    :lang: Java
 
@@ -194,6 +194,11 @@ This tutorial uses a lot of drawings to show how references work.
 You should too.
 
 .. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
+
+|
+
+.. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
+
 
 Sharing
 -------
@@ -245,7 +250,7 @@ their own.
 
 Here is an example of the difference between shallow and deep copying:
 
-.. codeinclude:: PointersBook/BasicPointers/shallowCopy
+.. codeinclude:: Pointers/shallowCopy
    :tag: shallow
 
 
@@ -334,7 +339,7 @@ But |---| and here is the most important thing |---| declaring the
 reference variable  does not assign a pointee for the reference.
 The reference starts out with a "bad" value until you assign it to something.
 
-.. codeinclude:: PointersBook/BasicPointers/PointerExample
+.. codeinclude:: Pointers/PointerExample
    :tag: PointerVariables
    :lang: Java
 
@@ -392,7 +397,7 @@ Example Reference Code
 With the syntax defined, we can now write some reference code that
 demonstrates all the reference rules.
 
-.. codeinclude:: PointersBook/BasicPointers/PointerExample
+.. codeinclude:: Pointers/PointerExample
    :tag: Example
 
 .. inlineav:: examplePointerCodeCON ss
@@ -413,7 +418,7 @@ before it is used.
 Here is a simple example of bad code, and a
 drawing of how memory is likely to react.
 
-.. codeinclude:: PointersBook/BasicPointers/badPointers
+.. codeinclude:: Pointers/badPointers
    :tag: badPointers
 
 |
@@ -509,6 +514,30 @@ use are very different.
 Oh well.
 Try to remember to assign your references to refer to pointees.
 But don't be surprised when you forget, and your program breaks.
+
+
+Link Nodes
+----------
+
+In this section, we introduce the idea of a **link node**.
+This has some sort of value field, and a pointer to another link
+node.
+Later, you will learn about :term:`linked lists <linked list>`,
+that are made from such link nodes.
+For now, well just use them as a simple way to connect some objects
+together.
+
+Here is a class definition for a link object.
+
+.. TODO::
+   :type: Code
+
+   Code here for link nodes.
+
+Here are some exercises to practice manipulating link nodes.
+
+.. avembed:: Exercises/Pointers/PointerEX3PRO.html ka
+
 
 .. odsascript:: AV/PointersSushma/num42CON.js
 .. odsascript:: AV/PointersSushma/employeeEmpRefCON.js

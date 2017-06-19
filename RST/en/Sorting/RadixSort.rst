@@ -41,6 +41,7 @@ the bins **in order**, the result is a sorted list.
 We can see this process in the following visualization.
 
 .. avembed:: AV/Sorting/radixLinkAV.html ss
+   :long_name: Radix Sort Linked Visualization
 
 In this example, we have :math:`r=10` bins and key values in
 the range 0 to :math:`r^2-1`.
@@ -67,6 +68,7 @@ bins :math:`k` times.
 Here is a practice exercise for placing keys into bins.
 
 .. avembed:: Exercises/Sorting/RadixsortPRO.html ka
+   :long_name: Radix Sort Proficiency Exercise
 
 
 Array-based Radix Sort
@@ -106,12 +108,14 @@ Variable ``rtoi`` stores :math:`r^i` for use in bin computation
 on the :math:`i`'th iteration.
 
 .. avembed:: AV/Sorting/radixArrayAV.html ss
+   :long_name: Radix Sort Array Visualization
 
 
 Radix Sort Analysis
 ~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: RadixSortAnalysisCON ss
+   :long_name: Radix Sort Analysis Slideshow
    :output: show
 
 **Is it really a reasonable assumption to treat** :math:`k` **as a
@@ -186,5 +190,6 @@ Implementing the concept of Radix Sort with the
 appropriate for these situations.
 
 .. avembed:: Exercises/Sorting/RadixSortSumm.html ka
+   :long_name: Radix Sort Summary Exercise
 
 .. odsascript:: AV/Development/RadixSortAnalysisCON.js

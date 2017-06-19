@@ -141,7 +141,7 @@ Finally, there is the fact that approximately half of the leaf nodes
 will contain no data field.
 
 Another issue to consider is: How does a routine traversing the
-Bintree get the coordinates for the rectangle represented by the current 
+Bintree get the coordinates for the rectangle represented by the current
 Bintree node?
 One possibility is to store with each node its spatial description
 (such as upper-left corner and width).
@@ -157,7 +157,7 @@ upper left corner defined to be (0, 0) and whose width and height is
 the full size of the space being  covered.
 When the appropriate child is visited, it is a simple matter for the
 search routine to determine the origin for the child, and the length
-of the descriminator dimention simply becomes 
+of the descriminator dimention simply becomes
 half that of the parent.
 Not only does passing in the size and position information for a node
 save considerable space, but avoiding storing such information
@@ -166,7 +166,7 @@ empty leaf nodes, as discussed next.
 
 How should we represent empty leaf nodes?
 On average, half of the leaf nodes in a Bintree are empty
-(i.e., do not store a data point). 
+(i.e., do not store a data point).
 One implementation option is to use a ``null`` pointer in internal
 nodes to represent empty nodes.
 This will solve the problem of excessive space requirements.

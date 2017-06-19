@@ -12,6 +12,9 @@
 Unsolveable Problems
 ====================
 
+Unsolveable Problems
+--------------------
+
 Introduction
 ~~~~~~~~~~~~
 
@@ -88,7 +91,7 @@ if it is a set with an infinite number of members)
 if every member of the set can be uniquely assigned to a positive
 integer.
 A set is said to be :term:`uncountable`
-(or :term:`uncountably infinite`) if it is not possible to 
+(or :term:`uncountably infinite`) if it is not possible to
 assign every member of the set to its own positive integer.
 
 To understand what is meant when we say "assigned to a positive
@@ -102,7 +105,7 @@ For example, consider the set of positive even integers 2, 4, and so
 on.
 We can assign an integer :math:`i` to bin :math:`i/2`
 (or, if we don't mind skipping some bins, then we can assign even
-number :math:`i` to bin :math:`i`). 
+number :math:`i` to bin :math:`i`).
 Thus, the set of even integers is countable.
 This should be no surprise, because intuitively there are "fewer"
 positive even integers than there are positive integers,
@@ -119,7 +122,7 @@ This is true because we can assign 0 to positive integer 1, 1 to
 positive integer 2, -1 to positive integer 3, 2 to positive integer 4,
 -2 to positive integer 5, and so on.
 In general, assign positive integer value :math:`i` to positive
-integer 
+integer
 value :math:`2i`, and assign negative integer value :math:`-i` to
 positive integer value :math:`2i+1`.
 We will never run out of positive integers to assign, and we know
@@ -397,7 +400,7 @@ problem that is already known to be unsolvable.
    **Proof by contradiction:**
 
    This problem is also uncomputable.
-   Assume that we had a function ``Ahalt`` that, when given program 
+   Assume that we had a function ``Ahalt`` that, when given program
    :math:`P` as input would determine if there is some input for which
    :math:`P` halts.
    We could modify our compiler (or write a function as part of a

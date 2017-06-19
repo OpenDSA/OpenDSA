@@ -1,0 +1,60 @@
+{
+  "title": "Beloit CSCI 204",
+  "desc": "Beloit CSCI 204",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp", "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "suppress_todo": true,
+  "assumes": "recursion",
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Preface": ["Intro"],
+    "Introduction": ["Background/IntroDSA", "Design/ADT"],
+    "Mathematical Background": ["Background/MathpreIntro", "Background/MiscMath", "Background/Logarithms", "Background/Estimation", "Background/MathpreSumm"],
+    "Algorithm Analysis": ["AlgAnal/AnalChap", "AlgAnal/AnalPrelim", "AlgAnal/AnalIntro", "AlgAnal/AnalCases", "AlgAnal/AnalCompvsAlg", "AlgAnal/AnalAsymptotic", "AlgAnal/AnalProgram", "AlgAnal/AnalMultiple", "AlgAnal/AnalSpace", "AlgAnal/AnalTuning", "AlgAnal/AlgAnalSumm"],
+    "Searching I": ["Searching/BinarySearch"],
+    "Linear Structures": ["List/ListIntro", "List/ListADT", "List/ListArray", "List/ListLinked", "List/ListAnalysis", "List/ListDouble", "List/ListElement", "List/StackArray", "List/StackLinked", "List/Freelist", "List/StackRecur", "List/Queue", "List/QueueLinked", "List/ListSumm"],
+    "Recursion": ["RecurTutor/RecIntro", "RecurTutor/Write", "RecurTutor/CodeCompletionEx", "RecurTutor/HarderWrite", "RecurTutor/HarderCodeCompletionEx", "RecurTutor/WritingEx", "RecurTutor/Trace", "RecurTutor/TracingEx", "RecurTutor/RecSummaryEx"],
+    "Design": ["Design/DesignAltList", "Design/Comparison", "Design/Dictionary"],
+    "Binary Trees": ["Binary/BinaryTreeIntro", "Binary/BinaryTree", "Binary/RecursiveDS", "Binary/BinaryTreeTraversal", "Binary/WritingTraversals", "BTRecurTutor/BinaryTreeInfFlw", "Binary/BinaryTreeImpl", "Binary/Composite", "Binary/BinaryTreeNodeSpace", "Binary/BST", "Binary/BSTDict", "BTRecurTutor/BinaryTreeGuidedInfFlw", "BTRecurTutor/MultipleBinaryTrees", "BTRecurTutor/BSTCheck", "SearchStruct/BalancedTree", "SearchStruct/AVL", "SearchStruct/RedBlack", "Binary/CompleteTree", "Binary/Heaps", "Binary/BinaryChapSumm"],
+    "Sorting": ["Sorting/InSort", "Sorting/SortNotation", "Sorting/InsertionSort", "Sorting/BubbleSort", "Sorting/SelectionSort", "Sorting/ExchangeSort", "Sorting/Mergesort", "Sorting/MergesortImpl", "Sorting/Quicksort", "Sorting/Heapsort", "Sorting/SortSumm"],
+    "Hashing": ["Hashing/HashIntro", "Hashing/HashFunc", "Hashing/HashFuncExamp", "Hashing/OpenHash", "Hashing/BucketHash", "Hashing/HashCSimple", "Hashing/HashCImproved", "Hashing/HashAnal", "Hashing/HashDel", "Hashing/HashSumm"],
+    "Graphs": ["Graph/GraphIntro", "Graph/GraphTraversal", "Graph/GraphShortest"],
+    "Search Structures": ["SearchStruct/SkipList"],
+    "Appendix": ["Glossary", "Bibliography"]
+  }
+}

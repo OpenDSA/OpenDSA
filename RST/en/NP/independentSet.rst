@@ -18,10 +18,12 @@ Independent Set
 INDEPENDENT SET PROBLEM.
 
 .. inlineav:: independentSetCON ss
+   :long_name: Independent Set
    :output: show
 
 Try out an instance of the Independent Set problem on your own.
 
 .. avembed:: Exercises/Development/independentSet_KA.html ka
+   :long_name: Practice Exercise for Independent Set
 
 .. odsascript:: AV/Development/NP/independentSetCON.js

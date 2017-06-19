@@ -132,6 +132,7 @@ the node's subclass.
    :tag: ExpressionTree
 
 .. inlineav:: expressionTraversalCON ss
+   :long_name: Expression Tree Traversal Slideshow
    :output: show
 
 The Expression Tree implementation includes two subclasses derived

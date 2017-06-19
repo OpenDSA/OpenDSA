@@ -24,6 +24,7 @@ The review problem set for today contains four review problems.
 This first problem will give you one more example of deep recursion.
 
 .. avembed:: Exercises/PL/RP7part1.html ka
+   :long_name: RP set #7, question #1
 
 RP 7 part 2
 -----------
@@ -32,6 +33,7 @@ This problem again deals with deep recursion and more specifically with the
 ``subst`` function that was previously described.
 
 .. avembed:: Exercises/PL/RP7part2.html ka
+   :long_name: RP set #7, question #2
 
 
 RP 7 part 3
@@ -41,6 +43,7 @@ This problem is similar to (and assumes that you have solved) the
 previous problem.
 
 .. avembed:: Exercises/PL/RP7part3.html ka
+   :long_name: RP set #7, question #3
 
 RP 7 part 4
 -----------
@@ -50,3 +53,4 @@ recursion. This is a randomized exercise. So you have to solve it
 correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP7part4.html ka
+   :long_name: RP set #7, question #4

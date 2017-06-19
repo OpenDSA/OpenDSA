@@ -43,18 +43,22 @@ RP 23 Part 1
 ------------
 
 .. avembed:: Exercises/PL/RP23part1.html ka
+   :long_name: RP set #23, question #1
 
 RP 23 Part 2
 ------------
 
 .. avembed:: Exercises/PL/RP23part2.html ka
+   :long_name: RP set #23, question #2
 
 RP 23 Part 3
 ------------
 
 .. avembed:: Exercises/PL/RP23part3.html ka
+   :long_name: RP set #23, question #3
 
 RP 23 Part 4
 ------------
 
 .. avembed:: Exercises/PL/RP23part4.html ka
+   :long_name: RP set #23, question #4

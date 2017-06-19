@@ -38,3 +38,4 @@ notation is to be used only for this review problem.  Do NOT use it
 for any assignments, exams, or other review problems.**
 
 .. avembed:: Exercises/PL/RP19part1.html ka
+   :long_name: RP set #19, question #1

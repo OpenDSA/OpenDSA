@@ -30,3 +30,4 @@ Alternatively, the freelist can be ordered from largest to smallest
 free block, possibly by using a priority queue implementation.
 
 .. avembed:: AV/MemManage/firstFitAV.html ss
+   :long_name: Worst Fit Visualization

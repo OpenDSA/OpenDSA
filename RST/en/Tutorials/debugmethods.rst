@@ -5,13 +5,16 @@
 
 .. avmetadata::
    :author: Jordan Sablan
-   :requires: 
+   :requires:
    :satisfies: debugging
    :topic:
 
-========================
+
 Common Debugging Methods
 ========================
+
+Common Debugging Methods
+------------------------
 
 When tracking down bugs in your code, there are a number of methods that
 programmers can make use of. These methods all have different strengths, but
@@ -26,7 +29,7 @@ I frequently use this method to help me track down bugs in my code. The main
 idea is simple. Print out as much information as poissible in every stage of
 your program. By doing so we can see at every stage of the program how our
 data changes and if it changes in the way that we planned. It should be noted
-that this method comes with a few disadvantages as well. 
+that this method comes with a few disadvantages as well.
 
 1. It requires print statements throughout the code and this means that
 it will have to be removed later on

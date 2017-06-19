@@ -1,11 +1,11 @@
-"use strict";
 /*global alert: true, ODSA */
-
-(function ($) {
+$(document).ready(function() {
+  "use strict";
   var av;
- 
 
-function runit() {
+  function runit() {
+    var i;
+
     ODSA.AV.reset(true);
 
     // Validate the array values a user enters or generate an array of
@@ -13,15 +13,15 @@ function runit() {
     // if none are provided
     var theArray = ODSA.AV.processArrayValues(100);
 
-    // If theArray wasn't filled properly, we generate our own 
+    // If theArray wasn't filled properly, we generate our own
     if (!theArray) {
-	theArray = [];
-	for (i = 0; i < 12; i++) {
-	    theArray.push(Math.trunc(50 * Math.random() + 10));
-	}
+      theArray = [];
+      for (i = 0; i < 12; i++) {
+        theArray.push(Math.trunc(50 * Math.random() + 10));
+      }
     }
 
-    av = new JSAV($('.avcontainer'));
+    av = new JSAV($(".avcontainer"));
 
     var arr = av.ds.array(theArray, {indexed: true});
     av.umsg("Text before displayInit()");
@@ -31,7 +31,7 @@ function runit() {
     av.displayInit();
     // We are now starting a new slide (#2)
     av.umsg("... and text after displayInit()", {preserve: true});
-    arr.swap(3,7);
+    arr.swap(3, 7);
     av.step();
     // We are now starting a new slide (#3)
     av.umsg("Text after av.step()");
@@ -43,26 +43,22 @@ function runit() {
     // So, unless you are trying to add slides on-the-fly
     // interactively, you don't want to do this.
     // av.umsg("Text after av.recorded()");
+  }
 
-}
+  function about() {
+    alert("Simple array visualization");
+  }
 
+  function help() {
+    alert("Help for simple array visualization");
+  }
 
+  // Initialize the arraysize dropdown list
+  ODSA.AV.initArraySize(10, 16, 12); // Between 10 and 16, with default at 12
 
-function about() {
-   alert("Simple array visualization");
-}
-  
-function help() {
-   alert("Help for simple array visualization");
-}
-  
-// Initialize the arraysize dropdown list
-ODSA.AV.initArraySize(10, 16, 12); // Between 10 and 16, with default at 12
-
-
-// Connect action callbacks to the HTML entities
-$('#about').click(about);
-$('#runit').click(runit);
-$('#help').click(help);
-$('#reset').click(ODSA.AV.reset);
-}(jQuery));
+  // Connect action callbacks to the HTML entities
+  $("#about").click(about);
+  $("#runit").click(runit);
+  $("#help").click(help);
+  $("#reset").click(ODSA.AV.reset);
+});

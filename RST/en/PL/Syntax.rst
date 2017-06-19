@@ -111,6 +111,7 @@ The following slideshow demonstrates how to use the grammar above
 to build the parse tree for a given lambda expression.
 
 .. inlineav:: parseTree ss
+   :long_name: Slideshow for how to build a parse tree
    :output: show
 
 
@@ -137,6 +138,7 @@ exercise.  To get credit for this randomized exercise, you must solve
 it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP14part1.html ka
+   :long_name: RP set #14, question #1
 
 
 RP 14 part 2
@@ -148,5 +150,6 @@ time.  To get credit for this randomized exercise, you must solve it
 correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP14part2.html ka
+   :long_name: RP set #14, question #2
 
 .. odsascript:: AV/PL/AV/parseTree.js   	     

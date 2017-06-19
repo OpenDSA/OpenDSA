@@ -18,3 +18,4 @@ objects in SLang 3. To get credit for this randomized problem, you must
 complete it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP36part1.html ka
+   :long_name: RP set #36, question #1

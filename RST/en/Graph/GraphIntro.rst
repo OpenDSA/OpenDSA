@@ -289,6 +289,7 @@ be more space efficient.
    (because there are now 12 edges represented instead of 6).
 
 .. avembed:: Exercises/Graph/GspaceCalcSumm.html ka 
+   :long_name: Graph Space Requirements Exercise
 
 The adjacency matrix often requires a higher asymptotic cost for an
 algorithm than would result if the adjacency list were used.
@@ -310,6 +311,7 @@ Graph Terminology Questions
 ---------------------------
 
 .. avembed:: Exercises/Graph/GraphIntroSumm.html ka 
+   :long_name: Graph Terminology Summary Exercise
 
 .. odsascript:: AV/Graph/GdirundirCON.js
 .. odsascript:: AV/Graph/GneighborCON.js

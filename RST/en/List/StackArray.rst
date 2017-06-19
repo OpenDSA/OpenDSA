@@ -65,6 +65,7 @@ the array-based stack class.
 |
 
 .. inlineav:: astackVarCON ss
+   :long_name: Array stack variables slideshow
    :output: show
    
 
@@ -74,23 +75,28 @@ The only important design decision to be made is which end of the
 array should represent the top of the stack.
 
 .. inlineav:: astackTopCON ss
+   :long_name: Array stack top position slideshow
    :output: show
    
 |
 
 .. inlineav:: astackPushCON ss
+   :long_name: Array stack push slideshow
    :output: show
 
 .. avembed:: Exercises/List/AstackPushPRO.html ka
+   :long_name: Array-based Stack Push Exercise
 
 
 Pop
 ---
 
 .. inlineav:: astackPopCON ss
+   :long_name: Array stack pop slideshow
    :output: show
    
 .. avembed:: Exercises/List/AstackPopPRO.html ka
+   :long_name: Array-based Stack Pop Exercise
 
 .. odsascript:: AV/List/astackVarCON.js
 .. odsascript:: AV/List/astackTopCON.js

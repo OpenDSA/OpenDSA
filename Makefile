@@ -25,6 +25,7 @@ clean:
 	- $(RM) Scripts/*~
 	- $(RM) config/*~
 
+
 alllint: csslint lint jsonlint
 
 csslint:
@@ -90,37 +91,41 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-Plain: EverythingPlain CS2Plain CS3Plain PLPlain
+Plain: Everything CS2 CS3 PL
 
-EverythingPlain: min
-	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
+test_generated: Everything CS2 CS3 CS4104 FormalLang
 
 test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
-CS2Plain: min
-	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
+Everything: min
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/Everything_generated.json --no-lms
+
+CS2: min
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/CS2_generated.json --no-lms
 
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
 
-CS3Plain: min
-	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
+CS3: min
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/CS3_generated.json --no-lms
 
 ECE252: min
 	python $(CONFIG_SCRIPT) config/ECE252.json --no-lms
 
-PLPlain: min
+PL: min
 	python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
 CS4104: min
-	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/CS4104_generated.json --no-lms
 
-CS4104raw: min
-	python $(CONFIG_SCRIPT) config/CS4104raw.json --no-lms
-
-FL: min
-	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
+FormalLang: min
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/FormalLang_generated.json --no-lms
 
 CS3slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
@@ -130,6 +135,9 @@ CS3notes: min
 
 testcmapPlain: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
+
+CS150: min
+	python $(CONFIG_SCRIPT) config/CS150.json --no-lms
 
 CS260: min
 	python $(CONFIG_SCRIPT) config/CS260.json --no-lms
@@ -155,17 +163,21 @@ SDAP13: min
 simple_demo: min
 	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
 
-Pointers: min
-	python $(CONFIG_SCRIPT) config/Pointers.json --no-lms
+cs342_uwosh: min
+	python $(CONFIG_SCRIPT) config/cs342_uwosh.json --no-lms
 
-PointersBook: min
-	python $(CONFIG_SCRIPT) config/PointersBook.json --no-lms
+PointersCPP: min
+	python $(CONFIG_SCRIPT) config/PointersCPP.json --no-lms
+
+PointersJava: min
+	python $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
 
 CS3_exs: min
 	python $(CONFIG_SCRIPT) config/CS3_exs.json --no-lms
 
 JFLAP: min
-	python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/JFLAP_generated.json --no-lms
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
@@ -182,6 +194,9 @@ nomin:
 	@cp lib/odsaKA.css lib/odsaKA-min.css
 	@cp lib/gradebook.css lib/gradebook-min.css
 
+rst2json:
+	python tools/rst2json.py
+
 pull:
 	git pull
 	git submodule init
@@ -189,6 +204,7 @@ pull:
 	make -s -C JSAV
 	make -s min
 	cd Doc; make
+
 
 lib/odsaUtils-min.js: lib/odsaUtils.js
 	@echo 'Minimizing lib/odsaUtils.js'

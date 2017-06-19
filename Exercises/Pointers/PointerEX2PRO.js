@@ -1,4 +1,8 @@
-/*global JSAV, window */
+/*
+    global JSAV, window
+    Written by Jieun Chon and Cliff Shaffer
+*/
+
 (function() {
   "use strict";
 
@@ -70,10 +74,10 @@
       } else if (selected_pointer === pointer) { // Re-clicked slected pointer
         selected_pointer.element.removeClass("highlightpointer");
         selected_pointer = null;
-      } else { // Reselecting a new pointer
+      } else { // Pointing to another pointer.
+        pointerEX2PRO.setPointer(selected_pointer.element.text(), pointer, selected_pointer);
         selected_pointer.element.removeClass("highlightpointer");
-        selected_pointer = pointer;
-        selected_pointer.element.addClass("highlightpointer");
+        selected_pointer = null;
       }
       pointerEX2PRO.userInput = true;
     },
@@ -105,10 +109,11 @@
 
     setSalary: function(){
       if(selected_node !== null){
+        var salary = prompt("Please enter the new Salary to be set.", "0");
         if(selected_node === johnNode){
-          johnNode.value(0, "John, 3000");
+          johnNode.value(0, "John, " + salary);
         } else if (selected_node === samNode){
-          samNode.value(0, "Sam, 3000");
+          samNode.value(0, "Sam, " + salary);
         }
         selected_node.removeClass([0], "highlightbox");
         selected_node = null;
@@ -136,8 +141,6 @@
       codes[0] = "third = first;";
       codes[1] = "third.setSalary(3000);";
       av.code(codes);
-
-      var width = 60;
 
       var topP = topMargin;
       var johnP = leftMargin;
@@ -183,7 +186,6 @@
       } else if (johnNode.llist_pright.element.text() !== "third"){
         return false;
       } else if (samNode.llist_pleft.element.text() !== "second"){
-        // console.error(samNode.llist_pleft.element.text());
         return false;
       } else {
         if (johnNode.value(0) !== "John, 3000"){

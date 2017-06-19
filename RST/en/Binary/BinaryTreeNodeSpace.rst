@@ -129,3 +129,4 @@ avoided because they are difficult to debug and understand at
 best, and are often machine dependent at worst.
 
 .. avembed:: Exercises/Binary/TreeOverheadFIB.html ka
+   :long_name: Tree Overhead Exercise

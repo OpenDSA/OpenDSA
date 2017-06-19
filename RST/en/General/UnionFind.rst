@@ -252,6 +252,7 @@ The following slideshow illustrates a series of UNION operations with
 weighted union.
 
 .. inlineav:: ufCON ss
+   :long_name: Union/Find Example
    :output: show
 
 
@@ -282,6 +283,7 @@ The following slide show illustrates path compression using the last
 step in the previous example.
    
 .. inlineav:: pathcompCON ss
+   :long_name: Union/Find Path Compression Example
    :output: show
 
 Path compression keeps the cost of each FIND operation very
@@ -321,6 +323,7 @@ The survey article by Galil & Italiano [GalilItaliano91]_
 covers many aspects of the equivalence class problem.
 
 .. avembed:: AV/Development/UnionFindPRO.html pe
+   :long_name: Union/Find Proficiency Exercise
 
 .. odsascript:: AV/General/UFfigCON.js
 .. odsascript:: AV/General/UFconcomCON.js

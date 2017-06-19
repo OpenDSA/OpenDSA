@@ -9,7 +9,7 @@
    :satisfies:
    :topic: Balanced Binary Trees
 
-.. odsalink:: AV/Development/treeIndexingCON.css
+.. odsalink:: AV/Indexing/treeIndexingCON.css
 
 Balanced Trees
 ==============

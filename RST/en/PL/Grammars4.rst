@@ -124,6 +124,7 @@ a Jison file. Note that this problem is randomized. You must **solve it
 correctly three times in a row** to earn the credit associated with it.
 
 .. avembed:: Exercises/PL/RP4part1.html ka
+   :long_name: RP set #4, question #1
 
 RP 4 part 2
 -----------
@@ -131,3 +132,4 @@ RP 4 part 2
 This problem will again help you understand the grammar represented by a Jison file.
 
 .. avembed:: Exercises/PL/RP4part2.html ka
+   :long_name: RP set #4, question #2

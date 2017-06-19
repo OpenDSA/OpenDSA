@@ -12,6 +12,9 @@
 Code Coverage In JUnit
 ======================
 
+Code Coverage In JUnit
+----------------------
+
 One of the most useful features that the webcat grading system provides is
 information of total code coverage. Thankfully Eclipse has a couple of plugins
 that offer similar functionality so when you write your code you will not be

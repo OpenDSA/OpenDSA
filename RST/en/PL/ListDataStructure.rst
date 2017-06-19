@@ -3,11 +3,11 @@
 .. Copyright (c) 2012-13 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: David Furcy and Tom Naps
 
 ========================
- The List data structure
+The List data structure
 ========================
 
 The List data structure

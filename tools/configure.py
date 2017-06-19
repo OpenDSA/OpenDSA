@@ -280,9 +280,9 @@ def generate_index_rst(config, slides=False):
         index_rst.write("   :maxdepth: 3\n\n")
 
         # Process the Gradebook and Registerbook as well
-        if not slides:
-            process_module(config, mod_path='Gradebook', index_rst=index_rst)
-            process_module(config, mod_path='RegisterBook', index_rst=index_rst)
+        # if not slides:
+        #     process_module(config, mod_path='Gradebook', index_rst=index_rst)
+        #     process_module(config, mod_path='RegisterBook', index_rst=index_rst)
 
         # If a ToDo file will be generated, append it to index.rst
         if len(todo_list) > 0:

@@ -12,6 +12,9 @@
 Code Tuning and Empirical Analysis
 ==================================
 
+Introduction
+------------
+
 In practice, there is not such a big difference in running time
 between an algorithm with growth rate :math:`\Theta(n)` and another
 with growth rate :math:`\Theta(n \log n)`.

@@ -12,6 +12,9 @@
 Using/Installing VT Development Tools
 =====================================
 
+Using/Installing VT Development Tools
+-------------------------------------
+
 As a Virginia Tech student you will be using a number of tools to assist in
 projects. These tools will help you submit and test your project. If you are
 working in Java you will almost certainly make use of WebCAT. WebCAT is an

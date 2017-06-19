@@ -130,6 +130,7 @@ Here is a simple ``findpivot`` function.
    :tag: findpivot
 
 .. avembed:: Exercises/Sorting/QuicksortPivotPRO.html ka
+   :long_name: Quicksort Pivot Proficiency Exercise
 
 
 Partition
@@ -160,14 +161,17 @@ partition (the place where ``left`` ends at) so that the subarray
 bound for the recursive calls to ``qsort`` can be determined.
 
 .. inlineav:: quicksortCON ss
+   :long_name: Quicksort Partition Slideshow
    :output: show
 
 
 .. avembed:: Exercises/Sorting/QuicksortPartitPRO.html ka
+   :long_name: Quicksort Partition Proficiency Exercise
 
 And here is a visualization illustrating the running time analysis of the partition function
 
 .. inlineav:: QuickSortPartitionAnalysisCON ss
+   :long_name: Quicksort Partition Analysis Slideshow
    :output: show
 
 
@@ -183,12 +187,14 @@ In reality, there is only a single array involved (as you will see in
 the proficiency exercise that follows the visualization).
 
 .. avembed:: AV/Sorting/quicksortAV.html ss
+   :long_name: Quicksort Visualization
 
 
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.
 
 .. avembed:: AV/Sorting/quicksortPRO.html pe
+   :long_name: Quicksort Proficiency Exercise
 
 
 Quicksort Analysis
@@ -197,6 +203,7 @@ Quicksort Analysis
 This visualization explains the worst-case running time of Quick Sort
 
 .. inlineav:: QuickSortWorstCaseCON ss
+   :long_name: Quicksort Worst Case Analysis Slideshow
    :output: show
 
 This is terrible, no better than Bubble Sort.
@@ -212,6 +219,7 @@ work fairly well.
 This visualization explains the best-case running time of Quick Sort
 
 .. inlineav:: QuickSortBestCaseCON ss
+   :long_name: Quicksort Best Case Analysis Slideshow
    :output: show
 
 Quicksort's average-case behavior falls somewhere
@@ -238,6 +246,7 @@ This visualization will help you to understand how this recurrence
 relation was formed.
 
 .. inlineav:: QuickSortAverageCaseCON ss
+   :long_name: Quicksort Average Case Analysis Slideshow
    :output: show
 
 This is an unusual situation that the average case cost and the worst
@@ -352,6 +361,7 @@ modest speedup.
    partitions of size 6, 5, 4, 3, 2, then 1.
 
 .. avembed:: Exercises/Sorting/QuicksortSumm.html ka
+   :long_name: Quicksort Summary Exercise
 
 .. odsascript:: AV/Sorting/quicksortCODE.js
 .. odsascript:: AV/Sorting/quicksortCON.js

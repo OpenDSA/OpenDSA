@@ -8,10 +8,13 @@
    :satisfies: disk drives
    :topic: File Processing
 
-.. odsalink:: AV/Development/sectorLayoutCON.css   
+.. odsalink:: AV/Development/sectorLayoutCON.css
 
 Disk Drives
 ===========
+
+Disk Drives
+-----------
 
 A programmer typically views a :term:`random access` file stored on
 :term:`disk <disk drive>` as a contiguous series of bytes, with those
@@ -166,7 +169,7 @@ rather to read an entire sector of data at each request.
 Thus, a sector is the minimum amount of data that can be read or
 written at one time.
 
-In general, it is desirable to keep all sectors for a file together on 
+In general, it is desirable to keep all sectors for a file together on
 as few tracks as possible.
 This desire stems from two assumptions:
 
@@ -306,7 +309,7 @@ Most disk drives in 2011 had a rotation speed of 7200 rpm, or 8.3 ms
 per rotation.
 When reading a sector at random, you can expect that the disk will
 need to rotate halfway around to bring the desired sector
-under the I/O head, or 4.2 ms for a 7200-rpm disk drive. 
+under the I/O head, or 4.2 ms for a 7200-rpm disk drive.
 
 Once under the I/O head, a sector of data can be transferred as
 fast as that sector rotates under the head.

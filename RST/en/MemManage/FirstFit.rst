@@ -24,7 +24,9 @@ Because this approach selects the first block with enough space, it is
 called :term:`first fit`.
 
 .. avembed:: AV/MemManage/firstFitAV.html ss
+   :long_name: First Fit Visualization
 
 Now try it for yourself with the following exercise.
 
 .. avembed:: AV/MemManage/firstFitPRO.html pe
+   :long_name: First Fit Proficiency Exercise

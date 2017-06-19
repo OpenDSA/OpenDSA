@@ -18,11 +18,13 @@ Hamiltonian Cycle
 HAMILTONIAN CYCLE PROBLEM.
 
 .. inlineav:: hamiltonianCycleCON ss
+   :long_name: Hamiltonian Cycle
    :output: show
 
 Try out an instance of the Hamiltonian Cycle problem on your own.
 
 .. avembed:: Exercises/Development/hamiltonianCycle_KA.html ka
+   :long_name: Practice Exercise for Hamiltonian Cycle
 
 .. odsascript:: AV/Development/NP/hamiltonianCycleCON.js
 

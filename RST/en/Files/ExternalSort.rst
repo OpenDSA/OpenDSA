@@ -225,6 +225,7 @@ Here is a sketch of the algorithm.
 .. _ExMerge:
 
 .. inlineav:: extMergeSortCON ss
+   :long_name: External Merge Sort Slideshow
    :output: show
 
 #. Split the original file into two equal-sized
@@ -281,6 +282,7 @@ memory (perhaps using Quicksort), and then output it as a single
 sorted run.
 
 .. inlineav:: extMergeSortExampCON ss
+   :long_name: External Merge Sort Example Slideshow
    :output: show
 
 We can extend this concept to improve performance even
@@ -416,6 +418,7 @@ Here is a visualization to show a run being created
 by replacement selection.
 
 .. inlineav:: extRSCON ss
+   :long_name: External Replacement Selection Slideshow
    :output: show
 
 It should be clear that the minimum length of a run will be :math:`M`
@@ -487,6 +490,7 @@ Sorted and reverse sorted inputs do not meet this expectation and so
 change the length of the run.
 
 .. avembed:: AV/Files/extRSPRO.html pe
+   :long_name: Replacement Selection Proficiency Exercise
 
 
 Multiway Merging
@@ -527,6 +531,7 @@ that run is read from disk.
 The following slideshow illustrates a multiway merge.
 
 .. inlineav:: extMultiMergeCON ss
+   :long_name: Multiway Merge Example Slideshow
    :output: show
 
 Conceptually, multiway merge assumes that each run is stored in a
@@ -546,6 +551,7 @@ If the processing would not be sequential anyway (such as when all
 processing is on a single disk drive), no time is lost by doing so.
 
 .. avembed:: AV/Files/extMultiMergePRO.html pe
+   :long_name: Multi-way Merge Proficiency Exercise
 
 Multiway merging can greatly reduce the number of passes required.
 If there is room in memory to store one block for each run, then all

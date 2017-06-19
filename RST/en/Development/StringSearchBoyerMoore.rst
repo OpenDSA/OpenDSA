@@ -3,11 +3,14 @@
 .. Copyright (c) 2012-13 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Tom Naps and Sam Micka
 
 Boyer-Moore String Search Algorithm
 ===================================
+
+Boyer-Moore String Search Algorithm
+-----------------------------------
 
 Like the KMP algorithm, a string search algorithm developed by Boyer
 and Moore in 1977 initially examines the structure of the string :math:`sub`
@@ -35,7 +38,7 @@ realigned to the right. A pre-processing pass through :math:`sub` could
 be used to determine the amount of realignment for any possible
 character that could occur in :math:`master`. This information is
 called the "mismatched character heuristic" and is stored in an array
-that we will identify by the name :math:`MMC`.  
+that we will identify by the name :math:`MMC`.
 
 To supplement this mismatched character heuristic, the Boyer-Moore
 algorithm uses another :math:`align` array that contains re-alignment
@@ -44,7 +47,7 @@ information defined as follows.
 
 .. math::
 
-   align[p] = \left\{ \begin{array}{ll} 1 \; \mbox{if} \; p = length(sub) - 1 \mbox{ ,that is, if the last character} \\ suffix\_length + offset \mbox{  otherwise} \end{array} \right. 
+   align[p] = \left\{ \begin{array}{ll} 1 \; \mbox{if} \; p = length(sub) - 1 \mbox{ ,that is, if the last character} \\ suffix\_length + offset \mbox{  otherwise} \end{array} \right.
 
 where :math:`suffix\_length` is the length of the suffix of the string
 beginning at position :math:`p + 1` and :math:`offset` is the least
@@ -90,33 +93,33 @@ Slideshow for Boyer-Moore "Reverse KMP" Alignment Table Construction
 
 .. avembed:: AV/Development/Boyer_Moore_Align_Table_Slideshow.html ss
 
-We've seen from the above slideshows that there are really three algorithms at play in Boyer-Moore:  
+We've seen from the above slideshows that there are really three algorithms at play in Boyer-Moore:
 
 The main algorithm using two pre-computed re-alignment tables:::
 
-  m = Sub.length - 1 
-  while m < Master.length: 
-    s = Sub.length - 1 
-    while s >= 0 and Master[m] = Sub[s]: m = m-1, s = s-1 
-    if s < 0: return m+1 
-    else: m = m + larger_of(MMC[master[m]], Align[s]) 
+  m = Sub.length - 1
+  while m < Master.length:
+    s = Sub.length - 1
+    while s >= 0 and Master[m] = Sub[s]: m = m-1, s = s-1
+    if s < 0: return m+1
+    else: m = m + larger_of(MMC[master[m]], Align[s])
   return -1
 
 The algorithm to compute the mismatched character table:::
 
-  p = current character in alphabet 
-  if alphabet[p] doesn't exist in string then: MMC[p] = string.length 
+  p = current character in alphabet
+  if alphabet[p] doesn't exist in string then: MMC[p] = string.length
   else: MMC[p] = distance from right end of string to furthest right occurrence of alphabet[p] in string.
 
 And the algorithm to compute the reverse-KMP alignment table:::
 
-  p = current_index 
-  suffix_length = length of the suffix of string beginning at p+1 
-  offset = least amount that the suffix must be moved left to match another occurrence of itself 
-                      that isn't preceded by the same character that is at string[p] 
-  if p = string.length()-1 then: 
-    align[p] = 1 
-  else 
+  p = current_index
+  suffix_length = length of the suffix of string beginning at p+1
+  offset = least amount that the suffix must be moved left to match another occurrence of itself
+                      that isn't preceded by the same character that is at string[p]
+  if p = string.length()-1 then:
+    align[p] = 1
+  else
     align[p] = suffix_length + offset
 
 Keeping in mind the pseudocode for these algorithms, test yourself on

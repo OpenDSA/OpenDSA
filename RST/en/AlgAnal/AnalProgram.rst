@@ -235,18 +235,21 @@ from lowest to highest.
 Here is a visualization of the binary search method.
 
 .. inlineav:: binarySearchCON ss
+   :long_name: Binary Search Algorithm Slideshow
    :output: show
 
 Binary Search Practice Exercise
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: AV/Searching/binarySearchPRO.html ss
+   :long_name: Binary Search Proficiency Exercise
 
 
 Analyzing Binary Search
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: BsearchDandCRecurCON ss
+   :long_name: Binary Search recurrence slideshow
    :output: show
 
 Function ``binarySearch`` is designed to find the (single) occurrence of
@@ -289,6 +292,7 @@ Summary Exercise
 ----------------
 
 .. avembed:: Exercises/AlgAnal/AnalProgramSumm.html ka
+   :long_name: Program Code Analysis Exercise
 
 .. odsascript:: AV/Searching/binarySearchCON.js
 .. odsascript:: AV/AlgAnal/BsearchDandCRecurCON.js

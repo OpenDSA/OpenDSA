@@ -18,6 +18,7 @@ value* and *call by reference*. To earn credit for it, you must
 complete this randomized problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP28part2.html ka
+   :long_name: RP set #28, question #2
 
 
 RP 29 Part 1
@@ -29,6 +30,7 @@ for it, you must complete this randomized problem correctly three
 times in a row.
 
 .. avembed:: Exercises/PL/RP29part1.html ka
+   :long_name: RP set #29, question #1
 
 
 RP 30 Part 1
@@ -40,6 +42,7 @@ credit, you must complete this randomized problem correctly
 three times in a row.
 
 .. avembed:: Exercises/PL/RP30part1.html ka
+   :long_name: RP set #30, question #1
 
 RP 31 Part 1
 ------------
@@ -50,6 +53,7 @@ for it, you must complete this randomized problem correctly three
 times in a row.
 
 .. avembed:: Exercises/PL/RP31part1.html ka
+   :long_name: RP set #31, question #1
 
 RP 31 Part 2
 ------------
@@ -60,3 +64,4 @@ and *call by name*. To earn credit for it, you must complete this
 randomized problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP31part2.html ka
+   :long_name: RP set #31, question #2
