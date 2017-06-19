@@ -21,11 +21,39 @@
     <div id="buttons" align="center">
       <span id='mode'></span><br>
       <button type="button" id="editbutton">Edit</button>
-      <button type="button" id="addrowbutton">Add Input</button>
+      <button type="button" id="addinputbutton">Add Input</button>
       <button type="button" id="deletebutton">Delete</button>
-      <button type="button" class="function" id="bfpbutton">Run Inputs</button>
+      <button type="button" class="function" id="runinputsbutton">Run Inputs</button>
       <button type="button" id="backbutton">Back</button><br>
       <button type="button" class="function" id="clearbutton">Clear All</button>
+      <br></br>
+      <table id="table" style="width:50%">
+        <tr>
+          <th>Input</th>
+          <th>Accept/ Reject</th>
+        </tr>
+        <tr>
+          <td><div contenteditable id="input0"></div></td>
+          <td><output id="output0"></output></td>
+        </tr>
+        <tr>
+          <td><div contenteditable id="input1"></div></td>
+          <td><output id="output1"></output></td>
+        </tr>
+        <tr>
+          <td><div contenteditable id="input2"></div></td>
+          <td><output id="output2"></output></td>
+        </tr>
+        <tr>
+          <td><div contenteditable id="input3"></div></td>
+          <td><output id="output3"></output></td>
+        </tr>
+        <tr>
+          <td><div contenteditable id="input4"></div></td>
+          <td><output id="output4"></output></td>
+        </tr>
+      </table>
+
     </div>
     <div id="av">
       <div class="jsavcontrols">
@@ -39,17 +67,19 @@
     </div>
   </div>
 
+
+
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-	<script src="../../../../JSAV/lib/jquery.transit.js"></script>
-	<script src="../../../../JSAV/lib/raphael.js"></script>
-	<script src="../../../../JSAV/lib/dagre.min.js"></script>
+	<!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
+	<!-- <script src="../../../../JSAV/lib/jquery.transit.js"></script> -->
+	<!-- <script src="../../../../JSAV/lib/raphael.js"></script> -->
+	<!-- <script src="../../../../JSAV/lib/dagre.min.js"></script> -->
 	<script src="../../../../JSAV/build/JSAV.js"></script>
-	<!-- <script src="../../../../lib/odsaUtils-min.js"></script>-->
-	<script src="../../../../lib/odsaAV-min.js"></script>
-	<script src="../fa/serializableGraph.js"></script>
+	<!-- <script src="../../../../lib/odsaUtils-min.js"></script> -->
+	<!-- <script src="../../../../lib/odsaAV-min.js"></script> -->
+	<!-- <script src="../fa/serializableGraph.js"></script> -->
 	<script src="../../resources/underscore-min.js"></script>
-	<script src="../fa/FA.js"></script>
+	<!-- <script src="../fa/FA.js"></script> -->
   <script src="./grammarEditor.js"></script>
 </body>
 </html>
