@@ -1,8 +1,7 @@
-/*global JSAV, window */
-
-// TODO: generate pop-up text field for the case of clicking setSalary Button.
-//  "trigger a pop-up text field that the user types into, and then the value for that object gets set."
-//  " it would be better to click on the value field and then type 3000, instead of having a button that automatically sets it to 3000."
+/*
+    global JSAV, window
+    Written by Jieun Chon and Cliff Shaffer
+*/
 
 (function() {
   "use strict";
@@ -110,10 +109,11 @@
 
     setSalary: function(){
       if(selected_node !== null){
+        var salary = prompt("Please enter the new Salary to be set.", "0");
         if(selected_node === johnNode){
-          johnNode.value(0, "John, 3000");
+          johnNode.value(0, "John, " + salary);
         } else if (selected_node === samNode){
-          samNode.value(0, "Sam, 3000");
+          samNode.value(0, "Sam, " + salary);
         }
         selected_node.removeClass([0], "highlightbox");
         selected_node = null;
@@ -141,8 +141,6 @@
       codes[0] = "third = first;";
       codes[1] = "third.setSalary(3000);";
       av.code(codes);
-
-      var width = 60;
 
       var topP = topMargin;
       var johnP = leftMargin;
@@ -188,7 +186,6 @@
       } else if (johnNode.llist_pright.element.text() !== "third"){
         return false;
       } else if (samNode.llist_pleft.element.text() !== "second"){
-        // console.error(samNode.llist_pleft.element.text());
         return false;
       } else {
         if (johnNode.value(0) !== "John, 3000"){

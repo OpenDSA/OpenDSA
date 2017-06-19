@@ -69,7 +69,7 @@
     },
 
     "04 Pointers": {
-      "PointersJava/Exercises": {
+      "PointersCPP/Exercises_J": {
         "long_name": "pointer",
         "sections": {
         }

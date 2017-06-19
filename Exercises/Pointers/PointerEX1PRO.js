@@ -1,16 +1,18 @@
-/*global JSAV, window */
+/*
+    global JSAV, window
+    Written by Jieun Chon and Cliff Shaffer
+*/
+
 (function() {
   "use strict";
 
   var av, // The JSAV object
-      nullNode1, // Used to trace the node pointed by 'empRef' pointer.
+      nullNode1, // Used to trace the node pointed by a pointer pointing null.
       nullNode2,
       nullNode3,
-      nullchecker,
       johnNode, // Used to trace the node pointed by 'johnRef' pointer.
       samNode, // Used to trace the node pointed by 'samRef' pointer.
       selected_pointer;
-
 
   var pointerEX1PRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
@@ -78,21 +80,22 @@
     },
 
     clickHandler: function(){
-      if(selected_pointer !== null){
-        if(selected_pointer.target() !== this){
+      if(selected_pointer !== null){ // currently a pointer object is selected
+        if(selected_pointer.target() !== this){ // pointer points another pointer
           pointerEX1PRO.setPointer(selected_pointer.element.text(), this, selected_pointer);
         }
+
+          //Remove highlighter and removed from selected_pointer
           selected_pointer.removeClass("highlight");
           selected_pointer = null;
       }
-
       pointerEX1PRO.userInput = true;
     },
 
     makenull: function(){
       if(selected_pointer !== null){
         var target = selected_pointer.target();
-        if(target !== nullNode1 && target != nullNode2 && target != nullNode3){
+        if(target !== nullNode1 && target != nullNode2 && target != nullNode3){ // pointer is not pointing a null.
           if(!nullNode1.llist_pleft){
               pointerEX1PRO.setPointer(selected_pointer.element.text(), nullNode1, selected_pointer);
           } else if (!nullNode2.llist_pleft){
@@ -100,32 +103,13 @@
           } else {
             pointerEX1PRO.setPointer(selected_pointer.element.text(), nullNode3, selected_pointer);
           }
-
         }
+          //Remove highlighter and removed from selected_pointer
           selected_pointer.removeClass("highlight");
           selected_pointer = null;
       }
       pointerEX1PRO.userInput = true;
     },
-
-    labelClickHandler: function(){
-      if(selected_pointer !== null){
-        if(this.hasClass("samLabel")){
-          if(selected_pointer.target() !== samNode){
-            pointerEX1PRO.setPointer(selected_pointer.element.text(), samNode, selected_pointer);
-          }
-        } else if(this.hasClass("johnLabel")){
-          if(selected_pointer.target() !== johnNode){
-            pointerEX1PRO.setPointer(selected_pointer.element.text(), johnNode, selected_pointer);
-          }
-        }
-          selected_pointer.removeClass("highlight");
-          selected_pointer = null;
-      }
-      pointerEX1PRO.userInput = true;
-    },
-
-
 
       // Reinitialize the exercise.
     reset: function() {
@@ -141,13 +125,14 @@
 
       // Set up the display
       av = new JSAV("PointerEX1PRO");
+
+      // Given code
       var codes = [];
       codes[0] = "empRef = johnRef;";
       codes[1] = "johnRef = null;";
       av.code(codes);
 
-      var width = 60;
-
+      // create location values
       var topP = topMargin;
       var nullP = leftMargin;
       var johnP = nullP + 170;
@@ -173,6 +158,7 @@
       av.displayInit();
       av.recorded();
 
+      // Set up the click handlers for each nodes
       johnNode.click(pointerEX1PRO.clickHandler);
       samNode.click(pointerEX1PRO.clickHandler);
     },
@@ -181,14 +167,16 @@
     initJSAV: function() {
       pointerEX1PRO.reset();
 
-      $("#makenull").click(function() {
-        pointerEX1PRO.makenull();
-      });
-
       // Set up handler for reset button
       $("#reset").click(function() {
         pointerEX1PRO.reset();
       });
+
+      // Set up handler for makenull button
+      $("#makenull").click(function() {
+        pointerEX1PRO.makenull();
+      });
+
     },
 
     // Check user's answer for correctness: User's array must match answer
