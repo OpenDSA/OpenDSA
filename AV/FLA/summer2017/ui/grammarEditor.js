@@ -1572,6 +1572,10 @@ $(document).ready(function () {
     return newItems;
   };
 
+
+
+
+
   // sets up window for proofs
   var startParse = function () {
     if (parseTree) {
@@ -3420,6 +3424,110 @@ $(document).ready(function () {
     window.open("./BFParse.html");
   }
 
+  function cykParse() {
+    // //first convert grammar to CNF, currently there seems to be problems with convertToChomsky()
+    // var cnf = convertToChomsky();
+    // console.log(cnf);
+
+
+    var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
+    if (productions.length === 0) {
+      alert('No grammar.');
+      return;
+    }
+    jsav.umsg('Parsing');
+    var inputString = prompt('Input string');
+    if (inputString === null) {
+      return;
+    }
+
+    startParse();
+
+    console.log('productions: ' + productions + ' input string: ' + inputString + ' m: ' + m);
+
+    var inputLength = inputString.length;
+    var nonterminals = getNonTerminals();
+    var terminals = getTerminals();
+
+    //initialize the 2d (3d) array
+    var table = new Array(inputLength);
+    for (var s = 0; s < inputLength; s++) {
+      table[s] = new Array(inputLength);
+      for(var m = 0; m < nonterminals.length; m++){
+        table[s][m] = new Array(nonterminals.length);
+      }
+    }
+
+    //the first row, unit productions
+    for (var s = 0; s < inputLength; s++) {
+      var unitProductions = _.filter(productions, function(x) {
+        return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
+      });
+      unitProductions.forEach(function(production) {
+        if(production[2] == inputString.charAt(s)){
+          tables[0][s].push(production[0]);
+        }
+      });
+    }
+
+    for (var l = 2; l <= input.length; l++) { //l is length of the span
+      for (var s = 0; s <= input.length - l; s++) {  //s is the start of the span
+        e = s + l - 1; //e is the end of the span
+        for (var p = s; p <= e - 1; p++) { //p is where the partition is
+            var otherProductions = _.filter(productions, function(x) {
+              return x[2].length === 2;
+            });
+            otherProductions.forEach(function(production) {
+              // other productions are in the form of A -> BC
+              var A = production[0];
+              var B = production[2].charAt(0);
+              var C = production[2].charAt(1);
+              if(table[p][s].includes(B) && table[l-p][s+p].includes(C)) {
+                table[l][s].push(A);
+              }
+            });
+        }
+      }
+      if(table[n][1].length > 0) {
+        alert('Input accepted');
+      }else{
+        alert('Input not accpeted');
+      }
+    }
+
+
+  }
+
+  //return a set of unique terminals on the right side
+  function getTerminals(){
+    var productions = _.filter(arr, function(x) { return x[0]});
+    var set = new Set();
+    for (var i = 0; i < productions.length; i++) {
+      var rhs = productions[i][2];
+      for(var k = 0; k < rhs.length; k++){
+        if(variables.indexOf(rhs.charAt(k)) === -1 && !(set.has(rhs.charAt(k)))) {
+          set.add(rhs.charAt(k));
+        }
+      }
+    }
+    return set;
+  }
+
+  //return a set of unique variables (non-terminals) on the left side
+  function getNonTerminals() {
+    var productions = _.filter(arr, function(x) { return x[0]});
+    var set = new Set();
+    for (var i = 0; i < productions.length; i++) {
+      var lhs = productions[i][0];
+      for(var k = 0; k < lhs.length; k++){
+        if(variables.indexOf(lhs.charAt(k)) !== -1 && !(set.has(lhs.charAt(k)))) {
+          set.add(lhs.charAt(k));
+        }
+      }
+    }
+    return set;
+  }
+
   //=================================
   // Buttons for editing the SLR DFA
   $('#finalbutton').click(function() {
@@ -3488,6 +3596,7 @@ $(document).ready(function () {
   $('#runinputsbutton').click(runMultiInputs);
   $('#llbutton').click(llParse);
   $('#slrbutton').click(slrParse);
+  $('#cykbutton').click(cykParse);
   $('#transformbutton').click(transformGrammar);
   $('#loadfile').on('change', loadFile);
   $('#savefile').click(saveFile);
