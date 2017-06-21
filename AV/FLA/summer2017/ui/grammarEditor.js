@@ -2205,7 +2205,8 @@ $(document).ready(function () {
     }
     modelDFA.layout();
     var unitProductions = _.filter(productions, function(x) {
-      return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
+      // return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
+      return x[2].length === 1 && variables.indexOf(x[2]) === -1;
     });
     selectedNode = null;
     // handler for the VDG for adding transitions
@@ -3429,7 +3430,6 @@ $(document).ready(function () {
     // var cnf = convertToChomsky();
     // console.log(cnf);
 
-
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     if (productions.length === 0) {
       alert('No grammar.');
@@ -3443,58 +3443,72 @@ $(document).ready(function () {
 
     startParse();
 
-    console.log('productions: ' + productions + ' input string: ' + inputString + ' m: ' + m);
+    console.log('productions: ' + productions + ' input string: ' + inputString);
 
     var inputLength = inputString.length;
     var nonterminals = getNonTerminals();
     var terminals = getTerminals();
 
     //initialize the 2d (3d) array
-    var table = new Array(inputLength);
-    for (var s = 0; s < inputLength; s++) {
-      table[s] = new Array(inputLength);
-      for(var m = 0; m < nonterminals.length; m++){
-        table[s][m] = new Array(nonterminals.length);
+    // var table = new Array(inputLength);
+    // for (var s = 0; s < inputLength; s++) {
+    //   table[s] = new Array(inputLength);
+    //   for(var i = 0; i < nonterminals.size; i++){
+    //     table[s][i] = new Array(nonterminals.size);
+    //   }
+    // }
+
+    var table = new Array();
+    for (var s = 0; s <= inputLength; s++) {
+      table[s] = new Array();
+      for(var i = 0; i <= nonterminals.size; i++){
+        table[s][i] = new Array();
       }
     }
 
+    var unitProductions = _.filter(productions, function(x) {
+      return x[2].length === 1 && variables.indexOf(x[2]) === -1;
+    });
+
     //the first row, unit productions
     for (var s = 0; s < inputLength; s++) {
-      var unitProductions = _.filter(productions, function(x) {
-        return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
-      });
       unitProductions.forEach(function(production) {
         if(production[2] == inputString.charAt(s)){
-          tables[0][s].push(production[0]);
+          table[0][s].push(production[0]);
         }
       });
     }
 
-    for (var l = 2; l <= input.length; l++) { //l is length of the span
-      for (var s = 0; s <= input.length - l; s++) {  //s is the start of the span
+    var otherProductions = _.filter(productions, function(x) {
+      return x[2].length === 2;
+    });
+
+
+    for (var l = 2; l <= inputString.length; l++) { //l is length of the span
+      for (var s = 0; s <= inputString.length - l; s++) {  //s is the start of the span
         e = s + l - 1; //e is the end of the span
         for (var p = s; p <= e - 1; p++) { //p is where the partition is
-            var otherProductions = _.filter(productions, function(x) {
-              return x[2].length === 2;
-            });
             otherProductions.forEach(function(production) {
               // other productions are in the form of A -> BC
               var A = production[0];
               var B = production[2].charAt(0);
               var C = production[2].charAt(1);
-              if(table[p][s].includes(B) && table[l-p][s+p].includes(C)) {
-                table[l][s].push(A);
+              // console.log('p: ' + p + ' s: ' + s + ' l: ' + l + ' table[1][0]: ' + table[0][1]);
+              console.log(table[p-s][s] + '     ' + table[l-p+s-2][p+1]);
+              if(table[p-s][s].includes(B) && table[l-p+s-2][p+1].includes(C)) {
+                table[l-1][s].push(A);
               }
             });
         }
       }
-      if(table[n][1].length > 0) {
-        alert('Input accepted');
-      }else{
-        alert('Input not accpeted');
-      }
     }
+    console.log('table at the end: '+ table);
 
+    if(table[inputString.length - 1][0].length > 0) {
+      alert('Input accepted');
+    }else{
+      alert('Input not accpeted');
+    }
 
   }
 
