@@ -1,7 +1,6 @@
 {
-  "title": "CS3 Coursenotes",
-  "desc": "CS3 Coursenotes",
-  "inst_book_id": 20,
+  "title": "CS3 Coursenotes: Summer 2017",
+  "desc": "CS3 Coursenotes: Summer 2017",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",
@@ -872,7 +871,5 @@
         }
       }
     }
-
-
   }
 }
