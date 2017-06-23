@@ -56,7 +56,7 @@ $(document).ready(function () {
   }
 
   // Function to initialize/reinitialize the grammar display
-  var init = function () {
+  var init = function () { 
     if (m) {
       m.clear();
     }
@@ -74,7 +74,6 @@ $(document).ready(function () {
   var matrixClickHandler = function(index, index2) {
     console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
 
-    //2017 Summer COMMENT: I am Very Confused about the reason for this line and the need for both index and row, index2 and col
     // if ((row != index || col != index2) && fi) {
 
     if (fi) {
@@ -3435,7 +3434,7 @@ $(document).ready(function () {
       alert('No grammar.');
       return;
     }
-    jsav.umsg('Parsing');
+    // jsav.umsg('Parsing');
     var inputString = prompt('Input string');
     if (inputString === null) {
       return;
@@ -3458,12 +3457,12 @@ $(document).ready(function () {
     //   }
     // }
 
-    var table = new Array();
-    for (var s = 0; s <= inputLength; s++) {
-      table[s] = new Array();
-      for(var i = 0; i <= nonterminals.size; i++){
+    var table = new Array(inputLength);
+    for (var s = 0; s < inputLength; s++) {
+      table[s] = new Array(inputLength-s);
+      for(var i = 0; i < inputLength-s; i++){
         table[s][i] = new Array();
-      }
+        }
     }
 
     var unitProductions = _.filter(productions, function(x) {
@@ -3493,16 +3492,80 @@ $(document).ready(function () {
               var A = production[0];
               var B = production[2].charAt(0);
               var C = production[2].charAt(1);
-              // console.log('p: ' + p + ' s: ' + s + ' l: ' + l + ' table[1][0]: ' + table[0][1]);
               console.log(table[p-s][s] + '     ' + table[l-p+s-2][p+1]);
               if(table[p-s][s].includes(B) && table[l-p+s-2][p+1].includes(C)) {
-                table[l-1][s].push(A);
+                if(!table[l-1][s].includes(A)){
+                  table[l-1][s].push(A);
+                }
               }
             });
         }
       }
     }
-    console.log('table at the end: '+ table);
+
+    // //initialize the parsetable
+    // var initCYKParseTable = function (table) {
+    //   for(var i = 0; i < inputLength; i++){
+    //     var t = jsav.ds.array(table[i]);
+    //     t.layout();
+    //     t.on('click', cykParseTableHandler);
+    //     t.css({"width": "150px"});
+    //   }
+    //   return t;
+    // };
+
+    //initialize the parsetable
+    var initCYKParseTable = function (table) {
+      var t = jsav.ds.matrix(table);
+      // layoutTable(t);
+      t = layoutCYKTable(t);
+      t.on('click', cykParseTableHandler);
+      return t;
+    };
+
+    var oldrow, oldcol;
+
+    var cykParseTableHandler = function(row, col) {
+      console.log(row + '  ' + col);
+
+      if (fi) {
+        var input = fi.val();
+        var regex = new RegExp(emptystring, g);
+        input = input.replace(regex, "");
+        input = input.replace(regex, "!");
+        if (input === "" && col == 2) {
+          input = emptystring;
+        }
+        fi.remove();
+        jsavParseTable.value(oldrow, oldcol, input);
+        // arr[row][col] = input;
+        jsavParseTable = layoutCYKTable(jsavParseTable);
+      }
+
+      var offset = jsavParseTable._arrays[row]._indices[col].element.offset();
+      var topOffset = offset.top;
+      var leftOffset = offset.left;
+      $('#firstinput').remove();
+      var createInput = "<input type='text' id='firstinput' onfocus='this.value = this.value;'>";
+      $('body').append(createInput);
+      fi = $('#firstinput');
+      fi.offset({top: topOffset, left: leftOffset});
+      fi.outerHeight($('.jsavvalue').height());
+      fi.width($(jsavParseTable._arrays[row]._indices[col].element).width());
+      fi.focus();
+
+      //need these in order to update the table correctly
+      oldrow = row;
+      oldcol = col;
+
+    };
+
+
+    var jsavParseTable = initCYKParseTable(table);
+
+    // var cykParseTable = new jsav.ds.matrix(table);
+
+    // layoutTable(cykParseTable);
 
     if(table[inputString.length - 1][0].length > 0) {
       alert('Input accepted');
@@ -3512,8 +3575,18 @@ $(document).ready(function () {
 
   }
 
+  //a special layout function for CYK parse table, shows only half of the matrix.
+  function layoutCYKTable(table) {
+    table.layout();
+    for (var i = 0; i < table._arrays.length; i++) {
+      var arry = table._arrays[i].element;
+      arry.css({"width": "161px"}); //the width is currently hardcoded to ensure left align, need to change in the future
+    }
+    return table;
+  }
+
   //return a set of unique terminals on the right side
-  function getTerminals(){
+  function getTerminals() {
     var productions = _.filter(arr, function(x) { return x[0]});
     var set = new Set();
     for (var i = 0; i < productions.length; i++) {
