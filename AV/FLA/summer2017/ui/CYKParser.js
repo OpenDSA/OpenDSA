@@ -11,11 +11,19 @@ $(document).ready(function () {
       jsavParseTable, //table that the user could see and input
       currentStep = 0; //for the step function
 
-  var lambda = String.fromCharCode(955),
+  var arrow = String.fromCharCode(8594),
+      lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
       square = String.fromCharCode(9633),
       dot = String.fromCharCode(183),
       emptystring = lambda;
+
+
+  var productions = JSON.parse(localStorage.getItem('grammars'));
+
+  var grammars = jsav.ds.matrix(productions, {style: "table"});
+  grammars.layout();
+
 
   function enterInput() {
     inputString = prompt('Input string');
@@ -29,8 +37,6 @@ $(document).ready(function () {
     // var cnf = convertToChomsky();
     // console.log(cnf);
 
-    productions = JSON.parse(localStorage.getItem('grammars'));
-    console.log(productions);
     // var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     if (productions.length === 0) {
       alert('No grammar.');
@@ -271,6 +277,16 @@ $(document).ready(function () {
       userTable[currentStep] = table[currentStep];
       initCYKParseTable(userTable);
       currentStep++;
+    }
+  };
+
+  //click a cell, then click the animate button
+  function animate() {
+    // $('.jsavcontrols').show();
+    for(var i = 0; i < oldrow; i++) {
+      jsavParseTable.highlight(oldcol, i);
+      jsavParseTable.highlight(oldrow - i - 1);
+      setTimeout(function() {console.log(i);}, 1000);
     }
   };
 
