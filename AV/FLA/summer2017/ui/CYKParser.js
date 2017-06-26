@@ -6,6 +6,8 @@ $(document).ready(function () {
       fi,
       oldrow,
       oldcol,
+      tableState = true, //boolean value, true if table is not flipped (triangle's 90 degree angle on upperleft corner), false if flipped
+      finalrow, //depending on the table, this value could either be inputString.length-1, or 0 (if the table is flipped upside down)
       table, //table with the answer
       userTable, //has the same value as jsavParseTable, but just for backend use
       jsavParseTable, //table that the user could see and input
@@ -22,7 +24,6 @@ $(document).ready(function () {
   var productions = JSON.parse(localStorage.getItem('grammars'));
   var grammars = jsav.ds.matrix(productions, {style: "table"});
   grammars.layout();
-
 
   function enterInput() {
     inputString = prompt('Input string');
@@ -47,6 +48,7 @@ $(document).ready(function () {
     var inputLength = inputString.length;
     var nonterminals = getNonTerminals();
     var terminals = getTerminals();
+    finalrow = inputLength - 1;
 
     //initialize the 2d (3d) array
     // var table = new Array(inputLength);
@@ -108,16 +110,13 @@ $(document).ready(function () {
 
   };
 
-  var checkAcceptance = function (table) {
-    if(table[inputString.length - 1][0].length > 0) {
+  function checkAcceptance(table) {
+    if(table[finalrow][0].length > 0) {
       alert('Input accepted');
     }else{
       alert('Input not accpeted');
     }
-  }
-
-
-
+  };
 
   //initialize the parsetable
   var initCYKParseTable = function (table) {
@@ -131,7 +130,7 @@ $(document).ready(function () {
     jsavParseTable.layout();
     for (var i = 0; i < jsavParseTable._arrays.length; i++) {
       var arry = jsavParseTable._arrays[i].element;
-      arry.css({"width": "250px"}); //the width is currently hardcoded to ensure left align, need to change in the future
+      arry.css({"width": "280px"}); //the width is currently hardcoded to ensure left align, need to change in the future
     }
   };
   
@@ -143,6 +142,32 @@ $(document).ready(function () {
       }
     }
   }
+
+  //flip the table and userTable, not the JSAV one
+  function flipTable() {
+    var tempTable = new Array(inputString.length);
+    var tempUserTable = new Array(inputString.length);
+
+    for(var r = 0; r < table.length; r++) {
+      tempTable[table.length-r-1] = table[r];
+      tempUserTable[table.length-r-1] = userTable[r];
+    }
+
+    table = tempTable;
+    console.log(table);
+    userTable = tempUserTable;
+    //if not flipped, flip it
+    if(tableState){
+      tableState = false;
+      finalrow = 0;
+    }else{
+      tableState = true;
+      finalrow = inputString.length-1;
+    }
+
+    jsavParseTable.clear();
+    initCYKParseTable(userTable);
+  };
 
 
   //for user interactions
@@ -182,23 +207,23 @@ $(document).ready(function () {
 
   //check the user input against the answer at a specific index
   function checkAnswer(row, col) {
-    var correct = true;
-    for(var i = 0; i < table[row][col].length; i++){
-      if(!jsavParseTable.value(row, col).includes(table[row][col][i])){
-        correct = false;
-        break;
-      }
-    }
-    if(!correct){
+    if(!checkAnswerHelper(row, col)){
       jsavParseTable._arrays[row].css([col], {"color": "red"});
     } else {
       jsav.umsg('Please continue to input your answer');
       jsavParseTable._arrays[row].css([col], {"color": "green"});
-      if(jsavParseTable.value(inputString.length - 1, 0).length > 0) {
-      alert('Congratulations!');
+      if(table[finalrow][0].length > 0 && checkAnswerHelper(finalrow, 0)) {
         jsav.umsg('Accepted!');
       }
     }
+  };
+  function checkAnswerHelper(row, col) {
+    for(var i = 0; i < table[row][col].length; i++){
+      if(!jsavParseTable.value(row, col).includes(table[row][col][i])){
+        return false;
+      }
+    }
+    return true;
   };
 
   //return a set of unique terminals on the right side
@@ -267,7 +292,7 @@ $(document).ready(function () {
   };
 
 
-//////////////////////////////
+///////////////////////////////////
 // Animation Stuff
 
   var timerID;
@@ -305,13 +330,14 @@ $(document).ready(function () {
     }
   };
 
-///////////////////////////
+/////////////////////////////////////
 
 
   $('#inputbutton').click(enterInput);
   $('#completebutton').click(completeCYKTable);
   $('#stepbutton').click(step);
   $('#animatebutton').click(animate);
+  $('#flipbutton').click(flipTable);
 
   $(document).click(defocus);
 
