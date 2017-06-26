@@ -36,7 +36,6 @@ $(document).ready(function () {
     // var cnf = convertToChomsky();
     // console.log(cnf);
 
-    // var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     if (productions.length === 0) {
       alert('No grammar.');
       return;
@@ -117,6 +116,9 @@ $(document).ready(function () {
     }
   }
 
+
+
+
   //initialize the parsetable
   var initCYKParseTable = function (table) {
       jsavParseTable = jsav.ds.matrix(table);
@@ -143,11 +145,11 @@ $(document).ready(function () {
   }
 
 
+  //for user interactions
   var cykParseTableHandler = function(row, col) {
       console.log(row + '  ' + col);
       if (fi) {
         var input = fi.val();
-
         //If user didn't input anything, and there already exists info in that cell, do nothing
         if (input === "" && userTable[oldrow][oldcol].length > 0) {
            input = userTable[oldrow][oldcol];
@@ -157,18 +159,7 @@ $(document).ready(function () {
         jsavParseTable.value(oldrow, oldcol, input);
         userTable[oldrow][oldcol] = input;
         layoutCYKParseTable(jsavParseTable);
-
-        //If user input wrong answer, let them know
-        if(!checkAnswer(oldrow, oldcol)){
-          jsavParseTable._arrays[oldrow].css([oldcol], {"color": "red"});
-        } else {
-          jsav.umsg('Please continue to input your answer');
-          jsavParseTable._arrays[oldrow].css([oldcol], {"color": "green"});
-          if(jsavParseTable.value(inputString.length - 1, 0).length > 0) {
-            alert('Congratulations!');
-            jsav.umsg('Accepted!');
-          }
-        }
+        checkAnswer(oldrow, oldcol);
       }
 
       var offset = jsavParseTable._arrays[row]._indices[col].element.offset();
@@ -189,14 +180,25 @@ $(document).ready(function () {
 
   };
 
-  //checks the answer at a specific index
+  //check the user input against the answer at a specific index
   function checkAnswer(row, col) {
+    var correct = true;
     for(var i = 0; i < table[row][col].length; i++){
       if(!jsavParseTable.value(row, col).includes(table[row][col][i])){
-        return false;
+        correct = false;
+        break;
       }
     }
-    return true;
+    if(!correct){
+      jsavParseTable._arrays[row].css([col], {"color": "red"});
+    } else {
+      jsav.umsg('Please continue to input your answer');
+      jsavParseTable._arrays[row].css([col], {"color": "green"});
+      if(jsavParseTable.value(inputString.length - 1, 0).length > 0) {
+      alert('Congratulations!');
+        jsav.umsg('Accepted!');
+      }
+    }
   };
 
   //return a set of unique terminals on the right side
@@ -237,22 +239,15 @@ $(document).ready(function () {
     if ($(e.target).attr('id') == "firstinput") return;
     if (!fi || !fi.is(':visible')) return;
     var input = fi.val();
+    //If user didn't input anything, and there already exists info in that cell, do nothing
+    if (input === "" && userTable[oldrow][oldcol].length > 0) {
+      input = userTable[oldrow][oldcol];
+    }
     fi.remove();
     jsavParseTable.value(oldrow, oldcol, input);
     userTable[oldrow][oldcol] = input;
     layoutCYKParseTable(jsavParseTable);
-
-    //If user input wrong answer, let them know
-    if(!checkAnswer(oldrow, oldcol)){
-          jsavParseTable._arrays[oldrow].css([oldcol], {"color": "red"});
-    } else {
-          jsav.umsg('Please continue to input your answer');
-          jsavParseTable._arrays[oldrow].css([oldcol], {"color": "green"});
-          if(jsavParseTable.value(inputString.length - 1, 0).length > 0) {
-            alert('Congratulations!');
-            jsav.umsg('Accepted!');
-          }
-    }
+    checkAnswer(oldrow, oldcol);
   }
 
   function completeCYKTable(){
@@ -263,6 +258,10 @@ $(document).ready(function () {
     if(currentStep < table.length){
       userTable[currentStep] = table[currentStep];
       setCYKParseTable(userTable);
+      //show green
+      for(var c = 0; c < table[currentStep].length; c++){
+        checkAnswer(currentStep, c);
+      }
       currentStep++;
     }
   };
@@ -307,8 +306,6 @@ $(document).ready(function () {
   };
 
 ///////////////////////////
-
-
 
 
   $('#inputbutton').click(enterInput);
