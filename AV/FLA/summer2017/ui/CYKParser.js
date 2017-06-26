@@ -280,13 +280,39 @@ $(document).ready(function () {
     }
   };
 
+
+  var timerID;
+  var counter;
+
   //click a cell, then click the animate button
   function animate() {
     // $('.jsavcontrols').show();
-    for(var i = 0; i < oldrow; i++) {
-      jsavParseTable.highlight(oldcol, i);
-      jsavParseTable.highlight(oldrow - i - 1);
-      setTimeout(function() {console.log(i);}, 1000);
+    var i = 0;
+    //this setInterval has to put function(){} to make it work
+    timerID = setInterval(function() {animationHelper();}, 1000);
+  };
+
+  function animationHelper() {
+    if(counter === undefined) {
+      counter = 0;
+    }
+    if(counter >= oldrow){
+      unhighlightPrevious();
+      counter = 0;
+      clearInterval(timerID);
+    }else{
+      //if previously highlighted other cells, unhighlight them
+      if(counter >= 1){
+        unhighlightPrevious();
+      }
+      jsavParseTable.highlight(counter, oldcol);
+      jsavParseTable.highlight(oldrow-counter-1, oldcol+counter+1);
+      counter++;
+    }
+
+    function unhighlightPrevious(){
+      jsavParseTable.unhighlight(counter-1, oldcol);
+      jsavParseTable.unhighlight(oldrow-counter, oldcol+counter);
     }
   };
 
