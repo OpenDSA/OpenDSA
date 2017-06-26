@@ -20,7 +20,6 @@ $(document).ready(function () {
 
 
   var productions = JSON.parse(localStorage.getItem('grammars'));
-
   var grammars = jsav.ds.matrix(productions, {style: "table"});
   grammars.layout();
 
@@ -95,7 +94,6 @@ $(document).ready(function () {
               var A = production[0];
               var B = production[2].charAt(0);
               var C = production[2].charAt(1);
-              console.log(table[p-s][s] + '     ' + table[l-p+s-2][p+1]);
               if(table[p-s][s].includes(B) && table[l-p+s-2][p+1].includes(C)) {
                 if(!table[l-1][s].includes(A)){
                   table[l-1][s].push(A);
@@ -106,23 +104,7 @@ $(document).ready(function () {
       }
     }
 
-    // //initialize the parsetable
-    // var initCYKParseTable = function (table) {
-    //   for(var i = 0; i < inputLength; i++){
-    //     var t = jsav.ds.array(table[i]);
-    //     t.layout();
-    //     t.on('click', cykParseTableHandler);
-    //     t.css({"width": "150px"});
-    //   }
-    //   return t;
-    // };
-
-    jsavParseTable = initCYKParseTable(userTable);
-
-    // var cykParseTable = new jsav.ds.matrix(table);
-
-    // layoutTable(cykParseTable);
-
+    initCYKParseTable(userTable);
     checkAcceptance(table);
 
   };
@@ -137,34 +119,51 @@ $(document).ready(function () {
 
   //initialize the parsetable
   var initCYKParseTable = function (table) {
-      var t = jsav.ds.matrix(table);
-      // layoutTable(t);
-      t = layoutCYKTable(t);
-      t.on('click', cykParseTableHandler);
-      return t;
+      jsavParseTable = jsav.ds.matrix(table);
+      layoutCYKParseTable();
+      jsavParseTable.on('click', cykParseTableHandler);
   };
+
+  //a special layout function for CYK parse table, shows only half of the matrix.
+  function layoutCYKParseTable() {
+    jsavParseTable.layout();
+    for (var i = 0; i < jsavParseTable._arrays.length; i++) {
+      var arry = jsavParseTable._arrays[i].element;
+      arry.css({"width": "250px"}); //the width is currently hardcoded to ensure left align, need to change in the future
+    }
+  };
+  
+  //Set the values of the parse table accourding to the argument, instead of creating a new matrix
+  function setCYKParseTable(table) {
+    for(var r = 0; r < table.length; r++){
+      for(var c = 0; c < table[r].length; c++){
+        jsavParseTable._arrays[r].value(c, table[r][c]);
+      }
+    }
+  }
+
 
   var cykParseTableHandler = function(row, col) {
       console.log(row + '  ' + col);
-
       if (fi) {
         var input = fi.val();
-        // var regex = new RegExp(emptystring, g);
-        // input = input.replace(regex, "");
-        // input = input.replace(regex, "!");
-        if (input === "" && col == 2) {
-          input = emptystring;
+
+        //If user didn't input anything, and there already exists info in that cell, do nothing
+        if (input === "" && userTable[oldrow][oldcol].length > 0) {
+           input = userTable[oldrow][oldcol];
         }
         fi.remove();
+
         jsavParseTable.value(oldrow, oldcol, input);
         userTable[oldrow][oldcol] = input;
-        jsavParseTable = layoutCYKTable(jsavParseTable);
+        layoutCYKParseTable(jsavParseTable);
 
         //If user input wrong answer, let them know
         if(!checkAnswer(oldrow, oldcol)){
-          jsav.umsg('Your answer for index [' + oldrow + '][' + oldcol + '] is wrong or incomplete');
+          jsavParseTable._arrays[oldrow].css([oldcol], {"color": "red"});
         } else {
           jsav.umsg('Please continue to input your answer');
+          jsavParseTable._arrays[oldrow].css([oldcol], {"color": "green"});
           if(jsavParseTable.value(inputString.length - 1, 0).length > 0) {
             alert('Congratulations!');
             jsav.umsg('Accepted!');
@@ -198,17 +197,6 @@ $(document).ready(function () {
       }
     }
     return true;
-  };
-
-
-  //a special layout function for CYK parse table, shows only half of the matrix.
-  function layoutCYKTable(table) {
-    table.layout();
-    for (var i = 0; i < table._arrays.length; i++) {
-      var arry = table._arrays[i].element;
-      arry.css({"width": "230px"}); //the width is currently hardcoded to ensure left align, need to change in the future
-    }
-    return table;
   };
 
   //return a set of unique terminals on the right side
@@ -249,17 +237,17 @@ $(document).ready(function () {
     if ($(e.target).attr('id') == "firstinput") return;
     if (!fi || !fi.is(':visible')) return;
     var input = fi.val();
-    console.log(fi);
     fi.remove();
     jsavParseTable.value(oldrow, oldcol, input);
     userTable[oldrow][oldcol] = input;
-    jsavParseTable = layoutCYKTable(jsavParseTable);
+    layoutCYKParseTable(jsavParseTable);
 
     //If user input wrong answer, let them know
     if(!checkAnswer(oldrow, oldcol)){
-          jsav.umsg('Your answer for index [' + oldrow + '][' + oldcol + '] is wrong or incomplete');
+          jsavParseTable._arrays[oldrow].css([oldcol], {"color": "red"});
     } else {
           jsav.umsg('Please continue to input your answer');
+          jsavParseTable._arrays[oldrow].css([oldcol], {"color": "green"});
           if(jsavParseTable.value(inputString.length - 1, 0).length > 0) {
             alert('Congratulations!');
             jsav.umsg('Accepted!');
@@ -268,18 +256,20 @@ $(document).ready(function () {
   }
 
   function completeCYKTable(){
-    initCYKParseTable(table);
+    setCYKParseTable(table);
   };
 
   function step(){
     if(currentStep < table.length){
-      console.log(table);
       userTable[currentStep] = table[currentStep];
-      initCYKParseTable(userTable);
+      setCYKParseTable(userTable);
       currentStep++;
     }
   };
 
+
+//////////////////////////////
+// Animation Stuff
 
   var timerID;
   var counter;
@@ -315,6 +305,10 @@ $(document).ready(function () {
       jsavParseTable.unhighlight(oldrow-counter, oldcol+counter);
     }
   };
+
+///////////////////////////
+
+
 
 
   $('#inputbutton').click(enterInput);
