@@ -883,133 +883,11 @@ $(document).ready(function () {
     }
   };
 
+  //Multiple Brute Force Parsing
   function mbfParse(productions){
-    //var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     var productions = _.filter(arr, function(x) {return x[0];});
     localStorage['grammars'] = JSON.stringify(productions);
     window.open("./MBFParse.html");
-  };
-
-
-  // returns true is input is accepted from brute force parsing, false otherwise
-  function stringAccepted(inputString){
-    var productions = JSON.parse(localStorage.getItem("grammars"));
-    var table = {};   // maps each sentential form to the rule that produces it
-    var sententials = [];
-    var next;
-
-    for (var i = 0; i < productions.length; i++) {
-      if (productions[i][0] === productions[0][0]) {
-        if (productions[i][2] === emptystring) {
-          sententials.push('');
-          table[''] = [i, ''];
-        } else {
-          sententials.push(productions[i][2]);
-          table[productions[i][2]] = [i, ''];
-        }
-      }
-    }
-    var derivers = {};  // variables that derive lambda
-    var counter = 0;
-    // find lambda deriving variables
-    while (removeLambdaHelper(derivers, productions)) {
-      counter++;
-      if (counter > 500) {
-        console.log(counter);
-        break;
-      }
-    };
-    derivers = Object.keys(derivers);
-
-    // parse
-    counter = 0;
-    while (true) {
-      counter++;
-      // ask the user to continue if parsing is taking a long time
-      if (counter > 5000) {
-        console.warn(counter);
-        var confirmed = confirm('This is taking a while. Continue?');
-        if (confirmed) {
-          counter = 0;
-        } else {
-          break;
-        }
-      }
-      next = sententials.pop();
-      // stop parsing if the input string has been derived or if there are no more derivations
-      if (next === inputString) {
-        break;
-      }
-      if (!next) {
-        break;
-      }
-      var c = null;
-      // go through the sentential form
-      for (var i = 0; i < next.length; i++) {
-        c = next[i];
-        // when a variable has been found, add its derivable sentential forms to be parsed
-        if (variables.indexOf(c) !== -1) {
-          // find productions for the variable
-          _.each(productions, function(x, k) {
-            if (x[0] === c) {
-              var r = x[2];
-              if (r === emptystring) {
-                r = "";
-              }
-              // new sentential form
-              var s = replaceCharAt(next, i, r);
-              // pruning
-              var keep = true;
-              var prefix = "";
-              var suffix = "";
-              for (var j = 0; j < s.length; j++) {
-                if (inputString.indexOf(s[j]) === -1 && variables.indexOf(s[j]) === -1) {
-                  keep = false;
-                  break;
-                }
-                if (variables.indexOf(s[j]) !== -1) {
-                  break;
-                }
-                prefix = prefix + s[j];
-              }
-              for (var j = s.length - 1; j >= 0; j--) {
-                if (variables.indexOf(s[j]) !== -1) {
-                  break;
-                }
-                suffix = s[j] + suffix;
-              }
-              // prune if prefix/suffix do not match the input string
-              if (prefix !== inputString.substr(0, prefix.length) ||
-                suffix !== inputString.substring(inputString.length - suffix.length)) {
-                keep = false;
-              }
-              // prune if the new sentential form is already in the queue
-              else if (sententials.indexOf(s) !== -1) {
-                keep = false;
-              }
-              /*
-              prune if the number of terminals and non-lambda deriving variables is
-              greater than the length of the input string
-              */
-              else if (_.filter(s, function(x) {
-                  return variables.indexOf(x) === -1 || derivers.indexOf(x) === -1;
-                }).length > inputString.length) {
-                keep = false;
-              }
-              if (keep) {
-                sententials.unshift(s);
-              }
-              // keep track of which production a sentential form is coming from
-              if (!(s in table)) {
-                table[s] = [k, next];
-              }
-            }
-          });
-        }
-      }
-    }
-    console.log(counter);
-    return next === inputString;
   };
 
   /*
@@ -3430,197 +3308,6 @@ $(document).ready(function () {
     window.open("./CYKParser.html");
   }
 
-  // function cykParse() {
-  //   // //first convert grammar to CNF, currently there seems to be problems with convertToChomsky()
-  //   // var cnf = convertToChomsky();
-  //   // console.log(cnf);
-
-  //   var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
-  //   if (productions.length === 0) {
-  //     alert('No grammar.');
-  //     return;
-  //   }
-  //   // jsav.umsg('Parsing');
-  //   var inputString = prompt('Input string');
-  //   if (inputString === null) {
-  //     return;
-  //   }
-
-  //   startParse();
-
-  //   console.log('productions: ' + productions + ' input string: ' + inputString);
-
-  //   var inputLength = inputString.length;
-  //   var nonterminals = getNonTerminals();
-  //   var terminals = getTerminals();
-
-  //   //initialize the 2d (3d) array
-  //   // var table = new Array(inputLength);
-  //   // for (var s = 0; s < inputLength; s++) {
-  //   //   table[s] = new Array(inputLength);
-  //   //   for(var i = 0; i < nonterminals.size; i++){
-  //   //     table[s][i] = new Array(nonterminals.size);
-  //   //   }
-  //   // }
-
-  //   var table = new Array(inputLength);
-  //   for (var s = 0; s < inputLength; s++) {
-  //     table[s] = new Array(inputLength-s);
-  //     for(var i = 0; i < inputLength-s; i++){
-  //       table[s][i] = new Array();
-  //       }
-  //   }
-
-  //   var unitProductions = _.filter(productions, function(x) {
-  //     return x[2].length === 1 && variables.indexOf(x[2]) === -1;
-  //   });
-
-  //   //the first row, unit productions
-  //   for (var s = 0; s < inputLength; s++) {
-  //     unitProductions.forEach(function(production) {
-  //       if(production[2] == inputString.charAt(s)){
-  //         table[0][s].push(production[0]);
-  //       }
-  //     });
-  //   }
-
-  //   var otherProductions = _.filter(productions, function(x) {
-  //     return x[2].length === 2;
-  //   });
-
-
-  //   for (var l = 2; l <= inputString.length; l++) { //l is length of the span
-  //     for (var s = 0; s <= inputString.length - l; s++) {  //s is the start of the span
-  //       e = s + l - 1; //e is the end of the span
-  //       for (var p = s; p <= e - 1; p++) { //p is where the partition is
-  //           otherProductions.forEach(function(production) {
-  //             // other productions are in the form of A -> BC
-  //             var A = production[0];
-  //             var B = production[2].charAt(0);
-  //             var C = production[2].charAt(1);
-  //             console.log(table[p-s][s] + '     ' + table[l-p+s-2][p+1]);
-  //             if(table[p-s][s].includes(B) && table[l-p+s-2][p+1].includes(C)) {
-  //               if(!table[l-1][s].includes(A)){
-  //                 table[l-1][s].push(A);
-  //               }
-  //             }
-  //           });
-  //       }
-  //     }
-  //   }
-
-  //   // //initialize the parsetable
-  //   // var initCYKParseTable = function (table) {
-  //   //   for(var i = 0; i < inputLength; i++){
-  //   //     var t = jsav.ds.array(table[i]);
-  //   //     t.layout();
-  //   //     t.on('click', cykParseTableHandler);
-  //   //     t.css({"width": "150px"});
-  //   //   }
-  //   //   return t;
-  //   // };
-
-  //   //initialize the parsetable
-  //   var initCYKParseTable = function (table) {
-  //     var t = jsav.ds.matrix(table);
-  //     // layoutTable(t);
-  //     t = layoutCYKTable(t);
-  //     t.on('click', cykParseTableHandler);
-  //     return t;
-  //   };
-
-  //   var oldrow, oldcol;
-
-  //   var cykParseTableHandler = function(row, col) {
-  //     console.log(row + '  ' + col);
-
-  //     if (fi) {
-  //       var input = fi.val();
-  //       var regex = new RegExp(emptystring, g);
-  //       input = input.replace(regex, "");
-  //       input = input.replace(regex, "!");
-  //       if (input === "" && col == 2) {
-  //         input = emptystring;
-  //       }
-  //       fi.remove();
-  //       jsavParseTable.value(oldrow, oldcol, input);
-  //       // arr[row][col] = input;
-  //       jsavParseTable = layoutCYKTable(jsavParseTable);
-  //     }
-
-  //     var offset = jsavParseTable._arrays[row]._indices[col].element.offset();
-  //     var topOffset = offset.top;
-  //     var leftOffset = offset.left;
-  //     $('#firstinput').remove();
-  //     var createInput = "<input type='text' id='firstinput' onfocus='this.value = this.value;'>";
-  //     $('body').append(createInput);
-  //     fi = $('#firstinput');
-  //     fi.offset({top: topOffset, left: leftOffset});
-  //     fi.outerHeight($('.jsavvalue').height());
-  //     fi.width($(jsavParseTable._arrays[row]._indices[col].element).width());
-  //     fi.focus();
-
-  //     //need these in order to update the table correctly
-  //     oldrow = row;
-  //     oldcol = col;
-
-  //   };
-
-
-  //   var jsavParseTable = initCYKParseTable(table);
-
-  //   // var cykParseTable = new jsav.ds.matrix(table);
-
-  //   // layoutTable(cykParseTable);
-
-  //   if(table[inputString.length - 1][0].length > 0) {
-  //     alert('Input accepted');
-  //   }else{
-  //     alert('Input not accpeted');
-  //   }
-
-  // }
-
-  // //a special layout function for CYK parse table, shows only half of the matrix.
-  // function layoutCYKTable(table) {
-  //   table.layout();
-  //   for (var i = 0; i < table._arrays.length; i++) {
-  //     var arry = table._arrays[i].element;
-  //     arry.css({"width": "161px"}); //the width is currently hardcoded to ensure left align, need to change in the future
-  //   }
-  //   return table;
-  // }
-
-  // //return a set of unique terminals on the right side
-  // function getTerminals() {
-  //   var productions = _.filter(arr, function(x) { return x[0]});
-  //   var set = new Set();
-  //   for (var i = 0; i < productions.length; i++) {
-  //     var rhs = productions[i][2];
-  //     for(var k = 0; k < rhs.length; k++){
-  //       if(variables.indexOf(rhs.charAt(k)) === -1 && !(set.has(rhs.charAt(k)))) {
-  //         set.add(rhs.charAt(k));
-  //       }
-  //     }
-  //   }
-  //   return set;
-  // }
-
-  // //return a set of unique variables (non-terminals) on the left side
-  // function getNonTerminals() {
-  //   var productions = _.filter(arr, function(x) { return x[0]});
-  //   var set = new Set();
-  //   for (var i = 0; i < productions.length; i++) {
-  //     var lhs = productions[i][0];
-  //     for(var k = 0; k < lhs.length; k++){
-  //       if(variables.indexOf(lhs.charAt(k)) !== -1 && !(set.has(lhs.charAt(k)))) {
-  //         set.add(lhs.charAt(k));
-  //       }
-  //     }
-  //   }
-  //   return set;
-  // }
-
   //=================================
   // Buttons for editing the SLR DFA
   $('#finalbutton').click(function() {
@@ -3680,13 +3367,12 @@ $(document).ready(function () {
     $(m.element).css("margin-left", "auto");
     $('.jsavmatrix').addClass("editMode");
   });
+  $('#helpbutton').click(displayHelp);
   $('#editbutton').click(editMode);
   $('#deletebutton').click(deleteMode);
   $('#addrowbutton').click(addrowMode);
-  $('#addinputbutton').click(addInput);
   $('#bfpbutton').click(bfParse);
   $('#mbfpbutton').click(mbfParse);
-  $('#runinputsbutton').click(runMultiInputs);
   $('#llbutton').click(llParse);
   $('#slrbutton').click(slrParse);
   $('#cykbutton').click(cykParse);
@@ -3814,30 +3500,9 @@ $(document).ready(function () {
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 
-function addInput(){
-  alert("add input");
-  // var myTable = document.getElementById("table");
-  // var row = myTable.insertRow(0);
-  // var cell1 = row.insertCell(0);
-  // cell1.innerHTML = new ;
-}
-
-function runMultiInputs(){
-  var productions = localStorage['g'];
-  var myTable = document.getElementById('table');
-  var numRow = myTable.rows.length;
-  for (i = 0; i < numRow - 1; i++){
-    var input = document.getElementById("input"+i).innerHTML;
-    if(stringAccepted(input)){
-      document.getElementById("output"+i).value = "Accepted";
-    }else{
-      document.getElementById("output"+i).value = "Rejected";
-    }
+  function displayHelp(){
+    alert(document.getElementById('helpInfo').innerHTML);
   }
-}
-
-
-
 
   function isRegularGrammar(){
     return (checkRightLinear() || checkLeftLinear());

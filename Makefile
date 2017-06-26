@@ -130,6 +130,9 @@ FormalLang: min
 CS3slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
 
+CS3SS17slides: min
+	python $(CONFIG_SCRIPT) -s config/CS3SS17slides.json --no-lms
+
 CS3notes: min
 	python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
 
