@@ -10,14 +10,28 @@
   <link rel="stylesheet" href="./css/grammar.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 	<link rel="stylesheet" href="./css/parsing.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
   <link rel="stylesheet" href="./css/grammarEditor.css" type="text/css" />
+  <link rel="stylesheet" href="./css/help.css" type="text/css" />
 </head>
 
 <body>
   <div id="container">
     <h1 id="editor">Grammar Editor</h1>
+    <button id="helpbutton"><img src="./help.png"/></button>
+    <div id="help" title="Help" style="display:none">
+      <div id="helpInfo">
+        Help:
+        Type your input strings under the input column in the table.
+        Click on "Add Input" to add another row of input.
+        Click on "Delete Row" to delete the last row of input
+        Click on "Run Inputs" after you finish typing all the inputs
+        Click on "Clear All" to clear all your inputs
+        Click on "Accept" under "Accept/Reject" to view parse tree.
+        Type "!" for lambda
+      </div>
+    </div>
 
-		<h2 class="multiple">Grammars</h2>
-		<p class="multiple" id="exerciseLinks"></p>
+		<!-- <h2 class="multiple">Grammars</h2>
+		<p class="multiple" id="exerciseLinks"></p> -->
     <div id="buttons" align="center">
       <span id='mode'></span><br>
       <button type="button" id="addinputbutton">Add Input</button>
@@ -56,16 +70,23 @@
 
 
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
-	<!-- <script src="../../../../JSAV/lib/jquery.transit.js"></script> -->
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<script src="../../../../JSAV/lib/jquery.transit.js"></script>
 	<script src="../../../../JSAV/lib/raphael.js"></script>
-	<!-- <script src="../../../../JSAV/lib/dagre.min.js"></script> -->
+	<script src="../../../../JSAV/lib/dagre.min.js"></script>
 	<script src="../../../../JSAV/build/JSAV.js"></script>
-	<!-- <script src="../../../../lib/odsaUtils-min.js"></script> -->
-	<!-- <script src="../../../../lib/odsaAV-min.js"></script> -->
-	<!-- <script src="../fa/serializableGraph.js"></script> -->
+	<script src="../../../../lib/odsaUtils-min.js"></script>
+	<script src="../../../../lib/odsaAV-min.js"></script>
+	<script src="../fa/serializableGraph.js"></script>
 	<script src="../../resources/underscore-min.js"></script>
-	<!-- <script src="../fa/FA.js"></script> -->
-  <script src="./grammarEditor.js"></script>
+	<script src="../fa/FA.js"></script>
+  <!-- <script src="./grammarEditor.js"></script> -->
+  <script src="./MBFParse.js"></script>
+  <script>
+  function myFunction(){
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  }
+  </script>
 </body>
 </html>
