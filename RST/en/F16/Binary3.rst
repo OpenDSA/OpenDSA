@@ -6,6 +6,10 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
+.. odsalink:: AV/Binary/BTCON.css
+.. odsalink:: AV/Binary/BTnullpointerCON.css
+.. odsalink:: AV/Binary/expressionTreeCON.css
+
 .. slideconf::
    :autoslides: False
 
@@ -72,30 +76,27 @@ Binary Trees Part 3
 
    "Simple" node model.
 
-   .. odsafig:: Images/BinLink.png
-      :width: 600
+   .. inlineav:: BTnullpointerCON dgm
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Binary tree node implementation
+
+   .. odsascript:: AV/Binary/BTnullpointerCON.js
 
 
 .. slide:: Binary Tree Implementation (2)
 
    Internal nodes can be different from leaf nodes.
 
-   .. odsafig:: Images/DiffNode.png
-      :width: 400
+   .. inlineav:: expressionTreeCON dgm
       :align: center
-      :capalign: center
-      :figwidth: 90%
-      :alt: Expression Tree
+
+   .. odsascript:: AV/Binary/expressionTreeCON.js
 
 
 .. slide:: Inheritance (1)
 
    .. codeinclude:: Binary/ExpressionTree
       :tag: ExpressionTree1
+
 
 .. slide:: Inheritance (2)
 
