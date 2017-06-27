@@ -16,7 +16,7 @@ $(document).ready(function() {
 	jsav.umsg("The remove operation is similar to insertion in that it also uses an update array to search for the position of the key in the Skip List before removing it.");
     jsav.displayInit();
     isStepShown(true);
-    jsav.umsg("Lets remove the record with key 1. Note that this key is in the middle of the Skip List, wich involves updating nodes with pointers pointing to it.");
+    jsav.umsg("Lets remove the record with key 1. Note that this key is in the middle of the Skip List, which involves updating nodes with pointers pointing to it.");
     ll.removeKey(1);
     jsav.step();
     jsav.umsg("Now lets remove the record with key 9. As usual, any nodes with pointers pointing to it need to be adjusted.");

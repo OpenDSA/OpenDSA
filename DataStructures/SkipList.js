@@ -193,7 +193,7 @@ SkipListProto.insert = function(it, lev, showS) {
   }
   if(showStep){
 		unhigh[ind++] = x.getDispArr().highlight(0);
-		this.jsav.umsg("Now the update array contains the nodes that will point to the new key "+ it.getKey() + ", from which all the nodes that preceed the key are accessible. We start updating.");
+		this.jsav.umsg("Now the update array contains the nodes that will point to the new key "+ it.getKey() + ", from which all the nodes that precede the key are accessible. We start updating.");
 		//this.jsav.step();
   }
   var xfwrd = x.getForward()[0];
@@ -337,7 +337,7 @@ SkipListProto.search = function(otherKey) {
       }
 	  if(showStep){
 		  unhigh[ind++] = x.getDispArr().highlight(0);
-		  this.jsav.umsg("Now we move to the record muching the key " + otherKey + ".");
+		  this.jsav.umsg("Now we move to the record matching the key " + otherKey + ".");
 		  this.jsav.step();
 	  }
     } else {
@@ -371,7 +371,7 @@ var find = function(val, head) {
 SkipListProto.removeKey = function(otherKey) { 
   if (showStep){
 	  this.jsav.step();
-	  this.jsav.umsg("To remove " + otherKey + " we must search, find, and then disconnect pointers that point to and preceed it with the help of the temporary update array.");
+	  this.jsav.umsg("To remove " + otherKey + " we must search, find, and then disconnect pointers that point to and precede it with the help of the temporary update array.");
 	  this.jsav.step();
   }
   var x = this.head;
@@ -667,7 +667,7 @@ skipNodeProto.clear = function(i, pt) {
     this.pointer[i].hide();
   }
   if(showStep){
-	  this.jsav.umsg("In this step, we disconnect all pointers that point to the value to be removed. The next step is to now connect these pointers to the ones that preceed the key, if any");
+	  this.jsav.umsg("In this step, we disconnect all pointers that point to the value to be removed. The next step is to now connect these pointers to the ones that precede the key, if any");
 	  this.jsav.step();
 	  this.jsav.umsg("The Skip List is now updated, with all nodes connected");
   }

@@ -7,7 +7,7 @@ $(document).ready(function() {
   var jsav = new JSAV(av_name);
 
   // Slide 1
-  jsav.umsg("Here we will illustrate the Skip List concept. We start with a simple linked list whose nodes are ordered by key value. To search this list requires that we move down the list one node at a time, visiting O(n) nodes in the average case.");
+  jsav.umsg("Here we will illustrate the Skip List concept. A Skip List can be viewed as a sorted linked list with some extra pointers. We start with a simple linked list whose nodes are ordered by key value. To search this list requires that we move down the list one node at a time, visiting O(n) nodes in the average case.");
   var ll = new SkipList(jsav);
   isStepShown(false);
   var a = new KVPair(5, "A");
