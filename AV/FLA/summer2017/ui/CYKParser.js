@@ -11,6 +11,7 @@ $(document).ready(function () {
       table, //table with the answer
       userTable, //has the same value as jsavParseTable, but just for backend use
       jsavParseTable, //table that the user could see and input
+      tableWidth = 380;
       currentStep = 0; //for the step function
 
   var arrow = String.fromCharCode(8594),
@@ -28,6 +29,11 @@ $(document).ready(function () {
   function enterInput() {
     inputString = prompt('Input string');
     if (inputString !== null) {
+      var jsavArry = jsav.ds.array(inputString.split(''));
+      jsavArry.layout();
+      jsavArry.css({"width": tableWidth});
+      jsavArry.css({"min-height": "0px"});
+      jsavArry.css({"height": "0px"})
       cykParse();
     }
   };
@@ -126,7 +132,7 @@ $(document).ready(function () {
     jsavParseTable.layout();
     for (var i = 0; i < jsavParseTable._arrays.length; i++) {
       var arry = jsavParseTable._arrays[i].element;
-      arry.css({"width": "280px"}); //the width is currently hardcoded to ensure left align, need to change in the future
+      arry.css({"width": tableWidth}); //the width is currently hardcoded to ensure left align, need to change in the future
     }
   };
   
@@ -150,7 +156,6 @@ $(document).ready(function () {
     }
 
     table = tempTable;
-    console.log(table);
     userTable = tempUserTable;
     //if not flipped, flip it
     if(tableState){
@@ -160,7 +165,6 @@ $(document).ready(function () {
       tableState = true;
       finalrow = inputString.length-1;
     }
-
     jsavParseTable.clear();
     initCYKParseTable(userTable);
   };
