@@ -365,6 +365,16 @@ $(document).ready(function () {
   $('#animatebutton').click(animate);
   $('#flipbutton').click(flipTable);
 
+  $("#help").dialog({autoOpen: false});
+  $("#helpbutton").click(function() {
+    $("#help").dialog({
+      dialogClass: "alert",
+      width: 300,
+      height: 100
+    });
+    $("#help").dialog("open");
+  });
+
   $(document).click(defocus);
 
 
