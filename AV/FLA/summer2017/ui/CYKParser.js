@@ -104,7 +104,6 @@ $(document).ready(function () {
 
     initCYKParseTable(userTable);
     checkAcceptance(table);
-
   };
 
   function checkAcceptance(table) {
@@ -169,7 +168,6 @@ $(document).ready(function () {
 
   //for user interactions
   var cykParseTableHandler = function(row, col) {
-      console.log(row + '  ' + col);
       if (fi) {
         var input = fi.val();
         //If user didn't input anything, and there already exists info in that cell, do nothing
@@ -177,9 +175,12 @@ $(document).ready(function () {
            input = userTable[oldrow][oldcol];
         }
         fi.remove();
-
-        jsavParseTable.value(oldrow, oldcol, input);
-        userTable[oldrow][oldcol] = input;
+        //String coercion, convert input to string before split
+        input = input + '';
+        var inputArry = input.split(',');
+        console.log(inputArry);
+        jsavParseTable.value(oldrow, oldcol, inputArry);
+        userTable[oldrow][oldcol] = inputArry;
         layoutCYKParseTable(jsavParseTable);
         checkAnswer(oldrow, oldcol);
       }
@@ -215,8 +216,14 @@ $(document).ready(function () {
     }
   };
   function checkAnswerHelper(row, col) {
+    //Need two for loops to check both directions
     for(var i = 0; i < table[row][col].length; i++){
       if(!jsavParseTable.value(row, col).includes(table[row][col][i])){
+        return false;
+      }
+    }
+    for(var i = 0; i < jsavParseTable.value(row,col).length; i++){
+      if(!table[row][col].includes(jsavParseTable.value(row,col)[i])){
         return false;
       }
     }
