@@ -97,8 +97,8 @@ execution of that machine on that string.
 This Turing machine in turn can be cast as a Boolean expression such
 that the expression is satisfiable if and only if the Turing machine
 yields ACCEPT for that string.
-Cook used Turing machines in their proof because they are simple enough
-that they could develop this transformation of Turing machines to
+Cook used Turing machines in his proof because they are simple enough
+that he could develop this transformation of Turing machines to
 Boolean expressions, but rich enough to be able to compute any
 function that a regular computer can compute.
 The significance of this transformation is that *any* decision

@@ -136,7 +136,7 @@ CS3SS17slides: min
 CS3notes: min
 	python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
 
-testcmapPlain: min
+testcmap: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
 
 CS150: min
