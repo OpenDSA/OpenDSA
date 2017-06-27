@@ -212,8 +212,8 @@ Relation :math:`=` is reflexive, symmetric (and antisymmetric!),
 and transitive.
 For people, the relation "is a sibling of" is symmetric and
 transitive.
-If we define a person to be a sibling of himself, then it is
-reflexive; if we define a person not to be a sibling of himself, then
+If we define a person to be a sibling of themself, then it is
+reflexive; if we define a person not to be a sibling of themself, then
 it is not reflexive.
 
 .. avembed:: Exercises/Background/SetTFrelation.html ka
@@ -260,7 +260,7 @@ computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
 .. topic:: Example
 
    If we clarify the definition of sibling to mean that a person is
-   a sibling of him- or herself, then the sibling relation is an
+   a sibling of themself, then the sibling relation is an
    equivalence relation that partitions the set of people. 
 
 .. topic:: Example

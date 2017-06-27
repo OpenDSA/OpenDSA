@@ -389,10 +389,10 @@ Most people certainly do not use sequential search!
 Typically, people use a modified form of binary search, at least until
 they get close to the word that they are looking for.
 The search generally does not start at the middle of the dictionary.
-A person looking for a word starting with 'S'
-generally assumes that entries beginning with 'S' start about three
+People looking for a word starting with 'S'
+generally assume that entries beginning with 'S' start about three
 quarters  of the way through the dictionary.
-Thus, he or she will first open the dictionary about three quarters of
+Thus, they will first open the dictionary about three quarters of
 the way through and then make a decision based on what is found as to
 where to look next.
 In other words, people typically use some knowledge about the

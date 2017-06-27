@@ -348,9 +348,9 @@ Coding
   
   Coding can also be used to figure out the most suitable solution. 
   Coding can also help to communicate thoughts about programming problems. 
-  A programmer dealing with a complex programming problem, or finding it hard to 
+  Programmers dealing with a complex programming problem, or finding it hard to 
   explain the solution to fellow programmers, might code it in a simplified manner 
-  and use the code to demonstrate what he or she means. 
+  and use the code to demonstrate what they mean. 
   Code, say the proponents of this position, is always clear and concise 
   and cannot be interpreted in more than one way. 
   Other programmers can give feedback on this code by also coding their thoughts.

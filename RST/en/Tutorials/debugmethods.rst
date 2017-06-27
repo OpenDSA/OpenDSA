@@ -60,7 +60,7 @@ For an example of Rubber Duck Debugging read |external_link|.
 Wolf Fence Debugging
 ~~~~~~~~~~~~~~~~~~~~
 
-Imagine there is only one wolf in Alaska. How would you find him? The most
+Imagine there is only one wolf in Alaska. How would you find it? The most
 effective way would be to fence Alaska in half and wait for the wolf to "howl."
 When you know which half has the wolf split it and again wait.
 Keep repeating until you find the wolf.

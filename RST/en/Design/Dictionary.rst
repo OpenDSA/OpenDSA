@@ -67,8 +67,8 @@ exists.
 The purpose of this method is to allow a user the ability to iterate 
 over all elements in the dictionary (of course, the dictionary will
 become empty in the process).
-Without the ``removeAny`` method, a dictionary user could not get
-at a record of the dictionary that he didn't already know the key
+Without the ``removeAny`` method, dictionary users could not get
+at a record of the dictionary that they didn't already know the key
 value for.
 With the ``removeAny`` method, the user can process all records
 in the dictionary as shown in the following code fragment.

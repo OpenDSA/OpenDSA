@@ -252,8 +252,8 @@ you determine the best data structure for the task.
    and (2) the requirements for the database system that manages the
    accounts.
 
-   The typical customer opens and closes accounts far less often than he
-   or she accesses the account.
+   The typical customer opens and closes accounts far less often than
+   accessing the account.
    Customers are willing to spend many minutes during the process of
    opening or closing the account, but are typically not willing to
    wait more than a brief time for individual account transactions
