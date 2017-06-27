@@ -143,11 +143,11 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			// If in "Add Nodes" mode, save the graph and add a node.
 			g.saveFAState();
 			executeAddNode(g, e.pageY, e.pageX);
-		} 
+		}
 	};
 
 	// Sets click handlers for when the user clicks on a JSAV node.
-	var nodeClickHandler = function(e) {	
+	var nodeClickHandler = function(e) {
 		if ($(".jsavgraph").hasClass("editNodes")) {
 			// If in "Edit Nodes" mode, open the custom prompt box to edit the selected node.
 			g.saveFAState();
@@ -214,7 +214,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 					window.alert("Shorthand notation is disabled for this automaton.\n\nTo traverse, please enter only single character transition labels.");
 					break;
 				}
-			}	
+			}
 		}
 	};
 
@@ -471,7 +471,11 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		for (var i = 0; i < inputs.length; i++) {
 			// Create an array of the input strings.
 			if (inputs[i]) {
-				travArray.push(inputs[i]);
+				if(willRejectFunction(g,inputs[i])){
+					travArray.push(inputs[i]+"(" + String.fromCharCode(10005) + ")");
+				}else{
+					travArray.push(inputs[i]+"(" + String.fromCharCode(10003) + ")");
+				}
 			}
 			else {
 				travArray.push(emptystring);
@@ -709,7 +713,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			}
 		}
 		converted = converted.concat(finals);
-		// save resulting grammar as an array of strings 
+		// save resulting grammar as an array of strings
 		// (same format as how the grammar test exports grammars to local storage)
 		localStorage['grammar'] = converted;
 		// open grammar
@@ -811,7 +815,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			clearLabel(node); // function declared in FA.js
 		}
 	}
-	
+
 	var startX, startY, endX, endY; // start position of dragging edge line
 	function mouseDown(e) {
 		if (!$('.jsavgraph').hasClass('addEdges')) return;

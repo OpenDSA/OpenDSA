@@ -9,12 +9,21 @@
 	<link rel="stylesheet" href="./css/FA.css" type="text/css" />
   <link rel="stylesheet" href="./css/grammar.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 	<link rel="stylesheet" href="./css/parsing.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+  <link rel="stylesheet" href="./css/help.css" type="text/css" />
   <link rel="stylesheet" href="./css/grammarEditor.css" type="text/css" />
 </head>
 
 <body>
   <div id="container">
     <h1 id="editor">Grammar Editor</h1>
+    <button id="helpbutton"><img src="./help.png"/></button>
+    <div id="help" title="Help" style="display:none">
+      <div id="helpInfo">
+        Help:
+        To delete, click on "Delete" and click on the row you want to delete.
+        To add, click on "Add Row" and click on any row to add a new row.
+      </div>
+    </div>
 		<div align="left">
 			<button type="button" id="multipleButton">Multiple</button>
 			<button type="button" id="addExerciseButton">Add</button>
@@ -26,10 +35,11 @@
       <button type="button" id="editbutton">Edit</button>
       <button type="button" id="addrowbutton">Add Row</button>
       <button type="button" id="deletebutton">Delete</button>
-      <button type="button" class="function" id="bfpbutton">Brute Force Parse</button>
-      <button type="button" class="function" id="mbfpbutton">Multiple Brute Force Parse</button>
+      <!-- <button type="button" class="function" id="bfpbutton">Brute Force Parse</button> -->
+      <button type="button" class="function" id="mbfpbutton">Brute Force Parse</button>
       <button type="button" class="function" id="llbutton">LL(1) Parse</button>
       <button type="button" class="function" id="slrbutton">SLR(1) Parse</button>
+      <button type="button" class="function" id="cykbutton">CYK Parse</button>
       <button type="button" class="parsingbutton" id="followbutton">Next</button>
       <button type="button" class="parsingbutton" id="slrdfabutton">Next</button>
       <button type="button" class="parsingbutton" id="parsetablebutton">Next</button>
@@ -40,11 +50,8 @@
       <button type="button" class="function" id="convertCFGbutton">Convert CFG to PDA (LL)</button>
       <button type="button" class="function" id="transformbutton">Transform Grammar</button>
       <button type="button" class="function" id="identifybutton">Identify Grammar</button>
-<<<<<<< HEAD
       <button type="button" class="function" id="clearbutton">Clear All</button>
-=======
       <button type="button" class="function" id="completeallbutton">Complete All</button>
->>>>>>> 53a9e3b8f2b9fc5089042396748e902251cde96e
       <div id="dfabuttons">
         <button type="button" id="finalbutton">Make final</button>
         <button type="button" id="gotobutton">Continue DFA</button>

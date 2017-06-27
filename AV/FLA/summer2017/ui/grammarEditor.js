@@ -56,7 +56,7 @@ $(document).ready(function () {
   }
 
   // Function to initialize/reinitialize the grammar display
-  var init = function () {
+  var init = function () { 
     if (m) {
       m.clear();
     }
@@ -74,7 +74,6 @@ $(document).ready(function () {
   var matrixClickHandler = function(index, index2) {
     console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
 
-    //2017 Summer COMMENT: I am Very Confused about the reason for this line and the need for both index and row, index2 and col
     // if ((row != index || col != index2) && fi) {
 
     if (fi) {
@@ -884,133 +883,11 @@ $(document).ready(function () {
     }
   };
 
+  //Multiple Brute Force Parsing
   function mbfParse(productions){
-    //var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     var productions = _.filter(arr, function(x) {return x[0];});
     localStorage['grammars'] = JSON.stringify(productions);
     window.open("./MBFParse.html");
-  };
-
-
-  // returns true is input is accepted from brute force parsing, false otherwise
-  function stringAccepted(inputString){
-    var productions = JSON.parse(localStorage.getItem("grammars"));
-    var table = {};   // maps each sentential form to the rule that produces it
-    var sententials = [];
-    var next;
-
-    for (var i = 0; i < productions.length; i++) {
-      if (productions[i][0] === productions[0][0]) {
-        if (productions[i][2] === emptystring) {
-          sententials.push('');
-          table[''] = [i, ''];
-        } else {
-          sententials.push(productions[i][2]);
-          table[productions[i][2]] = [i, ''];
-        }
-      }
-    }
-    var derivers = {};  // variables that derive lambda
-    var counter = 0;
-    // find lambda deriving variables
-    while (removeLambdaHelper(derivers, productions)) {
-      counter++;
-      if (counter > 500) {
-        console.log(counter);
-        break;
-      }
-    };
-    derivers = Object.keys(derivers);
-
-    // parse
-    counter = 0;
-    while (true) {
-      counter++;
-      // ask the user to continue if parsing is taking a long time
-      if (counter > 5000) {
-        console.warn(counter);
-        var confirmed = confirm('This is taking a while. Continue?');
-        if (confirmed) {
-          counter = 0;
-        } else {
-          break;
-        }
-      }
-      next = sententials.pop();
-      // stop parsing if the input string has been derived or if there are no more derivations
-      if (next === inputString) {
-        break;
-      }
-      if (!next) {
-        break;
-      }
-      var c = null;
-      // go through the sentential form
-      for (var i = 0; i < next.length; i++) {
-        c = next[i];
-        // when a variable has been found, add its derivable sentential forms to be parsed
-        if (variables.indexOf(c) !== -1) {
-          // find productions for the variable
-          _.each(productions, function(x, k) {
-            if (x[0] === c) {
-              var r = x[2];
-              if (r === emptystring) {
-                r = "";
-              }
-              // new sentential form
-              var s = replaceCharAt(next, i, r);
-              // pruning
-              var keep = true;
-              var prefix = "";
-              var suffix = "";
-              for (var j = 0; j < s.length; j++) {
-                if (inputString.indexOf(s[j]) === -1 && variables.indexOf(s[j]) === -1) {
-                  keep = false;
-                  break;
-                }
-                if (variables.indexOf(s[j]) !== -1) {
-                  break;
-                }
-                prefix = prefix + s[j];
-              }
-              for (var j = s.length - 1; j >= 0; j--) {
-                if (variables.indexOf(s[j]) !== -1) {
-                  break;
-                }
-                suffix = s[j] + suffix;
-              }
-              // prune if prefix/suffix do not match the input string
-              if (prefix !== inputString.substr(0, prefix.length) ||
-                suffix !== inputString.substring(inputString.length - suffix.length)) {
-                keep = false;
-              }
-              // prune if the new sentential form is already in the queue
-              else if (sententials.indexOf(s) !== -1) {
-                keep = false;
-              }
-              /*
-              prune if the number of terminals and non-lambda deriving variables is
-              greater than the length of the input string
-              */
-              else if (_.filter(s, function(x) {
-                  return variables.indexOf(x) === -1 || derivers.indexOf(x) === -1;
-                }).length > inputString.length) {
-                keep = false;
-              }
-              if (keep) {
-                sententials.unshift(s);
-              }
-              // keep track of which production a sentential form is coming from
-              if (!(s in table)) {
-                table[s] = [k, next];
-              }
-            }
-          });
-        }
-      }
-    }
-    console.log(counter);
-    return next === inputString;
   };
 
   /*
@@ -1571,6 +1448,10 @@ $(document).ready(function () {
     }
     return newItems;
   };
+
+
+
+
 
   // sets up window for proofs
   var startParse = function () {
@@ -2201,7 +2082,8 @@ $(document).ready(function () {
     }
     modelDFA.layout();
     var unitProductions = _.filter(productions, function(x) {
-      return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
+      // return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
+      return x[2].length === 1 && variables.indexOf(x[2]) === -1;
     });
     selectedNode = null;
     // handler for the VDG for adding transitions
@@ -3420,6 +3302,12 @@ $(document).ready(function () {
     window.open("./BFParse.html");
   }
 
+  function cykParse() {
+    var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
+    localStorage['grammars'] = JSON.stringify(productions);
+    window.open("./CYKParser.html");
+  }
+
   //=================================
   // Buttons for editing the SLR DFA
   $('#finalbutton').click(function() {
@@ -3479,15 +3367,15 @@ $(document).ready(function () {
     $(m.element).css("margin-left", "auto");
     $('.jsavmatrix').addClass("editMode");
   });
+  $('#helpbutton').click(displayHelp);
   $('#editbutton').click(editMode);
   $('#deletebutton').click(deleteMode);
   $('#addrowbutton').click(addrowMode);
-  $('#addinputbutton').click(addInput);
   $('#bfpbutton').click(bfParse);
   $('#mbfpbutton').click(mbfParse);
-  $('#runinputsbutton').click(runMultiInputs);
   $('#llbutton').click(llParse);
   $('#slrbutton').click(slrParse);
+  $('#cykbutton').click(cykParse);
   $('#transformbutton').click(transformGrammar);
   $('#loadfile').on('change', loadFile);
   $('#savefile').click(saveFile);
@@ -3612,30 +3500,9 @@ $(document).ready(function () {
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 
-function addInput(){
-  alert("add input");
-  // var myTable = document.getElementById("table");
-  // var row = myTable.insertRow(0);
-  // var cell1 = row.insertCell(0);
-  // cell1.innerHTML = new ;
-}
-
-function runMultiInputs(){
-  var productions = localStorage['g'];
-  var myTable = document.getElementById('table');
-  var numRow = myTable.rows.length;
-  for (i = 0; i < numRow - 1; i++){
-    var input = document.getElementById("input"+i).innerHTML;
-    if(stringAccepted(input)){
-      document.getElementById("output"+i).value = "Accepted";
-    }else{
-      document.getElementById("output"+i).value = "Rejected";
-    }
+  function displayHelp(){
+    alert(document.getElementById('helpInfo').innerHTML);
   }
-}
-
-
-
 
   function isRegularGrammar(){
     return (checkRightLinear() || checkLeftLinear());
