@@ -30,7 +30,7 @@ $(document).ready(function () {
     if (inputString !== null) {
       cykParse();
     }
-  }
+  };
 
   function cykParse() {
     // //first convert grammar to CNF, currently there seems to be problems with convertToChomsky()
@@ -42,9 +42,6 @@ $(document).ready(function () {
       return;
     }
     jsav.umsg('Please input your answer');
-
-    // startParse();
-
     var inputLength = inputString.length;
     var nonterminals = getNonTerminals();
     var terminals = getTerminals();
@@ -141,7 +138,7 @@ $(document).ready(function () {
         jsavParseTable._arrays[r].value(c, table[r][c]);
       }
     }
-  }
+  };
 
   //flip the table and userTable, not the JSAV one
   function flipTable() {
@@ -239,7 +236,7 @@ $(document).ready(function () {
       }
     }
     return set;
-  }
+  };
 
   //return a set of unique variables (non-terminals) on the left side
   function getNonTerminals() {
@@ -254,7 +251,7 @@ $(document).ready(function () {
       }
     }
     return set;
-  }
+  };
 
 
   // fired when document is clicked
@@ -273,20 +270,22 @@ $(document).ready(function () {
     userTable[oldrow][oldcol] = input;
     layoutCYKParseTable(jsavParseTable);
     checkAnswer(oldrow, oldcol);
-  }
+  };
 
   function completeCYKTable(){
     setCYKParseTable(table);
   };
 
   function step(){
+    // adjustedStep to adjust for flipped table;
+    var adjustedStep = currentStep;
+    if(!tableState){
+      adjustedStep = inputString.length - currentStep - 1;
+    }
     if(currentStep < table.length){
-      userTable[currentStep] = table[currentStep];
+      console.log(adjustedStep);
+      userTable[adjustedStep] = table[adjustedStep];
       setCYKParseTable(userTable);
-      //show green
-      for(var c = 0; c < table[currentStep].length; c++){
-        checkAnswer(currentStep, c);
-      }
       currentStep++;
     }
   };
@@ -324,7 +323,7 @@ $(document).ready(function () {
       counter++;
     }
 
-    function unhighlightPrevious(){
+    function unhighlightPrevious() {
       jsavParseTable.unhighlight(counter-1, oldcol);
       jsavParseTable.unhighlight(oldrow-counter, oldcol+counter);
     }
