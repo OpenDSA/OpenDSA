@@ -11,6 +11,7 @@ $(document).ready(function () {
       table, //table with the answer
       userTable, //has the same value as jsavParseTable, but just for backend use
       jsavParseTable, //table that the user could see and input
+      tableWidth = 380;
       currentStep = 0; //for the step function
 
   var arrow = String.fromCharCode(8594),
@@ -28,9 +29,14 @@ $(document).ready(function () {
   function enterInput() {
     inputString = prompt('Input string');
     if (inputString !== null) {
+      var jsavArry = jsav.ds.array(inputString.split(''));
+      jsavArry.layout();
+      jsavArry.css({"width": tableWidth});
+      jsavArry.css({"min-height": "0px"});
+      jsavArry.css({"height": "0px"})
       cykParse();
     }
-  }
+  };
 
   function cykParse() {
     // //first convert grammar to CNF, currently there seems to be problems with convertToChomsky()
@@ -42,9 +48,6 @@ $(document).ready(function () {
       return;
     }
     jsav.umsg('Please input your answer');
-
-    // startParse();
-
     var inputLength = inputString.length;
     var nonterminals = getNonTerminals();
     var terminals = getTerminals();
@@ -107,7 +110,6 @@ $(document).ready(function () {
 
     initCYKParseTable(userTable);
     checkAcceptance(table);
-
   };
 
   function checkAcceptance(table) {
@@ -130,7 +132,7 @@ $(document).ready(function () {
     jsavParseTable.layout();
     for (var i = 0; i < jsavParseTable._arrays.length; i++) {
       var arry = jsavParseTable._arrays[i].element;
-      arry.css({"width": "280px"}); //the width is currently hardcoded to ensure left align, need to change in the future
+      arry.css({"width": tableWidth}); //the width is currently hardcoded to ensure left align, need to change in the future
     }
   };
   
@@ -141,7 +143,7 @@ $(document).ready(function () {
         jsavParseTable._arrays[r].value(c, table[r][c]);
       }
     }
-  }
+  };
 
   //flip the table and userTable, not the JSAV one
   function flipTable() {
@@ -154,7 +156,6 @@ $(document).ready(function () {
     }
 
     table = tempTable;
-    console.log(table);
     userTable = tempUserTable;
     //if not flipped, flip it
     if(tableState){
@@ -164,7 +165,6 @@ $(document).ready(function () {
       tableState = true;
       finalrow = inputString.length-1;
     }
-
     jsavParseTable.clear();
     initCYKParseTable(userTable);
   };
@@ -172,7 +172,6 @@ $(document).ready(function () {
 
   //for user interactions
   var cykParseTableHandler = function(row, col) {
-      console.log(row + '  ' + col);
       if (fi) {
         var input = fi.val();
         //If user didn't input anything, and there already exists info in that cell, do nothing
@@ -180,9 +179,12 @@ $(document).ready(function () {
            input = userTable[oldrow][oldcol];
         }
         fi.remove();
-
-        jsavParseTable.value(oldrow, oldcol, input);
-        userTable[oldrow][oldcol] = input;
+        //String coercion, convert input to string before split
+        input = input + '';
+        var inputArry = input.split(',');
+        console.log(inputArry);
+        jsavParseTable.value(oldrow, oldcol, inputArry);
+        userTable[oldrow][oldcol] = inputArry;
         layoutCYKParseTable(jsavParseTable);
         checkAnswer(oldrow, oldcol);
       }
@@ -218,8 +220,14 @@ $(document).ready(function () {
     }
   };
   function checkAnswerHelper(row, col) {
+    //Need two for loops to check both directions
     for(var i = 0; i < table[row][col].length; i++){
       if(!jsavParseTable.value(row, col).includes(table[row][col][i])){
+        return false;
+      }
+    }
+    for(var i = 0; i < jsavParseTable.value(row,col).length; i++){
+      if(!table[row][col].includes(jsavParseTable.value(row,col)[i])){
         return false;
       }
     }
@@ -239,7 +247,7 @@ $(document).ready(function () {
       }
     }
     return set;
-  }
+  };
 
   //return a set of unique variables (non-terminals) on the left side
   function getNonTerminals() {
@@ -254,7 +262,7 @@ $(document).ready(function () {
       }
     }
     return set;
-  }
+  };
 
 
   // fired when document is clicked
@@ -273,20 +281,22 @@ $(document).ready(function () {
     userTable[oldrow][oldcol] = input;
     layoutCYKParseTable(jsavParseTable);
     checkAnswer(oldrow, oldcol);
-  }
+  };
 
   function completeCYKTable(){
     setCYKParseTable(table);
   };
 
   function step(){
+    // adjustedStep to adjust for flipped table;
+    var adjustedStep = currentStep;
+    if(!tableState){
+      adjustedStep = inputString.length - currentStep - 1;
+    }
     if(currentStep < table.length){
-      userTable[currentStep] = table[currentStep];
+      console.log(adjustedStep);
+      userTable[adjustedStep] = table[adjustedStep];
       setCYKParseTable(userTable);
-      //show green
-      for(var c = 0; c < table[currentStep].length; c++){
-        checkAnswer(currentStep, c);
-      }
       currentStep++;
     }
   };
@@ -310,7 +320,16 @@ $(document).ready(function () {
     if(counter === undefined) {
       counter = 0;
     }
-    if(counter >= oldrow){
+    //for normal unflipped table
+    var row1 = counter;
+    var row2 = oldrow-counter-1;
+    //if table is flipped
+    if(!tableState){
+      row1 = inputString.length-1-counter;
+      row2 = oldrow+counter+1;
+    }
+    //two conditions, one for flipped table
+    if((tableState && (counter >= oldrow)) || (!tableState && (row2 >= inputString.length))){
       unhighlightPrevious();
       counter = 0;
       clearInterval(timerID);
@@ -319,14 +338,21 @@ $(document).ready(function () {
       if(counter >= 1){
         unhighlightPrevious();
       }
-      jsavParseTable.highlight(counter, oldcol);
-      jsavParseTable.highlight(oldrow-counter-1, oldcol+counter+1);
+      jsavParseTable.highlight(row1, oldcol);
+      jsavParseTable.highlight(row2, oldcol+counter+1);
       counter++;
     }
 
-    function unhighlightPrevious(){
-      jsavParseTable.unhighlight(counter-1, oldcol);
-      jsavParseTable.unhighlight(oldrow-counter, oldcol+counter);
+    function unhighlightPrevious() {
+      var prevRow1 = row1-1;
+      var prevRow2 = row2+1;
+      //if table is flipped
+      if(!tableState){
+        prevRow1 = row1+1;
+        prevRow2 = row2-1;
+      }
+      jsavParseTable.unhighlight(prevRow1, oldcol);
+      jsavParseTable.unhighlight(prevRow2, oldcol+counter);
     }
   };
 
@@ -338,6 +364,16 @@ $(document).ready(function () {
   $('#stepbutton').click(step);
   $('#animatebutton').click(animate);
   $('#flipbutton').click(flipTable);
+
+  $("#help").dialog({autoOpen: false});
+  $("#helpbutton").click(function() {
+    $("#help").dialog({
+      dialogClass: "alert",
+      width: 300,
+      height: 100
+    });
+    $("#help").dialog("open");
+  });
 
   $(document).click(defocus);
 
