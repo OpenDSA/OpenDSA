@@ -158,7 +158,7 @@ pair of edges.
 (For simplicity Figure :num:`Figure #Sales` shows an undirected graph,
 assuming that the cost is the same in both
 directions, though this need not be the case.)
-If the salesman visits the cities in the order ABCDEA, he will travel
+If the salesman visits the cities in the order ABCDEA, they will travel
 a total distance of 13.
 A better route would be ABDCEA, with cost 11.
 The best route for this particular graph would be ABEDCA, with cost 9.
@@ -292,14 +292,14 @@ The implication is that,
 How is NP-completeness of practical significance for typical
 programmers?
 Well, if your boss demands that you provide a fast algorithm to solve
-a problem, she will not be happy if you come back saying that the
+a problem, they will not be happy if you come back saying that the
 best you could do was an exponential time algorithm.
-But, if you can prove that the problem is NP-complete, while she
-still won't be happy, at least she should not be mad at you!
-By showing that her problem is NP-complete, you are in effect saying
+But, if you can prove that the problem is NP-complete, while they
+still won't be happy, at least they should not be mad at you!
+By showing that their problem is NP-complete, you are in effect saying
 that the most brilliant computer scientists for the last 50 years
 have been trying and failing to find a polynomial time algorithm for
-her problem.
+their problem.
 
 Problems that are solvable in polynomial time on a regular computer
 are said to be in class P.

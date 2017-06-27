@@ -66,8 +66,8 @@ The Sudoku puzzle, however, has another important characteristic,
 which is shared by many other combinatorial problems: the possibility
 of easily verifying whether a given solution of the puzzle is
 correct.
-Indeed, any Sudoku player makes use of this characteristics,
-every time he/she is not able to solve the puzzle.
+Indeed, Sudoku players makes use of this characteristics,
+every time they are not able to solve the puzzle.
 As a matter of fact, the solution of a Sudoku puzzle is usually
 published on the same magazine, so that the player can verify that the
 puzzle has indeed a solution.

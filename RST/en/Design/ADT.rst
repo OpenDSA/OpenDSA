@@ -249,7 +249,7 @@ program, you would have no hope of understanding or implementing it.
    through the memory manager, which in turn interacts with the buffer
    pool to gain access to the disk file.
    A program such as this is far too complex for nearly any human
-   programmer to keep all of the details in his or her head at once.
+   programmer to keep all of the details in their head at once.
    The only way to design and implement such a program is through
    proper use of abstraction and metaphors.
    In object-oriented programming,

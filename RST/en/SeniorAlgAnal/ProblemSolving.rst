@@ -257,7 +257,7 @@ Whimbey & Lochhead [WL99] discuss a technique for pair problem solving
 that separates the pair into a solver and a listener.
 The listener plays an active role, being responsible for keeping the
 problem solver on track and requiring the problem solver to vocalize
-his or her process.
+their process.
 The listener is actively checking for errors by the problem solver.
 See the handout for more details on this.
 
