@@ -309,7 +309,16 @@ $(document).ready(function () {
     if(counter === undefined) {
       counter = 0;
     }
-    if(counter >= oldrow){
+    //for normal unflipped table
+    var row1 = counter;
+    var row2 = oldrow-counter-1;
+    //if table is flipped
+    if(!tableState){
+      row1 = inputString.length-1-counter;
+      row2 = oldrow+counter+1;
+    }
+    //two conditions, one for flipped table
+    if((tableState && (counter >= oldrow)) || (!tableState && (row2 >= inputString.length))){
       unhighlightPrevious();
       counter = 0;
       clearInterval(timerID);
@@ -318,14 +327,21 @@ $(document).ready(function () {
       if(counter >= 1){
         unhighlightPrevious();
       }
-      jsavParseTable.highlight(counter, oldcol);
-      jsavParseTable.highlight(oldrow-counter-1, oldcol+counter+1);
+      jsavParseTable.highlight(row1, oldcol);
+      jsavParseTable.highlight(row2, oldcol+counter+1);
       counter++;
     }
 
     function unhighlightPrevious() {
-      jsavParseTable.unhighlight(counter-1, oldcol);
-      jsavParseTable.unhighlight(oldrow-counter, oldcol+counter);
+      var prevRow1 = row1-1;
+      var prevRow2 = row2+1;
+      //if table is flipped
+      if(!tableState){
+        prevRow1 = row1+1;
+        prevRow2 = row2-1;
+      }
+      jsavParseTable.unhighlight(prevRow1, oldcol);
+      jsavParseTable.unhighlight(prevRow2, oldcol+counter);
     }
   };
 
