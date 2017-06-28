@@ -12,7 +12,7 @@ $(document).ready(function () {
       table, //table with the answer
       userTable, //has the same value as jsavParseTable, but just for backend use
       jsavParseTable, //table that the user could see and input
-      tableWidth = 380;
+      tableWidth = 380,
       currentStep = 0; //for the step function
 
   var arrow = String.fromCharCode(8594),
@@ -35,7 +35,7 @@ $(document).ready(function () {
       jsavArry.layout();
       jsavArry.css({"width": tableWidth});
       jsavArry.css({"min-height": "0px"});
-      jsavArry.css({"height": "0px"})
+      jsavArry.css({"height": "20px"})
       cykParse();
     }
   };
@@ -361,23 +361,40 @@ $(document).ready(function () {
 
 /////////////////////////////////////
 // Derivation stuff
-
   var derivationArry = new Array();
+  var jsavTree;
 
   function getDerivation() {
-
-    getDerivationHelper(startSymbol, inputString.length-1, 0);
+    jsav.umsg('Click the control buttons to see the derivation tree');
+    $('.jsavcontrols').show();
+    jsavParseTable.hide();
+    jsavTree = jsav.ds.binarytree();
+    jsav.step()
+    jsavTree.root(startSymbol);
+    jsavTree.layout();
+    getDerivationHelper(startSymbol, inputString.length-1, 0, jsavTree.root());
+    jsav.recorded();
     console.log(derivationArry);
-
   };
 
   //Get the preorder traversal (root, left, right) of the derivation tree
-  function getDerivationHelper(nonterminal, currentRow, currentCol) {
+  function getDerivationHelper(nonterminal, currentRow, currentCol, jsavRoot) {
     //base case, currentRow is 0, meaning it includes terminal
     if(currentRow === 0){
       //push the nonterminal and the terminal to the arry
       derivationArry.push(nonterminal);
+      /////jsav
+      jsavRoot.value(nonterminal);
+      jsavTree.layout();
+      jsav.step();
+      /////
       derivationArry.push(inputString.charAt(currentCol));
+      /////jsav
+      jsavRoot.addChild(inputString.charAt(currentCol));
+      jsavRoot.right(0).hide();
+      jsavTree.layout();
+      jsav.step();
+      /////
       return;
     }
     //else, push the nonterminals
@@ -385,23 +402,24 @@ $(document).ready(function () {
       // find the productions with the nonterminal we want
       if(productions[i][0][0] == nonterminal){
         for(var r = 0; r < currentRow; r++){
-          console.log(r);
           if(table[r][currentCol].includes(productions[i][2][0]) 
             && table[currentRow-r-1][currentCol+r+1].includes(productions[i][2][1])) {
-            console.log(table[r][currentCol]+ '    ' + table[currentRow-r-1][currentCol+r+1]);
             //root
             derivationArry.push(nonterminal);
+            //jsav animation
+            jsavRoot.value(nonterminal);
+            jsavTree.layout();
+            jsav.step();
             //left
-            getDerivationHelper(productions[i][2][0], r, currentCol);
+            getDerivationHelper(productions[i][2][0], r, currentCol, jsavRoot.left(0));
             //right
-            getDerivationHelper(productions[i][2][1], currentRow-r-1, currentCol+r+1);
+            getDerivationHelper(productions[i][2][1], currentRow-r-1, currentCol+r+1, jsavRoot.right(0));
             return;
           }
         }
       }
     }
   };
-
 
 
 /////////////////////////////////////
