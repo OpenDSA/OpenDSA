@@ -142,7 +142,7 @@ SkipListProto.insert = function(it, lev, showS) {
 	updArray = this.jsav.ds.array(update, {layout: "vertical", indexed: true, relativeTo: this.head.getDispArr(), myAnchor: "center top", follow:true, anchor: "center top"});
 	updArray.css({"left":"-=90"});
 	//updArray.show();
-	updArrayPointer = this.jsav.pointer("upd array", updArray.index(0));
+	updArrayPointer = this.jsav.pointer("update array", updArray.index(0));
   }
   var unhigh = new Array(this.size + 3);
   var x = this.head; // Dummy header node 
@@ -384,7 +384,7 @@ SkipListProto.removeKey = function(otherKey) {
 	updArray = this.jsav.ds.array(update, {layout: "vertical", indexed: true, relativeTo: this.head.getDispArr(), myAnchor: "center top", follow:true, anchor: "center top"});
 	updArray.css({"left":"-=90"});
 	//updArray.show();
-	updArrayPointer = this.jsav.pointer("upd array", updArray.index(0));
+	updArrayPointer = this.jsav.pointer("update array", updArray.index(0));
   }
   if(showStep){
     this.jsav.umsg("As with insert, start from the deepest level " + this.level + " of the head. The update array tracks nodes that point to the node with key " + otherKey + ", that is being removed. If no such node exists, then we just return.");
