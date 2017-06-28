@@ -35,7 +35,7 @@ $(document).ready(function () {
       jsavArry.layout();
       jsavArry.css({"width": tableWidth});
       jsavArry.css({"min-height": "0px"});
-      jsavArry.css({"height": "20px"})
+      jsavArry.css({"height": "30px"})
       cykParse();
     }
   };
@@ -212,10 +212,10 @@ $(document).ready(function () {
   //check the user input against the answer at a specific index
   function checkAnswer(row, col) {
     if(!checkAnswerHelper(row, col)){
-      jsavParseTable._arrays[row].css([col], {"color": "red"});
+      jsavParseTable._arrays[row].css([col], {"color": "red", "background-color": "#eee", "background-image": "url(texturedbackground.jpg)"});
     } else {
       jsav.umsg('Please continue to input your answer');
-      jsavParseTable._arrays[row].css([col], {"color": "green"});
+      jsavParseTable._arrays[row].css([col], {"color": "green", "background-color": "#ffffff", "background-image": "none"});
       if(table[finalrow][0].includes(startSymbol) && checkAnswerHelper(finalrow, 0)) {
         jsav.umsg('Accepted!');
       }
@@ -305,7 +305,7 @@ $(document).ready(function () {
   };
 
 
-///////////////////////////////////
+//////////////////////////////////////////
 // Animation Stuff
 
   var timerID;
@@ -344,7 +344,7 @@ $(document).ready(function () {
       jsavParseTable.highlight(row1, oldcol);
       jsavParseTable.highlight(row2, oldcol+counter+1);
       counter++;
-    }
+    };
 
     function unhighlightPrevious() {
       var prevRow1 = row1-1;
@@ -359,7 +359,8 @@ $(document).ready(function () {
     }
   };
 
-/////////////////////////////////////
+
+/////////////////////////////////////////////
 // Derivation stuff
   var derivationArry = new Array();
   var jsavTree;
@@ -369,12 +370,11 @@ $(document).ready(function () {
     $('.jsavcontrols').show();
     jsavParseTable.hide();
     jsavTree = jsav.ds.binarytree();
-    jsav.step()
+    // jsav.step()
     jsavTree.root(startSymbol);
     jsavTree.layout();
     getDerivationHelper(startSymbol, inputString.length-1, 0, jsavTree.root());
     jsav.recorded();
-    console.log(derivationArry);
   };
 
   //Get the preorder traversal (root, left, right) of the derivation tree
@@ -390,7 +390,7 @@ $(document).ready(function () {
       /////
       derivationArry.push(inputString.charAt(currentCol));
       /////jsav
-      jsavRoot.addChild(inputString.charAt(currentCol));
+      jsavRoot.addChild(inputString.charAt(currentCol)).highlight();
       jsavRoot.right(0).hide();
       jsavTree.layout();
       jsav.step();
@@ -422,7 +422,7 @@ $(document).ready(function () {
   };
 
 
-/////////////////////////////////////
+////////////////////////////////////////////////
 
 
   $('#inputbutton').click(enterInput);
