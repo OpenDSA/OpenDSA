@@ -133,11 +133,11 @@ We simply accept the results of ``randomLevel`` and expect that
 probability will eventually work in our favor.
 The advantage of this approach is that the algorithms are simple,
 while requiring only :math:`\Theta(\log n)` time for all operations in
-the average case. For a skip list of size :math: `n`, the expected 
-memory usage is :math: `2n`. This is because a level :math: `l` node needs 
-:math: `l + 1` references but occurs with probability :math: `2^(l+1)` 
+the average case. For a skip list of size :math:`n`, the expected 
+memory usage is :math:`2n`. This is because a level :math:`l` node needs 
+:math:`l + 1` references but occurs with probability :math:`2^{(l+1)}` 
 so a skip list is expected to use 
-:math: `\sum_{l=0}^{l=\infty} (l+1)/2^(l+1)` which is 2.
+:math:`\sum_{l=0}^{l=\infty} (l+1)/2^{(l+1)}` which is 2.
 
 In practice, the skip list will probably have better
 performance than a BST.
@@ -152,7 +152,7 @@ and search operations would be similar to that of the skip list.
 The problem for the BST is that this randomization does not happen in
 fact, but rather the BST is constrained by the actual order of inputs
 and searches. The memory usage of a BST and the expected of a skip list
-are both :math: `2n` for storing :math: `n` items.
+are both :math:`2n` for storing :math:`n` items.
 
 In contrast, the skip list's performance does not depend on the order
 in which values are inserted into the list.
