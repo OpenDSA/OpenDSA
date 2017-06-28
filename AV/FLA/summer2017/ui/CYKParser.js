@@ -2,6 +2,7 @@ $(document).ready(function () {
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
   var inputString,
+      startSymbol,
       productions,
       fi,
       oldrow,
@@ -23,6 +24,7 @@ $(document).ready(function () {
 
 
   var productions = JSON.parse(localStorage.getItem('grammars'));
+  startSymbol = productions[0][0];
   var grammars = jsav.ds.matrix(productions, {style: "table"});
   grammars.layout();
 
@@ -113,7 +115,8 @@ $(document).ready(function () {
   };
 
   function checkAcceptance(table) {
-    if(table[finalrow][0].length > 0) {
+    //As long as the finalrow contains the starting state, the string is accepted
+    if(table[finalrow][0].includes(startSymbol)) {
       alert('Input accepted');
     }else{
       alert('Input not accpeted');
@@ -214,7 +217,7 @@ $(document).ready(function () {
     } else {
       jsav.umsg('Please continue to input your answer');
       jsavParseTable._arrays[row].css([col], {"color": "green"});
-      if(table[finalrow][0].length > 0 && checkAnswerHelper(finalrow, 0)) {
+      if(table[finalrow][0].includes(startSymbol) && checkAnswerHelper(finalrow, 0)) {
         jsav.umsg('Accepted!');
       }
     }

@@ -1924,6 +1924,7 @@ $(document).ready(function () {
     } else {
       backup = null;
       jsav.umsg('Grammar already in Chomsky Normal Form.');
+      return true;
     }
   };
 
@@ -3303,6 +3304,10 @@ $(document).ready(function () {
   }
 
   function cykParse() {
+    if(!transformGrammar()){
+      alert("The grammar must be in CNF form to be parsed!");
+      return;
+    }
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     localStorage['grammars'] = JSON.stringify(productions);
     window.open("./CYKParser.html");
