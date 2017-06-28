@@ -237,7 +237,7 @@ SkipListProto.insert = function(it, lev, showS) {
 /** helper function to insert in the middle */
 var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
     if(showStep){
-		jsav.umsg("Now our update array contain all the highlighted node that will point to the new key: "+ it.getKey() + ". This key is to be inserted into the middle, so we must update both its pointer, and the node before it, at each level.");
+		jsav.umsg("Now our update array contains all the highlighted nodes that will point to the new key: "+ it.getKey() + ". This key is to be inserted into the middle, so we must update both its pointer, and the node before it, at each level.");
 	}
     x = new SkipNode(it, newLevel, jsav, newOption, (update[0].getNodeNum() + 1));
 	if (showStep){
@@ -275,7 +275,7 @@ var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
   /** helper function for inserting at the end */
 var insertEndHelper = function(it, x, update, newOption, jsav, newLevel) {
 	if(showStep){
-		jsav.umsg("Now our update array contain all the highlighted node that will point to the new key: "+ it.getKey() + ".  We are inserting at the end of the skip list, so we just need to update the pointers of the nodes before it.");
+		jsav.umsg("Now our update array contains all the highlighted nodes that will point to the new key: "+ it.getKey() + ".  We are inserting at the end of the skip list, so we just need to update the pointers of the nodes before it.");
 	}
     x = new SkipNode(it, newLevel, jsav, newOption, (update[0].getNodeNum() + 1));
 	if (showStep){

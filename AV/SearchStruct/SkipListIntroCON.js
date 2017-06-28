@@ -55,7 +55,7 @@ $(document).ready(function() {
   jsav.step();
 
   //---------------------ideal SkipList O(logn)
-  jsav.umsg("We can extend this concept, making deeper nodes to skip greater distances in lnger lists. The ideal skip list will guarantee O(logn) search time by skipping half way through the list on the first step, a quarter on the second step, and so on.");
+  jsav.umsg("We can extend this concept, making deeper nodes to skip greater distances in longer lists. The ideal skip list will guarantee O(logn) search time by skipping half way through the list on the first step, a quarter on the second step, and so on.");
   isStepShown(false);
   ll.removeKey(31);
   ll.removeKey(69);
