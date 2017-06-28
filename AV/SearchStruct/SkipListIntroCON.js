@@ -7,7 +7,7 @@ $(document).ready(function() {
   var jsav = new JSAV(av_name);
 
   // Slide 1
-  jsav.umsg("Here we will illustrate the Skip List concept. A Skip List can be viewed as a sorted linked list with some extra pointers. We start with a simple linked list whose nodes are ordered by key value. To search this list requires that we move down the list one node at a time, visiting O(n) nodes in the average case.");
+  jsav.umsg("Here we will illustrate the skip list concept. A skip list can be viewed as a sorted linked list with some extra pointers. We start with a simple linked list whose nodes are ordered by key value. To search this list requires that we move down the list one node at a time, visiting O(n) nodes in the average case.");
   var ll = new SkipList(jsav);
   isStepShown(false);
   var a = new KVPair(5, "A");
@@ -44,7 +44,7 @@ $(document).ready(function() {
   isStepShown(true);
 
   // Slide 3
-  jsav.umsg("We will define nodes with a single pointer as level 0 Skip List nodes, and nodes with two pointers as level 1 Skip List nodes.");
+  jsav.umsg("We will define nodes with a single pointer as level 0 skip list nodes, and nodes with two pointers as level 1 skip list nodes.");
   jsav.step();
 
   // Slide 4
@@ -55,7 +55,7 @@ $(document).ready(function() {
   jsav.step();
 
   //---------------------ideal SkipList O(logn)
-  jsav.umsg("We can extend this concept, making deeper nodes to skip greater distances in lnger lists. The ideal Skip List will guarantee O(logn) search time by skipping half way through the list on the first step, a quarter on the second step, and so on.");
+  jsav.umsg("We can extend this concept, making deeper nodes to skip greater distances in lnger lists. The ideal skip list will guarantee O(logn) search time by skipping half way through the list on the first step, a quarter on the second step, and so on.");
   isStepShown(false);
   ll.removeKey(31);
   ll.removeKey(69);

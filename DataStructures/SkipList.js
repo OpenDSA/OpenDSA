@@ -275,7 +275,7 @@ var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
   /** helper function for inserting at the end */
 var insertEndHelper = function(it, x, update, newOption, jsav, newLevel) {
 	if(showStep){
-		jsav.umsg("Now our update array contain all the highlighted node that will point to the new key: "+ it.getKey() + ".  We are inserting at the end of the Skip List, so we just need to update the pointers of the nodes before it.");
+		jsav.umsg("Now our update array contain all the highlighted node that will point to the new key: "+ it.getKey() + ".  We are inserting at the end of the skip list, so we just need to update the pointers of the nodes before it.");
 	}
     x = new SkipNode(it, newLevel, jsav, newOption, (update[0].getNodeNum() + 1));
 	if (showStep){
@@ -669,7 +669,7 @@ skipNodeProto.clear = function(i, pt) {
   if(showStep){
 	  this.jsav.umsg("In this step, we disconnect all pointers that point to the value to be removed. The next step is to now connect these pointers to the ones that precede the key, if any");
 	  this.jsav.step();
-	  this.jsav.umsg("The Skip List is now updated, with all nodes connected");
+	  this.jsav.umsg("The skip list is now updated, with all nodes connected");
   }
   this.disArr.hide();
   this.val.hide();

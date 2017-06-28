@@ -7,12 +7,12 @@ $(document).ready(function() {
 var jsav = new JSAV(av_name, {left: 250});
 
   // Slide 1
-  jsav.umsg("Now we will illustrate Skip List insertion");
+  jsav.umsg("Now we will illustrate skip list insertion");
   var ll = new SkipList(jsav);
   jsav.displayInit();
 
   // Slide 2
-  jsav.umsg("The Skip List is initialized with a header node at level 0, whose forward pointers are set to null.");
+  jsav.umsg("The skip list is initialized with a header node at level 0, whose forward pointers are set to null.");
   jsav.step();
 
   // Slide 3
