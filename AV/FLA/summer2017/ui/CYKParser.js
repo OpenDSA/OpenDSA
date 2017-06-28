@@ -185,7 +185,6 @@ $(document).ready(function () {
         //String coercion, convert input to string before split
         input = input + '';
         var inputArry = input.split(',');
-        console.log(inputArry);
         jsavParseTable.value(oldrow, oldcol, inputArry);
         userTable[oldrow][oldcol] = inputArry;
         layoutCYKParseTable(jsavParseTable);
@@ -287,7 +286,8 @@ $(document).ready(function () {
   };
 
   function completeCYKTable(){
-    setCYKParseTable(table);
+    userTable = table;
+    setCYKParseTable(userTable);
   };
 
   function step(){
@@ -360,6 +360,51 @@ $(document).ready(function () {
   };
 
 /////////////////////////////////////
+// Derivation stuff
+
+  var derivationArry = new Array();
+
+  function getDerivation() {
+
+    getDerivationHelper(startSymbol, inputString.length-1, 0);
+    console.log(derivationArry);
+
+  };
+
+  //Get the preorder traversal (root, left, right) of the derivation tree
+  function getDerivationHelper(nonterminal, currentRow, currentCol) {
+    //base case, currentRow is 0, meaning it includes terminal
+    if(currentRow === 0){
+      //push the nonterminal and the terminal to the arry
+      derivationArry.push(nonterminal);
+      derivationArry.push(inputString.charAt(currentCol));
+      return;
+    }
+    //else, push the nonterminals
+    for(var i = 0; i < productions.length; i++) {
+      // find the productions with the nonterminal we want
+      if(productions[i][0][0] == nonterminal){
+        for(var r = 0; r < currentRow; r++){
+          console.log(r);
+          if(table[r][currentCol].includes(productions[i][2][0]) 
+            && table[currentRow-r-1][currentCol+r+1].includes(productions[i][2][1])) {
+            console.log(table[r][currentCol]+ '    ' + table[currentRow-r-1][currentCol+r+1]);
+            //root
+            derivationArry.push(nonterminal);
+            //left
+            getDerivationHelper(productions[i][2][0], r, currentCol);
+            //right
+            getDerivationHelper(productions[i][2][1], currentRow-r-1, currentCol+r+1);
+            return;
+          }
+        }
+      }
+    }
+  };
+
+
+
+/////////////////////////////////////
 
 
   $('#inputbutton').click(enterInput);
@@ -367,6 +412,7 @@ $(document).ready(function () {
   $('#stepbutton').click(step);
   $('#animatebutton').click(animate);
   $('#flipbutton').click(flipTable);
+  $('#derivationbutton').click(getDerivation);
 
   $("#help").dialog({autoOpen: false});
   $("#helpbutton").click(function() {
