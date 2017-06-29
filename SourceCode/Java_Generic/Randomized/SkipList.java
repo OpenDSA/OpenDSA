@@ -1,6 +1,7 @@
 import java.util.Random;
 
 /** Skip list implementation for Dictionary ADT */
+/* *** ODSATag: SkipBasic *** */
 class SkipList<K extends Comparable<K>, E> implements Dictionary<K, E> {
   private SkipNode<K, E> head;
   private int level;
@@ -12,14 +13,7 @@ class SkipList<K extends Comparable<K>, E> implements Dictionary<K, E> {
     level = -1;
     size = 0;
   }
-
-  private void adjustHead(int newLevel) {
-    SkipNode<K, E> temp = head;
-    head = new SkipNode<K, E>(null, null, newLevel);
-    for (int i = 0; i <= level; i++)
-      head.forward[i] = temp.forward[i];
-    level = newLevel;
-  }
+  /* *** ODSAendTag: SkipBasic *** */
 
   public void print() {
     SkipNode<K, E> temp = head;
@@ -59,8 +53,7 @@ class SkipList<K extends Comparable<K>, E> implements Dictionary<K, E> {
   /* *** ODSATag: SkipRand *** */
   int randomLevel() {
     int lev;
-    for (lev = 0; Math.abs(value.nextInt()) % 2 == 0; lev++) // value is random
-                                                             // generator
+    for (lev = 0; Math.abs(value.nextInt()) % 2 == 0; lev++) // value is random generator
       ; // Do nothing
     return lev;
   }
@@ -88,6 +81,14 @@ class SkipList<K extends Comparable<K>, E> implements Dictionary<K, E> {
     }
     size++; // Increment dictionary size
   }
+
+  private void adjustHead(int newLevel) {
+    SkipNode<K, E> temp = head;
+    head = new SkipNode<K, E>(null, null, newLevel);
+    for (int i = 0; i <= level; i++)
+      head.forward[i] = temp.forward[i];
+    level = newLevel;
+  }
   /* *** ODSAendTag: SkipInsert *** */
 
   /* *** ODSATag: SkipFind *** */
@@ -96,20 +97,17 @@ class SkipList<K extends Comparable<K>, E> implements Dictionary<K, E> {
   public E find(K key) {
     SkipNode<K, E> x = head; // Dummy header node
     for (int i = level; i >= 0; i--) // For each level...
-      while ((x.forward[i] != null) && (x.forward[i].key().compareTo(key) < 0)) // go
-                                                                                // forward
+      while ((x.forward[i] != null) && (x.forward[i].key().compareTo(key) < 0)) // go forward
         x = x.forward[i]; // Go one last step
     x = x.forward[0]; // Move to actual record, if it exists
-    if ((x != null) && (x.key().compareTo(key) == 0))
-      return x.element(); // Got it
-    else
-      return null; // Its not there
+    if ((x != null) && (x.key().compareTo(key) == 0)) return x.element(); // Got it
+    else return null; // Its not there
   }
   /* *** ODSAendTag: SkipFind *** */
 
-  class SkipNode<K extends Comparable<K>, E> {
+  /* *** ODSATag: SkipNode *** */
+ class SkipNode<K extends Comparable<K>, E> {
     private KVPair<K, E> rec;
-
     private SkipNode<K, E>[] forward;
 
     public E element() {
@@ -132,4 +130,5 @@ class SkipList<K extends Comparable<K>, E> implements Dictionary<K, E> {
       return rec.toString();
     }
   }
+ /* *** ODSAendTag: SkipNode *** */
 }
