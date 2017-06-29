@@ -70,7 +70,7 @@ The SkipNode class follows:
    :tag: SkipNode
 
 The skip list object includes data member ``level`` that
-stores the highest level for any node currently in the skip list. The
+stores the highest level for any node currently in the skip list. 
 The skip list stores a header node named ``head`` with
 ``level+1`` pointers where the head level is initially 0 and the level
 is set to -1 for the empty list. The start of the SkipList class follows:
