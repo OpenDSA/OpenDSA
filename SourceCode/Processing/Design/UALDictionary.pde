@@ -41,7 +41,7 @@ class UALdictionary implements Dictionary {
     for(list.moveToStart(); list.currPos() < list.length();
         list.next()) {
       KVPair temp = (KVPair)list.getValue();
-      if (k == temp.key())
+      if (k.compareTo(temp.key()))
         return temp.value();
     }
     return null; // "k" does not appear in dictionary
