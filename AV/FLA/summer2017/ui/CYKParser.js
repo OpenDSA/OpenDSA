@@ -358,10 +358,18 @@ $(document).ready(function () {
       jsavParseTable.unhighlight(prevRow2, oldcol+counter);
     }
   };
-
+  
 
 /////////////////////////////////////////////
 // Derivation stuff
+
+  function Node(val) {
+    this.value = val;
+    this.left = null;
+    this.right = null;
+  };
+
+  var treeRoot = new Node();
   var derivationArry = new Array();
   var jsavTree;
 
@@ -369,32 +377,58 @@ $(document).ready(function () {
     jsav.umsg('Click the control buttons to see the derivation tree');
     $('.jsavcontrols').show();
     jsavParseTable.hide();
+
+    treeRoot.value = startSymbol;
+    getDerivationHelper(startSymbol, inputString.length-1, 0, treeRoot);
+
     jsavTree = jsav.ds.binarytree();
-    // jsav.step()
     jsavTree.root(startSymbol);
     jsavTree.layout();
-    getDerivationHelper(startSymbol, inputString.length-1, 0, jsavTree.root());
+    traverseBF(treeRoot);
     jsav.recorded();
   };
 
-  //Get the preorder traversal (root, left, right) of the derivation tree
-  function getDerivationHelper(nonterminal, currentRow, currentCol, jsavRoot) {
+  //Traverse the tree in breadth first
+  function traverseBF(treeRoot) {
+    //Array serves as queue, unshift is enqueue, pop is dequeue
+    var q = new Array();
+    var jsavQ = new Array();
+    q.unshift(treeRoot);
+    jsavQ.unshift(jsavTree.root());
+    while (q.length > 0) {
+      var node = q.pop();
+      var jsavNode = jsavQ.pop();
+      if(node.left === null && node.right === null){
+        continue;
+      }
+      if(node.left != null){
+        jsavNode.left(node.left.value);
+        jsavQ.unshift(jsavNode.left());
+        q.unshift(node.left);
+      }
+      if(node.right === null){
+        jsavNode.right(0).hide();
+        jsavNode.left().highlight();
+      }else {
+        jsavNode.right(node.right.value);
+        jsavQ.unshift(jsavNode.right());
+        q.unshift(node.right);
+      }
+      jsavTree.layout();
+      jsav.step();
+    }
+  }
+
+
+  //Build the derivation tree in preorder traversal (root, left, right) 
+  function getDerivationHelper(nonterminal, currentRow, currentCol, currentNode) {
     //base case, currentRow is 0, meaning it includes terminal
     if(currentRow === 0){
       //push the nonterminal and the terminal to the arry
+      currentNode.value = nonterminal;
       derivationArry.push(nonterminal);
-      /////jsav
-      jsavRoot.value(nonterminal);
-      jsavTree.layout();
-      jsav.step();
-      /////
+      currentNode.left = new Node(inputString.charAt(currentCol));
       derivationArry.push(inputString.charAt(currentCol));
-      /////jsav
-      jsavRoot.addChild(inputString.charAt(currentCol)).highlight();
-      jsavRoot.right(0).hide();
-      jsavTree.layout();
-      jsav.step();
-      /////
       return;
     }
     //else, push the nonterminals
@@ -405,15 +439,14 @@ $(document).ready(function () {
           if(table[r][currentCol].includes(productions[i][2][0]) 
             && table[currentRow-r-1][currentCol+r+1].includes(productions[i][2][1])) {
             //root
+            currentNode.value = nonterminal;
+            currentNode.left = new Node();
+            currentNode.right = new Node();
             derivationArry.push(nonterminal);
-            //jsav animation
-            jsavRoot.value(nonterminal);
-            jsavTree.layout();
-            jsav.step();
             //left
-            getDerivationHelper(productions[i][2][0], r, currentCol, jsavRoot.left(0));
+            getDerivationHelper(productions[i][2][0], r, currentCol, currentNode.left);
             //right
-            getDerivationHelper(productions[i][2][1], currentRow-r-1, currentCol+r+1, jsavRoot.right(0));
+            getDerivationHelper(productions[i][2][1], currentRow-r-1, currentCol+r+1, currentNode.right);
             return;
           }
         }
@@ -423,7 +456,6 @@ $(document).ready(function () {
 
 
 ////////////////////////////////////////////////
-
 
   $('#inputbutton').click(enterInput);
   $('#completebutton').click(completeCYKTable);
