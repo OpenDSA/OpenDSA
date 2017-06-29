@@ -1,3 +1,11 @@
+/* *** ODSATag: SkipBasic *** */
+Not available.
+/* *** ODSAendTag: SkipBasic *** */
+
+/* *** ODSATag: SkipNode *** */
+Not available.
+/* *** ODSAendTag: SkipNode *** */
+
 /* *** ODSATag: SkipRand *** */
 /** Pick a level using a geometric distribution */
 int randomLevel() {

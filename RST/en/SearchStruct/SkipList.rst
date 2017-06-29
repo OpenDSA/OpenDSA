@@ -62,16 +62,27 @@ With this arrangement, the worst-case number of accesses is
 We will store with each skip list node an array
 named ``forward`` that stores the pointers.
 Position ``forward[0]`` stores a level 0 pointer,
-``forward[1]`` stores a level 1 pointer, and so on.
+``forward[1]`` stores a level 1 pointer, and so on. It also 
+uses a KVPair to store the key and record for the node. 
+The SkipNode class follows:
+
+.. codeinclude:: Randomized/SkipList
+   :tag: SkipNode
+
 The skip list object includes data member ``level`` that
-stores the highest level for any node currently in the skip list.
+stores the highest level for any node currently in the skip list. The
 The skip list stores a header node named ``head`` with
-``level`` pointers.
-The ``find`` function is shown next along a visualization.
+``level+1`` pointers where the head level is initially 0 and the level
+is set to -1 for the empty list. The start of the SkipList class follows:
+
+.. codeinclude:: Randomized/SkipList
+   :tag: SkipBasic
+   
+The ``find`` function is:
 
 .. codeinclude:: Randomized/SkipList
    :tag: SkipFind
-
+   
 The ideal skip list is organized so that (if the first and last nodes
 are not counted) half of the nodes have only one pointer, one quarter
 have two, one eighth have three, and so on.
@@ -95,17 +106,18 @@ Once the proper level for the node has been determined, the next
 step is to find where the node should be inserted and link it in as
 appropriate at all of its levels.
 Here is an implementation for inserting a new
-value into the skip list.
+value into the skip list followed by
+a visualization of the process.
 Note that we build an ``update`` array as we progress through the skip
 list, so that we can update the pointers for the nodes that will
-preceed the one being inserted.
+precede the one being inserted.
 
 .. codeinclude:: Randomized/SkipList
    :tag: SkipInsert
-
+  
 .. inlineav:: SkipListInsertCON ss
    :output: show
-
+   
 The ``remove`` function is similar to insertion in that the ``update``
 array is built as part of searching for the record to be deleted.
 Then those nodes specified by the update array have their forward

@@ -6,7 +6,7 @@ class SkipList<K extends Comparable<K>, E> implements Dictionary<K, E> {
   private SkipNode<K, E> head;
   private int level;
   private int size;
-  static private Random value = new Random(); // Hold the Random class object
+  static private Random ran = new Random(); // Hold the Random class object
 
   public SkipList() {
     head = new SkipNode<K, E>(null, null, 0);
@@ -53,7 +53,7 @@ class SkipList<K extends Comparable<K>, E> implements Dictionary<K, E> {
   /* *** ODSATag: SkipRand *** */
   int randomLevel() {
     int lev;
-    for (lev = 0; Math.abs(value.nextInt()) % 2 == 0; lev++) // value is random generator
+    for (lev = 0; Math.abs(ran.nextInt()) % 2 == 0; lev++) // ran is random generator
       ; // Do nothing
     return lev;
   }
