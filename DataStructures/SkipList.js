@@ -142,14 +142,14 @@ SkipListProto.insert = function(it, lev, showS) {
 	updArray = this.jsav.ds.array(update, {layout: "vertical", indexed: true, relativeTo: this.head.getDispArr(), myAnchor: "center top", follow:true, anchor: "center top"});
 	updArray.css({"left":"-=90"});
 	//updArray.show();
-	updArrayPointer = this.jsav.pointer("upd array", updArray.index(0));
+	updArrayPointer = this.jsav.pointer("update array", updArray.index(0));
   }
   var unhigh = new Array(this.size + 3);
   var x = this.head; // Dummy header node 
   var j = this.level;
   var ind = 0;
   if(showStep){
-    this.jsav.umsg("Starting from level " + this.level + " of the head, we look for the first node whose pointer points to a key bigger than the key " + it.getKey() + " that we want to insert, and save it into a temporary update array. If no such key exists, then the update array will contain the last node and we insert.");
+    this.jsav.umsg("Starting from level " + this.level + " of the head, we look for the first node whose pointer points to the largest key that is less than or equal to key:" + it.getKey() + " that we want to insert, and save it into a temporary update array at index level. If no such key exists because the pointer is null, then update array will contain the last node at that level.");
 		unhigh[ind++] = x.getDispArr().highlight(j);
 		this.jsav.step();
 		unhigh[ind--] = x.getDispArr().unhighlight(j);
@@ -164,7 +164,7 @@ SkipListProto.insert = function(it, lev, showS) {
 		  if(showStep){
 			  unhigh[ind++] = xfwr.getDispArr().highlight(i);
 			  this.jsav.umsg("We compare " + it.getKey() + " to the next record " +
-			  xfwr.getPair().getKey() + ". If it is less, we move forward, else we save this value and go down a level.");
+			  xfwr.getPair().getKey() + ". If it is less, we move forward, else we save this value.");
 			  this.jsav.step();
 			  unhigh[ind--] = xfwr.getDispArr().unhighlight(i);
 		  }
@@ -176,13 +176,13 @@ SkipListProto.insert = function(it, lev, showS) {
 		if(showStep && x.getForward()[i] != null){
 			unhigh[ind++] = x.getForward()[i].getDispArr().highlight(i);
 			this.jsav.umsg("We compare " + it.getKey() + " to the next record " +
-			x.getForward()[i].getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level and store this value in the update array.");
+			x.getForward()[i].getPair().getKey() + ". If what it points to is less, we move forward, else we store this value in the update array.");
 			this.jsav.step();
 			unhigh[ind--] = x.getForward()[i].getDispArr().unhighlight(i);
 		}
 	}
 	if(showStep){
-		  this.jsav.umsg("We save this highlighted node into our updated array since it will point to our new key: " + it.getKey() + " if their height matches.");
+		  this.jsav.umsg("We save this highlighted node into our updated array since it will point to our new key: " + it.getKey() + " if their height matches. The update array actually contains a pointer to a node but we display the value of the node it is pointing to. To continue the process, we reduce level by one or stop if there are no more levels.");
 		  unhigh[ind++] = x.getDispArr().highlight(i);
 		  updArray.value(i, x.getVal().value(0));
 		  updArray.hide();
@@ -237,7 +237,7 @@ SkipListProto.insert = function(it, lev, showS) {
 /** helper function to insert in the middle */
 var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
     if(showStep){
-		jsav.umsg("Now our update array contain all the highlighted node that will point to the new key: "+ it.getKey() + ". This key is to be inserted into the middle, so we must update both its pointer, and the node before it, at each level.");
+		jsav.umsg("Now our update array contains all the highlighted nodes that will point to the new key: "+ it.getKey() + ". This key is to be inserted into the middle, so we must update both its pointer, and the node before it, at each level.");
 	}
     x = new SkipNode(it, newLevel, jsav, newOption, (update[0].getNodeNum() + 1));
 	if (showStep){
@@ -275,12 +275,12 @@ var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
   /** helper function for inserting at the end */
 var insertEndHelper = function(it, x, update, newOption, jsav, newLevel) {
 	if(showStep){
-		jsav.umsg("Now our update array contain all the highlighted node that will point to the new key: "+ it.getKey() + ".  We are inserting at the end of the Skip List, so we just need to update the pointers of the nodes before it.");
+		jsav.umsg("Now our update array contains all the highlighted nodes that will point to the new key: "+ it.getKey() + ".  We are inserting at the end of the skip list, so we just need to update the pointers of the nodes before it.");
 	}
     x = new SkipNode(it, newLevel, jsav, newOption, (update[0].getNodeNum() + 1));
 	if (showStep){
 		jsav.step();
-		jsav.umsg("All of the pointer are now updated.");
+		jsav.umsg("All of the pointers are now updated.");
 	}
     for (var j = 0; j <= newLevel; j++) { // Splice into list
       x.getForward()[j] = update[j].getForward()[j]; // Who x points to
@@ -316,7 +316,7 @@ SkipListProto.search = function(otherKey) {
 		  if(showStep){
 			unhigh[ind++] = xfwr.getDispArr().highlight(i);
 			this.jsav.umsg("We compare " + otherKey + " to the next record " +
-            xfwr.getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level.");
+            xfwr.getPair().getKey() + ". If what it points to is less, we move forward, else we reduce level by one or stop if there are no more levels.");
 			this.jsav.step();
 		  }
         }
@@ -326,7 +326,7 @@ SkipListProto.search = function(otherKey) {
     }
 	if(showStep){
 		unhigh[ind++] = x.getDispArr().highlight(0);
-		this.jsav.umsg("We go down to the lowest level.");
+		this.jsav.umsg("We reduce level to the lowest level.");
 		this.jsav.step();
 	}
     x = x.getForward()[0]; // Move to actual record, if it exists
@@ -384,7 +384,7 @@ SkipListProto.removeKey = function(otherKey) {
 	updArray = this.jsav.ds.array(update, {layout: "vertical", indexed: true, relativeTo: this.head.getDispArr(), myAnchor: "center top", follow:true, anchor: "center top"});
 	updArray.css({"left":"-=90"});
 	//updArray.show();
-	updArrayPointer = this.jsav.pointer("upd array", updArray.index(0));
+	updArrayPointer = this.jsav.pointer("update array", updArray.index(0));
   }
   if(showStep){
     this.jsav.umsg("As with insert, start from the deepest level " + this.level + " of the head. The update array tracks nodes that point to the node with key " + otherKey + ", that is being removed. If no such node exists, then we just return.");
@@ -402,7 +402,7 @@ SkipListProto.removeKey = function(otherKey) {
 		  if(showStep){
 			  unhigh[ind++] = xfwr.getDispArr().highlight(j);
 			  this.jsav.umsg("We compare " + otherKey + " to the next record " +
-			  xfwr.getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level.");
+			  xfwr.getPair().getKey() + ". If what it points to is less, we move forward, else we reduce level by one or stop if there are no more levels.");
 			  this.jsav.step();
 			  unhigh[ind--] = xfwr.getDispArr().unhighlight(j);
 		  }
@@ -414,13 +414,13 @@ SkipListProto.removeKey = function(otherKey) {
 		if(showStep && x.getForward()[j] != null){
 			unhigh[ind++] = x.getForward()[j].getDispArr().highlight(j);
 			this.jsav.umsg("We compare " + otherKey + " to the next record " +
-			x.getForward()[j].getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level and store this value in the update array.");
+			x.getForward()[j].getPair().getKey() + ". If what it points to is less, we move forward, else we store this value in the update array.");
 			this.jsav.step();
 			unhigh[ind--] = x.getForward()[j].getDispArr().unhighlight(j);
 		}
 	}
 	if(showStep){
-		  this.jsav.umsg("We save this highlighted node into our updated array since it will point to the key: " + otherKey + " we want to remove, if their height matches.");
+		  this.jsav.umsg("We save this highlighted node into our updated array since it will point to the key: " + otherKey + " we want to remove, if their height matches. To continue the process, we reduce level by one or stop if there are no more levels.");
 		  unhigh[ind++] = x.getDispArr().highlight(j);
 		  updArray.value(j, x.getVal().value(0));
 		  updArray.hide();
@@ -669,7 +669,7 @@ skipNodeProto.clear = function(i, pt) {
   if(showStep){
 	  this.jsav.umsg("In this step, we disconnect all pointers that point to the value to be removed. The next step is to now connect these pointers to the ones that precede the key, if any");
 	  this.jsav.step();
-	  this.jsav.umsg("The Skip List is now updated, with all nodes connected");
+	  this.jsav.umsg("The skip list is now updated, with all nodes connected");
   }
   this.disArr.hide();
   this.val.hide();

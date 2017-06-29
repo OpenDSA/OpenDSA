@@ -1,7 +1,6 @@
 /* *** ODSATag: KVPair *** */
 // KVPair class definition
-public class KVPair<K extends Comparable<K>, E>
-               implements Comparable<KVPair<K,E>> {
+public class KVPair<K extends Comparable<K>, E> implements Comparable<KVPair<K, E>> {
   K theKey;
   E theVal;
 
@@ -30,7 +29,14 @@ public class KVPair<K extends Comparable<K>, E>
 
 
   public String toString() {
-    return theKey.toString() + ", " + theVal.toString();
+    String s = "(";
+    if (theKey != null) s += theKey.toString();
+    else s += "null";
+    s += ", ";
+    if (theVal != null) s += theVal.toString();
+    else s += "null";
+    s += ")";
+    return s;
   }
 }
 /* *** ODSAendTag: KVPair *** */
