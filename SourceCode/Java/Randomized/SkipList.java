@@ -66,9 +66,9 @@ class SkipList implements Dictionary {
     if (newLevel > level) // If new node is deeper
       adjustHead(newLevel); // adjust the header
     // Track end of level
-    SkipNode[] update = new SkipNode[newLevel + 1];
+    SkipNode[] update = new SkipNode[level + 1];
     SkipNode x = head; // Start at header node
-    for (int i = newLevel; i >= 0; i--) { // Find insert position
+    for (int i = level; i >= 0; i--) { // Find insert position
       while ((x.forward[i] != null) && (x.forward[i].key().compareTo(key) < 0))
         x = x.forward[i];
       update[i] = x; // Track end at level i
