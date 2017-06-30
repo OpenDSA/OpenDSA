@@ -145,11 +145,13 @@ We simply accept the results of ``randomLevel`` and expect that
 probability will eventually work in our favor.
 The advantage of this approach is that the algorithms are simple,
 while requiring only :math:`\Theta(\log n)` time for all operations in
-the average case. For a skip list of size :math:`n`, the expected 
-memory usage is :math:`2n`. This is because a level :math:`l` node needs 
-:math:`l + 1` references but occurs with probability :math:`2^{(l+1)}` 
-so a skip list is expected to use 
-:math:`\sum_{l=0}^{l=\infty} (l+1)/2^{(l+1)}` which is 2.
+the average case.
+For a skip list of size :math:`n`, the expected 
+memory usage is :math:`2n`.
+This is because a level :math:`l` node needs 
+:math:`l + 1` references but occurs with probability :math:`2^{(l+1)}`.
+So a skip list is expected to have
+:math:`\sum_{l=0}^{l=\infty} (l+1)/2^{(l+1)}` pointers, which is 2.
 
 In practice, the skip list will probably have better
 performance than a BST.
@@ -163,8 +165,7 @@ ordered, then the probability distribution for the cost of the insert
 and search operations would be similar to that of the skip list.
 The problem for the BST is that this randomization does not happen in
 fact, but rather the BST is constrained by the actual order of inputs
-and searches. The memory usage of a BST and the expected of a skip list
-are both :math:`2n` for storing :math:`n` items.
+and searches.
 
 In contrast, the skip list's performance does not depend on the order
 in which values are inserted into the list.
@@ -178,6 +179,13 @@ worst case (in this case, :math:`\Theta(n)` for a skip list
 operation), and a rapidly increasing probability of average-case
 performance of :math:`\Theta(\log n)`, that characterizes
 probabilistic data structures.
+
+The number pointers needed by both the BST and the skip list are the
+same.
+All nodes in the BST have two pointers.
+While nodes in the skip list will have different numbers of pointers,
+the expected number of pointers per node is two, so on average it will
+have the same space requirements as the BST.
 
 .. odsascript:: DataStructures/SkipList.js
 .. odsascript:: AV/SearchStruct/SkipListIntroCON.js
