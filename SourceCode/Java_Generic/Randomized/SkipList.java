@@ -49,8 +49,8 @@ class SkipList<K extends Comparable<K>, E> implements Dictionary<K, E> {
     assert false : "clear not implemented";
   }
 
-  /** Pick a level using a geometric distribution */
   /* *** ODSATag: SkipRand *** */
+  // Pick a level using a geometric distribution
   int randomLevel() {
     int lev;
     for (lev = 0; Math.abs(ran.nextInt()) % 2 == 0; lev++) // ran is random generator
@@ -92,8 +92,7 @@ class SkipList<K extends Comparable<K>, E> implements Dictionary<K, E> {
   /* *** ODSAendTag: SkipInsert *** */
 
   /* *** ODSATag: SkipFind *** */
-  // Return the (first) matching matching element if one exists, null
-  // otherwise
+  // Return the (first) matching matching element if one exists, null otherwise
   public E find(K key) {
     SkipNode<K, E> x = head; // Dummy header node
     for (int i = level; i >= 0; i--) // For each level...

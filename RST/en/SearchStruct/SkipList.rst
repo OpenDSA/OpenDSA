@@ -78,15 +78,15 @@ is set to -1 for the empty list. The start of the SkipList class follows:
 .. codeinclude:: Randomized/SkipList
    :tag: SkipBasic
    
-The ``find`` function is:
+The ``find`` function works as follows.
 
 .. codeinclude:: Randomized/SkipList
    :tag: SkipFind
    
-The ideal skip list is organized so that (if the first and last nodes
-are not counted) half of the nodes have only one pointer, one quarter
+The ideal skip list is organized so that (if the head node is not
+counted) half of the nodes have only one pointer, one quarter
 have two, one eighth have three, and so on.
-The distances are equally spaced; in effect this is a
+And ideally, the distances would be equally spaced; in effect this is a
 "perfectly balanced" skip list.
 Maintaining such balance would be expensive during the normal process
 of insertions and deletions.
@@ -97,7 +97,7 @@ The assignment is random, using a geometric distribution yielding
 a 50% probability that the node will have one pointer, a 25%
 probability that it will have two, and so on.
 The following function determines the level based on such a
-distribution:
+distribution.
 
 .. codeinclude:: Randomized/SkipList
    :tag: SkipRand
@@ -149,12 +149,14 @@ the average case.
 For a skip list of size :math:`n`, the expected 
 memory usage is :math:`2n`.
 This is because a level :math:`l` node needs 
-:math:`l + 1` references but occurs with probability :math:`2^{(l+1)}`.
+:math:`l+1` forward pointers, but occurs with probability :math:`2^{(l+1)}`.
 So a skip list is expected to have
 :math:`\sum_{l=0}^{l=\infty} (l+1)/2^{(l+1)}` pointers, which is 2.
+Thus, the  number of pointers needed by both the BST and the skip list
+are expected to be the same.
 
 In practice, the skip list will probably have better
-performance than a BST.
+performance than a BST storing the same data.
 The BST can have bad performance caused by the order in which data are
 inserted.
 For example, if :math:`n` nodes are inserted into a BST in ascending
@@ -169,8 +171,8 @@ and searches.
 
 In contrast, the skip list's performance does not depend on the order
 in which values are inserted into the list.
-In a sense, the data are "randomization" automatically as part of the
-skip list probabilistic behavior as the depths of the nodes are being
+In a sense, the data are "randomized" automatically as part of the
+skip list's probabilistic behavior when the depths of the nodes are
 selected.
 As the number of nodes in the skip list increases, the probability of
 encountering the worst case decreases geometrically.
@@ -179,13 +181,6 @@ worst case (in this case, :math:`\Theta(n)` for a skip list
 operation), and a rapidly increasing probability of average-case
 performance of :math:`\Theta(\log n)`, that characterizes
 probabilistic data structures.
-
-The number pointers needed by both the BST and the skip list are the
-same.
-All nodes in the BST have two pointers.
-While nodes in the skip list will have different numbers of pointers,
-the expected number of pointers per node is two, so on average it will
-have the same space requirements as the BST.
 
 .. odsascript:: DataStructures/SkipList.js
 .. odsascript:: AV/SearchStruct/SkipListIntroCON.js
