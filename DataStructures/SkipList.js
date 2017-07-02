@@ -120,21 +120,17 @@ SkipListProto.insert = function(it, lev, showS) {
   var newLevel = 0;
   (lev === undefined)? newLevel = randomLevel(): newLevel = lev;
   if (this.level < newLevel) {
-    var flag = false;
-    if (this.level + 1 < newLevel) {
-		var flag = true;
-		if (showStep){
-		  //this.jsav.step();
-		  this.jsav.umsg("The random depth of the node to be inserted is " +
-			newLevel + ", so we must adjust the depth of the header node before inserting.");
-		  this.jsav.step();
-		}
-    }
-    this.head = adjustHead(newLevel, this.head, this.level, this.jsav,
-      this.options);
-    this.level = newLevel;
 	if (showStep){
-		(flag === true) ? this.jsav.step(): flag = false;
+	  //this.jsav.step();
+	  this.jsav.umsg("The random depth of the node to be inserted is " +
+		newLevel + ", so we must adjust the depth of the header node before inserting.");
+	  this.jsav.step();
+	}
+	this.head = adjustHead(newLevel, this.head, this.level, this.jsav,
+	this.options);
+	this.level = newLevel;
+	if (showStep){
+		this.jsav.step();
 	}
   }
   var update = new Array(this.level + 1);
