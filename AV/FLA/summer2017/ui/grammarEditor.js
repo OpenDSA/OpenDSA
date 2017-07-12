@@ -1475,7 +1475,8 @@ $(document).ready(function () {
     $('#deletebutton').hide();
     $('#addrowbutton').hide();
     $('#convertRLGbutton').hide();
-    $('#convertCFGbutton').hide();
+    $('#convertCFGbuttonLL').hide();
+    $('#convertCFGbuttonLR').hide();
     $('#transformbutton').hide();
     $('#addExerciseButton').hide();
 
@@ -1489,6 +1490,7 @@ $(document).ready(function () {
     $('#llbutton').hide();
     $('#slrbutton').hide();
     $('#files').hide();
+    $('#cykbutton').hide();
     $(m.element).css("margin-left", "50px");
     // m._arrays[lastRow].hide();
   };
@@ -2784,7 +2786,7 @@ $(document).ready(function () {
   };
 
   // interactive converting context-free grammar to NPDA
-  var convertToPDA = function () {
+  var convertToPDA = function (event) {
     if(checkLHSVariables()){
       alert('Your production is unrestricted on the left hand side');
       return;
@@ -2803,6 +2805,14 @@ $(document).ready(function () {
     builtDFA.makeInitial(a);
     c.addClass('final');
     var startVar = productions[0][0];
+    if(event.data.param1){
+      convertToPDAinLL(a, b, c, productions, startVar);
+    }else{
+      convertToPDAinLR(a, b, c, productions, startVar);
+    }
+  };
+
+  function convertToPDAinLL(a, b, c, productions, startVar) {
     builtDFA.addEdge(a, b, {weight: emptystring + ':Z:' + startVar + 'Z'});
     builtDFA.addEdge(b, c, {weight: emptystring + ':Z:' + emptystring});
     // add a transition for each terminal
@@ -2835,6 +2845,58 @@ $(document).ready(function () {
           var newLabelHeight = $(newEdge._label.element[0]).height();
           var graphOffset = (newLabelHeight - labelHeight) / pCount;
           $(".jsavgraph").height(h + graphOffset);
+          var nodeY = $(a.element).offset().top;
+          $(a.element).offset({top: nodeY + graphOffset});
+          $(b.element).offset({top: nodeY + graphOffset});
+          $(c.element).offset({top: nodeY + graphOffset});
+          builtDFA.layout();
+        }
+        if (pCount === productions.length) {
+          var confirmed = confirm('Finished! Export?');
+          if (confirmed) {
+            exportConvertedPDA();
+          }
+        }
+      }
+    };
+    m.click(convertGrammarHandler);
+  };
+
+  function convertToPDAinLR(a, b, c, productions, startVar) {
+    builtDFA.addEdge(a, b, {weight: emptystring + ':' + startVar + ':' + emptystring});
+    builtDFA.addEdge(b, c, {weight: emptystring + ':Z:' + emptystring});
+    // add a transition for each terminal
+    for (var i = 0; i < productions.length; i++) {
+      var t = productions[i][2].split("");
+      for (var j = 0; j < t.length; j++) {
+        if (variables.indexOf(t[j]) === -1 && t[j] !== emptystring) {
+          builtDFA.addEdge(a, a, {weight: t[j] + ':' + emptystring + ':' + t[j]});
+        }
+      }
+    }
+    var aEdge = builtDFA.getEdge(a, a);
+    $(aEdge._label.element[0]).css('font-size', '1.4em');
+    builtDFA.layout();
+
+
+    var pCount = 0;
+    var labelHeight = $(aEdge._label.element[0]).height();
+    // handler for the grammar table
+    var convertGrammarHandler = function (index) {
+      this.highlight(index);
+      var l = this.value(index, 0);
+      var r = this.value(index, 2);
+      var reversed = r.split('').reverse().join('');
+      var newEdge = builtDFA.addEdge(a, a, {weight: emptystring + ':' + reversed + ':' + l});
+      if (newEdge) {
+        newEdge.layout();
+        pCount++;
+        // scale graph window
+        if ($(newEdge._label.element[0]).offset().top < $('.jsavgraph').offset().top) {
+          var h = $(".jsavgraph").height();
+          var newLabelHeight = $(newEdge._label.element[0]).height();
+          var graphOffset = (newLabelHeight - labelHeight) / pCount;
+          $(".jsavgraph").height(h + graphOffset);
           var nodeY = $(b.element).offset().top;
           $(a.element).offset({top: nodeY + graphOffset});
           $(b.element).offset({top: nodeY + graphOffset});
@@ -2851,6 +2913,7 @@ $(document).ready(function () {
     };
     m.click(convertGrammarHandler);
   };
+
 
   //=================================
   // Files
@@ -3385,7 +3448,8 @@ $(document).ready(function () {
   $('#loadfile').on('change', loadFile);
   $('#savefile').click(saveFile);
   $('#convertRLGbutton').click(convertToFA);
-  $('#convertCFGbutton').click(convertToPDA);
+  $('#convertCFGbuttonLL').click({param1: true}, convertToPDA);
+  $('#convertCFGbuttonLR').click({param1: false}, convertToPDA);
   $('#multipleButton').click(toggleMultiple);
   $('#addExerciseButton').click(addExercise);
   $('#identifybutton').click(identifyGrammar);

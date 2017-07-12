@@ -77,21 +77,31 @@ npda.toggleLambda = function() {
 npda.play = function(inputString) {
 	this.setupControls();
 
-	var configArray = this.jsav.ds.array();
-	this.configViews.push(configArray.element);
+	// var configArray = this.jsav.ds.array();
+	// this.configViews.push(configArray.element);
 	this.initial.addClass('current');
+	this.configurations = $("<ul>");
 	var currentStates = [new Configuration(this.configurations, this.initial, ['Z'], inputString, 0)];
 	currentStates = this.addLambdaClosure(currentStates);
+	var configArray = this.jsav.ds.array(this.configurations);
+	this.configViews.push(configArray.element);
+	var $configView = $('#configurations');
+	$configView.empty();
+	$configView.append(this.configViews[0]);
+
+
+	this.jsav.displayInit();
+
 	this.configurations = $("<ul>");
 	for (var j = 0; j < currentStates.length; j++) {
 		currentStates[j].update();
 	}
+	console.log(this.configurations);
 
 	configArray = this.jsav.ds.array(this.configurations);
 	this.configViews.push(configArray.element);
-	var cur;
 
-	this.jsav.displayInit();
+	var cur;
 	counter = 0;
 	var stringAccepted = false;
 	while (true) {
@@ -117,8 +127,6 @@ npda.play = function(inputString) {
 				if (currentStates[j].state.hasClass('final')) {
 					currentStates[j].state.addClass('accepted');
 					stringAccepted = true;
-				} else {
-					currentStates[j].state.addClass('rejected');
 				}
 			}
 			currentStates[j].update();
@@ -434,6 +442,7 @@ npda.setupControls = function() {
 	var $configView = $('#configurations');
 	$('.jsavbegin').click(function() {
 		$configView.empty();
+		$configView.append(t.configViews[0]);
 		t.step = 0;
 	});
 	$('.jsavend').click(function() {
