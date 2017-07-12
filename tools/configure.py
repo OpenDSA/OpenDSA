@@ -39,7 +39,6 @@ import subprocess
 import codecs
 import datetime
 import threading
-import requests
 import urllib
 
 from collections import Iterable
@@ -49,9 +48,6 @@ from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config, parse_error
 from postprocessor import update_TOC, update_TermDef, make_lti
 from urlparse import urlparse
-
-
-requests.packages.urllib3.disable_warnings()
 
 # List ocanvas_module_idf exercises encountered in RST files that do not appear in the
 # configuration file
