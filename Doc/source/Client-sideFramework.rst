@@ -494,8 +494,8 @@ Example:
                                             "tstamp": 1500227646286
                                            }'                                          
 
-Proficiency Exercise Attempt Object:
-------------------------------------
+Proficiency Exercise Attempt Object
+-----------------------------------
 
 Unlike Interaction data events, the client-side framework will attempt to send the exercise attempts to the server immediately. Each proficiency exercise data object contains the following fields:
 
@@ -510,8 +510,8 @@ Unlike Interaction data events, the client-side framework will attempt to send t
   * inst_book_id - instance book database Id
   * inst_section_id - instance book section Id
 
-Khan Academy Exercise Attempt Object:
--------------------------------------
+Khan Academy Exercise Attempt Object
+------------------------------------
 
 Khan Academy exercise framework sends two types of events to the server. First, the attempt event is sent whenever a student solves an exercise question and hits "Check Answer" button. Second, the hint event is sent whenever a student hits the hint button on a question. Khan Academy event object contains the following fields:
 
