@@ -77,11 +77,21 @@ npda.toggleLambda = function() {
 npda.play = function(inputString) {
 	this.setupControls();
 
-	var configArray = this.jsav.ds.array();
-	this.configViews.push(configArray.element);
+	// var configArray = this.jsav.ds.array();
+	// this.configViews.push(configArray.element);
 	this.initial.addClass('current');
+	this.configurations = $("<ul>");
 	var currentStates = [new Configuration(this.configurations, this.initial, ['Z'], inputString, 0)];
 	currentStates = this.addLambdaClosure(currentStates);
+	var configArray = this.jsav.ds.array(this.configurations);
+	this.configViews.push(configArray.element);
+	var $configView = $('#configurations');
+	$configView.empty();
+	$configView.append(this.configViews[0]);
+
+
+	this.jsav.displayInit();
+
 	this.configurations = $("<ul>");
 	for (var j = 0; j < currentStates.length; j++) {
 		currentStates[j].update();
@@ -89,9 +99,8 @@ npda.play = function(inputString) {
 
 	configArray = this.jsav.ds.array(this.configurations);
 	this.configViews.push(configArray.element);
-	var cur;
 
-	this.jsav.displayInit();
+	var cur;
 	counter = 0;
 	var stringAccepted = false;
 	while (true) {
@@ -117,8 +126,6 @@ npda.play = function(inputString) {
 				if (currentStates[j].state.hasClass('final')) {
 					currentStates[j].state.addClass('accepted');
 					stringAccepted = true;
-				} else {
-					currentStates[j].state.addClass('rejected');
 				}
 			}
 			currentStates[j].update();
@@ -139,12 +146,16 @@ npda.traverse = function(currentStates) {
 	// currentStates is an array of configurations
 	var nextStates = [];
 	for (var i = 0; i < currentStates.length; i++) {
+		//Current problem is that the neighbors doesn't include the case where the node has an edge connecting to itself. We also need to check if there is an edge connecting to itself
 		var successors = currentStates[i].state.neighbors(),
 				curStack = currentStates[i].stack,
 				curIndex = currentStates[i].curIndex,
 				s = currentStates[i].inputString,
 				letter = s[curIndex];
 		for (var next = successors.next(); next; next = successors.next()) {
+			if(nextStates.length > 50){
+				break;
+			}
 			var w = this.getEdge(currentStates[i].state, next).weight().split('<br>');
 			for (var j = 0; j < w.length; j++) {
 				var nextIndex = curIndex + 1;
@@ -184,12 +195,13 @@ npda.traverse = function(currentStates) {
 					}
 					next.addClass('current');
 					nextStates.push(nextConfig);
-					break;
+					// break;
+					continue;
 				}
 			}
 		}
 	}
-	nextStates = _.uniq(nextStates, function(x) {return x.toString();});
+	nextStates = _.each(nextStates, function(x) {return x.toString();});
 	nextStates = this.addLambdaClosure(nextStates);
 	return nextStates;
 };
@@ -216,7 +228,7 @@ npda.addLambdaClosure = function(nextStates) {
 	for (var k = 0; k < lambdaStates.length; k++) {
 		nextStates.push(lambdaStates[k]);
 	}
-	nextStates = _.uniq(nextStates, function(x) {return x.toString();});
+	nextStates = _.each(nextStates, function(x) {return x.toString();});
 	return nextStates;
 };
 
@@ -434,6 +446,7 @@ npda.setupControls = function() {
 	var $configView = $('#configurations');
 	$('.jsavbegin').click(function() {
 		$configView.empty();
+		$configView.append(t.configViews[0]);
 		t.step = 0;
 	});
 	$('.jsavend').click(function() {
