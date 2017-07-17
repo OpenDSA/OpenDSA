@@ -19,8 +19,9 @@
       leftP, //Left Location
       link1, // First created Link
       link2, // Second created Link
-      selected_pointer, // Remember pointer object that has been selected by user for swap
-      selected_node; // Remember node that has been selected by user for swap
+      pAnswer, // Answer Mode to check the answer
+      selected_pointer, // Remember pointer object that has been selected by user
+      selected_node; // Remember node that has been selected by user
 
   var pointerEX3PRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
@@ -91,8 +92,28 @@
       pointerEX3PRO.userInput = true;
     },
 
-    clickHandler: function(){
-      if(selected_pointer !== null){
+    clickHandler: function(e){
+      var x = parseInt(e.pageX - $("#" + this.id()).offset().left, 10);
+      var y = parseInt(e.pageY - $("#" + this.id()).offset().top, 10);
+      if (x > 31 && x < 42 && y > 0 && y < 31) { // We are in the pointer part
+        window.alert(x + ", " + y);
+        if (selected_node !== null) { // Clear prior node value selection
+          selected_node.removeClass("highlightbox");
+          selected_node = null;
+        }
+        if (fromNode === null) { // Newly selecting a node pointer field
+          $("#" + this.id() + " .jsavpointerarea:first").addClass("highlightbox");
+          fromNode = this;
+        } else if (this.id() === fromNode.id()) { // re-clicked pointer
+          $("#" + this.id() + " .jsavpointerarea:first").removeClass("highlightbox");
+          fromNode = null;
+        } else { // Clicked a second pointer, so replace
+          $("#" + fromNode.id() + " .jsavpointerarea:first").removeClass("highlightbox");
+          $("#" + this.id() + " .jsavpointerarea:first").addClass("highlightbox");
+          fromNode = this;
+        }
+      }
+      else if(selected_pointer !== null){
         if(selected_pointer.target() !== this){
           pointerEX3PRO.setPointer(selected_pointer.element.text(), this, selected_pointer);
         }
@@ -104,15 +125,20 @@
           if(selected_node !== this){
             if(this === johnNode){
               //draw arrow
-              var pos = $("#" + selected_node.id()).position();
-              var top = pos.top;
-              var left = pos.left;
-              av.g.line(left + 45, top + 45, leftP + 45, topP + 110, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-
+              var pos = selected_node.container.position();
+              if(selected_node === link1.get(0)){
+                if(pAnswer === 0){
+                  pAnswer = 1;
+                }
+              } else {
+                pAnswer = 2;
+              }
+              var nodeTop = pos.top;
+              var nodeLeft = pos.left;
+              av.g.line(nodeLeft + 35, nodeTop + 55, leftP + 45, topP + 110, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
               selected_node = null;
             } else {
-              selected_node = this;
-              selected_node.highlight();
+
             }
           } else {
             selected_node = null;
@@ -120,6 +146,7 @@
         } else {
           selected_node = this;
           selected_node.highlight();
+          // $("#" + this.id() + " .jsavpointerarea:first").addClass("highlightbox");
         }
       }
 
@@ -154,6 +181,8 @@
       // JSAV position.
       var leftMargin = 70,
           topMargin = 150;
+
+      pAnswer = 0;
 
       // Reset the value of global variables.
       pointerEX3PRO.userInput = false;
@@ -210,11 +239,17 @@
       $("#reset").click(function() {
         pointerEX3PRO.reset();
       });
-
     },
 
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function() {
+      if(link1.get(0).llist_pleft.element.text() !== "first"){
+        return false;
+      } else if (pAnswer !== 1){
+        return false;
+      } else if (johnNode.value(0) !== "John, 1000"){
+        return false;
+      }
       return true;
     },
   };
