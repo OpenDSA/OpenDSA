@@ -39,7 +39,7 @@ var lambda = String.fromCharCode(955),
 		g.addEdge(e, c, {weight: 'b,a;' + emptystring});
 
 		$(".jsavgraph").click(graphClickHandler);
-    g.click(nodeClickHandler);
+    	g.click(nodeClickHandler);
 		g.click(edgeClickHandler, {edge: true});
 		$('.jsavedgelabel').click(labelClickHandler);
 
@@ -186,6 +186,9 @@ var lambda = String.fromCharCode(955),
 			}
 			this.unhighlight();
 		}
+		else if ($('.jsavgraph').hasClass('convert')) {
+
+		}
 	};
 
 
@@ -209,9 +212,45 @@ var lambda = String.fromCharCode(955),
 		g.toggleLambda();
 	};
 
+	var convertToGrammar = function() {
+		var edges = g.edges();
+		//check if the npda is in the right format - pop 1 and push 0 or 2 symbols; also separate transitions into town categories - size increases one or decreases one
+		var increaseOne = [];
+		var decreaseOne = [];
+		for (var next = edges.next(); next; next = edges.next()) {
+			var wSplit = toColonForm(next.weight()).split('<br>');
+			for (var i = 0; i < wSplit.length; i++) {
+				var t = wSplit[i].split(':');
+				//if doesn't pop or pop more than one or push 1 symbol that's not lambda or push more than 2
+				if(t[1] === emptystring || t[1].length > 1 || (t[2].length === 1 && t[2] != emptystring) || t[2].length > 2) {
+					jsav.umsg("The NPDA is not in the correct format, please correct it and try again");
+					break;
+				}else if (t[2].length === 2){
+					increaseOne.push(t);
+				}else{
+					decreaseOne.push(t);
+				}
+			}
+		}
+		jsav.umsg("Click on the edges to convert transitions into equivalent productions");
+		console.log(increaseOne);
+		console.log(decreaseOne);
+
+
+
+	};
+
 	//===============================
 	//editing modes
 
+	var convertMode = function() {
+		cancel();
+		var jg = $(".jsavgraph");
+		jg.addClass("convert");
+		$("#mode").html('Convert to grammar');
+		addEdgeSelect();
+		jsav.umsg("Click edge to convert to grammar");
+	};
 	var addNodesMode = function() {
 		cancel();
 		var jg = $(".jsavgraph");
@@ -264,6 +303,7 @@ var lambda = String.fromCharCode(955),
 		jg.removeClass("moveNodes");
 		jg.removeClass("edit");
 		jg.removeClass("delete");
+		jg.removeClass("convert");
 		var nodes = g.nodes();
 		for (var node = nodes.next(); node; node = nodes.next()) {
 			node.unhighlight();
@@ -438,6 +478,7 @@ var lambda = String.fromCharCode(955),
 	$('#moveButton').click(moveNodesMode);
 	$('#editButton').click(editMode);
 	$('#deleteButton').click(deleteMode);
+	$('#convertToGrammarButton').click(convertToGrammar);
 	$('#saveButton').click(save);
 	$('#undoButton').click(function() {
 		g.undo();
