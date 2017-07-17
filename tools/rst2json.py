@@ -639,7 +639,7 @@ def save_debug_files(xml_str, json_str, rst_fname):
 def save_generated_config(everything_config, simple_configs):
   '''
   '''
-  print('Generating configuration files ...\n')
+  print('\nGenerating configuration files ...\n')
 
   config_dir = os.path.abspath('config')
   if simple_configs != None:
@@ -725,7 +725,8 @@ if __name__ == '__main__':
     if rst_fname in execluded_files:
       continue
 
-    rst_dir_name = x.split('/')[-2]
+    rst_dir_name = x.split(os.sep)[-2]
+
     if rst_dir_name not in folder_names.keys():
       continue
 

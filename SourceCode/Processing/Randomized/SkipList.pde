@@ -1,8 +1,17 @@
+/* *** ODSATag: SkipBasic *** */
+Not available.
+/* *** ODSAendTag: SkipBasic *** */
+
+/* *** ODSATag: SkipNode *** */
+Not available.
+/* *** ODSAendTag: SkipNode *** */
+
 /* *** ODSATag: SkipRand *** */
-/** Pick a level using a geometric distribution */
+// Pick a level using a geometric distribution
 int randomLevel() {
   int lev;
-  for (lev=0; DSutil.random(2) == 0; lev++); // Do nothing
+  for (lev=0; DSutil.random(2) == 0; lev++)
+    ; // Do nothing
   return lev;
 }
 /* *** ODSAendTag: SkipRand *** */
