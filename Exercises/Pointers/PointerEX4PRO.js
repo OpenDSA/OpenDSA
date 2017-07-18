@@ -38,11 +38,50 @@
       if (obj1 === obj2) { return; }
       var pos1 = $("#" + obj1.id()).position();
       var pos2 = $("#" + obj2.id()).position();
-      var fx = pos1.left + 39 + leftP + 50;
-      var tx = pos2.left + 2 + leftP + 50;
-      var fy = pos1.top + topP + 30;
+      var fx = pos1.left + 75 + leftP + 55;
+      var tx = pos2.left + 2 + leftP + 55;
+      var fy = pos1.top + topP + 35;
+      var ty = pos2.top + topP + 55;
+      var fx1 = fx,
+          fy1 = fy,
+          tx1 = tx,
+          ty1 = ty;
 
-      var edge = av.g.line(fx, fy, tx, fy, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+      var disx = ((fx - tx - 22) > 0) ? 1 : ((fx - tx - 22) === 0) ? 0 : -1;
+      var disy = ((fy - ty) > 0) ? 1 : ((fy - ty) === 0) ? 0 : -1;
+
+      var dx = Math.max(Math.abs(fx - tx) / 2, 35);
+      var dy = Math.max(Math.abs(fy - ty) / 2, 35);
+
+      if ((fy - ty > -25) && (fy - ty < 25) && ((tx - fx < 36) || (tx - fx > 38))) {
+        dx = Math.min(Math.abs(fx - tx), 20);
+        dy = Math.min(Math.abs(fx - tx) / 3, 50);
+        tx += 22;
+        ty -= 15;
+        fx1 = fx;
+        fy1 = fy - dy;
+        tx1 = tx - dx;
+        ty1 = ty - dy;
+      } else if (disx === 1) {
+        tx += 22;
+        ty += 15 * disy;
+        fx1 = fx + dx;
+        fy1 = fy - dy * disy;
+        tx1 = tx;
+        ty1 = ty + dy * disy;
+      } else if (disx === -1) {
+        fx1 = fx + dx;
+        fy1 = fy;
+        tx1 = tx - dx;
+        ty1 = ty;
+      }
+
+      var edge = jsav.g.path(["M", fx, fy, "C", fx1, fy1, tx1, ty1, tx, ty].join(","),
+                             {"arrow-end": "classic-wide-long", opacity: 100,
+                              "stroke-width": 2});
+
+
+      // var edge = av.g.line(fx, fy, tx, fy, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
 
       if (obj1.llist_next) {
         obj1.llist_edgeToNext.element.remove();
@@ -55,7 +94,7 @@
     clickHandler: function(e) {
       var x = parseInt(e.pageX - $("#" + this.id()).offset().left, 10);
       var y = parseInt(e.pageY - $("#" + this.id()).offset().top, 10);
-      if (x > 31 && x < 42 && y > 0 && y < 31) { // We are in the pointer part
+      if (x > 60 && x < 92 && y > 0 && y < 41) { // We are in the pointer part
         if (selected_node !== null) { // Clear prior node value selection
           selected_node.removeClass("bgColor");
           selected_node = null;
@@ -90,6 +129,29 @@
       pointerEX4PRO.userInput = true;
     },
 
+    empclick: function() {
+      if (selected_node !== null){
+        selected_node.element.removeClass("bgColor");
+      }
+
+      // if (selected_pointer === null) { // No currently selected pointer object
+      //   if(selected_node !== null){
+      //     selected_node.unhighlight();
+      //     selected_node = null;
+      //   }
+      //   selected_pointer = pointer;
+      //   selected_pointer.element.addClass("bgColor");
+      // } else if (selected_node === this) { // Re-clicked slected pointer
+      //   node.element.removeClass("bgColor");
+      //   selected_pointer = null;
+      // } else { // Reselecting a new pointer
+      //   selected_pointer.element.removeClass("bgColor");
+      //   selected_pointer = pointer;
+      //   selected_pointer.element.addClass("bgColor");
+      // }
+      pointerEX3PRO.userInput = true;
+    },
+
 
     // Handle "NewNode" button click
     newnode: function() {
@@ -100,7 +162,7 @@
       } else if (newLinkNode === null) { // Do nothing if new node already exists
         newLinkNode = jsavList.newNode("");
         // Calculate and set position for the new node
-        var leftOffset = (listSize - 1) * 73 + 130;
+        var leftOffset = (listSize - 1) * 73 + 180;
         var topOffset = 0;
         newLinkNode.css({top: topOffset, left: leftOffset});
         // Set its values
@@ -134,7 +196,7 @@
       var newEmp = prompt("Please enter the name and the salary, separated by comma(,)", "Sam, 2000");
       empNode = av.ds.array([newEmp], {top: topP + 90, left: leftP + 50});
       // empNode.addClass([0], "empNode");
-      empNode.click(pointerEX4PRO.clickHandler);
+      empNode.click(pointerEX4PRO.empclick);
       pointerEX4PRO.userInput = true;
     },
 
@@ -174,7 +236,7 @@
       // Create pointers
       // pointerEX4PRO.setPointer("first", nullNode);
 
-      jsavList = av.ds.list({nodegap: 50, top: topP, left: leftP + 50});
+      jsavList = av.ds.list({nodegap: 50, top: topP + 20, left: leftP + 50});
 
       av.displayInit();
       av.recorded();
