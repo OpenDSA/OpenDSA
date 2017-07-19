@@ -25,6 +25,8 @@ $(document).ready(function () {
       row,              // row number for input box
       col;              // column number for input box
 
+  var parenthesis = "(";
+
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
       square = String.fromCharCode(9633),
@@ -37,11 +39,13 @@ $(document).ready(function () {
   if (localStorage["grammar"]) {
     // the grammar is saved as a string of a list of strings:
     // turn each production into an array containing the left side, arrow, and right side
-    arr = _.map(localStorage['grammar'].split(','), function(x) {
-      var d = x.split(arrow);
-      d.splice(1, 0, arrow);
-      return d;
-    });
+    // arr = _.map(localStorage['grammar'].split(','), function(x) {
+    //   var d = x.split(arrow);
+    //   d.splice(1, 0, arrow);
+    //   return d;
+    // });
+    arr = JSON.parse(localStorage.getItem('grammar'));
+
     lastRow = arr.length;
     // add an empty row for editing purposes (clicking the empty row allows the user to add productions)
     arr.push(["", arrow, ""]);
@@ -1747,7 +1751,7 @@ $(document).ready(function () {
     return false;
   };
 
-  // remove useless productions
+   // remove useless productions
   var removeUseless = function () {
     var derivers = {};  // variables that derive a string of terminals
     var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
