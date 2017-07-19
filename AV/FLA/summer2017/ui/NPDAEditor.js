@@ -253,6 +253,8 @@ var lambda = String.fromCharCode(955),
 			}
 		}
 		convertMode();
+		$('#completeConvertButton').show();
+		$('#completeConvertButton').click(completeConvert);
 		jsav.umsg("Click on the transitions to convert transitions into equivalent productions");
 		table = jsav.ds.matrix({rows: 100, columns: 3, style: "table"});
 		for (var i = lastRow + 1; i < 100; i++) {
@@ -262,9 +264,17 @@ var lambda = String.fromCharCode(955),
 		$(".jsavmatrix").css("margin-left", "auto");
 	};
 
+	function completeConvert () {
+		var edges = g.edges();
+		for (var next = edges.next(); next; next = edges.next()) {
+			if(!visitedEdges.includes(next)){
+				convertTransition(next);
+			}
+		}
+	};
 
 	//convert transition(s) to equivalent production(s)
-	var convertTransition = function(edge) {
+	function convertTransition(edge) {
 		if(!visitedEdges.includes(edge)){
 			visitedEdges.push(edge);
 		}else{
@@ -313,10 +323,8 @@ var lambda = String.fromCharCode(955),
 			alert('All transitions have been converted, export to grammar editor?');
 			productions = removeUseless(productions);
 			productions = transform(productions);
-			console.log(productions);
 			localStorage['grammar'] = JSON.stringify(productions);
 			window.open("./grammarEditor.html");
-
 		}
 	};
 
@@ -649,6 +657,7 @@ var lambda = String.fromCharCode(955),
 	$('#editButton').click(editMode);
 	$('#deleteButton').click(deleteMode);
 	$('#convertToGrammarButton').click(convertToGrammar);
+	$('#completeConvertButton').hide();
 	$('#saveButton').click(save);
 	$('#undoButton').click(function() {
 		g.undo();
