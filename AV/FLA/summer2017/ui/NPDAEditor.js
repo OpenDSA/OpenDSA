@@ -282,6 +282,13 @@ var lambda = String.fromCharCode(955),
 			return;
 		}
 		var transitions = toColonForm(edge.label()).split('<br>');
+		function setTableValue (a, b, c) {
+			table.value(lastRow, 0, a);
+			table.value(lastRow, 1, b);
+			table.value(lastRow, 2, c);
+			table._arrays[lastRow].show();
+			lastRow++;
+		}
 		for(var i = 0; i < transitions.length; i++){
 			var transition = transitions[i];
 			var transitionSplit = transition.split(':');
@@ -289,31 +296,20 @@ var lambda = String.fromCharCode(955),
 			var toNode = edge.end();
 			var qi = fromNode.value();
 			var qj = toNode.value();
-			// var production;
 			if(increaseOne.indexOf(transition) > -1) {
 				var states = g.nodes();
 				for (var k = 0; k < states.length; k++) {
 					var qk = states[k].value();
 					for (var l = 0; l < states.length; l++) {
 						var ql = states[l].value();
-						// production = '(' + qi + transitionSplit[1] + qk + ')' + arrow + transitionSplit[0] + '(' + qj + transitionSplit[2][0] + ql + ')' + '(' + ql + transitionSplit[2][1] + qk + ')';
 						// format ['', '', ['','','']]
 						productions.push(['(' + qi + transitionSplit[1] + qk + ')', arrow, [transitionSplit[0] , '(' + qj + transitionSplit[2][0] + ql + ')' , '(' + ql + transitionSplit[2][1] + qk + ')']]);
-						table.value(lastRow, 0, '(' + qi + transitionSplit[1] + qk + ')');
-						table.value(lastRow, 1, arrow);
-						table.value(lastRow, 2, transitionSplit[0] + '(' + qj + transitionSplit[2][0] + ql + ')' + '(' + ql + transitionSplit[2][1] + qk + ')');
-						table._arrays[lastRow].show();
-						lastRow++;
+						setTableValue('(' + qi + transitionSplit[1] + qk + ')', arrow, transitionSplit[0] + '(' + qj + transitionSplit[2][0] + ql + ')' + '(' + ql + transitionSplit[2][1] + qk + ')');
 					}
 				}
 			}else{
-				// production = '(' + qi + transitionSplit[1] + qj + ')' + arrow + transitionSplit[0];
 				productions.push(['(' + qi + transitionSplit[1] + qj + ')', arrow, [transitionSplit[0]]]);
-				table.value(lastRow, 0, '(' + qi + transitionSplit[1] + qj + ')');
-				table.value(lastRow, 1, arrow);
-				table.value(lastRow, 2, transitionSplit[0]);
-				table._arrays[lastRow].show();
-				lastRow++;
+				setTableValue('(' + qi + transitionSplit[1] + qj + ')', arrow, transitionSplit[0]);
 			}
 			table.layout();
 		}
