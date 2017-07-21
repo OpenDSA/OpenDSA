@@ -286,13 +286,16 @@ $(document).ready(function () {
     if ($(e.target).attr('id') == "firstinput") return;
     if (!fi || !fi.is(':visible')) return;
     var input = fi.val();
+    //String coercion, convert input to string before split
+    input = input + '';
+    var inputArry = input.split(',');
     //If user didn't input anything, and there already exists info in that cell, do nothing
     if (input === "" && userTable[oldrow][oldcol].length > 0) {
       input = userTable[oldrow][oldcol];
     }
     fi.remove();
-    jsavParseTable.value(oldrow, oldcol, input);
-    userTable[oldrow][oldcol] = input;
+    jsavParseTable.value(oldrow, oldcol, inputArry);
+    userTable[oldrow][oldcol] = inputArry;
     layoutCYKParseTable(jsavParseTable);
     checkAnswer(oldrow, oldcol);
   };
