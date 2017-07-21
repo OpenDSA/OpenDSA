@@ -243,7 +243,7 @@ var lambda = String.fromCharCode(955),
 				var t = weights[i].split(':');
 				//if doesn't pop or pop more than one or push 1 symbol that's not lambda or push more than 2
 				if(t[1] === emptystring || t[1].length > 1 || (t[2].length === 1 && t[2] != emptystring) || t[2].length > 2) {
-					jsav.umsg("The NPDA is not in the correct format, please correct it and try again");
+					jsav.umsg("This NPDA is not in the correct format, transitions must pop 1 and push 0 or 2. Please correct it and try again");
 					return;
 				}else if (t[2].length === 2){
 					increaseOne.push(weights[i]);
@@ -322,6 +322,11 @@ var lambda = String.fromCharCode(955),
 			jsav.umsg('Finished');
 			alert('All transitions have been converted, export to grammar editor?');
 			productions = removeUseless(productions);
+
+			var reducedTable = jsav.ds.matrix(productions, {style: "table"});
+			reducedTable.layout();
+			$(".jsavmatrix").css("margin-left", "auto");
+
 			productions = transform(productions);
 			localStorage['grammar'] = JSON.stringify(productions);
 			window.open("./grammarEditor.html");

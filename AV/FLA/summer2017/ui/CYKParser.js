@@ -41,10 +41,6 @@ $(document).ready(function () {
   };
 
   function cykParse() {
-    // //first convert grammar to CNF, currently there seems to be problems with convertToChomsky()
-    // var cnf = convertToChomsky();
-    // console.log(cnf);
-
     if (productions.length === 0) {
       alert('No grammar.');
       return;
@@ -65,7 +61,6 @@ $(document).ready(function () {
     // }
 
     //table will be the one with the correct answer, while userTable will be used for user to input, 
-    //TODO: need to refactor this part
     table = new Array(inputLength);
     userTable = new Array(inputLength);
     for (var s = 0; s < inputLength; s++) {
@@ -209,6 +204,15 @@ $(document).ready(function () {
 
   };
 
+  //check the user input against the answer up to a specific row
+  function checkAnswerToRow(row) {
+  	for(var r = 0; r < row; r++){
+  		for(var c = 0; c < userTable[r].length; c++){
+  			checkAnswer(r, c);
+  		}
+  	}
+  }
+
   //check the user input against the answer at a specific index
   function checkAnswer(row, col) {
     if(!checkAnswerHelper(row, col)){
@@ -286,8 +290,11 @@ $(document).ready(function () {
   };
 
   function completeCYKTable(){
-    userTable = table;
+  	for(var i = 0; i < table.length; i++){
+  		userTable[i] = table[i].slice();
+  	}
     setCYKParseTable(userTable);
+    checkAnswerToRow(table.length);
   };
 
   function step(){
@@ -297,9 +304,9 @@ $(document).ready(function () {
       adjustedStep = inputString.length - currentStep - 1;
     }
     if(currentStep < table.length){
-      console.log(adjustedStep);
-      userTable[adjustedStep] = table[adjustedStep];
+      userTable[adjustedStep] = table[adjustedStep].slice();
       setCYKParseTable(userTable);
+      checkAnswerToRow(currentStep);
       currentStep++;
     }
   };
