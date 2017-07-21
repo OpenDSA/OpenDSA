@@ -155,16 +155,19 @@ $(document).ready(function () {
 
     table = tempTable;
     userTable = tempUserTable;
-    //if not flipped, flip it
+    jsavParseTable.clear();
+    initCYKParseTable(userTable);
+    //if not flipped (tableState is true), then flip it
     if(tableState){
       tableState = false;
       finalrow = 0;
+      checkAnswerFromTo(inputString.length - currentStep, inputString.length - 1);
     }else{
       tableState = true;
       finalrow = inputString.length-1;
+      checkAnswerFromTo(0, currentStep - 1);
     }
-    jsavParseTable.clear();
-    initCYKParseTable(userTable);
+
   };
 
 
@@ -204,12 +207,17 @@ $(document).ready(function () {
 
   };
 
-  //check the user input against the answer up to a specific row
-  function checkAnswerToRow(row) {
-  	for(var r = 0; r < row; r++){
-  		for(var c = 0; c < userTable[r].length; c++){
-  			checkAnswer(r, c);
-  		}
+  //check the user input against the answer from a smaller row number to a bigger row number (inclusive);
+  function checkAnswerFromTo(smallerRow, biggerRow) {
+  	for(var r = smallerRow; r <= biggerRow; r++ ){
+  		checkAnswerInRow(r);
+  	}
+  };
+
+  //check the user input against the answer in a specific row
+  function checkAnswerInRow(row) {
+  	for(var col = 0; col < userTable[row].length; col++){
+  		checkAnswer(row, col);
   	}
   }
 
@@ -294,7 +302,9 @@ $(document).ready(function () {
   		userTable[i] = table[i].slice();
   	}
     setCYKParseTable(userTable);
-    checkAnswerToRow(table.length);
+    for(var row = 0; row < table.length; row++) {
+    	checkAnswerInRow(row);
+    }
   };
 
   function step(){
@@ -306,7 +316,7 @@ $(document).ready(function () {
     if(currentStep < table.length){
       userTable[adjustedStep] = table[adjustedStep].slice();
       setCYKParseTable(userTable);
-      checkAnswerToRow(currentStep);
+      checkAnswerInRow(adjustedStep);
       currentStep++;
     }
   };
