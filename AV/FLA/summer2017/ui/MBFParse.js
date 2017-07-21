@@ -399,13 +399,7 @@ $(document).ready(function () {
     queue.push(productions[0][0]);
     while(queue.length !== 0){
       if(counter > 5000){
-        console.warn(counter);
-        var confirmed = confirm('This is taking a while. Continue?');
-        if (confirmed) {
-          counter = 0;
-        } else {
-          break;
-        }
+        break;
       }
       var next = queue.shift();
       if(removeLambda(next) === inputString){
