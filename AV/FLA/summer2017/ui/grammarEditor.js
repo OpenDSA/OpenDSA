@@ -3435,6 +3435,7 @@ $(document).ready(function () {
     $('#backbutton').hide();
     $('.parsingbutton').off();
     $('.parsingbutton').hide();
+    $('#completeallbutton').hide();
     $('#files').show();
     $(m.element).css("margin-left", "auto");
     $('.jsavmatrix').addClass("editMode");
