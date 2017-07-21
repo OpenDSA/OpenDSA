@@ -12,11 +12,13 @@ $(document).ready(function () {
       parseTable,         // parse table used for pasing
       ffTable,            // table for FIRST and FOLLOW sets
       type,               // type of parsing, can be bf, ll, slr
-      grammars;           // stores grammar exercises, xml
+      grammars,           // stores grammar exercises, xml
+      derivationTree;
 
   var lambda = String.fromCharCode(955);
   var productions = JSON.parse(localStorage.getItem('grammars'));
   m = jsav.ds.matrix(productions, {style: "table"});
+  derivationTree = {};
 
   $('#helpbutton').click(displayHelp);
   $('#addinputbutton').click(addInput);
@@ -24,8 +26,8 @@ $(document).ready(function () {
   $('#runinputsbutton').click(runMultiInputs);
   $('#clearbutton').click(clearAll);
   $('#backbutton').click(function () {
-    if (parseTree) {
-      parseTree.clear();
+    if (parseGraph) {
+      parseGraph.clear();
       jsav.clear();
       jsav = new JSAV("av");
     }
@@ -102,6 +104,7 @@ $(document).ready(function () {
         if(input === "!"){
           document.getElementById("input"+i).innerHTML = lambda;
         }
+
         if(stringAccepted(input)[0]){
           document.getElementById("output"+i).value = "Accept";
           document.getElementById("output"+i).onclick = function(){
@@ -115,130 +118,6 @@ $(document).ready(function () {
     }
   }
 
-  // returns [true, next] if input is accepted from brute force parsing, [false, next] otherwise
-  function stringAccepted(inputString){
-    if(inputString === "!"){
-      inputString = "";
-    }
-    var productions = JSON.parse(localStorage.getItem('grammars'));
-    var table = {};   // maps each sentential form to the rule that produces it
-    var sententials = [];
-    var next;
-
-    for (var i = 0; i < productions.length; i++) {
-      if (productions[i][0] === productions[0][0]) {
-        if (productions[i][2] === emptystring) {
-          sententials.push('');
-          table[''] = [i, ''];
-        } else {
-          sententials.push(productions[i][2]);
-          table[productions[i][2]] = [i, ''];
-        }
-      }
-    }
-    var derivers = {};  // variables that derive lambda
-    var counter = 0;
-    // find lambda deriving variables
-    while (removeLambdaHelper(derivers, productions)) {
-      counter++;
-      if (counter > 500) {
-        console.log(counter);
-        break;
-      }
-    };
-    derivers = Object.keys(derivers);
-
-    // parse
-    counter = 0;
-    while (true) {
-      counter++;
-      // ask the user to continue if parsing is taking a long time
-      if (counter > 5000) {
-        console.warn(counter);
-        var confirmed = confirm('This is taking a while. Continue?');
-        if (confirmed) {
-          counter = 0;
-        } else {
-          break;
-        }
-      }
-      next = sententials.pop();
-      // stop parsing if the input string has been derived or if there are no more derivations
-      if (next === inputString) {
-        break;
-      }
-      if (!next) {
-        break;
-      }
-      var c = null;
-      // go through the sentential form
-      for (var i = 0; i < next.length; i++) {
-        c = next[i];
-        // when a variable has been found, add its derivable sentential forms to be parsed
-        if (variables.indexOf(c) !== -1) {
-          // find productions for the variable
-          _.each(productions, function(x, k) {
-            if (x[0] === c) {
-              var r = x[2];
-              if (r === emptystring) {
-                r = "";
-              }
-              // new sentential form
-              var s = replaceCharAt(next, i, r);
-              // pruning
-              var keep = true;
-              var prefix = "";
-              var suffix = "";
-              for (var j = 0; j < s.length; j++) {
-                if (inputString.indexOf(s[j]) === -1 && variables.indexOf(s[j]) === -1) {
-                  keep = false;
-                  break;
-                }
-                if (variables.indexOf(s[j]) !== -1) {
-                  break;
-                }
-                prefix = prefix + s[j];
-              }
-              for (var j = s.length - 1; j >= 0; j--) {
-                if (variables.indexOf(s[j]) !== -1) {
-                  break;
-                }
-                suffix = s[j] + suffix;
-              }
-              // prune if prefix/suffix do not match the input string
-              if (prefix !== inputString.substr(0, prefix.length) ||
-                suffix !== inputString.substring(inputString.length - suffix.length)) {
-                keep = false;
-              }
-              // prune if the new sentential form is already in the queue
-              else if (sententials.indexOf(s) !== -1) {
-                keep = false;
-              }
-              /*
-              prune if the number of terminals and non-lambda deriving variables is
-              greater than the length of the input string
-              */
-              else if (_.filter(s, function(x) {
-                  return variables.indexOf(x) === -1 || derivers.indexOf(x) === -1;
-                }).length > inputString.length) {
-                keep = false;
-              }
-              if (keep) {
-                sententials.unshift(s);
-              }
-              // keep track of which production a sentential form is coming from
-              if (!(s in table)) {
-                table[s] = [k, next];
-              }
-            }
-          });
-        }
-      }
-    }
-    console.log(counter);
-    return [next === inputString, next];
-  }
-
   var replaceCharAt = function (str, index, ch) {
     if (index < 0 || index > str.length - 1) {
       return str;
@@ -250,7 +129,6 @@ $(document).ready(function () {
   //display parse tree in multiple brute force parse page if clicked on the accepted input
   function displayTree(inputString){
     var productions = JSON.parse(localStorage.getItem("grammars"));
-    jsav.umsg('Parsing');
     startParse(m, parseTree);
 
     $('#bfpbutton').show();
@@ -260,11 +138,233 @@ $(document).ready(function () {
     */
     $('.jsavcanvas').height(450);
     var table = {};   // maps each sentential form to the rule that produces it
-    var sententials = [];
     var next;
     for (var i = 0; i < productions.length; i++) {
       m._arrays[i].unhighlight();
     }
+
+    if (stringAccepted(inputString)[0]) {
+      table = derivationTree;
+      jsav.umsg('"' + inputString + '" accepted');
+      var temp = stringAccepted(inputString)[1];
+      var results = [];   // derivation table
+      counter = 0;
+      // go through the map of sentential forms to productions in order to get the trace
+      do {                // handles the case where inputstring is the emptystring
+        counter++;
+        if (counter > 500) {
+          console.warn(counter);
+          break;
+        }
+        var rp = table[temp][0].join("");
+        results.push([rp, temp]);
+        temp = table[temp][1];
+      } while (table[temp] && temp);
+
+      results.reverse();
+      // set up display
+      parseGraph = new jsav.ds.graph({height: (results.length+1) * 50});
+      derivationTable = new jsav.ds.matrix(results, {style: "table"});
+
+      $("#bfpbutton").hide();
+
+      var displayOrder = [];  // order in which to display the nodes of the parse tree
+      // create the parse tree using the derivation table
+      var root = parseGraph.addNode(results[0][0].split(arrow)[0]);
+      var sentential = [root]; //order of sentential form nodes
+      var displayOrderParents = [];  //order of parent nodes
+      var level = new Map(); //a map from node to level(left and top position)
+      level.set(root, [0,0]); // add root node
+      displayOrder.push(root);
+
+      for (var i = 0; i < results.length; i++) {
+        var lhsProd = results[i][0].split(arrow)[0];
+        var rhsProd = results[i][0].split(arrow)[1];
+        //find correct lhs in sentential
+        var sententialString = "";
+        for(var j = 0; j < sentential.length; j++){
+          //join all nodes to make a sentential string
+          sententialString += sentential[j].value();
+        }
+        //make the production compatible to replaceLHS function
+        var pro = results[i][0].split(arrow);
+        pro.push(pro[1]);
+        pro[1] = "" ;
+        var lhsOccur;
+        //compare replaceLHS to results[i][1]
+        for(var j = 0; j < replaceLHS([pro],sententialString).length; j++){
+          if(replaceLHS([pro], sententialString)[j] === results[i][1]){
+            //record the jth occurrence of lhs
+            lhsOccur = j;
+          }
+        }
+
+        //convert lhsOccur to actual index number of the sententialString
+        var count = 0;
+        var realIndex = 0;
+        while(true){
+          var index = sententialString.indexOf(results[i][0].split(arrow)[0]);
+          realIndex += index;
+          if(count === lhsOccur){
+            break;
+          }else{
+            sententialString = sententialString.substring(index+1);
+            realIndex++;
+          }
+          count++;
+        }
+
+        //addEdgesFromLHStoRHS();
+        var children = [];
+        for(var l = 0; l < rhsProd.length; l++){
+          var newNode = parseGraph.addNode(rhsProd[l], {left: level.get(sentential[realIndex])[0]+l*50, top: 50 + 50*i});
+          children.push(newNode);
+          for(var r = 0; r < lhsProd.length; r++){
+            parseGraph.addEdge(sentential[realIndex + r], newNode);
+          }
+          //construct a map from node to position([left, top])
+          level.set(newNode, [50*(l+realIndex) ,50 + 50*i]);
+        }
+        displayOrderParents.push(sentential.slice(realIndex, realIndex + lhsProd.length));
+        //removelhsProdfromSentential and addrhsProdtoSentential
+        var temp1 = sentential.slice(0, realIndex);
+        var temp2 = sentential.slice(realIndex + lhsProd.length);
+        sentential = temp1.concat(children);
+        sentential = sentential.concat(temp2);
+        displayOrder.push(children);
+      }
+
+      updateWidth(parseGraph, root);
+      highlightTerminal(sentential);
+      layoutTable(derivationTable);
+      parseGraph.layout();
+      // hide the whole tree except for the start node and hide the derivation table
+      for(var i = 0; i < parseGraph.nodes().length; i++){
+        parseGraph.nodes()[i].hide();
+      }
+      for (var i = 0; i < results.length; i++) {
+        derivationTable._arrays[i].hide();
+      }
+      root.show();
+      //hide all edges
+      for(var i = 0; i < parseGraph.edges().length; i++){
+        parseGraph.edges()[i].hide();
+      }
+
+      // create slideshow stepping through derivation table and parse tree
+      jsav.displayInit();
+      var parents = displayOrder.shift();
+      for (var i = 0; i < results.length; i++) {
+        jsav.step();
+        for (var j = 0; j < m._arrays.length; j++) {
+          m._arrays[j].unhighlight();
+        }
+        var val = derivationTable.value(i, 1);
+        // highlight productions in the grammar while tracing
+        //m._arrays[table[val][0]].highlight();
+        derivationTable._arrays[i].show();
+        var parents = displayOrderParents.shift();
+        var nodes = displayOrder.shift();
+        for (var j = 0; j < nodes.length; j++) {
+          nodes[j].show({recursive: false});
+
+          //find the deepest level of the parents
+          var deepestLevel = -1;
+          for(var l = 0; l < parents.length; l++){
+            if(level.get(parents[l])[1] > deepestLevel){
+              deepestLevel = level.get(parents[l])[1];
+            }
+          }
+          for(var l = 0; l < parents.length; l++){
+            if(level.get(parents[l])[1] != deepestLevel){
+              var newParent = parseGraph.addNode(parents[l].value(), {left: level.get(parents[l])[0],top: deepestLevel});
+              parseGraph.addEdge(parents[l], newParent);
+              parseGraph.addEdge(newParent, nodes[j]);
+              parents[l].css({'background': "black"});
+            }else{
+              parents[l].edgeTo(nodes[j]).show();
+            }
+          }
+          parseGraph.layout();
+          //add a rectangle background to show combining nodes
+          if(parents.length > 1){
+            //show combining nodes with a rectangle
+            var rect = jsav.g.rect(183+leftMostPosition(parents,level),  46 + (productions.length-1)*29.5+deepestLevel, results[i][0].split(arrow)[0].length * 50, 50, {stroke: "orange", "stroke-width": 4});
+          }
+        }
+        parents = nodes;
+      }
+      jsav.recorded();
+    }
+  }
+
+  function updateWidth(graph, root){
+    root.width = graph.nodeCount() - 1;
+    root.discovered = true;
+    for(var i = 0; i < graph.nodeCount(); i++){
+      console.log("i"+i + graph.nodes()[i].value());
+      if(graph.nodes()[i] !== root){
+        graph.nodes()[i].width = calculateWidth(graph.nodes()[i]);
+      }
+      console.log(graph.nodes()[i].width);
+    }
+
+  }
+
+  function calculateWidth(node){
+    node.discovered = true;
+    var width = 0;
+    if(isLeaf(node)){
+      return 1;
+    }else{
+      for(var i = 0; i < node.neighbors().length; i++){
+        if(node.neighbors()[i].discovered === undefined){
+          console.log("child "+node.neighbors()[i].value());
+          width += calculateWidth(node.neighbors()[i]);
+        }
+      }
+    }
+    return width;
+  }
+
+  function isLeaf(node){
+    if(node.neighbors().length === 1){
+      return true;
+    }else{
+      for(var i = 0; i < node.neighbors().length; i++){
+        if(node.neighbors()[i].discovered === undefined){
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+
+  function leftMostPosition(parents, level){
+    var most = 10000000;
+    for(var i = 0; i < parents.length; i++){
+      if(level.get(parents[i])[0] < most){
+        most = level.get(parents[i])[0];
+      }
+    }
+    return most;
+  }
+
+  function highlightTerminal(sentential){
+    for(var i = 0; i < sentential.length; i++){
+      sentential[i].highlight();
+    }
+  }
+
+
+  function stringAccepted(inputString){
+    if(inputString === "!"){
+      inputString = "";
+    }
+    var productions = JSON.parse(localStorage.getItem('grammars'));
+    var table = {};   // maps each sentential form to the rule that produces it
+    var sententials = [];
+    var next;
     // assume the first production is the start variable
     for (var i = 0; i < productions.length; i++) {
       if (productions[i][0] === productions[0][0]) {
@@ -282,18 +382,6 @@ $(document).ready(function () {
     // find lambda deriving variables
     while (removeLambdaHelper(derivers, productions)) {
       counter++;
-      if (counter > 500) {
-        console.log(counter);
-        break;
-      }
-    };
-    derivers = Object.keys(derivers);
-
-    // parse
-    counter = 0;
-    while (true) {
-      counter++;
-      // ask the user to continue if parsing is taking a long time
       if (counter > 5000) {
         console.warn(counter);
         var confirmed = confirm('This is taking a while. Continue?');
@@ -303,169 +391,62 @@ $(document).ready(function () {
           break;
         }
       }
-      next = sententials.pop();
-      // stop parsing if the input string has been derived or if there are no more derivations
-      if (next === inputString) {
-        break;
-      }
-      if (!next) {
-        break;
-      }
-      var c = null;
-      // go through the sentential form
-      for (var i = 0; i < next.length; i++) {
-        c = next[i];
-        // when a variable has been found, add its derivable sentential forms to be parsed
-        if (variables.indexOf(c) !== -1) {
-          // find productions for the variable
-          _.each(productions, function(x, k) {
-            if (x[0] === c) {
-              var r = x[2];
-              if (r === emptystring) {
-                r = "";
-              }
-              // new sentential form
-              var s = replaceCharAt(next, i, r);
-              // pruning
-              var keep = true;
-              var prefix = "";
-              var suffix = "";
-              for (var j = 0; j < s.length; j++) {
-                if (inputString.indexOf(s[j]) === -1 && variables.indexOf(s[j]) === -1) {
-                  keep = false;
-                  break;
-                }
-                if (variables.indexOf(s[j]) !== -1) {
-                  break;
-                }
-                prefix = prefix + s[j];
-              }
-              for (var j = s.length - 1; j >= 0; j--) {
-                if (variables.indexOf(s[j]) !== -1) {
-                  break;
-                }
-                suffix = s[j] + suffix;
-              }
-              // prune if prefix/suffix do not match the input string
-              if (prefix !== inputString.substr(0, prefix.length) ||
-                suffix !== inputString.substring(inputString.length - suffix.length)) {
-                keep = false;
-              }
-              // prune if the new sentential form is already in the queue
-              else if (sententials.indexOf(s) !== -1) {
-                keep = false;
-              }
-              /*
-              prune if the number of terminals and non-lambda deriving variables is
-              greater than the length of the input string
-              */
-              else if (_.filter(s, function(x) {
-                  return variables.indexOf(x) === -1 || derivers.indexOf(x) === -1;
-                }).length > inputString.length) {
-                keep = false;
-              }
-              if (keep) {
-                sententials.unshift(s);
-              }
-              // keep track of which production a sentential form is coming from
-              if (!(s in table)) {
-                table[s] = [k, next];
-              }
-            }
-          });
-        }
-      }
-    }
-    console.log(counter);
-    if (next === inputString) {
-
-    //if(stringAccepted(inputString)){
-      jsav.umsg('"' + inputString + '" accepted');
-      var temp = next;
-      var results = [];   // derivation table
-      counter = 0;
-      // go through the map of sentential forms to productions in order to get the trace
-      do {                // handles the case where inputstring is the emptystring
-        counter++;
-        if (counter > 500) {
-          console.warn(counter);
+    };
+    derivers = Object.keys(derivers);
+    // parse
+    counter = 0;
+    var queue = [];
+    queue.push(productions[0][0]);
+    while(queue.length !== 0){
+      if(counter > 5000){
+        console.warn(counter);
+        var confirmed = confirm('This is taking a while. Continue?');
+        if (confirmed) {
+          counter = 0;
+        } else {
           break;
         }
-        var rp = productions[table[temp][0]].join("");
-        results.push([rp, temp]);
-        temp = table[temp][1];
-      } while (table[temp] && temp);
-      results.reverse();
-      // set up display
-      // derivationTable = new jsav.ds.matrix(results, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
-
-      derivationTable = new jsav.ds.matrix(results, {style: "table"});
-      // parseTree = new jsav.ds.tree({left: "30px", relativeTo: derivationTable, anchor: "right top"});
-      parseTree = new jsav.ds.tree();
-      temp = [parseTree.root(productions[0][0])];
-      $("#bfpbutton").hide();
-
-      console.log("derivation table: " + derivationTable);
-
-      var displayOrder = [];  // order in which to display the nodes of the parse tree
-      // create the parse tree using the derivation table
-      for (var i = 0; i < results.length; i++) {
-        var p = results[i][0];
-        var n;
-        var temp2;
-        var rem;
-        var d = [];
-        // find parent node
-        for (var j = temp.length - 1; j >= 0; j--) {
-          if (temp[j].value() === p.split(arrow)[0]) {
-            temp2 = temp[j];
-            rem = j;
-            break;
-          }
-        }
-        temp.splice(rem, 1);
-        p = p.split(arrow)[1];
-        var temp3 = [];
-        // add children
-        for (var j = 0; j < p.length; j++) {
-          var par = temp2.child(j, p[j]).child(j);
-          if (variables.indexOf(p[j]) !== -1) {
-            temp3.unshift(par);
-          } else {
-            par.addClass('terminal');
-          }
-          d.push(par);
-        }
-        temp = temp.concat(temp3);
-        displayOrder.push(d);
       }
-
-      layoutTable(derivationTable);
-      parseTree.layout();
-      // hide the whole tree except for the start node and hide the derivation table
-      parseTree.root().hide();
-      parseTree.root().show({recursive: false});
-      for (var i = 0; i < results.length; i++) {
-        derivationTable._arrays[i].hide();
+      var next = queue.shift();
+      if(removeLambda(next) === inputString){
+        return [true, next, table];
       }
-      // create slideshow stepping through derivation table and parse tree
-      jsav.displayInit();
-      for (var i = 0; i < results.length; i++) {
-        jsav.step();
-        for (var j = 0; j < m._arrays.length; j++) {
-          m._arrays[j].unhighlight();
-        }
-        var val = derivationTable.value(i, 1);
-        // highlight productions in the grammar while tracing
-        m._arrays[table[val][0]].highlight();
-        derivationTable._arrays[i].show();
-        var temp2 = displayOrder.shift();
-        for (var j = 0; j < temp2.length; j++) {
-          temp2[j].show({recursive: false});
-        }
+      for(var i = 0; i < replaceLHS(productions, next).length; i++){
+        queue.push(replaceLHS(productions, next)[i]);
+        table[replaceLHS(productions, next)[i]] = next;
       }
-      jsav.recorded();
+      counter++;
     }
+    return [false, next, table];
+  }
+
+  //returns all the possibilities to replace LHS in a sentential
+  function replaceLHS(productions, sentential){
+    result = [];
+    for (var i = 0; i < productions.length; i++) {
+			for (var j = 0; j < sentential.length; j++) {
+				for (var k = 1; k < sentential.length + 1 - j; k++) {
+					var subString = sentential.substring(j, j + k);
+					if (subString === (productions[i][0])) {
+            var newString = sentential.substring(0, j) + productions[i][2]
+  								+ sentential.substring(j + k, sentential.length);
+
+						result.push(newString);
+            derivationTree[newString] = [productions[i], sentential];
+					}
+				}
+			}
+		}
+		return result;
+  }
+
+  function removeLambda(string){
+    for(var i = 0; i < string.length; i++){
+      if(string[i] === lambda){
+        string = string.replace(lambda, "");
+      }
+    }
+    return string;
   }
 
   // sets up window for proofs
@@ -480,14 +461,10 @@ $(document).ready(function () {
     if (ffTable) { ffTable.clear();}
     if (parseTableDisplay) { parseTableDisplay.clear();}
 
-
-
     $('#deleterowbutton').hide();
     $('#addinputbutton').hide();
     $('#runinputsbutton').hide();
-
     $('#clearbutton').hide();
-
     $('.jsavcontrols').show();
     if (type !== "ll" && type !== "slr") $('#backbutton').show();
     $('#bfpbutton').hide();
