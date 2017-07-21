@@ -241,6 +241,9 @@ $(document).ready(function () {
       }
     }
     for(var i = 0; i < jsavParseTable.value(row,col).length; i++){
+      if(jsavParseTable.value(row,col)[i] == ''){
+      	continue;
+      }
       if(!table[row][col].includes(jsavParseTable.value(row,col)[i])){
         return false;
       }
