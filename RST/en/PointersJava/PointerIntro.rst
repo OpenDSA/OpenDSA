@@ -19,14 +19,13 @@ time to realize them.
 
 The prose and images in this version originally came from 
 a document written by Nick Parlante of Stanford University, and used
-by permission of the author.
-
+by permission of the author:
 "`Pointers and Memory
 <http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
 by Nick Parlante, Copyright 1998-2000,
 Stanford CS Education Library.
 
-This version of the book is focussed on pointers in Java.
+This version of the book focuses on pointers in Java.
 The orginal version of the material was written for C/CPP.
 
 Our goals for this project include the following:
@@ -40,7 +39,7 @@ Our goals for this project include the following:
   code and ask the reader to manipulate a visual interface to show the
   effects of the code.
 * Automated feedback including program visualizations for student
-  answers to the programming exercises. We are currently experimenting
-  with integrating Philip Guo's
+  answers to the programming exercises.
+  We are currently experimenting with integrating Philip Guo's
   `PythonTutor <http://www.pythontutor.com/>`_
   visualization system to support this.

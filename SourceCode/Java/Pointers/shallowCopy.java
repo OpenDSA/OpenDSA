@@ -64,14 +64,14 @@ public class shallowCopy {
     Employee theSameEmployee = firstEmployee; // Shallow copy
     theSameEmployee.setName("John");
     System.out.println(theSameEmployee.getName()); // Print John
-    Employee secondEmployee = new Employee("Patric");
+    Employee secondEmployee = new Employee("Patrice");
     Employee deepCopyEmployee = new Employee();
     // Deep copying the secondEmployee's values
     deepCopyEmployee.setName(secondEmployee.getName());
-    // Now we have two different Employees with the name Patric.
+    // Now we have two different Employees with the name Patrice.
     // Any change in one object will not affect the other
     deepCopyEmployee.setName("John");
-    System.out.println(secondEmployee.getName()); // this will print Patric
+    System.out.println(secondEmployee.getName()); // this will print Patrice
     /* *** ODSAendTag: shallow *** */
   }
 }

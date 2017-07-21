@@ -202,6 +202,7 @@ errors).
 **JSON Files**
 We use ``jsonlint`` to validate css files.
 
+
 -----
 Tools
 -----
@@ -214,14 +215,10 @@ git
 ===
 
 There are several versions of git for Windows
-We recommend the version found at http://msysgit.github.com/.
+We recommend the version found at
+https://git-scm.com/download/win.
 This guide assumes that windows users are working through the Git Bash
 command window.
-When installing ``msysgit``, you should install it at the
-level of ``C:\``, rather than in ``C:\Program Files``.
-Otherwise, you are likely to have troubles interacting with
-``GnuWin32`` tools (for ``make``).
-Aside from this, just accept the default configuration options.
 
 
 make
@@ -229,6 +226,15 @@ make
 
 GNU make for Windows can be found at
 http://gnuwin32.sourceforge.net/packages/make.htm.
+When you install this, you should NOT accept the default to place the
+package at Program Files (x86).
+Instead, you should tell it to install in Program Files.
+The reason is that the Gnu tools have trouble with reading the PATH
+variable if (x86) is in the variable string.
+Once you install, you will need to set the PATH environment variable
+by hand, by adding "C:\Program Files\GnuWin32\bin" (do this at the
+system level, not the account level).
+
 
 Python
 ======
