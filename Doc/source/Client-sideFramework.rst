@@ -462,7 +462,7 @@ Event Messages Transmitted to the Server
 
 For details about event messages and their format that are transmitted
 by the client-side framework to the server, see
-:ref:`Event Messages <Event Messages>`.
+:ref:`Event Messages <EventMessages>`.
 
 ----------------------------
 Implementation and Operation
