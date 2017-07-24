@@ -41,9 +41,15 @@
           "Example Reference Code": {},
           "Bad reference Example": {},
           "Reference Rules Summary": {},
-          "Java References Features": {},
+          "Java References vs Pointers": {},
           "How Are References Implemented In The Machine?": {},
           "Why Are Bad Reference Bugs So Common?": {}
+        }
+      },
+      "PointersJava/Links": {
+        "long_name": "Link Nodes",
+        "sections": {
+          "Link Nodes": {}
         }
       },
       "PointersJava/LocalMem": {

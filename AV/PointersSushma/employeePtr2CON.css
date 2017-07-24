@@ -1,4 +1,8 @@
-#employeePtr2CON .jsavcanvas 
+#employeePtr2CON
 {
-  height: 120px;
+  height: 220px;
+}
+
+#employeePtr2CON .jsavline { 
+  height: 20px;
 }

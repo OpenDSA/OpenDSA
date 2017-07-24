@@ -25,20 +25,20 @@ $(document).ready(function() {
             {"stroke-width": 3, stroke: "gray"});
 
   // rectangle A
+  av.label("<tt>A()</tt>", {left: xPositionBigRectangles - 30, top: yPositionABig + 10});
   av.g.rect(xPositionBigRectangles, yPositionABig, lengthBig, widthBig);
   av.g.rect(xPositionSmallRectangles, yPositionASmall, lengthSmall, widthSmall);
-  av.label("<tt>A()</tt>", {left: xPositionBigRectangles - 30, top: yPositionABig + 10});
-  av.label("<tt>B()</tt>", {left: xPositionBigRectangles - 30, top: yPositionABig + 110});
   av.g.path(["M", xPositionSmallRectangles + lengthSmall - 10,  yPositionASmall + (widthSmall / 2),
-             xPositionSmallRectangles + lengthSmall + 50,
+             xPositionSmallRectangles + lengthSmall + 60,
              yPositionASmall + (widthBig / 2) + 20].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
 
   // rectangle B
+  av.label("<tt>B()</tt>", {left: xPositionBigRectangles - 30, top: yPositionABig + 110});
   av.g.rect(xPositionBigRectangles, yPositionBBig, lengthBig, widthBig);
   av.g.rect(xPositionSmallRectangles, yPositionBSmall, lengthSmall, widthSmall);
   av.g.path(["M", xPositionSmallRectangles + lengthSmall - 10, yPositionBSmall + (widthSmall / 2),
-             xPositionSmallRectangles + lengthSmall + 50, yPositionBSmall - (widthBig / 2)].join(","),
+             xPositionSmallRectangles + lengthSmall + 60, yPositionBSmall - (widthBig / 2) + 10].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
 
   // smiley face rectangle
@@ -51,28 +51,31 @@ $(document).ready(function() {
   // second drawing
 
   // rectangle A
+  av.label("<tt>A()</tt>", {left: xPositionBigRectangles2 - 30, top: yPositionABig + 10});
   av.g.rect(xPositionBigRectangles2, yPositionABig, lengthBig, widthBig);
   av.g.rect(xPositionSmallRectangles2, yPositionASmall, lengthSmall, widthSmall);
-  av.label("<tt>A()</tt>", {left: xPositionBigRectangles2 - 30, top: yPositionABig + 10});
-  av.label("<tt>B()</tt>", {left: xPositionBigRectangles2 - 30, top: yPositionABig + 110});
 
   // rectangle B
+  av.label("<tt>B()</tt>", {left: xPositionBigRectangles2 - 30, top: yPositionABig + 110});
   av.g.rect(xPositionBigRectangles2, yPositionBBig, lengthBig, widthBig);
   av.g.rect(xPositionSmallRectangles2, yPositionBSmall, lengthSmall, widthSmall);
 
-  // smiley face rectangles
+  // Top arrow
   av.g.path(["M", xPositionSmallRectangles2 + lengthSmall - 10, yPositionASmall + (widthSmall / 2),
-             xPositionBigRectangles2 + 170, yPositionASmall + (widthSmall / 2)].join(","),
+             xPositionBigRectangles2 + 180, yPositionASmall + (widthSmall / 2)].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+  // Bottom arrow
+  av.g.path(["M", xPositionSmallRectangles2 + lengthSmall - 10, yPositionBSmall + (widthSmall / 2),
+             xPositionBigRectangles2 + 180, yPositionBSmall + (widthSmall / 2)].join(","),
+            {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+
+  // smiley face rectangles
   av.g.rect(xPositionBigRectangles2 + 180, yPositionBBig, lengthBig, widthBig);
   av.g.ellipse(xPositionBigRectangles2 + 180 + lengthBig / 2,
                yPositionBBig + widthBig / 2, lengthBig - 70, widthBig - 50);
   av.g.circle(xPositionBigRectangles2 + 220, yPositionBBig + 30, 4);
   av.g.circle(xPositionBigRectangles2 + 245, yPositionBBig + 30, 4);
 
-  av.g.path(["M", xPositionSmallRectangles2 + lengthSmall - 10, yPositionBSmall + (widthSmall / 2),
-             xPositionBigRectangles2 + 170, yPositionBSmall + (widthSmall / 2)].join(","),
-            {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   av.g.rect(xPositionBigRectangles2 + 180, yPositionABig, lengthBig, widthBig);
   av.g.ellipse(xPositionBigRectangles2 + 180 + lengthBig / 2,
                yPositionABig + widthBig / 2, lengthBig - 70, widthBig - 50);
@@ -83,9 +86,9 @@ $(document).ready(function() {
   var path =    "M 257, 140 C 270, 148 281, 151 303, 140";
   var smiley1 = "M 713,  90 C 726,  98 737, 101 759,  90";
   var smiley2 = "M 713, 190 C 726, 198 737, 201 759, 190";
-  av.g.path(path);
-  av.g.path(smiley1);
-  av.g.path(smiley2);
+  av.g.path(path);     // Left smiley face
+  av.g.path(smiley1);  // Top smiley face
+  av.g.path(smiley2);  // Bottom smiley face
 
   av.displayInit();
   av.recorded();

@@ -339,8 +339,8 @@ has influenced the syntaxes of several languages.
 Declaring a Reference Variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A reference variable to a non-primitive data type (that is, any object) is
-defined by declaring a variable of that object's type.
+A reference to a non-primitive data type (that is, a reference to any
+object) is defined by declaring a variable of that object's type.
 In other words, reference variables are declared just like any other
 variable.
 The declaration gives the type and identifier of the new variable, and
@@ -357,22 +357,8 @@ The reference starts out with a "bad" value until you assign it to something.
 Assigning a pointee to a reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We assign a pointee to a reference variable with a simple assignment
-statement.
-We could assign our reference variable to the same value as another
-reference variable, as in this picture.
-
-.. inlineav:: employeePtr2CON dgm
-
-We can do this with the following code::
-
-   Employee empPtr = johnRef;
-
-Of course, this begs the question of how the reference ``johnRef`` got
-its value (its pointee) in the first place.
-We create an ``Employee`` object with the ``new`` operator, as follows::
-
-   Employee johnRef = new Employee("John", 1000);
+.. inlineav:: employeePtr2CON ss
+   :output: show
 
 
 Dereference the reference
@@ -441,8 +427,8 @@ Reference Rules Summary
 
 No matter how complex a reference structure gets, the list of rules remains short.
 
-* A reference variable stores a reference to its pointee. The pointee,
-  in turn, stores something useful.
+* A reference variable stores a reference to its pointee.
+  The pointee, in turn, stores something useful.
 
 * The dereference operation on a reference accesses its pointee.
   A reference may only be dereferenced after it has been assigned to
@@ -452,39 +438,48 @@ No matter how complex a reference structure gets, the list of rules remains shor
 * Allocating a reference does not automatically assign it to refer to
   a pointee.
   Assigning the reference to refer to a specific pointee is a separate
-  operation, which is easy to forget.
+  operation.
+  This is easy to forget.
 
 * Assignment between two references makes them refer to the same
-  pointee, which introduces ``object sharing``.
+  pointee, which allows ``object sharing``.
 
 
-Java References Features
-------------------------
+Java References vs Pointers
+---------------------------
 
-Java references have two main features.
+Java references have two main features that distinguishes them from
+the less restrictive pointers in a language like C or C++.
 
-* Fewer bugs.
-  Because the language implements the reference manipulation
-  accurately and automatically, the most common reference bug are no
-  longer possible. Yay!
-  Also, the Java runtime system checks each reference value every time
-  it is used, so NULL reference dereferences are caught immediately on
-  the line where they occur.
-  This can make a programmer much more productive.
+#. Fewer bugs.
+   Because the language implements the reference manipulation
+   accurately and automatically, the most common reference bug are no
+   longer possible. Yay!
+   Also, the Java runtime system checks each reference value every time
+   it is used, so NULL reference dereferences are caught immediately on
+   the line where they occur.
+   This can make a programmer much more productive.
 
-* Slower. Because the language takes responsibility for implementing
-  so much reference machinery at runtime, Java code runs slower than
-  other languages like C and C++.
-  But the appeal of increased programmer efficiency and fewer bugs
-  makes the slowness worthwhile for many applications.
+#. Slower. Because the language takes responsibility for implementing
+   so much reference machinery at runtime, Java code runs slower than
+   other languages like C and C++.
+   But the appeal of increased programmer efficiency and fewer bugs
+   makes the slowness worthwhile for many applications.
 
 
 How Are References Implemented In The Machine?
 ----------------------------------------------
 
+.. TODO::
+   :type: Slideshow
+
+   This section needs visual support
+
 How are references implemented?
 The short explanation is that every area of memory in the machine has
 a numeric address like 1000 or 20452.
+You can think of memory as a big array, and each position in memory
+has an index which is its memory address.
 A reference to an area of memory is really just an integer which is
 storing the address of that area of memory.
 The dereference operation looks at the address, and goes to that area
@@ -513,40 +508,17 @@ The problem is that we are trained by the tools we use.
 Simple variables don't require any extra setup.
 You can allocate a simple variable, such as ``int``, and use it
 immediately.
-All that ``int``, ``char`` or ``boolean`` variables you have written
-has trained you, quite reasonably, that a variable may be used once it
-is declared.
-Unfortunately, references look like simple variables but they require
-the extra initialization before use.
+All that ``int``, ``char`` or ``boolean`` variable code that you have
+written has trained you, quite reasonably, that a variable may be used
+once it is declared.
+Unfortunately, references look like simple variables.
+But they require the extra initialization before use.
 It's unfortunate, in a way, that references happen look like other
 variables, since it makes it easy to forget that the rules for their
 use are very different.
 Oh well.
 Try to remember to assign your references to refer to pointees.
 But don't be surprised when you forget, and your program breaks.
-
-
-Link Nodes
-----------
-
-In this section, we introduce the idea of a **link node**.
-This has some sort of value field, and a pointer to another link
-node.
-Later, you will learn about :term:`linked lists <linked list>`,
-that are made from such link nodes.
-For now, well just use them as a simple way to connect some objects
-together.
-
-Here is a class definition for a link object.
-
-.. TODO::
-   :type: Code
-
-   Code here for link nodes.
-
-Here are some exercises to practice manipulating link nodes.
-
-.. avembed:: Exercises/Pointers/PointerEX3PRO.html ka
 
 
 .. odsascript:: AV/PointersSushma/num42CON.js
