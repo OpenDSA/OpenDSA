@@ -9,15 +9,15 @@
    :satisfies: Pointer intro
    :topic: Pointers
 
-.. odsalink:: AV/PointersSushma/num42CON.css
-.. odsalink:: AV/PointersSushma/employeeEmpRefCON.css
-.. odsalink:: AV/PointersSushma/empRefnullCON.css
-.. odsalink:: AV/PointersSushma/empRefsecondCON.css
-.. odsalink:: AV/PointersSushma/shallowdeepCON.css
-.. odsalink:: AV/PointersSushma/empPtrxxxCON.css
-.. odsalink:: AV/PointersSushma/employeePtr2CON.css
-.. odsalink:: AV/PointersSushma/examplePointerCodeCON.css
-.. odsalink:: AV/PointersSushma/badPointerPowCON.css
+.. odsalink:: AV/Pointers/num42CON.css
+.. odsalink:: AV/Pointers/employeeEmpRefCON.css
+.. odsalink:: AV/Pointers/empRefnullCON.css
+.. odsalink:: AV/Pointers/empRefsecondCON.css
+.. odsalink:: AV/Pointers/shallowdeepCON.css
+.. odsalink:: AV/Pointers/empPtrxxxCON.css
+.. odsalink:: AV/Pointers/employeePtr2CON.css
+.. odsalink:: AV/Pointers/examplePointerCodeCON.css
+.. odsalink:: AV/Pointers/badPointerPowCON.css
 
 
 Basic References
@@ -521,12 +521,12 @@ Try to remember to assign your references to refer to pointees.
 But don't be surprised when you forget, and your program breaks.
 
 
-.. odsascript:: AV/PointersSushma/num42CON.js
-.. odsascript:: AV/PointersSushma/employeeEmpRefCON.js
-.. odsascript:: AV/PointersSushma/empRefnullCON.js
-.. odsascript:: AV/PointersSushma/empRefsecondCON.js
-.. odsascript:: AV/PointersSushma/shallowdeepCON.js
-.. odsascript:: AV/PointersSushma/empPtrxxxCON.js
-.. odsascript:: AV/PointersSushma/employeePtr2CON.js
-.. odsascript:: AV/PointersSushma/examplePointerCodeCON.js
-.. odsascript:: AV/PointersSushma/badPointerPowCON.js
+.. odsascript:: AV/Pointers/num42CON.js
+.. odsascript:: AV/Pointers/employeeEmpRefCON.js
+.. odsascript:: AV/Pointers/empRefnullCON.js
+.. odsascript:: AV/Pointers/empRefsecondCON.js
+.. odsascript:: AV/Pointers/shallowdeepCON.js
+.. odsascript:: AV/Pointers/empPtrxxxCON.js
+.. odsascript:: AV/Pointers/employeePtr2CON.js
+.. odsascript:: AV/Pointers/examplePointerCodeCON.js
+.. odsascript:: AV/Pointers/badPointerPowCON.js
