@@ -1,6 +1,9 @@
 var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
-		emptystring;
+		arrow = String.fromCharCode(8594),
+		emptystring,
+		parenthesis = "(",
+		variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 (function($) {
 	var jsav = new JSAV("av");
@@ -39,7 +42,7 @@ var lambda = String.fromCharCode(955),
 		g.addEdge(e, c, {weight: 'b,a;' + emptystring});
 
 		$(".jsavgraph").click(graphClickHandler);
-    g.click(nodeClickHandler);
+    	g.click(nodeClickHandler);
 		g.click(edgeClickHandler, {edge: true});
 		$('.jsavedgelabel').click(labelClickHandler);
 
@@ -48,7 +51,7 @@ var lambda = String.fromCharCode(955),
 
 	// handler for editing edges/transitions
 	var labelClickHandler = function(e) {
-		initEditEdgeInput(this);
+		initEditEdgeInput(this);	
 	};
 
 	// show table for the label clicked
@@ -185,6 +188,9 @@ var lambda = String.fromCharCode(955),
 				g.removeEdge(this);
 			}
 			this.unhighlight();
+		}else if ($(".jsavgraph").hasClass("convert")) {
+			this.highlight();
+			convertTransition(this);
 		}
 	};
 
@@ -210,8 +216,219 @@ var lambda = String.fromCharCode(955),
 	};
 
 	//===============================
+	//converting npda to grammar
+
+	var increaseOne = [];
+	var decreaseOne = [];
+	var productions = [];
+	var visitedEdges = [];
+	var finalState;
+	var table;
+	var lastRow = 0;
+	var count = 0;
+	var start;
+	var convertToGrammar = function() {
+		var edges = g.edges();
+		//check if the npda is in the right format - pop 1 and push 0 or 2 symbols; also separate transitions into town categories - size increases one or decreases one
+		for (var next = edges.next(); next; next = edges.next()) {
+			if(g.isFinal(next.end())){
+				finalState = next.end();
+				if(t[1] != 'Z' || t[2] === emptystring){	
+					jsav.umsg("Transition to final state must only pop 'Z' ");
+					break;
+				}
+			}
+			var weights = toColonForm(next.weight()).split('<br>');
+			for (var i = 0; i < weights.length; i++) {
+				var t = weights[i].split(':');
+				//if doesn't pop or pop more than one or push 1 symbol that's not lambda or push more than 2
+				if(t[1] === emptystring || t[1].length > 1 || (t[2].length === 1 && t[2] != emptystring) || t[2].length > 2) {
+					jsav.umsg("This NPDA is not in the correct format, transitions must pop 1 and push 0 or 2. Please correct it and try again");
+					return;
+				}else if (t[2].length === 2){
+					increaseOne.push(weights[i]);
+				}else{
+					decreaseOne.push(weights[i]);
+				}
+			}
+		}
+		convertMode();
+		$('#completeConvertButton').show();
+		$('#completeConvertButton').click(completeConvert);
+		jsav.umsg("Click on the transitions to convert transitions into equivalent productions");
+		table = jsav.ds.matrix({rows: 100, columns: 3, style: "table"});
+		for (var i = lastRow + 1; i < 100; i++) {
+      		table._arrays[i].hide();
+    	}
+		table.layout();
+		$(".jsavmatrix").css("margin-left", "auto");
+	};
+
+	function completeConvert () {
+		var edges = g.edges();
+		for (var next = edges.next(); next; next = edges.next()) {
+			if(!visitedEdges.includes(next)){
+				convertTransition(next);
+			}
+		}
+	};
+
+	//convert transition(s) to equivalent production(s)
+	function convertTransition(edge) {
+		if(!visitedEdges.includes(edge)){
+			visitedEdges.push(edge);
+		}else{
+			alert('This transitition has already been converted');
+			return;
+		}
+		var transitions = toColonForm(edge.label()).split('<br>');
+		function setTableValue (a, b, c) {
+			table.value(lastRow, 0, a);
+			table.value(lastRow, 1, b);
+			table.value(lastRow, 2, c);
+			table._arrays[lastRow].show();
+			lastRow++;
+		}
+		for(var i = 0; i < transitions.length; i++){
+			var transition = transitions[i];
+			var transitionSplit = transition.split(':');
+			var fromNode = edge.start();
+			var toNode = edge.end();
+			var qi = fromNode.value();
+			var qj = toNode.value();
+			if(increaseOne.indexOf(transition) > -1) {
+				var states = g.nodes();
+				for (var k = 0; k < states.length; k++) {
+					var qk = states[k].value();
+					for (var l = 0; l < states.length; l++) {
+						var ql = states[l].value();
+						// format ['', '', ['','','']]
+						productions.push(['(' + qi + transitionSplit[1] + qk + ')', arrow, [transitionSplit[0] , '(' + qj + transitionSplit[2][0] + ql + ')' , '(' + ql + transitionSplit[2][1] + qk + ')']]);
+						setTableValue('(' + qi + transitionSplit[1] + qk + ')', arrow, transitionSplit[0] + '(' + qj + transitionSplit[2][0] + ql + ')' + '(' + ql + transitionSplit[2][1] + qk + ')');
+					}
+				}
+			}else{
+				productions.push(['(' + qi + transitionSplit[1] + qj + ')', arrow, [transitionSplit[0]]]);
+				setTableValue('(' + qi + transitionSplit[1] + qj + ')', arrow, transitionSplit[0]);
+			}
+			table.layout();
+		}
+		count++;
+		if(count >= g.edges().length){
+			jsav.umsg('Finished');
+			alert('All transitions have been converted, export to grammar editor?');
+			productions = removeUseless(productions);
+
+			var reducedTable = jsav.ds.matrix(productions, {style: "table"});
+			reducedTable.layout();
+			$(".jsavmatrix").css("margin-left", "auto");
+
+			productions = transform(productions);
+			localStorage['grammar'] = JSON.stringify(productions);
+			window.open("./grammarEditor.html");
+		}
+	};
+
+  // convert from (qiAqj) form to letter form
+  function transform (productions) {
+  	//map (qiAqj) form to a letter
+  	var dict = {};
+  	dict[start] = 'S';
+  	var index = 0;
+  	//assign letters
+  	for (var i = 0; i < productions.length; i++) {
+  		if(!(productions[i][0] in dict)){
+  			dict[productions[i][0]] = variables[index];
+  			index ++;
+  		}
+  	}
+  	//create the new productions
+  	var ret = [];
+  	for (var i = 0; i < productions.length; i++) {
+  		if(productions[i][2].length === 1){
+  			ret.push([dict[productions[i][0]], arrow, productions[i][2][0]]);
+  		}else{
+  			ret.push([dict[productions[i][0]], arrow, productions[i][2][0] + dict[productions[i][2][1]] + dict[productions[i][2][2]]]);
+  		}
+  	}
+  	return ret;
+  };
+
+
+  // remove useless productions
+  function removeUseless (arr) {
+    var derivers = {};  // variables that derive a string of terminals
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+    var counter = 0;
+    while (findDerivable(derivers, productions)) {
+      counter++;
+      if (counter > 500) {
+        console.log(counter);
+        break;
+      }
+    };
+    var transformed = [];
+    // remove productions which do not derive a string of terminals
+    for (var i = 0; i < productions.length; i ++) {
+      if (_.every(productions[i][2], function(x) {return x in derivers || (variables.indexOf(x) === -1 && parenthesis.indexOf(x[0]) === -1);})) {
+         transformed.push(productions[i]);
+      }
+    }
+    var pDict = {};   // dictionary to hold reachable variables
+    start = '(' + g.initial.value() + 'Z' + finalState.value() + ')';
+    for (var i = 0; i < transformed.length; i++) {
+      if (!(transformed[i][0] in pDict)) {
+        pDict[transformed[i][0]] = [];
+      }
+      // map left hand side to the variables in the right hand side
+      var r = _.uniq(_.filter(transformed[i][2], function(x) {return parenthesis.indexOf(x[0]) !== -1;}));
+      pDict[transformed[i][0]] = _.union(pDict[transformed[i][0]], r);
+    }
+    var visited = {};
+    visited[start] = true;
+    // find reachable variables and map them in pDict
+    findReachable(start, pDict, visited);
+    // remove unreachable productions
+    transformed = _.filter(transformed, function(x) { return x[0] === start || pDict[start].indexOf(x[0]) !== -1;});
+    // var ret = _.map(transformed, function(x) {return x.join('');});
+    return transformed;
+  };
+
+  // Function to get variables which can derive a string of terminals
+  function findDerivable (set, productions) {
+    for (var i = 0; i < productions.length; i++) {
+      if (_.every(productions[i][2], function(x) { return x in set || (variables.indexOf(x) === -1 && parenthesis.indexOf(x[0]) === -1);})) {
+        if (!(productions[i][0] in set)) {
+          set[productions[i][0]] = true;
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+  // dfs on the dictionary
+  function findReachable (start, pDict, visited) {
+    for (var i = 0; i < pDict[start].length; i++) {
+      if (!(pDict[start][i] in visited)) {
+        visited[pDict[start][i]] = true;
+        findReachable(pDict[start][i], pDict, visited);
+        pDict[start] = _.union(pDict[start], pDict[pDict[start][i]]);
+      }
+    }
+  };
+
+
+	//===============================
 	//editing modes
 
+	var convertMode = function() {
+		cancel();
+		var jg = $(".jsavgraph");
+		jg.addClass("convert");
+		$("#mode").html('Convert to grammar');
+		addEdgeSelect();
+		jsav.umsg("Click on the transitions to convert to grammar");
+	};
 	var addNodesMode = function() {
 		cancel();
 		var jg = $(".jsavgraph");
@@ -264,6 +481,7 @@ var lambda = String.fromCharCode(955),
 		jg.removeClass("moveNodes");
 		jg.removeClass("edit");
 		jg.removeClass("delete");
+		jg.removeClass("convert");
 		var nodes = g.nodes();
 		for (var node = nodes.next(); node; node = nodes.next()) {
 			node.unhighlight();
@@ -333,6 +551,7 @@ var lambda = String.fromCharCode(955),
 		reader.onloadend = function(event) {
 			var text = event.target.result;
 			g.initFromXML(text);
+			$('.jsavedgelabel').click(labelClickHandler);
 		}
 	};
 
@@ -438,6 +657,8 @@ var lambda = String.fromCharCode(955),
 	$('#moveButton').click(moveNodesMode);
 	$('#editButton').click(editMode);
 	$('#deleteButton').click(deleteMode);
+	$('#convertToGrammarButton').click(convertToGrammar);
+	$('#completeConvertButton').hide();
 	$('#saveButton').click(save);
 	$('#undoButton').click(function() {
 		g.undo();

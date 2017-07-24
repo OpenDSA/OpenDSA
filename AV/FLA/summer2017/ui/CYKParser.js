@@ -41,10 +41,6 @@ $(document).ready(function () {
   };
 
   function cykParse() {
-    // //first convert grammar to CNF, currently there seems to be problems with convertToChomsky()
-    // var cnf = convertToChomsky();
-    // console.log(cnf);
-
     if (productions.length === 0) {
       alert('No grammar.');
       return;
@@ -65,7 +61,6 @@ $(document).ready(function () {
     // }
 
     //table will be the one with the correct answer, while userTable will be used for user to input, 
-    //TODO: need to refactor this part
     table = new Array(inputLength);
     userTable = new Array(inputLength);
     for (var s = 0; s < inputLength; s++) {
@@ -160,16 +155,19 @@ $(document).ready(function () {
 
     table = tempTable;
     userTable = tempUserTable;
-    //if not flipped, flip it
+    jsavParseTable.clear();
+    initCYKParseTable(userTable);
+    //if not flipped (tableState is true), then flip it
     if(tableState){
       tableState = false;
       finalrow = 0;
+      checkAnswerFromTo(inputString.length - currentStep, inputString.length - 1);
     }else{
       tableState = true;
       finalrow = inputString.length-1;
+      checkAnswerFromTo(0, currentStep - 1);
     }
-    jsavParseTable.clear();
-    initCYKParseTable(userTable);
+
   };
 
 
@@ -209,6 +207,20 @@ $(document).ready(function () {
 
   };
 
+  //check the user input against the answer from a smaller row number to a bigger row number (inclusive);
+  function checkAnswerFromTo(smallerRow, biggerRow) {
+  	for(var r = smallerRow; r <= biggerRow; r++ ){
+  		checkAnswerInRow(r);
+  	}
+  };
+
+  //check the user input against the answer in a specific row
+  function checkAnswerInRow(row) {
+  	for(var col = 0; col < userTable[row].length; col++){
+  		checkAnswer(row, col);
+  	}
+  }
+
   //check the user input against the answer at a specific index
   function checkAnswer(row, col) {
     if(!checkAnswerHelper(row, col)){
@@ -229,6 +241,9 @@ $(document).ready(function () {
       }
     }
     for(var i = 0; i < jsavParseTable.value(row,col).length; i++){
+      if(jsavParseTable.value(row,col)[i] == ''){
+      	continue;
+      }
       if(!table[row][col].includes(jsavParseTable.value(row,col)[i])){
         return false;
       }
@@ -274,20 +289,28 @@ $(document).ready(function () {
     if ($(e.target).attr('id') == "firstinput") return;
     if (!fi || !fi.is(':visible')) return;
     var input = fi.val();
+    //String coercion, convert input to string before split
+    input = input + '';
+    var inputArry = input.split(',');
     //If user didn't input anything, and there already exists info in that cell, do nothing
     if (input === "" && userTable[oldrow][oldcol].length > 0) {
       input = userTable[oldrow][oldcol];
     }
     fi.remove();
-    jsavParseTable.value(oldrow, oldcol, input);
-    userTable[oldrow][oldcol] = input;
+    jsavParseTable.value(oldrow, oldcol, inputArry);
+    userTable[oldrow][oldcol] = inputArry;
     layoutCYKParseTable(jsavParseTable);
     checkAnswer(oldrow, oldcol);
   };
 
   function completeCYKTable(){
-    userTable = table;
+  	for(var i = 0; i < table.length; i++){
+  		userTable[i] = table[i].slice();
+  	}
     setCYKParseTable(userTable);
+    for(var row = 0; row < table.length; row++) {
+    	checkAnswerInRow(row);
+    }
   };
 
   function step(){
@@ -297,9 +320,9 @@ $(document).ready(function () {
       adjustedStep = inputString.length - currentStep - 1;
     }
     if(currentStep < table.length){
-      console.log(adjustedStep);
-      userTable[adjustedStep] = table[adjustedStep];
+      userTable[adjustedStep] = table[adjustedStep].slice();
       setCYKParseTable(userTable);
+      checkAnswerInRow(adjustedStep);
       currentStep++;
     }
   };

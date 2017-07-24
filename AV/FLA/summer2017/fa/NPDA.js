@@ -348,7 +348,7 @@ npda.initFromXML = function(text) {
 		for (var node = nodes.next(); node; node = nodes.next()) {
 			this.removeNode(node);
 		}
-		$('.jsavgraph').off();
+		// $('.jsavgraph').off();
 	}
 	var nodeMap = {};			// map node IDs to nodes
 	var xmlStates = xmlDoc.getElementsByTagName("state");

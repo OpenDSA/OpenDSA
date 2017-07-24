@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda, and Mostafa Mohammed
+   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda, Mostafa Mohammed, and Sushma Mandava
    :requires:
    :satisfies: Pointer intro
    :topic: Pointers
@@ -18,6 +18,7 @@
 .. odsalink:: AV/PointersSushma/employeePtr2CON.css
 .. odsalink:: AV/PointersSushma/examplePointerCodeCON.css
 .. odsalink:: AV/PointersSushma/badPointerPowCON.css
+
 
 Basic References
 ================
@@ -56,11 +57,12 @@ used in discussions that are not specific to any particular language
 or implementation.
 The word "pointers" connotes the common C/C++ implementation of
 pointers as :term:`addresses <address>` or locations in memory.
-Programmers have more limited access with a reference,
-and so more limits on what they can do.
-Programmers can only assign to a reference and compare two references
-for equality.
-Other uses of a reference is done implicitly with no control from the
+Programmers have more limited access with a reference.
+This limits what they can do, but the Java philosophy is that this is
+more than made up for by a greater chance of the code working correctly.
+Essentially, Java programmers may only assign to a reference and
+compare two references for equality.
+Other uses of a reference are done implicitly with no control from the
 programmer.
 These restrictions reduce the chance for bugs.
 
@@ -71,8 +73,8 @@ Data Types in Java
 Simple ``int`` and ``float`` variables operate pretty intuitively.
 An ``int`` variable is like a box that can store a single ``int``
 value such as 42.
-In a drawing, a simple variable is a box with its current value shown
-inside.
+Visually, a simple variable can be viewed as a box with its current
+value shown inside.
 
 .. _num42Fig:
 
@@ -88,14 +90,15 @@ The object that the reference refers to is sometimes known as its
 In the next figure, the reference variable (called ``empRef``) is
 shown as a box that contains the beginning of a directed line, which
 leads to its pointee (an ``Employee`` object, shown as the box storing
-the string value "John").
+two fields: the string value "John" and the integer value "1000").
 So ``empRef`` is the reference and the ``Employee`` object is its
 pointee.
 What is stored inside of ``empRef``?
 Its value is **not** an ``Employee`` object.
 Its value is only a reference to an ``Employee`` object.
 (By the way, there is no commonly used word for the concept of a
-pointee |---| pointee is just the word used in these explanations.)
+pointee |---| pointee is just the word that we used in these
+explanations.)
 
 .. _numnumptrFig:
 
@@ -108,12 +111,15 @@ In Java, these are referred to as
 In Java, Objects and Arrays are non-primitive data types,
 and they are always accessed by references.
 Java automatically uses references behind the scenes for such complex
-types, and no reference-specific syntax used.
+types, and there is no reference-specific syntax (like there is in C/C++).
 You just need to realize that assignment operations like
 ``a = b`` will automatically be implemented with references if ``a`` and
-``b`` are arrays or objects.
+``b`` are arrays or objects,
+**which is different from the behavior that you get if** ``a`` **and**
+``b`` **are primitive objects like int**.
 Assignments and parameters with arrays and objects are intrinsically
-shallow or shared |---| see the Deep vs. Shallow Copy material below.
+shallow or shared |---|, which is discussed in the Shallow vs. Deep
+Copying section below.
 
 
 Referencing and Dereferencing
@@ -124,6 +130,8 @@ the value of its pointee.
 The value of the dereference of ``empRef`` in the figure above is the
 ``Employee`` object.
 So, "dereference" just means to access the value of the pointee.
+Visually, the result of a dereference is the object pointed to by the
+arrow.
 The key restriction is that the reference must have a pointee for the
 dereference to access.
 A lot of bugs in reference code involve violating that one
@@ -148,11 +156,13 @@ The ``Employee`` Class
 ----------------------
 
 We are going to use the ``Employee`` object for a lot of our examples,
-so let's introduce it now.
+so let's make a formal introduction now.
+Meet the ``Employee`` class.
 
 .. codeinclude:: Pointers/PointerExample
    :tag: EmployeeClass
    :lang: Java
+
 
 
 Reference Assignments
@@ -193,12 +203,6 @@ run time, then make a quick drawing to work out your ideas.
 This tutorial uses a lot of drawings to show how references work.
 You should too.
 
-.. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
-
-|
-
-.. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
-
 
 Sharing
 -------
@@ -213,6 +217,12 @@ Reference manipulation is just technique |---| sharing is often the
 real goal.
 Later we will see how sharing can be used to provide efficient
 communication between parts of a program.
+
+.. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
+
+|
+
+.. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
 
 
 Shallow and Deep Copying
@@ -259,13 +269,13 @@ Bad References
 
 When a reference is first allocated, it does not have a pointee.
 The reference is :term:`uninitialized` or simply "bad".
-A bad reference has a value ``null``.
 A dereference operation on a bad reference is a serious runtime error.
 The dereference operation will crash or halt immediately.
 Each reference must be assigned a pointee before it can support
 dereference operations.
-Before that, the reference is bad and must not be used. In our memory
-drawings, the bad reference value is shown with an XXX value.
+Before that, the reference is bad and must not be used.
+In our memory drawings, the bad reference value is shown with an XXX
+value.
 
 .. _numptrxxxFig:
 
@@ -277,7 +287,7 @@ Correct code overwrites the bad value with a correct reference to a
 pointee, and thereafter the reference works fine.
 There is nothing automatic that gives a reference a valid pointee.
 You just have to program carefully.
-Fortunately, in Java, the compiler will usually spot when a reference
+Fortunately, the Java compiler will usually spot when a reference
 variable has not been initialized, and generate an error (meaning
 that you cannot even complete compiling and run the program).
 
@@ -362,7 +372,7 @@ Of course, this begs the question of how the reference ``johnRef`` got
 its value (its pointee) in the first place.
 We create an ``Employee`` object with the ``new`` operator, as follows::
 
-   Employee johnRef = new Employee("John");
+   Employee johnRef = new Employee("John", 1000);
 
 
 Dereference the reference
