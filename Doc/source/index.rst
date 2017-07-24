@@ -27,5 +27,6 @@ Table of Contents
    DatabaseSchemas
    AdminTools
    Client-sideFramework
+   EventMessages
    QBankUserManual
    QBankDevManual
