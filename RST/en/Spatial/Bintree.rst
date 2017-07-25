@@ -10,6 +10,8 @@
    :topic: Spatial Data Structures
 
 .. odsalink:: AV/Development/bintreeCON.css
+.. odsalink:: DataStructures/PrQuadAv.css
+.. odsalink:: DataStructures/PrQuadAvC.css
 
 The Bintree
 ===========
@@ -28,8 +30,8 @@ makes branching decisions based on a particular search key associated
 with that level, called the :term:`discriminator`.
 Its splitting decisions alternate among the key dimensions.
 Another difference from the BST is that the Bintree uses what is known
-as :term:`key space decomposition`, and so is a form of :term:`trie`.
-A key space decomposition splits the key space into equal halves,
+as :term:`key-space decomposition`, and so is a form of :term:`trie`.
+A key-space decomposition splits the key space into equal halves,
 rather than splitting at the key value of the object being stored.
 
 In theory, the Bintree could be used to unify search across any
@@ -40,7 +42,7 @@ multidimensional coordinates, such as locations in 2D or 3D space.
 .. _BintreeFig:
 
 .. inlineav:: bintreeCONBTEX dgm
-   :align: center
+   :align: justify
 
    Example of a Bintree.
 
@@ -229,16 +231,21 @@ implement when using the composite design.
 Below is a visualization of the Bintree. Use this visualization to
 help understand how the Bintree data structure works.
 
-.. avembed:: AV/Development/bintreeAV.html ss
-   :long_name: Bintree Visualization
+.. avembed:: AV/Development/PrQuadtree/NBintreeAV.html ss
 
-Below is another visualization of the Bintree. Be careful when using this.
-You must set "Bucket Capacity" to be 1, otherwise you will not see the
-Bintree as described in this section.
-Note that this is a Java applet, so you might need to give permission
-to your browser to run it.
+Below is an interactive visualization of the Bintree for practice.
 
-.. raw:: html
+.. avembed:: AV/Development/PrQuadtree/ClickableBintree.html ss
+
+.. [#] A more efficient computation is
+       :math:`(P_x - N_x)^2 + (P_y - N_y)^2 \leq d^2`.
+       This avoids performing a square root function.
+
+.. odsascript:: AV/Development/bintreeCON.js
+
+.. 
+   Saved as a comment in case we need to find this later.
+   .. raw:: html
 
    <center>
    <iframe id="Bintree_iframe"
@@ -249,8 +256,3 @@ to your browser to run it.
    </iframe>
    </center>
 
-.. [#] A more efficient computation is
-       :math:`(P_x - N_x)^2 + (P_y - N_y)^2 \leq d^2`.
-       This avoids performing a square root function.
-
-.. odsascript:: AV/Development/bintreeCON.js

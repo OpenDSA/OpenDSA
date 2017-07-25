@@ -3090,21 +3090,6 @@
           }
         }
       },
-      "Spatial/BintreeNew": {
-        "long_name": "Bintrees",
-        "sections": {
-          "The Bintree": {
-            "bintreeCONBTEX": {},
-            "bintreeAV": {
-              "long_name": "Bintree Visualization",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            }
-          }
-        }
-      },
       "Spatial/OtherSpatial": {
         "long_name": "Other Spatial Data Structures",
         "sections": {}
