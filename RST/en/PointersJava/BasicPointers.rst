@@ -18,6 +18,7 @@
 .. odsalink:: AV/Pointers/employeePtr2CON.css
 .. odsalink:: AV/Pointers/examplePointerCodeCON.css
 .. odsalink:: AV/Pointers/badPointerPowCON.css
+.. odsalink:: AV/Pointers/memoryModelCON.css
 
 
 Basic References
@@ -100,9 +101,8 @@ Its value is only a reference to an ``Employee`` object.
 pointee |---| pointee is just the word that we used in these
 explanations.)
 
-.. _numnumptrFig:
-
 .. inlineav:: employeeEmpRefCON dgm
+   :align: center
 
 Going back to simple things like ``int`` and ``float`` variables that
 just store a value in a box:
@@ -150,6 +150,7 @@ line between the corners of the reference variable's box.
 .. _numptrnullFig:
 
 .. inlineav:: empRefnullCON dgm
+   :align: center
 
 
 The ``Employee`` Class
@@ -189,6 +190,7 @@ It just changes which pointee a reference refers to.
 .. _numptrsecondlFig:
 
 .. inlineav:: empRefsecondCON dgm
+   :align: center
 
 After the assignment, testing for ``(second == empRef)`` would return
 true.
@@ -257,6 +259,7 @@ their own.
 .. _shallowdeepFig:
 
 .. inlineav:: shallowdeepCON dgm
+   :align: center
 
 Here is an example of the difference between shallow and deep copying:
 
@@ -280,6 +283,7 @@ value.
 .. _numptrxxxFig:
 
 .. inlineav:: empPtrxxxCON dgm
+   :align: center
 
 Bad references are common.
 In fact,  **every reference starts out with a bad value**.
@@ -414,6 +418,7 @@ drawing of how memory is likely to react.
 |
 
 .. inlineav:: badPointerPowCON dgm
+   :align: center
 
 
 Reference Rules Summary
@@ -450,12 +455,16 @@ the less restrictive pointers in a language like C or C++.
    accurately and automatically, the most common reference bug are no
    longer possible. Yay!
    Also, the Java runtime system checks each reference value every time
-   it is used, so NULL reference dereferences are caught immediately on
+   it is used, so ``null`` reference dereferences are caught immediately on
    the line where they occur.
-   This can make a programmer much more productive.
+   This is in contrast to a language like C++, where dereferencing a
+   value of ``null`` might not make the program crash until later.
+   This can make a programmer much more productive to know
+   exactly where the problem occurred.
 
 #. Slower. Because the language takes responsibility for implementing
-   so much reference machinery at runtime, Java code runs slower than
+   so much reference machinery at runtime, and does so much extra
+   runtime checking, Java code runs slower than
    other languages like C and C++.
    But the appeal of increased programmer efficiency and fewer bugs
    makes the slowness worthwhile for many applications.
@@ -464,11 +473,6 @@ the less restrictive pointers in a language like C or C++.
 How Are References Implemented In The Machine?
 ----------------------------------------------
 
-.. TODO::
-   :type: Slideshow
-
-   This section needs visual support
-
 How are references implemented?
 The short explanation is that every area of memory in the machine has
 a numeric address like 1000 or 20452.
@@ -476,29 +480,51 @@ You can think of memory as a big array, and each position in memory
 has an index which is its memory address.
 A reference to an area of memory is really just an integer which is
 storing the address of that area of memory.
-The dereference operation looks at the address, and goes to that area
-of memory to retrieve the pointee stored there.
-Reference assignment just copies the numeric address from one
-reference to another.
-The NULL value is generally just the numeric address 0 |---| the
-computer just never allocates a pointee at 0 so that address can be
-used to represent NULL.
-A bad reference is really just a reference which contains a NULL
+
+.. inlineav:: memoryModelCON dgm
+   :align: center
+
+In the picture above, we assume that Java decides to place the new
+Employee object starting at memory location 2000.
+So the reference variable just stores a value of 2000.
+If we looked closely at the computer's memory then we could see
+exactly how the ``Employee`` object is layed out in the bytes in
+memory (beginning at 2000).
+But we don't show it in this picture because the internal details for
+how the ``Employee`` object is implemented are more complicated than
+we need to care about right now.
+(But you should go ahead and look this up if you really want to know.
+You will learn a lot.)
+
+A dereference operation looks at the address of the reference
+variable, and goes to that position in memory to retrieve the pointee
+stored there.
+An assignment of one reference variable to another just copies the
+numeric memory location.
+This is exactly like what happens when making an assignment between
+two ``int`` variables:
+The value is simply copied from one to the other.
+The value of ``null`` is always a special value that Java will never
+use as the location of any legal pointee.
+A bad reference is really just a reference which contains a ``null``
 value.
-The reference has not yet been assigned the specific address of a
-valid pointee.
-This is why dereference operations with bad references are so
-unpredictable.
+Java's runtime environment is constantly watching for a dereference of
+a reference variable with a ``null`` value, so it can catch it right
+away if that happens.
 
 
 Why Are Bad Reference Bugs So Common?
 -------------------------------------
 
+There must be a reason why Java cares so much about dereferencing
+``null`` pointers, that its always watching out for it. Why?
+Because it happens a in a lot of programs.
+
 Why is it so often the case that programmers will allocate a
 reference, but forget to set it to refer to a pointee?
 The rules for references do not seem that complex, yet every
 programmer makes this error repeatedly. Why?
-The problem is that we are trained by the tools we use.
+One explanation is that we are trained by the tools that we use.
 Simple variables don't require any extra setup.
 You can allocate a simple variable, such as ``int``, and use it
 immediately.
@@ -523,3 +549,4 @@ But don't be surprised when you forget, and your program breaks.
 .. odsascript:: AV/Pointers/employeePtr2CON.js
 .. odsascript:: AV/Pointers/examplePointerCodeCON.js
 .. odsascript:: AV/Pointers/badPointerPowCON.js
+.. odsascript:: AV/Pointers/memoryModelCON.js
