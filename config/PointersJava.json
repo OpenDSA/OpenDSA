@@ -46,12 +46,6 @@
           "Why Are Bad Reference Bugs So Common?": {}
         }
       },
-      "PointersJava/Links": {
-        "long_name": "Link Nodes",
-        "sections": {
-          "Link Nodes": {}
-        }
-      },
       "PointersJava/LocalMem": {
         "long_name": "Local Memory",
         "sections": {
@@ -60,16 +54,6 @@
           "Examples": {},
           "Local Parameters": {},
           "How Does The Function Call Stack Work?": {}
-        }
-      },
-      "PointersJava/RefParam": {
-        "long_name": "Reference Parameters",
-        "sections": {
-          "Reference Parameters": {},
-          "Passing By Reference": {},
-          "Simple Reference Parameter Example: Swap()": {},
-          "Java is always pass-by-value": {},
-          "Reference Parameter Summary": {}
         }
       },
       "PointersJava/HeapMem": {
@@ -84,6 +68,22 @@
           "Heap Array": {},
           "Memory Leaks": {},
           "Heap Memory Summary": {}
+        }
+      },
+      "PointersJava/Links": {
+        "long_name": "Link Nodes",
+        "sections": {
+          "Link Nodes": {}
+        }
+      },
+      "PointersJava/RefParam": {
+        "long_name": "Reference Parameters",
+        "sections": {
+          "Reference Parameters": {},
+          "Passing By Reference": {},
+          "Simple Reference Parameter Example: Swap()": {},
+          "Java is always pass-by-value": {},
+          "Reference Parameter Summary": {}
         }
       },
       "PointersJava/Exercises": {

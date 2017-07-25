@@ -390,12 +390,6 @@ Otherwise, you get a runtime error of type ``NullPointerException``.
 Example Reference Code
 ----------------------
 
-With the syntax defined, we can now write some reference code that
-demonstrates all the reference rules.
-
-.. codeinclude:: Pointers/PointerExample
-   :tag: Example
-
 .. inlineav:: examplePointerCodeCON ss
    :output: show
 
@@ -403,8 +397,8 @@ demonstrates all the reference rules.
 Bad reference Example
 ---------------------
 
-Code with the most common sort of reference bug will **look** like the
-above correct code, but without the middle step where the references
+Code with the most common sort of reference bug will **look** correct,
+but without the middle step where the references
 are assigned pointees.
 The bad code will compile fine, but at run-time, each dereference with
 a bad reference will raise ``NullPointerException`` and the program
@@ -519,7 +513,6 @@ use are very different.
 Oh well.
 Try to remember to assign your references to refer to pointees.
 But don't be surprised when you forget, and your program breaks.
-
 
 .. odsascript:: AV/Pointers/num42CON.js
 .. odsascript:: AV/Pointers/employeeEmpRefCON.js

@@ -93,16 +93,13 @@ void test(Employee e1) // T1
 void examplePointers()
 {
   Employee empPtr1;
-  Employee employee1 = new Employee("John", 1000);
-  Employee employee2 = new Employee("Alex", 1000);
   Employee empPtr2 = null;
-  empPr1 = employee1;
-  empPtr2 = employee2;
-  employee2 = empPtr2;
+  empPtr1 = new Employee("John", 1000);
+  empPtr2 = new Employee("Alex", 1000);
+  Employee employee1 = empPtr2;
   empPtr2 = empPtr1;
   empPtr2.setName("Sam");
 }
-
 /* *** ODSAendTag: examplePointerCode *** */
 
 /* *** ODSATag: badPointerCode *** */
