@@ -49,13 +49,17 @@
         "sections": {}
       }
     },
-    "Introduction": {
+    "Day 1.1": {
       "FormalLang/FLIntro": {
         "long_name": "Introduction",
         "sections": {}
       },
       "FormalLang/FLOverview": {
         "long_name": "Overview",
+        "sections": {}
+      },
+      "FormalLang/FLSetNotes": {
+        "long_name": "Set Theory Notes",
         "sections": {}
       }
     },

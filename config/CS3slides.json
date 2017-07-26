@@ -1,7 +1,6 @@
 {
   "title": "CS3 Coursenotes",
   "desc": "CS3 Coursenotes",
-  "inst_book_id": 20,
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",

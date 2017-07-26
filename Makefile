@@ -124,6 +124,9 @@ CS4104: min
 	python $(CONFIG_SCRIPT) config/CS4104_generated.json --no-lms
 
 FormalLang: min
+	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
+
+FormalLangCanvas: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/FormalLang_generated.json --no-lms
 
@@ -134,6 +137,7 @@ CS3SS17slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3SS17slides.json --no-lms
 
 CS3notes: min
+	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
 
 testcmap: min
