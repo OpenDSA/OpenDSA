@@ -57,7 +57,7 @@ public class badPointers {
 
     public static void main(String[] args) {
         /* *** ODSATag: badPointers *** */
-        Employee badPointer = null; // Allocate the reference ...
+        Employee badPointer; // Allocate the reference ...
         // badPointer = new Employee("Sam", 1000); ... but forget the pointee
         System.out.println(badPointer.getName());  // This line causes a NullPointerException
         /* *** ODSAendTag: badPointers *** */
