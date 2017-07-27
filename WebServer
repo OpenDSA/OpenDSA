@@ -6,4 +6,12 @@
 # After invoking this script from ~OpenDSA, point your web browser to:
 # http://127.0.0.1:8080/
 # python -m SimpleHTTPServer
-sudo python server.py 0.0.0.0:8080
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    MINGW*)  python server.py 0.0.0.0:8080;;
+    CYGWIN*) python server.py 0.0.0.0:8080;;
+    Linux*)  sudo python server.py 0.0.0.0:8080;;
+    Darwin*) sudo python server.py 0.0.0.0:8080;;
+    *)       python server.py 0.0.0.0:8080
+
+esac
