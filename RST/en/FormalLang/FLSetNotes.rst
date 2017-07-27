@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer
+   :author: Susan Rodger and Cliff Shaffer
    :requires: FL Introduction
    :satisfies:
    :topic: Introduction

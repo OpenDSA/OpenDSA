@@ -61,6 +61,10 @@
       "FormalLang/FLSetNotes": {
         "long_name": "Set Theory Notes",
         "sections": {}
+      },
+      "FormalLang/FLConcepts": {
+        "long_name": "Major Concepts",
+        "sections": {}
       }
     },
     "Mathematical Background": {
