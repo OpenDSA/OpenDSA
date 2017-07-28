@@ -49,7 +49,7 @@
         "sections": {}
       }
     },
-    "Day 1.1": {
+    "Lecture 1": {
       "FormalLang/FLIntro": {
         "long_name": "Introduction",
         "sections": {}
@@ -111,6 +111,16 @@
             }
           }
         }
+      }
+    },
+    "Lectures 2-4": {
+      "FormalLang/DFA": {
+        "long_name": "Deterministic Finite Automata",
+        "sections": {}
+      },
+      "FormalLang/NFA": {
+        "long_name": "Non-deterministic Finite Automata",
+        "sections": {}
       }
     },
     "Limits to Computing": {
