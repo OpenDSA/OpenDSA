@@ -2282,12 +2282,19 @@ Glossary
    linear search
       Another name for :term:`sequential search`.
 
+   link node
+      A widely used supporting object that forms the basic
+      building block for a :term:`linked list` and similar
+      :term:`data structures <data structure>`.
+      A link node contains one or more fields that store data, and a
+      :term:`pointer` or :term:`reference` to another link node.
+
    linked list
       An implementation for the list ADT that uses
       :term:`dynamic allocation`
-      of link nodes to store the list elements. Common variants are the
-      :term:`singly linked list`, :term:`doubly linked list` and
-      :term:`circular list`.
+      of :term:`link nodes <link node>` to store the list elements.
+      Common variants are the :term:`singly linked list`,
+      :term:`doubly linked list` and :term:`circular list`.
       The :term:`overhead` required is the pointers in each link node.
 
    linked stack

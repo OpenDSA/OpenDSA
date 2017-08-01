@@ -3,7 +3,9 @@
 //variable xPosition controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("num42CON", {animationMode: "none"});
+
+  var av_name = "num42CON";
+  var av = new JSAV(av_name, {animationMode: "none"});
   var xPosition = 375;
   var yPosition = 10;
   var length1 = 125;

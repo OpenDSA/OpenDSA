@@ -9,10 +9,10 @@
    :satisfies: Heap Memory
    :topic: Pointers
 
-   .. odsascript:: AV/PointersSushma/LocalHeapaloc.css
-   .. odsascript:: AV/PointersSushma/LocalHeapdealoc.css
-   .. odsascript:: AV/PointersSushma/LocalHeapintptr42.css
-   .. odsascript:: AV/PointersSushma/garbageDisposalCON.css
+   .. odsascript:: AV/Pointers/LocalHeapaloc.css
+   .. odsascript:: AV/Pointers/LocalHeapdealoc.css
+   .. odsascript:: AV/Pointers/LocalHeapintptr42.css
+   .. odsascript:: AV/Pointers/garbageDisposalCON.css
 
 
 Heap Memory
@@ -348,7 +348,7 @@ disadvantage of heap memory is that  the program must make explicit allocation
 calls to manage the heap memory. The heap memory does not operate automatically
 and conveniently the way local memory does.
 
-.. odsascript:: AV/PointersSushma/LocalHeapaloc.js
-.. odsascript:: AV/PointersSushma/LocalHeapdealoc.js
-.. odsascript:: AV/PointersSushma/LocalHeapintptr42.js
-.. odsascript:: AV/PointersSushma/garbageDisposalCON.js
+.. odsascript:: AV/Pointers/LocalHeapaloc.js
+.. odsascript:: AV/Pointers/LocalHeapdealoc.js
+.. odsascript:: AV/Pointers/LocalHeapintptr42.js
+.. odsascript:: AV/Pointers/garbageDisposalCON.js

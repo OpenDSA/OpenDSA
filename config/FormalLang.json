@@ -49,13 +49,21 @@
         "sections": {}
       }
     },
-    "Introduction": {
+    "Lecture 1": {
       "FormalLang/FLIntro": {
         "long_name": "Introduction",
         "sections": {}
       },
       "FormalLang/FLOverview": {
         "long_name": "Overview",
+        "sections": {}
+      },
+      "FormalLang/FLSetNotes": {
+        "long_name": "Set Theory Notes",
+        "sections": {}
+      },
+      "FormalLang/FLConcepts": {
+        "long_name": "Major Concepts",
         "sections": {}
       }
     },
@@ -103,6 +111,16 @@
             }
           }
         }
+      }
+    },
+    "Lectures 2-4": {
+      "FormalLang/DFA": {
+        "long_name": "Deterministic Finite Automata",
+        "sections": {}
+      },
+      "FormalLang/NFA": {
+        "long_name": "Non-deterministic Finite Automata",
+        "sections": {}
       }
     },
     "Limits to Computing": {

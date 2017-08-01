@@ -1,0 +1,320 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Susan Rodger and Cliff Shaffer
+   :requires: FL Introduction
+   :satisfies: FL Concepts
+   :topic: Formal Languages Concepts
+
+Major Concepts
+==============
+
+Introduction
+------------
+
+In this module, we present basic notation needed to discuss the three
+major concepts for the semester:
+
+* Languages
+* Grammars
+* Automata
+
+Languages
+---------
+
+* :math:`\Sigma`: A set of symbols, an alphabet
+* string: Finite sequence of symbols (from some alphabet)
+* language: A set of strings defined over :math:`\Sigma`
+
+Languages are sets, a subset of the powerset of :math:`\Sigma`
+
+Examples
+~~~~~~~~
+
+.. note::
+
+   For each of these, mention first the alphabet, and second the the
+   language that is a subset of strings formed over the alphabet.
+
+* :math:`\Sigma = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}`
+  
+  :math:`L = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, ... \}`
+
+* :math:`\Sigma = \{a, b, c\}`
+
+  :math:`L = \{ab, ac, cabb\}`
+
+  :math:`L` is a language with 3 strings, each string is a sequence of
+  strings formed over the alphabet.
+
+  How any strings could be in :math:`L`?
+
+* :math:`\Sigma = \{a, b\}`
+
+  :math:`L = \{a^n b^n | n > 0\}`
+
+  This is an example of an infinite language.
+
+  What are the strings in the language? :math:`\{ab, aabb, aaabbb, aaaabbbb, . . .\}`
+
+Notation
+~~~~~~~~
+
+* Symbols in alphabet: :math:`a, b, c, d, ...`
+* String names: :math:`u,v,w,...`
+
+Definition of concatenation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Let :math:`w = a_1a_2...a_n` and :math:`v=b_1b_2...b_n`
+
+Then, :math:`w \circ v` OR :math:`wv=a_1a_2...a_nb_1b_2...b_m`.
+
+.. note::
+
+   See Linz for formal definitions of other operations
+
+String Operations
+~~~~~~~~~~~~~~~~~
+
+Strings: :math:`w=abbc`, :math:`v=ab`, :math:`u=c`
+
+* Size of string
+
+  :math:`|w| + |v| = 6`
+
+* Concatenation
+
+  :math:`v^3 = vvv = v \circ v \circ v = ababab`
+
+* :math:`v^0 = \lambda`
+
+* :math:`w^R = cbba`
+
+* :math:`|vv^Rw|= 8`
+
+* :math:`ab \circ λ = ab`
+
+* :math:`\Sigma^∗ =` set of strings obtained by concatenating 0 or more
+  symbols from :math:`\Sigma`
+
+  Examples:
+
+  * :math:`\Sigma = \{a, b\}`
+
+  * :math:`\Sigma^* = \{\lambda, a, b, aa, ab, ba, bb, ...\}`
+
+    Note: Easiest to list out all the strings of length 0, then length
+    1, then length 2, etc.
+
+  * :math:`\Sigma^+ = \Sigma^* - \{\lambda\}`
+
+  More Examples:
+
+  :math:`\Sigma = \{a, b, c\}, L_1=\{ab, bc, aba\}, L_2 = \{c, bc, bcc\}`
+
+  * :math:`L_1 \cup L_2 = \{ab, bc, aba, c, bcc\}`
+
+  * :math:`L_1 \cap L_2 = \{bc\}`
+
+  * :math:`\overline{L_1} = \Sigma{}^{*} - L`
+
+  * :math:`\overline{L_1 \cap L_2} = \Sigma{}^{*} - \{bc\}`
+
+  * :math:`L_1 \circ L_2 = \{xy \mid x \in L_1` and
+    :math:`y\in L_2\} = \{abc, abbc, abbcc, bcc, bcbc, bcbcc, abac, ababc, ababcc\}`
+
+Definitions
+~~~~~~~~~~~
+
+:math:`L^0 = \{\lambda\}`
+
+:math:`L^2 = L \circ L`
+
+:math:`L^3 = L \circ L \circ L`
+
+:math:`L^{*} = L^0 \cup L^1 \cup L^2 \cup L^3 \ldots`
+
+:math:`L^{+} = L^1 \cup L^2 \cup L^3 \ldots`
+
+
+Grammars
+--------
+
+Before looking at formal grammars to define formal languages and 
+programming languages, let's look at a grammar you can maybe relate
+to, a grammar for english.
+This will be a tiny subset of the english language, not complete by
+far!
+
+   <sentence> :math:`\rightarrow` <subject><verb><d.o.>
+
+   <subject> :math:`\rightarrow` <noun> | <article><noun>
+
+   <verb> :math:`\rightarrow` hit | ran | ate
+
+   <d.o.> :math:`\rightarrow` <article><noun> | <noun>
+
+   <noun> :math:`\rightarrow` Fritz | ball
+
+   <article> :math:`\rightarrow` the | an | a
+
+Examples
+~~~~~~~~
+
+Deriving a sentence:
+To derive a sentence, start at the starting point of the grammar and
+you do replacements until you can do no more replacements.
+A variable in the grammar (it has brackets around it) can be replaced
+by the right hand side of its rule::
+
+   Fritz hit the ball
+
+   <sentence> -> <subject><verb><d.o> 
+              -> <noun><verb><d.o>
+              -> Fritz <verb><d.o.>
+              -> Fritz hit <d.o.>
+              -> Fritz hit <article><noun>
+              -> Fritz hit the <noun>
+              -> Fritz hit the ball
+
+Can we derive these sentences? If not, can we change the grammar?::
+
+   The ball hit Fritz
+
+   The ball ate the ball
+
+* A sentence is syntactically correct if it follows the rules
+  (the grammar can dervive it)
+
+* A sentence is semantically correct if it has "meaning"
+
+
+Formal definition of a grammar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A grammar :math:`G = (V, T, S, P)` where
+
+* :math:`V` is a finite set of variables (nonterminals).
+* :math:`T` is a finite set of terminals.
+* :math:`S` is the start variable (:math:`S \n V`).
+* :math:`P` is a set of productions (rules).
+
+  :math:`x \rightarrow y` means to replace :math:`x` by :math:`y`.
+
+  Here, :math:`x \in (V \cup T)^+, y \in (V \cup T)^*`.
+
+.. note::
+
+   What are :math:`S, T, V, P` in the "english" grammar example above?
+
+Notation
+~~~~~~~~
+
+.. math::
+
+   \begin{array}{ll}
+     w \Rightarrow z & w\ \mbox{derives}\ z\\
+     w \stackrel{*}{\Rightarrow} z & \mbox{derives in 0 or more steps}\\
+     w \stackrel{+}{\Rightarrow} z & \mbox{derives in 1 or more steps}\\
+   \end{array}
+
+Given grammar :math:`G = (V, T, S, P)`, define
+
+.. math::
+
+   L(G)= \{w \in T{}^{*} \mid S \stackrel{*}{\Rightarrow} w\}
+
+.. note::
+
+   Ask one of them to say this in words: This is the language of the
+   grammar. It is all strings formed over the alphabet (or set of
+   terminals, note that :math:`T^*` is all possible strings over T),
+   SUCH THAT if you start with S (the start symbol in the grammar),
+   you can derive the string.
+
+.. note::
+
+   For each of the following examples, give them time to solve them
+   and then go over them in class with them.
+   ALSO, show a sample derivation with the grammar to show them it
+   works.
+
+
+**Example**
+
+:math:`G=(\{S\}, \{a,b\}, S, P)`
+
+:math:`P=\{S \rightarrow aa, S \rightarrow b\}`
+
+:math:`L(G) =` ?
+
+.. note::
+
+   :math:`\{b, aab, aaaab, ... \} = \{(aa)^nb | n \ge 0\}`
+
+
+**Example**
+
+:math:`L(G) = \{a^nccb^n | n > 0\}`
+
+:math:`G =` ?
+
+.. note::
+
+   :math:`S \rightarrow aSb | aAb`
+
+   :math:`A \rightarrow cc`
+
+
+**Example**
+
+:math:`G = (\{S\}, \{a,b\}, S, P)`
+
+:math:`P = \{S \rightarrow aSb, S \rightarrow SS, S \rightarrow ab\}`
+
+Which of these strings :math:`aabb, abab, abba, babab` can be
+generated by this grammar? Show the derivations.
+
+:math:`L(G) =` ?
+
+.. note::
+
+   The language of matching parenthesis where :math:`a` is left paren,
+   and :math:`b` is right paren. 
+   (One semester I wrote this:
+   :math:`\{a^nb^n (a^mb^m)^{*} \mid n > 0, m > 0\}`
+   BUT THIS IS NOT CORRECT.
+   Above the :math:`m` would have to be different each time.
+
+   Answer: :math:`S \rightarrow aSb  \rightarrow aabb`
+
+   Answer: :math:`S \rightarrow SS  \rightarrow abS \rightarrow abab`
+
+   Cannot derive :math:`abba, babab`. WHY? Nothing ends with
+   :math:`a`, nothing starts with :math:`b`.
+
+
+Automata
+--------
+
+.. odsafig:: Images/stautomata.png
+   :width: 400
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Basic machine
+
+   Abstract model of a digital computer
+
+.. note::
+
+   Mention that there is a program (the control unit), and the input is
+   processed once from left to right.
+   Some versions have an additional storage unit.
+   We will define specific automata throughout the semester.
+
+   This is the topic for the next chapter.

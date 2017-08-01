@@ -52,7 +52,7 @@
         "sections": {}
       }
     },
-    "Introduction": {
+    "Introduction for Data Structures and Algorithms Courses": {
       "Background/IntroDSA": {
         "long_name": "Introduction to Data Structures and Algorithms",
         "sections": {
@@ -202,7 +202,7 @@
           "Example Reference Code": {},
           "Bad reference Example": {},
           "Reference Rules Summary": {},
-          "Java References Features": {},
+          "Java References vs Pointers": {},
           "How Are References Implemented In The Machine?": {},
           "Why Are Bad Reference Bugs So Common?": {}
         }
@@ -215,16 +215,6 @@
           "Examples": {},
           "Local Parameters": {},
           "How Does The Function Call Stack Work?": {}
-        }
-      },
-      "PointersJava/RefParam": {
-        "long_name": "Reference Parameters",
-        "sections": {
-          "Reference Parameters": {},
-          "Passing By Reference": {},
-          "Simple Reference Parameter Example: Swap()": {},
-          "Java is always pass-by-value": {},
-          "Reference Parameter Summary": {}
         }
       },
       "PointersJava/HeapMem": {
@@ -241,11 +231,10 @@
           "Heap Memory Summary": {}
         }
       },
-      "PointersJava/Exercises": {
-        "long_name": "Pointers Exercises",
+      "PointersJava/Links": {
+        "long_name": "Link Nodes",
         "sections": {
-          "Exercises": {
-          }
+          "Link Nodes": {}
         }
       }
     },
@@ -4626,21 +4615,6 @@
           }
         }
       },
-      "Spatial/BintreeNew": {
-        "long_name": "Bintrees",
-        "sections": {
-          "The Bintree": {
-            "bintreeCONBTEX": {},
-            "bintreeAV": {
-              "long_name": "Bintree Visualization",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            }
-          }
-        }
-      },
       "Spatial/OtherSpatial": {
         "long_name": "Other Spatial Data Structures",
         "sections": {}
@@ -4788,6 +4762,30 @@
         }
       }
     },
+    "Lower Bounds": {
+      "Bounds/BoundMax": {
+        "long_name": "Finding the Maximum Value",
+        "sections": {
+          "Finding the Maximum Value": {}
+        }
+      },
+      "Bounds/BoundAdversary": {
+        "long_name": "Adversary Lower Bounds",
+        "sections": {}
+      },
+      "Bounds/BoundState": {
+        "long_name": "State Space Lower Bounds",
+        "sections": {}
+      },
+      "Bounds/BoundiBest": {
+        "long_name": "Finding ith Best Element",
+        "sections": {}
+      },
+      "Bounds/SortingOptimal": {
+        "long_name": "Optimal Sorting",
+        "sections": {}
+      }
+    },
     "Number Problems": {
       "SeniorAlgAnal/Numeric": {
         "long_name": "Number Problems",
@@ -4855,15 +4853,13 @@
         }
       }
     },
-    "Advanced Analysis": {
-      "SeniorAlgAnal/AmortAnal": {
-        "long_name": "Amortized Analysis",
-        "sections": {}
-      }
-    },
-    "Algorithms": {
+    "Miscellaneous": {
       "SeniorAlgAnal/DynamicProgramming": {
         "long_name": "Dynamic Programming",
+        "sections": {}
+      },
+      "SeniorAlgAnal/AmortAnal": {
+        "long_name": "Amortized Analysis",
         "sections": {}
       },
       "Development/Knapsack": {
@@ -4973,43 +4969,13 @@
       "Development/StringSearchRabinKarp": {
         "long_name": "Rabin-Karp String Search Algorithm",
         "sections": {}
-      }
-    },
-    "Lower Bounds": {
-      "Bounds/BoundMax": {
-        "long_name": "Finding the Maximum Value",
-        "sections": {
-          "Finding the Maximum Value": {}
-        }
       },
-      "Bounds/BoundAdversary": {
-        "long_name": "Adversary Lower Bounds",
-        "sections": {}
-      },
-      "Bounds/BoundState": {
-        "long_name": "State Space Lower Bounds",
-        "sections": {}
-      },
-      "Bounds/BoundiBest": {
-        "long_name": "Finding ith Best Element",
-        "sections": {}
-      },
-      "Bounds/SortingOptimal": {
-        "long_name": "Optimal Sorting",
-        "sections": {}
-      }
-    },
-    "Miscellaneous": {
       "Development/GenTreeImplement": {
         "long_name": "General Tree Implementations",
         "sections": {}
       },
       "Development/Kary": {
         "long_name": "K-ary Tree Implementations",
-        "sections": {}
-      },
-      "Development/SortProgExer": {
-        "long_name": "Sorting programming exercises",
         "sections": {}
       }
     },

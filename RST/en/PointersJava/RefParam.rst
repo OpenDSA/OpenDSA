@@ -9,7 +9,7 @@
    :satisfies: Reference parameters
    :topic: Pointers
 
-   .. odsalink:: AV/PointersSushma/T1-T3CON.css
+   .. odsalink:: AV/Pointers/T1-T3CON.css
 
 Reference Parameters
 ====================
@@ -201,4 +201,4 @@ For pass by reference, there is only one copy of the value of interest, and copy
 one copy are passed. So if the value of interest is an array of int, a copy of its reference parameter will
 be passed to any function instead of copying the array.
 
-.. odsascript:: AV/PointersSushma/T1-T3CON.js
+.. odsascript:: AV/Pointers/T1-T3CON.js

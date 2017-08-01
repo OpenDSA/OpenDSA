@@ -41,7 +41,7 @@
           "Example Reference Code": {},
           "Bad reference Example": {},
           "Reference Rules Summary": {},
-          "Java References Features": {},
+          "Java References vs Pointers": {},
           "How Are References Implemented In The Machine?": {},
           "Why Are Bad Reference Bugs So Common?": {}
         }
@@ -56,16 +56,6 @@
           "How Does The Function Call Stack Work?": {}
         }
       },
-      "PointersJava/RefParam": {
-        "long_name": "Reference Parameters",
-        "sections": {
-          "Reference Parameters": {},
-          "Passing By Reference": {},
-          "Simple Reference Parameter Example: Swap()": {},
-          "Java is always pass-by-value": {},
-          "Reference Parameter Summary": {}
-        }
-      },
       "PointersJava/HeapMem": {
         "long_name": "Heap Memory",
         "sections": {
@@ -78,6 +68,22 @@
           "Heap Array": {},
           "Memory Leaks": {},
           "Heap Memory Summary": {}
+        }
+      },
+      "PointersJava/Links": {
+        "long_name": "Link Nodes",
+        "sections": {
+          "Link Nodes": {}
+        }
+      },
+      "PointersJava/RefParam": {
+        "long_name": "Reference Parameters",
+        "sections": {
+          "Reference Parameters": {},
+          "Passing By Reference": {},
+          "Simple Reference Parameter Example: Swap()": {},
+          "Java is always pass-by-value": {},
+          "Reference Parameter Summary": {}
         }
       },
       "PointersJava/Exercises": {

@@ -9,7 +9,7 @@
    :satisfies: Local memory
    :topic: Pointers
 
-   .. odsalink:: AV/PointersSushma/T1-T5CON.css
+   .. odsalink:: AV/Pointers/T1-T5CON.css
 
 Local Memory
 ============
@@ -279,4 +279,4 @@ function call process:
   always follow the "stack" model presented here.
 
 
-.. odsascript:: AV/PointersSushma/T1-T5CON.js
+.. odsascript:: AV/Pointers/T1-T5CON.js

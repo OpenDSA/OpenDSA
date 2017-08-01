@@ -12,14 +12,12 @@
       "endBefore": "/* *** ODSAendTag: examplePointerCode *** */",
       "tags": {
         "empPtr1": 3,
-        "employee1": 4,
-        "employee2": 5,
-        "empPtr2": 6,
-        "emp1": 7,
-        "emp2": 8,
-        "equal": 9,
-        "equal2":10,
-        "sam":11
+        "empPtr2": 4,
+        "newEmployee1": 5,
+        "newEmployee2": 6,
+        "employee1": 7,
+        "equal": 8,
+        "sam":9
       }
     },
     {

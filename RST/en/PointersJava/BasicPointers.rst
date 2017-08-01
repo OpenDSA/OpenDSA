@@ -9,15 +9,16 @@
    :satisfies: Pointer intro
    :topic: Pointers
 
-.. odsalink:: AV/PointersSushma/num42CON.css
-.. odsalink:: AV/PointersSushma/employeeEmpRefCON.css
-.. odsalink:: AV/PointersSushma/empRefnullCON.css
-.. odsalink:: AV/PointersSushma/empRefsecondCON.css
-.. odsalink:: AV/PointersSushma/shallowdeepCON.css
-.. odsalink:: AV/PointersSushma/empPtrxxxCON.css
-.. odsalink:: AV/PointersSushma/employeePtr2CON.css
-.. odsalink:: AV/PointersSushma/examplePointerCodeCON.css
-.. odsalink:: AV/PointersSushma/badPointerPowCON.css
+.. odsalink:: AV/Pointers/num42CON.css
+.. odsalink:: AV/Pointers/employeeEmpRefCON.css
+.. odsalink:: AV/Pointers/empRefnullCON.css
+.. odsalink:: AV/Pointers/empRefsecondCON.css
+.. odsalink:: AV/Pointers/shallowdeepCON.css
+.. odsalink:: AV/Pointers/empPtrxxxCON.css
+.. odsalink:: AV/Pointers/employeePtr2CON.css
+.. odsalink:: AV/Pointers/examplePointerCodeCON.css
+.. odsalink:: AV/Pointers/badPointerPowCON.css
+.. odsalink:: AV/Pointers/memoryModelCON.css
 
 
 Basic References
@@ -100,9 +101,8 @@ Its value is only a reference to an ``Employee`` object.
 pointee |---| pointee is just the word that we used in these
 explanations.)
 
-.. _numnumptrFig:
-
 .. inlineav:: employeeEmpRefCON dgm
+   :align: center
 
 Going back to simple things like ``int`` and ``float`` variables that
 just store a value in a box:
@@ -150,6 +150,7 @@ line between the corners of the reference variable's box.
 .. _numptrnullFig:
 
 .. inlineav:: empRefnullCON dgm
+   :align: center
 
 
 The ``Employee`` Class
@@ -189,6 +190,7 @@ It just changes which pointee a reference refers to.
 .. _numptrsecondlFig:
 
 .. inlineav:: empRefsecondCON dgm
+   :align: center
 
 After the assignment, testing for ``(second == empRef)`` would return
 true.
@@ -257,6 +259,7 @@ their own.
 .. _shallowdeepFig:
 
 .. inlineav:: shallowdeepCON dgm
+   :align: center
 
 Here is an example of the difference between shallow and deep copying:
 
@@ -280,6 +283,7 @@ value.
 .. _numptrxxxFig:
 
 .. inlineav:: empPtrxxxCON dgm
+   :align: center
 
 Bad references are common.
 In fact,  **every reference starts out with a bad value**.
@@ -339,8 +343,8 @@ has influenced the syntaxes of several languages.
 Declaring a Reference Variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A reference variable to a non-primitive data type (that is, any object) is
-defined by declaring a variable of that object's type.
+A reference to a non-primitive data type (that is, a reference to any
+object) is defined by declaring a variable of that object's type.
 In other words, reference variables are declared just like any other
 variable.
 The declaration gives the type and identifier of the new variable, and
@@ -357,22 +361,8 @@ The reference starts out with a "bad" value until you assign it to something.
 Assigning a pointee to a reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We assign a pointee to a reference variable with a simple assignment
-statement.
-We could assign our reference variable to the same value as another
-reference variable, as in this picture.
-
-.. inlineav:: employeePtr2CON dgm
-
-We can do this with the following code::
-
-   Employee empPtr = johnRef;
-
-Of course, this begs the question of how the reference ``johnRef`` got
-its value (its pointee) in the first place.
-We create an ``Employee`` object with the ``new`` operator, as follows::
-
-   Employee johnRef = new Employee("John", 1000);
+.. inlineav:: employeePtr2CON ss
+   :output: show
 
 
 Dereference the reference
@@ -404,12 +394,6 @@ Otherwise, you get a runtime error of type ``NullPointerException``.
 Example Reference Code
 ----------------------
 
-With the syntax defined, we can now write some reference code that
-demonstrates all the reference rules.
-
-.. codeinclude:: Pointers/PointerExample
-   :tag: Example
-
 .. inlineav:: examplePointerCodeCON ss
    :output: show
 
@@ -417,8 +401,8 @@ demonstrates all the reference rules.
 Bad reference Example
 ---------------------
 
-Code with the most common sort of reference bug will **look** like the
-above correct code, but without the middle step where the references
+Code with the most common sort of reference bug will **look** correct,
+but without the middle step where the references
 are assigned pointees.
 The bad code will compile fine, but at run-time, each dereference with
 a bad reference will raise ``NullPointerException`` and the program
@@ -434,6 +418,7 @@ drawing of how memory is likely to react.
 |
 
 .. inlineav:: badPointerPowCON dgm
+   :align: center
 
 
 Reference Rules Summary
@@ -441,8 +426,8 @@ Reference Rules Summary
 
 No matter how complex a reference structure gets, the list of rules remains short.
 
-* A reference variable stores a reference to its pointee. The pointee,
-  in turn, stores something useful.
+* A reference variable stores a reference to its pointee.
+  The pointee, in turn, stores something useful.
 
 * The dereference operation on a reference accesses its pointee.
   A reference may only be dereferenced after it has been assigned to
@@ -452,31 +437,37 @@ No matter how complex a reference structure gets, the list of rules remains shor
 * Allocating a reference does not automatically assign it to refer to
   a pointee.
   Assigning the reference to refer to a specific pointee is a separate
-  operation, which is easy to forget.
+  operation.
+  This is easy to forget.
 
 * Assignment between two references makes them refer to the same
-  pointee, which introduces ``object sharing``.
+  pointee, which allows ``object sharing``.
 
 
-Java References Features
-------------------------
+Java References vs Pointers
+---------------------------
 
-Java references have two main features.
+Java references have two main features that distinguishes them from
+the less restrictive pointers in a language like C or C++.
 
-* Fewer bugs.
-  Because the language implements the reference manipulation
-  accurately and automatically, the most common reference bug are no
-  longer possible. Yay!
-  Also, the Java runtime system checks each reference value every time
-  it is used, so NULL reference dereferences are caught immediately on
-  the line where they occur.
-  This can make a programmer much more productive.
+#. Fewer bugs.
+   Because the language implements the reference manipulation
+   accurately and automatically, the most common reference bug are no
+   longer possible. Yay!
+   Also, the Java runtime system checks each reference value every time
+   it is used, so ``null`` reference dereferences are caught immediately on
+   the line where they occur.
+   This is in contrast to a language like C++, where dereferencing a
+   value of ``null`` might not make the program crash until later.
+   This can make a programmer much more productive to know
+   exactly where the problem occurred.
 
-* Slower. Because the language takes responsibility for implementing
-  so much reference machinery at runtime, Java code runs slower than
-  other languages like C and C++.
-  But the appeal of increased programmer efficiency and fewer bugs
-  makes the slowness worthwhile for many applications.
+#. Slower. Because the language takes responsibility for implementing
+   so much reference machinery at runtime, and does so much extra
+   runtime checking, Java code runs slower than
+   other languages like C and C++.
+   But the appeal of increased programmer efficiency and fewer bugs
+   makes the slowness worthwhile for many applications.
 
 
 How Are References Implemented In The Machine?
@@ -485,39 +476,63 @@ How Are References Implemented In The Machine?
 How are references implemented?
 The short explanation is that every area of memory in the machine has
 a numeric address like 1000 or 20452.
+You can think of memory as a big array, and each position in memory
+has an index which is its memory address.
 A reference to an area of memory is really just an integer which is
 storing the address of that area of memory.
-The dereference operation looks at the address, and goes to that area
-of memory to retrieve the pointee stored there.
-Reference assignment just copies the numeric address from one
-reference to another.
-The NULL value is generally just the numeric address 0 |---| the
-computer just never allocates a pointee at 0 so that address can be
-used to represent NULL.
-A bad reference is really just a reference which contains a NULL
+
+.. inlineav:: memoryModelCON dgm
+   :align: center
+
+In the picture above, we assume that Java decides to place the new
+Employee object starting at memory location 2000.
+So the reference variable just stores a value of 2000.
+If we looked closely at the computer's memory then we could see
+exactly how the ``Employee`` object is layed out in the bytes in
+memory (beginning at 2000).
+But we don't show it in this picture because the internal details for
+how the ``Employee`` object is implemented are more complicated than
+we need to care about right now.
+(But you should go ahead and look this up if you really want to know.
+You will learn a lot.)
+
+A dereference operation looks at the address of the reference
+variable, and goes to that position in memory to retrieve the pointee
+stored there.
+An assignment of one reference variable to another just copies the
+numeric memory location.
+This is exactly like what happens when making an assignment between
+two ``int`` variables:
+The value is simply copied from one to the other.
+The value of ``null`` is always a special value that Java will never
+use as the location of any legal pointee.
+A bad reference is really just a reference which contains a ``null``
 value.
-The reference has not yet been assigned the specific address of a
-valid pointee.
-This is why dereference operations with bad references are so
-unpredictable.
+Java's runtime environment is constantly watching for a dereference of
+a reference variable with a ``null`` value, so it can catch it right
+away if that happens.
 
 
 Why Are Bad Reference Bugs So Common?
 -------------------------------------
 
+There must be a reason why Java cares so much about dereferencing
+``null`` pointers, that its always watching out for it. Why?
+Because it happens a in a lot of programs.
+
 Why is it so often the case that programmers will allocate a
 reference, but forget to set it to refer to a pointee?
 The rules for references do not seem that complex, yet every
 programmer makes this error repeatedly. Why?
-The problem is that we are trained by the tools we use.
+One explanation is that we are trained by the tools that we use.
 Simple variables don't require any extra setup.
 You can allocate a simple variable, such as ``int``, and use it
 immediately.
-All that ``int``, ``char`` or ``boolean`` variables you have written
-has trained you, quite reasonably, that a variable may be used once it
-is declared.
-Unfortunately, references look like simple variables but they require
-the extra initialization before use.
+All that ``int``, ``char`` or ``boolean`` variable code that you have
+written has trained you, quite reasonably, that a variable may be used
+once it is declared.
+Unfortunately, references look like simple variables.
+But they require the extra initialization before use.
 It's unfortunate, in a way, that references happen look like other
 variables, since it makes it easy to forget that the rules for their
 use are very different.
@@ -525,36 +540,13 @@ Oh well.
 Try to remember to assign your references to refer to pointees.
 But don't be surprised when you forget, and your program breaks.
 
-
-Link Nodes
-----------
-
-In this section, we introduce the idea of a **link node**.
-This has some sort of value field, and a pointer to another link
-node.
-Later, you will learn about :term:`linked lists <linked list>`,
-that are made from such link nodes.
-For now, well just use them as a simple way to connect some objects
-together.
-
-Here is a class definition for a link object.
-
-.. TODO::
-   :type: Code
-
-   Code here for link nodes.
-
-Here are some exercises to practice manipulating link nodes.
-
-.. avembed:: Exercises/Pointers/PointerEX3PRO.html ka
-
-
-.. odsascript:: AV/PointersSushma/num42CON.js
-.. odsascript:: AV/PointersSushma/employeeEmpRefCON.js
-.. odsascript:: AV/PointersSushma/empRefnullCON.js
-.. odsascript:: AV/PointersSushma/empRefsecondCON.js
-.. odsascript:: AV/PointersSushma/shallowdeepCON.js
-.. odsascript:: AV/PointersSushma/empPtrxxxCON.js
-.. odsascript:: AV/PointersSushma/employeePtr2CON.js
-.. odsascript:: AV/PointersSushma/examplePointerCodeCON.js
-.. odsascript:: AV/PointersSushma/badPointerPowCON.js
+.. odsascript:: AV/Pointers/num42CON.js
+.. odsascript:: AV/Pointers/employeeEmpRefCON.js
+.. odsascript:: AV/Pointers/empRefnullCON.js
+.. odsascript:: AV/Pointers/empRefsecondCON.js
+.. odsascript:: AV/Pointers/shallowdeepCON.js
+.. odsascript:: AV/Pointers/empPtrxxxCON.js
+.. odsascript:: AV/Pointers/employeePtr2CON.js
+.. odsascript:: AV/Pointers/examplePointerCodeCON.js
+.. odsascript:: AV/Pointers/badPointerPowCON.js
+.. odsascript:: AV/Pointers/memoryModelCON.js
