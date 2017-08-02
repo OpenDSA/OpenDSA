@@ -17,12 +17,49 @@
       jsavCopyArr, // Return 'box'.
       connections = [], // Stores the node-pairs of the JSAV-List arrows.
       fromNode, // Stores the node whose pointer area is clicked.
+      headNode, // Used to trace the node pointed by 'head' pointer.
+      currNode, // Used to trace the node pointed by 'curr' pointer.
+      tailNode, // Used to trace the node pointed by 'tail' pointer.
       currPosition, // Index of 'curr' node, starting counting from the next node of head
       selected_pointer, // Remember pointer object that has been selected by user for swap
       selected_node; // Remember node that has been selected by user for swap
 
-  var pointerEX4PRO = {
+  var llistRemovePRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
+
+    // Helper function for setting pointer
+    setPointer: function(pname, newnode, oldpointer) {
+      if (oldpointer) {
+        if (newnode === oldpointer.target()) { return null; }
+      }
+      if (newnode.llist_pleft && newnode.llist_pright) { return null; }
+      var pointerRight = {visible: true, anchor: "right top",
+                          myAnchor: "left bottom",
+                          left: -5, top: -20};
+      var pointerLeft = {visible: true, anchor: "left top",
+                         myAnchor: "right bottom",
+                         left: 15, top: -20};
+      if (oldpointer) {
+        if (oldpointer.target().llist_pleft === oldpointer) {
+          oldpointer.target().llist_pleft = null;
+        } else if (oldpointer.target().llist_pright === oldpointer) {
+          oldpointer.target().llist_pright = null;
+        }
+        // Remove the old pointer
+        oldpointer.element.remove();
+        oldpointer.arrow.element.remove();
+      }
+
+      if (!newnode.llist_pleft) {
+        newnode.llist_pleft = newnode.jsav.pointer(pname, newnode, pointerLeft);
+        newnode.llist_pleft.click(llistRemovePRO.pclick);
+        return newnode.llist_pleft;
+      } else if (!newnode.llist_pright) {
+        newnode.llist_pright = newnode.jsav.pointer(pname, newnode, pointerRight);
+        newnode.llist_pright.click(llistRemovePRO.pclick);
+        return newnode.llist_pright;
+      }
+    },
 
     // Add an edge from obj1(node) to obj2(node)
     connection: function(obj1, obj2, jsav) {
@@ -68,7 +105,7 @@
     // Function for connecting two nodes
     connect: function(obj1, obj2, jsav) {
       if (obj1 === obj2) { return; }
-      pointerEX4PRO.connection(obj1, obj2, jsav);
+      llistRemovePRO.connection(obj1, obj2, jsav);
       obj1.llist_next = obj2;
       obj1._next = obj2;
       for (var i = 0; i < connections.length; i++) {
@@ -118,7 +155,7 @@
         selected_pointer = pointer;
         selected_pointer.element.addClass("highlight");
       }
-      pointerEX4PRO.userInput = true;
+      llistRemovePRO.userInput = true;
     },
 
     // Click event handler for 'return' array
@@ -127,7 +164,7 @@
         av.effects.copyValue(selected_node, jsavCopyArr, 0);
         selected_node.removeClass("bgColor");
         selected_node = null;
-        pointerEX4PRO.userInput = true;
+        llistRemovePRO.userInput = true;
       }
     },
 
@@ -158,23 +195,23 @@
       } else // We are in the value part of the node
         if (fromNode !== null) { // We are connecting another node to this node
           // Note that this allows a node to point to itself
-          pointerEX4PRO.connect(fromNode, this, av);
+          llistRemovePRO.connect(fromNode, this, av);
           $("#" + fromNode.id() + " .jsavpointerarea:first").removeClass("bgColor");
           $("#" + this.id()).removeClass("bgColor");
           fromNode = null;
         } else if (selected_pointer !== null) { // We are setting a pointer object to this node
           var oldPointer = selected_pointer;
           oldPointer.element.removeClass("highlight");
-          // if (oldPointer.target() !== this) {
-          //   // selected_pointer = pointerEX4PRO.setPointer(selected_pointer.element.text(), this, oldPointer);
-          //   if (selected_pointer && selected_pointer.element.text() === "head") {
-          //     headNode = selected_pointer.target();
-          //   } else if (selected_pointer && selected_pointer.element.text() === "curr") {
-          //     currNode = selected_pointer.target();
-          //   } else if (selected_pointer && selected_pointer.element.text() === "tail") {
-          //     tailNode = selected_pointer.target();
-          //   }
-          // }
+          if (oldPointer.target() !== this) {
+            selected_pointer = llistRemovePRO.setPointer(selected_pointer.element.text(), this, oldPointer);
+            if (selected_pointer && selected_pointer.element.text() === "head") {
+              headNode = selected_pointer.target();
+            } else if (selected_pointer && selected_pointer.element.text() === "curr") {
+              currNode = selected_pointer.target();
+            } else if (selected_pointer && selected_pointer.element.text() === "tail") {
+              tailNode = selected_pointer.target();
+            }
+          }
           selected_pointer = null;
         } else if (selected_node === null) { // Hightlight it for next action
           this.addClass("bgColor");
@@ -185,30 +222,30 @@
           av.effects.copyValue(selected_node, this);
           selected_node = null;
         }
-      pointerEX4PRO.userInput = true;
+      llistRemovePRO.userInput = true;
     },
 
     // Click event handler of 'makenull' button.
     nullClickHandler: function() {
       if (fromNode !== null) { // If no node pointer field selected, do nothing
         $("#" + fromNode.id() + " .jsavpointerarea:first").removeClass("bgColor");
-        pointerEX4PRO.addTail(fromNode);
+        llistRemovePRO.addTail(fromNode);
         if (fromNode.llist_edgeToNext) {
           fromNode.llist_edgeToNext.element.remove();
           fromNode.llist_next = null;
         }
-        pointerEX4PRO.userInput = true;
+        llistRemovePRO.userInput = true;
       }
     },
 
     // Reinitialize the exercise.
     reset: function() {
       // JSAV-List position.
-      var leftMargin = 150,
-          topMargin = 70;
+      var leftMargin = 36,
+          topMargin = 50;
       var i;
       // Reset the value of global variables.
-      pointerEX4PRO.userInput = false;
+      llistRemovePRO.userInput = false;
       answerOrderArr.length = 0;
       connections = [];
       selected_node = null;
@@ -216,16 +253,10 @@
       fromNode = null;
 
       // Clear the old JSAV canvas.
-      if ($("#PointerEX4PRO")) { $("#PointerEX4PRO").empty(); }
+      if ($("#LlistRemovePRO")) { $("#LlistRemovePRO").empty(); }
 
       // Set up the display
-      av = new JSAV("PointerEX4PRO");
-
-      var codes = [];
-      codes[0] = "b.next = c.next;";
-      codes[1] = "c.next = b;";
-      av.code(codes);
-
+      av = new JSAV("LlistRemovePRO");
       jsavList = av.ds.list({nodegap: 30, top: topMargin, left: leftMargin});
       jsavList.addFirst("null");
       for (i = listSize - 2; i > 0; i--) {
@@ -235,10 +266,15 @@
       jsavList.layout();
 
       // 'return' JSAV array
-      jsavCopyArr = av.ds.array([""], {left: leftMargin + 10 + 73 * (currPosition + 1),
-                                             top: topMargin + 50});
-
-      jsavCopyArr.addClass([0], "nullBox"); //remove null node's boarder
+      jsavCopyArr = av.ds.array(["null"], {left: leftMargin + 10 + 73 * (currPosition + 1),
+                                             top: topMargin + 70});
+      // 'return' Label
+      av.label("return", {left: leftMargin - 35 + 73 * (currPosition + 1),
+                            top: topMargin + 74});
+      // Create pointers
+      llistRemovePRO.setPointer("head", jsavList.get(0));
+      llistRemovePRO.setPointer("curr", jsavList.get(currPosition + 1));
+      llistRemovePRO.setPointer("tail", jsavList.get(listSize - 1));
 
       for (i = 0; i < listSize; i++) {
         orderArr[i] = jsavList.get(i).id();
@@ -246,8 +282,13 @@
         jsavList.get(i).llist_edgeToNext = jsavList.get(i).edgeToNext();
         jsavList.get(i).llist_tail = null;
       }
+      // Add tail for the last node.
+      jsavList.get(listSize - 1).llist_tail = llistRemovePRO.addTail(jsavList.get(listSize - 1));
 
       llist_head = jsavList.get(0);
+      headNode = jsavList.get(0);
+      currNode = jsavList.get(currPosition + 1);
+      tailNode = jsavList.get(listSize - 1);
 
       // Correct answer.
       if (currPosition !== listSize - 2) {
@@ -275,28 +316,29 @@
       av.recorded();
 
       // (Re-)Bind click handlers
-      jsavCopyArr.click(pointerEX4PRO.copyHandler);
-      jsavList.click(pointerEX4PRO.clickHandler);
+      jsavCopyArr.click(llistRemovePRO.copyHandler);
+      jsavList.click(llistRemovePRO.clickHandler);
     },
 
     // Initialise the exercise
-    initJSAV: function() {
+    initJSAV: function(size, pos) {
       var i;
       // Out with the old
       answerArr.length = 0;
       answerOrderArr.length = 0;
-      listSize = 4;
-      currPosition = 0;
+      listSize = size;
+      currPosition = pos;
 
+      // Give random numbers in range 0..999
       answerArr[0] = "null";
-      answerArr[1] = "b";
-      answerArr[2] = "c";
-      answerArr[3] = "null";
-
+      for (i = 1; i < size - 1; i++) {
+        answerArr[i] = Math.floor(Math.random() * 1000);
+      }
+      answerArr[size - 1] = "null";
       // Make a copy
       listArr = answerArr.slice(0);
 
-      pointerEX4PRO.reset();
+      llistRemovePRO.reset();
 
       // correct answer of array values.
       if (currPosition !== listSize - 2) {
@@ -304,11 +346,11 @@
       }
       // Set up handler for 'makenull' button.
       $("#makenull").click(function() {
-        pointerEX4PRO.nullClickHandler();
+        llistRemovePRO.nullClickHandler();
       });
       // Set up handler for reset button
       $("#reset").click(function() {
-        pointerEX4PRO.reset();
+        llistRemovePRO.reset();
       });
     },
 
@@ -349,5 +391,5 @@
 
   };
 
-  window.pointerEX4PRO = window.pointerEX4PRO || pointerEX4PRO;
+  window.llistRemovePRO = window.llistRemovePRO || llistRemovePRO;
 }());

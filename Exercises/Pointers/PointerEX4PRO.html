@@ -1,82 +1,85 @@
 <!--
-Linked List Insertion mini-proficiency exercise.
-Written by Junyang Chen and Cliff Shaffer
--->
+    Linked List Deletion mini-proficiency exercise.
+    Written by Junyang Chen and Cliff Shaffer
+  -->
+
 <!DOCTYPE html>
-<html data-require="jsav math PointerEX4PRO">
+<html data-require="jsav math PointerEX4PRO LinkList">
   <head>
-    <title>Pointer Exercise 4</title>
+    <title>Exercise 4</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-    #PointerEX4PRO .jsavnode {
-      min-width: 80px !important;
-      min-height: 40px !important;
-    }
+      #PointerEX4PRO .bgColor {
+        font-size: 130%;
+        background-color: yellow;s
+      }
 
-    #PointerEX4PRO .jsavhorizontallist .jsavpointerarea {
-      width: 30px;
-    }
+      #PointerEX4PRO .jsavpointer {
+        width: 40px;
+        text-align: center;
+        cursor: pointer;
+      }
 
-    #PointerEX4PRO .jsavcanvas {
-      height: 150px;
-    }
+      #PointerEX4PRO .highlight {      /* For the pointer */
+        background-color: yellow;
+      }
 
-    #PointerEX4PRO .bgColor {
-      font-size: 130%;
-      background-color: yellow;
-    }
-
-    #PointerEX4PRO .nullBox {      /* For the null nodes */
-      box-shadow: none;
-      border-width: 0;
-      background-color: transparent;
-    }
-
-    #PointerEX4PRO .highlightpointer {      /* For the pointer */
-      background-color: yellow;
-    }
-
+      #PointerEX4PRO .nullBox {      /* For the null nodes */
+        box-shadow: none;
+        border-width: 0;
+        background-color: transparent;
+      }
     </style>
   </head>
+
   <body data-height="900" data-width="950">
+
     <div class="exercise">
       <div class="vars">
+        <!-- <var id="arr_size">Khan.randRange(4, 6)</var> -->
         <var id="JSAV">pointerEX4PRO.initJSAV()</var>
       </div>
+
       <div class="problems">
-        <div id="PointerEX4PROp">
+        <div id="PointerEX4PROp"> <!-- Supresses answer box -->
           <p class="problem">Your task in this exercise is to show the
-            behavior for some code.</p>
+            behavior for some code.
+          </p>
           <div class="question">
             <p>The following lines of code will set up the picture
             below:<br/></p>
             <tt>Original Code:</tt><br/>
-            <tt>&emsp;&emsp;Link first;</tt><br/>
-            <tt></tt><br/>
-            <tt>Link {</tt><br/>
-            <tt>&emsp;&emsp;public Object value;</tt><br/>
-            <tt>&emsp;&emsp;public Link next;</tt><br/>
-            <tt>}</tt><br/>
-        <div class="question">
-          <div id="PointerEX4PRO" class="jsavcanvas"></div>
-          <input id="reset" type="button" value="Reset" />
-          <input id="NewNode" type="button" value="newLink" />
-          <input id="newEmployee" type="button" value="newEmployee()" />
-        </div>
-        <div class="solution" data-type="custom">
-          <div class="guess"> [pointerEX4PRO.userInput] </div>
-          <div class="validator-function">
-            if (!pointerEX4PRO.checkAnswer() && !guess[0]) {
-            return ""; // User did not click, and correct answer is not
-            // initial array state
-            } else { return pointerEX4PRO.checkAnswer(arr_size); }
+            <tt>&emsp;&emsp;Link b = new Link();</tt><br/>
+            <tt>&emsp;&emsp;Link c = new Link();</tt><br/>
+            <tt>&emsp;&emsp;b.next = c;</tt><br/>
+            <p>To move an element, click on it (to highlight it), then
+              click on the element position in the node where you want it to
+              go.
+              You can make a node's "next" pointer point to "null" by
+              first clicking the pointer for the node and then
+              clicking the "makenull" button.
+            </p>
+            <input id="reset" type="button" value="Reset" />
+            <input id="makenull" type="button" value="makenull" />
+            <div id="PointerEX4PRO" class="jsavcanvas"></div>
           </div>
-        </div>
-        <div class="hints">
+          <div class="solution" data-type="custom">
+            <div class="guess"> [pointerEX4PRO.userInput] </div>
+            <div class="validator-function">
+              if (!pointerEX4PRO.checkAnswer(arr_size, curr_pos) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else {return pointerEX4PRO.checkAnswer(arr_size, curr_pos);}
+            </div>
+          </div>
+          <div class="hints">
+            <p>Hint 1</p>
+            <p>Hint 2</p>
+            <p>Hint 3</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
