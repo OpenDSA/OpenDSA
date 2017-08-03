@@ -62,7 +62,7 @@
 
     "03 Plot Test": {
       "AlgAnal/AnalIntro": {
-        "long_name": "plot test",
+        "long_name": "Plot test",
         "sections": {
         }
       }
@@ -70,7 +70,15 @@
 
     "04 Pointers": {
       "PointersCPP/Exercises_J": {
-        "long_name": "pointer",
+        "long_name": "Pointer",
+        "sections": {
+        }
+      }
+    },
+
+    "05 Iteration": {
+      "List/ListIteration": {
+        "long_name": "Iteration",
         "sections": {
         }
       }

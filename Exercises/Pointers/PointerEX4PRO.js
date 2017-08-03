@@ -3,22 +3,10 @@
   "use strict";
 
   var av, // The JSAV object
-      answerArr = [], // The (internal) array that stores the correct answer
-      answerOrderArr = [], // The (internal) array that stores the correct order of nodes' ids
-      answerHead, // Correct answer of 'head' node.
-      answerCurr, // Correct answer of 'curr' node.
-      answerTail, // Correct answer of 'tail' node.
-      answerCopyVal, // Correct value of the return 'box'.
-      llist_head, // Stores the head node of the list
-      orderArr = [], // Initial node ids of the JSAV list.
       listSize, // JSAV list size
-      listArr = [], // Initial node elements' values for the JSAV list.
       jsavList, // JSAV list
-      jsavCopyArr, // Return 'box'.
       connections = [], // Stores the node-pairs of the JSAV-List arrows.
       fromNode, // Stores the node whose pointer area is clicked.
-      currPosition, // Index of 'curr' node, starting counting from the next node of head
-      selected_pointer, // Remember pointer object that has been selected by user for swap
       selected_node; // Remember node that has been selected by user for swap
 
   var pointerEX4PRO = {
@@ -57,8 +45,10 @@
       if (obj1.llist_next) {
         obj1.llist_edgeToNext.element.remove();
       } else {
-        obj1.llist_tail.element.remove();
-        obj1.llist_tail = null;
+        if(obj1.llist_tail !== null){
+          obj1.llist_tail.element.remove();
+          obj1.llist_tail = null;
+        }
       }
 
       obj1.llist_edgeToNext = edge;
@@ -98,39 +88,6 @@
       node.llist_next = null;
     },
 
-    // Handler for clicking on a pointer object
-    pclick: function(pointer) {
-      if (selected_pointer === null) { // No currently selected pointer object
-        if (selected_node !== null) { // Release previously selected node value
-          selected_node.removeClass("bgColor");
-          selected_node = null;
-        }
-        if (fromNode !== null) { // Release previously selected pointer field
-          $("#" + fromNode.id() + " .jsavpointerarea:first").removeClass("bgColor");
-          fromNode = null;
-        }
-        selected_pointer = pointer;
-        selected_pointer.element.addClass("highlight");
-      } else if (selected_pointer === pointer) { // Re-clicked slected pointer
-        selected_pointer.element.removeClass("highlight");
-      } else { // Reselecting a new pointer
-        selected_pointer.element.removeClass("highlight");
-        selected_pointer = pointer;
-        selected_pointer.element.addClass("highlight");
-      }
-      pointerEX4PRO.userInput = true;
-    },
-
-    // Click event handler for 'return' array
-    copyHandler: function() {
-      if (selected_node !== null) { // If no value selected, nothing happens
-        av.effects.copyValue(selected_node, jsavCopyArr, 0);
-        selected_node.removeClass("bgColor");
-        selected_node = null;
-        pointerEX4PRO.userInput = true;
-      }
-    },
-
     // Click event handler on the list
     clickHandler: function(e) {
       var x = parseInt(e.pageX - $("#" + this.id()).offset().left, 10);
@@ -139,10 +96,6 @@
         if (selected_node !== null) {
           selected_node.removeClass("bgColor");
           selected_node = null;
-        }
-        if (selected_pointer !== null) {
-          selected_pointer.element.removeClass("highlight");
-          selected_pointer = null;
         }
         if (fromNode === null) { // Newly selecting a node pointer field
           $("#" + this.id() + " .jsavpointerarea:first").addClass("bgColor");
@@ -162,20 +115,6 @@
           $("#" + fromNode.id() + " .jsavpointerarea:first").removeClass("bgColor");
           $("#" + this.id()).removeClass("bgColor");
           fromNode = null;
-        } else if (selected_pointer !== null) { // We are setting a pointer object to this node
-          var oldPointer = selected_pointer;
-          oldPointer.element.removeClass("highlight");
-          // if (oldPointer.target() !== this) {
-          //   // selected_pointer = pointerEX4PRO.setPointer(selected_pointer.element.text(), this, oldPointer);
-          //   if (selected_pointer && selected_pointer.element.text() === "head") {
-          //     headNode = selected_pointer.target();
-          //   } else if (selected_pointer && selected_pointer.element.text() === "curr") {
-          //     currNode = selected_pointer.target();
-          //   } else if (selected_pointer && selected_pointer.element.text() === "tail") {
-          //     tailNode = selected_pointer.target();
-          //   }
-          // }
-          selected_pointer = null;
         } else if (selected_node === null) { // Hightlight it for next action
           this.addClass("bgColor");
           selected_node = this;
@@ -204,15 +143,12 @@
     // Reinitialize the exercise.
     reset: function() {
       // JSAV-List position.
-      var leftMargin = 150,
+      var leftMargin = 220,
           topMargin = 70;
-      var i;
       // Reset the value of global variables.
       pointerEX4PRO.userInput = false;
-      answerOrderArr.length = 0;
       connections = [];
       selected_node = null;
-      selected_pointer = null;
       fromNode = null;
 
       // Clear the old JSAV canvas.
@@ -227,85 +163,36 @@
       av.code(codes);
 
       jsavList = av.ds.list({nodegap: 30, top: topMargin, left: leftMargin});
-      jsavList.addFirst("null");
-      for (i = listSize - 2; i > 0; i--) {
-        jsavList.addFirst(listArr[i]);
-      }
-      jsavList.addFirst("null");
+      jsavList.addFirst("c");
+      jsavList.addFirst("b");
       jsavList.layout();
 
       // 'return' JSAV array
-      jsavCopyArr = av.ds.array([""], {left: leftMargin + 10 + 73 * (currPosition + 1),
-                                             top: topMargin + 50});
+      var nullBox = av.ds.array([""], {left: leftMargin, top: topMargin + 50});
+      nullBox.addClass([0], "nullBox"); //remove null node's boarder
 
-      jsavCopyArr.addClass([0], "nullBox"); //remove null node's boarder
-
-      for (i = 0; i < listSize; i++) {
-        orderArr[i] = jsavList.get(i).id();
+      for (var i = 0; i < listSize; i++) {
         jsavList.get(i).llist_next = jsavList.get(i).next();
         jsavList.get(i).llist_edgeToNext = jsavList.get(i).edgeToNext();
         jsavList.get(i).llist_tail = null;
       }
 
-      llist_head = jsavList.get(0);
-
-      // Correct answer.
-      if (currPosition !== listSize - 2) {
-        for (i = 0; i < listSize; i++) {
-          if (i !== currPosition + 2) {
-            answerOrderArr.push(orderArr[i]);
-          }
-        }
-      } else {
-        answerOrderArr = orderArr.slice(0);
-      }
-      answerCurr = jsavList.get(currPosition + 1);
-      answerHead = jsavList.get(0);
-      if (currPosition === listSize - 3) {
-        answerTail = jsavList.get(listSize - 2);
-      } else {
-        answerTail = jsavList.get(listSize - 1);
-      }
-      if (currPosition === listSize - 2) {
-        answerCopyVal = "null";
-      } else {
-        answerCopyVal = jsavList.get(currPosition + 1).value();
-      }
       av.displayInit();
       av.recorded();
 
-      // (Re-)Bind click handlers
-      jsavCopyArr.click(pointerEX4PRO.copyHandler);
       jsavList.click(pointerEX4PRO.clickHandler);
     },
 
     // Initialise the exercise
     initJSAV: function() {
-      var i;
-      // Out with the old
-      answerArr.length = 0;
-      answerOrderArr.length = 0;
-      listSize = 4;
-      currPosition = 0;
-
-      answerArr[0] = "null";
-      answerArr[1] = "b";
-      answerArr[2] = "c";
-      answerArr[3] = "null";
-
-      // Make a copy
-      listArr = answerArr.slice(0);
-
+      listSize = 2;
       pointerEX4PRO.reset();
 
-      // correct answer of array values.
-      if (currPosition !== listSize - 2) {
-        answerArr.splice(currPosition + 1, 1);
-      }
       // Set up handler for 'makenull' button.
       $("#makenull").click(function() {
         pointerEX4PRO.nullClickHandler();
       });
+
       // Set up handler for reset button
       $("#reset").click(function() {
         pointerEX4PRO.reset();
@@ -313,38 +200,17 @@
     },
 
     // Check user's answer for correctness: User's array must match answer
-    checkAnswer: function(arr_size, curr_pos) {
-      var i = 1,
-          curr = llist_head;
-      // Check the 'return' array
-      if (answerCopyVal !== jsavCopyArr.value(0)) {
+    checkAnswer: function() {
+      if(jsavList.get(0).llist_next !== null){
+        return false;
+      } else if (jsavList.get(1).llist_next !== jsavList.get(0)){
+        return false;
+      } else if (jsavList.get(0).element.text() !== "b"){
+        return false;
+      } else if (jsavList.get(1).element.text() !== "c"){
         return false;
       }
-      // Check the pointers
-      if ((headNode !== answerHead) || (currNode !== answerCurr) || (tailNode !== answerTail)) {
-        return false;
-      }
-      // Check the list
-      if ((curr.value() !== answerArr[0]) || (curr.id() !== answerOrderArr[0])) {
-        return false;
-      }
-      while (curr.llist_next) {
-        curr = curr.llist_next;
-        if ((curr.value() === answerArr[i]) && (curr.id() === answerOrderArr[i])) {
-          i++;
-        } else {
-          return false;
-        }
-      }
-      // if 'curr' points to the 'tail' node.
-      if (curr_pos === arr_size - 2) {
-        return true;
-      }
-
-      if (i === listSize - 1) {
-        return true;
-      }
-      return false;
+      return true;
     }
 
   };
