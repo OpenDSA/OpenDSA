@@ -113,6 +113,9 @@ CS3: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/CS3_generated.json --no-lms
 
+CS172: min
+	python $(CONFIG_SCRIPT) config/CS172.json --no-lms
+
 ECE252: min
 	python $(CONFIG_SCRIPT) config/ECE252.json --no-lms
 
