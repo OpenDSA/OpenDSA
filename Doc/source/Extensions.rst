@@ -94,6 +94,12 @@ NOTES
     The path to the OpenDSA top-level directory should be set within
     ``conf.py`` in the source directory.
 
+extrtoolembed
+-------------
+NAME
+    extrtoolembed - embed an external exercise inside a ReST document.
+
+
 avmetadata
 ----------
 NAME

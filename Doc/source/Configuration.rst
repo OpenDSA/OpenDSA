@@ -14,25 +14,24 @@ the detailed syntax for which is defined in this section.
 In practice, it is easiest to start by copying an existing
 configuration file, and then changing it to fit your needs.
 Configuration files are JSON files, normally stored in OpenDSA/config.
-From the top level of an OpenDSA repository, you can compile a book
+From the top level of an OpenDSA repository (from within the |devstack_link|), you can compile a book
 instance (given the existance of a configuration file named
 ``config/foo.json``) by issuing this command:
 
 ``python tools/configure.py config/foo.json``
 
-Separate from book instances is the concept of a "course instance".
-Depending on the course software (typically an LMS such as Canvas or
-Moodle) that you are using, you will likely need to compile a special
+.. |devstack_link| raw:: html
+
+   <a href="https://github.com/OpenDSA/OpenDSA-DevStack#development-workflow" target="_blank">OpenDSA-DevStack</a>
+
+
+Separate from book instances is the concept of a "course instance" or "course offering".
+Depending on the course software (typically an LMS such as Canvas) that you are using, you will likely need to compile a special
 instance of a given OpenDSA book instance for each course that intends
 to use it.
-OpenDSA course instances are managed by a separate configuration file.
-The convention is that if the book configuration file is ``foo.json``,
-then the corresponding course configuration file(s) will be in in
-``fooXX_LMSconf.json`` where XX allows you to distinguish between
-the various courses that use the book.
 
-Details about how to set up a course is in
-:ref:`Configuring Courses  <ConfCourse>` below.
+Details about how to define a course related information and how to create a course offering using OpenDSA web interfaces is in
+:ref:`OpenDSA web interfaces  <OpenDSAWebInterfaces>` chapter.
 
 ---------------------------------------
 Motivation for the Configuration System
@@ -66,21 +65,6 @@ Motivation for the Configuration System
   but for now we create them by hand (tedious, and the motivation for
   a GUI tool is rapidly moving to the front burner).
 
-
---------
-Branches
---------
-
-We are temporarily supporting two versions of OpenDSA, as represented
-by the branches "master" and "NewKA".
-The "master" branch currently is intended for generating books as
-used in Canvas, while "NewKA" supports "old style" book instances
-directly accessible via HTML files.
-Only the master branch uses the server configuration files described
-at the end of this section.
-There are a few fields of the configuration process that appear in
-NewKA book configuration files, that are moved to the server
-configuration file in the master branch.
 
 ---------------------
 Configuration Process
@@ -120,8 +104,8 @@ Book Name
 
 The name of the configuration file will often be used in some way by the
 LMS that manages the course.
-For example, the name of the configuration file might be the Course ID
-in the LMS.
+For example, the name of the configuration file might be the Course Code
+in Canvas LMS.
 
 ---------------
 Future Features
@@ -129,10 +113,6 @@ Future Features
 
 * GUI editor/interface for editing configuration files.
 
-* Merge the "master" and "NewKA" branches, with support for both
-  Canvas-style and "HTML page" book instances, controlled by
-  command-line parameters on the configuration script.
-  
 ------
 Format
 ------
@@ -140,11 +120,6 @@ Format
 OpenDSA configuration files are stored using JSON.
 Here are the field definitions.
 All are required unless otherwise specified.
-**Note**: The fields "title", "exercise_server", "logging_server", and
-"score_server" appear in the book configuration file only for the
-NewKA branch.
-These fields are moved to the server configuration file in the master
-branch.
 
 * **title** - The title of the OpenDSA textbook.
 
@@ -226,37 +201,6 @@ branch.
   Any RST files not found in the indicated subdirectory will then be
   located in ``~OpenDSA/RST/en``.
 
-* **module_origin** - The protocol and domain where the module files are hosted
-
-  * Used by embedded exercises as the target of HTML5 post messages
-    which send information to the parent (module) page
-  * Ex: "module_origin": "http://algoviz.org",
-
-* **av_root_dir** - (optional) Allows the user to change the default
-  location where the ``AV/`` directory can be found.
-  Defaults to ``~OpenDSA/`` if omitted
-
-  * This can point to another location on the same machine that hosts
-    the module files (as long as it is web-accessible), or it can point
-    to a remote location (this feature not supported yet).
-  * **Note**: This should not point to the AV/ directory itself, but
-    instead should be the directory containing the AV/ directory (to
-    avoid breaking the relative paths in the RST files).
-  * If this attribute references a remote location, 'av_origin' must
-    be present and the value must be a prefix of the remote location.
-  * Ex: "av_root_dir": "/home/algoviz/OpenDSA/test/",
-  * Ex: "av_root_dir": "http://algoviz.org/OpenDSA/", // This directory contains an AV/ directory
-
-* **av_origin** - (normally optional, but required if **av_root_dir**
-  is defined)
-  The protocol and domain where the AV files are hosted, defaults to
-  match ``module_origin`` if omitted.
-
-  * Used on module pages to allow HTML5 post messages from this
-    origin, allows embedded AVs to communicate with the parent module
-    page.
-  * Ex: "av_origin": "http://algoviz.org",
-
 * **glob_mod_options** - (optional) An object containing options to be
   applied to every module in the book.
   Can be overridden by module-specific options.
@@ -265,58 +209,6 @@ branch.
   be applied to every exercise in the book. Can be used to control the
   behavior of the exercise. Can be overridden by exercise-specific
   options.
-
-* **exercises_root_dir** - (optional) Allows the user to change the
-  default location where the ``Exercises/`` directory will be found.
-  Defaults to ``~OpenDSA/`` if omitted.
-
-  * This can point to another location on the same machine that hosts
-    the module files (as long as it is web-accessible) or it can point
-    to a remote location (not fully supported yet).
-  * **Note**: This should not point to the ``Exercises/`` directory
-    itself, but rather the directory containing the ``Exercises/``
-    directory (to avoid breaking the relative paths in the RST files)
-  * If this attribute references a remote location, ``exercise_origin``
-    must be present and the value must be a prefix of the remote
-    location
-  * If this attribute is not present, ``~OpenDSA/`` will be used as
-    the default.
-  * Ex: "exercises_root_dir": "/home/algoviz/OpenDSA/test/",
-  * Ex: "exercises_root_dir": "http://algoviz.org/OpenDSA/", // This
-    directory contains an Exercises/ directory
-
-* **exercise_origin** - (optional, unless **exercises_root_dir** is
-  defined) The protocol and domain where the Exercises files are
-  hosted, defaults to match ``module_origin`` if omitted.
-
-  * Used on module pages to allow HTML5 post messages from this
-    origin, allows embedded exercises to communicate with the parent
-    module page.
-  * Ex: "exercise_origin": "http://algoviz.org",
-
-* **exercise_server** - (optional) The protocol and domain (and port
-  number, if different than the protocol default) of the exercise
-  server that provides verification for the programming exercises.
-  Defaults to an empty string (exercise server disabled) if omitted.
-
-  * Trailing '/' is optional
-  * Ex: "exercise_server": "https://opendsa.cs.vt.edu/",
-
-* **logging_server** - (optional) The protocol and domain (and port
-  number, if different than the protocol default) of the logging
-  server that supports interaction data collection.
-  Defaults to an empty string (logging server disabled) if omitted.
-
-  * Trailing '/' is optional
-  * Ex: "logging_server": "https://opendsa.cs.vt.edu/",
-
-* **score_server** - (optional) The protocol and domain (and port
-  number, if different than the protocol default) of the score server
-  that supports centralized user score collection.
-  Defaults to an empty string (score server disabled) if omitted.
-
-  * Trailing '/' is optional
-  * Ex: "score_server": "https://opendsa.cs.vt.edu/",
 
 * **build_JSAV** - (optional) A boolean controlling whether or not the
   JSAV library should be rebuilt whenever the book is compiled.
@@ -331,13 +223,6 @@ branch.
   glossary terms concept map should be diplayed.
   Defaults to ``false``.
 
-* **allow_anonymous_credit** - (optional) A boolean controlling
-  whether credit for exercises completed anonymously (without logging
-  in) will be transferred to the next user to log in.
-  Defaults to ``true`` if omitted.
-  **Note:** Obsolete in the context of LMS support for scoring, since
-  the LMS will require login for access to the OpenDSA content.
-
 * **req_full_ss** - (optional) A boolean controlling whether students
   must view every step of a slideshow in order to obtain credit.
   Defaults to ``true`` if omitted.
@@ -349,10 +234,6 @@ branch.
 * **suppress_todo** - (optional) A boolean controlling whether or not
   TODO directives are removed from the RST source files.
   Defaults to ``false`` if omitted.
-
-  * **Note**: When changing from ``false`` to ``true``, you must run
-    ``make clean`` or otherwise remove previously compiled book files
-    so as to completely remove any references to ``ToDo``.
 
 * **tag** - (optional) A string containing a semi-colon delimited
   list of tags.
@@ -429,8 +310,31 @@ branch.
         see the :ref:`Extensions <ODSAExtensions>` section for a list
         of supported arguments.
 
-      * A section may contain a single exercise descriptor, as
-        follows.
+    * **codeinclude** (optional) - An object that maps the path from a
+      codeinclude to a specific language that should be used for that
+      code.
+      This allows control of individual code snippets, overriding the
+      ``code_lang`` field.
+
+      * Ex: ``"codeinclude": {"Sorting/Mergesort": "C++"}`` would set
+        C++ as the language for the codeinclude "Sorting/Mergesort"
+        within the current module.
+
+      * A section may contain multiple exercises objects only one of which is gradable (has points greater then 0). Each exercise object contains the following attributes:
+
+
+        * **long_name** - (optional) A long form, human-readable name
+          used to identify the exercise. Defaults to short
+          exercise name if omitted.
+        * **points** - (optional) The number of points the exercise is
+          worth.
+          Defaults to ``0`` if omitted.
+        * **required** - (optional) Whether the exercise is required
+          for module proficiency.
+          Defaults to ``false`` if omitted.
+        * **threshold** - (optional) The percentage that a user needs
+          to score on the exercise to obtain proficiency.
+          Defaults to 100% (1 on a 0-1 scale) if omitted.
 
         * **exer_options** - (optional) An object containing
           exercise-specific configuration options for JSAV.
@@ -447,30 +351,8 @@ branch.
           automatically by the client-side framework (specifically
           when ``parseURLParams()`` is called in ``odsaUtils.js``).
 
-        * **long_name** - (optional) A long form, human-readable name
-          used to identify the exercise. Defaults to short
-          exercise name if omitted.
-        * **points** - (optional) The number of points the exercise is
-          worth.
-          Defaults to ``0`` if omitted.
-        * **required** - (optional) Whether the exercise is required
-          for module proficiency.
-          Defaults to ``false`` if omitted.
-        * **threshold** - (optional) The percentage that a user needs
-          to score on the exercise to obtain proficiency.
-          Defaults to 100% (1 on a 0-1 scale) if omitted.
+      * JSAV-based diagrams are listed with empty object
 
-      * JSAV-based diagrams do not need to be listed
-
-    * **codeinclude** (optional) - An object that maps the path from a
-      codeinclude to a specific language that should be used for that
-      code.
-      This allows control of individual code snippets, overriding the
-      ``code_lang`` field.
-
-      * Ex: ``"codeinclude": {"Sorting/Mergesort": "C++"}`` would set
-        C++ as the language for the codeinclude "Sorting/Mergesort"
-        within the current module.
 
 
 ---------------------
@@ -532,10 +414,10 @@ which might help to document the available options.
 Any such ad hoc parameter defaults can be over-ridden in the
 ``exer_options`` setting in the configuration file.
 
--------------------
-Configuring Courses
--------------------
-.. _ConfCourse:
+-------------------------
+Creating Course Offerings
+-------------------------
+.. _CreateCourseOfferings:
 
 Rationale
 ~~~~~~~~~
@@ -571,7 +453,7 @@ information for you to successfully define the contents of a
 configuration file.
 
 A set of ``make`` targets are available in the OpenDSA Makefile.
-From the top level of an OpenDSA repository, you can 
+From the top level of an OpenDSA repository, you can
 compile the HTML files for a book instance by typing
 
 ``make <courseinstance>``

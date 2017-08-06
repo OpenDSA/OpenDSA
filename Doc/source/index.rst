@@ -12,21 +12,25 @@ Table of Contents
 
    Introduction
    GettingStarted
-   InstructorTools
    Configuration
    ModAuthor
    Style
    AV
    JSAVExercise
-   KAExercise 
+   KAExercise
    Client-sideDevelopment
    Extensions
    Preprocessor
-   Backend
-   BackendSpecs
-   DatabaseSchemas
-   AdminTools
+   OpenDSA-LTI-Implementation
+   OpenDSA-LTI-Web-Interfaces
+   OpenDSA-LTI-database
+   .. Backend
+   .. BackendSpecs
+   .. DatabaseSchemas
+   .. AdminTools
    Client-sideFramework
    EventMessages
    QBankUserManual
    QBankDevManual
+
+
