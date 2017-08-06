@@ -159,5 +159,80 @@ Definitions
 
      \overline{L(M)} = \{w\in{\Sigma}^{*}\mid {\delta}^{*}(q_0,w)\not\in F\}
 
+
 Trap State
 ~~~~~~~~~~
+
+Example: Consider the language :math:`L(M) = \{b^na | n > 0\}`
+
+.. note::
+
+   Ask what language this is. Answer: One or more "b" followed by one
+   "a".
+
+So, here is one way to make a drawing:
+
+.. TODO::
+   :type: Drawing
+
+   Show the minimal form of the next drawing without trap state, etc.
+
+Note that this is technically incomplete, in that there are
+transitions not being show here.
+The idea is that if we CAN reach and accepting state, then the string
+is accepted. But if we make a transition not shown in the diagram (or
+end up somewhere other than accepting state), then the string is not
+accepted.
+
+To be complete, we can add one or more "trap" states, and put in all
+of the "extra" transitions. As follows.
+
+.. odsafig:: Images/stnfaEx3.png
+   :width: 400
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: DFA Example: Complete
+
+   DFA Example: Complete
+
+.. note::
+
+   Its a good idea to have states with meaningful names!
+
+Example: :math:`L = \{ w \in \Sigma^* | w` has an even number of a's
+and an even number of b's }.
+
+.. note::
+
+   Other examples to mention: Can create a DFA for real numbers,
+   integers, variable names (depending on the rules), etc.
+
+Example: Create a DFA that accepts even binary numbers that have an even number of 1's.
+
+assign labels: q0 - start, 
+
+q1 - even binary number, even no. 1's, 
+
+q2 - odd number, odd number of 1's, 
+
+q3 - odd number, even number of 1's 
+
+.. odsafig:: Images/stnfaEx2.png
+   :width: 400
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Complicated DFA Example
+
+   More complicated DFA Example
+
+
+
+
+.. note::
+
+   Talk about determinism: There is only one choice
+
+**Definition**: A language is :term:`regular` iff there exists a DFA
+:math:`M` such that :math:`L = L(M)`.

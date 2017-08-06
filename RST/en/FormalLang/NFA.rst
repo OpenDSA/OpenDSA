@@ -9,7 +9,7 @@
    :satisfies: Non-deterministic Finite Automata
    :topic: Finite Automata
 
-Non-Determinisitc Finite Automata
+Non-Deterministic Finite Automata
 =================================
 
 NFA: Non-Deterministic Finite Automata
