@@ -112,8 +112,8 @@ For our example sets, the set product would be
 
    \{(2, 5),\ (2, 10),\ (3, 5),\ (3, 10),\ (5, 5),\ (5, 10)\}.
 
-The :term:`powerset` of a set :math:`\mathbf{S}` is the set of all
-possible subsets for :math:`\mathbf{S}`.
+The :term:`powerset` of a set :math:`\mathbf{S}` (denoted :math:`2^S`)
+is the set of all possible subsets for :math:`\mathbf{S}`.
 Consider the set :math:`\mathbf{S} = \{ a, b, c \}`.
 The powerset of :math:`\mathbf{S}` is
 

@@ -19,8 +19,8 @@ DFA: Deterministic Finite Automata
 
 Define a DFA as :math:`(Q, \Sigma, \delta, q_0, F)` where
 
-* :math:`Q` is finite set of states
-* :math:`\Sigma` is input alphabet (a finite set) 
+* :math:`Q` is a finite set of states
+* :math:`\Sigma` is the input alphabet (a finite set) 
 * :math:`q_0` is the initial state (:math:`q_0 \in Q`)
 * :math:`F \subseteq Q` is a set of final states
 * :math:`\delta: Q \times\Sigma \rightarrow Q`
