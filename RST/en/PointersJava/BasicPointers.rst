@@ -162,8 +162,6 @@ Meet the ``Employee`` class.
 
 .. codeinclude:: Pointers/PointerExample
    :tag: EmployeeClass
-   :lang: Java
-
 
 
 Reference Assignments
@@ -355,7 +353,6 @@ The reference starts out with a "bad" value until you assign it to something.
 
 .. codeinclude:: Pointers/PointerExample
    :tag: PointerVariables
-   :lang: Java
 
 
 Assigning a pointee to a reference

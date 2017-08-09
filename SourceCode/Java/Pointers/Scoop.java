@@ -1,10 +1,15 @@
 void test(boolean found)
 {
-  if(found)
+  if (found)
   {
-    Employee employee = new Employee();
-    //do something with employee
+    // employee1 is a variable local to this if statement
+    // but the Employee object is in heap memory.
+    Employee employee1 = new Employee("John", 1000);
+    // We can do things here with employee1, and its associated object
+    Printout(employee1.name());
   }
-  //here the only reference to the created object is out of scoop so the object will
-  //be eligible for garbage collection.
+
+  // At this point, the only reference to the created object is out of scope
+  // since employee1 was local to the if statement block.
+  // So the Employee object will be eligible for garbage collection.
 }

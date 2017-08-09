@@ -21,9 +21,12 @@ Define a DFA as :math:`(Q, \Sigma, \delta, q_0, F)` where
 
 * :math:`Q` is a finite set of states
 * :math:`\Sigma` is the input alphabet (a finite set) 
+* :math:`\delta: Q \times\Sigma \rightarrow Q`.
+  A set of transitions like :math:`(q_i, a) \rightarrow q_j`
+  meaning that when in state :math:`q_i`, if you see letter :math:`a`,
+  consume it and go to state :math:`q_j`.
 * :math:`q_0` is the initial state (:math:`q_0 \in Q`)
 * :math:`F \subseteq Q` is a set of final states
-* :math:`\delta: Q \times\Sigma \rightarrow Q`
 
 .. odsafig:: Images/DFAexample.png
    :width: 400

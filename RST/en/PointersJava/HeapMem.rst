@@ -23,88 +23,112 @@ Heap Memory
 
 "Heap" memory, also known as "dynamic" memory, is an alternative to
 local stack memory.
-Local memory (Section 2) is quite automatic |---| it is allocated
-automatically on function call and it is deallocated automatically
-when a function exits.
+:ref:`Local memory <local memory> <LocalMem>` is quite automatic.
+It is allocated automatically when a function is called, and it is
+deallocated automatically when the function exits.
 Heap memory is different in every way.
 The programmer explicitly requests the allocation of a memory
 "block" of a particular size, and the block continues to be allocated
-until the programmer explicitly requests that it be deallocated. In Java, the
-memory deallocation is done automatically by Automatic Garbage Collection.
+until something happens that makes it go away.
+In some languages (noteably, C and C++),
+objects in heap memory only go away when the programmer explicitly
+requests that it be deallocated.
 So the programmer has much greater control of memory, but with greater
 responsibility since the memory must now be actively managed.
+Dropping all references to a memory location without deallocating it
+is a signficant source of errors in C/C++, and this is so common that
+it has a name: :term:`memory leak`
+(In fact, many commercial C++ programs have memory leaks.)
+Java removes this source of errors by handling memory deallocation
+automatically, using :term:`garbage collection`.
+The downside is that garbage collection is a slow process that happens
+at unpredictable times.
+
 The advantages of heap memory are:
 
-* **Lifetime**. Because the programmer now controls exactly when memory
-  is allocated, it is possible to build a data structure in memory, and return
-  that data structure to the caller. This was never possible with local memory
-  which was automatically deallocated when the function exited.
+* **Lifetime**. Because the programmer now controls exactly when
+  memory is allocated, it is possible to build a data structure in
+  memory, and return that data structure to the caller.
+  This was never possible with local memory, which was automatically
+  deallocated when the function exited.
 
 * **Size**. The size of allocated memory can be controlled with more
-  detail. For example, a string buffer can be allocated at run-time
-  which is exactly the right size to hold a particular string. With
-  local memory, the code is more likely to declare a buffer size 1000
-  and hope for the best. (See the StringCopy() example below.)
+  detail.
+  For example, a string buffer can be allocated at run-time that is
+  exactly the right size to hold a particular string.
+  With local memory, the code is more likely to declare a buffer of
+  size 1000 and hope for the best.
+  (See the StringCopy() example below.)
 
 The disadvantages of heap memory are:
 
-* **More Work**. Heap allocation needs to arranged explicitly in the
-  code which is just more work.
+* **More Work**. Heap allocation needs to arranged for explicitly in
+  the code, which is just more work.
 
 * **More Bugs**. Because it's now done explicitly in the code,
-  realistically on occasion the allocation will be done incorrectly
-  leading to memory bugs. Local memory is constrained, but at least
-  it's never *wrong*.
+  on occasion the allocation will be done incorrectly leading to
+  memory bugs.
+  Local memory is constrained, but at least it's never *wrong*.
 
 Nonetheless, there are many problems that can only be solved with heap
 memory, so that's that way it has to be.
 
+
 Java Garbage Collection
 -----------------------
-The following are some important points about Garbage Collection:
+
+The following are some important points about Garbage Collection.
 
 * Garbage collection is a mechanism that is frequently invoked by the
   Java Virtual Machine to get ride of the unused heap memory
-  objects. It removes every object that is not being used by the
-  running Java program anymore. The results of this process is freeing
-  up the memory so other new objects can use that piece of memory.
+  objects.
+  It removes every object that is not being used anymore by the
+  running Java program.
+  The results of this process is freeing up the memory so other new
+  objects can use that piece of memory.
 
 * In other programming languages like C and C++, it is the
   responsibility of the programmer to take care of freeing up the
-  memory from unused objects and arrays, this process consumes
-  programmer's time and increase code complexity. In the other hand,
-  garbage collection makes programming more easily by taking care of
-  the memory management for the programmer and makes the programmer
-  focusing only on programming.
+  memory from unused objects and arrays.
+  Doing so consumes programmer's time and increases code complexity.
+  On the other hand, garbage collection makes programming easier
+  by taking care of the memory management for the programmer.
 
-* Before removing an object from memory garbage collection invokes
+* Before removing an object from memory, garbage collection invokes the
   finalize() method of that object and gives an opportunity to perform
-  any sort of cleanup required. If the programmer do not override this
-  method, the default finializer method will be invoked (the method
-  defined in ``Object`` class).
+  any sort of cleanup required.
+  If the programmer does not override this method,
+  the default finializer method will be invoked
+  (the method defined in the ``Object`` class).
 
-* Java Virtual Machine invokes the garbage collection based on the
+* The Java Virtual Machine invokes garbage collection based on the
   size of the dynamically allocated memory from the heap.
+  Garbage collection is **slow**, and hard to predict.
+  This can be a problem for programs that have real-time performance
+  constraints.
 
-* Programmers can use some methods like System.gc() and Runtime.gc()
-  to send request of garbage collection to Java Virtual Machine.
+The following are some cases that make an object subject to be removed
+from heap memory by garbage collection:
 
-The following are some cases that make an object subject to be removed from heap
-memory by garbage collection:
+* When the programmer changes all references to an object to something
+  else.
 
-* When the programmer sets all references to an object to ``null``.
-
-* If the object is defined inside a block of code and all references
-  to that object are out of scoop after the execution of that
-  block. Here is an example
+* If the object is defined inside a block of code, and all references
+  to that object are local.
+  When excecution of that block is complete, the local variables are
+  destroyed automatically, leaving the object in heap memory without
+  any references.
+  Here is an example
 
   .. codeinclude:: Pointers/Scoop
 
-* If an object A contains a reference to another object B. Object B
-  will be eligible for garbage collection one object A set to
-  ``null``. Here is an example:
+* Assume an object ``A`` contains a reference to another object
+  ``B``, and ``A`` contains the only such reference to ``B``.
+  Object ``B`` will be eligible for garbage collection if ``A`` is
+  also eligible for garbage collection.
+  Here is an example.
 
-.. codeinclude:: Pointers/Date
+  .. codeinclude:: Pointers/Date
 
 .. inlineav:: garbageDisposalCON ss
    :output: show
@@ -128,12 +152,6 @@ a block of memory of the requested size in the heap and returns a pointer to it.
 Suppose a program makes three allocation requests to allocate memory to hold three
 separate GIF images in the heap each of which takes 1024 bytes of memory. After
 the three allocation requests, memory might look like.
-
-.. odsafig:: Images/LocalHeapaloc.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
 
 .. inlineav:: LocalHeapaloc dgm
 
@@ -165,16 +183,7 @@ occupied by the block is free again and so may be re-used to satisfy future allo
 requests. Here's what the heap would look like if the garbage collection deallocates
 the second of the three blocks.
 
-.. odsafig:: Images/LocalHeapdealoc.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
-
 .. inlineav:: LocalHeapdealoc dgm
-
-
-
 
 After the deallocation, the pointer continues to point to the now deallocated block. The
 program must not access the deallocated pointee. This is why the pointer is drawn in gray

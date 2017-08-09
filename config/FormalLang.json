@@ -121,6 +121,10 @@
       "FormalLang/NFA": {
         "long_name": "Non-deterministic Finite Automata",
         "sections": {}
+      },
+      "FormalLang/Minimization": {
+        "long_name": "Minimizing the Number of States in a DFA",
+        "sections": {}
       }
     },
     "Limits to Computing": {

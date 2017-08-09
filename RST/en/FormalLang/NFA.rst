@@ -144,6 +144,13 @@ Can this NFA be converted to a DFA?
    #. Identify final states
    #. If :math:`\lambda \in L(M_N)`, then make the start state final.
 
+.. TODO::
+   :type: Question
+
+   What does closure(q) mean? Presumeably, the set of states reachable
+   from q with lambda transitions. Need to define, and maybe give a
+   more precises or distinguishable name.
+
 **Example**:
 
 .. odsafig:: Images/NFA2DFA2a.png
@@ -258,78 +265,3 @@ instead have the :math:`a` arc go to the corresponding destination
 below.
 
 For each :math:`b` arc in the first copy, change the :math:`b` to lambda.
-
-
-Minimizing Number of states in DFA
-----------------------------------
-
-Why?
-
-If you have an NFA with :math:`n` states, what is the maximum number 
-of states in the equivalent DFA created? :math:`2^n` 
-
-**Algorithm**
-
-Identify states that are indistinguishable
-
-* These states form a new state
-
-
-**Definition**: Two states :math:`p` and :math:`q` are
-indistinquishable if for all :math:`w \in \Sigma^*`
-
-.. math::
-
-   \begin{eqnarray*}
-   \delta^*(q, w) \in F &\Rightarrow& \delta^*(p, w) \in F\\
-   \delta^*(p, w) \not\in F &\Rightarrow& \delta^*(q, w) \not\in F\\
-   \end{eqnarray*}
-
-**Definition**: Two states :math:`p` and :math:`q` are distinquishable
-if :math:`\exists w \in \Sigma^*` such that
-
-.. math::
-
-   \begin{eqnarray*}
-   \delta^*(q, w)\in F &\Rightarrow& \delta^*(p, w) \not\in F \mathrm{OR}\\
-   \delta^*(q, w) \not\in F &\Rightarrow& \delta^*(p, w) \in F
-   \end{eqnarray*}
-
-:math:`p` and :math:`q` appear to be different. 
-
-**Example**:
-
-Look at A on a, ab 
-
-Look at F on a, ab 
-
-Look at D on a, ab 
-
-.. note::
-
-   This is in file ~rodger/cl/cps140/jflapex/chap2mindfa1.jff 
-
-.. odsafig:: Images/stmindfa1s.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Minimization 1
-
-   Minimization 1
-
-
-**Example**:
-
-.. note::
-   
-   This is in file ~rodger/cl/cps140/jflapex/chap2mindfa2.jff 
-
-.. odsafig:: Images/stmindfa2s.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Minimization 2
-
-   Minimization 2
