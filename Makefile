@@ -122,6 +122,11 @@ ECE252: min
 PL: min
 	python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
+# Tom Naps has added this target while he works on re-packaging the PL book
+# He will remove it and the corresponding config file when that re-packaging is complete
+PL-naps: min
+	python $(CONFIG_SCRIPT) config/PL-naps.json --no-lms
+
 CS4104: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/CS4104_generated.json --no-lms
