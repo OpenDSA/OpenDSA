@@ -31,14 +31,15 @@ The programmer explicitly requests the allocation of a memory
 "block" of a particular size, and the block continues to be allocated
 until something happens that makes it go away.
 In some languages (noteably, C and C++),
-objects in heap memory only go away when the programmer explicitly
+an object in heap memory only goes away when the programmer explicitly
 requests that it be deallocated.
 So the programmer has much greater control of memory, but with greater
 responsibility since the memory must now be actively managed.
 Dropping all references to a memory location without deallocating it
 is a signficant source of errors in C/C++, and this is so common that
-it has a name: :term:`memory leak`
-(In fact, many commercial C++ programs have memory leaks.)
+it has a name: :term:`memory leak`.
+(In fact, many commercial C++ programs have memory leaks, that will
+eventually make them crash after being used for a long time.)
 Java removes this source of errors by handling memory deallocation
 automatically, using :term:`garbage collection`.
 The downside is that garbage collection is a slow process that happens
@@ -71,7 +72,7 @@ The disadvantages of heap memory are:
   Local memory is constrained, but at least it's never *wrong*.
 
 Nonetheless, there are many problems that can only be solved with heap
-memory, so that's that way it has to be.
+memory, so that's the way it has to be.
 
 
 Java Garbage Collection
@@ -79,13 +80,12 @@ Java Garbage Collection
 
 The following are some important points about Garbage Collection.
 
-* Garbage collection is a mechanism that is frequently invoked by the
-  Java Virtual Machine to get ride of the unused heap memory
-  objects.
+* Garbage collection is a mechanism that is invoked by the Java
+  Virtual Machine to get ride of the unused heap memory objects.
   It removes every object that is not being used anymore by the
   running Java program.
-  The results of this process is freeing up the memory so other new
-  objects can use that piece of memory.
+  The result of this process is freeing up the unused memory so other
+  new objects can use that piece of memory.
 
 * In other programming languages like C and C++, it is the
   responsibility of the programmer to take care of freeing up the
@@ -110,25 +110,35 @@ The following are some important points about Garbage Collection.
 The following are some cases that make an object subject to be removed
 from heap memory by garbage collection:
 
-* When the programmer changes all references to an object to something
-  else.
+#. When the programmer changes all references to an object to something
+   else.
 
-* If the object is defined inside a block of code, and all references
-  to that object are local.
-  When excecution of that block is complete, the local variables are
-  destroyed automatically, leaving the object in heap memory without
-  any references.
-  Here is an example
+#. If the object is defined inside a block of code, and all references
+   to that object are local.
+   When excecution of that block is complete, the local variables are
+   destroyed automatically, leaving the object in heap memory without
+   any references. (So this is really a special case of rule (1).)
+   Here is an example
 
-  .. codeinclude:: Pointers/Scoop
+   .. codeinclude:: Pointers/Scoop
 
-* Assume an object ``A`` contains a reference to another object
-  ``B``, and ``A`` contains the only such reference to ``B``.
-  Object ``B`` will be eligible for garbage collection if ``A`` is
-  also eligible for garbage collection.
-  Here is an example.
+#. Assume an object ``A`` contains a reference to another object
+   ``B``, and ``A`` contains the only such reference to ``B``.
+   Object ``B`` will be eligible for garbage collection if ``A`` is
+   also eligible for garbage collection.
+   Here is an example.
 
   .. codeinclude:: Pointers/Date
+
+.. TODO::
+   :type: Slideshow
+
+   In the following slideshow:
+
+   * Make a copy, and set up a separate demonstration module for the
+     text-to-speech support.
+   * Get rid of text-to-speech in the copy for this tutorial.
+   * Get rid of slides 1-6.
 
 .. inlineav:: garbageDisposalCON ss
    :output: show
@@ -175,20 +185,28 @@ which areas of the heap are in use.
 Deallocation
 ~~~~~~~~~~~~
 
-When the program is finished using a block of memory, the block will be marked unused,
-this allows Java garbage collection to know that this area must be cleaned. The
-garbage collection will implicitly freeing up the unused memory blocks in heap.
-The heap manager updates its private data structures to show that the area of memory
-occupied by the block is free again and so may be re-used to satisfy future allocation
-requests. Here's what the heap would look like if the garbage collection deallocates
-the second of the three blocks.
+When the program is finished using a block of memory, the block will
+be marked unused.
+This allows Java garbage collection to know that this area must be
+cleaned.
+Garbage collection will implicitly free up the unused memory blocks in
+the heap.
+The heap manager updates its private data structures to show that the
+area of memory occupied by the block is free again and so may be
+re-used to satisfy future allocation requests.
+Here's what the heap would look like if the garbage collection
+deallocates the second of the three blocks.
 
 .. inlineav:: LocalHeapdealoc dgm
 
-After the deallocation, the pointer continues to point to the now deallocated block. The
-program must not access the deallocated pointee. This is why the pointer is drawn in gray
-|---| the pointer is there, but it must not be used. Sometimes the code will set
-the pointer to ``null`` to tell the garbage collection that this object is now unused.
+After deallocation, the pointer continues to point to the now
+deallocated block.
+The program must not access the deallocated pointee.
+This is why the pointer is drawn in gray |---| the pointer is there,
+but it must not be used.
+Sometimes the code will set the pointer to ``null`` to tell the
+garbage collection that this object is now unused.
+
 
 
 Programming The Heap
@@ -228,17 +246,32 @@ are:
   location and size are fixed once it is allocated.
 
 * The deallocation function is the opposite of the allocation
-  function. The Java virtual machine invokes the garbage collection frequently to
-  remove any unused block of memory, free its space and return this space of memory
-  to the heap free area for later re-use. Each block should only be deallocated once.
-  After the deallocation, the program must treat the pointer as a ``null`` pointer
-  and anu attemp to acccess its deallocated space raises ``NullPointerException``.
+  function.
+  The Java virtual machine invokes the garbage collection to remove
+  any unused block of memory, free its space and return this space of
+  memory to the heap free area for later re-use.
+  Each block should only be deallocated once.
+  After the deallocation, the program must treat the pointer as a
+  ``null`` pointer, and any attemp to acccess its deallocated space
+  raises a ``NullPointerException``.
+
 
 Simple Heap Example
 -------------------
-Here is a simple example which allocates an ``Employee`` object block in the heap,
-and then deallocates it.
-This is the simplest possible example of heap block allocation, use, and deallocation.
+
+.. TODO::
+   :type: Slideshow
+
+   This paragraph of discussion and code snippets all need to be
+   intergrated into the slideshow.
+
+   Also, the "observations" below that refer to this example and code
+   should be integrated into the slideshow.
+
+Here is a simple example that allocates an ``Employee`` object block
+in the heap, and then deallocates it.
+This is the simplest possible example of heap block allocation, use,
+and deallocation.
 The example shows the state of memory at three different times during the execution
 of the above code. The stack and heap are shown separately in the drawing |---| a
 drawing for code which uses stack and heap memory needs to distinguish between the
@@ -276,41 +309,50 @@ the lifetime of the heap block, and the drawing needs to reflect that difference
 .. inlineav:: LocalHeapintptr42 ss
    :output: show
 
+
 Simple Heap Observations
 ------------------------
 
-* After the allocation call allocates the block in the heap. The
-  program stores the pointer to the block in the local variable
-  ``empPtr``. The block is the "pointee" and ``empPtr`` is its pointer
-  as shown at T2. In this state, the pointer may be dereferenced
-  safely to manipulate the pointee. The pointer/pointee rules from
-  Section 1 still apply, the only difference is how the pointee is
-  initially allocated.
+* The call to ``new`` allocates a block of space in the heap.
+  In the example above, the program stores the pointer to the block in
+  the local variable ``empPtr``.
+  The block is the "pointee" and ``empPtr`` is its reference
+  as shown at T2.
+  In this state, the pointer may be dereferenced
+  safely to manipulate the pointee.
+  The pointer/pointee rules from Section 1 still apply, the only
+  difference is how the pointee is initially allocated.
 
-* At T1 before using ``new``, ``empPtr`` is uninitialized
-  does not have a pointee |---| at this point ``empPtr`` ``null`` in the
-  same sense as discussed in Section 1. As before, dereferencing such
-  an uninitialized pointer is a common, but catastrophic
-  error (raises a ``NullPointerException``). This error will crash immediately,
-  unless there is a code to handle this exception.
+* At T1 before using ``new``, ``empPtr`` is uninitialized and 
+  does not have a pointee |---| at this point ``empPtr`` is ``null``
+  in the same sense as discussed in Section 1.
+  As before, dereferencing such an uninitialized reference is a
+  common, but catastrophic error (it raises a
+  ``NullPointerException``).
+  This error will crash immediately, unless there is specific code to
+  handle this exception.
 
-* Assigning a ``null`` to a reference deallocates the pointee as shown at
-  T3. Dereferencing the pointer after the pointee has been deallocated
+* Assigning a ``null`` to a reference deallocates the pointee as shown
+  at T3.
+  Dereferencing the pointer after the pointee has been deallocated 
   is an error like the previous point.
 
 * When the function exits, its local variable ``empPtr`` will be
-  automatically deallocated by the garbage collection. So this function has tidy
-  memory behavior |---| all of the memory it allocates while running (its local
-  variable, its one heap block) is deallocated by the time it exits.
+  automatically deallocated by the garbage collecter.
+  So this function has tidy memory behavior |---| all of the memory it
+  allocates while running (its local variable, its one heap block) is
+  deallocated by the time it exits.
 
 
-Heap Array
-----------
+Arrays
+------
 
-In the Java language, it's mandatory to allocate an array in the heap. The size
-of the array memory block is the size of each element multiplied by the number of
-elements. So the following code heap allocates an array of 100
-``Fractions``'s in the heap, sets them all to 22/7, and deallocates the heap array.
+In Java, array memory is allocated in the heap.
+The size of the array memory block is the size of each element
+multiplied by the number of elements.
+So the following code heap allocates an array of 100 ``Fraction``
+objects in the heap, sets them all to 22/7, and deallocates the heap
+array.
 
 .. codeinclude:: Pointers/Fraction
 
@@ -318,31 +360,20 @@ elements. So the following code heap allocates an array of 100
 Heap Array Observations
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-In the previous example the array is diamically allocated memory in two steps:
+In the previous example the array is dynamically allocated memory in
+two steps:
 
 * The first step when the array is created using
   ``fracts =  new Fraction[100];``. 
-  This line is used to allocate dynamic array of 100 reference to
+  This line is used to allocate dynamic array of 100 references to
   ``Fractions``.
   All references are initialized to ``null``.
 
 * The second step was inside the loop.
   Every loop iteration uses ``new`` to dynamically allocate an
-  ``object`` of type ``Fraction``.
-  The initial value of eacth object determined 
+  object of type ``Fraction``.
+  The initial value of each object determined 
   by the values sent to the Fraction constructor.
-
-
-Memory Leaks
-------------
-
-What happens if some memory is heap allocated, but never deallocated?
-A program which forgets to deallocate a block is said to have a
-:term:`memory leak` which may or may not be a serious problem.
-The result will be that the heap gradually fill up as there
-continue to be allocation requests, but no deallocation requests to
-return blocks for re-use. In Java, this problem will not happen as the garbage collection
-will automatically free any unused block of memory and make it available to be used again.
 
 
 Heap Memory Summary
@@ -351,10 +382,13 @@ Heap Memory Summary
 Heap memory provides greater control for the programmer |---| the
 blocks of memory can be requested in any size, and they remain
 allocated until they are deallocated implicitly.
-Heap memory can be passed back to the caller since it is not deallocated on exit, and it
-can be used to build linked structures such as linked lists and binary trees. The
-disadvantage of heap memory is that  the program must make explicit allocation
-calls to manage the heap memory. The heap memory does not operate automatically
+Heap memory can be passed back to the caller since it is not
+deallocated on exit, and it can be used to build linked structures
+such as linked lists and binary trees.
+The disadvantage of heap memory is that the program must make
+explicit allocation calls to manage the heap memory, and the program
+has to wait when the garbage collector runs.
+The heap memory does not operate automatically
 and conveniently the way local memory does.
 
 .. odsascript:: AV/Pointers/LocalHeapaloc.js

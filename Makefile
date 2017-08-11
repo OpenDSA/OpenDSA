@@ -152,6 +152,9 @@ CS150: min
 CS260: min
 	python $(CONFIG_SCRIPT) config/CS260.json --no-lms
 
+CS240: min
+	python $(CONFIG_SCRIPT) config/CS240.json --no-lms
+
 CS271-UWO: min
 	python $(CONFIG_SCRIPT) config/CS271-UWO.json --no-lms
 

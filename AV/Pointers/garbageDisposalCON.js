@@ -9,12 +9,13 @@ function textToSpeech(text) {
     u.rate = 1.0;
     speechSynthesis.speak(u);
 }
+
 function getSlideText(slideNumber) {
     switch (slideNumber) {
         case 1:
             return "This slide show will explain Java Garbage Collection";
         case 2:
-            return "Garbage collection is a mechanism that is frequently invoked by the Java Virtual Machine to get ride of the unused heap memory objects."
+            return "Garbage collection is a mechanism that is frequently invoked by the Java Virtual Machine to get rid of the unused heap memory objects."
         case 3:
             return "Objects are unreferenced when they. 1-become null. 2-assigned to other reference. 3-anonymous objects";
         case 4:
@@ -87,7 +88,7 @@ $(document).ready(function() {
   av.displayInit();
   av.step();
   //Slide 2
-  av.umsg("Garbage collection is a mechanism that is frequently invoked by the Java Virtual Machine to get ride of the unused heap memory objects.");
+  av.umsg("Garbage collection is a mechanism that is frequently invoked by the Java Virtual Machine to get rid of the unused heap memory objects.");
   av.step();
   //Slide 3
   av.umsg("Objects are unreferenced when they: ");
