@@ -23,10 +23,15 @@ to the repo):
 
     git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA.git OpenDSA
 
-Once you have cloned this repository, you will need to initialize and update the
-submodules and compile some of the libraries. Do the following:
+Once you have cloned this repository, you will need to initialize and
+update the submodules and compile some of the libraries.
+Do the following:
 
     make pull
+
+[Note that this probably won't work unless you have the proper tools
+installed.
+See: http://opendsa.readthedocs.io/en/latest/GettingStarted.html#setting-up-a-local-development-environment
 
 In order to pull a more recent copy of JSAV than what is in the submodule:
 
