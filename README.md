@@ -28,16 +28,12 @@ to the repo):
 Once you have cloned this repository, you will need to initialize and update the
 submodules and compile some of the libraries. Do the following:
 
-    git submodule init
     make pull
 
 In order to pull a more recent copy of JSAV than what is in the submodule:
 
     cd JSAV
     git pull https://github.com/vkaravir/JSAV
-
-A similar command will let you pull the up-to-date version of QBank.
-
 
 The source files for the documentation can be found in the "Doc"
 directory.
