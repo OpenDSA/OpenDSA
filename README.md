@@ -1,8 +1,6 @@
 # OpenDSA (Development Channel)
 
-This is the development repository for the OpenDSA project. Note that
-the stable release version is maintained at:
-https://github.com/cashaffer/OpenDSA-stable.
+This is the development repository for the OpenDSA project.
 
 The goal of the OpenDSA project is to create open-source courseware for use in
 Data Structures and Algorithms courses, that deeply integrates textbook-quality
