@@ -265,12 +265,90 @@ can be used.
 Setting up a Local Development Environment
 ------------------------------------------
 
-To compile your own books for testing purposes requires rather a lot
-of infrastructure.
-It also involves running multiple servers: at least one for the LTI
-provider and one for the OpenDSA content server.
+There are two ways to set up your system to do local development on
+OpenDSA content: set up in a virtual box, or install the toolchain
+manually.
+
+
+Using a Virtual Box
+~~~~~~~~~~~~~~~~~~~
+
+If all that you want to do is compile OpenDSA content, then you could
+set up the toolchain manually (see the next section), or use the
+virtual box to set everything up automatically.
+If you plan to do more, including running the OpenDSA or Code
+Workout back-end servers, then the only practical approach is to
+install the OpenDSA DevStack in a virutal box.
 To make this relatively easy for most developers, we have created a
 package to deliver a complete "OpenDSA in a box" on a virtual
 machine.
 Complete instructions can be found at:
 https://github.com/OpenDSA/OpenDSA-DevStack.
+
+
+Installing the Toolchain Manually
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here are instructions for installing the toolchain manually,
+which should then allow you to compile OpenDSA books.
+These instructions are geared toward Windows, since that is the
+hardest to install.
+For Linux or Mac, you can do pretty much the same thing (using sudo
+for root permissions, and getting the tools from your package
+manager),
+but can skip some of the steps.
+
+First, install Git.
+On Windows, a good choice is  "Git for Windows" at
+https://git-scm.com/download/win.
+Use the third option for the path environment:
+"Use Git and optional Unix tools from the Windows Command Prompt".
+Choose "checkout as-is, commit Unix-style line endings",
+and then use "MinTTY".
+
+Then on Windows you will need to install "make"
+from http://gnuwin32.sourceforge.net/packages/make.htm.
+IMPORTANT: Put it in Program Files, NOT Program Files (x86).
+Then,edit your environment variable PATH to add:
+C:/Program Files/GnuWin32/bin
+
+Next, install nodejs (on Windows, you can get it from
+https://nodejs.org/en/download/).
+
+Now, open a Git Bash window and do::
+
+   npm install -g eslint  [If this is a fresh install of nodejs, this could take awhile]
+   npm install -g csslint
+   npm install -g jsonlint
+   npm install -g uglify-js
+
+Next, install Python 2.7.
+Be sure to add it to your PATH variable.
+For example, if you choose to put it at the top level of your C:
+drive, then add C:/Python27 and C:/Python27/Scripts to your PATH.
+Note: If you already have Python 2.7 installed, but it does not have
+pip, then it is so obsolete that it needs to be thrown away and
+replaced.
+
+Finally pop open a **new** Git Bash window, and clone the OpenDSA
+repo from https://github.com/OpenDSA/OpenDSA.
+
+Then do the following::
+
+   cd OpenDSA
+   pip install -r requirements.txt
+   make pull [This could take awhile]
+
+At this point, you should be all set up. To test things, you can try
+doing::
+
+  make test
+
+This should put a test book into [OpenDSA]/Books/test.
+
+Note that to see most OpenDSA content, it must be viewed through a web
+server.
+Since you probably don't want to install a real web server like Apache
+on your local machine, there is a simple alternative.
+See [OpenDSA]/WebServer for easy instructions on starting up a web
+server to view your OpenDSA content.

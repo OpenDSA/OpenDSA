@@ -30,8 +30,9 @@ Depending on the course software (typically an LMS such as Canvas) that you are 
 instance of a given OpenDSA book instance for each course that intends
 to use it.
 
-Details about how to define a course related information and how to create a course offering using OpenDSA web interfaces is in
-:ref:`OpenDSA web interfaces  <OpenDSAWebInterfaces>` chapter.
+Details about how to define a course related information and how to
+create a course offering using OpenDSA web interfaces is in
+:ref:`OpenDSA web interfaces <OpenDSA_LTI_Web_Interfaces>`.
 
 ---------------------------------------
 Motivation for the Configuration System

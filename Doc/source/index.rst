@@ -24,13 +24,7 @@ Table of Contents
    OpenDSA-LTI-Implementation
    OpenDSA-LTI-Web-Interfaces
    OpenDSA-LTI-database
-   .. Backend
-   .. BackendSpecs
-   .. DatabaseSchemas
-   .. AdminTools
    Client-sideFramework
    EventMessages
    QBankUserManual
    QBankDevManual
-
-
