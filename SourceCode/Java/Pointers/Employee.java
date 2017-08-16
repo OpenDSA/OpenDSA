@@ -58,18 +58,18 @@
      }
 
 /* *** ODSATag: test *** */
-void test(Employee e1) // T1
+void test(Employee e1) 
 {
-  Employee first = new Employee("Alex", 1500); //T2
+  Employee first = new Employee("Alex", 1500); 
   if (e1.getSalary() > firstEmp.getSalary())
   {
-    Employee second = new Employee("John", 2000); //T3
-    first = null; //T4
-    Employee third = new Employee("Sam", 3000); //T5
-    second = third; //T6
-  } //T7
-  Employee last = new Employee("Fox", 1000); //T8
-} //T9
+    Employee second = new Employee("John", 2000); 
+    first = null; 
+    Employee third = new Employee("Sam", 3000); 
+    second = third; 
+  } 
+  Employee last = new Employee("Fox", 1000); 
+} 
 /* *** ODSAendTag: test *** */
 
      /* *** ODSATag: BecomingNull *** */
