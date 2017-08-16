@@ -5,11 +5,20 @@ $(document).ready(function() {
   // Load the config object with interpreter and code created by odsaUtils.js
   var av;
   av = new JSAV(av_name);
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+        code = config.code;
+  var pseudo = av.code(code[0]);
+  pseudo.element.css({
+        position: "absolute",
+        top: 10,
+        left: -10
+  });
+  pseudo.setCurrentLine(4);
   var widthBig = 80;
   var lengthBig = 110;
   var widthSmall = 30;
   var lengthSmall = 80;
-  var xPositionBigRectangles = 380;
+  var xPositionBigRectangles = 600;
   var yPositionRectX = 100;
   var yPositionRectY = 0;
   var xPositionSmallRectangles = xPositionBigRectangles + 25;
@@ -32,7 +41,9 @@ $(document).ready(function() {
   av.step();
 
   //creating everything in the Y rectangle
-  av.umsg("Y() is called with p = 1, and its locals are allocated. X()'s locals continue to be allocated");
+ pseudo.setCurrentLine(13);
+
+    av.umsg("Y() is called with p = 1, and its locals are allocated. X()'s locals continue to be allocated");
   var rectY = av.g.rect(xPositionBigRectangles, yPositionRectY + (widthBig / 2), lengthBig, widthBig);
   var rectP = av.g.rect(xPositionSmallRectangles, yPositionP, lengthSmall, widthSmall);
   var rectQ = av.g.rect(xPositionSmallRectangles, yPositionQ, lengthSmall, widthSmall);
@@ -42,6 +53,7 @@ $(document).ready(function() {
   var label1 = av.label("1", {top: yPositionP - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
   var label3 = av.label("3", {top: yPositionQ - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
   av.step();
+    pseudo.setCurrentLine(6);
   av.umsg("Y() is called again with p=2, and its locals are allocated a second time");
   rectY.hide();
   rectP.hide();
@@ -52,6 +64,7 @@ $(document).ready(function() {
   label1.hide();
   label3.hide();
   av.step();
+    pseudo.setCurrentLine(13);
   av.umsg("Y() is called again with p=2, and its locals are allocated a second time");
   rectY.show();
   rectP.show();
@@ -63,6 +76,7 @@ $(document).ready(function() {
   label3.show();
 
   av.step();
+    pseudo.setCurrentLine(8);
   av.umsg("Y() exits and its locals are deallocated. X()'s locals will be deallocated when it exits");
   rectY.hide();
   rectP.hide();

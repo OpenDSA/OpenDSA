@@ -11,6 +11,8 @@
 
    .. odsalink:: AV/Pointers/T1-T5CON.css
 
+   .. odsalink:: AV/Pointers/simpleLifetimeCON.css
+
 Local Memory
 ============
 
@@ -118,6 +120,9 @@ Here is a simple example of the lifetime of local storage.
 
 .. codeinclude:: Pointers/LocalStorageLifeTime
 
+.. inlineav:: simpleLifetimeCON ss
+   :output: show
+
 .. TODO::
    :type: Slideshow
 
@@ -130,19 +135,10 @@ are allocated when their function begins running and are deallocated
 when it exits" can build more complex behavior.
 You will need a firm grasp of how local allocation works to understand the
 material in later modules.
-The drawing shows the sequence of allocations and deallocations which
+The following slides show the sequence of allocations and deallocations that
 result when the function X() calls the function Y() twice.
-The points in time T1, T2, etc. are marked in
-the code and the state of memory at that time is shown in the drawing.
 
 .. codeinclude:: Pointers/LifeTimeLargerExample
-
-
-.. odsafig:: Images/T1-T5.png
-   :width: 600
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
 
 .. inlineav:: T1-T5CON ss
    :output: show
@@ -329,3 +325,5 @@ function call process:
 
 
 .. odsascript:: AV/Pointers/T1-T5CON.js
+.. odsascript:: AV/Pointers/simpleLifetimeCON.js
+
