@@ -113,6 +113,10 @@ CS3: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/CS3_generated.json --no-lms
 
+CSCI2101: min
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/CSCI2101_generated.json --no-lms
+
 CS327: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/CS327_generated.json --no-lms
@@ -149,7 +153,6 @@ CS3SS17slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3SS17slides.json --no-lms
 
 CS3notes: min
-	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
 
 testcmap: min

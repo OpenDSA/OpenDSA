@@ -6,9 +6,9 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-===================
+==================
 Program Management
-===================
+==================
 
    * Project management is a skill
       * It has to be learned
@@ -20,7 +20,7 @@ Program Management
 
 
 Scheduling
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~
 
    * Managing large-scale projects involves scheduling activities
       * It is human nature to work better toward intermediate milestones.
@@ -43,7 +43,7 @@ Scheduling
 
 
 Historical Data
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
    .. _ProgramerData:
 
@@ -58,7 +58,7 @@ Historical Data
 
 
 Historical Data 2
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
    * Results were significant:
 
@@ -72,7 +72,7 @@ Historical Data 2
 
 
 Historical Data 3
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
    * Correlations:
       * Strong correlation between early time and high score
@@ -81,7 +81,7 @@ Historical Data 3
 
 
 What is the Mechanism?
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
    * Correlations do not necessarily mean causation
       * Do they behave that way because they are good, or does
@@ -97,13 +97,13 @@ What is the Mechanism?
 
 
 How to fail at implementing your project:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
      * Write the project
      * Debug the project
 
 How to succeed at implementing your project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    * Write the smallest possible kernel
    * Debug the kernel thoroughly
@@ -117,7 +117,7 @@ How to succeed at implementing your project
    * Implement the tricky parts last
 
 How to Survive
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
    * Keys to success:
    * Keeping Track of all the details
@@ -128,7 +128,7 @@ How to Survive
       * Interleave writing and debugging
 
 Being Organized 1
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
    * Software development has so many details
       * Spec requirements
@@ -138,7 +138,7 @@ Being Organized 1
       * Assignments and other things to do
 
 Being Organized 2
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
    * You can't turn this on/off
       * Either you get in the habit of developing in an organized way,
@@ -155,7 +155,7 @@ Being Organized 2
    involve hamburgers.
 
 Memory Can't Handle It
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
    * Externalize
       * TODO lists (What)
@@ -167,7 +167,7 @@ Memory Can't Handle It
    * Repository: GitHub
 
 Spread Work Over Time
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
    * For anything beyond a small software project, you must have a
      plan/schedule
@@ -179,7 +179,7 @@ Spread Work Over Time
       * Continuously modify and refine the plan
 
 Incremental Development
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
    * Break the project into a small initial core
    * Implement and TEST and COMMENT the core
