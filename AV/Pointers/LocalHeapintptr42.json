@@ -1,0 +1,15 @@
+{
+  "translations": {
+    "en": {
+    }
+  },
+  "code":
+  {
+    "java": [{
+      "url": "../../../SourceCode/Java/Pointers/SimpleHeapExampleCombined.java",
+      "lineNumbers": true,
+      "tags": {
+      }
+    }]
+  }
+}
