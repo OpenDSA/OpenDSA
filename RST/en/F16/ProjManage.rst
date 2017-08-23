@@ -28,7 +28,6 @@ Program Management
       * We are working on ways to grade process
 
 .. slide:: Scheduling
-   :level: 3
 
    * Managing large-scale projects involves scheduling activities
       * It is human nature to work better toward intermediate milestones.
