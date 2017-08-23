@@ -1,76 +1,6 @@
 /*global JSAV, document */
 // Written by Sushma Mandava
 //variable xPositionLocalRectangles controls the horizontal position of the visualization
-String.prototype.visualLength = function () {
-    var AV = document.getElementById('LocalHeapintptr42');
-    var canvas = AV.getElementsByClassName('jsavcanvas')[0];
-    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    var svgNS = svg.namespaceURI;
-    var svgDocument = canvas.appendChild(svg);
-    var data = document.createTextNode( this );
-    var svgElement = document.createElementNS( svgNS, "text" );
-    svgElement.appendChild(data);
-    svgDocument.appendChild( svgElement );
-    var bbox = svgElement.getBBox();
-    data.parentNode.removeChild(data);
-    svgElement.parentNode.removeChild(svgElement);
-    svgDocument.parentNode.removeChild(svgDocument);
-    return bbox.width;
-}
-function drawEmployeeField(av, labelXpos, labelYpos, fieldHeight, labelValue, fieldValue, labelWidth, rectWidth, boolDisplayLable, boolDisplayRect)
-{
-    var s = av.g.set();
-    if (boolDisplayRect) {
-
-        var rect = av.g.rect(labelXpos + labelWidth, labelYpos, rectWidth, fieldHeight);
-        s.push(rect);
-    }
-    if(boolDisplayLable) {
-        var label = av.label(labelValue, {top: labelYpos - 6, left: labelXpos + labelWidth - labelValue.visualLength() - 10});
-        s.push(label);
-    }
-    if(!boolDisplayLable)
-    {
-        var f = av.label(fieldValue, {top: labelYpos - 6,
-            left: labelXpos + (rectWidth - fieldValue.visualLength())/2 });
-        s.push(f);
-    }
-    else {
-        var fv = av.label(fieldValue, {
-            top: labelYpos - 6,
-            left: labelXpos + labelWidth + (rectWidth - fieldValue.visualLength()) / 2});
-        s.push(fv);
-    }
-    return s;
-}
-function drawEmplyeeObject(av, xPos, yPos, numberOfFields, arrayOfValues, arrayOfLabels, boolDisplayLable, boolDisplayRect) {
-    var s = av.g.set();
-    var delta = 10;
-    var clonedL = JSON.parse(JSON.stringify(arrayOfLabels))
-    var clonedV = JSON.parse(JSON.stringify(arrayOfValues))
-    var longestLabel = clonedL.sort(function (a, b) {
-        return b.length - a.length;
-    })[0];
-    var longestValue = clonedV.sort(function (a, b) {
-        return b.length - a.length;
-    })[0];
-    var width;
-    if(boolDisplayLable)
-        width = longestValue.visualLength() + longestLabel.visualLength() + 2*delta;
-    else
-        width =longestValue.visualLength() + 2*delta;
-    var filedH = 40;
-    var height = numberOfFields * (15 + filedH);
-
-    var rect = av.g.rect(xPos, yPos, width, height);
-    s.push(rect);
-    for (var i = 0; i < numberOfFields; i++) {
-        var emp = drawEmployeeField(av, xPos + delta, yPos + (i + 1) * delta + i * filedH, filedH, String(arrayOfLabels[i]),
-            String(arrayOfValues[i]), longestLabel.visualLength(), longestValue.visualLength(), boolDisplayLable, boolDisplayRect);
-        s.push(emp);
-    }
-    return s;
-}
 $(document).ready(function() {
     "use strict";
     var av_name = "LocalHeapintptr42";
@@ -92,22 +22,26 @@ $(document).ready(function() {
     var length1 = 100;
     var width = 30;
 
-    av.umsg("Here is a simple example that allocates an Employee object block in the heap, and then deallocates it." +
-        " This is the simplest possible example of heap block allocation, use, and deallocation.");
+    av.umsg("Here is a simple example that allocates an Employee object block in the heap, and then deallocates it.");
     av.displayInit();
-    av.umsg("The example shows the state of memory at three different times during the execution of the above code.");
+    av.umsg("The example shows the state of memory at three different times during the execution of this code.");
+    pseudo.show();
     av.step();
     // drawEmplyeeObject(av, 50, 100, 3, ["asd", "50000000000000000000000000000", "a"], ["name", "salary", "aaaaaaaaaaaaaaaaaa"],false,false);
     av.umsg("The stack and heap are shown separately in the drawing—a drawing for code which uses stack and heap memory" +
         " needs to distinguish between the two areas to be accurate since the rules which govern the two areas are so" +
-        " different. In this case, the lifetime of the local variable empPtr is totally separate from the lifetime of " +
+        " different.");
+    av.label("Local", {top: 0, left: xPositionLocalRectangles + 20});
+    av.label("Heap", {top: 0, left: xPositionLocalRectangles + 200});
+    av.g.line((xPositionLocalRectangles + 130), 0, (xPositionLocalRectangles + 130),
+        140, {"stroke-width": 3, stroke: "gray"});
+    av.step();
+    av.umsg("In this case, the lifetime of the local variable empPtr is totally separate from the lifetime of " +
         "the heap block, and the drawing needs to reflect that difference.");
     av.step();
     av.umsg("This line of code allocates local pointer to a local variable (but not its pointee)");
-    pseudo.show();
     pseudo.setCurrentLine(3);
-    av.label("Local", {top: 0, left: xPositionLocalRectangles + 20});
-    av.label("Heap", {top: 0, left: xPositionLocalRectangles + 200});
+
     av.g.rect(xPositionLocalRectangles, yPositionLocal1, length1, width, {"stroke-width": 2});
     av.label("empPtr", {top: yPositionLocal1 - (width / 2), left: xPositionLocalRectangles - 55});
     //creating the x's
@@ -121,15 +55,21 @@ $(document).ready(function() {
     var x6 = av.g.line(xPositionLocalRectangles + 66, yPositionLocal1 + 8, xPositionLocalRectangles + 77, yPositionLocal1 + 23, {"stroke-width": 2});
 
     //gray line in the middle
-    av.g.line((xPositionLocalRectangles + 130), 0, (xPositionLocalRectangles + 130),
-        140, {"stroke-width": 3, stroke: "gray"});
+
     var ptline = av.g.line(xPositionLocalRectangles + 80, yPositionLocal1 + (width / 2), xPositionLocalRectangles + 150,
         yPositionLocal1 + (width / 2),
         {"arrow-end": "classic-wide-long", "stroke-width": 2});
     ptline.hide();
     av.step();
+    av.umsg(" Before using \"new\", \"empPtr\" is uninitialized and does not have a pointee. At this point \"empPtr\" is \"null\"" +
+        "  in the same sense as discussed in Section 1.");
+    av.step();
+        av.umsg("As before, dereferencing such an uninitialized reference is common, but catastrophic error (it raises a" +
+            "\"NullPointerException\"). This error will crash immediately, unless there is specific code to handle this exception.");
+    av.step();
     pseudo.setCurrentLine(7);
-    // Slide 5
+    av.umsg("The call to new allocates a block of space in the heap. In this example, the program stores the pointer " +
+        "to the block in the local variable empPtr. The block is the \"pointee\" and empPtr is its reference.");
     x1.hide();
     x2.hide();
     x3.hide();
@@ -141,13 +81,23 @@ $(document).ready(function() {
     var label1 = av.label("Sam", {top: yPositionLocal1 - 10, left: xPositionHeapRectangles + 40});
     var label2 = av.label("1000", {top: yPositionLocal1 + width/2 , left: xPositionHeapRectangles + 40});
     av.step();
+        av.umsg("In this state, the pointer may be dereferenced safely to manipulate the pointee.");
+    // Slide 5
+    av.step();
+
     pseudo.setCurrentLine(9);
-    // Slide 6
+    av.umsg("Deallocateing heap block makes the pointer equals to null. This will let the garbage collection to know that " +
+        "this object is unused and it must be cleared from the heap. ");
     heapRectangle.hide();
     label1.hide();
     label2.hide();
     ptline.css({stroke: "gray"});
-
+    av.step();
+        av.umsg("The programmer must remember not to use the pointer after the pointee has been deallocated " +
+        "(this is why the pointer is shown in gray).");
+    av.step();
+    pseudo.setCurrentLine(11);
+    av.umsg("When the function exits, its local variable empPtr will be automatically deallocated by the garbage collecter.");
     av.recorded();
 
 });

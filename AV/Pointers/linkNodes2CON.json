@@ -1,0 +1,17 @@
+{
+  "translations": {
+    "en": {
+    }
+  },
+  "code":
+  {
+    "java": [{
+      "url": "../../../SourceCode/Java/Pointers/LinkSlides.java",
+      "lineNumbers": true,
+      "startAfter": "/* *** ODSATag: Slide2 *** */",
+      "endBefore": "/* *** ODSAendTag: Slide2 *** */",
+      "tags": {
+      }
+    }]
+  }
+}

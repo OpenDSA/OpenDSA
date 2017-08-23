@@ -8,3 +8,4 @@ void Heap1() {
     empPtr = null;
     
 }
+

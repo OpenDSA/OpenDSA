@@ -9,6 +9,13 @@
    :satisfies:
    :topic: Link Nodes
 
+
+   .. odsascript:: AV/Pointers/linkNodes1CON.css
+   .. odsascript:: AV/Pointers/linkNodes2CON.css
+   .. odsascript:: AV/Pointers/linkNodes3CON.css
+   .. odsascript:: AV/Pointers/linkNodes4CON.css
+   .. odsascript:: AV/Pointers/linkNodes5CON.css
+
 Link Nodes
 ==========
 
@@ -27,7 +34,7 @@ Here is a class definition for a basic link object.
 (Need to change this slightly to have better field names: next and
 element instead of n and e.)
 
-.. codeinclude:: Lists/Link
+.. codeinclude:: Pointers/Link
    :tag: Link
 
 Here are examples for referencing Link objects in a chain, and getting
@@ -48,6 +55,9 @@ at the contents of a link object.
 
 How do we set up the chain to begin with?
 
+.. inlineav:: linkNodes1CON ss
+   :output: show
+
 .. TODO::
    :type: Slideshow
 
@@ -64,6 +74,9 @@ How do we set up the chain to begin with?
 One can easily write a loop to iterate through all the Links on a
 chain, without needing to know how many there actually are.
 
+.. inlineav:: linkNodes2CON ss
+   :output: show
+
 .. TODO::
    :type: Slideshow
 
@@ -77,6 +90,9 @@ chain, without needing to know how many there actually are.
         curr = curr.next;
 
 One can remove a Link from a chain.
+
+.. inlineav:: linkNodes3CON ss
+   :output: show
 
 .. TODO::
    :type: Slideshow
@@ -92,6 +108,11 @@ One can remove a Link from a chain.
 
    Note that (eventually) the garbage collector will reclaim the
    dangling node.
+
+
+.. inlineav:: linkNodes4CON ss
+   :output: show
+
 
 Finally, we can also insert new Links.
 
@@ -109,4 +130,12 @@ Finally, we can also insert new Links.
 
 Here is an exercise to practice manipulating link nodes.
 
+.. inlineav:: linkNodes5CON ss
+   :output: show
+
 .. avembed:: Exercises/Pointers/PointerEX3PRO.html ka
+.. odsascript:: AV/Pointers/linkNodes1CON.js
+.. odsascript:: AV/Pointers/linkNodes2CON.js
+.. odsascript:: AV/Pointers/linkNodes3CON.js
+.. odsascript:: AV/Pointers/linkNodes4CON.js
+.. odsascript:: AV/Pointers/linkNodes5CON.js
