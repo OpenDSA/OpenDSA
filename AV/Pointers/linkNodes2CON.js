@@ -15,7 +15,7 @@ $(document).ready(function() {
   });
     var linkedListStartPositionX = 600,
         linkedListStartPositionY = 50;
-    var list = av.ds.list({left: linkedListStartPositionX, top:linkedListStartPositionY});
+    var list = av.ds.list({top:linkedListStartPositionY, left:linkedListStartPositionX});
     pseudo.setCurrentLine(1);
     list.addFirst("null");
     var head = av.pointer("head", list.get(0));

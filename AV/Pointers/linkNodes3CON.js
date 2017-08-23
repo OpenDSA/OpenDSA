@@ -13,6 +13,43 @@ $(document).ready(function() {
         top: 10,
         left: -10
   });
+    pseudo.hide();
+    var linkedListStartPositionX = 300,
+        linkedListStartPositionY = 40;
+    var list = av.ds.list({left: linkedListStartPositionX, top:linkedListStartPositionY});
+    av.umsg("Consider we have the following list");
+    list.addLast(20).addLast(30).addLast(10).addLast(5);
+    var head = av.pointer("head", list.get(0),{anchor:"center bottom", myAnchor:"right top",top:10, left:-20, arrowAnchor: "center bottom"});
+    list.layout();
     av.displayInit();
+    av.umsg(" ");
+    pseudo.show();
+    pseudo.setCurrentLine(1);
+    var curr = av.pointer("curr", list.get(0));
+    av.step();
+    av.umsg("This loop will continue till curr is null.");
+    pseudo.setCurrentLine(2);
+    av.step();
+    av.umsg("");
+    pseudo.setCurrentLine(3);
+    curr.target(list.get(1));
+    av.step();
+    av.umsg("This loop will continue till curr is null.");
+    pseudo.setCurrentLine(2);
+    av.step();
+    av.umsg("");
+    pseudo.setCurrentLine(3);
+    curr.target(list.get(2));
+    av.step();
+    av.umsg("This loop will continue till curr is null.");
+    pseudo.setCurrentLine(2);
+    av.step();
+    av.umsg("");
+    pseudo.setCurrentLine(3);
+    curr.target(list.get(3));
+    av.step();
+    av.umsg("This loop stops.");
+    pseudo.setCurrentLine(2);
+    av.step();
     av.recorded();
 });

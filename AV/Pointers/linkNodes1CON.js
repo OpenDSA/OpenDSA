@@ -19,9 +19,10 @@ $(document).ready(function() {
     var list = av.ds.list({left: linkedListStartPositionX, top:linkedListStartPositionY});
     av.umsg("Consider we have the following list");
     list.addLast(20).addLast(30).addLast(10).addLast(5);
-    var head = av.pointer("head", list.get(0));
+    var head = av.pointer("head", list.get(0),{anchor:"center bottom", myAnchor:"right top",top:10, left:-20, arrowAnchor: "center bottom"});
     list.layout();
     av.displayInit();
+    av.umsg(" ");
     pseudo.show();
     pseudo.setCurrentLine(1);
     var p = av.pointer("p",list.get(0));
@@ -32,7 +33,8 @@ $(document).ready(function() {
     pseudo.setCurrentLine(3);
     var r = av.pointer("r",list.get(2));
     av.step();
-    var myVal = av.label("myVal", {left: linkedListStartPositionX + 400, top:linkedListStartPositionY});
+    pseudo.setCurrentLine(4);
+    av.label("myVal", {left: linkedListStartPositionX + 400, top:linkedListStartPositionY});
     av.g.rect(linkedListStartPositionX + 450, linkedListStartPositionY, 50, 40);
     av.label("30", {left: linkedListStartPositionX + 460, top:linkedListStartPositionY});
 
