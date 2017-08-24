@@ -94,6 +94,12 @@
         "long_name": "Bibliography",
         "sections": {}
       }
+    },
+    "Slideshow Narration":{
+      "Narration/HeapMem":{
+        "long_name": "Heap Memory",
+        "sections": {}
+      }
     }
   }
 }

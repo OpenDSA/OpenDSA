@@ -1,0 +1,49 @@
+{
+  "translations": {
+    "en": {
+    }
+  },
+  "code":
+  {
+    "java": [{
+      "url": "../../../SourceCode/Java/Pointers/Employee.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: test *** */",
+      "endBefore": "/* *** ODSAendTag: test *** */",
+      "tags": {
+        "methodCall": 1,
+        "first": 3,
+        "second": 6,
+        "null": 7,
+        "third": 8,
+        "secondToFirst": 9,
+        "last": 11
+
+      }
+    }, {
+      "url": "../../../SourceCode/Java/Pointers/Employee.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: BecomingNull *** */",
+      "endBefore": "/* *** ODSAendTag: BecomingNull *** */",
+      "tags": {
+
+      }
+    }, {
+      "url": "../../../SourceCode/Java/Pointers/Employee.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AnotherReference *** */",
+      "endBefore": "/* *** ODSAendTag: AnotherReference *** */",
+      "tags": {
+
+      }
+    }, {
+      "url": "../../../SourceCode/Java/Pointers/Employee.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: anonymous *** */",
+      "endBefore": "/* *** ODSAendTag: anonymous *** */",
+      "tags": {
+
+      }
+    }]
+  }
+}
