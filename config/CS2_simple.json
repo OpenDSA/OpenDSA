@@ -67,6 +67,13 @@
       "AlgAnal/AnalProgram",
       "AlgAnal/AlgAnalSumm"
     ],
+    "Introduction to Pointers in Java": [
+      "PointersJava/PointerIntro",
+      "PointersJava/BasicPointers",
+      "PointersJava/LocalMem",
+      "PointersJava/HeapMem",
+      "PointersJava/Links"
+    ],
     "Stacks": [
       "List/StackArray",
       "List/StackLinked"

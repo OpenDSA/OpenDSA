@@ -153,8 +153,10 @@ line between the corners of the reference variable's box.
    :align: center
 
 
-The ``Employee`` Class
-----------------------
+.. The ``Employee`` Class
+
+The Employee Class
+------------------
 
 We are going to use the ``Employee`` object for a lot of our examples,
 so let's make a formal introduction now.
@@ -220,10 +222,6 @@ communication between parts of a program.
 
 .. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
 
-|
-
-.. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
-
 
 Shallow and Deep Copying
 ------------------------
@@ -264,7 +262,9 @@ Here is an example of the difference between shallow and deep copying:
 .. codeinclude:: Pointers/shallowCopy
    :tag: shallow
 
+.. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
 
+             
 Bad References
 --------------
 

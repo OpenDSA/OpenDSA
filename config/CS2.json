@@ -334,6 +334,83 @@
         }
       }
     },
+    "Introduction to Pointers in Java": {
+      "PointersJava/PointerIntro": {
+        "long_name": "Pointers Chapter Introduction",
+        "sections": {}
+      },
+      "PointersJava/BasicPointers": {
+        "long_name": "Basic References",
+        "sections": {
+          "What is a Pointer?": {},
+          "What is a Reference?": {},
+          "Data Types in Java": {},
+          "Referencing and Dereferencing": {},
+          "The ``Employee`` Class": {},
+          "Reference Assignments": {},
+          "Sharing": {
+            "PointerEX1PRO": {
+              "long_name": "Pointer Exercise 1",
+              "required": true,
+              "points": 1,
+              "threshold": 1
+            }
+          },
+          "Shallow and Deep Copying": {
+            "PointerEX2PRO": {
+              "long_name": "Pointer Exercise 2",
+              "required": true,
+              "points": 1,
+              "threshold": 1
+            }
+          },
+          "Bad References": {},
+          "Syntax": {},
+          "Example Reference Code": {},
+          "Bad reference Example": {},
+          "Reference Rules Summary": {},
+          "Java References vs Pointers": {},
+          "How Are References Implemented In The Machine?": {},
+          "Why Are Bad Reference Bugs So Common?": {}
+        }
+      },
+      "PointersJava/LocalMem": {
+        "long_name": "Local Memory",
+        "sections": {
+          "Thanks For The Memory: Allocation and Deallocation": {},
+          "Local Memory": {},
+          "Examples": {},
+          "Local Parameters": {},
+          "How Does The Function Call Stack Work?": {}
+        }
+      },
+      "PointersJava/HeapMem": {
+        "long_name": "Heap Memory",
+        "sections": {
+          "Heap Memory": {},
+	  "Java Garbage Collection":{},
+          "What Does The Heap Look Like?": {},
+          "Programming The Heap": {},
+          "Simple Heap Example": {},
+          "Simple Heap Observations": {},
+          "Arrays": {},
+          "Heap Memory Summary": {}
+        }
+      },
+      "PointersJava/Links": {
+        "long_name": "Link Nodes",
+        "sections": {
+          "Link Nodes": {
+            "PointerEX3PRO": {
+              "long_name": "Pointer Exercise 3",
+              "required": true,
+              "points": 1,
+              "threshold": 1
+            }
+          }
+        }
+      }
+    },
     "Stacks": {
       "List/StackArray": {
         "long_name": "Array-based Stacks",

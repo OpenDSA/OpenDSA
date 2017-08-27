@@ -29,7 +29,7 @@ folder_names = {
     "Biography": "Biographies",
     "Tutorials": "Programming Tutorials",
     "Design": "Design I and II",
-    "Pointers": "Pointers",
+    "PointersJava": "PointersJava",
     "Searching": "Searching I and II",
     "AlgAnal": "Algorithm Analysis",
     "List": "Linear Structures",

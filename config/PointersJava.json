@@ -34,8 +34,22 @@
           "Referencing and Dereferencing": {},
           "The ``Employee`` Class": {},
           "Reference Assignments": {},
-          "Sharing": {},
-          "Shallow and Deep Copying": {},
+          "Sharing": {
+            "PointerEX1PRO": {
+              "long_name": "Pointer Exercise 1",
+              "required": true,
+              "points": 1,
+              "threshold": 1
+            }
+          },
+          "Shallow and Deep Copying": {
+            "PointerEX2PRO": {
+              "long_name": "Pointer Exercise 2",
+              "required": true,
+              "points": 1,
+              "threshold": 1
+            }
+          },
           "Bad References": {},
           "Syntax": {},
           "Example Reference Code": {},
@@ -65,31 +79,20 @@
           "Programming The Heap": {},
           "Simple Heap Example": {},
           "Simple Heap Observations": {},
-          "Heap Array": {},
-          "Memory Leaks": {},
+          "Arrays": {},
           "Heap Memory Summary": {}
         }
       },
       "PointersJava/Links": {
         "long_name": "Link Nodes",
         "sections": {
-          "Link Nodes": {}
-        }
-      },
-      "PointersJava/RefParam": {
-        "long_name": "Reference Parameters",
-        "sections": {
-          "Reference Parameters": {},
-          "Passing By Reference": {},
-          "Simple Reference Parameter Example: Swap()": {},
-          "Java is always pass-by-value": {},
-          "Reference Parameter Summary": {}
-        }
-      },
-      "PointersJava/Exercises": {
-        "long_name": "Pointers Exercises",
-        "sections": {
-          "Exercises": {
+          "Link Nodes": {
+            "PointerEX3PRO": {
+              "long_name": "Pointer Exercise 3",
+              "required": true,
+              "points": 1,
+              "threshold": 1
+            }
           }
         }
       }
