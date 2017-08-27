@@ -30,19 +30,27 @@
         "sections": {
           "What is a Pointer?": {},
           "What is a Reference?": {},
-          "Data Types in Java": {},
-          "Referencing and Dereferencing": {},
+          "Data Types in Java": {
+            "num42CON": {}, 
+            "employeeEmpRefCON": {}
+          },
+          "Referencing and Dereferencing": {
+            "empRefnullCON": {}
+          },
           "The ``Employee`` Class": {},
-          "Reference Assignments": {},
+          "Reference Assignments": {
+            "empRefsecondCON": {}
+          },
           "Sharing": {
             "PointerEX1PRO": {
               "long_name": "Pointer Exercise 1",
               "required": true,
-              "points": 1,
+              "points": 1.0,
               "threshold": 1
             }
           },
           "Shallow and Deep Copying": {
+            "shallowdeepCON": {}, 
             "PointerEX2PRO": {
               "long_name": "Pointer Exercise 2",
               "required": true,
@@ -50,13 +58,33 @@
               "threshold": 1
             }
           },
-          "Bad References": {},
-          "Syntax": {},
-          "Example Reference Code": {},
-          "Bad reference Example": {},
+          "Bad References": {
+            "empPtrxxxCON": {}
+          },
+          "Syntax": {
+            "employeePtr2CON": {
+              "long_name": "employeePtr2CON", 
+              "required": true, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }
+          },
+          "Example Reference Code": {
+            "examplePointerCodeCON": {
+              "long_name": "examplePointerCodeCON", 
+              "required": true, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }
+          },
+          "Bad reference Example": {
+            "badPointerPowCON": {}
+          },
           "Reference Rules Summary": {},
           "Java References vs Pointers": {},
-          "How Are References Implemented In The Machine?": {},
+          "How Are References Implemented In The Machine?": {
+            "memoryModelCON": {}
+          },
           "Why Are Bad Reference Bugs So Common?": {}
         }
       },
@@ -65,7 +93,20 @@
         "sections": {
           "Thanks For The Memory: Allocation and Deallocation": {},
           "Local Memory": {},
-          "Examples": {},
+          "Examples": {
+            "simpleLifetimeCON": {
+              "long_name": "simpleLifetimeCON", 
+              "required": true, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
+            "T1-T5CON": {
+              "long_name": "T1-T5CON", 
+              "required": true, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }
+          },
           "Local Parameters": {},
           "How Does The Function Call Stack Work?": {}
         }
@@ -74,10 +115,27 @@
         "long_name": "Heap Memory",
         "sections": {
           "Heap Memory": {},
-	  "Java Garbage Collection":{},
-          "What Does The Heap Look Like?": {},
+	  "Java Garbage Collection":{
+            "garbageDisposalCON": {
+              "long_name": "garbageDisposalCON", 
+              "required": true, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }
+          },
+          "What Does The Heap Look Like?": {
+            "LocalHeapaloc": {}, 
+            "LocalHeapdealoc": {}
+          },
           "Programming The Heap": {},
-          "Simple Heap Example": {},
+          "Simple Heap Example": {
+            "LocalHeapintptr42": {
+              "long_name": "LocalHeapintptr42", 
+              "required": true, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }
+          },
           "Simple Heap Observations": {},
           "Arrays": {},
           "Heap Memory Summary": {}
@@ -87,6 +145,36 @@
         "long_name": "Link Nodes",
         "sections": {
           "Link Nodes": {
+            "linkNodes1CON": {
+              "long_name": "linkNodes1CON", 
+              "required": true, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
+            "linkNodes2CON": {
+              "long_name": "linkNodes2CON", 
+              "required": true, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
+            "linkNodes3CON": {
+              "long_name": "linkNodes3CON", 
+              "required": true, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
+            "linkNodes4CON": {
+              "long_name": "linkNodes4CON", 
+              "required": true, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
+            "linkNodes5CON": {
+              "long_name": "linkNodes5CON", 
+              "required": true, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
             "PointerEX3PRO": {
               "long_name": "Pointer Exercise 3",
               "required": true,
