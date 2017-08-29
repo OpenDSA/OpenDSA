@@ -13,7 +13,7 @@ $(document).ready(function() {
         top: 10,
         left: -10
   });
-  pseudo.setCurrentLine(4);
+  pseudo.setCurrentLine(3);
   var widthBig = 80;
   var lengthBig = 110;
   var widthSmall = 30;
@@ -29,19 +29,19 @@ $(document).ready(function() {
 
   //creating everything in the X rectangle
   av.umsg("X()'s locals have been allocated and given values");
-  av.g.rect(xPositionBigRectangles, yPositionRectX + (widthBig / 2), lengthBig, widthBig);
-  av.g.rect(xPositionSmallRectangles, yPositionA, lengthSmall, widthSmall);
-  av.g.rect(xPositionSmallRectangles, yPositionB, lengthSmall, widthSmall);
-  av.label("X ()",  {top: yPositionRectX + (widthBig) - 3, left: xPositionBigRectangles - 30});
-  av.label("a",  {top: yPositionA - (widthSmall / 2) + 3, left: xPositionSmallRectangles - 16});
-  av.label("b",  {top: yPositionB - (widthSmall / 2) + 3, left: xPositionSmallRectangles - 16});
-  av.label("1", {top: yPositionA - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
-  av.label("2", {top: yPositionB - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
+  var xRect = av.g.rect(xPositionBigRectangles, yPositionRectX + (widthBig / 2), lengthBig, widthBig);
+  var aRect = av.g.rect(xPositionSmallRectangles, yPositionA, lengthSmall, widthSmall);
+  var bRect = av.g.rect(xPositionSmallRectangles, yPositionB, lengthSmall, widthSmall);
+  var xLabel = av.label("X ()",  {top: yPositionRectX + (widthBig) - 3, left: xPositionBigRectangles - 30});
+  var xRectA = av.label("a",  {top: yPositionA - (widthSmall / 2) + 3, left: xPositionSmallRectangles - 16});
+  var xRectB = av.label("b",  {top: yPositionB - (widthSmall / 2) + 3, left: xPositionSmallRectangles - 16});
+  var xRectA1 = av.label("1", {top: yPositionA - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
+  var xRectB2 = av.label("2", {top: yPositionB - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
   av.displayInit();
   av.step();
 
   //creating everything in the Y rectangle
- pseudo.setCurrentLine(13);
+ pseudo.setCurrentLine(9);
 
     av.umsg("Y() is called with p = 1, and its locals are allocated. X()'s locals continue to be allocated");
   var rectY = av.g.rect(xPositionBigRectangles, yPositionRectY + (widthBig / 2), lengthBig, widthBig);
@@ -53,7 +53,7 @@ $(document).ready(function() {
   var label1 = av.label("1", {top: yPositionP - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
   var label3 = av.label("3", {top: yPositionQ - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
   av.step();
-    pseudo.setCurrentLine(6);
+    pseudo.setCurrentLine(5);
   av.umsg("Y() is called again with p=2, and its locals are allocated a second time");
   rectY.hide();
   rectP.hide();
@@ -64,7 +64,7 @@ $(document).ready(function() {
   label1.hide();
   label3.hide();
   av.step();
-    pseudo.setCurrentLine(13);
+    pseudo.setCurrentLine(9);
   av.umsg("Y() is called again with p=2, and its locals are allocated a second time");
   rectY.show();
   rectP.show();
@@ -76,8 +76,8 @@ $(document).ready(function() {
   label3.show();
 
   av.step();
-    pseudo.setCurrentLine(8);
-  av.umsg("Y() exits and its locals are deallocated. X()'s locals will be deallocated when it exits");
+  pseudo.setCurrentLine(10);
+  av.umsg("Y() exits and its locals are deallocated.");
   rectY.hide();
   rectP.hide();
   rectQ.hide();
@@ -86,5 +86,16 @@ $(document).ready(function() {
   labelQ.hide();
   label1.hide();
   label3.hide();
+  av.step();
+  pseudo.setCurrentLine(6);
+  av.umsg("X() exits and its locals are deallocated.");
+  xRect.hide();
+  xRectA.hide();
+  xRectA1.hide();
+  xRectB.hide();
+  xRectB2.hide();
+  aRect.hide();
+  bRect.hide();
+  xLabel.hide();
   av.recorded();
 });

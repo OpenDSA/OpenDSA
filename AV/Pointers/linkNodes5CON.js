@@ -22,7 +22,7 @@ $(document).ready(function() {
     var head = av.pointer("head", list.get(0));
     list.layout();
     av.displayInit();
-    av.umsg("");
+    av.umsg("To add a new node to the chain, we need to create a node first.");
     pseudo.show();
     pseudo.setCurrentLine(1);
     var newNode = list.newNode("8");
@@ -33,10 +33,12 @@ $(document).ready(function() {
     var newLink = av.pointer("newLink", newNode,{anchor:"center bottom", myAnchor:"right top",top:10, left:-20, arrowAnchor: "center bottom"});
     newNode.highlight();
     av.step();
+    av.umsg("To add this node to the head of the chain, we need to make the node's next points to the head node.");
     pseudo.setCurrentLine(2);
     list.addFirst(newNode);
     list.layout();
     av.step();
+    av.umsg("Now, the new node is the first node in the chain and head must always points to the first node.");
     pseudo.setCurrentLine(3);
     head.target(newNode);
     list.layout();

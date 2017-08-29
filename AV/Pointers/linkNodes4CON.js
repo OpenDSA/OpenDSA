@@ -33,15 +33,19 @@ $(document).ready(function() {
     var head = av.pointer("head", list.get(0));
     list.layout();
     av.displayInit();
-    av.umsg("");
+
+    av.umsg("We need to remove the second node in it. So, we created a link q to point to it.");
     pseudo.show();
     pseudo.setCurrentLine(1);
     var q = av.pointer("q", list.get(1));
     av.step();
+    av.umsg("To safely remove a node we must be sure that the chain will not break after removing the node. " +
+        "So, we need to make the next of the head to be the next of q instead of q itself");
     pseudo.setCurrentLine(2);
     list.get(0).edgeToNext().hide();
     dashline.show();
     av.step();
+    av.umsg("Now the next of the head is the node with data = 10. So, the chain remains connected and we can safely delete the node with data = 30");
     pseudo.setCurrentLine(3);
     q.target(list.get(2));
     list.get(1).edgeToNext().hide();
