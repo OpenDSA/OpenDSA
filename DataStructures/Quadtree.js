@@ -21,7 +21,7 @@
 	  this.yRange = yRange;
 	  this.map = jsav.g.rect(mapleft, maptop, xRange, yRange);
 	  this.qdt = jsav.ds.tree({
-	    nodegap: 10,
+	    nodegap: 15,
 	    left: 50
 	  });
 	  this.qdt.root("");
