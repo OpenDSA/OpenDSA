@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../../../DataStructures/PrQuadAvC.css" type="text/css" />
   <style>
       #container {
-      width: 80%;
+      width: 82%;
       position: relative;
      }
 	 </style>
@@ -20,9 +20,9 @@
     <table class="headerTable">
       <tr>
         <td class="headerLeft"></td>
-        <td class="headerCenter avTitle"></td>
+        <td class="headerCenter avTitle">PR Quadtree Interactive Visualization</td>
         <td class="headerRight">
-          <input type="button" id="about" name="about" />
+          <input type="button" id="about" name="about" value="about" />
           <a id="settings" class="jsavsettings" href="#"></a>
         </td>
       </tr>
@@ -58,16 +58,21 @@
   <script>
     $(document).ready(function() {
       function about() {
-        alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+        alert(ODSA.AV.aboutstring(interpret("PR Quadtree Interactive Visualization"), interpret("Souleymane Dia")));
       }
+      var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
+      
       var numPoint = 1;
       var insertMode = 0;
       $('#about').click(about);
       $('#remove').click(rmv);
       $('#insert').click(insert);
       $('#submit').click(sbmt);
-	  $('#reset').click(rst);
-	  $('#container').click(coor);
+	   $('#reset').click(rst);
+	   $('#container').click(coor);
+
 	  function coor(){
 		var x = event.pageX; //649
 		var y = event.pageY; //187
