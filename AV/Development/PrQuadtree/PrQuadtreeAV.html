@@ -5,10 +5,11 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
   <link rel="stylesheet" href="../../../DataStructures/PrQuadAv.css" type="text/css" />
   <style>
       #container {
-      width: 80%;
+      width: 84%;
       position: relative;
      }
   </style>
@@ -19,9 +20,9 @@
   <table class="headerTable">
     <tr>
       <td class="headerLeft"></td>
-      <td class="headerCenter avTitle"></td>
+      <td class="headerCenter avTitle"> PR Quadtree Visualization</td>
       <td class="headerRight">
-        <input type="button" id="about" name="about" />
+        <input type="button" id="about" name="about" value="About" />
         <a id="settings" class="jsavsettings" href="#"></a>
       </td>
     </tr>
@@ -52,7 +53,7 @@
 	$(document).ready(function () {
 	  // Process About button: Pop up a message with an Alert
 	  function about() {
-		alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+		alert(ODSA.AV.aboutstring(interpret("PR Quadtree Visualization"), interpret("Souleymane Dia")));
 	  }
 	  // Connect action callbacks to the HTML entities
 	  $('#about').click(about);
