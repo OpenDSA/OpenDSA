@@ -4,7 +4,7 @@
 	 * This represent a visualization data structure for PrQuadtree
 	 *
 	 */
-	var mapleft = 800;
+	var mapleft = 630;
 	var maptop = 25;
 	var numPoint = 6;
 	var p = 0;
