@@ -29,13 +29,16 @@
   z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
 }
 
-.jsavcanvas { height: 500px;} /* set the height of the container */
+.jsavcanvas {
+   width: 900px;
+   height: 400px;
+ } /* set the height of the container */
 
 
 #container {
   /* Change the size of the container */
-  width: 600px;
-  height: 620px;
+  width: 900px;
+  height: 600px;
 }
 
 /* Change the size of the tree nodes */
