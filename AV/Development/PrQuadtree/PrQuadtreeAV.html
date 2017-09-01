@@ -79,25 +79,25 @@
 		
 		jsav.umsg("Step 1: insert node with value 'A @ 130, 120");
 		var point = new Point(130, 120, "A");
-		bint.insert(point, 2);
+		bint.insert(point, 1);
 		
 		jsav.step();
 		jsav.umsg("Step 2: Insert C- (90,200)");
 		var point = new Point(90, 200, "C");
-		bint.insert(point, 2);
+		bint.insert(point, 1);
 		
 		jsav.step();
 		jsav.umsg("Step 3: Insert D- (30,154)");
 		var point = new Point(30, 154, "D");
-		bint.insert(point, 2);
+		bint.insert(point, 1);
 		
 		jsav.step();
-		jsav.umsg("Step 4: Insert E- (45,214)");
-		var point = new Point(45, 214, "E");
-		 bint.insert(point, 2);
+		jsav.umsg("Step 4: Insert E- (130,90)");
+		var point = new Point(130, 90, "E");
+		 bint.insert(point, 1);
 		 jsav.step();
-		jsav.umsg("Step 4: remove E- (45,214)");
-		bint.remove(point, 2);
+		jsav.umsg("Step 4: remove E- (130,90)");
+		bint.remove(point, 1);
 		jsav.recorded(); // mark the end
 	  }
 	});
