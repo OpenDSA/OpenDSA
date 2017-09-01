@@ -13,7 +13,7 @@ $(document).ready(function() {
         top: 10,
         left: -10
   });
-  pseudo.setCurrentLine(3);
+  pseudo.setCurrentLine(2);
   var widthBig = 80;
   var lengthBig = 150;
   var widthSmall = 30;
@@ -41,7 +41,7 @@ $(document).ready(function() {
   av.step();
 
   //creating everything in the Y rectangle
- pseudo.setCurrentLine(5);
+ pseudo.setCurrentLine(3);
     rectY.hide();
     rectP.hide();
     rectQ.hide();
@@ -60,7 +60,7 @@ $(document).ready(function() {
     var label1 =av.label("0.0F", {top: yPositionA - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 3) + 14});
     var label2 = av.label("1", {top: yPositionB - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 3) + 14});
   av.step();
-    pseudo.setCurrentLine(7);
+    pseudo.setCurrentLine(4);
   av.umsg("i is added to the locals after its declaration.");
   rectY.hide();
   rectP.hide();
@@ -83,11 +83,11 @@ $(document).ready(function() {
     var label2 = av.label("1", {top: yPositionB - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 3) + 14});
     var label3 = av.label("0", {top: yPositionA - (3*widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 3) + 14});
     av.step();
-    pseudo.setCurrentLine(9);
+    pseudo.setCurrentLine(5);
   av.umsg("Locals continue to exist undisturbed");
 
   av.step();
-    pseudo.setCurrentLine(11);
+    pseudo.setCurrentLine(6);
   av.umsg("the life time of i is finished, so i is removed from locals");
   rectY.hide();
   rectP.hide();
@@ -111,7 +111,7 @@ $(document).ready(function() {
     var label2 = av.label("1", {top: yPositionB - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 3) + 14});
 
     av.step();
-    pseudo.setCurrentLine(13);
+    pseudo.setCurrentLine(7);
     av.umsg("The locals are deallocated when the function exits");
     rectY.hide();
     rectP.hide();

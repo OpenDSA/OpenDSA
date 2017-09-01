@@ -10,7 +10,7 @@
       "sc7": "This algorithm works on many inputs of a given size $n$. That is, there are many possible arrays of any given size.",
       "sc8": "<br>For example, we can have an input array of size $n = 3$",
       "sc9": " or 4",
-      "sc10": " or 5",
+      "sc10": " or 5. For any given size array, there are many possible values in the array cells.",
       "sc11": "However, no matter what array of size $n$ that the algorithm looks at, its cost will always be the same in that it always looks at every element in the array exactly one time.",
       "lab1": "Factorial Problem",
       "lab2": "Sequential Search"

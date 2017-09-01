@@ -57,7 +57,6 @@ at the contents of a link object.
 .. inlineav:: linkNodes1CON ss
    :output: show
 
-How do we set up the chain to begin with?
 
 .. TODO::
    :type: Slideshow
@@ -72,8 +71,13 @@ How do we set up the chain to begin with?
       Link temp = head.next.next; // It can get tiresome to chain all the "next" fields from the head
       temp.next = new link(new Integer(5), null);
 
+
+How do we set up the chain to begin with?
+
+
 .. inlineav:: linkNodes2CON ss
    :output: show
+
 
 One can easily write a loop to iterate through all the Links on a
 chain, without needing to know how many there actually are.

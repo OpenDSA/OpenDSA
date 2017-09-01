@@ -1,7 +1,7 @@
 .PrQuadFullleaf {
-  border-radius: 0.2px;
+  border-radius: 1px;
   background-color: DarkOrange;
-  line-height: 01px; /*22px*/
+  line-height: 20px; /*22px*/
   z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
 }
 .hidePoint {
@@ -23,26 +23,29 @@
 
 
 .PrQuadEmptyleaf {
-  border-radius: 0.2px;
-  background-color: white;
-  line-height: 01px; /*22px*/
+  border-radius: 1px;
+  background-color: BurlyWood;
+  line-height: 20px; /*22px*/
   z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
 }
 
-.jsavcanvas { height: 500px;} /* set the height of the container */
+.jsavcanvas {
+   width: 900px;
+   height: 400px;
+ } /* set the height of the container */
 
 
 #container {
   /* Change the size of the container */
-  width: 600px;
-  height: 620px;
+  width: 900px;
+  height: 600px;
 }
 
 /* Change the size of the tree nodes */
 #pagedBSTCON .jsavtree .jsavnode, #pagedBSTCON .jsavtree .jsavvalue {
-  line-height: 5px;
-  min-width: 10px;
-  max-width: 10px;
-  min-height: 10px;
-  max-height: 10px;
+  line-height: 15px;
+  min-width: 15px;
+  max-width: 15px;
+  min-height: 15px;
+  max-height: 15px;
 }
