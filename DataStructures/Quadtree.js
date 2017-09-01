@@ -103,12 +103,12 @@
 	  if (this.willSplit(point)) {
 	    if (noClick) {
 	      this.jsav.step();
-	      this.jsav.umsg("This leaf node is full so we must split");
+	      this.jsav.umsg("We have reached a leaf node that is full (max num of pt per node = " + numPoint/3 + "). We need to split this leaf node into one itnernal and four leaf nodes.");
 	      (pointer === undefined) ? pointer = this.jsav.pointer("curr quad", rt): pointer.hide();
 	      pointer.show();
 	      this.qdt.layout();
 	      this.jsav.step();
-	      this.jsav.umsg("After spliting, now we need re-insert points");
+	      this.jsav.umsg("After spliting into one internal node and four leaf nodes, now we need re-insert points all the point that were present in the previous leaf node (before spliting).");
 	      pointer.hide();
 	    }
 	    return this.split(rt, point, x, y, w, h);
@@ -116,7 +116,7 @@
 	  // will not split now print jsav
 	  if (noClick) { // jsav output active
 	    this.jsav.step();
-	    this.jsav.umsg("Pointer reach leaf node and we can insert now");
+	    this.jsav.umsg("Pointer reach leaf node. We can safely insert since the maximum number of point allowed in a leaf node haven't been reached.");
 	    (pointer === undefined) ? pointer = this.jsav.pointer("curr quad", rt): pointer.hide();
 	    pointer.show();
 	    this.qdt.layout();
@@ -394,7 +394,7 @@
 	      } else if (arr.length <= numPoint) { // number of point allowed can feet and we need to merge
 	        if (noClick) {
 	          this.jsav.step();
-	          this.jsav.umsg("After removeing " + point.getName() + ", leaf belonging to this internal do not have enought point to remain splitted so we must merge");
+	          this.jsav.umsg("After removeing " + point.getName() + ", leaf belonging to this internal does not have enought point to remain splitted; So we must merge to make this node a leaf containing remaining points.");
 	          pointer.show();
 	          this.jsav.step();
 	          this.jsav.umsg("This is the current state of the tree after merging");
