@@ -3,12 +3,12 @@
 .. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Cliff Shaffer
    :requires: list ADT
    :satisfies: array-based list
    :topic: Lists
-   
+
 .. odsalink:: AV/List/alistCON.css
 
 Array-Based List Implementation

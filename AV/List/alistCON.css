@@ -56,3 +56,25 @@
 #alistRemoveCON .jsavoutput.jsavline {
   height: 30px;
 }
+
+#alistIter1CON .jsavnode, #alistIter2CON  .jsavnode, #alistIter3CON  .jsavnode {
+  min-width: 40px !important;
+  min-height: 40px !important;
+}
+
+#alistIter1CON .labels, #alistIter2CON .labels, #alistIter3CON  .labels  {
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 150%;
+}
+
+#alistIter1CON .box, #alistIter2CON  .box, #alistIter3CON  .box  {
+  fill : purple;
+  stroke : purple;
+}
+
+#alistIter1CON .bluebox, #alistIter2CON  .bluebox, #alistIter3CON  .bluebox  {
+  fill : blue;
+  stroke : blue;
+}

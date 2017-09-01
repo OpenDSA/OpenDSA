@@ -1,67 +1,36 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2017 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Jieun Chon
-   :requires:
-   :satisfies:
-   :topic:
+   :author: Cliff Shaffer
+   :requires: list ADT
+   :satisfies: array-based list
+   :topic: Lists
 
 .. odsalink:: AV/List/alistCON.css
 
-Array-Iteration
+Iteration
 ===============================
 
-Array-Iteration
+Iteration Slideshow
 -------------------------------
 
-.. inlineav:: alistVarsCON ss
-   :long_name: Array-based List Variables Slideshow
+
+
+.. inlineav:: alistIter1CON ss
+   :long_name: Iteration 1
    :output: show
 
-.. inlineav:: alistIntroCON ss
-   :long_name: Array-based List Intro Slideshow
+.. inlineav:: alistIter2CON ss
+   :long_name: Iteration 2
    :output: show
 
-.. inlineav:: alistInsertCON ss
-   :long_name: Array-based List Insertion Slideshow
+.. inlineav:: alistIter3CON ss
+   :long_name: Iteration 3
    :output: show
 
-
-Insert Practice Exericse
-------------------------
-
-.. avembed:: Exercises/List/AlistInsertPRO.html ka
-   :long_name: Array-based List Insert Exercise
-
-
-Append and Remove
------------------
-
-.. inlineav:: alistAppendCON ss
-   :long_name: Array-based List Append Slideshow
-   :output: show
-
-.. inlineav:: alistRemoveCON ss
-   :long_name: Array-based List Remove
-   :output: show
-
-Remove Practice Exericise
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. avembed:: Exercises/List/AlistRemovePRO.html ka
-   :long_name: Array-based List Remove Exercise
-
-Array-based List Practice Questions
------------------------------------
-
-.. avembed:: Exercises/List/ALSumm.html ka
-   :long_name: Array-based List Summary
-
-.. odsascript:: AV/List/alistVarsCON.js
-.. odsascript:: AV/List/alistIntroCON.js
-.. odsascript:: AV/List/alistInsertCON.js
-.. odsascript:: AV/List/alistAppendCON.js
-.. odsascript:: AV/List/alistRemoveCON.js
+.. odsascript:: AV/List/alistIter1CON.js
+.. odsascript:: AV/List/alistIter2CON.js
+.. odsascript:: AV/List/alistIter3CON.js

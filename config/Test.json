@@ -44,7 +44,7 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "01 Line Test": {
+    "01 Tree Test": {
       "Binary/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
         "sections": {
