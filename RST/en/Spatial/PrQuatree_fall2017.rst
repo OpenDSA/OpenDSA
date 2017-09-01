@@ -253,7 +253,7 @@ It turns out that the PR quadtree insert and delete methods are easier
 to implement when using the composite design.
 
 Below is a visualization of the PR quadtree. Use this visualization to
-help understand how the Pr quadtree data structure works.
+help understand how the Pr quadtree data structure works. Note for this visualization, the maximum number of point per leaf node is 1.
 
 .. avembed:: AV/Development/PrQuadtree/PrQuadtreeAV.html ss
 
