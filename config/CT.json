@@ -1,6 +1,6 @@
 {
-  "title": "Test",
-  "desc": "Test",
+  "title": "Computational Thinking",
+  "desc": "Computational Thinking Course Materials",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -37,58 +37,20 @@
   "lang": "en",
   "build_JSAV": false,
   "build_cmap": false,
-  "suppress_todo": true,
+  "suppress_todo": false,
   "dispModComp": true,
   "tag": "CPP;CS2",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
   "chapters": {
-    "01 Tree Test": {
-      "Binary/BinaryTreeImpl": {
-        "long_name": "Full Binary Tree Node Implementations",
-        "sections": {
-        }
-      }
-    },
-
-    "02 Line Test": {
-      "NP/Reduction": {
-        "long_name": "Reduction test",
-        "sections": {
-        }
-      }
-    },
-
-    "03 Plot Test": {
-      "AlgAnal/AnalIntro": {
-        "long_name": "Plot test",
-        "sections": {
-        }
-      }
-    },
-
-    "04 Pointers": {
-      "PointersCPP/Exercises_J": {
-        "long_name": "Pointer",
-        "sections": {
-        }
-      }
-    },
-
-    "05 Iteration": {
+    "Iteration": {
       "List/ListIteration": {
         "long_name": "Iteration",
         "sections": {
         }
-      },
-      "Spatial/PrQuatree_fall2017": {
-        "long_name": "PR Quadtree",
-        "sections": {
-        }
       }
     },
-
 
     "Appendix": {
       "Glossary": {
@@ -97,12 +59,6 @@
       },
       "Bibliography": {
         "long_name": "Bibliography",
-        "sections": {}
-      }
-    },
-    "Slideshow Narration":{
-      "Narration/HeapMem":{
-        "long_name": "Heap Memory",
         "sections": {}
       }
     }

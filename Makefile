@@ -95,8 +95,11 @@ Plain: Everything CS2 CS3 PL
 
 test_generated: Everything CS2 CS3 CS4104 FormalLang
 
-test: min
+Test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
+
+CT: min
+	python $(CONFIG_SCRIPT) config/CT.json --no-lms
 
 Everything: min
 	python tools/rst2json.py $@
