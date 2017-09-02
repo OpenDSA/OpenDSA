@@ -2,23 +2,19 @@
 $(document).ready(function() {
   "use strict";
   var av_name = "T1-T5CON";
+
   // Load the config object with interpreter and code created by odsaUtils.js
   var av;
   av = new JSAV(av_name);
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
         code = config.code;
   var pseudo = av.code(code[0]);
-  pseudo.element.css({
-        position: "absolute",
-        top: 10,
-        left: -10
-  });
   pseudo.setCurrentLine(3);
   var widthBig = 80;
   var lengthBig = 110;
   var widthSmall = 30;
   var lengthSmall = 80;
-  var xPositionBigRectangles = 600;
+  var xPositionBigRectangles = 500;
   var yPositionRectX = 100;
   var yPositionRectY = 0;
   var xPositionSmallRectangles = xPositionBigRectangles + 25;

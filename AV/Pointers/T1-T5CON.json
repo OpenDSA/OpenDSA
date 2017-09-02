@@ -7,7 +7,7 @@
   {
     "java": [{
       "url": "../../../SourceCode/Java/Pointers/LifeTimeLargerExample.java",
-      "lineNumbers": true,
+      "lineNumbers": false,
       "tags": {
       }
     }]

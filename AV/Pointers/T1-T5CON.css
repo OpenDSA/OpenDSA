@@ -1,7 +1,12 @@
-#T1-T5 .jsavcanvas {
-  height: 500px;
+#T1-T5CON {
+  height: 350px;
 }
 
-#T1-T5 .jsavoutput.jsavline {
+#T1-T5CON .jsavcode {
+  margin-top: 0px;
+  margin-left: 200px;
+}
+
+#T1-T5CON .jsavoutput.jsavline {
   height: 30px;
 }

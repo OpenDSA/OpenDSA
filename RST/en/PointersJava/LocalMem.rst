@@ -9,9 +9,8 @@
    :satisfies: Local memory
    :topic: Pointers
 
-   .. odsalink:: AV/Pointers/T1-T5CON.css
-
-   .. odsalink:: AV/Pointers/simpleLifetimeCON.css
+.. odsalink:: AV/Pointers/T1-T5CON.css
+.. odsalink:: AV/Pointers/simpleLifetimeCON.css
 
 Local Memory
 ============
@@ -118,17 +117,8 @@ Examples
 
 Here is a simple example of the lifetime of local storage.
 
-.. codeinclude:: Pointers/LocalStorageLifeTime
-
 .. inlineav:: simpleLifetimeCON ss
    :output: show
-
-.. TODO::
-   :type: Slideshow
-
-   Integrate the above code into a slideshow, and turn the numbered
-   comments into slides (with highlighting of the associated lines of
-   code).
 
 Here is a larger example that shows how the simple rule "the locals
 are allocated when their function begins running and are deallocated
@@ -138,18 +128,8 @@ material in later modules.
 The following slides show the sequence of allocations and deallocations that
 result when the function X() calls the function Y() twice.
 
-.. codeinclude:: Pointers/LifeTimeLargerExample
-
 .. inlineav:: T1-T5CON ss
    :output: show
-
-
-.. TODO::
-   :type: Slideshow
-
-   Integrate the above code into the above slideshow. The "T#"
-   comments should go away, replaced by highlighting of the associated
-   lines of code on the associated slide. Then remove the obsolete image.
 
 The slideshow showed how the sequence of the locals are allocated and
 deallocated.

@@ -1,5 +1,10 @@
-#simpleLifetimeCON .jsavcanvas {
-  height: 500px;
+#simpleLifetimeCON {
+  height: 260px;
+}
+
+#simpleLifetimeCON .jsavcode {
+  margin-top: 0px;
+  margin-left: 50px;
 }
 
 #simpleLifetimeCON .jsavoutput.jsavline {

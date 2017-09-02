@@ -198,6 +198,9 @@ PointersCPP: min
 	python $(CONFIG_SCRIPT) config/PointersCPP.json --no-lms
 
 PointersJava: min
+	python $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
+
+PointersJavaX: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/PointersJava_generated.json --no-lms
 
