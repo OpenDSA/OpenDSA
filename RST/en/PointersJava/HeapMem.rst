@@ -9,10 +9,10 @@
    :satisfies: Heap Memory
    :topic: Pointers
 
-   .. odsascript:: AV/Pointers/LocalHeapaloc.css
-   .. odsascript:: AV/Pointers/LocalHeapdealoc.css
-   .. odsascript:: AV/Pointers/LocalHeapintptr42.css
-   .. odsascript:: AV/Pointers/garbageDisposalCON.css
+.. odsalink:: AV/Pointers/garbageDisposalCON.css
+.. odsalink:: AV/Pointers/LocalHeapaloc.css
+.. odsalink:: AV/Pointers/LocalHeapdealoc.css
+.. odsalink:: AV/Pointers/LocalHeapintptr42.css
 
 
 Heap Memory
@@ -129,16 +129,6 @@ from heap memory by garbage collection:
    Here is an example.
 
   .. codeinclude:: Pointers/Date
-
-.. TODO::
-   :type: Slideshow
-
-   In the following slideshow:
-
-   * Make a copy, and set up a separate demonstration module for the
-     text-to-speech support.
-   * Get rid of text-to-speech in the copy for this tutorial.
-   * Get rid of slides 1-6.
 
 .. inlineav:: garbageDisposalCON ss
    :output: show
@@ -391,7 +381,7 @@ has to wait when the garbage collector runs.
 The heap memory does not operate automatically
 and conveniently the way local memory does.
 
+.. odsascript:: AV/Pointers/garbageDisposalCON.js
 .. odsascript:: AV/Pointers/LocalHeapaloc.js
 .. odsascript:: AV/Pointers/LocalHeapdealoc.js
 .. odsascript:: AV/Pointers/LocalHeapintptr42.js
-.. odsascript:: AV/Pointers/garbageDisposalCON.js
