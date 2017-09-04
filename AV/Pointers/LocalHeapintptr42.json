@@ -7,7 +7,7 @@
   {
     "java": [{
       "url": "../../../SourceCode/Java/Pointers/SimpleHeapExampleCombined.java",
-      "lineNumbers": true,
+      "lineNumbers": false,
       "tags": {
       }
     }]

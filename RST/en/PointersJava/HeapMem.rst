@@ -249,53 +249,6 @@ are:
 Simple Heap Example
 -------------------
 
-.. TODO::
-   :type: Slideshow
-
-   This paragraph of discussion and code snippets all need to be
-   intergrated into the slideshow.
-
-   Also, the "observations" below that refer to this example and code
-   should be integrated into the slideshow.
-
-Here is a simple example that allocates an ``Employee`` object block
-in the heap, and then deallocates it.
-This is the simplest possible example of heap block allocation, use,
-and deallocation.
-The example shows the state of memory at three different times during the execution
-of the above code. The stack and heap are shown separately in the drawing |---| a
-drawing for code which uses stack and heap memory needs to distinguish between the
-two areas to be accurate since the rules which govern the two areas are so different.
-In this case, the lifetime of the local variable empPtr is totally separate from
-the lifetime of the heap block, and the drawing needs to reflect that difference.
-
-.. codeinclude:: Pointers/SimpleHeapExampleT1
-
-.. odsafig:: Images/LocalHeapintptrxxx.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
-
-
-
-.. codeinclude:: Pointers/SimpleHeapExampleT2
-
-.. odsafig:: Images/LocalHeapintptr42.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
-
-
-.. codeinclude:: Pointers/SimpleHeapExampleT3
-
-.. odsafig:: Images/LocalHeapintptr.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
-
 .. inlineav:: LocalHeapintptr42 ss
    :output: show
 
@@ -303,35 +256,7 @@ the lifetime of the heap block, and the drawing needs to reflect that difference
 Simple Heap Observations
 ------------------------
 
-* The call to ``new`` allocates a block of space in the heap.
-  In the example above, the program stores the pointer to the block in
-  the local variable ``empPtr``.
-  The block is the "pointee" and ``empPtr`` is its reference
-  as shown at T2.
-  In this state, the pointer may be dereferenced
-  safely to manipulate the pointee.
-  The pointer/pointee rules from Section 1 still apply, the only
-  difference is how the pointee is initially allocated.
-
-* At T1 before using ``new``, ``empPtr`` is uninitialized and 
-  does not have a pointee |---| at this point ``empPtr`` is ``null``
-  in the same sense as discussed in Section 1.
-  As before, dereferencing such an uninitialized reference is a
-  common, but catastrophic error (it raises a
-  ``NullPointerException``).
-  This error will crash immediately, unless there is specific code to
-  handle this exception.
-
-* Assigning a ``null`` to a reference deallocates the pointee as shown
-  at T3.
-  Dereferencing the pointer after the pointee has been deallocated 
-  is an error like the previous point.
-
-* When the function exits, its local variable ``empPtr`` will be
-  automatically deallocated by the garbage collecter.
-  So this function has tidy memory behavior |---| all of the memory it
-  allocates while running (its local variable, its one heap block) is
-  deallocated by the time it exits.
+Sorry, please ignore this.
 
 
 Arrays
@@ -354,7 +279,7 @@ In the previous example the array is dynamically allocated memory in
 two steps:
 
 * The first step when the array is created using
-  ``fracts =  new Fraction[100];``. 
+  ``fracts = new Fraction[100];``. 
   This line is used to allocate dynamic array of 100 references to
   ``Fractions``.
   All references are initialized to ``null``.

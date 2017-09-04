@@ -1,3 +1,8 @@
 #LocalHeapintptr42 {
-  height: 400px;
+  height: 320px;
+}
+
+#LocalHeapintptr42 .jsavcode {
+  margin-top: 10px;
+  margin-left: 20px;
 }
