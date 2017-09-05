@@ -1,5 +1,5 @@
 /*global ODSA */
-// Written by Jun Yang and Cliff Shaffer
+// Written by Jieun Chon
 //Array-Based list introduction
 $(document).ready(function() {
   "use strict";
@@ -27,7 +27,7 @@ $(document).ready(function() {
 
   //floor 3
   rect_set[1] = av.g.rect(rect_left, rect_top + 35, 30, 48).addClass("box");
-  rect_set[2] = av.g.rect(rect_left + 70, rect_top + 35, 30, 50).addClass("box");
+  rect_set[2] = av.g.rect(rect_left + 73, rect_top + 35, 30, 50).addClass("box");
 
   //floor 4, long purple
   rect_set[3] = av.g.rect(rect_left, rect_top + 75, 300, 30).addClass("box");

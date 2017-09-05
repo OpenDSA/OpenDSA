@@ -1,6 +1,11 @@
 #iteration1CON .jsavnode, #iteration2CON  .jsavnode, #iteration3CON  .jsavnode {
   min-width: 40px !important;
   min-height: 40px !important;
+  background: ForestGreen;
+}
+
+#iteration1CON .jsavvaluelabel, #iteration2CON  .jsavvaluelabel, #iteration3CON  .jsavvaluelabel {
+  font-weight: 600;
 }
 
 #iteration1CON .labels, #iteration2CON .labels, #iteration3CON  .labels  {
@@ -20,18 +25,42 @@
  font-size: 130%;
 }
 
-#iteration2CON .valuelabel, #iteration3CON  .valuelabel  {
+#iteration2CON .valuelabel  {
  font-size: 150%;
  color: yellow;
 }
 
+#iteration3CON .statelabel  {
+ font-size: 120%;
+ font-weight: 600;
+}
+
+#iteration3CON .valuelabel  {
+ font-size: 150%;
+ color: yellow;
+ background-color: DarkSlateBlue;
+ }
+
 #iteration1CON .box, #iteration2CON .box, #iteration3CON .box  {
-  fill : purple;
-  stroke : purple;
+  fill : DarkMagenta;
+  stroke : DarkMagenta;
+  z-index: -500;
+}
+
+#iteration3CON .statebox  {
+  stroke : Maroon;
+  z-index: -500;
+  border-width: inherit;
+  border-radius: 50px;
+}
+
+#iteration3CON .totalbox  {
+  fill : DarkSlateBlue;
+  stroke : DarkSlateBlue;
   z-index: -500;
 }
 
 #iteration1CON .bluebox, #iteration2CON  .bluebox, #iteration3CON  .bluebox  {
-  fill : blue;
-  stroke : blue;
+  fill : DarkSlateBlue;
+  stroke : DarkSlateBlue;
 }
