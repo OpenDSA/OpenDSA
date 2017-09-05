@@ -10,7 +10,6 @@ $(document).ready(function() {
         code = config.code;
   var pseudo = av.code(code[0]);
 
-  pseudo.setCurrentLine(3);
   var widthBig = 80;
   var lengthBig = 110;
   var widthSmall = 30;
@@ -23,9 +22,12 @@ $(document).ready(function() {
   var yPositionB = yPositionA + widthSmall;
   var yPositionP = yPositionRectY + (widthBig / 2) + 10;
   var yPositionQ = yPositionP + widthSmall;
-  //Slide 1
+
+  // Slide 1
+  av.umsg("Consider the following code. The two highlighted lines allocate local variables for <tt>X()</tt>.");
+  pseudo.highlight(2);
+  pseudo.setCurrentLine(3);
   //creating everything in the X rectangle
-  av.umsg("Consider we have the following cod. At this line of code, X()'s locals have been allocated and given values");
   var x_FunctionRect = av.g.rect(xPositionBigRectangles, yPositionRectX + (widthBig / 2), lengthBig, widthBig);
   var a_FieldRect = av.g.rect(xPositionSmallRectangles, yPositionA, lengthSmall, widthSmall);
   var b_FieldRect = av.g.rect(xPositionSmallRectangles, yPositionB, lengthSmall, widthSmall);
@@ -36,11 +38,18 @@ $(document).ready(function() {
   var b_FieldValue = av.label("2", {top: yPositionB - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
   av.displayInit();
   av.step();
-  //Slide 2
-  //creating everything in the Y rectangle
-  pseudo.setCurrentLine(9);
 
-  av.umsg("Y() is called with p = 1, and its locals are allocated. X()'s locals continue to be allocated");
+  // Slide 2
+  av.umsg("Next, <tt>Y()</tt> is called with <tt>a = 1</tt>...");
+  pseudo.unhighlight(2);
+  pseudo.setCurrentLine(4);
+  av.step();
+
+  // Slide 3
+  av.umsg("... and its locals are allocated. This includes both parameter <tt>p</tt> (which starts as 1) and variable <tt>q</tt> (initially uninitialized). <tt>X()</tt>'s locals continue to be allocated.");
+  pseudo.setCurrentLine(8);
+  pseudo.highlight(7);
+  //creating everything in the Y rectangle
   var y_FunctionRect = av.g.rect(xPositionBigRectangles, yPositionRectY + (widthBig / 2), lengthBig, widthBig);
   var p_FieldRect = av.g.rect(xPositionSmallRectangles, yPositionP, lengthSmall, widthSmall);
   var q_FiledRect = av.g.rect(xPositionSmallRectangles, yPositionQ, lengthSmall, widthSmall);
@@ -48,11 +57,23 @@ $(document).ready(function() {
   var p_FieldLabel = av.label("p",  {top: yPositionP - (widthSmall / 2) + 3, left: xPositionSmallRectangles - 16});
   var q_FiledLabel = av.label("q",  {top: yPositionQ - (widthSmall / 2) + 3, left: xPositionSmallRectangles - 16});
   var p_FieldValueFirstAppearance = av.label("1", {top: yPositionP - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
-  var q_FieldValueFirstAppearance = av.label("3", {top: yPositionQ - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
   av.step();
-  //Slide 3
-  pseudo.setCurrentLine(5);
-  av.umsg("Y() will be called again with p=2");
+
+  // Slide 4
+  av.umsg("Now, set <tt>q</tt> to be 3.");
+  var q_FieldValueFirstAppearance = av.label("3", {top: yPositionQ - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
+  pseudo.unhighlight(7);
+  pseudo.setCurrentLine(9);
+  av.step();
+
+  // Slide 5
+  av.umsg("The next step is to return from <tt>Y()</tt>...");
+  pseudo.setCurrentLine(10);
+  av.step();
+
+  // Slide 6
+  av.umsg("... which leads to the removal of the space for <tt>Y</tt>'s local variables.");
+  pseudo.setCurrentLine(4);
   y_FunctionRect.hide();
   p_FieldRect.hide();
   q_FiledRect.hide();
@@ -62,9 +83,16 @@ $(document).ready(function() {
   p_FieldValueFirstAppearance.hide();
   q_FieldValueFirstAppearance.hide();
   av.step();
-  //Slide 4
-  pseudo.setCurrentLine(9);
-  av.umsg("When Y() is called with p=2, its locals are allocated for the second time");
+
+  // Slide 7
+  av.umsg("<tt>Y()</tt> will be called again with <tt>p=2</tt>...");
+  pseudo.setCurrentLine(5);
+  av.step();
+
+  // Slide 8
+  av.umsg("...and its locals are allocated for the second time.");
+  pseudo.setCurrentLine(8);
+  pseudo.highlight(7);
   y_FunctionRect.show();
   p_FieldRect.show();
   q_FiledRect.show();
@@ -72,12 +100,23 @@ $(document).ready(function() {
   p_FieldLabel.show();
   q_FiledLabel.show();
   var p_FieldValueSecondAppearance = av.label("2", {top: yPositionP - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
-  var q_FieldValueSecondAppearance = av.label("4", {top: yPositionQ - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
-
   av.step();
-  //Slide 5
+
+  // Slide 9
+  av.umsg("Set <tt>q</tt> to be 4.");
+  pseudo.unhighlight(7);
+  pseudo.setCurrentLine(9);
+  var q_FieldValueSecondAppearance = av.label("4", {top: yPositionQ - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
+  av.step();
+
+  // Slide 10
+  av.umsg("When <tt>Y()</tt> exits...");
   pseudo.setCurrentLine(10);
-  av.umsg("Y() exits and its locals are deallocated.");
+  av.step();
+
+  // Slide 11
+  av.umsg("... its locals are deallocated.");
+  pseudo.setCurrentLine(5);
   y_FunctionRect.hide();
   p_FieldRect.hide();
   q_FiledRect.hide();
@@ -86,11 +125,11 @@ $(document).ready(function() {
   q_FiledLabel.hide();
   p_FieldValueSecondAppearance.hide();
   q_FieldValueSecondAppearance.hide();
-
   av.step();
-  //Slide 6
+
+  // Slide 12
+  av.umsg("When X() exits, its locals are also deallocated.");
   pseudo.setCurrentLine(6);
-  av.umsg("X() exits and its locals are deallocated.");
   x_FunctionRect.hide();
   a_FieldRect.hide();
   b_FieldRect.hide();

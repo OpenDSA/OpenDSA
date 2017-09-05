@@ -1,15 +1,3 @@
-.. _PRquadtree:
-
-.. raw:: html
-
-   <script>ODSA.SETTINGS.DISP_MOD_COMP = true;ODSA.SETTINGS.MODULE_NAME = "PRquadtree";ODSA.SETTINGS.MODULE_LONG_NAME = "PR Quadtrees";ODSA.SETTINGS.MODULE_CHAPTER = "Advanced Data Structures"; ODSA.SETTINGS.BUILD_DATE = "2017-03-11 05:59:45"; ODSA.SETTINGS.BUILD_CMAP = false;JSAV_OPTIONS['lang']='en';JSAV_EXERCISE_OPTIONS['code']='java_generic';</script>
-
-
-.. |--| unicode:: U+2013   .. en dash
-.. |---| unicode:: U+2014  .. em dash, trimming surrounding whitespace
-   :trim:
-
-
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
@@ -252,12 +240,22 @@ used to represent empty leaf nodes.
 It turns out that the PR quadtree insert and delete methods are easier
 to implement when using the composite design.
 
-Below is a visualization of the PR quadtree. Use this visualization to
-help understand how the Pr quadtree data structure works. Note for this visualization, the maximum number of point per leaf node is 1.
+Here is a visualization of the PR quadtree that should help you to
+understand how it works.
 
 .. avembed:: AV/Development/PrQuadtree/PrQuadtreeAV.html ss
 
+Here is an interactive visualization of the PR quadtree.
+You can build your own example by adding or removing points.
+See if you can create a tree with the same shape as the one in the
+picture at the top of this page.
 
-Below is an interactive visualization of the PR quadtree for practice. Try to replicate the figure depicted above.
+Note that there is no particular reason why the tree should split when
+there is more than one point in a node.
+This spliting criteria could be anything that you want.
+The interactive visualization below will let you use a different split
+value if you want.
+How would the tree look if it had the same points as the figure in the
+top of the page, but a node was allowed to have two points?
 
 .. avembed:: AV/Development/PrQuadtree/ClickablePrQuadAv.html ss
