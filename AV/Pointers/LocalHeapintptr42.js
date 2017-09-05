@@ -99,9 +99,9 @@ $(document).ready(function() {
   x4.show();
   x5.show();
   x6.show();
-  heapRectangle.css({stroke: "silver"});
-  label1.hide();
-  label2.hide();
+  heapRectangle.addClass("silver");
+  label1.addClass("silver");
+  label2.addClass("silver");
   ptline.hide();
   av.step();
 
@@ -109,13 +109,13 @@ $(document).ready(function() {
   pseudo.unhighlight(7);
   pseudo.highlight(8);
   av.umsg("When the function exits, its local variable <tt>empPtr</tt> will be automatically deallocated by the garbage collecter.");
-  x1.hide();
-  x2.hide();
-  x3.hide();
-  x4.hide();
-  x5.hide();
-  x6.hide();
-  empptrLabel.css({color: "silver"});
-  empptrBox.css({stroke: "silver"});
+  x1.addClass("silver");
+  x2.addClass("silver");
+  x3.addClass("silver");
+  x4.addClass("silver");
+  x5.addClass("silver");
+  x6.addClass("silver");
+  empptrLabel.addClass("silver");
+  empptrBox.addClass("silver");
   av.recorded();
 });

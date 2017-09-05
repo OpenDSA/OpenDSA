@@ -108,6 +108,9 @@ $(document).ready(function() {
   var secondArrowNew = av.g.line(xPosition + 490, yPosition + (lengthSmall / 2) + 200,
                                  xPosition + 540, yPosition + (lengthSmall / 2) + 270,
                                  {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  rect2.addClass("silver");
+  labelJohn.addClass("silver");
+  labelJohnPay.addClass("silver");
   av.step();
 
   // Slide 8
@@ -139,6 +142,7 @@ $(document).ready(function() {
 
   // Slide 11
   av.umsg("And now space is available for a new object");
+  rect1.removeClass("silver");
   rect1.show();
   var labelLast = av.label("<tt>last</tt>", {top: yPosition + 140 + (lengthSmall / 2),
                                                left: xPosition + 435});
