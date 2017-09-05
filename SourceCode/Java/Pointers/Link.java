@@ -1,34 +1,33 @@
 /* *** ODSATag: Link *** */
 class Link {
-    public Link next; //Point to next node in list
-    public Object data; //Value for this node
+  public Link next; //Point to next node in list
+  public Object data; //Value for this node
 
-    //Constructors
-    public Link(Object data, Link next) {
-        this.data = data;
-        this.next = next;
-    }
+  //Constructors
+  public Link(Object data, Link next) {
+    this.data = data;
+    this.next = next;
+  }
 
-    public Link(Object data) {
-        this.data = null;
-        this.next = next;
-    }
+  public Link(Object data) {
+    this.data = null;
+    this.next = next;
+  }
 
-    Object getData() {
-        return data;
-    }                  // Return the value
+  Object getData() { // Return the data field
+    return data;
+  }
 
-    Object setData(Object newData) {
-        return data = newData;
-    } // Set element value
+  Object setData(Object newData) { // Set the data field
+    return data = newData;
+  }
 
-    Link getNext() {
-        return next;
-    }                       // Return next link
+  Link getNext() { // Return the next field
+    return next;
+  }
 
-    Link setNext(Link newNext) {
-        return next = newNext;
-    }      // Set next link
+  Link setNext(Link newNext) { // Set the next field
+    return next = newNext;
+  }
 }
-    
 /* *** ODSAendTag: Link *** */

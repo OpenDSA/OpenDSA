@@ -8,8 +8,8 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
-      interpret = config.interpreter,       // get the interpreter
-      code = config.code;            // get the code object
+      interpret = config.interpreter, // get the interpreter
+      code = config.code;             // get the code object
 
   var xPosition = 50;
   var yPosition = -25;

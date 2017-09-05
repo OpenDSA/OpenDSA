@@ -1,7 +1,12 @@
-#linkNodes5CON .jsavcanvas {
-  height: 500px;
+#linkNodes5CON {
+  height: 260px;
 }
 
 #linkNodes5CON .jsavoutput.jsavline {
   height: 30px;
+}
+
+#linkNodes5CON .jsavcode {
+  margin-top: 20px;
+  margin-left: 10px;
 }

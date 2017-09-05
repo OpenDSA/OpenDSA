@@ -7,7 +7,7 @@
   {
     "java": [{
       "url": "../../../SourceCode/Java/Pointers/LinkSlides.java",
-      "lineNumbers": true,
+      "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Slide5 *** */",
       "endBefore": "/* *** ODSAendTag: Slide5 *** */",
       "tags": {

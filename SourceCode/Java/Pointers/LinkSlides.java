@@ -6,14 +6,10 @@ Integer myVal = q.data;
 /* *** ODSAendTag: Slide1 *** */
 
 /* *** ODSATag: Slide2 *** */
-Link head = new Link(null, null);
-// We can set the value of an element field
+Link head = new Link(null);
 head.data = new Integer(20); 
-// We can set the element value directly in the constructor.
-// But we have to store an object, not a primitive.
 head.next = new Link(new Integer(30), null); 
 head.next.next = new link(new Integer(10), null);
-// It can get tiresome to chain all the "next" fields from the head
 Link temp = head.next.next; 
 temp.next = new link(new Integer(5), null);
 /* *** ODSAendTag: Slide2 *** */
