@@ -9,8 +9,8 @@
    :satisfies: Local memory
    :topic: Pointers
 
-.. odsalink:: AV/Pointers/T1-T5CON.css
 .. odsalink:: AV/Pointers/simpleLifetimeCON.css
+.. odsalink:: AV/Pointers/T1-T5CON.css
 
 Local Memory
 ============
@@ -303,7 +303,5 @@ function call process:
   However, the apparent the lifetime of the variables will
   always follow the "stack" model presented here.
 
-
-.. odsascript:: AV/Pointers/T1-T5CON.js
 .. odsascript:: AV/Pointers/simpleLifetimeCON.js
-
+.. odsascript:: AV/Pointers/T1-T5CON.js
