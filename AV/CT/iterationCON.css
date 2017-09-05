@@ -1,0 +1,37 @@
+#iteration1CON .jsavnode, #iteration2CON  .jsavnode, #iteration3CON  .jsavnode {
+  min-width: 40px !important;
+  min-height: 40px !important;
+}
+
+#iteration1CON .labels, #iteration2CON .labels, #iteration3CON  .labels  {
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 170%;
+  z-index: 500;
+  font-weight: 600;
+}
+
+ #iteration2CON .midlabel, #iteration3CON .midlabel {
+  font-size: 150%;
+}
+
+#iteration2CON .smalllabel, #iteration3CON .smalllabel {
+ font-size: 130%;
+}
+
+#iteration2CON .valuelabel, #iteration3CON  .valuelabel  {
+ font-size: 150%;
+ color: yellow;
+}
+
+#iteration1CON .box, #iteration2CON .box, #iteration3CON .box  {
+  fill : purple;
+  stroke : purple;
+  z-index: -500;
+}
+
+#iteration1CON .bluebox, #iteration2CON  .bluebox, #iteration3CON  .bluebox  {
+  fill : blue;
+  stroke : blue;
+}

@@ -4,7 +4,7 @@
 $(document).ready(function() {
   "use strict";
   var arrValues = [9.95, 10.14, 10.33, 4.88, 8.92];
-  var av_name = "alistIter1CON";
+  var av_name = "iteration1CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
   var leftMargin = 450,
@@ -42,8 +42,14 @@ $(document).ready(function() {
 
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
-  var label1 = av.label("for each item", {left: rect_left - 40, top: rect_top - 20});
+  var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
   label1.addClass("labels");
+
+  var label2 = av.label("price", {left: rect_left + 19, top: rect_top + 45});
+  label2.addClass("labels");
+
+  var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
+  label3.addClass("labels");
 
 
   // Slide 1

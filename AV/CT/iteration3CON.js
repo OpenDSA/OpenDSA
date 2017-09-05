@@ -4,7 +4,7 @@
 $(document).ready(function() {
   "use strict";
   var arrValues = [9.95, 10.14, 10.33, 4.88, 8.92];
-  var av_name = "alistIter3CON";
+  var av_name = "iteration3CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
   var leftMargin = 450,
@@ -34,17 +34,33 @@ $(document).ready(function() {
 
   //floor 5, left big purple box and 3 blue boxes
   rect_set[4] = av.g.rect(rect_left, rect_top + 80, 110, 170).addClass("box");
-  av.g.rect(rect_left + 130, rect_top + 110, 180, 25).addClass("bluebox");
-  av.g.rect(rect_left + 130, rect_top + 140, 180, 25).addClass("bluebox");
-  av.g.rect(rect_left + 130, rect_top + 170, 180, 25).addClass("bluebox");
+
+  //blue box on the middle
+  av.g.rect(rect_left + 130, rect_top + 125, 225, 55).addClass("bluebox");
 
   rect_set[5] = av.g.rect(rect_left + 110, rect_top + 200, 220, 50).addClass("box");
 
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
-  var label1 = av.label("for each item", {left: rect_left - 40, top: rect_top - 20});
+  var initlabel = av.label("set total = 0", {left: rect_left + 5, top: rect_top - 65});
+  initlabel.addClass("labels").addClass("midlabel");
+
+  var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
   label1.addClass("labels");
 
+  var label2 = av.label("price", {left: rect_left + 19, top: rect_top + 45});
+  label2.addClass("labels");
+
+  var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
+  label3.addClass("labels");
+
+  var pricelabel = av.label("set total = total + price", {left: rect_left + 140, top: rect_top + 117});
+  pricelabel.addClass("labels");
+  pricelabel.addClass("smalllabel");
+
+  var valuelabel = av.label("", {left: rect_left + 230, top: rect_top + 111});
+  valuelabel.addClass("labels");
+  valuelabel.addClass("valuelabel");
 
   // Slide 1
   av.umsg(interpret("sc1"));
@@ -57,35 +73,41 @@ $(document).ready(function() {
   av.umsg(interpret("sc2"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  valuelabel.value("9.95");
   av.step();
 
   // Slide 3
   av.umsg(interpret("sc3"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  valuelabel.value("10.14");
   av.step();
 
   // Slide 4
   av.umsg(interpret("sc4"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  valuelabel.value("10.33");
   av.step();
 
   // Slide 5
   av.umsg(interpret("sc5"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  valuelabel.value("4.88");
   av.step();
 
   // Slide 6
   av.umsg(interpret("sc6"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 50);
+  valuelabel.value("8.92");
   av.step();
 
   // Slide 7
   av.umsg(interpret("sc7"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 100);
+  valuelabel.value("");
   av.recorded();
 });

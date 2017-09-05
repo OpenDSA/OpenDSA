@@ -9,7 +9,7 @@
    :satisfies: array-based list
    :topic: Lists
 
-.. odsalink:: AV/List/alistCON.css
+.. odsalink:: AV/CT/iterationCON.css
 
 Iteration
 ===============================
@@ -19,18 +19,18 @@ Iteration Slideshow
 
 
 
-.. inlineav:: alistIter1CON ss
+.. inlineav:: iteration1CON ss
    :long_name: Iteration 1
    :output: show
 
-.. inlineav:: alistIter2CON ss
+.. inlineav:: iteration2CON ss
    :long_name: Iteration 2
    :output: show
 
-.. inlineav:: alistIter3CON ss
+.. inlineav:: iteration3CON ss
    :long_name: Iteration 3
    :output: show
 
-.. odsascript:: AV/List/alistIter1CON.js
-.. odsascript:: AV/List/alistIter2CON.js
-.. odsascript:: AV/List/alistIter3CON.js
+.. odsascript:: AV/CT/iteration1CON.js
+.. odsascript:: AV/CT/iteration2CON.js
+.. odsascript:: AV/CT/iteration3CON.js
