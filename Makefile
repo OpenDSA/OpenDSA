@@ -145,6 +145,9 @@ CS4104: min
 NPTest: min
 	python $(CONFIG_SCRIPT) config/NPTest.json --no-lms
 
+Duncan: min
+	python $(CONFIG_SCRIPT) config/Duncan.json --no-lms
+
 FormalLang: min
 	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
 
