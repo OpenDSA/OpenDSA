@@ -142,6 +142,9 @@ CS4104: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/CS4104_generated.json --no-lms
 
+NPTest: min
+	python $(CONFIG_SCRIPT) config/NPTest.json --no-lms
+
 FormalLang: min
 	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
 
