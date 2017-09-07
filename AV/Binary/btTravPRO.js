@@ -272,7 +272,7 @@ $(document).ready(function() {
   function TreeTraversal(modelFunction) {
     // Load the configuration created by odsaAV.js
     var config = ODSA.UTILS.loadConfig({
-        "json_path": "/AV/Binary/btTravPRO.json",
+        "json_path": "btTravPRO.json",
         "default_code": "none"
       }),
       code = config.code;
