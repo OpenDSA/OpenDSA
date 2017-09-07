@@ -6,6 +6,7 @@
 }
 
 .bintreeemptyleaf {
+  border-radius: 1px;
   background-color: BurlyWood;
   line-height: 20px;
   z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
@@ -13,14 +14,14 @@
 
 .jsavcanvas { 
 width: 900px;
-height: 400px;
+height: 350px;
 } /* set the height of the container */
 
 
 #container {
   /* Change the size of the container */
   width: 900px;
-  height: 600px;
+  height: 550px;
 }
 
 /* Change the size of the tree nodes */

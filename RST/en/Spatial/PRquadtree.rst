@@ -31,7 +31,7 @@ which might in turn be split into subquadrants.
 Each internal node of a PR quadtree represents a single split
 of the two-dimensional region.
 The four quadrants of the region (or equivalently, the corresponding
-subtrees) are designated (in order) NW, NE, SW, and~SE.
+subtrees) are designated (in order) NW, NE, SW, and SE.
 Each quadrant containing more than a single point would
 in turn be recursively divided into subquadrants until each leaf of
 the corresponding PR quadtree contains at most one point.
@@ -84,48 +84,25 @@ through the tree until a leaf node is found.
 If this leaf node stores a record whose position matches :math:`Q` then
 the query is successful; otherwise :math:`Q` is not in the tree.
 
-Inserting record :math:`P` into the PR quadtree is performed by first
-locating the leaf node that contains the location of :math:`P`.
-If this leaf node is empty, then :math:`P` is stored at this
-leaf.
-If the leaf already contains :math:`P` (or a record with :math:`P`'s
-coordinates), then a duplicate record should be reported.
-If the leaf node already contains another record, then the node
-must be repeatedly decomposed until the existing record and :math:`P`
-fall into different leaf nodes.
-Figure :num:`Figure #PRinsert` shows an example of such an insertion.
+Here is a visualization of the PR quadtree that should help you to
+understand how insert a point or removing a point works.
 
-.. _PRinsert:
+.. avembed:: AV/Spatial/PrQuadtreeAV.html ss
 
-.. odsafig:: Images/PRinsert.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: PR quadtree insertion example.
+Here is an interactive visualization of the PR quadtree.
+You can build your own example by adding or removing points.
+See if you can create a tree with the same shape as the one in the
+picture at the top of this page.
 
-   PR quadtree insertion example.
-   (a) The initial PR quadtree containing two data points.
-   (b) The result of inserting point :math:`C`.
-   The block containing :math:`A` must be decomposed into four sub-blocks.
-   Points :math:`A` and :math:`C` would still be in the same block if only
-   one subdivision takes place, so a second decomposition is required to
-   separate them.
+Note that there is no particular reason why the tree should split when
+there is more than one point in a node.
+This spliting criteria could be anything that you want.
+The interactive visualization below will let you use a different split
+value if you want.
+How would the tree look if it had the same points as the figure in the
+top of the page, but a node was allowed to have two points?
 
-Deleting a record :math:`P` is performed by first locating the
-node :math:`N` of the PR quadtree that contains :math:`P`. 
-Node :math:`N` is then changed to be empty.
-The next step is to look at :math:`N`'s three siblings.
-:math:`N` and its siblings must be merged together to form a single
-node :math:`N'` if only one point is contained among them.
-This merging process continues until some level is reached at which
-at least two points are contained in the subtrees represented by
-node :math:`N'` and its siblings.
-For example, if point :math:`C` is to be deleted from the PR quadtree
-representing Figure :num:`Figure #PRinsert` (b), the resulting node must
-be merged with its siblings, and that larger node again merged with
-its siblings to restore the PR quadtree to the decomposition of
-Figure :num:`Figure #PRinsert` (a).
+.. avembed:: AV/Spatial/ClickablePrQuadAv.html ss
 
 Region search is easily performed with the PR quadtree.
 To locate all points within radius :math:`r` of query

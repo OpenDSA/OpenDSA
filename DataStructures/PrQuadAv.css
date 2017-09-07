@@ -6,15 +6,16 @@
 }
 
 .PrQuadEmptyleaf {
+  border-radius: 1px;
   background-color: BurlyWood;
   line-height: 20px; /*22px*/
   z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
 }
+
 .jsavcanvas {
    width: 900px;
    height: 400px;
  } /* set the height of the container */
-
 
 #container {
   /* Change the size of the container */

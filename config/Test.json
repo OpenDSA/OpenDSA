@@ -44,52 +44,62 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "01 Tree Test": {
-      "Binary/BinaryTreeImpl": {
-        "long_name": "Full Binary Tree Node Implementations",
+    "Spatial Data Structures": {
+      "Spatial/Spatial": {
+        "long_name": "Spatial Data Structures",
+        "sections": {}
+      },
+      "Spatial/PRquadtree": {
+        "long_name": "PR QUadtrees",
+        "sections": {}
+      },
+      "Spatial/KDtree": {
+        "long_name": "k-d Trees",
         "sections": {
-        }
-      }
-    },
-
-    "02 Line Test": {
-      "NP/Reduction": {
-        "long_name": "Reduction test",
-        "sections": {
-        }
-      }
-    },
-
-    "03 Plot Test": {
-      "AlgAnal/AnalIntro": {
-        "long_name": "Plot test",
-        "sections": {
-        }
-      }
-    },
-
-    "04 Pointers": {
-      "PointersCPP/Exercises_J": {
-        "long_name": "Pointer",
-        "sections": {
-        }
-      }
-    },
-
-    "05 Iteration": {
-      "List/ListIteration": {
-        "long_name": "Iteration",
-        "sections": {
+          "KD Trees": {
+            "kd-treeAV": {
+              "long_name": "KD tree Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "kd-interact": {
+              "long_name": "KD tree Interaction",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          }
         }
       },
-      "Spatial/PrQuatree_fall2017": {
-        "long_name": "PR Quadtree",
+      "Spatial/Bintree": {
+        "long_name": "Bintrees",
         "sections": {
+          "The Bintree": {
+            "bintreeCONBTEX": {},
+            "bintreeAV": {
+              "long_name": "Bintree Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          }
         }
+      },
+      "Spatial/OtherSpatial": {
+        "long_name": "Other Spatial Data Structures",
+        "sections": {}
       }
     },
-
-
+    "Slideshow Narration":{
+      "Narration/HeapMem":{
+        "long_name": "Heap Memory",
+        "sections": {}
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
@@ -97,12 +107,6 @@
       },
       "Bibliography": {
         "long_name": "Bibliography",
-        "sections": {}
-      }
-    },
-    "Slideshow Narration":{
-      "Narration/HeapMem":{
-        "long_name": "Heap Memory",
         "sections": {}
       }
     }

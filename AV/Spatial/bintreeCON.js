@@ -1,7 +1,7 @@
 /*global ODSA */
 "use strict";
 $(document).ready(function () {
-  var av = new JSAV("bintreeCONBTEX", {"animationMode": "none"});
+  var av = new JSAV("bintreeCON", {"animationMode": "none"});
 
   // Draw the rectangles
   var rleft = 300;
@@ -62,20 +62,20 @@ $(document).ready(function () {
 
   bt.layout();
   var alabel = av.label("(a)", {left: rleft + 93, top: btTop - 45}).show;
-  var blabel = av.label("(b)", {left: btLeft + 100, top: btTop + 370}).show;
+  var blabel = av.label("(b)", {left: btLeft + 100, top: btTop + 230}).show;
 
   // Mark tree levels
   var lLeft = btLeft - 150;
-  av.label("x", {left: lLeft, top: btTop + 4}).show;
-  av.g.line(lLeft + 20, btTop + 30, lLeft + 210, btTop + 30);
-  av.label("y", {left: lLeft, top: btTop + 46}).show;
-  av.g.line(lLeft + 20, btTop + 72, lLeft + 155, btTop + 72);
-  av.label("x", {left: lLeft, top: btTop + 88}).show;
-  av.g.line(lLeft + 20, btTop + 114, lLeft + 130, btTop + 114);
-  av.label("y", {left: lLeft, top: btTop + 130}).show;
-  av.g.line(lLeft + 20, btTop + 156, lLeft + 200, btTop + 156);
-  av.label("x", {left: lLeft, top: btTop + 172}).show;
-  av.g.line(lLeft + 20, btTop + 198, lLeft + 180, btTop + 198);
-  av.label("y", {left: lLeft, top: btTop + 214}).show;
-  av.g.line(lLeft + 20, btTop + 240, lLeft + 275, btTop + 240);
+  av.label("x", {left: lLeft, top: btTop}).show;
+  av.g.line(lLeft + 20, btTop + 25, lLeft + 210, btTop + 25);
+  av.label("y", {left: lLeft, top: btTop + 39}).show;
+  av.g.line(lLeft + 20, btTop + 64, lLeft + 155, btTop + 64);
+  av.label("x", {left: lLeft, top: btTop + 78}).show;
+  av.g.line(lLeft + 20, btTop + 103, lLeft + 130, btTop + 103);
+  av.label("y", {left: lLeft, top: btTop + 115}).show;
+  av.g.line(lLeft + 20, btTop + 141, lLeft + 200, btTop + 141);
+  av.label("x", {left: lLeft, top: btTop + 152}).show;
+  av.g.line(lLeft + 20, btTop + 175, lLeft + 180, btTop + 175);
+  av.label("y", {left: lLeft, top: btTop + 190}).show;
+  av.g.line(lLeft + 20, btTop + 215, lLeft + 275, btTop + 215);
 });

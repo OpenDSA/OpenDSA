@@ -9,11 +9,11 @@
    :satisfies: Spatial data structures
    :topic: Spatial Data Structures
 
-Spatial Data Structures:
-========================
+Spatial Data Structures
+=======================
 
-Spatial Data Structures:
-------------------------
+Spatial Data Structures
+-----------------------
 
 Search trees such as :term:`BSTs <BST>`, :term:`AVL trees <AVL Tree>`,
 :term:`splay trees <Splay Tree>`, :term:`2-3 Trees <2-3 tree>`,
@@ -85,6 +85,6 @@ four equal-sized quadrants at each branch.
 Two other variations on these data structures are the
 :ref:`bintree <bintree> <Bintree>` and the
 :term:`point quadtree`.
-These four structures cover all four combinations of object versus key
-space decomposition on the one hand, and multi-level binary versus
-:math:`2^d`-way branching on the other.
+In two dimensions, these four structures cover all four combinations
+of object versus key space decomposition on the one hand, and
+multi-level binary versus :math:`2^d`-way branching on the other.

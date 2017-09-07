@@ -31,36 +31,21 @@ The three-dimensional equivalent of the PR quadtree would be a tree
 with :math:`2^3` or eight branches.
 Such a tree is called an :term:`octree`.
 
-We can also devise a binary trie based on a key space decomposition in
-each dimension, or a quadtree that uses the two-dimensional equivalent
-to an object space decomposition.
-The :term:`bintree` is a binary trie that
-uses keyspace decomposition and alternates discriminators at each
-level in a manner similar to the kd tree.
-The bintree for the points of Figure :num:`Figure #kdExamp` is shown in
-Figure :num:`Figure #BintreeFig2`.
+Consider the differences between the PR quadtree and the Bintree.
+Both use object space decomposition, and so both are tries.
+But they are different in the the PR quadtree splits in all dimensions
+at once, while the Bintree rotates through its dimensions, splitting
+one at a time.
+
 Alternatively, we can use a four-way decomposition of space centered
 on the data points.
 The tree resulting from such a decomposition is called a
 :term:`point quadtree`.
-The point quadtree for the data points of Figure :num:`Figure #BintreeFig2`
-is shown in Figure :num:`Figure #PtQuadFig`.
-
-.. _BintreeFig2:
-
-.. odsafig:: Images/Bintree.png
-   :width: 500
-   :align: center
-   :capalign: center
-   :figwidth: 90%
-   :alt: Example of a Bintree.
-
-   An example of the bintree, a binary tree using key space
-   decomposition and discriminators rotating among the dimensions.
-   Compare this with the kd tree of Figure :num:`Figure #kdExamp`,
-   the PR quadtree of Figure :num:`Figure #PRExamp`, and
-   the point quadtree of Figure :num:`Figure #PtQuadFig`.
-
+This could be viewed as the object-space decomposition analog of the
+PR quadtree.
+Or it could be viewed as a variation on the kd-tree that splits all
+dimensions at once.
+An example point quadtree is shown in Figure :num:`Figure #PtQuadFig`.
 
 .. _PtQuadFig:
 
