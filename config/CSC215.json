@@ -1,6 +1,6 @@
 {
-  "title": "Draft for Christian Duncan",
-  "desc": "Draft for Christian Duncan",
+  "title": "CSC215: Algorithm Design and Analysis",
+  "desc": "CSC215: Algorithm Design and Analysis",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -52,7 +52,7 @@
         "sections": {}
       }
     },
-    "Introduction for Data Structures and Algorithms Courses": {
+    "Introduction to Data Structures and Algorithms: {
       "Background/IntroDSA": {
         "long_name": "Introduction to Data Structures and Algorithms",
         "sections": {
@@ -2944,6 +2944,10 @@
           }
         }
       },
+      "SeniorAlgAnal/AmortAnal": {
+        "long_name": "Amortized Analysis",
+        "sections": {}
+      },
       "SeniorAlgAnal/Numeric": {
         "long_name": "Number Problems",
         "sections": {
@@ -2988,21 +2992,121 @@
         }
       }
     },
-    "Probabilistic Algorithms": {
-      "SeniorAlgAnal/Probabilistic": {
-        "long_name": "Probabilistic Algorithms",
+    "Advanced Algorithm Techniques": {
+      "SeniorAlgAnal/DynamicProgramming": {
+        "long_name": "Dynamic Programming",
         "sections": {}
       },
-      "SeniorAlgAnal/Primes": {
-        "long_name": "Finding Prime Numbers",
+      "Development/Knapsack": {
+        "sections": {
+          "0/1 Knapsack Problem": {
+            "sackCallTree": {
+              "long_name": "Knapsack Call Tree",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "sackTreePluck": {
+              "long_name": "Knapsack Call Tree Pluck",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "sackTraceBack": {
+              "long_name": "Knapsack Tree Reduction",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Exercise 1": {
+            "knapsackSelect": {
+              "long_name": "Knapsack Select",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Exercise 2": {
+            "knapsackFillRow": {
+              "long_name": "Knapsack Fill Row",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Exercise 3": {
+            "knapsackSolution": {
+              "long_name": "Knapsack Solution",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Exercise 4": {
+            "sackProficiency": {
+              "long_name": "Knapsack Proficiency",
+              "required": true,
+              "points": 1,
+              "threshold": 0.9
+            }
+          }
+        }
+      },
+      "Development/EditDistance": {
+        "sections": {
+          "Edit Distance": {
+            "editRCT": {
+              "long_name": "Edit RCT",
+              "required": true,
+              "points": 1,
+              "threshold": 0.9
+            },
+            "editPrune": {
+              "long_name": "Edit Prune",
+              "required": true,
+              "points": 1,
+              "threshold": 0.9
+            },
+            "editOptimal": {
+              "long_name": "Edit Optimal",
+              "required": true,
+              "points": 1,
+              "threshold": 0.9
+            }
+          },
+          "Exercise 1": {
+            "edit-KA1": {
+              "long_name": "Edit KA1",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Exercise 2": {
+            "edit-KA2": {
+              "long_name": "Edit KA2",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Development/StringSearchKMP": {
+        "long_name": "KMP String Search Algorithm",
+        "sections": {}
+      },
+      "Development/StringSearchBoyerMoore": {
+        "long_name": "Boyer-Moore String Search Algorithm",
+        "sections": {}
+      },
+      "Development/StringSearchRabinKarp": {
+        "long_name": "Rabin-Karp String Search Algorithm",
         "sections": {}
       },
       "SeniorAlgAnal/RandomNums": {
         "long_name": "Random Numbers",
-        "sections": {}
-      },
-      "SearchStruct/SkipList": {
-        "long_name": "Skip Lists",
         "sections": {}
       }
     },
