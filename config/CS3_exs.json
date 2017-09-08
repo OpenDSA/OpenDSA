@@ -1,0 +1,1043 @@
+{
+  "title": "CS3 Data Structures & Algorithms -- Only Exercises",
+  "desc": "CS3 Data Structures & Algorithms -- Only Exercises",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "build_cmap": false,
+  "suppress_todo": true,
+  "assumes": "recursion",
+  "dispModComp": true,
+  "glob_exer_options": {},
+  "chapters": {
+    "Hashing": {
+      "Hashing/HashIntro_exs": {
+        "long_name": "Introduction",
+        "sections": {
+          "Hashing Intro Slideshow": {
+            "hashIntroCON1": {
+              "long_name": "Hashing Intro Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Hashing/HashFunc_exs": {
+        "long_name": "Hash Function Principles",
+        "sections": {
+          "Birthday Problem Calculator": {
+            "Birthday": {
+              "long_name": "Birthday Problem Calculator",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Hashing/HashFuncExamp_exs": {
+        "long_name": "Sample Hash Functions",
+        "sections": {
+          "Hash Function Slideshow 1": {
+            "hashFuncExCON1": {
+              "long_name": "Hash Function Slideshow 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Hash Function Slideshow 2": {
+            "hashFuncExCON2": {
+              "long_name": "Hash Function Slideshow 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Mid-Square Calculator": {
+            "MidSquare": {
+              "long_name": "Mid-Square Calculator",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "A Simple Hash Function for Strings": {
+            "StringSimple": {
+              "long_name": "Simple String Folding Calculator",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Improved String Folding Calculator": {
+            "StringSfold": {
+              "long_name": "Improved String Folding Calculator",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Hash Function Pick Slot Summary": {
+            "HashFuncFIBSumm": {
+              "long_name": "Hash Function Pick Slot Summary",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Hash Function Summary Exercise": {
+            "HashFuncSumm": {
+              "long_name": "Hash Function Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/OpenHash_exs": {
+        "long_name": "Open Hashing",
+        "sections": {
+          "Open Hashing Proficiency Exercise": {
+            "OpenHashPRO": {
+              "long_name": "Open Hashing Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/BucketHash_exs": {
+        "long_name": "Bucket Hashing",
+        "sections": {
+          "Bucket Hashing Slideshow 1": {
+            "buckethashCON1": {
+              "long_name": "Bucket Hashing Slideshow 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Bucket Hashing Proficiency Exercise": {
+            "HashBucketPRO": {
+              "long_name": "Bucket Hashing Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Bucket Hashing Slideshow 2": {
+            "buckethashCON2": {
+              "long_name": "Bucket Hashing Slideshow 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Alternate Bucket Hashing Proficiency Exercise": {
+            "HashBucket2PRO": {
+              "long_name": "Alternate Bucket Hashing Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/HashCSimple_exs": {
+        "long_name": "Collision Resolution",
+        "sections": {
+          "Linear Probing Slideshow 1": {
+            "linProbeCON1": {
+              "long_name": "Linear Probing Slideshow 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Linear Probing Slideshow 2": {
+            "linProbeCON2": {
+              "long_name": "Linear Probing Slideshow 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Linear Probing Proficiency Exercise": {
+            "HashLinearPPRO": {
+              "long_name": "Linear Probing Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/HashCImproved_exs": {
+        "long_name": "Improved Collision Resolution",
+        "sections": {
+          "Linear Probing By Steps Slideshow 1": {
+            "collisionCON1": {
+              "long_name": "Linear Probing By Steps Slideshow 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Linear Probing By Steps Slideshow 2": {
+            "collisionCON2": {
+              "long_name": "Linear Probing By Steps Slideshow 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Linear Probing By Steps Proficiency Exercise": {
+            "HashLinearStepPPRO": {
+              "long_name": "Linear Probing By Steps Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Pseudo-Random Probing Slideshow": {
+            "collisionCON3": {
+              "long_name": "Pseudo-Random Probing Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Pseudo-Random Probing Proficiency Exercise": {
+            "HashPseudoRandomPPRO": {
+              "long_name": "Pseudo-Random Probing Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Avoiding the Train": {
+            "collisionCON4": {
+              "long_name": "Avoiding the Train",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quadratic Probing Slideshow": {
+            "collisionCON5": {
+              "long_name": "Quadratic Probing Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quadratic Probing Proficiency Exercise": {
+            "HashQuadraticPPRO": {
+              "long_name": "Quadratic Probing Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Quadratic Probing Problem": {
+            "collisionCON6": {
+              "long_name": "Quadratic Probing Problem",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Double Hashing Slideshow 2": {
+            "collisionCON7": {
+              "long_name": "Double Hashing Slideshow 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Double Hashing Slideshow 3": {
+            "collisionCON8": {
+              "long_name": "Double Hashing Slideshow 3",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Double Hashing Proficiency Exercise": {
+            "HashDoublePPRO": {
+              "long_name": "Double Hashing Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/HashAnal_exs": {
+        "long_name": "Analysis of Closed Hashing",
+        "sections": {
+          "Analysis of Closed Hashing Summary Exercise": {
+            "HashAnalSumm": {
+              "long_name": "Analysis of Closed Hashing Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/HashDel_exs": {
+        "long_name": "Deletion",
+        "sections": {
+          "Hash Deletion Slideshow": {
+            "hashdelCON": {
+              "long_name": "Hash Deletion Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Hash Deletion Proficiency Exercise": {
+            "HashingDelPRO": {
+              "long_name": "Hash Deletion Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.90
+            }
+          },
+          "Hash Deletion Summary Exercise": {
+            "HashDelSumm": {
+              "long_name": "Hash Deletion Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          }
+        }
+      },
+      "Hashing/HashSumm_exs": {
+        "long_name": "Hashing Chapter Summary Exercises",
+        "sections": {
+          "Hashing Chapter Summary Exercise": {
+            "HashChapterSumm": {
+              "long_name": "Hashing Chapter Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 10
+            }
+          }
+        }
+      }
+    },
+    "Sorting": {
+      "Sorting/SortNotation_exs": {
+        "long_name": "Sorting Terminology and Notation",
+        "sections": {
+          "Sorting Intro Summary": {
+            "SortIntroSumm": {
+              "long_name": "Sorting Intro Summary",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          }
+        }
+      },
+      "Sorting/InsertionSort_exs": {
+        "long_name": "Insertion Sort",
+        "sections": {
+          "Insertion Sort Slideshow": {
+            "insertionsortCON": {
+              "long_name": "Insertion Sort Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Insertion Sort Visualization": {
+            "insertionsortAV": {
+              "long_name": "Insertion Sort Visualization",
+              "required": false,
+              "points": 1.0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Insertion Sort Proficiency Exercise": {
+            "InssortPRO": {
+              "long_name": "Insertion Sort Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Insertion Sort Worst Case Slideshow": {
+            "InsertionSortWorstCaseCON": {
+              "long_name": "Insertion Sort Worst Case Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Insertion Sort Best Case Slideshow": {
+            "InsertionSortBestCaseCON": {
+              "long_name": "Insertion Sort Best Case Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Insertion Sort Average Case Slideshow": {
+            "InsertionSortAverageCaseCON": {
+              "long_name": "Insertion Sort Average Case Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Insertion Sort Summary Exercise": {
+            "InssortSumm": {
+              "long_name": "Insertion Sort Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Sorting/BubbleSort_exs": {
+        "long_name": "Bubble Sort",
+        "sections": {
+          "Bubble Sort Slideshow 1": {
+            "bubblesortS1CON": {
+              "long_name": "Bubble Sort Slideshow 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Bubble Sort Slideshow 2": {
+            "bubblesortS2CON": {
+              "long_name": "Bubble Sort Slideshow 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Bubble Sort Visualization": {
+            "bubblesortAV": {
+              "long_name": "Bubble Sort Visualization",
+              "required": false,
+              "points": 1.0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Bubble Sort Proficiency Exercise": {
+            "BubsortPRO": {
+              "long_name": "Bubble Sort Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          },
+          "Bubble Sort Analysis Slideshow": {
+            "BubbleSortAnalysisCON": {
+              "long_name": "Bubble Sort Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Bubble Sort Summary Exercise": {
+            "BubsortSumm": {
+              "long_name": "Bubble Sort Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Sorting/SelectionSort_exs": {
+        "long_name": "Selection Sort",
+        "sections": {
+          "Selection Sort Slideshow 1": {
+            "selectionsortS1CON": {
+              "long_name": "Selection Sort Slideshow 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Selection Sort Slideshow 2": {
+            "selectionsortS2CON": {
+              "long_name": "Selection Sort Slideshow 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Selection Sort Visualization": {
+            "selectionsortAV": {
+              "long_name": "Selection Sort Visualization",
+              "required": false,
+              "points": 1.0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Selection Sort Proficiency Exercise": {
+            "SelsortPRO": {
+              "long_name": "Selection Sort Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Selection Sort Analysis Slideshow": {
+            "SelectionSortAnalysisCON": {
+              "long_name": "Selection Sort Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Selection Sort Summary Exercise": {
+            "SelsortSumm": {
+              "long_name": "Selection Sort Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Sorting/ExchangeSort_exs": {
+        "long_name": "The Cost of Exchange Sorting",
+        "sections": {
+          "Inversions Proficiency Exercise": {
+            "FindInversionsPRO": {
+              "long_name": "Inversions Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Exchange Sort Analysis Slideshow": {
+            "ExchangeSortCON": {
+              "long_name": "Exchange Sort Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Exchange Sorting Summary Exercise": {
+            "ExchangeSumm": {
+              "long_name": "Exchange Sorting Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Sorting/SortOpt_exs": {
+        "long_name": "Optimizing Sorts with Code Tuning",
+        "sections": {
+          "Insertion Sort Without Swap Proficiency Exercise": {
+            "insertionSortWithoutSwapPRO": {
+              "long_name": "Insertion Sort Without Swap Proficiency Exercise",
+              "exer_options": {
+                "JXOP-code": "none"
+              },
+              "required": false,
+              "points": 1.0,
+              "threshold": 0.9
+            }
+          }
+        }
+      },
+      "Sorting/Shellsort_exs": {
+        "long_name": "Shellsort",
+        "sections": {
+          "Shellsort Slideshow 1": {
+            "shellsortCON1": {
+              "long_name": "Shellsort Slideshow 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Shellsort Slideshow 2": {
+            "shellsortCON2": {
+              "long_name": "Shellsort Slideshow 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Shellsort Slideshow 3": {
+            "shellsortCON3": {},
+            "shellsortCON4": {
+              "long_name": "Shellsort Slideshow 3",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Shellsort Slideshow 4": {
+            "shellsortCON5": {
+              "long_name": "Shellsort Slideshow 4",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Shellsort Slideshow 5": {
+            "shellsortCON6": {},
+            "shellsortCON7": {
+              "long_name": "Shellsort Slideshow 5",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Shellsort Slideshow 6": {
+            "shellsortCON8": {},
+            "shellsortCON9": {
+              "long_name": "Shellsort Slideshow 6",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Shellsort Sublist Proficency Exercise": {
+            "ShellsortSublistSumm": {
+              "long_name": "Shellsort Sublist Proficency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Shellsort Visualization": {
+            "shellsortAV": {
+              "long_name": "Shellsort Visualization",
+              "required": false,
+              "points": 1.0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Shellsort Series Exercise": {
+            "ShellsortSeries": {
+              "long_name": "Shellsort Series Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Shellsort Proficiency Exercise": {
+            "shellsortPRO": {
+              "long_name": "Shellsort Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.90,
+              "exer_options": {
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "fix"
+              }
+            }
+          },
+          "Shellsort Performance Activity": {
+            "shellsortPerf": {
+              "long_name": "Shellsort Performance Activity",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Shellsort Summary Exercise": {
+            "ShellsortSumm": {
+              "long_name": "Shellsort Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Sorting/Mergesort_exs": {
+        "long_name": "Mergesort Concepts",
+        "sections": {
+          "Mergesort Visualization": {
+            "mergesortAV": {
+              "long_name": "Mergesort Visualization",
+              "required": false,
+              "points": 1.0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Mergesort Slideshow": {
+            "mergesortCON": {
+              "long_name": "Merging Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Mergesort Merging Proficiency Exercise": {
+            "MergesortMergePRO": {
+              "long_name": "Mergesort Merging Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Mergsort Proficiency Exercise": {
+            "mergesortPRO": {
+              "long_name": "Mergesort Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.90,
+              "exer_options": {
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "fix"
+              }
+            }
+          },
+          "Mergsort Analysis Slideshow": {
+            "MergeSortAnalysisCON": {
+              "long_name": "Mergesort Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Sorting/MergesortImpl_exs": {
+        "long_name": "Implementing Mergesort",
+        "sections": {
+          "Mergesort Implementation Slideshow 1": {
+            "mergeImplS1CON": {
+              "long_name": "Mergesort Implementation Slideshow 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Mergesort Implementation Slideshow 2": {
+            "mergeImplS2CON": {
+              "long_name": "Mergesort Implementation Slideshow 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Mergesort Summary Exercise": {
+            "MergesortSumm": {
+              "long_name": "Mergesort Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Sorting/Quicksort_exs": {
+        "long_name": "Quicksort",
+        "sections": {
+          "Quicksort Pivot Proficiency Exercise": {
+            "QuicksortPivotPRO": {
+              "long_name": "Quicksort Pivot Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Quicksort Partition Slideshow": {
+            "quicksortCON": {
+              "long_name": "Quicksort Partition Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Partition Proficiency Exercise": {
+            "Quicksort Partition Proficiency Exercise": {
+              "long_name": "Quicksort Partition Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Quicksort Partition Analysis Slideshow": {
+            "QuickSortPartitionAnalysisCON": {
+              "long_name": "Quicksort Partition Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Visualization": {
+            "quicksortAV": {
+              "long_name": "Quicksort Visualization",
+              "required": false,
+              "points": 1.0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Proficiency Exercise": {
+            "quicksortPRO": {
+              "long_name": "Quicksort Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.90,
+              "exer_options": {
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "fix"
+              }
+            }
+          },
+          "Quicksort Worst Case Analysis Slideshow": {
+            "QuickSortWorstCaseCON": {
+              "long_name": "Quicksort Worst Case Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Best Case Analysis Slideshow": {
+            "QuickSortBestCaseCON": {
+              "long_name": "Quicksort Best Case Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Average Case Analysis Slideshow": {
+            "QuickSortAverageCaseCON": {
+              "long_name": "Quicksort Average Case Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Summary Exercise": {
+            "QuicksortSumm": {
+              "long_name": "Quicksort Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Sorting/Heapsort_exs": {
+        "long_name": "Heapsort",
+        "sections": {
+          "Heapsort Slideshow": {
+            "heapsortCON": {
+              "long_name": "Heapsort Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Heapsort RemoveMax Proficiency Exercise": {
+            "HeapsortStepPRO": {
+              "long_name": "Heapsort RemoveMax Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Heapsort Proficiency Practice": {
+            "heapsortPRO": {
+              "long_name": "Heapsort Proficiency Exercise",
+              "exer_options": {
+                "JXOP-code": "none",
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "fix"
+              },
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.9
+            }
+          },
+          "Heapsort Analysis Slideshow": {
+            "HeapSortAnalysisCON": {
+              "long_name": "Heapsort Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Heapsort Summary Exercise": {
+            "HeapsortSumm": {
+              "long_name": "Heapsort Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Sorting/BinSort_exs": {
+        "long_name": "Binsort",
+        "sections": {
+          "Binsort Slideshow 1": {
+            "binsortS1CON": {
+              "long_name": "Binsort Slideshow 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Binsort Slideshow 2": {
+            "binsortS2CON": {
+              "long_name": "Binsort Slideshow 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Sorting/RadixSort_exs": {
+        "long_name": "Radix Sort",
+        "sections": {
+          "Radix Sort Linked Visualization": {
+            "radixLinkAV": {
+              "long_name": "Radix Sort Linked Visualization",
+              "required": false,
+              "points": 1.0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Radix Sort Proficiency Exercise": {
+            "RadixsortPRO": {
+              "long_name": "Radix Sort Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 4
+            }
+          },
+          "Radix Sort Array Visualization": {
+            "radixArrayAV": {
+              "long_name": "Radix Sort Array Visualization",
+              "required": false,
+              "points": 1.0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Radix Sort Analysis Slideshow": {
+            "RadixSortAnalysisCON": {
+              "long_name": "Radix Sort Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Radix Sort Summary Exercise": {
+            "RadixSortSumm": {
+              "long_name": "Radix Sort Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Sorting/SortingEmpirical_exs": {
+        "long_name": "An Empirical Comparison of Sorting Algorithms",
+        "sections": {
+          "Sort Comparison Summary Exercise": {
+            "SortAlgCompSumm": {
+              "long_name": "Sort Comparison Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Sorting/SortingLowerBound_exs": {
+        "long_name": "Lower Bounds of Sorting",
+        "sections": {
+          "Sorting Lower Bound Slideshow": {
+            "SortingLowerBoundCON": {
+              "long_name": "Sorting Lower Bound Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Lower Bounds Summary Exercise": {
+            "SortBoundSumm": {
+              "long_name": "Lower Bounds Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 4
+            }
+          }
+        }
+      },
+      "Sorting/SortSumm_exs": {
+        "long_name": "Sorting Chapter Summary Exercises",
+        "sections": {
+          "Sorting Chapter Summary Exercise": {
+            "SortChapterSumm": {
+              "long_name": "Sorting Chapter Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 10
+            }
+          }
+        }
+      }
+    }
+  }
+}
