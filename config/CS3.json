@@ -3052,7 +3052,53 @@
         "sections": {}
       },
       "Spatial/PRquadtree": {
-        "long_name": "PR Quadtrees",
+        "long_name": "PR QUadtrees",
+        "sections": {}
+      },
+      "Spatial/KDtree": {
+        "long_name": "k-d Trees",
+        "sections": {
+          "KD Trees": {
+            "kd-treeAV": {
+              "long_name": "KD tree Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "kd-interact": {
+              "long_name": "KD tree Interaction",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Spatial/Bintree": {
+        "long_name": "Bintrees",
+        "sections": {
+          "The Bintree": {
+            "bintreeCON": {},
+            "BintreeAV": {
+              "long_name": "Bintree Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "BintreeInter": {
+              "long_name": "Bintree Interactive", 
+              "required": false, 
+              "points": 0, 
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Spatial/OtherSpatial": {
+        "long_name": "Other Spatial Data Structures",
         "sections": {}
       }
     },

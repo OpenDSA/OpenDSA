@@ -1,0 +1,11 @@
+{
+  "translations" : {
+    "en": {
+      ".avTitle": "Bintree Interactive",
+      "av_Authors": "Souleymane Dia and Cliff Shaffer",
+      "#about": "About",
+      "#run": "Run",
+      "#reset": "Reset"
+    }
+  }
+}

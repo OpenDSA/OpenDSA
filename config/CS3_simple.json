@@ -211,8 +211,11 @@
     ],
     "Advanced Data Structures": [
       "SearchStruct/SkipList",
-      "Spatial/Spatial",
-      "Spatial/PRquadtree"
+       "Spatial/Spatial",
+      "Spatial/PRquadtree",
+      "Spatial/KDtree",
+      "Spatial/Bintree",
+      "Spatial/OtherSpatial"
     ],
     "Appendix": [
       "Glossary",

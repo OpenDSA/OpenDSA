@@ -81,11 +81,11 @@ that point is not contained in the tree.
 Here is a visualization of the Bintree, that shows how inserting a
 point and removing a point works.
 
-.. avembed:: AV/Spatial/NBintreeAV.html ss
+.. avembed:: AV/Spatial/BintreeAV.html ss
 
 Below is an interactive visualization of the Bintree for practice.
 
-.. avembed:: AV/Spatial/ClickableBintree.html ss
+.. avembed:: AV/Spatial/BintreeInter.html ss
 
 Assume that we want to print out a list of all records that are within
 a certain distance :math:`d` of a given point :math:`P`.

@@ -4604,7 +4604,7 @@
         "long_name": "Bintrees",
         "sections": {
           "The Bintree": {
-            "bintreeCONBTEX": {},
+            "bintreeCON": {},
             "bintreeAV": {
               "long_name": "Bintree Visualization",
               "required": false,

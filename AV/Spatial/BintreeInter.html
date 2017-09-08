@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Clickable Bintree AV</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="BintreeAV.css" type="text/css" />
+    <!--<style>
+        #container {
+        width: 115%;
+        position: relative;
+        }
+        </style>-->
+  </head>
+  <body>
+    <div id="container">
+      <table class="headerTable">
+        <tr>
+          <td class="headerLeft"></td>
+          <td class="headerCenter avTitle">Interactive Bintree Visualization</td>
+          <td class="headerRight">
+            <input type="button" id="about" name="about" value ="About"/>
+            <a id="settings" class="jsavsettings" href="#"></a>
+          </td>
+        </tr>
+      </table>
+      <hr>
+      <div class="avcontainer">
+        <p>
+          <input type="submit" id="submit" name="submit" value="submit" />
+          <input type="number" min="1" id="text" value="1">
+          <input type="reset" id="reset" name="reset" value="reset" />
+        </p>
+      </div>
+      <form id="ssperform">
+        <p></p>
+        <hr>
+        <p>
+          <input type="button" id="insert" name="insert" value="insert" />
+          <input type="button" id="remove" name="remove" value="remove" />
+        </p>
+        <p class="jsavoutput jsavline"></p>
+      </form>
+      <!--avcontainer-->
+    </div>
+    <!--container-->
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="../../JSAV/lib/raphael.js"></script>
+    <script src="../../JSAV/build/JSAV-min.js"></script>
+    <script src="../../lib/odsaUtils-min.js"></script>
+    <script src="../../lib/odsaAV-min.js"></script>
+    <script src="../../DataStructures/Bintree.js"></script>
+    <script src="BintreeInter.js"></script>
+  </body>
+</html>
