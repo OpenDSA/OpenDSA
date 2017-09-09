@@ -272,9 +272,9 @@ To call a function such as ``foo(6, x+1)``:
 For the extremely curious, here are other miscellaneous notes on the
 function call process:
 
-* This is why infinite recursion results in a "Stack Overflow Error"
-  |---| the code keeps calling and calling resulting in steps (1) (2)
-  (3), (1) (2) (3), but never a step (4).
+* This is why infinite recursion results in a
+  "Stack Overflow Error" |---| the code keeps calling and calling
+  resulting in steps (1) (2) (3), (1) (2) (3), but never a step (4).
   Eventually the call stack literally runs out of memory.
 
 * This is why local variables have specific initial values based on

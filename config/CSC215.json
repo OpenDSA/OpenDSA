@@ -36,7 +36,7 @@
   },
   "lang": "en",
   "build_JSAV": false,
-  "suppress_todo": false,
+  "suppress_todo": true,
   "dispModComp": true,
   "glob_exer_options": {
     "JXOP-debug": "true"

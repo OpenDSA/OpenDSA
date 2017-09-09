@@ -80,7 +80,7 @@ From previous example:
 :math:`\delta^{*}(q_0, aba) = \{q_3\}`. 
 
 **Definition**: For an NFA :math:`M`,
-`:math:`L(M)= \{w \in {\Sigma}^{*} \mid \delta^{*}(q_0,w) \cap F \neq \emptyset \}`
+:math:`L(M)= \{w \in {\Sigma}^{*} \mid \delta^{*}(q_0,w) \cap F \neq \emptyset \}`
 
 The language accepted by NFA :math:`M` is all strings :math:`w` such
 that there exists a walk labeled :math:`w` from the start state to
