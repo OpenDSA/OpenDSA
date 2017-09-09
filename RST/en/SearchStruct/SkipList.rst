@@ -15,7 +15,10 @@
 Skip Lists
 ==========
 
-This section presents a probabilistic search structure called the
+Skip Lists
+----------
+
+This module presents a probabilistic search structure called the
 :term:`skip list`.
 Like the :term:`BST`, skip lists are designed to overcome a basic
 limitation of array-based and linked lists:

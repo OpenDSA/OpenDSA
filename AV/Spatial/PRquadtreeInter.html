@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Clickable PrQuadTree AV</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../DataStructures/PRquadtree.css" type="text/css" />
+    <link rel="stylesheet" href="PRQuadtreeInter.css" type="text/css" />
+  </head>
+  <body>
+    <div id="container">
+      <table class="headerTable">
+        <tr>
+          <td class="headerLeft"></td>
+          <td class="headerCenter avTitle">PR Quadtree Interactive Visualization</td>
+          <td class="headerRight">
+            <input type="button" id="about" name="about" value="about" />
+            <a id="settings" class="jsavsettings" href="#"></a>
+          </td>
+        </tr>
+      </table>
+      <hr>
+      <div class="avcontainer">
+        <p>
+          <input type="submit" id="submit" name="submit" value="submit" />
+          <input type="number" min="1" id="text" value="1">
+          <input type="reset" id="reset" name="reset" value="reset" />
+        </p>
+      </div>
+      <form id="ssperform">
+        <p></p>
+        <hr>
+        <p>
+          <input type="button" id="insert" name="insert" value="insert" />
+          <input type="button" id="remove" name="remove" value="remove" />
+        </p>
+        <p class="jsavoutput jsavline"></p>
+      </form>
+      <!--avcontainer-->
+    </div>
+    <!--container-->
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="../../JSAV/lib/raphael.js"></script>
+    <script src="../../JSAV/build/JSAV-min.js"></script>
+    <script src="../../lib/odsaUtils-min.js"></script>
+    <script src="../../lib/odsaAV-min.js"></script>
+    <script src="../../DataStructures/PRquadtree.js"></script>
+    <script src="PRquadtreeInter.js"></script>
+  </body>
+
+</html>

@@ -3044,30 +3044,67 @@
     },
     "Advanced Data Structures": {
       "SearchStruct/SkipList": {
-        "long_name": "Skip Lists",
-        "sections": {}
-      },
+        "long_name": "Skip Lists", 
+        "sections": {
+          "Skip Lists": {
+            "SkipListIntroCON": {
+              "long_name": "SkipListIntroCON", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
+            "SkipListInsertCON": {
+              "long_name": "SkipListInsertCON", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
+            "SkipListRmvCON": {
+              "long_name": "SkipListRmvCON", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }
+          }
+        }
+      }, 
       "Spatial/Spatial": {
-        "long_name": "Spatial Data Structures",
-        "sections": {}
-      },
+        "long_name": "Spatial Data Structures", 
+        "sections": {
+          "Spatial Data Structures": {}
+        }
+      }, 
       "Spatial/PRquadtree": {
-        "long_name": "PR QUadtrees",
-        "sections": {}
-      },
+        "long_name": "The PR Quadtree", 
+        "sections": {
+          "The PR Quadtree": {
+            "PRquadtreeAV": {
+              "long_name": "PRquadtreeAV", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1
+            }, 
+            "PRquadtree2ptAV": {
+              "long_name": "PRquadtree2ptAV", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1
+            }, 
+            "PRquadtreeInter": {
+              "long_name": "PRquadtreeInter", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1
+            }
+          }
+        }
+      }, 
       "Spatial/KDtree": {
         "long_name": "k-d Trees",
         "sections": {
           "KD Trees": {
             "kd-treeAV": {
               "long_name": "KD tree Visualization",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            },
-            "kd-interact": {
-              "long_name": "KD tree Interaction",
               "required": false,
               "points": 0,
               "showhide": "none",

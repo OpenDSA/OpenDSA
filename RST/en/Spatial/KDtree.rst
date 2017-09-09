@@ -52,7 +52,7 @@ of two-dimensional points would be stored in a kd tree.
 .. _kdExamp:
 
 .. odsafig:: Images/KDtree.png
-   :width: 300
+   :width: 600
    :align: center
    :capalign: justify
    :figwidth: 90%
@@ -353,20 +353,14 @@ circle, as illustrated by Figure :num:`Figure #InCirc`.
    circle.
 
 Here is a visualization of building a kd-tree.
-</p>
 
 .. avembed:: AV/Development/kd-treeAV.html ss
-   :long_name: KD tree Visualization
 
-Here is a version where you can click to get the node inserted.
 
 .. TODO::
    :type: AV
 
-   This can probably replace the static visualization.
-
-.. avembed:: AV/Development/kd-interact.html ss
-   :long_name: KD tree Interaction
+   Add version where you can click to get the node inserted.
 
 
 .. TODO::

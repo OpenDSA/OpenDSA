@@ -12,6 +12,9 @@
 The PR Quadtree
 ===============
 
+The PR Quadtree
+---------------
+
 In the :term:`Point-Region quadtree`
 (hereafter referred to as the :term:`PR quadtree`) 
 each node either has exactly four children or is a leaf.
@@ -87,22 +90,25 @@ the query is successful; otherwise :math:`Q` is not in the tree.
 Here is a visualization of the PR quadtree that should help you to
 understand how insert a point or removing a point works.
 
-.. avembed:: AV/Spatial/PrQuadtreeAV.html ss
+.. avembed:: AV/Spatial/PRquadtreeAV.html ss
+
+Note that there is no particular reason why the tree should split when
+there is more than one point in a node.
+This spliting criteria could be anything that the implementor wants.
+
+.. avembed:: AV/Spatial/PRquadtree2ptAV.html ss
 
 Here is an interactive visualization of the PR quadtree.
 You can build your own example by adding or removing points.
 See if you can create a tree with the same shape as the one in the
 picture at the top of this page.
 
-Note that there is no particular reason why the tree should split when
-there is more than one point in a node.
-This spliting criteria could be anything that you want.
 The interactive visualization below will let you use a different split
 value if you want.
 How would the tree look if it had the same points as the figure in the
 top of the page, but a node was allowed to have two points?
 
-.. avembed:: AV/Spatial/ClickablePrQuadAv.html ss
+.. avembed:: AV/Spatial/PRquadtreeInter.html ss
 
 Region search is easily performed with the PR quadtree.
 To locate all points within radius :math:`r` of query

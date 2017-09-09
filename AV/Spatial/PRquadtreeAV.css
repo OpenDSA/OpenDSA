@@ -1,0 +1,25 @@
+.jsavcanvas {
+   width: 900px;
+   height: 400px;
+ } /* set the height of the container */
+
+#container {
+  /* Change the size of the container */
+  width: 900px;
+  height: 600px;
+}
+
+.jsavnode {
+  min-height: 25px;
+  max-height: 25px;
+  min-width: 25px;
+  max-width: 25px;
+  margin: 0 auto;
+}
+
+.jsavautoresize .jsavnode {
+  min-width:25px;
+  min-height:25px;
+  width: 25px;
+  height: 25px;
+}

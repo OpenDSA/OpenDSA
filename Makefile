@@ -148,6 +148,10 @@ NPTest: min
 CSC215: min
 	python $(CONFIG_SCRIPT) config/CSC215.json --no-lms
 
+Spatial: min
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/Spatial_generated.json --no-lms
+
 FormalLang: min
 	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
 

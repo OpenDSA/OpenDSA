@@ -1,0 +1,121 @@
+{
+  "title": "Spatial Data Structures",
+  "desc": "Spatial Data Structures",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "build_cmap": false,
+  "suppress_todo": true,
+  "assumes": "recursion",
+  "dispModComp": true,
+  "glob_exer_options": {},
+  "chapters": {
+    "Advanced Data Structures": {
+      "SearchStruct/SkipList": {
+        "long_name": "Skip Lists",
+        "sections": {
+          "Skip Lists": {
+          }
+      },
+      "Spatial/Spatial": {
+        "long_name": "Spatial Data Structures",
+        "sections": {}
+      },
+      "Spatial/PRquadtree": {
+        "long_name": "PR Quadtrees",
+        "sections": {
+          "The PR Quadtree": {
+          }
+        }
+      },
+      "Spatial/KDtree": {
+        "long_name": "k-d Trees",
+        "sections": {
+          "KD Trees": {
+            "kd-treeAV": {
+              "long_name": "KD tree Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "kd-interact": {
+              "long_name": "KD tree Interaction",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Spatial/Bintree": {
+        "long_name": "Bintrees",
+        "sections": {
+          "The Bintree": {
+            "bintreeCON": {},
+            "BintreeAV": {
+              "long_name": "Bintree Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "BintreeInter": {
+              "long_name": "Bintree Interactive", 
+              "required": false, 
+              "points": 0, 
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Spatial/OtherSpatial": {
+        "long_name": "Other Spatial Data Structures",
+        "sections": {}
+      }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "sections": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "sections": {}
+      }
+    }
+  }
+}

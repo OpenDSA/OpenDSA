@@ -1,7 +1,7 @@
 {
   "translations" :{
     "en" :{
-      ".avTitle": "PR Quadtree Visualization",
+      ".avTitle": "PR Quadtree 2-Point Visualization",
       "av_Authors": "Souleymane Dia and Cliff Shaffer",
       "#about": "About"
     }
