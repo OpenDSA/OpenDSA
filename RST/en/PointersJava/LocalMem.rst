@@ -55,8 +55,6 @@ With pointers, as we will see however, the programmer must make sure
 that allocation is handled correctly.
 
 
-Local Memory
-------------
 The most common variables you use are :term:`local variables` within
 functions such as the variables ``num`` and ``result`` in the
 following function.
@@ -111,9 +109,6 @@ Here is a more detailed version of the rules of local storage:
    owning function is known as :term:`lexical scoping`.
    Pretty much all languages do it that way now.
 
-
-Examples
---------
 
 Here is a simple example of the lifetime of local storage.
 

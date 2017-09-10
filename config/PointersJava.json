@@ -28,9 +28,7 @@
       "PointersJava/BasicPointers": {
         "long_name": "Basic References",
         "sections": {
-          "What is a Pointer?": {},
-          "What is a Reference?": {},
-          "Data Types in Java": {
+          "Pointers and References": {
             "num42CON": {}, 
             "employeeEmpRefCON": {}
           },
@@ -39,9 +37,7 @@
           },
           "The Employee Class": {},
           "Reference Assignments": {
-            "empRefsecondCON": {}
-          },
-          "Sharing": {
+            "empRefsecondCON": {},
             "PointerEX1PRO": {
               "long_name": "Pointer Exercise 1",
               "required": true,
@@ -59,7 +55,8 @@
             }
           },
           "Bad References": {
-            "empPtrxxxCON": {}
+            "empPtrxxxCON": {},
+            "badPointerPowCON": {}
           },
           "Syntax": {
             "employeePtr2CON": {
@@ -67,9 +64,7 @@
               "required": true, 
               "points": 0.0, 
               "threshold": 1.0
-            }
-          },
-          "Example Reference Code": {
+            },
             "examplePointerCodeCON": {
               "long_name": "examplePointerCodeCON", 
               "required": true, 
@@ -77,23 +72,15 @@
               "threshold": 1.0
             }
           },
-          "Bad reference Example": {
-            "badPointerPowCON": {}
-          },
-          "Reference Rules Summary": {},
-          "Java References vs Pointers": {},
-          "How Are References Implemented In The Machine?": {
+          "Reference Rules Summary": {
             "memoryModelCON": {}
-          },
-          "Why Are Bad Reference Bugs So Common?": {}
+          }
         }
       },
       "PointersJava/LocalMem": {
         "long_name": "Local Memory",
         "sections": {
-          "Thanks For The Memory: Allocation and Deallocation": {},
-          "Local Memory": {},
-          "Examples": {
+          "Thanks For The Memory: Allocation and Deallocation": {
             "simpleLifetimeCON": {
               "long_name": "simpleLifetimeCON", 
               "required": true, 
@@ -114,8 +101,7 @@
       "PointersJava/HeapMem": {
         "long_name": "Heap Memory",
         "sections": {
-          "Heap Memory": {},
-	  "Java Garbage Collection":{
+          "Heap Memory and Garbage Collection":{
             "garbageDisposalCON": {
               "long_name": "garbageDisposalCON", 
               "required": true, 
@@ -125,10 +111,7 @@
           },
           "What Does The Heap Look Like?": {
             "LocalHeapaloc": {}, 
-            "LocalHeapdealoc": {}
-          },
-          "Programming The Heap": {},
-          "Simple Heap Example": {
+            "LocalHeapdealoc": {},
             "LocalHeapintptr42": {
               "long_name": "LocalHeapintptr42", 
               "required": true, 
@@ -136,9 +119,7 @@
               "threshold": 1.0
             }
           },
-          "Simple Heap Observations": {},
-          "Arrays": {},
-          "Heap Memory Summary": {}
+          "Arrays": {}
         }
       },
       "PointersJava/Links": {

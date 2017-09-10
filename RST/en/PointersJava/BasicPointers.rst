@@ -24,8 +24,11 @@
 Basic References
 ================
 
+Pointers and References
+-----------------------
+
 What is a Pointer?
-------------------
+~~~~~~~~~~~~~~~~~~
 
 There's a lot of nice, tidy code you can write without knowing about
 :term:`pointers <pointer>`.
@@ -49,7 +52,7 @@ Second, pointers enable complex linked data structures like
 
 
 What is a Reference?
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 Java actually uses a restricted version of the pointer concept,
 which is called a :term:`reference`.
@@ -69,7 +72,7 @@ These restrictions reduce the chance for bugs.
 
 
 Data Types in Java
-------------------
+~~~~~~~~~~~~~~~~~~
 
 Simple ``int`` and ``float`` variables operate pretty intuitively.
 An ``int`` variable is like a box that can store a single ``int``
@@ -127,13 +130,12 @@ Referencing and Dereferencing
 
 :term:`Dereferencing <dereference>` means to follow a reference to get
 the value of its pointee.
-The value of the dereference of ``empRef`` in the figure above is the
+Dereferencing ``empRef`` in the figure above gives back its pointee, the
 ``Employee`` object.
 So, "dereference" just means to access the value of the pointee.
 Visually, the result of a dereference is the object pointed to by the
 arrow.
-The key restriction is that the reference must have a pointee for the
-dereference to access.
+The key restriction is that the reference must have a pointee to access.
 A lot of bugs in reference code involve violating that one
 restriction.
 A reference must be assigned a pointee before dereference operations
@@ -143,8 +145,9 @@ The constant ``null`` is a special reference value that encodes the
 idea of "points to nothing".
 It turns out to be convenient to have a well-defined reference value
 to represent the idea that a reference does not have a pointee.
-It is a runtime error to dereference a ``null`` reference.
-In drawings, the value ``null`` is often drawn as a diagonal
+It is a runtime error to try to get the pointee of a ``null``
+reference.
+In drawings, the value ``null`` is often drawn as X's or as a diagonal
 line between the corners of the reference variable's box.
 
 .. _numptrnullFig:
@@ -152,8 +155,6 @@ line between the corners of the reference variable's box.
 .. inlineav:: empRefnullCON dgm
    :align: center
 
-
-.. The ``Employee`` Class
 
 The Employee Class
 ------------------
@@ -207,7 +208,7 @@ You should too.
 
 
 Sharing
--------
+~~~~~~~
 
 Two references which both refer to a single pointee are said to be
 "sharing".
@@ -270,7 +271,7 @@ Bad References
 
 When a reference is first allocated, it does not have a pointee.
 The reference is :term:`uninitialized` or simply "bad".
-A dereference operation on a bad reference is a serious runtime error.
+Dereferencing a bad reference is a serious runtime error.
 The dereference operation will crash or halt immediately.
 Each reference must be assigned a pointee before it can support
 dereference operations.
@@ -326,6 +327,52 @@ Remember to account for both levels.
 Making a memory drawing during your design can help to make sure that
 it's right.
 
+Code with the most common sort of reference bug will **look** correct,
+but without the middle step where the references
+are assigned pointees.
+The bad code will compile fine, but at run-time, each dereference with
+a bad reference will raise ``NullPointerException`` and the program
+will crash.
+It is up to you to ensure that each reference is assigned a pointee
+before it is used.
+Here is a simple example of bad code, and a
+drawing of how memory is likely to react.
+
+.. codeinclude:: Pointers/badPointers
+   :tag: badPointers
+
+|
+
+.. inlineav:: badPointerPowCON dgm
+   :align: center
+
+Why Are Bad Reference Bugs So Common?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There must be a reason why Java cares so much about dereferencing
+``null`` pointers, that its always watching out for it. Why?
+Because it happens in a lot of programs.
+
+Why is it so often the case that programmers will allocate a
+reference, but forget to set it to refer to a pointee?
+The rules for references do not seem that complex, yet every
+programmer makes this error repeatedly. Why?
+One explanation is that we are trained by the tools that we use.
+Simple variables don't require any extra setup.
+You can allocate a simple variable, such as ``int``, and use it
+immediately.
+All that ``int``, ``char`` or ``boolean`` variable code that you have
+written has trained you, quite reasonably, that a variable may be used
+once it is declared.
+Unfortunately, references look like simple variables.
+But they require the extra initialization before use.
+It's unfortunate, in a way, that references happen look like other
+variables, since it makes it easy to forget that the rules for their
+use are very different.
+Oh well.
+Try to remember to assign your references to refer to pointees.
+But don't be surprised when you forget, and your program breaks.
+
 
 Syntax
 ------
@@ -367,7 +414,7 @@ Dereference the reference
 
 Anytime a reference variable appears anywhere **other** than the left
 side of an assignment statement, it is
-:term:`dereferenced <dereference>`.
+dereferenced.
 This is really no different than how a primitive variable like an
 ``int`` is used.
 Consider the following code::
@@ -389,39 +436,17 @@ Otherwise, you get a runtime error of type ``NullPointerException``.
 
 
 Example Reference Code
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: examplePointerCodeCON ss
    :output: show
 
 
-Bad reference Example
----------------------
-
-Code with the most common sort of reference bug will **look** correct,
-but without the middle step where the references
-are assigned pointees.
-The bad code will compile fine, but at run-time, each dereference with
-a bad reference will raise ``NullPointerException`` and the program
-will crash.
-It is up to you to ensure that each reference is assigned a pointee
-before it is used.
-Here is a simple example of bad code, and a
-drawing of how memory is likely to react.
-
-.. codeinclude:: Pointers/badPointers
-   :tag: badPointers
-
-|
-
-.. inlineav:: badPointerPowCON dgm
-   :align: center
-
-
 Reference Rules Summary
 -----------------------
 
-No matter how complex a reference structure gets, the list of rules remains short.
+No matter how complex a reference structure gets, the list of rules
+remains short.
 
 * A reference variable stores a reference to its pointee.
   The pointee, in turn, stores something useful.
@@ -442,7 +467,7 @@ No matter how complex a reference structure gets, the list of rules remains shor
 
 
 Java References vs Pointers
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Java references have two main features that distinguishes them from
 the less restrictive pointers in a language like C or C++.
@@ -452,8 +477,8 @@ the less restrictive pointers in a language like C or C++.
    accurately and automatically, the most common reference bug are no
    longer possible. Yay!
    Also, the Java runtime system checks each reference value every time
-   it is used, so ``null`` reference dereferences are caught immediately on
-   the line where they occur.
+   it is used, so dereferencing a ``null`` reference is caught
+   immediately on the line where it occurs.
    This is in contrast to a language like C++, where dereferencing a
    value of ``null`` might not make the program crash until later.
    This can make a programmer much more productive to know
@@ -468,7 +493,7 @@ the less restrictive pointers in a language like C or C++.
 
 
 How Are References Implemented In The Machine?
-----------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 How are references implemented?
 The short explanation is that every area of memory in the machine has
@@ -508,34 +533,6 @@ value.
 Java's runtime environment is constantly watching for a dereference of
 a reference variable with a ``null`` value, so it can catch it right
 away if that happens.
-
-
-Why Are Bad Reference Bugs So Common?
--------------------------------------
-
-There must be a reason why Java cares so much about dereferencing
-``null`` pointers, that its always watching out for it. Why?
-Because it happens a in a lot of programs.
-
-Why is it so often the case that programmers will allocate a
-reference, but forget to set it to refer to a pointee?
-The rules for references do not seem that complex, yet every
-programmer makes this error repeatedly. Why?
-One explanation is that we are trained by the tools that we use.
-Simple variables don't require any extra setup.
-You can allocate a simple variable, such as ``int``, and use it
-immediately.
-All that ``int``, ``char`` or ``boolean`` variable code that you have
-written has trained you, quite reasonably, that a variable may be used
-once it is declared.
-Unfortunately, references look like simple variables.
-But they require the extra initialization before use.
-It's unfortunate, in a way, that references happen look like other
-variables, since it makes it easy to forget that the rules for their
-use are very different.
-Oh well.
-Try to remember to assign your references to refer to pointees.
-But don't be surprised when you forget, and your program breaks.
 
 .. odsascript:: AV/Pointers/num42CON.js
 .. odsascript:: AV/Pointers/employeeEmpRefCON.js

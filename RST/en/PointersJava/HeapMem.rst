@@ -18,8 +18,8 @@
 Heap Memory
 ===========
 
-Heap Memory
------------
+Heap Memory and Garbage Collection
+----------------------------------
 
 "Heap" memory, also known as "dynamic" memory, is an alternative to
 local stack memory.
@@ -73,10 +73,6 @@ The disadvantages of heap memory are:
 
 Nonetheless, there are many problems that can only be solved with heap
 memory, so that's the way it has to be.
-
-
-Java Garbage Collection
------------------------
 
 The following are some important points about Garbage Collection.
 
@@ -146,37 +142,50 @@ Allocation
 The heap is a large area of memory available for use by the program.
 The program can request areas, or "blocks", of memory for its use
 within the heap.
-In order to allocate a block of some size, the program makes an explicit request
-by calling the heap :term:`allocation` function. The allocation function reserves
-a block of memory of the requested size in the heap and returns a pointer to it.
-Suppose a program makes three allocation requests to allocate memory to hold three
-separate GIF images in the heap each of which takes 1024 bytes of memory. After
-the three allocation requests, memory might look like.
+In order to allocate a block of some size, the program makes an
+explicit request by calling the heap :term:`allocation` function.
+The allocation function reserves a block of memory of the requested
+size in the heap and returns a refernece to it. 
+Suppose a program makes three allocation requests to allocate memory
+to hold three separate GIF images in the heap, each of which takes
+1024 bytes of memory.
+After the three allocation requests, memory might look like.
 
 .. inlineav:: LocalHeapaloc dgm
 
-Each allocation request reserves a contiguous area of the requested size in the heap and
-returns a pointer to that new block to the program. Since each block is always referred to
-by a pointer, the block always plays the role of a "pointee" (Section 1) and the program
-always manipulates its heap blocks through pointers. The heap block pointers are
-sometimes known as "base address" pointers since by convention they point to the base
-(lowest address byte) of the block.
-In this example, the three blocks have been allocated contiguously starting at the bottom
-of the heap, and each block is 1024 bytes in size as requested. In reality, the heap
-manager can allocate the blocks wherever it wants in the heap so long as the blocks do
-not overlap and they are at least the requested size. At any particular moment, some areas
-in the heap have been allocated to the program, and so are "in use". Other areas have yet
-to be committed and so are "free" and are available to satisfy allocation requests. The
-heap manager has its own, private data structures to record what areas of the heap are
-committed to what purpose at any moment  The heap manager satisfies each allocation
-request from the pool of free memory and updates its private data structures to record
-which areas of the heap are in use.
+Each allocation request reserves a contiguous area of the requested
+size in the heap and returns a reference to that new block to the
+program.
+Since each block is always referred to by a reference, the block
+always plays the role of a "pointee" (Section 1) and the program 
+always manipulates its heap blocks through references.
+The heap block references are sometimes known as "base address"
+pointers since by convention they point to the base (lowest address
+byte) of the block.
+In this example, the three blocks have been allocated contiguously
+starting at the bottom of the heap, and each block is 1024 bytes in
+size as requested.
+In reality, the heap manager can allocate the blocks wherever it wants
+in the heap so long as the blocks do not overlap and they are at least
+the requested size.
+At any particular moment, some areas in the heap have been allocated
+to the program, and so are "in use".
+Other areas have yet to be committed and so are "free" and are
+available to satisfy allocation requests.
+The heap manager has its own, private data structures to record what
+areas of the heap are committed to what purpose at any moment.
+The heap manager satisfies each allocation request from the pool of
+free memory and updates its private data structures to record which
+areas of the heap are in use.
 
 Deallocation
 ~~~~~~~~~~~~
 
-When the program is finished using a block of memory, the block will
-be marked unused.
+When the program is finished using a block of memory, in some
+languages the block must be explicitly deallocated.
+In such cases, the block will be marked unused.
+In Java, typically space is "made available" by not having any
+references to it.
 This allows Java garbage collection to know that this area must be
 cleaned.
 Garbage collection will implicitly free up the unused memory blocks in
@@ -189,74 +198,74 @@ deallocates the second of the three blocks.
 
 .. inlineav:: LocalHeapdealoc dgm
 
-After deallocation, the pointer continues to point to the now
+After deallocation, the reference continues to point to the now
 deallocated block.
-The program must not access the deallocated pointee.
+The program can no longer reach the deallocated pointee.
+In a language (like C++) with explicit memory deallocation and no
+garbage collection, the programmer must make sure that he or she does
+not try to follow the old reference to the deallocated block.
 This is why the pointer is drawn in gray |---| the pointer is there,
 but it must not be used.
-Sometimes the code will set the pointer to ``null`` to tell the
-garbage collection that this object is now unused.
+Of course, in Java the code will have set the pointer to ``null`` or
+to point to somewhere else, so as to tell the garbage collection that
+this object is now unused.
+This is a big part of why Java references are safer to use than C++
+pointers.
 
 
+Programming the Heap
+~~~~~~~~~~~~~~~~~~~~
 
-Programming The Heap
---------------------
-
-Programming the heap looks pretty much the same in most languages. The basic features
-are:
+Programming the heap looks pretty much the same in most languages.
+The basic features are:
 
 * The heap is an area of memory available to allocate areas ("blocks")
   of memory for the program.
 
 * There is some "heap manager" library code which manages the heap for
-  the program. The programmer makes requests to the heap manager,
-  which in turn manages the internals of the heap.
+  the program.
+  The programmer makes requests to the heap manager, which in turn
+  manages the internals of the heap.
 
 * The heap manager uses its own private data structures to keep track
   of which blocks in the heap are "free" (available for use) and which
   blocks are currently in use by the program and how large those
-  blocks are. Initially, all of the heap is free.
+  blocks are.
+  Initially, all of the heap is free.
 
 * The heap may be of a fixed size (the usual conceptualization), or it
   may appear to be of a fixed but extremely large size backed by
-  virtual memory. In either case, it is possible for the heap to get
+  virtual memory.
+  In either case, it is possible for the heap to get
   "full" if all of its memory has been allocated and so it cannot
-  satisfy an allocation request. The allocation function will
-  communicate this run-time condition in some way to the program |---|
-  usually by raising an OutOfMemoryError run-time exception.
+  satisfy an allocation request.
+  The allocation function will communicate this run-time condition in
+  some way to the program |---| usually by raising an OutOfMemoryError
+  run-time exception.
 
 * The allocation function requests a block in the heap of a particular
-  size. The heap manager selects an area of memory to use to satisfy
+  size.
+  The heap manager selects an area of memory to use to satisfy
   the request, marks that area as "in use" in its private data
-  structures, and returns a pointer to the heap block. The caller is
-  now free to use that memory by dereferencing the pointer. The block
-  is guaranteed to be reserved for the sole use of the caller |---|
-  the heap will not hand out that same area of memory to some other
-  caller. The block does not move around inside the heap |---| its
+  structures, and returns a reference to the heap block.
+  The caller is now free to use that memory by following the
+  reference.
+  The block is guaranteed to be reserved for the sole use of the
+  caller |---| the heap will not hand out that same area of memory to
+  some other caller.
+  The block does not move around inside the heap |---| its
   location and size are fixed once it is allocated.
 
-* The deallocation function is the opposite of the allocation
-  function.
-  The Java virtual machine invokes the garbage collection to remove
+* The Java virtual machine invokes the garbage collection to remove
   any unused block of memory, free its space and return this space of
   memory to the heap free area for later re-use.
-  Each block should only be deallocated once.
-  After the deallocation, the program must treat the pointer as a
-  ``null`` pointer, and any attemp to acccess its deallocated space
-  raises a ``NullPointerException``.
 
 
-Simple Heap Example
--------------------
+A Simple Heap Example
+~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: LocalHeapintptr42 ss
    :output: show
-
-
-Simple Heap Observations
-------------------------
-
-Sorry, please ignore this.
 
 
 Arrays
@@ -271,11 +280,7 @@ array.
 
 .. codeinclude:: Pointers/Fraction
 
-
-Heap Array Observations
-~~~~~~~~~~~~~~~~~~~~~~~
-
-In the previous example the array is dynamically allocated memory in
+In this example the array is dynamically allocated memory in
 two steps:
 
 * The first step when the array is created using
@@ -290,15 +295,13 @@ two steps:
   The initial value of each object determined 
   by the values sent to the Fraction constructor.
 
-
-Heap Memory Summary
--------------------
-
 Heap memory provides greater control for the programmer |---| the
 blocks of memory can be requested in any size, and they remain
-allocated until they are deallocated implicitly.
-Heap memory can be passed back to the caller since it is not
-deallocated on exit, and it can be used to build linked structures
+allocated until they are no longer pointed to and recovered by the
+garbage collector.
+An object in heap memory can be passed back to the caller of a
+function, since it is not deallocated when that function exits.
+And it can be used to build linked structures
 such as linked lists and binary trees.
 The disadvantage of heap memory is that the program must make
 explicit allocation calls to manage the heap memory, and the program
