@@ -1377,8 +1377,8 @@
             }
           },
           "Implementation": {
-            "btTravInorderPRO": {
-              "long_name": "Binary Tree Inorder Traversal Exercise",
+            "btTravPreorderPRO": {
+              "long_name": "Binary Tree Preorder Traversal Exercise",
               "exer_options": {
                 "JXOP-code": "none"
               },
@@ -1398,9 +1398,9 @@
               "threshold": 0.90
             }
           },
-          "Preorder Traversal Practice": {
-            "btTravPreorderPRO": {
-              "long_name": "Binary Tree Preorder Traversal Exercise",
+          "Inorder Traversal Practice": {
+            "btTravInorderPRO": {
+              "long_name": "Binary Tree Inorder Traversal Exercise",
               "exer_options": {
                 "JXOP-code": "none"
               },
