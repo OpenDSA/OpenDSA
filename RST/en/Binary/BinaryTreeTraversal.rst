@@ -154,8 +154,8 @@ Postorder and inorder traversals are similar.
 They simply change the order in which the node and its children are
 visited, as appropriate.
 
-.. avembed:: AV/Binary/btTravInorderPRO.html pe
-   :long_name: Binary Tree Inorder Traversal Exercise
+.. avembed:: AV/Binary/btTravPreorderPRO.html pe
+   :long_name: Binary Tree Preorder Traversal Exercise
 
 
 Postorder Traversal Practice
@@ -165,11 +165,11 @@ Postorder Traversal Practice
    :long_name: Binary Tree Postorder Traversal Exercise
 
 
-Preorder Traversal Practice
----------------------------
+Inorder Traversal Practice
+--------------------------
 
-.. avembed:: AV/Binary/btTravPreorderPRO.html pe
-   :long_name: Binary Tree Preorder Traversal Exercise
+.. avembed:: AV/Binary/btTravInorderPRO.html pe
+   :long_name: Binary Tree Inorder Traversal Exercise
 
 
 Summary Questions
