@@ -18,7 +18,17 @@ static <E> void postorder(BinNode<E> rt) {
   postorder(rt.right());
   visit(rt);
 }
-/* *** ODSAendTag: postorder *** */
+/* *** ODSAendTag: postrder *** */
+
+// Visit nodes via preorder traversal
+/* *** ODSATag: preorder *** */
+static <E> void preorder(BinNode<E> rt) {
+  preorder(rt.left());
+  preorder(rt.right());
+  if (rt == null) return;
+  visit(rt);
+}
+/* *** ODSAendTag: preorder *** */
 
 static <E> void visit(BinNode<E> rt) {
   System.out.print(rt.value() + " ");
