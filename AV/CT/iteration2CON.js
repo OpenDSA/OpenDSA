@@ -16,9 +16,9 @@ $(document).ready(function() {
   var nodegap = 40;
 
 
-  // blue boxes, floor 1
-  av.g.rect(rect_left, rect0_top, 280, 35).addClass("bluebox");
-  av.g.rect(rect_left, rect0_top + 295, 280, 35).addClass("bluebox");
+  // blue boxes, floor 1, last floor
+  var topblue = av.g.rect(rect_left, rect0_top, 280, 35).addClass("bluebox");
+  var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35).addClass("bluebox");
 
   var rect_set = [];
   // floor 2
@@ -34,9 +34,12 @@ $(document).ready(function() {
 
   //floor 5, left big purple box and 3 blue boxes
   rect_set[4] = av.g.rect(rect_left, rect_top + 80, 110, 170).addClass("box");
-  av.g.rect(rect_left + 130, rect_top + 110, 180, 25).addClass("bluebox");
-  av.g.rect(rect_left + 130, rect_top + 140, 180, 25).addClass("bluebox");
-  av.g.rect(rect_left + 130, rect_top + 170, 180, 25).addClass("bluebox");
+
+  //blue boxes and the the lists for iteration
+  var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25).addClass("bluebox");
+  var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25).addClass("bluebox");
+  var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25).addClass("bluebox");
+  var animset = [midblue1, midblue2, midblue3];
 
   rect_set[5] = av.g.rect(rect_left + 110, rect_top + 200, 220, 50).addClass("box");
 
@@ -59,52 +62,100 @@ $(document).ready(function() {
   valuelabel.addClass("labels");
   valuelabel.addClass("valuelabel");
 
-  // Slide 1
+
+  // ----------------------slide show methods-----------------------
+
+    function blueHighlight(animset){
+      for(var i = 0; i < animset.length; i++){
+        animset[i].addClass("blueboxhigh");
+        animset[i].removeClass("blueboxhigh");
+      }
+    }
+
+
+
+  // --------------------- start slide shows
+
+  // Slide
   av.umsg(interpret("sc1"));
   var nextleft = leftMargin - 120;
   av.displayInit();
 
+  av.umsg(interpret(""));
+  topblue.addClass("blueboxhigh");
+  topblue.removeClass("blueboxhigh");
+  av.step();
 
-
-  // Slide 2
+  // Slide
   av.umsg(interpret("sc2"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  av.step();
+
+  // Slide
+  av.umsg(interpret(""));
+  blueHighlight(animset);
   valuelabel.value("9.95");
   av.step();
 
-  // Slide 3
+  // Slide
   av.umsg(interpret("sc3"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  av.step();
+
+  // Slide
+  av.umsg(interpret(""));
+  blueHighlight(animset);
   valuelabel.value("10.14");
   av.step();
 
-  // Slide 4
-  av.umsg(interpret("sc4"));
+  // Slide
+  av.umsg(interpret("sc3"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  av.step();
+
+  // Slide
+  av.umsg(interpret("sc4"));
+  blueHighlight(animset);
   valuelabel.value("10.33");
   av.step();
 
-  // Slide 5
+  // Slide
   av.umsg(interpret("sc5"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  av.step();
+
+  // Slide
+  av.umsg(interpret("sc5"));
+  blueHighlight(animset);
   valuelabel.value("4.88");
   av.step();
 
-  // Slide 6
+  // Slide
   av.umsg(interpret("sc6"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 50);
+  av.step();
+
+  // Slide
+  av.umsg(interpret("sc6"));
+  blueHighlight(animset);
   valuelabel.value("8.92");
   av.step();
 
-  // Slide 7
+  // Slide
   av.umsg(interpret("sc7"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 100);
   valuelabel.value("");
+  av.step();
+
+  // Slide
+  av.umsg(interpret("sc7"));
+  botblue.addClass("blueboxhigh");
+  botblue.removeClass("blueboxhigh");
   av.recorded();
 });

@@ -1,6 +1,7 @@
 cp {
   "translations" :{
     "en": {
+      "sc0": "iteration1CON slide 1",
       "sc1": "iteration1CON slide 1",
       "sc2": "iteration1CON slide 2",
       "sc3": "iteration1CON slide 3",

@@ -16,9 +16,9 @@ $(document).ready(function() {
   var nodegap = 40;
 
 
-  // blue boxes, floor 1
-  av.g.rect(rect_left, rect0_top, 280, 35).addClass("bluebox");
-  av.g.rect(rect_left, rect0_top + 295, 280, 35).addClass("bluebox");
+  // blue boxes, floor 1, last floor
+  var topblue = av.g.rect(rect_left, rect0_top, 280, 35).addClass("bluebox");
+  var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35).addClass("bluebox");
 
   var rect_set = [];
   // floor 2
@@ -34,13 +34,17 @@ $(document).ready(function() {
 
   //floor 5, left big purple box and 3 blue boxes
   rect_set[4] = av.g.rect(rect_left, rect_top + 80, 110, 170).addClass("box");
-  av.g.rect(rect_left + 130, rect_top + 110, 180, 25).addClass("bluebox");
-  av.g.rect(rect_left + 130, rect_top + 140, 180, 25).addClass("bluebox");
-  av.g.rect(rect_left + 130, rect_top + 170, 180, 25).addClass("bluebox");
+  var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25).addClass("bluebox");
+  var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25).addClass("bluebox");
+  var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25).addClass("bluebox");
 
   rect_set[5] = av.g.rect(rect_left + 110, rect_top + 200, 220, 50).addClass("box");
 
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
+
+  var animset = [midblue1, midblue2, midblue3];
+
+// create labels
 
   var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
   label1.addClass("labels");
@@ -52,46 +56,126 @@ $(document).ready(function() {
   label3.addClass("labels");
 
 
-  // Slide 1
-  av.umsg(interpret("sc1"));
+
+
+
+// ----------------------slide show methods-----------------------
+
+  function blueHighlight(animset){
+    for(var i = 0; i < animset.length; i++){
+      animset[i].addClass("blueboxhigh");
+      animset[i].removeClass("blueboxhigh");
+    }
+  }
+
+
+  // function blueHighlight(animset){
+  //
+  //     animset[0].addClass("blueboxhigh");
+  //     setTimeout(function() {animset[0].removeClass("blueboxhigh");
+  //       animset[1].addClass("blueboxhigh");
+  //       setTimeout(function() {animset[1].removeClass("blueboxhigh");
+  //         animset[2].addClass("blueboxhigh");
+  //         setTimeout(function() {animset[2].removeClass("blueboxhigh");
+  //
+  //
+  //       },800);
+  //
+  //       },800);
+  //
+  //     },800);
+  //     clearTimeout(timeout);
+  //
+  // }
+  // var delayInSeconds = parseInt(2);
+  // var delayInMilliseconds = delayInSeconds*1000;
+
+// ----------------------start slide show-----------------------
+
+  // Slide
+  av.umsg(interpret(""));
   var nextleft = leftMargin - 120;
   av.displayInit();
 
+  // Slide
+  av.umsg(interpret(""));
+  //Iteration Property box and arrow
+  av.label("Iteration<br>Property", {left: rect_left - 120, top: rect_top + 120}).css({'font-weight': '600'});
+  av.g.rect(rect_left - 140, rect_top + 125, 100, 70).addClass("fourRoundBox");
+  av.g.line(rect_left - 40, rect_top + 150, rect_left + 5, rect_top + 110, {'arrow-end': 'classic-wide-long', 'stroke-width': 3});
+  av.step();
 
+  // Slide
+  av.umsg(interpret(""));
+  topblue.addClass("blueboxhigh");
+  topblue.removeClass("blueboxhigh");
+  av.step();
 
-  // Slide 2
-  av.umsg(interpret("sc2"));
+  // Slide
+  av.umsg(interpret(""));
   arr.css({left: nextleft});
   nextleft -= nodegap;
   av.step();
 
-  // Slide 3
-  av.umsg(interpret("sc3"));
+  // Slide
+  av.umsg(interpret(""));
+  blueHighlight(animset);
+  av.step();
+
+  // Slide
+  av.umsg(interpret(""));
   arr.css({left: nextleft});
   nextleft -= nodegap;
   av.step();
 
-  // Slide 4
-  av.umsg(interpret("sc4"));
+  // Slide
+  av.umsg(interpret(""));
+  blueHighlight(animset);
+  av.step();
+
+  // Slide
+  av.umsg(interpret(""));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  av.step();
+
+  // Slide
+  av.umsg(interpret(""));
+  blueHighlight(animset);
   av.step();
 
   // Slide 5
-  av.umsg(interpret("sc5"));
+  av.umsg(interpret(""));
   arr.css({left: nextleft});
   nextleft -= nodegap;
   av.step();
 
+  // Slide
+  av.umsg(interpret(""));
+  blueHighlight(animset);
+  av.step();
+
   // Slide 6
-  av.umsg(interpret("sc6"));
+  av.umsg(interpret(""));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 50);
   av.step();
 
-  // Slide 7
-  av.umsg(interpret("sc7"));
+  // Slide
+  av.umsg(interpret(""));
+  blueHighlight(animset);
+  av.step();
+
+  // Slide
+  av.umsg(interpret(""));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 100);
+  av.step();
+
+
+  // Slide
+  av.umsg(interpret(""));
+  botblue.addClass("blueboxhigh");
+  botblue.removeClass("blueboxhigh");
   av.recorded();
 });
