@@ -98,16 +98,16 @@ def read_conf_file(config_file_path):
         print_err("INFO: course will be created for the first time")
         return False
 
-    # Try to read the configuration file data as JSON
+    # Try to read the configurat    ion file data as JSON
     try:
         with open(config_file_path) as config:
             # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
             # conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
             conf_data = json.load(config)
-    except ValueError, err:
+    except ValueError: #, err
         # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
-        msg = err.message
-        print_err(msg)
+        #msg = err.message
+        print_err("msg")
 
         if msg == 'No JSON object could be decoded':
             print_err('ERROR: %s is not a valid JSON file or does not use a supported encoding\n' % config_file_path)
@@ -251,8 +251,8 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, de
 def generate_index_rst(config, slides=False):
     """Generates the index.rst file, calls process_section() on config.chapters to recursively process all the modules in the book (in order), as each is processed it is added to the index.rst"""
 
-    print "Generating index.rst\n"
-    print "Processing..."
+    print ("Generating index.rst\n")
+    print ("Processing...")
 
     header_data = {}
     header_data['mod_name'] = 'index'
@@ -291,7 +291,7 @@ def generate_index_rst(config, slides=False):
 
 def generate_todo_rst(config, slides=False):
     """Sorts the list of ToDo directives (generated while recursively processing each module) by type and writes them all out to a file"""
-    print '\nGenerating ToDo file...'
+    print ('\nGenerating ToDo file...')
 
     # Sort the list of todo items by type (module_name, type, todo_directive)
     sorted_todo_list = sorted(todo_list, key=lambda todo: todo[2])
@@ -432,7 +432,7 @@ def configure(config_file_path, options):
     slides = options.slides
     no_lms = options.no_lms
 
-    print "Configuring OpenDSA, using " + config_file_path
+    print ("Configuring OpenDSA, using " + config_file_path)
 
     # Load and validate the configuration
     config = ODSA_Config(config_file_path, options.output_directory, options.no_lms)
@@ -442,7 +442,7 @@ def configure(config_file_path, options):
     # files, making the numbering incorrect
     html_dir = config.book_dir + config.rel_book_output_path
     if os.path.isdir(html_dir):
-        print "Clearing HTML directory"
+        print ("Clearing HTML directory")
         shutil.rmtree(html_dir)
 
     # Add the list of topics the book assumes students know to the list of
@@ -453,7 +453,7 @@ def configure(config_file_path, options):
 
     # Optionally rebuild JSAV
     if config.build_JSAV:
-        print "Building JSAV\n"
+        print ("Building JSAV\n")
         status = 0
 
         with open(os.devnull, "w") as fnull:
@@ -465,7 +465,7 @@ def configure(config_file_path, options):
             print_err(status)
             sys.exit(1)
 
-    print "Writing files to " + config.book_dir + "\n"
+    print ("Writing files to " + config.book_dir + "\n")
 
     # local mode option
     config.local_mode = str(options.local).lower()
@@ -524,7 +524,7 @@ def configure(config_file_path, options):
             '%sRST/Images/%s' % (config.odsa_dir, image), config.book_src_dir + 'Images/')
 
     # Run make on the output directory
-    print '\nBuilding textbook...'
+    print ('\nBuilding textbook...')
 
     if slides:
         proc = subprocess.Popen(
@@ -533,7 +533,7 @@ def configure(config_file_path, options):
         proc = subprocess.Popen(
             ['make', '-C', config.book_dir], stdout=subprocess.PIPE)
     for line in iter(proc.stdout.readline, ''):
-        print line.rstrip()
+        print (line.rstrip())
 
     # Calls the postprocessor to update chapter, section, and module numbers,
     # and glossary terms definition
