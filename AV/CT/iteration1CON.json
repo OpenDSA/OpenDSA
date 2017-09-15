@@ -1,14 +1,21 @@
-cp {
+{
   "translations" :{
     "en": {
-      "sc0": "iteration1CON slide 1",
       "sc1": "iteration1CON slide 1",
       "sc2": "iteration1CON slide 2",
       "sc3": "iteration1CON slide 3",
       "sc4": "iteration1CON slide 4",
       "sc5": "iteration1CON slide 5",
       "sc6": "iteration1CON slide 6",
-      "sc7": "iteration1CON slide 7"
+      "sc7": "iteration1CON slide 7",
+      "sc8": "iteration1CON slide 8",
+      "sc9": "iteration1CON slide 9",
+      "sc10": "iteration1CON slide 10",
+      "sc11": "iteration1CON slide 11",
+      "sc12": "iteration1CON slide 12",
+      "sc13": "iteration1CON slide 13",
+      "sc14": "iteration1CON slide 14",
+      "sc15": "iteration1CON slide 15"
     }
   }
 }
