@@ -29,7 +29,7 @@ $(document).ready(function() {
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
   //floor 4, long purple
-  av.g.rect(rect_left, rect_top + 75, 300, 30).addClass("box");
+  av.g.rect(rect_left, rect_top + 76, 300, 30).addClass("box");
 
   //floor 5, left big purple box and "set total = ..." blue box
   av.g.rect(rect_left, rect_top + 80, 110, 170).addClass("box");
