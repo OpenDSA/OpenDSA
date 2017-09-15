@@ -58,8 +58,6 @@
   fill : rgb(91, 91, 165);
   stroke : rgb(91, 91, 165);
   z-index: -500;
-  border-radius: 25px !important;
-  padding: 20px;
 }
 
 #iteration1CON .blueboxhigh, #iteration2CON  .blueboxhigh, #iteration3CON  .blueboxhigh  {
@@ -67,6 +65,7 @@
   stroke : #e6eeff;
 }
 
-#iteration1CON .fourRoundBox {
-  border-color: white;
+
+#iteration1CON .hiding {
+  visibility: hidden;
 }
