@@ -8,11 +8,11 @@ rst_dir = os.path.realpath(os.path.join(os.path.dirname(__file__), "..", "RST","
 short_name_re = "^(\.\. )+(avembed|inlineav):: ([^\s]+/)*([^\s.]*)(\.html)? (ka|ss|pe)"
 
 # the directories to be processed
-include_dirs = ["AlgAnal", "Background", "Binary", "Bounds", "BTRecurTutor",
+include_dirs = {"AlgAnal", "Background", "Binary", "Bounds", "BTRecurTutor",
                 "Design", "Development", "Files", "General", "Graph", "Hashing", 
                 "Indexing", "List", "MemManage", "NP", "PL", "PointersJava", 
                 "RecurTutor", "Searching", "SearchStruct", "SeniorAlgAnal", 
-                "Sorting", "Spatial", "Tutorials"]
+                "Sorting", "Spatial", "Tutorials"}
 
 def strip_rst_file(filename, root_dir):
     src = open(os.path.join(root_dir, filename), "r")
