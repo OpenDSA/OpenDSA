@@ -56,6 +56,12 @@
     "points": 1.0,
     "threshold": 0.9
   },
+  "glob_extrn_options": {
+    "points": 1.0,
+    "code-workout": {
+      "points": 1.0
+    }
+  },
   "chapters": {
     "Preface": {
       "Intro": {}

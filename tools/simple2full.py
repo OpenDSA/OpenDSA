@@ -19,30 +19,34 @@ ex_options = None
 ex_module = {} # map exercise names to modules
 sect_options = None
 default_ex_options = {
-    "ka": {
-      "required": True,
-      "points": 1,
-      "threshold": 5
+    'ka': {
+      'required': True,
+      'points': 1,
+      'threshold': 5
     }, 
-    "ss": {
-      "required": False,
-      "points": 0,
-      "threshold": 1
+    'ss': {
+      'required': False,
+      'points': 0,
+      'threshold': 1
     }, 
-    "pe": {
-      "required": True,
-      "points": 1,
-      "threshold": 0.9
+    'pe': {
+      'required': True,
+      'points': 1,
+      'threshold': 0.9
     },
-    "dgm": {
-      "required": False,
-      "points": 0,
-      "threshold": 1
+    'dgm': {
+      'required': False,
+      'points': 0,
+      'threshold': 1
+    },
+    'extr': {
+      'points': 1.0
     }
 }
 
 EXERCISE_FIELDS = ['points', 'required', 'long_name', 'threshold', 'exer_options']
 MODULE_FIELDS = ['dispModComp', 'mod_options', 'codeinclude']
+REQUIRED_EXERCISE_FIELDS = ['points', 'required', 'threshold']
 
 avembed_element = '''\
 <avembed
@@ -158,7 +162,12 @@ class extrtoolembed(Directive):
     if 'learning_tool' not in self.options or self.options['learning_tool'] == '':
       self.options['learning_tool'] = 'code-workout'
     if 'points' not in self.options or self.options['points'] == '':
-      self.options['points'] = 2.0
+      if self.options['learning_tool'] in default_ex_options['extr'] \
+          and 'points' in default_ex_options['extr'][self.options['learning_tool']]:
+
+        self.options['points'] = default_ex_options['extr'][self.options['learning_tool']]['points']
+      else:
+        self.options['points'] = default_ex_options['extr']['points']
 
     res = extertool_element % (self.options)
     return [nodes.raw('', res, format='xml')]
@@ -449,6 +458,10 @@ def extract_exs_config(exs_json):
         exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
         exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
         exs_config['extertool']['points'] = float(ex_obj['@points'])
+        if ex_obj['@resource_name'] in ex_options:
+          for key, value in ex_options[ex_obj['@resource_name']].iteritems():
+              exs_config['extertool'][key] = value
+          del ex_options[ex_obj['@resource_name']]
 
       if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ss":
         ex_obj = x['inlineav']
@@ -489,6 +502,10 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
       exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
       exs_config['extertool']['points'] = float(ex_obj['@points'])
+      if ex_obj['@resource_name'] in ex_options:
+          for key, value in ex_options[ex_obj['@resource_name']].iteritems():
+              exs_config['extertool'][key] = value
+          del ex_options[ex_obj['@resource_name']]
 
     if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ss":
       ex_obj = exs_json['inlineav']
@@ -577,6 +594,8 @@ def get_options(conf_data):
                   del value['long_name']
                 exercises[key] = value
                 ex_module[key] = module
+              elif 'learning_tool' in exercise_objs:
+                exercises[section_name] = exercise_objs
               elif key != 'long_name':
                 sections[section_name][key] = value
           if len(sections[section_name]) == 0:
@@ -598,30 +617,48 @@ def get_options(conf_data):
   
   return (exercises, sections, mod_opts)
 
-def generate_full_config(config_file_path):
-  ''' Generates a full configuration from a simplified configuration
-  '''
+def validate_glob_config(conf_data):
   global ex_options, default_ex_options, sect_options, mod_options
-  register()
 
-  conf_data = read_conf_file(config_file_path)
-  for ex_type in ["ka", "ss", "pe"]:
-    field = "glob_{0}_options".format(ex_type)
-    if field not in conf_data:
-      print_err("WARNING: Missing {0}, using default values instead.".format(field))
-      conf_data[field] = default_ex_options[ex_type]
+  for ex_type in ['ka', 'ss', 'pe']:
+      field = 'glob_{0}_options'.format(ex_type)
+      if field not in conf_data:
+        print_err('WARNING: Missing "{0}", using default values instead.'.format(field))
+        conf_data[field] = default_ex_options[ex_type]
+      else:
+        for field_name in REQUIRED_EXERCISE_FIELDS:
+          if field_name not in conf_data[field]:
+            print_err('WARNING: "{0}" is missing field "{1}". Using default value.'.format(field, field_name))
+            conf_data[field][field_name] = default_ex_options[ex_type][field_name]
+
+  if 'glob_extr_options' not in conf_data:
+    print_err('WARNING: Missing "glob_extr_options", using default values instead.')
+    conf_data['glob_extr_options'] = default_ex_options['extr']
+  else:
+    if 'points' not in conf_data['glob_extr_options']:
+      print_err('WARNING: "glob_extr_options" is missing field "points". Using default value.')
+      conf_data['glob_extr_options']['points'] = 1.0
 
   ex_options, sect_options, mod_options = get_options(conf_data)
   default_ex_options = {
-      "ka": conf_data["glob_ka_options"], 
-      "ss": conf_data["glob_ss_options"], 
-      "pe": conf_data["glob_pe_options"],
-      "dgm": {
-        "required": False,
-        "points": 0,
-        "threshold": 1
+      'ka': conf_data['glob_ka_options'], 
+      'ss': conf_data['glob_ss_options'], 
+      'pe': conf_data['glob_pe_options'],
+      'extr': conf_data['glob_extr_options'],
+      'dgm': {
+        'required': False,
+        'points': 0,
+        'threshold': 1
       }
   }
+
+def generate_full_config(config_file_path):
+  ''' Generates a full configuration from a simplified configuration
+  '''
+  register()
+
+  conf_data = read_conf_file(config_file_path)
+  validate_glob_config(conf_data)
 
   full_config = OrderedDict()
   full_config = conf_data.copy()
@@ -629,6 +666,7 @@ def generate_full_config(config_file_path):
   del full_config['glob_ka_options']
   del full_config['glob_ss_options']
   del full_config['glob_pe_options']
+  del full_config['glob_extr_options']
 
   mod_files = get_chapter_module_files(conf_data)
   for chapter, files in mod_files.iteritems():
