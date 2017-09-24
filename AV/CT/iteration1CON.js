@@ -64,10 +64,17 @@ $(document).ready(function() {
 
 // ----------------------slide show methods-----------------------
 
+  function blink(it) {
+      it.addClass("blueboxhigh");
+      it.removeClass("blueboxhigh");
+  }
+  
   function blueHighlight(animset){
     for(var i = 0; i < animset.length; i++){
-      animset[i].addClass("blueboxhigh");
-      animset[i].removeClass("blueboxhigh");
+      // Try to get setTimeout to delay blinking the rectangles
+      // But this does not actually change the timing
+      setTimeout(blink, 1000, animset[i]);
+      //      blink(animset[i]);  // What we do when not using setTimeout
     }
   }
 
