@@ -11,6 +11,9 @@
 Limits to Computing
 ===================
 
+Limits to Computing
+-------------------
+
 By now you have studied many data structures that can be used in a
 wide variety of problems, and many examples of efficient algorithms.
 In general, our search algorithms strive to be at worst in
