@@ -306,6 +306,9 @@ class ODSA_RST_Module:
 
       avmetadata_found = False
 
+      links = {}
+      scripts = {}
+
       # Alter the contents of the module based on the config file
       i = 0
       while i < len(mod_data):
@@ -457,6 +460,39 @@ class ODSA_RST_Module:
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
                 mod_data[i] += ''.join(rst_options)
+
+                j = i + 1
+                opt_line = next_line
+                links_found = False
+                scripts_found = False
+                while opt_line.startswith(':'):
+                  if opt_line.startswith(':links: '):
+                    link_opts = opt_line[len(':links: '):].split()
+                    if len(link_opts) > 0:
+                      links_found = True
+                      for link in link_opts:
+                        if link not in links:
+                          links[link] = False
+                    del mod_data[j]
+                    j -= 1
+
+
+                  elif opt_line.startswith(':scripts: '):
+                    script_opts = opt_line[len(':scripts: '):].split()
+                    if len(script_opts) > 0:
+                      scripts_found = True
+                      for script in script_opts:
+                        if script not in scripts:
+                          scripts[script] = False
+                    del mod_data[j]
+                    j -=1
+
+                  j += 1
+                  opt_line = mod_data[j].strip() if j < len(mod_data) else ''
+
+                if not links_found or not scripts_found:
+                  print_err("ERROR: Module '{0}', line {1} -- slideshow directive missing :links: and/or :scripts: options".format(mod_path, i))
+                
             elif av_type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
               # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
               print_err("%sWARNING: %s is a diagram (attributes are not supported), line %d" %(console_msg_prefix, av_name, i + 1))
@@ -578,11 +614,27 @@ class ODSA_RST_Module:
           trgt = "".join(trgt.split())
           num_ref_map[trgt] = mod_num + '.%s#' % counters['figure']
           counters['figure'] += 1
+        elif line.startswith('.. odsalink::'):
+          args = parse_directive_args(line, i, 1, console_msg_prefix)
+          if args:
+            links[args[0]] = True
+        elif line.startswith('.. odsascript::'):
+          args = parse_directive_args(line, i, 1, console_msg_prefix)
+          if args:
+            scripts[args[0]] = True
 
         i = i + 1
 
       if not avmetadata_found:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
+
+      for link, has_directive in links.iteritems():
+        if not has_directive:
+          mod_data.insert(0, '.. odsalink:: {0}\n'.format(link))
+
+      for script, has_directive in scripts.iteritems():
+        if not has_directive:
+          mod_data.append('.. odsascript:: {0}\n'.format(script))
 
       mod_sections = mod_attrib['sections'].keys() if 'sections' in mod_attrib and mod_attrib['sections'] != None else []
 
