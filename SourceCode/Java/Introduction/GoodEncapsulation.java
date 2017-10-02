@@ -2,16 +2,16 @@
 /** A class with encapsulation */
 class Shipping {
   // minimum shipping weight in oz.
-  private static final int MIN_WEIGHT = 1;  
+  private static final int MIN_WEIGHT = 1;
   private int weight;
 
   public int getWeight () {
     return weight;
-  } 
+  }
 
-  public int setWeight (int value) {
+  public void setWeight (int value) {
     weight = Math.max(MIN_WEIGHT, value);
-  } 
+  }
 
 }
 
