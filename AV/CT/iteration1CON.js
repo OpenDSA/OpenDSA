@@ -3,7 +3,7 @@
 //Array-Based list introduction
 $(document).ready(function() {
   "use strict";
-  var arrValues = [9.95, 10.14, 10.33, 4.88, 8.92];
+  var arrValues = [4, 13, 6, 9, 11];
   var av_name = "iteration1CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
@@ -17,28 +17,32 @@ $(document).ready(function() {
 
 
   // blue boxes, floor 1, last floor
-  var topblue = av.g.rect(rect_left, rect0_top, 280, 35).addClass("bluebox");
-  var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35).addClass("bluebox");
+  var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
+  var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
 
   // floor 2
-  av.g.rect(rect_left, rect_top, 250, 35).addClass("box");
+  av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("box")
+  av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("box"); // for no-roung on the corner
 
   //floor 3
-  av.g.rect(rect_left, rect_top + 35, 30, 48).addClass("box");
-  av.g.rect(rect_left + 73, rect_top + 35, 30, 50).addClass("box");
+  av.g.rect(rect_left, rect_top + 25, 30, 60).addClass("box").css({opacity: 0.9});
+  av.g.rect(rect_left + 73, rect_top + 25, 30, 60).addClass("box").css({opacity: 0.9});
   //create array contains 5 values.
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
   //floor 4, long purple
-  av.g.rect(rect_left, rect_top + 76, 300, 30).addClass("box");
+  av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("box");
+  av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("box"); // for no-roung on the corner
 
   //floor 5, left big purple box and 3 blue boxes
-  av.g.rect(rect_left, rect_top + 80, 110, 170).addClass("box");
-  av.g.rect(rect_left + 110, rect_top + 200, 220, 50).addClass("box");
+  av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("box");
 
-  var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25).addClass("bluebox");
-  var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25).addClass("bluebox");
-  var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25).addClass("bluebox");
+  //floor 5, right big putple box below blue boxes
+  av.g.rect(rect_left + 90, rect_top + 200, 230, 50, 10).addClass("box");
+
+  var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
+  var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
+  var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
   var animset = [midblue1, midblue2, midblue3];
 
 
@@ -68,13 +72,10 @@ $(document).ready(function() {
       it.addClass("blueboxhigh");
       it.removeClass("blueboxhigh");
   }
-  
+
   function blueHighlight(animset){
     for(var i = 0; i < animset.length; i++){
-      // Try to get setTimeout to delay blinking the rectangles
-      // But this does not actually change the timing
-      setTimeout(blink, 1000, animset[i]);
-      //      blink(animset[i]);  // What we do when not using setTimeout
+           blink(animset[i]);  // What we do when not using setTimeout
     }
   }
 

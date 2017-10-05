@@ -3,7 +3,7 @@
 //Array-Based list introduction
 $(document).ready(function() {
   "use strict";
-  var arrValues = [9.95, 10.14, 10.33, 4.88, 8.92];
+  var arrValues = [4, 13, 6, 9, 11];
   var av_name = "iteration2CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
@@ -17,32 +17,34 @@ $(document).ready(function() {
 
 
   // blue boxes, floor 1, last floor
-  var topblue = av.g.rect(rect_left, rect0_top, 280, 35).addClass("bluebox");
-  var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35).addClass("bluebox");
+  var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
+  var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
 
   // var rect_set = [];
   // floor 2
-  av.g.rect(rect_left, rect_top, 250, 35).addClass("box");
+  av.g.rect(rect_left, rect_top, 250, 35.5, 10).addClass("box");
+  av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("box"); // for no-roung on the corner
 
   //floor 3 rects and array list JSAV contains arrValues' elements
-  av.g.rect(rect_left, rect_top + 35, 30, 48).addClass("box");
-  av.g.rect(rect_left + 73, rect_top + 35, 30, 50).addClass("box");
+  av.g.rect(rect_left, rect_top + 5, 30, 90, 10).addClass("box").css({opacity: 0.9});
+  av.g.rect(rect_left + 73, rect_top + 25, 30, 70, 10).addClass("box").css({opacity: 0.9});
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
   //floor 4, long purple
-  av.g.rect(rect_left, rect_top + 76, 300, 30).addClass("box");
+  av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("box");
 
   //floor 5, left big purple box and 3 blue boxes
-  av.g.rect(rect_left, rect_top + 80, 110, 170).addClass("box");
+  av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("box");
+  av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("box"); // for no-roung on the corner
 
   //blue boxes and the the sets of it for the iterations later
-  var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25).addClass("bluebox");
-  var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25).addClass("bluebox");
-  var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25).addClass("bluebox");
+  var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
+  var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
+  var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
   var animset = [midblue1, midblue2, midblue3];
 
   // last purple box.
-  av.g.rect(rect_left + 110, rect_top + 200, 220, 50).addClass("box");
+  av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("box");
 
 
   // ----------------------labels-----------------------
@@ -59,7 +61,7 @@ $(document).ready(function() {
   pricelabel.addClass("labels");
   pricelabel.addClass("midlabel");
 
-  var valuelabel = av.label("", {left: rect_left + 230, top: rect_top + 111});
+  var valuelabel = av.label("", {left: rect_left + 240, top: rect_top + 112});
   valuelabel.addClass("labels");
   valuelabel.addClass("valuelabel");
 
@@ -95,7 +97,7 @@ $(document).ready(function() {
   // Slide 4
   av.umsg(interpret("sc4"));
   blueHighlight(animset);
-  valuelabel.value("9.95");
+  valuelabel.value("4");
   av.step();
 
   // Slide 5
@@ -107,7 +109,7 @@ $(document).ready(function() {
   // Slide 6
   av.umsg(interpret("sc6"));
   blueHighlight(animset);
-  valuelabel.value("10.14");
+  valuelabel.value("13");
   av.step();
 
   // Slide 7
@@ -119,7 +121,7 @@ $(document).ready(function() {
   // Slide 8
   av.umsg(interpret("sc8"));
   blueHighlight(animset);
-  valuelabel.value("10.33");
+  valuelabel.value("21");
   av.step();
 
   // Slide 9
@@ -131,7 +133,7 @@ $(document).ready(function() {
   // Slide 10
   av.umsg(interpret("sc10"));
   blueHighlight(animset);
-  valuelabel.value("4.88");
+  valuelabel.value("9");
   av.step();
 
   // Slide 11
@@ -143,7 +145,7 @@ $(document).ready(function() {
   // Slide 12
   av.umsg(interpret("sc12"));
   blueHighlight(animset);
-  valuelabel.value("8.92");
+  valuelabel.value("11");
   av.step();
 
   // Slide 13
