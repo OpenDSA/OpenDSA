@@ -10,8 +10,11 @@
 Other Memory Allocation Methods
 ===============================
 
+Other Memory Allocation Methods
+-------------------------------
+
 Buddy Methods
--------------
+~~~~~~~~~~~~~
 
 Sequential-fit methods rely on a linked list of free blocks, which
 must be searched for a suitable block at each memory request.
@@ -107,7 +110,7 @@ block size.
 
 
 Other Methods
--------------
+~~~~~~~~~~~~~
 
 In addition to sequential-fit and buddy methods, there are many
 ad hoc approaches to memory management.

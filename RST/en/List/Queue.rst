@@ -14,8 +14,8 @@
 Queues
 ======
 
-Queue Terminology
------------------
+Queue Terminology and Implementation
+------------------------------------
 
 Like the stack, the :term:`queue` is a list-like structure that
 provides restricted access to its elements.
@@ -42,7 +42,7 @@ the array-based queue and the linked queue.
 
 
 Array-Based Queues
-------------------
+~~~~~~~~~~~~~~~~~~
 
 The array-based queue is somewhat tricky to implement effectively.
 A simple conversion of the array-based list implementation is not
@@ -108,7 +108,7 @@ Here is an array-based queue implementation.
 
 
 Array-based Queue Implementation
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: aqueueVarCON ss
    :long_name: Array-based Queue Variables Slideshow

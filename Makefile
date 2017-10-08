@@ -101,6 +101,9 @@ Test: min
 CT: min
 	python $(CONFIG_SCRIPT) config/CT.json --no-lms
 
+EverythingPlain: min
+	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
+
 Everything: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/Everything_generated.json --no-lms

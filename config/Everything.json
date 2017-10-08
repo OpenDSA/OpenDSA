@@ -335,8 +335,7 @@
       "Background/SetDef": {
         "long_name": "Set Definitions",
         "sections": {
-          "Set Notation": {},
-          "Relations": {
+          "Set Notation": {
             "SetTFrelation": {
               "long_name": "Relations Exercise",
               "required": true,
@@ -666,7 +665,7 @@
         "long_name": "Speeding Up Your Programs",
         "sections": {}
       },
-      "AlgAnal/AlgAnalSumm": {
+      "AlgAnal/AlgAnalSummCS2": {
         "long_name": "Algorithm Analysis Summary Exercises",
         "sections": {
           "Summary Exercise: CS2": {
@@ -676,7 +675,12 @@
               "points": 1.0,
               "threshold": 5
             }
-          },
+          }
+        }
+      },
+      "AlgAnal/AlgAnalSummCS3": {
+        "long_name": "Algorithm Analysis Summary Exercises",
+        "sections": {
           "Summary Exercise: CS3": {
             "showsection": true,
             "AlgAnalCS3Summ": {
@@ -695,9 +699,9 @@
         "sections": {}
       },
       "List/ListADT": {
-        "long_name": "List ADT",
+        "long_name": "The List ADT",
         "sections": {
-          "List Terminology and Notation": {
+          "The List ADT": {
             "listADTposCON": {
               "long_name": "List ADT Positions Slideshow",
               "required": false,
@@ -734,9 +738,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Insert Practice Exericse": {
+            },
             "AlistInsertPRO": {
               "long_name": "Array-based List Insert Exercise",
               "required": true,
@@ -792,9 +794,7 @@
               "threshold": 1.0
             },
             "llistInitCON": {},
-            "llistHeaderCON": {}
-          },
-          "Linked List Implementation": {
+            "llistHeaderCON": {},
             "llistVarsCON": {
               "long_name": "Linked List Variables Slideshow",
               "required": false,
@@ -935,8 +935,7 @@
       "List/StackArray": {
         "long_name": "Array-based Stacks",
         "sections": {
-          "Stack Terminology": {},
-          "Array-Based Stacks": {
+          "Stack Terminology and Implementation": {
             "astackVarCON": {
               "long_name": "Array stack variables slideshow",
               "required": false,
@@ -1033,8 +1032,7 @@
       "List/Queue": {
         "long_name": "Queues",
         "sections": {
-          "Queue Terminology": {},
-          "Array-Based Queues": {
+          "Queue Terminology and Implementation": {
             "aqueueFirstCON": {
               "long_name": "Array-based Queue Positions Slideshow",
               "required": false,
@@ -1064,9 +1062,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Array-based Queue Implementation": {
+            },
             "aqueueVarCON": {
               "long_name": "Array-based Queue Variables Slideshow",
               "required": false,
@@ -1536,9 +1532,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Implementation": {
+            },
             "btTravPreorderPRO": {
               "long_name": "Binary Tree Preorder Traversal Exercise",
               "exer_options": {
@@ -1607,7 +1601,7 @@
             "BinaryTreeMistakesCON": {
               "long_name": "Binary Tree Common Mistakes Slideshow",
               "required": false,
-              "points": 0.0,
+              "points": 1.0,
               "threshold": 0.90
             }
           },
@@ -1783,7 +1777,7 @@
             "IneffBinaryTreeRangeCON": {
               "long_name": "Inefficient Binary Tree Traversal on Range Slide Show",
               "required": false,
-              "points": 0.0,
+              "points": 1.0,
               "threshold": 0.90
             }
           },
@@ -3107,8 +3101,7 @@
       "MemManage/Buddy": {
         "long_name": "Other Memory Allocation Methods",
         "sections": {
-          "Buddy Methods": {},
-          "Other Methods": {}
+          "Other Memory Allocation Methods": {}
         }
       },
       "MemManage/Garbage": {
@@ -3346,14 +3339,12 @@
       "Graph/GraphIntro": {
         "long_name": "Introduction and Terminology",
         "sections": {
-          "Graph Terminology": {
+          "Graph Terminology and Implementation": {
             "GdirundirCON": {},
             "GneighborCON": {},
             "GpathDefCON": {},
             "GconcomCON": {},
-            "GsparseDefCON": {}
-          },
-          "Graph Representations": {
+            "GsparseDefCON": {},
             "GdirRepCON": {},
             "GundirRepCON": {},
             "GweightedCON": {},
@@ -3516,32 +3507,32 @@
       "PL/Grammars1": {
         "long_name": "Introduction to BNF grammars - Part 1",
         "sections": {
-          "RP 1 part 1": {
-            "RP1part1": {
+          "Parse Trees": {
+            "NumParseTreeNodes": {
               "long_name": "RP set #1, question #1",
               "required": true,
               "points": 1.0,
               "threshold": 1.0
             }
           },
-          "RP 1 part 2": {
-            "RP1part2": {
+          "Strings Generated by a Grammar": {
+            "StringGenFromGmr": {
               "long_name": "RP set #1, question #2",
               "required": true,
               "points": 1.0,
               "threshold": 1.0
             }
           },
-          "RP 1 part 3": {
-            "RP1part3": {
+          "Characterizing a Language (1)": {
+            "CharacterizeLang1": {
               "long_name": "RP set #1, question #3",
               "required": true,
               "points": 1.0,
               "threshold": 1.0
             }
           },
-          "RP 1 part 4": {
-            "RP1part4": {
+          "Characterizing a Language (2)": {
+            "CharacterizeLang2": {
               "long_name": "RP set #1, question #4",
               "required": true,
               "points": 1.0,
@@ -4789,8 +4780,7 @@
       "Searching/SortedSearch": {
         "long_name": "Search in sorted Arrays",
         "sections": {
-          "Analysis": {},
-          "Lower Bounds Proof": {}
+          "Analysis": {}
         }
       },
       "Development/SelfOrg": {

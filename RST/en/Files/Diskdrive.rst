@@ -50,7 +50,7 @@ At any given time, some records are more quickly accessible than
 others.
 
 Disk Drive Architecture
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 A hard disk drive is composed of one or more round
 :term:`platters <platter>`,
@@ -277,7 +277,7 @@ fragmentation.
 
 
 Disk Access Costs
------------------
+~~~~~~~~~~~~~~~~~
 
 When a seek is required, it is usually
 the primary cost when accessing information on disk.
@@ -425,7 +425,7 @@ is to be read, this will require a trivial amount of time
    whenever a file is created or changed.
 
 Notes
------
+~~~~~
 
 .. [#] This arrangement, while typical, is not necessarily true for
        all disk drives.

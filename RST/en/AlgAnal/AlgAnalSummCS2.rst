@@ -17,11 +17,3 @@ Summary Exercise: CS2
 
 .. avembed:: Exercises/AlgAnal/AlgAnalCS2Summ.html ka
    :long_name: Algorithm Analysis Summary Questions
-
-Summary Exercise: CS3
----------------------
-
-.. avembed:: Exercises/AlgAnal/AlgAnalCS3Summ.html ka
-   :long_name: Algorithm Analysis Summary Questions
-
-
