@@ -30,13 +30,8 @@
         "sections": {
           "Pointers and References": {
             "num42CON": {},
-            "employeeEmpRefCON": {}
-          },
-          "Referencing and Dereferencing": {
-            "empRefnullCON": {}
-          },
-          "The Employee Class": {},
-          "Reference Assignments": {
+            "employeeEmpRefCON": {},
+            "empRefnullCON": {},
             "empRefsecondCON": {},
             "PointerEX1PRO": {
               "long_name": "Pointer Exercise 1",
@@ -52,13 +47,9 @@
               "required": true,
               "points": 1,
               "threshold": 1
-            }
-          },
-          "Bad References": {
+            },
             "empPtrxxxCON": {},
-            "badPointerPowCON": {}
-          },
-          "Syntax": {
+            "badPointerPowCON": {},
             "employeePtr2CON": {
               "long_name": "employeePtr2CON",
               "required": false,
@@ -70,9 +61,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Reference Rules Summary": {
+            },
             "memoryModelCON": {}
           }
         }
@@ -80,7 +69,7 @@
       "PointersJava/LocalMem": {
         "long_name": "Local Memory",
         "sections": {
-          "Thanks For The Memory: Allocation and Deallocation": {
+          "Local Memory": {
             "simpleLifetimeCON": {
               "long_name": "simpleLifetimeCON",
               "required": false,
@@ -93,23 +82,19 @@
               "points": 0.0,
               "threshold": 1.0
             }
-          },
-          "Local Parameters": {},
-          "How Does The Function Call Stack Work?": {}
+          }
         }
       },
       "PointersJava/HeapMem": {
         "long_name": "Heap Memory",
         "sections": {
-          "Heap Memory and Garbage Collection":{
+          "Heap Memory":{
             "garbageDisposalCON": {
               "long_name": "garbageDisposalCON",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "What Does The Heap Look Like?": {
+            },
             "LocalHeapaloc": {},
             "LocalHeapdealoc": {},
             "LocalHeapintptr42": {
@@ -118,8 +103,7 @@
               "points": 0.0,
               "threshold": 1.0
             }
-          },
-          "Arrays": {}
+          }
         }
       },
       "PointersJava/Links": {

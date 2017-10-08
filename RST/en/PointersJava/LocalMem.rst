@@ -15,8 +15,11 @@
 Local Memory
 ============
 
+Local Memory
+------------
+
 Thanks For The Memory: Allocation and Deallocation
---------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :term:`Local variables <local variable>` are the programming structure
 everyone uses but no one thinks about.
@@ -139,7 +142,7 @@ the runtime stack as this example is being executed.
 
 
 Local Parameters
-----------------
+~~~~~~~~~~~~~~~~
 
 Local variables are tightly associated with their function |---| they
 are used there and nowhere else.
@@ -230,11 +233,11 @@ lifetime.
 
 
 How Does The Function Call Stack Work?
---------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You do not need to know how local variables are implemented during a
-function call, but here is a rough outline of the steps if you are
-curious.
+function call to be able to use them correctly,
+but here is a rough outline of the steps if you are curious.
 The exact details of the implementation are language and compiler
 specific.
 However, the basic structure below approximates the method used by

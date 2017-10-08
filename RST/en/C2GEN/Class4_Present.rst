@@ -84,7 +84,7 @@ A "full AV" that instruments an algorithm, code display
 
 A proficiency exercise
 
-.. avembed:: AV/Binary/BSTsearchPRO.html ss
+.. avembed:: AV/Binary/BSTsearchPRO.html pe
    :showhide: none
 
 `Source HTML <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Binary/BSTsearchPRO.html>`_
@@ -93,7 +93,7 @@ A proficiency exercise
 
 More complicated proficiency exercise
 
-.. avembed:: AV/Sorting/shellsortPRO.html ss
+.. avembed:: AV/Sorting/shellsortPRO.html pe
    :showhide: none
 
 `Source HTML <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Sorting/shellsortPRO.html>`_

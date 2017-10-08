@@ -126,7 +126,7 @@ Copying section below.
 
 
 Referencing and Dereferencing
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :term:`Dereferencing <dereference>` means to follow a reference to get
 the value of its pointee.
@@ -157,7 +157,7 @@ line between the corners of the reference variable's box.
 
 
 The Employee Class
-------------------
+~~~~~~~~~~~~~~~~~~
 
 We are going to use the ``Employee`` object for a lot of our examples,
 so let's make a formal introduction now.
@@ -168,7 +168,7 @@ Meet the ``Employee`` class.
 
 
 Reference Assignments
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 An assignment (``=``) of one reference to another makes them point to
 the same pointee.
@@ -267,7 +267,7 @@ Here is an example of the difference between shallow and deep copying:
 
              
 Bad References
---------------
+~~~~~~~~~~~~~~
 
 When a reference is first allocated, it does not have a pointee.
 The reference is :term:`uninitialized` or simply "bad".
@@ -375,7 +375,7 @@ But don't be surprised when you forget, and your program breaks.
 
 
 Syntax
-------
+~~~~~~
 
 The above basic features of references, pointees, dereferencing, and
 assigning are the only concepts you need to build reference code.
