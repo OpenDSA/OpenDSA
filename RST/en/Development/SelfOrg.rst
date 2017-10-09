@@ -188,7 +188,7 @@ list will be the one most appropriate for reuse when a new page
 of information must be read.
 
 Frequency Count
----------------
+~~~~~~~~~~~~~~~
 
 There are three traditional heuristics for managing self-organizing
 lists.
@@ -296,7 +296,7 @@ forward in the list by some fixed number of steps.
 
 
 An Example
-----------
+~~~~~~~~~~
 
 While self-organizing lists do not generally perform as well
 as search trees or a sorted list, both of which require

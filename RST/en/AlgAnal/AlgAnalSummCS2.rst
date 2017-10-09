@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: algorithm analysis; analyzing programs; analyzing problems; analysis misunderstandings; space analysis introduction
+   :requires: algorithm analysis; analyzing programs
    :satisfies: algorithm analysis review
    :topic: Algorithm Analysis
 

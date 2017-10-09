@@ -12,8 +12,8 @@
 Reductions
 ==========
 
-Introduction
-------------
+Reductions
+----------
 
 This module introduces an important concept for
 understanding the relationships between problems, called
@@ -43,7 +43,7 @@ follows:
 
 
 Example: The Pairing Problem
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you buy or write a program to solve one problem, such
 as sorting, you might be able to use it to help solve a different
@@ -128,7 +128,7 @@ But, another approach might conceivably be faster.
 
 
 Reduction and Finding a Lower Bound
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There is another use of reductions aside from applying an old
 algorithm to solve a new problem (and thereby establishing an upper
@@ -186,7 +186,7 @@ for **PAIRING**.
 
 
 The Reduction Template
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Consider any two problems for which a suitable reduction from one to
 the other can be found.
@@ -246,7 +246,7 @@ lower bound of the first.
 
 
 Two Multiplication Examples
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As a second example of reduction, consider the simple problem of
 multiplying two :math:`n`-digit numbers.
@@ -384,7 +384,7 @@ The following slideshow illustrates this reduction process.
 
 
 Bounds Theorems
----------------
+~~~~~~~~~~~~~~~
 
 We will use the following notation:
 :math:`\leq_{O(g(n))}` means that a reduction can be done
@@ -415,7 +415,7 @@ So, given good transformations, both problems take at least
 
 
 The Cost of Making a Simple Polygon
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 SIMPLE POLYGON: Given a set of :math:`n` points in the plane,
 find a simple polygon with those points as vertices.

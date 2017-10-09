@@ -219,7 +219,7 @@ A series of exercises are provided to help you test your knowlege of the
 scratch paper to work on.
 
 Exercise 1
-----------
+~~~~~~~~~~
 
 In the exercise below, you are provided a row of the table from the previous
 algorithm. Determine if the item with weigh and value given on the left should

@@ -1,6 +1,6 @@
 {
-  "title": "CS4104 Data and Algorithm Analysis",
-  "desc": "CS4104 Data and Algorithm Analysis",
+  "title": "Senior Algorithms",
+  "desc": "Senior Algorithms",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -132,8 +132,7 @@
       "Searching/UnsortedSearch": {
         "long_name": "Analyzing Search in Unsorted Lists",
         "sections": {
-          "Analysis": {},
-          "Lower Bounds Proofs": {}
+          "Analyzing Search in Unsorted Lists": {}
         }
       },
       "Searching/SortedSearch": {
@@ -172,28 +171,27 @@
       "Background/SetDef": {
         "long_name": "Set Definitions",
         "sections": {
-          "Set Notation": {},
-          "Relations": {
+          "Set Notation": {
             "SetTFrelation": {
               "long_name": "Relations Exercise",
-              "required": false,
-              "points": 0.0,
+              "required": true,
+              "points": 2.0,
               "threshold": 5
             }
           },
           "Equivalence Relations": {
             "SetTFequivrel": {
               "long_name": "Equivalence Exercise",
-              "required": false,
-              "points": 0.0,
+              "required": true,
+              "points": 1.0,
               "threshold": 3
             }
           },
           "Partial Orders": {
             "SetTFpartialorder": {
               "long_name": "PartialOrder Exercise",
-              "required": false,
-              "points": 0.0,
+              "required": true,
+              "points": 1.0,
               "threshold": 3
             }
           }
@@ -216,9 +214,7 @@
       "SeniorAlgAnal/Numeric": {
         "long_name": "Number Problems",
         "sections": {
-          "Introduction": {},
-          "Exponentiation": {},
-          "Largest Common Factor": {}
+          "Number Problems": {}
         }
       },
       "SeniorAlgAnal/FFT": {

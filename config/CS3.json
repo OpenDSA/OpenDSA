@@ -151,8 +151,7 @@
       "Background/SetDef": {
         "long_name": "Set Definitions",
         "sections": {
-          "Set Notation": {},
-          "Relations": {
+          "Set Notation": {
             "SetTFrelation": {
               "long_name": "Relations Exercise",
               "required": true,
@@ -460,18 +459,9 @@
         "long_name": "Speeding Up Your Programs",
         "sections": {}
       },
-      "AlgAnal/AlgAnalSumm": {
+      "AlgAnal/AlgAnalSummCS3": {
         "long_name": "Algorithm Analysis Summary Exercises",
         "sections": {
-          "Summary Exercise: CS2": {
-            "showsection": false,
-            "AlgAnalCS2Summ": {
-              "long_name": "Algorithm Analysis Summary Questions",
-              "required": false,
-              "points": 1.0,
-              "threshold": 5
-            }
-          },
           "Summary Exercise: CS3": {
             "showsection": true,
             "AlgAnalCS3Summ": {
@@ -490,9 +480,9 @@
         "sections": {}
       },
       "List/ListADT": {
-        "long_name": "List ADT",
+        "long_name": "The List ADT",
         "sections": {
-          "List Terminology and Notation": {
+          "The List ADT": {
             "listADTposCON": {
               "long_name": "List ADT Positions Slideshow",
               "required": false,
@@ -529,9 +519,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Insert Practice Exericse": {
+            },
             "AlistInsertPRO": {
               "long_name": "Array-based List Insert Exercise",
               "required": true,
@@ -587,9 +575,7 @@
               "threshold": 1.0
             },
             "llistInitCON": {},
-            "llistHeaderCON": {}
-          },
-          "Linked List Implementation": {
+            "llistHeaderCON": {},
             "llistVarsCON": {
               "long_name": "Linked List Variables Slideshow",
               "required": false,
@@ -730,8 +716,7 @@
       "List/StackArray": {
         "long_name": "Array-based Stacks",
         "sections": {
-          "Stack Terminology": {},
-          "Array-Based Stacks": {
+          "Stack Terminology and Implementation": {
             "astackVarCON": {
               "long_name": "Array stack variables slideshow",
               "required": false,
@@ -828,8 +813,7 @@
       "List/Queue": {
         "long_name": "Queues",
         "sections": {
-          "Queue Terminology": {},
-          "Array-Based Queues": {
+          "Queue Terminology and Implementation": {
             "aqueueFirstCON": {
               "long_name": "Array-based Queue Positions Slideshow",
               "required": false,
@@ -859,9 +843,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Array-based Queue Implementation": {
+            },
             "aqueueVarCON": {
               "long_name": "Array-based Queue Variables Slideshow",
               "required": false,
@@ -1070,9 +1052,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Implementation": {
+            },
             "btTravPreorderPRO": {
               "long_name": "Binary Tree Preorder Traversal Exercise",
               "exer_options": {
@@ -2637,8 +2617,7 @@
       "MemManage/Buddy": {
         "long_name": "Other Memory Allocation Methods",
         "sections": {
-          "Buddy Methods": {},
-          "Other Methods": {}
+          "Other Memory Allocation Methods": {}
         }
       },
       "MemManage/Garbage": {
@@ -2876,14 +2855,12 @@
       "Graph/GraphIntro": {
         "long_name": "Introduction and Terminology",
         "sections": {
-          "Graph Terminology": {
+          "Graph Terminology and Implementation": {
             "GdirundirCON": {},
             "GneighborCON": {},
             "GpathDefCON": {},
             "GconcomCON": {},
-            "GsparseDefCON": {}
-          },
-          "Graph Representations": {
+            "GsparseDefCON": {},
             "GdirRepCON": {},
             "GundirRepCON": {},
             "GweightedCON": {},
@@ -2911,8 +2888,7 @@
       "Graph/GraphTraversal": {
         "long_name": "Graph Traversal",
         "sections": {
-          "Graph Traversals": {},
-          "Depth-First Search": {
+          "Graph Traversals": {
             "graphDFS": {
               "long_name": "Depth First Search Visualization",
               "required": false,
@@ -2991,9 +2967,7 @@
         "long_name": "Minimal Cost Spanning Trees",
         "sections": {
           "Minimal Cost Spanning Trees": {
-            "MCSTCON": {}
-          },
-          "Prim's Algorithm": {
+            "MCSTCON": {},
             "PrimAV": {
               "long_name": "Prim's Algorithm Visualization",
               "required": false,

@@ -443,7 +443,7 @@ Example Reference Code
 
 
 Reference Rules Summary
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 No matter how complex a reference structure gets, the list of rules
 remains short.

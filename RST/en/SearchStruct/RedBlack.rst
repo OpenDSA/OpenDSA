@@ -15,7 +15,7 @@ The Red-Black Tree
 Exercise 1
 ----------
 
-.. avembed:: AV/Development/redBlackTreeColoring.html ss
+.. avembed:: AV/Development/redBlackTreeColoring.html pe
    :long_name: Red-Black Tree Coloring Exercise
 
 

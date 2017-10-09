@@ -108,12 +108,18 @@ Everything: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/Everything_generated.json --no-lms
 
+CS2Plain: min
+	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
+
 CS2: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/CS2_generated.json --no-lms
 
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
+
+CS3Plain: min
+	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
 CS3: min
 	python tools/rst2json.py $@
@@ -133,13 +139,20 @@ CS172: min
 ECE252: min
 	python $(CONFIG_SCRIPT) config/ECE252.json --no-lms
 
-PL: min
+PLPlain: min
 	python $(CONFIG_SCRIPT) config/PL.json --no-lms
+
+PL: min
+	python tools/rst2json.py $@
+	python $(CONFIG_SCRIPT) config/PL_generated.json --no-lms
 
 # Tom Naps has added this target while he works on re-packaging the PL book
 # He will remove it and the corresponding config file when that re-packaging is complete
 PL-naps: min
 	python $(CONFIG_SCRIPT) config/PL-naps.json --no-lms
+
+CS4104Plain: min
+	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
 
 CS4104: min
 	python tools/rst2json.py $@
