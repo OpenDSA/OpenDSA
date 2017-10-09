@@ -5,11 +5,11 @@ class Shipping {
 
   public int getWeight () {
     return weight;
-  } 
+  }
 
-  public int setWeight (int value) {
+  public void setWeight (int value) {
     weight = value;
-  } 
+  }
 
 }
 

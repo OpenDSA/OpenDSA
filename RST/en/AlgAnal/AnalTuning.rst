@@ -12,8 +12,8 @@
 Code Tuning and Empirical Analysis
 ==================================
 
-Introduction
-------------
+Code Tuning and Empirical Analysis
+----------------------------------
 
 In practice, there is not such a big difference in running time
 between an algorithm with growth rate :math:`\Theta(n)` and another
@@ -132,7 +132,7 @@ The most important rule of code tuning is:
 
 
 Empirical Analysis
-------------------
+~~~~~~~~~~~~~~~~~~
 
 :term:`Asymptotic algorithm analysis <algorithm analysis>`
 is an analytic tool, whereby we model the key aspects of an

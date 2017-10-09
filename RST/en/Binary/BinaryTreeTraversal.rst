@@ -107,7 +107,7 @@ this traversal to print all nodes in ascending order of value.
 
 
 Implementation
---------------
+~~~~~~~~~~~~~~
 
 Now we will discuss some implementations for the traversals, but we
 need to define a node ADT to work with.

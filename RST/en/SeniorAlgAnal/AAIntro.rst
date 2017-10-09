@@ -20,7 +20,7 @@ Algorithm Analysis, or Theory of Algorithms.
 
 
 Prerequisites
--------------
+~~~~~~~~~~~~~
 
 This course assumes that you already have sufficient background in a
 number of Computer Science topics 
@@ -43,7 +43,7 @@ following:
 
 
 What we will do
----------------
+~~~~~~~~~~~~~~~
 
 Major topics/goals for this course include:
 
@@ -57,7 +57,7 @@ Major topics/goals for this course include:
 
 
 Process
--------
+~~~~~~~
 
 The primary work in this course will come from the weekly homework
 sets.

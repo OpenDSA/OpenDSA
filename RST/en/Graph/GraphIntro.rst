@@ -14,8 +14,8 @@
 Graphs Chapter Introduction
 ===========================
 
-Graph Terminology
------------------
+Graph Terminology and Implementation
+------------------------------------
 
 Graphs provide the ultimate in data structure flexibility.
 A graph consists of a set of nodes, and a set of edges where an
@@ -174,7 +174,7 @@ a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
 
 
 Graph Representations
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 There are two commonly used methods for representing graphs.
 The :term:`adjacency matrix` for a graph is a

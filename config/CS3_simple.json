@@ -87,7 +87,7 @@
       "AlgAnal/AnalMultiple",
       "AlgAnal/AnalSpace",
       "AlgAnal/AnalTuning",
-      "AlgAnal/AlgAnalSumm"
+      "AlgAnal/AlgAnalSummCS3"
     ],
     "Linear Structures": [
       "List/ListIntro",

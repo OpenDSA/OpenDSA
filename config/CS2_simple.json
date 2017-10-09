@@ -65,7 +65,7 @@
       "AlgAnal/AnalCompvsAlg",
       "AlgAnal/AnalAsymptotic",
       "AlgAnal/AnalProgram",
-      "AlgAnal/AlgAnalSumm"
+      "AlgAnal/AlgAnalSummCS2"
     ],
     "Introduction to Pointers in Java": [
       "PointersJava/PointerIntro",

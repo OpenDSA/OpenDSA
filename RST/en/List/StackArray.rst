@@ -14,8 +14,8 @@
 Stacks
 ======
 
-Stack Terminology
------------------
+Stack Terminology and Implementation
+------------------------------------
 
 The :term:`stack` is a list-like structure
 in which elements may be inserted or removed from only one end.
@@ -54,7 +54,7 @@ which are analogous to array-based and linked lists, respectively.
 
 
 Array-Based Stacks
-------------------
+~~~~~~~~~~~~~~~~~~
 
 Here is a complete implementation for
 the array-based stack class.

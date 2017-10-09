@@ -1,6 +1,6 @@
 {
-  "title": "OpenDSA entire modules",
-  "desc": "OpenDSA entire modules",
+  "title": "All Data Structures and Algorithm Modules",
+  "desc": "All Data Structures and Algorithm Modules",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -109,7 +109,8 @@
       "AlgAnal/AnalMultiple",
       "AlgAnal/AnalSpace",
       "AlgAnal/AnalTuning",
-      "AlgAnal/AlgAnalSumm"
+      "AlgAnal/AlgAnalSummCS2",
+      "AlgAnal/AlgAnalSummCS3"
     ],
     "Linear Structures": [
       "List/ListIntro",
@@ -241,56 +242,6 @@
       "Graph/MCST",
       "Graph/Kruskal",
       "Graph/Floyd"
-    ],
-    "Grammars": [
-      "PL/Grammars1",
-      "PL/Grammars2",
-      "PL/Grammars3",
-      "PL/Grammars4",
-      "PL/Grammars5"
-    ],
-    "Functional Programming": [
-      "PL/FP1",
-      "PL/FP2",
-      "PL/FP3",
-      "PL/FP4",
-      "PL/FP5",
-      "PL/FP6",
-      "PL/FP7",
-      "PL/FP8",
-      "PL/FP9"
-    ],
-    "Lambda Calculus": [
-      "PL/Syntax",
-      "PL/Semantics",
-      "PL/FreeBoundVariables",
-      "PL/AlphaConversion",
-      "PL/Substitution",
-      "PL/BetaReduction",
-      "PL/ReductionStrategies",
-      "PL/ChurchNumerals",
-      "PL/RecursiveFunctions"
-    ],
-    "Interpreting the Functional Language SLang 1": [
-      "PL/SLang1",
-      "PL/Environment",
-      "PL/SLang1Interpreter",
-      "PL/SLang1InterpreterModifications",
-      "PL/SLang1InterpreterReview",
-      "PL/SLang1withLetExpressions"
-    ],
-    "Interpreting the Imperative Language SLang 2": [
-      "PL/SLang2",
-      "PL/SLang2TTK",
-      "PL/SLang2ParameterPassing",
-      "PL/LazyLists"
-    ],
-    "Interpreting the Object-Oriented Language SLang 3": [
-      "PL/SLang3reviewOfOOP",
-      "PL/SLang3concreteSyntax",
-      "PL/SLang3abstractSyntax",
-      "PL/SLang3objects",
-      "PL/SLang3interpreter"
     ],
     "Spatial Data Structures": [
       "Spatial/Spatial",

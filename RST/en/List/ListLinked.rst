@@ -121,7 +121,7 @@ remove method's implementation.
 
 
 Linked List Implementation
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is the implementation for the linked list class,
 named ``LList``.

@@ -10,8 +10,11 @@
 Dynamic Programming
 ===================
 
+Dynamic Programming
+-------------------
+
 Computing Fibonnaci Numbers
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Consider the recursive function for computing the :math:`n`'th
 Fibonacci number.
@@ -91,7 +94,7 @@ programming than does ``fibrt``, even though it doesn't use the
 complete table.
 
 The Knapsack Problem
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 We will next consider a problem that appears with many variations in a
 variety of commercial settings.

@@ -111,7 +111,7 @@ first opportunity to see a type of tree structure referred to as a
 
 
 Building Huffman Coding Trees
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Huffman coding assigns codes to characters such that the length of the
 code depends on the relative frequency or :term:`weight` of the
@@ -216,8 +216,7 @@ Finally, ``temp3`` is returned to ``fl``.
        check if there is a transmission error for the character.
 
 
-Assigning and Using Huffman Codes (1)
--------------------------------------
+Assigning and Using Huffman Codes
 
 Once the Huffman tree has been constructed, it is an easy matter to
 assign codes to individual letters.
@@ -229,10 +228,6 @@ This process is illustrated by the following slideshow.
 .. inlineav:: huffmanLabelCON ss 
    :long_name: Huffman Coding Tree Slideshow: Label Edges
    :output: show
-
-
-Assigning and Using Huffman Codes (2)
--------------------------------------
 
 Now that we see how the edges associate with bits in the code, it is a
 simple matter to generate the codes for each letter (since each letter
@@ -249,7 +244,7 @@ A lookup table can be used for this purpose.
 
 
 Decoding
---------
+~~~~~~~~
 
 A set of codes is said to meet the :term:`prefix property` if no
 code in the set is the prefix of another.
@@ -272,16 +267,12 @@ by traversing the tree appropriately.
    :long_name: Huffman Coding Tree Slideshow: Decoding
    :output: show
 
-
-Decoding Practice
------------------
-
 .. avembed:: Exercises/Binary/HuffmanDecodePRO.html ka
    :long_name: Huffman Decoding Proficiency Exercise
 
 
 How efficient is Huffman coding?
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In theory, Huffman coding is an optimal coding method whenever the
 true frequencies are known, and the frequency of a letter is

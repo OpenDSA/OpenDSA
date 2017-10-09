@@ -210,7 +210,7 @@ Tree Property if equal values appear in the left subtree.
        right subtree, then we must replace a deleted node with the
        least value from its right subtree.
 
-.. avembed:: AV/Binary/BSTremovePRO.html ss
+.. avembed:: AV/Binary/BSTremovePRO.html pe
    :long_name: BST Remove Proficiency Exercise
 
 

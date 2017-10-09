@@ -75,7 +75,7 @@ Function ``doTraversal`` might be implemented by using
 one of the graph traversals described next.
 
 Depth-First Search
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. TODO::
    :type: Slideshow

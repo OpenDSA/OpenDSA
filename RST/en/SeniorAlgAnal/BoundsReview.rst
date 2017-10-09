@@ -14,8 +14,8 @@
 Bounds Review
 =============
 
-Introduction
-------------
+Bounds Review
+-------------
 
 We define the :term:`upper bound <problem upper bound>` for a problem
 to be the upper bound of the best algorithm we know for that
@@ -85,7 +85,7 @@ there are still benefits to be gained from a new, clever algorithm.
 
 
 Analyzing Problems
-------------------
+~~~~~~~~~~~~~~~~~~
 
 Our first example for analyzing a problem was Towers of Hanoi.
 This had the advantage that for a given input size :math:`n`, there

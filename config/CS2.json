@@ -48,7 +48,7 @@
         "sections": {}
       }
     },
-    "Introduction": {
+    "Introduction for Data Structures and Algorithms Courses": {
       "Background/IntroDSA": {
         "long_name": "Introduction to Data Structures and Algorithms",
         "sections": {
@@ -61,7 +61,7 @@
             }
           },
           "Some Software Engineering Topics": {
-            "showsection": false
+            "showsection": true
           }
         }
       },
@@ -102,9 +102,9 @@
     },
     "List Interface & Array-based Lists": {
       "List/ListADT": {
-        "long_name": "List ADT",
+        "long_name": "The List ADT",
         "sections": {
-          "List Terminology and Notation": {
+          "The List ADT": {
             "listADTposCON": {
               "long_name": "List ADT Positions Slideshow",
               "required": false,
@@ -141,9 +141,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Insert Practice Exericse": {
+            },
             "AlistInsertPRO": {
               "long_name": "Array-based List Insert Exercise",
               "required": true,
@@ -310,21 +308,11 @@
           }
         }
       },
-      "AlgAnal/AlgAnalSumm": {
+      "AlgAnal/AlgAnalSummCS2": {
         "long_name": "Algorithm Analysis Summary Exercises",
         "sections": {
           "Summary Exercise: CS2": {
-            "showsection": true,
             "AlgAnalCS2Summ": {
-              "long_name": "Algorithm Analysis Summary Questions",
-              "required": true,
-              "points": 1.0,
-              "threshold": 5
-            }
-          },
-          "Summary Exercise: CS3": {
-            "showsection": false,
-            "AlgAnalCS3Summ": {
               "long_name": "Algorithm Analysis Summary Questions",
               "required": false,
               "points": 1.0,
@@ -344,13 +332,8 @@
         "sections": {
           "Pointers and References": {
             "num42CON": {},
-            "employeeEmpRefCON": {}
-          },
-          "Referencing and Dereferencing": {
-            "empRefnullCON": {}
-          },
-          "The Employee Class": {},
-          "Reference Assignments": {
+            "employeeEmpRefCON": {},
+            "empRefnullCON": {},
             "empRefsecondCON": {},
             "PointerEX1PRO": {
               "long_name": "Pointer Exercise 1",
@@ -366,13 +349,9 @@
               "required": true,
               "points": 1,
               "threshold": 1
-            }
-          },
-          "Bad References": {
+            },
             "empPtrxxxCON": {},
-            "badPointerPowCON": {}
-          },
-          "Syntax": {
+            "badPointerPowCON": {},
             "employeePtr2CON": {
               "long_name": "employeePtr2CON",
               "required": false,
@@ -384,9 +363,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Reference Rules Summary": {
+            },
             "memoryModelCON": {}
           }
         }
@@ -394,7 +371,7 @@
       "PointersJava/LocalMem": {
         "long_name": "Local Memory",
         "sections": {
-          "Thanks For The Memory: Allocation and Deallocation": {
+          "Local Memory": {
             "simpleLifetimeCON": {
               "long_name": "simpleLifetimeCON",
               "required": false,
@@ -407,23 +384,19 @@
               "points": 0.0,
               "threshold": 1.0
             }
-          },
-          "Local Parameters": {},
-          "How Does The Function Call Stack Work?": {}
+          }
         }
       },
       "PointersJava/HeapMem": {
         "long_name": "Heap Memory",
         "sections": {
-          "Heap Memory and Garbage Collection":{
+          "Heap Memory":{
             "garbageDisposalCON": {
               "long_name": "garbageDisposalCON",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "What Does The Heap Look Like?": {
+            },
             "LocalHeapaloc": {},
             "LocalHeapdealoc": {},
             "LocalHeapintptr42": {
@@ -432,8 +405,7 @@
               "points": 0.0,
               "threshold": 1.0
             }
-          },
-          "Arrays": {}
+          }
         }
       },
       "PointersJava/Links": {
@@ -484,8 +456,7 @@
       "List/StackArray": {
         "long_name": "Array-based Stacks",
         "sections": {
-          "Stack Terminology": {},
-          "Array-Based Stacks": {
+          "Stack Terminology and Implementation": {
             "astackVarCON": {
               "long_name": "Array stack variables slideshow",
               "required": false,
@@ -1004,8 +975,7 @@
       "List/Queue": {
         "long_name": "Queues",
         "sections": {
-          "Queue Terminology": {},
-          "Array-Based Queues": {
+          "Queue Terminology and Implementation": {
             "aqueueFirstCON": {
               "long_name": "Array-based Queue Positions Slideshow",
               "required": false,
@@ -1035,9 +1005,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Array-based Queue Implementation": {
+            },
             "aqueueVarCON": {
               "long_name": "Array-based Queue Variables Slideshow",
               "required": false,
@@ -1128,9 +1096,7 @@
               "threshold": 1.0
             },
             "llistInitCON": {},
-            "llistHeaderCON": {}
-          },
-          "Linked List Implementation": {
+            "llistHeaderCON": {},
             "llistVarsCON": {
               "long_name": "Linked List Variables Slideshow",
               "required": false,
@@ -1355,9 +1321,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Implementation": {
+            },
             "btTravPreorderPRO": {
               "long_name": "Binary Tree Preorder Traversal Exercise",
               "exer_options": {

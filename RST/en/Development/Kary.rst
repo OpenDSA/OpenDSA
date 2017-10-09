@@ -7,8 +7,11 @@
    :author: Cliff Shaffer
    :topic: General Trees
 
-:math:`K`-ary Trees
-===================
+K-ary Tree Implementations
+==========================
+
+K-ary Tree Implementations
+--------------------------
 
 :math:`K`-ary trees are trees whose internal nodes all have exactly
 :math:`K` children.

@@ -12,8 +12,8 @@
 Semester Overview
 =================
 
-Introduction
-------------
+Semester Overview
+-----------------
 
 The central question for this course is:
 **Given a problem, do we have (or can we devise) a good solution?**
@@ -99,7 +99,7 @@ of proficiency using logarithms.
 
 
 Modeling Algorithm Cost
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 We want to measure the cost of an algorithm.
 We want this process to be as simple as possible.
@@ -245,7 +245,7 @@ probably do **not** consider this to be a "reasonable" model.
 
 
 Big Issues
-----------
+~~~~~~~~~~
 
 **How do we create an efficient algorithm?**
 We use problem solving and algorithm design skills.

@@ -13,8 +13,11 @@
 Searching in an Array
 =====================
 
+Searching in an Array
+---------------------
+
 Sequential Search
------------------
+~~~~~~~~~~~~~~~~~
 
 If you want to find the position in an unsorted array of :math:`n`
 integers that stores a particular value, you cannot really do better
@@ -49,7 +52,7 @@ For this reason, the sequential search algorithm is sometimes
 called :term:`linear search`.
 
 Binary Search
--------------
+~~~~~~~~~~~~~
 
 Sequential search is the best that we can do when trying to find a
 value in an unsorted array. [#]_
@@ -94,7 +97,7 @@ We stop (in the worst case) when we reach a subarray of size 1.
 And we can only cut the value of :math:`n` in half :math:`\log n`
 times before we reach 1. [#]_
 
-.. avembed:: AV/Searching/binarySearchPRO.html ss
+.. avembed:: AV/Searching/binarySearchPRO.html pe
    :long_name: Binary Search Proficiency Exercise
 
 .. [#] It seems to be really "obvious" that sequential search is the

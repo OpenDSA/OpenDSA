@@ -38,7 +38,7 @@
 #iteration3CON .valuelabel  {
  font-size: 150%;
  color: yellow;
- background-color: DarkSlateBlue;
+ background-color: #593f73;
  }
 
 #iteration1CON .box, #iteration2CON .box, #iteration3CON .box  {
@@ -60,9 +60,24 @@
   z-index: -500;
 }
 
+
+
 #iteration1CON .blueboxhigh, #iteration2CON  .blueboxhigh, #iteration3CON  .blueboxhigh  {
   fill : #e6eeff;
   stroke : #e6eeff;
+}
+
+
+#iteration3CON  .calbox  {
+  fill : #805ba5;
+  stroke : #805ba5;
+  z-index: -500;
+}
+
+#iteration3CON  .calboxhigh  {
+  fill : #f2eff6;
+  stroke : #f2eff6;
+  z-index: -500;
 }
 
 

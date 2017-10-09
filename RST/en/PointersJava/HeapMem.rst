@@ -18,8 +18,8 @@
 Heap Memory
 ===========
 
-Heap Memory and Garbage Collection
-----------------------------------
+Heap Memory
+-----------
 
 "Heap" memory, also known as "dynamic" memory, is an alternative to
 local stack memory.
@@ -129,9 +129,6 @@ from heap memory by garbage collection:
 .. inlineav:: garbageDisposalCON ss
    :output: show
 
-
-What Does The Heap Look Like?
------------------------------
 
 Before seeing the exact details, let's look at a rough example of
 allocation and deallocation in the heap.
@@ -269,7 +266,7 @@ A Simple Heap Example
 
 
 Arrays
-------
+~~~~~~
 
 In Java, array memory is allocated in the heap.
 The size of the array memory block is the size of each element

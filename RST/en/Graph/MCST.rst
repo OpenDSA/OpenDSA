@@ -58,7 +58,7 @@ Figure :num:`Figure #MCSTdgm` shows the MCST for an example graph.
 
 
 Prim's Algorithm
-----------------
+~~~~~~~~~~~~~~~~
 
 The first of our two algorithms for finding MCSTs is commonly
 referred to as :term:`Prim's algorithm`.

@@ -12,9 +12,8 @@
 Analyzing Search in Unsorted Lists
 ==================================
 
-
-Analysis
---------
+Analyzing Search in Unsorted Lists
+----------------------------------
 
 You already know the simplest form of search:
 the sequential search algorithm.
@@ -71,7 +70,7 @@ Depending on the value of :math:`p_n`,
 
 
 Lower Bounds Proofs
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Given an (unsorted) list **L** of :math:`n` elements and 
 a search key :math:`K`, we seek to identify one element in **L**
