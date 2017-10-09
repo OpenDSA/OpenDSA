@@ -318,9 +318,27 @@ class ODSA_RST_Module:
 
         line = mod_data[i].strip()
         next_line =  mod_data[i+1].strip() if i+1 < len(mod_data) else ''
-        is_chapter = next_line == "="*len(line) or next_line == "-"*len(line)
-        if is_chapter:
+        is_chapter = next_line == "="*len(next_line) and len(next_line) > 0
+        is_section = next_line == "-"*len(next_line) and len(next_line) > 0
+        if is_chapter or is_section:
           processed_sections.append(line)
+
+        if is_section \
+        and "showsection" in mod_attrib["sections"][line] \
+        and not mod_attrib["sections"][line]["showsection"]:
+          print '%sRemoving section: %s' % (console_msg_prefix, line)
+          del mod_data[i]
+          del mod_data[i]
+          line = mod_data[i].strip()
+          next_line =  mod_data[i+1].strip() if i+1 < len(mod_data) else ''
+          while (len(next_line) == 0 or next_line != "-"*len(next_line)) and i < len(mod_data):
+            del mod_data[i]
+            if i < len(mod_data):
+              del mod_data[i]
+            if i < len(mod_data):
+              line = mod_data[i].strip()
+              next_line =  mod_data[i+1].strip() if i+1 < len(mod_data) else ''
+          continue
 
         # Determine the type of directive
         dir_type = get_directive_type(line)
