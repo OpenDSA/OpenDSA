@@ -464,22 +464,8 @@ class ODSA_RST_Module:
           if args:
             (av_name, av_type) = args
 
-            if av_type == 'ss':
-              if av_name not in exercises:
-                # If the SS is not listed in the config file, add its name to a list of missing exercises, ignore missing diagrams
-                missing_exercises.append(av_name)
-              else:
-                # Add the necessary information from the slideshow from the configuration file
-                # Diagrams (av_type == 'dgm') do not require this extra information
-                exer_conf = exercises[av_name]
-
-                # List of valid options for inlineav directive
-                options = ['points', 'required', 'threshold']
-
-                rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
-                mod_data[i] += ''.join(rst_options)
-
-                j = i + 1
+            if av_type in ['ss', 'dgm']:
+              j = i + 1
                 opt_line = next_line
                 links_found = False
                 scripts_found = False
@@ -509,7 +495,22 @@ class ODSA_RST_Module:
                   opt_line = mod_data[j].strip() if j < len(mod_data) else ''
 
                 if not links_found or not scripts_found:
-                  print_err("ERROR: Module '{0}', line {1} -- slideshow directive missing :links: and/or :scripts: options".format(mod_path, i))
+                  print_err("WARNING: Module '{0}', line {1} -- inlineav directive missing :scripts: option".format(mod_path, i))
+
+            if av_type == 'ss':
+              if av_name not in exercises:
+                # If the SS is not listed in the config file, add its name to a list of missing exercises, ignore missing diagrams
+                missing_exercises.append(av_name)
+              else:
+                # Add the necessary information from the slideshow from the configuration file
+                # Diagrams (av_type == 'dgm') do not require this extra information
+                exer_conf = exercises[av_name]
+
+                # List of valid options for inlineav directive
+                options = ['points', 'required', 'threshold']
+
+                rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+                mod_data[i] += ''.join(rst_options)
                 
             elif av_type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
               # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported

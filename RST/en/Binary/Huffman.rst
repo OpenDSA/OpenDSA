@@ -9,9 +9,6 @@
    :satisfies: Huffman coding tree
    :topic: BinTreeImp
 
-.. odsalink:: DataStructures/huffman.css
-.. odsalink:: AV/Binary/huffmanCON.css
-
 .. index:: ! Huffman
 
 Huffman Coding Trees
@@ -173,6 +170,8 @@ Table :num:`Table #FreqExamp`. [#]_
 
 .. inlineav:: huffmanBuildCON ss
    :long_name: Huffman Coding Tree Slideshow: Build
+   :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
+   :scripts: DataStructures/huffman.js AV/Binary/huffmanBuildCON.js
    :output: show
 
 Here is the implementation for Huffman tree nodes.
@@ -227,6 +226,8 @@ This process is illustrated by the following slideshow.
 
 .. inlineav:: huffmanLabelCON ss 
    :long_name: Huffman Coding Tree Slideshow: Label Edges
+   :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
+   :scripts: DataStructures/huffman.js AV/Binary/huffmanLabelCON.js
    :output: show
 
 Now that we see how the edges associate with bits in the code, it is a
@@ -235,6 +236,8 @@ corresponds to a leaf node in the tree).
 
 .. inlineav:: huffmanCodesCON ss 
    :long_name: Huffman Coding Tree Slideshow: Setting Codes
+   :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
+   :scripts: DataStructures/huffman.js AV/Binary/huffmanCodesCON.js
    :output: show
 
 Now that we have a code for each letter,
@@ -265,6 +268,8 @@ by traversing the tree appropriately.
 
 .. inlineav:: huffmanDecodeCON ss
    :long_name: Huffman Coding Tree Slideshow: Decoding
+   :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
+   :scripts: DataStructures/huffman.js AV/Binary/huffmanDecodeCON.js
    :output: show
 
 .. avembed:: Exercises/Binary/HuffmanDecodePRO.html ka
@@ -354,9 +359,3 @@ The problem is that "MUCK" is composed of letters that are not
 expected to occur often.
 If the message does not match the expected frequencies of the letters,
 than the length of the encoding will not be as expected either.
-
-.. odsascript:: DataStructures/huffman.js
-.. odsascript:: AV/Binary/huffmanBuildCON.js
-.. odsascript:: AV/Binary/huffmanLabelCON.js
-.. odsascript:: AV/Binary/huffmanCodesCON.js
-.. odsascript:: AV/Binary/huffmanDecodeCON.js

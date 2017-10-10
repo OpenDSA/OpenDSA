@@ -9,8 +9,6 @@
    :satisfies: Huffman proof
    :topic: Huffman Coding Trees
 
-.. odsalink:: AV/Binary/HuffProofCON.css
-
 Proof of Optimality for Huffman Coding
 ======================================
 
@@ -55,6 +53,8 @@ However, this is impossible because :math:`l_1` and
 .. _HProof:
 
 .. inlineav:: HuffProofCON dgm 
+   :links: AV/Binary/HuffProofCON.css
+   :scripts: AV/Binary/HuffProofCON.js
    :output: show
    :align: center
 
@@ -112,5 +112,3 @@ Here is the proof.
    :type: Exercise
 
    Battery of MCQs for content.
-
-.. odsascript:: AV/Binary/HuffProofCON.js

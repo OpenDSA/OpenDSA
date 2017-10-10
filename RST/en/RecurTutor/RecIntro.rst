@@ -90,6 +90,8 @@ the rest to some helper, as in this example.
 
 .. inlineav:: recurIntroDelegateCON ss
    :long_name: Recursion Introduction Slideshow 1
+   :links: 
+   :scripts: 
    :output: show  
 
 Let's look deeper into the details of what your friend does when
@@ -101,6 +103,8 @@ you shouldn't worry about all of these details.)
 
 .. inlineav:: recurIntroDetailsCON ss
    :long_name: Recursion Introduction Slideshow 2
+   :links: 
+   :scripts: 
    :output: show  
 
 In order to understand recursion, you need to be able to do two

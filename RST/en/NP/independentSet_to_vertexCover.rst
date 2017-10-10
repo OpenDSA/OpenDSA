@@ -21,6 +21,8 @@ in polynomial time.
  
 .. inlineav:: IStoVCCON ss
    :long_name: IS to VC Reduction
+   :links: 
+   :scripts: 
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 

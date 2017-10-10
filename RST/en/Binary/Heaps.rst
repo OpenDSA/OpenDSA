@@ -9,8 +9,6 @@
    :satisfies: heap; priority queue
    :topic: Heaps
 
-.. odsalink:: AV/Binary/heapbuildProofCON.css
-
 Heaps and Priority Queues
 =========================
 
@@ -142,6 +140,8 @@ the heap.
 
 .. inlineav:: heapinsertCON ss
    :long_name: Heap insert Slideshow
+   :links: 
+   :scripts: DataStructures/binaryheap.js AV/Binary/heapinsertCON.js
    :output: show
 
 You might expect the heap insertion process to be similar to the
@@ -270,6 +270,8 @@ Here is a visualization of the heap build process.
 
 .. inlineav:: heapbuildCON ss
    :long_name: Heapbuild Slideshow
+   :links: 
+   :scripts: DataStructures/binaryheap.js AV/Binary/heapbuildCON.js
    :output: show
 
 Method ``buildHeap`` implements the building algorithm.
@@ -307,6 +309,8 @@ BST.
 
 .. inlineav:: heapbuildProofCON ss
    :long_name: Heap build analysis proof Slideshow
+   :links: AV/Binary/heapbuildProofCON.css
+   :scripts: DataStructures/binaryheap.js AV/Binary/heapbuildProofCON.js
    :output: show
 
 
@@ -315,6 +319,8 @@ Removing from the heap
 
 .. inlineav:: heapmaxCON ss
    :long_name: Remove Max Slideshow
+   :links: 
+   :scripts: DataStructures/binaryheap.js AV/Binary/heapmaxCON.js
    :output: show
 
 Because the heap is :math:`\log n` levels deep, the cost of deleting
@@ -328,6 +334,8 @@ cases.
 
 .. inlineav:: heapremoveCON ss
    :long_name: Remove Any Slideshow
+   :links: 
+   :scripts: DataStructures/binaryheap.js AV/Binary/heapremoveCON.js
    :output: show
 
 
@@ -371,10 +379,3 @@ For a story about Priority Queues and dragons, see |external_link|.
 .. |external_link| raw:: html
 
    <a href="http://computationaltales.blogspot.com/2011/04/stacks-queues-priority-queues-and.html" target="_blank">Computational Fairy Tales: Stacks, Queues, Priority Queues, and the Prince's Complaint Line</a>
-
-.. odsascript:: DataStructures/binaryheap.js
-.. odsascript:: AV/Binary/heapinsertCON.js
-.. odsascript:: AV/Binary/heapbuildCON.js
-.. odsascript:: AV/Binary/heapbuildProofCON.js
-.. odsascript:: AV/Binary/heapmaxCON.js
-.. odsascript:: AV/Binary/heapremoveCON.js

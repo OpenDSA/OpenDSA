@@ -164,6 +164,8 @@ So it would be wrong to say something like
 "The best case is when :math:`n=1`."
 
 .. inlineav:: SimpleCostsCON dgm
+   :links: 
+   :scripts: 
    :output: show
 
 If we want the :term:`average-case cost <average case>`,

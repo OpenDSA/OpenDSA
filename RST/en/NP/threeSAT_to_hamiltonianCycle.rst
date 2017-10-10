@@ -21,6 +21,8 @@ polynomial time.
  
 .. inlineav:: threeSATtoHCCON ss
    :long_name: 3-SAT to HC Reduction
+   :links: 
+   :scripts: 
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 

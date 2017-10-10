@@ -21,6 +21,8 @@ in polynomial time.
  
 .. inlineav:: cliqueToISCON ss
    :long_name: Clique to IS Reduction
+   :links: 
+   :scripts: 
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 

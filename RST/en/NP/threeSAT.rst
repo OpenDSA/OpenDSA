@@ -19,7 +19,9 @@
 
 .. inlineav:: threeSATCON ss
    :long_name: 3-Satisfiability
-    :output: show
+    :links: 
+   :scripts: 
+   :output: show
 
 Try out an instance of the 3-SAT problem on your own.
 

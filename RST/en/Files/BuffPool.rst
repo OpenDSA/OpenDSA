@@ -115,6 +115,8 @@ than requiring new information to be read from disk.
 .. inlineav:: buffintroCON ss
    :long_name: Buffer Pool Introduction Slideshow
    :align: center
+   :links: AV/Files/buffpoolCON.css 
+   :scripts: AV/Files/buffintroCON.js
    :output: show
 
 
@@ -189,6 +191,8 @@ suggests a special-purpose buffer management scheme.
 .. inlineav:: LRUCON ss
    :long_name: LRU Replacement Slideshow
    :align: center
+   :links: AV/Files/buffpoolCON.css 
+   :scripts: AV/Files/LRUCON.js
    :output: show
 
 
@@ -219,6 +223,8 @@ written to disk if and only if the dirty bit has been turned on.
 .. inlineav:: LRUwriteCON ss
    :long_name: LRU Replacement with write Slideshow
    :align: center
+   :links: AV/Files/buffpoolCON.css 
+   :scripts: AV/Files/LRUwriteCON.js
    :output: show
 
 Modern operating systems support :term:`virtual memory`.

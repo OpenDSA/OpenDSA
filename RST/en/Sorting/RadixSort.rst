@@ -116,6 +116,8 @@ Radix Sort Analysis
 
 .. inlineav:: RadixSortAnalysisCON ss
    :long_name: Radix Sort Analysis Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 **Is it really a reasonable assumption to treat** :math:`k` **as a

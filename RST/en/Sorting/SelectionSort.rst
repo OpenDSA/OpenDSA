@@ -50,6 +50,8 @@ Consider the example of the following array.
 
 .. inlineav:: selectionsortS1CON ss
    :long_name: Selection Sort Slideshow 1
+   :links: 
+   :scripts: 
    :output: show
 
 Now we continue with the second pass.
@@ -58,6 +60,8 @@ we will not need to look at it again.
 
 .. inlineav:: selectionsortS2CON ss
    :long_name: Selection Sort Slideshow 2
+   :links: 
+   :scripts: 
    :output: show
 
 Selection Sort continues in this way until the entire array is sorted.
@@ -91,6 +95,8 @@ comparisons and swaps required by Selection Sort.
 
 .. inlineav:: SelectionSortAnalysisCON ss
    :long_name: Selection Sort Analysis Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 There is another approach to keeping the cost of swapping records low,

@@ -17,6 +17,8 @@ Circuit Satisfiability
 
 .. inlineav:: circuitSATCON ss
    :long_name: Circuit Satisfiability
+   :links: 
+   :scripts: 
    :output: show
 
 In the above problem, given a particular assignment, while we can 

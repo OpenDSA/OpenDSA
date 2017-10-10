@@ -39,6 +39,8 @@ Linked Stack Push
 
 .. inlineav:: lstackPushCON ss
    :long_name: Linked stack push
+   :links: 
+   :scripts: 
    :output: show
    
 .. avembed:: Exercises/List/LstackPushPRO.html ka
@@ -50,6 +52,8 @@ Linked Stack Pop
 
 .. inlineav:: lstackPopCON ss
    :long_name: Linked stack pop
+   :links: 
+   :scripts: 
    :output: show
    
 

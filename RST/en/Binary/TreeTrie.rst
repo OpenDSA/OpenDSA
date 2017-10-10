@@ -9,8 +9,6 @@
    :satisfies: 
    :topic: Trie
 
-.. odsalink:: AV/Development/TreeTrieCON.css
-
 Trees versus Tries
 ==================
 
@@ -39,13 +37,14 @@ The following slideshows present this in more detail.
 
 .. inlineav:: TreeTimelineCON ss
    :long_name: Tree timeline Slideshow
+   :links: AV/Development/TreeTrieCON.css
+   :scripts: AV/Development/TreeTimelineCON.js
    :output: show
 
 |
 
 .. inlineav:: TrieTimelineCON ss
    :long_name: Trie timeline Slideshow
+   :links: AV/Development/TreeTrieCON.css
+   :scripts: AV/Development/TrieTimelineCON.js
    :output: show
-
-.. odsascript:: AV/Development/TreeTimelineCON.js
-.. odsascript:: AV/Development/TrieTimelineCON.js

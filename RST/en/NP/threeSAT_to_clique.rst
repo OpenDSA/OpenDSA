@@ -20,6 +20,8 @@ problem can be reduced to an instance of Clique problem in
 polynomial time.
  
 .. inlineav:: threeSATtoCliqueCON ss
+   :links: 
+   :scripts: 
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 

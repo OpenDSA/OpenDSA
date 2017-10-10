@@ -38,7 +38,9 @@ children.
 
 .. .. inlineav:: compositeTraversalCON ss
       :long_name: Composite Expression Tree Traversal Slideshow
-..   :output: show
+..    :links: 
+      :scripts: 
+      :output: show
 
 When comparing the composite implementation to
 the :ref:`procedural approach <procedural> <BinaryTreeImpl>`,

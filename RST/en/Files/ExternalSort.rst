@@ -8,8 +8,6 @@
    :requires: file processing; disk drives
    :topic: External Sorting
 
-.. odsalink:: AV/Files/extsortCON.css
-
 External Sorting
 ================
 
@@ -226,6 +224,8 @@ Here is a sketch of the algorithm.
 
 .. inlineav:: extMergeSortCON ss
    :long_name: External Merge Sort Slideshow
+   :links: AV/Files/extsortCON.css
+   :scripts: DataStructures/binaryheap.js AV/Files/extMergeSortCON.js
    :output: show
 
 #. Split the original file into two equal-sized
@@ -283,6 +283,8 @@ sorted run.
 
 .. inlineav:: extMergeSortExampCON ss
    :long_name: External Merge Sort Example Slideshow
+   :links: AV/Files/extsortCON.css
+   :scripts: DataStructures/binaryheap.js AV/Files/extMergeSortExampCON.js
    :output: show
 
 We can extend this concept to improve performance even
@@ -357,6 +359,8 @@ This process is illustrated by Figure :num:`Figure #RSOver`.
 .. _RSOver:
 
 .. inlineav:: extSortOverCON dgm
+   :links: AV/Files/extsortCON.css
+   :scripts: DataStructures/binaryheap.js AV/Files/extSortOverCON.js
    :align: justify
 
    Overview of replacement selection.
@@ -419,6 +423,8 @@ by replacement selection.
 
 .. inlineav:: extRSCON ss
    :long_name: External Replacement Selection Slideshow
+   :links: AV/Files/extsortCON.css
+   :scripts: DataStructures/binaryheap.js AV/Files/extRSCON.js
    :output: show
 
 It should be clear that the minimum length of a run will be :math:`M`
@@ -460,6 +466,8 @@ revolution (leaving :math:`S` snow behind).
 .. _SnowPlow:
 
 .. inlineav:: extSortSnowCON dgm
+   :links: AV/Files/extsortCON.css
+   :scripts: DataStructures/binaryheap.js AV/Files/extSortSnowCON.js
    :align: justify
 
    The snowplow analogy showing the action during one
@@ -532,6 +540,8 @@ The following slideshow illustrates a multiway merge.
 
 .. inlineav:: extMultiMergeCON ss
    :long_name: Multiway Merge Example Slideshow
+   :links: AV/Files/extsortCON.css
+   :scripts: DataStructures/binaryheap.js AV/Files/extMultiMergeCON.js
    :output: show
 
 Conceptually, multiway merge assumes that each run is stored in a
@@ -696,11 +706,3 @@ following:
 * If possible, use additional disk drives for more overlapping of
   processing with I/O, and to allow for sequential file
   processing.
-
-.. odsascript:: DataStructures/binaryheap.js
-.. odsascript:: AV/Files/extMergeSortCON.js
-.. odsascript:: AV/Files/extMergeSortExampCON.js
-.. odsascript:: AV/Files/extSortOverCON.js
-.. odsascript:: AV/Files/extRSCON.js
-.. odsascript:: AV/Files/extSortSnowCON.js
-.. odsascript:: AV/Files/extMultiMergeCON.js

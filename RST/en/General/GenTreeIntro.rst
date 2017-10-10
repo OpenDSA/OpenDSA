@@ -8,8 +8,6 @@
    :satisfies: general trees
    :topic: General Trees
 
-.. odsalink:: AV/General/GenTreeCON.css
-
 General Trees
 =============
 
@@ -67,6 +65,8 @@ generalized from the notation for binary trees.
 .. _GenTreeFig:
 
 .. inlineav:: GenTreeCON dgm
+   :links: AV/General/GenTreeCON.css
+   :scripts: AV/General/GenTreeCON.js
    :align: justify
 
    Notation for general trees.
@@ -156,6 +156,8 @@ general trees.
 
 .. inlineav:: GenTreePreTravCON ss
    :long_name: General Tree Preorder Traversal Slideshow
+   :links: AV/General/GenTreeCON.css
+   :scripts: AV/General/GenTreePreTravCON.js
    :output: show
 
 To perform a preorder traversal, it is necessary to visit each of the
@@ -167,6 +169,8 @@ to that node's right sibling, and so on.
 
 .. inlineav:: GenTreePostTravCON ss
    :long_name: General Tree Postorder Traversal Slideshow
+   :links: AV/General/GenTreeCON.css
+   :scripts: AV/General/GenTreePostTravCON.js
    :output: show
 
 To perform a preorder traversal, it is necessary to visit each of the
@@ -185,7 +189,3 @@ to the next child until calling	``next`` returns ``null``.
 
 .. codeinclude:: General/GenTree
    :tag: GenTreePrint
-
-.. odsascript:: AV/General/GenTreeCON.js
-.. odsascript:: AV/General/GenTreePreTravCON.js
-.. odsascript:: AV/General/GenTreePostTravCON.js

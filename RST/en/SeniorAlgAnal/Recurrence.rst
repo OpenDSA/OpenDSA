@@ -367,6 +367,8 @@ A more complex example is given next.
    
 .. inlineav:: DivideAndConquerRecurrencesCON ss
    :long_name: Divide-and-Conquer Expansion Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 .. topic:: Example

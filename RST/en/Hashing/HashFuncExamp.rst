@@ -28,6 +28,8 @@ Here "%" is the symbol for the mod function.
 
 .. inlineav:: hashFuncExCON1 ss
    :long_name: Hash Function Slideshow 1
+   :links: 
+   :scripts: 
    :output: show
 
 Recall that the values 0 to 15 can be represented with four bits
@@ -70,6 +72,8 @@ on the first letter in the string.
 
 .. inlineav:: hashFuncExCON2 ss
    :long_name: Hash Function Slideshow 2
+   :links: 
+   :scripts: 
    :output: show
 
 In general with binning we store the record with key value :math:`i`

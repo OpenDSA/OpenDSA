@@ -9,8 +9,6 @@
    :satisfies:
    :topic: Introduction
 
-.. odsalink:: AV/FormalLang/HierarchyCON.css
-
 Overview
 ========
 
@@ -22,6 +20,8 @@ By the end you will know how everything in this picture applies to how
 compilers work, and to how hard a problem is to solve.
 
 .. inlineav:: HierarchyCON dgm
+   :links: AV/FormalLang/HierarchyCON.css
+   :scripts: AV/FormalLang/HierarchyCON.js
    :align: center
 
 You are familiar with programming languages, now we’ll look in finer
@@ -115,6 +115,8 @@ Application: Compilers
    That is a topic for a compilers course.
 
 .. inlineav:: CompileCON dgm
+   :links: 
+   :scripts: AV/FormalLang/CompileCON.js
    :align: center
 
 
@@ -125,6 +127,8 @@ In this class we will be learning how this process works, everything
 but the last step.
 
 .. inlineav:: CompileStagesCON dgm
+   :links: 
+   :scripts: AV/FormalLang/CompileStagesCON.js
    :align: center
 
    Stages of a compiler
@@ -179,7 +183,3 @@ the changing of direction, etc.
 
 We will study L-systems later in the semester as another application
 of grammars.
-
-.. odsascript:: AV/FormalLang/HierarchyCON.js
-.. odsascript:: AV/FormalLang/CompileCON.js
-.. odsascript:: AV/FormalLang/CompileStagesCON.js

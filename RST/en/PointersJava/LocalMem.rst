@@ -116,6 +116,8 @@ Here is a more detailed version of the rules of local storage:
 Here is a simple example of the lifetime of local storage.
 
 .. inlineav:: simpleLifetimeCON ss
+   :links: 
+   :scripts: 
    :output: show
 
 Here is a larger example that shows how the simple rule "the locals
@@ -127,6 +129,8 @@ The following slides show the sequence of allocations and deallocations that
 result when the function X() calls the function Y() twice.
 
 .. inlineav:: T1-T5CON ss
+   :links: 
+   :scripts: 
    :output: show
 
 The slideshow showed how the sequence of the locals are allocated and

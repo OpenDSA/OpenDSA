@@ -62,6 +62,8 @@ Here we see the first few iterations of Insertion Sort.
 
 .. inlineav:: insertionsortCON ss
    :long_name: Insertion Sort Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 This continues on with each record in turn.
@@ -86,18 +88,24 @@ Insertion Sort Analysis
 
 .. inlineav:: InsertionSortWorstCaseCON ss
    :long_name: Insertion Sort Worst Case Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 |
 
 .. inlineav:: InsertionSortBestCaseCON ss
    :long_name: Insertion Sort Best Case Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 |
 
 .. inlineav:: InsertionSortAverageCaseCON ss
    :long_name: Insertion Sort Average Case Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 While the best case is significantly faster than the average and worst

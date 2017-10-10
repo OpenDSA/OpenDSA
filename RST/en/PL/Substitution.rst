@@ -106,7 +106,9 @@ since both :math:`p` and :math:`b` are equal to the same variable
 
 .. .. inlineav:: substCase1b ss
       :long_name: Slideshow
-..    :output: show
+..    :links: 
+   :scripts: 
+   :output: show
 
 
 **Case 2:** To be completed

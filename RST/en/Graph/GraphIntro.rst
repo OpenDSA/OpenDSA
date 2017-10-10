@@ -90,6 +90,8 @@ A graph whose edges have weights
 .. _GraphTerms:
 
 .. inlineav:: GdirundirCON dgm 
+   :links: 
+   :scripts: 
    :output: show
 
    Some types of graphs.
@@ -114,6 +116,8 @@ In (c) above, the in degree of Vertex 1 is two,
 and its out degree is one.
 
 .. inlineav:: GneighborCON dgm
+   :links: 
+   :scripts: 
    :output: show
 
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
@@ -128,6 +132,8 @@ A cycle is a :term:`simple cycle` if the path is simple, except for
 the first and last vertices being the same.
 
 .. inlineav:: GpathDefCON dgm 
+   :links: 
+   :scripts: 
    :output: show 
 
 An undirected graph is a :term:`connected graph` if there is at least
@@ -140,6 +146,8 @@ with three connected components.
 .. _ConCom:
 
 .. inlineav:: GconcomCON dgm
+   :links: 
+   :scripts: 
    :output: show
 
 A graph with relatively few edges is called a :term:`sparse graph`,
@@ -156,6 +164,8 @@ Any subgraph of :math:`V` where all vertices in the graph connect to
 all other vertices in the subgraph is called a :term:`clique`.
 
 .. inlineav:: GsparseDefCON dgm
+   :links: 
+   :scripts: 
    :output: show
 
 .. TODO::
@@ -207,6 +217,8 @@ because this edge comes into Vertex 2 rather than going out.
 .. _Directed:
 
 .. inlineav:: GdirRepCON dgm 
+   :links: 
+   :scripts: 
    :output: show
 
    Representing a directed graph.
@@ -225,6 +237,8 @@ entry for both Vertex 3 and Vertex 4.
 .. _Undirected:
 
 .. inlineav:: GundirRepCON dgm 
+   :links: 
+   :scripts: 
    :output: show 
 
    Representing an undirected graph.
@@ -261,6 +275,8 @@ As with the adjacency matrix, this value requires space to represent,
 typically an integer.
 
 .. inlineav:: GweightedCON dgm 
+   :links: 
+   :scripts: 
    :output: show
 
 Which graph representation is more space efficient depends on the

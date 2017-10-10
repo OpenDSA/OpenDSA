@@ -86,6 +86,8 @@ Here is an illustration of the binary search method.
 
 .. inlineav:: binarySearchCON ss
    :long_name: Binary Search Algorithm Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 With the right math techniques, it is not too hard to show that the

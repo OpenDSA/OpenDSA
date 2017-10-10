@@ -9,8 +9,6 @@
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
 
-.. odsalink:: AV/AlgAnal/UpperBoundCON.css
-
 Asymptotic Analysis and Upper Bounds
 ====================================
 
@@ -306,6 +304,8 @@ Summary
 
 .. inlineav:: UpperBoundCON ss
    :long_name: Upper Bounds visualization
+   :links: AV/AlgAnal/UpperBoundCON.css
+   :scripts: AV/AlgAnal/UpperBoundCON.js
    :output: show
 
 
@@ -314,5 +314,3 @@ Practice Questions
 
 .. avembed:: Exercises/AlgAnal/UpperBoundsSumm.html ka
    :long_name: Asymptotic Analysis and Upper Bounds Exercise
-
-.. odsascript:: AV/AlgAnal/UpperBoundCON.js

@@ -47,6 +47,8 @@ Example Grammar 3
 Note how the parse tree in the slide-show below produced by Example Grammar 3 is different from the one produced by :ref:`eg1`.
 
 .. inlineav:: parseTree3 ss
+   :links: 
+   :scripts: 
    :output: show
 
 In particular, with Example Grammar 3, the sub-tree corresponding to the

@@ -19,6 +19,8 @@ THE VERTEX COVER PROBLEM.
 
 .. inlineav:: vertexCoverCON ss
    :long_name: Vertex Cover
+   :links: 
+   :scripts: 
    :output: show
 
 Try out an instance of the Vertex Cover problem on your own.

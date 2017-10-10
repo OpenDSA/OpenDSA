@@ -20,6 +20,8 @@ problem can be reduced to an instance of 3 CNF Satisfiability problem in
 polynomial time.
  
 .. inlineav:: SATto3SATCON ss
+   :links: 
+   :scripts: 
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 3-SAT.

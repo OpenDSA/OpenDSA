@@ -59,6 +59,8 @@ expensive process.
 
 .. inlineav:: buckethashCON1 ss
    :long_name: Bucket Hashing Slideshow 1
+   :links: 
+   :scripts: 
    :output: show
 
 Now you can try it yourself.
@@ -82,6 +84,8 @@ in the bucket.
 
 .. inlineav:: buckethashCON2 ss
    :long_name: Bucket Hashing Slideshow 2
+   :links: 
+   :scripts: 
    :output: show
 
 

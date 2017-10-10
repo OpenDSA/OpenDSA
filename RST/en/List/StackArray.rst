@@ -66,6 +66,8 @@ the array-based stack class.
 
 .. inlineav:: astackVarCON ss
    :long_name: Array stack variables slideshow
+   :links: 
+   :scripts: 
    :output: show
    
 
@@ -76,12 +78,16 @@ array should represent the top of the stack.
 
 .. inlineav:: astackTopCON ss
    :long_name: Array stack top position slideshow
+   :links: 
+   :scripts: 
    :output: show
    
 |
 
 .. inlineav:: astackPushCON ss
    :long_name: Array stack push slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 .. avembed:: Exercises/List/AstackPushPRO.html ka
@@ -93,6 +99,8 @@ Pop
 
 .. inlineav:: astackPopCON ss
    :long_name: Array stack pop slideshow
+   :links: 
+   :scripts: 
    :output: show
    
 .. avembed:: Exercises/List/AstackPopPRO.html ka

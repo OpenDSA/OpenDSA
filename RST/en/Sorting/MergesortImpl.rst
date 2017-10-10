@@ -80,6 +80,8 @@ Here is a visualization for the merge step.
 
 .. inlineav:: mergeImplS1CON ss
    :long_name: Mergesort Implementation Slideshow 1
+   :links: 
+   :scripts: 
    :output: show
 
 An optimized Mergesort implementation is shown below.
@@ -100,6 +102,8 @@ Here is a visualization for the optimized merge step.
 
 .. inlineav:: mergeImplS2CON ss
    :long_name: Mergesort Implementation Slideshow 2
+   :links: 
+   :scripts: 
    :output: show
 
 .. avembed:: Exercises/Sorting/MergesortSumm.html ka

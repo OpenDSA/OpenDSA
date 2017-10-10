@@ -19,6 +19,8 @@ TRAVELING SALESMAN PROBLEM (TSP)
 
 .. inlineav:: TSPCON ss
    :long_name: Traveling Salesman
+   :links: 
+   :scripts: 
    :output: show
 
 Try out an instance of the Traveling Salesman problem on your own.

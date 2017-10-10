@@ -112,6 +112,8 @@ to build the parse tree for a given lambda expression.
 
 .. inlineav:: parseTree ss
    :long_name: Slideshow for how to build a parse tree
+   :links: 
+   :scripts: 
    :output: show
 
 

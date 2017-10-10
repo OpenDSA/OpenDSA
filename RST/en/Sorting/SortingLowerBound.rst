@@ -133,6 +133,8 @@ sorting lower bound proof.
 
 .. inlineav:: SortingLowerBoundCON ss
    :long_name: Sorting Lower Bound Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 Any sorting algorithm requiring :math:`\Omega(n \log n)` comparisons

@@ -72,6 +72,8 @@ completely independent.
    **Output:** A series of moves that solves the problem.
 
 .. inlineav:: TOHfigCON dgm
+   :links: 
+   :scripts: 
    :output: show
 
 

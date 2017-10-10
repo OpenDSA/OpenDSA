@@ -33,6 +33,8 @@ Here are the basic four steps that you need to write any recursive function.
 
 .. inlineav:: recurWriteStepsCON ss
    :long_name: Recursion Code Writing Slideshow 1
+   :links: 
+   :scripts: 
    :output: show  
 
 
@@ -40,6 +42,8 @@ Now le't see some different ways that we could write ``Sum`` recursively.
 
 .. inlineav:: recurWriteSumCON ss
    :long_name: Recursion Code Writing Slideshow 2
+   :links: 
+   :scripts: 
    :output: show  
 
 

@@ -9,9 +9,6 @@
    :satisfies:
    :topic: Search
 
-.. odsalink:: AV/Development/BitArrayCON.css   
-
-
 Bit Vectors for Representing Sets
 ==================================
 
@@ -41,6 +38,8 @@ Chapter :chap:`Graphs` is an example of such a set representation.
 .. _Primes:
 
 .. inlineav:: bitArray dgm
+   :links: AV/Development/BitArrayCON.css
+   :scripts: AV/Development/BitArrayCON.js
    :align: center
 
    The bit array for the set of primes in the range 0 to 15.
@@ -83,5 +82,3 @@ indicate those keywords appearing in the document.
 Such an organization is called a :term:`signature file`.
 The signatures can be manipulated to find documents with desired
 combinations of keywords.
-
-.. odsascript:: AV/Development/BitArrayCON.js

@@ -59,6 +59,8 @@ Here is an implementation.
 
 .. inlineav:: bubblesortS1CON ss
    :long_name: Bubble Sort Slideshow 1
+   :links: 
+   :scripts: 
    :output: show
 
 Now we continue with the second pass. However, since the largest
@@ -67,6 +69,8 @@ it again.
 
 .. inlineav:: bubblesortS2CON ss
    :long_name: Bubble Sort Slideshow 2
+   :links: 
+   :scripts: 
    :output: show
 
 Bubble Sort continues in this way until the entire array is sorted.
@@ -91,6 +95,8 @@ Bubble Sort.
 
 .. inlineav:: BubbleSortAnalysisCON ss
    :long_name: Bubble Sort Analysis Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 Thus, Bubble Sort's running time is roughly the same

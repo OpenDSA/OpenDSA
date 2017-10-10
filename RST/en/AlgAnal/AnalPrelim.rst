@@ -8,8 +8,6 @@
    :satisfies: problems; algorithms; functions
    :topic: Algorithm Analysis
 
-.. odsalink:: AV/AlgAnal/ProblemAlgorithmCON.css
-
 Problems, Algorithms, and Programs
 ==================================
 
@@ -204,6 +202,8 @@ The following slideshow should help you to visualize the differences.
 
 .. inlineav:: ProblemAlgorithmCON ss
    :long_name: Problem, Algorithm, and Program definitions Slideshow
+   :links: AV/AlgAnal/ProblemAlgorithmCON.css
+   :scripts: AV/AlgAnal/ProblemAlgorithmCON.js
    :output: show
 
 
@@ -212,5 +212,3 @@ Summary Questions
 
 .. avembed:: Exercises/AlgAnal/AnalPrelimSumm.html ka 
    :long_name: Problems, Algorithms, Programs Exercise
-
-.. odsascript:: AV/AlgAnal/ProblemAlgorithmCON.js

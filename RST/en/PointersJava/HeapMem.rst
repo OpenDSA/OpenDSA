@@ -127,6 +127,8 @@ from heap memory by garbage collection:
   .. codeinclude:: Pointers/Date
 
 .. inlineav:: garbageDisposalCON ss
+   :links: 
+   :scripts: 
    :output: show
 
 
@@ -262,6 +264,8 @@ A Simple Heap Example
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: LocalHeapintptr42 ss
+   :links: 
+   :scripts: 
    :output: show
 
 

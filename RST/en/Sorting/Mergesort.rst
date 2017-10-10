@@ -86,6 +86,8 @@ Here is a visualization for the merge operation.
 
 .. inlineav:: mergesortCON ss
    :long_name: Merging Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 Here is a mergesort warmup exercise to practice merging.
@@ -106,6 +108,8 @@ This visualization provides a running time analysis for Merge Sort.
 
 .. inlineav:: MergeSortAnalysisCON ss
    :long_name: Mergesort Analysis Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 .. odsascript:: AV/Sorting/mergesortCON.js

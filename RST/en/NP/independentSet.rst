@@ -19,6 +19,8 @@ INDEPENDENT SET PROBLEM.
 
 .. inlineav:: independentSetCON ss
    :long_name: Independent Set
+   :links: 
+   :scripts: 
    :output: show
 
 Try out an instance of the Independent Set problem on your own.

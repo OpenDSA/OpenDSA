@@ -19,6 +19,8 @@ HAMILTONIAN CYCLE PROBLEM.
 
 .. inlineav:: hamiltonianCycleCON ss
    :long_name: Hamiltonian Cycle
+   :links: 
+   :scripts: 
    :output: show
 
 Try out an instance of the Hamiltonian Cycle problem on your own.

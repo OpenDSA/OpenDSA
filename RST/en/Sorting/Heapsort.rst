@@ -60,6 +60,8 @@ used when sorting data sets too large to fit in main memory.
 
 .. inlineav:: heapsortCON ss
    :long_name: Heapsort Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 A complete implementation is as follows.
@@ -90,6 +92,8 @@ This visualization presents the running time analysis of Heap Sort
 
 .. inlineav:: HeapSortAnalysisCON ss
    :long_name: Heapsort Analysis Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 While typically slower than Quicksort by a constant factor

@@ -43,28 +43,38 @@ Now we'll see some examples for how to use ``link`` nodes to put
 chains together.
 
 .. inlineav:: linkNodes1CON ss
+   :links: 
+   :scripts: 
    :output: show
 
 How do we set up the chain to begin with?
 
 .. inlineav:: linkNodes2CON ss
+   :links: 
+   :scripts: 
    :output: show
 
 One can easily write a loop to iterate through all the Links on a
 chain, without needing to know how many there actually are.
 
 .. inlineav:: linkNodes3CON ss
+   :links: 
+   :scripts: 
    :output: show
 
 One can remove a Link from a chain.
 
 .. inlineav:: linkNodes4CON ss
+   :links: 
+   :scripts: 
    :output: show
 
 
 Finally, we can also insert new Links.
 
 .. inlineav:: linkNodes5CON ss
+   :links: 
+   :scripts: 
    :output: show
 
 Here is an exercise to practice manipulating link nodes.

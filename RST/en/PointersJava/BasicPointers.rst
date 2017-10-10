@@ -406,6 +406,8 @@ Assigning a pointee to a reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: employeePtr2CON ss
+   :links: 
+   :scripts: 
    :output: show
 
 
@@ -439,6 +441,8 @@ Example Reference Code
 ~~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: examplePointerCodeCON ss
+   :links: 
+   :scripts: 
    :output: show
 
 

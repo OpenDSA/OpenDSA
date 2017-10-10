@@ -47,6 +47,8 @@ the first tombstone encountered.
 
 .. inlineav:: hashdelCON ss
    :long_name: Hash Deletion Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 Here is a practice exercise.

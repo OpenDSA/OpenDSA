@@ -20,6 +20,8 @@ problem can be reduced to an instance of SAT problem in polynomial time.
  
 .. inlineav:: circuitSATtoSATCON ss
    :long_name: Circuit SAT to SAT
+   :links: 
+   :scripts: 
    :output: show
 
 This reduction can help in providing an NP Completeness proof for SAT.

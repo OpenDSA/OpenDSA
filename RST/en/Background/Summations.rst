@@ -8,9 +8,6 @@
    :satisfies: summation
    :topic: Math Background
 
-.. odsalink:: AV/Background/SummationOneToNCON.css
-.. odsalink:: AV/Background/SummationTwoPowerICON.css
-
 Summations
 ==========
 
@@ -64,11 +61,15 @@ comfortable with it.
 
 .. inlineav:: SummationOneToNCON ss
    :long_name: Summation of the first N Integers visualization
+   :links: AV/Background/SummationOneToNCON.css
+   :scripts: AV/Background/SummationOneToNCON.js
    :output: show
 
 
 .. inlineav:: SummationTwoPowerICON ss
    :long_name: Summation Two Power I visualization
+   :links: AV/Background/SummationTwoPowerICON.css
+   :scripts: AV/Background/SummationTwoPowerICON.js
    :output: show
 
 Here is a list of useful summations, along with their closed-form solutions.
@@ -126,6 +127,3 @@ Unfortunately, induction does not help us derive a closed-form
 solution.
 Induction only confirms when a proposed closed-form solution is
 correct.
-
-.. odsascript:: AV/Background/SummationOneToNCON.js
-.. odsascript:: AV/Background/SummationTwoPowerICON.js

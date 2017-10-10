@@ -8,9 +8,6 @@
    :satisfies: induction proofs
    :topic: Math Background
 
-.. odsalink:: AV/Background/twoColorCON.css
-.. odsalink:: AV/Background/TwoColoringProofCON.css
-
 .. index:: !proof
 
 Mathematical Proof Techniques
@@ -439,6 +436,8 @@ induction hypothesis.
 .. _TwoColor:
 
 .. inlineav:: twoColorCON dgm
+   :links: AV/Background/twoColorCON.css
+   :scripts: AV/Background/twoColorCON.js
    :align: center
 
    A two-coloring for the regions formed by three lines in the plane.
@@ -463,6 +462,8 @@ induction hypothesis.
 
    .. inlineav:: TwoColoringProofCON ss
       :long_name: Two Coloring Proof Slideshow
+      :links: AV/Background/TwoColoringProofCON.css
+      :scripts: AV/Background/TwoColoringProofCON.js
       :output: show
 
 Compare the proof in Example :num:`Example #ThmRegion` with that in
@@ -547,5 +548,3 @@ also produces the correct result.
 Prior to this, we must prove that the function always terminates,
 which might also be done using an induction proof.
 
-.. odsascript:: AV/Background/twoColorCON.js
-.. odsascript:: AV/Background/TwoColoringProofCON.js

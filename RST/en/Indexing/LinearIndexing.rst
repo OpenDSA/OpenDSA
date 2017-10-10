@@ -37,6 +37,8 @@ database records, because it is amenable to
 
 .. inlineav:: varindexCON ss
    :long_name: Simple linear index Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 If the database contains enough records, the linear index might
@@ -78,6 +80,8 @@ record.
 
 .. inlineav:: linindexCON ss
    :long_name: Two-level linear index Slideshow
+   :links: 
+   :scripts: 
    :output: show
    :align: justify
 

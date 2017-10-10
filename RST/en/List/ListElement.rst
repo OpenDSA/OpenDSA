@@ -29,6 +29,8 @@ better approach.
 
 .. inlineav:: listElementDataCON ss
    :long_name: List Element Data
+   :links: 
+   :scripts: 
    :output: show
 
 
@@ -66,6 +68,8 @@ In C++, a similar effect can be achieved by using ``void*`` pointers.
 
 .. inlineav:: listElementTypeCON ss
    :long_name: List Element Type
+   :links: 
+   :scripts: 
    :output: show
    
 
@@ -79,6 +83,8 @@ automatic garbage collection.
 
 .. inlineav:: listElementDeleteCON ss
    :long_name: List Element Delete
+   :links: 
+   :scripts: 
    :output: show 
    
 

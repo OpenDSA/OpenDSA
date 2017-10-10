@@ -19,12 +19,16 @@ Best, Worst, and Average Cases
 
 .. inlineav:: AnalCasesSameCON ss
    :long_name: Simple analysis cases slideshow
+   :links: AV/AlgAnal/AnalCasesCON.css
+   :scripts: AV/AlgAnal/AnalCasesSameCON.js
    :output: show
 
 |
 
 .. inlineav:: AnalCasesDiffCON ss
    :long_name: Best, Worst, and Average cases slideshow
+   :links: AV/AlgAnal/AnalCasesCON.css
+   :scripts: AV/AlgAnal/AnalCasesDiffCON.js
    :output: show
 
 When analyzing an algorithm, should we study the best, worst, or
@@ -86,6 +90,3 @@ we are likely to prefer a worst-case analysis of an algorithm.
 Otherwise, we often desire an average-case analysis if we know enough
 about the distribution of our input to compute the average case.
 If not, then we must resort to worst-case analysis.
-
-.. odsascript:: AV/AlgAnal/AnalCasesSameCON.js
-.. odsascript:: AV/AlgAnal/AnalCasesDiffCON.js

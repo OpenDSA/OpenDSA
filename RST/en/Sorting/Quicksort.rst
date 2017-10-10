@@ -162,6 +162,8 @@ bound for the recursive calls to ``qsort`` can be determined.
 
 .. inlineav:: quicksortCON ss
    :long_name: Quicksort Partition Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 
@@ -172,6 +174,8 @@ And here is a visualization illustrating the running time analysis of the partit
 
 .. inlineav:: QuickSortPartitionAnalysisCON ss
    :long_name: Quicksort Partition Analysis Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 
@@ -204,6 +208,8 @@ This visualization explains the worst-case running time of Quick Sort
 
 .. inlineav:: QuickSortWorstCaseCON ss
    :long_name: Quicksort Worst Case Analysis Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 This is terrible, no better than Bubble Sort.
@@ -220,6 +226,8 @@ This visualization explains the best-case running time of Quick Sort
 
 .. inlineav:: QuickSortBestCaseCON ss
    :long_name: Quicksort Best Case Analysis Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 Quicksort's average-case behavior falls somewhere
@@ -247,6 +255,8 @@ relation was formed.
 
 .. inlineav:: QuickSortAverageCaseCON ss
    :long_name: Quicksort Average Case Analysis Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 This is an unusual situation that the average case cost and the worst

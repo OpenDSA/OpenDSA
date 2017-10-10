@@ -84,6 +84,8 @@ each node to deal with), they tend to be easier to understand.
 
 .. inlineav:: dlistInsertCON ss
    :long_name: Doubly Linked List Insert
+   :links: 
+   :scripts: 
    :output: show   
    
 
@@ -92,6 +94,8 @@ Append
 
 .. inlineav:: dlistAppendCON ss
    :long_name: Doubly Linked List Append
+   :links: 
+   :scripts: 
    :output: show  
    
 
@@ -100,6 +104,8 @@ Remove
 
 .. inlineav:: dlistRemoveCON ss
    :long_name: Doubly Linked List Remove
+   :links: 
+   :scripts: 
    :output: show
    
 
@@ -108,6 +114,8 @@ Prev
 
 .. inlineav:: dlistPrevCON ss
    :long_name: Doubly Linked List Prev
+   :links: 
+   :scripts: 
    :output: show
    
 The only disadvantage of the doubly linked list as compared to the

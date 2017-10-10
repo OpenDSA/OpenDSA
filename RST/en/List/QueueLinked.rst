@@ -28,12 +28,16 @@ Here is the linked queue class declaration.
 
 .. inlineav:: lqueueIntroCON ss
    :long_name: Linked Queue Intro
+   :links: 
+   :scripts: 
    :output: show    
    
 |
 
 .. inlineav:: lqueueEnqueueCON ss
    :long_name: Linked Queue Enqueue
+   :links: 
+   :scripts: 
    :output: show   
    
 .. avembed:: Exercises/List/LqueueEnqueuePRO.html ka
@@ -45,6 +49,8 @@ Linked Dequeue
 
 .. inlineav:: lqueueDequeueCON ss
    :long_name: Linked Queue Dequeue
+   :links: 
+   :scripts: 
    :output: show 
    
 .. avembed:: Exercises/List/LqueueDequeuePRO.html ka

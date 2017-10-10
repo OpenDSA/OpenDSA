@@ -50,18 +50,24 @@ efficient.
 
 .. inlineav:: aqueueFirstCON ss
    :long_name: Array-based Queue Positions Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 |
 
 .. inlineav:: aqueueDriftCON ss
    :long_name: Array-based Queue Drift Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 |
 
 .. inlineav:: aqueueBadCON ss
    :long_name: Array-based Queue Bad Representation Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 
@@ -70,12 +76,16 @@ The Circular Queue
 
 .. inlineav:: aqueueCircularCON ss
    :long_name: Circular Array-based Queue Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 |
 
 .. inlineav:: aqueueEmptyCON ss
    :long_name: Empty Circular Array-based Queue Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 If the value of ``front`` is fixed, then :math:`n+1` different
@@ -112,6 +122,8 @@ Array-based Queue Implementation
 
 .. inlineav:: aqueueVarCON ss
    :long_name: Array-based Queue Variables Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 In this implementation, the front of the queue is defined to be toward

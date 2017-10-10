@@ -7,10 +7,6 @@
    :author: Cliff Shaffer
    :topic: General Trees
 
-
-.. odsalink:: AV/Binary/BinExampCON.css
-.. odsalink:: AV/General/SequentialTreeCON.css
-
 Sequential Tree Representations
 ===============================
 
@@ -78,12 +74,16 @@ the tree structure.
 .. _BinExampb:
 
 .. inlineav:: BinExampCON dgm
+   :links: AV/Binary/BinExampCON.css
+   :scripts: AV/Binary/BinExampCON.js
    :align: center
 
    Sample binary tree for sequential tree implementation examples.
 
 .. inlineav:: SequentialTreeCON ss
    :long_name: First sequential representation Slideshow
+   :links: AV/General/SequentialTreeCON.css
+   :scripts: AV/General/SequentialTreeCON.js
    :output: show
 
 .. avembed:: Exercises/General/SequentialTreePRO.html ka
@@ -136,6 +136,8 @@ implementation, and so requires less overhead.
 
 .. inlineav:: SequentialTreeAltCON ss
    :long_name: Second sequential representation Slideshow
+   :links: AV/General/SequentialTreeCON.css
+   :scripts: AV/General/SequentialTreeAltCON.js
    :output: show
 
 Storing :math:`n` extra bits can be a considerable savings over
@@ -166,6 +168,8 @@ a leaf node.
 
 .. inlineav:: SequentialTreeBitsCON ss
    :long_name: Bit vector sequential representation Slideshow
+   :links: AV/General/SequentialTreeCON.css
+   :scripts: AV/General/SequentialTreeBitsCON.js
    :output: show
 
 .. avembed:: Exercises/General/SequentialTreeBitVectorPRO.html ka
@@ -193,6 +197,8 @@ this by two or more successive ")" symbols.
 
 .. inlineav:: SequentialGenTreeCON ss
    :long_name: General Tree sequential representation Slideshow
+   :links: AV/General/SequentialTreeCON.css
+   :scripts: AV/General/SequentialGenTreeCON.js
    :output: show
 
 Note that this representation for serializing general trees cannot be
@@ -207,9 +213,3 @@ child of node :math:`B`.
 
 .. avembed:: Exercises/General/SequentialTreeGenTreePRO.html ka
    :long_name: General Tree Sequential Representation Exercise
-
-.. odsascript:: AV/Binary/BinExampCON.js
-.. odsascript:: AV/General/SequentialTreeCON.js
-.. odsascript:: AV/General/SequentialTreeAltCON.js
-.. odsascript:: AV/General/SequentialTreeBitsCON.js
-.. odsascript:: AV/General/SequentialGenTreeCON.js

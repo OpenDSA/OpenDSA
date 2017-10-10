@@ -47,6 +47,8 @@ an application of a :ref:`linked stack <linked stack> <StackLinked>`.
 
 .. inlineav:: listFreeCON ss
    :long_name: Freelist Slideshow 1
+   :links: 
+   :scripts: 
    :output: show
 
 Freelists are particularly useful for linked lists that periodically

@@ -19,6 +19,8 @@ CLIQUE PROBLEM
 
 .. inlineav:: cliqueCON ss
    :long_name: Clique
+   :links: 
+   :scripts: 
    :output: show
 
 Try out an instance of the Clique problem on your own.

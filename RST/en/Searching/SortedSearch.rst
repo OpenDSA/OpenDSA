@@ -121,6 +121,8 @@ So that we have a concrete example to discuss, here is an
 implementation.
 
 .. inlineav:: binarySearchCON ss
+   :links: 
+   :scripts: 
    :output: show
 
 

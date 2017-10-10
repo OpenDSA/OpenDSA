@@ -88,6 +88,8 @@ too high.
 
 .. inlineav:: pagedBSTCON ss
    :long_name: Paged BST Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 As you can see from this slideshow,
@@ -96,6 +98,8 @@ great deal of rearranging of data within the tree.
 
 .. inlineav:: rebalanceBSTCON ss
    :long_name: Paged BST With Disk Accesses Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 We can solve these problems by selecting another tree structure that

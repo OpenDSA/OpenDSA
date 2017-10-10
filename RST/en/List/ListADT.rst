@@ -130,6 +130,8 @@ object, sometimes referred to as an :term:`iterator`.
 
 .. inlineav:: listADTposCON ss
    :long_name: List ADT Positions Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 The ``List`` member functions allow you to build a list with elements

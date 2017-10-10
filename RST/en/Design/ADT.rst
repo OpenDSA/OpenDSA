@@ -9,8 +9,6 @@
    :satisfies: ADT; metaphor
    :topic: Abstract Data Types
 
-.. odsalink:: AV/Design/ADTCON.css
-
 Abstract Data Types
 ===================
 
@@ -276,6 +274,8 @@ context of a higher-level task.
 .. _DataType:
 
 .. inlineav:: ADTCON dgm
+   :links: AV/Design/ADTCON.css
+   :scripts: AV/Design/ADTCON.js
    :align: justify
 
    The relationship between data items, abstract data types, and data
@@ -304,5 +304,3 @@ The interface becomes a form of communication between the two programmers.
 
 .. avembed:: Exercises/Design/IntroADTSumm.html ka
    :long_name: ADT Summary Questions
-
-.. odsascript:: AV/Design/ADTCON.js

@@ -19,6 +19,8 @@ FORMULA SATISFIABILITY PROBLEM (SAT)
 
 .. inlineav:: SATCON ss
    :long_name: Formula Satisfiability
+   :links: 
+   :scripts: 
    :output: show
 
 .. odsascript:: AV/Development/NP/SATCON.js

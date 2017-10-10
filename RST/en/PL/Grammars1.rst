@@ -88,6 +88,8 @@ the production that is being applied to "grow" the parse tree.
    
 
 .. inlineav:: parseTree4 ss
+   :links: 
+   :scripts: 
    :output: show
 
 Note that, in a complete parse tree, leaf nodes are always terminals,

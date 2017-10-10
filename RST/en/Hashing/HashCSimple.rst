@@ -116,6 +116,8 @@ returns to the home position.
 
 .. inlineav:: linProbeCON1 ss
    :long_name: Linear Probing Slideshow 1
+   :links: 
+   :scripts: 
    :output: show
 
 Can you see any reason why this might not be the best approach
@@ -136,6 +138,8 @@ The main problem is illustrated by the next slideshow.
 
 .. inlineav:: linProbeCON2 ss
    :long_name: Linear Probing Slideshow 2
+   :links: 
+   :scripts: 
    :output: show
 
 Again, the ideal behavior for a collision resolution mechanism is that

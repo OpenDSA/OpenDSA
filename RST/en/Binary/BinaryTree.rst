@@ -9,10 +9,6 @@
    :satisfies: binary tree terminology
    :topic: Binary Trees
 
-.. odsalink:: AV/Binary/BinExampCON.css
-.. odsalink:: AV/Binary/BinDiffCON.css
-.. odsalink:: AV/Binary/FullCompCON.css
-
 Binary Trees
 ============
 
@@ -58,6 +54,8 @@ any node that has at least one non-empty child.
 .. _BinExample:
 
 .. inlineav:: BinExampCON dgm
+   :links: AV/Binary/BinExampCON.css
+   :scripts: AV/Binary/BinExampCON.js
    :align: justify
 
    A binary tree.
@@ -82,6 +80,8 @@ any node that has at least one non-empty child.
 .. _BinDiff:
 
 .. inlineav:: BinDiffCON dgm
+   :links: AV/Binary/BinDiffCON.css
+   :scripts: AV/Binary/BinDiffCON.js
    :align: justify
 
    Two different binary trees.
@@ -113,6 +113,8 @@ The bottom level has its nodes filled in from the left side.
 .. _FullComplete:
 
 .. inlineav:: FullCompCON dgm
+   :links: AV/Binary/FullCompCON.css
+   :scripts: AV/Binary/FullCompCON.js
    :align: center
 
    Examples of full and complete binary trees.
@@ -149,7 +151,3 @@ Practice Questions
 
 .. avembed:: Exercises/Binary/Treeprobs.html ka
    :long_name: Tree/Node Exercises
-
-.. odsascript:: AV/Binary/BinExampCON.js
-.. odsascript:: AV/Binary/BinDiffCON.js
-.. odsascript:: AV/Binary/FullCompCON.js

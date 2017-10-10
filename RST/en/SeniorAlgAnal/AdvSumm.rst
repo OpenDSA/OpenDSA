@@ -44,6 +44,8 @@ exact closed-form solution, because we will hopefully recognize if our
 proposed solution is badly wrong.
 
 .. inlineav:: SummationOneToNCON ss
+   :links: 
+   :scripts: 
    :output: show
 
 Let us now consider some ways that we might hit upon an exact equation

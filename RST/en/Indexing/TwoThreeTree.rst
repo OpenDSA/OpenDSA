@@ -110,6 +110,8 @@ illustrated in the following visualization.
 
 .. inlineav:: simpleInsertCON ss
    :long_name: 2-3 Tree Insert Slideshow
+   :links: 
+   :scripts: 
    :output: show
    :align: justify
 
@@ -137,6 +139,8 @@ Here is an example of a a simple promotion.
 
 .. inlineav:: promoteCON ss
    :long_name: 2-3 Tree Insert Promotion Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 Here is an illustration for what happens when promotions
@@ -147,6 +151,8 @@ Note that all leaf nodes continue to have equal depth.
 
 .. inlineav:: splitCON ss
    :long_name: 2-3 Tree Insert Split Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 Here is an implementation for the insertion process.

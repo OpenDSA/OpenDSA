@@ -77,6 +77,8 @@ Analysis
 
 .. inlineav:: ExchangeSortCON ss
    :long_name: Exchange Sort Analysis Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka

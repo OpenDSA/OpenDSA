@@ -28,6 +28,8 @@ same probe sequence.
 
 .. inlineav:: collisionCON1 ss
    :long_name: Linear Probing By Steps Slideshow 1
+   :links: 
+   :scripts: 
    :output: show
 
 One quality of a good probe sequence is that it will cycle through
@@ -64,6 +66,8 @@ probe sequence that visits all slots for every key.
 
 .. inlineav:: collisionCON2 ss
    :long_name: Linear Probing By Steps Slideshow 2
+   :links: 
+   :scripts: 
    :output: show
 
 Now you can practice linear probing by different step sizes.
@@ -114,6 +118,8 @@ random permutation of the values from 1 to :math:`M - 1` in slots 1 to
 
 .. inlineav:: collisionCON3 ss
    :long_name: Pseudo-Random Probing Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 Here is a practice exercise for pseudo-random probing.
@@ -126,6 +132,8 @@ function.
 
 .. inlineav:: collisionCON4 ss
    :long_name: Avoiding the Train
+   :links: 
+   :scripts: 
    :output: show
 
 
@@ -148,6 +156,8 @@ Then the :math:`i` th value in the probe sequence would be
 
 .. inlineav:: collisionCON5 ss
    :long_name: Quadratic Probing Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 Now you can practice quadratic probing.
@@ -160,6 +170,8 @@ typically will not visit all slots in the hash table.
 
 .. inlineav:: collisionCON6 ss
    :long_name: Quadratic Probing Problem
+   :links: 
+   :scripts: 
    :output: show
 
 
@@ -246,12 +258,16 @@ We can get that result with this secondary hash function:
 
 .. inlineav:: collisionCON7 ss
    :long_name: Double Hashing Slideshow 2
+   :links: 
+   :scripts: 
    :output: show
 
 |
 
 .. inlineav:: collisionCON8 ss
    :long_name: Double Hashing Slideshow 3
+   :links: 
+   :scripts: 
    :output: show
 
 

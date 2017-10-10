@@ -8,8 +8,6 @@
    :requires: general trees
    :satisfies: Union/Find
    :topic: Union/Find
-   
-.. odsalink:: AV/General/UFCON.css
 
 Union/Find and the Parent Pointer Implementation
 ================================================
@@ -112,6 +110,8 @@ UNION/FIND array, and methods ``UNION`` and
 .. _UFfig:
 
 .. inlineav:: UFfigCON dgm
+   :links: AV/General/UFCON.css
+   :scripts: AV/General/UFfigCON.js
    :align: fill
 
    The parent pointer array implementation.
@@ -153,6 +153,8 @@ For example, consider this graph of ten nodes labeled :math:`A` through
 .. _UFconcom:
 
 .. inlineav:: UFconcomCON dgm
+   :links: AV/General/UFCON.css
+   :scripts: AV/General/UFconcomCON.js
    :align: left
 
    A graph with two connected components.
@@ -253,6 +255,8 @@ weighted union.
 
 .. inlineav:: ufCON ss
    :long_name: Union/Find Example
+   :links: AV/General/UFCON.css
+   :scripts: AV/General/ufCON.js
    :output: show
 
 
@@ -284,6 +288,8 @@ step in the previous example.
    
 .. inlineav:: pathcompCON ss
    :long_name: Union/Find Path Compression Example
+   :links: AV/General/UFCON.css
+   :scripts: AV/General/pathcompCON.js
    :output: show
 
 Path compression keeps the cost of each FIND operation very
@@ -324,8 +330,3 @@ covers many aspects of the equivalence class problem.
 
 .. avembed:: AV/Development/UnionFindPRO.html pe
    :long_name: Union/Find Proficiency Exercise
-
-.. odsascript:: AV/General/UFfigCON.js
-.. odsascript:: AV/General/UFconcomCON.js
-.. odsascript:: AV/General/ufCON.js
-.. odsascript:: AV/General/pathcompCON.js

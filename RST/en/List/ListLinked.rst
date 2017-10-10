@@ -58,6 +58,8 @@ and ``link`` fields.
 
 .. inlineav:: llistBadCON ss
    :long_name: Linked List Slideshow 1
+   :links: 
+   :scripts: 
    :output: show
 
 
@@ -75,6 +77,8 @@ and thus increases the chance of introducing bugs.
 
 .. inlineav:: llistBadDelCON ss
    :long_name: Linked List Slideshow 2
+   :links: 
+   :scripts: 
    :output: show
    
 
@@ -133,18 +137,24 @@ named ``LList``.
 
 .. inlineav:: llistVarsCON ss
    :long_name: Linked List Variables Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 |
 
 .. inlineav:: llistConsCON ss
    :long_name: Linked List Constructors Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 |
 
 .. inlineav:: llistInsertCON ss
    :long_name: Linked List Insert Slideshow
+   :links: 
+   :scripts: 
    :output: show
    
 
@@ -153,6 +163,8 @@ the end, and inserting to an empty list.
 
 .. inlineav:: llistSpecialCON ss
    :long_name: Linked List Special Insert Slideshow
+   :links: 
+   :scripts: 
    :output: show
    
 
@@ -165,6 +177,8 @@ Linked List Remove
 
 .. inlineav:: llistRemoveCON ss
    :long_name: Linked List Remove Slideshow
+   :links: 
+   :scripts: 
    :output: show
 
 .. avembed:: Exercises/List/LlistRemovePRO.html ka
@@ -172,6 +186,8 @@ Linked List Remove
 
 .. inlineav:: llistOtherCON ss
    :long_name: Linked List Position Slideshow
+   :links: 
+   :scripts: 
    :output: show
    
 Implementations for the remaining operations each require

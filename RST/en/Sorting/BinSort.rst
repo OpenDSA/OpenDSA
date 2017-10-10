@@ -39,6 +39,8 @@ numbers 0 through :math:`n-1`.
 
 .. inlineav:: binsortS1CON ss
    :long_name: Binsort Slideshow 1
+   :links: 
+   :scripts: 
    :output: show
 
 Here the key value is used to determine the
@@ -83,6 +85,8 @@ values fall in the range from 0 to ``MaxKeyValue``.
 
 .. inlineav:: binsortS2CON ss
    :long_name: Binsort Slideshow 2
+   :links: 
+   :scripts: 
    :output: show
 
 The total work required is simply that needed to place each record
