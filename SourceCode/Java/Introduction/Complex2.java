@@ -1,11 +1,11 @@
 
 public class Complex {
-  private final double re;
-  private final double im;
+  private final double first;
+  private final double second;
 
-  public Complex(double re, double im) {
-    this.re = re;
-    this.im = im;
+  public Complex(double first, double second) {
+    this.first = first;
+    this.second = second;
   }
 
   @Override public boolean equals(Object o) {
@@ -15,8 +15,8 @@ public class Complex {
       return false;
     Complex c = (Complex) o;
 
-    return Double.compare(re, c.re) == 0 &&
-           Double.compare(im, c.im) == 0;
+    return Double.compare(first, c.first) == 0 &&
+           Double.compare(second, c.second) == 0;
   }
 
   @Override public String toString() {

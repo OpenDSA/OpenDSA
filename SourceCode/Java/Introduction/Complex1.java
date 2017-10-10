@@ -1,11 +1,11 @@
 
 public class Complex {
-  private final double re;
-  private final double im;
+  private final double first;
+  private final double second;
 
-  public Complex(double re, double im) {
-    this.re = re;
-    this.im = im;
+  public Complex(double first, double second) {
+    this.first = first;
+    this.second = second;
   }
 
   public static void main(String[] args)
