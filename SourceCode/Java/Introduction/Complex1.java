@@ -1,11 +1,11 @@
 
 public class Complex {
-  private final double first;
-  private final double second;
+  private final double real;  // real number
+  private final double imag;  // imaginary number's coefficient
 
-  public Complex(double first, double second) {
-    this.first = first;
-    this.second = second;
+  public Complex(double real, double imag) {
+    this.real = real;
+    this.imag = imag;
   }
 
   public static void main(String[] args)
