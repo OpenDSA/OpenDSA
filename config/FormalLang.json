@@ -71,8 +71,7 @@
       "Background/SetDef": {
         "long_name": "Set Definitions",
         "sections": {
-          "Set Notation": {},
-          "Relations": {
+          "Set Notation": {
             "SetTFrelation": {
               "long_name": "Relations Exercise",
               "required": true,
@@ -124,6 +123,12 @@
       },
       "FormalLang/Minimization": {
         "long_name": "Minimizing the Number of States in a DFA",
+        "sections": {}
+      }
+    },
+    "Regular Expressions (Lecture 5)": {
+      "FormalLang/RegEx": {
+        "long_name": "Regular Expressions",
         "sections": {}
       }
     },

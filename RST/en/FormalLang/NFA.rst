@@ -177,6 +177,17 @@ Can this NFA be converted to a DFA?
 
    Converted DFA
 
+Conclusion: NFA adds no new capability. So why bother with the idea?
+
+* First, it wasn't obvious that they are the same. NFA is a useful
+  concept.
+* NFA tend to be "smaller" and "simpler" than the equivalent DFA.
+  (At least morphologically, but perhaps the language of a NFA is hard
+  to grasp.)
+* We will see times when it is easier to see a conversion from
+  something to a NFA,
+  and we know that this can always be converted in turn to a DFA.
+
 
 Properties and Proving: Problem 1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -187,7 +198,7 @@ If :math:`L` is regular, prove that R1awb(:math:`L`) is regular.
 The property R1awb applied to a language :math:`L` replaces one
 :math:`a` in each string with a :math:`b`.
 If a string does not have an :math:`a`, then the string is not in 
-R1awb(L). 
+R1awb(:math:`L`). 
 
 What does this mean? What are we trying to prove? 
 
