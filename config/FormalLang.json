@@ -71,8 +71,7 @@
       "Background/SetDef": {
         "long_name": "Set Definitions",
         "sections": {
-          "Set Notation": {},
-          "Relations": {
+          "Set Notation": {
             "SetTFrelation": {
               "long_name": "Relations Exercise",
               "required": true,
