@@ -20,8 +20,8 @@ public class Complex {
   }
 
   @Override public String toString() {
-    String sign = im < 0 ? " - " : " + ";
-    return "(" + re + sign + im + "i)";
+    String sign = second < 0 ? " - " : " + ";
+    return "(" + first + sign + Math.abs(second) + "i)";
   }
 
   public static void main(String[] args)
@@ -36,4 +36,5 @@ public class Complex {
     }
     System.out.println ("'a' = " + a);
     System.out.println ("'b' = " + b);
+  }
 }
