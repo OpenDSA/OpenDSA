@@ -7,9 +7,7 @@
    :author: Cliff Shaffer
    :requires: disk drives
    :satisfies: buffer pool
-   :topic: File Processing
-
-.. odsalink:: AV/Files/buffpoolCON.css      
+   :topic: File Processing  
 
 Buffer Pools
 ============
@@ -441,7 +439,3 @@ transferred to the backing storage.
 This is in contrast to the :ref:`memory manager <MemmanIntro>`, in
 which the user passes a record to the manager and has no control at
 all over where the record is stored.
-
-.. odsascript:: AV/Files/buffintroCON.js
-.. odsascript:: AV/Files/LRUCON.js
-.. odsascript:: AV/Files/LRUwriteCON.js

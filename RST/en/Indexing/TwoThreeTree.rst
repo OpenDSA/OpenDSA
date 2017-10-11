@@ -8,8 +8,6 @@
    :satisfies: 2-3 tree
    :topic: Indexing
 
-.. odsalink:: AV/Indexing/twoThreeTreeCON.css
-
 2-3 Trees
 =========
 
@@ -46,6 +44,8 @@ Here is an example 2-3 tree.
 .. _TTexamp:
 
 .. inlineav:: twoThreedgmCON dgm
+   :links: AV/Indexing/twoThreeTreeCON.css
+   :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/twoThreedgmCON.js
    :align: center
 
    An example of a 2-3 tree.
@@ -110,8 +110,8 @@ illustrated in the following visualization.
 
 .. inlineav:: simpleInsertCON ss
    :long_name: 2-3 Tree Insert Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/Indexing/twoThreeTreeCON.css
+   :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/simpleInsertCON.js
    :output: show
    :align: justify
 
@@ -139,8 +139,8 @@ Here is an example of a a simple promotion.
 
 .. inlineav:: promoteCON ss
    :long_name: 2-3 Tree Insert Promotion Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/Indexing/twoThreeTreeCON.css
+   :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/promoteCON.js
    :output: show
 
 Here is an illustration for what happens when promotions
@@ -151,8 +151,8 @@ Note that all leaf nodes continue to have equal depth.
 
 .. inlineav:: splitCON ss
    :long_name: 2-3 Tree Insert Split Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/Indexing/twoThreeTreeCON.css
+   :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/splitCON.js
    :output: show
 
 Here is an implementation for the insertion process.
@@ -234,9 +234,3 @@ San Francisco as part of his |external_link| package.
 .. |external_link| raw:: html
 
    <a href="http://www.cs.usfca.edu/~galles/visualization/Algorithms.html" target="_blank">Data Structure Visualizations</a>
-
-.. odsascript:: AV/Indexing/twoThreeTreeCON.js
-.. odsascript:: AV/Indexing/twoThreedgmCON.js
-.. odsascript:: AV/Indexing/simpleInsertCON.js
-.. odsascript:: AV/Indexing/promoteCON.js
-.. odsascript:: AV/Indexing/splitCON.js

@@ -6,8 +6,6 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Memory Management
-   
-.. odsalink:: AV/MemManage/dynamicCON.css
 
 Dynamic Storage Allocation
 ==========================
@@ -27,6 +25,8 @@ a series of memory allocations and deallocations.
 .. _MemMode:
 
 .. inlineav:: freeblocklistCON dgm
+   :links: AV/MemManage/dynamicCON.css
+   :scripts: AV/MemManage/freeblocklistCON.js
    :align: justify
    
    The results from a series of memory allocations and
@@ -74,6 +74,8 @@ information.
 .. _CompFrag:
 
 .. inlineav:: fragCON dgm
+   :links: AV/MemManage/dynamicCON.css
+   :scripts: AV/MemManage/fragCON.js
    :align: center
 
    An illustration of internal and external fragmentation.
@@ -90,6 +92,3 @@ described later in this chapter.
 The process of searching the :term:`memory pool` for a block large
 enough to service the request, possibly reserving the remaining space
 as a free block, is referred to as a :term:`sequential fit` method.
-
-.. odsascript:: AV/MemManage/freeblocklistCON.js
-.. odsascript:: AV/MemManage/fragCON.js

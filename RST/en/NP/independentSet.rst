@@ -7,8 +7,6 @@
    :author: Nabanita Maji
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/NP/independentSetCON.css
-
 The Independent Set Problem
 ===========================
 
@@ -19,13 +17,11 @@ INDEPENDENT SET PROBLEM.
 
 .. inlineav:: independentSetCON ss
    :long_name: Independent Set
-   :links: 
-   :scripts: 
+   :links: AV/Development/NP/independentSetCON.css
+   :scripts: AV/Development/NP/independentSetCON.js
    :output: show
 
 Try out an instance of the Independent Set problem on your own.
 
 .. avembed:: Exercises/Development/independentSet_KA.html ka
    :long_name: Practice Exercise for Independent Set
-
-.. odsascript:: AV/Development/NP/independentSetCON.js

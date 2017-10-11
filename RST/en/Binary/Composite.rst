@@ -9,8 +9,6 @@
    :satisfies: composite
    :topic: Binary Trees, Design Patterns
 
-.. odsalink:: AV/Binary/BTCON.css
-
 Composite-based Expression Tree
 ===============================
 
@@ -38,8 +36,8 @@ children.
 
 .. .. inlineav:: compositeTraversalCON ss
       :long_name: Composite Expression Tree Traversal Slideshow
-..    :links: 
-      :scripts: 
+..    :links: AV/Binary/BTCON.css
+      :scripts: AV/Binary/compositeTraversalCON.js
       :output: show
 
 When comparing the composite implementation to
@@ -90,5 +88,3 @@ other behavior needed by this node type to do its job.
 This breaks down the complexity that many programmers feel overwhelmed
 by when dealing with complex information flows related to recursive
 processing.
-
-.. odsascript:: AV/Binary/compositeTraversalCON.js

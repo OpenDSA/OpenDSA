@@ -9,10 +9,6 @@
    :satisfies: doubly linked list
    :topic: Lists
 
-.. odsalink:: DataStructures/DoubleLinkList.css
-.. odsalink:: AV/List/dlistCON.css
-
-
 Doubly Linked Lists
 ===================
 
@@ -30,6 +26,8 @@ linked list), and a second pointer to the node preceding it.
 .. _DblListFig:
 
 .. inlineav:: dlistDiagramCON dgm
+   :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
+   :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistDiagramCON.js
    :align: center
    
    A doubly linked list.
@@ -84,8 +82,8 @@ each node to deal with), they tend to be easier to understand.
 
 .. inlineav:: dlistInsertCON ss
    :long_name: Doubly Linked List Insert
-   :links: 
-   :scripts: 
+   :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
+   :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistInsertCON.js
    :output: show   
    
 
@@ -94,8 +92,8 @@ Append
 
 .. inlineav:: dlistAppendCON ss
    :long_name: Doubly Linked List Append
-   :links: 
-   :scripts: 
+   :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
+   :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistAppendCON.js
    :output: show  
    
 
@@ -104,8 +102,8 @@ Remove
 
 .. inlineav:: dlistRemoveCON ss
    :long_name: Doubly Linked List Remove
-   :links: 
-   :scripts: 
+   :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
+   :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistRemoveCON.js
    :output: show
    
 
@@ -114,8 +112,8 @@ Prev
 
 .. inlineav:: dlistPrevCON ss
    :long_name: Doubly Linked List Prev
-   :links: 
-   :scripts: 
+   :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
+   :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistPrevCON.js
    :output: show
    
 The only disadvantage of the doubly linked list as compared to the
@@ -168,11 +166,3 @@ A region of the computer screen can be highlighted by
 XORing the outline of a box around it.
 XORing the box outline a second time restores the original
 contents of the screen.
-
-.. odsascript:: DataStructures/DoubleLinkList.js
-.. odsascript:: AV/List/dlist.js
-.. odsascript:: AV/List/dlistDiagramCON.js
-.. odsascript:: AV/List/dlistInsertCON.js
-.. odsascript:: AV/List/dlistAppendCON.js
-.. odsascript:: AV/List/dlistRemoveCON.js
-.. odsascript:: AV/List/dlistPrevCON.js

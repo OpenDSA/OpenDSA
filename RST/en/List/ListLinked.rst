@@ -8,8 +8,6 @@
    :requires: list ADT
    :satisfies: linked list
    :topic: Lists
-   
-.. odsalink:: AV/List/llistCON.css
 
 Linked Lists
 ============
@@ -32,6 +30,8 @@ box, signifying that there is no link coming out of this box.
 .. _LinkedListNodes:
 
 .. inlineav:: llistRepCON dgm
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistRepCON.js
    :align: center
 
 Because a list node is a distinct object (as opposed to simply a cell
@@ -58,8 +58,8 @@ and ``link`` fields.
 
 .. inlineav:: llistBadCON ss
    :long_name: Linked List Slideshow 1
-   :links: 
-   :scripts: 
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistBadCON.js
    :output: show
 
 
@@ -77,8 +77,8 @@ and thus increases the chance of introducing bugs.
 
 .. inlineav:: llistBadDelCON ss
    :long_name: Linked List Slideshow 2
-   :links: 
-   :scripts: 
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistBadDelCON.js
    :output: show
    
 
@@ -109,6 +109,8 @@ with header and trailer nodes.
 .. _LinkedListInit:
 
 .. inlineav:: llistInitCON dgm
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistInitCON.js
    :align: center
 
 Here is what a list with some elements looks like with the header and
@@ -117,6 +119,8 @@ trailer nodes added.
 .. _LinkedListTailer:
 
 .. inlineav:: llistHeaderCON dgm
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistHeaderCON.js
    :align: center
 
 Adding the trailer node also solves our problem with deleting the last
@@ -137,24 +141,24 @@ named ``LList``.
 
 .. inlineav:: llistVarsCON ss
    :long_name: Linked List Variables Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistVarsCON.js
    :output: show
 
 |
 
 .. inlineav:: llistConsCON ss
    :long_name: Linked List Constructors Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistConsCON.js
    :output: show
 
 |
 
 .. inlineav:: llistInsertCON ss
    :long_name: Linked List Insert Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistInsertCON.js
    :output: show
    
 
@@ -163,8 +167,8 @@ the end, and inserting to an empty list.
 
 .. inlineav:: llistSpecialCON ss
    :long_name: Linked List Special Insert Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistSpecialCON.js
    :output: show
    
 
@@ -177,8 +181,8 @@ Linked List Remove
 
 .. inlineav:: llistRemoveCON ss
    :long_name: Linked List Remove Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistRemoveCON.js
    :output: show
 
 .. avembed:: Exercises/List/LlistRemovePRO.html ka
@@ -186,22 +190,9 @@ Linked List Remove
 
 .. inlineav:: llistOtherCON ss
    :long_name: Linked List Position Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistOtherCON.js
    :output: show
    
 Implementations for the remaining operations each require
 :math:`\Theta(1)` time.
-
-.. odsascript:: AV/List/llist.js
-.. odsascript:: AV/List/llistRepCON.js
-.. odsascript:: AV/List/llistBadCON.js
-.. odsascript:: AV/List/llistBadDelCON.js
-.. odsascript:: AV/List/llistInitCON.js
-.. odsascript:: AV/List/llistHeaderCON.js
-.. odsascript:: AV/List/llistVarsCON.js
-.. odsascript:: AV/List/llistConsCON.js
-.. odsascript:: AV/List/llistInsertCON.js
-.. odsascript:: AV/List/llistSpecialCON.js
-.. odsascript:: AV/List/llistRemoveCON.js
-.. odsascript:: AV/List/llistOtherCON.js

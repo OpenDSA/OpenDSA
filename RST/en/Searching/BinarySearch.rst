@@ -8,8 +8,6 @@
    :satisfies: binary search
    :topic: Searching
 
-.. odsalink:: AV/Searching/binarySearchCON.css
-
 Searching in an Array
 =====================
 
@@ -86,8 +84,8 @@ Here is an illustration of the binary search method.
 
 .. inlineav:: binarySearchCON ss
    :long_name: Binary Search Algorithm Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/Searching/binarySearchCON.css
+   :scripts: AV/Searching/binarySearchCON.js
    :output: show
 
 With the right math techniques, it is not too hard to show that the
@@ -117,5 +115,3 @@ times before we reach 1. [#]_
        the worst case when searching in a sorted array.
        This is even more difficult than proving that sequential search
        is the most efficient algorithm possible on an unsorted array.
-
-.. odsascript:: AV/Searching/binarySearchCON.js

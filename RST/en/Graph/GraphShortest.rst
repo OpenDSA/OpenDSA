@@ -59,6 +59,8 @@ We assume that all weights are positive.
 .. _DistExamp:
 
 .. inlineav:: dijkstraCON dgm
+   :links:
+   :scripts: AV/Graph/dijkstraCON.js
    :align: center
 
    Example graph for shortest-path definitions.
@@ -256,5 +258,3 @@ Now you can practice using Dijkstra's algorithm.
    :type: Exercise
 
    Summary battery of questions for Dijkstra's algorithm
-
-.. odsascript:: AV/Graph/dijkstraCON.js

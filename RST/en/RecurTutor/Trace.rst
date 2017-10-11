@@ -9,9 +9,6 @@
    :requires: recursion writing
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recurTraceCON.css
-.. odsalink:: AV/RecurTutor/TOHfigCON.css
-
 Tracing Recursive Code
 ======================
 
@@ -42,8 +39,8 @@ Sometimes people forget about the "unwinding" phase.
 
 .. inlineav:: recurTraceWindCON ss
    :long_name: Recursion Tracing Winding and Unwinding
-   :links: 
-   :scripts: 
+   :links: AV/RecurTutor/recurTraceCON.css
+   :scripts: AV/RecurTutor/recurTraceWindCON.js
    :output: show 
 
 
@@ -57,8 +54,8 @@ during the unwinding phase.
 
 .. inlineav:: recurTraceFactCON ss
    :long_name: Recursion Tracing Factorial Function
-   :links: 
-   :scripts: 
+   :links: AV/RecurTutor/recurTraceCON.css
+   :scripts: AV/RecurTutor/recurTraceFactCON.js
    :output: show 
 
 The recursive function may have information flow for more than one parameter. For example, a recursive
@@ -68,8 +65,8 @@ in the unwinding phase.
 
 .. inlineav:: recurTraceSumCON ss
    :long_name: Recursion Tracing Sum Function
-   :links: 
-   :scripts: 
+   :links: AV/RecurTutor/recurTraceCON.css
+   :scripts: AV/RecurTutor/recurTraceSumCON.js
    :output: show
 
 
@@ -78,8 +75,8 @@ A Domino Analogy
 
 .. inlineav:: recurTraceDmnCON ss
    :long_name: Recursion Tracing General Domino Effect
-   :links: 
-   :scripts: 
+   :links: AV/RecurTutor/recurTraceCON.css
+   :scripts: AV/RecurTutor/recurTraceDmnCON.js
    :output: show 
 
 This recursive model for the domino effect can be used as a template
@@ -109,8 +106,8 @@ The legend says that, when the monks will have finished moving all of
 the disks, the world will end.
 
 .. inlineav:: TOHfigCON dgm
-   :links: 
-   :scripts: 
+   :links: AV/RecurTutor/TOHfigCON.css
+   :scripts: AV/RecurTutor/TOHfigCON.js
    :output: show 
 
 The Towers of Hanoi puzzle begins with three poles and :math:`n`
@@ -170,13 +167,6 @@ This next slideshow explains the solution to the Towers of Hanoi problem.
 
 .. inlineav:: recurTraceTOHCON ss
    :long_name: Recursion Tracing Towers of Hanoi
-   :links: 
-   :scripts: 
+   :links: AV/RecurTutor/recurTraceCON.css
+   :scripts: AV/RecurTutor/recurTraceTOHCON.js
    :output: show 
-
-.. odsascript:: AV/RecurTutor/recurTraceWindCON.js
-.. odsascript:: AV/RecurTutor/recurTraceSumCON.js
-.. odsascript:: AV/RecurTutor/recurTraceFactCON.js
-.. odsascript:: AV/RecurTutor/recurTraceDmnCON.js
-.. odsascript:: AV/RecurTutor/recurTraceTOHCON.js
-.. odsascript:: AV/RecurTutor/TOHfigCON.js

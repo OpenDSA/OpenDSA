@@ -11,8 +11,6 @@
 
 .. index:: ! Radix Sort
 
-.. odsalink:: AV/Development/RadixSortAnalysisCON.css
-
 Radix Sort
 ==========
 
@@ -116,8 +114,8 @@ Radix Sort Analysis
 
 .. inlineav:: RadixSortAnalysisCON ss
    :long_name: Radix Sort Analysis Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/Development/RadixSortAnalysisCON.css
+   :scripts: AV/Development/RadixSortAnalysisCON.js
    :output: show
 
 **Is it really a reasonable assumption to treat** :math:`k` **as a
@@ -193,5 +191,3 @@ appropriate for these situations.
 
 .. avembed:: Exercises/Sorting/RadixSortSumm.html ka
    :long_name: Radix Sort Summary Exercise
-
-.. odsascript:: AV/Development/RadixSortAnalysisCON.js

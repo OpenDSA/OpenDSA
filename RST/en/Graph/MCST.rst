@@ -41,6 +41,8 @@ Figure :num:`Figure #MCSTdgm` shows the MCST for an example graph.
 .. _MCSTdgm:
 
 .. inlineav:: MCSTCON dgm
+   :links:
+   :scripts: AV/Graph/MCSTCON.js
    :align: justify
 
    A graph and its MCST.
@@ -211,5 +213,3 @@ cost?
    :type: Exercise
 
    Proficiency exercise for Prim's algorithm.
-
-.. odsascript:: AV/Graph/MCSTCON.js

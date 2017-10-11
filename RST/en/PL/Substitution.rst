@@ -105,9 +105,9 @@ since both :math:`p` and :math:`b` are equal to the same variable
 :math:`u`. So, the algorithm returns :math:`\lambda y.(y\ x)`.
 
 .. .. inlineav:: substCase1b ss
-      :long_name: Slideshow
-..    :links: 
-   :scripts: 
+   :long_name: Slideshow
+.. :links: AV/PL/main.css
+   :scripts: AV/PL/AV/substCase1b.js
    :output: show
 
 
@@ -152,5 +152,3 @@ a row.
 
 .. avembed:: Exercises/PL/RP15part3.html ka
    :long_name: RP set #15, question #3
-
-.. .. odsascript:: AV/PL/AV/substCase1b.js

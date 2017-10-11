@@ -9,8 +9,6 @@
    :satisfies: linked queue
    :topic: Lists
 
-.. odsalink:: AV/List/lqueueCON.css   
-
 Linked Queues
 =============
 
@@ -28,16 +26,16 @@ Here is the linked queue class declaration.
 
 .. inlineav:: lqueueIntroCON ss
    :long_name: Linked Queue Intro
-   :links: 
-   :scripts: 
+   :links: AV/List/lqueueCON.css
+   :scripts: AV/List/llist.js AV/List/lqueueIntroCON.js
    :output: show    
    
 |
 
 .. inlineav:: lqueueEnqueueCON ss
    :long_name: Linked Queue Enqueue
-   :links: 
-   :scripts: 
+   :links: AV/List/lqueueCON.css
+   :scripts: AV/List/llist.js AV/List/lqueueEnqueueCON.js
    :output: show   
    
 .. avembed:: Exercises/List/LqueueEnqueuePRO.html ka
@@ -49,8 +47,8 @@ Linked Dequeue
 
 .. inlineav:: lqueueDequeueCON ss
    :long_name: Linked Queue Dequeue
-   :links: 
-   :scripts: 
+   :links: AV/List/lqueueCON.css
+   :scripts: AV/List/llist.js AV/List/lqueueDequeueCON.js
    :output: show 
    
 .. avembed:: Exercises/List/LqueueDequeuePRO.html ka
@@ -73,9 +71,3 @@ Stack and Queue Summary Questions
 
 .. avembed:: Exercises/List/StackQSumm.html ka
    :long_name: Stack/Queue Summary Exercise
-
-
-.. odsascript:: AV/List/llist.js
-.. odsascript:: AV/List/lqueueIntroCON.js
-.. odsascript:: AV/List/lqueueEnqueueCON.js
-.. odsascript:: AV/List/lqueueDequeueCON.js

@@ -29,7 +29,7 @@ Here "%" is the symbol for the mod function.
 .. inlineav:: hashFuncExCON1 ss
    :long_name: Hash Function Slideshow 1
    :links: 
-   :scripts: 
+   :scripts: AV/Hashing/hashFuncExCON1.js
    :output: show
 
 Recall that the values 0 to 15 can be represented with four bits
@@ -73,7 +73,7 @@ on the first letter in the string.
 .. inlineav:: hashFuncExCON2 ss
    :long_name: Hash Function Slideshow 2
    :links: 
-   :scripts: 
+   :scripts: AV/Hashing/hashFuncExCON2.js
    :output: show
 
 In general with binning we store the record with key value :math:`i`
@@ -326,6 +326,3 @@ Here are some review questions.
 
 .. avembed:: Exercises/Hashing/HashFuncSumm.html ka
    :long_name: Hash Function Summary Exercise
-
-.. odsascript:: AV/Hashing/hashFuncExCON1.js
-.. odsascript:: AV/Hashing/hashFuncExCON2.js

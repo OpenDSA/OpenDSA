@@ -9,8 +9,6 @@
    :satisfies: open hashing
    :topic: Hashing
 
-.. odsalink:: AV/Hashing/openhashCON.css
-
 Open Hashing
 ============
 
@@ -42,6 +40,8 @@ slot points to a linked list to hold the records associated with that slot.
 The hash function used is the simple mod function.
 
 .. inlineav:: openhashCON dgm
+   :links: AV/Hashing/openhashCON.css
+   :scripts: AV/Hashing/openhashCON.js
 
 Records within a slot's list can be ordered in several ways:
 by insertion order, by key value order, or by frequency-of-access
@@ -85,5 +85,3 @@ other way.
 
 .. avembed:: Exercises/Hashing/OpenHashPRO.html ka
    :long_name: Open Hashing Proficiency Exercise
-
-.. odsascript:: AV/Hashing/openhashCON.js

@@ -631,20 +631,20 @@ def validate_glob_config(conf_data):
             print_err('WARNING: "{0}" is missing field "{1}". Using default value.'.format(field, field_name))
             conf_data[field][field_name] = default_ex_options[ex_type][field_name]
 
-  if 'glob_extr_options' not in conf_data:
-    print_err('WARNING: Missing "glob_extr_options", using default values instead.')
-    conf_data['glob_extr_options'] = default_ex_options['extr']
+  if 'glob_extrn_options' not in conf_data:
+    print_err('WARNING: Missing "glob_extrn_options", using default values instead.')
+    conf_data['glob_extrn_options'] = default_ex_options['extr']
   else:
-    if 'points' not in conf_data['glob_extr_options']:
-      print_err('WARNING: "glob_extr_options" is missing field "points". Using default value.')
-      conf_data['glob_extr_options']['points'] = 1.0
+    if 'points' not in conf_data['glob_extrn_options']:
+      print_err('WARNING: "glob_extrn_options" is missing field "points". Using default value.')
+      conf_data['glob_extrn_options']['points'] = 1.0
 
   ex_options, sect_options, mod_options = get_options(conf_data)
   default_ex_options = {
       'ka': conf_data['glob_ka_options'], 
       'ss': conf_data['glob_ss_options'], 
       'pe': conf_data['glob_pe_options'],
-      'extr': conf_data['glob_extr_options'],
+      'extr': conf_data['glob_extrn_options'],
       'dgm': {
         'required': False,
         'points': 0,
@@ -666,7 +666,7 @@ def generate_full_config(config_file_path):
   del full_config['glob_ka_options']
   del full_config['glob_ss_options']
   del full_config['glob_pe_options']
-  del full_config['glob_extr_options']
+  del full_config['glob_extrn_options']
 
   mod_files = get_chapter_module_files(conf_data)
   for chapter, files in mod_files.iteritems():

@@ -9,18 +9,6 @@
    :satisfies: Pointer intro
    :topic: Pointers
 
-.. odsalink:: AV/Pointers/num42CON.css
-.. odsalink:: AV/Pointers/employeeEmpRefCON.css
-.. odsalink:: AV/Pointers/empRefnullCON.css
-.. odsalink:: AV/Pointers/empRefsecondCON.css
-.. odsalink:: AV/Pointers/shallowdeepCON.css
-.. odsalink:: AV/Pointers/empPtrxxxCON.css
-.. odsalink:: AV/Pointers/employeePtr2CON.css
-.. odsalink:: AV/Pointers/examplePointerCodeCON.css
-.. odsalink:: AV/Pointers/badPointerPowCON.css
-.. odsalink:: AV/Pointers/memoryModelCON.css
-
-
 Basic References
 ================
 
@@ -83,6 +71,8 @@ value shown inside.
 .. _num42Fig:
 
 .. inlineav:: num42CON dgm
+   :links: AV/Pointers/num42CON.css
+   :scripts: AV/Pointers/num42CON.js
    :align: center
 
 A reference variable works a little differently.
@@ -105,6 +95,8 @@ pointee |---| pointee is just the word that we used in these
 explanations.)
 
 .. inlineav:: employeeEmpRefCON dgm
+   :links: AV/Pointers/employeeEmpRefCON.css
+   :scripts: AV/Pointers/employeeEmpRefCON.js
    :align: center
 
 Going back to simple things like ``int`` and ``float`` variables that
@@ -153,6 +145,8 @@ line between the corners of the reference variable's box.
 .. _numptrnullFig:
 
 .. inlineav:: empRefnullCON dgm
+   :links: AV/Pointers/empRefnullCON.css
+   :scripts: AV/Pointers/empRefnullCON.js
    :align: center
 
 
@@ -191,6 +185,8 @@ It just changes which pointee a reference refers to.
 .. _numptrsecondlFig:
 
 .. inlineav:: empRefsecondCON dgm
+   :links: AV/Pointers/empRefsecondCON.css
+   :scripts: AV/Pointers/empRefsecondCON.js
    :align: center
 
 After the assignment, testing for ``(second == empRef)`` would return
@@ -256,6 +252,8 @@ their own.
 .. _shallowdeepFig:
 
 .. inlineav:: shallowdeepCON dgm
+   :links: AV/Pointers/shallowdeepCON.css
+   :scripts: AV/Pointers/shallowdeepCON.js
    :align: center
 
 Here is an example of the difference between shallow and deep copying:
@@ -282,6 +280,8 @@ value.
 .. _numptrxxxFig:
 
 .. inlineav:: empPtrxxxCON dgm
+   :links: AV/Pointers/empPtrxxxCON.css
+   :scripts: AV/Pointers/empPtrxxxCON.js
    :align: center
 
 Bad references are common.
@@ -344,6 +344,8 @@ drawing of how memory is likely to react.
 |
 
 .. inlineav:: badPointerPowCON dgm
+   :links: AV/Pointers/badPointerPowCON.css
+   :scripts: AV/Pointers/badPointerPowCON.js
    :align: center
 
 Why Are Bad Reference Bugs So Common?
@@ -406,8 +408,8 @@ Assigning a pointee to a reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: employeePtr2CON ss
-   :links: 
-   :scripts: 
+   :links: AV/Pointers/employeePtr2CON.css
+   :scripts: AV/Pointers/employeePtr2CON.js
    :output: show
 
 
@@ -441,8 +443,8 @@ Example Reference Code
 ~~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: examplePointerCodeCON ss
-   :links: 
-   :scripts: 
+   :links: AV/Pointers/examplePointerCodeCON.css
+   :scripts: AV/Pointers/examplePointerCodeCON.js
    :output: show
 
 
@@ -508,6 +510,8 @@ A reference to an area of memory is really just an integer which is
 storing the address of that area of memory.
 
 .. inlineav:: memoryModelCON dgm
+   :links: AV/Pointers/memoryModelCON.css
+   :scripts: AV/Pointers/memoryModelCON.js
    :align: center
 
 In the picture above, we assume that Java decides to place the new
@@ -537,14 +541,3 @@ value.
 Java's runtime environment is constantly watching for a dereference of
 a reference variable with a ``null`` value, so it can catch it right
 away if that happens.
-
-.. odsascript:: AV/Pointers/num42CON.js
-.. odsascript:: AV/Pointers/employeeEmpRefCON.js
-.. odsascript:: AV/Pointers/empRefnullCON.js
-.. odsascript:: AV/Pointers/empRefsecondCON.js
-.. odsascript:: AV/Pointers/shallowdeepCON.js
-.. odsascript:: AV/Pointers/empPtrxxxCON.js
-.. odsascript:: AV/Pointers/employeePtr2CON.js
-.. odsascript:: AV/Pointers/examplePointerCodeCON.js
-.. odsascript:: AV/Pointers/badPointerPowCON.js
-.. odsascript:: AV/Pointers/memoryModelCON.js

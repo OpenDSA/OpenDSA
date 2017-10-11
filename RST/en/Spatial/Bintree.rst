@@ -9,7 +9,6 @@
    :satisfies: Bintree
    :topic: Spatial Data Structures
 
-.. odsalink:: AV/Spatial/bintreeCON.css
 .. odsalink:: DataStructures/PrQuadAv.css
 .. odsalink:: DataStructures/PrQuadAvC.css
 
@@ -42,6 +41,8 @@ multidimensional coordinates, such as locations in 2D or 3D space.
 .. _BintreeFig:
 
 .. inlineav:: bintreeCON dgm
+   :links: AV/Spatial/bintreeCON.css
+   :scripts: AV/Spatial/bintreeCON.js
    :align: justify
 
    Example of a Bintree.
@@ -216,8 +217,6 @@ implement when using the composite design.
 .. [#] A more efficient computation is
        :math:`(P_x - N_x)^2 + (P_y - N_y)^2 \leq d^2`.
        This avoids performing a square root function.
-
-.. odsascript:: AV/Spatial/bintreeCON.js
 
 .. 
    Saved as a comment in case we need to find this later.

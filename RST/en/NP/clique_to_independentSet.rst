@@ -7,8 +7,6 @@
    :author: Nabanita Maji
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/NP/cliqueToISCON.css
-
 Reduction of Clique to Independent Set
 ======================================
 
@@ -21,11 +19,9 @@ in polynomial time.
  
 .. inlineav:: cliqueToISCON ss
    :long_name: Clique to IS Reduction
-   :links: 
-   :scripts: 
+   :links: AV/Development/NP/cliqueToISCON.css
+   :scripts: AV/Development/NP/cliqueToISCON.js
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 
 the Independent Set problem.
-
-.. odsascript:: AV/Development/NP/cliqueToISCON.js

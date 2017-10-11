@@ -9,9 +9,6 @@
    :satisfies: Local memory
    :topic: Pointers
 
-.. odsalink:: AV/Pointers/simpleLifetimeCON.css
-.. odsalink:: AV/Pointers/T1-T5CON.css
-
 Local Memory
 ============
 
@@ -116,8 +113,8 @@ Here is a more detailed version of the rules of local storage:
 Here is a simple example of the lifetime of local storage.
 
 .. inlineav:: simpleLifetimeCON ss
-   :links: 
-   :scripts: 
+   :links: AV/Pointers/simpleLifetimeCON.css
+   :scripts: AV/Pointers/simpleLifetimeCON.js
    :output: show
 
 Here is a larger example that shows how the simple rule "the locals
@@ -129,8 +126,8 @@ The following slides show the sequence of allocations and deallocations that
 result when the function X() calls the function Y() twice.
 
 .. inlineav:: T1-T5CON ss
-   :links: 
-   :scripts: 
+   :links: AV/Pointers/T1-T5CON.css
+   :scripts: AV/Pointers/T1-T5CON.js
    :output: show
 
 The slideshow showed how the sequence of the locals are allocated and
@@ -305,5 +302,3 @@ function call process:
   However, the apparent the lifetime of the variables will
   always follow the "stack" model presented here.
 
-.. odsascript:: AV/Pointers/simpleLifetimeCON.js
-.. odsascript:: AV/Pointers/T1-T5CON.js

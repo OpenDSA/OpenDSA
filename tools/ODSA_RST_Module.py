@@ -320,9 +320,15 @@ class ODSA_RST_Module:
              break
 
         line = mod_data[i].strip()
-        next_line =  mod_data[i+1].strip() if i+1 < len(mod_data) else ''
-        is_chapter = next_line == "="*len(next_line) and len(next_line) > 0
-        is_section = next_line == "-"*len(next_line) and len(next_line) > 0
+        next_line =  mod_data[i+1] if i+1 < len(mod_data) else ''
+        if next_line.startswith("=") or next_line.startswith("-"):
+          next_line = next_line.strip()
+          is_chapter = next_line == "="*len(next_line) and len(next_line) > 0
+          is_section = next_line == "-"*len(next_line) and len(next_line) > 0
+        else:
+          next_line = next_line.strip()
+          is_chapter = False
+          is_section = False
         if is_chapter or is_section:
           processed_sections.append(line)
 
@@ -466,36 +472,36 @@ class ODSA_RST_Module:
 
             if av_type in ['ss', 'dgm']:
               j = i + 1
-                opt_line = next_line
-                links_found = False
-                scripts_found = False
-                while opt_line.startswith(':'):
-                  if opt_line.startswith(':links: '):
-                    link_opts = opt_line[len(':links: '):].split()
-                    if len(link_opts) > 0:
-                      links_found = True
-                      for link in link_opts:
-                        if link not in links:
-                          links[link] = False
-                    del mod_data[j]
-                    j -= 1
+              opt_line = next_line
+              links_found = False
+              scripts_found = False
+              while opt_line.startswith(':'):
+                if opt_line.startswith(':links:'):
+                  link_opts = opt_line[len(':links:'):].split()
+                  if len(link_opts) > 0:
+                    links_found = True
+                    for link in link_opts:
+                      if link not in links:
+                        links[link] = False
+                  del mod_data[j]
+                  j -= 1
 
 
-                  elif opt_line.startswith(':scripts: '):
-                    script_opts = opt_line[len(':scripts: '):].split()
-                    if len(script_opts) > 0:
-                      scripts_found = True
-                      for script in script_opts:
-                        if script not in scripts:
-                          scripts[script] = False
-                    del mod_data[j]
-                    j -=1
+                elif opt_line.startswith(':scripts:'):
+                  script_opts = opt_line[len(':scripts:'):].split()
+                  if len(script_opts) > 0:
+                    scripts_found = True
+                    for script in script_opts:
+                      if script not in scripts:
+                        scripts[script] = False
+                  del mod_data[j]
+                  j -=1
 
-                  j += 1
-                  opt_line = mod_data[j].strip() if j < len(mod_data) else ''
+                j += 1
+                opt_line = mod_data[j].strip() if j < len(mod_data) else ''
 
-                if not links_found or not scripts_found:
-                  print_err("WARNING: Module '{0}', line {1} -- inlineav directive missing :scripts: option".format(mod_path, i))
+              if not scripts_found:
+                print_err("{0}WARNING: Module '{1}' -- inlineav '{2}' missing :scripts: option".format(console_msg_prefix, mod_path, av_name))
 
             if av_type == 'ss':
               if av_name not in exercises:
@@ -651,6 +657,7 @@ class ODSA_RST_Module:
         if not has_directive:
           mod_data.insert(0, '.. odsalink:: {0}\n'.format(link))
 
+      mod_data.append('\n')
       for script, has_directive in scripts.iteritems():
         if not has_directive:
           mod_data.append('.. odsascript:: {0}\n'.format(script))

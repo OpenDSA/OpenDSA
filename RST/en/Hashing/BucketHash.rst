@@ -9,8 +9,6 @@
    :satisfies: bucket hashing
    :topic: Hashing
 
-.. odsalink:: AV/Hashing/buckethashCON.css
-
 Bucket Hashing
 ==============
 
@@ -59,8 +57,8 @@ expensive process.
 
 .. inlineav:: buckethashCON1 ss
    :long_name: Bucket Hashing Slideshow 1
-   :links: 
-   :scripts: 
+   :links: AV/Hashing/buckethashCON.css
+   :scripts: AV/Hashing/buckethashCON1.js
    :output: show
 
 Now you can try it yourself.
@@ -84,8 +82,8 @@ in the bucket.
 
 .. inlineav:: buckethashCON2 ss
    :long_name: Bucket Hashing Slideshow 2
-   :links: 
-   :scripts: 
+   :links: AV/Hashing/buckethashCON.css
+   :scripts: AV/Hashing/buckethashCON2.js
    :output: show
 
 
@@ -103,6 +101,4 @@ accesses.
 
 .. avembed:: Exercises/Hashing/HashBucket2PRO.html ka
    :long_name: Alternate Bucket Hashing Proficiency Exercise
-
-.. odsascript:: AV/Hashing/buckethashCON1.js
-.. odsascript:: AV/Hashing/buckethashCON2.js
+   

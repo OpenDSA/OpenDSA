@@ -11,8 +11,6 @@
 
 .. index:: ! Bubble Sort
 
-.. odsalink:: AV/Sorting/BubbleSortAnalysisCON.css
-
 Bubble Sort
 ===========
 
@@ -60,7 +58,7 @@ Here is an implementation.
 .. inlineav:: bubblesortS1CON ss
    :long_name: Bubble Sort Slideshow 1
    :links: 
-   :scripts: 
+   :scripts: AV/Sorting/bubblesortS1CON.js
    :output: show
 
 Now we continue with the second pass. However, since the largest
@@ -70,7 +68,7 @@ it again.
 .. inlineav:: bubblesortS2CON ss
    :long_name: Bubble Sort Slideshow 2
    :links: 
-   :scripts: 
+   :scripts: AV/Sorting/bubblesortS2CON.js
    :output: show
 
 Bubble Sort continues in this way until the entire array is sorted.
@@ -95,8 +93,8 @@ Bubble Sort.
 
 .. inlineav:: BubbleSortAnalysisCON ss
    :long_name: Bubble Sort Analysis Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/Sorting/BubbleSortAnalysisCON.css
+   :scripts: AV/Sorting/BubbleSortAnalysisCON.js
    :output: show
 
 Thus, Bubble Sort's running time is roughly the same
@@ -116,7 +114,3 @@ Bubble Sort.
  
 .. avembed:: Exercises/Sorting/BubsortSumm.html ka
    :long_name: Bubble Sort Summary Exercise
-
-.. odsascript:: AV/Sorting/bubblesortS1CON.js
-.. odsascript:: AV/Sorting/bubblesortS2CON.js
-.. odsascript:: AV/Sorting/BubbleSortAnalysisCON.js

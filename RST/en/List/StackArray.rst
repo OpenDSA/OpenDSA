@@ -9,8 +9,6 @@
    :satisfies: stack ADT; array-based stack; stack
    :topic: Lists
 
-.. odsalink:: AV/List/astackCON.css      
-
 Stacks
 ======
 
@@ -66,8 +64,8 @@ the array-based stack class.
 
 .. inlineav:: astackVarCON ss
    :long_name: Array stack variables slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/astackCON.css
+   :scripts: AV/List/astackVarCON.js
    :output: show
    
 
@@ -78,16 +76,16 @@ array should represent the top of the stack.
 
 .. inlineav:: astackTopCON ss
    :long_name: Array stack top position slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/astackCON.css
+   :scripts: AV/List/astackTopCON.js
    :output: show
    
 |
 
 .. inlineav:: astackPushCON ss
    :long_name: Array stack push slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/astackCON.css
+   :scripts: AV/List/astackPushCON.js
    :output: show
 
 .. avembed:: Exercises/List/AstackPushPRO.html ka
@@ -99,14 +97,9 @@ Pop
 
 .. inlineav:: astackPopCON ss
    :long_name: Array stack pop slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/astackCON.css
+   :scripts: AV/List/astackPopCON.js
    :output: show
    
 .. avembed:: Exercises/List/AstackPopPRO.html ka
    :long_name: Array-based Stack Pop Exercise
-
-.. odsascript:: AV/List/astackVarCON.js
-.. odsascript:: AV/List/astackTopCON.js
-.. odsascript:: AV/List/astackPushCON.js
-.. odsascript:: AV/List/astackPopCON.js

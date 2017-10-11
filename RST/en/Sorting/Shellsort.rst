@@ -105,6 +105,9 @@ At the end of the first pass, the resulting array is "a little better
 sorted".
 
 .. inlineav:: shellsortCON3 dgm
+   :links: 
+   :scripts: AV/Sorting/shellsortCODE.js AV/Sorting/shellsortCON3.js
+   :scripts: 
 
 The second pass of Shellsort looks at fewer, bigger sublists.
 In our example, the second pass will have an increment of size 4,
@@ -138,6 +141,8 @@ At the end of processing sublists with increment 4, the array is
 "even more sorted".
 
 .. inlineav:: shellsortCON6 dgm
+   :links: 
+   :scripts: AV/Sorting/shellsortCODE.js AV/Sorting/shellsortCON6.js
 
 The third pass will be made on sublists with increment 2.
 The effect is that we process 2 lists, one consisting of the odd
@@ -153,6 +158,8 @@ As usual, we sort the sublists using Insertion Sort.
 At this point, we are getting close to sorted.
 
 .. inlineav:: shellsortCON8 dgm
+   :links: 
+   :scripts: AV/Sorting/shellsortCODE.js AV/Sorting/shellsortCON8.js
 
 Shellsort's final pass will always use an increment of 1,
 which means a "regular" Insertion Sort of all records.
@@ -267,8 +274,3 @@ Here are some review questions to check that you understand Shellsort.
 If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good
 increment series in [KnuthV3]_.
-
-.. odsascript:: AV/Sorting/shellsortCODE.js
-.. odsascript:: AV/Sorting/shellsortCON3.js
-.. odsascript:: AV/Sorting/shellsortCON6.js
-.. odsascript:: AV/Sorting/shellsortCON8.js

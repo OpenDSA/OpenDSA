@@ -48,7 +48,7 @@ the first tombstone encountered.
 .. inlineav:: hashdelCON ss
    :long_name: Hash Deletion Slideshow
    :links: 
-   :scripts: 
+   :scripts: AV/Hashing/hashdelCON.js
    :output: show
 
 Here is a practice exercise.
@@ -115,5 +115,3 @@ to support exact-match queries.
 Unfortunately, hashing is not effective when implementing range queries,
 or answering questions like
 "Which record in the collection has the smallest key value?"
-
-.. odsascript:: AV/Hashing/hashdelCON.js

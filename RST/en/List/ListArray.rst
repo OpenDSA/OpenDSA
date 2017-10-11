@@ -9,8 +9,6 @@
    :satisfies: array-based list
    :topic: Lists
 
-.. odsalink:: AV/List/alistCON.css
-
 Array-Based List Implementation
 ===============================
 
@@ -28,14 +26,14 @@ and so must implement all of the member functions of ``List``.
 
 .. inlineav:: alistVarsCON ss
    :long_name: Array-based List Variables Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/alistCON.css
+   :scripts: AV/List/alistVarsCON.js
    :output: show
 
 .. inlineav:: alistIntroCON ss
    :long_name: Array-based List Intro Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/alistCON.css
+   :scripts: AV/List/alistIntroCON.js
    :output: show
 
 
@@ -48,8 +46,8 @@ and ``remove`` methods must maintain this property.
 
 .. inlineav:: alistInsertCON ss
    :long_name: Array-based List Insertion Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/alistCON.css
+   :scripts: AV/List/alistInsertCON.js
    :output: show
 
 
@@ -65,8 +63,8 @@ Append and Remove
 
 .. inlineav:: alistAppendCON ss
    :long_name: Array-based List Append Slideshow
-   :links: 
-   :scripts: 
+   :links: AV/List/alistCON.css
+   :scripts: AV/List/alistAppendCON.js
    :output: show
 
 Removing an element from the head of the list is
@@ -78,8 +76,8 @@ following slideshow.
 
 .. inlineav:: alistRemoveCON ss
    :long_name: Array-based List Remove
-   :links: 
-   :scripts: 
+   :links: AV/List/alistCON.css
+   :scripts: AV/List/alistRemoveCON.js
    :output: show
 
 In the average case, insertion or removal each requires moving half
@@ -105,9 +103,3 @@ Array-based List Practice Questions
 
 .. avembed:: Exercises/List/ALSumm.html ka
    :long_name: Array-based List Summary
-
-.. odsascript:: AV/List/alistVarsCON.js
-.. odsascript:: AV/List/alistIntroCON.js
-.. odsascript:: AV/List/alistInsertCON.js
-.. odsascript:: AV/List/alistAppendCON.js
-.. odsascript:: AV/List/alistRemoveCON.js

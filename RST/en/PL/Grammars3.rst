@@ -48,7 +48,7 @@ Note how the parse tree in the slide-show below produced by Example Grammar 3 is
 
 .. inlineav:: parseTree3 ss
    :links: 
-   :scripts: 
+   :scripts: AV/PL/AV/parseTree3.js
    :output: show
 
 In particular, with Example Grammar 3, the sub-tree corresponding to the
@@ -166,4 +166,3 @@ same one as in part 4 above) and a smaller EBNF grammar.
    :long_name: RP set #3, question #5
 
 .. odsascript:: Exercises/PL/RP3part1.js
-.. odsascript:: AV/PL/AV/parseTree3.js

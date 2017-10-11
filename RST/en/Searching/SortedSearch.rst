@@ -9,8 +9,6 @@
    :satisfies:
    :topic: Search
 
-.. odsalink:: AV/Searching/binarySearchCON.css
-
 Search in Sorted Arrays
 =======================
 
@@ -121,8 +119,8 @@ So that we have a concrete example to discuss, here is an
 implementation.
 
 .. inlineav:: binarySearchCON ss
-   :links: 
-   :scripts: 
+   :links: AV/Searching/binarySearchCON.css
+   :scripts: AV/Searching/binarySearchCON.js
    :output: show
 
 
@@ -593,5 +591,3 @@ this is not a typical situation.
 Fortunately, algorithm growth rates are usually well behaved, so that
 asymptotic algorithm analysis nearly always gives us a practical
 indication for which of two algorithms is better.
-
-.. odsascript:: AV/Searching/binarySearchCON.js

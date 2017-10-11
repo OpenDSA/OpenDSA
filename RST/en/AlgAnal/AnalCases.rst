@@ -9,8 +9,6 @@
    :satisfies: best and worst case
    :topic: Algorithm Analysis
 
-.. odsalink:: AV/AlgAnal/AnalCasesCON.css
-
 Best, Worst, and Average Cases
 ==============================
 
