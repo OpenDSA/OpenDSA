@@ -432,8 +432,10 @@ def configure(config_file_path, options):
 
     slides = options.slides
     no_lms = options.no_lms
+    conf_data = None
 
-    conf_data = simple2full.generate_full_config(config_file_path)
+    if no_lms:
+        conf_data = simple2full.generate_full_config(config_file_path)
 
     print "Configuring OpenDSA, using " + config_file_path
 

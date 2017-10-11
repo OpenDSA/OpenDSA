@@ -211,6 +211,7 @@ if __name__ == '__main__':
   args = sys.argv
   if len(args) != 3:
       print('Usage: {0} config_file output_file', args[0])
+      sys.exit(1)
 
   config_file = args[1]
   output_file = args[2]

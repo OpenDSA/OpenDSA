@@ -15,6 +15,9 @@ from optparse import OptionParser
 from ODSA_Config import read_conf_file
 
 mod_options = None
+# TODO: Use module name + exercise name to identify an exercise.
+#       It is possible that an exercise appears in two different modules
+#       with different options specified for each exercise instance
 ex_options = None
 ex_module = {} # map exercise names to modules
 sect_options = None
@@ -183,7 +186,7 @@ class inlineav(Directive):
                   'align': directives.unchanged,
                   'points': directives.unchanged,
                   'required': directives.unchanged,
-                  'threshold': directives.unchanged
+                  'threshold': directives.unchanged,
                 }
   has_content = True
 
@@ -552,6 +555,8 @@ def remove_markup(source):
   '''
   source = source.replace(' --- ','')
   source = source.replace('|---|','')
+  source = re.sub(r"\s+:links:.+\n", '\n', source, flags=re.MULTILINE)
+  source = re.sub(r"\s+:scripts:.+\n", '\n', source, flags=re.MULTILINE)
   source = re.sub(r"\:(?!output)[a-zA-Z]+\:", '',source, flags=re.MULTILINE)
   source = re.sub(r"\[.+\]\_", '',source, flags=re.MULTILINE)
 
@@ -701,3 +706,16 @@ def generate_full_config(config_file_path):
   for exer in ex_options:
     print_err('WARNING: the exercise "{0}" does not exist in module "{1}"'.format(exer, ex_module[exer]))
   return full_config
+
+if __name__ == '__main__':
+  args = sys.argv
+  if len(args) != 3:
+      print('Usage: {0} config_file output_file', args[0])
+      sys.exit(1)
+
+  config_file = args[1]
+  output_file = args[2]
+  full_conf = generate_full_config(config_file)
+
+  with open(output_file, 'w') as outfile:
+    json.dump(full_conf, outfile, indent=2)

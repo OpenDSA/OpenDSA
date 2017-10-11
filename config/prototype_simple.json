@@ -121,6 +121,22 @@
       "Binary/TreeTrie": {},
       "Binary/HuffProof": {},
       "Binary/BinaryChapSumm": {}
+    },
+    "Search Structures": {
+      "SearchStruct/BalancedTree": {},
+      "SearchStruct/AVL": {},
+      "SearchStruct/Splay": {},
+      "SearchStruct/RedBlack": {}
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "sections": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "sections": {}
+      }
     }
   }
 }
