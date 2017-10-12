@@ -31,6 +31,7 @@ import re
 import codecs
 from string import whitespace as ws
 from config_templates import *
+from collections import OrderedDict
 
 # Prints the given string to standard error
 def print_err(err_msg):
@@ -306,8 +307,8 @@ class ODSA_RST_Module:
 
       avmetadata_found = False
 
-      links = {}
-      scripts = {}
+      links = OrderedDict()
+      scripts = OrderedDict()
 
       # Alter the contents of the module based on the config file
       i = 0

@@ -112,11 +112,19 @@
       "Binary/BinaryTreeNodeSpace": {},
       "Binary/BST": {},
       "Binary/BSTDict": {},
-      "BTRecurTutor/BinaryTreeGuidedInfFlw": {},
+      "BTRecurTutor/BinaryTreeGuidedInfFlw": {
+        "Binary Tree Set Depth Exercise": {
+          "points": 2.0
+        }
+      },
       "BTRecurTutor/MultipleBinaryTrees": {},
       "BTRecurTutor/BSTCheck": {},
       "Binary/CompleteTree": {},
-      "Binary/Heaps": {},
+      "Binary/Heaps": {
+        "Building a Heap": {
+          "showsection": false
+        }
+      },
       "Binary/Huffman": {},
       "Binary/TreeTrie": {},
       "Binary/HuffProof": {},
