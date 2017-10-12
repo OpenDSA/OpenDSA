@@ -14,13 +14,11 @@ from docutils.core import publish_parts
 from optparse import OptionParser
 from ODSA_Config import read_conf_file
 
-mod_options = None
-# TODO: Use module name + exercise name to identify an exercise.
-#       It is possible that an exercise appears in two different modules
-#       with different options specified for each exercise instance
-ex_options = None
-ex_module = {} # map exercise names to modules
-sect_options = None
+mod_options = None    # custom options specified for modules
+ex_options = None     # custom options specified for exercises/slideshows
+sect_options = None   # custom options specified for sections
+current_module = None # the path of the current module being processed
+
 default_ex_options = {
     'ka': {
       'required': True,
@@ -47,7 +45,7 @@ default_ex_options = {
     }
 }
 
-EXERCISE_FIELDS = ['points', 'required', 'long_name', 'threshold', 'exer_options']
+EXERCISE_FIELDS = ['points', 'required', 'long_name', 'threshold', 'exer_options', 'showhide']
 MODULE_FIELDS = ['dispModComp', 'mod_options', 'codeinclude']
 REQUIRED_EXERCISE_FIELDS = ['points', 'required', 'threshold']
 
@@ -107,10 +105,10 @@ class avembed(Directive):
     self.options['points'] = default_ex_options[self.options['type']]['points']
     self.options['threshold'] = default_ex_options[self.options['type']]['threshold']
 
-    if self.options['exer_name'] in ex_options:
-      for key, value in ex_options[self.options['exer_name']].iteritems():
+    if self.options['exer_name'] in ex_options[current_module]:
+      for key, value in ex_options[current_module][self.options['exer_name']].iteritems():
         self.options[key] = value
-      #del ex_options[self.options['exer_name']]
+      #del ex_options[current_module][self.options['exer_name']]
 
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
@@ -200,10 +198,10 @@ class inlineav(Directive):
     self.options['points'] = default_ex_options[self.options['type']]['points']
     self.options['threshold'] = default_ex_options[self.options['type']]['threshold']
 
-    if self.options['exer_name'] in ex_options:
-        for key, value in ex_options[self.options['exer_name']].iteritems():
+    if self.options['exer_name'] in ex_options[current_module]:
+        for key, value in ex_options[current_module][self.options['exer_name']].iteritems():
             self.options[key] = value
-        #del ex_options[self.options['exer_name']]
+        #del ex_options[current_module][self.options['exer_name']]
 
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
@@ -397,6 +395,8 @@ def extract_mod_config(mod_json):
     if k == 'section' and one_sec_only == False:
       mod_config['sections'] = extract_sec_config(v)
 
+    if one_sec_only and one_sec_name in sect_options[current_module]:
+      del sect_options[current_module][one_sec_name]
 
   return mod_config
 
@@ -423,10 +423,10 @@ def extract_sec_config(sec_json):
         elif isinstance(v, dict):
           if 'raw' in v.keys():
             sections_config[sec_title].update(extract_exs_config(v['raw']))
-    if sec_title in sect_options:
-      for k, v in sect_options[sec_title].iteritems():
+    if sec_title in sect_options[current_module]:
+      for k, v in sect_options[current_module][sec_title].iteritems():
         sections_config[sec_title][k] = v
-      del sect_options[sec_title]
+      del sect_options[current_module][sec_title]
     if 'extertool' in sections_config[sec_title].keys():
       sections_config[sec_title] = sections_config[sec_title]['extertool']
 
@@ -449,10 +449,10 @@ def extract_exs_config(exs_json):
         threshold = float(ex_obj['@threshold'])
         exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
 
-        if exer_name in ex_options:
-          for key, value in ex_options[exer_name].iteritems():
+        if exer_name in ex_options[current_module]:
+          for key, value in ex_options[current_module][exer_name].iteritems():
               exs_config[exer_name][key] = value
-          del ex_options[exer_name]
+          del ex_options[current_module][exer_name]
 
       if isinstance(x, dict) and 'extertool' in x.keys():
         ex_obj = x['extertool']
@@ -461,10 +461,10 @@ def extract_exs_config(exs_json):
         exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
         exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
         exs_config['extertool']['points'] = float(ex_obj['@points'])
-        if ex_obj['@resource_name'] in ex_options:
-          for key, value in ex_options[ex_obj['@resource_name']].iteritems():
+        if ex_obj['@resource_name'] in ex_options[current_module]:
+          for key, value in ex_options[current_module][ex_obj['@resource_name']].iteritems():
               exs_config['extertool'][key] = value
-          del ex_options[ex_obj['@resource_name']]
+          del ex_options[current_module][ex_obj['@resource_name']]
 
       if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ss":
         ex_obj = x['inlineav']
@@ -474,10 +474,10 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['required'] = default_ex_options[ex_obj['@type']]['required']
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
         exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
-        if exer_name in ex_options:
-          for key, value in ex_options[exer_name].iteritems():
+        if exer_name in ex_options[current_module]:
+          for key, value in ex_options[current_module][exer_name].iteritems():
               exs_config[exer_name][key] = value
-          del ex_options[exer_name]
+          del ex_options[current_module][exer_name]
 
       if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "dgm":
         ex_obj = x['inlineav']
@@ -493,10 +493,10 @@ def extract_exs_config(exs_json):
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
       threshold = float(ex_obj['@threshold'])
       exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
-      if exer_name in ex_options:
-          for key, value in ex_options[exer_name].iteritems():
-              exs_config[exer_name][key] = value
-          del ex_options[exer_name]
+      if exer_name in ex_options[current_module]:
+        for key, value in ex_options[current_module][exer_name].iteritems():
+          exs_config[exer_name][key] = value
+        del ex_options[current_module][exer_name]
 
     if 'extertool' in exs_json.keys():
       ex_obj = exs_json['extertool']
@@ -505,10 +505,10 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
       exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
       exs_config['extertool']['points'] = float(ex_obj['@points'])
-      if ex_obj['@resource_name'] in ex_options:
-          for key, value in ex_options[ex_obj['@resource_name']].iteritems():
+      if ex_obj['@resource_name'] in ex_options[current_module]:
+          for key, value in ex_options[current_module][ex_obj['@resource_name']].iteritems():
               exs_config['extertool'][key] = value
-          del ex_options[ex_obj['@resource_name']]
+          del ex_options[current_module][ex_obj['@resource_name']]
 
     if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ss":
       ex_obj = exs_json['inlineav']
@@ -518,10 +518,10 @@ def extract_exs_config(exs_json):
       exs_config[exer_name]['required'] = default_ex_options[ex_obj['@type']]['required']
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
       exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
-      if exer_name in ex_options:
-          for key, value in ex_options[exer_name].iteritems():
+      if exer_name in ex_options[current_module]:
+          for key, value in ex_options[current_module][exer_name].iteritems():
               exs_config[exer_name][key] = value
-          del ex_options[exer_name]
+          del ex_options[current_module][exer_name]
 
     if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "dgm":
       ex_obj = exs_json['inlineav']
@@ -590,33 +590,35 @@ def get_options(conf_data):
   for chapter in conf_data['chapters'].values():
     for module, children in chapter.iteritems():
       mod_opts[module] = {}
+      mod_ex = {}
+      mod_sect = {}
+      exercises[module] = mod_ex
+      sections[module] = mod_sect
       if 'sections' in children:
         for section_name, exercise_objs in children['sections'].iteritems():
-          sections[section_name] = {}
+          mod_sect[section_name] = {}
           for key, value in exercise_objs.iteritems():
               if type(value) is OrderedDict and any(k in EXERCISE_FIELDS for k in value):
                 if 'long_name' in value:
                   del value['long_name']
-                exercises[key] = value
-                ex_module[key] = module
+                mod_ex[key] = value
               elif 'learning_tool' in exercise_objs:
-                exercises[section_name] = exercise_objs
+                mod_ex[section_name] = exercise_objs
               elif key != 'long_name':
-                sections[section_name][key] = value
-          if len(sections[section_name]) == 0:
-            del sections[section_name]
+                mod_sect[section_name][key] = value
+          if len(mod_sect[section_name]) == 0:
+            del mod_sect[section_name]
         del children['sections']
 
       if 'long_name' in children:
         del children['long_name']
       for key, value in children.iteritems():
         if key in MODULE_FIELDS:  
-          mod_options[module][key] = value
+          mod_opts[module][key] = value
         elif any(k in EXERCISE_FIELDS for k in value):
-          exercises[key] = value
-          ex_module[key] = module 
+          mod_ex[key] = value
         else:
-          sections[key] = value
+          mod_sect[key] = value
       if len(mod_opts[module]) == 0:
         del mod_opts[module]
   
@@ -636,20 +638,20 @@ def validate_glob_config(conf_data):
             print_err('WARNING: "{0}" is missing field "{1}". Using default value.'.format(field, field_name))
             conf_data[field][field_name] = default_ex_options[ex_type][field_name]
 
-  if 'glob_extrn_options' not in conf_data:
-    print_err('WARNING: Missing "glob_extrn_options", using default values instead.')
-    conf_data['glob_extrn_options'] = default_ex_options['extr']
+  if 'glob_extr_options' not in conf_data:
+    print_err('WARNING: Missing "glob_extr_options", using default values instead.')
+    conf_data['glob_extr_options'] = default_ex_options['extr']
   else:
-    if 'points' not in conf_data['glob_extrn_options']:
-      print_err('WARNING: "glob_extrn_options" is missing field "points". Using default value.')
-      conf_data['glob_extrn_options']['points'] = 1.0
+    if 'points' not in conf_data['glob_extr_options']:
+      print_err('WARNING: "glob_extr_options" is missing field "points". Using default value.')
+      conf_data['glob_extr_options']['points'] = 1.0
 
   ex_options, sect_options, mod_options = get_options(conf_data)
   default_ex_options = {
       'ka': conf_data['glob_ka_options'], 
       'ss': conf_data['glob_ss_options'], 
       'pe': conf_data['glob_pe_options'],
-      'extr': conf_data['glob_extrn_options'],
+      'extr': conf_data['glob_extr_options'],
       'dgm': {
         'required': False,
         'points': 0,
@@ -660,6 +662,7 @@ def validate_glob_config(conf_data):
 def generate_full_config(config_file_path):
   ''' Generates a full configuration from a simplified configuration
   '''
+  global current_module
   register()
 
   conf_data = read_conf_file(config_file_path)
@@ -671,7 +674,7 @@ def generate_full_config(config_file_path):
   del full_config['glob_ka_options']
   del full_config['glob_ss_options']
   del full_config['glob_pe_options']
-  del full_config['glob_extrn_options']
+  del full_config['glob_extr_options']
 
   mod_files = get_chapter_module_files(conf_data)
   for chapter, files in mod_files.iteritems():
@@ -683,9 +686,11 @@ def generate_full_config(config_file_path):
         mod_path = rst_fname
       else:
         mod_path = rst_dir_name + '/' + rst_fname
+      
+      current_module = mod_path
 
       if not os.path.isfile(x):
-        print_err("ERROR: '{0}' is not a valid module path" % mod_path)
+        print_err("ERROR: '{0}' is not a valid module path".format(mod_path))
         sys.exit(1)
 
       with open(x, 'r') as rstfile:
@@ -703,8 +708,12 @@ def generate_full_config(config_file_path):
 
       full_config['chapters'][chapter][mod_path] = mod_config
 
-  for exer in ex_options:
-    print_err('WARNING: the exercise "{0}" does not exist in module "{1}"'.format(exer, ex_module[exer]))
+  for mod_name, exercises in ex_options.iteritems():
+    for exer in exercises:
+      print_err('WARNING: the exercise "{0}" does not exist in module "{1}"'.format(exer, mod_name))
+  for mod_name, sections in sect_options.iteritems():
+    for sect in sections:
+      print_err('WARNING: the section "{0}" does not exist in module "{1}"'.format(sect, mod_name))
   return full_config
 
 if __name__ == '__main__':

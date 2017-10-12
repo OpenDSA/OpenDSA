@@ -56,7 +56,7 @@
     "points": 1.0,
     "threshold": 0.9
   },
-  "glob_extrn_options": {
+  "glob_extr_options": {
     "points": 1.0,
     "code-workout": {
       "points": 1.0
@@ -106,17 +106,17 @@
         }
       },
       "Binary/WritingTraversals": {},
-      "BTRecurTutor/BinaryTreeInfFlw": {},
+      "BTRecurTutor/BinaryTreeInfFlw": {
+        "Binary Tree Set Depth Exercise": {
+          "points": 2.0
+        }
+      },
       "Binary/BinaryTreeImpl": {},
       "Binary/Composite": {},
       "Binary/BinaryTreeNodeSpace": {},
       "Binary/BST": {},
       "Binary/BSTDict": {},
-      "BTRecurTutor/BinaryTreeGuidedInfFlw": {
-        "Binary Tree Set Depth Exercise": {
-          "points": 2.0
-        }
-      },
+      "BTRecurTutor/BinaryTreeGuidedInfFlw": {},
       "BTRecurTutor/MultipleBinaryTrees": {},
       "BTRecurTutor/BSTCheck": {},
       "Binary/CompleteTree": {},
