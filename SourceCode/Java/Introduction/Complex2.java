@@ -1,11 +1,11 @@
 
 public class Complex {
-  private final double re;
-  private final double im;
+  private final double real;  // real number
+  private final double imag;  // imaginary number's coefficient
 
-  public Complex(double re, double im) {
-    this.re = re;
-    this.im = im;
+  public Complex(double real, double imag) {
+    this.real = real;
+    this.imag = imag;
   }
 
   @Override public boolean equals(Object o) {
@@ -15,13 +15,13 @@ public class Complex {
       return false;
     Complex c = (Complex) o;
 
-    return Double.compare(re, c.re) == 0 &&
-           Double.compare(im, c.im) == 0;
+    return Double.compare(real, c.real) == 0 &&
+           Double.compare(imag, c.imag) == 0;
   }
 
   @Override public String toString() {
-    String sign = im < 0 ? " - " : " + ";
-    return "(" + re + sign + im + "i)";
+    String sign = imag < 0 ? " - " : " + ";
+    return "(" + real + sign + Math.abs(imag) + "i)";
   }
 
   public static void main(String[] args)
@@ -36,4 +36,5 @@ public class Complex {
     }
     System.out.println ("'a' = " + a);
     System.out.println ("'b' = " + b);
+  }
 }

@@ -3,7 +3,7 @@
 /* *** ODSATag: AListVars *** */
 class AList implements List {
   private Object listArray[];             // Array holding list elements
-  private static final int defaultSize = 10; // Default size
+  private static final int DEFAULT_SIZE = 10; // Default size
   private int maxSize;                    // Maximum size of list
   private int listSize;                   // Current # of list items
   private int curr;                       // Position of current element
@@ -12,13 +12,13 @@ class AList implements List {
 /* *** ODSATag: Constructors *** */
   // Constructors
   // Create a new list object with maximum size "size"
-  AList(int size) { 
+  AList(int size) {
     maxSize = size;
     listSize = curr = 0;
     listArray = new Object[size];         // Create listArray
   }
   // Create a list with the default capacity
-  AList() { this(defaultSize); }          // Just call the other constructor
+  AList() { this(DEFAULT_SIZE); }          // Just call the other constructor
 /* *** ODSAendTag: Constructors *** */
 
   public void clear()                     // Reinitialize the list
@@ -64,7 +64,7 @@ class AList implements List {
   public void next() { if (curr < listSize) curr++; } // Move right
   public int length() { return listSize; }      // Return list size
   public int currPos() { return curr; }         // Return current position
-  
+
   // Set current list position to "pos"
   public boolean moveToPos(int pos) {
     if ((pos < 0) || (pos > listSize)) return false;
