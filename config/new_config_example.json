@@ -1,6 +1,6 @@
 {
-  "title": "Prototype Config",
-  "desc": "Prototype Config",
+  "title": "New Config Example",
+  "desc": "Example of new configuration format",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
