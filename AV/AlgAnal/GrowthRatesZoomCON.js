@@ -112,6 +112,8 @@ $(document).ready(function() {
     return temp;
   };
 
+  av.labels("Input size n", {left: p1[2] - 30, top: p1[3] - 35});
+
   av.displayInit();
   av.recorded();
 

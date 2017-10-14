@@ -60,13 +60,87 @@
   z-index: -500;
 }
 
+@keyframes bluehigh {
+  0% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+
+  50% {
+    fill : #e6eeff;
+    stroke : #e6eeff;
+  }
 
 
-#iteration1CON .blueboxhigh, #iteration2CON  .blueboxhigh, #iteration3CON  .blueboxhigh  {
-  fill : #e6eeff;
-  stroke : #e6eeff;
+  100% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
 }
 
+@keyframes bluehighset {
+  0% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+
+  20% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+
+  40% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+
+  60% {
+    fill : #e6eeff;
+    stroke : #e6eeff;
+  }
+
+  80% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+
+  100% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+}
+
+#iteration1CON .blueboxhighcss, #iteration2CON .blueboxhighcss, #iteration2CON .blueboxhighcss {
+  -webkit-animation: bluehigh 1s linear;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: bluehigh 1s linear;
+  animation-fill-mode: forwards;
+}
+
+#iteration1CON .midblue1 {
+  -webkit-animation: bluehighset 1s linear;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: bluehighset 1s linear;
+  animation-fill-mode: forwards;
+}
+
+#iteration1CON .midblue2 {
+  -webkit-animation: bluehighset 2s linear;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: bluehighset 2s linear;
+  animation-fill-mode: forwards;
+}
+
+#iteration1CON .midblue3 {
+  -webkit-animation: bluehighset 3s linear;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: bluehighset 3s linear;
+  animation-fill-mode: forwards;
+}
 
 #iteration3CON  .calbox  {
   fill : #805ba5;
