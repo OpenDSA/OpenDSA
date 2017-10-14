@@ -66,16 +66,23 @@
     stroke : rgb(91, 91, 165);
   }
 
-  50% {
+  20% {
     fill : #e6eeff;
     stroke : #e6eeff;
   }
-
 
   100% {
     fill : rgb(91, 91, 165);
     stroke : rgb(91, 91, 165);
   }
+}
+
+#iteration1CON .blueboxhigh, #iteration2CON .blueboxhigh, #iteration2CON .blueboxhigh {
+  -webkit-animation: bluehigh 1s ease;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: bluehigh 1s ease;
+  animation-fill-mode: forwards;
 }
 
 @keyframes bluehighset {
@@ -110,15 +117,7 @@
   }
 }
 
-#iteration1CON .blueboxhighcss, #iteration2CON .blueboxhighcss, #iteration2CON .blueboxhighcss {
-  -webkit-animation: bluehigh 1s linear;
-  -webkit-animation-fill-mode: forwards;
-
-  animation-name: bluehigh 1s linear;
-  animation-fill-mode: forwards;
-}
-
-#iteration1CON .midblue1 {
+#iteration1CON .midblue1high {
   -webkit-animation: bluehighset 1s linear;
   -webkit-animation-fill-mode: forwards;
 
@@ -126,7 +125,7 @@
   animation-fill-mode: forwards;
 }
 
-#iteration1CON .midblue2 {
+#iteration1CON .midblue2high {
   -webkit-animation: bluehighset 2s linear;
   -webkit-animation-fill-mode: forwards;
 
@@ -134,7 +133,7 @@
   animation-fill-mode: forwards;
 }
 
-#iteration1CON .midblue3 {
+#iteration1CON .midblue3high {
   -webkit-animation: bluehighset 3s linear;
   -webkit-animation-fill-mode: forwards;
 

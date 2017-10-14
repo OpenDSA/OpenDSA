@@ -66,32 +66,11 @@ $(document).ready(function() {
   ipline.addClass("hiding");
 
 
-// ---------------------- For animation ---------------------------
-// JSAV.ext.blueStepAnim = function (elemSet) {
-//   if (this._shouldAnimate()) {
-//     $.each(elemSet, function(index, it) {
-//       // make sure not to record the class changes
-//       it.addClass("blueboxhighcss", {record: false});
-//       setTimeout(function() {
-//         it.removeClass("blueboxhighcss", {record: false});
-//       }, 1000);
-//     });
-//   }
-// };
-// ---------------------- slide show methods-----------------------
+// --------------- highlight function for single bluebox -------
 
   function blink(it) {
-      it.addClass("blueboxhighcss");
-  }
-
-  // function blinkSet(animset){
-  //   for(var i = 0; i < animset.length; i++){
-  //         var str = "midblue" + (i + 1);
-  //          animset[i].addClass(str);  // What we do when not using setTimeout
-  //   }
-  // }
-
-
+      it.addClass("blueboxhigh");
+}
 // ------------------- slide show start -------------------------
 
   // Slide 1
@@ -119,81 +98,81 @@ $(document).ready(function() {
 
   // Slide 5
   av.umsg(interpret("sc5"));
-  midblue1.addClass("midblue1");
-  midblue2.addClass("midblue2");
-  midblue3.addClass("midblue3");
+  midblue1.addClass("midblue1high");
+  midblue2.addClass("midblue2high");
+  midblue3.addClass("midblue3high");
   av.step();
 
   // Slide 6
   av.umsg(interpret("sc6"));
   arr.css({left: nextleft});
-  midblue1.removeClass("midblue1");
-  midblue2.removeClass("midblue2");
-  midblue3.removeClass("midblue3");
+  midblue1.removeClass("midblue1high");
+  midblue2.removeClass("midblue2high");
+  midblue3.removeClass("midblue3high");
   nextleft -= nodegap;
   av.step();
 
   // Slide 7
   av.umsg(interpret("sc7"));
-  midblue1.addClass("midblue1");
-  midblue2.addClass("midblue2");
-  midblue3.addClass("midblue3");
+  midblue1.addClass("midblue1high");
+  midblue2.addClass("midblue2high");
+  midblue3.addClass("midblue3high");
   av.step();
 
   // Slide 8
   av.umsg(interpret("sc8"));
   arr.css({left: nextleft});
-  midblue1.removeClass("midblue1");
-  midblue2.removeClass("midblue2");
-  midblue3.removeClass("midblue3");
+  midblue1.removeClass("midblue1high");
+  midblue2.removeClass("midblue2high");
+  midblue3.removeClass("midblue3high");
   nextleft -= nodegap;
   av.step();
 
   // Slide 9
   av.umsg(interpret("sc9"));
-  midblue1.addClass("midblue1");
-  midblue2.addClass("midblue2");
-  midblue3.addClass("midblue3");
+  midblue1.addClass("midblue1high");
+  midblue2.addClass("midblue2high");
+  midblue3.addClass("midblue3high");
   av.step();
 
   // Slide 10
   av.umsg(interpret("sc10"));
   arr.css({left: nextleft});
-  midblue1.removeClass("midblue1");
-  midblue2.removeClass("midblue2");
-  midblue3.removeClass("midblue3");
+  midblue1.removeClass("midblue1high");
+  midblue2.removeClass("midblue2high");
+  midblue3.removeClass("midblue3high");
   nextleft -= nodegap;
   av.step();
 
   // Slide 11
   av.umsg(interpret("sc11"));
-  midblue1.addClass("midblue1");
-  midblue2.addClass("midblue2");
-  midblue3.addClass("midblue3");
+  midblue1.addClass("midblue1high");
+  midblue2.addClass("midblue2high");
+  midblue3.addClass("midblue3high");
   av.step();
 
   // Slide 12
   av.umsg(interpret("sc12"));
   arr.css({left: nextleft});
-  midblue1.removeClass("midblue1");
-  midblue2.removeClass("midblue2");
-  midblue3.removeClass("midblue3");
+  midblue1.removeClass("midblue1high");
+  midblue2.removeClass("midblue2high");
+  midblue3.removeClass("midblue3high");
   nextleft -= (nodegap + 50);
   av.step();
 
   // Slide 13
   av.umsg(interpret("sc13"));
-  midblue1.addClass("midblue1");
-  midblue2.addClass("midblue2");
-  midblue3.addClass("midblue3");
+  midblue1.addClass("midblue1high");
+  midblue2.addClass("midblue2high");
+  midblue3.addClass("midblue3high");
   av.step();
 
   // Slide 14
   av.umsg(interpret("sc14"));
   arr.css({left: nextleft});
-  midblue1.removeClass("midblue1");
-  midblue2.removeClass("midblue2");
-  midblue3.removeClass("midblue3");
+  midblue1.removeClass("midblue1high");
+  midblue2.removeClass("midblue2high");
+  midblue3.removeClass("midblue3high");
   nextleft -= (nodegap + 100);
   av.step();
 
