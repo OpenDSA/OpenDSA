@@ -54,6 +54,7 @@
   border-radius: 50px;
 }
 
+
 #iteration1CON .bluebox, #iteration2CON  .bluebox, #iteration3CON  .bluebox  {
   fill : rgb(91, 91, 165);
   stroke : rgb(91, 91, 165);
@@ -117,7 +118,7 @@
   }
 }
 
-#iteration1CON .midblue1high {
+#iteration1CON .midblue1high, #iteration2CON .midblue1high, #iteration2CON .midblue1high {
   -webkit-animation: bluehighset 1s linear;
   -webkit-animation-fill-mode: forwards;
 
@@ -125,7 +126,7 @@
   animation-fill-mode: forwards;
 }
 
-#iteration1CON .midblue2high {
+#iteration1CON .midblue2high, #iteration2CON .midblue2high, #iteration2CON .midblue2high {
   -webkit-animation: bluehighset 2s linear;
   -webkit-animation-fill-mode: forwards;
 
@@ -133,7 +134,7 @@
   animation-fill-mode: forwards;
 }
 
-#iteration1CON .midblue3high {
+#iteration1CON .midblue3high, #iteration2CON .midblue3high, #iteration2CON .midblue3high {
   -webkit-animation: bluehighset 3s linear;
   -webkit-animation-fill-mode: forwards;
 

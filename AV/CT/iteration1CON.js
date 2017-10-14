@@ -43,8 +43,6 @@ $(document).ready(function() {
   var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
   var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
   var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
-  var animset = [midblue1, midblue2, midblue3];
-
 
 // create labels
   var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});

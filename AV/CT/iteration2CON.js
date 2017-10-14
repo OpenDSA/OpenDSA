@@ -41,7 +41,6 @@ $(document).ready(function() {
   var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
   var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
   var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
-  var animset = [midblue1, midblue2, midblue3];
 
   // last purple box.
   av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("box");
@@ -68,12 +67,16 @@ $(document).ready(function() {
 
   // ----------------------slide show methods-----------------------
 
-    function blueHighlight(animset){
-      for(var i = 0; i < animset.length; i++){
-        animset[i].addClass("blueboxhigh");
-        animset[i].removeClass("blueboxhigh");
-      }
-    }
+
+// Blink a blue box, just for one.
+  function blink(it) {
+      it.addClass("blueboxhigh");
+}
+
+  function pauseblink(it) {
+    it.addClass("midblue2high");
+    valuelabel.value("4");
+  }
 
   // --------------------- start slide shows
 
@@ -84,8 +87,7 @@ $(document).ready(function() {
 
   // Slide 2
   av.umsg(interpret("sc2"));
-  topblue.addClass("blueboxhigh");
-  topblue.removeClass("blueboxhigh");
+  blink(topblue);
   av.step();
 
   // Slide 3
@@ -96,19 +98,25 @@ $(document).ready(function() {
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  blueHighlight(animset);
-  valuelabel.value("4");
+  midblue1.addClass("midblue1high");
+  pauseblink(midblue2);
+  midblue3.addClass("midblue3high");
   av.step();
 
   // Slide 5
   av.umsg(interpret("sc5"));
   arr.css({left: nextleft});
+  midblue1.removeClass("midblue1high");
+  midblue2.removeClass("midblue2high");
+  midblue3.removeClass("midblue3high");
   nextleft -= nodegap;
   av.step();
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  blueHighlight(animset);
+  midblue1.addClass("midblue1high");
+  midblue2.addClass("midblue2high");
+  midblue3.addClass("midblue3high");
   valuelabel.value("13");
   av.step();
 
@@ -120,7 +128,9 @@ $(document).ready(function() {
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  blueHighlight(animset);
+  midblue1.addClass("midblue1high");
+  midblue2.addClass("midblue2high");
+  midblue3.addClass("midblue3high");
   valuelabel.value("21");
   av.step();
 
@@ -132,7 +142,9 @@ $(document).ready(function() {
 
   // Slide 10
   av.umsg(interpret("sc10"));
-  blueHighlight(animset);
+  midblue1.addClass("midblue1high");
+  midblue2.addClass("midblue2high");
+  midblue3.addClass("midblue3high");
   valuelabel.value("9");
   av.step();
 
@@ -144,7 +156,9 @@ $(document).ready(function() {
 
   // Slide 12
   av.umsg(interpret("sc12"));
-  blueHighlight(animset);
+  midblue1.addClass("midblue1high");
+  midblue2.addClass("midblue2high");
+  midblue3.addClass("midblue3high");
   valuelabel.value("11");
   av.step();
 
@@ -157,7 +171,6 @@ $(document).ready(function() {
 
   // Slide 14
   av.umsg(interpret("sc14"));
-  botblue.addClass("blueboxhigh");
-  botblue.removeClass("blueboxhigh");
+  blink(botblue);
   av.recorded();
 });
