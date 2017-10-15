@@ -89,16 +89,16 @@ The numbers are in the ``Values`` menu and the set block is in the
            
    Creating a List
 
-By default the ``create list with`` block creates a list with slots
+By default the `create list with` block creates a list with slots
 for three elements.
 Of course, a list with more or fewer slots for
 elements may be needed.
 For this reason the ``create list with`` block can be edited to add or
 remove slots.
-The figure below shows an example of the editing 
+The figure below shows an example of the editing.
 
 .. odsafig:: Images/List-editing-list-block.png
-   :width: 500
+   :width: 400
    :align: center
            
    Editing the ``create list with`` block
@@ -240,16 +240,16 @@ on the list.
 
    \begin{array}{|c|c|c|}
    \hline
-   Iteration&Value of& Output Generated\\
-   &iteration variable&\\
+   &\mbox{Value of}&\\
+   \mbox{Iteration}&\mbox{iteration variable}&\mbox{Output Generated}\\
    \hline
-   1&2&the value of "element" (2) only\\
+   1&2&\mbox{the value of "element" (2) only}\\
    \hline
-   2&7&the value of "element" (7) and it "is above threshold"\\
+   2&7&\mbox{the value of "element" (7) and it "is above threshold"}\\
    \hline
-   3&10&the value of "element" (10) and it "is above threshold"\\
+   3&10&\mbox{the value of "element" (10) and it "is above threshold"}\\
    \hline
-   4&5&the value of "element" (5) only\\
+   4&5&\mbox{the value of "element" (5) only}\\
    \hline
    \end{array}
 
@@ -310,7 +310,7 @@ shown in the following table.
 
    \begin{array}{|c|c|c|}
    \hline
-   Iteration&Value of iteration variable&Value of property maximum\\
+   \mbox{Iteration}&\mbox{Value of iteration variable}&\mbox{Value of property maximum}\\
    \hline
    --&--&0\\
    \hline
