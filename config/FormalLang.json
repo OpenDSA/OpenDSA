@@ -130,6 +130,10 @@
       "FormalLang/RegEx": {
         "long_name": "Regular Expressions",
         "sections": {}
+      },
+      "FormalLang/RegGrammar": {
+        "long_name": "Regular Grammars",
+        "sections": {}
       }
     },
     "Limits to Computing": {

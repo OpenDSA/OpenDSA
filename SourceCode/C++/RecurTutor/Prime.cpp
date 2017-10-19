@@ -1,8 +1,8 @@
-boolean Prime(int X, int Y) {
-  if (Y == 1)
+boolean prime(int x, int y) {
+  if (x == 1)
     return true;
-  else if (X % Y == 0)
+  else if (x % y == 0)
     return false;	
   else
-    return Prime(X, Y-1);
+    return prime(x, y-1);
 }

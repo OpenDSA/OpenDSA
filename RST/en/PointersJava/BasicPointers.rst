@@ -137,7 +137,7 @@ Visually, the result of a dereference is the object pointed to by the
 arrow.
 The key restriction is that the reference must have a pointee to access.
 A lot of bugs in reference code involve violating that one
-restriction.
+restriction, which results in the ever-popular ``NullPointerException``.
 A reference must be assigned a pointee before dereference operations
 will work.
 
@@ -212,6 +212,7 @@ Sharing
 
 Two references which both refer to a single pointee are said to be
 "sharing".
+Sometimes we say that one is an :term:`alias` for the other.
 That two or more entities can cooperatively share a single memory
 structure is a key advantage of references.
 References ``second`` and ``empRef`` in the above example both share the

@@ -32,6 +32,7 @@ class Test {
     // Now empPtr references an object that contains a reference to a Date object
 
     empPtr = null; // Now the Employee object is eligible for garbage collection.
-    // So its Date object will also be eligible for garbage collection because nothing else points to it.
+    // So its Date object will also be eligible for garbage collection
+    // because nothing else points to it.
   }
 }
