@@ -1,0 +1,150 @@
+#IterationEX1PRO  .jsavnode {
+  min-width: 40px !important;
+  min-height: 40px !important;
+  background: #74a55b;
+}
+
+#IterationEX1PRO  .jsavvaluelabel {
+  font-weight: 600;
+}
+
+#IterationEX1PRO  .labels  {
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 170%;
+  z-index: 500;
+  font-weight: 600;
+}
+
+#IterationEX1PRO .midlabel {
+  font-size: 150%;
+}
+
+#IterationEX1PRO .smalllabel {
+ font-size: 130%;
+}
+
+#IterationEX1PRO .statelabel  {
+ font-size: 120%;
+ font-weight: 600;
+}
+
+#IterationEX1PRO .valuelabel  {
+ font-size: 150%;
+ color: yellow;
+ background-color: #593f73;
+ }
+
+#IterationEX1PRO .box  {
+  fill : #a55ba5;
+  stroke : #a55ba5;
+  z-index: -500;
+}
+
+#IterationEX1PRO .statebox  {
+  stroke : Maroon;
+  z-index: -500;
+  border-width: inherit;
+  border-radius: 50px;
+}
+
+
+#IterationEX1PRO  .bluebox  {
+  fill : rgb(91, 91, 165);
+  stroke : rgb(91, 91, 165);
+  z-index: -500;
+}
+
+@keyframes bluehigh {
+  0% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+
+  20% {
+    fill : #e6eeff;
+    stroke : #e6eeff;
+  }
+
+  100% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+}
+
+#IterationEX1PRO .blueboxhigh {
+  -webkit-animation: bluehigh 1s ease;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: bluehigh 1s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bluehighset {
+  0% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+
+  20% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+
+  40% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+
+  60% {
+    fill : #e6eeff;
+    stroke : #e6eeff;
+  }
+
+  80% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+
+  100% {
+    fill : rgb(91, 91, 165);
+    stroke : rgb(91, 91, 165);
+  }
+}
+
+#IterationEX1PRO .midblue1high {
+  -webkit-animation: bluehighset 1s linear;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: bluehighset 1s linear;
+  animation-fill-mode: forwards;
+}
+
+#IterationEX1PRO .midblue2high {
+  -webkit-animation: bluehighset 2s linear;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: bluehighset 2s linear;
+  animation-fill-mode: forwards;
+}
+
+#IterationEX1PRO .midblue3high {
+  -webkit-animation: bluehighset 3s linear;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: bluehighset 3s linear;
+  animation-fill-mode: forwards;
+}
+
+#IterationEX1PRO  .calbox  {
+  fill : #805ba5;
+  stroke : #805ba5;
+  z-index: -500;
+}
+
+#IterationEX1PRO  .calboxhigh  {
+  fill : #f2eff6;
+  stroke : #f2eff6;
+  z-index: -500;
+}

@@ -9,31 +9,14 @@
     <title>Pointer Exercise 1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel = "stylesheet"
+      type = "text/css"
+      href = "IterationEX.css" />
     <style>
 
-      #IterationEX1PRO .jsavcontainer{
+      /*#IterationEX1PRO .jsavcontainer{
         height: auto;
-      }
-
-      #IterationEX1PRO .jsavnode {
-        min-width: 100px !important;
-        min-height: 80px !important;
-      }
-      #IterationEX1PRO .nullBox {      /* For the null nodes */
-        box-shadow: none;
-        border-width: 0;
-        background-color: transparent;
-      }
-      #IterationEX1PRO .jsavpointer {
-        width: 40px;
-        text-align: center;
-        cursor: pointer;
-      }
-      #IterationEX1PRO .highlight {      /* For the pointer */
-        background-color: yellow;
-      }
-
-
+      }*/
 
     </style>
   </head>
@@ -42,7 +25,9 @@
 
     <div class="exercise">
       <div class="vars">
-        <var id="JSAV">iterationEX1PRO.initJSAV()</var>
+        <var id="arr_size">Khan.randRange(0, 100)</var>
+        <var id="pos">Khan.randRange(0, 5)</var>
+        <var id="JSAV">iterationEX1PRO.initJSAV(arr_size, pos)</var>
       </div>
 
       <div class="problems">
