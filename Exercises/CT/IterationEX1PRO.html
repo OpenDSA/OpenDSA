@@ -12,22 +12,15 @@
     <link rel = "stylesheet"
       type = "text/css"
       href = "IterationEX.css" />
-    <style>
 
-      /*#IterationEX1PRO .jsavcontainer{
-        height: auto;
-      }*/
-
-    </style>
   </head>
 
   <body data-height="800" data-width="950">
 
     <div class="exercise">
       <div class="vars">
-        <var id="arr_size">Khan.randRange(0, 100)</var>
-        <var id="pos">Khan.randRange(0, 5)</var>
-        <var id="JSAV">iterationEX1PRO.initJSAV(arr_size, pos)</var>
+        <var id="pos">Khan.randRange(0, 4)</var>
+        <var id="JSAV">iterationEX1PRO.initJSAV(pos)</var>
       </div>
 
       <div class="problems">
@@ -38,9 +31,12 @@
             <p>This is set up for the iteration exercise 1<br/></p>
             <tt>I will test the current price.</tt><br/>
             <tt>Also, I will ask current total price</tt><br/>
-            <p>It is not done yet</p>
+            <p>The position is <b><var>pos</var></b></p>
+
             <div id="IterationEX1PRO" class="jsavcanvas"></div>
             <input id="reset" type="button" value="Reset" />
+            <textarea rows="1" cols="5" style="resize:none" id="priceAnswerBox"></textarea>
+            <textarea rows="1" cols="5" style="resize:none" id="totalAnswerBox"></textarea>
           </div>
           <div class="solution" data-type="custom">
             <div class="guess"> [iterationEX1PRO.userInput] </div>

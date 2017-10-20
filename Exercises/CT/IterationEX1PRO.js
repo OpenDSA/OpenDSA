@@ -7,10 +7,12 @@
   "use strict";
 
   var av, // The JSAV object
-      nullNode1, // Used to trace the node pointed by a pointer pointing null.
-      nullNode2,
-      nullNode3,
-      selected_pointer;
+      priceAnswerBox,
+      totalAnswerBox,
+      priceAnswer = 0,
+      totalAnswer = 0,
+      position,
+      array = [];
 
   var iterationEX1PRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
@@ -20,7 +22,6 @@
     reset: function() {
       // Reset the value of global variables.
       iterationEX1PRO.userInput = false;
-      selected_pointer = null;
 
       // Clear the old JSAV canvas.
       if ($("#IterationEX1PRO")) { $("#IterationEX1PRO").empty(); }
@@ -28,22 +29,13 @@
       // Set up the display
       av = new JSAV("IterationEX1PRO");
 
-      // // Given code
-      // var codes = [];
-      // codes[0] = "int[] array = {1, 2, 3, 4, 5};";
-      // codes[1] = "int total = 0;"
-      // codes[2] = "for(int i = 0; i < array.length; i+=){";
-      // codes[3] = "  int price = array[i];"
-      // codes[4] = "  total = total + price;"
-      // codes[5] = "};"
-      // av.code(codes);
+      priceAnswer = array[position];
+      for(var i = 0; i <= position; i++){
+        totalAnswer += array[i];
+      }
 
 
-      var arrValues = [4, 13, 6, 9, 11];
-      // var av_name = "iteration3CON";
-      // var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
-      // var av = new JSAV(av_name);
-      var leftMargin = 200,
+      var leftMargin = 280,
           topMargin = 0,
           rect_left = leftMargin - 150,
           rect0_top = topMargin + 0,
@@ -61,10 +53,10 @@
       av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("box");
       av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("box"); // for no-roung on the corner
 
-      //floor 3 and the JSAV array contains arrValues
-      av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.9});
+      //floor 3 and the JSAV array contains array
+      av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.7});
       av.g.rect(rect_left + 73, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.9});
-      var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
+      var arr = av.ds.array(array, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
       //floor 4, long purple
       av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("box");
@@ -75,8 +67,8 @@
 
       //mid blue/calculate boxes ( and "set total = ..." blue box )
       var midblue1 = av.g.rect(rect_left + 130, rect_top + 120, 130, 66, 10).addClass("bluebox");
-      var midblue2 = av.g.rect(rect_left + 220, rect_top + 139, 20, 32, 15).addClass("calbox");
-      var midblue3 = av.g.rect(rect_left + 240, rect_top + 120, 120, 66, 10).addClass("calbox");
+      var midblue2 = av.g.rect(rect_left + 205, rect_top + 139, 20, 32, 15).addClass("calbox");
+      var midblue3 = av.g.rect(rect_left + 220, rect_top + 120, 100, 66, 10).addClass("calbox");
 
       // last purple floor
       av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("box");
@@ -95,7 +87,7 @@
         var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
         label3.addClass("labels");
 
-        var pricelabel = av.label("set total = total + price", {left: rect_left + 140, top: rect_top + 117});
+        var pricelabel = av.label("set total = total + price", {left: rect_left + 140, top: rect_top + 123});
         pricelabel.addClass("labels");
         pricelabel.addClass("smalllabel");
 
@@ -123,16 +115,25 @@
         priceBoxLabel.addClass("labels");
         priceBoxLabel.addClass("midlabel");
 
+        // priceAnswerBox.style.position = 'relative';
+        // priceAnswerBox.style.left = stateX + 23;
+        // priceAnswerBox.style.top = stateY + 100;
+
         // total box and label
         av.label("TOTAL", {left: stateX + 5, top: stateY + 180});
         stateLabel.addClass("statelabel");
 
         var totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
-        var totalBoxLabel = av.label("", {left: stateX + 23, top: stateY + 215});
 
-        totalBoxLabel.addClass("labels");
-        totalBoxLabel.addClass("midlabel");
 
+// --------------- Move array to the right position
+      var nextleft = leftMargin - 120;
+      var nodegap = 40;
+
+        for(var i = 0; i < position; i++){
+              nextleft -= nodegap;
+        }
+        arr.css({left: nextleft});
 
       av.displayInit();
       av.recorded();
@@ -140,20 +141,27 @@
     },
 
     // Initialise the exercise
-    initJSAV: function(array_size, pos) {
+    initJSAV: function(pos) {
+      var arraySize = 5;
+      position = pos;
+      priceAnswerBox = document.getElementById('priceAnswerBox');
+      totalAnswerBox = document.getElementById('totalAnswerBox');
+
+      for(var i = 0; i < arraySize; i++){ // Give random numbers in range 0..99
+          array[i] = Math.floor(Math.random() * 30);
+      }
+
       iterationEX1PRO.reset();
 
       // Set up handler for reset button
       $("#reset").click(function() {
         iterationEX1PRO.reset();
       });
-
-
     },
 
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function() {
-      return true;
+      return priceAnswerBox.value == priceAnswer && totalAnswerBox.value == totalAnswer;
     },
   };
 
