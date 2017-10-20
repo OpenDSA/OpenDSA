@@ -2,7 +2,7 @@
 /* *** ODSATag: AStack1 *** */
 class AStack<E> implements Stack<E> {
   private E stackArray[];         // Array holding stack
-  private static final int defaultSize = 10;
+  private static final int DEFAULT_SIZE = 10;
   private int maxSize;            // Maximum size of stack
   private int top;                // First free position at top
 
@@ -10,10 +10,10 @@ class AStack<E> implements Stack<E> {
   @SuppressWarnings("unchecked") // Generic array allocation
   AStack(int size) {
     maxSize = size;
-    top = 0; 
+    top = 0;
     stackArray = (E[])new Object[size]; // Create stackArray
   }
-  AStack() { this(defaultSize); }
+  AStack() { this(DEFAULT_SIZE); }
 /* *** ODSAendTag: AStack1 *** */
 
   public String toString() {
@@ -39,7 +39,7 @@ class AStack<E> implements Stack<E> {
 
 // Remove and return top element
 /* *** ODSATag: AStackPop *** */
-  public E pop() {               
+  public E pop() {
     if (top == 0) return null;
     return stackArray[--top];
   }
