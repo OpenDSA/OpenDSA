@@ -1,6 +1,12 @@
 /*global ODSA */
 // Written by Jieun Chon
 //Array-Based list introduction
+
+
+var midblue1,
+    midblue2,
+    midblue3;
+
 $(document).ready(function() {
   "use strict";
   var arrValues = [4, 13, 6, 9, 11];
@@ -40,9 +46,10 @@ $(document).ready(function() {
   //floor 5, right big putple box below blue boxes
   av.g.rect(rect_left + 90, rect_top + 200, 230, 50, 10).addClass("box");
 
-  var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
-  var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
-  var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
+  midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
+  midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
+  midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
+  var elemSet = [midblue1, midblue2, midblue3];
 
 // create labels
   var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
@@ -69,6 +76,20 @@ $(document).ready(function() {
   function blink(it) {
       it.addClass("blueboxhigh");
 }
+
+// ----------------------- blueStepAnim -----------------------
+  JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(elemSet) {
+  if (this._shouldAnimate()) {
+    $.each(elemSet, function(index, it) {
+      // make sure not to record the class changes
+      it.addClass("blueboxh", {record: false});
+      setTimeout(function() {
+        it.removeClass("blueboxh", {record: false});
+      }, 1000);
+    });
+  }
+}, function undoBlueStep(elemSet) {});
+
 // ------------------- slide show start -------------------------
 
   // Slide 1
@@ -96,6 +117,8 @@ $(document).ready(function() {
 
   // Slide 5
   av.umsg(interpret("sc5"));
+  // av.blueStepAnim(elemSet);
+
   midblue1.addClass("midblue1high");
   midblue2.addClass("midblue2high");
   midblue3.addClass("midblue3high");

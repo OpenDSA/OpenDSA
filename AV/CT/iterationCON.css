@@ -61,6 +61,12 @@
   z-index: -500;
 }
 
+#iteration1CON .blueboxh, #iteration2CON  .blueboxh, #iteration3CON  .blueboxh  {
+  fill : #e6eeff;
+  stroke : #e6eeff;
+}
+
+
 @keyframes bluehigh {
   0% {
     fill : rgb(91, 91, 165);
