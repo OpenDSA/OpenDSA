@@ -119,14 +119,22 @@ var clickHandler = function () {
   var nodes=jsavGraph.nodes(); 
   if (!this.hasClass('marked')) {
     this.addClass('marked');
+    this.addClass('selected');
     for(i=0;i<nodes.length;i++)
-      if(nodes[i].hasClass('marked') && jsavGraph.hasEdge(this,nodes[i]))
-         jsavGraph.getEdge(this,nodes[i]).addClass('edgemarked');
+      if(nodes[i].hasClass('selected')){
+        if(jsavGraph.hasEdge(this,nodes[i])){
+          jsavGraph.getEdge(this,nodes[i]).addClass('edgemarked');
+          jsavGraph.getEdge(this,nodes[i]).addClass('marked');
+          jsavGraph.getEdge(this,nodes[i]).addClass('edgeselected');
+          jsavGraph.getEdge(this,nodes[i]).css({"stroke":"red"});;
+        }
+      }  
   }
   else if(this.hasClass('marked')) {
     this.removeClass('marked');
+    this.removeClass('selected');
     for(i=0;i<nodes.length;i++)
-      if(nodes[i].hasClass('marked') && jsavGraph.hasEdge(this,nodes[i]))
+      if(nodes[i].hasClass('selected') && jsavGraph.hasEdge(this,nodes[i]))
          jsavGraph.getEdge(this,nodes[i]).removeClass('edgemarked');
   }
   userInput = true;
@@ -138,6 +146,7 @@ var f_reset = function () {
     var nodes = jsavGraph.nodes();
     for(var i=0;i<nodes.length;i++){
       nodes[i].removeClass('marked');
+      nodes[i].removeClass('selected');
       nodes[i].removeClass('prohibited');
     }
     var edges = jsavGraph.edges();

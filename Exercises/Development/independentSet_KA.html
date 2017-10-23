@@ -114,6 +114,7 @@ var clickHandler = function () {
 */
   if (!this.hasClass('marked')) {
     this.addClass('marked');
+    this.addClass('selected')
    // tmpnodes = this.neighbors();
   //  for(i = 0 ; i< tmpnodes.length; i++){
     //  tmpnodes[i].addClass('prohibited');
@@ -121,6 +122,7 @@ var clickHandler = function () {
   }
   else if(this.hasClass('marked')) {
     this.removeClass('marked');
+    this.removeClass('selected');
     //tmpnodes = this.neighbors();
     //for(i = 0 ; i< tmpnodes.length; i++){
      // tmpnodes[i].removeClass('prohibited');
