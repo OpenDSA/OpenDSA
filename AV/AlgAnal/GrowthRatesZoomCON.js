@@ -1,6 +1,10 @@
 /*global ODSA */
 // Written by Jieun Chon
 
+var C = 0,
+    g = 0;
+
+
 $(document).ready(function() {
   "use strict";
   var av = new JSAV("GrowthRatesZoomCON", {animationMode: "none"});
@@ -90,7 +94,6 @@ $(document).ready(function() {
                               "$n!$", -25, -20, 1, false);
   av.g.polyline(curve4, {"stroke-width": 3});
 
-
   function _5nlog2n(n){
     return 5 * n * Math.log2(n);
   };
@@ -112,7 +115,7 @@ $(document).ready(function() {
     return temp;
   };
 
-  av.labels("Input size n", {left: p1[2] - 30, top: p1[3] - 35});
+  av.label("Input size n", {left: p1[2] - 350, top: p1[3] + 250});
 
   av.displayInit();
   av.recorded();

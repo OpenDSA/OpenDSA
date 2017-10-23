@@ -9,13 +9,43 @@
   var av, // The JSAV object
       priceAnswerBox,
       totalAnswerBox,
-      priceAnswer = 0,
-      totalAnswer = 0,
+      priceAnswer,
+      totalAnswer,
       position,
-      array = [];
+      array = [],
+      priceBoxLabel,
+      totalBoxLabel,
+      priceBox,
+      totalBox,
+      labelLeft;
 
   var iterationEX1PRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
+
+    clickbox: function(){
+      var newLabelLeft = labelLeft;
+      if(this == priceBox || this == priceBoxLabel){
+        var price = prompt("Please enter the current price.", "0");
+        if(price != ""){
+          priceBoxLabel.value(price);
+          while(price >= 10){
+            newLabelLeft -= 5.5;
+            price /= 10;
+          }
+          priceBoxLabel.css({left: newLabelLeft});
+        }
+      } else {
+        var total = prompt("Please enter the current total.", "0");
+        if(total != ""){
+          totalBoxLabel.value(total);
+          while(total >= 10){
+            newLabelLeft -= 5.5;
+            total /= 10;
+          }
+          totalBoxLabel.css({left: newLabelLeft});
+        }
+      }
+    },
 
 
       // Reinitialize the exercise.
@@ -28,6 +58,15 @@
 
       // Set up the display
       av = new JSAV("IterationEX1PRO");
+
+
+// --------------- Create random array ----------------
+      var arraySize = 5;
+      priceAnswer = 0;
+      totalAnswer = 0;
+      for(var i = 0; i < arraySize; i++){ // Give random numbers in range 1..2
+          array[i] = Math.floor(Math.random() * 20) + 1;
+      }
 
       priceAnswer = array[position];
       for(var i = 0; i <= position; i++){
@@ -98,9 +137,13 @@
 
         // <<--------------- STATE BOX ----------------->>
 
+        //Total and Price boxes' label x position.
         var stateX = 500;
         var stateY = - 20;
         var stateLabel = av.label("STATE", {left: stateX, top: stateY});
+
+        labelLeft = stateX + 25;
+
         stateLabel.addClass("statelabel");
 
         var stateBox = av.g.rect(stateX - 25, stateY + 50, 110, 280).addClass("statebox");
@@ -109,9 +152,9 @@
         av.label("PRICE", {left: stateX + 5, top: stateY + 65});
         stateLabel.addClass("statelabel");
 
-        var priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
+        priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
 
-        var priceBoxLabel = av.label("", {left: stateX + 23, top: stateY + 100});
+        priceBoxLabel = av.label("click", {left: labelLeft - 19, top: stateY + 105});
         priceBoxLabel.addClass("labels");
         priceBoxLabel.addClass("midlabel");
 
@@ -123,7 +166,19 @@
         av.label("TOTAL", {left: stateX + 5, top: stateY + 180});
         stateLabel.addClass("statelabel");
 
-        var totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
+        totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
+
+        totalBoxLabel = av.label("click", {left: labelLeft - 19, top: stateY + 220});
+        totalBoxLabel.addClass("labels");
+        totalBoxLabel.addClass("midlabel");
+
+
+
+
+        priceBox.click(iterationEX1PRO.clickbox);
+        totalBox.click(iterationEX1PRO.clickbox);
+        priceBoxLabel.element.click(iterationEX1PRO.clickbox);
+        totalBoxLabel.element.click(iterationEX1PRO.clickbox);
 
 
 // --------------- Move array to the right position
@@ -142,14 +197,9 @@
 
     // Initialise the exercise
     initJSAV: function(pos) {
-      var arraySize = 5;
       position = pos;
       priceAnswerBox = document.getElementById('priceAnswerBox');
       totalAnswerBox = document.getElementById('totalAnswerBox');
-
-      for(var i = 0; i < arraySize; i++){ // Give random numbers in range 0..99
-          array[i] = Math.floor(Math.random() * 30);
-      }
 
       iterationEX1PRO.reset();
 
@@ -161,7 +211,11 @@
 
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function() {
-      return priceAnswerBox.value == priceAnswer && totalAnswerBox.value == totalAnswer;
+      if(priceAnswerBox.value == priceAnswer && totalAnswerBox.value == totalAnswer){
+        return true;
+      }
+      // alert(priceAnswer + ", " + totalAnswer);
+      return priceBoxLabel.value() == priceAnswer && totalBoxLabel.value() == totalAnswer;
     },
   };
 
