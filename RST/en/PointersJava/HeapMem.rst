@@ -9,6 +9,7 @@
    :satisfies: Heap Memory
    :topic: Pointers
 
+
 Heap Memory
 ===========
 
@@ -307,3 +308,4 @@ explicit allocation calls to manage the heap memory, and the program
 has to wait when the garbage collector runs.
 The heap memory does not operate automatically
 and conveniently the way local memory does.
+

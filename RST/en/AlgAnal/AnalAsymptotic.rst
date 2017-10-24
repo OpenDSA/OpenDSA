@@ -17,12 +17,15 @@ Asymptotic Analysis and Upper Bounds
 
 .. _RunTimeGraph2:
 
-.. odsafig:: Images/plot.png
-   :width: 500
+.. inlineav:: GrowthRatesCON dgm
+    :links: AV/AlgAnal/GrowthRatesCON.css
+    :scripts: AV/AlgAnal/GrowthRatesCON.js
+    :align: center
+
+.. inlineav:: GrowthRatesZoomCON dgm
+   :links: AV/AlgAnal/GrowthRatesZoomCON.css
+   :scripts: AV/AlgAnal/GrowthRatesZoomCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: The growth rates for five equations
 
    Two views of a graph illustrating the growth rates for
    six equations.
@@ -130,7 +133,7 @@ In other words, the definition says that for *all* inputs of the
 type in question (such as the worst case for all inputs of size
 :math:`n`) that are large enough (i.e., :math:`n > n_0`),
 the algorithm *always* executes in less than or equal to :math:`cf(n)`
-steps for some constant :math:`c`. 
+steps for some constant :math:`c`.
 
 .. topic:: Example
 
@@ -150,7 +153,7 @@ steps for some constant :math:`c`.
 
    For a particular algorithm, :math:`\mathbf{T}(n) = c_1 n^2 + c_2 n`
    in the average case where :math:`c_1` and :math:`c_2` are positive
-   numbers. 
+   numbers.
    Then,
 
    .. math::
@@ -161,7 +164,7 @@ steps for some constant :math:`c`.
    So, :math:`\mathbf{T}(n) \leq c n^2` for :math:`c = c_1 + c_2`,
    and :math:`n_0 = 1`.
    Therefore, :math:`\mathbf{T}(n)` is in :math:`O(n^2)` by the second
-   definition. 
+   definition.
 
 .. topic:: Example
 
@@ -169,7 +172,7 @@ steps for some constant :math:`c`.
    variable takes constant time regardless of the size of the
    array.
    Thus, :math:`\mathbf{T}(n) = c` (for the best, worst, and average
-   cases). 
+   cases).
    We could say in this case that :math:`\mathbf{T}(n)` is in
    :math:`O(c)`.
    However, it is traditional to say that an algorithm whose running
@@ -266,7 +269,7 @@ asymptotic analysis.
 The higher-order terms soon swamp the lower-order terms in their
 contribution to the total cost as \(n\) becomes larger.
 Thus, if :math:`\mathbf{T}(n) = 3 n^4 + 5 n^2`, then
-:math:`\mathbf{T}(n)` is in :math:`O(n^4)`. 
+:math:`\mathbf{T}(n)` is in :math:`O(n^4)`.
 The :math:`n^2` term contributes relatively little to the total cost
 for large :math:`n`.
 
@@ -295,7 +298,7 @@ rules when discussing the cost for a program or algorithm.
    big-Oh notation whenever we have sufficient knowledge about an
    algorithm to be sure that we know the cost to within a constant
    factor.
-   OpenDSA modules use :math:`\Theta` notation in preference to 
+   OpenDSA modules use :math:`\Theta` notation in preference to
    big-Oh notation whenever our state of knowledge makes that possible.
 
 

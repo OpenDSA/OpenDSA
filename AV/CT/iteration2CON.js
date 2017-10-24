@@ -1,8 +1,65 @@
 /*global ODSA */
 // Written by Jieun Chon
 //Array-Based list introduction
+var it2_midblue1,
+    it2_midblue2,
+    it2_midblue3,
+    it2_newLabelValue,
+    it2_valuelabel;
+
 $(document).ready(function() {
   "use strict";
+
+  //BlueStepAnim :This should come before JSAV Initialize
+      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(val) {
+      if (this._shouldAnimate()) {
+
+          //  midblue 1 start
+          it2_midblue1.addClass("blueboxh", {record: false});
+          setTimeout(function() {
+            it2_midblue1.removeClass("blueboxh", {record: false});
+
+              // midblue 2 animation start -----------------
+              setTimeout(function() {
+                it2_midblue2.addClass("blueboxh", {record: false});
+                setTimeout(function() {
+                  it2_valuelabel.value(val);
+                  it2_midblue2.removeClass("blueboxh", {record: false});
+
+                  // midblue 3 animation start -----------------
+                  setTimeout(function() {
+                    it2_midblue3.addClass("blueboxh", {record: false});
+                    setTimeout(function() {
+                      it2_midblue3.removeClass("blueboxh", {record: false});
+                    }, 200);
+                  }, 200);
+                  // midblue 3 animation close ---------------------
+
+                }, 200);
+              }, 200);
+              // midblue 2 animation close
+
+          }, 200);
+
+      }
+    }, function undoBlueStep(elemSet) {});
+    // BlueStepAnim END -----------------------------------------------
+
+
+    //BlueStepAnim :This should come before JSAV Initialize
+        JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item) {
+        if (this._shouldAnimate()) {
+
+            //  midblue 1 start
+            item.addClass("blueboxh", {record: false});
+            setTimeout(function() {
+              item.removeClass("blueboxh", {record: false});
+            }, 200);
+
+        }
+      }, function undoBlueStep(item) {});
+      // BlueStepAnim END -----------------------------------------------
+
   var arrValues = [4, 13, 6, 9, 11];
   var av_name = "iteration2CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
@@ -38,10 +95,9 @@ $(document).ready(function() {
   av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("box"); // for no-roung on the corner
 
   //blue boxes and the the sets of it for the iterations later
-  var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
-  var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
-  var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
-  var animset = [midblue1, midblue2, midblue3];
+  it2_midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
+  it2_midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
+  it2_midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
 
   // last purple box.
   av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("box");
@@ -61,19 +117,13 @@ $(document).ready(function() {
   pricelabel.addClass("labels");
   pricelabel.addClass("midlabel");
 
-  var valuelabel = av.label("", {left: rect_left + 240, top: rect_top + 112});
-  valuelabel.addClass("labels");
-  valuelabel.addClass("valuelabel");
+
+  it2_newLabelValue = "";
+  it2_valuelabel = av.label(it2_newLabelValue, {left: rect_left + 240, top: rect_top + 112});
+  it2_valuelabel.addClass("labels");
+  it2_valuelabel.addClass("valuelabel");
 
 
-  // ----------------------slide show methods-----------------------
-
-    function blueHighlight(animset){
-      for(var i = 0; i < animset.length; i++){
-        animset[i].addClass("blueboxhigh");
-        animset[i].removeClass("blueboxhigh");
-      }
-    }
 
   // --------------------- start slide shows
 
@@ -84,8 +134,7 @@ $(document).ready(function() {
 
   // Slide 2
   av.umsg(interpret("sc2"));
-  topblue.addClass("blueboxhigh");
-  topblue.removeClass("blueboxhigh");
+  av.bluehigh(topblue);
   av.step();
 
   // Slide 3
@@ -96,8 +145,7 @@ $(document).ready(function() {
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  blueHighlight(animset);
-  valuelabel.value("4");
+  av.blueStepAnim("4")
   av.step();
 
   // Slide 5
@@ -108,8 +156,7 @@ $(document).ready(function() {
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  blueHighlight(animset);
-  valuelabel.value("13");
+  av.blueStepAnim("13")
   av.step();
 
   // Slide 7
@@ -120,8 +167,7 @@ $(document).ready(function() {
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  blueHighlight(animset);
-  valuelabel.value("21");
+  av.blueStepAnim("6");
   av.step();
 
   // Slide 9
@@ -132,8 +178,7 @@ $(document).ready(function() {
 
   // Slide 10
   av.umsg(interpret("sc10"));
-  blueHighlight(animset);
-  valuelabel.value("9");
+  av.blueStepAnim("9");
   av.step();
 
   // Slide 11
@@ -144,20 +189,17 @@ $(document).ready(function() {
 
   // Slide 12
   av.umsg(interpret("sc12"));
-  blueHighlight(animset);
-  valuelabel.value("11");
+  av.blueStepAnim("11");
   av.step();
 
   // Slide 13
   av.umsg(interpret("sc13"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 100);
-  valuelabel.value("");
   av.step();
 
   // Slide 14
   av.umsg(interpret("sc14"));
-  botblue.addClass("blueboxhigh");
-  botblue.removeClass("blueboxhigh");
+  av.bluehigh(botblue);
   av.recorded();
 });

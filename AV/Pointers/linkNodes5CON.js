@@ -29,7 +29,7 @@ $(document).ready(function() {
     top: 0,
     left: -80
   });
-  var newLink = av.pointer("newLink", newNode,{anchor:"center bottom", myAnchor:"right top",top:10, left:-20, arrowAnchor: "center bottom"});
+  var newLink = av.pointer("newLink", newNode,{anchor:"center bottom", myAnchor:"right top",top:-5, left:-35, arrowAnchor: "center bottom"});
   newNode.highlight();
   av.step();
 

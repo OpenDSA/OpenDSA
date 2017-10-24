@@ -238,8 +238,6 @@ algorithms are shown.
     :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesCON.js
     :align: center
 
-|
-
 .. inlineav:: GrowthRatesZoomCON dgm
    :links: AV/AlgAnal/GrowthRatesZoomCON.css
    :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesZoomCON.js

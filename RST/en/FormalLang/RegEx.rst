@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Susan Rodger and Cliff Shaffer
    :requires:
-   :satisfies: Regular Expressions
+   :satisfies: Regular Expression
    :topic: Finite Automata
 
 Regular Expressions
@@ -210,7 +210,7 @@ that :math:`L = L(M)`.
 #. If the GTG has only two states, then it has this form:
 
    .. odsafig:: Images/nfatore1.png
-      :width: 400
+      :width: 250
       :align: center
       :capalign: justify
       :figwidth: 90%
@@ -224,7 +224,7 @@ that :math:`L = L(M)`.
 #. If the GTG has three states, then it must have the following form:
 
    .. odsafig:: Images/nfatore2.png
-      :width: 400
+      :width: 250
       :align: center
       :capalign: justify
       :figwidth: 90%
@@ -275,7 +275,7 @@ that :math:`L = L(M)`.
 .. note::
 
    **Example:** DO WITH JFLAP. Then add another state :math:`q_3` and
-   add arcs :math:`d(q1,a) = q3, d(q3,a) = q1, d(q3,b) = q2`. 
+   add arcs :math:`d(q1,a) = q3, \quad d(q3,a) = q1, \quad d(q3,b) = q2`. 
 
    Examples are in ``~rodger/cl/cps140/jflapex/chap3dfatore1.jff`` and
    ``chap3dfatore2.jff``.
