@@ -120,7 +120,7 @@ Regular languages are closed under these operations
 **Right quotient:**
 
 Definition:
-:math:`L_1/L_2 = \{x | xy \in L_1\ \mbox{for some}\ y \in L_2\}`
+:math:`L_1 \backslash L_2 = \{x | xy \in L_1\ \mbox{for some}\ y \in L_2\}`
 
 .. topic:: Example
 
@@ -129,7 +129,7 @@ Definition:
    | :math:`L_1/L_2 = \{a^*b^*\}`
 
 **Theorem:** If :math:`L_1` and :math:`L_2` are regular, then
-:math:`L_1/L_2` is regular.
+:math:`L_1 \backslash L_2` is regular.
 
 **Proof:** (sketch)
 
@@ -221,23 +221,22 @@ If :math:`L` is infinite, is :math:`L` regular?
 **Prove** that :math:`L_2 = \{a^nb^n | n > 0 \}` is not regular.
 (Proof by contradiction)
 
-| Suppose that :math:`L_2` is regular. 
-| Then  :math:`\exists` DFA :math:`M` that recognizes :math:`L_2`.
-| :math:`M` has a finite number of states, say :math:`k` states. 
-| Consider a long string :math:`a^kb^k \in L_2`. 
-| Since there are :math:`k` states and :math:`k` a's,
-  some state in :math:`M` must be reached more than once when
-  following the path of :math:`a^k`. 
-| In that case, there is a loop with one or more a's
-  (say :math:`t` a's for some :math:`t > 1`) along the path. 
-| Suppose we start at the initial state, traverse the same path for
-  :math:`a^kb^k`, but we traverse the loop of a's one additional time
-  ("pump" the loop).
-  We will end up in the same final state that :math:`a^kb^k` did. 
-| Therefore, the string :math:`a^{k+t}b^k` is accepted by :math:`M`,
-  but this string is not in :math:`L_2`. Contradiction! 
-
-Thus, :math:`L_2` is not regular. QED 
+   | Proof: Suppose that :math:`L_2` is regular. 
+   | Then  :math:`\exists` DFA :math:`M` that recognizes :math:`L_2`.
+   | :math:`M` has a finite number of states, say :math:`k` states. 
+   | Consider a long string :math:`a^kb^k \in L_2`. 
+   | Since there are :math:`k` states and :math:`k` a's,
+     some state in :math:`M` must be reached more than once when
+     following the path of :math:`a^k`. 
+   | In that case, there is a loop with one or more a's
+     (say :math:`t` a's for some :math:`t > 1`) along the path. 
+   | Suppose we start at the initial state, traverse the same path for
+     :math:`a^kb^k`, but we traverse the loop of a's one additional time
+     ("pump" the loop).
+     We will end up in the same final state that :math:`a^kb^k` did. 
+   | Therefore, the string :math:`a^{k+t}b^k` is accepted by :math:`M`,
+     but this string is not in :math:`L_2`. Contradiction! 
+   | Thus, :math:`L_2` is not regular. QED 
 
 
 Pumping Lemma
@@ -294,7 +293,7 @@ part can be "pumped", resulting in strings that must be in :math:`L`.
 
         .. math::
 
-           x=a^k | y=a^j | z=a^{m-k-j}cb^m
+           x=a^k\quad |\quad y=a^j\quad |\quad z=a^{m-k-j}cb^m
 
       where :math:`k \ge 0`, :math:`j > 0`, and :math:`k + j \le m`
       for some constants :math:`k` and :math:`j`. 
@@ -327,7 +326,7 @@ part can be "pumped", resulting in strings that must be in :math:`L`.
 
         .. math::
 
-           x=a^k$ | y=a^j | z=a^{m-k-j}b^{m+s}c^s
+           x=a^k\quad |\quad y=a^j\quad |\quad z=a^{m-k-j}b^{m+s}c^s
 
       where :math:`k \ge 0`, :math:`j > 0`, and :math:`k + j \le m`
       for some constants :math:`k` and :math:`j`. 
@@ -359,7 +358,7 @@ part can be "pumped", resulting in strings that must be in :math:`L`.
 
         .. math::
 
-           x=a^k | y=a^j | z=a^{m+1-k-j}b^{m}
+           x=a^k\quad |\quad y=a^j\quad |\quad z=a^{m+1-k-j}b^{m}
 
       where :math:`k \ge 0`, :math:`j > 0`, and :math:`k + j \le m`
       for some constants :math:`k` and `j`. 
@@ -379,248 +378,163 @@ part can be "pumped", resulting in strings that must be in :math:`L`.
    **Proof:**
 
       | Assume :math:`L` is regular, therefore the pumping lemma holds. 
+      | Choose :math:`w = a^3b^mc^{m-3}` where :math:`m` is the
+        constant in the pumping lemma.
+        There are three ways to partition :math:`w` into three parts,
+        :math:`w=xyz`.
+      |   1) :math:`y` contains only a's 
+      |   2) :math:`y` contains only b's, and
+      |   3) :math:`y` contains a's and b's 
+      | We must show that each of these possible partitions lead to a
+        contradiction.
+        (Then, there would be no way to divide :math:`w` into three
+        parts such that the pumping lemma contraints were true).
 
------------------- DONE TO HERE -----------------------------
-Choose $w = a^3b^mc^{m-3}$ where $m$ is the constant in the pumping lemma. 
-There are three ways to partition $w$ into three parts, $w=xyz$. 
-1) y contains only $a$'s 
-2) y contains only $b$'s 
-and 3) y contains $a$'s and $b$'s 
+      | **Case 1:** (:math:`y` contains only a's).
+        Then :math:`x` contains 0 to 2 a's, 
+        :math:`y` contains 1 to 3 a's, and 
+        :math:`z` contains 0 to 2 a's concatenated with the rest of
+        the string :math:`b^{m}c^{m-3}`, such that there are exactly 3
+        a's.  
+        So the partition is: 
 
+        .. math::
 
-We must show that each of these possible partitions lead to a contradiction. 
-(Then, there would be no way to divide w into three parts s.t. the 
-pumping lemma contraints were true). 
+           x=a^k\quad |\quad y=a^j\quad |\quad z=a^{3-k-j}b^{m}c^{m-3}
 
-{\it Case 1:} (y contains only $a$'s). Then $x$ contains 0 to 2 $a$'s, 
-$y$ contains 1 to 3 $a$'s, and 
-$z$ contains 0 to 2 $a$'s concatenated with the rest of 
-the string $b^{m}c^{m-3}$, such that there are exactly 3 $a$'s. 
-So the partition is: 
+      where :math:`k \ge 0, j > 0`, and :math:`k + j \le 3` for some
+      constants :math:`k` and :math:`j`.
 
-\begin{center} 
-\begin{tabular}{lll} 
-$x=a^k$ & $y=a^j$ & $z=a^{3-k-j}b^{m}c^{m-3}$ 
-\end{tabular} 
-\end{center} 
+      | It should be true that :math:`xy^iz \in L` for all :math:`i\ge 0`. 
 
-where $k \ge 0$, $j > 0$, and $k + j \le 3$ for some constants $k$ and $j$. 
+      | :math:`xy^2z = (x)(y)(y)(z) = (a^k)(a^j)(a^j)(a^{3-j-k}b^mc^{m-3}) 
+               = a^{3+j}b^{m}c^{m-3} \not\in L` since :math:`j>0`,
+        there are too many a's. Contradiction.
 
-It should be true that $xy^iz \in$L for all $i\ge 0$. 
+      | **Case 2:** (:math:`y` contains only b's) 
+      | Then :math:`x` contains 3 a's followed by 0 or more b's, 
+        :math:`y` contains 1 to :math:`m-3` b's, and 
+        :math:`z` contains 3 to :math:`m-3` b's concatenated with the
+        rest of the string :math:`c^{m-3}`. 
+        So the partition is: 
 
-$xy^2z$ = $(x)(y)(y)(z)$ = $(a^k)(a^j)(a^j)(a^{3-j-k}b^mc^{m-3})$ 
-= $a^{3+j}b^{m}c^{m-3} \not\in$ L since $j>0$, there are too many $a$'s. 
-Contradiction! 
+        .. math::
 
-{\it Case 2:} (y contains only $b$'s) 
-Then $x$ contains 3 $a$'s followed by 0 or more $b$'s, 
-$y$ contains 1 to $m-3$ $b$'s, and 
-$z$ contains 3 to $m-3$ $b$'s concatenated with the rest of 
-the string $c^{m-3}$. 
-So the partition is: 
+           x=a^3b^k\quad |\quad y=b^j\quad |\quad z=b^{m-k-j}c^{m-3}
 
-\begin{center} 
-\begin{tabular}{lll} 
-$x=a^3b^k$ & $y=b^j$ & $z=b^{m-k-j}c^{m-3}$ 
-\end{tabular} 
-\end{center} 
+      where :math:`k \ge 0`, :math:`j > 0`, and
+      :math:`k + j \le m-3` for some constants :math:`k` and :math:`j`. 
 
-where $k \ge 0$, $j > 0$, and $k + j \le m-3$ for some constants $k$ and $j$. 
+      | It should be true that :math:`xy^iz \in L` for all :math:`i\ge 0`.
 
-It should be true that $xy^iz \in$L for all $i\ge 0$. 
+      | :math:`xy^0z = a^{3}b^{m-j}c^{m-3} \not\in L` since
+        :math:`j > 0`, there are too few b's. Contradiction.
 
-$xy^0z$ = $a^{3}b^{m-j}c^{m-3} \not\in$ L since $j>0$, there are too few $b$'s. 
-Contradiction! 
+      | **Case 3:** (:math:`y` contains a's and b's) 
+      | Then :math:`x` contains 0 to 2 a's, 
+        :math:`y` contains 1 to 3 a's, and 1 to :math:`m-3` b's, 
+        :math:`z` contains 3 to :math:`m-1` b's concatenated with the
+        rest of the string :math:`c^{m-3}`.
+        So the partition is: 
 
-{\it Case 3:} (y contains $a$'s and $b$'s) 
-Then $x$ contains 0 to 2 $a$'s, 
-$y$ contains 1 to 3 $a$'s, and 1 to $m-3$ $b$'s, 
-$z$ contains 3 to $m-1$ $b$'s concatenated with the rest of 
-the string $c^{m-3}$. 
-So the partition is: 
+        .. math::
 
-\begin{center} 
-\begin{tabular}{lll} 
-$x=a^{3-k}$ & $y=a^{k}b^j$ & $z=b^{m-j}c^{m-3}$ 
-\end{tabular} 
-\end{center} 
+           x=a^{3-k}\quad |\quad y=a^{k}b^j\quad |\quad z=b^{m-j}c^{m-3}
 
-where $3 \ge k > 0$, and $m-3 \ge j > 0$ for some constants $k$ and $j$. 
+      where :math:`3 \ge k > 0`, and :math:`m-3 \ge j > 0` for some
+      constants :math:`k` and :math:`j`.
 
-It should be true that $xy^iz \in$L for all $i\ge 0$. 
-
-$xy^2z$ = $a^{3}b^ja^kb^mc^{m-3}\not\in$ L since $j,k>0$, there are $b$'s 
-before $a$'s. 
-Contradiction! 
-
-$\Rightarrow$ There is no partition of $w$. 
-
-$\Rightarrow$ L is not regular!. QED. 
-\end{itemize} 
-
-%S \vfill\eject
+      | It should be true that :math:`xy^iz \in L` for all :math:`i\ge 0`. 
+      | :math:`xy^2z = a^{3}b^ja^kb^mc^{m-3} \not\in L` since
+        :math:`j, k > 0`, there are b's before a's. Contradiction.
+      | :math:`\Rightarrow` There is no partition of :math:`w`. 
+      | :math:`\Rightarrow L` is not regular. QED. 
 
 
-{\bf To Use Closure Properties} to prove L is not regular:
+**Use Closure Properties** to prove :math:`L` is not regular
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Using closure properties of regular languages, construct a language 
 that should be regular, but for which you have already shown is 
-not regular. Contradiction! 
+not regular. Contradiction.
 
-\begin{itemize}
-\item {\bf Proof Outline:}
+   | **Proof Outline:**
+   | Assume :math:`L` is regular.
+   | Apply closure properties to :math:`L` and other regular
+     languages, constructing :math:`L'` that you know is not regular.
+   | Closure properties :math:`\Rightarrow L'` is regular.
+   | Contradiction. So :math:`L` is not regular. QED.
 
-Assume L is regular.
+.. topic:: Example
 
-Apply closure properties to L and other regular languages, constructing
-L' that you know is not regular.
+   :math:`L = \{a^3b^nc^{n-3} | n > 3 \}`
 
-closure properties $\Rightarrow$ L' is regular.
+   **Theorem:** :math:`L` is not regular.
 
-Contradiction!
+   **Proof:** (proof by contradiction)
 
-L is not regular. QED.
+      | Assume :math:`L` is regular.
+      | Define a homomorphism :math:`h: \Sigma \rightarrow \Sigma^*`
 
-\end{itemize}
+        .. math::
+        
+           h(a) = a\quad |\quad h(b) = a\quad |\quad h(c) = b
 
-%SO \vfill\eject
+      | :math:`h(L) = \{a^3a^nb^{n-3} | n > 3 \} = \{a^{n+3}b^{n-3} | n > 3\}`
+      | :math:`L` is regular and closure under homomorphism
+        :math:`\Rightarrow h(L)` is regular. 
+      | The language :math:`\{b^6\}` is a regular language. 
+      | By closure under concatenation,
+        :math:`L' = h(L)\{b^6\} = \{a^{n+3}b^{n+3} | n > 3\}`
+        is regular. 
+      | The language :math:`L'' = \{ab, aabb, aaabbb, aaaabbbb, aaaaabbbbb, aaaaaabbbbbb\}` is regular. 
+      | By closure under union, :math:`L' \cup L'' = \{a^nb^n | n > 0\}`
+        is regular. 
+      | But, we showed earlier that :math:`\{a^nb^n | n > 0 \}` is not
+        regular! Contradiction.
+      | :math:`\Rightarrow L` is not regular. QED. 
 
+      
+.. topic:: Example
 
-{\bf Example} L=$\{a^3b^nc^{n-3} | n > 3 \}$
+   :math:`L = \{a^nb^ma^{m}\ |\ m \ge 0, n \ge 0 \}`
 
-L is not regular.
+   **Theorem:** :math:`L` is not regular.
 
-\begin{itemize}
-\item {\bf Proof:} (proof by contradiction)
+   **Proof:** (proof by contradiction)
 
-Assume L is regular.
+      | Assume :math:`L` is regular.
+      | :math:`L1 = \{ bb^{*}aa^{*}\}`
+      | :math:`L2 = L \cap L1 = \{b^na^n \mid n > 0\}`
+      | Define a homomorphism :math:`h: \Sigma \rightarrow \Sigma^*` 
 
-Define a homomorphism $h:\Sigma\rightarrow{\Sigma}^{*}$
+        .. math::
+      
+           h(a) = b\quad |\quad h(b) = a
 
-\begin{tabular}{lll}
-$h(a)=a$ & $h(b)=a$ & $h(c)=b$
-\end{tabular}
-
-$h(L)$ = 
-$\{a^3a^nb^{n-3} | n>3 \}$ = $\{a^{n+3}b^{n-3} | n > 3\}$ 
-
-L is regular and closure under homomorphism $\Rightarrow$ h(L) is regular. 
-
-The language $\{b^6\}$ is a regular language. 
-
-By closure under concatenation, L' = h(L)$\{b^6\}$ = $\{a^{n+3}b^{n+3} | n > 3\}$ 
-is regular. 
-
-The language L'' = $\{ab, aabb, aaabbb, aaaabbbb, aaaaabbbbb, aaaaaabbbbbb\}$ 
-is regular. 
-
-By closure under union, L' $\cup$ L'' = $\{a^nb^n | n > 0\}$ 
-is regular. 
-
-But, we showed earlier that $\{a^nb^n | n > 0 \}$ is not regular! 
-
-Contradiction! 
-
-$\Rightarrow$ L is not regular. QED. 
-
-
-\end{itemize}
-
-%S \vfill\eject
-
-{\bf Example} L=$\{a^nb^ma^{m} | m \ge 0, n \ge 0 \}$
-
-L is not regular.
-
-\begin{itemize}
-\item {\bf Proof:} (proof by contradiction)
-
-Assume L is regular.
-
-L1 = $\{ bb^{*}aa^{*}\}$ 
-
-L2 = L $\cap$ L1 = $\{b^na^n \mid n > 0\}$ 
-
-Define a homomorphism $h:\Sigma\rightarrow{\Sigma}^{*}$ 
-
-\begin{tabular}{ll} 
-$h(a)=b$ & $h(b)=a$ \\ 
-\end{tabular} 
-
-$h(L2)$ = 
-$\{a^nb^n | n>0 \}$ should be regular, contradiction! 
+      | :math:`h(L2) = \{a^nb^n | n>0 \}` should be regular.
+      | We showed earlier that :math:`\{a^nb^n | n > 0 \}` is not
+        regular. Contradiction.
+      | :math:`\Rightarrow L` is not regular. QED. 
 
 
-We showed earlier that $\{a^nb^n | n > 0 \}$ is not regular! 
+.. topic:: Example
 
-$\Rightarrow$ L is not regular. QED. 
+   :math:`L_1 = \{a^nb^na^n\ |\ n > 0\}`
 
+   **Theorem:** :math:`L_1` is not regular.
 
-\end{itemize}
+   **Proof:** (proof by contradiction)
 
-%S \vfill
-%SO \eject
-
-{\bf Example:} $L_1 = \{a^nb^na^n | n > 0\}$
-
-$L_1$ is not regular.
-
-\begin{itemize} 
-\item {\bf Proof}: 
-
-Assume $L_1$ is regular. 
-
-Goal is to try to construct $\{a^nb^n | n > 0\}$ which we 
-know is not regular. 
-
-NOTE: If you intersect with $\{a^{*}b^{*} \}$ does not work! 
-
-Let $L_2 = \{a^{*}\}$. $L_2$ is regular. 
-
-By closure under right quotient, $L_3$ = $L_1\backslash L_2$ = 
-$\{a^nb^na^p | 0 \le p \le n, n > 0\}$ is regular. 
-
-By closure under intersection, $L_4$ = $L_3 \cap \{a^{*}b^{*}\}$ = 
-$\{a^nb^n | n > 0\}$ is regular. 
-
-Contradiction, already proved $L_4$ is not regular! 
-
-Thus, $L_1$ is not regular. QED. 
-\end{itemize} 
-
-%%{\bf Example:} $L_1$ = $\{a^na^na^n | n > 0\}$, $\Sigma = \{a\}$
-%%
-%%$L_1$ is regular since $L_1$ = $\{ (aaa)(aaa)^{*}\}$.
-%%
-%%%LO \vfill\eject
-%%
-%%{\bf Example:} $L_1$ = $\{ w \in {\Sigma}^{*} | w = w^R\}$, $\Sigma = \{a,b\}$
-%%
-%%$L_1$ is not regular.
-%%\begin{itemize}
-%%\item {\bf Proof:}
-%%
-%%Assume $L_1$ is regular. 
-%%
-%%Goal is to try to construct $\{a^ncb^n | n > 0\}$ which we
-%%know is not regular.
-%%
-%%Let $L_2 = \{aa^{*}baa^{*}\}$. $L_2$ is regular.
-%%
-%%By closure under intersection, $L_3$ = $L_1 \cap L_2$ = 
-%%$\{a^nba^n | n > 0\}$ is regular.
-%%
-%%Define a homomorphism $h:\Sigma\rightarrow{\Gamma}^{*}$
-%%
-%%\begin{tabular}{ll}
-%%$h(a)=a$ & $h(b)=c$ 
-%%\end{tabular}
-%%
-%%$h(L_3) = \{a^nca^n | n>0 \}$  
-%%
-%%By closure under homomorphism $\Rightarrow$ $h(L_3)$ is regular.
-%%
-%%Contradiction, already proved  $\{a^nca^n | n>0 \}$  is not regular!
-%%
-%%Thus, $L_1$ is not regular. QED.
-%%\end{itemize}
+      | Assume :math:`L_1` is regular.
+      | The goal is to try to construct :math:`\{a^nb^n | n > 0\}` which
+        we know is not regular. 
+      | NOTE: Trying to intersect with :math:`\{a^{*}b^{*} \}` does not work. 
+      | Let :math:`L_2 = \{a^{*}\}`. :math:`L_2` is regular. 
+      | By closure under right quotient,
+        :math:`L_3 = L_1 \backslash L_2 = \{a^nb^na^p | 0 \le p \le n, n > 0\}`
+        is regular. 
+      | By closure under intersection,
+        :math:`L_4 = L_3 \cap \{a^{*}b^{*}\} = \{a^nb^n | n > 0\}` is regular. 
+      | We already proved that :math:`L_4` is not regular. Contradiction.
+      | :math:`\Rightarrow L_1` is not regular. QED. 
