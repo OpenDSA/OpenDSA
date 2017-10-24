@@ -96,7 +96,6 @@ $(document).ready(function() {
   it1_midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
   it1_midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
   it1_midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
-  var midblues = [midblue1, midblue2, midblue3];
 
 // create labels
   var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
@@ -116,19 +115,6 @@ $(document).ready(function() {
   iprec.addClass("hiding");
   var ipline = av.g.line(rect_left - 40, rect_top + 150, rect_left + 5, rect_top + 110, {'arrow-end': 'classic-wide-long', 'stroke-width': 3});
   ipline.addClass("hiding");
-
-
-// --------------- highlight function for single bluebox -------
-
-  function blink(it) {
-      it.addClass("blueboxhigh");
-}
-
-  function blinkset(set){
-    for(box in set){
-      av.bluehigh(box);
-    }
-  }
 
 // ------------------- slide show start -------------------------
 

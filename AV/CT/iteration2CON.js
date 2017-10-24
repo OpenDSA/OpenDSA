@@ -1,33 +1,33 @@
 /*global ODSA */
 // Written by Jieun Chon
 //Array-Based list introduction
-var midblue1,
-    midblue2,
-    midblue3;
+var it2_midblue1,
+    it2_midblue2,
+    it2_midblue3;
 
 $(document).ready(function() {
   "use strict";
 
   //BlueStepAnim :This should come before JSAV Initialize
-      JSAV.ext.blueBoxHigh = JSAV.anim(function doBlueStep() {
+      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep() {
       if (this._shouldAnimate()) {
 
           //  midblue 1 start
-          midblue1.addClass("blueboxh", {record: false});
+          it2_midblue1.addClass("blueboxh", {record: false});
           setTimeout(function() {
-            midblue1.removeClass("blueboxh", {record: false});
+            it2_midblue1.removeClass("blueboxh", {record: false});
 
               // midblue 2 animation start -----------------
               setTimeout(function() {
-                midblue2.addClass("blueboxh", {record: false});
+                it2_midblue2.addClass("blueboxh", {record: false});
                 setTimeout(function() {
-                  midblue2.removeClass("blueboxh", {record: false});
+                  it2_midblue2.removeClass("blueboxh", {record: false});
 
                   // midblue 3 animation start -----------------
                   setTimeout(function() {
-                    midblue3.addClass("blueboxh", {record: false});
+                    it2_midblue3.addClass("blueboxh", {record: false});
                     setTimeout(function() {
-                      midblue3.removeClass("blueboxh", {record: false});
+                      it2_midblue3.removeClass("blueboxh", {record: false});
                     }, 200);
                   }, 200);
                   // midblue 3 animation close ---------------------
@@ -44,17 +44,17 @@ $(document).ready(function() {
 
 
     //BlueStepAnim :This should come before JSAV Initialize
-        JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep() {
+        JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item) {
         if (this._shouldAnimate()) {
 
             //  midblue 1 start
-            midblue1.addClass("blueboxh", {record: false});
+            item.addClass("blueboxh", {record: false});
             setTimeout(function() {
-              midblue1.removeClass("blueboxh", {record: false});
+              item.removeClass("blueboxh", {record: false});
             }, 200);
 
         }
-      }, function undoBlueStep(elemSet) {});
+      }, function undoBlueStep(item) {});
       // BlueStepAnim END -----------------------------------------------
 
   var arrValues = [4, 13, 6, 9, 11];
@@ -92,9 +92,9 @@ $(document).ready(function() {
   av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("box"); // for no-roung on the corner
 
   //blue boxes and the the sets of it for the iterations later
-  midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
-  midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
-  midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
+  it2_midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
+  it2_midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
+  it2_midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
 
   // last purple box.
   av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("box");
@@ -150,71 +150,71 @@ $(document).ready(function() {
   nextleft -= nodegap;
   av.step();
 
-  // Slide 4
-  av.umsg(interpret("sc4"));
-  midblue1.addClass("midblue1high");
-  pauseblink(midblue2);
-  midblue3.addClass("midblue3high");
-  av.step();
-
-  // Slide 5
-  av.umsg(interpret("sc5"));
-  arr.css({left: nextleft});
-  midblue1.removeClass("midblue1high");
-  midblue2.removeClass("midblue2high");
-  midblue3.removeClass("midblue3high");
-  nextleft -= nodegap;
-  av.step();
-
-  // Slide 6
-  av.umsg(interpret("sc6"));
-  midblue1.addClass("midblue1high");
-  midblue2.addClass("midblue2high");
-  midblue3.addClass("midblue3high");
-  valuelabel.value("13");
-  av.step();
-
-  // Slide 7
-  av.umsg(interpret("sc7"));
-  arr.css({left: nextleft});
-  nextleft -= nodegap;
-  av.step();
-
-  // Slide 8
-  av.umsg(interpret("sc8"));
-  midblue1.addClass("midblue1high");
-  midblue2.addClass("midblue2high");
-  midblue3.addClass("midblue3high");
-  valuelabel.value("21");
-  av.step();
-
-  // Slide 9
-  av.umsg(interpret("sc9"));
-  arr.css({left: nextleft});
-  nextleft -= nodegap;
-  av.step();
-
-  // Slide 10
-  av.umsg(interpret("sc10"));
-  midblue1.addClass("midblue1high");
-  midblue2.addClass("midblue2high");
-  midblue3.addClass("midblue3high");
-  valuelabel.value("9");
-  av.step();
-
-  // Slide 11
-  av.umsg(interpret("sc11"));
-  arr.css({left: nextleft});
-  nextleft -= (nodegap + 50);
-  av.step();
-
-  // Slide 12
-  av.umsg(interpret("sc12"));
-  midblue1.addClass("midblue1high");
-  midblue2.addClass("midblue2high");
-  midblue3.addClass("midblue3high");
-  valuelabel.value("11");
-  av.step();
+  // // Slide 4
+  // av.umsg(interpret("sc4"));
+  // midblue1.addClass("midblue1high");
+  // pauseblink(midblue2);
+  // midblue3.addClass("midblue3high");
+  // av.step();
+  //
+  // // Slide 5
+  // av.umsg(interpret("sc5"));
+  // arr.css({left: nextleft});
+  // midblue1.removeClass("midblue1high");
+  // midblue2.removeClass("midblue2high");
+  // midblue3.removeClass("midblue3high");
+  // nextleft -= nodegap;
+  // av.step();
+  //
+  // // Slide 6
+  // av.umsg(interpret("sc6"));
+  // midblue1.addClass("midblue1high");
+  // midblue2.addClass("midblue2high");
+  // midblue3.addClass("midblue3high");
+  // valuelabel.value("13");
+  // av.step();
+  //
+  // // Slide 7
+  // av.umsg(interpret("sc7"));
+  // arr.css({left: nextleft});
+  // nextleft -= nodegap;
+  // av.step();
+  //
+  // // Slide 8
+  // av.umsg(interpret("sc8"));
+  // midblue1.addClass("midblue1high");
+  // midblue2.addClass("midblue2high");
+  // midblue3.addClass("midblue3high");
+  // valuelabel.value("21");
+  // av.step();
+  //
+  // // Slide 9
+  // av.umsg(interpret("sc9"));
+  // arr.css({left: nextleft});
+  // nextleft -= nodegap;
+  // av.step();
+  //
+  // // Slide 10
+  // av.umsg(interpret("sc10"));
+  // midblue1.addClass("midblue1high");
+  // midblue2.addClass("midblue2high");
+  // midblue3.addClass("midblue3high");
+  // valuelabel.value("9");
+  // av.step();
+  //
+  // // Slide 11
+  // av.umsg(interpret("sc11"));
+  // arr.css({left: nextleft});
+  // nextleft -= (nodegap + 50);
+  // av.step();
+  //
+  // // Slide 12
+  // av.umsg(interpret("sc12"));
+  // midblue1.addClass("midblue1high");
+  // midblue2.addClass("midblue2high");
+  // midblue3.addClass("midblue3high");
+  // valuelabel.value("11");
+  // av.step();
 
   // Slide 13
   av.umsg(interpret("sc13"));
