@@ -3,13 +3,15 @@
 //Array-Based list introduction
 var it2_midblue1,
     it2_midblue2,
-    it2_midblue3;
+    it2_midblue3,
+    it2_newLabelValue,
+    it2_valuelabel;
 
 $(document).ready(function() {
   "use strict";
 
   //BlueStepAnim :This should come before JSAV Initialize
-      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep() {
+      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(val) {
       if (this._shouldAnimate()) {
 
           //  midblue 1 start
@@ -21,6 +23,7 @@ $(document).ready(function() {
               setTimeout(function() {
                 it2_midblue2.addClass("blueboxh", {record: false});
                 setTimeout(function() {
+                  it2_valuelabel.value(val);
                   it2_midblue2.removeClass("blueboxh", {record: false});
 
                   // midblue 3 animation start -----------------
@@ -114,23 +117,13 @@ $(document).ready(function() {
   pricelabel.addClass("labels");
   pricelabel.addClass("midlabel");
 
-  var valuelabel = av.label("", {left: rect_left + 240, top: rect_top + 112});
-  valuelabel.addClass("labels");
-  valuelabel.addClass("valuelabel");
+
+  it2_newLabelValue = "";
+  it2_valuelabel = av.label(it2_newLabelValue, {left: rect_left + 240, top: rect_top + 112});
+  it2_valuelabel.addClass("labels");
+  it2_valuelabel.addClass("valuelabel");
 
 
-  // ----------------------slide show methods-----------------------
-
-
-// Blink a blue box, just for one.
-  function blink(it) {
-      it.addClass("blueboxhigh");
-}
-
-  function pauseblink(it) {
-    it.addClass("midblue2high");
-    valuelabel.value("4");
-  }
 
   // --------------------- start slide shows
 
@@ -141,7 +134,7 @@ $(document).ready(function() {
 
   // Slide 2
   av.umsg(interpret("sc2"));
-  blink(topblue);
+  av.bluehigh(topblue);
   av.step();
 
   // Slide 3
@@ -150,81 +143,63 @@ $(document).ready(function() {
   nextleft -= nodegap;
   av.step();
 
-  // // Slide 4
-  // av.umsg(interpret("sc4"));
-  // midblue1.addClass("midblue1high");
-  // pauseblink(midblue2);
-  // midblue3.addClass("midblue3high");
-  // av.step();
-  //
-  // // Slide 5
-  // av.umsg(interpret("sc5"));
-  // arr.css({left: nextleft});
-  // midblue1.removeClass("midblue1high");
-  // midblue2.removeClass("midblue2high");
-  // midblue3.removeClass("midblue3high");
-  // nextleft -= nodegap;
-  // av.step();
-  //
-  // // Slide 6
-  // av.umsg(interpret("sc6"));
-  // midblue1.addClass("midblue1high");
-  // midblue2.addClass("midblue2high");
-  // midblue3.addClass("midblue3high");
-  // valuelabel.value("13");
-  // av.step();
-  //
-  // // Slide 7
-  // av.umsg(interpret("sc7"));
-  // arr.css({left: nextleft});
-  // nextleft -= nodegap;
-  // av.step();
-  //
-  // // Slide 8
-  // av.umsg(interpret("sc8"));
-  // midblue1.addClass("midblue1high");
-  // midblue2.addClass("midblue2high");
-  // midblue3.addClass("midblue3high");
-  // valuelabel.value("21");
-  // av.step();
-  //
-  // // Slide 9
-  // av.umsg(interpret("sc9"));
-  // arr.css({left: nextleft});
-  // nextleft -= nodegap;
-  // av.step();
-  //
-  // // Slide 10
-  // av.umsg(interpret("sc10"));
-  // midblue1.addClass("midblue1high");
-  // midblue2.addClass("midblue2high");
-  // midblue3.addClass("midblue3high");
-  // valuelabel.value("9");
-  // av.step();
-  //
-  // // Slide 11
-  // av.umsg(interpret("sc11"));
-  // arr.css({left: nextleft});
-  // nextleft -= (nodegap + 50);
-  // av.step();
-  //
-  // // Slide 12
-  // av.umsg(interpret("sc12"));
-  // midblue1.addClass("midblue1high");
-  // midblue2.addClass("midblue2high");
-  // midblue3.addClass("midblue3high");
-  // valuelabel.value("11");
-  // av.step();
+  // Slide 4
+  av.umsg(interpret("sc4"));
+  av.blueStepAnim("4")
+  av.step();
+
+  // Slide 5
+  av.umsg(interpret("sc5"));
+  arr.css({left: nextleft});
+  nextleft -= nodegap;
+  av.step();
+
+  // Slide 6
+  av.umsg(interpret("sc6"));
+  av.blueStepAnim("13")
+  av.step();
+
+  // Slide 7
+  av.umsg(interpret("sc7"));
+  arr.css({left: nextleft});
+  nextleft -= nodegap;
+  av.step();
+
+  // Slide 8
+  av.umsg(interpret("sc8"));
+  av.blueStepAnim("6");
+  av.step();
+
+  // Slide 9
+  av.umsg(interpret("sc9"));
+  arr.css({left: nextleft});
+  nextleft -= nodegap;
+  av.step();
+
+  // Slide 10
+  av.umsg(interpret("sc10"));
+  av.blueStepAnim("9");
+  av.step();
+
+  // Slide 11
+  av.umsg(interpret("sc11"));
+  arr.css({left: nextleft});
+  nextleft -= (nodegap + 50);
+  av.step();
+
+  // Slide 12
+  av.umsg(interpret("sc12"));
+  av.blueStepAnim("11");
+  av.step();
 
   // Slide 13
   av.umsg(interpret("sc13"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 100);
-  valuelabel.value("");
   av.step();
 
   // Slide 14
   av.umsg(interpret("sc14"));
-  blink(botblue);
+  av.bluehigh(botblue);
   av.recorded();
 });
