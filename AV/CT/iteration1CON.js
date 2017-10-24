@@ -3,9 +3,9 @@
 //Array-Based list introduction
 
 
-var midblue1,
-    midblue2,
-    midblue3;
+var it1_midblue1,
+    it1_midblue2,
+    it1_midblue3;
 
 $(document).ready(function() {
   "use strict";
@@ -13,41 +13,51 @@ $(document).ready(function() {
   var av_name = "iteration1CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
-// ----------------------- blueStepAnim -----------------------
-// ---------This should come before JSAV Initialize
+  //blueStepAnim :This should come before JSAV Initialize
+      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep() {
+      if (this._shouldAnimate()) {
 
-    JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep() {
-    if (this._shouldAnimate()) {
+          //  midblue 1 start
+          it1_midblue1.addClass("blueboxh", {record: false});
+          setTimeout(function() {
+            it1_midblue1.removeClass("blueboxh", {record: false});
 
-        //  midblue 1 start
-        midblue1.addClass("blueboxh", {record: false});
-        setTimeout(function() {
-          midblue1.removeClass("blueboxh", {record: false});
-
-            // midblue 2 animation start -----------------
-            setTimeout(function() {
-              midblue2.addClass("blueboxh", {record: false});
+              // midblue 2 animation start -----------------
               setTimeout(function() {
-                midblue2.removeClass("blueboxh", {record: false});
-
-                // midblue 3 animation start -----------------
+                it1_midblue2.addClass("blueboxh", {record: false});
                 setTimeout(function() {
-                  midblue3.addClass("blueboxh", {record: false});
+                  it1_midblue2.removeClass("blueboxh", {record: false});
+
+                  // midblue 3 animation start -----------------
                   setTimeout(function() {
-                    midblue3.removeClass("blueboxh", {record: false});
+                    it1_midblue3.addClass("blueboxh", {record: false});
+                    setTimeout(function() {
+                      it1_midblue3.removeClass("blueboxh", {record: false});
+                    }, 200);
                   }, 200);
+                  // midblue 3 animation close ---------------------
+
                 }, 200);
-                // midblue 3 animation close ---------------------
-
               }, 200);
+              // midblue 2 animation close
+
+          }, 200);
+
+      }
+    }, function undoBlueStep() {});
+    // BlueStepAnim END -----------------------------------------------
+
+
+    //BlueStepAnim :This should come before JSAV Initialize
+        JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item) {
+        if (this._shouldAnimate()) {
+            item.addClass("blueboxh", {record: false});
+            setTimeout(function() {
+              item.removeClass("blueboxh", {record: false});
             }, 200);
-            // midblue 2 animation close
-
-        }, 200);
-
-    }
-  }, function undoBlueStep(elemSet) {});
-  // ---------- needs to come before JSAV Initialize ------
+        }
+      }, function undoBlueStep(item) {});
+      // BlueStepAnim END -----------------------------------------------
 
   var av = new JSAV(av_name);
   var leftMargin = 450,
@@ -83,10 +93,10 @@ $(document).ready(function() {
   //floor 5, right big putple box below blue boxes
   av.g.rect(rect_left + 90, rect_top + 200, 230, 50, 10).addClass("box");
 
-  midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
-  midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
-  midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
-  var midblues = [midblue1, midblue2, midblue3, midblue1];
+  it1_midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
+  it1_midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
+  it1_midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
+  var midblues = [midblue1, midblue2, midblue3];
 
 // create labels
   var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
@@ -114,6 +124,12 @@ $(document).ready(function() {
       it.addClass("blueboxhigh");
 }
 
+  function blinkset(set){
+    for(box in set){
+      av.bluehigh(box);
+    }
+  }
+
 // ------------------- slide show start -------------------------
 
   // Slide 1
@@ -130,7 +146,7 @@ $(document).ready(function() {
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  blink(topblue);
+  av.bluehigh(topblue);
   av.step();
 
   // Slide 4
@@ -141,7 +157,7 @@ $(document).ready(function() {
 
   // Slide 5
   av.umsg(interpret("sc5"));
-  av.blueStepAnim(midblues);
+  av.blueStepAnim();
   av.step();
 
   // Slide 6
@@ -152,7 +168,7 @@ $(document).ready(function() {
 
   // Slide 7
   av.umsg(interpret("sc7"));
-  av.blueStepAnim(midblues);
+  av.blueStepAnim();
   av.step();
 
   // Slide 8
@@ -163,7 +179,7 @@ $(document).ready(function() {
 
   // Slide 9
   av.umsg(interpret("sc9"));
-  av.blueStepAnim(midblues);
+  av.blueStepAnim();
   av.step();
 
   // Slide 10
@@ -174,7 +190,7 @@ $(document).ready(function() {
 
   // Slide 11
   av.umsg(interpret("sc11"));
-  av.blueStepAnim(midblues);
+  av.blueStepAnim();
   av.step();
 
   // Slide 12
@@ -185,7 +201,7 @@ $(document).ready(function() {
 
   // Slide 13
   av.umsg(interpret("sc13"));
-  av.blueStepAnim(midblues);
+  av.blueStepAnim();
   av.step();
 
   // Slide 14
@@ -196,6 +212,6 @@ $(document).ready(function() {
 
   // Slide 15
   av.umsg(interpret("sc15"));
-  blink(botblue);
+  av.bluehigh(botblue);
   av.recorded();
 });

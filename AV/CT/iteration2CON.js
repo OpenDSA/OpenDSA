@@ -1,8 +1,62 @@
 /*global ODSA */
 // Written by Jieun Chon
 //Array-Based list introduction
+var midblue1,
+    midblue2,
+    midblue3;
+
 $(document).ready(function() {
   "use strict";
+
+  //BlueStepAnim :This should come before JSAV Initialize
+      JSAV.ext.blueBoxHigh = JSAV.anim(function doBlueStep() {
+      if (this._shouldAnimate()) {
+
+          //  midblue 1 start
+          midblue1.addClass("blueboxh", {record: false});
+          setTimeout(function() {
+            midblue1.removeClass("blueboxh", {record: false});
+
+              // midblue 2 animation start -----------------
+              setTimeout(function() {
+                midblue2.addClass("blueboxh", {record: false});
+                setTimeout(function() {
+                  midblue2.removeClass("blueboxh", {record: false});
+
+                  // midblue 3 animation start -----------------
+                  setTimeout(function() {
+                    midblue3.addClass("blueboxh", {record: false});
+                    setTimeout(function() {
+                      midblue3.removeClass("blueboxh", {record: false});
+                    }, 200);
+                  }, 200);
+                  // midblue 3 animation close ---------------------
+
+                }, 200);
+              }, 200);
+              // midblue 2 animation close
+
+          }, 200);
+
+      }
+    }, function undoBlueStep(elemSet) {});
+    // BlueStepAnim END -----------------------------------------------
+
+
+    //BlueStepAnim :This should come before JSAV Initialize
+        JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep() {
+        if (this._shouldAnimate()) {
+
+            //  midblue 1 start
+            midblue1.addClass("blueboxh", {record: false});
+            setTimeout(function() {
+              midblue1.removeClass("blueboxh", {record: false});
+            }, 200);
+
+        }
+      }, function undoBlueStep(elemSet) {});
+      // BlueStepAnim END -----------------------------------------------
+
   var arrValues = [4, 13, 6, 9, 11];
   var av_name = "iteration2CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
@@ -38,9 +92,9 @@ $(document).ready(function() {
   av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("box"); // for no-roung on the corner
 
   //blue boxes and the the sets of it for the iterations later
-  var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
-  var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
-  var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
+  midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
+  midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
+  midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
 
   // last purple box.
   av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("box");
