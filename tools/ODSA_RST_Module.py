@@ -162,6 +162,19 @@ def isSlideConf(item):
 
   return False
 
+def is_index_option(mod_data, i, line):
+  if re.match('^\w+:.+$', line) != None:
+    i -= 1
+    while i >= 0:
+      line = mod_data[i].strip()
+      if re.match('^\w+:.+$', line) != None:
+        i -= 1
+      elif line.startswith('.. index::'):
+        return True
+      else:
+        return False
+  return False
+
 def get_directive_type(directive):
   if isTable(directive):
     return 'table'
@@ -308,6 +321,11 @@ class ODSA_RST_Module:
 
       # Alter the contents of the module based on the config file
       i = 0
+      module_title_found = False
+      section_title_found = False
+      content_before_module = False
+      content_before_section = False
+      errors = []
       while i < len(mod_data):
         start_space = 0
         for s in mod_data[i]:
@@ -318,13 +336,39 @@ class ODSA_RST_Module:
 
         line = mod_data[i].strip()
         next_line =  mod_data[i+1].strip() if i+1 < len(mod_data) else ''
-        is_chapter = next_line == "="*len(line) or next_line == "-"*len(line)
-        if is_chapter:
-          processed_sections.append(line)
+        if next_line.startswith("=") or next_line.startswith("-"):
+          next_line = next_line.strip()
+          is_chapter = next_line == "="*len(next_line) and len(next_line) > 0
+          is_section = next_line == "-"*len(next_line) and len(next_line) > 0
+        else:
+          next_line = next_line.strip()
+          is_chapter = False
+          is_section = False
 
+        if is_chapter or is_section:
+          processed_sections.append(line)
+          module_title_found = True
+          processed_sections.append(line)
+        elif not module_title_found:
+          if not content_before_module \
+          and not (line == '' or line.startswith('.. ') or line.startswith(':')) \
+          and not is_index_option(mod_data, i, line):
+            content_before_module = True
+            errors.append(("%sERROR: line %s ('%s') - should not have content before module title" % (console_msg_prefix, i, line), True))
+
+        if is_chapter:
+          module_title_found = True
+        else:
+          if is_section:
+            section_title_found = True
+          elif module_title_found and not section_title_found \
+          and not content_before_section \
+          and re.match('(^\.\. (?!\w+::).+)|(^$)|(^=+$)', line) == None:
+              content_before_section = True
+              errors.append(("%sERROR: line %s ('%s') - should not have content between module title and first section" % (console_msg_prefix, i, line), False))
+          
         # Determine the type of directive
         dir_type = get_directive_type(line)
-
 
         #Code to change the ..slide directive to a header when the -s option
         # is not added
@@ -580,6 +624,10 @@ class ODSA_RST_Module:
           counters['figure'] += 1
 
         i = i + 1
+
+      for (msg, module_error) in errors:
+        if module_error or (section_title_found and not module_error):
+          print_err(msg)
 
       if not avmetadata_found:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
