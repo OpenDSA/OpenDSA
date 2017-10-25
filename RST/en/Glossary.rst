@@ -3524,6 +3524,9 @@ Glossary
       The place where an :term:`activation record` is stored when a
       subroutine is called during a program's runtime.
 
+   scope
+      The parts of a program that can see and access a variable.
+
    search key
       A field or part of a record that is used to represent the record
       when searching. For example, in a database of customer records,
