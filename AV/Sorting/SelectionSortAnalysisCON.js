@@ -45,7 +45,7 @@ $(document).ready(function() {
 
   // Slide 5
   arr.highlight(1);
-  av.label("$i=0$",  {top: topAlign + topGap, left: leftAlign + 5});
+  av.label("$i=0$",  {top: topAlign + topGap, left: leftAlign + 7});
   av.g.rect(leftAlign, topAlign, rectWidth, rectHeight);
   av.step();
 
@@ -120,7 +120,7 @@ $(document).ready(function() {
   arr.removeClass(bigIndex, "greenbg");
   arr.addClass(5, "deemph");
   av.g.rect(leftAlign + gap, topAlign, rectWidth, rectHeight);
-  av.label("$i=0$",  {top: topAlign + topGap, left: leftAlign + gap + 5});
+  av.label("$i=0$",  {top: topAlign + topGap, left: leftAlign + gap + 7});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
   arr.addClass(bigIndex, "greenbg");
@@ -129,7 +129,7 @@ $(document).ready(function() {
   // Slide 11
   av.umsg(interpret("sc11"));
   arr.highlight(1);
-  av.label("$i=1$",  {top: topAlign + topGap, left: leftAlign + rectWidth + 5});
+  av.label("$i=1$",  {top: topAlign + topGap, left: leftAlign + rectWidth + 7});
   av.g.rect(leftAlign + rectWidth, topAlign, rectWidth, rectHeight);
   av.step();
 
@@ -190,7 +190,7 @@ $(document).ready(function() {
   arr.removeClass(bigIndex, "greenbg");
   arr.addClass(4, "deemph");
   av.g.rect(leftAlign + gap + rectWidth, topAlign, rectWidth, rectHeight);
-  av.label("$i=1$",  {top: topAlign + topGap, left: leftAlign + gap + rectWidth + 5});
+  av.label("$i=1$",  {top: topAlign + topGap, left: leftAlign + gap + rectWidth + 7});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
   arr.addClass(bigIndex, "greenbg");
@@ -199,7 +199,7 @@ $(document).ready(function() {
   // Slide 16
   av.umsg(interpret("sc16"));
   arr.highlight(1);
-  av.label("$i=2$",  {top: topAlign + topGap, left: leftAlign + 2 * rectWidth + 5});
+  av.label("$i=2$",  {top: topAlign + topGap, left: leftAlign + 2 * rectWidth + 7});
   av.g.rect(leftAlign + 2 * rectWidth, topAlign, rectWidth, rectHeight);
   av.step();
 
@@ -246,7 +246,7 @@ $(document).ready(function() {
   arr.removeClass(bigIndex, "greenbg");
   arr.addClass(3, "deemph");
   av.g.rect(leftAlign + gap + 2 * rectWidth, topAlign, rectWidth, rectHeight);
-  av.label("$i=2$", {top: topAlign + topGap, left: leftAlign + gap + 2 * rectWidth + 5});
+  av.label("$i=2$", {top: topAlign + topGap, left: leftAlign + gap + 2 * rectWidth + 7});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
   arr.addClass(bigIndex, "greenbg");
@@ -255,7 +255,7 @@ $(document).ready(function() {
   // Slide 20
   av.umsg(interpret("sc20"));
   arr.highlight(1);
-  av.label("$i=3$",  {top: topAlign + topGap, left: leftAlign + 3 * rectWidth + 5});
+  av.label("$i=3$",  {top: topAlign + topGap, left: leftAlign + 3 * rectWidth + 7});
   av.g.rect(leftAlign + 3 * rectWidth, topAlign, rectWidth, rectHeight);
   av.step();
 
@@ -288,7 +288,7 @@ $(document).ready(function() {
   arr.removeClass(bigIndex, "greenbg");
   arr.addClass(2, "deemph");
   av.g.rect(leftAlign + gap + 3 * rectWidth, topAlign, rectWidth, rectHeight);
-  av.label("$i=3$",  {top: topAlign + topGap, left: leftAlign + gap + 3 * rectWidth + 5});
+  av.label("$i=3$",  {top: topAlign + topGap, left: leftAlign + gap + 3 * rectWidth + 7});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
   arr.addClass(bigIndex, "greenbg");
@@ -297,7 +297,7 @@ $(document).ready(function() {
   // Slide 23
   av.umsg(interpret("sc23"));
   arr.highlight(1);
-  av.label("$i=4$",  {top: topAlign + topGap, left: leftAlign + 4 * rectWidth + 5});
+  av.label("$i=4$",  {top: topAlign + topGap, left: leftAlign + 4 * rectWidth + 7});
   av.g.rect(leftAlign + 4 * rectWidth, topAlign, rectWidth, rectHeight);
   av.step();
   av.clearumsg();
@@ -314,7 +314,7 @@ $(document).ready(function() {
   arr.removeClass(bigIndex, "greenbg");
   arr.addClass(1, "deemph");
   av.g.rect(leftAlign + gap + 4 * rectWidth, topAlign, rectWidth, rectHeight);
-  av.label("$i=4$",  {top: topAlign + topGap, left: leftAlign + gap + 4 * rectWidth + 5});
+  av.label("$i=4$",  {top: topAlign + topGap, left: leftAlign + gap + 4 * rectWidth + 7});
   pointer.hide();
   arr.addClass(0, "deemph");
   av.step();

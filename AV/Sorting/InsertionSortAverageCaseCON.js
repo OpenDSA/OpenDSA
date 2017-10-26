@@ -55,14 +55,13 @@ $(document).ready(function() {
   av.g.line (leftAlign, topAlign + 70,
              leftAlign + 75, topAlign + 70,
              {"stroke-width": 2, "arrow-start":"classic-wide-long"});
-  av.g.line (leftAlign + 135,
-             topAlign + 70, leftAlign + 215,
-             topAlign + 70,
+  av.g.line (leftAlign + 135, topAlign + 70,
+             leftAlign + 210, topAlign + 70,
              {"stroke-width": 2, "arrow-end":"classic-wide-long"});
   av.g.line(leftAlign, topAlign + 60,
            leftAlign, topAlign + 80);
-  av.g.line(leftAlign + 215, topAlign + 60,
-            leftAlign + 215,  topAlign + 80);
+  av.g.line(leftAlign + 210, topAlign + 60,
+            leftAlign + 210,  topAlign + 80);
   av.label ("$n - 1$", 
             {top: topAlign + 40,
              left: leftAlign + 80 + labelGap}); 
