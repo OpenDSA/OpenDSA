@@ -95,19 +95,7 @@ $(document).ready(function() {
                          "$2^n$", -25, -20, 0.01, false);
   av.g.polyline(curve3, {"stroke-width": 3});
 
-  var curve4 = Plot.drawCurve(_factorial, av, xStart, yStart, yEnd, xMax, yMax, width, height,
-                         "$n!$", -25, -20, 1, false);
-  av.g.polyline(curve4, {"stroke-width": 3});
-
-  // var fac_arr = [0, 1, 0.25, 0.906, 0.5, 0.886, 0.75, 0.919,
-  //                1, 1, 1.5, 1,133, 1.5, 1.329, 1.5, 1.608,
-  //                2, 2, 2.25, 2.549, 2.5, 3.323, 2.75, 4.423,
-  //                3, 6, 3.25, 8.285, 3.5, 11.632, 3.75, 16.585,
-  //                4, 24, 4.25, 35.212, 4.5, 52.343, 4.75, 78.784, 5, 120];
-  // var curve4 = Plot.drawArrayToCurve(fac_arr, av, xStart, yStart, yEnd, xMax, yMax, width, height,
-  //                         "$n!$", -25, -20, 0.25);
-  //
-  // av.g.polyline(curve4, {"stroke-width": 3});
+  _factorial2(av);
 
 
   function _5nlog2n(n) {
@@ -130,6 +118,33 @@ $(document).ready(function() {
     }
     return temp;
   };
+
+  function _factorial2(jsav){
+    var factorialArray = [1, 0.906, 0.886, 0.919,
+                          1, 1.133, 1.329, 1.608,
+                          2, 2.549, 3.323, 4.423,
+                          6, 8.285, 11.632, 16.585,
+                          24, 35.212, 52.343, 78.784,
+                          120, 184.861, 287.885, 453.011,
+                          720, 1155.38, 1871.25, 3057.82];
+
+     var points = [];
+     var xStep = ((width / xMax)/4) ;
+     var x, y;
+     var len = factorialArray.length;
+     for (var i = 1; i < len; i++) {
+       x = xStart + (i * xStep);
+       y = yStart - (factorialArray[i] / yMax) * height;
+       if (y < yEnd) {
+         y = yEnd;
+         points.push([x, y]);
+         break;
+       }
+       points.push([x, y]);
+     }
+     jsav.label("$n!$", {left: x - 25, top: y - 20});
+     jsav.g.polyline(points, {"stroke-width": 3});
+  }
 
   av.displayInit();
   av.recorded();

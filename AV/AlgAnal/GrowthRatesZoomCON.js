@@ -90,9 +90,7 @@ $(document).ready(function() {
                               "$2^n$", -30, -20, 0.01, false);
   av.g.polyline(curve3, {"stroke-width": 3});
 
-  var curve4 = Plot.drawCurve(_factorial, av, xStart, yStart, yEnd, xMax, yMax, width, height,
-                              "$n!$", -25, -20, 1, false);
-  av.g.polyline(curve4, {"stroke-width": 3});
+  _factorial2(av);
 
   function _5nlog2n(n){
     return 5 * n * Math.log2(n);
@@ -114,6 +112,33 @@ $(document).ready(function() {
     }
     return temp;
   };
+
+  function _factorial2(jsav){
+    var factorialArray = [1, 0.906, 0.886, 0.919,
+                          1, 1.133, 1.329, 1.608,
+                          2, 2.549, 3.323, 4.423,
+                          6, 8.285, 11.632, 16.585,
+                          24, 35.212, 52.343, 78.784,
+                          120, 184.861, 287.885, 453.011,
+                          720, 1155.38, 1871.25, 3057.82];
+
+     var points = [];
+     var xStep = ((width / xMax) / 4) ;
+     var x, y;
+     var len = factorialArray.length;
+     for (var i = 1; i < len; i++) {
+       x = xStart + (i * xStep);
+       y = yStart - (factorialArray[i] / yMax) * height;
+       if (y < yEnd) {
+         y = yEnd;
+         points.push([x, y]);
+         break;
+       }
+       points.push([x, y]);
+     }
+     jsav.label("$n!$", {left: x - 25, top: y - 20});
+     jsav.g.polyline(points, {"stroke-width": 3});
+  }
 
   av.label("Input size n", {left: p1[2] - 350, top: p1[3] + 250});
 

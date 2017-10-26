@@ -13,6 +13,26 @@
       return points;
     },
 
+    // // Draw an arbitrary curve from a array passed in
+    // drawArrCurve: function(arr, jsav, xStart, yStart, yEnd, xMax, yMax, width, height, label, labelx, labely, increment) {
+    //   var points = [];
+    //   var xStep = (width / xMax) * increment;
+    //   var x, y;
+    //   for (var i = 0; i < arr.length; i++ ) {
+    //     x = xStart + (i * xStep);
+    //     y = yStart - (arr[i] / yMax) * height);
+    //     if (y < yEnd) {
+    //       y = yEnd;
+    //       points.push([x, y]);
+    //       break;
+    //     }
+    //     points.push([x, y]);
+    //   }
+    //   jsav.label(label, {left: x + labelx, top: y + labely});
+    //   return points;
+    // },
+
+
     // Draw an arbitrary curve from a function passed in
     drawCurve: function(func, jsav, xStart, yStart, yEnd, xMax, yMax, width, height, label, labelx, labely, increment, isLog) {
       var points = [];
