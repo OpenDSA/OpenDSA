@@ -9,8 +9,8 @@
    :satisfies: growth rate
    :topic: Algorithm Analysis
 
-.. odsalink:: AV/AlgAnal/GrowthRatesCON.css
-.. odsalink:: AV/AlgAnal/GrowthRatesZoomCON.css
+   .. odsalink:: AV/AlgAnal/GrowthRatesCON.css
+   .. odsalink:: AV/AlgAnal/GrowthRatesZoomCON.css
 
 Comparing Algorithms
 ====================

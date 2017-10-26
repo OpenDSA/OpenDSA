@@ -316,6 +316,6 @@ Practice Questions
 .. avembed:: Exercises/AlgAnal/UpperBoundsSumm.html ka
    :long_name: Asymptotic Analysis and Upper Bounds Exercise
 
-.. odsascript:: AV/AlgAnal/UpperBoundCON.js
+.. odsascript:: DataStructures/Plot.js
 .. odsascript:: AV/AlgAnal/GrowthRatesCON.js
 .. odsascript:: AV/AlgAnal/GrowthRatesZoomCON.js
