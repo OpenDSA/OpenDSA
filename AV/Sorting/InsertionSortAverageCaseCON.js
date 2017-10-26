@@ -11,6 +11,9 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   var pseudo = av.code(code[0]).hide();
   var arr;
+  var leftAlign = 300;
+  var topAlign = 0;
+  var labelGap = 5;
   function insert_equation(current, added) {
     var new_equation;
     var end_index = current.indexOf("\\end{eqnarray*}");
@@ -25,7 +28,7 @@ $(document).ready(function() {
   // Slide 2
   pseudo.show();
   av.umsg(interpret("sc2"));
-  arr = av.ds.array(["0", "1", "...", "i-1", "i", "...", "n-1"], {left: 300, top: 0, indexed: false});
+  arr = av.ds.array(["0", "1", "...", "i-1", "i", "...", "n-1"], {left: leftAlign, top: topAlign, indexed: false});
   pseudo.highlight("loop2");
   arr.highlight(4);
   av.step();
@@ -47,7 +50,23 @@ $(document).ready(function() {
   //Slide 6
   av.umsg(interpret("sc6"));
   var eq = av.label("$\\displaystyle\\sum_{i=1}^{n-1}\\frac{i}{2}$", {top: "0px", left: "15px"}).addClass("mediumLabel");
-  var label = av.label("|--------- $n-1$ --------|",  {top: "40px", left: "310px"}).addClass("largeLabel");
+  
+  //Horizontal Line
+  av.g.line (leftAlign, topAlign + 70,
+             leftAlign + 75, topAlign + 70,
+             {"stroke-width": 2, "arrow-start":"classic-wide-long"});
+  av.g.line (leftAlign + 135,
+             topAlign + 70, leftAlign + 215,
+             topAlign + 70,
+             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.g.line(leftAlign, topAlign + 60,
+           leftAlign, topAlign + 80);
+  av.g.line(leftAlign + 215, topAlign + 60,
+            leftAlign + 215,  topAlign + 80);
+  av.label ("$n - 1$", 
+            {top: topAlign + 40,
+             left: leftAlign + 80 + labelGap}); 
+
   pseudo.highlight("loop1");
   arr.unhighlight(4);
   arr.removeClass([0, 1, 2, 3], "greenbg");
@@ -62,6 +81,5 @@ $(document).ready(function() {
   //Slide 8
   av.umsg(interpret("sc8"));
   pseudo.unhighlight("loop2");
-  label.hide();
   av.recorded();
 });
