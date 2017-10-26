@@ -99,6 +99,16 @@ $(document).ready(function() {
                          "$n!$", -25, -20, 1, false);
   av.g.polyline(curve4, {"stroke-width": 3});
 
+  // var fac_arr = [0, 1, 0.25, 0.906, 0.5, 0.886, 0.75, 0.919,
+  //                1, 1, 1.5, 1,133, 1.5, 1.329, 1.5, 1.608,
+  //                2, 2, 2.25, 2.549, 2.5, 3.323, 2.75, 4.423,
+  //                3, 6, 3.25, 8.285, 3.5, 11.632, 3.75, 16.585,
+  //                4, 24, 4.25, 35.212, 4.5, 52.343, 4.75, 78.784, 5, 120];
+  // var curve4 = Plot.drawArrayToCurve(fac_arr, av, xStart, yStart, yEnd, xMax, yMax, width, height,
+  //                         "$n!$", -25, -20, 0.25);
+  //
+  // av.g.polyline(curve4, {"stroke-width": 3});
+
 
   function _5nlog2n(n) {
     return 5 * n * (Math.log2(n));

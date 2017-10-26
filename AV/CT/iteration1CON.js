@@ -5,7 +5,8 @@
 
 var it1_midblue1,
     it1_midblue2,
-    it1_midblue3;
+    it1_midblue3,
+    it1_arr;
 
 $(document).ready(function() {
   "use strict";
@@ -81,7 +82,7 @@ $(document).ready(function() {
   av.g.rect(rect_left, rect_top + 25, 30, 60).addClass("box").css({opacity: 0.9});
   av.g.rect(rect_left + 73, rect_top + 25, 30, 60).addClass("box").css({opacity: 0.9});
   //create array contains 5 values.
-  var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
+  arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
   //floor 4, long purple
   av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("box");
@@ -138,13 +139,13 @@ $(document).ready(function() {
   // Slide 4
   av.umsg(interpret("sc4"));
   arr.css({left: nextleft});
+  av.blueStepAnim();
   nextleft -= nodegap;
   av.step();
 
-  // Slide 5
-  av.umsg(interpret("sc5"));
-  av.blueStepAnim();
-  av.step();
+  // // Slide 5
+  // av.umsg(interpret("sc5"));
+  // av.step();
 
   // Slide 6
   av.umsg(interpret("sc6"));
