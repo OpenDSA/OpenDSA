@@ -31,6 +31,7 @@
         points.push([x, y]);
       }
       jsav.label(label, {left: x + labelx, top: y + labely});
+      jsav.g.polyline(points, {"stroke-width": 3});
       return points;
     }
   }; // Plot
