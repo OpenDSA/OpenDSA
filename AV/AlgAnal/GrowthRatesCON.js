@@ -99,20 +99,17 @@ $(document).ready(function() {
                          "$n!$", -25, -20, 0.25, false);
   av.g.polyline(curve4, {"stroke-width": 3});
 
-  // _factorial2(av);
-
-
   function _5nlog2n(n) {
     return 5 * n * (Math.log2(n));
-  };
+  }; // _5nlog2n
 
   function _2npow2(n) {
     return 2 * Math.pow(n, 2);
-  };
+  }; //)2npow2
 
   function _2pown(n) {
     return Math.pow(2, n);
-  };
+  }; //_2pown
 
   function _factorial(n) {
     // var i;
@@ -130,7 +127,7 @@ $(document).ready(function() {
                           720, 1155.38, 1871.25, 3057.82];
 
     return factorialArray[n * 4];
-  };
+  }; // _factorial(n)
 
   av.displayInit();
   av.recorded();
