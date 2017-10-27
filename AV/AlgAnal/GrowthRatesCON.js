@@ -95,6 +95,10 @@ $(document).ready(function() {
                          "$2^n$", -25, -20, 0.01, false);
   av.g.polyline(curve3, {"stroke-width": 3});
 
+  var curve3 = Plot.drawCurve(_factoria2, av, xStart, yStart, yEnd, xMax, yMax, width, height,
+                         "$2^n$", -25, -20, 0.25, false);
+  av.g.polyline(curve3, {"stroke-width": 3});
+
   _factorial2(av);
 
 
@@ -119,7 +123,7 @@ $(document).ready(function() {
     return temp;
   };
 
-  function _factorial2(jsav){
+  function _factoria2(n){
     var factorialArray = [1, 0.906, 0.886, 0.919,
                           1, 1.133, 1.329, 1.608,
                           2, 2.549, 3.323, 4.423,
@@ -127,6 +131,11 @@ $(document).ready(function() {
                           24, 35.212, 52.343, 78.784,
                           120, 184.861, 287.885, 453.011,
                           720, 1155.38, 1871.25, 3057.82];
+
+  }
+
+  function _factorial2(jsav){
+
 
      var points = [];
      var xStep = ((width / xMax)/4) ;
