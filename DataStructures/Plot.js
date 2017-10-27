@@ -15,7 +15,7 @@
 
 
     // Draw an arbitrary curve from a function passed in
-    drawCurve: function(func, jsav, xStart, yStart, yEnd, xMax, yMax, width, height, label, labelx, labely, increment, isLog) {
+    drawCurve: function(func, jsav, xStart, yStart, yEnd, xMax, yMax, width, height, label, labelx, labely, increment, isLog, gap) {
       var points = [];
       var xStep = width / xMax;
       var start = isLog ? 1 : 0;
