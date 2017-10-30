@@ -142,6 +142,16 @@
         "sections": {}
       }
     },
+    "Pushdown Automata": {
+      "FormalLang/PDA": {
+        "long_name": "Pushdown Automata",
+        "sections": {}
+      },
+      "FormalLang/NPDA": {
+        "long_name": "Nondeterministic Pushdown Automata",
+        "sections": {}
+      }
+    },
     "Limits to Computing": {
       "SeniorAlgAnal/Impossible": {
         "long_name": "Unsolveable Problems",

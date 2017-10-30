@@ -234,8 +234,7 @@ CS3_exs: min
 	python $(CONFIG_SCRIPT) config/CS3_exs.json --no-lms
 
 JFLAP: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/JFLAP_generated.json --no-lms
+	python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
