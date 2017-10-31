@@ -19,6 +19,7 @@
 .. odsalink:: AV/Pointers/examplePointerCodeCON.css
 .. odsalink:: AV/Pointers/badPointerPowCON.css
 .. odsalink:: AV/Pointers/memoryModelCON.css
+.. odsalink:: AV/Pointers/shallowdeepExampleCON.css
 
 
 Basic References
@@ -274,9 +275,9 @@ Here is an example of the difference between shallow and deep copying:
 .. codeinclude:: Pointers/shallowCopy
    :tag: shallow
 
-.. inlineav:: ShallowCopyCON ss
-    :long_name: Shallow Copy Slideshow
-    :output: show
+.. inlineav:: shallowdeepExampleCON ss
+   :long_name: Shallow Deep Copy Slideshow
+   :output: show
 
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
 
@@ -563,4 +564,4 @@ away if that happens.
 .. odsascript:: AV/Pointers/examplePointerCodeCON.js
 .. odsascript:: AV/Pointers/badPointerPowCON.js
 .. odsascript:: AV/Pointers/memoryModelCON.js
-.. odsascript:: AV/Pointers/shallowCopyCON.js
+.. odsascript:: AV/Pointers/shallowdeepExampleCON.js
