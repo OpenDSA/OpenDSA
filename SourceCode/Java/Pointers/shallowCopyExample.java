@@ -63,7 +63,7 @@ public class shallowCopy {
     Employee firstEmployee = new Employee("Sam");
     Employee shallowCopyEmployee = firstEmployee;
     shallowCopyEmployee.setName("John");
-    System.out.println(shallowCopyEmployee.getName());
+    System.out.println(firstEmployee.getName());
     Employee secondEmployee = new Employee("Patrice");
     Employee deepCopyEmployee = new Employee();
     deepCopyEmployee.setName(secondEmployee.getName());
