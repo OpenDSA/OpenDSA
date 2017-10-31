@@ -9,8 +9,6 @@
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
 
-.. odsalink:: AV/AlgAnal/LowerBoundCON.css
-
 Lower Bounds and :math:`\Theta` Notation
 ========================================
 
@@ -237,6 +235,8 @@ If the limit goes to some constant other than zero, then
 
 .. inlineav:: LowerBoundCON ss
    :long_name: Lower Bounds visualization
+   :links: AV/AlgAnal/LowerBoundCON.css
+   :scripts: AV/AlgAnal/LowerBoundCON.js
    :output: show
 
 Summary Exercise
@@ -244,5 +244,3 @@ Summary Exercise
 
 .. avembed:: Exercises/AlgAnal/LowerThetaSumm.html ka
    :long_name: Lower Bounds and Theta Notation Exercise
-
-.. odsascript:: AV/AlgAnal/LowerBoundCON.js

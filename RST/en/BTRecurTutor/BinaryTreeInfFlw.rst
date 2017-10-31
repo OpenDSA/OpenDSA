@@ -9,8 +9,6 @@
    :satisfies: recursive function information flow
    :topic: Advanced Recursion
 
-.. odsalink:: AV/Binary/WriteTrav.css
-
 Information Flow in Recursive Functions
 =======================================
 
@@ -100,6 +98,8 @@ Another common mistake is to not return a value.
 
 .. inlineav:: BinaryTreeMistakesCON ss
    :long_name: Binary Tree Common Mistakes Slideshow
+   :links: AV/Binary/WriteTrav.css
+   :scripts: AV/Binary/BinaryTreeMistakesCON.js
    :output: show
 
 
@@ -167,4 +167,3 @@ Binary Tree Has Path Sum Exercise
 
 .. extrtoolembed:: 'Binary Tree Has Path Sum Exercise'
 
-.. odsascript:: AV/Binary/BinaryTreeMistakesCON.js

@@ -1,4 +1,4 @@
-.. This file is part of the OpenDSA eTextbook project. See
+cat.. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
 .. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
@@ -8,8 +8,6 @@
    :requires:
    :satisfies: iteration
    :topic: programming concepts
-
-.. odsalink:: AV/CT/iterationCON.css
 
 List Iteration
 ==============
@@ -25,7 +23,7 @@ abstractions we need to understand the combination of two concepts:
 
 The combination of these two concepts |---| what we will term
 "list iteration" |---| means repeating the same processing steps to each
-element of the list one element at a time. 
+element of the list one element at a time.
 
 In real life people create and use a variety of lists: shopping lists,
 bucket lists, and to-do lists, to name a few.
@@ -34,20 +32,20 @@ These lists have two things in common:
 * the list contains several items of similar character (i.e., the
   shopping list contains things that can be found in a store, the
   to-do list has tasks that need to be done), and
-  
+
 * there is some action that we want to take for each item on the list
   (i.e., purchase an item on the shopping list, do a task on the to-do
   list).
-  
+
 In a similar way, a computational list contains data items of the same
 type and list iteration is used to apply some computing actions to
 each item on the list.
 
 .. sidebar:: Iteration Image
-   
+
    .. odsafig:: Images/NetLogo-Iteration-Sign.png
       :width: 100
-           
+
 List iteration is critical to algorithms that analyze abstractions
 having many |---| perhaps a very large number |---| of instances.
 Imagine computing the average household income using the U.S. Census
@@ -86,7 +84,7 @@ The numbers are in the ``Values`` menu and the set block is in the
 .. odsafig:: Images/List-three-elements.png
    :width: 500
    :align: center
-           
+
    Creating a List
 
 By default the `create list with` block creates a list with slots
@@ -95,12 +93,13 @@ Of course, a list with more or fewer slots for
 elements may be needed.
 For this reason the ``create list with`` block can be edited to add or
 remove slots.
+
 The figure below shows an example of the editing.
 
 .. odsafig:: Images/List-editing-list-block.png
    :width: 400
    :align: center
-           
+
    Editing the ``create list with`` block
 
 To begin adding new list elements click on the blue colored gear
@@ -108,7 +107,7 @@ symbol in front of the word "create" on the ``create list with``
 block.
 This pops up the editing menu shown in the left part of the figure
 above.
-The block labelled ``property_name`` can be dragged from the 
+The block labelled ``property_name`` can be dragged from the
 gray area to the list grouping.
 The left part of the above figure shows a highlighted ``property_name``
 block in the act of being dragged in this way.
@@ -135,7 +134,7 @@ the value of the property ``number-list``.
 The ``number-list`` property is display as text using the ``print``
 block and then displayed as a line graph with the title
 "List of Numbers".
-The blocks for printing and line graphing are found in the Output menu. 
+The blocks for printing and line graphing are found in the Output menu.
 
 Run this program and observe the output displayed in the ``Printer``
 box (immediately above the BlockPy canvas).
@@ -146,7 +145,7 @@ lower right-hand corner for vertically resizing the display area.
    :type: BlockPy
 
    Put first BlockPy exercise here.
-   
+
 
 The text displayed by the print block is::
 
@@ -164,12 +163,12 @@ is the last item.
 The line graph similarly shows the four values in the list.
 Notice that the values are printed and plotted in left-to-right over
 in the list (i.e., 2 is the first number printed and plotted and 5 is
-the last number printed and plotted). 
+the last number printed and plotted).
 
 Work with the above canvas to:
 
 * add and remove elements from the list,
-* change the values of the numbers in the list, 
+* change the values of the numbers in the list,
 * change the title of the list, and
 * produce the plot before the printed output.
 
@@ -193,7 +192,7 @@ stated goal (the maze exit) was reached.
 
 List iteration is a form of iteration used when manipulating data
 organized in a list.
-The general form of list iteration is often expressed as:  
+The general form of list iteration is often expressed as:
 
    for each <element> in <some list>
      do <these steps using element>
@@ -228,7 +227,7 @@ the Printer area at the top of the workspace.
    :type: BlockPy
 
    Put second BlockPy exercise here.
-   
+
 This algorithm proceeds through four iterations as shown in the
 following table.
 Notice that on each iteration the value of the iteration variable
@@ -302,7 +301,7 @@ works.
    :type: BlockPy
 
    Put third BlockPy exercise here.
-   
+
 For the example list the algorithm proceeds through four iterations as
 shown in the following table.
 
@@ -360,7 +359,7 @@ internal combustion engine generates the physical power needed to move
 a vehicle.
 By analogy, the repetitive processing of list items by an algorithm
 using iteration generates the information processing power needed to
-answer questions about a large collection of data.  
+answer questions about a large collection of data.
 
 The ideas of lists and iteration are also connected to the larger
 concept of abstraction.
@@ -370,7 +369,7 @@ being modeled by the abstraction.
 The collection of instances can be organized as a list |---| each
 element of the list is an instance.
 To manipulate the abstraction iteration can be used to repetitively
-process each element of the list (i.e., each instance).  
+process each element of the list (i.e., each instance).
 
 This leads to a conceptual definition of list iteration as:
 
@@ -379,19 +378,23 @@ instance of an abstraction one instance at a time.**
 
 To fully realize this idea of processing an abstraction we will need
 to learn a bit more |---| but not much more.
-   
+
 .. inlineav:: iteration1CON ss
    :long_name: Iteration 1
+   :links: AV/CT/iterationCON.css
+   :scripts: AV/CT/iteration1CON.js
    :output: show
 
 .. inlineav:: iteration2CON ss
    :long_name: Iteration 2
+   :links: AV/CT/iterationCON.css
+   :scripts: AV/CT/iteration2CON.js
    :output: show
 
 .. inlineav:: iteration3CON ss
    :long_name: Iteration 3
+   :links: AV/CT/iterationCON.css
+   :scripts: AV/CT/iteration3CON.js
    :output: show
 
-.. odsascript:: AV/CT/iteration1CON.js
-.. odsascript:: AV/CT/iteration2CON.js
-.. odsascript:: AV/CT/iteration3CON.js
+.. avembed:: Exercises/CT/IterationEX1PRO.html ka

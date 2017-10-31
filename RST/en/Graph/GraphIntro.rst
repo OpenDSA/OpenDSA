@@ -8,9 +8,6 @@
    :satisfies: graph terminology
    :topic: Graphs
 
-
-.. odsalink:: AV/Graph/GraphDefCON.css
-
 Graphs Chapter Introduction
 ===========================
 
@@ -90,6 +87,8 @@ A graph whose edges have weights
 .. _GraphTerms:
 
 .. inlineav:: GdirundirCON dgm 
+   :links: AV/Graph/GraphDefCON.css
+   :scripts: AV/Graph/GdirundirCON.js
    :output: show
 
    Some types of graphs.
@@ -114,6 +113,8 @@ In (c) above, the in degree of Vertex 1 is two,
 and its out degree is one.
 
 .. inlineav:: GneighborCON dgm
+   :links: AV/Graph/GraphDefCON.css
+   :scripts: AV/Graph/GneighborCON.js
    :output: show
 
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
@@ -128,6 +129,8 @@ A cycle is a :term:`simple cycle` if the path is simple, except for
 the first and last vertices being the same.
 
 .. inlineav:: GpathDefCON dgm 
+   :links: AV/Graph/GraphDefCON.css
+   :scripts: AV/Graph/GpathDefCON.js
    :output: show 
 
 An undirected graph is a :term:`connected graph` if there is at least
@@ -140,6 +143,8 @@ with three connected components.
 .. _ConCom:
 
 .. inlineav:: GconcomCON dgm
+   :links: AV/Graph/GraphDefCON.css
+   :scripts: AV/Graph/GconcomCON.js
    :output: show
 
 A graph with relatively few edges is called a :term:`sparse graph`,
@@ -156,6 +161,8 @@ Any subgraph of :math:`V` where all vertices in the graph connect to
 all other vertices in the subgraph is called a :term:`clique`.
 
 .. inlineav:: GsparseDefCON dgm
+   :links: AV/Graph/GraphDefCON.css
+   :scripts: AV/Graph/GsparseDefCON.js
    :output: show
 
 .. TODO::
@@ -207,6 +214,8 @@ because this edge comes into Vertex 2 rather than going out.
 .. _Directed:
 
 .. inlineav:: GdirRepCON dgm 
+   :links: AV/Graph/GraphDefCON.css
+   :scripts: AV/Graph/GdirRepCON.js
    :output: show
 
    Representing a directed graph.
@@ -225,6 +234,8 @@ entry for both Vertex 3 and Vertex 4.
 .. _Undirected:
 
 .. inlineav:: GundirRepCON dgm 
+   :links: AV/Graph/GraphDefCON.css
+   :scripts: AV/Graph/GundirRepCON.js
    :output: show 
 
    Representing an undirected graph.
@@ -261,6 +272,8 @@ As with the adjacency matrix, this value requires space to represent,
 typically an integer.
 
 .. inlineav:: GweightedCON dgm 
+   :links: AV/Graph/GraphDefCON.css
+   :scripts: AV/Graph/GweightedCON.js
    :output: show
 
 Which graph representation is more space efficient depends on the
@@ -312,12 +325,3 @@ Graph Terminology Questions
 
 .. avembed:: Exercises/Graph/GraphIntroSumm.html ka 
    :long_name: Graph Terminology Summary Exercise
-
-.. odsascript:: AV/Graph/GdirundirCON.js
-.. odsascript:: AV/Graph/GneighborCON.js
-.. odsascript:: AV/Graph/GpathDefCON.js
-.. odsascript:: AV/Graph/GconcomCON.js
-.. odsascript:: AV/Graph/GsparseDefCON.js
-.. odsascript:: AV/Graph/GdirRepCON.js
-.. odsascript:: AV/Graph/GundirRepCON.js
-.. odsascript:: AV/Graph/GweightedCON.js

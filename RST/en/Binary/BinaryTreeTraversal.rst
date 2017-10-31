@@ -9,9 +9,6 @@
    :satisfies: binary tree traversal
    :topic: Binary Trees
 
-.. odsalink:: AV/Binary/BinExampCON.css
-.. odsalink:: AV/Binary/BTCON.css
-
 Binary Tree Traversals
 ======================
 
@@ -41,6 +38,8 @@ This is called a :term:`preorder traversal`.
 .. _BinTravExample:
 
 .. inlineav:: BinExampCON dgm
+   :links: AV/Binary/BinExampCON.css
+   :scripts: AV/Binary/BinExampCON.js
    :align: center
 
    A binary tree for traversal examples.
@@ -58,6 +57,8 @@ This is called a :term:`preorder traversal`.
 
 .. inlineav:: preorderCON ss
    :long_name: Preorder Traversal Slideshow
+   :links: AV/Binary/BTCON.css
+   :scripts: AV/Binary/preorderCON.js
    :output: show
 
 
@@ -82,6 +83,8 @@ This is called a :term:`postorder traversal`.
 
 .. inlineav:: postorderCON ss
    :long_name: Postorder Traversal Slideshow
+   :links: AV/Binary/BTCON.css
+   :scripts: AV/Binary/postorderCON.js
    :output: show
 
 
@@ -103,6 +106,8 @@ this traversal to print all nodes in ascending order of value.
 
 .. inlineav:: inorderCON ss
    :long_name: Inorder Traversal Slideshow
+   :links: AV/Binary/BTCON.css
+   :scripts: AV/Binary/inorderCON.js
    :output: show
 
 
@@ -177,8 +182,3 @@ Summary Questions
 
 .. avembed:: Exercises/Binary/TravSumm.html ka
    :long_name: Tree Traversal Summary Questions
-
-.. odsascript:: AV/Binary/BinExampCON.js
-.. odsascript:: AV/Binary/inorderCON.js
-.. odsascript:: AV/Binary/preorderCON.js
-.. odsascript:: AV/Binary/postorderCON.js

@@ -13,8 +13,6 @@
 
 .. index:: ! Mergesort
 
-.. odsalink:: AV/Development/MergeSortAnalysisCON.css
-
 Mergesort Concepts
 ==================
 
@@ -86,6 +84,8 @@ Here is a visualization for the merge operation.
 
 .. inlineav:: mergesortCON ss
    :long_name: Merging Slideshow
+   :links: AV/Sorting/mergeCON.css
+   :scripts: AV/Sorting/mergesortCON.js
    :output: show
 
 Here is a mergesort warmup exercise to practice merging.
@@ -106,7 +106,6 @@ This visualization provides a running time analysis for Merge Sort.
 
 .. inlineav:: MergeSortAnalysisCON ss
    :long_name: Mergesort Analysis Slideshow
+   :links: AV/Development/MergeSortAnalysisCON.css
+   :scripts: AV/Development/MergeSortAnalysisCON.js
    :output: show
-
-.. odsascript:: AV/Sorting/mergesortCON.js
-.. odsascript:: AV/Development/MergeSortAnalysisCON.js

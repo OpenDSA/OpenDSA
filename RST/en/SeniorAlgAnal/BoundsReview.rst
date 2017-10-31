@@ -9,8 +9,6 @@
    :satisfies:
    :topic:
 
-.. odsalink:: AV/SeniorAlgAnal/SimpleCostsCON.css
-
 Bounds Review
 =============
 
@@ -164,6 +162,8 @@ So it would be wrong to say something like
 "The best case is when :math:`n=1`."
 
 .. inlineav:: SimpleCostsCON dgm
+   :links: AV/SeniorAlgAnal/SimpleCostsCON.css
+   :scripts: AV/SeniorAlgAnal/SimpleCostsCON.js
    :output: show
 
 If we want the :term:`average-case cost <average case>`,
@@ -287,5 +287,3 @@ Or perhaps it is not.
        The average cost over all inputs?
        Regardless of which class of inputs we
        consider, all of the issues raised apply equally.
-
-.. odsascript:: AV/SeniorAlgAnal/SimpleCostsCON.js

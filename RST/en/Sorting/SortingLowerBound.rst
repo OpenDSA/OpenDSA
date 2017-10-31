@@ -11,8 +11,6 @@
 
 .. index:: ! sorting; lower bounds proof
 
-.. odsalink:: AV/Development/SortingLowerBoundCON.css
-
 Lower Bounds for Sorting
 ========================
 
@@ -133,6 +131,8 @@ sorting lower bound proof.
 
 .. inlineav:: SortingLowerBoundCON ss
    :long_name: Sorting Lower Bound Slideshow
+   :links: AV/Development/SortingLowerBoundCON.css
+   :scripts: AV/Development/SortingLowerBoundCON.js
    :output: show
 
 Any sorting algorithm requiring :math:`\Omega(n \log n)` comparisons
@@ -153,5 +153,3 @@ this proof.
 
 .. avembed:: Exercises/Sorting/SortBoundSumm.html ka
    :long_name: Lower Bounds Summary Exercise
-
-.. odsascript:: AV/Development/SortingLowerBoundCON.js

@@ -7,8 +7,6 @@
    :author: Nabanita Maji
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/NP/threeSATCON.css
-
 3-CNF Satisfiability
 ====================
 
@@ -19,12 +17,11 @@
 
 .. inlineav:: threeSATCON ss
    :long_name: 3-Satisfiability
-    :output: show
+   :links: AV/Development/NP/threeSATCON.css
+   :scripts: AV/Development/NP/threeSATCON.js
+   :output: show
 
 Try out an instance of the 3-SAT problem on your own.
 
 .. avembed:: Exercises/Development/threeSAT_KA.html ka
    :long_name: Practice Exercise for 3-SAT
-
-.. odsascript:: AV/Development/NP/threeSATCON.js
-

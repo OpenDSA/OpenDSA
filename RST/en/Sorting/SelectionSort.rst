@@ -11,8 +11,6 @@
 
 .. index:: ! Selection Sort
 
-.. odsalink:: AV/Sorting/SelectionSortAnalysisCON.css
-
 Selection Sort
 ==============
 
@@ -50,6 +48,8 @@ Consider the example of the following array.
 
 .. inlineav:: selectionsortS1CON ss
    :long_name: Selection Sort Slideshow 1
+   :links: 
+   :scripts: AV/Sorting/selectionsortS1CON.js
    :output: show
 
 Now we continue with the second pass.
@@ -58,6 +58,8 @@ we will not need to look at it again.
 
 .. inlineav:: selectionsortS2CON ss
    :long_name: Selection Sort Slideshow 2
+   :links: 
+   :scripts: AV/Sorting/selectionsortS2CON.js
    :output: show
 
 Selection Sort continues in this way until the entire array is sorted.
@@ -91,6 +93,8 @@ comparisons and swaps required by Selection Sort.
 
 .. inlineav:: SelectionSortAnalysisCON ss
    :long_name: Selection Sort Analysis Slideshow
+   :links: AV/Sorting/SelectionSortAnalysisCON.css
+   :scripts: AV/Sorting/SelectionSortAnalysisCON.js
    :output: show
 
 There is another approach to keeping the cost of swapping records low,
@@ -131,7 +135,3 @@ Selection Sort.
 
 .. avembed:: Exercises/Sorting/SelsortSumm.html ka
    :long_name: Selection Sort Summary Exercise
-
-.. odsascript:: AV/Sorting/selectionsortS1CON.js
-.. odsascript:: AV/Sorting/selectionsortS2CON.js
-.. odsascript:: AV/Sorting/SelectionSortAnalysisCON.js

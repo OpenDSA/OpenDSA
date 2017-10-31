@@ -8,8 +8,6 @@
    :satisfies: recursion intro
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recurIntroCON.css
-
 Introduction
 ============
 
@@ -90,6 +88,8 @@ the rest to some helper, as in this example.
 
 .. inlineav:: recurIntroDelegateCON ss
    :long_name: Recursion Introduction Slideshow 1
+   :links: AV/RecurTutor/recurIntroCON.css
+   :scripts: AV/RecurTutor/recurIntroDelegateCON.js
    :output: show  
 
 Let's look deeper into the details of what your friend does when
@@ -101,6 +101,8 @@ you shouldn't worry about all of these details.)
 
 .. inlineav:: recurIntroDetailsCON ss
    :long_name: Recursion Introduction Slideshow 2
+   :links: AV/RecurTutor/recurIntroCON.css
+   :scripts: AV/RecurTutor/recurIntroDetailsCON.js
    :output: show  
 
 In order to understand recursion, you need to be able to do two
@@ -109,6 +111,3 @@ First, you have to understand how to read a recursive function.
 Second, you have to understand how to write a recursive function.
 Both of these skills require a lot of practice.
 So we will give you a lot of exercises to do later on.
-
-.. odsascript:: AV/RecurTutor/recurIntroDelegateCON.js
-.. odsascript:: AV/RecurTutor/recurIntroDetailsCON.js

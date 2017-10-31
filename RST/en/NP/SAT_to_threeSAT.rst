@@ -7,8 +7,6 @@
    :author: Nabanita Maji
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/NP/SATto3SATCON.css
-
 Reduction of SAT to 3-SAT
 =========================
 
@@ -20,8 +18,8 @@ problem can be reduced to an instance of 3 CNF Satisfiability problem in
 polynomial time.
  
 .. inlineav:: SATto3SATCON ss
+   :links: AV/Development/NP/SATto3SATCON.css
+   :scripts: AV/Development/NP/SATto3SATCON.js
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 3-SAT.
-
-.. odsascript:: AV/Development/NP/SATto3SATCON.js

@@ -227,6 +227,9 @@ PointersJava: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/PointersJava_generated.json --no-lms
 
+PointersJavaP: min
+	python $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
+
 CS3_exs: min
 	python $(CONFIG_SCRIPT) config/CS3_exs.json --no-lms
 

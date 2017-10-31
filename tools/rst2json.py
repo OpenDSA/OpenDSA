@@ -402,6 +402,8 @@ def extract_sec_config(sec_json):
   '''
   sections_config = OrderedDict()
   for x in sec_json:
+    if not type(x) is OrderedDict:
+      continue
     sec_title = None
     for k, v in x.iteritems():
       if k == 'title':

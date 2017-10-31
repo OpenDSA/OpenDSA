@@ -136,6 +136,12 @@
         "sections": {}
       }
     },
+    "Properties of Regular Grammars (Lectures 7, 8)": {
+      "FormalLang/RegProp": {
+        "long_name": "Properties of Regular Grammars",
+        "sections": {}
+      }
+    },
     "Limits to Computing": {
       "SeniorAlgAnal/Impossible": {
         "long_name": "Unsolveable Problems",

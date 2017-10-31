@@ -9,8 +9,6 @@
    :satisfies: Reference parameters
    :topic: Pointers
 
-   .. odsalink:: AV/Pointers/T1-T3CON.css
-
 Reference Parameters
 ====================
 
@@ -65,6 +63,8 @@ code and the state of memory is shown for each state...
    :figwidth: 100%
 
 .. inlineav:: T1-T3CON ss
+   :links: AV/Pointers/T1-T3CON.css
+   :scripts: AV/Pointers/T1-T3CON.js
    :output: show
 
 
@@ -200,5 +200,3 @@ to the caller.
 For pass by reference, there is only one copy of the value of interest, and copyies of that references to that
 one copy are passed. So if the value of interest is an array of int, a copy of its reference parameter will
 be passed to any function instead of copying the array.
-
-.. odsascript:: AV/Pointers/T1-T3CON.js

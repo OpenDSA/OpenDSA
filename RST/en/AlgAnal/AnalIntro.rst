@@ -9,9 +9,6 @@
    :satisfies: growth rate
    :topic: Algorithm Analysis
 
-.. odsalink:: AV/AlgAnal/GrowthRatesCON.css
-.. odsalink:: AV/AlgAnal/GrowthRatesZoomCON.css
-
 Comparing Algorithms
 ====================
 
@@ -237,9 +234,13 @@ algorithms are shown.
 .. _RunTimeGraph:
 
 .. inlineav:: GrowthRatesCON dgm
+    :links: AV/AlgAnal/GrowthRatesCON.css
+    :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesCON.js
     :align: center
 
 .. inlineav:: GrowthRatesZoomCON dgm
+   :links: AV/AlgAnal/GrowthRatesZoomCON.css
+   :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesZoomCON.js
    :align: center
 
    Two views of a graph illustrating the growth rates for
@@ -351,8 +352,3 @@ Growth Rates Ordering Exercise
    with the constant values for both functions and see that this only
    changes the crossing point but doesn't change which function grows
    faster than the other.
-
-
-.. odsascript:: DataStructures/Plot.js
-.. odsascript:: AV/AlgAnal/GrowthRatesCON.js
-.. odsascript:: AV/AlgAnal/GrowthRatesZoomCON.js

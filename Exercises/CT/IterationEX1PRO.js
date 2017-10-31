@@ -7,190 +7,217 @@
   "use strict";
 
   var av, // The JSAV object
-      nullNode1, // Used to trace the node pointed by a pointer pointing null.
-      nullNode2,
-      nullNode3,
-      johnNode, // Used to trace the node pointed by 'johnRef' pointer.
-      samNode, // Used to trace the node pointed by 'samRef' pointer.
-      selected_pointer;
+      priceAnswerBox,
+      totalAnswerBox,
+      priceAnswer,
+      totalAnswer,
+      position,
+      array = [],
+      priceBoxLabel,
+      totalBoxLabel,
+      priceBox,
+      totalBox,
+      labelLeft;
 
-  var iterationEX1 = {
+  var iterationEX1PRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
 
-    // Helper function for setting pointer
-    setPointer: function(pname, newnode, oldpointer) {
-      // Click the node that the pointer is already pointing
-      if (oldpointer) {
-        if (newnode === oldpointer.target()) { return null; }
-      }
-
-      // Two pointers are already pointing the node
-      if (newnode.llist_pleft && newnode.llist_pright) { return null; }
-
-      //Create Right Pointer
-      var pointerRight = {visible: true, anchor: "right top",
-                          myAnchor: "left bottom",
-                          left: -5, top: -20};
-
-      //Create Left Pointer
-      var pointerLeft = {visible: true, anchor: "left top",
-                         myAnchor: "right bottom",
-                         left: 15, top: -20};
-
-      //Remove old pointer and copy it to create again
-      if (oldpointer) {
-        if (oldpointer.target().llist_pleft === oldpointer) {
-          oldpointer.target().llist_pleft = null;
-        } else if (oldpointer.target().llist_pright === oldpointer) {
-          oldpointer.target().llist_pright = null;
-        }
-        // Remove the old pointer
-        oldpointer.element.remove();
-        oldpointer.arrow.element.remove();
-      }
-
-      // If nothing is pointhing (left pointer is empty), insert left poitner.
-      // Otherwise, insert right pointer
-      // (when there is already left pointer for the node)
-      if (!newnode.llist_pleft) {
-        newnode.llist_pleft = newnode.jsav.pointer(pname, newnode, pointerLeft);
-        newnode.llist_pleft.click(iterationEX1.pclick);
-        return newnode.llist_pleft;
-      } else if (!newnode.llist_pright) {
-        newnode.llist_pright = newnode.jsav.pointer(pname, newnode, pointerRight);
-        newnode.llist_pright.click(iterationEX1.pclick);
-        return newnode.llist_pright;
-      }
-    },
-
-        // Handler for clicking on a pointer object
-    pclick: function(pointer) {
-      if (selected_pointer === null) { // No currently selected pointer object
-        selected_pointer = pointer;
-        selected_pointer.element.addClass("highlight");
-      } else if (selected_pointer === pointer) { // Re-clicked slected pointer
-        selected_pointer.element.removeClass("highlight");
-        selected_pointer = null;
-      } else { // pointer points another pointer
-        iterationEX1.setPointer(selected_pointer.element.text(), pointer, selected_pointer);
-        selected_pointer.element.removeClass("highlight");
-        selected_pointer = null;
-      }
-      iterationEX1.userInput = true;
-    },
-
-    clickHandler: function(){
-      if(selected_pointer !== null){ // currently a pointer object is selected
-        if(selected_pointer.target() !== this){ // pointer points another pointer
-          iterationEX1.setPointer(selected_pointer.element.text(), this, selected_pointer);
-        }
-
-          //Remove highlighter and removed from selected_pointer
-          selected_pointer.removeClass("highlight");
-          selected_pointer = null;
-      }
-      iterationEX1.userInput = true;
-    },
-
-    makenull: function(){
-      if(selected_pointer !== null){
-        var target = selected_pointer.target();
-        if(target !== nullNode1 && target != nullNode2 && target != nullNode3){ // pointer is not pointing a null.
-          if(!nullNode1.llist_pleft){
-              iterationEX1.setPointer(selected_pointer.element.text(), nullNode1, selected_pointer);
-          } else if (!nullNode2.llist_pleft){
-            iterationEX1.setPointer(selected_pointer.element.text(), nullNode2, selected_pointer);
-          } else {
-            iterationEX1.setPointer(selected_pointer.element.text(), nullNode3, selected_pointer);
+    clickbox: function(){
+      var newLabelLeft = labelLeft;
+      if(this == priceBox || this == priceBoxLabel){
+        var price = prompt("Please enter the current price.", "0");
+        if(price != ""){
+          priceBoxLabel.value(price);
+          while(price >= 10){
+            newLabelLeft -= 5.5;
+            price /= 10;
           }
+          priceBoxLabel.css({left: newLabelLeft});
         }
-          //Remove highlighter and removed from selected_pointer
-          selected_pointer.removeClass("highlight");
-          selected_pointer = null;
+      } else {
+        var total = prompt("Please enter the current total.", "0");
+        if(total != ""){
+          totalBoxLabel.value(total);
+          while(total >= 10){
+            newLabelLeft -= 5.5;
+            total /= 10;
+          }
+          totalBoxLabel.css({left: newLabelLeft});
+        }
       }
-      iterationEX1.userInput = true;
     },
+
 
       // Reinitialize the exercise.
     reset: function() {
-      // JSAV-List position.
-      var leftMargin = 70,
-          topMargin = 150;
       // Reset the value of global variables.
-      iterationEX1.userInput = false;
-      selected_pointer = null;
+      iterationEX1PRO.userInput = false;
 
       // Clear the old JSAV canvas.
-      if ($("#IterationEX1")) { $("#IterationEX1").empty(); }
+      if ($("#IterationEX1PRO")) { $("#IterationEX1PRO").empty(); }
 
       // Set up the display
-      av = new JSAV("IterationEX1");
+      av = new JSAV("IterationEX1PRO");
 
-      // Given code
-      var codes = [];
-      codes[0] = "empRef = johnRef;";
-      codes[1] = "johnRef = null;";
-      av.code(codes);
 
-      // create location values
-      var topP = topMargin;
-      var nullP = leftMargin;
-      var johnP = nullP + 170;
-      var samP = johnP + 170;
+// --------------- Create random array ----------------
+      var arraySize = 5;
+      priceAnswer = 0;
+      totalAnswer = 0;
+      for(var i = 0; i < arraySize; i++){ // Give random numbers in range 1..2
+          array[i] = Math.floor(Math.random() * 20) + 1;
+      }
 
-      // Create nodes
-      johnNode = av.ds.array(["John, 1000"], {top: topP, left: johnP});
-      samNode = av.ds.array(["Sam, 2000"], {top: topP, left: samP});
+      priceAnswer = array[position];
+      for(var i = 0; i <= position; i++){
+        totalAnswer += array[i];
+      }
 
-      //create null nodes.
-      nullNode1 = av.ds.array([""], {top: topP - 40, left: nullP});
-      nullNode2 = av.ds.array([""], {top: topP, left: nullP});
-      nullNode3 = av.ds.array([""], {top: topP + 40, left: nullP});
-      nullNode1.addClass([0], "nullBox"); //remove null node's boarder
-      nullNode2.addClass([0], "nullBox"); //remove null node's boarder
-      nullNode3.addClass([0], "nullBox"); //remove null node's boarder
 
-      // Create pointers
-      iterationEX1.setPointer("empRef", nullNode1);
-      iterationEX1.setPointer("johnRef", johnNode);
-      iterationEX1.setPointer("samRef", samNode);
+      var leftMargin = 280,
+          topMargin = 0,
+          rect_left = leftMargin - 150,
+          rect0_top = topMargin + 0,
+          rect_top = topMargin + 40,
+          topMargin = rect_top + 20;
+
+      var nodegap = 40;
+
+
+      // blue boxes, floor 1
+      var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
+      var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
+
+      // floor 2
+      av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("box");
+      av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("box"); // for no-roung on the corner
+
+      //floor 3 and the JSAV array contains array
+      av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.7});
+      av.g.rect(rect_left + 73, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.9});
+      var arr = av.ds.array(array, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
+
+      //floor 4, long purple
+      av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("box");
+
+      //floor 5, left big purple box
+      av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("box");
+      av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("box");
+
+      //mid blue/calculate boxes ( and "set total = ..." blue box )
+      var midblue1 = av.g.rect(rect_left + 130, rect_top + 120, 130, 66, 10).addClass("bluebox");
+      var midblue2 = av.g.rect(rect_left + 205, rect_top + 139, 20, 32, 15).addClass("calbox");
+      var midblue3 = av.g.rect(rect_left + 220, rect_top + 120, 100, 66, 10).addClass("calbox");
+
+      // last purple floor
+      av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("box");
+
+      // ------------------ labels ------------------------
+
+        var initlabel = av.label("set total = 0", {left: rect_left + 5, top: rect_top - 65});
+        initlabel.addClass("labels").addClass("midlabel");
+
+        var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
+        label1.addClass("labels");
+
+        var label2 = av.label("price", {left: rect_left + 19, top: rect_top + 45});
+        label2.addClass("labels");
+
+        var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
+        label3.addClass("labels");
+
+        var pricelabel = av.label("set total = total + price", {left: rect_left + 140, top: rect_top + 123});
+        pricelabel.addClass("labels");
+        pricelabel.addClass("smalllabel");
+
+        var valuelabel = av.label("", {left: rect_left + 390, top: rect_top + 111});
+        valuelabel.addClass("labels");
+        valuelabel.addClass("valuelabel");
+
+
+        // <<--------------- STATE BOX ----------------->>
+
+        //Total and Price boxes' label x position.
+        var stateX = 500;
+        var stateY = - 20;
+        var stateLabel = av.label("STATE", {left: stateX, top: stateY});
+
+        labelLeft = stateX + 25;
+
+        stateLabel.addClass("statelabel");
+
+        var stateBox = av.g.rect(stateX - 25, stateY + 50, 110, 280).addClass("statebox");
+
+        // price box and label
+        av.label("PRICE", {left: stateX + 5, top: stateY + 65});
+        stateLabel.addClass("statelabel");
+
+        priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
+
+        priceBoxLabel = av.label("click", {left: labelLeft - 19, top: stateY + 105});
+        priceBoxLabel.addClass("labels");
+        priceBoxLabel.addClass("midlabel");
+
+        // priceAnswerBox.style.position = 'relative';
+        // priceAnswerBox.style.left = stateX + 23;
+        // priceAnswerBox.style.top = stateY + 100;
+
+        // total box and label
+        av.label("TOTAL", {left: stateX + 5, top: stateY + 180});
+        stateLabel.addClass("statelabel");
+
+        totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
+
+        totalBoxLabel = av.label("click", {left: labelLeft - 19, top: stateY + 220});
+        totalBoxLabel.addClass("labels");
+        totalBoxLabel.addClass("midlabel");
+
+
+
+
+        priceBox.click(iterationEX1PRO.clickbox);
+        totalBox.click(iterationEX1PRO.clickbox);
+        priceBoxLabel.element.click(iterationEX1PRO.clickbox);
+        totalBoxLabel.element.click(iterationEX1PRO.clickbox);
+
+
+// --------------- Move array to the right position
+      var nextleft = leftMargin - 120;
+      var nodegap = 40;
+
+        for(var i = 0; i < position; i++){
+              nextleft -= nodegap;
+        }
+        arr.css({left: nextleft});
 
       av.displayInit();
       av.recorded();
 
-      // Set up the click handlers for each nodes
-      johnNode.click(iterationEX1.clickHandler);
-      samNode.click(iterationEX1.clickHandler);
     },
 
     // Initialise the exercise
-    initJSAV: function() {
-      iterationEX1.reset();
+    initJSAV: function(pos) {
+      position = pos;
+      priceAnswerBox = document.getElementById('priceAnswerBox');
+      totalAnswerBox = document.getElementById('totalAnswerBox');
+
+      iterationEX1PRO.reset();
 
       // Set up handler for reset button
       $("#reset").click(function() {
-        iterationEX1.reset();
+        iterationEX1PRO.reset();
       });
-
-      // Set up handler for makenull button
-      $("#makenull").click(function() {
-        iterationEX1.makenull();
-      });
-
     },
 
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function() {
-      if(nullNode1.llist_pleft.element.text() !== "johnRef"){
-        return false;
-      } else if(johnNode.llist_pright.element.text() !== "empRef"){
-        return false;
-      } else if (samNode.llist_pleft.element.text() != "samRef"){
-        return false;
+      if(priceAnswerBox.value == priceAnswer && totalAnswerBox.value == totalAnswer){
+        return true;
       }
-      return true;
+      // alert(priceAnswer + ", " + totalAnswer);
+      return priceBoxLabel.value() == priceAnswer && totalBoxLabel.value() == totalAnswer;
     },
   };
 
-  window.iterationEX1 = window.iterationEX1 || iterationEX1;
+  window.iterationEX1PRO = window.iterationEX1PRO || iterationEX1PRO;
 }());

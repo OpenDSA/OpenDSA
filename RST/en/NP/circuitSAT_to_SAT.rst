@@ -7,8 +7,6 @@
    :author: Nabanita Maji
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/NP/circuitSATtoSATCON.css
-
 Reduction of Circuit SAT to SAT
 ===============================
 
@@ -20,9 +18,8 @@ problem can be reduced to an instance of SAT problem in polynomial time.
  
 .. inlineav:: circuitSATtoSATCON ss
    :long_name: Circuit SAT to SAT
+   :links: AV/Development/NP/circuitSATtoSATCON.css
+   :scripts: AV/Development/NP/circuit/circuit.js AV/Development/NP/circuitSATtoSATCON.js
    :output: show
 
 This reduction can help in providing an NP Completeness proof for SAT.
-
-.. odsascript:: AV/Development/NP/circuit/circuit.js
-.. odsascript:: AV/Development/NP/circuitSATtoSATCON.js

@@ -11,8 +11,6 @@
 
 .. index:: ! collision resolution
 
-.. odsalink:: AV/Hashing/linProbeCON.css
-
 Collision Resolution
 ====================
 
@@ -116,6 +114,8 @@ returns to the home position.
 
 .. inlineav:: linProbeCON1 ss
    :long_name: Linear Probing Slideshow 1
+   :links: AV/Hashing/linProbeCON.css
+   :scripts: AV/Hashing/linProbeCON1.js
    :output: show
 
 Can you see any reason why this might not be the best approach
@@ -136,6 +136,8 @@ The main problem is illustrated by the next slideshow.
 
 .. inlineav:: linProbeCON2 ss
    :long_name: Linear Probing Slideshow 2
+   :links: AV/Hashing/linProbeCON.css
+   :scripts: AV/Hashing/linProbeCON2.js
    :output: show
 
 Again, the ideal behavior for a collision resolution mechanism is that
@@ -151,6 +153,3 @@ long probe sequences.
 
 .. avembed:: Exercises/Hashing/HashLinearPPRO.html ka
    :long_name: Linear Probing Proficiency Exercise
-
-.. odsascript:: AV/Hashing/linProbeCON1.js
-.. odsascript:: AV/Hashing/linProbeCON2.js

@@ -7,8 +7,6 @@
    :author: Nabanita Maji
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/NP/TSPCON.css
-
 The Traveling Salesman Problem
 ==============================
 
@@ -19,11 +17,11 @@ TRAVELING SALESMAN PROBLEM (TSP)
 
 .. inlineav:: TSPCON ss
    :long_name: Traveling Salesman
+   :links: AV/Development/NP/TSPCON.css
+   :scripts: AV/Development/NP/TSPCON.js
    :output: show
 
 Try out an instance of the Traveling Salesman problem on your own.
 
 .. avembed:: Exercises/Development/TSP_KA.html ka
    :long_name: Practice Exercise for Traveling Salesman Problem
-
-.. odsascript:: AV/Development/NP/TSPCON.js

@@ -9,9 +9,6 @@
    :satisfies: recurrence
    :topic: Math Background
 
-.. odsalink:: AV/Background/LinearRecurrencesCON.css
-.. odsalink:: AV/Background/LinearRecurrencesNCON.css
-
 Recurrence Relations
 ====================
 
@@ -74,6 +71,8 @@ definition.
 
 .. inlineav:: LinearRecurrencesCON ss
    :long_name: Linear Recurrences Slideshow
+   :links: AV/Background/LinearRecurrencesCON.css
+   :scripts: AV/Background/LinearRecurrencesCON.js
    :output: show
 
 
@@ -87,7 +86,6 @@ Again, we will use expansion to help us find a closed form solution.
 
 .. inlineav:: LinearRecurrencesNCON ss
    :long_name: Linear Recurrences Slideshow (n)
+   :links: AV/Background/LinearRecurrencesNCON.css
+   :scripts: AV/Background/LinearRecurrencesNCON.js
    :output: show
-
-.. odsascript:: AV/Background/LinearRecurrencesCON.js
-.. odsascript:: AV/Background/LinearRecurrencesNCON.js

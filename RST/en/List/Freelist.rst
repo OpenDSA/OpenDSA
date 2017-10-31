@@ -8,8 +8,6 @@
    :requires: linked list
    :satisfies: freelist
    :topic: Lists
-   
-.. odsalink:: AV/List/listFreeCON.css
 
 Freelists
 =========
@@ -47,6 +45,8 @@ an application of a :ref:`linked stack <linked stack> <StackLinked>`.
 
 .. inlineav:: listFreeCON ss
    :long_name: Freelist Slideshow 1
+   :links: AV/List/listFreeCON.css
+   :scripts: AV/List/llist.js AV/List/listFreeCON.js
    :output: show
 
 Freelists are particularly useful for linked lists that periodically
@@ -98,6 +98,3 @@ collection time.
 
 .. [#] A language like C++ could use operator overloading to redefine
    the ``new`` and ``delete`` operators.
-
-.. odsascript:: AV/List/llist.js
-.. odsascript:: AV/List/listFreeCON.js

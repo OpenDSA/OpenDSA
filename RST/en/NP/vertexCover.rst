@@ -7,8 +7,6 @@
    :author: Nabanita Maji
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/NP/vertexCoverCON.css
-
 The Vertex Cover Problem
 ========================
 
@@ -19,11 +17,11 @@ THE VERTEX COVER PROBLEM.
 
 .. inlineav:: vertexCoverCON ss
    :long_name: Vertex Cover
+   :links: AV/Development/NP/vertexCoverCON.css
+   :scripts: AV/Development/NP/vertexCoverCON.js
    :output: show
 
 Try out an instance of the Vertex Cover problem on your own.
 
 .. avembed:: Exercises/Development/vertexCover_KA.html ka
    :long_name: Practice Exercise for Vertex Cover
-
-.. odsascript:: AV/Development/NP/vertexCoverCON.js

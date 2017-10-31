@@ -1,11 +1,64 @@
 /*global ODSA */
 // Written by Jieun Chon
 //Array-Based list introduction
+
+
+var it1_midblue1,
+    it1_midblue2,
+    it1_midblue3;
+
 $(document).ready(function() {
   "use strict";
   var arrValues = [4, 13, 6, 9, 11];
   var av_name = "iteration1CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
+
+  //blueStepAnim :This should come before JSAV Initialize
+      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep() {
+      if (this._shouldAnimate()) {
+
+          //  midblue 1 start
+          it1_midblue1.addClass("blueboxh", {record: false});
+          setTimeout(function() {
+            it1_midblue1.removeClass("blueboxh", {record: false});
+
+              // midblue 2 animation start -----------------
+              setTimeout(function() {
+                it1_midblue2.addClass("blueboxh", {record: false});
+                setTimeout(function() {
+                  it1_midblue2.removeClass("blueboxh", {record: false});
+
+                  // midblue 3 animation start -----------------
+                  setTimeout(function() {
+                    it1_midblue3.addClass("blueboxh", {record: false});
+                    setTimeout(function() {
+                      it1_midblue3.removeClass("blueboxh", {record: false});
+                    }, 200);
+                  }, 200);
+                  // midblue 3 animation close ---------------------
+
+                }, 200);
+              }, 200);
+              // midblue 2 animation close
+
+          }, 200);
+
+      }
+    }, function undoBlueStep() {});
+    // BlueStepAnim END -----------------------------------------------
+
+
+    //BlueStepAnim :This should come before JSAV Initialize
+        JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item) {
+        if (this._shouldAnimate()) {
+            item.addClass("blueboxh", {record: false});
+            setTimeout(function() {
+              item.removeClass("blueboxh", {record: false});
+            }, 200);
+        }
+      }, function undoBlueStep(item) {});
+      // BlueStepAnim END -----------------------------------------------
+
   var av = new JSAV(av_name);
   var leftMargin = 450,
       rect_left = 300,
@@ -40,9 +93,9 @@ $(document).ready(function() {
   //floor 5, right big putple box below blue boxes
   av.g.rect(rect_left + 90, rect_top + 200, 230, 50, 10).addClass("box");
 
-  var midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
-  var midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
-  var midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
+  it1_midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
+  it1_midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
+  it1_midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
 
 // create labels
   var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
@@ -63,12 +116,6 @@ $(document).ready(function() {
   var ipline = av.g.line(rect_left - 40, rect_top + 150, rect_left + 5, rect_top + 110, {'arrow-end': 'classic-wide-long', 'stroke-width': 3});
   ipline.addClass("hiding");
 
-
-// --------------- highlight function for single bluebox -------
-
-  function blink(it) {
-      it.addClass("blueboxhigh");
-}
 // ------------------- slide show start -------------------------
 
   // Slide 1
@@ -85,7 +132,7 @@ $(document).ready(function() {
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  blink(topblue);
+  av.bluehigh(topblue);
   av.step();
 
   // Slide 4
@@ -96,87 +143,61 @@ $(document).ready(function() {
 
   // Slide 5
   av.umsg(interpret("sc5"));
-  midblue1.addClass("midblue1high");
-  midblue2.addClass("midblue2high");
-  midblue3.addClass("midblue3high");
+  av.blueStepAnim();
   av.step();
 
   // Slide 6
   av.umsg(interpret("sc6"));
   arr.css({left: nextleft});
-  midblue1.removeClass("midblue1high");
-  midblue2.removeClass("midblue2high");
-  midblue3.removeClass("midblue3high");
   nextleft -= nodegap;
   av.step();
 
   // Slide 7
   av.umsg(interpret("sc7"));
-  midblue1.addClass("midblue1high");
-  midblue2.addClass("midblue2high");
-  midblue3.addClass("midblue3high");
+  av.blueStepAnim();
   av.step();
 
   // Slide 8
   av.umsg(interpret("sc8"));
   arr.css({left: nextleft});
-  midblue1.removeClass("midblue1high");
-  midblue2.removeClass("midblue2high");
-  midblue3.removeClass("midblue3high");
   nextleft -= nodegap;
   av.step();
 
   // Slide 9
   av.umsg(interpret("sc9"));
-  midblue1.addClass("midblue1high");
-  midblue2.addClass("midblue2high");
-  midblue3.addClass("midblue3high");
+  av.blueStepAnim();
   av.step();
 
   // Slide 10
   av.umsg(interpret("sc10"));
   arr.css({left: nextleft});
-  midblue1.removeClass("midblue1high");
-  midblue2.removeClass("midblue2high");
-  midblue3.removeClass("midblue3high");
   nextleft -= nodegap;
   av.step();
 
   // Slide 11
   av.umsg(interpret("sc11"));
-  midblue1.addClass("midblue1high");
-  midblue2.addClass("midblue2high");
-  midblue3.addClass("midblue3high");
+  av.blueStepAnim();
   av.step();
 
   // Slide 12
   av.umsg(interpret("sc12"));
   arr.css({left: nextleft});
-  midblue1.removeClass("midblue1high");
-  midblue2.removeClass("midblue2high");
-  midblue3.removeClass("midblue3high");
   nextleft -= (nodegap + 50);
   av.step();
 
   // Slide 13
   av.umsg(interpret("sc13"));
-  midblue1.addClass("midblue1high");
-  midblue2.addClass("midblue2high");
-  midblue3.addClass("midblue3high");
+  av.blueStepAnim();
   av.step();
 
   // Slide 14
   av.umsg(interpret("sc14"));
   arr.css({left: nextleft});
-  midblue1.removeClass("midblue1high");
-  midblue2.removeClass("midblue2high");
-  midblue3.removeClass("midblue3high");
   nextleft -= (nodegap + 100);
   av.step();
 
-
   // Slide 15
   av.umsg(interpret("sc15"));
-  blink(botblue);
+  av.bluehigh(botblue);
   av.recorded();
 });

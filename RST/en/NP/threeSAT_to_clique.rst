@@ -7,8 +7,6 @@
    :author: Nabanita Maji
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/NP/threeSATtoCliqueCON.css
-
 Reduction of 3-SAT to Clique
 ============================
 
@@ -20,9 +18,9 @@ problem can be reduced to an instance of Clique problem in
 polynomial time.
  
 .. inlineav:: threeSATtoCliqueCON ss
+   :links: AV/Development/NP/threeSATtoCliqueCON.css
+   :scripts: AV/Development/NP/threeSATtoCliqueCON.js
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 
 the Clique problem.
-
-.. odsascript:: AV/Development/NP/threeSATtoCliqueCON.js

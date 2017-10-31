@@ -9,8 +9,6 @@
    :satisfies: queue; array-based queue
    :topic: Lists
 
-.. odsalink:: AV/List/aqueueCON.css
-
 Queues
 ======
 
@@ -50,18 +48,24 @@ efficient.
 
 .. inlineav:: aqueueFirstCON ss
    :long_name: Array-based Queue Positions Slideshow
+   :links: AV/List/aqueueCON.css
+   :scripts: AV/List/aqueueFirstCON.js
    :output: show
 
 |
 
 .. inlineav:: aqueueDriftCON ss
    :long_name: Array-based Queue Drift Slideshow
+   :links: AV/List/aqueueCON.css
+   :scripts: AV/List/aqueueDriftCON.js
    :output: show
 
 |
 
 .. inlineav:: aqueueBadCON ss
    :long_name: Array-based Queue Bad Representation Slideshow
+   :links: AV/List/aqueueCON.css
+   :scripts: AV/List/aqueueBadCON.js
    :output: show
 
 
@@ -70,12 +74,16 @@ The Circular Queue
 
 .. inlineav:: aqueueCircularCON ss
    :long_name: Circular Array-based Queue Slideshow
+   :links: AV/List/aqueueCON.css
+   :scripts: DataStructures/CircularQueue.js AV/List/aqueueCircularCON.js
    :output: show
 
 |
 
 .. inlineav:: aqueueEmptyCON ss
    :long_name: Empty Circular Array-based Queue Slideshow
+   :links: AV/List/aqueueCON.css
+   :scripts: DataStructures/CircularQueue.js AV/List/aqueueEmptyCON.js
    :output: show
 
 If the value of ``front`` is fixed, then :math:`n+1` different
@@ -112,6 +120,8 @@ Array-based Queue Implementation
 
 .. inlineav:: aqueueVarCON ss
    :long_name: Array-based Queue Variables Slideshow
+   :links: AV/List/aqueueCON.css
+   :scripts: AV/List/aqueueVarCON.js
    :output: show
 
 In this implementation, the front of the queue is defined to be toward
@@ -131,11 +141,3 @@ Array-based Dequeue Practice
 
 .. avembed:: Exercises/List/AqueueDequeuePRO.html ka
    :long_name: Array-based Queue Dequeue Exercise
-
-.. odsascript:: DataStructures/CircularQueue.js
-.. odsascript:: AV/List/aqueueFirstCON.js
-.. odsascript:: AV/List/aqueueDriftCON.js
-.. odsascript:: AV/List/aqueueBadCON.js
-.. odsascript:: AV/List/aqueueCircularCON.js
-.. odsascript:: AV/List/aqueueEmptyCON.js
-.. odsascript:: AV/List/aqueueVarCON.js

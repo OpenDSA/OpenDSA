@@ -8,8 +8,6 @@
    :requires: collision resolution
    :topic: Hashing
 
-.. odsalink:: AV/Hashing/collisionCON.css
-
 Improved Collision Resolution
 =============================
 
@@ -28,6 +26,8 @@ same probe sequence.
 
 .. inlineav:: collisionCON1 ss
    :long_name: Linear Probing By Steps Slideshow 1
+   :links: AV/Hashing/collisionCON.css
+   :scripts: AV/Hashing/collisionCON1.js
    :output: show
 
 One quality of a good probe sequence is that it will cycle through
@@ -64,6 +64,8 @@ probe sequence that visits all slots for every key.
 
 .. inlineav:: collisionCON2 ss
    :long_name: Linear Probing By Steps Slideshow 2
+   :links: AV/Hashing/collisionCON.css
+   :scripts: AV/Hashing/collisionCON2.js
    :output: show
 
 Now you can practice linear probing by different step sizes.
@@ -114,6 +116,8 @@ random permutation of the values from 1 to :math:`M - 1` in slots 1 to
 
 .. inlineav:: collisionCON3 ss
    :long_name: Pseudo-Random Probing Slideshow
+   :links: AV/Hashing/collisionCON.css
+   :scripts: AV/Hashing/collisionCON3.js
    :output: show
 
 Here is a practice exercise for pseudo-random probing.
@@ -126,6 +130,8 @@ function.
 
 .. inlineav:: collisionCON4 ss
    :long_name: Avoiding the Train
+   :links: AV/Hashing/collisionCON.css
+   :scripts: AV/Hashing/collisionCON4.js
    :output: show
 
 
@@ -148,6 +154,8 @@ Then the :math:`i` th value in the probe sequence would be
 
 .. inlineav:: collisionCON5 ss
    :long_name: Quadratic Probing Slideshow
+   :links: AV/Hashing/collisionCON.css
+   :scripts: AV/Hashing/collisionCON5.js
    :output: show
 
 Now you can practice quadratic probing.
@@ -160,6 +168,8 @@ typically will not visit all slots in the hash table.
 
 .. inlineav:: collisionCON6 ss
    :long_name: Quadratic Probing Problem
+   :links: AV/Hashing/collisionCON.css
+   :scripts: AV/Hashing/collisionCON6.js
    :output: show
 
 
@@ -246,12 +256,16 @@ We can get that result with this secondary hash function:
 
 .. inlineav:: collisionCON7 ss
    :long_name: Double Hashing Slideshow 2
+   :links: AV/Hashing/collisionCON.css
+   :scripts: AV/Hashing/collisionCON7.js
    :output: show
 
 |
 
 .. inlineav:: collisionCON8 ss
    :long_name: Double Hashing Slideshow 3
+   :links: AV/Hashing/collisionCON.css
+   :scripts: AV/Hashing/collisionCON8.js
    :output: show
 
 
@@ -302,12 +316,3 @@ Now you can try it.
        bits, meaning that the max key value should be at least the
        square of the hash table size.
        This is not a problem for typical hashing applications.
-
-.. odsascript:: AV/Hashing/collisionCON1.js
-.. odsascript:: AV/Hashing/collisionCON2.js
-.. odsascript:: AV/Hashing/collisionCON3.js
-.. odsascript:: AV/Hashing/collisionCON4.js
-.. odsascript:: AV/Hashing/collisionCON5.js
-.. odsascript:: AV/Hashing/collisionCON6.js
-.. odsascript:: AV/Hashing/collisionCON7.js
-.. odsascript:: AV/Hashing/collisionCON8.js

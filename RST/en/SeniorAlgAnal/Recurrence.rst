@@ -5,8 +5,6 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   
-.. odsalink:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.css
 
 Solving Recurrence Relations
 ============================
@@ -367,6 +365,8 @@ A more complex example is given next.
    
 .. inlineav:: DivideAndConquerRecurrencesCON ss
    :long_name: Divide-and-Conquer Expansion Slideshow
+   :links: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.css
+   :scripts: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.js
    :output: show
 
 .. topic:: Example
@@ -633,5 +633,3 @@ for :math:`{\cal H}_{n+1}`, the Harmonic Series.
 From Equation (10) of Module :ref`summation <summation> <Summation>`,
 :math:`{\cal H}_{n+1} = \Theta(\log n)`,
 so the final solution is :math:`\Theta(n \log n)`.
-
-.. odsascript:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.js

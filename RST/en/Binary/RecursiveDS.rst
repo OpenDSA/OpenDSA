@@ -8,8 +8,6 @@
    :satisfies: binary tree as a recursive data Structures
    :topic: Binary Tree as a Recursive Data Structures
 
-.. odsalink:: AV/Binary/RecursiveDSCON.css
-
 Binary Tree as a Recursive Data Structure
 =========================================
 
@@ -31,12 +29,16 @@ other one its right child.
 .. _ListRecDS:
 
 .. inlineav:: ListRecDSCON dgm
+   :links: AV/Binary/RecursiveDSCON.css
+   :scripts: AV/Binary/ListRecDSCON.js
    :align: justify
 
 
 .. _BinRecDS:
 
 .. inlineav:: BinRecDSCON dgm
+   :links: AV/Binary/RecursiveDSCON.css
+   :scripts: AV/Binary/BinRecDSCON.js
    :align: justify
    
 The recursive relationships used to define a structure provide a
@@ -44,8 +46,6 @@ natural model for any recursive algorithm on the structure.
 
 .. inlineav:: SumBinaryTreeCON ss
    :long_name: Sum values in a Binary Tree Slide Show
+   :links: AV/Binary/RecursiveDSCON.css
+   :scripts: AV/Binary/SumBinaryTreeCON.js
    :output: show
-
-.. odsascript:: AV/Binary/ListRecDSCON.js
-.. odsascript:: AV/Binary/BinRecDSCON.js
-.. odsascript:: AV/Binary/SumBinaryTreeCON.js

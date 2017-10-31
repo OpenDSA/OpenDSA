@@ -7,9 +7,7 @@
    :author: Cliff Shaffer
    :requires: disk drives
    :satisfies: buffer pool
-   :topic: File Processing
-
-.. odsalink:: AV/Files/buffpoolCON.css      
+   :topic: File Processing  
 
 Buffer Pools
 ============
@@ -115,6 +113,8 @@ than requiring new information to be read from disk.
 .. inlineav:: buffintroCON ss
    :long_name: Buffer Pool Introduction Slideshow
    :align: center
+   :links: AV/Files/buffpoolCON.css 
+   :scripts: AV/Files/buffintroCON.js
    :output: show
 
 
@@ -189,6 +189,8 @@ suggests a special-purpose buffer management scheme.
 .. inlineav:: LRUCON ss
    :long_name: LRU Replacement Slideshow
    :align: center
+   :links: AV/Files/buffpoolCON.css 
+   :scripts: AV/Files/LRUCON.js
    :output: show
 
 
@@ -219,6 +221,8 @@ written to disk if and only if the dirty bit has been turned on.
 .. inlineav:: LRUwriteCON ss
    :long_name: LRU Replacement with write Slideshow
    :align: center
+   :links: AV/Files/buffpoolCON.css 
+   :scripts: AV/Files/LRUwriteCON.js
    :output: show
 
 Modern operating systems support :term:`virtual memory`.
@@ -435,7 +439,3 @@ transferred to the backing storage.
 This is in contrast to the :ref:`memory manager <MemmanIntro>`, in
 which the user passes a record to the manager and has no control at
 all over where the record is stored.
-
-.. odsascript:: AV/Files/buffintroCON.js
-.. odsascript:: AV/Files/LRUCON.js
-.. odsascript:: AV/Files/LRUwriteCON.js

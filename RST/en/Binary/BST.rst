@@ -9,8 +9,6 @@
    :satisfies: BST
    :topic: Binary Trees
 
-.. odsalink:: AV/Binary/BSTCON.css
-
 Binary Search Trees
 ===================
 
@@ -81,6 +79,8 @@ subroutine and is implemented as follows.
 
 .. inlineav:: BSTsearchCON ss
    :long_name: BST Search Slideshow
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTsearchCON.js
    :output: show
 
 .. avembed:: AV/Binary/BSTsearchPRO.html pe
@@ -94,6 +94,8 @@ Now we look at how to insert a new node into the BST.
 
 .. inlineav:: BSTinsertCON ss
    :long_name: BST Insert Slideshow
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTinsertCON.js
    :output: show
 
 Note that, except for the last node in the path, ``inserthelp``
@@ -145,6 +147,8 @@ This routine will be used later by the general node removal function.
 
 .. inlineav:: BSTdeletemaxCON ss
    :long_name: BST deletemax Slideshow
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTdeletemaxCON.js
    :output: show
 
 The return value of the ``deletemax`` method is the subtree of
@@ -190,6 +194,8 @@ then the BST property is maintained.
 
 .. inlineav:: BSTremoveCON ss
    :long_name: BST remove Slideshow
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTremoveCON.js
    :output: show
 
 When duplicate node values do not appear in the tree, it makes no
@@ -271,8 +277,3 @@ remain balanced, such as the :ref:`2-3 Tree <2-3 tree> <TwoThreeTree>`.
 
 .. avembed:: Exercises/Binary/BSTSumm.html ka
    :long_name: BST Question Summary
-
-.. odsascript:: AV/Binary/BSTsearchCON.js
-.. odsascript:: AV/Binary/BSTinsertCON.js
-.. odsascript:: AV/Binary/BSTdeletemaxCON.js
-.. odsascript:: AV/Binary/BSTremoveCON.js

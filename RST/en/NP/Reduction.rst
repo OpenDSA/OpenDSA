@@ -7,8 +7,6 @@
    :author: Cliff Shaffer
    :topic: Reductions
 
-.. odsalink:: AV/SeniorAlgAnal/ReduceSimpPCON.css
-
 Reductions
 ==========
 
@@ -434,6 +432,8 @@ in the array to be sorted with a corresponding point defined as
    \{(x_1, \sqrt{M^2 - x_i^2}), \cdots, (x_n, \sqrt{M^2 - x_n^2})\}.
 
 .. inlineav:: ReduceSimpPCON dgm
+   :links: AV/SeniorAlgAnal/ReduceSimpPCON.css
+   :scripts: AV/SeniorAlgAnal/ReduceSimpPCON.js
    :align: center
 
    Input to SORTING: the values 5, -3, 2, 0, 10.
@@ -447,7 +447,3 @@ the only simple polygon having all of its points on :math:`C` as
 vertices is the convex one.
 Therefore, by the Lower Bound Theorem, SIMPLE POLYGON is in
 :math:`\Omega(n \log n)`.
-
-
-
-.. odsascript:: AV/SeniorAlgAnal/ReduceSimpPCON.js

@@ -8,8 +8,6 @@
    :requires: indexing
    :satisfies: linear indexing
    :topic: Indexing
-   
-.. odsalink:: AV/Indexing/linearIndexingCON.css
 
 Linear Indexing
 ===============
@@ -37,6 +35,8 @@ database records, because it is amenable to
 
 .. inlineav:: varindexCON ss
    :long_name: Simple linear index Slideshow
+   :links: AV/Indexing/linearIndexingCON.css
+   :scripts: AV/Indexing/varindexCON.js
    :output: show
 
 If the database contains enough records, the linear index might
@@ -78,6 +78,8 @@ record.
 
 .. inlineav:: linindexCON ss
    :long_name: Two-level linear index Slideshow
+   :links: AV/Indexing/linearIndexingCON.css
+   :scripts: AV/Indexing/linindexCON.js
    :output: show
    :align: justify
 
@@ -209,6 +211,3 @@ this a good implementation for disk-based inverted files.
    in the primary key array.
    The ``next`` field of the primary key array indicates the next
    record with that secondary key value.
-   
-.. odsascript:: AV/Indexing/varindexCON.js
-.. odsascript:: AV/Indexing/linindexCON.js

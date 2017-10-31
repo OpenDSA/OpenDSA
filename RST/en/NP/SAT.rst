@@ -7,8 +7,6 @@
    :author: Nabanita Maji
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/NP/SATCON.css
-
 Formula Satisfiability
 ======================
 
@@ -19,6 +17,6 @@ FORMULA SATISFIABILITY PROBLEM (SAT)
 
 .. inlineav:: SATCON ss
    :long_name: Formula Satisfiability
+   :links: AV/Development/NP/SATCON.css
+   :scripts: AV/Development/NP/SATCON.js
    :output: show
-
-.. odsascript:: AV/Development/NP/SATCON.js

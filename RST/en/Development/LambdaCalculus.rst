@@ -79,6 +79,8 @@ To illustrate the difference between free and bound variables.
 .. Slideshow for Free/Bound Vars
 
 .. inlineav:: FreeBoundCON ss
+   :links: 
+   :scripts: AV/Development/FreeBoundCON.js
    :output: show
 
 Note that it is possible for a variable to occur both free and bound
@@ -155,6 +157,8 @@ simply replace each free occurrence of p (the formal parameter) in b (the "body"
 .. Slideshow for Alpha Conversion
 
 .. inlineav:: AlphaConversionCON ss
+   :links: 
+   :scripts: AV/Development/AlphaConversionCON.js
    :output: show
 
 Practice alpha conversion with the following exercise:
@@ -204,6 +208,8 @@ from, we select the leftmost innermost beta-redex first.  Consider:
 .. Slideshow for Applicative order
 
 .. inlineav:: BetaAppCON ss
+   :links: 
+   :scripts: AV/Development/BetaAppCON.js
    :output: show
 
 Practice an applicative order reduction in the following exercise:
@@ -235,6 +241,8 @@ the following example:
 .. Slideshow for Normal Order
 
 .. inlineav:: BetaNormCON ss
+   :links: 
+   :scripts: AV/Development/BetaNormCON.js
    :output: show
 
 
@@ -260,11 +268,3 @@ As a final test of your proficiency in doing beta reductions, try doing
 2. All the steps in a complete normal order reduction
 
 .. avembed:: AV/Development/BetaNormPro.html pe
-
-.. odsascript:: AV/Development/FreeBoundCON.js
-
-.. odsascript:: AV/Development/AlphaConversionCON.js
-
-.. odsascript:: AV/Development/BetaAppCON.js
-
-.. odsascript:: AV/Development/BetaNormCON.js

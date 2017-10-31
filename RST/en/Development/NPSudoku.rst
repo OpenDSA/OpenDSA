@@ -9,8 +9,6 @@
    :satisfies:
    :topic: NP Completeness
 
-.. odsalink:: AV/Development/Sudoku.css
-
 The class NP
 ============
 
@@ -41,6 +39,8 @@ the slideshow buttons to see the series of six logical implications
 that will lead us to complete the leftmost topmost sub-square).
 
 .. inlineav:: Sudoku1CON ss
+   :links: AV/Development/Sudoku.css
+   :scripts: AV/Development/Sudoku1CON.js
    :output: show
 
 The current configuration can be completely filled by making use of
@@ -51,6 +51,8 @@ happens in the following example (click on the slideshow buttons to
 see all possible digit candidates for each empty cell). 
 
 .. inlineav:: Sudoku2CON ss
+   :links: AV/Development/Sudoku.css
+   :scripts: AV/Development/Sudoku2CON.js
    :output: show
 
 In these cases, the player can only try to set the content of a cell
@@ -80,6 +82,8 @@ easily verified (click on the slideshow buttons to see which cells are
 analyzed in order to verify the correctness of one cell). 
 
 .. inlineav:: Sudoku3CON ss
+   :links: AV/Development/Sudoku.css
+   :scripts: AV/Development/Sudoku3CON.js
    :output: show
 
 
@@ -175,7 +179,3 @@ the computation of :math:`P` with input :math:`x`.
 Whether this inclusion is strict is one of the most important open
 problems in theoretical computer science (and, more generally, in
 mathematics).
-
-.. odsascript:: AV/Development/Sudoku1CON.js
-.. odsascript:: AV/Development/Sudoku2CON.js
-.. odsascript:: AV/Development/Sudoku3CON.js

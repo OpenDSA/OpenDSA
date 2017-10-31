@@ -9,11 +9,6 @@
    :satisfies: Heap Memory
    :topic: Pointers
 
-.. odsalink:: AV/Pointers/garbageDisposalCON.css
-.. odsalink:: AV/Pointers/LocalHeapaloc.css
-.. odsalink:: AV/Pointers/LocalHeapdealoc.css
-.. odsalink:: AV/Pointers/LocalHeapintptr42.css
-
 
 Heap Memory
 ===========
@@ -127,6 +122,8 @@ from heap memory by garbage collection:
   .. codeinclude:: Pointers/Date
 
 .. inlineav:: garbageDisposalCON ss
+   :links: AV/Pointers/garbageDisposalCON.css
+   :scripts: AV/Pointers/garbageDisposalCON.js
    :output: show
 
 
@@ -149,6 +146,8 @@ to hold three separate GIF images in the heap, each of which takes
 After the three allocation requests, memory might look like.
 
 .. inlineav:: LocalHeapaloc dgm
+   :links: AV/Pointers/LocalHeapaloc.css
+   :scripts: AV/Pointers/LocalHeapaloc.js
 
 Each allocation request reserves a contiguous area of the requested
 size in the heap and returns a reference to that new block to the
@@ -194,6 +193,8 @@ Here's what the heap would look like if the garbage collection
 deallocates the second of the three blocks.
 
 .. inlineav:: LocalHeapdealoc dgm
+   :links: AV/Pointers/LocalHeapdealoc.css
+   :scripts: AV/Pointers/LocalHeapdealoc.js
 
 After deallocation, the reference continues to point to the now
 deallocated block.
@@ -262,6 +263,8 @@ A Simple Heap Example
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: LocalHeapintptr42 ss
+   :links: AV/Pointers/LocalHeapintptr42.css
+   :scripts: AV/Pointers/LocalHeapintptr42.js
    :output: show
 
 
@@ -306,7 +309,3 @@ has to wait when the garbage collector runs.
 The heap memory does not operate automatically
 and conveniently the way local memory does.
 
-.. odsascript:: AV/Pointers/garbageDisposalCON.js
-.. odsascript:: AV/Pointers/LocalHeapaloc.js
-.. odsascript:: AV/Pointers/LocalHeapdealoc.js
-.. odsascript:: AV/Pointers/LocalHeapintptr42.js

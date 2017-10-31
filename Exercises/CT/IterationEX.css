@@ -1,0 +1,69 @@
+#IterationEX1PRO  .jsavnode {
+  min-width: 40px !important;
+  min-height: 40px !important;
+  background: #74a55b;
+}
+
+#IterationEX1PRO  .jsavvaluelabel {
+  font-weight: 600;
+}
+
+#IterationEX1PRO  .labels  {
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 170%;
+  z-index: 500;
+  font-weight: 600;
+}
+
+#IterationEX1PRO .midlabel {
+  font-size: 150%;
+}
+
+#IterationEX1PRO .smalllabel {
+ font-size: 120%;
+}
+
+#IterationEX1PRO .statelabel  {
+ font-size: 120%;
+ font-weight: 600;
+}
+
+#IterationEX1PRO .valuelabel  {
+ font-size: 150%;
+ color: yellow;
+ background-color: #593f73;
+ }
+
+#IterationEX1PRO .box  {
+  fill : #a55ba5;
+  stroke : #a55ba5;
+  z-index: -500;
+}
+
+#IterationEX1PRO .statebox  {
+  stroke : Maroon;
+  z-index: -500;
+  border-width: inherit;
+  border-radius: 50px;
+}
+
+
+#IterationEX1PRO  .bluebox  {
+  fill : rgb(91, 91, 165);
+  stroke : rgb(91, 91, 165);
+  z-index: -500;
+}
+
+#IterationEX1PRO  .calbox  {
+  fill : #805ba5;
+  stroke : #805ba5;
+  z-index: -500;
+}
+
+#IterationEX1PRO  .calboxhigh  {
+  fill : #f2eff6;
+  stroke : #f2eff6;
+  z-index: -500;
+}

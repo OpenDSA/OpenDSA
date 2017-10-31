@@ -40,6 +40,7 @@ import codecs
 import datetime
 import threading
 import urllib
+import simple2full
 
 from collections import Iterable
 from optparse import OptionParser
@@ -431,11 +432,15 @@ def configure(config_file_path, options):
 
     slides = options.slides
     no_lms = options.no_lms
+    conf_data = None
+
+    if no_lms:
+        conf_data = simple2full.generate_full_config(config_file_path)
 
     print "Configuring OpenDSA, using " + config_file_path
 
     # Load and validate the configuration
-    config = ODSA_Config(config_file_path, options.output_directory, options.no_lms)
+    config = ODSA_Config(config_file_path, options.output_directory, options.no_lms, conf_data=conf_data)
 
     # Delete everything in the book's HTML directory, otherwise the
     # post-processor can sometimes append chapter numbers to the existing HTML

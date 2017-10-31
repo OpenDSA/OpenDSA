@@ -9,8 +9,6 @@
    :satisfies:
    :topic:
 
-.. odsalink:: AV/RecurTutor/TOHfigCON.css
-
 Introduction to Analyzing a Problem
 ===================================
 
@@ -72,6 +70,8 @@ completely independent.
    **Output:** A series of moves that solves the problem.
 
 .. inlineav:: TOHfigCON dgm
+   :links: AV/RecurTutor/TOHfigCON.css
+   :scripts: AV/RecurTutor/TOHfigCON.js
    :output: show
 
 
@@ -456,5 +456,3 @@ So, is it an algorithm?
 
 .. [#] This is a minor reformulation of the "algorithm" given by
        Gregory J.E. Rawlins in his book *Compared to What?*
-
-.. odsascript:: AV/RecurTutor/TOHfigCON.js

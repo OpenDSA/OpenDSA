@@ -31,6 +31,8 @@ meet the prerequisite rules is called a :term:`topological sort`.
 .. _TopSort:
 
 .. inlineav:: topsortCON dgm
+   :links: 
+   :scripts: AV/Graph/topsortCON.js
    :align: center
 
    An example graph for topological sort. Seven tasks have
@@ -128,5 +130,3 @@ Here is the code to implement the queue-based topological sort:
    :type: Summary Questions
 
    Provide a summary battery of questions.
-
-.. odsascript:: AV/Graph/topsortCON.js

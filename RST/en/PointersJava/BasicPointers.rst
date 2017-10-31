@@ -9,17 +9,6 @@
    :satisfies: Pointer intro
    :topic: Pointers
 
-.. odsalink:: AV/Pointers/num42CON.css
-.. odsalink:: AV/Pointers/employeeEmpRefCON.css
-.. odsalink:: AV/Pointers/empRefnullCON.css
-.. odsalink:: AV/Pointers/empRefsecondCON.css
-.. odsalink:: AV/Pointers/shallowdeepCON.css
-.. odsalink:: AV/Pointers/empPtrxxxCON.css
-.. odsalink:: AV/Pointers/employeePtr2CON.css
-.. odsalink:: AV/Pointers/examplePointerCodeCON.css
-.. odsalink:: AV/Pointers/badPointerPowCON.css
-.. odsalink:: AV/Pointers/memoryModelCON.css
-
 
 Basic References
 ================
@@ -83,6 +72,8 @@ value shown inside.
 .. _num42Fig:
 
 .. inlineav:: num42CON dgm
+   :links: AV/Pointers/num42CON.css
+   :scripts: AV/Pointers/num42CON.js
    :align: center
 
 A reference variable works a little differently.
@@ -105,6 +96,8 @@ pointee |---| pointee is just the word that we used in these
 explanations.)
 
 .. inlineav:: employeeEmpRefCON dgm
+   :links: AV/Pointers/employeeEmpRefCON.css
+   :scripts: AV/Pointers/employeeEmpRefCON.js
    :align: center
 
 Going back to simple things like ``int`` and ``float`` variables that
@@ -135,6 +128,15 @@ Dereferencing ``empRef`` in the figure above gives back its pointee, the
 So, "dereference" just means to access the value of the pointee.
 Visually, the result of a dereference is the object pointed to by the
 arrow.
+In Java, this most often is done with the "dot" operator to access a
+field or method of an object.
+For example::
+
+   String myName = empRef.name()
+
+This will dereference ``empRef`` to call the ``name`` method for that
+object.
+
 The key restriction is that the reference must have a pointee to access.
 A lot of bugs in reference code involve violating that one
 restriction, which results in the ever-popular ``NullPointerException``.
@@ -153,6 +155,8 @@ line between the corners of the reference variable's box.
 .. _numptrnullFig:
 
 .. inlineav:: empRefnullCON dgm
+   :links: AV/Pointers/empRefnullCON.css
+   :scripts: AV/Pointers/empRefnullCON.js
    :align: center
 
 
@@ -191,6 +195,8 @@ It just changes which pointee a reference refers to.
 .. _numptrsecondlFig:
 
 .. inlineav:: empRefsecondCON dgm
+   :links: AV/Pointers/empRefsecondCON.css
+   :scripts: AV/Pointers/empRefsecondCON.js
    :align: center
 
 After the assignment, testing for ``(second == empRef)`` would return
@@ -212,11 +218,12 @@ Sharing
 
 Two references which both refer to a single pointee are said to be
 "sharing".
-Sometimes we say that one is an :term:`alias` for the other.
-That two or more entities can cooperatively share a single memory
+Sometimes we say that each is an :term:`alias` for the other, because
+we can refer to the referenced object through either name.
+That two or more references can cooperatively share a single memory
 structure is a key advantage of references.
-References ``second`` and ``empRef`` in the above example both share the
-same object, so either can modify the object's value.
+References ``second`` and ``empRef`` in the above example both share
+the same object, so either can modify the object's value.
 Reference manipulation is just technique |---| sharing is often the
 real goal.
 Later we will see how sharing can be used to provide efficient
@@ -257,6 +264,8 @@ their own.
 .. _shallowdeepFig:
 
 .. inlineav:: shallowdeepCON dgm
+   :links: AV/Pointers/shallowdeepCON.css
+   :scripts: AV/Pointers/shallowdeepCON.js
    :align: center
 
 Here is an example of the difference between shallow and deep copying:
@@ -272,7 +281,10 @@ Bad References
 
 When a reference is first allocated, it does not have a pointee.
 The reference is :term:`uninitialized` or simply "bad".
-Dereferencing a bad reference is a serious runtime error.
+In Java, references are actually initialized to the value ``null``,
+while in some other languages they are literally of unknown value.
+Either way, dereferencing a bad or null reference value is a serious
+runtime error.
 The dereference operation will crash or halt immediately.
 Each reference must be assigned a pointee before it can support
 dereference operations.
@@ -283,6 +295,8 @@ value.
 .. _numptrxxxFig:
 
 .. inlineav:: empPtrxxxCON dgm
+   :links: AV/Pointers/empPtrxxxCON.css
+   :scripts: AV/Pointers/empPtrxxxCON.js
    :align: center
 
 Bad references are common.
@@ -321,9 +335,9 @@ assigned to point to the pointee.
 It's rare to forget step (1).
 But forget (2) or (3), and the whole thing will blow up at the first
 dereference.
-For example, a popular mistake is declare a string variable, but then
-never assign it an actual string before tyring to print or otherwise
-use it.
+For example, a popular mistake is to declare a string variable,
+but then never assign it an actual string before tyring to print or
+otherwise use it.
 Remember to account for both levels.
 Making a memory drawing during your design can help to make sure that
 it's right.
@@ -337,18 +351,26 @@ will crash.
 It is up to you to ensure that each reference is assigned a pointee
 before it is used.
 Here is a simple example of bad code, and a
-drawing of how memory is likely to react.
+drawing of how memory would react if this code were executed.
 
 .. codeinclude:: Pointers/badPointers
    :tag: badPointers
 
-|
-
 .. inlineav:: badPointerPowCON dgm
+   :links: AV/Pointers/badPointerPowCON.css
+   :scripts: AV/Pointers/badPointerPowCON.js
    :align: center
 
 Why Are Bad Reference Bugs So Common?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the ``badPointer`` example above,
+the compiler would actually catch the mistake above before it is
+allowed to even run, because the unitialized reference is being
+dereferenced.
+But the exact same result would happen if your program had for some
+reason set the value of ``badPointer`` to ``null``.
+The compiler cannot catch that for you.
 
 There must be a reason why Java cares so much about dereferencing
 ``null`` pointers, that its always watching out for it. Why?
@@ -356,23 +378,18 @@ Because it happens in a lot of programs.
 
 Why is it so often the case that programmers will allocate a
 reference, but forget to set it to refer to a pointee?
+Or, why will a programmer set the value of a reference to be ``null``,
+and then dereference it?
 The rules for references do not seem that complex, yet every
 programmer makes this error repeatedly. Why?
 One explanation is that we are trained by the tools that we use.
 Simple variables don't require any extra setup.
 You can allocate a simple variable, such as ``int``, and use it
 immediately.
-All that ``int``, ``char`` or ``boolean`` variable code that you have
-written has trained you, quite reasonably, that a variable may be used
-once it is declared.
-Unfortunately, references look like simple variables.
-But they require the extra initialization before use.
-It's unfortunate, in a way, that references happen look like other
-variables, since it makes it easy to forget that the rules for their
-use are very different.
-Oh well.
-Try to remember to assign your references to refer to pointees.
-But don't be surprised when you forget, and your program breaks.
+You can change it to whatever you want, and the value won't typically
+make the program crash.
+Try to remember not to dereference a ``null`` pointer value.
+But don't be surprised when it happens, and your program breaks.
 
 
 Syntax
@@ -407,6 +424,8 @@ Assigning a pointee to a reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: employeePtr2CON ss
+   :links: AV/Pointers/employeePtr2CON.css
+   :scripts: AV/Pointers/employeePtr2CON.js
    :output: show
 
 
@@ -440,6 +459,8 @@ Example Reference Code
 ~~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: examplePointerCodeCON ss
+   :links: AV/Pointers/examplePointerCodeCON.css
+   :scripts: AV/Pointers/examplePointerCodeCON.js
    :output: show
 
 
@@ -505,6 +526,8 @@ A reference to an area of memory is really just an integer which is
 storing the address of that area of memory.
 
 .. inlineav:: memoryModelCON dgm
+   :links: AV/Pointers/memoryModelCON.css
+   :scripts: AV/Pointers/memoryModelCON.js
    :align: center
 
 In the picture above, we assume that Java decides to place the new
@@ -535,13 +558,3 @@ Java's runtime environment is constantly watching for a dereference of
 a reference variable with a ``null`` value, so it can catch it right
 away if that happens.
 
-.. odsascript:: AV/Pointers/num42CON.js
-.. odsascript:: AV/Pointers/employeeEmpRefCON.js
-.. odsascript:: AV/Pointers/empRefnullCON.js
-.. odsascript:: AV/Pointers/empRefsecondCON.js
-.. odsascript:: AV/Pointers/shallowdeepCON.js
-.. odsascript:: AV/Pointers/empPtrxxxCON.js
-.. odsascript:: AV/Pointers/employeePtr2CON.js
-.. odsascript:: AV/Pointers/examplePointerCodeCON.js
-.. odsascript:: AV/Pointers/badPointerPowCON.js
-.. odsascript:: AV/Pointers/memoryModelCON.js

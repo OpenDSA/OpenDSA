@@ -6,8 +6,6 @@
 .. avmetadata:: 
    :author: Cliff Shaffer
    :topic: Advanced Analysis
-   
-.. odsalink:: AV/Background/SummationOneToNCON.css
 
 Summation Techniques
 ====================
@@ -44,6 +42,8 @@ exact closed-form solution, because we will hopefully recognize if our
 proposed solution is badly wrong.
 
 .. inlineav:: SummationOneToNCON ss
+   :links: AV/Background/SummationOneToNCON.css
+   :scripts: AV/Background/SummationOneToNCON.js
    :output: show
 
 Let us now consider some ways that we might hit upon an exact equation
@@ -366,5 +366,3 @@ pattern in terms of :math:`f(n) - g(n)` or :math:`f(n)/g(n)`.
    .. math::
 
       = (n-1)2^{n+1} + 2.
-	  
-.. odsascript:: AV/Background/SummationOneToNCON.js

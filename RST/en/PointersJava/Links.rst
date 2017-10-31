@@ -9,13 +9,6 @@
    :satisfies:
    :topic: Link Nodes
 
-
-.. odsalink:: AV/Pointers/linkNodes1CON.css
-.. odsalink:: AV/Pointers/linkNodes2CON.css
-.. odsalink:: AV/Pointers/linkNodes3CON.css
-.. odsalink:: AV/Pointers/linkNodes4CON.css
-.. odsalink:: AV/Pointers/linkNodes5CON.css
-
 Link Nodes
 ==========
 
@@ -43,36 +36,40 @@ Now we'll see some examples for how to use ``link`` nodes to put
 chains together.
 
 .. inlineav:: linkNodes1CON ss
+   :links: AV/Pointers/linkNodes1CON.css
+   :scripts: AV/Pointers/linkNodes1CON.js
    :output: show
 
 How do we set up the chain to begin with?
 
 .. inlineav:: linkNodes2CON ss
+   :links: AV/Pointers/linkNodes2CON.css
+   :scripts: AV/Pointers/linkNodes2CON.js
    :output: show
 
 One can easily write a loop to iterate through all the Links on a
 chain, without needing to know how many there actually are.
 
 .. inlineav:: linkNodes3CON ss
+   :links: AV/Pointers/linkNodes3CON.css
+   :scripts: AV/Pointers/linkNodes3CON.js
    :output: show
 
 One can remove a Link from a chain.
 
 .. inlineav:: linkNodes4CON ss
+   :links: AV/Pointers/linkNodes4CON.css
+   :scripts: AV/Pointers/linkNodes4CON.js
    :output: show
 
 
 Finally, we can also insert new Links.
 
 .. inlineav:: linkNodes5CON ss
+   :links: AV/Pointers/linkNodes5CON.css
+   :scripts: AV/Pointers/linkNodes5CON.js
    :output: show
 
 Here is an exercise to practice manipulating link nodes.
 
 .. avembed:: Exercises/Pointers/PointerEX3PRO.html ka
-
-.. odsascript:: AV/Pointers/linkNodes1CON.js
-.. odsascript:: AV/Pointers/linkNodes2CON.js
-.. odsascript:: AV/Pointers/linkNodes3CON.js
-.. odsascript:: AV/Pointers/linkNodes4CON.js
-.. odsascript:: AV/Pointers/linkNodes5CON.js

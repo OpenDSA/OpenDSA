@@ -9,9 +9,6 @@
    :satisfies: analyzing programs
    :topic: Algorithm Analysis
 
-.. odsalink:: AV/Searching/binarySearchCON.css
-.. odsalink:: AV/AlgAnal/BsearchDandCRecurCON.css
-
 Calculating Program Running Time
 ================================
 
@@ -236,6 +233,8 @@ Here is a visualization of the binary search method.
 
 .. inlineav:: binarySearchCON ss
    :long_name: Binary Search Algorithm Slideshow
+   :links: AV/Searching/binarySearchCON.css
+   :scripts: AV/Searching/binarySearchCON.js
    :output: show
 
 Binary Search Practice Exercise
@@ -250,6 +249,8 @@ Analyzing Binary Search
 
 .. inlineav:: BsearchDandCRecurCON ss
    :long_name: Binary Search recurrence slideshow
+   :links: AV/AlgAnal/BsearchDandCRecurCON.css
+   :scripts: AV/AlgAnal/BsearchDandCRecurCON.js
    :output: show
 
 Function ``binarySearch`` is designed to find the (single) occurrence of
@@ -293,7 +294,4 @@ Summary Exercise
 
 .. avembed:: Exercises/AlgAnal/AnalProgramSumm.html ka
    :long_name: Program Code Analysis Exercise
-
-.. odsascript:: AV/Searching/binarySearchCON.js
-.. odsascript:: AV/AlgAnal/BsearchDandCRecurCON.js
 

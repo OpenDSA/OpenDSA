@@ -12,8 +12,6 @@
 .. index:: ! exchange sorting
 .. index:: sorting; exchange
 
-.. odsalink:: AV/Sorting/ExchangeSortCON.css
-
 The Cost of Exchange Sorting
 ============================
 
@@ -77,9 +75,9 @@ Analysis
 
 .. inlineav:: ExchangeSortCON ss
    :long_name: Exchange Sort Analysis Slideshow
+   :links: AV/Sorting/ExchangeSortCON.css
+   :scripts: AV/Sorting/ExchangeSortCON.js
    :output: show
 
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka
    :long_name: Exchange Sorting Summary Exercise
-
-.. odsascript:: AV/Sorting/ExchangeSortCON.js

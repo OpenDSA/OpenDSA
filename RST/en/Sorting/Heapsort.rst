@@ -11,8 +11,6 @@
 
 .. index:: ! Heapsort
 
-.. odsalink:: AV/Development/HeapSortAnalysisCON.css
-
 Heapsort
 ========
 
@@ -60,6 +58,8 @@ used when sorting data sets too large to fit in main memory.
 
 .. inlineav:: heapsortCON ss
    :long_name: Heapsort Slideshow
+   :links: 
+   :scripts: DataStructures/binaryheap.js AV/Sorting/heapsortCON.js
    :output: show
 
 A complete implementation is as follows.
@@ -90,6 +90,8 @@ This visualization presents the running time analysis of Heap Sort
 
 .. inlineav:: HeapSortAnalysisCON ss
    :long_name: Heapsort Analysis Slideshow
+   :links: AV/Development/HeapSortAnalysisCON.css
+   :scripts: DataStructures/binaryheap.js AV/Development/HeapSortAnalysisCON.js
    :output: show
 
 While typically slower than Quicksort by a constant factor
@@ -118,7 +120,3 @@ Thus, only a relatively small fraction of the edges need be sorted.
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
    :long_name: Heapsort Summary Exercise
-
-.. odsascript:: DataStructures/binaryheap.js
-.. odsascript:: AV/Sorting/heapsortCON.js
-.. odsascript:: AV/Development/HeapSortAnalysisCON.js

@@ -112,6 +112,8 @@ to build the parse tree for a given lambda expression.
 
 .. inlineav:: parseTree ss
    :long_name: Slideshow for how to build a parse tree
+   :links: AV/PL/AV/parseTree.css AV/PL/main.css
+   :scripts: AV/PL/AV/parseTree.js
    :output: show
 
 
@@ -151,5 +153,3 @@ correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP14part2.html ka
    :long_name: RP set #14, question #2
-
-.. odsascript:: AV/PL/AV/parseTree.js   	     

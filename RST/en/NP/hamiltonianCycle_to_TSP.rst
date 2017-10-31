@@ -7,8 +7,6 @@
    :author: Nabanita Maji
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/NP/HCtoTSPCON.css
-
 Reduction of Hamiltonian Cycle to Traveling Salesman
 ====================================================
 
@@ -21,9 +19,9 @@ polynomial time.
  
 .. inlineav:: HCtoTSPCON ss
    :long_name: HC to TSP Reduction
+   :links: AV/Development/NP/HCtoTSPCON.css
+   :scripts: AV/Development/NP/HCtoTSPCON.js
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 
 the Traveling Salesman problem.
-
-.. odsascript:: AV/Development/NP/HCtoTSPCON.js

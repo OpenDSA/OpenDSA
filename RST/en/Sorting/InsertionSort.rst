@@ -11,10 +11,6 @@
 
 .. index:: ! Insertion Sort
 
-.. odsalink:: AV/Sorting/InsertionSortWorstCaseCON.css
-.. odsalink:: AV/Sorting/InsertionSortBestCaseCON.css
-.. odsalink:: AV/Sorting/InsertionSortAverageCaseCON.css
-
 Insertion Sort
 ==============
 
@@ -62,6 +58,8 @@ Here we see the first few iterations of Insertion Sort.
 
 .. inlineav:: insertionsortCON ss
    :long_name: Insertion Sort Slideshow
+   :links: 
+   :scripts: AV/Sorting/insertionsortCON.js
    :output: show
 
 This continues on with each record in turn.
@@ -86,18 +84,24 @@ Insertion Sort Analysis
 
 .. inlineav:: InsertionSortWorstCaseCON ss
    :long_name: Insertion Sort Worst Case Slideshow
+   :links: AV/Sorting/InsertionSortWorstCaseCON.css
+   :scripts: AV/Sorting/InsertionSortWorstCaseCON.js
    :output: show
 
 |
 
 .. inlineav:: InsertionSortBestCaseCON ss
    :long_name: Insertion Sort Best Case Slideshow
+   :links: AV/Sorting/InsertionSortBestCaseCON.css
+   :scripts: AV/Sorting/InsertionSortBestCaseCON.js
    :output: show
 
 |
 
 .. inlineav:: InsertionSortAverageCaseCON ss
    :long_name: Insertion Sort Average Case Slideshow
+   :links: AV/Sorting/InsertionSortAverageCaseCON.css
+   :scripts: AV/Sorting/InsertionSortAverageCaseCON.js
    :output: show
 
 While the best case is significantly faster than the average and worst
@@ -163,8 +167,3 @@ affect what is the best sort algorithm to use.
 
 .. `Computational Fairy Tales: Why Tailors Use Insertion Sort
 .. <http://computationaltales.blogspot.com/2011/04/why-tailors-use-insertion-sort.html target = "_blank">`_
-
-.. odsascript:: AV/Sorting/insertionsortCON.js
-.. odsascript:: AV/Sorting/InsertionSortWorstCaseCON.js
-.. odsascript:: AV/Sorting/InsertionSortBestCaseCON.js
-.. odsascript:: AV/Sorting/InsertionSortAverageCaseCON.js

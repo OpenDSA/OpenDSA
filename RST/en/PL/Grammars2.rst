@@ -41,11 +41,15 @@ could choose to first use the production with the :math:`+` operator,
 as is done in the following slide-show.
    
 .. inlineav:: parseTree5a ss
+   :links: AV/PL/AV/parseTree.css
+   :scripts: AV/PL/AV/parseTree5a.js
    :output: show
 
 Or we could also start with the production having the :math:`*` operator, in which case the parse proceeds as shown in the following slide-show.
 	    
 .. inlineav:: parseTree5b ss
+   :links: AV/PL/AV/parseTree.css
+   :scripts: AV/PL/AV/parseTree5b.js
    :output: show
 
 Note that both of the slide-shows above produce valid parse trees for this grammar.   The problem, however, is that the two parse trees are different.   In the first of the two parse trees, B would multiply C, which would correspond to usual operator precedence.   However, in the parse tree produced by the second slide-show, B would be added to A, a result that is contrary to usual operator precedence.   A grammar such as this, which allows two different parse trees for the same expression, is called an *ambiguous grammar*.   Ambiguous grammars should always be avoided.   Although they allow you to determine the syntactic correctness of an expression, the variety of parse trees they allow confounds our ability to use the parse trees for any type of reliable semantic action.
@@ -80,6 +84,4 @@ This problem will help you discover ambiguities in grammars as well as
 convince yourself that a grammar is not ambiguous.
 
 .. avembed:: Exercises/PL/RP2part4.html ka
-   :long_name: RP set #2, question #4
-.. odsascript:: AV/PL/AV/parseTree5a.js   	     
-.. odsascript:: AV/PL/AV/parseTree5b.js   	     
+   :long_name: RP set #2, question #4	     

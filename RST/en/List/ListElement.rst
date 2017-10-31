@@ -9,8 +9,6 @@
    :satisfies: list element implementation
    :topic: Lists
 
-.. odsalink:: AV/List/listElementCON.css   
-
 List Element Implementations
 ============================
 
@@ -29,6 +27,8 @@ better approach.
 
 .. inlineav:: listElementDataCON ss
    :long_name: List Element Data
+   :links: AV/List/listElementCON.css
+   :scripts: AV/List/listElementDataCON.js
    :output: show
 
 
@@ -66,6 +66,8 @@ In C++, a similar effect can be achieved by using ``void*`` pointers.
 
 .. inlineav:: listElementTypeCON ss
    :long_name: List Element Type
+   :links: AV/List/listElementCON.css
+   :scripts: AV/List/listElementTypeCON.js
    :output: show
    
 
@@ -79,6 +81,8 @@ automatic garbage collection.
 
 .. inlineav:: listElementDeleteCON ss
    :long_name: List Element Delete
+   :links: AV/List/listElementCON.css
+   :scripts: AV/List/listElementDeleteCON.js
    :output: show 
    
 
@@ -87,7 +91,3 @@ Practice Questions
 
 .. avembed:: Exercises/List/ListSumm.html ka
    :long_name: List Summary Questions
-   
-.. odsascript:: AV/List/listElementDataCON.js
-.. odsascript:: AV/List/listElementTypeCON.js
-.. odsascript:: AV/List/listElementDeleteCON.js

@@ -39,6 +39,8 @@ numbers 0 through :math:`n-1`.
 
 .. inlineav:: binsortS1CON ss
    :long_name: Binsort Slideshow 1
+   :links: 
+   :scripts: AV/Sorting/binsortS1CON.js
    :output: show
 
 Here the key value is used to determine the
@@ -83,6 +85,8 @@ values fall in the range from 0 to ``MaxKeyValue``.
 
 .. inlineav:: binsortS2CON ss
    :long_name: Binsort Slideshow 2
+   :links: 
+   :scripts: AV/Sorting/binsortS2CON.js
    :output: show
 
 The total work required is simply that needed to place each record
@@ -121,6 +125,3 @@ only a small number of records into each bucket, and that a
 "cleanup sort" to each bucket will then be relatively cheap.
 This is similar in spirit to the Radix Sort, which extends the
 concept of the Binsort in a practical way.
-
-.. odsascript:: AV/Sorting/binsortS1CON.js
-.. odsascript:: AV/Sorting/binsortS2CON.js

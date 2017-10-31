@@ -9,8 +9,6 @@
    :satisfies: list ADT
    :topic: Lists
 
-.. odsalink:: AV/List/listADTCON.css
-
 The List ADT
 ============
 
@@ -130,6 +128,8 @@ object, sometimes referred to as an :term:`iterator`.
 
 .. inlineav:: listADTposCON ss
    :long_name: List ADT Positions Slideshow
+   :links: AV/List/listADTCON.css
+   :scripts: AV/List/listADTposCON.js
    :output: show
 
 The ``List`` member functions allow you to build a list with elements
@@ -195,5 +195,3 @@ List ADT Programming Exercise
 
    This exercise ought to get expanded to a much richer set of
    variations on the question.
-
-.. odsascript:: AV/List/listADTposCON.js

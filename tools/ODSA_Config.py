@@ -481,11 +481,12 @@ class ODSA_Config:
     def __setitem__(self, key, value):
         self.__dict__[key] = value
 
-    def __init__(self, config_file_path, output_directory=None, no_lms=None):
+    def __init__(self, config_file_path, output_directory=None, no_lms=None, conf_data=None):
 
         """Initializes an ODSA_Config object by reading in the JSON config file, setting default values, and validating the configuration"""
 
-        conf_data = read_conf_file(config_file_path)
+        if conf_data is None:
+            conf_data = read_conf_file(config_file_path)
 
         # group exercises
         group_exercises(conf_data, no_lms)

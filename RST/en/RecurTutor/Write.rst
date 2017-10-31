@@ -9,8 +9,6 @@
    :satisfies: recursion writing
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recurWriteCON.css
-
 Writing a recursive function
 ============================
 
@@ -33,6 +31,8 @@ Here are the basic four steps that you need to write any recursive function.
 
 .. inlineav:: recurWriteStepsCON ss
    :long_name: Recursion Code Writing Slideshow 1
+   :links: AV/RecurTutor/recurWriteCON.css
+   :scripts: AV/RecurTutor/recurWriteStepsCON.js
    :output: show  
 
 
@@ -40,6 +40,8 @@ Now le't see some different ways that we could write ``Sum`` recursively.
 
 .. inlineav:: recurWriteSumCON ss
    :long_name: Recursion Code Writing Slideshow 2
+   :links: AV/RecurTutor/recurWriteCON.css
+   :scripts: AV/RecurTutor/recurWriteSumCON.js
    :output: show  
 
 
@@ -59,6 +61,3 @@ Now le't see some different ways that we could write ``Sum`` recursively.
    ``Fibonacci(1) = 1``.
    
    .. codeinclude:: RecurTutor/Fibonacci
-
-.. odsascript:: AV/RecurTutor/recurWriteStepsCON.js
-.. odsascript:: AV/RecurTutor/recurWriteSumCON.js

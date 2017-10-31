@@ -9,8 +9,6 @@
    :satisfies: linked stack
    :topic: Lists
 
-.. odsalink:: AV/List/lstackCON.css      
-
 Linked Stacks
 =============
 
@@ -31,6 +29,8 @@ Here is a visual representation for the linked stack.
 .. _LStackDiagram:
 
 .. inlineav:: lstackDiagramCON dgm
+   :links: AV/List/lstackCON.css
+   :scripts: AV/List/llist.js AV/List/lstackDiagramCON.js
    :align: center   
 
 
@@ -39,6 +39,8 @@ Linked Stack Push
 
 .. inlineav:: lstackPushCON ss
    :long_name: Linked stack push
+   :links: AV/List/lstackCON.css
+   :scripts: AV/List/llist.js AV/List/lstackPushCON.js
    :output: show
    
 .. avembed:: Exercises/List/LstackPushPRO.html ka
@@ -50,6 +52,8 @@ Linked Stack Pop
 
 .. inlineav:: lstackPopCON ss
    :long_name: Linked stack pop
+   :links: AV/List/lstackCON.css
+   :scripts: AV/List/llist.js AV/List/lstackPopCON.js
    :output: show
    
 
@@ -87,10 +91,6 @@ in the middle of the array will be exhausted quickly.
 .. _TwoArrayStacks:
 
 .. inlineav:: lstackTwostackCON dgm
-   :align: center     
-
-.. odsascript:: AV/List/llist.js
-.. odsascript:: AV/List/lstackDiagramCON.js
-.. odsascript:: AV/List/lstackPushCON.js
-.. odsascript:: AV/List/lstackPopCON.js
-.. odsascript:: AV/List/lstackTwostackCON.js
+   :links: AV/List/lstackCON.css
+   :scripts: AV/List/llist.js AV/List/lstackTwostackCON.js
+   :align: center
