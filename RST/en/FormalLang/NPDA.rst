@@ -15,163 +15,99 @@ Nondeterministic Pushdown Automata
 Nondeterministic Pushdown Automata
 ----------------------------------
 
-Chapter 7.2
+.. Chapter 7.2
 
-{\bf Theorem} Given NPDA M that accepts by final state, $\exists$ NPDA M'
-that accepts by empty stack s.t. L(M)=L(M').
+**Theorem** Given NPDA M that accepts by final state, :math:`\exists`
+NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
 
-\begin{itemize}
-\item {\bf Proof} (sketch)
+**Proof** (sketch)
 
-M=(Q,$\Sigma$,$\Gamma$,$\delta$,$q_0$,z,F)
+   | :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
+   | Construct :math:`M' = (Q', \Sigma, {\Gamma}^{'}, {\delta}^{'}, q_s, z', F')`
+     (NOTE: :math:`z'` is a new symbol) 
+   | :math:`Q' = Q \cup \{q_s, q_f\}` 
+   | :math:`{\Gamma}^{'} = \Gamma \cup \{z'\}`
+     (NOTE: :math:`z' \not\in \Gamma`, never popped in old machine)
+   | :math:`q_s` is new start state. 
+   | :math:`F = \{\}`. Irrelevant.
+     The only time the stack will be empty is in :math:`q_f`.
 
-Construct M'=(Q',$\Sigma$,${\Gamma}^{'}$,${\delta}^{'}$,$q_s$,z',F')
-\ \ (NOTE: $z'$ is new symbol) 
+   .. odsafig:: Images/lt7pf1.png
+      :width: 400
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: lt7pf1
 
-%SO \vfill\eject
-Q' = Q$\cup\{q_s,q_f\}$ 
+   | Here, :math:`x` is any symbol in :math:`{\Gamma}^{'}`.
+     (:math:`l` represents :math:`\lambda`).
 
-${\Gamma}^{'}$ = ${\Gamma}\cup\{$z'$\}$ 
-\ \ (NOTE: $z' \not\in \Gamma$, never popped in old machine) 
-
-$q_s$ is new start state. 
-
-F=$\{\}$. Irrelevant. The only time the stack will be empty is in $q_f$. 
-
-\begin{figure}[h!] 
-\centerline { \includegraphics[scale=.60]{lt7pf1.pdf} } 
-\end{figure} 
-
-% %L {\leavevmode
-% %L \epsfxsize=.65\linewidth
-% %L \centerline{\epsfbox{lt7pf1.eps}}
-% %L }
-
-%%L \begin{figure}[h]
-%%L  \begin{center}
-%%L  \input{lt7pf1}
-%%L  \end{center} 
-%%L %\caption{}
-%%L %\label{st2role}
-%%L \end{figure}
+   | Don't really need the concept of a final state in this case. QED. 
 
 
-where $x$ is any symbol in ${\Gamma}^{'}$. (l represents $\lambda$). 
+**Theorem:** Given NPDA :math:`M` that accepts by empty stack,
+:math:`\exists` NPDA :math:`M'` that accepts by final state.
 
-Don't really need the concept of a final state in this case. QED. 
+**Proof:**
 
+   | :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
+   | Construct :math:`M' = (Q', \Sigma, \Gamma^{'}, \delta^{'}, q_s, z', F')`
+   | :math:`Q' = Q \cup \{q_s, q_f\}`
+   | :math:`\Gamma^{'} = \Gamma \cup \{z'\}`
+   | :math:`q_s` is new start state. 
+   | :math:`F' = \{q_f\}`.
+     The only time the stack will be empty is in :math:`q_f`.
+   | :math:`(q_f, z') \in \delta(q, \lambda, z')` for all
+     :math:`q \in Q`. 
 
+   .. odsafig:: Images/lt7pf2.png
+      :width: 400
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: lt7pf2
 
-\end{itemize}
+   | If :math:`M` accepted in some state, then that means the stack
+     was empty.
+     In :math:`M'`, at the same state, the stack will contain only
+     :math:`z'`, and the new transition can be followed to
+     :math:`q_f`. QED 
 
-%H \vfill
+.. note:: 
 
-\vfill\eject 
-{\bf Theorem} Given NPDA M that accepts by empty stack, $\exists$ NPDA M'
-that accepts by final state.
+   Now we want to show that NPDA's and CFG both represent CFL's. 
+   Show that we can take any CFG and construct a NPDA and vice versa. 
 
-\begin{itemize}
-\item {\bf Proof:} (sketch)
+**Theorem:** For any CFL :math:`L` not containing :math:`\lambda`,
+:math:`\exists` a NPDA :math:`M` such that :math:`L = L(M)`.
 
-M=(Q,$\Sigma$,$\Gamma$,$\delta$,$q_0$,z,F)
+**Proof** (sketch)
 
-Construct M'=(Q',$\Sigma$,${\Gamma}^{'}$,${\delta}^{'}$,$q_s$,z',F')
+   | Given (:math:`\lambda` -free) CFL :math:`L`.
+   | :math:`\Rightarrow \exists` CFG :math:`G` such that :math:`L = L(G)`.
+   | :math:`\Rightarrow \exists G'` in GNF, such that :math:`L(G) = L(G')`. 
+   | :math:`G' = (V,T,S,P)`. All productions in :math:`P` are of the form:
+   |   :math:`A \rightarrow ax
+   |   :math:`A \in V, a \in T, x \in V^*`
+   | Construct NPDA :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
+   | Q = \{q_0, q_1, q_f\}, \Sigma = T, \Gamma = V \cup \{z\}, F = \{q_f\}`
+   |   1. :math:`M` starts by putting :math`S` on the stack 
+   |   2. For each production 
+   |         :math:`A \rightarrow a X_1 X_2 \ldots X_n`
+   |      put `(q_1, X_1 X_2 \ldots X_n)` in :math:`\delta(q_1, a, A)`
+   |      (Pop :math:`A` from the stack, read "a" from tape,
+          and push :math:`X_1 X_2 \ldots X_n` onto the stack) 
 
+     .. note::
 
-%SO \vfill\eject
-Q' = Q$\cup\{q_s,q_f\}$ 
+        Draw a picture of this! 
 
-${\Gamma}^{'}$ = ${\Gamma}\cup\{$z'$\}$ 
-
-$q_s$ is new start state. 
-
-F'=$\{q_f\}$. The only time the stack will be empty is in $q_f$. 
-
-($q_f$,z') $\in$ $\delta($q,$\lambda$,z') for all q$\in$Q. 
-
-\begin{figure}[h!] 
-\centerline { \includegraphics[scale=.60]{lt7pf2.pdf} } 
-\end{figure} 
-
-% %L {\leavevmode
-% %L \epsfxsize=.65\linewidth
-% %L \centerline{\epsfbox{lt7pf2.eps}}
-% %L }
-
-%%L \begin{figure}[h]
-%%L  \begin{center}
-%%L  \input{lt7pf2}
-%%L  \end{center} 
-%%L %\caption{}
-%%L %\label{st2role}
-%%L \end{figure}
-
-If M accepted in some state, then that means the stack was empty. In M', 
-at the same state, the stack will contain only z', and the new transition 
-can be followed to $q_f$. QED 
-\end{itemize}
-
-\vfill\eject 
-
-NOTE: Now we want to show that NPDA's and CFG both represent CFL's. 
-Show that we can take any CFG and construct a NPDA and vice versa. 
-
-%H \vfill\eject
-{\bf Theorem} For any CFL L not containing $\lambda$, $\exists$ an NPDA
-M s.t. L=L(M).
-
-\begin{itemize}
-\item {\bf Proof} (sketch)
-
-Given ($\lambda$-free) CFL L.
-
-$\Rightarrow$ $\exists$ CFG G such that L=L(G).
-
-$\Rightarrow$ $\exists$ G' in GNF, s.t. L(G)=L(G'). 
-
-G'=(V,T,S,P). All productions in P are of the form:
-
-\begin{center} 
-\begin{tabular}{c} 
-A $\rightarrow$ ax \\ 
-A$\in$V, a$\in$T, x$\in$V${}^{*}$ \\ 
-\end{tabular} 
-\end{center} 
+   |   3. Accept if :math:`S \stackrel{*}{\Rightarrow} w \in \Sigma^*`
+          (all variables on the stack are replaced by terminals or
+          :math:`\lambda`) 
+   | Show :math:`w \in L(G')` iff :math:`w \in L(M)`. QED. 
 
 
-Construct NPDA M=(Q,$\Sigma$,$\Gamma$,$\delta$,$q_0$,z,F) 
-
-Q=$\{q_0,q_1,q_f\}$, $\Sigma$=T, $\Gamma$=V$\cup\{$z$\}$,F=$\{q_f\}$ 
-
-\begin{enumerate} 
-\item M starts by putting S on the stack 
-
-\item For each production 
-
-\begin{center} 
-A $\rightarrow$ a$X_1X_2\ldots X_n$ 
-\end{center} 
-
-put ($q_1$, $X_1X_2\ldots X_n$) in $\delta$($q_1$,a,A) 
-
-(Pop A from the stack, read ``a'' from tape, and push $X_1X_2\ldots X_n$ 
-onto the stack) 
-
-NOTE: Draw a picture of this! 
-
-\item Accept if S$\stackrel{*}{\Rightarrow}$w$\in{\Sigma}^{*}$ (all 
-variables on the stack are replaced by terminals or $\lambda$) 
-
-\end{enumerate} 
-
-Show w$\in$L(G') iff w$\in$L(M). QED. 
-
-\end{itemize}
-%H \vfill
-
-%SO \vfill\eject
-
-\vfill\eject 
 
 {\bf Example:} Let G'=(V,T,S,P), P=
 
