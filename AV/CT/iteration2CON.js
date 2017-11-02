@@ -11,39 +11,41 @@ $(document).ready(function() {
   "use strict";
 
   //BlueStepAnim :This should come before JSAV Initialize
-      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(val) {
+      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(delay, time, val) {
       if (this._shouldAnimate()) {
 
-          //  midblue 1 start
-          it2_midblue1.addClass("blueboxh", {record: false});
-          setTimeout(function() {
-            it2_midblue1.removeClass("blueboxh", {record: false});
+        setTimeout(function() {
+            //  midblue 1 start
+            it2_midblue1.addClass("blueboxh", {record: false});
+            setTimeout(function() {
+              it2_midblue1.removeClass("blueboxh", {record: false});
 
-              // midblue 2 animation start -----------------
-              setTimeout(function() {
-                it2_midblue2.addClass("blueboxh", {record: false});
+                // midblue 2 animation start -----------------
                 setTimeout(function() {
-                  it2_valuelabel.value(val);
-                  it2_midblue2.removeClass("blueboxh", {record: false});
+                  it2_midblue2.addClass("blueboxh", {record: false});
 
-                  // midblue 3 animation start -----------------
-                  setTimeout(function() {
-                    it2_midblue3.addClass("blueboxh", {record: false});
+                  setTimeout(function(){
+                    it2_midblue2.removeClass("blueboxh", {record: false});
+
+                    // midblue 3 animation start -----------------
                     setTimeout(function() {
-                      it2_midblue3.removeClass("blueboxh", {record: false});
-                    }, 200);
-                  }, 200);
-                  // midblue 3 animation close ---------------------
+                      it2_midblue3.addClass("blueboxh", {record: false});
 
-                }, 200);
-              }, 200);
-              // midblue 2 animation close
+                      setTimeout(function() {
+                        it2_midblue3.removeClass("blueboxh", {record: false});
+                      }, time);
+                    }, time);
+                    // midblue 3 animation close ---------------------
 
-          }, 200);
+                  }, time);
+                }, time);
+                // midblue 2 animation close
 
+            }, time);
+          }, delay);
       }
     }, function undoBlueStep(elemSet) {});
-    // BlueStepAnim END -----------------------------------------------
+    // BlueStepAnim END -----------------------------------------------zz
 
 
     //BlueStepAnim :This should come before JSAV Initialize
@@ -64,8 +66,8 @@ $(document).ready(function() {
   var av_name = "iteration2CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
-  var leftMargin = 450,
-      rect_left = 300,
+  var leftMargin = 270,
+      rect_left = leftMargin - 150,
       rect0_top = 0,
       rect_top = 40,
       topMargin = rect_top + 20;
@@ -123,6 +125,34 @@ $(document).ready(function() {
   it2_valuelabel.addClass("labels");
   it2_valuelabel.addClass("valuelabel");
 
+  // <<--------------- STATE BOX ----------------->>
+
+  var stateX = 700;
+  var stateY = - 20;
+  var stateLabel = av.label("STATE", {left: stateX, top: stateY});
+  stateLabel.addClass("statelabel");
+
+  var stateBox = av.g.rect(stateX - 25, stateY + 50, 110, 280).addClass("statebox");
+
+  // price box and label
+  av.label("PRICE", {left: stateX + 5, top: stateY + 65});
+  stateLabel.addClass("statelabel");
+
+  var priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
+
+  var priceBoxLabel = av.label("", {left: stateX + 23, top: stateY + 100});
+  priceBoxLabel.addClass("labels");
+  priceBoxLabel.addClass("midlabel");
+
+  // total box and label
+  av.label("TOTAL", {left: stateX + 5, top: stateY + 180});
+  stateLabel.addClass("statelabel");
+
+  var totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
+  var totalBoxLabel = av.label("", {left: stateX + 23, top: stateY + 215});
+
+  totalBoxLabel.addClass("labels");
+  totalBoxLabel.addClass("midlabel");
 
 
   // --------------------- start slide shows
@@ -145,7 +175,7 @@ $(document).ready(function() {
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  av.blueStepAnim("4")
+  av.blueStepAnim(0, 100, "4")
   av.step();
 
   // Slide 5
@@ -156,7 +186,7 @@ $(document).ready(function() {
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  av.blueStepAnim("13")
+  av.blueStepAnim(0, 100, "13")
   av.step();
 
   // Slide 7
@@ -167,7 +197,7 @@ $(document).ready(function() {
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  av.blueStepAnim("6");
+  av.blueStepAnim(0, 100, "6");
   av.step();
 
   // Slide 9
@@ -178,7 +208,7 @@ $(document).ready(function() {
 
   // Slide 10
   av.umsg(interpret("sc10"));
-  av.blueStepAnim("9");
+  av.blueStepAnim(0, 100, "9");
   av.step();
 
   // Slide 11
@@ -189,7 +219,7 @@ $(document).ready(function() {
 
   // Slide 12
   av.umsg(interpret("sc12"));
-  av.blueStepAnim("11");
+  av.blueStepAnim(0, 100, "11");
   av.step();
 
   // Slide 13

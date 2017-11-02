@@ -15,7 +15,7 @@ $(document).ready(function() {
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
   //blueStepAnim :This should come before JSAV Initialize
-      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(delay, time) {
+      JSAV.ext.blueStepAnim = JSAV.anim(function (delay, time) {
       if (this._shouldAnimate()) {
             //  midblue 1 start
             setTimeout(function(){
@@ -34,7 +34,7 @@ $(document).ready(function() {
                         it1_midblue3.addClass("blueboxh", {record: false});
                         setTimeout(function() {
                           it1_midblue3.removeClass("blueboxh", {record: false});
-                        }, time);  //timeout after remove class
+                        }, time);
                       }, time);
                       // midblue 3 animation close ---------------------
                     }, time);
@@ -43,9 +43,8 @@ $(document).ready(function() {
               }, time);
           }, delay);
       }
-    }, function undoBlueStep() {});
+    }, function () {});
     // BlueStepAnim END -----------------------------------------------
-
 
     //BlueStepAnim :This should come before JSAV Initialize
         JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item, time) {
@@ -154,7 +153,6 @@ $(document).ready(function() {
 
   // // Slide 7
   // av.umsg(interpret("sc7"));
-  //
   // av.step();
 
   // Slide 8
