@@ -696,11 +696,15 @@ class ODSA_RST_Module:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
 
       for link, has_directive in links.iteritems():
+        if not os.path.exists(link):
+          print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, link))
         if not has_directive:
           mod_data.insert(0, '.. odsalink:: {0}\n'.format(link))
 
       mod_data.append('\n')
       for script, has_directive in scripts.iteritems():
+        if not os.path.exists(script):
+          print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, script))
         if not has_directive:
           mod_data.append('.. odsascript:: {0}\n'.format(script))
 
