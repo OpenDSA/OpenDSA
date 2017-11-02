@@ -115,7 +115,7 @@ $(document).ready(function() {
   var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
   label3.addClass("labels");
 
-  var pricelabel = av.label("price: ", {left: rect_left + 160, top: rect_top + 110});
+  var pricelabel = av.label("print price", {left: rect_left + 160, top: rect_top + 110});
   pricelabel.addClass("labels");
   pricelabel.addClass("midlabel");
 
@@ -127,33 +127,32 @@ $(document).ready(function() {
 
   // <<--------------- STATE BOX ----------------->>
 
-  var stateX = 700;
-  var stateY = - 20;
-  var stateLabel = av.label("STATE", {left: stateX, top: stateY});
+  var stateX = 530;
+  var stateY = 40;
+  var stateLabel = av.label("STATE", {left: stateX, top: stateY + 30});
   stateLabel.addClass("statelabel");
 
-  var stateBox = av.g.rect(stateX - 25, stateY + 50, 110, 280).addClass("statebox");
+  var stateBox = av.g.rect(stateX - 25, stateY + 80, 110, 150).addClass("statebox");
 
   // price box and label
-  av.label("PRICE", {left: stateX + 5, top: stateY + 65});
+  av.label("price", {left: stateX + 13, top: stateY + 95});
   stateLabel.addClass("statelabel");
 
-  var priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
+  var priceBox = av.g.rect(stateX - 5, stateY + 135, 70, 70).addClass("bluebox");
 
-  var priceBoxLabel = av.label("", {left: stateX + 23, top: stateY + 100});
+  var priceBoxLabel = av.label("", {left: stateX + 23, top: stateY + 130});
   priceBoxLabel.addClass("labels");
   priceBoxLabel.addClass("midlabel");
 
-  // total box and label
-  av.label("TOTAL", {left: stateX + 5, top: stateY + 180});
+
+  // <<--------------- CONSOLE BOX ----------------->>
+
+  var stateX = 660;
+  var stateY = - 20;
+  var stateLabel = av.label("CONSOLE", {left: stateX + 35, top: stateY + 60});
   stateLabel.addClass("statelabel");
 
-  var totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
-  var totalBoxLabel = av.label("", {left: stateX + 23, top: stateY + 215});
-
-  totalBoxLabel.addClass("labels");
-  totalBoxLabel.addClass("midlabel");
-
+  var consoleBox = av.g.rect(stateX - 5, stateY + 110, 170, 200).addClass("consolebox");
 
   // --------------------- start slide shows
 

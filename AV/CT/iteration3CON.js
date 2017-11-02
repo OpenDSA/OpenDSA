@@ -70,7 +70,7 @@ $(document).ready(function() {
 
   // <<--------------- STATE BOX ----------------->>
 
-  var stateX = 700;
+  var stateX = 530;
   var stateY = - 20;
   var stateLabel = av.label("STATE", {left: stateX, top: stateY});
   stateLabel.addClass("statelabel");
@@ -78,7 +78,7 @@ $(document).ready(function() {
   var stateBox = av.g.rect(stateX - 25, stateY + 50, 110, 280).addClass("statebox");
 
   // price box and label
-  av.label("PRICE", {left: stateX + 5, top: stateY + 65});
+  av.label("price", {left: stateX + 13, top: stateY + 65});
   stateLabel.addClass("statelabel");
 
   var priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
@@ -88,7 +88,7 @@ $(document).ready(function() {
   priceBoxLabel.addClass("midlabel");
 
   // total box and label
-  av.label("TOTAL", {left: stateX + 5, top: stateY + 180});
+  av.label("total", {left: stateX + 13, top: stateY + 180});
   stateLabel.addClass("statelabel");
 
   var totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
