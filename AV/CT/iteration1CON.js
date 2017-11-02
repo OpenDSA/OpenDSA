@@ -82,7 +82,7 @@ $(document).ready(function() {
   av.g.rect(rect_left, rect_top + 25, 30, 60).addClass("box").css({opacity: 0.9});
   av.g.rect(rect_left + 73, rect_top + 25, 30, 60).addClass("box").css({opacity: 0.9});
   //create array contains 5 values.
-  arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
+  it1_arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
   //floor 4, long purple
   av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("box");
@@ -138,7 +138,7 @@ $(document).ready(function() {
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
   av.blueStepAnim();
   nextleft -= nodegap;
   av.step();
@@ -149,7 +149,7 @@ $(document).ready(function() {
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
   nextleft -= nodegap;
   av.step();
 
@@ -160,7 +160,7 @@ $(document).ready(function() {
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
   nextleft -= nodegap;
   av.step();
 
@@ -171,7 +171,7 @@ $(document).ready(function() {
 
   // Slide 10
   av.umsg(interpret("sc10"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
   nextleft -= nodegap;
   av.step();
 
@@ -182,7 +182,7 @@ $(document).ready(function() {
 
   // Slide 12
   av.umsg(interpret("sc12"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
   nextleft -= (nodegap + 50);
   av.step();
 
@@ -193,7 +193,7 @@ $(document).ready(function() {
 
   // Slide 14
   av.umsg(interpret("sc14"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
   nextleft -= (nodegap + 100);
   av.step();
 
