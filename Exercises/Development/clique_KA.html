@@ -1,7 +1,7 @@
 <!--
 -->
 <!DOCTYPE html>
-<html data-require="jsav math ../../AV/Development/graphUtils">
+<html data-require="jsav math ../../AV/Development/graphUtils clique_KA">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Maximum Clique Problem</title>
@@ -32,8 +32,8 @@
 
 <body data-height="750" data-width="950">
 
-<script>
-var
+<!--<script>
+/**var
   jsav,            // The JSAV object
   jsavGraph, adjacencyMat, solutionShowStat, 
   maxClique,
@@ -134,9 +134,13 @@ var clickHandler = function () {
     this.removeClass('marked');
     this.removeClass('selected');
     for(i=0;i<nodes.length;i++)
-      if(nodes[i].hasClass('selected') && jsavGraph.hasEdge(this,nodes[i]))
-         jsavGraph.getEdge(this,nodes[i]).removeClass('edgemarked');
-  }
+      if(nodes[i].hasClass('selected') && jsavGraph.hasEdge(this,nodes[i])){
+        jsavGraph.getEdge(this,nodes[i]).removeClass('edgemarked');
+        jsavGraph.getEdge(this,nodes[i]).addClass('marked');
+        jsavGraph.getEdge(this,nodes[i]).removeClass('edgeselected');
+        jsavGraph.getEdge(this,nodes[i]).css({"stroke":"black"});
+      }
+    }
   userInput = true;
 };
 
@@ -176,6 +180,7 @@ var f_reset = function () {
   }
 };
 */
+/**
 // Initialise the exercise
 var initJSAV = function (nnodes, nedges) {
   userInput = false;
@@ -219,14 +224,14 @@ var checkAnswer = function () {
     return true;
   return false;
   
-};
-</script>
+};*/
+</script>-->
 
 <div class="exercise">
   <div class="vars">
     <var id="nnodes">Khan.randRange(10,12)</var>
     <var id="nedges">2*nnodes+Khan.randRange(3, nnodes)</var>
-    <var id="JSAV">initJSAV(nnodes, nedges)</var>
+    <var id="JSAV">clique_KA.initJSAV(nnodes, nedges)</var>
   </div>
 
   <div class="problems">
@@ -239,16 +244,16 @@ var checkAnswer = function () {
       </div>
       <div class="solution" data-type="custom">
 	<div class="guess">
-	  [userInput]
+	  [clique_KA.userInput]
 	</div>
 	<div class="validator-function">
-	  	if (!checkAnswer() && !guess[0])
+	  	if (!clique_KA.checkAnswer() && !guess[0])
 	    	return ""; // User did not click,  and correct answer is not
 		 // initial array state
-	  	else return checkAnswer();
+	  	else return clique_KA.checkAnswer();
 	</div>
       </div>
-	<div class="hints"><p><var>Solution</var></p></div>
+	<div class="hints"><p><var>clique_KA.getSolution()</var></p></div>
     </div>
   </div>
 </div>

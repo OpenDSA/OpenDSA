@@ -2,7 +2,7 @@
 -->
 
 <!DOCTYPE html>
-<html data-require="jsav math ../../AV/Development/graphUtils">
+<html data-require="jsav math ../../AV/Development/graphUtils independentSet_KA">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Maximum Independent Set Problem</title>
@@ -30,7 +30,8 @@
 </head>
 
 <body data-height="750" data-width="950">
-<script >
+
+<!--<script >
 var
   jsav,            // The JSAV object
   jsavGraph, adjacencyMat, solutionShowStat, 
@@ -217,13 +218,13 @@ var checkAnswer = function () {
   return true;
   
 };
-</script>
+</script>-->
 
 <div class="exercise">
   <div class="vars">
     <var id="nnodes">Khan.randRange(10,20)</var>
     <var id="nedges">nnodes+Khan.randRange(3, nnodes)</var>
-    <var id="JSAV">initJSAV(nnodes, nedges)</var>
+    <var id="JSAV">independentSet_KA.initJSAV(nnodes, nedges)</var>
   </div>
 
   <div class="problems">
@@ -237,16 +238,16 @@ class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
 	<div class="guess">
-	  [userInput]
+	  [independentSet_KA.userInput]
 	</div>
 	<div class="validator-function">
-	  if (!checkAnswer() && !guess[0])
+	  if (!independentSet_KA.checkAnswer() && !guess[0])
 	    return ""; // User did not click,  and correct answer is not
 		 // initial array state
-	  else return checkAnswer();
+	  else return independentSet_KA.checkAnswer();
 	</div>
       </div>
-	<div class="hints"><p><var>Solution</var></p></div>;
+	<div class="hints"><p><var>independentSet_KA.getSolution()</var></p></div>;
     </div>
   </div>
 </div>
