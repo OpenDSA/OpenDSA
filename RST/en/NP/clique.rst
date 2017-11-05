@@ -23,7 +23,7 @@ CLIQUE PROBLEM
 
 Try out an instance of the Clique problem on your own.
 
-.. avembed:: Exercises/Development/clique_KA.html ka
+.. avembed:: Exercises/NP/cliquePRO.html ka
    :long_name: Practice Exercise for Clique
 
 

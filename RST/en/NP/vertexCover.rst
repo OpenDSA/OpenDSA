@@ -23,7 +23,7 @@ THE VERTEX COVER PROBLEM.
 
 Try out an instance of the Vertex Cover problem on your own.
 
-.. avembed:: Exercises/Development/vertexCover_KA.html ka
+.. avembed:: Exercises/NP/vertexCoverPRO.html ka
    :long_name: Practice Exercise for Vertex Cover
 
 .. odsascript:: AV/Development/NP/vertexCoverCON.js

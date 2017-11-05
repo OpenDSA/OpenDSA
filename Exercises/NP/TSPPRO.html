@@ -2,23 +2,36 @@
 -->
 
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="jsav math ../../AV/Development/graphUtils TSPPRO">
 <head data-height="750" data-width="950>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Traveling Salesman Problem</title>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="../../khan-exercises/local-only/main.js"></script>
+  <link rel="stylesheet" href="generic_edge.css" />
+  <!--<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="TSP_KA.css" type="text/css" />
+  <<link rel="stylesheet" href="temp_NP.css" type="text/css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> 
 
   <script src="../../JSAV/lib/jquery.transit.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-  <link rel="stylesheet" href="./TSP.css" type="text/css" />
+
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
+  
+  <script src="../../khan-exercises/khan-exercise.js"></script>-->
+
 </head>
 <body data-height="750" data-width="950">
 
-<script>
+<!--<script>
 var
   jsav,           // The JSAV object
   jsavGraph,
@@ -79,26 +92,29 @@ function checkCycle(){
 
 // Click event handler on the graph, intended for edges
 var clickHandler = function () {
+  //var element = obj;  // This is the DOM object being clicked
+  //var $this = $(obj);
   var g = jsavGraph;
   var nodes = g.nodes();
   var node;
+  var c_edge = $(this).data("edge");
   for(var i=0;i<g.nodeCount();i++){
-    if(nodes[i].value()==this.start().value())
+    if(nodes[i].value()== c_edge.start().value())
         s=i;
-    else if(nodes[i].value()==this.end().value())
+    else if(nodes[i].value()==c_edge.end().value())
         e=i;
   }
-  if(this.hasClass('selected')){
+  if(c_edge.hasClass('selected')){
     On[e] = On[e]-1;
     On[s] = On[e]-1;
-    this.css({"stroke":"black"});
-    this.removeClass('selected');
+    c_edge.css({"stroke":"black"});
+    c_edge.removeClass('selected');
   }
   else {
     On[s] = On[s]+1;
     On[e] = On[e]+1;
-    this.css({"stroke":"red"});
-    this.addClass('selected');
+    c_edge.css({"stroke":"red"});
+    c_edge.addClass('selected');
   }
 
   userInput = true;
@@ -166,10 +182,20 @@ var initJSAV = function (nnodes) {
   var edges = jsavGraph.edges();
   for(i=0;i<edges.length;i++)
     edges[i].css({"stroke-width":"1.5px","border": "5px solid transparent"});
+  //graphUtils.generate(jsavGraph,{weighted:true,nodes:nnodes,edges:edges});
+  //jsavGraph.layout();
   jsavGraph.layout();
 
   // Bind the clickHandler to handle click events on the array
-  jsavGraph.click(clickHandler,{edge:true});
+  //jsavGraph.click(clickHandler, {edge:true});
+  $(".jsavedge").on("click", clickHandler )
+  /**{
+    var edge = $(this).data("edge");
+    if (!edge.hasClass("marked")) {
+      markEdge(edge);
+    }
+  });*/
+  //
   jsavGraph.mouseleave(function() { this.removeClass("over")},
 // only for edges, don't record the changes
         {edge: true, node: false, record: false}); 
@@ -207,13 +233,13 @@ var checkAnswer = function () {
 };
 
  
-</script>
+</script>-->
 
 <div class="exercise">
 
   <div class="vars">
     <var id="nnodes">Khan.randRange(5, 6)</var>
-    <var id="JSAV">initJSAV(nnodes)</var>
+    <var id="JSAV">TSP_KA.initJSAV(nnodes)</var>
   </div>
 
   <div class="problems">
@@ -229,17 +255,17 @@ var checkAnswer = function () {
       <div class="solution" data-type="custom">
 
         <div class="guess">
-          [userInput]
+          [TSP_KA.userInput]
         </div>
 
         <div class="validator-function">
-          if (!checkAnswer() && !guess[0])
+          if (!TSP_KA.checkAnswer() && !guess[0])
             return ""; // User did not click, and correct answer is not
 	               // initial array state
-          else return checkAnswer();
+          else return TSP_KA.checkAnswer();
         </div>
        </div>
-       <div class="hints"><p><var>Answer</var></p></div>
+       <div class="hints"><p><var>TSP_KA.getSolution()</var></p></div>
 
     </div>
 

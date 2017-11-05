@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="jsav math ../../AV/Development/graphUtils threeSATPRO">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>3-sat problem.</title>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="../../khan-exercises/local-only/main.js"></script>
+    <!--<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />-->
+    <!--link rel="stylesheet" href="../../AV/Development/threeSAT_KA.css" type="text/css" /-->
+    <!--<link rel="stylesheet" href="temp_NP.css" type="text/css" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-  <script src="../../JSAV/lib/jquery.transit.js"></script>
-  <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+    <script src="../../JSAV/lib/jquery.transit.js"></script>
+    <script src="../../JSAV/lib/raphael.js"></script>
+    <script src="../../JSAV/build/JSAV-min.js"></script>
+
+    <script src="../../lib/odsaUtils-min.js"></script>
+    <script src="../../lib/odsaAV-min.js"></script>
+
+    <script src="../../khan-exercises/khan-exercise.js"></script>
+  
+  <style>
+    .jsavcontainer .jsavcanvas {
+      min-height: 150px;
+    }
+  </style>-->
+
 </head>
 <body data-height="750" data-width="950">
 
-<script>
+<!--<script>
 var
   jsav,           // The JSAV object
   jsavArr,        // The array that the user manipulates (JSAV object)
@@ -68,27 +87,15 @@ var clickHandler = function (index, e) {
 
 // reset function definition
 var f_reset = function () {
-  jsavArr.clear();             // Re-initialize the displayed array object
-  jsavArr = jsav.ds.array(literals, {indexed: false});
-  jsavArr.click(clickHandler); // Rebind click handler after reset
+  for(var k=0;k<literalcnt;k++)
+   jsavArr.css(k,{"background-color":"white"});
+  for(var i=0;i<literalcnt;i++)
+  	assigned[i]=0;
   for(var k=0;k<clausecnt;k++)
 	labels[k].css({"color":"black"});
-  answer=-1;
   userInput = false;
 };
 
-var f_nosol = function () {
-  jsavArr.clear();             // Re-initialize the displayed array object
-  jsavArr = jsav.ds.array(literals, {indexed: false});
-  jsavArr.click(clickHandler); // Rebind click handler after reset
-  for(var k=0;k<clausecnt;k++)
-	labels[k].css({"color":"black"});
-  for(var i=0;i<literalcnt;i++)
-  	assigned[i]=0;
-  answer=0;
-  userInput = true;
-   
-}
 Array.prototype.contains = function(k) {
   for(var i=0; i < this.length; i++){
     if(this[i] === k){
@@ -163,7 +170,7 @@ var initJSAV = function (cntc,cntl) {
   userInput = false;
   literals = [];
   for(var i=1;i<=literalcnt;i++)
-	literals.push("x"+i);
+	literals.push("<code>x_"+i+"</code>");
   clauses = [];
   mapping=new Array(literalcnt);
   for(var i=0;i<literalcnt;i++)
@@ -171,7 +178,7 @@ var initJSAV = function (cntc,cntl) {
 //mapping[i]=[];
   labels=new Array(clausecnt);
   var x=0;
-  var y=25;
+  var y=35;
   var ln=0;
   var str=" ";
   for(var i=0;i<clausecnt;i++){
@@ -188,21 +195,25 @@ var initJSAV = function (cntc,cntl) {
 			blacklist.push(literalcnt + tmp);
 		clauses[i][j]=tmp;
 	}
-        str = "( ";	
+        str = "<code>( ";	
 	for(var j=0;j<3;j++){
-		if(clauses[i][j]<0)
-			str=str+"^";
-		str=str+literals[Math.abs(clauses[i][j])-1];
+		if(clauses[i][j]<0){
+			str=str+"\\overline{";
+		        str=str+literals[Math.abs(clauses[i][j])-1];
+                        str+="}";
+                 }
+                 else
+		        str=str+literals[Math.abs(clauses[i][j])-1];
 		if(j<2)
 			str=str+" + ";
 	}
-	str=str+" )";
+	str=str+" ).</code>";
 	labels[i]=jsav.label(str,{top:y,left:x});
 	str=" ";
-	x = x+112;
-	if(x>600){
+	x = x+125;
+	if(x>550){
         	ln = ln + Math.floor(x/600);
-		y = y+ln*18;
+		y = y+25;
 		x=5;
 	}
 	
@@ -214,14 +225,17 @@ var initJSAV = function (cntc,cntl) {
   jsavArr.click(clickHandler);
   // Set up handler for reset button
   $("#reset").click(function () { f_reset(); });
-  $("#nosol").click(function () { f_nosol(); });
 };
 
 // Check user's answer for correctness: User's array must match answer
 var checkAnswer = function () {
     var cnt=0;
-    if(answer==0 && generateAnswer()==0)
+    if(document.getElementById("noSol").checked==true){
+      if(answer==0)
 	return true;
+      else
+        return false;
+    }
     for(var k=0;k<clausecnt;k++){
         cnt=0;	
 	for(j=0;j<3;j++){
@@ -245,29 +259,34 @@ var checkAnswer = function () {
 };
 
 var ShowSolution = function(){
-	if(generateAnswer()==0)
+	if(generateAnswer()==0){
+                answer=0;
 		return "The expression is not satisfiable";
-        var str="A satisfying assignment : ";
+        }
+        var str="A satisfying assignment : <code>";
 	for(var i=0;i<literalcnt;i++){
+                if(i>0)
+                     str+=" , ";
     		if(correctassignment[i]==1){
-        		str+="x"+(i+1)+" = T ";
+        		str+="x_"+(i+1)+" = T ";
     		}
     		else if(correctassignment[i]==-1){
-        		str+="x"+(i+1)+" = F ";
+        		str+="x_"+(i+1)+" = F ";
     		}
     	        	
 	}
+        str+="</code>";
 	return str;
 }
 
 
-</script>
+</script>-->
 
 <div class="exercise">
   <div class="vars">
     <var id="literalcnt">Khan.randRange(4,6)</var>
     <var id="clausecnt">Khan.randRange(8,12)</var>
-    <var id="JSAV">initJSAV(clausecnt,literalcnt)</var>
+    <var id="JSAV">threeSAT_KA.initJSAV(clausecnt,literalcnt)</var>
   </div>
 
   <div class="problems">
@@ -275,24 +294,26 @@ var ShowSolution = function(){
       <p class="problem">Your task in this exercise is to find out an assignment of the boolean variables that makes the expression true or declare that  no such assignment exists.</p>
       <div class="question">
         <p>Assign the variables appropriately to satisfy the expression. </p>
+        <p>Click on the variable once to assign it true , twice to assign it false and thrice to reset.</p> 
         <input id="reset" type="button" value="Reset" />	
-        <input id="nosol" type="button" value="Not Satisfiable" />	
+        <form action="">
+           <input type="checkbox" id="noSol" value="noSol">Not Satisfiable</input>
+        </form>
         <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
         <div class="guess">
-          [userInput]
+          [threeSAT_KA.userInput]
         </div>
         <div class="validator-function">
-          if (!checkAnswer() && !guess[0])
+          if (!threeSAT_KA.checkAnswer() && !guess[0])
             return ""; // User did not click, and correct answer is not
 	               // initial array state
-          else return checkAnswer();
+          else return threeSAT_KA.checkAnswer();
         </div>
       </div>
       <div class="hints">
-        <p>Click on the variable once to assign it true , twice to assign it false.</p> 
-        <p><var>[Solution]</var></p> 
+        <p><var>[threeSAT_KA.getSolution()]</var></p> 
      </div>
     </div>
   </div>

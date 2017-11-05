@@ -1,25 +1,87 @@
 <!--
 -->
-
 <!DOCTYPE html>
-<html data-require="jsav math ../../AV/Development/graphUtils">
+<html data-require="jsav math ../../AV/Development/graphUtils hamiltonianCycPRO">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
   <title>Hamiltonian Cycle Problem</title>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-
-  <!--<script src="../../JSAV/lib/jquery.transit.js"></script>
-  <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <script src="graphUtilsHC.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="../../khan-exercises/local-only/main.js"></script>
+  <link rel="stylesheet" href="generic_edge.css" />
+  <!--<style type="text/css">
+    .selected {
+      background-color: #FFF050;
+    } 
+  </style>-->
+<!--
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-  <link rel="stylesheet" href="./hamiltonianCycle.css" type="text/css" />-->
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../AV/Development/hamiltonianCycle.css" type="text/css" />
+  <script type="text/javascript" src="../../AV/graphUtils.js"></script>-->
+
+  <!--<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
+
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />-->
+  <!--<link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />-->
+
+  <!--<script src="../../khan-exercises/khan-exercise.js"></script>-->
+
+  
+
 </head>
+
 <body data-height="750" data-width="950">
 
-<script>
+<div class="exercise">
+  <div class="vars">
+    <var id="nnodes">Khan.randRange(7, 9)</var>
+    <var id="nedges">nnodes+Khan.randRange(5,nnodes)</var>
+    <var id="JSAV">hamiltonianCycle_KA.initJSAV(nnodes,nedges)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem">Your task in this exercise is to find a Hamiltonian Cycle.</p>
+        <div class="question">
+          <p>Select the edges that can be a part of a Hamiltonian Cycle.</p>
+          <input id="reset" type="button" value="Reset" />  
+          <form action="">
+             <input type="checkbox" id="noSol" value="noSol">No Cycle</input>
+          </form>
+          <div id="jsav" class="jsavcanvas"></div>
+        </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [hamiltonianCycle_KA.userInput]
+        </div>
+        <div class="validator-function">
+            if (!hamiltonianCycle_KA.checkAnswer() && !guess[0]){
+              return ""; // User did not click, and correct answer is not
+                 // initial array state
+            }else{
+              return hamiltonianCycle_KA.checkAnswer();
+            }           
+        </div>
+      </div>
+     <div class="hints"><p><var>[hamiltonianCycle_KA.getSolution()]</var></p></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<!--<script>
+/*global define */
 var
   jsav,           // The JSAV object
   jsavGraph,
@@ -44,7 +106,6 @@ var getSol= function(curr,path){
           if(jsavGraph.hasEdge(gnodes[curr],gnodes[0])){
              path.push(0);
              solArr=path.slice(0);
-             console.log(solArr);
              return true;
           }
           else
@@ -171,23 +232,26 @@ var initJSAV = function (nnodes,nedges) {
   jsav.displayInit();
   // Set up handler for reset button
   $("#reset").click(f_reset);
-  $("#noHC").click(f_noHC);
 };
 
 
 // Check user's answer for correctness: User's array must match answer
 var checkAnswer = function () {
-  
+ 
+  if(document.getElementById("noSol").checked==true){
+      if(Answer)
+        return false;
+      else
+        return true;
+    }
+ 
   if(Answer){
     for(var i=0;i<gnodes.length;i++)
        if(From[i]!=1 || To[i]!=1)
           return false;
     return true;
   }
-  else if(!guessedAns)
-    return true;
-  else
-    return false;
+  return false;
   
 };
 
@@ -199,41 +263,7 @@ var showSolution = function(){
   }
   else
     return "The graph consists of no Hamiltonian Cycle";
-    
 }
- 
-</script>
+</script>-->
 
-<div class="exercise">
-  <div class="vars">
-    <var id="nnodes">Khan.randRange(7, 9)</var>
-    <var id="nedges">nnodes+Khan.randRange(5,nnodes)</var>
-    <var id="JSAV">initJSAV(nnodes,nedges)</var>
-  </div>
 
-  <div class="problems">
-    <div> <!-- Supresses answer box -->
-      <p class="problem">Your task in this exercise is to find a Hamiltonian Cycle.</p>
-      <div class="question">
-        <p>Select the edges that can be a part of a Hamiltonian Cycle.</p>
-        <input id="reset" type="button" value="Reset" />	
-        <input id="noHC" type="button" value="No Hamiltonian Cycle" />	
-        <div id="jsav" class="jsavcanvas"></div>
-      </div>
-      <div class="solution" data-type="custom">
-        <div class="guess">
-          [userInput]
-        </div>
-        <div class="validator-function">
-          if (!checkAnswer() && !guess[0])
-            return ""; // User did not click, and correct answer is not
-	               // initial array state
-          else return checkAnswer();
-        </div>
-      </div>
-     <div class="hints"><p><var>[Solution]</var></p></div>
-    </div>
-  </div>
-</div>
-</body>
-</html>

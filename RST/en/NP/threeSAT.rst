@@ -23,8 +23,7 @@
 
 Try out an instance of the 3-SAT problem on your own.
 
-.. avembed:: Exercises/Development/threeSAT_KA.html ka
+.. avembed:: Exercises/NP/threeSATPRO.html ka
    :long_name: Practice Exercise for 3-SAT
 
 .. odsascript:: AV/Development/NP/threeSATCON.js
-
