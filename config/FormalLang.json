@@ -152,6 +152,12 @@
         "sections": {}
       }
     },
+    "Context-Free Languages": {
+      "FormalLang/CFL": {
+        "long_name": "Context-Free Languages",
+        "sections": {}
+      }
+    },
     "Limits to Computing": {
       "SeniorAlgAnal/Impossible": {
         "long_name": "Unsolveable Problems",
