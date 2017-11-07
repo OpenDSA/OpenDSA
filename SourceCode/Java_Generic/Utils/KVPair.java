@@ -30,11 +30,11 @@ public class KVPair<K extends Comparable<K>, E> implements Comparable<KVPair<K, 
 
   public String toString() {
     String s = "(";
-    if (theKey != null) s += theKey.toString();
-    else s += "null";
+    if (theKey != null) { s += theKey.toString(); }
+    else { s += "null"; }
     s += ", ";
-    if (theVal != null) s += theVal.toString();
-    else s += "null";
+    if (theVal != null) { s += theVal.toString(); }
+    else { s += "null"; }
     s += ")";
     return s;
   }

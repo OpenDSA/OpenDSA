@@ -16,7 +16,7 @@ $(document).ready(function() {
   av.umsg("We'll start with the following four <tt>Link</tt> objects, already connected together, and the first one pointed to by reference variable <tt>head</tt>. By the way, notice that we use a slash through a <tt>Next</tt> field to represent <tt>null</tt>, in the last <tt>Link</tt> here.");
   var list = av.ds.list({left: linkedListStartPositionX, top:linkedListStartPositionY});
   list.addLast(20).addLast(30).addLast(10).addLast(5);
-  var head = av.pointer("head", list.get(0),{anchor:"center bottom", myAnchor:"right top",top:10, left:-20, arrowAnchor: "center bottom"});
+  var head = av.pointer("head", list.get(0),{anchor:"center bottom", myAnchor:"right top",top:0, left:-35, arrowAnchor: "center bottom"});
   list.layout();
   av.displayInit();
 
@@ -44,6 +44,6 @@ $(document).ready(function() {
   pseudo.setCurrentLine(4);
   av.label("myVal", {left: linkedListStartPositionX + 360, top:linkedListStartPositionY + 5});
   av.g.rect(linkedListStartPositionX + 410, linkedListStartPositionY + 15, 45, 30);
-  av.label("30", {left: linkedListStartPositionX + 420, top:linkedListStartPositionY + 5});
+  av.label("30", {left: linkedListStartPositionX + 423, top:linkedListStartPositionY + 3});
   av.recorded();
 });

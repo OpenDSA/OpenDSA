@@ -12,7 +12,7 @@
 .. index:: ! Finite Automaton Exercise Generator
 
 Finite Automaton Exercise Generator
-==============
+===================================
 
 Exercise Generator
 

@@ -239,8 +239,6 @@ algorithms are shown.
 .. inlineav:: GrowthRatesCON dgm
     :align: center
 
-|
-
 .. inlineav:: GrowthRatesZoomCON dgm
    :align: center
 

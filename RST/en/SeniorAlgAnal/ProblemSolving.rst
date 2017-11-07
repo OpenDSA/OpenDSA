@@ -12,8 +12,8 @@
 An Introduction to Problem Solving
 ==================================
 
-Getting Started
----------------
+An Introduction to Problem Solving
+----------------------------------
 
 This document presents a brief overview of selected material from four
 textbooks (see [FL95, Lev94, WL99, Zei07] in the bibliography).
@@ -98,7 +98,7 @@ ineffective problem solvers.
 
 
 Investigation and Argument
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Problem solving has two parts [Zei07]: the investigation and the
 argument.
@@ -119,7 +119,7 @@ contradiction, and induction.
 
 
 Heuristics for Problem Solving "In the Small"
----------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Write it down**
 After motivation and mental attitude, the most important limitation on
@@ -199,7 +199,7 @@ They might give clues to the solution.
 
 
 Problem Solving "In the Large"
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are lots of standard techniques for solving larger and messier
 "real-world" problems (the type of problems often encountered by
@@ -251,7 +251,7 @@ process.
 
 
 Pairs Problem Solving
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 Whimbey & Lochhead [WL99] discuss a technique for pair problem solving
 that separates the pair into a solver and a listener.
@@ -263,7 +263,7 @@ See the handout for more details on this.
 
 
 Errors in Reasoning
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Again from Whimbey & Lochhead [WL99] comes a description of how people
 go wrong in problem solving.
@@ -287,7 +287,7 @@ such as "read in thought groups", "skim for concepts", and "don't
 re-read", are all ineffective.
 
 References
-----------
+~~~~~~~~~~
 
 [FL95] H. Scott Fogler and Steven E. LeBlanc.
 Strategies for Creative Problem Solving.

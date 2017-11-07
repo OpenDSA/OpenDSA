@@ -1,0 +1,57 @@
+<!--
+    Linked List Deletion mini-proficiency exercise.
+    Written by Jieun Chon and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math IterationEX1PRO LinkList">
+  <head>
+    <title>Pointer Exercise 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel = "stylesheet"
+      type = "text/css"
+      href = "IterationEX.css" />
+
+  </head>
+
+  <body data-height="800" data-width="950">
+
+    <div class="exercise">
+      <div class="vars">
+        <var id="pos">Khan.randRange(0, 4)</var>
+        <var id="JSAV">iterationEX1PRO.initJSAV(pos)</var>
+      </div>
+
+      <div class="problems">
+        <div id="IterationEX1PROp"> <!-- Supresses answer box -->
+          <p class="problem">Your task in this exercise is to show the
+            behavior for some code.</p>
+          <div class="question">
+            <p>This is set up for the iteration exercise 1<br/></p>
+            <tt>I will test the current price.</tt><br/>
+            <tt>Also, I will ask current total price</tt><br/>
+            <p>The position is <b><var>pos</var></b></p>
+
+            <div id="IterationEX1PRO" class="jsavcanvas"></div>
+            <input id="reset" type="button" value="Reset" />
+            <textarea rows="1" cols="5" style="resize:none" id="priceAnswerBox"></textarea>
+            <textarea rows="1" cols="5" style="resize:none" id="totalAnswerBox"></textarea>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [iterationEX1PRO.userInput] </div>
+            <div class="validator-function">
+              if (!iterationEX1PRO.checkAnswer() && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else {return iterationEX1PRO.checkAnswer();}
+            </div>
+          </div>
+          <div class="hints">
+            <p>Make sure to reproduce the behavior in the correct order.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

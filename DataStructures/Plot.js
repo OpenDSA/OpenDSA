@@ -13,8 +13,9 @@
       return points;
     },
 
+
     // Draw an arbitrary curve from a function passed in
-    drawCurve: function(func, jsav, xStart, yStart, yEnd, xMax, yMax, width, height, label, labelx, labely, increment, isLog) {
+    drawCurve: function(func, jsav, xStart, yStart, yEnd, xMax, yMax, width, height, label, labelx, labely, increment, isLog, gap) {
       var points = [];
       var xStep = width / xMax;
       var start = isLog ? 1 : 0;
@@ -30,6 +31,7 @@
         points.push([x, y]);
       }
       jsav.label(label, {left: x + labelx, top: y + labely});
+      jsav.g.polyline(points, {"stroke-width": 3});
       return points;
     }
   }; // Plot

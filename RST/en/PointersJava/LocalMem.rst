@@ -15,8 +15,11 @@
 Local Memory
 ============
 
+Local Memory
+------------
+
 Thanks For The Memory: Allocation and Deallocation
---------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :term:`Local variables <local variable>` are the programming structure
 everyone uses but no one thinks about.
@@ -47,13 +50,8 @@ A variable is :term:`deallocated` when the system reclaims the memory
 from the variable, so it no longer has an area to store its value.
 For a variable, the period of time from its allocation until its
 deallocation is called its :term:`lifetime`.
-
-The most common memory related error is using a deallocated variable.
-For local variables, modern languages automatically protect against
-this error.
-With pointers, as we will see however, the programmer must make sure
-that allocation is handled correctly.
-
+Within a program, the parts of the program that can see and access the
+variable are its :term:`scope`.
 
 The most common variables you use are :term:`local variables` within
 functions such as the variables ``num`` and ``result`` in the
@@ -139,7 +137,7 @@ the runtime stack as this example is being executed.
 
 
 Local Parameters
-----------------
+~~~~~~~~~~~~~~~~
 
 Local variables are tightly associated with their function |---| they
 are used there and nowhere else.
@@ -230,11 +228,11 @@ lifetime.
 
 
 How Does The Function Call Stack Work?
---------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You do not need to know how local variables are implemented during a
-function call, but here is a rough outline of the steps if you are
-curious.
+function call to be able to use them correctly,
+but here is a rough outline of the steps if you are curious.
 The exact details of the implementation are language and compiler
 specific.
 However, the basic structure below approximates the method used by

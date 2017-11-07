@@ -30,7 +30,7 @@
  color: yellow;
 }
 
-#iteration3CON .statelabel  {
+#iteration2CON .statelabel, #iteration3CON .statelabel  {
  font-size: 120%;
  font-weight: 600;
 }
@@ -38,7 +38,7 @@
 #iteration3CON .valuelabel  {
  font-size: 150%;
  color: yellow;
- background-color: DarkSlateBlue;
+ background-color: #593f73;
  }
 
 #iteration1CON .box, #iteration2CON .box, #iteration3CON .box  {
@@ -47,22 +47,42 @@
   z-index: -500;
 }
 
-#iteration3CON .statebox  {
-  stroke : Maroon;
-  z-index: -500;
-  border-width: inherit;
-  border-radius: 50px;
-}
-
 #iteration1CON .bluebox, #iteration2CON  .bluebox, #iteration3CON  .bluebox  {
   fill : rgb(91, 91, 165);
   stroke : rgb(91, 91, 165);
   z-index: -500;
 }
 
-#iteration1CON .blueboxhigh, #iteration2CON  .blueboxhigh, #iteration3CON  .blueboxhigh  {
+#iteration1CON .blueboxh, #iteration2CON  .blueboxh, #iteration3CON  .blueboxh  {
   fill : #e6eeff;
   stroke : #e6eeff;
+}
+
+#iteration2CON .statebox, #iteration3CON .statebox  {
+  stroke : Maroon;
+  z-index: -500;
+  border-width: inherit;
+  border-radius: 50px;
+}
+
+#iteration2CON .consolebox, #iteration3CON .consolebox  {
+  stroke : white;
+  fill: black;
+  z-index: -500;
+  border-width: inherit;
+  border-radius: 50px;
+}
+
+#iteration3CON  .calbox  {
+  fill : #805ba5;
+  stroke : #805ba5;
+  z-index: -500;
+}
+
+#iteration3CON  .calboxhigh  {
+  fill : #f2eff6;
+  stroke : #f2eff6;
+  z-index: -500;
 }
 
 

@@ -2,17 +2,17 @@
 /* *** ODSATag: AStack1 *** */
 class AStack implements Stack {
   private Object stackArray[];    // Array holding stack
-  private static final int defaultSize = 10;
+  private static final int DEFAULT_SIZE = 10;
   private int maxSize;            // Maximum size of stack
   private int top;                // First free position at top
 
   // Constructors
   AStack(int size) {
     maxSize = size;
-    top = 0; 
+    top = 0;
     stackArray = new Object[size]; // Create stackArray
   }
-  AStack() { this(defaultSize); }
+  AStack() { this(DEFAULT_SIZE); }
 /* *** ODSAendTag: AStack1 *** */
 
   String toString() {
@@ -38,7 +38,7 @@ class AStack implements Stack {
 
 // Remove and return top element
 /* *** ODSATag: AStackPop *** */
-  Object pop() {               
+  Object pop() {
     if (top == 0) return null;
     return stackArray[--top];
   }

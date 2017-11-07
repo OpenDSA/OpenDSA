@@ -18,16 +18,16 @@ class Link {
     return data;
   }
 
-  Object setData(Object newData) { // Set the data field
-    return data = newData;
+  void setData(Object newData) { // Set the data field
+    data = newData;
   }
 
   Link getNext() { // Return the next field
     return next;
   }
 
-  Link setNext(Link newNext) { // Set the next field
-    return next = newNext;
+  void setNext(Link newNext) { // Set the next field
+    next = newNext;
   }
 }
 /* *** ODSAendTag: Link *** */

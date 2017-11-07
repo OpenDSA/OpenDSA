@@ -19,8 +19,11 @@
 Turing Machines
 ===============
 
+Turing Machines
+---------------
+
 A General Model of Computation
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We would like to define a general model of computation that is as
 simple as possible.
@@ -150,7 +153,7 @@ enter state :math:`p` and
 
 
 Interpreting Turing Machines
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A :term:`configuration` for a Turing machine looks like this:
 
@@ -247,7 +250,7 @@ computes :math:`f': \{I\}^* \rightarrow \{I\}^*` where
 
 
 Turing-Decideable vs. Turing-Acceptable Languages
--------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A language :math:`L \subset \Sigma_0^*` is :term:`Turing-decidable`
 iff function :math:`\chi_L: \Sigma^*_0 \rightarrow \{\fbox{Y}, \fbox{N}\}`
@@ -322,7 +325,7 @@ Example: Collatz function.
 
 
 Making More Complicated Machines
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Lemma**: If
 
@@ -419,7 +422,7 @@ Here are some basic machines and notation
 
 
 Turing Machine Extensions
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When we give extentions or new functionality to a computing system,
 sometimes they change something fundamental about the capabilies of

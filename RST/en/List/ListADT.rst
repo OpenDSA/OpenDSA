@@ -14,8 +14,8 @@
 The List ADT
 ============
 
-List Terminology and Notation
------------------------------
+The List ADT
+------------
 
 We all have an intuitive understanding of what we mean by a "list".
 We want to turn this intuitive understanding into a concrete data

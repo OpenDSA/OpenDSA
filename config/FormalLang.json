@@ -71,8 +71,7 @@
       "Background/SetDef": {
         "long_name": "Set Definitions",
         "sections": {
-          "Set Notation": {},
-          "Relations": {
+          "Set Notation": {
             "SetTFrelation": {
               "long_name": "Relations Exercise",
               "required": true,
@@ -124,6 +123,38 @@
       },
       "FormalLang/Minimization": {
         "long_name": "Minimizing the Number of States in a DFA",
+        "sections": {}
+      }
+    },
+    "Regular Expressions (Lecture 5)": {
+      "FormalLang/RegEx": {
+        "long_name": "Regular Expressions",
+        "sections": {}
+      },
+      "FormalLang/RegGrammar": {
+        "long_name": "Regular Grammars",
+        "sections": {}
+      }
+    },
+    "Properties of Regular Grammars (Lectures 7, 8)": {
+      "FormalLang/RegProp": {
+        "long_name": "Properties of Regular Grammars",
+        "sections": {}
+      }
+    },
+    "Pushdown Automata": {
+      "FormalLang/PDA": {
+        "long_name": "Pushdown Automata",
+        "sections": {}
+      },
+      "FormalLang/NPDA": {
+        "long_name": "Nondeterministic Pushdown Automata",
+        "sections": {}
+      }
+    },
+    "Context-Free Languages": {
+      "FormalLang/CFL": {
+        "long_name": "Context-Free Languages",
         "sections": {}
       }
     },

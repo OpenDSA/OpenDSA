@@ -154,7 +154,7 @@ sequence :math:`\langle3, 4, 5\rangle`.
 
 
 Relations
----------
+~~~~~~~~~
 
 A :term:`relation` :math:`R` over set :math:`\mathbf{S}` is a set of
 ordered pairs from :math:`\mathbf{S}`.

@@ -48,7 +48,7 @@ and ``remove`` methods must maintain this property.
 
 
 Insert Practice Exericse
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/List/AlistInsertPRO.html ka
    :long_name: Array-based List Insert Exercise

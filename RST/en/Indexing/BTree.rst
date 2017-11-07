@@ -121,7 +121,7 @@ retaining the B-tree property.
 The middle of the five children is promoted to its parent.
 
 B+ Trees
---------
+~~~~~~~~
 
 The previous section mentioned that B-trees are universally used
 to implement large-scale disk-based systems.
@@ -451,7 +451,7 @@ San Francisco as part of his |external_link| package.
        once they were completed!
 
 B-Tree Analysis
----------------
+~~~~~~~~~~~~~~~
 
 The asymptotic cost of search, insertion, and deletion of
 records from B-trees, :math:`\mathrm{B}^+` trees, and

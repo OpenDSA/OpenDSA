@@ -10,10 +10,13 @@
 Number Problems
 ===============
 
-Introduction
-------------
+Number Problems
+---------------
 
-This moudle presents a variety of algorithms related to mathematical
+Introduction
+~~~~~~~~~~~~
+
+This module presents a variety of algorithms related to mathematical
 computations on numbers.
 Examples are activities like multiplying two numbers or raising a
 number to a given power.
@@ -65,7 +68,7 @@ such operations.
 
 
 Exponentiation
---------------
+~~~~~~~~~~~~~~
 
 We will start our examination of standard numerical algorithms by
 considering how to perform exponentiation.
@@ -116,7 +119,7 @@ This is far better (in fact, exponentially better) than performing
 
 
 Largest Common Factor
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 We will next present Euclid's algorithm for finding the largest common
 factor (LCF) for two integers.

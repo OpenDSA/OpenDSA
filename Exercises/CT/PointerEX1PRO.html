@@ -1,0 +1,80 @@
+<!--
+    Linked List Deletion mini-proficiency exercise.
+    Written by Jieun Chon and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math PointerEX1PRO LinkList">
+  <head>
+    <title>Pointer Exercise 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+
+      #PointerEX1PRO .jsavcontainer{
+        height: auto;
+      }
+
+      #PointerEX1PRO .jsavnode {
+        min-width: 100px !important;
+        min-height: 80px !important;
+      }
+      #PointerEX1PRO .nullBox {      /* For the null nodes */
+        box-shadow: none;
+        border-width: 0;
+        background-color: transparent;
+      }
+      #PointerEX1PRO .jsavpointer {
+        width: 40px;
+        text-align: center;
+        cursor: pointer;
+      }
+      #PointerEX1PRO .highlight {      /* For the pointer */
+        background-color: yellow;
+      }
+
+
+
+    </style>
+  </head>
+
+  <body data-height="800" data-width="950">
+
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">pointerEX1PRO.initJSAV()</var>
+      </div>
+
+      <div class="problems">
+        <div id="PointerEX1PROp"> <!-- Supresses answer box -->
+          <p class="problem">Your task in this exercise is to show the
+            behavior for some code.</p>
+          <div class="question">
+            <p>The following lines of code will set up the picture
+            below:<br/></p>
+            <tt>Employee johnRef = new Employee("John", 1000);</tt><br/>
+            <tt>Employee samRef = new Employee("Sam", 2000);</tt><br/>
+            <tt>Employee empRef;</tt><br/>
+            <p>Now, modify the picture below to show the effects of
+            executing the following lines of code.</p>
+            <div id="PointerEX1PRO" class="jsavcanvas"></div>
+            <input id="reset" type="button" value="Reset" />
+            <input id="makenull" type="button" value="makenull" />
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [pointerEX1PRO.userInput] </div>
+            <div class="validator-function">
+              if (!pointerEX1PRO.checkAnswer() && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else {return pointerEX1PRO.checkAnswer();}
+            </div>
+          </div>
+          <div class="hints">
+            <p>Make sure to reproduce the behavior in the correct order.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

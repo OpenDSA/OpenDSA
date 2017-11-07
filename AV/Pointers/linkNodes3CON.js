@@ -16,7 +16,7 @@ $(document).ready(function() {
   av.umsg("Let's start again with our original series of <tt>Link</tt> nodes.");
   var list = av.ds.list({left: linkedListStartPositionX, top:linkedListStartPositionY});
   list.addLast(20).addLast(30).addLast(10).addLast(5);
-  var head = av.pointer("head", list.get(0),{anchor:"center bottom", myAnchor:"right top",top:10, left:-20, arrowAnchor: "center bottom"});
+  var head = av.pointer("head", list.get(0),{anchor:"center bottom", myAnchor:"right top",top:0, left:-35, arrowAnchor: "center bottom"});
   list.layout();
   av.displayInit();
 
@@ -58,7 +58,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 9
-  av.umsg("And here we are. Now <tt>curr</tt> points to a <tt>Link</tt> with a <tt>null</tt> value in its <tt>next</tt> field. So this loop stops."); 
+  av.umsg("And here we are. Now <tt>curr</tt> points to a <tt>Link</tt> with a <tt>null</tt> value in its <tt>next</tt> field. So this loop stops.");
   pseudo.setCurrentLine(2);
   av.recorded();
 });

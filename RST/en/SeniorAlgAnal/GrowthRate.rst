@@ -117,7 +117,7 @@ growth **rate** is the same!
 
 
 Asymptotic Notation
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. math::
 

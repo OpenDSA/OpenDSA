@@ -241,7 +241,7 @@ Here is a visualization of the binary search method.
 Binary Search Practice Exercise
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. avembed:: AV/Searching/binarySearchPRO.html ss
+.. avembed:: AV/Searching/binarySearchPRO.html pe
    :long_name: Binary Search Proficiency Exercise
 
 
