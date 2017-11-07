@@ -10,6 +10,12 @@
 General Tree Implementations
 ============================
 
+General Tree Implementations
+----------------------------
+
+Introduction
+~~~~~~~~~~~~
+
 We now tackle the problem of devising an implementation for general
 trees that allows efficient processing for all member functions of the
 ADTs of Module :numref:`<GenTreeIntro>`.
@@ -29,7 +35,7 @@ from a node, requiring that the node's space allocation be adjusted
 accordingly.
 
 List of Children
-----------------
+~~~~~~~~~~~~~~~~
 
 Our first attempt to create a general tree implementation is called
 the "list of children" implementation for general trees.
@@ -84,7 +90,7 @@ by simply adding the root of :math:`\mathbf{T}` to :math:`R` 's list
 of children.
 
 The Left-Child/Right-Sibling Implementation
--------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 With the "list of children" implementation, it is difficult to
 access a node's right sibling.
@@ -133,7 +139,7 @@ amount of space in the node array.
    node :math:`R'`.
 
 Dynamic Node Implementations
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The two general tree implementations just described use an
 array to store the collection of nodes.
@@ -221,8 +227,8 @@ array.
    (a) The general tree.
    (b) The tree representation.
 
-Dynamic "Left-Child/Right-Sibling" Implementation
--------------------------------------------------
+Dynamic Left-Child/Right-Sibling Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The "left-child/right-sibling" implementation
 stores a fixed number of pointers with each node.

@@ -45,16 +45,16 @@ Example:
 .. code-block:: javascript
 
   localStorage["event-1377743343193-8"] = '{
-                                            "type": "document-ready",
-                                            "desc": "\"User loaded the 00.01.01 - How to Use this System\"",
-                                            "av": "",
-                                            "uiid": 1500227646237,
-                                            "module": "Intro",
-                                            "user_email": "hshahin@email.edu",
-                                            "inst_book_id": "31",
-                                            "inst_section_id": "",
-                                            "tstamp": 1500227646286
-                                           }'                                          
+    "type": "document-ready",
+    "desc": "\"User loaded the 00.01.01 - How to Use this System\"",
+    "av": "",
+    "uiid": 1500227646237,
+    "module": "Intro",
+    "user_email": "hshahin@email.edu",
+    "inst_book_id": "31",
+    "inst_section_id": "",
+    "tstamp": 1500227646286
+  }'                                          
 
 Proficiency Exercise Attempt Object
 -----------------------------------

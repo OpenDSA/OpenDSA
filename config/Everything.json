@@ -5103,9 +5103,11 @@
         "sections": {}
       },
       "Development/GenTreeImplement": {
-        "long_name": "General Tree Implementations",
-        "sections": {}
-      },
+        "long_name": "General Tree Implementations", 
+        "sections": {
+          "General Tree Implementations": {}
+        }
+      }, 
       "Development/Kary": {
         "long_name": "K-ary Tree Implementations",
         "sections": {}
@@ -5114,7 +5116,9 @@
     "Limits to Computing": {
       "NP/LimComp": {
         "long_name": "Chapter Intro: Limits to Computing",
-        "sections": {}
+        "sections": {
+          "Limits to Computing": {}
+        }
       },
       "NP/Reduction": {
         "long_name": "Reductions",

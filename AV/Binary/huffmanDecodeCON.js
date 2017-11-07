@@ -138,4 +138,4 @@ $(document).ready(function () {
   // Slide 17
   av.umsg(interpret("av_c24"));
   av.recorded();
-}(jQuery));
+});

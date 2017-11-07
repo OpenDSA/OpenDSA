@@ -11,10 +11,7 @@ clean:
 
 Demo: UpDown
 
-build:
-	mkdir build
-
-UpDown: build Demo/UpDown.1 Demo/UpDown.2 Utils/Processing.java
+UpDown: Demo/UpDown.1 Demo/UpDown.2 Utils/Processing.java
 	@echo "UpDown Test"
 	-@rm -rf build/UpDown
 	@mkdir build/UpDown
@@ -27,7 +24,7 @@ Misc: LargestTest Anal
 
 LargestTest: build/LargestTest/success
 
-build/LargestTest/success: build Misc/LargestTest.java
+build/LargestTest/success: Misc/LargestTest.java
 	@echo "Largest Test"
 	-@rm -rf build/LargestTest
 	@mkdir build/LargestTest
@@ -38,7 +35,7 @@ build/LargestTest/success: build Misc/LargestTest.java
 
 Anal: build/Anal/success
 
-build/Anal/success: build Misc/Anal.java
+build/Anal/success: Misc/Anal.java
 	@echo "Analysis Code Test"
 	-@rm -rf build/Anal
 	@mkdir build/Anal
@@ -51,7 +48,7 @@ Lists: ListTest DoubleTest FreeList StackTest QueueTest
 
 ListTest: build/ListTest/success
 
-build/ListTest/success: build Lists/ListTest.java Lists/List.java Lists/AList.java Lists/LList.java Lists/Link.java
+build/ListTest/success: Lists/ListTest.java Lists/List.java Lists/AList.java Lists/LList.java Lists/Link.java
 	@echo "Array-based and Linked List Test"
 	-@rm -rf build/ListTest
 	@mkdir build/ListTest
@@ -66,7 +63,7 @@ build/ListTest/success: build Lists/ListTest.java Lists/List.java Lists/AList.ja
 
 DoubleTest: build/DoubleTest/success
 
-build/DoubleTest/success: build Lists/ListTest.java Lists/List.java Lists/AList.java Lists/DList.java Lists/DLink.java
+build/DoubleTest/success: Lists/ListTest.java Lists/List.java Lists/AList.java Lists/DList.java Lists/DLink.java
 	@echo "Doubly Linked List Test"
 	-@rm -rf build/DoubleTest
 	@mkdir build/DoubleTest
@@ -81,7 +78,7 @@ build/DoubleTest/success: build Lists/ListTest.java Lists/List.java Lists/AList.
 
 FreeList: build/FreeList/success
 
-build/FreeList/success: build Lists/List.java Lists/AList.java Lists/Freelink.java Lists/Freelist.java Lists/ListTest.java
+build/FreeList/success: Lists/List.java Lists/AList.java Lists/Freelink.java Lists/Freelist.java Lists/ListTest.java
 	@echo "Freelist Test"
 	-@rm -rf build/FreeList
 	@mkdir build/FreeList
@@ -96,7 +93,7 @@ build/FreeList/success: build Lists/List.java Lists/AList.java Lists/Freelink.ja
 
 StackTest: build/StackTest/success
 
-build/StackTest/success: build Lists/Stack.java Lists/AStack.java Lists/Link.java Lists/LStack.java Lists/StackTest.java
+build/StackTest/success: Lists/Stack.java Lists/AStack.java Lists/Link.java Lists/LStack.java Lists/StackTest.java
 	@echo "Array-based and Linked Stack Test"
 	-@rm -rf build/StackTest
 	@mkdir build/StackTest
@@ -111,7 +108,7 @@ build/StackTest/success: build Lists/Stack.java Lists/AStack.java Lists/Link.jav
 
 QueueTest: build/QueueTest/success
 
-build/QueueTest/success: build Lists/Queue.java Lists/AQueue.java Lists/Link.java Lists/LQueue.java Lists/QueueTest.java
+build/QueueTest/success: Lists/Queue.java Lists/AQueue.java Lists/Link.java Lists/LQueue.java Lists/QueueTest.java
 	@echo "Array-based and Linked Queue Test"
 	-@rm -rf build/QueueTest
 	@mkdir build/QueueTest
@@ -128,7 +125,7 @@ Binary: Traverse BST
 
 Traverse: build/Traverse/success
 
-build/Traverse/success: build Binary/BinNode.java Binary/BSTNode.java Binary/Traverse1.java Binary/checkBST.java Binary/Preorder.java Binary/Traverse.java Utils/KVPair.java
+build/Traverse/success: Binary/BinNode.java Binary/BSTNode.java Binary/Traverse1.java Binary/checkBST.java Binary/Preorder.java Binary/Traverse.java Utils/KVPair.java
 	@echo "Traversal Test"
 	-@rm -rf build/Traverse
 	@mkdir build/Traverse
@@ -142,7 +139,7 @@ build/Traverse/success: build Binary/BinNode.java Binary/BSTNode.java Binary/Tra
 
 BST: build/BSTTest/success
 
-build/BSTTest/success: build Binary/BST.java Binary/BSTTest1.java Binary/checkBST.java Binary/Preorder.java Binary/BSTTest.java Binary/BSTNode.java Binary/BinNode.java Utils/Permute.java Utils/Swap.java Binary/Traverse.java Utils/KVPair.java
+build/BSTTest/success: Binary/BST.java Binary/BSTTest1.java Binary/checkBST.java Binary/Preorder.java Binary/BSTTest.java Binary/BSTNode.java Binary/BinNode.java Utils/Permute.java Utils/Swap.java Binary/Traverse.java Utils/KVPair.java
 	@echo "BST Test"
 	-@rm -rf build/BSTTest
 	@mkdir build/BSTTest
@@ -160,9 +157,9 @@ Sorting: Inssort Bubblesort Selsort
 
 Sorttime: InssortTime BubblesortTime SelsortTime
 
-Inssort: build build/InssortTest/success
+Inssort: build/InssortTest/success
 
-build/InssortTest/success: build Sorting/Insertionsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+build/InssortTest/success: Sorting/Insertionsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
 	@echo "Insertionsort Test"
 	-@rm -rf build/InssortTest
 	@mkdir build/InssortTest
@@ -174,7 +171,7 @@ build/InssortTest/success: build Sorting/Insertionsort.java Sorting/SortTest.1 S
 
 Bubblesort: build/BubblesortTest/success
 
-build/BubblesortTest/success: build Sorting/Bubblesort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+build/BubblesortTest/success: Sorting/Bubblesort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
 	@echo "Bubblesort Test"
 	-@rm -rf build/BubblesortTest
 	@mkdir build/BubblesortTest
@@ -186,7 +183,7 @@ build/BubblesortTest/success: build Sorting/Bubblesort.java Sorting/SortTest.1 S
 
 Selsort: build/SelsortTest/success
 
-build/SelsortTest/success: build Sorting/Selectionsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+build/SelsortTest/success: Sorting/Selectionsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
 	@echo "Selectionsort Test"
 	-@rm -rf build/SelsortTest
 	@mkdir build/SelsortTest
@@ -196,7 +193,7 @@ build/SelsortTest/success: build Sorting/Selectionsort.java Sorting/SortTest.1 S
 	javac $(CFLAGS) SortTest.java; \
 	$(JAVA) $(RFLAGS) SortTest
 
-InssortTime: build Sorting/Insertionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java
+InssortTime: Sorting/Insertionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java
 	@echo "Inssort Timing Test"
 	-@rm -rf build/InssortTime
 	@mkdir build/InssortTime
@@ -205,7 +202,7 @@ InssortTime: build Sorting/Insertionsort.java Sorting/SortTime.1 Sorting/SortTim
 	javac $(CFLAGS) SortTime.java; \
 	$(JAVA) $(RFLAGS) SortTime
 
-BubblesortTime: build Sorting/Bubblesort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java
+BubblesortTime: Sorting/Bubblesort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java
 	@echo "Bubble Sort Timing Test"
 	-@rm -rf build/BubblesortTime
 	@mkdir build/BubblesortTime
@@ -214,7 +211,7 @@ BubblesortTime: build Sorting/Bubblesort.java Sorting/SortTime.1 Sorting/SortTim
 	javac $(CFLAGS) SortTime.java; \
 	$(JAVA) $(RFLAGS) SortTime
 
-SelsortTime: build Sorting/Selectionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java
+SelsortTime: Sorting/Selectionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java
 	@echo "Selection Sort Timing Test"
 	-@rm -rf build/SelsortTime
 	@mkdir build/SelsortTime
@@ -227,7 +224,7 @@ Searching: Bsearch Sequential
 
 Bsearch: build/Bsearch/success
 
-build/Bsearch/success: build Searching/Bsearch.java
+build/Bsearch/success: Searching/Bsearch.java
 	@echo "Binary Search Test"
 	-@rm -rf build/Bsearch
 	@mkdir build/Bsearch
@@ -238,7 +235,7 @@ build/Bsearch/success: build Searching/Bsearch.java
 
 Sequential: build/Sequential/success
 
-build/Sequential/success: build Searching/Sequential.java
+build/Sequential/success: Searching/Sequential.java
 	@echo "Binary Search Test"
 	-@rm -rf build/Sequential
 	@mkdir build/Sequential

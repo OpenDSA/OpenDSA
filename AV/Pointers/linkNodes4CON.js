@@ -41,14 +41,14 @@ $(document).ready(function() {
   av.step();
 
   // Slide 3
-  av.umsg("To safely remove a <tt>Link</tt>, we must be sure that the chain will not break when we remov the node. We need to make the <tt>next</tt> field of <tt>head</tt> reference the value <tt>q</tt>'s <tt>next</tt> field, instead of referencing <tt>q</tt> itself.");
+  av.umsg("To safely remove a <tt>Link</tt>, we must be sure that the chain will not break when we remove the node. We need to make the <tt>next</tt> field of <tt>head</tt> reference the value <tt>q</tt>'s <tt>next</tt> field, instead of referencing <tt>q</tt> itself.");
   pseudo.setCurrentLine(2);
   list.get(0).edgeToNext().hide();
   dashline.show();
   av.step();
 
   // Slide 4
-  av.umsg("Now the second <tt>Link</tt> the one with 10 in its <tt>data</tt> field. The chain remains connected. The <tt>Link</tt> with 30 in its <tt>data</tt> field no longer has anything to do with our list. If nothing else is referencing it, then (eventually) the garbage collector will reclaim it.");
+  av.umsg("Now the second <tt>Link</tt> the one with 10 in its <tt>data</tt> field. The chain remains connected. The <tt>Link</tt> with 30 in its <tt>data</tt> field no longer has anything to do with our list. If nothing else is referencing it, then (eventually) Java's garbage collector will reclaim it.");
   pseudo.setCurrentLine(3);
   q.target(list.get(2));
   list.get(1).edgeToNext().hide();
