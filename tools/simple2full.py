@@ -570,7 +570,7 @@ def get_chapter_module_files(conf_data):
   for chapter, modules in conf_data['chapters'].iteritems():
     files[chapter] = []
     for module in modules.keys():
-      files[chapter].append(os.path.join(os.path.abspath('RST/{0}/'.format(conf_data['lang'])), module + ".rst"))
+      files[chapter].append(os.path.join(os.path.abspath('RST{1}{0}{1}'.format(conf_data['lang'], os.sep)), module + ".rst"))
   return files
 
 def get_options(conf_data):
@@ -685,7 +685,7 @@ def generate_full_config(config_file_path):
       if rst_dir_name == conf_data['lang']:
         mod_path = rst_fname
       else:
-        mod_path = rst_dir_name + '/' + rst_fname
+        mod_path = rst_dir_name + os.sep + rst_fname
       
       current_module = mod_path
 
