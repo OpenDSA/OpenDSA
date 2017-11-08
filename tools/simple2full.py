@@ -680,12 +680,13 @@ def generate_full_config(config_file_path):
   for chapter, files in mod_files.iteritems():
     full_config['chapters'][chapter] = OrderedDict()
     for x in files:
+      x = x.replace('/', os.sep)
       rst_dir_name = x.split(os.sep)[-2]
       rst_fname = os.path.basename(x).partition('.')[0]
       if rst_dir_name == conf_data['lang']:
         mod_path = rst_fname
       else:
-        mod_path = rst_dir_name + os.sep + rst_fname
+        mod_path = rst_dir_name + '/' + rst_fname
       
       current_module = mod_path
 
