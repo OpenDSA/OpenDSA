@@ -61,10 +61,15 @@
 				if(j<2)
 					str=str+" + ";
 			}
-			str=str+" ).</code>";
+			str=str+" )";
+			if (i != (clausecnt-1)){
+				str=str+"&middot</code>";
+			}else{
+				str=str+"</code>"
+			} 
 			labels[i]=jsav.label(str,{top:y,left:x});
 			str=" ";
-			x = x+125;
+			x = x+95;
 			if(x>550){
 		        	ln = ln + Math.floor(x/600);
 				y = y+25;

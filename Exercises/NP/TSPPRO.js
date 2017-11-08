@@ -57,10 +57,9 @@
 	        w=w+edges[i].weight();
 	  if(w>minC)
 		return false;
-	  
+
 	  return true;
 	}
-
 
 	// Click event handler on the graph, intended for edges
 	var clickHandler = function () {
@@ -162,7 +161,8 @@
 
 		  // Bind the clickHandler to handle click events on the array
 		  //jsavGraph.click(clickHandler, {edge:true});
-		  $(".jsavedge").on("click", clickHandler )
+		  $(".jsavedge").on("click", clickHandler );
+		  $(".jsavlabel.jsavedgelabel").on("click", clickHandler );
 		  /**{
 		    var edge = $(this).data("edge");
 		    if (!edge.hasClass("marked")) {
@@ -185,8 +185,9 @@
 		  getSol(jsavGraph,0,0,[],0);
 		   
 		   Answer=gnodes[minPath[0]].value();
-		    for(i=1;i<minPath.length;i++)
+		    for(i=1;i<minPath.length;i++){
 		     Answer=Answer+"->"+gnodes[minPath[i]].value();
+		    }
 		    Answer=Answer+"->"+gnodes[minPath[0]].value();
 		  jsav.displayInit();
 		  // Set up handler for reset button
@@ -195,20 +196,23 @@
 
 
 		// Check user's answer for correctness: User's array must match answer
-		checkAnswer:function () {
+		checkAnswer:function (x) {
 
-		  for(i in On){
+		  /*for(i in On){
 		     if(On[i]!=2){
 		         return false;
 		     }
+		  }*/
+		 var ret_val = checkCycle();
+		  if (ret_val === true && x !== undefined){
+		  	minC=-1, minPath=[]
 		  }
-		 return checkCycle();
-		  
+		  return ret_val;
 		},
 
 		// return the answer
 		getSolution: function() {
-			return Answer;
+			return Answer;s
 		},
 	};
 

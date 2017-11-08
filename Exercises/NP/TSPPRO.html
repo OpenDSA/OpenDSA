@@ -262,7 +262,7 @@ var checkAnswer = function () {
           if (!TSP_KA.checkAnswer() && !guess[0])
             return ""; // User did not click, and correct answer is not
 	               // initial array state
-          else return TSP_KA.checkAnswer();
+          else return TSP_KA.checkAnswer(nnodes);
         </div>
        </div>
        <div class="hints"><p><var>TSP_KA.getSolution()</var></p></div>

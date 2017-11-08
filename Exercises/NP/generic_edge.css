@@ -19,7 +19,8 @@
 #procontrols {
   text-align: center;
 }
-
+.jsavlabel.jsavedgelabel{
+}
 .jsavgraph svg {
   z-index: 0;
 }*/
@@ -27,8 +28,9 @@
 .jsavnode.marked {
   background-color: #FFF050;
 }
+
 .jsavedge {
-  stroke-width: 8;
+  stroke-width: 2.3 !important;
   stroke: #7D8879;
 }
 .jsavedge.selected {
