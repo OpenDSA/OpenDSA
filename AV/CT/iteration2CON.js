@@ -32,9 +32,12 @@ $(document).ready(function() {
                     it2_midblue2.removeClass("blueboxh", {record: false});
                     it2_priceBoxLabel.value(lavelVal);
                     it2_priceBoxLabel.css({left: labelX});
-                    // for(var i = 0; i <= consoleIndex; i++){
-                    //     it2_consoleLabels[i].show();
-                    // }
+                    var gap = 30;
+                    for(var i = 0; i <= consoleIndex; i++){
+                        it2_consoleLabels[i].css({top: it2_consoleY + (gap * i)});
+                        it2_consoleLabels[i].show();
+                    }
+                        it2_consoleY -= 30;
 
                     // midblue 3 animation start -----------------
                     setTimeout(function() {
@@ -177,9 +180,9 @@ $(document).ready(function() {
 
 
   for(var i = 0; i < it2_consoleLabels.length; i++){
-    // it2_consoleLabels[i].addClass("labels");
-    // it2_consoleLabels[i].addClass("smalllabel");
-    // it2_consoleLabels[i].hide();
+    it2_consoleLabels[i].addClass("labels");
+    it2_consoleLabels[i].addClass("smalllabel");
+    it2_consoleLabels[i].hide();
   }
 
   // --------------------- start slide shows
