@@ -5,13 +5,16 @@ var it2_midblue1,
     it2_midblue2,
     it2_midblue3,
     it2_newLabelValue,
-    it2_valuelabel;
+    it2_valuelabel,
+    it2_priceBoxLabel,
+    it2_consoleLabels,
+    it2_consoleY;
 
 $(document).ready(function() {
   "use strict";
 
   //BlueStepAnim :This should come before JSAV Initialize
-      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(delay, time, val) {
+      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(delay, time, lavelVal, labelX, consoleIndex) {
       if (this._shouldAnimate()) {
 
         setTimeout(function() {
@@ -24,8 +27,14 @@ $(document).ready(function() {
                 setTimeout(function() {
                   it2_midblue2.addClass("blueboxh", {record: false});
 
+
                   setTimeout(function(){
                     it2_midblue2.removeClass("blueboxh", {record: false});
+                    it2_priceBoxLabel.value(lavelVal);
+                    it2_priceBoxLabel.css({left: labelX});
+                    // for(var i = 0; i <= consoleIndex; i++){
+                    //     it2_consoleLabels[i].show();
+                    // }
 
                     // midblue 3 animation start -----------------
                     setTimeout(function() {
@@ -115,7 +124,7 @@ $(document).ready(function() {
   var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
   label3.addClass("labels");
 
-  var pricelabel = av.label("print price", {left: rect_left + 160, top: rect_top + 110});
+  var pricelabel = av.label("print (price)", {left: rect_left + 160, top: rect_top + 112});
   pricelabel.addClass("labels");
   pricelabel.addClass("midlabel");
 
@@ -140,9 +149,13 @@ $(document).ready(function() {
 
   var priceBox = av.g.rect(stateX - 5, stateY + 135, 70, 70).addClass("bluebox");
 
-  var priceBoxLabel = av.label("", {left: stateX + 23, top: stateY + 130});
-  priceBoxLabel.addClass("labels");
-  priceBoxLabel.addClass("midlabel");
+  var pricelabelX = stateX + 23;
+  it2_priceBoxLabel = av.label("", {left: pricelabelX, top: stateY + 130});
+  it2_priceBoxLabel.addClass("labels");
+  it2_priceBoxLabel.addClass("midlabel");
+
+  var totalBoxLabel = av.label("", {left: stateX + 23, top: stateY + 215});
+
 
 
   // <<--------------- CONSOLE BOX ----------------->>
@@ -153,6 +166,21 @@ $(document).ready(function() {
   stateLabel.addClass("statelabel");
 
   var consoleBox = av.g.rect(stateX - 5, stateY + 110, 170, 200).addClass("consolebox");
+
+  it2_consoleY = stateY + 250;
+  var label1 = av.label("4", {left: stateX + 20, top: it2_consoleY});
+  var label2 = av.label("13", {left: stateX + 20, top: it2_consoleY});
+  var label3 = av.label("6", {left: stateX + 20, top: it2_consoleY});
+  var label4 = av.label("9", {left: stateX + 20, top: it2_consoleY});;
+  var label5 = av.label("11", {left: stateX + 20, top: it2_consoleY});
+  it2_consoleLabels = [label1, label2, label3, label4, label5];
+
+
+  for(var i = 0; i < it2_consoleLabels.length; i++){
+    // it2_consoleLabels[i].addClass("labels");
+    // it2_consoleLabels[i].addClass("smalllabel");
+    // it2_consoleLabels[i].hide();
+  }
 
   // --------------------- start slide shows
 
@@ -174,7 +202,7 @@ $(document).ready(function() {
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  av.blueStepAnim(0, 100, "4")
+  av.blueStepAnim(0, 100, "4", pricelabelX, 0);
   av.step();
 
   // Slide 5
@@ -185,7 +213,7 @@ $(document).ready(function() {
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  av.blueStepAnim(0, 100, "13")
+  av.blueStepAnim(0, 100, "13", pricelabelX - 6, 1);
   av.step();
 
   // Slide 7
@@ -196,7 +224,8 @@ $(document).ready(function() {
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  av.blueStepAnim(0, 100, "6");
+
+  av.blueStepAnim(0, 100, "6", pricelabelX, 2);
   av.step();
 
   // Slide 9
@@ -207,7 +236,7 @@ $(document).ready(function() {
 
   // Slide 10
   av.umsg(interpret("sc10"));
-  av.blueStepAnim(0, 100, "9");
+  av.blueStepAnim(0, 100, "9", pricelabelX, 3);
   av.step();
 
   // Slide 11
@@ -218,7 +247,7 @@ $(document).ready(function() {
 
   // Slide 12
   av.umsg(interpret("sc12"));
-  av.blueStepAnim(0, 100, "11");
+  av.blueStepAnim(0, 100, "11", pricelabelX - 6, 4);
   av.step();
 
   // Slide 13
