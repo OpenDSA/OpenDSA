@@ -76,7 +76,7 @@ $(document).ready(function() {
   pricelabel.addClass("labels");
   pricelabel.addClass("smalllabel");
 
-  var valuelabel = av.label("", {left: rect_left + 210, top: rect_top + 180});
+  var valuelabel = av.label("", {left: rect_left + 270, top: rect_top + 165});
   valuelabel.addClass("labels");
   valuelabel.addClass("valuelabel");
 
@@ -118,7 +118,9 @@ $(document).ready(function() {
   stateLabel.addClass("statelabel");
 
   var consoleBox = av.g.rect(stateX - 5, stateY + 110, 170, 200).addClass("consolebox");
-  var label1 = av.label("4", {left: stateX + 20, top: stateY + 250});
+  var label1 = av.label("43", {left: stateX + 20, top: stateY + 250});
+  label1.addClass("labels");
+  label1.addClass("midlabel");
   label1.hide();
 
 
@@ -133,18 +135,18 @@ $(document).ready(function() {
 
   // Slide 1
   av.umsg(interpret("sc2"));
-  topblue1.addClass("calboxhigh");
-  topblue1.removeClass("calboxhigh");
-  av.step();
-
-  // Slide 2
-  av.umsg(interpret("sc2"));
   topblue2.addClass("calboxhigh");
   topblue2.removeClass("calboxhigh");
   topblue3.addClass("calboxhigh");
   topblue3.removeClass("calboxhigh");
-  totalBox.addClass("blueboxhigh");
-  totalBox.removeClass("blueboxhigh");
+  av.step();
+
+  // Slide 2
+  av.umsg(interpret("sc2"));
+  topblue1.addClass("blueboxh");
+  topblue1.removeClass("blueboxh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
   totalBoxLabel.value("0");
   av.step();
 
@@ -153,8 +155,8 @@ $(document).ready(function() {
   arr.css({left: nextleft});   //move array
   nextleft -= nodegap; // calculate nextleft value for next array moving
   priceBoxLabel.value(" 4 ")
-  priceBox.addClass("blueboxhigh");
-  priceBox.removeClass("blueboxhigh");
+  priceBox.addClass("blueboxh");
+  priceBox.removeClass("blueboxh");
   av.step();
 
   // Slide 4
@@ -170,8 +172,8 @@ $(document).ready(function() {
   av.umsg(interpret("sc5"));
   midblue1.addClass("calboxhigh");
   midblue1.removeClass("calboxhigh");
-  totalBox.addClass("blueboxhigh");
-  totalBox.removeClass("blueboxhigh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
   totalBoxLabel.value(" 4 ");
   // totallabel.css({left: stateX + 9});
   av.step();
@@ -181,8 +183,8 @@ $(document).ready(function() {
   av.umsg(interpret("sc6"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
-  priceBox.addClass("blueboxhigh");
-  priceBox.removeClass("blueboxhigh");
+  priceBox.addClass("blueboxh");
+  priceBox.removeClass("blueboxh");
   priceBoxLabel.value(" 13 ");
   priceBoxLabel.css({left: boxLabelX - 5});
   av.step();
@@ -199,20 +201,20 @@ $(document).ready(function() {
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  totalBoxLabel.value(" 21 ");
+  totalBoxLabel.value(" 17 ");
   totalBoxLabel.css({left: boxLabelX - 5});
   midblue1.addClass("calboxhigh");
   midblue1.removeClass("calboxhigh");
-  totalBox.addClass("blueboxhigh");
-  totalBox.removeClass("blueboxhigh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
   av.step();
 
   // Slide 9
   av.umsg(interpret("sc9"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
-  priceBox.addClass("blueboxhigh");
-  priceBox.removeClass("blueboxhigh");
+  priceBox.addClass("blueboxh");
+  priceBox.removeClass("blueboxh");
   priceBoxLabel.value(" 6 ");
   priceBoxLabel.css({left: boxLabelX});
   av.step();
@@ -223,24 +225,24 @@ $(document).ready(function() {
   midblue2.removeClass("calboxhigh");
   midblue3.addClass("calboxhigh");
   midblue3.removeClass("calboxhigh");
-  valuelabel.value(" 21 + 6 ");
+  valuelabel.value(" 17 + 6 ");
   av.step();
 
   // Slide 11
   av.umsg(interpret("sc11"));
-  totalBoxLabel.value(" 27 ");
+  totalBoxLabel.value(" 23 ");
   midblue1.addClass("calboxhigh");
   midblue1.removeClass("calboxhigh");
-  totalBox.addClass("blueboxhigh");
-  totalBox.removeClass("blueboxhigh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
   av.step();
 
   // Slide 12
   av.umsg(interpret("sc12"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
-  priceBox.addClass("blueboxhigh");
-  priceBox.removeClass("blueboxhigh");
+  priceBox.addClass("blueboxh");
+  priceBox.removeClass("blueboxh");
   priceBoxLabel.value(" 9 ");
   av.step();
 
@@ -250,24 +252,24 @@ $(document).ready(function() {
   midblue2.removeClass("calboxhigh");
   midblue3.addClass("calboxhigh");
   midblue3.removeClass("calboxhigh");
-  valuelabel.value(" 27 + 9 ");
+  valuelabel.value(" 23 + 9 ");
   av.step();
 
   // Slide 14
   av.umsg(interpret("sc14"));
-  totalBoxLabel.value(" 36 ");
+  totalBoxLabel.value(" 32 ");
   midblue1.addClass("calboxhigh");
   midblue1.removeClass("calboxhigh");
-  totalBox.addClass("blueboxhigh");
-  totalBox.removeClass("blueboxhigh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
   av.step();
 
   // Slide 15
   av.umsg(interpret("sc15"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 50);
-  priceBox.addClass("blueboxhigh");
-  priceBox.removeClass("blueboxhigh");
+  priceBox.addClass("blueboxh");
+  priceBox.removeClass("blueboxh");
   priceBoxLabel.value(" 11 ");
   priceBoxLabel.css({left: boxLabelX - 5});
   av.step();
@@ -278,16 +280,16 @@ $(document).ready(function() {
   midblue2.removeClass("calboxhigh");
   midblue3.addClass("calboxhigh");
   midblue3.removeClass("calboxhigh");
-  valuelabel.value(" 36 + 11 ");
+  valuelabel.value(" 32 + 11 ");
   av.step();
 
   // Slide 17
   av.umsg(interpret("sc17"));
-  totalBoxLabel.value(" 47 ");
+  totalBoxLabel.value(" 43 ");
   midblue1.addClass("calboxhigh");
   midblue1.removeClass("calboxhigh");
-  totalBox.addClass("blueboxhigh");
-  totalBox.removeClass("blueboxhigh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
   av.step();
   //
   // Slide 18
@@ -298,8 +300,9 @@ $(document).ready(function() {
 
   // Slide 19
   av.umsg(interpret("sc19"));
-  botblue.addClass("blueboxhigh");
-  botblue.removeClass("blueboxhigh");
+  botblue.addClass("blueboxh");
+  botblue.removeClass("blueboxh");
+  label1.show();
   av.recorded();
 
   //last Slide
