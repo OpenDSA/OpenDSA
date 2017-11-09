@@ -1,6 +1,11 @@
 /*global ODSA */
 // Written by Jieun Chon
 //Array-Based list introduction
+
+
+var it3_consoleY,
+    it3_consoleLabels;
+
 $(document).ready(function() {
   "use strict";
   var arrValues = [4, 13, 6, 9, 11];
@@ -17,7 +22,11 @@ $(document).ready(function() {
 
 
   // blue boxes, floor 1
-  var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
+  // var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
+  var topblue1 = av.g.rect(rect_left , rect0_top, 130, 35, 10).addClass("bluebox");
+  var topblue2 = av.g.rect(rect_left + 95, rect0_top + 10, 20, 18, 15).addClass("calbox");
+  var topblue3 = av.g.rect(rect_left + 110, rect0_top, 140, 35, 10).addClass("calbox");
+
   var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
 
   // floor 2
@@ -63,6 +72,10 @@ $(document).ready(function() {
   pricelabel.addClass("labels");
   pricelabel.addClass("smalllabel");
 
+  var pricelabel = av.label("print (price)", {left: rect_left + 5, top: rect_top + 235});
+  pricelabel.addClass("labels");
+  pricelabel.addClass("smalllabel");
+
   var valuelabel = av.label("", {left: rect_left + 390, top: rect_top + 111});
   valuelabel.addClass("labels");
   valuelabel.addClass("valuelabel");
@@ -96,6 +109,31 @@ $(document).ready(function() {
 
   totalBoxLabel.addClass("labels");
   totalBoxLabel.addClass("midlabel");
+
+
+  // <<--------------- CONSOLE BOX ----------------->>
+
+  var stateX = 660;
+  var stateY = - 20;
+  var stateLabel = av.label("CONSOLE", {left: stateX + 35, top: stateY + 60});
+  stateLabel.addClass("statelabel");
+
+  var consoleBox = av.g.rect(stateX - 5, stateY + 110, 170, 200).addClass("consolebox");
+
+  it3_consoleY = stateY + 250;
+  var label1 = av.label("4", {left: stateX + 20, top: it2_consoleY});
+  var label2 = av.label("13", {left: stateX + 20, top: it2_consoleY});
+  var label3 = av.label("6", {left: stateX + 20, top: it2_consoleY});
+  var label4 = av.label("9", {left: stateX + 20, top: it2_consoleY});;
+  var label5 = av.label("11", {left: stateX + 20, top: it2_consoleY});
+  it3_consoleLabels = [label1, label2, label3, label4, label5];
+
+
+  for(var i = 0; i < it2_consoleLabels.length; i++){
+    it2_consoleLabels[i].addClass("labels");
+    it2_consoleLabels[i].addClass("smalllabel");
+    it2_consoleLabels[i].hide();
+  }
 
   // <<--------- Slide Show <<--------->>
 
