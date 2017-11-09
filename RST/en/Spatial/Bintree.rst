@@ -9,9 +9,6 @@
    :satisfies: Bintree
    :topic: Spatial Data Structures
 
-.. odsalink:: DataStructures/PrQuadAv.css
-.. odsalink:: DataStructures/PrQuadAvC.css
-
 The Bintree
 ===========
 

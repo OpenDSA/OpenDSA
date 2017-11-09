@@ -8,10 +8,10 @@
    :satisfies: UML
    :topic: Introduction
 
+.. index:: unified modeling langauage; selecting
+
 The Unified Modeling Language
 =============================
-
-.. index:: unified modeling langauage; selecting
 
 The Unified Modeling Language
 -----------------------------
