@@ -704,7 +704,8 @@ def generate_full_config(config_file_path):
       rst_parts = publish_parts(source,
                   settings_overrides={'output_encoding': 'utf8',
                   'initial_header_level': 2},
-                  writer_name="xml")
+                  writer_name="xml",
+		  source_path=mod_path)
 
       mod_json = xmltodict.parse(rst_parts['whole'])
       mod_config = extract_mod_config(mod_json)
