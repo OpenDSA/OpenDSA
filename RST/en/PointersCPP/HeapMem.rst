@@ -101,11 +101,13 @@ Deallocation
 ~~~~~~~~~~~~
 
 When the program is finished using a block of memory, it makes an explicit 
-deallocation request to indicate to the heap manager that the program is now finished with that block.
-The heap manager updates its private data structures to show that the area of memory
-occupied by the block is free again and so may be re-used to satisfy future allocation
-requests. Here's what the heap would look like if the program deallocates the second of
-the three blocks.   	
+deallocation request to indicate to the heap manager that the program
+is now finished with that block.
+The heap manager updates its private data structures to show that the
+area of memory occupied by the block is free again and so may be
+re-used to satisfy future allocation requests. Here's what the heap
+would look like if the program deallocates the second of the three
+blocks.
 
 .. odsafig:: Images/LocalHeapdealoc.png
    :width: 300
@@ -113,18 +115,20 @@ the three blocks.
    :capalign: justify
    :figwidth: 100% 
    
-After the deallocation, the pointer continues to point to the now deallocated block. The
-program must not access the deallocated pointee. This is why the pointer is drawn in gray
-|---| the pointer is there, but it must not be used. Sometimes the code will set the pointer to
-NULL immediately after the deallocation to make explicit the fact that it is no longer
-valid.
+After the deallocation, the pointer continues to point to the now
+deallocated block.
+The program must not access the deallocated pointee.
+This is why the pointer is drawn in gray |---| the pointer is there,
+but it must not be used. Sometimes the code will set the pointer to 
+NULL immediately after the deallocation to make explicit the fact that
+it is no longer valid.
 
 
 Programming The Heap
 --------------------
 
-Programming the heap looks pretty much the same in most languages. The basic features
-are:
+Programming the heap looks pretty much the same in most languages. The
+basic features are:
 
 * The heap is an area of memory available to allocate areas ("blocks")
   of memory for the program.
@@ -206,9 +210,10 @@ Although the syntax varies between languages, the roles of
    block to deallocate by its pointer. If a program correctly
    deallocates all of the memory it allocates, then every call to
    ``malloc()`` will later be matched by exactly one call to
-   ``free()`` As a practical matter however, it is not always
-   necessary for a program to deallocate every block it allocates
-   |---| see "Memory Leaks" below.
+   ``free()``.
+   As a practical matter however, it is not always necessary for a
+   program to deallocate every block it allocates |---| see
+   "Memory Leaks" below.  
 	
 
 Simple Heap Example
@@ -300,9 +305,10 @@ Simple Heap Observations
 
 * When the function exits, its local variable intPtr will be
   automatically deallocated following the usual rules for local
-  variables (Section 2). So this function has tidy memory behavior
-  |---| all of the memory it allocates while running (its local
-  variable, its one heap block) is deallocated by the time it exits.
+  variables (Section 2).
+  So this function has tidy memory behavior |---| all of the memory it
+  allocates while running (its local variable, its one heap block) is
+  deallocated by the time it exits.
 
 
 Heap Array

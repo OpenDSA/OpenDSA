@@ -4,8 +4,8 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Kyle
-   :requires: Pointer intro
+   :author: Jieun Chon
+   :requires:
    :satisfies:
    :topic: Pointers
 
@@ -20,5 +20,10 @@ Solve following exercise.
 .. TODO::
    :type: Exercise
 
-   Was Exercises/Pointers/FindNodePROG.html. Now is a code workout
-   exercise that needs to be included.
+.. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
+
+.. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
+
+.. avembed:: Exercises/Pointers/PointerEX3PRO.html ka
+
+.. avembed:: Exercises/Pointers/PointerEX4PRO.html ka

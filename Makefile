@@ -94,11 +94,20 @@ min: nomin
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
+simple_demo: min
+	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
+
 CT: min
 	python $(CONFIG_SCRIPT) config/CT.json --no-lms
 
+NP: min
+	python $(CONFIG_SCRIPT) config/NP.json --no-lms
+
 JFLAP: min
 	python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
+
+FormalLang: min
+	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
 
 Spatial: min
 	python $(CONFIG_SCRIPT) config/Spatial.json --no-lms
@@ -118,9 +127,6 @@ CS2Plain: min
 CS2: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/CS2_generated.json --no-lms
-
-CS2114: min
-	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
 
 CS3Plain: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
@@ -162,18 +168,8 @@ CS4104: min
 	python tools/rst2json.py $@
 	python $(CONFIG_SCRIPT) config/CS4104_generated.json --no-lms
 
-NPTest: min
-	python $(CONFIG_SCRIPT) config/NPTest.json --no-lms
-
 CSC215: min
 	python $(CONFIG_SCRIPT) config/CSC215.json --no-lms
-
-FormalLang: min
-	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
-
-FormalLangCanvas: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/FormalLang_generated.json --no-lms
 
 CS3slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
@@ -213,9 +209,6 @@ COMP232: min
 
 SDAP13: min
 	python $(CONFIG_SCRIPT) config/SDAP13.json --no-lms
-
-simple_demo: min
-	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
 
 cs342_uwosh: min
 	python $(CONFIG_SCRIPT) config/cs342_uwosh.json --no-lms
