@@ -358,7 +358,7 @@ class ODSA_RST_Module:
           and not (line == '' or line.startswith('.. ') or line.startswith(':')) \
           and not is_index_option(mod_data, i, line):
             content_before_module = True
-            errors.append(("%sERROR: line %s ('%s') - should not have content before module title" % (console_msg_prefix, i, line), True))
+            errors.append(("%sERROR: %s: line %s ('%s') - should not have content before module title" % (console_msg_prefix, mod_path, i, line), True))
 
         if is_section \
 	and line in mod_attrib["sections"] \
@@ -387,7 +387,7 @@ class ODSA_RST_Module:
           and not content_before_section \
           and re.match('(^\.\. (?!\w+::).+)|(^$)|(^=+$)', line) == None:
               content_before_section = True
-              errors.append(("%sERROR: line %s ('%s') - should not have content between module title and first section" % (console_msg_prefix, i, line), False))
+              errors.append(("%sERROR: %s: line %s ('%s') - should not have content between module title and first section" % (console_msg_prefix, mod_path, i, line), False))
           
         # Determine the type of directive
         dir_type = get_directive_type(line)
