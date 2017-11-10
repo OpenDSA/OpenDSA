@@ -91,22 +91,26 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-Plain: Everything CS2 CS3 PL
-
-test_generated: Everything CS2 CS3 CS4104 FormalLang
-
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
 CT: min
 	python $(CONFIG_SCRIPT) config/CT.json --no-lms
 
-EverythingPlain: min
-	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
+JFLAP: min
+	python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
+
+Spatial: min
+	python $(CONFIG_SCRIPT) config/Spatial.json --no-lms
+
+PointersJava: min
+	python $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
+
+PointersCPP: min
+	python $(CONFIG_SCRIPT) config/PointersCPP.json --no-lms
 
 Everything: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/Everything_generated.json --no-lms
+	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
 
 CS2Plain: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
@@ -164,10 +168,6 @@ NPTest: min
 CSC215: min
 	python $(CONFIG_SCRIPT) config/CSC215.json --no-lms
 
-Spatial: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/Spatial_generated.json --no-lms
-
 FormalLang: min
 	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
 
@@ -220,22 +220,8 @@ simple_demo: min
 cs342_uwosh: min
 	python $(CONFIG_SCRIPT) config/cs342_uwosh.json --no-lms
 
-PointersCPP: min
-	python $(CONFIG_SCRIPT) config/PointersCPP.json --no-lms
-
-PointersJava: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/PointersJava_generated.json --no-lms
-
-PointersJavaP: min
-	python $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
-
 CS3_exs: min
 	python $(CONFIG_SCRIPT) config/CS3_exs.json --no-lms
-
-JFLAP: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/JFLAP_generated.json --no-lms
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js

@@ -826,14 +826,14 @@
           "threshold": 0.9
         }
       }, 
-      "Development/StringSearchKMP": {}, 
-      "Development/StringSearchBoyerMoore": {}, 
-      "Development/StringSearchRabinKarp": {}, 
-      "Development/GenTreeImplement": {}, 
+      "Development/StringSearchKMP": {},
+      "Development/StringSearchBoyerMoore": {},
+      "Development/StringSearchRabinKarp": {},
+      "Development/GenTreeImplement": {},
       "Development/Kary": {}
-    }, 
+    },
     "Limits to Computing": {
-      "NP/LimComp": {}, 
+      "NP/LimComp": {},
       "NP/Reduction": {}, 
       "NP/NPComplete": {}, 
       "NP/circuitSAT": {}, 
@@ -842,46 +842,46 @@
         "threeSAT_KA": {
           "threshold": 1.0
         }
-      }, 
+      },
       "NP/clique": {
         "clique_KA": {
           "threshold": 1.0
         }
-      }, 
+      },
       "NP/independentSet": {
         "independentSet_KA": {
           "threshold": 1.0
         }
-      }, 
+      },
       "NP/vertexCover": {
         "vertexCover_KA": {
           "threshold": 1.0
         }
-      }, 
+      },
       "NP/hamiltonianCycle": {
         "hamiltonianCycle_KA": {
           "threshold": 1.0
         }
-      }, 
+      },
       "NP/TSP": {
         "TSP_KA": {
           "threshold": 1.0
         }
-      }, 
-      "NP/provingNPC": {}, 
-      "NP/circuitSAT_to_SAT": {}, 
-      "NP/SAT_to_threeSAT": {}, 
-      "NP/threeSAT_to_clique": {}, 
-      "NP/clique_to_independentSet": {}, 
-      "NP/independentSet_to_vertexCover": {}, 
-      "NP/threeSAT_to_hamiltonianCycle": {}, 
-      "NP/hamiltonianCycle_to_TSP": {}, 
-      "NP/NPCoping": {}, 
-      "SeniorAlgAnal/Impossible": {}, 
+      },
+      "NP/provingNPC": {},
+      "NP/circuitSAT_to_SAT": {},
+      "NP/SAT_to_threeSAT": {},
+      "NP/threeSAT_to_clique": {},
+      "NP/clique_to_independentSet": {},
+      "NP/independentSet_to_vertexCover": {},
+      "NP/threeSAT_to_hamiltonianCycle": {},
+      "NP/hamiltonianCycle_to_TSP": {},
+      "NP/NPCoping": {},
+      "SeniorAlgAnal/Impossible": {},
       "SeniorAlgAnal/Turing": {}
-    }, 
+    },
     "Appendix": {
-      "Glossary": {}, 
+      "Glossary": {},
       "Bibliography": {}
     }
   }

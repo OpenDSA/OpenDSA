@@ -38,95 +38,42 @@
   "build_JSAV": false,
   "build_cmap": false,
   "suppress_todo": true,
-  "assumes": "recursion",
+  "assumes": "recursion; BST",
   "dispModComp": true,
   "glob_exer_options": {},
+  "glob_ss_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  }, 
+  "glob_ka_options": {
+    "threshold": 5, 
+    "points": 1.0, 
+    "required": true
+  }, 
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2.0
+    }, 
+    "points": 1.0
+  }, 
+  "glob_pe_options": {
+    "threshold": 0.9, 
+    "points": 2.0, 
+    "required": true
+  }, 
   "chapters": {
     "Advanced Data Structures": {
-      "SearchStruct/SkipList": {
-        "long_name": "Skip Lists",
-        "sections": {
-          "Skip Lists": {
-          }
-      },
-      "Spatial/Spatial": {
-        "long_name": "Spatial Data Structures",
-        "sections": {}
-      },
-      "Spatial/PRquadtree": {
-        "long_name": "The PR Quadtree", 
-        "sections": {
-          "The PR Quadtree": {
-            "PRquadtreeAV": {
-              "long_name": "PRquadtreeAV", 
-              "required": false, 
-              "points": 0.0, 
-              "threshold": 1
-            }, 
-            "PRquadtree2ptAV": {
-              "long_name": "PRquadtree2ptAV", 
-              "required": false, 
-              "points": 0.0, 
-              "threshold": 1
-            }, 
-            "PRquadtreeInter": {
-              "long_name": "PRquadtreeInter", 
-              "required": false, 
-              "points": 0.0, 
-              "threshold": 1
-            }
-          }
-        }
-      }, 
-      "Spatial/KDtree": {
-        "long_name": "k-d Trees",
-        "sections": {
-          "KD Trees": {
-            "kd-treeAV": {
-              "long_name": "KD tree Visualization",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            }
-          }
-        }
-      },
-      "Spatial/Bintree": {
-        "long_name": "Bintrees",
-        "sections": {
-          "The Bintree": {
-            "bintreeCON": {},
-            "BintreeAV": {
-              "long_name": "Bintree Visualization",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            },
-            "BintreeInter": {
-              "long_name": "Bintree Interactive", 
-              "required": false, 
-              "points": 0, 
-              "threshold": 1.0
-            }
-          }
-        }
-      },
-      "Spatial/OtherSpatial": {
-        "long_name": "Other Spatial Data Structures",
-        "sections": {}
-      }
+      "SearchStruct/SkipList": {},
+      "Spatial/Spatial": {}, 
+      "Spatial/PRquadtree": {}, 
+      "Spatial/KDtree": {}, 
+      "Spatial/Bintree": {}, 
+      "Spatial/OtherSpatial": {}
     },
     "Appendix": {
-      "Glossary": {
-        "long_name": "Glossary",
-        "sections": {}
-      },
-      "Bibliography": {
-        "long_name": "Bibliography",
-        "sections": {}
-      }
+      "Glossary": {},
+      "Bibliography": {}
     }
   }
 }

@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Bill Yu 
-   :requires: intelligence
+   :requires:
    :satisfies: JFLAP
    :topic: Finite State Machines
 

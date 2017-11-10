@@ -20,80 +20,39 @@
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
+  "glob_ss_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  }, 
+  "glob_ka_options": {
+    "threshold": 5, 
+    "points": 1.0, 
+    "required": true
+  }, 
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2.0
+    }, 
+    "points": 1.0
+  }, 
+  "glob_pe_options": {
+    "threshold": 0.9, 
+    "points": 2.0, 
+    "required": true
+  }, 
   "chapters": {
     "Pointers": {
-      "PointersCPP/PointerIntro": {
-        "long_name": "Pointers Chapter Introduction",
-        "sections": {}
-      },
-      "PointersCPP/BasicPointers": {
-        "long_name": "Basic References",
-        "sections": {
-          "What is a pointer?": {},
-          "Pointer Reference and Dereference": {},
-          "Pointer Assignment": {},
-          "Bad Pointers": {},
-          "Syntax": {},
-          "Example Pointer Code": {},
-          "Pointer Rules Summary": {},
-          "How Do Pointers Work In Java?": {},
-          "How Are Pointers Implemented In The Machine?": {},
-          "The Term 'Reference'": {},
-          "Why Are Bad Pointer Bugs So Common?": {}
-        }
-      },
-      "PointersCPP/LocalMem": {
-        "long_name": "Local Memory",
-        "sections": {
-          "Thanks For The Memory: Allocation and Deallocation": {},
-          "Local Memory": {},
-          "Examples": {},
-          "Local Parameters": {},
-          "How Does The Function Call Stack Work?": {}
-        }
-      },
-      "PointersCPP/RefParam": {
-        "long_name": "Reference Parameters",
-        "sections": {
-          "Reference Parameters": {},
-          "Passing By Reference": {},
-          "Simple Reference Parameter Example: Swap()": {},
-          "More Syntax": {},
-          "Reference Parameter Summary": {},
-          "Reference Parameters in Java": {},
-          "Reference Parameters in C++": {}
-        }
-      },
-      "PointersCPP/HeapMem": {
-        "long_name": "Heap Memory",
-        "sections": {
-          "Heap Memory": {},
-          "What Does The Heap Look Like?": {},
-          "Programming The Heap": {},
-          "C Specifics": {},
-          "Simple Heap Example": {},
-          "Simple Heap Observations": {},
-          "Heap Array": {},
-          "Heap String Example": {},
-          "Memory Leaks": {},
-          "Ownership": {},
-          "Heap Memory Summary": {}
-        }
-      },
-      "PointersCPP/Exercises": {
-        "long_name": "Exercises",
-        "sections": {}
-      }
+      "PointersCPP/PointerIntro": {},
+      "PointersCPP/BasicPointers": {},
+      "PointersCPP/LocalMem": {},
+      "PointersCPP/RefParam": {},
+      "PointersCPP/HeapMem": {},
+      "PointersCPP/Exercises": {}
     },
     "Appendix": {
-      "Glossary": {
-        "long_name": "Glossary",
-        "sections": {}
-      },
-      "Bibliography": {
-        "long_name": "Bibliography",
-        "sections": {}
-      }
+      "Glossary": {},
+      "Bibliography": {}
     }
   }
 }
