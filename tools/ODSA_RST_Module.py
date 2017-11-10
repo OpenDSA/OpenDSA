@@ -361,6 +361,7 @@ class ODSA_RST_Module:
             errors.append(("%sERROR: line %s ('%s') - should not have content before module title" % (console_msg_prefix, i, line), True))
 
         if is_section \
+	and line in mod_attrib["sections"] \
         and "showsection" in mod_attrib["sections"][line] \
         and not mod_attrib["sections"][line]["showsection"]:
           print '%sRemoving section: %s' % (console_msg_prefix, line)
