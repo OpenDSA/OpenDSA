@@ -204,8 +204,8 @@ If the node is internal, it passes the city record to the appropriate
 child (recursively).
 If the node is a flyweight, it replaces itself with a new leaf node.
 If the node is a full node, it replaces itself with a subtree.
-This is an example of the :term:`composite design pattern`,
-discussed in Module :numref:`Composite`.
+This is an example of the
+:ref:`Composite design pattern <Composite design pattern> <Composite>`.
 Use of the composite design would be difficult if null pointers are
 used to represent empty leaf nodes.
 It turns out that the Bintree insert and delete methods are easier to

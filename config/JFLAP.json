@@ -41,87 +41,49 @@
   "assumes": "recursion",
   "dispModComp": true,
   "glob_exer_options": {},
+  "glob_ss_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  }, 
+  "glob_ka_options": {
+    "threshold": 5, 
+    "points": 1.0, 
+    "required": true
+  }, 
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2.0
+    }, 
+    "points": 1.0
+  }, 
+  "glob_pe_options": {
+    "threshold": 0.9, 
+    "points": 2.0, 
+    "required": true
+  }, 
   "chapters": {
     "Introduction": {
-      "JFLAP/Introduction": {
-        "long_name": "Introduction",
-        "sections": {}
-      }
+      "JFLAP/Introduction": {}
     },
     "Finite Automata": {
-      "JFLAP/FAEditor": {
-        "long_name": "Finite Automaton Editor",
-        "sections": {}
-      },
-      "JFLAP/NPDAEditor": {
-        "long_name": "Non-deterministic Pushdown Automaton Editor",
-        "sections": {}
-      },
-      "JFLAP/TMEditor": {
-        "long_name": "Turing Machine Editor",
-        "sections": {}
-      }
-
+      "JFLAP/FAEditor": {},
+      "JFLAP/NPDAEditor": {},
+      "JFLAP/TMEditor": {}
     },
     "Grammar": {
-      "JFLAP/GrammarEditor": {
-        "long_name": "Grammar Editor",
-        "sections": {}
-      }
+      "JFLAP/GrammarEditor": {}
     },
     "Regular Expression": {
-      "JFLAP/REtoFA": {
-        "long_name": "Regular Expression to Finite Automaton Converter",
-        "sections": {}
-      }
+      "JFLAP/REtoFA": {}
     },
     "Sections": {
-      "JFLAP/FATester": {
-        "long_name": "Create FA Exercise",
-        "sections": {}
-      },
-      "JFLAP/FAFixer": {
-        "long_name": "Fix FA Exercise",
-        "sections": {}
-      },
-      "JFLAP/ExerciseGenerator": {
-        "long_name": "Finite Automaton Exercise Generator",
-        "sections": {}
-      }
+      "JFLAP/FATester": {},
+      "JFLAP/FAFixer": {},
+      "JFLAP/ExerciseGenerator": {}
     },
     "Martin Tamayo": {
-      "JFLAP/MartinTamayo": {
-        "long_name": "Martin's AVs",
-        "sections": {
-          "Finite Accepter": {
-            "FAEditor": {
-              "long_name": "Finite Automata Editor",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            }
-          },
-          "Mealy Machine": {
-            "MealyEditor": {
-              "long_name": "Mealy Machine Editor",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            }
-          },
-          "Moore Machine": {
-            "MooreEditor": {
-              "long_name": "Moore Machine Editor",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            }
-          }
-        }
-      }
+      "JFLAP/MartinTamayo": {}
     }
   }
 }

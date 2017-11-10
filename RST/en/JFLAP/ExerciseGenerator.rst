@@ -5,16 +5,17 @@
 
 .. avmetadata::
    :author: Bill Yu 
-   :requires: intelligence
+   :requires:
    :satisfies: JFLAP
    :topic: Finite State Machines
 
 .. index:: ! Finite Automaton Exercise Generator
 
 Finite Automaton Exercise Generator
-==============
+===================================
 
 Exercise Generator
+------------------
 
 See |external_link| here.
 
