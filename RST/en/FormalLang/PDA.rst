@@ -239,7 +239,7 @@ such that :math:`L = L(M)`.
 2. Previous PDA for :math:`\{a^nb^mc^{n+m} | n, m> 0\}` is 
    probably deterministic 
 3. Previous PDA for :math:`\{ww^R | w \in \Sigma^+\}, \Sigma = \{a, b\}`
-is nondeterministic.
+   is nondeterministic.
 
 .. topic:: Example
 

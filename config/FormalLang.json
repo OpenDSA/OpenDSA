@@ -158,6 +158,12 @@
         "sections": {}
       }
     },
+    "Parsing": {
+      "FormalLang/ParseIntro": {
+        "long_name": "Parsing Introduction",
+        "sections": {}
+      }
+    },
     "Limits to Computing": {
       "SeniorAlgAnal/Impossible": {
         "long_name": "Unsolveable Problems",
