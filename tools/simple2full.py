@@ -12,7 +12,7 @@ from docutils.parsers.rst import directives, states
 from collections import OrderedDict
 from docutils.core import publish_parts
 from optparse import OptionParser
-from ODSA_Config import read_conf_file
+from ODSA_Config import read_conf_file, get_odsa_dir
 
 mod_options = None    # custom options specified for modules
 ex_options = None     # custom options specified for exercises/slideshows
@@ -569,10 +569,12 @@ def get_chapter_module_files(conf_data):
       the paths to the rst files of the modules in the chapter
   '''
   files = OrderedDict()
+  odsa_dir = get_odsa_dir()
   for chapter, modules in conf_data['chapters'].iteritems():
     files[chapter] = []
     for module in modules.keys():
-      files[chapter].append(os.path.join(os.path.abspath('RST{1}{0}{1}'.format(conf_data['lang'], os.sep)), module + ".rst"))
+      module = module.replace('/', os.sep)
+      files[chapter].append(os.path.join(os.path.abspath('{0}RST{2}{1}{2}'.format(odsa_dir, conf_data['lang'], os.sep)), module + ".rst"))
   return files
 
 def get_options(conf_data):
@@ -682,7 +684,6 @@ def generate_full_config(config_file_path):
   for chapter, files in mod_files.iteritems():
     full_config['chapters'][chapter] = OrderedDict()
     for x in files:
-      x = x.replace('/', os.sep)
       rst_dir_name = x.split(os.sep)[-2]
       rst_fname = os.path.basename(x).partition('.')[0]
       if rst_dir_name == conf_data['lang']:
