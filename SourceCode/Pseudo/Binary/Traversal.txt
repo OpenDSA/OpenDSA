@@ -10,7 +10,7 @@ inorder(node)
 preorder(node)
   if node == null then return
   visit(node)
-  preorder(node.left) 
+  preorder(node.left)
   preorder(node.right)
 /* *** ODSAendTag: preorder *** */
 

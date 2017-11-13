@@ -690,7 +690,7 @@ class ODSA_RST_Module:
         i = i + 1
 
       for (msg, module_error) in errors:
-        if module_error or (section_title_found and not module_error):
+        if module_error or section_title_found:
           print_err(msg)
 
       if not avmetadata_found:

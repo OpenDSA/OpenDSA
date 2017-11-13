@@ -2,18 +2,18 @@
 /* *** ODSATag: AQueue1 *** */
 class AQueue implements Queue {
   private Object queueArray[]; // Array holding queue elements
-  private static final int defaultSize = 10;
+  private static final int DEFAULT_SIZE = 10;
   private int maxSize;         // Maximum size of queue
   private int front;           // Index of front element
   private int rear;            // Index of rear element
 
   // Constructors
   AQueue(int size) {
-    maxSize = size+1;          // One extra space is allocated
+    maxSize = size + 1;          // One extra space is allocated
     rear = 0; front = 1;
     queueArray = new Object[maxSize];  // Create queueArray
   }
-  AQueue() { this(defaultSize); }
+  AQueue() { this(DEFAULT_SIZE); }
 /* *** ODSAendTag: AQueue1 *** */
 
   String toString() {

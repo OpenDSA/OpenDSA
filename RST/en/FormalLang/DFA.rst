@@ -15,7 +15,37 @@ Deterministic Finite Automata
 DFA: Deterministic Finite Automata
 ----------------------------------
 
-(Also called Deterministic Finite Acceptor)
+We start with the simplest of our machines:
+The Deterministic Finite Automata (DFA), also called the
+Deterministic Finite Acceptor.
+This machine can process an input string (shown on a tape) from left
+to right.
+There is a control unit (with states), behavior defined for what to do
+when in a given state and with a given symbol on the current square of
+the tape.
+All that we can "do" is change state before going to the next letter
+to the right.
+
+At the end of processing the letters of the string, the DFA can answer
+"yes" or "no".
+For example, "yes" if 6789 is a valid integer,
+or if SUM is a valid variable name in C++.
+
+.. odsafig:: Images/DFAexample.png
+   :width: 350
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Basic DFA
+
+   Example of DFA
+
+.. note::
+
+   Discussion question: What information do we need to
+   characterize/describe/define a given DFA?
+   We want enough information so that we can "build" the machine.
+   But no more.
 
 Define a DFA as :math:`(Q, \Sigma, \delta, q_0, F)` where
 
@@ -28,21 +58,12 @@ Define a DFA as :math:`(Q, \Sigma, \delta, q_0, F)` where
 * :math:`q_0` is the initial state (:math:`q_0 \in Q`)
 * :math:`F \subseteq Q` is a set of final states
 
-.. odsafig:: Images/DFAexample.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Basic DFA
-
-   Example of DFA
-
 A DFA is a simple machine with not a lot of power.
+We will see that there are many questions that it cannot answer about
+strings.
+For example, it cannot tell whether :math:`((9+5)+a)` is a valid
+arithmetic expression or not.
 
-It can answer yes or no (for example, if 6789 is a valid integer, or
-SUM is a valid variable name in C++). 
-
-It cannot tell whether ((9+5)+a) is a valid arithmetic expression. 
 
 Example
 ~~~~~~~
@@ -59,7 +80,7 @@ Assign meaning to the states: q0 - odd numbers, q1 - even numbers,
 Transition Diagram:
 
 .. odsafig:: Images/stnfaEx1.png
-   :width: 400
+   :width: 250
    :align: center
    :capalign: justify
    :figwidth: 90%
@@ -116,13 +137,13 @@ Example of a trace: 11010
 Pictorial Example of a trace for 100:
 
 .. odsafig:: Images/stnfapict.png
-   :width: 400
+   :width: 450
    :align: center
    :capalign: justify
    :figwidth: 90%
    :alt: DFA Example
 
-   DFA Example: Odd numbers
+   DFA Example: Odd numbers trace
 
 
 Definitions
@@ -191,7 +212,7 @@ To be complete, we can add one or more "trap" states, and put in all
 of the "extra" transitions. As follows.
 
 .. odsafig:: Images/stnfaEx3.png
-   :width: 400
+   :width: 350
    :align: center
    :capalign: justify
    :figwidth: 90%
@@ -222,7 +243,7 @@ q2 - odd number, odd number of 1's,
 q3 - odd number, even number of 1's 
 
 .. odsafig:: Images/stnfaEx2.png
-   :width: 400
+   :width: 375
    :align: center
    :capalign: justify
    :figwidth: 90%

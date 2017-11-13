@@ -19,12 +19,12 @@ Asymptotic Analysis and Upper Bounds
 
 .. inlineav:: GrowthRatesCON dgm
     :links: AV/AlgAnal/GrowthRatesCON.css
-    :scripts: AV/AlgAnal/GrowthRatesCON.js
+    :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesCON.js
     :align: center
 
 .. inlineav:: GrowthRatesZoomCON dgm
    :links: AV/AlgAnal/GrowthRatesZoomCON.css
-   :scripts: AV/AlgAnal/GrowthRatesZoomCON.js
+   :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesZoomCON.js
    :align: center
 
    Two views of a graph illustrating the growth rates for

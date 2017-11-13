@@ -23,5 +23,5 @@ INDEPENDENT SET PROBLEM.
 
 Try out an instance of the Independent Set problem on your own.
 
-.. avembed:: Exercises/Development/independentSet_KA.html ka
+.. avembed:: Exercises/NP/independentSetPRO.html ka
    :long_name: Practice Exercise for Independent Set

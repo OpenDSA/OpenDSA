@@ -1,0 +1,132 @@
+<html>
+
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
+        <style>
+            #applet {
+                height: 620px;
+                width: 600px;
+                border:1px solid #000000;
+                background-color: whitesmoke;
+                position: relative;
+                left: 35%;
+            }
+
+            .infoBox {
+                height: 135px;
+                width: 550px;
+                border: 1px solid lightblue;
+                left: 25px;
+                margin-top: 5px;
+                position: relative;
+            }
+            
+            #valueInputBox {
+                margin-left: 25px;           
+            }
+            #performanceSummary {
+                margin-left: 25px;  
+            }
+            #performanceDetails {
+                margin-left: 25px;  
+            }
+            #testCaseHistory {
+                margin-left: 25px;  
+            }
+            .triangleInput {
+                width: 25px;
+                margin-right: 50px;
+            }
+            #reset {
+                position: relative;
+                top: 15px;
+                left: 275px;
+            }
+
+        </style>
+        <style type="text/css" media="screen">
+            #editor { 
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="position: relative; left: 25%; width:50%;">
+                <h1 style="text-align: center;">JUnit testing tutorial</h1>
+                <h2>TODO</h2>
+                <ul>
+                    <li>Figure out proper teaching method for lesson, (TDD?)</li>
+                    <li>Program javascript for web app</li>
+                    <li>Write program for homework exercise</li>
+                    <li>Figure out mutant code grading criteria</li>
+                    <li>Figure out submission method (again, Webcat?)</li>
+                </ul>
+                <h2 style="text-align: center;">Triangle Classifier App</h2>
+                <p>
+                    This is where the lesson for the tutorial would go, as well as instructions for the homework assignment?  Unit testing is one of
+                    the most important concepts in software development.  It assures that your code works as intended and, if done properly, can speed up 
+                    the development process.
+                    <br>
+                    The below app takes 3 sides of a triangle as test input and will show you the cumulative progress of bugs found and code covered with 
+                    each test case input.  Really think about and maybe draw out the triangles to attempt to get as best coverage as possible.
+                </p>
+        </div>
+        <br>
+    <div id="applet">
+        <div class="infoBox">
+            <div id="valueInputBox">
+                <h4>Enter Your Test Values</h4>
+                <label style="margin-right: 50px;">Enter triangle sides:</label>
+                <input class="triangleInput" id="side1">
+                <input class="triangleInput" id="side2">
+                <input class="triangleInput" id="side3">
+                <button id="classify">Classify</button>
+            </div>            
+        </div>
+        <div class="infoBox">
+            <div id="performanceSummary" >
+                <h4>Your Performance Summary</h4>
+                <label style="float: left; margin-right: 15px;">Code Coverage: </label>
+                <div class="progress" style="width: 350px;  float: right; margin-right: 15px;">
+                    <div class="progress-bar" role="progressbar" style="width:70%">70%</div>
+                </div>
+                <div class="">
+                    <label style="float: left; margin-right: 15px;">Bugs Found: </label>
+                    <div class="progress" style="width: 350px; float: right; margin-right: 15px;">
+                        <div class="progress-bar" role="progressbar" style="width:70%">70%</div>
+                    </div>
+                </div>                
+            </div>            
+        </div>
+        <div class="infoBox" >
+            <div id="performanceDetails">
+                <h4>Your Performance Details</h4>
+                
+            </div>            
+        </div>
+        <div class="infoBox" >
+            <div id="testCaseHistory">
+                <h4>Your Test Case History</h4>           
+                <textarea rows="4" style="width: 500px"> </textarea>
+            </div>            
+        </div>
+        <button id="reset">Reset</button>
+    </div>
+    <br>
+    <div id="editor"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js">
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/javascript");
+    </script>
+    <iframe src="./mochatest.html" style="margin-left: 25%; height: 500px;" width="50%" ></iframe>
+    <div style="height: 100px"></div>
+    </body>
+
+</html>

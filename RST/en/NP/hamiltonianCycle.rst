@@ -23,5 +23,5 @@ HAMILTONIAN CYCLE PROBLEM.
 
 Try out an instance of the Hamiltonian Cycle problem on your own.
 
-.. avembed:: Exercises/Development/hamiltonianCycle_KA.html ka
+.. avembed:: Exercises/NP/hamiltonianCycPRO.html ka
    :long_name: Practice Exercise for Hamiltonian Cycle

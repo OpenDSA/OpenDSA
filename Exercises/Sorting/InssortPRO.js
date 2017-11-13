@@ -5,7 +5,8 @@
       answerArr = [], // The (internal) array that stores the correct answer
       cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
       jsavArr,        // The array that the user manipulates (JSAV object)
-      selectedIndex; // Position that has been selected by user for swap
+      selectedIndex,
+      currIndex; // Position that has been selected by user for swap
 
   var inssortPRO = {
     userInput: null,      // Boolean: Tells us if user ever did anything
@@ -60,6 +61,11 @@
       selectedIndex = index;
     } else {
       jsavArr.swap(selectedIndex, index);
+      if(selectedIndex == currIndex){
+        jsavArr.unhighlight(selectedIndex);
+        jsavArr.highlight(index);
+        currIndex = index;
+      }
       jsavArr.css(selectedIndex, {"font-size": "100%"});
       selectedIndex = -1;  // Reset to nothing selected
     }
@@ -73,6 +79,7 @@
 
     // Set up the display
     av = new JSAV("InssortPRO");
+    currIndex = sortPos;
     jsavArr = av.ds.array(cloneArr, {indexed: true, center: false});
     jsavArr.highlight(sortPos);
     av.displayInit();

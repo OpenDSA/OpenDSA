@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html data-require="jsav math ../../AV/Development/graphUtils threeSATPRO">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>3-sat problem.</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="../../khan-exercises/local-only/main.js"></script>
+  <style type="text/css">
+    .jsavcanvas
+    {
+      min-height: 200px;
+      min-width: 100px;
+    }
+  </style>
+</head>
+<body data-height="750" data-width="950">
+<div class="exercise">
+  <div class="vars">
+    <var id="literalcnt">Khan.randRange(4,6)</var>
+    <var id="clausecnt">Khan.randRange(8,12)</var>
+    <var id="JSAV">threeSAT_KA.initJSAV(clausecnt,literalcnt)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem">Your task in this exercise is to find out an assignment of the boolean variables that makes the expression true or declare that  no such assignment exists.</p>
+      <div class="question">
+        <p>Assign the variables appropriately to satisfy the expression. </p>
+        <p>Click on the variable once to assign it true , twice to assign it false and thrice to reset.</p> 
+        <input id="reset" type="button" value="Reset" />	
+        <form action="">
+           <input type="checkbox" id="noSol" value="noSol">Not Satisfiable</input>
+        </form>
+        <div id="jsav" class="jsavcanvas" style="width: 800px;"></div>
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [threeSAT_KA.userInput]
+        </div>
+        <div class="validator-function">
+          if (!threeSAT_KA.checkAnswer() && !guess[0])
+            return ""; // User did not click, and correct answer is not
+	               // initial array state
+          else return threeSAT_KA.checkAnswer();
+        </div>
+      </div>
+      <div class="hints">
+        <p><var>[threeSAT_KA.getSolution()]</var></p> 
+     </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

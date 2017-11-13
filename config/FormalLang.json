@@ -89,6 +89,28 @@
     "Properties of Regular Grammars (Lectures 7, 8)": {
       "FormalLang/RegProp": {}
     },
+    "Pushdown Automata": {
+      "FormalLang/PDA": {
+        "long_name": "Pushdown Automata",
+        "sections": {}
+      },
+      "FormalLang/NPDA": {
+        "long_name": "Nondeterministic Pushdown Automata",
+        "sections": {}
+      }
+    },
+    "Context-Free Languages": {
+      "FormalLang/CFL": {
+        "long_name": "Context-Free Languages",
+        "sections": {}
+      }
+    },
+    "Parsing": {
+      "FormalLang/ParseIntro": {
+        "long_name": "Parsing Introduction",
+        "sections": {}
+      }
+    },
     "Limits to Computing": {
       "SeniorAlgAnal/Impossible": {},
       "SeniorAlgAnal/Turing": {}

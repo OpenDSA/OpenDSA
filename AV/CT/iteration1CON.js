@@ -5,7 +5,8 @@
 
 var it1_midblue1,
     it1_midblue2,
-    it1_midblue3;
+    it1_midblue3,
+    it1_arr;
 
 $(document).ready(function() {
   "use strict";
@@ -14,47 +15,44 @@ $(document).ready(function() {
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
   //blueStepAnim :This should come before JSAV Initialize
-      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep() {
+      JSAV.ext.blueStepAnim = JSAV.anim(function (delay, time) {
       if (this._shouldAnimate()) {
-
-          //  midblue 1 start
-          it1_midblue1.addClass("blueboxh", {record: false});
-          setTimeout(function() {
-            it1_midblue1.removeClass("blueboxh", {record: false});
-
-              // midblue 2 animation start -----------------
+            //  midblue 1 start
+            setTimeout(function(){
+            it1_midblue1.addClass("blueboxh", {record: false});
               setTimeout(function() {
-                it1_midblue2.addClass("blueboxh", {record: false});
-                setTimeout(function() {
-                  it1_midblue2.removeClass("blueboxh", {record: false});
+                it1_midblue1.removeClass("blueboxh", {record: false});
 
-                  // midblue 3 animation start -----------------
+                  // midblue 2 animation start -----------------
                   setTimeout(function() {
-                    it1_midblue3.addClass("blueboxh", {record: false});
+                    it1_midblue2.addClass("blueboxh", {record: false});
                     setTimeout(function() {
-                      it1_midblue3.removeClass("blueboxh", {record: false});
-                    }, 200);
-                  }, 200);
-                  // midblue 3 animation close ---------------------
+                      it1_midblue2.removeClass("blueboxh", {record: false});
 
-                }, 200);
-              }, 200);
-              // midblue 2 animation close
-
-          }, 200);
-
+                      // midblue 3 animation start -----------------
+                      setTimeout(function() {
+                        it1_midblue3.addClass("blueboxh", {record: false});
+                        setTimeout(function() {
+                          it1_midblue3.removeClass("blueboxh", {record: false});
+                        }, time);
+                      }, time);
+                      // midblue 3 animation close ---------------------
+                    }, time);
+                  }, time);
+                  // midblue 2 animation close
+              }, time);
+          }, delay);
       }
-    }, function undoBlueStep() {});
+    }, function () {});
     // BlueStepAnim END -----------------------------------------------
 
-
     //BlueStepAnim :This should come before JSAV Initialize
-        JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item) {
+        JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item, time) {
         if (this._shouldAnimate()) {
             item.addClass("blueboxh", {record: false});
             setTimeout(function() {
               item.removeClass("blueboxh", {record: false});
-            }, 200);
+            }, time);
         }
       }, function undoBlueStep(item) {});
       // BlueStepAnim END -----------------------------------------------
@@ -81,7 +79,7 @@ $(document).ready(function() {
   av.g.rect(rect_left, rect_top + 25, 30, 60).addClass("box").css({opacity: 0.9});
   av.g.rect(rect_left + 73, rect_top + 25, 30, 60).addClass("box").css({opacity: 0.9});
   //create array contains 5 values.
-  var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
+  it1_arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
   //floor 4, long purple
   av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("box");
@@ -120,7 +118,6 @@ $(document).ready(function() {
 
   // Slide 1
   av.umsg(interpret("sc1"));
-  var nextleft = leftMargin - 120;
   av.displayInit();
 
   // Slide 2
@@ -128,76 +125,78 @@ $(document).ready(function() {
   iplabel.removeClass("hiding");
   iprec.removeClass("hiding");
   ipline.removeClass("hiding");
+  var nextleft = leftMargin - 120;
   av.step();
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  av.bluehigh(topblue);
+  av.bluehigh(topblue, 150);
   av.step();
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
   nextleft -= nodegap;
   av.step();
 
   // Slide 5
   av.umsg(interpret("sc5"));
-  av.blueStepAnim();
+  av.blueStepAnim(0, 200);
   av.step();
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
+  av.blueStepAnim(500, 200);
   nextleft -= nodegap;
   av.step();
 
-  // Slide 7
-  av.umsg(interpret("sc7"));
-  av.blueStepAnim();
-  av.step();
+  // // Slide 7
+  // av.umsg(interpret("sc7"));
+  // av.step();
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
   nextleft -= nodegap;
+  av.blueStepAnim(500, 200);
   av.step();
 
-  // Slide 9
-  av.umsg(interpret("sc9"));
-  av.blueStepAnim();
-  av.step();
+  // // Slide 9
+  // av.umsg(interpret("sc9"));
+  //
+  // av.step();
 
   // Slide 10
   av.umsg(interpret("sc10"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
   nextleft -= nodegap;
+  av.blueStepAnim(500, 200);
   av.step();
 
-  // Slide 11
-  av.umsg(interpret("sc11"));
-  av.blueStepAnim();
-  av.step();
+  // // Slide 11
+  // av.umsg(interpret("sc11"));
+  // av.step();
 
   // Slide 12
   av.umsg(interpret("sc12"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
   nextleft -= (nodegap + 50);
+  av.blueStepAnim(500, 200);
   av.step();
 
-  // Slide 13
-  av.umsg(interpret("sc13"));
-  av.blueStepAnim();
-  av.step();
+  // // Slide 13
+  // av.umsg(interpret("sc13"));
+  // av.step();
 
   // Slide 14
   av.umsg(interpret("sc14"));
-  arr.css({left: nextleft});
+  it1_arr.css({left: nextleft});
   nextleft -= (nodegap + 100);
   av.step();
 
   // Slide 15
   av.umsg(interpret("sc15"));
-  av.bluehigh(botblue);
+  av.bluehigh(botblue, 150);
   av.recorded();
 });

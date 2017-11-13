@@ -16,6 +16,8 @@ The Unified Modeling Language
 The Unified Modeling Language
 -----------------------------
 
+.. index:: unified modeling langauage; selecting
+
 The Unified Modeling Language, or UML is an industry standard graphical
 notation for describing and analysing software designs.
 The symbols and graphs used in the UML are an outgrowth of efforts in the

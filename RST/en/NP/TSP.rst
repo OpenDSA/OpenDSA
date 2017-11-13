@@ -23,5 +23,5 @@ TRAVELING SALESMAN PROBLEM (TSP)
 
 Try out an instance of the Traveling Salesman problem on your own.
 
-.. avembed:: Exercises/Development/TSP_KA.html ka
+.. avembed:: Exercises/NP/TSPPRO.html ka
    :long_name: Practice Exercise for Traveling Salesman Problem

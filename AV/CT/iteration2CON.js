@@ -5,45 +5,59 @@ var it2_midblue1,
     it2_midblue2,
     it2_midblue3,
     it2_newLabelValue,
-    it2_valuelabel;
+    it2_valuelabel,
+    it2_priceBoxLabel,
+    it2_consoleLabels,
+    it2_consoleY;
 
 $(document).ready(function() {
   "use strict";
 
   //BlueStepAnim :This should come before JSAV Initialize
-      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(val) {
+      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(delay, time, lavelVal, labelX, consoleIndex) {
       if (this._shouldAnimate()) {
 
-          //  midblue 1 start
-          it2_midblue1.addClass("blueboxh", {record: false});
-          setTimeout(function() {
-            it2_midblue1.removeClass("blueboxh", {record: false});
+        setTimeout(function() {
+            //  midblue 1 start
+            it2_midblue1.addClass("blueboxh", {record: false});
+            setTimeout(function() {
+              it2_midblue1.removeClass("blueboxh", {record: false});
 
-              // midblue 2 animation start -----------------
-              setTimeout(function() {
-                it2_midblue2.addClass("blueboxh", {record: false});
+                // midblue 2 animation start -----------------
                 setTimeout(function() {
-                  it2_valuelabel.value(val);
-                  it2_midblue2.removeClass("blueboxh", {record: false});
+                  it2_midblue2.addClass("blueboxh", {record: false});
 
-                  // midblue 3 animation start -----------------
-                  setTimeout(function() {
-                    it2_midblue3.addClass("blueboxh", {record: false});
+
+                  setTimeout(function(){
+                    it2_midblue2.removeClass("blueboxh", {record: false});
+                    it2_priceBoxLabel.value(lavelVal);
+                    it2_priceBoxLabel.css({left: labelX});
+                    var gap = 30;
+                    for(var i = 0; i <= consoleIndex; i++){
+                        it2_consoleLabels[i].css({top: it2_consoleY + (gap * i)});
+                        it2_consoleLabels[i].show();
+                    }
+                        it2_consoleY -= 30;
+
+                    // midblue 3 animation start -----------------
                     setTimeout(function() {
-                      it2_midblue3.removeClass("blueboxh", {record: false});
-                    }, 200);
-                  }, 200);
-                  // midblue 3 animation close ---------------------
+                      it2_midblue3.addClass("blueboxh", {record: false});
 
-                }, 200);
-              }, 200);
-              // midblue 2 animation close
+                      setTimeout(function() {
+                        it2_midblue3.removeClass("blueboxh", {record: false});
+                      }, time);
+                    }, time);
+                    // midblue 3 animation close ---------------------
 
-          }, 200);
+                  }, time);
+                }, time);
+                // midblue 2 animation close
 
+            }, time);
+          }, delay);
       }
     }, function undoBlueStep(elemSet) {});
-    // BlueStepAnim END -----------------------------------------------
+    // BlueStepAnim END -----------------------------------------------zz
 
 
     //BlueStepAnim :This should come before JSAV Initialize
@@ -64,8 +78,8 @@ $(document).ready(function() {
   var av_name = "iteration2CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
-  var leftMargin = 450,
-      rect_left = 300,
+  var leftMargin = 270,
+      rect_left = leftMargin - 150,
       rect0_top = 0,
       rect_top = 40,
       topMargin = rect_top + 20;
@@ -113,7 +127,7 @@ $(document).ready(function() {
   var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
   label3.addClass("labels");
 
-  var pricelabel = av.label("price: ", {left: rect_left + 160, top: rect_top + 110});
+  var pricelabel = av.label("print (price)", {left: rect_left + 160, top: rect_top + 112});
   pricelabel.addClass("labels");
   pricelabel.addClass("midlabel");
 
@@ -123,7 +137,53 @@ $(document).ready(function() {
   it2_valuelabel.addClass("labels");
   it2_valuelabel.addClass("valuelabel");
 
+  // <<--------------- STATE BOX ----------------->>
 
+  var stateX = 530;
+  var stateY = 40;
+  var stateLabel = av.label("STATE", {left: stateX, top: stateY + 30});
+  stateLabel.addClass("statelabel");
+
+  var stateBox = av.g.rect(stateX - 25, stateY + 80, 110, 150).addClass("statebox");
+
+  // price box and label
+  av.label("price", {left: stateX + 13, top: stateY + 95});
+  stateLabel.addClass("statelabel");
+
+  var priceBox = av.g.rect(stateX - 5, stateY + 135, 70, 70).addClass("bluebox");
+
+  var pricelabelX = stateX + 23;
+  it2_priceBoxLabel = av.label("", {left: pricelabelX, top: stateY + 130});
+  it2_priceBoxLabel.addClass("labels");
+  it2_priceBoxLabel.addClass("midlabel");
+
+  var totalBoxLabel = av.label("", {left: stateX + 23, top: stateY + 215});
+
+
+
+  // <<--------------- CONSOLE BOX ----------------->>
+
+  var stateX = 660;
+  var stateY = - 20;
+  var stateLabel = av.label("CONSOLE", {left: stateX + 35, top: stateY + 60});
+  stateLabel.addClass("statelabel");
+
+  var consoleBox = av.g.rect(stateX - 5, stateY + 110, 170, 200).addClass("consolebox");
+
+  it2_consoleY = stateY + 250;
+  var label1 = av.label("4", {left: stateX + 20, top: it2_consoleY});
+  var label2 = av.label("13", {left: stateX + 20, top: it2_consoleY});
+  var label3 = av.label("6", {left: stateX + 20, top: it2_consoleY});
+  var label4 = av.label("9", {left: stateX + 20, top: it2_consoleY});;
+  var label5 = av.label("11", {left: stateX + 20, top: it2_consoleY});
+  it2_consoleLabels = [label1, label2, label3, label4, label5];
+
+
+  for(var i = 0; i < it2_consoleLabels.length; i++){
+    it2_consoleLabels[i].addClass("labels");
+    it2_consoleLabels[i].addClass("smalllabel");
+    it2_consoleLabels[i].hide();
+  }
 
   // --------------------- start slide shows
 
@@ -145,7 +205,7 @@ $(document).ready(function() {
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  av.blueStepAnim("4")
+  av.blueStepAnim(0, 100, "4", pricelabelX, 0);
   av.step();
 
   // Slide 5
@@ -156,7 +216,7 @@ $(document).ready(function() {
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  av.blueStepAnim("13")
+  av.blueStepAnim(0, 100, "13", pricelabelX - 6, 1);
   av.step();
 
   // Slide 7
@@ -167,7 +227,8 @@ $(document).ready(function() {
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  av.blueStepAnim("6");
+
+  av.blueStepAnim(0, 100, "6", pricelabelX, 2);
   av.step();
 
   // Slide 9
@@ -178,7 +239,7 @@ $(document).ready(function() {
 
   // Slide 10
   av.umsg(interpret("sc10"));
-  av.blueStepAnim("9");
+  av.blueStepAnim(0, 100, "9", pricelabelX, 3);
   av.step();
 
   // Slide 11
@@ -189,7 +250,7 @@ $(document).ready(function() {
 
   // Slide 12
   av.umsg(interpret("sc12"));
-  av.blueStepAnim("11");
+  av.blueStepAnim(0, 100, "11", pricelabelX - 6, 4);
   av.step();
 
   // Slide 13
