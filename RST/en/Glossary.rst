@@ -131,6 +131,11 @@ Glossary
       :term:`asymptotic algorithm analysis`, generally used as a
       synonym for :term:`asymptotic analysis`.
 
+   alias
+      Another name for something. In programming, this usually refers
+      to two :term:`references <reference>` that refer to the same
+      object.
+
    allocated
    allocation
       Reserving memory for an object in the Heap memory.
@@ -259,8 +264,8 @@ Glossary
       :term:`internal nodes <internal node>`, but
       instead only stores :term:`search key` values as direction
       finders for the purpose of searching through the tree.
-      Only the :term:`leaf nodes <leaf node>` store a reference to the
-      actual data records.
+      Only the :term:`leaf nodes <leaf node>` store a
+      :term:`reference` to the actual data records.
 
    B$^*$-tree
       A variant on the :term:`B$^+$-tree`.
@@ -831,7 +836,7 @@ Glossary
    composition
       Relationships between classes based on usage rather than 
       :term:`inheritance <inherit>`, i.e. a **HAS-A** relationship.
-      For example, some code in class 'A' has a reference to some
+      For example, some code in class 'A' has a :term:`reference` to some
       other class 'B'.
 
    computability
@@ -1028,7 +1033,10 @@ Glossary
       A specialized term used to indicate removing an element from a queue.
 
    dereference
-      Means accessing the value of a :term:`pointee`.
+      Accessing the value of the :term:`pointee` for some
+      :term:`reference` variable.
+      Commonly, this happens in a language like Java when using the
+      "dot" operator to access some field of an object.
 
    descendant
       In a tree, the set of all nodes that have a node :math:`A` as an
@@ -1573,10 +1581,10 @@ Glossary
       for "C" objects.
       Then, every place in the document that needs a "C" in a given font,
       size, and typeface will reference this single copy.
-      The various instances of references to a specific form of "C" are
-      called flyweights.
-      Flyweights can also used to advantage in the implementation of the
-      :term:`bintree` and :term:`PR quadtree`.
+      The various instances of :term:`references <reference>` to a
+      specific form of "C" are called flyweights.
+      Flyweights can also be used to implement the empty leaf nodes
+      of the :term:`bintree` and :term:`PR quadtree`.
 
    folding method
       In :term:`hashing`, an approach to implementing a
@@ -2118,10 +2126,11 @@ Glossary
    key sort
       :to-term: key :label: uses
 
-      Any sorting opertation applied to a collection of
+      Any sorting operation applied to a collection of
       :term:`key-value pairs <key-value pair>` where the value in this
-      case is a reference to a complete record (that is, a pointer to
-      the record in memory or a position for a record on disk).
+      case is a :term:`reference` to a complete record (that is, a
+      pointer to the record in memory or a position for a record on
+      disk).
       This is in contrast to a sorting operation that works directly
       on a collection of records.
       The intention is that the collection of key-value pairs is far
@@ -2140,7 +2149,7 @@ Glossary
       The idea is to simply store as records in the index pairs of
       keys and records.
       Specifically, the index will typically store a copy of the key
-      along with a reference to the record.
+      along with a :term:`reference` to the record.
       The other standard solution to this problem is to pass a
       :term:`comparator` function to the index.
 
@@ -2224,9 +2233,10 @@ Glossary
       The root is the only node at level 0, and its depth is 0.
 
    lexical scoping
-      Lexical scoping, also known as static scoping, of a variable so
-      that it may only referenced in the block of code in which the
+      Within programming languages, the convention of allowing access
+      to a variable only within the block of code in which the
       variable is defined.
+      A synonym for :term:`static scoping`.
 
    lifetime
       For a variable, lifetime is the amount of time it will exist
@@ -2903,7 +2913,7 @@ Glossary
       modifications will not affect the original variable.
 
    pass by reference
-      A reference to the variable is passed to the called
+      A :term:`reference` to the variable is passed to the called
       function. So, any modifications will affect the original
       variable.
 
@@ -2984,8 +2994,8 @@ Glossary
    pointer-based implementation for binary tree nodes
       A common way to implement :term:`binary tree` :term:`nodes
       <node>`.
-      Each node stores a data value (or a reference to a data value),
-      and pointers to the left and right children.
+      Each node stores a data value (or a :term:`reference` to a data
+      value), and pointers to the left and right children.
       If either or both of the children does not exist, then a null
       pointer is stored.
 
@@ -3524,6 +3534,9 @@ Glossary
       The place where an :term:`activation record` is stored when a
       subroutine is called during a program's runtime.
 
+   scope
+      The parts of a program that can see and access a variable.
+
    search key
       A field or part of a record that is used to represent the record
       when searching. For example, in a database of customer records,
@@ -3939,7 +3952,7 @@ Glossary
 
    stale pointer
       Within the context of a :term:`buffer pool` or
-      :term:`memory manager`, this refers to a reference to a
+      :term:`memory manager`, this means a :term:`reference` to a
       :term:`buffer` or memory location that is no longer valid.
       For example, a program might make a memory request to a buffer
       pool, and be given a reference to the buffer holding the
@@ -3962,6 +3975,9 @@ Glossary
       For example, static analysis is analysis of the program's text
       or structure, as opposed to its run-time behavior.
       Static binding or static memory allocation occurs at compile time.
+
+   static scoping
+      A synonym for :term:`lexical scoping`.
 
    Strassen's algorithm
       A :term:`recursive <recursion>` algorithm for matrix

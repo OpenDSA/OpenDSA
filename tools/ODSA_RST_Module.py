@@ -358,9 +358,10 @@ class ODSA_RST_Module:
           and not (line == '' or line.startswith('.. ') or line.startswith(':')) \
           and not is_index_option(mod_data, i, line):
             content_before_module = True
-            errors.append(("%sERROR: line %s ('%s') - should not have content before module title" % (console_msg_prefix, i, line), True))
+            errors.append(("%sERROR: %s: line %s ('%s') - should not have content before module title" % (console_msg_prefix, mod_path, i, line), True))
 
         if is_section \
+	and line in mod_attrib["sections"] \
         and "showsection" in mod_attrib["sections"][line] \
         and not mod_attrib["sections"][line]["showsection"]:
           print '%sRemoving section: %s' % (console_msg_prefix, line)
@@ -386,7 +387,7 @@ class ODSA_RST_Module:
           and not content_before_section \
           and re.match('(^\.\. (?!\w+::).+)|(^$)|(^=+$)', line) == None:
               content_before_section = True
-              errors.append(("%sERROR: line %s ('%s') - should not have content between module title and first section" % (console_msg_prefix, i, line), False))
+              errors.append(("%sERROR: %s: line %s ('%s') - should not have content between module title and first section" % (console_msg_prefix, mod_path, i, line), False))
           
         # Determine the type of directive
         dir_type = get_directive_type(line)
@@ -689,21 +690,21 @@ class ODSA_RST_Module:
         i = i + 1
 
       for (msg, module_error) in errors:
-        if module_error or (section_title_found and not module_error):
+        if module_error or section_title_found:
           print_err(msg)
 
       if not avmetadata_found:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
 
       for link, has_directive in links.iteritems():
-        if not os.path.exists(link):
+        if not os.path.exists('{0}/{1}'.format(config.odsa_dir, link)):
           print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, link))
         if not has_directive:
           mod_data.insert(0, '.. odsalink:: {0}\n'.format(link))
 
       mod_data.append('\n')
       for script, has_directive in scripts.iteritems():
-        if not os.path.exists(script):
+        if not os.path.exists('{0}/{1}'.format(config.odsa_dir,script)):
           print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, script))
         if not has_directive:
           mod_data.append('.. odsascript:: {0}\n'.format(script))

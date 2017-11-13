@@ -47,13 +47,8 @@ A variable is :term:`deallocated` when the system reclaims the memory
 from the variable, so it no longer has an area to store its value.
 For a variable, the period of time from its allocation until its
 deallocation is called its :term:`lifetime`.
-
-The most common memory related error is using a deallocated variable.
-For local variables, modern languages automatically protect against
-this error.
-With pointers, as we will see however, the programmer must make sure
-that allocation is handled correctly.
-
+Within a program, the parts of the program that can see and access the
+variable are its :term:`scope`.
 
 The most common variables you use are :term:`local variables` within
 functions such as the variables ``num`` and ``result`` in the

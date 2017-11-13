@@ -12,7 +12,7 @@ from docutils.parsers.rst import directives, states
 from collections import OrderedDict
 from docutils.core import publish_parts
 from optparse import OptionParser
-from ODSA_Config import read_conf_file
+from ODSA_Config import read_conf_file, get_odsa_dir
 
 mod_options = None    # custom options specified for modules
 ex_options = None     # custom options specified for exercises/slideshows
@@ -406,6 +406,8 @@ def extract_sec_config(sec_json):
   '''
   sections_config = OrderedDict()
   for x in sec_json:
+    if not type(x) is OrderedDict:
+        continue
     sec_title = None
     for k, v in x.iteritems():
       if k == 'title':
@@ -567,10 +569,12 @@ def get_chapter_module_files(conf_data):
       the paths to the rst files of the modules in the chapter
   '''
   files = OrderedDict()
+  odsa_dir = get_odsa_dir()
   for chapter, modules in conf_data['chapters'].iteritems():
     files[chapter] = []
     for module in modules.keys():
-      files[chapter].append(os.path.join(os.path.abspath('RST/{0}/'.format(conf_data['lang'])), module + ".rst"))
+      module = module.replace('/', os.sep)
+      files[chapter].append(os.path.join(os.path.abspath('{0}RST{2}{1}{2}'.format(odsa_dir, conf_data['lang'], os.sep)), module + ".rst"))
   return files
 
 def get_options(conf_data):
@@ -701,7 +705,8 @@ def generate_full_config(config_file_path):
       rst_parts = publish_parts(source,
                   settings_overrides={'output_encoding': 'utf8',
                   'initial_header_level': 2},
-                  writer_name="xml")
+                  writer_name="xml",
+		  source_path=mod_path)
 
       mod_json = xmltodict.parse(rst_parts['whole'])
       mod_config = extract_mod_config(mod_json)
@@ -728,3 +733,4 @@ if __name__ == '__main__':
 
   with open(output_file, 'w') as outfile:
     json.dump(full_conf, outfile, indent=2)
+

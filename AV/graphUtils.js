@@ -1,7 +1,7 @@
+(function ($) {
+//(function() {
 "use strict";
 /*global alert: true, ODSA */
-
-(function ($) {
 
   function randomGraphGen(graph, numberOfNodes, numberOfEdges) {
   var one, two;
@@ -33,5 +33,7 @@
    //graph.recorded();
  }
  ODSA.AV.randomGraphGen = randomGraphGen;
+ //window.randomGraphGen = window.randomGraphGen || randomGraphGen;
 
 }(jQuery));
+//}());

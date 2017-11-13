@@ -16,6 +16,7 @@ $(document).ready(function() {
   var topAlign = 80;
   var rectHeight = 20;
   var rectWidth = 50;
+  var labelGap = 5;
 
 
   // Slide 1
@@ -44,7 +45,7 @@ $(document).ready(function() {
     arr.swap(0, 1);
   }
   av.g.rect(leftAlign, topAlign, rectWidth, rectHeight);
-  av.label("i=0",  {top: topAlign + 12, left: leftAlign + 10});
+  av.label("$i = 0$",  {top: topAlign + 12, left: leftAlign + 10});
   av.step();
 
   // Slide 5
@@ -93,7 +94,7 @@ $(document).ready(function() {
     arr.swap(0, 1);
   }
   av.g.rect(leftAlign + rectWidth, topAlign, rectWidth, rectHeight);
-  av.label("i=1",  {top: topAlign + 12, left: leftAlign + rectWidth + 10});
+  av.label("$i = 1$",  {top: topAlign + 12, left: leftAlign + rectWidth + 10});
   av.step();
 
   // Slide 10
@@ -133,7 +134,7 @@ $(document).ready(function() {
     arr.swap(0, 1);
   }
   av.g.rect(leftAlign + 2 * rectWidth, topAlign, rectWidth, rectHeight);
-  av.label("i=2",  {top: topAlign + 12, left: leftAlign + 2 * rectWidth + 10});
+  av.label("$i = 2$",  {top: topAlign + 12, left: leftAlign + 2 * rectWidth + 10});
   av.step();
 
   // Slide 14
@@ -167,7 +168,7 @@ $(document).ready(function() {
     arr.swap(0, 1);
   }
   av.g.rect(leftAlign + 3 * rectWidth, topAlign, rectWidth, rectHeight);
-  av.label("i=3",  {top: topAlign + 12, left: leftAlign + 3 * rectWidth + 10});
+  av.label("$i = 3$",  {top: topAlign + 12, left: leftAlign + 3 * rectWidth + 10});
   av.step();
 
   // Slide 18
@@ -192,7 +193,7 @@ $(document).ready(function() {
     arr.swap(0, 1);
   }
   av.g.rect(leftAlign + 4 * rectWidth, topAlign, rectWidth, rectHeight);
-  av.label("i=4", {top: topAlign + 12, left: leftAlign + 4 * rectWidth + 10});
+  av.label("$i = 4$", {top: topAlign + 12, left: leftAlign + 4 * rectWidth + 10});
   arr.addClass(1, "deemph");
   arr.addClass(0, "deemph");
   arr.removeClass(0, "greenbg");
@@ -201,9 +202,44 @@ $(document).ready(function() {
 
   // Slide 21
   av.umsg(interpret("sc21"));
-  av.label("|------------ $n-1$ --------------|",  {top: topAlign + 27, left: leftAlign + 20}).addClass("largeLabel");
-  av.label("|--- $n-1$ ---|",  {top: topAlign - 60, left: leftAlign - 70}).addClass("largeLabel rotated");
-  av.g.line(leftAlign, topAlign - 4 * rectHeight, leftAlign + 5 * rectWidth, topAlign + rectHeight);
+  
+  //Horizontal Line
+  av.g.line (leftAlign, 3 * rectHeight + topAlign,
+             leftAlign + 2 * rectWidth,
+             3 * rectHeight + topAlign,
+             {"stroke-width": 2, "arrow-start":"classic-wide-long"});
+  av.g.line (leftAlign + 3 * rectWidth,
+             3 * rectHeight + topAlign, leftAlign + 5 * rectWidth,
+             3 * rectHeight + topAlign,
+             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.g.line(leftAlign, 2.5 * rectHeight + topAlign,
+           leftAlign, 3.5 * rectHeight + topAlign);
+  av.g.line(leftAlign + 5 * rectWidth, 2.5 * rectHeight + topAlign,
+            leftAlign + 5 * rectWidth, 3.5 * rectHeight + topAlign);
+  av.label ("$n - 1$", 
+            {top: topAlign + 1.5 * rectHeight,
+             left: leftAlign + 2 * rectWidth + labelGap}); 
+
+
+  //Vertical Line
+  av.g.line (leftAlign - 0.5 * rectWidth, topAlign - rectHeight,
+             leftAlign - 0.5 * rectWidth,
+             topAlign +  rectHeight,
+             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  
+  av.g.line (leftAlign - 0.5 * rectWidth, topAlign - 2 * rectHeight,
+             leftAlign - 0.5 * rectWidth,
+             topAlign -  4 * rectHeight,
+             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.g.line(leftAlign - 0.75 * rectWidth, topAlign + rectHeight,
+           leftAlign - 0.25 * rectWidth, topAlign + rectHeight);
+  av.g.line(leftAlign - 0.75 * rectWidth, topAlign - 4 * rectHeight,
+            leftAlign - 0.25 * rectWidth, topAlign - 4 * rectHeight);
+  av.label ("$n - 1$", 
+            {top: topAlign - 3 * rectHeight,
+             left: leftAlign - rectWidth + labelGap}); 
+
+
   av.step();
 
   // Slide 22

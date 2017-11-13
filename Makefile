@@ -91,151 +91,61 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-Plain: Everything CS2 CS3 PL
-
-test_generated: Everything CS2 CS3 CS4104 FormalLang
-
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
+
+simple_demo: min
+	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
 
 CT: min
 	python $(CONFIG_SCRIPT) config/CT.json --no-lms
 
-EverythingPlain: min
-	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
+NP: min
+	python $(CONFIG_SCRIPT) config/NP.json --no-lms
 
-Everything: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/Everything_generated.json --no-lms
+JFLAP: min
+	python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
 
-CS2Plain: min
-	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
+FormalLang: min
+	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
 
-CS2: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/CS2_generated.json --no-lms
+Spatial: min
+	python $(CONFIG_SCRIPT) config/Spatial.json --no-lms
 
-CS2114: min
-	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
+PointersJava: min
+	python $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
 
-CS3Plain: min
-	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
-
-CS3: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/CS3_generated.json --no-lms
-
-CSCI2101: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/CSCI2101_generated.json --no-lms
-
-CS327: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/CS327_generated.json --no-lms
-
-CS172: min
-	python $(CONFIG_SCRIPT) config/CS172.json --no-lms
-
-ECE252: min
-	python $(CONFIG_SCRIPT) config/ECE252.json --no-lms
-
-PLPlain: min
-	python $(CONFIG_SCRIPT) config/PL.json --no-lms
+PointersCPP: min
+	python $(CONFIG_SCRIPT) config/PointersCPP.json --no-lms
 
 PL: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/PL_generated.json --no-lms
+	python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
 # Tom Naps has added this target while he works on re-packaging the PL book
 # He will remove it and the corresponding config file when that re-packaging is complete
 PL-naps: min
 	python $(CONFIG_SCRIPT) config/PL-naps.json --no-lms
 
-CS4104Plain: min
-	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
-
-CS4104: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/CS4104_generated.json --no-lms
-
-NPTest: min
-	python $(CONFIG_SCRIPT) config/NPTest.json --no-lms
-
-CSC215: min
-	python $(CONFIG_SCRIPT) config/CSC215.json --no-lms
-
-Spatial: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/Spatial_generated.json --no-lms
-
-FormalLang: min
-	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
-
-FormalLangCanvas: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/FormalLang_generated.json --no-lms
-
-CS3slides: min
-	python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
-
-CS3SS17slides: min
-	python $(CONFIG_SCRIPT) -s config/CS3SS17slides.json --no-lms
+Everything: min
+	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
 
 CS3notes: min
 	python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
 
+CS3slides: min
+	python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
+
+CS4104: min
+	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
+
+CS2: min
+	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
+
+CS3: min
+	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
+
 testcmap: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
-
-CS150: min
-	python $(CONFIG_SCRIPT) config/CS150.json --no-lms
-
-CS260: min
-	python $(CONFIG_SCRIPT) config/CS260.json --no-lms
-
-CS240: min
-	python $(CONFIG_SCRIPT) config/CS240.json --no-lms
-
-CS271-UWO: min
-	python $(CONFIG_SCRIPT) config/CS271-UWO.json --no-lms
-
-CSCI204: min
-	python $(CONFIG_SCRIPT) config/CSCI204.json --no-lms
-
-CSCI115: min
-	python $(CONFIG_SCRIPT) config/CSCI115.json --no-lms
-
-COSC2436: min
-	python $(CONFIG_SCRIPT) config/COSC2436.json --no-lms
-
-COMP232: min
-	python $(CONFIG_SCRIPT) config/COMP232.json --no-lms
-
-SDAP13: min
-	python $(CONFIG_SCRIPT) config/SDAP13.json --no-lms
-
-simple_demo: min
-	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
-
-cs342_uwosh: min
-	python $(CONFIG_SCRIPT) config/cs342_uwosh.json --no-lms
-
-PointersCPP: min
-	python $(CONFIG_SCRIPT) config/PointersCPP.json --no-lms
-
-PointersJava: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/PointersJava_generated.json --no-lms
-
-PointersJavaP: min
-	python $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
-
-CS3_exs: min
-	python $(CONFIG_SCRIPT) config/CS3_exs.json --no-lms
-
-JFLAP: min
-	python tools/rst2json.py $@
-	python $(CONFIG_SCRIPT) config/JFLAP_generated.json --no-lms
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js

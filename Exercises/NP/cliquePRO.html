@@ -1,0 +1,44 @@
+<!--
+  -->
+<!DOCTYPE html>
+<html data-require="jsav math ../../AV/Development/graphUtils cliquePRO">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Maximum Clique Problem</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js"></script>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="nnodes">Khan.randRange(7,10)</var>
+        <var id="nedges">2*nnodes+Khan.randRange(2, nnodes)</var>
+        <var id="JSAV">clique_KA.initJSAV(nnodes, nedges)</var>
+      </div>
+
+      <div class="problems">
+        <div> <!-- Supresses answer box -->
+          <p class="problem">Your task in this exercise is to find the largest clique.</p>
+          <div class="question">
+            <p>Select the vertices that can form the largest clique.</p>
+            <input id="reset" type="button" value="Reset" />  
+            <div id="jsav" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess">
+              [clique_KA.userInput]
+            </div>
+            <div class="validator-function">
+              if (!clique_KA.checkAnswer() && !guess[0])
+              return ""; // User did not click,  and correct answer is not
+              // initial array state
+              else return clique_KA.checkAnswer();
+            </div>
+          </div>
+          <div class="hints"><p><var>clique_KA.getSolution()</var></p></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

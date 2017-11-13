@@ -1,0 +1,52 @@
+<!--
+-->
+<!DOCTYPE html>
+<html data-require="jsav math ../../AV/Development/graphUtils hamiltonianCycPRO">
+<head>
+  <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+  <title>Hamiltonian Cycle Problem</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="../../khan-exercises/local-only/main.js"></script>
+  <link rel="stylesheet" href="NP.css" />
+</head>
+
+<body data-height="750" data-width="950">
+
+<div class="exercise">
+  <div class="vars">
+    <var id="nnodes">Khan.randRange(7, 9)</var>
+    <var id="nedges">nnodes+Khan.randRange(5,nnodes)</var>
+    <var id="JSAV">hamiltonianCycle_KA.initJSAV(nnodes,nedges)</var>
+  </div>
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem">Your task in this exercise is to find a Hamiltonian Cycle.</p>
+        <div class="question">
+          <p>Select the edges that can be a part of a Hamiltonian Cycle.</p>
+          <input id="reset" type="button" value="Reset" />  
+          <form action="">
+             <input type="checkbox" id="noSol" value="noSol">No Cycle</input>
+          </form>
+          <div id="jsav" class="jsavcanvas"></div>
+        </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [hamiltonianCycle_KA.userInput]
+        </div>
+        <div class="validator-function">
+            if (!hamiltonianCycle_KA.checkAnswer() && !guess[0]){
+              return ""; // User did not click, and correct answer is not
+                 // initial array state
+            }else{
+              return hamiltonianCycle_KA.checkAnswer();
+            }           
+        </div>
+      </div>
+     <div class="hints"><p><var>[hamiltonianCycle_KA.getSolution()]</var></p></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

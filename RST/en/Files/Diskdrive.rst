@@ -263,7 +263,6 @@ fragmentation.
 .. _Layout:
 
 .. inlineav:: diskSector dgm
-   :links: AV/Development/sectorLayoutCON.css
    :scripts: AV/Files/diskSectorCON.js
    :align: center
 

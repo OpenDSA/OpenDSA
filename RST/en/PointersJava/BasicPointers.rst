@@ -273,9 +273,15 @@ Here is an example of the difference between shallow and deep copying:
 .. codeinclude:: Pointers/shallowCopy
    :tag: shallow
 
+.. inlineav:: shallowdeepExampleCON ss
+   :long_name: Shallow Deep Copy Slideshow
+   :links: AV/Pointers/shallowdeepExampleCON.css
+   :scripts: AV/Pointers/shallowdeepExampleCON.js
+   :output: show
+
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
 
-             
+
 Bad References
 ~~~~~~~~~~~~~~
 
@@ -557,4 +563,3 @@ value.
 Java's runtime environment is constantly watching for a dereference of
 a reference variable with a ``null`` value, so it can catch it right
 away if that happens.
-

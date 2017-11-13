@@ -189,7 +189,7 @@ def validate_module(mod_name, module, conf_data):
                 print('ERROR: Language directory %s does not exist' % lang_dir)
                 error_count += 1
 
-    sections = module['sections']
+    sections = module.get('sections')
 
     if sections != None:
         for section in sections:

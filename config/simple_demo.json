@@ -10,61 +10,33 @@
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
+  "glob_ss_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  }, 
+  "glob_ka_options": {
+    "threshold": 5, 
+    "points": 1.0, 
+    "required": true
+  }, 
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2.0
+    }, 
+    "points": 1.0
+  }, 
+  "glob_pe_options": {
+    "threshold": 0.9, 
+    "points": 2.0, 
+    "required": true
+  }, 
   "chapters": {
     "Preface": {
-      "Intro": {
-        "long_name": "How to Use this System",
-        "sections": {}
-      }
+      "Intro": {}
     },
     "A Simple Example": {
-      "SimpleDemo/simple_demo": {
-        "long_name": "Simple Example of Using a Slide Show in a Book Module",
-        "sections": {
-          "Introduction": {},
-          "A slideshow to swap array elements displayed as an inline AV": {
-            "simple_demo1": {
-              "long_name": "Simple demo slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
-          "Swapping array elements with user input of the array and a reset button": {
-            "simple_demo2": {
-              "long_name": "Simple Demo Standalone AV",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            }
-          },
-          "A Khan Academy Exercise with JSAV object": {
-            "Simple_demo_ex1": {
-              "long_name": "KA Exercise Example with JSAV object",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3.0
-            }
-          },
-          "A Khan Academy Exercise with Fill-in-the-blank Question": {
-            "Simple_demo_ex2": {
-              "long_name": "KA Exercise Example with fill in the blank question",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3.0
-            }
-          },
-          "A Khan Academy Exercise with Multiple Choice Question": {
-            "Simple_demo_ex3": {
-              "long_name": "KA Exercise Example with MC question",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3.0
-            }
-          }
-        }
-      }
+      "SimpleDemo/simple_demo": {}
     }
   }
 }

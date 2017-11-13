@@ -42,125 +42,82 @@
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
+  "glob_ss_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  }, 
+  "glob_ka_options": {
+    "threshold": 5, 
+    "points": 1.0, 
+    "required": true
+  }, 
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2.0
+    }, 
+    "points": 1.0
+  }, 
+  "glob_pe_options": {
+    "threshold": 0.9, 
+    "points": 2.0, 
+    "required": true
+  }, 
   "chapters": {
     "Preface": {
-      "Intro": {
-        "long_name": "How to Use this System",
-        "sections": {}
-      }
+      "Intro": {}
     },
     "Lecture 1": {
-      "FormalLang/FLIntro": {
-        "long_name": "Introduction",
-        "sections": {}
-      },
-      "FormalLang/FLOverview": {
-        "long_name": "Overview",
-        "sections": {}
-      },
-      "FormalLang/FLSetNotes": {
-        "long_name": "Set Theory Notes",
-        "sections": {}
-      },
-      "FormalLang/FLConcepts": {
-        "long_name": "Major Concepts",
-        "sections": {}
-      }
+      "FormalLang/FLIntro": {},
+      "FormalLang/FLOverview": {},
+      "FormalLang/FLSetNotes": {},
+      "FormalLang/FLConcepts": {}
     },
     "Mathematical Background": {
-      "Background/SetDef": {
-        "long_name": "Set Definitions",
-        "sections": {
-          "Set Notation": {
-            "SetTFrelation": {
-              "long_name": "Relations Exercise",
-              "required": true,
-              "points": 2.0,
-              "threshold": 5
-            }
-          },
-          "Equivalence Relations": {
-            "SetTFequivrel": {
-              "long_name": "Equivalence Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3
-            }
-          },
-          "Partial Orders": {
-            "SetTFpartialorder": {
-              "long_name": "PartialOrder Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3
-            }
-          }
-        }
-      },
-      "Background/Proofs": {
-        "long_name": "Mathematical Proof Techniques",
-        "sections": {
-          "Mathematical Proof Techniques": {
-            "twoColorCON": {},
-            "TwoColoringProofCON": {
-              "long_name": "Two Coloring Proof Slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          }
-        }
-      }
+      "Background/SetDef": {},
+      "Background/Proofs": {}
     },
     "Lectures 2-4": {
-      "FormalLang/DFA": {
-        "long_name": "Deterministic Finite Automata",
-        "sections": {}
-      },
-      "FormalLang/NFA": {
-        "long_name": "Non-deterministic Finite Automata",
-        "sections": {}
-      },
-      "FormalLang/Minimization": {
-        "long_name": "Minimizing the Number of States in a DFA",
-        "sections": {}
-      }
+      "FormalLang/DFA": {},
+      "FormalLang/NFA": {},
+      "FormalLang/Minimization": {}
     },
     "Regular Expressions (Lecture 5)": {
-      "FormalLang/RegEx": {
-        "long_name": "Regular Expressions",
+      "FormalLang/RegEx": {},
+      "FormalLang/RegGrammar": {}
+    },
+    "Properties of Regular Grammars (Lectures 7, 8)": {
+      "FormalLang/RegProp": {}
+    },
+    "Pushdown Automata": {
+      "FormalLang/PDA": {
+        "long_name": "Pushdown Automata",
         "sections": {}
       },
-      "FormalLang/RegGrammar": {
-        "long_name": "Regular Grammars",
+      "FormalLang/NPDA": {
+        "long_name": "Nondeterministic Pushdown Automata",
         "sections": {}
       }
     },
-    "Properties of Regular Grammars (Lectures 7, 8)": {
-      "FormalLang/RegProp": {
-        "long_name": "Properties of Regular Grammars",
+    "Context-Free Languages": {
+      "FormalLang/CFL": {
+        "long_name": "Context-Free Languages",
+        "sections": {}
+      }
+    },
+    "Parsing": {
+      "FormalLang/ParseIntro": {
+        "long_name": "Parsing Introduction",
         "sections": {}
       }
     },
     "Limits to Computing": {
-      "SeniorAlgAnal/Impossible": {
-        "long_name": "Unsolveable Problems",
-        "sections": {}
-      },
-      "SeniorAlgAnal/Turing": {
-        "long_name": "Turing Machines",
-        "sections": {}
-      }
+      "SeniorAlgAnal/Impossible": {},
+      "SeniorAlgAnal/Turing": {}
     },
     "Appendix": {
-      "Glossary": {
-        "long_name": "Glossary",
-        "sections": {}
-      },
-      "Bibliography": {
-        "long_name": "Bibliography",
-        "sections": {}
-      }
+      "Glossary": {},
+      "Bibliography": {}
     }
   }
 }

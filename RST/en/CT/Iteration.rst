@@ -1,4 +1,4 @@
-cat.. This file is part of the OpenDSA eTextbook project. See
+.. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
 .. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
@@ -14,6 +14,7 @@ List Iteration
 
 List Iteration
 --------------
+
 To understand how algorithms can manipulate large-scale real-world
 abstractions we need to understand the combination of two concepts:
 
@@ -380,21 +381,22 @@ To fully realize this idea of processing an abstraction we will need
 to learn a bit more |---| but not much more.
 
 .. inlineav:: iteration1CON ss
-   :long_name: Iteration 1
+   :long_name: Iteration Slideshow 1
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration1CON.js
    :output: show
 
 .. inlineav:: iteration2CON ss
-   :long_name: Iteration 2
+   :long_name: Iteration Slideshow 2
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration2CON.js
    :output: show
 
 .. inlineav:: iteration3CON ss
-   :long_name: Iteration 3
+   :long_name: Iteration Slideshow 3
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration3CON.js
    :output: show
 
 .. avembed:: Exercises/CT/IterationEX1PRO.html ka
+   :long_name: Iteration Exercise 1

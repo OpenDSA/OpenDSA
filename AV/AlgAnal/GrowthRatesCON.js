@@ -96,30 +96,38 @@ $(document).ready(function() {
   av.g.polyline(curve3, {"stroke-width": 3});
 
   var curve4 = Plot.drawCurve(_factorial, av, xStart, yStart, yEnd, xMax, yMax, width, height,
-                         "$n!$", -25, -20, 1, false);
+                         "$n!$", -25, -20, 0.25, false);
   av.g.polyline(curve4, {"stroke-width": 3});
-
 
   function _5nlog2n(n) {
     return 5 * n * (Math.log2(n));
-  };
+  }; // _5nlog2n
 
   function _2npow2(n) {
     return 2 * Math.pow(n, 2);
-  };
+  }; //)2npow2
 
   function _2pown(n) {
     return Math.pow(2, n);
-  };
+  }; //_2pown
 
   function _factorial(n) {
-    var i;
-    var temp = 1;
-    for (i = 1; i <= n; i++) {
-      temp = temp * i;
-    }
-    return temp;
-  };
+    // var i;
+    // var temp = 1;
+    // for (i = 1; i <= n; i++) {
+    //   temp = temp * i;
+    // }
+    // return temp;
+    var factorialArray = [1, 0.906, 0.886, 0.919,
+                          1, 1.133, 1.329, 1.608,
+                          2, 2.549, 3.323, 4.423,
+                          6, 8.285, 11.632, 16.585,
+                          24, 35.212, 52.343, 78.784,
+                          120, 184.861, 287.885, 453.011,
+                          720, 1155.38, 1871.25, 3057.82];
+
+    return factorialArray[n * 4];
+  }; // _factorial(n)
 
   av.displayInit();
   av.recorded();

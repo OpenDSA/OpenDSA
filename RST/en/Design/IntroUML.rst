@@ -8,13 +8,15 @@
    :satisfies: UML
    :topic: Introduction
 
-The Unified Modeling Language
-=============================
-
 .. index:: unified modeling langauage; selecting
 
 The Unified Modeling Language
+=============================
+
+The Unified Modeling Language
 -----------------------------
+
+.. index:: unified modeling langauage; selecting
 
 The Unified Modeling Language, or UML is an industry standard graphical
 notation for describing and analysing software designs.
