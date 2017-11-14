@@ -401,7 +401,7 @@ All are required unless otherwise specified.
         see the :ref:`Extensions <ODSAExtensions>` section for a list
         of supported arguments.
       * A section in an RST file may contain multiple exercises objects 
-        only one of which is gradable (has points greater then 0). 
+        only one of which is gradable (has points greater than 0). 
         Each exercise object may contain the following attributes:
 
         * **points** - (optional) The number of points the exercise is
@@ -445,10 +445,15 @@ All are required unless otherwise specified.
       In the above example, the threshold for "IntroSumm"
       (a khan-academy style exercise) is set to ``6``, overriding
       whatever is specified in ``glob_ka_options``. It will retain the
-      settings for ``points`` and ``required`` that is specified in
+      default settings for ``points`` and ``required`` that are specified in
       ``glob_ka_options``.
       The section titled "Some Software Engineering Topics" is set 
       to be removed when compiling the book.
+
+      Example of a module object whose sections and exercises all use the 
+      default/global settings::
+
+        "Background/IntroDSA": {}
 
 ---------------------
 Configuring Exercises
