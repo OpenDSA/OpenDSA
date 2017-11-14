@@ -373,7 +373,7 @@ All are required unless otherwise specified.
       client-side framework (specifically, when ``parseURLParams()`` is
       called in ``odsaUtils.js``).
 
-    * **codeinclude** (optional) - An object that maps the path from a
+    * **codeinclude** - (optional) An object that maps the path from a
       codeinclude to a specific language that should be used for that
       code.
       This allows control of individual code snippets, overriding the
@@ -383,18 +383,17 @@ All are required unless otherwise specified.
         C++ as the language for the codeinclude "Sorting/Mergesort"
         within the current module.
 
-    * **sections and exercises** (optional) - A collection of 
-      ``section`` and ``exercise`` objects that define the sections and 
-      exercises whose settings should be different from the default or 
-      global settings may be included as direct children of the module object
-      of the module that the section or exercise is contained in. 
+    * **sections and exercises** - (optional) A collection of 
+      section and exercise objects that define the sections and/or exercises 
+      in the module whose settings you want to be different from 
+      the default or global settings. 
       If you do not wish to override the default/global settings for a 
       section or exercise, you do not need to list it.
-      The ``section`` objects should have keys that match the
-      titles of the corresponding sections in the RST file.
-      The ``exercise`` objects should have keys that match the short names
-      of the corresponding exercises in the RST file.
 
+      * The section objects should have keys that match the
+        titles of the corresponding sections in the RST file.
+      * The exercise objects should have keys that match the short names
+        of the corresponding exercises in the RST file.
       * To remove the section completely, provide the field
         ``showsection`` and set it to ``false``.
       * All options provided within a section object
