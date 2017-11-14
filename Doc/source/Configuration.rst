@@ -18,7 +18,7 @@ From the top level of an OpenDSA repository (from within the |devstack_link|), y
 instance (given the existance of a configuration file named
 ``config/foo.json``) by issuing this command:
 
-``python tools/configure.py config/foo.json``
+``python tools/configure.py config/foo.json --no-lms``
 
 .. |devstack_link| raw:: html
 
@@ -92,12 +92,10 @@ Module and Exercise Removal
 
 * To remove a section from a module, set the "showsection" attribute to
   ``false``.
-  Exercises are normally the sole contents of some section.
+  Exercises are normally the sole contents of some sections.
   Note that Exercises that do not appear in the configuration file will
   still be included in the book using the default configuration
-  options.  During compilation, a list will be printed of any
-  exercises which were encountered in the modules but not present in
-  the configuration file.
+  options.
 
 
 Book Name
@@ -211,6 +209,88 @@ All are required unless otherwise specified.
   behavior of the exercise. Can be overridden by exercise-specific
   options.
 
+* **glob_pe_options** - (optional) An object containing default options 
+  for proficiency style exercises in the book. These options can be overidden
+  for specific exercises. If this object is omitted, defaults defined 
+  by the compilation script will be used. Fields for this object include:
+    
+    * **points** - The number of points khan-academy style exercises 
+      are worth. Defaults to ``1`` if omitted.
+    * **threshold** - A number between 0 and 1 specifing the percentage of 
+      steps a user must get correct to achieve proficiency. 
+      Defaults to ``1`` if omitted.
+    * **required** - Whether proficiency exercises are required for module
+      proficiency. Defaults to ``true`` if omitted.
+
+    Example::
+
+      "glob_pe_options": {
+        "threshold": 1, 
+        "points": 2.0, 
+        "required": true
+      }
+
+* **glob_ka_options** - (optional) An object containing default options 
+  for khan-academy style exercises in the book. These options can be overidden 
+  for specific exercises. If this object is omitted, defaults defined 
+  by the compilation script will be used. Fields for this object include:
+    
+    * **points** - The number of points khan-academy style exercises are worth. 
+      Defaults to ``1`` if omitted.
+    * **threshold** - The number of questions a user must complete to achieve
+      proficiency. Defaults to ``5`` if omitted.
+    * **required** - Whether khan-academy style exercises are required for module
+      proficiency. Defaults to ``true`` if omitted.
+
+    Example::
+
+      "glob_ka_options": {
+        "threshold": 5, 
+        "points": 1.0, 
+        "required": true
+      }
+
+* **glob_ss_options** - (optional) An object containing default options 
+  for slideshows in the book. These options can be overidden for specific 
+  slideshows. If this object is omitted, defaults defined by the compilation
+  script will be used. Fields for this object include:
+    
+    * **points** - the number of points slideshows are worth. Defaults to
+      ``0`` if omitted.
+    * **threshold** - This option is not used for slideshows.
+    * **required** - whether slideshows are required for module completion. 
+      Defaults to ``false`` if omitted.
+
+    Example::
+
+      "glob_ss_options": {
+        "threshold": 1.0, 
+        "points": 0.0, 
+        "required": false
+      }
+
+* **glob_extr_options** - (optional) An object containing default options 
+  for external tool exercises (i.e. CodeWorkout) in the book. These options 
+  can be overidden for specific exercises. If this object is omitted, 
+  defaults defined by the compilation script will be used. Fields for this 
+  object include:
+    
+    * **points** - the number of points external tool exercises are worth. 
+      Defaults to  ``1`` if omitted. 
+    * You may also specify default options for a specific external tool.
+      Example::
+
+        "glob_extr_options": {
+          "code-workout": {
+            "points": 2.0
+          }, 
+          "points": 1.0
+        }
+      
+      In the above example, code-workout exercises are worth two points each,
+      and all other external tool exercises are worth one point each. 
+      Currently code-workout is the only external tool used by OpenDSA.
+
 * **build_JSAV** - (optional) A boolean controlling whether or not the
   JSAV library should be rebuilt whenever the book is compiled.
   Defaults to ``false`` if omitted.
@@ -254,13 +334,12 @@ All are required unless otherwise specified.
   This allows for control over warnings about missing prerequisite
   modules during the build process.
 
-* **chapters** - A hierarchy of chapters, modules, and sections.
+* **chapters** - A hierarchy of chapters, modules, sections, and exercises.
   This makes up the vast majority of most configuration files.
 
   * Each key in "chapters" represents a chapter name.
     A module object is one whose key matches the name of an
-    RST file in the ``~OpenDSA/RST/[lang]/`` directory, and which
-    contains the key "sections".
+    RST file in the ``~OpenDSA/RST/[lang]/`` directory.
 
   * **hidden** - This is an optional field to signal the preprocessor
     to not display the content of the chapter in the TOC. The
@@ -274,9 +353,6 @@ All are required unless otherwise specified.
 
     * The key relating to each module object must correspond to a
       path to an RST file found in ~OpenDSA/RST/[lang]/.
-
-    * **long_name** - A long form, human-readable name used to
-      identify the module.
 
     * **dispModComp** - (optional) A flag that, if set to "true", will
       force the "Module Complete" message to appear even if the module
@@ -297,20 +373,6 @@ All are required unless otherwise specified.
       client-side framework (specifically, when ``parseURLParams()`` is
       called in ``odsaUtils.js``).
 
-    * **sections** - A collection of section objects that define the
-      sections that make up a module.
-      The ``sections`` object should contain keys that match the
-      titles of the corresponding sections in the RST file.
-      Some modules contain no sections, in which case this field
-      should be included with an empty list.
-
-      * To remove the section completely, provide the field
-        ``showsection`` and set it to ``false``.
-      * All options provided within a section object (with the
-        exception of ``remove``) are appended to the directive, please
-        see the :ref:`Extensions <ODSAExtensions>` section for a list
-        of supported arguments.
-
     * **codeinclude** (optional) - An object that maps the path from a
       codeinclude to a specific language that should be used for that
       code.
@@ -321,21 +383,39 @@ All are required unless otherwise specified.
         C++ as the language for the codeinclude "Sorting/Mergesort"
         within the current module.
 
-      * A section may contain multiple exercises objects only one of which is gradable (has points greater then 0). Each exercise object contains the following attributes:
+    * **sections and exercises** (optional) - A collection of 
+      ``section`` and ``exercise`` objects that define the sections and 
+      exercises whose settings should be different from the default or 
+      global settings may be included as direct children of the module object
+      of the module that the section or exercise is contained in. 
+      If you do not wish to override the default/global settings for a 
+      section or exercise, you do not need to list it.
+      The ``section`` objects should have keys that match the
+      titles of the corresponding sections in the RST file.
+      The ``exercise`` objects should have keys that match the short names
+      of the corresponding exercises in the RST file.
 
+      * To remove the section completely, provide the field
+        ``showsection`` and set it to ``false``.
+      * All options provided within a section object
+        are appended to the directive, please
+        see the :ref:`Extensions <ODSAExtensions>` section for a list
+        of supported arguments.
+      * A section in an RST file may contain multiple exercises objects 
+        only one of which is gradable (has points greater then 0). 
+        Each exercise object may contain the following attributes:
 
-        * **long_name** - (optional) A long form, human-readable name
-          used to identify the exercise. Defaults to short
-          exercise name if omitted.
         * **points** - (optional) The number of points the exercise is
-          worth.
-          Defaults to ``0`` if omitted.
+          worth. 
+          Uses global defaults if omitted.
         * **required** - (optional) Whether the exercise is required
           for module proficiency.
-          Defaults to ``false`` if omitted.
+          Uses global defaults if omitted.
         * **threshold** - (optional) The percentage that a user needs
           to score on the exercise to obtain proficiency.
-          Defaults to 100% (1 on a 0-1 scale) if omitted.
+          For khan-academy style exercises, this is the number of questions
+          the user must get correct to obtain proficiency.
+          Uses global defaults if omitted.
 
         * **exer_options** - (optional) An object containing
           exercise-specific configuration options for JSAV.
@@ -352,9 +432,24 @@ All are required unless otherwise specified.
           automatically by the client-side framework (specifically
           when ``parseURLParams()`` is called in ``odsaUtils.js``).
 
-      * JSAV-based diagrams are listed with empty object
+      Example of a module object::
 
+        "Background/IntroDSA": {
+          "IntroSumm": {
+            "threshold": 6
+          },
+          "Some Software Engineering Topics": {
+            "showsection": false
+          }
+        }
 
+      In the above example, the threshold for "IntroSumm"
+      (a khan-academy style exercise) is set to ``6``, overriding
+      whatever is specified in ``glob_ka_options``. It will retain the
+      settings for ``points`` and ``required`` that is specified in
+      ``glob_ka_options``.
+      The section titled "Some Software Engineering Topics" is set 
+      to be removed when compiling the book.
 
 ---------------------
 Configuring Exercises
@@ -383,7 +478,6 @@ that are sent to the exercise by the OpenDSA module page.
 Here is an example for configuring an exercise::
 
           "shellsortPRO": {
-            "long_name": "Shellsort Proficiency Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 0.9,
