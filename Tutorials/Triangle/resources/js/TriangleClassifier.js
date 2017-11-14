@@ -126,10 +126,23 @@ function logTestCase(s1, s2, s3, triangleName) {
     testCaseHistory.innerHTML = testCaseHistory.innerHTML + "Test " + testNum + ": ";
     testCaseHistory.innerHTML = testCaseHistory.innerHTML + "Sides: " + s1 + ", " + s2 + ", " + s3 + " " + triangleName;
     testCaseHistory.innerHTML = testCaseHistory.innerHTML + "\n ";
-    
+    setPerformanceDetails();
+}
+
+function setPerformanceDetails() {
     var testsrunText = document.getElementById("testsrun");
     testsrunText.innerHTML = "Number of tests run: " + testNum;
     testNum++;
+    var bugsFound = 0;
+    for (var i in bugCoverage) {
+        if (bugCoverage[i]) {
+            bugsFound++;
+        }
+    }
+    var bugsFoundText = document.getElementById("bugsFound");
+    bugsFoundText.innerHTML = "Bugs Found: " + bugsFound + " out of 14";
+    
+
 }
 
 function classifyTriangle() {
@@ -153,10 +166,21 @@ function classifyTriangle() {
     var codeCoverageP = calculateCoverage();
     document.getElementById("codeCoverageBar").style = "width:" + codeCoverageP + "%";
     document.getElementById("codeCoveragePercentage").innerText = codeCoverageP.toFixed(2) + "%";
-    logTestCase(side1, side2, side3, triangleType);
-
     //Bug Coverage
     var bugCoverageP = calculateBugCoverage(side1, side2, side3, triangleTypeNum);
     document.getElementById("bugCoverageBar").style = "width:" + bugCoverageP + "%";
     document.getElementById("bugCoveragePercentage").innerText = bugCoverageP.toFixed(2) + "%";
+
+    logTestCase(side1, side2, side3, triangleType);
 }
+
+reset = false;
+function resetClicked() {
+    reset = true;
+}
+
+window.onbeforeunload = function() {
+    if (!reset) {
+        return "Data will be lost if you leave the page, are you sure?";
+    }
+};
