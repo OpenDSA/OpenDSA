@@ -1,14 +1,14 @@
 /*global ODSA */
 // Written by Jieun Chon
 //Array-Based list introduction
-var it2_midblue1,
-    it2_midblue2,
-    it2_midblue3,
-    it2_newLabelValue,
-    it2_valuelabel,
-    it2_priceBoxLabel,
-    it2_consoleLabels,
-    it2_consoleY;
+var it2fly_midblue1,
+    it2fly_midblue2,
+    it2fly_midblue3,
+    it2fly_newLabelValue,
+    it2fly_valuelabel,
+    it2fly_priceBoxLabel,
+    it2fly_consoleLabels,
+    it2fly_consoleY;
 
 $(document).ready(function() {
   "use strict";
@@ -19,32 +19,32 @@ $(document).ready(function() {
 
         setTimeout(function() {
             //  midblue 1 start
-            it2_midblue1.addClass("blueboxh", {record: false});
+            it2fly_midblue1.addClass("blueboxh", {record: false});
             setTimeout(function() {
-              it2_midblue1.removeClass("blueboxh", {record: false});
+              it2fly_midblue1.removeClass("blueboxh", {record: false});
 
                 // midblue 2 animation start -----------------
                 setTimeout(function() {
-                  it2_midblue2.addClass("blueboxh", {record: false});
+                  it2fly_midblue2.addClass("blueboxh", {record: false});
 
 
                   setTimeout(function(){
-                    it2_midblue2.removeClass("blueboxh", {record: false});
-                    it2_priceBoxLabel.value(lavelVal);
-                    it2_priceBoxLabel.css({left: labelX});
+                    it2fly_midblue2.removeClass("blueboxh", {record: false});
+                    it2fly_priceBoxLabel.value(lavelVal);
+                    it2fly_priceBoxLabel.css({left: labelX});
                     var gap = 30;
                     for(var i = 0; i <= consoleIndex; i++){
-                        it2_consoleLabels[i].css({top: it2_consoleY + (gap * i)});
-                        it2_consoleLabels[i].show();
+                        it2fly_consoleLabels[i].css({top: it2fly_consoleY + (gap * i)});
+                        it2fly_consoleLabels[i].show();
                     }
-                        it2_consoleY -= 30;
+                        it2fly_consoleY -= 30;
 
                     // midblue 3 animation start -----------------
                     setTimeout(function() {
-                      it2_midblue3.addClass("blueboxh", {record: false});
+                      it2fly_midblue3.addClass("blueboxh", {record: false});
 
                       setTimeout(function() {
-                        it2_midblue3.removeClass("blueboxh", {record: false});
+                        it2fly_midblue3.removeClass("blueboxh", {record: false});
                       }, time);
                     }, time);
                     // midblue 3 animation close ---------------------
@@ -109,9 +109,9 @@ $(document).ready(function() {
   av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("box"); // for no-roung on the corner
 
   //blue boxes and the the sets of it for the iterations later
-  it2_midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
-  it2_midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
-  it2_midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
+  it2fly_midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
+  it2fly_midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
+  it2fly_midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
 
   // last purple box.
   av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("box");
@@ -132,10 +132,10 @@ $(document).ready(function() {
   pricelabel.addClass("midlabel");
 
 
-  it2_newLabelValue = "";
-  it2_valuelabel = av.label(it2_newLabelValue, {left: rect_left + 240, top: rect_top + 112});
-  it2_valuelabel.addClass("labels");
-  it2_valuelabel.addClass("valuelabel");
+  it2fly_newLabelValue = "";
+  it2fly_valuelabel = av.label(it2fly_newLabelValue, {left: rect_left + 240, top: rect_top + 112});
+  it2fly_valuelabel.addClass("labels");
+  it2fly_valuelabel.addClass("valuelabel");
 
   // <<--------------- STATE BOX ----------------->>
 
@@ -153,9 +153,9 @@ $(document).ready(function() {
   var priceBox = av.g.rect(stateX - 5, stateY + 135, 70, 70).addClass("bluebox");
 
   var pricelabelX = stateX + 23;
-  it2_priceBoxLabel = av.label("", {left: pricelabelX, top: stateY + 130});
-  it2_priceBoxLabel.addClass("labels");
-  it2_priceBoxLabel.addClass("midlabel");
+  it2fly_priceBoxLabel = av.label("", {left: pricelabelX, top: stateY + 130});
+  it2fly_priceBoxLabel.addClass("labels");
+  it2fly_priceBoxLabel.addClass("midlabel");
 
   var totalBoxLabel = av.label("", {left: stateX + 23, top: stateY + 215});
 
@@ -170,19 +170,19 @@ $(document).ready(function() {
 
   var consoleBox = av.g.rect(stateX - 5, stateY + 110, 170, 200).addClass("consolebox");
 
-  it2_consoleY = stateY + 250;
-  var label1 = av.label("4", {left: stateX + 20, top: it2_consoleY});
-  var label2 = av.label("13", {left: stateX + 20, top: it2_consoleY});
-  var label3 = av.label("6", {left: stateX + 20, top: it2_consoleY});
-  var label4 = av.label("9", {left: stateX + 20, top: it2_consoleY});;
-  var label5 = av.label("11", {left: stateX + 20, top: it2_consoleY});
-  it2_consoleLabels = [label1, label2, label3, label4, label5];
+  it2fly_consoleY = stateY + 250;
+  var label1 = av.label("4", {left: stateX + 20, top: it2fly_consoleY});
+  var label2 = av.label("13", {left: stateX + 20, top: it2fly_consoleY});
+  var label3 = av.label("6", {left: stateX + 20, top: it2fly_consoleY});
+  var label4 = av.label("9", {left: stateX + 20, top: it2fly_consoleY});;
+  var label5 = av.label("11", {left: stateX + 20, top: it2fly_consoleY});
+  it2fly_consoleLabels = [label1, label2, label3, label4, label5];
 
 
-  for(var i = 0; i < it2_consoleLabels.length; i++){
-    it2_consoleLabels[i].addClass("labels");
-    it2_consoleLabels[i].addClass("smalllabel");
-    it2_consoleLabels[i].hide();
+  for(var i = 0; i < it2fly_consoleLabels.length; i++){
+    it2fly_consoleLabels[i].addClass("labels");
+    it2fly_consoleLabels[i].addClass("smalllabel");
+    it2fly_consoleLabels[i].hide();
   }
 
   // --------------------- start slide shows
