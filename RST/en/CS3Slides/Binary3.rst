@@ -6,10 +6,6 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. odsalink:: AV/Binary/BTCON.css
-.. odsalink:: AV/Binary/BTnullpointerCON.css
-.. odsalink:: AV/Binary/expressionTreeCON.css
-
 .. slideconf::
    :autoslides: False
 
@@ -77,19 +73,18 @@ Binary Trees Part 3
    "Simple" node model.
 
    .. inlineav:: BTnullpointerCON dgm
+      :links: AV/Binary/BTCON.css AV/Binary/BTnullpointerCON.css
+      :scripts: AV/Binary/BTnullpointerCON.js
       :align: center
-
-   .. odsascript:: AV/Binary/BTnullpointerCON.js
-
 
 .. slide:: Binary Tree Implementation (2)
 
    Internal nodes can be different from leaf nodes.
 
    .. inlineav:: expressionTreeCON dgm
+      :links: AV/Binary/BTCON.css AV/Binary/expressionTreeCON.css
+      :scripts: AV/Binary/expressionTreeCON.js
       :align: center
-
-   .. odsascript:: AV/Binary/expressionTreeCON.js
 
 
 .. slide:: Inheritance (1)
@@ -106,12 +101,11 @@ Binary Trees Part 3
 
 .. slide:: Inheritance (3)
 
-   .. odsalink:: AV/Binary/BTCON.css
-
    .. inlineav:: expressionTraversalCON ss
+      :long_name: Expression Tree Traversal Slideshow
+      :links: AV/Binary/BTCON.css
+      :scripts: AV/Binary/expressionTraversalCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/expressionTraversalCON.js
 
 
 .. slide:: Design Patterns

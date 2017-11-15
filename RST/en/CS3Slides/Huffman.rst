@@ -37,57 +37,53 @@ Huffman Coding
 
 .. slide:: Huffman Coding Trees
 
-   .. odsalink:: AV/Binary/huffmanCON.css
-
    .. inlineav:: huffmanBuildCON ss
+      :long_name: Huffman Coding Tree Slideshow: Build
+      :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
+      :scripts: DataStructures/huffman.js AV/Binary/huffmanBuildCON.js
       :output: show
-
-   .. odsascript:: DataStructures/huffman.js
-   .. odsascript:: AV/Binary/huffmanBuildCON.js
 
 
 .. slide:: Assigning Codes
 
-
-   .. inlineav:: huffmanLabelCON ss
+   .. inlineav:: huffmanLabelCON ss 
+      :long_name: Huffman Coding Tree Slideshow: Label Edges
+      :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
+      :scripts: DataStructures/huffman.js AV/Binary/huffmanLabelCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/huffmanLabelCON.js
 
 
 .. slide:: Using Codes
 
-
-   .. inlineav:: huffmanCodesCON ss
+   .. inlineav:: huffmanCodesCON ss 
+      :long_name: Huffman Coding Tree Slideshow: Setting Codes
+      :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
+      :scripts: DataStructures/huffman.js AV/Binary/huffmanCodesCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/huffmanCodesCON.js
 
 
 .. slide:: Decoding
 
-
    .. inlineav:: huffmanDecodeCON ss
+      :long_name: Huffman Coding Tree Slideshow: Decoding
+      :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
+      :scripts: DataStructures/huffman.js AV/Binary/huffmanDecodeCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/huffmanDecodeCON.js
 
 
 .. slide:: Tree vs. Trie (1)
 
-   .. odsalink:: AV/Development/TreeTrieCON.css
-
    .. inlineav:: TreeTimelineCON ss
+      :long_name: Tree timeline Slideshow
+      :links: AV/Development/TreeTrieCON.css
+      :scripts: AV/Development/TreeTimelineCON.js
       :output: show
-
-   .. odsascript:: AV/Development/TreeTimelineCON.js
 
 
 .. slide:: Tree vs. Trie (2)
 
    .. inlineav:: TrieTimelineCON ss
+      :long_name: Trie timeline Slideshow
+      :links: AV/Development/TreeTrieCON.css
+      :scripts: AV/Development/TrieTimelineCON.js
       :output: show
-
-   .. odsascript:: AV/Development/TrieTimelineCON.js
-
-

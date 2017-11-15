@@ -103,8 +103,8 @@ So, you cannot always count on being able to use your favorite method
 name (or even the comparable interface) to extract the desired key
 value.
 
-Another, more general approach is to supply a function or class
-|---| called a :term:`comparator` |---|
+Another, more general approach is to supply a function or
+class |---| called a :term:`comparator` |---|
 whose job is to extract the key from the record.
 A comparator function can be passed in as a parameter, such as in a
 call to a sorting function.

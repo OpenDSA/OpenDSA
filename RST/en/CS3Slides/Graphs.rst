@@ -26,32 +26,31 @@ Graphs
      edges is written :math:`|E|`.
 
 
-   .. odsalink:: AV/Graph/GraphDefCON.css
-
-   .. inlineav:: GdirundirCON dgm
+   .. inlineav:: GdirundirCON dgm 
+      :links: AV/Graph/GraphDefCON.css
+      :scripts: AV/Graph/GdirundirCON.js
       :output: show
 
-   .. odsascript:: AV/Graph/GdirundirCON.js
 
 .. slide:: Paths, Cycles
 
    .. inlineav:: GneighborCON dgm
+      :links: AV/Graph/GraphDefCON.css
+      :scripts: AV/Graph/GneighborCON.js
       :output: show
 
-   .. odsascript:: AV/Graph/GneighborCON.js
-
-   .. inlineav:: GpathDefCON dgm
-      :output: show
-
-   .. odsascript:: AV/Graph/GpathDefCON.js
+   .. inlineav:: GpathDefCON dgm 
+      :links: AV/Graph/GraphDefCON.css
+      :scripts: AV/Graph/GpathDefCON.js
+      :output: show 
 
 
 .. slide:: Connected Components
 
    .. inlineav:: GconcomCON dgm
+      :links: AV/Graph/GraphDefCON.css
+      :scripts: AV/Graph/GconcomCON.js
       :output: show
-
-   .. odsascript:: AV/Graph/GconcomCON.js
 
    * The maximum connected subgraphs of an undirected graph are called
      connected components.
@@ -59,18 +58,18 @@ Graphs
 
 .. slide:: Directed Graph Representation
 
-   .. inlineav:: GdirRepCON dgm
+   .. inlineav:: GdirRepCON dgm 
+      :links: AV/Graph/GraphDefCON.css
+      :scripts: AV/Graph/GdirRepCON.js
       :output: show
-
-   .. odsascript:: AV/Graph/GdirRepCON.js
 
 
 .. slide:: Undirected Graph Representation
 
-   .. inlineav:: GundirRepCON dgm
-      :output: show
-
-   .. odsascript:: AV/Graph/GundirRepCON.js
+   .. inlineav:: GundirRepCON dgm 
+      :links: AV/Graph/GraphDefCON.css
+      :scripts: AV/Graph/GundirRepCON.js
+      :output: show 
 
 
 .. slide:: Representation Space Costs
@@ -168,9 +167,9 @@ Graphs
      any of the prerequisites.
 
    .. inlineav:: topsortCON dgm
+      :links: 
+      :scripts: AV/Graph/topsortCON.js
       :align: center
-
-   .. odsascript:: AV/Graph/topsortCON.js
 
 
 .. slide:: Depth-First Topological Sort (1)
@@ -235,9 +234,9 @@ Graphs
 
 
    .. inlineav:: dijkstraCON dgm
+      :links:
+      :scripts: AV/Graph/dijkstraCON.js
       :align: center
-
-   .. odsascript:: AV/Graph/dijkstraCON.js
 
 
 .. slide:: Single-Source Shortest Paths
@@ -344,9 +343,9 @@ Graphs
 .. slide:: MST Example
 
    .. inlineav:: MCSTCON dgm
+      :links:
+      :scripts: AV/Graph/MCSTCON.js
       :align: justify
-
-   .. odsascript:: AV/Graph/MCSTCON.js
 
 
 .. slide:: Prim’s MST Algorithm
