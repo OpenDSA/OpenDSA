@@ -255,6 +255,39 @@ class index(Directive):
     # """ Restructured text extension for including CSS and other libraries """
     return [nodes.raw('', '<index>null</index>', format='xml')]
 
+class slide(Directive):
+  '''
+  '''
+  required_arguments = 1
+  optional_arguments = 0
+  final_argument_whitespace = True
+  has_content = True
+  option_spec = {}
+
+  def run(self):
+    # """ Restructured text extension for including CSS and other libraries """
+    # for line in self.content:
+    #   matches = re.match('\.\. (inlineav|avembed)::\s+(\w+\/)*(\w+)\s+\w+', self.content[0])
+    #   if matches is None or matches.group(3) is None:
+    #     continue
+    #   exer_name = matches.group(3)
+    #   if exer_name in ex_options[current_module]:
+    #       for key, value in ex_options[current_module][exer_name].iteritems():
+    #           exs_config[exer_name][key] = value
+    #       del ex_options[current_module][exer_name]
+    return [nodes.raw('', '<slide>null</slide>', format='xml')]
+
+class slideconf(Directive):
+  '''
+  '''
+  required_arguments = 1
+  optional_arguments = 0
+  final_argument_whitespace = True
+  option_spec = {}
+
+  def run(self):
+    # """ Restructured text extension for including CSS and other libraries """
+    return [nodes.raw('', '<slideconf>null</slideconf>', format='xml')]
 
 class codeinclude(Directive):
   '''
@@ -485,6 +518,7 @@ def extract_exs_config(exs_json):
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
+
   elif isinstance(exs_json, dict):
     if 'avembed' in exs_json.keys():
       ex_obj = exs_json['avembed']
@@ -530,7 +564,6 @@ def extract_exs_config(exs_json):
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
 
-
   return exs_config
 
 
@@ -549,6 +582,8 @@ def register():
   directives.register_directive('only',only)
   directives.register_directive('glossary',glossary)
   directives.register_directive('odsafig',odsafig)
+  directives.register_directive('slide', slide)
+  directives.register_directive('slideconf', slideconf)
 
 
 def remove_markup(source):
@@ -663,7 +698,7 @@ def validate_glob_config(conf_data):
       }
   }
 
-def generate_full_config(config_file_path):
+def generate_full_config(config_file_path, slides):
   ''' Generates a full configuration from a simplified configuration
   '''
   global current_module
@@ -713,12 +748,13 @@ def generate_full_config(config_file_path):
 
       full_config['chapters'][chapter][mod_path] = mod_config
 
-  for mod_name, exercises in ex_options.iteritems():
-    for exer in exercises:
-      print_err('WARNING: the exercise "{0}" does not exist in module "{1}"'.format(exer, mod_name))
-  for mod_name, sections in sect_options.iteritems():
-    for sect in sections:
-      print_err('WARNING: the section "{0}" does not exist in module "{1}"'.format(sect, mod_name))
+  if not slides:
+    for mod_name, exercises in ex_options.iteritems():
+      for exer in exercises:
+        print_err('WARNING: the exercise "{0}" does not exist in module "{1}"'.format(exer, mod_name))
+    for mod_name, sections in sect_options.iteritems():
+      for sect in sections:
+        print_err('WARNING: the section "{0}" does not exist in module "{1}"'.format(sect, mod_name))
   return full_config
 
 if __name__ == '__main__':

@@ -361,7 +361,7 @@ class ODSA_RST_Module:
             errors.append(("%sERROR: %s: line %s ('%s') - should not have content before module title" % (console_msg_prefix, mod_path, i, line), True))
 
         if is_section \
-	and line in mod_attrib["sections"] \
+	      and line in mod_attrib["sections"] \
         and "showsection" in mod_attrib["sections"][line] \
         and not mod_attrib["sections"][line]["showsection"]:
           print '%sRemoving section: %s' % (console_msg_prefix, line)
@@ -539,7 +539,7 @@ class ODSA_RST_Module:
                 j += 1
                 opt_line = mod_data[j].strip() if j < len(mod_data) else ''
 
-              if not scripts_found:
+              if not scripts_found and os.environ['SLIDES'] == 'no':
                 print_err("{0}WARNING: Module '{1}' -- inlineav '{2}' missing :scripts: option".format(console_msg_prefix, mod_path, av_name))
 
             if av_type == 'ss':
