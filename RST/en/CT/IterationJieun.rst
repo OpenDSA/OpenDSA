@@ -25,6 +25,10 @@ List Iteration
    :long_name: Iteration 2
    :output: show
 
+ .. inlineav:: iteration2flyCON ss
+    :long_name: Iteration 2
+    :output: show
+
 .. inlineav:: iteration3CON ss
    :long_name: Iteration 3
    :output: show
@@ -33,4 +37,5 @@ List Iteration
 
 .. odsascript:: AV/CT/iteration1CON.js
 .. odsascript:: AV/CT/iteration2CON.js
+.. odsascript:: AV/CT/iteration2flyCON.js
 .. odsascript:: AV/CT/iteration3CON.js
