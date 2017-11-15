@@ -9,8 +9,6 @@
    :satisfies: iteration
    :topic: programming concepts
 
-.. odsalink:: AV/CT/iterationCON.css
-
 List Iteration
 ==============
 
@@ -18,21 +16,21 @@ List Iteration
 --------------
 
 .. inlineav:: iteration1CON ss
-   :long_name: Iteration Slideshow 1
+   :long_name: Iteration 1
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration1CON.js
    :output: show
 
 .. inlineav:: iteration2CON ss
    :long_name: Iteration 2
+   :links: AV/CT/iterationCON.css
+   :scripts: AV/CT/iteration2CON.js
    :output: show
 
 .. inlineav:: iteration3CON ss
    :long_name: Iteration 3
+   :links: AV/CT/iterationCON.css
+   :scripts: AV/CT/iteration3CON.js
    :output: show
 
 .. avembed:: Exercises/CT/IterationEX1PRO.html ka
-
-.. odsascript:: AV/CT/iteration1CON.js
-.. odsascript:: AV/CT/iteration2CON.js
-.. odsascript:: AV/CT/iteration3CON.js

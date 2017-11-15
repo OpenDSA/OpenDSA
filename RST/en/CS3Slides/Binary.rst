@@ -13,9 +13,10 @@
 Binary Trees Part 1
 ===================
 
-.. slide:: Binary Trees
+Binary Trees Part 1
+-------------------
 
-   .. odsalink:: AV/Binary/BinExampCON.css
+.. slide:: Binary Trees
 
    A binary tree is made up of a finite set of nodes that is either
    empty or consists of a node called the root together with two
@@ -26,23 +27,22 @@ Binary Trees Part 1
    depth, height, level, leaf node, internal node, subtree.
 
    .. inlineav:: BinExampCON dgm
-      :align: justify
-
-   .. odsascript:: AV/Binary/BinExampCON.js
+      :links: AV/Binary/BinExampCON.css
+      :scripts: AV/Binary/BinExampCON.js
+      :align: center
 
 
 .. slide:: A Recursive Data Structure
 
-   .. odsalink:: AV/Binary/RecursiveDSCON.css
-
    .. inlineav:: ListRecDSCON dgm
+      :links: AV/Binary/RecursiveDSCON.css
+      :scripts: AV/Binary/ListRecDSCON.js
       :align: justify
 
    .. inlineav:: BinRecDSCON dgm
+      :links: AV/Binary/RecursiveDSCON.css
+      :scripts: AV/Binary/BinRecDSCON.js
       :align: justify
-   
-   .. odsascript:: AV/Binary/ListRecDSCON.js
-   .. odsascript:: AV/Binary/BinRecDSCON.js
 
 
 .. slide:: Binary Tree Node Class
@@ -86,9 +86,10 @@ Binary Trees Part 1
    .. odsalink:: AV/Binary/BTCON.css
 
    .. inlineav:: preorderCON ss
+      :long_name: Preorder Traversal Slideshow
+      :links: AV/Binary/BTCON.css
+      :scripts: AV/Binary/preorderCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/preorderCON.js
 
 
 .. slide:: How not to write a traversal
@@ -105,62 +106,7 @@ Binary Trees Part 1
       :tag: count
 
    .. inlineav:: BinaryTreeMistakesCON ss
+      :long_name: Binary Tree Common Mistakes Slideshow
+      :links: AV/Binary/WriteTrav.css
+      :scripts: AV/Binary/BinaryTreeMistakesCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/BinaryTreeMistakesCON.js
-
-
-.. slide:: Full and Complete Binary Trees
-
-   .. odsalink:: AV/Binary/FullCompCON.css
-
-   Full binary tree: Each node is either a leaf or internal node with
-   exactly two non-empty children.
-
-   Complete binary tree: If the height of the tree is :math:`d`,
-   then all leaves except possibly level :math:`d` are completely
-   full.
-   The bottom level has all nodes to the left side.
-
-   .. inlineav:: FullCompCON dgm
-      :align: center
-
-   .. odsascript:: AV/Binary/FullCompCON.js
-
-
-.. slide:: Full Binary Tree Theorem (1)
-
-   **Theorem:** The number of leaves in a non-empty full binary tree
-   is one more than the number of internal nodes.
-
-   **Proof** (by Mathematical Induction):
-
-   **Base case:** A full binary tree with 1 internal node must have
-   two leaf nodes.
-
-   **Induction Hypothesis:** Assume any full binary tree **T** containing
-   :math:`n-1` internal nodes has :math:`n` leaves.
-
-
-.. slide:: Full Binary Tree Theorem (2)
-
-   **Induction Step:** Given tree **T** with :math:`n` internal nodes,
-   pick internal node :math:`I` with two leaf children.
-   Remove :math:`I`'s children, call resulting tree **T'**.
-
-   By induction hypothesis, **T'** is a full binary tree with :math:`n`
-   leaves.
-
-   Restore :math:`I`'s two children.
-   The number of internal nodes has now gone up by 1 to reach
-   :math:`n`.
-   The number of leaves has also gone up by 1.
-
-
-.. slide:: Full Binary Tree Corollary
-
-   **Theorem:** The number of null pointers in a non-empty tree is one
-   more than the number of nodes in the tree.
-
-   **Proof:** Replace all null pointers with a pointer to an empty leaf
-   node.  This is a full binary tree.

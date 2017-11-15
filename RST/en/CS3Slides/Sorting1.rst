@@ -13,6 +13,9 @@
 Sorting Part 1
 ==============
 
+Sorting Part 1
+--------------
+
 .. slide:: Sorting
 
    * Each record contains a field called the key.
@@ -23,6 +26,18 @@ Sorting Part 1
       * Swaps
 
 .. slide:: Insertion Sort
+
+   What would you do if you have a stack of phone bills from the past
+   two years and you want to order by date?
+   A fairly natural way to handle this is to look at the first two
+   bills and put them in order.
+   Then take the third bill and put it into the right position with
+   respect to the first two, and so on.
+
+
+.. slide:: Initial Step
+ 
+   Consider this start to the process.
 
    .. inlineav:: insertionsortCON ss
       :output: show
@@ -105,7 +120,7 @@ Sorting Part 1
 
 .. slide:: Summary
 
-   .. math:: 
+   .. math::
 
       \begin{array}{rccc}
       &\textbf{Insertion}&\textbf{Bubble}&\textbf{Selection}\\
@@ -119,3 +134,26 @@ Sorting Part 1
       \textrm{Average Case}&\Theta(n^2)&\Theta(n^2)&\Theta(n)\\
       \textrm{Worst Case}&\Theta(n^2)&\Theta(n^2)&\Theta(n)\\
       \end{array}
+
+.. slide:: Code Tuning
+
+   * General strategy: Test to avoid work
+      * Balance test cost, success probability, work saved
+
+   * "Optimizations" for quadratic sorts:
+      * Insertion Sort shift vs swaps: Works
+      * Selection Sort avoid self-swaps: Does not work
+      * Bubble Sort avoid/count comparisions: Does not work
+
+.. slide:: Exchange Sorting
+
+   * All of the sorts so far rely on exchanges of adjacent records.
+   * Inversions
+   * What is the average number of exchanges required?
+
+   .. odsalink:: AV/Sorting/ExchangeSortCON.css
+
+   .. inlineav:: ExchangeSortCON ss
+      :output: show
+
+   .. odsascript:: AV/Sorting/ExchangeSortCON.js

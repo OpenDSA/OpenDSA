@@ -13,6 +13,9 @@
 Hashing
 =======
 
+Hashing
+-------
+
 .. slide:: Hashing (1)
 
    Hashing: The process of mapping a key value to a position in a table.
@@ -39,12 +42,11 @@ Hashing
 
 .. slide:: Simple Examples
 
-   .. odsalink:: AV/Hashing/hashIntroCON.css
-
    .. inlineav:: hashIntroCON1 ss
+      :long_name: Hashing Intro Slideshow
+      :links: AV/Hashing/hashIntroCON.css
+      :scripts: AV/Hashing/hashIntroCON.js
       :output: show
-
-   .. odsascript:: AV/Hashing/hashIntroCON.js
 
    * More reasonable example:
       * Store about 1000 records with keys in range 0 to 16,383.
@@ -108,20 +110,20 @@ Hashing
         return x % 16;
       }
 
-   .. odsalink:: AV/Hashing/hashFuncExCON.css
-
    .. inlineav:: hashFuncExCON1 ss
+      :long_name: Hash Function Slideshow 1
+      :links: 
+      :scripts: AV/Hashing/hashFuncExCON1.js
       :output: show
-
-   .. odsascript:: AV/Hashing/hashFuncExCON1.js
 
 
 .. slide:: Binning
 
    .. inlineav:: hashFuncExCON2 ss
+      :long_name: Hash Function Slideshow 2
+      :links: 
+      :scripts: AV/Hashing/hashFuncExCON2.js
       :output: show
-
-   .. odsascript:: AV/Hashing/hashFuncExCON2.js
 
 
 .. slide:: Mod vs. Binning
@@ -183,7 +185,7 @@ Hashing
             mult *= 256;
           }
         }
-      
+
         char c[] = s.substring(intLength * 4).toCharArray();
         long mult = 1;
         for (int k = 0; k < c.length; k++) {
@@ -206,29 +208,27 @@ Hashing
 
 .. slide:: Open Hashing
 
-   .. odsalink:: AV/Hashing/openhashCON.css
-
    .. inlineav:: openhashCON dgm
-
-   .. odsascript:: AV/Hashing/openhashCON.js
+      :links: AV/Hashing/openhashCON.css
+      :scripts: AV/Hashing/openhashCON.js
 
 
 .. slide:: Bucket Hashing (1)
 
-   .. odsalink:: AV/Hashing/buckethashCON.css
-
    .. inlineav:: buckethashCON1 ss
+      :long_name: Bucket Hashing Slideshow 1
+      :links: AV/Hashing/buckethashCON.css
+      :scripts: AV/Hashing/buckethashCON1.js
       :output: show
-
-   .. odsascript:: AV/Hashing/buckethashCON1.js
 
 
 .. slide:: Bucket Hashing (2)
 
    .. inlineav:: buckethashCON2 ss
+      :long_name: Bucket Hashing Slideshow 2
+      :links: AV/Hashing/buckethashCON.css
+      :scripts: AV/Hashing/buckethashCON2.js
       :output: show
-
-   .. odsascript:: AV/Hashing/buckethashCON2.js
 
 
 .. slide:: Closed Hashing
@@ -326,20 +326,20 @@ Hashing
 
 .. slide:: Linear Probing (2)
 
-   .. odsalink:: AV/Hashing/linProbeCON.css
-
    .. inlineav:: linProbeCON1 ss
+      :long_name: Linear Probing Slideshow 1
+      :links: AV/Hashing/linProbeCON.css
+      :scripts: AV/Hashing/linProbeCON1.js
       :output: show
-
-   .. odsascript:: AV/Hashing/linProbeCON1.js
 
 
 .. slide:: Problem with Linear Probing
 
    .. inlineav:: linProbeCON2 ss
+      :long_name: Linear Probing Slideshow 2
+      :links: AV/Hashing/linProbeCON.css
+      :scripts: AV/Hashing/linProbeCON2.js
       :output: show
-
-   .. odsascript:: AV/Hashing/linProbeCON2.js
 
    * The primary goal of a collision resolution mechanism:
       * Give each empty slot of the table an equal probability of
@@ -351,12 +351,11 @@ Hashing
    * Instead of going to the next slot, skip by some constant c.
       * Warning: Pick M and c carefully.
 
-   .. odsalink:: AV/Hashing/collisionCON.css
-
    .. inlineav:: collisionCON1 ss
+      :long_name: Linear Probing By Steps Slideshow 1
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON1.js
       :output: show
-
-   .. odsascript:: AV/Hashing/collisionCON1.js
 
    * This effectively splits the key range, and the hash table, into
      two halves. This leads to reduced performance.
@@ -368,53 +367,61 @@ Hashing
       * Pick :math:`c` to be relatively prime to :math:`M`.
 
    .. inlineav:: collisionCON2 ss
+      :long_name: Linear Probing By Steps Slideshow 2
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON2.js
       :output: show
-
-   .. odsascript:: AV/Hashing/collisionCON2.js
 
 
 .. slide:: Pseudo-Random Probing (1)
 
    .. inlineav:: collisionCON3 ss
+      :long_name: Pseudo-Random Probing Slideshow
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON3.js
       :output: show
-
-   .. odsascript:: AV/Hashing/collisionCON3.js
 
 
 .. slide:: Pseudo-Random Probing (2)
 
    .. inlineav:: collisionCON4 ss
+      :long_name: Avoiding the Train
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON4.js
       :output: show
-
-   .. odsascript:: AV/Hashing/collisionCON4.js
 
 
 .. slide:: Quadratic Probing
 
    .. inlineav:: collisionCON5 ss
+      :long_name: Quadratic Probing Slideshow
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON5.js
       :output: show
-
-   .. odsascript:: AV/Hashing/collisionCON5.js
 
    .. inlineav:: collisionCON6 ss
+      :long_name: Quadratic Probing Problem
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON6.js
       :output: show
-
-   .. odsascript:: AV/Hashing/collisionCON6.js
 
 
 .. slide:: Double Hashing (1)
 
    .. inlineav:: collisionCON7 ss
+      :long_name: Double Hashing Slideshow 2
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON7.js
       :output: show
 
-   .. odsascript:: AV/Hashing/collisionCON7.js
 
 .. slide:: Double Hashing (2)
 
    .. inlineav:: collisionCON8 ss
+      :long_name: Double Hashing Slideshow 3
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON8.js
       :output: show
-
-   .. odsascript:: AV/Hashing/collisionCON8.js
 
 
 .. slide:: Analysis of Closed Hashing
@@ -447,9 +454,10 @@ Hashing
 .. slide:: Tombstones (1)
 
    .. inlineav:: hashdelCON ss
+      :long_name: Hash Deletion Slideshow
+      :links: 
+      :scripts: AV/Hashing/hashdelCON.js
       :output: show
-
-   .. odsascript:: AV/Hashing/hashdelCON.js
 
 
 .. slide:: Tombstones (2)

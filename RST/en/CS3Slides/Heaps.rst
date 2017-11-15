@@ -55,31 +55,34 @@ Heaps
 .. slide:: Heap insert
 
    .. inlineav:: heapinsertCON ss
+      :long_name: Heap insert Slideshow
+      :links: 
+      :scripts: DataStructures/binaryheap.js AV/Binary/heapinsertCON.js
       :output: show
-
-   .. odsascript:: DataStructures/binaryheap.js
-   .. odsascript:: AV/Binary/heapinsertCON.js
 
 
 .. slide:: Building a Heap
 
    .. inlineav:: heapbuildCON ss
+      :long_name: Heapbuild Slideshow
+      :links: 
+      :scripts: DataStructures/binaryheap.js AV/Binary/heapbuildCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/heapbuildCON.js
 
 
 .. slide:: Building a Heap Proof
 
    .. inlineav:: heapbuildProofCON ss
+      :long_name: Heap build analysis proof Slideshow
+      :links: AV/Binary/heapbuildProofCON.css
+      :scripts: DataStructures/binaryheap.js AV/Binary/heapbuildProofCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/heapbuildProofCON.js
 
 
 .. slide:: Delete the maximum value
 
    .. inlineav:: heapmaxCON ss
+      :long_name: Remove Max Slideshow
+      :links: 
+      :scripts: DataStructures/binaryheap.js AV/Binary/heapmaxCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/heapmaxCON.js

@@ -18,8 +18,6 @@ Binary Trees Part 2
 
 .. slide:: Full and Complete Binary Trees
 
-   .. odsalink:: AV/Binary/FullCompCON.css
-
    Full binary tree: Each node is either a leaf or internal node with
    exactly two non-empty children.
 
@@ -29,9 +27,9 @@ Binary Trees Part 2
    The bottom level has all nodes to the left side.
 
    .. inlineav:: FullCompCON dgm
+      :links: AV/Binary/FullCompCON.css
+      :scripts: AV/Binary/FullCompCON.js
       :align: center
-
-   .. odsascript:: AV/Binary/FullCompCON.js
 
 
 .. slide:: Full Binary Tree Theorem (1)
@@ -113,36 +111,34 @@ Binary Trees Part 2
 
 .. slide:: BST ``findhelp``
 
-   .. odsalink:: AV/Binary/BSTCON.css
-
    .. inlineav:: BSTsearchCON ss
+      :links: AV/Binary/BSTCON.css
+      :scripts: AV/Binary/BSTsearchCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/BSTsearchCON.js
 
 
 .. slide:: BST ``inserthelp``
 
    .. inlineav:: BSTinsertCON ss
+      :links: AV/Binary/BSTCON.css
+      :scripts: AV/Binary/BSTinsertCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/BSTinsertCON.js
 
 
 .. slide:: BST ``deletemax``
 
    .. inlineav:: BSTdeletemaxCON ss
+      :links: AV/Binary/BSTCON.css
+      :scripts: AV/Binary/BSTdeletemaxCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/BSTdeletemaxCON.js
 
 
 .. slide:: BST ``removehelp``
 
    .. inlineav:: BSTremoveCON ss
+      :links: AV/Binary/BSTCON.css
+      :scripts: AV/Binary/BSTremoveCON.js
       :output: show
-
-   .. odsascript:: AV/Binary/BSTremoveCON.js
 
 
 .. slide:: .

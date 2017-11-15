@@ -6,8 +6,6 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. odsalink:: AV/Design/ADTCON.css
-
 .. slideconf::
    :autoslides: False
 
@@ -152,6 +150,8 @@ Introduction
 .. slide:: Logical vs. Physical Form (2)
 
    .. inlineav:: ADTCON dgm
+      :links: AV/Design/ADTCON.css
+      :scripts: AV/Design/ADTCON.js
       :output: show
 
 .. slide:: Homework
@@ -168,5 +168,3 @@ Introduction
       * Log in to https://www.cs.vt.edu/F16Force-Adds:
       * Password: 3114cas#, 3114bap#
    * Please return consent form
-
-   .. odsascript:: AV/Design/ADTCON.js

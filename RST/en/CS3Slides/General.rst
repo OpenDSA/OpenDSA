@@ -18,11 +18,10 @@ General Trees
 
 .. slide:: General Trees
 
-   .. odsalink:: AV/General/GenTreeCON.css
    .. inlineav:: GenTreeCON dgm
+      :links: AV/General/GenTreeCON.css
+      :scripts: AV/General/GenTreeCON.js
       :align: justify
-
-   .. odsascript:: AV/General/GenTreeCON.js
 
 
 .. slide:: General Tree ADT
@@ -34,9 +33,10 @@ General Trees
 .. slide:: General Tree Traversal
 
    .. inlineav:: GenTreePreTravCON ss
+      :long_name: General Tree Preorder Traversal Slideshow
+      :links: AV/General/GenTreeCON.css
+      :scripts: AV/General/GenTreePreTravCON.js
       :output: show
-
-   .. odsascript:: AV/General/GenTreePreTravCON.js
 
 
 .. slide:: Rep: Lists of Children
@@ -91,31 +91,35 @@ General Trees
 
 .. slide:: Binary tree serialization
 
-   .. odsalink:: AV/General/SequentialTreeCON.css
    .. inlineav:: SequentialTreeCON ss
+      :long_name: First sequential representation Slideshow
+      :links: AV/General/SequentialTreeCON.css
+      :scripts: AV/General/SequentialTreeCON.js
       :output: show
-
-   .. odsascript:: AV/General/SequentialTreeCON.js
 
 
 .. slide:: Alternate serialization
 
    .. inlineav:: SequentialTreeAltCON ss
+      :long_name: Second sequential representation Slideshow
+      :links: AV/General/SequentialTreeCON.css
+      :scripts: AV/General/SequentialTreeAltCON.js
       :output: show
 
-   .. odsascript:: AV/General/SequentialTreeAltCON.js
 
 .. slide:: Bit Vector Serialization
 
    .. inlineav:: SequentialTreeBitsCON ss
+      :long_name: Bit vector sequential representation Slideshow
+      :links: AV/General/SequentialTreeCON.css
+      :scripts: AV/General/SequentialTreeBitsCON.js
       :output: show
-
-   .. odsascript:: AV/General/SequentialTreeBitsCON.js
 
 
 .. slide:: General Tree Serialization
 
    .. inlineav:: SequentialGenTreeCON ss
+      :long_name: General Tree sequential representation Slideshow
+      :links: AV/General/SequentialTreeCON.css
+      :scripts: AV/General/SequentialGenTreeCON.js
       :output: show
-
-   .. odsascript:: AV/General/SequentialGenTreeCON.js

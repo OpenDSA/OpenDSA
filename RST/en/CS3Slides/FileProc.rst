@@ -13,6 +13,9 @@
 File Processing and Buffer Pools
 ================================
 
+File Processing and Buffer Pools
+--------------------------------
+
 .. slide:: Programmer’s View of Files
 
    * Logical view of files:
@@ -237,13 +240,12 @@ File Processing and Buffer Pools
 
 .. slide:: Buffer Pools
 
-   .. odsalink:: AV/Files/buffpoolCON.css      
-
    .. inlineav:: buffintroCON ss
+      :long_name: Buffer Pool Introduction Slideshow
       :align: center
+      :links: AV/Files/buffpoolCON.css 
+      :scripts: AV/Files/buffintroCON.js
       :output: show
-
-   .. odsascript:: AV/Files/buffintroCON.js
 
 
 .. slide:: Organizing Buffer Pools
@@ -262,19 +264,21 @@ File Processing and Buffer Pools
 .. slide:: LRU
 
    .. inlineav:: LRUCON ss
+      :long_name: LRU Replacement Slideshow
       :align: center
+      :links: AV/Files/buffpoolCON.css 
+      :scripts: AV/Files/LRUCON.js
       :output: show
-
-   .. odsascript:: AV/Files/LRUCON.js
 
 
 .. slide:: Dirty Bit
 
    .. inlineav:: LRUwriteCON ss
+      :long_name: LRU Replacement with write Slideshow
       :align: center
+      :links: AV/Files/buffpoolCON.css 
+      :scripts: AV/Files/LRUwriteCON.js
       :output: show
-
-   .. odsascript:: AV/Files/LRUwriteCON.js
 
 
 .. slide:: Bufferpool ADT: Message Passing
@@ -290,13 +294,13 @@ File Processing and Buffer Pools
 .. slide:: Design Issues
 
    * Disadvantage of message passing:
-      * Messages are copied and passed back and forth. 
+      * Messages are copied and passed back and forth.
 
    * Disadvantages of buffer passing:
       * The user is given access to system memory (the buffer itself)
       * The user must explicitly tell the buffer pool when buffer contents
         have been modified, so that modified data can be rewritten to disk
-        when the buffer is flushed. 
+        when the buffer is flushed.
       * The pointer might become stale when the bufferpool replaces the
         contents of a buffer.
 
@@ -387,12 +391,11 @@ File Processing and Buffer Pools
 
 .. slide:: Simple External Mergesort (3)
 
-   .. odsalink:: AV/Files/extsortCON.css
-
    .. inlineav:: extMergeSortCON ss
+      :long_name: External Merge Sort Slideshow
+      :links: AV/Files/extsortCON.css
+      :scripts: DataStructures/binaryheap.js AV/Files/extMergeSortCON.js
       :output: show
-
-   .. odsascript:: AV/Files/extMergeSortCON.js
 
 
 .. slide:: Problems with Simple Mergesort
@@ -411,9 +414,10 @@ File Processing and Buffer Pools
 .. slide:: A Better Process
 
    .. inlineav:: extMergeSortExampCON ss
+      :long_name: External Merge Sort Example Slideshow
+      :links: AV/Files/extsortCON.css
+      :scripts: DataStructures/binaryheap.js AV/Files/extMergeSortExampCON.js
       :output: show
-
-   .. odsascript:: AV/Files/extMergeSortExampCON.js
 
 
 .. slide:: Breaking a File into Runs
@@ -448,19 +452,19 @@ File Processing and Buffer Pools
      the end of the array).
 
 
-   .. inlineav:: extSortOverCON dgm
-      :output: show
-
-   .. odsascript:: AV/Files/extSortOverCON.js
+     .. inlineav:: extSortOverCON dgm
+        :links: AV/Files/extsortCON.css
+        :scripts: DataStructures/binaryheap.js AV/Files/extSortOverCON.js
+        :align: justify
 
 
 .. slide:: RS Example
 
    .. inlineav:: extRSCON ss
+      :long_name: External Replacement Selection Slideshow
+      :links: AV/Files/extsortCON.css
+      :scripts: DataStructures/binaryheap.js AV/Files/extRSCON.js
       :output: show
-
-   .. odsascript:: DataStructures/binaryheap.js
-   .. odsascript:: AV/Files/extRSCON.js
 
 
 .. slide:: Snowplow Analogy (1)
@@ -480,9 +484,9 @@ File Processing and Buffer Pools
 .. slide:: Snowplow Analogy (2)
 
    .. inlineav:: extSortSnowCON dgm
-      :output: show
-
-   .. odsascript:: AV/Files/extSortSnowCON.js
+      :links: AV/Files/extsortCON.css
+      :scripts: DataStructures/binaryheap.js AV/Files/extSortSnowCON.js
+      :align: justify
 
 
 .. slide:: Problems with Simple Merge
@@ -518,9 +522,10 @@ File Processing and Buffer Pools
    * In practice, use only one file and seek to appropriate block.
 
    .. inlineav:: extMultiMergeCON ss
+      :long_name: Multiway Merge Example Slideshow
+      :links: AV/Files/extsortCON.css
+      :scripts: DataStructures/binaryheap.js AV/Files/extMultiMergeCON.js
       :output: show
-
-   .. odsascript:: AV/Files/extMultiMergeCON.js
 
 
 .. slide:: Limits to Multiway Merge (1)
