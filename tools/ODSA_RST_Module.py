@@ -519,9 +519,16 @@ class ODSA_RST_Module:
                   link_opts = opt_line[len(':links:'):].split()
                   if len(link_opts) > 0:
                     links_found = True
-                    for link in link_opts:
-                      if link not in links:
-                        links[link] = False
+                    if os.environ['SLIDES'] == 'no':
+                      for link in link_opts:
+                        if link not in links:
+                          links[link] = False
+                    else:
+                      for link in link_opts:
+                        link_included = links.get(link)
+                        if not link_included:
+                          links[link] = True
+                          mod_data[i] = '   .. odsalink:: {0}\n{1}'.format(link, mod_data[i])
                   del mod_data[j]
                   j -= 1
 
@@ -530,9 +537,17 @@ class ODSA_RST_Module:
                   script_opts = opt_line[len(':scripts:'):].split()
                   if len(script_opts) > 0:
                     scripts_found = True
-                    for script in script_opts:
-                      if script not in scripts:
-                        scripts[script] = False
+                    if os.environ['SLIDES'] == 'no':
+                      for script in script_opts:
+                        if script not in scripts:
+                          scripts[script] = False
+                    else:
+                      for script in script_opts:
+                        script_included = scripts.get(script)
+                        if not script_included:
+                          scripts[script] = True
+                          mod_data[i] ='   .. odsascript:: {0}\n{1}'.format(script, mod_data[i])
+
                   del mod_data[j]
                   j -=1
 
@@ -700,7 +715,7 @@ class ODSA_RST_Module:
         if not os.path.exists('{0}/{1}'.format(config.odsa_dir, link)):
           print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, link))
         if not has_directive:
-          mod_data.insert(0, '.. odsalink:: {0}\n'.format(link))
+            mod_data.insert(1, '.. odsalink:: {0}\n'.format(link))
 
       mod_data.append('\n')
       for script, has_directive in scripts.iteritems():
