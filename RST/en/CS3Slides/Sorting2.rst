@@ -52,23 +52,20 @@ Sorting Part 2
 
 .. slide:: Quicksort Partition
 
-   .. odsalink:: AV/Sorting/quicksortCON.css
-
    .. inlineav:: quicksortCON ss
+      :long_name: Quicksort Partition Slideshow
+      :links: AV/Sorting/quicksortCON.css
+      :scripts: AV/Sorting/quicksortCODE.js AV/Sorting/quicksortCON.js
       :output: show
-
-   .. odsascript:: AV/Sorting/quicksortCODE.js
-   .. odsascript:: AV/Sorting/quicksortCON.js
 
 
 .. slide:: Quicksort Partition Cost
 
-   .. odsalink:: AV/Development/QuickSortPartitionAnalysisCON.css
-
    .. inlineav:: QuickSortPartitionAnalysisCON ss
+      :long_name: Quicksort Partition Analysis Slideshow
+      :links: AV/Development/QuickSortPartitionAnalysisCON.css
+      :scripts: AV/Development/QuickSortPartitionAnalysisCON.js
       :output: show
-
-   .. odsascript:: AV/Development/QuickSortPartitionAnalysisCON.js
 
 
 .. slide:: Quicksort Summary
@@ -78,12 +75,11 @@ Sorting Part 2
 
 .. slide:: Quicksort Worst Case
 
-   .. odsalink:: AV/Development/QuickSortWorstCaseCON.css
-
    .. inlineav:: QuickSortWorstCaseCON ss
+      :long_name: Quicksort Worst Case Analysis Slideshow
+      :links: AV/Development/QuickSortWorstCaseCON.css
+      :scripts: AV/Development/QuickSortWorstCaseCON.js
       :output: show
-
-   .. odsascript:: AV/Development/QuickSortWorstCaseCON.js
 
 
 .. slide:: .
@@ -92,12 +88,11 @@ Sorting Part 2
 
 .. slide:: Quicksort Best Case
 
-   .. odsalink:: AV/Development/QuickSortBestCaseCON.css
-
    .. inlineav:: QuickSortBestCaseCON ss
+      :long_name: Quicksort Best Case Analysis Slideshow
+      :links: AV/Development/QuickSortBestCaseCON.css
+      :scripts: AV/Development/QuickSortBestCaseCON.js
       :output: show
-
-   .. odsascript:: AV/Development/QuickSortBestCaseCON.js
 
 
 .. slide:: .
@@ -106,12 +101,11 @@ Sorting Part 2
 
 .. slide:: Quicksort Average Case
 
-   .. odsalink:: AV/Development/QuickSortAverageCaseCON.css
-
    .. inlineav:: QuickSortAverageCaseCON ss
+      :long_name: Quicksort Average Case Analysis Slideshow
+      :links: AV/Development/QuickSortAverageCaseCON.css
+      :scripts: AV/Development/QuickSortAverageCaseCON.js
       :output: show
-
-   .. odsascript:: AV/Development/QuickSortAverageCaseCON.js
 
 
 .. slide:: Optimizations for Quicksort
@@ -127,20 +121,19 @@ Sorting Part 2
 .. slide:: Heapsort
 
    .. inlineav:: heapsortCON ss
+      :long_name: Heapsort Slideshow
+      :links: 
+      :scripts: DataStructures/binaryheap.js AV/Sorting/heapsortCON.js
       :output: show
-
-   .. odsascript:: DataStructures/binaryheap.js
-   .. odsascript:: AV/Sorting/heapsortCON.js
 
 
 .. slide:: Heapsort Analysis
 
-   .. odsalink:: AV/Development/HeapSortAnalysisCON.css
-
    .. inlineav:: HeapSortAnalysisCON ss
+      :long_name: Heapsort Analysis Slideshow
+      :links: AV/Development/HeapSortAnalysisCON.css
+      :scripts: DataStructures/binaryheap.js AV/Development/HeapSortAnalysisCON.js
       :output: show
-
-   .. odsascript:: AV/Development/HeapSortAnalysisCON.js
 
 
 .. slide:: Binsort
@@ -149,9 +142,10 @@ Sorting Part 2
       :tag: simplebinsort
 
    .. inlineav:: binsortS1CON ss
+      :long_name: Binsort Slideshow 1
+      :links: 
+      :scripts: AV/Sorting/binsortS1CON.js
       :output: show
-
-   .. odsascript:: AV/Sorting/binsortS1CON.js
 
 
 .. slide:: Radix Sort: Linked List
@@ -181,12 +175,11 @@ Sorting Part 2
 
 .. slide:: Radix Sort Analysis
 
-   .. odsalink:: AV/Development/RadixSortAnalysisCON.css
-
    .. inlineav:: RadixSortAnalysisCON ss
+      :long_name: Radix Sort Analysis Slideshow
+      :links: AV/Development/RadixSortAnalysisCON.css
+      :scripts: AV/Development/RadixSortAnalysisCON.js
       :output: show
-
-   .. odsascript:: AV/Development/RadixSortAnalysisCON.js
 
 
 .. slide:: Empirical Analysis

@@ -40,82 +40,85 @@ Sorting Part 1
    Consider this start to the process.
 
    .. inlineav:: insertionsortCON ss
+      :long_name: Insertion Sort Slideshow
+      :links: 
+      :scripts: AV/Sorting/insertionsortCON.js
       :output: show
-
-   .. odsascript:: AV/Sorting/insertionsortCON.js
+            
 
 .. slide:: Analysis: Worst Case
 
-   .. odsalink:: AV/Sorting/InsertionSortWorstCaseCON.css
-
    .. inlineav:: InsertionSortWorstCaseCON ss
+      :long_name: Insertion Sort Worst Case Slideshow
+      :links: AV/Sorting/InsertionSortWorstCaseCON.css
+      :scripts: AV/Sorting/InsertionSortWorstCaseCON.js
       :output: show
-
-   .. odsascript:: AV/Sorting/InsertionSortWorstCaseCON.js
 
 
 .. slide:: Analysis: Best Case
 
-   .. odsalink:: AV/Sorting/InsertionSortBestCaseCON.css
-
    .. inlineav:: InsertionSortBestCaseCON ss
+      :long_name: Insertion Sort Best Case Slideshow
+      :links: AV/Sorting/InsertionSortBestCaseCON.css
+      :scripts: AV/Sorting/InsertionSortBestCaseCON.js
       :output: show
-
-   .. odsascript:: AV/Sorting/InsertionSortBestCaseCON.js
 
 
 .. slide:: Analysis: Average Case
 
-   .. odsalink:: AV/Sorting/InsertionSortAverageCaseCON.css
-
    .. inlineav:: InsertionSortAverageCaseCON ss
+      :long_name: Insertion Sort Average Case Slideshow
+      :links: AV/Sorting/InsertionSortAverageCaseCON.css
+      :scripts: AV/Sorting/InsertionSortAverageCaseCON.js
       :output: show
-
-   .. odsascript:: AV/Sorting/InsertionSortAverageCaseCON.js
 
 
 .. slide:: Bubble Sort
 
    .. inlineav:: bubblesortS1CON ss
+      :long_name: Bubble Sort Slideshow 1
+      :links: 
+      :scripts: AV/Sorting/bubblesortS1CON.js
       :output: show
 
    .. inlineav:: bubblesortS2CON ss
+      :long_name: Bubble Sort Slideshow 2
+      :links: 
+      :scripts: AV/Sorting/bubblesortS2CON.js
       :output: show
-
-   .. odsascript:: AV/Sorting/bubblesortS1CON.js
-   .. odsascript:: AV/Sorting/bubblesortS2CON.js
 
 
 .. slide:: Analysis
 
-   .. odsalink:: AV/Sorting/BubbleSortAnalysisCON.css
-
    .. inlineav:: BubbleSortAnalysisCON ss
+      :long_name: Bubble Sort Analysis Slideshow
+      :links: AV/Sorting/BubbleSortAnalysisCON.css
+      :scripts: AV/Sorting/BubbleSortAnalysisCON.js
       :output: show
-
-   .. odsascript:: AV/Sorting/BubbleSortAnalysisCON.js
 
 
 .. slide:: Selection Sort
 
    .. inlineav:: selectionsortS1CON ss
+      :long_name: Selection Sort Slideshow 1
+      :links: 
+      :scripts: AV/Sorting/selectionsortS1CON.js
       :output: show
 
    .. inlineav:: selectionsortS2CON ss
+      :long_name: Selection Sort Slideshow 2
+      :links: 
+      :scripts: AV/Sorting/selectionsortS2CON.js
       :output: show
-
-   .. odsascript:: AV/Sorting/selectionsortS1CON.js
-   .. odsascript:: AV/Sorting/selectionsortS2CON.js
 
 
 .. slide:: Analysis
 
-   .. odsalink:: AV/Sorting/SelectionSortAnalysisCON.css
-
    .. inlineav:: SelectionSortAnalysisCON ss
+      :long_name: Selection Sort Analysis Slideshow
+      :links: AV/Sorting/SelectionSortAnalysisCON.css
+      :scripts: AV/Sorting/SelectionSortAnalysisCON.js
       :output: show
-
-   .. odsascript:: AV/Sorting/SelectionSortAnalysisCON.js
 
 
 .. slide:: Summary
@@ -151,9 +154,8 @@ Sorting Part 1
    * Inversions
    * What is the average number of exchanges required?
 
-   .. odsalink:: AV/Sorting/ExchangeSortCON.css
-
    .. inlineav:: ExchangeSortCON ss
+      :long_name: Exchange Sort Analysis Slideshow
+      :links: AV/Sorting/ExchangeSortCON.css
+      :scripts: AV/Sorting/ExchangeSortCON.js
       :output: show
-
-   .. odsascript:: AV/Sorting/ExchangeSortCON.js

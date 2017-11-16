@@ -49,12 +49,11 @@ Indexing
 
    * Linear indexing is good for searching variable-length records.
 
-   .. odsalink:: AV/Indexing/linearIndexingCON.css
-
    .. inlineav:: varindexCON ss
+      :long_name: Simple linear index Slideshow
+      :links: AV/Indexing/linearIndexingCON.css
+      :scripts: AV/Indexing/varindexCON.js
       :output: show
-
-   .. odsascript:: AV/Indexing/varindexCON.js
 
 
 .. slide:: Linear Indexing (2)
@@ -63,9 +62,11 @@ Indexing
      might be used.
 
    .. inlineav:: linindexCON ss
+      :long_name: Two-level linear index Slideshow
+      :links: AV/Indexing/linearIndexingCON.css
+      :scripts: AV/Indexing/linindexCON.js
       :output: show
-
-   .. odsascript:: AV/Indexing/linindexCON.js
+      :align: justify
 
 
 .. slide:: Tree Indexing (1)
@@ -80,12 +81,11 @@ Indexing
 
 .. slide:: Tree Indexing (2)
 
-   .. odsalink:: AV/Indexing/treeIndexingCON.css
-
    .. inlineav:: pagedBSTCON ss
+      :long_name: Paged BST Slideshow
+      :links: AV/Indexing/treeIndexingCON.css
+      :scripts: AV/Indexing/pagedBSTCON.js
       :output: show
-
-   .. odsascript:: AV/Indexing/pagedBSTCON.js
 
 
 .. slide:: Tree Indexing (3)
@@ -97,9 +97,10 @@ Indexing
 .. slide:: Tree Indexing (4)
 
    .. inlineav:: rebalanceBSTCON ss
+      :long_name: Paged BST With Disk Accesses Slideshow
+      :links: AV/Indexing/treeIndexingCON.css
+      :scripts: AV/Indexing/rebalanceBSTCON.js
       :output: show
-
-   .. odsascript:: AV/Indexing/rebalanceBSTCON.js
 
 
 .. slide:: 2-3 Tree
@@ -119,37 +120,37 @@ Indexing
    * The advantage of the 2-3 Tree over the BST is that it can be
      updated at low cost.
 
-   .. odsalink:: AV/Indexing/twoThreeTreeCON.css
-
    .. inlineav:: twoThreedgmCON dgm
+      :links: AV/Indexing/twoThreeTreeCON.css
+      :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/twoThreedgmCON.js
       :align: center
-
-   .. odsascript:: AV/Indexing/twoThreeTreeCON.js
-   .. odsascript:: AV/Indexing/twoThreedgmCON.js
 
 
 .. slide:: 2-3 Tree Insertion (1)
 
    .. inlineav:: simpleInsertCON ss
+      :long_name: 2-3 Tree Insert Slideshow
+      :links: AV/Indexing/twoThreeTreeCON.css
+      :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/simpleInsertCON.js
       :output: show
-
-   .. odsascript:: AV/Indexing/simpleInsertCON.js
 
 
 .. slide:: 2-3 Tree Insertion (2)
 
    .. inlineav:: promoteCON ss
+      :long_name: 2-3 Tree Insert Promotion Slideshow
+      :links: AV/Indexing/twoThreeTreeCON.css
+      :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/promoteCON.js
       :output: show
-
-   .. odsascript:: AV/Indexing/promoteCON.js
 
 
 .. slide:: 2-3 Tree Insertion (3)
 
    .. inlineav:: splitCON ss
+      :long_name: 2-3 Tree Insert Split Slideshow
+      :links: AV/Indexing/twoThreeTreeCON.css
+      :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/splitCON.js
       :output: show
-
-   .. odsascript:: AV/Indexing/splitCON.js
 
 
 .. slide:: B-Trees (1)

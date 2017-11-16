@@ -18,9 +18,6 @@ Lists
 
 .. slide:: Lists, Stacks, Queues
 
-   .. odsalink:: AV/List/alistCON.css
-   .. odsalink:: AV/List/llistCON.css
-
    A list is a finite, ordered **sequence** of data items.
 
    Important concept: List elements have a **position**.
@@ -89,9 +86,10 @@ Lists
 .. slide:: Array-Based List Insert
 
    .. inlineav:: alistInsertCON ss
+      :long_name: Array-based List Insertion Slideshow
+      :links: AV/List/alistCON.css
+      :scripts: AV/List/alistInsertCON.js
       :output: show
-
-   .. odsascript:: AV/List/alistInsertCON.js
 
 
 .. slide:: Link Class
@@ -105,69 +103,79 @@ Lists
 .. slide:: Linked List Position (1)
 
    .. inlineav:: llistBadCON ss
+      :long_name: Linked List Slideshow 1
+      :links: AV/List/llistCON.css
+      :scripts: AV/List/llist.js AV/List/llistBadCON.js
       :output: show
 
-   .. odsascript:: AV/List/llist.js
-   .. odsascript:: AV/List/llistBadCON.js
 
 .. slide:: Linked List Position (2)
 
    .. inlineav:: llistBadDelCON ss
+      :long_name: Linked List Slideshow 2
+      :links: AV/List/llistCON.css
+      :scripts: AV/List/llist.js AV/List/llistBadDelCON.js
       :output: show
-
-   .. odsascript:: AV/List/llistBadDelCON.js
 
 
 .. slide:: Linked List Position (3)
 
    .. inlineav:: llistInitCON dgm
-      :output: show
+      :links: AV/List/llistCON.css
+      :scripts: AV/List/llist.js AV/List/llistInitCON.js
+      :align: center
 
    |
 
    .. inlineav:: llistHeaderCON dgm
-      :output: show
-
-   .. odsascript:: AV/List/llistInitCON.js
-   .. odsascript:: AV/List/llistHeaderCON.js
+      :links: AV/List/llistCON.css
+      :scripts: AV/List/llist.js AV/List/llistHeaderCON.js
+      :align: center
 
 
 .. slide:: Linked List Class (1)
 
    .. inlineav:: llistVarsCON ss
+      :long_name: Linked List Variables Slideshow
+      :links: AV/List/llistCON.css
+      :scripts: AV/List/llist.js AV/List/llistVarsCON.js
       :output: show
-
-   .. odsascript:: AV/List/llistVarsCON.js
 
 
 .. slide:: Linked List Class (2)
 
    .. inlineav:: llistConsCON ss
+      :long_name: Linked List Constructors Slideshow
+      :links: AV/List/llistCON.css
+      :scripts: AV/List/llist.js AV/List/llistConsCON.js
       :output: show
-
-   .. odsascript:: AV/List/llistConsCON.js
 
 
 .. slide:: Insertion
 
    .. inlineav:: llistInsertCON ss
+      :long_name: Linked List Insert Slideshow
+      :links: AV/List/llistCON.css
+      :scripts: AV/List/llist.js AV/List/llistInsertCON.js
       :output: show
 
-   .. odsascript:: AV/List/llistInsertCON.js
 
 .. slide:: Removal
 
    .. inlineav:: llistRemoveCON ss
+      :long_name: Linked List Remove Slideshow
+      :links: AV/List/llistCON.css
+      :scripts: AV/List/llist.js AV/List/llistRemoveCON.js
       :output: show
 
-   .. odsascript:: AV/List/llistRemoveCON.js
 
 .. slide:: Prev
 
    .. inlineav:: llistOtherCON ss
+      :long_name: Linked List Position Slideshow
+      :links: AV/List/llistCON.css
+      :scripts: AV/List/llist.js AV/List/llistOtherCON.js
       :output: show
-
-   .. odsascript:: AV/List/llistOtherCON.js
 
 .. slide:: Overhead
 
@@ -235,22 +243,18 @@ Lists
    * Add freelist support to the Link class.
 
    .. inlineav:: listFreeCON ss
+      :long_name: Freelist Slideshow 1
+      :links: AV/List/listFreeCON.css
+      :scripts: AV/List/llist.js AV/List/listFreeCON.js
       :output: show
 
-   .. odsascript:: AV/List/listFreeCON.js
 
 .. slide:: Doubly Linked Lists
 
-   .. odsalink:: DataStructures/DoubleLinkList.css
-   .. odsalink:: AV/List/dlistCON.css
-
    .. inlineav:: dlistDiagramCON dgm
+      :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
+      :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistDiagramCON.js
       :output: show
-
-   .. odsascript:: DataStructures/DoubleLinkList.js
-   .. odsascript:: AV/List/dlist.js
-   .. odsascript:: AV/List/dlistDiagramCON.js
-
 
 .. slide:: Container Class Design Issues
 
@@ -268,18 +272,19 @@ Lists
 .. slide:: Doubly Linked Insert
 
    .. inlineav:: dlistInsertCON ss
-      :output: show
-
-   .. odsascript:: AV/List/dlistInsertCON.js
-
+      :long_name: Doubly Linked List Insert
+      :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
+      :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistInsertCON.js
+      :output: show   
 
 
 .. slide:: Doubly Linked Remove
 
    .. inlineav:: dlistRemoveCON ss
+      :long_name: Doubly Linked List Remove
+      :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
+      :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistRemoveCON.js
       :output: show
-
-   .. odsascript:: AV/List/dlistRemoveCON.js
 
 
 .. slide:: Stacks
@@ -299,7 +304,6 @@ Lists
 
    .. codeinclude:: Lists/Stack
       :tag: Stack
-
 
 
 .. slide:: Array-Based Stack (1)
@@ -345,41 +349,44 @@ Lists
 
 .. slide:: Queue Implementation (1)
 
-   .. odsalink:: AV/List/aqueueCON.css
-
    .. inlineav:: aqueueFirstCON ss
+      :long_name: Array-based Queue Positions Slideshow
+      :links: AV/List/aqueueCON.css
+      :scripts: AV/List/aqueueFirstCON.js
       :output: show
 
-   .. odsascript:: DataStructures/CircularQueue.js
-   .. odsascript:: AV/List/aqueueFirstCON.js
 
 .. slide:: Queue Implementation (2)
 
    .. inlineav:: aqueueDriftCON ss
+      :long_name: Array-based Queue Drift Slideshow
+      :links: AV/List/aqueueCON.css
+      :scripts: AV/List/aqueueDriftCON.js
       :output: show
-
-   .. odsascript:: AV/List/aqueueDriftCON.js
 
 
 .. slide:: Queue Implementation (3)
 
    .. inlineav:: aqueueBadCON ss
+      :long_name: Array-based Queue Bad Representation Slideshow
+      :links: AV/List/aqueueCON.css
+      :scripts: AV/List/aqueueBadCON.js
       :output: show
-
-   .. odsascript:: AV/List/aqueueBadCON.js
 
 
 .. slide:: Circular Queue (1)
 
    .. inlineav:: aqueueCircularCON ss
+      :long_name: Circular Array-based Queue Slideshow
+      :links: AV/List/aqueueCON.css
+      :scripts: DataStructures/CircularQueue.js AV/List/aqueueCircularCON.js
       :output: show
 
-
-   .. odsascript:: AV/List/aqueueCircularCON.js
 
 .. slide:: Circular Queue (2)
 
    .. inlineav:: aqueueEmptyCON ss
+      :long_name: Empty Circular Array-based Queue Slideshow
+      :links: AV/List/aqueueCON.css
+      :scripts: DataStructures/CircularQueue.js AV/List/aqueueEmptyCON.js
       :output: show
-
-   .. odsascript:: AV/List/aqueueEmptyCON.js

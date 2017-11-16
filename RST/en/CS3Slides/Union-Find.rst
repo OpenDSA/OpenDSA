@@ -21,12 +21,10 @@ Union/FIND
    Sometimes we have a collection of objects that we want to divide
    into separate sets.
 
-   .. odsalink:: AV/General/UFCON.css
-
    .. inlineav:: UFconcomCON dgm
+      :links: AV/General/UFCON.css
+      :scripts: AV/General/UFconcomCON.js
       :align: left
-
-   .. odsascript:: AV/General/UFconcomCON.js
 
 
 .. slide:: Approach
@@ -41,9 +39,8 @@ Union/FIND
 .. slide:: Parent Pointer Implementation
 
    .. inlineav:: UFfigCON dgm
-      :align: fill
-
-   .. odsascript:: AV/General/UFfigCON.js
+      :links: AV/General/UFCON.css
+      :scripts: AV/General/UFfigCON.js
 
 
 .. slide:: Union/FIND
@@ -66,9 +63,10 @@ Union/FIND
 .. slide:: Algorithm Visualization
 
    .. inlineav:: ufCON ss
+      :long_name: Union/Find Example
+      :links: AV/General/UFCON.css
+      :scripts: AV/General/ufCON.js
       :output: show
-
-   .. odsascript:: AV/General/ufCON.js
 
 
 .. slide:: .
@@ -79,6 +77,7 @@ Union/FIND
 .. slide:: Path Compression
 
    .. inlineav:: pathcompCON ss
+      :long_name: Union/Find Path Compression Example
+      :links: AV/General/UFCON.css
+      :scripts: AV/General/pathcompCON.js
       :output: show
-
-   .. odsascript:: AV/General/pathcompCON.js

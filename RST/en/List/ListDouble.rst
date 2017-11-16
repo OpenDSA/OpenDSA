@@ -85,8 +85,8 @@ each node to deal with), they tend to be easier to understand.
    :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
    :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistInsertCON.js
    :output: show   
-   
 
+   
 Append
 ~~~~~~
 

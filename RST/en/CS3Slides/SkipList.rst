@@ -15,22 +15,19 @@ SkipLists
 
 .. slide:: SkipList Idea
 
-   .. odsafig:: Images/SkipList.png
-      :height: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Ideal Skip List
+   .. inlineav:: SkipListIntroCON ss
+      :links: DataStructures/SkipList.css AV/SearchStruct/SkipListIntroCON.css
+      :scripts: DataStructures/SkipList.js AV/SearchStruct/SkipListIntroCON.js
+      :output: show
+
 
 .. slide:: SkipList Reality
 
-   .. odsafig:: Images/SkipExamp.png
-      :height: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Ideal Skip List
-
+   .. inlineav:: SkipListInsertCON ss
+      :links: DataStructures/SkipList.css AV/SearchStruct/SkipListInsertCON.css
+      :scripts: DataStructures/SkipList.js AV/SearchStruct/SkipListInsertCON.js
+      :output: show
+   
 
 .. slide:: Programming Principles
 

@@ -71,12 +71,10 @@ Memory Management
       * When adding a new message, find a free block large enough
       * When deleting, merge free blocks
 
-   .. odsalink:: AV/MemManage/dynamicCON.css
-
    .. inlineav:: freeblocklistCON dgm
+      :links: AV/MemManage/dynamicCON.css
+      :scripts: AV/MemManage/freeblocklistCON.js
       :align: justify
-
-   .. odsascript:: AV/MemManage/freeblocklistCON.js
 
 
 .. slide:: Fragmentation
@@ -90,21 +88,20 @@ Memory Management
    * **External fragmentation:** Free blocks too small to be useful.
 
    .. inlineav:: fragCON dgm
+      :links: AV/MemManage/dynamicCON.css
+      :scripts: AV/MemManage/fragCON.js
       :align: center
 
-   .. odsascript:: AV/MemManage/fragCON.js
 
 .. slide:: Managing the Free Blocks
 
    * A key issue is how to merge free blocks
       #. Use a linked list of free blocks (external to the memory pool)
 
-   .. odsalink:: AV/MemManage/seqFitCON.css
-
    .. inlineav:: seqFitCON dgm
+      :links: AV/MemManage/seqFitCON.css
+      :scripts: AV/MemManage/seqFitCON.js
       :align: justify
-
-   .. odsascript:: AV/MemManage/seqFitCON.js
 
 
 .. slide:: Selecting a Free Block

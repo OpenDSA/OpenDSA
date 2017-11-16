@@ -70,7 +70,6 @@ it again.
    :links: 
    :scripts: AV/Sorting/bubblesortS2CON.js
    :output: show
-
 Bubble Sort continues in this way until the entire array is sorted.
 
 The following visualization shows the complete Bubble Sort.
