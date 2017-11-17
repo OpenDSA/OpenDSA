@@ -75,7 +75,7 @@ $(document).ready(function() {
       // BlueStepAnim END -----------------------------------------------
 
   var arrValues = [4, 13, 6, 9, 11];
-  var av_name = "iteration2flyCON";
+  var av_name = "iteration2FlyCON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
   var leftMargin = 270,
