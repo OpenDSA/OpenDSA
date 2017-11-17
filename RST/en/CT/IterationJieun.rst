@@ -28,9 +28,9 @@ List Iteration
    :output: show
 
  .. inlineav:: iteration2FlyCON ss
-    :long_name: Iteration 2 V2 Fly
+    :long_name: Iteration 2 Fly
     :links: AV/CT/iterationCON.css
-    :scripts: AV/CT/iterationFly2CON.js
+    :scripts: AV/CT/iteration2FlyCON.js
     :output: show
 
 .. inlineav:: iteration3CON ss
