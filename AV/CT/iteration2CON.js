@@ -162,15 +162,18 @@ $(document).ready(function() {
   // <<--------------- CONSOLE BOX ----------------->>
 
   it2_consoleGap = 30;
-  var consoleX = 655; // was 660
-  var consoleY = 45; // was -20
-  var stateLabel = av.label("CONSOLE", {left: consoleX + 40, top: consoleY});
-  stateLabel.addClass("statelabel");
+  var consoleX = 655;
+  var consoleY = 45;
 
+  // create CONSOLE label
+  av.label("CONSOLE", {left: consoleX + 40, top: consoleY}).addClass("statelabel");;
+
+  // create console box.
   var consoleBox = av.g.rect(consoleX, consoleY + 50, 170, 180).addClass("consolebox");
 
+  // create console labels will pop up later in the slides
   var consoleLabelX = consoleX + 20;
-  it2_consoleY = consoleY + 255;
+  it2_consoleY = consoleY + 184;
   var label1 = av.label("4", {left: consoleLabelX, top: it2_consoleY});
   var label2 = av.label("13", {left: consoleLabelX, top: it2_consoleY});
   var label3 = av.label("6", {left: consoleLabelX, top: it2_consoleY});
@@ -180,13 +183,13 @@ $(document).ready(function() {
   it2_consoleLabels = [label1, label2, label3, label4, label5];
 
 
+
+// ------------------------console box line -----------------------
   var consoleLineY = consoleY + 270;
   for (var i = consoleY + 200; i > consoleY + 60; i -= 30){
       var consoleline = av.g.line(consoleX, i, consoleX + 170, i);
       consoleline.addClass("consoleline");
   }
-
-
 
   for(var i = 0; i < it2_consoleLabels.length; i++){
     it2_consoleLabels[i].addClass("consolelabels");
