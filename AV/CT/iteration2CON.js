@@ -30,22 +30,28 @@ $(document).ready(function() {
 
 
                   setTimeout(function(){
-                    it2_midblue2.removeClass("blueboxh", {record: false});
                     for(var i = 0; i <= consoleIndex; i++){
                         it2_consoleLabels[i].css({top: it2_consoleY + (it2_consoleGap * i)});
                         it2_consoleLabels[i].show();
                     }
                         it2_consoleY -= 30;
 
-                    // midblue 3 animation start -----------------
-                    setTimeout(function() {
-                      it2_midblue3.addClass("blueboxh", {record: false});
+                    setTimeout(function(){
+                      it2_midblue2.removeClass("blueboxh", {record: false});
 
+
+                      // midblue 3 animation start -----------------
                       setTimeout(function() {
-                        it2_midblue3.removeClass("blueboxh", {record: false});
+                        it2_midblue3.addClass("blueboxh", {record: false});
+
+                        setTimeout(function() {
+                          it2_midblue3.removeClass("blueboxh", {record: false});
+                        }, time);
                       }, time);
-                    }, time);
-                    // midblue 3 animation close ---------------------
+                      // midblue 3 animation close ---------------------
+
+                    }, time + 600);
+
 
                   }, time);
                 }, time);
@@ -265,7 +271,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc11"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 50);
-  it2_priceBoxLabel.value("9");
+  it2_priceBoxLabel.value("11");
   it2_priceBoxLabel.css({left: pricelabelX - 6});
   av.step();
 
@@ -278,6 +284,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc13"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 100);
+
   av.step();
 
   // Slide 14
