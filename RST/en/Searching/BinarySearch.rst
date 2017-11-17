@@ -106,7 +106,7 @@ times before we reach 1. [#]_
        discovered that is better is surprisingly difficult.
        This is an example of a
        :term:`lower bounds proof <lower bounds proof> <BoundLower>` to
-       find the cost for the beest possible :term:`algorithm` to solve
+       find the cost for the best possible :term:`algorithm` to solve
        the :term:`problem` of search in an unsorted array.
 
 .. [#] It is possible to
