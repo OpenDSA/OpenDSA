@@ -1,14 +1,14 @@
-#iteration1CON .jsavnode, #iteration2CON  .jsavnode, #iteration2flyCON  .jsavnode, #iteration3CON  .jsavnode {
+#iteration1CON .jsavnode, #iteration2CON  .jsavnode, #iteration2FlyCON  .jsavnode, #iteration3CON  .jsavnode {
   min-width: 40px !important;
   min-height: 40px !important;
   background: #74a55b;
 }
 
-#iteration1CON .jsavvaluelabel, #iteration2CON  .jsavvaluelabel, #iteration2flyCON  .jsavvaluelabel, #iteration3CON  .jsavvaluelabel {
+#iteration1CON .jsavvaluelabel, #iteration2CON  .jsavvaluelabel, #iteration2FlyCON  .jsavvaluelabel, #iteration3CON  .jsavvaluelabel {
   font-weight: 600;
 }
 
-#iteration1CON .labels, #iteration2CON .labels, #iteration2flyCON .labels, #iteration3CON  .labels  {
+#iteration1CON .labels, #iteration2CON .labels, #iteration2FlyCON .labels, #iteration3CON  .labels  {
   position: relative;
   display: block;
   color: white;
@@ -17,7 +17,17 @@
   font-weight: 600;
 }
 
- #iteration2CON .midlabel,  #iteration2flyCON .midlabel, #iteration3CON .midlabel {
+#iteration2CON .consolelabels, #iteration2FlyCON .consolelabels, #iteration3CON  .labels  {
+  position: relative;
+  display: block;
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  color: black;
+  font-size: 170%;
+  z-index: 500;
+  font-weight: 600;
+}
+
+ #iteration2CON .midlabel,  #iteration2FlyCON .midlabel, #iteration3CON .midlabel {
   font-size: 150%;
 }
 
@@ -25,12 +35,12 @@
  font-size: 130%;
 }
 
-#iteration2CON .valuelabel, #iteration2flyCON .valuelabel  {
+#iteration2CON .valuelabel, #iteration2FlyCON .valuelabel  {
  font-size: 150%;
  color: yellow;
 }
 
-#iteration2CON .statelabel, #iteration2flyCON .statelabel, #iteration3CON .statelabel  {
+#iteration2CON .statelabel, #iteration2FlyCON .statelabel, #iteration3CON .statelabel  {
  font-size: 120%;
  font-weight: 600;
 }
@@ -41,36 +51,42 @@
  background-color: #593f73;
  }
 
-#iteration1CON .box, #iteration2CON .box, #iteration2flyCON .box, #iteration3CON .box  {
+
+#iteration1CON .box, #iteration2CON .box, #iteration2FlyCON .box, #iteration3CON .box  {
   fill : #a55ba5;
   stroke : #a55ba5;
   z-index: -500;
 }
 
-#iteration1CON .bluebox, #iteration2CON  .bluebox, #iteration2flyCON  .bluebox, #iteration3CON  .bluebox  {
+#iteration1CON .bluebox, #iteration2CON  .bluebox, #iteration2FlyCON  .bluebox, #iteration3CON  .bluebox  {
   fill : rgb(91, 91, 165);
   stroke : rgb(91, 91, 165);
   z-index: -500;
 }
 
-#iteration1CON .blueboxh, #iteration2CON  .blueboxh, #iteration2flyCON  .blueboxh, #iteration3CON  .blueboxh  {
+#iteration1CON .blueboxh, #iteration2CON  .blueboxh, #iteration2FlyCON  .blueboxh, #iteration3CON  .blueboxh  {
   fill : #e6eeff;
   stroke : #e6eeff;
 }
 
-#iteration2CON .statebox, #iteration2flyCON .statebox, #iteration3CON .statebox  {
+#iteration2CON .statebox, #iteration2FlyCON .statebox, #iteration3CON .statebox  {
   stroke : Maroon;
   z-index: -500;
   border-width: inherit;
   border-radius: 50px;
 }
 
-#iteration2CON .consolebox, #iteration2flyCON .consolebox, #iteration3CON .consolebox  {
-  stroke : white;
-  fill: black;
+#iteration2CON .consolebox, #iteration2FlyCON .consolebox, #iteration3CON .consolebox  {
+  fill: white;
+  stroke: lightgray;
   z-index: -500;
   border-width: inherit;
   border-radius: 50px;
+}
+
+#iteration2CON .consoleline, #iteration2FlyCON .consoleline, #iteration3CON  .consoleline  {
+  stroke: lightgray;
+  stroke-dasharray: 5, 5;
 }
 
 #iteration3CON  .calbox  {
