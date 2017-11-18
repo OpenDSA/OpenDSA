@@ -27,16 +27,16 @@ List Iteration
    :scripts: AV/CT/iteration2CON.js
    :output: show
 
- .. inlineav:: iteration2FlyCON ss
-    :long_name: Iteration 2 Fly
-    :links: AV/CT/iterationCON.css
-    :scripts: AV/CT/iteration2FlyCON.js
-    :output: show
-
 .. inlineav:: iteration3CON ss
    :long_name: Iteration 3
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration3CON.js
    :output: show
+
+   .. inlineav:: iteration4CON ss
+      :long_name: Iteration 4
+      :links: AV/CT/iterationCON.css
+      :scripts: AV/CT/iteration4CON.js
+      :output: show
 
 .. avembed:: Exercises/CT/IterationEX1PRO.html ka
