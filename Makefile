@@ -135,6 +135,9 @@ CS3notes: min
 CS3slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
 
+CS3114slides: min
+	python $(CONFIG_SCRIPT) -s config/CS3114slides.json --no-lms
+
 CS4104: min
 	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
 

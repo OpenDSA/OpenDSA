@@ -62,48 +62,13 @@
   }, 
   "chapters": {
     "Week 1": {
-      "CS3Slides/Intro": {}
-    },
-    "Week 2": {
-      "CS3Slides/AlgAnal": {}
+      "CS3Slides/CS3114Intro": {},
+      "CS3Slides/ProjManage": {},
+      "CS3Slides/P1": {}
     },
     "Week 3": {
-      "CS3Slides/Lists": {},
-      "CS3Slides/Binary": {}
-    },
-    "Week 4": {
-      "CS3Slides/Binary2": {},
-      "CS3Slides/Binary3": {}
-    },
-    "Week 5": {
-      "CS3Slides/Heaps": {}
-    },
-    "Week 6": {
-      "CS3Slides/Huffman": {}
-    },
-    "Week 7-8": {
-      "CS3Slides/Sorting1": {},
-      "CS3Slides/Sorting2": {}
-    },
-    "Week 8-9": {
-      "CS3Slides/FileProc": {}
-    },
-    "Week 10": {
-      "CS3Slides/Hashing": {},
-      "CS3Slides/MemManage": {}
-    },
-    "Week 11": {
-      "CS3Slides/Union-Find": {}
-    },
-    "Week 12": {
-      "CS3Slides/Graphs": {}
-    },
-    "Week 13": {
-      "CS3Slides/Indexing": {},
-      "CS3Slides/23Tree": {}
-    },
-    "Week 14": {
-      "CS3Slides/General": {}
+      "CS3Slides/JUnit": {},
+      "CS3Slides/Coding": {}
     }
   }
 }
