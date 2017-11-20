@@ -98,7 +98,8 @@
     },
     "Parsing": {
       "FormalLang/ParseIntro": {},
-      "FormalLang/LLParsing": {}
+      "FormalLang/LLParsing": {},
+      "FormalLang/LRParsing": {}
     },
     "Limits to Computing": {
       "SeniorAlgAnal/Impossible": {},

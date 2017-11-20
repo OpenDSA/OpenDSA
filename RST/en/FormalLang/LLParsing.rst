@@ -5,8 +5,8 @@
 
 .. avmetadata::
    :author: Susan Rodger and Cliff Shaffer
-   :requires: Regular Grammar
-   :satisfies: Parsing Introduction
+   :requires: Parsing Introduction
+   :satisfies: LL Parsing
    :topic: Parsing
 
 LL Parsing
