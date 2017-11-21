@@ -1,3 +1,11 @@
+/*
+  Iteration Slides CSS file
+
+  author: Jieun Chon
+  version: Nov 20, 2017
+*/
+
+/* ---------- JSAV CSS ----------*/
 .jsavhorizontalarray .jsavnode {
   min-width: 40px !important;
   min-height: 40px !important;
@@ -8,6 +16,8 @@
   font-weight: 600;
 }
 
+
+/* ---------- Labels CSS ----------*/
 .loopLabels {
   position: relative;
   display: block;
@@ -27,31 +37,33 @@
   font-weight: 600;
 }
 
+.smalllabel {
+  font-size: 130%;
+}
+
 .midlabel {
   font-size: 150%;
 }
-
-.smalllabel {
- font-size: 130%;
-}
-
 
 .statelabel  {
  font-size: 120%;
  font-weight: 600;
 }
 
-.valuelabel  {
+/* value label with purple background */
+.valuelabelpb  {
  font-size: 150%;
  color: yellow;
  background-color: #593f73;
  }
 
+ .valuelabel {
+   font-size: 150%;
+   color: yellow;
+ }
 
-/*
- Box CSS
-*/
 
+/* ----------Box CSS----------*/
 .purplebox  {
   fill : #a55ba5;
   stroke : #a55ba5;
@@ -84,11 +96,6 @@
   border-radius: 50px;
 }
 
-.consoleline  {
-  stroke: lightgray;
-  stroke-dasharray: 5, 5;
-}
-
 .calbox  {
   fill : #805ba5;
   stroke : #805ba5;
@@ -101,7 +108,12 @@
   z-index: -500;
 }
 
-
+/* ----------Others----------*/
 .hiding {
   visibility: hidden;
+}
+
+.consoleline  {
+  stroke: lightgray;
+  stroke-dasharray: 5, 5;
 }
