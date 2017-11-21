@@ -72,38 +72,38 @@ $(document).ready(function() {
   var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
 
   // floor 2
-  av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("box")
-  av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("box"); // for no-roung on the corner
+  av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("purplebox")
+  av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
   //floor 3
-  av.g.rect(rect_left, rect_top + 25, 30, 60).addClass("box").css({opacity: 0.9});
-  av.g.rect(rect_left + 73, rect_top + 25, 30, 60).addClass("box").css({opacity: 0.9});
+  av.g.rect(rect_left, rect_top + 25, 30, 60).addClass("purplebox").css({opacity: 0.9});
+  av.g.rect(rect_left + 73, rect_top + 25, 30, 60).addClass("purplebox").css({opacity: 0.9});
   //create array contains 5 values.
   it1_arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
   //floor 4, long purple
-  av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("box");
-  av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("box"); // for no-roung on the corner
+  av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("purplebox");
+  av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
   //floor 5, left big purple box and 3 blue boxes
-  av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("box");
+  av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("purplebox");
 
   //floor 5, right big putple box below blue boxes
-  av.g.rect(rect_left + 90, rect_top + 200, 230, 50, 10).addClass("box");
+  av.g.rect(rect_left + 90, rect_top + 200, 230, 50, 10).addClass("purplebox");
 
   it1_midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
   it1_midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
   it1_midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
 
 // create labels
-  var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
-  label1.addClass("labels");
+  var label1 = av.label("for each item", {left: rect_left + 10, top: rect_top - 30});
+  label1.addClass("loopLabels");
 
-  var label2 = av.label("price", {left: rect_left + 19, top: rect_top + 45});
-  label2.addClass("labels");
+  var label2 = av.label("price", {left: rect_left + 22, top: rect_top + 45});
+  label2.addClass("loopLabels");
 
   var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
-  label3.addClass("labels");
+  label3.addClass("loopLabels");
 
 
 // Create Iteration Property box and text

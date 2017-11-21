@@ -30,20 +30,20 @@ $(document).ready(function() {
   var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
 
   // floor 2
-  av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("box");
-  av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("box"); // for no-roung on the corner
+  av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("purplebox");
+  av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
   //floor 3 and the JSAV array contains arrValues
-  av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.9});
-  av.g.rect(rect_left + 73, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.9});
+  av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
+  av.g.rect(rect_left + 73, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
   //floor 4, long purple
-  av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("box");
+  av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("purplebox");
 
   //floor 5, left big purple box
-  av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("box");
-  av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("box");
+  av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("purplebox");
+  av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("purplebox");
 
   //mid blue/calculate boxes ( and "set total = ..." blue box )
   var midblue1 = av.g.rect(rect_left + 130, rect_top + 120, 130, 66, 10).addClass("bluebox");
@@ -51,33 +51,33 @@ $(document).ready(function() {
   var midblue3 = av.g.rect(rect_left + 240, rect_top + 120, 120, 66, 10).addClass("calbox");
 
   // last purple floor
-  av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("box");
+  av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("purplebox");
 
 
 // ------------------ labels ------------------------
 
   var initlabel = av.label("set total = 0", {left: rect_left + 5, top: rect_top - 65});
-  initlabel.addClass("labels").addClass("midlabel");
+  initlabel.addClass("loopLabels").addClass("midlabel");
 
   var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
-  label1.addClass("labels");
+  label1.addClass("loopLabels");
 
   var label2 = av.label("price", {left: rect_left + 19, top: rect_top + 45});
-  label2.addClass("labels");
+  label2.addClass("loopLabels");
 
   var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
-  label3.addClass("labels");
+  label3.addClass("loopLabels");
 
   var pricelabel = av.label("set total = total + price", {left: rect_left + 140, top: rect_top + 117});
-  pricelabel.addClass("labels");
+  pricelabel.addClass("loopLabels");
   pricelabel.addClass("smalllabel");
 
   var pricelabel = av.label("print (price)", {left: rect_left + 5, top: rect_top + 235});
-  pricelabel.addClass("labels");
+  pricelabel.addClass("loopLabels");
   pricelabel.addClass("smalllabel");
 
   var valuelabel = av.label("", {left: rect_left + 270, top: rect_top + 165});
-  valuelabel.addClass("labels");
+  valuelabel.addClass("loopLabels");
   valuelabel.addClass("valuelabel");
 
 
