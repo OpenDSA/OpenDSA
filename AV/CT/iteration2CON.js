@@ -4,18 +4,16 @@
 var it2_midblue1,
     it2_midblue2,
     it2_midblue3,
-    it2_newLabelValue,
-    it2_valuelabel,
-    it2_priceBoxLabel,
     it2_consoleLabels,
     it2_consoleY,
-    it2_consoleGap;
+    it2_consoleGap,
+    it2_printprice;
 
 $(document).ready(function() {
   "use strict";
 
   //BlueStepAnim :This should come before JSAV Initialize
-      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(delay, time, consoleIndex) {
+      JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(delay, time, consoleIndex, priceValue) {
       if (this._shouldAnimate()) {
 
         setTimeout(function() {
@@ -28,17 +26,16 @@ $(document).ready(function() {
                 setTimeout(function() {
                   it2_midblue2.addClass("blueboxh", {record: false});
 
-
                   setTimeout(function(){
+                    it2_printprice.value(priceValue);
                     for(var i = 0; i <= consoleIndex; i++){
                         it2_consoleLabels[i].css({top: it2_consoleY + (it2_consoleGap * i)});
                         it2_consoleLabels[i].show();
                     }
                         it2_consoleY -= 30;
-
                     setTimeout(function(){
                       it2_midblue2.removeClass("blueboxh", {record: false});
-
+                      it2_printprice.value("");
 
                       // midblue 3 animation start -----------------
                       setTimeout(function() {
@@ -121,25 +118,20 @@ $(document).ready(function() {
   av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("purplebox");
 
 
-  // ----------------------labels-----------------------
-  var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
-  label1.addClass("loopLabels");
-
-  var label2 = av.label("price", {left: rect_left + 19, top: rect_top + 45});
-  label2.addClass("loopLabels");
-
-  var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
-  label3.addClass("loopLabels");
-
-  var pricelabel = av.label("print (price)", {left: rect_left + 160, top: rect_top + 112});
-  pricelabel.addClass("loopLabels");
-  pricelabel.addClass("midlabel");
+  // ---------------loop -labels-----------------------
+  av.label("for each item", {left: rect_left + 5, top: rect_top - 30}).addClass("loopLabels");
+  av.label("price", {left: rect_left + 19, top: rect_top + 45}).addClass("loopLabels");
+  av.label("do", {left: rect_left + 35, top: rect_top + 100}).addClass("loopLabels");
+  av.label("print (price)", {left: rect_left + 160, top: rect_top + 112}).addClass("loopLabels").addClass("midlabel");
 
 
-  it2_newLabelValue = "";
-  it2_valuelabel = av.label(it2_newLabelValue, {left: rect_left + 240, top: rect_top + 112});
-  it2_valuelabel.addClass("labels");
-  it2_valuelabel.addClass("priceBoxLable");
+  var valuelabel = av.label("", {left: rect_left + 240, top: rect_top + 112});
+  valuelabel.addClass("loopLabels");
+  valuelabel.addClass("priceBoxLable");
+
+  it2_printprice = av.label("", {left: rect_left + 240, top: rect_top + 85});
+  it2_printprice.addClass("loopLabels");
+  it2_printprice.addClass("valuelabelpb");
 
   // <<--------------- STATE BOX ----------------->>
 
@@ -157,13 +149,11 @@ $(document).ready(function() {
   var priceBox = av.g.rect(stateX - 5, stateY + 135, 70, 70).addClass("bluebox");
 
   var pricelabelX = stateX + 23;
-  it2_priceBoxLabel = av.label("", {left: pricelabelX, top: stateY + 130});
-  it2_priceBoxLabel.addClass("labels");
-  it2_priceBoxLabel.addClass("midlabel");
+  var priceBoxLabel = av.label("", {left: pricelabelX, top: stateY + 130});
+  priceBoxLabel.addClass("loopLabels");
+  priceBoxLabel.addClass("midlabel");
 
   var totalBoxLabel = av.label("", {left: stateX + 23, top: stateY + 215});
-
-
 
   // <<--------------- CONSOLE BOX ----------------->>
 
@@ -187,8 +177,6 @@ $(document).ready(function() {
   var label5 = av.label("11", {left: consoleLabelX, top: it2_consoleY});
 
   it2_consoleLabels = [label1, label2, label3, label4, label5];
-
-
 
 // ------------------------console box line -----------------------
   var consoleLineY = consoleY + 270;
@@ -219,70 +207,75 @@ $(document).ready(function() {
   av.umsg(interpret("sc3"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
-  it2_priceBoxLabel.value("4");
-  it2_priceBoxLabel.css({left: pricelabelX});
+  priceBoxLabel.value("4");
+  priceBoxLabel.css({left: pricelabelX});
   av.step();
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  av.blueStepAnim(0, 100, 0);
+  av.blueStepAnim(0, 100, 0, "4");
   av.step();
 
   // Slide 5
   av.umsg(interpret("sc5"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
-  it2_priceBoxLabel.value("13");
-  it2_priceBoxLabel.css({left: pricelabelX - 6});
+  it2_printprice.value("");
+  priceBoxLabel.value("13");
+  priceBoxLabel.css({left: pricelabelX - 6});
   av.step();
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  av.blueStepAnim(0, 100, 1);
+  av.blueStepAnim(0, 100, 1, "13");
   av.step();
 
   // Slide 7
   av.umsg(interpret("sc7"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
-  it2_priceBoxLabel.value("6");
-  it2_priceBoxLabel.css({left: pricelabelX});
+  it2_printprice.value("");
+  priceBoxLabel.value("6");
+  priceBoxLabel.css({left: pricelabelX});
   av.step();
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  av.blueStepAnim(0, 100, 2);
+  av.blueStepAnim(0, 100, 2, "6");
   av.step();
 
   // Slide 9
   av.umsg(interpret("sc9"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
-  it2_priceBoxLabel.value("9");
-  it2_priceBoxLabel.css({left: pricelabelX});
+  it2_printprice.value("");
+  priceBoxLabel.value("9");
+  priceBoxLabel.css({left: pricelabelX});
   av.step();
 
   // Slide 10
   av.umsg(interpret("sc10"));
-  av.blueStepAnim(0, 100, 3);
+  av.blueStepAnim(0, 100, 3, "9");
   av.step();
 
   // Slide 11
   av.umsg(interpret("sc11"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 50);
-  it2_priceBoxLabel.value("11");
-  it2_priceBoxLabel.css({left: pricelabelX - 6});
+  it2_printprice.value("");
+  priceBoxLabel.value("11");
+  priceBoxLabel.css({left: pricelabelX - 6});
   av.step();
 
   // Slide 12
   av.umsg(interpret("sc12"));
-  av.blueStepAnim(0, 100, 4);
+  av.blueStepAnim(0, 100, 4, "11");
   av.step();
 
   // Slide 13
   av.umsg(interpret("sc13"));
   arr.css({left: nextleft});
+  it2_printprice.value("");
   nextleft -= (nodegap + 100);
 
   av.step();
