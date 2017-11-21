@@ -147,56 +147,43 @@ $(document).ready(function() {
   // Slide 6
   av.umsg(interpret("sc6"));
   it1_arr.css({left: nextleft});
-  av.blueStepAnim(500, 200);
+  av.blueStepAnim(400, 200);
   nextleft -= nodegap;
   av.step();
 
-  // // Slide 7
-  // av.umsg(interpret("sc7"));
-  // av.step();
+
+  // Slide 7
+  av.umsg(interpret("sc7"));
+  it1_arr.css({left: nextleft});
+  nextleft -= nodegap;
+  av.blueStepAnim(400, 200);
+  av.step();
+
 
   // Slide 8
   av.umsg(interpret("sc8"));
   it1_arr.css({left: nextleft});
   nextleft -= nodegap;
-  av.blueStepAnim(500, 200);
+  av.blueStepAnim(400, 200);
   av.step();
 
-  // // Slide 9
-  // av.umsg(interpret("sc9"));
-  //
-  // av.step();
+
+  // Slide 9
+  av.umsg(interpret("sc9"));
+  it1_arr.css({left: nextleft});
+  nextleft -= (nodegap + 50);
+  av.blueStepAnim(400, 200);
+  av.step();
+
 
   // Slide 10
   av.umsg(interpret("sc10"));
-  it1_arr.css({left: nextleft});
-  nextleft -= nodegap;
-  av.blueStepAnim(500, 200);
-  av.step();
-
-  // // Slide 11
-  // av.umsg(interpret("sc11"));
-  // av.step();
-
-  // Slide 12
-  av.umsg(interpret("sc12"));
-  it1_arr.css({left: nextleft});
-  nextleft -= (nodegap + 50);
-  av.blueStepAnim(500, 200);
-  av.step();
-
-  // // Slide 13
-  // av.umsg(interpret("sc13"));
-  // av.step();
-
-  // Slide 14
-  av.umsg(interpret("sc14"));
   it1_arr.css({left: nextleft});
   nextleft -= (nodegap + 100);
   av.step();
 
   // Slide 15
-  av.umsg(interpret("sc15"));
+  av.umsg(interpret("sc11"));
   av.bluehigh(botblue, 150);
   av.recorded();
 });
