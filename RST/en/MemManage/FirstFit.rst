@@ -25,6 +25,7 @@ called :term:`first fit`.
 
 .. avembed:: AV/MemManage/firstFitAV.html ss
    :long_name: First Fit Visualization
+   :url_params: fitAlgorithm=1&my-test-param=testing 1 23
 
 Now try it for yourself with the following exercise.
 

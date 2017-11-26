@@ -527,34 +527,10 @@
       "MemManage/MemmanIntro": {}, 
       "MemManage/Dynamic": {}, 
       "MemManage/SequentialFit": {}, 
-      "MemManage/FirstFit": {
-        "firstFitAV": {
-          "exer_options": {
-            "fitAlgorithm": "1"
-          }
-        }
-      }, 
-      "MemManage/CircularFit": {
-        "firstFitAV": {
-          "exer_options": {
-            "fitAlgorithm": "2"
-          }
-        }
-      }, 
-      "MemManage/BestFit": {
-        "firstFitAV": {
-          "exer_options": {
-            "fitAlgorithm": "3"
-          }
-        }
-      }, 
-      "MemManage/WorstFit": {
-        "firstFitAV": {
-          "exer_options": {
-            "fitAlgorithm": "4"
-          }
-        }
-      }, 
+      "MemManage/FirstFit": {}, 
+      "MemManage/CircularFit": {}, 
+      "MemManage/BestFit": {}, 
+      "MemManage/WorstFit": {}, 
       "MemManage/MMPerformance": {}, 
       "MemManage/Buddy": {}, 
       "MemManage/Garbage": {}

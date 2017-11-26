@@ -24,7 +24,7 @@ sys.path.append(os.path.abspath('./source'))
 import conf
 import xml.etree.ElementTree as ET
 from xml.dom.minidom import parse, parseString # Can be removed when embedlocal is gone
-import urllib
+import urllib, urlparse
 import json
 
 def setup(app):
@@ -160,12 +160,13 @@ def showhide(argument):
 
 class avembed(Directive):
   required_arguments = 2
-  optional_arguments = 7
+  optional_arguments = 9
   final_argument_whitespace = True
   has_content = True
   option_spec = {
                  'exer_opts': directives.unchanged,
                  'long_name': directives.unchanged,
+                 'url_params': directives.unchanged,
                  'module': directives.unchanged,
                  'points': directives.unchanged,
                  'required': directives.unchanged,
@@ -183,6 +184,9 @@ class avembed(Directive):
     url_params['localMode'] = str(conf.local_mode).lower()
     url_params['module'] = self.options['module']
     url_params['selfLoggingEnabled'] = 'false'
+
+    if 'url_params' in self.options:
+      url_params.update(urlparse.parse_qs(self.options['url_params']))
 
     self.options['content'] = ''
     self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
@@ -221,7 +225,7 @@ class avembed(Directive):
     else:
       self.options['av_address'] += '?'
 
-    self.options['av_address'] += urllib.urlencode(url_params).replace('&', '&amp;')
+    self.options['av_address'] += urllib.urlencode(url_params, True).replace('&', '&amp;')
 
     # Load translation
     langDict = loadTable()

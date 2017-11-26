@@ -22,3 +22,4 @@ small blocks that were passed over by previous requests.
 
 .. avembed:: AV/MemManage/firstFitAV.html ss
    :long_name: Circular First Fit Visualization
+   :url_params: fitAlgorithm=2

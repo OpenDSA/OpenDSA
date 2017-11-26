@@ -33,3 +33,4 @@ service an occasional large request.
 
 .. avembed:: AV/MemManage/firstFitAV.html ss
    :long_name: Best Fit Visualization
+   :url_params: fitAlgorithm=3

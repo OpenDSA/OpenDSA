@@ -90,7 +90,8 @@ class avembed(Directive):
   optional_arguments = 1
   final_argument_whitespace = True
   option_spec = {
-                  'long_name': directives.unchanged
+                  'long_name': directives.unchanged,
+                  'url_params': directives.unchanged
                 }
   has_content = True
 
