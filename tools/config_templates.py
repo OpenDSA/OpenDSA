@@ -419,6 +419,7 @@ config_js_template = '''\
   settings.REQ_FULL_SS = %(req_full_ss)s;
   settings.BUILD_TO_ODSA = "OpenDSA/";
   settings.LOCAL_MODE = %(local_mode)s;
+  settings.NARRATION_ENABLED = %(narration_enabled)s;
 
   window.ODSA = window.ODSA || {};
   window.ODSA.SETTINGS = settings;

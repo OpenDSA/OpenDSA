@@ -31,7 +31,7 @@ optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_d
 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num',
 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'desc', 'av_origin',
 'av_root_dir', 'code_lang', 'course_id', 'LMS_url', 'module_map', 'inst_book_id','module_position','inst_exercise_id',
-'inst_chapter_id','options','inst_module_id','id', 'total_points', 'last_compiled' ]
+'inst_chapter_id','options','inst_module_id','id', 'total_points', 'last_compiled', 'narration_enabled' ]
 
 
 listed_modules = []
@@ -327,6 +327,9 @@ def set_defaults(conf_data):
 
     if 'theme_dir' not in conf_data:
         conf_data['theme_dir'] = '%sRST/_themes' % odsa_dir
+        
+    if 'narration_enabled' not in conf_data:
+        conf_data['narration_enabled'] = False
 
     conf_data['av_origin'] = ''
     conf_data['av_root_dir'] = odsa_dir
@@ -499,6 +502,7 @@ class ODSA_Config:
         validate_config_file(config_file_path, conf_data)
 
         conf_data['req_full_ss'] = str(conf_data['req_full_ss']).lower()
+        conf_data['narration_enabled'] = str(conf_data['narration_enabled']).lower()
 
         # Make conf_data publicly available
         for field in required_fields:
