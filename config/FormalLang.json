@@ -101,6 +101,10 @@
       "FormalLang/LLParsing": {},
       "FormalLang/LRParsing": {}
     },
+    "Grammars": {
+      "FormalLang/Grammar": {},
+      "FormalLang/CFLProp": {}
+    },
     "Limits to Computing": {
       "SeniorAlgAnal/Impossible": {},
       "SeniorAlgAnal/Turing": {}
