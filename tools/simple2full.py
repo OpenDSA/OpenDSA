@@ -766,7 +766,7 @@ if __name__ == '__main__':
 
   config_file = args[1]
   output_file = args[2]
-  full_conf = generate_full_config(config_file)
+  full_conf = generate_full_config(config_file, False)
 
   with open(output_file, 'w') as outfile:
     json.dump(full_conf, outfile, indent=2)
