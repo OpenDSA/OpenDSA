@@ -1,0 +1,125 @@
+<html>
+    
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
+        <script src="resources/js/BowlingGame.js"></script>    
+        <script src="resources/js/BowlingApp.js"></script>    
+        <style>
+            .appbox{
+                height: 820px;
+                width: 600px;
+                position: fixed;
+                float: left;
+                left: 650px;
+            }
+            #applet {
+                height: 620px;
+                width: 600px;
+                border:1px solid #000000;
+                background-color: whitesmoke;            
+            }
+    
+            .codeBlock {
+                width: 550px;
+                float: left;
+            }
+    
+            .codeBlock2 {
+                float: right;            
+                width: 600px;
+            }
+            .infoBox {
+                height: 135px;
+                width: 550px;
+                border: 1px solid lightblue;
+                left: 25px;
+                margin-top: 5px;
+                position: relative;
+            }
+            
+            #valueInputBox {
+                margin-left: 25px;           
+            }
+            #performanceSummary {
+                margin-left: 25px;  
+            }
+            #performanceDetails {
+                margin-left: 25px;  
+            }
+            #testCaseHistory {
+                margin-left: 25px;  
+            }
+            .triangleInput {
+                width: 25px;
+                margin-right: 50px;
+            }
+            #reset {
+                position: relative;
+                top: 15px;
+                left: 275px;
+            }
+    
+        </style>
+    </head>
+    
+    <body>
+        <div class="appbox">
+            <div id="description" >
+                <h3>Bowling App</h3>
+                Description here
+            </div>
+            <br>
+            <div id="applet">
+                <div class="infoBox">
+                    <div id="valueInputBox">
+                        <h4>Enter Your Test Values</h4>
+                        <label style="margin-right: 50px;">Enter Roll:</label>
+                        <input class="triangleInput" id="rollValue">
+                        <button id="throwRoll" onclick="test();">Throw Roll</button>
+                    </div>            
+                    <br>
+                    <div style="margin-left: 25%"> 
+                        <p id="triangleType" style="color: red"></p>
+                    </div>
+                </div>
+                <div class="infoBox">
+                    <div id="performanceSummary" >
+                        <h4>Your Performance Summary</h4>
+                        <label style="float: left; margin-right: 15px;">Code Coverage: </label>
+                        <label style="float: left" id="codeCoveragePercentage">0%</label>
+                        <div class="progress" style="width: 330px;  float: right; margin-right: 15px;">
+                            <div class="progress-bar" id="codeCoverageBar" role="progressbar" style="width:0%"></div>
+                        </div>
+                        <br>
+                        <div style="height: 20px;"> </div>                
+                        <label style="float: left; margin-right: 15px;">Bugs Found: </label>
+                        <label style="float: left; margin-left: 21px;" id="bugCoveragePercentage">0%</label>
+                        <div class="progress" style="width: 330px; float: right; margin-right: 15px;">
+                            <div class="progress-bar" id= "bugCoverageBar" role="progressbar" style="width:0%"></div>                        
+                        </div>
+                                    
+                    </div>            
+                </div>
+                <div class="infoBox" >
+                    <div id="performanceDetails">
+                        <h4>Your Performance Details</h4>
+                        <label id="testsrun" style="float: left; margin-right: 15px;">Number of balls thrown: 0</label>
+                        <br>
+                        <br>
+                        <label id="score" style="float: left; margin-right: 15px;">Score: 0</label>
+                    </div>            
+                </div>
+                <div class="infoBox" >
+                    <div id="testCaseHistory">
+                        <h4>Your Test Case History</h4>           
+                        <textarea id="testHistory" rows="4" style="width: 500px; resize: none;"> </textarea>
+                    </div>            
+                </div>
+                <button id="reset" onclick="resetClicked(); location.reload();">Reset</button>
+            </div>
+        </div>
+    </body>
+    
+    </html>
