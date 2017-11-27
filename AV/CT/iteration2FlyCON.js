@@ -75,7 +75,7 @@ $(document).ready(function() {
       // BlueStepAnim END -----------------------------------------------
 
   var arrValues = [4, 13, 6, 9, 11];
-  var av_name = "iteration2flyCON";
+  var av_name = "iteration2FlyCON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
   var leftMargin = 270,
@@ -189,6 +189,7 @@ $(document).ready(function() {
 
   // Slide 1
   av.umsg(interpret("sc1"));
+  it2fly_consoleY = stateY + 250;
   var nextleft = leftMargin - 120;
   av.displayInit();
 
@@ -201,56 +202,57 @@ $(document).ready(function() {
   av.umsg(interpret("sc3"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  av.blueStepAnim(0, 100, "4", pricelabelX, 0);
   av.step();
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  av.blueStepAnim(0, 100, "4", pricelabelX, 0);
+
   av.step();
 
   // Slide 5
   av.umsg(interpret("sc5"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  av.blueStepAnim(0, 100, "13", pricelabelX - 6, 1);
   av.step();
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  av.blueStepAnim(0, 100, "13", pricelabelX - 6, 1);
   av.step();
 
   // Slide 7
   av.umsg(interpret("sc7"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  av.blueStepAnim(0, 100, "6", pricelabelX, 2);
   av.step();
 
   // Slide 8
   av.umsg(interpret("sc8"));
-
-  av.blueStepAnim(0, 100, "6", pricelabelX, 2);
   av.step();
 
   // Slide 9
   av.umsg(interpret("sc9"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
+  av.blueStepAnim(0, 100, "9", pricelabelX, 3);
   av.step();
 
   // Slide 10
   av.umsg(interpret("sc10"));
-  av.blueStepAnim(0, 100, "9", pricelabelX, 3);
   av.step();
 
   // Slide 11
   av.umsg(interpret("sc11"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 50);
+  av.blueStepAnim(0, 100, "11", pricelabelX - 6, 4);
   av.step();
 
   // Slide 12
   av.umsg(interpret("sc12"));
-  av.blueStepAnim(0, 100, "11", pricelabelX - 6, 4);
+
   av.step();
 
   // Slide 13

@@ -27,6 +27,12 @@ List Iteration
    :scripts: AV/CT/iteration2CON.js
    :output: show
 
+.. inlineav:: iteration4CON ss
+   :long_name: Iteration 4
+   :links: AV/CT/iterationCON.css
+   :scripts: AV/CT/iteration4CON.js
+   :output: show
+
 .. inlineav:: iteration3CON ss
    :long_name: Iteration 3
    :links: AV/CT/iterationCON.css

@@ -20,30 +20,29 @@ $(document).ready(function() {
 
   var nodegap = 40;
 
-
   // blue boxes, floor 1
   // var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
   var topblue1 = av.g.rect(rect_left , rect0_top, 130, 35, 10).addClass("bluebox");
-  var topblue2 = av.g.rect(rect_left + 95, rect0_top + 10, 20, 18, 15).addClass("calbox");
-  var topblue3 = av.g.rect(rect_left + 110, rect0_top, 55, 35, 10).addClass("calbox");
+  var toppurple1 = av.g.rect(rect_left + 95, rect0_top + 10, 20, 17, 17).addClass("calbox");
+  var toppurple2 = av.g.rect(rect_left + 110, rect0_top, 55, 35, 10).addClass("calbox");
 
   var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
 
   // floor 2
-  av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("box");
-  av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("box"); // for no-roung on the corner
+  av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("purplebox");
+  av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
   //floor 3 and the JSAV array contains arrValues
-  av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.9});
-  av.g.rect(rect_left + 73, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.9});
+  av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
+  av.g.rect(rect_left + 73, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
   //floor 4, long purple
-  av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("box");
+  av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("purplebox");
 
   //floor 5, left big purple box
-  av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("box");
-  av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("box");
+  av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("purplebox");
+  av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("purplebox");
 
   //mid blue/calculate boxes ( and "set total = ..." blue box )
   var midblue1 = av.g.rect(rect_left + 130, rect_top + 120, 130, 66, 10).addClass("bluebox");
@@ -51,34 +50,34 @@ $(document).ready(function() {
   var midblue3 = av.g.rect(rect_left + 240, rect_top + 120, 120, 66, 10).addClass("calbox");
 
   // last purple floor
-  av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("box");
+  av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("purplebox");
 
 
 // ------------------ labels ------------------------
 
   var initlabel = av.label("set total = 0", {left: rect_left + 5, top: rect_top - 65});
-  initlabel.addClass("labels").addClass("midlabel");
+  initlabel.addClass("loopLabels").addClass("midlabel");
 
   var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
-  label1.addClass("labels");
+  label1.addClass("loopLabels");
 
   var label2 = av.label("price", {left: rect_left + 19, top: rect_top + 45});
-  label2.addClass("labels");
+  label2.addClass("loopLabels");
 
   var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
-  label3.addClass("labels");
+  label3.addClass("loopLabels");
 
   var pricelabel = av.label("set total = total + price", {left: rect_left + 140, top: rect_top + 117});
-  pricelabel.addClass("labels");
+  pricelabel.addClass("loopLabels");
   pricelabel.addClass("smalllabel");
 
-  var pricelabel = av.label("print (price)", {left: rect_left + 5, top: rect_top + 235});
-  pricelabel.addClass("labels");
+  var pricelabel = av.label("print (total)", {left: rect_left + 5, top: rect_top + 235});
+  pricelabel.addClass("loopLabels");
   pricelabel.addClass("smalllabel");
 
   var valuelabel = av.label("", {left: rect_left + 270, top: rect_top + 165});
-  valuelabel.addClass("labels");
-  valuelabel.addClass("valuelabel");
+  valuelabel.addClass("loopLabels");
+  valuelabel.addClass("valuelabelpb");
 
 
   // <<--------------- STATE BOX ----------------->>
@@ -97,7 +96,7 @@ $(document).ready(function() {
 
   var priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
   var priceBoxLabel = av.label("", {left:boxLabelX , top: stateY + 100});
-  priceBoxLabel.addClass("labels");
+  priceBoxLabel.addClass("loopLabels");
   priceBoxLabel.addClass("midlabel");
 
   // total box and label
@@ -106,22 +105,34 @@ $(document).ready(function() {
 
   var totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
   var totalBoxLabel = av.label("", {left: boxLabelX, top: stateY + 215});
-  totalBoxLabel.addClass("labels");
+  totalBoxLabel.addClass("loopLabels");
   totalBoxLabel.addClass("midlabel");
 
 
   // <<--------------- CONSOLE BOX ----------------->>
 
-  var stateX = 660;
-  var stateY = - 20;
-  var stateLabel = av.label("CONSOLE", {left: stateX + 35, top: stateY + 60});
-  stateLabel.addClass("statelabel");
+  var consoleX = 655;
+  var consoleY = 45;
 
-  var consoleBox = av.g.rect(stateX - 5, stateY + 110, 170, 200).addClass("consolebox");
-  var label1 = av.label("43", {left: stateX + 20, top: stateY + 250});
-  label1.addClass("labels");
-  label1.addClass("midlabel");
-  label1.hide();
+  // create CONSOLE label
+  av.label("CONSOLE", {left: consoleX + 40, top: consoleY}).addClass("statelabel");;
+
+  // create console box.
+  var consoleBox = av.g.rect(consoleX, consoleY + 50, 170, 180).addClass("consolebox");
+  var printprice = av.label("43", {left: consoleX + 20, top: consoleY + 180});
+  printprice.addClass("consolelabels");
+  printprice.addClass("midlabel");
+  printprice.hide();
+
+  // ------------------------console box line -----------------------
+    var consoleLineY = consoleY + 270;
+    for (var i = consoleY + 200; i > consoleY + 60; i -= 30){
+        var consoleline = av.g.line(consoleX, i, consoleX + 170, i);
+        consoleline.addClass("consoleline");
+    }
+
+
+
 
 
   // <<--------- Slide Show <<--------->>
@@ -135,10 +146,10 @@ $(document).ready(function() {
 
   // Slide 1
   av.umsg(interpret("sc2"));
-  topblue2.addClass("calboxhigh");
-  topblue2.removeClass("calboxhigh");
-  topblue3.addClass("calboxhigh");
-  topblue3.removeClass("calboxhigh");
+  toppurple1.addClass("calboxhigh");
+  toppurple1.removeClass("calboxhigh");
+  toppurple2.addClass("calboxhigh");
+  toppurple2.removeClass("calboxhigh");
   av.step();
 
   // Slide 2
@@ -175,7 +186,7 @@ $(document).ready(function() {
   totalBox.addClass("blueboxh");
   totalBox.removeClass("blueboxh");
   totalBoxLabel.value(" 4 ");
-  // totallabel.css({left: stateX + 9});
+  valuelabel.value("");
   av.step();
 
 
@@ -207,6 +218,7 @@ $(document).ready(function() {
   midblue1.removeClass("calboxhigh");
   totalBox.addClass("blueboxh");
   totalBox.removeClass("blueboxh");
+  valuelabel.value("");
   av.step();
 
   // Slide 9
@@ -235,6 +247,7 @@ $(document).ready(function() {
   midblue1.removeClass("calboxhigh");
   totalBox.addClass("blueboxh");
   totalBox.removeClass("blueboxh");
+  valuelabel.value("");
   av.step();
 
   // Slide 12
@@ -262,6 +275,7 @@ $(document).ready(function() {
   midblue1.removeClass("calboxhigh");
   totalBox.addClass("blueboxh");
   totalBox.removeClass("blueboxh");
+  valuelabel.value("");
   av.step();
 
   // Slide 15
@@ -290,6 +304,7 @@ $(document).ready(function() {
   midblue1.removeClass("calboxhigh");
   totalBox.addClass("blueboxh");
   totalBox.removeClass("blueboxh");
+  valuelabel.value("");
   av.step();
   //
   // Slide 18
@@ -302,7 +317,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc19"));
   botblue.addClass("blueboxh");
   botblue.removeClass("blueboxh");
-  label1.show();
+  printprice.show();
   av.recorded();
 
   //last Slide

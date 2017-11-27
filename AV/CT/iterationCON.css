@@ -1,14 +1,24 @@
-#iteration1CON .jsavnode, #iteration2CON  .jsavnode, #iteration2flyCON  .jsavnode, #iteration3CON  .jsavnode {
+/*
+  Iteration Slides CSS file
+
+  author: Jieun Chon
+  version: Nov 20, 2017
+*/
+
+/* ---------- JSAV CSS ----------*/
+.jsavhorizontalarray .jsavnode {
   min-width: 40px !important;
   min-height: 40px !important;
   background: #74a55b;
 }
 
-#iteration1CON .jsavvaluelabel, #iteration2CON  .jsavvaluelabel, #iteration2flyCON  .jsavvaluelabel, #iteration3CON  .jsavvaluelabel {
+.jsavvaluelabel {
   font-weight: 600;
 }
 
-#iteration1CON .labels, #iteration2CON .labels, #iteration2flyCON .labels, #iteration3CON  .labels  {
+
+/* ---------- Labels CSS ----------*/
+.loopLabels {
   position: relative;
   display: block;
   color: white;
@@ -17,75 +27,93 @@
   font-weight: 600;
 }
 
- #iteration2CON .midlabel,  #iteration2flyCON .midlabel, #iteration3CON .midlabel {
+.consolelabels  {
+  position: relative;
+  display: block;
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  color: black;
+  font-size: 170%;
+  z-index: 500;
+  font-weight: 600;
+}
+
+.smalllabel {
+  font-size: 130%;
+}
+
+.midlabel {
   font-size: 150%;
 }
 
-#iteration2CON .smalllabel, #iterationfly2CON .smalllabel, #iteration3CON .smalllabel {
- font-size: 130%;
-}
-
-#iteration2CON .valuelabel, #iteration2flyCON .valuelabel  {
- font-size: 150%;
- color: yellow;
-}
-
-#iteration2CON .statelabel, #iteration2flyCON .statelabel, #iteration3CON .statelabel  {
+.statelabel  {
  font-size: 120%;
  font-weight: 600;
 }
 
-#iteration3CON .valuelabel  {
+/* value label with purple background */
+.valuelabelpb  {
  font-size: 150%;
  color: yellow;
  background-color: #593f73;
  }
 
-#iteration1CON .box, #iteration2CON .box, #iteration2flyCON .box, #iteration3CON .box  {
+ .valuelabel {
+   font-size: 150%;
+   color: yellow;
+ }
+
+
+/* ----------Box CSS----------*/
+.purplebox  {
   fill : #a55ba5;
   stroke : #a55ba5;
   z-index: -500;
 }
 
-#iteration1CON .bluebox, #iteration2CON  .bluebox, #iteration2flyCON  .bluebox, #iteration3CON  .bluebox  {
+.bluebox  {
   fill : rgb(91, 91, 165);
   stroke : rgb(91, 91, 165);
   z-index: -500;
 }
 
-#iteration1CON .blueboxh, #iteration2CON  .blueboxh, #iteration2flyCON  .blueboxh, #iteration3CON  .blueboxh  {
+.blueboxh  {
   fill : #e6eeff;
   stroke : #e6eeff;
 }
 
-#iteration2CON .statebox, #iteration2flyCON .statebox, #iteration3CON .statebox  {
+.statebox  {
   stroke : Maroon;
   z-index: -500;
   border-width: inherit;
   border-radius: 50px;
 }
 
-#iteration2CON .consolebox, #iteration2flyCON .consolebox, #iteration3CON .consolebox  {
-  stroke : white;
-  fill: black;
+.consolebox  {
+  fill: white;
+  stroke: lightgray;
   z-index: -500;
   border-width: inherit;
   border-radius: 50px;
 }
 
-#iteration3CON  .calbox  {
+.calbox  {
   fill : #805ba5;
   stroke : #805ba5;
   z-index: -500;
 }
 
-#iteration3CON  .calboxhigh  {
+.calboxhigh  {
   fill : #f2eff6;
   stroke : #f2eff6;
   z-index: -500;
 }
 
-
-#iteration1CON .hiding {
+/* ----------Others----------*/
+.hiding {
   visibility: hidden;
+}
+
+.consoleline  {
+  stroke: lightgray;
+  stroke-dasharray: 5, 5;
 }

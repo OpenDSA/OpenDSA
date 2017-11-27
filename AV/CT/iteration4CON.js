@@ -1,13 +1,17 @@
 /*global ODSA */
 // Written by Jieun Chon
 //Array-Based list introduction
-var it2_midblue1,
-    it2_midblue2,
-    it2_midblue3,
-    it2_consoleLabels,
-    it2_consoleY,
-    it2_consoleGap,
-    it2_printprice;
+var it4_midblue1,
+    it4_midblue2,
+    it4_midblue3,
+    it4_consoleLabels,
+    it4_consoleY,
+    it4_consoleLabelX,
+    it4_consoleLabelY,
+    it4_consoleGap,
+    it4_printprice,
+    it4_printpriceX,
+    it4_printpriceY;
 
 $(document).ready(function() {
   "use strict";
@@ -18,39 +22,45 @@ $(document).ready(function() {
 
         setTimeout(function() {
             //  midblue 1 start
-            it2_midblue1.addClass("blueboxh", {record: false});
+            it4_midblue1.addClass("blueboxh", {record: false});
             setTimeout(function() {
-              it2_midblue1.removeClass("blueboxh", {record: false});
+              it4_midblue1.removeClass("blueboxh", {record: false});
 
                 // midblue 2 animation start -----------------
                 setTimeout(function() {
-                  it2_midblue2.addClass("blueboxh", {record: false});
+                  it4_midblue2.addClass("blueboxh", {record: false});
 
                   setTimeout(function(){
-                    it2_printprice.value(priceValue);
-                    for(var i = 0; i <= consoleIndex; i++){
-                        it2_consoleLabels[i].css({top: it2_consoleY + (it2_consoleGap * i)});
-                        it2_consoleLabels[i].show();
-                    }
-                        it2_consoleY -= 30;
+                    it4_printprice.value(priceValue);
+
                     setTimeout(function(){
-                      it2_midblue2.removeClass("blueboxh", {record: false});
-                      it2_printprice.value("");
 
-                      // midblue 3 animation start -----------------
-                      setTimeout(function() {
-                        it2_midblue3.addClass("blueboxh", {record: false});
+                      it4_printprice.css({left: it4_consoleLabelX, top:it4_consoleLabelY});
+                      for(var i = 0; i <= consoleIndex; i++){
+                          it4_consoleLabels[i].css({top: it4_consoleY + (it4_consoleGap * i)});
+                          it4_consoleLabels[i].show();
+                      }
+                          it4_consoleY -= 30;
+                      setTimeout(function(){
+                        it4_midblue2.removeClass("blueboxh", {record: false});
+                        it4_printprice.value("");
+                        it4_printprice.css({left: it4_printpriceX, top:it4_printpriceY});
 
+                        // midblue 3 animation start -----------------
                         setTimeout(function() {
-                          it2_midblue3.removeClass("blueboxh", {record: false});
+                          it4_midblue3.addClass("blueboxh", {record: false});
+
+                          setTimeout(function() {
+                            it4_midblue3.removeClass("blueboxh", {record: false});
+                          }, time);
                         }, time);
-                      }, time);
-                      // midblue 3 animation close ---------------------
+                        // midblue 3 animation close ---------------------
 
-                    }, time + 600);
+                      }, time + 800);
 
+                    }, time);
 
-                  }, time);
+                  }, time + 200);
                 }, time);
                 // midblue 2 animation close
 
@@ -76,7 +86,7 @@ $(document).ready(function() {
       // BlueStepAnim END -----------------------------------------------
 
   var arrValues = [4, 13, 6, 9, 11];
-  var av_name = "iteration2CON";
+  var av_name = "iteration4CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
   var leftMargin = 270,
@@ -110,9 +120,9 @@ $(document).ready(function() {
   av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
   //blue boxes and the the sets of it for the iterations later
-  it2_midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
-  it2_midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
-  it2_midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
+  it4_midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
+  it4_midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
+  it4_midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
 
   // last purple box.
   av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("purplebox");
@@ -129,9 +139,11 @@ $(document).ready(function() {
   valuelabel.addClass("loopLabels");
   valuelabel.addClass("priceBoxLable");
 
-  it2_printprice = av.label("", {left: rect_left + 240, top: rect_top + 85});
-  it2_printprice.addClass("loopLabels");
-  it2_printprice.addClass("valuelabelpb");
+  it4_printpriceX = rect_left + 240;
+  it4_printpriceY = rect_top + 85;
+  it4_printprice = av.label("", {left: it4_printpriceX, top: it4_printpriceY});
+  it4_printprice.addClass("loopLabels");
+  it4_printprice.addClass("valuelabelpb");
 
   // <<--------------- STATE BOX ----------------->>
 
@@ -157,7 +169,7 @@ $(document).ready(function() {
 
   // <<--------------- CONSOLE BOX ----------------->>
 
-  it2_consoleGap = 30;
+  it4_consoleGap = 30;
   var consoleX = 655;
   var consoleY = 45;
 
@@ -168,15 +180,16 @@ $(document).ready(function() {
   var consoleBox = av.g.rect(consoleX, consoleY + 50, 170, 180).addClass("consolebox");
 
   // create console labels will pop up later in the slides
-  var consoleLabelX = consoleX + 20;
-  it2_consoleY = consoleY + 184;
-  var label1 = av.label("4", {left: consoleLabelX, top: it2_consoleY});
-  var label2 = av.label("13", {left: consoleLabelX, top: it2_consoleY});
-  var label3 = av.label("6", {left: consoleLabelX, top: it2_consoleY});
-  var label4 = av.label("9", {left: consoleLabelX, top: it2_consoleY});;
-  var label5 = av.label("11", {left: consoleLabelX, top: it2_consoleY});
+  it4_consoleLabelX = consoleX + 20;
+  it4_consoleLabelY = consoleY + 180;
+  it4_consoleY = consoleY + 184;
+  var label1 = av.label("4", {left: it4_consoleLabelX, top: it4_consoleY});
+  var label2 = av.label("13", {left: it4_consoleLabelX, top: it4_consoleY});
+  var label3 = av.label("6", {left: it4_consoleLabelX, top: it4_consoleY});
+  var label4 = av.label("9", {left: it4_consoleLabelX, top: it4_consoleY});;
+  var label5 = av.label("11", {left: it4_consoleLabelX, top: it4_consoleY});
 
-  it2_consoleLabels = [label1, label2, label3, label4, label5];
+  it4_consoleLabels = [label1, label2, label3, label4, label5];
 
 // ------------------------console box line -----------------------
   var consoleLineY = consoleY + 270;
@@ -185,10 +198,10 @@ $(document).ready(function() {
       consoleline.addClass("consoleline");
   }
 
-  for(var i = 0; i < it2_consoleLabels.length; i++){
-    it2_consoleLabels[i].addClass("consolelabels");
-    it2_consoleLabels[i].addClass("smalllabel");
-    it2_consoleLabels[i].hide();
+  for(var i = 0; i < it4_consoleLabels.length; i++){
+    it4_consoleLabels[i].addClass("consolelabels");
+    it4_consoleLabels[i].addClass("smalllabel");
+    it4_consoleLabels[i].hide();
   }
 
   // --------------------- start slide shows
@@ -220,7 +233,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc5"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
-  it2_printprice.value("");
+  it4_printprice.value("");
   priceBoxLabel.value("13");
   priceBoxLabel.css({left: pricelabelX - 6});
   av.step();
@@ -234,7 +247,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc7"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
-  it2_printprice.value("");
+  it4_printprice.value("");
   priceBoxLabel.value("6");
   priceBoxLabel.css({left: pricelabelX});
   av.step();
@@ -248,7 +261,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc9"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
-  it2_printprice.value("");
+  it4_printprice.value("");
   priceBoxLabel.value("9");
   priceBoxLabel.css({left: pricelabelX});
   av.step();
@@ -262,7 +275,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc11"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 50);
-  it2_printprice.value("");
+  it4_printprice.value("");
   priceBoxLabel.value("11");
   priceBoxLabel.css({left: pricelabelX - 6});
   av.step();
@@ -275,7 +288,7 @@ $(document).ready(function() {
   // Slide 13
   av.umsg(interpret("sc13"));
   arr.css({left: nextleft});
-  it2_printprice.value("");
+  it4_printprice.value("");
   nextleft -= (nodegap + 100);
 
   av.step();
