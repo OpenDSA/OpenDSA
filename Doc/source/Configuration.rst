@@ -308,6 +308,9 @@ All are required unless otherwise specified.
   must view every step of a slideshow in order to obtain credit.
   Defaults to ``true`` if omitted.
 
+* **narration_enabled** - (optional) A boolean controlling whether text-to-speech
+  narration of JSAV slideshows is enabled. Defaults to ``false`` if omitted.
+
 * **start_chap_num** - (optional) Specifies at which number to start
   numbering chapters.
   Defaults to 0 if omitted.
