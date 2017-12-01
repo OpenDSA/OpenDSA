@@ -118,7 +118,7 @@ When processing Vertex :math:`v_i`, we consider the shortest
 path for Vertices :math:`v_0` through :math:`v_{i-1}` that have
 already been processed.
 Unfortunately, the true shortest path to :math:`v_i` might go
-through Vertex `v_j` for :math:`j > i`.
+through Vertex :math:`v_j` for :math:`j > i`.
 Such a path will not be considered by this algorithm.
 However, the problem would not occur if we process the vertices in
 order of distance from :math:`S`.
