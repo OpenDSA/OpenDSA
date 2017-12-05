@@ -74,7 +74,7 @@ A Turing machine is formally defined as a quadruple
   halt state).
 * :math:`\Sigma` is an alphabet (containing :math:`\#`, not :math:`L`
   or :math:`R`).
-* :math:`s \in K` is the :term`initial state`.
+* :math:`s \in K` is the :term:`initial state`.
 * :math:`\delta` is a function from :math:`K \times \Sigma` to
   :math:`(K \cup \{h\}) \times (\Sigma \cup \{L, R\})`.
 
