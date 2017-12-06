@@ -16,50 +16,44 @@ for (var i = 0; i < 14; i++) {
  * 3 = scalene
  */
 function getTriangleTypeNumber(s1, s2, s3) {
-    if (s1 < 0) {
+    if (s1 < 0 || s2 < 0 || s3 < 0) {
         codeCoverage[0] = true;
         return 0;
     } else if (s1 == 0) {
         codeCoverage[1] = true;
-        return 0;
-    } else if (s2 < 0) {
+        return 0;    
+    } else if (s2 == 0) {
         codeCoverage[2] = true;
         return 0;
-    } else if (s2 == 0) {
+    } else if (s3 == 0) {
         codeCoverage[3] = true;
         return 0;
-    } else if (s3 < 0) {
+    } else if (s1 - s2 == s3) {
         codeCoverage[4] = true;
         return 0;
-    } else if (s3 == 0) {
+    } else if (s2 - s1 == s3) {
         codeCoverage[5] = true;
         return 0;
-    } else if (s1 - s2 == s3) {
+    } else if (s3 - s2 == s1) {
         codeCoverage[6] = true;
         return 0;
-    } else if (s2 - s1 == s3) {
+    } else if (s1 - s2 > s3) {
         codeCoverage[7] = true;
         return 0;
-    } else if (s3 - s2 == s1) {
+    } else if (s2 - s1 > s3) {
         codeCoverage[8] = true;
         return 0;
-    } else if (s1 - s2 > s3) {
+    } else if (s3 - s2 > s1) {
         codeCoverage[9] = true;
         return 0;
-    } else if (s2 - s1 > s3) {
-        codeCoverage[10] = true;
-        return 0;
-    } else if (s3 - s2 > s1) {
-        codeCoverage[11] = true;
-        return 0;
     } else if (s1 == s2 && s1 == s3 && s2 == s3) {
-        codeCoverage[12] = true;
+        codeCoverage[10] = true;
         return 1;
     } else if (s1 != s2 && s1 != s3 && s2 != s3) {
-        codeCoverage[13] = true;
+        codeCoverage[11] = true;
         return 3;
     } else {
-        codeCoverage[14] = true;
+        codeCoverage[12] = true;
         return 2;
     }
 }

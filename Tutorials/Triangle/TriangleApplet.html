@@ -13,7 +13,7 @@
             width: 600px;
             position: fixed;
             float: left;
-            left: 650px;
+            left: 310px;
         }
         #applet {
             height: 620px;
@@ -23,7 +23,7 @@
         }
 
         .codeBlock {
-            width: 550px;
+            width: 290px;
             float: left;
         }
 
@@ -31,6 +31,7 @@
             float: right;            
             width: 600px;
         }
+        
         .infoBox {
             height: 135px;
             width: 550px;
@@ -66,13 +67,15 @@
 </head>
 
 <body>
+    <!-- Left code block showing requirements for code coverage -->
     <figure class="codeBlock">        
         <pre>
             <code>
-                <object style="width: 500px;height: 100%" data="resources/text/ClassifyTriangle.txt"></object>
+                <object style="width: 300px; height: 800px;" data="resources/text/ClassifyTriangle.txt"></object>
             </code>
         </pre>
     </figure>
+    <!-- End of left code block -->
     <div class="appbox">
         <div id="description" >
             <h3>Triangle Classifier</h3>
@@ -142,15 +145,17 @@
                 </div>            
             </div>
             <button id="reset" onclick="resetClicked(); location.reload();">Reset</button>
-        </div>
+        </div>  
     </div>
-    <figure class="codeBlock2">            
-            <pre>
-                <code>
-                    <object style="width: 500px; height: 100%; float: right;" data="resources/text/Bugs.txt"></object>
-                </code>
-            </pre>
-        </figure>
+    <!-- Right code block showing code for bugs found -->
+    <!-- <figure class="codeBlock2">            
+        <pre>
+            <code>
+                <object style="width: 500px; height: 100%; float: right;" data="resources/text/Bugs.txt"></object>
+            </code>
+        </pre>
+    </figure> -->
+    <!-- End of right code block -->
 </body>
 
 </html>
