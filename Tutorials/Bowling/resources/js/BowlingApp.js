@@ -16,7 +16,25 @@ function test() {
     }
     var roll = document.getElementById('rollValue').value;
     roll = parseInt(roll, 10);
-    game.roll(roll);
+
+    if (isNaN(roll)) {
+        document.getElementById("triangleType").innerText = "Error: Value must be valid integer.";
+        document.getElementById("triangleType").style = "color: red;";
+        alert("Input only accepts valid integers.");
+        return;
+    }
+    document.getElementById("triangleType").innerText = "";
+
+    if (!game.roll(roll)) {
+        var testCaseHistory = document.getElementById("testHistory");        
+        var message = document.getElementById('rollValue').value + " pins hit" + 
+        " *Invalid roll, not counted to score but does execute code coverage. \n";
+        testCaseHistory.innerHTML = message + testCaseHistory.innerHTML; 
+        getCodeCoverage();
+        return;
+    }
+
+    game.score();
     document.getElementById("testsrun").innerText = "Number of balls thrown: " + game.currentRoll;
 
 
@@ -26,11 +44,14 @@ function test() {
     console.log(game.codeCovered);
 }
 
+function logBugCase() {
+
+}
+
 function logTestCase() {
     var testCaseHistory = document.getElementById("testHistory");
-    testCaseHistory.innerHTML = testCaseHistory.innerHTML + "Throw " + game.currentRoll + ": ";
-    testCaseHistory.innerHTML = testCaseHistory.innerHTML + document.getElementById('rollValue').value + " pins hit."
-    testCaseHistory.innerHTML = testCaseHistory.innerHTML + "\n ";
+    var message = "Throw " + game.currentRoll + ": " + document.getElementById('rollValue').value + " pins hit.\n";
+    testCaseHistory.innerHTML = message + testCaseHistory.innerHTML;
 }
 
 function currentScore() {
@@ -41,7 +62,6 @@ function currentScore() {
     }
     var score = tempGame.score();
     document.getElementById("score").innerText = "Score: " + score;
-
     return score;
     delete tempGame;
 }

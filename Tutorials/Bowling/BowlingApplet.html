@@ -68,13 +68,19 @@
         <div class="appbox">
             <div id="description" >
                 <h3>Bowling App</h3>
-                Description here
+                <p>
+                    Your job is to test this program.  The program is simple; it is a bowling game score
+                    calculator that takes one integer input.  Each input represents one throw of a bowling bowl and 
+                    the number of pins knocked down by that ball.  Standard bowling rules apply.  There are cases where 
+                    the number you input is a valid integer but would not be possible in a game of bowling.  Strive to think of
+                    these cases as they are handled by the code and must be found in order to get 100% code coverage.
+                </p>
             </div>
             <br>
             <div id="applet">
                 <div class="infoBox">
                     <div id="valueInputBox">
-                        <h4>Enter Your Test Values</h4>
+                        <h4>Enter Pins Hit with Roll</h4>
                         <label style="margin-right: 50px;">Enter Roll:</label>
                         <input class="triangleInput" id="rollValue">
                         <button id="throwRoll" onclick="test();">Throw Roll</button>
@@ -94,11 +100,11 @@
                         </div>
                         <br>
                         <div style="height: 20px;"> </div>                
-                        <label style="float: left; margin-right: 15px;">Bugs Found: </label>
+                        <!-- <label style="float: left; margin-right: 15px;">Bugs Found: </label>
                         <label style="float: left; margin-left: 21px;" id="bugCoveragePercentage">0%</label>
                         <div class="progress" style="width: 330px; float: right; margin-right: 15px;">
                             <div class="progress-bar" id= "bugCoverageBar" role="progressbar" style="width:0%"></div>                        
-                        </div>
+                        </div> -->
                                     
                     </div>            
                 </div>

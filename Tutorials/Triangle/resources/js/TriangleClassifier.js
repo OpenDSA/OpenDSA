@@ -155,14 +155,17 @@ function classifyTriangle() {
     side3 = parseInt(side3, 10);
 
     if (isNaN(side1) || isNaN(side2) || isNaN(side3)) {
-        document.getElementById("triangleType").innerText = "All sides must be valid integers.";
+        document.getElementById("triangleType").innerText = "Error: All sides must be valid integers.";
+        document.getElementById("triangleType").style = "color: red;";
+        alert("Input only accepts valid integers.");
         return;
     }
 
     //Code Coverage
     var triangleTypeNum = getTriangleTypeNumber(side1, side2, side3);
     var triangleType = getTriangleTypeText(triangleTypeNum);
-    document.getElementById("triangleType").innerText = triangleType;
+    document.getElementById("triangleType").innerText = "Triangle Type: " + triangleType;
+    document.getElementById("triangleType").style = "color: green;";
     var codeCoverageP = calculateCoverage();
     document.getElementById("codeCoverageBar").style = "width:" + codeCoverageP + "%";
     document.getElementById("codeCoveragePercentage").innerText = codeCoverageP.toFixed(2) + "%";
