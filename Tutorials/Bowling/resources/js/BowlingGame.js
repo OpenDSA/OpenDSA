@@ -4,7 +4,7 @@ var BowlingGame = function() {
 	this.rolls = [];
     this.currentRoll = 0;
     this.codeCovered = [];
-    this.numCoveragePoints = 7;
+    this.numCoveragePoints = 8;
     for (var i = 0; i < this.numCoveragePoints; i++) {
         this.codeCovered[i] = false;
     }
@@ -55,7 +55,7 @@ BowlingGame.prototype.score = function() {
         return self.rolls[frameIndex + 1] + self.rolls[frameIndex + 2];
 	}
 
-	function isStrike() {
+	function isStrike() {        
         return self.rolls[frameIndex] === 10;
 	}
 
@@ -80,9 +80,18 @@ BowlingGame.prototype.score = function() {
     self.frameIndex = frameIndex
 	return score;
 };
-
+/**
+ * This code is checked and if any of the cases return 1
+ * the bowling code execution is stopped and the code coverage 
+ * for the respective case is calculated.
+ */
 BowlingGame.prototype.bugs = function() {
     var self = this;
+    if (isNaN(self.rolls[self.currentRoll])) {
+        self.codeCovered[7] = true;
+        console.log(self.codeCovered);
+        return 1;
+    }
     if (self.rolls[self.currentRoll] > 10) {
         console.log("is bug");
         self.codeCovered[4] = true;

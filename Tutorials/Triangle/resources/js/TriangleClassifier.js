@@ -1,7 +1,7 @@
 var testNum = 1;
 var codeCoverage = [];
 var bugCoverage = [];
-for (var i = 0; i < 15; i++) {
+for (var i = 0; i < 14; i++) {
     codeCoverage[i] = false;
 }
 
@@ -52,8 +52,11 @@ function getTriangleTypeNumber(s1, s2, s3) {
     } else if (s1 != s2 && s1 != s3 && s2 != s3) {
         codeCoverage[11] = true;
         return 3;
-    } else {
+    } else if (isNaN(s1) || isNaN(s2) || isNaN(s3)) {
         codeCoverage[12] = true;
+        return 0;    
+    } else {
+        codeCoverage[13] = true;
         return 2;
     }
 }
@@ -75,6 +78,9 @@ function getTriangleTypeText(triangleTypeNum) {
     return triangleType;
 }
 
+/**
+ * calculates code coverage percentage
+ */
 function calculateCoverage() {
     var numTrue = 0;
     for (var i in codeCoverage) {
@@ -98,6 +104,13 @@ function isBugFound(s1, s2, s3, actual, expected) {
     return bugDetected;
 } 
 
+/**
+ * Calculates the percentage of bugs found.  It takes an expected
+ * result from the correct getTriangleTypeNumber() function above.
+ * If there is a difference in the expected value and the value
+ * returned from each bug function then that is considered a bug found.
+ * @param {*} expected is the expected triangle type
+ */
 function calculateBugCoverage(s1, s2, s3, expected) {
     for (var i in bugs) {
         var actual = bugs[i].classify(s1, s2, s3);
@@ -139,6 +152,9 @@ function setPerformanceDetails() {
 
 }
 
+/**
+ * Main function that is called when the 'Classify' button is pressed
+ */
 function classifyTriangle() {
     var side1 = document.getElementById("side1").value;
     var side2 = document.getElementById("side2").value;
