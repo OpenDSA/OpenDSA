@@ -103,7 +103,8 @@
       "FormalLang/ParseIntro": {},
       "FormalLang/LLParsing": {},
       "FormalLang/LRParsing": {},
-      "FormalLang/CYKParsing": {}
+      "FormalLang/CYKParsing": {},
+      "FormalLang/Compiler": {}
     },
     "Grammars": {
       "FormalLang/Grammar": {},

@@ -65,12 +65,9 @@
     "required": true
   }, 
   "chapters": {
-    "Spatial Data Structures": {
-      "Spatial/Spatial": {}, 
-      "Spatial/PRquadtree": {}, 
-      "Spatial/KDtree": {}, 
-      "Spatial/Bintree": {}, 
-      "Spatial/OtherSpatial": {}
+    "Formal Languages": {
+      "FormalLang/Compiler": {},
+      "FormalLang/RecEnum": {}
     }, 
     "Appendix": {
       "Glossary": {},
