@@ -9,8 +9,6 @@
    :satisfies:
    :topic: Search
 
-.. odsalink:: AV/Development/selforgCON.css
-
 Self-Organizing Lists
 =====================
 
@@ -28,9 +26,9 @@ and thus can speed up :term:`sequential search` in some situations.
 
 Assume that we know, for each key :math:`k_i`, the probability
 :math:`p_i` that the record with key :math:`k_i` will be requested.
-Assume also that the list is ordered so that the most frequently
-requested record is first, then the next most frequently requested
-record, and so on.
+Assume also that list :math:`\mathbf{L}` is ordered so that the most
+frequently requested record is first, then the next most frequently
+requested record, and so on.
 Search in the list will be done sequentially, beginning with the
 first position.
 Over the course of many searches, the expected number of comparisons
@@ -41,9 +39,9 @@ required for one search is
    \overline{C}_n = 1 p_0 + 2 p_1 + ... + n p_{n-1}.
 
 In other words, the cost to access the record in
-**L** [0] is 1 (because one key value is looked at), and the
+:math:`\mathbf{L}[0]` is 1 (because one key value is looked at), and the
 probability of this occurring is :math:`p_0`.
-The cost to access the record in **L** [1] is 2 (because
+The cost to access the record in :math:`\mathbf{L}[1]` is 2 (because
 we must look at the first and the second records' key values),
 with probability :math:`p_1`, and so on.
 For :math:`n` records, assuming that all searches are
@@ -79,7 +77,7 @@ Certain probability distributions give easily computed results.
       \frac{n + 1 + p_n (n - 1)}{2}.
 
    Thus, :math:`\frac{n+1}{2} \leq \overline{C}_n \leq n`,
-   depending on the value of \(p_0\).
+   depending on the value of :math:`p_0`.
 
 A geometric probability distribution can yield quite different
 results.
@@ -214,9 +212,11 @@ history.
 
 .. inlineav:: SelforgCON1 ss
    :long_name: Self-organizing List Slideshow: Frequency Count
+   :links: AV/Searching/selforgCON.css
+   :scripts: AV/Searching/selforgCON.js
    :output: show
 
-.. avembed:: Exercises/Development/SelfOrgCounterPro.html ka
+.. avembed:: Exercises/Searching/SelfOrgCounterPRO.html ka
    :long_name: Self-organizing List Counter Proficiency Exercise
 
 
@@ -253,9 +253,11 @@ repeated multiple times.
 
 .. inlineav:: SelforgCON2 ss
    :long_name: Self-organizing List Slideshow: Move-to-front
+   :links: AV/Searching/selforgCON.css
+   :scripts: AV/Searching/selforgCON.js
    :output: show
 
-.. avembed:: Exercises/Development/SelfOrgMove-to-FrontPro.html ka
+.. avembed:: Exercises/Searching/SelfOrgM2FPRO.html ka
    :long_name: Self-organizing List Move-to-front Proficiency Exercise
 
 
@@ -289,9 +291,11 @@ forward in the list by some fixed number of steps.
 
 .. inlineav:: SelforgCON3 ss
    :long_name: Self-organizing List Slideshow: Transpose
+   :links: AV/Searching/selforgCON.css
+   :scripts: AV/Searching/selforgCON.js
    :output: show
 
-.. avembed:: Exercises/Development/SelfOrgTransposePro.html ka
+.. avembed:: Exercises/Searching/SelfOrgTransposePRO.html ka
    :long_name: Self-organizing List Transpose Proficiency Exercise
 
 
@@ -369,5 +373,3 @@ seen.
        J.L. Bentley, D.D. Sleator, R.E. Tarjan, and V.K. Wei,
        "A Locally Adaptive Data Compression Scheme", 
        *Communications of the ACM 29*, 4(April 1986), 320-330.
-
-.. odsascript:: AV/Development/selforgCON.js

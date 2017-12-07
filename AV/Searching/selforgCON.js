@@ -2,7 +2,7 @@
 // Various functions and variables that will be used by all of the
 // following sections of the tutorial.
 
-// Helper function for seting pointer
+// Helper function for setting pointer
 function setPointer(name, node, opt){
   var pointerRight = {anchor: "right top",
     myAnchor: "left bottom",
