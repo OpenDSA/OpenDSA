@@ -115,7 +115,7 @@ Alternatively, some applications require activity *after* the
 remaining vertices are processed; hence the call to function
 ``PostVisit``.
 This would be a natural opportunity to make use of the
-:ref:`visitor design pattern <visitor design pattern> <DesignPatterns>`.
+:ref:`visitor <visitor> <DesignPatterns>` design pattern.
 
 This visualization shows a graph and the result of performing a DFS on
 it, resulting in a depth-first search tree.
