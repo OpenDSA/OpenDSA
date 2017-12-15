@@ -55,6 +55,7 @@ BowlingGame.prototype.score = function() {
             self.gameOver = true;
         }
         if (self.rollIndex == 3) {
+            console.log("roll index 3");
             if (self.rolls[self.currentRoll - 2] == 10 || 
                 self.rolls[self.currentRoll - 2] + self.rolls[self.currentRoll - 3] == 10) {
                     // continue
@@ -99,7 +100,7 @@ BowlingGame.prototype.score = function() {
 	for (var frame = 0; frame < 10; frame++) {
 		if (isStrike()) {
             score += 10 + strikeBonus();
-			frameIndex++;
+            frameIndex++;
 		} else if (isSpare()) {
 			score += 10 + spareBonus();
 			frameIndex += 2;

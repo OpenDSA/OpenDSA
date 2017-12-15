@@ -48,7 +48,7 @@ function main() {
     }
     game.score();
     document.getElementById("testsrun").innerText = "Number of balls thrown: " + game.currentRoll;
-
+    currentScore();
     getCodeCoverage();
     logTestCase();
 }
