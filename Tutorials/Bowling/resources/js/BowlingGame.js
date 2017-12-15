@@ -55,7 +55,6 @@ BowlingGame.prototype.score = function() {
             self.gameOver = true;
         }
         if (self.rollIndex == 3) {
-            console.log("roll index 3");
             if (self.rolls[self.currentRoll - 2] == 10 || 
                 self.rolls[self.currentRoll - 2] + self.rolls[self.currentRoll - 3] == 10) {
                     // continue
@@ -134,10 +133,30 @@ BowlingGame.prototype.bugs = function() {
         return 1;
     }
     //Checks if the sum of two rolls in the same frame are greater than 0
+    //Also handles the 10th frame
     if (self.rollIndex > 1) {
+        if (self.rollIndex == 2) {
+            if (self.frameIndex == 10) {
+                if (self.rolls[self.currentRoll - 1] == 10) {
+                    return 0;
+                }
+            }
+        }
+        if (self.rollIndex == 3) {
+            if (self.rolls[self.currentRoll - 1] == 10) {
+                return 0;
+            }
+            if (self.rolls[self.currentRoll - 1] + self.rolls[self.currentRoll - 2] == 10) {
+                return 0;
+            }
+            if (self.rolls[self.currentRoll - 1] + self.rolls[self.currentRoll - 2] < 10) {
+                self.gameOver = true;
+                return 1;
+            }
+        }
         if (self.rolls[self.currentRoll - 1] + self.rolls[self.currentRoll] > 10) {
             self.codeCovered[5] = true;
-            return true;
+            return 1;
         }
     }
     return 0;

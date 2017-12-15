@@ -38,13 +38,28 @@ function main() {
         getCodeCoverage();
         return;
     }
-    //this code puts the comma between to rolls in the same frame
+    //This code handles the proper symbols to put in the score table
     if (!game.gameOver) {
         var currentFrameBox = document.getElementById("roll" + (game.frameIndex));
         if (currentFrameBox.innerHTML != "") {
-            currentFrameBox.innerHTML = currentFrameBox.innerHTML + ",";
+            if (game.rolls[game.currentRoll - 1] == 10) {
+                currentFrameBox.innerHTML = currentFrameBox.innerHTML + 'X';
+            }else if (game.rolls[game.currentRoll - 1] + game.rolls[game.currentRoll - 2] == 10
+                && game.rollIndex <= 2) {
+                currentFrameBox.innerHTML = currentFrameBox.innerHTML + " /";
+            }else {
+                if (game.rollIndex != 3){currentFrameBox.innerHTML = currentFrameBox.innerHTML + "-";}
+                currentFrameBox.innerHTML = currentFrameBox.innerHTML + game.rolls[game.currentRoll - 1];        
+            }
         }
-        currentFrameBox.innerHTML = currentFrameBox.innerHTML + game.rolls[game.currentRoll - 1];        
+        else {
+            if (game.rolls[game.currentRoll - 1] == 10) {
+                currentFrameBox.innerHTML = 'X';
+            } else {
+                currentFrameBox.innerHTML = currentFrameBox.innerHTML + game.rolls[game.currentRoll - 1];        
+            }
+        }
+        
     }
     game.score();
     document.getElementById("testsrun").innerText = "Number of balls thrown: " + game.currentRoll;
@@ -73,7 +88,8 @@ function currentScore() {
         tempGame.roll(0);
     }
     var score = tempGame.score();
-    document.getElementById("score").innerText = "Score: " + score;
+    document.getElementById("score").innerText = score;
+    console.log("frame index: " + game.frameIndex + " roll index: " + game.rollIndex)
     delete tempGame;
     return score;
 }
