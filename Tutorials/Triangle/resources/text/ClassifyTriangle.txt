@@ -6,7 +6,11 @@
 * 3 = scalene
 */
 function classifyTriangle(s1, s2, s3) {
-    if (s1 < 0 || s2 < 0 || s3 < 0) {
+    if (isNaN(s1) || isNaN(s2) || isNaN(s3)) {
+
+        return 0;   
+             
+    } else if (s1 < 0 || s2 < 0 || s3 < 0) {
         
         return 0;
 
@@ -53,7 +57,7 @@ function classifyTriangle(s1, s2, s3) {
     } else if (s1 != s2 && s1 != s3 && s2 != s3) {
             
         return 3;
-
+        
     } else {
             
         return 2;

@@ -6,17 +6,18 @@ var game = new BowlingGame();
 /**
  * Main function.  This is called when the 'Roll' button is clicked.
  */
-function test() {
+function main() {
     if (game.currentRoll > 20) {
-        alert("Game complete, please click reset");
+        var message = "Game over!  Please click reset to try again!"
+        testCaseHistory.innerHTML = message + testCaseHistory.innerHTML; 
         return;
     }
     var roll = document.getElementById('rollValue').value;
-    roll = parseInt(roll, 10);
-
-    document.getElementById("triangleType").innerText = "";
-
-    if (!game.roll(roll)) {
+    var allowedValues = new RegExp('^[\-]?[0-9a-zA-Z]+$');
+    if (!roll.match(allowedValues)) {
+        //Checks the same code coverage section as the isNaN() check
+        //in BowlingGame.js
+        game.codeCovered[7] = true;
         var testCaseHistory = document.getElementById("testHistory");        
         var message = document.getElementById('rollValue').value + " pins hit" + 
         " *Invalid roll, not counted to score but does execute code coverage. \n";
@@ -25,14 +26,31 @@ function test() {
         return;
     }
 
+    roll = parseInt(roll, 10);
+    document.getElementById("triangleType").innerText = "";
+
+    //This code block executes if the roll qualifies for one of the "bugs" defined in BowlingGame.bugs()
+    if (!game.roll(roll)) {
+        var testCaseHistory = document.getElementById("testHistory");        
+        var message = document.getElementById('rollValue').value + " pins hit" + 
+        " *Invalid roll, not counted to score but does execute code coverage. \n";
+        testCaseHistory.innerHTML = message + testCaseHistory.innerHTML; 
+        getCodeCoverage();
+        return;
+    }
+    //this code puts the comma between to rolls in the same frame
+    if (!game.gameOver) {
+        var currentFrameBox = document.getElementById("roll" + (game.frameIndex));
+        if (currentFrameBox.innerHTML != "") {
+            currentFrameBox.innerHTML = currentFrameBox.innerHTML + ",";
+        }
+        currentFrameBox.innerHTML = currentFrameBox.innerHTML + game.rolls[game.currentRoll - 1];        
+    }
     game.score();
     document.getElementById("testsrun").innerText = "Number of balls thrown: " + game.currentRoll;
 
-
     getCodeCoverage();
     logTestCase();
-    console.log(currentScore());
-    console.log(game.codeCovered);
 }
 
 /**
@@ -56,8 +74,8 @@ function currentScore() {
     }
     var score = tempGame.score();
     document.getElementById("score").innerText = "Score: " + score;
-    return score;
     delete tempGame;
+    return score;
 }
 
 /**

@@ -10,14 +10,14 @@
     <style>
         .appbox{
             height: 820px;
-            width: 600px;
-            position: fixed;
+            width: 550px;
+            position: relative;
             float: left;
-            left: 310px;
+            padding-left: 10px;            
         }
         #applet {
             height: 620px;
-            width: 600px;
+            width: 570px;
             border:1px solid #000000;
             background-color: whitesmoke;            
         }
@@ -36,7 +36,7 @@
             height: 135px;
             width: 550px;
             border: 1px solid lightblue;
-            left: 25px;
+            left: 10px;
             margin-top: 5px;
             position: relative;
         }
@@ -68,10 +68,10 @@
 
 <body>
     <!-- Left code block showing requirements for code coverage -->
-    <figure class="codeBlock">        
+    <figure class="codeBlock" id="coverageCode">        
         <pre>
             <code>
-                <object style="width: 300px; height: 70%;" data="resources/text/ClassifyTriangle.txt"></object>
+                <object style="width: 300px; height: 79%;" data="resources/text/ClassifyTriangle.txt"></object>
             </code>
         </pre>
     </figure>
@@ -120,12 +120,13 @@
                         <div class="progress-bar" id="codeCoverageBar" role="progressbar" style="width:0%"></div>
                     </div>
                     <br>
+                    <!-- Bar to show bug coverage percentage -->
                     <div style="height: 20px;"> </div>                
                     <label style="float: left; margin-right: 15px;">Bugs Found: </label>
                     <label style="float: left; margin-left: 21px;" id="bugCoveragePercentage">0%</label>
-                    <div class="progress" style="width: 330px; float: right; margin-right: 15px;">
+                    <!-- <div class="progress" style="width: 330px; float: right; margin-right: 15px;">
                         <div class="progress-bar" id= "bugCoverageBar" role="progressbar" style="width:0%"></div>                        
-                    </div>
+                    </div> -->
                                 
                 </div>            
             </div>

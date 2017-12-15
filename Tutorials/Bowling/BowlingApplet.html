@@ -1,5 +1,4 @@
 <html>
-    
     <head>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -12,6 +11,7 @@
                 width: 600px;
                 position: fixed;
                 float: left;
+                margin-left: 15px;
             }
             #applet {
                 height: 620px;
@@ -59,6 +59,14 @@
                 top: 15px;
                 left: 275px;
             }
+            table, th, td {
+                border: 1px solid black;
+            }
+            th, td {
+                text-align: center;
+                width: 25px;
+                padding: 2px;
+            }
     
         </style>
     </head>
@@ -83,7 +91,7 @@
                         <h4>Enter Pins Hit with Roll</h4>
                         <label style="margin-right: 50px;">Enter Roll:</label>
                         <input class="triangleInput" id="rollValue">
-                        <button id="throwRoll" onclick="test();">Throw Roll</button>
+                        <button id="throwRoll" onclick="main();">Throw Roll</button>
                     </div>            
                     <br>
                     <div style="margin-left: 25%"> 
@@ -106,9 +114,37 @@
                     <div id="performanceDetails">
                         <h4>Your Performance Details</h4>
                         <label id="testsrun" style="float: left; margin-right: 15px;">Number of balls thrown: 0</label>
+                        <label id="score" style="float: right; margin-right: 150px;">Score: 0</label>
                         <br>
                         <br>
-                        <label id="score" style="float: left; margin-right: 15px;">Score: 0</label>
+                        <table align="center">
+                            <tr>
+                                <td>Frame</td>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>6</th>
+                                <th>7</th>
+                                <th>8</th>
+                                <th>9</th>
+                                <th>10</th>
+                            </tr>
+                            <tr>
+                                <td>Rolls</td>
+                                <td id="roll1"></td>
+                                <td id="roll2"></td>
+                                <td id="roll3"></td>
+                                <td id="roll4"></td>
+                                <td id="roll5"></td>
+                                <td id="roll6"></td>
+                                <td id="roll7"></td>
+                                <td id="roll8"></td>
+                                <td id="roll9"></td>
+                                <td id="roll10"></td>
+                            </tr>
+                        </table>
                     </div>            
                 </div>
                 <div class="infoBox" >

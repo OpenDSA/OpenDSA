@@ -1,9 +1,10 @@
 var BowlingGame = function() {
-    console.log("Game Initialized");
-    this.frameIndex = 0;
+    this.frameIndex = 1;
+    this.rollIndex = 1;
 	this.rolls = [];
     this.currentRoll = 0;
     this.codeCovered = [];
+    this.gameOver = false;
     this.numCoveragePoints = 8;
     for (var i = 0; i < this.numCoveragePoints; i++) {
         this.codeCovered[i] = false;
@@ -35,10 +36,42 @@ BowlingGame.prototype.roll = function(pins) {
     }
 };
 
+BowlingGame.prototype.updateFrame = function() {
+    if (this.currentRoll == 0) {
+        return;
+    }
+}
+
 BowlingGame.prototype.score = function() {
 	var score = 0;
 	var frameIndex = 0;
-	var self = this;
+    var self = this;
+    if (self.gameOver) {
+        //nothing
+    }
+    else if (self.frameIndex == 10) {
+        self.rollIndex++;
+        if (self.rollIndex > 3) {
+            self.gameOver = true;
+        }
+        if (self.rollIndex == 3) {
+            if (self.rolls[self.currentRoll - 2] == 10 || 
+                self.rolls[self.currentRoll - 2] + self.rolls[self.currentRoll - 3] == 10) {
+                    // continue
+                }    
+            else {
+                self.gameOver = true;
+            }                
+        }
+    } else if (self.rollIndex >= 2) {
+        self.frameIndex++;
+        self.rollIndex = 1;
+    } else if (self.rolls[self.currentRoll - 1] == 10) {
+        self.frameIndex++;
+        self.rollIndex = 1;
+    } else {
+        self.rollIndex++;
+    }
 
 	function sumOfBallsInFrame() {
         self.codeCovered[1] = true;
@@ -66,10 +99,8 @@ BowlingGame.prototype.score = function() {
 	for (var frame = 0; frame < 10; frame++) {
 		if (isStrike()) {
             score += 10 + strikeBonus();
-            console.log("is strike");
 			frameIndex++;
 		} else if (isSpare()) {
-            console.log("is spare");            
 			score += 10 + spareBonus();
 			frameIndex += 2;
 		} else {
@@ -77,7 +108,6 @@ BowlingGame.prototype.score = function() {
 			frameIndex += 2;
 		}
     }
-    self.frameIndex = frameIndex
 	return score;
 };
 /**
@@ -87,28 +117,26 @@ BowlingGame.prototype.score = function() {
  */
 BowlingGame.prototype.bugs = function() {
     var self = this;
+    //Checks if roll is an integer or not
     if (isNaN(self.rolls[self.currentRoll])) {
         self.codeCovered[7] = true;
-        console.log(self.codeCovered);
         return 1;
     }
+    //Thats a bug, one roll hitting more than 10 pins
     if (self.rolls[self.currentRoll] > 10) {
-        console.log("is bug");
-        self.codeCovered[4] = true;
-        //Thats a bug, one roll hitting more than 10 pins
+        self.codeCovered[4] = true;        
         return 1;
     }
+    //Bug if roll is less than 0
     if (self.rolls[self.currentRoll] < 0) {
         self.codeCovered[6] = true;
         return 1;
     }
-    if (self.currentRoll > 0 && self.currentRoll % 2 != 0) {
-        if ((self.rolls[self.currentRoll] + self.rolls[self.currentRoll - 1] > 10) && self.rolls[self.currentRoll - 1] < 10) {
+    //Checks if the sum of two rolls in the same frame are greater than 0
+    if (self.rollIndex > 1) {
+        if (self.rolls[self.currentRoll - 1] + self.rolls[self.currentRoll] > 10) {
             self.codeCovered[5] = true;
-            console.log("is bug");
-            console.log("Need to fix this, triggers at wrong times");
-            //That's a bug, frame totaling more than 10 pins
-            return 1;
+            return true;
         }
     }
     return 0;
