@@ -65,9 +65,8 @@
     "required": true
   }, 
   "chapters": {
-    "Formal Languages": {
-      "FormalLang/Compiler": {},
-      "FormalLang/RecEnum": {}
+    "Programming": {
+      "Tutorials/webcattools2": {}
     }, 
     "Appendix": {
       "Glossary": {},
