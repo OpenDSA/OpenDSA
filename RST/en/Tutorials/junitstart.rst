@@ -17,20 +17,22 @@ Getting Started
 
 *To err is human, to correct is divine.*
 
-
-When writing code we often will make mistakes. To develop code with no bugs
-would be akin to having the power of a modern day God! As such it is extremely
-important that we test our code frequently and often in order to help spot, fix
-and remove bugs. Thankfully Java comes with a wonderful suite of tools to help
-test code. In addition to this Virginia Tech has developed a few more extensions
-of this suite and released them for students to make use of. For the purpose of
-these tutorials we will make use of this class for our test cases. Note that it
-will in many ways be similar to the standard JUnit functionality, but will have
-some additional functions that help with testing.
+When writing code we often make mistakes.
+So it is important that we test our code frequently and often in order
+to help spot, fix and remove bugs.
+Thankfully Java comes with a wonderful suite of tools to help test
+code.
+In addition to this Virginia Tech has developed a few more extensions
+of this suite and released them for students to make use of.
+For the purpose of
+these tutorials we will make use of this class for our test cases.
+Note that it will in many ways be similar to the standard JUnit
+functionality, but will have some additional functions that help with
+testing.
 As such we must import and set our program to make use of this library.
 You can find directions |external_link1|.
-In addition to configuring your build path, be sure to look over this page as it
-is an excellent quick start to JUnit functionality.
+In addition to configuring your build path, be sure to look over this
+page as it is an excellent quick start to JUnit functionality.
 
 .. |external_link1| raw:: html
 

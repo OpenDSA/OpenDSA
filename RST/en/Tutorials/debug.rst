@@ -81,10 +81,9 @@ learn more about them* |external_link2|.
 Debugging A Memory Pool
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This section applies directly to many CS3114 projects.
 For some programs you may need to analyze byte chunks.
-In other words, for a region of memory, what does it represent and what information
-does it contain?
+In other words, for a region of memory, what does it represent and
+what information does it contain?
 Doing so can be difficult due to a combination of factors.
 So how do we meaningfully analyze a chunk of bytes?
 Consider the following code.

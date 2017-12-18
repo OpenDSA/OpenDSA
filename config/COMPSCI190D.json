@@ -68,78 +68,19 @@
     "Preface": {
       "Intro": {}
     },
-    "Introduction for Data Structures and Algorithms Courses": {
-      "Background/IntroDSA": {
-        "Some Software Engineering Topics": {
-          "showsection": true
-        }
-      },
-      "Design/ADT": {
-        "IntroADTSumm": {
-          "threshold": 4
-        }
-      }
-    },
-    "Object-Oriented Programming": {
-      "Design/IntroOO": {}, 
-      "Design/IntroUML": {}, 
-      "Design/IntroProcess": {}
-    },
-    "List Interface & Array-based Lists": {
-      "List/ListADT": {
-        "List ADT Programming Exercise": {
-          "points": 1.0
-        }
-      },
-      "List/ListArray": {
-        "AlistInsertPRO": {
-          "threshold": 3
-        }, 
-        "AlistRemovePRO": {
-          "threshold": 4
-        }, 
-        "ALSumm": {
-          "threshold": 3
-        }
-      }
-    },
-    "Algorithm Analysis": {
-      "AlgAnal/AnalPrelim": {
-        "AnalPrelimSumm": {
-          "threshold": 4
-        }
-      }, 
-      "AlgAnal/AnalIntro": {
-        "CompareGrowth": {
-          "points": 2.0, 
-          "threshold": 3
-        }, 
-        "GrowthRatesPRO": {
-          "threshold": 3
-        }
-      }, 
-      "AlgAnal/AnalCases": {},
-      "AlgAnal/AnalCompvsAlg": {
-        "FasterCorASumm": {
-          "threshold": 2
-        }
-      }, 
-      "AlgAnal/AnalAsymptotic": {
-        "UpperBoundsSumm": {
-          "threshold": 4
-        }
-      }, 
-      "AlgAnal/AnalProgram": {
-        "binarySearchPRO": {
-          "exer_options": {
-            "JXOP-code": "none"
-          }, 
-          "points": 1.0, 
-          "threshold": 1.0
-        }
-      }, 
-      "AlgAnal/AlgAnalSummCS2": {}
-    },
+    "Programming Tutorials": {
+      "Tutorials/cmdline": {}, 
+      "Tutorials/parameters": {}, 
+      "Tutorials/eclipseparameters": {}, 
+      "Tutorials/webcattools": {}, 
+      "Tutorials/debugmethods": {}, 
+      "Tutorials/debug": {}, 
+      "Tutorials/scanning": {}, 
+      "Tutorials/randomaccessfile": {}, 
+      "Tutorials/junitstart": {}, 
+      "Tutorials/junitbasic": {}, 
+      "Tutorials/junitcoverage": {}
+    }, 
     "Introduction to Pointers in Java": {
       "PointersJava/PointerIntro": {}, 
       "PointersJava/BasicPointers": {
@@ -158,9 +99,10 @@
         }
       }
     }, 
-    "Stacks": {
-      "List/StackArray": {},
-      "List/StackLinked": {}
+    "Object-Oriented Programming": {
+      "Design/IntroOO": {}, 
+      "Design/IntroUML": {}, 
+      "Design/IntroProcess": {}
     },
     "Recursion": {
       "RecurTutor/RecIntro": {},
@@ -240,26 +182,76 @@
       }, 
       "RecurTutor/RecSummaryEx": {}
     },
-    "Sorting": {
-      "Sorting/InSort": {}, 
-      "Sorting/SortNotation": {
-        "SortIntroSumm": {
-          "threshold": 3
+    "Introduction for Data Structures and Algorithms Courses": {
+      "Background/IntroDSA": {
+        "Some Software Engineering Topics": {
+          "showsection": true
         }
-      }, 
-      "Design/Comparison": {},
-      "Sorting/InsertionSort": {},
-      "Sorting/BubbleSort": {
-        "BubsortPRO": {
-          "points": 2.0, 
-          "threshold": 3
-        }
-      }, 
-      "Sorting/SelectionSort": {
-        "SelsortPRO": {
-          "points": 2.0
+      },
+      "Design/ADT": {
+        "IntroADTSumm": {
+          "threshold": 4
         }
       }
+    },
+    "Algorithm Analysis": {
+      "AlgAnal/AnalPrelim": {
+        "AnalPrelimSumm": {
+          "threshold": 4
+        }
+      }, 
+      "AlgAnal/AnalIntro": {
+        "CompareGrowth": {
+          "points": 2.0, 
+          "threshold": 3
+        }, 
+        "GrowthRatesPRO": {
+          "threshold": 3
+        }
+      }, 
+      "AlgAnal/AnalCases": {},
+      "AlgAnal/AnalCompvsAlg": {
+        "FasterCorASumm": {
+          "threshold": 2
+        }
+      }, 
+      "AlgAnal/AnalAsymptotic": {
+        "UpperBoundsSumm": {
+          "threshold": 4
+        }
+      }, 
+      "AlgAnal/AnalProgram": {
+        "binarySearchPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          }, 
+          "points": 1.0, 
+          "threshold": 1.0
+        }
+      }, 
+      "AlgAnal/AlgAnalSummCS2": {}
+    },
+    "List Interface & Array-based Lists": {
+      "List/ListADT": {
+        "List ADT Programming Exercise": {
+          "points": 1.0
+        }
+      },
+      "List/ListArray": {
+        "AlistInsertPRO": {
+          "threshold": 3
+        }, 
+        "AlistRemovePRO": {
+          "threshold": 4
+        }, 
+        "ALSumm": {
+          "threshold": 3
+        }
+      }
+    },
+    "Stacks": {
+      "List/StackArray": {},
+      "List/StackLinked": {}
     },
     "Queues": {
       "List/Queue": {},
@@ -297,6 +289,45 @@
         }
       }
     },
+    "Sorting": {
+      "Sorting/InSort": {}, 
+      "Sorting/SortNotation": {
+        "SortIntroSumm": {
+          "threshold": 3
+        }
+      }, 
+      "Design/Comparison": {},
+      "Sorting/InsertionSort": {},
+      "Sorting/BubbleSort": {
+        "BubsortPRO": {
+          "points": 2.0, 
+          "threshold": 3
+        }
+      }, 
+      "Sorting/SelectionSort": {
+        "SelsortPRO": {
+          "points": 2.0
+        }
+      }
+    },
+    "Graphs": {
+      "Graph/GraphIntro": {
+        "GspaceCalcSumm": {
+          "points": 2.0
+        }, 
+        "GraphIntroSumm": {
+          "points": 3.0, 
+          "threshold": 10
+        }
+      }, 
+      "Graph/GraphImpl": {}, 
+      "Graph/GraphTraversal": {},
+      "Graph/GraphTopsort": {}, 
+      "Graph/GraphShortest": {},
+      "Graph/MCST": {}, 
+      "Graph/Kruskal": {},
+      "Graph/Floyd": {}
+    }, 
     "Binary Trees": {
       "Binary/BinaryTreeIntro": {}, 
       "Binary/BinaryTree": {
@@ -360,37 +391,6 @@
         }
       }
     },
-    "Programming Tutorials": {
-      "Tutorials/cmdline": {}, 
-      "Tutorials/parameters": {}, 
-      "Tutorials/eclipseparameters": {}, 
-      "Tutorials/webcattools": {}, 
-      "Tutorials/debugmethods": {}, 
-      "Tutorials/debug": {}, 
-      "Tutorials/scanning": {}, 
-      "Tutorials/randomaccessfile": {}, 
-      "Tutorials/junitstart": {}, 
-      "Tutorials/junitbasic": {}, 
-      "Tutorials/junitcoverage": {}
-    }, 
-    "Graphs": {
-      "Graph/GraphIntro": {
-        "GspaceCalcSumm": {
-          "points": 2.0
-        }, 
-        "GraphIntroSumm": {
-          "points": 3.0, 
-          "threshold": 10
-        }
-      }, 
-      "Graph/GraphImpl": {}, 
-      "Graph/GraphTraversal": {},
-      "Graph/GraphTopsort": {}, 
-      "Graph/GraphShortest": {},
-      "Graph/MCST": {}, 
-      "Graph/Kruskal": {},
-      "Graph/Floyd": {}
-    }, 
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}
