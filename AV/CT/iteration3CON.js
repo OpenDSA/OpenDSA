@@ -133,8 +133,6 @@ $(document).ready(function() {
 
 
 
-
-
   // <<--------- Slide Show <<--------->>
 
 

@@ -1,0 +1,20 @@
+#container {
+  width: 785px;
+  height: 610px;
+}
+
+.jsavcanvas {
+  overflow: hidden;
+}
+
+.jsavarray {
+  position: absolute;
+}
+
+.jsavcontainer {
+  overflow: visible;
+}
+
+.jsavhighlight {
+  font-size: 110%;
+}

@@ -1,0 +1,16 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "Iteration JSAV Exercise",
+      "av_Authors": "Jieun Chon",
+      ".instructLabel": "Instructions:",
+      ".instructions": "Click boxes.........",
+      "#help": "Help",
+      "#about": "About"
+    },
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "fix"
+  }
+}
