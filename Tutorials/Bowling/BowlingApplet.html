@@ -8,23 +8,24 @@
         <style>
             .appbox{
                 height: 820px;
-                width: 600px;
-                position: fixed;
+                width: 550px;
+                position: relative;
                 float: left;
-                margin-left: 15px;
+                padding-left: 10px;            
             }
             #applet {
                 height: 620px;
-                width: 600px;
+                width: 570px;
                 border:1px solid #000000;
                 background-color: whitesmoke;            
             }
     
+    
             .codeBlock {
-                width: 550px;
+                width: 290px;
                 float: left;
             }
-    
+
             .codeBlock2 {
                 float: right;            
                 width: 600px;
@@ -33,7 +34,7 @@
                 height: 135px;
                 width: 550px;
                 border: 1px solid lightblue;
-                left: 25px;
+                left: 10px;
                 margin-top: 5px;
                 position: relative;
             }
@@ -72,6 +73,15 @@
     </head>
     
     <body>
+        <!-- Left code block showing requirements for code coverage -->
+        <figure class="codeBlock" id="coverageCode">        
+            <pre>
+                <code>
+                    <object style="width: 300px; height: 79%;" data="resources/text/BowlingCases.txt"></object>
+                </code>
+            </pre>
+        </figure>
+        <!-- End of left code block -->
         <div class="appbox">
             <div id="description" >
                 <h3>Bowling App</h3>

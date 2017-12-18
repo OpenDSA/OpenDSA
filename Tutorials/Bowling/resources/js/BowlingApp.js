@@ -39,14 +39,17 @@ function main() {
         return;
     }
     //This code handles the proper symbols to put in the score table
+    var type = "";
     if (!game.gameOver) {
         var currentFrameBox = document.getElementById("roll" + (game.frameIndex));
         if (currentFrameBox.innerHTML != "") {
             if (game.rolls[game.currentRoll - 1] == 10) {
                 currentFrameBox.innerHTML = currentFrameBox.innerHTML + 'X';
+                type = "strike";
             }else if (game.rolls[game.currentRoll - 1] + game.rolls[game.currentRoll - 2] == 10
                 && game.rollIndex <= 2) {
                 currentFrameBox.innerHTML = currentFrameBox.innerHTML + " /";
+                type = "spare";
             }else {
                 if (game.rollIndex != 3){currentFrameBox.innerHTML = currentFrameBox.innerHTML + "-";}
                 currentFrameBox.innerHTML = currentFrameBox.innerHTML + game.rolls[game.currentRoll - 1];        
@@ -55,6 +58,7 @@ function main() {
         else {
             if (game.rolls[game.currentRoll - 1] == 10) {
                 currentFrameBox.innerHTML = 'X';
+                type = "strike";
             } else {
                 currentFrameBox.innerHTML = currentFrameBox.innerHTML + game.rolls[game.currentRoll - 1];        
             }
@@ -65,15 +69,24 @@ function main() {
     document.getElementById("testsrun").innerText = "Number of balls thrown: " + game.currentRoll;
     currentScore();
     getCodeCoverage();
-    logTestCase();
+    logTestCase(type);
 }
 
 /**
  * Writes the results of each roll to the output
  */
-function logTestCase() {
+function logTestCase(type) {
     var testCaseHistory = document.getElementById("testHistory");
-    var message = "Throw " + game.currentRoll + ": " + document.getElementById('rollValue').value + " pins hit.\n";
+    var message = "Throw " + game.currentRoll + ": " + document.getElementById('rollValue').value + " pins hit.";
+    if (type == "strike") {
+        message = message + " You got a strike! \n";
+    }
+    else if (type == "spare") {
+        message = message + " You got a spare! \n";
+    } else {
+        message = message + "\n";
+    }
+
     testCaseHistory.innerHTML = message + testCaseHistory.innerHTML;
 }
 
@@ -103,6 +116,27 @@ function getCodeCoverage() {
     document.getElementById("codeCoveragePercentage").innerText = codeCoverageP.toFixed(2) + "%";
 }
 
+window.onload = function() {
+    if (getUrlParam("code") != "true") {
+        document.getElementById("coverageCode").style.display = 'none';
+    } else {
+        document.getElementById("coverageCode").style.display = 'block';
+    }
+}
+
+/**
+ * Gets the value of a url parameter
+ * @param {*} name is the name of the parameter you want to get 
+ * @param {*} url is the url we want to read, can leave empty.
+ */
+function getUrlParam( name, url ) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( url );
+    return results == null ? null : results[1];
+}
 
 /**
  * the following code is meant to prevent accidental refreshes
