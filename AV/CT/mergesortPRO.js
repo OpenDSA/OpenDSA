@@ -33,7 +33,7 @@ $(document).ready(function() {
 
   // Process help button: Give a full help page for this activity
   function help() {
-    window.open("mergesortHelpPRO.html", "helpwindow");
+    window.open("iterationEXHelpPRO.html", "helpwindow");
   }
 
   // Process about button: Pop up a message with an Alert
