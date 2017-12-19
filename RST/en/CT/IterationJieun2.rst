@@ -15,8 +15,5 @@ List Iteration Exercise 2
 List Iteration JSAV Exercise
 --------------
 
-.. avembed:: AV/CT/mergesortPRO.html pe
-   :long_name: Mergesort Proficiency Exercise
-
 .. avembed:: AV/CT/iterationEXPRO.html pe
    :long_name: Iteration Exercise
