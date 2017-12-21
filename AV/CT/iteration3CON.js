@@ -8,10 +8,11 @@ var it3_consoleY,
 
 $(document).ready(function() {
   "use strict";
-  var arrValues = [4, 13, 6, 9, 11];
   var av_name = "iteration3CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
+
+  var arrValues = [4, 13, 6, 9, 11];
   var leftMargin = 270,
       rect_left = leftMargin - 150,
       rect0_top = 0,
