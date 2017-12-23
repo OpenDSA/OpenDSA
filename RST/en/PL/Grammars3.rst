@@ -8,10 +8,10 @@
 
 .. odsalink::  AV/PL/AV/parseTree.css
 
-=================
-Grammars - Part 3
-=================
-.. (F 2/5/16)
+====================================================
+Grammars - Part 3 - Establishing Order of Operations
+====================================================
+
 
 RP 3 part 1
 -----------
