@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html data-require="math Jison1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Jison (1)</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1000" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="init">Jison1.init()</var>
+        <var id="tokens">Jison1.tokenLines</var>
+        <var id="productions">Jison1.productions</var>
+        <var id="strings">Jison1.strings</var>        
+	<var id="answer">Jison1.answer</var>
+      </div>
+
+      <div class="problems">
+        <div id="Jison1p">
+          <div class="question">
+	    <p class="question">Consider the following Jison grammar:</p>
+<pre class="string">
+%lex
+%%
+\s+                   { /* skip whitespace */ }
+<var>tokens</var>&lt;&lt;EOF>>               { return "EOF";         }
+.                     { return "INVALID";     }
+/lex
+%start ss
+%% 
+ss
+  : s "EOF"
+  ;
+<var>productions</var>
+</pre>
+	    <p class="question">Now consider the following five strings:</p>
+	    <ul>
+	      <var>strings</var>
+	    </ul>
+	    <p class="question">How many of these strings are parsed successfully according to the grammar above?</p>
+            <p class="solution" data-type="text"><var>answer</var></p>
+	  </div>
+          <div class="hints">
+            <p>First, make sure to understand the regular expressions
+            that define the tokens in this grammar.</p>
+            <p>Then, carefully study the phrase-structure component of the
+            grammar, focusing on the recursive pattern of the productions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

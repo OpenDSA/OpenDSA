@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Order of Precedence and Associativity</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="920" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="PrecedenceAndAssociativityp">
+          <p class="question">Consider the following BNF grammar in
+          which &lt;s&gt; is the start non-terminal and @, ? and # are three
+          binary operators:
+	    <table class="grammar">
+	      <tr><td>&lt;s&gt;</td> 
+		<td>::=</td>
+		<td>&lt;s&gt; @ &lt;t&gt;</td>
+		<td>| &lt;t&gt;</td></tr>
+	      <tr><td>&lt;t&gt;</td> 
+		<td>::=</td>
+		<td>&lt;u&gt; ? &lt;t&gt;</td>
+		<td>| &lt;u&gt;</td></tr>
+	      <tr><td>&lt;u&gt;</td> 
+		<td>::=</td>
+		<td>&lt;u&gt; # &lt;v&gt;</td>
+		<td>| &lt;v&gt;</td></tr>
+	      <tr><td>&lt;v&gt;</td> 
+		<td>::=</td>
+		<td>a | b | c</td>
+		<td></td></tr>
+	    </table>
+	    <p class="question">Which one of the following statements
+	    is true of this grammar?</p>
+          <div class="solution"># is left-associative and has
+          higher precedence than @.</div>
+          <ul class="choices">
+            <li>All three operators are left-associative and @ has
+            higher precedence than #.</li>
+            <li>All three operators are right-associative and @ has
+            lower precedence than #.</li>
+            <li>&lt;t&gt; is right-associative and ? has higher precedence
+            than #.</li>
+            <li>? is right-associative and has lower precedence than @.</li>
+          </ul>
+          <div class="hints">
+            <p>Review the definitions for "production,"
+            "non-terminal," "operator," "associativity of operators,"
+            and "order of precedence of operators."</p>
+            <p>Review the direct connection between the associativity
+            property of an operator and the recursive pattern in the
+            production that defines the operator.</p>
+            <p>Review the connection between the order of precedence
+            of operators and their groupings into separate
+            productions.</p>
+            <p>Review the connection between the order of precedence
+            of operators and how far down the parse tree each operator
+            appears, that is, how many distinct non-terminals appear
+            on the path from the start non-terminal to the operator.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
