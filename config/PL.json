@@ -16,7 +16,7 @@
     "required": false
   }, 
   "glob_ka_options": {
-    "threshold": 5, 
+    "threshold": 3, 
     "points": 1.0, 
     "required": true
   }, 
@@ -27,7 +27,7 @@
     "points": 1.0
   }, 
   "glob_pe_options": {
-    "threshold": 0.9, 
+    "threshold": 1, 
     "points": 2.0, 
     "required": true
   }, 
