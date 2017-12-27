@@ -6,13 +6,13 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-=================
-Grammars - Part 5 
-=================
-.. (W 2/10/16)
+===================================================================
+Grammars - Part 5 - Using Parser Generators to Interpret a Language
+===================================================================
 
-RP 5 part 1
------------
+
+Annotating Jison Grammars
+-------------------------
 
 This is a very short module in which we give an overview of how to add
 annotations to a Jison grammar to produce an interpreter, rather than
@@ -114,5 +114,5 @@ The review problem set for this module consists of just one problem,
 which will help you understand how annotated Jison grammars can be
 used to generate interpreters.
 
-.. avembed:: Exercises/PL/RP5part1.html ka
+.. avembed:: Exercises/PL/AnnotatingJison.html ka
    :long_name: RP set #5, question #1
