@@ -44,8 +44,8 @@ whose structure can be described in BNF notation as follows:
 .. math::
 
    \begin{eqnarray*} 
-   <list-of-ints> & ::= & \epsilon \\
-   &|& <int> <list-of-ints> \\
+   <list\_of\_ints> & ::= & \epsilon \\
+   &|& <int> <list\_of\_ints> \\
    \end{eqnarray*}
 
 Note that:
@@ -71,11 +71,10 @@ and non-empty lists will look like this::
 Since JavaScript does not come with a built-in immutable list data structure, we
 provide one as part of a module called ``fp.js``, which is used throughout Chapter 2.
 
-You will make this module
-available throughout each one of your JS files, by including the
-following line at the top of the file:
+You can make this module
+available in your JS files by including the
+following line at the top of the file::
 
-::
           var fp = require('./fp');
 
 	  
