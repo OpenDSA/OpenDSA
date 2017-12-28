@@ -1,0 +1,32 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "Iteration Exercise",
+      "av_Authors": "Jieun Chon",
+      ".instructLabel": "Instructions:",
+      ".instructions": "This is instructions for iteration exercise.",
+      "#help": "Help",
+      "#about": "About"
+    },
+    "fi": {
+      ".avTitle": "Iteration Exercise",
+      "av_Authors": "Jieun Chon",
+      ".instructLabel": "Instructions:",
+      ".instructions": "This is instructions for iteration exercise.",
+      "#help": "Help",
+      "#about": "About"
+    },
+    "sv": {
+      ".avTitle": "Iteration Exercise",
+      "av_Authors": "Jieun Chon",
+      ".instructLabel": "Instructions:",
+      ".instructions": "This is instructions for iteration exercise.",
+      "#help": "Help",
+      "#about": "About"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "fix"
+  }
+}

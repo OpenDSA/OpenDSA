@@ -48,41 +48,7 @@ $(document).ready(function() {
 
   // Process the reset button
   function initialize() {
-    // Clear all existing arrays
-    $("#arrays").html("");
-
-    // Generate random numbers for the exercise
-    initialArray = [];
-    userAnswerValue = [];
-    userAnswerDepth = [];
-    for (var i = 0; i < arraySize; i++) {
-      var randomVal = Math.floor(Math.random() * 100);
-      initialArray[i] = randomVal;
-      userAnswerValue[i] = randomVal;
-    }
-
-    // Log the initial state of the exercise
-    var initData = {};
-    initData.gen_array = initialArray;
-    ODSA.AV.logExerciseInit(initData);
-
-    // Dynamically create arrays
-    arrays = {};
-    initArrays(0, initialArray.length - 1, 1, 1, userAnswerDepth, arrays, av);
-
-    // Reset the merge variables
-    resetMergeVars();
-
-    // Create arrays to store the user's answers and hide it because
-    // it simply maintains state and is not used for display purposes
-    // Need to record the order of the values and how deep in the
-    // recursion they are in order to ensure a correct answer
-    userAnswerValue = av.ds.array(userAnswerValue, {visible: false});
-    userAnswerDepth = av.ds.array(userAnswerDepth, {visible: false});
-
-    av.forward();
-    av._undo = [];
-    return [userAnswerValue, userAnswerDepth];
+      return [userAnswerValue, userAnswerDepth];
   }
 
   // Create the model solution, which is used for grading the exercise
