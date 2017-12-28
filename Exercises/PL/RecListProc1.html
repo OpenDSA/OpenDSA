@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html data-require="math RecListProc1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Recursive List Processing 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1000" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="setup">RecListProc1.init()</var>
+        <var id="args">RecListProc1.args</var>
+        <var id="functionDefinition">RecListProc1.functionDefinition</var>
+        <var id="functionCalls">RecListProc1.functionCalls</var>
+        <var id="CorrectAnswer">RecListProc1.correct</var>
+        <var id="option1">RecListProc1.incorrect[0]</var>
+        <var id="option2">RecListProc1.incorrect[1]</var>
+        <var id="option3">RecListProc1.incorrect[2]</var>
+      </div>
+
+      <div class="problems">
+        <div id="RecListProc1p">
+          <p class="question">Consider the following definition of
+          the function <span class="string">f</span>, where <var>args</var>:
+<pre class="string">
+var fp = require('./fp');
+<var>functionDefinition</var>
+</pre>
+          <p class="question">Now consider the following sequence of
+          invocations of the
+          function <span class="string">f</span>:<br />
+	  <var>functionCalls</var></p>
+	  <p class="question">What values are returned assuming that
+	  these invocations of <span class="string">f</span> are made
+	  in the order given above? Note that, if a given invocation
+	  throws an exception or goes into an infinite loop, the
+	  correct answer is the word "error" in all lowercase
+	  letters.</p>
+          <div class="solution"><var>CorrectAnswer</var></div>
+          <ul class="choices">
+            <li><var>option1</var></li>
+            <li><var>option2</var></li>
+            <li><var>option3</var></li>
+          </ul>
+          <div class="hints">
+	    <p>Identify the base and recursive cases.</p>	    	    
+	    <p>Make the recursive "leap of faith".</p>	    
+	    <p>You may want to trace each function call on paper,
+	    keeping track of each recursive call.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

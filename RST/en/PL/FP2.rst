@@ -6,42 +6,183 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-===========================================
-Functional Programming - Part 2 
-===========================================
-.. (F 2/12/16)
+==============================================================================
+Functional Programming - Developing basic, recursive list-processing functions 
+==============================================================================
+
    
-RP 6 part 1
------------
+Recursive List Processing (1)
+-----------------------------
 
-Topics of the day:
+In the previous section, we introduced three predicates that are part
+of the *fp* module -- *isEq*, *isZero*, and *isNull*.  We will now
+introduce some additional predicates and arithmetic functions that we
+will then use to write recursive list-processing functions, including
+``sum``, ``isMember``, ``removeFirst``, and ``subst``
 
-  1. Developing basic, recursive list-processing functions, including
-     ``sum``, ``isMember``, ``removeFirst``, and ``subst``
+First, to check whether something is a list or not, you must use the
+``isList`` function::
 
-The review problem set for today contains three review problems.
+    > fp.isList( [ ] )  
+    true
+    > fp.isList( [1,2,3] )
+    true
+    > fp.isList( 1 )
+    false
 
-This problem aims to increase your comfort with recursion in functions
-that manipulate lists. Note that this problem is randomized. You
-must solve it correctly three times in a row to earn the point
-associated with it.
+Second, the two helper functions ``add`` and ``sub`` perform
+the addition and subtraction, respectively, of their two integer
+arguments::
 
-.. avembed:: Exercises/PL/RP6part1.html ka
+    > fp.add(2,3)
+    5
+    > fp.sub(2,3)
+    -1
+
+Third, the two predicates ``isLT`` and ``isGT`` test whether
+their first argument is less than or greater than their second argument,
+respectively::
+
+    > fp.isGT(2,3)
+    false
+    > fp.isLT(2,3)
+    true
+
+We're now ready write a recursive ``sum`` function that takes in an integer list and
+returns the sum of all of the values in the input list.
+::
+
+    > var fp = require('./fp')
+    > sum( [ 1, 2, 3 ] )
+    6
+    > sum( [ ] )
+    0
+    > sum( [ 1, -2, 3, -4] )
+    -2
+
+When we design a recursive algorithm, we must keep in mind the recursive BNF definition
+of integer lists:
+
+.. math::
+
+   \begin{eqnarray*} 
+         <list\_of\_ints> &::=& \epsilon \\
+         & | & <int> <list\_of-\_ints> \\
+   \end{eqnarray*}	 
+
+Following the two paths for a *<list_of_ints>* in this grammar -- one for the empty list and one for a non-empty list leads us to structure a *sum* function as::
+
+    var sum = function (ns) {
+                 if ( SOME TEST ) {
+                    return SOMETHING;
+                 } else { 
+                    return SOMETHING ELSE;
+                 }
+              }
+
+Think about how to complete this function and then try the following
+review problem, which uses similar recursive list-processing logic.
+Note that this problem is randomized. You must solve it correctly
+three times in a row to earn the point associated with it.
+
+.. avembed:: Exercises/PL/RecListProc1.html ka
    :long_name: RP set #6, question #1
 
-RP 6 part 2
------------
+Recursive List Processing (2)
+-----------------------------
 
-This problem asks you to modify the ``removeFirst`` function.
+Next consider a function *isMember* that takes in an integer and an integer list and returns true if and only if
+its first argument is a member of the second argument::
 
-.. avembed:: Exercises/PL/RP6part2.html ka
+    > var fp = require('./fp')
+    > isMember( 2, [ 1, 2, 3 ] )
+    true
+    > isMember( 4, [ 1, 2, 3 ] )
+    false
+    > isMember( 2, [ 1, [ 2, 3 ] ] )
+    false
+
+Keep in mind the recursive definition of integer
+lists:
+
+.. math::
+
+   \begin{eqnarray*} 
+   <list\_of\_ints> &::=& \epsilon \\
+   & | &  <int> <list\_of\_ints> \\
+   \end{eqnarray*}
+
+Following that recursive definition  design a recursive algorithm for *isMember* using the template
+provided below::
+
+    var isMember = function (n,ns) {
+                      if ( SOME TEST ) {
+                         return SOMETHING;
+                      } else { 
+                         return SOMETHING ELSE;
+                      }
+                   }
+
+Once you have the logic designed for *isMember*, design a similar
+list-processing function *removeFirst* that takes in an integer
+:math:`n` and an integer list :math:`l` and returns a list identical
+to :math:`l` but with the first occurrence of :math:`n` removed::
+
+    > var fp = require('./fp')
+    > removeFirst(3,[1,2,3])
+    [ 1, 2 ]
+    > removeFirst(4,[1,2,3])
+    [ 1, 2, 3 ]
+    > removeFirst(2,[1,2,3,2])
+    [ 1, 3, 2 ]
+
+If you again follow the recursive BNF description for a *<list_of_ints>*, you will find that the appropriate template for your *removeFirst* function looks like::
+
+    var removeFirst = function (n,ns) {
+                         if ( SOME TEST ) {
+                            return SOMETHING;
+                         } else { 
+                            DO A BIT MORE WORK;
+                         }
+                   }
+
+Once you have the correct logic for *removeFirst*, consider the
+following review problem, which asks you to slightly modify *removeFirst*.
+
+
+.. avembed:: Exercises/PL/RecListProc2.html ka
    :long_name: RP set #6, question #2
 
 
-RP 6 part 3
------------
+Recursive List Processing (3)
+-----------------------------
 
-This problem asks you to modify the ``subst`` function.
+As a final example in this section consider a function that takes in two integers
+:math:`n` (for ’new’) and :math:`o` (for ’old’) and an integer list
+:math:`l` and returns a list identical to :math:`l` except that all
+occurrences of :math:`o` in :math:`l` have been replaced by :math:`n`::
 
-.. avembed:: Exercises/PL/RP6part3.html ka
+    > var fp = require('./fp')
+    > subst(10,1,[1,2,3,2,1])
+    [ 10, 2, 3, 2, 10 ]
+    > subst(50,5,[1,2,3])
+    [ 1, 2, 3 ]
+    > subst(10,1,[[1,2],3])
+    [ [ 1, 2 ], 3 ]
+
+
+Again the template for the *subst* function follows the pattern
+established by the BNF grammar for a *<list_of_ints>*::
+
+    var subst = function (n,ns) {
+                   if ( SOME TEST ) {
+                      return SOMETHING;
+                   } else { 
+                      DO A BIT MORE WORK;
+                   }
+                }
+
+When you have established the correct logic for this template, consider the final review problem for this section, which  asks you to slightly modify the ``subst`` function.
+
+.. avembed:: Exercises/PL/RecListProc3.html ka
    :long_name: RP set #6, question #3

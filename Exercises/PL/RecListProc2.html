@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Recursive List Processing 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="800" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RecListProc2p">
+          <p class="question">Consider the following definition of
+          the function <span class="string">removeFirst</span>:</p>
+<pre class="string">
+1. var removeFirst = function (n,ns) {
+2.    if (fp.isNull(ns)) {
+3.        return [ ];
+4.    } else if (fp.isEq(n,fp.hd(ns))) {
+5.        return fp.tl(ns);
+6.    } else {
+7.        return fp.cons(fp.hd(ns),removeFirst(n,fp.tl(ns)));
+8.    }
+9. }
+</pre>
+          <p class="question">If you want to modify this
+          function to make it remove all occurrences
+          of <span class="string">n</span>
+          in <span class="string">ns</span> instead of just the
+          first one, you could accomplish this by making a small change
+          in one line and leaving the rest of the function unchanged.
+          Which line is it?
+	  </p>
+          <div class="solution">5</div>
+          <ul class="choices">
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>7</li>
+          </ul>
+          <div class="hints">
+	    <p>Remember that, on an exam or if called upon in class,
+	    you will have to both identify  the line number and spell
+	    out the specific code change.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
