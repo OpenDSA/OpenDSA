@@ -39,13 +39,14 @@ equal probability of being generated (even the three sequences
 above).
 In fact, definitions of randomness generally have features such as:
 
-* One cannot predict the next item. The series is :term:`unpredictable`.
+* One cannot predict the next item better than by guessing.
 * The series cannot be described more briefly than simply listing
-  it out. This is the :term:`equidistribution` property.
+  it out.
+  This is the :term:`equidistribution property`.
 
 There is no such thing as a random number sequence, only
 "random enough" sequences.
-A sequence is :term:`pseudorandom` if no future term can be predicted
+A sequence is :term:`pseudo random` if no future term can be predicted
 in polynomial time, given all past terms.
 
 Most computer systems use a deterministic algorithm to select

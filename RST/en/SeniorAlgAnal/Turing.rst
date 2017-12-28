@@ -44,7 +44,7 @@ Each square can store one character.
 The machine has a single I/O head that at any instant in time is "on"
 one of the squares.
 The control unit of the machine is defined by a set of abstract
-:term:`states`.
+:term:`states <state>`.
 At any given instant, the machine is said to be
 "in" one of the states, and has a set of actions that can be performed
 when in that state.

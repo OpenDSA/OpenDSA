@@ -46,8 +46,8 @@ This dynamic programming algorithm is tractable if the numbers are
 "reasonable".
 That is, we can successfully find solutions to the problem when
 :math:`nK` is in the thousands.
-Such an algorithm is called a :term:`pseudo-polynomial` time
-algorithm.
+Such an algorithm is called a
+:term:`pseudo-polynomial <pseudo polynomial>` time algorithm.
 This is different from TRAVELING SALESMAN which cannot possibly be
 solved when :math:`n = 100` given current algorithms.
 
@@ -82,9 +82,9 @@ For example,
 attempts to organize the processing of all the subproblems to a
 problem so that the work is done efficiently.
 
-If we need to do a brute-force search of the entire solution space, we
-can use :term:`backtracking` to visit all of the possible solutions
-organized in a solution tree.
+If we need to do a brute-force search of the entire
+:term:`solution space`, we can use :term:`backtracking` to visit all
+of the possible solutions organized in a :term:`solution tree`.
 For example, SATISFIABILITY has :math:`2^n` possible ways to assign
 truth values to the :math:`n` variables contained in the Boolean
 expression being satisfied.
@@ -107,10 +107,11 @@ solution quickly.
 In others, we end up visiting a large portion of the :math:`2^n`
 possible solutions.
 
-:term:`Banch-and-Bounds` is an extension of backtracking that applies
-to :term:`optimization problems` such as TRAVELING SALESMAN where we
-are trying to find the shortest tour through the
-cities.
+:term:`Banch-and-Bounds <branch-and-bounds algorithm>` is an extension
+of backtracking that applies to
+:term:`optimization problems <optimization problem>` such as
+TRAVELING SALESMAN where we are trying to find the shortest tour
+through the cities.
 We traverse the solution tree as with backtracking.
 However, we remember the best value found so far.
 Proceeding down a given branch is equivalent to deciding which order
@@ -125,7 +126,7 @@ best) solution, we can use this as an initial bound value to
 effectively prune portions of the tree.
 
 Another coping strategy is to find an approximate solution to the
-problem.
+problem, called an :term:`approximation algorithm`.
 There are many approaches to finding approximate solutions.
 One way is to use a :term:`heuristic` to solve the problem, that is,
 an algorithm based on a "rule of thumb" that does not always give the
@@ -144,8 +145,8 @@ such that the answer will be within a certain
 percentage of the best possible answer.
 For example, consider this simple heuristic for the VERTEX COVER
 problem:
-Let :math:`M` be a maximal (not necessarily maximum) :term:`matching`
-in :math:`G`.
+Let :math:`M` be a maximal (not necessarily maximum)
+:term:`matching <matching problem>` in :math:`G`.
 A matching pairs vertices (with connecting edges) so that no
 vertex is paired with more than one partner.
 Maximal means to pick as many pairs as possible, selecting them in

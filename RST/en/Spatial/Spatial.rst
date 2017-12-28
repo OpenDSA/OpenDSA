@@ -72,9 +72,9 @@ The :term:`kd tree` is a natural extension
 of the BST to multiple dimensions.
 It is a binary tree whose splitting decisions alternate among the
 key dimensions.
-Like the BST, the kd tree uses :term:`object space decomposition`.
+Like the BST, the kd tree uses :term:`object-space decomposition`.
 The :term:`PR quadtree` uses
-:term:`key space decomposition` and so is a form
+:term:`key-space decomposition` and so is a form
 of :term:`trie`.
 It is a binary tree only for one-dimensional keys (in which case it
 is a trie with a binary alphabet).
@@ -86,5 +86,5 @@ Two other variations on these data structures are the
 :ref:`bintree <bintree> <Bintree>` and the
 :term:`point quadtree`.
 In two dimensions, these four structures cover all four combinations
-of object versus key space decomposition on the one hand, and
+of object- versus key-space decomposition on the one hand, and
 multi-level binary versus :math:`2^d`-way branching on the other.

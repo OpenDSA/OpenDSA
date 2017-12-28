@@ -151,6 +151,10 @@ Glossary
       :term:`Floyd's algorithm`, which uses the
       :term:`dynamic programming` algorithmic technique.
 
+   alphabet
+      The characters or symbols that strings in a given language may
+      be composed of.
+            
    alphabet trie
       A :term:`trie` data structure for storing variable-length
       strings.
@@ -184,6 +188,10 @@ Glossary
       In set notation, relation :math:`R` is antisymmetric if whenever
       :math:`aRb` and :math:`bRa`, then :math:`a = b`, for all
       :math:`a, b \in \mathbf{S}`.
+
+   approximation algorithm
+      An algorthm for an :term:`optimization problem` that finds a
+      good, but not necessarily cheapest, solution.
 
    arm
       In the context of an :term:`I/O head`, this attaches the sensor
@@ -252,6 +260,9 @@ Glossary
       Similar to a :term:`Splay Tree` in that it uses the concept of
       :term:`rotations <rotation>` in the insert and remove operations.
 
+   automata
+      Synonym for :term:`finite state machine`.
+
    automatic variable
       A synonym for :term:`local variable`.
       When program flow enters and leaves the variable's scope,
@@ -307,9 +318,12 @@ Glossary
       In the context of a web browser, the Internet might be
       considered the backing storage.
 
-   BFS
-      Abbreviation for :term:`breadth-first search`.
-
+   backtracking
+      A :term:`heuristic` for brute-force search of a solution space.
+      It is essentially a :term:`depth-first search` of the solution
+      space.
+      This can be improved using a :term:`branch-and-bounds algorithm`.
+      
    bag
       :to-term: multilist :label: synonym
 
@@ -369,6 +383,9 @@ Glossary
       The disadvantage is that it tends to 
       cause :term:`external fragmentation` in the form of small,
       unuseable memory blocks.
+
+   BFS
+      Abbreviation for :term:`breadth-first search`.
 
    big-Oh notation
       In :term:`algorithm analysis`, a shorthand notation for
@@ -488,6 +505,18 @@ Glossary
       interest, then checking bounding boxes first can save a lot of
       time.
 
+   branch-and-bounds algorithm
+      A variation on :term:`backtracking` that applies
+      to :term:`optimization problems <optimization problem>`.
+      We traverse the :term:`solution tree` as with backtracking.
+      Proceeding deeper in the solution tree generally requires
+      additional cost.
+      We remember the best-cost solution found so far.
+      If the cost of the current branch in the tree exceeds the best
+      tour cost found so far, then we know to stop pursuing this
+      branch of the tree.
+      At this point we can immediately back up and take another branch.
+      
    break-even point
       The point at which two costs become even when measured as the
       function of some variable.
@@ -721,6 +750,20 @@ Glossary
       a term that refers to the degree to which a class has a single 
       well-defined role or responsibility.
 
+   Collatz sequence
+      For a given integer value :math:`n`, the sequence of numbers
+      that derives from performing the following computatin on :math:`n`::
+
+        while (n > 1)
+          if (ODD(n))
+            n = 3 * n + 1;
+          else
+            n = n / 2;
+
+      This is famous because, while it terminates for any value of
+      :math:`n` that you try, it has never been proven to be a fact
+      that this always terminates.
+            
    collision
       In a :term:`hash system`, this refers to the case where two
       search :term:`keys <key>` are mapped by the
@@ -808,6 +851,10 @@ Glossary
       A :term:`graph` where every :term:`vertex` connects to every
       other vertex.
 
+   complex number
+      In mathematics, an imaginary number, that is, a number with a
+      real component and an imaginary component.
+
    Composite design pattern
       Given a class hierarchy representing a set of objects, and a
       container for a collection of objects, the composite
@@ -887,6 +934,13 @@ Glossary
       Typical examples are arrays,
       :term:`search trees <search tree>`, and
       :term:`hash tables <hash table>`.
+
+   countably infinite
+   countable
+      A :term:`set` is countably infinite if it contains a finite
+      number of elements, or (for a set with an infinite number of
+      elements) if there exists a one-to-one mapping from
+      the set to the set of integers.
 
    cost
       The amount of resources that the solution consumes.
@@ -1069,14 +1123,44 @@ Glossary
       and so its behavior on a given input will always be the same.
       This is in contrast to a :term:`randomized algorithm`.
 
+   Deterministic Finite Automata
+   DFA
+      An :term:`automata` or abstract machine that can process an
+      input string (shown on a tape) from left to right.
+      There is a control unit (with :term:`states <state>`),
+      behavior defined for what to do when in a given state and with a
+      given symbol on the current square of the tape.
+      All that we can "do" is change state before going to the next
+      letter to the right.
+      (Also called a Deterministic Finite Acceptor).
+   
    DFS
       Abbreviation for :term:`depth-first search`.
 
+   diagonalization argument
+      A proof technique for proving that a set is
+      :term:`uncountably infinite`.
+      The approach is to show that, no matter what order the elements
+      of the set are put in, a new element of the set can be
+      constructed that is not in that ordering.
+      This is done by changing the :math:`i` th value or position of
+      the element to be different from that of the :math:`i` th
+      element in the proposed ordering.
+   
    dictionary
       An abstract data type or interface for a data structure or
       software subsystem that supports insertion, search, and deletion
       of records.
 
+   dictionary search
+      A close relative of an :term:`interpolation search`.
+      In a classical (paper) dictionary of words in a natural
+      language, there are markings for where in the dictionary the
+      words with a given letter start.
+      So in typical usage of such a dictionary, words are found by
+      opening the dictionary to some appropriate place within the
+      pages that contain words starting with that letter.
+      
    digraph
       Abbreviation for :term:`directed graph`.
 
@@ -1139,6 +1223,18 @@ Glossary
       In contrast, if the dirty bit is not set, then it is unnecessary
       to write the contents to backing storage, thus saving time over
       not keeping track of whether the contents have changed or not.
+
+
+   Discrete Fourier Transform
+   DFT
+      Let :math:`a = [a_0, a_1, ..., a_{n-1}]^T` be a vector that
+      stores the coefficients for a polynomial being evaluated.
+      We can then do the calculations to evaluate the polynomial at
+      the :math:`n` th :math:`roots of unity <nth roots of unit>`
+      by multiplying the :math:`A_{z}`
+      matrix by the coefficient vector.
+      The resulting vector :math:`F_{z}` is called the
+      Discrete Fourier Transform (or DFT) for the polynomial.
 
    discriminator
       A part of a :term:`multi-dimensional search key`.
@@ -1324,6 +1420,11 @@ Glossary
       The connection that links two :term:`nodes <node>` in a
       :term:`tree`, :term:`linked list`, or :term:`graph`.
 
+   edit distance
+      Given strings :math:`S` and :math:`T`, the edit distance is
+      a measure for the number of editing steps required to convert 
+      :math:`S` into :math:`T`.
+      
    efficient
       A solution is said to be efficient
       if it solves the problem within the required
@@ -1373,6 +1474,11 @@ Glossary
       produced by the traversal 
       (as well as the process that created that listing).
 
+   equidistribution property
+      In random number theory, this means that a given series of
+      random numbers cannot be described more briefly than simply
+      listing it out.
+
    equivalence class
       An :term:`equivalence relation` can be used to partition a set
       into equivalence classes.
@@ -1394,11 +1500,15 @@ Glossary
       values for the parameters and apply the equation to yield an
       estimated solution.
 
+   evaluation
+      The act of finding the value for a polynomial at a given point.
+      
    exact-match query
       Records are accessed by unique identifier.
 
    exceptions
-      Exceptions are techniques used to predict possible runtime errors and handle them properly.
+      Exceptions are techniques used to predict possible runtime
+      errors and handle them properly.
 
    exchange
       A swap of adjacent records in an array.
@@ -1502,6 +1612,15 @@ Glossary
       :term:`disjoint sets`.
       It is the process of moving upwards in a
       tree to find the tree's root.
+
+   Finite State Machine
+   FSM
+   State Machine
+      Any abstract state machine, generally represented as a graph
+      where the nodes are the :term:`states <state>`, and the edges
+      represent transitions between nodes that take place when the
+      machine is in that node (state) and sees an appropriate input.
+      See, as an example, :term:`Deterministic Finite Automata`.
 
    first fit
       In a :term:`memory manager`, first fit is a :term:`heuristic`
@@ -1875,6 +1994,11 @@ Glossary
       expected (by the agent employing the heuristic) to provide a
       reasonably efficient solution.
 
+   heuristic algorithm
+      A type of :term:`approximation algorithm`, that uses a
+      :term:`heuristic` to find a good, but not necessarily cheapest,
+      solution to an :term:`optimization problem`.
+
    home position
       In :term:`hashing`, a synonym for :term:`home slot`.
 
@@ -1936,8 +2060,8 @@ Glossary
       that hold indexing information to define the layout of the file
       system.
 
-   image space decomposition
-      A from of :term:`key space decomposition` where the
+   image-space decomposition
+      A from of :term:`key-space decomposition` where the
       :term:`key space` splitting points is predetermined (typically
       by splitting in half).
       For example, a :term:`Huffman coding tree` splits the letters
@@ -1945,8 +2069,8 @@ Glossary
       side, and those with codes that start with 1 on the right side.
       This regular decomposition of the key space is the basis for a
       :term:`trie` data structure.
-      An image space decomposition is in opposition to an
-      :term:`object space decomposition`.
+      An image-space decomposition is in opposition to an
+      :term:`object-space decomposition`.
 
    incident
       In :term:`graph` terminology,
@@ -2018,6 +2142,12 @@ Glossary
       In :term:`object-oriented programming <object-oriented programming paradigm>`,
       a synonym for :term:`data member`.
 
+   integer function
+      Any function whose input is an integer and whose output is an
+      integer. It can be proved by
+      :term:`diagonalization <diagonalization argument>` that the
+      set of integer functions is :term:`uncountably infinite`.
+   
    internal fragmentation
       A condition that occurs when more than :math:`m` bytes
       are allocated to service a :term:`memory request` for :math:`m`
@@ -2040,6 +2170,29 @@ Glossary
       This is in contrast to an :term:`external sort` that is meant to
       work on data stored in 
       :term:`peripheral storage` such as on a :term:`disk drive`.
+
+   interpolation
+      The act of finding the coefficients of a polynomial, given the
+      values at some points.
+      A polynomal of degree :math:`n-1` requires :math:`n` points to
+      interpolate the coefficients.
+
+   interpolation search
+      Given a sorted array, and knowing the first and last :term:`key`
+      values stored in some subarray known to contain
+      :term:`search key` :math:`K`, interpolation search will compute
+      the expected location of :math:`K` in the subarray as a fraction
+      of the distance between the known key values.
+      So it will next check that computed location, thus narrowing the
+      search for the next iteration.
+      Given reasonable key value distribution, the :term:`average
+      case` for interpolation search will be
+      :math:`\Theta(\log \log n)`, or better than the expected cost of
+      :term:`binary search`.
+      Nonetheless, binary search is expected to be faster in nearly
+      all practical situations due to the small difference between the
+      two costs, combined with the higher constant factors required to
+      implement interpolation search as compared to binary search.
 
    inversion
       A measure of how disordered a series of values is. For each
@@ -2090,6 +2243,18 @@ Glossary
       Another common use for this term is for a collection of tasks to
       be ordered by a :term:`topological sort`.
 
+   jump search
+      An algorithm for searching a sorted list, that falls between
+      :term:`sequential search` and :term:`binary search` in both
+      computational cost and conceptual complexity.
+      The idea is to keep jumping by some fixed number of positions
+      until a value is found that is bigger than :term:`search key`
+      :math:`K`, then do a sequential search over the subarray that is
+      now known to contain the search key.
+      The optimal number of steps to jump will be :math:`\sqrt{n}` for
+      an array of size :math:`n`, and the :term:`worst case` cost will
+      be :term:`\Theta(\sqrt{n})`.
+      
    K-ary tree
       A type of :term:`full tree` where every internal node has
       exactly :math:`K` :term:`children <child>`.
@@ -2108,12 +2273,12 @@ Glossary
       It uses the concept of a :term:`discriminator` at each level to
       decide which single component of the
       :term:`multi-dimensional search key` to branch on at that level.
-      It uses a :term:`key space decomposition`, meaning that all data
+      It uses a :term:`key-space decomposition`, meaning that all data
       records in the left subtree of a node have a value on the
       corresponding discriminator that is less than that of the node,
       while all data records in the right subtree have a greater
       value.
-      The :term:`bintree` is the :term:`image space decomposition`
+      The :term:`bintree` is the :term:`image-space decomposition`
       analog of the kd tree.
 
    key
@@ -2141,6 +2306,19 @@ Glossary
       The collection of key-value pairs can also act as an
       :term:`index <indexing>`.
 
+   key space
+      The range of values that a :term:`key` value may take on.
+
+   key-space decomposition
+      :to-term: object-space decomposition :label: type
+      :to-term: image-space decomposition :label: type
+
+      The idea that the range for a :term:`search key` will be split
+      into pieces.
+      There are two general approaches to this:
+      :term:`object-space decomposition` and
+      :term:`image-space decomposition`.
+
    key-value pair
       A standard solution for solving the problem of how to relate a
       :term:`key` value to a record (or how to find the key for a
@@ -2153,19 +2331,21 @@ Glossary
       The other standard solution to this problem is to pass a
       :term:`comparator` function to the index.
 
-   key space
-      The range of values that a :term:`key` value may take on.
-
-   key space decomposition
-      :to-term: object space decomposition :label: type
-      :to-term: image space decomposition :label: type
-
-      The idea that the range for a :term:`search key` will be split
-      into pieces.
-      There are two general approaches to this:
-      :term:`object space decomposition` and
-      :term:`image space decomposition`.
-
+   knapsack problem
+      While there are many variations of this problem, here is a
+      typical version: Given knapsack of a fixed size, and a
+      collection of objects of various sizes, is there a subset of the
+      objects that exactly fits into the knapsack?
+      This problem is known to be :term:`NP-complete`, but can be
+      solved for problem instances in practical time relatively
+      quickly using :term:`dynamic programming`.
+      Thus, it is considered to have
+      :term:`pseudo-polynomial <pseudo polynomial>` cost.
+      An :term:`optimization problem` version is to find the subset
+      that can fit with the greatest amount of items, either in terms of
+      their total size, or in terms of the sum of values associated
+      with each item.
+      
    Kruskal's algorithm
       :to-term: UNION/FIND :label: uses
 
@@ -2241,6 +2421,20 @@ Glossary
    lifetime
       For a variable, lifetime is the amount of time it will exist
       before it is destroyed.
+
+   linear congruential method
+      In random number theory, a process for computing the next number
+      in a :term:`pseudo-random <pseudo random>` sequence.
+      Starting from a :term:`seed`, the next term :math:`r(i)` in the
+      series is calculated from term :math:`r(i-1)` by the equation
+
+      .. math::
+
+         r(i) = (r(i-1)\times b) \bmod t
+
+      where :math:`b` and :math:`t` are constants.
+      These constants must be well chosen for the resulting series of
+      numbers to have desireable properties as a random number sequence.
 
    linear growth rate
       For input size :math:`n`, a growth rate of :math:`cn` (for
@@ -2435,15 +2629,35 @@ Glossary
       A theorem that makes it easy to solve
       :term:`divide-and-conquer recurrences`.
 
+   matching
+      In graph theory, a pairing (or match) of various nodes in a graph.
+
+   matching problem
+      Any problem that involves finding a :term:`matching` in a graph
+      with some desired property.
+      For example, a well-known :term:`NP-complete` problem is to find
+      a :term:`maximum match` for an undirected graph.
+
    max heap
       A :term:`heap` where every :term:`node` has a :term:`key` value
       greater than its :term:`children <child>`.
       As a consequence, the node with maximum key value is
       at the :term:`root`.
 
+   maximal match
+      In a graph, any :term:`matching` that leaves no pair of
+      unmatched vertices that are connected.
+      A maximal matching is not necessarily a
+      :term:`maximum match`.
+      In other words, there might be a larger matching than the
+      maximal matching that was found.
+
    maximum lower bound
       The :term:`lower bound` for the :term:`problem` of finding the
       maximum value in an unsorted list is :math:`\Omega(n)`.
+
+   maximum match
+      In a graph, the largest possible :term:`matching`.
 
    measure of cost
       When comparing two things, such as two algorithms, some event or
@@ -2758,6 +2972,11 @@ Glossary
       An algorithm that runs in polynomial time, and which may
       (or might not) use :term:`non-deterministic choice`.
 
+   nth roots of unity
+      All of the points along the unit circle in the complex plane
+      that represent multiples of the
+      :term:`primitive nth root of unity`.
+
    object
       An instance of a class, that is, something that is created and
       takes up storage during the execution of a computer program.
@@ -2773,19 +2992,23 @@ Glossary
       An approach to problem-solving where all computations are
       carried out using :term:`objects <object>`.
 
-   object space decomposition
-      A from of :term:`key space decomposition` where the
+   object-space decomposition
+      A from of :term:`key-space decomposition` where the
       :term:`key space` is determined
       by the actual values of keys that are found.
       For example, a :term:`BST` stores a key value in its root,
       and all other values in the tree with lesser value are in the
       left :term:`subtree`.
       Thus, the root value has split (or decomposed) the
-      :term:`key space` for that key based on its value into left
+      key space for that key based on its value into left
       and right parts.
-      An object space decomposition is in opposition to an
-      :term:`image space decomposition`.
+      An object-space decomposition is in opposition to an
+      :term:`image-space decomposition`.
 
+   octree
+      The three-dimensional equivalent of the :term:`quadtree` would
+      be a tree with :math:`2^3` or eight branches.
+      
    Omega notation
       In :term:`algorithm analysis`,
       :math:`\Omega` notation is used to describe a :term:`lower bound`.
@@ -2819,6 +3042,13 @@ Glossary
       optimum against which to compare the performance for a
       :term:`self-organizing list heuristic`.
 
+   optimization problem
+      Any problem where there are a (typically large) collection of
+      potential solutions, and the goal is to find the best solution.
+      An example is the Traveling Salesman Problem, where
+      visiting :math:`n` cities in some order has a cost, and the goal
+      is to visit in th cheapest order.
+   
    out degree
       In :term:`graph` terminology, the out degree for a :term:`vertex` is
       the number of edges directed out of the vertex.
@@ -2978,7 +3208,7 @@ Glossary
       A `term:`spatial data structure` for storing point data.
       It is similar to a :term:`PR quadtree` in that it (in two
       dimensions) splits the world into four parts.
-      However, it splits using an :term:`object space decomposition`.
+      However, it splits using an :term:`object-space decomposition`.
       That is, quadrant containing the point is split into four parts
       at the point.
       It is similar to the :term:`kd tree` which splits alternately in
@@ -3089,6 +3319,11 @@ Glossary
       the base type for the set. This is as opposed to an element of
       the set being another set.
 
+   primitive nth root of unity
+      The :math:`n` th root of 1. Normally a :term:`complex number`.
+      An intuitive way to view this is one :math:`n` th of the unit
+      circle in the complex plain.
+      
    Prim's algorithm
       :to-term: greedy algorithm :label: is a
 
@@ -3233,6 +3468,18 @@ Glossary
       We can prove that :math:`P \Rightarrow Q` by proving
       :math:`(\mathrm{not}\ Q) \Rightarrow (\mathrm{not}\ P)`.
 
+   pseudo polynomial
+      In complexity analysis, refers to the time requirements of an
+      algorithm for an :term:`NP-Complete` problem that still runs
+      acceptably fast for practical application.
+      An example is the standard :term:`dynamic programming` algorithm
+      for the :term:`knapsack problem`.
+
+   pseudo random
+      In random number theory this means that, given all past terms in
+      the series, no future term of the series can be accurately
+      predicted in polynomial time.
+      
    pseudo-random probing
       In :term:`hashing`, this is a :term:`collision resolution`
       method that stores a random permutation of the values 1 through
@@ -3448,6 +3695,15 @@ Glossary
       In set notation, binary relation :math:`R` on set :math:`S` is
       reflexive if :math:`aRa` for all :math:`a \in \mathbf{S}`.
 
+   Region Quadtree
+
+      A :term:`spatial data structure` for storing 2D pixel data. The
+      idea is that the root of the tree represents the entire image,
+      and it is recursively divided into four equal subquadrants
+      if not all pixels associated with the current node have the
+      same value. This is structurally equivalent to a
+      :term:`PR quadtree`, only the decomposition rule is changed.
+
    relation
       In set notation, a relation :math:`R` over set
       :math:`\mathbf{S}` is a set of ordered pairs from
@@ -3555,6 +3811,13 @@ Glossary
       However, it is possible to search a sorted array in the average
       case in :math:`O(\log \log n)` time. 
 
+   search problem
+      Given a particular key value :math:`K`, the search problem is to
+      locate a :term:`record` :math:`(k_j, I_j)` in some collection of
+      records **L** such that :math:`k_j = K` (if one exists).
+      :term:`Searching` is a systematic method for
+      locating the record (or records) with key value :math:`k_j = K`.
+
    search tree
       :to-term: Binary Search Tree :label: example
       :to-term: 2-3 tree :label: example
@@ -3574,6 +3837,11 @@ Glossary
 
       Any :term:`search tree` that is a :term:`trie`.
 
+   searching
+      Given a :term:`search key` :math:`K` and some collection of
+      records **L**, searching is a systematic method for locating the
+      record (or records) in **L** with key value :math:`k_j = K`.
+      
    secondary clustering
       In :term:`hashing`, the tendency in certain
       :term:`collision resolution`
@@ -3619,6 +3887,11 @@ Glossary
       :term:`sector` that allows the :term:`I/O head` to recognize the
       identity (or equivalently, the address) of the current sector. 
 
+   seed
+      In random number theory, the starting value for a random number
+      series.
+      Typically used with any :term:`linear congruential method`.
+      
    seek
       On a :term:`disk drive`, the act of moving the :term:`I/O head`
       from one :term:`track` to another.
@@ -3827,6 +4100,16 @@ Glossary
       In particular, using an existing piece of software (such as a
       function or library) when creating new software.
 
+   solution space
+      The possible solutions to a problem.
+      This typically refers to an :term:`optimization problem`, where
+      some solutions are more desireable than others.
+      
+   solution tree
+      An ordering imposed on the set of solutions within a
+      :term:`solution space` in the form of a  tree, typically derived
+      from the order that some algorithm would visit the solutions.
+
    sorted list
       A :term:`list` where the records stored in the list are arranged
       so that their :term:`key` values are in ascending order.
@@ -3967,6 +4250,15 @@ Glossary
       Some designs make this impossible to occur.
       Other designs make it possible in an attempt to deliver greater
       performance.
+
+   state
+      The condition that something is in at some point in time.
+      In computing, this typically means the collective values of any
+      existing variables at some point in time.
+      In an :term:`automata`, a state is an abstract condition,
+      possibly with associated information, that is primarily defined
+      in terms of the conditions that the automata may transition from
+      its present state to another state.
 
    static
       Something that is not changing (in contrast to :term:`dynamic`).
@@ -4129,6 +4421,10 @@ Glossary
       in the set are :term:`comparable` (that is, one can determine
       which of the pair is greater than the other).
 
+   total path length
+      In a :term:`tree`, the sum of the :term:`levels <level>` for
+      each :term:`node`.
+
    Towers of Hanoi problem
       A standard example of a recursive algorithm.
       The problem starts with a stack of disks (each with unique size)
@@ -4246,6 +4542,13 @@ Glossary
    type
       A collection of values.
 
+   uncountably infinite
+   uncountable
+      An infinite set is uncountably infinite if there does not exist
+      any mapping from it to the set of integers.
+      This is often proved using a :term:`diagonalization argument`.
+      The real numbers is an example of an uncountably infinite set.
+      
    underflow
       The condition where the amount of data stored in an entity has
       dropped below some minimum threshold.

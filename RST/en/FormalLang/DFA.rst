@@ -16,8 +16,8 @@ DFA: Deterministic Finite Automata
 ----------------------------------
 
 We start with the simplest of our machines:
-The Deterministic Finite Automata (DFA), also called the
-Deterministic Finite Acceptor.
+The :term:`Deterministic Finite Automata` (:term:`DFA`),
+also called the Deterministic Finite Acceptor.
 This machine can process an input string (shown on a tape) from left
 to right.
 There is a control unit (with states), behavior defined for what to do

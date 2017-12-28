@@ -166,7 +166,7 @@ Now we consider the number of possible functions.
 To keep things simple, assume that all functions take a single
 positive integer as input and yield a single positive integer as
 output.
-We will call such functions :term:`integer functions`.
+We will call such functions :term:`integer functions <integer function>`.
 A function is simply a mapping from input values to output values.
 Of course, not all computer programs literally take integers as input
 and yield integers as output.
@@ -191,7 +191,7 @@ The second column lists the output of the function when given the value
 in the first column as input.
 Thus, the table explicitly describes the mapping from input to output
 for each function.
-Call this a :term:`function table`.
+Call this a function table.
 
 Next we will try to assign function tables to bins.
 To do so we must order the functions, but it does not matter what
@@ -241,7 +241,7 @@ all values :math:`i`.
 Thus, the new function must be different from any function :math:`F_i`
 at least at position :math:`i`.
 This procedure for constructing a new function not already in the
-table is called :term:`diagonalization`.
+table is called :term:`diagonalization <diagonalization argument>`.
 Because the new function is different from every other function, it
 must not be in the table.
 This is true no matter how we try to assign functions to
