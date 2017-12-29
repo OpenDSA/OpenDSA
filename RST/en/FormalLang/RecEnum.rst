@@ -477,7 +477,8 @@ hand side.
       | Then show that :math:`S \stackrel{*}{\Rightarrow} w` iff 
         :math:`q_0w \stackrel{*}{\vdash} x_1q_fx_2` for :math:`q_f \in F`
 
-**Definition:** A grammar :math:`G` is :term:`context-sensitive` if
+**Definition:** A grammar :math:`G` is
+:term:`context-sensitive <context-sensitive grammar>` if
 all productions are of the form
 
    :math:`x \rightarrow y`

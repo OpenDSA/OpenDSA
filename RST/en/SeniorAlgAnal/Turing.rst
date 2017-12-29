@@ -270,8 +270,8 @@ One is functions mapping input to output
 strings to strings, for examples).
 Another is deciding if a string is in a language.
 
-:math:`M` :term:`accepts` a string :math:`w` if :math:`M` halts on
-input :math:`w`.
+:math:`M` :term:`accepts <accept>` a string :math:`w` if :math:`M`
+halts on input :math:`w`.
 
 * :math:`M` accepts a language iff :math:M` halts on :math:`w` iff
   :math:`w \in L`.

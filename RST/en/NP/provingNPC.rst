@@ -42,7 +42,8 @@ Computer Science equivalent to the Nobel Prize.
 The "grand-daddy" NP-complete problem that Cook used is called
 SATISFIABILITY (or SAT for short).
 
-A :term:`Boolean expression` includes Boolean variables combined
+A :term:`Boolean expression` is comprised of
+:term:`Boolean variables <Boolean variable>` combined
 using the operators AND (:math:`\cdot`), OR (:math:`+`), and NOT
 (to negate Boolean variable :math:`x` we write :math:`\overline{x}`).
 A :term:`literal` is a Boolean variable or its negation.

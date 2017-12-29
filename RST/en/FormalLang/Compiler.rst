@@ -142,22 +142,22 @@ Overview of General Compiler
    :figwidth: 90%
    :alt: st1over
 
-* lexical analysis - read the program character by character
+* :term:`lexical analysis` - read the program character by character
   grouping into atomic units called tokens 
 
-* syntax analysis - accepts tokens, checks if program is
-  syntactically correct, generates a parse tree. 
+* :term:`syntax analysis` - accepts tokens, checks if program is
+  syntactically correct, generates a :term:`parse tree`. 
 
-* intermediate code generation - walk through parse tree producing 
-  simple assembly code 
+* :term:`intermediate code generation` - walk through parse tree producing 
+  simple :term:`assembly code`
 
-* code optimization - transform intermediate code to "better"
+* :term:`code optimization` - transform intermediate code to "better"
   code (faster) 
 
-* code generation - transform intermediate code to machine code 
+* :term:`code generation` - transform intermediate code to machine code 
   (assembler) 
 
-* symbol table
+* :term:`symbol table`
 
    * lexical analysis: enter identifier into table, 
    * syntax analysis: - type of identifier and usage,
@@ -174,7 +174,7 @@ Lexical Analysis (Scanner)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Purpose: Read the same program character by character grouping them
-into atomic units called :term:`tokens`.
+into atomic units called :term:`tokens <token>`.
 
 Tokens:
 
@@ -217,7 +217,7 @@ Tokens:
       \end{array}
 
 
-How does one build a lexical analyzer?
+How does one build a :term:`scanner`?
 
    * from scratch
    * lex
@@ -279,7 +279,7 @@ c. Parse Tree
       :alt: st1ptree
 
 
-d. How does one build a parser?
+d. How does one build a :term:`parser`?
 
    * from scratch
    * using a parser generator such as yacc

@@ -124,7 +124,7 @@ Example of a move: :math:`\delta(q0, 1) = q0`
 Algorithm for DFA:
 ~~~~~~~~~~~~~~~~~~
 
-| Start in start state with input on tape
+| Start in :term:`start state` with input on tape
 | q = current state
 | s = current symbol on tape
 | while (s != blank) do
@@ -258,5 +258,5 @@ q3 - odd number, even number of 1's
 
    Talk about determinism: There is only one choice
 
-**Definition**: A language is :term:`regular` iff there exists a DFA
-:math:`M` such that :math:`L = L(M)`.
+**Definition**: A language is :term:`regular <regular language>` iff
+there exists a DFA :math:`M` such that :math:`L = L(M)`.

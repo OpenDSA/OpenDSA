@@ -46,6 +46,21 @@ Glossary
       and protected from outside access, a concept referred to as
       :term:`encapsulation`.
 
+   accept
+      When a :term:`finite automata` executes on a string and
+      terminates in an :term:`accepting state`, it is said to accept
+      the string.
+      The finite automata is said to accept the language that consists
+      of all strings for which the finite automata completes execution
+      in an accepting state.
+      
+   accepting state
+      Part of the definition of a :term:`finite automata` is to
+      designate some :term:`states <state>` as accepting states.
+      If the finite automata executes on an input string and completes
+      the computation in an accepting state, then the machine is said
+      to :term:`accept` the string.
+      
    activation record
       :to-term: local variable :label: stores
 
@@ -219,6 +234,14 @@ Glossary
       non-printing characters (such as carrage return).
       Now largely replaced by UTF-8 encoding.
 
+   assembly code
+      A form of  :term:`intermediate code` created by a compiler that
+      is easy to convert into the final form that the computer can
+      execute.
+      An assembly language is typically a direct mapping of one or a
+      few instructions that the CPU can execute into a mnemonic form
+      that is relatively easy for a human to read.
+      
    asymptotic algorithm analysis
       A more formal term for :term:`asymptotic analysis`.
 
@@ -392,6 +415,16 @@ Glossary
       describing the :term:`upper bound` for an :term:`algorithm` or
       :term:`problem`. 
 
+   binary insert sort
+      A variation on :term:`insertion sort` where the position of the
+      value being inserted is located by binary search, and then put
+      into place. In normal usage this is not an improvement on
+      standard insertion sort because of the expense of moving many
+      items in the array. But it is directly useful if the cost of
+      comparison is high compared to that of moving an element, or
+      is theoretically useful if we only care to count the cost of
+      comparisons.
+      
    binary search
       A standard :term:`recursive <recursion>` algorithm for finding
       the :term:`record` with a given :term:`search key` value within
@@ -477,10 +510,25 @@ Glossary
       to sort the list. It is generally not practical in this form,
       but it is the conceptual underpinning of the :term:`radix sort`.
 
+   bitmap
+   bit vector
+      An array that stores a single bit at each position.
+      Typically these bits represent
+      :term:`Boolean variables <Boolean variable>` associated with
+      a collection of objects, such that the :math:`i` th bit is the
+      Boolean value for the :math:`i` th object.
+   
    block
       A unit of storage, usually referring to storage on a
       :term:`disk drive` or other :term:`peripheral storage` device.
       A block is the basic unit of I/O for that device.
+
+   Boolean expression
+      A Boolean expression is comprised of
+      :term:`Boolean variables <Boolean variable>`
+      combined using the operators AND (:math:`\cdot`), OR
+      (:math:`+`), and NOT (to negate Boolean variable :math:`x` we
+      write :math:`\overline{x}`).
 
    Boolean variable
       A variable that takes on one of the two values ``True`` and
@@ -703,6 +751,10 @@ Glossary
       :term:`subclasses <subclass>` that :term:`inherit` either
       directly or indirectly from the base class.
 
+   clause
+      In a :term:`Boolean expression`, a clause is one or more
+      :term:`literals <literal>` OR'ed together.
+   
    client
       The user of a service.
       For example, the object or part of the program that calls a
@@ -716,6 +768,11 @@ Glossary
       :term:`vertices <vertex>` such that every vertex in :math:`U`
       has an :term:`edge` to every other vertex in :math:`U`.
       The size of the clique is the number of vertices in the clique.
+
+   closed
+      A set is closed over a (binary) operation if,
+      whenever the operation is applied to two members of the set, the
+      result is a member of the set.
 
    closed-form solution
       An algebraic equation with the same value as a :term:`summation`
@@ -745,6 +802,21 @@ Glossary
       :term:`internal fragmentation` since any space not actually
       used by the file in the last cluster is wasted.
 
+   code generation
+      A phase in a :term:`compiler` that transforms
+      :term:`intermediate code` into the final executable form of the
+      code.
+      More generally, this can refer to the process of turning a parse
+      tree (that determines the correctness of the structure of the
+      program) into actual instructions that the computer can execute.
+      
+
+   code optimization
+      A phase in a :term:`compiler` that makes changes in the code
+      (typically :term:`assembly code`) with the goal of replacing
+      it with a version of the code that will run faster while
+      performing the same computation.
+      
    cohesion
       In :term:`object-oriented programming <object-oriented programming paradigm>`,
       a term that refers to the degree to which a class has a single 
@@ -828,6 +900,18 @@ Glossary
       The number of comparisons required is often used as a
       :term:`measure of cost` for sorting and searching algorithms.
 
+   compiler
+      A computer program that reads computer programs and converts
+      them into a form that can be directly excecuted by some form of
+      computer.
+      The major phases in a compiler include :term:`lexical analysis`,
+      :term:`syntax analysis`, :term:`intermediate code generation`,
+      :term:`code optimization`, and :term:`code generation`.
+      More broadly, a compiler can be viewed as :term:`parsing
+      <parser>` the program to verify that it is syntactically
+      correct, and then doing :term:`code generation` to convert the
+      hig-level program into something that the computer can execute.
+
    compile-time polymorphism
       A form of :term:`polymorphism` known as Overloading.
       Overloaded methods have the same names, but different signatures
@@ -894,12 +978,31 @@ Glossary
       An example of a famous problem that cannot in principle be
       solved by a computer is the :term:`halting problem`.
 
+   computation
+      In a :term:`finite automata`, a computation is a sequence of
+      :term:`configurations <configuration>` for some 
+      length :math:`n \geq 0`.
+      In general, it is a series of operations that the machine
+      performs.
+
    computational complexity theory
       A branch of the theory of computation in theoretical computer
       science and mathematics that focuses on classifying
       computational problems according to their inherent difficulty,
       and relating those classes to each other.
       An example is the study of :term:`NP-Complete` problems.
+
+   configuration
+      For a :term:`finite automata`, a complete specification for the
+      current condition of the machine on some input string.
+      This includes the current :term:`state` that the machine is in,
+      and the current condition of the string, including which
+      character is about to be processed.
+
+   Conjunctive Normal Form
+   CNF
+      A :term:`Boolean expression` written as a series of
+      :term:`clauses <clause>` that are AND'ed together.
 
    connected component
       In an :term:`undirected graph`, a :term:`subset` of the
@@ -934,6 +1037,23 @@ Glossary
       Typical examples are arrays,
       :term:`search trees <search tree>`, and
       :term:`hash tables <hash table>`.
+
+   context-free grammar
+      A :term:`grammar` comprised only of productions of the form
+      :math:`A \rightarrow x` where :math:`A` is a
+      :term:`non-terminal` and :math:`x` is a series of one or more
+      :term:`terminals <terminal>` and non-terminals.
+      That is, the given non-terminal :math:`A` can be replaced at any
+      time.
+
+   context-sensitive grammar
+      A :term:`grammar` comprised only of productions of the form
+      :math:`xAy \rightarrow xvy` where :math:`A` is a
+      :term:`non-terminal` and :math:`x` and :math:`y` are each a
+      series of one or more 
+      :term:`terminals <terminal>` and non-terminals.
+      That is, the given non-terminal :math:`A` can be replaced only
+      when it is within the proper context.
 
    countably infinite
    countable
@@ -1092,6 +1212,13 @@ Glossary
       Commonly, this happens in a language like Java when using the
       "dot" operator to access some field of an object.
 
+   derivation
+      In formal languages, the process of executing a series of
+      :term:`production rules <production rule>` from a :term:`grammar`.
+      A typical example of a derivation would be the series of
+      productions executed to go from the :term:`start symbol` to a
+      given string.
+            
    descendant
       In a tree, the set of all nodes that have a node :math:`A` as an
       :term:`ancestor` are the descendants of :math:`A`.
@@ -1118,12 +1245,22 @@ Glossary
       for combining software components, and design patterns allow
       this design knowledge to be passed on to new programmers more quickly.
 
+   deterministic
+      Any :term:`finite automata` in which, for every pair of
+      :term:`state` and symbol, there is only a single transition.
+      This means that whenever the machine is in a given state and
+      sees a given symbol, only a single thing can happen.
+      This is in contrast to a :term:`non-deterministic` finite
+      automata, which has at least one state with multiple transitions
+      on at least one symbol.
+      
    deterministic algorithm
       An algorithm that does not involve any element of randomness,
       and so its behavior on a given input will always be the same.
       This is in contrast to a :term:`randomized algorithm`.
 
    Deterministic Finite Automata
+   Deterministic Finite Acceptor
    DFA
       An :term:`automata` or abstract machine that can process an
       input string (shown on a tape) from left to right.
@@ -1132,7 +1269,6 @@ Glossary
       given symbol on the current square of the tape.
       All that we can "do" is change state before going to the next
       letter to the right.
-      (Also called a Deterministic Finite Acceptor).
    
    DFS
       Abbreviation for :term:`depth-first search`.
@@ -1615,7 +1751,7 @@ Glossary
 
    Finite State Machine
    FSM
-   State Machine
+   Finite Automata
       Any abstract state machine, generally represented as a graph
       where the nodes are the :term:`states <state>`, and the edges
       represent transitions between nodes that take place when the
@@ -1714,6 +1850,18 @@ Glossary
       to an integer value (typically by using its underlying encoding
       value), and summing up the pieces.
 
+   Ford and Johnson sort
+      A sorting algorithm that is close to the theoretical minimum
+      number of key comparisons necessary to sort.
+      Generally not considered practical in practice due to the fact
+      that it is not efficient in terms of the number of records that
+      need to be moved.
+      It consists of first sorting pairs of nodes into winners and
+      losers (of the pairs comparisons), then (recursively)
+      sorting the winners of the pairs, and then finally carefully
+      selecting the order in which the losers are added to the chain
+      of sorted items.
+      
    forest
       A collection of one or more :term:`trees <tree>`.
 
@@ -1812,6 +1960,10 @@ Glossary
       ``null``).
       General tree nodes tend to be harder to implement for this reason.
 
+   grammar
+      A formal definition for what strings make up a :term:`language`,
+      in terms of a set of :term:`production rules <production rule>`.
+            
    graph
       :to-term: edges <edge> :label: contains
       :to-term: vertices <vertex> :label: contains
@@ -1859,6 +2011,14 @@ Glossary
       in the tree.
       An example would be a :term:`range query` in a :term:`BST`.
 
+   halt state
+      In a :term:`finite automata`, a designated :term:`state` which
+      causes the machine to immediately halt when it is entered.
+
+   halted configuration
+      A halted configuration occurs in a :term:`Turing machine` when
+      the machine transitions into the :term:`halt state`.
+
    halting problem
       The halting problem is to answer this question:
       Given a computer program :math:`P` and an 
@@ -1878,6 +2038,11 @@ Glossary
       client.
       This is typically the location and length of the message within
       the :term:`memory pool`.
+
+   hanging configuration
+      A hanging configuration occurs in a :term:`Turing machine` when
+      the I/O head moves to the left from the left-most square of the
+      tape, or when the machine goes into an infinite loop.
 
    hard algorithm
       "Hard" is traditionally defined in relation to running time, and
@@ -2123,6 +2288,9 @@ Glossary
       :term:`data members <data member>` and :term:`methods <method>`
       from a :term:`base class`.
 
+   initial state
+      A synonym for :term:`start state`.
+
    inorder traversal
       In a :term:`binary tree`, a :term:`traversal` that first
       :term:`recursively <recursion>` :term:`visits <visit>` the left
@@ -2148,6 +2316,24 @@ Glossary
       :term:`diagonalization <diagonalization argument>` that the
       set of integer functions is :term:`uncountably infinite`.
    
+   inter-sector gap
+      On a disk drive, a physical gap in the data that occurs between
+      the :term:`sectors <sector>`.
+      This allows the :term:`I/O head` detect the end of the sector.
+
+   intermediate code
+      A step in a typical :term:`compiler` is to transform the
+      original high-level language into a form on which it is easier
+      to do other stages of the process.
+      For example, some compilers will transform the original
+      high-level source code into :term:`assembly code` on which it
+      can do code optimization, before translating it into its final
+      executable form.
+      
+   intermediate code generation
+      A phase in a :term:`compiler`, that walks through a
+      :term:`parse tree` to produce simple :term:`assembly code`.
+
    internal fragmentation
       A condition that occurs when more than :math:`m` bytes
       are allocated to service a :term:`memory request` for :math:`m`
@@ -2158,11 +2344,6 @@ Glossary
    internal node
       In a tree, any node that has at least one non-empty
       :term:`child` is an  internal node.
-
-   inter-sector gap
-      On a disk drive, a physical gap in the data that occurs between
-      the :term:`sectors <sector>`.
-      This allows the :term:`I/O head` detect the end of the sector.
 
    internal sort
       A sorting algorithm that is applied to data stored in
@@ -2193,6 +2374,15 @@ Glossary
       all practical situations due to the small difference between the
       two costs, combined with the higher constant factors required to
       implement interpolation search as compared to binary search.
+
+   interpreter
+      In contrast to a :term:`compiler` that translates a high-level
+      program into something that can be repeatedly executed to
+      perform a computation, an interpreter directly performs
+      computation on the high-level langauge.
+      This tends to make the computation much slower than if it were
+      performed on the directly executable version produced by a
+      compiler.
 
    inversion
       A measure of how disordered a series of values is. For each
@@ -2253,7 +2443,7 @@ Glossary
       now known to contain the search key.
       The optimal number of steps to jump will be :math:`\sqrt{n}` for
       an array of size :math:`n`, and the :term:`worst case` cost will
-      be :term:`\Theta(\sqrt{n})`.
+      be :math:`\Theta(\sqrt{n})`.
       
    K-ary tree
       A type of :term:`full tree` where every internal node has
@@ -2370,6 +2560,9 @@ Glossary
       A :term:`graph` with labels associated with the
       :term:`nodes <node>`.
 
+   language
+      A set of strings.
+      
    Las Vegas algorithms
       A form of :term:`randomized algorithm`.
       We always find the maximum value, and "usually" we find it fast.
@@ -2403,6 +2596,13 @@ Glossary
        Analogous to the :term:`move-to-front` heuristic for
        maintaining a :term:`self-organizing list`.
 
+   left recursive
+      In automata theory, a :term:`production` is left recursive
+      if it is of the form :math:`A \rightarrow Ax`, 
+      :math:`A \in V, x \in (V \cup T)^*` where :math:`V` is the set
+      of :term:`non-terminals <non-terminal>` and :math:`T` is the set
+      of :term:`terminals <terminal>` in the :term:`grammar`.
+
    length
       In a :term:`list`, the number of elements. In a string, the
       number of characters.
@@ -2412,6 +2612,11 @@ Glossary
       level :math:`d` in the tree.
       The root is the only node at level 0, and its depth is 0.
 
+   lexical analysis
+      A phase of a :term:`compiler` or :term:`interpreter` responsible
+      for reading in characters of the program or language and grouping
+      them into :term:`tokens <token>`.
+      
    lexical scoping
       Within programming languages, the convention of allowing access
       to a variable only within the block of code in which the
@@ -2515,6 +2720,12 @@ Glossary
       It does not refer to the relationship
       between :term:`key` values for the list elements (that is,
       "ordered" does not mean "sorted").
+
+   literal
+      In a :term:`Boolean expression`, a :term:`literal` is a
+      :term:`Boolean variable` or its negation.
+      In the context of compilers, it is any constant value.
+      Similar to a :term:`terminal`.
 
    load factor
       In :term:`hashing` this is the fraction of the :term:`hash
@@ -2746,6 +2957,9 @@ Glossary
       to the memory manager to reserve a block of memory and store
       some bytes there.
 
+   merge insert sort
+      A synonym for the :term:`Ford and Johnson sort`.
+
    message
       In a :term:`memory manager` implementation
       (particularly a memory manager implemented with a
@@ -2889,6 +3103,9 @@ Glossary
       This term is sometimes used as a synonym to the term
       :term:`bag`.
 
+   natural numbers
+      Zero and the positive integers.
+      
    necessary fallacy
       A common mistake in a
       :term:`lower bounds proof` for a problem, where the proof makes
@@ -2903,6 +3120,25 @@ Glossary
       In a :term:`graph`, a :term:`node` :math:`w` is said to be a
       neighbor of :term:`node` :math:`v` if there is an :term:`edge`
       from :math:`v` to :math:`w`.
+
+   non-deterministic
+      In a :term:`finite automata`, at least one :term:`state` has
+      multiple transitions on at least one symbol.
+      This means that it is not :term:`deterministic` about what
+      transition to take in that situation.
+      A non-deterministic machine is said to :term:`accept` a string
+      if it completes execution on the string in an
+      :term:`accepting state` under at least one choice of
+      non-deterministic transitions.
+      Generally, non-determinism can be simulated with a deterministic
+      machine by alternating between the execution that would take
+      place under each of the branching choices.
+
+   non-terminal
+      In contrast to a :term:`terminal`, a non-terminal is an abstract
+      state in a :term:`production rule`. Begining with the
+      :term:`start symbol`, all non-terminals must be converted into
+      terminals in order to complete a :term`derivation`.
 
    node
       :to-term: neighbor :label: linked to
@@ -3127,6 +3363,18 @@ Glossary
       Alternatively, if the relation is also :term:`irreflexive`, then
       it is a :term:`strict partial order`.
 
+   parse tree
+      A tree that represents the syntactic structure of an input
+      string, making it easy to compare against a :term:`grammar` to
+      see if it is syntactically correct.
+      
+   parser
+      A part of a :term:`compiler` that takes as input the program
+      text (or more typically, the tokens from the :term:`scanner`),
+      and verifies that the program is syntactically correct.
+      Typically it will build a :term:`parse tree` as part of the
+      process.
+      
    partially ordered set
       The set on which a :term:`partial order` is defined is called a
       partially ordered set.
@@ -3427,7 +3675,23 @@ Glossary
       be carried out.
       This is in contrast to the 
       :term:`object-oriented programming paradigm`.
-     
+
+   production
+   production rule
+      A :term:`grammar` is comprised of production rules.
+      The production rules consist of :term:`terminals <terminal>` and
+      :term:`non-terminals <non-terminal>`, with one of the non-terminals
+      being the :term:`start symbol`.
+      Each production rule replaces one or more non-terminals (perhaps
+      with associated terminals) with one or more terminals and
+      non-terminals.
+      Depending on the restrictions placed on the form of the rules,
+      there are classes of languages that can be represented by
+      specific types of grammars.
+      A :term:`derivation` is a series of productions that results in
+      a string (that is, all non-terminals), and this derivation can
+      be represented as a :term:`parse tree`.
+      
    proof
       :to-term: lower bounds proof :label: example
       :to-term: NP-Completeness proof :label: example
@@ -3651,6 +3915,11 @@ Glossary
    recursive function
       A function that includes a :term:`recursive call`.
 
+   recursively enumerable
+      A language :math:`L` is recursively enumerable
+      if there exists a :term:`Turing machine` :math:`M` such that
+      :math:`L = L(M)`.
+
    Red-Black Tree
       A balanced variation on a :term:`BST`.
 
@@ -3704,6 +3973,11 @@ Glossary
       same value. This is structurally equivalent to a
       :term:`PR quadtree`, only the decomposition rule is changed.
 
+   regular language
+      A language :math:`L` is a regular language if and only if
+      there exists a :term:`Deterministic Finite Automata` :math:`M`
+      such that :math:`L = L(M)`.
+      
    relation
       In set notation, a relation :math:`R` over set
       :math:`\mathbf{S}` is a set of ordered pairs from
@@ -3790,6 +4064,10 @@ Glossary
       The place where an :term:`activation record` is stored when a
       subroutine is called during a program's runtime.
 
+   scanner
+      The part of a :term:`compiler` that is responsible for doing
+      :term:`lexical analysis`.
+            
    scope
       The parts of a program that can see and access a variable.
 
@@ -4019,6 +4297,12 @@ Glossary
       In a programming language, the signature for a function is its
       return type and its list of parameters and their types.
 
+   signature file
+      In document processing, a signature file is a type of
+      :term:`bitmap` used to indicate which documents in a collection
+      contain a given keyword, such that there is a :term:`bitmap` for
+      each keyword.
+      
    simple cycle
       In :term:`graph` terminology, a :term:`cycle` is simple if its
       corresponding :term:`path` is simple, except that the first and
@@ -4251,6 +4535,15 @@ Glossary
       Other designs make it possible in an attempt to deliver greater
       performance.
 
+   start state
+      In a :term:`finite automata`, the designated state in which the
+      machine will always begin a computation.
+
+   start symbol
+      In a :term:`grammar`, the designated :term:`non-terminal` that
+      is the intial point for :term:`deriving <derivation>` a string
+      in the langauge.
+      
    state
       The condition that something is in at some point in time.
       In computing, this typically means the collective values of any
@@ -4260,6 +4553,9 @@ Glossary
       in terms of the conditions that the automata may transition from
       its present state to another state.
 
+   State Machine
+      Synonym for :term:`finite automata`.
+      
    static
       Something that is not changing (in contrast to :term:`dynamic`).
       In computer programming, static normally refers to something
@@ -4379,6 +4675,12 @@ Glossary
       :term:`superset` of :math:`A`, if all :term:`elements <element>`
       of :math:`A` are also elements of :math:`B`.
 
+   symbol table
+      As part of a :term:`compiler`, the symbol table stores all of
+      the identifiers in the program, along with any necessary
+      information needed about the identifier to allow the compiler to
+      do its job.
+      
    symmetric
       In set notation, relation :math:`R` is symmetric if whenever
       :math:`aRb`, then :math:`bRa`, for all :math:`a, b \in \mathbf{S}`.
@@ -4388,14 +4690,33 @@ Glossary
       Equivalently, for a :math:`n \times n` matrix :math:`A`,
       for all :math:`i,j < n`, :math:`A[i, j] = A[j, i]`.
 
+   syntax analysis
+      A phase of :term:`compilation <compiler>` that accepts
+      :term:`tokens <token>`, checks if program is syntactically
+      correct, and then generates a :term:`parse tree`.
+
    tail
       The end of a :term:`list`.
 
+   terminal
+      A specific character or string that appears in a
+      :term:`production rule`.
+      In contrast to a :term:`non-terminal`, which represents an
+      abstract state in the production.
+      Similar to a :term:`literal`, but this is the term more
+      typically used in the context of a :term:`compiler`.
+      
    Theta notation
       In :term:`algorithm analysis`, :math:`\Theta` notation is used
       to indicate that the
       :term:`upper bound` and :term:`lower bound` for an
       :term:`algorithm` or :term:`problem` match. 
+
+   token
+      The basic logical units of a program, as deterimined by
+      :term:`lexical analysis`.
+      These are things like arithmetic operators, language keywords,
+      variable or function names, or numbers.
 
    tombstone
       In :term:`hashing`, a tombstone is used to mark a :term:`slot`
@@ -4469,7 +4790,6 @@ Glossary
       :math:`aRb` and :math:`bRc`, then :math:`aRc`, for all
       :math:`a, b, c \in \mathbf{S}`.
 
-
    transpose
       In the context of linear algebra,
       the transpose of a matrix :math:`A` is
@@ -4532,6 +4852,31 @@ Glossary
       the outcome (true or false) for the expression when given that
       row's truth assignment for the boolean variables.
 
+   Turing-acceptable
+      A language is :math:`Turing-acceptable` if there is some
+      :term:`Turing machine` that :term:`accepts <accept>` it.
+      That is, the machine will halt in an accepting configuration if
+      the string is in the language, and go into a
+      :term:`hanging configuration` if the string is not in the language.
+
+   Turing-computable function
+      Any function for which there exists a Turing machine that can
+      perform the necessary work to compute the function.
+      
+   Turing-decidable
+      A language is Turing-decideable if there exists a Turing machine
+      that can clearly indicate for every string whether that string
+      is in the language or not.
+      Every Turing-decidable language is also Turing-acceptable,
+      because the Turing machine that can decide if the string is in
+      the language can be modified to go into a
+      :term:`hanging configuration` if the string is not in the language.
+
+   Turing machine
+      A type of :term:`finite automata` that, while simple to define
+      completely, is capable of performing any computation that can be
+      performed by any known computer.
+
    tuple
       In set notation, another term for a :term:`sequence`.
 
@@ -4542,6 +4887,11 @@ Glossary
    type
       A collection of values.
 
+   unary notation
+      A way to represent :term:`natural numbers`, where the value of
+      zero is represented by the empty string, and the value :math:`n`
+      is represented by a series of :math:`n` marks.
+      
    uncountably infinite
    uncountable
       An infinite set is uncountably infinite if there does not exist
@@ -4584,7 +4934,14 @@ Glossary
       :term:`equivalence relation`.
 
    uninitialized
-      uninitialized variable means it has no initial value.
+      Uninitialized variable means it has no initial value.
+
+   unit production
+      A unit production is a :term:`production` in a :term:`grammar`
+      of the form :math:`A \rightarrow B`, where :math:`A, B \in` the
+      set of :term:`non-terminals <non-terminal>` for the grammar.
+      Any grammar with unit productions can be rewritten to remove
+      them.
 
    unsolveable problem
       A problem that can proved impossible to solve on a computer.
