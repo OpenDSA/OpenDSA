@@ -111,7 +111,7 @@ long list in one call, like this:
 The following problem deals with the syntax and semantics of the ``fp.cons`` function.
 
 .. avembed:: Exercises/PL/FPcons.html ka
-   :long_name: RP set #5, question #2
+   :long_name: Using cons
 
 	       
 	       
@@ -154,7 +154,7 @@ with it.
 
 
 .. avembed:: Exercises/PL/FPHdTlCons1.html ka
-   :long_name: RP set #5, question #3
+   :long_name: Head, Tail, and Cons 1
 
 FP - Deconstructing Lists with fp.hd and fp.tl (2)
 --------------------------------------------------
@@ -163,7 +163,7 @@ This problem once more helps you review the semantics of the ``fp.hd``,
 ``fp.tl``, and ``fp.cons`` functions.
 
 .. avembed:: Exercises/PL/FPHdTlCons2.html ka
-   :long_name: RP set #5, question 5
+   :long_name: Head, Tail, and Cons 2
 
 FP - fp.isNull, fp.isEq, fp.isZero
 ----------------------------------
@@ -204,5 +204,5 @@ The final problem in this section deals with the syntax and semantics of the ``f
 ``fp.tl``, and ``fp.isEq`` functions.
 
 .. avembed:: Exercises/PL/FPisEq.html ka
-   :long_name: RP set #5, question 4
+   :long_name: Using isEq test
 

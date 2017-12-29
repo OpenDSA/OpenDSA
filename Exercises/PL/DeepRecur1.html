@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Deep Recursion 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="DeepRecur1p">
+          <p class="question">Consider the following definition of
+          the function <span class="string">sumTree</span>:</p>
+<pre class="string">
+1. var sumTree = function (t) {
+2.     if (fp.isNull(t)) {
+3.         return 0;
+4.     } else if (fp.isList(fp.hd(t))) {
+5.         return fp.add(sumTree(fp.hd(t)),sumTree(fp.tl(t)));
+6.     } else {
+7.         return fp.add(fp.hd(t),sumTree(fp.tl(t)));
+8.     }
+9. };</pre>
+          <p class="question">Suppose that you want to develop a
+          function that takes in an integer tree (represented, as
+          usual, as a list of lists of . . . of integers, just like
+          for the function <span class="string">sumTree</span> above)
+          and returns the total number of integers in the tree. Your
+          goal is to implement this function by modifying the smallest
+          number of lines in the
+          function <span class="string">sumTree</span> above. Which
+          one of the following options characterizes the best solution
+          to this problem?
+          <div class="solution">Change line 7 only.</div>
+          <ul class="choices">
+            <li>Change line 5 only.</li>
+            <li>Change lines 3 and 5 only.</li>
+            <li>Change lines 4 and 5 only.</li>
+            <li>Change lines 3, 5 and 7 only.</li>
+            <li>At least 4 lines must be changed.</li>
+          </ul>
+          <div class="hints">
+	    <p>Make sure you understand what the new function is
+	    supposed to compute and how it differs
+	    from the <span class="string">sumTree</span> function.</p>
+	    <p>Make sure that the new function considers all possible
+	    cases in the right order.</p>
+	    <p>Remember to look for the solution with the minimum number
+	    of lines with code  changes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

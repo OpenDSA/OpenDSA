@@ -86,7 +86,7 @@ Note that this problem is randomized. You must solve it correctly
 three times in a row to earn the point associated with it.
 
 .. avembed:: Exercises/PL/RecListProc1.html ka
-   :long_name: RP set #6, question #1
+   :long_name: Recursion on Flat lists 1
 
 Recursive List Processing (2)
 -----------------------------
@@ -151,7 +151,7 @@ following review problem, which asks you to slightly modify *removeFirst*.
 
 
 .. avembed:: Exercises/PL/RecListProc2.html ka
-   :long_name: RP set #6, question #2
+   :long_name: Recursion on Flat Lists 2
 
 
 Recursive List Processing (3)
@@ -185,4 +185,4 @@ established by the BNF grammar for a *<list_of_ints>*::
 When you have established the correct logic for this template, consider the final review problem for this section, which  asks you to slightly modify the ``subst`` function.
 
 .. avembed:: Exercises/PL/RecListProc3.html ka
-   :long_name: RP set #6, question #3
+   :long_name: Recursion on Flat Lists 3

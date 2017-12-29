@@ -115,4 +115,4 @@ which will help you understand how annotated Jison grammars can be
 used to generate interpreters.
 
 .. avembed:: Exercises/PL/AnnotatingJison.html ka
-   :long_name: RP set #5, question #1
+   :long_name: Annotating Jison
