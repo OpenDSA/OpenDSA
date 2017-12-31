@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html data-require="math fp HigherOrderFuncs1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Higher Order Functions (1)</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="setup">HigherOrderFuncs1.init()</var>
+        <var id="functionDef">HigherOrderFuncs1.functionDef</var>        
+        <var id="params">HigherOrderFuncs1.params</var>        
+        <var id="functionCall">HigherOrderFuncs1.functionCall</var>        
+	<var id="answer">HigherOrderFuncs1.answer</var>
+      </div>
+      <div class="problems">
+        <div id="HigherOrderFuncs1p">
+          <p class="question">
+            Given the following declarations,
+            where <var>params</var>:</p>
+<pre class="string">
+<var>functionDef</var>
+</pre>
+          <p class="question">
+	  what is the value of the following function call?<br />
+	  <var class="string">functionCall</var><br /><br />
+	  
+	  Note that, if the function call generates an exception, the
+	  correct answer is the word "error" (without the double
+	  quotes) in all lowercase letters. Otherwise, the correct
+	  answer may be a number (not necessarily an integer, for
+	  example, when the division operator is applied) or a Boolean
+	  constant.
+	  </p>
+	  <textarea rows="1" cols="40" style="resize:none"
+		    id="answerTextarea"></textarea>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> $('#answerTextarea').val()  </div>
+            <div class="validator-function">
+              return HigherOrderFuncs1.checkAnswer(guess);
+            </div>
+          </div>
+          <div class="hints">
+	    <p>Note that <span class="string">f</span> is a higher-order
+	    function.</p>
+	    <p>Why is <span class="string">g</span> a function?</p>
+	    <p>If you had to find a short, descriptive name for the function
+	      <span class="string">g</span>, what would it be?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
