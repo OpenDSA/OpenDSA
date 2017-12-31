@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-require="math fp RP10part4" lang="en">
+<html data-require="math fp Curry2" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 10 part 4</title>
+    <title>Currying (2)</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
@@ -11,13 +11,13 @@
   <body data-height="850" data-width="950">
     <div class="exercise">
       <div class="vars">
-        <var id="setup">RP10part4.init()</var>
-        <var id="functionDef">RP10part4.functionDef</var>        
-        <var id="functionCall">RP10part4.functionCall</var>        
-	<var id="answer">RP10part4.answer</var>
+        <var id="setup">Curry2.init()</var>
+        <var id="functionDef">Curry2.functionDef</var>        
+        <var id="functionCall">Curry2.functionCall</var>        
+	<var id="answer">Curry2.answer</var>
       </div>
       <div class="problems">
-        <div id="RP10part4p">
+        <div id="Curry2p">
           <p class="question">
             Given the following function definitions:</p>
 <pre class="string">
@@ -49,7 +49,7 @@ var compose = function (f,g) {
 	  <div class="solution" data-type="custom">
             <div class="guess"> $('#answerTextarea').val()  </div>
             <div class="validator-function">
-              return RP10part4.checkAnswer(guess);
+              return Curry2.checkAnswer(guess);
             </div>
           </div>
           <div class="hints">

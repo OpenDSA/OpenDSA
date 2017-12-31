@@ -2,7 +2,7 @@
 (function() {
   "use strict";
    
-    var RP10part4 = {    
+    var Curry2 = {    
 	init: function() {
 	    var e, f, g, h, j, k;
 	    var randomDigit = Math.floor( Math.random() * 10);
@@ -178,8 +178,8 @@
 		return this.answer === studentAnswer.replace(/\s+/g,"");
 	    }
 	}
-    };// RP10part4  
+    };// Curry2  
 
-    window.RP10part4 = window.RP10part4 || RP10part4;
+    window.Curry2 = window.Curry2 || Curry2;
 }());
 
