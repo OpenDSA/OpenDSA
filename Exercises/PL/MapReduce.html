@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-require="math fp MapReduce PLutils" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Map Reduce</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="900" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="setup">MapReduce.init()</var>
+        <var id="answer">MapReduce.answer</var>
+        <var id="functionDef">MapReduce.functionDef</var>        
+	<var id="params">MapReduce.params</var>
+        <var id="functionCall">MapReduce.functionCall</var>
+      </div>
+      <div class="problems">
+        <div id="MapReducep">
+          <p class="question">
+            Given the following function definition,
+            where <var>params</var>:</p>
+<pre class="string">
+<var>functionDef</var>
+</pre>
+          <p class="question">
+	  what is the value of the following function call?
+          <br />
+	  <var class="string">functionCall</var><br /> Note that, if
+	  the function call generates an exception, the correct answer
+	  is the word "error" (without the double quotes) in all
+	  lowercase letters.
+	  </p>
+	  <textarea rows="1" cols="40" style="resize:none"
+		    id="answerTextarea"></textarea>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> $('#answerTextarea').val()  </div>
+            <div class="validator-function">
+              return MapReduce.checkAnswer(guess);
+            </div>
+          </div>
+          <div class="hints">
+	    <p>First, determine what
+	    the <span class="string">mapper</span> function computes
+	    in general, that is, for any input.</p>
+	    <p>Second, determine what
+	    the <span class="string">reducer</span> function computes
+	      in general, that is, for any input.</p>
+	    <p>Then, determine what the 
+	      <span class="string">f</span> function returns based on
+	      its use of the folding pattern.</p>
+	    <p>Finally, plug in the given input to determine the final
+	    answer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
