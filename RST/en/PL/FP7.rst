@@ -19,6 +19,7 @@ First a function called *keepPositive*.
 
 ::
 
+    // Given a list, return a list with the positive numbers
     var keepPositive = function (ns) {
         if (fp.isNull(ns))
             return [ ];
@@ -42,15 +43,7 @@ Next a function called *censor*, with its helper *isAcceptable*.
     
 ::
 
-    var isAcceptable = function (word) {
-        if (fp.isMember(word, [ "loops", 
-                                "assignments", 
-                                "side effects" ]))
-            return false
-        else
-            return true;
-    }
-
+    // Censor out all unacceptable words in a list of strings
     var censor = function (sentence) {
         if (fp.isNull(sentence))
             return [ ];
@@ -59,6 +52,15 @@ Next a function called *censor*, with its helper *isAcceptable*.
                            censor(fp.tl(sentence)));
         else
             return censor(fp.tl(sentence));
+    }
+
+    var isAcceptable = function (word) {
+        if (fp.isMember(word, [ "loops", 
+                                "assignments", 
+                                "side effects" ]))
+            return false
+        else
+            return true;
     }
 
     > censor(["Functional", "programming", "includes", "functions", "mapping", "loops", "assignments", "side effects", "currying"]);
@@ -107,13 +109,14 @@ This first problem deals with the filtering pattern.
    :long_name: Filtering Pattern
 
 
-Folding (Reducing)
-------------------
+Folding/Reducing
+----------------
 
 To discover our next pattern, try to discern what the following *sum* and *count* functions have in common.
 
 ::
 
+    // Return the sum of all the numbers in a flat list
     var sum = function (ns) {
         var helper = function (ns,a) {
             if (fp.isNull(ns))
@@ -130,6 +133,7 @@ To discover our next pattern, try to discern what the following *sum* and *count
 
 ::
 
+    // Return a count of how many times n occurs in the list ns
     var count = function (n,ns) {
       var helper = function (ns,a) {
           if (fp.isNull(ns))
@@ -250,25 +254,25 @@ Simlarly, *reduceRight* is exactly what we need to build the *append* function:
 
 This problem deals with the folding pattern.
 
-.. avembed:: Exercises/PL/RP11part2.html ka
-   :long_name: RP set #11, question #2
+.. avembed:: Exercises/PL/Reduce1.html ka
+   :long_name: Reducing 1
 
 
-RP 11 part 3
-------------
+Folding/Reducing (2)
+--------------------
 
 This problem uses both the mapping and the folding patterns.
 
-.. avembed:: Exercises/PL/RP11part3.html ka
-   :long_name: RP set #11, question #3
+.. avembed:: Exercises/PL/Reduce2.html ka
+   :long_name: Reduce and Map
 
 
-RP 11 part 4
-------------
+Folding/Reducing (3)
+--------------------
 
 This problem will give you intensive practice with the folding
 pattern. This problem is randomized and must be solved three times in
 a row.
 
-.. avembed:: Exercises/PL/RP11part4.html ka
-   :long_name: RP set #11, question #4
+.. avembed:: Exercises/PL/Reduce3.html ka
+   :long_name: Reducing 3
