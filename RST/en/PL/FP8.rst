@@ -6,9 +6,9 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-===========================================
-Functional Programming - Part 8 
-===========================================
+=================================================
+Functional Programming - Combining Map and Reduce
+=================================================
    
 The MapReduce Paradigm
 ----------------------
@@ -17,7 +17,7 @@ In 2004 `Jeffrey Dean and Sanjay Ghemawat of Google published a paper
 <https://research.google.com/archive/mapreduce.html>`_ describing a
 paradigm for distributed computation that has come to be called
 **MapReduce**.  It illustrated the influence of functional programming on
-the way in which Google organinzed computational work that could be
+the way in which Google organized computational work that could be
 parallelized on distributed clusters of computer.
 
 The essence of Dean and Ghemawat's idea was to define a *mapping
