@@ -152,13 +152,42 @@
         }
       }
     },
-    "Stacks": {
-      "List/StackArray": {},
-      "List/StackLinked": {}
-    },
-    "Queues": {
-      "List/Queue": {},
-      "List/QueueLinked": {}
+    "Algorithm Analysis": {
+      "AlgAnal/AnalPrelim": {
+        "AnalPrelimSumm": {
+          "threshold": 4
+        }
+      }, 
+      "AlgAnal/AnalIntro": {
+        "CompareGrowth": {
+          "points": 2.0, 
+          "threshold": 3
+        }, 
+        "GrowthRatesPRO": {
+          "threshold": 3
+        }
+      }, 
+      "AlgAnal/AnalCases": {},
+      "AlgAnal/AnalCompvsAlg": {
+        "FasterCorASumm": {
+          "threshold": 2
+        }
+      }, 
+      "AlgAnal/AnalAsymptotic": {
+        "UpperBoundsSumm": {
+          "threshold": 4
+        }
+      }, 
+      "AlgAnal/AnalProgram": {
+        "binarySearchPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          }, 
+          "points": 1.0, 
+          "threshold": 1.0
+        }
+      }, 
+      "AlgAnal/AlgAnalSummCS2": {}
     },
     "Recursion": {
       "RecurTutor/RecIntro": {},
@@ -238,42 +267,13 @@
       }, 
       "RecurTutor/RecSummaryEx": {}
     },
-    "Algorithm Analysis": {
-      "AlgAnal/AnalPrelim": {
-        "AnalPrelimSumm": {
-          "threshold": 4
-        }
-      }, 
-      "AlgAnal/AnalIntro": {
-        "CompareGrowth": {
-          "points": 2.0, 
-          "threshold": 3
-        }, 
-        "GrowthRatesPRO": {
-          "threshold": 3
-        }
-      }, 
-      "AlgAnal/AnalCases": {},
-      "AlgAnal/AnalCompvsAlg": {
-        "FasterCorASumm": {
-          "threshold": 2
-        }
-      }, 
-      "AlgAnal/AnalAsymptotic": {
-        "UpperBoundsSumm": {
-          "threshold": 4
-        }
-      }, 
-      "AlgAnal/AnalProgram": {
-        "binarySearchPRO": {
-          "exer_options": {
-            "JXOP-code": "none"
-          }, 
-          "points": 1.0, 
-          "threshold": 1.0
-        }
-      }, 
-      "AlgAnal/AlgAnalSummCS2": {}
+    "Stacks": {
+      "List/StackArray": {},
+      "List/StackLinked": {}
+    },
+    "Queues": {
+      "List/Queue": {},
+      "List/QueueLinked": {}
     },
     "Sorting": {
       "Sorting/InSort": {}, 
