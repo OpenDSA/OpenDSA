@@ -96,12 +96,36 @@
       "NP/provingNPC": {},
       "NP/circuitSAT": {},
       "NP/SAT": {},
-      "NP/threeSAT": {},
-      "NP/clique": {},
-      "NP/independentSet": {},
-      "NP/vertexCover": {},
-      "NP/hamiltonianCycle": {},
-      "NP/TSP": {},
+      "NP/threeSAT": {
+        "threeSATPRO": {
+          "threshold": 1.0
+        }
+      },
+      "NP/clique": {
+        "cliquePRO": {
+          "threshold": 1.0
+        }
+      },
+      "NP/independentSet": {
+        "independentSetPRO": {
+          "threshold": 1.0
+        }
+      },
+      "NP/vertexCover": {
+        "vertexCoverPRO": {
+          "threshold": 1.0
+        }
+      },
+      "NP/hamiltonianCycle": {
+        "hamiltonianCycPRO": {
+          "threshold": 1.0
+        }
+      },
+      "NP/TSP": {
+        "TSPPRO": {
+          "threshold": 1.0
+        }
+      },
       "NP/circuitSAT_to_SAT": {},
       "NP/SAT_to_threeSAT": {},
       "NP/threeSAT_to_clique": {},

@@ -1,7 +1,9 @@
+// @Todo Fix bowling info shown, what frame etc?  Scoreboard??
+
 var testNum = 1;
 var codeCoverage = [];
 var bugCoverage = [];
-for (var i = 0; i < 15; i++) {
+for (var i = 0; i < 14; i++) {
     codeCoverage[i] = false;
 }
 
@@ -16,50 +18,47 @@ for (var i = 0; i < 14; i++) {
  * 3 = scalene
  */
 function getTriangleTypeNumber(s1, s2, s3) {
-    if (s1 < 0) {
+    if (isNaN(s1) || isNaN(s2) || isNaN(s3)) {
+        codeCoverage[12] = true;
+        return 0; 
+    } else if (s1 < 0 || s2 < 0 || s3 < 0) {
         codeCoverage[0] = true;
         return 0;
     } else if (s1 == 0) {
         codeCoverage[1] = true;
-        return 0;
-    } else if (s2 < 0) {
+        return 0;    
+    } else if (s2 == 0) {
         codeCoverage[2] = true;
         return 0;
-    } else if (s2 == 0) {
+    } else if (s3 == 0) {
         codeCoverage[3] = true;
         return 0;
-    } else if (s3 < 0) {
+    } else if (s1 - s2 == s3) {
         codeCoverage[4] = true;
         return 0;
-    } else if (s3 == 0) {
+    } else if (s2 - s1 == s3) {
         codeCoverage[5] = true;
         return 0;
-    } else if (s1 - s2 == s3) {
+    } else if (s3 - s2 == s1) {
         codeCoverage[6] = true;
         return 0;
-    } else if (s2 - s1 == s3) {
+    } else if (s1 - s2 > s3) {
         codeCoverage[7] = true;
         return 0;
-    } else if (s3 - s2 == s1) {
+    } else if (s2 - s1 > s3) {
         codeCoverage[8] = true;
         return 0;
-    } else if (s1 - s2 > s3) {
+    } else if (s3 - s2 > s1) {
         codeCoverage[9] = true;
         return 0;
-    } else if (s2 - s1 > s3) {
-        codeCoverage[10] = true;
-        return 0;
-    } else if (s3 - s2 > s1) {
-        codeCoverage[11] = true;
-        return 0;
     } else if (s1 == s2 && s1 == s3 && s2 == s3) {
-        codeCoverage[12] = true;
+        codeCoverage[10] = true;
         return 1;
     } else if (s1 != s2 && s1 != s3 && s2 != s3) {
-        codeCoverage[13] = true;
-        return 3;
+        codeCoverage[11] = true;
+        return 3;   
     } else {
-        codeCoverage[14] = true;
+        codeCoverage[13] = true;
         return 2;
     }
 }
@@ -81,6 +80,9 @@ function getTriangleTypeText(triangleTypeNum) {
     return triangleType;
 }
 
+/**
+ * calculates code coverage percentage
+ */
 function calculateCoverage() {
     var numTrue = 0;
     for (var i in codeCoverage) {
@@ -104,6 +106,13 @@ function isBugFound(s1, s2, s3, actual, expected) {
     return bugDetected;
 } 
 
+/**
+ * Calculates the percentage of bugs found.  It takes an expected
+ * result from the correct getTriangleTypeNumber() function above.
+ * If there is a difference in the expected value and the value
+ * returned from each bug function then that is considered a bug found.
+ * @param {*} expected is the expected triangle type
+ */
 function calculateBugCoverage(s1, s2, s3, expected) {
     for (var i in bugs) {
         var actual = bugs[i].classify(s1, s2, s3);
@@ -123,9 +132,8 @@ function calculateBugCoverage(s1, s2, s3, expected) {
 
 function logTestCase(s1, s2, s3, triangleName) {
     var testCaseHistory = document.getElementById("testHistory");
-    testCaseHistory.innerHTML = testCaseHistory.innerHTML + "Test " + testNum + ": ";
-    testCaseHistory.innerHTML = testCaseHistory.innerHTML + "Sides: " + s1 + ", " + s2 + ", " + s3 + " " + triangleName;
-    testCaseHistory.innerHTML = testCaseHistory.innerHTML + "\n ";
+    testCaseHistory.innerHTML = "Test " + testNum + ": " + "Sides: " + s1 + ", " + s2 + ", " + s3 + " "
+                                 + triangleName + "\n" + testCaseHistory.innerHTML;
     setPerformanceDetails();
 }
 
@@ -144,35 +152,74 @@ function setPerformanceDetails() {
     
 
 }
+window.onload = function() {
+    if (getUrlParam("code") != "true") {
+        document.getElementById("coverageCode").style.display = 'none';
+    } else {
+        document.getElementById("coverageCode").style.display = 'block';
+    }
+}
 
+/**
+ * Main function that is called when the 'Classify' button is pressed
+ */
 function classifyTriangle() {
     var side1 = document.getElementById("side1").value;
     var side2 = document.getElementById("side2").value;
-    var side3 = document.getElementById("side3").value;
+    var side3 = document.getElementById("side3").value;    
 
-    side1 = parseInt(side1, 10);
-    side2 = parseInt(side2, 10);
-    side3 = parseInt(side3, 10);
-
-    if (isNaN(side1) || isNaN(side2) || isNaN(side3)) {
-        document.getElementById("triangleType").innerText = "All sides must be valid integers.";
+    if (side1 == "" || side2 == "" || side3 == "") {
+        document.getElementById("triangleType").innerText = "Error: All sides must be entered.";
+        document.getElementById("triangleType").style = "color: red;";
         return;
     }
 
-    //Code Coverage
-    var triangleTypeNum = getTriangleTypeNumber(side1, side2, side3);
+    var allowedValues = new RegExp('^[\-]?[0-9a-zA-Z]+$');
+    var triangleTypeNum = 0;
+    if (!side1.match(allowedValues) || !side2.match(allowedValues) || !side3.match(allowedValues)) {
+        //This is checked here instead of in getTriangleTypeNumber() so that we can evaluate
+        //before the sides have been pssed through the parseInt() statements below.
+        codeCoverage[12] = true;
+        triangleTypeNum = 0;
+    } else {
+        side1 = parseInt(side1, 10);
+        side2 = parseInt(side2, 10);
+        side3 = parseInt(side3, 10);
+    
+        var triangleTypeNum = getTriangleTypeNumber(side1, side2, side3);
+    }
+
+    
     var triangleType = getTriangleTypeText(triangleTypeNum);
-    document.getElementById("triangleType").innerText = triangleType;
+    document.getElementById("triangleType").innerText = "Triangle Type: " + triangleType;
+    document.getElementById("triangleType").style = "color: green;";
     var codeCoverageP = calculateCoverage();
     document.getElementById("codeCoverageBar").style = "width:" + codeCoverageP + "%";
     document.getElementById("codeCoveragePercentage").innerText = codeCoverageP.toFixed(2) + "%";
-    //Bug Coverage
-    var bugCoverageP = calculateBugCoverage(side1, side2, side3, triangleTypeNum);
-    document.getElementById("bugCoverageBar").style = "width:" + bugCoverageP + "%";
-    document.getElementById("bugCoveragePercentage").innerText = bugCoverageP.toFixed(2) + "%";
+
+    // Bug Coverage uncomment if you want to add the bug coverage bar back
+    // var bugCoverageP = calculateBugCoverage(side1, side2, side3, triangleTypeNum);
+    // document.getElementById("bugCoverageBar").style = "width:" + bugCoverageP + "%";
+    // document.getElementById("bugCoveragePercentage").innerText = bugCoverageP.toFixed(2) + "%";
 
     logTestCase(side1, side2, side3, triangleType);
 }
+/**
+ * Gets the value of a url parameter
+ * @param {*} name is the name of the parameter you want to get 
+ * @param {*} url is the url we want to read, can leave empty.
+ */
+function getUrlParam( name, url ) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( url );
+    return results == null ? null : results[1];
+}
+
+
+
 
 reset = false;
 function resetClicked() {

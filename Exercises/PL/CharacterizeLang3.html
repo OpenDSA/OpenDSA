@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Characterization of Language</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="920" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="CharacterizeLang3p">
+          <p class="question">Consider the following fragment of a BNF grammar:</p>
+	    <table class="grammar">
+	      <tr><td>&lt;statement-list&gt;</td> 
+		<td>::=</td>
+		<td>&lt;more&gt;</td>
+		<td>| &epsilon;</td></tr>
+	      <tr><td>&lt;more&gt;</td> 
+		<td>::=</td>
+		<td>&lt;statement&gt;</td>
+		<td>| &lt;statement&gt; ; &lt;more&gt;</td></tr>
+	    </table>
+
+	    <p class="question">Which one of the following phrases
+	    best describes the language generated
+	    by <span class="string">&lt;statement-list&gt;</span>?</p>
+          <div class="solution">a list of zero or more statements
+          separated by semicolons</div>
+          <ul class="choices">
+            <li>a list of zero or more statements, each followed by a
+            semicolon</li>
+            <li>a list of one or more statements separated by semicolons</li>
+            <li>a list of one or more statements, each followed by a
+            semicolon</li>
+          </ul>
+          <div class="hints">
+            <p>What is the shortest list of statements that can be
+            generated from &lt;statement-list&gt;?</p>
+            <p>What does a one-statement list end with?</p>
+            <p>What does a three-statement list end with?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

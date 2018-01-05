@@ -1,0 +1,111 @@
+<!--
+Self Organizing Lists Transpose mini-proficiency exercise.
+Written by Pavel Hovhannisyan and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="jsav math SelfOrgTransposePRO">
+<head>
+  <title>Self Organinzing Lists Transpose</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+
+  <!--<script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />-->
+  <script src="../../khan-exercises/local-only/main.js"></script>
+
+  <style>
+    .jsavcontainer {
+      height: 130px;
+      border: 0;
+    }
+    .jsavcanvas{
+      width: 900px;
+      height: 900px;
+    }
+    .jsavhorizontallist.jsavautoresize .jsavnode {
+      min-width: 30px;
+      max-width: 30px;
+      min-height: 30px;
+      max-height: 30px;
+      line-height: 30px;
+      padding-right: 12px;
+    }
+    .bgColor{
+      font-size: 130%;
+      background-color: yellow;
+    }
+    .jsavlist .jsavvalue { /* This will get the linked list cell values to center vertically */
+      height: 30px;
+    }
+    .jsavlist.jsavautoresize.jsavhorizontallist{
+      height: 150px;
+    }
+    .jsavcanvas svg{
+      height: 150px;
+      overflow: visible;
+    }
+    #reset { margin-right: 20px;}
+  </style>
+</head>
+  <body data-height="650" data-width="950">
+
+<div class="exercise">
+  <div class="vars">
+    <var id="arr_size">Khan.randRange(4, 8)</var>
+    <var id="jsav_init">SelfOrgTransposePro.initJSAV(arr_size)</var>
+    <var id="search_value">SelfOrgTransposePro.getSearch()</var>
+  </div>
+
+  <div class="problems">
+    <div id="SelfOrgTransposeProp">
+      <div id = "xx"></div>
+      <div id = "yy"></div>
+      <p class="problem" id = "test">
+        Your task in this exercise is to show the behavior for self organizing lists using the transpose method. You will need to
+        demonstrate what happens when you search for the value
+       <b><var>search_value</var></b>.
+        You will need to manually redirect the pointers of the nodes
+        to demonstrate what happens when a node that is being searched is found.
+      </p>
+      <div class="question">
+        <p>
+          To change a pointer, click on its box (on the right
+          side of the node) to highlight it, then click on the node that you
+          want it to point to.
+        </p>
+        <input id="reset" type="button" value="Reset" />
+
+        <div id="jsav" style = "{background-color : #333}"></div>
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [SelfOrgTransposePro.userInput]
+        </div>
+        <div class="validator-function">
+          if (!SelfOrgTransposePro.checkAnswer(arr_size) && !guess[0]) {
+            return "";  // User did not click, and correct answer is not
+                        // initial array state
+          } else {
+            return SelfOrgTransposePro.checkAnswer(arr_size);
+          }
+        </div>
+      </div>
+      <div class="hints">
+        <p>
+          You want to reproduce the behavior of the self organizing list's
+          the transpose method. Try starting finding the value in the list.
+        </p>
+        <p>
+          Now you need to make it point to the correct node, and
+          make the rest of the nodes point to the other
+          acconrding nodes.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

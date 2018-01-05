@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html data-require="math fp" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Folding/Reducing (2)</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1200" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Reduce2p">
+          <p class="question">Consider the following function definitions:
+<pre class="string">
+var m1 = function (ns) {
+    return (fp.isGT(fp.hd(ns),fp.hd(fp.tl(ns)))) ? 
+            fp.hd(ns) : fp.hd(fp.tl(ns));
+};
+var m2 = function (ns) {
+    return (fp.isLT(fp.hd(ns),fp.hd(fp.tl(ns)))) ? 
+            fp.hd(ns) : fp.hd(fp.tl(ns));
+};
+var m3 = function (ns) {
+    return fp.add(fp.hd(ns),fp.hd(fp.tl(ns)));
+};
+var g = function (ns,f) {
+    return fp.reduce(
+                      function (x,y) { return x + y; },
+                      fp.map(f,ns),
+                      0
+                    );
+};
+</pre>
+	  <p class="question">We then make the following three
+	  function calls:</p>
+<pre class="string">
+g( [[1,2], [3,4], [5,6]] , m1 );
+g( [[1,2], [3,4], [5,6]] , m2 );
+g( [[1,2], [3,4], [5,6]] , m3 );
+</pre>
+	  <p class="question">Which one of the following values
+	  is <em>not</em> one returned by these function calls?</p>
+	  <div class="solution">15</div>
+          <ul class="choices">
+           <li>9</li>
+           <li>12</li>
+           <li>21</li>
+          </ul>
+
+          <div class="hints">
+	    <p>The <span class="string">( ... ? ... : ... )</span>
+	    conditional ternary operator works like the one that you
+	    already know in Java.</p>
+	    <p>Describe what each one of
+	      the <span class="string">m1</span>, 
+	      <span class="string">m2</span>
+	      and <span class="string">m3</span> functions does on its own.
+	    </p>
+	    <p>What does <span class="string">fp.map(f,ns)</span>
+	    evaluate to in each function call?</p>
+	    <p>Now put it all together with the folding pattern.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

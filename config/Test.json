@@ -65,12 +65,12 @@
     "required": true
   }, 
   "chapters": {
-    "Spatial Data Structures": {
-      "Spatial/Spatial": {}, 
-      "Spatial/PRquadtree": {}, 
-      "Spatial/KDtree": {}, 
-      "Spatial/Bintree": {}, 
-      "Spatial/OtherSpatial": {}
+    "Programming": {
+      "Searching/BinarySearch": {
+        "binarySearchPRO": {
+          "points": 1.0, 
+          "threshold": 1.0
+        }
     }, 
     "Appendix": {
       "Glossary": {},

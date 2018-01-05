@@ -144,7 +144,7 @@ We have to find symmetries not just between pairs of values,
 but also further symmetries between pairs of pairs, and then pairs of
 pairs of pairs, and so on.
 
-Recall that a :term:`complex` number :math:`z`
+Recall that a :term:`complex number` :math:`z`
 has a real component and an imaginary component.
 We can consider the position of :math:`z` on a number line if we use
 the :math:`y` dimension for the imaginary component.

@@ -121,11 +121,6 @@ PointersCPP: min
 PL: min
 	python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
-# Tom Naps has added this target while he works on re-packaging the PL book
-# He will remove it and the corresponding config file when that re-packaging is complete
-PL-naps: min
-	python $(CONFIG_SCRIPT) config/PL-naps.json --no-lms
-
 Everything: min
 	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
 
@@ -146,6 +141,12 @@ CS2: min
 
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
+
+COMP271: min
+	python $(CONFIG_SCRIPT) config/COMP271.json --no-lms
+
+COMPSCI186: min
+	python $(CONFIG_SCRIPT) config/COMPSCI186.json --no-lms
 
 testcmap: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html data-require="math fp AccumulatorPatternPractice PLutils" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Practice with the Accumulator Pattern</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="setup">AccumulatorPatternPractice.init()</var>
+        <var id="functionDef">AccumulatorPatternPractice.functionDef</var>        
+        <var id="params">AccumulatorPatternPractice.params</var>        
+        <var id="functionCall">AccumulatorPatternPractice.functionCall</var>        
+	<var id="answer">AccumulatorPatternPractice.answer</var>
+      </div>
+      <div class="problems">
+        <div id="AccumulatorPatternPracticep">
+          <p class="question">
+            Given the following function definitions,
+            where <var>params</var>:</p>
+<pre class="string">
+<var>functionDef</var>
+</pre>
+          <p class="question">
+	  what is the value of the following function call?<br />
+	  <var class="string">functionCall</var><br /><br />
+	  
+	  Note that, if the function call generates an exception, the
+	  correct answer is the word "error" (without the double
+	  quotes) in all lowercase letters.
+	  </p>
+	  <textarea rows="1" cols="40" style="resize:none"
+		    id="answerTextarea"></textarea>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> $('#answerTextarea').val()  </div>
+            <div class="validator-function">
+              return AccumulatorPatternPractice.checkAnswer(guess);
+            </div>
+          </div>
+          <div class="hints">
+	    <p>What type of data does the accumulator contain?</p>	    
+	    <p>What is the initial value of the accumulator?</p>
+	    <p>How is the accumulator updated at each recursive call?</p>
+	    <p>How is the input list  updated at each recursive call?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

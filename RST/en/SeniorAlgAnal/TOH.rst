@@ -263,7 +263,8 @@ This really is a common way to go about figuring out the closed-form
 solution for many recurrence relations and summation:
 Look at what happens, try to find (or guess) a pattern, and then test
 the pattern.
-This is so common that it has its own  name: :term:`Guess and test`.
+This is so common that it has its own  name:
+:term:`Guess and Test <guess-and-test>`.
 We will use this a lot to help us with analysis.
 
 Now that we have a pretty good guess,

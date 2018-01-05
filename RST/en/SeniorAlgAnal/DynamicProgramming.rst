@@ -100,7 +100,8 @@ We will next consider a problem that appears with many variations in a
 variety of commercial settings.
 Many businesses need to package items with the greatest efficiency.
 One way to describe this basic idea is in terms of packing items into
-a knapsack, and so we will refer to this as the Knapsack Problem.
+a knapsack, and so we will refer to this as the
+:term:`Knapsack Problem <knapsack problem>`.
 We will first define a particular formulation of the knapsack problem,
 and then we will discuss an algorithm to solve it based on dynamic
 programming.

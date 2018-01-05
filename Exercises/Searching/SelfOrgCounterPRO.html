@@ -1,0 +1,127 @@
+<!--
+Self Organizing Lists Counter mini-proficiency exercise.
+Written by Pavel Hovhannisyan and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="jsav math SelfOrgCounterPRO">
+<head>
+  <title>Self Organinzing Counter</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="../../khan-exercises/local-only/main.js"></script>
+ <!--  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV.js"></script> -->
+  <!-- <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" /> -->
+
+  <style>
+    .jsavcontainer {
+      height: 130px;
+      border: 0;
+    }
+    .jsavcanvas{
+      width: 900px;
+      height: 900px;
+    }
+    .jsavhorizontallist.jsavautoresize .jsavnode {
+      min-width: 30px;
+      max-width: 30px;
+      min-height: 30px;
+      max-height: 30px;
+      line-height: 30px;
+      padding-right: 12px;
+    }
+    .bgColor{
+      font-size: 130%;
+      background-color: yellow;
+    }
+    .jsavlist .jsavvalue { /* This will get the linked list cell values to center vertically */
+      height: 30px;
+    }
+    .jsavlist.jsavautoresize.jsavhorizontallist{
+      height: 150px;
+    }
+
+    .jsavarray .jsavindex {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+    }
+
+
+    .jsavcanvas svg{
+      height: 150px;
+      overflow: visible;
+    }
+    #reset { margin-right: 20px;}
+  </style>
+</head>
+  <body data-height="650" data-width="950">
+
+<div class="exercise">
+  <div class="vars">
+    <var id="arr_size">Khan.randRange(4, 8)</var>
+    <var id="jsav_init">SelfOrgCounterPro.initJSAV(arr_size)</var>
+    <var id="search_value">SelfOrgCounterPro.getSearch()</var>
+  </div>
+
+  <div class="problems">
+    <div id="SelfOrgTransposeProp">
+      <div id = "xx"></div>
+      <div id = "yy"></div>
+      <p class="problem" id = "test">
+        Your task in this exercise is to show the behavior for self organizing lists using the Counter. You will need to
+        demonstrate what happens when you search for the value
+       <b><var>search_value</var></b>.
+        You will need to manually redirect the pointers of the nodes
+        to demonstrate what happens when a node that is being searched for is found.
+        In addition, you will need to correctly increment the counter in order to
+        get the correct answer.
+      </p>
+      <div class="question">
+        <p>
+          Make sure you do increment the counter first, before you do
+          anything else. To increment the counter
+          click on the according node and press on the increase count button.
+          To change a pointer, click on its grey box (on the right
+          side of the node) to highlight it, then click on the node that you
+          want it to point to.
+        </p>
+        <input id="reset" type="button" value="Reset" />
+        <input id="increaseCount" type="button" value="Increment Count" />
+        <div id="jsav" style = "{background-color : #333}"></div>
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [SelfOrgCounterPro.userInput]
+        </div>
+        <div class="validator-function">
+          if (!SelfOrgCounterPro.checkAnswer(arr_size) && !guess[0]) {
+            return "";  // User did not click, and correct answer is not
+                        // initial array state
+          } else {
+            return SelfOrgCounterPro.checkAnswer(arr_size);
+          }
+        </div>
+      </div>
+      <div class="hints">
+        <p>
+          You want to reproduce the behavior of the self organizing list's
+          counter method. Start by finding the searched value in the list.
+        </p>
+        <p>
+          Increase the counter for that node.
+        </p>
+        <p>
+        	Now you need to make it point to the correct node, and
+          make the rest of the nodes point to the other
+          acconrding nodes.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

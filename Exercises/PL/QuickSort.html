@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Using split to sort</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1350" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="QuickSortp">
+          <p class="question">Consider the following function
+          definition:</p>
+<pre class="string">
+1.  var qs = function (ns) {
+2.      if (fp.isNull(ns)) {
+3.          return [ ];
+4.      } else {
+5.          return join(
+6.                      fp.hd(split(fp.hd(ns),fp.tl(ns))),
+7.                      fp.cons(fp.hd(ns),
+8.                              fp.hd(fp.tl(split(fp.hd(ns),fp.tl(ns)))))
+9.                     );
+10.     }
+11. };
+</pre>
+          <p class="question">The <span class="string">qs</span>
+           function above takes as input a (flat) list of integers and
+           uses the <span class="string">split</span>
+           and <span class="string">join</span> functions to compute
+           its output.<br />  Now, you want this function to sort any
+           list of integers in ascending order.  Instead it behaves
+           in the following way:<p>
+<pre class="string"> 
+> qs([5,1,9,2,7,3]) 
+[ 3, 2, 1, 5, 7, 9 ] 
+</pre>
+          <p class="question">Which one of the following options best
+          characterizes the line(s) that will have to change to solve
+          this problem?
+          <div class="solution">Exactly two of lines 6, 7, and 8 have
+          to change.</div>
+          <ul class="choices">
+            <li>Only line 6 has to change.</li>
+            <li>Only line 7 has to change.</li>
+            <li>Only line 8 has to change.</li>
+            <li>Lines 6, 7, and 8 all have to change.</li>
+          </ul>
+          <div class="hints">
+	    <p>Make sure to review how
+	    the <span class="string">split</span>
+	    and <span class="string">join</span> functions work.</p>
+	    <p>Observe that the input list is split into two parts
+	    using its head as a pivot and then put back together in a
+	    different order.</p>
+	    <p>What is special about the position of the pivot in this
+	    reordering of the input list?</p>
+	    <p>Take the recursive leap of faith, and voil&agrave;!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

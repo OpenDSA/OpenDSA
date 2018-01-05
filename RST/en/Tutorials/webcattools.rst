@@ -4,94 +4,135 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Jordan Sablan
+   :author: Ayaan Karzarouni and Cliff Shaffer
    :requires:
-   :satisfies: web-cat VT tools
+   :satisfies: Web-CAT Plugin
    :topic:
 
-Using/Installing VT Development Tools
-=====================================
+Installing the Web-CAT Submission Plug-in for Eclipse
+=====================================================
 
-Using/Installing VT Development Tools
--------------------------------------
+Introduction
+------------
 
-Virginia Tech students use a number of tools to assist in projects.
-These tools will help with submiting and testing project code.
-If you are working in Java you will almost certainly make use of
-WebCAT.
-WebCAT is an automated project testing/submission system.
-It runs your code against a suite of tests designed by your professor
-for correctness.
-It also measures how much of your code you have tested and grade your
-performance.
+Here are instructions for how to install the Web-CAT submission
+plug-in for Eclipse.
+These instructions assume that you are running Eclipse version
+Oxygen.
 
-Installing The Submission Plugin
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Note:** This might be a good time to also update Eclipse. 
+If you are running a version earlier than Oxygen, then you should
+install the latest version directly.
+If you are running Oxygen already, then you can check for updates at
+``Help --> Check for Updates``.
 
-*STOP GO NO FURTHER BEFORE READING THIS! This tutorial assumes you are
-using Eclipse 4.2 or higher.
-In addition it assumes you have not installed the previous Eclipse
-plugin from webcat.
-If you have done so remove it and it's dependencies as the checkstyle
-plugin included in the older versions of the Eclipse plugin break the
-current plugin.*
+Installing the Plug-in
+----------------------
 
-This section assumes you are using the Eclipse Java IDE.
-It is possible to submit WebCAT manually if you do not wish to use
-Eclipse, however, the staff of CS@VT have developed a lovely plugin
-that integrates into Eclipse.
+Un-Installing an Old Plug-in
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Step 1: If you have not done so already, install |external_link1| and
-|external_link2|.
+If you already have an earlier version of the Web-CAT plug-in
+installed, you will first need to uninstall it.
+For those installing it for the first time, skip to the section on
+Installing the Plug-In. 
+ 
+Open Eclipse, and in the tool bar at the top of the screen, go to
+``Help --> About Eclipse``. Then click on the button that says
+``Installation Details``.
+After clicking on ``Installation Details``,
+a window something like this should come up: 
 
-.. |external_link1| raw:: html
-
-   <a href="https://java.com/en/download/index.jsp" target = "_blank">Java</a>
-
-.. |external_link2| raw:: html
-
-   <a href="https://www.eclipse.org/downloads/" target = "_blank">Eclipse</a>
-
-
-Step 2: To verify you have access, |external_link3| using your PID/PID
-password
-
-.. |external_link3| raw:: html
-
-   <a href="https://web-cat.cs.vt.edu" target = "_blank">login to WebCAT</a>
-
-
-Step 3: Open Eclipse and navigate to Help->Install New Software, you
-will open a window similar to the below screenshot.
-Hit the Add button (circled in red).
-
-.. odsafig:: Images/Webcatnewsoftware.png
+.. odsafig:: Images/InstallDetails.png
+   :width: 650
    :align: center
    :capalign: justify
    :figwidth: 90%
-   :scale: 50%
-   :alt: Add New Software Window
+   :alt: InstallDetails
 
-Step 4: You will now be prompted with window requesting a
-Name/Location.
-Use NAME: WebCAT, LOCATION: http://web-cat.org/eclstats.
+Select ``Web-CAT Electronic Submitter`` and click ``Uninstall``.
+Follow the prompts, clicking ``Next`` and ``Finish`` as appropriate,
+and restart Eclipse to complete the process.
+ 
 
-Step 5: You will now be given a window that prompts you to select the
-Java plugin and install it.
-If you see no software listed be sure to uncheck the box near the
-bottom labeled "Group Items By Category".
+Installing the Plug-in
+~~~~~~~~~~~~~~~~~~~~~~
 
-Step 6: Finally go to Window->Preferences.
-Then select Preferences.
-A window similar to the below will appear.
-Fill in the submit URL with this:
-https://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/wa/assignments/eclipse?institution=VT.
-Leave the Download URL box blank unless you have been given an URL
-from another resource.
+Open Eclipse, and in the tool bar at the top of the screen, go to
+``Help --> Install New Software``.
+The following window will come up:
 
-.. odsafig:: Images/Webcatsubmiturl.png
+.. odsafig:: Images/PluginInstall1.png
+   :width: 750
    :align: center
    :capalign: justify
    :figwidth: 90%
-   :scale: 50%
-   :alt: Submission URL
+   :alt: PluginInstall1
+
+In the ``Work With`` text box, paste this link:
+http://web-cat.org/eclstats
+ 
+* Next, click ``Add``.
+  A dialog box will pop up with two text boxes.
+
+* Make sure the above URL is in the box labeled ``Location``,
+  and put in a sensible name (like "Web-CAT plugin") in the box labeled
+  ``Name``.
+
+* Once that's done, click ``OK``.
+ 
+This is what the window should look like now:
+
+.. odsafig:: Images/PluginInstall2.png
+   :width: 750
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: PluginInstall2
+
+* Check the two  boxes next to ``Web-CAT Electronic Assignments
+  Feature`` and ``Web-CAT Java Development Extras``, and click ``Next``. 
+
+* Click ``Next`` again.
+
+* Click ``Next`` again.
+
+* Accept the terms of the license agreement, and click 'Finish'.
+ 
+The install will start now.
+It will only take a few seconds, but it will pause for a moment and
+warn you that you are about to install software with unsigned
+content.
+Click ``OK`` to continue the installation, and restart Eclipse
+when prompted to complete the process. 
+ 
+Once you have the plug-in installed, you need to set it up to be able
+to communicate with Web-CAT:
+
+* Go to ``Window --> Preferences`` (``Eclipse --> Preferences`` on Mac).
+
+* In the window that comes up, in the column on the left, click on
+  Web-CAT Assignments.
+  You should see this window:
+
+.. odsafig:: Images/WebCATAssignment.png
+   :width: 750
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: WebCATAssignment
+
+Put in the following information:
+
+* Submission Definition URL: https://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/wa/assignments/eclipse?institution=VT
+
+* Email: Your VT email address.
+
+* Username: Your PID.
+
+* You can leave Outgoing SMTP Mail Server blank.
+
+* In the ``Download URL`` field, enter:
+  http://web-cat.cs.vt.edu/Web-CAT/assignments.xml
+
+* Click on ``Apply and Close`` to complete the process.

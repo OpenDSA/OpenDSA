@@ -1,0 +1,16 @@
+#helpbutton {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 20px;
+	left: 700px;
+	background: rgba(0,0,0,0);
+	border: none;
+	padding: 0;
+	border-radius: 15px;
+}
+
+#helpbutton > img {
+	height: auto;
+	max-width: 100%;
+}

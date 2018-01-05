@@ -12,7 +12,7 @@ OpenDSA consists of content delivered by servers.
 Content is delivered in the form of "book instances", which are
 created by the :ref:`configuration process <Configuration>`.
 A book instance is accessed through a Learning Management System (at
-the moment, we are only supporting Canvas), with the files delivered
+the moment, we only support Canvas), with the files delivered
 by an LTI Content Provider.
 Various support operations are conducted by the OpenDSA Server.
 If you want to develop content, then create a book instance and view
@@ -30,7 +30,9 @@ at https://canvas.instructure.com.
 With your account in place, you can tell Canvas to create a course.
 The place to start is to create a course named "Test".
 You will then go back to your development environment, and follow the
-instructions on `OpenDSA-DevStack readme page <https://github.com/OpenDSA/OpenDSA-DevStack#generate-canvas-course-using-opendsa-web-interface>`_ to create a "course offering".
+instructions on the `OpenDSA-DevStack readme page
+<https://github.com/OpenDSA/OpenDSA-DevStack#generate-canvas-course-using-opendsa-web-interface>`_
+to create a "course offering".
 If everything worked right, then you will have populated your course
 on Canvas with some content.
 At this point, you are ready to learn about the parts of the system
@@ -69,9 +71,17 @@ Here is a list of the individual repositories that we use:
   https://github.com/vkaravir/JSAV.
 
 * We use the Khan Academy infrastructure for exercises and distribute
-  the necessary portions with OpenDSA. We decided to clone the Khan Academy framework under the OpenDSA account on GitHub, and implement OpenDSA requirements as a layer that overrides some of the Khan Academy framework functionalities, so that we can maintain compatibility and move forward by continuously pulling the original framework’s latest modifications. The customized Khan Academy framework can be found at: https://github.com/OpenDSA/khan-exercises.git.
+  the necessary portions with OpenDSA. We decided to clone the Khan
+  Academy framework under the OpenDSA account on GitHub, and implement
+  OpenDSA requirements as a layer that overrides some of the Khan
+  Academy framework functionalities, so that we can maintain
+  compatibility and move forward by continuously pulling the original
+  framework’s latest modifications.
+  The customized Khan Academy framework can be found at:
+  https://github.com/OpenDSA/khan-exercises.git.
 
-* Support for setting up OpenDSA servers can be found at https://github.com/OpenDSA/OpenDSA-DevStack.
+* Support for setting up OpenDSA servers can be found at
+  https://github.com/OpenDSA/OpenDSA-DevStack.
 
 * The OpenPOP project is in a separate repository at
   https://github.com/OpenDSA/OpenPOP.
@@ -79,14 +89,11 @@ Here is a list of the individual repositories that we use:
 * The QBank project is in a separate repository at
   https://github.com/OpenDSA/QBank.
 
-The stable releases of OpenDSA and JSAV are mirrored at:
-http://algoviz.org/OpenDSA/ and http://algoviz.org/OpenDSA/JSAV,
-respectively.
-The built version of the stable modules are mirrored at:
-http://algoviz.org/OpenDSA/Books.
-The development versions of OpenDSA and JSAV are mirrored at:
-http://algoviz.org/OpenDSA/dev/OpenDSA and
-http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV, respectively.
+An up-to-date development version of the OpenDSA repository is
+mirrored at http://lti.cs.vt.edu/LTI_ruby.
+The built version of the stable standard book configurations
+(available either as they appear in Canvas or stand-alone web pages)
+is available at: https://opendsa-server.cs.vt.edu/home/books.
 
 
 ----
@@ -96,6 +103,8 @@ JSAV
 Visualizations are developed using the JSAV (JavaScript Algorithm
 Visualization) library.
 Documentation for the JSAV API can be found at: http://jsav.io/
+If you have installed the development environment, then the JSAV
+git repository will have been loaded as a submodule.
 
 
 ------------------------------------------
@@ -108,10 +117,10 @@ repositories ("OpenDSA" and "OpenDSA-stable").
 Content materials come in the form of modules (in RST), exercises,
 AVs, etc. There are various top-level directories, as explained below
 and in more detail in the project README file
-(https://github.com/OpenDSA/OpenDSA/blob/master/README.md). Within the
-RST, AV, SourceCode and Exercises directories, the materials are
-subdivided into subdirectories based on topical content (such as
-Sorting).
+(https://github.com/OpenDSA/OpenDSA/blob/master/README.md).
+Within the RST, AV, SourceCode and Exercises directories, the
+materials are subdivided into subdirectories based on topical content
+(such as Sorting).
 These content subdirectories are mirrored across all of the
 materials subtypes.
 That is, if there is a Sorting subdirectory in the
@@ -310,7 +319,7 @@ Then on Windows you will need to install "make"
 from http://gnuwin32.sourceforge.net/packages/make.htm.
 IMPORTANT: Put it in Program Files, NOT Program Files (x86).
 Then,edit your environment variable PATH to add:
-C:/Program Files/GnuWin32/bin
+C:/Program Files/GnuWin32/bin.
 
 Next, install nodejs (on Windows, you can get it from
 https://nodejs.org/en/download/).

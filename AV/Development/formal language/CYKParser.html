@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CYK Parser</title>
+	<link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+	<link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
+	<link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+	<link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
+	<link rel="stylesheet" href="./css/FA.css" type="text/css" />
+  <link rel="stylesheet" href="./css/grammar.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+	<link rel="stylesheet" href="./css/parsing.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+  <link rel="stylesheet" href="./css/help.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/grammarEditor.css" type="text/css"/>
+</head>
+
+<body>
+  <div id="container">
+    <h1 id="editor">CYK Parser</h1>
+    <button id="helpbutton"><img src="./help.png" /></button>
+    <div id="help" title="Help" style="display:none">
+      <div id="helpInfo">
+          <p>Click on "Enter Input" to enter the string that you want to parse</p>
+          <p>Click on "Step" to see the correct answer for next step</p>
+          <p>Click on a cell in the matrix then click on "Animate" to see the animation for that cell</p>
+          <p>Click on "Complete All" to see the complete answer for the parse table</p>
+          <p>Click on "Flip Table" to see the table upside down</p>
+          <p>When inputting your answer in the parse table, separate each character with a comma with no space in between</p>
+      </div>
+    </div>
+    <div id="buttons" align="center">
+      <span id='mode'></span><br>
+      <button type="button" id="inputbutton">Enter Input</button>
+      <button type="button" id="stepbutton">Step</button>
+      <button type="button" id="animatebutton">Animate</button>
+      <button type="button" id="completebutton">Complete All</button>
+      <button type="button" id="flipbutton">Flip Table</button>
+      <button type="button" id="derivationbutton">See Derivation</button>
+      <br></br>
+    </div>
+    <div id="av">
+      <div class="jsavcontrols">
+      </div>
+      <p align="center" class="jsavoutput jsavline"></p>
+    </div>
+    <div id="files">
+      <input id="savefile" type="button" value="Save">
+      <input id="loadfile" type="file">
+      <div style='display: none;'id='download'></div>
+    </div>
+  </div>
+
+
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<script src="../../../JSAV/lib/jquery.transit.js"></script>
+	<script src="../../../JSAV/lib/raphael.js"></script>
+	<script src="../../../JSAV/lib/dagre.min.js"></script>
+	<script src="../../../JSAV/build/JSAV.js"></script>
+	<script src="../../../lib/odsaUtils-min.js"></script>
+	<script src="../../../lib/odsaAV-min.js"></script>
+	<!-- <script src="../fa/serializableGraph.js"></script> -->
+	<script src="./resources/underscore-min.js"></script>
+	<!-- <script src="../fa/FA.js"></script> -->
+  <!--<script src="./grammarEditor.js"></script>-->  
+  <script src="./CYKParser.js"></script>
+</body>
+</html>

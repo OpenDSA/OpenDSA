@@ -713,8 +713,8 @@
       "Searching/SearchIntro": {}, 
       "Searching/UnsortedSearch": {}, 
       "Searching/SortedSearch": {}, 
-      "Development/SelfOrg": {
-        "SelfOrgCounterPro": {
+      "Searching/SelfOrg": {
+        "SelfOrgCounterPRO": {
           "points": 2.0, 
           "threshold": 0.9, 
           "exer_options": {
@@ -722,7 +722,7 @@
             "JXOP-fixmode": "fix"
           }
         }, 
-        "SelfOrgMove-to-FrontPro": {
+        "SelfOrgM2FPRO": {
           "points": 2.0, 
           "threshold": 0.9, 
           "exer_options": {
@@ -730,7 +730,7 @@
             "JXOP-fixmode": "fix"
           }
         }, 
-        "SelfOrgTransposePro": {
+        "SelfOrgTransposePRO": {
           "points": 2.0, 
           "threshold": 0.9, 
           "exer_options": {
@@ -807,32 +807,32 @@
       "NP/circuitSAT": {}, 
       "NP/SAT": {}, 
       "NP/threeSAT": {
-        "threeSAT_KA": {
+        "threeSATPRO": {
           "threshold": 1.0
         }
       },
       "NP/clique": {
-        "clique_KA": {
+        "cliquePRO": {
           "threshold": 1.0
         }
       },
       "NP/independentSet": {
-        "independentSet_KA": {
+        "independentSetPRO": {
           "threshold": 1.0
         }
       },
       "NP/vertexCover": {
-        "vertexCover_KA": {
+        "vertexCoverPRO": {
           "threshold": 1.0
         }
       },
       "NP/hamiltonianCycle": {
-        "hamiltonianCycle_KA": {
+        "hamiltonianCycPRO": {
           "threshold": 1.0
         }
       },
       "NP/TSP": {
-        "TSP_KA": {
+        "TSPPRO": {
           "threshold": 1.0
         }
       },

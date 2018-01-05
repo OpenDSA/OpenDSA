@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Recursive List Processing 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="800" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RecListProc3p">
+          <p class="question">Consider the following definition of
+          the function <span class="string">subst</span>:</p>
+<pre class="string">
+var subst = function (n,o,ns) {
+    if (fp.isNull(ns)) {
+        return [ ];
+    } else if (fp.isEq(o,fp.hd(ns))) {
+        return fp.cons(n,subst(n,o,fp.tl(ns)));
+    } else {
+        return fp.cons(fp.hd(ns),subst(n,o,fp.tl(ns)));
+    }
+}
+</pre>
+          <p class="question">Suppose that you want to make this
+           function perform a "deep substitution" at all levels of a
+           list. For example:</p>
+<pre>
+> subst( 2, 3, [3, 9, [4, 2, 3], 3, 5] ) 
+[ 2, 9, [ 4, 2, 2 ], 2, 5 ]
+</pre>
+	  <p class="question">Which one of the following statements
+          best characterizes how this could be done?</p>
+          <div class="solution">You must add at least one additional
+          <em>else-if</em>, with two recursive calls to
+          <span class="string">subst</span>.</div>
+          <ul class="choices">
+            <li>You must add at least one additional
+          <em>else-if</em>, with one recursive call to
+          <span class="string">subst</span>.</li>
+            <li>You must add at least two additional
+          <em>else-if</em>s, each with one recursive call to
+          <span class="string">subst</span>.</li>
+          </ul>
+          <div class="hints">
+	    <p>Remember that, on an exam or if called upon in class,
+	    you will have to fully develop the code for this function.
+	    </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

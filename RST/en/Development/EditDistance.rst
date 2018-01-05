@@ -14,12 +14,18 @@ Edit Distance
 Edit Distance
 -------------
 
-:term:`Edit Distance` is an algorithm for computing the minimum number
-of changes from one string to another.  The two non-interesting cases
-are: if both strings are of length zero (or identical), then zero
-operations are needed; and if one string is of zero length, then the
-number of operations needed is the length of the non-zero length
-string.
+.. This explanation is missing a definition for what legal editing
+   steps are possible. What you can do affects the measure.
+
+:term:`Edit Distance` is a measure for the minimum number of changes
+required to convert one string into another.
+Our goal here is to come up with an algorithm that, given two strings,
+compute what this minimum number of changes.
+The two non-interesting cases are
+(1) if both strings are identical, then zero
+operations are needed, and
+(2) if one string is of zero length, then the
+number of operations needed is the length of the other string.
 
 Following the dynamic programming approach, the first step is solve
 the problem recursively.  Like most recursive solutions, this

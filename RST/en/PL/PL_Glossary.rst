@@ -11,7 +11,6 @@
 GLOSSARY
 ========
 
-
 .. glossary::
    :sorted:
 
@@ -45,7 +44,6 @@ GLOSSARY
       function.
 
    lambda 
-
       The name of the Greek letter :math:`\lambda` (lowercase) or
       :math:`\Lambda` (uppercase), corresponding to the letter "L".
 
@@ -61,7 +59,6 @@ GLOSSARY
       the lines of code) in which this variable is accessible via
       its name or identifier.
            
-      
    variable capture
       A free variable occurrence is captured when it becomes bound following 
       the renaming of some other variable occurrence.

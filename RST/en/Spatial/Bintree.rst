@@ -26,8 +26,8 @@ makes branching decisions based on a particular search key associated
 with that level, called the :term:`discriminator`.
 Its splitting decisions alternate among the key dimensions.
 Another difference from the BST is that the Bintree uses what is known
-as :term:`key-space decomposition`, and so is a form of :term:`trie`.
-A key-space decomposition splits the key space into equal halves,
+as :term:`image-space decomposition`, and so is a form of :term:`trie`.
+An image-space decomposition splits the key space into equal halves,
 rather than splitting at the key value of the object being stored.
 
 In theory, the Bintree could be used to unify search across any

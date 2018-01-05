@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html data-require="math fp" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Mapping Pattern</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Mapp">
+          <p class="question">
+            Given the following function definitions:</p>
+<pre class="string">
+var map = function (f,ns) {
+              if (fp.isNull(ns)) {
+                 return ns;
+              } else {
+                 return fp.cons(f(fp.hd(ns)),map(f,fp.tl(ns)));
+              }
+};
+var h = function (x) { return x % 3 === 0; };
+</pre>
+          <p class="question">
+	  what is the value of the following function call?<br />
+	  <pre class="string">
+  map ( function (x) { return h( fp.hd(x) ); }, 
+        [ [3,2], [4,5], [6,7], [8,9] ] )</pre>
+	  
+	  <div class="solution">[ true, false, true, false ]</div>
+          <ul class="choices">
+            <li>[ 3, 4, 6, 8 ]</li>
+            <li>[ true ]</li>
+            <li>[ 2, 5, 7, 9 ]</li>
+	    <li>error</li>
+          </ul>
+
+          <div class="hints">
+          <p>What does the function <span class="string">h</span> return?</p>
+          <p>What does the anonymous function return?</p>
+          <p>What does the function <span class="string">map</span>
+          return?</p>
+	  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

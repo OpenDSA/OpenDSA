@@ -1,0 +1,33 @@
+#container {
+  width: 785px;
+  height: 610px;
+}
+
+#jsavcontainer {
+  width: 500px;
+  height: 270px;
+  border-color: #b6c0b2;
+  background-color: #e2eedd;
+  border-radius: 10px;
+  padding: 40px;
+}
+#jsavcontainer h1 {
+  margin-top: 0;
+}
+
+
+.jsavcanvas {
+  overflow: hidden;
+}
+
+.jsavarray {
+  position: absolute;
+}
+
+.jsavcontainer {
+  overflow: visible;
+}
+
+.jsavhighlight {
+  font-size: 110%;
+}

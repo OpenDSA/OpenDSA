@@ -14,9 +14,9 @@ Other Spatial Data Structures
 
 The differences between the :term:`kd tree` and the
 :term:`PR quadtree` illustrate many of the design choices encountered
-when creating :term:`spatial data structures`.
-The kd tree provides an :term:`object space decomposition` of the
-region, while the PR quadtree provides a :term:`key space decomposition`
+when creating :term:`spatial data structures <spatial data structure>`.
+The kd tree provides an :term:`object-space decomposition` of the
+region, while the PR quadtree provides a :term:`key-space decomposition`
 (thus, it is a :term:`trie`).
 The kd tree stores records at all nodes, while the
 PR quadtree stores records only at the leaf nodes.
@@ -32,7 +32,7 @@ with :math:`2^3` or eight branches.
 Such a tree is called an :term:`octree`.
 
 Consider the differences between the PR quadtree and the Bintree.
-Both use object space decomposition, and so both are tries.
+Both use object-space decomposition, and so both are tries.
 But they are different in the the PR quadtree splits in all dimensions
 at once, while the Bintree rotates through its dimensions, splitting
 one at a time.
@@ -56,7 +56,7 @@ An example point quadtree is shown in Figure :num:`Figure #PtQuadFig`.
    :figwidth: 90%
    :alt: Example of a Point Quadtree
 
-   An example of the point quadtree, a 4-ary tree using object space
+   An example of the point quadtree, a 4-ary tree using object-space
    decomposition.
    Compare this with the PR quadtree of Figure :num:`Figure #PRExamp`.
 

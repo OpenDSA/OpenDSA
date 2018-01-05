@@ -85,7 +85,7 @@ The constructed NPDA:
   | Rules pop right-hand-side, then push left-hand-side
   | :math:`(s, \mbox{lhs}) \in \delta(s, \lambda, \mbox{rhs})`
   | Note: We assume that the stack can pop several symbols at once. 
-  | This is called a :term:`reduce operation`.
+  | This is called a reduce operation.
 
 * | Additional rules in :math:`s` to recognize terminals
   | For each :math:`x \in \Sigma, g \in \Gamma, (s,xg) \in \delta(s,x,g)`

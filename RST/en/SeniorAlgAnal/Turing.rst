@@ -44,7 +44,7 @@ Each square can store one character.
 The machine has a single I/O head that at any instant in time is "on"
 one of the squares.
 The control unit of the machine is defined by a set of abstract
-:term:`states`.
+:term:`states <state>`.
 At any given instant, the machine is said to be
 "in" one of the states, and has a set of actions that can be performed
 when in that state.
@@ -74,7 +74,7 @@ A Turing machine is formally defined as a quadruple
   halt state).
 * :math:`\Sigma` is an alphabet (containing :math:`\#`, not :math:`L`
   or :math:`R`).
-* :math:`s \in K` is the :term`initial state`.
+* :math:`s \in K` is the :term:`initial state`.
 * :math:`\delta` is a function from :math:`K \times \Sigma` to
   :math:`(K \cup \{h\}) \times (\Sigma \cup \{L, R\})`.
 
@@ -270,8 +270,8 @@ One is functions mapping input to output
 strings to strings, for examples).
 Another is deciding if a string is in a language.
 
-:math:`M` :term:`accepts` a string :math:`w` if :math:`M` halts on
-input :math:`w`.
+:math:`M` :term:`accepts <accept>` a string :math:`w` if :math:`M`
+halts on input :math:`w`.
 
 * :math:`M` accepts a language iff :math:M` halts on :math:`w` iff
   :math:`w \in L`.

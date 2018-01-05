@@ -77,6 +77,9 @@
       "Background/SetDef": {},
       "Background/Proofs": {}
     },
+    "Other Background": {
+      "SeniorAlgAnal/DynamicProgramming": {}
+    },
     "Lectures 2-4": {
       "FormalLang/DFA": {},
       "FormalLang/NFA": {},
@@ -99,15 +102,19 @@
     "Parsing": {
       "FormalLang/ParseIntro": {},
       "FormalLang/LLParsing": {},
-      "FormalLang/LRParsing": {}
+      "FormalLang/LRParsing": {},
+      "FormalLang/CYKParsing": {},
+      "FormalLang/Compiler": {}
     },
     "Grammars": {
       "FormalLang/Grammar": {},
       "FormalLang/CFLProp": {}
     },
     "Limits to Computing": {
-      "SeniorAlgAnal/Impossible": {},
-      "SeniorAlgAnal/Turing": {}
+      "NP/Reduction": {},
+      "SeniorAlgAnal/Turing": {},
+      "FormalLang/RecEnum": {},
+      "SeniorAlgAnal/Impossible": {}
     },
     "Appendix": {
       "Glossary": {},

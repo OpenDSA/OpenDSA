@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html data-require="math fp" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Function Composition</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Composep">
+          <p class="question">
+            Given the following function definitions:</p>
+<pre class="string">
+var compose = function (f,g) {
+                 return function (x) {
+                    return f(g(x));
+              };
+};
+var f = function (x) { return 4 * x - 3; };
+var g = function (x) { return 2 * x + 2; };
+</pre>
+          <p class="question">
+	  what is the value of the following function call?<br />
+	  <span class="string">compose( f , g )( 3 )</span>
+	  
+	  <div class="solution">29</div>
+          <ul class="choices">
+            <li>20</li>
+            <li>30</li>
+            <li>28</li>
+	    <li>error</li>
+          </ul>
+
+          <div class="hints">
+	    <p>Is <span class="string">f</span>
+	      or <span class="string">g</span> invoked first when
+	      the two functions are composed as done in this function call?
+	  </p> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

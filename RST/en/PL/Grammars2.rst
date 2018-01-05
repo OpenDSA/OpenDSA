@@ -8,13 +8,13 @@
 
 .. odsalink::  AV/PL/AV/parseTree.css
 
-=================
-Grammars - Part 2
-=================
-..  (W 2/3/16)
+======================================
+Grammars - Part 2 - Ambiguous Grammars
+======================================
 
-RP 2 part 1
------------
+
+Ambiguous Grammars
+------------------
 
       The main topic of this module is *ambiguous grammars*.  In :ref:`eg1` of *Grammars - Part 1*, we developed a grammar for algebraic expressions that involved three non-terminals :math:`<exp>, <trm>, <pri>`.   Could we develop a simpler grammar for the same language that only required two non-terminals?   Here is a candidate for doing that with only two non-terminals.
 
@@ -56,32 +56,32 @@ Note that both of the slide-shows above produce valid parse trees for this gramm
       
 The review problem set for this module contains four review problems, the first three of which refer to the same grammar.  The first problem is about determining how many parse trees a given string has in a given grammar.
 
-.. avembed:: Exercises/PL/RP2part1.html ka
-   :long_name: RP set #2, question #1
+.. avembed:: Exercises/PL/NumParseTrees1.html ka
+   :long_name: Number Of Parse Trees, Problem 1
 
-RP 2 part 2
------------
+Ambiguous Grammars (2)
+----------------------
 
 This problem is again about determining how many parse trees a given string
 has in a given grammar.
 
-.. avembed:: Exercises/PL/RP2part2.html ka
-   :long_name: RP set #2, question #2
+.. avembed:: Exercises/PL/NumParseTrees2.html ka
+   :long_name: Number Of Parse Trees, Problem 2
 
-RP 2 part 3
------------
+Ambiguous Grammars (3)
+----------------------
 
 This problem is once more about determining how many parse trees a
 given string has in a given grammar.
 
-.. avembed:: Exercises/PL/RP2part3.html ka
-   :long_name: RP set #2, question #3
+.. avembed:: Exercises/PL/NumParseTrees3.html ka
+   :long_name: Number Of Parse Trees, Problem 3
 
-RP 2 part 4
------------
+Ambiguous Grammars (4)
+----------------------
 
 This problem will help you discover ambiguities in grammars as well as
 convince yourself that a grammar is not ambiguous.
 
-.. avembed:: Exercises/PL/RP2part4.html ka
-   :long_name: RP set #2, question #4	     
+.. avembed:: Exercises/PL/DeterminingAmbiguities.html ka
+   :long_name: Determining Ambiguities	     

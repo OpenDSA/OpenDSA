@@ -22,7 +22,7 @@ See the |external_link1|.
 So how do we properly read in a file?
 There are a number of ways.
 This page shows a simple demonstration of how to use the Scanner class to read
-in a command file from an old CS3114 project.
+in a command file.
 In this project we are given 4 commands that our program must handle:
 debug, search, add, and delete.
 Take a look at the |external_link2|.

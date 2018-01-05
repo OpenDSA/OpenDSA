@@ -35,7 +35,7 @@ some are easier to use in proofs.
 
 We will consider CFL without :math:`\lambda`.
 It would be easy to add :math:`\lambda` to any grammar by adding a new
-start symbol :math:`S_0`,
+:term:`start symbol` :math:`S_0`,
 
    :math:`S_0 \rightarrow S \mid \lambda`
 
@@ -300,7 +300,7 @@ Then :math:`\exists` a CFG :math:`G'` having no
       
    NOTE: Don't add :math:`A \rightarrow \lambda`! 
 
-**Definition:** :term:`Unit Production`
+**Definition:** :term:`Unit Production <unit production>`
 
    | :math:`A \rightarrow B`
 

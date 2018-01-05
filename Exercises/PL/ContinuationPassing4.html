@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-require="math fp ContinuationPassing4 PLutils" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>CPS function writing</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1100" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="setup">ContinuationPassing4.init()</var>
+        <var id="answer">ContinuationPassing4.answer</var>
+        <var id="functionDisplayed">ContinuationPassing4.functionDisplayed</var>        
+	<var id="initialStatement">ContinuationPassing4.initialStatement</var>
+      </div>
+      <div class="problems">
+        <div id="ContinuationPassing4p">
+          <p class="question">
+            <var>initialStatement</var></p>
+<pre class="string">
+<var>functionDisplayed</var>
+</pre>
+          <p class="question">
+	    Write down below the code segment that must replace the
+	  comment above. For you to get credit, your code will have to
+	  be syntactically correct functional JavaScript (e.g., use
+	  <span class="string">if/then/else</span> instead
+	  of <span class="string">... ? ... : ...</span>), use
+	  the <span class="string"> fp</span> helper functions
+	  WHENEVER possible (e.g., use <span class="string">fp.add</span>
+	  instead of the JavaScript
+	  operator <span class="string">+</span>), pass all of the unit
+	  tests for this problem, and use continuations as
+	  intended. Recall that a continuation is a function that
+	  takes in the result of completed computations and then
+	  performs the remaining computations.</p>
+	    <textarea rows="5" cols="40" style="resize:none"
+                    id="answerTextarea"></textarea>
+            <div class="solution" data-type="custom">
+              <div class="guess"> $('#answerTextarea').val()  </div>
+              <div class="validator-function">
+		return ContinuationPassing4.checkAnswer(guess);
+            </div>
+          </div>
+          <div class="hints">
+	    <p>Make sure to double-check your answer for typos (e.g.,
+	    recall that JavaScript is case sensitive), missing or extra
+	    parentheses, etc.</p>
+	    <p>While there may be several answers that pass all of the
+	    unit tests, the only accepted answers are those that use
+	    the continuation <span class="string">k</span> as
+	    intended.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

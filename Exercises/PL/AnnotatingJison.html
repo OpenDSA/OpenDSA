@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Annotating Jison</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1300" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="AnnotatingJisonp">
+          <div class="question">
+	    <p class="question">Consider the following Jison grammar:</p>
+
+<pre class="string">
+%lex
+%%
+
+\s+                   { /* skip whitespace */ }
+"["                   { return "LBRACKET";    }
+"]"                   { return "RBRACKET";    }
+&lt;&lt;EOF>>               { return "EOF";         }
+.                     { return "INVALID";     }
+
+%start program
+/lex
+%% 
+
+program
+    : s "EOF"
+      { return $1; }
+    ;
+s
+    : /* empty */
+      { $$ = 0; }
+    | "LBRACKET" s "RBRACKET" s
+      { $$ = 1 + $2 + $4; }
+    ;
+</pre>
+	    <p class="question">Now consider the following four strings:</p>
+	    <ul>
+	      <li>[ ]</li>
+	      <li>[ ] [ ]</li>
+	      <li>[ [ ] ]</li>
+	      <li>[ [ [ ] [ ] ] [ ] ] [ ]</li>
+	    </ul>
+	    <p class="question">First, convince yourself that all of
+	      these strings are in the language defined by this
+	      grammar. Second, answer the following question: what are
+	      the values returned by the interpreter when fed these
+	      strings in the order given above?</p>
+
+          <div class="solution">1, 2, 2, 6</div>
+          <ul class="choices">
+	    <li>2, 4, 4, 12</li>
+	    <li>1, 2, 4, 6</li>
+	    <li>2, 4, 2, 12</li>
+          </ul>
+	  </div>
+          <div class="hints">
+            <p>First, make sure to understand the grammar only:
+            disregard the JavaScript annotations.</p>
+	    <p>Once you understand the structure of the generated
+	    strings, try to correlate that structure with the single
+	    value that is computed at each step.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

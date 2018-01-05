@@ -18,7 +18,7 @@ $(document).ready(function() {
   var width = 30;
 
   // Slide 1
-  av.umsg("Here is a simple example that allocates an Employee object block in the heap, and then deallocates it.");
+  av.umsg("In this example we will first allocate an Employee object block in the heap, and then deallocate it.");
   av.displayInit();
 
   // Slide 2
@@ -31,7 +31,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 3
-  av.umsg("The highlighted line allocates a local reference variable (but not its pointee). Before using <tt>new</tt, <tt>empPtr</tt> is uninitialized and does not have a pointee. At this point <tt>empPtr</tt> is <tt>null</tt>.");
+  av.umsg("The highlighted line allocates a local reference variable (but not its pointee). Before using <tt>new</tt>, <tt>empPtr</tt> is uninitialized and does not have a pointee. At this point <tt>empPtr</tt> has a value of <tt>null</tt>.");
   pseudo.highlight(2);
   var empptrBox = av.g.rect(xPositionLocalRectangles, yPositionLocal1, length1, width,
                             {"stroke-width": 2});
@@ -77,15 +77,15 @@ $(document).ready(function() {
   x6.hide();
   var heapRectangle = av.g.rect(xPositionHeapRectangles, yPositionLocal1, length1, width * 2,
                                 {"stroke-width": 2});
-  var label1 = av.label("Sam", {top: yPositionLocal1 - 10, left: xPositionHeapRectangles + 40});
-  var label2 = av.label("1000", {top: yPositionLocal1 + width/2 , left: xPositionHeapRectangles + 40});
   av.step();
 
   // Slide 6
-  av.umsg("In this state, <tt>empPtr</tt> may be dereferenced safely to manipulate the pointee.");
+  av.umsg("In this state, <tt>empPtr</tt> may be dereferenced safely to manipulate the pointee. We add values for the Employee's name and salary fields.");
   pseudo.unhighlight(4);
   pseudo.highlight(5);
   pseudo.highlight(6);
+  var label1 = av.label("Sam", {top: yPositionLocal1 - 10, left: xPositionHeapRectangles + 40});
+  var label2 = av.label("1000", {top: yPositionLocal1 + width/2 , left: xPositionHeapRectangles + 40});
   av.step();
 
   // Slide 7

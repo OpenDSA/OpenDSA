@@ -105,12 +105,12 @@ times before we reach 1. [#]_
        But writing a convincing proof that no algorithm could ever be
        discovered that is better is surprisingly difficult.
        This is an example of a
-       :term:`lower bounds proof <lower bounds proof> <BoundLower>` to
-       find the cost for the best possible :term:`algorithm` to solve
-       the :term:`problem` of search in an unsorted array.
+       :term:`lower bounds proof` to find the cost for the best
+       possible :term:`algorithm` to solve the :term:`problem` of
+       search in an unsorted array.
 
 .. [#] It is possible to
-       :term:`prove <Search Lower Bound> <SortedSearch>`
+       :ref:`prove <search lower bound> <SortedSearch>`
        that binary search is the most efficient algorithm possible in
        the worst case when searching in a sorted array.
        This is even more difficult than proving that sequential search
