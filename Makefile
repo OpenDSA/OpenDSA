@@ -142,6 +142,9 @@ CS2: min
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
+COMP271: min
+	python $(CONFIG_SCRIPT) config/COMP271.json --no-lms
+
 COMPSCI186: min
 	python $(CONFIG_SCRIPT) config/COMPSCI186.json --no-lms
 
