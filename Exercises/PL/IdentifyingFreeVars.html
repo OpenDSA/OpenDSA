@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html data-require="math jsav ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples IdentifyingFreeVars" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Identifying Free Variables</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var LAMBDA = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+<style>
+
+    div.jsavcanvas {
+         text-align: center; /* needed to center the array in the container */
+    }
+    
+    div#jsav  div.jsavcanvas ol.jsavarray   {
+       max-width: 400px;   /* needed for centering the array to work */
+       max-height: 30px;
+       min-height: 30px;
+    }
+
+    li.jsavhighlight {
+        border: 1px solid black !important;
+    }
+     ol.jsavarray  li.jsavindex  {
+       max-height: 30px;
+       min-height:30px;
+       height: 30px;
+    }
+
+      li.jsavindex span.jsavvalue {
+       max-height:30px;
+       min-height:30px;
+    }
+    
+    ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+    }
+
+    ol.jsavarray .lambdaWidth {
+        width : 20px !important;
+        min-width : 20px !important;
+    }
+
+    ol.jsavarray .oneCharWidth {
+        width : 12px   !important;                   
+        min-width : 12px !important;
+        text-align: center;
+    }
+
+    ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+
+    ol.jsavarray .emptyWidth {
+        width : 0px;
+        min-width : 0px;
+    }
+
+    .highlight { 
+        color : red;
+        font-weight: bold;
+    }
+
+    .unhighlight { 
+        color : black;
+        font-weight: normal;
+    }
+</style>
+
+  </head>
+
+  <body data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+	<var id="setup">IdentifyingFreeVars.init()</var>
+      </div>
+      <div class="problems">
+        <div id="IdentifyingFreeVarsp">
+      <p class="question">Click on all of the free variable
+      occurrences below and then check your answer on the right.
+	</p>
+	<div id="jsav"></div>
+      <div class="solution" data-type="custom">
+	<div class="guess">true</div>
+	<div class="validator-function">
+	  return IdentifyingFreeVars.validateFreeVar()</div>
+      </div>
+
+      <div class="hints">
+	<p>It might help to build the parse tree for this expression.</p>
+	<p>Identify all of the <em>variable declarations</em>
+	  (or <em>binding occurrences</em>) in this expression, as
+	  well as the <em>scope</em> that each one of them defines.</p>
+	<p>Review the definition of <em>free occurrences</em> and use the
+	  scopes you identified already to answer the question.</p>
+      </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
