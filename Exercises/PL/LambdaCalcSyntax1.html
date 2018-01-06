@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples LambdaCalcSyntax1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Lambda Calculus Syntax (1)</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+	<script>var LAMBDA = {};</script>
+
+<!--
+ 	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js"></script> 
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"></script>
+-->
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">LambdaCalcSyntax1.init()</var>
+		<var id="expression">LambdaCalcSyntax1.expression</var>
+		<var id="CorrectAnswer">LambdaCalcSyntax1.answer</var>
+	</div>
+
+      <div class="problems">
+        <div id="LambdaCalcSyntax1p">
+          <p class="question">True or False? The
+	    following expression is a syntactically
+	    correct &lambda; expression.</p>
+<pre class="string">
+<var>expression</var>
+
+</pre>
+	  <div class="solution"><var>CorrectAnswer</var></div>
+	  <ul class="choices" data-category="true">
+	    <li>True</li>
+	    <li>False</li>
+	  </ul>
+	  
+	  <div class="hints">
+	    <p>Remember that parentheses are not optional.</p>
+	    <p>Parentheses must surround every application expression,
+	    but nothing else.</p>
+	    <p>If needed, try to build a parse tree for this expression.</p>
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
