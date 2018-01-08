@@ -51,10 +51,15 @@
 
 .redbox  {
   stroke : Maroon;
-  stroke-width: 6;
-  z-index: -500;
+  stroke-width: 4;
+  z-index: -1000;
   border-width: inherit;
   border-radius: 50px;
+}
+
+.redboxh  {
+  fill : #fed7d7;
+  stroke : #fed7d7;
 }
 
 .bluebox  {
