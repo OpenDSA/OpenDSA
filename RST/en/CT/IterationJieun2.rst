@@ -15,5 +15,4 @@ List Iteration Exercise 2
 List Iteration JSAV Exercise
 --------------
 
-.. avembed:: AV/CT/iterationEXPRO.html pe
-   :long_name: Iteration Exercise simple 1
+.. avembed:: Exercises/CT/IterationEX2PRO.html ka
