@@ -49,9 +49,21 @@
   border-radius: 50px;
 }
 
-.redbox  {
-  stroke : Maroon;
+.cleanbox {
+  stroke-width: 0;
+}
+
+.redbox {
+  stroke : Red;
   stroke-width: 4;
+  z-index: -1000;
+  border-width: inherit;
+  border-radius: 50px;
+}
+
+.redboxbutton {
+  stroke : Red;
+  fill : Red;
   z-index: -1000;
   border-width: inherit;
   border-radius: 50px;
@@ -60,6 +72,8 @@
 .redboxh  {
   fill : #fed7d7;
   stroke : #fed7d7;
+  border-width: inherit;
+  border-radius: 50px;
 }
 
 .bluebox  {

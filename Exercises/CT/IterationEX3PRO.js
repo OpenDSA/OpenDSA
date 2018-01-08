@@ -12,6 +12,11 @@
       box2,
       box3,
       box4,
+      box1b,
+      box2b,
+      box3b,
+      box4b,
+      currbox,
       labelLeft,
       arraySize, // array size
       arr, // JSAV array
@@ -21,16 +26,18 @@
       answerArr,
       correctAnswerArr;
 
-  var iterationEX2PRO = {
+  var iterationEX3PRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
 
     clickbox: function(){
       var newLabelLeft = labelLeft;
-        this.addClass("redboxh");
-        this.removeClass("redboxh");
-        if(this == box1){
+        if(currbox != null){
+          currbox.removeClass("redbox");
+        }
+        if(this == box1b){
           answerArr.push(1);
-        } else if(this == box2){
+          currbox = box1;
+        } else if(this == box2b){
           if(arrpos == -1){
             nextleft -= 120;
             arrpos = 0;
@@ -39,11 +46,25 @@
           }
           arr.css({left: nextleft});
           answerArr.push(2);
-        } else if(this == box3){
+          currbox = box2;
+        } else if(this == box3b){
           answerArr.push(3);
-        } else if(this == box4){
+          currbox = box3;
+        } else if(this == box4b){
           answerArr.push(4);
+          currbox = box4;
         }
+
+        // highlight button
+        this.addClass("redboxh");
+        this.removeClass("redboxh");
+
+        //highlight box area
+        currbox.addClass("redboxh");
+        currbox.removeClass("redboxh");
+
+        // make square
+        currbox.addClass("redbox");
     },
 
     genAnswer: function(){
@@ -61,11 +82,11 @@
       // Reinitialize the exercise.
     reset: function() {
       // Reset the value of global variables.
-      iterationEX2PRO.userInput = false;
+      iterationEX3PRO.userInput = false;
       // Clear the old JSAV canvas.
-      if ($("#IterationEX2PRO")) { $("#IterationEX2PRO").empty(); }
+      if ($("#IterationEX3PRO")) { $("#IterationEX3PRO").empty(); }
       // Set up the display
-      av = new JSAV("IterationEX2PRO");
+      av = new JSAV("IterationEX3PRO");
 
 
 // --------------- Create random array ----------------
@@ -73,14 +94,15 @@
     //array size will be very from 3 to 5
       arraySize = Math.floor(Math.random() * 3) + 2;
       array = [];
+      currbox = null;
       for(var i = 0; i < arraySize; i++){ // Give random numbers in range 1..20
           array[i] = Math.floor(Math.random() * 20) + 1;
       }
 
-      iterationEX2PRO.genAnswer(); //generate answer array for answer check later
+      iterationEX3PRO.genAnswer(); //generate answer array for answer check later
       answerArr = [];
 
-      var leftMargin = 280,
+      var leftMargin = 180,
           topMargin = 20,
           rect_left = leftMargin - 150,
           rect_top = topMargin + 40,
@@ -142,17 +164,24 @@
         lastlabel.addClass("labels").addClass("midlabel");;
 
       // ------------------ red boxes ------------------------
-        box1 = av.g.rect(rect_left, rect_top - 40, 280, 35).addClass("redbox");
-        box1.click(iterationEX2PRO.clickbox);
+        box1 = av.g.rect(rect_left, rect_top - 40, 280, 35).addClass("cleanbox");
+        box2 = av.g.rect(rect_left, rect_top, 350, 105).addClass("cleanbox");
+        box3 = av.g.rect(rect_left, rect_top + 105, 333, 143).addClass("cleanbox");
+        box4 = av.g.rect(rect_left, rect_top + 258, 280, 33).addClass("cleanbox");
 
-        box2 = av.g.rect(rect_left, rect_top, 350, 105).addClass("redbox");
-        box2.click(iterationEX2PRO.clickbox);
+        // ------------------ red boxes' buttons ------------------------
+          box1b = av.g.rect(rect_left + 400, rect_top - 40, 30, 30).addClass("redboxbutton");
+          box1b.click(iterationEX3PRO.clickbox);
 
-        box3 = av.g.rect(rect_left, rect_top + 105, 333, 143).addClass("redbox");
-        box3.click(iterationEX2PRO.clickbox);
+          box2b = av.g.rect(rect_left + 400, rect_top, 30, 30).addClass("redboxbutton");
+          box2b.click(iterationEX3PRO.clickbox);
 
-        box4 = av.g.rect(rect_left, rect_top + 258, 280, 33).addClass("redbox");
-        box4.click(iterationEX2PRO.clickbox);
+          box3b = av.g.rect(rect_left + 400, rect_top + 105, 30, 30).addClass("redboxbutton");
+          box3b.click(iterationEX3PRO.clickbox);
+
+          box4b = av.g.rect(rect_left + 400, rect_top + 258, 30, 30).addClass("redboxbutton");
+          box4b.click(iterationEX3PRO.clickbox);
+
 
 // --------------- Move array to the right position
       arrpos = -1;
@@ -165,11 +194,11 @@
 
     // Initialise the exercise
     initJSAV: function() {
-      iterationEX2PRO.reset();
+      iterationEX3PRO.reset();
 
       // Set up handler for reset button
       $("#reset").click(function() {
-        iterationEX2PRO.reset();
+        iterationEX3PRO.reset();
       });
     },
 
@@ -187,5 +216,5 @@
     },
   };
 
-  window.iterationEX2PRO = window.iterationEX2PRO || iterationEX2PRO;
+  window.iterationEX3PRO = window.iterationEX3PRO || iterationEX3PRO;
 }());
