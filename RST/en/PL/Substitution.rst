@@ -104,14 +104,35 @@ other hand, :math:`subst(\lambda y.(y\ x), u, u)` falls into Case 1a,
 since both :math:`p` and :math:`b` are equal to the same variable
 :math:`u`. So, the algorithm returns :math:`\lambda y.(y\ x)`.
 
-.. .. inlineav:: substCase1b ss
-   :long_name: Slideshow
-.. :links: AV/PL/main.css
-   :scripts: AV/PL/AV/substCase1b.js
-   :output: show
+..
+   .. .. inlineav:: substCase1b ss
+      :long_name: Slideshow
+   .. :links: AV/PL/main.css
+      :scripts: AV/PL/AV/substCase1b.js
+      :output: show
 
 
-**Case 2:** To be completed
+**Case 2:** When substituting :math:`a` for :math:`p` in :math:`\lambda x.E`, that is,
+:math:`subst(a,p,b)` where :math:`b` is a :math:`\lambda`
+abstraction,
+there are three sub-cases to consider:
+
+- **Case 2a:** :math:`p` and :math:`x` are one and the same variable,
+  say :math:`v` :math:`subst(a,v,\lambda v.E)` should return
+  :math:`\lambda v.E`.  For example, :math:`subst(\lambda z.z, x, \lambda x.x)`
+  returns :math:`\lambda x.x`
+
+- **Case 2b:** :math:`p` and :math:`x` are two distinct variables and
+  :math:`x` does not occur free in :math:`a`, :math:`subst(a,p,\lambda x.E)` should
+  return :math:`\lambda x.subst(a,p,E)`.  For example, 
+  :math:`subst((w \; z), y, \lambda x.y)` returns :math:`\lambda x.(w \; z)`
+
+- **Case 2c:** :math:`p` and :math:`x` are two distinct variables but
+  :math:`x` does occur free in :math:`a`, then :math:`\lambda x.E` should be alpha-converted
+  so that Case 2b becomes applicable.    
+  For example, :math:`subst((w \; x), y, \lambda x.x)` should return
+  :math:`\lambda a.(w \; x)` where :math:`a` is a appropriate variable chosen during the
+  alpha-conversion process
 
 **Case 3:** If :math:`b` is an application expression, say
 :math:`(e_1\ e_2)`, where :math:`e_1` and :math:`e_2` are arbitrary
@@ -131,24 +152,24 @@ examples listed above, the final result of the algorithm is
 :math:`(\lambda v.\lambda y.(y\ x)\ \lambda y.(y\ x))`.
 
 
-RP 15 part 2
-------------
+Identifying Substitution Cases
+------------------------------
 
 The following exercise is good practice for identifying which case
 applies at each step of the substitution algorithm. To get credit for
 this randomized problem, you must solve it correctly three times in
 a row.
 
-.. avembed:: Exercises/PL/RP15part2.html ka
-   :long_name: RP set #15, question #2
+.. avembed:: Exercises/PL/Substitution1.html ka
+   :long_name: Identifying Substitution Cases
 
-RP 15 part 3
-------------
+Performing the Substitution Algorithm
+-------------------------------------
 
 The following exercise will test your ability to complete a full
 substitution by applying the algorithm scrupulously. To get credit for
 this randomized problem, you must solve it correctly three times in
 a row.
 
-.. avembed:: Exercises/PL/RP15part3.html ka
-   :long_name: RP set #15, question #3
+.. avembed:: Exercises/PL/Substitution2.html ka
+   :long_name: Performing the full substitution algorithm
