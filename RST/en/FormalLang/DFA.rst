@@ -70,15 +70,6 @@ Example
 
 DFA that accepts even binary numbers.
 
-.. note::
-
-   At this point, should demonstrate building the machine in JFLAP or
-   OpenDSA.
-
-Assign meaning to the states: q0 - odd numbers, q1 - even numbers, 
-
-Transition Diagram:
-
 .. odsafig:: Images/stnfaEx1.png
    :width: 250
    :align: center
@@ -87,6 +78,16 @@ Transition Diagram:
    :alt: DFA Example
 
    DFA Example: Odd numbers
+
+.. note::
+
+   At this point, should demonstrate building the machine in JFLAP or
+   OpenDSA.
+
+We can assign meaning to the states:
+:math:`q_0` for odd numbers, :math:`q_1` for even numbers, 
+
+Formal definition:
 
 :math:`M = (Q, \Sigma, \delta, q0, F) =`
 
@@ -232,15 +233,14 @@ and an even number of b's }.
    Other examples to mention: Can create a DFA for real numbers,
    integers, variable names (depending on the rules), etc.
 
-Example: Create a DFA that accepts even binary numbers that have an even number of 1's.
+Example: Create a DFA that accepts even binary numbers that have an
+even number of 1's.
 
-assign labels: q0 - start, 
-
-q1 - even binary number, even no. 1's, 
-
-q2 - odd number, odd number of 1's, 
-
-q3 - odd number, even number of 1's 
+| Assign labels:
+|   :math:`q_0` - start, 
+|   :math:`q_1` - even binary number: even number of 1's, 
+|   :math:`q_2` - odd number, odd number of 1's, 
+|   :math:`q_3` - odd number, even number of 1's 
 
 .. odsafig:: Images/stnfaEx2.png
    :width: 375

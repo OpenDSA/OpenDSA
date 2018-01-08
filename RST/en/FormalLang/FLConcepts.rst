@@ -271,7 +271,7 @@ Given grammar :math:`G = (V, T, S, P)`, define
 
 :math:`G=(\{S\}, \{a,b\}, S, P)`
 
-:math:`P=\{S \rightarrow aa, S \rightarrow b\}`
+:math:`P=\{S \rightarrow aaS, S \rightarrow b\}`
 
 :math:`L(G) =` ?
 
