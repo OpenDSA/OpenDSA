@@ -36,7 +36,6 @@ Introduction
 
 .. slide:: Course Mechanics
 
-
    * Go over Syllabus
    * Course online support: Canvas, OpenDSA, Web-CAT
 

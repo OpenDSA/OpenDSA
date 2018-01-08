@@ -26,22 +26,23 @@ compilers work, and to how hard a problem is to solve.
 
 You are familiar with programming languages, now we’ll look in finer
 detail how programming languages are defined, with grammars, and
-automata (which are simpler defined versions of computers then your
+:term:`automata` (which are simpler versions of computers then your
 laptop).
 "Automata" is just another word for "machine".
 
 We start in the very center.
 We’ll be examining simpler languages and grammars and then building up
 to how programming languages are formed.
-We start with finite automata (also called finite state machines).
+We start with :term:`finite automata` (also called
+:term:`finite state machines <finite state machine>`).
 We will see an automaton represents a simple language, and that a type
 of grammar (regular grammar) can represent the same language.
 Also we will look at regular expressions.
 Remember these represent languages that can be represented by a
 program with no extra memory.
 
-Then we will add memory and look at a machine (PDA) that can represent
-a larger set of languages and its corresponding grammar.
+Then we will add memory and look at a machine (:term:`PDA`) that can
+represent a larger set of languages and their corresponding grammars.
 
 Then we will add more memory and capabilities and look at another
 machine (Turing machine) and the type of languages that it can
