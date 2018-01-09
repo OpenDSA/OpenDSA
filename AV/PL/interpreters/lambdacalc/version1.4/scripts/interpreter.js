@@ -106,11 +106,11 @@ function substitute(m,x,e) {
 	var paramStr = LAMBDA.absyn.getVarExpId(param);
 	var body = LAMBDA.absyn.getLambdaAbsBody(e);
 	if ( paramStr === xStr) {
-	    // e is of the form ^x.B */
+	    // e is of the form ^x.B, so this is case 2a */
 	    return e;
-	} else if (notFreeIn(paramStr, m)) {
+	} else if (notFreeIn(paramStr, m)) {  // Case 2b
 	    return LAMBDA.absyn.createLambdaAbs(param,substitute(m,x,body));
-	} else {
+	} else {  // Case 2c
 	    LAMBDA.alpha = true;
 	    LAMBDA.numAlpha++;
 	    //console.log(LAMBDA.printExp(m), " ", LAMBDA.printExp(x), " " ,
