@@ -579,7 +579,7 @@ These are global settings that describe or apply to the entire book.
 
   * Required: Whether the completion of the slideshow is required for
     module proficiency.
-  *Points: The number of points completion of the slideshow is worth.
+  * Points: The number of points completion of the slideshow is worth.
 
 * **Global Khan-Academy Exercise Options:** These are options that will apply
   to all Khan-Academy style exercise, unless explicitly overriden for individual
