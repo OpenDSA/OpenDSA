@@ -680,14 +680,14 @@ Saving Your Configuration
 Once you are finished configuring your book you can:
 
     1. Click "Save New Configuration" to save the configuration as a template
-     book to the OpenDSA database. The book will then show up in the list of 
-     available books when creating a new course.
+    book to the OpenDSA database. The book will then show up in the list of 
+    available books when creating a new course.
     2. If you have loaded one of your existing configurations you can click 
-      "Update Configuration". You can then update your Canvas course by 
-      regenerating it. Note that using this option you should only update the 
-      point values for exercises; adding and removing content is not supported.
+    "Update Configuration". You can then update your Canvas course by 
+    regenerating it. Note that using this option you should only update the 
+    point values for exercises; adding and removing content is not supported.
     3. Click "Download Configuration" to download a json file containing the 
-      configuration.
+    configuration.
 
 -------------------------
 Creating Course Offerings
