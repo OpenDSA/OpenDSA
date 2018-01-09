@@ -47,13 +47,13 @@ have to solve it correctly three times in a row.
    :long_name: Identifying Beta Redexes 2
 
 
-RP 16 Part 3
-------------
+Performing Beta Reductions
+--------------------------
 
 This randomized problem will make you practice performing
 :math:`\beta`-reductions. To earn credit for it, you will have to
 solve it correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP16part3.html ka
-   :long_name: RP set #16, question #3
+.. avembed:: Exercises/PL/BetaReduction.html ka
+   :long_name: Performing Beta Reductions
 
