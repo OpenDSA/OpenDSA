@@ -4,22 +4,17 @@
     var L = LAMBDA;
     var question = {};
 
-    var RP14part2 = {    
+    var LambdaCalcSyntax1 = {    
 
 	init: function() {
 	    var vs = "uvxyz";
-	    var maxDepth = 5;
+	    var maxDepth = 6;
 	    var minDepth = 4;
-	    var exp;
-	    var numCorrect = 0;
-	    var exps = [ ];
-	    var isCorrect;
-	    var options = [ 0, 1, 2, 3, 4];
-
-	    // David: all of these helper functions (except isNew) are 
-	    // duplicated in RP14part1.js. Because...
+	    
+	    // David: all of these helper functions are duplicated in 
+	    // LambdaCalcSyntax2.js. Because...
 	    // When I moved them to a separate JS file that I loaded (with 
-	    // use-require) in both RP14part1.html and RP14part2.html,
+	    // use-require) in both LambdaCalcSyntax1.html and LambdaCalcSyntax2.html,
 	    // OpenDSA did not like it (error on loading the shared JS file)
 
 	    function pickRndCharacter(c,s) {
@@ -28,7 +23,7 @@
 		list = list.filter(function (x) { return x >= 0; });
 		return list[L.getRnd(0,list.length-1)];		       
 	    }
-
+	    
 	    function findMatchingParen(s,index) {
 		s = s.split("");
 		var count = 0;
@@ -106,46 +101,21 @@
 		return s;
 	    }// getSyntaxError function
 
-	    function isNew(arr) {
-		var exp = arr[arr.length-1];
-		for(var i=0; i<arr.length-1; i++) {
-		    if (arr[i] === exp) {
-			return false;
-		    }
-		}
-		return true;
-	    }
 
-	    while (exps.length < 4) {	
-		if (L.getRnd(0,1) === 0) {
-		    // syntactically correct lambda exp
-		    exps.push( L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,"")) );
-		    isCorrect = true;
-		} else {
-		    exps.push( getSyntaxError(minDepth,maxDepth,vs) );
-		    isCorrect = question.answer === "True";
-		}
-		
-		if (isNew(exps)) {
-		    numCorrect += isCorrect ? 1 : 0;
-		} else {
-		    exps.pop();
-		}
+	    if (L.getRnd(0,1) === 0) {
+		// syntactically correct lambda exp
+		this.expression = 
+		    L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,""));
+		this.answer = "True";
+	    } else {
+		this.expression = getSyntaxError(minDepth,maxDepth,vs);
+		this.answer = question.answer;
 	    }
-
-	    this.expressions = exps.join("<br />");
-	    this.answer = String(numCorrect);
-	    options.splice(numCorrect,1);
-	    //console.log(numCorrect);
-	    this.option1 = options[0];
-	    this.option2 = options[1];
-	    this.option3 = options[2];
-	    this.option4 = options[3];
 	} //init
 
-    };// RP14part2  
+    };// LambdaCalcSyntax1  
     
-    window.RP14part2 = window.RP14part2 || RP14part2;
+    window.LambdaCalcSyntax1 = window.LambdaCalcSyntax1 || LambdaCalcSyntax1;
 
 }());
 

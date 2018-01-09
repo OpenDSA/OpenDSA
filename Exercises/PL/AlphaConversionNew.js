@@ -33,49 +33,58 @@
 	    arr.value(x) === ' '; 
     };
 
-    function clickHandler(index, e) {
-	if(L.light[index]) {
-	    arr.unhighlight(index);
-	    L.light[index] = false;
-	} else {
-	    arr.highlight(index);
-	    L.light[index] = true;
-	}
-    }
-
-    var RP14part4 = {    
+    var AlphaConversionNew = {    
 
 	init: function () {
 
 	    var jsav = new JSAV("jsav", {"animationMode": "none"});
-	    var vs = "uvxyz";
-	    var minDepth = 3;
-	    var maxDepth = 4;
-	    var exp = L.getRndExp2(1,minDepth,maxDepth,vs,"");
-	    var answer = L.mySplit(L.getFreeBoundVariables(exp));
-	    arr = jsav.ds.array(L.mySplit(L.printExp(exp)));
-	    setArrayCellsWidth();
-	    L.light = [ ];
-	    for(var i=0; i<arr.size(); i++) {
-		L.light.push(false);
-	    }
-	    arr.click(clickHandler);
-	    question.answer = answer;
-	}, // init function
+	    var vs = "xyz";
+	    var minDepth = 4;
+	    var maxDepth = 6;
+	    var exp, lambdas, chosenLambda, firstLambda, numBound;
+	    var attempts = 0;
+	    var answer;
 
-	validateFreeVar: function() {
-	    for(var i=0; i<question.answer.length; i++) {
-		if ((L.light[i] && question.answer[i] !== '?') ||
-		    (! L.light[i]  && question.answer[i] === '?')) {
-		    return false;
+	    while (true) {
+		attempts++;
+		exp = L.getRndExp(1,minDepth,maxDepth,vs,"");
+		lambdas = L.listLambdas(exp);
+		
+		if ( lambdas.length > 0) {
+		    chosenLambda = lambdas[L.getRnd(0,lambdas.length)];
+		    answer = L.labelBoundVariables(exp,chosenLambda);
+		    numBound = answer.split("#").length-1;
+		    if (numBound > 0 && answer.length < 30) {
+			break;
+		    }
 		}
 	    }
-	    return true;
-	}// validateFreeVar function
 
-    };// RP14part4
+	    answer = L.mySplit(answer);    
+	    arr = jsav.ds.array(L.mySplit(L.printExp(exp)));
+	    setArrayCellsWidth();
+	    for(var i=0; i<arr.size(); i++) {
+		if (answer[i] === "\u03BB@.") {
+		    arr.addClass([i],"bindingVar");
+		}
+	    }
+	    answer = answer.join("");
+	    this.answer = answer.replace(/@|\#/g,"a")
+		.replace(/\s+/g,"")
+		.replace(/\u03BB/g,"^").replace(/\s+/g,"");
+
+	}, // init function
+
+	validateAnswer: function (studentAnswer) {
+	    //console.log(this.answer);
+	    //console.log(studentAnswer);
+	    return this.answer ===
+		studentAnswer.replace(/\s+/g,"");
+	}// validateAnswer function
+
+    };// AlphaConversionNew
     
-    window.RP14part4 = window.RP14part4 || RP14part4;
+    window.AlphaConversionNew = window.AlphaConversionNew || AlphaConversionNew;
 
 }());
 

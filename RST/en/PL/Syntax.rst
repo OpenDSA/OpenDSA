@@ -132,24 +132,24 @@ Q2. How many terminals does this grammar contain?
 Q3. Is this grammar ambiguous, since the third production is doubly recursive?
 
 
-RP 14 part 1
-------------
+Mastering Lambda Calculus Syntax (1)
+------------------------------------
 
 Test your mastery of the syntax of the lambda calculus with this
 exercise.  To get credit for this randomized exercise, you must solve
 it correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP14part1.html ka
-   :long_name: RP set #14, question #1
+.. avembed:: Exercises/PL/LambdaCalcSyntax1.html ka
+   :long_name: Lambda Calc Syntax 1
 
 
-RP 14 part 2
-------------
+Mastering Lambda Calculus Syntax (2)
+------------------------------------
 
 Once you can consistently solve the previous problem, try this more
 intense exercise, in which you have to analyze four expressions each
 time.  To get credit for this randomized exercise, you must solve it
 correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP14part2.html ka
-   :long_name: RP set #14, question #2
+.. avembed:: Exercises/PL/LambdaCalcSyntax2.html ka
+   :long_name: Lambda Calc Syntax 2

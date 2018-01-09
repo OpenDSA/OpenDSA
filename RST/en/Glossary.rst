@@ -257,6 +257,15 @@ Glossary
       In :term:`object-oriented programming <object-oriented programming paradigm>`,
       a synonym for :term:`data member`.
 
+   automata
+      Synonym for :term:`finite state machine`.
+
+   automatic variable
+      A synonym for :term:`local variable`.
+      When program flow enters and leaves the variable's scope,
+      automatic variables will be allocated and de-allocated
+      automatically.
+
    average case
       In :term:`algorithm analysis`, the average of the costs for all
       :term:`problem instances <problem instance>` of a given input
@@ -282,15 +291,6 @@ Glossary
       :term:`balanced <balanced tree>`.
       Similar to a :term:`Splay Tree` in that it uses the concept of
       :term:`rotations <rotation>` in the insert and remove operations.
-
-   automata
-      Synonym for :term:`finite state machine`.
-
-   automatic variable
-      A synonym for :term:`local variable`.
-      When program flow enters and leaves the variable's scope,
-      automatic variables will be allocated and de-allocated
-      automatically.
 
    B$^+$-tree
       The most commonly implemented form of :term:`B-tree`.

@@ -33,58 +33,49 @@
 	    arr.value(x) === ' '; 
     };
 
-    var RP15part1 = {    
+    function clickHandler(index, e) {
+	if(L.light[index]) {
+	    arr.unhighlight(index);
+	    L.light[index] = false;
+	} else {
+	    arr.highlight(index);
+	    L.light[index] = true;
+	}
+    }
+
+    var IdentifyingFreeVars = {    
 
 	init: function () {
 
 	    var jsav = new JSAV("jsav", {"animationMode": "none"});
-	    var vs = "xyz";
-	    var minDepth = 4;
-	    var maxDepth = 6;
-	    var exp, lambdas, chosenLambda, firstLambda, numBound;
-	    var attempts = 0;
-	    var answer;
-
-	    while (true) {
-		attempts++;
-		exp = L.getRndExp(1,minDepth,maxDepth,vs,"");
-		lambdas = L.listLambdas(exp);
-		
-		if ( lambdas.length > 0) {
-		    chosenLambda = lambdas[L.getRnd(0,lambdas.length)];
-		    answer = L.labelBoundVariables(exp,chosenLambda);
-		    numBound = answer.split("#").length-1;
-		    if (numBound > 0 && answer.length < 30) {
-			break;
-		    }
-		}
-	    }
-
-	    answer = L.mySplit(answer);    
+	    var vs = "uvxyz";
+	    var minDepth = 3;
+	    var maxDepth = 4;
+	    var exp = L.getRndExp2(1,minDepth,maxDepth,vs,"");
+	    var answer = L.mySplit(L.getFreeBoundVariables(exp));
 	    arr = jsav.ds.array(L.mySplit(L.printExp(exp)));
 	    setArrayCellsWidth();
+	    L.light = [ ];
 	    for(var i=0; i<arr.size(); i++) {
-		if (answer[i] === "\u03BB@.") {
-		    arr.addClass([i],"bindingVar");
-		}
+		L.light.push(false);
 	    }
-	    answer = answer.join("");
-	    this.answer = answer.replace(/@|\#/g,"a")
-		.replace(/\s+/g,"")
-		.replace(/\u03BB/g,"^").replace(/\s+/g,"");
-
+	    arr.click(clickHandler);
+	    question.answer = answer;
 	}, // init function
 
-	validateAnswer: function (studentAnswer) {
-	    //console.log(this.answer);
-	    //console.log(studentAnswer);
-	    return this.answer ===
-		studentAnswer.replace(/\s+/g,"");
-	}// validateAnswer function
+	validateFreeVar: function() {
+	    for(var i=0; i<question.answer.length; i++) {
+		if ((L.light[i] && question.answer[i] !== '?') ||
+		    (! L.light[i]  && question.answer[i] === '?')) {
+		    return false;
+		}
+	    }
+	    return true;
+	}// validateFreeVar function
 
-    };// RP15part1
+    };// IdentifyingFreeVars
     
-    window.RP15part1 = window.RP15part1 || RP15part1;
+    window.IdentifyingFreeVars = window.IdentifyingFreeVars || IdentifyingFreeVars;
 
 }());
 

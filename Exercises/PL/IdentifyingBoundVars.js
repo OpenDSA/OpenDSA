@@ -43,7 +43,7 @@
 	}
     }
 
-    var RP14part5 = {    
+    var IdentifyingBoundVars = {    
 
 	init: function () {
 
@@ -97,9 +97,9 @@
 	    return true;
 	}// validateBoundVar function
 
-    };// RP14part5
+    };// IdentifyingBoundVars
     
-    window.RP14part5 = window.RP14part5 || RP14part5;
+    window.IdentifyingBoundVars = window.IdentifyingBoundVars || IdentifyingBoundVars;
 
 }());
 

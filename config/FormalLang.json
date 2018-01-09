@@ -67,7 +67,7 @@
     "Preface": {
       "Intro": {}
     },
-    "Lecture 1": {
+    "Week 1, Day 1": {
       "FormalLang/FLIntro": {},
       "FormalLang/FLOverview": {},
       "FormalLang/FLSetNotes": {},
@@ -76,9 +76,6 @@
     "Mathematical Background": {
       "Background/SetDef": {},
       "Background/Proofs": {}
-    },
-    "Other Background": {
-      "SeniorAlgAnal/DynamicProgramming": {}
     },
     "Lectures 2-4": {
       "FormalLang/DFA": {},

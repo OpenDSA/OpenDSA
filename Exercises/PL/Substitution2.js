@@ -89,7 +89,7 @@
 	return [substCase,a,p,B];
     }// pickExpression function
 
-    var RP15part3 = {    
+    var Substitution2 = {    
 
 	init: function () {
 	    var answer;
@@ -117,9 +117,9 @@
 		studentAnswer.replace(/\s+/g,"");
 	}// validateAnswer function
 
-    };// RP15part3
+    };// Substitution2
     
-    window.RP15part3 = window.RP15part3 || RP15part3;
+    window.Substitution2 = window.Substitution2 || Substitution2;
 
 }());
 

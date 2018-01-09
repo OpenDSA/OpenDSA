@@ -8,7 +8,7 @@ var it3_consoleY,
 
 $(document).ready(function() {
   "use strict";
-  var av_name = "iteration3CON";
+  var av_name = "iteration5CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
 
@@ -109,28 +109,6 @@ $(document).ready(function() {
   totalBoxLabel.addClass("loopLabels");
   totalBoxLabel.addClass("midlabel");
 
-
-  // <<--------------- CONSOLE BOX ----------------->>
-
-  var consoleX = 655;
-  var consoleY = 45;
-
-  // create CONSOLE label
-  av.label("CONSOLE", {left: consoleX + 40, top: consoleY}).addClass("statelabel");;
-
-  // create console box.
-  var consoleBox = av.g.rect(consoleX, consoleY + 50, 170, 180).addClass("consolebox");
-  var printprice = av.label("43", {left: consoleX + 20, top: consoleY + 180});
-  printprice.addClass("consolelabels");
-  printprice.addClass("midlabel");
-  printprice.hide();
-
-  // ------------------------console box line -----------------------
-    var consoleLineY = consoleY + 270;
-    for (var i = consoleY + 200; i > consoleY + 60; i -= 30){
-        var consoleline = av.g.line(consoleX, i, consoleX + 170, i);
-        consoleline.addClass("consoleline");
-    }
 
 
 

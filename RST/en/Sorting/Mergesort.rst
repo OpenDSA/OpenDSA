@@ -91,7 +91,7 @@ Here is a mergesort warmup exercise to practice merging.
    :long_name: Mergesort Merging Proficiency Exercise
 
 
-Mergsort Practice Exercise
+Mergesort Practice Exercise
 --------------------------
 
 Now here is a full proficiency exercise to put it all together.

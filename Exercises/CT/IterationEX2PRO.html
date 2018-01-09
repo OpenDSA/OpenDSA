@@ -1,0 +1,49 @@
+<!--
+    Linked List Deletion mini-proficiency exercise.
+    Written by Jieun Chon and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math IterationEX2PRO LinkList">
+  <head>
+    <title>Iteration Exercise 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel = "stylesheet"
+      type = "text/css"
+      href = "IterationEX.css" />
+
+  </head>
+
+  <body data-height="800" data-width="950">
+
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">iterationEX2PRO.initJSAV()</var>
+      </div>
+
+      <div class="problems">
+        <div id="IterationEX2PROp"> <!-- Supresses answer box -->
+          <p class="problem">Click the boxes in right order.</p>
+          <div class="question">
+
+            <div id="IterationEX2PRO" class="jsavcanvas"></div>
+            <input id="reset" type="button" value="Reset" />
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [iterationEX2PRO.userInput] </div>
+            <div class="validator-function">
+              if (!iterationEX2PRO.checkAnswer() && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else {return iterationEX2PRO.checkAnswer();}
+            </div>
+          </div>
+          <div class="hints">
+            <p>Make sure to reproduce the behavior in the correct order.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

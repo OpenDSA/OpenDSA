@@ -91,7 +91,7 @@
 	return [substCase,a,p,B];
     }
 
-    var RP15part2 = {    
+    var Substitution1 = {    
 
 	init: function () {
 	    //var jsav = new JSAV("jsav", {"animationMode": "none"});
@@ -121,9 +121,9 @@
 	} // init function
 
 
-    };// RP15part2
+    };// Substitution1
     
-    window.RP15part2 = window.RP15part2 || RP15part2;
+    window.Substitution1 = window.Substitution1 || Substitution1;
 
 }());
 
