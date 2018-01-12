@@ -2,7 +2,7 @@
 (function() {
   "use strict";
     var L = LAMBDA;
-    var RP17part2 = {    
+    var BetaReductionOrder2 = {    
 
 	init: function () {
 	    var vars = "uvxyz";
@@ -86,9 +86,9 @@
 
 	} // init function
 
-    };// RP17part2
+    };// BetaReductionOrder2
     
-    window.RP17part2 = window.RP17part2 || RP17part2;
+    window.BetaReductionOrder2 = window.BetaReductionOrder2 || BetaReductionOrder2;
 
 }());
 

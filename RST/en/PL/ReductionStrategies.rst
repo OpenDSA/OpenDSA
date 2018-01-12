@@ -13,23 +13,107 @@ Reduction Strategies
 Applicative Order
 -----------------
 
-Text forthcoming
+How many :math:`\beta` redexes are in
+:math:`(\lambda x.m \; (\lambda x.(x \; x) \; \lambda x.(x \; x)))`?
+You should be able to find two.   Depending on which one you choose to reduce first,
+you may find that you end up with :math:`m` as your "answer" or that you end up
+with the same expression that you started with,
+that is, the beta-reduction equivalent of an infinite loop.
+
+We have seen that evaluation of expressions in the
+:math:`\lambda` calculus is essentially :math:`\beta` reduction, which
+can be defined simply in terms of substitution:
+:math:`(\lambda p.b \; a) \equiv subst(a,p,b)` 
+
+But there is an additional consideration involved: :math:`a` and :math:`b` in the preceding :math:`\beta` redex
+can each contain
+:math:`\beta` redexes themselves. We then need to recursively reduce them,
+which raises the following questions:
+
+#.  Which redex should we reduce first, the top-level redex, or a nested
+    one?
+
+#.  Does it matter which one we do first? What are the consequences of these two strategies?
+
+#.  Do different reduction strategies lead to different results?
+
+A key to partially answering the second and third questions above is the **Church-Rosser Theorem**, which
+we will merely state and not prove.    According to the Church-Rosser theorem, 
+*if two different reduction strategies both
+lead to an answer, then they will lead to the same answer.*
+
+So the answers to the second and third questions are no with the
+following caveat: any reduction strategy that leads to an answer will
+give the same answer.  The key here is whether or not the strategy
+leads to an answer, and the Church-Rosser theorem neither guarantees
+termination nor does it guarantee that an answer will be found if it
+exists.
+
+The strategy that JavaScript uses in the substitution model of
+computation is called **applicative order reduction**. With this
+strategy, to evaluate an expression of the form 
+``f(arg1,arg2,arg3,...)``, we:
+
+#. Evaluate each of the subexpressions from left to right, including *f*
+   if it requires evaluation. (How could it require evaluation?)
+
+#. Apply the leftmost result, which should be a function, to the rest of
+   the evaluated subexpressions.
+
+The applicative order strategy is characterized by evaluating the subexpressions first.
+That is, we only perform an application when each of the
+subexpressions has been reduced and there are no redexes left except
+the topmost application. Consider:
+
+:math:`(\lambda x.((x \; y) \; (y \; x)) \; (\lambda w.(w \;  w) \; z))`
+
+Applicative order evaluation will first reduce :math:`(\lambda w.(w \;  w) \; z)`,
+getting :math:`(z \; z)`.   This result will then be substituted in for :math:`x` in
+:math:`((x \; y) \; (y \; x))`, yielding  :math:`(((z \; z) \; y) \; (y \; (z \; z)))`
+as the final answer.
+
+Although applicative order reduction finds its answer to the preceding problem in two reductions,
+when it is used for the first example we considered in this section, that is,
+
+:math:`(\lambda x.m \; (\lambda x.(x \; x) \; \lambda x.(x \; x)))`
+
+we end up in the infinite loop we referred to earlier.      
 
 Normal Order
 ------------
 
-Text forthcoming
+**Normal order reduction** reduces the leftmost :math:`\beta` redex
+first before reducing the subexpressions inside of it and those that
+follow it. While applicative order proceeds by evaluating the
+subexpressions and then applying the function, normal order evaluation
+proceeds by applying the function first and then evaluating the
+subexpressions.  Because normal order reduction delays its evaluation
+of the arguments to a function, it correctly gets :math:`m` when
+applied to the example
+:math:`(\lambda`\ x.m (:math:`\lambda x.(x \; x) \; \lambda x.(x \; x)))`
+on which applicative order looped
+infinitely.
 
-RP 17 Part 1
-------------
+When applied to our other example       
+:math:`(\lambda x.((x \; y) \; (y \; x)) \; (\lambda w.(w \;  w) \; z))`,
+normal order will substitute       
+:math:`(\lambda w.(w \;  w) \; z)`
+for both of the :math:`x` appearing in
+:math:`((x \; y) \; (y \; x))`.
+It will then have to evaluate :math:`(\lambda w.(w \;  w) \; z)` **twice** before getting the final answer
+:math:`(((z \; z) \; y) \; (y \; (z \; z)))`.      
+      
+
+Beta Reduction Order (1)
+------------------------
 
 This problem focuses on the first step (i.e., :math:`\beta`-reduction)
 in the evaluation of a :math:`\lambda`-expression with the two
 evaluation strategies that we discussed. To get credit for this
 randomized exercise, you must solve it correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP17part1.html ka
-   :long_name: RP set #17, question #1
+.. avembed:: Exercises/PL/BetaReductionOrder1.html ka
+   :long_name: Beta Reduction Order 1
 
 RP 17 Part 2
 ------------
@@ -39,11 +123,11 @@ In this problem, you have to study the complete evaluation of a
 discussed. To get credit for this randomized exercise, you must solve
 it correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP17part2.html ka
-   :long_name: RP set #17, question #2
+.. avembed:: Exercises/PL/BetaReductionOrder2.html ka
+   :long_name: Beta Reduction Order 2
 
-RP 17 Part 3
-------------
+Applicative Order Proficiency Exercise
+--------------------------------------
 
 In this problem, you have to perform a full evaluation of a randomly
 selected :math:`\lambda` expression, that is, perform as many
@@ -58,11 +142,11 @@ the directions carefully. Note that the correct answer (called the
 get credit for the current problem instance. To get another chance for
 credit, start a new problem instance by clicking the *Reset* button.
 	 
-.. avembed:: AV/PL/RP17part3applicativeOrderPRO.html pe
+.. avembed:: AV/PL/applicativeOrderPRO.html pe
    :long_name: Applicative-order reduction Proficiency Exercise
 
-RP 17 Part 4
-------------
+Normal Order Proficiency Exercise
+---------------------------------
 
 In this problem, you have to perform a full evaluation of a randomly
 selected :math:`\lambda` expression, that is, perform as many
@@ -78,7 +162,7 @@ current problem instance. To get another chance for credit, start a
 new problem instance by clicking the *Reset* button.
 
 
-.. avembed:: AV/PL/RP17part4normalOrderPRO.html pe
+.. avembed:: AV/PL/normalOrderPRO.html pe
    :long_name: Normal-order reduction Proficiency Exercise
 
 
