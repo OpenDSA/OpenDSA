@@ -16,14 +16,14 @@ Reading Input (from Files or Otherwise)
 The Scanner Class
 -----------------
 
-Java has an excellent class for reading in text. The
-Scanner class is extremely useful to quickly parse through a String.
+Java has an excellent class for reading in text.
+The Scanner class is useful to quickly parse through a String. 
 See the |external_link1|.
 So how do we properly read in a file?
 There are a number of ways.
 This page shows a simple demonstration of how to use the Scanner class to read
 in a command file.
-In this project we are given 4 commands that our program must handle:
+In this project we are given four commands that our program must handle:
 debug, search, add, and delete.
 Take a look at the |external_link2|.
 
