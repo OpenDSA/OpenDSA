@@ -26,7 +26,7 @@ need to be able to manipulate:
 
 Alonzo Church, the creator of the :math:`lambda` calculus, realized
 this and consequently set about to make a series of encodings of
-lamdba expressions designed to satisfy the properties we expect from
+lambda expressions designed to satisfy the properties we expect from
 the items in the preceding list.  Let's first examine some of the encodings for the
 *church boolean* constants and operations.
 
@@ -115,7 +115,7 @@ To see how the multiplication function works, watch the following slideshow of h
    :scripts: AV/PL/AV/church_mult.js
    :output: show
 
-An encoding for a predeccessor operation:
+An encoding for a predecessor operation:
 
 PRED = :math:`\lambda n. \lambda f. \lambda x.(((n \; \lambda g. \lambda h.(h \; (g \; f))) \lambda u.x) \; \lambda u.u)`
 
