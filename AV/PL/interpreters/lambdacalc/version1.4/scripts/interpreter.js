@@ -541,6 +541,7 @@ function fillIn(start,end) {
     }
 }
 function loadArray(chars) {   
+    console.log(chars.join('')); // Uncomment this to get textual trace of reduction
     for(var index=0; index<chars.length; index++) {
 	arr.value(index,chars[index]);
     }
