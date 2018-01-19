@@ -20,19 +20,16 @@ Formal Languages Course Introduction
 
    What we are doing today:
 
-   * Administration stuff
-   * Course mechanics
+   * Administration stuff and Course mechanics
    * Course introduction (OpenDSA Chapter 1/Linz Chapter 1)
 
 
 .. slide:: Administration stuff
 
    * Sign-in sheet (be sure to sign-in on one of them)
+   * I do not handle force-adds. Email to csundergrad@cs.vt.edu.
    * Get a copy of the syllabus
-   * Force Add System:
-      * https://www.cs.vt.edu/????
-      * Password: ????
-   * Go over Syllabus
+   * Go over Syllabus, Homework policies (at Canvas)
 
 
 .. slide:: Course Mechanics: Instructional Software
@@ -47,7 +44,7 @@ Formal Languages Course Introduction
    * JFLAP for simulators, to help with doing your homework
 
 
-.. slide:: What You Should Already Know
+.. slide:: What you should already know
 
    * Discrete Math
 
@@ -59,19 +56,20 @@ Formal Languages Course Introduction
    * Basic data structures (Lists, search structures such as BSTs,
      sorting algorithms, heaps, hashing, and basic graph algorithms)
 
-   * Survival Tip: A **lot** of this course depends on understanding
-     the notation. Don't blow this off, its too hard to pick up in a
-     hurry. Make some effort now by reviewing set notation. And be
-     sure that you know how to understand induction proofs.
+   * Survival Tip:
+     A **lot** of this course depends on understanding notation.
+     Don't blow this off, its too hard to pick under stress.
+     Make effort now by reviewing set notation.
+     Be sure you know how to read/do induction proofs.
 
 
-.. slide:: What we will do (1)
+.. slide:: What this course is about
 
    * Try to understand what computers can do.
   
-     * Hard to reason about Intel processor with billions of transistors.
+     * Hard to reason about an Intel processor with billions of transistors.
      * Don't want to reinvent the wheel when you can use tools like
-       regex parser, YACC
+       regex parser, Flex, Bison
      * Computer Scientists have developed many simple models of
        computation, each of which can be implemented relatively easily
        in software.
@@ -80,7 +78,7 @@ Formal Languages Course Introduction
      complicated each one is, and what its limits are.
 
 
-.. slide:: What we will do (2)
+.. slide:: Outcomes (1)
 
    By the end of this class, you will be able to answer questions like
    the following.
@@ -91,8 +89,11 @@ Formal Languages Course Introduction
      than the program itself?
      That is, you can’t store any values or look at them again.
 
+   * Can you tell if a string has an odd number of characters?
 
-.. slide:: What we will do (3)
+   * Can you do it if you have no working memory?
+
+.. slide:: Outcomes (2)
 
    * Can you write a program to determine if a string is a legal
      arithmetic expression?
@@ -110,7 +111,7 @@ Formal Languages Course Introduction
      to look at expressions of length 12 or less?
 
 
-.. slide:: What we will do (4)
+.. slide:: Outcomes (3)
 
    * Can you write a program to determine the **value** of a valid
      mathematical expression?
@@ -128,7 +129,7 @@ Formal Languages Course Introduction
      program?
 
 
-.. slide:: What we will do (5)
+.. slide:: Outcomes (4)
 
    * Can you write a program to determine if a Java program given as
      input will ever halt?
@@ -150,9 +151,12 @@ Formal Languages Course Introduction
 
 .. slide:: Language Hierarchy
 
-   This is a picture of what we will do most of the semester.
    By the end you will know how everything in this picture applies to how
-   compilers work, and to how hard a problem is to solve.
+   compilers work, and to how hard a typical language-related problem
+   is to solve.
+
+   Note the interplay between classes of languages, classes of grammars,
+   and classes of machines.
 
    .. inlineav:: HierarchyCON dgm
       :links: AV/FormalLang/HierarchyCON.css
@@ -162,14 +166,11 @@ Formal Languages Course Introduction
 
 .. slide:: Models of Computation, Languages, Machines
 
-   There is an interplay between strings that define a language,
-   "machines" that can "recognize" a language, and doing
-   "compuation".
-
    * "Automata" is just another word for "machine".
    * Our general strategy is to look at classes of languages along
      with the "machines" that can process them.
-   * We are looking into the limits on these classes
+   * Your job is to understand the limits on these classes
+
 
 .. slide:: Power of Machines
 
@@ -200,110 +201,13 @@ Formal Languages Course Introduction
    that we focus only on the first part.
 
 
-.. slide:: Key Concept: Language
+.. slide:: To do by next class
 
-   * :math:`\Sigma`: A set of symbols, an alphabet
-     (usually we use for examples: :math:`a, b, c`)
-   * string: Finite sequence of symbols (from some alphabet)
-     (usually: :math:`u, v, w`)
-   * language: A subset of the strings defined over :math:`\Sigma`
+  * Read Linz Chapter 1, and also look at the OpenDSA materials
 
-   So, a language is a sets of strings, in particular, some subset of
-   the powerset of :math:`\Sigma`.
+  * Look at Homework Assignment 1, find a partner
 
+    * Carefully read the General Homework Instructions page
 
-.. slide:: Language Examples
+  * Install JFLAP, make sure that you can run it
 
-   * | :math:`\Sigma = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}`
-     | :math:`L = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, ... \}`
-
-   * | :math:`\Sigma = \{a, b, c\}`
-     | :math:`L = \{ab, ac, cabb\}`
-     | :math:`L` is a language with 3 strings, each string is a sequence of
-       strings formed over the alphabet.
-
-   * | :math:`\Sigma = \{a, b\}`
-     | :math:`L = \{a^n b^n | n > 0\}`
-     | This is an example of an infinite language.
-     | What are the strings in the language? :math:`\{ab, aabb, aaabbb, aaaabbbb, . . .\}`
-
-
-.. slide:: Key Concept: Grammars
-
-   | A tiny subset of the english language, not complete!
-   |   <sentence> :math:`\rightarrow` <subject><verb><d.o.>
-   |   <subject> :math:`\rightarrow` <noun> | <article><noun>
-   |   <verb> :math:`\rightarrow` hit | ran | ate
-   |   <d.o.> :math:`\rightarrow` <article><noun> | <noun>
-   |   <noun> :math:`\rightarrow` Fritz | ball
-   |   <article> :math:`\rightarrow` the | an | a
-
-   Variables vs. Terminals
-
-
-.. slide:: Deriving a sentence
-
-   A variable in the grammar can be replaced by the right hand side of
-   its rule::
-
-      Fritz hit the ball
-
-      <sentence> -> <subject><verb><d.o> 
-                 -> <noun><verb><d.o>
-                 -> Fritz <verb><d.o.>
-                 -> Fritz hit <d.o.>
-                 -> Fritz hit <article><noun>
-                 -> Fritz hit the <noun>
-                 -> Fritz hit the ball
-
-   Can we derive these sentences? If not, can we change the grammar?::
-
-      The ball hit Fritz
-
-      The ball ate the ball
-
-
-.. slide:: Formal definition of a grammar
-
-   | A grammar :math:`G = (V, T, S, P)` where
-   |   :math:`V` is a finite set of variables (nonterminals).
-   |   :math:`T` is a finite set of terminals (generally, these are strings).
-   |   :math:`S` is the start variable (:math:`S \in V`).
-   |   :math:`P` is a set of productions (rules).
-
-   :math:`x \rightarrow y` means to replace :math:`x` by :math:`y`.
-
-   Here, :math:`x \in (V \cup T)^+, y \in (V \cup T)^*`.
-
-
-.. slide:: Grammar Notation
-
-   | :math:`w \Rightarrow z: \qquad w` derives :math:`z`
-   | :math:`w \stackrel{*}{\Rightarrow} z: \qquad` derives in 0 or more steps
-   | :math:`w \stackrel{+}{\Rightarrow} z: \qquad` derives in 1 or more steps
-
-   | Given grammar :math:`G = (V, T, S, P)`, define
-   |   :math:`L(G)= \{w \in T{}^{*} \mid S \stackrel{*}{\Rightarrow} w\}`
-
-   | **Example**
-   |   :math:`G=(\{S\}, \{a,b\}, S, P)`
-   |   :math:`P=\{S \rightarrow aaS, S \rightarrow b\}`
-   |   :math:`L(G) =` ?
-
-
-.. slide:: Key Concept: Automata
-
-   .. odsafig:: Images/stautomata.png
-      :width: 370
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Basic machine
-
-   Numbers in control unit symbolize "states", which are the specific
-   positions on the dial that the arrow may point to.
-
-   There is also the control behavior (like the "software" of the computer).
-
-   "When State 1, if see letter :math:`a`, then write :math:`c`
-   and go to State 2. If see :math:`b`, move right."

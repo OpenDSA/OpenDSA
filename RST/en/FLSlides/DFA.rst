@@ -149,7 +149,9 @@ Deterministic Finite Automata
    | Note that our DFA for even binary numbers is "complete".
    |   We always know what to do on any input.
 
-   What about this one?
+   Consider the language :math:`L(M) = \{b^na | n > 0\}`
+
+   <<Draw Figure>>
 
    .. TODO:: Example
 
@@ -174,6 +176,8 @@ Deterministic Finite Automata
       :capalign: justify
       :figwidth: 90%
       :alt: DFA Example: Complete
+
+   Note that there is nothing "special" about the trap state.
 
 
 .. slide:: Another Example

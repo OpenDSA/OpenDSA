@@ -54,10 +54,9 @@ Then we will look at languages you cannot write a program to solve.
 Power of Machines
 -----------------
 
-.. note::
-
-   You are going over this information again but now organizing it to
-   help them put all of this together.
+(Note: We will be going over all of this information in detail during
+the semester.
+But this view can help you put it all together.)
 
 .. math::
 
@@ -157,30 +156,3 @@ This is the third part of the programming assignment.
 NOTE: You’ll write an interpretor, it walks through the parse tree and
 immediately executes the code.
 (Does not generate the code)
-
-
-L-Systems: Model the Growth of Plants
--------------------------------------
-
-L-systems use a different type of grammar to model the growth of
-plants, organisms, and fractals.
-You define a grammar and it generates a sequence of strings that get
-longer and longer.
-Some of the symbols represent graphics such as the drawing of a line,
-the changing of direction, etc.
-
-.. odsafig:: Images/LsysGrowth.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: L-system growth
-
-   Iterations on a L-system.
-
-.. note::
-
-   DEMO the growth of an L-System tree with JFLAP.
-
-We will study L-systems later in the semester as another application
-of grammars.

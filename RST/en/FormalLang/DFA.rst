@@ -79,45 +79,43 @@ DFA that accepts even binary numbers.
 
    DFA Example: Odd numbers
 
-.. note::
-
-   At this point, should demonstrate building the machine in JFLAP or
-   OpenDSA.
-
 We can assign meaning to the states:
 :math:`q_0` for odd numbers, :math:`q_1` for even numbers, 
+
+.. note::
+
+   At this point, you should try building the machine in JFLAP.
 
 Formal definition:
 
 :math:`M = (Q, \Sigma, \delta, q0, F) =`
 
-.. note::
-
    :math:`(\{q0,q1\}, \{0,1\}, \delta, q0, \{q1\})`
 
-Tabular Format
-
-.. math::
-
-   \begin{array}{r|cc}
-   & 0  & 1 \\
-   \hline
-   q0 &  &  \\
-   q1 &  &  \\
-   \end{array}
+Tabular Format for :math:`\delta`:
 
 .. note::
 
-   Answer:
+   See if you can write this table without looking at the answer.
 
    .. math::
 
-      \begin{array}{r|cc} 
-      & 0 & 1 \\
-      \hline 
-      q0 & q1 & q0 \\ 
-      q1 & q1 & q0 \\ 
-      \end{array} 
+      \begin{array}{r|cc}
+      & 0  & 1 \\
+      \hline
+      q0 &  &  \\
+      q1 &  &  \\
+      \end{array}
+
+
+.. math::
+
+   \begin{array}{r|cc} 
+   & 0 & 1 \\
+   \hline 
+   q0 & q1 & q0 \\ 
+   q1 & q1 & q0 \\ 
+   \end{array} 
 
 Example of a move: :math:`\delta(q0, 1) = q0`
 
@@ -221,9 +219,9 @@ of the "extra" transitions. As follows.
 
    DFA Example: Complete
 
-.. note::
+Note that there is nothing "special" about the trap state.
 
-   Its a good idea to have states with meaningful names!
+Its a good idea to have states with meaningful names!
 
 Example: :math:`L = \{ w \in \Sigma^* | w` has an even number of a's
 and an even number of b's }.

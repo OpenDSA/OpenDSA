@@ -1,16 +1,10 @@
 {
-  "title": "Test",
-  "desc": "Test",
+  "title": "CS4114 Coursenotes",
+  "desc": "CS4114 Coursenotes",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
+  "lang": "en",
   "code_lang": {
-    "Java_Generic": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java (Generic)",
-      "lang": "java"
-    },
     "Java": {
       "ext": [
         "java"
@@ -25,6 +19,13 @@
       "label": "Processing",
       "lang": "java"
     },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
     "C++": {
       "ext": [
         "cpp",
@@ -34,15 +35,10 @@
       "lang": "C++"
     }
   },
-  "lang": "en",
+  "tabbed_codeinc": false,
   "build_JSAV": false,
-  "build_cmap": false,
-  "suppress_todo": true,
-  "dispModComp": true,
-  "tag": "CPP;CS2",
-  "glob_exer_options": {
-    "JXOP-debug": "true"
-  },
+  "suppress_todo": false,
+  "glob_exer_options": {},
   "glob_ss_options": {
     "threshold": 1.0, 
     "points": 0.0, 
@@ -65,18 +61,10 @@
     "required": true
   }, 
   "chapters": {
-    "Programming": {
-      "Searching/BinarySearch": {
-        "binarySearchPRO": {
-          "points": 1.0, 
-          "threshold": 1.0
-        }
-      },
-      "Spatial/PRquadtree": {}
-    }, 
-    "Appendix": {
-      "Glossary": {},
-      "Bibliography": {}
+    "Week 1": {
+      "FLSlides/FLIntro": {},
+      "FLSlides/FLConcepts": {},
+      "FLSlides/DFA": {}
     }
   }
 }

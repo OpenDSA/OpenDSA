@@ -1046,6 +1046,10 @@ Glossary
       That is, the given non-terminal :math:`A` can be replaced at any
       time.
 
+   context-free language
+      The set of :term:`languages <language>` that can be defined by
+      :term:`context-sensitive grammars <context-sensitive grammar>`.
+
    context-sensitive grammar
       A :term:`grammar` comprised only of productions of the form
       :math:`xAy \rightarrow xvy` where :math:`A` is a
@@ -1751,6 +1755,8 @@ Glossary
 
    Finite State Machine
    FSM
+   Finite State Automata
+   FSA
    Finite Automata
       Any abstract state machine, generally represented as a graph
       where the nodes are the :term:`states <state>`, and the edges
@@ -3754,6 +3760,13 @@ Glossary
    push
       A specialized term used to indicate inserting an :term:`element`
       onto a :term:`stack`.
+
+   pushdown automata
+   PDA
+      A type of :term:`Finite State Automata` that adds a stack memory
+      to the basic :term:`Deterministic Finite Automata` machine.
+      This extends the set of languages that can be recognize to the
+      :term:`context-free languages <context-free language>`.
 
    quadratic growth rate
       A growth rate function of the form :math:`cn^2` where :math:`n`
