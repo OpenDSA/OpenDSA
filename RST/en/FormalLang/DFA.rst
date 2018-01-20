@@ -249,12 +249,13 @@ even number of 1's.
 
    More complicated DFA Example
 
-
-
-
 .. note::
 
    Talk about determinism: There is only one choice
 
-**Definition**: A language is :term:`regular <regular language>` iff
+Given some class or type of Finite Automata, the
+set of languages accepted by that class of Finite Automata is
+called a :term:`family <family of languages>`.
+Therefore, the DFAs define a family of languages that they accept.
+A language is :term:`regular <regular language>` if and only iff
 there exists a DFA :math:`M` such that :math:`L = L(M)`.

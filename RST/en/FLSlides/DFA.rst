@@ -5,9 +5,9 @@
 
 .. avmetadata::
    :author: Susan Rodger and Cliff Shaffer
-   :requires:
-   :satisfies: FL Introduction
-   :topic: Introduction
+   :requires: FL Introduction
+   :satisfies: Deterministic Finite Automata
+   :topic: DFA
 
 .. slideconf::
    :autoslides: False
@@ -106,7 +106,7 @@ Deterministic Finite Automata
 .. slide:: Algorithm for DFA
 
 
-   | Start in :term:`start state` with input on tape
+   | Start in start state with input on tape
    | q = current state
    | s = current symbol on tape
    | while (s != blank) do
@@ -194,5 +194,11 @@ Deterministic Finite Automata
 
 .. slide:: Regular Languages
 
-   **Definition**: A language is regular if and only if
+   **Definition**: Given some class or type of Finite Automata, the
+   set of languages accepted by that class of Finite Automata is
+   called a **family**.
+           
+   **Definition**: Therefore, the DFAs define a **family** of
+   languages that they accept.
+   A language is **regular** if and only if
    there exists a DFA :math:`M` such that :math:`L = L(M)`.

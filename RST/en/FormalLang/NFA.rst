@@ -82,10 +82,6 @@ From previous example:
 **Definition**: For an NFA :math:`M`,
 :math:`L(M)= \{w \in {\Sigma}^{*} \mid \delta^{*}(q_0,w) \cap F \neq \emptyset \}`
 
-The language accepted by NFA :math:`M` is all strings :math:`w` such
-that there exists a walk labeled :math:`w` from the start state to
-any accepting state.
-
 Why nondeterminism? It makes it easier to describe a FA.
 
 From a performance point of view, to determine if a string is accepted

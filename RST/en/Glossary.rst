@@ -1710,6 +1710,14 @@ Glossary
       memory pool, collecting :term:`garbage`, and reorganizing the
       memory pool (to collect together free space).
 
+   family of languages
+      Given some class or type of :term:`finite automata`
+      (for example, the :term:`deterministic finite automata`),
+      the set of languages accepted by that class of finite automata
+      is called a family.
+      For example, the :term:`regular languages <regular language>` is
+      a family defined by the DFAs.
+
    file allocation table
       A legacy file system architecture orginially developed for DOS
       and then used in Windows.
