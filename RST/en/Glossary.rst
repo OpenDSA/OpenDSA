@@ -1755,6 +1755,12 @@ Glossary
       This is the access paradigm for a :term:`queue`,
       and an old terminolgy for the queue is "FIFO list".
 
+   final state
+      A required element of any :term:`acceptor <finite state acceptor>`.
+      When computation on a string ends in a final state, then the
+      machine accepts the string.
+      Otherwise the machine rejects the string.
+
    FIND
       One half of the :term:`UNION/FIND` algorithm for managing
       :term:`disjoint sets`.
@@ -1772,6 +1778,14 @@ Glossary
       machine is in that node (state) and sees an appropriate input.
       See, as an example, :term:`Deterministic Finite Automata`.
 
+   Finite State Acceptor
+      A simple type of :term:`finite state automata`, an acceptor's
+      only ability is to accept or reject a string.
+      So, a finite state acceptor does not have the ability to modify
+      the input tape.
+      If computation on the string ends in a :term:`final state`,
+      then the the string is accepted, otherwise it is rejected.
+      
    first fit
       In a :term:`memory manager`, first fit is a :term:`heuristic`
       for deciding which :term:`free block` to use when allocating
@@ -4820,6 +4834,11 @@ Glossary
       transpose is a :term:`heuristic` used to maintain the list.
       Under this heuristic, whenever a record is accessed it is moved
       one position closer to the front of the list.
+
+   trap state
+      In a :term:`FSA`, any state that has all transitions cycle back
+      to itself.
+      Such a state might be :term:`final <final state>`.
 
    traversal
       Any process for visiting all of the objects in a collection

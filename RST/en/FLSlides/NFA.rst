@@ -6,17 +6,17 @@
 .. avmetadata::
    :author: Susan Rodger and Cliff Shaffer
    :requires: Deterministic Finite Automata
-   :satisfies: Non-deterministic Finite Automata
+   :satisfies: Non-deterministic Finite Acceptor
    :topic: NDFA
 
 .. slideconf::
    :autoslides: False
 
 
-Non-Deterministic Finite Automata
+Non-Deterministic Finite Acceptor
 =================================
 
-.. slide:: Non-Deterministic Finite Automata (1)
+.. slide:: Non-Deterministic Finite Acceptor (1)
 
    Define a NFA (or NDFA) as :math:`(Q, \Sigma, \delta, q_0, F)` where
 
@@ -25,9 +25,12 @@ Non-Deterministic Finite Automata
    * :math:`q_0` is the initial state (:math:`q_0 \in Q`)
    * :math:`F \subseteq Q` is a set of final states
    * :math:`\delta: Q \times(\Sigma \cup \{\lambda\}) \rightarrow 2^Q`
+     (:math:`2^Q` here means the power set of :math:`Q`)
+
+   <<Hmmm... How is this different from a DFA?>>
 
 
-.. slide:: Non-Deterministic Finite Automata (2)
+.. slide:: Non-Deterministic Finite Acceptor (2)
 
    The specific difference from a DFA is that, while the result of
    :math:`\delta` for the DFA is some state :math:`q \in Q`, the
@@ -37,26 +40,35 @@ Non-Deterministic Finite Automata
    From a state on input :math:`b`, :math:`\delta` might include
    transitions to more than one state.
 
+   | Other differences:
+   |   We allow :math:`\lambda` transitions (a free
+       ride to another state).
+   |   We allow transitions to a null subset of states.
+       Consider this as a failed path.
+
 
 .. slide:: NFA Example 1
 
    .. odsafig:: Images/NFAexample.png
-      :width: 400
+      :width: 300
       :align: center
       :capalign: justify
       :figwidth: 90%
       :alt: Basic NFA
 
    In this example, :math:`\delta(q_0, a) = \{q_1, q_2\}`.
-   So, :math:`\delta` is no longer a function. 
+   (So, :math:`\delta` is no longer meets the mathematical definition
+   of a function!)
 
+   Hopefully this one is easy to understand: We two disjoint paths,
+   effectively giving us the union of two languages:
    :math:`L = \{aa\} \cup \{ab^nb \mid n \ge 0\}`.
 
 
 .. slide:: NFA Example 2
 
-   :math:`L = \{(ab)^n \mid n>0\} \cup \{a^nb \mid n>0\}`.
-
+   << FIX THIS!! The 1's should be :math:`\lambda` 's! >>
+   
    .. odsafig:: Images/NFAexample2.png
       :width: 400
       :align: center
@@ -64,34 +76,51 @@ Non-Deterministic Finite Automata
       :figwidth: 90%
       :alt: Second NFA
 
+   Likewise, a simple "go this way or go the other way".
+   Unfortunately, they are not always so simple to understand!
+            
+   :math:`L = \{(ab)^n \mid n>0\} \cup \{a^nb \mid n>0\}`.
 
-.. slide:: Accepting a String (1)
+
+.. slide:: Accepting a String
 
    :math:`q_j \in {\delta}^{*}(q_i,w)` if and only if
    there exists some walk from :math:`q_i` to :math:`q_j` labeled
    :math:`w`.
 
+   NFA accepts a string if it completes processing in a final state.
+   However for an NFA, the string is accepted if
+   **any** processing path gets us to end in a final state.
    It does not matter that there are paths where :math:`w` can go
    wrong.
    What matters is that there is at least one way for :math:`w` to be
    right.
 
-   From previous example:
-
-   :math:`\delta^{*}(q_0, ab) = \{q_5, q_6, q_1\}`.
-
-   :math:`\delta^{*}(q_0, aba) = \{q_3\}`. 
+   | From previous example:
+   |   :math:`\delta^{*}(q_0, ab) = \{q_5, q_6, q_1\}`.
+   |   :math:`\delta^{*}(q_0, aba) = \{q_3\}`. 
 
    For an NFA :math:`M`,
    :math:`L(M)= \{w \in {\Sigma}^{*} \mid \delta^{*}(q_0,w) \cap F \neq \emptyset \}`
 
+.. slide:: Example (3)
+
+   << See Linz Figure 2.9, do this in JFLAP. >>
+
+
 .. slide:: Why nondeterminism?
 
-   It makes it easier to describe a FA.
-
+   | It makes it "easier" to describe a FA.
+   | << What might "easier" mean? >>
+   
    From a performance point of view, to determine if a string is
    accepted can take a LONG time to try out all possibilities.
    But, all that we care about right now is existance, not performance.
+
+
+.. slide:: Example (4)
+
+   << Need an example of a NFA that is "simpler" than a DFA. >>
 
 
 .. slide:: Which is more powerful?

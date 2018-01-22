@@ -6,18 +6,17 @@
 .. avmetadata::
    :author: Susan Rodger and Cliff Shaffer
    :requires: FL Concepts
-   :satisfies: Deterministic Finite Automata
+   :satisfies: Deterministic Finite Acceptor
    :topic: Finite Automata
 
-Deterministic Finite Automata
-=============================
+Deterministic Finite Acceptors
+==============================
 
-DFA: Deterministic Finite Automata
+DFA: Deterministic Finite Acceptor
 ----------------------------------
 
 We start with the simplest of our machines:
-The :term:`Deterministic Finite Automata` (:term:`DFA`),
-also called the Deterministic Finite Acceptor.
+The :term:`Deterministic Finite Acceptor` (:term:`DFA`).
 This machine can process an input string (shown on a tape) from left
 to right.
 There is a control unit (with states), behavior defined for what to do
@@ -25,6 +24,16 @@ when in a given state and with a given symbol on the current square of
 the tape.
 All that we can "do" is change state before going to the next letter
 to the right.
+That is, an acceptor does not modify the contents of the tape.
+
+:term:`Deterministic` in this context has a particular meaning:
+When the DFA is in a given state, there is only one thing that
+it can do for any given input symbol. 
+This is in contrast to a :term:`non-deterministic` machine,
+that might have some range of options on how to proceed when in a
+given state with a given symbol.
+We'll talk about non-deterministic automata later.
+
 
 At the end of processing the letters of the string, the DFA can answer
 "yes" or "no".
