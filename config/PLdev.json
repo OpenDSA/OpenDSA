@@ -64,6 +64,27 @@
       "PL/ChurchNumerals": {},
       "PL/RecursiveFunctions": {}
     },
+    "Interpreting the Functional Language SLang 1": {
+      "PL/SLang1": {},
+      "PL/Environment": {},
+      "PL/SLang1Interpreter": {},
+      "PL/SLang1InterpreterModifications": {},
+      "PL/SLang1InterpreterReview": {},
+      "PL/SLang1withLetExpressions": {}
+    },
+    "Interpreting the Imperative Language SLang 2": {
+      "PL/SLang2": {},
+      "PL/SLang2TTK": {},
+      "PL/SLang2ParameterPassing": {},
+      "PL/LazyLists": {}
+    },
+    "Interpreting the Object-Oriented Language SLang 3": {
+      "PL/SLang3reviewOfOOP": {},
+      "PL/SLang3concreteSyntax": {},
+      "PL/SLang3abstractSyntax": {},
+      "PL/SLang3objects": {},
+      "PL/SLang3interpreter": {}
+    },
     "Appendices": {
       "PL/PL_Glossary": {}
     }
