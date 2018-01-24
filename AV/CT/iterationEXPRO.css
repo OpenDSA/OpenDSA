@@ -34,3 +34,19 @@ p.jsavoutput.jsavline {
 .jsavhighlight {
   font-size: 110%;
 }
+
+.bluebox  {
+  /*fill : rgb(91, 91, 165);*/
+  z-index: -500;
+  stroke : #FFCC33;
+}
+
+/*.blueboxh  {
+  fill : #e6eeff;
+  stroke : #e6eeff;
+}*/
+
+.blueboxh  {
+  fill : red;
+  stroke : red;
+}

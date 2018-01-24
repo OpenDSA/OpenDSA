@@ -4,14 +4,18 @@ $(document).ready(function() {
 
   // Load the interpreter created by odsaAV.js
   var config = ODSA.UTILS.loadConfig();
-  var interpret = config.interpreter;
+  // var interpret = config.interpreter;
+  var midblue1, midblue2, midblue3;
+  var boxes,
+      rect_left,
+      rect_top,
+      original_arr = [-1,-1,-1],
+      initArr,
+      ansArr = [];
 
   var settings = config.getSettings();
 
-  var arraySize = 5,
-      initialArray = [],
-      jsavArray,
-      av = new JSAV("jsavcontainer", {settings: settings});
+  var av = new JSAV("jsavcontainer", {settings: settings});
 
   av.recorded(); // we are not recording an AV with an algorithm
 
@@ -22,7 +26,7 @@ $(document).ready(function() {
 
   // Process about button: Pop up a message with an Alert
   function about() {
-    alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+    alert(ODSA.AV.aboutstring("Iteration Exercise", "Jieun Chon"));
   }
 
   // Set click handlers
@@ -30,112 +34,74 @@ $(document).ready(function() {
   $("#about").click(about);
 
   function initialize() {
-    var arrValues = [4, 13, 6, 9, 11];
-    var arrValues = [4, 13, 6, 9, 11];
-    var leftMargin = 270,
-        rect_left = leftMargin - 150,
-        rect0_top = 0,
-        rect_top = 40,
-        topMargin = rect_top + 20;
-
-    var nodegap = 40;
-
-    // blue boxes, floor 1
-    // var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
-    var topblue1 = av.g.rect(rect_left , rect0_top, 130, 35, 10).addClass("bluebox");
-    var toppurple1 = av.g.rect(rect_left + 95, rect0_top + 10, 20, 17, 17).addClass("calbox");
-    var toppurple2 = av.g.rect(rect_left + 110, rect0_top, 55, 35, 10).addClass("calbox");
-
-    var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
-
-    // floor 2
-    av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("purplebox");
-    av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("purplebox"); // for no-roung on the corner
-
-    //floor 3 and the JSAV array contains arrValues
-    av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
-    av.g.rect(rect_left + 73, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
-    var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
-
-    //floor 4, long purple
-    av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("purplebox");
-
-    //floor 5, left big purple box
-    av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("purplebox");
-    av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("purplebox");
-
-    //mid blue/calculate boxes ( and "set total = ..." blue box )
-    var midblue1 = av.g.rect(rect_left + 130, rect_top + 120, 130, 66, 10).addClass("bluebox");
-    var midblue2 = av.g.rect(rect_left + 220, rect_top + 139, 20, 32, 15).addClass("calbox");
-    var midblue3 = av.g.rect(rect_left + 240, rect_top + 120, 120, 66, 10).addClass("calbox");
-
-    // last purple floor
-    av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("purplebox");
-    // if (jsavArray) {
-    //   jsavArray.clear();
-    //   swapIndex.clear();
-    // }
-    // initialArray = JSAV.utils.rand.numKeys(10, 100, arraySize);
-    //
-    // jsavArray = av.ds.array(initialArray, {indexed: true});
-    // swapIndex = av.variable(-1);
-    // // bind a function to handle all click events on the array
-    // jsavArray.click(arrayClickHandler);
-    // return jsavArray;
-    return null;
+    initArr = av.ds.array(original_arr);
+    initArr.hide();
+    rect_left = 50;
+    rect_top = 0;
+    midblue1 = av.g.rect(rect_left + 130, rect_top + 20, 130, 30, 10).addClass("bluebox");
+    midblue1.click(clickHandler1);
+    midblue2 = av.g.rect(rect_left + 130, rect_top + 50, 130, 30, 10).addClass("bluebox");
+    midblue2.click(clickHandler2);
+    midblue3 = av.g.rect(rect_left + 130, rect_top + 80, 130, 30, 10).addClass("bluebox");
+    midblue3.click(clickHandler3);
+    boxes = [midblue1, midblue2, midblue3];
+    return initArr;
   }
 
   function modelSolution(modeljsav) {
-    // var modelArray = modeljsav.ds.array(initialArray);
-    // modeljsav.displayInit();
-    // for (var i = 0; i < arraySize; i++) {
-    //   modelArray.highlight(i);
-    //   modeljsav.umsg("Highlight " + i);
-    //   modeljsav.gradeableStep();
-    // }
-    // // swap the first and last element
-    // modelArray.swap(0, arraySize - 1);
-    // modeljsav.umsg("Now swap");
-    // modeljsav.gradeableStep();
-    // return modelArray;
-    return null;
+    var modelArray = modeljsav.ds.array(original_arr);
+    modelArray.hide();
+    // modeljsav.umsg("click in right order");
+    var midblue1c = modeljsav.g.rect(rect_left + 130, rect_top + 20, 130, 30, 10).addClass("bluebox");
+    var midblue2c = modeljsav.g.rect(rect_left + 130, rect_top + 50, 130, 30, 10).addClass("bluebox");
+    var midblue3c = modeljsav.g.rect(rect_left + 130, rect_top + 80, 130, 30, 10).addClass("bluebox");
+    var answer = [midblue1c, midblue2c, midblue3c];
+
+    modeljsav.displayInit();
+
+    answer[0].addClass("blueboxh");
+    // answer[0].removeClass("blueboxh");
+    modelArray.value(0, 1);
+    modeljsav.gradeableStep();
+
+    answer[1].addClass("blueboxh");
+    // answer[1].removeClass("blueboxh");
+        modelArray.value(1, 2);
+    modeljsav.gradeableStep();
+
+    answer[2].addClass("blueboxh");
+    // answer[2].removeClass("blueboxh");
+    modelArray.value(2, 3);
+    modeljsav.gradeableStep();
+    return answer;
   }
 
-  // define a variable to hold the value of index to be swapped
-  var swapIndex;
 
   var exercise = av.exercise(modelSolution, initialize,
-                            { feedback: "continuous", compare: {class: "jsavhighlight"}});
+                            { feedback: "continuous", fixmode : "fix", compare: {class: "blueboxh"}});
   exercise.reset();
 
-  function arrayClickHandler(index) {
-    // // if last index is highlighted, we are in "swap mode"
-    // if (this.isHighlight(arraySize - 1)) {
-    //   // when in swap mode, first click on index will store that index
-    //   // and change the font size on the value
-    //   if (swapIndex.value() == -1) {
-    //     swapIndex.value(index);
-    //     // apply the CSS property change to index
-    //     this.css(index, {"font-size": "130%"});
-    //     av.step(); // add a step to the animation
-    //   } else {
-    //     // the second click (swapIndex has some value) will cause
-    //     // the swap of indices index and stored swapIndex
-    //     this.swap(index, swapIndex.value());
-    //     // change the font-size back to normal
-    //     this.css(swapIndex.value(), {"font-size": "100%"});
-    //     swapIndex.value(-1);
-    //     exercise.gradeableStep(); // this step will be graded
-    //   }
-    // } else { // we are in highlight mode
-    //   // highlight the index
-    //   this.highlight(index);
-    //   if (index == (arraySize - 1)) {
-    //     av.umsg("Good, now swap the first and last index");
-    //   }
-    //   // mark this as a gradeable step; also handles continuous feedback
-    //   exercise.gradeableStep();
-    // }
+  function clickHandler1() {
+    this.addClass("blueboxh");
+    // this.removeClass("blueboxh");
+    initArr.value(0,1);
+    exercise.gradeableStep();
   }
+
+  function clickHandler2() {
+    this.addClass("blueboxh");
+    // this.removeClass("blueboxh");
+    initArr.value(1,2);
+    exercise.gradeableStep();
+  }
+
+  function clickHandler3() {
+    this.addClass("blueboxh");
+    // this.removeClass("blueboxh");
+    initArr.value(2,3);
+    exercise.gradeableStep();
+  }
+
+
 
 });
