@@ -36,11 +36,18 @@
       "Intro": {}
     },
     "Grammars": {
-      "PL/Grammars1": {},
-      "PL/Grammars2": {},
-      "PL/Grammars3": {},
-      "PL/Grammars4": {},
-      "PL/Grammars5": {}
+	"PL/Grammars1": {
+            "CharacterizeLang1": {
+		"points": 1.0 
+            },
+            "StringGenFromGmr": {
+		"points": 1.0 
+            }
+	},
+	"PL/Grammars2": {},
+	"PL/Grammars3": {},
+	"PL/Grammars4": {},
+	"PL/Grammars5": {}
     },
     "Functional Programming": {
       "PL/FP1": {},
