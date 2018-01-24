@@ -36,32 +36,167 @@
       "Intro": {}
     },
     "Grammars": {
-      "PL/Grammars1": {},
-      "PL/Grammars2": {},
-      "PL/Grammars3": {},
-      "PL/Grammars4": {},
-      "PL/Grammars5": {}
+      "PL/Grammars1": {
+        "CharacterizeLang1": {
+          "threshold": 1
+        },
+        "CharacterizeLang2": {
+          "threshold": 1
+        },
+        "NumParseTreeNodes": {
+          "threshold": 1
+        },
+        "StringGenFromGmr": {
+          "threshold": 1
+        }
+      },
+      "PL/Grammars2": {
+        "NumParseTrees1": {
+          "threshold": 1
+        },
+        "NumParseTrees2": {
+          "threshold": 1
+        },
+        "NumParseTrees3": {
+          "threshold": 1
+        },
+        "DeterminingAmbiguities": {
+          "threshold": 1
+        }
+      },
+      "PL/Grammars3": {
+        "Associativity": {
+          "threshold": 1
+        },
+        "CharacterizeLang3": {
+          "threshold": 1
+        },
+        "ExtendedBNF": {
+          "threshold": 1
+        },
+        "PrecedenceAndAssociativity": {
+          "threshold": 1
+        }
+      },
+      "PL/Grammars4": {
+        "Jison2": {
+          "threshold": 1
+        }
+      },
+      "PL/Grammars5": {
+        "AnnotatingJison": {
+          "threshold": 1
+        }
+      }
     },
     "Functional Programming": {
-      "PL/FP1": {},
-      "PL/FP2": {},
-      "PL/FP3": {},
-      "PL/FP4": {},
-      "PL/FP5": {},
-      "PL/FP6": {},
-      "PL/FP7": {},
+      "PL/FP1": {
+        "FPcons": {
+          "threshold": 1
+        },
+        "FPHdTlCons2": {
+          "threshold": 1
+        },
+        "FPisEq": {
+          "threshold": 1
+        }
+      },
+      "PL/FP2": {
+        "RecListProc2": {
+          "threshold": 1
+        },
+        "RecListProc3": {
+          "threshold": 1
+        }
+      },
+      "PL/FP3": {
+        "DeepRecur2": {
+          "threshold": 1
+        },
+        "DeepRecur3": {
+          "threshold": 1
+        },
+        "DeepRecur1": {
+          "threshold": 1
+        }
+      },
+      "PL/FP4": {
+        "SplitAndJoin": {
+          "threshold": 1
+        },
+        "QuickSort": {
+          "threshold": 1
+        }
+      },
+      "PL/FP5": {
+        "HigherOrderFuncs2": {
+          "threshold": 1
+        },
+        "HigherOrderFuncs3": {
+          "threshold": 1
+        },
+        "StaticDynamic": {
+          "threshold": 1
+        }
+      },
+      "PL/FP6": {
+        "Curry1": {
+          "threshold": 1
+        },
+        "Compose": {
+          "threshold": 1
+        },
+        "Map": {
+          "threshold": 1
+        }
+      },
+      "PL/FP7": {
+        "Reduce1": {
+          "threshold": 1
+        },
+        "Reduce2": {
+          "threshold": 1
+        },
+        "Filter": {
+          "threshold": 1
+        }
+      },
       "PL/FP8": {},
-      "PL/FP9": {}
+      "PL/FP9": {
+        "ContinuationPassing1": {
+          "threshold": 1
+        },
+        "ContinuationPassing2": {
+          "threshold": 1
+        },
+        "ContinuationPassing3": {
+          "threshold": 1
+        },
+        "TailRecursion": {
+          "threshold": 1
+        }
+      }
     },
     "Lambda Calculus": {
       "PL/Syntax": {},
-      "PL/Semantics": {},
+      "PL/Semantics": {
+        "LambdaCalcSemantics": {
+          "threshold": 1
+        }
+      },
       "PL/FreeBoundVariables": {},
       "PL/AlphaConversion": {},
       "PL/Substitution": {},
       "PL/BetaReduction": {},
       "PL/ReductionStrategies": {},
-      "PL/ChurchNumerals": {},
+      "PL/ChurchNumerals": {
+        "ChurchIfThen": {
+          "threshold": 1
+        },
+        "ChurchOR": {
+          "threshold": 1
+        }
+      },
       "PL/RecursiveFunctions": {}
     },
     "Interpreting the Functional Language SLang 1": {
