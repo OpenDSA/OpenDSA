@@ -657,15 +657,14 @@ configuration.
   name for the chapter.
 * To **remove a chapter** and all of its modules from your book, right click 
   on the chapter, then click "Delete". 
-* To **add a module** to your book, click and drag a module from the Available pane 
-  and drop it in the Included pane in the desired chapter. You can select 
-  multiple modules by holding Ctrl (Mac: ⌘) and clicking on the desired modules. 
-  To select multiple sequentially listed modules, click on the first module, 
-  then hold Shift and click on the last module. 
-
+* To **add a module** to your book, left-click and hold and drag a module from the Available 
+  pane and drop it (release your left mouse button) in the Included pane in the 
+  desired chapter. You can select multiple modules by holding Ctrl (Mac: ⌘) and 
+  clicking on the desired modules. To select multiple sequentially listed 
+  modules, click on the first module, then hold Shift and click on the last 
+  module. 
 * To **remove a module** from your book, right click on the module in the 
-  Included pane, then click "Remove". 
-
+  Included pane, then click "Remove".
 * **Reorder chapters and modules** in your book using drag-and-drop. The order 
   of the chapters and modules in the Included pane will be the order of the 
   chapters and modules in your book. 
@@ -685,8 +684,8 @@ Once you are finished configuring your book you can:
 
     2. If you have loaded one of your existing configurations you can click 
     "Update Configuration". You can then update your Canvas course by 
-    regenerating it. Note that using this option you should only update the 
-    point values for exercises; adding and removing content is not supported.
+    regenerating it. Note that this option does not support removing 
+    chapters and/or modules.
 
     3. Click "Download Configuration" to download a json file containing the 
     configuration.
