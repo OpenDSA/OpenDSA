@@ -115,8 +115,8 @@ randomized exercise, you must solve it correctly three times in a row.
 .. avembed:: Exercises/PL/BetaReductionOrder1.html ka
    :long_name: Beta Reduction Order 1
 
-RP 17 Part 2
-------------
+Beta Reduction Order (2)
+------------------------
 
 In this problem, you have to study the complete evaluation of a
 :math:`\lambda`-expression with the two evaluation strategies that we
