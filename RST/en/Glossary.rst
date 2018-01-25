@@ -1046,6 +1046,10 @@ Glossary
       That is, the given non-terminal :math:`A` can be replaced at any
       time.
 
+   context-free language
+      The set of :term:`languages <language>` that can be defined by
+      :term:`context-sensitive grammars <context-sensitive grammar>`.
+
    context-sensitive grammar
       A :term:`grammar` comprised only of productions of the form
       :math:`xAy \rightarrow xvy` where :math:`A` is a
@@ -1706,6 +1710,14 @@ Glossary
       memory pool, collecting :term:`garbage`, and reorganizing the
       memory pool (to collect together free space).
 
+   family of languages
+      Given some class or type of :term:`finite automata`
+      (for example, the :term:`deterministic finite automata`),
+      the set of languages accepted by that class of finite automata
+      is called a family.
+      For example, the :term:`regular languages <regular language>` is
+      a family defined by the DFAs.
+
    file allocation table
       A legacy file system architecture orginially developed for DOS
       and then used in Windows.
@@ -1743,6 +1755,12 @@ Glossary
       This is the access paradigm for a :term:`queue`,
       and an old terminolgy for the queue is "FIFO list".
 
+   final state
+      A required element of any :term:`acceptor <finite state acceptor>`.
+      When computation on a string ends in a final state, then the
+      machine accepts the string.
+      Otherwise the machine rejects the string.
+
    FIND
       One half of the :term:`UNION/FIND` algorithm for managing
       :term:`disjoint sets`.
@@ -1751,6 +1769,8 @@ Glossary
 
    Finite State Machine
    FSM
+   Finite State Automata
+   FSA
    Finite Automata
       Any abstract state machine, generally represented as a graph
       where the nodes are the :term:`states <state>`, and the edges
@@ -1758,6 +1778,14 @@ Glossary
       machine is in that node (state) and sees an appropriate input.
       See, as an example, :term:`Deterministic Finite Automata`.
 
+   Finite State Acceptor
+      A simple type of :term:`finite state automata`, an acceptor's
+      only ability is to accept or reject a string.
+      So, a finite state acceptor does not have the ability to modify
+      the input tape.
+      If computation on the string ends in a :term:`final state`,
+      then the the string is accepted, otherwise it is rejected.
+      
    first fit
       In a :term:`memory manager`, first fit is a :term:`heuristic`
       for deciding which :term:`free block` to use when allocating
@@ -3755,6 +3783,13 @@ Glossary
       A specialized term used to indicate inserting an :term:`element`
       onto a :term:`stack`.
 
+   pushdown automata
+   PDA
+      A type of :term:`Finite State Automata` that adds a stack memory
+      to the basic :term:`Deterministic Finite Automata` machine.
+      This extends the set of languages that can be recognize to the
+      :term:`context-free languages <context-free language>`.
+
    quadratic growth rate
       A growth rate function of the form :math:`cn^2` where :math:`n`
       is the input size and :math:`c` is a constant.
@@ -4799,6 +4834,11 @@ Glossary
       transpose is a :term:`heuristic` used to maintain the list.
       Under this heuristic, whenever a record is accessed it is moved
       one position closer to the front of the list.
+
+   trap state
+      In a :term:`FSA`, any state that has all transitions cycle back
+      to itself.
+      Such a state might be :term:`final <final state>`.
 
    traversal
       Any process for visiting all of the objects in a collection

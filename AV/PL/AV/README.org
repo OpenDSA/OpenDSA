@@ -1,0 +1,7 @@
+* For details on the parse tree demos, see README-parseTreeDemos.txt
+
+* Church numberals and booleans in Section 3.8
+** church_string.css provides the CSS for the labels that are used
+** church_bool.js -- reduction of TRUE AND FALSE
+** church_numeral.js -- reduction of (SUCC THREE)
+** church_mult.js -- 2 * 3

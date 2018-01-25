@@ -37,7 +37,7 @@
   },
   "tabbed_codeinc": false,
   "build_JSAV": false,
-  "suppress_todo": false,
+   "suppress_todo": true,
   "glob_exer_options": {},
   "glob_ss_options": {
     "threshold": 1.0, 
@@ -63,6 +63,7 @@
   "chapters": {
     "Week 1": {
       "FLSlides/FLIntro": {},
+      "FLSlides/FLConcepts": {},
       "FLSlides/DFA": {}
     }
   }

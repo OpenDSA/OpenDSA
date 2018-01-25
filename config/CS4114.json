@@ -1,16 +1,9 @@
 {
-  "title": "Test",
-  "desc": "Test",
+  "title": "CS4114: Formal Languages and Automata Theory",
+  "desc": "CS4114: Formal Languages and Automata Theory",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Java_Generic": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java (Generic)",
-      "lang": "java"
-    },
     "Java": {
       "ext": [
         "java"
@@ -25,6 +18,13 @@
       "label": "Processing",
       "lang": "java"
     },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
     "C++": {
       "ext": [
         "cpp",
@@ -36,10 +36,9 @@
   },
   "lang": "en",
   "build_JSAV": false,
-  "build_cmap": false,
   "suppress_todo": true,
+  "assumes": "recursion",
   "dispModComp": true,
-  "tag": "CPP;CS2",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
@@ -65,15 +64,21 @@
     "required": true
   }, 
   "chapters": {
-    "Programming": {
-      "Searching/BinarySearch": {
-        "binarySearchPRO": {
-          "points": 1.0, 
-          "threshold": 1.0
-        }
-      },
-      "Spatial/PRquadtree": {}
-    }, 
+    "Preface": {
+      "Intro": {}
+    },
+    "Week 1, Day 1": {
+      "FormalLang/FLIntro": {},
+      "FormalLang/FLOverview": {}
+    },
+    "Mathematical Background": {
+      "Background/SetDef": {},
+      "Background/Proofs": {}
+    },
+    "Week 1, Day 2": {
+      "FormalLang/FLConcepts": {},
+      "FormalLang/DFA": {}
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}

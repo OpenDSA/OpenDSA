@@ -5,22 +5,23 @@
 
 .. avmetadata::
    :author: Susan Rodger and Cliff Shaffer
-   :requires:
-   :satisfies: FL Introduction
-   :topic: Introduction
+   :requires: FL Introduction
+   :satisfies: Deterministic Finite Automata
+   :topic: DFA
 
 .. slideconf::
    :autoslides: False
 
 
-Deterministic Finite Automata
-=============================
+Deterministic Finite Acceptors
+==============================
 
 .. slide:: Introduction: Terminology
 
    | Finite State Machine
+   | Finite State Automata
    | Finite Automata
-   | Automata
+   | Automata: This just means "machine"
    |   All names for a simple model of computation that has:
    |   * States that the machine can be in (nodes)
    |   * Input (string)
@@ -28,13 +29,14 @@ Deterministic Finite Automata
    |   * Some machine types have memory
 
 
-.. slide:: Deterministic Finite Automata
+.. slide:: Deterministic Finite Acceptor
 
    | Our simplest machine.
    |   Deterministic: In a state, when given a specific letter,
        only one thing to do.
    |   Finite: Finite number of states
-   |   Automata: A "machine"
+   |   Acceptor: It only decides whether or not a string is in this
+       machine's language (so it has no ability to modify the tape)
 
    .. odsafig:: Images/DFAexample.png
       :width: 350
@@ -106,7 +108,7 @@ Deterministic Finite Automata
 .. slide:: Algorithm for DFA
 
 
-   | Start in :term:`start state` with input on tape
+   | Start in start state with input on tape
    | q = current state
    | s = current symbol on tape
    | while (s != blank) do
@@ -132,6 +134,9 @@ Deterministic Finite Automata
    | :math:`\lambda` (lambda): The empty string
    | :math:`{\delta}^{*}(q,\lambda)=q`
    |   You didn't go anywhere, you are still in state :math:`q`
+   | :math:`{\delta}^{*}(q_i,w)= q_j`
+   |   Given string :math:`w` and
+       starting in state :math:`q_i`, we will reach state :math:`q_j`.
    | :math:`{\delta}^{*}(q,wa)={\delta}({\delta}^{*}(q,w),a)`
    |   Apply :math:`\delta` to all of :math:`w` first (some string) and
        then to :math:`a`
@@ -149,7 +154,9 @@ Deterministic Finite Automata
    | Note that our DFA for even binary numbers is "complete".
    |   We always know what to do on any input.
 
-   What about this one?
+   Consider the language :math:`L(M) = \{b^na | n > 0\}`
+
+   <<Draw Figure>>
 
    .. TODO:: Example
 
@@ -165,15 +172,23 @@ Deterministic Finite Automata
 
 .. slide:: Trap State
 
-   To be complete, we can add one or more "trap" states, and put in all
-   of the "extra" transitions. As follows.
+   Can complete by adding one or more "trap" states with the
+   "extra" transitions.
 
    .. odsafig:: Images/stnfaEx3.png
-      :width: 350
+      :width: 300
       :align: center
       :capalign: justify
       :figwidth: 90%
       :alt: DFA Example: Complete
+
+   | There is nothing "special" about the trap state, they are
+     just conceptual.
+   |   A "trap" state means that once in, all transitions keep us
+       there.
+   |   A "final" trap state is any trap state that is a final.
+       Example: Define a machine that accepts any string that starts
+       with "ab".
 
 
 .. slide:: Another Example
@@ -190,5 +205,20 @@ Deterministic Finite Automata
 
 .. slide:: Regular Languages
 
-   **Definition**: A language is regular if and only if
+   **Definition**: Given some class or type of Finite Acceptors,
+   the set of languages accepted by that class of Finite Acceptors is
+   called a **family**.
+           
+   **Definition**: Therefore, the DFAs define a **family** of
+   languages that they accept.
+   A language is **regular** if and only if
    there exists a DFA :math:`M` such that :math:`L = L(M)`.
+
+
+.. slide:: A Final Example
+
+   Consider the language "accept all strings on :math:`\{0, 1\}` that
+   does not contain the substring 001. [Linz Example 2.4]
+
+   You should work this out on your own, its a good test of your
+   understanding!

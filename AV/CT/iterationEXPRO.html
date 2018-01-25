@@ -14,13 +14,13 @@
     <table class="proHeaderTable">
       <tr>
         <td class="headerLeft">
-          <input type="button" id="help" name="help" />
+          <input type="button" id="help" name="help" value="help"/>
         </td>
         <td class="headerCenter">
           <p class="jsavexercisecontrols"></p>
         </td>
         <td class="headerRight">
-          <input type="button" id="about" name="about" />
+          <input type="button" id="about" name="about" value="about"/>
           <a id="settings" class="jsavsettings" href="#"></a>
         </td>
       </tr>
@@ -37,9 +37,9 @@
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script> <!-- always first -->
+  <script src="../../JSAV/lib/raphael.js"></script> <!-- before JSAV -->
   <script src="../../JSAV/build/JSAV.js"></script>
-  <script src="../../JSAV/lib/jquery.transit.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <script src="../../lib/odsaUtils-min.js"></script>
   <script src="../../lib/odsaAV-min.js"></script>

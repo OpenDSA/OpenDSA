@@ -6,7 +6,7 @@
     var L = LAMBDA;
     var words = [ "coca",  "comma",  "counterplea",  "credenza",  "dilemma",  "gondola",  "gorilla",  "hoopla",  "hypoglycemia",  "hypothermia",  "lemma",  "leukemia",  "lymphoma",  "mimosa",  "minutia",  "pizza",  "pneumonia",  "tesla",  "tibia",  "trivia",  "xenophobia", "absolutely", "already", "anarchy", "annoy", "apathy",  "apply", "astrology" , "beworry", "bully", "hurry", "marry", "worry" ];
 
-    var RP19part1 = {    
+    var FixedPointCombinators = {    
 
 	init: function () {
 	    var prefix = "\u03BB";
@@ -46,9 +46,9 @@
 	    this.option4 = options[3];
 	} // init function
 	
-    };// RP19part1
+    };// FixedPointCombinators
     
-    window.RP19part1 = window.RP19part1 || RP19part1;
+    window.FixedPointCombinators = window.FixedPointCombinators || FixedPointCombinators;
 
 }());
 

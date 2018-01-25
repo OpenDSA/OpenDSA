@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples RP18part1" lang="en">
+<html data-require="math ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples ChurchNumerals" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 18 part 1</title>
+    <title>Church Numerals</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var LAMBDA = {};</script>
@@ -12,12 +12,12 @@
   <body data-height="750" data-width="950">
     <div class="exercise">
       <div class="vars">
-	<var id="setup">RP18part1.init()</var>
-	<var id="expression">RP18part1.expression</var>
+	<var id="setup">ChurchNumerals.init()</var>
+	<var id="expression">ChurchNumerals.expression</var>
       </div>
 
       <div class="problems">
-        <div id="RP18part1p">
+        <div id="ChurchNumeralsp">
           <p class="question">Write down the &beta;-normal form of the
           following &lambda; expression:
 <pre>
@@ -30,7 +30,7 @@
       <div class="solution" data-type="custom">
         <div class="guess"> $('#answerTextarea').val()  </div>
         <div class="validator-function">
-	  return RP18part1.validateAnswer(guess);
+	  return ChurchNumerals.validateAnswer(guess);
         </div>
       </div>
 

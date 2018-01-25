@@ -2,7 +2,7 @@
 (function() {
     "use strict";
     var L = LAMBDA;
-    var RP18part1 = {    
+    var ChurchNumerals = {    
 
 	init: function () {
 	    var n1, n2, exp;
@@ -38,9 +38,9 @@
 		studentAnswer.replace(/\s+/g,"");
 	}// validateAnswer function
 
-    };// RP18part1
+    };// ChurchNumerals
     
-    window.RP18part1 = window.RP18part1 || RP18part1;
+    window.ChurchNumerals = window.ChurchNumerals || ChurchNumerals;
 
 }());
 

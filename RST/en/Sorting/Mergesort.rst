@@ -92,7 +92,7 @@ Here is a mergesort warmup exercise to practice merging.
 
 
 Mergesort Practice Exercise
---------------------------
+---------------------------
 
 Now here is a full proficiency exercise to put it all together.
 
