@@ -210,4 +210,3 @@ Formal Languages Course Introduction
     * Carefully read the General Homework Instructions page
 
   * Install JFLAP, make sure that you can run it
-

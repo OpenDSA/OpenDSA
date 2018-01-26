@@ -21,17 +21,20 @@ Minimizing the Number of States in a DFA
    Why do we need to do this?
 
    If you have an NFA with :math:`n` states, what is the maximum number 
-   of states in the equivalent DFA created? :math:`2^n` 
+   of states in the equivalent DFA created?
+
+   ..  :math:`2^n`
 
 
-.. slide:: Minimization Algorithm (1)
+.. slide:: Minimization Algorithm Concept
 
    Identify states that are indistinguishable
 
-   * These states form a new state
+   * These states will collectively form a new state in the minimized
+     machine.
 
 
-.. slide:: Minimization Algorithm (2)
+.. slide:: Distinguishable States (1)
 
    **Definition**: Two states :math:`p` and :math:`q` are
    indistinquishable if for all :math:`w \in \Sigma^*`
@@ -47,20 +50,65 @@ Minimizing the Number of States in a DFA
 
    :math:`p` and :math:`q` appear to be different. 
 
+   << What does this mean? >>
 
-.. slide:: Example
+.. slide:: Distinguishable States (2)
 
-   Look at A on a, ab 
+   All that an acceptor cares about is accepting or rejecting strings.
 
-   Look at F on a, ab 
+   Select any pair of states, :math:`p` and :math:`q`.
 
-   Look at D on a, ab 
+   * If, in either case, we accept/reject the exact same set set of
+     strings, then there is no difference between them.
+   * So, we can combine them.
+   * Remember the definition for :math:`\delta^*(p, w)`.
+     Look at things this way:
+     It is telling us that we don't care about the prior history before
+     we got to the current state with whatever remains of the input.
 
-   << This is in file ~rodger/cl/cps140/jflapex/chap2mindfa1.jff >>
+   Distinguishability is an equivalence relation.
 
 
-.. slide:: Result
-           
+.. slide:: Example 1 (1)
+
+   .. odsafig:: Images/stmindfa1spart.png
+      :width: 400
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: Minimization 1
+
+   Look at A on a, ab. Look at F on a, ab. Look at D on a, ab.
+
+   .. A on a is non-final, and on ab is final.
+   .. F on a is non-final, and on ab is non-final.
+   .. D on a is non-final, and on ab is final.
+   .. So clearly, F can't be grouped with A or D.
+
+
+.. slide:: Algorithm
+
+   #. Remove all inaccessible states.
+   #. Consider all pairs of states :math:`(p, q)`.
+      If :math:`p \in F` and :math:`q \not \in F` or vice versa, then
+      mark the pair :math:`(p, q)` as distinguishable.
+   #. | Repeat the following step until no previously unmarked pairs
+        are marked:
+      | For all pairs :math:`(p, q)` and all :math:`a \in \Sigma`,
+        compute :math:`\delta(p, a) = p_a` and
+        :math:`\delta(q, a) = q_a`.
+      | If the pair :math:`(p_a, q_a)` is marked as distinguishable,
+        mark :math:`(p, q)` as distinguishable.
+
+   Gather together the indistingushable pairs into groups.
+   Each group is a state in the new machine.
+
+   Finally, a (new machine) state :math:`q_i` is final if and only if
+   *any* of its base states (from the old machine) are final.
+
+
+.. slide:: Example 1 (2)
+
    .. odsafig:: Images/stmindfa1s.png
       :width: 500
       :align: center

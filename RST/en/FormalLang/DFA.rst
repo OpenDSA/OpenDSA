@@ -51,7 +51,7 @@ or if SUM is a valid variable name in C++.
 
 .. note::
 
-   Discussion question: What information do we need to
+   Think about this before you read on: What information do we need to
    characterize/describe/define a given DFA?
    We want enough information so that we can "build" the machine.
    But no more.
@@ -93,7 +93,7 @@ We can assign meaning to the states:
 
 .. note::
 
-   At this point, you should try building the machine in JFLAP.
+   At this point, you should try building this machine in JFLAP.
 
 Formal definition:
 
@@ -180,7 +180,7 @@ Definitions
      Draw a picture: q0 arc ... some final state, any path to a final
      state is a string that is accepted. 
 
-     Say this: This is the language accepted by DFA M.
+     This is the language accepted by DFA M.
      All strings formed of the alphabet such that if you start in q0
      and process all the symbols in w, then you end up in a final (or
      accepting) state
@@ -199,8 +199,8 @@ Example: Consider the language :math:`L(M) = \{b^na | n > 0\}`
 
 .. note::
 
-   Ask what language this is. Answer: One or more "b" followed by one
-   "a".
+   What language is this?
+   Answer: One or more "b" followed by one "a".
 
 So, here is one way to make a drawing:
 
@@ -237,7 +237,7 @@ and an even number of b's }.
 
 .. note::
 
-   Other examples to mention: Can create a DFA for real numbers,
+   Other examples to consider: Can create a DFA for real numbers,
    integers, variable names (depending on the rules), etc.
 
 Example: Create a DFA that accepts even binary numbers that have an
@@ -258,10 +258,15 @@ even number of 1's.
 
    More complicated DFA Example
 
-.. note::
+Determinism means that there is only one choice about what to do when
+in a given state and the machine sees a given character.
 
-   Talk about determinism: There is only one choice
 
+Concept: Power of DFAs
+~~~~~~~~~~~~~~~~~~~~~~
+           
+A given DFA can accept a set of strings (which is all that a language is).
+All of the possible DFAs form a class of machines.
 Given some class or type of Finite Automata, the
 set of languages accepted by that class of Finite Automata is
 called a :term:`family <family of languages>`.

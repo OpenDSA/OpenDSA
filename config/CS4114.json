@@ -67,17 +67,18 @@
     "Preface": {
       "Intro": {}
     },
-    "Week 1, Day 1": {
+    "Introduction": {
       "FormalLang/FLIntro": {},
-      "FormalLang/FLOverview": {}
+      "FormalLang/FLOverview": {},
+      "FormalLang/FLConcepts": {}
     },
     "Mathematical Background": {
       "Background/SetDef": {},
       "Background/Proofs": {}
     },
-    "Week 1, Day 2": {
-      "FormalLang/FLConcepts": {},
-      "FormalLang/DFA": {}
+    "Deterministic Finite Acceptors": {
+      "FormalLang/DFA": {},
+      "FormalLang/NFA": {}
     },
     "Appendix": {
       "Glossary": {},

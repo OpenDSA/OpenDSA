@@ -67,7 +67,7 @@
     "Preface": {
       "Intro": {}
     },
-    "Week 1, Day 1": {
+    "Introduction": {
       "FormalLang/FLIntro": {},
       "FormalLang/FLOverview": {},
       "FormalLang/FLConcepts": {}
@@ -76,7 +76,7 @@
       "Background/SetDef": {},
       "Background/Proofs": {}
     },
-    "Lectures 2-4": {
+    "Deterministic Finite Acceptors": {
       "FormalLang/DFA": {},
       "FormalLang/NFA": {},
       "FormalLang/Minimization": {}
@@ -86,6 +86,7 @@
       "FormalLang/RegGrammar": {}
     },
     "Properties of Regular Grammars (Lectures 7, 8)": {
+      "FormalLang/DFAproperties": {},
       "FormalLang/RegProp": {}
     },
     "Pushdown Automata": {

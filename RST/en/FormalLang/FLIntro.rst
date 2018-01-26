@@ -24,7 +24,7 @@ This is a CS "Theory" course.
 In practice, that means a math course with applications to basic CS
 applications.
 This course assumes that you already have sufficient background in a
-number of Computer Science topics .
+number of Computer Science topics.
 
 You should have had a course in Discrete Math, covering at least the
 following:
@@ -61,9 +61,9 @@ For example, if you know what you can or cannot do with a regular
 expression, then you know whether to bother with trying to use regex
 tools to solve a given problem.
 Likewise, if you know the limits of the types of grammar supported by
-a given compiler generator like YACC, then you know whether you can
-use that tool to get your job done, or whether you need to go to the
-much greater effort of "rolling your own" compiler.
+a given compiler generator like YACC or Bison, then you know whether
+you can use that tool to get your job done, or whether you need to go
+to the much greater effort of "rolling your own" compiler.
 This sort of question comes up often enough in the working life of a
 practicing programmer that you want to know when a tool will solve
 your problem or not.
@@ -105,18 +105,19 @@ the following.
     * (((((((a + b) + c) ∗ d(e + f)))))
 
   How would you solve this?
-  What do they need to keep track of?
+  What do you need to keep track of?
 
   One issue is balanced parentheses.
   Can you just determine if there are the correct number of
-  parenthesis, and they are in the right order?
+  parenthesis, and that they are in the right order?
   ``(()(()))`` is good, but ``())(`` is not good.
   For this, a stack will work.
 
   But, can you can solve this simpler than that, without a stack?
   You can actually do this with one integer variable:
   add one for left paren, subtract one for right paren.
-  Start with 0, never go negative, and end with 0.
+  The requiremens are that the count starts at 0, never goes negative,
+  and ends with 0.
 
 * But, can you do it if if your machine had no additional memory other
   than the program itself?
@@ -125,8 +126,8 @@ the following.
   The answer is NO, you have to have memory to keep track of left
   versus right parenthesis.
   There is no way to solve this problem without extra memory.
-  We can't use the "state" trick, because there are an unlimited
-  number of possible "states".
+  We can't use the "state" trick mentioned above,
+  because there are an unlimited number of possible "states".
 
 * Could you solve this problem (without memory) if you were limited
   to look at expressions of length 12 or less?
@@ -135,7 +136,7 @@ the following.
   You could write a program to check each possible string.
   Note the alphabet would be finite, say N characters.
   How many possible strings are there to check?
-  :math:`N^10`, some which are valid, some which are not.
+  :math:`N^12`, some which are valid, some which are not.
   Your program would be brute force and incredibly
   huge and be of the form
   "If x is this string, then valid, else if x is this string, then not
@@ -174,7 +175,8 @@ the following.
   input will ever halt?
 
   The input is a java program and the output is whether or not the
-  program will halt. Ask them to tell you how that program would work?
+  program will halt.
+  How might such a program work?
 
   What constructs in a program make it difficult to determine
   if the program will halt or not?

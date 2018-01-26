@@ -24,6 +24,7 @@ Define a NFA as :math:`(Q, \Sigma, \delta, q_0, F)` where
 * :math:`q_0` is the initial state (:math:`q_0 \in Q`)
 * :math:`F \subseteq Q` is a set of final states
 * :math:`\delta: Q \times(\Sigma \cup \{\lambda\}) \rightarrow 2^Q`
+  (:math:`2^Q` here means the power set of :math:`Q`)
 
 The specific difference from a DFA is that, while the result of
 :math:`\delta` for the DFA is some state :math:`q \in Q`, the result of
@@ -32,6 +33,12 @@ The specific difference from a DFA is that, while the result of
 :term:`Non-deterministic` means that it allows choices.
 From a state on input :math:`b`, :math:`\delta` might include
 transitions to more than one state.
+
+| Other differences:
+|   We allow :math:`\lambda` transitions (a free
+    ride to another state).
+|   We allow transitions to a null subset of states.
+    Consider this as a failed path.
 
 **Example**:
 
@@ -45,8 +52,11 @@ transitions to more than one state.
    Example of NFA
 
 In this example, :math:`\delta(q_0, a) = \{q_1, q_2\}`.
-So, :math:`\delta` is no longer a function. 
+(So, :math:`\delta` is no longer meets the mathematical definition
+of a function!)
 
+Hopefully this one is easy to understand: We two disjoint paths,
+effectively giving us the union of two languages:
 :math:`L = \{aa\} \cup \{ab^nb \mid n \ge 0\}`.
 
 
@@ -62,16 +72,10 @@ So, :math:`\delta` is no longer a function.
    :alt: Second NFA
 
    Second Example of NFA
+   A simple "go this way or go the other way".
 
 **Definition**: :math:`q_j \in {\delta}^{*}(q_i,w)` if and only if
 there exists some walk from :math:`q_i` to :math:`q_j` labeled :math:`w`.
-
-.. note::
-
-   It does not matter that there are paths where :math:`w` can go
-   wrong.
-   What matters is that there is at least one way for :math:`w` to be
-   right.
 
 From previous example:
 
@@ -82,8 +86,24 @@ From previous example:
 **Definition**: For an NFA :math:`M`,
 :math:`L(M)= \{w \in {\Sigma}^{*} \mid \delta^{*}(q_0,w) \cap F \neq \emptyset \}`
 
-Why nondeterminism? It makes it easier to describe a FA.
+What does this mean?
+It means that the machine accepts all strings :math:`w` from the set
+of all possible strings (generated from the alphabet :math:`\Sigma`)
+such that the states reachable on :math:`w` from the start state
+(:math:`q_0`) is in the final state set.
 
+Note that it does not matter that there are paths where :math:`w` can go
+wrong.
+What matters is that there is at least one way for :math:`w` to be
+right.
+
+Why nondeterminism? It makes it easier to describe a FA.
+What does "easier" mean?
+It could mean easier to comprehend when looking at it.
+Or maybe easier for the developer to write it.
+Or maybe smaller (in terms of the number of states).
+Or maybe it is more efficient (but probably not because
+non-determinism can be expensive to simulate).
 From a performance point of view, to determine if a string is accepted
 can take a LONG time to try out all possibilities.
 But, all that we care about right now is existance, not performance.
@@ -106,7 +126,9 @@ Can this NFA be converted to a DFA?
 
 .. note::
 
-   Do this using JFLAP, explaining generally how to do the conversion.
+   Try this out using JFLAP.
+   JFLAP can convert a NFA to a DFA.
+
 
 .. topic:: Theorem and Proof
 
@@ -127,8 +149,12 @@ Can this NFA be converted to a DFA?
    **Algorithm to construct** :math:`M_D`
 
    #. Start state is :math:`\{q_0\} \cup \mathrm{closure}(q_0)`
+      (Note that "closure" of :math:`q_0` is a set of states defined as
+      :math:`q_0` plus all states reachable from :math:`q_0` by
+      :math:`\lambda` transitions.
 
    #. While can add an edge
+      (that is, while missing a transition from :math:`\delta_D`)
 
       a) Choose a state :math:`A = \{q_i, q_j, ..., q_k\}` with
          missing edge for :math:`a \in \Sigma` 
@@ -137,15 +163,13 @@ Can this NFA be converted to a DFA?
       c) Add state :math:`B` if it doesn't exist
       d) Add edge from :math:`A` to :math:`B` with label :math:`a`
 
-   #. Identify final states
+   #. Identify final states.
+
+      For a state in :math:`Q_D`, if any of its base :math:`Q_N`
+      states are final, then it is final.
+
    #. If :math:`\lambda \in L(M_N)`, then make the start state final.
 
-.. TODO::
-   :type: Question
-
-   What does closure(q) mean? Presumeably, the set of states reachable
-   from q with lambda transitions. Need to define, and maybe give a
-   more precises or distinguishable name.
 
 **Example**:
 
@@ -158,9 +182,17 @@ Can this NFA be converted to a DFA?
 
    Another NFA to convert
 
+Let's begin with the start state.
+Closure(:math:`q_0`) in :math:`M_N` is :math:`\{q_0, q_1, q_2\}`.
+So this is the start state.
+
+| Now, keep repeating the steps of the algorithm:
+|   While :math:`\delta_D` is not total, pick a missing transition and
+    deal with it.
+
 .. note::
 
-   Do this using JFLAP.
+   Do this conversion using JFLAP. You should get the following result.
 
 **Answer**:
 
@@ -183,92 +215,3 @@ Conclusion: NFA adds no new capability. So why bother with the idea?
 * We will see times when it is easier to see a conversion from
   something to a NFA,
   and we know that this can always be converted in turn to a DFA.
-
-
-Properties and Proving: Problem 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Consider the property Replace_one_a_with_b or R1awb for short.
-If :math:`L` is regular, prove that R1awb(:math:`L`) is regular. 
-
-The property R1awb applied to a language :math:`L` replaces one
-:math:`a` in each string with a :math:`b`.
-If a string does not have an :math:`a`, then the string is not in 
-R1awb(:math:`L`). 
-
-What does this mean? What are we trying to prove? 
-
-**Example 1**: Consider :math:`L = \{aaab, bbaa\}` 
-
-IS :math:`L` REGULAR? YES, you can apply the property. 
-
-:math:`\mathrm{R1awb}(L) = \{baab, abab, aabb, bbba, bbab\}`
-
-**Example 2**: Consider :math:`\Sigma=\{a, b\}`,
-:math:`L = \{w \in \Sigma^{*} \mid w \mathrm{\ has\ an\ even\ number\ of\ } a's \mathrm{\ and\ an\ even\ number\ of\ } b's \}`
-
-Is :math:`L` regular? YES, How do you know?
-We built a DFA for this language. 
-
-:math:`\mathrm{R1awb}(L) = \{w \in \Sigma^{*} \mid w \mathrm{\ has\ an\ odd\ number\ of\ } a's \mathrm{\ and\ an\ odd\ number\ of\ } b's\}` 
-
-Proof:
-
-.. odsafig:: Images/ch2prob1proof.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Problem 1 proof
-
-   Problem 1 proof
-
-
-Properties and Proving - Problem 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Consider the property Truncate_all_preceeding_b's or TruncPreb for
-short.
-If :math:`L` is regular, prove TruncPreb(:math:`L`) is regular. 
-
-The property TruncPreb applied to a language :math:`L` removes all
-preceeding b's in each string.
-If a string does not have an preceeding b,
-then the string is the same in TruncPreb(:math:`L`).
-
-What does this mean? What are we trying to prove? 
-
-**Example 1**: Consider :math:`L = \{aaab, bbaa\}`
-
-IS :math:`L` REGULAR? YES, you can apply the property. 
-
-:math:`\mathrm{TruncPreb}(L) = \{aaab, aa\}`
-
-**Example 2**: Consider :math:`L = \{(bba)^n \mid n > 0\}`
-
-Is :math:`L` regular? YES.
-How do you know? We built a DFA for this language. 
-
-.. note::
-
-   List out possible strings in the language 
-
-:math:`\mathrm{TruncPreb}(L)= \{a(bba)^n \mid n \ge 0\}` 
-
-**Proof**:
-
-.. odsafig:: Images/ch2prob2proof.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Problem 2 proof
-
-   Problem 2 proof
-
-Make a copy of the DFA.
-For each a arc in the first copy, remove it and 
-instead have the :math:`a` arc go to the corresponding destination
-below.
-
-For each :math:`b` arc in the first copy, change the :math:`b` to lambda.
