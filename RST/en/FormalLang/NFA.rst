@@ -142,8 +142,12 @@ Can this NFA be converted to a DFA?
 
    * :math:`Q_D = 2^{Q_N}` 
 
-   * :math:`F_D = \{Q\in Q_D | \exists q_i \in Q \mathrm{with} q_i \in F_N \}` 
-
+   * :math:`F_D = \{Q\in Q_D \mid \exists q_i \in Q \mathrm{with} q_i \in F_N \}`
+     
+     Interpretation: A state :math:`q_D` in :math:`M_D` is final if
+     **any** of the states from :math:`M_N` in the subset that
+     :math:`q_D` corresponds to is final.
+            
    * :math:`\delta_D : Q_D \times \Sigma \rightarrow Q_D`
 
    **Algorithm to construct** :math:`M_D`
@@ -170,7 +174,12 @@ Can this NFA be converted to a DFA?
 
    #. If :math:`\lambda \in L(M_N)`, then make the start state final.
 
-
+Intuition: Given a state in :math:`M_N` and a character, you can get
+to some subset of the states in :math:`M_N`.
+Consider **that** to be a state in :math:`M_D`.
+There are only so many subsets of the set of :math:`M_N` states:
+That would be members of the powerset of :math:`M_D` states.
+      
 **Example**:
 
 .. odsafig:: Images/NFA2DFA2a.png
@@ -189,6 +198,10 @@ So this is the start state.
 | Now, keep repeating the steps of the algorithm:
 |   While :math:`\delta_D` is not total, pick a missing transition and
     deal with it.
+
+For example: From :math:`M_D` state :math:`q_0,q_1,q_2`, determine the
+subset of states that can be reached from any of those states on
+letter :math:`a`. This would be the subset :math:`q_3,q_4`.
 
 .. note::
 

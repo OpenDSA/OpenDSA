@@ -78,7 +78,8 @@
     },
     "Deterministic Finite Acceptors": {
       "FormalLang/DFA": {},
-      "FormalLang/NFA": {}
+      "FormalLang/NFA": {},
+      "FormalLang/Minimization": {}
     },
     "Appendix": {
       "Glossary": {},
