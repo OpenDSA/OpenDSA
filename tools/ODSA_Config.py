@@ -329,7 +329,7 @@ def set_defaults(conf_data):
         conf_data['theme_dir'] = '%sRST/_themes' % odsa_dir
         
     if 'narration_enabled' not in conf_data:
-        conf_data['narration_enabled'] = False
+        conf_data['narration_enabled'] = True
 
     conf_data['av_origin'] = ''
     conf_data['av_root_dir'] = odsa_dir
