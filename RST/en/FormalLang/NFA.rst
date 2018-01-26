@@ -218,6 +218,12 @@ letter :math:`a`. This would be the subset :math:`q_3,q_4`.
 
    Converted DFA
 
+.. TODO::
+   :type: Slideshow
+
+   Replace the images above with a slideshow that presents first the
+   NFA, and then shows, step-by-step, the process of building the DFA.
+
 Conclusion: NFA adds no new capability. So why bother with the idea?
 
 * First, it wasn't obvious that they are the same. NFA is a useful

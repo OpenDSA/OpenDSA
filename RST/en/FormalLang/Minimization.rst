@@ -102,6 +102,12 @@ character against the states in that subset to see if they all go to
 the same subset.
 Split them up when they do not go to the same place.
    
+.. TODO::
+   :type: Slideshow
+
+   Replace the images above with a slideshow that presents,
+   step-by-step, the process of minimizing the DFA. 
+
 **Example**:
 
 .. odsafig:: Images/stmindfa2s.png
