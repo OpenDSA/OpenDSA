@@ -70,6 +70,9 @@
       "FLSlides/NFA": {},
       "FLSlides/Minimization": {}
     },
+    "Week 3": {
+      "FLSlides/RegEx": {}
+    },    
     "Other": {
       "FLSlides/DFAprops": {}
     }

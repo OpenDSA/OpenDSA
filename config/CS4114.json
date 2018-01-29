@@ -81,6 +81,9 @@
       "FormalLang/NFA": {},
       "FormalLang/Minimization": {}
     },
+    "Regular Languages, Regular Expressions, Regular Grammars": {
+      "FormalLang/RegEx": {}
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}

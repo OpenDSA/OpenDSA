@@ -21,29 +21,21 @@ a language.
 There are three operators that can be used:
 
 * :math:`+` union (or)
-* :math:`\circ` concatenation (AND)
+* :math:`\cdot` concatenation (AND)
 * :math:`*` star-closure (repeat 0 or more times)
 
-.. TODO::
+We often omit showing the :math:`\cdot` for concatenation.
+  
+| Example:
+|   :math:`(a + b)^* \cdot a \cdot (a + b)^* = (a + b)^*a(a + b)^*`
+|   What language is this? 
+    All strings from :math:`\{a, b\}^*` that contain at least one
+    :math:`a`.
 
-   Is this true?: The AND operator is not strictly necessary, in that it is
-   possible to define all regular expressions without it.
-   What did Susan mean by saying that AND can be omitted?
-
-Example:
-
-   :math:`(a + b)^* \circ a \circ (a + b)^* = (a + b)^*a(a + b)^*`
-
-   .. note::
-
-      Strings over :math:`\Sigma^*` that contain at least one
-      :math:`a`.
-
-   :math:`(aa)*`
-
-   .. note::
-
-      Strings with an even number of :math:`a` 's
+| Example: 
+|   :math:`(aa)*`
+|   What language is this?
+    Strings of :math:`a` 's with an even number of :math:`a` 's
 
 **Definition:** Given :math:`\Sigma`,
 
@@ -67,7 +59,7 @@ Example:
 #. If :math:`r` and :math:`s` are R.E. then
 
    * :math:`L(r + s) = L(r) \cup L(s)`
-   * :math:`L(r s) = L(r) \circ L(s)`
+   * :math:`L(r s) = L(r) \cdot L(s)`
    * :math:`L((r)) = L(r)`
    * :math:`L((r)^*) = (L(r)^*)`
 
@@ -76,7 +68,7 @@ Precedence Rules
 ~~~~~~~~~~~~~~~~
 
 * :math:`*` highest
-* :math:`\circ`
+* :math:`\cdot`
 * :math:`+` lowest
 
 Example: :math:`ab^* + c = (a(b)^*) + c`
@@ -108,41 +100,24 @@ Examples
 Regular Expressions vs. Regular Languages
 -----------------------------------------
 
-.. note::
+Recall that we **define** the term :term:`regular language` to mean
+the languages that are recognized by a DFA.
+(Which is the same as the languages recognized by an NFA.)
+How do regular expressions relate to these?
 
-   Explain the picture NFA -> DFA -> min DFA, how do R.E. and NFA
-   relate?
+We can easily see NFAs for :math:`\emptyset`, :math:`\lambda`, and
+:math:`a \in \Sigma` (see Linz Figure 3.1).
+But what about the "more interesting" regular expressions?
+And, can any regular language be described by a regular expression?
 
-.. TODO::
-
-   Show pictures of some R.E.s that are accepted by NFAs.
-
-**Theorem:** Let :math:`r` be a R.E. Then :math:`\exists` NFA
-:math:`M` such that :math:`L(M) = L(r)`.
+**Theorem:** Let :math:`r` be a R.E.
+Then :math:`\exists` NFA :math:`M` such that :math:`L(M) = L(r)`.
 
 **Proof:** By simple simulation/construction. (This is a standard
 approach to proving such things!)
 
-   :math:`\emptyset`
-
-   .. note::
-
-      Draw a picture of a NFA with start state and final state and no
-      arcs. There is no way to get to the end state, so nothing is in
-      the language. [Linz 3.1(a)]
-      
-   :math:`\{\lambda\}`
-
-   .. note::
-
-      Draw a picture of an NFA that accepts :math:`\lambda`.
-      [Linz 3.1(b)]
-         
-   :math:`\{a\}`
-         
-   .. note::
-
-      Draw a picture of an NFA that accepts :math:`a`. [Linz 3.1(c)]
+   We aleady know that we can easily do :math:`\emptyset`, 
+   :math:`\{\lambda\}`, and :math:`\{a\}` for :math:`a \in \Sigma`.
 
    Suppose that :math:`r` and :math:`s` are R.E. (By induction...)
    That means that there is an NFA for :math:`r` and an NFA for
@@ -151,7 +126,7 @@ approach to proving such things!)
       #. :math:`r + s`. Simply add a new start state and a new final
          state, each connected (in parallel) with :math:`\lambda`
          transitions to both :math:`r` and :math:`s`. [Linz 3.3]
-      #. :math:`r \circ s`. Add new start state and new final state,
+      #. :math:`r \cdot s`. Add new start state and new final state,
          and connect them with :math:`\lambda` transitions in series.
          [Linz 3.4]
       #. :math:`r^*`. Add new start and final states, along with
@@ -204,7 +179,7 @@ that :math:`L = L(M)`.
 
 #. Convert :math:`M` to a complete GTG.
 
-   Let :math:`r_{ij}` stand for the lable of the edge from :math:`q_i`
+   Let :math:`r_{ij}` stand for the label of the edge from :math:`q_i`
    to :math:`q_j`.
 
 #. If the GTG has only two states, then it has this form:
