@@ -101,7 +101,7 @@ td {
 #container {
 	width: 800px;
 	height: 800px;
-	overflow: scroll;
+	overflow-y: auto;
 }
 .jsavcanvas {
 	overflow-x: initial;

@@ -444,6 +444,24 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		jsav.umsg('Click on an input to trace its traversal.');
 	};
 
+
+	//-----------------------------------------------------------------------------------------------
+
+	// Traverse over input strings. Called upon clicking "Traverse".
+    traverseInput = function() {
+        // Create an array of input strings from the text fields in the prompt box.
+        var values = [];
+        var x = document.getElementsByClassName('newinput');
+        for (var i = 0; i < x.length; i++) {
+            values.push(x[i].value);
+        }
+        // Call the traverse function on the array, then exit out of the prompt box.
+        traverseInputs(values);
+        //terminate();
+    }
+    //------------------------------------------------------------------------------------------------
+
+
 	// Presents the custom prompt box for traversal input strings.
 	// Check the graph for the initial state. If there isn't one, an error is returned.
 	// Triggered by clicking the "Traverse" button.
@@ -510,7 +528,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	var play = function (inputString) {
 		localStorage['graph'] = serialize(g);
 		localStorage['traversal'] = inputString;
-		window.open("./FATraversal.html");
+		window.open("./FATraversal.html", "popupWindow", "width=800, height=800, scrollbars=yes");
 	};
 
 	// Save the graph and switch to shorthand mode, in which sequences of input symbols on an edge are acceptable.

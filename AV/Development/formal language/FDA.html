@@ -20,8 +20,19 @@
 
   <body id="bd">
     <div id="container">
-      <h1 id="editor">Finite Automaton Editor</h1>
-			<button id="helpButton"><img src="./help.png" /></button>
+      <!-- <h1 id="editor">Finite Automaton Editor</h1>
+			<button id="helpButton"><img src="./help.png" /></button> -->
+
+      <table class="headerTable" style="font-size: 12px; border-style: hidden;">
+        <tr>
+          <td class="headerLeft" style="border:hidden;"></td>
+          <td class="headerCenter avTitle"> Finite Automaton Editor</td>
+          <td class="headerRight" style="border:hidden;">
+            <button id="helpButton"><img src="./help.png" /></button>
+          </td>
+        </tr>
+      </table>
+
       <div id="dialogueoverlay"></div>
       <div id="dialoguebox">
         <div>
@@ -47,17 +58,51 @@
 				</div>
 			</div>
       <p align="center" class="arrayPlace"></p>
-      <button class="functionality" id="begin">Traverse</button>
-      <button class="functionality" id="saveButton">Save</button>
-      <button class="createExercise" id="finish">Finish</button>
-      <input type="file" id="loadFile">
-      <div id="av">
+
+      <br>
+
+      <table class="headerTable" style="font-size: 12px; border-style: hidden;">
+        <tr>
+          <td class="headerLeft" style="border:hidden;">
+            <button class="functionality" id="saveButton">Save</button>
+            <button class="createExercise" id="finish">Finish</button>
+            <input type="file" id="loadFile">
+          </td>
+          <td class="headerCenter"></td>
+          <td class="headerRight" style="border:hidden;">
+              <button id="undoButton">Undo</button>
+              <button id="redoButton">Redo</button>
+              <button id="cancelButton">Cancel</button>
+          </td>
+        </tr>
+      </table>
+      
+      <br>
+
+      <table class="headerTable" style="font-size: 12px; border-style: hidden;">
+        <tr>
+          <td class="headerLeft" style="border:hidden;">
+              <button id="nodeButton">Add Nodes</button>
+              <button id="edgeButton">Add Edges</button>
+          </td>
+          <td class="headerCenter" style="border:hidden;"></td>
+          <td class="headerRight">
+            <input class="newinput" id="first">
+            <button class="functionality" onclick="traverseInput()">Traverse</button>
+          </td>
+        </tr>
+      </table>
+
+      <!-- <div id="av">
       	<button id="undoButton">Undo</button>
         <button id="redoButton">Redo</button>
         <button id="cancelButton">Cancel</button>
         <br>
         <button id="nodeButton">Add Nodes</button>
         <button id="edgeButton">Add Edges</button>
+        <p class="jsavoutput jsavline"></p>
+      </div> -->
+      <div id="av">
         <p class="jsavoutput jsavline"></p>
       </div>
       <div id='download'></div>
