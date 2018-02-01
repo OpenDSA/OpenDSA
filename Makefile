@@ -94,6 +94,9 @@ min: nomin
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
+TestIvan: min
+	python $(CONFIG_SCRIPT) config/TestIvan.json --no-lms
+
 simple_demo: min
 	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
 

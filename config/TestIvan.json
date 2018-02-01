@@ -1,10 +1,16 @@
 {
-  "title": "CS4114 Coursenotes",
-  "desc": "CS4114 Coursenotes",
+  "title": "Test",
+  "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "lang": "en",
   "code_lang": {
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
     "Java": {
       "ext": [
         "java"
@@ -19,13 +25,6 @@
       "label": "Processing",
       "lang": "java"
     },
-    "Java_Generic": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java (Generic)",
-      "lang": "java"
-    },
     "C++": {
       "ext": [
         "cpp",
@@ -35,10 +34,15 @@
       "lang": "C++"
     }
   },
-  "tabbed_codeinc": false,
+  "lang": "en",
   "build_JSAV": false,
-  "suppress_todo": false,
-  "glob_exer_options": {},
+  "build_cmap": false,
+  "suppress_todo": true,
+  "dispModComp": true,
+  "tag": "CPP;CS2",
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
   "glob_ss_options": {
     "threshold": 1.0, 
     "points": 0.0, 
@@ -61,22 +65,13 @@
     "required": true
   }, 
   "chapters": {
-    "Week 1": {
-      "FLSlides/FLIntro": {},
-      "FLSlides/FLConcepts": {},
-      "FLSlides/DFA": {}
-    },
-    "Week 2": {
-      "FLSlides/NFA": {},
-      "FLSlides/Minimization": {}
-    },
-    "Week 3": {
-      "FLSlides/RegEx": {},
-      "FLSlides/RegGram": {},
-      "FLSlides/RegClosure": {}
-    },    
-    "Other": {
-      "FLSlides/DFAprops": {}
+    "Programming": {
+      "Searching/BinarySearch": {},
+      "Spatial/PRquadtree": {}
+    }, 
+    "Appendix": {
+      "Glossary": {},
+      "Bibliography": {}
     }
   }
 }
