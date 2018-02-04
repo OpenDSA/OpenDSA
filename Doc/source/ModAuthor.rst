@@ -140,14 +140,15 @@ should match the subdirectory name within the ``SourceCode`` directory
 for that language.
 
 
-Creating Course Notes
----------------------
+Creating Classroom Presentation Slides
+--------------------------------------
+
 OpenDSA uses `hieroglyph <https://github.com/nyergler/hieroglyph/>`_ a Sphinx 
-extension to build HTML slides.
+extension to build an HTML-based slideshow.
 
 The course notes infrastructures is similar to eTextBook creation, and uses
-``OpenDSA/Makefile``. The only difference is the ``s`` option for slides
-when calling the configuration, for example ``python tools/configure.py s config/OpenDSA.json``.
+``OpenDSA/Makefile``. The only difference is the ``-s`` option for slides
+when calling the configuration, for example ``python tools/configure.py -s config/OpenDSA.json``.
 
 
 Internationalization Support

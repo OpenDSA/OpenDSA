@@ -97,8 +97,8 @@ Test: min
 TestIvan: min
 	python $(CONFIG_SCRIPT) config/TestIvan.json --no-lms
 
-simple_demo: min
-	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
+SimpleDemo: min
+	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
 
 CT: min
 	python $(CONFIG_SCRIPT) config/CT.json --no-lms
