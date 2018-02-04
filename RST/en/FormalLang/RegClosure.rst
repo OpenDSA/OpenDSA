@@ -9,22 +9,14 @@
    :satisfies:
    :topic: Finite Automata
 
-Properties of Regular Grammars
-==============================
+Closure Properties of Regular Grammars
+======================================
 
-Properties of Regular Grammars
-------------------------------
+Closure Properties of Regular Grammars
+--------------------------------------
 
-.. topic:: Example
-
-   :math:`L = \{a^nba^n \mid n>0\}`
-
-   Is language :math:`L` regular?
-   Can you draw a DFA, regular expression, or Regular grammar for this
-   language?
-
-Closure Properties
-~~~~~~~~~~~~~~~~~~
+Closure Concept
+~~~~~~~~~~~~~~~
 
 **Definition:** A set is :term:`closed` over a (binary) operation if,
 whenever the operation is applied to two members of the set, the
@@ -36,8 +28,8 @@ result is a member of the set.
 
    Is :math:`L` is closed under the following?
 
-   * addition? Yes. [How do you know?]
-   * multiplication? Yes. [How do you know?]
+   * addition? Yes. [How do you know? Need a proof.]
+   * multiplication? Yes. [How do you know? Need a proof.]
    * subtraction? No. :math:`6 - 10 = -4`. [Now you know!]
    * division? No. :math:`4 / 4 = 1`. [Now you know!]
 
@@ -49,7 +41,7 @@ Consider regular languages :math:`L_1` and :math:`L_2`.
 In other words, :math:`\exists` regular expressions :math:`r_1` and
 :math:`r_2` such that :math:`L_1 = L(r_1)` and :math:`L_2 = L(r_2)`.
 
-These we already know:
+These we already know: [Ask yourself: Why do we know this?]
 
 * :math:`r_1 + r_2` is a regular expression denoting :math:`L_1 \cup L_2`
   So, regular languages are closed under union.
@@ -71,9 +63,18 @@ These we already know:
   under complementation.
 
 .. note::
-   Why a DFA, will an NFA work? Must be NFA with trap states. 
+   Why a DFA, will an NFA work? With difficulty: It must be a complete
+   NFA with trap states added.
 
 **Proof:** Regular languages are closed under intersection.
+
+One simple way to prove this is using DeMorgan's Law:
+
+.. math::
+
+   L_1 \cap L_2 = \overline{\overline{L_1} \cup \overline{L_2}}
+
+Here is another approach by construction.
 
 | :math:`L_1` and :math:`L_2` are regular languages :math:`\Rightarrow \exists` DFAs
   :math:`M_1` and :math:`M_2` such that :math:`L_1 = L(M_1)` and :math:`L_2 = L(M_2)`.
@@ -121,6 +122,8 @@ Regular languages are closed under these operations
 
 Definition:
 :math:`L_1 \backslash L_2 = \{x | xy \in L_1\ \mbox{for some}\ y \in L_2\}`
+
+In other words, it is prefixs of appropriate strings in :math:`L_1`.
 
 .. topic:: Example
 
@@ -188,8 +191,11 @@ Questions about regular languages
 
      Perform depth first search. 
 
-* Is :math:`L` infinite?
+  This was easy! But we will see that in other contexts that
+  complement is not so simple to decide.
 
+
+* Is :math:`L` infinite?
 
   Construct a FA. Determine if any of the vertices on a path from 
   the start state to a final state are the base of some cycle.
@@ -199,6 +205,10 @@ Questions about regular languages
 
   Construct :math:`L_3 = (L_1 \cap \bar{L_2}) \cup (\bar{L_1} \cap L_2)`.
   If :math:`L_3 = \emptyset`, then :math:`L_1 = L_2`. 
+
+  Again, in other contexts, this is impossible.
+  For example, we will prove that its not possible to decide, in
+  general, if two programs do the same thing.
 
 
 Identifying Nonregular Languages

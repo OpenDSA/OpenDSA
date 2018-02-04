@@ -112,7 +112,7 @@ Regular Grammars
    grammar G such that :math:`L = L(G)`.
 
 
-.. slide:: Proof: Can make NFA from Regular Grammar
+.. slide:: Proof: NFA from Regular Grammar
 
    **Theorem:** L is a regular language iff :math:`\exists` regular
    grammar G such that :math:`L = L(G)`.
@@ -189,3 +189,12 @@ Regular Grammars
    |    :math:`P =`
    |      :math:`Q0 \rightarrow a Q1`
    |      :math:`Q1 \rightarrow a Q0 | b Q1 | \lambda`
+
+
+.. slide:: Something to Think About
+
+   :math:`L = \{a^nb^n \mid n>0\}`
+
+   Is language :math:`L` regular?
+   Can you draw a DFA, regular expression, or Regular grammar for this
+   language?

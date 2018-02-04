@@ -82,7 +82,9 @@
       "FormalLang/Minimization": {}
     },
     "Regular Languages, Regular Expressions, Regular Grammars": {
-      "FormalLang/RegEx": {}
+      "FormalLang/RegEx": {},
+      "FormalLang/RegGrammar": {},
+      "FormalLang/RegClosure": {}
     },
     "Appendix": {
       "Glossary": {},

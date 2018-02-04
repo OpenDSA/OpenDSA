@@ -16,15 +16,6 @@
 Closure Properties of Regular Languages
 =======================================
 
-.. slide:: Something to Think About
-
-   :math:`L = \{a^nb^n \mid n>0\}`
-
-   Is language :math:`L` regular?
-   Can you draw a DFA, regular expression, or Regular grammar for this
-   language?
-
-
 .. slide:: Closure Properties
 
    **Definition:** A set is *closed* over a (binary) operation if,

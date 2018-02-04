@@ -31,7 +31,7 @@ Grammar :math:`G = (V, T, S, P)`
 
 :math:`V`, :math:`T`, and :math:`P` are finite sets.
 
-**Right-linear grammar:**
+:term:`Right-linear grammar`:
 
 .. math::
    
@@ -44,7 +44,7 @@ Grammar :math:`G = (V, T, S, P)`
 
 Note: :math:`x` is a string of length 0 or more.
 
-**Left-linear grammar:**
+:term:`Left-linear grammar`:
 
 .. math::
    
@@ -57,7 +57,7 @@ Note: :math:`x` is a string of length 0 or more.
 
 **Definition:**
 
-A regular grammar is a right-linear or left-linear grammar.
+A :term:`regular grammar` is a right-linear or left-linear grammar.
 
 .. note::
 
@@ -76,7 +76,10 @@ A regular grammar is a right-linear or left-linear grammar.
       &&S \rightarrow Sab \\
       \end{eqnarray*}
 
-   Cannot mix left/right rules! This is not a regular grammar.
+   The language is :math:`(ab)*`.
+   
+   However, cannot mix left/right rules!
+   So this is not a regular grammar.
       
 .. topic:: Example
 
@@ -92,129 +95,34 @@ A regular grammar is a right-linear or left-linear grammar.
    This is a right linear grammar representing the language
    :math:`L = \{ \mbox{strings with an even number of a's}\}, \Sigma = \{a,b\}`
 
-**Goal:**
+Our Next Step
+~~~~~~~~~~~~~
 
-|  Before:
-|      definition   DFA represents regular language
-|      theorem      RE :math:`\Longleftrightarrow` DFA
-|  Goal:
-|      theorem      DFA :math:`\Longleftrightarrow` regular grammar
+|  What we have already done:
+|      Definition: DFA represents regular language
+|      Theorem: NFA :math:`\Longleftrightarrow` DFA
+|      Theorem: RE :math:`\Longleftrightarrow` NFA
+|  What we will do next:
+|      Theorem: DFA :math:`\Longleftrightarrow` regular grammar
 
-**Theorem:** L is a regular language iff :math:`\exists` regular
+
+NFA from Regular Grammar
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Theorem:** L is a regular language if and only if :math:`\exists` regular
 grammar G such that :math:`L = L(G)`.
 
-Outline of proof:
-
-|  (:math:`\Longleftarrow`) Given a regular grammar G
-|      Construct NFA M
-|      Show :math:`L(G)=L(M)`
-|      Show :math:`w \in L(G) \Longrightarrow w \in L(M)`
-|      Show :math:`w \in L(M) \Longrightarrow w \in L(G)`
-|      NFA :math:`\rightarrow` DFA :math:`\rightarrow` regular language
-|  (:math:`\Longrightarrow`) Given a regular language
-|      :math:`\exists` DFA M such that :math:`L=L(M)`
-|      Construct regular grammar G
-|      Show  :math:`L(G) = L(M)`
-|      Show :math:`w \in L(G) \Longrightarrow w \in L(M)`
-|      Show :math:`w \in L(M) \Longrightarrow w \in L(G)`
-
-**Proof of Theorem:**
-
-|  (:math:`\Longleftarrow`) Given a regular grammar G
-|    :math:`G = (V,T,S,P)`
-|      :math:`V= \{V_0,V_1,\ldots , V_y \}`
-|      :math:`T = \{v_o,v_1,\ldots, v_z\}`
-|      :math:`S = V_0`
-|    Assume :math:`G` is right-linear
-|      (see book for left-linear case).
-|    Construct NFA :math:`M` such that :math:`L(G) = L(M)`
-|    If :math:`w \in L(G), w = v_1v_2\ldots v_k`
-|      Derivation:
-
-.. math::
-   
-   \begin{eqnarray*}
-     V_0 &\Rightarrow& v_1V_i\\ 
-         &\Rightarrow& v_1v_2V_j\\ 
-         &\stackrel{*}{\Rightarrow}& v_1v_2\ldots v_{k-1}V_n\\ 
-         &\Rightarrow& v_1v_2\ldots v_{k-1}v_k\\ 
-     \end{eqnarray*}
-         
-|    Process string the same way in NFA
-
-.. odsafig:: Images/lt1string1.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: lt1string1
-
-|    :math:`M = (V\cup\{V_f\},T,\delta,V_0,\{V_f\})`
-|  NOTE: :math:`M = (Q,\Sigma,\delta,q_0,F)`
-|      :math:`V_0` is the start (initial) state
-|  NOTE: only consider productions with one terminal
-|      For each production, :math:`V_i \rightarrow aV_j`
-|        :math:`\delta(V_i, a) = V_j`
-
-.. odsafig:: Images/lt1string2.png
-   :width: 150
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: lt1string2
-
-|      For each production, :math:`V_i \rightarrow a`
-|        :math:`\delta(V_i, a) = V_f` in :math:`F`
-
-.. odsafig:: Images/lt1string3.png
-   :width: 150
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: lt1string3
-
-|  Show :math:`L(G) = L(M)`
-|    Show :math:`w \in L(G) \Longrightarrow w \in L(M)`
-|      By construction there is a path in the NFA :math:`M`
-|    Show :math:`w \in L(M) \Longrightarrow w \in L(G)`
-|      Must pass thru a sequence of states, start at :math:`V_0`,
-|        and end at a final state between any two states represents
-|        a production in grammar so there must be a derivation of :math:`w`
-|    NFA :math:`\rightarrow` DFA :math:`\rightarrow` regular language
-|    Thus, given regular grammar :math:`G`, :math:`L(G)` is regular.
-
-BREAK FOR EXAMPLE BELOW
-
-| (:math:`\Longrightarrow`) Given a regular language L
-|   :math:`\exists` DFA :math:`M` such that :math:`L = L(M)`
-|     :math:`M = (Q,\Sigma,\delta,q_0,F)`
-|     :math:`Q = \{q_0,q_1,\ldots,q_n\}`
-|     :math:`\Sigma = \{a_1,a_2,\ldots,a_m\}`
-|   Construct regular grammar :math:`G` such that :math:`L(G) = L(M)`
-|     :math:`G = (Q,\Sigma,q_0,P)`
-|     NOTE: :math:`G =(V,T,P,S)`
-|     If :math:`\delta(q_i,a_j) = q_k` then
-|       :math:`q_i \rightarrow a_jq_k \in P`
-|     If :math:`q_k\in F` then
-|       :math:`q_k \rightarrow \lambda\in P`
-|   Show :math:`w \in L(M) \Longleftrightarrow w \in L(G)`
-|   Show :math:`w \in L(M) \Longrightarrow w \in L(G)`
-|     then there is a path from :math:`q_0` to some final state
-|     so there is a derivation of :math:`w` in :math:`G`.
-|   Show :math:`w \in L(G) \Longrightarrow w \in L(M)`
-|     there is a derivation of :math:`G`, start at :math:`q_0`
-|     and end at a final state (since end by rule with no variables on
-|     right hand side). Thus, there must be a path in :math:`M` to final state.
-|   Thus, :math:`L(G) =L(M)`.
-| QED.
-
+   | (Doing here for RR grammar, see book for proof sketch for LR
+     grammar.)
+   | (:math:`\Longleftarrow`) Given a regular grammar G, 
+     Construct NFA M such that :math:`L(G)=L(M)`
+   | Make a state for each non-terminal.
+   | Make a transition on each terminal in that production rule.
+   | Make it final if there is a production without non-terminals.
+   | For rules with multiple terminals, need intermediate states.
 
 .. topic:: Example
 
-   | Construct the NFA for the following :math:`G`. 
-   |
-   |   :math:`G =(\{S,B\},\{a,b\},S,P)`,
-   |     :math:`P =`
    |       :math:`S \rightarrow aB | bS | \lambda`
    |       :math:`B \rightarrow aS | bB`
    |
@@ -228,7 +136,29 @@ BREAK FOR EXAMPLE BELOW
       :figwidth: 90%
       :alt: strgtonfa
 
-.. topic:: Example
+   What about a rule like :math:`S \rightarrow abB`?
+   Make two states (S to intermediate state on a, then intermediate
+   state to B on b).
+
+   Or :math:`S \rightarrow ab`?
+   Make two states (S to intermediate state on a, then intermediate
+   state to an accepting state on B.
+
+
+
+Right-linear Regular Grammar from DFA
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   **Theorem:** L is a regular language iff :math:`\exists` regular
+   grammar G such that :math:`L = L(G)`.
+
+   (:math:`\Longrightarrow`) Given a DFA :math:`M`,
+   construct regular grammar :math:`G` such that :math:`L(G)=L(M)`
+
+   | The process is pretty much the same as when we made an NFA from
+     RRG:
+   |    Each DFA state gets a non-terminal.
+   |    Each transition gets a production rule.
 
    Construct the Regular Grammar for the NFA
 
@@ -241,5 +171,25 @@ BREAK FOR EXAMPLE BELOW
 
    |  :math:`G = (\{S,B\},\{a,b\},S,P)`,
    |    :math:`P =`
-   |      :math:`q0 \rightarrow a q1`
-   |      :math:`q1 \rightarrow a q0 | b q1 | \lambda`
+   |      :math:`Q0 \rightarrow a Q1`
+   |      :math:`Q1 \rightarrow a Q0 | b Q1 | \lambda`
+
+
+Something to Think About
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. topic:: Example
+   
+   :math:`L = \{a^nb^n \mid n>0\}`
+
+   Is language :math:`L` regular?
+   Can you draw a DFA, regular expression, or Regular grammar for this
+   language?
+
+   Consider this grammar:
+
+   :math:`S \rightarrow aSb \mid ab`
+
+   Nice and easy... but this grammar is not regular!
+
+   We will come back to this question later.

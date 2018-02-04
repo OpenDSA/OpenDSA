@@ -81,13 +81,13 @@
       "FormalLang/NFA": {},
       "FormalLang/Minimization": {}
     },
-    "Regular Expressions (Lecture 5)": {
+    "Regular Languages (Lectures 5, 6)": {
       "FormalLang/RegEx": {},
-      "FormalLang/RegGrammar": {}
+      "FormalLang/RegGrammar": {},
+      "FormalLang/RegClosure": {}
     },
     "Properties of Regular Grammars (Lectures 7, 8)": {
-      "FormalLang/DFAproperties": {},
-      "FormalLang/RegProp": {}
+      "FormalLang/DFAproperties": {}
     },
     "Pushdown Automata": {
       "FormalLang/PDA": {},
