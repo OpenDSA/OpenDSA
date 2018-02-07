@@ -64,10 +64,11 @@
     "points": 2.0, 
     "required": true
   }, 
-  "chapters": {
+    "chapters": {
     "Programming": {
       "Searching/BinarySearch": {},
-      "Spatial/PRquadtree": {}
+      "Graph/GraphIntro1": {}
+
     }, 
     "Appendix": {
       "Glossary": {},
