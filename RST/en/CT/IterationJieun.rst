@@ -39,4 +39,12 @@ List Iteration
    :scripts: AV/CT/iteration3CON.js
    :output: show
 
+.. inlineav:: iteration5CON ss
+   :long_name: Iteration 5
+   :links: AV/CT/iterationCON.css
+   :scripts: AV/CT/iteration5CON.js
+   :output: show
+
+
+
 .. avembed:: Exercises/CT/IterationEX1PRO.html ka
