@@ -86,7 +86,8 @@
       "FormalLang/RegGrammar": {},
       "FormalLang/RegClosure": {}
     },
-    "Properties of Regular Grammars (Lectures 7, 8)": {
+    "Identifying Non-regular Languages (Lecture 7)": {
+      "FormalLang/NonRegular": {},
       "FormalLang/DFAproperties": {}
     },
     "Pushdown Automata": {
