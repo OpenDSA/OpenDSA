@@ -40,29 +40,40 @@ $(document).ready(function() {
 
   //floor 3 and the JSAV array contains arrValues
   var top4 = top3 + 25;
-  av.g.rect(rect_left, top4, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
-  av.g.rect(rect_left + 73, top4, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
+  av.g.rect(rect_left, top4, 30, 62, 10).addClass("purplebox").css({opacity: 0.9});
+  av.g.rect(rect_left + 73, top4, 30, 62, 10).addClass("purplebox").css({opacity: 0.9});
 
   // floor 3, JSAV array
-  var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: top4 - 2, position: "absolute"});
+  var top4_array = top3 + 19;
+  var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: top4_array, position: "absolute"});
 
   //floor 4, long purple
-  var top5 = top4 + 60;
+  var top5 = top4 + 49;
   av.g.rect(rect_left, top5, 300, 30, 10).addClass("purplebox");
 
-  // //floor 5, left big purple box
-  // av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("purplebox");
-  // av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("purplebox");
-  //
-  // //mid blue/calculate boxes ( and "set total = ..." blue box )
-  // var midblue1 = av.g.rect(rect_left + 130, rect_top + 120, 130, 66, 10).addClass("bluebox");
-  // var midblue2 = av.g.rect(rect_left + 220, rect_top + 139, 20, 32, 15).addClass("calbox");
-  // var midblue3 = av.g.rect(rect_left + 240, rect_top + 120, 120, 66, 10).addClass("calbox");
-  //
-  // // last purple floor
-  // av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("purplebox");
+  //floor 5, left big purple box
+  var top6 = top5 + 30;
+  av.g.rect(rect_left, top5, 110, 170, 10).addClass("purplebox");
+  av.g.rect(rect_left, top5, 50, 15).addClass("purplebox");
 
-  // var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
+  //mid blue/calculate boxes 1 ( and "set total = ..." blue box )
+  var top7 = top5 + 40;
+  var midblue1 = av.g.rect(rect_left + 130, top7, 100, 33, 10).addClass("bluebox");
+  var midblue2 = av.g.rect(rect_left + 190, top7 + 8, 20, 15, 15).addClass("calbox");
+  var midblue3 = av.g.rect(rect_left + 210, top7, 90, 33, 10).addClass("calbox");
+
+  //mid blue/calculate boxes 2 ( and "set total = ..." blue box )
+  var top8 = top7 + 40;
+  var midblue1 = av.g.rect(rect_left + 130, top8, 100, 33, 10).addClass("bluebox");
+  var midblue2 = av.g.rect(rect_left + 190, top8 + 8, 20, 15, 15).addClass("calbox");
+  var midblue3 = av.g.rect(rect_left + 210, top8, 90, 33, 10).addClass("calbox");
+
+  // last purple floor
+  var top9 = top6 + 90;
+  av.g.rect(rect_left + 90, top9, 240, 50, 10).addClass("purplebox");
+
+  var top10 = top9 + 57;
+  var botblue = av.g.rect(rect_left, top10, 280, 35, 10).addClass("bluebox");
   //
 
 // ------------------ labels ------------------------
