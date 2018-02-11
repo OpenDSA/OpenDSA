@@ -61,8 +61,8 @@ where :math:`A \in V` and :math:`x \in (V \cup T)^*`.
 
       We have seen this before! Its not regular!
       
-   **Definition:** Linear grammar has at most one variable on rhs of
-   any production.
+   **Definition:** A linear grammar has at most one variable on the
+   right hand side of any production.
    Thus, right linear and left linear grammars are also linear grammars. 
 
    So, this is a linear grammar. 

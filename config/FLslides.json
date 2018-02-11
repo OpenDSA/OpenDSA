@@ -76,7 +76,8 @@
       "FLSlides/RegClosure": {}
     },    
     "Week 4": {
-      "FLSlides/NonRegular": {}
+      "FLSlides/NonRegular": {},
+      "FLSlides/CFL": {}
     }
   }
 }
