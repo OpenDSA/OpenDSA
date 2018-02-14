@@ -40,10 +40,10 @@ button, input[type="file"] {
 	border-radius: 3px;
 }
 
-#begin {
+/*#begin {
 	background-color: #000033;
 	color: white;
-}
+}*/
 
 .correct {
 	background-color: green;

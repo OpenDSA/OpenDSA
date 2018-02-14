@@ -183,7 +183,8 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	// Called by the edit node custom prompt box to save the graph and update the node upon clicking "OK".
 	function updateNode(initial_state, final_state, node_label) {
 		g.saveFAState();
-		executeEditFANode(g, g.selected, initial_state, final_state, node_label);
+		//executeEditFANode(g, g.selected, initial_state, final_state, node_label);
+		executeEditNode(g, g.selected, initial_state, final_state, node_label);
 	};
 
 	// Called by the add edge custom prompt box to save the graph and create the edge upon clicking "Done".
@@ -601,7 +602,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	};
 
 	// Function to parse an XML file and initialize a graph from it.
-  	var parseFile = function (text, auto) {
+  	var parseFile = function (text) {
 	    var parser,
 	        xmlDoc;
 	    if (window.DOMParser) {
@@ -670,9 +671,9 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	      	}
 			finalize();
 	    }
-	    if (auto === 'auto'){
+	    /*if (auto === 'auto'){
 	    	layoutGraph();
-	    }
+	    }*/
 	};
 
 	var state_to_xml = function (state_name, state_id, option){
@@ -701,6 +702,15 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	// Function to parse the XML file once the File Reader is done reading it.
   	var waitForReading = function (reader) {
     	reader.onloadend = function(event) {
+
+    		// Use to parse html 
+    		var text = event.target.result;
+        	parseFile(text);
+
+
+
+        	/*
+        	THIS WAS USED TO PARSE LIST FORMAT TO XML FOR SIMPLER GRAMMAR FILE
         	var text = event.target.result;
         	// convert txt to xml
        		var xml_txt = '<?xml version="1.0" encoding="utf-8"?> <structure> <type>fa</type> <automaton>'
@@ -766,7 +776,9 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
         			var val = tran_value[j]
         			xml_txt += trans_to_xml(from, to, val);
         		}
-        	}
+        	}*/
+
+        	// This is constructing the xml parsing
         	/*var states = lines[0].split(',')
         	transition = lines[1].split('},')
         	var inc_x = 20
@@ -830,10 +842,10 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
         			xml_txt += '</transition>'
     			}
     			
-        	}*/
+        	}
         	xml_txt += '</automaton> </structure>'
         	console.log(xml_txt)
-        	parseFile(xml_txt, 'auto');
+        	parseFile(xml_txt, 'auto');*/
     	}
   	}
   	// Function to load an XML file from the user's computer.

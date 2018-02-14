@@ -103,3 +103,24 @@ var executeEditEdge = function(graph, edge_label, weight){
 	graph.layout({layout: "manual"});
 	// Updating layout is necessary so that the new label is positioned appropriately on the edge.
 };
+
+var executeEditNode = function(graph, node, initialState, finalState, nodeLabel){
+	if (initialState) {
+		// If this node is the initial state, no other node may be the initial state.
+		for (var i = 0; i < graph.nodeCount(); i++) {
+			graph.removeInitial(graph.nodes()[i]);
+		}
+		graph.makeInitial(node);
+	}
+	if (finalState){
+		// If this node is the initial state, no other node may be the initial state.
+		for (var i = 0; i < graph.nodeCount(); i++) {
+			graph.removeFinal(graph.nodes()[i]);
+		}
+		graph.makeFinal(node);
+	}
+	// Add the state label (if applicable) and update its position relative to that of the node.
+	node.stateLabel(nodeLabel);
+	node.stateLabelPositionUpdate();
+	// Note that since this is a Mealy Machine, there is no such thing as a "final state".
+}
