@@ -86,6 +86,9 @@
       "FormalLang/RegGrammar": {},
       "FormalLang/RegClosure": {}
     },
+    "Identifying Non-regular Languages (Lecture 7)": {
+      "FormalLang/NonRegular": {}
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}

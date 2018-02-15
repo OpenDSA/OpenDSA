@@ -87,7 +87,7 @@ A graph whose edges have weights
 .. _GraphTerms:
 
 .. inlineav:: GdirundirCON1 dgm 
-   :links: AV/Graph/GraphDefCON.css
+   :links: AV/Graph/GraphDefCON1.css
    :scripts: AV/Graph/GdirundirCON1.js
    :output: show
 

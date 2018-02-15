@@ -105,7 +105,10 @@ function FANodePrompt(func) {
         renderBox();
         // Add content to the prompt box, with references to the functions to run within the buttons.
         document.getElementById('dialogueboxhead').innerHTML = "Edit Node <b>" + value + ":</b>";
-        document.getElementById('dialogueboxbody').innerHTML = '<br>State Label: <input id="label">';
+        document.getElementById('dialogueboxbody').innerHTML = '';
+        document.getElementById('dialogueboxbody').innerHTML += 'Initial State:<input type="checkbox" id="initial_state">';
+        document.getElementById('dialogueboxbody').innerHTML += '<br>Final State:<input type="checkbox" id="final_state">';
+        document.getElementById('dialogueboxbody').innerHTML += '<br>State Label: <input id="label">';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="ok()">OK</button> <button onclick="terminate()">Cancel</button>';
         // If the node being edited has a state label, display this text in the "State Label" text field.
         if (lab) {
@@ -119,6 +122,8 @@ function FANodePrompt(func) {
     ok = function() {
         // Check every field in the prompt box and update the node accordingly.
         var node_label = document.getElementById('label').value;
+        var initial_state = document.getElementById('initial_state').checked;
+        var final_state = document.getElementById('final_state').checked;
         // Call the node function on these values, then exit out of the prompt box.
         nodeFunction(initial_state, final_state, node_label);
         terminate();
