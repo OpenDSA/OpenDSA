@@ -25,8 +25,8 @@ $(document).ready(function() {
   // var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
   var top1 = rect_top;
   var topblue1 = av.g.rect(rect_left , top1, 130, 35, 10).addClass("bluebox");
-  var toppurple1 = av.g.rect(rect_left + 95, top1 + 10, 20, 17, 17).addClass("calbox");
-  var toppurple2 = av.g.rect(rect_left + 110, top1, 55, 35, 10).addClass("calbox");
+  var toppurple1 = av.g.rect(rect_left + 100, top1 + 10, 20, 17, 17).addClass("calbox");
+  var toppurple2 = av.g.rect(rect_left + 115, top1, 55, 35, 10).addClass("calbox");
 
   var top2 = rect_top + 40;
   var topblue1 = av.g.rect(rect_left , top2, 130, 35, 10).addClass("bluebox");
@@ -58,45 +58,60 @@ $(document).ready(function() {
 
   //mid blue/calculate boxes 1 ( and "set total = ..." blue box )
   var top7 = top5 + 40;
-  var midblue1 = av.g.rect(rect_left + 130, top7, 100, 33, 10).addClass("bluebox");
-  var midblue2 = av.g.rect(rect_left + 190, top7 + 8, 20, 15, 15).addClass("calbox");
-  var midblue3 = av.g.rect(rect_left + 210, top7, 90, 33, 10).addClass("calbox");
+  var midblue1 = av.g.rect(rect_left + 130, top7, 130, 33, 10).addClass("bluebox");
+  var midblue2 = av.g.rect(rect_left + 215, top7 + 8, 20, 15, 15).addClass("calbox");
+  var midblue3 = av.g.rect(rect_left + 235, top7, 130, 33, 10).addClass("calbox");
 
   //mid blue/calculate boxes 2 ( and "set total = ..." blue box )
   var top8 = top7 + 40;
-  var midblue1 = av.g.rect(rect_left + 130, top8, 100, 33, 10).addClass("bluebox");
-  var midblue2 = av.g.rect(rect_left + 190, top8 + 8, 20, 15, 15).addClass("calbox");
-  var midblue3 = av.g.rect(rect_left + 210, top8, 90, 33, 10).addClass("calbox");
+  var midblue1 = av.g.rect(rect_left + 130, top8, 130, 33, 10).addClass("bluebox");
+  var midblue2 = av.g.rect(rect_left + 225, top8 + 8, 20, 15, 15).addClass("calbox");
+  var midblue3 = av.g.rect(rect_left + 245, top8, 120, 33, 10).addClass("calbox");
 
   // last purple floor
   var top9 = top6 + 90;
   av.g.rect(rect_left + 90, top9, 240, 50, 10).addClass("purplebox");
 
   var top10 = top9 + 57;
-  var botblue = av.g.rect(rect_left, top10, 280, 35, 10).addClass("bluebox");
-  //
+  var botblue = av.g.rect(rect_left, top10, 160, 35, 10).addClass("bluebox");
+  var midblue2 = av.g.rect(rect_left + 115, top10 + 10, 20, 15, 15).addClass("calbox");
+  var midblue3 = av.g.rect(rect_left + 135, top10, 160, 35, 10).addClass("calbox");
+
+  var top11 = top10 + 40;
+  var botblue = av.g.rect(rect_left, top11, 280, 35, 10).addClass("bluebox");
 
 // ------------------ labels ------------------------
 
-  // var initlabel = av.label("set total = 0", {left: rect_left + 5, top: rect_top - 65});
-  // initlabel.addClass("loopLabels").addClass("midlabel");
-  //
-  // var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
-  // label1.addClass("loopLabels");
-  //
-  // var label2 = av.label("price", {left: rect_left + 19, top: rect_top + 45});
-  // label2.addClass("loopLabels");
-  //
-  // var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
-  // label3.addClass("loopLabels");
-  //
-  // var pricelabel = av.label("set total = total + price", {left: rect_left + 140, top: rect_top + 117});
-  // pricelabel.addClass("loopLabels");
-  // pricelabel.addClass("smalllabel");
-  //
-  // var pricelabel = av.label("print (total)", {left: rect_left + 5, top: rect_top + 235});
-  // pricelabel.addClass("loopLabels");
-  // pricelabel.addClass("smalllabel");
+  var initlabel = av.label("set count = 0", {left: rect_left + 5, top: top1 - 23});
+  initlabel.addClass("loopLabels").addClass("midlabel");
+
+  var initlabel = av.label("set total = 0", {left: rect_left + 5, top: top2 - 23});
+  initlabel.addClass("loopLabels").addClass("midlabel");
+
+  var label1 = av.label("for each item", {left: rect_left + 5, top: top3 - 30});
+  label1.addClass("loopLabels");
+
+  var label2 = av.label("price", {left: rect_left + 19, top: top4 + 20});
+  label2.addClass("loopLabels");
+
+  var label3 = av.label("do", {left: rect_left + 35, top: top5 +30});
+  label3.addClass("loopLabels");
+
+  var pricelabel = av.label("set total = total + price", {left: rect_left + 140, top: top5 + 20});
+  pricelabel.addClass("loopLabels");
+  pricelabel.addClass("smalllabel");
+
+  var pricelabel = av.label("set count = count + 1", {left: rect_left + 140, top: top7 + 20});
+  pricelabel.addClass("loopLabels");
+  pricelabel.addClass("smalllabel");
+
+  var pricelabel = av.label("set average = total / count", {left: rect_left + 5, top: top9 + 40});
+  pricelabel.addClass("loopLabels");
+  pricelabel.addClass("smalllabel");
+
+  var pricelabel = av.label("print (average)", {left: rect_left + 5, top: top10 + 20});
+  pricelabel.addClass("loopLabels");
+  pricelabel.addClass("smalllabel");
   //
   // var valuelabel = av.label("", {left: rect_left + 270, top: rect_top + 165});
   // valuelabel.addClass("loopLabels");

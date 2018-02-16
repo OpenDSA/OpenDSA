@@ -30,6 +30,11 @@
  font-weight: 600;
 }
 
+.statelabellarge  {
+ font-size: 150%;
+ font-weight: 600;
+}
+
 .valuelabel  {
  font-size: 150%;
  color: yellow;
@@ -92,4 +97,9 @@
   fill : #f2eff6;
   stroke : #f2eff6;
   z-index: -500;
+}
+
+.yellowout {
+  stroke-width : 5;
+  stroke : #FFCC33;
 }

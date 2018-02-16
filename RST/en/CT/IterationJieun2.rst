@@ -17,3 +17,4 @@ List Iteration JSAV Exercise
 
 .. avembed:: Exercises/CT/IterationEX2PRO.html ka
 .. avembed:: Exercises/CT/IterationEX3PRO.html ka
+.. avembed:: av/CT/IterationEXPRO.html ss

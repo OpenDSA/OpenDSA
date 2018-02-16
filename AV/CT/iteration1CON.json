@@ -1,21 +1,17 @@
 {
   "translations" :{
     "en": {
-      "sc1": "iteration1CON slide 1",
-      "sc2": "iteration1CON slide 2",
-      "sc3": "iteration1CON slide 3",
-      "sc4": "iteration1CON slide 4",
-      "sc5": "iteration1CON slide 5",
-      "sc6": "iteration1CON slide 6",
-      "sc7": "iteration1CON slide 7",
-      "sc8": "iteration1CON slide 8",
-      "sc9": "iteration1CON slide 9",
-      "sc10": "iteration1CON slide 10",
-      "sc11": "iteration1CON slide 11",
-      "sc12": "iteration1CON slide 12",
-      "sc13": "iteration1CON slide 13",
-      "sc14": "iteration1CON slide 14",
-      "sc15": "iteration1CON slide 15"
+      "sc1": "This animation includes a list of numbers: 4, 13, 6, 9, 11. The iteration will process all the numbers in this list, one number at a time. While this example has five numbers, an iteration will generally work for any length of list.",
+      "sc2": "An iteration has an \"iteration variable\". In this example the iteration variable is named \"price\". The iteration variable changes its value, taking on a different value from the list on each step of the iteration.",
+      "sc3": "Any blocks(s) before the iteration are executed. The blinking (or flashing) is meant to indicate that a block is executed.",
+      "sc4": "On the first step of the iteration, the iteration variable takes on the value of the first element of the list. Notice that the value of price is now 4.",
+      "sc5": "Each statement in the body of the iteration is executed. Notice that the three blocks in the body of the iteration blink or flash to signify their execution.",
+      "sc6": "On the second step of the iteration, the iteration variable takes on the value of the second element of the list. Notice that the value of price is now 13. Then, each statement in the body of the iteration is executed. Notice that the three blocks in the body of the iteration blink or flash to signify their execution.",
+      "sc7": "On the third step of the iteration, the iteration variable takes on the value of the third element of the list. Notice that the value of price is now 6. Then, each statement in the body of the iteration is executed.",
+      "sc8": "On the fourth step of the iteration, the iteration variable, price, takes on the value of the fourth element of the list, the number 9, and each statement in the body of the iteration is executed.",
+      "sc9": "On the next step of the iteration, the iteration variable, price, takes on the value of the next element of the list, the number 11, and each statement in the body of the iteration is executed.",
+      "sc10": "Each element of the list has been used and the iteration is complete.",
+      "sc11": "Any block(s) after the iteration are executed."
     }
   }
 }

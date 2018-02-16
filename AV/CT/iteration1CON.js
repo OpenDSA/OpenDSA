@@ -107,7 +107,7 @@ $(document).ready(function() {
 
 
 // Create Iteration Property box and text
-  var iplabel = av.label("Iteration<br>Property", {left: rect_left - 120, top: rect_top + 120}).css({'font-weight': '600'});
+  var iplabel = av.label("Iteration<br>Variable", {left: rect_left - 120, top: rect_top + 120}).css({'font-weight': '600'});
   iplabel.addClass("hiding");
   var iprec = av.g.rect(rect_left - 140, rect_top + 125, 100, 70).addClass("fourRoundBox");
   iprec.addClass("hiding");
