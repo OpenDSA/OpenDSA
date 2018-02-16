@@ -50,6 +50,8 @@
 
       // Reinitialize the exercise.
     reset: function() {
+      position = Math.floor(Math.random() * 2) + 1;
+
       // Reset the value of global variables.
       iterationEX1PRO.userInput = false;
 
@@ -73,9 +75,9 @@
         totalAnswer += array[i];
       }
 
-      console.log(totalAnswer + " " + priceAnswer);
+      // console.log(totalAnswer + " " + priceAnswer);
 
-      var leftMargin = 240,
+      var leftMargin = 280,
           topMargin = 0,
           rect_left = leftMargin - 150,
           rect0_top = topMargin + 0,
@@ -198,8 +200,7 @@
     },
 
     // Initialise the exercise
-    initJSAV: function(pos) {
-      position = pos;
+    initJSAV: function() {
       priceAnswerBox = document.getElementById('priceAnswerBox');
       totalAnswerBox = document.getElementById('totalAnswerBox');
 
