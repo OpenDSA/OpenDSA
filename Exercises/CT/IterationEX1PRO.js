@@ -65,7 +65,7 @@
       priceAnswer = 0;
       totalAnswer = 0;
       for(var i = 0; i < arraySize; i++){ // Give random numbers in range 1..2
-          array[i] = Math.floor(Math.random() * 15) + 1;
+          array[i] = Math.floor(Math.random() * 10) + 1;
       }
 
       priceAnswer = array[position];
@@ -73,6 +73,7 @@
         totalAnswer += array[i];
       }
 
+      console.log(totalAnswer + " " + priceAnswer);
 
       var leftMargin = 240,
           topMargin = 0,
@@ -155,10 +156,10 @@
 
 
         // price box and label
-        av.label("price", {left: stateX + 5, top: stateY + 58}).addClass("statelabellarge");;
+        av.label("price", {left: stateX + 5, top: stateY + 55}).addClass("statelabellarge");;
 
         // total box and label
-        av.label("total", {left: stateX + 5, top: stateY + 175}).addClass("statelabellarge");
+        av.label("total", {left: stateX + 5, top: stateY + 173}).addClass("statelabellarge");
 
 
 
@@ -167,12 +168,8 @@
         priceBoxLabel.addClass("labels");
         priceBoxLabel.addClass("midlabel");
 
-        // priceAnswerBox.style.position = 'relative';
-        // priceAnswerBox.style.left = stateX + 23;
-        // priceAnswerBox.style.top = stateY + 100;
 
         totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
-
         totalBoxLabel = av.label("", {left: labelLeft - 19, top: stateY + 220});
         totalBoxLabel.addClass("labels");
         totalBoxLabel.addClass("midlabel");
@@ -216,10 +213,6 @@
 
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function() {
-      if(priceAnswerBox.value == priceAnswer && totalAnswerBox.value == totalAnswer){
-        return true;
-      }
-      // alert(priceAnswer + ", " + totalAnswer);
       return priceBoxLabel.value() == priceAnswer && totalBoxLabel.value() == totalAnswer;
     },
   };
