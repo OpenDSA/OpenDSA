@@ -90,12 +90,16 @@
       "FormalLang/NonRegular": {},
       "FormalLang/DFAproperties": {}
     },
+    "Context-Free Grammars and Languages": {
+      "FormalLang/CFL": {},
+      "FormalLang/CFLSimp": {}
+    },
     "Pushdown Automata": {
       "FormalLang/PDA": {},
       "FormalLang/NPDA": {}
     },
-    "Context-Free Languages": {
-      "FormalLang/CFL": {}
+    "Properties of Context-free Languages": {
+      "FormalLang/CFLProp": {}
     },
     "Parsing": {
       "FormalLang/ParseIntro": {},
@@ -103,10 +107,6 @@
       "FormalLang/LRParsing": {},
       "FormalLang/CYKParsing": {},
       "FormalLang/Compiler": {}
-    },
-    "Grammars": {
-      "FormalLang/Grammar": {},
-      "FormalLang/CFLProp": {}
     },
     "Limits to Computing": {
       "NP/Reduction": {},

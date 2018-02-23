@@ -21,15 +21,9 @@ Examples of regular languages:
 * integers
 * a finite list of miscillaneous symbols: = \  ;
 
-.. note::
-
-   Union these together and you have project 2 
-
 Not Regular languages:
 
-* :math:`\{a^ncb^n | n > 0\}`
 * expressions: :math:`((a + b) - c)`
-  (NOTE: replace a by $($ and b by $)$ ) 
 * block structures (:math:`\{\}` in Java/C++ and ``begin`` ... ``end`` in Pascal)
 
 We know that not all languages are not regular, since we've proved
@@ -43,7 +37,8 @@ context-free if all productions are of the form
 
    | :math:`A \rightarrow x`
 
-where :math:`A \in V` and :math:`x \in (V \cup T)^*`.
+| where :math:`A \in V` and :math:`x \in (V \cup T)^*`.
+|    (:math:`T` includes :math:`\lambda`.)
 
 **Definition:** :math:`L` is a context-free language (CFL) iff
 :math:`\exists` context-free grammar (CFG) :math:`G` such that
@@ -81,11 +76,6 @@ where :math:`A \in V` and :math:`x \in (V \cup T)^*`.
 .. topic:: Example
 
    | :math:`G = (\{S, A, B\}, \{a, b, c\}, S, P)`
-
-   .. note::
-
-      Show in JFLAP! 
-
    |   :math:`S \rightarrow AcB`
    |   :math:`A \rightarrow aAa\ |\ \lambda`
    |   :math:`B \rightarrow Bbb\ |\ \lambda`
@@ -201,17 +191,15 @@ If we can find a derivation of :math:`w`, then we would know that
 |    :math:`w` is your Java program.
 |    Is :math:`w` syntactically correct?
 
-.. note::
-
-   Why would anybody want to do this? :math:`G =` Java,
-   :math:`w =` Java program.
-   Is :math:`w` a syntactically correct program?
-   This is (part of) what a compiler does.
-   You write a program, you compile it, and the compiler finds all your 
-   syntax mistakes.
-   (It also "translates" the program into "bytecode" to be
-   executed.
-   We won't talk much about that aspect of compilers in this class.)
+Why would anybody want to do this? :math:`G =` Java,
+:math:`w =` Java program.
+Is :math:`w` a syntactically correct program?
+This is (part of) what a compiler does.
+You write a program, you compile it, and the compiler finds all your 
+syntax mistakes.
+(It also "translates" the program into "bytecode" to be
+executed.
+We won't talk much about that aspect of compilers in this class.)
 
 .. topic:: Example
 
@@ -222,11 +210,13 @@ If we can find a derivation of :math:`w`, then we would know that
 
    | Is :math:`abbab \in L(G)`?
 
-   .. note::
-
-      RUN THIS IN JFLAP, it takes a LONG Time, but eventually accepts.... 
 
 **Exhaustive Search Algorithm**
+
+If you were to run this in JFLAP, it takes a LONG time, but eventually
+accepts... The problem is that this approach is rather inefficient
+since it is using an exhaustive search for all ways of expanding from
+the start symbol.
 
    | For all :math:`i = 1, 2, 3, \ldots`
    |    Examine all sentential forms yielded by :math:`i` substitutions
@@ -264,7 +254,7 @@ We cannot determine that :math:`baaba` is not in :math:`L(G)`.
 
 .. note::
 
-   RUN IN JFLAP, what happens? 
+   What happens if you run this in JFLAP?
 
 We want to consider special forms of context free grammars such that 
 we can determine when strings are or are not in the language. 
@@ -293,8 +283,7 @@ a special form, it will be easier to test membership.
    the exhaustive algorithm. 
 
    Thus, if there are :math:`> 2|w|` times through loop, then
-   :math:`w \not\in L(G)`. QED. 
-
+   :math:`w \not\in L(G)`.
 
 .. topic:: Example
 
@@ -329,9 +318,10 @@ a special form, it will be easier to test membership.
    that :math:`baaba` is not in :math:`L(G)`.
 
 Next chapter, we will learn methods for taking a grammar and
-transforming it into an equivalent (or almost) equivalent grammar. 
-
-
+transforming it into an equivalent (or almost equivalent) grammar.
+We will see that some ways of writing a grammar for a language are
+better than others, in terms of our ability to write practical
+algorithms for solving the membership problem.
 For now, here is another form that will make membership testing easier. 
 
 **Definition:** Simple grammar (or s-grammar) has all productions

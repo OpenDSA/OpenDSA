@@ -290,7 +290,7 @@ Context-Free Languages
    :math:`\le 2|w|` times through loop in the exhaustive algorithm.
 
    Thus, if there are :math:`> 2|w|` times through loop, then
-   :math:`w \not\in L(G)`. QED. 
+   :math:`w \not\in L(G)`.
 
 
 .. slide:: Example (1)
