@@ -65,14 +65,16 @@
     "required": true
   },
   "chapters": {
-    "Programming": {
-      "Searching/BinarySearch": {
-        "binarySearchPRO": {
-          "points": 1.0,
-          "threshold": 1.0
-        }
-      },
-      "Graph/GraphIntro1": {}
+      "Graph Transversals": {
+      "Graph/GraphIntro1": {},
+      "Graph/GraphImpl1": {},
+      "Graph/GraphTraversal1": {}
+    },
+    "Sorting": {
+      "Sorting/InSort": {},
+      "Sorting/SortNotation": {},
+      "Design/Comparison": {},
+      "Sorting/InsertionSort": {}
     },
     "Appendix": {
       "Glossary": {},
