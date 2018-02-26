@@ -2,6 +2,10 @@
   height: 170px;
 }
 
+#GacyclicDefCON .jsavcanvas {
+  height: 250px;
+}
+
 #GneighborCON .jsavcanvas {
     height: 180px;
 }
@@ -81,4 +85,3 @@
   min-height: 20px !important;
   max-height: 20px !important;
 }
-

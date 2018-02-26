@@ -67,7 +67,7 @@
     "Preface": {
       "Intro": {}
     },
-    "Introduction": {
+    "Introduction (Lecture 1)": {
       "FormalLang/FLIntro": {},
       "FormalLang/FLOverview": {},
       "FormalLang/FLConcepts": {}
@@ -88,6 +88,10 @@
     },
     "Identifying Non-regular Languages (Lecture 7)": {
       "FormalLang/NonRegular": {}
+    },
+    "Context-Free Languages (Lectures 8, 9)": {
+      "FormalLang/CFL": {},
+      "FormalLang/CFLSimp": {}
     },
     "Appendix": {
       "Glossary": {},

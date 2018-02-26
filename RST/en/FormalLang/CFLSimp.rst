@@ -33,6 +33,19 @@ We will look at lots of methods for transforming grammars.
 Some will be forms that are easier to work with,
 some are easier to use in proofs.
 
+| Key question: Are there ways to transform (restrict) CFGs such that
+|   1) We can process efficiently
+|   2) without restricting the power of CFGs
+
+.. note::
+
+   Ask yourself: What does it mean "without restricting the power of CFGs"?
+
+Specifically, we will look at restrictions on the right hand side of the
+production rules.
+We want to be able to automatically transform an arbitrary CFG
+into an equivalent restricted CFG.
+
 We will consider CFL without :math:`\lambda`.
 It would be easy to add :math:`\lambda` to any grammar by adding a new
 :term:`start symbol` :math:`S_0`,
@@ -62,10 +75,7 @@ Then, :math:`L(G) = L(G')`.
 
 Question: Why don't we also delete :math:`B` rules?
 
-.. note::
-
-   These might be used by another production
-
+Answer: These might be used by another production
 
 Question: What if :math:`A` and :math:`B` are the same? 
 
@@ -193,7 +203,8 @@ Let :math:`G = (V,T,S,P)`.
 Then :math:`G_1 = (V_1, T, S, P_1)` has no variables that can't derive
 strings.
 
-NOTE: Now need to get rid of productions we can't use. 
+Now we need to get rid of productions we can't use. 
+
 
 II. Draw Variable Dependency Graph
 
@@ -215,10 +226,6 @@ Resulting Grammar :math:`G'` is such that :math:`L(G) = L(G')` and
    | :math:`C \rightarrow cBc \mid a`
    | :math:`D \rightarrow bCb`
    | :math:`E \rightarrow Aa \mid b`
-
-   .. note::
-
-      WORK THIS EXAMPLE IN JFLAP 
 
    :math:`V_1 = \{B, C, D, E, S\}`, :math:`A` is useless. 
 
@@ -282,10 +289,6 @@ Then :math:`\exists` a CFG :math:`G'` having no
    | :math:`A \rightarrow BCB \mid Aa`
    | :math:`B \rightarrow b \mid \lambda`
    | :math:`C \rightarrow cC \mid \lambda`
-
-   .. note
-
-      WORK THIS EXAMPLE IN JFLAP 
 
    :math:`V_n = \{B, C, A\}` 
 
@@ -367,9 +370,6 @@ have any unit-productions and :math:`L(G) = L(G')`.
    | :math:`C \rightarrow A \mid c \mid Da`
    | :math:`D \rightarrow A`
 
-   .. note::
-
-      WORK THIS EXAMPLE IN JFLAP 
 
    .. odsafig:: Images/unitgraph.png
       :width: 400
@@ -450,11 +450,6 @@ Because it is easier to work with in proofs.
    | :math:`B \rightarrow b`
    | :math:`C \rightarrow Cc \mid e`
 
-   .. note:: 
-
-      Do THIS IN JFLAP, note JFLAP uses different names for the 
-      additional variables than below.
-
    .. math::
 
       \begin{array}{lll} 
@@ -493,9 +488,6 @@ This is so that you wouldn't have to backtrack (only one
 choice to match the derivation of a string).
 So it very restrictive.
 
-.. note::
-
-   Guess that not possible to convert in CFG into an s-grammar??
 
 .. topic:: Theorem
 
@@ -523,14 +515,6 @@ So it very restrictive.
            :math:`A_{n-1}` productions in the correct form.
            Repeat with :math:`A_{n-2}`, :math:`A_{n-3}`, etc until all
            productions are in the correct form.
-
-   .. note::
-
-      DO NOT DO AN EXAMPLE FOR THIS. JUST TELL them they need to know 
-      what GNF is (recognize a grammar in this form) and the general idea 
-      of how the algorithm works. 
-
-      See example 6.9 in the linz book. 
 
 WHAT YOU SHOULD KNOW: know forms, GNF, CNF, unit production,
 left recursion, etc. Do not need to memorize rules for transforming,
