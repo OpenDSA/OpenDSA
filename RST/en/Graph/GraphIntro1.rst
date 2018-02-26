@@ -86,7 +86,7 @@ A graph whose edges have weights
 
 .. _GraphTerms:
 
-.. inlineav:: GdirundirCON1 dgm 
+.. inlineav:: GdirundirCON1 dgm
    :links: AV/Graph/GraphDefCON1.css
    :scripts: AV/Graph/GdirundirCON1.js
    :output: show
@@ -100,7 +100,7 @@ and :math:`b`.
 The two vertices are said to be :term:`adjacent`.
 If the edge is directed from :math:`a` to :math:`b`,
 then we say that :math:`a` is adjacent to :math:`b`,
-and :math:`b` is adjacent from :math:`a`. 
+and :math:`b` is adjacent from :math:`a`.
 The :term:`degree` of a vertex is the number of edges it is incident
 with.
 For example, Vertex :math:`e` below has a degree of three.
@@ -128,10 +128,10 @@ some vertex :math:`v_1` to itself.
 A cycle is a :term:`simple cycle` if the path is simple, except for
 the first and last vertices being the same.
 
-.. inlineav:: GpathDefCON dgm 
+.. inlineav:: GpathDefCON dgm
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GpathDefCON.js
-   :output: show 
+   :output: show
 
 An undirected graph is a :term:`connected graph` if there is at least
 one path from any vertex to any other.
@@ -153,7 +153,7 @@ A graph containing all possible edges is said to be a
 :term:`complete graph`.
 A :term:`subgraph` :math:`\mathbf{S}` is formed from graph
 :math:`\mathbf{G}` by selecting a subset :math:`\mathbf{V}_s` of
-:math:`\mathbf{G}`'s vertices and a subset 
+:math:`\mathbf{G}`'s vertices and a subset
 :math:`\mathbf{E}_s` of :math:`\mathbf{G}` 's edges such that for every
 edge :math:`e  \in \mathbf{E}_s`,
 both vertices of :math:`e` are in :math:`\mathbf{V}_s`.
@@ -165,15 +165,15 @@ all other vertices in the subgraph is called a :term:`clique`.
    :scripts: AV/Graph/GsparseDefCON.js
    :output: show
 
-.. TODO::
-   :type: Diagram
-
-   Make a diagram for the following terms.
-
 A graph without cycles is called an :term:`acyclic graph`.
 Thus, a directed graph without cycles is called a
 :term:`directed acyclic graph` or :term:`DAG`.
 
+.. inlineav:: GacyclicDefCON dgm
+    :links: AV/Graph/GraphDefCON1.css
+    :scripts: AV/Graph/GacyclicDefCON.js
+    :output: show
+    
 A :term:`free tree` is a connected, undirected graph with no simple
 cycles.
 An equivalent definition is that
@@ -213,7 +213,7 @@ because this edge comes into Vertex 2 rather than going out.
 
 .. _Directed:
 
-.. inlineav:: GdirRepCON dgm 
+.. inlineav:: GdirRepCON dgm
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GdirRepCON.js
    :output: show
@@ -233,10 +233,10 @@ entry for both Vertex 3 and Vertex 4.
 
 .. _Undirected:
 
-.. inlineav:: GundirRepCON dgm 
+.. inlineav:: GundirRepCON dgm
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GundirRepCON.js
-   :output: show 
+   :output: show
 
    Representing an undirected graph.
 
@@ -271,7 +271,7 @@ The second is the value for the weight.
 As with the adjacency matrix, this value requires space to represent,
 typically an integer.
 
-.. inlineav:: GweightedCON dgm 
+.. inlineav:: GweightedCON dgm
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GweightedCON.js
    :output: show
@@ -301,7 +301,7 @@ be more space efficient.
    requires :math:`4 |\mathbf{V}| + 6 |\mathbf{E}| = 92` bytes
    (because there are now 12 edges represented instead of 6).
 
-.. avembed:: Exercises/Graph/GspaceCalcSumm.html ka 
+.. avembed:: Exercises/Graph/GspaceCalcSumm.html ka
    :long_name: Graph Space Requirements Exercise
 
 The adjacency matrix often requires a higher asymptotic cost for an
@@ -323,5 +323,5 @@ but not when the graph is closer to full.
 Graph Terminology Questions
 ---------------------------
 
-.. avembed:: Exercises/Graph/GraphIntroSumm.html ka 
+.. avembed:: Exercises/Graph/GraphIntroSumm.html ka
    :long_name: Graph Terminology Summary Exercise
