@@ -59,24 +59,27 @@ $(document).ready(function() {
 
   //mid blue/calculate boxes 1 ( and "set total = ..." blue box )
   var top7 = top5 + 40;
-  var midbluetop1 = av.g.rect(rect_left + 130, top7, 160, 33, 10).addClass("bluebox");
-  var midbluetop2 = av.g.rect(rect_left + 243, top7 + 8, 20, 15, 15).addClass("calbox");
-  var midbluetop3 = av.g.rect(rect_left + 260, top7, 130, 33, 10).addClass("calbox");
+  av.g.rect(rect_left + 130, top7, 160, 33, 10).addClass("bluebox");
+  av.g.rect(rect_left + 243, top7 + 8, 20, 15, 15).addClass("calbox");
+  av.g.rect(rect_left + 260, top7, 130, 33, 10).addClass("calbox");
+  var box3 = av.g.rect(rect_left + 130, top7, 260, 33, 10).addClass("emptybox");
 
   //mid blue/calculate boxes 2 ( and "set total = ..." blue box )
   var top8 = top7 + 40;
-  var midbluebot1 = av.g.rect(rect_left + 130, top8, 180, 33, 10).addClass("bluebox");
-  var midbluebot2 = av.g.rect(rect_left + 253, top8 + 8, 20, 15, 15).addClass("calbox");
-  var midbluebot3 = av.g.rect(rect_left + 270, top8, 120, 33, 10).addClass("calbox");
+  av.g.rect(rect_left + 130, top8, 180, 33, 10).addClass("bluebox");
+  av.g.rect(rect_left + 253, top8 + 8, 20, 15, 15).addClass("calbox");
+  av.g.rect(rect_left + 270, top8, 120, 33, 10).addClass("calbox");
+  var box4 = av.g.rect(rect_left + 130, top8, 260, 33, 10).addClass("emptybox");
 
   // last purple floor
   var top9 = top6 + 90;
   av.g.rect(rect_left + 90, top9, 240, 50, 10).addClass("purplebox");
 
   var top10 = top9 + 57;
-  var botblue1 = av.g.rect(rect_left, top10, 180, 35, 10).addClass("bluebox");
-  var midblue2 = av.g.rect(rect_left + 138, top10 + 10, 20, 15, 15).addClass("calbox");
-  var midblue3 = av.g.rect(rect_left + 155, top10, 130, 35, 10).addClass("calbox");
+  av.g.rect(rect_left, top10, 180, 35, 10).addClass("bluebox");
+  av.g.rect(rect_left + 138, top10 + 10, 20, 15, 15).addClass("calbox");
+  av.g.rect(rect_left + 155, top10, 130, 35, 10).addClass("calbox");
+  var box5 = av.g.rect(rect_left, top10, 280, 35, 10).addClass("emptybox");
 
   var top11 = top10 + 40;
   var botblue = av.g.rect(rect_left, top11, 280, 35, 10).addClass("bluebox");
@@ -130,7 +133,7 @@ $(document).ready(function() {
   // price box and label
   av.label("price", {left: stateX + 3, top: stateY + 53}).addClass("statelabellarge");
   var priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
-  var priceBoxLabel = av.label("", {left:boxLabelX , top: stateY + 100}).addClass("loopLabels");;
+  var priceBoxLabel = av.label("", {left:boxLabelX , top: stateY + 97}).addClass("loopLabels");;
 
   // count box and label
   av.label("count", {left: stateX, top: stateY + 171}).addClass("statelabellarge");
@@ -140,7 +143,7 @@ $(document).ready(function() {
   // total box and label
   av.label("total", {left: stateX + 5, top: stateY + 285}).addClass("statelabellarge");
   var totalBox = av.g.rect(stateX - 5, stateY + 335, 70, 70).addClass("bluebox");
-  var totalBoxLabel = av.label("", {left: boxLabelX, top: stateY + 321}).addClass("loopLabels");;
+  var totalBoxLabel = av.label("", {left: boxLabelX, top: stateY + 325}).addClass("loopLabels");;
 
 
 
@@ -154,10 +157,10 @@ $(document).ready(function() {
 
   // create console box.
   var consoleBox = av.g.rect(consoleX, consoleY + 50, 170, 180).addClass("consolebox");
-  var printprice = av.label("43", {left: consoleX + 20, top: consoleY + 180});
-  printprice.addClass("consolelabels");
-  printprice.addClass("midlabel");
-  printprice.hide();
+  var printavg = av.label("8.6", {left: consoleX + 20, top: consoleY + 180});
+  printavg.addClass("consolelabels");
+  printavg.addClass("midlabel");
+  printavg.hide();
 
   // ------------------------console box line -----------------------
     var consoleLineY = consoleY + 270;
@@ -195,8 +198,8 @@ $(document).ready(function() {
   totalBox.removeClass("blueboxh");
   av.step();
 
-  // Slide 3
-  av.umsg(interpret("sc3"));
+  // Slide 4
+  av.umsg(interpret("sc4"));
   arr.css({left: nextleft});   //move array
   nextleft -= nodegap; // calculate nextleft value for next array moving
   priceBoxLabel.value(" 4 ")
@@ -204,154 +207,155 @@ $(document).ready(function() {
   priceBox.removeClass("blueboxh");
   av.step();
 
-  // Slide 4
-  av.umsg(interpret("sc4"));
-  // midblue2.addClass("calboxhigh");
-  // midblue2.removeClass("calboxhigh");
-  // midblue3.addClass("calboxhigh");
-  // midblue3.removeClass("calboxhigh");
-  // valuelabel.value("0 + 4");
-  av.step();
-
   // Slide 5
   av.umsg(interpret("sc5"));
-  // midblue1.addClass("calboxhigh");
-  // midblue1.removeClass("calboxhigh");
-  // totalBox.addClass("blueboxh");
-  // totalBox.removeClass("blueboxh");
-  // totalBoxLabel.value(" 4 ");
-  // valuelabel.value("");
+  box3.addClass("blueboxh");
+  box3.removeClass("blueboxh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
+  totalBoxLabel.value(" 4 ")
   av.step();
-
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  // arr.css({left: nextleft});
-  // nextleft -= nodegap;
-  // priceBox.addClass("blueboxh");
-  // priceBox.removeClass("blueboxh");
-  // priceBoxLabel.value(" 13 ");
-  // priceBoxLabel.css({left: boxLabelX - 5});
+  box4.addClass("blueboxh");
+  box4.removeClass("blueboxh");
+  countBox.addClass("blueboxh");
+  countBox.removeClass("blueboxh");
+  countBoxLabel.value(" 1 ")
   av.step();
+
 
   // Slide 7
   av.umsg(interpret("sc7"));
-  // midblue2.addClass("calboxhigh");
-  // midblue2.removeClass("calboxhigh");
-  // midblue3.addClass("calboxhigh");
-  // midblue3.removeClass("calboxhigh");
-  // valuelabel.value(" 4 + 13 ");
-  av.step();
-
-
-  // Slide 8
-  av.umsg(interpret("sc8"));
-  // totalBoxLabel.value(" 17 ");
-  // totalBoxLabel.css({left: boxLabelX - 5});
-  // midblue1.addClass("calboxhigh");
-  // midblue1.removeClass("calboxhigh");
-  // totalBox.addClass("blueboxh");
-  // totalBox.removeClass("blueboxh");
-  // valuelabel.value("");
+  arr.css({left: nextleft});   //move array
+  nextleft -= nodegap; // calculate nextleft value for next array moving
+  priceBoxLabel.value(" 13 ")
+  priceBoxLabel.css({left: boxLabelX - 7});
+  priceBox.addClass("blueboxh");
+  priceBox.removeClass("blueboxh");
   av.step();
 
   // Slide 9
-  av.umsg(interpret("sc9"));
-  // arr.css({left: nextleft});
-  // nextleft -= nodegap;
-  // priceBox.addClass("blueboxh");
-  // priceBox.removeClass("blueboxh");
-  // priceBoxLabel.value(" 6 ");
-  // priceBoxLabel.css({left: boxLabelX});
+  av.umsg(interpret("sc8"));
+  box3.addClass("blueboxh");
+  box3.removeClass("blueboxh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
+  totalBoxLabel.value(" 17 ")
+  totalBoxLabel.css({left: boxLabelX - 7});
   av.step();
 
+
   // Slide 10
-  av.umsg(interpret("sc10"));
-  // midblue2.addClass("calboxhigh");
-  // midblue2.removeClass("calboxhigh");
-  // midblue3.addClass("calboxhigh");
-  // midblue3.removeClass("calboxhigh");
-  // valuelabel.value(" 17 + 6 ");
+  av.umsg(interpret("sc8"));
+  box4.addClass("blueboxh");
+  box4.removeClass("blueboxh");
+  countBox.addClass("blueboxh");
+  countBox.removeClass("blueboxh");
+  countBoxLabel.value(" 2 ")
   av.step();
 
   // Slide 11
   av.umsg(interpret("sc11"));
-  // totalBoxLabel.value(" 23 ");
-  // midblue1.addClass("calboxhigh");
-  // midblue1.removeClass("calboxhigh");
-  // totalBox.addClass("blueboxh");
-  // totalBox.removeClass("blueboxh");
-  // valuelabel.value("");
+  arr.css({left: nextleft});   //move array
+  nextleft -= nodegap; // calculate nextleft value for next array moving
+  priceBoxLabel.value(" 6 ")
+  priceBoxLabel.css({left: boxLabelX});
+  priceBox.addClass("blueboxh");
+  priceBox.removeClass("blueboxh");
   av.step();
 
   // Slide 12
   av.umsg(interpret("sc12"));
-  // arr.css({left: nextleft});
-  // nextleft -= nodegap;
-  // priceBox.addClass("blueboxh");
-  // priceBox.removeClass("blueboxh");
-  // priceBoxLabel.value(" 9 ");
+  box3.addClass("blueboxh");
+  box3.removeClass("blueboxh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
+  totalBoxLabel.value(" 23 ")
   av.step();
 
   // Slide 13
   av.umsg(interpret("sc13"));
-  // midblue2.addClass("calboxhigh");
-  // midblue2.removeClass("calboxhigh");
-  // midblue3.addClass("calboxhigh");
-  // midblue3.removeClass("calboxhigh");
-  // valuelabel.value(" 23 + 9 ");
+  box4.addClass("blueboxh");
+  box4.removeClass("blueboxh");
+  countBox.addClass("blueboxh");
+  countBox.removeClass("blueboxh");
+  countBoxLabel.value(" 3 ")
   av.step();
 
   // Slide 14
   av.umsg(interpret("sc14"));
-  // totalBoxLabel.value(" 32 ");
-  // midblue1.addClass("calboxhigh");
-  // midblue1.removeClass("calboxhigh");
-  // totalBox.addClass("blueboxh");
-  // totalBox.removeClass("blueboxh");
-  // valuelabel.value("");
+  arr.css({left: nextleft});   //move array
+  nextleft -= nodegap; // calculate nextleft value for next array moving
+  priceBoxLabel.value(" 9 ")
+  priceBox.addClass("blueboxh");
+  priceBox.removeClass("blueboxh");
   av.step();
 
   // Slide 15
   av.umsg(interpret("sc15"));
-  // arr.css({left: nextleft});
-  // nextleft -= (nodegap + 50);
-  // priceBox.addClass("blueboxh");
-  // priceBox.removeClass("blueboxh");
-  // priceBoxLabel.value(" 11 ");
-  // priceBoxLabel.css({left: boxLabelX - 5});
+  box3.addClass("blueboxh");
+  box3.removeClass("blueboxh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
+  totalBoxLabel.value(" 32 ")
   av.step();
 
   // Slide 16
   av.umsg(interpret("sc16"));
-  // midblue2.addClass("calboxhigh");
-  // midblue2.removeClass("calboxhigh");
-  // midblue3.addClass("calboxhigh");
-  // midblue3.removeClass("calboxhigh");
-  // valuelabel.value(" 32 + 11 ");
+  box4.addClass("blueboxh");
+  box4.removeClass("blueboxh");
+  countBox.addClass("blueboxh");
+  countBox.removeClass("blueboxh");
+  countBoxLabel.value(" 4 ")
   av.step();
 
   // Slide 17
   av.umsg(interpret("sc17"));
-  // totalBoxLabel.value(" 43 ");
-  // midblue1.addClass("calboxhigh");
-  // midblue1.removeClass("calboxhigh");
-  // totalBox.addClass("blueboxh");
-  // totalBox.removeClass("blueboxh");
-  // valuelabel.value("");
-  av.step();
-  //
-  // Slide 18
-  av.umsg(interpret("sc18"));
-  // arr.css({left: nextleft});
-  // valuelabel.value("");
+  arr.css({left: nextleft});   //move array
+  nextleft -= (nodegap + 50); // calculate nextleft value for the final array moving
+  priceBoxLabel.value(" 11 ")
+  priceBoxLabel.css({left: boxLabelX - 7});
+  priceBox.addClass("blueboxh");
+  priceBox.removeClass("blueboxh");
   av.step();
 
+  // Slide 18
+  av.umsg(interpret("sc18"));
+  box3.addClass("blueboxh");
+  box3.removeClass("blueboxh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
+  totalBoxLabel.value(" 43")
+  av.step();
+  //
   // Slide 19
   av.umsg(interpret("sc19"));
-  // botblue.addClass("blueboxh");
-  // botblue.removeClass("blueboxh");
-  printprice.show();
+  box4.addClass("blueboxh");
+  box4.removeClass("blueboxh");
+  countBox.addClass("blueboxh");
+  countBox.removeClass("blueboxh");
+  countBoxLabel.value(" 5 ")
+  av.step();
+
+  // Slide 20
+  av.umsg(interpret("sc20"));
+  arr.css({left: nextleft});   //move array
+  av.step();
+
+  // Slide 21
+  av.umsg(interpret("sc21"));
+  arr.css({left: nextleft});   //move array
+  box5.addClass("blueboxh");
+  box5.removeClass("blueboxh");
+  av.step();
+
+  // Slide 22
+  av.umsg(interpret("sc22"));
+  botblue.addClass("blueboxh");
+  botblue.removeClass("blueboxh");
+  printavg.show();
   av.recorded();
 
   //last Slide
