@@ -24,14 +24,18 @@ $(document).ready(function() {
   // var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
   var top1 = rect_top;
   av.g.rect(rect_left , top1, 160, 35, 10).addClass("bluebox");
+  av.g.rect(rect_left + 53, top1 + 6, 60, 20, 5).addClass("purpleboxlight");
+
   av.g.rect(rect_left + 130, top1 + 9, 20, 17, 17).addClass("greenbox");
   av.g.rect(rect_left + 147, top1, 55, 35, 10).addClass("greenbox");
+  av.g.rect(rect_left + 158, top1 + 6, 32, 23, 5).addClass("greenboxlight");
   var box1 = av.g.rect(rect_left, top1, 200, 35, 10).addClass("emptybox");
 
   var top2 = rect_top + 40;
   av.g.rect(rect_left , top2, 160, 35, 10).addClass("bluebox");
   av.g.rect(rect_left + 117, top2 + 9, 20, 17, 17).addClass("greenbox");
   av.g.rect(rect_left + 134, top2, 55, 35, 10).addClass("greenbox");
+  av.g.rect(rect_left + 158, top1 + 6, 32, 23, 5).addClass("greenboxlight");
   var box2 = av.g.rect(rect_left , top2, 190, 35, 10).addClass("emptybox");
 
   // floor 2
@@ -86,8 +90,10 @@ $(document).ready(function() {
 
 // ------------------ labels ------------------------
 
-  av.label("set count =", {left: rect_left + 15, top: top1 - 21}).addClass("valLabels");
-  av.label("0", {left: rect_left + 168, top: top1 - 18}).addClass("valLabels");
+  av.label("set", {left: rect_left + 15, top: top1 - 21}).addClass("valLabels");
+  av.label("count", {left: rect_left + 56, top: top1 - 21}).addClass("valBlackLabels");
+  av.label("=", {left: rect_left + 115, top: top1 - 21}).addClass("valLabels");
+  av.label("0", {left: rect_left + 168, top: top1 - 18}).addClass("valBlackLabels");
 
   av.label("set total =", {left: rect_left + 15, top: top2 - 21}).addClass("valLabels");
   av.label("0", {left: rect_left + 153, top: top2 - 18}).addClass("valLabels");

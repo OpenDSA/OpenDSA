@@ -46,6 +46,15 @@
   font-weight: 600;
 }
 
+.valBlackLabels {
+  position: relative;
+  display: block;
+  color: black;
+  font-size: 130%;
+  z-index: 500;
+  font-weight: 600;
+}
+
 .smalllabel {
   font-size: 130%;
 }
@@ -76,6 +85,7 @@
    color: yellow;
    stroke-width: 0;
  }
+
 
 /* ----------Box CSS----------*/
 .purplebox  {
@@ -128,15 +138,21 @@
 }
 
 .greenbox {
-  fill: #74a55b;
-  stroke: #74a55b;
+  fill: #74A55B;
+  stroke: #74A55B;
   z-index : -500;
 }
 
 .greenboxlight {
-  fill: #74a55b;
-  stroke: #74a55b;
-  z-index : -502;
+  fill: #C7DBBD;
+  stroke: #C7DBBD;
+  z-index : -600;
+}
+
+.purpleboxlight {
+  fill: #BDBDDB;
+  stroke: #BDBDDB;
+  z-index : -600;
 }
 
 /* ----------Others----------*/
