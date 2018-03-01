@@ -23,14 +23,16 @@ $(document).ready(function() {
   // blue boxes, floor 1
   // var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
   var top1 = rect_top;
-  var bluebox1 = av.g.rect(rect_left , top1, 160, 35, 10).addClass("bluebox");
-  var greenbox1 = av.g.rect(rect_left + 130, top1 + 9, 20, 17, 17).addClass("greenbox");
-  var greenboxb1 = av.g.rect(rect_left + 147, top1, 55, 35, 10).addClass("greenbox");
+  av.g.rect(rect_left , top1, 160, 35, 10).addClass("bluebox");
+  av.g.rect(rect_left + 130, top1 + 9, 20, 17, 17).addClass("greenbox");
+  av.g.rect(rect_left + 147, top1, 55, 35, 10).addClass("greenbox");
+  var box1 = av.g.rect(rect_left, top1, 200, 35, 10).addClass("emptybox");
 
   var top2 = rect_top + 40;
-  var bluebox2 = av.g.rect(rect_left , top2, 160, 35, 10).addClass("bluebox");
-  var greenbox2 = av.g.rect(rect_left + 117, top2 + 9, 20, 17, 17).addClass("greenbox");
-  var greenboxb2 = av.g.rect(rect_left + 134, top2, 55, 35, 10).addClass("greenbox");
+  av.g.rect(rect_left , top2, 160, 35, 10).addClass("bluebox");
+  av.g.rect(rect_left + 117, top2 + 9, 20, 17, 17).addClass("greenbox");
+  av.g.rect(rect_left + 134, top2, 55, 35, 10).addClass("greenbox");
+  var box2 = av.g.rect(rect_left , top2, 190, 35, 10).addClass("emptybox");
 
   // floor 2
   var top3 = top2 + 40
@@ -122,23 +124,23 @@ $(document).ready(function() {
   stateLabel.addClass("statelabel");
 
   //state box with maroon stroke
-  av.g.rect(stateX - 25, stateY + 50, 110, 400).addClass("statebox");
+  av.g.rect(stateX - 25, stateY + 50, 110, 380).addClass("statebox");
 
 
   // price box and label
-  av.label("price", {left: stateX + 13, top: stateY + 65});
-  av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
+  av.label("price", {left: stateX + 3, top: stateY + 53}).addClass("statelabellarge");
+  var priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
   var priceBoxLabel = av.label("", {left:boxLabelX , top: stateY + 100}).addClass("loopLabels");;
 
-  // total box and label
-  av.label("count", {left: stateX + 13, top: stateY + 180});
-  av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
-  var countBoxLabel = av.label("", {left: boxLabelX, top: stateY + 215}).addClass("loopLabels");;
+  // count box and label
+  av.label("count", {left: stateX, top: stateY + 171}).addClass("statelabellarge");
+  var countBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
+  var countBoxLabel = av.label("", {left: boxLabelX, top: stateY + 210}).addClass("loopLabels");;
 
   // total box and label
-  av.label("total", {left: stateX + 13, top: stateY + 295});
+  av.label("total", {left: stateX + 5, top: stateY + 285}).addClass("statelabellarge");
   var totalBox = av.g.rect(stateX - 5, stateY + 335, 70, 70).addClass("bluebox");
-  var totalBoxLabel = av.label("", {left: boxLabelX, top: stateY + 215}).addClass("loopLabels");;
+  var totalBoxLabel = av.label("", {left: boxLabelX, top: stateY + 321}).addClass("loopLabels");;
 
 
 
@@ -169,36 +171,37 @@ $(document).ready(function() {
   // <<--------- Slide Show <<--------->>
 
 
-  // Slide 0
+  // Slide 1
   av.umsg(interpret("sc1"));
-  // var nextleft = leftMargin - 120;
+  var nextleft = leftMargin - 120;
   av.displayInit();
 
 
-  // Slide 1
-  av.umsg(interpret("sc2"));
-  // toppurple1.addClass("calboxhigh");
-  // toppurple1.removeClass("calboxhigh");
-  // toppurple2.addClass("calboxhigh");
-  // toppurple2.removeClass("calboxhigh");
-  av.step();
-
   // Slide 2
   av.umsg(interpret("sc2"));
-  // topblue1.addClass("blueboxh");
-  // topblue1.removeClass("blueboxh");
-  // totalBox.addClass("blueboxh");
-  // totalBox.removeClass("blueboxh");
-  // totalBoxLabel.value("0");
+  box1.addClass("blueboxh");
+  box1.removeClass("blueboxh");
+  countBoxLabel.value("0")
+  countBox.addClass("blueboxh");
+  countBox.removeClass("blueboxh");
   av.step();
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  // arr.css({left: nextleft});   //move array
-  // nextleft -= nodegap; // calculate nextleft value for next array moving
-  // priceBoxLabel.value(" 4 ")
-  // priceBox.addClass("blueboxh");
-  // priceBox.removeClass("blueboxh");
+  box2.addClass("blueboxh");
+  box2.removeClass("blueboxh");
+  totalBoxLabel.value("0")
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
+  av.step();
+
+  // Slide 3
+  av.umsg(interpret("sc3"));
+  arr.css({left: nextleft});   //move array
+  nextleft -= nodegap; // calculate nextleft value for next array moving
+  priceBoxLabel.value(" 4 ")
+  priceBox.addClass("blueboxh");
+  priceBox.removeClass("blueboxh");
   av.step();
 
   // Slide 4

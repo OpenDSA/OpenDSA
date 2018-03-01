@@ -59,6 +59,11 @@
  font-weight: 600;
 }
 
+.statelabellarge  {
+ font-size: 130%;
+ font-weight: 600;
+}
+
 /* value label with purple background */
 .valuelabelpb  {
  font-size: 150%;
@@ -69,6 +74,7 @@
  .valuelabel {
    font-size: 150%;
    color: yellow;
+   stroke-width: 0;
  }
 
 /* ----------Box CSS----------*/
@@ -76,6 +82,11 @@
   fill : #a55ba5;
   stroke : #a55ba5;
   z-index: -500;
+}
+
+.emptybox {
+    z-index: -600;
+    stroke-width : 0;
 }
 
 .bluebox  {
