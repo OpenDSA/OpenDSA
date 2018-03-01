@@ -85,7 +85,7 @@ $(document).ready(function() {
   av.label("0", {left: rect_left + 168, top: top1 - 18}).addClass("valLabels");
 
   av.label("set total =", {left: rect_left + 15, top: top2 - 21}).addClass("valLabels");
-  av.label("0", {left: rect_left + 156, top: top2 - 18}).addClass("valLabels");
+  av.label("0", {left: rect_left + 153, top: top2 - 18}).addClass("valLabels");
 
   //for each iteam label inside of purple for loop box
   av.label("for each item", {left: rect_left + 5, top: top3 - 30}).addClass("loopLabels");
@@ -116,30 +116,30 @@ $(document).ready(function() {
   // <<--------------- STATE BOX ----------------->>
 
   var stateX = 530;
-  var stateY = - 20;
+  var stateY = - 25;
   var boxLabelX = stateX + 23;
   var stateLabel = av.label("STATE", {left: stateX, top: stateY});
   stateLabel.addClass("statelabel");
 
-  var stateBox = av.g.rect(stateX - 25, stateY + 50, 110, 280).addClass("statebox");
+  //state box with maroon stroke
+  av.g.rect(stateX - 25, stateY + 50, 110, 400).addClass("statebox");
+
 
   // price box and label
   av.label("price", {left: stateX + 13, top: stateY + 65});
-  stateLabel.addClass("statelabel");
-
-  var priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
-  var priceBoxLabel = av.label("", {left:boxLabelX , top: stateY + 100});
-  priceBoxLabel.addClass("loopLabels");
-  priceBoxLabel.addClass("midlabel");
+  av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
+  var priceBoxLabel = av.label("", {left:boxLabelX , top: stateY + 100}).addClass("loopLabels");;
 
   // total box and label
-  av.label("total", {left: stateX + 13, top: stateY + 180});
-  stateLabel.addClass("statelabel");
+  av.label("count", {left: stateX + 13, top: stateY + 180});
+  av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
+  var countBoxLabel = av.label("", {left: boxLabelX, top: stateY + 215}).addClass("loopLabels");;
 
-  var totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
-  var totalBoxLabel = av.label("", {left: boxLabelX, top: stateY + 215});
-  totalBoxLabel.addClass("loopLabels");
-  totalBoxLabel.addClass("midlabel");
+  // total box and label
+  av.label("total", {left: stateX + 13, top: stateY + 295});
+  var totalBox = av.g.rect(stateX - 5, stateY + 335, 70, 70).addClass("bluebox");
+  var totalBoxLabel = av.label("", {left: boxLabelX, top: stateY + 215}).addClass("loopLabels");;
+
 
 
   // <<--------------- CONSOLE BOX ----------------->>
