@@ -75,9 +75,17 @@
 }
 .jsavedgelabel {
 	cursor: pointer;
-	font-size: 1.5em;
+	font-size: 1.0em;
 }
 .jsavarray .jsavindex {
   width: 200px;
 	max-width: 1000px;
+}
+
+.jsavgraph .jsavedge {
+    stroke-width: 2.0px !important;
+}
+.new {
+	display: inline !important;
+	border: none !important;
 }
