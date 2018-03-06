@@ -9,74 +9,16 @@
    :satisfies: Nondeterministic Pushdown Automata
    :topic: Finite Automata
 
-Nondeterministic Pushdown Automata
-==================================
+PDAs and Context Free Languages
+===============================
 
-Nondeterministic Pushdown Automata
-----------------------------------
+PDAs and Context Free Languages
+-------------------------------
 
 .. Chapter 7.2
 
-**Theorem** Given NPDA M that accepts by final state, :math:`\exists`
-NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
-
-**Proof** (sketch)
-
-   | :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
-   | Construct :math:`M' = (Q', \Sigma, {\Gamma}^{'}, {\delta}^{'}, q_s, z', F')`
-     (NOTE: :math:`z'` is a new symbol) 
-   | :math:`Q' = Q \cup \{q_s, q_f\}` 
-   | :math:`{\Gamma}^{'} = \Gamma \cup \{z'\}`
-     (NOTE: :math:`z' \not\in \Gamma`, never popped in old machine)
-   | :math:`q_s` is new start state. 
-   | :math:`F = \{\}`. Irrelevant.
-     The only time the stack will be empty is in :math:`q_f`.
-
-   .. odsafig:: Images/lt7pf1.png
-      :width: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt7pf1
-
-   | Here, :math:`x` is any symbol in :math:`{\Gamma}^{'}`.
-     (:math:`l` represents :math:`\lambda`).
-
-   | Don't really need the concept of a final state in this case. QED. 
-
-
-**Theorem:** Given NPDA :math:`M` that accepts by empty stack,
-:math:`\exists` NPDA :math:`M'` that accepts by final state.
-
-**Proof:**
-
-   | :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
-   | Construct :math:`M' = (Q', \Sigma, \Gamma^{'}, \delta^{'}, q_s, z', F')`
-   | :math:`Q' = Q \cup \{q_s, q_f\}`
-   | :math:`\Gamma^{'} = \Gamma \cup \{z'\}`
-   | :math:`q_s` is new start state. 
-   | :math:`F^' = \{q_f\}`.
-     The only time the stack will be empty is in :math:`q_f`.
-   | :math:`(q_f, z') \in \delta(q, \lambda, z')` for all
-     :math:`q \in Q`. 
-
-   .. odsafig:: Images/lt7pf2.png
-      :width: 400
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt7pf2
-
-   | If :math:`M` accepted in some state, then that means the stack
-     was empty.
-     In :math:`M'`, at the same state, the stack will contain only
-     :math:`z'`, and the new transition can be followed to
-     :math:`q_f`. QED 
-
-.. note:: 
-
-   Now we want to show that NPDA's and CFG both represent CFL's. 
-   Show that we can take any CFG and construct a NPDA and vice versa. 
+Now we want to show that NPDA's and CFG both represent CFL's. 
+Show that we can take any CFG and construct a NPDA and vice versa. 
 
 **Theorem:** For any CFL :math:`L` not containing :math:`\lambda`,
 :math:`\exists` a NPDA :math:`M` such that :math:`L = L(M)`.
@@ -97,11 +39,6 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
    |      put :math:`(q_1, X_1 X_2 \ldots X_n)` in :math:`\delta(q_1, a, A)`
    |      (Pop :math:`A` from the stack, read "a" from tape,
           and push :math:`X_1 X_2 \ldots X_n` onto the stack) 
-
-     .. note::
-
-        Draw a picture of this! 
-
    |   3. Accept if :math:`S \stackrel{*}{\Rightarrow} w \in \Sigma^*`
           (all variables on the stack are replaced by terminals or
           :math:`\lambda`) 
@@ -129,10 +66,8 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
 
       Argue why :math:`w \in L(G')` iff :math:`w \in L(M)`. QED. 
 
-.. note::
-
-   Now want to show that given an NPDA, can construct a CFG. First 
-   will show this to make it easier for the next proof. 
+Now we want to show that given an NPDA, we can construct a CFG.
+But first, we will show a result to make the next proof easier.
 
 **Theorem:** Given a NPDA :math:`M`, :math:`\exists`
 a NPDA :math:`M'` such that all transitions have the form
@@ -179,11 +114,7 @@ then :math:`L` is a CFL.
    | :math:`M' = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
    | Construct :math:`G = (V,\Sigma, S, P)` where
    | :math:`V = \{(q_icq_j)\ |\ q_i, q_j \in Q, c \in \Gamma \}`
-
-     .. note::
-
-        Some of these variables will be useless. 
-
+   |    (Some of these variables will be useless.)
    | :math:`(q_icq_j)` represents "starting at state :math:`q_i` the
      stack contents are :math:`cw, w \in \Gamma^*`,
      some path is followed to state :math:`q_j` and the 
@@ -258,11 +189,6 @@ then :math:`L` is a CFL.
         \end{array} 
 
    | This will create some useless variables, but that's ok. 
-
-     .. note::
-
-        Mention and then come back to this. 
-
    | Must show that the constructed grammar :math:`G` is such that
      :math:`L(G) = L(M')`.
      That is, :math:`w \in L(G) \mbox{iff}\ w \in L(M)`. (see book) QED. 
@@ -407,57 +333,58 @@ NOTE: :math:`a^nb^nc^n` is not a CFL! (we'll see this in the next chapter)
 
 **Proof:**
 
-   | :math:`L = \{a^nb^n: n \ge 1\} \cup \{a^nb^{2n}: n \ge 1\}`
+| :math:`L = \{a^nb^n: n \ge 1\} \cup \{a^nb^{2n}: n \ge 1\}`
 
-   | It is easy to construct a NPDA for :math:`\{a^nb^n: n\ge 1\}` and 
-     a NPDA for :math:`\{a^nb^{2n}: n \ge 1\}`.
-     These two can be joined together by a new start state and
-     :math:`\lambda`-transitions to create a NPDA for L. 
-     Thus, L is CFL.
+| It is easy to construct a NPDA for :math:`\{a^nb^n: n\ge 1\}` and 
+  a NPDA for :math:`\{a^nb^{2n}: n \ge 1\}`.
+  These two can be joined together by a new start state and
+  :math:`\lambda`-transitions to create a NPDA for L. 
+  Thus, L is CFL.
 
-   | Now show :math:`L` is not a DCFL.
-     Assume that there is a deterministic PDA :math:`M` such that
-     :math:`L = L(M)`.
-     We will construct a PDA that recognizes a language that is not a CFL and
-     derive a contradiction.
+| Now show :math:`L` is not a DCFL.
+  Assume that there is a deterministic PDA :math:`M` such that
+  :math:`L = L(M)`.
+  We will construct a PDA that recognizes a language that is not a CFL and
+  derive a contradiction.
 
-   | Construct a PDA :math:`M'` as follows:
+| Construct a PDA :math:`M'` as follows:
 
-   .. note::
+.. TODO::
+   :type: Figure
 
-      Show figure 
+   Show figure 
 
-   |   1. Create two copies of :math:`M: M_1` and :math:`M_2`.
-          The same state in :math:`M_1` and :math:`M_2` are called cousins.
+|   1. Create two copies of :math:`M: M_1` and :math:`M_2`.
+       The same state in :math:`M_1` and :math:`M_2` are called cousins.
 
-   |   2. Remove accept status from accept states in :math:`M_1`,
-          remove initial status from initial state in :math:`M_2`.
-          In our new PDA, we will start in :math:`M_1` and accept in :math:`M_2`.
+|   2. Remove accept status from accept states in :math:`M_1`,
+       remove initial status from initial state in :math:`M_2`.
+       In our new PDA, we will start in :math:`M_1` and accept in :math:`M_2`.
 
-   |   3. Outgoing arcs from old accept states in :math:`M_1`,
-          change to end up in the cousin of its destination in
-          :math:`M_2`.
-          This joins :math:`M_1` and :math:`M_2` into one PDA.
-          There must be an outgoing arc since you must recognize
-          both :math:`a^nb^n` and :math:`a^nb^{2n}`.
-          After reading :math:`n` b's, must accept if no more b's and 
-          continue if there are more b's.
+|   3. Outgoing arcs from old accept states in :math:`M_1`,
+       change to end up in the cousin of its destination in
+       :math:`M_2`.
+       This joins :math:`M_1` and :math:`M_2` into one PDA.
+       There must be an outgoing arc since you must recognize
+       both :math:`a^nb^n` and :math:`a^nb^{2n}`.
+       After reading :math:`n` b's, must accept if no more b's and 
+       continue if there are more b's.
 
-   |   4. Modify all transitions that read a b and have their
-          destinations in :math:`M_2` to read a c. 
+|   4. Modify all transitions that read a b and have their
+       destinations in :math:`M_2` to read a c. 
 
-   | This is the construction of our new PDA. 
+| This is the construction of our new PDA. 
 
-   | When we read :math:`a^nb^n` and end up in an old accept state in
-     :math:`M_1`, then we will transfer to :math:`M_2` and read the
-     rest of :math:`a^nb^{2n}`.
-     Only the b's in :math:`M_2` have been replaced by c's,
-     so the new machine accepts :math:`a^nb^nc^n`.
+| When we read :math:`a^nb^n` and end up in an old accept state in
+  :math:`M_1`, then we will transfer to :math:`M_2` and read the
+  rest of :math:`a^nb^{2n}`.
+  Only the b's in :math:`M_2` have been replaced by c's,
+  so the new machine accepts :math:`a^nb^nc^n`.
 
-   | The language accepted by our new PDA is :math:`a^nb^nc^n`.
-     But this is not a CFL. Contradiction! Thus there is no
-     deterministic PDA :math:`M` such that :math:`L(M) = L`. 
-     Q.E.D.
+| The language accepted by our new PDA is :math:`a^nb^nc^n`.
+  But this is not a CFL. Contradiction! Thus there is no
+  deterministic PDA :math:`M` such that :math:`L(M) = L`. 
+  Q.E.D.
 
 .. odsafig:: Images/lt8hier.png
    :width: 300

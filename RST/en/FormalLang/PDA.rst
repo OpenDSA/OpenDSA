@@ -124,10 +124,6 @@ state.
 
    :math:`L = \{a^nb^n | n \ge 0\}, \Sigma = \{a, b\}, \Gamma = \{z,a\}`
 
-   .. note::
-
-      BUILD IN JFLAP with class 
-
    .. odsafig:: Images/lt7pda1.png
       :width: 400
       :align: center
@@ -157,20 +153,11 @@ NPDA :math:`M` accepts :math:`L(M)` by empty stack:
 
 NOTE: 3-tuples above are configurations. Moving from one to another. 
 
-.. note::
-
-   Might consider removing some examples from notes, and have them be
-   something that the students do themselves.
-
 .. topic:: Example
    
    :math:`L = \{a^nb^mc^{n+m} | n,m > 0\}, \Sigma = \{a, b, c\}, \Gamma =\{0, z\}`
 
    Note: What is the smallest length string that is accepted? 
-
-   .. note::
-   
-      The solution to this is in /dept/cs/fscs2/ex1.PDA - must use flap 
 
    .. odsafig:: Images/lt7pda4.png
       :width: 400
@@ -212,7 +199,7 @@ NOTE: 3-tuples above are configurations. Moving from one to another.
    L is not a CFL, so there is no NPDA! 
 
 **Examples for you to try on your own:** (solutions are at the
-end of the handout).
+end of this section).
 
 * :math:`L = \{a^nb^m | m > n, m, n > 0\}, \Sigma = \{a, b\}, \Gamma = \{z, a\}`
 * :math:`L = \{a^nb^{n+m}c^m | n, m> 0\}, \Sigma=\{a, b, c\}`
@@ -273,3 +260,63 @@ such that :math:`L = L(M)`.
       :capalign: justify
       :figwidth: 90%
       :alt: stnfaints
+
+
+Equivalence of Acceptance Definitions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Theorem** Given NPDA M that accepts by final state, :math:`\exists`
+NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
+
+**Proof** (sketch)
+
+   | :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
+   | Construct :math:`M' = (Q', \Sigma, {\Gamma}^{'}, {\delta}^{'}, q_s, z', F')`
+     (NOTE: :math:`z'` is a new symbol) 
+   | :math:`Q' = Q \cup \{q_s, q_f\}` 
+   | :math:`{\Gamma}^{'} = \Gamma \cup \{z'\}`
+     (NOTE: :math:`z' \not\in \Gamma`, never popped in old machine)
+   | :math:`q_s` is new start state. 
+   | :math:`F = \{\}`. Irrelevant.
+     The only time the stack will be empty is in :math:`q_f`.
+
+   .. odsafig:: Images/lt7pf1.png
+      :width: 500
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: lt7pf1
+
+   | Here, :math:`x` is any symbol in :math:`{\Gamma}^{'}`.
+     (:math:`l` represents :math:`\lambda`).
+
+   | Don't really need the concept of a final state in this case. QED. 
+
+
+**Theorem:** Given NPDA :math:`M` that accepts by empty stack,
+:math:`\exists` NPDA :math:`M'` that accepts by final state.
+
+**Proof:**
+
+   | :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
+   | Construct :math:`M' = (Q', \Sigma, \Gamma^{'}, \delta^{'}, q_s, z', F')`
+   | :math:`Q' = Q \cup \{q_s, q_f\}`
+   | :math:`\Gamma^{'} = \Gamma \cup \{z'\}`
+   | :math:`q_s` is new start state. 
+   | :math:`F^ = \{q_f\}`.
+     The only time the stack will be empty is in :math:`q_f`.
+   | :math:`(q_f, z') \in \delta(q, \lambda, z')` for all
+     :math:`q \in Q`. 
+
+   .. odsafig:: Images/lt7pf2.png
+      :width: 400
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: lt7pf2
+
+   | If :math:`M` accepted in some state, then that means the stack
+     was empty.
+     In :math:`M'`, at the same state, the stack will contain only
+     :math:`z'`, and the new transition can be followed to
+     :math:`q_f`. QED 
