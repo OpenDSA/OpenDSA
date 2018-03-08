@@ -67,8 +67,8 @@
     "chapters": {
     "Programming": {
       "Searching/BinarySearch": {},
-      "Graph/GraphIntro1": {}
-
+      "Graph/GraphIntro": {},
+      "Graph/GraphTraversal1": {}
     }, 
     "Appendix": {
       "Glossary": {},

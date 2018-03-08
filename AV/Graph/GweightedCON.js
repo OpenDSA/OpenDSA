@@ -27,7 +27,7 @@ $(document).ready(function () {
   graph.layout();
 
   //set up adjancey matrix
-  var a = av.label("Adajceny Matrix: Weights", {top: lTop, left: 310}).show();
+  var a = av.label("Adajceny Matrix: Weights", {top: lTop, left: 315}).show();
 
   var mat = av.ds.matrix([[ , 3, , , 4], [ , , , 3, ,], [ , , , , 1],
                           [ , , 7, , ,], [ , 1, , , ,]],

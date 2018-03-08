@@ -1,5 +1,9 @@
 #GdirundirCON .jsavcanvas {
-  height: 170px;
+  height: 180px;
+}
+
+#GacyclicDefCON .jsavcanvas {
+  height: 250px;
 }
 
 #GneighborCON .jsavcanvas {
@@ -81,4 +85,3 @@
   min-height: 20px !important;
   max-height: 20px !important;
 }
-
