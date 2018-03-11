@@ -96,7 +96,8 @@
     },
     "Pushdown Automata": {
       "FormalLang/PDA": {},
-      "FormalLang/PDACFL": {}
+      "FormalLang/PDACFL": {},
+      "FormalLang/DPDA": {}
     },
     "Properties of Context-free Languages": {
       "FormalLang/CFLProp": {}

@@ -95,7 +95,8 @@
     },
     "Pushdown Automata": {
       "FormalLang/PDA": {},
-      "FormalLang/PDACFL": {}
+      "FormalLang/PDACFL": {},
+      "FormalLang/DPDA": {}
     },
     "Appendix": {
       "Glossary": {},
