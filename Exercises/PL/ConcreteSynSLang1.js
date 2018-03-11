@@ -3,7 +3,7 @@
   "use strict";
 
     var question = {};
-    var RP20part1 = {    
+    var ConcreteSynSLang1 = {    
 
 
 	init: function() {
@@ -120,7 +120,7 @@
 	}// init function
     };
 
-    window.RP20part1 = window.RP20part1 || RP20part1;
+    window.ConcreteSynSLang1 = window.ConcreteSynSLang1 || ConcreteSynSLang1;
 
 }());
 
