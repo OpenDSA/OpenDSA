@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Susan Rodger and Cliff Shaffer
    :requires: Deterministic Pushdown Automata
-   :satisfies: Deterministic Pushdown Automata Grammar
+   :satisfies: Deterministic Pushdown Automata Grammars
    :topic: Finite Automata
 
 .. slideconf::
