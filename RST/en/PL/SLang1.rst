@@ -143,39 +143,39 @@ The SLang1 "program" **(fn (a,b) => b y 3)** would result in the following parse
 
 										     
 
-RP 20 Part 1
-------------
+Concrete Syntax SLang1
+----------------------
 
 This problem will help you master the concrete syntax of SLang 1. To earn
 credit for it, you must complete this randomized problem
 correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP20part1.html ka
-   :long_name: RP set #20, question #1
+.. avembed:: Exercises/PL/ConcreteSynSLang1.html ka
+   :long_name: Slang1 ConcreteSyntax
 
-RP 20 Part 2
-------------
+Abstract Syntax SLang1
+----------------------
 
 This problem will help you master the abstract syntax of SLang 1.
 
-.. avembed:: Exercises/PL/RP20part2.html ka
-   :long_name: RP set #20, question #2
+.. avembed:: Exercises/PL/AbstractSynSLang1.html ka
+   :long_name: SLang1 AbstractSyntax
 
-RP 21 Part 1
-------------
+Curry in SLang1
+---------------
 
 This problem will illustrate the semantics of SLang 1 while helping
 you review the definition of the *curry* function.
 
-.. avembed:: Exercises/PL/RP21part1.html ka
-   :long_name: RP set #21, question #1
+.. avembed:: Exercises/PL/CurryInSLang1.html ka
+   :long_name: SLang1 Curry
 
 
-RP 21 Part 2
+Semantics of SLang1
 ------------
 
 This problem focuses on the semantics of SLang 1.
 
-.. avembed:: Exercises/PL/RP21part2.html ka
-   :long_name: RP set #21, question #2
+.. avembed:: Exercises/PL/SemanticsSLang1.html ka
+   :long_name: SLang1 Semantics
 
