@@ -2,7 +2,7 @@
 (function() {
   "use strict";
 
-    var RP21part4 = {    
+    var Environment2 = {    
 
 
 	init: function() {
@@ -30,7 +30,7 @@
 		return result;
 	    }
 
-	    function getRndExpRP21part4() {
+	    function getRndExpEnvironment2() {
 		// structure of exp: (fn(p1)=>(fn(p2)=>body args2) args)
 		// p1 is 1 to 3 vars and args is the same # of vars/ints
 		// p2 is 1 to 2 vars such that p1 union p2 = {x,y,z}
@@ -138,7 +138,7 @@
 	    if (rnd === 0) {
 		// we want the value to be "error"
 		while (true) {
-		    exp = getRndExpRP21part4();
+		    exp = getRndExpEnvironment2();
 		    expStr = SL.printExp(exp);
 		    if (expStr.length > 50) { continue; }
 		    try {
@@ -152,7 +152,7 @@
 	    } else {
 		// we want the value to be an int or a closure
 		while (true) {
-		    exp = getRndExpRP21part4();
+		    exp = getRndExpEnvironment2();
 		    expStr = SL.printExp(exp);
 		    done = true;
 		    if (expStr.length > 50) { continue; }
@@ -182,7 +182,7 @@
 
     };
 
-    window.RP21part4 = window.RP21part4 || RP21part4;
+    window.Environment2 = window.Environment2 || Environment2;
 
 }());
 

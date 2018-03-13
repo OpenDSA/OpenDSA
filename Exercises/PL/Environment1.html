@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version1.04/scripts/absyn ../../AV/PL/interpreters/version1.04/scripts/env ../../AV/PL/interpreters/version1.04/scripts/grammar ../../AV/PL/interpreters/version1.04/scripts/interpreter PLutils RP21part3" lang="en">
+<html data-require="math ../../AV/PL/interpreters/version1.04/scripts/absyn ../../AV/PL/interpreters/version1.04/scripts/env ../../AV/PL/interpreters/version1.04/scripts/grammar ../../AV/PL/interpreters/version1.04/scripts/interpreter PLutils Environment1" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 21 part 3</title>
+    <title>Values Bound to a Variable in an Environment</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
@@ -12,13 +12,13 @@
   <body data-height="950" data-width="950">
     <div class="exercise">
 	<div class="vars">
-		<var id="init">RP21part3.init()</var>
-		<var id="expression">RP21part3.expression</var>
-		<var id="underlinedExpression">RP21part3.underlinedExpression</var>
+		<var id="init">Environment1.init()</var>
+		<var id="expression">Environment1.expression</var>
+		<var id="underlinedExpression">Environment1.underlinedExpression</var>
 	</div>
 
       <div class="problems">
-        <div id="RP21part3p">
+        <div id="Environment1p">
           <p class="question">Assume that the following expression is
           evaluated in a global environment in which 
 	    <span class="string">x</span>, <span class="string">y</span>, and
@@ -44,7 +44,7 @@
 	  <div class="solution" data-type="custom">
             <div class="guess"> $('#answerTextarea').val()</div>
             <div class="validator-function">
-	      return RP21part3.validateAnswer(guess);
+	      return Environment1.validateAnswer(guess);
             </div>
 	  </div>
 	  

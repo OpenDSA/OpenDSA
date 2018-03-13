@@ -14,34 +14,34 @@ Environment Data Structure
 
 Text forthcoming
 
-RP 21 Part 3
-------------
+Determining Values Bound to a Variable
+--------------------------------------
 
 This problem provides practice determining to which value a SLang
 1 variable is bound. To earn credit for it, you must complete this
 randomized problem correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP21part3.html ka
-   :long_name: RP set #21, question #3
+.. avembed:: Exercises/PL/Environment1.html ka
+   :long_name: Determine values bound to a variable in environment
 
-RP 21 Part 4
-------------
+Evaluation of Expression Within an Environment
+----------------------------------------------
 
 This problem provides practice fully evaluating SLang 1 expressions.  To
 earn credit for it, you must complete this randomized problem
 correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP21part4.html ka
-   :long_name: RP set #21, question #4
+.. avembed:: Exercises/PL/Environment2.html ka
+   :long_name: Expression Evaluation within Environment
 
 
-RP 21 Part 5
-------------
+Determining Denoted Values in SLang1
+------------------------------------
 
 This problem gives you practice with denoted values in the SLang 1
 interpreter. To earn credit for it, you must complete this randomized
 problem correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP21part5.html ka
-   :long_name: RP set #21, question #5
+.. avembed:: Exercises/PL/Environment3.html ka
+   :long_name: Denoted Values in SLang1
 

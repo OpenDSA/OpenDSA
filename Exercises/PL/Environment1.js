@@ -2,7 +2,7 @@
 (function() {
   "use strict";
 
-    var RP21part3 = {    
+    var Environment1 = {    
 
 	init: function() {
 	    var SL = SLang;
@@ -124,7 +124,7 @@
 
 	    // eval the exp while storing with each variable expression in it
 	    // its value
-	    function evalExpRP21part3(exp,envir) {
+	    function evalExpEnvironment1(exp,envir) {
 		if (A.isIntExp(exp)) {
 		    return E.createNum(A.getIntExpValue(exp));
 		}
@@ -137,10 +137,10 @@
 			A.getFnExpParams(exp),A.getFnExpBody(exp),envir);
 		}
 		else if (A.isAppExp(exp)) {
-		    var f = evalExpRP21part3(A.getAppExpFn(exp),envir);
+		    var f = evalExpEnvironment1(A.getAppExpFn(exp),envir);
 		    var args = A.getAppExpArgs(exp)
 			.map( function(arg) { 
-			    return evalExpRP21part3(arg,envir); } );
+			    return evalExpEnvironment1(arg,envir); } );
 		    if (E.isClo(f)) {
 			if (E.getCloParams(f).length !== args.length) {		
 			    throw new Error(
@@ -148,7 +148,7 @@
 		"a function call (" + E.getCloParams(f).length +
 		" expected but " + args.length + " given)");
 			} else {
-			    return evalExpRP21part3(E.getCloBody(f),
+			    return evalExpEnvironment1(E.getCloBody(f),
 					   E.update(E.getCloEnv(f),
 						    E.getCloParams(f),args));
 			}
@@ -161,14 +161,14 @@
 		    return SL.applyPrimitive(
 			A.getPrimAppExpPrim(exp),
 			A.getPrimAppExpArgs(exp).map( function(arg) { 
-			    return evalExpRP21part3(arg,envir); } ));
+			    return evalExpEnvironment1(arg,envir); } ));
 		} else {
 		    throw new Error(
 			"Error: Attempting to evaluate an invalid expression");
 		}
-	    }// evalExpRP21part3
+	    }// evalExpEnvironment1
 
-	    function getRndExpRP21part3() {
+	    function getRndExpEnvironment1() {
 		// structure of exp: (fn(p1)=>(fn(p2)=>body args2) args)
 		// p1 is 1 to 3 vars and args is the same # of vars/ints
 		// p2 is 1 to 2 vars such that p1 union p2 = {x,y,z}
@@ -274,7 +274,7 @@
 	    }// getRndExp function
 	    
 	    while (true) {
-		exp = getRndExpRP21part3();
+		exp = getRndExpEnvironment1();
 		expStr = SL.printExp(exp);
 		if (expStr.length > 50) { continue; }
 		done = true;
@@ -296,7 +296,7 @@
 	    selectedVar = allVariables[A.getRnd(0,allVariables.length-1)];
 	    selectedVar.selected = true;
 	    // eval again to get the value of the selected variable
-	    evalExpRP21part3(exp,globalEnv);
+	    evalExpEnvironment1(exp,globalEnv);
 	    //console.log(JSON.stringify(allVariables));
 	    this.expression = SL.printExp(exp);
 	    this.underlinedExpression = underlineExp(exp);
@@ -313,7 +313,7 @@
 
     };
 
-    window.RP21part3 = window.RP21part3 || RP21part3;
+    window.Environment1 = window.Environment1 || Environment1;
 
 }());
 
