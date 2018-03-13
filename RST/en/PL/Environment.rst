@@ -46,10 +46,80 @@ one scope but it may be bound to the squaring function in another scope.
 
 In JavaScript, each function defines its own scope. Since function
 definitions can be nested inside other functions, scopes (and thus
-environments) may be nested as well. We will represent this hierarchical
-structure of the environment using nested arrays.
+environments) may be nested as well. We will represent this
+hierarchical structure of the environment using nested arrays.  For
+example, for the following JavaScript code segment:
 
 
+::
+
+    function f(x,y) {
+      return function (x) {
+          return function (y,z) {
+             // compute with x,y,z (**)
+           };
+        };
+    }
+    var id = function (x) { return x; };
+    f(1,2)("hi")(true, id);
+
+
+the nested arrays for the environment would be:
+
+::
+
+    [ "Env",                  // our usual tag
+
+      [ ["y",true],           // the set of bindings in the innermost scope, 
+        ["z",id]],            // i.e., the top of the stack of environments
+
+      [ "Env",                // the sets of bindings in all of the outer scopes, 
+                              // i.e.,the rest of the stack of environments
+        [["x","hi"]],         //          .
+                              //          .
+        [ "Env",              //          .
+          [["x",1],["y",2]],  //          .
+          ["EmptyEnv"]]]]     //          .
+
+
+An environment contains the bindings of variables to values. An Integer
+is one kind of value. But what kind of value is a function abstraction?
+
+It is a function definition with a list of formal parameters, a body,
+and a *closure* that wraps up an anonymous function definition together with the
+current environment, that is, the one existing at the time the function
+is defined.
+
+| For example, defining the anonymous function: **fn (f) => (f x)**
+| in the environment: **E1 = ["Env",[["x",5]],["EmptyEnv"]]**
+| results in the following new value: **["Clo",[f],(f x),E1]** 
+| that is, the anonymous function whose only parameter is a function **f**, whose body is the call of **f** on the argument **x** and whose environment is **E1**.
+
+| If this closure is later bound to the variable **g**, as in: **(fn (g) => (g 1) fn (f) => (f x))**
+| then the environment at the point where **g** is being applied to 1 is: **E2 = ["Env",[["g",["Clo",["f"],(f x),E1]]],E1]**
+
+In programming languages, a **denoted value** is any kind of value that
+can be bound to a variable name. So, an **environment** is just a
+mapping from identifiers (e.g., "x" and "f") to denoted values.
+
+The types of denoted values vary from programming language to
+programming language. In SLang1, the only types of denoted value are
+numbers and closures.
+
+As usual, we will represent these denoted values with arrays whose first
+element is the tag "Num" or "Clo", respectively.
+
+This means that, if we had been faithful to our
+representation of environments in **E1** above, we would have shown a binding of 5 to
+"x" as:
+
+**["x",["Num",5]]**
+
+instead of
+
+**["x",5]**
+	  
+    
 Determining Values Bound to a Variable
 --------------------------------------
 
