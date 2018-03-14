@@ -41,22 +41,21 @@ Deterministic Pushdown Automata
    | **Proof**: The PDA
      :math:`M = (\{q_0, q_1, q_2\}, \{a, b\}, \{0, 1\}, \delta, q_0, 0, \{q_0\})`
      with
-   |   :math:`\delta(q_0, a, 0) = \{(q_1, 10)\}`,
-   |   :math:`\delta(q_1, a, 1) = \{(q_1, 11)\}`,
-   |   :math:`\delta(q_1, b, 1) = \{(q_2, \lambda)\}`,
-   |   :math:`\delta(q_2, b, 1) = \{(q_2, \lambda)\}`,
-   |   :math:`\delta(q_2, \lambda, 0) = \{(q_0, \lambda)\}`
-
-   accepts the given language.
-   It satisfies the conditions for being deterministic.
+   |    :math:`\delta(q_0, a, 0) = \{(q_1, 10)\}`,
+   |    :math:`\delta(q_1, a, 1) = \{(q_1, 11)\}`,
+   |    :math:`\delta(q_1, b, 1) = \{(q_2, \lambda)\}`,
+   |    :math:`\delta(q_2, b, 1) = \{(q_2, \lambda)\}`,
+   |    :math:`\delta(q_2, \lambda, 0) = \{(q_0, \lambda)\}`
+   | accepts the given language.
+   | It satisfies the conditions for being deterministic.
 
 
 .. slide:: Deterministic Example (2)
 
-   Note that this machine DOES have :math:`\lambda` transitions.
-   The key point is that there is still only one choice (because of what
-   is sitting on the top of the stack).
-   In that sense, it is not merely a "free ride" transition.
+   | Note that this machine DOES have :math:`\lambda` transitions.
+   | The key point is that there is still only one choice (because of what
+     is sitting on the top of the stack).
+   |    In that sense, it is not merely a "free ride" transition.
 
 
 .. slide:: Non-deterministic Example
@@ -68,7 +67,7 @@ Deterministic Pushdown Automata
    |   :math:`\delta(q_0, a, a) = \{(q_0, aa)\}`
    |   :math:`\delta(q_0, \lambda, a) = \{(q_1, a)\}`
 
-   This violates our conditions for determinism. (Do you see why?)
+   This violates our conditions for determinism. << Do you see why? >>
 
    Now, this fact that we have a PDA that is not deterministic certainly
    does **not** prove that 
@@ -76,7 +75,7 @@ Deterministic Pushdown Automata
    is not a deterministic CFL.
 
    But, there are CFL's that are not deterministic.
-   And we will see that this is one of them.
+   This is one of them.
 
 
 .. slide:: Another Non-deterministic Example
@@ -84,45 +83,33 @@ Deterministic Pushdown Automata
    :math:`L = \{a^nb^n|n \ge 1\} \cup \{a^nb^{2n}| n\ge 1\}` is a CFL and
    not a DCFL.
 
-   Obviously, both languages are CFL.
-   And obviously, their union is CFL.
-   But imagine how the "obvious" PDA works:
-   The start state transitions to the "correct" machine to recognize a
-   string in either language.
-   But how can we do this deterministically?
-   We would need a completely different approach.
+   | Obviously, both languages are CFL.
+   | And obviously, their union is CFL.
+   | But imagine how the "obvious" NPDA works:
+   |    The start state transitions to the "correct" machine to recognize a
+        string in either language.
+   |    But how can we do this deterministically?
+   |    We would need a completely different approach to be deterministic.
+   | This is not a proof that the language is not deterministic, but next
+     is one.
+
 
    
 .. slide:: Proof (1)
 
-   While that is not a proof that the language is not deterministic, here
-   is one.
+   | **Theorem**:
+     :math:`L = \{a^nb^n: n \ge 1\} \cup \{a^nb^{2n}: n \ge 1\}` is not
+     a DCFL
+   |    (because :math:`a^nb^nc^n` is not a CFL).
 
-   **Theorem**:
-   :math:`L_1 \cup L_2` is not a DCFL
-   (because :math:`a^nb^nc^n` is not a CFL).
-
-
-.. slide:: Proof (2)
-
-   **Proof:**:
-
-   | :math:`L = \{a^nb^n: n \ge 1\} \cup \{a^nb^{2n}: n \ge 1\}`
-
-   | It is easy to construct a NPDA for :math:`\{a^nb^n: n\ge 1\}` and 
-     a NPDA for :math:`\{a^nb^{2n}: n \ge 1\}`.
-     These two can be joined together by a new start state and
-     :math:`\lambda`-transitions to create a NPDA for L. 
-     Thus, L is CFL.
-
-   | Now show :math:`L` is not a DCFL.
-     Assume that there is a deterministic PDA :math:`M` such that
-     :math:`L = L(M)`.
-     We will construct a PDA that recognizes a language that is not a CFL and
-     derive a contradiction.
+   | **Proof:**
+   |    Assume that there is a deterministic PDA :math:`M` such that
+        :math:`L = L(M)`.
+   |    We will construct a PDA that recognizes a language that is not a CFL and
+        derive a contradiction.
 
   
-.. slide:: Proof (3)
+.. slide:: Proof (2)
 
    | Construct a PDA :math:`M'` as follows:
    |   1. Create two copies of :math:`M: M_1` and :math:`M_2`.
@@ -143,7 +130,7 @@ Deterministic Pushdown Automata
    | This is the construction of our new PDA. 
 
 
-.. slide:: Proof (4)
+.. slide:: Proof (3)
 
    | When we read :math:`a^nb^n` and end up in an old accept state in
      :math:`M_1`, then we will transfer to :math:`M_2` and read the
@@ -154,10 +141,9 @@ Deterministic Pushdown Automata
    | The language accepted by our new PDA is :math:`a^nb^nc^n`.
      But this is not a CFL. Contradiction! Thus there is no
      deterministic PDA :math:`M` such that :math:`L(M) = L`. 
-     Q.E.D.
 
 
-.. slide:: A New Model of the Universe
+.. slide:: A New Model of the FL Universe
 
    Based on this information, we now can update our model of the Formal
    Languages Universe.

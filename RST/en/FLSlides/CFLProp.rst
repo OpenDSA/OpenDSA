@@ -91,7 +91,7 @@ Properties of Context-Free Languages
    Consider :math:`L = \{a^nb^nc^n: n\ge 1\}`.
    Show :math:`L` is not a CFL.
 
-   Why would we want to recognize a language of the type
+   Why would we want to recognize the language
    :math:`\{a^nb^nc^n: n\ge 1\}`?
  
    Recognize underlined words:

@@ -85,6 +85,10 @@
     "Week 7": {
       "FLSlides/PDA": {},
       "FLSlides/PDACFL": {}
+    },
+    "Week 8": {
+      "FLSlides/DPDA": {},
+      "FLSlides/DPDAGrammar": {}
     }
   }
 }
