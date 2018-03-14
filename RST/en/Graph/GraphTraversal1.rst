@@ -103,7 +103,7 @@ Here is an implementation for the DFS algorithm.
 
 .. inlineav:: DfsCON ss
    :long_name: Depth-First Search Slideshow
-   :links:
+   :links: AV/Graph/DfsCON.css
    :scripts: AV/Graph/DfsCON.js
    :output: show
 
@@ -126,9 +126,6 @@ This would be a natural opportunity to make use of the
 This visualization shows a graph and the result of performing a DFS on
 it, resulting in a depth-first search tree.
 
-.. avembed:: AV/Graph/graphDFS.html ss
-   :long_name: Depth First Search Visualization
-
 DFS processes each edge once in a directed graph.
 In an undirected graph, DFS processes each edge from both
 directions.
@@ -137,7 +134,7 @@ Each vertex must be visited, but only once, so the total cost is
 
 Here is an exercise to practice DFS.
 
-.. avembed:: AV/Graph/graphDFSPE.html pe
+.. avembed:: AV/Graph/graphDFSPE1.html pe
    :long_name: DFS Proficiency Exercise
 
 
@@ -166,12 +163,15 @@ Here is an implementation for BFS.
 
 Here is an AV for you to try it on other graphs.
 
-.. avembed:: AV/Graph/graphBFS.html ss
-   :long_name: Breadth First Search Visualization
+.. inlineav:: BfsCON ss
+   :long_name: Breadth-First Search Slideshow
+   :links: AV/Graph/BfsCON.css
+   :scripts: AV/Graph/BfsCON.js
+   :output: show
 
 Here is an exercise to practice BFS.
 
-.. avembed:: AV/Graph/graphBFSPE.html pe
+.. avembed:: AV/Graph/graphBFSPE1 .html pe
    :long_name: BFS Proficiency Exercise
 
 .. TODO::
