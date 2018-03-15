@@ -89,7 +89,8 @@
     "Week 8": {
       "FLSlides/DPDA": {},
       "FLSlides/DPDAGrammar": {},
-      "FLSlides/CFLProp": {}
+      "FLSlides/CFLProp": {},
+      "FLSlides/CFLClosure": {}
     }
   }
 }
