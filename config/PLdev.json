@@ -206,7 +206,9 @@
     },
     "Interpreting the Imperative Language SLang 2": {
       "PL/SLang2": {},
-      "PL/SLang2TTK": {},
+      "PL/SLang2TTK": {}
+    },
+    "Variations on Parameter Passing": {
       "PL/SLang2ParameterPassing": {},
       "PL/LazyLists": {}
     },
