@@ -102,6 +102,9 @@
     "Properties of Context-free Languages": {
       "FormalLang/CFLProp": {}
     },
+    "Models of Computation": {
+      "SeniorAlgAnal/Turing": {}
+    },
     "Parsing": {
       "FormalLang/ParseIntro": {},
       "FormalLang/LLParsing": {},
@@ -111,7 +114,6 @@
     },
     "Limits to Computing": {
       "NP/Reduction": {},
-      "SeniorAlgAnal/Turing": {},
       "FormalLang/RecEnum": {},
       "SeniorAlgAnal/Impossible": {}
     },

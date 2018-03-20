@@ -91,6 +91,9 @@
       "FLSlides/DPDAGrammar": {},
       "FLSlides/CFLProp": {},
       "FLSlides/CFLClosure": {}
+    },
+    "Week 9": {
+      "FLSlides/Turing": {}
     }
   }
 }
