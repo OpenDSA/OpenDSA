@@ -2,7 +2,7 @@
 (function() {
   "use strict";
 
-    var RP26part1 = {    
+    var OutputOfSLang2Prog = {    
 
 
 	init: function() {
@@ -178,7 +178,7 @@
 		}
 	    }
 
-	    function getRndExpRP26part1() {
+	    function getRndExpOutputOfSLang2Prog() {
 		// structure of exp: (fn(p1) => block args1)
 		// p1 contains 1 to 3 integer vars and two function variables 
 		// p2 is 1 to 2 vars such that p1 union p2 = {x,y,z}
@@ -236,18 +236,18 @@
 		// structure of exp: (fn(p1)=>  block1 args1)
 		return SL.absyn.createAppExp(
 		    SL.absyn.createFnExp(all1,block1),args1);
-	    }// getRndExpRP26part1 function
+	    }// getRndExpOutputOfSLang2Prog function
 
-	    function callByValueRP26part1(exp,envir) {
-		var f = evalExpRP26part1(A.getAppExpFn(exp),envir);
-		var args = evalExpsRP26part1(A.getAppExpArgs(exp),envir);
+	    function callByValueOutputOfSLang2Prog(exp,envir) {
+		var f = evalExpOutputOfSLang2Prog(A.getAppExpFn(exp),envir);
+		var args = evalExpsOutputOfSLang2Prog(A.getAppExpArgs(exp),envir);
 		if (E.isClo(f)) {
 		    if (E.getCloParams(f).length !== args.length) {		
 			throw new Error("Runtime error: wrong number of arguments in " +
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP26part1(E.getCloBody(f),
+			var values = evalExpsOutputOfSLang2Prog(E.getCloBody(f),
 					      E.update(E.getCloEnv(f),
 						       E.getCloParams(f),args));
 			return values[values.length-1];
@@ -257,13 +257,13 @@
 		}    
 	    }
 
-	    function evalExpsRP26part1(list,envir) {
-		return list.map( function(e) { return evalExpRP26part1(e,envir); } );
+	    function evalExpsOutputOfSLang2Prog(list,envir) {
+		return list.map( function(e) { return evalExpOutputOfSLang2Prog(e,envir); } );
 	    }
 
 
 
-	    function evalExpRP26part1(exp,envir) {
+	    function evalExpOutputOfSLang2Prog(exp,envir) {
 		if (A.isIntExp(exp)) {
 		    return E.createNum(A.getIntExpValue(exp));
 		}
@@ -271,15 +271,15 @@
 		    return E.lookup(envir,A.getVarExpId(exp));
 		} else if (A.isPrintExp(exp)) {
 		    SL.output += JSON.stringify(
-			evalExpRP26part1( A.getPrintExpExp(exp), envir ));
+			evalExpOutputOfSLang2Prog( A.getPrintExpExp(exp), envir ));
 		} else if (A.isPrint2Exp(exp)) {
 		    SL.output += A.getPrint2ExpString(exp) +
 				 (A.getPrint2ExpExp(exp) !== null ?
-				  " " + JSON.stringify( evalExpRP26part1( A.getPrint2ExpExp(exp), 
+				  " " + JSON.stringify( evalExpOutputOfSLang2Prog( A.getPrint2ExpExp(exp), 
 								 envir ) )
 				  : "");
 		} else if (A.isAssignExp(exp)) {
-		    var v = evalExpRP26part1(A.getAssignExpRHS(exp),envir);
+		    var v = evalExpOutputOfSLang2Prog(A.getAssignExpRHS(exp),envir);
 		    E.lookupReference(
                         envir,A.getAssignExpVar(exp))[0] = v;
 		    return v;
@@ -289,31 +289,31 @@
 		}
 		else if (A.isAppExp(exp)) {
 		    //if (exp.comesFromLetBlock) {
-			return callByValueRP26part1(exp,envir);
+			return callByValueOutputOfSLang2Prog(exp,envir);
 		    //} else {
 		//	switch (SL.ppm) {
-		//	case "byval" : return callByValueRP26part1(exp,envir);
+		//	case "byval" : return callByValueOutputOfSLang2Prog(exp,envir);
 		//	case "byref" : return callByReference(exp,envir);
 		//	case "bycpr" : return callByCopyRestore(exp,envir);
 		//	}
 		//    }
 		} else if (A.isPrimApp1Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp1ExpPrim(exp),
-					     [evalExpRP26part1(A.getPrimApp1ExpArg(exp),envir)]);
+					     [evalExpOutputOfSLang2Prog(A.getPrimApp1ExpArg(exp),envir)]);
 		} else if (A.isPrimApp2Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp2ExpPrim(exp),
-					     [evalExpRP26part1(A.getPrimApp2ExpArg1(exp),envir),
-					      evalExpRP26part1(A.getPrimApp2ExpArg2(exp),envir)]);
+					     [evalExpOutputOfSLang2Prog(A.getPrimApp2ExpArg1(exp),envir),
+					      evalExpOutputOfSLang2Prog(A.getPrimApp2ExpArg2(exp),envir)]);
 		} else if (A.isIfExp(exp)) {
-		    if (E.getBoolValue(evalExpRP26part1(A.getIfExpCond(exp),envir))) {
-			return evalExpRP26part1(A.getIfExpThen(exp),envir);
+		    if (E.getBoolValue(evalExpOutputOfSLang2Prog(A.getIfExpCond(exp),envir))) {
+			return evalExpOutputOfSLang2Prog(A.getIfExpThen(exp),envir);
 		    } else {
-			return evalExpRP26part1(A.getIfExpElse(exp),envir);
+			return evalExpOutputOfSLang2Prog(A.getIfExpElse(exp),envir);
 		    }
 		} else {
 		    throw "Error: Attempting to evaluate an invalid expression";
 		}
-	    }// evalExpRP26part1 function
+	    }// evalExpOutputOfSLang2Prog function
 
 	    // convert two two applications to let expressions
 	    function convertToLetExpressions(exp) {
@@ -373,14 +373,14 @@
 	    while(true) {
 		exp = undefined;
 		iterations++;
-		exp = getRndExpRP26part1();
+		exp = getRndExpOutputOfSLang2Prog();
 		expStr =  convertToLetExpressions(exp);
 		if (expStr.length > 500) { continue; }
 		value = null;
 		try {
 		    expStr = undefined;
 		    SL.output = "";
-		    value = evalExpRP26part1(exp,globalEnv);
+		    value = evalExpOutputOfSLang2Prog(exp,globalEnv);
 		    expStr = convertToLetExpressions(exp);
 		} catch (e) {
 		    //console.log("My exception: ",e);
@@ -410,7 +410,7 @@
 	
     };
 
-    window.RP26part1 = window.RP26part1 || RP26part1;
+    window.OutputOfSLang2Prog = window.OutputOfSLang2Prog || OutputOfSLang2Prog;
 
 }());
 
