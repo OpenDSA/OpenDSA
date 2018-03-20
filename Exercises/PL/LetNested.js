@@ -2,7 +2,7 @@
 (function() {
   "use strict";
 
-    var RP25part2 = {    
+    var LetNested = {    
 
 	init: function() {
 	    var SL = SLang;
@@ -125,7 +125,7 @@
 		return body;
 	    }// getRandomPrimApp function
 
-	    function getRndExpRP25part2() {
+	    function getRndExpLetNested() {
 		// this function is identical to getRndExpRP22part2()
 		// structure of exp: 
 		//     (fn(p1)=>(fn(p2)=>body args2) args1)
@@ -149,7 +149,7 @@
 								       body),
 							 args2)),
 				      args1);
-	    }// getRndExpRP25part2 function
+	    }// getRndExpLetNested function
 	    
 	    // convert two two applications to let expressions
 	    function convertToLetExpressions(exp) {
@@ -184,7 +184,7 @@
 	    }// evalExpRP25part1
 
 	    while (true) {
-		exp = getRndExpRP25part2();
+		exp = getRndExpLetNested();
 		expStr = SL.printExp(exp);
 		if (expStr.length > 150) { continue; }
 		value = null;
@@ -213,7 +213,7 @@
 	
     };
 
-    window.RP25part2 = window.RP25part2 || RP25part2;
+    window.LetNested = window.LetNested || LetNested;
 
 }());
 

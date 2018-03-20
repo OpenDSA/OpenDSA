@@ -202,9 +202,6 @@
     "Interpreting the Functional Language SLang 1": {
       "PL/SLang1": {},
       "PL/Environment": {},
-      "PL/SLang1Interpreter": {},
-      "PL/SLang1InterpreterModifications": {},
-      "PL/SLang1InterpreterReview": {},
       "PL/SLang1withLetExpressions": {}
     },
     "Interpreting the Imperative Language SLang 2": {

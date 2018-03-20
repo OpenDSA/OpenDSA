@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version1.07/scripts/absyn ../../AV/PL/interpreters/version1.07/scripts/env ../../AV/PL/interpreters/version1.07/scripts/grammar ../../AV/PL/interpreters/version1.07/scripts/interpreter PLutils RP25part1" lang="en">
+<html data-require="math ../../AV/PL/interpreters/version1.07/scripts/absyn ../../AV/PL/interpreters/version1.07/scripts/env ../../AV/PL/interpreters/version1.07/scripts/grammar ../../AV/PL/interpreters/version1.07/scripts/interpreter PLutils LetSynSugar" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 25 part 1</title>
+    <title>Let Blocks as Syntactic Sugar</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
@@ -12,12 +12,12 @@
   <body data-height="750" data-width="950">
     <div class="exercise">
 	<div class="vars">
-		<var id="init">RP25part1.init()</var>
-		<var id="expression">RP25part1.expression</var>
+		<var id="init">LetSynSugar.init()</var>
+		<var id="expression">LetSynSugar.expression</var>
 	</div>
 
       <div class="problems">
-        <div class="RP25part1p">
+        <div class="LetSynSugarp">
           <p class="question">Consider the following SLang
 	    1 expression:</p> 
 <pre class="string">
@@ -34,7 +34,7 @@
 	  <div class="solution" data-type="custom">
             <div class="guess">$('#answer').val() </div>
             <div class="validator-function">
-	      return RP25part1.validateAnswer(guess);
+	      return LetSynSugar.validateAnswer(guess);
             </div>
 	  </div>
 	  

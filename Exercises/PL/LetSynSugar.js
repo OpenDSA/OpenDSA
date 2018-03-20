@@ -2,7 +2,7 @@
 (function() {
   "use strict";
 
-    var RP25part1 = {    
+    var LetSynSugar = {    
 
 
 	init: function() {
@@ -44,7 +44,7 @@
 	    }// getRandomFnApp
 
 
-	    function getRndExpRP25part1() {
+	    function getRndExpLetSynSugar() {
 		// this function is identical to getRndExpRP22part2()
 		// structure of exp: (fn(p1)=>(fn(p2)=>body args2) args)
 		// p1 is 1 to 3 vars 
@@ -169,7 +169,7 @@
 		    args);
 
 		return exp;
-	    }// getRndExpRP25part1 function
+	    }// getRndExpLetSynSugar function
 
 	    function getRndExp(min,max) {
 		return SL.absyn.getProgramExp(
@@ -207,10 +207,10 @@
 		letExp.push("    end");
 		letExp.push("end");
 		return letExp;
-	    }// evalExpRP25part1
+	    }// evalExpLetSynSugar
 
 	    while (true) {
-		exp = getRndExpRP25part1();
+		exp = getRndExpLetSynSugar();
 		expStr = SL.printExp(exp);
 		if (expStr.length > 50) { continue; }
 		value = null;
@@ -227,7 +227,8 @@
 
 	    this.expression = expStr.join("<br />");
 	    this.answer = SL.printExp(exp);
-	    
+
+	    //console.log(this.answer);
 	    //console.log(value);
 	},// init function
 
@@ -238,7 +239,7 @@
 	
     };
 
-    window.RP25part1 = window.RP25part1 || RP25part1;
+    window.LetSynSugar = window.LetSynSugar || LetSynSugar;
 
 }());
 

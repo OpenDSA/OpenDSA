@@ -2,7 +2,7 @@
 (function() {
   "use strict";
 
-    var RP25part3 = {    
+    var LetNestedWithClosures = {    
 
 
 	init: function() {
@@ -190,7 +190,7 @@
 		return A.createFnExp(params,body);
 	    }// getRandomFunction function
 
-	    function getRndExpRP25part3() {
+	    function getRndExpLetNestedWithClosures() {
 		// this function is identical to getRndExpRP22part2()
 		// structure of exp: 
 		//     (fn(p1)=>(fn(p2)=>(fn(p3)=>body args3) args2) args1)
@@ -326,7 +326,7 @@
 							 args3)),
 				       args2)),
 		    args1);
-	    }// getRndExpRP25part3 function
+	    }// getRndExpLetNestedWithClosures function
 	    
 	    function getRndExp(min,max) {
 		return A.getProgramExp(
@@ -375,10 +375,10 @@
 		letExp.push("end");
 
 		return letExp;
-	    }// evalExpRP25part3
+	    }// evalExpLetNestedWithClosures
 
 	    while (true) {
-		exp = getRndExpRP25part3();
+		exp = getRndExpLetNestedWithClosures();
 		expStr = SL.printExp(exp);
 		if (expStr.length > 200) { continue; }
 		value = null;
@@ -407,7 +407,7 @@
 	
     };
 
-    window.RP25part3 = window.RP25part3 || RP25part3;
+    window.LetNestedWithClosures = window.LetNestedWithClosures || LetNestedWithClosures;
 
 }());
 
