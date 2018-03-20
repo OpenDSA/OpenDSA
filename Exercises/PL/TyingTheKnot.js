@@ -2,7 +2,7 @@
 (function() {
   "use strict";
 
-    var RP28part1 = {    
+    var TyingTheKnot = {    
 
 
 	init: function() {
@@ -94,7 +94,7 @@
 		return A.createFnExp(vName, [ body ]);
 	    }// makeRecFunction functiom
 
-	    function getRndExpRP28part1() {
+	    function getRndExpTyingTheKnot() {
 		// structure of exp: (fn(p) => (fn(fName)=>body arg) args)
 		// p1 contains 1 to 3 integer vars and two function variables 
 		// p2 is 1 to 2 vars such that p1 union p2 = {x,y,z}
@@ -160,18 +160,18 @@
 				      A.createFnExp(fName,body),
 				      arg ) ] ),
 		    args);
-	    }// getRndExpRP28part1 function
+	    }// getRndExpTyingTheKnot function
 
-	    function callByValueRP28part1(exp,envir) {
-		var f = evalExpRP28part1(A.getAppExpFn(exp),envir);
-		var args = evalExpsRP28part1(A.getAppExpArgs(exp),envir);
+	    function callByValueTyingTheKnot(exp,envir) {
+		var f = evalExpTyingTheKnot(A.getAppExpFn(exp),envir);
+		var args = evalExpsTyingTheKnot(A.getAppExpArgs(exp),envir);
 		if (E.isClo(f)) {
 		    if (E.getCloParams(f).length !== args.length) {		
 			throw new Error("Runtime error: wrong number of arguments in " +
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP28part1(E.getCloBody(f),
+			var values = evalExpsTyingTheKnot(E.getCloBody(f),
 					      E.update(E.getCloEnv(f),
 						       E.getCloParams(f),args));
 			return values[values.length-1];
@@ -181,11 +181,11 @@
 		}    
 	    }
 
-	    function evalExpsRP28part1(list,envir) {
-		return list.map( function(e) { return evalExpRP28part1(e,envir); } );
+	    function evalExpsTyingTheKnot(list,envir) {
+		return list.map( function(e) { return evalExpTyingTheKnot(e,envir); } );
 	    }
 
-	    function evalExpRP28part1(exp,envir) {
+	    function evalExpTyingTheKnot(exp,envir) {
 		if (A.isIntExp(exp)) {
 		    return E.createNum(A.getIntExpValue(exp));
 		}
@@ -193,15 +193,15 @@
 		    return E.lookup(envir,A.getVarExpId(exp));
 		} else if (A.isPrintExp(exp)) {
 		    SL.output += JSON.stringify(
-			evalExpRP28part1( A.getPrintExpExp(exp), envir ));
+			evalExpTyingTheKnot( A.getPrintExpExp(exp), envir ));
 		} else if (A.isPrint2Exp(exp)) {
 		    SL.output += A.getPrint2ExpString(exp) +
 				 (A.getPrint2ExpExp(exp) !== null ?
-				  " " + JSON.stringify( evalExpRP28part1( A.getPrint2ExpExp(exp), 
+				  " " + JSON.stringify( evalExpTyingTheKnot( A.getPrint2ExpExp(exp), 
 								 envir ) )
 				  : "");
 		} else if (A.isAssignExp(exp)) {
-		    var v = evalExpRP28part1(A.getAssignExpRHS(exp),envir);
+		    var v = evalExpTyingTheKnot(A.getAssignExpRHS(exp),envir);
 		    E.lookupReference(
                         envir,A.getAssignExpVar(exp))[0] = v;
 		    return v;
@@ -210,24 +210,24 @@
 				       A.getFnExpBody(exp),envir);
 		}
 		else if (A.isAppExp(exp)) {
-		    return callByValueRP28part1(exp,envir);
+		    return callByValueTyingTheKnot(exp,envir);
 		} else if (A.isPrimApp1Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp1ExpPrim(exp),
-					     [evalExpRP28part1(A.getPrimApp1ExpArg(exp),envir)]);
+					     [evalExpTyingTheKnot(A.getPrimApp1ExpArg(exp),envir)]);
 		} else if (A.isPrimApp2Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp2ExpPrim(exp),
-					     [evalExpRP28part1(A.getPrimApp2ExpArg1(exp),envir),
-					      evalExpRP28part1(A.getPrimApp2ExpArg2(exp),envir)]);
+					     [evalExpTyingTheKnot(A.getPrimApp2ExpArg1(exp),envir),
+					      evalExpTyingTheKnot(A.getPrimApp2ExpArg2(exp),envir)]);
 		} else if (A.isIfExp(exp)) {
-		    if (E.getBoolValue(evalExpRP28part1(A.getIfExpCond(exp),envir))) {
-			return evalExpRP28part1(A.getIfExpThen(exp),envir);
+		    if (E.getBoolValue(evalExpTyingTheKnot(A.getIfExpCond(exp),envir))) {
+			return evalExpTyingTheKnot(A.getIfExpThen(exp),envir);
 		    } else {
-			return evalExpRP28part1(A.getIfExpElse(exp),envir);
+			return evalExpTyingTheKnot(A.getIfExpElse(exp),envir);
 		    }
 		} else {
 		    throw "Error: Attempting to evaluate an invalid expression";
 		}
-	    }// evalExpRP28part1 function
+	    }// evalExpTyingTheKnot function
 
 	    // convert two applications to let expressions
 	    function convertToLetExpressions(exp) {		
@@ -268,14 +268,14 @@
 	    while(true) {
 		exp = undefined;
 		iterations++;
-		exp = getRndExpRP28part1();
+		exp = getRndExpTyingTheKnot();
 		expStr =  convertToLetExpressions(exp);
 		if (expStr.length > 500) { continue; }
 		value = null;
 		try {
 		    expStr = undefined;
 		    SL.output = "";
-		    value = evalExpRP28part1(exp,globalEnv);
+		    value = evalExpTyingTheKnot(exp,globalEnv);
 		    expStr = convertToLetExpressions(exp);
 		} catch (e) {
 		    //console.log("My exception: ",e);
@@ -305,7 +305,7 @@
 	
     };
 
-    window.RP28part1 = window.RP28part1 || RP28part1;
+    window.TyingTheKnot = window.TyingTheKnot || TyingTheKnot;
 
 }());
 
