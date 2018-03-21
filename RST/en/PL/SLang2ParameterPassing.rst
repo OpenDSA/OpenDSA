@@ -17,8 +17,8 @@ This problem will help you review the difference between *call by
 value* and *call by reference*. To earn credit for it, you must
 complete this randomized problem correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP28part2.html ka
-   :long_name: RP set #28, question #2
+.. avembed:: Exercises/PL/CallByValVsRef.html ka
+   :long_name: Call By Value Vs Reference
 
 
 RP 29 Part 1
@@ -29,8 +29,8 @@ value*, *call by reference*, and *call by copy-restore*. To earn credit
 for it, you must complete this randomized problem correctly three
 times in a row.
 
-.. avembed:: Exercises/PL/RP29part1.html ka
-   :long_name: RP set #29, question #1
+.. avembed:: Exercises/PL/CallByValVsRefVsCR.html ka
+   :long_name: Call By Value vs Reference vs CR
 
 
 RP 30 Part 1
@@ -41,8 +41,8 @@ reference*, *call by copy-restore*, and *call by macro*. To earn
 credit, you must complete this randomized problem correctly
 three times in a row.
 
-.. avembed:: Exercises/PL/RP30part1.html ka
-   :long_name: RP set #30, question #1
+.. avembed:: Exercises/PL/CallByRefVsCRVsMacro.html ka
+   :long_name: Ref vs CR vs Macro
 
 RP 31 Part 1
 ------------
@@ -52,8 +52,14 @@ copy-restore*, *call by macro*, and *call by name*. To earn credit
 for it, you must complete this randomized problem correctly three
 times in a row.
 
-.. avembed:: Exercises/PL/RP31part1.html ka
-   :long_name: RP set #31, question #1
+.. .. avembed:: Exercises/PL/RP31part1.html ka
+..    :long_name: CR vs Macro vs Name
+
+.. .. avembed:: Exercises/PL/CRMacroName.html ka
+..    :long_name: CR vs Macro vs Name
+
+.. avembed:: Exercises/PL/CallByCRVsMacroVsName.html ka
+   :long_name: CR vs Macro vs Name
 
 RP 31 Part 2
 ------------
@@ -63,5 +69,9 @@ value*, *call by reference*, *call by copy-restore*, *call by macro*,
 and *call by name*. To earn credit for it, you must complete this
 randomized problem correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP31part2.html ka
+.. avembed:: Exercises/PL/CallByAllFive.html ka
    :long_name: RP set #31, question #2
+
+.. .. avembed:: Exercises/PL/RP31part2.html ka
+..    :long_name: RP set #31, question #2
+	       

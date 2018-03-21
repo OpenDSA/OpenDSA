@@ -2,8 +2,8 @@
 (function() {
   "use strict";
 
-    var RP30part1 = {    
-
+    var CallByAllFive = {    
+	
 	init: function() {
 	    var SL = SLang;
 	    var A = SL.absyn;
@@ -16,13 +16,36 @@
 	    var vs = "xyz";	    
 	    var fs = "fgh";
 	    var exp, expStr;
-	    var value, value2, value3, rnd, iterations;
+	    var value, value2, value3, value4, value5, rnd, iterations;
+	    var values, numDup, i;
 	    var globalEnv = E.update(E.createEmptyEnv(),
 				     ["x","y","z"],
 				     [E.createNum(1),
 				      E.createNum(2),
 				      E.createNum(3)]);
 	    var tooLong = function (s) { return s.length > 3; };
+
+	    // if s is a simple variable or s is <arr>_<int>: return s
+	    // else s = <arr>[<var>]: return <arr>_<value_of_var>
+	    function dealWithArray (s,envir) {	
+	    var tmp = s;
+		var parts, index, indexLeftBrack = s.indexOf("[");
+		if (s.indexOf("_") === -1 && indexLeftBrack === -1) {
+		    return s;
+		}
+		if (indexLeftBrack > -1) {
+		    s = s.charAt(0) + "_" + 
+			s.substring(indexLeftBrack+1,s.length-1);
+		}
+		parts = s.split("_");
+		if (parts[1].match(/\d/)) {
+		    return s;
+		}
+		index = E.getNumValue(
+		    evalExpCallByAllFive(A.createVarExp(parts[1]),
+				     envir));
+		return parts[0] +  "_" + index;
+	    }
 
 	    function getRandomLHS() {
 		var rnd = A.getRnd(0,4);
@@ -158,6 +181,8 @@
 	    }// initRandomParts function
 
 
+
+	    
 	    function getPseudocode() {
 		var i, output = [], line;
 		var left, op ,right;
@@ -192,6 +217,13 @@
 		output.push("}");
 		output.push("int main() {");
 		output.push("  int " + globVar + " = " + mainVal + ";");
+
+		// this change in the call to foo is so that call by ref
+		// and call by name may have different output
+		// thereby making it possible get five different outputs
+		output.push("  foo(" + globVar + ", " +
+				arrName + "[" + globVar + "]);");
+/*
 		if (fooParamConstIndex === 0) {
 		    output.push("  foo(" + arrName + "[" + mainVal + "], " +
 				arrName + "[" + globVar + "]);");
@@ -199,6 +231,7 @@
 		    output.push("  foo(" + arrName + "[" + globVar + "], " +
 				arrName + "[" + mainVal + "]);");
 		}
+*/
 		output.push("  print " + globVar + ";");
 		for(i=0; i<arrLen; i++) {
 		    output.push("  print " + arrName + "[" + i + "];");
@@ -222,7 +255,7 @@
 		    return A.createVarExp(s);
 		}
 	    }
-	    function getRndExpRP30part1() {
+	    function getRndExpCallByAllFive() {
 		/*
 		// structure of exp in peudocode:
 		
@@ -291,6 +324,14 @@
 		fooBodyBlock.push(
 		    A.createPrintExp(A.createVarExp(globVar)));
 		args2.push( A.createFnExp(fooParams,fooBodyBlock) );
+
+
+		// this change in the call to foo is so that call by ref
+		// and call by name may have different output
+		// thereby making it possible get five different outputs
+		args4.push(A.createVarExp(globVar));
+		args4.push(A.createVarExp(arrName + "_" + globVar));
+/*
 		if (fooParamConstIndex === 0) {
 		    args4.push(A.createVarExp(arrName + "_" + mainVal));
 
@@ -301,6 +342,7 @@
 		    args4.push(A.createVarExp(arrName + "_" + mainVal));
 
 		}
+*/
 		fooApp = A.createAppExp(A.createVarExp("foo"), args4);
 		fn3Body = [ fooApp ];
 		fn3Body.push(
@@ -322,18 +364,18 @@
 		app1 = A.createAppExp(fn1,args1);
 		app1.comesFromLetBlock = true;
 		return app1;
-	    }// getRndExpRP30part1 function
+	    }// getRndExpCallByAllFive function
 
-	    function callByValueRP30part1(exp,envir) {
-		var f = evalExpRP30part1(A.getAppExpFn(exp),envir);
-		var args = evalExpsRP30part1(A.getAppExpArgs(exp),envir);
+	    function callByValueCallByAllFive(exp,envir) {
+		var f = evalExpCallByAllFive(A.getAppExpFn(exp),envir);
+		var args = evalExpsCallByAllFive(A.getAppExpArgs(exp),envir);
 		if (E.isClo(f)) {
 		    if (E.getCloParams(f).length !== args.length) {		
 			throw new Error("Runtime error: wrong number of arguments in " +
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP30part1(E.getCloBody(f),
+			var values = evalExpsCallByAllFive(E.getCloBody(f),
 					      E.update(E.getCloEnv(f),
 						       E.getCloParams(f),args));
 			return values[values.length-1];
@@ -343,11 +385,12 @@
 		}    
 	    }
 
-	    function callByReferenceRP30part1(exp,envir) {
-		var f = evalExpRP30part1(A.getAppExpFn(exp),envir);
+	    function callByReferenceCallByAllFive(exp,envir) {
+		var f = evalExpCallByAllFive(A.getAppExpFn(exp),envir);
 		var args = A.getAppExpArgs(exp).map( function (arg) {
 		    if (A.isVarExp(arg)) {
-			return E.lookupReference(envir,dealWithArray(A.getVarExpId(arg),envir));
+			return E.lookupReference(envir,
+						 dealWithArray(A.getVarExpId(arg),envir));
 		    } else {
 			throw new Error("The arguments of a function called by-ref must all be variables.");
 		    }
@@ -358,7 +401,7 @@
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP30part1(E.getCloBody(f),
+			var values = evalExpsCallByAllFive(E.getCloBody(f),
 					      E.updateWithReferences(
 						  E.getCloEnv(f),
 						  E.getCloParams(f),args));
@@ -369,8 +412,8 @@
 		}    
 	    }
 
-	    function callByCopyRestoreRP30part1(exp,envir) {
-		var f = evalExpRP30part1(A.getAppExpFn(exp),envir);
+	    function callByCopyRestoreCallByAllFive(exp,envir) {
+		var f = evalExpCallByAllFive(A.getAppExpFn(exp),envir);
 		var args = A.getAppExpArgs(exp).map( function (arg) {
 		    if (A.isVarExp(arg)) {
 			return E.lookupReference(envir,dealWithArray(A.getVarExpId(arg),envir));
@@ -391,7 +434,7 @@
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP30part1(E.getCloBody(f),
+			var values = evalExpsCallByAllFive(E.getCloBody(f),
 						       E.updateWithReferences(
 							   E.getCloEnv(f),
 							   E.getCloParams(f),copies));
@@ -403,21 +446,19 @@
 		}    
 	    }
 
-	    function evalExpsRP30part1(list,envir) {
-		return list.map( function(e) { return evalExpRP30part1(e,envir); } );
+	    function evalExpsCallByAllFive(list,envir) {
+		return list.map( function(e) { return evalExpCallByAllFive(e,envir); } );
 	    }
 
-
-
-	    function callByMacroRP30part1(exp,envir) {
-		var f = evalExpRP30part1(A.getAppExpFn(exp),envir);
+	    function callByMacroCallByAllFive(exp,envir) {
+		var f = evalExpCallByAllFive(A.getAppExpFn(exp),envir);
 		if (E.isClo(f)) {
 		    if (E.getCloParams(f).length !== A.getAppExpArgs(exp).length) {		
 			throw new Error("Runtime error: wrong number of arguments in " +
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + A.getAppExpArgs(exp).length + " given)");
 		    } else {
-			var values = evalExpsRP30part1(
+			var values = evalExpsCallByAllFive(
 			    E.getCloBody(f).map(
 				function (e) {
 				    return subst(A.getAppExpArgs(exp),
@@ -433,28 +474,27 @@
 		}    
 	    }
 
-	    // if s is a simple variable or s is <arr>_<int>: return s
-	    // else s = <arr>[<var>]: return <arr>_<value_of_var>
-	    function dealWithArray(s,envir) {	
-		var tmp = s;
-		var parts, index, indexLeftBrack = s.indexOf("[");
-		if (s.indexOf("_") === -1 && indexLeftBrack === -1) {
-		    return s;
-		}
-		if (indexLeftBrack > -1) {
-		    s = s.charAt(0) + "_" + 
-			s.substring(indexLeftBrack+1,s.length-1);
-		}
-		parts = s.split("_");
-		if (parts[1].match(/\d/)) {
-		    return s;
-		}
-		index = E.getNumValue(
-		    evalExpRP30part1(A.createVarExp(parts[1]),
-				     envir));
-		return parts[0] +  "_" + index;
-	    }
+	    function callByNameCallByAllFive(exp,envir) {
+		var f = evalExpCallByAllFive(A.getAppExpFn(exp),envir);
+		if (E.isClo(f)) {
+		    if (E.getCloParams(f).length !== A.getAppExpArgs(exp).length) {		
+			throw new Error("Runtime error: wrong number of arguments in " +
+					"a function call (" + E.getCloParams(f).length +
+					" expected but " + A.getAppExpArgs(exp).length + " given)");
+		    } else {
+			var args = A.getAppExpArgs(exp).map(
+			    function (v) { return E.createThunk(v,envir); } );
 
+			var values = evalExpsCallByAllFive(
+			    E.getCloBody(f),
+			    E.update(E.getCloEnv(f), E.getCloParams(f),args));
+			return values[values.length-1];
+		    }
+		} else {
+		    throw f + " is not a closure and thus cannot be applied.";
+		}    
+	    }
+	    
 	    // substitute all variables in args, say ["x","y"] for
 	    // all variables in params, say ["a","b"], respectively, in e
 	    // Note: most of the cases below are not needed for this RP
@@ -511,8 +551,7 @@
 		}
 	    }// subst function
 
-
-	    function evalExpRP30part1(exp,envir) {
+	    function evalExpCallByAllFive(exp,envir) {
 		var v, parts, index, indexLeftBrack;
 		if (A.isIntExp(exp)) {
 		    return E.createNum(A.getIntExpValue(exp));
@@ -522,15 +561,15 @@
 		    return E.lookup(envir,v);
 		} else if (A.isPrintExp(exp)) {
 		    SL.output += JSON.stringify(
-			evalExpRP30part1( A.getPrintExpExp(exp), envir ));
+			evalExpCallByAllFive( A.getPrintExpExp(exp), envir ));
 		} else if (A.isPrint2Exp(exp)) {
 		    SL.output += A.getPrint2ExpString(exp) +
 				 (A.getPrint2ExpExp(exp) !== null ?
-				  " " + JSON.stringify( evalExpRP30part1( A.getPrint2ExpExp(exp), 
+				  " " + JSON.stringify( evalExpCallByAllFive( A.getPrint2ExpExp(exp), 
 								 envir ) )
 				  : "");
 		} else if (A.isAssignExp(exp)) {
-		    v = evalExpRP30part1(A.getAssignExpRHS(exp),envir);
+		    v = evalExpCallByAllFive(A.getAssignExpRHS(exp),envir);
 		    E.lookupReference(
                         envir,dealWithArray(A.getAssignExpVar(exp),envir))[0] = v;
 		    return v;
@@ -540,104 +579,171 @@
 		}
 		else if (A.isAppExp(exp)) {
 		    if (exp.comesFromLetBlock) {
-			return callByValueRP30part1(exp,envir);
+			return callByValueCallByAllFive(exp,envir);
 		    } else {
 			switch (SL.ppm) {
-			case "byval" : return callByValueRP30part1(exp,envir);
-			case "byref" : return callByReferenceRP30part1(exp,envir);
-			case "bycpr" : return callByCopyRestoreRP30part1(exp,envir);
-			case "bymac" : return callByMacroRP30part1(exp,envir);
+			case "byval" : return callByValueCallByAllFive(exp,envir);
+			case "byref" : return callByReferenceCallByAllFive(exp,envir);
+			case "bycpr" : return callByCopyRestoreCallByAllFive(exp,envir);
+			case "bymac" : return callByMacroCallByAllFive(exp,envir);
+			case "bynam" : return callByNameCallByAllFive(exp,envir);
 			}
 		    }
 		} else if (A.isPrimApp1Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp1ExpPrim(exp),
-					     [evalExpRP30part1(A.getPrimApp1ExpArg(exp),envir)]);
+					     [evalExpCallByAllFive(A.getPrimApp1ExpArg(exp),envir)]);
 		} else if (A.isPrimApp2Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp2ExpPrim(exp),
-					     [evalExpRP30part1(A.getPrimApp2ExpArg1(exp),envir),
-					      evalExpRP30part1(A.getPrimApp2ExpArg2(exp),envir)]);
+					     [evalExpCallByAllFive(A.getPrimApp2ExpArg1(exp),envir),
+					      evalExpCallByAllFive(A.getPrimApp2ExpArg2(exp),envir)]);
 		} else if (A.isIfExp(exp)) {
-		    if (E.getBoolValue(evalExpRP30part1(A.getIfExpCond(exp),envir))) {
-			return evalExpRP30part1(A.getIfExpThen(exp),envir);
+		    if (E.getBoolValue(evalExpCallByAllFive(A.getIfExpCond(exp),envir))) {
+			return evalExpCallByAllFive(A.getIfExpThen(exp),envir);
 		    } else {
-			return evalExpRP30part1(A.getIfExpElse(exp),envir);
+			return evalExpCallByAllFive(A.getIfExpElse(exp),envir);
 		    }
 		} else {
 		    throw "Error: Attempting to evaluate an invalid expression";
 		}
-	    }// evalExpRP30part1 function
+	    }// evalExpCallByAllFive function
 
+	    this.dealWithArray = dealWithArray; // needed for env.js 
+             	                      // in version2.00 of the interpreter
 	    iterations = 0;
 	    while(true) {
 		exp = undefined;
 		iterations++;
 		initRandomParts();
+
+/*
+		console.log(JSON.stringify(fooBody));
+
+		globVar = "g";
+		arrName = "c";
+		arrLen = 4;
+		globVal = 2;
+		arrVals = [0,-4,1,2];
+		mainVal = 3;
+		fooParams = ["p","q"];
+		fooBody = [];
+		fooBodyLen = 2;
+		fooBody = [ ["p", -10],  
+			    ["c[g]", 0] 
+			    ];
+*/
+		//fooParamConstIndex = 0;
+
 		this.expression = getPseudocode().join("<br />");
-		exp = getRndExpRP30part1();
-		value = null;
+		exp = getRndExpCallByAllFive();
+		value = value2 = value3 = value4 = value5 = null;
+		// once in a while, with the new params for the call to foo
+		// the foo body sets globVar to a value that outside the 
+		// bounds of the global array; this crashes the interpreter
+		// In such cases, resetting the values above to null will
+		// prevent a crash on line MMMMM below. This way, more while
+		// iterations can be executed until a good example is found
+		// (and, empirically, before the number of iterations
+		// reaches 1000
 		try {
 		    expStr = undefined;
 		    SL.output = "";
+		    SL.ppm = "byval";
+		    value = evalExpCallByAllFive(exp,globalEnv);
+		    this.byvalOutput = 
+			SL.output.match(/-?\d+/g).join(" ");
+		    //console.log(this.byvalOutput);
+		    SL.output = "";
 		    SL.ppm = "byref";
-		    value = evalExpRP30part1(exp,globalEnv);
+		    value2 = evalExpCallByAllFive(exp,globalEnv);
 		    this.byrefOutput = 
 			SL.output.match(/-?\d+/g).join(" ");
+		    //console.log(this.byrefOutput);
 		    SL.output = "";
 		    SL.ppm = "bycpr";
-		    value2 = evalExpRP30part1(exp,globalEnv);
+		    value3 = evalExpCallByAllFive(exp,globalEnv);
 		    this.bycprOutput = 
-			SL.output.match(/-?\d+/g).join(" ");	    
+			SL.output.match(/-?\d+/g).join(" ");
+		    //console.log(this.bycprOutput);
 		    SL.output = "";
 		    SL.ppm = "bymac";
-		    value3 = evalExpRP30part1(exp,globalEnv);
+		    value4 = evalExpCallByAllFive(exp,globalEnv);
 		    this.bymacOutput = 
+			SL.output.match(/-?\d+/g).join(" ");	    
+		    //console.log(this.bymacOutput);
+		    SL.output = "";
+		    SL.ppm = "bynam";
+		    value5 = evalExpCallByAllFive(exp,globalEnv);
+		    this.bynamOutput = 
 			SL.output.match(/-?\d+/g).join(" ");
-
+		    //console.log(this.bynamOutput);
 		} catch (e) {
 		    //console.log("My exception: ",e);
 		}
 
+		values = [ this.byvalOutput, this.byrefOutput, 
+			    this.bycprOutput, this.bymacOutput, 
+			    this.bynamOutput ]; 
+		values.sort();
+		numDup = 0;
+		for(i=0; i<values.length-1; i++) {
+		    if (values[i] === values[i+1]) {
+			numDup++;
+		    }
+		}
+
+		// with the current randomized code, by ref and by need
+		// will (I think) always produce the same output
+		// I counter-example would be with: foo(g,A[g]);
 		if (value !== null && value2 !== null && value3 !== null &&
-		    this.bymacOutput !== this.byrefOutput && 
-		    this.bymacOutput !== this.bycprOutput && 
-		    this.byrefOutput !== this.bycprOutput && 
-		    this.bymacOutput.match(/-?\d+/g)
+		    value4 !== null && value5 !== null &&
+		    numDup === 0   && 
+		    this.byvalOutput.match(/-?\d+/g)    /* line MMMMM */
 		    .filter(tooLong).length === 0 &&
 		    this.byrefOutput.match(/-?\d+/g)
 		    .filter(tooLong).length === 0 &&
 		    this.bycprOutput.match(/-?\d+/g)
+		    .filter(tooLong).length === 0 &&
+		    this.bymacOutput.match(/-?\d+/g)
+		    .filter(tooLong).length === 0 &&
+		    this.bynamOutput.match(/-?\d+/g)
 		    .filter(tooLong).length === 0 ) {
-
+		    
 		    break;
 		}
 
-		if (iterations>500) {
+		if (iterations>1000) {
 		    // not needed locally but might be needed on Canvas
 		    // when the files do not load appropriately???
-		    expStr = ["Something went wrong...",
-			      "Please, reload the page."];
+		    this.expression = ["Something went wrong...",
+			      "Please, reload the page."].join("<br />");
 		    break;
 		}
 	    }
 	    	   
+	    //console.log(this.byvalOutput);
 	    //console.log(this.byrefOutput);
 	    //console.log(this.bycprOutput);
-	    //console.log(this.bymacOutput);	    
+	    //console.log(this.bymacOutput);
+	    //console.log(this.bynamOutput);	    
 	},// init function
 
 	validateAnswer: function (guess) {
-	    return this.byrefOutput.replace(/\s+/g,"") ===
+	    return this.byvalOutput.replace(/\s+/g,"") ===
 		guess[0].replace(/\s+/g,"")  &&
+		this.byrefOutput.replace(/\s+/g,"") ===
+		guess[1].replace(/\s+/g,"")  &&
 		this.bycprOutput.replace(/\s+/g,"") ===
-		guess[1].replace(/\s+/g,"") &&
+		guess[2].replace(/\s+/g,"")  &&
 		this.bymacOutput.replace(/\s+/g,"") ===
-		guess[2].replace(/\s+/g,"");
+		guess[3].replace(/\s+/g,"") &&
+		this.bynamOutput.replace(/\s+/g,"") ===
+		guess[4].replace(/\s+/g,"");
 				 
 	}// validateAnswer function
 	
     };
 
-    window.RP30part1 = window.RP30part1 || RP30part1;
+    window.CallByAllFive = window.CallByAllFive || CallByAllFive;
 
 }());
 

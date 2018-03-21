@@ -133,8 +133,14 @@ function getReference(v,bindings) {
     if (value.length === 0) {
 	return undefined;
     } else if (isThunk(value[0][1][0])) {
-	dealWithArray = (window.RP31part1 && window.RP31part1.dealWithArray) ||
-	    (window.RP31part2 && window.RP31part2.dealWithArray);
+// 	dealWithArray = (window.RP31part1 && window.RP31part1.dealWithArray) ||
+// 	    (window.RP31part2 && window.RP31part2.dealWithArray);
+// 	dealWithArray = (window.RP31part1 && window.RP31part1.dealWithArray) ||
+// 	    (window.RP31part2 && window.RP31part2.dealWithArray) ||
+// 	    (window.CallByCRVsMacroVsName && window.CallByCRVsMacroVsName.dealWithArray) ||
+// 	    (window.CallByAllFive && window.CallByAllFive.dealWithArray);
+	dealWithArray = (window.CallByCRVsMacroVsName && window.CallByCRVsMacroVsName.dealWithArray) ||
+	                (window.CallByAllFive && window.CallByAllFive.dealWithArray);
 	thunkExp = getThunkExp(value[0][1][0]); // must be a VarExp
 	thunkEnv = getThunkEnv(value[0][1][0]);
 	return lookupReference(thunkEnv,

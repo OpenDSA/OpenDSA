@@ -2,8 +2,8 @@
 (function() {
   "use strict";
 
-    var RP31part1 = {    
-	
+    var CallByValVsRefVsCR = {    
+
 	init: function() {
 	    var SL = SLang;
 	    var A = SL.absyn;
@@ -23,28 +23,6 @@
 				      E.createNum(2),
 				      E.createNum(3)]);
 	    var tooLong = function (s) { return s.length > 3; };
-
-	    // if s is a simple variable or s is <arr>_<int>: return s
-	    // else s = <arr>[<var>]: return <arr>_<value_of_var>
-	    function dealWithArray (s,envir) {	
-	    var tmp = s;
-		var parts, index, indexLeftBrack = s.indexOf("[");
-		if (s.indexOf("_") === -1 && indexLeftBrack === -1) {
-		    return s;
-		}
-		if (indexLeftBrack > -1) {
-		    s = s.charAt(0) + "_" + 
-			s.substring(indexLeftBrack+1,s.length-1);
-		}
-		parts = s.split("_");
-		if (parts[1].match(/\d/)) {
-		    return s;
-		}
-		index = E.getNumValue(
-		    evalExpRP31part1(A.createVarExp(parts[1]),
-				     envir));
-		return parts[0] +  "_" + index;
-	    }
 
 	    function getRandomLHS() {
 		var rnd = A.getRnd(0,4);
@@ -179,6 +157,7 @@
 		fooBodyLen = fooBody.length;
 	    }// initRandomParts function
 
+
 	    function getPseudocode() {
 		var i, output = [], line;
 		var left, op ,right;
@@ -243,7 +222,7 @@
 		    return A.createVarExp(s);
 		}
 	    }
-	    function getRndExpRP31part1() {
+	    function getRndExpCallByValVsRefVsCR() {
 		/*
 		// structure of exp in peudocode:
 		
@@ -343,18 +322,18 @@
 		app1 = A.createAppExp(fn1,args1);
 		app1.comesFromLetBlock = true;
 		return app1;
-	    }// getRndExpRP31part1 function
+	    }// getRndExpCallByValVsRefVsCR function
 
-	    function callByValueRP31part1(exp,envir) {
-		var f = evalExpRP31part1(A.getAppExpFn(exp),envir);
-		var args = evalExpsRP31part1(A.getAppExpArgs(exp),envir);
+	    function callByValueCallByValVsRefVsCR(exp,envir) {
+		var f = evalExpCallByValVsRefVsCR(A.getAppExpFn(exp),envir);
+		var args = evalExpsCallByValVsRefVsCR(A.getAppExpArgs(exp),envir);
 		if (E.isClo(f)) {
 		    if (E.getCloParams(f).length !== args.length) {		
 			throw new Error("Runtime error: wrong number of arguments in " +
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP31part1(E.getCloBody(f),
+			var values = evalExpsCallByValVsRefVsCR(E.getCloBody(f),
 					      E.update(E.getCloEnv(f),
 						       E.getCloParams(f),args));
 			return values[values.length-1];
@@ -364,12 +343,11 @@
 		}    
 	    }
 
-	    function callByReferenceRP31part1(exp,envir) {
-		var f = evalExpRP31part1(A.getAppExpFn(exp),envir);
+	    function callByReferenceCallByValVsRefVsCR(exp,envir) {
+		var f = evalExpCallByValVsRefVsCR(A.getAppExpFn(exp),envir);
 		var args = A.getAppExpArgs(exp).map( function (arg) {
 		    if (A.isVarExp(arg)) {
-			return E.lookupReference(envir,
-						 dealWithArray(A.getVarExpId(arg),envir));
+			return E.lookupReference(envir,dealWithArray(A.getVarExpId(arg),envir));
 		    } else {
 			throw new Error("The arguments of a function called by-ref must all be variables.");
 		    }
@@ -380,7 +358,7 @@
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP31part1(E.getCloBody(f),
+			var values = evalExpsCallByValVsRefVsCR(E.getCloBody(f),
 					      E.updateWithReferences(
 						  E.getCloEnv(f),
 						  E.getCloParams(f),args));
@@ -391,8 +369,8 @@
 		}    
 	    }
 
-	    function callByCopyRestoreRP31part1(exp,envir) {
-		var f = evalExpRP31part1(A.getAppExpFn(exp),envir);
+	    function callByCopyRestoreCallByValVsRefVsCR(exp,envir) {
+		var f = evalExpCallByValVsRefVsCR(A.getAppExpFn(exp),envir);
 		var args = A.getAppExpArgs(exp).map( function (arg) {
 		    if (A.isVarExp(arg)) {
 			return E.lookupReference(envir,dealWithArray(A.getVarExpId(arg),envir));
@@ -413,7 +391,7 @@
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP31part1(E.getCloBody(f),
+			var values = evalExpsCallByValVsRefVsCR(E.getCloBody(f),
 						       E.updateWithReferences(
 							   E.getCloEnv(f),
 							   E.getCloParams(f),copies));
@@ -425,112 +403,33 @@
 		}    
 	    }
 
-	    function evalExpsRP31part1(list,envir) {
-		return list.map( function(e) { return evalExpRP31part1(e,envir); } );
+	    function evalExpsCallByValVsRefVsCR(list,envir) {
+		return list.map( function(e) { return evalExpCallByValVsRefVsCR(e,envir); } );
 	    }
 
-	    function callByMacroRP31part1(exp,envir) {
-		var f = evalExpRP31part1(A.getAppExpFn(exp),envir);
-		if (E.isClo(f)) {
-		    if (E.getCloParams(f).length !== A.getAppExpArgs(exp).length) {		
-			throw new Error("Runtime error: wrong number of arguments in " +
-					"a function call (" + E.getCloParams(f).length +
-					" expected but " + A.getAppExpArgs(exp).length + " given)");
-		    } else {
-			var values = evalExpsRP31part1(
-			    E.getCloBody(f).map(
-				function (e) {
-				    return subst(A.getAppExpArgs(exp),
-						 E.getCloParams(f),
-						 e);
-				}
-			    ),
-			    envir);
-			return values[values.length-1];
-		    }
-		} else {
-		    throw f + " is not a closure and thus cannot be applied.";
-		}    
-	    }
-
-	    function callByNameRP31part1(exp,envir) {
-		var f = evalExpRP31part1(A.getAppExpFn(exp),envir);
-		if (E.isClo(f)) {
-		    if (E.getCloParams(f).length !== A.getAppExpArgs(exp).length) {		
-			throw new Error("Runtime error: wrong number of arguments in " +
-					"a function call (" + E.getCloParams(f).length +
-					" expected but " + A.getAppExpArgs(exp).length + " given)");
-		    } else {
-			var args = A.getAppExpArgs(exp).map(
-			    function (v) { return E.createThunk(v,envir); } );
-
-			var values = evalExpsRP31part1(
-			    E.getCloBody(f),
-			    E.update(E.getCloEnv(f), E.getCloParams(f),args));
-			return values[values.length-1];
-		    }
-		} else {
-		    throw f + " is not a closure and thus cannot be applied.";
-		}    
-	    }
-	    
-	    // substitute all variables in args, say ["x","y"] for
-	    // all variables in params, say ["a","b"], respectively, in e
-	    // Note: most of the cases below are not needed for this RP
-	    // and have not been testing
-	    function subst(args,params,exp) {
-		var output, v, index, ps, body, newArgs, newParams, i;
-		if (A.isIntExp(exp)) { return exp; }
-		else if (A.isVarExp(exp)) {
-		    v = A.getVarExpId(exp);
-		    index = params.indexOf(v);
-		    if (index === -1) { return exp; }
-		    else { return args[index]; }
-		} else if (A.isPrintExp(exp)) {
-		    return A.createPrintExp(
-			subst(args,params,A.getPrintExpExp(exp)));
-		} else if (A.isPrint2Exp(exp)) {
-		    throw new Error("Print2Exp not yet handled in subst().");
-		} else if (A.isPrimApp1Exp(exp)) {
-		    return A.createPrimApp1Exp(
-			A.getPrimApp1ExpPrim(exp),
-			subst(args,params,A.getPrimApp1ExpArg(exp)));
-		} else if (A.isPrimApp2Exp(exp)) {
-		    return A.createPrimApp2Exp(
-			A.getPrimApp2ExpPrim(exp),
-			subst(args,params,A.getPrimApp2ExpArg1(exp)),
-			subst(args,params,A.getPrimApp2ExpArg2(exp)));
-		} else if (A.isIfExp(exp)) {
-		    return A.createIfExp(
-			subst(args,params,A.getIfExpCond(exp)),
-			subst(args,params,A.getIfExpThen(exp)),
-			subst(args,params,A.getIfExpElse(exp)));
-		} else if (A.isAppExp(exp)) {
-		    return A.createAppExp(
-			subst(args,params,A.getAppExpFn(exp)),
-			subst(args,params,A.getAppExpArgs(exp)));
-		} else if (A.isAssignExp(exp)) {
-		    v = A.getAssignExpVar(exp);
-		    index = params.indexOf(v);
-		    return A.createAssignExp(
-			index === -1 ? v : A.getVarExpId(args[index]),
-			subst(args,params,A.getAssignExpRHS(exp)));
-		} else if (A.isFmnExp(exp)) {
-		    ps = A.getFnExpParams(exp);
-		    body = A.getFnExpBody(exp);
-		    newArgs = [];
-		    newParams = [];
-		    for(i=0; i<params.length; i++) {
-			if (ps.indexOf(params[i])===-1) {
-			    newArgs.push(args[i]);
-			    newParams.push(params[i]);
-			}
-		    }
-		    return A.createFnExp(ps,subst(newArgs,newParams,body));
+	    // if s is a simple variable or s is <arr>_<int>: return s
+	    // else s = <arr>[<var>]: return <arr>_<value_of_var>
+	    function dealWithArray(s,envir) {	
+		var tmp = s;
+		var parts, index, indexLeftBrack = s.indexOf("[");
+		if (s.indexOf("_") === -1 && indexLeftBrack === -1) {
+		    return s;
 		}
-	    }// subst function
+		if (indexLeftBrack > -1) {
+		    s = s.charAt(0) + "_" + 
+			s.substring(indexLeftBrack+1,s.length-1);
+		}
+		parts = s.split("_");
+		if (parts[1].match(/\d/)) {
+		    return s;
+		}
+		index = E.getNumValue(
+		    evalExpCallByValVsRefVsCR(A.createVarExp(parts[1]),
+				     envir));
+		return parts[0] +  "_" + index;
+	    }
 
-	    function evalExpRP31part1(exp,envir) {
+	    function evalExpCallByValVsRefVsCR(exp,envir) {
 		var v, parts, index, indexLeftBrack;
 		if (A.isIntExp(exp)) {
 		    return E.createNum(A.getIntExpValue(exp));
@@ -540,15 +439,15 @@
 		    return E.lookup(envir,v);
 		} else if (A.isPrintExp(exp)) {
 		    SL.output += JSON.stringify(
-			evalExpRP31part1( A.getPrintExpExp(exp), envir ));
+			evalExpCallByValVsRefVsCR( A.getPrintExpExp(exp), envir ));
 		} else if (A.isPrint2Exp(exp)) {
 		    SL.output += A.getPrint2ExpString(exp) +
 				 (A.getPrint2ExpExp(exp) !== null ?
-				  " " + JSON.stringify( evalExpRP31part1( A.getPrint2ExpExp(exp), 
+				  " " + JSON.stringify( evalExpCallByValVsRefVsCR( A.getPrint2ExpExp(exp), 
 								 envir ) )
 				  : "");
 		} else if (A.isAssignExp(exp)) {
-		    v = evalExpRP31part1(A.getAssignExpRHS(exp),envir);
+		    v = evalExpCallByValVsRefVsCR(A.getAssignExpRHS(exp),envir);
 		    E.lookupReference(
                         envir,dealWithArray(A.getAssignExpVar(exp),envir))[0] = v;
 		    return v;
@@ -558,107 +457,103 @@
 		}
 		else if (A.isAppExp(exp)) {
 		    if (exp.comesFromLetBlock) {
-			return callByValueRP31part1(exp,envir);
+			return callByValueCallByValVsRefVsCR(exp,envir);
 		    } else {
 			switch (SL.ppm) {
-			case "byval" : return callByValueRP31part1(exp,envir);
-			case "byref" : return callByReferenceRP31part1(exp,envir);
-			case "bycpr" : return callByCopyRestoreRP31part1(exp,envir);
-			case "bymac" : return callByMacroRP31part1(exp,envir);
-			case "bynam" : return callByNameRP31part1(exp,envir);
+			case "byval" : return callByValueCallByValVsRefVsCR(exp,envir);
+			case "byref" : return callByReferenceCallByValVsRefVsCR(exp,envir);
+			case "bycpr" : return callByCopyRestoreCallByValVsRefVsCR(exp,envir);
 			}
 		    }
 		} else if (A.isPrimApp1Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp1ExpPrim(exp),
-					     [evalExpRP31part1(A.getPrimApp1ExpArg(exp),envir)]);
+					     [evalExpCallByValVsRefVsCR(A.getPrimApp1ExpArg(exp),envir)]);
 		} else if (A.isPrimApp2Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp2ExpPrim(exp),
-					     [evalExpRP31part1(A.getPrimApp2ExpArg1(exp),envir),
-					      evalExpRP31part1(A.getPrimApp2ExpArg2(exp),envir)]);
+					     [evalExpCallByValVsRefVsCR(A.getPrimApp2ExpArg1(exp),envir),
+					      evalExpCallByValVsRefVsCR(A.getPrimApp2ExpArg2(exp),envir)]);
 		} else if (A.isIfExp(exp)) {
-		    if (E.getBoolValue(evalExpRP31part1(A.getIfExpCond(exp),envir))) {
-			return evalExpRP31part1(A.getIfExpThen(exp),envir);
+		    if (E.getBoolValue(evalExpCallByValVsRefVsCR(A.getIfExpCond(exp),envir))) {
+			return evalExpCallByValVsRefVsCR(A.getIfExpThen(exp),envir);
 		    } else {
-			return evalExpRP31part1(A.getIfExpElse(exp),envir);
+			return evalExpCallByValVsRefVsCR(A.getIfExpElse(exp),envir);
 		    }
 		} else {
 		    throw "Error: Attempting to evaluate an invalid expression";
 		}
-	    }// evalExpRP31part1 function
+	    }// evalExpCallByValVsRefVsCR function
 
-	    this.dealWithArray = dealWithArray; // needed for env.js 
-             	                      // in version2.00 of the interpreter
 	    iterations = 0;
 	    while(true) {
 		exp = undefined;
 		iterations++;
 		initRandomParts();
 		this.expression = getPseudocode().join("<br />");
-		exp = getRndExpRP31part1();
+		exp = getRndExpCallByValVsRefVsCR();
 		value = null;
 		try {
 		    expStr = undefined;
 		    SL.output = "";
+		    SL.ppm = "byval";
+		    value = evalExpCallByValVsRefVsCR(exp,globalEnv);
+		    this.byvalOutput = 
+			SL.output.match(/-?\d+/g).join(" ");
+		    SL.output = "";
+		    SL.ppm = "byref";
+		    value2 = evalExpCallByValVsRefVsCR(exp,globalEnv);
+		    this.byrefOutput = 
+			SL.output.match(/-?\d+/g).join(" ");
+		    SL.output = "";
 		    SL.ppm = "bycpr";
-		    value = evalExpRP31part1(exp,globalEnv);
+		    value3 = evalExpCallByValVsRefVsCR(exp,globalEnv);
 		    this.bycprOutput = 
-			SL.output.match(/-?\d+/g).join(" ");
-		    SL.output = "";
-		    SL.ppm = "bymac";
-		    value2 = evalExpRP31part1(exp,globalEnv);
-		    this.bymacOutput = 
 			SL.output.match(/-?\d+/g).join(" ");	    
-		    SL.output = "";
-		    SL.ppm = "bynam";
-		    value3 = evalExpRP31part1(exp,globalEnv);
-		    this.bynamOutput = 
-			SL.output.match(/-?\d+/g).join(" ");
-
 		} catch (e) {
 		    //console.log("My exception: ",e);
 		}
 
+
 		if (value !== null && value2 !== null && value3 !== null &&
-		    this.bycprOutput !== this.bymacOutput && 
-		    this.bycprOutput !== this.bynamOutput && 
-		    this.bymacOutput !== this.bynamOutput && 
+		    this.byvalOutput !== this.byrefOutput && 
+		    this.byvalOutput !== this.bycprOutput && 
+		    this.byrefOutput !== this.bycprOutput && 
+		    this.byvalOutput.match(/-?\d+/g)
+		    .filter(tooLong).length === 0 &&
+		    this.byrefOutput.match(/-?\d+/g)
+		    .filter(tooLong).length === 0 &&
 		    this.bycprOutput.match(/-?\d+/g)
-		    .filter(tooLong).length === 0 &&
-		    this.bymacOutput.match(/-?\d+/g)
-		    .filter(tooLong).length === 0 &&
-		    this.bynamOutput.match(/-?\d+/g)
 		    .filter(tooLong).length === 0 ) {
-		    
+
 		    break;
 		}
+
 
 		if (iterations>500) {
 		    // not needed locally but might be needed on Canvas
 		    // when the files do not load appropriately???
-		    this.expression = ["Something went wrong...",
-			      "Please, reload the page."].join("<br />");
+		    expStr = ["Something went wrong...",
+			      "Please, reload the page."];
 		    break;
 		}
 	    }
 	    	   
+	    //console.log(this.byvalOutput);
+	    //console.log(this.byrefOutput);
 	    //console.log(this.bycprOutput);
-	    //console.log(this.bymacOutput);
-	    //console.log(this.bynamOutput);	    
 	},// init function
 
 	validateAnswer: function (guess) {
-	    return this.bycprOutput.replace(/\s+/g,"") ===
+	    return this.byvalOutput.replace(/\s+/g,"") ===
 		guess[0].replace(/\s+/g,"")  &&
-		this.bymacOutput.replace(/\s+/g,"") ===
-		guess[1].replace(/\s+/g,"") &&
-		this.bynamOutput.replace(/\s+/g,"") ===
+		this.byrefOutput.replace(/\s+/g,"") ===
+		guess[1].replace(/\s+/g,"")  &&
+		this.bycprOutput.replace(/\s+/g,"") ===
 		guess[2].replace(/\s+/g,"");
-				 
 	}// validateAnswer function
 	
     };
 
-    window.RP31part1 = window.RP31part1 || RP31part1;
+    window.CallByValVsRefVsCR = window.CallByValVsRefVsCR || CallByValVsRefVsCR;
 
 }());
 
