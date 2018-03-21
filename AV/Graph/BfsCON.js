@@ -2,22 +2,20 @@
 /*global alert: true, ODSA */
 $(document).ready(function() {
 
-  var av_name = "BfsCON";
-  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
-  var av = new JSAV(av_name);
+  var av = new JSAV("BfsCON");
   var g;
   var arr;
   var a, b, c, d, e, f;
   var firstElement;
   var lastElement;
 
-  g = av.ds.graph({width: 500, height: 500, left: 0, top: 50, layout: "manual", directed: true});
-  arr = av.ds.array(["","","","","",""],  {left: 400, top: 150});
+  g = av.ds.graph({width: 500, height: 360, layout: "manual", directed: true});
+  arr = av.ds.array(["","","","","",""],  {left: 600, top: 125});
   firstElement = 0;
   lastElement = 0;
   initGraph();
   g.layout();
-  av.umsg("Let's look at the details of how a bre adth-first seach works.");
+  av.umsg("Let's look at the details of how a breadth-first seach works.");
   av.displayInit();
   markIt(g.nodes()[0]);
   av.step();
@@ -64,6 +62,8 @@ function bfs(start) {
       if(!adjNode[0].hasClass("marked")) {
         markIt(adjNode[0]);
         av.step();
+        adjNode[0].edgeFrom(node).addClass("markpath");
+        av.step();
         q.push(adjNode[0]);
         adjNode.shift();
         console.log("adjNode after pop " + adjNode[0]);
@@ -90,6 +90,7 @@ function initGraph() {
   f = g.addNode("F", {"left":325, "top":250});
   g.addEdge(a, c);
   g.addEdge(a, e);
+  g.addEdge(c, e);
   g.addEdge(c, b);
   g.addEdge(c, d);
   g.addEdge(c, f);
@@ -108,6 +109,7 @@ function finalGraph() {
   g.removeEdge(f, e);
   g.removeEdge(f, d);
   g.removeEdge(f, b);
-}
+  g.removeEdge(c, e);
 
+}
 });

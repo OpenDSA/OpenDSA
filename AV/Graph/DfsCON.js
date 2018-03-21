@@ -1,17 +1,17 @@
 /*global ODSA */
+"use strict";
+
 $(document).ready(function() {
-  "use strict";
-  var av_name = "DfsCON";
-  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
-  var av = new JSAV(av_name);
+  var av = new JSAV("DfsCON");
   var g;
   var arr;
   var a, b, c, d, e, f;
   var size;
 
-  g = av.ds.graph({width: 500, height: 500, layout: "manual", directed: true});
-  arr = av.ds.array([" "," "," ", " ", " "],{layout: "vertical"});
-  arr.css({"left": "300px", "bottom": "500px", "width": "30px"});
+  g = av.ds.graph({width: 500, height: 360, layout: "manual", directed: true});
+  arr = av.ds.array(["","","","","",""],  {left: 700, top: 50, layout: "vertical", width: "30px"});
+  //arr = av.ds.array([" "," "," ", " ", " "],{layout: "vertical"});
+  //arr.css({"left": "250px", "bottom": "325px", "width": "30px"});
   size = 4;
   initGraph();
   av.displayInit();
@@ -24,7 +24,7 @@ $(document).ready(function() {
 
 
 function initGraph() {
-  a = g.addNode("A", {"left": 25});
+  a = g.addNode("A", {"left":25});
   b = g.addNode("B", {"left": 325});
   c = g.addNode("C", {"left": 145, "top": 75});
   d = g.addNode("D", {"left":145, "top": 200});
