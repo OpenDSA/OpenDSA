@@ -2,7 +2,7 @@
 (function() {
   "use strict";
 
-    var RP28part2 = {    
+    var CallByValVsRef = {    
 
 
 	init: function() {
@@ -242,7 +242,7 @@
 		
 		return code;
 	    }
-	    function getRndExpRP28part2() {
+	    function getRndExpCallByValVsRef() {
 		// structure of exp: 
 		//  let x =<int> y = <int>
 		//      f = fn (a,b) => let notUsed=-1 in  body1 end
@@ -285,18 +285,18 @@
 		output.v1 = v1;		
 		output.v2 = v2;
 		return output;
-	    }// getRndExpRP28part2 function
+	    }// getRndExpCallByValVsRef function
 
-	    function callByValueRP28part2(exp,envir) {
-		var f = evalExpRP28part2(A.getAppExpFn(exp),envir);
-		var args = evalExpsRP28part2(A.getAppExpArgs(exp),envir);
+	    function callByValueCallByValVsRef(exp,envir) {
+		var f = evalExpCallByValVsRef(A.getAppExpFn(exp),envir);
+		var args = evalExpsCallByValVsRef(A.getAppExpArgs(exp),envir);
 		if (E.isClo(f)) {
 		    if (E.getCloParams(f).length !== args.length) {		
 			throw new Error("Runtime error: wrong number of arguments in " +
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP28part2(E.getCloBody(f),
+			var values = evalExpsCallByValVsRef(E.getCloBody(f),
 					      E.update(E.getCloEnv(f),
 						       E.getCloParams(f),args));
 			return values[values.length-1];
@@ -306,8 +306,8 @@
 		}    
 	    }
 
-	    function callByReferenceRP28part2(exp,envir) {
-		var f = evalExpRP28part2(A.getAppExpFn(exp),envir);
+	    function callByReferenceCallByValVsRef(exp,envir) {
+		var f = evalExpCallByValVsRef(A.getAppExpFn(exp),envir);
 		var args = A.getAppExpArgs(exp).map( function (arg) {
 		    if (A.isVarExp(arg)) {
 			return E.lookupReference(envir,A.getVarExpId(arg));
@@ -321,7 +321,7 @@
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP28part2(E.getCloBody(f),
+			var values = evalExpsCallByValVsRef(E.getCloBody(f),
 					      E.updateWithReferences(
 						  E.getCloEnv(f),
 						  E.getCloParams(f),args));
@@ -332,13 +332,13 @@
 		}    
 	    }
 
-	    function evalExpsRP28part2(list,envir) {
-		return list.map( function(e) { return evalExpRP28part2(e,envir); } );
+	    function evalExpsCallByValVsRef(list,envir) {
+		return list.map( function(e) { return evalExpCallByValVsRef(e,envir); } );
 	    }
 
 
 
-	    function evalExpRP28part2(exp,envir) {
+	    function evalExpCallByValVsRef(exp,envir) {
 		if (A.isIntExp(exp)) {
 		    return E.createNum(A.getIntExpValue(exp));
 		}
@@ -346,15 +346,15 @@
 		    return E.lookup(envir,A.getVarExpId(exp));
 		} else if (A.isPrintExp(exp)) {
 		    SL.output += JSON.stringify(
-			evalExpRP28part2( A.getPrintExpExp(exp), envir ));
+			evalExpCallByValVsRef( A.getPrintExpExp(exp), envir ));
 		} else if (A.isPrint2Exp(exp)) {
 		    SL.output += A.getPrint2ExpString(exp) +
 				 (A.getPrint2ExpExp(exp) !== null ?
-				  " " + JSON.stringify( evalExpRP28part2( A.getPrint2ExpExp(exp), 
+				  " " + JSON.stringify( evalExpCallByValVsRef( A.getPrint2ExpExp(exp), 
 								 envir ) )
 				  : "");
 		} else if (A.isAssignExp(exp)) {
-		    var v = evalExpRP28part2(A.getAssignExpRHS(exp),envir);
+		    var v = evalExpCallByValVsRef(A.getAssignExpRHS(exp),envir);
 		    E.lookupReference(
                         envir,A.getAssignExpVar(exp))[0] = v;
 		    return v;
@@ -364,45 +364,45 @@
 		}
 		else if (A.isAppExp(exp)) {
 		    if (exp.comesFromLetBlock) {
-			return callByValueRP28part2(exp,envir);
+			return callByValueCallByValVsRef(exp,envir);
 		    } else {
 			switch (SL.ppm) {
-			case "byval" : return callByValueRP28part2(exp,envir);
-			case "byref" : return callByReferenceRP28part2(exp,envir);
+			case "byval" : return callByValueCallByValVsRef(exp,envir);
+			case "byref" : return callByReferenceCallByValVsRef(exp,envir);
 			}
 		    }
 		} else if (A.isPrimApp1Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp1ExpPrim(exp),
-					     [evalExpRP28part2(A.getPrimApp1ExpArg(exp),envir)]);
+					     [evalExpCallByValVsRef(A.getPrimApp1ExpArg(exp),envir)]);
 		} else if (A.isPrimApp2Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp2ExpPrim(exp),
-					     [evalExpRP28part2(A.getPrimApp2ExpArg1(exp),envir),
-					      evalExpRP28part2(A.getPrimApp2ExpArg2(exp),envir)]);
+					     [evalExpCallByValVsRef(A.getPrimApp2ExpArg1(exp),envir),
+					      evalExpCallByValVsRef(A.getPrimApp2ExpArg2(exp),envir)]);
 		} else if (A.isIfExp(exp)) {
-		    if (E.getBoolValue(evalExpRP28part2(A.getIfExpCond(exp),envir))) {
-			return evalExpRP28part2(A.getIfExpThen(exp),envir);
+		    if (E.getBoolValue(evalExpCallByValVsRef(A.getIfExpCond(exp),envir))) {
+			return evalExpCallByValVsRef(A.getIfExpThen(exp),envir);
 		    } else {
-			return evalExpRP28part2(A.getIfExpElse(exp),envir);
+			return evalExpCallByValVsRef(A.getIfExpElse(exp),envir);
 		    }
 		} else {
 		    throw "Error: Attempting to evaluate an invalid expression";
 		}
-	    }// evalExpRP28part2 function
+	    }// evalExpCallByValVsRef function
 
 	    iterations = 0;
 	    while(true) {
 		exp = undefined;
 		iterations++;
-		exp = getRndExpRP28part2();
+		exp = getRndExpCallByValVsRef();
 		expStr =  convertToCppSyntax(exp);
 		value = null;
 		try {
 		    expStr = undefined;
 		    SL.output = "";
 		    SL.ppm = "byval";
-		    value = evalExpRP28part2(exp,globalEnv);
+		    value = evalExpCallByValVsRef(exp,globalEnv);
 		    SL.ppm = "byref";
-		    value2 = evalExpRP28part2(exp,globalEnv);
+		    value2 = evalExpCallByValVsRef(exp,globalEnv);
 		    expStr = convertToCppSyntax(exp);
 		} catch (e) {
 		    //console.log("My exception: ",e);
@@ -437,7 +437,7 @@
 	
     };
 
-    window.RP28part2 = window.RP28part2 || RP28part2;
+    window.CallByValVsRef = window.CallByValVsRef || CallByValVsRef;
 
 }());
 
