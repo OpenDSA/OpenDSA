@@ -66,7 +66,7 @@
 	return code;
     }// generateCode function
 
-    var RP33part1 = {    
+    var InfSeq3 = {    
 	init: function() {
 	    initRandomParts();
 	    var callToSeq = "is.take(seq," + (index+1) + ");";
@@ -84,8 +84,8 @@
 	    return this.answer.replace(/\s+/g,"") ===
 		studentAnswer.replace(/\s+/g,"");
 	}
-    };// RP33part1  
+    };// InfSeq3  
 
-    window.RP33part1 = window.RP33part1 || RP33part1;
+    window.InfSeq3 = window.InfSeq3 || InfSeq3;
 }());
 

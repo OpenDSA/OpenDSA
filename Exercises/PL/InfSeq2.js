@@ -37,7 +37,7 @@
 	return true;
     }
 
-    var RP32part2 = {    
+    var InfSeq2 = {    
 	init: function() {
 	    randomDigit = 2 + Math.floor(8 * Math.random());
 	    var functions = [
@@ -505,8 +505,8 @@ if (is.hd(s1) > is.hd(s2)) {
 	    // return this.answer === studentAnswer.replace(/\s+/g,"");
 	    return passTests;
 	}
-    };// RP32part2  
+    };// InfSeq2  
 
-    window.RP32part2 = window.RP32part2 || RP32part2;
+    window.InfSeq2 = window.InfSeq2 || InfSeq2;
 }());
 

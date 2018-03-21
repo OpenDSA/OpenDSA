@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-require="math InfiniteSequence RP32part2 PLutils" lang="en">
+<html data-require="math InfiniteSequence InfSeq2 PLutils" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 32 part 2</title>
+    <title>Writing Infinite Sequence Code</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
@@ -11,13 +11,13 @@
   <body data-height="1100" data-width="950">
     <div class="exercise">
       <div class="vars">
-        <var id="setup">RP32part2.init()</var>
-        <var id="answer">RP32part2.answer</var>
-        <var id="functionDisplayed">RP32part2.functionDisplayed</var>        
-	<var id="initialStatement">RP32part2.initialStatement</var>
+        <var id="setup">InfSeq2.init()</var>
+        <var id="answer">InfSeq2.answer</var>
+        <var id="functionDisplayed">InfSeq2.functionDisplayed</var>        
+	<var id="initialStatement">InfSeq2.initialStatement</var>
       </div>
       <div class="problems">
-        <div id="RP32part2p">
+        <div id="InfSeq2p">
           <p class="question">
             <var>initialStatement</var></p>
 <pre class="string">
@@ -48,7 +48,7 @@
             <div class="solution" data-type="custom">
               <div class="guess"> $('#answerTextarea').val()  </div>
               <div class="validator-function">
-		return RP32part2.checkAnswer(guess);
+		return InfSeq2.checkAnswer(guess);
             </div>
           </div>
           <div class="hints">
