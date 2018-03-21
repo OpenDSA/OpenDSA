@@ -66,10 +66,10 @@
   },
   "chapters": {
     "Sorting": {
-      "Sorting/InSort": {},
-      "Sorting/SortNotation": {},
-      "Design/Comparison": {},
-      "Sorting/InsertionSort": {}
+      "Graph/GraphIntro": {},
+      "Graph/GraphImpl": {},
+      "Graph/GraphTraversal1": {},
+      "Graph/GraphTopsort1": {}
     },
     "Appendix": {
       "Glossary": {},

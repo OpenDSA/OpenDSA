@@ -101,12 +101,6 @@ DFS can be applied to directed or undirected graphs.
 
 Here is an implementation for the DFS algorithm.
 
-.. inlineav:: DfsCON ss
-   :long_name: Depth-First Search Slideshow
-   :links: AV/Graph/DfsCON.css
-   :scripts: AV/Graph/DfsCON.js
-   :output: show
-
 .. codeinclude:: Graphs/DFS
    :tag: DFS
 
@@ -125,6 +119,12 @@ This would be a natural opportunity to make use of the
 
 This visualization shows a graph and the result of performing a DFS on
 it, resulting in a depth-first search tree.
+
+.. inlineav:: DfsCON ss
+   :long_name: Depth-First Search Slideshow
+   :links: AV/Graph/DfsCON.css
+   :scripts: AV/Graph/DfsCON.js
+   :output: show
 
 DFS processes each edge once in a directed graph.
 In an undirected graph, DFS processes each edge from both
@@ -151,17 +151,13 @@ Note that if the graph is a tree and the start vertex is at the root,
 BFS is equivalent to visiting vertices level by level from top to
 bottom.
 
-.. TODO::
-   :type: Slideshow
-
-   Provide a slideshow to demonstrate BFS.
-
 Here is an implementation for BFS.
 
 .. codeinclude:: Graphs/BFS
    :tag: BFS
 
-Here is an AV for you to try it on other graphs.
+This visualization shows a graph and the result of performing a BFS on
+it, resulting in a breadth-first search tree.
 
 .. inlineav:: BfsCON ss
    :long_name: Breadth-First Search Slideshow
@@ -171,10 +167,5 @@ Here is an AV for you to try it on other graphs.
 
 Here is an exercise to practice BFS.
 
-.. avembed:: AV/Graph/graphBFSPE1 .html pe
+.. avembed:: AV/Graph/graphBFSPE1.html pe
    :long_name: BFS Proficiency Exercise
-
-.. TODO::
-   :type: Exercise
-
-   Summary exercise for graph traversals.

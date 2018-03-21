@@ -8,7 +8,7 @@ $(document).ready(function() {
   var arr;
   var a, b, c, d, e, f;
   var size;
-  
+
   g = av.ds.graph({width: 500, height: 500, layout: "manual", directed: true});
   arr = av.ds.array([" "," "," ", " ", " "],{layout: "vertical"});
   arr.css({"left": "300px", "bottom": "500px", "width": "30px"});
@@ -56,11 +56,10 @@ function preVisit(node, prev) {
   arr.value(size, node.value());
   size--;
   if (prev) {
-    //node.edgeFrom(addClass("markpath"));
+    node.edgeFrom(prev).addClass("markpath");
     //node.edgeFrom(prev).css({"stroke": "red", "stroke-width": "3", "stroke-height": "1"});
     //g.addEdge(prev, node, {weight: 10});
-    node.edgeFrom(prev).css({"stroke": "red", "stroke-width": "3"});
-
+    //node.edgeFrom(prev).css({"stroke-width": "3", "stroke": "red"});
     }
   av.step();
 }
