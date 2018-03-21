@@ -10,3 +10,7 @@
 .jsavline{
   height: 50px;
 }
+.jsavedge.markpath{
+  stroke-width: 4;
+  stroke: #f61010; //red
+}
