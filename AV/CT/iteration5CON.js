@@ -69,16 +69,18 @@ $(document).ready(function() {
   av.g.rect(rect_left, top5, 110, 170, 10).addClass("purplebox");
   av.g.rect(rect_left, top5, 50, 15).addClass("purplebox");
 
-  //mid set count boxes 1 ( and "set count = ..." blue box )
+  // ------------------ top 7 first mid boxes, set count = count + 1
   var top7 = top5 + 40;
   av.g.rect(rect_left + 130, top7, 180, 33, 10).addClass("bluebox");
+  av.g.rect(rect_left + 175, top7 + 4, 60, 20, 5).addClass("blueboxlight"); // white box for count
   av.g.rect(rect_left + 253, top7 + 8, 20, 15, 15).addClass("calbox");
   av.g.rect(rect_left + 270, top7, 120, 33, 10).addClass("calbox");
   var box3 = av.g.rect(rect_left + 130, top7, 260, 33, 10).addClass("emptybox");
 
-  //mid blue/calculate boxes 2 ( and "set total = ..." blue box )
+  // ------------------ top 7 first mid boxes, set count = count + 1
   var top8 = top7 + 40;
   av.g.rect(rect_left + 130, top8, 160, 33, 10).addClass("bluebox");
+  av.g.rect(rect_left + 175, top8 + 4, 50, 20, 5).addClass("blueboxlight"); // white box for total
   av.g.rect(rect_left + 243, top8 + 8, 20, 15, 15).addClass("calbox");
   av.g.rect(rect_left + 260, top8, 130, 33, 10).addClass("calbox");
   var box4 = av.g.rect(rect_left + 130, top8, 260, 33, 10).addClass("emptybox");
@@ -106,7 +108,7 @@ $(document).ready(function() {
   // box 2 text
   av.label("set", {left: rect_left + 15, top: top2 - 19}).addClass("valLabels");
   av.label("total", {left: rect_left + 52, top: top2 - 19}).addClass("valBlackLabels");
-  av.label("=", {left: rect_left + 102, top: top2 - 21}).addClass("valLabels");
+  av.label("=", {left: rect_left + 105, top: top2 - 21}).addClass("valLabels");
   av.label("0", {left: rect_left + 153, top: top2 - 18}).addClass("valBlackLabels");
 
   //for each iteam label inside of purple for loop box
@@ -121,13 +123,13 @@ $(document).ready(function() {
   //set total = total + price label for the mid boxes inside of for loop iteration
   av.label("set", {left: rect_left + 140, top: top5 + 18}).addClass("valLabels");
   av.label("count", {left: rect_left + 175, top: top5 + 18}).addClass("valBlackLabels");
-  av.label("=", {left: rect_left + 235, top: top5 + 18}).addClass("valLabels");
+  av.label("=", {left: rect_left + 237, top: top5 + 18}).addClass("valLabels");
   av.label("count + 1", {left: rect_left + 283, top: top5 + 18}).addClass("valBlackLabels");
 
   //set count label for the 2nd mid boxes inside of for loop iteration
   av.label("set", {left: rect_left + 140, top: top7 + 18}).addClass("valLabels");
-  av.label("total", {left: rect_left + 175, top: top7 + 18}).addClass("valBlackLabels");
-    av.label("=", {left: rect_left + 225, top: top7 + 18}).addClass("valLabels");
+  av.label("total", {left: rect_left + 180, top: top7 + 18}).addClass("valBlackLabels");
+    av.label("=", {left: rect_left + 228, top: top7 + 18}).addClass("valLabels");
   av.label("total + price", {left: rect_left + 270, top: top7 + 18}).addClass("valBlackLabels");
 
   // set average label for the box, after the for loop
@@ -150,7 +152,7 @@ $(document).ready(function() {
   var stateY = 110;
   var boxLabelX = stateX + 23;
   var boxLabelX2 = stateX + 128;
-  var stateLabel = av.label("STATE", {left: stateX, top: stateY});
+  var stateLabel = av.label("STATE", {left: stateX + 55, top: stateY});
   stateLabel.addClass("statelabel");
 
   //state box with maroon stroke
