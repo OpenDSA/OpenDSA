@@ -94,13 +94,23 @@
   z-index: -500;
 }
 
+.greenbox {
+  fill: #74a55b;
+  stroke: #74a55b;
+  z-index : -500;
+}
+
+.greenboxlight {
+  fill: #C7DBBD;
+  stroke: #C7DBBD;
+  z-index : -600;
+}
+
 .purpleboxlight {
   fill: #ccbddb;
   stroke: #ccbddb;
   z-index : -600;
 }
-
-
 
 .emptybox {
     z-index: -600;
@@ -150,19 +160,6 @@
   stroke : #f2eff6;
   z-index: -500;
 }
-
-.greenbox {
-  fill: #74A55B;
-  stroke: #74A55B;
-  z-index : -500;
-}
-
-.greenboxlight {
-  fill: #C7DBBD;
-  stroke: #C7DBBD;
-  z-index : -600;
-}
-
 
 
 /* ----------Others----------*/
