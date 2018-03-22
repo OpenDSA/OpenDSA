@@ -94,6 +94,12 @@
   z-index: -500;
 }
 
+.purpleboxlight {
+  fill: #BDBDDB;
+  stroke: #BDBDDB;
+  z-index : -600;
+}
+
 .emptybox {
     z-index: -600;
     stroke-width : 0;
@@ -103,6 +109,12 @@
   fill : rgb(91, 91, 165);
   stroke : rgb(91, 91, 165);
   z-index: -500;
+}
+
+.blueboxlight {
+  fill: #BDBDDB;
+  stroke: #BDBDDB;
+  z-index : -600;
 }
 
 .blueboxh  {
@@ -149,11 +161,7 @@
   z-index : -600;
 }
 
-.purpleboxlight {
-  fill: #BDBDDB;
-  stroke: #BDBDDB;
-  z-index : -600;
-}
+
 
 /* ----------Others----------*/
 .hiding {
