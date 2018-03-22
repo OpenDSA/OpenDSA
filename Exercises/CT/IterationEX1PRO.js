@@ -25,7 +25,7 @@
 
     clickbox: function(){
       var newLabelLeft = labelLeft;
-      if(this == priceBox || this == priceBoxLabel.element){
+      if(this == priceBox || ( this !== totalBox && this.className.indexOf("priceTag") !== -1)){
         var price = prompt("Please enter the current price.", "0");
         if(price != ""){
           priceBoxLabel.value(price);
@@ -40,7 +40,7 @@
         if(total != ""){
           totalBoxLabel.value(total);
           while(total >= 10){
-            newLabelLeft -= 5.5;
+            newLabelLeft -= 5;
             total /= 10;
           }
           totalBoxLabel.css({left: newLabelLeft});
@@ -166,13 +166,13 @@
 
 
         priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
-        priceBoxLabel = av.label("", {left: labelLeft - 19, top: stateY + 105});
+        priceBoxLabel = av.label("click!", {left: labelLeft - 19, top: stateY + 105});
         priceBoxLabel.addClass("labels");
         priceBoxLabel.addClass("midlabel");
 
 
         totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
-        totalBoxLabel = av.label("", {left: labelLeft - 19, top: stateY + 220});
+        totalBoxLabel = av.label("click!", {left: labelLeft - 19, top: stateY + 220});
         totalBoxLabel.addClass("labels");
         totalBoxLabel.addClass("midlabel");
 
@@ -181,9 +181,13 @@
 
         priceBox.click(iterationEX1PRO.clickbox);
         totalBox.click(iterationEX1PRO.clickbox);
-        // priceBoxLabel.element.click(iterationEX1PRO.clickbox);
-        // totalBoxLabel.element.click(iterationEX1PRO.clickbox);
-        //
+
+        priceBoxLabel.element.click(iterationEX1PRO.clickbox);
+        totalBoxLabel.element.click(iterationEX1PRO.clickbox);
+
+        priceBoxLabel.element.addClass("priceTag");
+        totalBoxLabel.element.addClass("totalTag");
+
 
 // --------------- Move array to the right position
       var nextleft = leftMargin - 120;
