@@ -20,29 +20,36 @@ $(document).ready(function() {
 
   var nodegap = 40;
 
-  // blue boxes, floor 1
-  // var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
+    // ------------------ top1 boxes, set count = 0
   var top1 = rect_top;
+  // blue part
   av.g.rect(rect_left , top1, 160, 35, 10).addClass("bluebox");
-  av.g.rect(rect_left + 53, top1 + 6, 60, 20, 5).addClass("purpleboxlight");
-
+  av.g.rect(rect_left + 53, top1 + 8, 60, 20, 5).addClass("blueboxlight");
+  // green part
   av.g.rect(rect_left + 130, top1 + 9, 20, 17, 17).addClass("greenbox");
   av.g.rect(rect_left + 147, top1, 55, 35, 10).addClass("greenbox");
   av.g.rect(rect_left + 158, top1 + 6, 32, 23, 5).addClass("greenboxlight");
-  var box1 = av.g.rect(rect_left, top1, 200, 35, 10).addClass("emptybox");
+  var box1 = av.g.rect(rect_left - 1, top1, 210, 40, 10).addClass("emptybox");
 
+  // ------------------ top2 boxes, set total = 0
   var top2 = rect_top + 40;
+  // blue part
   av.g.rect(rect_left , top2, 160, 35, 10).addClass("bluebox");
+  av.g.rect(rect_left + 50, top2 + 8, 50, 20, 5).addClass("blueboxlight");
+
+  // green part
   av.g.rect(rect_left + 117, top2 + 9, 20, 17, 17).addClass("greenbox");
   av.g.rect(rect_left + 134, top2, 55, 35, 10).addClass("greenbox");
-  av.g.rect(rect_left + 158, top1 + 6, 32, 23, 5).addClass("greenboxlight");
-  var box2 = av.g.rect(rect_left , top2, 190, 35, 10).addClass("emptybox");
+  av.g.rect(rect_left + 143, top2 + 6, 32, 23, 5).addClass("greenboxlight");
+  var box2 = av.g.rect(rect_left-1 , top2-1, 195, 38, 10).addClass("emptybox");
 
+  // ------------------ top3 boxes, purple, for each item
   // floor 2
   var top3 = top2 + 40
   av.g.rect(rect_left, top3, 250, 35, 10).addClass("purplebox");
   av.g.rect(rect_left, top3 + 20, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
+  // ------------------ top4 boxes with green array
   //floor 3 and the JSAV array contains arrValues
   var top4 = top3 + 25;
   av.g.rect(rect_left, top4, 30, 62, 10).addClass("purplebox").css({opacity: 0.9});
@@ -52,11 +59,12 @@ $(document).ready(function() {
   var top4_array = top3 + 19;
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: top4_array, position: "absolute"});
 
+  // ------------------ top5 purple line box, for the line of white text, price
   //floor 4, long purple
   var top5 = top4 + 49;
   av.g.rect(rect_left, top5, 300, 30, 10).addClass("purplebox");
 
-  //floor 5, left big purple box
+  // ------------------ top 6, left big purple box, text "do"
   var top6 = top5 + 30;
   av.g.rect(rect_left, top5, 110, 170, 10).addClass("purplebox");
   av.g.rect(rect_left, top5, 50, 15).addClass("purplebox");
@@ -89,13 +97,17 @@ $(document).ready(function() {
 
 // ------------------ labels ------------------------
 
-  av.label("set", {left: rect_left + 15, top: top1 - 21}).addClass("valLabels");
-  av.label("count", {left: rect_left + 56, top: top1 - 21}).addClass("valBlackLabels");
+  // box 1 text
+  av.label("set", {left: rect_left + 15, top: top1 - 19}).addClass("valLabels");
+  av.label("count", {left: rect_left + 56, top: top1 - 19}).addClass("valBlackLabels");
   av.label("=", {left: rect_left + 115, top: top1 - 21}).addClass("valLabels");
   av.label("0", {left: rect_left + 168, top: top1 - 18}).addClass("valBlackLabels");
 
-  av.label("set total =", {left: rect_left + 15, top: top2 - 21}).addClass("valLabels");
-  av.label("0", {left: rect_left + 153, top: top2 - 18}).addClass("valLabels");
+  // box 2 text
+  av.label("set", {left: rect_left + 15, top: top2 - 19}).addClass("valLabels");
+  av.label("total", {left: rect_left + 52, top: top2 - 19}).addClass("valBlackLabels");
+  av.label("=", {left: rect_left + 102, top: top2 - 21}).addClass("valLabels");
+  av.label("0", {left: rect_left + 153, top: top2 - 18}).addClass("valBlackLabels");
 
   //for each iteam label inside of purple for loop box
   av.label("for each item", {left: rect_left + 5, top: top3 - 30}).addClass("loopLabels");
@@ -107,12 +119,16 @@ $(document).ready(function() {
   av.label("do", {left: rect_left + 35, top: top5 +30}).addClass("loopLabels");
 
   //set total = total + price label for the mid boxes inside of for loop iteration
-  av.label("set count =", {left: rect_left + 140, top: top5 + 20}).addClass("valLabels");
-  av.label("count + 1", {left: rect_left + 283, top: top5 + 20}).addClass("valLabels");
+  av.label("set", {left: rect_left + 140, top: top5 + 18}).addClass("valLabels");
+  av.label("count", {left: rect_left + 175, top: top5 + 18}).addClass("valBlackLabels");
+  av.label("=", {left: rect_left + 235, top: top5 + 18}).addClass("valLabels");
+  av.label("count + 1", {left: rect_left + 283, top: top5 + 18}).addClass("valBlackLabels");
 
   //set count label for the 2nd mid boxes inside of for loop iteration
-  av.label("set total =", {left: rect_left + 140, top: top7 + 18}).addClass("valLabels");
-  av.label("total + price", {left: rect_left + 270, top: top7 + 18}).addClass("valLabels");
+  av.label("set", {left: rect_left + 140, top: top7 + 18}).addClass("valLabels");
+  av.label("total", {left: rect_left + 175, top: top7 + 18}).addClass("valBlackLabels");
+    av.label("=", {left: rect_left + 225, top: top7 + 18}).addClass("valLabels");
+  av.label("total + price", {left: rect_left + 270, top: top7 + 18}).addClass("valBlackLabels");
 
   // set average label for the box, after the for loop
   av.label("set average =", {left: rect_left + 5, top: top9 + 38}).addClass("valLabels");
