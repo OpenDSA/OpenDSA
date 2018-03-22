@@ -95,10 +95,12 @@
 }
 
 .purpleboxlight {
-  fill: #BDBDDB;
-  stroke: #BDBDDB;
+  fill: #ccbddb;
+  stroke: #ccbddb;
   z-index : -600;
 }
+
+
 
 .emptybox {
     z-index: -600;
