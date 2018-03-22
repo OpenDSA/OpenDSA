@@ -212,6 +212,9 @@
       "PL/SLang2ParameterPassing": {},
       "PL/LazyLists": {}
     },
+    "Data Typing: The Good and The Bad": {
+      "PL/TypeConsiderations": {}
+    },
     "Interpreting the Object-Oriented Language SLang 3": {
       "PL/SLang3reviewOfOOP": {},
       "PL/SLang3concreteSyntax": {},
