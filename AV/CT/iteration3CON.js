@@ -24,8 +24,7 @@ $(document).ready(function() {
   var topblue1 = av.g.rect(rect_left , rect0_top, 140, 35, 10).addClass("bluebox");
   av.g.rect(rect_left + 43, rect0_top + 8, 50, 20, 5).addClass("blueboxlight");
 
-  var topgreen1 = av.g.rect(rect_left + 105, rect0_top + 10, 20, 17, 17)
-  topgreen1.addClass("greenbox");
+  var topgreen1 = av.g.rect(rect_left + 105, rect0_top + 10, 20, 17, 17).addClass("greenbox");
   var topgreen2 = av.g.rect(rect_left + 120, rect0_top, 55, 35, 10).addClass("greenbox");
   av.g.rect(rect_left + 130, rect0_top + 6, 32, 23, 5).addClass("greenboxlight");
 
@@ -47,9 +46,11 @@ $(document).ready(function() {
   av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("purplebox");
 
   //mid blue/calculate boxes ( and "set total = ..." blue box )
-  var midblue1 = av.g.rect(rect_left + 130, rect_top + 120, 130, 66, 10).addClass("bluebox");
-  var midblue2 = av.g.rect(rect_left + 220, rect_top + 139, 20, 32, 15).addClass("calbox");
-  var midblue3 = av.g.rect(rect_left + 240, rect_top + 120, 120, 66, 10).addClass("calbox");
+  var midblue1 = av.g.rect(rect_left + 125, rect_top + 120, 145, 66, 10).addClass("bluebox");
+  av.g.rect(rect_left + 167, rect_top + 143, 50, 20, 5).addClass("blueboxlight");
+  var midblue2 = av.g.rect(rect_left + 235, rect_top + 142, 25, 25, 15).addClass("calbox");
+  var midblue3 = av.g.rect(rect_left + 255, rect_top + 120, 125, 66, 10).addClass("calbox");
+  av.g.rect(rect_left + 260, rect_top + 143, 115, 23, 5).addClass("purpleboxlight");
 
   // last purple floor
   av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("purplebox");
@@ -73,18 +74,16 @@ $(document).ready(function() {
   var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
   label3.addClass("loopLabels");
 
-  var pricelabel = av.label("set", {left: rect_left + 140, top: rect_top + 117});
-  var pricelabel = av.label("total", {left: rect_left + 140, top: rect_top + 117});
-  var pricelabel = av.label("=", {left: rect_left + 140, top: rect_top + 117});
-  var pricelabel = av.label("total + price", {left: rect_left + 140, top: rect_top + 117});
-  pricelabel.addClass("loopLabels");
-  pricelabel.addClass("smalllabel");
+  av.label("set", {left: rect_left + 132, top: rect_top + 117}).addClass("valLabels");
+  av.label("total", {left: rect_left + 172, top: rect_top + 117}).addClass("valBlackLabels");
+  av.label("=", {left: rect_left + 220, top: rect_top + 117}).addClass("valLabels");
+  av.label("total + price", {left: rect_left + 260, top: rect_top + 117}).addClass("valBlackLabels");
 
   var pricelabel = av.label("print (total)", {left: rect_left + 5, top: rect_top + 235});
   pricelabel.addClass("loopLabels");
   pricelabel.addClass("smalllabel");
 
-  var valuelabel = av.label("", {left: rect_left + 270, top: rect_top + 165});
+  var valuelabel = av.label("", {left: rect_left + 290, top: rect_top + 165});
   valuelabel.addClass("loopLabels");
   valuelabel.addClass("valuelabelpb");
 
