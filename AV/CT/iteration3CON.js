@@ -22,11 +22,11 @@ $(document).ready(function() {
   var nodegap = 40;
 
   var topblue1 = av.g.rect(rect_left , rect0_top, 140, 35, 10).addClass("bluebox");
-  av.g.rect(rect_left + 43, rect0_top + 8, 50, 20, 5).addClass("blueboxlight");
+  av.g.rect(rect_left + 43, rect0_top + 6, 50, 20, 5).addClass("blueboxlight");
 
-  var topgreen1 = av.g.rect(rect_left + 105, rect0_top + 10, 20, 17, 17).addClass("greenbox");
-  var topgreen2 = av.g.rect(rect_left + 120, rect0_top, 55, 35, 10).addClass("greenbox");
-  av.g.rect(rect_left + 130, rect0_top + 6, 32, 23, 5).addClass("greenboxlight");
+  var topgreen1 = av.g.rect(rect_left + 109, rect0_top + 10, 20, 17, 17).addClass("greenbox");
+  var topgreen2 = av.g.rect(rect_left + 125, rect0_top, 55, 35, 10).addClass("greenbox");
+  av.g.rect(rect_left + 135, rect0_top + 6, 32, 23, 5).addClass("greenboxlight");
 
 
   // floor 2
@@ -60,12 +60,12 @@ $(document).ready(function() {
 
 // ------------------ labels ------------------------
 
-  av.label("set", {left: rect_left + 8, top: rect_top - 58}).addClass("valLabels");
-  av.label("total", {left: rect_left + 45, top: rect_top - 58}).addClass("valBlackLabels");
-  av.label("=", {left: rect_left + 93, top: rect_top - 58}).addClass("valLabels");
-  av.label("0", {left: rect_left + 140, top: rect_top - 58}).addClass("valBlackLabels");
+  av.label("set", {left: rect_left + 8, top: rect_top - 60}).addClass("valLabels");
+  av.label("total", {left: rect_left + 45, top: rect_top - 60}).addClass("valBlackLabels");
+  av.label("=", {left: rect_left + 95, top: rect_top - 60}).addClass("valLabels");
+  av.label("0", {left: rect_left + 145, top: rect_top - 58}).addClass("valBlackLabels");
 
-  var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
+  var label1 = av.label("for each item", {left: rect_left + 10, top: rect_top - 30});
   label1.addClass("loopLabels");
 
   var label2 = av.label("price", {left: rect_left + 19, top: rect_top + 45});
@@ -90,27 +90,21 @@ $(document).ready(function() {
 
   // <<--------------- STATE BOX ----------------->>
 
-  var stateX = 530;
+  var stateX = 545;
   var stateY = - 20;
   var boxLabelX = stateX + 23;
-  var stateLabel = av.label("STATE", {left: stateX, top: stateY});
-  stateLabel.addClass("statelabel");
-
+  var stateLabel = av.label("STATE", {left: stateX, top: stateY}).addClass("statelabellarge");
   var stateBox = av.g.rect(stateX - 25, stateY + 50, 110, 280).addClass("statebox");
 
   // price box and label
-  av.label("price", {left: stateX + 13, top: stateY + 65});
-  stateLabel.addClass("statelabel");
-
+  av.label("price", {left: stateX + 12, top: stateY + 60}).addClass("statelabel");
   var priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
   var priceBoxLabel = av.label("", {left:boxLabelX , top: stateY + 100});
   priceBoxLabel.addClass("loopLabels");
   priceBoxLabel.addClass("midlabel");
 
   // total box and label
-  av.label("total", {left: stateX + 13, top: stateY + 180});
-  stateLabel.addClass("statelabel");
-
+  av.label("total", {left: stateX + 13, top: stateY + 175}).addClass("statelabel");
   var totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
   var totalBoxLabel = av.label("", {left: boxLabelX, top: stateY + 215});
   totalBoxLabel.addClass("loopLabels");
@@ -123,7 +117,7 @@ $(document).ready(function() {
   var consoleY = 45;
 
   // create CONSOLE label
-  av.label("CONSOLE", {left: consoleX + 40, top: consoleY}).addClass("statelabel");;
+  av.label("CONSOLE", {left: consoleX + 35, top: consoleY}).addClass("statelabellarge");;
 
   // create console box.
   var consoleBox = av.g.rect(consoleX, consoleY + 50, 170, 180).addClass("consolebox");

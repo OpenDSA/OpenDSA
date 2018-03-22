@@ -129,7 +129,7 @@ $(document).ready(function() {
 
 
   // ---------------loop -labels-----------------------
-  av.label("for each item", {left: rect_left + 5, top: rect_top - 30}).addClass("loopLabels");
+  av.label("for each item", {left: rect_left + 10, top: rect_top - 30}).addClass("loopLabels");
   av.label("price", {left: rect_left + 19, top: rect_top + 45}).addClass("loopLabels");
   av.label("do", {left: rect_left + 35, top: rect_top + 100}).addClass("loopLabels");
   av.label("print (price)", {left: rect_left + 160, top: rect_top + 112}).addClass("loopLabels").addClass("midlabel");
@@ -150,13 +150,12 @@ $(document).ready(function() {
   var stateX = 530;
   var stateY = 40;
   var stateLabel = av.label("STATE", {left: stateX, top: stateY + 30});
-  stateLabel.addClass("statelabel");
+  stateLabel.addClass("statelabellarge");
 
   var stateBox = av.g.rect(stateX - 25, stateY + 80, 110, 150).addClass("statebox");
 
   // price box and label
-  av.label("price", {left: stateX + 13, top: stateY + 95});
-  stateLabel.addClass("statelabel");
+  av.label("price", {left: stateX + 12, top: stateY + 90}).addClass("statelabel");
 
   var priceBox = av.g.rect(stateX - 5, stateY + 135, 70, 70).addClass("bluebox");
 
@@ -174,7 +173,7 @@ $(document).ready(function() {
   var consoleY = 45;
 
   // create CONSOLE label
-  av.label("CONSOLE", {left: consoleX + 40, top: consoleY}).addClass("statelabel");;
+  av.label("CONSOLE", {left: consoleX + 35, top: consoleY}).addClass("statelabellarge");;
 
   // create console box.
   var consoleBox = av.g.rect(consoleX, consoleY + 50, 170, 180).addClass("consolebox");

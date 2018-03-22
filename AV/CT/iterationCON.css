@@ -65,7 +65,7 @@
 
 .statelabel  {
  font-size: 120%;
- font-weight: 600;
+ font-weight: 400;
 }
 
 .statelabellarge  {
@@ -112,11 +112,6 @@
   z-index : -600;
 }
 
-.emptybox {
-    z-index: -600;
-    stroke-width : 0;
-}
-
 .bluebox  {
   fill : rgb(91, 91, 165);
   stroke : rgb(91, 91, 165);
@@ -132,6 +127,11 @@
 .blueboxh  {
   fill : #e6eeff;
   stroke : #e6eeff;
+}
+
+.emptybox {
+    z-index: -600;
+    stroke-width : 0;
 }
 
 .statebox  {
