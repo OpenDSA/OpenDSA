@@ -94,7 +94,9 @@
     },
     "Week 9": {
       "FLSlides/Turing": {},
-      "FLSlides/Turing2": {}
+      "FLSlides/TuringDecide": {},
+      "FLSlides/TuringCombine": {},
+      "FLSlides/TuringExtend": {}
     }
   }
 }

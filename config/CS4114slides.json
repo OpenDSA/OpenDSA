@@ -93,7 +93,12 @@
       "FLSlides/CFLClosure": {}
     },
     "Week 9": {
-      "FLSlides/Turing": {}
+      "FLSlides/Turing": {},
+      "FLSlides/TuringDecide": {},
+      "FLSlides/TuringCombine": {}
+    },
+    "Week 10": {
+      "FLSlides/TuringExtend": {}
     }
   }
 }

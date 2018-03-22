@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :author: Cliff Shaffer
    :requires: Turing Machines Intro
    :satisfies:
    :topic: Turing Machines
@@ -12,8 +12,8 @@
 .. slideconf::
    :autoslides: False
 
-More Turing Machines
-====================
+Combining Turing Machines
+=========================
 
 .. slide:: Combining Turing Machines (1)
 
@@ -24,18 +24,16 @@ More Turing Machines
    | then
    |   :math:`(q_1,\ w_1\underline{a_1}u_1) \vdash^*_M (q_3,\ ww_3\underline{a_3}u_3)`.
 
-   | Insight: Since
-   |    :math:`(q_2,\ w_2\underline{a_2}u_2) \vdash^*_M (q_3,\ w_3\underline{a_3}u_3)`,
-   | this computation must take place without moving the head left of :math:`w_2`.
+   | Insight: Since :math:`(q_2,\ w_2\underline{a_2}u_2) \vdash^*_M (q_3,\ w_3\underline{a_3}u_3)`, 
+     this computation must take place without moving the head left of :math:`w_2`.
    |    The machine cannot "sense" the left end of the tape.
-        (And if it had moved left, it would have hung.)
+   |    And if it had moved left, it would have hung.
 
 
 .. slide:: Combining Turing Machines (2)
 
-   Thus, the head won't move left of :math:`w_2` even if it is not at the left
-   end of the tape.
-
+   | Thus, the head won't move left of :math:`w_2` even if it is
+     **not** at the left end of the tape.
    | This means that Turing machine computations can be combined into
      larger machines:
    |    :math:`M_2` prepares string as input to :math:`M_1`.
@@ -85,18 +83,22 @@ More Turing Machines
       :scripts: AV/SeniorAlgAnal/Turing3CON.js
       :align: center
 
-   Shift a string left.
+   | Shift a string left.
 
    .. inlineav:: TuringShiftCON dgm
       :links: AV/SeniorAlgAnal/TuringShiftCON.css
       :scripts: AV/SeniorAlgAnal/TuringShiftCON.js
       :align: center
 
+   .. Notice this subtle point: The last step is "L#", NOT with # a
+      subscript! Meaning, "move left, then write #". NOT "Move left
+      until you see a #".
+
 
 .. slide:: More Machines (3)
 
-   Copy Machine: Transform :math:`\#w\underline{\#}` into
-   :math:`\#w\#w\underline{\#}`.
+   | Copy Machine: Transform :math:`\#w\underline{\#}` into
+     :math:`\#w\#w\underline{\#}`.
 
    .. inlineav:: TuringCopyCON dgm
       :links: AV/SeniorAlgAnal/TuringCopyCON.css
@@ -106,64 +108,42 @@ More Turing Machines
 
 .. slide:: Turing's Thesis
 
+   | You now have some intuition for what can be accomplished by a
+     Turing Machine
+   |    Acceptor, transducer, math computations
+   |    Might be painful to write in "machine code", but possible
+   |    And we have the beginnings of a more powerful graphical
+        language to express our ideas
+
    **Turing Thesis:** Any computation that can be carried out by
    mechanical means can be performed by some Turing machine.
 
-   How would we prove or disprove this?
-   (What is the technical meaning of the word "thesis"?)
+   | How would we prove or disprove this?
+   |    What is the technical meaning of the word "thesis"?
 
 
-.. slide:: Extensions (1)
+.. slide:: Formal Concept of Algorithm
 
-   The following extensions do not increase the power of Turing Machines.
+   | A useful working definition:
+   |    An **algorithm** to compute a function **is** a Turing Machine
+        program that solves it.
+   |    Using this definition lets us reason formally about what
+        problems (functions) do or do not have algorithms.
 
-   | 2-way infinite tape
-   |    Just bend infinite tape in the middle to get back to one-way
-        tape, but with two layers.
-        Now, expand the language. The new language is ordered pairs of the
-        old language, to encode two levels of tape.
+   .. Example: We can write an algorithm (TM program) to compute the
+      Collitz sequence for a number n, but we do not know (at this
+      time) how to write an algorithm to determine whether such a
+      program will always halt (is Turing decideable).
 
-   .. inlineav:: TuringExt1CON dgm
-      :links: AV/SeniorAlgAnal/TuringExt1CON.css
-      :scripts: AV/SeniorAlgAnal/TuringExt1CON.js
-      :align: center
+      This is not unequivicable. Maybe someday we could make this
+      Turing decideable.
 
-
-.. slide:: Extensions (2)
-
-   | Multiple tapes
-   |    Again, expanded alphabet collapses multipe symbols to 1.
-
-
-   .. inlineav:: TuringExt2CON dgm
-      :links: AV/SeniorAlgAnal/TuringExt2CON.css
-      :scripts: AV/SeniorAlgAnal/TuringExt2CON.js
-      :align: center
-
-   | Multiple heads on one tape
-   |    Encode the heads onto the tape, and simulate moving them around.
-
-
-.. slide:: Extensions (3)
-
-   | Two-dimensional "tape"
-   |    Convert to 1D, by diagonals.
-
-   .. inlineav:: TuringExt3CON dgm
-      :links: AV/SeniorAlgAnal/TuringExt3CON.css
-      :scripts: AV/SeniorAlgAnal/TuringExt3CON.js
-      :align: center
-
-
-.. slide:: Extensions (4)
-
-   | Non-determinism
-   |    Simulate nondeterministic behavior in sequence, doing all length
-        -1 computations, then length -2, etc., until we reach a halt
-        state for one of the non-deteriministic choices.
-   |    Non-determinism gives us speed, not ability.
+      But other problems are definitely NOT Turing Decideable.
 
 
 .. slide:: A Universal Turing Machine
 
-   A machine that reads and simulates a machine.
+   A Turing Machine that takes a program for a Turing Machine and an
+   input string, and simulates the behavior of that machine on that
+   string.
+

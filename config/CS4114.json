@@ -101,6 +101,9 @@
     "Properties of Context-free Languages": {
       "FormalLang/CFLProp": {}
     },
+    "Turing Machines": {
+      "SeniorAlgAnal/Turing": {}
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}
