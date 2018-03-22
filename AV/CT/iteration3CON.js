@@ -21,20 +21,21 @@ $(document).ready(function() {
 
   var nodegap = 40;
 
-  // blue boxes, floor 1
-  // var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
-  var topblue1 = av.g.rect(rect_left , rect0_top, 130, 35, 10).addClass("bluebox");
-  var toppurple1 = av.g.rect(rect_left + 95, rect0_top + 10, 20, 17, 17).addClass("calbox");
-  var toppurple2 = av.g.rect(rect_left + 110, rect0_top, 55, 35, 10).addClass("calbox");
+  var topblue1 = av.g.rect(rect_left , rect0_top, 140, 35, 10).addClass("bluebox");
+  av.g.rect(rect_left + 43, rect0_top + 8, 50, 20, 5).addClass("blueboxlight");
 
-  var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
+  var topgreen1 = av.g.rect(rect_left + 105, rect0_top + 10, 20, 17, 17)
+  topgreen1.addClass("greenbox");
+  var topgreen2 = av.g.rect(rect_left + 120, rect0_top, 55, 35, 10).addClass("greenbox");
+  av.g.rect(rect_left + 130, rect0_top + 6, 32, 23, 5).addClass("greenboxlight");
+
 
   // floor 2
   av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("purplebox");
   av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
   //floor 3 and the JSAV array contains arrValues
-  av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
+  av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.7});
   av.g.rect(rect_left + 73, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
@@ -53,11 +54,15 @@ $(document).ready(function() {
   // last purple floor
   av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("purplebox");
 
+  // last blue floor
+  var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
 
 // ------------------ labels ------------------------
 
-  var initlabel = av.label("set total = 0", {left: rect_left + 5, top: rect_top - 65});
-  initlabel.addClass("loopLabels").addClass("midlabel");
+  av.label("set", {left: rect_left + 8, top: rect_top - 58}).addClass("valLabels");
+  av.label("total", {left: rect_left + 45, top: rect_top - 58}).addClass("valBlackLabels");
+  av.label("=", {left: rect_left + 93, top: rect_top - 58}).addClass("valLabels");
+  av.label("0", {left: rect_left + 140, top: rect_top - 58}).addClass("valBlackLabels");
 
   var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
   label1.addClass("loopLabels");
@@ -145,10 +150,10 @@ $(document).ready(function() {
 
   // Slide 1
   av.umsg(interpret("sc2"));
-  toppurple1.addClass("calboxhigh");
-  toppurple1.removeClass("calboxhigh");
-  toppurple2.addClass("calboxhigh");
-  toppurple2.removeClass("calboxhigh");
+  topgreen1.addClass("blueboxh");
+  topgreen1.removeClass("blueboxh");
+  topgreen2.addClass("blueboxh");
+  topgreen2.removeClass("blueboxh");
   av.step();
 
   // Slide 2
