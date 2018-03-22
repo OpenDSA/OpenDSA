@@ -67,7 +67,7 @@
     "Preface": {
       "Intro": {}
     },
-    "Introduction (Lecture 1)": {
+    "Introduction (Lecture 1.1)": {
       "FormalLang/FLIntro": {},
       "FormalLang/FLOverview": {},
       "FormalLang/FLConcepts": {}
@@ -76,22 +76,30 @@
       "Background/SetDef": {},
       "Background/Proofs": {}
     },
-    "Deterministic Finite Acceptors": {
+    "Deterministic Finite Acceptors (Lectures 1.2, 2.1, 2.2)": {
       "FormalLang/DFA": {},
       "FormalLang/NFA": {},
       "FormalLang/Minimization": {}
     },
-    "Regular Languages, Regular Expressions, Regular Grammars": {
+    "Regular Languages, Regular Expressions, Regular Grammars (Lectures 3.1, 3.2)": {
       "FormalLang/RegEx": {},
       "FormalLang/RegGrammar": {},
       "FormalLang/RegClosure": {}
     },
-    "Identifying Non-regular Languages (Lecture 7)": {
+    "Identifying Non-regular Languages (Lecture 4.1)": {
       "FormalLang/NonRegular": {}
     },
-    "Context-Free Languages (Lectures 8, 9)": {
+    "Context-Free Languages (Lectures 4.2, 5.1)": {
       "FormalLang/CFL": {},
       "FormalLang/CFLSimp": {}
+    },
+    "Pushdown Automata": {
+      "FormalLang/PDA": {},
+      "FormalLang/PDACFL": {},
+      "FormalLang/DPDA": {}
+    },
+    "Properties of Context-free Languages": {
+      "FormalLang/CFLProp": {}
     },
     "Appendix": {
       "Glossary": {},

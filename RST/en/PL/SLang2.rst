@@ -10,23 +10,129 @@
 Defining SLang 2
 ================
 
-RP 26 Part 1
-------------
+SLang 2: An Imperative Language
+-------------------------------
+We will now add features to our simple language which lie outside the
+realm of pure functional programming.   These features include:
+
+Note that standard arithmetic and boolean operators in SLang2 are now
+infix.  You will also find that an *if-then-else* has been added.
+Additionally we have added assignment statements, print statements,
+and sequencing of statements within a let block.  Collectively these
+change the simple language into an *imperative language*, that is, a
+language in which the programmer relies upon changing the state of
+variables to compute a desired value.
+
+**Adding assignment statements to SLang**
+
+Syntax:
+
+::
+
+       <exp>      ::= <var_exp> | ... | <assign_exp>
+       ...
+       <assign_exp> ::= set <var_exp> = <exp>
+
+Semantics:
+
+-  Evaluate the RHS expression.
+
+-  Assign the resulting value to the LHS variable.
+
+-  Return the value of the RHS expression.
+
+Expressions, when evaluated, return values. Statements, when evaluated,
+have side effects.
+
+The assignment statement is actually an **expression statement**
+because it embodies the properties and statements.
+
+
+**Adding print statements to SLang**
+
+Syntax:
+
+::
+
+       <exp>      ::= <var_exp> | ... | <print_exp>
+       ...
+       <print_exp> ::= print  <exp>
+
+Semantics:
+
+-  Evaluate the expression.
+
+-  Send the resulting value to the console.
+
+-  Return nothing (i.e., ‘undefined’ in JavaScript).
+
+This is a **pure statement**, that is, a statement that has no return
+value.
+
+**Adding sequencing to SLang let blocks**
+
+Syntax:
+
+::
+
+       <exp>      ::= <var_exp> | ... | <let_exp>
+       <let_exp>  ::= let <bindings> in <block> end
+       ...
+       <block>    ::= <exp> ( ; <exp> )*
+
+Note that the semi-colon is an expression separator, not a terminator.
+
+Semantics of the block:
+
+-  Evaluate the expressions in the block in order.
+
+-  Return the value of the last expression.
+
+For sequencing to be useful, what must all of the expressions in the
+block (except the last one) be?
+
+**Example:** Using these definitions of the semantics of assignment, print, and sequencing, convince yourself that the example program below produces the output indicated at the right.  Once you have done that, get more practice by trying the randomized problem.
+
+::
+
+    let                                                  Output:   
+         x = 1					     	      
+         y = 2					     	      
+         sqr = fn (x) => (x * x)		     	      
+    in						         ["Num",6] 
+        let					         ["Num",2] 
+            f = fn (x) => (y * x)		         ["Num",64]
+            g = fn () => set y = add1(y)	         ["Num",10]
+            h = fn () => set x = add1(x)	         ["Num",6] 
+            x = 3				         ["Num",15]
+        in					         ["Num",50]
+            set x = (2 * x);
+            print x;    print y;
+            print (sqr (x + y));
+            print (f 5);
+            (g);
+            (h);
+            print x;
+            print (f 5);
+            set y = 10;
+            print (f 5)
+        end
+    end
+
+
+
+
+Output of SLang2 Program
+------------------------
 
 This problem will help you master the syntax and semantics of SLang 2. To earn
 credit for it, you must complete this randomized problem
 correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP26part1.html ka
-   :long_name: RP set #26, question #1
+When you provide your answer, remember to include full denoted
+values, for example **["Num",0]** and not just **0**.
 
-RP 27 Part 1
-------------
 
-This problem focuses on the data structures used to implement the
-environment in the SLang 2 interpreter, as well as some of the data
-structures used to implement the AST. To earn credit for it, you must
-complete this randomized problem correctly three times in a row.
+.. avembed:: Exercises/PL/OutputOfSLang2Prog.html ka
+   :long_name: Output of SLang2 Program
 
-.. avembed:: Exercises/PL/RP27part1.html ka
-   :long_name: RP set #27, question #1

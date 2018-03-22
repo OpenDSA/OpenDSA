@@ -1,6 +1,6 @@
 {
-  "title": "All Data Structures and Algorithm Modules", 
-  "desc": "All Data Structures and Algorithm Modules", 
+  "title": "OpenDSA Data Structures and Algorithms Modules Collection",
+  "desc": "OpenDSA Data Structures and Algorithms Modules Collection",
   "build_dir": "Books", 
   "code_dir": "SourceCode/", 
   "code_lang": {
