@@ -263,11 +263,16 @@ Now for the parametric polymorphic punchline.  Consider how ML reasons about the
                         then 0
                         else (hd lst) + (sumlist (tl lst));
 
+    ML response: sumlist = fn : int list -> int			
+
     val rec lengthlist = fn lst => if lst = nil
                         then 0
                         else 1 + (lengthlist (tl lst));
 
+    ML response: lengthlist = fn : ''a list -> int
 
+Here *a* is a type variable indicating that *lengthlist* will accept a list of any type -- in contrast to *sumlist*, which will only work on a list of integers.
+   
 **More type inferencing in ML** 
 
 Although all ML functions are functions of one argument, that argument
@@ -286,35 +291,35 @@ function of three arguments.
 
     val add3 = fn (x,y,z) => x + y + z;
 
-And ML’s type inferencer will tell us this is a
+And ML’s type inferencer will tell us the following about the type of *add3*.
 
 ::
 
        add3 = fn : int * int * int -> int 
 
-**Time for you to play the role of ML’s type inferencer**
-
-Here are three expressions, each of them a function definition, that are
-typed into ML.
-
-::
-
-    val x = fn y => if true then 1 else 0;
-    val x = fn (f, g, h) => if f (g = h) then h else 5;
-    val x = fn (f, g, h) => if g f then h f else f;
-    val x = fn f => fn g => fn h => if g f then h f else f;
-
-Match each of them with responses that ML provided as the types of the
-functions.
-
-::
-
-    fn : 'a * ('a -> bool) * ('a -> 'a) -> 'a
-    fn : (bool -> bool) -> int -> int -> int
-    fn : 'a * ('a -> 'a) * ('a -> bool) -> 'a
-    fn : (bool -> bool) * int * int -> int
-    fn : 'a -> ('a -> bool) -> ('a -> 'a) -> 'a
-    fn : 'a -> int
+.. **Time for you to play the role of ML’s type inferencer**
+.. 
+.. Here are three expressions, each of them a function definition, that are
+.. typed into ML.
+.. 
+.. ::
+.. 
+..     val x = fn y => if true then 1 else 0;
+..     val x = fn (f, g, h) => if f (g = h) then h else 5;
+..     val x = fn (f, g, h) => if g f then h f else f;
+..     val x = fn f => fn g => fn h => if g f then h f else f;
+.. 
+.. Match each of them with responses that ML provided as the types of the
+.. functions.
+.. 
+.. ::
+.. 
+..     fn : 'a * ('a -> bool) * ('a -> 'a) -> 'a
+..     fn : (bool -> bool) -> int -> int -> int
+..     fn : 'a * ('a -> 'a) * ('a -> bool) -> 'a
+..     fn : (bool -> bool) * int * int -> int
+..     fn : 'a -> ('a -> bool) -> ('a -> 'a) -> 'a
+..     fn : 'a -> int
 
 **One more type inference example**
 
