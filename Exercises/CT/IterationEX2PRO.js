@@ -142,16 +142,16 @@
         lastlabel.addClass("labels").addClass("midlabel");;
 
       // ------------------ red boxes ------------------------
-        box1 = av.g.rect(rect_left, rect_top - 40, 280, 35).addClass("redbox");
+        box1 = av.g.rect(rect_left, rect_top - 40, 280, 35).addClass("yellowbox");
         box1.click(iterationEX2PRO.clickbox);
 
-        box2 = av.g.rect(rect_left, rect_top, 350, 105).addClass("redbox");
+        box2 = av.g.rect(rect_left, rect_top, 350, 105).addClass("yellowbox");
         box2.click(iterationEX2PRO.clickbox);
 
-        box3 = av.g.rect(rect_left, rect_top + 105, 333, 143).addClass("redbox");
+        box3 = av.g.rect(rect_left, rect_top + 105, 333, 143).addClass("yellowbox");
         box3.click(iterationEX2PRO.clickbox);
 
-        box4 = av.g.rect(rect_left, rect_top + 258, 280, 33).addClass("redbox");
+        box4 = av.g.rect(rect_left, rect_top + 258, 280, 33).addClass("yellowbox");
         box4.click(iterationEX2PRO.clickbox);
 
 // --------------- Move array to the right position
