@@ -98,7 +98,7 @@ $(document).ready(function() {
   av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
   //floor 3 rects and array list JSAV contains arrValues' elements
-  av.g.rect(rect_left, rect_top + 5, 30, 90, 10).addClass("purplebox").css({opacity: 0.9});
+  av.g.rect(rect_left, rect_top + 5, 30, 90, 10).addClass("purplebox").css({opacity: 0.7});
   av.g.rect(rect_left + 73, rect_top + 25, 30, 70, 10).addClass("purplebox").css({opacity: 0.9});
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 

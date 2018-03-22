@@ -73,7 +73,10 @@ $(document).ready(function() {
   var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
   label3.addClass("loopLabels");
 
-  var pricelabel = av.label("set total = total + price", {left: rect_left + 140, top: rect_top + 117});
+  var pricelabel = av.label("set", {left: rect_left + 140, top: rect_top + 117});
+  var pricelabel = av.label("total", {left: rect_left + 140, top: rect_top + 117});
+  var pricelabel = av.label("=", {left: rect_left + 140, top: rect_top + 117});
+  var pricelabel = av.label("total + price", {left: rect_left + 140, top: rect_top + 117});
   pricelabel.addClass("loopLabels");
   pricelabel.addClass("smalllabel");
 
