@@ -10,6 +10,9 @@
 Tying The Knot
 ==============
 
+Implementing Recursion Efficiently
+----------------------------------
+
 We next consider how to implement recursive functions in SLang 2.  In
 the lambda calculus and SLang 1, all functions are anonymous and
 cannot call themselves. We could use a fixed-point combinator, like
@@ -24,9 +27,7 @@ the :math:`Y` combinator.
          ((Y f) 5)   
     end
 
-    What is the problem with this approach?
-
-SLang 2:
+What is the problem with this approach?
 
 In SLang 2, we can take advantage of references and the assignment statement to
 implement recursion in an efficient way with a technique called "tying

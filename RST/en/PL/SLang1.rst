@@ -172,7 +172,7 @@ you review the definition of the *curry* function.
 
 
 Semantics of SLang1
-------------
+-------------------
 
 This problem focuses on the semantics of SLang 1.
 
