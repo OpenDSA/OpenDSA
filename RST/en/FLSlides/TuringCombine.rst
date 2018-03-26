@@ -139,11 +139,3 @@ Combining Turing Machines
       Turing decideable.
 
       But other problems are definitely NOT Turing Decideable.
-
-
-.. slide:: A Universal Turing Machine
-
-   A Turing Machine that takes a program for a Turing Machine and an
-   input string, and simulates the behavior of that machine on that
-   string.
-
