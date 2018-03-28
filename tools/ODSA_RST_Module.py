@@ -644,7 +644,7 @@ class ODSA_RST_Module:
               # Add the necessary information from the configuration file
               exer_conf = exercises[external_tool_name]
               # List of valid options for avembed directive
-              options = ['long_name', 'learning_tool']
+              options = ['long_name', 'learning_tool', 'launch_url']
 
               rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
