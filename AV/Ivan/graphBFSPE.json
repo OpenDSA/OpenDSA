@@ -1,0 +1,34 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "Breadth-First Search Proficiency Exercise",
+      "av_Authors": "Mohammed Fawzi, Kasper Hellström",
+      ".instructLabel": "Instructions:",
+      ".instructions": "Reproduce the behavior of the BFS algorithm for the graph below. Just click on the <strong>edges</strong> in the order that they will be traversed by the BFS algorithm. Start with Node A. If there is more than one node that could be visited next, choose the one that comes first in alphabetical order.",
+      "av_ms_final": "Final BFS graph",
+      "av_ms_dequeue": "Dequeue {node}",
+      "av_ms_process_edge": "Process edge ({from}, {to}).",
+      "av_ms_already_visited": " Node {node} already visited",
+      "av_ms_all_neighbors_visited": "All the neighbors of {node} have already been visited.\n",
+      "#help": "Help",
+      "#about": "About"
+    },
+    "fi": {
+      ".avTitle": "Syvyyssuuntainen haku",
+      "av_Authors": "Mohammed Fawzi, Kasper Hellström",
+      ".instructLabel": "Ohjeet:",
+      ".instructions": "Käy läpi verkko BFS-järjestyksessä. Aloita läpikäynti solmusta A. Klikkaa <strong>särmiä</strong> samassa järjestyksessä kuin BFS-algoritmi käy ne läpi. Solmun naapurit käydään läpi aakkosjärjestyksessä.",
+      "av_ms_final": "BFS-algoritmin virityspuu",
+      "av_ms_dequeue": "Poistetaan {node} jonosta",
+      "av_ms_process_edge": "Prosessoidaan särmää ({from}, {to}).",
+      "av_ms_already_visited": " Solmu {node} on jo läpikäyty",
+      "av_ms_all_neighbors_visited": "Kaikki {node}:n naapurit on läpikäyty.\n",
+      "#help": "Ohje",
+      "#about": "Lisätietoa"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "fix"
+  }
+}
