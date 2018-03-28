@@ -57,6 +57,7 @@ function preVisit(node, prev) {
   size--;
   if (prev) {
     node.edgeFrom(prev).addClass("markpath");
+    g.removeEdge(node, prev);
     //node.edgeFrom(prev).css({"stroke": "red", "stroke-width": "3", "stroke-height": "1"});
     //g.addEdge(prev, node, {weight: 10});
     //node.edgeFrom(prev).css({"stroke-width": "3", "stroke": "red"});

@@ -161,8 +161,14 @@ available. However, if you look it up, you will not get credit for the
 current problem instance. To get another chance for credit, start a
 new problem instance by clicking the *Reset* button.
 
+.. The PE below was not working because it seemingly didn't pick up the
+.. strategy PARAM from the HTML file.  The temp replacement fixes the
+.. problem with a kludge until further debugging can be done.  See the
+.. README file in the AV/PL directory for more information.
+.. T.N. (March 2018)
 
-.. avembed:: AV/PL/normalOrderPRO.html pe
+.. .. avembed:: AV/PL/normalOrderPRO.html pe
+.. avembed:: AV/PL/tempNormalOrderPRO.html pe
    :long_name: Normal-order reduction Proficiency Exercise
 
 
