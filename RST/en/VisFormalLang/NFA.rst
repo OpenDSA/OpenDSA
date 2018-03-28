@@ -240,3 +240,15 @@ Conclusion: NFA adds no new capability. So why bother with the idea?
 * We will see times when it is easier to see a conversion from
   something to a NFA,
   and we know that this can always be converted in turn to a DFA.
+  
+  
+.. inlineav:: TuringReverseStringCON dgm
+   :links: AV/VisFormalLang/TuringReverseStringCON.css
+   :scripts: AV/VisFormalLang/TuringReverseStringCON.js
+   :align: center
+   
+   
+.. inlineav:: TuringAcceptEqualNumberOfAsAndBsCON dgm
+   :links: AV/VisFormalLang/TuringAcceptEqualNumberOfAsAndBsCON.css
+   :scripts: AV/VisFormalLang/TuringAcceptEqualNumberOfAsAndBsCON.js
+   :align: center
