@@ -571,7 +571,7 @@ class ODSA_RST_Module:
                 exer_conf = exercises[av_name]
 
                 # List of valid options for inlineav directive
-                options = ['points', 'required', 'threshold']
+                options = ['points', 'required', 'threshold', 'id']
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
                 mod_data[i] += ''.join(rst_options)
@@ -610,7 +610,7 @@ class ODSA_RST_Module:
                 exer_conf = exercises[av_name]
 
                 # List of valid options for avembed directive
-                options = ['points', 'required', 'showhide', 'threshold', 'external_url']
+                options = ['points', 'required', 'showhide', 'threshold', 'external_url', 'id']
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
@@ -644,7 +644,7 @@ class ODSA_RST_Module:
               # Add the necessary information from the configuration file
               exer_conf = exercises[external_tool_name]
               # List of valid options for avembed directive
-              options = ['long_name', 'learning_tool', 'launch_url']
+              options = ['long_name', 'learning_tool', 'launch_url', 'id']
 
               rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 

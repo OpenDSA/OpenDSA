@@ -47,7 +47,8 @@ CONTAINER_HTML= '''\
     data-frame-src="%(tool_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
-    data-type="%(type)s">
+    data-type="%(type)s"
+    data-exer-id="%(id)s">
   %(content)s
   <div class="center">
     <div id="%(exer_name)s_iframe"></div>
@@ -68,7 +69,8 @@ class extrtoolembed(Directive):
                  'long_name': directives.unchanged,
                  'module': directives.unchanged,
                  'learning_tool': directives.unchanged,
-                 'launch_url': directives.unchanged
+                 'launch_url': directives.unchanged,
+                 'id': directives.unchanged,
                  }
 
   def run(self):

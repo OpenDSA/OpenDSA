@@ -379,7 +379,8 @@ def group_exercises(conf_data, no_lms):
                         exercise_obj['long_name'] = section
                         exercise_obj['learning_tool'] = section_obj['learning_tool']
                         if section_obj['launch_url']:
-                            exercise_obj['launch_url'] = section_obj['launch_url'] 
+                            exercise_obj['launch_url'] = section_obj['launch_url']
+                            exercise_obj['id'] = section_obj['id']
                         conf_data['chapters'][chapter][module]['exercises'][section] = exercise_obj
 
 def get_translated_text(lang_):
