@@ -348,7 +348,7 @@ class ODSA_RST_Module:
           next_line = next_line.strip()
           is_chapter = False
           is_section = False
-          
+
         if is_chapter or is_section:
           processed_sections.append(line)
           module_title_found = True
@@ -360,8 +360,12 @@ class ODSA_RST_Module:
             content_before_module = True
             errors.append(("%sERROR: %s: line %s ('%s') - should not have content before module title" % (console_msg_prefix, mod_path, i, line), True))
 
+        # check if the current line is a section title
+        # and if so, check if the configuration and remove the section
+        # if the configuration indicates to do so
         if is_section \
-	      and line in mod_attrib["sections"] \
+        and mod_attrib["sections"] != None \
+        and line in mod_attrib["sections"] \
         and "showsection" in mod_attrib["sections"][line] \
         and not mod_attrib["sections"][line]["showsection"]:
           print '%sRemoving section: %s' % (console_msg_prefix, line)
@@ -388,7 +392,7 @@ class ODSA_RST_Module:
           and re.match('(^\.\. (?!\w+::).+)|(^$)|(^=+$)', line) == None:
               content_before_section = True
               errors.append(("%sERROR: %s: line %s ('%s') - should not have content between module title and first section" % (console_msg_prefix, mod_path, i, line), False))
-          
+
         # Determine the type of directive
         dir_type = get_directive_type(line)
 
@@ -571,7 +575,7 @@ class ODSA_RST_Module:
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
                 mod_data[i] += ''.join(rst_options)
-                
+
             elif av_type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
               # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
               print_err("%sWARNING: %s is a diagram (attributes are not supported), line %d" %(console_msg_prefix, av_name, i + 1))
@@ -704,9 +708,11 @@ class ODSA_RST_Module:
 
         i = i + 1
 
+      error_shown = False
       for (msg, module_error) in errors:
         if module_error or section_title_found:
           print_err(msg)
+          error_shown = True        
 
       if not avmetadata_found:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
@@ -734,6 +740,8 @@ class ODSA_RST_Module:
 
       # TODO: Should we print the missing exercises with each module or at the end like we do now?
 
+      if error_shown:
+        sys.exit(1)
 
       # Write the contents of the module file to the output src directory
       with codecs.open(''.join([config.book_src_dir, mod_name, '.rst']),'w', 'utf-8') as mod_file:

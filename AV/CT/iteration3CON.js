@@ -21,20 +21,20 @@ $(document).ready(function() {
 
   var nodegap = 40;
 
-  // blue boxes, floor 1
-  // var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
-  var topblue1 = av.g.rect(rect_left , rect0_top, 130, 35, 10).addClass("bluebox");
-  var toppurple1 = av.g.rect(rect_left + 95, rect0_top + 10, 20, 17, 17).addClass("calbox");
-  var toppurple2 = av.g.rect(rect_left + 110, rect0_top, 55, 35, 10).addClass("calbox");
+  var topblue1 = av.g.rect(rect_left , rect0_top, 140, 35, 10).addClass("bluebox");
+  av.g.rect(rect_left + 43, rect0_top + 6, 50, 20, 5).addClass("blueboxlight");
 
-  var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
+  var topgreen1 = av.g.rect(rect_left + 109, rect0_top + 10, 20, 17, 17).addClass("greenbox");
+  var topgreen2 = av.g.rect(rect_left + 125, rect0_top, 55, 35, 10).addClass("greenbox");
+  av.g.rect(rect_left + 135, rect0_top + 6, 32, 23, 5).addClass("greenboxlight");
+
 
   // floor 2
   av.g.rect(rect_left, rect_top, 250, 35, 10).addClass("purplebox");
   av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
   //floor 3 and the JSAV array contains arrValues
-  av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
+  av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.7});
   av.g.rect(rect_left + 73, rect_top + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
   var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 
@@ -46,20 +46,26 @@ $(document).ready(function() {
   av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("purplebox");
 
   //mid blue/calculate boxes ( and "set total = ..." blue box )
-  var midblue1 = av.g.rect(rect_left + 130, rect_top + 120, 130, 66, 10).addClass("bluebox");
-  var midblue2 = av.g.rect(rect_left + 220, rect_top + 139, 20, 32, 15).addClass("calbox");
-  var midblue3 = av.g.rect(rect_left + 240, rect_top + 120, 120, 66, 10).addClass("calbox");
+  var midblue1 = av.g.rect(rect_left + 125, rect_top + 120, 145, 66, 10).addClass("bluebox");
+  av.g.rect(rect_left + 167, rect_top + 143, 50, 20, 5).addClass("blueboxlight");
+  var midblue2 = av.g.rect(rect_left + 235, rect_top + 142, 25, 25, 15).addClass("calbox");
+  var midblue3 = av.g.rect(rect_left + 255, rect_top + 120, 125, 66, 10).addClass("calbox");
+  av.g.rect(rect_left + 260, rect_top + 143, 115, 23, 5).addClass("purpleboxlight");
 
   // last purple floor
   av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("purplebox");
 
+  // last blue floor
+  var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
 
 // ------------------ labels ------------------------
 
-  var initlabel = av.label("set total = 0", {left: rect_left + 5, top: rect_top - 65});
-  initlabel.addClass("loopLabels").addClass("midlabel");
+  av.label("set", {left: rect_left + 8, top: rect_top - 60}).addClass("valLabels");
+  av.label("total", {left: rect_left + 45, top: rect_top - 60}).addClass("valBlackLabels");
+  av.label("=", {left: rect_left + 95, top: rect_top - 60}).addClass("valLabels");
+  av.label("0", {left: rect_left + 145, top: rect_top - 58}).addClass("valBlackLabels");
 
-  var label1 = av.label("for each item", {left: rect_left + 5, top: rect_top - 30});
+  var label1 = av.label("for each item", {left: rect_left + 10, top: rect_top - 30});
   label1.addClass("loopLabels");
 
   var label2 = av.label("price", {left: rect_left + 19, top: rect_top + 45});
@@ -68,42 +74,37 @@ $(document).ready(function() {
   var label3 = av.label("do", {left: rect_left + 35, top: rect_top + 100});
   label3.addClass("loopLabels");
 
-  var pricelabel = av.label("set total = total + price", {left: rect_left + 140, top: rect_top + 117});
-  pricelabel.addClass("loopLabels");
-  pricelabel.addClass("smalllabel");
+  av.label("set", {left: rect_left + 132, top: rect_top + 117}).addClass("valLabels");
+  av.label("total", {left: rect_left + 172, top: rect_top + 117}).addClass("valBlackLabels");
+  av.label("=", {left: rect_left + 220, top: rect_top + 117}).addClass("valLabels");
+  av.label("total + price", {left: rect_left + 260, top: rect_top + 117}).addClass("valBlackLabels");
 
   var pricelabel = av.label("print (total)", {left: rect_left + 5, top: rect_top + 235});
   pricelabel.addClass("loopLabels");
   pricelabel.addClass("smalllabel");
 
-  var valuelabel = av.label("", {left: rect_left + 270, top: rect_top + 165});
+  var valuelabel = av.label("", {left: rect_left + 290, top: rect_top + 165});
   valuelabel.addClass("loopLabels");
   valuelabel.addClass("valuelabelpb");
 
 
   // <<--------------- STATE BOX ----------------->>
 
-  var stateX = 530;
+  var stateX = 545;
   var stateY = - 20;
   var boxLabelX = stateX + 23;
-  var stateLabel = av.label("STATE", {left: stateX, top: stateY});
-  stateLabel.addClass("statelabel");
-
+  var stateLabel = av.label("STATE", {left: stateX, top: stateY}).addClass("statelabellarge");
   var stateBox = av.g.rect(stateX - 25, stateY + 50, 110, 280).addClass("statebox");
 
   // price box and label
-  av.label("price", {left: stateX + 13, top: stateY + 65});
-  stateLabel.addClass("statelabel");
-
+  av.label("price", {left: stateX + 12, top: stateY + 60}).addClass("statelabel");
   var priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
   var priceBoxLabel = av.label("", {left:boxLabelX , top: stateY + 100});
   priceBoxLabel.addClass("loopLabels");
   priceBoxLabel.addClass("midlabel");
 
   // total box and label
-  av.label("total", {left: stateX + 13, top: stateY + 180});
-  stateLabel.addClass("statelabel");
-
+  av.label("total", {left: stateX + 13, top: stateY + 175}).addClass("statelabel");
   var totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
   var totalBoxLabel = av.label("", {left: boxLabelX, top: stateY + 215});
   totalBoxLabel.addClass("loopLabels");
@@ -116,7 +117,7 @@ $(document).ready(function() {
   var consoleY = 45;
 
   // create CONSOLE label
-  av.label("CONSOLE", {left: consoleX + 40, top: consoleY}).addClass("statelabel");;
+  av.label("CONSOLE", {left: consoleX + 35, top: consoleY}).addClass("statelabellarge");;
 
   // create console box.
   var consoleBox = av.g.rect(consoleX, consoleY + 50, 170, 180).addClass("consolebox");
@@ -145,10 +146,10 @@ $(document).ready(function() {
 
   // Slide 1
   av.umsg(interpret("sc2"));
-  toppurple1.addClass("calboxhigh");
-  toppurple1.removeClass("calboxhigh");
-  toppurple2.addClass("calboxhigh");
-  toppurple2.removeClass("calboxhigh");
+  topgreen1.addClass("blueboxh");
+  topgreen1.removeClass("blueboxh");
+  topgreen2.addClass("blueboxh");
+  topgreen2.removeClass("blueboxh");
   av.step();
 
   // Slide 2

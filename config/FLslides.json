@@ -81,6 +81,22 @@
     },
     "Week 5": {
       "FLSlides/CFLSimp": {}
+    },
+    "Week 7": {
+      "FLSlides/PDA": {},
+      "FLSlides/PDACFL": {}
+    },
+    "Week 8": {
+      "FLSlides/DPDA": {},
+      "FLSlides/DPDAGrammar": {},
+      "FLSlides/CFLProp": {},
+      "FLSlides/CFLClosure": {}
+    },
+    "Week 9": {
+      "FLSlides/Turing": {},
+      "FLSlides/TuringDecide": {},
+      "FLSlides/TuringCombine": {},
+      "FLSlides/TuringExtend": {}
     }
   }
 }

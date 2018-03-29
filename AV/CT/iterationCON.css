@@ -65,7 +65,7 @@
 
 .statelabel  {
  font-size: 120%;
- font-weight: 600;
+ font-weight: 400;
 }
 
 .statelabellarge  {
@@ -94,9 +94,22 @@
   z-index: -500;
 }
 
-.emptybox {
-    z-index: -600;
-    stroke-width : 0;
+.greenbox {
+  fill: #74a55b;
+  stroke: #74a55b;
+  z-index : -500;
+}
+
+.greenboxlight {
+  fill: #C7DBBD;
+  stroke: #C7DBBD;
+  z-index : -600;
+}
+
+.purpleboxlight {
+  fill: #ccbddb;
+  stroke: #ccbddb;
+  z-index : -600;
 }
 
 .bluebox  {
@@ -105,9 +118,20 @@
   z-index: -500;
 }
 
+.blueboxlight {
+  fill: #BDBDDB;
+  stroke: #BDBDDB;
+  z-index : -600;
+}
+
 .blueboxh  {
   fill : #e6eeff;
   stroke : #e6eeff;
+}
+
+.emptybox {
+    z-index: -600;
+    stroke-width : 0;
 }
 
 .statebox  {
@@ -127,7 +151,7 @@
 
 .calbox  {
   fill : #805ba5;
-  stroke : #805ba5;
+  stroke : #d8d1e0;
   z-index: -500;
 }
 
@@ -137,23 +161,6 @@
   z-index: -500;
 }
 
-.greenbox {
-  fill: #74A55B;
-  stroke: #74A55B;
-  z-index : -500;
-}
-
-.greenboxlight {
-  fill: #C7DBBD;
-  stroke: #C7DBBD;
-  z-index : -600;
-}
-
-.purpleboxlight {
-  fill: #BDBDDB;
-  stroke: #BDBDDB;
-  z-index : -600;
-}
 
 /* ----------Others----------*/
 .hiding {

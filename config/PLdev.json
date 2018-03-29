@@ -202,16 +202,18 @@
     "Interpreting the Functional Language SLang 1": {
       "PL/SLang1": {},
       "PL/Environment": {},
-      "PL/SLang1Interpreter": {},
-      "PL/SLang1InterpreterModifications": {},
-      "PL/SLang1InterpreterReview": {},
       "PL/SLang1withLetExpressions": {}
     },
     "Interpreting the Imperative Language SLang 2": {
       "PL/SLang2": {},
-      "PL/SLang2TTK": {},
+      "PL/SLang2TTK": {}
+    },
+    "Variations on Parameter Passing": {
       "PL/SLang2ParameterPassing": {},
       "PL/LazyLists": {}
+    },
+    "Data Typing: The Good and The Bad": {
+      "PL/TypeConsiderations": {}
     },
     "Interpreting the Object-Oriented Language SLang 3": {
       "PL/SLang3reviewOfOOP": {},

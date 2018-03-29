@@ -32,7 +32,7 @@ $(document).ready(function () {
   graphA.addEdge(node4, node1);
   graphA.layout();
 
-  av.label("(a) undirected graph", {top: lHeight, left: 125}).show();
+  av.label("(a) undirected graph", {top: lHeight, left: 70}).show();
 
   // Create graph (b)
   var g2Left = 360;
@@ -53,7 +53,7 @@ $(document).ready(function () {
   graphB.addEdge(node4, node1);
 
   graphB.layout();
-  av.label("(b) directed graph", {top: lHeight, left: 415}).show();
+  av.label("(b) directed graph", {top: lHeight, left: 365}).show();
 
   // Create graph (c)
   gLeft = 650;
@@ -73,5 +73,5 @@ $(document).ready(function () {
   graphC.addEdge(node3, node2, {weight: 7});
   graphC.addEdge(node4, node1, {weight: 1});
   graphC.layout();
-  av.label("(c) labeled graph", {top: lHeight, left: 705}).show();
+  av.label("(c) labeled graph", {top: lHeight, left: 660}).show();
 });

@@ -1,0 +1,30 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "Depth-First Search Proficiency Exercise",
+      "av_Authors": "Mohammed Fawzi, Kasper Hellström",
+      ".instructLabel": "Instructions:",
+      ".instructions": "Reproduce the behavior of the DFS algorithm for the graph below. Just click on the <strong>edges</strong> in the order that they will be traversed by the DFS algorithm. Start with Node A. If there is more than one node that could be visited next, choose the one that comes first in alphabetical order.",
+      "av_ms_final": "Final DFS graph",
+      "av_ms_process_edge": "Process edge ({from}, {to}).",
+      "av_ms_already_visited": " Node {node} already visited",
+      "#help": "Help",
+      "#about": "About"
+    },
+    "fi": {
+      ".avTitle": "Syvyyssuuntainen haku",
+      "av_Authors": "Mohammed Fawzi, Kasper Hellström",
+      ".instructLabel": "Ohjeet:",
+      ".instructions": "Käy läpi verkko DFS-järjestyksessä. Aloita läpikäynti solmusta A. Klikkaa <strong>särmiä</strong> samassa järjestyksessä kuin DFS-algoritmi käy ne läpi. Solmun naapurit käydään läpi aakkosjärjestyksessä.",
+      "av_ms_final": "DFS-algoritmin virityspuu",
+      "av_ms_process_edge": "Prosessoidaan särmää ({from}, {to}).",
+      "av_ms_already_visited": " Solmu {node} on jo läpikäyty",
+      "#help": "Ohje",
+      "#about": "Lisätietoa"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "fix"
+  }
+}

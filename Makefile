@@ -112,6 +112,9 @@ JFLAP: min
 FormalLang: min
 	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
 
+VisFormalLang: min
+	python $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
+
 FLslides: min
 	python $(CONFIG_SCRIPT) -s config/FLslides.json --no-lms
 

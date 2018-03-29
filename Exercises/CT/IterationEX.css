@@ -58,12 +58,16 @@
   stroke-width: 0;
 }
 
-.redbox {
-  stroke : Red;
-  stroke-width: 4;
+.yellowbox {
   z-index: -1000;
   border-width: inherit;
   border-radius: 50px;
+  stroke-width: 0;
+}
+
+.yellowbox:hover {
+  stroke-width : 5;
+  stroke : #FFCC33;
 }
 
 .redboxbutton {

@@ -101,12 +101,6 @@ DFS can be applied to directed or undirected graphs.
 
 Here is an implementation for the DFS algorithm.
 
-.. inlineav:: DfsCON ss
-   :long_name: Depth-First Search Slideshow
-   :links:
-   :scripts: AV/Graph/DfsCON.js
-   :output: show
-
 .. codeinclude:: Graphs/DFS
    :tag: DFS
 
@@ -126,8 +120,11 @@ This would be a natural opportunity to make use of the
 This visualization shows a graph and the result of performing a DFS on
 it, resulting in a depth-first search tree.
 
-.. avembed:: AV/Graph/graphDFS.html ss
-   :long_name: Depth First Search Visualization
+.. inlineav:: DfsCON ss
+   :long_name: Depth-First Search Slideshow
+   :links: AV/Graph/DfsCON.css
+   :scripts: AV/Graph/DfsCON.js
+   :output: show
 
 DFS processes each edge once in a directed graph.
 In an undirected graph, DFS processes each edge from both
@@ -137,7 +134,7 @@ Each vertex must be visited, but only once, so the total cost is
 
 Here is an exercise to practice DFS.
 
-.. avembed:: AV/Graph/graphDFSPE.html pe
+.. avembed:: AV/Ivan/graphDFSPE.html pe
    :long_name: DFS Proficiency Exercise
 
 
@@ -154,27 +151,31 @@ Note that if the graph is a tree and the start vertex is at the root,
 BFS is equivalent to visiting vertices level by level from top to
 bottom.
 
-.. TODO::
-   :type: Slideshow
-
-   Provide a slideshow to demonstrate BFS.
-
 Here is an implementation for BFS.
 
 .. codeinclude:: Graphs/BFS
    :tag: BFS
 
-Here is an AV for you to try it on other graphs.
+This visualization shows a graph and the result of performing a BFS on
+it, resulting in a breadth-first search tree.
 
-.. avembed:: AV/Graph/graphBFS.html ss
-   :long_name: Breadth First Search Visualization
+.. inlineav:: BfsCON ss
+   :long_name: Breadth-First Search Slideshow
+   :links: AV/Graph/BfsCON.css
+   :scripts: AV/Graph/BfsCON.js
+   :output: show
 
 Here is an exercise to practice BFS.
 
-.. avembed:: AV/Graph/graphBFSPE.html pe
+.. avembed:: AV/Ivan/graphBFSPE.html pe
    :long_name: BFS Proficiency Exercise
 
-.. TODO::
-   :type: Exercise
+Here is an AV to practice BFS.
 
-   Summary exercise for graph traversals.
+ .. avembed:: AV/Ivan/BfsAV.html pe
+    :long_name: BFS AV
+
+ Here is an AV to practice DFS.
+
+ .. avembed:: AV/Ivan/DfsAV.html pe
+      :long_name: BFS AV

@@ -77,6 +77,9 @@
     "Iteration JSAV SIGCSE": {
       "CT/IterationSIGCSE": {}
     },
+    "Iteration JSAV Slides": {
+      "CT/IterationSlides": {}
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}

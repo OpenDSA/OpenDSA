@@ -96,10 +96,14 @@
     },
     "Pushdown Automata": {
       "FormalLang/PDA": {},
-      "FormalLang/NPDA": {}
+      "FormalLang/PDACFL": {},
+      "FormalLang/DPDA": {}
     },
     "Properties of Context-free Languages": {
       "FormalLang/CFLProp": {}
+    },
+    "Models of Computation": {
+      "SeniorAlgAnal/Turing": {}
     },
     "Parsing": {
       "FormalLang/ParseIntro": {},
@@ -110,7 +114,6 @@
     },
     "Limits to Computing": {
       "NP/Reduction": {},
-      "SeniorAlgAnal/Turing": {},
       "FormalLang/RecEnum": {},
       "SeniorAlgAnal/Impossible": {}
     },
