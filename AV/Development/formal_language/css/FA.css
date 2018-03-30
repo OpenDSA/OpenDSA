@@ -1,5 +1,5 @@
 #av {
-	width: 98%;
+	width: 100%;
 	position: relative;
 }
 .arrayPlace {
@@ -88,4 +88,19 @@
 .new {
 	display: inline !important;
 	border: none !important;
+}
+
+.icon_btn {
+    background-color: White;
+    border: none;
+    color: Black;
+    padding: 3px 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.active, .icon_btn:hover {
+    background-color: #666;
+    color: white;
 }

@@ -68,11 +68,15 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			initialize(data);
 		}
 		$('#undoButton').click(function(){
+			highlight_select_button();
+			$('.undoButton').addClass(" active");
 			g.undo();
 			$('.jsavgraph').click(graphClickHandler);
 			$('.jsavedgelabel').click(labelClickHandler);
 		});
 		$('#redoButton').click(function(){
+			highlight_select_button()
+			$('.redoButton').addClass(" active");
 			g.redo();
 			$('.jsavgraph').click(graphClickHandler);
 			$('.jsavedgelabel').click(labelClickHandler);
@@ -268,15 +272,19 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	// Function to switch to "Add Nodes" mode.
 	// Triggered by clicking the "Add Nodes" button.
 	var addNodes = function() {
+		highlight_select_button();
 		removeModeClasses();
 		removeND();
 		$('.jsavgraph').addClass("addNodes");
 		jsav.umsg('Click to add nodes.');
+		$('#nodeButton').addClass("active");
 	};
 
 	// Function to switch to "Add Edges" mode.
 	// Triggered by clicking the "Add Edges" button.
 	var addEdges = function() {
+		highlight_select_button();
+		$('#edgeButton').addClass(" active");
 		removeModeClasses();
 		removeND();
 		g.disableDragging();
@@ -299,6 +307,8 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	// Function to switch to "Edit Nodes" mode.
 	// Triggered by clicking the "Edit Nodes/Edges" button.
 	var editNodes = function() {
+		highlight_select_button();
+		$('#edgeButton').addClass(" active");
 		removeModeClasses();
 		removeND();
 		$('.jsavgraph').addClass('editNodes');
@@ -308,6 +318,8 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	// Function to switch to "Delete Nodes" mode.
 	// Triggered by clicking the "Delete Nodes/Edges" button.
 	var deleteNodes = function() {
+		highlight_select_button();
+		$('#deleteButton').addClass(" active");
 		removeModeClasses();
 		removeND();
 		$('.jsavgraph').addClass('deleteNodes');
@@ -1063,6 +1075,25 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		addNodes();
 		$('.jsavgraph').addClass("addTrapState");
 		jsav.umsg("click to add trap state");
+	}
+
+	function highlight_select_button(){
+		// Add active class to the current button (highlight it)
+		/*var header = document.getElementById("menu_options");
+		var btns = header.getElementsByClassName("icon_btn");
+		for (var i = 0; i < btns.length; i++) {
+		  btns[i].addEventListener("click", function() {
+		    var current = document.getElementsByClassName("active");
+		    current[0].className = current[0].className.replace(" active", "");
+		    this.className += " active";
+		  });
+		}*/
+		$('#undoButton').removeClass(" active");
+		$('#redoButton').removeClass(" active");
+		$('#deleteButton').removeClass(" active");
+		$('#editButton').removeClass(" active");
+		$('#nodeButton').removeClass(" active");
+		$('#edgeButton').removeClass(" active");
 	}
 	// Button click handlers.
 	$('#trapState').click(addTrapState);
