@@ -112,7 +112,7 @@ $(document).ready(function() {
            leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
   av.g.line(leftAlign + nodeWidth - 7, topAlign + 65,
             leftAlign + nodeWidth - 7, topAlign + 95);
-  av.label ("$\\displaystyle\\sum_{i=1}^{n}1$", 
+  av.label ("$\\displaystyle\\sum_{i=0}^{\\log{n}}1$", 
             {top: topAlign + nodeHeight * 1.15,
              left: leftAlign + 3 * (nodeGap + nodeWidth)});
 
