@@ -246,7 +246,8 @@ Conclusion: NFA adds no new capability. So why bother with the idea?
    :links: AV/VisFormalLang/TuringReverseStringCON.css
    :scripts: AV/VisFormalLang/TuringReverseStringCON.js
    :align: center
-   
+
+|
    
 .. inlineav:: TuringAcceptEqualNumberOfAsAndBsCON dgm
    :links: AV/VisFormalLang/TuringAcceptEqualNumberOfAsAndBsCON.css
