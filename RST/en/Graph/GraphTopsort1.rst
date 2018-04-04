@@ -66,6 +66,24 @@ Here is implementation for the DFS-based algorithm.
 .. codeinclude:: Graphs/TopsortDFS
    :tag: TopsortDFS
 
+.. inlineav:: topSort ss
+    :long_name: TopSort Slideshow
+    :links: AV/Ivan/topSort.css
+    :scripts: AV/Ivan/topSort.js
+    :output: show
+
+.. inlineav:: qTopSort ss
+    :long_name: qTopSort Slideshow
+    :links: AV/Ivan/qTopSort.css
+    :scripts: AV/Ivan/qTopSort.js
+    :output: show
+
+.. avembed:: AV/Ivan/topSortAV.html pe
+    :long_name: topSortAV
+
+.. avembed:: AV/Ivan/qTopSortAV.html pe
+    :long_name: qTopSortAV
+
 .. TODO::
    :type: Slideshow
 
@@ -82,6 +100,8 @@ Here is another example.
 
 .. avembed:: AV/Graph/topSort.html ss
    :long_name: Topological Sort (DFS) visualization
+
+
 
 
 Queue-based Solution
@@ -122,9 +142,6 @@ Here is the code to implement the queue-based topological sort:
 
 .. TODO::
    :type: Proficiency Exercise
-
-   .. avembed:: AV/Graph/topSortDFSPE .html pe
-      :long_name: DFS- Top Sort Excersize
 
    Provide a proficiency exercise that randomly alternates between
    proficiency for DFS-based and queue-based Topsort.

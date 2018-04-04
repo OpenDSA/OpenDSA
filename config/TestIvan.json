@@ -1,5 +1,5 @@
 {
-  "title": "Test",
+  "title": "TestIvan",
   "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
@@ -68,8 +68,9 @@
     "Sorting": {
       "Graph/GraphIntro": {},
       "Graph/GraphImpl": {},
-      "Graph/GraphTraversal1": {},
-      "Graph/GraphTopsort1": {}
+      "Ivan/GraphTraversal": {},
+      "Graph/GraphTopSort1": {},
+      "Ivan/GraphTopSort": {}
     },
     "Appendix": {
       "Glossary": {},

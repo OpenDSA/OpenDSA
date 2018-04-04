@@ -134,7 +134,7 @@ Each vertex must be visited, but only once, so the total cost is
 
 Here is an exercise to practice DFS.
 
-.. avembed:: AV/Graph/graphDFSPE1.html pe
+.. avembed:: AV/Ivan/graphDFSPE.html pe
    :long_name: DFS Proficiency Exercise
 
 
@@ -167,16 +167,15 @@ it, resulting in a breadth-first search tree.
 
 Here is an exercise to practice BFS.
 
-.. avembed:: AV/Graph/graphBFSPE1.html pe
+.. avembed:: AV/Ivan/graphBFSPE.html pe
    :long_name: BFS Proficiency Exercise
 
-AV for BFS.
+Here is an AV to practice BFS.
 
- .. avembed:: AV/Ivan/BfsAV.html ss
-   :long_name: Breadth First Search AV
+ .. avembed:: AV/Ivan/BfsAV.html pe
+    :long_name: BFS AV
 
+ Here is an AV to practice DFS.
 
- AV for DFS.
-
-  .. avembed:: AV/Ivan/DfsAV.html ss
-    :long_name: Depth First Search AV
+ .. avembed:: AV/Ivan/DfsAV.html pe
+      :long_name: BFS AV
