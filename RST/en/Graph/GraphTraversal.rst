@@ -68,7 +68,7 @@ directed or undirected.
 To ensure visiting all vertices, ``graphTraverse`` could be called
 as follows on a graph :math:`\mathbf{G}`:
 
-.. codeinclude:: Graphs/GraphTrav 
+.. codeinclude:: Graphs/GraphTrav
    :tag: GraphTrav
 
 Function ``doTraversal`` might be implemented by using
@@ -77,12 +77,7 @@ one of the graph traversals described next.
 Depth-First Search
 ~~~~~~~~~~~~~~~~~~
 
-.. TODO::
-   :type: Slideshow
-
-   Replace the following paragraph with a slideshow.
-
-The first method of organized graph traversal is called
+Our first method for organized graph traversal is called
 :term:`depth-first search` (DFS).
 Whenever a vertex :math:`v` is visited during the search,
 DFS will recursively visit all of :math:`v` 's unvisited neighbors.
@@ -99,9 +94,18 @@ This tree is composed of the edges that were followed to any new
 lead to already visited vertices.
 DFS can be applied to directed or undirected graphs.
 
+This visualization shows a graph and the result of performing a DFS on
+it, resulting in a depth-first search tree.
+
+.. inlineav:: DfsCON ss
+   :long_name: Depth-First Search Slideshow
+   :links: AV/Graph/DfsCON.css
+   :scripts: AV/Graph/DfsCON.js
+   :output: show
+
 Here is an implementation for the DFS algorithm.
 
-.. codeinclude:: Graphs/DFS 
+.. codeinclude:: Graphs/DFS
    :tag: DFS
 
 This implementation contains calls to functions ``PreVisit`` and
@@ -117,19 +121,13 @@ remaining vertices are processed; hence the call to function
 This would be a natural opportunity to make use of the
 :ref:`visitor <visitor> <DesignPatterns>` design pattern.
 
-This visualization shows a graph and the result of performing a DFS on
-it, resulting in a depth-first search tree.
- 
-.. avembed:: AV/Graph/graphDFS.html ss
-   :long_name: Depth First Search Visualization
-
 DFS processes each edge once in a directed graph.
 In an undirected graph, DFS processes each edge from both
 directions.
 Each vertex must be visited, but only once, so the total cost is
 :math:`\Theta(|\mathbf{V}| + |\mathbf{E}|)`.
 
-Here is an exercise to practice DFS.
+Here is an exercise for you to practice DFS.
 
 .. avembed:: AV/Graph/graphDFSPE.html pe
    :long_name: DFS Proficiency Exercise
@@ -148,22 +146,21 @@ Note that if the graph is a tree and the start vertex is at the root,
 BFS is equivalent to visiting vertices level by level from top to
 bottom.
 
-.. TODO::
-   :type: Slideshow
+This visualization shows a graph and the result of performing a BFS on
+it, resulting in a breadth-first search tree.
 
-   Provide a slideshow to demonstrate BFS.
+.. inlineav:: BfsCON ss
+   :long_name: Breadth-First Search Slideshow
+   :links: AV/Graph/BfsCON.css
+   :scripts: AV/Graph/BfsCON.js
+   :output: show
 
 Here is an implementation for BFS.
 
-.. codeinclude:: Graphs/BFS 
+.. codeinclude:: Graphs/BFS
    :tag: BFS
 
-Here is an AV for you to try it on other graphs.
-
-.. avembed:: AV/Graph/graphBFS.html ss
-   :long_name: Breadth First Search Visualization
-
-Here is an exercise to practice BFS.
+Here is an exercise for you to practice BFS.
 
 .. avembed:: AV/Graph/graphBFSPE.html pe
    :long_name: BFS Proficiency Exercise

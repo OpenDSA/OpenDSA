@@ -65,11 +65,10 @@
     "required": true
   },
   "chapters": {
-    "Sorting": {
+    "Graphs": {
       "Graph/GraphIntro": {},
       "Graph/GraphImpl": {},
       "Ivan/GraphTraversal": {},
-      "Graph/GraphTopSort1": {},
       "Ivan/GraphTopSort": {}
     },
     "Appendix": {
