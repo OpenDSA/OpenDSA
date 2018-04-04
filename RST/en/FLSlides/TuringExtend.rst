@@ -42,8 +42,8 @@ Turing Machine Extensions
       :align: center
 
    | Linz model: Write to tape AND move L or R
-   |    My machine can use a second state to do the move.
-   |    Linz machine can use a second state to "move back" to
+   |    My machine could use a second state to do the move.
+   |    Linz machine could use a second state to "move back" to
         implement "stay"
 
 
@@ -86,8 +86,12 @@ Turing Machine Extensions
 
    | We could restrict the general model for a TM:
    |   Instead of an infinite tape, the tape might be only as long as
-       the input (or :math:`c*n` for constant :math:`c` and input length
-       :math:`n`) [LBA]
+       the input
+   |   Alternatively: :math:`c*n` for constant :math:`c` and input length
+       :math:`n`
+   |      (can double space by simulating two tracks by
+          augmenting the alphabet)
+   | Linear Bounded Automata [LBA]
    | Linz shows that, for example,
      :math:`L = \{a^nb^nc^n \mid n \geq 1\}` can be accepted by an
      LBA.
@@ -98,6 +102,55 @@ Turing Machine Extensions
 
 .. slide:: A Universal Turing Machine
 
-   A Turing Machine that takes a program for a Turing Machine and an
-   input string, and simulates the behavior of that machine on that
-   string.
+   | A Turing Machine that takes a description for a Turing Machine
+     and an input string, and simulates the behavior of that machine
+     on that string.
+   | Need three things:
+   |    We need to encode the input machine as a string
+   |    We need to encode the input *to* the machine as a string
+   |    We need to encode the current state of operations on the input
+        machine.
+   | Might be easiest to think of these as being on separate tapes.
+
+
+.. slide:: Recursive Enumerable vs. Recursive
+
+   | **Definition:** A language is **Recursively Enumerable** if there
+     is a Turing Machine that accepts it. [Turing Acceptable]
+
+   | **Definition:** A language is **Recursive** if there is a Turing
+     Machine that accepts it and that halts on every input string.
+     [Turing Decideable]
+
+   | The terminology of "enumerable" comes from the fact that it is
+     possible to both "count" the number of strings in the language
+     (countably infinite) and to put them in some order.
+   |    More on this later!
+
+
+.. slide:: More-general Grammars
+
+   **Unrestricted Grammars**: Has productions :math:`u \rightarrow v`
+   where :math:`u` is in :math:`(V \cup T)^+` and :math:`v` is in
+   :math:`(V \cup T)^*`.
+
+   | **Context Sensitive Grammars**: All productions are of the form
+     :math:`u \rightarrow v` where :math:`u, v \in (V \cup T)^+` and
+     :math:`|u| \leq |v|`.
+   |    "Noncontracting"
+   |    Called "context sensitive" because they can always be
+        rewritten so that all productions are in the form
+        :math:`xAy \rightarrow xvy` for :math:`v \in (V \cup T)^*`.
+   | We already know that CSG is "richer" than CFG.
+
+
+.. slide:: The Language Hierarchy
+
+   | Turing Acceptable (Recur Enum) Language == Unrestricted Grammar
+   | Turing Decideable (Recursive) Language == Linear Bounded Automata
+   | Context-sensitive Grammar
+   | Context-free Grammar == Non-deterministic Pushdown Automata
+   | Deterministic Context-free Grammar == Deterministic Pushdown Automata
+   | Regular Expression == Regular Grammar == DFA == NFA
+
+   These are all proper subset relationships

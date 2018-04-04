@@ -23,8 +23,8 @@ $(document).ready(function() {
             xleft + cellwidth, ytop + 4 * cellwidth,
             {"stroke-width": 2});
 
-  av.label("Single tape:", {top: ytop + 5, left: xleft - 90});
-  av.label("Each column is one cell", {top: ytop + 20, left: xleft - 165});
+  av.label("Single tape:", {top: ytop + 5, left: xleft - 100});
+  av.label("Each column is one cell", {top: ytop + 25, left: xleft - 187});
   av.label("$\\$$", {top: ytop + 16, left: xleft + 5});
   av.label("$a$", {top: ytop - 13, left: xleft + 5 + cellwidth});
   av.label("$b$", {top: ytop - 13, left: xleft + 5 + cellwidth * 2});
@@ -59,7 +59,6 @@ $(document).ready(function() {
            {top: ytop - 13 + cellwidth * 3, left: xleft + 5 + 5 * cellwidth});
   av.label("(Cell numbering from original multi-tapes)",
            {top: ytop - 13 + cellwidth * 4, left: xleft + 5 + 5 * cellwidth});
-
 
   av.displayInit();
   av.recorded();
