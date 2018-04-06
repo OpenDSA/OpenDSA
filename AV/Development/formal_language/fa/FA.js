@@ -1149,7 +1149,7 @@ fastateproto.stateLabelPositionUpdate = function(options) {
 				newTop = bbox.top + nHeight,
 				newLeft = bbox.left;
 		if (newTop !== lbbox.top || newLeft || lbbox.left) {
-			this._stateLabel.css({top: newTop, left: newLeft, width: nWidth}, options);
+			this._stateLabel.css({top: newTop, left: newLeft/*, width: nWidth*/}, options);
 		}
 	}
 	if(this._mooreOutput) {
