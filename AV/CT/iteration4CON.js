@@ -212,24 +212,28 @@ $(document).ready(function() {
 
   // Slide 2
   av.umsg(interpret("sc2"));
-  av.bluehigh(topblue);
   av.step();
 
   // Slide 3
   av.umsg(interpret("sc3"));
+  av.bluehigh(topblue);
+  av.step();
+
+  // Slide 4
+  av.umsg(interpret("sc4"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
   priceBoxLabel.value("4");
   priceBoxLabel.css({left: pricelabelX});
   av.step();
 
-  // Slide 4
-  av.umsg(interpret("sc4"));
+  // Slide 5
+  av.umsg(interpret("sc5"));
   av.blueStepAnim(0, 100, 0, "4");
   av.step();
 
-  // Slide 5
-  av.umsg(interpret("sc5"));
+  // Slide 6
+  av.umsg(interpret("sc6"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
   it4_printprice.value("");
@@ -237,13 +241,13 @@ $(document).ready(function() {
   priceBoxLabel.css({left: pricelabelX - 6});
   av.step();
 
-  // Slide 6
-  av.umsg(interpret("sc6"));
+  // Slide 7
+  av.umsg(interpret("sc7"));
   av.blueStepAnim(0, 100, 1, "13");
   av.step();
 
-  // Slide 7
-  av.umsg(interpret("sc7"));
+  // Slide 8
+  av.umsg(interpret("sc8"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
   it4_printprice.value("");
@@ -251,13 +255,16 @@ $(document).ready(function() {
   priceBoxLabel.css({left: pricelabelX});
   av.step();
 
-  // Slide 8
-  av.umsg(interpret("sc8"));
+  // Slide 9
+  av.umsg(interpret("sc9"));
   av.blueStepAnim(0, 100, 2, "6");
   av.step();
 
-  // Slide 9
-  av.umsg(interpret("sc9"));
+  // slide 10
+  av.step();
+
+  // Slide 11
+  av.umsg(interpret("sc11"));
   arr.css({left: nextleft});
   nextleft -= nodegap;
   it4_printprice.value("");
@@ -265,13 +272,13 @@ $(document).ready(function() {
   priceBoxLabel.css({left: pricelabelX});
   av.step();
 
-  // Slide 10
-  av.umsg(interpret("sc10"));
+  // Slide 12
+  av.umsg(interpret("sc12"));
   av.blueStepAnim(0, 100, 3, "9");
   av.step();
 
-  // Slide 11
-  av.umsg(interpret("sc11"));
+  // Slide 13
+  av.umsg(interpret("sc13"));
   arr.css({left: nextleft});
   nextleft -= (nodegap + 50);
   it4_printprice.value("");
@@ -279,21 +286,20 @@ $(document).ready(function() {
   priceBoxLabel.css({left: pricelabelX - 6});
   av.step();
 
-  // Slide 12
-  av.umsg(interpret("sc12"));
+  // Slide 14
+  av.umsg(interpret("sc14"));
   av.blueStepAnim(0, 100, 4, "11");
   av.step();
 
-  // Slide 13
-  av.umsg(interpret("sc13"));
+  // Slide 15
+  av.umsg(interpret("sc15"));
   arr.css({left: nextleft});
   it4_printprice.value("");
   nextleft -= (nodegap + 100);
-
   av.step();
 
-  // Slide 14
-  av.umsg(interpret("sc14"));
+  // Slide 16
+  av.umsg(interpret("sc16"));
   av.bluehigh(botblue);
   av.recorded();
 });

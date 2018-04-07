@@ -112,7 +112,7 @@ function FANodePrompt(func) {
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="ok()">OK</button> <button onclick="terminate()">Cancel</button>';
         // If the node being edited has a state label, display this text in the "State Label" text field.
         if (lab) {
-            document.getElementById('label').value = lab;
+            document.getElementById('label').value = lab.split(">")[1].split("<")[0];
         }
         // Place the cursor in the state label text field by default (since this is the only text field in the prompt box).
         document.getElementById('label').focus();
@@ -122,6 +122,7 @@ function FANodePrompt(func) {
     ok = function() {
         // Check every field in the prompt box and update the node accordingly.
         var node_label = document.getElementById('label').value;
+        var node_label = '<p class = "label_css"> ' + node_label + '</p>';
         var initial_state = document.getElementById('initial_state').checked;
         var final_state = document.getElementById('final_state').checked;
         // Call the node function on these values, then exit out of the prompt box.

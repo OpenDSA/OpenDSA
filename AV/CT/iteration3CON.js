@@ -138,22 +138,25 @@ $(document).ready(function() {
   // <<--------- Slide Show <<--------->>
 
 
-  // Slide 0
+  // Slide 1
   av.umsg(interpret("sc1"));
   var nextleft = leftMargin - 120;
   av.displayInit();
 
-
-  // Slide 1
+  // Slide 2
   av.umsg(interpret("sc2"));
+  av.step();
+
+  // Slide 3
+  av.umsg(interpret("sc3"));
   topgreen1.addClass("blueboxh");
   topgreen1.removeClass("blueboxh");
   topgreen2.addClass("blueboxh");
   topgreen2.removeClass("blueboxh");
   av.step();
 
-  // Slide 2
-  av.umsg(interpret("sc2"));
+  // Slide 4
+  av.umsg(interpret("sc4"));
   topblue1.addClass("blueboxh");
   topblue1.removeClass("blueboxh");
   totalBox.addClass("blueboxh");
@@ -161,8 +164,8 @@ $(document).ready(function() {
   totalBoxLabel.value("0");
   av.step();
 
-  // Slide 3
-  av.umsg(interpret("sc3"));
+  // Slide 5
+  av.umsg(interpret("sc5"));
   arr.css({left: nextleft});   //move array
   nextleft -= nodegap; // calculate nextleft value for next array moving
   priceBoxLabel.value(" 4 ")
@@ -170,34 +173,8 @@ $(document).ready(function() {
   priceBox.removeClass("blueboxh");
   av.step();
 
-  // Slide 4
-  av.umsg(interpret("sc4"));
-  midblue2.addClass("calboxhigh");
-  midblue2.removeClass("calboxhigh");
-  midblue3.addClass("calboxhigh");
-  midblue3.removeClass("calboxhigh");
-  valuelabel.value("0 + 4");
-  av.step();
-
-  // Slide 5
-  av.umsg(interpret("sc5"));
-  midblue1.addClass("calboxhigh");
-  midblue1.removeClass("calboxhigh");
-  totalBox.addClass("blueboxh");
-  totalBox.removeClass("blueboxh");
-  totalBoxLabel.value(" 4 ");
-  valuelabel.value("");
-  av.step();
-
-
   // Slide 6
   av.umsg(interpret("sc6"));
-  arr.css({left: nextleft});
-  nextleft -= nodegap;
-  priceBox.addClass("blueboxh");
-  priceBox.removeClass("blueboxh");
-  priceBoxLabel.value(" 13 ");
-  priceBoxLabel.css({left: boxLabelX - 5});
   av.step();
 
   // Slide 7
@@ -206,18 +183,16 @@ $(document).ready(function() {
   midblue2.removeClass("calboxhigh");
   midblue3.addClass("calboxhigh");
   midblue3.removeClass("calboxhigh");
-  valuelabel.value(" 4 + 13 ");
+  valuelabel.value("0 + 4");
   av.step();
-
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  totalBoxLabel.value(" 17 ");
-  totalBoxLabel.css({left: boxLabelX - 5});
   midblue1.addClass("calboxhigh");
   midblue1.removeClass("calboxhigh");
   totalBox.addClass("blueboxh");
   totalBox.removeClass("blueboxh");
+  totalBoxLabel.value(" 4 ");
   valuelabel.value("");
   av.step();
 
@@ -227,8 +202,8 @@ $(document).ready(function() {
   nextleft -= nodegap;
   priceBox.addClass("blueboxh");
   priceBox.removeClass("blueboxh");
-  priceBoxLabel.value(" 6 ");
-  priceBoxLabel.css({left: boxLabelX});
+  priceBoxLabel.value(" 13 ");
+  priceBoxLabel.css({left: boxLabelX - 5});
   av.step();
 
   // Slide 10
@@ -237,12 +212,13 @@ $(document).ready(function() {
   midblue2.removeClass("calboxhigh");
   midblue3.addClass("calboxhigh");
   midblue3.removeClass("calboxhigh");
-  valuelabel.value(" 17 + 6 ");
+  valuelabel.value(" 4 + 13 ");
   av.step();
 
   // Slide 11
   av.umsg(interpret("sc11"));
-  totalBoxLabel.value(" 23 ");
+  totalBoxLabel.value(" 17 ");
+  totalBoxLabel.css({left: boxLabelX - 5});
   midblue1.addClass("calboxhigh");
   midblue1.removeClass("calboxhigh");
   totalBox.addClass("blueboxh");
@@ -256,7 +232,8 @@ $(document).ready(function() {
   nextleft -= nodegap;
   priceBox.addClass("blueboxh");
   priceBox.removeClass("blueboxh");
-  priceBoxLabel.value(" 9 ");
+  priceBoxLabel.value(" 6 ");
+  priceBoxLabel.css({left: boxLabelX});
   av.step();
 
   // Slide 13
@@ -265,12 +242,12 @@ $(document).ready(function() {
   midblue2.removeClass("calboxhigh");
   midblue3.addClass("calboxhigh");
   midblue3.removeClass("calboxhigh");
-  valuelabel.value(" 23 + 9 ");
+  valuelabel.value(" 17 + 6 ");
   av.step();
 
   // Slide 14
   av.umsg(interpret("sc14"));
-  totalBoxLabel.value(" 32 ");
+  totalBoxLabel.value(" 23 ");
   midblue1.addClass("calboxhigh");
   midblue1.removeClass("calboxhigh");
   totalBox.addClass("blueboxh");
@@ -281,11 +258,10 @@ $(document).ready(function() {
   // Slide 15
   av.umsg(interpret("sc15"));
   arr.css({left: nextleft});
-  nextleft -= (nodegap + 50);
+  nextleft -= nodegap;
   priceBox.addClass("blueboxh");
   priceBox.removeClass("blueboxh");
-  priceBoxLabel.value(" 11 ");
-  priceBoxLabel.css({left: boxLabelX - 5});
+  priceBoxLabel.value(" 9 ");
   av.step();
 
   // Slide 16
@@ -294,11 +270,40 @@ $(document).ready(function() {
   midblue2.removeClass("calboxhigh");
   midblue3.addClass("calboxhigh");
   midblue3.removeClass("calboxhigh");
-  valuelabel.value(" 32 + 11 ");
+  valuelabel.value(" 23 + 9 ");
   av.step();
 
   // Slide 17
   av.umsg(interpret("sc17"));
+  totalBoxLabel.value(" 32 ");
+  midblue1.addClass("calboxhigh");
+  midblue1.removeClass("calboxhigh");
+  totalBox.addClass("blueboxh");
+  totalBox.removeClass("blueboxh");
+  valuelabel.value("");
+  av.step();
+
+  // Slide 18
+  av.umsg(interpret("sc18"));
+  arr.css({left: nextleft});
+  nextleft -= (nodegap + 50);
+  priceBox.addClass("blueboxh");
+  priceBox.removeClass("blueboxh");
+  priceBoxLabel.value(" 11 ");
+  priceBoxLabel.css({left: boxLabelX - 5});
+  av.step();
+
+  // Slide 19
+  av.umsg(interpret("sc19"));
+  midblue2.addClass("calboxhigh");
+  midblue2.removeClass("calboxhigh");
+  midblue3.addClass("calboxhigh");
+  midblue3.removeClass("calboxhigh");
+  valuelabel.value(" 32 + 11 ");
+  av.step();
+
+  // Slide 20
+  av.umsg(interpret("sc20"));
   totalBoxLabel.value(" 43 ");
   midblue1.addClass("calboxhigh");
   midblue1.removeClass("calboxhigh");
@@ -307,19 +312,25 @@ $(document).ready(function() {
   valuelabel.value("");
   av.step();
   //
-  // Slide 18
-  av.umsg(interpret("sc18"));
+  // Slide 21
+  av.umsg(interpret("sc21"));
   arr.css({left: nextleft});
   valuelabel.value("");
   av.step();
 
-  // Slide 19
-  av.umsg(interpret("sc19"));
+  // Slide 22
+  av.umsg(interpret("sc22"));
   botblue.addClass("blueboxh");
   botblue.removeClass("blueboxh");
   printprice.show();
   av.recorded();
 
-  //last Slide
-    av.recorded();
+  // Slide 23
+  av.umsg(interpret("sc23"));
+  arr.css({left: nextleft});
+  valuelabel.value("");
+  av.step();
+
+  //Slide 24
+  av.recorded();
 });

@@ -29,7 +29,7 @@
 	display: none;
 }
 .jsavlabel {
-	font-size: 2em;
+	font-size: 1em;
 	text-align: center;
 }
 .jsavstatelabel {
@@ -103,4 +103,10 @@
 .active, .icon_btn:hover {
     background-color: #666;
     color: white;
+}
+
+.label_css {
+    width: auto;
+    border: 1px solid black;
+    background-color: white;
 }

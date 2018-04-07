@@ -102,8 +102,6 @@ Here is another example.
    :long_name: Topological Sort (DFS) visualization
 
 
-
-
 Queue-based Solution
 ~~~~~~~~~~~~~~~~~~~~
 
