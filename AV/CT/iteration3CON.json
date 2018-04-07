@@ -1,85 +1,29 @@
 {
   "translations": {
-    "en":         {
-      "sc1":      "This animation shows the steps of an algorithm to add together and print the values in a list.
-This animation is an example of the accumulate pattern. In this problem we take the values in
-the list to be the price of items being purchased. The state for this algorithm has two variables. The iteration variable is named price and the
-variable total will be used to accumulate the sum of the values.",
-      "sc2":      "The first step is to select an appropriate initial value for the variable total that will be
-used to add together the values in the list. Because addition is being performed, an appropriate
-initial value is 0 (zero). Zero is an appropriate initialization because the value 0 reflects
-the sum before we have added any of the list values to the total. Next, the value zero is
-assigned as the initial value of the variable total. Notice that the state correctly shows the
-result of this assignment.",
-      "sc3":      "On the first step of the iteration the iteration variable price is assigned the value of the
-first element of the list (4). Notice that this value is shown in the state.
-",
-      "sc4":      "The calculation inside the iteration first computes the sum of the current values of the two
-variables total (0) and price(4). Notice that the current values are those shown in the state.
-On this step the calculation will add 0 and 4 resulting in the value 4. Also notice the importance
-of the initialization of the variable total to 0 (zero) before the beginning of the iteration.
-This initialization makes the calculation of \"total + price\" meaningful on the first step of the iteration.
-",
-      "sc5":      "The result of the calculation (4) is assigned as the value of the variable total. Notice that
-the value of total in the state is now changed to reflect its new value. At this point the value
-of the variable total represents the result of accumulating just the first value in the list (4)
-",
-      "sc6":      "The next step in the iteration begin by assigning the next value in the list (13) as the value
-of the variable price. Notice that the state shows this new value.
-",
-      "sc7":      "The calculation inside the iteration first computes the sum of the current values of the two
-variables total (4) and price(13). Notice that the current values are those shown in the state.
-On this step the calculation will add 4 and 13 resulting in the value 17.
-",
-      "sc8":      "The result of the calculation (17) is assigned as the value of the variable total. Notice that
-the value of the variable total in the state has been updated to show this change. Also notice
-that two values in the list (4 and 13) have been added together and their sum (17) is now the
-value of the variable total.
-",
-      "sc9":      "The next step in the iteration begin by assigning the next value in the list (6) as the value
-of the variable price. Notice that the state shows this new value.
-",
-      "sc10":     "The calculation inside the iteration first computes the sum of the current values of the two
-variables total (17) and price(6). Notice that the current values are those shown in the state.
-On this step the calculation will add 17 and 6 resulting in the value 23.
-",
-      "sc11":     "The result of the calculation (23) is assigned as the value of the variable total. Notice that
-the value of the variable total in the state has been updated to show this change. Also notice
-that three values in the list (4, 13, and 6) have been added together and their sum (23) is now
-the value of the variable total.
-",
-      "sc12":     "The next step in the iteration begin by assigning the next value in the list (9) as the value
-of the variable price. Notice that the state shows this new value.
-",
-      "sc13":     "The calculation inside the iteration first computes the sum of the current values of the two
-variables total (23) and price(9). Notice that the current values are those shown in the state.
-On this step the calculation will add 23 and 9 resulting in the value 32.
-",
-      "sc14":     "The result of the calculation (32) is assigned as the value of the variable total. Notice that
-the value of the variable total in the state has been updated to show this change. Also notice
-that four values in the list (4, 13, 6 and 9) have been added together and their sum (32) is
-now the value of the variable total.
-",
-      "sc15":     "The next step in the iteration begin by assigning the next value in the list (11) as the value
-of the variable price. Notice that the state shows this new value.
-",
-      "sc16":     "The calculation inside the iteration first computes the sum of the current values of the two
-variables total (32) and price(11). Notice that the current values are those shown in the state.
-On this step the calculation will add 32 and 11 resulting in the value 43.
-",
-      "sc17":     "The result of the calculation (43) is assigned as the value of the variable total. Notice that
-the value of the variable total in the state has been updated to show this change. Also notice
-that five values in the list (4, 13, 6, 9 and 11) have been added together and their sum (43)
-is now the value of the variable total.
-",
-      "sc18":     "There are no more items in the list. The iteration is now complete and the steps following the
-iteration will be performed.
-",
-      "sc19":     "The print statement following the iteration is now performed. This statement displays on the
-console the current value of the variable total (the number 43). Notice that this number now
-appears in the console. Remember that the print statement is needed to display the value to a
-human using the algorithm because the state values are inside the computer and invisible unless displayed.
-"
+    "en": {
+      "sc1": "This animation shows the steps of an algorithm to add together and print the values in a list. This animation is an example of the accumulate pattern. In this problem we take the values in the list to be the price of items being purchased. ",
+      "sc2": "The state for this algorithm has two variables. The iteration variable is named price and the variable total will be used to accumulate the sum of the values.",
+      "sc3": "The first step is to select an appropriate initial value for the variable total that will be used to add together the values in the list. Because addition is being performed, an appropriate initial value is 0 (zero).",
+      "sc4": "Zero is an appropriate initialization because the value 0 reflects the sum before we have added any of the list values to the total. Next, the value zero is assigned as the initial value of the variable total. Notice that the state correctly shows the result of this assignment.",
+      "sc5": "On the first step of the iteration the iteration variable price is assigned the value of the first element of the list (4). Notice that this value is shown in the state.",
+      "sc6": "The calculation inside the iteration first computes the sum of the current values of the two variables total (0) and price(4). Notice that the current values are those shown in the state. On this step the calculation will add 0 and 4 resulting in the value 4.",
+      "sc7": "Also notice the importance of the initialization of the variable total to 0 (zero) before the beginning of the iteration. This initialization makes the calculation of \"total + price\" meaningful on the first step of the iteration.",
+      "sc8": "The result of the calculation (4) is assigned as the value of the variable total. Notice that the value of total in the state is now changed to reflect its new value. At this point the value of the variable total represents the result of accumulating just the first value in the list (4).",
+      "sc9": "The next step in the iteration begin by assigning the next value in the list (13) as the value of the variable price. Notice that the state shows this new value.",
+      "sc10": "The calculation inside the iteration first computes the sum of the current values of the two variables total (4) and price(13). Notice that the current values are those shown in the state. On this step the calculation will add 4 and 13 resulting in the value 17.",
+      "sc11": "The result of the calculation (17) is assigned as the value of the variable total. Notice that the value of the variable total in the state has been updated to show this change. Also notice that two values in the list (4 and 13) have been added together and their sum (17) is now the value of the variable total.",
+      "sc12": "The next step in the iteration begin by assigning the next value in the list (6) as the value of the variable price. Notice that the state shows this new value.",
+      "sc13": "The calculation inside the iteration first computes the sum of the current values of the two variables total (17) and price(6). Notice that the current values are those shown in the state. On this step the calculation will add 17 and 6 resulting in the value 23.",
+      "sc14": "The result of the calculation (23) is assigned as the value of the variable total. Notice that the value of the variable total in the state has been updated to show this change. Also notice that three values in the list (4, 13, and 6) have been added together and their sum (23) is now the value of the variable total.",
+      "sc15": "The next step in the iteration begin by assigning the next value in the list (9) as the value of the variable price. Notice that the state shows this new value.",
+      "sc16": "The calculation inside the iteration first computes the sum of the current values of the two variables total (23) and price(9). Notice that the current values are those shown in the state. On this step the calculation will add 23 and 9 resulting in the value 32.",
+      "sc17": "The result of the calculation (32) is assigned as the value of the variable total. Notice that the value of the variable total in the state has been updated to show this change. Also notice that four values in the list (4, 13, 6 and 9) have been added together and their sum (32) is now the value of the variable total.",
+      "sc18": "The next step in the iteration begin by assigning the next value in the list (11) as the value of the variable price. Notice that the state shows this new value.",
+      "sc19": "The calculation inside the iteration first computes the sum of the current values of the two variables total (32) and price(11). Notice that the current values are those shown in the state. On this step the calculation will add 32 and 11 resulting in the value 43.",
+      "sc20": "The result of the calculation (43) is assigned as the value of the variable total. Notice that the value of the variable total in the state has been updated to show this change. Also notice that five values in the list (4, 13, 6, 9 and 11) have been added together and their sum (43) is now the value of the variable total.",
+      "sc21": "There are no more items in the list. The iteration is now complete and the steps following the iteration will be performed.",
+      "sc22": "The print statement following the iteration is now performed. This statement displays on the console the current value of the variable total (the number 43). Notice that this number now appears in the console. ",
+      "sc23": "Remember that the print statement is needed to display the value to a human using the algorithm because the state values are inside the computer and invisible unless displayed."
     }
   }
 }
