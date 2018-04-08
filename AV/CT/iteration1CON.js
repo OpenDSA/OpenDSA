@@ -8,7 +8,7 @@ $(document).ready(function() {
   var av_name = "iteration1CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
-    //blueStepAnimRecursion :This should come before JSAV Initialize
+    //animListRecursion :This should come before JSAV Initialize
     // This method make animation recursively.
         JSAV.ext.animListRecursion = JSAV.anim(function (delay, time, list, index, effectName) {
         if (index < list.length && this._shouldAnimate()) {
@@ -21,9 +21,9 @@ $(document).ready(function() {
             }, delay);
         }
       }, function () {});
-      // blueStepAnimRecursion END -----------------------------------------------
+      // animListRecursion END -----------------------------------------------
 
-    //BlueStepAnim :This should come before JSAV Initialize
+    //Animation :This should come before JSAV Initialize
         JSAV.ext.animation = JSAV.anim(function doBlueStep(item, time, effectName) {
         if (this._shouldAnimate()) {
             item.addClass(effectName, {record: false});
@@ -32,7 +32,7 @@ $(document).ready(function() {
             }, time);
         }
       }, function () {});
-      // BlueStepAnim END -----------------------------------------------
+      // Animation END -----------------------------------------------
 
   var av = new JSAV(av_name);
   var left = 300,
