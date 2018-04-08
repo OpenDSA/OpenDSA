@@ -24,7 +24,7 @@ $(document).ready(function() {
       // animListRecursion END -----------------------------------------------
 
     //Animation :This should come before JSAV Initialize
-        JSAV.ext.animation = JSAV.anim(function doBlueStep(item, time, effectName) {
+        JSAV.ext.animation = JSAV.anim(function (item, time, effectName) {
         if (this._shouldAnimate()) {
             item.addClass(effectName, {record: false});
             setTimeout(function() {

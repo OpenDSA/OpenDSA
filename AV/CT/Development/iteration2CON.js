@@ -61,26 +61,22 @@ $(document).ready(function() {
     // BlueStepAnim END -----------------------------------------------zz
 
 
-    //BlueStepAnim :This should come before JSAV Initialize
-        JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item) {
+    //Animation :This should come before JSAV Initialize
+        JSAV.ext.animation = JSAV.anim(function doBlueStep(item, time, effectName) {
         if (this._shouldAnimate()) {
-
-            //  midblue 1 start
-            item.addClass("blueboxh", {record: false});
+            item.addClass(effectName, {record: false});
             setTimeout(function() {
-              item.removeClass("blueboxh", {record: false});
-            }, 200);
-
+              item.removeClass(effectName, {record: false});
+            }, time);
         }
-      }, function undoBlueStep(item) {});
+      }, function () {});
       // BlueStepAnim END -----------------------------------------------
 
   var arrValues = [4, 13, 6, 9, 11];
   var av_name = "iteration2CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
-  var leftMargin = 270,
-      rect_left = leftMargin - 150,
+  var left = 120,
       rect0_top = 0,
       rect_top = 40,
       topMargin = rect_top + 20;
@@ -89,47 +85,47 @@ $(document).ready(function() {
 
 
   // blue boxes, floor 1, last floor
-  var topblue = av.g.rect(rect_left, rect0_top, 280, 35, 10).addClass("bluebox");
-  var botblue = av.g.rect(rect_left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
+  var topblue = av.g.rect(left, rect0_top, 280, 35, 10).addClass("bluebox");
+  var botblue = av.g.rect(left, rect0_top + 295, 280, 35, 10).addClass("bluebox");
 
   // var rect_set = [];
   // floor 2
-  av.g.rect(rect_left, rect_top, 250, 35.5, 10).addClass("purplebox");
-  av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("purplebox"); // for no-roung on the corner
+  av.g.rect(left, rect_top, 250, 35.5, 10).addClass("purplebox");
+  av.g.rect(left, rect_top + 20, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
   //floor 3 rects and array list JSAV contains arrValues' elements
-  av.g.rect(rect_left, rect_top + 5, 30, 90, 10).addClass("purplebox").css({opacity: 0.7});
-  av.g.rect(rect_left + 73, rect_top + 25, 30, 70, 10).addClass("purplebox").css({opacity: 0.9});
-  var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
+  av.g.rect(left, rect_top + 5, 30, 90, 10).addClass("purplebox").css({opacity: 0.7});
+  av.g.rect(left + 73, rect_top + 25, 30, 70, 10).addClass("purplebox").css({opacity: 0.9});
+  var arr = av.ds.array(arrValues, {indexed: false, left: left + 150, top: topMargin, position: "absolute"});
 
   //floor 4, long purple
-  av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("purplebox");
+  av.g.rect(left, rect_top + 76, 300, 30, 10).addClass("purplebox");
 
   //floor 5, left big purple box and 3 blue boxes
-  av.g.rect(rect_left, rect_top + 80, 110, 170, 10).addClass("purplebox");
-  av.g.rect(rect_left, rect_top + 76, 50, 15).addClass("purplebox"); // for no-roung on the corner
+  av.g.rect(left, rect_top + 80, 110, 170, 10).addClass("purplebox");
+  av.g.rect(left, rect_top + 76, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
   //blue boxes and the the sets of it for the iterations later
-  it2_midblue1 = av.g.rect(rect_left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
-  it2_midblue2 = av.g.rect(rect_left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
-  it2_midblue3 = av.g.rect(rect_left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
+  it2_midblue1 = av.g.rect(left + 130, rect_top + 110, 180, 25, 10).addClass("bluebox");
+  it2_midblue2 = av.g.rect(left + 130, rect_top + 140, 180, 25, 10).addClass("bluebox");
+  it2_midblue3 = av.g.rect(left + 130, rect_top + 170, 180, 25, 10).addClass("bluebox");
 
   // last purple box.
-  av.g.rect(rect_left + 90, rect_top + 200, 240, 50, 10).addClass("purplebox");
+  av.g.rect(left + 90, rect_top + 200, 240, 50, 10).addClass("purplebox");
 
 
   // ---------------loop -labels-----------------------
-  av.label("for each item", {left: rect_left + 10, top: rect_top - 30}).addClass("loopLabels");
-  av.label("price", {left: rect_left + 19, top: rect_top + 45}).addClass("loopLabels");
-  av.label("do", {left: rect_left + 35, top: rect_top + 100}).addClass("loopLabels");
-  av.label("print (price)", {left: rect_left + 160, top: rect_top + 112}).addClass("loopLabels").addClass("midlabel");
+  av.label("for each item", {left: left + 10, top: rect_top - 30}).addClass("loopLabels");
+  av.label("price", {left: left + 19, top: rect_top + 45}).addClass("loopLabels");
+  av.label("do", {left: left + 35, top: rect_top + 100}).addClass("loopLabels");
+  av.label("print (price)", {left: left + 160, top: rect_top + 112}).addClass("loopLabels").addClass("midlabel");
 
 
-  var valuelabel = av.label("", {left: rect_left + 240, top: rect_top + 112});
+  var valuelabel = av.label("", {left: left + 240, top: rect_top + 112});
   valuelabel.addClass("loopLabels");
   valuelabel.addClass("priceBoxLable");
 
-  it2_printprice = av.label("", {left: rect_left + 240, top: rect_top + 85});
+  it2_printprice = av.label("", {left: left + 240, top: rect_top + 85});
   it2_printprice.addClass("loopLabels");
   it2_printprice.addClass("valuelabelpb");
 
@@ -193,7 +189,7 @@ $(document).ready(function() {
 
   // Slide 1
   av.umsg(interpret("sc1"));
-  var nextleft = leftMargin - 120;
+  var nextleft = left + 50;
   av.displayInit();
 
   // Slide 2
