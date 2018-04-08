@@ -24,21 +24,19 @@ $(document).ready(function() {
       // blueStepAnimRecursion END -----------------------------------------------
 
     //BlueStepAnim :This should come before JSAV Initialize
-        JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item, time, effectName) {
+        JSAV.ext.animation = JSAV.anim(function doBlueStep(item, time, effectName) {
         if (this._shouldAnimate()) {
             item.addClass(effectName, {record: false});
             setTimeout(function() {
               item.removeClass(effectName, {record: false});
             }, time);
         }
-      }, function undoBlueStep(item) {});
+      }, function () {});
       // BlueStepAnim END -----------------------------------------------
 
   var av = new JSAV(av_name);
   var left = 300,
       top = 20;
-
-  var nodegap = 40;
 
   // top blue
   var topblue = av.g.rect(left, top, 280, 35, 10).addClass("bluebox");
@@ -56,6 +54,7 @@ $(document).ready(function() {
   //create array contains 5 values.
   var top4 = top3 - 5;
   var arrayLeft = left + 160;
+  var nodegap = 40;
   var array = av.ds.array(arrValues, {indexed: false, left: arrayLeft, top: top4, position: "absolute"});
 
   //Long purple under the green array
@@ -80,7 +79,7 @@ $(document).ready(function() {
   av.g.rect(left + 90, top8, 230, 50, 10).addClass("purplebox");
 
   // bot blue
-  var top9 = top8 + 60;
+  var top9 = top8 + 55;
   var botblue = av.g.rect(left, top9, 280, 35, 10).addClass("bluebox");
 
 // ------------------- Labels -------------------------
@@ -88,14 +87,13 @@ $(document).ready(function() {
   av.label("price", {left: left + 22, top: top + 85}).addClass("loopLabels");
   av.label("do", {left: left + 35, top: top + 152}).addClass("loopLabels");
 
-
 // ------------------- Create Iteration Property box (ipb) and text -------------------------
-  var ipb_left = left - 120;
-  var ipb_top = 160;
+  var ipb_left = left - 110;
+  var ipb_top = 165;
   var iplabel = av.label("Iteration<br>Variable", {left: ipb_left, top: ipb_top}).css({'font-weight': '600'});
   // var iplabel = av.label("Iteration<br>Variable", {left: rect_left - 120, top: rect_top + 120}).css({'font-weight': '600'});
   iplabel.addClass("hiding");
-  var iprec = av.g.rect(ipb_left - 20, ipb_top + 5, 100, 70).addClass("fourRoundBox");
+  var iprec = av.g.rect(ipb_left - 20, ipb_top + 2, 100, 70).addClass("fourRoundBox");
   // var iprec = av.g.rect(rect_left - 140, rect_top + 125, 100, 70).addClass("fourRoundBox");
   iprec.addClass("hiding");
   var ipline = av.g.line(ipb_left + 80, ipb_top + 30, ipb_left + 125, ipb_top - 10, {'arrow-end': 'classic-wide-long', 'stroke-width': 3});
@@ -118,7 +116,7 @@ $(document).ready(function() {
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  av.bluehigh(topblue, 150, "blueboxh");
+  av.animation(topblue, 150, "blueboxh");
   av.step();
 
   // Slide 4
@@ -138,40 +136,35 @@ $(document).ready(function() {
   av.animListRecursion(400, 200, midblues, 0, "blueboxh");
   nextleft -= nodegap;
   av.step();
-  //
-  //
-  // // Slide 7
-  // av.umsg(interpret("sc7"));
-  // array.css({left: nextleft});
-  // nextleft -= nodegap;
-  // av.blueStepAnim(400, 200);
-  // av.step();
-  //
-  //
-  // // Slide 8
-  // av.umsg(interpret("sc8"));
-  // array.css({left: nextleft});
-  // nextleft -= nodegap;
-  // av.blueStepAnim(400, 200);
-  // av.step();
-  //
-  //
-  // // Slide 9
-  // av.umsg(interpret("sc9"));
-  // array.css({left: nextleft});
-  // nextleft -= (nodegap + 50);
-  // av.blueStepAnim(400, 200);
-  // av.step();
-  //
-  //
-  // // Slide 10
-  // av.umsg(interpret("sc10"));
-  // array.css({left: nextleft});
-  // nextleft -= (nodegap + 100);
-  // av.step();
+
+  // Slide 7
+  av.umsg(interpret("sc7"));
+  array.css({left: nextleft});
+  av.animListRecursion(400, 200, midblues, 0, "blueboxh");
+  nextleft -= nodegap;
+  av.step();
+
+  // Slide 8
+  av.umsg(interpret("sc8"));
+  array.css({left: nextleft});
+  av.animListRecursion(400, 200, midblues, 0, "blueboxh");
+  nextleft -= nodegap;
+  av.step();
+
+  // Slide 9
+  av.umsg(interpret("sc9"));
+  array.css({left: nextleft});
+  nextleft -= (nodegap + 50);
+  av.animListRecursion(400, 200, midblues, 0, "blueboxh");
+  av.step();
+
+  // Slide 10
+  av.umsg(interpret("sc10"));
+  array.css({left: nextleft});
+  av.step();
 
   // Slide 15
   av.umsg(interpret("sc11"));
-  // av.bluehigh(botblue, 150);
+  av.animation(botblue, 150, "blueboxh");
   av.recorded();
 });
