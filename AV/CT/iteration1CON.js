@@ -1,11 +1,6 @@
 /*global ODSA */
 // Written by Jieun Chon
-//Array-Based list introduction
-
-
-var it1_midblue1,
-    it1_midblue2,
-    it1_midblue3;
+//Array-Based list introduction 1
 
 $(document).ready(function() {
   "use strict";
@@ -15,13 +10,13 @@ $(document).ready(function() {
 
     //blueStepAnimRecursion :This should come before JSAV Initialize
     // This method make animation recursively.
-        JSAV.ext.blueStepAnimRecursion = JSAV.anim(function (delay, time, list, index) {
+        JSAV.ext.animListRecursion = JSAV.anim(function (delay, time, list, index, effectName) {
         if (index < list.length && this._shouldAnimate()) {
               setTimeout(function(){
-              list[index].addClass("blueboxh", {record: false});
+              list[index].addClass(effectName, {record: false});
                 setTimeout(function() {
-                  list[index].removeClass("blueboxh", {record: false});
-                      av.blueStepAnimRecursion(time, time, list, index + 1);
+                  list[index].removeClass(effectName, {record: false});
+                      av.animListRecursion(time, time, list, index + 1, effectName);
                 }, time);
             }, delay);
         }
@@ -29,11 +24,11 @@ $(document).ready(function() {
       // blueStepAnimRecursion END -----------------------------------------------
 
     //BlueStepAnim :This should come before JSAV Initialize
-        JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item, time) {
+        JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item, time, effectName) {
         if (this._shouldAnimate()) {
-            item.addClass("blueboxh", {record: false});
+            item.addClass(effectName, {record: false});
             setTimeout(function() {
-              item.removeClass("blueboxh", {record: false});
+              item.removeClass(effectName, {record: false});
             }, time);
         }
       }, function undoBlueStep(item) {});
@@ -69,18 +64,19 @@ $(document).ready(function() {
   av.g.rect(left, top5, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
   //Left big purple box next to the 3 blue boxes
-  var top6 = top4 + 70;
+  var top6 = top4 + 65;
   av.g.rect(left, top6, 110, 170, 10).addClass("purplebox");
 
   // mid blues
-  var top7 = top5 + 40;
+  var top7 = top5 + 38;
   var mbleft = left + 130;
   var midblues = [];
   midblues[0] = av.g.rect(mbleft, top7, 180, 25, 10).addClass("bluebox");
   midblues[1] = av.g.rect(mbleft, top7 + 30, 180, 25, 10).addClass("bluebox");
   midblues[2] = av.g.rect(mbleft, top7 + 60, 180, 25, 10).addClass("bluebox");
+
   //right big putple box below blue boxes
-  var top8 = top5 + 135;
+  var top8 = top5 + 130;
   av.g.rect(left + 90, top8, 230, 50, 10).addClass("purplebox");
 
   // bot blue
@@ -117,12 +113,12 @@ $(document).ready(function() {
   iplabel.removeClass("hiding");
   iprec.removeClass("hiding");
   ipline.removeClass("hiding");
-  var nextleft = arrayLeft - 120;
+  var nextleft = arrayLeft - 130;
   av.step();
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  av.bluehigh(topblue, 150);
+  av.bluehigh(topblue, 150, "blueboxh");
   av.step();
 
   // Slide 4
@@ -133,15 +129,15 @@ $(document).ready(function() {
 
   // Slide 5
   av.umsg(interpret("sc5"));
-  av.blueStepAnimRecursion(0, 200, midblues, 0);
+  av.animListRecursion(0, 200, midblues, 0, "blueboxh");
   av.step();
 
-  // // Slide 6
-  // av.umsg(interpret("sc6"));
-  // array.css({left: nextleft});
-  // av.blueStepAnim(400, 200);
-  // nextleft -= nodegap;
-  // av.step();
+  // Slide 6
+  av.umsg(interpret("sc6"));
+  array.css({left: nextleft});
+  av.animListRecursion(400, 200, midblues, 0, "blueboxh");
+  nextleft -= nodegap;
+  av.step();
   //
   //
   // // Slide 7
