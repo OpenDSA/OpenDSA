@@ -274,8 +274,8 @@ $(document).ready(function() {
   priceBox.removeClass("blueboxh");
   av.step();
 
-  // Slide 8
-  av.umsg(interpret("sc8"));
+  // Slide 9
+  av.umsg(interpret("sc9"));
   box3.addClass("blueboxh");
   box3.removeClass("blueboxh");
   countBox.addClass("blueboxh");
@@ -284,8 +284,8 @@ $(document).ready(function() {
   av.step();
 
 
-  // Slide 11
-  av.umsg(interpret("sc11"));
+  // Slide 10
+  av.umsg(interpret("sc10"));
   box4.addClass("blueboxh");
   box4.removeClass("blueboxh");
   totalBox.addClass("blueboxh");
@@ -294,8 +294,8 @@ $(document).ready(function() {
   totalBoxLabel.css({left: boxLabelX2 - 7});
   av.step();
 
-  // Slide 12
-  av.umsg(interpret("sc12"));
+  // Slide 11
+  av.umsg(interpret("sc11"));
   arr.css({left: nextleft});   //move array
   nextleft -= nodegap; // calculate nextleft value for next array moving
   priceBoxLabel.value(" 6 ")
@@ -304,8 +304,8 @@ $(document).ready(function() {
   priceBox.removeClass("blueboxh");
   av.step();
 
-  // Slide 13
-  av.umsg(interpret("sc13"));
+  // Slide 12
+  av.umsg(interpret("sc12"));
   box3.addClass("blueboxh");
   box3.removeClass("blueboxh");
   countBox.addClass("blueboxh");
@@ -313,8 +313,8 @@ $(document).ready(function() {
   countBoxLabel.value(" 3 ");
   av.step();
 
-  // Slide 14
-  av.umsg(interpret("sc14"));
+  // Slide 13
+  av.umsg(interpret("sc13"));
   box4.addClass("blueboxh");
   box4.removeClass("blueboxh");
   totalBox.addClass("blueboxh");
@@ -322,8 +322,8 @@ $(document).ready(function() {
   totalBoxLabel.value(" 23 ");
   av.step();
 
-  // Slide 15
-  av.umsg(interpret("sc15"));
+  // Slide 14
+  av.umsg(interpret("sc14"));
   arr.css({left: nextleft});   //move array
   nextleft -= nodegap; // calculate nextleft value for next array moving
   priceBoxLabel.value(" 9 ")
@@ -331,8 +331,8 @@ $(document).ready(function() {
   priceBox.removeClass("blueboxh");
   av.step();
 
-  // Slide 16
-  av.umsg(interpret("sc16"));
+  // Slide 15
+  av.umsg(interpret("sc15"));
   box3.addClass("blueboxh");
   box3.removeClass("blueboxh");
   countBox.addClass("blueboxh");
@@ -340,8 +340,8 @@ $(document).ready(function() {
   countBoxLabel.value(" 4 ")
   av.step();
 
-  // Slide 17
-  av.umsg(interpret("sc17"));
+  // Slide 16
+  av.umsg(interpret("sc16"));
   box4.addClass("blueboxh");
   box4.removeClass("blueboxh");
   totalBox.addClass("blueboxh");
@@ -349,8 +349,8 @@ $(document).ready(function() {
   totalBoxLabel.value(" 32 ")
   av.step();
 
-  // Slide 18
-  av.umsg(interpret("sc18"));
+  // Slide 17
+  av.umsg(interpret("sc17"));
   arr.css({left: nextleft});   //move array
   nextleft -= (nodegap + 50); // calculate nextleft value for the final array moving
   priceBoxLabel.value(" 11 ")
@@ -359,8 +359,8 @@ $(document).ready(function() {
   priceBox.removeClass("blueboxh");
   av.step();
 
-  // Slide 19
-  av.umsg(interpret("sc19"));
+  // Slide 18
+  av.umsg(interpret("sc18"));
   box3.addClass("blueboxh");
   box3.removeClass("blueboxh");
   countBox.addClass("blueboxh");
@@ -368,8 +368,8 @@ $(document).ready(function() {
   countBoxLabel.value(" 5 ")
   av.step();
   //
-  // Slide 20
-  av.umsg(interpret("sc20"));
+  // Slide 19
+  av.umsg(interpret("sc19"));
   box4.addClass("blueboxh");
   box4.removeClass("blueboxh");
   totalBox.addClass("blueboxh");
@@ -377,13 +377,13 @@ $(document).ready(function() {
   totalBoxLabel.value(" 43 ")
   av.step();
 
-  // Slide 21
-  av.umsg(interpret("sc21"));
+  // Slide 20
+  av.umsg(interpret("sc20"));
   arr.css({left: nextleft});   //move array
   av.step();
 
-  // Slide 22
-  av.umsg(interpret("sc22"));
+  // Slide 21
+  av.umsg(interpret("sc21"));
   box6.addClass("calboxhigh");
   box7.addClass("calboxhigh");
   box6.removeClass("calboxhigh");
@@ -391,8 +391,8 @@ $(document).ready(function() {
   setavgpop.show();
   av.step();
 
-  // Slide 23
-  av.umsg(interpret("sc23"));
+  // Slide 22
+  av.umsg(interpret("sc22"));
   box5.addClass("blueboxh");
   box5.removeClass("blueboxh");
   avgBox.addClass("blueboxh");
@@ -402,14 +402,14 @@ $(document).ready(function() {
   av.step();
 
 
-  // Slide 24
-  av.umsg(interpret("sc24"));
+  // Slide 23
+  av.umsg(interpret("sc23"));
   botblue.addClass("blueboxh");
   botblue.removeClass("blueboxh");
   printavg.show();
   av.step();
 
-  //last Slide
-  av.umsg(interpret("sc2"));
+  // Slide 24
+  av.umsg(interpret("sc24"));
   av.recorded();
 });
