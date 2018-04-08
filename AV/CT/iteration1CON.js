@@ -13,37 +13,20 @@ $(document).ready(function() {
   var av_name = "iteration1CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
-  //blueStepAnim :This should come before JSAV Initialize
-      JSAV.ext.blueStepAnim = JSAV.anim(function (delay, time) {
-      if (this._shouldAnimate()) {
-            //  midblue 1 start
-            setTimeout(function(){
-            it1_midblue1.addClass("blueboxh", {record: false});
-              setTimeout(function() {
-                it1_midblue1.removeClass("blueboxh", {record: false});
-
-                  // midblue 2 animation start -----------------
-                  setTimeout(function() {
-                    it1_midblue2.addClass("blueboxh", {record: false});
-                    setTimeout(function() {
-                      it1_midblue2.removeClass("blueboxh", {record: false});
-
-                      // midblue 3 animation start -----------------
-                      setTimeout(function() {
-                        it1_midblue3.addClass("blueboxh", {record: false});
-                        setTimeout(function() {
-                          it1_midblue3.removeClass("blueboxh", {record: false});
-                        }, time);
-                      }, time);
-                      // midblue 3 animation close ---------------------
-                    }, time);
-                  }, time);
-                  // midblue 2 animation close
-              }, time);
-          }, delay);
-      }
-    }, function () {});
-    // BlueStepAnim END -----------------------------------------------
+    //blueStepAnimRecursion :This should come before JSAV Initialize
+    // This method make animation recursively.
+        JSAV.ext.blueStepAnimRecursion = JSAV.anim(function (delay, time, list, index) {
+        if (index < list.length && this._shouldAnimate()) {
+              setTimeout(function(){
+              list[index].addClass("blueboxh", {record: false});
+                setTimeout(function() {
+                  list[index].removeClass("blueboxh", {record: false});
+                      av.blueStepAnimRecursion(time, time, list, index + 1);
+                }, time);
+            }, delay);
+        }
+      }, function () {});
+      // blueStepAnimRecursion END -----------------------------------------------
 
     //BlueStepAnim :This should come before JSAV Initialize
         JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item, time) {
@@ -58,14 +41,12 @@ $(document).ready(function() {
 
   var av = new JSAV(av_name);
   var left = 300,
-      top = 20,
-      topMargin = top + 20;
+      top = 20;
 
   var nodegap = 40;
 
   // top blue
-  var top1 = top;
-  var box1 = av.g.rect(left, top, 280, 35, 10).addClass("bluebox");
+  var topblue = av.g.rect(left, top, 280, 35, 10).addClass("bluebox");
 
   // floor 2
   var top2 = top + 40;
@@ -82,49 +63,39 @@ $(document).ready(function() {
   var arrayLeft = left + 160;
   var array = av.ds.array(arrValues, {indexed: false, left: arrayLeft, top: top4, position: "absolute"});
 
-  //floor 4, long purple under the green array
+  //Long purple under the green array
   var top5 = top3 + 50;
   av.g.rect(left, top5, 300, 30, 10).addClass("purplebox");
   av.g.rect(left, top5, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
-  // //floor 5, left big purple box and 3 blue boxes
-  // var top5 = top4 + 4;
-  // av.g.rect(rect_left, top5, 110, 170, 10).addClass("purplebox");
-  //
-  // var top6 = top + 110;
-  // var top6gap = 30;
-  // it1_midblue1 = av.g.rect(rect_left + 130, top6, 180, 25, 10).addClass("bluebox");
-  //
-  // var top7 = top6 + top6gap;
-  // it1_midblue2 = av.g.rect(rect_left + 130, top6 + top6gap, 180, 25, 10).addClass("bluebox");
-  //
-  // var top8 = top7 + top7gap;
-  // it1_midblue3 = av.g.rect(rect_left + 130, top6 + top6gap + 170, 180, 25, 10).addClass("bluebox");
-  //
-  // //floor 5, right big putple box below blue boxes
-  // var top9 = top5 + 120;
-  // av.g.rect(rect_left + 90, top9, 230, 50, 10).addClass("purplebox");
-  //
-  // // bot blue
-  // var top10 = top + 345;
-  // var botblue = av.g.rect(rect_left, top10rect_top, 280, 35, 10).addClass("bluebox");
+  //Left big purple box next to the 3 blue boxes
+  var top6 = top4 + 70;
+  av.g.rect(left, top6, 110, 170, 10).addClass("purplebox");
+
+  // mid blues
+  var top7 = top5 + 40;
+  var mbleft = left + 130;
+  var midblues = [];
+  midblues[0] = av.g.rect(mbleft, top7, 180, 25, 10).addClass("bluebox");
+  midblues[1] = av.g.rect(mbleft, top7 + 30, 180, 25, 10).addClass("bluebox");
+  midblues[2] = av.g.rect(mbleft, top7 + 60, 180, 25, 10).addClass("bluebox");
+  //right big putple box below blue boxes
+  var top8 = top5 + 135;
+  av.g.rect(left + 90, top8, 230, 50, 10).addClass("purplebox");
+
+  // bot blue
+  var top9 = top8 + 60;
+  var botblue = av.g.rect(left, top9, 280, 35, 10).addClass("bluebox");
 
 // ------------------- Labels -------------------------
-  // var labeltop =
-  // av.label("for each item", {left: rect_left + 10, top: rect_top - 27});
-  // label1.addClass("loopLabels");
-  //
-  // av.label("price", {left: rect_left + 22, top: rect_top + 45});
-  // label2.addClass("loopLabels");
-  //
-  // av.label("do", {left: rect_left + 35, top: rect_top + 100});
-  // label3.addClass("loopLabels");
+  av.label("for each item", {left: left + 10, top: top + 13}).addClass("loopLabels");
+  av.label("price", {left: left + 22, top: top + 85}).addClass("loopLabels");
+  av.label("do", {left: left + 35, top: top + 152}).addClass("loopLabels");
 
 
 // ------------------- Create Iteration Property box (ipb) and text -------------------------
-
-  var ipb_left = left - 180;
-  var ipb_top = 120;
+  var ipb_left = left - 120;
+  var ipb_top = 160;
   var iplabel = av.label("Iteration<br>Variable", {left: ipb_left, top: ipb_top}).css({'font-weight': '600'});
   // var iplabel = av.label("Iteration<br>Variable", {left: rect_left - 120, top: rect_top + 120}).css({'font-weight': '600'});
   iplabel.addClass("hiding");
@@ -148,23 +119,23 @@ $(document).ready(function() {
   ipline.removeClass("hiding");
   var nextleft = arrayLeft - 120;
   av.step();
-  //
-  // // Slide 3
-  // av.umsg(interpret("sc3"));
-  // av.bluehigh(box1, 150);
-  // av.step();
-  //
-  // // Slide 4
-  // av.umsg(interpret("sc4"));
-  // array.css({left: nextleft});
-  // nextleft -= nodegap;
-  // av.step();
-  //
-  // // Slide 5
-  // av.umsg(interpret("sc5"));
-  // av.blueStepAnim(0, 200);
-  // av.step();
-  //
+
+  // Slide 3
+  av.umsg(interpret("sc3"));
+  av.bluehigh(topblue, 150);
+  av.step();
+
+  // Slide 4
+  av.umsg(interpret("sc4"));
+  array.css({left: nextleft});
+  nextleft -= nodegap;
+  av.step();
+
+  // Slide 5
+  av.umsg(interpret("sc5"));
+  av.blueStepAnimRecursion(0, 200, midblues, 0);
+  av.step();
+
   // // Slide 6
   // av.umsg(interpret("sc6"));
   // array.css({left: nextleft});
