@@ -37,6 +37,17 @@
   font-weight: 600;
 }
 
+.consolelabelsbgwhite  {
+  position: relative;
+  display: block;
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  color: black;
+  font-size: 130%;
+  z-index: 600;
+  font-weight: 600;
+  background-color: white;
+}
+
 .valLabels {
   position: relative;
   display: block;
