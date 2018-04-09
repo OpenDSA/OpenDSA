@@ -1,0 +1,22 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "This animation shows that the iteration variable, price, is part of the state. Remember that the state shows only the current value a variable.",
+      "sc2": "The animation also shows the console where values are displayed due to a print statement. The console is like an old-fashion type writer where the information displayed by the console scrolls upward each time new information is printed.",
+      "sc3": "Any blocks(s) before the iteration are executed. The blinking (or flashing) is meant to indicate that  a block is executed.",
+      "sc4": "On the first step of the iteration, the iteration variable, price, takes on the value of the first element of the list. Notice that the value of price is shown in the state.",
+      "sc5": "When the body of the iteration is executed the print statement causes the current value of the variable price, the number 4, to be displayed in the console.",
+      "sc6": "On the next step of the iteration, the iteration variable takes on the value of the next element of the list. Notice that the value of price is now 13 as shown in the state.",
+      "sc7": "When the body of the iteration is executed this time the print statement causes the current value of the variable price, the number 13, to be displayed in the console. Notice that the state shows only the current value of the variable price while the console displays the number 4, printed during the first step of the iteration, and the number 13, printed during this step.",
+      "sc8": "On the next step of the iteration, the iteration variable, price, takes on the value of the next element of the list, the number 6, as shown in the state.",
+      "sc9": "When the body of the iteration is executed this time the print statement causes the current value of the variable price, the number 6, to be displayed in the console.",
+      "sc10": "Notice that the state shows only the current value of the variable price while the console displays the numbers 4 and 13 that were printed during prior steps in the iteration and the number 6 printed during this step.",
+      "sc11": "On the next step of the iteration, the iteration variable, price, takes on the value of the next element of the list, the number 9, as shown in the state.",
+      "sc12": "As before the body of the iteration is executed and the print statement displays in the console the current value of price, the number 9. Notice that the console shows the values printed on each of the previous steps of the iteration as well as the value, the number 9, printed on this step of the iteration.",
+      "sc13": "On the next step of the iteration, the iteration variable, price, takes on the  next value of the list, the number 9, as shown in the state.",
+      "sc14": "As before the body of the iteration is executed and the print statement displays in the console the current value of price, the number 11. Notice that the console shows the values printed on each of the previous steps of the iteration as well as the value, the number 11, printed on this step of the iteration.",
+      "sc15": "Each element of the list has been used and the iteration is complete.",
+      "sc16": "Any block(s) after the iteration are executed."
+    }
+  }
+}

@@ -28,6 +28,11 @@ extrenal_tools_urls = {
           "url": "https://codeworkout.cs.vt.edu/gym/workouts/embed",
           "width": 1000,
           "height": 900
+    },
+    "code-workout-jhavepop": {
+          "url": "https://opendsax.cs.vt.edu:9293/gym/workouts/embed",
+          "width": 1000,
+          "height": 900
     }
 }
 
@@ -73,11 +78,11 @@ class extrtoolembed(Directive):
   def run(self):
     """ Restructured text extension for inserting embedded external learning tools """
     if 'long_name' not in self.options or self.options['long_name'] == '' :
-        print 'ERROR: External learning tool is not properly configured'
+        print 'ERROR: External learning tool is not properly configured -- missing long_name option'
         sys.exit()
 
     if 'learning_tool' not in self.options or self.options['learning_tool'] =='' :
-        print 'ERROR: External learning tool is not properly configured'
+        print 'ERROR: External learning tool is not properly configured missing learning_tool option'
         sys.exit()
 
     self.options['type'] = 'external_tool'

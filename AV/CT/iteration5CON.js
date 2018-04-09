@@ -215,9 +215,12 @@ $(document).ready(function() {
   var nextleft = leftMargin - 120;
   av.displayInit();
 
-
   // Slide 2
   av.umsg(interpret("sc2"));
+  av.step();
+
+  // Slide 3
+  av.umsg(interpret("sc3"));
   box1.addClass("blueboxh");
   box1.removeClass("blueboxh");
   countBoxLabel.value("0")
@@ -225,8 +228,8 @@ $(document).ready(function() {
   countBox.removeClass("blueboxh");
   av.step();
 
-  // Slide 3
-  av.umsg(interpret("sc3"));
+  // Slide 4
+  av.umsg(interpret("sc4"));
   box2.addClass("blueboxh");
   box2.removeClass("blueboxh");
   totalBoxLabel.value("0")
@@ -234,8 +237,8 @@ $(document).ready(function() {
   totalBox.removeClass("blueboxh");
   av.step();
 
-  // Slide 4
-  av.umsg(interpret("sc4"));
+  // Slide 5
+  av.umsg(interpret("sc5"));
   arr.css({left: nextleft});   //move array
   nextleft -= nodegap; // calculate nextleft value for next array moving
   priceBoxLabel.value(" 4 ")
@@ -243,8 +246,8 @@ $(document).ready(function() {
   priceBox.removeClass("blueboxh");
   av.step();
 
-  // Slide 5
-  av.umsg(interpret("sc5"));
+  // Slide 6
+  av.umsg(interpret("sc6"));
   box3.addClass("blueboxh");
   box3.removeClass("blueboxh");
   countBox.addClass("blueboxh");
@@ -252,8 +255,8 @@ $(document).ready(function() {
   countBoxLabel.value(" 1 ")
   av.step();
 
-  // Slide 6
-  av.umsg(interpret("sc6"));
+  // Slide 7
+  av.umsg(interpret("sc7"));
   box4.addClass("blueboxh");
   box4.removeClass("blueboxh");
   totalBox.addClass("blueboxh");
@@ -261,9 +264,8 @@ $(document).ready(function() {
   totalBoxLabel.value(" 4 ")
   av.step();
 
-
-  // Slide 7
-  av.umsg(interpret("sc7"));
+  // Slide 8
+  av.umsg(interpret("sc8"));
   arr.css({left: nextleft});   //move array
   nextleft -= nodegap; // calculate nextleft value for next array moving
   priceBoxLabel.value(" 13 ")
@@ -273,7 +275,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 9
-  av.umsg(interpret("sc8"));
+  av.umsg(interpret("sc9"));
   box3.addClass("blueboxh");
   box3.removeClass("blueboxh");
   countBox.addClass("blueboxh");
@@ -283,7 +285,7 @@ $(document).ready(function() {
 
 
   // Slide 10
-  av.umsg(interpret("sc8"));
+  av.umsg(interpret("sc10"));
   box4.addClass("blueboxh");
   box4.removeClass("blueboxh");
   totalBox.addClass("blueboxh");
@@ -380,7 +382,7 @@ $(document).ready(function() {
   arr.css({left: nextleft});   //move array
   av.step();
 
-  // Slide 21 total/count blink
+  // Slide 21
   av.umsg(interpret("sc21"));
   box6.addClass("calboxhigh");
   box7.addClass("calboxhigh");
@@ -389,7 +391,7 @@ $(document).ready(function() {
   setavgpop.show();
   av.step();
 
-  // Slide 22 set verage blink, average box assinged value
+  // Slide 22
   av.umsg(interpret("sc22"));
   box5.addClass("blueboxh");
   box5.removeClass("blueboxh");
@@ -405,8 +407,9 @@ $(document).ready(function() {
   botblue.addClass("blueboxh");
   botblue.removeClass("blueboxh");
   printavg.show();
-  av.recorded();
+  av.step();
 
-  // //last Slide
-  // av.recorded();
+  // Slide 24
+  av.umsg(interpret("sc24"));
+  av.recorded();
 });
