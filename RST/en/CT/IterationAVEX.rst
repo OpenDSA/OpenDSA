@@ -16,29 +16,37 @@ List Iteration
 --------------
 
 .. inlineav:: iteration1CON ss
-   :long_name: Iteration 1
+   :long_name: Iteration First Slide
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration1CON.js
    :output: show
 
-.. inlineav:: iteration4CON ss
-   :long_name: Iteration 2
+.. inlineav:: iteration2CON ss
+   :long_name: Iteration Second Slide
    :links: AV/CT/iterationCON.css
-   :scripts: AV/CT/iteration4CON.js
+   :scripts: AV/CT/iteration2CON.js
+   :output: show
+
+.. inlineav:: iteration2copyCON ss
+   :long_name: Iteration Second Slide Version 2
+   :links: AV/CT/iterationCON.css
+   :scripts: AV/CT/iteration2copyCON.js
    :output: show
 
 .. inlineav:: iteration3CON ss
-   :long_name: Iteration 3
+   :long_name: Iteration Third Slide
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration3CON.js
    :output: show
 
-.. inlineav:: iteration5CON ss
-   :long_name: Iteration 5
+.. inlineav:: iteration4CON ss
+   :long_name: Iteration Fifth Slide -- Average
    :links: AV/CT/iterationCON.css
-   :scripts: AV/CT/iteration5CON.js
+   :scripts: AV/CT/iteration4CON.js
    :output: show
 
-
-
 .. avembed:: Exercises/CT/IterationEX1PRO.html ka
+   :long_name: Iteration Exercise JSAV
+
+.. avembed:: AV/CT/iterationEXPRO.html pe
+   :long_name: Iteration Exercise JSAV

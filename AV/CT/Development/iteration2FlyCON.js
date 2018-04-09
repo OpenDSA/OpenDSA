@@ -60,19 +60,16 @@ $(document).ready(function() {
     // BlueStepAnim END -----------------------------------------------zz
 
 
-    //BlueStepAnim :This should come before JSAV Initialize
-        JSAV.ext.bluehigh = JSAV.anim(function doBlueStep(item) {
+    //Animation :This should come before JSAV Initialize
+        JSAV.ext.animation = JSAV.anim(function (item, time, effectName) {
         if (this._shouldAnimate()) {
-
-            //  midblue 1 start
-            item.addClass("blueboxh", {record: false});
+            item.addClass(effectName, {record: false});
             setTimeout(function() {
-              item.removeClass("blueboxh", {record: false});
-            }, 200);
-
+              item.removeClass(effectName, {record: false});
+            }, time);
         }
-      }, function undoBlueStep(item) {});
-      // BlueStepAnim END -----------------------------------------------
+      }, function () {});
+      // Animation END -----------------------------------------------
 
   var arrValues = [4, 13, 6, 9, 11];
   var av_name = "iteration2FlyCON";
@@ -99,7 +96,7 @@ $(document).ready(function() {
   //floor 3 rects and array list JSAV contains arrValues' elements
   av.g.rect(rect_left, rect_top + 5, 30, 90, 10).addClass("box").css({opacity: 0.9});
   av.g.rect(rect_left + 73, rect_top + 25, 30, 70, 10).addClass("box").css({opacity: 0.9});
-  var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
+  var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: topMargin + 5, position: "absolute"});
 
   //floor 4, long purple
   av.g.rect(rect_left, rect_top + 76, 300, 30, 10).addClass("box");
@@ -195,7 +192,7 @@ $(document).ready(function() {
 
   // Slide 2
   av.umsg(interpret("sc2"));
-  av.bluehigh(topblue);
+  av.animation(topblue, 200, "blueboxh");
   av.step();
 
   // Slide 3
@@ -252,7 +249,6 @@ $(document).ready(function() {
 
   // Slide 12
   av.umsg(interpret("sc12"));
-
   av.step();
 
   // Slide 13
@@ -263,6 +259,6 @@ $(document).ready(function() {
 
   // Slide 14
   av.umsg(interpret("sc14"));
-  av.bluehigh(botblue);
+  av.animation(botblue, 200, "blueboxh");
   av.recorded();
 });

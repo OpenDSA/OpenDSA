@@ -32,9 +32,20 @@
   display: block;
   font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
   color: black;
-  font-size: 170%;
+  font-size: 130%;
   z-index: 500;
   font-weight: 600;
+}
+
+.consolelabelsbgwhite  {
+  position: relative;
+  display: block;
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  color: black;
+  font-size: 130%;
+  z-index: 600;
+  font-weight: 600;
+  background-color: white;
 }
 
 .valLabels {
@@ -65,7 +76,7 @@
 
 .statelabel  {
  font-size: 120%;
- font-weight: 400;
+ font-weight: 600;
 }
 
 .statelabellarge  {
@@ -75,7 +86,7 @@
 
 /* value label with purple background */
 .valuelabelpb  {
- font-size: 150%;
+ font-size: 130%;
  color: yellow;
  background-color: #593f73;
  }
