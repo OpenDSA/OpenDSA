@@ -1,14 +1,14 @@
 /*global ODSA */
 // Written by Jieun Chon
 //Array-Based list introduction
-var it2fly_midblue1,
-    it2fly_midblue2,
-    it2fly_midblue3,
-    it2fly_newLabelValue,
-    it2fly_valuelabel,
-    it2fly_priceBoxLabel,
-    it2fly_consoleLabels,
-    it2fly_consoleY;
+// var it2fly_midblue1,
+//     it2fly_midblue2,
+//     it2fly_midblue3,
+//     it2fly_newLabelValue,
+//     it2fly_valuelabel,
+//     it2fly_priceBoxLabel,
+//     it2fly_consoleLabels,
+//     it2fly_consoleY;
 
 $(document).ready(function() {
   "use strict";

@@ -3,8 +3,8 @@
 //Array-Based list introduction
 
 
-var it3_consoleY,
-    it3_consoleLabels;
+// var it3_consoleY,
+//     it3_consoleLabels;
 
 $(document).ready(function() {
   "use strict";

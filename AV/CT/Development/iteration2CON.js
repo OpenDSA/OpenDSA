@@ -1,13 +1,13 @@
 /*global ODSA */
 // Written by Jieun Chon
 //Array-Based list introduction
-var it2_midblue1,
-    it2_midblue2,
-    it2_midblue3,
-    it2_consoleLabels,
-    it2_consoleY,
-    it2_consoleGap,
-    it2_printprice;
+// var it2_midblue1,
+//     it2_midblue2,
+//     it2_midblue3,
+//     it2_consoleLabels,
+//     it2_consoleY,
+//     it2_consoleGap,
+//     it2_printprice;
 
 $(document).ready(function() {
   "use strict";
