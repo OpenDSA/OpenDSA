@@ -105,7 +105,8 @@
       "SeniorAlgAnal/Turing": {}
     },
     "Limits to Computing": {
-      "NP/Reduction": {}
+      "NP/Reduction": {},
+      "NP/NPComplete": {} 
     },
     "Appendix": {
       "Glossary": {},

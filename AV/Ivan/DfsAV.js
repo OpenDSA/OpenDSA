@@ -137,8 +137,8 @@ function dirfinalGraph() {
 
   if (markcount != g.nodeCount()) {
   jsav.step();
-  jsav.umsg("Note that this traversal did not reach all of the nodes,"
-   + "which is why DFS is typically done in context of starting from every node...");
+  jsav.umsg("Note that this traversal did not reach all of the nodes, due to the directions on the edges making some nodes unreachable from A."
+   + "This is why DFS is typically done in the context of starting the traversal from every node.");
   }
 }
 
