@@ -42,6 +42,7 @@ $(document).ready(function() {
         blue_top = 0,
         purple_top = 40,
         topMargin = purple_top + 20;
+        av.umsg("Directions: Reproduce the behavior of blockpy iteration. Click block area to indicate the order of block execution.");
         var topblue = av.g.rect(rect_left, blue_top, 280, 35, 10).addClass("bluebox");
         var botblue = av.g.rect(rect_left, blue_top + 295, 280, 35, 10).addClass("bluebox");
 
