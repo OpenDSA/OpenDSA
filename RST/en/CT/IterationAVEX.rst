@@ -46,7 +46,7 @@ List Iteration
    :output: show
 
 .. avembed:: Exercises/CT/IterationEX1PRO.html ka
-   :long_name: Iteration Exercise JSAV
+   :long_name: Iteration Khan Exercise
 
 .. avembed:: AV/CT/iterationEXPRO.html pe
    :long_name: Iteration Exercise JSAV
