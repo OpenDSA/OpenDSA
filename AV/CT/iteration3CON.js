@@ -3,9 +3,6 @@
 //Array-Based list introduction
 
 
-var it3_consoleY,
-    it3_consoleLabels;
-
 $(document).ready(function() {
   "use strict";
   var av_name = "iteration3CON";
@@ -13,21 +10,18 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
 
   var arrValues = [4, 13, 6, 9, 11];
-  var leftMargin = 270,
-      left = 120,
-      top = 0,
-      top2 = 40,
-      topMargin = top2 + 20;
+  var left = 80,
+      top = 0;
 
-  var nextleft = left + 29; // for the array
-  var nodegap = 40; // for the array movement
+  var nextleft = left + 30; // for the array
+  var nodegap = 39.5; // for the array movement
 
   var topblue1 = av.g.rect(left , top, 140, 35, 10).addClass("bluebox");
-  av.g.rect(left + 43, top + 6, 50, 20, 5).addClass("blueboxlight");
+  av.g.rect(left + 46, top + 7, 50, 20, 5).addClass("blueboxlight");
 
-  var topgreen1 = av.g.rect(left + 109, top + 10, 20, 17, 17).addClass("greenbox");
-  var topgreen2 = av.g.rect(left + 125, top, 55, 35, 10).addClass("greenbox");
-  av.g.rect(left + 135, top + 6, 32, 23, 5).addClass("greenboxlight");
+  var topgreen1 = av.g.rect(left + 114, top + 10, 20, 17, 17).addClass("greenbox");
+  var topgreen2 = av.g.rect(left + 129, top, 55, 35, 10).addClass("greenbox");
+  av.g.rect(left + 140, top + 7, 32, 23, 5).addClass("greenboxlight");
 
   // floor 2
   var top2 = top + 40;
@@ -38,8 +32,9 @@ $(document).ready(function() {
   av.g.rect(left, top2 + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.7});
   av.g.rect(left + 73, top2 + 25, 30, 60, 10).addClass("purplebox").css({opacity: 0.9});
 
-  var arraytop = top2 + 20;
-  var arrayleft = left + 150;
+  // array JSAV
+  var arrayleft = left + 152;
+  var arraytop = top + 60.5;
   var arr = av.ds.array(arrValues, {indexed: false, left: arrayleft, top: arraytop, position: "absolute"});
 
   //floor 4, long purple
@@ -64,10 +59,11 @@ $(document).ready(function() {
 
 // ------------------ labels ------------------------
 
-  av.label("set", {left: left + 8, top: top2 - 60}).addClass("valLabels");
-  av.label("total", {left: left + 45, top: top2 - 60}).addClass("valBlackLabels");
-  av.label("=", {left: left + 95, top: top2 - 60}).addClass("valLabels");
-  av.label("0", {left: left + 145, top: top2 - 58}).addClass("valBlackLabels");
+  var labeltop1 = top - 18;
+  av.label("set", {left: left + 8, top: labeltop1}).addClass("valLabels");
+  av.label("total", {left: left + 48, top: labeltop1}).addClass("valBlackLabels");
+  av.label("=", {left: left + 100, top: labeltop1}).addClass("valLabels");
+  av.label("0", {left: left + 151, top: labeltop1}).addClass("valBlackLabels");
 
   var label1 = av.label("for each item", {left: left + 10, top: top2 - 30});
   label1.addClass("loopLabels");
@@ -326,7 +322,7 @@ $(document).ready(function() {
   botblue.addClass("blueboxh");
   botblue.removeClass("blueboxh");
   printprice.show();
-  av.recorded();
+  av.step();
 
   // Slide 23
   av.umsg(interpret("sc23"));
