@@ -19,7 +19,7 @@
       width: 400,
       height: 400,
       layout: "automatic",
-      directed: true
+      directed: false
     });
     graphUtils.generate(graph); // Randomly generate the graph without weights
     graph.layout();

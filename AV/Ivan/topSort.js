@@ -10,7 +10,7 @@ $(document).ready(function() {
   var numberofnodes;
 
   numberofnodes = 0;
-  g = av.ds.graph({width: 500, height: 500, layout: "manual", directed: true});
+  g = av.ds.graph({width: 300, height: 300, layout: "manual", directed: true});
   arr = av.ds.array(["","","","","","","",""],{left: 670, bottom: 150, layout: "vertical", width: 100});
   size = 7;
   initGraph();
@@ -97,7 +97,7 @@ function displaySort(numberofnodes) {
   }
   str += "CS" + arr.value(numberofnodes - 1);
 
-  return str;  
+  return str;
 }
 
 });

@@ -126,8 +126,8 @@ start it, so that you can see the behavior on different examples.
 It can show you DFS run on a directed graph or an undirected graph.
 Be sure to look at an example for each type of graph.
 
- .. avembed:: AV/Ivan/DfsAV.html ss
-      :long_name: DFS Visualization on Random Graph
+ .. avembed:: AV/Ivan/DfsAV.html pe
+      :long_name: DFS AV
 
 DFS processes each edge once in a directed graph.
 In an undirected graph, DFS processes each edge from both
@@ -173,7 +173,7 @@ start it, so that you can see the behavior on different examples.
 It can show you BFS run on a directed graph or an undirected graph.
 Be sure to look at an example for each type of graph.
 
- .. avembed:: AV/Ivan/BfsAV.html pe
+.. avembed:: AV/Ivan/BfsAV.html pe
     :long_name: BFS AV
 
 Here is an exercise for you to practice BFS.

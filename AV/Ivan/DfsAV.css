@@ -15,6 +15,7 @@
   stroke-width: 1.5px;
 }
 .jsavedge.markpath{
+  directed: true;
   stroke-width: 4;
   stroke: #f61010; //red
 }
