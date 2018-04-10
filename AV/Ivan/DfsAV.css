@@ -14,7 +14,13 @@
 .jsavgraph .jsavedge {
   stroke-width: 1.5px;
 }
+
 .jsavedge.markpath{
+  stroke-width: 4;
+  stroke: #f61010; //red
+}
+
+.jsavedge.dirmarkpath{
   directed: true;
   stroke-width: 4;
   stroke: #f61010; //red

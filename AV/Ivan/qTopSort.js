@@ -15,15 +15,15 @@ $(document).ready(function() {
   var Count=new Array();
 
   g = jsav.ds.graph({width: 500, height: 500, left: 0, top: 50, layout: "manual", directed: true});
-  queue = jsav.ds.array(["<b>  Queue  </b>","       ","","","","","","",""],  {left: 350, top: 200}); //added spaces
+  queue = jsav.ds.array(["<b>Queue</b>","","","","","","","",""],  {left: 350, top: 200}).css({"font-size": "10px"}); //added spaces
   var data = ["<b>&nbsp;Nodes&nbsp;</b>", "&nbsp;2505&nbsp;","&nbsp;2114&nbsp;","&nbsp;3604&nbsp;","&nbsp;3304&nbsp;","&nbsp;1114&nbsp;","&nbsp;2506&nbsp;","&nbsp;3114&nbsp;","&nbsp;3214&nbsp;"];
-  Courses = new jsav.ds.array(data,{left:350,top:50});
-  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>","","","","","","","",""],{left:350,top:98});
-  Ecount.css(0,{width:200,"background-color":"#CC6633"}); //orignal 80
-  Courses.css(0,{width:80,"background-color":"#CC6633"});
-  queue.css(0,{width:200,"background-color":"#CC6633"});
+  Courses = new jsav.ds.array(data,{left:350,top:50}).css({"font-size": "10px"});
+  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>","","","","","","","",""],{left:350,top:98}).css({"font-size": "10px"});
+  Ecount.css(0,{"width": "200px","background-color":"#CC6633", "font-size": "10px"}); //orignal 80 added font-size
+  Courses.css(0,{width:80,"background-color":"#CC6633", "font-size": "10px"});
+  queue.css(0,{width:200,"background-color":"#CC6633", "font-size": "10px"});
   oparr = jsav.ds.array(["<b>Output</b>","","","","","","","",""],  {left: 350, top: 310});
-  oparr.css(0,{width:100,"background-color":"#CC6633"});
+  oparr.css(0,{width:100,"background-color":"#CC6633", "font-size": "10px"});
   oparrcnt=1;
   initGraph();
   var v;
@@ -80,7 +80,7 @@ function dequeueIt(node,q) {
   queue.value(i+1,"");
   var i=g.nodes().indexOf(node);
   oparr.value(oparrcnt,node.value());
-  oparr.css(oparrcnt,{"background-color":"#66CC99"});
+  oparr.css(oparrcnt,{"background-color":"#66CC99", "font-size": "10px"});
   oparrcnt++;
   Ecount.addClass(i+1,"marked");
   Courses.unhighlight(i+1);

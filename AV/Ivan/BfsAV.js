@@ -6,6 +6,7 @@
   var jsav;
   var firstElement;
   var lastElement;
+  var markcount =0;
 
 
   function undir() {
@@ -38,7 +39,7 @@
  markIt(g.nodes()[0]);
  jsav.step();
  bfs(g.nodes()[0]);
- finalGraph();
+ dirfinalGraph();
  jsav.recorded();
 }
 
@@ -51,6 +52,7 @@ function markIt(node) {
   arr.value(lastElement, node.value());
   lastElement++;
   node.highlight();
+  markcount++;
 }
 
 function dequeueIt(node) {
@@ -132,6 +134,17 @@ function finalGraph() {
   jsav.umsg("Completed breadth first search graph");
 
 }
+
+function dirfinalGraph() {
+  jsav.umsg("Completed breadth first search graph");
+
+  if (markcount < g.nodeCount()) {
+  jsav.step();
+  jsav.umsg("Note that this traversal did not reach all of the nodes, due to the directions on the edges making some nodes unreachable from A."
+   + "This is why BFS is typically done in the context of starting the traversal from every node.");
+  }
+}
+
 
 // Connect action callbacks to the HTML entities
 $('#about').click(about);

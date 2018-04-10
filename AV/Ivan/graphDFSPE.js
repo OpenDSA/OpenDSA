@@ -53,7 +53,7 @@
       width: 400,
       height: 400,
       layout: "automatic",
-      directed: true
+      directed: false
     });
 
     // copy the graph and its weights
