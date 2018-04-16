@@ -69,14 +69,14 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		}
 		$('#undoButton').click(function(){
 			highlight_select_button();
-			$('.undoButton').addClass(" active");
+			//$('#undoButton').addClass("active");
 			g.undo();
 			$('.jsavgraph').click(graphClickHandler);
 			$('.jsavedgelabel').click(labelClickHandler);
 		});
 		$('#redoButton').click(function(){
 			highlight_select_button()
-			$('.redoButton').addClass(" active");
+			//$('#redoButton').addClass("active");
 			g.redo();
 			$('.jsavgraph').click(graphClickHandler);
 			$('.jsavedgelabel').click(labelClickHandler);
@@ -284,7 +284,6 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	// Triggered by clicking the "Add Edges" button.
 	var addEdges = function() {
 		highlight_select_button();
-		$('#edgeButton').addClass(" active");
 		removeModeClasses();
 		removeND();
 		g.disableDragging();
@@ -293,6 +292,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		$('.jsavgraph').off('mousemove').mousemove(mouseMove);
 		$('.jsavgraph').off('mouseup').mouseup(mouseUp);
 		jsav.umsg('Drag from one node to another.');
+		$('#edgeButton').addClass("active");
 	};
 
 	// Function to switch to "Move Nodes" mode.
@@ -308,18 +308,18 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	// Triggered by clicking the "Edit Nodes/Edges" button.
 	var editNodes = function() {
 		highlight_select_button();
-		$('#edgeButton').addClass(" active");
 		removeModeClasses();
 		removeND();
 		$('.jsavgraph').addClass('editNodes');
 		jsav.umsg('Click a node or edge label.');
+		$('#editButton').addClass("active");
 	};
 
 	// Function to switch to "Delete Nodes" mode.
 	// Triggered by clicking the "Delete Nodes/Edges" button.
 	var deleteNodes = function() {
 		highlight_select_button();
-		$('#deleteButton').addClass(" active");
+		$('#deleteButton').addClass("active");
 		removeModeClasses();
 		removeND();
 		$('.jsavgraph').addClass('deleteNodes');
@@ -670,7 +670,8 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	        		newNode.addClass('final');
 	        	}
 	        	if (isLabel) {
-	        		newNode.stateLabel(isLabel.childNodes[0].nodeValue);
+	        		label_val = '<p class = "label_css">' + isLabel.childNodes[0].nodeValue + '</p>';
+	        		newNode.stateLabel(label_val);
 	        	}
 	        	nodeMap[xmlStates[i].id] = newNode;
 	        	newNode.stateLabelPositionUpdate();
@@ -1088,12 +1089,12 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		    this.className += " active";
 		  });
 		}*/
-		$('#undoButton').removeClass(" active");
-		$('#redoButton').removeClass(" active");
-		$('#deleteButton').removeClass(" active");
-		$('#editButton').removeClass(" active");
-		$('#nodeButton').removeClass(" active");
-		$('#edgeButton').removeClass(" active");
+		$('#undoButton').removeClass("active");
+		$('#redoButton').removeClass("active");
+		$('#deleteButton').removeClass("active");
+		$('#editButton').removeClass("active");
+		$('#nodeButton').removeClass("active");
+		$('#edgeButton').removeClass("active");
 	}
 	// Button click handlers.
 	$('#trapState').click(addTrapState);

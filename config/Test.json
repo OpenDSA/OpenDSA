@@ -68,8 +68,8 @@
     "Sorting": {
       "Graph/GraphIntro": {},
       "Graph/GraphImpl": {},
-      "Graph/GraphTraversal1": {},
-      "Graph/GraphTopsort1": {}
+      "Ivan/GraphTraversal": {},
+      "Ivan/GraphTopsort": {}
     },
     "Appendix": {
       "Glossary": {},

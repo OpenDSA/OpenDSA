@@ -104,6 +104,10 @@
     "Turing Machines": {
       "SeniorAlgAnal/Turing": {}
     },
+    "Limits to Computing": {
+      "NP/Reduction": {},
+      "NP/NPComplete": {} 
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}

@@ -31,7 +31,7 @@ meet the prerequisite rules is called a :term:`topological sort`.
 .. _TopSort:
 
 .. inlineav:: topsortCON dgm
-   :links: 
+   :links:
    :scripts: AV/Graph/topsortCON.js
    :align: center
 
@@ -63,7 +63,7 @@ It does not matter where the sort starts, as long as all vertices
 are visited in the end.
 Here is implementation for the DFS-based algorithm.
 
-.. codeinclude:: Graphs/TopsortDFS 
+.. codeinclude:: Graphs/TopsortDFS
    :tag: TopsortDFS
 
 .. TODO::
@@ -114,7 +114,7 @@ Here is an implementation for the algorithm.
 
 Here is the code to implement the queue-based topological sort:
 
-.. codeinclude:: Graphs/TopsortBFS 
+.. codeinclude:: Graphs/TopsortBFS
    :tag: TopsortBFS
 
 .. avembed:: AV/Graph/qTopSort.html ss

@@ -27,7 +27,7 @@
       var newLabelLeft = labelLeft;
       if(this == priceBox || ( this !== totalBox && this.className.indexOf("priceTag") !== -1)){
         var price = prompt("Please enter the current price.", "0");
-        if(price != ""){
+        if(price !== ""){
           priceBoxLabel.value(price);
           while(price >= 10){
             newLabelLeft -= 5.5;
@@ -37,7 +37,7 @@
         }
       } else {
         var total = prompt("Please enter the current total.", "0");
-        if(total != ""){
+        if(total !== ""){
           totalBoxLabel.value(total);
           while(total >= 10){
             newLabelLeft -= 5;
@@ -96,7 +96,7 @@
       av.g.rect(rect_left, rect_top + 20, 50, 15).addClass("box"); // for no-roung on the corner
 
       //floor 3 and the JSAV array contains array
-      av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.6});
+      // av.g.rect(rect_left, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.1});
       av.g.rect(rect_left + 73, rect_top + 25, 30, 60, 10).addClass("box").css({opacity: 0.9});
       var arr = av.ds.array(array, {indexed: false, left: leftMargin, top: topMargin, position: "absolute"});
 

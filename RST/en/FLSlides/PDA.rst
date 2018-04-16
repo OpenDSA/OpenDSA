@@ -22,6 +22,9 @@ Pushdown Automata
    shown much earlier, and then that gets used to explain the
    formalisms and concerns.
 
+.. TODO: Should put in example using \lambda for the "stack" symbol to
+   ignore what is on the stack, and not consume it
+
 .. slide:: Our Current Model of the FL Universe
 
    | Regular Languages:

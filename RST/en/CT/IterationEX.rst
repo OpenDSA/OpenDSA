@@ -15,4 +15,8 @@ List Iteration
 List Iteration
 --------------
 
-.. avembed:: av/CT/IterationEXPRO.html ss
+.. avembed:: Exercises/CT/IterationEX1PRO.html ka
+   :long_name: Iteration Khan Exercise
+
+.. avembed:: AV/CT/iterationEXPRO.html pe
+   :long_name: Iteration Exercise JSAV

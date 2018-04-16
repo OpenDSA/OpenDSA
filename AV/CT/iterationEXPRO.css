@@ -92,3 +92,11 @@ p.jsavoutput.jsavline {
 .midlabel {
   font-size: 150%;
 }
+
+.arrayPos {
+  z-index: 500;
+}
+
+.arrayPurplePos {
+  z-index: 600;
+}

@@ -103,6 +103,24 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
 
   return args
 
+# Parses the options from a Sphinx directive
+def parse_directive_options(mod_data, line_num):
+  line_num += 1
+  mod_len = len(mod_data)
+  rxp = re.compile('^[\t ]+:([^:]+): (.+)$')
+  options = {}
+  while True:
+    if line_num >= mod_len:
+      break
+    line = mod_data[line_num]
+    match = rxp.match(line)
+    if match == None:
+      break
+    options[match.group(1)] = match.group(2)
+    line_num += 1
+
+  return options
+
 #parses the glossary terms relationships. prints error message if the format is not correct
 #format    :to-term: term1 :lable: label :alt-text: alternate text in case the to-term is not a glossary term
 def parse_term_relationship(line, term, line_num, cmap_dict, console_msg_prefix = ''):
@@ -645,6 +663,8 @@ class ODSA_RST_Module:
               exer_conf = exercises[external_tool_name]
               # List of valid options for avembed directive
               options = ['long_name', 'learning_tool', 'launch_url', 'id']
+              dir_opts = parse_directive_options(mod_data, i)
+              options = [option for option in options if option not in dir_opts]
 
               rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
@@ -712,7 +732,7 @@ class ODSA_RST_Module:
       for (msg, module_error) in errors:
         if module_error or section_title_found:
           print_err(msg)
-          error_shown = True        
+          error_shown = True
 
       if not avmetadata_found:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))

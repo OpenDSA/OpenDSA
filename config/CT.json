@@ -68,17 +68,8 @@
     "Iteration": {
       "CT/Iteration": {}
     },
-    "Iteration Exercises": {
-      "CT/IterationJieun": {}
-    },
-    "Iteration JSAV Exercises": {
-      "CT/IterationJieun2": {}
-    },
-    "Iteration JSAV SIGCSE": {
-      "CT/IterationSIGCSE": {}
-    },
-    "Iteration JSAV Slides": {
-      "CT/IterationSlides": {}
+    "Iteration Slides and Exercises": {
+      "CT/IterationAVEX": {}
     },
     "Appendix": {
       "Glossary": {},

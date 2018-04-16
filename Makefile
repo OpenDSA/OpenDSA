@@ -115,6 +115,9 @@ FormalLang: min
 VisFormalLang: min
 	python $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
 
+OpenPOPExercises: min
+	python $(CONFIG_SCRIPT) config/OpenPOPExercises.json --no-lms
+
 FLslides: min
 	python $(CONFIG_SCRIPT) -s config/FLslides.json --no-lms
 

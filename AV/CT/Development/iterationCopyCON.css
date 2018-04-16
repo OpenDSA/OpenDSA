@@ -1,0 +1,106 @@
+#iteration1CON .jsavnode, #iteration2CON  .jsavnode, #iteration4  .jsavnode, #iteration3CON  .jsavnode {
+  min-width: 40px !important;
+  min-height: 40px !important;
+  background: #74a55b;
+}
+
+#iteration1CON .jsavvaluelabel, #iteration2CON  .jsavvaluelabel, #iteration4  .jsavvaluelabel, #iteration3CON  .jsavvaluelabel {
+  font-weight: 600;
+}
+
+#iteration1CON .labels, #iteration2CON .labels, #iteration4 .labels, #iteration3CON  .labels  {
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 170%;
+  z-index: 500;
+  font-weight: 500;
+}
+
+#iteration2CON .consolelabels, #iteration4 .consolelabels, #iteration3CON  .consolelabels  {
+  position: relative;
+  display: block;
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  color: black;
+  font-size: 170%;
+  z-index: 500;
+  font-weight: 600;
+}
+
+ #iteration2CON .midlabel,  #iteration4 .midlabel, #iteration3CON .midlabel {
+  font-size: 150%;
+}
+
+#iteration2CON .smalllabel, #iterationfly2CON .smalllabel, #iteration3CON .smalllabel {
+ font-size: 130%;
+}
+
+#iteration2CON .valuelabel, #iteration4 .valuelabel  {
+ font-size: 150%;
+ color: yellow;
+}
+
+#iteration2CON .statelabel, #iteration4 .statelabel, #iteration3CON .statelabel  {
+ font-size: 120%;
+ font-weight: 600;
+}
+
+#iteration3CON .valuelabel  {
+ font-size: 150%;
+ color: yellow;
+ background-color: #593f73;
+ }
+
+
+#iteration1CON .box, #iteration2CON .box, #iteration4 .box, #iteration3CON .box  {
+  fill : #a55ba5;
+  stroke : #a55ba5;
+  z-index: -500;
+}
+
+#iteration1CON .bluebox, #iteration2CON  .bluebox, #iteration4  .bluebox, #iteration3CON  .bluebox  {
+  fill : rgb(91, 91, 165);
+  stroke : rgb(91, 91, 165);
+  z-index: -500;
+}
+
+#iteration1CON .blueboxh, #iteration2CON  .blueboxh, #iteration4  .blueboxh, #iteration3CON  .blueboxh  {
+  fill : #e6eeff;
+  stroke : #e6eeff;
+}
+
+#iteration2CON .statebox, #iteration4 .statebox, #iteration3CON .statebox  {
+  stroke : Maroon;
+  z-index: -500;
+  border-width: inherit;
+  border-radius: 50px;
+}
+
+#iteration2CON .consolebox, #iteration4 .consolebox, #iteration3CON .consolebox  {
+  fill: white;
+  stroke: lightgray;
+  z-index: -500;
+  border-width: inherit;
+  border-radius: 50px;
+}
+
+#iteration2CON .consoleline, #iteration4 .consoleline, #iteration3CON .consoleline  {
+  stroke: lightgray;
+  stroke-dasharray: 5, 5;
+}
+
+#iteration3CON .calbox  {
+  fill : #805ba5;
+  stroke : #805ba5;
+  z-index: -500;
+}
+
+#iteration3CON  .calboxhigh  {
+  fill : #f2eff6;
+  stroke : #f2eff6;
+  z-index: -500;
+}
+
+#iteration1CON .hiding {
+  visibility: hidden;
+}
