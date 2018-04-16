@@ -89,8 +89,6 @@ class extrtoolembed(Directive):
         sys.exit()
 
     self.options['type'] = 'external_tool'
-
-
     self.options['content'] = ''
     self.options['exer_name'] = self.options['long_name'].replace(":", "").replace(" ", "_")
 
@@ -98,7 +96,7 @@ class extrtoolembed(Directive):
     self.options['width'] = external_tool['width']
     self.options['height'] = external_tool['height']
 
-    if self.options['launch_url']:
+    if 'launch_url' in self.options:
       self.options['tool_address'] = self.options['launch_url']
     else:
       url_params = {}
@@ -106,6 +104,9 @@ class extrtoolembed(Directive):
       self.options['tool_address'] = external_tool['url']
       self.options['tool_address'] += '?'
       self.options['tool_address'] += urllib.urlencode(url_params).replace('&', '&amp;')
+
+    if 'id' not in self.options:
+      self.options['id'] = ''
 
     res = CONTAINER_HTML % (self.options)
 

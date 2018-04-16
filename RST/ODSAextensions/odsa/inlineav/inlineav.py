@@ -159,6 +159,9 @@ class inlineav(Directive):
     if 'align' not in self.options:
       self.options['align'] = 'center'
 
+    if 'id' not in self.options:
+      self.options['id'] = ''
+
     if 'output' in self.options and self.options['output'] == "show":
       self.options['output_code'] = '<p class="jsavoutput jsavline"></p>'
     else:
