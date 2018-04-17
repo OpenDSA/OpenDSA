@@ -5,51 +5,49 @@
 
 <!DOCTYPE html>
 <html data-require="jsav math IterationEX1PRO LinkList">
-  <head>
-    <title>Pointer Exercise 1</title>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
-    <link rel = "stylesheet"
-      type = "text/css"
-      href = "IterationEX.css" />
 
-  </head>
+<head>
+  <title>Pointer Exercise 1</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="../../khan-exercises/local-only/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="IterationEX.css" />
 
-  <body data-height="800" data-width="950">
+</head>
 
-    <div class="exercise">
-      <div class="vars">
-        <var id="pos">Khan.randRange(1, 2)</var>
-        <var id="JSAV">iterationEX1PRO.initJSAV(pos)</var>
-      </div>
+<body data-height="800" data-width="950">
 
-      <div class="problems">
-        <div id="IterationEX1PROp"> <!-- Supresses answer box -->
-          <p class="problem">Given the iteration and the partial state shown below,
-            what is the value of the variable price and total immediately
-            <b>after</b> the execution of the statement indicated by the
-            yellow outline?</p>
-          <div class="question">
+  <div class="exercise">
+    <div class="vars">
+      <var id="pos">Khan.randRange(1, 2)</var>
+      <var id="JSAV">iterationEX1PRO.initJSAV(pos)</var>
+    </div>
+
+    <div class="problems">
+      <div id="IterationEX1PROp">
+        <!-- Supresses answer box -->
+        <p class="problem">Given the iteration block, the state shows the price and total before the execution of the statement
+          indicated by the yellow outline. What is the value of the variable price and total immediately
+          <b>after</b> the execution of the statement indicated by the yellow outline? You can change
+          the variable of price and total by click the box or variable label and inserting a new value.</p>
+        <div class="question">
 
 
-            <div id="IterationEX1PRO" class="jsavcanvas"></div>
-            <input id="reset" type="button" value="Reset" />
-            <!-- <textarea rows="1" cols="5" style="resize:none" id="priceAnswerBox"></textarea>
+          <div id="IterationEX1PRO" class="jsavcanvas"></div>
+          <input id="reset" type="button" value="Reset" />
+          <!-- <textarea rows="1" cols="5" style="resize:none" id="priceAnswerBox"></textarea>
             <textarea rows="1" cols="5" style="resize:none" id="totalAnswerBox"></textarea> -->
+        </div>
+        <div class="solution" data-type="custom">
+          <div class="guess"> [iterationEX1PRO.userInput] </div>
+          <div class="validator-function">
+            if (!iterationEX1PRO.checkAnswer() && !guess[0]) { return ""; } else {return iterationEX1PRO.checkAnswer();}
           </div>
-          <div class="solution" data-type="custom">
-            <div class="guess"> [iterationEX1PRO.userInput] </div>
-            <div class="validator-function">
-              if (!iterationEX1PRO.checkAnswer() && !guess[0]) {
-                return ""; // User did not click, and correct answer is not
-                           // initial array state
-              } else {return iterationEX1PRO.checkAnswer();}
-            </div>
-          </div>
-          <div class="hints">
-          </div>
+        </div>
+        <div class="hints">
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

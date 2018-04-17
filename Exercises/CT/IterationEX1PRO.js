@@ -70,8 +70,14 @@
           array[i] = Math.floor(Math.random() * 10) + 1;
       }
 
+      var prevPrice = 0;
+      var prevTotal = 0;
       priceAnswer = array[position];
       for(var i = 0; i <= position; i++){
+        if(i != 0){
+          prevPrice = array[i - 1];
+          prevTotal += array[i - 1];
+        }
         totalAnswer += array[i];
       }
 
@@ -166,13 +172,13 @@
 
 
         priceBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
-        priceBoxLabel = av.label("click!", {left: labelLeft - 19, top: stateY + 105});
+        priceBoxLabel = av.label(prevPrice, {left: labelLeft - 19, top: stateY + 105});
         priceBoxLabel.addClass("labels");
         priceBoxLabel.addClass("midlabel");
 
 
         totalBox = av.g.rect(stateX - 5, stateY + 220, 70, 70).addClass("bluebox");
-        totalBoxLabel = av.label("click!", {left: labelLeft - 19, top: stateY + 220});
+        totalBoxLabel = av.label(prevPrice, {left: labelLeft - 19, top: stateY + 220});
         totalBoxLabel.addClass("labels");
         totalBoxLabel.addClass("midlabel");
 
@@ -218,6 +224,8 @@
 
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function() {
+      document.write(priceBoxLabel.value());
+      document.write(totalBoxLabel.value());
       return priceBoxLabel.value() == priceAnswer && totalBoxLabel.value() == totalAnswer;
     },
   };

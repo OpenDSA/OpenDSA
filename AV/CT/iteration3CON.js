@@ -57,8 +57,8 @@ $(document).ready(function() {
   // last blue floor
   var botblue = av.g.rect(left, top + 295, 280, 35, 10).addClass("bluebox");
 
-// ------------------ labels ------------------------
 
+// ------------------ labels ------------------------
   var labeltop1 = top - 18;
   av.label("set", {left: left + 8, top: labeltop1}).addClass("valLabels");
   av.label("total", {left: left + 48, top: labeltop1}).addClass("valBlackLabels");
