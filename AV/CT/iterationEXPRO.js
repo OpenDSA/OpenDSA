@@ -3,6 +3,10 @@ $(document).ready(function() {
   "use strict";
 
   // Load the interpreter created by odsaAV.js
+  var av_name = "iterationEXPRO";
+  var interpret = ODSA.UTILS.loadConfig({
+    av_name: av_name
+  }).interpreter;
   var config = ODSA.UTILS.loadConfig();
   // var interpret = config.interpreter;
   var box1, box2, box3, box4;
@@ -11,10 +15,11 @@ $(document).ready(function() {
     purple_top,
     initArr,
     ansArr = [],
-    arrValues = [4, 13, 6, 9, 11],
+    arrValues = [],
     iteration_array,
     nodegap,
-    nextleft;
+    nextleft,
+    count; // Count clicked number to keep track of the correct order. This will be used to make the iteration_array's correct position
 
   var jsavArray,
     initialArray = [1, 2, 3, 4];
@@ -44,21 +49,29 @@ $(document).ready(function() {
   $("#about").click(about);
 
   function initialize() {
+    var len = Math.floor(Math.random() * 2) + 3;
+    for (var i = 0; i < len; i++) {
+      arrValues[i] = Math.floor(Math.random() * 25) + 1;
+    }
+
+    // If the user clicked the reset, then reset the jsavArray.
     if (jsavArray) {
       jsavArray.clear();
     }
 
+    // If ther user clicked the reset, then reset the iteration array.
     if (iteration_array) {
       iteration_array.clear();
     }
 
+    // initialize jsavArray and make it invisible. This array is used only for grading purpose
     jsavArray = av.ds.array(initialArray);
     jsavArray.hide();
 
     var leftMargin = 250,
       rect_left = leftMargin - 150,
-      blue_top = 0,
-      purple_top = 40,
+      blue_top = 10,
+      purple_top = 50,
       topMargin = purple_top + 20;
     av.umsg("Directions: Reproduce the behavior of blockpy iteration. Click block area to indicate the order of block execution.");
     var topblue = av.g.rect(rect_left, blue_top, 280, 35, 10).addClass("bluebox");
@@ -96,9 +109,8 @@ $(document).ready(function() {
     av.g.rect(rect_left, purple_top + 76, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
     //blue boxes and the the sets of it for the iterations later
-    var midblue1 = av.g.rect(rect_left + 130, purple_top + 120, 130, 66, 10).addClass("bluebox");
-    var midblue2 = av.g.rect(rect_left + 220, purple_top + 139, 20, 32, 15).addClass("calbox");
-    var midblue3 = av.g.rect(rect_left + 240, purple_top + 120, 120, 66, 10).addClass("calbox");
+    var midblue1 = av.g.rect(rect_left + 130, purple_top + 120, 230, 66, 10).addClass("bluebox");
+
     // last purple box.
     av.g.rect(rect_left + 90, purple_top + 200, 240, 50, 10).addClass("purplebox");
 
@@ -113,12 +125,10 @@ $(document).ready(function() {
     box4 = av.g.rect(rect_left, blue_top + 295, 280, 35, 10).addClass("box");
     box4.click(clickHandler4);
 
-    boxes = [box1, box2, box3, box4];
-
     // ---------------loop -labels-----------------------
     var label1 = av.label("for each item", {
-      left: rect_left + 5,
-      top: purple_top - 25
+      left: rect_left + 10,
+      top: purple_top - 30
     }).addClass("loopLabels");
     label1.onmouseover = function() {
       box1.addClass("hover")
@@ -132,10 +142,6 @@ $(document).ready(function() {
       left: rect_left + 35,
       top: purple_top + 110
     }).addClass("loopLabels");
-    av.label("print (price)", {
-      left: rect_left + 15,
-      top: blue_top + 275
-    }).addClass("loopLabels").addClass("midlabel");
 
     return jsavArray;
   }
@@ -181,9 +187,8 @@ $(document).ready(function() {
     modeljsav.g.rect(rect_left, purple_top + 76, 50, 15).addClass("purplebox"); // for no-roung on the corner
 
     //blue boxes and the the sets of it for the iterations later
-    var midblue1 = modeljsav.g.rect(rect_left + 130, purple_top + 120, 130, 66, 10).addClass("bluebox");
-    var midblue2 = modeljsav.g.rect(rect_left + 220, purple_top + 139, 20, 32, 15).addClass("calbox");
-    var midblue3 = modeljsav.g.rect(rect_left + 240, purple_top + 120, 120, 66, 10).addClass("calbox");
+    var midblue1 = modeljsav.g.rect(rect_left + 130, purple_top + 120, 230, 66, 10).addClass("bluebox");
+
     // last purple box.
     modeljsav.g.rect(rect_left + 90, purple_top + 200, 240, 50, 10).addClass("purplebox");
 
@@ -196,8 +201,8 @@ $(document).ready(function() {
 
     // ---------------loop -labels-----------------------
     modeljsav.label("for each item", {
-      left: rect_left + 5,
-      top: purple_top - 25
+      left: rect_left + 10,
+      top: purple_top - 30
     }).addClass("loopLabels");
     modeljsav.label("price", {
       left: rect_left + 20,
@@ -207,10 +212,6 @@ $(document).ready(function() {
       left: rect_left + 35,
       top: purple_top + 110
     }).addClass("loopLabels");
-    modeljsav.label("print (price)", {
-      left: rect_left + 15,
-      top: blue_top + 275
-    }).addClass("loopLabels").addClass("midlabel");
 
     modeljsav.displayInit(); // do displayInit after set all the objects
 
@@ -226,7 +227,7 @@ $(document).ready(function() {
     modeljsav.gradeableStep();
 
     // iterations
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < arrValues.length; i++) {
       model_box2.addClass("blueboxh");
       model_box2.removeClass("blueboxh");
       arr.css({
@@ -251,10 +252,11 @@ $(document).ready(function() {
     // last iteration that won't pass
     model_box2.addClass("blueboxh");
     model_box2.removeClass("blueboxh");
+    model_nextleft -= 50;
     arr.css({
       left: model_nextleft
     }); //move array
-    model_nextleft -= model_nodegap;
+
     modeljsav.umsg("For loop Statement was executed.");
     modelArray.unhighlight(model_curr_highlighted);
     modelArray.highlight(1);
