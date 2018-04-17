@@ -27,12 +27,6 @@ List Iteration
    :scripts: AV/CT/iteration2CON.js
    :output: show
 
-.. inlineav:: iteration2copyCON ss
-   :long_name: Iteration Second Slide Version 2
-   :links: AV/CT/iterationCON.css
-   :scripts: AV/CT/iteration2copyCON.js
-   :output: show
-
 .. inlineav:: iteration3CON ss
    :long_name: Iteration Third Slide
    :links: AV/CT/iterationCON.css

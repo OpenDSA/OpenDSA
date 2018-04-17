@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "sc1": "This animation shows the steps of an algorithm to calculate and print the average of the values in a list. This animation is an example of the accumulate pattern where two values are accumulated within the same iteration. In this problem we take the values in the list to be the price of items being purchased.",
       "sc2": "The state for this algorithm has four variables. The iteration variable is named price. The variable total accumulates the sum of the values in the list. The variable count accumulates the number of values in the list. The variable average is the desired average value that will be printed.",
