@@ -14,7 +14,8 @@ $(document).ready(function() {
   "use strict";
 
   //BlueStepAnim :This should come before JSAV Initialize
-  JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(delay, time, consoleIndex, list, priceValue, effectName) {
+  JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(delay, time, consoleIndex, list,
+    priceValue, effectName) {
     if (this._shouldAnimate()) {
 
       setTimeout(function() {

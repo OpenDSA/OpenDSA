@@ -17,13 +17,13 @@ $(document).ready(function() {
   var arrValues = [4, 13, 6, 9, 11];
   var leftMargin = 250,
     left = leftMargin - 150,
-    rect_top = 0,
-    topMargin = rect_top + 20;
+    top = 35,
+    topMargin = top + 20;
 
   var nodegap = 40;
 
   // ------------------ top1 boxes, set count = 0
-  var top1 = rect_top;
+  var top1 = top;
   // blue part
   av.g.rect(left, top1, 160, 35, 10).addClass("bluebox");
   av.g.rect(left + 53, top1 + 8, 60, 20, 5).addClass("blueboxlight");
@@ -34,7 +34,7 @@ $(document).ready(function() {
   var box1 = av.g.rect(left - 1, top1, 210, 40, 10).addClass("emptybox");
 
   // ------------------ top2 boxes, set total = 0
-  var top2 = rect_top + 40;
+  var top2 = top + 40;
   // blue part
   av.g.rect(left, top2, 160, 35, 10).addClass("bluebox");
   av.g.rect(left + 50, top2 + 8, 50, 20, 5).addClass("blueboxlight");
@@ -241,7 +241,7 @@ $(document).ready(function() {
   // <<--------------- STATE BOX ----------------->>
 
   var stateX = 550;
-  var stateY = 110;
+  var stateY = 135;
   var boxLabelX = stateX + 23;
   var boxLabelX2 = stateX + 128;
 
@@ -257,7 +257,7 @@ $(document).ready(function() {
   // count box and label
   av.label("count", {
     left: stateX + 8,
-    top: stateY + 55
+    top: stateY + 58
   }).addClass("statelabel");
   var countBox = av.g.rect(stateX - 5, stateY + 105, 70, 70).addClass("bluebox");
   var countBoxLabel = av.label("", {
@@ -268,7 +268,7 @@ $(document).ready(function() {
   // total box and label
   av.label("total", {
     left: stateX + 117,
-    top: stateY + 55
+    top: stateY + 58
   }).addClass("statelabel");
   var totalBox = av.g.rect(stateX + 100, stateY + 105, 70, 70).addClass("bluebox");
   var totalBoxLabel = av.label("", {
@@ -301,7 +301,7 @@ $(document).ready(function() {
   // <<--------------- CONSOLE BOX ----------------->>
 
   var consoleX = 550;
-  var consoleY = -25;
+  var consoleY = 0;
 
   // create CONSOLE label
   av.label("CONSOLE", {
