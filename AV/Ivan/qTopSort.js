@@ -14,16 +14,17 @@ $(document).ready(function() {
   var c1, c2, c3, c4, c5, c6, c7, c8;
   var Count=new Array();
 
-  g = jsav.ds.graph({width: 500, height: 500, left: 0, top: 50, layout: "manual", directed: true});
-  queue = jsav.ds.array(["<b>Queue</b>","","","","","","","",""],  {left: 350, top: 200}).css({"font-size": "10px"}); //added spaces
+  g = jsav.ds.graph({width: 500, height: 400, left: 0, top: 100, layout: "manual", directed: true});
+
+  queue = jsav.ds.array(["<b>Queue</b>","","","","","","","",""],  {left: 395, top: 200}).css({"font-size": "8px", "min-width": "80px", "height": "70"}); //"min-width": "80px" doesnt work, .autoresize doesnt work, "width: "80" doesnt work
   var data = ["<b>&nbsp;Nodes&nbsp;</b>", "&nbsp;2505&nbsp;","&nbsp;2114&nbsp;","&nbsp;3604&nbsp;","&nbsp;3304&nbsp;","&nbsp;1114&nbsp;","&nbsp;2506&nbsp;","&nbsp;3114&nbsp;","&nbsp;3214&nbsp;"];
-  Courses = new jsav.ds.array(data,{left:350,top:50}).css({"font-size": "10px"});
-  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>","","","","","","","",""],{left:350,top:98}).css({"font-size": "10px"});
-  Ecount.css(0,{"width": "200px","background-color":"#CC6633", "font-size": "10px"}); //orignal 80 added font-size
-  Courses.css(0,{width:80,"background-color":"#CC6633", "font-size": "10px"});
-  queue.css(0,{width:200,"background-color":"#CC6633", "font-size": "10px"});
-  oparr = jsav.ds.array(["<b>Output</b>","","","","","","","",""],  {left: 350, top: 310});
-  oparr.css(0,{width:100,"background-color":"#CC6633", "font-size": "10px"});
+  Courses = new jsav.ds.array(data,{left:395,top: 100}).css({"font-size": "10px"}).css({"font-size" : "8px"});
+  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>","","","","","","","",""],{left: 395,top:135}).css({"font-size": "8px", "width": "100px"});
+  Ecount.css(0,{"background-color":"#CC6633"}); //orignal 80 added font-size
+  Courses.css(0,{width:80,"background-color":"#CC6633"});
+  queue.css(0,{"width": "80","background-color":"#CC6633"});
+  oparr = jsav.ds.array(["<b>Output</b>","","","","","","","",""],  {left: 395, top: 275}).css({"font-size": "8px", "width": "100px"});;
+  oparr.css(0,{width:100,"background-color":"#CC6633"});
   oparrcnt=1;
   initGraph();
   var v;
@@ -74,13 +75,13 @@ function markIt(node,q) {
 
 function dequeueIt(node,q) {
   node.addClass("dequeued");
-  jsav.umsg("Dequeue " + node.value()+", put it into the Output array and discard its outgoing edges.");
+  jsav.umsg("Dequeue " + node.value()+ ", put it into the Output array and discard its outgoing edges.");
   for(var i=0;i<q.length;i++)
   	queue.value(i+1,q[i].value());
   queue.value(i+1,"");
   var i=g.nodes().indexOf(node);
   oparr.value(oparrcnt,node.value());
-  oparr.css(oparrcnt,{"background-color":"#66CC99", "font-size": "10px"});
+    oparr.css(oparrcnt,{"background-color":"#66CC99", "font-size": "10px"});
   oparrcnt++;
   Ecount.addClass(i+1,"marked");
   Courses.unhighlight(i+1);

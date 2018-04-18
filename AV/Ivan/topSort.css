@@ -1,6 +1,6 @@
 #container {
-  width: 800px;
-  height: 700px;
+  width: 800;
+  height: 600px;
 }
 
 .avcontainer{
@@ -9,6 +9,10 @@
 
 .jsavline{
   height: 50px;
+}
+
+.jsavarray .jsavindex {
+  width: 70px;
 }
 
 .jsavgraph .jsavedge {

@@ -8,14 +8,15 @@
   var c0, c1, c2, c3, c4, c5, c6, c7, c8;
   var size;
   var numberofnodes;
+  var markCount;
 
 function runit() {
   ODSA.AV.reset(true);
   jsav = new JSAV($('.avcontainer'));
   numberofnodes = 0;
-  //g = jsav.ds.graph({width: 500, height: 500, layout: "manual", directed: true});
-  arr = jsav.ds.array(["","","","","","","",""],{left: 600, bottom: 100, layout: "vertical"});
-  size = 7;
+  markCount =0;
+  arr = jsav.ds.array(["","","","",""],{left: 600, top: 100, layout: "vertical"});
+  size = 4;
   initGraph();
   g.layout();
   jsav.umsg("A topological sort is performed by doing a depth first search on a " +
@@ -24,7 +25,7 @@ function runit() {
   markIt(g.nodes()[0]);
   dfs(g.nodes()[0]);
   jsav.step();
-  jsav.umsg("Possible ordering of CS coures:  " + displaySort(numberofnodes));
+  jsav.umsg("Possible ordering of nodes:  " + displaySort(numberofnodes));
   jsav.step();
   jsav.recorded();
 }
@@ -35,10 +36,9 @@ function markIt(node) {
   node.addClass("marked");
   jsav.umsg("Mark node " + node.value());
   node.highlight();
+  markCount++;
   jsav.step();
 }
-
-
 
 
 function postVisit(node) {
@@ -74,8 +74,6 @@ function dfs(start, prev) {
 }
 
 
-
-
 function about() {
    alert("Top Sort Visualization");
 }
@@ -92,19 +90,22 @@ function initGraph() {
   layout: "automatic",
   directed: true
     });
-  graphUtils.generate(g); // Randomly generate the graph without weights
+  graphUtils.generateTree(g); // Randomly generate the graph without weights
   return g;
 }
 
-function displaySort(numberofnodes) {
-
+function displaySort() {
   var str = "";
 
-  for (var i = 0; i < numberofnodes - 1; i++) {
-    str += "CS " + arr.value(i) + " , ";
+  if (markCount == 0) {
+    str = "There are no possible traversals on this graph."
+    return str;
   }
-  str += "CS" + arr.value(numberofnodes - 1);
 
+    for (var j = 5 - markCount; j < 4; j++) {
+      str += arr.value(j) + ", ";
+    }
+    str += arr.value(j);
   return str;
 }
 

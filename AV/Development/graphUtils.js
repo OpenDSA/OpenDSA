@@ -93,6 +93,8 @@
 
       graph.addEdge(start, end, eOpts);
     }
+
+
   }
 
   function copyGraph(source, destination, options) {
@@ -130,8 +132,45 @@
     return destination;
   }
 
+  function generateTree(graph, options) {
+    var defaultOptions = {
+      weighted: false,
+      nodes: 5,          // number of nodes
+      edges: 4         // number of edges
+    };
+    var opts = $.extend(defaultOptions, options),
+        weighted = opts.weighted,
+        nNodes = opts.nodes,
+        nEdges = opts.edges,
+        nodes = new Array(nNodes),
+        edges,
+        i;
+
+    // Generate the node values
+    for (i = 0; i < nNodes; i++) {
+      nodes[i] = String.fromCharCode(i + 65);
+    }
+    // Generate edges
+    edges = generateRandomEdges(nNodes, nEdges, weighted);
+    // Add the nodes to the graph
+    for (i = 0; i < nNodes; i++) {
+      graph.addNode(nodes[i]);
+    }
+    // Add the edges to the graph
+    for (i = 0; i < nEdges; i++) {
+      var gNodes  = graph.nodes(),
+          start   = gNodes[edges[i].startIndex],
+          end     = gNodes[edges[i].endIndex],
+          eOpts   = edges[i].weight ? {weight: edges[i].weight} : {};
+
+      graph.addEdge(start, end, eOpts);
+    }
+  }
+
   window.graphUtils = {
     generate: generateGraph,
-    copy: copyGraph
+    copy: copyGraph,
+    generateTree: generateTree
   };
+
 })();

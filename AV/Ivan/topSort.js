@@ -1,8 +1,8 @@
 "use strict";
 /*global alert: true, ODSA */
 
-$(document).ready(function() {
-  var av = new JSAV("topSort");
+$(document).ready(function () {
+  var jsav = new JSAV("topSort");
   var g;
   var arr;
   var c0, c1, c2, c3, c4, c5, c6, c7, c8;
@@ -10,33 +10,36 @@ $(document).ready(function() {
   var numberofnodes;
 
   numberofnodes = 0;
-  g = av.ds.graph({width: 300, height: 300, layout: "manual", directed: true});
-  arr = av.ds.array(["","","","","","","",""],{left: 670, bottom: 150, layout: "vertical", width: 100});
+  g = jsav.ds.graph({width: 500, height: 500, left: 50, top: 100, layout: "manual", directed: true});
+  arr = jsav.ds.array(["","","","","","","",""],{left: 600, bottom: 200, layout: "vertical"}).css({"font-size": "12px"});
   size = 7;
   initGraph();
   g.layout();
-  av.umsg("A topological sort is performed by doing a depth first search on a " +
+  jsav.umsg("A topological sort is performed by doing a depth first search on a " +
     "directed acyclic graph. The nodes are are then popped off the stack resulting in a topological sort ");
-  av.displayInit();
+  jsav.displayInit();
   markIt(g.nodes()[0]);
   dfs(g.nodes()[0]);
-  av.step();
-  av.umsg("Possible ordering of CS coures:  " + displaySort(numberofnodes));
-  av.step();
-  av.recorded();
+  jsav.step();
+  jsav.umsg("Possible ordering of CS coures:  " + displaySort(numberofnodes));
+  jsav.step();
+  jsav.recorded();
+
 
 // Mark the nodes when visited and highlight it to
 // show it has been marked
 function markIt(node) {
   node.addClass("marked");
-  av.umsg("Mark node " + node.value());
+  jsav.umsg("Mark node " + node.value());
   node.highlight();
-  av.step();
+  jsav.step();
 }
 
 
+
+
 function postVisit(node) {
-  av.umsg("Add " + node.value() + " to the stack ");
+  jsav.umsg("Add " + node.value() + " to the stack ");
   arr.value(size, node.value());
   numberofnodes++;
   size--;
@@ -50,34 +53,42 @@ function dfs(start, prev) {
   adjacent = start.neighbors();
 
   for (next = adjacent.next(); next; next = adjacent.next()) {
-    av.umsg("Process edge between (" + start.value() + " and " + next.value() + ")");
+    jsav.umsg("Process edge between (" + start.value() + " and " + next.value() + ")");
       if(next.hasClass("marked")) {
-        av.umsg("Node " + next.value() + " already marked");
+        jsav.umsg("Node " + next.value() + " already marked");
       }
 
-    av.step();
+    jsav.step();
     if (!next.hasClass("marked")) {
-      av.umsg("Call depth first search on " + next.value());
-      av.step();
+      jsav.umsg("Call depth first search on " + next.value());
+      jsav.step();
       markIt(next);
       dfs(next, start);
-      av.step();
+      jsav.step();
     }
   }
   postVisit(start);
 }
 
+
+
+
+function about() {
+   alert("Top Sort Visualization");
+}
+
+
 // Graph prepartion for initial stage of visualization
 
 function initGraph() {
-  c1 = g.addNode("1114", {"left": 230, "top": 50});
-  c2 = g.addNode("2114", {"left": 100, "top": 125});
-  c5 = g.addNode("2505", {"left": 0, "top": 200});
-  c7 = g.addNode("3114", {"left": 200, "top": 200});
-  c3 = g.addNode("3604", {"left": 160, "top": 270});
-  c6 = g.addNode("2506", {"left": 100, "top": 320});
-  c4 = g.addNode("3304", {"left": 225, "top": 270});
-  c8 = g.addNode("3214", {"left": -30, "top": 400});
+  c1 = g.addNode("1114", {"left": 230});
+  c2 = g.addNode("2114", {"left": 100, "top": 75});
+  c5 = g.addNode("2505", {"left": 0, "top": 150});
+  c7 = g.addNode("3114", {"left": 200, "top": 150});
+  c3 = g.addNode("3604", {"left": 160, "top": 220});
+  c6 = g.addNode("2506", {"left": 100, "top": 270});
+  c4 = g.addNode("3304", {"left": 225, "top": 220});
+  c8 = g.addNode("3214", {"left": -30, "top": 350});
 
   g.addEdge(c1, c2);
   g.addEdge(c2, c5);
@@ -99,5 +110,7 @@ function displaySort(numberofnodes) {
 
   return str;
 }
+
+
 
 });
