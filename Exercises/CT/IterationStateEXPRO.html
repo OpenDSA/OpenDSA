@@ -1,13 +1,13 @@
-<!--
+iterationStateEXPRO<!--
     Linked List Deletion mini-proficiency exercise.
     Written by Jieun Chon and Cliff Shaffer
   -->
 
 <!DOCTYPE html>
-<html data-require="jsav math IterationEX1PRO LinkList">
+<html data-require="jsav math IterationStateEXPRO LinkList">
 
 <head>
-  <title>Pointer Exercise 1</title>
+  <title>Iteration Exercise</title>
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
   <script src="../../khan-exercises/local-only/main.js"></script>
   <link rel="stylesheet" type="text/css" href="IterationEX.css" />
@@ -19,11 +19,11 @@
   <div class="exercise">
     <div class="vars">
       <var id="pos">Khan.randRange(1, 2)</var>
-      <var id="JSAV">iterationEX1PRO.initJSAV(pos)</var>
+      <var id="JSAV">iterationStateEXPRO.initJSAV(pos)</var>
     </div>
 
     <div class="problems">
-      <div id="IterationEX1PROp">
+      <div id="IterationStateEXPROp">
         <!-- Supresses answer box -->
         <p class="problem">Given the iteration block, the state shows the price and total before the execution of the statement
           indicated by the yellow outline. What is the value of the variable price and total immediately
@@ -32,15 +32,13 @@
         <div class="question">
 
 
-          <div id="IterationEX1PRO" class="jsavcanvas"></div>
+          <div id="IterationStateEXPRO" class="jsavcanvas"></div>
           <input id="reset" type="button" value="Reset" />
-          <!-- <textarea rows="1" cols="5" style="resize:none" id="priceAnswerBox"></textarea>
-            <textarea rows="1" cols="5" style="resize:none" id="totalAnswerBox"></textarea> -->
         </div>
         <div class="solution" data-type="custom">
-          <div class="guess"> [iterationEX1PRO.userInput] </div>
+          <div class="guess"> [iterationStateEXPRO.userInput] </div>
           <div class="validator-function">
-            if (!iterationEX1PRO.checkAnswer() && !guess[0]) { return ""; } else {return iterationEX1PRO.checkAnswer();}
+            if (!iterationStateEXPRO.checkAnswer() && !guess[0]) { return ""; } else {return iterationStateEXPRO.checkAnswer();}
           </div>
         </div>
         <div class="hints">

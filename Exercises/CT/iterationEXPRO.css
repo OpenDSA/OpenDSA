@@ -1,0 +1,102 @@
+#jsavcontainer {
+  width: 500px;
+  height: 500px;
+  border-color: #b6c0b2;
+  background-color: #e2eedd;
+  border-radius: 10px;
+  padding: 40px;
+}
+
+p.jsavoutput.jsavline {
+  height: 40px;
+}
+.jsavscore {
+  text-align: center;
+}
+
+.jsavcanvas {
+  overflow: hidden;
+}
+
+.jsavarray {
+  position: absolute;
+}
+
+.jsavcontainer {
+  overflow: visible;
+}
+
+/* ---------- JSAV CSS ----------*/
+.jsavhorizontalarray .jsavnode {
+  min-width: 40px !important;
+  min-height: 40px !important;
+  background: #74a55b;
+}
+
+/* ----------Box CSS----------*/
+.box {
+  z-index: -500;
+  stroke-width : 0;
+}
+
+.box:hover {
+  stroke-width : 3;
+  stroke : #FFCC33;
+}
+
+.hover {
+  stroke-width : 3;
+  stroke : #FFCC33;
+}
+
+.bluebox  {
+  fill : rgb(91, 91, 165);
+  stroke : rgb(91, 91, 165);
+}
+
+.purplebox  {
+  fill : #a55ba5;
+  stroke : #a55ba5;
+  z-index: -500;
+}
+
+.calbox  {
+  fill : #805ba5;
+  stroke : #805ba5;
+  z-index: -500;
+}
+
+.blueboxh  {
+  fill : #e6eeff;
+  stroke-width : 3;
+  stroke : #FFCC33;
+  fill-opacity : 0.5;
+}
+
+/* ---------- Labels CSS ----------*/
+.loopLabels {
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 170%;
+  z-index: 500;
+  font-weight: 600;
+}
+
+.loopLabels:hover .box {
+  stroke-width : 3;
+  stroke : #FFCC33;
+}
+
+
+.midlabel {
+  font-size: 150%;
+}
+
+.arrayPos {
+  z-index: 500;
+}
+
+.arrayPurplePos {
+  z-index: 600;
+}
