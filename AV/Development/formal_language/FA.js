@@ -935,6 +935,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	var convertToDFA = function() {
 		localStorage['convertNFA'] = true;
 		localStorage['toConvert'] = serialize(g);
+		//window.open("./NFAtoDFA.html", "popupWindow", "width=830, height=800, scrollbars=yes");
 		window.open("./NFAtoDFA.html");
 	};
 
@@ -1080,10 +1081,19 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	}
 
 	function savePDF(){
-		let doc = new jsPDF('p','pt','a4');
+		html2canvas(document.querySelector("#av")).then(canvas => {
+    		/*var imgData = canvas.toDataURL(
+            'image/png');              
+	        var doc = new jsPDF('p', 'mm');
+	        doc.addImage(imgData, 'PNG', 10, 10);
+	        doc.save('sample-file.pdf');*/
+	        var a = document.createElement('a');
+	        // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
+	        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+	        a.download = 'image.jpg';
+	        a.click();
 
-		doc.addHTML(document.body,function() {
-		    doc.save('html.pdf');
+
 		});
 			  //Get svg markup as string
 	  /*var svg = $('div.jsavgraph.jsavfiniteautomaton.jsavautoresize.jsavcenter');

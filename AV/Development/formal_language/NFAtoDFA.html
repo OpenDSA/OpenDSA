@@ -8,6 +8,11 @@
 			<link rel="stylesheet" href="./css/FA.css" type="text/css" />
 			<link rel="stylesheet" href="./css/tester.css" type="text/css" />
 			<link rel="stylesheet" href="./css/NFAtoDFA.css" type="text/css" />
+
+			<!-- JQuery to add reesizable-->
+			<!-- <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  			<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+			<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
 		<style>
 			#av {
       			text-align: center;
@@ -34,9 +39,9 @@
 	<body>
 		<div id="container">	
 		<div id="av">
-			<h1>Convert NFA to DFA</h1>
+			<!-- <h1>Convert NFA to DFA</h1>
 			<a class="jsavsettings" href="#">Settings</a>
-			<p style="font-size: 30px">&Sigma;: <span id='alphabet'></span></p>
+			<p style="font-size: 30px">&Sigma;: <span id='alphabet'></span></p> -->
 			<button type="button" id="completeButton">Complete</button>
 			<button type="button" id="checkDone">Done?</button>
 			<button type="button" id="exportButton">Export</button>
@@ -67,5 +72,11 @@
 		<script src="./resources/underscore-min.js"></script>
 		<script src="./fa/FA.js"></script>
 		<script src="./NFAtoDFA.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+			   $('#reference').resizable({ ghost: true });
+				$('#editable').resizable({ ghost: true });
+			});
+		</script>
    	</body>
   </html>
