@@ -45,11 +45,11 @@ $(document).ready(function() {
                 });
                 for (var i = 0; i <= consoleIndex; i++) {
                   it2_consoleLabels[i].css({
-                    top: it2_consoleY[consoleIndex] + (it2_consoleGap * i)
+                    top: it2_consoleY[consoleIndex - i]
                   });
                   it2_consoleLabels[i].show();
                 }
-                it2_consoleY -= 30;
+
                 setTimeout(function() {
                   list[1].removeClass(effectName, {
                     record: false
@@ -238,7 +238,7 @@ $(document).ready(function() {
   it2_consoleLabelX = consoleX + 20;
   it2_consoleLabelY = consoleY + 183;
   it2_consoleY = [it2_consoleLabelY];
-  for(var i = 1; i < 5; i++){
+  for (var i = 1; i < 5; i++) {
     it2_consoleY[i] = it2_consoleY[i - 1] - 30;
   }
   var it2_consoleYCopy = it2_consoleY;
