@@ -152,7 +152,7 @@ $(document).ready(function() {
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  av.animation(topblue, 150, "blueboxh");
+  av.animation(topblue, 500, "blueboxh");
   av.step();
 
   // Slide 4
@@ -165,7 +165,7 @@ $(document).ready(function() {
 
   // Slide 5
   av.umsg(interpret("sc5"));
-  av.animListRecursion(0, 200, midblues, 0, "blueboxh");
+  av.animListRecursion(500, 400, midblues, 0, "blueboxh");
   av.step();
 
   // Slide 6
@@ -173,7 +173,7 @@ $(document).ready(function() {
   array.css({
     left: nextleft
   });
-  av.animListRecursion(400, 200, midblues, 0, "blueboxh");
+  av.animListRecursion(400, 300, midblues, 0, "blueboxh");
   nextleft -= nodegap;
   av.step();
 
