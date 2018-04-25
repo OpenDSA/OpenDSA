@@ -113,20 +113,8 @@ Top-down Parser:
 
 * Examples: Shift-reduce, Operator-Precedence, LR Parser
 
-When the grammar has a :math:`\lambda`-rule, it 
-can be difficult to compute parse tables.
-In the example above, :math:`A` can disappear
-(due to :math:`A \rightarrow \lambda`), 
-so when :math:`S` is on the stack, it can be replaced by :math:`Ac` if
-either "a" or "c" are the lookahead or it can be replaced by
-:math:`Bc` if "b" is the lookahead. 
-
 We will use the following functions FIRST and FOLLOW to aid in
 computing parse tables.
-
-
-The function FIRST
-~~~~~~~~~~~~~~~~~~
 
 Some notation that we will use in defining FIRST and FOLLOW. 
 
@@ -137,18 +125,17 @@ Some notation that we will use in defining FIRST and FOLLOW.
    | :math:`X_I \in (V \cup T)^+`
 
 
+The function FIRST
+~~~~~~~~~~~~~~~~~~
+
 **Definition:** :math:`\mbox{FIRST}(w) =` the set of terminals that 
 begin strings derived from :math:`w`.
-
 
    | If :math:`w \buildrel * \over \Rightarrow av` then
    |    :math:`a` is in :math:`\mbox{FIRST}(w)`
    | If :math:`w \buildrel * \over \Rightarrow \lambda` then
    |    :math:`\lambda` is in :math:`\mbox{FIRST}(w)`
 
-Example from previous grammar: :math:`\mbox{FIRST}(aAb) = \{a\}`,
-since you have :math:`aAb \Rightarrow a...b`, and
-:math:`\mbox{FIRST}(Ac) = \{a, c\}` 
 
 **To compute FIRST:**
 

@@ -144,7 +144,10 @@
       "NP/SAT_to_threeSAT": {},
       "NP/threeSAT_to_clique": {},
       "NP/independentSet_to_vertexCover": {},
-      "NP/threeSAT_to_hamiltonianCycle": {}
+      "NP/threeSAT_to_hamiltonianCycle": {},
+      "NP/threeSAT_to_hamiltonianCycle": {},
+      "NP/hamiltonianCycle_to_TSP": {},
+      "NP/NPCoping": {}
     },
     "Computability": {
       "SeniorAlgAnal/Impossible": {}
