@@ -45,7 +45,7 @@ $(document).ready(function() {
                 });
                 for (var i = 0; i <= consoleIndex; i++) {
                   it2_consoleLabels[i].css({
-                    top: it2_consoleY + (it2_consoleGap * i)
+                    top: it2_consoleY[consoleIndex] + (it2_consoleGap * i)
                   });
                   it2_consoleLabels[i].show();
                 }
@@ -237,27 +237,31 @@ $(document).ready(function() {
   // create console labels will pop up later in the slides
   it2_consoleLabelX = consoleX + 20;
   it2_consoleLabelY = consoleY + 183;
-  it2_consoleY = consoleY + 183;
+  it2_consoleY = [it2_consoleLabelY];
+  for(var i = 1; i < 5; i++){
+    it2_consoleY[i] = it2_consoleY[i - 1] - 30;
+  }
+  var it2_consoleYCopy = it2_consoleY;
   it2_consoleLabels = [];
   it2_consoleLabels[0] = av.label("4", {
     left: it2_consoleLabelX,
-    top: it2_consoleY
+    top: it2_consoleLabelY
   });
   it2_consoleLabels[1] = av.label("13", {
     left: it2_consoleLabelX,
-    top: it2_consoleY
+    top: it2_consoleLabelY
   });
   it2_consoleLabels[2] = av.label("6", {
     left: it2_consoleLabelX,
-    top: it2_consoleY
+    top: it2_consoleLabelY
   });
   it2_consoleLabels[3] = av.label("9", {
     left: it2_consoleLabelX,
-    top: it2_consoleY
+    top: it2_consoleLabelY
   });;
   it2_consoleLabels[4] = av.label("11", {
     left: it2_consoleLabelX,
-    top: it2_consoleY
+    top: it2_consoleLabelY
   });
   // ------------------------console box line -----------------------
   var consoleLineY = consoleY + 270;
@@ -268,7 +272,6 @@ $(document).ready(function() {
 
   for (var i = 0; i < it2_consoleLabels.length; i++) {
     it2_consoleLabels[i].addClass("consolelabels");
-    // it2_consoleLabels[i].addClass("smalllabel");
     it2_consoleLabels[i].hide();
   }
 
