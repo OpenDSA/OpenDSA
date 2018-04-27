@@ -240,6 +240,13 @@ of the "extra" transitions. As follows.
 
    DFA Example: Complete
 
+
+.. inlineav:: DFA_withTrapStateCON dgm
+   :links: AV/VisFormalLang/DFA/DFA_withTrapStateCON.css
+   :scripts: AV/VisFormalLang/DFA/DFA_withTrapStateCON.js
+   :align: center
+
+
 Note that there is nothing "special" about the trap state.
 
 Its a good idea to have states with meaningful names!
@@ -269,6 +276,13 @@ even number of 1's.
    :alt: Complicated DFA Example
 
    More complicated DFA Example
+
+
+.. inlineav:: EvenBinaryEvenOnesDFACON dgm
+   :links: AV/VisFormalLang/DFA/EvenBinaryEvenOnesDFACON.css
+   :scripts: AV/VisFormalLang/DFA/EvenBinaryEvenOnesDFACON.js
+   :align: center
+
 
 Determinism means that there is only one choice about what to do when
 in a given state and the machine sees a given character.

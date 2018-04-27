@@ -1,5 +1,4 @@
 document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"></script>');
-document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../AV/Development/formal_language/css/FA.css\" />");
 
 $(document).ready(function() {
   "use strict";
