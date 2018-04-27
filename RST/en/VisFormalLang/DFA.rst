@@ -88,6 +88,13 @@ DFA that accepts even binary numbers.
 
    DFA Example: Odd numbers
 
+
+.. inlineav:: EvenBinaryDFACON dgm
+   :links: AV/VisFormalLang/DFA/EvenBinaryDFACON.css
+   :scripts: AV/VisFormalLang/DFA/EvenBinaryDFACON.js
+   :align: center
+
+
 We can assign meaning to the states:
 :math:`q_0` for odd numbers, :math:`q_1` for even numbers, 
 
@@ -153,6 +160,11 @@ Pictorial Example of a trace for 100:
 
    DFA Example: Odd numbers trace
 
+
+.. inlineav:: TraceEvenBinaryDFACON ss
+   :links: AV/VisFormalLang/DFA/TraceEvenBinaryDFACON.css
+   :scripts: AV/VisFormalLang/DFA/TraceEvenBinaryDFACON.js
+   :output: show
 
 Definitions
 ~~~~~~~~~~~
