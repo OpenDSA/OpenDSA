@@ -130,17 +130,13 @@
 
    			<!-- <p class="jsavoutput jsavline"></p>
 			<br> -->
-			<div id="graphs" style="width: 700px;">
-				<div id="reference" style="float: left; height: 460px !important; width: 35% !important" class="jsavcanvas ui-widget-content"></div>
-				<div id="editable" style="float: left; height: 442 width 65%" class="jsavcanvas"></div>
-				<div id="answer" style="float: left" class="jsavcanvas"></div>
-				 <br style="clear: left;" />
+			<div id="graphs" style="width: 760px; height: 490px; overflow: auto; border: 2px;">
+				<div id="reference" style="width: 224px" class="manage_width jsavcanvas"></div>
+				<div id="editable" class="manage_width jsavcanvas"></div>
+				<div class="clear"></div>
+				<div id="answer" class="jsavcanvas"></div>
+				 
 			</div>
-
-
-
-
-
 		</div>
 		<div align="right">
 
@@ -151,6 +147,7 @@
 			<button type="button" id="removenodesbutton" class="editButton">Remove nodes</button>
 		</div>
 		</div>
+
 
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -164,24 +161,39 @@
 		<script src="./resources/underscore-min.js"></script>
 		<script src="./fa/FA.js"></script>
 		<script src="./NFAtoDFA.js"></script>
+		<style type="text/css">
+			#reference{
+			    width: 224px;
+			    height: 460px;    
+			    float: left; 
+			    padding: 3px; 
+			}
+
+			#editable{
+			    padding: 3px; 
+			    width: 400px;
+			    height: 460px ;  
+			    float: left;
+			}
+			.clear{
+			    clear:both;
+			}
+			#graphs .jsavcanvas {
+				min-width: 50px !important;
+				max-width: 329px !important;
+			}
+		</style>
 		<script type="text/javascript">
-
-			var graphWidth = $("#graphs").width();
-
-			$.widget("ui.resizable", $.ui.resizable, {
-			    _renderProxy: function() {
-			        this._super();
-			        this.helper.css({
-				    	width: this.element.outerWidth(),
-			            height: this.element.outerHeight()
-			        });
-				}
-			});
-			$( "#reference" ).resizable({
-				handles: 'e',
-		        maxWidth: 440,
-			    //ghost: true
-			    resize: function(event, ui){
+			
+			// init
+			var resize= $("#reference");
+			var containerWidth = $("#graphs").width();
+			    
+			$(resize).resizable({
+			      handles: 'e',
+			      maxWidth: 450,
+			      minWidth: 120,
+			      resize: function(event, ui){
 			          var currentWidth = ui.size.width;
 			          
 			          // this accounts for padding in the panels + 
@@ -193,9 +205,10 @@
 			          $(this).width(currentWidth);
 			          
 			          // set the content panel width
-			          $("#content").width(graphWidth - currentWidth - padding);            
+			          $("#editable").width(containerWidth - currentWidth - padding);            
 			      }
 			});
+			//document.getElementById("reference").className += " manage_width";
 			//$('#editable').resizable({ ghost: true });
 		</script>
    	</body>
