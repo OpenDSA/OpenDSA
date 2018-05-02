@@ -355,8 +355,8 @@ def get_module_map(config):
 
             module_name = module.split('/')[1] if '/' in module else module
             module_map[module_name] = {}
-            module_map[module_name]['module_item_id'] = module_obj['lms_module_item_id'] if module_obj['lms_module_item_id'] else None
-            module_map[module_name]['assignment_id'] = module_obj['lms_assignment_id'] if module_obj['lms_assignment_id'] else None
+            module_map[module_name]['module_item_id'] = module_obj['lms_module_item_id'] if 'lms_module_item_id' in module_obj else None
+            module_map[module_name]['assignment_id'] = module_obj['lms_assignment_id'] if 'lms_assignment_id' in module_obj else None
 
     return module_map
 
