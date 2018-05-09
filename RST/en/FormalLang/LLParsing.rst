@@ -142,13 +142,6 @@ The constructed NPDA:
       state = f
 
 
-   What are drawbacks? 
-
-   * for larger grammar, case statement can get quite 
-
-   Can put the case statement into a generic routine 
-
-
 LL Parse Table: 2-dimensional array
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -223,7 +216,7 @@ table.
 
    .. math::
       
-      S \rightarrow aSb
+      S \rightarrow aSb\\
       S \rightarrow c
 
       \begin{array}{l||l|l|l|l}
@@ -248,8 +241,8 @@ table.
 
    .. math::
 
-      S \rightarrow Ac \mid Bc
-      A \rightarrow aAb \mid \lambda
+      S \rightarrow Ac \mid Bc\\
+      A \rightarrow aAb \mid \lambda\\
       B \rightarrow b
 
    When the grammar has a :math:`\lambda`-rule, it 

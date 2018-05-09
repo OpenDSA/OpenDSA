@@ -88,6 +88,13 @@ DFA that accepts even binary numbers.
 
    DFA Example: Odd numbers
 
+
+.. inlineav:: EvenBinaryDFACON dgm
+   :links: AV/VisFormalLang/DFA/EvenBinaryDFACON.css
+   :scripts: AV/VisFormalLang/DFA/EvenBinaryDFACON.js
+   :align: center
+
+
 We can assign meaning to the states:
 :math:`q_0` for odd numbers, :math:`q_1` for even numbers, 
 
@@ -153,6 +160,11 @@ Pictorial Example of a trace for 100:
 
    DFA Example: Odd numbers trace
 
+
+.. inlineav:: TraceEvenBinaryDFACON ss
+   :links: AV/VisFormalLang/DFA/TraceEvenBinaryDFACON.css
+   :scripts: AV/VisFormalLang/DFA/TraceEvenBinaryDFACON.js
+   :output: show
 
 Definitions
 ~~~~~~~~~~~
@@ -228,6 +240,13 @@ of the "extra" transitions. As follows.
 
    DFA Example: Complete
 
+
+.. inlineav:: DFA_withTrapStateCON dgm
+   :links: AV/VisFormalLang/DFA/DFA_withTrapStateCON.css
+   :scripts: AV/VisFormalLang/DFA/DFA_withTrapStateCON.js
+   :align: center
+
+
 Note that there is nothing "special" about the trap state.
 
 Its a good idea to have states with meaningful names!
@@ -257,6 +276,13 @@ even number of 1's.
    :alt: Complicated DFA Example
 
    More complicated DFA Example
+
+
+.. inlineav:: EvenBinaryEvenOnesDFACON dgm
+   :links: AV/VisFormalLang/DFA/EvenBinaryEvenOnesDFACON.css
+   :scripts: AV/VisFormalLang/DFA/EvenBinaryEvenOnesDFACON.js
+   :align: center
+
 
 Determinism means that there is only one choice about what to do when
 in a given state and the machine sees a given character.

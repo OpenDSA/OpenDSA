@@ -67,22 +67,22 @@ Here is implementation for the DFS-based algorithm.
    :tag: TopsortDFS
 
 .. inlineav:: topSort ss
-    :long_name: TopSort Slideshow
-    :links: AV/Ivan/topSort.css
-    :scripts: AV/Ivan/topSort.js
-    :output: show
+   :long_name: TopSort Slideshow
+   :links: AV/Ivan/topSort.css
+   :scripts: AV/Ivan/topSort.js
+   :output: show
 
 .. inlineav:: qTopSort ss
-    :long_name: qTopSort Slideshow
-    :links: AV/Ivan/qTopSort.css
-    :scripts: AV/Ivan/qTopSort.js
-    :output: show
+   :long_name: qTopSort Slideshow
+   :links: AV/Ivan/qTopSort.css
+   :scripts: AV/Ivan/qTopSort.js
+   :output: show
 
 .. avembed:: AV/Ivan/topSortAV.html pe
-    :long_name: topSortAV
+   :long_name: topSortAV
 
 .. avembed:: AV/Ivan/qTopSortAV.html pe
-    :long_name: qTopSortAV
+   :long_name: qTopSortAV
 
 .. TODO::
    :type: Slideshow

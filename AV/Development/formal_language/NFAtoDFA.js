@@ -210,11 +210,13 @@
 		}
 	}
 
+	initGraph();
+	//$('#reference').resizable({ ghost: true });
 	$('#conversionButton').click(conversionMode);
 	$('#removenodesbutton').click(removeNodesMode);
 	$('#completeButton').click(complete);
 	$('#exportButton').click(exportToFA);
 	$('#checkDone').click(checkDone);
 	$('#exportButton').hide();
-	initGraph();
+
 }(jQuery));

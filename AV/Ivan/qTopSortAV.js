@@ -18,14 +18,14 @@ function runit() {
   ODSA.AV.reset(true);
   jsav = new JSAV($('.avcontainer'));
   //g = jsav.ds.graph({width: 500, height: 500, left: 0, top: 50, layout: "manual", directed: true});
-  queue = jsav.ds.array(["<b>Queue</b>","","","","","","","",""],  {left: 350, top: 200});
-  var data = ["<b>&nbsp;Nodes&nbsp;</b>", "&nbsp;2505&nbsp;","&nbsp;2114&nbsp;","&nbsp;3604&nbsp;","&nbsp;3304&nbsp;","&nbsp;1114&nbsp;","&nbsp;2506&nbsp;","&nbsp;3114&nbsp;","&nbsp;3214&nbsp;"];
-  Courses = new jsav.ds.array(data,{left:350,top:50});
-  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>","","","","","","","",""],{left:350,top:98});
+  queue = jsav.ds.array(["<b>Queue</b>","","","","",""],  {left: 440, top: 200});
+  var data = ["<b>&nbsp;Nodes&nbsp;</b>", "&nbsp;A&nbsp;","&nbsp;B&nbsp;","&nbsp;C&nbsp;","&nbsp;D&nbsp;","&nbsp;E&nbsp;"];
+  Courses = new jsav.ds.array(data,{left: 440,top:50});
+  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>","","","","",""],{left: 440,top:98});
   Ecount.css(0,{width:52,"background-color":"#CC6633"});
   Courses.css(0,{width:52,"background-color":"#CC6633"});
   queue.css(0,{width:52,"background-color":"#CC6633"});
-  oparr = jsav.ds.array(["<b>Output</b>","","","","","","","",""],  {left: 350, top: 310});
+  oparr = jsav.ds.array(["<b>Output</b>","","","","",""],  {left: 440, top: 300});
   oparr.css(0,{width:52,"background-color":"#CC6633"});
   oparrcnt=1;
   initGraph();
@@ -51,18 +51,26 @@ function runit() {
   jsav.step();
   jsav.displayInit();
   topSortBFS(g.nodes()[0]);
-  jsav.umsg("Possible ordering of CS coures:  " + displaySort());
+  jsav.umsg("Possible ordering of Nodes:  " + displaySort());
   jsav.step();
   jsav.recorded();
 }
 
 function displaySort() {
+
   var str = "";
   var opnode;
-  while(output.length > 0) {
-    opnode=output.shift();
-    str += "CS-" + opnode+ "   ";
+  if (output.length == 0) {
+    str = "There are no possible traversals on this graph."
+    return str;
   }
+  while(output.length > 1) {
+    opnode=output.shift();
+    str += opnode;
+    str += ",   ";
+  }
+  opnode=output.shift();
+  str += opnode;
   return str;
 }
 
@@ -169,14 +177,14 @@ function about() {
 
 function initGraph() {
   g = jsav.ds.graph({
-  width: 300,
-  height: 300,
+  width: 350,
+  height: 325,
   left: 0,
   top: 50,
   layout: "automatic",
   directed: true
     });
-  graphUtils.generate(g); // Randomly generate the graph without weights
+  graphUtils.generateTree(g);
   return g;
 }
 

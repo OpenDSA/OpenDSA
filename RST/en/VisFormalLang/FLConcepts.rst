@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :author: Mostafa Mohammed, Susan Rodger and Cliff Shaffer
    :requires: FL Introduction
    :satisfies: FL Concepts
    :topic: Formal Languages Concepts

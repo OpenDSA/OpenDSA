@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "sc1": "This animation includes a list of numbers: 4, 13, 6, 9, 11. The iteration will process all the numbers in this list, one number at a time. While this example has five numbers, an iteration will generally work for any length of list.",
       "sc2": "An iteration has an \"iteration variable\". In this example the iteration variable is named \"price\". The iteration variable changes its value, taking on a different value from the list on each step of the iteration.",

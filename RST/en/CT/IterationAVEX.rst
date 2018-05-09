@@ -27,12 +27,6 @@ List Iteration
    :scripts: AV/CT/iteration2CON.js
    :output: show
 
-.. inlineav:: iteration2copyCON ss
-   :long_name: Iteration Second Slide Version 2
-   :links: AV/CT/iterationCON.css
-   :scripts: AV/CT/iteration2copyCON.js
-   :output: show
-
 .. inlineav:: iteration3CON ss
    :long_name: Iteration Third Slide
    :links: AV/CT/iterationCON.css
@@ -45,8 +39,8 @@ List Iteration
    :scripts: AV/CT/iteration4CON.js
    :output: show
 
-.. avembed:: Exercises/CT/IterationEX1PRO.html ka
+.. avembed:: Exercises/CT/IterationStateEXPRO.html ka
    :long_name: Iteration Khan Exercise
 
-.. avembed:: AV/CT/iterationEXPRO.html pe
+.. avembed:: Exercises/CT/iterationEXPRO.html pe
    :long_name: Iteration Exercise JSAV

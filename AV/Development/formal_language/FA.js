@@ -150,7 +150,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			executeAddNode(g, e.pageY, e.pageX);
 		}
 		else if ($(".jsavgraph").hasClass("addNodes") && $(".jsavgraph").hasClass("addTrapState")) {
-			// If in "Add Nodes" mode, save the graph and add a node.
+			// If in "Add Nodes" and "trap state" mode, save the graph and add a node.
 			g.saveFAState();
 			var node = executeAddNode(g, e.pageY, e.pageX);
 			g.saveFAState();
@@ -310,6 +310,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		highlight_select_button();
 		removeModeClasses();
 		removeND();
+		moveNodes();
 		$('.jsavgraph').addClass('editNodes');
 		jsav.umsg('Click a node or edge label.');
 		$('#editButton').addClass("active");
@@ -934,6 +935,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	var convertToDFA = function() {
 		localStorage['convertNFA'] = true;
 		localStorage['toConvert'] = serialize(g);
+		//window.open("./NFAtoDFA.html", "popupWindow", "width=830, height=800, scrollbars=yes");
 		window.open("./NFAtoDFA.html");
 	};
 
@@ -1078,6 +1080,56 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		jsav.umsg("click to add trap state");
 	}
 
+	function savePDF(){
+		html2canvas(document.querySelector("#av")).then(canvas => {
+    		/*var imgData = canvas.toDataURL(
+            'image/png');              
+	        var doc = new jsPDF('p', 'mm');
+	        doc.addImage(imgData, 'PNG', 10, 10);
+	        doc.save('sample-file.pdf');*/
+	        var a = document.createElement('a');
+	        // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
+	        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+	        a.download = 'image.jpg';
+	        a.click();
+
+
+		});
+			  //Get svg markup as string
+	  /*var svg = $('div.jsavgraph.jsavfiniteautomaton.jsavautoresize.jsavcenter');
+	  var svg = svg.html();
+	  var svg1 = svg.innerHTML;
+	  if (svg){
+	    svg = svg.replace(/\r?\n|\r/g, '').trim();
+		}
+
+	  var canvas = document.createElement('canvas');
+	  var context = canvas.getContext('2d');
+
+	  context.clearRect(0, 0, canvas.width, canvas.height);
+	  canvg(canvas, svg);
+
+
+	  var imgData = canvas.toDataURL('image/png');
+
+	  // Generate PDF
+	  var doc = new jsPDF('p', 'pt', 'a4');
+	  doc.addImage(imgData, 'PNG', 40, 40, 75, 75);
+	  doc.save('test.pdf');*/
+		/*var doc = new jsPDF();
+		var specialElementHandlers = {
+		    '#editor': function (element, renderer) {
+		        return true;
+		    }
+		};
+		var ht = $('svg').html();
+		doc.fromHTML(ht, 150, 150, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+	    });
+	    doc.save('sample-file.pdf');*/
+	}
+
 	function highlight_select_button(){
 		// Add active class to the current button (highlight it)
 		/*var header = document.getElementById("menu_options");
@@ -1099,6 +1151,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	// Button click handlers.
 	$('#trapState').click(addTrapState);
 	$('#saveButton').click(saveXML);
+	$('#savePDF').click(savePDF);
 	$("#finish").click(finishExercise);
 	$('#loadFile').change(loadXML);
 	$('#cancelButton').click(cancel);

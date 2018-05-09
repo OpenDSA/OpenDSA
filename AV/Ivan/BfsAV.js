@@ -6,7 +6,8 @@
   var jsav;
   var firstElement;
   var lastElement;
-  var markcount =0;
+  var markCount;
+  var nodeCount;
 
 
   function undir() {
@@ -33,6 +34,8 @@
  arr = jsav.ds.array(["","","","","","",""],  {layout: "vertical", left: 570, top: 50, width: 60});
  firstElement = 0;
  lastElement = 0;
+ markCount = 0;
+ nodeCount = g.nodeCount();
  g.layout();
  jsav.umsg("Let's look at the details of how a breadth-first seach works.");
  jsav.displayInit();
@@ -51,8 +54,8 @@ function markIt(node) {
   jsav.umsg("Mark and enqueue " + node.value());
   arr.value(lastElement, node.value());
   lastElement++;
+  markCount++;
   node.highlight();
-  markcount++;
 }
 
 function dequeueIt(node) {
@@ -73,7 +76,7 @@ function bfs(start) {
 
  while(q.length > 0) {
     node = q.shift();
-      dequeueIt(node);
+    dequeueIt(node);
     console.log("node " + node.value());
     adjNode = node.neighbors();
     console.log("adjNode " + adjNode.length);
@@ -136,13 +139,18 @@ function finalGraph() {
 }
 
 function dirfinalGraph() {
-  jsav.umsg("Completed breadth first search graph");
 
-  if (markcount < g.nodeCount()) {
-  jsav.step();
+  if (markCount < nodeCount) {
+    jsav.umsg("Completed breadth first search graph");
+    jsav.step();
   jsav.umsg("Note that this traversal did not reach all of the nodes, due to the directions on the edges making some nodes unreachable from A."
    + "This is why BFS is typically done in the context of starting the traversal from every node.");
   }
+
+  else {
+    jsav.umsg("Completed breadth first search graph");
+  }
+
 }
 
 

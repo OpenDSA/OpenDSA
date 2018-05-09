@@ -1,15 +1,15 @@
 //variable xPosition controls the horizontal position of the visualization
 
-document.write('<script src="../../../AV/FLA/summer2017/fa/serializableGraph.js"></script>');
-document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
-document.write('<script src="../../../AV/FLA/resources/Commands.js"></script>');
+//document.write('<script src="../../../AV/FLA/summer2017/fa/serializableGraph.js"></script>');
+//document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
+//document.write('<script src="../../../AV/FLA/resources/Commands.js"></script>');
 document.write('<script src="../../../AV/FLA/summer2017/fa/FA.js"></script>');
-document.write('<script src="../../../AV/FLA/summer2017/fa/TuringMachine.js"></script>');
+//document.write('<script src="../../../AV/FLA/summer2017/fa/TuringMachine.js"></script>');
 //document.write('<script src="./CustomPrompt.js"></script>');
-document.write('<script src="../../../AV/FLA/summer2017/fa/Commands.js"></script>');
-document.write('<script src="../../../AV/FLA/summer2017/fa/TraverseAccepter.js"></script>');
-document.write('<script src="../../../AV/FLA/summer2017/regular/FAtoREController.js"></script>');
-document.write('<script src="../../../AV/FLA/summer2017/exerController/ExerciseController.js"></script>');
+//document.write('<script src="../../../AV/FLA/summer2017/fa/Commands.js"></script>');
+//document.write('<script src="../../../AV/FLA/summer2017/fa/TraverseAccepter.js"></script>');
+//document.write('<script src="../../../AV/FLA/summer2017/regular/FAtoREController.js"></script>');
+//document.write('<script src="../../../AV/FLA/summer2017/exerController/ExerciseController.js"></script>');
 //document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../AV/FLA/summer2017/ui/css/FA.css\" />");
 //document.write('<script src="../../../AV/FLA/FDA.js"></script>');
 

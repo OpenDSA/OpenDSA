@@ -1,10 +1,10 @@
 {
   "translations": {
     "en": {
-      "sc1": "This animation shows the steps of an algorithm to add together and print the values in a list. This animation is an example of the accumulate pattern. In this problem we take the values in the list to be the price of items being purchased. ",
-      "sc2": "The state for this algorithm has two variables. The iteration variable is named price and the variable total will be used to accumulate the sum of the values.",
-      "sc3": "The first step is to select an appropriate initial value for the variable total that will be used to add together the values in the list. Because addition is being performed, an appropriate initial value is 0 (zero).",
-      "sc4": "Zero is an appropriate initialization because the value 0 reflects the sum before we have added any of the list values to the total. Next, the value zero is assigned as the initial value of the variable total. Notice that the state correctly shows the result of this assignment.",
+      "sc1": "This animation shows the steps of an algorithm to add together and print the values in a list. This animation is an example of the accumulate pattern. The values in the list to be the price of items being purchased. ",
+      "sc2": "The state for this algorithm has four variables: price is the iteration variable, total accumulates the values in the list, count accumulates the number of items in the list, and average.",
+      "sc3": "The count variable is assigned the initial value of 0 (zero) so that the first update of count in the iteration is correct. Notice that the state shows the result of this assignment.",
+      "sc4": "The total variable is assigned the initial value of 0 (zero) so that the first update of count in the iteration is correct. Notice that the state shows the result of this assignment.",
       "sc5": "On the first step of the iteration the iteration variable price is assigned the value of the first element of the list (4). Notice that this value is shown in the state.",
       "sc6": "The calculation inside the iteration first computes the sum of the current values of the two variables total (0) and price(4). Notice that the current values are those shown in the state. On this step the calculation will add 0 and 4 resulting in the value 4.",
       "sc7": "Also notice the importance of the initialization of the variable total to 0 (zero) before the beginning of the iteration. This initialization makes the calculation of \"total + price\" meaningful on the first step of the iteration.",

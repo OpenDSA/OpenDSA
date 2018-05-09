@@ -1,0 +1,12 @@
+{
+	"translations": {
+		"en": {
+			".avTitle": "Iteration Exercise",
+			"av_Authors": "Jieun Chon",
+			".instructLabel": "Instructions:",
+			".instructions": "This is instructions for iteration exercise.",
+			"#help": "Help",
+			"#about": "About"
+		}
+	}
+}

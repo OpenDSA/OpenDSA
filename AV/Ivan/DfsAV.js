@@ -6,17 +6,17 @@
   var arr;
   var size;
   var jsav;
-  var markcount = 0;
+  var markCount;
+  var nodeCount;
 
   function dir() {
     ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
     dirGraph();
-    //arr = jsav.ds.array([g.nodeCount()],  {left: 700, top: 50, layout: "vertical", width: "30px"});
     arr = jsav.ds.array(["","","","","","","",""],  {layout: "vertical", left: 640, top: 0, width: 60});
-
+    markCount =0;
     size = g.nodeCount();
-
+    nodeCount = g.nodeCount();
     g.layout();
     jsav.displayInit();
     jsav.umsg("Let's look at the details of how a depth-first seach works.");
@@ -31,11 +31,8 @@
     ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
     undirGraph();
-    //arr = jsav.ds.array([g.nodeCount()],  {left: 700, top: 50, layout: "vertical", width: "30px"});
     arr = jsav.ds.array(["","","","","","","",""],  {layout: "vertical", left: 640, top: 0, width: 60});
-
     size = g.nodeCount();
-
     g.layout();
     jsav.displayInit();
     jsav.umsg("Let's look at the details of how a depth-first seach works.");
@@ -79,11 +76,7 @@ function preVisit(node, prev) {
   arr.value(size, node.value());
   size--;
   if (prev) {
-    node.edgeFrom(prev).addClass("dirmarkpath");
-    //g.removeEdge(node, prev);
-    //node.edgeFrom(prev).css({"stroke": "red", "stroke-width": "3", "stroke-height": "1"});
-    //g.addEdge(prev, node, {weight: 10});
-    //node.edgeFrom(prev).css({"stroke-width": "3", "stroke": "red"});
+    node.edgeFrom(prev).addClass("markpath");
     }
   jsav.step();
 }
@@ -93,8 +86,8 @@ function preVisit(node, prev) {
 function markIt(node) {
   node.addClass("marked");
   jsav.umsg("Mark node " + node.value());
+  markCount++;
   node.highlight();
-  markcount++;
   jsav.step();
 }
 
@@ -133,13 +126,18 @@ function dfs(start, prev) {
 
 // Resulting graph of completed depth first search
 function dirfinalGraph() {
-  jsav.umsg("Completed depth first search graph");
 
-  if (markcount < g.nodeCount()) {
-  jsav.step();
+  if (markCount < nodeCount) {
+    jsav.umsg("Completed breadth first search graph");
+    jsav.step();
   jsav.umsg("Note that this traversal did not reach all of the nodes, due to the directions on the edges making some nodes unreachable from A."
-   + "This is why DFS is typically done in the context of starting the traversal from every node.");
+   + "This is why BFS is typically done in the context of starting the traversal from every node.");
   }
+
+  else {
+    jsav.umsg("Completed breadth first search graph");
+  }
+
 }
 
 function finalGraph() {

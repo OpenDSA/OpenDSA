@@ -2,7 +2,7 @@
   "translations": {
     "en": {
       "sc1": "This animation shows that the iteration variable, price, is part of the state. Remember that the state shows only the current value a variable.",
-      "sc2": "The animation also shows the console where values are displayed due to a print statement. The console is like an old-fashion type writer where the information displayed by the console scrolls upward each time new information is printed.",
+      "sc2": "The animation also shows the console where values made visible to the user due to a print statement. The console is like an old-fashion type writer where the information displayed by the console scrolls upward each time new information is printed.",
       "sc3": "Any blocks(s) before the iteration are executed. The blinking (or flashing) is meant to indicate that  a block is executed.",
       "sc4": "On the first step of the iteration, the iteration variable, price, takes on the value of the first element of the list. Notice that the value of price is shown in the state.",
       "sc5": "When the body of the iteration is executed the print statement causes the current value of the variable price, the number 4, to be displayed in the console.",
