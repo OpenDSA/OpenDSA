@@ -62,48 +62,48 @@
   }, 
   "chapters": {
     "Week 1": {
-      "CS3Slides/Intro": {}
+      "CS3slides/Intro": {}
     },
     "Week 2": {
-      "CS3Slides/AlgAnal": {}
+      "CS3slides/AlgAnal": {}
     },
     "Week 3": {
-      "CS3Slides/Lists": {},
-      "CS3Slides/Binary": {}
+      "CS3slides/Lists": {},
+      "CS3slides/Binary": {}
     },
     "Week 4": {
-      "CS3Slides/Binary2": {},
-      "CS3Slides/Binary3": {}
+      "CS3slides/Binary2": {},
+      "CS3slides/Binary3": {}
     },
     "Week 5": {
-      "CS3Slides/Heaps": {}
+      "CS3slides/Heaps": {}
     },
     "Week 6": {
-      "CS3Slides/Huffman": {}
+      "CS3slides/Huffman": {}
     },
     "Week 7-8": {
-      "CS3Slides/Sorting1": {},
-      "CS3Slides/Sorting2": {}
+      "CS3slides/Sorting1": {},
+      "CS3slides/Sorting2": {}
     },
     "Week 8-9": {
-      "CS3Slides/FileProc": {}
+      "CS3slides/FileProc": {}
     },
     "Week 10": {
-      "CS3Slides/Hashing": {},
-      "CS3Slides/MemManage": {}
+      "CS3slides/Hashing": {},
+      "CS3slides/MemManage": {}
     },
     "Week 11": {
-      "CS3Slides/Union-Find": {}
+      "CS3slides/Union-Find": {}
     },
     "Week 12": {
-      "CS3Slides/Graphs": {}
+      "CS3slides/Graphs": {}
     },
     "Week 13": {
-      "CS3Slides/Indexing": {},
-      "CS3Slides/23Tree": {}
+      "CS3slides/Indexing": {},
+      "CS3slides/23Tree": {}
     },
     "Week 14": {
-      "CS3Slides/General": {}
+      "CS3slides/General": {}
     }
   }
 }

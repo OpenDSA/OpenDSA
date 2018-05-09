@@ -756,7 +756,7 @@ class ODSA_RST_Module:
       missing_sections = list(set(mod_sections) - set(processed_sections))
 
       for section in missing_sections:
-        print_err('%sWARNING: Section "%s" not found in module' % (console_msg_prefix, section))
+        print_err('%sWARNING: Section "%s" not found in module "%s"' % (console_msg_prefix, section, mod_path))
 
       # TODO: Should we print the missing exercises with each module or at the end like we do now?
 
