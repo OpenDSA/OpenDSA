@@ -21,7 +21,8 @@
     initialArray = [1, 2, 3, 4], // dummy array
     nodegap,
     nextleft,
-    count;
+    count,
+    currHighlighted = -1;
 
   jsav.recorded();
 
@@ -34,6 +35,15 @@
     if (jsavArray) {
       jsavArray.clear();
     }
+
+    // If ther user clicked the reset, then reset the iteration array.
+    if (iteration_array) {
+      iteration_array.clear();
+    }
+
+    // initialize jsavArray and make it invisible. This array is used only for grading purpose
+    jsavArray = jsav.ds.array(initialArray);
+    jsavArray.hide();
 
     var leftMargin = 250,
       rect_left = leftMargin - 150,
@@ -83,13 +93,13 @@
 
     // ---------------clickerbale boxes-----------------------
     box1 = jsav.g.rect(rect_left, top, 280, 35, 10).addClass("box");
-    // box1.click(clickHandler1);
+    box1.click(clickHandler1);
     box2 = jsav.g.rect(rect_left, purple_top, 350, 106, 10).addClass("box");
-    // box2.click(clickHandler2);
+    box2.click(clickHandler2);
     box3 = jsav.g.rect(rect_left, purple_top + 105, 360, 145, 10).addClass("box");
-    // box3.click(clickHandler3);
+    box3.click(clickHandler3);
     box4 = jsav.g.rect(rect_left, top + 295, 280, 35, 10).addClass("box");
-    // box4.click(clickHandler4);
+    box4.click(clickHandler4);
 
     // ---------------loop -labels-----------------------
     var label1 = jsav.label("for each item", {
@@ -112,22 +122,6 @@
     return jsavArray;
   }
 
-  function fixState(modelGraph) {
-    // var graphEdges = graph.edges(),
-    //     modelEdges = modelGraph.edges();
-    //
-    // // compare the edges between exercise and model
-    // for (var i = 0; i < graphEdges.length; i++) {
-    //   var edge = graphEdges[i],
-    //       modelEdge = modelEdges[i];
-    //   if (modelEdge.hasClass("marked") && !edge.hasClass("marked")) {
-    //     // mark the edge that is marked in the model, but not in the exercise
-    //     markEdge(edge);
-    //     break;
-    //   }
-    // }
-  }
-
   function model(modeljsav) {
     var i;
     // create the model
@@ -137,29 +131,6 @@
       layout: "automatic",
       directed: false
     });
-
-    // // copy the graph and its weights
-    // graphUtils.copy(graph, modelGraph, {weights: true});
-    // var modelNodes = modelGraph.nodes();
-    //
-    // // Mark the 'A' node
-    // modelNodes[0].addClass("marked");
-    //
-    // modeljsav.displayInit();
-    //
-    // // start the algorithm
-    // dfs(modelNodes[0], modeljsav);
-    //
-    // modeljsav.umsg(interpret("av_ms_final"));
-    // // hide all edges that are not part of the search tree
-    // var modelEdges = modelGraph.edges();
-    // for (i = 0; i < modelGraph.edges().length; i++) {
-    //   if (!modelEdges[i].hasClass("marked")) {
-    //     modelEdges[i].hide();
-    //   }
-    // }
-    //
-    // modeljsav.step();
 
     return modelGraph;
   }
@@ -178,5 +149,53 @@
   exercise.reset();
 
   $("#about").click(about);
+
+  function clickHandler1() {
+    if (currHighlighted !== -1) {
+      jsavArray.unhighlight(currHighlighted);
+    }
+    this.addClass("blueboxh");
+    this.removeClass("blueboxh");
+    currHighlighted = 0;
+    jsavArray.highlight(0);
+    exercise.gradeableStep();
+  }
+
+  function clickHandler2() {
+    if (currHighlighted !== -1) {
+      jsavArray.unhighlight(currHighlighted);
+    }
+    this.addClass("blueboxh");
+    this.removeClass("blueboxh");
+    iteration_array.css({
+      left: nextleft
+    }); //move array
+    nextleft -= nodegap;
+    currHighlighted = 1;
+    jsavArray.highlight(1);
+    exercise.gradeableStep();
+  }
+
+  function clickHandler3() {
+    if (currHighlighted !== -1) {
+      jsavArray.unhighlight(currHighlighted);
+    }
+    this.addClass("blueboxh");
+    this.removeClass("blueboxh");
+    currHighlighted = 2;
+    jsavArray.highlight(2);
+    exercise.gradeableStep();
+  }
+
+  function clickHandler4() {
+    if (currHighlighted !== -1) {
+      jsavArray.unhighlight(currHighlighted);
+    }
+    this.addClass("blueboxh");
+    this.removeClass("blueboxh");
+    currHighlighted = 3;
+    jsavArray.highlight(3);
+    exercise.gradeableStep();
+  }
 
 }(jQuery));
