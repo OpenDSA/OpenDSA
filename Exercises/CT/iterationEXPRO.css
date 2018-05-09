@@ -1,15 +1,12 @@
-#jsavcontainer {
-  width: 500px;
-  height: 500px;
-  border-color: #b6c0b2;
-  background-color: #e2eedd;
-  border-radius: 10px;
-  padding: 40px;
+#container {
+  width: 600px;
+  height: 595px;
+}
+.jsavline {
+  height: 45px;
+  margin: 0 0 0 20px;
 }
 
-p.jsavoutput.jsavline {
-  height: 40px;
-}
 .jsavscore {
   text-align: center;
 }
@@ -25,6 +22,10 @@ p.jsavoutput.jsavline {
 .jsavcontainer {
   overflow: visible;
 }
+
+/*.procontrols {
+  text-align: center;
+}*/
 
 /* ---------- JSAV CSS ----------*/
 .jsavhorizontalarray .jsavnode {
