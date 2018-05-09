@@ -1,48 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Simple JSAV Proficiency Exercise Example</title>
-<meta charset="utf-8" />
-<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-<link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
-<link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-<link rel="stylesheet" href="iterationEXPRO.css" type="text/css" />
-</head>
-
-<body data-width="600" data-height="625">
-  <div id="jsavcontainer">
-    <table class="proHeaderTable">
-      <tr>
-        <td class="headerLeft">
-          <input type="button" id="help" name="help" value="help"/>
-        </td>
-        <td class="headerCenter">
-          <p class="jsavexercisecontrols"z></p>
-        </td>
-        <td class="headerRight">
-          <input type="button" id="about" name="about" value="about"/>
-          <a id="settings" class="jsavsettings" href="#"></a>
-        </td>
-      </tr>
-    </table>
-
-    <form class="avcontainer">
-      <p class="instructLabel"></p>
-      <p class="instructions"></p>
-      <p><span class="jsavscore"></span></p>
-      <p class="jsavoutput jsavline"></p>
-      <div id="arrays" class="jsavcanvas"></div>
-    </form>
-  </div> <!-- jsavcontainer -->
-
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transit.js"></script> <!-- always first -->
-  <script src="../../JSAV/lib/raphael.js"></script> <!-- before JSAV -->
-  <script src="../../JSAV/build/JSAV.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <script src="../../lib/odsaUtils-min.js"></script>
-  <script src="../../lib/odsaAV-min.js"></script>
-  <script src="graphDFSPE.js"></script>
-</body>
+  <head>
+    <title>Depth First Search Algorithm Proficiency Exercise</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="iterationEXPRO.css" />
+  </head>
+  <body>
+    <div id="container">
+      <table class="proHeaderTable">
+        <tr>
+          <td class="headerLeft">
+            <input type="button" id="help" name="help" value="Help" />
+          </td>
+          <td class="headerCenter">
+            <p class="jsavexercisecontrols"></p>
+          </td>
+          <td class="headerRight">
+            <input type="button" id="about" name="about" value="About" />
+            <a id="settings" class="jsavsettings" href="#">Settings</a>
+          </td>
+        </tr>
+      </table>
+      <form class="avcontainer">
+        <div class="jsavcanvas">
+          <p class="instructLabel"></p>
+          <p class="instructions"></p>
+          <p id="procontrols">
+            <span class="jsavscore"></span>
+          </p>
+        </div>
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="../../JSAV/lib/jquery.transit.js"></script>
+    <script src="../../JSAV/lib/raphael.js"></script>
+    <script src="../../JSAV/build/JSAV-min.js"></script>
+    <script src="../../DataStructures/binaryheap.js"></script>
+    <script src="../../lib/odsaUtils-min.js"></script>
+    <script src="../../lib/odsaAV-min.js"></script>
+    <script src="iterationEXPRO.js"></script>
+  </body>
 </html>

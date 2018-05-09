@@ -42,5 +42,5 @@ List Iteration
 .. avembed:: Exercises/CT/IterationStateEXPRO.html ka
    :long_name: Iteration Khan Exercise
 
-.. avembed:: Exercises/CT/graphDFSPE.html pe
-   :long_name: GRAPH COPY
+.. avembed:: Exercises/CT/iterationEXPRO.html pe
+   :long_name: Iteration JSAV Exercise

@@ -1,12 +1,16 @@
 {
-	"translations": {
-		"en": {
-			".avTitle": "Iteration Exercise",
-			"av_Authors": "Jieun Chon",
-			".instructLabel": "Instructions:",
-			".instructions": "This is instructions for iteration exercise.",
-			"#help": "Help",
-			"#about": "About"
-		}
-	}
+  "translations" :{
+    "en": {
+      ".avTitle": "Iteration Visualizaiton JSAV Exercise",
+      "av_Authors": "Jieun Chon, Cliff Shaffer, Dennis Kafura, Cory Bart",
+      ".instructLabel": "Instructions:",
+      ".instructions": "Reproduce the behavior of the Iteration Visualizaiton for the for loop below. Just click on the <strong>boxes</strong> in the order that they will be executed by the for loop. Start with blue box on the top.",
+      "#help": "Help",
+      "#about": "About"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "fix"
+  }
 }
