@@ -21,7 +21,8 @@
     initialArray = [1, 2, 3, 4], // dummy array
     nodegap,
     nextleft,
-    count,
+    count = 0,
+    order = [1],
     currHighlighted = -1;
 
   jsav.recorded();
@@ -31,6 +32,16 @@
     for (var i = 0; i < len; i++) {
       arrValues[i] = Math.floor(Math.random() * 25) + 1;
     }
+
+    // create box click order
+    var index = 1;
+    for(var i = 0; i < len; i++){
+      order[index] = 2;
+      order[index + 1] = 3;
+      index += 2;
+    }
+    order[index++] = 2;
+    order[index] = 4;
 
     if (jsavArray) {
       jsavArray.clear();
@@ -272,6 +283,9 @@
     this.removeClass("blueboxh");
     currHighlighted = 0;
     jsavArray.highlight(0);
+    if(order[count] == 1){
+      count++;
+    }
     exercise.gradeableStep();
   }
 
@@ -281,10 +295,13 @@
     }
     this.addClass("blueboxh");
     this.removeClass("blueboxh");
-    iteration_array.css({
-      left: nextleft
-    }); //move array
-    nextleft -= nodegap;
+    if(order[count] == 2){
+      iteration_array.css({
+        left: nextleft
+      }); //move array
+      nextleft -= nodegap;
+      count++;
+    }
     currHighlighted = 1;
     jsavArray.highlight(1);
     exercise.gradeableStep();
@@ -296,6 +313,9 @@
     }
     this.addClass("blueboxh");
     this.removeClass("blueboxh");
+    if(order[count] == 3){
+      count++;
+    }
     currHighlighted = 2;
     jsavArray.highlight(2);
     exercise.gradeableStep();
@@ -307,6 +327,9 @@
     }
     this.addClass("blueboxh");
     this.removeClass("blueboxh");
+    if(order[count] == 4){
+      count++;
+    }
     currHighlighted = 3;
     jsavArray.highlight(3);
     exercise.gradeableStep();

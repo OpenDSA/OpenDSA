@@ -54,7 +54,8 @@
 
     // Reinitialize the exercise.
     reset: function() {
-      position = Math.floor(Math.random() * 3) + 1;
+      var arraySize = Math.floor(Math.random() * 4) + 3;
+      position = Math.floor(Math.random() * (arraySize - 2));
 
       // Reset the value of global variables.
       iterationStateEXPRO.userInput = false;
@@ -69,7 +70,6 @@
 
 
       // --------------- Create random array ----------------
-      var arraySize = Math.floor(Math.random() * 4) + 3;
       priceAnswer = 0;
       totalAnswer = 0;
       for (var i = 0; i < arraySize; i++) { // Give random numbers in range 1..2
@@ -81,7 +81,7 @@
 
       // Previous Price and the price answer
       priceAnswer = array[position];
-      prevPrice = array[position - 1];
+      prevPrice = array[position;
 
       // Calculate Previous total and the total answre
       for (var i = 0; i <= position; i++) {
@@ -172,19 +172,6 @@
       var pricelabel = av.label("set total = total + price", {left: rect_left + 145, top: rect_top + 123});
       pricelabel.addClass("labels");
       pricelabel.addClass("smalllabel");
-
-      // var pricelabel = av.label("set total =", {left: rect_left + 140, top: rect_top + 123});
-      // pricelabel.addClass("labels");
-      // pricelabel.addClass("smalllabel");
-      //
-      // var pricelabel = av.label("total + price", {left: rect_left + 235, top: rect_top + 123});
-      // pricelabel.addClass("labels");
-      // pricelabel.addClass("smalllabel");
-      //
-      // var valuelabel = av.label("", {left: rect_left + 390, top: rect_top + 111});
-      // valuelabel.addClass("labels");
-      // valuelabel.addClass("valuelabel");
-
 
       // <<--------------- STATE BOX ----------------->>
 
