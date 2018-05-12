@@ -43,4 +43,4 @@ List Iteration
    :long_name: Iteration Khan Exercise
 
 .. avembed:: Exercises/CT/iterationEXPRO.html pe
-   :long_name: Iteration Exercise JSAV
+   :long_name: Iteration JSAV Exercise
