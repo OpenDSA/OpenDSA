@@ -11,7 +11,8 @@ $(document).ready(function () {
 
   numberofnodes = 0;
   g = jsav.ds.graph({width: 500, height: 500, left: 55, top: 20, layout: "manual", directed: true});
-  arr = jsav.ds.array(["","","","","","","",""],{left: 475, bottom: 300}).css({"font-size": "12px"});
+  arr = jsav.ds.array(["","","","","","","",""],{left: 475, bottom: 300});
+  arr.css({ "font-size": "12px"});
   size = 7;
   initGraph();
   g.layout();

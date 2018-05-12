@@ -66,27 +66,6 @@ Here is implementation for the DFS-based algorithm.
 .. codeinclude:: Graphs/TopsortDFS
    :tag: TopsortDFS
 
-.. avembed:: AV/Ivan/topSortAVs.html pe
-      :long_name: topSortAVs
-
-.. inlineav:: topSortCON ss
-   :long_name: TopSort Slideshow
-   :links: AV/Ivan/topSortCON.css
-   :scripts: AV/Ivan/topSortCON.js
-   :output: show
-
-.. inlineav:: qTopSortCON ss
-   :long_name: qTopSort Slideshow
-   :links: AV/Ivan/qTopSortCON.css
-   :scripts: AV/Ivan/qTopSortCON.js
-   :output: show
-
-.. avembed:: AV/Ivan/topSortAV.html pe
-   :long_name: topSortAV
-
-.. avembed:: AV/Ivan/qTopSortAV.html pe
-   :long_name: qTopSortAV
-
 .. TODO::
    :type: Slideshow
 
@@ -101,8 +80,12 @@ J1, J3, J2, J6, J4, J5, J7.
 
 Here is another example.
 
-.. avembed:: AV/Graph/topSort.html ss
-   :long_name: Topological Sort (DFS) visualization
+.. inlineav:: topSortCON ss
+   :long_name: TopSort Slideshow
+   :links: AV/Ivan/topSortCON.css
+   :scripts: AV/Ivan/topSortCON.js
+   :output: show
+
 
 
 Queue-based Solution
@@ -138,14 +121,21 @@ Here is the code to implement the queue-based topological sort:
 .. codeinclude:: Graphs/TopsortBFS
    :tag: TopsortBFS
 
-.. avembed:: AV/Graph/qTopSort.html ss
-   :long_name: Topological Sort (Queue) visualization
+.. inlineav:: qTopSortCON ss
+   :long_name: qTopSort Slideshow
+   :links: AV/Ivan/qTopSortCON.css
+   :scripts: AV/Ivan/qTopSortCON.js
+   :output: show
 
 .. TODO::
    :type: Proficiency Exercise
 
    Provide a proficiency exercise that randomly alternates between
    proficiency for DFS-based and queue-based Topsort.
+
+.. avembed:: AV/Ivan/topSortAVs.html pe
+   :long_name: topSortAVs
+
 
 .. TODO::
    :type: Summary Questions

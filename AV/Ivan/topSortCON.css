@@ -4,6 +4,5 @@
 }
 
 #topSortCON .jsavarray .jsavindex {
-height: 50px;
-width: 200px;
+min-width: 30px;
 }

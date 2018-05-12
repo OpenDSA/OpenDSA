@@ -90,7 +90,7 @@ function initGraph() {
   layout: "automatic",
   directed: true
     });
-  graphUtils.generateTree(g); // Randomly generate the graph without weights
+  graphUtils.generate(g); // Randomly generate the graph without weights
   return g;
 }
 
