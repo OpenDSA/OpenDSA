@@ -66,16 +66,19 @@ Here is implementation for the DFS-based algorithm.
 .. codeinclude:: Graphs/TopsortDFS
    :tag: TopsortDFS
 
-.. inlineav:: topSort ss
+.. avembed:: AV/Ivan/topSortAVs.html pe
+      :long_name: topSortAVs
+
+.. inlineav:: topSortCON ss
    :long_name: TopSort Slideshow
-   :links: AV/Ivan/topSort.css
-   :scripts: AV/Ivan/topSort.js
+   :links: AV/Ivan/topSortCON.css
+   :scripts: AV/Ivan/topSortCON.js
    :output: show
 
-.. inlineav:: qTopSort ss
+.. inlineav:: qTopSortCON ss
    :long_name: qTopSort Slideshow
-   :links: AV/Ivan/qTopSort.css
-   :scripts: AV/Ivan/qTopSort.js
+   :links: AV/Ivan/qTopSortCON.css
+   :scripts: AV/Ivan/qTopSortCON.js
    :output: show
 
 .. avembed:: AV/Ivan/topSortAV.html pe
