@@ -28,10 +28,6 @@ LL(k) Parser
 
 * Second L of LL means that we produce the leftmost derivation 
 
-  .. note::
-
-     ASK TO SEE IF THEY KNOW WHAT THIS IS 
-
 * | :math:`k`: number of lookahead symbols used.
   | Sometimes more than one symbol is needed 
 
@@ -74,10 +70,6 @@ grammar.
 If starting with the start symbol :math:`S`, one can apply replacement
 rules, match all the terminals in the input string and empty the
 stack, then the string is in the language. 
-
-.. note::
-
-   Just mention this stuff and then draw NPDA. 
 
 The constructed NPDA:
 
@@ -258,10 +250,6 @@ computing the table.
 
 To construct an LL parse table LL[rows,cols]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. note::
-
-   Refresh memory as to what parse table is. 
 
 1. For each rule :math:`A \rightarrow w`
 
@@ -499,10 +487,6 @@ To construct an LL parse table LL[rows,cols]
    a variable on top of the stack.
 
    An LL(k) parser needs :math:`k` lookahead symbols.
-
-   .. note::
-
-      Mention that LL parser doesn't work if the grammar is left recursive. 
 
 
 .. topic:: Example

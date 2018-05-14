@@ -235,6 +235,9 @@ communication between parts of a program.
 Shallow and Deep Copying
 ------------------------
 
+What does it mean to copy?
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 An important use of sharing is to enable communication between two
 functions.
 One function passes a reference to the object of interest to another
@@ -282,8 +285,56 @@ Here is an example of the difference between shallow and deep copying:
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
 
 
+Shallow and Deep Comparing
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Related to copying correctly (shallow means to copy the reference
+itself, deep means to copy the object being referenced), there are
+different levels that we might use to compare things when objects are
+involved.
+One possibility is that we just want to know if two reference
+variables are referencing the same object.
+We could do this with code like the following to see if ``ref1`` and
+``ref2`` are referring to the same object::
+
+  if (ref1 == ref2)
+
+So here, we are comparing the value of the arrows, that both are
+pointing to the same box.
+While sometimes this is worth doing, it actually is not all that
+common.
+Any use of ``==`` with reference variables should be treated with
+extra suspicion.
+
+Quite often, we want to know if the **values** of the two objects are
+the same.
+This is especially common when the objects are strings.
+We might want to know if two strings are the same, meaning they have
+the same characters in the same order, **not** whether two
+string reference variables are referencing the same string object.
+If we want to know whether the contents of two strings are the same,
+then in most languages we do **not** simple compare the two reference
+variables for equality.
+Instead, we need to do a "deep comparison" where we are looking at the
+characters in the strings themselves.
+Most languages have functions to do this for you.
+In Java, we can see if two strings are the same with the ``.equals()``
+method of the ``String`` class, like this::
+
+  if (ref1.equals(ref2))
+
+In Java, another option for comparing the values of two string
+objects is the ``.compareTo()`` method.
+This will return -1 if the first is less than the second in
+alphabetical order, 0 if they are the same, and 1 if the first is
+greater than the second.
+It is used like this::
+
+  if (ref1.compareTo(ref2))
+
+
 Bad References
-~~~~~~~~~~~~~~
+--------------
 
 When a reference is first allocated, it does not have a pointee.
 The reference is :term:`uninitialized` or simply "bad".
@@ -336,7 +387,7 @@ levels |---| reference level and pointee level.
 The trick is that **both** levels need to be initialized and connected
 for things to work.
 (1) The reference must be allocated,
-(2) The pointee must be allocated, and (3) the reference must be
+(2) the pointee must be allocated, and (3) the reference must be
 assigned to point to the pointee.
 It's rare to forget step (1).
 But forget (2) or (3), and the whole thing will blow up at the first
@@ -399,7 +450,7 @@ But don't be surprised when it happens, and your program breaks.
 
 
 Syntax
-~~~~~~
+------
 
 The above basic features of references, pointees, dereferencing, and
 assigning are the only concepts you need to build reference code.
@@ -495,7 +546,7 @@ remains short.
 
 
 Java References vs Pointers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 Java references have two main features that distinguishes them from
 the less restrictive pointers in a language like C or C++.
@@ -521,7 +572,7 @@ the less restrictive pointers in a language like C or C++.
 
 
 How Are References Implemented In The Machine?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------
 
 How are references implemented?
 The short explanation is that every area of memory in the machine has
