@@ -36,7 +36,7 @@
   },
   "lang": "en",
   "build_JSAV": false,
-  "build_cmap": false,
+  "build_cmap": true,
   "suppress_todo": true,
   "assumes": "ADT; relations",
   "dispModComp": true,

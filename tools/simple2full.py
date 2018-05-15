@@ -1,3 +1,4 @@
+#! /usr/local/bin/python2
 ''' Converts a simplified configuration file to a full configuration file
 ''' 
 
