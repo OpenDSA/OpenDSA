@@ -46,7 +46,7 @@ def format_mod_options(options):
     if str(value) in ['True', 'False']:
       value = str(value).lower()
     elif isinstance(value, basestring):
-      value = "'%s'" % value;
+      value = "'%s'" % value
 
     # Set JSAV options as necessary and set all others as standard variables
     if option.startswith('JXOP-'):
@@ -102,6 +102,24 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
     print_err("%sERROR: Invalid directive arguments for object on line %d, skipping object" % (console_msg_prefix, line_num))
 
   return args
+
+# Parses the options from a Sphinx directive
+def parse_directive_options(mod_data, line_num):
+  line_num += 1
+  mod_len = len(mod_data)
+  rxp = re.compile('^[\t ]+:([^:]+): (.+)$')
+  options = {}
+  while True:
+    if line_num >= mod_len:
+      break
+    line = mod_data[line_num]
+    match = rxp.match(line)
+    if match == None:
+      break
+    options[match.group(1)] = match.group(2)
+    line_num += 1
+
+  return options
 
 #parses the glossary terms relationships. prints error message if the format is not correct
 #format    :to-term: term1 :lable: label :alt-text: alternate text in case the to-term is not a glossary term
@@ -362,6 +380,7 @@ class ODSA_RST_Module:
             errors.append(("%sERROR: %s: line %s ('%s') - should not have content before module title" % (console_msg_prefix, mod_path, i, line), True))
 
         if is_section \
+        and mod_attrib["sections"] != None \
 	      and line in mod_attrib["sections"] \
         and "showsection" in mod_attrib["sections"][line] \
         and not mod_attrib["sections"][line]["showsection"]:
@@ -568,7 +587,7 @@ class ODSA_RST_Module:
                 exer_conf = exercises[av_name]
 
                 # List of valid options for inlineav directive
-                options = ['points', 'required', 'threshold']
+                options = ['points', 'required', 'threshold', 'id']
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
                 mod_data[i] += ''.join(rst_options)
@@ -607,7 +626,7 @@ class ODSA_RST_Module:
                 exer_conf = exercises[av_name]
 
                 # List of valid options for avembed directive
-                options = ['points', 'required', 'showhide', 'threshold', 'external_url']
+                options = ['points', 'required', 'showhide', 'threshold', 'external_url', 'id']
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
@@ -641,8 +660,10 @@ class ODSA_RST_Module:
               # Add the necessary information from the configuration file
               exer_conf = exercises[external_tool_name]
               # List of valid options for avembed directive
-              options = ['long_name', 'learning_tool']
-
+              options = ['long_name', 'learning_tool', 'launch_url', 'id']
+              dir_opts = parse_directive_options(mod_data, i)
+              options = [option for option in options if option not in dir_opts]
+             
               rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
               mod_data[i] += ''.join(rst_options)
@@ -705,9 +726,11 @@ class ODSA_RST_Module:
 
         i = i + 1
 
+      error_shown = False
       for (msg, module_error) in errors:
         if module_error or section_title_found:
           print_err(msg)
+          error_shown = True
 
       if not avmetadata_found:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
@@ -731,10 +754,12 @@ class ODSA_RST_Module:
       missing_sections = list(set(mod_sections) - set(processed_sections))
 
       for section in missing_sections:
-        print_err('%sWARNING: Section "%s" not found in module' % (console_msg_prefix, section))
+        print_err('%sWARNING: Section "%s" not found in module "%s"' % (console_msg_prefix, section, mod_path))
 
       # TODO: Should we print the missing exercises with each module or at the end like we do now?
 
+      if error_shown:
+        sys.exit(1)
 
       # Write the contents of the module file to the output src directory
       with codecs.open(''.join([config.book_src_dir, mod_name, '.rst']),'w', 'utf-8') as mod_file:
