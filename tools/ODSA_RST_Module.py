@@ -379,6 +379,9 @@ class ODSA_RST_Module:
             content_before_module = True
             errors.append(("%sERROR: %s: line %s ('%s') - should not have content before module title" % (console_msg_prefix, mod_path, i, line), True))
 
+        # check if the current line is a section title
+        # and if so, check if the configuration and remove the section
+        # if the configuration indicates to do so
         if is_section \
         and mod_attrib["sections"] != None \
 	      and line in mod_attrib["sections"] \
