@@ -111,6 +111,7 @@
           "threshold": 1
         }
       }, 
+      "PointersJava/PointerExercises": {},
       "PointersJava/LocalMem": {}, 
       "PointersJava/HeapMem": {}, 
       "PointersJava/Links": {
