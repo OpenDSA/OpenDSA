@@ -61,6 +61,12 @@ Finding the value for a polynomial at a given point is called
 Finding the coefficients for the polynomial given the values at
 :math:`n` points is called :term:`interpolation`.
 
+.. inlineav:: fft_s1_poly ss
+   :long_name: fft slideshow 1 polynomial
+   :links: 
+   :scripts: AV/Irena/fft_s1_poly.js
+   :output: show
+
 To multiply two :math:`n-1`-degree polynomials :math:`A` and :math:`B`
 normally takes :math:`\Theta(n^2)` coefficient multiplications.
 However, if we evaluate both polynomials (at the same points), we can
@@ -182,7 +188,7 @@ the overall process of evaluating many points at once.
    :scripts: AV/Irena/fftCON.js
    :align: center
 
-   This is where the image will go.
+   Examples of the 4th and 8th roots of unity.
 
 
 The next step is to define how the computation is done.

@@ -1,19 +1,32 @@
 /*global JSAV, document */
-// Written by Cliff Shaffer
+// Written by Irena Shaffer
 
 $(document).ready(function() {
   "use strict";
   var av = new JSAV("fftCON", {animationMode: "none"});
 
-  var left = 250;
-  av.g.polyline([[left +  60,  20], [left + 110,  70], [left +  30,  70]], {fill: "gray"});
-  av.g.polyline([[left + 110,  70], [left + 240,  70], [left + 175, 135]], {fill: "gray"});
-  av.g.polyline([[left + 240,  70], [left + 330,  70], [left + 290,  20]], {fill: "gray"})
-  av.g.polyline([[left + 175, 135], [left + 230, 190], [left + 120, 190]], {fill: "gray"});
+  
+  av.g.circle(275, 120, 75, {"stroke-width": 1.25});
+  av.g.circle(575, 120, 75, {"stroke-width": 1.25});
 
-  av.g.line(left +  50, 10, left + 250, 210, {"stroke-width": 2});
-  av.g.line(left +   0, 70, left + 350,  70, {"stroke-width": 2});
-  av.g.line(left + 300, 10, left + 100, 210, {"stroke-width": 2});
+  av.g.line(180, 120, 370, 120);
+  av.g.line(275, 25, 275, 215);
+
+  av.g.line(480, 120, 670, 120);
+  av.g.line(575, 25, 575, 215);
+  av.g.line(507, 52, 642, 187, {"stroke-width": 1.6});
+  av.g.line(642, 52, 507, 187, {"stroke-width": 1.6});
+
+  av.label("i", {left: 285, top: 8});
+  av.label("-1", {left: 180, top: 80});
+  av.label("1", {left: 360, top: 80});
+  av.label("-i", {left: 285, top: 185});
+
+  av.label("i", {left: 585, top: 8});
+  av.label("-1", {left: 480, top: 80});
+  av.label("1", {left: 660, top: 80});
+  av.label("-i", {left: 585, top: 185});
+
   av.displayInit();
   av.recorded();
 });
