@@ -30,7 +30,7 @@ external_tools_urls = {
           "height": 900
     },
     "code-workout-jhavepop": {
-          "url": "https://opendsax.cs.vt.edu:9293/gym/workouts/embed",
+          "url": "https://opendsa-server.cs.vt.edu:9293/gym/workouts/embed",
           "width": 1000,
           "height": 900
     }
