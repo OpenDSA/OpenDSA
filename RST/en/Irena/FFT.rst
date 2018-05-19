@@ -63,8 +63,8 @@ Finding the coefficients for the polynomial given the values at
 
 .. inlineav:: fft_s1_poly ss
    :long_name: fft slideshow 1 polynomial
-   :links: 
-   :scripts: AV/Irena/fft_s1_poly.js
+   :links: AV/Irena/fft_s1_poly.css
+   :scripts: AV/Irena/Plot.js AV/Irena/fft_s1_poly.js
    :output: show
 
 To multiply two :math:`n-1`-degree polynomials :math:`A` and :math:`B`
