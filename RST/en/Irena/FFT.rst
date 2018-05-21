@@ -18,6 +18,12 @@ The Fast Fourier Transform
 See the `FFT Storyboard <../../../Storyboard/FFT.pptx>`_ for some more
 visualizations of this material.
 
+.. inlineav:: polynomialCON ss
+   :long_name: fft slideshow 1 polynomial
+   :links: AV/Irena/polynomialCON.css
+   :scripts: AV/Irena/Plot.js AV/Irena/polynomialCON.js
+   :output: show
+
 Multiplication is considerably more difficult than addition.
 The cost to multiply two :math:`n`-bit numbers directly is
 :math:`O(n^2)`, while addition of two :math:`n`-bit numbers is
@@ -61,10 +67,10 @@ Finding the value for a polynomial at a given point is called
 Finding the coefficients for the polynomial given the values at
 :math:`n` points is called :term:`interpolation`.
 
-.. inlineav:: fft_s1_poly ss
-   :long_name: fft slideshow 1 polynomial
-   :links: AV/Irena/fft_s1_poly.css
-   :scripts: AV/Irena/Plot.js AV/Irena/fft_s1_poly.js
+.. inlineav:: EvalandInterpolationCON ss
+   :long_name: fft slideshow 2 evaluation and interpolation
+   :links: AV/Irena/EvalandInterpolationCON.css
+   :scripts: AV/Irena/Plot.js AV/Irena/EvalandInterpolationCON.js
    :output: show
 
 To multiply two :math:`n-1`-degree polynomials :math:`A` and :math:`B`
@@ -94,6 +100,12 @@ corresponding values for polynomial :math:`AB`.
 
    These results are the same as when we evaluate polynomial
    :math:`AB` at these points.
+
+.. inlineav:: ProductCON ss
+   :long_name: fft slideshow 2 polynomial product
+   :links: AV/Irena/ProductCON.css
+   :scripts: AV/Irena/ProductCON.js
+   :output: show
 
 Note that evaluating any polynomial at 0 is easy.
 If we evaluate at 1 and -1, we can share a lot of the work

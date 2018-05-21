@@ -1,6 +1,6 @@
 $(document).ready(function() {
   "use strict";
-  var av_name = "fft_s1_poly";
+  var av_name = "polynomialCON";
 
   var av = new JSAV(av_name);
   
@@ -13,23 +13,23 @@ $(document).ready(function() {
 
   // Slide #2
   av.umsg("First we have the constant component, represented by $a_0$");
-  av.g.line(100, 150, 500, 150, {stroke: "red", "stroke-width": 2});
+  av.g.line(100, 170, 500, 170, {stroke: "red", "stroke-width": 2});
   av.step();
 
   // Slide #3
   av.umsg("Then, a linear component represented by a line of slope $a_1$");
-  av.g.line(150, 225, 450, 75, {stroke: "purple", "stroke-width": 2});
+  av.g.line(150, 235, 450, 85, {stroke: "purple", "stroke-width": 2});
   av.step();
 
   // Slide 4
   av.umsg("Next, the root of x multiplied with $a_2$");
 
-  var width = 600, height = 150;
+  var width = 600, height = 140;
 
-  var xStart = 165;
+  var xStart = 132;
   var xEnd = xStart + width;  //end position of the x on the chart
 
-  var yEnd = 20;
+  var yEnd = 60;
   var yStart = yEnd + height;  //end position of the y on the chart
   var xyScale = height/width;
   var xMax = 60, yMax = 1500;
@@ -51,7 +51,7 @@ $(document).ready(function() {
   // Slide 5
   av.umsg("Last, we have a third-order component, with the coefficient $a_3$");
 
-  var curve2 = Plot.drawCurve(_4xpow3, av, xStart + 20, yStart, yEnd, xMax, yMax, width, height,
+  var curve2 = Plot.drawCurve(_4xpow3, av, xStart + 30, yStart - 10, yEnd, xMax, yMax, width, height,
                          "", -40, -40, 1, true);
   av.g.polyline(curve2, {stroke: "green", "stroke-width": 2});
 
@@ -67,11 +67,4 @@ $(document).ready(function() {
 
   av.umsg("Adding these 4 componets gives us our polynomial (in black)");
   av.recorded();
-  // If you add av.umsg after av.recorded, it will add new slides in
-  // ways that you probably do not expect and probably cannot
-  // control in the way that you want. As av.recorded() rewinds the
-  // slideshow, the new slides would go to the beginning of the slideshow.
-  // So, unless you are trying to add slides on-the-fly
-  // interactively, you don't want to do this.
-  // av.umsg("Text after av.recorded()");
 });
