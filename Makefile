@@ -91,11 +91,20 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
+Liling: min
+	python $(CONFIG_SCRIPT) config/Liling.json --no-lms
+	
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
 TestIvan: min
 	python $(CONFIG_SCRIPT) config/TestIvan.json --no-lms
+
+TestIrena: min
+	python $(CONFIG_SCRIPT) config/TestIrena.json --no-lms
+
+Liling: min
+	python $(CONFIG_SCRIPT) config/Liling.json --no-lms
 
 SimpleDemo: min
 	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms

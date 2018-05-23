@@ -32,7 +32,7 @@ $(document).ready(function() {
     x1 += stepx1;
   }
 
-  // draw y-asix lines for graph 1:
+  // draw y-axis lines for graph 1:
   var stepy1 = height/15;
   var y1 = yStart - stepy1;
   for(i = 0; i < 15; i++){
@@ -40,7 +40,7 @@ $(document).ready(function() {
     y1 -= stepy1;
   }
 
-  //plot1 x-asix labels
+  //plot1 x-axis labels
   var labelx1_x = xStart - 10;
   var labelx1_y = yStart;
   for (i = 0; i <= 50; i += 10){
@@ -48,7 +48,7 @@ $(document).ready(function() {
     labelx1_x += (xSteps * 10);
   }
 
-  // plot1 y-asix labels
+  // plot1 y-axis labels
   var labely1_x = xStart - 40;
   var labely1_y = yStart - 25;
   for (var i = 0; i <= 1400; i += 200){

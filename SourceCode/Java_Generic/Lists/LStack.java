@@ -5,8 +5,8 @@ class LStack<E> implements Stack<E> {
   private int size;               // Number of elements
 
   // Constructors
-  LStack() { top = null; size = 0; }
-  LStack(int size) { top = null; size = 0; }
+  LStack() { clear(); }
+  LStack(int size) { this(); }
 /* *** ODSAendTag: LStack1 *** */
 
   public String toString() {
@@ -24,8 +24,8 @@ class LStack<E> implements Stack<E> {
 
 // Put "it" on stack
 /* *** ODSATag: LStackPush *** */  
-  public boolean push(E it) {  
-    top = new Link<E>(it, top);
+  public boolean push(E it) { 
+	  top = new Link<E>(it, top);
     size++;
     return true;
   }
@@ -42,12 +42,16 @@ class LStack<E> implements Stack<E> {
   }
 /* *** ODSAendTag: LStackPop *** */
 
-  public E topValue() {      // Return top value
+  //Return top value
+  public E topValue() {
     if (top == null) return null;
     return top.element();
   }
 
   // Return stack length
   public int length() { return size; }
+  
+  // Tell if the stack is empty
+  public boolean isEmpty() { return size == 0; }
 }
 /* *** ODSAendTag: LStack2 *** */

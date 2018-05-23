@@ -152,6 +152,13 @@
     "Computability": {
       "SeniorAlgAnal/Impossible": {}
     },
+    "Parsing": {
+      "FormalLang/ParseIntro": {},
+      "FormalLang/LLParsing": {},
+      "FormalLang/LRParsing": {},
+      "FormalLang/CYKParsing": {},
+      "FormalLang/Compiler": {}
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}

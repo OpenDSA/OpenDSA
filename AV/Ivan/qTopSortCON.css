@@ -1,0 +1,17 @@
+#qTopSortCON {
+  width: 800px;
+  height: 600px;
+}
+
+#qTopSortCON .avcontainer{
+  overflow: visible;
+}
+
+#qTopSortCON .jsavline{
+  height: 50px;
+}
+
+#qTopSortCON .jsavarray.jsavindex {
+height: 50px;
+width: 100px;
+}

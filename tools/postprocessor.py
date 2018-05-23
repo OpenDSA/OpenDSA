@@ -271,7 +271,7 @@ def break_up_sections(path, module_data, config):
         if bool(module_map):
           if external in module_map:
             module_obj = module_map[external]
-            if 'assignment_id' in module_map[external]:
+            if 'assignment_id' in module_map[external] and module_obj.get('assignment_id') != None:
               external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
             else:
               external = item_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'))
