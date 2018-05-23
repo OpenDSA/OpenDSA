@@ -62,13 +62,13 @@
   }, 
   "chapters": {
     "Week 1": {
-      "CS3Slides/CS3114Intro": {},
-      "CS3Slides/ProjManage": {},
-      "CS3Slides/P1": {}
+      "CS3slides/CS3114Intro": {},
+      "CS3slides/ProjManage": {},
+      "CS3slides/P1": {}
     },
     "Week 3": {
-      "CS3Slides/JUnit": {},
-      "CS3Slides/Coding": {}
+      "CS3slides/JUnit": {},
+      "CS3slides/Coding": {}
     }
   }
 }

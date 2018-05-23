@@ -66,8 +66,6 @@
   },
   "chapters": {
     "Sorting": {
-      "Graph/GraphIntro": {},
-      "Graph/GraphImpl": {},
       "Liling/SelectionSort":{}
     },
     "Appendix": {

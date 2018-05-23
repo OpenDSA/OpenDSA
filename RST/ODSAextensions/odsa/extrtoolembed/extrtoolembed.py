@@ -21,16 +21,16 @@ import random
 import os, sys
 import urllib
 
-# dictionary of all avalibale external learning tools
+# dictionary of all available external learning tools
 
-extrenal_tools_urls = {
+external_tools_urls = {
   "code-workout": {
           "url": "https://codeworkout.cs.vt.edu/gym/workouts/embed",
           "width": 1000,
           "height": 900
     },
     "code-workout-jhavepop": {
-          "url": "https://opendsax.cs.vt.edu:9293/gym/workouts/embed",
+          "url": "https://opendsa-server.cs.vt.edu:9293/gym/workouts/embed",
           "width": 1000,
           "height": 900
     }
@@ -52,7 +52,8 @@ CONTAINER_HTML= '''\
     data-frame-src="%(tool_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
-    data-type="%(type)s">
+    data-type="%(type)s"
+    data-exer-id="%(id)s">
   %(content)s
   <div class="center">
     <div id="%(exer_name)s_iframe"></div>
@@ -66,13 +67,15 @@ def print_err(err_msg):
 
 class extrtoolembed(Directive):
   required_arguments = 0
-  optional_arguments = 3
+  optional_arguments = 4
   final_argument_whitespace = True
   has_content = True
   option_spec = {
                  'long_name': directives.unchanged,
                  'module': directives.unchanged,
-                 'learning_tool': directives.unchanged
+                 'learning_tool': directives.unchanged,
+                 'launch_url': directives.unchanged,
+                 'id': directives.unchanged,
                  }
 
   def run(self):
@@ -86,19 +89,24 @@ class extrtoolembed(Directive):
         sys.exit()
 
     self.options['type'] = 'external_tool'
-
-    url_params = {}
-    url_params['resource_name'] = self.options['long_name']
-
     self.options['content'] = ''
     self.options['exer_name'] = self.options['long_name'].replace(":", "").replace(" ", "_")
 
-    external_tool = extrenal_tools_urls[self.options['learning_tool']]
-    self.options['tool_address'] = external_tool['url']
+    external_tool = external_tools_urls[self.options['learning_tool']]
     self.options['width'] = external_tool['width']
     self.options['height'] = external_tool['height']
-    self.options['tool_address'] += '?'
-    self.options['tool_address'] += urllib.urlencode(url_params).replace('&', '&amp;')
+
+    if 'launch_url' in self.options:
+      self.options['tool_address'] = self.options['launch_url']
+    else:
+      url_params = {}
+      url_params['resource_name'] = self.options['long_name']
+      self.options['tool_address'] = external_tool['url']
+      self.options['tool_address'] += '?'
+      self.options['tool_address'] += urllib.urlencode(url_params).replace('&', '&amp;')
+
+    if 'id' not in self.options:
+      self.options['id'] = ''
 
     res = CONTAINER_HTML % (self.options)
 

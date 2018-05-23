@@ -36,7 +36,7 @@
   },
   "lang": "en",
   "build_JSAV": false,
-  "build_cmap": false,
+  "build_cmap": true,
   "suppress_todo": true,
   "assumes": "ADT; relations",
   "dispModComp": true,
@@ -141,7 +141,6 @@
       "AlgAnal/AlgAnalSummCS2": {}
     },
     "Introduction to Pointers in Java": {
-      "PointersJava/PointerIntro": {}, 
       "PointersJava/BasicPointers": {
         "PointerEX1PRO": {
           "threshold": 1
@@ -150,6 +149,7 @@
           "threshold": 1
         }
       }, 
+      "PointersJava/PointerExercises": {},
       "PointersJava/LocalMem": {}, 
       "PointersJava/HeapMem": {}, 
       "PointersJava/Links": {

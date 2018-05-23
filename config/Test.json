@@ -66,10 +66,8 @@
   },
   "chapters": {
     "Sorting": {
-      "Graph/GraphIntro": {},
-      "Graph/GraphImpl": {},
-      "Ivan/GraphTraversal": {},
-      "Ivan/GraphTopsort": {}
+      "Sorting/SelectionSort": {},
+      "Graph/GraphImpl": {}
     },
     "Appendix": {
       "Glossary": {},

@@ -43,11 +43,11 @@ $(document).ready(function() {
                   left: it2_consoleLabelX,
                   top: it2_consoleLabelY
                 });
+
                 for (var i = 0; i <= consoleIndex; i++) {
                   it2_consoleLabels[i].css({
                     top: it2_consoleY[consoleIndex - i]
                   });
-                  it2_consoleLabels[i].show();
                 }
 
                 setTimeout(function() {
@@ -59,6 +59,11 @@ $(document).ready(function() {
                     left: it2_printpriceX,
                     top: it2_printpriceY
                   });
+
+                  // set time out to show label
+                  setTimeout(function() {
+                      it2_consoleLabels[0].show();
+                    }, time);
 
                   // midblue 3 animation start -----------------
                   setTimeout(function() {

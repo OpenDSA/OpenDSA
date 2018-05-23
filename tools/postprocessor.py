@@ -271,7 +271,7 @@ def break_up_sections(path, module_data, config):
         if bool(module_map):
           if external in module_map:
             module_obj = module_map[external]
-            if 'assignment_id' in module_map[external]:
+            if 'assignment_id' in module_map[external] and module_obj.get('assignment_id') != None:
               external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
             else:
               external = item_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'))
@@ -295,154 +295,11 @@ def break_up_sections(path, module_data, config):
   if element:
     element.extract()
 
-  total_real_exercises = 0
-  if sections != None:
-    total_real_exercises = len(sections)#0
-  #for exercise, properties in exercises.items():
-  #  if 'points' in properties:
-  #    total_real_exercises += 1
-  if total_real_exercises <= 1:
-    if total_real_exercises == 0:
-      filename = mod_name+'.html'
-    else:
-      filename = mod_name+'-01.html'
-    single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
-    with codecs.open(single_file_path, 'w', 'utf-8') as o:
-      o.write(unicode(soup))
-    return None
-
-
-  # Collect out the slide-specific JS/CSS
-  slide_scripts = defaultdict(list)
-  all_scripts = []
-
-  for tag_name, tag_url in TAGS:
-    if tag_name == 'link': continue
-    # Expand this to handle src
-    for a_tag in soup.find_all(tag_name):
-      if a_tag.has_attr(tag_url) and (
-            a_tag[tag_url].startswith('/OpenDSA/AV/')
-            or a_tag[tag_url].startswith('/OpenDSA/DataStructures/')):
-        name = os.path.splitext(os.path.basename(a_tag[tag_url]))[0]
-        script_tag = a_tag.extract()
-        if "CON" in name and tag_name == "script":
-            slide_scripts[name].append(script_tag)
-        else:
-            all_scripts.append(script_tag)
-        #if name.endswith('Common.css'):
-
-  # Breaking file into components
-
-  # First pass: grab out all of the HTML fragments
-  content_div_soup = soup.find('div', class_='content')
-  section_divs_soup = content_div_soup.find_all('div', class_='section', recursive=False)
-  content_div = []
-  # A body is an HTML fragment within a subsection
-  total_bodies = 0
-  # Iterate over the top-level sections
-  for section_div_soup in section_divs_soup:
-    section_div = []
-    # And then iterate over the second-level sections
-    for subsection_div_soup in list(section_div_soup.contents):
-      subsection_div = []
-      if (subsection_div_soup.name == 'div'
-          and subsection_div_soup.has_attr('class')
-          and 'section' in subsection_div_soup['class']):
-        # This is a subsection, grab its children
-        for body_soup in list(subsection_div_soup.contents):
-          #if verbose: print "\t\tSUB"
-          subsection_div.append( ( body_soup.parent, body_soup.extract() ) )
-          total_bodies += 1
-      else:
-        # This is section starter content.
-        #if verbose: print "\t\tSection"
-        body_soup = subsection_div_soup
-        subsection_div.append( ( body_soup.parent, body_soup.extract() ) )
-        total_bodies += 1
-      # Capture this subsection into this section
-      section_div.append(subsection_div)
-    # Capture this section into the complete content
-    content_div.append(section_div)
-  if verbose:
-    print "\tPhase 1: Found {} pieces of body content".format(total_bodies)
-
-  # Second pass: cluster body fragments by exercises into "slides"
-  total_exercises = 0
-  slides = []
-  new_slide = []
-  found = []
-  previous_parent = None
-  i = 0
-  for section_div in content_div:
-    #print "\tNew Section"
-    for subsection_div in section_div:
-      #print "\t\tNew Subsection"
-      name = "NEXT SLIDE"
-      for parent, body in subsection_div:
-        #print "\t\t\t", str(body)[:40]
-        new_slide.append( (parent, body) )
-      body_text = [str(s[1]) for s in new_slide
-                   if s[1].name != 'span' or
-                    not s[1].has_attr('id') or
-                    (not s[1]['id'].startswith('index-') and
-                     not s[1]['id'].startswith('id1')
-                    )]
-      if not ''.join(body_text).strip():
-        continue
-      slides.append((name, new_slide))
-      new_slide = []
-      total_exercises += 1
-      found.append(name)
-
-
-  if verbose:
-    print "\tPhase 2: Clustered into {} slides. Found {} sections, expected {}.".format(len(slides), total_exercises-1, len(sections))
-
-  # Add the slide general scripts to the top.
-  sgs_div = soup.new_tag('div', id='SLIDE-GENERAL-SCRIPTS')
-  for script_tag in all_scripts:
-    sgs_div.insert(0, script_tag)
-  content_div_soup.insert_before(sgs_div)
-
-  # third pass: render them out with the relevant scripts
-  for index, (slide_name, slide) in enumerate(slides):
-    #if verbose: print "\tSlide", index, len(slide)
-    # Identify the new filename
-    slide_filename = '{0}-{1:02d}.html'.format(mod_name, index)
-    slide_filepath = os.path.join(os.path.dirname(path), '..', 'lti_html', slide_filename)
-    # Add the relevant content back in
-    for body_index, (parent, body) in enumerate(slide):
-      parent.insert(body_index, body)
-    if index != 0 and sections.values()[index-1] != None:
-      potential_exercises = sections.values()[index-1].keys()
-    else:
-      potential_exercises = []
-    sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
-    for potential_exercise in potential_exercises:
-      if potential_exercise in slide_scripts:
-        for a_script in slide_scripts[potential_exercise]:
-          #if verbose: print "\t\t", id(a_script), str(a_script)
-          sss_div.insert(0, a_script)
-      if potential_exercise in ('quicksortCON', 'bubblesortCON'):
-        for a_script in slide_scripts[potential_exercise.replace('CON', 'CODE')]:
-          sss_div.insert(0, a_script)
-    #if verbose: print(len(sss_div))
-    # Add back in slide specific scripts
-    sgs_div.insert_after(sss_div)
-    if index != 0 and sections.values()[index-1] != None:
-        potential_exercises = sections.values()[index-1].keys()
-    else:
-        potential_exercises = []
-    # Write out the file with what we have so far
-    with codecs.open(slide_filepath, 'w', 'utf-8') as o:
-      o.write(unicode(soup))
-    sss_div.decompose()
-    for parent, body in slide:
-      body.extract()
-
-  if verbose:
-    print "\tPhase 3: complete"
-
+  filename = mod_name + '.html'
+  single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
+  with codecs.open(single_file_path, 'w', 'utf-8') as o:
+    o.write(unicode(soup))
+  return None
 
 def pretty_print_xml(data, file_path):
     ElementTree(data).write(file_path)
@@ -498,20 +355,8 @@ def get_module_map(config):
 
             module_name = module.split('/')[1] if '/' in module else module
             module_map[module_name] = {}
-
-            sections = module_obj.get("sections")
-            if bool(sections) and sections != None:
-                section_count = 0
-                for section in sections:
-                    section_obj = sections[section]
-                    if section_obj != None and isinstance(section_obj, dict):
-                        section_count += 1
-                        if section_count == 1:
-                            module_map[module_name]['module_item_id'] = section_obj['lms_item_id'] if section_obj['lms_item_id'] else None
-                            module_map[module_name]['assignment_id'] = section_obj['lms_assignment_id'] if section_obj['lms_assignment_id'] else None
-            else:
-                module_map[module_name]['module_item_id'] = module_obj['lms_section_item_id'] if module_obj['lms_section_item_id'] else None
-
+            module_map[module_name]['module_item_id'] = module_obj['lms_module_item_id'] if 'lms_module_item_id' in module_obj else None
+            module_map[module_name]['assignment_id'] = module_obj['lms_assignment_id'] if 'lms_assignment_id' in module_obj else None
 
     return module_map
 

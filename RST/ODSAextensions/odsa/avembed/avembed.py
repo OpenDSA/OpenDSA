@@ -48,7 +48,8 @@ CONTAINER_HTML= '''\
     data-required="%(required)s"
     data-showhide="%(showhide)s"
     data-threshold="%(threshold)s"
-    data-type="%(type)s">
+    data-type="%(type)s"
+    data-exer-id="%(id)s">
   %(content)s
   <div class="center">
     <div id="%(exer_name)s_iframe"></div>
@@ -160,7 +161,7 @@ def showhide(argument):
 
 class avembed(Directive):
   required_arguments = 2
-  optional_arguments = 9
+  optional_arguments = 10
   final_argument_whitespace = True
   has_content = True
   option_spec = {
@@ -173,6 +174,7 @@ class avembed(Directive):
                  'showhide':showhide,
                  'threshold': directives.unchanged,
                  'external_url': directives.unchanged,
+                 'id': directives.unchanged,
                  }
 
   def run(self):
@@ -248,6 +250,9 @@ class avembed(Directive):
 
     if 'showhide' not in self.options:
       self.options['showhide'] = 'show'
+
+    if 'id' not in self.options:
+      self.options['id'] = ''
 
     if self.options['showhide'] == "show":
       self.options['show_hide_text'] = langDict["hide"]

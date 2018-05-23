@@ -284,11 +284,11 @@ Parsing
 
    :math:`\mbox{FOLLOW}(B) =`
 
-   .. :math:`\{d, c, e, f\$\}`
+   .. :math:`\{d, c, e, f, \$\}`
 
    :math:`\mbox{FOLLOW}(C) =`
 
-   .. :math:`\{c, e, f\$\}`
+   .. :math:`\{c, e, f, \$\}`
 
    :math:`\mbox{FOLLOW}(D) =`
 
@@ -329,11 +329,6 @@ Parsing
 
    | The PDA is nondeterministic.
    |    Use lookahead to make it deterministic: determine which rewrite rule to use.
-
-
-.. slide:: LL Parsing Example
-
-   Trace :math:`aabbb`.
 
 
 .. slide:: Parsing routine (for this grammar)
@@ -393,16 +388,14 @@ Parsing
       S & aSb & b & \mbox{error} \\ 
       \end{array}
 
-
-.. slide:: A generic parsing routine (1)
-
-   | Idea: To replace a variable on the top of the stack with 
-     its appropriate right-hand-side, use the lookahead 
-     and the left-hand-side to look up the right-hand-side in the LL parse
-     table.
+   | Example strings:
+   |
+   |   aabbb
+   |
+   |   b
 
 
-.. slide:: A generic parsing routine (2)
+.. slide:: A generic parsing routine
 
    (``LL[,]`` is the parse table.)::
 
@@ -438,18 +431,16 @@ Parsing
       S & aSb & \mbox{error} & c & \mbox{error} \\
       \end{array}
 
-   | In this example, it is clear that when :math:`S` is on the 
-     stack and :math:`a` is the lookahead, replace :math:`S` by
-     :math:`aSb`.
+   | When :math:`S` is on the stack and :math:`a` is the lookahead,
+     replace :math:`S` by :math:`aSb`
    | When :math:`S` is on the stack and :math:`b` is the lookahead,
-     there is an error, because there must be a :math:`c` between the
-     :math:`a` 's and :math:`b` 's. 
+     there is an error (there must be a :math:`c` between the
+     :math:`a` 's and :math:`b` 's)
    | When :math:`S` is on the stack and $ is the lookahead,
-     then there is an error, since :math:`S` must be replaced by at
-     least one terminal. 
-   | When :math:`S` is on the stack, and 
-     :math:`c` is the lookahead, then :math:`S` should be replaced by
-     :math:`c`.
+     then there is an error (:math:`S` must be replaced by at
+     least one terminal)
+   | When :math:`S` is on the stack, and :math:`c` is the lookahead,
+     then :math:`S` should be replaced by :math:`c`.
 
  
 .. slide:: Example
@@ -476,3 +467,117 @@ Parsing
    |       add :math:`w` to LL[A,b] for each :math:`b` in FOLLOW(A)
    |      where :math:`b \in T \cup \{\$\}` 
    | 2. Each undefined entry is an error.
+
+
+.. slide:: Example (1): Need FIRST and FOLLOW
+
+   | :math:`S \rightarrow aSc \mid B`
+   | :math:`B \rightarrow b \mid \lambda`
+
+   We have already calculated FIRST and FOLLOW for this Grammar: 
+
+   .. math::
+
+      \begin{array}{c|l|l}
+      & FIRST & FOLLOW\\ \hline \hline
+      S & a, b, \lambda & \$, c \\
+      B & b, \lambda & \$, c \\
+      \end{array}
+
+
+.. slide:: Example (2): Compute Parse Table
+
+   | For :math:`S \rightarrow aSc`,
+     :math:`\mbox{FIRST}(aSc) = \{a\}`, so add :math:`aSc` to
+     ``LL[S,a]`` by step 1a. 
+
+   | For :math:`S \rightarrow B`,
+   | :math:`\mbox{FIRST}(B) = \{b, \lambda \}`
+   | :math:`\mbox{FOLLOW}(S) = \{\$, c\}`
+   | By step 1a, add :math:`B` to ``LL[S,b]``
+   | By step 1b, add :math:`B` to ``LL[S,c]`` and ``LL[S,$]``
+
+   | For :math:`B \rightarrow b`,
+     :math:`\mbox{FIRST}(b) = \{b\}`, so by step 1a add :math:`b` to ``LL[B,b]``
+
+   | For :math:`B \rightarrow \lambda`
+     :math:`\mbox{FIRST}(\lambda) = \{ \lambda \}` and
+     :math:`\mbox{FOLLOW}(B) = \{\$, c\}`,
+   | so by step 1b 
+     add :math:`\lambda` to ``LL[B,c]`` and add :math:`\lambda`
+     to ``LL[B,$]``. 
+
+
+.. slide:: Example (3): Sample Trace
+
+   .. math::
+
+      \begin{array}{c||c|c|c|c} 
+      & a & b & c & \$ \\ \hline \hline
+      S & aSc & B & B & B \\ \hline 
+      B & \mbox{error} & b & \lambda & \lambda
+      \end{array}
+   
+   Parse string: :math:`aacc`
+
+   .. math::
+
+      \begin{array}{lcccccccc} 
+      &&&&a \\ 
+      &&a&&S &S &B \\ 
+      &&S& S& c& c& c& c \\ 
+      \mbox{Stack:} & \underline{S} & \underline{c} & \underline{c} & \underline{c} 
+      & \underline{c} & \underline{c} & \underline{c} & \underline{c} \\ 
+      \mbox{symbol:} & a & a & a' & a' & c & c& c& c' \\ 
+      \end{array}
+
+   where :math:`a'` is the second :math:`a` in the string and ``symbol`` is
+   the lookahead symbol.
+   This table is an LL(1) table because only 1 symbol of lookahead is needed. 
+
+
+.. slide:: Example (4): Sample Trace
+
+   Trace :math:`aabcc`
+
+   .. math::
+      
+      \begin{array}{lccccccccc}
+      &&&&a \\
+      &&a&&S &S &B & b\\
+      &&S& S& c& c& c& c & c \\
+      \mbox{Stack:} & \underline{S} & \underline{c} & \underline{c} & \underline{c} 
+      & \underline{c} & \underline{c} & \underline{c} & \underline{c} 
+      & \underline{c} \\
+      \mbox{symbol:} & a & a & a' & a' & b & b& b& c & c' \\
+      \end{array}
+
+   where :math:`a'` is the second :math:`a` in the string and ``symbol``
+   is the lookahead symbol.
+   This table is an LL(1) table because only 1 symbol of lookahead is needed. 
+
+
+.. slide:: LL(k) Can't Parse All CFGs
+
+   | :math:`L = \{a^n: n \ge 0 \} \cup \{a^nb^n: n \ge 0 \}`
+   |    :math:`S \rightarrow A`
+   |    :math:`S \rightarrow B`
+   |    :math:`A \rightarrow aA`
+   |    :math:`A \rightarrow \lambda`
+   |    :math:`B \rightarrow aBb`
+   |    :math:`B \rightarrow \lambda`
+
+   | This grammar cannot be recognized by an LL(k) parser for any
+     :math:`k`.
+   | Consider the string :math:`aabb`.
+     Need 3 lookahead to realize that we want :math:`S \rightarrow B`.
+   | For :math:`aaabbb`, we need 4 lookahead.
+   | For :math:`a^nb^n`, we need :math:`n` lookahead.
+
+
+.. slide:: Conclusion
+
+   There are some CFL's that have no LL(k) Parser 
+
+   There are some languages for which some grammars have 
+   LL(k) parsers and some don't. 
