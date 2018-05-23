@@ -66,8 +66,7 @@
   },
   "chapters": {
     "Sorting": {
-      "Sorting/SelectionSort": {},
-      "Graph/GraphImpl": {}
+      "Liling/SelectionSort":{}
     },
     "Appendix": {
       "Glossary": {},
