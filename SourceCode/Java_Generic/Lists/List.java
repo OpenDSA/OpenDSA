@@ -41,5 +41,8 @@ public interface List<E> { // List class ADT
 
   // Return the current element
   public E getValue();
+  
+  // Tell if the list is empty or not
+  public boolean isEmpty();
 }
 /* *** ODSAendTag: ListADT *** */
