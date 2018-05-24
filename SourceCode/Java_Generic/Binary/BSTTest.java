@@ -1,37 +1,62 @@
 
-static final int testsize = 100000;
+static final int TEST_SIZE = 100000;
 static final int OFFSET = 1000000;
-static boolean SUCCESS = true;
 static long time1, time2, totaltime;   // These get set by the testing routine
+//Instance of ErrorRec class which holds the number of errors and prints
+//out error messages
+static ErrorRec record;
+static boolean useFile = true;
 
 static <T> void visit(BinNode<T> rt) {
 //  System.out.print(rt.value() + " ");
 }
 
-public static void main(String args[]) throws IOException {
-  Integer[] A = new Integer[testsize];
-  int i;
-  BST<KVPair<Integer,Integer>> b = new BST<KVPair<Integer,Integer>>();
+static <E extends Comparable<E>> boolean checkBST(BSTNode<E> rt, Vector<E> sorted) {
+	if (rt == null)
+		return true; // Empty subtree
+	// Inorder traversal
+	checkBST(rt.left(), sorted);
+	// Compare values
+	if (rt.value().compareTo(sorted.remove(0)) != 0) {
+		return false;
+	}
+	checkBST(rt.right(), sorted);
+	// If the vector is empty, BST stores all of the necessary items
+	return sorted.isEmpty();
+}
 
-  // Initialize to simply be the values from 0 to testsize-1
+public static void main(String args[]) throws IOException {
+  // Create a useFile to record errors if necessary
+  record = new ErrorRec(useFile, "BST");
+  // Create an array that stores random numbers
+  Integer[] A = new Integer[TEST_SIZE];
+  int i;
+  //BST to be tested
+  BST<KVPair<Integer,Integer>> b = new BST<KVPair<Integer,Integer>>();
+  //Create a vector that holds sorted KVPair
+  Vector<KVPair<Integer, Integer>> sortedPair = new Vector<KVPair<Integer, Integer>>();
+
+  // Initialize to simply be the values from 0 to TEST_SIZE-1
   // Ultimately, these are going to be our random keys
   for (i=0; i<A.length; i++)
     A[i] = i;
-  // Now, generate a permuation on the numbers
+  // Now, generate a permutation on the numbers
   permute(A);
 
   // Now, build the BST
-  // Each record will have a random key value from the permuation.
+  // Each record will have a random key value from the permutation.
   // Since we actually store KVPairs, we will give it a "data" value
   // that is simply the count + OFFSET (so we can distinguish "data" from keys)
-  for (i=0; i<A.length; i++)
+  for (i=0; i<A.length; i++) {
     b.insert(new KVPair<Integer,Integer>(new Integer(A[i]), new Integer(i + OFFSET)));
-
-  // Make sure that the thing is really a BST
-  if (!checkBST(b.root(), new KVPair<Integer,Integer>(new Integer(-1), new Integer(-1)),
-                new KVPair<Integer,Integer>(new Integer(testsize), new Integer(testsize)))) {
-    System.out.println("Oops! It was not a BST!");
-    SUCCESS = false;
+  	sortedPair.add(new KVPair<Integer, Integer>(new Integer(A[i]), new Integer(i + OFFSET)));
+  }
+  
+  // Sort the KVPairs
+  Collections.sort(sortedPair);
+  // Inorder traversal gives the sorted order.
+  if (!checkBST(b.root(), sortedPair)) {
+	  record.printError("Oops! It was not a BST!");
   }
 
   // Now, let's test delete by randomly removing all the keys
@@ -39,13 +64,11 @@ public static void main(String args[]) throws IOException {
   for (i=0; i<A.length; i++) {
     KVPair<Integer,Integer> key = new KVPair<Integer,Integer>(new Integer(A[i]), null);
     KVPair<Integer,Integer> k = b.remove(key);
-    if (b.size() != (testsize - i - 1)) {
-      System.out.println("Oops! Wrong size. Should be " + (testsize - i - 1) + " and it is " + b.size());
-      SUCCESS = false;
+    if (b.size() != (TEST_SIZE - i - 1)) {
+    	record.printError("Oops! Wrong size. Should be " + (TEST_SIZE - i - 1) + " and it is " + b.size());
     }
     if (k.key().compareTo(A[i]) != 0) {
-      System.out.println("Oops! Wrong key value. Should be " + A[i] + " and it is " + k.key());
-       SUCCESS = false;
+    	record.printError("Oops! Wrong key value. Should be " + A[i] + " and it is " + k.key());
     }
   }
 
@@ -66,37 +89,35 @@ public static void main(String args[]) throws IOException {
   System.out.println("Preorder2 time: " + totaltime);
 
   // Finally, let's test with simple Integer values
-  Integer[] AA = new Integer[testsize];
+  Integer[] AA = new Integer[TEST_SIZE];
   BST<Integer> bb = new BST<Integer>();
+  //Create a vector that holds sorted Integer
+  Vector<Integer> sortedInt = new Vector<Integer>();
 
-  // Initialize to simply be the values from 0 to testsize-1
+  // Initialize to simply be the values from 0 to TEST_SIZE-1
   // Ultimately, these are going to be our random keys
-  int newlen = testsize/10;
-  for (i=0; i<AA.length; i++)
+  int newlen = TEST_SIZE/10;
+  for (i=0; i<AA.length; i++) {
     AA[i] = random(newlen);
-  // Now, generate a permuation on the numbers
+    sortedInt.add(AA[i]);
+  }
+  // Now, generate a permutation on the numbers
   permute(AA);
 
   // Now, build the BST
-  // Each record will have a random key value from the permuation.
+  // Each record will have a random key value from the permutation.
   for (i=0; i<AA.length; i++)
     bb.insert(new Integer(AA[i]));
 
-  // Make sure that the thing is really a BST
-  if (!checkBST(bb.root(), new Integer(-1), new Integer(testsize))) {
-    System.out.println("Oops! It was not a BST!");
-    SUCCESS = false;
+  // Sort the vector
+  Collections.sort(sortedInt);
+  // Inorder traversal gives the sorted order.
+  if (!checkBST(bb.root(), sortedInt)) {
+	  record.printError("Oops! It was not a BST!");
   }
 
-  if (SUCCESS) {
-    PrintWriter output = new PrintWriter("success");
-    output.println("Success");
-    output.flush();
-    output.close();
-    System.out.println("Success!");
-  } else {
-    System.out.println("Testing failed");
-  }
+  // Get a feedback about the result (success or fail)
+  record.feedback();
 }
 
 }

@@ -1,4 +1,4 @@
-// WARNING: The defnition for freelist generates unchecked warnings
+// WARNING: The definition for freelist generates unchecked warnings
 // I don't know of a way to get around this, or to suppress (all of) the warnings.
 /* *** ODSATag: Freelink *** */
 class Link<E> {      // Singly linked list node with freelist support

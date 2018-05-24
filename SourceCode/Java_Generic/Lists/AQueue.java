@@ -18,14 +18,13 @@ class AQueue<E> implements Queue<E> {
 /* *** ODSAendTag: AQueue1 *** */
 
   public String toString() {
-    StringBuffer out = new StringBuffer(length() * 4);
-    for (int i=front; i != (rear+1)%maxSize; i++) {
-      i = i % maxSize;                 // Adjust for wrap-around
-      out.append(queueArray[i]);
-      out.append(" ");
-    }
-    return out.toString();
-  }
+	StringBuffer out = new StringBuffer(length() * 4);
+	for (int i = front; i != (rear + 1) % maxSize; i = (i + 1) % maxSize) { // Adjust for wrap-around
+		out.append(queueArray[i]);
+		out.append(" ");
+	}
+	return out.toString();
+}
 /* *** ODSATag: AQueue2 *** */
 
   // Reinitialize
@@ -55,5 +54,8 @@ class AQueue<E> implements Queue<E> {
 
   // Return queue size
   public int length() { return ((rear+maxSize) - front + 1) % maxSize; }
+  
+  //Tell if the queue is empty or not
+  public boolean isEmpty() { return front - rear == 1; }
 }
 /* *** ODSAendTag: AQueue2 *** */

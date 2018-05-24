@@ -26,7 +26,7 @@ $(document).ready(function() {
   //y-axis 1
   av.g.line(xStart, yStart, xStart, yEnd, {"stroke-width": 2});
 
-  //draw x-asix lines for graph 1
+  //draw x-axis lines for graph 1
   var stepx = width/3;
   var lines_x = xStart + stepx;
   for(i = 0; i < 3; i++){
@@ -34,7 +34,7 @@ $(document).ready(function() {
     lines_x += stepx;
   }
 
-  // draw y-asix lines for graph 1:
+  // draw y-axis lines for graph 1:
   var stepy = height/4;
   var lines_y = yStart - stepy;
   for(i = 0; i < 4; i++){
@@ -42,7 +42,7 @@ $(document).ready(function() {
     lines_y -= stepy;
   }
 
-  //plot1 x-asix labels
+  // plot1 x-axis labels
   var labelx1_x = xStart - 10;
   var labelx1_y = yStart;
   var xlabelSize = 5;
@@ -51,7 +51,7 @@ $(document).ready(function() {
     labelx1_x += (xSteps * xlabelSize);
   }
 
-  // plot1 y-asix labels
+  // plot1 y-axis labels
   var labely1_x = xStart - 40;
   var labely1_y = yStart - 25;
   var ylabelSize = 100;

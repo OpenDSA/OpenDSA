@@ -48,7 +48,7 @@ Lists: ListTest DoubleTest FreeList StackTest QueueTest
 
 ListTest: build/ListTest/success
 
-build/ListTest/success: Lists/ListTest.java Lists/List.java Lists/AList.java Lists/LList.java Lists/Link.java
+build/ListTest/success: Lists/ListTest.java Lists/List.java Lists/AList.java Lists/LList.java Lists/Link.java Utils/ErrorRec.java
 	@echo "Array-based and Linked List Test"
 	-@rm -rf build/ListTest
 	@mkdir build/ListTest
@@ -57,13 +57,14 @@ build/ListTest/success: Lists/ListTest.java Lists/List.java Lists/AList.java Lis
 	cp Lists/AList.java build/ListTest
 	cp Lists/LList.java build/ListTest
 	cp Lists/Link.java build/ListTest
+	cp Utils/ErrorRec.java build/ListTest
 	cd build/ListTest; \
 	javac $(CFLAGS) ListTest.java; \
 	$(JAVA) $(RFLAGS) ListTest
 
 DoubleTest: build/DoubleTest/success
 
-build/DoubleTest/success: Lists/ListTest.java Lists/List.java Lists/AList.java Lists/DList.java Lists/DLink.java
+build/DoubleTest/success: Lists/ListTest.java Lists/List.java Lists/AList.java Lists/DList.java Lists/DLink.java Utils/ErrorRec.java
 	@echo "Doubly Linked List Test"
 	-@rm -rf build/DoubleTest
 	@mkdir build/DoubleTest
@@ -72,13 +73,14 @@ build/DoubleTest/success: Lists/ListTest.java Lists/List.java Lists/AList.java L
 	cp Lists/AList.java build/DoubleTest
 	cp Lists/DList.java build/DoubleTest/LList.java
 	cp Lists/DLink.java build/DoubleTest/Link.java
+	cp Utils/ErrorRec.java build/DoubleTest
 	cd build/DoubleTest; \
 	javac $(CFLAGS) ListTest.java; \
 	$(JAVA) $(RFLAGS) ListTest
 
 FreeList: build/FreeList/success
 
-build/FreeList/success: Lists/List.java Lists/AList.java Lists/Freelink.java Lists/Freelist.java Lists/ListTest.java
+build/FreeList/success: Lists/List.java Lists/AList.java Lists/Freelink.java Lists/Freelist.java Lists/ListTest.java Utils/ErrorRec.java
 	@echo "Freelist Test"
 	-@rm -rf build/FreeList
 	@mkdir build/FreeList
@@ -87,13 +89,14 @@ build/FreeList/success: Lists/List.java Lists/AList.java Lists/Freelink.java Lis
 	@cp Lists/Freelist.java build/FreeList/LList.java
 	@cp Lists/Freelink.java build/FreeList/Link.java
 	@cp Lists/ListTest.java build/FreeList
+	@cp Utils/ErrorRec.java build/FreeList
 	cd build/FreeList; \
 	javac $(CFLAGS) ListTest.java; \
 	$(JAVA) $(RFLAGS) ListTest
 
 StackTest: build/StackTest/success
 
-build/StackTest/success: Lists/Stack.java Lists/AStack.java Lists/Link.java Lists/LStack.java Lists/StackTest.java
+build/StackTest/success: Lists/Stack.java Lists/AStack.java Lists/Link.java Lists/LStack.java Lists/StackTest.java Utils/ErrorRec.java
 	@echo "Array-based and Linked Stack Test"
 	-@rm -rf build/StackTest
 	@mkdir build/StackTest
@@ -101,6 +104,7 @@ build/StackTest/success: Lists/Stack.java Lists/AStack.java Lists/Link.java List
 	@cp Lists/AStack.java build/StackTest
 	@cp Lists/LStack.java build/StackTest
 	@cp Lists/Link.java build/StackTest
+	@cp Utils/ErrorRec.java build/StackTest
 	@cp Lists/StackTest.java build/StackTest
 	cd build/StackTest; \
 	javac $(CFLAGS) StackTest.java; \
@@ -108,7 +112,7 @@ build/StackTest/success: Lists/Stack.java Lists/AStack.java Lists/Link.java List
 
 QueueTest: build/QueueTest/success
 
-build/QueueTest/success: Lists/Queue.java Lists/AQueue.java Lists/Link.java Lists/LQueue.java Lists/QueueTest.java
+build/QueueTest/success: Lists/Queue.java Lists/AQueue.java Lists/Link.java Lists/LQueue.java Lists/QueueTest.java Utils/ErrorRec.java
 	@echo "Array-based and Linked Queue Test"
 	-@rm -rf build/QueueTest
 	@mkdir build/QueueTest
@@ -116,6 +120,7 @@ build/QueueTest/success: Lists/Queue.java Lists/AQueue.java Lists/Link.java List
 	@cp Lists/AQueue.java build/QueueTest
 	@cp Lists/LQueue.java build/QueueTest
 	@cp Lists/Link.java build/QueueTest
+	@cp Utils/ErrorRec.java build/QueueTest
 	@cp Lists/QueueTest.java build/QueueTest
 	cd build/QueueTest; \
 	javac $(CFLAGS) QueueTest.java; \
@@ -140,15 +145,16 @@ build/Traverse/success: Binary/BinNode.java Binary/BSTNode.java Binary/Traverse1
 
 BST: build/BSTTest/success
 
-build/BSTTest/success: Binary/BST.java Binary/BSTTest1.java Binary/checkBST.java Binary/Preorder.java Binary/BSTTest.java Binary/BSTNode.java Binary/BinNode.java Utils/Permute.java Utils/Swap.java Binary/Traverse.java Utils/KVPair.java
+build/BSTTest/success: Binary/BST.java Binary/BSTTest1.java Binary/Preorder.java Binary/BSTTest.java Binary/BSTNode.java Binary/BinNode.java Utils/Permute.java Utils/Swap.java Binary/Traverse.java Utils/KVPair.java Utils/ErrorRec.java
 	@echo "BST Test"
 	-@rm -rf build/BSTTest
 	@mkdir build/BSTTest
 	@cp Binary/BST.java build/BSTTest
 	@cp Binary/BSTNode.java build/BSTTest
 	@cp Binary/BinNode.java build/BSTTest
-	@cat Binary/BSTTest1.java Utils/Permute.java Utils/Swap.java Binary/checkBST.java Binary/Preorder.java Binary/BSTTest.java > build/BSTTest/BSTTest.java
+	@cat Binary/BSTTest1.java Utils/Permute.java Utils/Swap.java Binary/Preorder.java Binary/BSTTest.java > build/BSTTest/BSTTest.java
 	@cp Utils/KVPair.java build/BSTTest
+	@cp Utils/ErrorRec.java build/BSTTest
 	cd build/BSTTest; \
 	javac $(CFLAGS) BSTTest.java; \
 	$(JAVA) $(RFLAGS) BSTTest

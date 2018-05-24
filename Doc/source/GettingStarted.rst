@@ -8,35 +8,49 @@ Getting Started
 Overview and Developer's First Steps
 ------------------------------------
 
-OpenDSA consists of content delivered by servers.
+To the end user, OpenDSA consists of content delivered by servers.
 Content is delivered in the form of "book instances", which are
-created by the :ref:`configuration process <Configuration>`.
-A book instance is accessed through a Learning Management System (at
-the moment, we only support Canvas), with the files delivered
-by an LTI Content Provider.
-Various support operations are conducted by the OpenDSA Server.
-If you want to develop content, then create a book instance and view
-it, then you will need to set up the necessary infrastructure.
-For testing purposes, this has all been packaged together to simplify
-setting up a development environment.
-See https://github.com/OpenDSA/OpenDSA-DevStack for how to set this
-up.
+created through the :ref:`configuration process <Configuration>`.
+Book instances come in two forms: plain HTML pages (that you can
+create locally for testing) and those accessed through a Learning
+Management System (at the moment, we only support Canvas).
+As a new developer, you typically don't worry about anything other
+than creating plain HTML book instances.
 
-Once you have the development environment in place, the next step is
-to get an account on a Canvas server.
-You can either use one provided by your institution, set up your own
-Canvas server, or use the public test server provided by Instructure
-at https://canvas.instructure.com.
-With your account in place, you can tell Canvas to create a course.
-The place to start is to create a course named "Test".
-You will then go back to your development environment, and follow the
-instructions on the `OpenDSA-DevStack readme page
-<https://github.com/OpenDSA/OpenDSA-DevStack#generate-canvas-course-using-opendsa-web-interface>`_
-to create a "course offering".
-If everything worked right, then you will have populated your course
-on Canvas with some content.
-At this point, you are ready to learn about the parts of the system
-that you need to know in detail so that you can do useful work.
+If you want to develop content, create a book instance, and view
+it, then you will need to set up the necessary infrastructure.
+See "Setting up a Local Development Environment" below for details on
+how to do this.
+
+The overall project structure and developer workflow goes like this.
+You need to create a configuration file in the ``OpenDSA/config``
+directory.
+You will probably start by copying an existing one (``Test.json`` is a
+good place to start).
+You will then need to add a target to ``OpenDSA/Makefile`` to compile
+this configuration file.
+Just copy an existing one (like for ``Test``) and modify the name for
+your config file.
+Once your config file is set up, then you will execute your Makefile
+target (a command like ``make Test`` called from a commandline window
+from the OpenDSA repository top level will do this).
+
+The basic unit of an OpenDSA book instance is a Module, and each
+Module corresponds to a file written in ReStructuredText (RST).
+The existing modules are in ``OpenDSA/RST/en``, with the files divided
+among various content subdirectories.
+You will typically get started by creating your own subdirectory in
+``OpenDSA/RST/en``, copying any starting RST files that you want to
+use, adding these to your config file, and then compiling them to see
+that you have what you want.
+Then you can start modifying your copy of the RST file to create
+content.
+Actual visualizations and exercises generally live in the
+``OpenDSA/AV`` and ``OpenDSA/Exercises`` directories.
+See the self-documenting demonstration at
+``OpenDSA/RST/en/SimpleDemo/DemoIntro.rst`` for getting started (use
+the command ``make SimpleDemo`` to compile a copy of this book
+instance for yourself).
 
 
 ----------------------
@@ -62,11 +76,10 @@ Here is a list of the individual repositories that we use:
 
 * The main OpenDSA development repository:
   https://github.com/OpenDSA/OpenDSA.
-  The stable releases are kept in a separate repository at
-  https://github.com/OpenDSA/OpenDSA-stable.
 
 * Most developers should use the version of JSAV distributed with
-  OpenDSA. However, if your task requires the most recent changes then
+  OpenDSA.
+  However, if your task requires the most recent changes then
   the development version of JSAV can be found at:
   https://github.com/vkaravir/JSAV.
 
@@ -85,9 +98,6 @@ Here is a list of the individual repositories that we use:
 
 * The OpenPOP project is in a separate repository at
   https://github.com/OpenDSA/OpenPOP.
-
-* The QBank project is in a separate repository at
-  https://github.com/OpenDSA/QBank.
 
 An up-to-date development version of the OpenDSA repository is
 mirrored at http://lti.cs.vt.edu/LTI_ruby.
@@ -225,19 +235,29 @@ huge collection of technical books including the entire O'Reilly
 catalog.
 
 
----------
-Debugging
----------
+-----------------------------------------
+Disabling the Browser Cache and Debugging
+-----------------------------------------
 
 When you right-click a web page in Chrome
 (or Firefox when Firebug is installed), you get a popup
 menu whose bottom item is "Inspect Element".
 This brings up the Chrome Developer Tools panel (in Chrome) or Firebug
 (in Firefox).
-This is especially helpful for inspecting the various DOM
-elements on your web page.
-A big help here is seeing the CSS styles in
-effect for any specified DOM element. For details on how to view and
+The first thing that you will want to do is to turn off your browser
+cache when you have the developer panel open, so that reloading your
+page will show updates to your JavaScript and CSS files that you have
+been working so hard on.
+In Crome click on the button with 3 vertical dots to the right of the
+the developer panel, and then click ``settings`` in the popup window.
+Find and check the box that says "Disable cache (while DevTools is open)".
+
+The Developer panel can do a lot, but two key things are the console
+(which lists various error and debug messages), and the inspection panel
+for inspecting the various DOM elements on your web page.
+The inspection panel lets you see the CSS styles in effect for any
+specified DOM element.
+For details on how to view and
 even edit on-the-fly your CSS settings in force (for example, to see
 what you should change), see
 https://developers.google.com/chrome-developer-tools/docs/elements-styles.
