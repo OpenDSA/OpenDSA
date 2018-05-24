@@ -1,0 +1,11 @@
+#DFTmatrixCON {
+  height: 500px;
+}
+
+
+.jsavmatrix .jsavnode {
+  width: 40px !important;
+  min-width: 40px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+}
