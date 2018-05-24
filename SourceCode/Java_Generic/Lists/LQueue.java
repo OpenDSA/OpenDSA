@@ -2,12 +2,12 @@
 // Linked queue implementation
 class LQueue<E> implements Queue<E> {
   private Link<E> front; // Pointer to front queue node
-  private Link<E> rear;  // Pointer to rear queue node
+  private Link<E> rear;  // Pointer to rear queuenode
   private int size;      // Number of elements in queue
 
   // Constructors
-  LQueue() { clear(); }
-  LQueue(int size) { this(); } // Ignore size
+  LQueue() { init(); }
+  LQueue(int size) { init(); } // Ignore size
 
   // Initialize queue
   void init() {
@@ -17,7 +17,7 @@ class LQueue<E> implements Queue<E> {
 /* *** ODSAendTag: LQueue1 *** */
 
   // Reinitialize queue
-  public void clear() { front = rear = new Link<E>(null); size = 0; }
+  public void clear() { init(); }
 
   public String toString() {
     StringBuffer out = new StringBuffer(size * 4);
@@ -59,8 +59,5 @@ class LQueue<E> implements Queue<E> {
 
   // Return queue size
   public int length() { return size; }
-  
-  //Tell if the queue is empty or not
-  public boolean isEmpty() { return size == 0; }
 }
 /* *** ODSAendTag: LQueue2 *** */

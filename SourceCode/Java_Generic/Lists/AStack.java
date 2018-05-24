@@ -51,7 +51,5 @@ class AStack<E> implements Stack<E> {
   }
 
   public int length() { return top; } // Return stack size
-
-  public boolean isEmpty() { return top == 0; }	// Tell if the stack is empty
 }
 /* *** ODSAendTag: AStack2 *** */
