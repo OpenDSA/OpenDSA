@@ -83,21 +83,21 @@ $(document).ready(function() {
     return 20 * n;
   }
 
-  var curve1 = Plot.drawCurve(_5nlog2n, av, xStart, yStart, yEnd, xMax, yMax, width, height,
-                         "$5n\\log_2{n}$", -40, -40, 1, true);
+  var curve1 = Plot.drawCurve(_5nlog2n, xStart, yStart, yEnd, xMax, yMax, width, height, 1, true);
   av.g.polyline(curve1, {"stroke-width": 3});
+  av.label("$5n\\log_2{n}$", {left: 635, top: 35});
 
-  var curve2 = Plot.drawCurve(_2npow2, av, xStart, yStart, yEnd, xMax, yMax, width, height,
-                         "$2n^2$", -40, -20, 0.1, false);
+  var curve2 = Plot.drawCurve(_2npow2, xStart, yStart, yEnd, xMax, yMax, width, height, 0.1, false);
   av.g.polyline(curve2, {"stroke-width": 3});
+  av.label("$2n^2$", {left: 395, top: 35});
 
-  var curve3 = Plot.drawCurve(_2pown, av, xStart, yStart, yEnd, xMax, yMax, width, height,
-                         "$2^n$", -25, -20, 0.01, false);
+  var curve3 = Plot.drawCurve(_2pown, xStart, yStart, yEnd, xMax, yMax, width, height, 0.01, false);
   av.g.polyline(curve3, {"stroke-width": 3});
+  av.label("$2^n$", {left: 205, top: 35});
 
-  var curve4 = Plot.drawCurve(_factorial, av, xStart, yStart, yEnd, xMax, yMax, width, height,
-                         "$n!$", -25, -20, 0.25, false);
+  var curve4 = Plot.drawCurve(_factorial, xStart, yStart, yEnd, xMax, yMax, width, height, 0.25, false);
   av.g.polyline(curve4, {"stroke-width": 3});
+  av.label("$n!$", {left: 155, top: 35});
 
   function _5nlog2n(n) {
     return 5 * n * (Math.log2(n));
