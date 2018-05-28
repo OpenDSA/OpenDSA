@@ -1,4 +1,4 @@
-
+// Written by Elmer Landeverde
 (function ($) {
   "use strict";
   if (typeof JSAV === "undefined") {

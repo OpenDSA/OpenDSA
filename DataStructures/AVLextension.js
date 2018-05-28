@@ -1,3 +1,4 @@
+// Written by Elmer Landeverde
 (function ($) {
   "use strict";
 
