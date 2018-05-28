@@ -121,7 +121,7 @@ $(document).ready(function() {
 
 
   // Construct the Huffman coding tree without visualization
-  // This is rather inefficent and should be re-written
+  // TODO: This is rather inefficent and should be re-written
   function huffBuild(av, freqs, trees) {
     sortArray(trees);
     hideAll(trees);

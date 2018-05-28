@@ -1,5 +1,7 @@
-// Written by Elmer Landeverde
-(function ($) {
+// Support for tree nodes implemented with arrays (for B-Trees)
+// Written by Kasper Hellström
+
+(function($) {
   "use strict";
   if (typeof JSAV === "undefined") {
     return;
@@ -8,7 +10,7 @@
   /*****************************************************************************
    * Add the Array Tree constructor to the public facing JSAV interface.
    ****************************************************************************/
-  JSAV.ext.ds.arraytree = function (options) {
+  JSAV.ext.ds.arraytree = function(options) {
     /**
      * Add attributes to options:
      * - Set visibility by default to true.
@@ -26,9 +28,9 @@
    * Implement Array Tree data structure.
    ****************************************************************************/
 
-  var ArrayTree = function (jsav, options) {
+  function ArrayTree(jsav, options) {
     this.init(jsav, options);
-  };
+  }
   JSAV.utils.extend(ArrayTree, JSAV._types.ds.Tree);
 
   // Get Array Tree prototype
@@ -39,12 +41,12 @@
    * @param jsav      The JSAV object for this Array Tree.
    * @param options   Options to be passed to the Array Tree structure.
    */
-  arrayTreeProto.init = function (jsav, options) {
+  arrayTreeProto.init = function(jsav, options) {
     this._layoutDone = false; // Set layout as done.
     this.jsav = jsav; // Set the JSAV object for this tree.
     // Set the options for the tree
     // Use a smaller node gap as default
-    this.options = $.extend({ nodegap: 20, nodesize: 3 }, options);
+    this.options = $.extend({nodegap: 20, nodesize: 3}, options);
 
     /**
      * Generate the element where this tree is going to be placed. The element
@@ -64,8 +66,8 @@
        * - The value is a number
        * - The value is a boolean
        */
-      if (this.options.hasOwnProperty(key) && typeof(val) === "string" ||
-        typeof(val) === "number" || typeof(val) === "boolean") {
+      if (this.options.hasOwnProperty(key) && typeof val === "string" ||
+        typeof val === "number" || typeof val === "boolean") {
         // Add the property to the element as a data attribute.
         el.attr("data-" + key, val);
       }
@@ -105,7 +107,7 @@
     this.rootnode.element.attr("data-child-role", "root");
     // Set the root id to the tree
     // TODO: What is the purpose of the IDs?
-    this.element.attr({"data-root": this.rootnode.id(), "id": this.id()});
+    this.element.attr({"data-root": this.rootnode.id(), id: this.id()});
 
     // Shows or hides the data structure based on options.visible
     // This is placed after the root node code, since the roots show function
@@ -114,7 +116,7 @@
   };
 
 
-  arrayTreeProto.moveValue = function (fromNode, fromIndex, toNode, toIndex) {
+  arrayTreeProto.moveValue = function(fromNode, fromIndex, toNode, toIndex) {
     // Test if fromNode is of type Array Tree Node
     if (fromNode instanceof ArrayTreeNode) {
       fromNode = fromNode.node_array;
@@ -132,12 +134,12 @@
                 "mouseenter", "mouseleave"];
   // returns a function for the passed eventType that binds a passed
   // function to that eventType for indices in the array
-  var eventhandler = function (eventType) {
-    return function (data, handler) {
+  function eventhandler(eventType) {
+    return function(data, handler) {
       // store reference to this, needed when executing the handler
       var self = this;
       // bind a jQuery event handler, limit to .jsavindex
-      this.element.on(eventType, ".jsavindex", function (e) {
+      this.element.on(eventType, ".jsavindex", function(e) {
         // get the node of the clicked element
         var $curr = $(this),
             elem = $curr.data("node"); // get the JSAV node object
@@ -163,7 +165,7 @@
       });
       return this;
     };
-  };
+  }
   // create the event binding functions and add to array prototype
   for (var i = events.length; i--;) {
     arrayTreeProto[events[i]] = eventhandler(events[i]);
@@ -173,9 +175,9 @@
    * Implement Array Tree Node for the Array Tree data structure.
    ****************************************************************************/
 
-  var ArrayTreeNode = function (container, value, parent, options) {
+  function ArrayTreeNode(container, value, parent, options) {
     this.init(container, value, parent, options);
-  };
+  }
   JSAV.utils.extend(ArrayTreeNode, JSAV._types.ds.TreeNode);
 
   // Get Array Tree Node prototype.
@@ -188,14 +190,14 @@
    * @param parent    The Array Tree Node parent for this Node.
    * @param options   Options to be passed to the Array Tree Node.
    */
-  arrayTreeNodeProto.init = function (container, value, parent, options) {
+  arrayTreeNodeProto.init = function(container, value, parent, options) {
     // Set global variables for array tree node.
     this.jsav = container.jsav;
     this.container = container;
     this.parentnode = parent;
 
     // Merge options from parent to the provided ones.
-    var parent_options = parent ? parent.options: {};
+    var parent_options = parent ? parent.options : {};
     this.options = $.extend(true, {visible: true}, parent_options, options);
 
     this.constructors = $.extend({}, container.constructors, this.options.constructors);
@@ -210,7 +212,7 @@
     // Set classes for Array Tree Node element.
     this.element.addClass("jsavnode jsavtreenode jsavarraytreenode");
     // Set ID.
-    this.element.attr({"id": this.id()});
+    this.element.attr({id: this.id()});
     // Save this node in the DOM (used by the click handler)
     this.element.data("node", this);
 
@@ -255,7 +257,7 @@
     a truncated/extended version of the array. The size of the returned array
     is the same as nodesize in the arraytrees options.
    */
-  arrayTreeNodeProto._fixvalue = function (value) {
+  arrayTreeNodeProto._fixvalue = function(value) {
     // Set default value if none was provided
     if (!value) {
       value = [];
@@ -285,14 +287,14 @@
    *  - If index is a number, the newValue is set at the specified index.
    *  - If no parameter is passed the values of the array tree node are returned.
    */
-  arrayTreeNodeProto.value = function (index, newValue) {
-    if (typeof(index) === "undefined") {
+  arrayTreeNodeProto.value = function(index, newValue) {
+    if (typeof index === "undefined") {
       // return a copy of all values in the array
       return this.node_array._values.slice(0);
     } else if ($.isArray(index)) {
       // replace all values in the array with the new array
       var value = this._fixvalue(index);
-      for (var i = 0; i < value.length; i ++) {
+      for (var i = 0; i < value.length; i++) {
         this.node_array.value(i, value[i]);
       }
       this.node_array.layout();
@@ -312,15 +314,15 @@
    *  - Works just like equals() for other JSAV trees, except that it is able to
    *    compare array values.
    */
-  arrayTreeNodeProto.equals = function (otherNode, options) {
+  arrayTreeNodeProto.equals = function(otherNode, options) {
     if (!otherNode || this.value().join() !== otherNode.value().join()) {
       return false;
     }
-    if (options && 'css' in options) { // if comparing css properties
+    if (options && "css" in options) { // if comparing css properties
       var cssEquals = JSAV.utils._helpers.cssEquals(this, otherNode, options.css);
       if (!cssEquals) { return false; }
     }
-    if (options && 'class' in options) { // if comparing class attributes
+    if (options && "class" in options) { // if comparing class attributes
       var classEquals = JSAV.utils._helpers.classEquals(this, otherNode, options["class"]);
       if (!classEquals) { return false; }
     }
@@ -347,28 +349,28 @@
   // ---------------------------------------------------------------------------
   // Add interface for array methods
   // ---------------------------------------------------------------------------
-  
-  arrayTreeNodeProto.isHighlight = function (index, options) {
+
+  arrayTreeNodeProto.isHighlight = function(index, options) {
     this.node_array.isHighlight(index, options);
   };
 
-  arrayTreeNodeProto.highlight = function (indices, options) {
+  arrayTreeNodeProto.highlight = function(indices, options) {
     this.node_array.highlight(indices, options);
   };
 
-  arrayTreeNodeProto.unhighlight = function (indices, options) {
+  arrayTreeNodeProto.unhighlight = function(indices, options) {
     this.node_array.unhighlight(indices, options);
   };
 
-  arrayTreeNodeProto.css = function (indices, cssprop, options) {
+  arrayTreeNodeProto.css = function(indices, cssprop, options) {
     this.node_array.css(indices, cssprop, options);
   };
 
-  arrayTreeNodeProto.index = function (index) {
+  arrayTreeNodeProto.index = function(index) {
     this.node_array.index(index);
   };
 
-  arrayTreeNodeProto.swap = function (index1, index2, options) {
+  arrayTreeNodeProto.swap = function(index1, index2, options) {
     this.node_array.swap(index1, index2, options);
   };
 
@@ -376,17 +378,16 @@
    * Implement Array Tree Node for the Array Tree data structure.
    ****************************************************************************/
 
-  var ArrayTreeEdge = function (jsav, start, end, options) {
+  function ArrayTreeEdge(jsav, start, end, options) {
     JSAV._types.ds.Edge.call(this, jsav, start, end, options);
-  };
+  }
   JSAV.utils.extend(ArrayTreeEdge, JSAV._types.ds.Edge);
 
   // Get Array Tree Edge prototype
   var edgeProto = ArrayTreeEdge.prototype;
 
-  edgeProto.layout = function (options) {
-    var sElem = this.start().element,
-        eElem = this.end().element,
+  edgeProto.layout = function(options) {
+    var eElem = this.end().element,
         start = (options && options.start) ? options.start : this.start().position(),
         end = (options && options.end) ? options.end : this.end().position(),
         eWidth = eElem.outerWidth(),
@@ -401,5 +402,4 @@
     };
     JSAV._types.ds.Edge.prototype.layout.call(this, opts);
   };
-
 }(jQuery));
