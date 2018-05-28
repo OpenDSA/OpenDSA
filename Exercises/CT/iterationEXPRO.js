@@ -112,9 +112,9 @@
     // ---------------clickerbale boxes-----------------------
     box1 = jsav.g.rect(rect_left, top, 280, 35, 10).addClass("box");
     box1.click(clickHandler1);
-    box2 = jsav.g.rect(rect_left, purple_top, 350, 106, 10).addClass("box");
+    box2 = jsav.g.rect(rect_left, purple_top, 350, 112, 10).addClass("box");
     box2.click(clickHandler2);
-    box3 = jsav.g.rect(rect_left, purple_top + 105, 360, 145, 10).addClass("box");
+    box3 = jsav.g.rect(rect_left, purple_top + 112, 360, 138, 10).addClass("box");
     box3.click(clickHandler3);
     box4 = jsav.g.rect(rect_left, top + 295, 280, 35, 10).addClass("box");
     box4.click(clickHandler4);
@@ -188,7 +188,7 @@
 
     // ---------------clickerbale boxes-----------------------
     var model_box1 = modeljsav.g.rect(rect_left, blue_top, 280, 35, 10).addClass("box");
-    var model_box2 = modeljsav.g.rect(rect_left, purple_top, 350, 106, 10).addClass("box");
+    var model_box2 = modeljsav.g.rect(rect_left, purple_top, 350, 108, 10).addClass("box");
     var model_box3 = modeljsav.g.rect(rect_left, purple_top + 105, 360, 145, 10).addClass("box");
     var model_box4 = modeljsav.g.rect(rect_left, blue_top + 295, 280, 35, 10).addClass("box");
     var answer = [model_box1, model_box2, model_box3, model_box4];
