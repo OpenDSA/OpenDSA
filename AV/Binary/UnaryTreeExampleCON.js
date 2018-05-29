@@ -11,8 +11,7 @@ $(document).ready(function() {
   rt.right().right(" ");
   rt.right().edgeToRight().addClass("dashed");
   rt.right().right().right(" ");
-  var myLabel = av.label("Any number of internal nodes",{left:"410px",top:"95px"});
-
+  av.label("Any number of internal nodes", {left: 410, top: 95});
   bt.layout();
   av.displayInit();
   av.recorded();

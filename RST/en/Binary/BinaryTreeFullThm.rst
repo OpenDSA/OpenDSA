@@ -44,15 +44,6 @@ space from its internal nodes.
 
 .. _OneLeaf:
 
-.. odsafig:: Images/OneLeaf.png
-   :width: 150
-   :align: center
-   :capalign: center
-   :figwidth: 90%
-   :alt: A tree containing many internal nodes and a single leaf.
-
-   A tree containing many internal nodes and a single leaf.
-
 .. inlineav:: UnaryTreeExampleCON dgm
    :links: AV/Binary/UnaryTreeExampleCON.css
    :scripts: AV/Binary/UnaryTreeExampleCON.js

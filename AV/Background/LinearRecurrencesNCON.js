@@ -14,10 +14,8 @@ $(document).ready(function() {
   var nodeGap = 60;
   var nodeHeight = 40;
   var nodeWidth = 40;
-  var labelSet;
 
   av = new JSAV(av_name);
-  labelSet = [];
 
   //Slide 1
   av.umsg(interpret("sc1"));
@@ -97,22 +95,22 @@ $(document).ready(function() {
   //Slide 7
   av.umsg(interpret("sc7"));
   last.removeClass("subProblemNode");
-  av.g.line (leftAlign + nodeWidth - 7, topAlign + nodeHeight * 2,
-             leftAlign + 2.8 * (nodeGap + nodeWidth),
-             topAlign + nodeHeight * 2,
-             {"stroke-width": 2, "arrow-start":"classic-wide-long"});
-  av.g.line (leftAlign + 3.55 * (nodeGap + nodeWidth),
-             topAlign + nodeHeight * 2, leftAlign + 6.35 * (nodeGap + nodeWidth),
-             topAlign + nodeHeight * 2,
-             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.g.line(leftAlign + nodeWidth - 7, topAlign + nodeHeight * 2,
+            leftAlign + 2.8 * (nodeGap + nodeWidth),
+            topAlign + nodeHeight * 2,
+            {"stroke-width": 2, "arrow-start": "classic-wide-long"});
+  av.g.line(leftAlign + 3.55 * (nodeGap + nodeWidth),
+            topAlign + nodeHeight * 2, leftAlign + 6.35 * (nodeGap + nodeWidth),
+            topAlign + nodeHeight * 2,
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.line(leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 65,
            leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
   av.g.line(leftAlign + nodeWidth - 7, topAlign + 65,
             leftAlign + nodeWidth - 7, topAlign + 95);
 
-  av.label ("$\\displaystyle\\sum_{i=1}^{n}i$", 
-            {top: topAlign + nodeHeight * 1.15,
-             left: leftAlign + 3 * (nodeGap + nodeWidth)});
+  av.label("$\\displaystyle\\sum_{i=1}^{n}i$",
+           {top: topAlign + nodeHeight * 1.15,
+            left: leftAlign + 3 * (nodeGap + nodeWidth)});
   av.step();
 
   //Slide 8

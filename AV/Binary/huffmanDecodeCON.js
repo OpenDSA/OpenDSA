@@ -1,55 +1,11 @@
-/*global ODSA */
-"use strict";
 // Show how to decode the word "DEED"
-$(document).ready(function () {
-  // Constructs the standard tree used in the slideshow
-  function construct_tree(av) {
-    var t = av.ds.binarytree({nodegap: 25});
-    var r = t.root("");
-
-    // constructs tree
-    r.left("E<br>120");
-    r.right("").right("").right("").right("").right("M<br>24");
-    r.right().left("").left("U<br>37");
-    r.right().left().right("D<br>42");
-    r.right().right().left("L<br>42");
-    r.right().right().right().left("C<br>32");
-    r.right().right().right().right().left("");
-    r.right().right().right().right().left().left("Z<br>2");
-    r.right().right().right().right().left().right("K<br>7");
-
-    // Add more classes for leaf nodes for css styling
-    r.left().addClass("huffmanleaf");
-    r.right().right().right().right().right().addClass("huffmanleaf");
-    r.right().left().left().addClass("huffmanleaf");
-    r.right().left().right().addClass("huffmanleaf");
-    r.right().right().left().addClass("huffmanleaf");
-    r.right().right().right().left().addClass("huffmanleaf");
-    r.right().right().right().right().left().left().addClass("huffmanleaf");
-    r.right().right().right().right().left().right().addClass("huffmanleaf");
-
-    // Add edge labels
-    r.edgeToLeft().label("0");
-    r.edgeToRight().label("1");
-    r.right().edgeToLeft().label("0");
-    r.right().left().edgeToLeft().label("0");
-    r.right().left().edgeToRight().label("1");
-    r.right().edgeToRight().label("1");
-    r.right().right().edgeToLeft().label("0");
-    r.right().right().edgeToRight().label("1");
-    r.right().right().right().edgeToLeft().label("0");
-    r.right().right().right().edgeToRight().label("1");
-    r.right().right().right().right().edgeToRight().label("1");
-    r.right().right().right().right().edgeToLeft().label("0");
-    r.right().right().right().right().left().edgeToLeft().label("0");
-    r.right().right().right().right().left().edgeToRight().label("1");
-
-    return t;
-  }
+/*global ODSA */
+$(document).ready(function() {
+  "use strict";
 
   var av_name = "huffmanDecodeCON";
   var config = ODSA.UTILS.loadConfig(
-                {"av_name": av_name, "json_path": "/AV/Binary/huffman.json"}),
+                {av_name: av_name, json_path: "/AV/Binary/huffman.json"}),
       interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
 
@@ -138,4 +94,50 @@ $(document).ready(function () {
   // Slide 17
   av.umsg(interpret("av_c24"));
   av.recorded();
+
+
+  // Constructs the standard tree used in the slideshow
+  function construct_tree(theav) {
+    var theTree = theav.ds.binarytree({nodegap: 25});
+    var rt = theTree.root("");
+
+    // constructs tree
+    rt.left("E<br>120");
+    rt.right("").right("").right("").right("").right("M<br>24");
+    rt.right().left("").left("U<br>37");
+    rt.right().left().right("D<br>42");
+    rt.right().right().left("L<br>42");
+    rt.right().right().right().left("C<br>32");
+    rt.right().right().right().right().left("");
+    rt.right().right().right().right().left().left("Z<br>2");
+    rt.right().right().right().right().left().right("K<br>7");
+
+    // Add more classes for leaf nodes for css styling
+    rt.left().addClass("huffmanleaf");
+    rt.right().right().right().right().right().addClass("huffmanleaf");
+    rt.right().left().left().addClass("huffmanleaf");
+    rt.right().left().right().addClass("huffmanleaf");
+    rt.right().right().left().addClass("huffmanleaf");
+    rt.right().right().right().left().addClass("huffmanleaf");
+    rt.right().right().right().right().left().left().addClass("huffmanleaf");
+    rt.right().right().right().right().left().right().addClass("huffmanleaf");
+
+    // Add edge labels
+    rt.edgeToLeft().label("0");
+    rt.edgeToRight().label("1");
+    rt.right().edgeToLeft().label("0");
+    rt.right().left().edgeToLeft().label("0");
+    rt.right().left().edgeToRight().label("1");
+    rt.right().edgeToRight().label("1");
+    rt.right().right().edgeToLeft().label("0");
+    rt.right().right().edgeToRight().label("1");
+    rt.right().right().right().edgeToLeft().label("0");
+    rt.right().right().right().edgeToRight().label("1");
+    rt.right().right().right().right().edgeToRight().label("1");
+    rt.right().right().right().right().edgeToLeft().label("0");
+    rt.right().right().right().right().left().edgeToLeft().label("0");
+    rt.right().right().right().right().left().edgeToRight().label("1");
+
+    return theTree;
+  }
 });
