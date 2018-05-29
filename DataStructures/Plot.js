@@ -7,7 +7,7 @@
 
     // Create and return a set of points used to draw a dashed line.
     // func: The function for the line being drawn
-    drawDash : function(func, xStart, yStart, xEnd, xMax, yMax, height) {
+    drawDash: function(func, xStart, yStart, xEnd, xMax, yMax, height) {
       var points = [xStart, yStart, xEnd];
       var y = yStart - func(xMax) * height / yMax;
       points.push(y);

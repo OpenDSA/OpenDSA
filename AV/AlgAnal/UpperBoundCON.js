@@ -25,18 +25,14 @@ $(document).ready(function() {
 
   // Slide 3
   av.umsg(interpret("sc3"));
-
   var nLine1 = av.g.line(leftAlign + 10, topAlign,
             leftAlign + 155, topAlign,
-            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
-
-  var nLabel = av.label ("$n$", 
+            {"stroke-width": 2, "arrow-start": "classic-wide-long"});
+  var nLabel = av.label("$n$",
             {top: topAlign - 30, left: leftAlign + 165});
-
   var nLine2 = av.g.line(leftAlign + 195, topAlign,
             leftAlign + 340, topAlign,
-            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
-
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var count = 0;
   while (count < arraySize) {
     var value = Math.round(Math.random() * 10) + 1;

@@ -18,8 +18,7 @@ class AQueue implements Queue {
 
   public String toString() {
     StringBuffer out = new StringBuffer(length() * 4);
-    for (int i=front; i != (rear+1)%maxSize; i++) {
-      i = i % maxSize;                 // Adjust for wrap-around
+    for (int i = front; i != (rear + 1) % maxSize; i = (i + 1) % maxSize) { // Adjust for wrap-around
       out.append(queueArray[i]);
       out.append(" ");
     }
@@ -54,5 +53,8 @@ class AQueue implements Queue {
 
   // Return queue size
   public int length() { return ((rear+maxSize) - front + 1) % maxSize; }
+
+  // Check if the queue is empty
+  public boolean isEmpty() { return front - rear == 1; }
 }
 /* *** ODSAendTag: AQueue2 *** */

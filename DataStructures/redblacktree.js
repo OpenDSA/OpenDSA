@@ -155,6 +155,4 @@
   JSAV.ext.ds.rbtree = function (element, options) {
     return new RedBlackTree(this, element, options);
   };
-
-
 }(jQuery));

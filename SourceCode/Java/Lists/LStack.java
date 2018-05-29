@@ -49,5 +49,8 @@ class LStack implements Stack {
 
   // Return stack length
   public int length() { return size; }
+  
+  // Check if the stack is empty
+  public boolean isEmpty() { return size == 0; }
 }
 /* *** ODSAendTag: LStack2 *** */

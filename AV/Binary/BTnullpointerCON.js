@@ -4,7 +4,6 @@
 $(document).ready(function() {
   "use strict";
   var av = new JSAV("BTnullpointerCON", {animationMode: "none"});
-
   av.ds.array([" ", "A", " "], {left: 180});
 
   var topDiff = 50;

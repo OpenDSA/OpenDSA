@@ -212,25 +212,19 @@ is :math:`\log n`.
 Thus, all 2-3 tree insert, find, and delete operations require
 :math:`\Theta(\log n)` time.
 
-Here is a visualization for the 2-3 tree.
-Actually, the visualization is more general than just a 2-3 tree.
+|galles_BTree| for another visualization that will let you construct
+and interact with a 2-3 tree.
+Actually, this visualization is for a data structure that is more general
+than just a 2-3 tree.
 To see how a 2-3 would behave, be sure to use the "Max Degree = 3"
 setting.
-
-.. raw:: html
-
-   <center>
-   <iframe id="BT_iframe"
-        src="//www.cs.usfca.edu/~galles/visualization/BTree.html"
-        width="1100" height="800"
-        frameborder="1" marginwidth="0" marginheight="0"
-	scrolling="no">
-   </iframe>
-   </center>
-
 This visualization was written by David Galles of the University of
-San Francisco as part of his |external_link| package.
+San Francisco as part of his |galles_AVs| package.
 
-.. |external_link| raw:: html
+.. |galles_BTree| raw:: html
+
+   <a href="http://www.cs.usfca.edu/~galles/visualization/BTree.html" target="_blank">Click here</a>
+
+.. |galles_AVs| raw:: html
 
    <a href="http://www.cs.usfca.edu/~galles/visualization/Algorithms.html" target="_blank">Data Structure Visualizations</a>

@@ -97,4 +97,27 @@ class LList implements List {
     if(curr == tail) return null;
     return curr.element();
   }
+
+  public boolean isEmpty() {
+	return listSize == 0;
+}
+  public String toString() {
+		Link temp = head.next();
+		StringBuffer out = new StringBuffer((listSize + 1) * 4);
+
+		out.append("< ");
+		for (int i = 0; i < currPos(); i++) {
+			out.append(temp.element());
+			out.append(" ");
+			temp = temp.next();
+		}
+		out.append("| ");
+		for (int i = currPos(); i < listSize; i++) {
+			out.append(temp.element());
+			out.append(" ");
+			temp = temp.next();
+		}
+		out.append(">");
+		return out.toString();
+	  }
 }

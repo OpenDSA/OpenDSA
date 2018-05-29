@@ -27,17 +27,20 @@ They are used to implement most modern file systems.
 B-trees address effectively all of the major problems encountered
 when implementing disk-based search trees:
 
-#. B-trees are always height balanced, with all leaf nodes at the same
-   level.
+#. The B-tree is shallow, in part because the tree is always height
+   balanced (all leaf nodes are at the same level), and in part
+   because the branching factor is quite high.
+   So only a small number of disk blocks are accessed to reach a given
+   record.
 
-#. Update and search operations affect only a few disk blocks.
+#. Update and search operations affect only those disk blocks on the
+   path from the root to the leaf node containing the query record.
    The fewer the number of disk blocks affected, the less disk I/O is
    required.
 
-
 #. B-trees keep related records (that is, records with similar key
    values) on the same disk block, which helps to minimize disk I/O on
-   searches due to locality of reference.
+   range searches.
 
 #. B-trees  guarantee that every node in the tree will be
    full at least to a certain minimum percentage.
@@ -418,23 +421,16 @@ Similarly, when a node underflows, it is combined with its two
 siblings, and the total reduced to two nodes.
 Thus, the nodes are always at least two thirds full. [#]_
 
-Here is a visualization for the :math:`\mathrm{B}^+` tree.
-
-.. raw:: html
-
-   <center>
-   <iframe id="BT_iframe"
-        src="//www.cs.usfca.edu/~galles/visualization/BPlusTree.html"
-        width="1100" height="800"
-        frameborder="1" marginwidth="0" marginheight="0"
-	scrolling="no">
-   </iframe>
-   </center>
-
+|galles_BPTree| for a visualization that will let you construct and
+interact with a :math:`\mathrm{B}^+` tree.
 This visualization was written by David Galles of the University of
-San Francisco as part of his |external_link| package.
+San Francisco as part of his |galles_AVs| package.
 
-.. |external_link| raw:: html
+.. |galles_BPTree| raw:: html
+
+   <a href="http://www.cs.usfca.edu/~galles/visualization/BPlusTree.html" target="_blank">Click here</a>
+
+.. |galles_AVs| raw:: html
 
    <a href="http://www.cs.usfca.edu/~galles/visualization/Algorithms.html" target="_blank">Data Structure Visualizations</a>
 
@@ -449,6 +445,7 @@ San Francisco as part of his |external_link| package.
        However, the spitting and merging routines were so complicated
        that even their author could no longer understand them
        once they were completed!
+
 
 B-Tree Analysis
 ~~~~~~~~~~~~~~~
