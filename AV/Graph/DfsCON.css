@@ -1,16 +1,12 @@
-#container {
-  width: 800px;
-  height: 470px;
+#DfsCON {
+  height: 450px;
 }
 
-.avcontainer{
-  overflow: visible;
+#DfsCON .jsavline {
+  height: 20px;
 }
 
-.jsavline{
-  height: 50px;
-}
-.jsavedge.markpath{
+.jsavedge.markpath {
   stroke-width: 4;
   stroke: #f61010; //red
 }

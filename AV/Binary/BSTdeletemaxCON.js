@@ -1,6 +1,6 @@
 /*global ODSA */
 // deletemax slideshow
-$(document).ready(function () {
+$(document).ready(function() {
   "use strict";
   var av_name = "BSTdeletemaxCON";
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
@@ -8,9 +8,7 @@ $(document).ready(function () {
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
   var pseudo = av.code(code[0]);
-
   var bstTop = 40;
-
   var bt = av.ds.binarytree({top: bstTop, left: 40, visible: true, nodegap: 15});
 
   bt.root(10);
@@ -59,7 +57,7 @@ $(document).ready(function () {
   // Slide 6
   av.umsg(interpret("sc6"));
   rt1.arrow.addClass("thinredline");
-  // This line should not be needed, but it is here to fix Raphael bug with arrows
-  rt1.arrow.css({"stroke": "red"});
+  // This line should not be needed, it is here to fix Raphael bug with arrows
+  rt1.arrow.css({stroke: "red"});
   av.recorded();
 });

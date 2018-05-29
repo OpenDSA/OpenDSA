@@ -93,6 +93,31 @@ class LList<E> implements List<E> {
     if(curr == tail) return null;
     return curr.element();
   }
+  
+  public String toString() {
+	Link<E> temp = head.next();
+	StringBuffer out = new StringBuffer((listSize + 1) * 4);
+
+	out.append("< ");
+	for (int i = 0; i < currPos(); i++) {
+		out.append(temp.element());
+		out.append(" ");
+		temp = temp.next();
+	}
+	out.append("| ");
+	for (int i = currPos(); i < listSize; i++) {
+		out.append(temp.element());
+		out.append(" ");
+		temp = temp.next();
+	}
+	out.append(">");
+	return out.toString();
+}
+  
+  //Tell if the list is empty or not
+  public boolean isEmpty() {
+	  return listSize == 0;
+  }
 
   // Test for XOR concept
   public void XOR() {

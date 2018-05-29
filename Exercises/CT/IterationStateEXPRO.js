@@ -81,7 +81,7 @@
 
       // Previous Price and the price answer
       priceAnswer = array[position];
-      prevPrice = array[position;
+      prevPrice = array[position];
 
       // Calculate Previous total and the total answre
       for (var i = 0; i <= position; i++) {

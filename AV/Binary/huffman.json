@@ -9,7 +9,7 @@
       "av_c3": "Now we see how the edges will be used to define the codes.",
       "av_c4": "Now we are ready to compute the Huffman code for each character.",
       "av_c5": "Here is a table showing all of the codes.",
-      "av_c6": "The Huffman coding tree that we are using is: ",
+      "av_c6": "Here is the Huffman coding tree that we are using.",
       "av_c7": "Now let's use this tree to generate the Huffman codes for the letters.",
       "av_c8": "The word 'DEED' is represented by '10100101' and the word 'MUCK' is represented by '111111001110111101'.",
       "av_c9": "As an example, lets decode the bit string '10100101'.",

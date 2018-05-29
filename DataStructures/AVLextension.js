@@ -1,3 +1,6 @@
+// Support for AVL Trees
+// Written by Kasper Hellström
+
 (function ($) {
   "use strict";
 
@@ -235,6 +238,4 @@
     }
     raisedNode.left(this);
   };
-
-
 }(jQuery));

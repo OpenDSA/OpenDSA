@@ -1,6 +1,6 @@
-"use strict";
-/*global alert: true, BST, ODSA, PARAMS */
-$(document).ready(function () {
+/*global alert: true, ODSA, PARAMS */
+$(document).ready(function() {
+  "use strict";
   // Process about button: Pop up a message with an Alert
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));

@@ -12,17 +12,17 @@ $(document).ready(function() {
   // Slide 1
   av.umsg(interpret("sc1"));
   av.displayInit();
-    
+
   // Slide 2
   av.umsg(interpret("sc2"));
   pseudo.setCurrentLine("treenull");
   av.step();
-  
+
   // Slide 3
   av.umsg(interpret("sc3"));
   pseudo.setCurrentLine("reccall");
   av.step();
-  
+
   // Slide 4
   av.umsg(interpret("sc4"));
   pseudo.setCurrentLine("compute");
