@@ -15,6 +15,12 @@ The Fast Fourier Transform
 The Fast Fourier Transform
 --------------------------
 
+.. inlineav:: DFTmatrixCON ss
+   :long_name: fft slideshow 4 DFT matrix
+   :links: AV/Irena/DFTmatrixCON.css
+   :scripts: AV/Irena/DFTmatrixCON.js
+   :output: show
+
 See the `FFT Storyboard <../../../Storyboard/FFT.pptx>`_ for some more
 visualizations of this material.
 
@@ -185,15 +191,6 @@ the overall process of evaluating many points at once.
 
 .. _Unity:
 
-.. odsafig:: Images/Unity.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Nth roots of unity.
-
-   Examples of the 4th and 8th roots of unity.
-
 
 .. inlineav:: fftCON dgm
    :links: AV/Irena/fftCON.css
@@ -240,23 +237,11 @@ The resulting vector :math:`F_{z}` is called the
    F_{z} = A_{z}a = b.\]
    \[b_i = \sum_{k=0}^{n-1} a_kz^{ik}.
 
-When :math:`n = 8`, then :math:`z = \sqrt{i}`,
-since :math:`\sqrt{i}^8 = 1`.
-So, the corresponding matrix is as follows.
-
-.. math::
-
-   A_{z} =
-   \begin{array}{rrrrrrrr}
-   1&         1& 1&         1& 1&         1& 1&         1\\
-   1&  \sqrt{i}& i& i\sqrt{i}&-1& -\sqrt{i}&-i&-i\sqrt{i}\\
-   1&         i&-1&        -i& 1&         i&-1&        -i\\
-   1& i\sqrt{i}&-i&  \sqrt{i}&-1&-i\sqrt{i}& i& -\sqrt{i}\\
-   1&        -1& 1&        -1& 1&        -1& 1&        -1\\
-   1& -\sqrt{i}& i&-i\sqrt{i}&-1&  \sqrt{i}&-i& i\sqrt{i}\\
-   1&        -i&-1&         i& 1&        -i&-1&         i\\
-   1&-i\sqrt{i}&-i& -\sqrt{i}&-1& i\sqrt{i}& i&  \sqrt{i}
-   \end{array}
+.. inlineav:: DFTmatrixCON ss
+   :long_name: fft slideshow 4 DFT matrix
+   :links: AV/Irena/DFTmatrixCON.css
+   :scripts: AV/Irena/DFTmatrixCON.js
+   :output: show
 
 We still have two problems.
 We need to be able to multiply this matrix and the vector faster

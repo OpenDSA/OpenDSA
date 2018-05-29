@@ -65,9 +65,23 @@
     "required": true
   },
   "chapters": {
-    "Sorting": {
-      "Sorting/SelectionSort": {},
-      "Graph/GraphImpl": {}
+    "Stuff": {
+      "List/ListLinked": {
+        "LlistRemovePRO": {
+          "points": 2
+        }
+      }, 
+      "AlgAnal/AnalIntro": {},
+      "Binary/Huffman": {},
+      "Spatial/Bintree": {}, 
+      "Indexing/TwoThreeTree": {},
+      "Indexing/BTree": {
+        "bPlusTreeInsertPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous"
+          }
+        }
+      }
     },
     "Appendix": {
       "Glossary": {},

@@ -1,12 +1,13 @@
-// Plotting functions
+// Support for plotting non-standard functions
 // Written by Jieun Chon, Cliff Shaffer, and Ville Karavirta
 (function() {
   "use strict";
 
   var Plot = {
 
-    // Draw a dashed line
-    drawDash : function(func, xStart, yStart, xEnd, xMax, yMax, height) {
+    // Create and return a set of points used to draw a dashed line.
+    // func: The function for the line being drawn
+    drawDash: function(func, xStart, yStart, xEnd, xMax, yMax, height) {
       var points = [xStart, yStart, xEnd];
       var y = yStart - func(xMax) * height / yMax;
       points.push(y);
@@ -14,8 +15,19 @@
     },
 
 
-    // Draw an arbitrary curve from a function passed in
-    drawCurve: function(func, jsav, xStart, yStart, yEnd, xMax, yMax, width, height, label, labelx, labely, increment, isLog, gap) {
+    // Create and return a set of points used to draw an arbitary function
+    // func: The function being drawn, it is used to generate the y values
+    // xStart:
+    // yStart:
+    // yEnd:
+    // xMax:
+    // yMax:
+    // width:
+    // height:
+    // increment: Something to do with how big a step to take, to avoid jaggies
+    // isLog:
+    // TODO: We should automate the incrementing process!
+    drawCurve: function(func, xStart, yStart, yEnd, xMax, yMax, width, height, increment, isLog) {
       var points = [];
       var xStep = width / xMax;
       var start = isLog ? 1 : 0;
@@ -30,8 +42,6 @@
         }
         points.push([x, y]);
       }
-      jsav.label(label, {left: x + labelx, top: y + labely});
-      jsav.g.polyline(points, {"stroke-width": 3});
       return points;
     }
   }; // Plot

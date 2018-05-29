@@ -132,20 +132,16 @@ $(document).ready(function() {
   //Slide 12
   av.umsg(interpret("sc12"));
   av.label("-1",  {top: topAlign - 0.5 * rectHeight + 3 * rectHeight,
-                                     left: leftAlign + 16 * rectWidth + labelShift});
-
+                   left: leftAlign + 16 * rectWidth + labelShift});
   av.g.line(leftAlign + 0.25 * rectWidth, topAlign + 2.5 * rectHeight,
             leftAlign + 8.25 * rectWidth, topAlign + 2.5 * rectHeight,
-            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
-
-  av.label ("$2^4$", 
-            {top: topAlign + 1.5 * rectHeight,
-             left: leftAlign + 8.35 * rectWidth});
-
+            {"stroke-width": 2, "arrow-start": "classic-wide-long"});
+  av.label("$2^4$",
+           {top: topAlign + 1.5 * rectHeight,
+            left: leftAlign + 8.35 * rectWidth});
   av.g.line(leftAlign + 8.75 * rectWidth, topAlign + 2.5 * rectHeight,
             leftAlign + 15.75 * rectWidth, topAlign + 2.5 * rectHeight,
-            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
-
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.rect(leftAlign + 15 * rectWidth, topAlign + 3 * rectHeight, rectWidth, rectHeight).css({fill: "black"});
   av.step();
 

@@ -43,114 +43,110 @@
     jsav.recorded();
   }
 
-function dirGraph() {
-  g = jsav.ds.graph({
-  width: 500,
-  height: 360,
-  left: 0,
-  top: 50,
-  layout: "automatic",
-  directed: true
-  });
-  graphUtils.generate(g); // Randomly generate the graph without weight
-  jsav.umsg("Call depth first search on A");
-  return g;
-}
+  function dirGraph() {
+    g = jsav.ds.graph({
+      width: 500,
+      height: 360,
+      left: 0,
+      top: 50,
+      layout: "automatic",
+      directed: true
+    });
+    graphUtils.generate(g); // Randomly generate the graph without weight
+    jsav.umsg("Call depth first search on A");
+    return g;
+  }
 
-function undirGraph() {
-  g = jsav.ds.graph({
-  width: 500,
-  height: 360,
-  left: 0,
-  top: 50,
-  layout: "automatic",
-  directed: false
-  });
-  graphUtils.generate(g); // Randomly generate the graph without weight
-  jsav.umsg("Call depth first search on A");
-  return g;
-}
+  function undirGraph() {
+    g = jsav.ds.graph({
+      width: 500,
+      height: 360,
+      left: 0,
+      top: 50,
+      layout: "automatic",
+      directed: false
+    });
+    graphUtils.generate(g); // Randomly generate the graph without weight
+    jsav.umsg("Call depth first search on A");
+    return g;
+  }
 
-function preVisit(node, prev) {
-  jsav.umsg("Add " + node.value() + " to the stack ");
-  arr.value(size, node.value());
-  size--;
-  if (prev) {
-    node.edgeFrom(prev).addClass("markpath");
+  function preVisit(node, prev) {
+    jsav.umsg("Add " + node.value() + " to the stack ");
+    arr.value(size, node.value());
+    size--;
+    if (prev) {
+      node.edgeFrom(prev).addClass("markpath");
     }
-  jsav.step();
-}
+    jsav.step();
+  }
 
-// Mark the nodes when visited and highlight it to
-// show it has been marked
-function markIt(node) {
-  node.addClass("marked");
-  jsav.umsg("Mark node " + node.value());
-  markCount++;
-  node.highlight();
-  jsav.step();
-}
+  // Mark the nodes when visited and highlight it to
+  // show it has been marked
+  function markIt(node) {
+    node.addClass("marked");
+    jsav.umsg("Mark node " + node.value());
+    markCount++;
+    node.highlight();
+    jsav.step();
+  }
 
-function postVisit(node) {
-  jsav.umsg("Pop " + node.value() + " off of stack");
-  size++;
-  arr.value(size, " ");
-}
+  function postVisit(node) {
+    jsav.umsg("Pop " + node.value() + " off of stack");
+    size++;
+    arr.value(size, " ");
+  }
 
-// Recursive depth first search algorithmn for searching
-// the graph
-function dfs(start, prev) {
-  var adjacent;
-  var next;
-  preVisit(start, prev);
-  adjacent = start.neighbors();
+  // Recursive depth first search algorithmn for searching
+  // the graph
+  function dfs(start, prev) {
+    var adjacent;
+    var next;
+    preVisit(start, prev);
+    adjacent = start.neighbors();
 
-
-  for (next = adjacent.next(); next; next = adjacent.next()) {
-    jsav.umsg("Process (" + start.value() + "," + next.value() + ")");
+    for (next = adjacent.next(); next; next = adjacent.next()) {
+      jsav.umsg("Process (" + start.value() + "," + next.value() + ")");
       if(next.hasClass("marked")) {
         jsav.umsg("Node " + next.value() + " already marked");
       }
 
-    jsav.step();
-    if (!next.hasClass("marked")) {
-      jsav.umsg("Print (" + start.value() + "," + next.value() + ") and call depth first search on " + next.value());
       jsav.step();
-      markIt(next);
-      dfs(next, start);
+      if (!next.hasClass("marked")) {
+        jsav.umsg("Print (" + start.value() + "," + next.value() + ") and call depth first search on " + next.value());
+        jsav.step();
+        markIt(next);
+        dfs(next, start);
+        jsav.step();
+      }
+    }
+    postVisit(start);
+  }
+
+  // Resulting graph of completed depth first search
+  function dirfinalGraph() {
+    if (markCount < nodeCount) {
+      jsav.umsg("Completed breadth first search graph");
       jsav.step();
+      jsav.umsg("Note that this traversal did not reach all of the nodes, due to the directions on the edges making some nodes unreachable from A."
+                + "This is why DFS is typically done in the context of starting the traversal from every node.");
+    }
+    else {
+      jsav.umsg("Completed breadth first search graph");
     }
   }
-  postVisit(start);
-}
 
-// Resulting graph of completed depth first search
-function dirfinalGraph() {
-
-  if (markCount < nodeCount) {
-    jsav.umsg("Completed breadth first search graph");
-    jsav.step();
-  jsav.umsg("Note that this traversal did not reach all of the nodes, due to the directions on the edges making some nodes unreachable from A."
-   + "This is why BFS is typically done in the context of starting the traversal from every node.");
+  function finalGraph() {
+    jsav.umsg("Completed depth first search graph");
   }
 
-  else {
-    jsav.umsg("Completed breadth first search graph");
+  function about() {
+    alert("Depth first search visualization");
   }
 
-}
-
-function finalGraph() {
-  jsav.umsg("Completed depth first search graph");
-}
-
-function about() {
-  alert("Depth first search visualization");
-}
-// Connect action callbacks to the HTML entities
-$('#about').click(about);
-$('#help').click(help);
-$('#dir').click(dir);
-$('#undir').click(undir);
-
+  // Connect action callbacks to the HTML entities
+  $('#about').click(about);
+  $('#help').click(help);
+  $('#dir').click(dir);
+  $('#undir').click(undir);
 }(jQuery));
