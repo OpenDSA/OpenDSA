@@ -198,13 +198,13 @@ JavaScript.
 
 We try to avoid JavaScript and CSS in the HTML pages (though we often
 tolerate a couple of lines of CSS for an AV that needs only minimal
-customization away from the standard lib/odsaStyle.css template).
+customization away from the standard ``[OpenDSA]/lib/odsaStyle.css`` template).
 Our standard practice is to use ``<script>`` and ``<link>`` tags
 to call separate .js and .css files, respectively.
 
 **CSS Files**
 We use ``csslint`` to validate css files.
-OpenDSA/Makefile contains our required csslint flags.
+``[OpenDSA]/Makefile`` contains our required csslint flags.
 
 **JavaScript**
 We use ``eslint`` for validating JavaScript.
@@ -373,11 +373,27 @@ doing::
 
   make test
 
-This should put a test book into [OpenDSA]/Books/test.
+This should put a test book into ``[OpenDSA]/Books/test``.
 
-Note that to see most OpenDSA content, it must be viewed through a web
+Running a Local Web Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To see most OpenDSA content properly, it must be viewed through a web
 server.
-Since you probably don't want to install a real web server like Apache
-on your local machine, there is a simple alternative.
-See [OpenDSA]/WebServer for easy instructions on starting up a web
-server to view your OpenDSA content.
+It won't work just to point your browser at the local HTML files.
+But you probably don't want to install a real web server like Apache
+on your local machine.
+Fortunately, there is a simple alternative.
+Take a look at the file ``[OpenDSA]/WebServer``.
+This gives easy instructions on starting up a web server to view your
+OpenDSA content.
+Simply open a new command window, go to the top level of your copy of
+the OpenDSA repository, and type ``./WebServer``.
+This will start up the local webserver script
+(leave the command window open, it will be dedicated to running the
+webserver until you are done with it).
+Then go to a browser window, and point your browser to the URL shown
+in the ``WebServer`` script file.
+This will be the top level of the OpenDSA directory, and you can
+browse through it in the normal way.
+Any books that you compiled will be in the ``Books`` directory.
