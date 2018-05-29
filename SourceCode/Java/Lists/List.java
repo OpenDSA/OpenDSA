@@ -47,6 +47,8 @@ public interface List { // List class ADT
 
   // Return the current element
   public Object getValue();
+  
+  public boolean isEmpty();
 }
 /* *** ODSAendTag: ListADT3 *** */
 /* *** ODSAendTag: ListADT *** */
