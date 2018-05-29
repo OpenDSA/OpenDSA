@@ -17,15 +17,15 @@
 
     // Create and return a set of points used to draw an arbitary function
     // func: The function being drawn, it is used to generate the y values
-    // xStart:
-    // yStart:
-    // yEnd:
-    // xMax:
-    // yMax:
-    // width:
-    // height:
+    // xStart: The x coordinate of the starting point of the function
+    // yStart: The y coordinate of the starting point of the function
+    // yEnd: The y coordinate of the ending point of the function
+    // xMax: maximum number of steps in the x direction
+    // yMax: maximum number of steps in the y direction
+    // width: number of pixels in the width of the function
+    // height: number of pixels in the height of the function
     // increment: Something to do with how big a step to take, to avoid jaggies
-    // isLog:
+    // isLog: if true start at 1, if false start at 0
     // TODO: We should automate the incrementing process!
     drawCurve: function(func, xStart, yStart, yEnd, xMax, yMax, width, height, increment, isLog) {
       var points = [];

@@ -15,11 +15,7 @@ The Fast Fourier Transform
 The Fast Fourier Transform
 --------------------------
 
-.. inlineav:: DFTmatrixCON ss
-   :long_name: fft slideshow 4 DFT matrix
-   :links: AV/Irena/DFTmatrixCON.css
-   :scripts: AV/Irena/DFTmatrixCON.js
-   :output: show
+
 
 See the `FFT Storyboard <../../../Storyboard/FFT.pptx>`_ for some more
 visualizations of this material.
@@ -27,7 +23,7 @@ visualizations of this material.
 .. inlineav:: polynomialCON ss
    :long_name: fft slideshow 1 polynomial
    :links: AV/Irena/polynomialCON.css
-   :scripts: AV/Irena/Plot.js AV/Irena/polynomialCON.js
+   :scripts: DataStructures/Plot.js AV/Irena/polynomialCON.js
    :output: show
 
 Multiplication is considerably more difficult than addition.
@@ -76,7 +72,7 @@ Finding the coefficients for the polynomial given the values at
 .. inlineav:: EvalandInterpolationCON ss
    :long_name: fft slideshow 2 evaluation and interpolation
    :links: AV/Irena/EvalandInterpolationCON.css
-   :scripts: AV/Irena/Plot.js AV/Irena/EvalandInterpolationCON.js
+   :scripts: DataStructures/Plot.js AV/Irena/EvalandInterpolationCON.js
    :output: show
 
 To multiply two :math:`n-1`-degree polynomials :math:`A` and :math:`B`
@@ -108,7 +104,7 @@ corresponding values for polynomial :math:`AB`.
    :math:`AB` at these points.
 
 .. inlineav:: ProductCON ss
-   :long_name: fft slideshow 2 polynomial product
+   :long_name: fft slideshow 3 polynomial product
    :links: AV/Irena/ProductCON.css
    :scripts: AV/Irena/ProductCON.js
    :output: show
@@ -240,7 +236,7 @@ The resulting vector :math:`F_{z}` is called the
 .. inlineav:: DFTmatrixCON ss
    :long_name: fft slideshow 4 DFT matrix
    :links: AV/Irena/DFTmatrixCON.css
-   :scripts: AV/Irena/DFTmatrixCON.js
+   :scripts: DataStructures/Plot.js AV/Irena/DFTmatrixCON.js
    :output: show
 
 We still have two problems.
@@ -272,6 +268,12 @@ In other words, interpolation (the inverse transformation) requires
 the same computation as evaluation, except that we substitute
 :math:`1/z` for :math:`z` (and multiply by :math:`1/n` at the end).
 So, if we can do one fast, we can do the other fast.
+
+.. inlineav:: DFTpropCON ss
+   :long_name: fft slideshow 5 DFT matrix properties
+   :links: AV/Irena/DFTpropCON.css
+   :scripts: AV/Irena/DFTpropCON.js
+   :output: show
 
 If you examine the example :math:`A_z` matrix for :math:`n=8`,
 you should see that there are symmetries within the matrix.

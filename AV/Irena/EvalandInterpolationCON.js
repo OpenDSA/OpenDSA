@@ -23,11 +23,10 @@ $(document).ready(function() {
     return Math.pow(n - 12, 3);
   }; // _xpow2(n)
 
-  var curve = Plot.drawCurve(_xpow3, av, xStart, yStart, yEnd, xMax, yMax, width, height,
-                         "", -40, -40, 1, true);
+  var curve = Plot.drawCurve(_xpow3, xStart, yStart, yEnd, xMax, yMax, width, height,
+                         1, false);
   var poly = av.g.polyline(curve, {"stroke-width": 2});
-  poly.show();
-  poly.hide();
+  
 
   av.displayInit();
 
@@ -88,17 +87,17 @@ $(document).ready(function() {
   av.umsg("We can evaluate our polynomial at these points. This is <b>Evaluation</b>");
 
   av.g.circle (x + 12, y + 210, 4, {fill: "black"});
-  av.g.line (x + 12, y + 4 * step, x + 12, y + 210, {"stroke-width": 1});
+  var line1 = av.g.line (x + 12, y + 4 * step, x + 12, y + 210, {"stroke-width": 1});
   av.g.circle (x + 52, y + 160, 4, {fill: "black"});
-  av.g.line (x + 52, y + 4 * step, x + 52, y + 160, {"stroke-width": 1});
+  var line2 = av.g.line (x + 52, y + 4 * step, x + 52, y + 160, {"stroke-width": 1});
   av.g.circle (x + 87, y + 143, 4, {fill: "black"});
-  av.g.line (x + 87, y + 4 * step, x + 87, y + 143, {"stroke-width": 1});
+  var line3 = av.g.line (x + 87, y + 4 * step, x + 87, y + 143, {"stroke-width": 1});
   av.g.circle (x + 120, y + 140, 4, {fill: "black"});
-  av.g.line (x + 120, y + 4 * step, x + 120, y + 140, {"stroke-width": 1});
+  var line4 = av.g.line (x + 120, y + 4 * step, x + 120, y + 140, {"stroke-width": 1});
   av.g.circle (x + 165, y + 138, 4, {fill: "black"});
-  av.g.line (x + 165, y + 4 * step, x + 165, y + 138, {"stroke-width": 1});
+  var line5 = av.g.line (x + 165, y + 4 * step, x + 165, y + 138, {"stroke-width": 1});
   av.g.circle (x + 230, y + 97, 4, {fill: "black"});
-  av.g.line (x + 230, y + 4 * step, x + 230, y + 97, {"stroke-width": 1});
+  var line6 = av.g.line (x + 230, y + 4 * step, x + 230, y + 97, {"stroke-width": 1});
   av.step();
 
   // Slide 5
@@ -110,10 +109,21 @@ $(document).ready(function() {
 
   av.umsg("From these values, the polynomial can be reconstructed approximately."
     + "This aproximation is better when more points are known.");
+  var poly2 = av.g.polyline(curve, {stroke: "grey", "stroke-width": 2});
 
   av.step();
 
   av.umsg("This is <b>Interpolation</b>.");
+
+  line1.hide();
+  line2.hide();
+  line3.hide();
+  line4.hide();
+  line5.hide();
+  line6.hide();
+
+  poly2.hide();
+  poly.show();
 
   av.recorded();
 });
