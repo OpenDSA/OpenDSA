@@ -111,7 +111,7 @@ $(document).ready(function() {
             leftAlign + nodeWidth - 7, topAlign + 95);
   av.label("$\\displaystyle\\sum_{i=0}^{\\log{n}}1$",
            {top: topAlign + nodeHeight * 1.15,
-            left: leftAlign + 3 * (nodeGap + nodeWidth)});
+             left: leftAlign + 3 * (nodeGap + nodeWidth)});
 
   av.step();
 

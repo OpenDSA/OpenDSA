@@ -23,13 +23,14 @@ $(document).ready(function() {
   var axis = av.g.polyline([[left, topAlign], [left, topAlign + yLength], [left + xLength, topAlign + yLength]]);
   var xLabel = av.label(interpret("lab1"),  {top: topAlign + yLength - 10, left: left + xLength + 10}).addClass("largeLabel");
   var yLabel = av.label(interpret("lab2"),  {top: topAlign - 20, left: left - 75}).addClass("largeLabel");
-  var origin = av.label("$(0,0)$",  {top: topAlign + yLength - 10, left: left - 20}).addClass("largeLabel");
+  var axisorigin = av.label("$(0,0)$",  {top: topAlign + yLength - 10, left: left - 20}).addClass("largeLabel");
 
   //Draw the points
   var points = [];
   for (i = 0; i < numPoints; i++) {
-    points.push(av.label("*",  {top: Math.floor((Math.random() * 300) + topAlign),
-                                left: Math.floor((Math.random() * 400) + left)}));
+    points.push(av.label("*",
+                         {top: Math.floor((Math.random() * 300) + topAlign),
+                           left: Math.floor((Math.random() * 400) + left)}));
   }
   av.displayInit();
 
@@ -45,19 +46,22 @@ $(document).ready(function() {
   }
   points[maxIndex].addClass("colored");
 
-  var worstInputLine = av.g.line(points[maxIndex].options.left + 5, points[maxIndex].options.top + 35,
-                                      points[maxIndex].options.left + 5, topAlign + yLength).addClass("dashed");
+  var worstInputLine = av.g.line(points[maxIndex].options.left + 5,
+                                 points[maxIndex].options.top + 35,
+                                 points[maxIndex].options.left + 5,
+                                 topAlign + yLength).addClass("dashed");
 
-  var worstCostLine = av.g.line(points[maxIndex].options.left - 5, points[maxIndex].options.top + 20,
-                                      left, points[maxIndex].options.top + 20).addClass("dashed");
+  var worstCostLine = av.g.line(points[maxIndex].options.left - 5,
+                                points[maxIndex].options.top + 20,
+                                left, points[maxIndex].options.top + 20).addClass("dashed");
 
-  var worstInput = av.label(interpret("lab3"),  {top: topAlign + yLength - 10,
-    left: points[maxIndex].options.left}).addClass("mediumLabel colored");
+  var worstInput = av.label(interpret("lab3"),
+                            {top: topAlign + yLength - 10,
+                              left: points[maxIndex].options.left}).addClass("mediumLabel colored");
 
-  var worstCost = av.label(interpret("lab4"),  {top: points[maxIndex].options.top + 10,
-    left: left - 100}).addClass("mediumLabel colored");
-
-
+  var worstCost = av.label(interpret("lab4"),
+                           {top: points[maxIndex].options.top + 10,
+                             left: left - 100}).addClass("mediumLabel colored");
   av.step();
 
   //Slide 3
@@ -72,7 +76,7 @@ $(document).ready(function() {
   worstCost.hide();
   xLabel.hide();
   yLabel.hide();
-  origin.hide();
+  axisorigin.hide();
   av.step();
 
   //Slide 4
@@ -88,7 +92,7 @@ $(document).ready(function() {
   worstCost = [];
   xLabel = [];
   yLabel = [];
-  origin = [];
+  axisorigin = [];
   points = [[]];
   yLength = 150;
   xLength = 200;
@@ -113,11 +117,12 @@ $(document).ready(function() {
     axis.push(av.g.polyline([[left, topAlign], [left, topAlign + yLength], [left + xLength, topAlign + yLength]]));
     xLabel.push(av.label(interpret("lab1"),  {top: topAlign + yLength - 5, left: left + xLength + 10}).addClass("mediumLabel"));
     yLabel.push(av.label(interpret("lab2"),  {top: topAlign - 15, left: left - 50}).addClass("mediumLabel"));
-    origin.push(av.label("$(0,0)$",  {top: topAlign + yLength - 10, left: left - 20}).addClass("mediumLabel"));
+    axisorigin.push(av.label("$(0,0)$",  {top: topAlign + yLength - 10, left: left - 20}).addClass("mediumLabel"));
 
     //Draw the points
     for (var k = 0; k < numPoints; k++) {
-      points[i][k] = av.label("*",  {top: Math.floor((Math.random() * 75) + topAlign),
+      points[i][k] = av.label("*",
+                              {top: Math.floor((Math.random() * 75) + topAlign),
                                 left: Math.floor((Math.random() * 120) + left)});
     }
 
@@ -132,17 +137,23 @@ $(document).ready(function() {
     highestPoints[i] = points[i][maxIndex];
     highestPoints[i].top = topAlign;
 
-    worstInputLine.push(av.g.line(points[i][maxIndex].options.left + 5, points[i][maxIndex].options.top + 35,
-                                      points[i][maxIndex].options.left + 5, topAlign + yLength).addClass("dashed"));
+    worstInputLine.push(av.g.line(points[i][maxIndex].options.left + 5,
+                                  points[i][maxIndex].options.top + 35,
+                                  points[i][maxIndex].options.left + 5,
+                                  topAlign + yLength).addClass("dashed"));
 
-    worstCostLine.push(av.g.line(points[i][maxIndex].options.left - 5, points[i][maxIndex].options.top + 20,
-                                      left, points[i][maxIndex].options.top + 20).addClass("dashed"));
+    worstCostLine.push(av.g.line(points[i][maxIndex].options.left - 5,
+                                 points[i][maxIndex].options.top + 20,
+                                 left,
+                                 points[i][maxIndex].options.top + 20).addClass("dashed"));
 
-    worstInput.push(av.label(interpret("lab3"),  {top: topAlign + yLength - 10,
-    left: points[i][maxIndex].options.left}).addClass("smallLabel colored"));
+    worstInput.push(av.label(interpret("lab3"),
+                             {top: topAlign + yLength - 10,
+                               left: points[i][maxIndex].options.left}).addClass("smallLabel colored"));
 
-    worstCost.push(av.label(interpret("lab4"),  {top: points[i][maxIndex].options.top + 10,
-    left: left - 100}).addClass("smallLabel colored"));
+    worstCost.push(av.label(interpret("lab4"),
+                            {top: points[i][maxIndex].options.top + 10,
+                              left: left - 100}).addClass("smallLabel colored"));
   }
   av.step();
 

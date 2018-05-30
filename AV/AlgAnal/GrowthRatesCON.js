@@ -117,13 +117,14 @@ $(document).ready(function() {
   // In order to get a smoother curve, we hard-code some intermediate
   // position values for quarter steps.
   function _factorial(n) {
-    var factorialArray = [1, 0.906, 0.886, 0.919,
-                          1, 1.133, 1.329, 1.608,
-                          2, 2.549, 3.323, 4.423,
-                          6, 8.285, 11.632, 16.585,
-                          24, 35.212, 52.343, 78.784,
-                          120, 184.861, 287.885, 453.011,
-                          720, 1155.38, 1871.25, 3057.82];
+    var factorialArray =
+        [1,    0.906,   0.886,   0.919,
+          1,   1.133,   1.329,   1.608,
+          2,   2.549,   3.323,   4.423,
+          6,   8.285,   11.632,  16.585,
+          24,  35.212,  52.343,  78.784,
+          120, 184.861, 287.885, 453.011,
+          720, 1155.38, 1871.25, 3057.82];
     return factorialArray[n * 4];
   } // _factorial(n)
 });

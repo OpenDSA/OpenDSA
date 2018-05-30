@@ -9,7 +9,7 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   var bh = av.ds.binheap(unsortArray,
                          {compare: function(a, b) { return b - a; },
-                          steps: false, heapify: false});
+                           steps: false, heapify: false});
 
   // Slide 1
   av.umsg(interpret("av_c1"));

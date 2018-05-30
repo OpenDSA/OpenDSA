@@ -19,7 +19,7 @@ $(document).ready(function() {
   var axis = av.g.polyline([[left, topAlign], [left, topAlign + yLength], [left + xLength, topAlign + yLength]]);
   var xLabel = av.label("$n$",  {top: topAlign + yLength - 10, left: left + xLength + 10}).addClass("largeLabel");
   var yLabel = av.label(interpret("lab1"),  {top: topAlign - 20, left: left - 50}).addClass("largeLabel");
-  var origin = av.label("$(0,0)$",  {top: topAlign + yLength - 10, left: left - 20}).addClass("largeLabel");
+  var axisorigin = av.label("$(0,0)$",  {top: topAlign + yLength - 10, left: left - 20}).addClass("largeLabel");
   av.displayInit();
 
   // Slide 2
@@ -105,7 +105,7 @@ $(document).ready(function() {
   axis.hide();
   xLabel.hide();
   yLabel.hide();
-  origin.hide();
+  axisorigin.hide();
   markFirstPositionCost.hide();
   left = 50;
   yLength = 150;

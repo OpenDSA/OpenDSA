@@ -103,14 +103,14 @@ $(document).ready(function() {
             topAlign + nodeHeight * 2,
             {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.line(leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 65,
-           leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
+            leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
   av.g.line(leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 65,
-           leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
+            leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
   av.g.line(leftAlign + nodeWidth - 7, topAlign + 65,
             leftAlign + nodeWidth - 7, topAlign + 95);
   av.label("$\\displaystyle\\sum_{i=1}^{n}1$",
            {top: topAlign + nodeHeight * 1.15,
-            left: leftAlign + 3 * (nodeGap + nodeWidth)});
+             left: leftAlign + 3 * (nodeGap + nodeWidth)});
   av.step();
 
   // Slide 8

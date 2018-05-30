@@ -42,7 +42,7 @@ $(document).ready(function() {
   av.umsg(interpret("av_c4"));
   var label3 = av.label(interpret("av_l3"), {left: 550, top: 150}); // create a label for the icon
   var line2 = av.g.line(550, 170, 490, 200,
-                       {"stroke-width": "2", "arrow-end": "classic"});
+                        {"stroke-width": "2", "arrow-end": "classic"});
   av.g.ellipse(442, 208, 50, 50).css({fill: "purple", opacity: 0.2});
   av.step();
 

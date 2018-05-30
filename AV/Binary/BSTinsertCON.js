@@ -22,8 +22,8 @@ $(document).ready(function() {
   rt.right().right(120);
   var newnode = rt.left().right().left(30);
   newnode.addClass("invisnode");
-  var parent = newnode.parent();
-  var newedge = parent.edgeToLeft();
+  var newParent = newnode.parent();
+  var newedge = newParent.edgeToLeft();
   newedge.hide();
   newedge.addClass("rededge");
   bt.layout();
@@ -149,7 +149,7 @@ $(document).ready(function() {
   var root1 = av.pointer("root", bt.root(), {anchor: "right top", top: -10});
   root1.arrow.addClass("thinredline");
   // This line should not be needed, but it is here to fix Raphael bug with arrows
-  root1.arrow.css({"stroke": "red"});
+  root1.arrow.css({stroke: "red"});
   pseudo.setCurrentLine("end");
   av.recorded();
 });

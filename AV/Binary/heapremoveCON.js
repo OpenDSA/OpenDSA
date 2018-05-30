@@ -1,15 +1,15 @@
 /*global ODSA */
 // Heap remove any slideshow
-$(document).ready(function () {
+$(document).ready(function() {
   "use strict";
   var sortArray2 = [88, 85, 83, 72, 73, 42, 57, 6, 48, 60];
   var av_name = "heapremoveCON";
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
   var bh = av.ds.binheap(sortArray2,
-                         {compare: function (a, b) { return b - a; },
-                          steps: false, heapify: false});
+                         {compare: function(a, b) { return b - a; },
+                           steps: false, heapify: false});
 
   // Slide 1
   av.umsg(interpret("av_c1"));
