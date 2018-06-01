@@ -85,58 +85,52 @@ $(document).ready(function() {
   rect53.removeClass("highlight");
   rect54.removeClass("highlight");
   rect55.removeClass("highlight");
-
   av.g.line(leftAlign + 0.25 * rectWidth, topAlign + 2.25 * rectHeight,
             leftAlign + 2.25 * rectWidth, topAlign + 2.25 * rectHeight,
-            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
-
-  av.label ("$n$", 
-            {top: topAlign + rectHeight,
+            {"stroke-width": 2, "arrow-start": "classic-wide-long"});
+  av.label("$n$",
+           {top: topAlign + rectHeight,
              left: leftAlign + 2.35 * rectWidth});
-
   av.g.line(leftAlign + 2.75 * rectWidth, topAlign + 2.25 * rectHeight,
             leftAlign + 4.75 * rectWidth, topAlign + 2.25 * rectHeight,
-            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
-
-
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.line(leftAlign + 5.25 * rectWidth, topAlign - 3.75 * rectHeight,
             leftAlign + 5.25 * rectWidth, topAlign - 1.75 * rectHeight,
-            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
-
-  av.label ("$n$", 
-            {top: topAlign - 2.35 * rectHeight,
+            {"stroke-width": 2, "arrow-start": "classic-wide-long"});
+  av.label("$n$",
+           {top: topAlign - 2.35 * rectHeight,
              left: leftAlign + 5.15 * rectWidth});
-
   av.g.line(leftAlign + 5.25 * rectWidth, topAlign - 0.75 * rectHeight,
             leftAlign + 5.25 * rectWidth, topAlign + rectHeight,
-            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.step();
 
   //Slide 9
   av.umsg(interpret("sc9"));
   av.g.line(leftAlign, topAlign + rectHeight, leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight);
-  av.g.polyline([[leftAlign, topAlign + rectHeight],
-                 [leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight],
-                 [leftAlign + 5 * rectWidth, topAlign + rectHeight]]).css({fill: "blue", opacity: 0.2});
+  av.g.polyline(
+    [[leftAlign, topAlign + rectHeight],
+      [leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight],
+      [leftAlign + 5 * rectWidth, topAlign + rectHeight]]).css({fill: "blue", opacity: 0.2});
   av.step();
 
   //Slide 10
   av.umsg(interpret("sc10"), {preserve: true});
   av.g.polyline([[leftAlign, topAlign + rectHeight],
-                 [leftAlign, topAlign],
-                 [leftAlign + rectWidth, topAlign]]).addClass("smallTriangle");
+    [leftAlign, topAlign],
+    [leftAlign + rectWidth, topAlign]]).addClass("smallTriangle");
   av.g.polyline([[leftAlign + rectWidth, topAlign],
-                 [leftAlign + rectWidth, topAlign - rectHeight],
-                 [leftAlign + 2 * rectWidth, topAlign - rectHeight]]).addClass("smallTriangle");
+    [leftAlign + rectWidth, topAlign - rectHeight],
+    [leftAlign + 2 * rectWidth, topAlign - rectHeight]]).addClass("smallTriangle");
   av.g.polyline([[leftAlign + 2 * rectWidth, topAlign - rectHeight],
-                 [leftAlign + 2 * rectWidth, topAlign - 2 * rectHeight],
-                 [leftAlign + 3 * rectWidth, topAlign - 2 * rectHeight]]).addClass("smallTriangle");
+    [leftAlign + 2 * rectWidth, topAlign - 2 * rectHeight],
+    [leftAlign + 3 * rectWidth, topAlign - 2 * rectHeight]]).addClass("smallTriangle");
   av.g.polyline([[leftAlign + 3 * rectWidth, topAlign - 2 * rectHeight],
-                 [leftAlign + 3 * rectWidth, topAlign - 3 * rectHeight],
-                 [leftAlign + 4 * rectWidth, topAlign - 3 * rectHeight]]).addClass("smallTriangle");
+    [leftAlign + 3 * rectWidth, topAlign - 3 * rectHeight],
+    [leftAlign + 4 * rectWidth, topAlign - 3 * rectHeight]]).addClass("smallTriangle");
   av.g.polyline([[leftAlign + 4 * rectWidth, topAlign - 3 * rectHeight],
-                 [leftAlign + 4 * rectWidth, topAlign - 4 * rectHeight],
-                 [leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight]]).addClass("smallTriangle");
+    [leftAlign + 4 * rectWidth, topAlign - 4 * rectHeight],
+    [leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight]]).addClass("smallTriangle");
   av.step();
 
   //Slide 11

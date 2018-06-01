@@ -26,24 +26,24 @@ $(document).ready(function() {
 
   var width = 600, height = 140;
 
-  var xStart = 132;
+  var xStart = 170;
   var xEnd = xStart + width;  //end position of the x on the chart
 
   var yEnd = 60;
   var yStart = yEnd + height;  //end position of the y on the chart
   var xyScale = height/width;
-  var xMax = 60, yMax = 1500;
+  var xMax = 300, yMax = 1500;
 
   var xSteps = width / xMax;  //each pixels per 1 x-unit.
   var ySteps = height / yMax;  //each pixels per 1 y-unit.
 
 
-  var curve1 = Plot.drawCurve(_4xpow2, av, xStart, yStart, yEnd, xMax, yMax, width, height,
-                         "", -40, -40, 1, true);
+  var curve1 = Plot.drawCurve(_xpow2, xStart, yStart, yEnd, xMax, yMax, width, height,
+                         0.5, false);
   av.g.polyline(curve1, {stroke: "blue", "stroke-width": 2});
 
-  function _4xpow2(n) {
-    return Math.pow(4 * (n-10), 2);
+  function _xpow2(n) {
+    return Math.pow(n - 38, 2);
   }; // _4xpow2(n)
 
   av.step();
@@ -51,18 +51,22 @@ $(document).ready(function() {
   // Slide 5
   av.umsg("Last, we have a third-order component, with the coefficient $a_3$");
 
-  var curve2 = Plot.drawCurve(_4xpow3, av, xStart + 30, yStart - 10, yEnd, xMax, yMax, width, height,
-                         "", -40, -40, 1, true);
+  var curve2 = Plot.drawCurve(_xpow3, xStart + 28, yStart, yEnd, xMax, yMax, width, height,
+                         0.5, false);
   av.g.polyline(curve2, {stroke: "green", "stroke-width": 2});
 
-  function _4xpow3(n) {
-    return Math.pow(4 * (n-10), 3);
-  }; // _4xpow2(n)
+  function _xpow3(n) {
+    return Math.pow(0.4 * (n - 25), 3);
+  }; // _xpow2(n)
 
   av.step();
 
-  var curve3 = Plot.drawCurve(_4xpow3, av, xStart, yStart-10, yEnd, xMax, yMax, width, height,
-                         "", -40, -40, 1, true);
+  function _cubic(n) {
+    return Math.pow(0.4 * (n-30), 3) + Math.pow(n-30, 2) + n;
+  }; // _xpow2(n)
+
+  var curve3 = Plot.drawCurve(_cubic, xStart + 10, yStart - 10, yEnd, xMax, yMax, width, height,
+                         0.1, false);
   av.g.polyline(curve3, {"stroke-width": 2});
 
   av.umsg("Adding these 4 componets gives us our polynomial (in black)");

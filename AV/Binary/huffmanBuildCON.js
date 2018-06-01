@@ -1,13 +1,13 @@
-/*global ODSA */
-"use strict";
-$(document).ready(function () {
+/*global ODSA, HUFF */
+$(document).ready(function() {
+  "use strict";
   var av_name = "huffmanBuildCON";
   var config = ODSA.UTILS.loadConfig(
-                {"av_name": av_name, "json_path": "/AV/Binary/huffman.json"}),
+        {av_name: av_name, json_path: "/AV/Binary/huffman.json"}),
       interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
 
-  var freqs = [ 32,  42, 120,   7,  42,  24,  37,   2], // The frequency counts
+  var freqs = [32,   42, 120,   7,  42,  24,  37,   2], // The frequency counts
       chars = ["C", "D", "E", "K", "L", "M", "U", "Z"],  // The characters
       trees = [];   // Pointers to all of the partial Huffman trees
 

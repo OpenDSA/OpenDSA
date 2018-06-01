@@ -1,6 +1,6 @@
 /* Static image of incorrect huffman trie */
 $(document).ready(function() {
-"use strict";
+  "use strict";
   var av = new JSAV("HuffProofCON");
   var cirOpt = {fill: "white"};
 

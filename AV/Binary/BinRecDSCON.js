@@ -1,8 +1,8 @@
 /*global ODSA */
-"use strict";
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "BinRecDSCON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name, {animationMode: "none"});
 
   // Set up the tree
@@ -18,13 +18,12 @@ $(document).ready(function () {
   rt.right().left("40");
   rt.right().right("25");
   bt.layout();
-  
-  var leftTree = av.label(interpret("av_tag1"), {left: 20, top: 50});
+
+  av.label(interpret("av_tag1"), {left: 20, top: 50});
   av.g.line(230, 80, 290, 110, {"stroke-width": "2", "arrow-end": "classic"});
   av.g.ellipse(339, 118, 50, 50).css({fill: "green", opacity: 0.2});
-  
-  var rightTree = av.label(interpret("av_tag2"), {left: 550, top: 50});
+
+  av.label(interpret("av_tag2"), {left: 550, top: 50});
   av.g.line(550, 80, 490, 110, {"stroke-width": "2", "arrow-end": "classic"});
   av.g.ellipse(442, 118, 50, 50).css({fill: "purple", opacity: 0.2});
-   
 });

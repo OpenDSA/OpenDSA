@@ -14,10 +14,8 @@ $(document).ready(function() {
   var nodeGap = 50;
   var nodeHeight = 40;
   var nodeWidth = 40;
-  var labelSet;
 
   av = new JSAV(av_name);
-  labelSet = [];
 
   // Slide 1
   av.umsg(interpret("sc1"));
@@ -99,19 +97,19 @@ $(document).ready(function() {
   av.umsg(interpret("sc7"));
   av.g.line(leftAlign + nodeWidth - 7, topAlign + nodeHeight * 2,
             leftAlign + 2.7 * (nodeGap + nodeWidth), topAlign + nodeHeight * 2,
-            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
+            {"stroke-width": 2, "arrow-start": "classic-wide-long"});
   av.g.line(leftAlign + 3.55 * (nodeGap + nodeWidth),
             topAlign + nodeHeight * 2, leftAlign + 6.35 * (nodeGap + nodeWidth),
             topAlign + nodeHeight * 2,
-            {"stroke-width": 2,"arrow-end":"classic-wide-long"});
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.line(leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 65,
-           leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
+            leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
   av.g.line(leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 65,
-           leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
+            leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
   av.g.line(leftAlign + nodeWidth - 7, topAlign + 65,
             leftAlign + nodeWidth - 7, topAlign + 95);
-  av.label ("$\\displaystyle\\sum_{i=1}^{n}1$", 
-            {top: topAlign + nodeHeight * 1.15,
+  av.label("$\\displaystyle\\sum_{i=1}^{n}1$",
+           {top: topAlign + nodeHeight * 1.15,
              left: leftAlign + 3 * (nodeGap + nodeWidth)});
   av.step();
 

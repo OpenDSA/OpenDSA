@@ -99,8 +99,29 @@ class LList implements List {
   public boolean isAtEnd() { return curr == tail; }
 
   // Return current element value. Note that null gets returned if curr is at the tail
-  public Object getValue() {
-    return curr.element();
-  }
+  public Object getValue() { return curr.element(); }
+
+  // Check if the list is empty
+  public boolean isEmpty() { return listSize == 0; }
+  
+  public String toString() {
+		Link temp = head.next();
+		StringBuffer out = new StringBuffer((listSize + 1) * 4);
+
+		out.append("< ");
+		for (int i = 0; i < currPos(); i++) {
+			out.append(temp.element());
+			out.append(" ");
+			temp = temp.next();
+		}
+		out.append("| ");
+		for (int i = currPos(); i < listSize; i++) {
+			out.append(temp.element());
+			out.append(" ");
+			temp = temp.next();
+		}
+		out.append(">");
+		return out.toString();
+	  }
 }
 /* *** ODSAendTag: LList *** */

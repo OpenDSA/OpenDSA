@@ -14,5 +14,8 @@ public interface Stack { // Stack class ADT
 
   // Return the number of elements in the stack
   public int length();
+  
+  // Return true if the stack is empty 
+  public boolean isEmpty();
 }
 /* *** ODSAendTag: Stack *** */

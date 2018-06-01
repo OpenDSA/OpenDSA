@@ -66,8 +66,6 @@
   },
   "chapters": {
     "Graphs": {
-      "Graph/GraphIntro": {},
-      "Graph/GraphImpl": {},
       "Ivan/GraphTraversal": {},
       "Ivan/GraphTopsort": {}
     },

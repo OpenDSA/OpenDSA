@@ -105,18 +105,16 @@ rather than store the record itself.
 In this implementation, a swap operation need only exchange the
 pointer values.
 The large records do not need to move.
-This technique is illustrated by Figure :num:`Figure #PointerSwap`.
+This technique is illustrated by the following visualization.
 Additional space is needed to store the pointers, but the
 return is a faster swap operation.
 
 .. _PointerSwap:
 
-.. odsafig:: Images/PtrSwap.png
-   :width: 300
+.. inlineav:: ptrSwapCON dgm
+   :links: AV/Liling/ptrSwapCON.css
+   :scripts: AV/Liling/ptrSwapCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Swapping pointers to records
 
    An example of swapping pointers to records.
    (a) A series of four records.
@@ -124,16 +122,6 @@ return is a faster swap operation.
    (b) The four records after the top two pointers have been swapped.
    Now the record with key value 5 comes before the record with key
    value 42.
-
-.. inlineav:: ptrSwapCON dgm
-   :links: AV/Liling/ptrSwapCON.css
-   :scripts: AV/Liling/ptrSwapCON.js
-   :align: center
-
-.. TODO::
-   :type: Figure
-
-   Replace with with a JSAV version of the figure
 
 Here are some review questions to check how well you understand
 Selection Sort.

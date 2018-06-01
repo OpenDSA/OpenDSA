@@ -1,15 +1,15 @@
 /*global ODSA */
 // Heapbuild slideshow
-$(document).ready(function () {
+$(document).ready(function() {
   "use strict";
   var unsortArray = [1, 2, 3, 4, 5, 6, 7];
   var av_name = "heapbuildCON";
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
   var bh = av.ds.binheap(unsortArray,
-                         {compare: function (a, b) { return b - a; },
-                          steps: false, heapify: false});
+                         {compare: function(a, b) { return b - a; },
+                           steps: false, heapify: false});
 
   // Slide 1
   av.umsg(interpret("av_c1"));

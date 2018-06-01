@@ -42,13 +42,18 @@ $(document).ready(function() {
 
   // Slide 4
   av.umsg(interpret("sc4"), {preserve: true});
-  var lineOutput1 = av.g.line(leftAlign + 380 + rectWidth, topAlign + 50, leftAlign + 475 + rectWidth, topAlign + 50);
-  var lineOutput2 = av.g.line(leftAlign + 380 + rectWidth, topAlign + 115, leftAlign + 475 + rectWidth, topAlign + 115);
-  var labelOutput1 = av.label(interpret("lab5"), {top: topAlign + 12, left: leftAlign + 385 + rectWidth});
-  var labelOutput2 = av.label(interpret("lab6"), {top: topAlign + 105,
-                                            left: leftAlign + 385 + rectWidth});
+  var lineOutput1 = av.g.line(leftAlign + 380 + rectWidth, topAlign + 50,
+                              leftAlign + 475 + rectWidth, topAlign + 50);
+  var lineOutput2 = av.g.line(leftAlign + 380 + rectWidth, topAlign + 115,
+                              leftAlign + 475 + rectWidth, topAlign + 115);
+  var labelOutput1 = av.label(interpret("lab5"),
+                              {top: topAlign + 12,
+                                left: leftAlign + 385 + rectWidth});
+  var labelOutput2 = av.label(interpret("lab6"),
+                              {top: topAlign + 105,                                                            left: leftAlign + 385 + rectWidth});
   var labelOutput3 = av.label(interpret("lab7"),
-                              {top: topAlign + 22, left: leftAlign + 490 + rectWidth});
+                              {top: topAlign + 22,
+                                left: leftAlign + 490 + rectWidth});
   var labelOutput4 = av.label("$n$", {top: topAlign + 95, left: leftAlign + 490 + rectWidth});
   av.step();
 

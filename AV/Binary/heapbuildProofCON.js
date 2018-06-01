@@ -1,14 +1,14 @@
 /*global ODSA */
 // Heapbuild analysis proof slideshow
 // Written by Mohammed Farghally and Cliff Shaffer
-// Inspired by Hussein Thompson and Pranay CHaudhuri,
+// Inspired by Hussein Thompson and Pranay Chaudhuri,
 // "An Alternative Visual Analysis of the Build Heap Algorithm",
 // ACM Inroads 2, 3(September), 2011.
 
-$(document).ready(function () {
+$(document).ready(function() {
   "use strict";
   var av_name = "heapbuildProofCON";
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
   var numNodes = 31;
@@ -44,7 +44,7 @@ $(document).ready(function () {
 
   // Slide 2
   slider1.show();
-  slider1.css({"opacity": 0.3});
+  slider1.css({opacity: 0.3});
   av.umsg(interpret("sc2"));
   av.step();
 
@@ -54,7 +54,7 @@ $(document).ready(function () {
   av.g.rect(10, voffset + 50, 200, 20);
   av.label("$2^3$", {top: voffset + 60, left: 100});
   av.step();
-	
+
   // Slide 4
   slider1.translate(0, -32);
   av.umsg(interpret("sc4"));
@@ -62,7 +62,7 @@ $(document).ready(function () {
   av.g.rect(210, voffset + 30, 100, 20);
   av.label("$2^2$",  {top: voffset + 60, left: 250});
   av.step();
-	
+
   // Slide 5
   slider1.translate(0, -32);
   av.umsg(interpret("sc5"));
@@ -71,7 +71,7 @@ $(document).ready(function () {
   av.g.rect(310, 210, 50, 20);
   av.label("$2$",  {top: voffset + 60, left: 330});
   av.step();
-	
+
   // Slide 6
   slider1.translate(0, -32);
   av.umsg(interpret("sc6"));
@@ -87,46 +87,46 @@ $(document).ready(function () {
   av.umsg(interpret("sc7"));
   slider1.hide();
   slider2 = av.g.rect(10, voffset + 49, 375, 20).addClass("colored");
-  slider2.css({"opacity": 0.3});
+  slider2.css({opacity: 0.3});
   av.g.rect(430, voffset + 50, 200, 20);
   av.g.rect(630, voffset + 50, 100, 20);
   av.g.rect(730, voffset + 50, 50, 20);
   av.g.rect(780, voffset + 50, 25, 20);
   slider3 = av.g.rect(430, voffset + 50, 375, 20).addClass("colored");
-  slider3.css({"opacity": 0.3});
+  slider3.css({opacity: 0.3});
   av.label("$2^3$", {top: voffset + 60, left: 520});
   av.label("$2^2$", {top: voffset + 60, left: 670});
   av.label("$2$",   {top: voffset + 60, left: 750});
   av.label("$1$",   {top: voffset + 60, left: 790});
   av.step();
-	
+
   // Slide 8
   slider2.translate(0, -20);
   av.g.rect(430, voffset + 30, 100, 20);
   av.g.rect(530, voffset + 30, 50, 20);
   av.g.rect(580, voffset + 30, 25, 20);
   slider4 = av.g.rect(430, voffset + 30, 175, 20).addClass("colored");
-  slider4.css({"opacity": 0.3});
+  slider4.css({opacity: 0.3});
   slider3.removeClass("colored");
   av.step();
-	
+
   // Slide 9
   slider2.translate(0, -20);
   av.g.rect(630, voffset + 30, 50, 20);
   av.g.rect(680, voffset + 30, 25, 20);
   slider5 = av.g.rect(630, voffset + 30, 75, 20).addClass("colored");
-  slider5.css({"opacity": 0.3});
+  slider5.css({opacity: 0.3});
   slider4.removeClass("colored");
   av.step();
-	
+
   // Slide 10
   slider2.translate(0, -20);
   av.g.rect(730, voffset + 30, 25, 20);
   slider6 = av.g.rect(730, voffset + 30, 25, 20).addClass("colored");
-  slider6.css({"opacity": 0.3});
+  slider6.css({opacity: 0.3});
   slider5.removeClass("colored");
   av.step();
-	
+
   // Slide 11
   av.g.rect(605, voffset + 30, 25, 20).css({fill: "black"});
   av.g.rect(705, voffset + 30, 25, 20).css({fill: "black"});

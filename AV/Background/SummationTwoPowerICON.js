@@ -36,8 +36,9 @@ $(document).ready(function() {
   av.umsg(interpret("sc3.1"));
   av.umsg(interpret("sc3.2"), {preserve: true});
   var rect0 = av.g.rect(leftAlign, topAlign, rectWidth, rectHeight).addClass("highlight");
-  var label0 = av.label("$i = 0$", {top: topAlign - 0.5 * rectHeight,
-                                    left: leftAlign + rectWidth + labelShift});
+  var label0 = av.label("$i = 0$",
+                        {top: topAlign - 0.5 * rectHeight,
+                          left: leftAlign + rectWidth + labelShift});
   av.step();
 
   //Slide 4
@@ -47,8 +48,9 @@ $(document).ready(function() {
   set1.push(av.g.rect(leftAlign, topAlign + rectHeight, rectWidth, rectHeight));
   set1.push(av.g.rect(leftAlign + rectWidth, topAlign + rectHeight, rectWidth, rectHeight));
   set1.css({fill: "red"});
-  var label1 = av.label("$i = 1$", {top: topAlign - 0.5 * rectHeight + rectHeight,
-                                    left: leftAlign + 2 * rectWidth + labelShift});
+  var label1 = av.label("$i = 1$",
+                        {top: topAlign - 0.5 * rectHeight + rectHeight,
+                          left: leftAlign + 2 * rectWidth + labelShift});
   av.step();
 
   //Slide 5
@@ -60,8 +62,9 @@ $(document).ready(function() {
   set2.push(av.g.rect(leftAlign + 2 * rectWidth, topAlign + 2 * rectHeight, rectWidth, rectHeight));
   set2.push(av.g.rect(leftAlign + 3 * rectWidth, topAlign + 2 * rectHeight, rectWidth, rectHeight));
   set2.css({fill: "red"});
-  var label2 = av.label("$i = 2$", {top: topAlign - 0.5 * rectHeight + 2 * rectHeight,
-                                    left: leftAlign + 4 * rectWidth + labelShift});
+  var label2 = av.label("$i = 2$",
+                        {top: topAlign - 0.5 * rectHeight + 2 * rectHeight,
+                          left: leftAlign + 4 * rectWidth + labelShift});
   av.step();
 
   //Slide 6
@@ -77,8 +80,9 @@ $(document).ready(function() {
   set3.push(av.g.rect(leftAlign + 6 * rectWidth, topAlign + 3 * rectHeight, rectWidth, rectHeight));
   set3.push(av.g.rect(leftAlign + 7 * rectWidth, topAlign + 3 * rectHeight, rectWidth, rectHeight));
   set3.css({fill: "red"});
-  var label3 = av.label("$i = 3$", {top: topAlign - 0.5 * rectHeight + 3 * rectHeight,
-                                    left: leftAlign + 8 * rectWidth + labelShift});
+  var label3 = av.label("$i = 3$",
+                        {top: topAlign - 0.5 * rectHeight + 3 * rectHeight,
+                          left: leftAlign + 8 * rectWidth + labelShift});
   av.step();
 
   //Slide 7
@@ -102,8 +106,9 @@ $(document).ready(function() {
   set4.push(av.g.rect(leftAlign + 14 * rectWidth, topAlign + 4 * rectHeight, rectWidth, rectHeight));
   set4.push(av.g.rect(leftAlign + 15 * rectWidth, topAlign + 4 * rectHeight, rectWidth, rectHeight));
   set4.css({fill: "red"});
-  var label4 = av.label("$i = 4$", {top: topAlign - 0.5 * rectHeight + 4 * rectHeight,
-                                    left: leftAlign + 16 * rectWidth + labelShift});
+  var label4 = av.label("$i = 4$",
+                        {top: topAlign - 0.5 * rectHeight + 4 * rectHeight,
+                          left: leftAlign + 16 * rectWidth + labelShift});
   av.step();
 
   //Slide 8
@@ -131,21 +136,18 @@ $(document).ready(function() {
 
   //Slide 12
   av.umsg(interpret("sc12"));
-  av.label("-1",  {top: topAlign - 0.5 * rectHeight + 3 * rectHeight,
-                                     left: leftAlign + 16 * rectWidth + labelShift});
-
+  av.label("-1",
+           {top: topAlign - 0.5 * rectHeight + 3 * rectHeight,
+             left: leftAlign + 16 * rectWidth + labelShift});
   av.g.line(leftAlign + 0.25 * rectWidth, topAlign + 2.5 * rectHeight,
             leftAlign + 8.25 * rectWidth, topAlign + 2.5 * rectHeight,
-            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
-
-  av.label ("$2^4$", 
-            {top: topAlign + 1.5 * rectHeight,
+            {"stroke-width": 2, "arrow-start": "classic-wide-long"});
+  av.label("$2^4$",
+           {top: topAlign + 1.5 * rectHeight,
              left: leftAlign + 8.35 * rectWidth});
-
   av.g.line(leftAlign + 8.75 * rectWidth, topAlign + 2.5 * rectHeight,
             leftAlign + 15.75 * rectWidth, topAlign + 2.5 * rectHeight,
-            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
-
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.rect(leftAlign + 15 * rectWidth, topAlign + 3 * rectHeight, rectWidth, rectHeight).css({fill: "black"});
   av.step();
 

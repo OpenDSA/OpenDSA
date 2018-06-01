@@ -14,7 +14,7 @@ $(document).ready(function() {
   "use strict";
 
   //BlueStepAnim :This should come before JSAV Initialize
-  JSAV.ext.blueStepAnim = JSAV.anim(function doBlueStep(delay, time, consoleIndex, list,
+  JSAV.ext.blueStepAnim = JSAV.anim(function (delay, time, consoleIndex, list,
     priceValue, effectName) {
     if (this._shouldAnimate()) {
 
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
                   // set time out to show label
                   setTimeout(function() {
-                      it2_consoleLabels[0].show();
+                      it2_consoleLabels[consoleIndex].show();
                     }, time);
 
                   // midblue 3 animation start -----------------

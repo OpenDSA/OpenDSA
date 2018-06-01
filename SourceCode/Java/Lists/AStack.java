@@ -50,5 +50,7 @@ class AStack implements Stack {
   }
 
   public int length() { return top; } // Return stack size
+
+  public boolean isEmpty() { return top == 0; } // Check if the stack is empty
 }
 /* *** ODSAendTag: AStack2 *** */

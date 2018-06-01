@@ -1,15 +1,15 @@
 /*global ODSA */
 // Insert slideshow
-$(document).ready(function () {
+$(document).ready(function() {
   "use strict";
   var sortArray = [88, 85, 83, 72, 73, 42, 57, 6, 48, 60, ""];
   var av_name = "heapinsertCON";
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
   var bh = av.ds.binheap(sortArray,
-                         {compare: function (a, b) { return b - a; },
-                          steps: false, heapify: true});
+                         {compare: function(a, b) { return b - a; },
+                           steps: false, heapify: true});
 
   // Slide 1
   av.umsg(interpret("av_c1"));
