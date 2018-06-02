@@ -21,7 +21,7 @@ concept of :term:`objects <object>`, which are :term:`data structures
 in the form of fields (or attributes) 
 and code, in the form of procedures, (or methods). 
 A distinguishing feature of objects is that an object's procedures 
-provide access to and modify the its fields.
+provide access to and modify its fields.
 
 In object-oriented programming, computer programs are designed by making them 
 out of objects that interact with one another. 
@@ -84,18 +84,19 @@ There are 4 principles that apply to most:
     For example, a screen cursor may change its shape from an arrow to a 
     line depending on the program mode. 
     The routine to move the cursor on screen in response to mouse movement can 
-    be written for "cursor", and polymorphism lets that cursor take simulating 
-    system behaviour. 
-    It can be also described as many shapes of same object.
+    be written for "cursor", and polymorphism lets the right version
+    for the given shape be called.
 
 :Abstraction:
     
-    An abstraction denotes the essential characteristics of an object that distinguish it from all
-    other kinds of object and thus provide crisply defined conceptual
-    boundaries, relative to the perspective of the viewer. [Booch]_
+    An abstraction denotes the essential characteristics of an object
+    that distinguish it from all other kinds of objects and thus
+    provide crisply defined conceptual boundaries, relative to the
+    perspective of the viewer. [Booch]_
 
     Abstraction denotes a model, a view, or some other focused representation 
-    for an actual item. Its the development of a software object to represent 
+    for an actual item.
+    It's the development of a software object to represent 
     an object we can find in the real world. 
     Encapsulation hides the details of that implementation.
 
@@ -110,18 +111,21 @@ Consider the following example:
 
 .. codeinclude:: Introduction/BadEncapsulation
 
-It's clearly a bad idea to allow people to set the shipping weight to a negative value.
+It's clearly a bad idea to allow people to set the shipping weight to
+a negative value.
 How can you change this class to prevent problems like this from happening?
-Your only choice is to make the *weight* private and write a method that allows
-the class to set limits on weight.  But since you have already declared *weight*
-to be **public**, as soon as you make this 'fix', you break every class that
-currently uses it!
+Your only choice is to make the *weight* private and write a method
+that allows the class to set limits on weight.
+But since you have already declared *weight* to be **public**, as soon
+as you make this 'fix', you break every class that currently uses it,
+including those that are behaving properly!
 
-The ability to change your code without breaking every class that uses it is one
-of the key benefits of encapsulation.
-By limiting access and hiding the implementation details of your class to the maximum
-extent possible, you make it possible to change, fix, extend, or rework your class
-without requiring changes in any of the code that uses your class.
+The ability to change your code without breaking every class that uses
+it is one of the key benefits of encapsulation.
+By limiting access and hiding the implementation details of your class
+to the maximum extent possible, you make it possible to change, fix,
+extend, or rework your class without requiring changes in any of the
+code that uses your class.
 
 How do we ensure our code remains flexible and maintainable?
 
@@ -133,15 +137,17 @@ Compare our first example with the following:
 
 .. codeinclude:: Introduction/Encapsulation
 
-The alert among you might be thinking 
+You might be thinking 
 "Hey! How is this any better than the first example?"
-We added a setter and getter, but added no new capability.  
+We added methods to set and get the weight, but added no new
+capability.
 What have we gained?
 
 We have gained quite a bit.
-Now we are free to change our minds about how weight values are set and retrieved.
-Even though we aren't doing anything now, we are free to change the implementation
-later and no calling class will know.
+Now we are free to change our minds about how weight values are set
+and retrieved.
+Even though we aren't doing anything now, we are free to change the
+implementation later and no calling class will know.
 
 Good OO design demands thinking about the future.
 Which brings us to our final example.
@@ -156,7 +162,7 @@ Consider the following example:
 
 .. codeinclude:: Introduction/Inheritance
 
-When run, produces the following output:
+When run, produces the following output::
 
   'test1' does not equal 'test2'.
   'test1' is an Object.
@@ -296,17 +302,20 @@ This is the default behavior for ``equals()``, and it is often sufficient.
 In cases where you need to determine whether two objects are *logically equivalent*,
 you override the ``equals()`` method.
 
-There are many classes where it would be irritating to have ``equals()`` evaluate to false:
+There are many classes where it would be irritating to have
+``equals()`` evaluate to false:
 
 .. line-block::
    Object a = new Integer(2);
    Object b = new Integer(2);
 
-Recall that ``==`` always compares object references and in the above example, will identify
-the two Integer classes as different even though ``a.equals(b)`` evaluates to true.
+Recall that ``==`` always compares object references,
+so here ``a == b`` always evaluates to false while
+``a.equals(b)`` evaluates to true.
 
-Similarly, the output of ``toString()`` displays the location of the object on the heap,
-which is not always the most intuitive string representation of your objects.
+Similarly, the output of ``toString()`` displays the location of the
+object on the heap, which is not always the most intuitive string
+representation of your objects.
 
 Compare the previous example with the following.
 What output does this program produce?
@@ -381,16 +390,20 @@ in a cohesive logical unit.
 A program describing a car might perform basic tasks: steer, speed up, slow down, but also
 needs to store information about the car: current speed, direction, cruise control setting, etc.
 
-If you wrote your car driving program in a procedural language, you would likely require 
-different functions to control each of the car behaviors.
-You might create functions for ``turnCarOn()``, ``turnCarOff()``, ``accelerate()``, ``steer()``,
-and others.  You would also need variables to store the current state of the car.
-Although it's perfectly valid to construct such a car in a procedural language, these
-functions and variables we have created only exist as a whole entity, a *car* in the mind of 
-the programmer who created it.  
-The idea that individual units within a program each have a specific role or responsibility
-is called :term:`cohesion` and is difficult achieve in procedural programs.
+If you wrote your car driving program in a procedural language, you
+would likely require different functions to control each of the car
+behaviors.
+You might create functions for ``turnCarOn()``, ``turnCarOff()``,
+``accelerate()``, ``steer()``, and others.
+You would also need variables to store the current state of the car.
+Although it's perfectly valid to construct such a car in a procedural
+language, these functions and variables we have created only exist as
+a whole entity, a *car* in the mind of the programmer who created it.  
+The idea that individual units within a program each have a specific
+role or responsibility is called :term:`cohesion` and is difficult to
+achieve in procedural programs.
 
-For very large programs, which might contain hundreds or even thousands of entities,
-lack of cohesion can introduce errors, make programs more difficult to understand and maintain,
-and complicate the development of very large programs.
+For very large programs, which might contain hundreds or even
+thousands of entities, lack of cohesion can introduce errors, make
+programs more difficult to understand and maintain, and complicate the
+development of very large programs.

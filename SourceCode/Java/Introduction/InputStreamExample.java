@@ -6,5 +6,5 @@ try( InputStream inputstream = new FileInputStream("file.txt") ) {
     System.out.print((char) data);
     data = inputstream.read();
   }
-}
+} catch (Exception e) { }
 /* *** ODSAendTag: InputStream *** */

@@ -19,22 +19,24 @@ Software Development Processes
 
 .. index:: agile methods, plan-driven methods, 
 
-A **software development process** is simply the division of a software project into 
-distinct stages or phases of work.
-Each stage is characterized by specific activities which are used to help plan and
-manage progress.  
-A software development process is implemented to improve quality, cost or schedule
-performance, or all of these things.
-While there as many software development processes as there are software practitioners,
-a few have gained notoriety.
-These more commonly encountered processes are the ones discussed in this section.
+A **software development process** is simply the division of a
+software project into distinct stages or phases of work.
+Each stage is characterized by specific activities which are used to
+help plan and manage progress.  
+A software development process is implemented to improve quality, cost
+or schedule performance, or all of these things.
+While there are as many software development processes as there are
+software practitioners, a few have gained notoriety.
+These more commonly encountered processes are the ones discussed in
+this section.
 
-All software development processes are essentially variations on the *Plan-Do-Check-Act*
-first described by Francis Bacon in 1620 [Bacon].  Yes, that’s right.
-There are many software development processes, describing the  *Plan-Do-Check-Act* loop
-in varying levels of detail.  Today, most of these processes are lumped into either
+All software development processes are essentially variations on the
+*Plan-Do-Check-Act* first described by Francis Bacon in 1620 [Bacon].
+Yes, that’s right.
+There are many software development processes, describing the
+*Plan-Do-Check-Act* loop in varying levels of detail.
+Today, most of these processes are lumped into either
 of two very broad categories: *Agile* or *Plan Driven*.
-
 
 Plan Driven processes emerged in the 1960's. 
 As the size of software projects grew, several worrying trends emerged:
@@ -65,9 +67,11 @@ by the time they were ready to deliver, the playing field had changed enough to 
 if not obsolete, at least a less compelling commercial success.
 
 
-The practitioners of Agile methods tend to be a diverse and fraction group, but have, as a group
-drafted a single statement that nearly all agile process models embrace.
-It is known as the *Agile Manifesto* [#]_.  Here it is in it's entirety:
+The practitioners of Agile methods tend to be a diverse and fractious
+group, but have, as a group, drafted a single statement that nearly all
+agile process models embrace. 
+It is known as the *Agile Manifesto* [#]_.
+Here it is in it's entirety:
 
    | We are uncovering better ways of developing
      software by doing it and helping others do it. 
@@ -79,15 +83,16 @@ It is known as the *Agile Manifesto* [#]_.  Here it is in it's entirety:
    | **Customer collaboration** over contract negotiation
    | **Responding to change** over following a plan
    |  
-   | That is, while there is value in the items on the right, we value the items on the left **more**.
+   | That is, while there is value in the items on the right, we value
+     the items on the left **more**. 
 
-
-Much of the documentation available today implies that choosing a process is 
-an *either - or* proposition.  That a project must be either plan driven or agile.
-The reality is a bit more nuanced and there can can be bitter disagreements
-between proponents of different process models. 
-One way to summarize the differences between the two groups is to examine the 
-myths propagated about them.
+Much of the documentation available today implies that choosing a
+process is an *either - or* proposition.
+That a project must be either plan driven or agile.
+The reality is a bit more nuanced and there can can be bitter
+disagreements between proponents of different process models. 
+One way to summarize the differences between the two groups is to
+examine the myths propagated about them.
 
 Common misunderstandings directed at Plan-driven processes include:
 
@@ -177,10 +182,11 @@ the following phases:
 #. Verification: the systematic discovery and debugging of defects
 #. Maintenance: the installation, migration, support, and maintenance of complete systems
 
-The waterfall model was simple to understand and was widely used throughout the 1980's,
-but came under criticism primarily for it's lack of flexibility.
-Although officially endorsed bu the US Department of Defense in 1985, the DoD supplanted
-it with other process guidance 10 years later.
+The waterfall model was simple to understand and was widely used
+throughout the 1980's, but came under criticism primarily for it's
+lack of flexibility.
+Although officially endorsed by the US Department of Defense in 1985,
+the DoD supplanted it with other process guidance ten years later.
 
 .. [#] Peter Kemp / Paul Smith, *Waterfall model*
    (Adapted from Paul Smith's work at wikipedia) 
@@ -243,6 +249,7 @@ Within each iteration, the tasks are categorized into nine disciplines:
 
 
 Other Plan-Driven Approaches
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Military Methods (DoD)
    DoD-STD-2167 
@@ -406,23 +413,26 @@ Scrum
 ~~~~~
 
 Scrum is an agile software management process.
-That is, it describes how software development teams should be organised and
-let's each team determine what technical software development activities they
-should perform.
+That is, it describes how software development teams should be
+organised and lets each team determine what technical software
+development activities they should perform.
 
 Projects are divided into 30-day work intervals (“sprints”) in which a 
-specific number of requirements from a prioritized list (“backlog”) are implemented.
-Short (10-15 minute) “Scrum meetings”, held daily, maintain coordination within the team and with
-project stakeholders (pigs and chickens).
+specific number of requirements from a prioritized list (“backlog”)
+are implemented.
+Short (10-15 minute) “Scrum meetings”, held daily, maintain
+coordination within the team and with project stakeholders (pigs and
+chickens).
 
 
 Feature-Driven Development (FDD)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-FDD is a lightweight, architecturally based process that initially establishes 
-an overall object architecture and features list.
-Projects then proceed to design-by-feature and build-by-feature activities.
+FDD is a lightweight, architecturally based process that initially
+establishes an overall object architecture and features list.
+Projects then proceed to design-by-feature and build-by-feature
+activities.
 Both design-by-feature and build-by-feature are incremental software
 construction methodologies.
-In FDD, the use of UML or other object-oriented design methods is strongly implied,
-if not explicitly required.
+In FDD, the use of UML or other object-oriented design methods is
+strongly implied, if not explicitly required.
