@@ -19,12 +19,26 @@ static ErrorRec record;
 
 static long time1, time2;
 
+    static void listIter() {
+        List L = new AList();
+        Object it;
+/* *** ODSATag: listiter *** */
+for (L.moveToStart(); !L.isAtEnd(); L.next()) {
+  it = L.getValue();
+  doSomething(it);
+}
+/* *** ODSAendTag: listiter *** */
+    }
+
+    static void doSomething(Object it) {
+    }
+
 /* *** ODSATag: listfind *** */
 // Return true if k is in list L, false otherwise
 static boolean find(List<Integer> L, int k) {
   for (L.moveToStart(); !L.isAtEnd(); L.next())
     if (k == L.getValue()) return true; // Found k
-  return false;                                  // k not found
+  return false;                         // k not found
 }
 /* *** ODSAendTag: listfind *** */
 

@@ -50,7 +50,7 @@ public:
   // Return the current element
   virtual ListItemType getValue() =0;
   
-/* *** ODSAendTag: ListADT *** */
 };
+/* *** ODSAendTag: ListADT *** */
 
 #endif /* ALIST H */

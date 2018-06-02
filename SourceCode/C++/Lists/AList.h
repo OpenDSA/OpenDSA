@@ -86,6 +86,5 @@ class AList : public List {
       return 0;
     return listArray[curr];
   }
-  /* *** ODSAendTag: AList *** */
-
 };
+/* *** ODSAendTag: AList *** */

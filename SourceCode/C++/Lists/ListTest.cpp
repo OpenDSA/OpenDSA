@@ -42,7 +42,7 @@ string toString(List& L) {
 bool find(List& L, int k) {
   for (L.moveToStart(); !L.isAtEnd(); L.next())
     if (k == L.getValue()) return true; // Found k
-  return false;                                  // k not found
+  return false;                         // k not found
 }
 /* *** ODSAendTag: listfind *** */
 

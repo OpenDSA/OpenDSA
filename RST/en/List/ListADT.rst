@@ -32,7 +32,7 @@ position in the list.
 So the term "ordered" in this context does **not** mean that the list
 elements are sorted by value.
 (Of course, we can always choose to sort the elements on the list if
-we want, its just that keeping the elements sorted is not an inherent
+we want; it's just that keeping the elements sorted is not an inherent
 property of being a list.)
 
 Each list element must have some data type.
@@ -138,7 +138,7 @@ You might notice that the ``clear`` method is a "convenience" method,
 since it could be implemented by means of the other
 member functions in the same asymptotic time.
 
-A list can be iterated through follows:
+A list can be iterated through as follows:
 
 .. codeinclude:: Lists/ListTest
    :tag: listiter
