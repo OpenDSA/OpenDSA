@@ -5,7 +5,7 @@
       "sc2": "We will append the value 23.",
       "sc3": "First check that the array has a free slot.",
       "sc4": "Now simply insert the value into the empty position, and update <code>listSize</code>.",
-      "sc5": "The append operation therefore requires $\\Theta(1)$ time."
+      "sc5": "The append operation therefore requires constant time."
     }
   },
   "code": {

@@ -83,7 +83,7 @@ and ">>" will take you to the beginning or end of the slideshow.
 You get "completion" for a slideshow just for progressing to the end
 (one step at a time).
 A green checkmark should show up on the right when you complete it.
-Depending on your your book instance is configured, completing a
+Depending on how your book instance is configured, completing a
 slideshow might give you points or it might not.
 
 **Algorithm Visualizations:**

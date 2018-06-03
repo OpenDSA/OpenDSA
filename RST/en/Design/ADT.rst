@@ -131,6 +131,8 @@ as a disk drive or CD.
 
    #. Return the number of integers currently in the list.
 
+   #. Retrieve the integer at a particular position in the list.
+
    #. Delete the integer at a particular position in the list.
 
    From this description, the input and output of each operation should

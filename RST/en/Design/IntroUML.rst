@@ -18,30 +18,31 @@ The Unified Modeling Language
 
 .. index:: unified modeling langauage; selecting
 
-The Unified Modeling Language, or UML is an industry standard graphical
+The Unified Modeling Language, or UML, is an industry standard graphical
 notation for describing and analysing software designs.
 The symbols and graphs used in the UML are an outgrowth of efforts in the
-1980's and early 1990's to devise standards for 
-Computer-Aided Software Engineering (CASE). The UML represents a
-**unification** of these efforts. 
+1980's and early 1990's to devise standards for Computer-Aided
+Software Engineering (CASE).
+UML represents a **unification** of these efforts. 
 In 1994 - 1995 several leaders in the development of modeling languages,
-Grady Booch, Ivar Jacobson and James Rumbaugh attempted to unify their work. 
+Grady Booch, Ivar Jacobson, and James Rumbaugh, attempted to unify
+their work.
 To eliminate the method fragmentation that they concluded was impeding 
 commercial adoption of modeling tools, they developed UML, 
 which provided a level playing field for all tool vendors. 
 
-The UML has been accepted as a standard by the Object Management Group [#]_ (OMG). 
+UML has been accepted as a standard by the Object Management Group [#]_ (OMG). 
 The OMG is a non-profit organization with about 700 members that sets standards 
 for distributed object-oriented computing.
 
-The UML was initially largely funded by the employer of Booch, Jacobson & Rumbaugh,
+UML was initially largely funded by the employer of Booch, Jacobson & Rumbaugh,
 aka *the three amigos*, Rational Software, which was sold to IBM in 2002.
 
 A software model is any textual or graphic representation of an aspect of a software
 system.  This could include requirements, behavior, states or how the system is
 installed.  The model is **not** the actual system, rather it describes different
 aspects of the system to be developed.
-The UML defines a set of diagrams and corresponding rules that can be used 
+UML defines a set of diagrams and corresponding rules that can be used 
 to model a system.  The diagrams in the UML are generally divided into two
 broad categories or *views*, **static** and **dynamic**.
 
@@ -64,8 +65,8 @@ course are used not only in the UML, but in other modeling systems as well [#]_ 
 Static and Dynamic Diagrams
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Static diagrams emphasize the static structure of the system, its objects
-attributes, methods, and relationships.  
+Static diagrams emphasize the static structure of the system, its
+objects' attributes, methods, and relationships.  
 Static views include:
 
 - Class diagrams and 
@@ -96,13 +97,15 @@ The **class diagram** is one of the most commonly encountered diagrams.
 It describes the types of objects in a system and the kinds of static 
 relationships that exist among them.
 
-In UML, a class is represented by a rectangle with one or more horizontal compartments. 
-By convention, the class name starts with a capital letter. 
-Another convention is to italicize the class name is the class is an *AbstractClass*.
-The top compartment holds the name of the class. The name of the class is the only 
-required field in a class diagram. 
-The middle compartment of the class rectangle holds the list of the class 
-attributes. 
+In UML, a class is represented by a rectangle with one or more
+horizontal compartments.
+By convention, the class name starts with a capital letter.
+Another convention is to italicize the class name if the class is an
+*AbstractClass*.
+The top compartment holds the name of the class. The name of the class
+is the only required field in a class diagram. 
+The middle compartment of the class rectangle holds the list of the
+class attributes. 
 The bottom compartment holds the list of methods.
 
 
@@ -110,8 +113,9 @@ The bottom compartment holds the list of methods.
 
    .. odsafig:: Images/BackUMLclass.png
 
-Attribute and method visibility is indicated using a single character before the 
-class member.  Static members are indicated by underlining the member name.
+Attribute and method visibility is indicated using a single character
+before the class member.
+Static members are indicated by underlining the member name.
 The UML term for static members is *classifier members*.
 
 The UML syntax for an attribute is:
@@ -178,17 +182,20 @@ and packages that connects a client element with a supplier element.
 A realization relationship between classes and interfaces and between components 
 and interfaces shows that the class realizes the operations offered by the interface.
 
-In this class, we are primarily concerned with relationships between classes.
+In this course, we are primarily concerned with relationships between
+classes.
 Note the addition at the top of the **Person** class: ``<<interface>>``.
-The angle brakets define a *stereotype*.  The stereotype allows UML modelers
-to extend the vocabulary of a model element or to be more specific about the
-role or purpose of a model element.
-In this case, the stereotype **<<interface>>** tells us this is not just any
-old class, but this class defines an *interface*.
+The angle brakets define a *stereotype*.
+The stereotype allows UML modelers to extend the vocabulary of a model
+element or to be more specific about the role or purpose of a model
+element.
+In this case, the stereotype **<<interface>>** tells us this is not
+just any old class, but this class defines an *interface*.
 
 Notice the similarity between the **Generalization** relationship and
-the **Realization** relationship.  **Generalization** always models **inheritance**
-relationships between classes.
+the **Realization** relationship.
+**Generalization** always models **inheritance** relationships between
+classes.
 **Realization** always models **interface implementation** 
 relationships between classes.
 
@@ -298,7 +305,7 @@ For example:
       -- Martin Fowler, `AggregationAndComposition blog post <http://martinfowler.com/bliki/AggregationAndComposition.html>`_  17 May 2003.
 
 
-**Composiiton**
+**Compositon**
 
 .. sidebar:: Composiiton
 

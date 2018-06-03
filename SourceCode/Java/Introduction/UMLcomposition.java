@@ -26,7 +26,7 @@ public class Car {
     if (null == mopar) {
       mopar = new Engine();
     }
-    return mopar.doSomething();
+    mopar.doSomething();
   }
 }
 /* *** ODSAendTag: UMLcomposition *** */
