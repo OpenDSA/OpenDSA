@@ -111,10 +111,11 @@ return is a faster swap operation.
 
 .. _PointerSwap:
 
-.. inlineav:: ptrSwapCON dgm
+.. inlineav:: ptrSwapCON ss
    :links: AV/Liling/ptrSwapCON.css
    :scripts: AV/Liling/ptrSwapCON.js
    :align: center
+
 
    An example of swapping pointers to records.
    (a) A series of four records.
