@@ -4,7 +4,7 @@
 $(document).ready(function() {
   "use strict";
 
-  var av = new JSAV("ptrSwapCON", {animationMode: "none"});
+  var av = new JSAV("ptrSwapCON");
 
   var ytop = 25;
 
