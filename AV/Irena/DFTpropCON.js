@@ -51,8 +51,8 @@ $(document).ready(function() {
   
   av.step();
 
-  av.umsg("For any integer k, we have $\\omega^ (8+k)=\\omega^8$, so "
-    + "$\\omega^0=\\omega^8=\\omega^16=\\omega^24=1$.")
+  av.umsg("For any integer k, we have $\\omega^{8+k}=\\omega^8$, so "
+    + "$\\omega^0=\\omega^8=\\omega^{16}=\\omega^{24}=1$.")
 
   mat.value(4, 4, "$1$");
   mat.value(4, 6, "$1$");
@@ -63,7 +63,7 @@ $(document).ready(function() {
 
   av.step();
 
-  av.umsg("We also have $\\omega^4=\\omega^12=\\omega^20=\\omega^28=\\omega^36=-1$.");
+  av.umsg("We also have $\\omega^4=\\omega^{12}=\\omega^{20}=\\omega^{28}=\\omega^{36}=-1$.");
 
   mat.value(2, 6, "$-1$");
   mat.value(3, 4, "$-1$");
@@ -87,13 +87,13 @@ $(document).ready(function() {
 
   av.step();
 
-  av.umsg("Another property is $\\omega^4+k=-\\omega^k which can be confirmed"
+  av.umsg("Another property is $\\omega^{4+k}=-\\omega^k$ which can be confirmed"
     + " from the elements already placed in the matrix.");
 
   av.step();
 
   av.umsg("We can compute: $\\omega^1=\\sqrt i$. \n From the first property, "
-    + "we have: $\\omega^9=\\omega^25=\\omega^49=\\sqrt i$.");
+    + "we have: $\\omega^9=\\omega^{25}=\\omega^{49}=\\sqrt i$.");
 
   mat.value(1, 1, "$\\sqrt i$");
   mat.value(3, 3, "$\\sqrt i$");
@@ -106,7 +106,7 @@ $(document).ready(function() {
 
   av.step();
 
-  av.umsg("And from the second property: $\\omega^5=\\omega^21=-\\sqrt i$");
+  av.umsg("And from the second property: $\\omega^5=\\omega^{21}=-\\sqrt i$");
 
   mat.value(1, 5, "$\\sqrt i$");
   mat.value(3, 7, "$\\sqrt i$");
@@ -119,7 +119,7 @@ $(document).ready(function() {
 
   av.step();
   av.umsg("When we compute $\\omega^2=i$, we also get: "
-    +"$\\omega^10=\\omega^18=\\omega^42=i$");
+    +"$\\omega^{10}=\\omega^{18}=\\omega^{42}=i$");
 
   mat.value(1, 2, "$i$");
   mat.value(2, 1, "$i$");
@@ -139,7 +139,7 @@ $(document).ready(function() {
   mat.css(7, 6, {"background-color": "#ffffb3"});
 
   av.step();
-  av.umsg("And $\\omega^6=\\omega^14=\\omega^30=-i$");
+  av.umsg("And $\\omega^6=\\omega^{14}=\\omega^{30}=-i$");
 
   mat.value(1, 6, "$-i$");
   mat.value(2, 3, "$-i$");
@@ -159,8 +159,8 @@ $(document).ready(function() {
   mat.css(7, 2, {"background-color": "#ffffb3"});
 
   av.step();
-  av.umsg("Finally, we have: $\\omega^3=\\omega^35=i\\sqrt i$"
-    + "and $\\omega^7=\\omega^15=-i\\sqrt i$");
+  av.umsg("Finally, we have: $\\omega^3=\\omega^{35}=i\\sqrt i$"
+    + " and $\\omega^7=\\omega^{15}=-i\\sqrt i$");
 
   mat.value(1, 3, "$i\\sqrt i$");
   mat.value(3, 1, "$i\\sqrt i$");
@@ -180,7 +180,7 @@ $(document).ready(function() {
   mat.css(7, 1, {"background-color": "#ffffb3"});
 
   av.step();
-  av.umsg("After only 3-4 steps, we filled the DFT matrix completely.");
-  
+  av.umsg("Using these properties, we can completely fill the DFT matrix in 3-4 steps.");
+
   av.recorded();
 });

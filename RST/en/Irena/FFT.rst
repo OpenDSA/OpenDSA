@@ -20,11 +20,6 @@ The Fast Fourier Transform
 See the `FFT Storyboard <../../../Storyboard/FFT.pptx>`_ for some more
 visualizations of this material.
 
-.. inlineav:: polynomialCON ss
-   :long_name: fft slideshow 1 polynomial
-   :links: AV/Irena/polynomialCON.css
-   :scripts: DataStructures/Plot.js AV/Irena/polynomialCON.js
-   :output: show
 
 Multiplication is considerably more difficult than addition.
 The cost to multiply two :math:`n`-bit numbers directly is
@@ -62,6 +57,14 @@ a polynomial of degree :math:`n-1`, expressed as
 
    P_{\mathbf a}(x) = \sum_{i=0}^{n-1} {\mathbf a}_i x^i.
 
+.. inlineav:: polynomialCON ss
+   :long_name: fft slideshow 1 polynomial
+   :links: AV/Irena/polynomialCON.css
+   :scripts: DataStructures/Plot.js AV/Irena/polynomialCON.js
+   :output: show
+
+
+
 Alternatively, a polynomial can be uniquely represented by a
 list of its values at :math:`n` distinct points.
 Finding the value for a polynomial at a given point is called
@@ -69,14 +72,24 @@ Finding the value for a polynomial at a given point is called
 Finding the coefficients for the polynomial given the values at
 :math:`n` points is called :term:`interpolation`.
 
+
+
 .. inlineav:: EvalandInterpolationCON ss
    :long_name: fft slideshow 2 evaluation and interpolation
    :links: AV/Irena/EvalandInterpolationCON.css
    :scripts: DataStructures/Plot.js AV/Irena/EvalandInterpolationCON.js
    :output: show
 
+
 To multiply two :math:`n-1`-degree polynomials :math:`A` and :math:`B`
 normally takes :math:`\Theta(n^2)` coefficient multiplications.
+
+.. inlineav:: ProductCON ss
+   :long_name: fft slideshow 3 polynomial product
+   :links: AV/Irena/ProductCON.css
+   :scripts: AV/Irena/ProductCON.js
+   :output: show
+
 However, if we evaluate both polynomials (at the same points), we can
 simply multiply the corresponding pairs of values to get the
 corresponding values for polynomial :math:`AB`.
@@ -103,11 +116,6 @@ corresponding values for polynomial :math:`AB`.
    These results are the same as when we evaluate polynomial
    :math:`AB` at these points.
 
-.. inlineav:: ProductCON ss
-   :long_name: fft slideshow 3 polynomial product
-   :links: AV/Irena/ProductCON.css
-   :scripts: AV/Irena/ProductCON.js
-   :output: show
 
 Note that evaluating any polynomial at 0 is easy.
 If we evaluate at 1 and -1, we can share a lot of the work
@@ -310,6 +318,13 @@ The algorithm is as follows::
      }
      return Polynomial;
    }
+
+
+.. inlineav:: FFTprocedureCON ss
+   :long_name: fft slideshow 6 FFT procedure
+   :links: AV/Irena/FFTprocedureCON.css
+   :scripts: lib/complex.js AV/Irena/FFTprocedureCON.js
+   :output: show
 
 Thus, the full process for multiplying polynomials
 :math:`A` and :math:`B` using the Fourier transform is as follows.
