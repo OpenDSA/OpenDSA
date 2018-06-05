@@ -1,0 +1,9 @@
+{
+  "translations" :{
+    "en": {
+	  "description1": "A series of four records. The record with key value 42 comes before the record with key value 5.",
+	  "description2": "The four records after the top two pointers have been swapped.",
+	  "description3": "Now the record with key value 5 comes before the record with key value 42."
+    }
+  }
+}

@@ -3,20 +3,22 @@
 
 $(document).ready(function() {
   "use strict";
-
-  var av = new JSAV("ptrSwapCON", {animationMode: "none"});
-
-  var ytop = 25;
+  var av = new JSAV("ptrSwapCON");
+  var av_name = "ptrSwapCON";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+      interpret = config.interpreter;       // get the interpreter
+  var ytop = 50;
 
   //first slide
-  av.umsg("A series of four records. The record with key value 42 comes before the record with key value 5.");
-  for (var pos = ytop; pos < 120; pos += 30) {
+  //av.label("A series of four records. The record with key value 42 comes before the record with key value 5.", {bottom: 183});
+  av.umsg(interpret("description1"));
+  for (var pos = ytop; pos < 145; pos += 30) {
     av.g.rect(250, pos, 30, 30);
     av.g.rect(315, pos + 5, 80, 20);
     av.g.line(265, pos + 15, 315, pos + 15,
               {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   }
-  av.label("(a)", {left: 325, top: ytop + 115});
   av.label("Key = 42", {left: 325, top: ytop - 10});
   av.label("Key = 5", {left: 325, top: ytop + 20});
   av.label("Key = 23", {left: 325, top: ytop + 50});
@@ -24,13 +26,13 @@ $(document).ready(function() {
   av.displayInit();
 
   //second slide
-  av.umsg(" The four records after the top two pointers have been swapped.");
-  //thinking to add more steps here
+  av.umsg(interpret("description2"));
   av.step();
 
+
   //third slide
-  av.umsg("Now the record with key value 5 comes before the record with key value 42");
-  for (var pos = ytop; pos < 120; pos += 30) {
+  av.umsg(interpret("description3"));
+  for (var pos = ytop; pos < 145; pos += 30) {
     av.g.rect(470, pos, 30, 30);
     av.g.rect(535, pos + 5, 80, 20);
   }
@@ -42,8 +44,8 @@ $(document).ready(function() {
   av.label("Key = 5", {left: 545, top: ytop + 20});
   av.label("Key = 23", {left: 545, top: ytop + 50});
   av.label("Key = 10", {left: 545, top: ytop + 80});
-  av.label("(b)", {left: 545, top: ytop + 115});
   av.step();
+
   av.recorded();
 
 });
