@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 
   //third slide
-  av.umsg(interpret("description3"));
+  sav.umsg(interpret("description3"));
   for (var pos = ytop; pos < 145; pos += 30) {
     av.g.rect(470, pos, 30, 30);
     av.g.rect(535, pos + 5, 80, 20);
