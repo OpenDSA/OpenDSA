@@ -116,14 +116,6 @@ return is a faster swap operation.
    :links: AV/Liling/ptrSwapCON.css
    :scripts: AV/Liling/ptrSwapCON.js
    :output: show
-   :align: center
-
-   An example of swapping pointers to records.
-   (a) A series of four records.
-   The record with key value 42 comes before the record with key value 5.
-   (b) The four records after the top two pointers have been swapped.
-   Now the record with key value 5 comes before the record with key
-   value 42.
 
 Here are some review questions to check how well you understand
 Selection Sort.
