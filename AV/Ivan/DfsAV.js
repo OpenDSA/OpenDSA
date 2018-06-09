@@ -1,7 +1,12 @@
-/*global ODSA */
-"use strict";
+/*global ODSA graphUtils */
+$(document).ready(function() {
+  "use strict";
 
-(function($) {
+  // Load the config object with interpreter
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
+
   var g;
   var arr;
   var size;
@@ -9,93 +14,86 @@
   var markCount;
   var nodeCount;
 
+
   function dir() {
-    ODSA.AV.reset(true);
-    jsav = new JSAV($('.avcontainer'));
-    dirGraph();
-    arr = jsav.ds.array(["","","","","","","",""],  {layout: "vertical", left: 640, top: 0, width: 60});
-    markCount =0;
-    size = g.nodeCount();
-    nodeCount = g.nodeCount();
-    g.layout();
-    jsav.displayInit();
-    jsav.umsg("Let's look at the details of how a depth-first seach works.");
-    markIt(g.nodes()[0]);
-    dfs(g.nodes()[0]);
-    jsav.step();
-    dirfinalGraph();
-    jsav.recorded();
+    doIt(true);
   }
+
 
   function undir() {
+    doIt(false);
+  }
+
+
+  function doIt(isDirected) {
     ODSA.AV.reset(true);
-    jsav = new JSAV($('.avcontainer'));
-    undirGraph();
-    arr = jsav.ds.array(["","","","","","","",""],  {layout: "vertical", left: 640, top: 0, width: 60});
-    size = g.nodeCount();
+    jsav = new JSAV($(".avcontainer"), {settings: settings});
+    makeGraph(isDirected);
+    arr = jsav.ds.array(["", "", "", "", "", "", "", ""],
+                        {layout: "vertical", left: 640, top: 0, width: 60});
+    markCount = 0;
+    nodeCount = g.nodeCount();
+    jsav.umsg("Let's look at the details of how a depth-first seach works.");
     g.layout();
     jsav.displayInit();
-    jsav.umsg("Let's look at the details of how a depth-first seach works.");
-    markIt(g.nodes()[0]);
     dfs(g.nodes()[0]);
-    jsav.step();
-    finalGraph();
+    jsav.umsg("Completed depth first search graph");
+    if (markCount < nodeCount) {
+      jsav.step();
+      jsav.umsg("Note that this traversal did not reach all of the nodes, " +
+                "due to the directions on the edges making some nodes unreachable from A. " +
+                "This is why DFS is typically done in the context of starting the " +
+                "traversal from every node.");
+    }
     jsav.recorded();
   }
 
-  function dirGraph() {
+
+  function makeGraph(isDirected) {
     g = jsav.ds.graph({
       width: 500,
       height: 360,
       left: 0,
       top: 50,
       layout: "automatic",
-      directed: true
+      directed: isDirected
     });
     graphUtils.generate(g); // Randomly generate the graph without weight
-    jsav.umsg("Call depth first search on A");
     return g;
   }
 
-  function undirGraph() {
-    g = jsav.ds.graph({
-      width: 500,
-      height: 360,
-      left: 0,
-      top: 50,
-      layout: "automatic",
-      directed: false
-    });
-    graphUtils.generate(g); // Randomly generate the graph without weight
-    jsav.umsg("Call depth first search on A");
-    return g;
-  }
 
   function preVisit(node, prev) {
-    jsav.umsg("Add " + node.value() + " to the stack ");
-    arr.value(size, node.value());
-    size--;
     if (prev) {
+      jsav.umsg("Add " + prev.value() + " to the recursion stack and add the new edge to the DFS tree");
+      arr.value(size, prev.value());
+      size--;
       node.edgeFrom(prev).addClass("markpath");
+      jsav.step();
     }
-    jsav.step();
   }
+
 
   // Mark the nodes when visited and highlight it to
   // show it has been marked
   function markIt(node) {
     node.addClass("marked");
-    jsav.umsg("Mark node " + node.value());
     markCount++;
+    jsav.umsg("Mark node " + node.value());
     node.highlight();
     jsav.step();
   }
 
-  function postVisit(node) {
-    jsav.umsg("Pop " + node.value() + " off of stack");
-    size++;
-    arr.value(size, " ");
+
+  function postVisit(node, prev) {
+    if (prev) {
+      jsav.umsg("Return to Node " + prev.value() + ", pop it off the recursion stack");
+      size++;
+      arr.value(size, " ");
+      jsav.step();
+    }
   }
+
 
   // Recursive depth first search algorithmn for searching
   // the graph
@@ -103,50 +101,33 @@
     var adjacent;
     var next;
     preVisit(start, prev);
+    markIt(start);
     adjacent = start.neighbors();
-
     for (next = adjacent.next(); next; next = adjacent.next()) {
       jsav.umsg("Process (" + start.value() + "," + next.value() + ")");
-      if(next.hasClass("marked")) {
+      jsav.step();
+      if (next.hasClass("marked")) {
         jsav.umsg("Node " + next.value() + " already marked");
+        jsav.step();
       }
-
-      jsav.step();
       if (!next.hasClass("marked")) {
-        jsav.umsg("Print (" + start.value() + "," + next.value() + ") and call depth first search on " + next.value());
+        jsav.umsg("Call depth first search on " + next.value());
         jsav.step();
-        markIt(next);
         dfs(next, start);
-        jsav.step();
       }
     }
-    postVisit(start);
+    postVisit(start, prev);
   }
 
-  // Resulting graph of completed depth first search
-  function dirfinalGraph() {
-    if (markCount < nodeCount) {
-      jsav.umsg("Completed breadth first search graph");
-      jsav.step();
-      jsav.umsg("Note that this traversal did not reach all of the nodes, due to the directions on the edges making some nodes unreachable from A."
-                + "This is why DFS is typically done in the context of starting the traversal from every node.");
-    }
-    else {
-      jsav.umsg("Completed breadth first search graph");
-    }
-  }
 
-  function finalGraph() {
-    jsav.umsg("Completed depth first search graph");
-  }
-
+  // Process About button: Pop up a message with an Alert
   function about() {
-    alert("Depth first search visualization");
+    alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
+
 
   // Connect action callbacks to the HTML entities
-  $('#about').click(about);
-  $('#help').click(help);
-  $('#dir').click(dir);
-  $('#undir').click(undir);
-}(jQuery));
+  $("#about").click(about);
+  $("#dir").click(dir);
+  $("#undir").click(undir);
+});

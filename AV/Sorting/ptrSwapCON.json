@@ -1,0 +1,11 @@
+{
+  "translations" :{
+    "en": {
+      "sc1": "Here we see an array with references to four records.",
+      "sc2": "To start with, the record with key value 42 comes before the record with key value 5. So we want to swap them.",
+      "sc3": "All that we actually need to do is swap the pointers, not the records.",
+      "sc4": "Which is effectively the same as reordering the records themselves."
+    }
+  }
+}
+

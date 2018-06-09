@@ -86,17 +86,17 @@ $(document).ready(function() {
   // Slide 4
   av.umsg("We can evaluate our polynomial at these points. This is <b>Evaluation</b>");
 
-  av.g.circle (x + 12, y + 210, 4, {fill: "black"});
+  av.g.circle (x + 12, y + 210, 4, {stroke: "green", fill: "green"});
   var line1 = av.g.line (x + 12, y + 4 * step, x + 12, y + 210, {"stroke-width": 1});
-  av.g.circle (x + 52, y + 160, 4, {fill: "black"});
+  av.g.circle (x + 52, y + 160, 4, {stroke: "green", fill: "green"});
   var line2 = av.g.line (x + 52, y + 4 * step, x + 52, y + 160, {"stroke-width": 1});
-  av.g.circle (x + 87, y + 143, 4, {fill: "black"});
+  av.g.circle (x + 87, y + 143, 4, {stroke: "green", fill: "green"});
   var line3 = av.g.line (x + 87, y + 4 * step, x + 87, y + 143, {"stroke-width": 1});
-  av.g.circle (x + 120, y + 140, 4, {fill: "black"});
+  av.g.circle (x + 120, y + 140, 4, {stroke: "green", fill: "green"});
   var line4 = av.g.line (x + 120, y + 4 * step, x + 120, y + 140, {"stroke-width": 1});
-  av.g.circle (x + 165, y + 138, 4, {fill: "black"});
+  av.g.circle (x + 165, y + 138, 4, {stroke: "green", fill: "green"});
   var line5 = av.g.line (x + 165, y + 4 * step, x + 165, y + 138, {"stroke-width": 1});
-  av.g.circle (x + 230, y + 97, 4, {fill: "black"});
+  av.g.circle (x + 230, y + 97, 4, {stroke: "green", fill: "green"});
   var line6 = av.g.line (x + 230, y + 4 * step, x + 230, y + 97, {"stroke-width": 1});
   av.step();
 

@@ -44,7 +44,7 @@ $(document).ready(function() {
 
   function _xpow2(n) {
     return Math.pow(n - 38, 2);
-  }; // _4xpow2(n)
+  };
 
   av.step();
 
@@ -57,13 +57,14 @@ $(document).ready(function() {
 
   function _xpow3(n) {
     return Math.pow(0.4 * (n - 25), 3);
-  }; // _xpow2(n)
+  };
 
   av.step();
 
+  // Slide 6
   function _cubic(n) {
     return Math.pow(0.4 * (n-30), 3) + Math.pow(n-30, 2) + n;
-  }; // _xpow2(n)
+  };
 
   var curve3 = Plot.drawCurve(_cubic, xStart + 10, yStart - 10, yEnd, xMax, yMax, width, height,
                          0.1, false);

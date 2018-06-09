@@ -34,7 +34,7 @@ $(document).ready(function() {
   av.displayInit();
 
   // Slide #2
-  av.umsg("For an 8 degree polynomial, its size is 8x8 and contains powers of $\\sqrt(i)$.");
+  av.umsg("For an 8 degree polynomial, its size is 8x8 and contains powers of $\\sqrt i$.");
   for (var i = 0; i < 8; i++)
   {
     for (var j = 0; j < 8; j++)
