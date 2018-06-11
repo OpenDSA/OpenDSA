@@ -1,0 +1,14 @@
+int g = 0;
+int a[5] = { -9, -1, -6, 4, 10 };
+
+void foo(int r, int s){
+  s = r;
+  g = 3;
+  r = a[g];
+  a[g] = a[2];
+}
+
+int main() {
+  int g = 2;
+  foo(g, a[g]);
+}
