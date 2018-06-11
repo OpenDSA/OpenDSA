@@ -124,6 +124,9 @@ VisFormalLang: min
 OpenPOPExercises: min
 	python $(CONFIG_SCRIPT) config/OpenPOPExercises.json --no-lms
 
+PointersJavaSummer: min
+	python $(CONFIG_SCRIPT) config/PointersJavaSummer.json --no-lms
+
 FLslides: min
 	python $(CONFIG_SCRIPT) -s config/FLslides.json --no-lms
 
