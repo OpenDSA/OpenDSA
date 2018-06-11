@@ -71,16 +71,14 @@
           "points": 2
         }
       }, 
-      "AlgAnal/AnalIntro": {},
-      "Binary/Huffman": {},
-      "Spatial/Bintree": {}, 
-      "Indexing/TwoThreeTree": {},
-      "Indexing/BTree": {
-        "bPlusTreeInsertPRO": {
-          "exer_options": {
-            "JXOP-feedback": "continuous"
-          }
-        }
+      "AlgAnal/AnalIntro": {}
+    },
+    "Testing": {
+      "Testing/TestIntro": {
+        "TriangleApplet": {}
+      },
+      "Testing/TestCoverage": {
+        "TriangleApplet": {}
       }
     },
     "Appendix": {
