@@ -5,8 +5,7 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   
   // Slide #1
-  av.umsg("We can see the DFT matrix is a Vandermonde matrix of the Nth roots"
-    + " of unity.");
+  av.umsg("For an 8 degree polynomial, the matrix is 8x8.");
 
   var A  = av.ds.matrix([["$A_0$"], ["$A_1$"], ["$A_2$"], ["$A_3$"], ["$A_4$"],
     ["$A_5$"], ["$A_6$"], ["$A_7$"]], {left: 140, top: 30});
@@ -27,14 +26,14 @@ $(document).ready(function() {
     for (var j = 0; j < 8; j++)
     {
       var power = i * j;
-      mat.value(i, j, "$\\omega$" + "^" + power);
+      mat.value(i, j, "$z$" + "^" + power);
     }
   }
 
   av.displayInit();
 
   // Slide #2
-  av.umsg("For an 8 degree polynomial, its size is 8x8 and contains powers of $\\sqrt i$.");
+  av.umsg("Since n = 8 we have z = $\\sqrt i$, which gives the following matrix.");
   for (var i = 0; i < 8; i++)
   {
     for (var j = 0; j < 8; j++)
@@ -77,6 +76,7 @@ $(document).ready(function() {
 
   av.step();
 
+/*
   // Slide #3
   av.umsg("The rows of the DFT matrix correspond to basic harmonic waveforms."
     + "They transform the seed vector in the spectral plane.");
@@ -212,15 +212,16 @@ $(document).ready(function() {
   poly16.hide();
 
   av.step();
+  */
 
   av.umsg("Each element of the result is equal to the inner product of the"
     + " coresponding row of the matrix with the seed vector.")
 
-  A.css(0, 0, {"background-color": "#FF5050"});//red
+  A.css(0, 0, {"background-color": "#ff8080"});//red
   for (i = 0; i < 8; i++)
   {
-    mat.css(0, i, {"background-color": "#FF5050"});
-    a.css(i, 0, {"background-color": "#FF5050"});
+    mat.css(0, i, {"background-color": "#ff8080"});
+    a.css(i, 0, {"background-color": "#ff8080"});
   }
 
   av.step();
@@ -232,8 +233,8 @@ $(document).ready(function() {
     a.css(i, 0, {"background-color": "white"});
   }
 
-  mat.css(0, 0, {"background-color": "#FF5050"});
-  a.css(0, 0, {"background-color": "#FF5050"});
+  mat.css(0, 0, {"background-color": "#ff8080"});
+  a.css(0, 0, {"background-color": "#ff8080"});
 
   var lab = av.label("$1*a_0$", {"left": 250});
 
@@ -241,8 +242,8 @@ $(document).ready(function() {
 
   av.umsg("Adding these terms that come from multiplications");
 
-  mat.css(0, 1, {"background-color": "#FF5050"});
-  a.css(1, 0, {"background-color": "#FF5050"});
+  mat.css(0, 1, {"background-color": "#ff8080"});
+  a.css(1, 0, {"background-color": "#ff8080"});
 
   lab.text("$1*a_0 + 1*a_1$");
 
@@ -250,8 +251,8 @@ $(document).ready(function() {
 
   av.umsg("Adding these terms that come from multiplications");
 
-  mat.css(0, 2, {"background-color": "#FF5050"});
-  a.css(2, 0, {"background-color": "#FF5050"});
+  mat.css(0, 2, {"background-color": "#ff8080"});
+  a.css(2, 0, {"background-color": "#ff8080"});
 
   lab.text("$1*a_0 + 1*a_1 + 1*a_2$");
 
@@ -259,16 +260,16 @@ $(document).ready(function() {
 
   av.umsg("...for every pair of elements from the matrix and the vector.");
 
-  mat.css(0, 3, {"background-color": "#FF5050"});
-  a.css(3, 0, {"background-color": "#FF5050"});
-  mat.css(0, 4, {"background-color": "#FF5050"});
-  a.css(4, 0, {"background-color": "#FF5050"});
-  mat.css(0, 5, {"background-color": "#FF5050"});
-  a.css(5, 0, {"background-color": "#FF5050"});
-  mat.css(0, 6, {"background-color": "#FF5050"});
-  a.css(6, 0, {"background-color": "#FF5050"});
-  mat.css(0, 7, {"background-color": "#FF5050"});
-  a.css(7, 0, {"background-color": "#FF5050"});
+  mat.css(0, 3, {"background-color": "#ff8080"});
+  a.css(3, 0, {"background-color": "#ff8080"});
+  mat.css(0, 4, {"background-color": "#ff8080"});
+  a.css(4, 0, {"background-color": "#ff8080"});
+  mat.css(0, 5, {"background-color": "#ff8080"});
+  a.css(5, 0, {"background-color": "#ff8080"});
+  mat.css(0, 6, {"background-color": "#ff8080"});
+  a.css(6, 0, {"background-color": "#ff8080"});
+  mat.css(0, 7, {"background-color": "#ff8080"});
+  a.css(7, 0, {"background-color": "#ff8080"});
 
   lab.text("$1*a_0 + 1*a_1 + 1*a_2 + 1*a_3 + 1*a_4 + 1*a_5 + 1*a_6 + 1*a_7$");
 
@@ -278,23 +279,23 @@ $(document).ready(function() {
 
   lab.hide();
   a.css(0, 0, {"background-color": "white"});
-  A.css(1, 0, {"background-color": "#33ccff"});
-  A.css(2, 0, {"background-color": "#ffff4d"});
-  A.css(3, 0, {"background-color": "#00ffbf"});
-  A.css(4, 0, {"background-color": "##df80ff"});
-  A.css(5, 0, {"background-color": "#999999"});
-  A.css(6, 0, {"background-color": "#ff9966"});
-  A.css(7, 0, {"background-color": "#9999ff"});
+  A.css(1, 0, {"background-color": "#bfbfbf"});//grey
+  A.css(2, 0, {"background-color": "#ffff80"});//yellow
+  A.css(3, 0, {"background-color": "#66d9ff"});//blue
+  A.css(4, 0, {"background-color": "#ecb3ff"});//pink
+  A.css(5, 0, {"background-color": "#4dffd2"});//green
+  A.css(6, 0, {"background-color": "#ffaa80"});//orange
+  A.css(7, 0, {"background-color": "#b3b3ff"});//purple
   for (var i = 0; i < 8; i++)
   {
     a.css(i, 0, {"background-color": "white"});
-    mat.css(1, i, {"background-color": "#33ccff"});
-    mat.css(2, i, {"background-color": "#ffff4d"});
-    mat.css(3, i, {"background-color": "#00ffbf"});
-    mat.css(4, i, {"background-color": "#df80ff"});
-    mat.css(5, i, {"background-color": "#999999"});
-    mat.css(6, i, {"background-color": "#ff9966"});
-    mat.css(7, i, {"background-color": "#9999ff"});
+    mat.css(1, i, {"background-color": "#bfbfbf"});//grey
+    mat.css(2, i, {"background-color": "#ffff80"});//yellow
+    mat.css(3, i, {"background-color": "#66d9ff"});//blue
+    mat.css(4, i, {"background-color": "#ecb3ff"});//pink
+    mat.css(5, i, {"background-color": "#4dffd2"});//green
+    mat.css(6, i, {"background-color": "#ffaa80"});//orange
+    mat.css(7, i, {"background-color": "#b3b3ff"});//purple
 
   }
 

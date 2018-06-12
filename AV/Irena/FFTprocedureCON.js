@@ -2,7 +2,15 @@ $(document).ready(function() {
   "use strict";
   var av_name = "FFTprocedureCON";
 
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+
   var av = new JSAV(av_name);
+
+  var pseudo = av.code(code[0])
+
   av.umsg("This slideshow shows a visualization of the Fast Fourier Transform.")
   var polynomial = [0, 1, 2, 3];
 
@@ -12,7 +20,7 @@ $(document).ready(function() {
 
   var poly2 = fft(polynomial, 4);
 
-  var arr2 = av.ds.array(poly2);
+  var arr2 = av.ds.array(poly2, {left: 750 - 40*4/2});
 
   av.recorded();
 
@@ -24,34 +32,56 @@ $(document).ready(function() {
   	var newPoly = [];
   	var height = 0;
 
-  	av.umsg("Perform Fast Fourier Transform on the given polynomial.");
-  	var polynomial = av.ds.array(poly);
+  	av.umsg(interpret("sc1"));
+  	var polynomial = av.ds.array(poly, {left: 750 - 40*n/2});
   	height = height + 50;
+  	pseudo.highlight("fft");
   	av.step();
+
+  	pseudo.unhighlight("fft");
 
   	if (n == 1) {
   		var list = [poly[0]];
-  		av.umsg("The polynomial only has one value which is returned.")
+  		av.umsg(interpret("sc2"));
+  		pseudo.highlight("if");
   		av.step();
+  		pseudo.unhighlight("if");
   		polynomial.hide();
   		return list;
   	}
 
   	for (var i = 0; i <= n/2 - 1; i++) {
   		even[i] = poly[2 * i];
+  		polynomial.css(2 * i, {"background-color": "#ffffb3"});
   		odd[i] = poly[2 * i + 1];
+  		polynomial.css(2 * i + 1, {"background-color": "#b3ecff"});
   	}
+  	pseudo.highlight("split");
 
-  	av.umsg("Split into an even and an odd array.")
-  	var evenArr = av.ds.array(even, {left: 250, top: height});
-  	var evenLab = av.label("even:", {left: 200, top: height});
-  	var oddArr = av.ds.array(odd, {left: 550, top: height});
-  	var oddLab = av.label("odd:", {left: 500, top: height});
+  	av.umsg(interpret("sc3"));
+  	var evenArr = av.ds.array(even, {left: 625 - 40*n/4, top: height});
+  	var evenLab = av.label("even:", {left: 575 - 40*n/4, top: height});
+  	var oddArr = av.ds.array(odd, {left: 875 - 40*n/4, top: height});
+  	var oddLab = av.label("odd:", {left: 825 - 40*n/4, top: height});
+  	for (var i = 0; i <= n/2 - 1; i++) {
+  		evenArr.css(i, {"background-color": "#ffffb3"});
+  		oddArr.css(i, {"background-color": "#b3ecff"});
+  	}
   	height = height + 50;
   	av.step();
 
-  	av.umsg("List 1 is a Fast Fourier Transform of the even array.");
+  	for (var i = 0; i <= n/2 - 1; i++) {
+  		polynomial.css(2 * i, {"background-color": "#ffffff"});
+  		polynomial.css(2 * i + 1, {"background-color": "#ffffff"});
+  		evenArr.css(i, {"background-color": "#ffffff"});
+  		oddArr.css(i, {"background-color": "#ffffff"});
+  	}
+  	pseudo.unhighlight("split");
+  	av.umsg(interpret("sc4"));
+  	pseudo.highlight("list1");
   	av.step();
+
+  	pseudo.unhighlight("list1");
 
   	polynomial.hide();
   	evenArr.hide();
@@ -59,18 +89,21 @@ $(document).ready(function() {
   	oddArr.hide();
   	oddLab.hide();
   	list1 = fft(even, n/2);
+  	pseudo.highlight("list1");
   	polynomial.show();
   	evenArr.show();
   	evenLab.show();
   	oddArr.show();
   	oddLab.show();
-  	var list1Arr = av.ds.array(list1, {left: 250, top: height});
-  	var list1Lab = av.label("List 1:", {left: 200, top: height});
+  	var list1Arr = av.ds.array(list1, {left: 625 - 40*n/4, top: height});
+  	var list1Lab = av.label("List 1:", {left: 575 - 40*n/4, top: height});
+  	av.step();
+  	pseudo.unhighlight("list1");
+  	av.umsg(interpret("sc5"));
+  	pseudo.highlight("list2");
   	av.step();
 
-  	av.umsg("List 2 is a Fast Fourier Transform of the odd array.");
-  	av.step();
-
+  	pseudo.unhighlight("list2");
   	polynomial.hide();
   	evenArr.hide();
   	evenLab.hide();
@@ -79,6 +112,7 @@ $(document).ready(function() {
   	list1Arr.hide();
   	list1Lab.hide();
   	list2 = fft(odd, n/2);
+  	pseudo.highlight("list2");
   	polynomial.show();
   	evenArr.show();
   	evenLab.show();
@@ -86,14 +120,15 @@ $(document).ready(function() {
   	oddLab.show();
   	list1Arr.show();
   	list1Lab.show();
-  	var list2Arr = av.ds.array(list2, {left: 550, top: height});
-  	var list2Lab = av.label("List 2:", {left: 500, top: height});
+  	var list2Arr = av.ds.array(list2, {left: 875 - 40*n/4, top: height});
+  	var list2Lab = av.label("List 2:", {left: 825 - 40*n/4, top: height});
   	height = height + 50;
   	av.step();
+  	pseudo.unhighlight("list2");
 
-  	av.umsg("Now we compute the new polynomial. Each value of the array is computed using: "
-  		+ "$list1[k] + z*list2[k]$. Where $k = index % (n/2)$ and $z=e^(2*\\pi*i*j/n)$.");
+  	av.umsg(interpret("sc6"));
 
+  	pseudo.highlight("loop");
 
   	for (var j = 0; j <= (n - 1); j++) {
   		var exponent = new Complex(0, 2 * Math.PI * j / n);
@@ -105,18 +140,12 @@ $(document).ready(function() {
   		newPoly[j] = out;
   	}
 
-  	if (n == 2)
-  	{
-  		var newArr = av.ds.array(newPoly, {left: 394, top: height});
-  	}
-  	else
-  	{
-  		var newArr = av.ds.array(newPoly, {left: 352, top: height});
-  	}
+  	var newArr = av.ds.array(newPoly, {left: 750 - 40*n/2, top: height});
   	
   	av.step();
 
-  	av.umsg("The polynomial has been transfromed and is returned.")
+  	pseudo.unhighlight("loop");
+  	av.umsg(interpret("sc7"));
 
   	polynomial.hide();
   	evenArr.hide();

@@ -6,7 +6,7 @@ $(document).ready(function() {
   
   // Slide #1
   av.umsg("We can speed up the matrix-vector multiplication using some nice"
-    + " properties of DFT. This is the Fast Fourier Transform.");
+    + " properties of the DFT matrix.");
 
   var mat = av.ds.matrix({rows: 8, columns: 8, left: 250, top: 0});
 
@@ -180,7 +180,7 @@ $(document).ready(function() {
   mat.css(7, 1, {"background-color": "#ffffb3"});
 
   av.step();
-  av.umsg("Using these properties, we can completely fill the DFT matrix in 3-4 steps.");
+  av.umsg("Using these properties, we can completely fill the matrix in 3-4 steps.");
 
   av.recorded();
 });

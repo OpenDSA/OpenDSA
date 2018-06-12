@@ -1,18 +1,13 @@
 {
   "translations": {
     "en": {
-      "sc1": "What is the cost of Bubblesort?",
-      "sc2": "The number of comparisons made by the inner for loop on the $i^{th}$ iteration is always $n-i$.",
-      "sc3": "Consider the following example of an array with 6 elements:",
-      "sc4": "At $i=0$ we have 5 comparisons. Let's mark this with 5 boxes.",
-      "sc9": "At $i=1$ we have 4 comparisons, so 4 boxes.",
-      "sc13": "At $i=2$ we have 3 comparisons, so 3 boxes.",
-      "sc17": "At $i=3$ we have 2 comparisons, so 2 boxes.",
-      "sc20": "At $i=4$ we have only 1 comparison, so 1 box.",
-      "sc21": "The total amount of comparisons will be the surface area of this shape.",
-      "sc22": "The total area will be the sum of the areas of the big triangle $+$ the series of ($n-1$) small traingles.",
-      "sc23": "So, the total area is $\\frac{(n-1)(n-1)}{2} + \\frac{(n-1)}{2} = \\frac{n(n-1)}{2}$.",
-      "sc24": "Therefore, the worst case running time of Bubble sort is $\\theta(n^2).$"
+      "sc1": "Perform Fast Fourier Transform on the given polynomial.",
+      "sc2": "The polynomial only has one value which is returned.",
+      "sc3": "Split into an even and an odd array.",
+      "sc4": "List 1 is a Fast Fourier Transform of the even array.",
+      "sc5": "List 2 is a Fast Fourier Transform of the odd array.",
+      "sc6": "Now we compute the new polynomial. Each value of the array is computed using: $list1[k] + z*list2[k]$. Where $k = index\\%(n/2)$ and $z=e^{2\\pi ij/n}$.",
+      "sc7": "The polynomial has been transfromed and is returned."
     }
   },
   "code": {
@@ -22,9 +17,15 @@
       "startAfter": "/* *** ODSATag: FFTprocedure *** */",
       "endBefore": "/* *** ODSAendTag: FFTprocedure *** */",
       "top": 0,
-      "left": 100,
+      "left": 0,
       "tags": {
-        "loop": 3
+        "split": [12, 13, 14, 15],
+        "if": [8, 9, 10, 11],
+        "list1": 16,
+        "list2": 17,
+        "loop": [18, 19, 20, 21, 22],
+        "fft": 1,
+        "return": 24
       }
     }]
   }

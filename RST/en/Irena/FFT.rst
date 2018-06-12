@@ -16,11 +16,6 @@ The Fast Fourier Transform
 --------------------------
 
 
-
-See the `FFT Storyboard <../../../Storyboard/FFT.pptx>`_ for some more
-visualizations of this material.
-
-
 Multiplication is considerably more difficult than addition.
 The cost to multiply two :math:`n`-bit numbers directly is
 :math:`O(n^2)`, while addition of two :math:`n`-bit numbers is
@@ -63,7 +58,7 @@ a polynomial of degree :math:`n-1`, expressed as
    :scripts: DataStructures/Plot.js AV/Irena/polynomialCON.js
    :output: show
 
-
+|
 
 Alternatively, a polynomial can be uniquely represented by a
 list of its values at :math:`n` distinct points.
@@ -72,7 +67,7 @@ Finding the value for a polynomial at a given point is called
 Finding the coefficients for the polynomial given the values at
 :math:`n` points is called :term:`interpolation`.
 
-
+|
 
 .. inlineav:: EvalandInterpolationCON ss
    :long_name: fft slideshow 2 evaluation and interpolation
@@ -81,41 +76,18 @@ Finding the coefficients for the polynomial given the values at
    :output: show
 
 
-To multiply two :math:`n-1`-degree polynomials :math:`A` and :math:`B`
-normally takes :math:`\Theta(n^2)` coefficient multiplications.
-
 .. inlineav:: ProductCON ss
    :long_name: fft slideshow 3 polynomial product
    :links: AV/Irena/ProductCON.css
    :scripts: AV/Irena/ProductCON.js
    :output: show
 
-However, if we evaluate both polynomials (at the same points), we can
-simply multiply the corresponding pairs of values to get the
-corresponding values for polynomial :math:`AB`.
 
-.. topic:: Example
-
-   Polynomial A: :math:`x^2 + 1`.
-
-   Polynomial B: :math:`2x^2 - x + 1`.
-
-   Polynomial AB: :math:`2x^4 - x^3 + 3x^2 - x + 1`.
-
-   When we multiply the evaluations of :math:`A` and :math:`B` at
-   points 0, 1, and -1, we get the following results.
-
-   .. math::
-
-      \begin{eqnarray*}
-      AB(-1) &=& (2)(4) = 8\\
-      AB(0) &=& (1)(1) = 1\\
-      AB(1) &=& (2)(2) = 4
-      \end{eqnarray*}
-
-   These results are the same as when we evaluate polynomial
-   :math:`AB` at these points.
-
+.. inlineav:: EvaluationCON ss
+   :long_name: fft slideshow 4 evaluation of polynomial product
+   :links: AV/Irena/EvaluationCON.css
+   :scripts: AV/Irena/EvaluationCON.js
+   :output: show
 
 Note that evaluating any polynomial at 0 is easy.
 If we evaluate at 1 and -1, we can share a lot of the work
@@ -149,18 +121,13 @@ So,
    P_a(x) = \sum_{i=0}^{n/2-1} a_{2i} x^{2i} +
            \sum_{i=0}^{n/2-1} a_{2i+1} x^{2i+1}
 
-The significance is that when evaluating the pair of values
-:math:`c` and :math:`c`, we get
 
-.. math::
+.. inlineav:: EvenOddCON ss
+   :long_name: fft slideshow 1 even and odd polynomials
+   :links: AV/Irena/EvenOddCON.css
+   :scripts: AV/Irena/EvenOddCON.js
+   :output: show
 
-   \begin{eqnarray*}
-   E_a(c) + O_a(c) &=& E_a(c) - O_a(-c)\\
-   O_a(c) &=& - O_a(-c)
-   \end{eqnarray*}
-
-Thus, we only need to compute the :math:`E` s and :math:`O` s once instead
-of twice to get both evaluations.
 
 The key to fast polynomial multiplication is finding the right points
 to use for evaluation/interpolation to make the process efficient.
@@ -214,7 +181,7 @@ and column :math:`j` as
 
 The idea is that there is a row for each root (row :math:`i` for
 :math:`z^i`) while the columns correspond to the power of the exponent
-of the :math`x` value in the polynomial.
+of the :math:`x` value in the polynomial.
 For example, when :math:`n = 4` we have :math:`z = i`.
 Thus, the :math:`A_{z}` array appears as follows.
 
@@ -290,39 +257,16 @@ suitable sign changes on some rows and columns.
 Likewise for the left and right halves.
 An efficient divide and conquer algorithm exists to perform both the
 evaluation and the interpolation in :math:`\Theta(n \log n)` time.
-This is called DFT.
+This is called the Fast Fourier Transform.
 It is a recursive function that decomposes the matrix
 multiplications, taking advantage of the symmetries made available by
 doing evaluation at the :math:`n` th roots of unity.
-The algorithm is as follows::
 
-   Fourier_Transform(double *Polynomial, int n) {
-     // Compute the Fourier transform of Polynomial
-     // with degree n. Polynomial is a list of
-     // coefficients indexed from 0 to n-1. n is
-     // assumed to be a power of 2.
-     double Even[n/2], Odd[n/2], List1[n/2], List2[n/2];
-
-     if (n==1) return Polynomial[0];
-
-     for (j=0; j&lt;=n/2-1; j++) {
-       Even[j] = Polynomial[2j];
-       Odd[j] = Polynomial[2j+1];
-     }
-     List1 = Fourier_Transform(Even, n/2);
-     List2 = Fourier_Transform(Odd, n/2);
-     for (j=0; j&lt;=n-1, J++) {
-       Imaginary z = pow(E, 2*i*PI*j/n);
-       k = j % (n/2);
-       Polynomial[j] = List1[k] + z*List2[k];
-     }
-     return Polynomial;
-   }
 
 
 .. inlineav:: FFTprocedureCON ss
    :long_name: fft slideshow 6 FFT procedure
-   :links: AV/Irena/FFTprocedureCON.css
+   :links: AV/Irena/FFTprocedureCON.css AV/Irena/FFTprocedureCON.json
    :scripts: lib/complex.js AV/Irena/FFTprocedureCON.js
    :output: show
 
@@ -334,10 +278,10 @@ Thus, the full process for multiplying polynomials
 
    .. math:: [a_0, a_1, ..., a_{n-1}, 0, ..., 0]
 
-#. Perform ``Fourier_Transform`` on the representations for :math:`A`
+#. Perform Fourier transform on the representations for :math:`A`
    and :math:`B`
 
 #. Pairwise multiply the results to get :math:`2n-1` values.
 
-#. Perform the inverse ``Fourier_Transform`` to get the :math:`2n-1`
+#. Perform the inverse Fourier transform to get the :math:`2n-1`
    degree polynomial :math:`AB`.
