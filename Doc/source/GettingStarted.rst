@@ -397,3 +397,22 @@ in the ``WebServer`` script file.
 This will be the top level of the OpenDSA directory, and you can
 browse through it in the normal way.
 Any books that you compiled will be in the ``Books`` directory.
+
+
+------------------------------------
+Writing Visualizations and Exercises
+------------------------------------
+
+The OpenDSA system has been developed over many years to help people
+write simple or complex visualizations and interactive exercises.
+Depending on what you want to do, there might be a lot
+to learn.
+To get you productive quickly, we created the ``SimpleDemo``
+materials.
+Once you have your development environment installed, you should
+compile the ``SimpleDemo`` book instance
+(do ``make SimpleDemo`` from the top level of the OpenDSA repository).
+Then read the module, but also look at the sourcecode for both the
+module and the various examples.
+These will show you a lot of what you will need to implement your own
+visualizations and exercises.

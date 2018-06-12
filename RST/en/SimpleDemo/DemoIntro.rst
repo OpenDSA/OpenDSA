@@ -17,7 +17,7 @@ create some slideshows and exercises.
 The source files for the visualizations that you see here can be found
 by looking at the source for the reStructuredText (RST) file that holds
 the prose for this tutorial (including the directives for embedding
-the visualizations) at ``RST/en/SimpleDemo/DemoIntro``.
+the visualizations) at ``RST/en/SimpleDemo/DemoIntro.rst``.
 The configuration file that lets you compile this "book" is in
 ``config/SimpleDemo.json``.
 
@@ -46,11 +46,26 @@ with three lines.
 .. _TwoColor:
 
 .. inlineav:: twoColorCON dgm
-   :links: AV/background/twoColorCON.css
+   :links: AV/Background/twoColorCON.css
    :scripts: AV/Background/twoColorCON.js
    :align: center
 
    A two-coloring for the regions formed by three lines in the plane.
+
+
+There is a certain amount of art and judgement to writing even
+something as simple as this diagram.
+Imagine that we decided that the whole thing should be moved to the
+right 100 pixels, maybe because we want to add some more content.
+Look in the OpenDSA repository at the file
+``[OpenDSA]/AV/Background/twoColorCON.js``.
+Notice that the "x" coordinates for all of the objects include the
+variable ``left``.
+Simply increasing the value of ``left`` by 100 would shift the entire
+image.
+This code still has room for improvement.
+It neglects to give a similar offset for the "y" coordinates, so it
+would be hard to move the content up or down.
 
 
 A slideshow to swap array elements displayed as an inline AV
@@ -69,6 +84,24 @@ slideshow.
    :scripts: AV/SimpleDemo/simple_demo1.js
    :output: show
 
+This slideshow also shows the power of the JSAV library, which was
+written explicitly to help with developing algorithm visualizations.
+JSAV "understands" a number of data structures and basic
+infrastructure that we use for most of our work.
+The two-coloring diagram did not make much use of the power of JSAV,
+since there were no data structures.
+But this simple slideshow is using JSAV to support the slideshow
+controls at the top (notice that you don't have to do anything to get
+these).
+For that matter, its JSAV that provides all of the infrastructure for
+the concept of a "slideshow" that users can move back and forth in.
+It also provides the interface for adding the messages at each
+slide, and the display for the array logical object
+(including the boxes, the data values, and the index values).
+JSAV has support for a variety of trees, graphs, list structures, code
+snippets with line highlighting, and basic animation effects.
+
+
 A slideshow that has been "internationalized"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -78,14 +111,19 @@ What is new here is that all of the strings from the slideshow's
 interface are moved into a ``.json`` file.
 This allows for a simple mechanism to compile books in various natural
 languages (English, French, Finnish, etc.).
-This same mechanism is also used to compile books that use different
-programming languages for its examples.
 
 .. inlineav:: insertionsortCON ss
    :long_name: Insertion Sort Slideshow
    :links: 
    :scripts: AV/Sorting/insertionsortCON.js
    :output: show
+
+This same mechanism is also used to compile books that use different
+programming languages for its examples.
+To see a good example of how the code from different languages can be
+included, and how the resulting line highlighting is altered to match
+changes in the line numbers that results, see
+``[OpenDSA]/AV/List/alistInsertCON.json``.
 
 
 Swapping array elements with user input of the array and a reset button
