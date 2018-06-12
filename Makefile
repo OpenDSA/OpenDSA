@@ -91,6 +91,9 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
+PosetSlide: min
+	python $(CONFIG_SCRIPT) config/PosetSlide.json --no-lms
+
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
