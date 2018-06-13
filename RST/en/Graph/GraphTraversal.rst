@@ -157,10 +157,10 @@ bottom.
 This visualization shows a graph and the result of performing a BFS on
 it, resulting in a breadth-first search tree.
 
-.. inlineav:: BfsCON ss
+.. inlineav:: BFSCON ss
    :long_name: Breadth-First Search Slideshow
-   :links: AV/Graph/BfsCON.css
-   :scripts: AV/Graph/BfsCON.js
+   :links: AV/Graph/BFSCON.css
+   :scripts: AV/Graph/BFSCON.js
    :output: show
 
 Here is an implementation for BFS.

@@ -1,5 +1,5 @@
 /*global ODSA */
-// Written by Ivan Wong and Cliff Shaffer
+// Written by Thomas Walton, Ivan Wong and Cliff Shaffer
 // Hard-coded example version of DFS demo
 $(document).ready(function() {
   "use strict";
@@ -16,7 +16,7 @@ $(document).ready(function() {
 
   g = av.ds.graph({width: 500, height: 360, layout: "manual", directed: true});
   arr = av.ds.array(["", "", "", "", "", ""],
-                    {left: 700, top: 50, layout: "vertical", width: "30px"});
+                    {left: 700, top: 50, layout: "vertical"});
   initGraph();
 
   // Slide 1
@@ -25,7 +25,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 2
-  av.umsg("Call depth first search on A");
+  av.umsg("Call depth-first search on A");
   av.step();
 
   // Slides 3-54
@@ -34,6 +34,7 @@ $(document).ready(function() {
   // Slide 55
   finalGraph();
   av.recorded();
+
 
   // Create the graph (and display it)
   function initGraph() {
@@ -64,6 +65,8 @@ $(document).ready(function() {
     g.layout();
   }
 
+
+  // What to do when we first visit the node
   function preVisit(node, prev) {
     if (prev) {
       av.umsg("Add " + prev.value() + " to the recursion stack and add the new edge to the DFS tree");
@@ -76,6 +79,7 @@ $(document).ready(function() {
       av.step();
     }
   }
+
 
   // Mark the nodes when visited and highlight it to
   // show it has been marked
@@ -119,7 +123,7 @@ $(document).ready(function() {
     postVisit(start, prev);
   }
 
-  // Resulting graph of completed depth first search
+  // Resulting graph from completed depth-first search
   function finalGraph() {
     av.umsg("Here is the completed DFS tree");
     g.removeEdge(a, e);

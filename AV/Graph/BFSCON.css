@@ -1,0 +1,12 @@
+#BFSCON {
+  height: 470px;
+}
+
+#BFSCON .jsavline{
+  height: 30px;
+}
+
+#BFSCON .jsavedge.markpath {
+  stroke-width: 4;
+  stroke: #f61010; //red
+}

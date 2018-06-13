@@ -1,4 +1,5 @@
 /*global ODSA graphUtils */
+// Written by Thomas Walton, Ivan Wong and Cliff Shaffer
 $(document).ready(function() {
   "use strict";
 
