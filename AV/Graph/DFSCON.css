@@ -1,12 +1,12 @@
-#DfsCON {
+#DFSCON {
   height: 450px;
 }
 
-#DfsCON .jsavline {
+#DFSCON .jsavline {
   height: 20px;
 }
 
-.jsavedge.markpath {
+#DFSCON .jsavedge.markpath {
   stroke-width: 4;
   stroke: #f61010; //red
 }

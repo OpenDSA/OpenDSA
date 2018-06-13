@@ -99,8 +99,8 @@ it, resulting in a depth-first search tree.
 
 .. inlineav:: DfsCON ss
    :long_name: Depth-First Search Slideshow
-   :links: AV/Graph/DfsCON.css
-   :scripts: AV/Graph/DfsCON.js
+   :links: AV/Graph/DFSCON.css
+   :scripts: AV/Graph/DFSCON.js
    :output: show
 
 Here is an implementation for the DFS algorithm.
@@ -126,7 +126,7 @@ start it, so that you can see the behavior on different examples.
 It can show you DFS run on a directed graph or an undirected graph.
 Be sure to look at an example for each type of graph.
 
- .. avembed:: AV/Ivan/DfsAV.html ss
+ .. avembed:: AV/Graph/DFSAV.html ss
       :long_name: DFS AV
 
 DFS processes each edge once in a directed graph.

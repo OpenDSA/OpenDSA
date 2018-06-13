@@ -3,9 +3,11 @@
 // Hard-coded example version of DFS demo
 $(document).ready(function() {
   "use strict";
-  var av_name = "DfsCON";
-  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
-
+  var av_name = "DFSCON";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig({
+    av_name: av_name, json_path: "/AV/Graph/DFSAV.json"});
+  var interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
   var g;        // The graph
   var a, b, c, d, e, f; // Access variables for the graph nodes

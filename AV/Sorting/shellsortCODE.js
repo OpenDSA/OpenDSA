@@ -1,5 +1,6 @@
 "use strict";
 // Shared code for Shellsort: Shared between shellsortAV and shellsortCON
+// TODO: This needs to be properly wrapped to protect the code from the global namespace
 
 // Insertion sort using increments
 function inssort(av, arr, start, incr, interpret) {
@@ -21,8 +22,7 @@ function inssort(av, arr, start, incr, interpret) {
           arr.removeClass([j - incr, j], "processing");
           arr.highlight([j - incr, j]);
         }
-      }
-      else {
+      } else {
         av.umsg(interpret("av_code3"));
         arr.highlight([j - incr, j]);
         arr.removeClass([j - incr, j], "processing");
@@ -38,7 +38,7 @@ function sweep(av, arr, incr, interpret) {
   var numElem = Math.ceil(arr.size() / incr);
   av.umsg(interpret("av_code4") + incr);
   av.step();
-  var highlightFunction = function (index) { return index % incr === j; };
+  var highlightFunction = function(index) { return index % incr === j; };
   for (j = 0; j < incr; j++) {         // Sort each sublist
     // Highlight the sublist
     arr.highlight(highlightFunction);
@@ -62,8 +62,8 @@ function sweep(av, arr, incr, interpret) {
 // Display a slideshow for a sweep of "increment" steps on array "inArr"
 function doSweep(av_name, inArr, increment) {
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig(
-                 {"av_name": av_name, "json_path": "/AV/Sorting/shellsortAV.json"});
+  var config = ODSA.UTILS.loadConfig({
+    av_name: av_name, json_path: "/AV/Sorting/shellsortAV.json"});
   var interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
   // Create an array object under control of JSAV library
@@ -77,14 +77,14 @@ function doSweep(av_name, inArr, increment) {
 function showDifference(av_name, theArray, a) {
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig(
-                 {"av_name": av_name, "json_path": "/AV/Sorting/shellsortAV.json"});
+    {av_name: av_name, json_path: "/AV/Sorting/shellsortAV.json"});
   var interpret = config.interpreter;       // get the interpreter
-  var av = new JSAV(av_name, {"animationMode": "none"});
+  var av = new JSAV(av_name, {animationMode: "none"});
   var origarr = av.ds.array(theArray, {indexed: true});
-  var origlabel = av.label(interpret("av_diff1"), {before: origarr});
+  av.label(interpret("av_diff1"), {before: origarr});
   var arr = av.ds.array(a, {indexed: true});
-  var arrlabel = av.label(interpret("av_diff2"), {before: arr});
-  arr.addClass(function (index)
-                 { return arr.value(index) !== origarr.value(index); },
-               "greentext");
+  av.label(interpret("av_diff2"), {before: arr});
+  arr.addClass(function(index) {
+    return arr.value(index) !== origarr.value(index);
+  }, "greentext");
 }
