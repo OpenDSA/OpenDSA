@@ -6,7 +6,7 @@ $(document).ready(function() {
   var av_name = "DFSCON";
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({
-    av_name: av_name, json_path: "/AV/Graph/DFSAV.json"});
+    av_name: av_name, json_path: "../../../AV/Graph/DFSAV.json"});
   var interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
   var g;        // The graph

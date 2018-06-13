@@ -10,7 +10,7 @@ $(document).ready(function() {
   var g;
   var arr;
   var size;
-  var jsav;
+  var av;
   var markCount;
   var nodeCount;
 
@@ -27,30 +27,30 @@ $(document).ready(function() {
 
   function doIt(isDirected) {
     ODSA.AV.reset(true);
-    jsav = new JSAV($(".avcontainer"), {settings: settings});
+    av = new JSAV($(".avcontainer"), {settings: settings});
     makeGraph(isDirected);
-    arr = jsav.ds.array(["", "", "", "", "", "", "", ""],
+    arr = av.ds.array(["", "", "", "", "", "", "", ""],
                         {layout: "vertical", left: 640, top: 0, width: 60});
     markCount = 0;
     nodeCount = g.nodeCount();
-    jsav.umsg("Let's look at the details of how a depth-first seach works.");
+    av.umsg("Let's look at the details of how a depth-first seach works.");
     g.layout();
-    jsav.displayInit();
+    av.displayInit();
     dfs(g.nodes()[0]);
-    jsav.umsg("Completed depth first search graph");
+    av.umsg("Completed depth first search graph");
     if (markCount < nodeCount) {
-      jsav.step();
-      jsav.umsg("Note that this traversal did not reach all of the nodes, " +
-                "due to the directions on the edges making some nodes unreachable from A. " +
-                "This is why DFS is typically done in the context of starting the " +
-                "traversal from every node.");
+      av.step();
+      av.umsg("Note that this traversal did not reach all of the nodes, " +
+              "due to the directions on the edges making some nodes unreachable from A. " +
+              "This is why DFS is typically done in the context of starting the " +
+              "traversal from every node.");
     }
-    jsav.recorded();
+    av.recorded();
   }
 
 
   function makeGraph(isDirected) {
-    g = jsav.ds.graph({
+    g = av.ds.graph({
       width: 500,
       height: 360,
       left: 0,
@@ -65,11 +65,11 @@ $(document).ready(function() {
 
   function preVisit(node, prev) {
     if (prev) {
-      jsav.umsg("Add " + prev.value() + " to the recursion stack and add the new edge to the DFS tree");
+      av.umsg("Add " + prev.value() + " to the recursion stack and add the new edge to the DFS tree");
       arr.value(size, prev.value());
       size--;
       node.edgeFrom(prev).addClass("markpath");
-      jsav.step();
+      av.step();
     }
   }
 
@@ -79,18 +79,18 @@ $(document).ready(function() {
   function markIt(node) {
     node.addClass("marked");
     markCount++;
-    jsav.umsg("Mark node " + node.value());
+    av.umsg("Mark node " + node.value());
     node.highlight();
-    jsav.step();
+    av.step();
   }
 
 
   function postVisit(node, prev) {
     if (prev) {
-      jsav.umsg("Return to Node " + prev.value() + ", pop it off the recursion stack");
+      av.umsg("Return to Node " + prev.value() + ", pop it off the recursion stack");
       size++;
       arr.value(size, " ");
-      jsav.step();
+      av.step();
     }
   }
 
@@ -104,19 +104,19 @@ $(document).ready(function() {
     markIt(start);
     adjacent = start.neighbors();
     for (next = adjacent.next(); next; next = adjacent.next()) {
-      jsav.umsg("Process (" + start.value() + "," + next.value() + ")");
-      jsav.step();
+      av.umsg("Process (" + start.value() + "," + next.value() + ")");
+      av.step();
       if (next.hasClass("marked")) {
-        jsav.umsg("Node " + next.value() + " already marked");
-        jsav.step();
+        av.umsg("Node " + next.value() + " already marked");
+        av.step();
       }
       if (!next.hasClass("marked")) {
-        jsav.umsg("Call depth first search on " + next.value());
-        jsav.step();
+        av.umsg("Call depth first search on " + next.value());
+        av.step();
         dfs(next, start);
       }
     }
-    postVisit(start, prev);
+    postVisit(av, start, prev);
   }
 
 
