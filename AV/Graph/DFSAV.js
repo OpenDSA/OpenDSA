@@ -31,7 +31,8 @@ $(document).ready(function() {
     av = new JSAV($(".avcontainer"), {settings: settings});
     makeGraph(isDirected);
     arr = av.ds.array(["", "", "", "", "", "", "", ""],
-                        {layout: "vertical", left: 640, top: 0, width: 60});
+                      {layout: "vertical", left: 640, top: 0, width: 60});
+    size = 6;
     markCount = 0;
     nodeCount = g.nodeCount();
     av.umsg("Let's look at the details of how a depth-first seach works.");
@@ -66,10 +67,10 @@ $(document).ready(function() {
 
   function preVisit(node, prev) {
     if (prev) {
-      av.umsg("Add " + prev.value() + " to the recursion stack and add the new edge to the DFS tree");
       arr.value(size, prev.value());
       size--;
       node.edgeFrom(prev).addClass("markpath");
+      av.umsg("Add " + prev.value() + " to the recursion stack and add the new edge to the DFS tree");
       av.step();
     }
   }

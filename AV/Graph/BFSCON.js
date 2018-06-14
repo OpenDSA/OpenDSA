@@ -109,12 +109,11 @@ $(document).ready(function() {
           av.umsg("Add the edge from " + node.value() + " to " + neighbor.value() + " to the BFS tree");
           av.step();
           q.push(neighbor);
-          adjNode.shift();
         } else {
-          adjNode.shift();
           av.umsg("Follow edge to node " + neighbor.value() + ", but it is already marked so we skip it.");
           av.step();
         }
+        adjNode.shift();
       }
       av.umsg("Now we are all done processing node " + node.value());
       av.step();

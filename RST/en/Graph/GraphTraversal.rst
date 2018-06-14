@@ -137,7 +137,7 @@ Each vertex must be visited, but only once, so the total cost is
 
 Here is an exercise for you to practice DFS.
 
-.. avembed:: AV/Ivan/graphDFSPE.html pe
+.. avembed:: AV/Graph/DFSPE.html pe
    :long_name: DFS Proficiency Exercise
 
 
@@ -173,12 +173,12 @@ start it, so that you can see the behavior on different examples.
 It can show you BFS run on a directed graph or an undirected graph.
 Be sure to look at an example for each type of graph.
 
-.. avembed:: AV/Ivan/BfsAV.html ss
+.. avembed:: AV/Graph/BFSAV.html ss
     :long_name: BFS AV
 
 Here is an exercise for you to practice BFS.
 
-.. avembed:: AV/Ivan/graphBFSPE.html pe
+.. avembed:: AV/Graph/BFSPE.html pe
    :long_name: BFS Proficiency Exercise
 
 .. TODO::
