@@ -371,9 +371,9 @@ Then do the following::
 At this point, you should be all set up. To test things, you can try
 doing::
 
-  make test
+  make Test
 
-This should put a test book into ``[OpenDSA]/Books/test``.
+This should put a test book into ``[OpenDSA]/Books/Test``.
 
 Running a Local Web Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
