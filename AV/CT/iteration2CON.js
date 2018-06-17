@@ -191,14 +191,6 @@ $(document).ready(function() {
   valuelabel.addClass("loopLabels");
   valuelabel.addClass("priceBoxLable");
 
-  it2_printpriceX = left + 240;
-  it2_printpriceY = top2 + 85;
-  it2_printprice = av.label("", {
-    left: it2_printpriceX,
-    top: it2_printpriceY
-  });
-  it2_printprice.addClass("consolelabels");
-
   // <<--------------- STATE BOX ----------------->>
 
   var stateX = 525;
@@ -223,6 +215,15 @@ $(document).ready(function() {
   });
   priceBoxLabel.addClass("loopLabels");
   priceBoxLabel.addClass("midlabel");
+
+  // <<--------------- MOVING LABELS ----------------->>
+  it2_printpriceX = pricelabelX;
+  it2_printpriceY = stateY + 133;
+  it2_printprice = av.label("", {
+    left: it2_printpriceX,
+    top: it2_printpriceY
+  });
+  it2_printprice.addClass("consolelabels");
 
 
   // <<--------------- CONSOLE BOX ----------------->>
