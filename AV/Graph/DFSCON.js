@@ -69,13 +69,13 @@ $(document).ready(function() {
   // What to do when we first visit the node
   function preVisit(node, prev) {
     if (prev) {
-      av.umsg("Add " + prev.value() + " to the recursion stack and add the new edge to the DFS tree");
       arr.value(size, prev.value());
       size--;
-      node.edgeFrom(prev).addClass("markpath");
       node.edgeFrom(prev).css({"arrow-end": "classic-wide-long"});
+      node.edgeFrom(prev).addClass("markpath");
       node.edgeTo(prev).hide();
       g.layout();
+      av.umsg("Add " + prev.value() + " to the recursion stack and add the new edge to the DFS tree");
       av.step();
     }
   }

@@ -13,7 +13,8 @@ Content is delivered in the form of "book instances", which are
 created through the :ref:`configuration process <Configuration>`.
 Book instances come in two forms: plain HTML pages (that you can
 create locally for testing) and those accessed through a Learning
-Management System (at the moment, we only support Canvas).
+Management System (at the moment, we support Canvas, and we have some
+limited access from other LMS through the LTI protocol).
 As a new developer, you typically don't worry about anything other
 than creating plain HTML book instances.
 
@@ -99,8 +100,11 @@ Here is a list of the individual repositories that we use:
 * The OpenPOP project is in a separate repository at
   https://github.com/OpenDSA/OpenPOP.
 
+* The back-end server source can be found at
+  https://github.com/OpenDSA/OpenDSA-LTI.
+  
 An up-to-date development version of the OpenDSA repository is
-mirrored at http://lti.cs.vt.edu/LTI_ruby.
+mirrored at http://lti.cs.vt.edu/OpenDSA.
 The built version of the stable standard book configurations
 (available either as they appear in Canvas or stand-alone web pages)
 is available at: https://opendsa-server.cs.vt.edu/home/books.

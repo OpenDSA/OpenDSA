@@ -1,12 +1,12 @@
-/* global ODSA,  */
-(function ($) {
+/*global ODSA graphUtils */
+$(document).ready(function() {
   "use strict";
   var exercise,
       graph,
       config = ODSA.UTILS.loadConfig(),
       interpret = config.interpreter,
       settings = config.getSettings(),
-      jsav = new JSAV($('.avcontainer'), {settings: settings});
+      jsav = new JSAV($(".avcontainer"), {settings: settings});
 
   jsav.recorded();
 
@@ -96,7 +96,7 @@
   function dfs(start, av) {
     var adjacent = start.neighbors();
     //Sort the neighbors according to their value
-    adjacent.sort(function (a, b) {
+    adjacent.sort(function(a, b) {
       return a.value().charCodeAt(0) - b.value().charCodeAt(0);
     });
     for (var next = adjacent.next(); next; next = adjacent.next()) {
@@ -124,23 +124,22 @@
   }
 
   exercise = jsav.exercise(model, init, {
-    compare: { class: "marked" },
-    controls: $('.jsavexercisecontrols'),
+    compare: {class: "marked"},
+    controls: $(".jsavexercisecontrols"),
     fix: fixState
   });
   exercise.reset();
 
-  $(".jsavcontainer").on("click", ".jsavedge", function () {
+  $(".jsavcontainer").on("click", ".jsavedge", function() {
     var edge = $(this).data("edge");
     if (!edge.hasClass("marked")) {
       markEdge(edge);
     }
   });
 
-  $(".jsavcontainer").on("click", ".jsavnode", function () {
+  $(".jsavcontainer").on("click", ".jsavnode", function() {
     window.alert("Please, click on the edges, not the nodes.");
   });
 
   $("#about").click(about);
-
-}(jQuery));
+});

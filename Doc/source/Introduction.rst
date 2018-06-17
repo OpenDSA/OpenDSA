@@ -34,7 +34,7 @@ Those roles include:
    about the instructor tools. If you just want to set up a standard
    course configuration at Canvas, then you only need to read the
    instructions at https://opendsa.org.
-   If you want to modify existing content, ddd new content, or create
+   If you want to modify existing content, add new content, or create
    your own book instance by picking and choosing from the OpenDSA
    collection of materials, then look at compiling a book instance and
    the configuration system.

@@ -8,13 +8,24 @@ Compiling Book Instances: OpenDSA Configuration
 Overview
 --------
 
+**Note:** This section initially presents configuation management from
+raw configuration files, which is generally only done by developers
+for testing purposes.
+Instructors will use the book configuration GUI, which is documented
+toward the end of this section.
+
 A given OpenDSA eTextbook is called a "book instance".
-The contents of a book instance is defined by a configuration file,
+A book instance is made of of "modules", where each module is a single
+ReStructuredText file.
+The modules within a book instance, their chapter grouping, their
+order, and details about how exercises that they contain will be
+treated are all defined by a configuration file,
 the detailed syntax for which is defined in this section.
 In practice, it is easiest to start by copying an existing
 configuration file, and then changing it to fit your needs.
 Configuration files are JSON files, normally stored in OpenDSA/config.
-From the top level of an OpenDSA repository (from within the |devstack_link|), you can compile a book
+From the top level of an OpenDSA repository
+(from within the |devstack_link|), you can compile a book
 instance (given the existance of a configuration file named
 ``config/foo.json``) by issuing this command:
 
@@ -524,6 +535,9 @@ Book Configuration GUI
 A graphical user interface that instructors may use to create their own
 book configurations is located `here
 <https://opendsa-server.cs.vt.edu/configurations/book/>`_.
+A version of this documentation with some screenshots can be found
+`here <https://opendsa-server.cs.vt.edu/guides/opendsa-book-configuration>`_.
+
 
 Load Existing Configuration (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

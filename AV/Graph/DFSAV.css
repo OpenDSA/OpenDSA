@@ -1,6 +1,6 @@
 #container {
   width: 800px;
-  height: 610px;
+  height: 590px;
 }
 
 .avcontainer{
@@ -8,19 +8,19 @@
 }
 
 .jsavline{
-  height: 50px;
+  height: 40px;
 }
 
 .jsavgraph .jsavedge {
   stroke-width: 1.5px;
 }
 
-.jsavedge.markpath{
+.jsavedge.markpath {
   stroke-width: 4;
   stroke: #f61010; //red
 }
 
-.jsavedge.dirmarkpath{
+.jsavedge.dirmarkpath {
   stroke-width: 4;
   stroke: #f61010; //red
 }

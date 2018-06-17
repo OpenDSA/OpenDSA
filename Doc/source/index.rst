@@ -26,5 +26,3 @@ Table of Contents
    OpenDSA-LTI-database
    Client-sideFramework
    EventMessages
-   QBankUserManual
-   QBankDevManual
