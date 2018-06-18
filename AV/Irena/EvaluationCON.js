@@ -1,11 +1,12 @@
+// Written by Irena Shaffer
 $(document).ready(function() {
   "use strict";
   var av_name = "EvaluationCON";
 
   var av = new JSAV(av_name);
-  
-  av.umsg("However, if we evaluate both polynomials (at the same points), we can simply multiply "
-    + "the corresponding pairs of values to get the corresponding values for polynomial AB.");
+
+  av.umsg("However, if we evaluate both polynomials (at the same points), we can simply multiply " +
+    "the corresponding pairs of values to get the corresponding values for polynomial AB.");
 
   av.displayInit();
 
@@ -44,8 +45,8 @@ $(document).ready(function() {
 
   av.step();
 
-  av.umsg("So the results are the same when we evaluate polynomial AB at a point or when we evaluate "
-    + "polynomial A and polynomial B at the same point and then multiply the result.");
+  av.umsg("So the results are the same when we evaluate polynomial AB at a point or when we evaluate " +
+    "polynomial A and polynomial B at the same point and then multiply the result.");
 
   polyA.hide();
   polyB.hide();

@@ -1,5 +1,5 @@
 {
-  "translations": {
+  "translations" :{
     "en": {
       "sc1": "Perform Fast Fourier Transform on the given polynomial.",
       "sc2": "The polynomial only has one value which is returned.",

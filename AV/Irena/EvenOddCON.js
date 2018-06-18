@@ -1,15 +1,16 @@
+// Written by Irena Shaffer
 $(document).ready(function() {
   "use strict";
   var av_name = "EvenOddCON";
 
   var av = new JSAV(av_name);
-  
+
   // Slide #1
   av.umsg("When evaluating the pair of values c and -c, we get:");
 
-  var even = av.label("$E_a(-c) = E_a(c)$", {left: 357, top: 0});
-  var and  = av.label("and", {left: 395, top: 30});
-  var odd = av.label("$O_a(-c) = -O_a(c)$", {left: 353, top: 60});
+  av.label("$E_a(-c) = E_a(c)$", {left: 357, top: 0});
+  av.label("and", {left: 395, top: 30});
+  av.label("$O_a(-c) = -O_a(c)$", {left: 353, top: 60});
 
   av.displayInit();
 
@@ -38,7 +39,7 @@ $(document).ready(function() {
   label8.hide();
 
   av.umsg("");
-  av.label("Therefore: ", {left: 375, top: 150})
+  av.label("Therefore: ", {left: 375, top: 150});
   av.label("$P_a(c) = E_a(c) + O_a(c)$", {left: 342, top: 200});
   av.label("$P_a(-c) = E_a(c) - O_a(c)$", {left: 337, top: 230});
   av.g.rect(325, 200, 173, 80);

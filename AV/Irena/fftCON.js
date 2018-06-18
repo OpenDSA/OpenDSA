@@ -5,7 +5,6 @@ $(document).ready(function() {
   "use strict";
   var av = new JSAV("fftCON", {animationMode: "none"});
 
-  
   av.g.circle(275, 140, 75, {"stroke-width": 1.25});
   av.g.circle(575, 140, 75, {"stroke-width": 1.25});
 

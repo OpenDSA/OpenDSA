@@ -1,34 +1,32 @@
+// Written by Irena Shaffer
 $(document).ready(function() {
   "use strict";
   var av_name = "DFTpropCON";
 
   var av = new JSAV(av_name);
-  
+
   // Slide #1
-  av.umsg("We can speed up the matrix-vector multiplication using some nice"
-    + " properties of the DFT matrix.");
+  av.umsg("We can speed up the matrix-vector multiplication using some nice" +
+    " properties of the DFT matrix.");
 
   var mat = av.ds.matrix({rows: 8, columns: 8, left: 250, top: 0});
-
-  for (var i = 0; i < 8; i++)
-  {
-    for (var j = 0; j < 8; j++)
-    {
-      var power = i * j;
-      mat.value(i, j, "$\\omega$" + "^" + power);
+  var i;
+  var j;
+  var power = 0;
+  for (i = 0; i < 8; i++) {
+    for (j = 0; j < 8; j++) {
+      power = i * j;
+      mat.value(i, j, "$z$^" + power);
     }
   }
 
   av.displayInit();
 
   // Slide #2
-  av.umsg("We have: $\\omega^0=1$");
-  for (var i = 0; i < 8; i++)
-  {
-    for (var j = 0; j < 8; j++)
-    {
-      if (i == 0 || j == 0)
-      {
+  av.umsg("We have: $z^0=1$");
+  for (i = 0; i < 8; i++) {
+    for (j = 0; j < 8; j++) {
+      if (i === 0 || j === 0) {
         mat.value(i, j, "$1$");
         mat.css(i, j, {"background-color": "#ffffb3"});
       }
@@ -36,8 +34,8 @@ $(document).ready(function() {
   }
 
   av.step();
-  av.umsg("Since N = 8 (degree of the polynomial), then $\\omega^8=1$"
-    + " and $\\omega^4=-1$.");
+  av.umsg("Since N = 8 (degree of the polynomial), then $z^8=1$" +
+    " and $\\omega^4=-1$.");
   mat.value(4, 2, "$1$");
   mat.value(2, 4, "$1$");
   mat.value(1, 4, "$-1$");
@@ -48,11 +46,10 @@ $(document).ready(function() {
   mat.css(2, 2, {"background-color": "#ffffb3"});
   mat.css(4, 1, {"background-color": "#ffffb3"});
   mat.css(2, 4, {"background-color": "#ffffb3"});
-  
+
   av.step();
 
-  av.umsg("For any integer k, we have $\\omega^{8+k}=\\omega^8$, so "
-    + "$\\omega^0=\\omega^8=\\omega^{16}=\\omega^{24}=1$.")
+  av.umsg("For any integer k, we have $z^{8+k}=z^8$, so $z^0=z^8=z^{16}=z^{24}=1$.");
 
   mat.value(4, 4, "$1$");
   mat.value(4, 6, "$1$");
@@ -63,7 +60,7 @@ $(document).ready(function() {
 
   av.step();
 
-  av.umsg("We also have $\\omega^4=\\omega^{12}=\\omega^{20}=\\omega^{28}=\\omega^{36}=-1$.");
+  av.umsg("We also have $z^4=z^{12}=z^{20}=z^{28}=z^{36}=-1$.");
 
   mat.value(2, 6, "$-1$");
   mat.value(3, 4, "$-1$");
@@ -87,13 +84,13 @@ $(document).ready(function() {
 
   av.step();
 
-  av.umsg("Another property is $\\omega^{4+k}=-\\omega^k$ which can be confirmed"
-    + " from the elements already placed in the matrix.");
+  av.umsg("Another property is $z^{4+k}=-z^k$ which can be confirmed" +
+    " from the elements already placed in the matrix.");
 
   av.step();
 
-  av.umsg("We can compute: $\\omega^1=\\sqrt i$. \n From the first property, "
-    + "we have: $\\omega^9=\\omega^{25}=\\omega^{49}=\\sqrt i$.");
+  av.umsg("We can compute: $z^1=\\sqrt i$. \n From the first property, " +
+    "we have: $z^9=z^{25}=z^{49}=\\sqrt i$.");
 
   mat.value(1, 1, "$\\sqrt i$");
   mat.value(3, 3, "$\\sqrt i$");
@@ -106,7 +103,7 @@ $(document).ready(function() {
 
   av.step();
 
-  av.umsg("And from the second property: $\\omega^5=\\omega^{21}=-\\sqrt i$");
+  av.umsg("And from the second property: $z^5=z^{21}=-\\sqrt i$");
 
   mat.value(1, 5, "$\\sqrt i$");
   mat.value(3, 7, "$\\sqrt i$");
@@ -118,8 +115,7 @@ $(document).ready(function() {
   mat.css(7, 3, {"background-color": "#ffffb3"});
 
   av.step();
-  av.umsg("When we compute $\\omega^2=i$, we also get: "
-    +"$\\omega^{10}=\\omega^{18}=\\omega^{42}=i$");
+  av.umsg("When we compute $z^2=i$, we also get: $z^{10}=z^{18}=z^{42}=i$");
 
   mat.value(1, 2, "$i$");
   mat.value(2, 1, "$i$");
@@ -139,7 +135,7 @@ $(document).ready(function() {
   mat.css(7, 6, {"background-color": "#ffffb3"});
 
   av.step();
-  av.umsg("And $\\omega^6=\\omega^{14}=\\omega^{30}=-i$");
+  av.umsg("And $z^6=z^{14}=z^{30}=-i$");
 
   mat.value(1, 6, "$-i$");
   mat.value(2, 3, "$-i$");
@@ -159,8 +155,8 @@ $(document).ready(function() {
   mat.css(7, 2, {"background-color": "#ffffb3"});
 
   av.step();
-  av.umsg("Finally, we have: $\\omega^3=\\omega^{35}=i\\sqrt i$"
-    + " and $\\omega^7=\\omega^{15}=-i\\sqrt i$");
+  av.umsg("Finally, we have: $z^3=z^{35}=i\\sqrt i$" +
+    " and $z^7=z^{15}=-i\\sqrt i$");
 
   mat.value(1, 3, "$i\\sqrt i$");
   mat.value(3, 1, "$i\\sqrt i$");
