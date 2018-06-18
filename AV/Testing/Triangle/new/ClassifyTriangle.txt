@@ -1,0 +1,65 @@
+/**
+* Calculates the type of triangle
+* 0 = not a triangle
+* 1 = equilateral
+* 2 = isoceles
+* 3 = scalene
+*/
+function classifyTriangle(s1, s2, s3) {
+    if (isNaN(s1) || isNaN(s2) || isNaN(s3)) {
+
+        return 0;   
+             
+    } else if (s1 < 0 || s2 < 0 || s3 < 0) {
+        
+        return 0;
+
+    } else if (s1 == 0) {
+            
+        return 0;
+
+    } else if (s2 == 0) {
+            
+        return 0;
+
+    } else if (s3 == 0) {
+            
+        return 0;
+
+    } else if (s1 - s2 == s3) {
+            
+        return 0;
+
+    } else if (s2 - s1 == s3) {
+            
+        return 0;
+
+    } else if (s3 - s2 == s1) {
+            
+        return 0;
+
+    } else if (s1 - s2 > s3) {
+            
+        return 0;
+
+    } else if (s2 - s1 > s3) {
+            
+        return 0;
+
+    } else if (s3 - s2 > s1) {
+            
+        return 0;
+
+    } else if (s1 == s2 && s1 == s3 && s2 == s3) {
+            
+        return 1;
+
+    } else if (s1 != s2 && s1 != s3 && s2 != s3) {
+            
+        return 3;
+        
+    } else {
+            
+        return 2;
+    }
+}

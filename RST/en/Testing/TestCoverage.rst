@@ -22,14 +22,11 @@ If you can see the code, it is relatively easy to come up with test
 cases to cover each branch. Try it this time with code visible.
 Try to get over 90% code coverage.
 
-.. avembed::  AV/Testing/Triangle/resources/js/TriangleClassifier.js pe
-   :points: 2.0
-   :required: True
-   :threshold: 0.9
+.. avembed:: AV/Testing/Triangle/new/TriangleApplet.html pe
    :long_name: Triangle Testing
-   :exer_opts: JXOP-debug=true&amp;JOP-lang=en&amp;JXOP-code=java_generic
-   :url_params: code=true
 
+AV/Testing/Triangle/new/TriangleApplet.html pe
+AV/Sorting/shellsortPRO.html pe
 
 So, did you find it easier to get code coverage when you had the code
 in front of you?
