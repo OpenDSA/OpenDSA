@@ -43,10 +43,12 @@
     "chapters": {
         "Introduction to Pointers in Java": {
             "PointersJavaSummer/PointerIntro": {},
+            "PointersJavaSummer/Syntax": {},
             "PointersJavaSummer/BasicPointers": {},
             "PointersJavaSummer/LocalMem": {},
             "PointersJavaSummer/HeapMem": {},
-            "PointersJavaSummer/Links": {}
+            "PointersJavaSummer/Links": {},
+            "PointersJavaSummer/Exercises": {}
         },
         "Appendix": {
             "Glossary": {},

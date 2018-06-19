@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Cliff Shaffer, Mohammed Mostafa, and Margaret Ellis
    :requires: Pointer intro
-   :satisfies:
+   :satisfies: Link Nodes
    :topic: Link Nodes
 
 Link Nodes
@@ -53,12 +53,6 @@ JHAVEPOPEx14
 .. extrtoolembed:: 'JHAVEPOPEx14'
    :learning_tool: code-workout-jhavepop
 
-JHAVEPOPEx16
-------------
-
-.. extrtoolembed:: 'JHAVEPOPEx16'
-   :learning_tool: code-workout-jhavepop
-
 
 One can easily write a loop to iterate through all the Links on a
 chain, without needing to know how many there actually are.
@@ -71,15 +65,7 @@ chain, without needing to know how many there actually are.
 
 JHAVEPOPEx12
 ------------
-
 .. extrtoolembed:: 'JHAVEPOPEx12'
-   :learning_tool: code-workout-jhavepop
-
-
-JHAVEPOPEx13
-------------
-
-.. extrtoolembed:: 'JHAVEPOPEx13'
    :learning_tool: code-workout-jhavepop
 
 
@@ -98,13 +84,6 @@ JHAVEPOPEx10
    :learning_tool: code-workout-jhavepop
 
 
-JHAVEPOPEx11
-------------
-
-.. extrtoolembed:: 'JHAVEPOPEx11'
-   :learning_tool: code-workout-jhavepop
-
-
 
 Finally, we can also insert new Links.
 
@@ -118,20 +97,6 @@ JHAVEPOPEx15
 ------------
 
 .. extrtoolembed:: 'JHAVEPOPEx15'
-   :learning_tool: code-workout-jhavepop
-
-
-JHAVEPOPEx17
-------------
-
-.. extrtoolembed:: 'JHAVEPOPEx17'
-   :learning_tool: code-workout-jhavepop
-
-
-JHAVEPOPEx18
-------------
-
-.. extrtoolembed:: 'JHAVEPOPEx18'
    :learning_tool: code-workout-jhavepop
 
 
