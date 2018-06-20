@@ -13,7 +13,8 @@ Content is delivered in the form of "book instances", which are
 created through the :ref:`configuration process <Configuration>`.
 Book instances come in two forms: plain HTML pages (that you can
 create locally for testing) and those accessed through a Learning
-Management System (at the moment, we only support Canvas).
+Management System (at the moment, we support Canvas, and we have some
+limited access from other LMS through the LTI protocol).
 As a new developer, you typically don't worry about anything other
 than creating plain HTML book instances.
 
@@ -99,8 +100,11 @@ Here is a list of the individual repositories that we use:
 * The OpenPOP project is in a separate repository at
   https://github.com/OpenDSA/OpenPOP.
 
+* The back-end server source can be found at
+  https://github.com/OpenDSA/OpenDSA-LTI.
+  
 An up-to-date development version of the OpenDSA repository is
-mirrored at http://lti.cs.vt.edu/LTI_ruby.
+mirrored at http://lti.cs.vt.edu/OpenDSA.
 The built version of the stable standard book configurations
 (available either as they appear in Canvas or stand-alone web pages)
 is available at: https://opendsa-server.cs.vt.edu/home/books.
@@ -371,9 +375,9 @@ Then do the following::
 At this point, you should be all set up. To test things, you can try
 doing::
 
-  make test
+  make Test
 
-This should put a test book into ``[OpenDSA]/Books/test``.
+This should put a test book into ``[OpenDSA]/Books/Test``.
 
 Running a Local Web Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -397,3 +401,22 @@ in the ``WebServer`` script file.
 This will be the top level of the OpenDSA directory, and you can
 browse through it in the normal way.
 Any books that you compiled will be in the ``Books`` directory.
+
+
+------------------------------------
+Writing Visualizations and Exercises
+------------------------------------
+
+The OpenDSA system has been developed over many years to help people
+write simple or complex visualizations and interactive exercises.
+Depending on what you want to do, there might be a lot
+to learn.
+To get you productive quickly, we created the ``SimpleDemo``
+materials.
+Once you have your development environment installed, you should
+compile the ``SimpleDemo`` book instance
+(do ``make SimpleDemo`` from the top level of the OpenDSA repository).
+Then read the module, but also look at the sourcecode for both the
+module and the various examples.
+These will show you a lot of what you will need to implement your own
+visualizations and exercises.

@@ -22,21 +22,11 @@ If you can see the code, it is relatively easy to come up with test
 cases to cover each branch. Try it this time with code visible.
 Try to get over 90% code coverage.
 
-.. raw:: html
+.. avembed:: AV/Testing/Triangle/new/TriangleApplet.html pe
+   :long_name: Triangle Testing
 
-   <center>
-   <iframe id="Tri_iframe2"
-        src="http://lti.cs.vt.edu/LTI_ruby/AV/Testing/Triangle/TriangleApplet.html?code=true"
-        width="1100" height="1100"
-        frameborder="1" marginwidth="0" marginheight="0"
-        scrolling="no">
-   </iframe>
-   </center>
-
-.. .. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
-..   :long_name: Triangle Testing
-..   :url_params: code=true
-
+AV/Testing/Triangle/new/TriangleApplet.html pe
+AV/Sorting/shellsortPRO.html pe
 
 So, did you find it easier to get code coverage when you had the code
 in front of you?

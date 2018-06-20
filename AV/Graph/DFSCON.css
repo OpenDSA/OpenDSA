@@ -1,0 +1,12 @@
+#DFSCON {
+  height: 450px;
+}
+
+#DFSCON .jsavline {
+  height: 20px;
+}
+
+#DFSCON .jsavedge.markpath {
+  stroke-width: 4;
+  stroke: #f61010; //red
+}

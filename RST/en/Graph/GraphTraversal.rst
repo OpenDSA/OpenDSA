@@ -97,10 +97,10 @@ DFS can be applied to directed or undirected graphs.
 This visualization shows a graph and the result of performing a DFS on
 it, resulting in a depth-first search tree.
 
-.. inlineav:: DfsCON ss
+.. inlineav:: DFSCON ss
    :long_name: Depth-First Search Slideshow
-   :links: AV/Graph/DfsCON.css
-   :scripts: AV/Graph/DfsCON.js
+   :links: AV/Graph/DFSCON.css
+   :scripts: AV/Graph/DFSCON.js
    :output: show
 
 Here is an implementation for the DFS algorithm.
@@ -121,6 +121,14 @@ remaining vertices are processed; hence the call to function
 This would be a natural opportunity to make use of the
 :ref:`visitor <visitor> <DesignPatterns>` design pattern.
 
+The following visualization shows a random graph each time that you
+start it, so that you can see the behavior on different examples.
+It can show you DFS run on a directed graph or an undirected graph.
+Be sure to look at an example for each type of graph.
+
+ .. avembed:: AV/Graph/DFSAV.html ss
+      :long_name: DFS AV
+
 DFS processes each edge once in a directed graph.
 In an undirected graph, DFS processes each edge from both
 directions.
@@ -129,7 +137,7 @@ Each vertex must be visited, but only once, so the total cost is
 
 Here is an exercise for you to practice DFS.
 
-.. avembed:: AV/Graph/graphDFSPE.html pe
+.. avembed:: AV/Graph/DFSPE.html pe
    :long_name: DFS Proficiency Exercise
 
 
@@ -149,10 +157,10 @@ bottom.
 This visualization shows a graph and the result of performing a BFS on
 it, resulting in a breadth-first search tree.
 
-.. inlineav:: BfsCON ss
+.. inlineav:: BFSCON ss
    :long_name: Breadth-First Search Slideshow
-   :links: AV/Graph/BfsCON.css
-   :scripts: AV/Graph/BfsCON.js
+   :links: AV/Graph/BFSCON.css
+   :scripts: AV/Graph/BFSCON.js
    :output: show
 
 Here is an implementation for BFS.
@@ -160,9 +168,17 @@ Here is an implementation for BFS.
 .. codeinclude:: Graphs/BFS
    :tag: BFS
 
+The following visualization shows a random graph each time that you
+start it, so that you can see the behavior on different examples.
+It can show you BFS run on a directed graph or an undirected graph.
+Be sure to look at an example for each type of graph.
+
+.. avembed:: AV/Graph/BFSAV.html ss
+    :long_name: BFS AV
+
 Here is an exercise for you to practice BFS.
 
-.. avembed:: AV/Graph/graphBFSPE.html pe
+.. avembed:: AV/Graph/BFSPE.html pe
    :long_name: BFS Proficiency Exercise
 
 .. TODO::

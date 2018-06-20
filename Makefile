@@ -139,6 +139,9 @@ CS4114slides: min
 Spatial: min
 	python $(CONFIG_SCRIPT) config/Spatial.json --no-lms
 
+PointersJavaSummer: min
+	python $(CONFIG_SCRIPT) config/PointersJavaSummer.json --no-lms
+
 PointersJava: min
 	python $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
 

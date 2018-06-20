@@ -3,7 +3,7 @@
 .. Copyright (c) 2012-13 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: David Furcy and Tom Naps
 
 
@@ -25,11 +25,11 @@ Parameter-passing techniques may be broken down as follows:
 
 -  Lazy evaluation (normal order) techniques
 
-   -  Macro expansion 
+   -  Macro expansion
 
-   -  Call-by-name 
+   -  Call-by-name
 
-   -  Call-by-need 
+   -  Call-by-need
 
 The difference between call-by-value and call-by-reference is
 exemplified by the difference between denoted values in our
@@ -38,7 +38,27 @@ argument for a function parameter is a copy of the value of the
 argument whereas, in call-by-reference, the function is given the
 address of the argument.  Given the address, the function has the
 capability of modifying the argument.
-   
+
+Consider the following code:
+
+.. codeinclude:: ParamPassing/ParamPassing
+
+If the parameter passing method call-by-value is used...
+
+.. inlineav:: paramPassingByVal ss
+   :long_name: Parameter Passing By Value
+   :links:
+   :scripts: AV/PL/paramPassingByVal.js
+   :output: show
+
+If the parameter passing method call-by-reference is used...
+
+.. inlineav:: paramPassingByRef ss
+   :long_name: Parameter Passing By Reference
+   :links:
+   :scripts: AV/PL/paramPassingByRef.js
+   :output: show
+
 This problem will help you review the difference between *call by
 value* and *call by reference* in C++, where the presence of an
 ampersand in front of the parameter's name is used to indicate
@@ -72,7 +92,7 @@ the following C++ code.
 
     #include <iostream>
     using namespace std;
-    
+
     void by_value(int a, int b) {
       a = b;
       b = 6;
@@ -84,9 +104,9 @@ the following C++ code.
     void by_copy_restore(int &a, int &b) {
       int copya, copyb;
       copya = a;       // copy-in phase
-      copyb = b;    
+      copyb = b;
       copya = copyb;   // function proper
-      copyb = 6;     
+      copyb = 6;
       a = copya;       // copy-out phase
       b = copyb;
     }
@@ -189,7 +209,7 @@ it is actually used in the body of the macro.
     }
 
 
-**Implementation of macro-expansion in C++** 
+**Implementation of macro-expansion in C++**
 
 One possible implementation of macro-expansion is to perform a double
 textual substitution. For example, the C++
@@ -206,15 +226,15 @@ following code.
 
 ::
 
-    #include <iostream>  
+    #include <iostream>
 
-    using namespace std; 
+    using namespace std;
 
-    int n = 6;           
+    int n = 6;
 
-    #define dynamic_scoping  { cout << n << endl; }  
+    #define dynamic_scoping  { cout << n << endl; }
 
-    void static_scoping()    { cout << n << endl; }  
+    void static_scoping()    { cout << n << endl; }
 
     void test_dynamic() {
       int n = 5;
@@ -232,7 +252,7 @@ following code.
       test_dynamic();
       test_static();
     }
-    
+
 
 
 This problem will help you review the differences among *call by
@@ -288,4 +308,3 @@ depth in the context of a specific example known as a *lazy list*.
 
 .. .. avembed:: Exercises/PL/RP31part2.html ka
 ..    :long_name: RP set #31, question #2
-	       

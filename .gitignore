@@ -4,6 +4,9 @@ modules.json
 modules.csv
 *.bak
 
+# For MAC users
+*.DS_Store
+
 # Documentation build directories
 Doc/manual
 Doc/build

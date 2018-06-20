@@ -50,7 +50,7 @@
       }
     }],
     "c++": [{
-      "url": "../../../SourceCode/C++/Lists/AList.java",
+      "url": "../../../SourceCode/C++/Lists/AList.h",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AListInsert *** */",
       "endBefore": "/* *** ODSAendTag: AListInsert *** */",

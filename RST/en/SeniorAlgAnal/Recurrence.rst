@@ -346,7 +346,7 @@ A more complex example is given next.
       & = & 7n + 5n^2\sum_{i=0}^{k-1} 1/2^i.\\
       \end{eqnarray*}
 
-   From Equation (6) of Module :ref:`Summation <Summation> <Summation>`,
+   From Equation (6) of Module :ref:`Summation <Summation> <Summations>`,
    we have:
 
    .. math::
@@ -457,7 +457,7 @@ The summation is a geometric series whose sum depends on the ratio
 There are three cases.
 
 (#) :math:`r<1`.
-    From Equation (4) of Module :ref`summation <summation> <Summation>`,
+    From Equation (4) of Module :ref:`summation <summation> <Summations>`,
 
     .. math::
 
@@ -469,7 +469,7 @@ There are three cases.
 
        {\bf T}(n) = \Theta(a^m) = \Theta(n^{log_ba}).
 
-(#) :math:r=1`.
+(#) :math:`r=1`.
     Because :math:`r = b^k/a`, we know that :math:`a = b^k`.
     From the definition of logarithms it follows immediately that
     :math:`k = \log_b a`.

@@ -1,0 +1,171 @@
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
+        <script src="resources/js/BowlingGame.js"></script>    
+        <script src="resources/js/BowlingApp.js"></script>    
+        <style>
+            .appbox{
+                height: 820px;
+                width: 550px;
+                position: relative;
+                float: left;
+                padding-left: 10px;            
+            }
+            #applet {
+                height: 620px;
+                width: 570px;
+                border:1px solid #000000;
+                background-color: whitesmoke;            
+            }
+    
+    
+            .codeBlock {
+                width: 290px;
+                float: left;
+            }
+
+            .codeBlock2 {
+                float: right;            
+                width: 600px;
+            }
+            .infoBox {
+                height: 135px;
+                width: 550px;
+                border: 1px solid lightblue;
+                left: 10px;
+                margin-top: 5px;
+                position: relative;
+            }
+            
+            #valueInputBox {
+                margin-left: 25px;           
+            }
+            #performanceSummary {
+                margin-left: 25px;  
+            }
+            #performanceDetails {
+                margin-left: 25px;  
+            }
+            #testCaseHistory {
+                margin-left: 25px;  
+            }
+            .triangleInput {
+                width: 25px;
+                margin-right: 50px;
+            }
+            #reset {
+                position: relative;
+                top: 15px;
+                left: 275px;
+            }
+            table, th, td {
+                border: 1px solid black;
+            }
+            th, td {
+                text-align: center;
+                width: 35px;
+                padding: 2px;
+            }
+    
+        </style>
+    </head>
+    
+    <body>
+        <!-- Left code block showing requirements for code coverage -->
+        <figure class="codeBlock" id="coverageCode">        
+            <pre>
+                <code>
+                    <object style="width: 300px; height: 79%;" data="resources/text/BowlingCases.txt"></object>
+                </code>
+            </pre>
+        </figure>
+        <!-- End of left code block -->
+        <div class="appbox">
+            <div id="description" >
+                <h3>Bowling App</h3>
+                <p>
+                    Your job is to test this simple program. It is a bowling game score calculator that 
+                    takes one input. Each input represents the number of pins knocked down by a throw of
+                    a bowling ball. Standard bowling rules apply. Think carefully about each of your 
+                    inputs as there may be some that might not make complete sense in a standard 
+                    bowling game. Strive to think of these cases as they are handled by the code and must 
+                    be found in order to get 100% code coverage.  
+                </p>
+            </div>
+            <br>
+            <div id="applet">
+                <div class="infoBox">
+                    <div id="valueInputBox">
+                        <h4>Enter Pins Hit with Roll</h4>
+                        <label style="margin-right: 50px;">Enter Roll:</label>
+                        <input class="triangleInput" id="rollValue">
+                        <button id="throwRoll" onclick="main();">Throw Roll</button>
+                    </div>            
+                    <br>
+                    <div style="margin-left: 25%"> 
+                        <p id="triangleType" style="color: red"></p>
+                    </div>
+                </div>
+                <div class="infoBox">
+                    <div id="performanceSummary" >
+                        <h4>Your Performance Summary</h4>
+                        <label style="float: left; margin-right: 15px;">Code Coverage: </label>
+                        <label style="float: left" id="codeCoveragePercentage">0%</label>
+                        <div class="progress" style="width: 330px;  float: right; margin-right: 15px;">
+                            <div class="progress-bar" id="codeCoverageBar" role="progressbar" style="width:0%"></div>
+                        </div>
+                        <br>
+                        <div style="height: 20px;"> </div>                                                   
+                    </div>            
+                </div>
+                <div class="infoBox" >
+                    <div id="performanceDetails">
+                        <h4>Your Performance Details</h4>
+                        <label id="testsrun" style="margin-right: 15px;">Number of balls thrown: 0</label>
+                        <br>
+                        <table align="center" style="float: left; margin-left: 25px;">
+                            <tr>
+                                <td>Frame</td>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>6</th>
+                                <th>7</th>
+                                <th>8</th>
+                                <th>9</th>
+                                <th>10</th>  
+                                <th>Score</th>                              
+                            </tr>
+                            <tr>
+                                <td>Rolls</td>
+                                <td id="roll1"></td>
+                                <td id="roll2"></td>
+                                <td id="roll3"></td>
+                                <td id="roll4"></td>
+                                <td id="roll5"></td>
+                                <td id="roll6"></td>
+                                <td id="roll7"></td>
+                                <td id="roll8"></td>
+                                <td id="roll9"></td>
+                                <td id="roll10"></td>
+                                <td id="score">0</td>
+                            </tr>
+                        </table>
+                    </div>            
+                </div>
+                <div class="infoBox" >
+                    <div id="testCaseHistory">
+                        <h4>Your Test Case History</h4>           
+                        <textarea id="testHistory" rows="4" style="width: 500px; resize: none;"> </textarea>
+                    </div>            
+                </div>
+                <button id="reset" onclick="resetClicked(); location.reload();">Reset</button>
+            </div>
+        </div>
+    </body>
+    
+    </html>

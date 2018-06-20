@@ -1,0 +1,26 @@
+#container {
+  width: 800px;
+  height: 590px;
+}
+
+.avcontainer{
+  overflow: visible;
+}
+
+.jsavline{
+  height: 40px;
+}
+
+.jsavgraph .jsavedge {
+  stroke-width: 1.5px;
+}
+
+.jsavedge.markpath {
+  stroke-width: 4;
+  stroke: #f61010; //red
+}
+
+.jsavedge.dirmarkpath {
+  stroke-width: 4;
+  stroke: #f61010; //red
+}

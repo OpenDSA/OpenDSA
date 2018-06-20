@@ -1,0 +1,162 @@
+<html>
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
+    
+    <script src="resources/js/Bugs.js"></script>
+    <script src="resources/js/TriangleClassifier.js"></script>
+    <style>
+        .appbox{
+            height: 820px;
+            width: 550px;
+            position: relative;
+            float: left;
+            padding-left: 10px;            
+        }
+        #applet {
+            height: 620px;
+            width: 570px;
+            border:1px solid #000000;
+            background-color: whitesmoke;            
+        }
+
+        .codeBlock {
+            width: 290px;
+            float: left;
+        }
+
+        .codeBlock2 {
+            float: right;            
+            width: 600px;
+        }
+        
+        .infoBox {
+            height: 135px;
+            width: 550px;
+            border: 1px solid lightblue;
+            left: 10px;
+            margin-top: 5px;
+            position: relative;
+        }
+        
+        #valueInputBox {
+            margin-left: 25px;           
+        }
+        #performanceSummary {
+            margin-left: 25px;  
+        }
+        #performanceDetails {
+            margin-left: 25px;  
+        }
+        #testCaseHistory {
+            margin-left: 25px;  
+        }
+        .triangleInput {
+            width: 25px;
+            margin-right: 50px;
+        }
+        #reset {
+            position: relative;
+            top: 15px;
+            left: 275px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Left code block showing requirements for code coverage -->
+    <figure class="codeBlock" id="coverageCode">        
+        <pre>
+            <code>
+                <object style="width: 300px; height: 79%;" data="resources/text/ClassifyTriangle.txt"></object>
+            </code>
+        </pre>
+    </figure>
+    <!-- End of left code block -->
+    <div class="appbox">
+        <div id="description" >
+            <h3>Triangle Classifier</h3>
+            Your job is to test out a program that performs a simple task:
+            it takes three integers as parameters, and interprets them as
+            the lengths of the three sides of a hypothetical triangle.  The
+            job of the program is to take those three numbers and then
+            classify the triangle into one of these four categories: equilateral
+            (all sides the same length), isosceles (two sides the same length),
+            scalene (all sides different in length), or "not a triangle"
+            (it is impossible to construct a triangle with the given side
+            lengths).
+            <br>
+            The problem is that this program still contains a bug or
+            two, and we need your help to find them.  Think systematically
+            about what combinations of three numbers will fully exercise
+            this program's abilities, and try out each of your combinations
+            in turn.
+        </div>
+        <br>
+        <div id="applet">
+            <div class="infoBox">
+                <div id="valueInputBox">
+                    <h4>Enter Your Test Values</h4>
+                    <label style="margin-right: 50px;">Enter triangle sides:</label>
+                    <input class="triangleInput" id="side1">
+                    <input class="triangleInput" id="side2">
+                    <input class="triangleInput" id="side3">
+                    <button id="classify" onclick="classifyTriangle()">Classify</button>
+                </div>            
+                <br>
+                <div style="margin-left: 25%"> 
+                    <p id="triangleType" style="color: red"></p>
+                </div>
+            </div>
+            <div class="infoBox">
+                <div id="performanceSummary" >
+                    <h4>Your Performance Summary</h4>
+                    <label style="float: left; margin-right: 15px;">Code Coverage: </label>
+                    <label style="float: left" id="codeCoveragePercentage">0%</label>
+                    <div class="progress" style="width: 330px;  float: right; margin-right: 15px;">
+                        <div class="progress-bar" id="codeCoverageBar" role="progressbar" style="width:0%"></div>
+                    </div>
+                    <br>
+                    <!-- Bar to show bug coverage percentage -->
+                    <div style="height: 20px;"> </div>                
+                    <!-- <label style="float: left; margin-right: 15px;">Bugs Found: </label>
+                    <label style="float: left; margin-left: 21px;" id="bugCoveragePercentage">0%</label> -->
+                    <!-- <div class="progress" style="width: 330px; float: right; margin-right: 15px;">
+                        <div class="progress-bar" id= "bugCoverageBar" role="progressbar" style="width:0%"></div>                        
+                    </div> -->
+                                
+                </div>            
+            </div>
+            <div class="infoBox" >
+                <div id="performanceDetails">
+                    <h4>Your Performance Details</h4>
+                    <label id="testsrun" style="float: left; margin-right: 15px;">Number of tests run: 0</label>
+                    <br>
+                    <br>
+                    <label id="bugsFound" style="float: left; margin-right: 15px;"></label>
+                </div>            
+            </div>
+            <div class="infoBox" >
+                <div id="testCaseHistory">
+                    <h4>Your Test Case History</h4>           
+                    <textarea id="testHistory" rows="4" style="width: 500px; resize: none;"> </textarea>
+                </div>            
+            </div>
+            <button id="reset" onclick="resetClicked(); location.reload();">Reset</button>
+        </div>  
+    </div>
+    <!-- Right code block showing code for bugs found -->
+    <!-- <figure class="codeBlock2">            
+        <pre>
+            <code>
+                <object style="width: 500px; height: 100%; float: right;" data="resources/text/Bugs.txt"></object>
+            </code>
+        </pre>
+    </figure> -->
+    <!-- End of right code block -->
+</body>
+
+</html>
