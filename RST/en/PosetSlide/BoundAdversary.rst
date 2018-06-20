@@ -110,13 +110,10 @@ with eight nodes would be constructed.
    Given two trees of size four, one of the roots is chosen to be the
    root for the combined tree of eight nodes.
 
-
-
-.. inlineav:: BinomialTreeCON dgm
+.. inlineav:: BinomialTreeCON ss
+   :links: 
    :scripts: AV/PosetSlide/BinomialTreeCON.js
-   :align: center
-
-
+   :output: show
 
 The resulting algorithm is simple in principle:
 Build the binomial tree for all :math:`n` elements, and then compare
