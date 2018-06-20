@@ -198,7 +198,6 @@ Figure :num:`Figure #Poset`.
    :align: center
 
 .. inlineav:: PosetSlideCON ss
-   :long_name: Simple demo slideshow 1
    :links: 
    :scripts: AV/PosetSlide/PosetSlideCON.js
    :output: show
