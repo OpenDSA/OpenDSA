@@ -2,57 +2,51 @@
 
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("BinomialTreeCON", {animationMode: "none"});
-  av.g.circle(50, 30, 10);
-  av.g.circle(50, 70, 10);
-  av.g.circle(100, 30, 10);
-  av.g.circle(100, 70, 10);
-  av.g.circle(150, 30, 10);
-  av.g.circle(150, 70, 10);
-  av.g.circle(200, 30, 10);
-  av.g.circle(200, 70, 10);
-
-  av.g.circle(280, 70, 10);
-  av.g.circle(280, 110, 10);
-  av.g.circle(320, 30, 10);
-  av.g.circle(320, 70, 10);
-
-  av.g.circle(370, 70, 10);
-  av.g.circle(370, 110, 10);
-  av.g.circle(410, 30, 10);
-  av.g.circle(410, 70, 10);
-
-  av.g.circle(500, 110, 10);
-  av.g.circle(500, 150, 10);
-  av.g.circle(540, 70, 10);
-  av.g.circle(540, 110, 10);
-  av.g.circle(580, 70, 10);
-  av.g.circle(580, 110, 10);
-  av.g.circle(620, 30, 10);
-  av.g.circle(620, 70, 10);
-
-  av.g.line(50, 40, 50, 60);
-  av.g.line(100, 40, 100, 60);
-  av.g.line(150, 40, 150, 60);
-  av.g.line(200, 40, 200, 60);
-
-  av.g.line(280, 80, 280, 100);
-  av.g.line(280, 60, 320, 40);
-  av.g.line(320, 60, 320, 40);
-
-  av.g.line(370, 80, 370, 100);
-  av.g.line(370, 60, 410, 40);
-  av.g.line(410, 60, 410, 40);
-
-  av.g.line(500, 120, 500, 140);
-  av.g.line(540, 80, 500, 100);
-  av.g.line(540, 80, 540, 100);
-
-  av.g.line(580, 80, 580, 100);
-  av.g.line(620, 40, 620, 60);
-  av.g.line(620, 40, 540, 60);
-  av.g.line(620, 40, 580, 60);
-
+  var av = new JSAV("BinomialTreeCON");
+  var xoffset = 300;
+  var yoffset = 15;
+  var circRadius = 10;
+  var c1 = av.g.circle(xoffset + 50, yoffset, circRadius, {"stroke-width": "2"});
+  var c2 = av.g.circle(xoffset + 50, yoffset + 40, circRadius, {"stroke-width": "2"});
+  var c3 = av.g.circle(xoffset + 100, yoffset, circRadius, {"stroke-width": "2"});
+  var c4 = av.g.circle(xoffset + 100, yoffset + 40, circRadius, {"stroke-width": "2"});
+  var c5 = av.g.circle(xoffset + 150, yoffset, circRadius, {"stroke-width": "2"});
+  var c6 = av.g.circle(xoffset + 150, yoffset + 40, circRadius, {"stroke-width": "2"});
+  var c7 = av.g.circle(xoffset + 200, yoffset, circRadius, {"stroke-width": "2"});
+  var c8 = av.g.circle(xoffset + 200, yoffset + 40, circRadius, {"stroke-width": "2"});
+  var l1 = av.g.line(xoffset + 50, yoffset + 10, xoffset + 50, yoffset + 30, {"stroke-width": "2"});
+  var l2 = av.g.line(xoffset + 100, yoffset + 10, xoffset + 100, yoffset + 30, {"stroke-width": "2"});
+  var l3 = av.g.line(xoffset + 150, yoffset + 10, xoffset + 150, yoffset + 30, {"stroke-width": "2"});
+  var l4 = av.g.line(xoffset + 200, yoffset + 10, xoffset + 200, yoffset + 30,{"stroke-width": "2"});
   av.displayInit();
+  av.step();
+  c1.hide();
+  c2.hide();
+  c5.hide();
+  c6.hide();
+  l1.hide();
+  l3.hide();
+  c1 = av.g.circle(xoffset + 50, yoffset + 40, circRadius, {"stroke-width": "2"});
+  c2 = av.g.circle(xoffset + 50, yoffset + 80, circRadius, {"stroke-width": "2"});
+  l1 = av.g.line(xoffset + 50, yoffset + 50, xoffset + 50, yoffset + 70, {"stroke-width": "2"});
+  var l5 = av.g.line(xoffset + 50, yoffset + 30, xoffset + 100, yoffset + 10, {"stroke-width": "2"});
+  c5 = av.g.circle(xoffset + 150, yoffset + 40, circRadius, {"stroke-width": "2"});
+  c6 = av.g.circle(xoffset + 150, yoffset + 80, circRadius, {"stroke-width": "2"});
+  l3 = av.g.line(xoffset + 150, yoffset + 50, xoffset + 150, yoffset + 70, {"stroke-width": "2"});
+  var l6 = av.g.line(xoffset + 150, yoffset + 30, xoffset + 200, yoffset + 10, {"stroke-width": "2"});
+  av.step();
+  c1.hide();
+  c2.hide();
+  c3.hide();
+  l1.hide();
+  l2.hide();
+  l5.hide();
+  c1 = av.g.circle(xoffset + 50, yoffset + 80, circRadius, {"stroke-width": "2"});
+  c2 = av.g.circle(xoffset + 50, yoffset + 120, circRadius, {"stroke-width": "2"});
+  c3 = av.g.circle(xoffset + 100, yoffset + 80, circRadius, {"stroke-width": "2"});
+  l1 = av.g.line(xoffset + 50, yoffset + 90, xoffset + 50, yoffset + 110, {"stroke-width": "2"});
+  l2 = av.g.line(xoffset + 100, yoffset + 50, xoffset + 100, yoffset + 70, {"stroke-width": "2"});
+  l5 = av.g.line(xoffset + 50, yoffset + 70, xoffset + 100, yoffset + 50, {"stroke-width": "2"});
+  var l7 = av.g.line(xoffset + 100, yoffset + 30, xoffset + 200, yoffset + 10, {"stroke-width": "2"});
   av.recorded();
 });
