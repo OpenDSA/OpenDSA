@@ -160,8 +160,10 @@ line between the corners of the reference variable's box.
    :align: center
 
 
-JHAVEPOPEx5
------------
+Practice exercise
+-----------------
+Now try to solve this exercise on referencing and dereferencing:
+
 
 .. extrtoolembed:: 'JHAVEPOPEx5'
    :learning_tool: code-workout-jhavepop
