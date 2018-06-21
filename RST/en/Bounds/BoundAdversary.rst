@@ -92,23 +92,14 @@ A binomial tree of height :math:`m` has :math:`2^m` nodes.
 Either it is a single node (if :math:`m=0`), or else it is
 two height :math:`m-1` binomial trees with one tree's root becoming
 a child of the other.
-Figure :num:`Figure #BinomialTree` illustrates how a binomial tree
-with eight nodes would be constructed.
+Let's see how a binomial tree with eight nodes would be constructed.
 
 .. _BinomialTree:
 
-.. odsafig:: Images/BinomialTree.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Building a binomial tree
-
-   An example of building a binomial tree.
-   Pairs of elements are combined by choosing one of the parents to be
-   the root of the entire tree.
-   Given two trees of size four, one of the roots is chosen to be the
-   root for the combined tree of eight nodes.
+.. inlineav:: BinomialTreeCON ss
+   :links:  AV/SeniorAlgAnal/BinomialTreeCON.css
+   :scripts: AV/SeniorAlgAnal/BinomialTreeCON.js
+   :output: show
 
 The resulting algorithm is simple in principle:
 Build the binomial tree for all :math:`n` elements, and then compare

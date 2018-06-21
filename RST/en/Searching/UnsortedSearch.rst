@@ -180,27 +180,14 @@ such that zero or more of the order relations between pairs of
 elements are known.
 We can represent this knowledge by drawing directed acyclic graphs
 (DAGs) showing the known relationships, as illustrated by
-Figure :num:`Figure #Poset`.
+the following slideshow.
 
 .. _Poset:
 
-.. odsafig:: Images/Poset.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Illustration of using a poset
-
-   Illustration of using a poset to model our current knowledge of the
-   relationships among a collection of objects.
-   A directed acyclic graph (DAG) is used to draw the poset
-   (assume all edges are directed downward).
-   In this example, our knowledge is such that we don't know how
-   :math:`A` or :math:`B` relate to any of the other objects.
-   However, we know that both :math:`C` and :math:`G` are greater than
-   :math:`E` and :math:`F`.
-   Further, we know that :math:`C` is greater than :math:`D`, and that
-   :math:`E` is greater than :math:`F`
+.. inlineav:: PosetCON ss
+   :links: AV/SeniorAlgAnal/PosetCON.css
+   :scripts: AV/SeniorAlgAnal/PosetCON.js
+   :output: show
 
 .. topic:: Proof 4
 
@@ -222,5 +209,4 @@ Figure :num:`Figure #Poset`.
    :math:`K` to make sure that :math:`K` is not somewhere in that
    partial order.
    Thus, any algorithm must make at least :math:`n` comparisons in the
-   worst case.
-
+   worst case. 
