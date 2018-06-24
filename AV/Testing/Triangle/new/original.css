@@ -1,0 +1,96 @@
+#container {
+  width: 800px;
+  height: 450px;
+  border-color: #b6c0b2;
+  background-color: #e2eedd;
+  border-radius: 10px;
+}
+
+.appbox{
+	height: 730px;
+	width: 550px;
+	position: relative;
+	float: left;
+	padding-left: 10px;
+}
+
+#applet{
+	height: 530px;
+	width: 570px;
+	border: 1px solid #000000;
+	background-color: whitesmoke;
+}
+
+.codeBlock{
+	width: 330px;
+	float: left;
+}
+
+.codeBlock2{
+	float: right;
+	width: 600px;
+}
+
+.codeShow{
+	width: 300px;
+	height: 79%;
+}
+
+.infoBox{
+	height: 115px;
+	width: 550px;
+	border: 1px solid lightblue;
+	left: 10px;
+	margin-top: 5px;
+	position: relative;
+}
+
+#valueInputBox{
+	margin-left: 25px;
+}
+
+#performanceSummary{
+	margin-left: 25px;
+}
+
+#performanceDetails{
+	margin-left: 25px;
+}
+
+#testCaseHistory{
+	margin-left: 25px;
+}
+
+.firstBoxLabel{
+	margin-right: 50px;
+}
+
+.triangleTypePrintOut{
+	margin-left: 25%;
+	color: red;
+}
+
+.secondAndThirdBoxOutPut{
+	float: left;
+	margin-right: 15px;
+}
+
+.percentage{
+	float: left;
+}
+
+.fourthBoxOutPut{
+	width: 500px;
+	resize: none;
+}
+
+.triangleInput{
+	width: 25px;
+	margin-right: 50px;
+}
+
+#reset{
+	position: relative;
+	top: 15px;
+	left: 275px;
+}

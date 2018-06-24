@@ -1,88 +1,48 @@
-.appbox{
-	height: 730px;
-	width: 550px;
-	position: relative;
-	float: left;
-	padding-left: 10px;
+#container {
+  width: 600px;
+  height: 500px;
+  border-color: #b6c0b2;
+  background-color: #e2eedd;
+  border-radius: 10px;
+  padding: 40px;
+  margin-left: 20px;
 }
 
-#applet{
-	height: 530px;
-	width: 570px;
-	border: 1px solid #000000;
-	background-color: whitesmoke;
+h1.title{
+	margin-left: 110px;
+	font-family: Times New Roman;
 }
 
-.codeBlock{
-	width: 330px;
-	float: left;
+p.jsavoutput.jsavline {
+	height: 40px;
 }
 
-.codeBlock2{
-	float: right;
-	width: 600px;
+.jsavscore {
+	text-align: center;
 }
 
-.codeShow{
-	width: 300px;
-	height: 79%;
+.triangleInput{
+	width: 50px;
+	margin-left: 20px
+	
 }
 
-.infoBox{
-	height: 115px;
-	width: 550px;
-	border: 1px solid lightblue;
-	left: 10px;
-	margin-top: 5px;
-	position: relative;
-}
-
-#valueInputBox{
-	margin-left: 25px;
-}
-
-#performanceSummary{
-	margin-left: 25px;
-}
-
-#performanceDetails{
-	margin-left: 25px;
-}
-
-#testCaseHistory{
-	margin-left: 25px;
-}
-
-.firstBoxLabel{
+h4.subTitle1{
+	font-family: Times New Roman;
 	margin-right: 50px;
 }
 
-.triangleTypePrintOut{
-	margin-left: 25%;
-	color: red;
+h4.subTitle2{
+	font-family: Times New Roman;
 }
 
-.secondAndThirdBoxOutPut{
-	float: left;
-	margin-right: 15px;
+h4.subTitle3{
+	font-family: Times New Roman;
 }
 
-.percentage{
-	float: left;
-}
-
-.fourthBoxOutPut{
+.testhistory{
 	width: 500px;
 	resize: none;
 }
 
-.triangleInput{
-	width: 25px;
-	margin-right: 50px;
-}
 
-#reset{
-	position: relative;
-	top: 15px;
-	left: 275px;
-}

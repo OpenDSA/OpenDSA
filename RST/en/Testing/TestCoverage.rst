@@ -22,7 +22,7 @@ If you can see the code, it is relatively easy to come up with test
 cases to cover each branch. Try it this time with code visible.
 Try to get over 90% code coverage.
 
-.. avembed:: AV/Testing/Triangle/new/TriangleApplet.html pe
+.. avembed:: AV/Sorting/shellsortPRO.html pe
    :long_name: Triangle Testing
 
 AV/Testing/Triangle/new/TriangleApplet.html pe

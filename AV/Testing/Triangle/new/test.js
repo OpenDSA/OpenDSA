@@ -4,8 +4,13 @@ var av = new JSAV($("#container"));
 av.recorded();
 var testNum = 1;
 var codeCoverage = [];
+var bugCoverage = [];
 for (var i = 0; i < 14; i++) {
     codeCoverage[i] = false;
+}
+
+for (var i = 0; i < 14; i++) {
+    bugCoverage[i] = false;
 }
 
 function initialize(){
@@ -19,17 +24,11 @@ function initialize(){
 }
 
 function modelSolution(modeljsav){
-    modeljsav.displayInit();
-    for(int i = 0; i < 14; i++){
-        var s1 = document.getElementById("side1").value;
-        var s2 = document.getElementById("side2").value;
-        var s3 = document.getElementById("side3").value; 
-        var triangleTypeNum = getTriangleTypeNumber(side1, side2, side3);
-        if (triangleTypeNum == 1 || triangleTypeNum == 2 || triangleTypeNum == 3){
-            modeljsav.gradeableStep();
-        }
-    }
-    return modeljsav;
+    var s1 = document.getElementById("side1").value;
+    var s2 = document.getElementById("side2").value;
+    var s3 = document.getElementById("side3").value; 
+    var triangleTypeNum = getTriangleTypeNumber(side1, side2, side3);
+
 }
 
 /**
@@ -127,17 +126,59 @@ function setPerformanceDetails() {
     var testsrunText = document.getElementById("testsrun");
     testsrunText.innerHTML = "Number of tests run: " + testNum;
     testNum++;
+    
+
 }
 
+/**
+ * Main function that is called when the 'Classify' button is pressed
+ */
 function classifyTriangle() {
     var side1 = document.getElementById("side1").value;
     var side2 = document.getElementById("side2").value;
-    var side3 = document.getElementById("side3").value;  
-    var triangleTypeNum = getTriangleTypeNumber(side1, side2, side3);
+    var side3 = document.getElementById("side3").value;    
+
+    if (side1 == "" || side2 == "" || side3 == "") {
+        document.getElementById("triangleType").innerText = "Error: All sides must be entered.";
+        document.getElementById("triangleType").style = "color: red;";
+        return;
+    }
+
+    var allowedValues = new RegExp('^[\-]?[0-9a-zA-Z]+$');
+    var triangleTypeNum = 0;
+    if (!side1.match(allowedValues) || !side2.match(allowedValues) || !side3.match(allowedValues)) {
+        //This is checked here instead of in getTriangleTypeNumber() so that we can evaluate
+        //before the sides have been pssed through the parseInt() statements below.
+        codeCoverage[12] = true;
+        triangleTypeNum = 0;
+    } else {
+        side1 = parseInt(side1, 10);
+        side2 = parseInt(side2, 10);
+        side3 = parseInt(side3, 10);
+    
+        var triangleTypeNum = getTriangleTypeNumber(side1, side2, side3);
+    }
+
+    
     var triangleType = getTriangleTypeText(triangleTypeNum);
+    document.getElementById("triangleType").innerText = "Triangle Type: " + triangleType;
+    document.getElementById("triangleType").style = "color: green;";
+    //var codeCoverageP = calculateCoverage();
+    //document.getElementById("codeCoverageBar").style = "width:" + codeCoverageP + "%";
+    //document.getElementById("codeCoveragePercentage").innerText = codeCoverageP.toFixed(2) + "%";
+
+    
+
     logTestCase(side1, side2, side3, triangleType);
 }
 
-var exercise = av.exercise(modelSolution, initialize);
-exercise.reset():
+reset = false;
+function resetClicked() {
+    reset = true;
+}
 
+window.onbeforeunload = function() {
+    if (!reset) {
+        return "Data will be lost if you leave the page, are you sure?";
+    }
+};

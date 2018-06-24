@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel = "stylesheet" type = text/css></link>
+
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
+	<script src = "original.js" type = "text/javascript"></script>
+	<script src = "Bugs.js" type = "text/javascript"></script> 
+	<link href = "original.css" rel = "stylesheet" type = text/css></link>
+	
+</head>
+
+<body>
+	<!-- Left code block showing requirements for code coverage -->
+    <figure class="codeBlock" id="coverageCode">        
+        <pre>
+            <code>
+                <object class = "codeShow" data="ClassifyTriangle.txt"></object>
+            </code>
+        </pre>
+    </figure>
+
+	<div class = "appbox">
+		<h3>Triangle Classifier</h3>
+		Your job is to test out a program that performs a simple task:
+        it takes three integers as parameters, and interprets them as
+        the lengths of the three sides of a hypothetical triangle.  The
+        job of the program is to take those three numbers and then
+        classify the triangle into one of these four categories: equilateral
+        (all sides the same length), isosceles (two sides the same length),
+        scalene (all sides different in length), or "not a triangle"
+        (it is impossible to construct a triangle with the given side
+        lengths).
+        <br>
+        The problem is that this program still contains a bug or
+        two, and we need your help to find them.  Think systematically
+        about what combinations of three numbers will fully exercise
+        this program's abilities, and try out each of your combinations
+        in turn.
+        <br>
+        <br>
+        <div id = "applet">
+        	<!-- First Information Box -->
+        	<div class = "infoBox">
+        		<div id = "valueInputBox">
+        			<h4>Enter your Test Values</h4>
+        			<label class = "firstBoxLabel">Enter triangle sides:</label>
+        			<input class = "triangleInput" id = "side1">
+        			<input class = "triangleInput" id = "side2">
+        			<input class = "triangleInput" id = "side3">
+        			<button id = "classify" onclick = "classifyTriangle()">Classify</button>
+        		</div>
+        		<br>
+        		<p class = "triangleTypePrintOut" id = "triangleType"></p>
+        	</div>
+
+        	<!-- Second Information Box -->
+        	<div class = "infoBox">
+        		<div id = "performanceSummary">
+        			<h4>Your Performance Summary</h4>
+        			<label class = "secondAndThirdBoxOutPut">Code Coverage: </label>
+        			<label class = "percentage" id = "codeCoveragePercentage">0%</label>
+        			<div class="progress" style="width: 330px;  float: right; margin-right: 15px;">
+                        <div class="progress-bar" id="codeCoverageBar" role="progressbar" style="width:0%"></div>
+                    </div>
+                    <br>
+                    <!-- Bar to show bug coverage percentage -->
+                    <div style="height: 20px;"> </div>
+                </div>
+            </div>   
+
+        	<!-- Third Information Box -->
+        	<div class = "infoBox">
+        		<div id = "performanceDetails">
+        			<h4>Your Performance Details</h4>
+        			<label id = "testsrun" class = "secondAndThirdBoxOutPut">Number of tests run: 0</label>
+        			<br>
+        			<br>
+        			<label id = "bugsFound" class = "secondAndThirdBoxOutPut"></label>
+        		</div>
+        	</div> 
+
+        	<!-- Fourth Information Box -->
+        	<div class = "infoBox">
+        		<div id = "testCaseHistory">
+        			<h4>Your Test Case History</h4>
+        			<textarea id = "testHistory" rows = "3" class = "fourthBoxOutPut"></textarea>
+        		</div>
+        	</div>
+
+        	<!-- Reset Button -->
+        	<button id = "reset" onclick = "resetClicked(); location.reload();">Reset</button>
+        </div>	
+	</div>
+
+</body>
+
+</html>
