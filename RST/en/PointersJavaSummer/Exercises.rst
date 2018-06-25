@@ -8,7 +8,3 @@
 
 Additional Practice Exercises
 ==============================
-
-Practice Exercises
--------------------
-

@@ -85,10 +85,10 @@ Example Reference Code
    :output: show
 
 
-JHAVEPOPEx1
------------
+changeHeadPointer1
+------------------
 
-.. extrtoolembed:: 'JHAVEPOPEx1'
+.. extrtoolembed:: 'changeHeadPointer1'
    :learning_tool: code-workout-jhavepop
 
 

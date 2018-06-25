@@ -47,10 +47,10 @@ How do we set up the chain to begin with?
    :scripts: AV/Pointers/linkNodes2CON.js
    :output: show
 
-JHAVEPOPEx14
-------------
+createList
+----------
 
-.. extrtoolembed:: 'JHAVEPOPEx14'
+.. extrtoolembed:: 'createList'
    :learning_tool: code-workout-jhavepop
 
 
@@ -63,9 +63,9 @@ chain, without needing to know how many there actually are.
    :output: show
 
 
-JHAVEPOPEx12
-------------
-.. extrtoolembed:: 'JHAVEPOPEx12'
+iterateOverList
+---------------
+.. extrtoolembed:: 'iterateOverList'
    :learning_tool: code-workout-jhavepop
 
 
@@ -77,10 +77,10 @@ One can remove a Link from a chain.
    :output: show
 
 
-JHAVEPOPEx10
-------------
+changePointeeNext1
+------------------
 
-.. extrtoolembed:: 'JHAVEPOPEx10'
+.. extrtoolembed:: 'changePointeeNext1'
    :learning_tool: code-workout-jhavepop
 
 
@@ -93,10 +93,10 @@ Finally, we can also insert new Links.
    :output: show
 
 
-JHAVEPOPEx15
-------------
+addNodeAtHead
+-------------
 
-.. extrtoolembed:: 'JHAVEPOPEx15'
+.. extrtoolembed:: 'addNodeAtHead'
    :learning_tool: code-workout-jhavepop
 
 

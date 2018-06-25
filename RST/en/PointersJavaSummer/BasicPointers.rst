@@ -160,12 +160,10 @@ line between the corners of the reference variable's box.
    :align: center
 
 
-Practice exercise
------------------
-Now try to solve this exercise on referencing and dereferencing:
+changePointeeDataDirect
+-----------------------
 
-
-.. extrtoolembed:: 'JHAVEPOPEx5'
+.. extrtoolembed:: 'changePointeeDataDirect'
    :learning_tool: code-workout-jhavepop
 
 
@@ -222,10 +220,10 @@ This tutorial uses a lot of drawings to show how references work.
 You should too.
 
 
-JHAVEPOPEx7
------------
+circularList1
+-------------
 
-.. extrtoolembed:: 'JHAVEPOPEx7'
+.. extrtoolembed:: 'circularList1'
    :learning_tool: code-workout-jhavepop
 
 
