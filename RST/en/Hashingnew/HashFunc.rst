@@ -58,13 +58,7 @@ To get credit for the exercise, answer the following two questions:
 .. avembed:: AV/Hashing/Birthday.html pe
    :long_name: Birthday Problem Calculator
 
-Practice 1:
-
 .. avembed:: AV/Hashingnew/demo_ex.html ka
-
-Practice 2:
-
-.. avembed:: AV/Hashingnew/demo_ex2.html ka
 
 To be practical, a database organized by hashing must store records in a
 hash table that is not so large that it wastes space.
