@@ -6,6 +6,14 @@
 .. avmetadata::
    :author: David Furcy and Tom Naps
 
+.. odsascript:: Exercises/PL/CallByAllFive.js
+.. odsascript:: AV/PL/paramPassingGenerator.js
+.. odsascript:: AV/PL/interpreters/version2.00/scripts/absyn.js
+.. odsascript:: AV/PL/interpreters/version2.00/scripts/env.js
+.. odsascript:: AV/PL/interpreters/version2.00/scripts/grammar.js
+.. odsascript:: AV/PL/interpreters/version2.00/scripts/interpreter.js
+.. .. odsascript:: DataStructures/PLutils.js
+
 
 Parameter-Passing Mechanisms
 ============================
@@ -41,7 +49,10 @@ capability of modifying the argument.
 
 Consider the following code:
 
-.. codeinclude:: ParamPassing/ParamPassing
+::
+
+    TODO: print CallByAllFive.expression here
+
 
 If the parameter passing method call-by-value is used...
 
