@@ -278,6 +278,9 @@ $(document).ready(function() {
       code = config.code;
     interpret = config.interpreter;
 
+    // Temporary fix for the animation timing bug that makes all answers be
+    // interpretted as wrong. To solve this, we want to set speed to max
+    JSAV.ext.SPEED = 0;
     this.modelFunction = modelFunction;
     var settings = config.getSettings();
     this.jsav = new JSAV($(".avcontainer"), {
