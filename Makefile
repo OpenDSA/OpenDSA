@@ -182,7 +182,7 @@ CS3SS18slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3SS18slides.json --no-lms
 
 CS3SS18notes: min
-	python $(CONFIG_SCRIPT) config/CS3SS18slides.json --no-lms
+	python $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
 
 COMP271: min
 	python $(CONFIG_SCRIPT) config/COMP271.json --no-lms
