@@ -44,10 +44,11 @@
     "Introduction to Pointers in Java": {
       "PointersJava/PointerIntro": {},
       "PointersJava/BasicPointers": {},
-      "PointersJava/PointerExercises": {},
+      "PointersJava/Syntax": {},
       "PointersJava/LocalMem": {},
       "PointersJava/HeapMem": {},
-      "PointersJava/Links": {}
+      "PointersJava/Links": {},
+      "PointersJava/Exercises": {}
     },
     "Appendix": {
       "Glossary": {},

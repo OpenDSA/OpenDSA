@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Cliff Shaffer, Mohammed Mostafa, and Margaret Ellis
    :requires: Pointer intro
-   :satisfies:
+   :satisfies: Link Nodes
    :topic: Link Nodes
 
 Link Nodes
@@ -47,6 +47,13 @@ How do we set up the chain to begin with?
    :scripts: AV/Pointers/linkNodes2CON.js
    :output: show
 
+createList
+----------
+
+.. extrtoolembed:: 'createList'
+   :learning_tool: code-workout-jhavepop
+
+
 One can easily write a loop to iterate through all the Links on a
 chain, without needing to know how many there actually are.
 
@@ -54,6 +61,13 @@ chain, without needing to know how many there actually are.
    :links: AV/Pointers/linkNodes3CON.css
    :scripts: AV/Pointers/linkNodes3CON.js
    :output: show
+
+
+iterateOverList
+---------------
+.. extrtoolembed:: 'iterateOverList'
+   :learning_tool: code-workout-jhavepop
+
 
 One can remove a Link from a chain.
 
@@ -63,12 +77,28 @@ One can remove a Link from a chain.
    :output: show
 
 
+changePointeeNext1
+------------------
+
+.. extrtoolembed:: 'changePointeeNext1'
+   :learning_tool: code-workout-jhavepop
+
+
+
 Finally, we can also insert new Links.
 
 .. inlineav:: linkNodes5CON ss
    :links: AV/Pointers/linkNodes5CON.css
    :scripts: AV/Pointers/linkNodes5CON.js
    :output: show
+
+
+addNodeAtHead
+-------------
+
+.. extrtoolembed:: 'addNodeAtHead'
+   :learning_tool: code-workout-jhavepop
+
 
 Here is an exercise to practice manipulating link nodes.
 

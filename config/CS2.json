@@ -149,14 +149,15 @@
           "threshold": 1
         }
       }, 
-      "PointersJava/PointerExercises": {},
+      "PointersJava/Syntax": {},
       "PointersJava/LocalMem": {}, 
       "PointersJava/HeapMem": {}, 
       "PointersJava/Links": {
         "PointerEX3PRO": {
           "threshold": 1
         }
-      }
+      },
+      "PointersJava/Exercises": {}
     }, 
     "Stacks": {
       "List/StackArray": {},
