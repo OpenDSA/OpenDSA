@@ -7,7 +7,7 @@
    :author: Mostafa Mohammed
 
 Additional Practice Exercises
-==============================
+=============================
 
 changeHeadPointer2
 ------------------
@@ -28,19 +28,19 @@ changeRPointer
    :learning_tool: code-workout-jhavepop
 
 changePointeeDataInDirect
-------------------
+-------------------------
 
 .. extrtoolembed:: 'changePointeeDataInDirect'
    :learning_tool: code-workout-jhavepop
 
 circularList2
-------------------
+-------------
 
 .. extrtoolembed:: 'circularList2'
    :learning_tool: code-workout-jhavepop
 
 circularList3
-------------------
+-------------
 
 .. extrtoolembed:: 'circularList3'
    :learning_tool: code-workout-jhavepop
@@ -52,25 +52,25 @@ changePointeeNext2
    :learning_tool: code-workout-jhavepop
 
 iterateOverList
-------------------
+---------------
 
 .. extrtoolembed:: 'iterateOverList'
    :learning_tool: code-workout-jhavepop
 
 addNodeAtTail
-------------------
+-------------
 
 .. extrtoolembed:: 'addNodeAtTail'
    :learning_tool: code-workout-jhavepop
 
 changeNodesOrder1
-------------------
+-----------------
 
 .. extrtoolembed:: 'changeNodesOrder1'
    :learning_tool: code-workout-jhavepop
 
 changeNodesOrder2
-------------------
+-----------------
 
 .. extrtoolembed:: 'changeNodesOrder2'
    :learning_tool: code-workout-jhavepop
