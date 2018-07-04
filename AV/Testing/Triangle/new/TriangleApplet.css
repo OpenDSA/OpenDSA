@@ -1,20 +1,63 @@
 #container {
   width: 600px;
   height: 500px;
-  border-color: #b6c0b2;
+  /*border-color: #b6c0b2;
   background-color: #e2eedd;
   border-radius: 10px;
   padding: 40px;
-  margin-left: 20px;
+  margin-left: 20px;*/
 }
 
-h1.title{
+#inputInfo {
+	font-family: Times New Roman;
+	margin-right: 10px;
+	margin-top: 15px;
+}
+
+#performanceDetails {
+	display: inline;
+	font-family: Times New Roman;
+}
+
+#testsrun {
+	display: inline;
+	margin-left: 20px;
+}
+
+.triangleInput {
+	width: 50px;
+	margin-left: 20px
+}
+
+#testHistory {
+	font-family: Times New Roman;
+}
+
+.jsavscroll {
+ 	width: 500px;
+ 	height: 100px;
+}
+
+#classify {
+	margin-left: 20px;
+}
+
+#reset {
+	margin-left: 225px;
+}
+
+/*h1.title{
 	margin-left: 110px;
 	font-family: Times New Roman;
 }
 
 p.jsavoutput.jsavline {
 	height: 40px;
+}
+
+.jsavscroll {
+	height: 100px;
+	width: 500px;
 }
 
 .jsavscore {
@@ -43,6 +86,6 @@ h4.subTitle3{
 .testhistory{
 	width: 500px;
 	resize: none;
-}
+}*/
 
 
