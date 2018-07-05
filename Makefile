@@ -175,8 +175,8 @@ CS2: min
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
-CS3new: min
-	python $(CONFIG_SCRIPT) config/CS3new.json --no-lms
+Yuhui: min
+	python $(CONFIG_SCRIPT) config/Yuhui.json --no-lms
 
 CS3SS18slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3SS18slides.json --no-lms

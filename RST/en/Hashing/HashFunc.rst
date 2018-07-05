@@ -44,19 +44,19 @@ students share a birthday, or on *which* days of the year shared
 birthdays fall.
 
 Try it for yourself.
-Select several table sizes and several different numbers of records to
-be inserted in the calculator below.
-It will calculate the probability that there is a collision.
-To get credit for the exercise, answer the following two questions:
-
-- What is the smallest number of people that must be in the room for
-  the probability to be at least 60% that two share a birthday?
-
-- In a hash table of 1000 slots, what is the smallest number of records
-  that must be inserted before the probability of a collision reaches 50%?
+You can use the calculator to see the probability of a collision.
+The default values are set to show the number of people in a room such
+that the chance of a duplicate is just over 50%
+By you can set any table size and any number of records to determine
+the probability of a collision under those conditions.
 
 .. avembed:: AV/Hashing/Birthday.html pe
    :long_name: Birthday Problem Calculator
+
+Use the calculator to answer the following questions.
+
+.. avembed:: Exercises/Hashing/BirthdayFIB.html ka
+   :long_name: Birthday Problem Exercise
 
 To be practical, a database organized by hashing must store records in a
 hash table that is not so large that it wastes space.

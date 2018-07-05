@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html data-require="math BirthdayFIB">
+  <head>
+    <title>Hash Table Collision Probability Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="600" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="tableSize">Khan.randRange(1, 10000)</var>
+        <var id="percentage">Khan.randRange(1, 100)</var>
+        <var id="theAnswer">BirthdayFIB.calcAnswer(tableSize, percentage)</var>
+      </div>
+      <div class="problems">
+        <div id="Simple_demo_ex2p">
+          <p class="question">In a hash table of <var>tableSize</var>
+          slots, what is the smallest number of records that must be
+          inserted before the probability of a collision
+          reaches <var>percentage</var>%?
+          </p>
+          <p class="solution" data-type="text"><var>theAnswer</var></p>
+          <div class="hints">
+            <p>Use the birthday problem calculator to help you solve
+            this problem.</p>
+            <p>In the calculator, set the table size to
+            be <var>tableSize</var>.</p>
+            <p>Then try different values for the number of records
+            until you find the smallest number that takes the
+            probability of a collision to be just over <var>percentage</var>%.
+        </div>
+      </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+  </body>
+</html>

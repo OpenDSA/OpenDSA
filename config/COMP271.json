@@ -423,9 +423,8 @@
     "Hashing": {
       "Hashing/HashIntro": {}, 
       "Hashing/HashFunc": {
-        "Birthday": {
-          "points": 1.0, 
-          "threshold": 1.0
+        "BirthdayFIB": {
+          "threshold": 3
         }
       }, 
       "Hashing/HashFuncExamp": {

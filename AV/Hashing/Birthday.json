@@ -1,0 +1,12 @@
+{
+  "translations" : {
+    "en": {
+      ".avTitle": "Birthday Calculator",
+      "av_Authors": "Cliff Shaffer and Nayef Copty",
+      "#about": "About",
+      "#calculate": "Calculate",
+      "#tableSizeLabel": " Table size: ",
+      "#numRecsLabel": " # of records: "
+    }
+  }
+}
