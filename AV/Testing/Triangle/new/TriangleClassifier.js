@@ -4,6 +4,7 @@ $(document).ready(function () {
 
 var testNum = 1;
 var testCaseHistory = "";
+var count = 0;
 
 function reset(){
     av.clearumsg();
@@ -67,6 +68,7 @@ function getTriangleTypeText(triangleTypeNum) {
 
 function checkScore(triangleTypeNum) {
     if (triangleTypeNum == 1 || triangleTypeNum == 2 || triangleTypeNum == 3){
+        count++;
         return true;
     }
 }
@@ -77,7 +79,7 @@ function setPerformanceDetails() {
     testNum++;
 }
 
-function classifyTriangle() { 
+function classifyTriangle() {
     var side1 = Number($('#side1').val()),
         side2 = Number($('#side2').val()),
         side3 = Number($('#side3').val());
@@ -88,13 +90,36 @@ function classifyTriangle() {
     initData.user_side2 = side2;
     initData.user_side3 = side3;
     ODSA.AV.logExerciseInit(initData);
-    if(checkScore(triangleTypeNum) == true){
+    /*if(checkScore(triangleTypeNum) == true){
         ODSA.AV.awardCompletionCredit();
-    }
+    }*/
+    checkScore(triangleTypeNum);
     av.umsg("Test " + testNum + ": " + "Sides: " + side1 + ", " + side2 + ", " + side3 + " "
                                  + triangleType + "\n" + testCaseHistory);
+    
+    if(count == 14){
+        ODSA.AV.awardCompletionCredit();
+        av.umsg(interpret("av_c1"));
+    }
     setPerformanceDetails();
 }
+
+/*window.onload = function() {
+    if (count == 6) {
+        document.getElementById("coverageCode").style.display = 'none';
+    } else {
+        document.getElementById("coverageCode").style.display = 'block';
+    }
+}
+
+function getUrlParam( name, url ) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( url );
+    return results == null ? null : results[1];
+}*/
 
 $("#classify").click(classifyTriangle);
 $("#reset").click(reset);

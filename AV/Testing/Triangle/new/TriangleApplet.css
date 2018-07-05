@@ -1,11 +1,6 @@
 #container {
   width: 600px;
   height: 500px;
-  /*border-color: #b6c0b2;
-  background-color: #e2eedd;
-  border-radius: 10px;
-  padding: 40px;
-  margin-left: 20px;*/
 }
 
 #inputInfo {
@@ -46,46 +41,7 @@
 	margin-left: 225px;
 }
 
-/*h1.title{
-	margin-left: 110px;
-	font-family: Times New Roman;
-}
-
-p.jsavoutput.jsavline {
-	height: 40px;
-}
-
-.jsavscroll {
-	height: 100px;
-	width: 500px;
-}
-
-.jsavscore {
-	text-align: center;
-}
-
-.triangleInput{
-	width: 50px;
-	margin-left: 20px
-	
-}
-
-h4.subTitle1{
-	font-family: Times New Roman;
-	margin-right: 50px;
-}
-
-h4.subTitle2{
-	font-family: Times New Roman;
-}
-
-h4.subTitle3{
-	font-family: Times New Roman;
-}
-
-.testhistory{
-	width: 500px;
-	resize: none;
+/*.codeBlock {
+	width: 290px;
+	float: left;
 }*/
-
-
