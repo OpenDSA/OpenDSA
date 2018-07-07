@@ -45,9 +45,7 @@ various sizes.
 The buddy system keeps a separate list for free blocks of each size.
 There can be at most :math:`N` such lists, because there can only be
 :math:`N` distinct block sizes.
-</p>
 
-<p>
 When a request comes in for :math:`m` words, we first determine the
 smallest value of :math:`k` such that :math:`2^k > m`.
 A block of size :math:`2^k` is selected from the free list for
@@ -61,6 +59,33 @@ This block is split in half (repeatedly if necessary) until the
 desired block of size :math:`2^k` is created.
 Any other blocks generated as a by-product of this splitting process
 are placed on the appropriate freelists.
+
+.. TODO::
+   :type: Visualization
+
+   Re-implement the buddy method visualization from the original Java
+   tutorial
+
+.. odsafig:: Images/BUddy.png
+   :width: 400
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Buddy Method
+
+In the example above, we see the result of a series of insert and free
+operations on a memory pool of 128 units.
+Imagine that we have a series of requests of size 10, 15, 25, and 50.
+These are satisfied by blocks of size 16, 16, 32, and 64, respectively.
+If we then release the second and third requested records
+(the ones of size 15 and 25),
+which are using the second 16 units of the memory pool and the second
+32 units of the memory pool, respectively.
+The result is as we see in this figure.
+There is still a record (of size 10) in the first 16 units, and record
+(of size 50) in the last 64 units.
+We have a free block of size :math:`2^4 = 16` and one of size
+:math:`2^5 = 32`.
 
 The disadvantage of the buddy system is that it allows internal
 fragmentation.
@@ -81,32 +106,16 @@ The :math:`buddy` for any block of size :math:`2^k` is another
 block of the same size, and with the same address
 (i.e., the byte position in memory, read as a binary value)
 except that the :math:`k` th bit is reversed.
-For example, the block of size 8 with beginning address 0000
-in the figure below, has buddy with address 1000.
-Likewise the block of size 4 with
-address 0000 has buddy 0100.
+For example, the block of size 16 with beginning address 00000
+in the figure below, has buddy with address 10000.
+Likewise the block of size 32 with
+address 100000 has buddy 000000.
 If free blocks are sorted by address value, the buddy can be found by
 searching the correct block size list.
 Merging simply requires that the address for the combined buddies be
 moved to the freelist for the next larger
-block size.
-
-.. TODO::
-   :type: Visualization
-
-   Re-implement the buddy method visualization from the original Java
-   tutorial
-
-.. .. raw:: html
-
-..   <center> 
-..   <iframe id="FirstFit_iframe" 
-..        src="http://research.cs.vt.edu/AVresearch/MMtutorial/buddy.html"
-..        width="1000" height="600"
-..        frameborder="1" marginwidth="0" marginheight="0"
-..	scrolling="no">
-..   </iframe>
-..   </center>
+block size (which might in turn require that two adjacent free blocks
+of the larger size be merged).
 
 
 Other Methods
