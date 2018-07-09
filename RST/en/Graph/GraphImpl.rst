@@ -17,7 +17,7 @@ We next turn to the problem of implementing a general-purpose
 There are two traditional approaches to representing graphs:
 The :term:`adjacency matrix` and the :term:`adjacency list`.
 In this module we will show actual implementations for each approach.
-We will begin with an abstract class defining an ADT for graphs that a
+We will begin with an interface defining an ADT for graphs that a
 given implementation must meet.
 
 .. codeinclude:: Graphs/Graph
@@ -42,9 +42,8 @@ The ``Graph`` class need have no knowledge of the type or content
 of the information associated with a vertex, only the index number for
 that vertex.
 
-Abstract class ``Graph``
-has methods to return the number of vertices and edges
-(methods ``n`` and ``e``, respectively).
+Interface ``Graph`` has methods to return the number of vertices and
+edges (methods ``n`` and ``e``, respectively).
 Function ``weight`` returns the weight of a given edge, with that
 edge identified by its two incident vertices.
 For example, calling ``weight(0, 4)`` on the graph of
@@ -122,7 +121,7 @@ weight of the edge.
 .. codeinclude:: Graphs/GraphL 
    :tag: GraphL
 
-Implementation for ``Graphl`` member functions is straightforward
+Implementation for ``GraphL`` member functions is straightforward
 in principle, with the key functions being ``addEdge``,
 ``removeEdge``, and ``weight``.
 They simply start at the beginning of the adjacency list and move

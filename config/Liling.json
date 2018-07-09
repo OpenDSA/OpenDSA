@@ -65,8 +65,13 @@
     "required": true
   },
   "chapters": {
-    "Sorting": {
-      "Liling/SelectionSort":{}
+    "Testing": {
+      "Testing/TestIntro": {
+        "TriangleApplet": {}
+      },
+      "Testing/TestCoverage": {
+        "TriangleApplet": {}
+      }
     },
     "Appendix": {
       "Glossary": {},
