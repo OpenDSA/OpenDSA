@@ -18,12 +18,15 @@ Testing for Code Coverage
 The module in the last section was fairly difficult to come up with
 good code coverage.
 This is because you could not see the code.
+
+.. avembed:: AV/Testing/Triangle/new/TriangleApplet.html pe
+   :long_name: Triangle Testing
+
 If you can see the code, it is relatively easy to come up with test
 cases to cover each branch. Try it this time with code visible.
 Try to get over 90% code coverage.
 
-.. avembed:: AV/Testing/Triangle/new/TriangleApplet.html pe
-   :long_name: Triangle Testing
+
 
 So, did you find it easier to get code coverage when you had the code
 in front of you?
