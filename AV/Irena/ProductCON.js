@@ -5,6 +5,14 @@ $(document).ready(function() {
 
   var av = new JSAV(av_name);
 
+  var color1 = "#cc709b"
+  var color2 = "#b2a432";
+  var color3 = "#b5f5ff";
+  var color4 = "#fff5a6";
+  var color5 = "#b28d9f";
+  var color6 = "#74b0c2";
+  var color7 = "#c3d36e";
+
   av.umsg("It is often necessary to multiply two polynomials. This can be done using vector " +
     "multiplication.");
 
@@ -71,20 +79,20 @@ $(document).ready(function() {
   var xtext = 515;
   var ytext = 45;
   av.umsg("Then adding the terms to get the coefficients of polynomial C.");
-  ab.css(0, 0, {"background-color": "#ff6666"});
-  av.g.line(xtext + 5, ytext, xtext + 5, ytext + 10, {"stroke-width": 3, stroke: "red"});
-  av.g.line(xtext + 11, ytext, xtext + 11, ytext + 10, {"stroke-width": 3, stroke: "red"});
+  ab.css(0, 0, {"background-color": color1});
+  av.g.line(xtext + 5, ytext, xtext + 5, ytext + 10, {"stroke-width": 3, stroke: color1});
+  av.g.line(xtext + 11, ytext, xtext + 11, ytext + 10, {"stroke-width": 3, stroke: color1});
   av.label("$c_0$", {left: xtext});
 
   av.step();
 
   av.umsg("Then adding the terms to get the coefficients of polynomial C.");
-  ab.css(0, 1, {"background-color": "#ffff80"});
-  ab.css(1, 0, {"background-color": "#ffff80"});
+  ab.css(0, 1, {"background-color": color2});
+  ab.css(1, 0, {"background-color": color2});
   av.g.line(xtext + 5 + 45, ytext, xtext + 5 + 45, ytext + 10,
-            {"stroke-width": 3, stroke: "yellow"});
+            {"stroke-width": 3, stroke: color2});
   av.g.line(xtext + 11 + 45, ytext, xtext + 11 + 45, ytext + 10,
-            {"stroke-width": 3, stroke: "yellow"});
+            {"stroke-width": 3, stroke: color2});
   av.label("$c_1$", {left: xtext + 45});
 
   av.step();
@@ -92,23 +100,23 @@ $(document).ready(function() {
   // Slide 4
   av.umsg("Then adding the terms to get the coefficients of polynomial C.");
 
-  ab.css(0, 2, {"background-color": "#66a8ff"});//blue
-  ab.css(1, 1, {"background-color": "#66a8ff"});
-  ab.css(2, 0, {"background-color": "#66a8ff"});
+  ab.css(0, 2, {"background-color": color3});//blue
+  ab.css(1, 1, {"background-color": color3});
+  ab.css(2, 0, {"background-color": color3});
   av.g.line(xtext + 5 + 2 * 45, ytext, xtext + 5 + 2 * 45, ytext + 10,
-            {"stroke-width": 3, stroke: "#4696FF"});
+            {"stroke-width": 3, stroke: "#82b0b8"});
   av.g.line(xtext + 11 + 2 * 45, ytext, xtext + 11 + 2 * 45, ytext + 10,
-            {"stroke-width": 3, stroke: "#4696FF"});
+            {"stroke-width": 3, stroke: "#82b0b8"});
   av.label("$c_2$", {left: xtext + 2 * 45});
 
-  ab.css(0, 3, {"background-color": "#d499ff"});//purple
-  ab.css(1, 2, {"background-color": "#d499ff"});
-  ab.css(2, 1, {"background-color": "#d499ff"});
-  ab.css(3, 0, {"background-color": "#d499ff"});
+  ab.css(0, 3, {"background-color": color4});//purple
+  ab.css(1, 2, {"background-color": color4});
+  ab.css(2, 1, {"background-color": color4});
+  ab.css(3, 0, {"background-color": color4});
   av.g.line(xtext + 5 + 3 * 45, ytext, xtext + 5 + 3 * 45, ytext + 10,
-            {"stroke-width": 3, stroke: "#BE64FF"});
+            {"stroke-width": 3, stroke: "#ded557"});
   av.g.line(xtext + 11 + 3 * 45, ytext, xtext + 11 + 3 * 45, ytext + 10,
-            {"stroke-width": 3, stroke: "#BE64FF"});
+            {"stroke-width": 3, stroke: "#ded557"});
   av.label("$c_3$", {left: xtext + 3 * 45});
 
   av.step();
@@ -116,27 +124,27 @@ $(document).ready(function() {
   // Slide 5
   av.umsg("Then adding the terms to get the coefficients of polynomial C.");
 
-  ab.css(1, 3, {"background-color": "#59f391"});//green
-  ab.css(2, 2, {"background-color": "#59f391"});
-  ab.css(3, 1, {"background-color": "#59f391"});
+  ab.css(1, 3, {"background-color": color5});
+  ab.css(2, 2, {"background-color": color5});
+  ab.css(3, 1, {"background-color": color5});
   av.g.line(xtext + 180, ytext + 85, xtext + 190, ytext + 85,
-            {"stroke-width": 3, stroke: "#32F078"});
+            {"stroke-width": 3, stroke: color5});
   av.g.line(xtext + 180, ytext + 85 + 6, xtext + 190, ytext + 85 + 6,
-            {"stroke-width": 3, stroke: "#32F078"});
+            {"stroke-width": 3, stroke: color5});
   av.label("$c_4$", {left: 720, top: 107});
 
-  ab.css(2, 3, {"background-color": "#ff99c7"});//pink
-  ab.css(3, 2, {"background-color": "#ff99c7"});
+  ab.css(2, 3, {"background-color": color6});
+  ab.css(3, 2, {"background-color": color6});
   av.g.line(xtext + 180, ytext + 85 + 45, xtext + 190, ytext + 85 + 45,
-            {"stroke-width": 3, stroke: "#FF78B4"});
+            {"stroke-width": 3, stroke: color6});
   av.g.line(xtext + 180, ytext + 85 + 45 + 6, xtext + 190, ytext + 85  + 45 + 6,
-            {"stroke-width": 3, stroke: "#FF78B4"});
+            {"stroke-width": 3, stroke: color6});
   av.label("$c_5$", {left: 720, top: 152});
 
-  ab.css(3, 3, {"background-color": "#cccccc"});
-  av.g.line(xtext + 180, ytext + 85 + 45 * 2, xtext + 190, ytext + 85 + 45 * 2, {"stroke-width": 3, stroke: "grey"});
+  ab.css(3, 3, {"background-color": color7});
+  av.g.line(xtext + 180, ytext + 85 + 45 * 2, xtext + 190, ytext + 85 + 45 * 2, {"stroke-width": 3, stroke: color7});
   av.g.line(xtext + 180, ytext + 85 + 2 * 45 + 6, xtext + 190, ytext + 85  + 2 * 45 + 6,
-            {"stroke-width": 3, stroke: "grey"});
+            {"stroke-width": 3, stroke: color7});
   av.label("$c_6$", {left: 720, top: 197});
 
   av.label("$(a_0 + a_1x + a_2x^2 + a_3x^3)*(b_0 + b_1x + b_2x^2 + b_3x^3) = c_0 + c_1x + c_2x^2 + c_3x^3 + c_4x^4 + c_5x^5 + c_6x^6$",

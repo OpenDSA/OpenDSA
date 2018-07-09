@@ -1,0 +1,55 @@
+<!--
+    Open Hashing mini-proficiency exercise.
+    Written by Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math FFTAlg">
+  <head>
+    <title>FFT Algorithm Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #FFTAlg .jsavcanvas {
+        height: 300px;
+        width: 700px;
+      }
+      #FFTAlg .jsavarray .jsavnode {
+        min-width: 60px !important;
+        max-width: 100px !important;
+      }
+  
+    </style>
+  </head>
+
+  <body data-height="720" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">fftAlg.initJSAV()</var>
+      </div>
+      <div class="problems">
+        <div id="FFTAlgp"> <!-- Supresses answer box -->
+          <p class="problem">Perform the final for loop of the fft algorithm with the list 1 and list 2 values below. </p>
+          <div class="question">
+            <p> For each element of the final array, select a value from list 1 then click on the correct index of the final array. Then choose the appropriate z value and click again on the correct index of the final array. Finally select a value from list 2. The output will appear in the form: (list 1) + z * (list 2).</p>
+          
+            <input id="reset" type="button" value="Reset" />
+            <div id="FFTAlg" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [fftAlg.userInput] </div>
+            <div class="validator-function">
+              if (!fftAlg.checkAnswer() && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return fftAlg.checkAnswer(); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>Look at previous slideshow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

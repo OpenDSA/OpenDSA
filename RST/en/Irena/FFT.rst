@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer
+   :author: Cliff Shaffer, Irena Shaffer
    :requires: logarithms
    :satisfies: FFT
    :topic: Algorithms: Fast Fourier Transform
@@ -75,6 +75,10 @@ Finding the coefficients for the polynomial given the values at
    :scripts: DataStructures/Plot.js AV/Irena/EvalandInterpolationCON.js
    :output: show
 
+.. todo::
+   :type: AV
+
+   Practice evaluation and interpolation.
 
 .. inlineav:: ProductCON ss
    :long_name: fft slideshow 3 polynomial product
@@ -88,6 +92,17 @@ Finding the coefficients for the polynomial given the values at
    :links: AV/Irena/EvaluationCON.css
    :scripts: AV/Irena/EvaluationCON.js
    :output: show
+
+.. todo::
+   :type: exercise
+
+   Practice evaluating polynomials at a point and multiplying to find
+   value of the polynomials multiplied together at that point. This
+   covers evaluation so may not need to practice above.
+
+
+
+.. avembed:: Exercises/Irena/Polynomial_multiplication.html ka
 
 Note that evaluating any polynomial at 0 is easy.
 If we evaluate at 1 and -1, we can share a lot of the work
@@ -150,7 +165,7 @@ Now, we will define a :term:`primitive nth root of unity` if
 
 :math:`z^0, z^1, ..., z^{n-1}` are called the
 :term:`nth roots of unity`.
-For example, when :math:`n=4`, then :math:`z = i` or :math:`z = -i`.
+For example, when :math:`n=4`, then :math:`z = i`.
 In general, we have the identities :math:`e^{i\pi} = -1`,
 and :math:`z^j = e^{2\pi ij/n} = -1^{2j/n}`.
 The significance is that we can find as many points on a unit circle
@@ -168,8 +183,11 @@ the overall process of evaluating many points at once.
    :scripts: AV/Irena/fftCON.js
    :align: center
 
-   Examples of the 4th and 8th roots of unity.
+   Examples of the 4th, 5th, and 8th roots of unity.
 
+
+
+.. avembed:: Exercises/Irena/Nth_root.html ka
 
 The next step is to define how the computation is done.
 Define an :math:`n \times n` matrix :math:`A_{z}` with row :math:`i`
@@ -269,6 +287,15 @@ doing evaluation at the :math:`n` th roots of unity.
    :links: AV/Irena/FFTprocedureCON.css AV/Irena/FFTprocedureCON.json
    :scripts: lib/complex.js AV/Irena/FFTprocedureCON.js
    :output: show
+
+.. todo::
+   :type: AV
+
+   Practice fft algorithm. Maybe only practice the final for loop since
+   the rest of the algorithm is recursivly dividing the polynomial and 
+   performing fft on the smaller polynomials.
+
+.. avembed:: Exercises/Irena/FFTAlg.html ka
 
 Thus, the full process for multiplying polynomials
 :math:`A` and :math:`B` using the Fourier transform is as follows.
