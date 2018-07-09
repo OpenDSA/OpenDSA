@@ -66,7 +66,7 @@ are placed on the appropriate freelists.
    Re-implement the buddy method visualization from the original Java
    tutorial
 
-.. odsafig:: Images/BUddy.png
+.. odsafig:: Images/Buddy.png
    :width: 400
    :align: center
    :capalign: justify

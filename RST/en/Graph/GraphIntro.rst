@@ -56,14 +56,6 @@ Besides being useful and interesting in their own right, these
 algorithms illustrate the use of many other data structures presented
 throughout the course.
 
-.. [#] Some graph applications require that a given pair of vertices
-       can have multiple or parallel edges connecting them, or that a
-       vertex can have an edge to itself.
-       However, the applications discussed here do not require
-       either of these special cases.
-       To simplify our graph API, we will assume that there are no
-       dupicate edges, and no edges that connect a node to itself.
-
 A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
 of a set of :term:`vertices <vertex>` :math:`\mathbf{V}` and a set of
 :term:`edges <edge>` :math:`\mathbf{E}`,
@@ -73,6 +65,14 @@ The number of vertices is written :math:`|\mathbf{V}|`, and the number
 of edges is written :math:`|\mathbf{E}|`.
 :math:`|\mathbf{E}|` can range from zero to a maximum of
 :math:`|\mathbf{V}|^2 - |\mathbf{V}|`.
+
+.. [#] Some graph applications require that a given pair of vertices
+       can have multiple or parallel edges connecting them, or that a
+       vertex can have an edge to itself.
+       However, the applications discussed here do not require
+       either of these special cases.
+       To simplify our graph API, we will assume that there are no
+       dupicate edges, and no edges that connect a node to itself.
 
 A graph whose edges are not directed is called an
 :term:`undirected graph`, as shown in part (a) of the following figure.
