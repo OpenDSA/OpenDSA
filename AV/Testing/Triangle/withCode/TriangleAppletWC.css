@@ -1,0 +1,55 @@
+#container {
+  width: 1100px;
+  height: 600px;
+}
+
+#container2 {
+  width: 600px;
+  height: 500px;
+  float: right;
+  margin-top: -10px;
+}
+
+#inputInfo {
+	font-family: Times New Roman;
+	margin-right: 10px;
+	margin-top: 15px;
+}
+
+#performanceDetails {
+	display: inline;
+	font-family: Times New Roman;
+}
+
+#testsrun {
+	display: inline;
+	margin-left: 20px;
+}
+
+.triangleInput {
+	width: 50px;
+	margin-left: 20px
+}
+
+#testHistory {
+	font-family: Times New Roman;
+}
+
+.jsavscroll {
+ 	width: 500px;
+ 	height: 100px;
+}
+
+#classify {
+	margin-left: 20px;
+}
+
+#reset {
+	margin-left: 225px;
+}
+
+.codeBlock {
+	width: 325px;
+	height: 1000px;
+	float: left;
+}

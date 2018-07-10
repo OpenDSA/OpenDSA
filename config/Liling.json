@@ -66,12 +66,9 @@
   },
   "chapters": {
     "Testing": {
-      "Testing/TestIntro": {
-        "TriangleApplet": {}
-      },
-      "Testing/TestCoverage": {
-        "TriangleApplet": {}
-      }
+      "Testing/TestIntro": {},
+      "Testing/TestCoverageOrig": {},
+      "Testing/TestCoverage": {}
     },
     "Appendix": {
       "Glossary": {},
