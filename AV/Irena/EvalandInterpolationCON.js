@@ -6,12 +6,10 @@ $(document).ready(function() {
 
   var av = new JSAV(av_name);
 
-  // Slide #1
-  av.umsg("We start with a polynomial");
+  // Slide 1
+  av.umsg("We start by drawing the curve for a polynomial, and we put it on a grid to help us see what is happening.");
   var width = 800, height = 150;
-
   var xStart = 220;
-
   var yEnd = 50;
   var yStart = yEnd + height;  //end position of the y on the chart
   var xMax = 60, yMax = 1500;
@@ -23,17 +21,10 @@ $(document).ready(function() {
   var curve = Plot.drawCurve(_xpow3, xStart, yStart, yEnd, xMax, yMax, width, height,
                              1, false);
   var poly = av.g.polyline(curve, {"stroke-width": 2});
-
-  av.displayInit();
-
-  // Slide #2
   var x = 250;
   var y = 60;
   var len = 250;
   var step = len / 8;
-
-  av.umsg("Let's draw a cartesian grid for our polynomial.");
-
   av.g.rect(x, y, len, len, {stroke: "blue", "stroke-width": 0.7});
 
   av.g.line(x + 4 * step, y, x + 4 * step, y + len,
@@ -67,10 +58,10 @@ $(document).ready(function() {
   av.g.line(x, y + 7 * step, x + len, y + 7 * step,
             {stroke: "blue", "stroke-width": 0.3});
 
-  av.step();
+  av.displayInit();
 
-  // Slide #3
-  av.umsg("We choose some points on the x axis, at which we want to know the " +
+  // Slide 2
+  av.umsg("We choose some points on the x axis. For each one, we want to know the " +
     "value of the polynomial.");
   av.g.circle(x + 12, y + 4 * step, 4, {fill: "black"});
   av.g.circle(x + 52, y + 4 * step, 4, {fill: "black"});
@@ -80,9 +71,7 @@ $(document).ready(function() {
   av.g.circle(x + 230, y + 4 * step, 4, {fill: "black"});
   av.step();
 
-  // Slide 4
-  av.umsg("We find the numerical value of the polynomial at these points. This process is called <b>Evaluation</b>.");
-
+  // Slide 3
   var line1 = av.g.line(x + 12, y + 4 * step, x + 12, y + 210, {"stroke-width": 1});
   av.g.circle(x + 12, y + 210, 4, {stroke: "green", fill: "green"});
   var line2 = av.g.line(x + 52, y + 4 * step, x + 52, y + 160, {"stroke-width": 1});
@@ -95,37 +84,36 @@ $(document).ready(function() {
   av.g.circle(x + 165, y + 138, 4, {stroke: "green", fill: "green"});
   var line6 = av.g.line(x + 230, y + 4 * step, x + 230, y + 97, {"stroke-width": 1});
   av.g.circle(x + 230, y + 97, 4, {stroke: "green", fill: "green"});
+  av.umsg("Finding the value of the polynomial at these values for $x$ is called <b>Evaluation</b>.");
+  av.step();
 
+  // Slide 4
+  poly.hide();
+  av.umsg("Now imagine we don't know an equation for the polynomial. Instead, " +
+    "we only have its value at certain points.");
   av.step();
 
   // Slide 5
-  av.umsg("Now imagine we don't know an equation for the polynomial. Instead, " +
-    "we only have its value at certain points.");
-  poly.hide();
-
+  av.umsg("From the values at the points, the polynomial can be re-constructed. " +
+    "To get an exact equation for the polynomial, the number of points that we know " +
+    "the value for must be at least one more than the degree of the polynomial.");
   av.step();
 
-  av.umsg("From these values, the polynomial can be constructed. To get an exact equation " +
-    "for the polynomial, the number of points know must be at least one more than the degree " +
-    " of the polynomial.");
-  var example = av.label("For example a cubic polynomial $a_0 + a_1x + a_2x^2 + a_3x^3$ is a 3rd " +
-    "degree polynomial. So, 4 or more points must be known to construct the cubic polynomial.");
+  // Slide 6
+  av.umsg("For example, $a_0 + a_1x + a_2x^2 + a_3x^3$ is a 3rd degree polynomial. " +
+    "So, the values at four or more points must be known to re-construct this cubic polynomial.");
   var poly2 = av.g.polyline(curve, {stroke: "grey", "stroke-width": 2});
-
   av.step();
 
+  // Slide 7
   av.umsg("This process of constructing a polynomial from a set of points is called <b>Interpolation</b>.");
-
-  example.hide();
   line1.hide();
   line2.hide();
   line3.hide();
   line4.hide();
   line5.hide();
   line6.hide();
-
   poly2.hide();
   poly.show();
-
   av.recorded();
 });
