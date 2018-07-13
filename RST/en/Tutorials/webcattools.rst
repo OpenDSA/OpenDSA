@@ -17,14 +17,14 @@ Introduction
 
 Here are instructions for how to install the Web-CAT submission
 plug-in for Eclipse.
-These instructions assume that you are running Eclipse version
-Oxygen.
+These instructions assume that you are running Eclipse versions
+Oxygen or Photon.
 
 **Note:** This might be a good time to also update Eclipse. 
 If you are running a version earlier than Oxygen, then you should
 install the latest version directly.
-If you are running Oxygen already, then you can check for updates at
-``Help --> Check for Updates``.
+If you are running Oxygen or Photon already, then you can check for
+updates at ``Help --> Check for Updates``.
 
 Installing the Plug-in
 ----------------------
@@ -79,7 +79,7 @@ http://web-cat.org/eclstats
   and put in a sensible name (like "Web-CAT plugin") in the box labeled
   ``Name``.
 
-* Once that's done, click ``OK``.
+* Once that's done, click ``Add``.
  
 This is what the window should look like now:
 
@@ -93,7 +93,7 @@ This is what the window should look like now:
 * Check the two  boxes next to ``Web-CAT Electronic Assignments
   Feature`` and ``Web-CAT Java Development Extras``, and click ``Next``. 
 
-* Click ``Next`` again.
+* It will then tell you about files that it plans to install. Click ``Next`` again.
 
 * Click ``Next`` again.
 
@@ -136,3 +136,19 @@ Put in the following information:
   http://web-cat.cs.vt.edu/Web-CAT/assignments.xml
 
 * Click on ``Apply and Close`` to complete the process.
+
+
+Installing student.jar
+----------------------
+
+If you are using Web-CAT, then you probably will want to use the VT
+local support for JUnit tests.
+See |external_link1| for how to download the ``student.jar`` file and
+some practical advice for getting started with JUnit testing.
+At the time of this writing, the prefered version of JUnit to use is
+Junit 4.
+
+.. |external_link1| raw:: html
+
+   <a href="http://web-cat.org/eclstats/junit-quickstart/" target = "_blank">here</a>
+

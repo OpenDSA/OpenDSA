@@ -28,7 +28,7 @@ One such example is |external_link1|.
 
 .. |external_link1| raw:: html
 
-   <a href="http://web-cat.org/junit-quickstart/" target = "_blank">here</a>
+   <a href="http://web-cat.org/eclstats/junit-quickstart/" target = "_blank">here</a>
 
 
 Design Considerations

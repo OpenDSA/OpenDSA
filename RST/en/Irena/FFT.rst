@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer, Irena Shaffer
-   :requires: logarithms
+   :requires: transforms
    :satisfies: FFT
    :topic: Algorithms: Fast Fourier Transform
 
@@ -15,98 +15,21 @@ The Fast Fourier Transform
 The Fast Fourier Transform
 --------------------------
 
+In this module we present a fast algorithm for multiplying two
+polynomials of degree :math:`n`.
+Recall that we can get the result of multiplying two polynomials by
+the process of evaluating both at a sufficient number of points,
+doing pair-wise multiplication on the evaluation values, and then
+constructing the solution polynomial from the resulting values.
+Doing this at arbitrary points on the polynomials is no faster than
+brute-force multiplication.
+But we can find a way to take advantage of symmetry to speed up the
+process.
 
-Multiplication is considerably more difficult than addition.
-The cost to multiply two :math:`n`-bit numbers directly is
-:math:`O(n^2)`, while addition of two :math:`n`-bit numbers is
-:math:`O(n)`.
-
-Recall that one property of logarithms is that
-:math:`\log nm = \log n + \log m`.
-Thus, if taking logarithms and anti-logarithms were cheap, then we
-could reduce multiplication to addition by taking the log of the two
-operands, adding, and then taking the anti-log of the sum.
-
-Under normal circumstances, taking logarithms and anti-logarithms is
-expensive, and so this reduction would not be considered practical.
-However, this reduction is precisely the basis for the
-slide rule.
-The slide rule uses a logarithmic scale to measure the lengths of two
-numbers, in effect doing the conversion to logarithms automatically.
-These two lengths are then added together, and the inverse logarithm
-of the sum is read off another logarithmic scale.
-The part normally considered expensive (taking logarithms and
-anti-logarithms) is cheap because it is a physical part of the
-slide rule.
-Thus, the entire multiplication process can be done cheaply via a
-reduction to addition.
-In the days before electronic calculators, slide rules were routinely
-used by scientists and engineers to do basic calculations of this
-nature.
-
-Now consider the problem of  multiplying polynomials.
-A vector :math:`\mathbf a` of :math:`n` values can uniquely represent
-a polynomial of degree :math:`n-1`, expressed as
-
-.. math::
-
-   P_{\mathbf a}(x) = \sum_{i=0}^{n-1} {\mathbf a}_i x^i.
-
-.. inlineav:: polynomialCON ss
-   :long_name: fft slideshow 1 polynomial
-   :links: AV/Irena/polynomialCON.css
-   :scripts: DataStructures/Plot.js AV/Irena/polynomialCON.js
-   :output: show
-
-|
-
-Alternatively, a polynomial can be uniquely represented by a
-list of its values at :math:`n` distinct points.
-Finding the value for a polynomial at a given point is called
-:term:`evaluation`.
-Finding the coefficients for the polynomial given the values at
-:math:`n` points is called :term:`interpolation`.
-
-|
-
-.. inlineav:: EvalandInterpolationCON ss
-   :long_name: fft slideshow 2 evaluation and interpolation
-   :links: AV/Irena/EvalandInterpolationCON.css
-   :scripts: DataStructures/Plot.js AV/Irena/EvalandInterpolationCON.js
-   :output: show
-
-.. todo::
-   :type: AV
-
-   Practice evaluation and interpolation.
-
-.. inlineav:: ProductCON ss
-   :long_name: fft slideshow 3 polynomial product
-   :links: AV/Irena/ProductCON.css
-   :scripts: AV/Irena/ProductCON.js
-   :output: show
-
-
-.. inlineav:: EvaluationCON ss
-   :long_name: fft slideshow 4 evaluation of polynomial product
-   :links: AV/Irena/EvaluationCON.css
-   :scripts: AV/Irena/EvaluationCON.js
-   :output: show
-
-.. todo::
-   :type: exercise
-
-   Practice evaluating polynomials at a point and multiplying to find
-   value of the polynomials multiplied together at that point. This
-   covers evaluation so may not need to practice above.
-
-
-
-.. avembed:: Exercises/Irena/Polynomial_multiplication.html ka
-
-Note that evaluating any polynomial at 0 is easy.
-If we evaluate at 1 and -1, we can share a lot of the work
-between the two evaluations.
+Evaluating any polynomial at 0 is easy, since only the constant term
+is non-zero.
+If we evaluate the polynomial at both 1 and -1, we can share a lot of
+the work between the two evaluations.
 But we would need five points to nail down polynomial :math:`AB`,
 since it is a degree-4 polynomial.
 Fortunately, we can speed processing for any pair of values :math:`c`
