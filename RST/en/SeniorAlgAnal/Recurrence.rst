@@ -309,7 +309,7 @@ are in turn replaced by their definition.
 This is the expanding step.
 These terms are again expanded, and so on, until a full series
 with no recurrence results.
-This yields a :ref:`summation <summation> <Summation>`,
+This yields a :ref:`summation <summation> <Summations>`,
 and techniques for solving summations can then be used.
 A more complex example is given next.
 
@@ -461,7 +461,7 @@ There are three cases.
 
     .. math::
 
-       \sum_{i=0}^{m}r^i < 1/(1-r),\ {\rm a~constant.}
+       \sum_{i=0}^{m} r^i < 1/(1-r),\ {\rm a~constant.}
 
     Thus,
 
@@ -478,7 +478,7 @@ There are three cases.
 
     .. math::
 
-       \sum_{i=0}^{m} r = m + 1 = \log_bn + 1.
+       \sum_{i=0}^{m} r^i = m + 1 = \log_bn + 1.
 
     Because :math:`a^m = n^{\log_b a} = n^k`, we have
 
@@ -487,11 +487,11 @@ There are three cases.
        {\bf T}(n) = \Theta(n^{\log_ba}\log n) = \Theta(n^k\log n).
 
 (#) :math:`r>1`.
-    From Equation (5) of Module :ref:`summation <summation> <Summation>`,
+    From Equation (5) of Module :ref:`summation <summation> <Summations>`,
 
     .. math::
 
-       \sum_{i=0}^{m} r = \frac{r^{m+1} - 1}{r - 1} = \Theta(r^m).
+       \sum_{i=0}^{m} r^i = \frac{r^{m+1} - 1}{r - 1} = \Theta(r^m).
 
     Thus,
 
@@ -630,6 +630,6 @@ Expanding the recurrence, we get
    \end{eqnarray*}
 
 for :math:`{\cal H}_{n+1}`, the Harmonic Series.
-From Equation (10) of Module :ref:`summation <summation> <Summation>`,
+From Equation (10) of Module :ref:`summation <summation> <Summations>`,
 :math:`{\cal H}_{n+1} = \Theta(\log n)`,
 so the final solution is :math:`\Theta(n \log n)`.
