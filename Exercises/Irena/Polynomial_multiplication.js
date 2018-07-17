@@ -14,7 +14,7 @@
       var poly_str;
       var my_array = [];
       for (i = 0; i < poly_size; i++) {
-        next_val = Math.floor(Math.random() * 5);
+        next_val = Math.floor(Math.random() * 8 - 4);
         my_array.push(next_val);
       }
       poly_str = "";

@@ -78,6 +78,7 @@ $(document).ready(function() {
   av.step();
 
   av.umsg("So, we are dealing with 8 terms obtained from multiplications.");
+  A.css(0, 0, {"background-color": "white"});
   for (i = 0; i < 8; i++) {
     mat.css(0, i, {"background-color": "white"});
     a.css(i, 0, {"background-color": "white"});

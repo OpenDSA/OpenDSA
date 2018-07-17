@@ -36,18 +36,22 @@ $(document).ready(function() {
   B = av.label("$B(0) = 2(0)^2 - (0) + 1 = 1$");
   ab = av.label("$A(0)*B(0) = 1*1 = 1$");
   AB = av.label("$AB(0) = 2(0)^4 - (0)^3 + 3(0)^2 - (0) + 1 = 1$");
+
   av.step();
 
   // Slide 5
   av.umsg("At x = 1:");
+
   A.hide();
   B.hide();
   ab.hide();
   AB.hide();
+
   A = av.label("$A(1) = (1)^2 + 1 = 2$");
   B = av.label("$B(1) = 2(1)^2 - (1) + 1 = 2$");
   ab = av.label("$A(1)*B(1) = 2*2 = 4$");
   AB = av.label("$AB(1) = 2(1)^4 - (1)^3 + 3(1)^2 - (1) + 1 = 4$");
+
   av.step();
 
   // Slide 6

@@ -148,6 +148,11 @@ Thus, the :math:`A_{z}` array appears as follows.
    1&-i&-1&i
    \end{array}
 
+.. inlineav:: arrayCON dgm
+   :links: 
+   :scripts: AV/Irena/arrayCON.js
+   :align: center
+
 Let :math:`a = [a_0, a_1, ..., a_{n-1}]^T` be a vector that stores the
 coefficients for the polynomial being evaluated.
 We can then do the calculations to evaluate the polynomial at the

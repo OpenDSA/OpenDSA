@@ -10,7 +10,7 @@ $(document).ready(function() {
   av.umsg("We start by drawing the curve for a polynomial, and we put it on a grid to help us see what is happening.");
   var width = 800, height = 150;
   var xStart = 220;
-  var yEnd = 50;
+  var yEnd = 0;
   var yStart = yEnd + height;  //end position of the y on the chart
   var xMax = 60, yMax = 1500;
 
@@ -22,7 +22,7 @@ $(document).ready(function() {
                              1, false);
   var poly = av.g.polyline(curve, {"stroke-width": 2});
   var x = 250;
-  var y = 60;
+  var y = 10;
   var len = 250;
   var step = len / 8;
   av.g.rect(x, y, len, len, {stroke: "blue", "stroke-width": 0.7});
