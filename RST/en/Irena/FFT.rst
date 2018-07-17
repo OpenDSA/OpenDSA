@@ -118,17 +118,23 @@ the overall process of evaluating many points at once.
 
 .. avembed:: Exercises/Irena/Nth_root.html ka
 
-The next step is to define how the computation is done.
+Now we want to turn these ideas into an actual, detailed algorithm.
+This process will be easier to both understand and implement if we
+assume that the number of coefficients is a power of two, so we will
+assume that this is the case.
+(We can always fill out the polynomials to be the proper size by
+adding zero-valued coefficients.)
+
 Define an :math:`n \times n` matrix :math:`A_{z}` with row :math:`i`
 and column :math:`j` as
 
 .. math::
 
-   A_{z} = (z^{ij}).
+   A_{z}[i,j] = (z^{ij}).
 
-The idea is that there is a row for each root (row :math:`i` for
-:math:`z^i`) while the columns correspond to the power of the exponent
-of the :math:`x` value in the polynomial.
+The idea is that there is a row for each root
+(row :math:`i` for :math:`z^i`) while each column corresponds to the
+power of the exponent of the :math:`x` value in the polynomial.
 For example, when :math:`n = 4` we have :math:`z = i`.
 Thus, the :math:`A_{z}` array appears as follows.
 
@@ -149,10 +155,12 @@ We can then do the calculations to evaluate the polynomial at the
 the coefficient vector.
 The resulting vector :math:`F_{z}` is called the
 :term:`Discrete Fourier Transform` (:term:`DFT`) for the polynomial.
+(Note that we also use the name :math:`b` for :math:`F_z`, just to make
+the subscripting notation easier to read in our descriptions.)
 
 .. math::
 
-   F_{z} = A_{z}a = b.\]
+   F_{z} = b = A_{z}a.\]
    \[b_i = \sum_{k=0}^{n-1} a_kz^{ik}.
 
 .. inlineav:: DFTmatrixCON ss
@@ -173,13 +181,15 @@ them, and then pair-wise multiplying the evaluated points, we must
 interpolate those points to get the resulting polynomial back that
 corresponds to multiplying the original input polynomials.
 
-The interpolation step is nearly identical to the evaluation step.
+Let's get the second problem out of the way first.
+It turns out that the interpolation step is nearly identical to the
+evaluation step.
 
 .. math::
 
    F_{z}^{-1} = A_{z}^{-1}b' = a'.
 
-We need to find :math:`A_{z}^{-1}`.
+We just need to find :math:`A_{z}^{-1}`.
 This turns out to be simple to compute, and is defined as follows.
 
 .. math::
@@ -189,10 +199,11 @@ This turns out to be simple to compute, and is defined as follows.
 In other words, interpolation (the inverse transformation) requires
 the same computation as evaluation, except that we substitute
 :math:`1/z` for :math:`z` (and multiply by :math:`1/n` at the end).
-So, if we can do one fast, we can do the other fast.
+So, if we can do one of these steps fast, we can also do the other
+step fast.
 
 .. inlineav:: DFTpropCON ss
-   :long_name: fft slideshow 5 DFT matrix properties
+   :long_name: DFT matrix properties
    :links: AV/Irena/DFTpropCON.css
    :scripts: AV/Irena/DFTpropCON.js
    :output: show
