@@ -35,20 +35,21 @@ $(document).ready(function() {
   b1.hide();
   Apoly.hide();
   Bpoly.hide();
-  var ab = av.ds.matrix({rows: 4, columns: 4, left: 500, top: 50});
-  av.ds.matrix([["$a_0$"], ["$a_1$"], ["$a_2$"], ["$a_3$"]], {left: 150, top: 50});
-  av.ds.matrix([["$b_0$", "$b_1$", "$b_2$", "$b_3$"]], {left: 252, top: 118});
+  var yStart = 50;
+  var mid = 90 + yStart;
+  var ab = av.ds.matrix({rows: 4, columns: 4, left: 500, top: yStart});
+  av.ds.matrix([["$a_0$"], ["$a_1$"], ["$a_2$"], ["$a_3$"]], {left: 150, top: yStart});
+  av.ds.matrix([["$b_0$", "$b_1$", "$b_2$", "$b_3$"]], {left: 252, top: mid - 22});
 
   //Equals
   var ex = 456;
   var ey = 152;
-  av.g.line(ex, ey, ex + 15, ey, {"stroke-width": 4});
-  av.g.line(ex, ey + 7, ex + 15, ey + 7, {"stroke-width": 4});
+  av.g.line(ex, mid + 12, ex + 15, mid + 12, {"stroke-width": 4});
+  av.g.line(ex, mid + 19, ex + 15, mid + 19, {"stroke-width": 4});
   //Multiplication
   var mx = 218;
-  var my = 152;
-  av.g.line(mx, my, mx + 10, my + 10, {"stroke-width": 4});
-  av.g.line(mx, my + 10, mx + 10, my, {"stroke-width": 4});
+  av.g.line(mx, mid + 10, mx + 10, mid + 20, {"stroke-width": 4});
+  av.g.line(mx, mid + 20, mx + 10, mid + 10, {"stroke-width": 4});
   av.step();
 
 

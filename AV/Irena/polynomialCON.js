@@ -6,7 +6,7 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   var width = 350, height = 140;
   var xStart = 250;
-  var yEnd = 60;
+  var yEnd = 20;
   var yStart = yEnd + height;  //end position of the y on the chart
   var xMax = 300, yMax = 1500;
 
@@ -36,12 +36,12 @@ $(document).ready(function() {
   av.g.polyline(xAxis, {stroke: "grey", "stroke-width": 2});
   av.g.line(xStart + width / 2, yEnd, xStart + width / 2, yStart + height,
             {stroke: "grey", "stroke-width": 2});
-  av.g.line(600, 200, 590, 195, {stroke: "grey", "stroke-width": 2});
-  av.g.line(600, 200, 590, 205, {stroke: "grey", "stroke-width": 2});
-  av.g.line(425, 60, 420, 70, {stroke: "grey", "stroke-width": 2});
-  av.g.line(425, 60, 430, 70, {stroke: "grey", "stroke-width": 2});
-  av.label("x", {left: 615, top: 175});
-  av.label("y", {left: 440, top: 40});
+  av.g.line(xStart + width, yEnd + height, xStart + width - 10, yEnd + height - 5, {stroke: "grey", "stroke-width": 2});
+  av.g.line(xStart + width, yEnd + height, xStart + width - 10, yEnd + height + 5, {stroke: "grey", "stroke-width": 2});
+  av.g.line(xStart + width / 2, yEnd, xStart + width / 2 - 5, yEnd + 10, {stroke: "grey", "stroke-width": 2});
+  av.g.line(xStart + width / 2, yEnd, xStart + width / 2 + 5, yEnd + 10, {stroke: "grey", "stroke-width": 2});
+  av.label("x", {left: xStart + width, top: yEnd + height - 10});
+  av.label("y", {left: xStart + width / 2 + 10, top: yEnd - 10});
 
   function _200(n) {
     return 200 + n * 0;

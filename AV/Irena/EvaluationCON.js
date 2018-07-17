@@ -28,20 +28,28 @@ $(document).ready(function() {
   av.step();
 
   av.umsg("At x = 0:");
-
-  A.text("$A(0) = (0)^2 + 1 = 1$");
-  B.text("$B(0) = 2(0)^2 - (0) + 1 = 1$");
-  ab.text("$A(0)*B(0) = 1*1 = 1$");
-  AB.text("$AB(0) = 2(0)^4 - (0)^3 + 3(0)^2 - (0) + 1 = 1$");
+  A.hide();
+  B.hide();
+  ab.hide();
+  AB.hide();
+  A = av.label("$A(0) = (0)^2 + 1 = 1$");
+  B = av.label("$B(0) = 2(0)^2 - (0) + 1 = 1$");
+  ab = av.label("$A(0)*B(0) = 1*1 = 1$");
+  AB = av.label("$AB(0) = 2(0)^4 - (0)^3 + 3(0)^2 - (0) + 1 = 1$");
 
   av.step();
 
   av.umsg("At x = 1:");
 
-  A.text("$A(1) = (1)^2 + 1 = 2$");
-  B.text("$B(1) = 2(1)^2 - (1) + 1 = 2$");
-  ab.text("$A(1)*B(1) = 2*2 = 4$");
-  AB.text("$AB(1) = 2(1)^4 - (1)^3 + 3(1)^2 - (1) + 1 = 4$");
+  A.hide();
+  B.hide();
+  ab.hide();
+  AB.hide();
+  
+  A = av.label("$A(1) = (1)^2 + 1 = 2$");
+  B = av.label("$B(1) = 2(1)^2 - (1) + 1 = 2$");
+  ab = av.label("$A(1)*B(1) = 2*2 = 4$");
+  AB = av.label("$AB(1) = 2(1)^4 - (1)^3 + 3(1)^2 - (1) + 1 = 4$");
 
   av.step();
 
