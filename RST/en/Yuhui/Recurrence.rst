@@ -409,6 +409,12 @@ A more complex example is given next.
 Divide-and-Conquer Recurrences
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. inlineav:: DivideAndConquerRecurrencesCON2 ss
+   :long_name: Divide-and-Conquer Expansion Slideshow2
+   :links: AV/Yuhui/DivideAndConquerRecurrencesCON2.css
+   :scripts: AV/Yuhui/DivideAndConquerRecurrencesCON2.js
+   :output: show
+
 The third approach to solving recurrences is to take advantage of
 known theorems that provide the solution for classes of recurrences.
 Of particular practical use is a theorem that gives the
@@ -442,6 +448,7 @@ solution for any divide and conquer recurrence, assuming that
      & = & c\sum_{i=0}^{m} a^{m-i} b^{ik}\\
      & = &ca^m\sum_{i=0}^{m} (b^k/a)^i.
    \end{eqnarray*}
+
 
 Note that
 

@@ -1,5 +1,5 @@
 /*global Plot */
-// Written by Irena Shaffer
+// Written by Irena Shaffer and Alexandru Cioaca
 $(document).ready(function() {
   "use strict";
   var av_name = "polynomialCON";

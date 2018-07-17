@@ -15,23 +15,29 @@ The Fast Fourier Transform
 The Fast Fourier Transform
 --------------------------
 
-In this module we present a fast algorithm for multiplying two
-polynomials of degree :math:`n`.
+In this module we continue the discussion on how to speed up the
+multiplication of larg polyonmials.
 Recall that we can get the result of multiplying two polynomials by
 the process of evaluating both at a sufficient number of points,
 doing pair-wise multiplication on the evaluation values, and then
-constructing the solution polynomial from the resulting values.
+using interpolation to construct the solution polynomial from the
+resulting values.
 Doing this at arbitrary points on the polynomials is no faster than
-brute-force multiplication.
-But we can find a way to take advantage of symmetry to speed up the
-process.
+brute-force multiplication, since both evaluation and interpolation of
+:math:`n` points will normally take :math:`\Theta(n^2)` time.
+But in this modules we show that we can find a way to take advantage
+of symmetry to speed up the process.
 
 Evaluating any polynomial at 0 is easy, since only the constant term
 is non-zero.
-If we evaluate the polynomial at both 1 and -1, we can share a lot of
-the work between the two evaluations.
-But we would need five points to nail down polynomial :math:`AB`,
-since it is a degree-4 polynomial.
+Evaluating at either 1 or -1 is relatively easy, because we don't need
+to actually multiply the :math:`x` values.
+If we evaluate the polynomial at **both** 1 and -1,
+we can share a lot of the work between the two evaluations.
+Consider again multiplying polynomials :math:`A = x^2 + 1` and
+:math:`B = 2x^2 -x + 1`.
+Since the end result is a degree-4 polynomial,
+we would need five points to nail down polynomial :math:`AB`.
 Fortunately, we can speed processing for any pair of values :math:`c`
 and :math:`-c`.
 This seems to indicate some promising ways to speed up the process of
@@ -46,7 +52,7 @@ also need to interpolate the five values to get the coefficients of
 
 So we see that we could multiply two polynomials in less than
 :math:`\Theta(n^2)` operations *if* a fast way could be 
-found to do evaluation/interpolation of :math:`2n - 1` points.
+found to do evaluation/interpolation of :math:`2n + 1` points.
 Before considering further how this might be done, first observe again
 the relationship between evaluating a polynomial at values :math:`c`
 and :math:`-c`.
@@ -59,19 +65,19 @@ So,
    P_a(x) = \sum_{i=0}^{n/2-1} a_{2i} x^{2i} +
            \sum_{i=0}^{n/2-1} a_{2i+1} x^{2i+1}
 
-
 .. inlineav:: EvenOddCON ss
    :long_name: fft slideshow 1 even and odd polynomials
    :links: AV/Irena/EvenOddCON.css
    :scripts: AV/Irena/EvenOddCON.js
    :output: show
 
-
 The key to fast polynomial multiplication is finding the right points
 to use for evaluation/interpolation to make the process efficient.
 In particular, we want to take advantage of symmetries, such as the
 one we see for evaluating :math:`x` and :math:`-x`.
-But we need to find even more symmetries between points if we want to
+But this symmetry is only enough to let us do selected pairs of points
+in half the time, so only a constant factor in savings.
+We need to find even more symmetries between points if we want to
 do more than cut the work in half.
 We have to find symmetries not just between pairs of values,
 but also further symmetries between pairs of pairs, and then pairs of
@@ -81,16 +87,18 @@ Recall that a :term:`complex number` :math:`z`
 has a real component and an imaginary component.
 We can consider the position of :math:`z` on a number line if we use
 the :math:`y` dimension for the imaginary component.
-Now, we will define a :term:`primitive nth root of unity` if
+Now, we will define a :math:`z` to be a
+:term:`primitive nth root of unity` if
 
 #. :math:`z^n = 1` and
 #. :math:`z^k \neq 1` for :math:`0 < k < n`.
 
 :math:`z^0, z^1, ..., z^{n-1}` are called the
 :term:`nth roots of unity`.
-For example, when :math:`n=4`, then :math:`z = i`.
-In general, we have the identities :math:`e^{i\pi} = -1`,
-and :math:`z^j = e^{2\pi ij/n} = -1^{2j/n}`.
+For example, when :math:`n=4`, then :math:`z = i` because
+:math:`i^4 = 1`.
+The following identities will also be useful to us:
+:math:`e^{i\pi} = -1`, and :math:`z^j = e^{2\pi ij/n} = -1^{2j/n}`.
 The significance is that we can find as many points on a unit circle
 as we would need
 (see Figure :num:`Figure #Unity`).
@@ -100,14 +108,12 @@ the overall process of evaluating many points at once.
 
 .. _Unity:
 
-
 .. inlineav:: fftCON dgm
    :links: AV/Irena/fftCON.css
    :scripts: AV/Irena/fftCON.js
    :align: center
 
    Examples of the 4th, 5th, and 8th roots of unity.
-
 
 
 .. avembed:: Exercises/Irena/Nth_root.html ka

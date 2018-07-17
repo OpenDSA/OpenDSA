@@ -89,7 +89,14 @@ Finding the coefficients for the polynomial given the values at
    :scripts: DataStructures/Plot.js AV/Irena/EvalandInterpolationCON.js
    :output: show
 
-|
+There are many useful engineering problems that involve multiplying
+two large-degree polynomials.
+This can be done using a transformation that involves evaluation
+(normally expensive), interpolation (normally expensive) and vector
+multiplication (cheap), similar in concept to how the slide rule
+uses a transformation to multiply large numbers efficiently.
+The secret to speeding this process up is in carefully selecting the
+right values to evaluate and interpolate.
 
 .. inlineav:: ProductCON ss
    :long_name: fft slideshow 3 polynomial product
@@ -97,7 +104,7 @@ Finding the coefficients for the polynomial given the values at
    :scripts: AV/Irena/ProductCON.js
    :output: show
 
-|
+Now, let's start thinking about ways to speed this up.
 
 .. inlineav:: EvaluationCON ss
    :long_name: fft slideshow 4 evaluation of polynomial product
