@@ -96,7 +96,8 @@ $(document).ready(function() {
   mat.css(0, 1, {"background-color": color1});
   a.css(1, 0, {"background-color": color1});
 
-  lab.text("$1*a_0 + 1*a_1$");
+  lab.hide();
+  lab = av.label("$1*a_0 + 1*a_1$", {left: 250});
 
   av.step();
 
@@ -105,7 +106,8 @@ $(document).ready(function() {
   mat.css(0, 2, {"background-color": color1});
   a.css(2, 0, {"background-color": color1});
 
-  lab.text("$1*a_0 + 1*a_1 + 1*a_2$");
+  lab.hide();
+  lab = av.label("$1*a_0 + 1*a_1 + 1*a_2$", {left: 250});
 
   av.step();
 
@@ -121,8 +123,10 @@ $(document).ready(function() {
   a.css(6, 0, {"background-color": color1});
   mat.css(0, 7, {"background-color": color1});
   a.css(7, 0, {"background-color": color1});
+  A.css(0, 0, {"background-color": color1});
 
-  lab.text("$1*a_0 + 1*a_1 + 1*a_2 + 1*a_3 + 1*a_4 + 1*a_5 + 1*a_6 + 1*a_7$");
+  lab.hide();
+  lab = av.label("$1*a_0 + 1*a_1 + 1*a_2 + 1*a_3 + 1*a_4 + 1*a_5 + 1*a_6 + 1*a_7$", {left: 250});
 
   av.step();
 
