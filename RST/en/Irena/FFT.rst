@@ -115,7 +115,6 @@ the overall process of evaluating many points at once.
 
    Examples of the 4th, 5th, and 8th roots of unity.
 
-
 .. avembed:: Exercises/Irena/Nth_root.html ka
 
 Now we want to turn these ideas into an actual, detailed algorithm.
@@ -137,16 +136,6 @@ The idea is that there is a row for each root
 power of the exponent of the :math:`x` value in the polynomial.
 For example, when :math:`n = 4` we have :math:`z = i`.
 Thus, the :math:`A_{z}` array appears as follows.
-
-.. math::
-
-   A_{z} =
-   \begin{array}{rrrr}
-   1&1&1&1\\
-   1&i&-1&-i\\
-   1&-1&1&-1\\
-   1&-i&-1&i
-   \end{array}
 
 .. inlineav:: arrayCON dgm
    :links: 
