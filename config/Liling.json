@@ -66,8 +66,6 @@
   },
   "chapters": {
     "Testing": {
-      "Testing/TestIntro": {},
-      "Testing/TestCoverageOrig": {},
       "Testing/TestCoverage": {}
     },
     "Appendix": {
