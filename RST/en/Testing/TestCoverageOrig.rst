@@ -22,8 +22,21 @@ If you can see the code, it is relatively easy to come up with test
 cases to cover each branch. Try it this time with code visible.
 Try to get over 90% code coverage.
 
-.. avembed:: AV/Testing/Triangle/withCode/TriangleAppletWC.html pe
-   :long_name: Triangle Testing (With code)
+.. raw:: html
+
+   <center>
+   <iframe id="Tri_iframe2"
+        src="http://lti.cs.vt.edu/LTI_ruby/AV/Testing/Triangle/TriangleApplet.html?code=true"
+        width="1100" height="1100"
+        frameborder="1" marginwidth="0" marginheight="0"
+        scrolling="no">
+   </iframe>
+   </center>
+
+.. .. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
+..   :long_name: Triangle Testing
+..   :url_params: code=true
+
 
 So, did you find it easier to get code coverage when you had the code
 in front of you?
@@ -52,4 +65,3 @@ when they "use the program correctly".
 Only testing for "proper" uses of the program is calle :term:`happy
 path testing`.
 It is not good enough to write reliable programs.
-
