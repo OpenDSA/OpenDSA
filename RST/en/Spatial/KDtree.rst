@@ -29,7 +29,7 @@ We define the discriminator at level :math:`i` to be
 :math:`i` mod :math:`k` for :math:`k` dimensions.
 For example, assume that we store data organized by
 :math:`xy`-coordinates.
-In this case, :math:`k:math:` is 2 (there are two coordinates),
+In this case, :math:`k` is 2 (there are two coordinates),
 with the :math:`x`-coordinate field arbitrarily designated key 0,
 and the :math:`y`-coordinate field designated key 1.
 At each level, the discriminator alternates between :math:`x` and
