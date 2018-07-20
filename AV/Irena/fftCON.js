@@ -12,7 +12,7 @@ $(document).ready(function() {
   var radius = 75;
   //4th root
   av.g.circle(x1, y, radius, {"stroke-width": 1.25});
-  
+
   av.g.line(x1 - radius - 20, y, x1 + radius + 20, y);
   av.g.line(x1, y - radius - 20, x1, y + radius + 20);
 
@@ -23,7 +23,7 @@ $(document).ready(function() {
 
   //5th root
   av.g.circle(x2, y, radius, {"stroke-width": 1.25});
-  
+
 
   av.g.line(x2, y, 520, y);
   av.g.line(x2, y, 454, 45);

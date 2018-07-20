@@ -6,7 +6,7 @@ $(document).ready(function() {
   var av = new JSAV("arrayCON", {animationMode: "none"});
 
   av.label("$A_z$ = ", {left: 310, top: 105});
-  var array = av.ds.matrix([["$1$", "$1$", "$1$", "$1$"], ["$1$", "$i$", "$-1$", "$-i$"], 
+  av.ds.matrix([["$1$", "$1$", "$1$", "$1$"], ["$1$", "$i$", "$-1$", "$-i$"],
     ["$1$", "$-1$", "$1$", "$-1$"], ["$1$", "$-i$", "$-1$", "$i$"]], {left: 350, top: 25});
 
   var xLab = 368;
