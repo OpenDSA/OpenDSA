@@ -3,18 +3,18 @@
 $(document).ready(function () {
   var av_name = "DivideAndConquerRecurrencesCON2";
   var av;
-  var labelSet;
   var circRadius = 13;
   var xoffset = 50;
   var yoffset = 50;
   av = new JSAV(av_name);
-  labelSet = new Array();
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
   $(".avcontainer").on("jsav-message", function() {
     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
   });
 
-  //Slide 1             
+  //Slide 1    
+  av.umsg("For a problem of size $n$, we have $cn^k$ units of work plus the amount of work required for $a$ subproblems of size $n/b$ each.");         
+  av.umsg("<br> $T(n) = cn^k + aT(n/b)$", {"preserve": true});
   var workLabel = av.label("<b><u>Amount of Work</u></b>", {"top": yoffset - 60 , "left": xoffset + 450});
   var numberLabel = av.label("<b><u>Number of nodes</u></b>", {"top": yoffset - 60 , "left": xoffset + 600});
   var numberLabel2 = av.label("$1$", {"top": yoffset - 27 , "left": xoffset + 650});
@@ -37,6 +37,8 @@ $(document).ready(function () {
   av.displayInit();
 
   //Slide 2
+  av.umsg("For each problem of size $n/b$, we have $c(\\frac{n}{b})^k$ units of work for a total of $\\frac{acn^k}{b^k}$ units plus the amount of work required for $a$ subproblems of size $n/b^2$ each.");
+  av.umsg("<br> $T(n) = cn^k + a(c(\\frac{n}{b})^k + aT(n/b^2))$", {"preserve": true});
   var l4 = av.g.line(xoffset + 100, yoffset + 83, xoffset + 100, yoffset + 125, {"stroke-width": "2"});
   var l5 = av.g.line(xoffset + 100, yoffset + 83, xoffset + 60, yoffset + 125, {"stroke-width": "2"});
   var l6 = av.g.line(xoffset + 100, yoffset + 83, xoffset + 140, yoffset + 125, {"stroke-width": "2"});
@@ -56,13 +58,15 @@ $(document).ready(function () {
   av.step();
   
   //Slide 3
+  av.umsg("This pattern will continue till we reach a problem of size $1$ in which we will have $a^m$ subproblems each of which requires $c$ units of work for a total of $a^mc$ units.");
+  av.umsg("<br> $T(n) = cn^k + a(c(\\frac{n}{b})^k + a(c(\\frac{n}{b^2})^k + a(c(\\frac{n}{b^3})^k + a((...))))$", {"preserve": true});
   var c5 = av.g.circle(xoffset + 20, yoffset + 220, circRadius, {"stroke-width": "2"});
   var c6 = av.g.circle(xoffset + 110, yoffset + 220, circRadius, {"stroke-width": "2"});
   var c7 = av.g.circle(xoffset + 200, yoffset + 220, circRadius, {"stroke-width": "2"});
   var c8 = av.g.circle(xoffset + 290, yoffset + 220, circRadius, {"stroke-width": "2"});
   var c9 = av.g.circle(xoffset + 380, yoffset + 220, circRadius, {"stroke-width": "2"});
   var dashLabel_n2 = av.label("-----------------", {"top": yoffset + 190, "left": xoffset + 400}); 
-  var valueLabel_3 = av.label("$\\frac{a^mcn^k}{b^{mk}}$", {"top": yoffset + 190, "left": xoffset + 500}); 
+  var valueLabel_3 = av.label("$a^mc$", {"top": yoffset + 190, "left": xoffset + 500}); 
   var bLabel1 = av.label("$1$", {"top": yoffset + 195, "left": xoffset + 18});
   var bLabel2 = av.label("$1$", {"top": yoffset + 195, "left": xoffset + 108});
   var bLabel3 = av.label("$1$", {"top": yoffset + 195, "left": xoffset + 198});
@@ -72,6 +76,7 @@ $(document).ready(function () {
   av.step();
   
   //Slide 4
+  av.umsg("We end up having $\\log_{b}{n} + 1$ levels with the amount of work at the last level is  $a^mc$.");
   av.label("|---------------- $\\log_{b}{n + 1}$ --------------|", {"top": yoffset + 80, "left": xoffset - 120}).addClass("rotated");
   av.step();    
   av.recorded();
