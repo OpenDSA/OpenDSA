@@ -16,7 +16,7 @@ The Bintree
 -----------
 
 This module presents a spatial data structure for storing
-point data in two or more dimensions, called the Bintree.
+point data in two or more dimensions, called the :term:`Bintree`.
 The Bintree is a natural extension of the BST to
 multiple dimensions.
 The Bintree differs from the BST in two important ways.
@@ -25,13 +25,17 @@ of the tree the Bintree
 makes branching decisions based on a particular search key associated
 with that level, called the :term:`discriminator`.
 Its splitting decisions alternate among the key dimensions.
+(Splitting in one dimension at a time is what distinguishes the
+Bintree from the :term:`PR Quadtree`.)
 Another difference from the BST is that the Bintree uses what is known
 as :term:`image-space decomposition`, and so is a form of :term:`trie`.
 An image-space decomposition splits the key space into equal halves,
 rather than splitting at the key value of the object being stored.
+(Using the image-space decomposition is what distinguishes the Bintree
+from the :term:`kd tree`, which splits at the location of the data point.)
 
-In theory, the Bintree could be used to unify search across any
-arbitrary set of keys such as name and zipcode.
+In theory the Bintree could be used to unify search across any
+arbitrary set of keys, such as name and zipcode.
 But in practice, it is nearly always used to support search on
 multidimensional coordinates, such as locations in 2D or 3D space.
 

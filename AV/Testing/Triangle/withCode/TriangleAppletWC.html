@@ -10,7 +10,14 @@
 </head>
 
 <body>
-    
+    <figure class = "codeBlock" id = "coverageCode">        
+        <pre>
+            <code>
+                <object style="width: 300px; height: 350px;" data="ClassifyTriangle.txt"></object>
+            </code>
+        </pre>
+    </figure>
+
 	<div id = "container">
         <br>
         
@@ -22,34 +29,33 @@
             </tr>
         </table>
 
-        <figure class = "codeBlock" id = "coverageCode">        
-            <pre>
-                <code>
-                    <object style="width: 300px; height: 350px;" data="ClassifyTriangle.txt"></object>
-                </code>
-            </pre>
-        </figure>
-
-        <div id = "container2">
         <form id="ssperform">
-            <br><br><br>
+            
+            <br>
             <label><h4 id = "inputInfo"></h4></label>
             <input type = "text" class = "triangleInput" id = "side1" name = "side1">
             <input type = "text" class = "triangleInput" id = "side2" name = "side2">
             <input type = "text" class = "triangleInput" id = "side3" name = "side3">
             <input type = "button" id = "classify" name = "classify"></input>
 
+            
+            <h4 id = "performanceSummary"></h4>
+            <label id = "codeCoverage"></label>
+            <label id="codeCoveragePercentage"></label>
+            <div class="progress" id = "bar">
+                <div class="progress-bar" id="codeCoverageBar" role="progressbar"></div>
+            </div>
+
             <br><br>
             <h4 id = "performanceDetails"></h4> 
             <label id = "testsrun" class = "output"></label>
 
-            <br><br>
+            
             <h4 id = "testHistory"></h4>
             <p class="jsavoutput jsavscroll"></p>
 
             <input type = "button" id = "reset" name = "reset"></input>
         </form>
-        </div><!--Container2-->
     </div> <!--container-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>

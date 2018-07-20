@@ -20,6 +20,8 @@ function reset(){
     testsrunText.innerHTML = "Number of tests run: " + 0;
     testNum = 1;
     coverage = 0.00;
+    document.getElementById("codeCoverageBar").style = "width:" + 0 + "%";
+    document.getElementById("codeCoveragePercentage").innerText = 0 + "%";
     for (var i = 0; i < 14; i++) {
         codeCoverage[i] = false;
     }
@@ -98,6 +100,7 @@ function calculateCoverage() {
     return numTrue * 100 / codeCoverage.length
 }
 
+
 function setPerformanceDetails() {
     var testsrunText = document.getElementById("testsrun");
     testsrunText.innerHTML = "Number of tests run: " + testNum;
@@ -118,11 +121,36 @@ function classifyTriangle() {
     av.umsg("Test " + testNum + ": " + "Sides: " + side1 + ", " + side2 + ", " + side3 + " "
                                  + triangleType + "\n" + testCaseHistory);
     coverage = calculateCoverage(); 
+    document.getElementById("codeCoverageBar").style = "width:" + coverage + "%";
+    document.getElementById("codeCoveragePercentage").innerText = coverage.toFixed(2) + "%";
     if(coverage == shreshold){
         ODSA.AV.awardCompletionCredit();
         av.umsg(interpret("av_c1"));
     }
     setPerformanceDetails();
+}
+
+window.onload = function() {
+    if (getUrlParam("code") != "true") {
+        document.getElementById("coverageCode").style.display = "none";
+    } else {
+        document.getElementById("coverageCode").style.display = "block";
+        document.getElementById("container").style.float = "left";
+    }
+}
+
+/**
+ * Gets the value of a url parameter
+ * @param {*} name is the name of the parameter you want to get 
+ * @param {*} url is the url we want to read, can leave empty.
+ */
+function getUrlParam( name, url ) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( url );
+    return results == null ? null : results[1];
 }
 
 $("#classify").click(classifyTriangle);
