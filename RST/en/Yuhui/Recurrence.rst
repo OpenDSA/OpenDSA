@@ -463,6 +463,11 @@ The summation is a geometric series whose sum depends on the ratio
 :math:`r = b^k/a`.
 There are three cases.
 
+.. inlineav:: summation_equ_proof ss
+   :links: AV/Yuhui/summation_equ_proof.css
+   :scripts: AV/Yuhui/summation_equ_proof.js
+   :output: show
+
 (#) :math:`r<1`.
     From Equation (4) of Module :ref:`summation <summation> <Summations>`,
 
@@ -491,7 +496,7 @@ There are three cases.
 
     .. math::
 
-       {\bf T}(n) = \Theta(n^{\log_ba}\log n) = \Theta(n^k\log n).
+       {\bf T}(n) = \Theta(n^{\log_ba}\log_b n) = \Theta(n^k\log_b n).
 
 (#) :math:`r>1`.
     From Equation (5) of Module :ref:`summation <summation> <Summations>`,
@@ -524,7 +529,7 @@ sometimes referred to as the :term:`Master Theorem`.
 
       {\bf T}(n) = \left\{ \begin{array}{ll}
                    \Theta(n^{\log_ba}) & \mbox{if \(a > b^k\)} \\
-                   \Theta(n^k\log n)   & \mbox{if \(a = b^k\)} \\
+                   \Theta(n^k\log_b n)   & \mbox{if \(a = b^k\)} \\
                    \Theta(n^k)         & \mbox{if \(a < b^k\).}
                   \end{array}
          \right.
