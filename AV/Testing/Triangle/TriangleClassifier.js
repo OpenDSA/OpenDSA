@@ -132,6 +132,7 @@ function classifyTriangle() {
 
 window.onload = function() {
     if (getUrlParam("code") != "true") {
+        shreshold = 50;
         document.getElementById("coverageCode").style.display = "none";
     } else {
         document.getElementById("coverageCode").style.display = "block";
