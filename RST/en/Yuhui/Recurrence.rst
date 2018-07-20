@@ -491,7 +491,7 @@ There are three cases.
 
     .. math::
 
-       {\bf T}(n) = \Theta(n^{\log_ba}\log n) = \Theta(n^k\log n).
+       {\bf T}(n) = \Theta(n^{\log_ba}\log_b n) = \Theta(n^k\log_b n).
 
 (#) :math:`r>1`.
     From Equation (5) of Module :ref:`summation <summation> <Summations>`,
