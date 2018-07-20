@@ -67,7 +67,8 @@
   "chapters": {
     "Numerical Algorithms": {
       "Irena/Transform": {},
-      "Irena/FFT": {}
+      "Irena/FFT": {},
+      "Irena/Buddy": {}
     },
     "Appendix": {
       "Glossary": {},

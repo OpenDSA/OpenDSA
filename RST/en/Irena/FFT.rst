@@ -25,7 +25,7 @@ resulting values.
 Doing this at arbitrary points on the polynomials is no faster than
 brute-force multiplication, since both evaluation and interpolation of
 :math:`n` points will normally take :math:`\Theta(n^2)` time.
-But in this modules we show that we can find a way to take advantage
+But in this module we show that we can find a way to take advantage
 of symmetry to speed up the process.
 
 Evaluating any polynomial at 0 is easy, since only the constant term

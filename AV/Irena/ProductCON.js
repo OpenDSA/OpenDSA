@@ -38,13 +38,12 @@ $(document).ready(function() {
   av.ds.matrix([["$b_0$", "$b_1$", "$b_2$", "$b_3$"]], {left: 252, top: mid - 22});
 
 
-  var ab = av.ds.matrix({rows: 4, columns: 4, left: 500, top: 50});
+  ab = av.ds.matrix({rows: 4, columns: 4, left: 500, top: 50});
   av.ds.matrix([["$a_0$"], ["$a_1$"], ["$a_2$"], ["$a_3$"]], {left: 150, top: 50});
   av.ds.matrix([["$b_0$", "$b_1$", "$b_2$", "$b_3$"]], {left: 252, top: 118});
 
   //Equals
   var ex = 456;
-  var ey = 152;
   av.g.line(ex, mid + 12, ex + 15, mid + 12, {"stroke-width": 4});
   av.g.line(ex, mid + 19, ex + 15, mid + 19, {"stroke-width": 4});
   //Multiplication

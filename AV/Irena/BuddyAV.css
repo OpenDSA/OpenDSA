@@ -1,0 +1,50 @@
+label {
+  margin-left: 5px;
+}
+
+#container {
+  height: 675px;
+  width: 887px;
+}
+
+.jsavcanvas { 
+  width: 870px;
+  height: 500px;
+  position: absolute;
+}
+
+#bottom {
+padding-left: 5px;
+  height: 90px;
+  width: 880px;
+  border: 1px solid black;
+  background-color: #ddd;
+  overflow: hidden;
+}
+
+#input {
+  /* Spacing between the input box and the Next button */
+  margin-right: 5px;
+}
+
+.avcontainer {
+  margin-top: 0;
+}
+
+.jsavcontainer svg {
+  pointer-events: all;
+}
+
+.jsavscroll {
+  width: 250px;
+  height: 505px;
+  font-size: 95%;
+  float: left;
+  margin-left: -10px;
+  margin-top: 5px;
+  padding-left: 5px;
+}
+
+#procontrols{
+  text-align: left;
+}
