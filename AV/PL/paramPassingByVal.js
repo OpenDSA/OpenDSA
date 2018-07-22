@@ -19,6 +19,7 @@ $(document).ready(function() {
   var classLabels = {};
   var mainVars = {};
   var mainLabels = {};
+  var mainVarNum = 0;
   var fooVarNames = [];
   var fooVars = {};
   var fooLabels = {};
@@ -34,6 +35,11 @@ $(document).ready(function() {
 
   var codeLines = CallByAllFive.expression.split('<br />');
   for(var i = 0; i < codeLines.length; i++){
+    if(mainIndex != null){
+      if(codeLines[i].trim().startsWith('int')){
+        mainVarNum++;
+      }
+    }
     if(codeLines[i].indexOf('void foo') !== -1){
       currentLineFoo = fooIndex = i + 1; // +1 because JSAV
     }
@@ -86,16 +92,20 @@ $(document).ready(function() {
   fooLabel.hide();
 
   currentTopMargin += lineHeight;
+  var numVars = /\(([^)]+)\)/.exec(codeLines[fooIndex-1].trim())
+  numVars = Math.max(numVars[numVars.length-1].split(',').length,mainVarNum);
+
+  //numVars = Math.max(numVars,/\(([^)]+)\)/)
   var mainBox = av.g.rect(2*leftMargin+pseudo.element[0].clientWidth,
                           currentTopMargin,
                           boxWidth,
-                          lineHeight*2+boxPadding*2
+                          lineHeight*numVars+boxPadding*numVars
                         );
   var fooBox = av.g.rect(2*leftMargin+pseudo.element[0].clientWidth+boxWidth+
                             boxPadding*2,
                           currentTopMargin,
                           boxWidth,
-                          lineHeight*2+boxPadding*2
+                          lineHeight*numVars+boxPadding*numVars
                         );
   fooBox.hide();
 
@@ -142,36 +152,25 @@ $(document).ready(function() {
 
   fooVarNames = getVarNamesFromPrototype(codeLines[currentLineFoo-1]);
 
-  fooLabels[fooVarNames[0]] = av.label(fooVarNames[0],
-    {
-      relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
-      left: leftMargin+boxWidth+3*boxPadding, top: currentFooTopMargin
-    }
-  );
-  fooVars[fooVarNames[0]] = av.ds.array(varVal.value,
-    {
-      indexed: false,relativeTo:fooLabels[fooVarNames[0]], anchor:"right top",
-      myAnchor:"left top", left: labelMargin,
-      top:-1*jsavArrayOffset
-    }
-  );
+  var fooPassedIn = [varVal.value, [classVars[name].value(varVal.value[0])]]
 
-  currentFooTopMargin += lineHeight;
+  for(var i=0; i<fooVarNames.length; i++){
+    fooLabels[fooVarNames[i]] = av.label(fooVarNames[i],
+      {
+        relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+        left: leftMargin+boxWidth+3*boxPadding, top: currentFooTopMargin
+      }
+    );
+    fooVars[fooVarNames[i]] = av.ds.array(fooPassedIn[i],
+      {
+        indexed: false,relativeTo:fooLabels[fooVarNames[i]], anchor:"right top",
+        myAnchor:"left top", left: labelMargin,
+        top:-1*jsavArrayOffset
+      }
+    );
 
-  fooLabels[fooVarNames[1]] = av.label(fooVarNames[1],
-    {
-      relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
-      left: leftMargin+boxWidth+3*boxPadding, top: currentFooTopMargin
-    }
-  );
-  fooVars[fooVarNames[1]] = av.ds.array(
-    [classVars[name].value(varVal.value[0])],
-    {
-      indexed: false,relativeTo:fooLabels[fooVarNames[1]], anchor:"right top",
-      myAnchor:"left top", left: labelMargin,
-      top:-1*jsavArrayOffset
-    }
-  );
+    currentFooTopMargin += lineHeight;
+  }
 
   av.umsg("foo's "+fooVarNames[0]+" is initialized to the value "+varVal.value+
           " and foo's "+fooVarNames[1]+" is initialized to "+
