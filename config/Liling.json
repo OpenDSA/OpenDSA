@@ -65,9 +65,15 @@
     "required": true
   },
   "chapters": {
-    "Sorting": {
-      "Liling/SelectionSort":{}
-    },
+    "Testing": {
+      "Testing/TestCoverage": {
+        "exer_options": {
+            "JXOP-code": "true",
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "undo"
+          }
+      }
+  },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}

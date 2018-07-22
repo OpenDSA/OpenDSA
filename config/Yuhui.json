@@ -65,12 +65,13 @@
     "required": true
   },
   "chapters": {
-    "Stuff": {
+    "Hashing": {
       "Hashing/HashFunc": {
         "BirthdayFIB": {
           "threshold": 3
         }
-      }
+      },
+      "Yuhui/Recurrence": {}
     },
     "Appendix": {
       "Glossary": {},

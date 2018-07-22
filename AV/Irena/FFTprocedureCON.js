@@ -1,5 +1,5 @@
 /*global Complex */
-// Written by Irena Shaffere
+// Written by Irena Shaffer
 $(document).ready(function() {
   "use strict";
   var av_name = "FFTprocedureCON";

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-require="math Nth_root">
+  <head>
+    <title>Pick the Correct Root of Unity</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="575" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="n">Khan.randRange(3, 10)</var>
+        <var id="theAnswer">nth_root.initZ(n)</var>
+        <var id="temp">nth_root.answers()</var>
+        <var id="option0">nth_root.option[0]</var>
+        <var id="option1">nth_root.option[1]</var>
+        <var id="option2">nth_root.option[2]</var>
+      </div>
+      <div class="problems">
+        <div id="Nth_rootp">
+          <p class="question">What is the correct value of <code>z^1</code> for the nth root of unity where n = <var>n</var>? </p>
+          <div class="solution"> <code><var>theAnswer</var></code></div>
+	  <ul class="choices">
+	    <li><code><var>option0</var></code></li>
+	    <li><code><var>option1</var></code></li>
+	    <li><code><var>option2</var></code></li>
+	  </ul>
+          <div class="hints">
+            <p>Remember <code>z^j = -1^{2j/n}</code></p>
+            <p>For this problem j = 1 </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

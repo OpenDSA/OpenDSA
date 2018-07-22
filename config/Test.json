@@ -66,20 +66,7 @@
   },
   "chapters": {
     "Stuff": {
-      "List/ListLinked": {
-        "LlistRemovePRO": {
-          "points": 2
-        }
-      }, 
-      "AlgAnal/AnalIntro": {}
-    },
-    "Testing": {
-      "Testing/TestIntro": {
-        "TriangleApplet": {}
-      },
-      "Testing/TestCoverage": {
-        "TriangleApplet": {}
-      }
+      "MemManage/Buddy": {}
     },
     "Appendix": {
       "Glossary": {},

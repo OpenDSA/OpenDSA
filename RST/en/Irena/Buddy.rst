@@ -117,6 +117,9 @@ moved to the freelist for the next larger
 block size (which might in turn require that two adjacent free blocks
 of the larger size be merged).
 
+.. avembed:: AV/Irena/BuddyAV.html ss
+   :long_name: Buddy Method Visualization
+   :url_params: fitAlgorithm=1
 
 Other Methods
 ~~~~~~~~~~~~~
@@ -154,3 +157,5 @@ operating system main memory managers
 work on a cluster or page system.
 Block management is usually done with a buffer pool
 to allocate available blocks in main memory efficiently.
+
+

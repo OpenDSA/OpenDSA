@@ -409,6 +409,12 @@ A more complex example is given next.
 Divide-and-Conquer Recurrences
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. inlineav:: DivideAndConquerRecurrencesCON2 ss
+   :long_name: Divide-and-Conquer Expansion Slideshow2
+   :links: AV/Yuhui/DivideAndConquerRecurrencesCON2.css
+   :scripts: AV/Yuhui/DivideAndConquerRecurrencesCON2.js
+   :output: show
+
 The third approach to solving recurrences is to take advantage of
 known theorems that provide the solution for classes of recurrences.
 Of particular practical use is a theorem that gives the
@@ -443,6 +449,7 @@ solution for any divide and conquer recurrence, assuming that
      & = &ca^m\sum_{i=0}^{m} (b^k/a)^i.
    \end{eqnarray*}
 
+
 Note that
 
 .. math::
@@ -455,6 +462,11 @@ Note that
 The summation is a geometric series whose sum depends on the ratio
 :math:`r = b^k/a`.
 There are three cases.
+
+.. inlineav:: summation_equ_proof ss
+   :links: AV/Yuhui/summation_equ_proof.css
+   :scripts: AV/Yuhui/summation_equ_proof.js
+   :output: show
 
 (#) :math:`r<1`.
     From Equation (4) of Module :ref:`summation <summation> <Summations>`,
@@ -517,7 +529,7 @@ sometimes referred to as the :term:`Master Theorem`.
 
       {\bf T}(n) = \left\{ \begin{array}{ll}
                    \Theta(n^{\log_ba}) & \mbox{if \(a > b^k\)} \\
-                   \Theta(n^k\log n)   & \mbox{if \(a = b^k\)} \\
+                   \Theta(n^k\log_b n)   & \mbox{if \(a = b^k\)} \\
                    \Theta(n^k)         & \mbox{if \(a < b^k\).}
                   \end{array}
          \right.

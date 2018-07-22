@@ -6,6 +6,9 @@
       "#reset": "Reset",
       "#inputInfo": "Enter triangle sides:",
       "#performanceDetails": "Your Performance Details:",
+      "#performanceSummary": "Your Performace Summary:",
+      "#codeCoverage": "Code Coverage:",
+      "#codeCoveragePercentage": "0%",
       "#testsrun": "Number of tests run: 0",
       "#testHistory": "Your Test Case History:",
       

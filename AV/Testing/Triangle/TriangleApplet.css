@@ -1,6 +1,6 @@
 #container {
   width: 600px;
-  height: 500px;
+  height: 600px;
 }
 
 #inputInfo {
@@ -11,6 +11,20 @@
 
 #performanceDetails {
 	display: inline;
+	font-family: Times New Roman;
+}
+
+#bar{
+	float: right;
+	margin-right: 50px;
+	width: 330px;
+}
+
+#codeCoverageBar{
+	width: 0%;
+}
+
+#performanceSummary {
 	font-family: Times New Roman;
 }
 
@@ -41,7 +55,8 @@
 	margin-left: 225px;
 }
 
-/*.codeBlock {
-	width: 290px;
+.codeBlock {
+	width: 325px;
+	height: 1000px;
 	float: left;
-}*/
+}

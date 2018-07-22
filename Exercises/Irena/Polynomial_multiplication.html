@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html data-require="math Polynomial_multiplication">
+  <head>
+    <title>Polynomial Multiplication and Evaluation</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="polySizeA">Khan.randRange(3, 4)</var>
+        <var id="polySizeB">Khan.randRange(3, 4)</var>
+	<var id="lastIndex">polySizeA - 1</var>
+        <var id="arrValuesA">Polynomial_multiplication.initPoly(polySizeA)</var>
+        <var id="arrValuesB">Polynomial_multiplication.initPoly(polySizeB)</var>
+        <var id="evalValue">Khan.randRange(-2, 2)</var>
+        <var id="theAnswer">Polynomial_multiplication.multiply(evalValue)</var>
+      </div>
+      <div class="problems">
+        <div id="Polynomial_multiplicationp">
+          <p> Polynomial A: </p>
+	  <pre><code><var>arrValuesA</var></code></pre>
+          <p> Polynomial B: </p>
+    <pre><code><var>arrValuesB</var></code></pre>
+          <p class="question">Polynomial AB is polynomial A multiplied with polynomial B. Evaluate the polynomial AB at 
+            <var>evalValue</var></p>
+          <p class="solution" data-type="text"><var>theAnswer</var></p>
+          <div class="hints">
+            <p>Evaluate polynomial A and polynomial B at <var>evalValue</var> </p>
+            <p>Multiply the evaluations of polynomials A and B</p>
+            <p>The answer should be: <var>theAnswer</var></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
