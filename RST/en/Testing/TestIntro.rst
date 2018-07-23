@@ -38,16 +38,5 @@ in the program (that is, generating "code coverage").
 You will probably find this quite challenging to get to even 50% code
 coverage.
 
-.. raw:: html
-
-   <center>
-   <iframe id="Tri_iframe"
-        src="http://lti.cs.vt.edu/LTI_ruby/AV/Testing/Triangle/TriangleApplet.html"
-        width="1100" height="1200"
-        frameborder="1" marginwidth="0" marginheight="0"
-        scrolling="no">
-   </iframe>
-   </center>
-
-.. .. avembed:: AV/Testing/Triangle/TriangleApplet.html ss
-..    :long_name: Triangle Testing
+.. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
+   :long_name: Triangle Testing No Code

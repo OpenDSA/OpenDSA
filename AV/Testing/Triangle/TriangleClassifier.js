@@ -131,11 +131,12 @@ function classifyTriangle() {
 }
 
 window.onload = function() {
-    if (getUrlParam("code") != "true") {
+    if (getUrlParam("code") == "true") {
+        document.getElementById("coverageCode").style.display = "block";
+        document.getElementById("container").style.float = "left";
+    } else {
         shreshold = 50;
         document.getElementById("coverageCode").style.display = "none";
-    } else {
-        document.getElementById("coverageCode").style.display = "block";
         document.getElementById("container").style.float = "left";
     }
 }

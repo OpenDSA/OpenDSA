@@ -23,7 +23,7 @@ cases to cover each branch. Try it this time with code visible.
 Try to get over 90% code coverage.
 
 .. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
-   :long_name: Triangle Testing 
+   :long_name: Triangle Testing With Code
 
 So, did you find it easier to get code coverage when you had the code
 in front of you?

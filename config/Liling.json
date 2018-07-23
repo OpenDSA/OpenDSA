@@ -66,17 +66,19 @@
   },
   "chapters": {
     "Testing": {
+      "Testing/TestIntro": {},
       "Testing/TestCoverage": {
-        "exer_options": {
-            "JXOP-code": "true",
-            "JXOP-feedback": "continuous", 
-            "JXOP-fixmode": "undo"
+        "TriangleApplet": {
+          "exer_options": {
+            "code": "true"
           }
+        }
       }
-  },
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}
     }
   }
 }
+
