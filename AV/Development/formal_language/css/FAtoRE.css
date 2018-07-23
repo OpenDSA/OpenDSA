@@ -1,49 +1,104 @@
 .no-close .ui-dialog-titlebar-close {
-  display: none;
+    display: none;
 }
+
 .ui-dialog {
-	z-index: 1000;
-	background-color: #f8fff8;
-	border-radius: 5px;
+    z-index: 1000;
+    background-color: #f8fff8;
+    border-radius: 5px;
 }
+
 #transitions > .jsavcanvas {
-	height: auto;
+    height: auto;
 }
+
 #transitions {
-	padding: 0;
-	margin: 0 auto;
+    padding: 0;
+    margin: 0 auto;
 }
+
 .jsavcanvas {
-	overflow-x: initial;
+    overflow-x: initial;
 }
+
 .jsavmatrix {
-	margin-left: 0;
+    margin-left: 0;
 }
+
 .jsavhorizontalarray .jsavnode {
-	min-width: 50px !important;
-  max-width: 50px !important;
+    min-width: 50px !important;
+    max-width: 50px !important;
 }
+
 .jsavhorizontalarray .jsavnode:nth-child(3) {
-	min-width: 100px !important;
-  max-width: 100px !important;
+    min-width: 100px !important;
+    max-width: 100px !important;
 }
+
 .ui-dialog-titlebar {
-	height: 20px;
-	background-color: #999999;
-	cursor: move;
+    height: 20px;
+    background-color: #999999;
+    cursor: move;
 }
+
 .jsavoutput {
-	padding-top: 10px;
-	margin: 0 auto;
-	text-align: center;
+    padding-top: 10px;
+    margin: 0 auto;
+    text-align: center;
 }
+
 .jsavoutput > div {
-	font-size: 120%;
-	-webkit-touch-callout: initial; /* iOS Safari */
-	-webkit-user-select: initial;   /* Chrome/Safari/Opera */
-	-khtml-user-select: initial;    /* Konqueror */
-	-moz-user-select: initial;      /* Firefox */
-	-ms-user-select: initial;       /* Internet Explorer/Edge */
-	user-select: initial;           /* Non-prefixed version, currently
+    font-size: 120%;
+    -webkit-touch-callout: initial;
+    /* iOS Safari */
+    -webkit-user-select: initial;
+    /* Chrome/Safari/Opera */
+    -khtml-user-select: initial;
+    /* Konqueror */
+    -moz-user-select: initial;
+    /* Firefox */
+    -ms-user-select: initial;
+    /* Internet Explorer/Edge */
+    user-select: initial;
+    /* Non-prefixed version, currently
 						                                  not supported by any browser */
+}
+
+#av {
+    text-align: center;
+}
+
+p.jsavoutput.jsavline {
+    height: 10px;
+}
+
+.jsavcanvas {
+    width: 55% !important;
+    height: 445px !important;
+    float: left;
+}
+
+.jsavgraph {
+    display: inline-block;
+}
+
+#editable .jsavnode {
+    cursor: pointer;
+}
+
+#editable .jsavedge {
+    cursor: pointer;
+    stroke-width: 2;
+    /*can change to make edges easier to click */
+}
+
+#conversionButton {
+    display: none;
+}
+
+.jsavmodelanswer {
+    text-align: center;
+}
+.transtable {
+    float: left;
 }

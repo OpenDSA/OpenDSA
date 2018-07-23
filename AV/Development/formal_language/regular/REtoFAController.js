@@ -205,7 +205,7 @@ controllerProto.exportToFA = function() {
 	localStorage["REtoFA"] = true;
 	localStorage["FAfromRE"] = serialize(this.fa);
 	console.log(serialize(this.fa));
-	window.open("../ui/FAEditor.html");
+	window.open("./FA.html");
 }
 
 /**

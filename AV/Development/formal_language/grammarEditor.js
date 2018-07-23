@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  "use strict";
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
   var arrow = String.fromCharCode(8594),
@@ -44,10 +45,10 @@ $(document).ready(function () {
     //   d.splice(1, 0, arrow);
     //   return d;
     // });
-    arr = JSON.parse(localStorage.getItem('grammar'));
-
+    arr = JSON.parse(localStorage.getItem("grammar"));
     lastRow = arr.length;
     // add an empty row for editing purposes (clicking the empty row allows the user to add productions)
+    //arr.push(["S", arrow, "jZ"]);
     arr.push(["", arrow, ""]);
     // clear the grammar from local storage to prevent it from being loaded by other grammar tests
     localStorage.removeItem('grammar');
@@ -2817,10 +2818,18 @@ $(document).ready(function () {
   // Function to lay out a single column width
   function layoutColumn (mat, index) {
     var maxWidth = 100;     // default cell size
+    /*for (var i = 0; i < mat._arrays.length; i++) {
+        var cell = mat._arrays[i]._indices[index].element;
+        if ($(cell).width() > maxWidth) {
+          maxWidth = $(cell).width();
+        }
+    }*/
     for (var i = 0; i < mat._arrays.length; i++) {
-      var cell = mat._arrays[i]._indices[index].element;
-      if ($(cell).width() > maxWidth) {
-        maxWidth = $(cell).width();
+        if (typeof mat._arrays[i]._indices[index] !== undefined){
+          var cell = mat._arrays[i]._indices[index].element;
+          if ($(cell).width() > maxWidth) {
+          maxWidth = $(cell).width();
+        }
       }
     }
     if (maxWidth > 100) {

@@ -1,5 +1,6 @@
 var latexit = "http://latex.codecogs.com/svg.latex?";
 (function ($) {
+    "use strict";
 	var jsav = new JSAV("av"), // Instance variable to store the JSAV algorithm visualization.
 		jsavArray, // Instance variable to store the JSAV array (in which input strings are displayed).
 		label = null, // Instance variable to store the label clicked in "Edit Edges" mode.
@@ -51,8 +52,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 				$(".createExercise").hide();
 				if (localStorage['toConvert'] === "true") {
 					data = localStorage['converted'];
-					$('#clearLabelButton').show();
-					console.log("here");
+					$('#clearLabelButton').show();				
 				}
 				else if (localStorage['toMinimize'] === "true") {
 					data = localStorage['minimized'];
@@ -107,11 +107,43 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			g.layout({layout:"manual"});
 		}
 	};
+    
+    function deserialize(data) {
+      var gg = jQuery.parseJSON(data);
+      var graph = jsav.ds.fa({width: "55%", height: 440, layout: "manual", editable: true, element: $("#reference")});
+      graph.initFromParsedJSONSource(gg, 0.5);
+	  graph.updateAlphabet();
+	  var alphabet = Object.keys(graph.alphabet).sort();
+	  $("#alphabet").html(String(alphabet));
+	  return graph;
+}
 
 	// Initializes a graph by parsing a JSON representation.
 	var initGraph = function(opts) {
 		// Remove the old graph, parse JSON, and initialize the new graph.
 		$('.jsavgraph').remove();
+        if (localStorage.toRE == "true") {
+          localStorage.removeItem("toRE");
+          var data = localStorage.getItem("FAtoREConvert");
+          g = deserialize(data);
+          fatoreController = new FAtoREController(jsav, g, {});
+          $(".jsavgraph").addClass("RE");
+          $("#cheat").show();
+          $("#exportButton").hide();
+          $("#finalize").hide();
+          $("#cheat").click(function() {
+            fatoreController.completeTransitions();
+          });
+//          $("#collapseButton").click(function() {
+//            fatoreController.collapseState();
+//          });
+          $("#collapseButton").click(stateCollapser);
+          $("#finalize").click(function() {
+            fatoreController.finalizeRE();
+          });
+          finalize();
+          fatoreController.checkForTransitions();
+  } else {
 		var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
 		g = jsav.ds.fa($.extend({width: '750px', height: 440, editable: true}, opts));
 		var ratio = 1;
@@ -127,6 +159,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		localStorage['REtoFA'] = false;
 		finalize();
 		return g;
+  }
 	};
 
 	// Update input character alphabet, display the graph, and add click handlers.
@@ -161,7 +194,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 
 	// Sets click handlers for when the user clicks on a JSAV node.
 	var nodeClickHandler = function(e) {
-		if ($(".jsavgraph").hasClass("editNodes")) {
+		if ($(".jsavgraph").hasClass("editNodes") && !$(".jsavgraph").hasClass("RE")) {
 			// If in "Edit Nodes" mode, open the custom prompt box to edit the selected node.
 			g.saveFAState();
 			g.selected = this;
@@ -176,9 +209,12 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			executeDeleteNode(g, this);
 			checkAllEdges();
 		}
-		else if ($('.jsavgraph').hasClass('collapse')) {
+		else if ($('.jsavgraph').hasClass('collapse2')) {
 			g.selected = this;
-			if (g.selected == g.initial || g.selected.hasClass('final')) return;
+			if (g.selected == g.initial || g.selected.hasClass('final')) {
+                alert("You need to click on a noninitial, nonfinal node.")
+                return;
+            }
 			fatoreController.collapseState(g.selected);
 		}
 	};
@@ -298,10 +334,12 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	// Function to switch to "Move Nodes" mode.
 	// Triggered by clicking the "Move Nodes" button.
 	var moveNodes = function() {
+        highlight_select_button();
 		removeModeClasses();
 		removeND();
 		g.enableDragging();
 		jsav.umsg('Drag to Move.');
+        $('#moveButton').addClass("active");
 	};
 
 	// Function to switch to "Edit Nodes" mode.
@@ -328,6 +366,14 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		// Expand the edges to make them easier to click.
 		expandEdges();
 	};
+    
+    var stateCollapser = function() {
+        highlight_select_button();
+        removeModeClasses();
+        removeND();
+        $(".jsavgraph").addClass("collapse2");
+        $("#collapseButton").addClass("active");
+    };
 
 	// Function to enlarge edges in "Delete Nodes/Edges" mode, making them easier to click.
 	var expandEdges = function() {
@@ -471,7 +517,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	//-----------------------------------------------------------------------------------------------
 
 	// Traverse over input strings. Called upon clicking "Traverse".
-    traverseInput = function() {
+    var traverseInput = function() {
         // Create an array of input strings from the text fields in the prompt box.
         var values = [];
         var x = document.getElementsByClassName('newinput');
@@ -914,17 +960,18 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 					if (weight[k] === emptystring) {
 						terminal = "";
 					}
-					converted.push(variables[i] + arrow + terminal + toVar);
+					converted.push([variables[i], arrow, terminal + toVar]);
 				}
 			}
 			if (newVariables[i].hasClass('final')) {
-				finals.push(variables[i] + arrow + emptystring);
+				finals.push([variables[i], arrow, emptystring]);
 			}
 		}
 		converted = converted.concat(finals);
-		// save resulting grammar as an array of strings
-		// (same format as how the grammar test exports grammars to local storage)
-		localStorage['grammar'] = converted;
+		// save resulting grammar as an array of arrays of strings
+		// (same format as how the grammarEditor reads grammars)
+        localStorage.clear();
+        localStorage.setItem("grammar", JSON.stringify(converted));
 		// open grammar
 		window.open("./grammarEditor.html");
 	};
@@ -967,7 +1014,12 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			alert("You must have exactly one final state.");
 			return;
 		}
-		$('h1').text("Finite Automaton to Regular Expression");
+        localStorage.clear();
+        localStorage.setItem("toRE", true);
+        localStorage.setItem("FAtoREConvert", serialize(g));
+        window.open("./FAtoRE.html");
+        
+		/*$('h1').text("Finite Automaton to Regular Expression");
 		$('.jsavgraph').addClass('RE');
 		$('#nodeButton').hide();
 		$('#editButton').hide();
@@ -986,7 +1038,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			fatoreController.finalizeRE();
 		});
 
-		fatoreController.checkForTransitions();
+		fatoreController.checkForTransitions();*/
 	}
 
 	// Disable all editing modes so that click handlers do not fire.
@@ -1026,7 +1078,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		}
 	}
 
-	var startX, startY, endX, endY; // start position of dragging edge line
+	var startX, startY, endX, endY, offset, offset2; // start position of dragging edge line
 	function mouseDown(e) {
 		if (!$('.jsavgraph').hasClass('addEdges')) return;
 		var targetClass = $(e.target).attr('class');
@@ -1034,10 +1086,15 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		var node = $(e.target);
 		g.first = g.getNodeWithValue(node.text());
 		g.first.highlight();
-		offset = $('.jsavgraph').offset(),
-	 	offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-		startX = e.pageX - offset.left + offset2;
-		startY = e.pageY - offset.top + offset2;
+        offset = $('.jsavgraph').offset(),
+        offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+        if ($('.jsavgraph').hasClass("RE")) {
+            startX = e.pageX - offset.left;
+		    startY = e.pageY - offset.top;
+        } else {
+            startX = e.pageX - offset.left + offset2;
+            startY = e.pageY - offset.top + offset2;
+        }      
 	}
 
 	function mouseUp(e) {
@@ -1053,8 +1110,15 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		g.selected = g.getNodeWithValue(node.text());
 		g.selected.highlight();
 		if ($('.jsavgraph').hasClass("RE")) {
-			createEdge(none);
-			fatoreController.checkForTransitions();
+            if (!g.hasEdge(g.first, g.selected)){
+                createEdge(none);
+			    fatoreController.checkForTransitions();
+            } else {
+                $('path[opacity="1.5"]').remove();
+			    g.first.unhighlight();
+			    g.first = null;
+                alert("A transition should not go here!");
+            }
 		}
 		else {
 			var Prompt = new EdgePrompt(createEdge, emptystring);
@@ -1065,10 +1129,16 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 
 	function mouseMove(e) {
 		if (!g.first) return;
-		endX = e.pageX - offset.left + offset2;
-		endY = e.pageY - offset.top + offset2;
+        if ($('.jsavgraph').hasClass("RE")) {
+            endX = e.pageX - offset.left;
+		    endY = e.pageY - offset.top;
+        } else {
+            endX = e.pageX - offset.left + offset2;
+		    endY = e.pageY - offset.top + offset2;
+        }
 		$('path[opacity="1.5"]').remove();
 		jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
+        //jsav.g.line(startX, startY, e.pageX, e.pageY, {"opacity": 1.5});
 	}
 	function addTrapState(){
 		if (g.initial == null) {
@@ -1147,6 +1217,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		$('#editButton').removeClass("active");
 		$('#nodeButton').removeClass("active");
 		$('#edgeButton').removeClass("active");
+        $('#collapseButton').removeClass("active");
 	}
 	// Button click handlers.
 	$('#trapState').click(addTrapState);
