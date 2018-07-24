@@ -92,8 +92,9 @@ $(document).ready(function() {
   fooLabel.hide();
 
   currentTopMargin += lineHeight;
-  var numVars = /\(([^)]+)\)/.exec(codeLines[fooIndex-1].trim())
-  numVars = Math.max(numVars[numVars.length-1].split(',').length,mainVarNum);
+
+  fooVarNames = getVarNamesFromPrototype(codeLines[fooIndex-1]);
+  var numVars = Math.max(fooVarNames.length,mainVarNum);
 
   //numVars = Math.max(numVars,/\(([^)]+)\)/)
   var mainBox = av.g.rect(2*leftMargin+pseudo.element[0].clientWidth,
@@ -143,16 +144,23 @@ $(document).ready(function() {
     av.step();
   }
 
-  av.umsg("foo is called, with a copy of main's "+mainVarName+
-          " and "+name+"["+mainVars[mainVarName].value(0)+"] passed in.");//,{preserve: false}
+  var fooPassedIn = getVarNamesFromPrototype(codeLines[currentLineMain]);
+  //console.log(getVarNamesFromPrototype(codeLines[currentLineMain]));
+
+  av.umsg("foo is called, with a copy of main's "+fooPassedIn[0]+
+          " and "+fooPassedIn[1]+" passed in.");//,{preserve: false}
 
   pseudo.setCurrentLine(++currentLineMain);
 
   av.step();
 
-  fooVarNames = getVarNamesFromPrototype(codeLines[currentLineFoo-1]);
+  var fooPassedInValues = [];
 
-  var fooPassedIn = [varVal.value, [classVars[name].value(varVal.value[0])]]
+  for(var i=0; i<fooPassedIn.length; i++){
+    fooPassedInValues.push(getValueOfVar([mainVars, classVars], fooPassedIn[i])['value']);
+  }
+
+  //var fooPassedInValues = [varVal.value, [classVars[name].value(varVal.value[0])]]
 
   for(var i=0; i<fooVarNames.length; i++){
     fooLabels[fooVarNames[i]] = av.label(fooVarNames[i],
@@ -161,7 +169,7 @@ $(document).ready(function() {
         left: leftMargin+boxWidth+3*boxPadding, top: currentFooTopMargin
       }
     );
-    fooVars[fooVarNames[i]] = av.ds.array(fooPassedIn[i],
+    fooVars[fooVarNames[i]] = av.ds.array([fooPassedInValues[i]],
       {
         indexed: false,relativeTo:fooLabels[fooVarNames[i]], anchor:"right top",
         myAnchor:"left top", left: labelMargin,
@@ -172,9 +180,9 @@ $(document).ready(function() {
     currentFooTopMargin += lineHeight;
   }
 
-  av.umsg("foo's "+fooVarNames[0]+" is initialized to the value "+varVal.value+
+  av.umsg("foo's "+fooVarNames[0]+" is initialized to the value "+fooPassedInValues[0]+
           " and foo's "+fooVarNames[1]+" is initialized to "+
-          classVars[name].value(varVal.value[0])+".");
+          fooPassedInValues[1]+".");
 
   fooLabel.show();
   fooBox.show();
@@ -243,6 +251,8 @@ $(document).ready(function() {
   av.umsg('Return to main');
   pseudo.setCurrentLine(currentLineMain++);
   av.step();
+
+  contexts = [mainVars, classVars];
   //main() print lines
   while(codeLines[currentLineMain-1].indexOf('}') === -1){
     av.umsg(printVar(codeLines[currentLineMain-1],contexts));

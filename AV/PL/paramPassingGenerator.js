@@ -47,6 +47,9 @@ var getRightSideValue = function(context, lineText){
 }
 
 var getIndexFromString = function(str){
+  if(str.indexOf("[") == -1 || str.lastIndexOf("]") == -1){
+    return 0;
+  }
   return str.substring(
                         str.indexOf("[")+1,
                         str.lastIndexOf("]")
@@ -59,14 +62,14 @@ var getValueOfVar = function(contextArr, varName){
     index: -1,
     arrIndex: -1
   };
-  var arrindex = -1;
+  var arrIndex = -1;
   if(!isNaN(parseInt(varName))){
     result.value = parseInt(varName);
     return result;
   }
 
   if(varName.indexOf('[') !== -1){
-    arrindex = getIndexFromString(varName);
+    arrIndex = getIndexFromString(varName);
     varName = varName.substring(0,varName.indexOf("["));
   }
 
@@ -74,14 +77,17 @@ var getValueOfVar = function(contextArr, varName){
     if(typeof contextArr[i][varName] != 'undefined'){
       result.value = contextArr[i][varName];
       if(result.value.size() == 1){
-        result.value = result.value.value(0);
+        arrIndex = 0;
+      }
+      else if(varName+'-index' in contextArr[i]){
+        arrIndex = contextArr[i][varName+'-index'];
       }
       result.index = i;
     }
   }
 
-  if(arrindex != -1){
-    result.arrIndex = getValueOfVar(contextArr, arrindex).value;
+  if(arrIndex != -1){
+    result.arrIndex = getValueOfVar(contextArr, arrIndex).value;
     result.value = result.value.value(result.arrIndex);
   }
 
@@ -106,13 +112,20 @@ var isOperator = function(ch){
 
 var getVarNamesFromPrototype = function(proto){
   var results = [];
-  var split = proto.split(' ');
-  for(var i=1; i<split.length; i++){
-    if(split[i-1].endsWith('int')){
+  var split = insideParentheses(proto).split(',');
+  for(var i=0; i<split.length; i++){
+    var paramsplit = split[i].split(' ');
+    results.push(paramsplit[paramsplit.length-1]);
+    /*if(split[i-1].endsWith('int')){
       results.push(split[i].replace(/[^a-z]/gi, ''));
-    }
+    }*/
   }
   return results;
+}
+
+var insideParentheses = function(str){
+  var r = /\(([^)]+)\)/.exec(str.trim());
+  return r[r.length-1];
 }
 
 var unhighlightElements = function(vars){
