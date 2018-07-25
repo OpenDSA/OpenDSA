@@ -133,11 +133,11 @@ function classifyTriangle() {
 window.onload = function() {
     if (getUrlParam("code") == "true") {
         document.getElementById("coverageCode").style.display = "block";
-        document.getElementById("container").style.float = "left";
+        //document.getElementById("container").style.float = "right";
     } else {
         shreshold = 50;
         document.getElementById("coverageCode").style.display = "none";
-        document.getElementById("container").style.float = "left";
+        //document.getElementById("container").style.float = "left";
     }
 }
 
