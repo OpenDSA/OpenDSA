@@ -1,6 +1,6 @@
 #container {
   height: 600px;
-  width: 535px;
+  width: 570px;
   margin-right: 400px;
 }
 
@@ -60,5 +60,6 @@
 	width: 325px;
 	height: 1000px;
 	float: left;
-	margin-left: -70px;
+	margin-left: -0.1px;
+	margin-right: 40px;
 }
