@@ -1,5 +1,7 @@
 #container {
   height: 600px;
+  width: 535px;
+  margin-right: 400px;
 }
 
 #inputInfo {
@@ -58,6 +60,5 @@
 	width: 325px;
 	height: 1000px;
 	float: left;
-	margin-left: -100px;
-	
+	margin-left: -70px;
 }
