@@ -1,7 +1,10 @@
 #DFTmatrixCON {
-  height: 580px;
+  height: 500px;
 }
 
+#DFTmatrixCON .jsavoutput.jsavline {
+  height: 30px;
+}
 
 .jsavmatrix .jsavnode {
   height: 45px !important;

@@ -58,12 +58,12 @@ the relationship between evaluating a polynomial at values :math:`c`
 and :math:`-c`.
 In general, we can write :math:`P_a(x) = E_a(x) + O_a(x)` where
 :math:`E_a` is the even powers and :math:`O_a` is the odd powers.
-So,
+That is,
 
 .. math::
 
    P_a(x) = \sum_{i=0}^{n/2-1} a_{2i} x^{2i} +
-           \sum_{i=0}^{n/2-1} a_{2i+1} x^{2i+1}
+           \sum_{i=0}^{n/2-1} a_{2i+1} x^{2i+1} = E_a(x) + O_a(x)
 
 .. inlineav:: EvenOddCON ss
    :long_name: fft slideshow 1 even and odd polynomials
