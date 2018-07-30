@@ -16,13 +16,17 @@ $(document).ready(function() {
   av.umsg("This slideshow shows a visualization of the Fast Fourier Transform.");
   var polynomial = [0, 1, 2, 3];
 
+  var center = 665;
+  
+
   av.displayInit();
 
   av.umsg("New polynomial.");
 
   var poly2 = fft(polynomial, 4);
 
-  av.ds.array(poly2, {left: 750 - 40 * 4 / 2});
+
+  av.ds.array(poly2, {left: center - 30 * 4 / 2});
 
   av.recorded();
 
@@ -35,7 +39,7 @@ $(document).ready(function() {
     var height = 0;
 
     av.umsg(interpret("sc1"));
-    var polyArr = av.ds.array(poly, {left: 750 - 40 * n / 2});
+    var polyArr = av.ds.array(poly, {left: center - 30 * n / 2});
     height = height + 50;
     pseudo.highlight("fft");
     av.step();
@@ -62,10 +66,10 @@ $(document).ready(function() {
     pseudo.highlight("split");
 
     av.umsg(interpret("sc3"));
-    var evenArr = av.ds.array(even, {left: 625 - 40 * n / 4, top: height});
-    var evenLab = av.label("even:", {left: 575 - 40 * n / 4, top: height});
-    var oddArr = av.ds.array(odd, {left: 875 - 40 * n / 4, top: height});
-    var oddLab = av.label("odd:", {left: 825 - 40 * n / 4, top: height});
+    var evenArr = av.ds.array(even, {left: center - 90 - 30 * n / 4, top: height});
+    var evenLab = av.label("even:", {left: center - 140 - 30 * n / 4, top: height});
+    var oddArr = av.ds.array(odd, {left: center + 110 - 30 * n / 4, top: height});
+    var oddLab = av.label("odd:", {left: center + 60 - 30 * n / 4, top: height});
 
     for (i = 0; i <= n / 2 - 1; i++) {
       evenArr.css(i, {"background-color": "#ffffb3"});
@@ -99,8 +103,8 @@ $(document).ready(function() {
     evenLab.show();
     oddArr.show();
     oddLab.show();
-    var list1Arr = av.ds.array(list1, {left: 625 - 40 * n / 4, top: height});
-    var list1Lab = av.label("List 1:", {left: 575 - 40 * n / 4, top: height});
+    var list1Arr = av.ds.array(list1, {left: center - 90 - 30 * n / 4, top: height});
+    var list1Lab = av.label("List 1:", {left: center - 140 - 30 * n / 4, top: height});
     av.step();
     pseudo.unhighlight("list1");
     av.umsg(interpret("sc5"));
@@ -124,8 +128,8 @@ $(document).ready(function() {
     oddLab.show();
     list1Arr.show();
     list1Lab.show();
-    var list2Arr = av.ds.array(list2, {left: 875 - 40 * n / 4, top: height});
-    var list2Lab = av.label("List 2:", {left: 825 - 40 * n / 4, top: height});
+    var list2Arr = av.ds.array(list2, {left: center + 110 - 30 * n / 4, top: height});
+    var list2Lab = av.label("List 2:", {left: center + 60 - 30 * n / 4, top: height});
     height = height + 50;
     av.step();
     pseudo.unhighlight("list2");
@@ -145,7 +149,7 @@ $(document).ready(function() {
       newPoly[j] = out;
     }
 
-    var newArr = av.ds.array(newPoly, {left: 750 - 40 * n / 2, top: height});
+    var newArr = av.ds.array(newPoly, {left: center - 30 * n / 2, top: height});
 
     av.step();
 
