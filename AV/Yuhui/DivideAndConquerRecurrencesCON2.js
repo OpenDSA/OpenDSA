@@ -5,7 +5,7 @@ $(document).ready(function () {
   var av;
   var circRadius = 13;
   var xoffset = 50;
-  var yoffset = 50;
+  var yoffset = 80;
   av = new JSAV(av_name);
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
   $(".avcontainer").on("jsav-message", function() {
