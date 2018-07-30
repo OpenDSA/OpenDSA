@@ -485,7 +485,8 @@ There are three cases.
     Because :math:`r = b^k/a`, we know that :math:`a = b^k`.
     From the definition of logarithms it follows immediately that
     :math:`k = \log_b a`.
-    We also note from Equation (1) above that :math:`m = \log_b n`.
+    Also note that since we defined :math:`n = b^m`,
+    then :math:`m = \log_b n`.
     Thus,
 
     .. math::

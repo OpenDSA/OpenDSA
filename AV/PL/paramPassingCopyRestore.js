@@ -1,6 +1,6 @@
 $(document).ready(function() {
   "use strict";
-  var av_name = "paramPassingByRef";
+  var av_name = "paramPassingCopyRestore";
 
   var av = new JSAV(av_name);
 
@@ -23,12 +23,15 @@ $(document).ready(function() {
   var fooVarNames = [];
   var fooVars = {};
   var fooLabels = {};
+  var cprVars = {};
+  var cprPointers = [];
   var currentLineMain = 0;
   var currentLineFoo = 0;
   var output = '';
   var unhighlightAll = function(){
     unhighlightElements(classVars);
     unhighlightElements(mainVars);
+    unhighlightElements(fooVars);
   }
 
   av.umsg("main() begins execution.");
@@ -94,7 +97,7 @@ $(document).ready(function() {
   currentTopMargin += lineHeight;
 
   fooVarNames = getVarNamesFromPrototype(codeLines[fooIndex-1]);
-  var numVars = mainVarNum;
+  var numVars = Math.max(fooVarNames.length,mainVarNum);
 
   //numVars = Math.max(numVars,/\(([^)]+)\)/)
   var mainBox = av.g.rect(2*leftMargin+pseudo.element[0].clientWidth,
@@ -145,8 +148,9 @@ $(document).ready(function() {
   }
 
   var fooPassedIn = getVarNamesFromPrototype(codeLines[currentLineMain]);
+  //console.log(getVarNamesFromPrototype(codeLines[currentLineMain]));
 
-  av.umsg("foo is called, with a reference to main's "+fooPassedIn[0]+
+  av.umsg("foo is called, with a copy of main's "+fooPassedIn[0]+
           " and "+fooPassedIn[1]+" passed in.");//,{preserve: false}
 
   pseudo.setCurrentLine(++currentLineMain);
@@ -172,16 +176,33 @@ $(document).ready(function() {
         getIndexFromString(fooPassedIn[i])
       )['value']
     }
-    fooLabels[fooVarNames[i]] = av.pointer(fooVarNames[i],target,{
-      targetIndex: pIndex
-    })
-    fooVars[fooVarNames[i]] = target;
-    fooVars[fooVarNames[i]+'-index'] = pIndex;
+
+    cprVars[fooVarNames[i]] = target;
+    cprVars[fooVarNames[i]+'-index'] = pIndex;
+
+    fooLabels[fooVarNames[i]] = av.label(fooVarNames[i],
+      {
+        relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+        left: leftMargin+boxWidth+3*boxPadding, top: currentFooTopMargin
+      }
+    );
+    fooVars[fooVarNames[i]] = av.ds.array([fooPassedInValues[i]],
+      {
+        indexed: false,relativeTo:fooLabels[fooVarNames[i]], anchor:"right top",
+        myAnchor:"left top", left: labelMargin,
+        top:-1*jsavArrayOffset
+      }
+    );
+
+    currentFooTopMargin += lineHeight;
   }
 
-  av.umsg("foo's "+fooVarNames[0]+" points to "+fooPassedIn[0]+
-          " and foo's "+fooVarNames[1]+" points to "+
-          fooPassedIn[1]+".");
+  av.umsg("foo's "+fooVarNames[0]+" is initialized to the value "+fooPassedInValues[0]+
+          " and foo's "+fooVarNames[1]+" is initialized to "+
+          fooPassedInValues[1]+".");
+
+  fooLabel.show();
+  fooBox.show();
 
   pseudo.setCurrentLine(currentLineFoo++);
 
@@ -194,16 +215,22 @@ $(document).ready(function() {
     var split = codeLines[currentLineFoo-1].trim().split('=');
 
     var rhs = getRightSideValue([fooVars, classVars], codeLines[currentLineFoo-1]);
+    /*var rhs = split[split.length - 1].trim();
+    var fooSourceContext = typeof fooVars[rhs.charAt(0)] != 'undefined';
+    var source = (fooSourceContext)?fooVars:classVars;
+
+    var rhsSplit = rhs.split(' ');
+    var rhsIndex = 0;
+    if(rhsSplit[0].length > 1){
+      rhsIndex = getIndexFromString(rhsSplit[0]);
+    }*/
 
     var lhs = split[0].trim();
     var fooDestContext = typeof fooVars[lhs.charAt(0)] != 'undefined';
     var destination = (fooDestContext)?fooVars:classVars;
     var destIndex = 0;
     var destStr = lhs.charAt(0);
-    if(destination === fooVars){
-      destIndex = fooVars[lhs.charAt(0)+'-index']
-    }
-    else if(lhs.length > 1){
+    if(lhs.length > 1){
       destIndex = getValueOfVar(
                                   contexts,
                                   getIndexFromString(lhs)
@@ -239,9 +266,44 @@ $(document).ready(function() {
     pseudo.setCurrentLine(currentLineFoo++);
     av.step();
   }
-  av.umsg('Return to main');
+
+  av.umsg('The contents of '+fooPassedInValues[0]+' and '+fooPassedInValues[0]+
+          ' are restored to the memory locations they were initially copied '+
+          'from. Return to main.');
   pseudo.setCurrentLine(currentLineMain++);
+
+  for(var i=0; i<fooVarNames.length; i++){
+    var fooDestContext = typeof cprVars[fooVarNames[i].charAt(0)] != 'undefined';
+    var destination = (fooDestContext)?cprVars:classVars;
+    var destIndex = 0;
+    var destStr = fooVarNames[i].charAt(0);
+    if(destination === cprVars){
+      destIndex = cprVars[fooVarNames[i].charAt(0)+'-index']
+    }
+    else if(fooVarNames[i].length > 1){
+      destIndex = getValueOfVar(
+                                  contexts,
+                                  getIndexFromString(fooVarNames[i])
+                                ).value;
+      destStr += '['+destIndex+']';
+    }
+
+    destination[fooVarNames[i].charAt(0)].highlight(destIndex);
+
+    destination[fooVarNames[i].charAt(0)].value(destIndex,fooVars[fooVarNames[i]].value(0));
+
+    cprPointers[fooVarNames[i]] = av.pointer(fooVarNames[i],destination[fooVarNames[i]],{
+      targetIndex: destIndex
+    })
+  }
+
   av.step();
+
+  for(var i=0; i<fooVarNames.length; i++){
+    cprPointers[fooVarNames[i]].hide();
+  }
+  unhighlightAll();
+
   contexts = [mainVars, classVars];
   //main() print lines
   while(codeLines[currentLineMain-1].indexOf('}') === -1){
@@ -252,7 +314,8 @@ $(document).ready(function() {
 
   av.recorded();
 
-  if(CallByAllFive.byrefOutput != output){
-    alert("byref error");
+
+  if(CallByAllFive.bycprOutput != output){
+    alert("bycpr error");
   }
 });

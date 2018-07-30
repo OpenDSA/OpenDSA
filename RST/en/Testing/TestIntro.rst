@@ -35,8 +35,10 @@ exercise.
 Your goal is to come up with a series of "tests", in the form of
 inputs to the program, that will result in executing the various paths
 in the program (that is, generating "code coverage").
-You will probably find this quite challenging to get to even 50% code
-coverage.
+Here the inputs are meant to be triangle side lengths, and the program
+is supposed to classify these sidelengths into a type of triangle.
+You will probably find this quite challenging to come up with various
+sets of inputs that will get you to even 50% code coverage.
 
 .. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
    :long_name: Triangle Testing No Code

@@ -2,20 +2,20 @@
 $(document).ready(function() {
   "use strict";
   var av_name = "DFTmatrixCON";
-
   var av = new JSAV(av_name);
+  var ytop = 0;
 
   // Slide 1
   av.umsg("For an 8-degree polynomial, the matrix is $8 \\times 8$.");
   var A  = av.ds.matrix([["$A_0$"], ["$A_1$"], ["$A_2$"], ["$A_3$"], ["$A_4$"],
-    ["$A_5$"], ["$A_6$"], ["$A_7$"]], {left: 140, top: 30});
-  var mat = av.ds.matrix({rows: 8, columns: 8, left: 250, top: 30});
+    ["$A_5$"], ["$A_6$"], ["$A_7$"]], {left: 140, top: ytop});
+  var mat = av.ds.matrix({rows: 8, columns: 8, left: 250, top: ytop});
   var a  = av.ds.matrix([["$a_0$"], ["$a_1$"], ["$a_2$"], ["$a_3$"], ["$a_4$"],
-    ["$a_5$"], ["$a_6$"], ["$a_7$"]], {left: 665, top: 30});
-  av.g.line(210, 222, 225, 222, {"stroke-width": 4});
-  av.g.line(210, 229, 225, 229, {"stroke-width": 4});
-  av.g.line(632, 221, 642, 231, {"stroke-width": 4});
-  av.g.line(632, 231, 642, 221, {"stroke-width": 4});
+    ["$a_5$"], ["$a_6$"], ["$a_7$"]], {left: 665, top: ytop});
+  av.g.line(210, 192 + ytop, 225, 192 + ytop, {"stroke-width": 4});
+  av.g.line(210, 199 + ytop, 225, 199 + ytop, {"stroke-width": 4});
+  av.g.line(632, 191 + ytop, 642, 201 + ytop, {"stroke-width": 4});
+  av.g.line(632, 201 + ytop, 642, 191 + ytop, {"stroke-width": 4});
 
   var i = 0;
   var j = 0;
