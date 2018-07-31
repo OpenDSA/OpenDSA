@@ -134,6 +134,11 @@ the following C++ code.
       cout << "Call-by-copy-restore semantics: " << x << " " << y << endl;
     }
 
+.. inlineav:: paramPassingCopyRestore ss
+   :long_name: Parameter Passing By Copy Restore
+   :links:
+   :scripts: AV/PL/paramPassingCopyRestore.js
+   :output: show
 
 Figure out what the output of the preceding program would be before
 tackling the next practice problem, which consequently will help you

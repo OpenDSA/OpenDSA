@@ -1,7 +1,10 @@
 #DFTpropCON {
-  height: 550px;
+  height: 480px;
 }
 
+#DFTpropCON .jsavoutput.jsavline {
+  height: 30px;
+}
 
 .jsavmatrix .jsavnode {
   width: 45px !important;

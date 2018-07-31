@@ -25,6 +25,7 @@ $(document).ready(function() {
   var fooLabels = {};
   var currentLineMain = 0;
   var currentLineFoo = 0;
+  var output = '';
   var unhighlightAll = function(){
     unhighlightElements(classVars);
     unhighlightElements(mainVars);
@@ -236,11 +237,12 @@ $(document).ready(function() {
   var printVar = function(currentLine, context){
     var split = currentLine.trim().split(' ');
     var varname = split[split.length - 1].replace(';','');
-    return 'In this context, '+varname+' is '+
-      getValueOfVar(
-        context,
-        varname
-      ).value;
+    var varVal = getValueOfVar(
+      context,
+      varname
+    ).value;
+    output += ((output == '')?output:' ')+varVal;
+    return 'In this context, '+varname+' is '+ varVal;
   }
   unhighlightAll();
   while(codeLines[currentLineFoo-1].indexOf('}') === -1){
@@ -262,4 +264,8 @@ $(document).ready(function() {
 
   av.recorded();
 
+
+  if(CallByAllFive.byvalOutput != output){
+    alert("byval error");
+  }
 });
