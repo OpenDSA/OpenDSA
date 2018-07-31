@@ -40,3 +40,6 @@ coverage.
 
 .. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
    :long_name: Triangle Testing No Code
+
+.. avembed:: AV/Testing/Bowling/BowlingApplet.html pe
+   :long_name: Bowling Testing No Code
