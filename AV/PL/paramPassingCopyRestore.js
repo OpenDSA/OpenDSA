@@ -179,11 +179,12 @@ $(document).ready(function() {
 
     cprVars[fooVarNames[i]] = target;
     cprVars[fooVarNames[i]+'-index'] = pIndex;
+    cprVars[fooVarNames[i]+'-classvar'] = !(fooPassedIn[i] in mainVars);
 
     fooLabels[fooVarNames[i]] = av.label(fooVarNames[i],
       {
         relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
-        left: leftMargin+boxWidth+3*boxPadding, top: currentFooTopMargin
+        left: leftMargin+boxWidth+10*boxPadding, top: currentFooTopMargin
       }
     );
     fooVars[fooVarNames[i]] = av.ds.array([fooPassedInValues[i]],
@@ -215,15 +216,6 @@ $(document).ready(function() {
     var split = codeLines[currentLineFoo-1].trim().split('=');
 
     var rhs = getRightSideValue([fooVars, classVars], codeLines[currentLineFoo-1]);
-    /*var rhs = split[split.length - 1].trim();
-    var fooSourceContext = typeof fooVars[rhs.charAt(0)] != 'undefined';
-    var source = (fooSourceContext)?fooVars:classVars;
-
-    var rhsSplit = rhs.split(' ');
-    var rhsIndex = 0;
-    if(rhsSplit[0].length > 1){
-      rhsIndex = getIndexFromString(rhsSplit[0]);
-    }*/
 
     var lhs = split[0].trim();
     var fooDestContext = typeof fooVars[lhs.charAt(0)] != 'undefined';
@@ -267,34 +259,33 @@ $(document).ready(function() {
     av.step();
   }
 
-  av.umsg('The contents of '+fooPassedInValues[0]+' and '+fooPassedInValues[0]+
+  av.umsg('The contents of '+fooVarNames[0]+' and '+fooVarNames[1]+
           ' are restored to the memory locations they were initially copied '+
           'from. Return to main.');
   pseudo.setCurrentLine(currentLineMain++);
 
   for(var i=0; i<fooVarNames.length; i++){
-    var fooDestContext = typeof cprVars[fooVarNames[i].charAt(0)] != 'undefined';
-    var destination = (fooDestContext)?cprVars:classVars;
-    var destIndex = 0;
     var destStr = fooVarNames[i].charAt(0);
-    if(destination === cprVars){
-      destIndex = cprVars[fooVarNames[i].charAt(0)+'-index']
-    }
-    else if(fooVarNames[i].length > 1){
-      destIndex = getValueOfVar(
-                                  contexts,
-                                  getIndexFromString(fooVarNames[i])
-                                ).value;
-      destStr += '['+destIndex+']';
-    }
+    var destIndex = cprVars[fooVarNames[i].charAt(0)+'-index']
 
-    destination[fooVarNames[i].charAt(0)].highlight(destIndex);
+    cprVars[fooVarNames[i].charAt(0)].highlight(destIndex);
 
-    destination[fooVarNames[i].charAt(0)].value(destIndex,fooVars[fooVarNames[i]].value(0));
+    cprVars[fooVarNames[i].charAt(0)].value(destIndex,fooVars[fooVarNames[i]].value(0));
 
-    cprPointers[fooVarNames[i]] = av.pointer(fooVarNames[i],destination[fooVarNames[i]],{
-      targetIndex: destIndex
+    cprPointers[fooVarNames[i]] = av.pointer(fooVarNames[i],fooVars[fooVarNames[i]],{
+      targetIndex: 0,
+      fixed: true,
+      left: (leftMargin * -1.75),
+      top: 8,
+      anchor: 'left center'
     })
+    cprPointers[fooVarNames[i]].target(cprVars[fooVarNames[i]],{
+      targetIndex: destIndex,
+      arrowAnchor: ((cprVars[fooVarNames[i]+'-classvar'])?'center bottom':'right center')
+    })
+    /*Have to do this in order to position the pointer label relative to
+    something other than the desired target... yucky
+    JSAV please fix*/
   }
 
   av.step();
