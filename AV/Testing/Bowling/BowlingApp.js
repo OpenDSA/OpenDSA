@@ -37,7 +37,7 @@ function main() {
         game.codeCovered[7] = true;       
         var message = roll + " pins hit" + 
         " *Invalid roll, not counted to score but does execute code coverage. \n";
-        av.usmg(message + "\n"); 
+        av.umsg(message + "\n"); 
         var coverage = game.getCodeCovered();
         if(coverage == shreshold){
             ODSA.AV.awardCompletionCredit();
