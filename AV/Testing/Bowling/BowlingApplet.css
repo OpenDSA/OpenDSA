@@ -17,7 +17,7 @@
 
 #bar{
 	float: right;
-	margin-right: 50px;
+	margin-right: 25px;
 	width: 330px;
 }
 
@@ -64,7 +64,7 @@
 
 .codeBlock {
 	width: 325px;
-	height: 1000px;
+	height: 400px;
 	float: left;
 	margin-left: -0.1px;
 	margin-right: 40px;

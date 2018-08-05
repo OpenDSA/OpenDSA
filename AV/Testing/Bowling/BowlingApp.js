@@ -6,39 +6,61 @@ $(document).ready(function () {
  * Requires BowlingGame object from BowlingGame.js
  */
 var game = new BowlingGame();
-
+var shreshold = 50;
+var config = ODSA.UTILS.loadConfig(),
+    interpret = config.interpreter,
+    av = new JSAV("ssperform", {"animationMode": "none"});
 /**
  * Main function.  This is called when the 'Roll' button is clicked.
  */
 function main() {
     if (game.currentRoll > 20) {
         var message = "Game over!  Please click reset to try again!"
-        testCaseHistory.innerHTML = message + testCaseHistory.innerHTML; 
+        av.umsg(message + "\n"); 
+        var coverage = game.getCodeCovered();
+        if(coverage == shreshold){
+            ODSA.AV.awardCompletionCredit();
+            av.umsg(interpret("av_c1"));
+        }
         return;
     }
     var roll = document.getElementById('rollValue').value;
     var allowedValues = new RegExp('^[\-]?[0-9a-zA-Z]+$');
+
+    var initData = {};
+    initData.user_roll = roll;
+    ODSA.AV.logExerciseInit(initData);
+
     if (!roll.match(allowedValues)) {
         //Checks the same code coverage section as the isNaN() check
         //in BowlingGame.js
-        game.codeCovered[7] = true;
-        var testCaseHistory = document.getElementById("testHistory");        
-        var message = document.getElementById('rollValue').value + " pins hit" + 
+        game.codeCovered[7] = true;       
+        var message = roll + " pins hit" + 
         " *Invalid roll, not counted to score but does execute code coverage. \n";
-        testCaseHistory.innerHTML = message + testCaseHistory.innerHTML; 
+        av.usmg(message + "\n"); 
+        var coverage = game.getCodeCovered();
+        if(coverage == shreshold){
+            ODSA.AV.awardCompletionCredit();
+            av.umsg(interpret("av_c1"));
+        }
         getCodeCoverage();
         return;
     }
+    
 
     roll = parseInt(roll, 10);
-    document.getElementById("triangleType").innerText = "";
+    //document.getElementById("triangleType").innerText = "";
 
     //This code block executes if the roll qualifies for one of the "bugs" defined in BowlingGame.bugs()
-    if (!game.roll(roll)) {
-        var testCaseHistory = document.getElementById("testHistory");        
-        var message = document.getElementById('rollValue').value + " pins hit" + 
+    if (!game.roll(roll)) {       
+        var message = roll + " pins hit" + 
         " *Invalid roll, not counted to score but does execute code coverage. \n";
-        testCaseHistory.innerHTML = message + testCaseHistory.innerHTML; 
+        av.umsg(message + "\n"); 
+        var coverage = game.getCodeCovered();
+        if(coverage == shreshold){
+            ODSA.AV.awardCompletionCredit();
+            av.umsg(interpret("av_c1"));
+        }
         getCodeCoverage();
         return;
     }
@@ -80,7 +102,6 @@ function main() {
  * Writes the results of each roll to the output
  */
 function logTestCase(type) {
-    var testCaseHistory = document.getElementById("testHistory");
     var message = "Throw " + game.currentRoll + ": " + document.getElementById('rollValue').value + " pins hit.";
     if (type == "strike") {
         message = message + " You got a strike! \n";
@@ -91,7 +112,12 @@ function logTestCase(type) {
         message = message + "\n";
     }
 
-    testCaseHistory.innerHTML = message + testCaseHistory.innerHTML;
+    av.umsg(message + "\n");
+    var coverage = game.getCodeCovered();
+    if(coverage == shreshold){
+        ODSA.AV.awardCompletionCredit();
+        av.umsg(interpret("av_c1"));
+    }
 }
 
 /**
@@ -121,10 +147,13 @@ function getCodeCoverage() {
 }
 
 window.onload = function() {
-    if (getUrlParam("code") != "true") {
-        document.getElementById("coverageCode").style.display = 'none';
+    if (getUrlParam("code") == "true") {
+        document.getElementById("coverageCode").style.display = "block";
+        shreshold = 100;
+        //document.getElementById("container").style.float = "right";
     } else {
-        document.getElementById("coverageCode").style.display = 'block';
+        document.getElementById("coverageCode").style.display = "none";
+        //document.getElementById("container").style.float = "left";
     }
 }
 
@@ -143,13 +172,30 @@ function getUrlParam( name, url ) {
 }
 
 function reset(){
-
+    av.clearumsg();
+    document.getElementById("rollValue").value = "";
+    var testsrunText = document.getElementById("testsrun");
+    testsrunText.innerHTML = "Number of balls thrown: " + 0;
+    game.frameIndex = 1;
+    game.rollIndex = 1;
+    game.rolls = [];
+    game.currentRoll = 0;
+    game.gameOver = false;
+    document.getElementById("codeCoverageBar").style = "width:" + 0 + "%";
+    document.getElementById("codeCoveragePercentage").innerText = 0 + "%";
+    for (var i = 0; i < game.numCoveragePoints; i++) {
+        game.codeCovered[i] = false;
+    }
+    document.getElementById("score").innerText = 0;
+    var rollID;
+    for (var i = 1; i < 11; i++){
+        rollID = "roll" + i;
+        document.getElementById(rollID).innerText = "";
+    }
 }
 
 $("#throwRoll").click(main);
 $("#reset").click(reset);
 
-var config = ODSA.UTILS.loadConfig(),
-    interpret = config.interpreter,
-    av = new JSAV("ssperform", {"animationMode": "none"});
+
 });

@@ -72,6 +72,11 @@
           "exer_options": {
             "code": "true"
           }
+        },
+        "BowlingApplet": {
+          "exer_options": {
+            "code": "true"
+          }
         }
       }
     },

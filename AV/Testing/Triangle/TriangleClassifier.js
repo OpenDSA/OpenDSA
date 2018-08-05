@@ -119,7 +119,7 @@ function classifyTriangle() {
     initData.user_side3 = side3;
     ODSA.AV.logExerciseInit(initData);
     av.umsg("Test " + testNum + ": " + "Sides: " + side1 + ", " + side2 + ", " + side3 + " "
-                                 + triangleType + "\n" + testCaseHistory);
+                                 + triangleType + "\n");
     coverage = calculateCoverage(); 
     document.getElementById("codeCoverageBar").style = "width:" + coverage + "%";
     document.getElementById("codeCoveragePercentage").innerText = coverage.toFixed(2) + "%";
