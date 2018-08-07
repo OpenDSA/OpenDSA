@@ -270,6 +270,12 @@ following code.
     }
 
 
+.. inlineav:: paramPassingMacro ss
+   :long_name: Parameter Passing By Macro
+   :links:
+   :scripts: AV/PL/paramPassingMacro.js
+   :output: show
+
 
 This problem will help you review the differences among *call by
 reference*, *call by copy-restore*, and *call by macro*. To earn
