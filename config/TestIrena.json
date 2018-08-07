@@ -68,7 +68,8 @@
     "Numerical Algorithms": {
       "Irena/Transform": {},
       "Irena/FFT": {},
-      "Irena/Buddy": {}
+      "Irena/Buddy": {},
+      "Irena/Bintree": {}
     },
     "Appendix": {
       "Glossary": {},

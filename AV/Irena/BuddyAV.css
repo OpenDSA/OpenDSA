@@ -45,6 +45,22 @@ padding-left: 5px;
   padding-left: 5px;
 }
 
+.jsavarray .jsavnode {
+  height: 35px !important;
+  min-height: 35px !important;
+  min-width: 35px !important;
+  width: 35px !important;
+}
+
+.jsavlist .jsavnode {
+  height: 25px !important;
+  min-height: 25px !important;
+  min-width: 25px !important;
+  width: 25px !important;
+  line-height: 25px !important;
+}
+
 #procontrols{
   text-align: left;
 }
+

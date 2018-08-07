@@ -3,9 +3,7 @@
   var jsav,              // JSAV
       defCtrlState,   // Stores the default state of the controls
       submitRec = null,      //the rectangle that's created when the user hits submit
-      linesArray,
       requestedBlockLabel = null,
-      connectStartArray,
       recArraySize,
       freeOrNot,
       startArray,
@@ -14,7 +12,6 @@
       usedAmountLabel,
       usedNum,
       end = false,
-      array = null,
       insert,
       finn,
       flag,
@@ -26,7 +23,16 @@
       rectX,
       rectY,
       rectHeight,
-      insRec;
+      insRec,
+      freeList2,
+      freeList4,
+      freeList8,
+      freeList16,
+      freeList32,
+      freeList64,
+      freeList128,
+      freeList256,
+      arrows;
 
 
   function setDefaultControlState() {
@@ -68,7 +74,9 @@
     }
     //enable the input box
     $("#input").val("");
+
     originalMemBlock();
+
     $("#next").attr("disabled", "disabled");
     //console.log("When resetting, fitAlgorithm is: " + $("#fitAlgorithm").val());
     if ($("#fitAlgorithm").val() == 0) { // Doesn't work with ===
@@ -84,7 +92,7 @@
 
     total = 256;
     rectX = 280;
-    rectY = 150;
+    rectY = 130;
     rectHeight = 30;
     endOfBlock = total * 2 + rectX;
 
@@ -164,26 +172,39 @@
     freeAmountLabel = jsav.label(freeNum, {left:  720, top:  10});
     freeAmountLabel.css({"z-index": 500});
 
-    array = jsav.ds.array([2, 4, 8, 16, 32, 64, 128, 256], {left: 280, top: 400, bottom: 500});
+    jsav.label("Block Size", {left: 260, top: 170});
+    jsav.ds.array([2, 4, 8, 16, 32, 64, 128, 256], {layout: "vertical", left: 280, top: 200});
+    //labels the free lists
+    var freeListTop = 202;
 
-    //labels the free list
-    jsav.label("Free List", {left: 300, top: 450});
+    var spacing = 34;
 
-    var connect2Start = 300;
-    var connect4Start = 330;
-    var connect8Start = 360;
-    var connect16Start = 390;
-    var connect32Start = 420;
-    var connect64Start = 450;
-    var connect128Start = 480;
-    var connect256Start = 510;
-    connectStartArray = [connect2Start, connect4Start, connect8Start, connect16Start,
-      connect32Start, connect64Start, connect128Start, connect256Start];
+    freeList2 = jsav.ds.list({top: freeListTop, left: 350, nodegap: 30});
+    freeList2.layout({center: false});
+    freeList4 = jsav.ds.list({top: freeListTop + spacing, left: 350, nodegap: 30});
+    freeList4.layout({center: false});
+    freeList8 = jsav.ds.list({top: freeListTop + spacing * 2, left: 350, nodegap: 30});
+    freeList8.layout({center: false});
+    freeList16 = jsav.ds.list({top: freeListTop + spacing * 3, left: 350, nodegap: 30});
+    freeList16.layout({center: false});
+    freeList32 = jsav.ds.list({top: freeListTop + spacing * 4, left: 350, nodegap: 30});
+    freeList32.layout({center: false});
+    freeList64 = jsav.ds.list({top: freeListTop + spacing * 5, left: 350, nodegap: 30});
+    freeList64.layout({center: false});
+    freeList128 = jsav.ds.list({top: freeListTop + spacing * 6, left: 350, nodegap: 30});
+    freeList128.layout({center: false});
+    freeList256 = jsav.ds.list({top: freeListTop + spacing * 7, left: 350, nodegap: 30});
+    freeList256.layout({center: false});
 
-    //initial lines connecting free list to mem pool
+    arrows = new Array(8);
+    var j;
+    for (j = 0; j < 8; j++) {
+      // create initially hidden arrows from array indices to lists
+      arrows[i] = jsav.g.line(315, freeListTop + j * spacing + 30, 350, freeListTop + j * spacing + 30,
+                              {"arrow-end": "classic-wide-long", opacity: 0, "stroke-width": 2});
+    }
 
-    linesArray = new Array(30);
-    updateLines();
+    updateFreeLists();
 
     //click handler for used blocks
     $("rect").on("click", changeUsed);
@@ -239,8 +260,8 @@
     } else {
       block = 2;
     }
-    submitRec = jsav.g.rect(280, 300, block * 2, 30).css({fill: "cyan"});
-    requestedBlockLabel = jsav.label("Requested Block", {left: 280, top: 270}).css({"font-weight": "bold"});
+    submitRec = jsav.g.rect(600, 300, block * 2, 30).css({fill: "cyan"});
+    requestedBlockLabel = jsav.label("Requested Block", {left: 600, top: 260}).css({"font-weight": "bold"});
     return block;
   }
 
@@ -301,7 +322,7 @@
       //calculating size of block to right of clicked block
       var rightDiff = startArray[i + 2] - startArray[i + 1];
       if (diff === rightDiff && freeOrNot[i + 1] === 1) {
-        newRect = jsav.g.rect(startArray[i], 150, diff * 2, 30).css({fill: "cornflowerblue"});
+        newRect = jsav.g.rect(startArray[i], rectY, diff * 2, 30).css({fill: "cornflowerblue"});
         newRect.css({"z-index": 500});
         recArraySize = recArraySize - 1;
         //all elements after i shift
@@ -324,7 +345,7 @@
         }
         merge(clickSpot);
       } else {
-        newRect = jsav.g.rect(startArray[i], 150, diff, 30).css({fill: "cornflowerblue"});
+        newRect = jsav.g.rect(startArray[i], rectY, diff, 30).css({fill: "cornflowerblue"});
         newRect.css({"z-index": 500});
         freeOrNot[i] = 1;
       }
@@ -332,7 +353,7 @@
       //calculating size of block to left of clicked block
       var leftDiff = startArray[i] - startArray[i - 1];
       if (diff === leftDiff && freeOrNot[i - 1] === 1) {
-        newRect = jsav.g.rect(startArray[i - 1], 150, diff * 2, 30).css({fill: "cornflowerblue"});
+        newRect = jsav.g.rect(startArray[i - 1], rectY, diff * 2, 30).css({fill: "cornflowerblue"});
         newRect.css({"z-index": 500});
         recArraySize = recArraySize - 1;
         //all elements after i shift
@@ -355,7 +376,7 @@
         }
         merge(clickSpot);
       } else {
-        newRect = jsav.g.rect(startArray[i], 150, diff, 30).css({fill: "cornflowerblue"});
+        newRect = jsav.g.rect(startArray[i], rectY, diff, 30).css({fill: "cornflowerblue"});
         newRect.css({"z-index": 500});
         freeOrNot[i] = 1;
       }
@@ -378,7 +399,7 @@
     }
     //last elemnt in the start array + 1 is always end of block
     startArray[recArraySize] = endOfBlock;
-    updateLines();
+    updateFreeLists();
     updateLabels();
   }
 
@@ -412,43 +433,96 @@
     freeAmountLabel.css({"z-index": 500});
   }
 
-  //updates the lines if an add occurs
-  function updateLines() {
-    var j = 0;
-    while (linesArray[j] !== undefined && linesArray[j] !== null) {
-      linesArray[j].hide();
-      linesArray[j] = null;
-      j++;
+  //updates the freelists
+  function updateFreeLists() {
+    var freeListTop = 202;
+
+    var spacing = 34;
+
+    freeList2.clear();
+    freeList4.clear();
+    freeList8.clear();
+    freeList16.clear();
+    freeList32.clear();
+    freeList64.clear();
+    freeList128.clear();
+    freeList256.clear();
+
+    var j;
+    for (j = 0; j < 8; j++) {
+      arrows[j].hide();
     }
+
+    freeList2 = jsav.ds.list({top: freeListTop, left: 350, nodegap: 30});
+    freeList2.layout({center: false});
+    freeList4 = jsav.ds.list({top: freeListTop + spacing, left: 350, nodegap: 30});
+    freeList4.layout({center: false});
+    freeList8 = jsav.ds.list({top: freeListTop + spacing * 2, left: 350, nodegap: 30});
+    freeList8.layout({center: false});
+    freeList16 = jsav.ds.list({top: freeListTop + spacing * 3, left: 350, nodegap: 30});
+    freeList16.layout({center: false});
+    freeList32 = jsav.ds.list({top: freeListTop + spacing * 4, left: 350, nodegap: 30});
+    freeList32.layout({center: false});
+    freeList64 = jsav.ds.list({top: freeListTop + spacing * 5, left: 350, nodegap: 30});
+    freeList64.layout({center: false});
+    freeList128 = jsav.ds.list({top: freeListTop + spacing * 6, left: 350, nodegap: 30});
+    freeList128.layout({center: false});
+    freeList256 = jsav.ds.list({top: freeListTop + spacing * 7, left: 350, nodegap: 30});
+    freeList256.layout({center: false});
+
     var i = 0;
-    j = 0;
-    var lbottom = 416;
-    var ltop = 180;
-    for (j; j < recArraySize; j++) {
-      if (freeOrNot[j] === 1) {
-        var xTop = startArray[j] + (startArray[j + 1] - startArray[j]) / 2;
-        var blockSize = getSize(j);
-        var xBottom;
-        if (blockSize === 2) {
-          xBottom = connectStartArray[0];
-        } else if (blockSize === 4) {
-          xBottom = connectStartArray[1];
-        } else if (blockSize === 8) {
-          xBottom = connectStartArray[2];
-        } else if (blockSize === 16) {
-          xBottom = connectStartArray[3];
-        } else if (blockSize === 32) {
-          xBottom = connectStartArray[4];
-        } else if (blockSize === 64) {
-          xBottom = connectStartArray[5];
-        } else if (blockSize === 128) {
-          xBottom = connectStartArray[6];
-        } else if (blockSize === 256) {
-          xBottom = connectStartArray[7];
+    for (i; i < recArraySize; i++) {
+      if (freeOrNot[i] === 1) {
+        var size = getSize(i);
+        if (size === 2) {
+          freeList2.addLast(i);
+          freeList2.layout({center: false});
+          if (freeList2.size() === 1) {
+            arrows[0].show();
+          }
+        } else if (size === 4) {
+          freeList4.addLast(i);
+          freeList4.layout({center: false});
+          if (freeList4.size() === 1) {
+            arrows[1].show();
+          }
+        } else if (size === 8) {
+          freeList8.addLast(i);
+          freeList8.layout({center: false});
+          if (freeList8.size() === 1) {
+            arrows[2].show();
+          }
+        } else if (size === 16) {
+          freeList16.addLast(i);
+          freeList16.layout({center: false});
+          if (freeList16.size() === 1) {
+            arrows[3].show();
+          }
+        } else if (size === 32) {
+          freeList32.addLast(i);
+          freeList32.layout({center: false});
+          if (freeList32.size() === 1) {
+            arrows[4].show();
+          }
+        } else if (size === 64) {
+          freeList64.addLast(i);
+          freeList64.layout({center: false});
+          if (freeList64.size() === 1) {
+            arrows[5].show();
+          }
+        } else if (size === 128) {
+          freeList128.addLast(i);
+          freeList128.layout({center: false});
+          if (freeList128.size() === 1) {
+            arrows[6].show();
+          }
+        } else {
+          freeList256.addLast(i);
+          freeList256.layout({center: false});
+          if (freeList256.size() === 1) {
+            arrows[7].show();
+          }
         }
-        var line = jsav.g.line(xBottom, lbottom, xTop, ltop);
-        linesArray[i] = line;
-        i++;
       }
     }
   }
@@ -459,7 +533,7 @@
   function stepsToInsert(fin, size) {
     if (insert === 0) {
       if (fin > recArraySize) {
-        jsav.umsg("No free space is large enough for your allocation.");
+        jsav.umsg("No free space is large enough for your allocation. Submit a new size to allocate.");
         //next button disabled until next submit is pressed
         $("#next").attr("disabled", "disabled");
         //click handler for used blocks
@@ -469,6 +543,7 @@
         jsav.umsg("Find a free space that is the size of the requested block or larger.");
         insRec = jsav.g.rect(startArray[fin], rectY, getSize(fin) * 2, rectHeight, {"stroke-width": 3});
         insert++;
+        ins = 1;
       }
     } else if (insert === 1) {
       if (getSize(fin) > size) {
@@ -478,14 +553,15 @@
           split(fin);
         }
         insRec = jsav.g.rect(startArray[fin], rectY, getSize(fin) * 2, rectHeight, {"stroke-width": 3});
-        updateLines();
+        updateFreeLists();
       }
       jsav.umsg("A free space of the correct size has been found. Click next to allocate.");
       insert++;
+      ins = 1;
     } else if (insert === 2) {
       jsav.g.rect(startArray[fin], rectY, size * 2, rectHeight).css({fill: "coral"});
       freeOrNot[fin] = 0;
-      updateLines();
+      updateFreeLists();
       updateLabels();
       insRec.hide();
       jsav.umsg("Enter another size to allocate and click submit.");
@@ -597,9 +673,9 @@
       //then on remaining next calls steps to insert is called
       //console.log("Now fitalgorithm is: " + $("#fitAlgorithm").val());
 
+
       if (ins === 0) {
         buddy(inputValue);
-        ins = 1;
       } else {
         stepsToInsert(finn, sizee);
       }
@@ -622,15 +698,20 @@
     });
 
     $("#reset").click(function() {
-      var i = 0;
-      while (i < 4) {
-        //blockLabelArray[i].clear();
-        linesArray[i].hide();
-        i++;
-      }
       freeAmountLabel.clear();
       usedAmountLabel.clear();
-      array.clear();
+      freeList2.clear();
+      freeList4.clear();
+      freeList8.clear();
+      freeList16.clear();
+      freeList32.clear();
+      freeList64.clear();
+      freeList128.clear();
+      freeList256.clear();
+      var i = 0;
+      for (i; i < 8; i++) {
+        arrows[i].hide();
+      }
       reset();
 
 
