@@ -54,9 +54,9 @@
       }
     },
     "java": {
-      "url": "../../SourceCode/Java/Sorting/Insertionsort.java",
-      "startAfter": "/* *** ODSATag: Insertionsort *** */",
-      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
+      "url": "../../SourceCode/Java/Sorting/Selectionsort.java",
+      "startAfter": "/* *** ODSATag: Selectionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Selectionsort *** */",
       "tags": {
         "sig": 1,
         "outloop": 2,
@@ -69,9 +69,9 @@
       }
     },
     "java_generic": {
-      "url": "../../SourceCode/Java_Generic/Sorting/Insertionsort.java",
-      "startAfter": "/* *** ODSATag: Insertionsort *** */",
-      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
+      "url": "../../SourceCode/Java_Generic/Sorting/Selectionsort.java",
+      "startAfter": "/* *** ODSATag: Selectionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Selectionsort *** */",
       "tags": {
         "sig": 1,
         "outloop": 2,

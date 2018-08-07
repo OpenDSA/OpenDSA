@@ -23,14 +23,14 @@ $(document).ready(function() {
   for (i = 0; i < 8; i++) {
     for (j = 0; j < 8; j++) {
       power = i * j;
-      mat.value(i, j, "$z$^" + power);
+      mat.value(i, j, "$z^{" + power + "}$");
     }
   }
   av.displayInit();
 
   // Slide 2
   av.umsg("When $n = 8$, we have $z = \\sqrt i$ since $(\\sqrt{i})^8 = 1$. " +
-          "This gives the following matrix.");
+          "This gives the following matrix. (Click to the next slide to get the math to display correctly.)");
   var val = "";
   for (i = 0; i < 8; i++) {
     for (j = 0; j < 8; j++) {
@@ -55,6 +55,9 @@ $(document).ready(function() {
       mat.value(i, j, val);
     }
   }
+  av.step();
+  av.umsg("When $n = 8$, we have $z = \\sqrt i$ since $(\\sqrt{i})^8 = 1$. " +
+          "This gives the following matrix.");
   av.step();
 
   // Slide 3

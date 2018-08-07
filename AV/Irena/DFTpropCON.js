@@ -14,7 +14,7 @@ $(document).ready(function() {
   for (i = 0; i < 8; i++) {
     for (j = 0; j < 8; j++) {
       power = i * j;
-      mat.value(i, j, "$z$^" + power);
+      mat.value(i, j, "$z^{" + power + "}$");
     }
   }
   av.displayInit();
@@ -22,7 +22,7 @@ $(document).ready(function() {
   // Slide 2
   var color1 = "#ffffb3";
   var color2 = "#cecdca";
-  av.umsg("We have: $z^0=1$");
+  av.umsg("We have: $z^0=1$. (Please note: For each matrix value that gets changed, the math won't display quite right until the following slide.)"); 
   for (i = 0; i < 8; i++) {
     for (j = 0; j < 8; j++) {
       if (i === 0 || j === 0) {
