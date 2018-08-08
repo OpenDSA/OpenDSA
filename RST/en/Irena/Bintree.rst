@@ -83,7 +83,7 @@ that point is not contained in the tree.
 Here is a visualization of the Bintree, that shows how inserting a
 point and removing a point works.
 
-.. avembed:: AV/Irena/BintreeAV.html ss
+.. avembed:: AV/Spatial/BintreeAV.html ss
 
 Below is an interactive visualization of the Bintree for practice.
 

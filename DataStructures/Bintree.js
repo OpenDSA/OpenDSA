@@ -76,7 +76,11 @@ JSAV.ext.ds.bintree = function(options) {
 	    return;
 	  }
 	  swt = 0;
+	  var lab = this.jsav.label(point.getName(), {left: mapleft + point.getX(),top: maptop + point.getY() - 35});
+	  var circle = this.jsav.g.circle(mapleft + point.getX(), maptop + point.getY(), 2, {fill: 'black'});
 	  this.underRoot = this.underRoot.insert(this.qdt.root(), point, 0, 0, 256, 256, this.pte);
+	  lab.hide();
+	  circle.hide();
 	  this.qdt.layout();
 	  p = 0;
 	}
@@ -280,7 +284,7 @@ JSAV.ext.ds.bintree = function(options) {
 	  rt.right("");
 	  rt.right().addClass('bintreeemptyleaf'); // ne dir === right
 	  rt.removeClass('bintreefullleaf');
-	  if (swt % 2 === 0) {
+	  if (swt % 2 === 1) {
 	    //horrizontal split
 	    newNode.setXLine(this.jsav.g.line((mapleft + x), (maptop + y) + (h / 2), (mapleft + x + w), (maptop + h / 2) + y));
 	  } else {
@@ -289,7 +293,7 @@ JSAV.ext.ds.bintree = function(options) {
 	  }
 	  newNode.qdt.layout();
 	  for (var i = 0; i < this.current; i = 0) {
-	    if (w === 2 * h) {
+	    if (h === 2 * w) {
 	      swt = 1;
 	    } else {
 	      swt = 0;
@@ -308,7 +312,7 @@ JSAV.ext.ds.bintree = function(options) {
 	    this.qdt.layout();
 	  }
 	  //swt = 0;
-	  if (w === 2 * h) {
+	  if (h === 2 * w) {
 	    swt = 1;
 	  } else {
 	    swt = 0;
@@ -374,7 +378,7 @@ JSAV.ext.ds.bintree = function(options) {
 	    pointer.hide();
 	  }
 	  var dir = undefined;
-	  if (swt % 2 === 0) { //horizontal 
+	  if (swt % 2 === 1) { //horizontal 
 	    dir = this.findHorDir(point, x, y, w, h);
 	    if (dir === 0) {
 	      swt++;
@@ -408,7 +412,7 @@ JSAV.ext.ds.bintree = function(options) {
 	    pointer.hide();
 	  }
 	  var dir = undefined;
-	  if (swt % 2 === 0) { //horizontal 
+	  if (swt % 2 === 1) { //horizontal 
 	    dir = this.findHorDir(point, x, y, w, h);
 	    if (dir === 0) {
 	      swt++;
