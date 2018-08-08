@@ -200,7 +200,7 @@
     var j;
     for (j = 0; j < 8; j++) {
       // create initially hidden arrows from array indices to lists
-      arrows[i] = jsav.g.line(315, freeListTop + j * spacing + 30, 350, freeListTop + j * spacing + 30,
+      arrows[j] = jsav.g.line(315, freeListTop + j * spacing + 30, 350, freeListTop + j * spacing + 30,
                               {"arrow-end": "classic-wide-long", opacity: 0, "stroke-width": 2});
     }
 
