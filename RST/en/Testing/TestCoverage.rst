@@ -28,9 +28,6 @@ branch in the nested series of ``if`` statements.
 .. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
    :long_name: Triangle Testing With Code
 
-.. avembed:: AV/Testing/Bowling/BowlingApplet.html pe
-   :long_name: Bowling Testing With Code
-
 So, did you find it easier to get code coverage when you had the code
 in front of you?
 Probably, because you could see what paths are in the code, and "write

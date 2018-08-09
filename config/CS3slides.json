@@ -79,7 +79,8 @@
       "CS3slides/Heaps": {}
     },
     "Week 6": {
-      "CS3slides/Huffman": {}
+      "CS3slides/Huffman": {},
+      "CS3slides/Overconstrained": {}
     },
     "Week 7-8": {
       "CS3slides/Sorting1": {},

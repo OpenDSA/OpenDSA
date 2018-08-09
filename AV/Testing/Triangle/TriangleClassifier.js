@@ -123,7 +123,7 @@ function classifyTriangle() {
     coverage = calculateCoverage(); 
     document.getElementById("codeCoverageBar").style = "width:" + coverage + "%";
     document.getElementById("codeCoveragePercentage").innerText = coverage.toFixed(2) + "%";
-    if(coverage == shreshold){
+    if(coverage >= shreshold){
         ODSA.AV.awardCompletionCredit();
         av.umsg(interpret("av_c1"));
     }

@@ -72,7 +72,10 @@
           "exer_options": {
             "code": "true"
           }
-        },
+        }
+      },
+      "Testing/Example2": {},
+      "Testing/Bowling": {
         "BowlingApplet": {
           "exer_options": {
             "code": "true"
@@ -86,4 +89,3 @@
     }
   }
 }
-

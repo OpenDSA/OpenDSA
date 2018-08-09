@@ -6,7 +6,7 @@ $(document).ready(function () {
  * Requires BowlingGame object from BowlingGame.js
  */
 var game = new BowlingGame();
-var shreshold = 50;
+var shreshold = 74;
 var config = ODSA.UTILS.loadConfig(),
     interpret = config.interpreter,
     av = new JSAV("ssperform", {"animationMode": "none"});
@@ -18,7 +18,7 @@ function main() {
         var message = "Game over!  Please click reset to try again!"
         av.umsg(message + "\n"); 
         var coverage = game.getCodeCovered();
-        if(coverage == shreshold){
+        if(coverage >= shreshold){
             ODSA.AV.awardCompletionCredit();
             av.umsg(interpret("av_c1"));
         }
