@@ -124,7 +124,7 @@ BowlingGame.prototype.bugs = function() {
     }
     //Thats a bug, one roll hitting more than 10 pins
     if (self.rolls[self.currentRoll] > 10) {
-        self.codeCovered[4] = true;        
+        self.codeCovered[4] = true;  
         return 1;
     }
     //Bug if roll is less than 0

@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 var testNum = 1;
 var testCaseHistory = "";
-var shreshold = 100;
+var threshold = 50;
 var coverage = 0.00;
 var codeCoverage = [];
 for (var i = 0; i < 14; i++) {
@@ -123,7 +123,7 @@ function classifyTriangle() {
     coverage = calculateCoverage(); 
     document.getElementById("codeCoverageBar").style = "width:" + coverage + "%";
     document.getElementById("codeCoveragePercentage").innerText = coverage.toFixed(2) + "%";
-    if(coverage >= shreshold){
+    if(coverage >= threshold){
         ODSA.AV.awardCompletionCredit();
         av.umsg(interpret("av_c1"));
     }
@@ -133,9 +133,9 @@ function classifyTriangle() {
 window.onload = function() {
     if (getUrlParam("code") == "true") {
         document.getElementById("coverageCode").style.display = "block";
+        threshold = 100;
         //document.getElementById("container").style.float = "right";
     } else {
-        shreshold = 50;
         document.getElementById("coverageCode").style.display = "none";
         //document.getElementById("container").style.float = "left";
     }

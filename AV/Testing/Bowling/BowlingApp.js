@@ -6,7 +6,7 @@ $(document).ready(function () {
  * Requires BowlingGame object from BowlingGame.js
  */
 var game = new BowlingGame();
-var shreshold = 74;
+var threshold = 74;
 var config = ODSA.UTILS.loadConfig(),
     interpret = config.interpreter,
     av = new JSAV("ssperform", {"animationMode": "none"});
@@ -14,16 +14,6 @@ var config = ODSA.UTILS.loadConfig(),
  * Main function.  This is called when the 'Roll' button is clicked.
  */
 function main() {
-    if (game.currentRoll > 20) {
-        var message = "Game over!  Please click reset to try again!"
-        av.umsg(message + "\n"); 
-        var coverage = game.getCodeCovered();
-        if(coverage >= shreshold){
-            ODSA.AV.awardCompletionCredit();
-            av.umsg(interpret("av_c1"));
-        }
-        return;
-    }
     var roll = document.getElementById('rollValue').value;
     var allowedValues = new RegExp('^[\-]?[0-9a-zA-Z]+$');
 
@@ -39,7 +29,7 @@ function main() {
         " *Invalid roll, not counted to score but does execute code coverage. \n";
         av.umsg(message + "\n"); 
         var coverage = game.getCodeCovered();
-        if(coverage == shreshold){
+        if(coverage == threshold){
             ODSA.AV.awardCompletionCredit();
             av.umsg(interpret("av_c1"));
         }
@@ -57,7 +47,7 @@ function main() {
         " *Invalid roll, not counted to score but does execute code coverage. \n";
         av.umsg(message + "\n"); 
         var coverage = game.getCodeCovered();
-        if(coverage == shreshold){
+        if(coverage == threshold){
             ODSA.AV.awardCompletionCredit();
             av.umsg(interpret("av_c1"));
         }
@@ -96,6 +86,28 @@ function main() {
     currentScore();
     getCodeCoverage();
     logTestCase(type);
+    if(game.frameIndex == 10){
+    	var checkSpare = (game.rolls[game.currentRoll - 2] + game.rolls[game.currentRoll - 1] != 10);
+    	var checkStrike = (game.rolls[game.currentRoll - 2] + game.rolls[game.currentRoll - 1] != 20);
+    	var check1 = game.rollIndex == 3 && checkSpare && checkStrike;
+		var check2 = game.rollIndex == 4;
+		av.umsg(checkSpare);
+		av.umsg(game.rolls[game.currentRoll - 2]);
+		av.umsg(game.rolls[game.currentRoll - 1]);
+        	av.umsg(checkStrike);
+        	av.umsg(check1);
+        	av.umsg(check2);
+    	if(check1 || check2){
+        	var message = "Game over!  Please click reset to try again!"
+        	av.umsg(message + "\n"); 
+        	var coverage = game.getCodeCovered();
+        	if(coverage >= threshold){
+        	    ODSA.AV.awardCompletionCredit();
+        	    av.umsg(interpret("av_c1"));
+        	}
+        	return;
+        }
+    }
 }
 
 /**
@@ -114,7 +126,7 @@ function logTestCase(type) {
 
     av.umsg(message + "\n");
     var coverage = game.getCodeCovered();
-    if(coverage == shreshold){
+    if(coverage == threshold){
         ODSA.AV.awardCompletionCredit();
         av.umsg(interpret("av_c1"));
     }
@@ -149,7 +161,7 @@ function getCodeCoverage() {
 window.onload = function() {
     if (getUrlParam("code") == "true") {
         document.getElementById("coverageCode").style.display = "block";
-        shreshold = 100;
+        threshold = 100;
         //document.getElementById("container").style.float = "right";
     } else {
         document.getElementById("coverageCode").style.display = "none";
