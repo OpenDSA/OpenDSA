@@ -4,7 +4,7 @@ $(document).ready(function () {
   var av = new JSAV("bintreeCON", {"animationMode": "none"});
 
   // Draw the rectangles
-  var rleft = 300;
+  var rleft = 350;
   var rtop = 15;
   var radius = 4;
   var mainrect = av.g.rect(rleft, rtop, 200, 200);
@@ -38,7 +38,7 @@ $(document).ready(function () {
 
   // Setup the tree
   var btTop = 250;
-  var btLeft = 305;
+  var btLeft = 355;
   var bt = av.ds.binarytree({nodegap: 10, top: btTop, left: btLeft});
   bt.root('');
   var rt = bt.root();
@@ -61,21 +61,21 @@ $(document).ready(function () {
   rt.right().right().left().left().right('F');
 
   bt.layout();
-  var alabel = av.label("(a)", {left: rleft + 93, top: btTop - 45}).show;
-  var blabel = av.label("(b)", {left: btLeft + 100, top: btTop + 230}).show;
+  var alabel = av.label("(a)", {left: rleft + 93, top: btTop - 43}).show;
+  var blabel = av.label("(b)", {left: btLeft + 100, top: btTop + 250}).show;
 
   // Mark tree levels
   var lLeft = btLeft - 150;
-  av.label("x", {left: lLeft, top: btTop}).show;
-  av.g.line(lLeft + 20, btTop + 25, lLeft + 210, btTop + 25);
-  av.label("y", {left: lLeft, top: btTop + 39}).show;
-  av.g.line(lLeft + 20, btTop + 64, lLeft + 155, btTop + 64);
-  av.label("x", {left: lLeft, top: btTop + 78}).show;
-  av.g.line(lLeft + 20, btTop + 103, lLeft + 130, btTop + 103);
-  av.label("y", {left: lLeft, top: btTop + 115}).show;
-  av.g.line(lLeft + 20, btTop + 141, lLeft + 200, btTop + 141);
-  av.label("x", {left: lLeft, top: btTop + 152}).show;
-  av.g.line(lLeft + 20, btTop + 175, lLeft + 180, btTop + 175);
-  av.label("y", {left: lLeft, top: btTop + 190}).show;
-  av.g.line(lLeft + 20, btTop + 215, lLeft + 275, btTop + 215);
+  av.label("x", {left: lLeft, top: btTop + 2}).show;
+  av.g.line(lLeft + 20, btTop + 28, lLeft + 210, btTop + 28);
+  av.label("y", {left: lLeft, top: btTop + 44}).show;
+  av.g.line(lLeft + 20, btTop + 70, lLeft + 155, btTop + 70);
+  av.label("x", {left: lLeft, top: btTop + 87}).show;
+  av.g.line(lLeft + 20, btTop + 113, lLeft + 130, btTop + 113);
+  av.label("y", {left: lLeft, top: btTop + 129}).show;
+  av.g.line(lLeft + 20, btTop + 156, lLeft + 200, btTop + 156);
+  av.label("x", {left: lLeft, top: btTop + 172}).show;
+  av.g.line(lLeft + 20, btTop + 198, lLeft + 180, btTop + 198);
+  av.label("y", {left: lLeft, top: btTop + 212}).show;
+  av.g.line(lLeft + 20, btTop + 240, lLeft + 275, btTop + 240);
 });
