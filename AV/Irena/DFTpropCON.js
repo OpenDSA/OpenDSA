@@ -34,8 +34,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 3
-  av.umsg("Since N = 8 (degree of the polynomial), then $z^8=1$" +
-    " and $z^4=-1$.");
+  av.umsg("Since N = 8 (degree of the polynomial), then for any integer k, we have $z^{8+k}=z^8$. So $z^0=z^8=z^{16}=z^{24}=1$.");
   for (i = 0; i < 8; i++) {
     for (j = 0; j < 8; j++) {
       if (i === 0 || j === 0) {
@@ -45,36 +44,27 @@ $(document).ready(function() {
   }
   mat.value(4, 2, "$1$");
   mat.value(2, 4, "$1$");
-  mat.value(1, 4, "$-1$");
-  mat.value(2, 2, "$-1$");
-  mat.value(4, 1, "$-1$");
-  mat.css(4, 2, {"background-color": color1});
-  mat.css(1, 4, {"background-color": color1});
-  mat.css(2, 2, {"background-color": color1});
-  mat.css(4, 1, {"background-color": color1});
-  mat.css(2, 4, {"background-color": color1});
-  av.step();
-
-  // Slide 4
-  av.umsg("For any integer k, we have $z^{8+k}=z^8$, so $z^0=z^8=z^{16}=z^{24}=1$.");
-  mat.css(4, 2, {"background-color": color2});
-  mat.css(1, 4, {"background-color": color2});
-  mat.css(2, 2, {"background-color": color2});
-  mat.css(4, 1, {"background-color": color2});
-  mat.css(2, 4, {"background-color": color2});
   mat.value(4, 4, "$1$");
   mat.value(4, 6, "$1$");
   mat.value(6, 4, "$1$");
+  mat.css(4, 2, {"background-color": color1});
+  mat.css(2, 4, {"background-color": color1});
   mat.css(4, 4, {"background-color": color1});
   mat.css(4, 6, {"background-color": color1});
   mat.css(6, 4, {"background-color": color1});
   av.step();
 
-  // Slide 5
-  av.umsg("We also have $z^4=z^{12}=z^{20}=z^{28}=z^{36}=-1$.");
+  // Slide 4
+  av.umsg("$z^4=-1$. So, we also have $z^4=z^{12}=z^{20}=z^{28}=z^{36}=-1$.");
+  mat.css(4, 2, {"background-color": color2});
+  mat.css(2, 4, {"background-color": color2});
   mat.css(4, 4, {"background-color": color2});
   mat.css(4, 6, {"background-color": color2});
   mat.css(6, 4, {"background-color": color2});
+
+  mat.value(1, 4, "$-1$");
+  mat.value(2, 2, "$-1$");
+  mat.value(4, 1, "$-1$");
   mat.value(2, 6, "$-1$");
   mat.value(3, 4, "$-1$");
   mat.value(4, 3, "$-1$");
@@ -84,6 +74,10 @@ $(document).ready(function() {
   mat.value(6, 2, "$-1$");
   mat.value(6, 6, "$-1$");
   mat.value(7, 4, "$-1$");
+
+  mat.css(1, 4, {"background-color": color1});
+  mat.css(2, 2, {"background-color": color1});
+  mat.css(4, 1, {"background-color": color1});
   mat.css(2, 6, {"background-color": color1});
   mat.css(3, 4, {"background-color": color1});
   mat.css(4, 3, {"background-color": color1});
@@ -95,7 +89,11 @@ $(document).ready(function() {
   mat.css(7, 4, {"background-color": color1});
   av.step();
 
+
   // Slide 6
+  mat.css(1, 4, {"background-color": color2});
+  mat.css(2, 2, {"background-color": color2});
+  mat.css(4, 1, {"background-color": color2});
   mat.css(2, 6, {"background-color": color2});
   mat.css(3, 4, {"background-color": color2});
   mat.css(4, 3, {"background-color": color2});
@@ -110,28 +108,19 @@ $(document).ready(function() {
   av.step();
 
   // Slide 7
-  av.umsg("We can compute: $z^1=\\sqrt i$. \n From the first property, " +
-    "we have: $z^9=z^{25}=z^{49}=\\sqrt i$.");
+  av.umsg("We can compute: $z^1=\\sqrt i$. Thus, we have: $z^9=z^{25}=z^{49}=\\sqrt i$ and $z^5=z^{21}=-\\sqrt i$");
   mat.value(1, 1, "$\\sqrt i$");
   mat.value(3, 3, "$\\sqrt i$");
   mat.value(5, 5, "$\\sqrt i$");
   mat.value(7, 7, "$\\sqrt i$");
+  mat.value(1, 5, "$-\\sqrt i$");
+  mat.value(3, 7, "$-\\sqrt i$");
+  mat.value(5, 1, "$-\\sqrt i$");
+  mat.value(7, 3, "$-\\sqrt i$");
   mat.css(1, 1, {"background-color": color1});
   mat.css(3, 3, {"background-color": color1});
   mat.css(5, 5, {"background-color": color1});
   mat.css(7, 7, {"background-color": color1});
-  av.step();
-
-  // Slide 8
-  av.umsg("And from the second property: $z^5=z^{21}=-\\sqrt i$");
-  mat.css(1, 1, {"background-color": color2});
-  mat.css(3, 3, {"background-color": color2});
-  mat.css(5, 5, {"background-color": color2});
-  mat.css(7, 7, {"background-color": color2});
-  mat.value(1, 5, "$\\sqrt i$");
-  mat.value(3, 7, "$\\sqrt i$");
-  mat.value(5, 1, "$\\sqrt i$");
-  mat.value(7, 3, "$\\sqrt i$");
   mat.css(1, 5, {"background-color": color1});
   mat.css(3, 7, {"background-color": color1});
   mat.css(5, 1, {"background-color": color1});
@@ -139,7 +128,11 @@ $(document).ready(function() {
   av.step();
 
   // Slide 9
-  av.umsg("When we compute $z^2=i$, we also get: $z^{10}=z^{18}=z^{42}=i$");
+  av.umsg("When we compute $z^2=i$, we also get: $z^{10}=z^{18}=z^{42}=i$ and $z^6=z^{14}=z^{30}=-i$");
+  mat.css(1, 1, {"background-color": color2});
+  mat.css(3, 3, {"background-color": color2});
+  mat.css(5, 5, {"background-color": color2});
+  mat.css(7, 7, {"background-color": color2});
   mat.css(1, 5, {"background-color": color2});
   mat.css(3, 7, {"background-color": color2});
   mat.css(5, 1, {"background-color": color2});
@@ -152,26 +145,6 @@ $(document).ready(function() {
   mat.value(6, 3, "$i$");
   mat.value(6, 7, "$i$");
   mat.value(7, 6, "$i$");
-  mat.css(1, 2, {"background-color": color1});
-  mat.css(2, 1, {"background-color": color1});
-  mat.css(2, 5, {"background-color": color1});
-  mat.css(3, 6, {"background-color": color1});
-  mat.css(5, 2, {"background-color": color1});
-  mat.css(6, 3, {"background-color": color1});
-  mat.css(6, 7, {"background-color": color1});
-  mat.css(7, 6, {"background-color": color1});
-  av.step();
-
-  // Slide 10
-  av.umsg("And $z^6=z^{14}=z^{30}=-i$");
-  mat.css(1, 2, {"background-color": color2});
-  mat.css(2, 1, {"background-color": color2});
-  mat.css(2, 5, {"background-color": color2});
-  mat.css(3, 6, {"background-color": color2});
-  mat.css(5, 2, {"background-color": color2});
-  mat.css(6, 3, {"background-color": color2});
-  mat.css(6, 7, {"background-color": color2});
-  mat.css(7, 6, {"background-color": color2});
   mat.value(1, 6, "$-i$");
   mat.value(2, 3, "$-i$");
   mat.value(2, 7, "$-i$");
@@ -180,6 +153,14 @@ $(document).ready(function() {
   mat.value(6, 1, "$-i$");
   mat.value(6, 5, "$-i$");
   mat.value(7, 2, "$-i$");
+  mat.css(1, 2, {"background-color": color1});
+  mat.css(2, 1, {"background-color": color1});
+  mat.css(2, 5, {"background-color": color1});
+  mat.css(3, 6, {"background-color": color1});
+  mat.css(5, 2, {"background-color": color1});
+  mat.css(6, 3, {"background-color": color1});
+  mat.css(6, 7, {"background-color": color1});
+  mat.css(7, 6, {"background-color": color1});
   mat.css(1, 6, {"background-color": color1});
   mat.css(2, 3, {"background-color": color1});
   mat.css(2, 7, {"background-color": color1});
@@ -190,9 +171,18 @@ $(document).ready(function() {
   mat.css(7, 2, {"background-color": color1});
   av.step();
 
+
   // Slide 11
   av.umsg("Finally, we have: $z^3=z^{35}=i\\sqrt i$" +
     " and $z^7=z^{15}=-i\\sqrt i$");
+  mat.css(1, 2, {"background-color": color2});
+  mat.css(2, 1, {"background-color": color2});
+  mat.css(2, 5, {"background-color": color2});
+  mat.css(3, 6, {"background-color": color2});
+  mat.css(5, 2, {"background-color": color2});
+  mat.css(6, 3, {"background-color": color2});
+  mat.css(6, 7, {"background-color": color2});
+  mat.css(7, 6, {"background-color": color2});
   mat.css(1, 6, {"background-color": color2});
   mat.css(2, 3, {"background-color": color2});
   mat.css(2, 7, {"background-color": color2});
@@ -221,7 +211,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 12
-  av.umsg("Using these properties, we can completely fill the matrix in 3-4 steps.");
+  av.umsg("Using these properties, we only need to compute 4 values: $z^0$, $z^1$, $z^2$, and $z^3$, to completely fill the matrix.");
   mat.css(1, 3, {"background-color": color2});
   mat.css(3, 1, {"background-color": color2});
   mat.css(5, 7, {"background-color": color2});

@@ -14,19 +14,22 @@ $(document).ready(function() {
   var pseudo = av.code(code[0]);
 
   av.umsg("This slideshow shows a visualization of the Fast Fourier Transform.");
-  var polynomial = [0, 1, 2, 3];
+  var polynomial = [1, 4, 2, 3];
 
   var center = 665;
-  
+  var begin = 0;
 
   av.displayInit();
 
   av.umsg("New polynomial.");
 
+  var polyLabel = av.label("$x^3+4x^2+2x+3$", {left: center - 55});
+
   var poly2 = fft(polynomial, 4);
 
 
   av.ds.array(poly2, {left: center - 30 * 4 / 2});
+  av.label("$10x^3+(-1+i)x^2-4x-1-i$", {top: 50, left: center - 85});
 
   av.recorded();
 
@@ -36,14 +39,20 @@ $(document).ready(function() {
     var list1 = [];
     var list2 = [];
     var newPoly = [];
-    var height = 0;
+    var height = 50;
 
-    av.umsg(interpret("sc1"));
-    var polyArr = av.ds.array(poly, {left: center - 30 * n / 2});
-    height = height + 50;
+    if (begin === 0) {
+      av.umsg(interpret("sc8"));
+      begin = 1;
+    } else {
+      av.umsg(interpret("sc1"));
+    }
+    var polyArr = av.ds.array(poly, {left: center - 30 * n / 2, top: height, indexed: true});
+    height = height + 60;
     pseudo.highlight("fft");
     av.step();
 
+    polyLabel.hide();
     pseudo.unhighlight("fft");
 
     if (n === 1) {
@@ -67,9 +76,9 @@ $(document).ready(function() {
 
     av.umsg(interpret("sc3"));
     var evenArr = av.ds.array(even, {left: center - 90 - 30 * n / 4, top: height});
-    var evenLab = av.label("even:", {left: center - 140 - 30 * n / 4, top: height});
+    var evenLab = av.label("even:", {left: center - 140 - 30 * n / 4, top: height + 5});
     var oddArr = av.ds.array(odd, {left: center + 110 - 30 * n / 4, top: height});
-    var oddLab = av.label("odd:", {left: center + 60 - 30 * n / 4, top: height});
+    var oddLab = av.label("odd:", {left: center + 60 - 30 * n / 4, top: height + 5});
 
     for (i = 0; i <= n / 2 - 1; i++) {
       evenArr.css(i, {"background-color": "#ffffb3"});
@@ -87,9 +96,16 @@ $(document).ready(function() {
     pseudo.unhighlight("split");
     av.umsg(interpret("sc4"));
     pseudo.highlight("list1");
+    for (i = 0; i < n / 2; i++) {
+      evenArr.css(i, {"background-color": "#cccccc"});
+    }
+    
     av.step();
 
     pseudo.unhighlight("list1");
+    for (i = 0; i < n / 2; i++) {
+      evenArr.css(i, {"background-color": "white"});
+    }
 
     polyArr.hide();
     evenArr.hide();
@@ -104,14 +120,26 @@ $(document).ready(function() {
     oddArr.show();
     oddLab.show();
     var list1Arr = av.ds.array(list1, {left: center - 90 - 30 * n / 4, top: height});
-    var list1Lab = av.label("List 1:", {left: center - 140 - 30 * n / 4, top: height});
+    var list1Lab = av.label("List 1:", {left: center - 140 - 30 * n / 4, top: height + 5});
+    for (i = 0; i < n / 2; i++) {
+      list1Arr.css(i, {"background-color": "#cccccc"});
+    }
     av.step();
     pseudo.unhighlight("list1");
+    for (i = 0; i < n / 2; i++) {
+      list1Arr.css(i, {"background-color": "white"});
+    }
     av.umsg(interpret("sc5"));
     pseudo.highlight("list2");
+    for (i = 0; i < n / 2; i++) {
+      oddArr.css(i, {"background-color": "#cccccc"});
+    }
     av.step();
 
     pseudo.unhighlight("list2");
+    for (i = 0; i < n / 2; i++) {
+      oddArr.css(i, {"background-color": "white"});
+    }
     polyArr.hide();
     evenArr.hide();
     evenLab.hide();
@@ -129,11 +157,16 @@ $(document).ready(function() {
     list1Arr.show();
     list1Lab.show();
     var list2Arr = av.ds.array(list2, {left: center + 110 - 30 * n / 4, top: height});
-    var list2Lab = av.label("List 2:", {left: center + 60 - 30 * n / 4, top: height});
+    var list2Lab = av.label("List 2:", {left: center + 60 - 30 * n / 4, top: height + 5});
+    for (i = 0; i < n / 2; i++) {
+      list2Arr.css(i, {"background-color": "#cccccc"});
+    }
     height = height + 50;
     av.step();
     pseudo.unhighlight("list2");
-
+    for (i = 0; i < n / 2; i++) {
+      list2Arr.css(i, {"background-color": "white"});
+    }
     av.umsg(interpret("sc6"));
 
     pseudo.highlight("loop");

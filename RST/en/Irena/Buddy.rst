@@ -115,7 +115,6 @@ of the larger size be merged).
 
 .. avembed:: AV/Irena/BuddyAV.html ss
    :long_name: Buddy Method Visualization
-   :url_params: fitAlgorithm=1
 
 Other Methods
 ~~~~~~~~~~~~~

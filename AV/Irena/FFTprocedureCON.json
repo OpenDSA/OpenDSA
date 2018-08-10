@@ -3,11 +3,12 @@
     "en": {
       "sc1": "Perform Fast Fourier Transform on the given polynomial.",
       "sc2": "The polynomial only has one value which is returned.",
-      "sc3": "Split into an even and an odd array.",
+      "sc3": "Split into an even and an odd array by placing all values with an even index into the even array and all values with an odd index into the odd array.",
       "sc4": "List 1 is a Fast Fourier Transform of the even array.",
       "sc5": "List 2 is a Fast Fourier Transform of the odd array.",
       "sc6": "Now we compute the new polynomial. Each value of the array is computed using: $list1[k] + z*list2[k]$. Where $k = index\\%(n/2)$ and $z=e^{2\\pi ij/n}$.",
-      "sc7": "The polynomial has been transfromed and is returned."
+      "sc7": "The polynomial has been transfromed and is returned.",
+      "sc8": "Perform Fast Fourier Transform on the given polynomial. The values of the array are the coefficients of each term of the polynomial."
     }
   },
   "code": {

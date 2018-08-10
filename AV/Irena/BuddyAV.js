@@ -66,12 +66,10 @@
     // Reset controls to their default state
     $("#fitAlgorithm").val(defCtrlState.fitAlgorithm);
 
-    if (defCtrlState.fitAlgorithm === 0) {
-      // Ensure user selected a fit function
-      jsav.umsg("Please select a fit algorithm");
-    } else {
-      $("#fitAlgorithm").change();
-    }
+    jsav.umsg("To allocate a block, enter a size and click submit");
+    jsav.umsg("To deallocate a used block click on an allocated block of memory(a red block) and free it");
+    enableAllButtons();
+
     //enable the input box
     $("#input").val("");
 
@@ -157,8 +155,8 @@
 
 
     //2 rectangles at top of screen that show how much memory is used/remains
-    jsav.g.rect(620, 20, 30, 30).css({fill: "coral"});
-    jsav.g.rect(720, 20, 30, 30).css({fill: "cornflowerblue"});
+    jsav.g.rect(615, 20, 40, 30).css({fill: "coral"});
+    jsav.g.rect(715, 20, 40, 30).css({fill: "cornflowerblue"});
     //labels the blocks at the top of the screen
     jsav.label("Used Space", {left:  600, top:  45});
     jsav.label("Free Space", {left:  700, top:  45});
@@ -175,7 +173,7 @@
     jsav.label("Block Size", {left: 260, top: 170});
     jsav.ds.array([2, 4, 8, 16, 32, 64, 128, 256], {layout: "vertical", left: 280, top: 200});
     //labels the free lists
-    var freeListTop = 202;
+    var freeListTop = 203;
 
     var spacing = 34;
 
@@ -260,8 +258,8 @@
     } else {
       block = 2;
     }
-    submitRec = jsav.g.rect(600, 300, block * 2, 30).css({fill: "cyan"});
-    requestedBlockLabel = jsav.label("Requested Block", {left: 600, top: 260}).css({"font-weight": "bold"});
+    submitRec = jsav.g.rect(rectX, 90, block * 2, 30).css({fill: "cyan"});
+    requestedBlockLabel = jsav.label("Requested Block", {left: 290, top: 40}).css({"font-weight": "bold"});
     return block;
   }
 
@@ -435,7 +433,7 @@
 
   //updates the freelists
   function updateFreeLists() {
-    var freeListTop = 202;
+    var freeListTop = 204;
 
     var spacing = 34;
 
@@ -684,18 +682,6 @@
       $("#submit").removeAttr("disabled");
     });
 
-    //messages that appear when an algorithm is selected
-    $("#fitAlgorithm").change(function() {
-      // OriginalMemBlock();
-      //console.log("Now fitalgorithm is: " + $("#fitAlgorithm").val());
-      jsav.clearumsg();
-      jsav.umsg("Buddy Method Selected");
-
-      jsav.umsg("To allocate a block, enter a size and click submit");
-      jsav.umsg("To deallocate a used block click on an allocated block of memory(a red block) and free it");
-      enableAllButtons();
-      $("#next").attr("disabled", "disabled");
-    });
 
     $("#reset").click(function() {
       freeAmountLabel.clear();
