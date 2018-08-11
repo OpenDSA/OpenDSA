@@ -75,6 +75,7 @@
     },
     "Number Problems": {
       "SeniorAlgAnal/Numeric": {},
+      "SeniorAlgAnal/Transform": {},
       "SeniorAlgAnal/FFT": {}
     },
     "Probabilistic Algorithms": {

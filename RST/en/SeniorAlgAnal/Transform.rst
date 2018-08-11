@@ -68,8 +68,8 @@ a polynomial of degree :math:`n-1`, expressed as
 
 .. inlineav:: polynomialCON ss
    :long_name: fft slideshow 1 polynomial
-   :links: AV/Irena/polynomialCON.css
-   :scripts: DataStructures/Plot.js AV/Irena/polynomialCON.js
+   :links: AV/SeniorAlgAnal/polynomialCON.css
+   :scripts: DataStructures/Plot.js AV/SeniorAlgAnal/polynomialCON.js
    :output: show
 
 |
@@ -85,8 +85,8 @@ Finding the coefficients for the polynomial given the values at
 
 .. inlineav:: EvalandInterpolationCON ss
    :long_name: fft slideshow 2 evaluation and interpolation
-   :links: AV/Irena/EvalandInterpolationCON.css
-   :scripts: DataStructures/Plot.js AV/Irena/EvalandInterpolationCON.js
+   :links: AV/SeniorAlgAnal/EvalandInterpolationCON.css
+   :scripts: DataStructures/Plot.js AV/SeniorAlgAnal/EvalandInterpolationCON.js
    :output: show
 
 There are many useful engineering problems that involve multiplying
@@ -100,18 +100,18 @@ right values to evaluate and interpolate.
 
 .. inlineav:: ProductCON ss
    :long_name: fft slideshow 3 polynomial product
-   :links: AV/Irena/ProductCON.css
-   :scripts: AV/Irena/ProductCON.js
+   :links: AV/SeniorAlgAnal/ProductCON.css
+   :scripts: AV/SeniorAlgAnal/ProductCON.js
    :output: show
 
 Now, let's start thinking about ways to speed this up.
 
 .. inlineav:: EvaluationCON ss
    :long_name: fft slideshow 4 evaluation of polynomial product
-   :links: AV/Irena/EvaluationCON.css
-   :scripts: AV/Irena/EvaluationCON.js
+   :links: AV/SeniorAlgAnal/EvaluationCON.css
+   :scripts: AV/SeniorAlgAnal/EvaluationCON.js
    :output: show
 
 |
 
-.. avembed:: Exercises/Irena/Polynomial_multiplication.html ka
+.. avembed:: Exercises/SeniorAlgAnal/Polynomial_multiplication.html ka

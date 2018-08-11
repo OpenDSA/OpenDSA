@@ -60,32 +60,22 @@ desired block of size :math:`2^k` is created.
 Any other blocks generated as a by-product of this splitting process
 are placed on the appropriate freelists.
 
-.. TODO::
-   :type: Visualization
-
-   Re-implement the buddy method visualization from the original Java
-   tutorial
-
-.. odsafig:: Images/Buddy.png
-   :width: 400
+.. inlineav:: buddyCON dgm
+   :links: AV/MemManage/buddyCON.css
+   :scripts: AV/MemManage/buddyCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Buddy Method
 
 In the example above, we see the result of a series of insert and free
-operations on a memory pool of 128 units.
-Imagine that we have a series of requests of size 10, 15, 25, and 50.
-These are satisfied by blocks of size 16, 16, 32, and 64, respectively.
-If we then release the second and third requested records
-(the ones of size 15 and 25),
-which are using the second 16 units of the memory pool and the second
-32 units of the memory pool, respectively.
-The result is as we see in this figure.
-There is still a record (of size 10) in the first 16 units, and record
-(of size 50) in the last 64 units.
-We have a free block of size :math:`2^4 = 16` and one of size
-:math:`2^5 = 32`.
+operations on a memory pool of 256 units.
+Imagine that we have a series of requests of size 5, 20, 30, and 50.
+These are satisfied by blocks of size 8, 32, 32, and 64, respectively.
+If we then release the third requested record (the one of size 30),
+the result is as we see in this figure.
+There is still a record (of size 5) in the first 8 units, a record (of size
+20) in the second used block which is 32 units, and record
+(of size 50) in the last used block which is 64 units.
+We have a free block of size :math:`2^3 = 8`, one of size :math:`2^4 = 16`, 
+and two of size :math:`2^6 = 64`.
 
 The disadvantage of the buddy system is that it allows internal
 fragmentation.
@@ -117,6 +107,8 @@ moved to the freelist for the next larger
 block size (which might in turn require that two adjacent free blocks
 of the larger size be merged).
 
+.. avembed:: AV/MemManage/BuddyAV.html ss
+   :long_name: Buddy Method Visualization
 
 Other Methods
 ~~~~~~~~~~~~~
@@ -154,3 +146,5 @@ operating system main memory managers
 work on a cluster or page system.
 Block management is usually done with a buffer pool
 to allocate available blocks in main memory efficiently.
+
+

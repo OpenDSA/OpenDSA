@@ -66,10 +66,10 @@
   },
   "chapters": {
     "Numerical Algorithms": {
-      "Irena/Transform": {},
-      "Irena/FFT": {},
-      "Irena/Buddy": {},
-      "Irena/Bintree": {}
+      "SeniorAlgAnal/Transform": {},
+      "SeniorAlgAnal/FFT": {},
+      "MemManage/Buddy": {},
+      "Spatial/Bintree": {}
     },
     "Appendix": {
       "Glossary": {},

@@ -1,5 +1,5 @@
-"use strict";
-(function($) {
+$(document).ready(function() {
+  "use strict";
   var jsav,              // JSAV
       defCtrlState,   // Stores the default state of the controls
       submitRec = null,      //the rectangle that's created when the user hits submit
@@ -268,10 +268,10 @@
   //multiple click handlers can be on the same spot
   //flag system works by not allowing two back to back
   //clicks on the same spot unless a rec is inserted between
-  function changeUsed(event) {
-    //console.log("this: " + this + ", event: " + event);
+  function changeUsed(myEvent) {
+    //console.log("this: " + this + ", event: " + myEvent);
     this.setAttribute("fill", "cornflowerblue");
-    var click = event.pageX;
+    var click = myEvent.pageX;
     var i = 0;
     //subtract 23 because of html and jsav difference
     var clickSpot = click - 23;
@@ -631,11 +631,11 @@
 
     // If the user hits 'Enter' while the focus is on the textbox,
     // click 'Next' rather than refreshing the page
-    $("#input").keypress(function(event) {
+    $("#input").keypress(function(myEvent) {
       // Capture 'Enter' press
-      if (event.which === 13) {
+      if (myEvent.which === 13) {
         // Prevent 'Enter' from posting the form and refreshing the page
-        event.preventDefault();
+        myEvent.preventDefault();
 
         // If the user entered a value and inserting is allowed, trigger 'Next'
         if ($("#input").val() !== "" && !$("#next").attr("disabled")) {
@@ -720,4 +720,4 @@
     setDefaultControlState();
     reset();
   });
-}(jQuery));
+});

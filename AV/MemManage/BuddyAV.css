@@ -3,13 +3,13 @@ label {
 }
 
 #container {
-  height: 630px;
+  height: 640px;
   width: 887px;
 }
 
 .jsavcanvas { 
   width: 870px;
-  height: 500px;
+  height: 510px;
   position: absolute;
 }
 
