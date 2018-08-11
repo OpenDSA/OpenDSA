@@ -3,6 +3,7 @@
 $(document).ready(function () {
 
 var testNum = 1;
+var creditStatus = false;
 var testCaseHistory = "";
 var threshold = 50;
 var coverage = 0.00;
@@ -123,9 +124,10 @@ function classifyTriangle() {
     coverage = calculateCoverage(); 
     document.getElementById("codeCoverageBar").style = "width:" + coverage + "%";
     document.getElementById("codeCoveragePercentage").innerText = coverage.toFixed(2) + "%";
-    if(coverage >= threshold){
+    if(!creditStatus && (coverage >= threshold)){
         ODSA.AV.awardCompletionCredit();
         av.umsg(interpret("av_c1"));
+        creditStatus = true;
     }
     setPerformanceDetails();
 }
