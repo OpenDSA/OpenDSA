@@ -6,7 +6,7 @@ $(document).ready(function () {
  * Requires BowlingGame object from BowlingGame.js
  */
 var game = new BowlingGame();
-var threshold = 74;
+var threshold = 75;
 var config = ODSA.UTILS.loadConfig(),
     interpret = config.interpreter,
     av = new JSAV("ssperform", {"animationMode": "none"});
@@ -28,12 +28,6 @@ function main() {
         var message = roll + " pins hit" + 
         " *Invalid roll, not counted to score but does execute code coverage. \n";
         av.umsg(message + "\n"); 
-        var coverage = game.getCodeCovered();
-        if(coverage == threshold){
-            ODSA.AV.awardCompletionCredit();
-            av.umsg(interpret("av_c1"));
-        }
-        getCodeCoverage();
         return;
     }
     
@@ -81,6 +75,14 @@ function main() {
         }
         
     }
+
+    var coverage = game.getCodeCovered();
+        if(coverage == threshold){
+            ODSA.AV.awardCompletionCredit();
+            av.umsg(interpret("av_c1"));
+        }
+        getCodeCoverage();
+
     game.score();
     document.getElementById("testsrun").innerText = "Number of balls thrown: " + game.currentRoll;
     currentScore();
@@ -91,12 +93,6 @@ function main() {
     	var checkStrike = (game.rolls[game.currentRoll - 2] + game.rolls[game.currentRoll - 1] != 20);
     	var check1 = game.rollIndex == 3 && checkSpare && checkStrike;
 		var check2 = game.rollIndex == 4;
-		av.umsg(checkSpare);
-		av.umsg(game.rolls[game.currentRoll - 2]);
-		av.umsg(game.rolls[game.currentRoll - 1]);
-        	av.umsg(checkStrike);
-        	av.umsg(check1);
-        	av.umsg(check2);
     	if(check1 || check2){
         	var message = "Game over!  Please click reset to try again!"
         	av.umsg(message + "\n"); 
