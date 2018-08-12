@@ -83,8 +83,10 @@ $(document).ready(function() {
 
   codeLines = macroCodeLines;
 
-  var pseudo = av.code(codeLines,
-    {left: leftMargin, top: topMargin, lineNumbers: false}
+  var pseudo = av.code(codeLines, {
+      relativeTo:pseudoO, anchor:'right top', myAnchor:'left top',
+      left: leftMargin, top: 0, lineNumbers: false
+    }
   );
 
   for(var i = 0; i < codeLines.length; i++){
@@ -97,6 +99,17 @@ $(document).ready(function() {
       currentLineMain = mainIndex = i + 1;
     }
   }
+
+  pseudo.hide();
+
+  currentFooTopMargin = currentTopMargin;
+
+  av.displayInit();
+  av.step();
+
+  av.umsg("In macro expansion, the function is spliced in main. "+
+          "Then code is executed like normal.");
+  pseudo.show();
 
   for(var i = 0; i < mainIndex - 1; i++){
     if(codeLines[i]){
@@ -121,7 +134,6 @@ $(document).ready(function() {
   }
   currentTopMargin += lineHeight;
 
-
   av.label("main",
     {
       relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
@@ -133,22 +145,11 @@ $(document).ready(function() {
 
   var numVars = mainVarNum;
 
-  var mainBox = av.g.rect(2*leftMargin+pseudo.element[0].clientWidth,
+  var mainBox = av.g.rect(3*leftMargin+pseudo.element[0].clientWidth+pseudoO.element[0].clientWidth,
                           currentTopMargin,
                           boxWidth,
                           lineHeight*numVars+boxPadding*numVars
                         );
-  pseudo.hide();
-
-  currentFooTopMargin = currentTopMargin;
-
-  av.displayInit();
-  av.step();
-
-  av.umsg("In macro expansion, the function is spliced in main. "+
-          "Then code is executed like normal.");
-  pseudoO.hide();
-  pseudo.show();
 
   av.step();
 
