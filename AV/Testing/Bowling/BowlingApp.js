@@ -29,6 +29,13 @@ function main() {
         var message = roll + " pins hit" + 
         " *Invalid roll, not counted to score but does execute code coverage. \n";
         av.umsg(message + "\n"); 
+        var coverage = game.getCodeCovered();
+    	if(!creditStatus && (coverage >= threshold)){
+        	ODSA.AV.awardCompletionCredit();
+        	creditStatus = true;
+        	av.umsg(interpret("av_c1"));
+    	}
+    	getCodeCoverage();
         return;
     }
     
@@ -42,11 +49,12 @@ function main() {
         " *Invalid roll, not counted to score but does execute code coverage. \n";
         av.umsg(message + "\n"); 
         var coverage = game.getCodeCovered();
-        if(coverage == threshold){
-            ODSA.AV.awardCompletionCredit();
-            av.umsg(interpret("av_c1"));
-        }
-        getCodeCoverage();
+    	if(!creditStatus && (coverage >= threshold)){
+        	ODSA.AV.awardCompletionCredit();
+        	creditStatus = true;
+        	av.umsg(interpret("av_c1"));
+    	}
+    	getCodeCoverage();
         return;
     }
     //This code handles the proper symbols to put in the score table
@@ -78,12 +86,12 @@ function main() {
     }
 
     var coverage = game.getCodeCovered();
-        if(!creditStatus && (coverage >= threshold)){
-            ODSA.AV.awardCompletionCredit();
-            creditStatus = true;
-            av.umsg(interpret("av_c1"));
-        }
-        getCodeCoverage();
+    if(!creditStatus && (coverage >= threshold)){
+        ODSA.AV.awardCompletionCredit();
+        creditStatus = true;
+        av.umsg(interpret("av_c1"));
+    }
+    getCodeCoverage();
 
     game.score();
     document.getElementById("testsrun").innerText = "Number of balls thrown: " + game.currentRoll;
@@ -93,17 +101,17 @@ function main() {
     if(game.frameIndex == 10){
     	var checkSpare = (game.rolls[game.currentRoll - 2] + game.rolls[game.currentRoll - 1] != 10);
     	var checkStrike = (game.rolls[game.currentRoll - 2] + game.rolls[game.currentRoll - 1] != 20);
-    	var check1 = game.rollIndex == 3 && checkSpare && checkStrike;
-		var check2 = game.rollIndex == 4;
-    	if(check1 || check2){
+    	//twoRollsIn10th: The game will end if player in the 10th frame index
+    	//and didn't get either strike or sphare in the 
+    	//first two roll.
+    	var twoRollsIn10th = game.rollIndex == 3 && checkSpare && checkStrike;
+    	//threeRollsIn10th: The game will end if player in the 10th frame index
+    	//and finish three rolls.
+		var threeRollsIn10th = game.rollIndex == 4;
+		//Game over if it satisfy either "twoRollsIn10th" or "threeRollsIn10th"
+    	if(twoRollsIn10th || threeRollsIn10th){
         	var message = "Game over!  Please click reset to try again!"
         	av.umsg(message + "\n"); 
-        	var coverage = game.getCodeCovered();
-        	if(coverage >= threshold){
-        	    ODSA.AV.awardCompletionCredit();
-        	    av.umsg(interpret("av_c1"));
-        	}
-        	return;
         }
     }
 }
@@ -123,11 +131,6 @@ function logTestCase(type) {
     }
 
     av.umsg(message + "\n");
-    var coverage = game.getCodeCovered();
-    if(coverage == threshold){
-        ODSA.AV.awardCompletionCredit();
-        av.umsg(interpret("av_c1"));
-    }
 }
 
 /**
