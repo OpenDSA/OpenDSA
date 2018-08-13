@@ -211,7 +211,7 @@ Thus, the running time for this function can be expressed as
 
 .. math::
 
-   \Theta(n) = \Theta(n-1) + 1 \ \mbox{for}\ n>1;\ \ T(1) = 0.
+   T(n) = T(n-1) + 1 \ \mbox{for}\ n>1;\ \ T(1) = 0.
 
 The closed-form solution for this
 recurrence relation is :math:`\Theta(n)`.

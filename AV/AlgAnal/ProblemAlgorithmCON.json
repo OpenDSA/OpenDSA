@@ -13,7 +13,7 @@
       "sc10": "<br><br>Then a series of steps is performed to generate the output.",
       "sc11": "There are several different algorithms that can solve a particular problem. For the searching problem, here we present pseudocode for the sequential search algorithm.",
       "sc12": "<br><br> The sequential search algorithm simply loops through all the keys in the array until the target key is found in (which case the index is returned). If its not there, then the array size is returned.",
-      "sc13": "A program is an instance of a particular algorithm that solves a particular problem, implemented in some programming language.",
+      "sc13": "A program is an instantiation of a particular algorithm that solves a particular problem, implemented in some programming language.",
       "sc14": "<br><br>A program accepts a problem instance as an input.",
       "sc15": "<br><br>Then the program is executed to generate the output.",
       "sc16": "Here we present the sequential search algorithm implemented as a Java function.",
