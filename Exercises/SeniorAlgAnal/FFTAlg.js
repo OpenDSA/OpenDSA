@@ -111,21 +111,29 @@
 
     // Set up the display
     av = new JSAV("FFTAlg");
-    jsavList1 = av.ds.array(list1, {left: 70, top: 20});
-    av.label("List 1:", {left: 20, top: 25});
-    jsavList2 = av.ds.array(list2, {left: 300, top: 20});
-    av.label("List 2:", {left: 250, top: 25});
-    jsavZ = av.ds.array(zArray, {left: 90, top: 100});
-    av.label("z values:", {left: 20, top: 105});
+    var space = 20;
+    av.label("for (int j = 0; j <= n - 1; j++) {");
+    av.label("Complex i = new Complex(0.0, 2 * Math.PI * j / n);", {left: 10, top: space});
+    av.label("Complex z = i.exp();", {left: 10, top: space * 2});
+    av.label("int k = j % (n / 2);", {left: 10, top: space * 3});
+    av.label("newPoly[j] = list1[k].plus(z.times(list2[k]));", {left: 10, top: space * 4});
+    av.label("}", {top: space * 5});
+    var arrTop = 150;
+    jsavList1 = av.ds.array(list1, {left: 70, top: arrTop});
+    av.label("List1:", {left: 20, top: arrTop + 5});
+    jsavList2 = av.ds.array(list2, {left: 300, top: arrTop});
+    av.label("List2:", {left: 250, top: arrTop + 5});
+    jsavZ = av.ds.array(zArray, {left: 90, top: arrTop + 60});
+    av.label("z values:", {left: 20, top: arrTop + 65});
 
     jsavList1.click(function(index) { clickHandler(this, index); });
     jsavList2.click(function(index) { clickHandler(this, index); });
     jsavZ.click(function(index) { clickHandler(this, index); });
 
 
-    jsavOut = av.ds.array(empty, {top: 200, left: 103});
+    jsavOut = av.ds.array(empty, {top: arrTop + 140, left: 103});
     jsavOut.css({"min-width": "100px !important"});
-    av.label("Final array:", {top: 205, left: 20});
+    av.label("newPoly:", {top: arrTop + 145, left: 20});
     jsavOut.click(function(index) { clickHandler(this, index); });
     for (i = 0; i < 10; i++) {
       jsavLists[i] = av.ds.list({top: (12 + i * blockHeight), left: 260, nodegap: 30});

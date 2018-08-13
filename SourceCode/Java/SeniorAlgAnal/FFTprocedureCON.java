@@ -35,13 +35,13 @@ public class FFTprocedureCON {
         odd[i] = polynomial[2 * i + 1];
       }       
       list1 = fft(even, n / 2);
-      list2 = fft(odd, n / 2);        
+      list2 = fft(odd, n / 2);
       for (int j = 0; j <= n - 1; j++) {
         Complex i = new Complex(0.0, 2 * Math.PI * j / n);
         Complex z = i.exp();
         int k = j % (n / 2);
         newPoly[j] = list1[k].plus(z.times(list2[k]));
-      }
+      }  
       return newPoly;
     }
     /* *** ODSAendTag: FFTprocedure *** */

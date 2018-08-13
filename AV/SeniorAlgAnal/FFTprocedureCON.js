@@ -23,13 +23,13 @@ $(document).ready(function() {
 
   av.umsg("New polynomial.");
 
-  var polyLabel = av.label("$x^3+4x^2+2x+3$", {left: center - 55});
+  var polyLabel = av.label("$1+4x+2x^2+3x^3$", {left: center - 55});
 
   var poly2 = fft(polynomial, 4);
 
 
   av.ds.array(poly2, {left: center - 30 * 4 / 2});
-  av.label("$10x^3+(-1+i)x^2-4x-1-i$", {top: 50, left: center - 85});
+  av.label("$10+(-1+i)x-4x^2+(-1-i)x^3$", {top: 50, left: center - 85});
 
   av.recorded();
 

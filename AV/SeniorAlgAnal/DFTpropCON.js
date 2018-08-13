@@ -34,7 +34,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 3
-  av.umsg("Since N = 8 (degree of the polynomial), then for any integer k, we have $z^{8+k}=z^8$. So $z^0=z^8=z^{16}=z^{24}=1$.");
+  av.umsg("Since N = 8 (degree of the polynomial), then for any integer k, we have $z^{8+k}=z^k$. So $z^0=z^8=z^{16}=z^{24}=1$.");
   for (i = 0; i < 8; i++) {
     for (j = 0; j < 8; j++) {
       if (i === 0 || j === 0) {
@@ -55,7 +55,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 4
-  av.umsg("$z^4=-1$. So, we also have $z^4=z^{12}=z^{20}=z^{28}=z^{36}=-1$.");
+  av.umsg("We can compute $z^4=-1$. So, we also have $z^4=z^{12}=z^{20}=z^{28}=z^{36}=-1$.");
   mat.css(4, 2, {"background-color": color2});
   mat.css(2, 4, {"background-color": color2});
   mat.css(4, 4, {"background-color": color2});

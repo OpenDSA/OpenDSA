@@ -1,6 +1,6 @@
 <!--
     Open Hashing mini-proficiency exercise.
-    Written by Cliff Shaffer
+    Written by Irena Shaffer
   -->
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
       #FFTAlg .jsavcanvas {
-        height: 200px;
+        height: 500px;
       }
       #FFTAlg .jsavarray .jsavnode {
         min-width: 50px !important;
@@ -21,16 +21,16 @@
     </style>
   </head>
 
-  <body data-height="720" data-width="950">
+  <body data-height="700" data-width="950">
     <div class="exercise">
       <div class="vars">
         <var id="JSAV">fftAlg.initJSAV()</var>
       </div>
       <div class="problems">
         <div id="FFTAlgp"> <!-- Supresses answer box -->
-          <p class="problem">Perform the final for loop of the fft algorithm with the list 1 and list 2 values below. </p>
+          <p class="problem">Perform the final for loop of the fft algorithm (shown below) with the list1 and list2 values below. </p>
           <div class="question">
-            <p> For each element of the final array, select a value from list 1 then click on the correct index of the final array. Then choose the appropriate z value and click again on the correct index of the final array. Finally select a value from list 2. The output will appear in the form: (list 1) + z * (list 2).</p>
+            <p> For each element of newPoly, select a value from list1 then click on the correct index of newPoly. Then choose the appropriate z value and click again on the correct index of newPoly. Finally select a value from list2 then click the correct index of newPoly. The output will appear in the form: (list1) + z * (list2).</p>
           
             <input id="reset" type="button" value="Reset" />
             <div id="FFTAlg" class="jsavcanvas"></div>
@@ -45,7 +45,6 @@
             </div>
           </div>
           <div class="hints">
-            <p>Look at previous slideshow.</p>
             <p>For the first index of the final array k is 0</p>
             <p>For the first index of the final array z is 1</p>
             <p>So for the first index of the final array select the first value of list 1, 1 from the z list, and the first value of list 2.</p>
