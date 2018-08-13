@@ -25,7 +25,7 @@ The most common node implementation includes a value field and
 pointers to the two children.
 
 Here is a simple implementation for the
-``BinNode`` abstract class, which we will name ``BSTNode``.
+``BinNode`` interface, which we will name ``BSTNode``.
 Its element type is an Object.
 When we need to support search structures such as the
 :ref:`Binary Search Tree <binary search tree> <BST>`,

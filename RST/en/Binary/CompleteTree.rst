@@ -102,14 +102,15 @@ which must fall in the range 0 to :math:`n-1`.
 * Parent(:math:`r`) :math:`= \lfloor(r - 1)/2\rfloor`
   if :math:`r \neq 0`.
 
-* Left child(:math:`r`) :math:`= 2r + 1` if :math:`2r + 1 \leq n`.
+* Left child(:math:`r`) :math:`= 2r + 1` if :math:`2r + 1 < n`.
 
-* Right child(:math:`r`) :math:`= 2r + 2` if :math:`2r + 2 \leq n`.
+* Right child(:math:`r`) :math:`= 2r + 2` if :math:`2r + 2 < n`.
 
-* Left sibling(:math:`r`) :math:`= r - 1` if :math:`r` is even.
+* Left sibling(:math:`r`) :math:`= r - 1` if :math:`r` is even and
+  :math:`r \neq 0`.
 
 * Right sibling(:math:`r`) :math:`= r + 1` if :math:`r`
-  is odd and :math:`r + 1 \leq n`.
+  is odd and :math:`r + 1 < n`.
 
 .. avembed:: Exercises/Binary/CompleteFIB.html ka
    :long_name: Complete Tree Exercise

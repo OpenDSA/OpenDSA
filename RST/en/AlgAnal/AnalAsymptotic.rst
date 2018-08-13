@@ -311,6 +311,12 @@ Summary
    :scripts: AV/AlgAnal/UpperBoundCON.js
    :output: show
 
+|
+
+.. inlineav:: SimpleCostsCON dgm
+   :links: AV/SeniorAlgAnal/SimpleCostsCON.css
+   :scripts: AV/SeniorAlgAnal/SimpleCostsCON.js
+   :output: show
 
 Practice Questions
 ~~~~~~~~~~~~~~~~~~

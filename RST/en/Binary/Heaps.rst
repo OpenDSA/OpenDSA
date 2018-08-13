@@ -44,7 +44,7 @@ unbalanced, leading to bad performance.
 Instead, we would like to find a data structure that is guaranteed to
 have good performance for this special application.
 
-This section presents the :term:`heap` data structure. [#]_
+This section presents the :term:`heap` [#]_ data structure.
 A heap is defined by two properties.
 First, it is a complete binary tree,
 so heaps are nearly always implemented using the
@@ -55,6 +55,9 @@ This means that there is a relationship between the value stored at
 any node and the values of its children.
 There are two variants of the heap, depending on the definition of
 this relationship.
+
+.. [#] Note that the term "heap" is also sometimes used to refer to
+       :term:`free store`.
 
 A :term:`max heap` has the property that every node stores a
 value that is *greater* than or equal to the value of either of
@@ -130,9 +133,6 @@ Members ``leftchild``, ``rightchild``,
 and ``parent`` return the position (actually, the array index)
 for the left child, right child, and parent of the position passed,
 respectively.
-
-.. [#] Note that the term "heap" is also sometimes used to refer to
-       :term:`free store`.
 
 One way to build a heap is to insert the elements one at a time.
 Method ``insert`` will insert a new element :math:`V` into
@@ -298,7 +298,7 @@ therefore
    \sum_{i=1}^{\log n} (i-1)\frac{n}{2^i}
    = \frac{n}{2}\sum_{i=1}^{\log n} \frac{i-1}{2^{i-1}}.
 
-This :ref:`summation is known <summation> <Summations>`
+The summation on the right :ref:`is known <summation> <Summations>`
 to have a closed-form solution of approximately 2,
 so this algorithm takes :math:`\Theta(n)` time in the worst case.
 This is far better than building the heap one element at a time,

@@ -14,7 +14,7 @@
             whose value is stored in position <code>i</code> of an array
             representation for the tree. If <code>R</code> has a parent,
             where will the parent's position be in the array?</p>
-          <div class="solution"><code>\lfloor (r-1)/2 \rfloor</code></div>
+          <div class="solution"><code>\lfloor (i-1)/2 \rfloor</code></div>
           <ul class="choices" data-show="4" data-none="true">
             <li><code>i+1</code></li>
             <li><code>i+2</code></li>
@@ -26,7 +26,7 @@
             <p>If you have a left sibling, it is at <code>i-1</code>.</p>
             <p>If you have a right child, it is at <code>2*i+2</code>.</p>
             <p>If you have a left child, it is at <code>2*i+1</code>.</p>
-            <p>If you have a parent, it is at <code>\lfloor (r-1)/2 \rfloor</code>.</p>
+            <p>If you have a parent, it is at <code>\lfloor (i-1)/2 \rfloor</code>.</p>
           </div>
         </div>
       </div>
