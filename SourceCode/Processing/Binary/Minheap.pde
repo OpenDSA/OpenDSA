@@ -1,4 +1,6 @@
-/* *** ODSATag: Maxheap *** */
+// TODO: Maxheap got modified to support an "update" utility and
+// a "modify" method. These need to be repeated here.
+/* *** ODSATag: Minheap *** */
 // Min-heap implementation
 class MinHeap {
   private Comparable[] Heap; // Pointer to the heap array
@@ -91,4 +93,4 @@ class MinHeap {
     return Heap[n];
   }
 }
-/* *** ODSAendTag: Maxheap *** */
+/* *** ODSAendTag: Minheap *** */

@@ -314,8 +314,8 @@ BST.
    :output: show
 
 
-Removing from the heap
-----------------------
+Removing from the heap or updating an object's priority
+-------------------------------------------------------
 
 .. inlineav:: heapmaxCON ss
    :long_name: Remove Max Slideshow
@@ -338,7 +338,20 @@ cases.
    :scripts: DataStructures/binaryheap.js AV/Binary/heapremoveCON.js
    :output: show
 
+For some applications, objects might get their priority modified.
+One solution in this case is to remove the object and reinsert it.
+To do this, the application needs to know the position of the object
+in the heap.
+Another option is to change the priority value of the object, and then
+update its position in the heap.
+Note that a remove operation implicitly has to do this anyway, since
+when the last element in the heap is swapped with the one being
+removed, that value might be either too small or too big for its new
+position.
+So we use a utility method called ``update`` in both the ``remove``
+and ``modify`` methods to handle this process.
 
+            
 Priority Queues
 ---------------
 
@@ -364,8 +377,7 @@ A typical implementation for priority queues requiring updating of
 priorities will need to use an auxiliary data structure that supports
 efficient search for objects (such as a BST).
 Records in the auxiliary data structure will store
-the object's heap index, so that the object can be
-deleted from the heap and reinserted with its new priority.
+the object's heap index, so that the object's priority can be updated.
 Priority queues can be helpful for solving graph problems such as
 :ref:`single-source shortest paths <single-source shortest paths problem> <GraphShortest>`
 and

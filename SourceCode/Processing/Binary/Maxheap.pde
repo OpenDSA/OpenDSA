@@ -1,3 +1,5 @@
+// TODO: In Java, some of these are private methods (including update)
+// TODO: Need to test changes to update and modify
 /* *** ODSATag: Maxheap *** */
 // Max-heap implementation
 class MaxHeap {
@@ -81,14 +83,25 @@ class MaxHeap {
     if (pos == (n-1)) n--; // Last element, no work to be done
     else {
       swap(Heap, pos, --n); // Swap with last value
-      // If we just swapped in a big value, push it up
-      while ((pos > 0) && (Heap[pos].compareTo(Heap[parent(pos)]) > 0)) {
-        swap(Heap, pos, parent(pos));
-        pos = parent(pos);
-      }
-      if (n != 0) siftdown(pos); // If it is little, push down
+      update(pos);
     }
-    return Heap[n];
+  }
+
+  // Modify the value at the given position
+  void modify(int pos, Comparable newVal) {
+    if ((pos < 0) || (pos >= n)) return; // Illegal heap position
+    Heap[pos] = newVal();
+    update(pos);
+  }
+
+  // The value at pos has been changed, restore the heap property
+  void update(pos) {
+    // If it is a big value, push it up
+    while ((pos > 0) && (Heap[pos].compareTo(Heap[parent(pos)]) > 0)) {
+      swap(Heap, pos, parent(pos));
+      pos = parent(pos);
+    }
+    if (n != 0) siftdown(pos); // If it is little, push down
   }
 }
 /* *** ODSAendTag: Maxheap *** */
