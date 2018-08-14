@@ -43,11 +43,22 @@
   "chapters": {
     "Introduction to Pointers in Java": {
       "PointersJava/PointerIntro": {},
-      "PointersJava/BasicPointers": {},
+      "PointersJava/BasicPointers": {
+        "PointerEX1PRO": {
+          "threshold": 1
+        }, 
+        "PointerEX2PRO": {
+          "threshold": 1
+        }
+      }, 
       "PointersJava/Syntax": {},
       "PointersJava/LocalMem": {},
       "PointersJava/HeapMem": {},
-      "PointersJava/Links": {},
+      "PointersJava/Links": {
+        "PointerEX3PRO": {
+          "threshold": 1
+        }
+      },
       "PointersJava/Exercises": {}
     },
     "Appendix": {

@@ -12,11 +12,6 @@
 Pointers Chapter Introduction
 =============================
 
-What you see in this chapter is an early version of our
-Pointer Tutorial project.
-We have ambitious goals for this material, but it will take us some
-time to realize them.
-
 The prose and images in this version originally came from 
 a document written by Nick Parlante of Stanford University, and used
 by permission of the author:
@@ -40,6 +35,3 @@ Our goals for this project include the following:
   effects of the code.
 * Automated feedback including program visualizations for student
   answers to the programming exercises.
-  We are currently experimenting with integrating Philip Guo's
-  `PythonTutor <http://www.pythontutor.com/>`_
-  visualization system to support this.

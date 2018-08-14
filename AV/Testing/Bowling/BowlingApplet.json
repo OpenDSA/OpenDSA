@@ -25,7 +25,7 @@
       "#scores": "Score",
       "#rolls": "Rolls",
       "#score": "0",
-      "av_c1": "Congratuations!"
+      "av_c1": "Congratuations! You reached the credit threshold for this exercise."
     }
   }
 }
