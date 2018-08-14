@@ -132,7 +132,7 @@ swaps took place during that iteration, and quit if not
 (since we know the list is ordered at this point).
 We can improve on this idea even more by recognizing that if the last
 swap done affects the values at positions :math:`i` and :math:`i+1`,
-no swaps could happen to values a positions greater than :math:`i`.
+no swaps could happen to values at positions greater than :math:`i`.
 Thus, we never need to check higher-positioned values again, which
 could save many iterations even if there are a few swaps lower down.
 Here is code to implement this approach.
