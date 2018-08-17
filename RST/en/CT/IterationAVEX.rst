@@ -16,25 +16,25 @@ List Iteration
 --------------
 
 .. inlineav:: iteration1CON ss
-   :long_name: Iteration First Slide
+   :long_name: Iteration Slide 1: Basic
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration1CON.js
    :output: show
 
 .. inlineav:: iteration2CON ss
-   :long_name: Iteration Second Slide
+   :long_name: Iteration Slide 2: State of Price
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration2CON.js
    :output: show
 
 .. inlineav:: iteration3CON ss
-   :long_name: Iteration Third Slide
+   :long_name: Iteration Slide 3: Calculate Total
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration3CON.js
    :output: show
 
 .. inlineav:: iteration4CON ss
-   :long_name: Iteration Fifth Slide -- Average
+   :long_name: Iteration Slide 4: Average
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration4CON.js
    :output: show
@@ -43,4 +43,4 @@ List Iteration
    :long_name: Iteration Khan Exercise
 
 .. avembed:: Exercises/CT/iterationEXPRO.html pe
-   :long_name: Iteration JSAV Exercise
+   :long_name: Iteration JSAV Click-through Exercise

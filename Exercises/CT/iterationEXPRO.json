@@ -4,7 +4,7 @@
       ".avTitle": "Iteration Visualizaiton JSAV Exercise",
       "av_Authors": "Jieun Chon, Cliff Shaffer, Dennis Kafura, Cory Bart",
       ".instructLabel": "Instructions:",
-      ".instructions": "Reproduce the behavior of the Iteration Visualizaiton for the for loop below. Just click on the <strong>boxes</strong> in the order that they will be executed by the for loop. Start with blue box on the top.",
+      ".instructions": "Reproduce the behavior of the Iteration Visualization for the for loop below. Click on the <strong>boxes</strong> in the order that they will be executed by the for loop. Start with blue box on the top.",
       "#help": "Help",
       "#about": "About"
     }
