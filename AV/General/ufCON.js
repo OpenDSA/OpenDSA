@@ -50,7 +50,7 @@ $(document).ready(function () {
   tree.layout();
 
   // Slide 1
-  av.umsg("We will now demonstrate a series UNION operations");
+  av.umsg("We will now demonstrate a series of UNION operations");
   av.displayInit();
 
   // Slide 2
