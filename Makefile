@@ -112,6 +112,9 @@ SimpleDemo: min
 CT: min
 	python $(CONFIG_SCRIPT) config/CT.json --no-lms
 
+CTEX: min
+	python $(CONFIG_SCRIPT) config/CTEX.json --no-lms
+
 NP: min
 	python $(CONFIG_SCRIPT) config/NP.json --no-lms
 

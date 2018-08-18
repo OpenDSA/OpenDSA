@@ -9,11 +9,11 @@
    :satisfies: iteration
    :topic: programming concepts
 
-List Iteration
-==============
+List Iteration Visualizations
+=============================
 
-List Iteration
---------------
+List Iteration Visualizations
+-----------------------------
 
 .. inlineav:: iteration1CON ss
    :long_name: Iteration Slide 1: Basic
@@ -21,11 +21,15 @@ List Iteration
    :scripts: AV/CT/iteration1CON.js
    :output: show
 
+|
+
 .. inlineav:: iteration2CON ss
    :long_name: Iteration Slide 2: State of Price
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration2CON.js
    :output: show
+
+|
 
 .. inlineav:: iteration3CON ss
    :long_name: Iteration Slide 3: Calculate Total
@@ -33,14 +37,10 @@ List Iteration
    :scripts: AV/CT/iteration3CON.js
    :output: show
 
+|
+
 .. inlineav:: iteration4CON ss
    :long_name: Iteration Slide 4: Average
    :links: AV/CT/iterationCON.css
    :scripts: AV/CT/iteration4CON.js
    :output: show
-
-.. avembed:: Exercises/CT/IterationStateEXPRO.html ka
-   :long_name: Iteration Khan Exercise
-
-.. avembed:: Exercises/CT/iterationEXPRO.html pe
-   :long_name: Iteration JSAV Click-through Exercise
