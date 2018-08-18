@@ -111,14 +111,13 @@ $(document).ready(function() {
       if (next.hasClass("marked")) {
         av.umsg("Node " + next.value() + " already marked");
         av.step();
-      }
-      if (!next.hasClass("marked")) {
+      } else {
         av.umsg("Call depth first search on " + next.value());
         av.step();
         dfs(next, start);
       }
     }
-    postVisit(av, start, prev);
+    postVisit(start, prev);
   }
 
 
