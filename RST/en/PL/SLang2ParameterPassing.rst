@@ -302,6 +302,11 @@ Call-by-name differs from macro expansion in that only the parameters
 are evaluated in the caller's context, not the whole body of the
 function.
 
+.. inlineav:: paramPassingByName ss
+   :long_name: Parameter Passing By Name
+   :links:
+   :scripts: AV/PL/paramPassingByName.js
+   :output: show
 
 
 This problem will help you review the differences among *call by

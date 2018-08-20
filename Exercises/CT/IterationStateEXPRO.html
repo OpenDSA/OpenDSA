@@ -1,51 +1,48 @@
-iterationStateEXPRO<!--
+<!--
     Linked List Deletion mini-proficiency exercise.
     Written by Jieun Chon and Cliff Shaffer
   -->
-
 <!DOCTYPE html>
 <html data-require="jsav math IterationStateEXPRO LinkList">
+  <head>
+    <title>Iteration Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="IterationEX.css" />
+  </head>
 
-<head>
-  <title>Iteration Exercise</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-  <script src="../../khan-exercises/local-only/main.js"></script>
-  <link rel="stylesheet" type="text/css" href="IterationEX.css" />
+  <body data-height="800" data-width="950">
 
-</head>
+    <div class="exercise">
+      <div class="vars">
+        <var id="pos">Khan.randRange(1, 2)</var>
+        <var id="JSAV">iterationStateEXPRO.initJSAV(pos)</var>
+      </div>
 
-<body data-height="800" data-width="950">
-
-  <div class="exercise">
-    <div class="vars">
-      <var id="pos">Khan.randRange(1, 2)</var>
-      <var id="JSAV">iterationStateEXPRO.initJSAV(pos)</var>
-    </div>
-
-    <div class="problems">
-      <div id="IterationStateEXPROp">
-        <!-- Supresses answer box -->
-        <p class="problem">Given the iteration block, the state shows the price and total before the execution of the statement
-          indicated by the yellow outline. What is the value of the variables "price" and "total" immediately
-          <b>after</b> the execution of the statement indicated by the yellow outline? You can change
-          the valuse of "price" and "total" by clicking the box or variable label and typing a new value.</p>
-        <div class="question">
+      <div class="problems">
+        <div id="IterationStateEXPROp">
+          <!-- Supresses answer box -->
+          <p class="problem">Given the iteration block, the state shows the price and total before the execution of the statement
+            indicated by the yellow outline. What is the value of the variables "price" and "total" immediately
+            <b>after</b> the execution of the statement indicated by the yellow outline? You can change
+            the valuse of "price" and "total" by clicking the box or variable label and typing a new value.</p>
+          <div class="question">
 
 
-          <div id="IterationStateEXPRO" class="jsavcanvas"></div>
-          <input id="reset" type="button" value="Reset" />
-        </div>
-        <div class="solution" data-type="custom">
-          <div class="guess"> [iterationStateEXPRO.userInput] </div>
-          <div class="validator-function">
-            if (!iterationStateEXPRO.checkAnswer() && !guess[0]) { return ""; } else {return iterationStateEXPRO.checkAnswer();}
+            <div id="IterationStateEXPRO" class="jsavcanvas"></div>
+            <input id="reset" type="button" value="Reset" />
           </div>
-        </div>
-        <div class="hints">
+          <div class="solution" data-type="custom">
+            <div class="guess"> [iterationStateEXPRO.userInput] </div>
+            <div class="validator-function">
+              if (!iterationStateEXPRO.checkAnswer() && !guess[0]) { return ""; } else {return iterationStateEXPRO.checkAnswer();}
+            </div>
+          </div>
+          <div class="hints">
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 
 </html>

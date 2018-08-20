@@ -47,8 +47,7 @@ Figure :num:`Figure #MCSTdgm` shows the MCST for an example graph.
 
    A graph and its MCST.
    All edges appear in the original graph.
-   Those edges drawn with heavy lines indicate
-   the subset making up the MCST.
+   Those edges drawn in red indicate the subset making up the MCST.
    Note that edge :math:`(C, F)` could be replaced with edge
    :math:`(D, F)` to form a different MCST with equal cost.
 
@@ -168,7 +167,7 @@ cost?
    In other words, :math:`e_j` is the first edge where Prim's algorithm
    "went wrong."
    Let :math:`\mathbf{T}` be the "true" MCST.
-   Call :math:`\v_p (p<j)` the vertex connected by edge
+   Call :math:`v_p (p<j)` the vertex connected by edge
    :math:`e_j`, that is, :math:`e_j = (v_p, v_j)`.
 
    Because :math:`\mathbf{T}` is a tree, there exists some path in
@@ -184,7 +183,7 @@ cost?
    available.
    It would have selected :math:`e'`, not :math:`e_j`.
    Thus, it is a contradiction that Prim's algorithm would have selected
-   the wrong edge, and thus, Prim's algorithm must be correct. BOX HERE
+   the wrong edge, and thus, Prim's algorithm must be correct.
 
 .. _PrimProof:
 

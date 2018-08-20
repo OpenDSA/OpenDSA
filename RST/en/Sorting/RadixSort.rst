@@ -90,12 +90,12 @@ array.
 .. codeinclude:: Sorting/Radixsort
    :tag: Radixsort
 
-The first inner ``for`` loop initializes array ``cnt``.
+The first inner ``for`` loop initializes array ``count``.
 The second loop counts the number of records to be assigned to each
 bin.
-The third loop sets the values in ``cnt`` to their proper
+The third loop sets the values in ``count`` to their proper
 indices within array ``B``.
-Note that the index stored in ``cnt[j]``
+Note that the index stored in ``count[j]``
 is the *last* index for bin ``j``; bins are filled
 from high index to low index.
 The fourth loop assigns the records to the bins (within
@@ -168,7 +168,7 @@ Processing a 32-bit integer key requires only four passes.
 It is not unreasonable on most computers to use
 :math:`r = 2^{16} = 64\mbox{K}`, resulting in only two passes for a
 32-bit key.
-Of course, this requires a ``cnt`` array of size 64K.
+Of course, this requires a ``count`` array of size 64K.
 Performance will be good
 only if the number of records is about 64K or greater.
 In other words, the number of records must be large compared to the

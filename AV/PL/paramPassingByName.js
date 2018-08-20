@@ -1,6 +1,6 @@
 $(document).ready(function() {
   "use strict";
-  var av_name = "paramPassingByRef";
+  var av_name = "paramPassingByName";
 
   var av = new JSAV(av_name);
 
@@ -29,6 +29,10 @@ $(document).ready(function() {
   var unhighlightAll = function(){
     unhighlightElements(classVars);
     unhighlightElements(mainVars);
+  }
+
+  function recomputeThunk(pointer,array,index){
+    pointer.target(array,{targetIndex:index});
   }
 
   av.umsg("main() begins execution.");
@@ -219,8 +223,17 @@ $(document).ready(function() {
     var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
                   ' set to the value of '+rhs.value;
 
-    av.umsg(outMsg);
+
     pseudo.setCurrentLine(currentLineFoo++);
+
+    if(lhs == fooVarNames[0]){
+      var arrName = fooPassedIn[1].charAt(0);
+      recomputeThunk(fooLabels[fooVarNames[1]],classVars[arrName],rhs.value);
+      fooVars[fooVarNames[1]+'-index'] = rhs.value;
+      outMsg += '. '+fooVarNames[1]+' now points to '+arrName+'['+rhs.value+']';
+    }
+    av.umsg(outMsg);
+
     av.step();
   }
   //foo() print lines
@@ -253,7 +266,7 @@ $(document).ready(function() {
 
   av.recorded();
 
-  if(CallByAllFive.byrefOutput != output){
-    alert("byref error");
+  if(CallByAllFive.bynamOutput != output){
+    alert("byname error");
   }
 });

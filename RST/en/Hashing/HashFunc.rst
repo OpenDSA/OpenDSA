@@ -46,8 +46,8 @@ birthdays fall.
 Try it for yourself.
 You can use the calculator to see the probability of a collision.
 The default values are set to show the number of people in a room such
-that the chance of a duplicate is just over 50%
-By you can set any table size and any number of records to determine
+that the chance of a duplicate is just over 50%.
+But you can set any table size and any number of records to determine
 the probability of a collision under those conditions.
 
 .. avembed:: AV/Hashing/Birthday.html pe

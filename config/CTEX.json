@@ -1,6 +1,6 @@
 {
-  "title": "Computational Thinking",
-  "desc": "Computational Thinking Course Materials",
+  "title": "Computational Thinking Exercises",
+  "desc": "Computational Thinking Exercises",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -65,16 +65,8 @@
     "required": true
   },
   "chapters": {
-    "Iteration": {
-      "CT/Iteration": {}
-    },
-    "Iteration Slides and Exercises": {
-      "CT/IterationAV": {},
+    "Iteration Exercises": {
       "CT/IterationEX": {}
-    },
-    "Appendix": {
-      "Glossary": {},
-      "Bibliography": {}
     }
   }
 }
