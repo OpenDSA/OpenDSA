@@ -177,7 +177,8 @@ $(document).ready(function() {
       )['value']
     }
     fooLabels[fooVarNames[i]] = av.pointer(fooVarNames[i],target,{
-      targetIndex: pIndex
+      targetIndex: pIndex,
+      left: lineHeight
     })
     fooVars[fooVarNames[i]] = target;
     fooVars[fooVarNames[i]+'-index'] = pIndex;
@@ -222,13 +223,16 @@ $(document).ready(function() {
     var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
                   ' set to the value of '+rhs.value;
 
-    av.umsg(outMsg);
+
     pseudo.setCurrentLine(currentLineFoo++);
 
     if(lhs == fooVarNames[0]){
-      recomputeThunk(fooLabels[fooVarNames[1]],classVars[fooPassedIn[1].charAt(0)],rhs.value);
+      var arrName = fooPassedIn[1].charAt(0);
+      recomputeThunk(fooLabels[fooVarNames[1]],classVars[arrName],rhs.value);
       fooVars[fooVarNames[1]+'-index'] = rhs.value;
+      outMsg += '. '+fooVarNames[1]+' now points to '+arrName+'['+rhs.value+']';
     }
+    av.umsg(outMsg);
 
     av.step();
   }

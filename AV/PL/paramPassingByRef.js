@@ -173,7 +173,8 @@ $(document).ready(function() {
       )['value']
     }
     fooLabels[fooVarNames[i]] = av.pointer(fooVarNames[i],target,{
-      targetIndex: pIndex
+      targetIndex: pIndex,
+      left: lineHeight
     })
     fooVars[fooVarNames[i]] = target;
     fooVars[fooVarNames[i]+'-index'] = pIndex;
