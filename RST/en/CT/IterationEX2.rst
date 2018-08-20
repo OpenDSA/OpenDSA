@@ -9,16 +9,11 @@
    :satisfies: iteration
    :topic: programming concepts
 
-List Iteration Exercises
-========================
+List Iteration Exercises 2
+==========================
 
-List Iteration Exercises
-------------------------
-
-.. avembed:: Exercises/CT/IterationStateEXPRO.html ka
-   :long_name: Iteration Khan Exercise
-
-|
+List Iteration Exercises 2
+--------------------------
 
 .. avembed:: Exercises/CT/iterationEXPRO.html pe
    :long_name: Iteration JSAV Click-through Exercise

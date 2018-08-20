@@ -30,9 +30,7 @@ Introduction
    * Sign-in sheet (be sure to sign-in on one of them)
    * Get a copy of the syllabus
    * Force Add System:
-      * https://www.cs.vt.edu/F16Force-Adds,
-      * Password: 3114cas#, 3114bap#
-   * Consent forms (please return at end of class)
+      * https://cs.vt.edu/Academics/Undergraduate/ForceAdd.html/
 
 .. slide:: Course Mechanics
 
@@ -109,7 +107,5 @@ Introduction
 .. slide:: Before you leave today
 
    * Put your name and PID on sign-up sheet
-   * If you need to add the course:
-      * Log in to https://www.cs.vt.edu/F16Force-Adds:
-      * Password: 3114cas#, 3114bap#
-   * Please return consent form
+   * If you need to force add the course:
+      *  https://cs.vt.edu/Academics/Undergraduate/ForceAdd.html/
