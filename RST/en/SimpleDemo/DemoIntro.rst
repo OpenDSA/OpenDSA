@@ -179,3 +179,14 @@ user identify the maximum by picking it from a multiple-choice list.
 (See *Simple_demo_ex3* in the Exercises/SimpleDemo directory.)
 
 .. avembed:: Exercises/SimpleDemo/Simple_demo_ex3.html ka
+
+
+Simple JSAV Proficiency Exercise
+--------------------------------
+
+Now test yourself to see how well you understand Shellsort.
+Can you reproduce its behavior?
+
+.. avembed:: AV/SimpleDemo/simpledemoPRO.html pe
+   :long_name: SimpleDemo Proficiency Exercise
+   
