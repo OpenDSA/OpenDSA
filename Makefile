@@ -127,6 +127,9 @@ FormalLang: min
 VisFormalLang: min
 	python $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
 
+PIExample: min
+	python $(CONFIG_SCRIPT) config/PIExample.json --no-lms
+
 OpenPOPExercises: min
 	python $(CONFIG_SCRIPT) config/OpenPOPExercises.json --no-lms
 
