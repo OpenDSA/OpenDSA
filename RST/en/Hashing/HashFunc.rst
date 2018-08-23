@@ -50,7 +50,7 @@ that the chance of a duplicate is just over 50%.
 But you can set any table size and any number of records to determine
 the probability of a collision under those conditions.
 
-.. avembed:: AV/Hashing/Birthday.html pe
+.. avembed:: AV/Hashing/Birthday.html ss
    :long_name: Birthday Problem Calculator
 
 Use the calculator to answer the following questions.

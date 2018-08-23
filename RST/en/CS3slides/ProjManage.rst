@@ -20,12 +20,12 @@ Program Management
 .. slide:: Project Management
 
    | Project management is a skill
-   |    It has to be learned
-   |    It has to be practiced
+   |   It has to be learned
+   |   It has to be practiced
    | Any skill-based class will typically grade you on process
-   |    Consider taking a class to learn Tennis
+   |   Consider taking a class to learn Tennis
    | This semester, we will pay a lot of attention to your **process**
-   |    We are working on ways to grade process
+   |   We are working on ways to grade process
 
 
 .. slide:: Scheduling
@@ -58,11 +58,21 @@ Program Management
       :align: center
       :alt: Programmer time data
 
-   * X axis is % of total time spent by about one week before program
+   | X axis is % of total time spent by about one week before program
      due date.
-   * Y axis is score.
+   | Y axis is score.
 
 
+.. slide:: Historical Data 2
+
+   | Results were significant:
+   |   90% of scores below median were students who did less than 50% of the
+       project prior to the last week.
+   |   Few did poorly who put in > 50% time early
+   |   Some did well who didn’t put in >50% time early, but most who did well
+       put in the early time
+
+   
 .. slide:: Historical Data 2
 
    | Results were significant:
@@ -109,7 +119,6 @@ Program Management
    |   Add a functional unit
    |   Debug the resulting program
    |   Have a way to track details
-   |
    | Do mechanics early
    | Do structural design before implementation
    | Implement the tricky parts last
@@ -128,7 +137,20 @@ Program Management
    | Incremental Development
    |   Interleave writing and debugging
 
+=======
+   
+.. slide:: How to Survive
 
+   | Keys to success:
+   | Keeping Track of all the details
+   |   You can't remember it all
+   | Rational Planning (and keeping to the plan)
+   |   Spread the work over time
+   | Incremental Development
+   |   Interleave writing functional code and writing test code.
+   |   Interleave implementing functionality and debugging
+
+   
 .. slide:: Being Organized 1
 
    | Software development has so many details
@@ -164,7 +186,6 @@ Program Management
    |   Issue trackers
    |   Documenting/Commenting
    |   Be able to update lists at any time,
-
    | Repository: GitHub
 
 
@@ -172,7 +193,6 @@ Program Management
 
    | For anything beyond a small software project, you must have a
      plan/schedule
-   |
    | Explicitly develop a schedule:
    |   Break into pieces: List of subtasks
    |   Deadlines for subtasks
@@ -182,15 +202,12 @@ Program Management
 
 .. slide:: Incremental Development
 
-   Break the project into a small initial core
-
-   Implement and TEST and COMMENT the core
-
+   | Break the project into a small initial core
+   | Implement and TEST and COMMENT the core
    | Then gradually add functionality
-   |   On any given day, write only as much code as you have time to debug
-       THAT DAY
-   |   This works well with Scheduling and Organizing
-
+   | On any given day, write only as much code as you have time to debug
+     THAT DAY
+   | This works well with Scheduling and Organizing
 
 .. note::
 
@@ -203,7 +220,7 @@ Program Management
 
 .. slide:: Milestones
 
-   * Big positive effect with milestones (S16) vs without (F14)
+   | Big positive effect with milestones (S16) vs without (F14)
 
    ====  ===   ===
          S16   F14
