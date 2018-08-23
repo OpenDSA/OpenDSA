@@ -9,11 +9,11 @@
    :satisfies: iteration
    :topic: programming concepts
 
-List Iteration Exercises 1
-==========================
+Classwork 8
+===========
 
-List Iteration Exercises 1
---------------------------
+List Exercise 1
+---------------
 
 .. avembed:: Exercises/CT/IterationStateEXPRO.html ka
    :long_name: Iteration Khan Exercise

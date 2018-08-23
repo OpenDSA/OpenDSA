@@ -9,11 +9,11 @@
    :satisfies: iteration
    :topic: programming concepts
 
-List Iteration Exercises 2
-==========================
+Homework 8
+==========
 
-List Iteration Exercises 2
---------------------------
+List Exercise 2
+---------------
 
 .. avembed:: Exercises/CT/iterationEXPRO.html pe
    :long_name: Iteration JSAV Click-through Exercise
