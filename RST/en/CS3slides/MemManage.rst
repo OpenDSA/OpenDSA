@@ -118,36 +118,55 @@ Memory Management
 
 .. slide:: Sequential Fit Methods
 
-   * First Fit: Start from beginning, pick first free block that is
+   | First Fit: Start from beginning, pick first free block that is
      big enough
+   |   Store list in memory-pool order
+   |   Circular first fit: Move forward from current position
 
-      * Store list in memory-pool order
-      * Circular first fit: Move forward from current position
+   | Best Fit: Pick the smallest block big enough
+   |   Store by block size, or search list
+   |   Protect large blocks for big requests
 
-   * Best Fit: Pick the smallest block big enough
-
-      * Store by block size, or search list
-      * Protect large blocks for big requests
-
-   * Worst Fit: Pick the biggest block
-
-      * Store by block size, or search list
-      * Avoid external fragmentation
+   | Worst Fit: Pick the biggest block
+   |   Store by block size, or search list
+   |   Avoid external fragmentation
 
 
 .. slide:: Example
 
    .. avembed:: AV/MemManage/firstFitAV.html ss
 
+
 .. slide:: .
 
-   .
+   |
+         
+
+.. slide:: Buddy Method
+
+   | The memory pool is a power of 2 in size.
+   | Memory allocations are always the smallest power of 2 equal to or
+     bigger than the request.
+   | Free (and allocated) blocks are therefore always a power of 2
+   | Keep a list for each block size
+   | Easy to merge freed blocks
+
+
+.. slide:: Buddy Method Example
+
+   .. avembed:: AV/MemManage/BuddyAV.html ss
+
+
+.. slide:: .
+
+   |
+         
 
 .. slide:: Failure Policies
 
-   * What do we do if there is no free block that can hold the message?
-   * Must resort to a **failure policy**.
-      * Reject the request
-      * Grow the memory
-      * Compact the memory
-      * Garbage collection
+   | What do we do if there is no free block that can hold the message?
+   | Must resort to a **failure policy**.
+   |   Reject the request
+   |   Grow the memory
+   |   Compact the memory
+   |   Garbage collection
