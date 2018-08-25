@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Nick Parlante, Cliff Shaffer, Sally Hamouda, Mostafa Mohammed, and Sushma Mandava
-   :requires: Basic References
+   :requires: Pointer intro
    :satisfies: Pointer Syntax
    :topic: Pointers
 

@@ -77,6 +77,22 @@
       "Tutorials/scanning": {}, 
       "Tutorials/randomaccessfile": {}, 
       "Tutorials/junitstart": {}
+      "Testing/TestIntro": {},
+      "Testing/TestCoverage": {
+        "TriangleApplet": {
+          "exer_options": {
+            "code": "true"
+          }
+        }
+      },
+      "Testing/Example2": {},
+      "Testing/Bowling": {
+        "BowlingApplet": {
+          "exer_options": {
+            "code": "true"
+          }
+        }
+      }
     }, 
     "Introduction to Pointers in Java": {
       "PointersJava/PointerIntro": {}, 
@@ -88,13 +104,15 @@
           "threshold": 1
         }
       }, 
+      "PointersJava/Syntax": {},
       "PointersJava/LocalMem": {}, 
       "PointersJava/HeapMem": {}, 
       "PointersJava/Links": {
         "PointerEX3PRO": {
           "threshold": 1
         }
-      }
+      },
+      "PointersJava/Exercises": {}
     }, 
     "Object-Oriented Programming": {
       "Design/IntroOO": {},
