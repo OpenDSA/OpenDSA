@@ -76,7 +76,7 @@
       "Tutorials/debug": {}, 
       "Tutorials/scanning": {}, 
       "Tutorials/randomaccessfile": {}, 
-      "Tutorials/junitstart": {}
+      "Tutorials/junitstart": {},
       "Testing/TestIntro": {},
       "Testing/TestCoverage": {
         "TriangleApplet": {

@@ -73,16 +73,6 @@ Program Management
        put in the early time
 
    
-.. slide:: Historical Data 2
-
-   | Results were significant:
-   |   90% of scores below median were students who did less than 50% of the
-       project prior to the last week.
-   |   Few did poorly who put in > 50% time early
-   |   Some did well who didn’t put in >50% time early, but most who did well
-       put in the early time
-
-
 .. slide:: Historical Data 3
 
    | Correlations:
@@ -111,6 +101,7 @@ Program Management
      | Write the project
      | Debug the project
 
+
 .. slide:: How to succeed at implementing
 
    | Write the smallest possible kernel
@@ -136,19 +127,6 @@ Program Management
 
    | Incremental Development
    |   Interleave writing and debugging
-
-=======
-   
-.. slide:: How to Survive
-
-   | Keys to success:
-   | Keeping Track of all the details
-   |   You can't remember it all
-   | Rational Planning (and keeping to the plan)
-   |   Spread the work over time
-   | Incremental Development
-   |   Interleave writing functional code and writing test code.
-   |   Interleave implementing functionality and debugging
 
    
 .. slide:: Being Organized 1
@@ -234,11 +212,23 @@ Program Management
    ====  ===   ===
 
 
-.. slide:: Working with a Partner
+.. slide:: Working with a Partner (1)
+
+   | Typically, about half to 2/3 of students work with a partner.
+   | As a population, we cannot distinguish differences in performance
+     in terms of score distribution between partnerships and singles.
+   | Data indicate that each member of partnership works about 80% as
+     much as a person working alone.
+  
+
+.. slide:: Working with a Partner (2)
+
+   | About 1/3 of partnerships end badly.
+   |   The common complaint is one blaming the other for "letting me down".
 
    | Two approaches:
-   |   Divide and Conquer
-   |   Extreme Programming
+   |   Divide and Conquer: Bad
+   |   Extreme Programming: Good
 
 .. note::
 

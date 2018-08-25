@@ -47,7 +47,7 @@ There can be at most :math:`N` such lists, because there can only be
 :math:`N` distinct block sizes.
 
 When a request comes in for :math:`m` words, we first determine the
-smallest value of :math:`k` such that :math:`2^k > m`.
+smallest value of :math:`k` such that :math:`2^k \geq m`.
 A block of size :math:`2^k` is selected from the free list for
 that block size if one exists.
 The buddy system does not worry about internal fragmentation:

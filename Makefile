@@ -187,6 +187,9 @@ CS2: min
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
+CSC215: min
+	python $(CONFIG_SCRIPT) config/CSC215.json --no-lms
+
 Yuhui: min
 	python $(CONFIG_SCRIPT) config/Yuhui.json --no-lms
 
