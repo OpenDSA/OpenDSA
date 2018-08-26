@@ -124,6 +124,9 @@ JFLAP: min
 FormalLang: min
 	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
 
+OpenFLAP: min
+	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
+
 VisFormalLang: min
 	python $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
 
