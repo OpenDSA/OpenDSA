@@ -6,8 +6,8 @@
 .. avmetadata:: 
    :author: Tom Naps and Cliff Shaffer
 
-Slide Shows and KA Exercises in OpenDSA
-=======================================
+Slide Shows, KA and JSAV Exercises in OpenDSA
+=============================================
 
 Introduction
 ------------
@@ -32,7 +32,7 @@ A simple diagram
 The simplest thing to do in terms of an OpenDSA visual is called a
 "diagram".
 This is just a static picture, and it has no interface.
-To keep things simple for devlopers, diagrams are automatically
+To keep things simple for developers, diagrams are automatically
 incorporated into the compiled HTML page for a book using the
 ``inlineav`` directive in the RST file.
 That means there is no explicit HTML file that a developer creates for
@@ -53,7 +53,7 @@ with three lines.
    A two-coloring for the regions formed by three lines in the plane.
 
 
-There is a certain amount of art and judgement to writing even
+There is a certain amount of art and judgment to writing even
 something as simple as this diagram.
 Imagine that we decided that the whole thing should be moved to the
 right 100 pixels, maybe because we want to add some more content.
@@ -184,8 +184,34 @@ user identify the maximum by picking it from a multiple-choice list.
 Simple JSAV Proficiency Exercise
 --------------------------------
 
-Now test yourself to see how well you understand Shellsort.
-Can you reproduce its behavior?
+JSAV exercises don't use the KA infrastructure but instead rely on an
+exercise API incorporated directly into JSAV.  This API is described
+at http://jsav.io/exercises/exercise/.  The essence of a JSAV
+proficiency exercise is that a user is asked to trace each successive
+step in some algorithm.  At any given stage they may ask to see a
+"model answer", but upon doing so will be notified that their current
+attempt at the exercise will now not be officially graded.
+
+JSAV provides a tutorial on how to use this API at
+http://jsav.io/exercises/tutorial-exercise/.  In this tutorial the
+user is asked to successively click on each element of an array in
+left-to-right fashion and then click on the first and last elements to
+swap them.  In the simple demo example below, we extend that example
+by also asking the user to increment each array element by one before
+clicking on it.  We also organize the example to be more consistent
+with the exercise guideline described at
+https://opendsa.readthedocs.io/en/latest/AV.html#stand-alone-vs-inline-avs-and-exercises by breaking up the code for the example into five separate files:
+
+- simpledemoPRO.css -- style file
+- simpledemoPRO.html -- HTML for the iframe that contains the exercise in the book module
+- simpledemoPRO.js -- Java Script code.  Here we provide the function
+  for initialization/reset, the function for the model solution, the
+  handler for the user's clicking on an array element, and the
+  function to "fix" an erroneous response provided by a user so that
+  user can continue on from this step (without receiving credit for
+  the step).
+- simpledemoPRO.json -- configuration file
+ 
 
 .. avembed:: AV/SimpleDemo/simpledemoPRO.html pe
    :long_name: SimpleDemo Proficiency Exercise

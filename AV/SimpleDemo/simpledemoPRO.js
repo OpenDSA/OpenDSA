@@ -14,7 +14,7 @@ $(document).ready(function () {
       for (var i = 0; i < arraySize; i++) {
         modelArray.highlight(i);
 	  modelArray.value(i,modelArray.value(i)+1);
-        modeljsavAV.umsg("Highlight " + i);
+        modeljsavAV.umsg("Increment and highlight " + i);
         modeljsavAV.gradeableStep();
       }
       // swap the first and last element
@@ -31,7 +31,7 @@ $(document).ready(function () {
         jsavArray.clear();
         swapIndex.clear();
       }
-      av.umsg("Directions: Click on all array elements from left to right to highlight them. Then click on the first and last elements to swap them."); 
+      av.umsg("Directions: In the first phase, click on each array element from left to right to highlight it after you have filled in its newly incremented value in the space provided. Then click on the first and last elements to swap them."); 
       initialArray = JSAV.utils.rand.numKeys(10, 100, arraySize);
 
       jsavArray = av.ds.array(initialArray, {indexed: true});

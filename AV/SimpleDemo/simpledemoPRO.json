@@ -3,21 +3,9 @@
     "en": {
       ".exerciseTitle": "Simple JSAV Proficiency Exercise",
       ".instructLabel": "Instructions:",
-      ".instructions":  "Directions: Click on all array elements from left to right to highlight them. Then click on the first and last elements to swap them.",
+      ".instructions":  "Directions: From left to right, fill in the new incremented value of an array cell and then click on the cell to highlight it. After you have done this for all the elements, then click on the first and last elements to swap them.",
       "#help": "Help",
       "#about": "About",
-      "#selecting": "Done Selecting",
-      "#swapping": "Done Swapping",
-      "av_Authors": "Tom Naps",
-      "av_c1": "Done selecting sublist",
-      "av_c2": "Done sorting sublist",
-      "av_c3": "Swap",
-      "av_c4": "Done increment",
-      "av_c5": "To start the exercise: Click on array elements to highlight those that make up the first sublist. Use increment ",
-      "av_c6": "Click on two array elements to swap them. Continue swapping elements in the sublist until it is sorted.",
-      "av_c7": "Current increment is ",
-      "av_c8": ". Click on array elements to highlight those that make up the next sublist. If you have already sorted the last sublist for this increment, then click the 'Done Increment' button. Do not bother to process sublists with only one element.",
-      "av_c9": "Click on array elements to highlight those that make up the first sublist. Use increment ",
       "av_c10": "Exercise is done, check your grade."
     }
   },
