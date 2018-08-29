@@ -3462,7 +3462,7 @@ Glossary
 
    physical form
       The implementation of a data type as a data structure.
-      Contrast to the :term:`physical form` for the data type.
+      Contrast to the :term:`logical form` for the data type.
 
    Pigeonhole Principle
       A commonly used lemma in Mathematics. A typical variant states:
