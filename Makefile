@@ -97,6 +97,9 @@ PosetSlide: min
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
+TestMilan: min
+	python $(CONFIG_SCRIPT) config/TestMilan.json --no-lms
+
 TestIvan: min
 	python $(CONFIG_SCRIPT) config/TestIvan.json --no-lms
 
