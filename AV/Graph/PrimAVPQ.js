@@ -9,7 +9,7 @@
   var gnodes = [];
   var mstnodes = [];
   var size;    //Actual size of the displayed heap nodes
- 
+
   function runit() {
     ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
@@ -21,10 +21,10 @@
     var startArray=[];
 	for(var i=0;i<graph.nodeCount();i++)
 	{
-		 startArray.push(Infinity);		 
+		 startArray.push(Infinity);
 	}
     bh = jsav.ds.binheap(startArray,{left: 400, height: 500, stats: false, tree: true, heapify: true});
-	
+
 	//Assigning a graphNode for each heapNode
 	for(var i=0;i<graph.nodeCount();i++)
 	{
@@ -32,11 +32,11 @@
 		gnodes[i].heapNode = bh._treenodes[i];
 		bh._treenodes[i].value(gnodes[i].value()+":"+Infinity);
 	}
-	jsav.displayInit();	
+	jsav.displayInit();
     prim(gnodes[0]);            // Run Prim's algorithm from start node.
     displayMST();
     jsav.recorded();
-  } 
+  }
   function heapifyUp(index)
   {
 	//Pushing up a value up through the heap
@@ -48,7 +48,7 @@
 			swap(index,j);
 			heapifyUp(j);
 		}
-	}  	
+	}
   }
   function heapifyDown(index)
   {
@@ -84,34 +84,34 @@
   function swap(index1,index2)
   {
 	//This swap function swaps the values (keys) stored inside the heap as well as any references between heapNodes and graphNodes
-	
+
 	jsav.umsg("Swap the distance values of GraphNodes ("+bh._treenodes[index1].graphNode.value()
 	              +") and ("+bh._treenodes[index2].graphNode.value()+")");
 	var treeswap = function(index1, index2) {
         bh.jsav.effects.swap(bh._treenodes[index1].element, bh._treenodes[index2].element, true);
       };
       JSAV.anim(treeswap, treeswap).call(bh, index1, index2);
-	
+
 	var temp = bh.value(index1);
 	bh.value(index1,bh.value(index2));
-	bh.value(index2,temp);	
-	
+	bh.value(index2,temp);
+
 	var graphNode1=bh._treenodes[index1].graphNode;
 	var graphNode2=bh._treenodes[index2].graphNode;
-	
+
 	temp=bh._treenodes[index1].graphNode;
 	bh._treenodes[index1].graphNode=bh._treenodes[index2].graphNode;
 	bh._treenodes[index2].graphNode=temp;
-	
+
 	graphNode1.heapNode=bh._treenodes[index2];
 	graphNode2.heapNode=bh._treenodes[index1];
-	
+
 	////To display graphNodes along with their distance values on heapNodes
 	for(var i=0;i<gnodes.length;i++)
 	{
 		bh._treenodes[bh._treenodes.indexOf(gnodes[i].heapNode)].value(gnodes[i].value()+":"+bh.value(bh._treenodes.indexOf(gnodes[i].heapNode)));
 	}
-	
+
 	jsav.step();
   }
   function displayMST() {
@@ -128,7 +128,7 @@
     node.highlight();
     jsav.step();
   }
-  
+
   function deleteMin()
   {
     var minHeapGraphNode = bh._treenodes[0].graphNode;
@@ -154,21 +154,21 @@
 	var next;
 	var v;
 	var heapNode;
-	
+
 	// Initialize the MST "parents" to dummy values
     for (next = gnodes.next(); next; next = gnodes.next()) {
       next.parent = next;
     }
 	jsav.umsg("Adding the distance value of node ("+s.value()+") to the heap");
 	bh.value(bh._treenodes.indexOf(s.heapNode),0);
-	
+
 	//To display graphNodes along with their distance values on heapNodes
 	for(var i=0;i<gnodes.length;i++)
 	{
 		bh._treenodes[bh._treenodes.indexOf(gnodes[i].heapNode)].value(gnodes[i].value()+":"+bh.value(bh._treenodes.indexOf(gnodes[i].heapNode)));
 	}
 	jsav.step();
-	
+
 	for (var i = 0; i < graph.nodeCount(); i++) {
 	    jsav.umsg("Extracting the minimum distance Node from the heap");
 		jsav.step();
@@ -203,7 +203,7 @@
 					jsav.umsg(msg);
 					bh.value(bh._treenodes.indexOf(w.heapNode),weight);
 					bh._treenodes[bh._treenodes.indexOf(w.heapNode)].value(w.value()+":"+weight);
-					
+
 					//To display graphNodes along with their distance values on heapNodes
 					for(var k=0;k<gnodes.length;k++)
 					{
@@ -212,7 +212,7 @@
 					w.parent = v;
 					jsav.step();
 					heapifyUp(bh._treenodes.indexOf(w.heapNode));
-					
+
 				}
 				else
 				{
@@ -220,13 +220,13 @@
 					jsav.umsg(msg);
 					jsav.step();
 				}
-				
+
 			}
 	}
    }
   }
-  
-  
+
+
   function about() {
     var mystring = "Prim's Algorithm (The Priority Queue Version) Visualization\nWritten by Mohammed Fawzi and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Fall, 2013\nLast update: March, 2013\nJSAV library version " + JSAV.version();
     alert(mystring);
@@ -261,12 +261,12 @@
 
     gnodes = graph.nodes();
     mstnodes = mst.nodes();
-    
+
 	for (var i = 0; i < mstnodes.length; i++) {
       gnodes[i].index = i;
     }
 	mst.hide();
-	
+
   }
   // Connect action callbacks to the HTML entities
   $('#about').click(about);

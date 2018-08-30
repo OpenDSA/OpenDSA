@@ -66,8 +66,12 @@
   },
   "chapters": {
     "Graphs": {
-      "Graph/GraphTraversal": {},
-      "Ivan/GraphTopsort": {}
+      "Graph/GraphIntro": {},
+      "Graph/GraphImpl": {},
+      "Ivan/GraphTopsort": {},
+      "Ivan/GraphShortest": {},
+      "Ivan/MCST": {},
+      "Ivan/Kruskal": {}
     },
     "Appendix": {
       "Glossary": {},

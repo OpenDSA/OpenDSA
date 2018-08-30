@@ -25,7 +25,6 @@ $(document).ready(function () {
   jsav.step();
   jsav.recorded();
 
-
 // Mark the nodes when visited and highlight it to
 // show it has been marked
 function markIt(node) {
@@ -34,9 +33,6 @@ function markIt(node) {
   node.highlight();
   jsav.step();
 }
-
-
-
 
 function postVisit(node) {
   jsav.umsg("Add " + node.value() + " to the stack ");
@@ -54,6 +50,7 @@ function dfs(start, prev) {
 
   for (next = adjacent.next(); next; next = adjacent.next()) {
     jsav.umsg("Process edge between (" + start.value() + " and " + next.value() + ")");
+    start.edgeFrom(next).addClass("markpath");
       if(next.hasClass("marked")) {
         jsav.umsg("Node " + next.value() + " already marked");
       }
@@ -69,8 +66,6 @@ function dfs(start, prev) {
   }
   postVisit(start);
 }
-
-
 
 
 function about() {
@@ -100,17 +95,12 @@ function initGraph() {
 }
 
 function displaySort(numberofnodes) {
-
   var str = "";
-
   for (var i = 0; i < numberofnodes - 1; i++) {
     str += "CS " + arr.value(i) + " , ";
   }
   str += "CS" + arr.value(numberofnodes - 1);
-
   return str;
 }
-
-
 
 });

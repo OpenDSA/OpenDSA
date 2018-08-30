@@ -67,6 +67,7 @@ function displaySort() {
 function markIt(node,q) {
   node.addClass("marked");
   jsav.umsg("Enqueue "+ node.value() +" since it has no incoming edges.");
+  //node.edgeFrom(q).addClass("markpath");
   for(var i=0;i<q.length;i++)
   	queue.value(i+1,q[i].value());
   node.highlight();
@@ -86,6 +87,13 @@ function dequeueIt(node,q) {
   Ecount.addClass(i+1,"marked");
   Courses.unhighlight(i+1);
   Ecount.unhighlight(i+1);
+
+
+
+  node.edgeFrom(oparr(oparrcnt)).addClass("markpath");
+
+
+
   jsav.step();
 }
 

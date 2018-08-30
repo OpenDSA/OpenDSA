@@ -9,6 +9,7 @@
   var size;
   var numberofnodes;
   var markCount;
+  var cycle;
 
 //var for qTopsort
   var queue;
@@ -153,6 +154,7 @@ function initGraph() {
   directed: true
     });
   graphUtils.generate(g); // Randomly generate the graph without weights
+  //CHECK IF GRAPH HAS CYCLE OR NOT..
   return g;
 }
 
@@ -276,10 +278,13 @@ function topSortBFS(start) {
  }
 }
 
-
 // Connect action callbacks to the HTML entities
 $('#about').click(about);
 $('#topSort').click(topSort);
 $('#qTopSort').click(qTopSort);
+$('#cycle').click(cycle);
+$('#nocycle').click(nocycle);
+
+
 
 }(jQuery));
