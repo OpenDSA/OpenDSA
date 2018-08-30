@@ -1,4 +1,4 @@
-ifeq ($(OS),Windows_NT)
+	ifeq ($(OS),Windows_NT)
 	SHELL=C:/Windows/System32/cmd.exe
 endif
 RM = rm -rf
@@ -105,6 +105,9 @@ TestIrena: min
 
 TestBrannon: min
 	python $(CONFIG_SCRIPT) config/TestBrannon.json --no-lms
+
+TestNick: min
+	python $(CONFIG_SCRIPT) config/TestNick.json --no-lms
 
 Liling: min
 	python $(CONFIG_SCRIPT) config/Liling.json --no-lms
