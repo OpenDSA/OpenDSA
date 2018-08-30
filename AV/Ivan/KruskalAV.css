@@ -1,0 +1,45 @@
+#container {
+  width: 800px;
+  height: 595px;
+}
+#procontrols {
+  text-align: center;
+}
+
+.jsavgraph svg {
+  z-index: 0;
+}
+.jsavline {
+  height: 35px;
+}
+
+.jsavnode.marked {
+  background-color: #FFF050;
+}
+.jsavnode.discarded {
+  background-color: #ddd;
+}
+.jsavgraph .jsavedge {
+  stroke-width: 8;
+  stroke: #7D8879;
+}
+.jsavgraph .jsavedge.marked {
+  stroke: #F6B611;
+}
+.jsavgraph .jsavedge.discarded {
+  stroke: rgba(125, 136, 121, 0.2);
+}
+.jsavgraph .jsavedgelabel {
+  font-size: 16px;
+  background-color: transparent;
+  text-shadow: 0 0 5px #fff;
+}
+.jsavautoresize .jsavnode {
+  min-width: 45px;
+  min-height: 45px;
+}
+
+.jsavmatrix .jsavarray li.jsavnode {
+  width: 40px;
+  height: 35px;
+}
