@@ -26,7 +26,6 @@ That is, an acceptor does not modify the contents of the tape.
 
 For example:
 
-.. _DFAFig:
 
 .. inlineav:: DFACON dgm
    :links: AV/OpenFLAP/DFACON.css
