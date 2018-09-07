@@ -106,6 +106,9 @@ TestMilan: min
 TestIvan: min
 	python $(CONFIG_SCRIPT) config/TestIvan.json --no-lms
 
+TestGalina: min
+		python $(CONFIG_SCRIPT) config/TestGalina.json --no-lms
+		
 TestIrena: min
 	python $(CONFIG_SCRIPT) config/TestIrena.json --no-lms
 
@@ -204,6 +207,9 @@ CS3: min
 
 CSC215: min
 	python $(CONFIG_SCRIPT) config/CSC215.json --no-lms
+
+CSCI2101: min
+	python $(CONFIG_SCRIPT) config/CSCI2101.json --no-lms
 
 Yuhui: min
 	python $(CONFIG_SCRIPT) config/Yuhui.json --no-lms
