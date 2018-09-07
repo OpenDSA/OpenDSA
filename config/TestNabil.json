@@ -1,6 +1,6 @@
 {
-  "title": "TestNick",
-  "desc": "Nick's Test json",
+  "title": "TestNabil",
+  "desc": "Nabil Test json",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -69,7 +69,7 @@
       "MemManage/Buddy": {}
     },
     "Deterministic Finite Acceptors": {
-      "OpenFLAP/TestNick": {}
+      "OpenFLAP/TestNabil": {}
     },
     "Appendix": {
       "Glossary": {},
