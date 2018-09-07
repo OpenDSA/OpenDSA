@@ -13,8 +13,8 @@ $(document).ready(function() {
   var graph = av.ds.graph({layout: "manual"});
   var q0 = graph.addNode("q0", {left: left - 200, top: top}),
       q1 = graph.addNode("q1", {left: left - 100, top: top}),
-      q3 = graph.addNode("q2", {left: left, top: top}),
-      q2 = graph.addNode("trap", {left: left - 100, top: top + 100});
+      q2 = graph.addNode("q2", {left: left, top: top}),
+      trap = graph.addNode("trap", {left: left - 100, top: top + 100});
 
   // edge from q1 to itself
   av.g.polyline([[left + 135, top + 17], [left + 120, top - 5], [left + 135,  top - 25], [left + 144,  top - 10], [left + 142, top + 14]]);
@@ -26,7 +26,7 @@ $(document).ready(function() {
   av.g.polyline([[left + 15, top + 25], [left + 24, top + 30], [left + 15, top + 35]]);
 
   // end symbol
-  av.g.circle(left + 141  , top + 31, 12);
+  av.g.circle(left + 241  , top + 31, 12);
 
   // edge from q0 to q1
   av.g.polyline([[left + 60, top + 30], [left + 123, top + 30]]);
@@ -35,7 +35,7 @@ $(document).ready(function() {
 
   // edge from q3 to q1
   av.g.polyline([[left + 160, top + 30], [left + 223, top + 30]]);
-  av.g.polyline([[left + 169, top + 25], [left + 160, top + 30], [left + 169, top + 35]]);
+  av.g.polyline([[left + 214, top + 25], [left + 223, top + 30], [left + 214, top + 35]]);
   av.label('a', {"left": left + 190, "top": top - 8});
 
   // edge from q0 to q2
@@ -46,7 +46,7 @@ $(document).ready(function() {
   // edge from q2 to itself
   av.g.polyline([[left + 135, top + 145], [left + 120, top + 165], [left + 135, top + 185], [left + 144, top + 165], [left + 143, top + 146]]);
   av.g.polyline([[left + 141, top + 157], [left + 143, top + 146], [left + 146, top + 157]]);
-  av.label('a,b', {"left": left + 120, "top": top + 122});
+  av.label('a,b', {"left": left + 105, "top": top + 150});
 
   // edge from q1 to q2
   //av.g.polyline([[left + 135, top + 45], [left + 135, top + 114]]);
@@ -54,15 +54,15 @@ $(document).ready(function() {
   //av.label('1', {"left": left + 121, "top": top + 55});
 
   // edge from q2 to q3
-  av.g.polyline([[left + 243, top + 55], [left + 159, top + 128]]);
-  av.g.polyline([[left + 230, top + 61], [left + 243, top + 55], [left + 241, top + 65]]);
-  av.label('b', {"left": left + 200, "top": top + 80});
+  av.g.polyline([[left + 243, top + 55], [left + 200, top + 115], [left + 159, top + 128]]);
+  //arrow
+  av.g.polyline([[left + 162, top + 118], [left + 159, top + 128], [left + 169, top + 134]]);
+  av.label('b', {"left": left + 215, "top": top + 80});
 
   // edge from q3 to q2
-  av.g.polyline([[left + 235, top + 45], [left + 155, top + 115]]); 
-  av.g.polyline([[left + 158, top + 105], [left + 155, top + 115], [left + 168, top + 110]]);
-  av.label('a', {"left": left + 190, "top": top + 45});
+  av.g.polyline([[left + 235, top + 45], [left + 180, top + 80], [left + 155, top + 115]]);
+  av.g.polyline([[left + 158, top + 105], [left + 155, top + 115], [left + 160, top + 118]]);
+  av.label('a', {"left": left + 178, "top": top + 45});
 
   av.displayInit();
 });
-
