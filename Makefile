@@ -106,6 +106,9 @@ TestMilan: min
 TestIvan: min
 	python $(CONFIG_SCRIPT) config/TestIvan.json --no-lms
 
+TestGalina: min
+		python $(CONFIG_SCRIPT) config/TestGalina.json --no-lms
+		
 TestIrena: min
 	python $(CONFIG_SCRIPT) config/TestIrena.json --no-lms
 
@@ -114,6 +117,9 @@ TestBrannon: min
 
 TestNick: min
 	python $(CONFIG_SCRIPT) config/TestNick.json --no-lms
+
+TestNabil: min
+	python $(CONFIG_SCRIPT) config/TestNabil.json --no-lms
 
 Liling: min
 	python $(CONFIG_SCRIPT) config/Liling.json --no-lms

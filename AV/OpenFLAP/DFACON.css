@@ -1,3 +1,13 @@
-#DFACON .jsavcanvas{
-  height: 266px;
-}	
+#EvenBinaryEvenOnesDFACON {
+  height: 500px;
+}
+
+.jsavedge {
+    cursor: pointer;
+    stroke: black;
+    stroke-width: 1;
+}
+
+.jsavcontrols {
+	display: unset !important;
+}
