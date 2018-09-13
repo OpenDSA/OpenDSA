@@ -293,12 +293,14 @@ be more space efficient.
 
    Assume that a vertex index requires two bytes, a pointer requires
    four bytes, and an edge weight requires two bytes.
-   Then the adjacency matrix for the directed graph above
+   Then, each link node in the adjacency list needs
+   :math:`2 + 2 + 4 = 8` bytes.
+   The adjacency matrix for the directed graph above
    requires :math:`2 |\mathbf{V}^2| = 50` bytes while the adjacency list
-   requires :math:`4 |\mathbf{V}| + 6 |\mathbf{E}| = 56` bytes.
+   requires :math:`4 |\mathbf{V}| + 8 |\mathbf{E}| = 68` bytes.
    For the undirected version of the graph above, the adjacency
    matrix requires the same space as before, while the adjacency list
-   requires :math:`4 |\mathbf{V}| + 6 |\mathbf{E}| = 92` bytes
+   requires :math:`4 |\mathbf{V}| + 8 |\mathbf{E}| = 116` bytes
    (because there are now 12 edges represented instead of 6).
 
 .. avembed:: Exercises/Graph/GspaceCalcSumm.html ka
