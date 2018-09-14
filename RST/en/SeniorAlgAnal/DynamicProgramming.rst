@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Cliff Shaffer
+   :author: Cliff Shaffer and Angel Velazquez
    :topic: Dynamic Programming
 
 Dynamic Programming
@@ -13,7 +13,25 @@ Dynamic Programming
 Dynamic Programming
 -------------------
 
-Computing Fibonnaci Numbers
+Dynamic programming is an algorithm design technique that can improve
+the efficiency of any inherently recursive algorithm that repeatedly
+re-solves the same subproblems.
+Using dynamic programming requires two steps:
+
+#. You find a recursive solution to a problem where subproblems are
+   redundantly solved many times.
+#. Optimize the recursive algorithm to eliminate re-solving
+   subproblems.
+   The resulting algorithm may be recursive or iterative.
+   The iterative form is commonly referred to by the term dynamic
+   programming.
+
+We will see first how to remove redundancy with a
+simple, non-optimization problem.
+We then go to an optimization problem, which will be efficiently
+solved by dynamic programming.
+
+Computing Fibonacci Numbers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Consider the recursive function for computing the :math:`n`'th
@@ -25,7 +43,7 @@ Fibonacci number.
 The cost of this algorithm (in terms of function calls) is the size of
 the :math:`n`'th Fibonacci number itself, which our analysis of
 Module :ref:`summation <summation> <Summations>` showed to be exponential
-(approximately :math:`1.62^n` ). 
+(approximately :math:`1.62^n` ).
 Why is this so expensive?
 Primarily because two recursive calls are made by the
 function, and the work that they do is largely redundant.
@@ -38,15 +56,62 @@ reduced.
 The approach that we will use can also improve any algorithm that
 spends most of its time recomputing common subproblems.
 
+The upper half of the following figure shows the recursion tree
+obtained for n=8, and it has 67 nodes.
+However, the lower half of the figure shows that the number of
+unique subproblems is only n+1=9.
+The latter graphical representation is called a dependency graph, and
+was obtained from the recursion tree by joining different occurrences
+of the same recursive call, preserving their corresponding arcs. 
+
+.. odsafig:: Images/FibTree.png
+   :width: 800
+   :align: center
+   :figwidth: 90%
+              
+.. odsafig:: Images/FibGraph.png
+   :width: 800
+   :align: center
+   :figwidth: 90%
+
+Note that the dependency graph was laid out on in a one dimensional
+table of size 9, corresponding to the unique subproblems invoked by
+the algorithm.
+This table can simply store the value of each subproblem.
+In this way, redundant calls can be avoided because the value of a
+subproblem which was previously computed can be read from its
+corresponding cell in the table without the need to recompute it
+again. 
+
+The table can be used to derive two alternative, but efficient,
+algorithms.
 One way to accomplish this goal is to keep a table of values, and
 first check the table to see if the computation can be avoided.
+This technique is called :term:`memoization`.
 Here is a straightforward example of doing so.
+Note that it mirrors the original version of the Fibonacci recursive
+algorithm.
 
 .. codeinclude:: Misc/Fibonnaci 
    :tag: FibRT
 
 This version of the algorithm will not compute a value more than once,
 so its cost should be linear.
+
+A second technique is called :term:`tabulation`.
+The dependency graph must be analyzed to infer an alternative
+computation order for the subproblems.
+The only restriction is that a subproblem can only be
+computed when the subproblems it depends on have been computed.
+In addition, the value of each subproblem must be stored in the table.
+In the case of computing a value in the Fibonacci series,
+we reverse the order to calculate the series from the starting point,
+and implement this  by a simple loop.
+Unfortunately, since it does not have any similarity to the original
+recursive algorithm, there is no mechanical way to get from the
+orginal recursive form to the dynamic programming form.
+
+An additional optimization can be made.
 Of course, we didn't actually need to use a table storing all of the
 values, since future computations do not need access to all prior
 subproblems.
@@ -64,8 +129,10 @@ did for ``fibi``.
 Thus, there are many times where storing a complete table of
 subresults will be useful.
 
-This approach to designing an algorithm that works by storing a table
-of results for subproblems is called :term:`dynamic programming`.
+The approach shown above to designing an algorithm that works by
+storing a table of results for subproblems is called
+:term:`dynamic programming` when it is applied to optimization
+algorithms.
 The name is somewhat arcane, because it doesn't bear much obvious
 similarity to the process that is taking place when storing subproblems
 in a table.
@@ -74,21 +141,8 @@ systems, which got its start before what we think of as computer
 programming.
 The act of storing precomputed values in a table for later reuse is
 referred to as "programming" in that field.
-
-Dynamic programming is a powerful alternative to the standard
-principle of divide and conquer.
-In divide and conquer, a problem is split into subproblems, the
-subproblems are solved (independently), and then recombined into a
-solution for the problem being solved.
-Dynamic programming is appropriate whenever
-(1) subproblems are solved repeatedly,
-and (2) we can find a suitable way of doing the necessary
-bookkeeping.
-Dynamic programming algorithms are usually not implemented by simply
-using a table to store subproblems for recursive calls (i.e., going
-backwards as is done by ``fibrt``).
-Instead, such algorithms are typically implemented by building the
-table of subproblems from the bottom up.
+Dynamic programming algorithms are usually implemented with the
+tabulation technique described above.
 Thus, ``fibi`` better represents the most common form of dynamic
 programming than does ``fibrt``, even though it doesn't use the
 complete table.
@@ -198,21 +252,28 @@ subproblems to solve!
 Clearly, there is the possibility that many subproblems are being
 solved repeatedly.
 This is a natural opportunity to apply dynamic programming.
-We simply build an array of size :math:`n \times K+1` to contain the
+If we draw the recursion tree of this naive recursive algorithm and
+derive its corresponding dependency graph, we notice that all the
+recursive calls can be laid out on
+an array of size :math:`n \times K+1` to contain the
 solutions for all subproblems
 :math:`P(i, k), 1 \leq i \leq n, 0 \leq k \leq K`. 
 
-There are two approaches to actually solving the problem.
-One is to start with our problem of size :math:`P(n, K)` and make
-recursive calls to solve the subproblems, each time checking the array
+As mentioned above, there are two approaches to actually solving the
+problem.
+One is memoization, that is, to start with our problem of size
+:math:`P(n, K)` and make recursive calls to solve the subproblems,
+each time checking the array 
 to see if a subproblem has been solved, and filling in the
 corresponding cell in the array whenever we get a new subproblem
 solution.
-The other is to start filling the array for row 1 (which indicates a
-successful solution only for a knapsack of size :math:`k_1`).
+The other is tabulation.
+Conceiveably we could adopt one of several computation orders,
+although the most "natural" is to start filling the array for row 1
+(which indicates a successful solution only for a knapsack of size
+:math:`k_1`).
 We then fill in the succeeding rows
 from :math:`i=2` to :math:`n`, left to right, as follows.
-
 
 | **if** :math:`P(n-1, K)` has a solution,
 |   **then** :math:`P(n, K)` has a solution
@@ -221,7 +282,7 @@ from :math:`i=2` to :math:`n`, left to right, as follows.
 |     **else** :math:`P(n, K)` has no solution.
 
 In other words, a new slot in the array gets its solution by looking
-at two slots in the preceding row.
+at most at two slots in the preceding row.
 Since filling each slot in the array takes constant time, the total
 cost of the algorithm is :math:`\Theta(nK)`.
 
@@ -263,3 +324,12 @@ cost of the algorithm is :math:`\Theta(nK)`.
    We can find a solution by taking one branch.
    We can find all solutions by following all branches when there is a
    choice.
+
+   Note that the table is first filled with the values of the
+   different subproblems, and later we inferred the sequence of
+   decisions that allows computing an optimal solution from the values
+   stored in the table.
+   This last phase of the algorithm precludes the possibility of
+   actually reducing the size of the table.
+   Otherwise, the table for the knapsack problem could have been
+   reduced to a one dimensional array.

@@ -299,6 +299,13 @@ Answer:
 Automata
 --------
 
+.. inlineav:: AutomataCON dgm
+   :links: AV/OpenFLAP/AutomataCON.css
+   :scripts: AV/OpenFLAP/AutomataCON.js
+   :align: center
+
+|
+
 .. odsafig:: Images/stautomata.png
    :width: 400
    :align: center

@@ -259,6 +259,19 @@ Algorithm Analysis
       in :math:`O(g_2(n))`, then :math:`f_1(n)f_2(n)` is in
       :math:`O(g_1(n)g_2(n))`.
 
+.. slide:: Summary
+
+   .. inlineav:: SimpleCostsCON dgm
+      :links: AV/SeniorAlgAnal/SimpleCostsCON.css
+      :scripts: AV/SeniorAlgAnal/SimpleCostsCON.js
+      :output: show
+
+
+.. slide:: .
+
+   .
+
+
 .. slide:: Time Complexity Examples (1)
 
    Example: a = b;

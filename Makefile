@@ -91,29 +91,17 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-PosetSlide: min
-	python $(CONFIG_SCRIPT) config/PosetSlide.json --no-lms
+OpenFLAP: min
+	python $(CONFIG_SCRIPT) config/OpenFLAP.json --no-lms
 
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
-
-TestJai: min
-	python $(CONFIG_SCRIPT) config/TestJai.json --no-lms
-
-TestMilan: min
-	python $(CONFIG_SCRIPT) config/TestMilan.json --no-lms
 
 TestIvan: min
 	python $(CONFIG_SCRIPT) config/TestIvan.json --no-lms
 
 TestIrena: min
 	python $(CONFIG_SCRIPT) config/TestIrena.json --no-lms
-
-TestBrannon: min
-	python $(CONFIG_SCRIPT) config/TestBrannon.json --no-lms
-
-TestNick: min
-	python $(CONFIG_SCRIPT) config/TestNick.json --no-lms
 
 Liling: min
 	python $(CONFIG_SCRIPT) config/Liling.json --no-lms
@@ -134,9 +122,6 @@ JFLAP: min
 	python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
 
 FormalLang: min
-	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
-
-OpenFLAP: min
 	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
 
 VisFormalLang: min
@@ -204,6 +189,9 @@ CS3: min
 
 CSC215: min
 	python $(CONFIG_SCRIPT) config/CSC215.json --no-lms
+
+CS240: min
+	python $(CONFIG_SCRIPT) config/CS240.json --no-lms
 
 CSCI2101: min
 	python $(CONFIG_SCRIPT) config/CSCI2101.json --no-lms
