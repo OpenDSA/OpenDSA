@@ -82,8 +82,12 @@
     "Week 3, Day 2": {
       "CS3slides/Overconstrained": {},
       "CS3slides/Coding": {},
-      "CS3slides/StackQueue": {},
-      "CS3slides/Binary": {}
+      "CS3slides/StackQueue": {}
+    },
+    "Week 4": {
+      "CS3slides/Binary": {},
+      "CS3slides/Binary2": {},
+      "CS3slides/Binary3": {}
     },
     "Appendix": {}
   }

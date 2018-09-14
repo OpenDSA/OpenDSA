@@ -159,9 +159,9 @@ appear as:
 .. math::
 
    \begin{array}{ll}
-   Values:& 10 45 40 23 5 32 93 12 19 7\\
-   Column starts:& 0 3 5 5 7 7 7 7\\
-   Row positions:& 0 1 4 0 1 7 1 7 0 7\\
+   Values:& 10\ 45\ 40\ 23\ 5\ 32\ 93\ 12\ 19\ 7\\
+   Column starts:& 0\ 3\ 5\ 5\ 7\ 7\ 7\ 7\\
+   Row positions:& 0\ 1\ 4\ 0\ 1\ 7\ 1\ 7\ 0\ 7\\
    \end{array}
 
 

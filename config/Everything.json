@@ -791,6 +791,7 @@
       }
     }, 
     "Miscellaneous": {
+      "SearchStruct/Sparse": {},
       "SeniorAlgAnal/DynamicProgramming": {}, 
       "SeniorAlgAnal/AmortAnal": {}, 
       "Development/Knapsack": {

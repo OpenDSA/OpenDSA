@@ -28,7 +28,7 @@ routinely used for.
 #. Modeling connectivity in computer and communications networks.
 
 #. Representing an abstract map as a set of locations with distances
-   between locations. This can used to compute shortest routes between
+   between locations. This can be used to compute shortest routes between
    locations such as in a GPS routefinder.
 
 #. Modeling flow capacities in transportation networks to find which
