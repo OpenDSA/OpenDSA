@@ -1,9 +1,8 @@
 /*global JSAV, document */
 // Written by Nabil Saad
-
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("trapDFA", {animationMode: "none"});
+  var av = new JSAV("TrapDFACON", {animationMode: "none"});
 
   // x & y control
   var left = 250;

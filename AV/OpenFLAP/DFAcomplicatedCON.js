@@ -3,7 +3,7 @@ document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"><
 $(document).ready(function() {
   "use strict";
 
-  var av_name = "DFACON";
+  var av_name = "DFAcomplicatedCON";
   var av = new JSAV(av_name);
 
   // x & y control

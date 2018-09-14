@@ -1,9 +1,7 @@
-
- // Written by Milan Bhatia 
-
+// Written by Milan Bhatia 
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("OddNumbersTrace", {animationMode: "none"});
+  var av = new JSAV("OddNumbersTraceCON", {animationMode: "none"});
 
   var xStart = 135;
   var yStart = 0;
