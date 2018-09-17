@@ -11,6 +11,8 @@ $(document).ready(function () {
   var lineHeight = 40;
   var boxWidth = 150;
   var boxPadding = 5;
+  var codeLines;
+  var pseudo;
   var fooIndex, mainIndex;
   var classVars = {};
   var classLabels = {};
@@ -22,12 +24,26 @@ $(document).ready(function () {
   var fooLabels = {};
   var currentLineMain = 0;
   var currentLineFoo = 0;
+  var highlightedLine;
   var output = '';
   var jsavElements;
+
+  var initialArrays;
+
   function unhighlightAll(){
     unhighlightElements(classVars);
     unhighlightElements(mainVars);
     unhighlightElements(fooVars);
+  }
+
+  function arrayFromObj(jsavStuff){
+    var retArr = [];
+    for(var level in jsavStuff){
+      for (var variable in jsavStuff[level]){
+        retArr.push(jsavStuff[level][variable]);
+      }
+    }
+    return retArr;
   }
 
   function clickHandler(jsavArr){
@@ -38,6 +54,8 @@ $(document).ready(function () {
       valInput.val('');
       jsavArr.highlight(index);
       jsavArr.value(index, parseInt(answer));
+      exer.gradeableStep();
+      pseudo.setCurrentLine(++highlightedLine);
       valInput.focus();
     }
   }
@@ -66,13 +84,12 @@ $(document).ready(function () {
     currentLineMain = 0;
     currentLineFoo = 0;
     output = '';
+    initialArrays = {
+      classVars: {},
+      mainVars: {},
+      fooVars: {}
+    };
   }
-
-
-
-
-
-
 
   // Process About button: Pop up a message with an Alert
   function about() {
@@ -81,7 +98,70 @@ $(document).ready(function () {
 
   // generates the model answer
   function modelSolution(modeljsavAV) {
+    var fooVars = {};
+    var classVars = {};
+    var mainVars = {};
+    function unhighlightAll(){
+      unhighlightElements(classVars);
+      unhighlightElements(mainVars);
+      unhighlightElements(fooVars);
+    }
 
+    //run foo()
+    for(var arr in initialArrays.fooVars){
+      fooVars[arr] = modeljsavAV.ds.array(initialArrays.fooVars[arr]);
+      jsavElements.push(fooVars[arr]);
+    }
+    for(arr in initialArrays.classVars){
+      classVars[arr] = modeljsavAV.ds.array(initialArrays.classVars[arr]);
+      jsavElements.push(classVars[arr]);
+    }
+    for(arr in initialArrays.mainVars){
+      mainVars[arr] = modeljsavAV.ds.array(initialArrays.mainVars[arr]);
+      jsavElements.push(mainVars[arr]);
+    }
+
+    modeljsavAV.displayInit();
+
+    var contexts = [fooVars,classVars];
+    while(codeLines[currentLineFoo].indexOf('print') === -1){
+      unhighlightAll();
+      var split = codeLines[currentLineFoo].trim().split('=');
+
+      var rhs = getRightSideValue([fooVars, classVars], codeLines[currentLineFoo++]);
+
+      var lhs = split[0].trim();
+      var fooDestContext = typeof fooVars[lhs.charAt(0)] != 'undefined';
+      var destination = (fooDestContext)?fooVars:classVars;
+      var destIndex = 0;
+      var destStr = lhs.charAt(0);
+      if(lhs.length > 1){
+        destIndex = getValueOfVar(
+                                    contexts,
+                                    getIndexFromString(lhs)
+                                  ).value;
+        destStr += '['+destIndex+']';
+      }
+
+      destination[lhs.charAt(0)].highlight(destIndex);
+
+      destination[lhs.charAt(0)].value(destIndex,rhs.value);
+
+      var outMsg = ((fooDestContext)?'foo':'class')+"'s "+destStr+
+                    ' set to the value of '+rhs.value;
+
+      modeljsavAV.umsg(outMsg);
+
+      modeljsavAV.gradeableStep();
+    }
+
+    var jsavArrs = {
+      classVars,
+      mainVars,
+      fooVars
+    }
+
+    return arrayFromObj(jsavArrs);
   }
 
   // Process reset button: Re-initialize everything
@@ -91,7 +171,7 @@ $(document).ready(function () {
     av.umsg("Directions: First, type the evaluated value of the right hand side. "+
             "Then click the location where that value will be stored");
 
-    var codeLines = CallByAllFive.expression.split('<br />');
+    codeLines = CallByAllFive.expression.split('<br />');
     for(var i = 0; i < codeLines.length; i++){
       if(mainIndex != null){
         if(codeLines[i].trim().startsWith('int')){
@@ -106,7 +186,7 @@ $(document).ready(function () {
       }
     }
 
-    var pseudo = av.code(codeLines,
+    pseudo = av.code(codeLines,
       {left: leftMargin, top: topMargin, lineNumbers: false}
     );
     jsavElements.push(pseudo)
@@ -126,9 +206,9 @@ $(document).ready(function () {
             indexed: varVal.value.length > 1,relativeTo:classLabels[name], anchor:"right top",
             myAnchor:"left top", left: labelMargin,
             top:-1*jsavArrayOffset
-          }//right center and left center don't work for arrays larger than 1.
-           //JSAV please fix
+          }
         );
+        initialArrays.classVars[name] = varVal.value.slice();
         jsavElements.push(classLabels[name],classVars[name])
         currentTopMargin += lineHeight;
       }
@@ -188,8 +268,9 @@ $(document).ready(function () {
             indexed: varVal.value.length > 1,relativeTo:mainLabels[mainVarName],
             anchor:"right top", myAnchor:"left top", left: labelMargin,
             top:-1*jsavArrayOffset
-          }//JSAV please fix
+          }
         );
+        initialArrays.mainVars[mainVarName] = varVal.value.slice();
         jsavElements.push(mainLabels[mainVarName], mainVars[mainVarName])
         currentTopMargin += lineHeight;
       }
@@ -218,9 +299,12 @@ $(document).ready(function () {
           top:-1*jsavArrayOffset
         }
       );
+      initialArrays.fooVars[fooVarNames[i]] = [fooPassedInValues[i]];
       jsavElements.push(fooLabels[fooVarNames[i]], fooVars[fooVarNames[i]])
       currentFooTopMargin += lineHeight;
     }
+    highlightedLine = currentLineFoo+1;
+    pseudo.setCurrentLine(highlightedLine);
 
     var jsavArrs = {
       classVars,
@@ -235,17 +319,28 @@ $(document).ready(function () {
       }
     }
 
-    return jsavArrs;
+    return arrayFromObj(jsavArrs);
   }
 
   // function that will be called by the exercise if continuous feedback mode
   // is used and the fix errors mode is on.
   function fixState(modelState) {
-  }
+    pseudo.setCurrentLine(highlightedLine);
+    var current = arrayFromObj({classVars, mainVars, fooVars});
+    for(var i = 0; i < modelState.length && i < current.length; i++){
+      for(var j = 0; j < current[i].size(); j++) {
+        current[i].value(j, modelState[i].value(j));
+        if(modelState[i].isHighlight(j)){
+          current[i].highlight(j);
+        }
+        else{
+          current[i].unhighlight(j);
+        }
+      }
+    }
 
-  // Click handler for all array elements.
-   function arrayClickHandler(index) {
-   }
+
+  }
 
    // Connect the action callbacks to the HTML entities
    $('#help').click(help);
@@ -263,5 +358,7 @@ $(document).ready(function () {
 
 
    exer.reset();
+
+   window.exer = exer;
 
 })
