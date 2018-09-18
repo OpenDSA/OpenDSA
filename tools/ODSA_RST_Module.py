@@ -532,7 +532,7 @@ class ODSA_RST_Module:
           if args:
             (av_name, av_type) = args
 
-            if av_type in ['ss', 'dgm']:
+            if av_type in ['ss','ff', 'dgm']:
               j = i + 1
               opt_line = next_line
               links_found = False
@@ -594,11 +594,28 @@ class ODSA_RST_Module:
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
                 mod_data[i] += ''.join(rst_options)
-                
+
+            if av_type == 'ff':
+              if av_name not in exercises:
+                # If the SS is not listed in the config file, add its name to a list of missing exercises, ignore missing diagrams
+                missing_exercises.append(av_name)
+              else:
+                # Add the necessary information from the slideshow from the configuration file
+                # Diagrams (av_type == 'dgm') do not require this extra information
+                exer_conf = exercises[av_name]
+
+                # List of valid options for inlineav directive
+                options = ['points', 'required', 'threshold', 'id']
+
+                rst_options = [' ' * start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in
+                               options if option in exer_conf]
+                mod_data[i] += ''.join(rst_options)
+
+
             elif av_type == 'dgm' and av_name in exercises and exercises[av_name] != {}:
               # If the configuration file contains attributes for diagrams, warn the user that attributes are not supported
               print_err("%sWARNING: %s is a diagram (attributes are not supported), line %d" %(console_msg_prefix, av_name, i + 1))
-            elif av_type not in ['ss', 'dgm']:
+            elif av_type not in ['ff', 'ss', 'dgm']:
               # If a warning if the exercise type doesn't match something we expect
               print_err("%sWARNING: Unsupported type '%s' specified for %s, line %d" % (console_msg_prefix, av_type, av_name, i + 1))
         elif line.startswith('.. avembed::'):

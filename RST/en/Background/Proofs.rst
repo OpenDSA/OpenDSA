@@ -435,7 +435,7 @@ induction hypothesis.
 
 .. _TwoColor:
 
-.. inlineav:: twoColorCON dgm
+.. inlineav:: twoColorCON dmg
    :links: AV/Background/twoColorCON.css
    :scripts: AV/Background/twoColorCON.js
    :align: center

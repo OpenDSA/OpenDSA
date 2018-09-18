@@ -8,12 +8,12 @@ from collections import OrderedDict
 from docutils.core import publish_parts
 
 
-ex_re = re.compile('\s*\.\. (avembed|inlineav):: ([^\s]+/)*([^\s.]*)(\.html)? (ka|ss|pe)')
+ex_re = re.compile('\s*\.\. (avembed|inlineav):: ([^\s]+/)*([^\s.]*)(\.html)? (ka|ss|ff|pe)')
 extr_re = re.compile("\.\. extrtoolembed:: '(.*)'")
 
 def get_exercise_types(conf_data):
   ''' Gets a dictionary where the key is the short name of the exercise
-      and the value is the type of the exercise (ka, ss, pe, extr)
+      and the value is the type of the exercise (ka, ss, ff, pe, extr)
   '''
   get_exercise_types.register_called = False
   if not get_exercise_types.register_called:
@@ -57,6 +57,11 @@ def decide_defaults(conf_data, ex_types):
   '''
   option_freqs = {
     'ss': {
+      'points': {},
+      'threshold': {},
+      'required': {}
+    },
+    'ff': {
       'points': {},
       'threshold': {},
       'required': {}
@@ -121,6 +126,7 @@ def decide_defaults(conf_data, ex_types):
 
   defaults = {
     'ss': {},
+    'ff': {},
     'ka': {},
     'pe': {},
     'extr': {}
