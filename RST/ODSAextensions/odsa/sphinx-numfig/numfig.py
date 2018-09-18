@@ -1,6 +1,6 @@
 from docutils.nodes import figure, caption, Text, reference, raw, SkipNode, Element, topic
 from sphinx.roles import XRefRole
-from inlineav import av_dgm, av_ss, av_ff
+from inlineav import av_dgm, av_ss
 import json
 
 # Element classes
@@ -111,11 +111,6 @@ def doctree_read(app, doctree):
             if isinstance( figure_info, av_ss ) and len(figure_info.attributes['ids']) > 0:
                 module = env.docname
                 i += 1
-
-            if isinstance( figure_info, av_ff ) and len(figure_info.attributes['ids']) > 0:
-                module = env.docname
-                i += 1
-
             if isinstance( figure_info, topic):
                 numbered_label = ''
                 if  env.docname in json_data:

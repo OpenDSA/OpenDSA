@@ -113,9 +113,6 @@ class avembed(Directive):
     elif self.options['type'] == 'ss':
       self.options['points'] = 0.0
       self.options['threshold'] = 1.0
-    elif self.options['type'] == 'ff':
-      self.options['points'] = 0.0
-      self.options['threshold'] = 1.0
 
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
@@ -463,15 +460,6 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
         exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
 
-      if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ff":
-        ex_obj = x['inlineav']
-        exer_name = ex_obj['@exer_name']
-        exs_config[exer_name] = OrderedDict()
-        exs_config[exer_name]['long_name'] = ex_obj['@long_name']
-        exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
-        exs_config[exer_name]['points'] = float(ex_obj['@points'])
-        exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
-
       if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "dgm":
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
@@ -496,15 +484,6 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['points'] = float(ex_obj['@points'])
 
     if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ss":
-      ex_obj = exs_json['inlineav']
-      exer_name = ex_obj['@exer_name']
-      exs_config[exer_name] = OrderedDict()
-      exs_config[exer_name]['long_name'] = ex_obj['@long_name']
-      exs_config[exer_name]['required'] = True if ex_obj['@required'] == "True" else False
-      exs_config[exer_name]['points'] = float(ex_obj['@points'])
-      exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
-
-    if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ff":
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
