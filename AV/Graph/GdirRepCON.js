@@ -5,7 +5,7 @@ $(document).ready(function () {
                          "json_path": "/AV/Graph/GraphDefCON.json"}).interpreter;
   var av = new JSAV(av_name, {"animationMode" : "none"});
 
-  //set up graph
+  // Set up graph
   var gTop = 0;
   var gLeft = 80;
   var lTop = 180;
@@ -26,8 +26,8 @@ $(document).ready(function () {
   graph.addEdge(node4, node1);
   graph.layout();
 
-  //set up adjancey matrix
-  var a = av.label("Adajceny Matrix", {top: lTop, left: 355}).show();
+  // Set up adjacency matrix
+  var a = av.label("Adjacency Matrix", {top: lTop, left: 355}).show();
 
   var mat = av.ds.matrix([[, 1, , , 1], [ , , , 1, ,], [ , , , , 1],
                           [ , , 1, , ,], [, 1, , , ,]],
@@ -90,5 +90,5 @@ $(document).ready(function () {
   av.g.line(arrowLeft, arrowTop + listGap * 4, arrowLeft + 45, arrowTop + listGap * 4,
             {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
 
-  av.label("Adajceny List", {top: lTop, left: 600}).show();
+  av.label("Adjacency List", {top: lTop, left: 600}).show();
 });

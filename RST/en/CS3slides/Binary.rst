@@ -97,6 +97,11 @@ Binary Trees Part 1
    .. codeinclude:: Binary/Preorder
       :tag: preorder2
 
+   | Problems:
+   |    This has a major bug
+   |    It puts the focus in the wrong place: Should focus on the
+        current node, not the children. This version is therefore more
+        complicated. 
 
 .. slide:: Recursion Examples
 

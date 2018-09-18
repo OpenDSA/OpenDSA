@@ -1,6 +1,6 @@
 {
-  "title": "TestBrannon",
-  "desc": "Brannon's Test json",
+  "title": "Test",
+  "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -65,11 +65,9 @@
     "required": true
   },
   "chapters": {
-    "Stuff": {
-      "MemManage/Buddy": {}
-    },
-    "Introduction": {
-      "OpenFLAP/Automata": {}
+    "Deterministic Finite Acceptors": {
+      "OpenFLAP/FLConcepts": {},
+      "OpenFLAP/DFA": {}
     },
     "Appendix": {
       "Glossary": {},

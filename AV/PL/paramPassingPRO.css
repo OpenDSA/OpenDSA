@@ -1,0 +1,9 @@
+rect{
+  z-index:0;
+}
+ol.jsavarray{
+  z-index:999;
+}
+.avcontainer > .jsavcanvas > ol.jsavarray .jsavvalue{
+  cursor:pointer;
+}

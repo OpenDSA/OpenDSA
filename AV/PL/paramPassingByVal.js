@@ -199,15 +199,6 @@ $(document).ready(function() {
     var split = codeLines[currentLineFoo-1].trim().split('=');
 
     var rhs = getRightSideValue([fooVars, classVars], codeLines[currentLineFoo-1]);
-    /*var rhs = split[split.length - 1].trim();
-    var fooSourceContext = typeof fooVars[rhs.charAt(0)] != 'undefined';
-    var source = (fooSourceContext)?fooVars:classVars;
-
-    var rhsSplit = rhs.split(' ');
-    var rhsIndex = 0;
-    if(rhsSplit[0].length > 1){
-      rhsIndex = getIndexFromString(rhsSplit[0]);
-    }*/
 
     var lhs = split[0].trim();
     var fooDestContext = typeof fooVars[lhs.charAt(0)] != 'undefined';
@@ -226,7 +217,7 @@ $(document).ready(function() {
 
     destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
-    var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
+    var outMsg = ((fooDestContext)?'foo':'class')+"'s "+destStr+
                   ' set to the value of '+rhs.value;
 
     av.umsg(outMsg);

@@ -30,7 +30,7 @@ Binary Trees Part 3
 
 .. slide:: Comparison (2)
 
-   * Fundamental issue: Defining the key is a property of the context,
+   * Fundamental issue: The key is a property of the context,
      NOT a property of the record.
 
 

@@ -40,6 +40,13 @@ At the end of processing the letters of the string, the DFA can answer
 For example, "yes" if 6789 is a valid integer,
 or if SUM is a valid variable name in C++.
 
+.. inlineav:: DFAExampleCON dgm
+   :links: AV/OpenFLAP/DFAExampleCON.css
+   :scripts: AV/OpenFLAP/DFAExampleCON.js
+   :align: center
+
+|
+
 .. odsafig:: Images/DFAexample.png
    :width: 350
    :align: center
@@ -153,6 +160,16 @@ Pictorial Example of a trace for 100:
 
    DFA Example: Odd numbers trace
 
+|
+
+.. inlineav:: OddNumbersTraceCON dgm
+   :links: AV/OpenFLAP/OddNumbersTraceCON.css
+   :scripts: AV/OpenFLAP/OddNumbersTraceCON.js
+   :align: center
+
+
+   DFA Example: Odd numbers trace
+
 
 Definitions
 ~~~~~~~~~~~
@@ -228,6 +245,15 @@ of the "extra" transitions. As follows.
 
    DFA Example: Complete
 
+|
+
+.. inlineav:: TrapDFACON dgm
+   :links: AV/OpenFLAP/TrapDFACON.css
+   :scripts: AV/OpenFLAP/TrapDFACON.js
+   :align: center
+
+   DFA Example: Complete
+
 Note that there is nothing "special" about the trap state.
 
 Its a good idea to have states with meaningful names!
@@ -248,6 +274,14 @@ even number of 1's.
 |   :math:`q_1` - even binary number: even number of 1's, 
 |   :math:`q_2` - odd number, odd number of 1's, 
 |   :math:`q_3` - odd number, even number of 1's 
+
+
+.. inlineav:: DFAcomplicatedCON dgm
+   :links: AV/OpenFLAP/DFAcomplicatedCON.css
+   :scripts: AV/OpenFLAP/DFAcomplicatedCON.js
+   :align: center
+
+|
 
 .. odsafig:: Images/stnfaEx2.png
    :width: 375
