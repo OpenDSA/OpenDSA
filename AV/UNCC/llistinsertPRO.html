@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>Linked List Insert</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <style>
+    #container {
+      width: 830px;
+    }
+    #av {
+      min-height: 500px;
+    }
+    .jsavlist {
+      min-height: 150px;
+    }
+    .bgColor {
+      font-size: 130%;
+      background-color: yellow;
+    }
+    .bold {
+      stroke-width: 4;
+    }
+    .jsavstack {
+      min-height: 80px;
+    }
+    .jsavtreenode {
+      cursor: pointer;
+    }
+    .jsavtreenode.jsavnullnode, .jsavnode.jsavindex{
+      cursor: default;
+    }
+    .jsavtree {
+      top: 20px;
+    }
+    .jsavcontainer {
+      min-height: 540px;
+    }
+    .blueline {
+      stroke-width: 4;
+      stroke: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <table class="proHeaderTable">
+      <tr>
+        <td class="headerLeft"></td>
+        <td class="headerCenter">
+          <p class="jsavexercisecontrols"></p>
+        </td>
+        <td class="headerRight">
+          <input id="about" type="button" name="about" />
+          <a id="settings" class="jsavsettings" href="#"></a>
+        </td>
+      </tr>
+    </table>
+    <form class="avcontainer">
+      <p class="instructLabel"></p>
+      <p class="instructions"></p>
+
+      <div id="av" class="jsavcanvas">
+        <p style="text-align: top">
+          <input id="NewNode" type="button" name="NewNode" value="Create New Node" />
+          <input id="Insert" type="button" name="Insert" value="Insert" />
+        </p>
+        </p>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
+  <script src="../../JSAV/extras/stack.js"></script>
+  <script src="BSTCODE.js"></script>
+  <script src="llistinsertPRO.js"></script>
+</body>
+</html>

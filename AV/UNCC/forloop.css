@@ -1,0 +1,65 @@
+#container {
+	width: 830px;
+}
+
+#av {
+    min-height: 500px;
+	display: block;
+	width: 100%;
+}
+
+#next, #back, #number_complete  {
+	display: inline;
+	float: right;
+	margin: 1%;
+}
+
+.next_button {
+	float: top;
+	display: block;
+	margin-right: 20%;
+}
+
+.matrix_cell {
+	color: lightgray;
+}
+
+.paint {
+}
+
+.paint1 {
+  background-color: red; 
+}
+
+.paint3 {
+	background-color: orange; 
+}
+
+.paint4 {
+	background-color: green; 
+}
+
+.paint0 {
+	background-color: purple; 
+}
+
+.paint2 {
+	background-color: blue;
+}
+
+.number_label {
+	background-color: rgb(182, 192, 178);
+	border-width: 0px;
+}
+
+.left_exercise {
+	max-width:30%;
+    display:inline;
+    float: left;
+}
+
+.right_exercise {
+	width:70%;
+    display:inline;
+    float: right;
+}

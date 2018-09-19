@@ -1,0 +1,15 @@
+{
+  "translations": {
+    "en": {
+      ".avTitle": "BST Find Value",
+      "av_Authors": "Matthew McQuaigue",
+      ".instructLabel": "Instructions:",
+      ".instructions": "• Starting at the root node, trace a path to find the given value by clicking on the nodes. <br>• Once you find the correct value, a new insertion value will appear and the path will be unhighlighted.<br>• Once all leaf nodes have been inserted, the tree is finished.",
+      "#about": "About"
+    }
+  },
+  "params": {
+    "JXOP-feedback":"continuous",
+    "JXOP-fixmode":"fix"
+  }
+}

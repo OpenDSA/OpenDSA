@@ -1,0 +1,15 @@
+{
+  "translations": {
+    "en": {
+	  ".avTitle": "For Loop (Two-Dimensional Array)",
+	  "av_Authors": "Anna Boekelheide",
+	  ".instructLabel": "Instructions:",
+	  ".instructions": "<p>The following code carries out a <strong>for loop</strong> that paints cells in a two-dimensional array. In this exercise, you will simulate this code as it 'moves' through five different arrays.</p> <ol><li><p>Click the correct elements to 'paint' them in the same order the loop would paint them.</p></li> <li><p>Click 'Next' to move to the next loop.</p></li></ol> <p>Keep in mind some loops may not paint anything at all.</p>",
+	  "#about": "About"
+	}
+  },
+  "params": {
+    "JXOP-feedback": "atend",
+	"JXOP-fixmode": "undo"
+  }
+}

@@ -1,0 +1,137 @@
+/* standard color range from green (easy) to red (hard) */
+.paint_lvl0 {
+	background-color: green; 
+}
+
+.paint_lvl1 {
+	background-color: #9ACD32;
+}
+
+.paint_lvl2 {
+	background-color: yellow;
+}
+
+.paint_lvl3 {
+	background-color: orange; 
+}
+
+.paint_lvl4 {
+  background-color: red; 
+}
+
+/* color range for red-green colorblind users */
+.deut_prot0 {
+	background-color: #018571;
+	color: #000;
+}
+
+.deut_prot1 {
+	background-color: #80cdc1;
+	color: #000;
+}
+
+.deut_prot2 {
+	background-color: #dfc27d;
+	color: #000;
+}
+
+.deut_prot3 {
+	background-color: #a6611a;
+	color: #000;
+}
+
+.deut_prot4 {
+	background-color: #0d0802;
+	color: #fff;
+}
+
+/* color range for blue-yellow colorblind users */
+.trit0 {
+	background-color: #49ae14;
+	color: #000;
+}
+
+.trit1 {
+	background-color: #b8e483;
+	color: #000;
+}
+
+.trit2 {
+	background-color: #f2b5db;
+	color: #000;
+}
+
+.trit3 {
+	background-color: #d20f8b;
+	color: #fff;
+}
+
+.trit4 {
+	background-color: #090106;
+	color: #fff;
+}
+
+/* monochrome range for totally colorblind users */
+.mono0 {
+	background-color: rgb(197, 197, 197);
+	color: #000000;
+}
+
+.mono1 {
+	background-color: rgb(147, 147, 147);
+	color: #ffffff;
+}
+
+.mono2 {
+	background-color: rgb(99, 99, 99);
+	color: #ffffff;
+}
+
+.mono3 {
+	background-color: rgb(50, 50, 50);
+	color: #ffffff;
+}
+
+.mono4 {
+	background-color: rgb(0, 0, 0);
+	color: #ffffff;
+}
+
+.selected {
+	weight:bold;
+	background-color: #f0f0f0;
+}
+
+/* Dropdown button */
+.dropbtn {
+}
+
+/* The container div */
+.dropdown {
+   
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change link color on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
