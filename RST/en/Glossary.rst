@@ -261,7 +261,7 @@ Glossary
 
    attribute
       In :term:`object-oriented programming <object-oriented programming paradigm>`,
-      a synonym for :term:`data members`.
+      a synonym for :term:`data members <data member>`.
 
    automata
       Synonym for :term:`finite state machine`.
@@ -746,7 +746,7 @@ Glossary
 
    class
       :to-term: member function :label: can include
-      :to-term: data members :label: can include
+      :to-term: data member :label: can include
 
       In the :term:`object-oriented programming paradigm`
       an ADT and its implementation together make up a class.
@@ -1043,7 +1043,7 @@ Glossary
    container class
       A :term:`data structure` that stores a collection of
       :term:`records <record>`.
-      Typical examples are arrays,
+      Typical examples are :term:`arrays <array>`,
       :term:`search trees <search tree>`, and
       :term:`hash tables <hash table>`.
 
@@ -1128,14 +1128,14 @@ Glossary
 
    data field
       In :term:`object-oriented programming <object-oriented programming paradigm>`,
-      a synonym for :term:`data members`.
+      a synonym for :term:`data member`.
 
    data item
-      :to-term: data members :label: implemented by
+      :to-term: data member :label: implemented by
 
       A piece of information or a record whose value is drawn from a type.
 
-   data members
+   data member
       The variables that together define the space required by a data
       item are referred to as data members.
       Some of the commonly used synonyms include :term:`data field`,
@@ -1608,7 +1608,7 @@ Glossary
    encapsulation
       In programming, the concept of hiding implementation details
       from the user of an ADT, and protecting
-      :term:`data members` of an
+      :term:`data members <data member>` of an
       object from outside access.
 
    enqueue
@@ -2326,7 +2326,7 @@ Glossary
    inherit
       In :term:`object-oriented programming <object-oriented programming paradigm>`,
       the process by which a :term:`subclass` gains
-      :term:`data members` and :term:`methods <method>`
+      :term:`data members <data member>` and :term:`methods <method>`
       from a :term:`base class`.
 
    initial state
@@ -2349,7 +2349,7 @@ Glossary
 
    instance variable
       In :term:`object-oriented programming <object-oriented programming paradigm>`,
-      a synonym for :term:`data members`.
+      a synonym for :term:`data member`.
 
    integer function
       Any function whose input is an integer and whose output is an
@@ -2363,9 +2363,9 @@ Glossary
       This allows the :term:`I/O head` detect the end of the sector.
 
    interface
-      An interface is a class-like structure that can only contain method
-      signatures and fields. An interface cannot contain an implementation
-      of the methods but only its signature (name, parameters and exceptions).
+      An interface is a class-like structure that only contains method
+      signatures and fields. An interface does not contain an implementation
+      of the methods or any :term:`data members <data member>`.
 
    intermediate code
       A step in a typical :term:`compiler` is to transform the
@@ -2947,7 +2947,7 @@ Glossary
       In set notation, this is a synonym for :term:`element`.
       In abstract design, a :term:`data item` is a member of a :term:`type`.
       In an object-oriented language,
-      :term:`data members` are data fields in an
+      :term:`data members <data member>` are data fields in an
       object.
 
    member function
@@ -3270,7 +3270,7 @@ Glossary
       takes up storage during the execution of a computer program.
       In the :term:`object-oriented programming paradigm`, objects
       are the basic units of operation.
-      Objects have state in the form of :term:`data members`,
+      Objects have state in the form of :term:`data members <data member>`,
       and they know how to perform certain actions
       (:term:`methods <method>`).
 
@@ -4045,7 +4045,7 @@ Glossary
    replacement selection
       A variant of :term:`Heapsort` most often used as one phase of an
       :term:`external sort`.
-      Given a collection of records stored in an :term:`array`y, and a stream
+      Given a collection of records stored in an :term:`array`, and a stream
       of additional records too large to fit into
       :term:`working memory`, replacement selection will unload the
       :term:`heap` by sending records to an output stream, and seek to
