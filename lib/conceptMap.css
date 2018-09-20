@@ -1,0 +1,52 @@
+#container {
+   width: 800px;
+   height: 650px;
+}
+
+#cmapcontainer {
+   width: auto;
+   height: inherit;
+}
+
+html {
+   width: 100%;
+   height: 100%;
+}
+
+body {
+   width: 100%;
+   height: 100%;
+}
+
+#info  {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.termBack {
+  margin-top: 15px;
+}
+
+.avcontainer{
+  overflow: visible;
+}
+
+.jsavline{
+  height: 50px;
+}
+
+.jsavnode {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.jsavnode.edge {
+	border-radius: 8px;
+	border-style: none;
+}
+
+ul {
+list-style-type: none;
+padding: 0;
+margin: 0;
+}
