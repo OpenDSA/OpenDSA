@@ -1,0 +1,67 @@
+{
+  "translations": {
+    "en": {
+      ".avTitle": "BST Random Insertion",
+      "av_Authors": "Matthew McQuaigue",
+      ".instructLabel": "Instructions:",
+      ".instructions": "In this module, you will be inserting a value into a Binary Search Tree based on the algorithm below. This will test your mastery of reading BST insertion algorithms and inserting into a tree.<br>1. Based on the algorithm, starting at the root node, trace a path to the correct insertion spot by clicking on the nodes. Once you reach a leaf node, empty nodes will appear for possible insertion spots. Click the empty node to insert the value. If the value is the same as current highlighted node, insert to the left.",
+      "av_postorder": "Postorder traversal begins.",
+      "av_nullcheck": "Check to see if node is null.",
+      "av_isnotnull": "Not null.",
+      "av_leftchild": "Make recursive call on left child.",
+      "av_rightchild": "Make recursive call on right child.",
+      "av_isnull": "Null.",
+      "av_visit": "Visit ",
+      "av_done": "Finished the postorder traversal on ",
+      "#about": "About"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode":"fix"
+  },
+  "code": {
+    "processing": [{
+      "url": "../../../SourceCode/Pseudo/Binary/BSTrandinsertPRO.txt",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: randinsertGood *** */",
+      "endBefore": "/* *** ODSAendTag: randinsertGood *** */",
+      "tags": {
+        "start": 1,
+        "root": 5,
+        "visitleft": 3,
+        "visitright": 4,
+        "visit": 5,
+        "end": 6
+      }
+    }],
+    "java": [{
+      "url": "../../../SourceCode/Pseudo/Binary/BSTrandinsertPRO.txt",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: randinsertLeft *** */",
+      "endBefore": "/* *** ODSAendTag: randinsertLeft *** */",
+      "tags": {
+        "sig": 1,
+        "checknull": 2,
+        "visitleft": 3,
+        "visitright": 4,
+        "visit": 5,
+        "end": 6
+      }
+    }],
+    "java_generic": [{
+      "url": "../../../SourceCode/Pseudo/Binary/BSTrandinsertPRO.txt",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: randinsertRight *** */",
+      "endBefore": "/* *** ODSAendTag: randinsertRight *** */",
+      "tags": {
+        "sig": 1,
+        "checknull": 2,
+        "visitleft": 3,
+        "visitright": 4,
+        "visit": 5,
+        "end": 6
+      }
+    }]
+  }
+}

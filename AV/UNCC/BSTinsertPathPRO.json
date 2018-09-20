@@ -1,0 +1,23 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "BST Insert Path Proficiency Exercise",
+      "av_Authors": "Matthew McQuaigue",
+      ".instructLabel": "Instructions:",
+      ".instructions": "• Starting at the root node, trace a path to the correct insertion spot by clicking on the nodes. <br>• Once you reach a leaf node, empty nodes will appear for possible insertion spots.<br>• Click the empty node to insert the value.<br>• If the value is the same as current highlighted node, insert to the left. ",
+      "#about": "About"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode":"undo"
+  },
+  "code": {
+    "processing": {
+      "url": "../../SourceCode/Processing/Binary/BST.pde",
+      "startAfter": "/* *** ODSATag: inserthelp *** */",
+      "endBefore": "/* *** ODSAendTag: inserthelp *** */",
+      "tags": {}
+    }
+  }
+}

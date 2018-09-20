@@ -1,0 +1,54 @@
+ #container {
+      width: 830px;
+    }
+    #av {
+      min-height: 500px;
+    }
+	
+	textarea {
+		font-family: monospace;
+    	white-space: pre-wrap;
+		word-wrap: break-word;
+	}
+
+    .correctIndex {
+  	background-color: green;
+  	color: white;
+  	}
+
+    .wrongIndex {
+      background-color: red;
+      color: white;
+    }
+
+    .bgColor {
+      font-size: 130%;
+      background-color: yellow;
+    }
+    .bold {
+      stroke-width: 4;
+    }
+    .jsavstack {
+      min-height: 80px;
+    }
+    .jsavtreenode {
+      cursor: pointer;
+    }
+    .jsavtreenode.jsavnullnode, .jsavnode.jsavindex{
+      cursor: default;
+    }
+    .jsavtree {
+      top: 20px;
+    }
+    .jsavcontainer {
+      min-height: 540px;
+    }
+    .blueline {
+      stroke-width: 4;
+      stroke: blue;
+    }
+	
+	.controls {
+		text-align: top;
+	}
+	

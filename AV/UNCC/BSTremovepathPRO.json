@@ -1,0 +1,15 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "BST Remove Proficiency Exercise",
+      "av_Authors": "Matthew McQuaigue",
+      ".instructLabel": "Instructions:",
+      ".instructions": "• Use the BST Remove algorithm to remove values as they are shown at the top.<br>• Starting at the root node, trace the path to the highlighted node (node to be deleted).<br>• Once the highlighted node is clicked, it will be deleted.<br>• If the deleted node was a leaf node, you may move on to the next value.<br>• If the deleted node had children, you must select the child to replace the node.",
+      "#about": "About"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode":"undo"
+  }
+}

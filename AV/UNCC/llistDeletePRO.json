@@ -1,0 +1,15 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "Linked List Insert Exercise",
+      "av_Authors": "Matthew McQuaigue",
+      ".instructLabel": "Instructions:",
+      ".instructions": "<p> This module will test your proficiency of the delete operation on a linked list. You must delete each value in the stack to complete the module. Once completed, click the grade button for your score. <ol><li> Starting at the first element in the list, highlight the path to the node to be deleted and click 'Remove Node'.<li> Next, Click the two nodes that will now be linked to replace the empty node. <li> Repeat until all values in the stack are deleted.",
+      "#RemoveNode": "Remove Node",
+      "#about": "About"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "atend"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "translations": {
+    "en": {
+      ".avTitle": "Sorted Array Delete",
+      "av_Authors": "Anna Boekelheide",
+      ".instructLabel": "Instructions:",
+      ".instructions": "<p>The simplest way to delete a specific value in a sorted array is to do a <strong>linear search</strong>. The program starts at the beginning and looks at each value in the array one by one until it finds the value to delete.</p><p> In this exercise, you will simulate a linear search for five values in a sorted array. </p><ol><p><li>Click the 'Next' button until you've reached the correct value.</li></p><p><li>Click 'Delete' to delete the value.</li></p><p><li>Repeat until you have deleted all five specified values.</li></p></ol>",
+      "#about": "About"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "undo"
+  }
+}

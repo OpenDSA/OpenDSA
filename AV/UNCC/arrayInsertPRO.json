@@ -1,0 +1,15 @@
+{
+  "translations": {
+    "en": {
+      ".avTitle": "Sorted Array Insert",
+      "av_Authors": "Anna Boekelheide",
+      ".instructLabel": "Instructions:",
+      ".instructions": "<p>The simplest way to insert into a sorted array is to do a <strong>linear search</strong>. With this approach, the program starts at the beginning and searches the array for the right place to insert the value.</p><p>In this exercise, you will simulate an ordered insert of five values into a sorted array. </p><ol><p><li>Click the 'Next' button until you've reached the correct position in which to insert the value.</li></p><p><li>Click 'Insert' to insert the value.</li><p><p><li>Repeat the process until the array is full.</li></p></ol>",
+      "#about": "About"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "undo"
+  }
+}

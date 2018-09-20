@@ -1,0 +1,45 @@
+{
+  "translations": {
+    "en": {
+      ".avTitle": "BST Tree Building",
+      "av_Authors": "Matthew McQuaigue",
+      ".instructLabel": "Instructions:",
+      ".instructions": "• Build a BST based on the algorithm above using the values in the array.<br>• Start by inserting the first value into the root by clicking the '?' node.<br>• Once a value is inserted, leaf nodes will appear for possible insertion spots.<br>• Continue to insert values untill the array is empty.",
+      "#about": "About"
+    }
+  },
+  "params": {
+    "JXOP-feedback":"continuous",
+    "JXOP-fixmode":"undo"
+  },
+  "code": {
+    "BSTAlgorithm": [{
+      "url": "../../../SourceCode/Pseudo/Binary/BSTcreatePRO.txt",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: bstcreate *** */",
+      "endBefore": "/* *** ODSAendTag: bstcreate *** */",
+      "tags": {
+        "sig": 1,
+        "checknull": 2,
+        "visitleft": 3,
+        "visitright": 4,
+        "visit": 5,
+        "end": 6
+      }
+    }],
+    "Flip": [{
+      "url": "../../../SourceCode/Pseudo/Binary/BSTcreatePRO.txt",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: bstcreateFlip *** */",
+      "endBefore": "/* *** ODSAendTag: bstcreateFlip *** */",
+      "tags": {
+        "sig": 1,
+        "checknull": 2,
+        "visitleft": 3,
+        "visitright": 4,
+        "visit": 5,
+        "end": 6
+      }
+    }]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "Linked List Insert Exercise",
+      "av_Authors": "Matthew McQuaigue",
+      ".instructLabel": "Instructions:",
+      ".instructions": "<p> This module will test your proficiency of the insert operation into a linked list. You must trace the path down the linked list and insert the given value.<ol><li> Starting at the first node in the list, click the successive nodes until you reach the node you want to ahead of. <li> Then click 'Create New Node' and click the empty node to add the value to it. <li> Next click the node you want the new created node to point to. <li> Finally click the node to point to the new node and hit 'Insert' <li>Repeat until all values are inserted.</ol>",
+      "#NewNode": "Create New Node",
+      "#Insert": "Insert",
+      "#about": "About"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "atend"
+  }
+}

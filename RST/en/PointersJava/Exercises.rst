@@ -51,10 +51,10 @@ changePointeeNext2
 .. extrtoolembed:: 'changePointeeNext2'
    :learning_tool: code-workout-jhavepop
 
-iterateOverList
+findValueInList
 ---------------
 
-.. extrtoolembed:: 'iterateOverList'
+.. extrtoolembed:: 'findValueInList'
    :learning_tool: code-workout-jhavepop
 
 addNodeAtTail
