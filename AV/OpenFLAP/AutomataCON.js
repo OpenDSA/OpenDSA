@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   var left = 200;
   var top = 20;
-  av.g.line(left, top, left + 400, top, {"stroke-width": 1}); // Top line of input tape
+  /*av.g.line(left, top, left + 400, top, {"stroke-width": 1}); // Top line of input tape
   av.g.line(left, top + 35, left + 410, top + 35, {"stroke-width": 1}); // Bottom line of input tape
   // Left jagged edge of input tape
   av.g.polyline([[left, top], [left, top + 5], [left - 5, top + 10], [left, top + 15],
@@ -25,7 +25,9 @@ $(document).ready(function() {
     var temp = av.g.line(left + 15 + 37*i, top, left + 15 + 37*i, top + 35, {"stroke-width": 1});
   }
   // Right most  straight vertical line of input tape
-  av.g.line(left + 385, top, left + 385, top + 35, {"stroke-width": 1});
+  av.g.line(left + 385, top, left + 385, top + 35, {"stroke-width": 1});*/
+
+  var arr = av.ds.array(['a', 'a', 'b', 'b', 'a', 'b', '', '', '', '' ], {"left": left + 30, "top": top - 10});
 
   //Control unit
   av.g.rect(left + 50, top + 105, 148, 152, {"stroke-width": 1});
@@ -55,12 +57,12 @@ $(document).ready(function() {
 
   av.label('input tape', {"left": left + 90, "top": top - 35});
   // Inner text of input tape
-  av.label('a', {"left": left + 28, "top": top - 7})
+  /*av.label('a', {"left": left + 28, "top": top - 7})
   av.label('a', {"left": left + 65, "top": top - 7})
   av.label('b', {"left": left + 102, "top": top - 7})
   av.label('b', {"left": left + 139, "top": top - 7})
   av.label('a', {"left": left + 176, "top": top - 7})
-  av.label('b', {"left": left + 213, "top": top - 7})
+  av.label('b', {"left": left + 213, "top": top - 7})*/
   av.label('tape head', {"left": left + 126, "top": top + 25})
   av.label('control unit', {"left": left + 85, "top": top + 100})
   av.label('0', {"left": left + 105, "top": top + 145})
