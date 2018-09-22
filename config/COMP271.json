@@ -80,12 +80,12 @@
         }
       }
     },
-    "Object-Oriented Programming": {
+    "Object Oriented Programming": {
       "Design/IntroOO": {}, 
       "Design/IntroUML": {}, 
       "Design/IntroProcess": {}
     },
-    "List Interface & Array-based Lists": {
+    "List Interface & Array based Lists": {
       "List/ListADT": {
         "List ADT Programming Exercise": {
           "points": 1.0
