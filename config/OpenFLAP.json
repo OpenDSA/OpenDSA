@@ -67,7 +67,8 @@
   "chapters": {
     "Deterministic Finite Acceptors": {
       "OpenFLAP/FLConcepts": {},
-      "OpenFLAP/DFA": {}
+      "OpenFLAP/DFA": {},
+      "OpenFLAP/TestZiyou": {}
     },
     "Appendix": {
       "Glossary": {},

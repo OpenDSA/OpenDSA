@@ -10,8 +10,8 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
 
   // x & y control
-  var left = 150;
-  var top = 50;
+  var left = 225;
+  var top = 25;
 
   // graph and nodes
   var FA = new av.ds.fa();
