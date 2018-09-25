@@ -74,6 +74,7 @@
       lastRow.find('#push').val(letters[2]);
       lastRow.find('#deleteEdge').text("Delete");
       lastRow.find('#deleteEdge').click(deleteRowInEditEdge);
+      //lastRow.find('#deleteEdge').on("click", label, deleteRowInEditEdge);
     }
     var editEdgeInput = $('#editEdge');
     tbody.attr({remove: false});
@@ -81,9 +82,10 @@
     editEdgeInput.css({left: $(label).offset().left, top: $(label).offset().top});
     editEdgeInput.show();
     $('#input').focus();
-
+    //completeEditEdge(label);
     $(document).off('keyup').keyup(function(e) {
       if (e.keyCode == 13) {
+        console.log("Wut up")
         completeEditEdge(label);
       } else if (e.keyCode == 27) {
         cancel();
@@ -94,8 +96,12 @@
   var deleteRowInEditEdge = function() {
     var tbody = $(this).parent().parent().parent();
     if (tbody.children().length == 1) {
-      $('#deleteEdge').text("Deleted");
+      // $('#deleteEdge').text("Deleted");
       tbody.attr({remove: 'true'});
+      $(document).trigger(
+        jQuery.Event( 'keyup', { keyCode: 13, which: 13 } )
+      );
+
       return;
     }
     $(this).parent().parent().remove();
@@ -234,8 +240,10 @@
     $('#nodeButton').addClass("active");
   };
   var addEdgesMode = function() {
-    cancel();
+    //cancel();
     highlight_select_button();
+    removeModeClasses();
+    removeND();
     var jg = $(".jsavgraph");
     jg.addClass("addEdges");
     g.disableDragging();
@@ -245,6 +253,7 @@
     $('.jsavgraph').off('mouseup').mouseup(mouseUp);
     $("#mode").html('Adding edges');
     jsav.umsg("Drag from one edge to another.");
+    $('#edgeButton').addClass("active");
     /*highlight_select_button();
     removeModeClasses();
     removeND();
