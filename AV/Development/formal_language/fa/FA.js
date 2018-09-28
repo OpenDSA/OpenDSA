@@ -786,7 +786,6 @@ fatransitionproto.layout = function(options) {
 	}
 	// If the edge should be an arc (implemented as a quadratic bezier curve)
 	else if (this.options.arc) {
-		this.options.arcoffset = 15;
 		var midX = ((fromPoint[0] + toPoint[0]) / 2.0),
 				midY = ((fromPoint[1] + toPoint[1]) / 2.0),
 				vectorX = fromPoint[1] - toPoint[1],
@@ -794,8 +793,6 @@ fatransitionproto.layout = function(options) {
 				scaling = this.options.arcoffset / Math.sqrt(Math.pow(vectorX, 2) + Math.pow(vectorY, 2)),
 				controlPointX = midX + scaling * vectorX,
 				controlPointY = midY + scaling * vectorY;
-				//controlPointY = (controlPointY <= 70)? controlPointY + controlPoint_offset: controlPointY;
-				//controlPointY = (controlPointY >= 140)? controlPointY - controlPoint_offset: controlPointY;
 		this.g.path('M '+ fromPoint[0] + ',' + fromPoint[1] + ' Q' + controlPointX + ',' 
 				+ controlPointY + ' ' + toPoint[0] + ',' + toPoint[1], options);
 	} else {  //line (same as .movePoints)
@@ -1150,9 +1147,9 @@ fastateproto.stateLabelPositionUpdate = function(options) {
 				nWidth = this.element.outerWidth(),
 				nHeight = this.element.outerHeight(),
 				newTop = bbox.top + nHeight,
-				newLeft = bbox.left - 30;
+				newLeft = bbox.left;
 		if (newTop !== lbbox.top || newLeft || lbbox.left) {
-			this._stateLabel.css({top: newTop, left: newLeft/*, width: nWidth*/}, options);
+			this._stateLabel.css({top: newTop, left: newLeft, width: nWidth}, options);
 		}
 	}
 	if(this._mooreOutput) {
