@@ -1,8 +1,10 @@
 var NPDA = function(jsav, options) {
-  FiniteAutomaton.apply(this, arguments);
+  Automaton.apply(this, arguments);
   this.configurations = $("<ul>"); // configurations jQuery object used to setup view at a step
   this.configViews = []; // configurations view for a step
   this.step = 0; // current step the user is at, used for changing configuration display
+  this.stack = [] //create the stack object in PDA instead of in Automaton
+
 }
 
 JSAV.ext.ds.npda = function (options) {
@@ -12,7 +14,7 @@ JSAV.ext.ds.npda = function (options) {
 
 JSAV.utils.extend(NPDA, JSAV._types.ds.Graph);
 
-NPDA.prototype = Object.create(FiniteAutomaton.prototype, {});
+NPDA.prototype = Object.create(Automaton.prototype, {});
 var npda = NPDA.prototype;
 
 npda.showAccept = function(state) {
