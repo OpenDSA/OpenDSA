@@ -85,7 +85,7 @@
     //completeEditEdge(label);
     $(document).off('keyup').keyup(function(e) {
       if (e.keyCode == 13) {
-        console.log("Wut up")
+        // console.log("Wut up")
         completeEditEdge(label);
       } else if (e.keyCode == 27) {
         cancel();
@@ -362,6 +362,8 @@
     $("#mode").html('');
     $('.jsavcontrols').show();
     $('#configurations').show();
+    $('#alphabets').show();
+    $('#closeAv').show();
     g.play(inputString);
   };
 
@@ -520,6 +522,17 @@
     }
   };
 
+  function closeAv() {
+    console.log("Wut it is")
+    // $('#av').hide();
+    $('.jsavcontrols').hide();
+    $('#alphabets').hide();
+    $('#configurations').hide();
+    $('.configuration').hide();
+    $('#closeAv').hide();
+    g.cancelTraverse();
+  }
+
   function highlight_select_button(){
     // Add active class to the current button (highlight it)
     /*var header = document.getElementById("menu_options");
@@ -541,7 +554,7 @@
   }
 
 
-  $('#playButton').click(onClickTraverse);
+  $('#begin').click(onClickTraverse);
   $('#layoutbutton').click(function() {g.layout()});
   $('#testNDbutton').click(toggleND);
   $('#testlambdabutton').click(toggleLambda);
@@ -564,12 +577,14 @@
     $(".jsavgraph").click(graphClickHandler);
     $('.jsavedgelabel').click(labelClickHandler);
   });
+  $('#closeAv').click(closeAv)
   $('#loadFile').on('change', load);
   $('#configurations').hide();
   $('.configuration').hide();
   $('#edge').hide()
   $('#editEdge').hide()
-
+  $('#alphabets').hide();
+  $('#closeAv').hide();
   // onLoadHandler();
 
   g = initGraph({layout: "manual"});

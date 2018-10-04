@@ -33,8 +33,8 @@
 
   <body id="bd">
     <div id="container">
-      <!-- <h1 id="editor">Finite Automaton Editor</h1>
-      <button id="helpButton"><img src="./help.png" /></button> -->
+      <!--<h1 id="editor">Finite Automaton Editor</h1>
+      <button id="helpButton"><img src="./help.png" /></button>-->
 
       <table class="headerTable" style="font-size: 12px; border-style: hidden;">
         <tr>
@@ -127,6 +127,24 @@
         </div>
       </div>
       <!-- <p align="center" class="arrayPlace"></p> -->
+      <div id="av">
+        <button id="closeAv" class="icon_btn"><i class="fa fa-close"></i></button>
+        <!--<a class="jsavsettings" href="#">Settings</a>-->
+        <div class="jsavcontrols"></div>
+
+        <div id="configurations">
+        </div>
+        <div style="display: none;" class="configuration">
+          <span id="currentState">q0</span>
+          <span id="readInput">aaabbb</span>
+          <span id="unreadInput">ccdd</span>
+          <span id="stack">Zabc</span>
+        </div>
+
+        <p class="jsavoutput jsavline"></p>
+        <div id="alphabets" align="center" style="font-size: 20px">&Sigma;: <span id='alphabet'></span><br>&Gamma;: <span id='stackalphabet'></span></div>
+        <p align="center" class="arrayPlace"></p>
+      </div>
 
       
 
