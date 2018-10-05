@@ -90,8 +90,10 @@
     },
     "Week 5": {
       "CS3slides/Binary3": {},
-      "CS3slides/Heaps": {},
-      "CS3slides/Huffman": {}
+      "CS3slides/Heaps": {}
+    },
+    "Week 6": {
+      "CS3slides/Sorting1": {}
     },
     "Appendix": {}
   }

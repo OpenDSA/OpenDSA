@@ -1,8 +1,11 @@
 var NPDA = function(jsav, options) {
-  FiniteAutomaton.apply(this, arguments);
+  Automaton.apply(this, arguments);
   this.configurations = $("<ul>"); // configurations jQuery object used to setup view at a step
   this.configViews = []; // configurations view for a step
   this.step = 0; // current step the user is at, used for changing configuration display
+  this.stack = ['Z'];
+  this.undoStack = [];
+  this.redoStack = [];
 }
 
 JSAV.ext.ds.npda = function (options) {
@@ -12,7 +15,7 @@ JSAV.ext.ds.npda = function (options) {
 
 JSAV.utils.extend(NPDA, JSAV._types.ds.Graph);
 
-NPDA.prototype = Object.create(FiniteAutomaton.prototype, {});
+NPDA.prototype = Object.create(Automaton.prototype, {});
 var npda = NPDA.prototype;
 
 npda.showAccept = function(state) {
@@ -230,6 +233,25 @@ npda.addLambdaClosure = function(nextStates) {
   nextStates = _.each(nextStates, function(x) {return x.toString();});
   return nextStates;
 };
+
+npda.cancelTraverse = function() {
+  var i = 0
+  for(i; i < this._nodes.length; i++){
+    if(this._nodes[i].hasClass('current')) {
+      this._nodes[i].removeClass('current')
+    }
+    if(this._nodes[i].hasClass('accepted')) {
+      this._nodes[i].removeClass('accepted')
+    }
+    if(this._nodes[i].hasClass('rejected')) {
+      this._nodes[i].removeClass('rejected')
+    }
+  }
+  this.configurations = $("<ul>"); // configurations jQuery object used to setup view at a step
+  this.configViews = []; // configurations view for a step
+  this.step = 0; // current step the user is at, used for changing configuration display
+  this.stack = ['Z'];
+}
 
 // Configuration object
 var Configuration = function(configurations, state, stack, str, index) {
