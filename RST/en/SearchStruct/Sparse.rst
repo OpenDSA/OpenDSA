@@ -30,8 +30,9 @@ This is an ideal approach when all queries to the
 matrix are in terms of access by specified position.
 However, if we wish to find the first non-zero element in a given row,
 or the next non-zero element below the current one in a given column,
-then the hash table requires us to check sequentially through all
-possible positions in some row or column.
+or recover all of the non-zero values in a given column,
+then the hash table requires us to check sequentially through the
+entire table.
 
 Another approach is to implement the matrix as an
 :term:`orthogonal list`.
@@ -65,8 +66,6 @@ Note that the first non-zero element in a given row could be in any
 column;
 likewise, the neighboring non-zero element in any row or column list
 could be at any (higher) row or column in the array.
-Thus, each non-zero element must also store its row and column
-position explicitly.
 
 .. odsafig:: Images/Sparse.png
    :width: 500
@@ -75,8 +74,23 @@ position explicitly.
    :figwidth: 90%
    :alt: The orthogonal list sparse matrix representation.
 
-   The orthogonal list sparse matrix representation.
-         
+   A representative orthogonal list sparse matrix
+   representation. Depending on the needs of the application, a given
+   cell might store references as part of a singly linked or doubly
+   linked list, and the cell might store row/column positions for the
+   cell or might store references back to the row/column headers.
+        
+What exactly should be stored in the various (non-zero) cells of the
+sparse matrix depends on the application.
+In some cases, knowing the row/column locations for individual cells
+is important.
+For example, if we want to normal math operations on matricies, such
+as add two matricies that are stored using the sparse matrix
+representation, then it is an important part of each cell comparison
+to know were exactly we are in the array any natural traversal of the
+arrays.
+Thus, each non-zero element would store its row and column
+position explicitly.
 To find if a particular position in the matrix contains a non-zero
 element, we traverse the appropriate row or column list.
 For example, when looking for the element at Row 7 and Column 1,
@@ -94,6 +108,25 @@ search proceeds along the Row 7 list to next reach the element at
 Column 3.
 At this point we know that no element at Row 7 and Column 2 is stored
 in the sparse matrix.
+
+In some applications, a given row or column represents a vector of
+information about some object.
+For example, consider if we want to store a database about reviewer
+ratings of movies.
+If there are a lot of movies and a lot of reviewers in the database,
+then no reviewer will have reviewed a signficant fraction of the
+movies, and no movie will have been reviewed by a significant fraction
+of reviewers.
+So a sparse matrix representation might be ideal, where each column
+stores the ratings information for a given reviewer,
+and each row stores the ratings information for a given movie.
+This allows operations like finding all reviews by a given reviewer
+However, *which* column a given movie is in is arbitrary.
+In this case, each (non-zero) cell of the sparse matrix might need to
+store a reference to its row and column headers (which might provide
+further information about the record, such as movie and review
+information), but the cells probably do not need to store meaningless
+row/column numbers.
 
 Insertion and deletion can be performed by working in a similar way to
 insert or delete elements within the appropriate row and column lists.

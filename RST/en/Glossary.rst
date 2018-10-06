@@ -398,7 +398,7 @@ Glossary
       all problem instances for a given input size :math:`n` that has
       least cost. Note that the best case is **not** when :math:`n` is
       small, since we are referring to the best from a class of inputs
-      (i.e, those inputs of size :math:`n`).
+      (i.e, we want the best of those inputs of size :math:`n`).
 
    best fit
       In a :term:`memory manager`, best fit is a :term:`heuristic`
@@ -3874,7 +3874,7 @@ Glossary
       process, the records will be sorted. This can be efficient if
       the number of digits is small compared to the number of
       records. However, if the :math:`n` records all have unique key
-      valuse, than at least :math:`\Omega(\log n)` digits are required,
+      values, than at least :math:`\Omega(\log n)` digits are required,
       leading to an :math:`\Omega(n \log n)` sorting algorithm that
       tends to be much slower than other sorting algorithms like
       :term:`Quicksort` or :term:`mergesort`.
@@ -5157,8 +5157,9 @@ Glossary
       In algorithm analysis, the :term:`problem instance` from among
       all problem instances for a given input size :math:`n` that has
       the greatest cost. Note that the worst case is **not** when
-      :math:`n` is big, since we are referring to the wost from a
-      class of inputs (i.e, those inputs of size :math:`n`).
+      :math:`n` is big, since we are referring to the wrost from a
+      class of inputs (i.e, we want the worst of those inputs of size
+      :math:`n`).
 
    worst fit
       In a :term:`memory manager`, worst fit is a :term:`heuristic`

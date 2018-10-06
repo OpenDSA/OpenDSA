@@ -138,21 +138,22 @@ Sorting Part 1
       \textrm{Worst Case}&\Theta(n^2)&\Theta(n^2)&\Theta(n)\\
       \end{array}
 
-.. slide:: Code Tuning
+.. slide:: Code Tuning (1)
 
    * General strategy: Test to avoid work
       * Balance test cost, success probability, work saved
 
    * "Optimizations" for quadratic sorts:
       * Insertion Sort shift vs swaps: Works
+      * Selection Sort viewed as an optimization of Bubble Sort: Works
       * Selection Sort avoid self-swaps: Does not work
+      * Bubble Sort "i" vs "1": Works
       * Bubble Sort avoid/count comparisions: Does not work
+      * Bubble Sort O(1) lower bound claim: Bogus
 
 .. slide:: Exchange Sorting
 
-   * All of the sorts so far rely on exchanges of adjacent records.
-   * Inversions
-   * What is the average number of exchanges required?
+   * All of the sorts so far rely on exchanges of adjacent records: Inversions
 
    .. inlineav:: ExchangeSortCON ss
       :long_name: Exchange Sort Analysis Slideshow
