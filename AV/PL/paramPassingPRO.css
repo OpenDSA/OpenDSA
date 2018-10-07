@@ -7,3 +7,6 @@ ol.jsavarray{
 .avcontainer > .jsavcanvas > ol.jsavarray .jsavvalue{
   cursor:pointer;
 }
+.jsavcodeline.jsavpreviousline{
+  background-color:#fafafa;
+}
