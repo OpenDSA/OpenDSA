@@ -523,8 +523,6 @@
   };
 
   function closeAv() {
-    console.log("Wut it is")
-    // $('#av').hide();
     $('.jsavcontrols').hide();
     $('#alphabets').hide();
     $('#configurations').hide();
@@ -585,6 +583,7 @@
   $('#editEdge').hide()
   $('#alphabets').hide();
   $('#closeAv').hide();
+  $('#rmenu').load('rmenu.html');
   // onLoadHandler();
 
   g = initGraph({layout: "manual"});
