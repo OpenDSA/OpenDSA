@@ -129,6 +129,11 @@ Now, if the cycle is skipped, then we get :math:`w = w_1w_2`, and if
 its executed twice we get :math:`w = w_1v^2w_2`.
 In general, the DFA accepts all strings like  :math:`w = w_1v^*w_2`.
 
+.. inlineav:: PumpingLemmaCON ss
+   :long_name: Pumping Lemma Slideshow
+   :links: AV/Yuhui/PumpingLemmaCON.css
+   :scripts: AV/Yuhui/PumpingLemmaCON.js
+   :output: show
 
 Pumping Lemma
 ~~~~~~~~~~~~~
@@ -170,6 +175,12 @@ is regular.
 And the pumping lemma is not a universal solution for determining that
 a language is non-regular.
 Its just a tool in the toolbox.
+
+.. inlineav:: PumpingLemmaEXCON ss
+   :long_name: Pumping Lemma Example Slideshow
+   :scripts: AV/Yuhui/PumpingLemmaEXCON.js
+   :output: show
+
 
 .. topic:: Example
 
