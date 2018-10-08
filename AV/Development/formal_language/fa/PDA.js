@@ -208,6 +208,65 @@ pda.traverse = function(currentStates) {
   return nextStates;
 };
 
+pda.traverseOneInput = function(inputString){
+  this.setupControls();
+  this.initial.addClass('current');
+  this.configurations = $("<ul>");
+  var currentStates = [new Configuration(this.configurations, this.initial, ['Z'], inputString, 0)];
+  currentStates = this.addLambdaClosure(currentStates);
+  var configArray = this.jsav.ds.array(this.configurations);
+  this.configViews.push(configArray.element);
+  //var $configView = $('#configurations');
+  //$configView.empty();
+  //$configView.append(this.configViews[0]);
+
+  //this.jsav.displayInit();
+
+  this.configurations = $("<ul>");
+  for (var j = 0; j < currentStates.length; j++) {
+    currentStates[j].update();
+  }
+
+  configArray = this.jsav.ds.array(this.configurations);
+  //this.configViews.push(configArray.element);
+
+  var cur;
+  counter = 0;
+  var stringAccepted = false;
+  while (true) {
+    //this.jsav.step();
+    counter++;
+    if (counter > 500) {
+      break;
+    }
+    for (var j = 0; j < currentStates.length; j++) {
+      currentStates[j].state.removeClass('current');
+      currentStates[j].state.removeClass('accepted');
+      currentStates[j].state.removeClass('rejected');
+    }
+    cur = this.traverse(currentStates, inputString[i]);
+    if (cur.length === 0) {
+      break;
+    }
+    currentStates = cur;
+
+    this.configurations = $("<ul>");
+    for (var j = 0; j < currentStates.length; j++) {
+      if (currentStates[j].curIndex === inputString.length) {
+        if (currentStates[j].state.hasClass('final')) {
+          currentStates[j].state.addClass('accepted');
+          stringAccepted = true;
+        }
+      }
+      currentStates[j].update();
+    }
+    configArray = this.jsav.ds.array(this.configurations);
+    //this.configViews.push(configArray.element);
+  }
+
+  return stringAccepted;
+}
+
 pda.addLambdaClosure = function(nextStates) {
   lambdaStates = [];
   for (var i = 0; i < nextStates.length; i++) {

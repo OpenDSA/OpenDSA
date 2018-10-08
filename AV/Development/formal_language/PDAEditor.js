@@ -367,6 +367,33 @@
     g.play(inputString);
   };
 
+  var multiModal = function() {
+     $('#multiModal').show();
+  }
+
+  var multiRun = function() {
+    // ADD BACK IN INITIAL STATE CHECK
+
+    var tbody = $('#multiInputTable > table > tbody');
+    var rows = tbody.find('tr');
+    if (rows === null) {
+      return;
+    }
+
+    for (var i = 1; i < rows.length; i++) {
+          var currInputString = rows[i].cells[0].innerHTML;
+          console.log(currInputString);
+          var result = g.traverseOneInput(currInputString);
+          if (result){
+            rows[i].cells[1].innerHTML = "Accepted"
+          }
+          else {
+            rows[i].cells[1].innerHTML = "Rejected"
+          }
+          if (i >= 50) break;
+    }
+  }
+
   var save = function() {
     var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(g.serializeToXML());
     $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.xml">Download PDA</a>');
@@ -430,6 +457,7 @@
     }
     $('#input').val(lambda);
     $('#pop').val(lambda);
+    $('#push').val(lambda);
     edgeInput.show();
     var leftOffset = 15 + box.x + box.width / 2;
     var topOffset = box.y + box.height / 2 + $('.jsavgraph').offset().top - 5;
@@ -552,7 +580,6 @@
   }
 
 
-  $('#begin').click(onClickTraverse);
   $('#layoutbutton').click(function() {g.layout()});
   $('#testNDbutton').click(toggleND);
   $('#testlambdabutton').click(toggleLambda);
@@ -562,9 +589,15 @@
   $('#moveButton').click(moveNodesMode);
   $('#editButton').click(editMode);
   $('#deleteButton').click(deleteMode);
+  $('#runButton').click(multiRun);
+  $('#closeModal').click(function(){
+    $('#multiModal').hide();
+  })
   // $('#convertToGrammarButton').click(convertToGrammar);
   // $('#completeConvertButton').hide();
   $('#saveButton').click(save);
+  $('#singleRunButton').click(onClickTraverse);
+  $('#multiRunButton').click(multiModal);
   $('#undoButton').click(function() {
     g.undo();
     $(".jsavgraph").click(graphClickHandler);
