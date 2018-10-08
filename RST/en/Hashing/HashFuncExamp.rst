@@ -246,29 +246,19 @@ String Folding
 
 Here is a much better hash function for strings::
 
-   // Use folding on a string, summed 4 bytes at a time
-   long sfold(String s, int M) {
-     int intLength = s.length() / 4;
-     long sum = 0;
-     for (int j = 0; j < intLength; j++) {
-       char c[] = s.substring(j * 4, (j * 4) + 4).toCharArray();
-       long mult = 1;
-       for (int k = 0; k < c.length; k++) {
-         sum += c[k] * mult;
-         mult *= 256;
-       }
-     }
+  // Use folding on a string, summed 4 bytes at a time
+  int sfold(String s, int M) {
+    long sum = 0, mul = 1;
+    for (int i = 0; i < s.length(); i++) {
+        mul = (i % 4 == 0) ? 1 : mul * 256;
+        sum += s.charAt(i) * mul;
+    }
+    return (int)(Math.abs(sum) % M);
+  }
 
-     char c[] = s.substring(intLength * 4).toCharArray();
-     long mult = 1;
-     for (int k = 0; k < c.length; k++) {
-       sum += c[k] * mult;
-       mult *= 256;
-     }
-
-     return(Math.abs(sum) % M);
-   }
-
+.. This revised sfold implementation was contributed by
+   Torben Haagh <tbhaagh@gmail.com>.
+  
 This function takes a string as input.
 It processes the string four bytes at a time, and interprets each of
 the four-byte chunks as a single long integer value.

@@ -70,6 +70,10 @@
       "OpenFLAP/DFA": {},
       "OpenFLAP/TestZiyou": {}
     },
+    "Identifying Non-regular Languages (Lecture 7)": {
+      "OpenFLAP/NonRegular": {},
+      "OpenFLAP/DFAproperties": {}
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}
