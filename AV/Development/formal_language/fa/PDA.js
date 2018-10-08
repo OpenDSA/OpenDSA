@@ -1,4 +1,4 @@
-var NPDA = function(jsav, options) {
+var PDA = function(jsav, options) {
   Automaton.apply(this, arguments);
   this.configurations = $("<ul>"); // configurations jQuery object used to setup view at a step
   this.configViews = []; // configurations view for a step
@@ -8,33 +8,33 @@ var NPDA = function(jsav, options) {
   this.redoStack = [];
 }
 
-JSAV.ext.ds.npda = function (options) {
+JSAV.ext.ds.pda = function (options) {
   var opts = $.extend(true, {visible: true, autoresize: true}, options);
-  return new NPDA(this, opts);
+  return new PDA(this, opts);
 };
 
-JSAV.utils.extend(NPDA, JSAV._types.ds.Graph);
+JSAV.utils.extend(PDA, JSAV._types.ds.Graph);
 
-NPDA.prototype = Object.create(Automaton.prototype, {});
-var npda = NPDA.prototype;
+PDA.prototype = Object.create(Automaton.prototype, {});
+var pda = PDA.prototype;
 
-npda.showAccept = function(state) {
+pda.showAccept = function(state) {
   state.addClass('accepted');
 }
 
-npda.removeAccept = function(state) {
+pda.removeAccept = function(state) {
   state.removeClass('accepted');
 }
 
-npda.showReject = function(state) {
+pda.showReject = function(state) {
   state.addClass('rejected');
 }
 
-npda.isInitial = function(state) {
+pda.isInitial = function(state) {
   return state == this.initial;
 }
 
-npda.isFinal = function(state) {
+pda.isFinal = function(state) {
   return state.hasClass('final');
 }
 
@@ -42,7 +42,7 @@ npda.isFinal = function(state) {
 // tests
 
 // toggles highlighting nondeterministic nodes
-npda.toggleND = function() {
+pda.toggleND = function() {
   var nodes = this.nodes();
   for(var next = nodes.next(); next; next = nodes.next()) {
     var edges = next.getOutgoing();
@@ -60,7 +60,7 @@ npda.toggleND = function() {
 };
 
 // toggles highlighting lambda transitions
-npda.toggleLambda = function() {
+pda.toggleLambda = function() {
   var edges = this.edges();
   for (var next = edges.next(); next; next = edges.next()) {
     var wSplit = toColonForm(next.weight()).split('<br>');
@@ -76,7 +76,7 @@ npda.toggleLambda = function() {
 //====================
 //traversal
 
-npda.play = function(inputString) {
+pda.play = function(inputString) {
   this.setupControls();
 
   // var configArray = this.jsav.ds.array();
@@ -144,7 +144,7 @@ npda.play = function(inputString) {
   this.jsav.recorded();
 };
 
-npda.traverse = function(currentStates) {
+pda.traverse = function(currentStates) {
   // currentStates is an array of configurations
   var nextStates = [];
   for (var i = 0; i < currentStates.length; i++) {
@@ -208,7 +208,7 @@ npda.traverse = function(currentStates) {
   return nextStates;
 };
 
-npda.addLambdaClosure = function(nextStates) {
+pda.addLambdaClosure = function(nextStates) {
   lambdaStates = [];
   for (var i = 0; i < nextStates.length; i++) {
     var successors = nextStates[i].state.neighbors();
@@ -234,7 +234,7 @@ npda.addLambdaClosure = function(nextStates) {
   return nextStates;
 };
 
-npda.cancelTraverse = function() {
+pda.cancelTraverse = function() {
   var i = 0
   for(i; i < this._nodes.length; i++){
     if(this._nodes[i].hasClass('current')) {
@@ -286,7 +286,7 @@ var Configuration = function(configurations, state, stack, str, index) {
 //======================
 // Save/Load
 // save PDA as XML
-npda.serializeToXML = function () {
+pda.serializeToXML = function () {
   var text = '<?xml version="1.0" encoding="UTF-8"?>';
   text = text + "<structure>";
   text = text + "<type>pda</type>"
@@ -346,7 +346,7 @@ npda.serializeToXML = function () {
 };
 
 // load a PDA from a XML file
-npda.initFromXML = function(text) {
+pda.initFromXML = function(text) {
   var parser,
       xmlDoc;
   if (window.DOMParser) {
@@ -423,7 +423,7 @@ npda.initFromXML = function(text) {
    Function to get the stack alphabet for a PDA
    Returns an array.
  */
-npda.getStackAlphabet = function () {
+pda.getStackAlphabet = function () {
   var alphabet = [];
   var edges = this.edges();
   var w;
@@ -454,15 +454,15 @@ npda.getStackAlphabet = function () {
   return alphabet;
 };
 
-npda.updateAlphabetFunction = npda.updateAlphabet;
-npda.updateAlphabet = function() {
+pda.updateAlphabetFunction = pda.updateAlphabet;
+pda.updateAlphabet = function() {
   this.updateAlphabetFunction();
   $("#alphabet").html("" + Object.keys(this.alphabet).sort());
   var sa = this.getStackAlphabet();
   $('#stackalphabet').html(emptystring + "," + sa.sort());
 }
 
-npda.setupControls = function() {
+pda.setupControls = function() {
   var t = this; 
   var $configView = $('#configurations');
   $('.jsavbegin').click(function() {

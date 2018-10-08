@@ -24,7 +24,7 @@
 
 // initialize graph
   var initGraph = function(opts) {
-    g = jsav.ds.npda($.extend({width: '750px', height: 440, emptystring: lambda, editable: true}, opts));
+    g = jsav.ds.pda($.extend({width: '750px', height: 440, emptystring: lambda, editable: true}, opts));
     emptystring = g.emptystring;
     finalize();
 
@@ -369,7 +369,7 @@
 
   var save = function() {
     var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(g.serializeToXML());
-    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="npda.xml">Download NPDA</a>');
+    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.xml">Download PDA</a>');
     $('#download a')[0].click();
   }
 
