@@ -583,7 +583,6 @@
   $('#editEdge').hide()
   $('#alphabets').hide();
   $('#closeAv').hide();
-  $('#rmenu').load('rmenu.html');
   // onLoadHandler();
 
   g = initGraph({layout: "manual"});
