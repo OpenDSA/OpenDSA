@@ -1,6 +1,8 @@
 // Turing Machine "class", extending FiniteAutomaton
+import FA from "./FA.js";
+
 var TuringMachine = function(jsav, options) {
-	FiniteAutomaton.apply(this, arguments);
+	FA.apply(this, arguments);
 	this.transitions = [];
 }
 
@@ -11,7 +13,7 @@ JSAV.ext.ds.tm = function (options) {
 
 JSAV.utils.extend(TuringMachine, JSAV._types.ds.Graph);
 
-TuringMachine.prototype = Object.create(FiniteAutomaton.prototype, {});
+TuringMachine.prototype = Object.create(FA.prototype, {});
 var tm = TuringMachine.prototype;
 
 tm.addTransition = function(start, end, toRead, toWrite, direction) {
@@ -294,39 +296,45 @@ tmTrans.getWeight = function() {
 var Tape = function(str) {
 	"use strict";
 	this.arr = new Array(str.length);
-	for (int i = 0; i < str.length; i++){
+	for (var i = 0; i < str.length; i++)	{
 		arr[i] = str.charAt(i);
 	}
 	this.size = str.length;
 	this.current = 0;
+	this.jsav;
 
-	this.toString(){
+	this.toString() = function(){
 		console.log(this.arr);
 	}
 
-	this.write(value, location){
+	this.object = this.jsav.av.ds.array(this.arr);
+
+	this.write() = function(value, location){
 		this.arr[location] = value;
 		size++;
 		current = location;
 	}
 
-	this.getCurrent(){
+	this.getCurrent() = function(){
+		this.object.highlight(current);
 		return current;
 	}
 
-	this.goRight(){
+	this.goRight() = function(){
 		if (current += 1 > str.length){
 			console.log("Too far right");
 		}
+		this.object.highlight(current);
 	}
 
-	this.goLeft(){
+	this.goLeft() = function(){
 		if (current -= 1 < 0){
 			console.log("Too far left");
 		}
+		this.object.highlight(current);
 	}
 
-	removeValue(location){
+	this.removeValue() = function(location){
 		this.arr[location] = null;
 	}
 };
@@ -385,7 +393,7 @@ var Tape = function(str) {
 	// 		return this.current;
 	// 	}
 	// };
-};
+
 
 // Tape linked list node
 // var TapeNode = function (left, right, val) {
