@@ -327,6 +327,7 @@ var Tape = function(str) {
 	removeValue(location){
 		this.arr[location] = null;
 	}
+};
 
 	// if the tape is initialized using a string, writes the string to the new tape
 	// if (typeof str === 'string') {
