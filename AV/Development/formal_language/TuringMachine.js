@@ -255,11 +255,13 @@ var Configuration = function(state, tape) {
 	this.tape = new Tape(tape);
 	// toString returns the state value + the 'viewport' of the tape, to be displayed to the user
 	this.toString = function() {
-		return this.state.value() + ' ' + viewTape(this.tape);
+		return this.tape.toString();
+		// return this.state.value() + ' ' + viewTape(this.tape);
 	}
 	this.toID = function() {
 		// console.log(this.tape.currentIndex);
-		return this.state.value() + ' ' + this.tape + this.tape.currentIndex;
+		return this.tape.current;
+		// return this.state.value() + ' ' + this.tape + this.tape.current;
 	}
 };
 
