@@ -24,14 +24,6 @@ $(document).ready(function () {
     }
   }
 
-  // function sleep(milliseconds) {
-  //   var start = new Date().getTime();
-  //   for (var i = 0; i < 1e7; i++) {
-  //     if ((new Date().getTime() - start) > milliseconds){
-  //       break;
-  //     }
-  //   }
-  // }
 
   $(document).on('click', '#Found', function() {
     currentNode.unhighlight();
@@ -39,10 +31,8 @@ $(document).ready(function () {
        currentNode.css({"background-color": "green"});
        exercise.gradeableStep();
     }else{
-      //exercise.gradeableStep();
       currentNode.css({"background-color": "red"});
-      correct = false;
-      isCorrect(correct);
+      exercise.gradeableStep();
     }
     stack.removeFirst();
     currentNode.unhighlight();
@@ -53,13 +43,6 @@ $(document).ready(function () {
     jsavTree.root().right().css({"background-color": "white"});
     //av.step();
   });
-  $(document).on('click', '#NotinTree', function() {
-
-  });
-
-  function isCorrect(correct){
-    return correct;
-  }
 
   //remove the styling in the tree. ie highlighing and edge highlighting
   //@param node - the root node of the tree (reursive)
@@ -96,7 +79,7 @@ $(document).ready(function () {
     av._undo = [];
     alreadyUsed = [];
     found = 0;
-    BST.turnAnimationOff();
+    //BST.turnAnimationOff();
 
     //test if the data going into tree and stack is correct data
     function dataTest(array) {
@@ -212,7 +195,6 @@ $(document).ready(function () {
           if(cur.right()){
             cur.right().css({"background-color": "white"});
           }
-          // av.gradeableStep();
         }else{
           cur = cur.right();
           cur.highlight();
@@ -222,10 +204,10 @@ $(document).ready(function () {
           if(cur.right()){
             cur.right().css({"background-color": "white"});
           }
-          // av.gradeableStep();
        }
        av.gradeableStep();
       }
+      cur.unhighlight();
       cur.css({"background-color": "green"});
       av.gradeableStep();
       modelStack.removeFirst();
@@ -277,7 +259,6 @@ $(document).ready(function () {
       exercise.gradeableStep();
     }
     jsavTree.layout();
-
 
   };
 

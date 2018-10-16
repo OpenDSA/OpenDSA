@@ -33,7 +33,6 @@ $(document).ready(function () {
   function unhighlightAll(){
     unhighlightElements(classVars);
     unhighlightElements(mainVars);
-    unhighlightElements(fooVars);
   }
 
   function arrayFromObj(jsavStuff){
@@ -64,6 +63,7 @@ $(document).ready(function () {
   function clearAllJsavObj(){
     if(jsavElements){
       jsavElements.forEach(function(element) {
+        element.hide();
         element.clear();
       });
     }
@@ -104,14 +104,9 @@ $(document).ready(function () {
     function unhighlightAll(){
       unhighlightElements(classVars);
       unhighlightElements(mainVars);
-      unhighlightElements(fooVars);
     }
 
     //run foo()
-    for(var arr in initialArrays.fooVars){
-      fooVars[arr] = modeljsavAV.ds.array(initialArrays.fooVars[arr]);
-      jsavElements.push(fooVars[arr]);
-    }
     for(arr in initialArrays.classVars){
       classVars[arr] = modeljsavAV.ds.array(initialArrays.classVars[arr]);
       jsavElements.push(classVars[arr]);
@@ -119,6 +114,15 @@ $(document).ready(function () {
     for(arr in initialArrays.mainVars){
       mainVars[arr] = modeljsavAV.ds.array(initialArrays.mainVars[arr]);
       jsavElements.push(mainVars[arr]);
+    }
+    for(var arr in initialArrays.fooVars){
+      if(arr.length > 1){
+        fooVars[arr] = initialArrays.fooVars[arr];
+      }
+      else{
+        var split = initialArrays.fooVars[arr].split(':');
+        fooVars[arr] = ((split[0]==='mainVars')?mainVars:classVars)[split[1]];
+      }
     }
 
     modeljsavAV.displayInit();
@@ -135,7 +139,10 @@ $(document).ready(function () {
       var destination = (fooDestContext)?fooVars:classVars;
       var destIndex = 0;
       var destStr = lhs.charAt(0);
-      if(lhs.length > 1){
+      if(destination === fooVars){
+        destIndex = fooVars[lhs.charAt(0)+'-index']
+      }
+      else if(lhs.length > 1){
         destIndex = getValueOfVar(
                                     contexts,
                                     getIndexFromString(lhs)
@@ -147,7 +154,7 @@ $(document).ready(function () {
 
       destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
-      var outMsg = ((fooDestContext)?'foo':'class')+"'s "+destStr+
+      var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
                     ' set to the value of '+rhs.value;
 
       modeljsavAV.umsg(outMsg);
@@ -158,7 +165,6 @@ $(document).ready(function () {
     var jsavArrs = {
       classVars,
       mainVars,
-      fooVars
     }
 
     return arrayFromObj(jsavArrs);
@@ -222,18 +228,10 @@ $(document).ready(function () {
       }
     ));
 
-    var fooLabel = av.label("foo",
-      {
-        relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
-        left: leftMargin+boxWidth+boxPadding*2, top: currentTopMargin
-      }
-    );
-    jsavElements.push(fooLabel);
-
     currentTopMargin += lineHeight;
 
     fooVarNames = getVarNamesFromPrototype(codeLines[fooIndex-1]);
-    var numVars = Math.max(fooVarNames.length,mainVarNum);
+    var numVars = mainVarNum;
 
     //numVars = Math.max(numVars,/\(([^)]+)\)/)
     var mainBox = av.g.rect(2*leftMargin+pseudo.element[0].clientWidth,
@@ -241,13 +239,7 @@ $(document).ready(function () {
                             boxWidth,
                             lineHeight*numVars+boxPadding*numVars
                           );
-    var fooBox = av.g.rect(2*leftMargin+pseudo.element[0].clientWidth+boxWidth+
-                              boxPadding*2,
-                            currentTopMargin+topMargin,
-                            boxWidth,
-                            lineHeight*numVars+boxPadding*numVars
-                          );
-    jsavElements.push(mainBox, fooBox);
+    jsavElements.push(mainBox);
 
     currentFooTopMargin = currentTopMargin;
 
@@ -281,34 +273,35 @@ $(document).ready(function () {
     var fooPassedInValues = [];
 
     for(var i=0; i<fooPassedIn.length; i++){
-      fooPassedInValues.push(getValueOfVar([mainVars, classVars], fooPassedIn[i])['value']);
+      var target;
+      var pIndex = 0;
+      if(fooPassedIn[i] in mainVars){
+        target = mainVars[fooPassedIn[i]]
+      }
+      else{
+        target = classVars[fooPassedIn[i].split('[')[0]]
+        pIndex = getValueOfVar(
+          [mainVars,classVars],
+          getIndexFromString(fooPassedIn[i])
+        )['value']
+      }
+      fooLabels[fooVarNames[i]] = av.pointer(fooVarNames[i],target,{
+        targetIndex: pIndex,
+        left: lineHeight
+      })
+      fooVars[fooVarNames[i]] = target;
+      fooVars[fooVarNames[i]+'-index'] = pIndex;
+      initialArrays.fooVars[fooVarNames[i]] = ((fooPassedIn[i] in mainVars)?'mainVars':'classVars')+':'+fooPassedIn[i].charAt(0);
+      initialArrays.fooVars[fooVarNames[i]+'-index'] = pIndex;
+      jsavElements.push(fooLabels[fooVarNames[i]]);
     }
 
-    for(var i=0; i<fooVarNames.length; i++){
-      fooLabels[fooVarNames[i]] = av.label(fooVarNames[i],
-        {
-          relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
-          left: leftMargin+boxWidth+3*boxPadding, top: currentFooTopMargin
-        }
-      );
-      fooVars[fooVarNames[i]] = av.ds.array([fooPassedInValues[i]],
-        {
-          indexed: false,relativeTo:fooLabels[fooVarNames[i]], anchor:"right top",
-          myAnchor:"left top", left: labelMargin,
-          top:-1*jsavArrayOffset
-        }
-      );
-      initialArrays.fooVars[fooVarNames[i]] = [fooPassedInValues[i]];
-      jsavElements.push(fooLabels[fooVarNames[i]], fooVars[fooVarNames[i]]);
-      currentFooTopMargin += lineHeight;
-    }
     highlightedLine = currentLineFoo+1;
     pseudo.setCurrentLine(highlightedLine);
 
     var jsavArrs = {
       classVars,
-      mainVars,
-      fooVars
+      mainVars
     }
 
     for(var key in jsavArrs){
@@ -325,7 +318,7 @@ $(document).ready(function () {
   // is used and the fix errors mode is on.
   function fixState(modelState) {
     pseudo.setCurrentLine(highlightedLine);
-    var current = arrayFromObj({classVars, mainVars, fooVars});
+    var current = arrayFromObj({classVars, mainVars});
     for(var i = 0; i < modelState.length && i < current.length; i++){
       for(var j = 0; j < current[i].size(); j++) {
         current[i].value(j, modelState[i].value(j));

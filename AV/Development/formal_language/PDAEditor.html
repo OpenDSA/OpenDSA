@@ -13,19 +13,21 @@
     <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
     <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
     <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
-    <link rel="stylesheet" href="./css/FA.css" type="text/css" />
-    <link rel="stylesheet" href="./css/tester.css" type="text/css" />
-    <!--<link rel="stylesheet" href="./css/FAtoRE.css" type="text/css" />-->
-    <link rel="stylesheet" href="./css/PDAEditor.css" type="text/css" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- add icon_button library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- PDF save link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js" integrity="sha384-CchuzHs077vGtfhGYl9Qtc7Vx64rXBXdIAZIPbItbNyWIRTdG0oYAqki3Ry13Yzu" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./css/FA.css" type="text/css" />
+    <link rel="stylesheet" href="./css/tester.css" type="text/css" />
+    <!--<link rel="stylesheet" href="./css/FAtoRE.css" type="text/css" />-->
+    <link rel="stylesheet" href="./css/PDAEditor.css" type="text/css" />
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script> -->
 
@@ -74,7 +76,16 @@
                   </ul>
 
                 </div>
-                <button class="functionality" id="begin">Input</button>
+
+                <div class="dropdown" style="height: 20px !important;">
+                  <button type="button" data-toggle="dropdown">Input
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#" class="functionality" id="singleRunButton">Single Run</a></li>
+                    <li><a href="#" class="functionality" id="multiRunButton">Multiple Run</a></li>
+                  </ul>
+
+                </div>
 
                 <div class="dropdown" style="height: 20px !important;">
                   <button type="button" data-toggle="dropdown">Test
@@ -135,10 +146,10 @@
         <div id="configurations">
         </div>
         <div style="display: none;" class="configuration">
-          <span id="currentState">q0</span>
-          <span id="readInput">aaabbb</span>
-          <span id="unreadInput">ccdd</span>
-          <span id="stack">Zabc</span>
+          <span id="currentState"></span>
+          <span id="readInput"></span>
+          <span id="unreadInput"></span>
+          <span id="stack"></span>
         </div>
 
         <p class="jsavoutput jsavline"></p>
@@ -204,6 +215,38 @@
         </table>
       </div>
 
+  <!-- Multi Line run Support: adapted from https://codepen.io/johnraiz/pen/jvYRey/-->
+<div class="modal" id="multiModal" >
+  <div class="modal-content">
+  <div id="multiInputTable">
+    <span class="close" id="closeModal">&times;</span>
+    <table>
+      <tr>
+        <th>Input String</th>
+        <th>Result</th>
+        <th> </th>
+        <th> </th>
+      </tr>
+      <tr>
+        <td contenteditable="true"></td>
+        <td></td>
+        <td id="tableRemove">
+          <span class="table-remove glyphicon glyphicon-remove"></span>
+        </td>
+        <td id="tableMove">
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+    </table>
+  </div>
+      <button class="functionality" id="addRow" style="float: right;"> <span stle='color:blue'>+</span></button>
+  <button id="runButton" class="btn btn-primary">Run</button>
+</div>
+</div>
+
+
+
       <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
       <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
       <script src="../../../JSAV/lib/jquery.transit.js"></script>
@@ -219,26 +262,12 @@
       <script src="../../../DataStructures/FL_resources/html2canvas.js"></script>
       <script src="./fa/TraverseAccepter.js"></script>
       <script src="./exerController/ExerciseController.js"></script>
+      <script src="./fa/FA.js"></script>
       <script src="./fa/PDA.js"></script>
       <script src="./PDAEditor.js"></script>
       <script src="./CustomPrompt.js"></script>
       <script src="./fa/Commands.js"></script>
       <script type="text/javascript"></script>
-      <!--<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-      <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-      <script src="../../../JSAV/lib/jquery.transit.js"></script>
-      <script src="../../../JSAV/lib/raphael.js"></script>
-      <script src="../../../JSAV/lib/dagre.min.js"></script>
-      <script src="../../../JSAV/build/JSAV.js"></script>
-      <script src="../../../lib/odsaUtils-min.js"></script>
-      <script src="../../../lib/odsaAV-min.js"></script>
-      <script src="./fa/serializableGraph.js"></script>
-      <script src="../../../DataStructures/FL_resources/underscore-min.js"></script>
-      <script src="./fa/FA.js"></script>
-      <script src="./fa/PDA.js"></script>
-      <script src="./CustomPrompt.js"></script>
-      <script src="./fa/Commands.js"></script>
-      <script src="./PDA.js"></script>-->
     </div>
   </body>
 </html>

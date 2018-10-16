@@ -161,8 +161,6 @@ $(document).ready(function() {
     fooPassedInValues.push(getValueOfVar([mainVars, classVars], fooPassedIn[i])['value']);
   }
 
-  //var fooPassedInValues = [varVal.value, [classVars[name].value(varVal.value[0])]]
-
   for(var i=0; i<fooVarNames.length; i++){
     fooLabels[fooVarNames[i]] = av.label(fooVarNames[i],
       {

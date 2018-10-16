@@ -79,7 +79,7 @@ $(document).click(function() {
 		t.hideRMenu();
 		});
 
-$("#rmenu").load("../rmenu.html");
+$("#rmenu").load("rmenu.html");
 $("#rmenu").hide();
 
 };
