@@ -218,29 +218,32 @@
   <!-- Multi Line run Support: adapted from https://codepen.io/johnraiz/pen/jvYRey/-->
 <div class="modal" id="multiModal" >
   <div class="modal-content">
-  <div id="multiInputTable">
+  <div id="multiInputTable" class="table-editable">
     <span class="close" id="closeModal">&times;</span>
-    <table>
+    <table id = "multiTable">
       <tr>
         <th>Input String</th>
         <th>Result</th>
-        <th> </th>
         <th> </th>
       </tr>
       <tr>
         <td contenteditable="true"></td>
         <td></td>
         <td id="tableRemove">
-          <span class="table-remove glyphicon glyphicon-remove"></span>
+          <span id = "removeTopButton" class="table-remove glyphicon glyphicon-remove"></span>
         </td>
-        <td id="tableMove">
-          <span class="table-up glyphicon glyphicon-arrow-up"></span>
-          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+      </tr>
+
+      <tr class="hide">
+        <td contenteditable="true"></td>
+        <td ></td>
+        <td id="tableRemove">
+          <span id = "removeButton" class="table-remove glyphicon glyphicon-remove"></span>
         </td>
       </tr>
     </table>
   </div>
-      <button class="functionality" id="addRow" style="float: right;"> <span stle='color:blue'>+</span></button>
+      <button class="functionality" id="addRowButton" style="float: right;"> <span stle='color:blue'>+</span></button>
   <button id="runButton" class="btn btn-primary">Run</button>
 </div>
 </div>
