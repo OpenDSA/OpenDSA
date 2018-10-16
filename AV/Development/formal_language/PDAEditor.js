@@ -366,10 +366,6 @@
     g.play(inputString);
   };
 
-  var multiModal = function() {
-     $('#multiModal').show();
-  }
-
   var multiRun = function() {
     if (!g.initial) {
       alert('Please define an initial state');
@@ -591,35 +587,12 @@
   $('#moveButton').click(moveNodesMode);
   $('#editButton').click(editMode);
   $('#deleteButton').click(deleteMode);
-  $('#runButton').click(multiRun);
-  $('#closeModal').click(function(){
-    $('#multiModal').hide();
-  });
+  $(document).on("click", '#runMultipleInputsButton', multiRun);
   // $('#convertToGrammarButton').click(convertToGrammar);
   // $('#completeConvertButton').hide();
   $('#saveButton').click(save);
   $('#singleRunButton').click(onClickTraverse);
-  $('#multiRunButton').click(multiModal);
-  $('#removeTopButton').click(function(){
-    var tbody = $('#multiInputTable > table > tbody');
-    var rows = tbody.find('tr');
-    if (rows.length > 3) {
-      $(this).parents('tr').detach();
-    }
-  });
 
-  $('#removeButton').click(function(){
-    var tbody = $('#multiInputTable > table > tbody');
-    var rows = tbody.find('tr');
-    if (rows.length > 3) {
-      $(this).parents('tr').detach();
-    }
-  });
-  var $TABLE =  $('#multiInputTable');
-  $('#addRowButton').click(function(){
-    var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
-    $TABLE.find('table').append($clone);
-  });
   $('#undoButton').click(function() {
     g.undo();
     $(".jsavgraph").click(graphClickHandler);

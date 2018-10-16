@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
     <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
     <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
+    <link rel="stylesheet" href="./css/multiRun.css" type="text/css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -82,7 +83,7 @@
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                     <li><a href="#" class="functionality" id="singleRunButton">Single Run</a></li>
-                    <li><a href="#" class="functionality" id="multiRunButton">Multiple Run</a></li>
+                    <li><a href="#" class="functionality" id="openMultiRun">Multiple Run</a></li>
                   </ul>
 
                 </div>
@@ -216,37 +217,7 @@
       </div>
 
   <!-- Multi Line run Support: adapted from https://codepen.io/johnraiz/pen/jvYRey/-->
-<div class="modal" id="multiModal" >
-  <div class="modal-content">
-  <div id="multiInputTable" class="table-editable">
-    <span class="close" id="closeModal">&times;</span>
-    <table id = "multiTable">
-      <tr>
-        <th>Input String</th>
-        <th>Result</th>
-        <th> </th>
-      </tr>
-      <tr>
-        <td contenteditable="true"></td>
-        <td></td>
-        <td id="tableRemove">
-          <span id = "removeTopButton" class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-      </tr>
-
-      <tr class="hide">
-        <td contenteditable="true"></td>
-        <td ></td>
-        <td id="tableRemove">
-          <span id = "removeButton" class="table-remove glyphicon glyphicon-remove"></span>
-        </td>
-      </tr>
-    </table>
-  </div>
-      <button class="functionality" id="addRowButton" style="float: right;"> <span stle='color:blue'>+</span></button>
-  <button id="runButton" class="btn btn-primary">Run</button>
-</div>
-</div>
+  <div id="multiRun"></div>
 
 
 
