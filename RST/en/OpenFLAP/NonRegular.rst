@@ -44,6 +44,11 @@ is an infinite regular language.
 So, what about a language that was mentioned earlier, with no clear resolution?
 :math:`L_2 = \{a^nb^n | n > 0 \}` is an infinite language.
 
+.. inlineav:: Proof1PumpingLemmaCON ss
+   :long_name: Pumping Lemma Proof 1 Slideshow
+   :scripts: AV/Yuhui/Proof1PumpingLemmaCON.js
+   :output: show
+
 **Prove** that :math:`L_2 = \{a^nb^n | n > 0 \}` is not regular.
 
 | Proof 1 (by contradiction)
@@ -128,12 +133,6 @@ string captured by the cycle.
 Now, if the cycle is skipped, then we get :math:`w = w_1w_2`, and if
 its executed twice we get :math:`w = w_1v^2w_2`.
 In general, the DFA accepts all strings like  :math:`w = w_1v^*w_2`.
-
-.. inlineav:: PumpingLemmaCON ss
-   :long_name: Pumping Lemma Slideshow
-   :links: AV/Yuhui/PumpingLemmaCON.css
-   :scripts: AV/Yuhui/PumpingLemmaCON.js
-   :output: show
 
 Pumping Lemma
 ~~~~~~~~~~~~~
