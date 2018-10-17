@@ -1,8 +1,7 @@
 // Turing Machine "class", extending FiniteAutomaton
-import FA from "./FA.js";
 
 var TuringMachine = function(jsav, options) {
-	FA.apply(this, arguments);
+	Automaton.apply(this, arguments);
 	this.transitions = [];
 }
 
@@ -13,7 +12,7 @@ JSAV.ext.ds.tm = function (options) {
 
 JSAV.utils.extend(TuringMachine, JSAV._types.ds.Graph);
 
-TuringMachine.prototype = Object.create(FA.prototype, {});
+TuringMachine.prototype = Object.create(Automaton.prototype, {});
 var tm = TuringMachine.prototype;
 
 tm.addTransition = function(start, end, toRead, toWrite, direction) {
