@@ -18,6 +18,88 @@ var FiniteAutomaton = function(jsav, options) {
   
   FiniteAutomaton.prototype = Object.create(Automaton.prototype, {});
   var faproto = FiniteAutomaton.prototype;
+
+faproto.loadFAFromJFLAPFile = function (url) {
+	var parser,
+		xmlDoc,
+		text,
+		jsav = this.jsav;
+	$.ajax( {
+		url: url,
+		async: false, // we need it now, so not asynchronous request
+		success: function(data) {
+		  text = data;
+		}
+	});
+	if (window.DOMParser) {
+		  parser = new DOMParser();
+		  xmlDoc = parser.parseFromString(text,"text/xml");
+	}
+	else {
+		  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+		  xmlDoc.async = false;
+		  xmlDoc.loadXML(txt);
+	}
+	if (!xmlDoc.getElementsByTagName("type")[0]) {
+		// This file is not a file that can be parsed.
+		  window.alert('File does not contain an automaton.');
+		  return;
+	}
+	if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'fa') {
+		// This file was created by a different automaton editor.
+		window.alert('File does not contain a finite automaton.');
+		  return;
+	}
+	else {
+		
+		var nodeMap = {};			// map node IDs to nodes
+		  var xmlStates = xmlDoc.getElementsByTagName("state");
+		  //xmlStates = sortBy(xmlStates, function(x) { return x.id; })
+		  
+		  var xmlTrans = xmlDoc.getElementsByTagName("transition");
+		  // Iterate over the nodes and initialize them.
+		  for (var i = 0; i < xmlStates.length; i++) {
+			var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
+			var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
+			var newNode = this.addNode({left: x, top: y});
+			// Add the various details, including initial/final states and state labels.
+			var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
+			var isFinal = xmlStates[i].getElementsByTagName("final")[0];
+			var isLabel = xmlStates[i].getElementsByTagName("label")[0];
+			if (isInitial) {
+				this.makeInitial(newNode);
+			}
+			if (isFinal) {
+				newNode.addClass('final');
+			}
+			if (isLabel) {
+				label_val = '<p class = "label_css">' + isLabel.childNodes[0].nodeValue + '</p>';
+				newNode.stateLabel(label_val);
+			}
+			nodeMap[xmlStates[i].id] = newNode;
+			newNode.stateLabelPositionUpdate();
+		  }
+		  // Iterate over the edges and initialize them.
+		  for (var i = 0; i < xmlTrans.length; i++) {
+			  var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
+			  var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
+			  var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
+			  // Empty string always needs to be checked for.
+			  if (!read) {
+				  read = emptystring;
+			  }
+			  else {
+				  read = read.nodeValue;
+			  }
+			  var edge = this.addEdge(nodeMap[from], nodeMap[to], {weight: read});
+			  edge.layout();
+		  }
+		  jsav.displayInit();
+		}
+	/*if (auto === 'auto'){
+		layoutGraph();
+	}*/
+};
 /*
  NFA to DFA conversion
 Note: g.transitionFunction takes a single node and returns an array of node values
@@ -203,4 +285,5 @@ for (var next = nodes.next(); next; next = nodes.next()) {
 	}
 }
 };
+
 
