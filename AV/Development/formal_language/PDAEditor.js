@@ -367,29 +367,7 @@
   };
 
   var multiRun = function() {
-    if (!g.initial) {
-      alert('Please define an initial state');
-      return;
-    }
-
-    var tbody = $('#multiInputTable > table > tbody');
-    var rows = tbody.find('tr');
-    if (rows === null) {
-      return;
-    }
-
-    for (var i = 1; i < rows.length; i++) {
-          var currInputString = rows[i].cells[0].innerHTML;
-          console.log(currInputString);
-          var result = g.traverseOneInput(currInputString);
-          if (result){
-            rows[i].cells[1].innerHTML = "Accepted"
-          }
-          else {
-            rows[i].cells[1].innerHTML = "Rejected"
-          }
-          if (i >= 50) break;
-    }
+    g.runMultipleInputs()
   }
 
   var save = function() {

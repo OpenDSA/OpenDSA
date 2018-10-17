@@ -129,12 +129,11 @@ $(document).on("click", '#addRowButton', function(){
 });
 // IN PROGRESS.
 /*$(document).on("click", '#runMultipleInputsButton', function(){
-	var g = this.automaton
-	if (!g.initial) {
+	if (!this.initial) {
     alert('Please define an initial state');
     return;
   }
-
+  console.log('Past It')
   var tbody = $('#multiInputTable > table > tbody');
   var rows = tbody.find('tr');
   if (rows === null) {
@@ -144,7 +143,7 @@ $(document).on("click", '#addRowButton', function(){
   for (var i = 1; i < rows.length; i++) {
         var currInputString = rows[i].cells[0].innerHTML;
         console.log(currInputString);
-        var result = g.traverseOneInput(currInputString);
+        var result = this.traverseOneInput(currInputString);
         if (result){
           rows[i].cells[1].innerHTML = "Accepted"
         }
@@ -653,6 +652,32 @@ automatonproto.traverse = function (state, letter, options) {
 		return JSAV.utils.iterable(traversed);
 	} else { return null };
 };
+
+automatonproto.runMultipleInputs = function () {
+	if (!this.initial) {
+    alert('Please define an initial state');
+    return;
+  }
+  // console.log('Past It')
+  var tbody = $('#multiInputTable > table > tbody');
+  var rows = tbody.find('tr');
+  if (rows === null) {
+    return;
+  }
+
+  for (var i = 1; i < rows.length; i++) {
+        var currInputString = rows[i].cells[0].innerHTML;
+        console.log(currInputString);
+        var result = this.traverseOneInput(currInputString);
+        if (result){
+          rows[i].cells[1].innerHTML = "Accepted"
+        }
+        else {
+          rows[i].cells[1].innerHTML = "Rejected"
+        }
+        if (i >= 50) break;
+  }
+}
 
 /*
 	 Function to lay out the FA. 
