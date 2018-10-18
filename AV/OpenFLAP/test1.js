@@ -1,7 +1,7 @@
 /*global JSAV, document */
 // Written by Ziyou Shang
 
-document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"></script>');
+document.write('<script src="../../../DataStructures/FL_resources/FA.js"></script>');
 
 $(document).ready(function() {
   "use strict";
@@ -19,6 +19,7 @@ $(document).ready(function() {
       q1 = FA.addNode({left: left - 50, top: top}),
       q2 = FA.addNode({left: left - 50, top: top + 100}),
       q3 = FA.addNode({left: left + 100, top: top + 50});
+      
   FA.disableDragging();
 
   // set initial and final states
