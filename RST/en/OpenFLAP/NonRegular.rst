@@ -46,6 +46,7 @@ So, what about a language that was mentioned earlier, with no clear resolution?
 
 .. inlineav:: Proof1PumpingLemmaCON ss
    :long_name: Pumping Lemma Proof 1 Slideshow
+   :links: AV/Yuhui/Proof1PumpingLemmaCON.css
    :scripts: AV/Yuhui/Proof1PumpingLemmaCON.js
    :output: show
 
@@ -175,9 +176,9 @@ And the pumping lemma is not a universal solution for determining that
 a language is non-regular.
 Its just a tool in the toolbox.
 
-.. inlineav:: PumpingLemmaEXCON ss
-   :long_name: Pumping Lemma Example Slideshow
-   :scripts: AV/Yuhui/PumpingLemmaEXCON.js
+.. inlineav:: PumpingLemma ss
+   :long_name: Pumping Lemma Slideshow
+   :scripts: AV/Yuhui/PumpingLemma.js
    :output: show
 
 

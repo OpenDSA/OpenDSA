@@ -74,7 +74,7 @@ $(document).ready(function () {
     var e3 = g.addEdge(qt1, qt);
     var e4 = av.g.line(495, 30, 470, 30, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
     var e5 = av.g.line(450, 30, 425, 30, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-    var arrow8 = av.g.line(477, 130, 527, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+    var arrow = av.g.line(477, 130, 527, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
     var label2 = av.label("$..........$", {"top": yoffset + 100, "left": xoffset + 560});
     var label3 = av.label(".....", {"top": yoffset, "left": xoffset + 480});
     var labela = av.label("$t$ a's", {"top": yoffset + 45, "left": xoffset + 480});
@@ -100,10 +100,10 @@ $(document).ready(function () {
     var arrValues2 = ["a", "a", "...", "a", "a", "...", "a", "b", "...", "b", "b"];
     var arr2 = av.ds.array(arrValues2);
     var labelaab = av.label("$|------m>k-------|----k----|$", {"left": 260, "top": 250});
-    av.g.line(280, 230, 210, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-    av.g.line(310, 230, 290, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-    av.g.line(380, 230, 460, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-    av.g.line(460, 230, 560, 140, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+    var arrow12 = av.g.line(280, 230, 210, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+    var arrow13 = av.g.line(310, 230, 290, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+    var arrow14 = av.g.line(380, 230, 460, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+    var arrow15 = av.g.line(460, 230, 560, 140, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
     av.step();
 
     //Slide 10
@@ -112,6 +112,59 @@ $(document).ready(function () {
 
     //Slide 11
     av.umsg("Thus, $L_2$ is not regular.");
+    av.step();
+
+    //Slide 12
+    av.umsg("This is an example of the Pigeonhole Principle. The Pigeonhole Principle states that, given $n$ pigeonholes and $n+1$ pigeons, when all of the pigeons go into the holes we can be sure that at least one hole contains more than one pigeon.");
+    arr2.hide();
+    labelaab.hide();
+    labela.hide();
+    label1.hide();
+    label2.hide();
+    label3.hide();
+    arrow.hide();
+    arrow1.hide();
+    arrow2.hide();
+    arrow3.hide();
+    arrow7.hide();
+    arrow8.hide();
+    arrow9.hide();
+    arrow12.hide();
+    arrow13.hide();
+    arrow14.hide();
+    arrow15.hide();
+    q0.hide();
+    q1.hide();
+    qt.hide();
+    qn.hide();
+    qt1.hide();
+    qt2.hide();    
+    e1.hide();
+    e2.hide();
+    e3.hide();
+    e4.hide();
+    e5.hide();
+    var p1 = g.addNode("1", {left: xoffset + 50, top: yoffset + 100});  
+    var p2 = g.addNode("2", {left: xoffset + 150, top: yoffset + 100}); 
+    var pi =  g.addNode("i", {left: xoffset + 250, top: yoffset + 100}); 
+    var pn = g.addNode("n", {left: xoffset + 350, top: yoffset + 100});  
+    var pn1 = g.addNode("n+1", {left: xoffset + 450, top: yoffset + 100}); 
+    var h1 = g.addNode("1", {left: xoffset + 50, top: yoffset + 200});  
+    var h2 = g.addNode("2", {left: xoffset + 150, top: yoffset + 200}); 
+    var hi = g.addNode("i", {left: xoffset + 250, top: yoffset + 200}); 
+    var hn = g.addNode("n", {left: xoffset + 350, top: yoffset + 200});
+    g.addEdge(p1, h1);
+    g.addEdge(p2, h2);
+    g.addEdge(pn, hn);
+    g.addEdge(pi, hi);
+    var labelp1 = av.label("$.........$", {"left": 390, "top": 100});
+    var labelp2 = av.label("$.........$", {"left": 490, "top": 100});
+    var labelph1 = av.label("$.........$", {"left": 390, "top": 200});
+    var labelph2 = av.label("$.........$", {"left": 490, "top": 200});
+    var labelpg = av.label("Pigeon: ", {"left": 100, "top": 100});
+    var labelpg = av.label("Pigeonholes: ", {"left": 100, "top": 200});
+    var arrowph = av.g.line(665, 146, 470, 218, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+    g.layout();
     av.recorded(); 
     
 });
