@@ -70,7 +70,17 @@ of integer lists:
          & | & <int> <list\_of-\_ints> \\
    \end{eqnarray*}	 
 
-Following the two paths for a *<list_of_ints>* in this grammar -- one for the empty list and one for a non-empty list leads us to structure a *sum* function as::
+Following the two paths for a *<list_of_ints>* in this grammar -- one for the empty list and one for a non-empty list leads us to structure a *sum* function as
+
+.. inlineav:: FP2Code1CON ss
+   :long_name: Illustrate Simple Recursion On List To Return Numeric Value
+   :links: AV/PL/AV/FP2CON.css
+   :scripts: AV/PL/AV/FP2Code1CON.js
+   :output: show
+
+Test
+
+::
 
     var sum = function (ns) {
                  if ( SOME TEST ) {
@@ -80,6 +90,7 @@ Following the two paths for a *<list_of_ints>* in this grammar -- one for the em
                  }
               }
 
+      
 Think about how to complete this function and then try the following
 review problem, which uses similar recursive list-processing logic.
 Note that this problem is randomized. You must solve it correctly
@@ -88,101 +99,101 @@ three times in a row to earn the point associated with it.
 .. avembed:: Exercises/PL/RecListProc1.html ka
    :long_name: Recursion on Flat lists 1
 
-Recursive List Processing (2)
------------------------------
-
-Next consider a function *isMember* that takes in an integer and an integer list and returns true if and only if
-its first argument is a member of the second argument::
-
-    > var fp = require('./fp')
-    > isMember( 2, [ 1, 2, 3 ] )
-    true
-    > isMember( 4, [ 1, 2, 3 ] )
-    false
-    > isMember( 2, [ 1, [ 2, 3 ] ] )
-    false
-
-Keep in mind the recursive definition of integer
-lists:
-
-.. math::
-
-   \begin{eqnarray*} 
-   <list\_of\_ints> &::=& \epsilon \\
-   & | &  <int> <list\_of\_ints> \\
-   \end{eqnarray*}
-
-Following that recursive definition  design a recursive algorithm for *isMember* using the template
-provided below::
-
-    var isMember = function (n,ns) {
-                      if ( SOME TEST ) {
-                         return SOMETHING;
-                      } else { 
-                         return SOMETHING ELSE;
-                      }
-                   }
-
-Once you have the logic designed for *isMember*, design a similar
-list-processing function *removeFirst* that takes in an integer
-:math:`n` and an integer list :math:`l` and returns a list identical
-to :math:`l` but with the first occurrence of :math:`n` removed::
-
-    > var fp = require('./fp')
-    > removeFirst(3,[1,2,3])
-    [ 1, 2 ]
-    > removeFirst(4,[1,2,3])
-    [ 1, 2, 3 ]
-    > removeFirst(2,[1,2,3,2])
-    [ 1, 3, 2 ]
-
-If you again follow the recursive BNF description for a *<list_of_ints>*, you will find that the appropriate template for your *removeFirst* function looks like::
-
-    var removeFirst = function (n,ns) {
-                         if ( SOME TEST ) {
-                            return SOMETHING;
-                         } else { 
-                            DO A BIT MORE WORK;
-                         }
-                   }
-
-Once you have the correct logic for *removeFirst*, consider the
-following review problem, which asks you to slightly modify *removeFirst*.
-
-
-.. avembed:: Exercises/PL/RecListProc2.html ka
-   :long_name: Recursion on Flat Lists 2
-
-
-Recursive List Processing (3)
------------------------------
-
-As a final example in this section consider a function that takes in two integers
-:math:`n` (for ’new’) and :math:`o` (for ’old’) and an integer list
-:math:`l` and returns a list identical to :math:`l` except that all
-occurrences of :math:`o` in :math:`l` have been replaced by :math:`n`::
-
-    > var fp = require('./fp')
-    > subst(10,1,[1,2,3,2,1])
-    [ 10, 2, 3, 2, 10 ]
-    > subst(50,5,[1,2,3])
-    [ 1, 2, 3 ]
-    > subst(10,1,[[1,2],3])
-    [ [ 1, 2 ], 3 ]
-
-
-Again the template for the *subst* function follows the pattern
-established by the BNF grammar for a *<list_of_ints>*::
-
-    var subst = function (n,ns) {
-                   if ( SOME TEST ) {
-                      return SOMETHING;
-                   } else { 
-                      DO A BIT MORE WORK;
-                   }
-                }
-
-When you have established the correct logic for this template, consider the final review problem for this section, which  asks you to slightly modify the ``subst`` function.
-
-.. avembed:: Exercises/PL/RecListProc3.html ka
-   :long_name: Recursion on Flat Lists 3
+.. Recursive List Processing (2)
+.. -----------------------------
+.. 
+.. Next consider a function *isMember* that takes in an integer and an integer list and returns true if and only if
+.. its first argument is a member of the second argument::
+.. 
+..     > var fp = require('./fp')
+..     > isMember( 2, [ 1, 2, 3 ] )
+..     true
+..     > isMember( 4, [ 1, 2, 3 ] )
+..     false
+..     > isMember( 2, [ 1, [ 2, 3 ] ] )
+..     false
+.. 
+.. Keep in mind the recursive definition of integer
+.. lists:
+.. 
+.. .. math::
+.. 
+..    \begin{eqnarray*} 
+..    <list\_of\_ints> &::=& \epsilon \\
+..    & | &  <int> <list\_of\_ints> \\
+..    \end{eqnarray*}
+.. 
+.. Following that recursive definition  design a recursive algorithm for *isMember* using the template
+.. provided below::
+.. 
+..     var isMember = function (n,ns) {
+..                       if ( SOME TEST ) {
+..                          return SOMETHING;
+..                       } else { 
+..                          return SOMETHING ELSE;
+..                       }
+..                    }
+.. 
+.. Once you have the logic designed for *isMember*, design a similar
+.. list-processing function *removeFirst* that takes in an integer
+.. :math:`n` and an integer list :math:`l` and returns a list identical
+.. to :math:`l` but with the first occurrence of :math:`n` removed::
+.. 
+..     > var fp = require('./fp')
+..     > removeFirst(3,[1,2,3])
+..     [ 1, 2 ]
+..     > removeFirst(4,[1,2,3])
+..     [ 1, 2, 3 ]
+..     > removeFirst(2,[1,2,3,2])
+..     [ 1, 3, 2 ]
+.. 
+.. If you again follow the recursive BNF description for a *<list_of_ints>*, you will find that the appropriate template for your *removeFirst* function looks like::
+.. 
+..     var removeFirst = function (n,ns) {
+..                          if ( SOME TEST ) {
+..                             return SOMETHING;
+..                          } else { 
+..                             DO A BIT MORE WORK;
+..                          }
+..                    }
+.. 
+.. Once you have the correct logic for *removeFirst*, consider the
+.. following review problem, which asks you to slightly modify *removeFirst*.
+.. 
+.. 
+.. .. avembed:: Exercises/PL/RecListProc2.html ka
+..    :long_name: Recursion on Flat Lists 2
+.. 
+.. 
+.. Recursive List Processing (3)
+.. -----------------------------
+.. 
+.. As a final example in this section consider a function that takes in two integers
+.. :math:`n` (for ’new’) and :math:`o` (for ’old’) and an integer list
+.. :math:`l` and returns a list identical to :math:`l` except that all
+.. occurrences of :math:`o` in :math:`l` have been replaced by :math:`n`::
+.. 
+..     > var fp = require('./fp')
+..     > subst(10,1,[1,2,3,2,1])
+..     [ 10, 2, 3, 2, 10 ]
+..     > subst(50,5,[1,2,3])
+..     [ 1, 2, 3 ]
+..     > subst(10,1,[[1,2],3])
+..     [ [ 1, 2 ], 3 ]
+.. 
+.. 
+.. Again the template for the *subst* function follows the pattern
+.. established by the BNF grammar for a *<list_of_ints>*::
+.. 
+..     var subst = function (n,ns) {
+..                    if ( SOME TEST ) {
+..                       return SOMETHING;
+..                    } else { 
+..                       DO A BIT MORE WORK;
+..                    }
+..                 }
+.. 
+.. When you have established the correct logic for this template, consider the final review problem for this section, which  asks you to slightly modify the ``subst`` function.
+.. 
+.. .. avembed:: Exercises/PL/RecListProc3.html ka
+..    :long_name: Recursion on Flat Lists 3

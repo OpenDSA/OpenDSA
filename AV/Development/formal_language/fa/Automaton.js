@@ -82,7 +82,78 @@ $(document).click(function() {
 $("#rmenu").load("rmenu.html");
 $("#rmenu").hide();
 
+/**************** Add ability to run multiple inputs ***************************/
+// Bind opening of modal to a button
+$('#openMultiRun').click(function(){
+    $('#multiModal').show();
+  });
+$("#multiRun").load("multiRun.html"); // Load Info from html file
+$("#multiModal").hide(); // Hide it automatically
 };
+
+/**
+ * Add event listener to the button in the modal that closes the modal
+ */
+$(document).on("click", '#closeModal', function(){
+    $('#multiModal').hide();
+  });
+/**
+ * Add event listener To the remove button of the top row 
+ */
+$(document).on("click", '#removeTopButton', function(){
+  var tbody = $('#multiInputTable > table > tbody');
+  var rows = tbody.find('tr');
+  if (rows.length > 3) {
+    $(this).parents('tr').detach();
+  }
+});
+
+/**
+ * Add event listener To the remove button of the lower rows
+ */
+$(document).on("click", '#removeButton', function(){
+  var tbody = $('#multiInputTable > table > tbody');
+  var rows = tbody.find('tr');
+  if (rows.length > 3) {
+    $(this).parents('tr').detach();
+  }
+});
+
+/**
+ * Add event listener To the add row button 
+ */
+$(document).on("click", '#addRowButton', function(){
+  var $TABLE =  $('#multiInputTable');
+  var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+  $TABLE.find('table').append($clone);
+});
+// IN PROGRESS.
+/*$(document).on("click", '#runMultipleInputsButton', function(){
+	if (!this.initial) {
+    alert('Please define an initial state');
+    return;
+  }
+  console.log('Past It')
+  var tbody = $('#multiInputTable > table > tbody');
+  var rows = tbody.find('tr');
+  if (rows === null) {
+    return;
+  }
+
+  for (var i = 1; i < rows.length; i++) {
+        var currInputString = rows[i].cells[0].innerHTML;
+        console.log(currInputString);
+        var result = this.traverseOneInput(currInputString);
+        if (result){
+          rows[i].cells[1].innerHTML = "Accepted"
+        }
+        else {
+          rows[i].cells[1].innerHTML = "Rejected"
+        }
+        if (i >= 50) break;
+  }
+});*/
+/******************* End Add ability to run multiple inputs ******************************/
 
 JSAV.utils._events._addEventSupport(automatonproto);
 
@@ -581,6 +652,32 @@ automatonproto.traverse = function (state, letter, options) {
 		return JSAV.utils.iterable(traversed);
 	} else { return null };
 };
+
+automatonproto.runMultipleInputs = function () {
+	if (!this.initial) {
+    alert('Please define an initial state');
+    return;
+  }
+  // console.log('Past It')
+  var tbody = $('#multiInputTable > table > tbody');
+  var rows = tbody.find('tr');
+  if (rows === null) {
+    return;
+  }
+
+  for (var i = 1; i < rows.length; i++) {
+        var currInputString = rows[i].cells[0].innerHTML;
+        console.log(currInputString);
+        var result = this.traverseOneInput(currInputString);
+        if (result){
+          rows[i].cells[1].innerHTML = "Accepted"
+        }
+        else {
+          rows[i].cells[1].innerHTML = "Rejected"
+        }
+        if (i >= 50) break;
+  }
+}
 
 /*
 	 Function to lay out the FA. 

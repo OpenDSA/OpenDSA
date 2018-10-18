@@ -96,7 +96,6 @@
   var deleteRowInEditEdge = function() {
     var tbody = $(this).parent().parent().parent();
     if (tbody.children().length == 1) {
-      // $('#deleteEdge').text("Deleted");
       tbody.attr({remove: 'true'});
       $(document).trigger(
         jQuery.Event( 'keyup', { keyCode: 13, which: 13 } )
@@ -367,31 +366,8 @@
     g.play(inputString);
   };
 
-  var multiModal = function() {
-     $('#multiModal').show();
-  }
-
   var multiRun = function() {
-    // ADD BACK IN INITIAL STATE CHECK
-
-    var tbody = $('#multiInputTable > table > tbody');
-    var rows = tbody.find('tr');
-    if (rows === null) {
-      return;
-    }
-
-    for (var i = 1; i < rows.length; i++) {
-          var currInputString = rows[i].cells[0].innerHTML;
-          console.log(currInputString);
-          var result = g.traverseOneInput(currInputString);
-          if (result){
-            rows[i].cells[1].innerHTML = "Accepted"
-          }
-          else {
-            rows[i].cells[1].innerHTML = "Rejected"
-          }
-          if (i >= 50) break;
-    }
+    g.runMultipleInputs()
   }
 
   var save = function() {
@@ -589,15 +565,12 @@
   $('#moveButton').click(moveNodesMode);
   $('#editButton').click(editMode);
   $('#deleteButton').click(deleteMode);
-  $('#runButton').click(multiRun);
-  $('#closeModal').click(function(){
-    $('#multiModal').hide();
-  })
+  $(document).on("click", '#runMultipleInputsButton', multiRun);
   // $('#convertToGrammarButton').click(convertToGrammar);
   // $('#completeConvertButton').hide();
   $('#saveButton').click(save);
   $('#singleRunButton').click(onClickTraverse);
-  $('#multiRunButton').click(multiModal);
+
   $('#undoButton').click(function() {
     g.undo();
     $(".jsavgraph").click(graphClickHandler);
