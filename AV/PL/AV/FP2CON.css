@@ -1,0 +1,30 @@
+#FP2Code1CON {
+  height: 320px;
+}
+
+#FP2Code1CON .jsavcode {
+  margin-left: 285px;
+  width: 560px;
+}
+
+#FP2Code1CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP2Code1CON .jsavoutput.jsavline {
+  height: 30px;
+}
+
+/* Makes all cells wider */
+/*#FP2Code1CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#FP2Code1CON  .jsavindex.jsavnode.wider {
+    min-width : 60px !important;
+    max-width : 60px !important;
+}
+

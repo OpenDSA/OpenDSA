@@ -5,9 +5,9 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
-      interpret = config.interpreter, // get the interpreter
-      code = config.code;             // get the code object
-
+      interpret = config.interpreter;
+  var url = interpret("fa1");
+    
   function TapeHead(headX, headY){
     this.Y = headY;
     this.X = headX;
@@ -68,17 +68,11 @@ Tape.prototype = {
     this.head.drawHead(this.cells[this.cellIndex].cellRect);
   }
 }
-  var BinaryDFA = new av.ds.fa($.extend({width: '450px', height: 340, editable: true, center: true}));
-  var q0 = BinaryDFA.addNode({left: 0, top: 200});
-  var q1 = BinaryDFA.addNode({left: 250, top: 200});
+  var BinaryDFA = new av.ds.fa();
+
+  FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA,url);
   BinaryDFA.disableDragging();
-  toggleInitial(BinaryDFA, q0);
-  toggleFinal(BinaryDFA, q1);
-  BinaryDFA.addEdge(q0, q1, {weight: "0"});
-  BinaryDFA.addEdge(q1, q0, {weight: "1"});
-  BinaryDFA.addEdge(q0, q0, {weight: "1"});
-  BinaryDFA.addEdge(q1, q1, {weight: "0"});
-  BinaryDFA.layout();
+  var nodes = BinaryDFA.nodes();
   // Slide 1
   av.umsg("Let's trace the acceptance string 11010 by the following DFA");
   //drawTape(av, 50,50,10,[0,0,0,0,0,0,0,0,0,0]);
@@ -87,7 +81,7 @@ Tape.prototype = {
   // Slide 2
   av.umsg("At the begining, the machine will be on the start state $q_0$.");
   tape.draw();
-  q0.highlight();
+  nodes[0].highlight();
   av.step();
   // Slide 3
   av.umsg("When the machine reads 1 while it is on state $q_0$, the DFA will stays at state $q_0$.");
@@ -96,22 +90,22 @@ Tape.prototype = {
   av.step();
   av.umsg("When the machine reads 0 while it is on state $q_0$, the DFA will moves to state $q_1$.");
   tape.moveTapeHeadToRight();
-  q0.unhighlight();
-  q1.highlight();
+  nodes[0].unhighlight();
+  nodes[1].highlight();
   av.step();
   av.umsg("When the machine reads 0 while it is on state $q_1$, the DFA will stays at state $q_1$.");
   tape.moveTapeHeadToRight();
   av.step();
   av.umsg("When the machine reads 1 while it is on state $q_1$, the DFA will moves to state $q_0$.");
-  q1.unhighlight();
-  q0.highlight();
+  nodes[1].unhighlight();
+  nodes[0].highlight();
   tape.moveTapeHeadToRight();
   av.step();
   av.umsg("When the machine reads 0 while it is on state $q_0$, the DFA will moves to state $q_1$.");
   av.step();  av.umsg("When the machine reads 0 while it is on state $q_0$, the DFA will moves to state $q_1$.");
   tape.moveTapeHeadToRight();
-  q0.unhighlight();
-  q1.highlight();
+  nodes[0].unhighlight();
+  nodes[1].highlight();
   av.step();
   av.umsg("Now the string is finished and the state is on a final (accepting) state. Thus, the string 11010 is accepted by the DFA");
   //q1.unhighlight();

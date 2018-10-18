@@ -24,7 +24,7 @@
 
 // initialize graph
   var initGraph = function(opts) {
-    g = jsav.ds.npda($.extend({width: '750px', height: 440, emptystring: lambda, editable: true}, opts));
+    g = jsav.ds.pda($.extend({width: '750px', height: 440, emptystring: lambda, editable: true}, opts));
     emptystring = g.emptystring;
     finalize();
 
@@ -96,7 +96,6 @@
   var deleteRowInEditEdge = function() {
     var tbody = $(this).parent().parent().parent();
     if (tbody.children().length == 1) {
-      // $('#deleteEdge').text("Deleted");
       tbody.attr({remove: 'true'});
       $(document).trigger(
         jQuery.Event( 'keyup', { keyCode: 13, which: 13 } )
@@ -367,9 +366,13 @@
     g.play(inputString);
   };
 
+  var multiRun = function() {
+    g.runMultipleInputs()
+  }
+
   var save = function() {
     var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(g.serializeToXML());
-    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="npda.xml">Download NPDA</a>');
+    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.xml">Download PDA</a>');
     $('#download a')[0].click();
   }
 
@@ -430,6 +433,7 @@
     }
     $('#input').val(lambda);
     $('#pop').val(lambda);
+    $('#push').val(lambda);
     edgeInput.show();
     var leftOffset = 15 + box.x + box.width / 2;
     var topOffset = box.y + box.height / 2 + $('.jsavgraph').offset().top - 5;
@@ -523,8 +527,6 @@
   };
 
   function closeAv() {
-    console.log("Wut it is")
-    // $('#av').hide();
     $('.jsavcontrols').hide();
     $('#alphabets').hide();
     $('#configurations').hide();
@@ -554,7 +556,6 @@
   }
 
 
-  $('#begin').click(onClickTraverse);
   $('#layoutbutton').click(function() {g.layout()});
   $('#testNDbutton').click(toggleND);
   $('#testlambdabutton').click(toggleLambda);
@@ -564,9 +565,12 @@
   $('#moveButton').click(moveNodesMode);
   $('#editButton').click(editMode);
   $('#deleteButton').click(deleteMode);
+  $(document).on("click", '#runMultipleInputsButton', multiRun);
   // $('#convertToGrammarButton').click(convertToGrammar);
   // $('#completeConvertButton').hide();
   $('#saveButton').click(save);
+  $('#singleRunButton').click(onClickTraverse);
+
   $('#undoButton').click(function() {
     g.undo();
     $(".jsavgraph").click(graphClickHandler);

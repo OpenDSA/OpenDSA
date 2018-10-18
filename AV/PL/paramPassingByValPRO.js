@@ -168,8 +168,7 @@ $(document).ready(function () {
   function initialize() {
     CallByAllFive.init();
     clearAllJsavObj();
-    av.umsg("Directions: First, type the evaluated value of the right hand side. "+
-            "Then click the location where that value will be stored");
+    av.umsg("");
 
     codeLines = CallByAllFive.expression.split('<br />');
     for(var i = 0; i < codeLines.length; i++){
@@ -300,7 +299,7 @@ $(document).ready(function () {
         }
       );
       initialArrays.fooVars[fooVarNames[i]] = [fooPassedInValues[i]];
-      jsavElements.push(fooLabels[fooVarNames[i]], fooVars[fooVarNames[i]])
+      jsavElements.push(fooLabels[fooVarNames[i]], fooVars[fooVarNames[i]]);
       currentFooTopMargin += lineHeight;
     }
     highlightedLine = currentLineFoo+1;

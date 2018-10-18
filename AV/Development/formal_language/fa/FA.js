@@ -18,26 +18,139 @@ var FiniteAutomaton = function(jsav, options) {
   
   FiniteAutomaton.prototype = Object.create(Automaton.prototype, {});
   var faproto = FiniteAutomaton.prototype;
+
+faproto.loadFAFromJFLAPFile = function (url) {
+	var parser,
+		xmlDoc,
+		text,
+		jsav = this.jsav;
+	$.ajax( {
+		url: url,
+		async: false, // we need it now, so not asynchronous request
+		success: function(data) {
+		  text = data;
+		}
+	});
+	if (window.DOMParser) {
+		  parser = new DOMParser();
+		  xmlDoc = parser.parseFromString(text,"text/xml");
+	}
+	else {
+		  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+		  xmlDoc.async = false;
+		  xmlDoc.loadXML(txt);
+	}
+	if (!xmlDoc.getElementsByTagName("type")[0]) {
+		// This file is not a file that can be parsed.
+		  window.alert('File does not contain an automaton.');
+		  return;
+	}
+	if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'fa') {
+		// This file was created by a different automaton editor.
+		window.alert('File does not contain a finite automaton.');
+		  return;
+	}
+	else {
+		
+		var nodeMap = {};			// map node IDs to nodes
+		  var xmlStates = xmlDoc.getElementsByTagName("state");
+		  //xmlStates = sortBy(xmlStates, function(x) { return x.id; })
+		  
+		  var xmlTrans = xmlDoc.getElementsByTagName("transition");
+		  // Iterate over the nodes and initialize them.
+		  for (var i = 0; i < xmlStates.length; i++) {
+			var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
+			var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
+			var newNode = this.addNode({left: x, top: y, value: xmlStates[i].attributes[1].nodeValue});
+			// Add the various details, including initial/final states and state labels.
+			var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
+			var isFinal = xmlStates[i].getElementsByTagName("final")[0];
+			var isLabel = xmlStates[i].getElementsByTagName("label")[0];
+			if (isInitial) {
+				this.makeInitial(newNode);
+			}
+			if (isFinal) {
+				newNode.addClass('final');
+			}
+			if (isLabel) {
+				label_val = '<p class = "label_css">' + isLabel.childNodes[0].nodeValue + '</p>';
+				newNode.stateLabel(label_val);
+			}
+			nodeMap[xmlStates[i].id] = newNode;
+			newNode.stateLabelPositionUpdate();
+		  }
+		  // Iterate over the edges and initialize them.
+		  for (var i = 0; i < xmlTrans.length; i++) {
+			  var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
+			  var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
+			  var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
+			  // Empty string always needs to be checked for.
+			  if (!read) {
+				  read = emptystring;
+			  }
+			  else {
+				  read = read.nodeValue;
+			  }
+			  var edge = this.addEdge(nodeMap[from], nodeMap[to], {weight: read});
+			  edge.layout();
+		  }
+		  jsav.displayInit();
+		}
+	/*if (auto === 'auto'){
+		layoutGraph();
+	}*/
+};
 /*
  NFA to DFA conversion
 Note: g.transitionFunction takes a single node and returns an array of node values
 Requires underscore.js
 */
-var convertToDFA = function(jsav, graph, opts) {
-// jsav.label("Converted:");
-var g = jsav.ds.fa($.extend({layout: 'automatic'}, opts)),
-		alphabet = Object.keys(graph.alphabet),
-		startState = graph.initial,
-		newStates = [];
+var convertToDFA = function(jsav, graph, opts, visualizable = false) {
+	var left = 10;
+	var g;
+	if(!visualizable)
+		g = jsav.ds.fa($.extend({layout: 'automatic'}, opts)),
+			alphabet = Object.keys(graph.alphabet),
+			startState = graph.initial,
+			newStates = [];
+	else{
+		var options = $.extend(true, {layout: 'automatic'}, opts);
+		g = jsav.ds.fa(options),
+			alphabet = Object.keys(graph.alphabet),
+			startState = graph.initial,
+			newStates = [];
+	}
 // Get the first converted state
+if(visualizable)
+	jsav.umsg("The first step is to find the lambda closure for the NFA start state.");
 var first = lambdaClosure([startState.value()], graph).sort().join();
+if(visualizable){
+	var listOfFirstNodes = first.split(',');
+	var highlightedNodes = [];
+	for(var i = 0; i< listOfFirstNodes.length; i++ ){
+		var node = graph.getNodeWithValue(listOfFirstNodes[i])
+		node.highlight();
+		highlightedNodes.push(node);
+	}
+}
 newStates.push(first);
+if(visualizable){
+	jsav.step();
+	jsav.umsg("The result we got is the start state for the DFA.");
+}
 var temp = newStates.slice(0);
-
 first = g.addNode({value: first}); 
 g.makeInitial(first);
 g.layout();
+if(visualizable){
+	left += 50;
+	for(var state in highlightedNodes){
+		highlightedNodes[state].unhighlight();
+	}
+	jsav.step();
+	jsav.umsg("Nest step is to identify the transitons for the DFA start state.");
 
+}
 // Repeatedly get next states and apply lambda closure
 while (temp.length > 0) {
 	var val = temp.pop(),
@@ -57,16 +170,34 @@ while (temp.length > 0) {
 				temp.push(nodeName);
 				newStates.push(nodeName);
 				node = g.addNode({value: nodeName});
+				if(visualizable){
+					if(left + 50 < opts.width)
+						left+=50;
+					g.layout();
+				}
 			} else {
 				node = g.getNodeWithValue(nodeName);
 			}
 			var edge = g.addEdge(prev, node, {weight: letter});
 		}
 	}
+	if(visualizable){
+		if(temp.length > 0)
+		{
+			jsav.step();
+			jsav.umsg("repeat the same process for each new node we find");
+		}
+	}
 }
 // add the final markers
+if(visualizable)
+	jsav.umsg("Determine the final states");
 addFinals(g, graph);
 g.layout();
+if(visualizable){
+	jsav.step();
+	jsav.umsg("Final step is to rename the states names.")
+}
 var nodes = g.nodes();
 for (var next = nodes.next(); next; next = nodes.next()) {
 	next.stateLabel(next.value());
@@ -203,4 +334,3 @@ for (var next = nodes.next(); next; next = nodes.next()) {
 	}
 }
 };
-

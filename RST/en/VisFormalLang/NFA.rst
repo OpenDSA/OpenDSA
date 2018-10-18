@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
    :requires: Deterministic Finite Automata
    :satisfies: Non-deterministic Finite Automata
    :topic: Finite Automata
@@ -51,6 +51,12 @@ transitions to more than one state.
 
    Example of NFA
 
+
+.. inlineav:: NFAexampleCON dgm
+   :links: AV/VisFormalLang/NFA/NFAexampleCON.css
+   :scripts: AV/VisFormalLang/NFA/NFAexampleCON.js
+   :align: center
+
 In this example, :math:`\delta(q_0, a) = \{q_1, q_2\}`.
 (So, :math:`\delta` is no longer meets the mathematical definition
 of a function!)
@@ -73,6 +79,12 @@ effectively giving us the union of two languages:
 
    Second Example of NFA
    A simple "go this way or go the other way".
+
+.. inlineav:: NFAexample2CON dgm
+   :links: AV/VisFormalLang/NFA/NFAexample2CON.css
+   :scripts: AV/VisFormalLang/NFA/NFAexample2CON.js
+   :align: center
+
 
 **Definition**: :math:`q_j \in {\delta}^{*}(q_i,w)` if and only if
 there exists some walk from :math:`q_i` to :math:`q_j` labeled :math:`w`.
@@ -123,6 +135,11 @@ Can this NFA be converted to a DFA?
    :alt: An NFA and equivalent DFA
 
    An NFA and equivalent DFA
+
+.. inlineav:: NFA2DFACON dgm
+   :links: AV/VisFormalLang/NFA/NFA2DFACON.css
+   :scripts: AV/VisFormalLang/NFA/NFA2DFACON.js
+   :align: center
 
 .. note::
 
@@ -191,6 +208,11 @@ That would be members of the powerset of :math:`M_D` states.
 
    Another NFA to convert
 
+.. inlineav:: NFA2DFA2aCON dgm
+   :links: AV/VisFormalLang/NFA/NFA2DFA2aCON.css
+   :scripts: AV/VisFormalLang/NFA/NFA2DFA2aCON.js
+   :align: center
+
 Let's begin with the start state.
 Closure(:math:`q_0`) in :math:`M_N` is :math:`\{q_0, q_1, q_2\}`.
 So this is the start state.
@@ -218,6 +240,12 @@ letter :math:`a`. This would be the subset :math:`q_3,q_4`.
 
    Converted DFA
 
+.. inlineav:: NFA2DFA2bCON dgm
+   :links: AV/VisFormalLang/NFA/NFA2DFA2bCON.css
+   :scripts: AV/VisFormalLang/NFA/NFA2DFA2bCON.js
+   :align: center
+
+
 .. TODO::
    :type: Slideshow
 
@@ -226,8 +254,8 @@ letter :math:`a`. This would be the subset :math:`q_3,q_4`.
 
 
 .. inlineav:: NFAtoDFACON ss
-   :links: AV/VisFormalLang/NFAtoDFACON.css
-   :scripts: AV/VisFormalLang/NFAtoDFACON.js
+   :links: AV/VisFormalLang/NFA/NFAtoDFACON.css
+   :scripts: AV/VisFormalLang/NFA/NFAtoDFACON.js
    :output: show
 
 Conclusion: NFA adds no new capability. So why bother with the idea?
@@ -240,16 +268,6 @@ Conclusion: NFA adds no new capability. So why bother with the idea?
 * We will see times when it is easier to see a conversion from
   something to a NFA,
   and we know that this can always be converted in turn to a DFA.
+    
   
-  
-.. inlineav:: TuringReverseStringCON dgm
-   :links: AV/VisFormalLang/TuringReverseStringCON.css
-   :scripts: AV/VisFormalLang/TuringReverseStringCON.js
-   :align: center
 
-|
-   
-.. inlineav:: TuringAcceptEqualNumberOfAsAndBsCON dgm
-   :links: AV/VisFormalLang/TuringAcceptEqualNumberOfAsAndBsCON.css
-   :scripts: AV/VisFormalLang/TuringAcceptEqualNumberOfAsAndBsCON.js
-   :align: center

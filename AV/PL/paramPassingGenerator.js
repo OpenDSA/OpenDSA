@@ -68,7 +68,7 @@ var getValueOfVar = function(contextArr, varName){
     return result;
   }
 
-  if(varName.indexOf('[') !== -1){
+  if(varName.indexOf && varName.indexOf('[') !== -1){
     arrIndex = getIndexFromString(varName);
     varName = varName.substring(0,varName.indexOf("["));
   }

@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
    :requires: FL Concepts
    :satisfies: Deterministic Finite Acceptor
    :topic: Finite Automata
@@ -55,6 +55,12 @@ or if SUM is a valid variable name in C++.
    characterize/describe/define a given DFA?
    We want enough information so that we can "build" the machine.
    But no more.
+
+.. todo::
+      :type: diagram
+      
+      Redraw this figure using JSAV dgm
+
 
 Define a DFA as :math:`(Q, \Sigma, \delta, q_0, F)` where
 
@@ -157,6 +163,12 @@ Pictorial Example of a trace for 100:
    :capalign: justify
    :figwidth: 90%
    :alt: DFA Example
+
+.. todo::
+      :type: diagram
+      
+      Redraw this figure using JSAV dgm
+
 
    DFA Example: Odd numbers trace
 

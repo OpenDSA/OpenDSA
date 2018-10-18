@@ -1,0 +1,31 @@
+<div class="modal" id="multiModal">
+  <div class="modal-content">
+    <div id="multiInputTable" class="table-editable">
+      <span class="close" id="closeModal">&times;</span>
+      <table id = "multiTable">
+        <tr>
+          <th>Input String</th>
+          <th>Result</th>
+          <th> </th>
+        </tr>
+        <tr>
+          <td contenteditable="true"></td>
+          <td></td>
+          <td id="tableRemove">
+            <span id = "removeTopButton" class="table-remove glyphicon glyphicon-remove"></span>
+          </td>
+        </tr>
+
+        <tr class="hide">
+          <td contenteditable="true"></td>
+          <td ></td>
+          <td id="tableRemove">
+            <span id = "removeButton" class="table-remove glyphicon glyphicon-remove"></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <button class="functionality" id="addRowButton" style="float: right;"> <span stle='color:blue'>+</span></button>
+    <button id="runMultipleInputsButton" class="btn btn-primary">Run</button>
+  </div>
+</div>
