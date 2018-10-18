@@ -77,3 +77,6 @@
     display: inline !important;
     border: none !important;
 }
+.jsavcontrols {
+    display: unset !important;
+}
