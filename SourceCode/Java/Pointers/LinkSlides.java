@@ -9,9 +9,9 @@ Integer myVal = q.data;
 Link head = new Link(null);
 head.data = new Integer(20); 
 head.next = new Link(new Integer(30), null); 
-head.next.next = new link(new Integer(10), null);
+head.next.next = new Link(new Integer(10), null);
 Link temp = head.next.next; 
-temp.next = new link(new Integer(5), null);
+temp.next = new Link(new Integer(5), null);
 /* *** ODSAendTag: Slide2 *** */
 
 /* *** ODSATag: Slide3 *** */

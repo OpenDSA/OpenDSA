@@ -4,14 +4,14 @@ class Link {
   public Object data; //Value for this node
 
   //Constructors
-  public Link(Object data, Link next) {
-    this.data = data;
-    this.next = next;
+  public Link(Object dataIn, Link nextIn) {
+    this.data = dataIn;
+    this.next = nextIn;
   }
 
-  public Link(Object data) {
+  public Link(Link nextIn) {
     this.data = null;
-    this.next = next;
+    this.next = nextIn;
   }
 
   Object getData() { // Return the data field
