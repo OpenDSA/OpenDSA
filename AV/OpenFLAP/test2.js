@@ -16,16 +16,12 @@ $(document).ready(function() {
   arr.css(true, {"border-radius":"1px"});
 
   arr.css(9, {"border-right": "none"});
-  
-  var arr2 = av.ds.tape(['1', '2', '3'], 20, 20, "right");
-  var arr3 = av.ds.tape(['1', '2', '3'], 20, 60, "left");
-  var arr4 = av.ds.tape(['1', '2', '3'], 20, 100, "both");
-  
+
+  var arr2 = av.ds.tape(['1', '2', '3'], 40, 20, "right");
+  var arr3 = av.ds.tape(['1', '2', '3'], 40, 60, "left");
+  var arr4 = av.ds.tape(['1', '2', '3'], 40, 100, "both");
+
   var bin = av.ds.binheap(['1', '2', '3']);
-
-
-
-
 
   av.displayInit();
   av.recorded();
