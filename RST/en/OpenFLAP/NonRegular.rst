@@ -135,6 +135,9 @@ Now, if the cycle is skipped, then we get :math:`w = w_1w_2`, and if
 its executed twice we get :math:`w = w_1v^2w_2`.
 In general, the DFA accepts all strings like  :math:`w = w_1v^*w_2`.
 
+.. avembed:: AV/Yuhui/PL.html ss
+   :long_name: Regular Pumping Lemmma
+
 Pumping Lemma
 ~~~~~~~~~~~~~
 
