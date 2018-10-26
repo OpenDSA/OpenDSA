@@ -377,16 +377,16 @@ File Processing and Buffer Pools
 
 .. slide:: Simple External Mergesort (2)
 
-   #. Split the file into two files.
-   #. Read in a block from each file.
-   #. Take first record from each block, output them in sorted order.
-   #. Take next record from each block, output them to a second file in
-      sorted order.
-   #. Repeat until finished, alternating between output files.  Read new
-      input blocks as needed.
-   #. Repeat steps 2-5, except this time input files have runs of two sorted
-      records that are merged together.
-   #. Each pass through the files provides larger runs.
+   | 1. Split the file into two files.
+   | 2. Read in a block from each file.
+   | 3. Take first record from each block, output them in sorted order.
+   | 4. Take next record from each block, output them to a second file in
+        sorted order.
+   | 5. Repeat until finished, alternating between output files.  Read new
+        input blocks as needed.
+   | 6. Repeat steps 2-5, except this time input files have runs of two sorted
+        records that are merged together.
+   | 7. Each pass through the files provides larger runs.
 
 
 .. slide:: Simple External Mergesort (3)
@@ -454,8 +454,8 @@ File Processing and Buffer Pools
 
      .. inlineav:: extSortOverCON dgm
         :links: AV/Files/extsortCON.css
-        :scripts: DataStructures/binaryheap.js AV/Files/extSortOverCON.js
-        :align: justify
+        :scripts: AV/Files/extSortOverCON.js
+        :output: show
 
 
 .. slide:: RS Example
@@ -487,7 +487,6 @@ File Processing and Buffer Pools
       :links: AV/Files/extsortCON.css
       :scripts: DataStructures/binaryheap.js AV/Files/extSortSnowCON.js
       :align: justify
-
 
 .. slide:: Problems with Simple Merge
 

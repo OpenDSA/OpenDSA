@@ -1,9 +1,17 @@
-.jsavcanvas {
-  height: 360px;
+#buffintroCON {
+  height: 465px;
+}
+
+#LRUCON {
+  height: 465px;
+}
+
+#LRUwriteCON {
+  height: 500px;
 }
 
 #LRUwriteCON .jsavline {
-  height: 100px;
+  height: 90px;
 }
 
 .jsavverticalarray .jsavnode.buffer {

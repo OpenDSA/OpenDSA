@@ -36,9 +36,9 @@ $(document).ready(function () {
   //  var buffer_pool = av.ds.array(["", "", "", "", ""],
   //                                {layout: "vertical", indexed: true,
   //                                 top: 40, left: bpLeft });
-  av.label("Disk File", {left: 180, top: 320});
-  av.label("Buffer Pool", {left: 390, top: 320});
-  av.label("Buffers", {left: 630, top: 320});
+  av.label("Disk File", {left: 180, top: 305});
+  av.label("Buffer Pool", {left: 390, top: 305});
+  av.label("Buffers", {left: 630, top: 305});
   var arrB0 = av.ds.array([""], {top: buffTop, left: lRight});
   arrB0.addClass(true, "buffer");
   var arrB1 = av.ds.array([""], {top: buffTop+1*buffdist, left: lRight});
@@ -181,7 +181,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 10
-  av.umsg("Let's add one more request, for block 5. Since block 5 is not in the buffer pool, this will require emptying the contents of the least recently used buffer (the block at position 4), which is block 0. So block 0's data will be removed from the buffer pool, the other blocks in the pool are shifted down one step, and block 5 will be read into the buffer now at position 0. However, since the dirty bit for block 0 is 1, we must first write the contents for block 0 back to the file. Notice that the value is changed.");
+  av.umsg("Let's add one more request, for block 4. Since block 4 is not in the buffer pool, this will require emptying the contents of the least recently used buffer (the block at position 4), which is block 0. So block 0's data will be removed from the buffer pool, the other blocks in the pool are shifted down one step, and block 5 will be read into the buffer now at position 0. However, since the dirty bit for block 0 is 1, we must first write the contents for block 0 back to the file. Notice that the value is changed.");
   av.effects.copyValue(arrB1, 0, arr, 0);
   arr.removeClass(1, "processing");
   arrB2.removeClass(0, "processing");

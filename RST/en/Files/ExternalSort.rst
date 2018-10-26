@@ -79,7 +79,7 @@ future time writes it back to disk.
 takes on the order of one million times longer than a memory access.
 Based on this fact, we can reasonably expect that the records
 contained in a single block can be sorted by an internal
-sorting algorithm such as :ref:`Quicksort Quicksort <Quicksort>`
+sorting algorithm such as :ref:`Quicksort <Quicksort> <Quicksort>`
 in less time than is required to read or write the block.
 
 Under good conditions, reading from a file in sequential

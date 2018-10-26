@@ -53,6 +53,13 @@ In this example, :math:`\delta(q_0, a) = \{q_1, q_2\}`.
 (So, :math:`\delta` is no longer meets the mathematical definition
 of a function!)
 
+.. inlineav:: test2 dgm
+   :links: AV/OpenFLAP/test2.css
+   :scripts: AV/OpenFLAP/test2.js
+   :align: center
+
+   Example of NFA
+
 Hopefully this one is easy to understand: We two disjoint paths,
 effectively giving us the union of two languages:
 :math:`L = \{aa\} \cup \{ab^nb \mid n \ge 0\}`.

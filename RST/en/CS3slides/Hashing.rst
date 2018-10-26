@@ -42,7 +42,7 @@ Hashing
 
 .. slide:: Simple Examples
 
-   .. inlineav:: hashIntroCON1 ss
+   .. inlineav:: hashIntroCON ss
       :long_name: Hashing Intro Slideshow
       :links: AV/Hashing/hashIntroCON.css
       :scripts: AV/Hashing/hashIntroCON.js

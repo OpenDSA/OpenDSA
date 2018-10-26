@@ -122,6 +122,7 @@ tm.traverse = function(currentStates) {
 	return nextStates;
 };
 
+
 //======================
 // Save/Load
 // save TM as XML

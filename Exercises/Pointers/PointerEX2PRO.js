@@ -66,17 +66,17 @@
     pclick: function(pointer) {
       if (selected_pointer === null) { // No currently selected pointer object
         if(selected_node !== null){
-          selected_node.removeClass([0], "highlightbox");
+          selected_node.removeClass([0], "highlight");
           selected_node = null;
         }
         selected_pointer = pointer;
-        selected_pointer.element.addClass("highlightpointer");
+        selected_pointer.element.addClass("highlight");
       } else if (selected_pointer === pointer) { // Re-clicked slected pointer
-        selected_pointer.element.removeClass("highlightpointer");
+        selected_pointer.element.removeClass("highlight");
         selected_pointer = null;
       } else { // Pointing to another pointer.
         pointerEX2PRO.setPointer(selected_pointer.element.text(), pointer, selected_pointer);
-        selected_pointer.element.removeClass("highlightpointer");
+        selected_pointer.element.removeClass("highlight");
         selected_pointer = null;
       }
       pointerEX2PRO.userInput = true;
@@ -87,20 +87,20 @@
         if(selected_pointer.target() !== this){
           pointerEX2PRO.setPointer(selected_pointer.element.text(), this, selected_pointer);
         }
-          selected_pointer.removeClass("highlightpointer");
+          selected_pointer.removeClass("highlight");
           selected_pointer = null;
       } else {
         if(selected_node !== null){
-          selected_node.removeClass([0], "highlightbox");
+          selected_node.removeClass([0], "highlight");
           if(selected_node !== this){
             selected_node = this;
-            selected_node.addClass([0], "highlightbox");
+            selected_node.addClass([0], "highlight");
           } else {
             selected_node = null;
           }
         } else {
           selected_node = this;
-          selected_node.addClass([0], "highlightbox");
+          selected_node.addClass([0], "highlight");
         }
       }
 
@@ -115,7 +115,7 @@
         } else if (selected_node === samNode){
           samNode.value(0, "Sam, " + salary);
         }
-        selected_node.removeClass([0], "highlightbox");
+        selected_node.removeClass([0], "highlight");
         selected_node = null;
       }
       pointerEX2PRO.userInput = true;

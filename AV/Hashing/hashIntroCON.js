@@ -1,9 +1,9 @@
+$(document).ready(function() {
 "use strict";
 
-(function ($) {
   var empty = [];
   empty.length = 10;
-  var av = new JSAV("hashIntroCON1");
+  var av = new JSAV("hashIntroCON");
   // Create an array object under control of JSAV library
   var arr = av.ds.array(empty, {indexed: true});
 
@@ -45,4 +45,4 @@
 
   av.umsg("The good news is that we can immediately tell if there is a record with key value 5 in the array.");
   av.recorded();
-}(jQuery));
+});

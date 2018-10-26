@@ -81,7 +81,7 @@ A record with key ``k`` can be stored in
 To find the record with key value ``k``, look in
 ``HT[k]``.
 
-.. inlineav:: hashIntroCON1 ss
+.. inlineav:: hashIntroCON ss
    :long_name: Hashing Intro Slideshow
    :links: AV/Hashing/hashIntroCON.css
    :scripts: AV/Hashing/hashIntroCON.js

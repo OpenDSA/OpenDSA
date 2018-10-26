@@ -33,9 +33,9 @@ $(document).ready(function () {
   var buffer_pool = av.ds.array(["", "", "", "", ""],
                                 {layout: "vertical", indexed: true,
                                  top: 40, left: bpLeft });
-  av.label("Disk File", {left: 180, top: 320});
-  av.label("Buffer Pool", {left: 390, top: 320});
-  av.label("Buffers", {left: 630, top: 320});
+  av.label("Disk File", {left: 180, top: 305});
+  av.label("Buffer Pool", {left: 390, top: 305});
+  av.label("Buffers", {left: 630, top: 305});
   var arrB0 = av.ds.array([""], {top: buffTop, left: lRight});
   arrB0.addClass(true, "buffer");
   var arrB1 = av.ds.array([""], {top: buffTop+1*buffdist, left: lRight});
