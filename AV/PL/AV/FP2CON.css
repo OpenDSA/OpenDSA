@@ -28,3 +28,25 @@
     max-width : 60px !important;
 }
 
+#FP2Code2CON {
+  height: 380px;
+}
+
+#FP2Code2CON .jsavcode {
+  margin-left: 285px;
+  width: 560px;
+}
+
+#FP2Code2CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP2Code2CON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#FP2Code2CON  .jsavindex.jsavnode.wider {
+    min-width : 60px !important;
+    max-width : 60px !important;
+}
+
