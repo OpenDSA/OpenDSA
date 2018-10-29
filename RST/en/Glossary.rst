@@ -16,6 +16,7 @@ Glossary
 
    2-3 tree
       :to-term: binary search tree property :label: has
+      :to-term: B-tree :label: form of
 
       A specialized form of the :term:`B-tree` where each internal
       node has either 2 children or 3 children.
@@ -127,7 +128,7 @@ Glossary
 
    aggregate type
       :to-term: composite type :label: synonym
-      :to-term: has :label: member
+      :to-term: member :label: has
 
       A :term:`data type` whose :term:`members <member>` have subparts.
       For example, a typical database record.
@@ -143,6 +144,8 @@ Glossary
       :to-term: growth rate :label: key concept
       :to-term: upper bound :label: key concept
       :to-term: lower bound :label: key concept
+      :to-term: asymptotic analysis :label: synonym
+      :to-term: asymptotic algorithm analysis :label: formal synonym
 
       A less formal version of the term
       :term:`asymptotic algorithm analysis`, generally used as a
@@ -185,6 +188,8 @@ Glossary
       on the second letter.
 
    amortized analysis
+      :to-term: algorithm analysis :label: is
+
       An :term:`algorithm analysis` techique that looks at the total
       cost for a series of operations and amortizes this total cost
       over the full series.
@@ -193,6 +198,8 @@ Glossary
       to an overestimate for the total cost of the series.
 
    amortized cost
+      :to-term: amortized analysis :label: used in
+
       The total cost for a series of operations to be used in an
       :term:`amortized analysis`.
 
@@ -219,16 +226,26 @@ Glossary
       locations and refers to them by an index.
 
    array-based list
+      :to-term: array :label: uses
+
       An implementation for the :term:`list` ADT that uses an :term:`array` to
       store the list elements. Typical implementations fix the array
       size at creation of the list, and the :term:`overhead`
       is the number of array positions that are presently unused.
 
    array-based stack
+      :to-term: array-based list :label: analogous to
+      :to-term: stack :label: implementing
+      :to-term: array :label: uses
+
       Analogous to an :term:`array-based list`, this uses an :term:`array` to
       store the elements when implementing the :term:`stack` ADT.
 
    array-based queue
+      :to-term: array-based list :label: analogous to
+      :to-term: queue :label: implementing
+      :to-term: array :label: uses
+
       Analogous to an :term:`array-based list`, this uses an :term:`array` to
       store the elements when implementing the :term:`queue` ADT.
 
@@ -241,7 +258,9 @@ Glossary
       Now largely replaced by UTF-8 encoding.
 
    assembly code
-      A form of  :term:`intermediate code` created by a compiler that
+      :to-term: intermediate code :label: form of
+
+      A form of  :term:`intermediate code` created by a :term:`compiler` that
       is easy to convert into the final form that the computer can
       execute.
       An assembly language is typically a direct mapping of one or a
@@ -252,6 +271,9 @@ Glossary
       A more formal term for :term:`asymptotic analysis`.
 
    asymptotic analysis
+      :to-term: algorithm analysis :label: synonym
+      :to-term: asymptotic algorithm analysis :label: formal synonym
+
       A method for estimating the efficiency of an algorithm or
       computer program by identifying its :term:`growth rate`.
       Asymptotic analysis also gives a way to
@@ -320,7 +342,7 @@ Glossary
       Thus, the nodes are always at least two thirds full.
 
    B-tree
-      :to-term: 2-3 tree graph :label: variant
+      :to-term: balanced tree :label: is a
       :to-term: B$^+$-tree :label: variant
       :to-term: B$^*$-tree :label: variant
 
@@ -821,6 +843,8 @@ Glossary
 
 
    code optimization
+      :to-term: assembly code :label: changes
+
       A phase in a :term:`compiler` that makes changes in the code
       (typically :term:`assembly code`) with the goal of replacing
       it with a version of the code that will run faster while
@@ -910,6 +934,12 @@ Glossary
       :term:`measure of cost` for sorting and searching algorithms.
 
    compiler
+      :to-term: lexical analysis :label: phase
+      :to-term: syntax analysis :label: phase
+      :to-term: intermediate code generation :label: phase
+      :to-term: code optimization :label: phase
+      :to-term: code generation :label: phase
+
       A computer program that reads computer programs and converts
       them into a form that can be directly excecuted by some form of
       computer.
@@ -1097,6 +1127,9 @@ Glossary
       "current position" state that can be referred to later.
 
    cycle
+      :to-term: path :label: is
+      :to-term: simple cycle :label: example
+
       In :term:`graph` terminology,
       a :term:`cycle` is a :term:`path` of length three or more that
       connects some :term:`vertex` :math:`v_1` to itself.
@@ -1136,6 +1169,10 @@ Glossary
       A piece of information or a record whose value is drawn from a type.
 
    data member
+      :to-term: data field :label: synonym
+      :to-term: attribute :label: synonym
+      :to-term: instance variable :label: synonym
+
       The variables that together define the space required by a data
       item are referred to as data members.
       Some of the commonly used synonyms include :term:`data field`,
@@ -1434,6 +1471,11 @@ Glossary
       of data.
 
    disk drive
+      :to-term: peripheral storage :label: example of
+      :to-term: disk I/O :label: Read/write
+      :to-term: block :label: unite of storage
+      :to-term: sector :label: unite of space
+
       An example of :term:`peripheral storage` or
       :term:`secondary storage`.
       Data access times are typically measured in thousandths of a
@@ -1766,7 +1808,7 @@ Glossary
    FIFO
       Abbreviation for "first-in, first-out".
       This is the access paradigm for a :term:`queue`,
-      and an old terminolgy for the queue is "FIFO list".
+      and an old terminology for the queue is "FIFO list".
 
    final state
       A required element of any :term:`acceptor <finite state acceptor>`.
@@ -1785,6 +1827,11 @@ Glossary
    Finite State Automata
    FSA
    Finite Automata
+      :to-term: state machine :label: synonym
+      :to-term: states :label: consists of
+      :to-term: accepting states <accepting states> :label: consists of
+      :to-term: Deterministic Finite Automata :label: example
+
       Any abstract state machine, generally represented as a graph
       where the nodes are the :term:`states <state>`, and the edges
       represent transitions between nodes that take place when the
@@ -2154,6 +2201,11 @@ Glossary
       for.
 
    heap
+      :to-term: complete binary tree :label: is
+      :to-term: priority queue :label: used in
+      :to-term: max heap :label: example
+      :to-term: min heap :label: example
+
       This term has two different meanings.
       Uncommonly, it is a synonym for :term:`free store`.
       Most often it is used to refer to a particular data structure.
@@ -2175,7 +2227,10 @@ Glossary
       Due to its space and time efficiency, the heap is a
       popular choice for implementing a :term:`priority queue`.
 
-   Heapsort
+   heapsort
+      :to-term: replacement selection :label: variant
+      :to-term: heap :label: concept of
+
       A sorting algorithm that costs :math:`\Theta(n \log n)` time in
       the :term`best <best case>`, :term:`average <average case>`,
       and :term:`worst <worst case>` cases.
@@ -2373,10 +2428,13 @@ Glossary
       to do other stages of the process.
       For example, some compilers will transform the original
       high-level source code into :term:`assembly code` on which it
-      can do code optimization, before translating it into its final
+      can do :term:`code optimization`, before translating it into its final
       executable form.
 
    intermediate code generation
+      :to-term: Parse tree :label: walks through
+      :to-term: intermediate code :label: produces
+
       A phase in a :term:`compiler`, that walks through a
       :term:`parse tree` to produce simple :term:`assembly code`.
 
@@ -2659,6 +2717,8 @@ Glossary
       The root is the only node at level 0, and its depth is 0.
 
    lexical analysis
+      :to-term: interpreter :label: is
+
       A phase of a :term:`compiler` or :term:`interpreter` responsible
       for reading in characters of the program or language and grouping
       them into :term:`tokens <token>`.
@@ -2760,7 +2820,6 @@ Glossary
    list
       :to-term: array-based list :label: implements
       :to-term: linked list :label: implements
-      :to-term: graph :label: could use
 
       A finite, ordered sequence of :term:`data items <data item>` known as
       :term:`elements <element>`.
@@ -2784,6 +2843,9 @@ Glossary
 
    local variable
    local variables
+      :to-term: automatic variable :label: synonym
+      :to-term: stack variable :label: synonym
+
       A variable declared within a function or method.
       It exists only from the time when the function is called to when
       the function exits.
@@ -2944,6 +3006,8 @@ Glossary
       It is a bit complicated to implement efficiently on an :term:`array`.
 
    member
+      :to-term: element :label: synonym
+
       In set notation, this is a synonym for :term:`element`.
       In abstract design, a :term:`data item` is a member of a :term:`type`.
       In an object-oriented language,
@@ -2963,6 +3027,9 @@ Glossary
       memory, which should create or add to a :term:`free block`.
 
    memory hierarchy
+      :to-term: primary storage :label: storage type
+      :to-term: secondary storage :label: storage type
+
       The concept that a computer system stores data in a range of
       storage types that range from fast but expensive
       (:term:`primary storage`) to slow but cheap
@@ -3421,6 +3488,9 @@ Glossary
       see if it is syntactically correct.
 
    parser
+      :to-term: compiler :label: part of
+      :to-term: parse tree :label: build
+
       A part of a :term:`compiler` that takes as input the program
       text (or more typically, the tokens from the :term:`scanner`),
       and verifies that the program is syntactically correct.
@@ -3448,6 +3518,9 @@ Glossary
       variable.
 
    path
+      :to-term: tree :label: In
+      :to-term: vertex :label: sequence of
+
       In :term:`tree` or :term:`graph` terminology,
       a sequence of :term:`vertices <vertex>`
       :math:`v_1, v_2, ..., v_n`
@@ -3608,6 +3681,9 @@ Glossary
       A unique identifier for a :term:`record`.
 
    primary storage
+      :to-term: RAM :label: example
+      :to-term: main memory :label: synonym
+
       The faster but more expensive memory in a computer, most often
       :term:`RAM` in modern computers.
       This is in contrast to :term:`secondary storage`, which together
@@ -3775,7 +3851,7 @@ Glossary
 
    promotion
       In the context of certain :term:`balanced tree` structures such
-      as the :term:2-3 tree`, a promotion takes place when an
+      as the :term:`2-3 tree`, a promotion takes place when an
       insertion causes the node to :term:`overflow`.
       In the case of the 2-3 tree, the :term:`key` with the middlemost
       value is sent to be stored in the parent.
@@ -3860,6 +3936,8 @@ Glossary
       greater than the pivot, and then sorting the two parts.
 
    RAM
+      :to-term: random access memory :label: abbreviation for
+
       Abbreviation for :term:`Random Access Memory`.
 
    radix
@@ -3955,6 +4033,9 @@ Glossary
       factorial function, :math:`F(n) = n*F(n-1)`.
 
    recursion
+      :to-term: recurrence relation :label: expressed as
+      :to-term: recursive function :label: implemented in
+
       The process of using recursive calls.
       An algorithm is recursive if it calls itself to do part of
       its work.
@@ -3972,6 +4053,9 @@ Glossary
       data structures.
 
    recursive function
+      :to-term: base case :label: includes
+      :to-term: recursive call :label: includes
+
       A function that includes a :term:`recursive call`.
 
    recursively enumerable
@@ -4043,7 +4127,7 @@ Glossary
       :math:`\mathbf{S}`.
 
    replacement selection
-      A variant of :term:`Heapsort` most often used as one phase of an
+      A variant of :term:`heapsort` most often used as one phase of an
       :term:`external sort`.
       Given a collection of records stored in an :term:`array`, and a stream
       of additional records too large to fit into
@@ -4124,6 +4208,9 @@ Glossary
       subroutine is called during a program's runtime.
 
    scanner
+      :to-term: compiler :label: part of
+      :to-term: lexical analysis :label: responsible for
+
       The part of a :term:`compiler` that is responsible for doing
       :term:`lexical analysis`.
 
@@ -4209,6 +4296,8 @@ Glossary
       value.
 
    secondary storage
+      :to-term: disk drive :label: example
+
       Refers to slower but cheaper means of storing data.
       Typical examples include a :term:`disk drive`, a USB memory
       stick, or a solid state drive.
@@ -4753,6 +4842,9 @@ Glossary
       for all :math:`i,j < n`, :math:`A[i, j] = A[j, i]`.
 
    syntax analysis
+      :to-term: parse tree :label: generates
+      :to-term: tokens :label: accepts
+
       A phase of :term:`compilation <compiler>` that accepts
       :term:`tokens <token>`, checks if program is syntactically
       correct, and then generates a :term:`parse tree`.
