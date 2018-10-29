@@ -19,15 +19,13 @@ $(document).ready(function() {
             "                     return false;",                               //5
 	    "                  } else { ",                                      //6
             "                     CHECK IF THE HEAD OF THE LIST MATCHES n",     //7
-	    "                  }",                                              //8
-	    "                  } else if ( fp.Eq(fp.hd(ns), n ) {",             //9
-	    "                     return true;",                                //10
-	    "                  }",                                              //11
-	    "                  } else { ",                                      //12
-	    "                     WE STILL DO NOT KNOW",                        //13
-            "                     return isMember( n, fp.tl(ns) );",            //14
-	    "                  }",                                              //15
-	    "               }"                                                  //16
+	    "                  } else if ( fp.Eq(fp.hd(ns), n ) {",             //8
+	    "                     return true;",                                //9
+	    "                  } else { ",                                      //10
+	    "                     WE STILL DO NOT KNOW",                        //11
+            "                     return isMember( n, fp.tl(ns) );",            //12
+	    "                  }",                                              //13
+	    "               }"                                                  //14
         ],
         {
             lineNumbers: false
@@ -62,7 +60,7 @@ $(document).ready(function() {
 
     // Slide 1
     av.umsg("Following the alternatives in the BNF definition of a list, we want a function that determines whether n is a member of the list ns");
-    pseudo.hide([3,5,9,10,11,12,13,14,15]);
+    pseudo.hide([3,5,8,9,10,11,12,13]);
     arr.show();
     av.displayInit();
 
@@ -94,10 +92,10 @@ $(document).ready(function() {
     label_hd = av.label("hd", {left: arrow1_x - 16 + 2*arr_cell_offset, top: -20});
     label_tl.hide();
     label_tl = av.label("tl", {left: leftMargin + 45 + 2*arr_cell_offset, top: -20});
-    pseudo.hide([6,7,8]);
-    pseudo.show([9,10,11,12,13,15]);
+    pseudo.hide([6,7]);
+    pseudo.show([8,9,10,11,13,15]);
     pseudo.unhighlight([3,5]);
-    pseudo.highlight([9,10]);
+    pseudo.highlight([8,9]);
     arr_n.value(0,5);
     av.umsg("If the head of the current list matches n, then we can return true and we're done.");
     arrRet.value(0,"true");
@@ -105,10 +103,10 @@ $(document).ready(function() {
 
 
     // Slide 4
-    pseudo.hide([13]);
-    pseudo.show([14]);
-    pseudo.unhighlight([9,10]);
-    pseudo.highlight([12,14]);
+    pseudo.hide([11]);
+    pseudo.show([12]);
+    pseudo.unhighlight([8,9]);
+    pseudo.highlight([10,12]);
     arr_n.value(0,6);
     av.umsg("If the head of the current list does not match n, then we need to recur on the tail of the list.");
     arrRet.value(0,"????");
