@@ -50,3 +50,25 @@
     max-width : 60px !important;
 }
 
+#FP2Code3CON {
+  height: 380px;
+}
+
+#FP2Code3CON .jsavcode {
+  margin-left: 285px;
+  width: 560px;
+}
+
+#FP2Code3CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP2Code3CON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#FP2Code3CON  .jsavindex.jsavnode.wider {
+    min-width : 60px !important;
+    max-width : 60px !important;
+}
+

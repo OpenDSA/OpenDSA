@@ -77,7 +77,7 @@ $(document).ready(function() {
     label_hd.hide();
     label_hd = av.label("hd", {left: arrow1_x - 16 + 4*arr_cell_offset, top: -20});
     label_tl.hide();
-    av.umsg("If we've worked our way through the list to the point where ns is null (that is, there is no head) and we haven't encountered n, then ...");
+    av.umsg("As indicated by the highlighted items, if we've worked our way through the list to the point where ns is null (that is, there is no head) and we haven't encountered n, then ...");
     arr.highlight([0,1,2,3]);
     arrRet.value(0,false);
     av.step();
