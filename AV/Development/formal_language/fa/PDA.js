@@ -6,6 +6,8 @@ var PDA = function(jsav, options) {
   this.stack = ['Z'];
   this.undoStack = [];
   this.redoStack = [];
+  this.stackViz = this.jsav.ds.stack(['Z'], 5, 5)
+  this.stackViz.hide()
 }
 
 JSAV.ext.ds.pda = function (options) {
@@ -81,6 +83,7 @@ pda.play = function(inputString) {
 
   // var configArray = this.jsav.ds.array();
   // this.configViews.push(configArray.element);
+  this.stackViz.update(['Z'])
   this.initial.addClass('current');
   this.configurations = $("<ul>");
   var currentStates = [new Configuration(this.configurations, this.initial, ['Z'], inputString, 0)];
@@ -90,7 +93,6 @@ pda.play = function(inputString) {
   var $configView = $('#configurations');
   $configView.empty();
   $configView.append(this.configViews[0]);
-
 
   this.jsav.displayInit();
 
@@ -116,7 +118,7 @@ pda.play = function(inputString) {
       currentStates[j].state.removeClass('accepted');
       currentStates[j].state.removeClass('rejected');
     }
-    cur = this.traverse(currentStates, inputString[i]);
+    cur = this.traverse(currentStates);
     if (cur.length === 0) {
       break;
     }
@@ -132,6 +134,9 @@ pda.play = function(inputString) {
       }
       currentStates[j].update();
     }
+    var updatedStack = currentStates[currentStates.length - 1].stack
+    updatedStack = updatedStack.slice(0, updatedStack.length).reverse();
+    this.stackViz.update(updatedStack)
     configArray = this.jsav.ds.array(this.configurations);
     this.configViews.push(configArray.element);
   }
@@ -244,7 +249,7 @@ pda.traverseOneInput = function(inputString){
       currentStates[j].state.removeClass('accepted');
       currentStates[j].state.removeClass('rejected');
     }
-    cur = this.traverse(currentStates, inputString[i]);
+    cur = this.traverse(currentStates);
     if (cur.length === 0) {
       break;
     }
@@ -310,6 +315,8 @@ pda.cancelTraverse = function() {
   this.configViews = []; // configurations view for a step
   this.step = 0; // current step the user is at, used for changing configuration display
   this.stack = ['Z'];
+  $('.jsavverticalarray').hide()
+  $('.jsavoutput > div').html('')
 }
 
 // Configuration object
