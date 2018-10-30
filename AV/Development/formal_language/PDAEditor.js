@@ -366,10 +366,6 @@
     g.play(inputString);
   };
 
-  var multiRun = function() {
-    g.runMultipleInputs()
-  }
-
   var save = function() {
     var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(g.serializeToXML());
     $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.xml">Download PDA</a>');
@@ -565,7 +561,9 @@
   $('#moveButton').click(moveNodesMode);
   $('#editButton').click(editMode);
   $('#deleteButton').click(deleteMode);
-  $(document).on("click", '#runMultipleInputsButton', multiRun);
+  $(document).on("click", '#runMultipleInputsButton', function() {
+    g.runMultipleInputs()
+  });
   // $('#convertToGrammarButton').click(convertToGrammar);
   // $('#completeConvertButton').hide();
   $('#saveButton').click(save);

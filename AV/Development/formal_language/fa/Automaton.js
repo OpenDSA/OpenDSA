@@ -667,7 +667,6 @@ automatonproto.runMultipleInputs = function () {
 
   for (var i = 1; i < rows.length; i++) {
         var currInputString = rows[i].cells[0].innerHTML;
-        console.log(currInputString);
         var result = this.traverseOneInput(currInputString);
         if (result){
           rows[i].cells[1].innerHTML = "Accepted"
