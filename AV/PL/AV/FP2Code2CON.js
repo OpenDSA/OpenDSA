@@ -19,7 +19,7 @@ $(document).ready(function() {
             "                     return false;",                               //5
 	    "                  } else { ",                                      //6
             "                     CHECK IF THE HEAD OF THE LIST MATCHES n",     //7
-	    "                  } else if ( fp.Eq(fp.hd(ns), n ) {",             //8
+	    "                  } else if ( fp.isEq(fp.hd(ns), n ) {",             //8
 	    "                     return true;",                                //9
 	    "                  } else { ",                                      //10
 	    "                     WE STILL DO NOT KNOW",                        //11
@@ -65,7 +65,7 @@ $(document).ready(function() {
     av.displayInit();
 
     // Slide 2
-    av.umsg("Since the first alternative is an empty list, we fill in SOME TEST in the preceding slide as ...");
+//    av.umsg("Since the first alternative is an empty list, we fill in SOME TEST in the preceding slide as ...");
     pseudo.hide(2);
     pseudo.show(3);
     pseudo.hide(4);

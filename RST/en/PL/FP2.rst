@@ -172,15 +172,7 @@ established by the BNF grammar for a *<list_of_ints>*.
    :output: show
 
 
-..     var subst = function (n,ns) {
-..                    if ( SOME TEST ) {
-..                       return SOMETHING;
-..                    } else { 
-..                       DO A BIT MORE WORK;
-..                    }
-..                 }
-
-When you have established the correct logic for this template, consider the final review problem for this section, which  asks you to slightly modify the ``subst`` function.
+Now that we have established the correct logic for this function, consider the final review problem for this section, which  asks you to slightly modify the ``subst`` function.
 
 .. avembed:: Exercises/PL/RecListProc3.html ka
    :long_name: Recursion on Flat Lists 3
