@@ -8,6 +8,8 @@ var PDA = function(jsav, options) {
   this.redoStack = [];
   this.stackViz = this.jsav.ds.stack(['Z'], 5, 5)
   this.stackViz.hide()
+  //this.inputViz = this.jsav.ds.tape([], 36, 5)
+  //this.inputViz.hide()
 }
 
 JSAV.ext.ds.pda = function (options) {
@@ -84,6 +86,8 @@ pda.play = function(inputString) {
   // var configArray = this.jsav.ds.array();
   // this.configViews.push(configArray.element);
   this.stackViz.update(['Z'])
+  var inputViz = this.jsav.ds.tape(inputString.split(''), 40, 5, 'right')
+
   this.initial.addClass('current');
   this.configurations = $("<ul>");
   var currentStates = [new Configuration(this.configurations, this.initial, ['Z'], inputString, 0)];
@@ -110,9 +114,10 @@ pda.play = function(inputString) {
   while (true) {
     this.jsav.step();
     counter++;
-    if (counter > 500) {
+    if (counter > 100) {
       break;
     }
+    // console.log(counter)
     for (var j = 0; j < currentStates.length; j++) {
       currentStates[j].state.removeClass('current');
       currentStates[j].state.removeClass('accepted');
@@ -316,6 +321,8 @@ pda.cancelTraverse = function() {
   this.step = 0; // current step the user is at, used for changing configuration display
   this.stack = ['Z'];
   $('.jsavverticalarray').hide()
+  $('.jsavhorizontalarray').hide()
+  $('.jsavcanvas > svg > path').hide()
   $('.jsavoutput > div').html('')
 }
 

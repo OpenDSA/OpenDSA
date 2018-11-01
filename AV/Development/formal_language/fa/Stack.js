@@ -29,7 +29,9 @@ $(document).ready(function() {
       var top_arr = String(y_coord - 16) + "px";
       this.arr = this.jsav.ds.array(this.stack, {left: left_arr, top: top_arr, layout: 'vertical'});
 
-      this.arr.css(0, {"border-top": "2px solid white"});
+      //this.arr.css(0, {"border-top": "3px solid yellow"});
+
+      this.arr.css(0, {"background": "yellow"});
 
     }
 
@@ -39,8 +41,7 @@ $(document).ready(function() {
   JSAV.ext.ds.stack = function(element, x_coord, y_coord, options) {
     return new Stack(this, element, x_coord, y_coord, options);
   };
-  JSAV._types.ds.Stack = Stack;
-  // JSAV.utils.extend(Stack, JSAV._types.ds.array);
+  JSAV.utils.extend(Stack, JSAV._types.ds.AVArray);
 
   var Stackproto = Stack.prototype
 
@@ -52,7 +53,8 @@ $(document).ready(function() {
     var left_arr = String(this.x_coord) + "px";
     var top_arr = String(this.y_coord - 16) + "px";
     this.arr = this.jsav.ds.array(this.stack, {left: left_arr, top: top_arr, layout: 'vertical'});
-    this.arr.css(0, {"border-top": "2px solid white"});
+    //this.arr.css(0, {"border-top": "3px solid yellow"});
+    this.arr.css(0, {"background": "yellow"});
   }
 
   Stackproto.hide = function() {
