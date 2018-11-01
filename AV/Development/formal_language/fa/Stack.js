@@ -24,15 +24,12 @@ $(document).ready(function() {
 
     if ($.isArray(element)) {
 
-      // x & y control
-      var right = x_coord + element.length * this.cell_size; //topright
-
       //default position of array's top center and call JSAV array constructor
       var left_arr = String(x_coord) + "px";
       var top_arr = String(y_coord - 16) + "px";
       this.arr = this.jsav.ds.array(this.stack, {left: left_arr, top: top_arr, layout: 'vertical'});
 
-      this.arr.css(9, {"border": "none"});
+      this.arr.css(0, {"border-top": "2px solid white"});
 
     }
 
@@ -51,13 +48,11 @@ $(document).ready(function() {
     this.stack = newStack
     this.arr.hide()
 
-    // x & y control
-    var right = this.x_coord + this.stack.length * this.cell_size; //topright
-
     //default position of array's top center and call JSAV array constructor
     var left_arr = String(this.x_coord) + "px";
     var top_arr = String(this.y_coord - 16) + "px";
     this.arr = this.jsav.ds.array(this.stack, {left: left_arr, top: top_arr, layout: 'vertical'});
+    this.arr.css(0, {"border-top": "2px solid white"});
   }
 
   Stackproto.hide = function() {
