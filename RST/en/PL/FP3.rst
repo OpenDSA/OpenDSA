@@ -37,6 +37,7 @@ We want to develop a function that takes in an integer tree
 represented as a list of lists of …lists of integers and returns the sum
 of the integers in the tree.
 
+
 ::
 
     var sumTree = function (ns) {
@@ -48,6 +49,15 @@ of the integers in the tree.
             return ?????????;
         }
     }
+
+
+.. inlineav:: FP3Code1CON ss
+   :long_name: Illustrate Deep Recursion On List To Return Numeric Value
+   :links: AV/PL/AV/FP3CON.css
+   :scripts: AV/PL/AV/FP3Code1CON.js
+   :output: show
+
+
 
 Once you have decided how to fill in the **???????** in the preceding
 example, consider the slight modification in the following review
