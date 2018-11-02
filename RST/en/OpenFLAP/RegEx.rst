@@ -306,6 +306,11 @@ that :math:`L = L(M)`.
    :capalign: justify
    :figwidth: 90%
    :alt: stnfatore2s
+   
+.. inlineav:: RegExf3 dgm
+   :links: AV/OpenFLAP/RegExf3.css
+   :scripts: AV/OpenFLAP/RegExf3.js
+   :align: center
 
 You should convince yourself that, in this image, the right side is a
 proper re-creation of the left side.
