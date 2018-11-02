@@ -10,38 +10,38 @@ var lambda = String.fromCharCode(955),
 
 // initialize graph
 	var initGraph = function(opts) {
-		g = jsav.ds.tm($.extend({width: '750px', height: 440, emptystring: square, editable: true}, opts));
+		g = jsav.ds.tm($.extend({width: '90%', height: 440, emptystring: square, editable: true}, opts));
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 				gHeight = g.element.height();
-  		// var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),		
-    //   		b = g.addNode({left: 0.35 * gWidth, top: 0.7 * gHeight}),
-    //   		c = g.addNode({left: 0.10 * gWidth, top: 0.7 * gHeight}),
-    //   		d = g.addNode({left: 0.6 * gWidth, top: 0.7 * gHeight}),
-    //   		e = g.addNode({left: 0.85 * gWidth, top: 0.5 * gHeight}),
-    //   		f = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight});
-    //   	g.makeInitial(a);
-    //   	c.addClass('final');
+  		var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),
+      		b = g.addNode({left: 0.35 * gWidth, top: 0.7 * gHeight}),
+      		c = g.addNode({left: 0.10 * gWidth, top: 0.7 * gHeight}),
+      		d = g.addNode({left: 0.6 * gWidth, top: 0.7 * gHeight}),
+      		e = g.addNode({left: 0.85 * gWidth, top: 0.5 * gHeight}),
+      		f = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight});
+      	g.makeInitial(a);
+      	c.addClass('final');
 
-	   //  g.addEdge(a, b, {weight: 'a;#,R'});
-	   // 	g.addEdge(a, a, {weight: '#;#,R'});
-	   //  //g.addEdge(a, d); 		it's a FA, need to always provide a weight
+	    g.addEdge(a, b, {weight: 'a;#,R'});
+	   	g.addEdge(a, a, {weight: '#;#,R'});
+	    //g.addEdge(a, d); 		it's a FA, need to always provide a weight
 
-	   //  g.addEdge(b, b, {weight: '#;#,R'});
-	   //  g.addEdge(b, c, {weight: square + ';' + square + ',L'});
-	   //  g.addEdge(b, d, {weight: 'a;a,R'});
+	    g.addEdge(b, b, {weight: '#;#,R'});
+	    g.addEdge(b, c, {weight: square + ';' + square + ',L'});
+	    g.addEdge(b, d, {weight: 'a;a,R'});
 
-	   // 	g.addEdge(d, d, {weight: '#;#,R'});
-	   //  g.addEdge(d, e, {weight: 'a;#,R'});
-	   // 	g.addEdge(d, f, {weight: square + ';' + square + ',L'});
+	   	g.addEdge(d, d, {weight: '#;#,R'});
+	    g.addEdge(d, e, {weight: 'a;#,R'});
+	   	g.addEdge(d, f, {weight: square + ';' + square + ',L'});
 
-	   //  g.addEdge(e, e, {weight: '#;#,R'});
-	   //  g.addEdge(e, d, {weight: 'a;a,R'});
+	    g.addEdge(e, e, {weight: '#;#,R'});
+	    g.addEdge(e, d, {weight: 'a;a,R'});
 
-	   //  g.addEdge(f, f, {weight: '#;#,L'});
-	   //  g.addEdge(f, f, {weight: 'a;a,L'});
-	   //  g.addEdge(f, a, {weight: square + ';' + square + ',R'});
-	
+	    g.addEdge(f, f, {weight: '#;#,L'});
+	    g.addEdge(f, f, {weight: 'a;a,L'});
+	    g.addEdge(f, a, {weight: square + ';' + square + ',R'});
+
     $(".jsavgraph").click(graphClickHandler);
     g.click(nodeClickHandler);
 		g.click(edgeClickHandler, {edge: true});
@@ -148,13 +148,13 @@ var lambda = String.fromCharCode(955),
 			    nodeX = newNode.element.width()/2.0,
 				nodeY = newNode.element.height()/2.0;
 			$(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-		} 
+		}
 		else if ($('.jsavgraph').hasClass('moveNodes')) {
 		}
 	};
 
 	// handler for the nodes of the graph
-	var nodeClickHandler = function(e) {	
+	var nodeClickHandler = function(e) {
 		// editing nodes should be changed to match the interface in multitapeTest.js
 		if ($(".jsavgraph").hasClass("edit")) {
 			this.highlight();
@@ -192,7 +192,7 @@ var lambda = String.fromCharCode(955),
 			this.unhighlight();
 		}
 	};
-	
+
 	//===============================
 	//editing modes
 
@@ -301,7 +301,7 @@ var lambda = String.fromCharCode(955),
 		var inputString = prompt("Input string?", "aaaa");
 		while (inputString == null) {
 			alert("Don't try to trick the program!");
-			inputString = prompt("Input string?", "aaaa");	
+			inputString = prompt("Input string?", "aaaa");
 		}
 		jsav.umsg("");
 		$("#functionality").hide();			//disable buttons
@@ -344,7 +344,7 @@ var lambda = String.fromCharCode(955),
 		g.first.highlight();
 		offset = $('.jsavgraph').offset(),
 	 	offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-		startX = e.pageX - 15; 
+		startX = e.pageX - 15;
 		startY = e.pageY - offset.top + offset2 - 5;
 	}
 
@@ -360,7 +360,7 @@ var lambda = String.fromCharCode(955),
 		var node = $(e.target);
 		g.selected = g.getNodeWithValue(node.text());
 		g.selected.highlight();
-		
+
 		initEdgeInput();
 	}
 

@@ -114,6 +114,13 @@ tm.traverse = function(currentStates) {
 					nextStates.push(nextConfig);
 					break;
 				}
+				// if (currentState.tape.value() === w[0]) {
+				// 	var nextConfig = new Configuration(next, currentState.tape);
+				// 	nextConfig.tape.value(w[1]);
+				// 	nextConfig.tape.move(w[2]);
+				// 	nextStates.push(nextConfig);
+				// 	break;
+				// }
 			}
 		}
 	}
@@ -254,7 +261,8 @@ tm.initFromXML = function(text) {
 // Configuration class
 var Configuration = function(state, tape) {
 	this.state = state;
-	this.tape = new Tape(tape);
+	// this.tape = new Tape(tape);
+	this.tape = tape
 	// toString returns the state value + the 'viewport' of the tape, to be displayed to the user
 	this.toString = function() {
 		return this.tape.toString();

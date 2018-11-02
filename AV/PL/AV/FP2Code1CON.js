@@ -4,17 +4,11 @@ $(document).ready(function() {
     "use strict";
     var av_name = "FP2Code1CON";
     var arrValues = [3, 2, 5, 8];
-    // Load the config object with interpreter and code created by odsaUtils.js
-    //   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
-    //       interpret = config.interpreter,       // get the interpreter
-    //       code = config.code;                   // get the code object
     var av = new JSAV(av_name);
 
     var leftMargin = 10;
+    var arr_cell_offset = 30;
     var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: 20}).hide();
-    //  var pseudo = av.code(code[0]);
-
-    //    console.log(code);
 
     var pseudo = av.code(
 	[
@@ -50,25 +44,24 @@ $(document).ready(function() {
                             opacity: 100, "stroke-width": 2});
     arrow1.hide();
 
-    // Label in step 1
-    var label_hd = av.label("hd", {left: arrow1_x - 16, top: -20, fontFamily: "Monospace", fontWeight: "bold"}).hide();
+    // Label in step 2
+    var label_hd = av.label("hd", {left: arrow1_x - 16, top: -20}).hide();
 
     //horizontal arrow in step 2
-    var arrow2 = av.g.line(leftMargin + 45, 25, leftMargin + 115, 25,
+    var arrow2 = av.g.line(leftMargin + 45, 25, leftMargin + 130, 25,
                            {"arrow-end": "classic-wide-long", opacity: 0,
                             "stroke-width": 2});
     arrow2.hide();
-    var label_tl = av.label("tl", {left: leftMargin + 45, top: -20, fontFamily: "Monospace", fontWeight: "bold"}).hide();
+    var label_tl = av.label("tl", {left: leftMargin + 45, top: -20}).hide();
 
     var arrRet = av.ds.array(["?????"], {indexed: false, left: 100, top: 90});
     arrRet.addClass(0,"wider");
     arrRet.hide();
-    var labelReturn = av.label("Return", {left: 33, top: 94});
+    var labelReturn = av.label("Return", {left: 35, top: 94});
     labelReturn.hide();
 
     // Slide 1
     av.umsg("Following the alternatives in the BNF definition of a list, we want a function that returns the sum of the numbers in list below");
-    //  arr.addClass([5, 6, 7], "unused");
     pseudo.hide([3,5,8]);
     arr.show();
     av.displayInit();
@@ -97,35 +90,139 @@ $(document).ready(function() {
 
 
     // Slide 4
-//     arrow1.translatePoint(0, 35,0);
-//     arrow1.translatePoint(1, 35,0);
-    arrow1.translate(35,0);
-    arrow2.translatePoint(0,35,0);
-//    arrow2.movePoints([[1,leftMargin + 115, 25]]);
+    arrow1.translate(arr_cell_offset,0);
+    arrow2.translatePoint(0,arr_cell_offset,0);
     label_hd.hide();
-    label_hd = av.label("hd", {left: arrow1_x - 16 + 35, top: -20});
+    label_hd = av.label("hd", {left: arrow1_x - 16 + arr_cell_offset, top: -20});
     label_tl.hide();
-    label_tl = av.label("tl", {left: leftMargin + 45 + 35, top: -20});
-    av.umsg("Insert 23 into array position 0.");
-    arr.value(0, 23);
+    label_tl = av.label("tl", {left: leftMargin + 45 + arr_cell_offset, top: -20});
+    av.umsg("Null list?");
     arr.highlight([0]);
-    //arrow2.hide();
-    pseudo.setCurrentLine(0);      // Hack until we get multi-line method
-    pseudo.unhighlight("forbody");
-    pseudo.setCurrentLine("insert");
-    //   pseudo.unhighlight(5);
-    //   pseudo.setCurrentLine(6);
+    pseudo.setCurrentLine("if-test");      
     av.step();
 
     // Slide 5
-    av.umsg("Increase the list size by 1.");
-    pseudo.setCurrentLine("incr");
-    //  pseudo.setCurrentLine(6);
-    arr.unhighlight([0]);
+    av.umsg("The if-test in previous slide was false, so ...");
+    pseudo.setCurrentLine("return-sum");
     av.step();
 
-    // Slide 6
-    av.umsg("Thus, the cost to insert into an array-based list in the worst case is $\\Theta(n)$ when there are $n$ items in the list.");
+    //Slide 6
+    arrow1.translate(arr_cell_offset,0);
+    arrow2.translatePoint(0,arr_cell_offset,0);
+    label_hd.hide();
+    label_hd = av.label("hd", {left: arrow1_x - 16 + 2*arr_cell_offset, top: -20});
+    label_tl.hide();
+    label_tl = av.label("tl", {left: leftMargin + 45 + 2*arr_cell_offset, top: -20});
+    av.umsg("Null list?");
+    arr.highlight([1]);
+    pseudo.setCurrentLine("if-test");      
+    av.step();
+
+    // Slide 7
+    av.umsg("The if-test in previous slide was false, so ...");
+    pseudo.setCurrentLine("return-sum");
+    av.step();
+
+    //Slide 8
+    arrow1.translate(arr_cell_offset,0);
+    arrow2.hide();
+    label_hd.hide();
+    label_hd = av.label("hd", {left: arrow1_x - 16 + 3*arr_cell_offset, top: -20});
+    label_tl.hide();
+    label_tl = av.label("tl", {left: leftMargin + 45 + 3*arr_cell_offset, top: -20});
+    av.umsg("Null list?");
+    arr.highlight([2]);
+    pseudo.setCurrentLine("if-test");      
+    arrRet.value(0,0);
+    av.step();
+
+    // Slide 9
+    av.umsg("The if-test in previous slide was false, so ...");
+    pseudo.setCurrentLine("return-sum");
+    av.step();
+
+    //Slide 10
+    arrow1.hide();
+    arrow2.hide();
+    label_hd.hide();
+    label_hd = av.label("hd", {left: arrow1_x - 16 + 4*arr_cell_offset, top: -20});
+    label_tl.hide();
+//     label_tl = av.label("tl", {left: leftMargin + 45 + 3*arr_cell_offset, top: -20});
+    av.umsg("Null list?  This time the answer is yes, so return what the sum of entries in a null list is.");
+    arr.highlight([3]);
+    pseudo.hide("return-something");
+    pseudo.show("return-zero");
+    pseudo.setCurrentLine("return-zero");
+    av.step();
+
+
+    //Slide 11
+    arrow1.show();
+    arrow2.hide();
+    label_hd.hide();
+    label_hd = av.label("hd", {left: arrow1_x - 16 + 3*arr_cell_offset, top: -20});
+    label_tl.hide();
+    av.umsg("Return the addition of the hd of the list at this level of recursion, plus what was returned from the prior level.");
+    arr.unhighlight([3]);
+    arrRet.value(0,"8+0");
+    pseudo.setCurrentLine("return-sum");
+    pseudo.hide("return-something");
+    pseudo.show("return-zero");
+    av.step();
+
+
+    //Slide 12
+    arrow1.translate(-arr_cell_offset,0);
+    arrow1.show();
+    arrow2.hide();
+    label_hd.hide();
+    label_hd = av.label("hd", {left: arrow1_x - 16 + 2*arr_cell_offset, top: -20});
+    label_tl.hide();
+    av.umsg("Return the addition of the hd of the list at this level of recursion, plus what was returned from the prior level.");
+    arr.unhighlight([2]);
+    arrRet.value(0,"5+8");
+    pseudo.setCurrentLine("return-sum");
+    pseudo.hide("return-something");
+    pseudo.show("return-zero");
+    av.step();
+
+    //Slide 13
+    arrow1.translate(-arr_cell_offset,0);
+    arrow1.show();
+    arrow2.hide();
+    label_hd.hide();
+    label_hd = av.label("hd", {left: arrow1_x - 16 + 1*arr_cell_offset, top: -20});
+    label_tl.hide();
+    av.umsg("Return the addition of the hd of the list at this level of recursion, plus what was returned from the prior level.");
+    arr.unhighlight([1]);
+    arrRet.value(0,"2+13");
+    pseudo.setCurrentLine("return-sum");
+    pseudo.hide("return-something");
+    pseudo.show("return-zero");
+    av.step();
+
+    //Slide 14
+    arrow1.translate(-arr_cell_offset,0);
+    arrow1.show();
+    arrow2.hide();
+    label_hd.hide();
+    label_hd = av.label("hd", {left: arrow1_x - 16 + 0*arr_cell_offset, top: -20});
+    label_tl.hide();
+    av.umsg("Return the addition of the hd of the list at this level of recursion, plus what was returned from the prior level.");
+    arr.unhighlight([0]);
+    arrRet.value(0,"3+15");
+    pseudo.setCurrentLine("return-sum");
+    pseudo.hide("return-something");
+    pseudo.show("return-zero");
+    av.step();
+
+
+
+    // Slide 15
+    av.umsg("We are finished, having returned the value 18");
+    label_hd.hide();
+    arrow1.hide();
+    arrRet.value(0,"18");
     pseudo.setCurrentLine(0);
     av.recorded();
 });

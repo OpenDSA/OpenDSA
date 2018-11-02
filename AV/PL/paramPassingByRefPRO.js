@@ -128,6 +128,7 @@ $(document).ready(function () {
     modeljsavAV.displayInit();
 
     var contexts = [fooVars,classVars];
+    currentLineFoo = fooIndex;
     while(codeLines[currentLineFoo].indexOf('print') === -1){
       unhighlightAll();
       var split = codeLines[currentLineFoo].trim().split('=');
