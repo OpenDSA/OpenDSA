@@ -1,5 +1,5 @@
 // Turing Machine "class", extending FiniteAutomaton
-
+//Galina Belolipetski
 var TuringMachine = function(jsav, options) {
 	Automaton.apply(this, arguments);
 	this.transitions = [];
@@ -262,7 +262,7 @@ tm.initFromXML = function(text) {
 var Configuration = function(state, tape) {
 	this.state = state;
 	// this.tape = new Tape(tape);
-	this.tape = tape
+	this.tape = new Tape(tape)
 	// toString returns the state value + the 'viewport' of the tape, to be displayed to the user
 	this.toString = function() {
 		return this.tape.toString();
@@ -270,7 +270,7 @@ var Configuration = function(state, tape) {
 	}
 	this.toID = function() {
 		// console.log(this.tape.currentIndex);
-		return this.tape.current;
+		return this.state.value() + this.tape;// + this.tape.current;
 		// return this.state.value() + ' ' + this.tape + this.tape.current;
 	}
 };
@@ -309,10 +309,11 @@ var Tape = function(str) {
 	}
 	this.size = str.length;
 	this.current = 0;
-	this.jsav;
+	// this.jsav;
 
 	this.toString() = function(){
 		console.log(this.arr);
+		return;
 	}
 
 	this.object = this.jsav.av.ds.array(this.arr);
@@ -332,18 +333,28 @@ var Tape = function(str) {
 		if (current += 1 > str.length){
 			console.log("Too far right");
 		}
-		this.object.highlight(current);
+		else{
+			current+=1;
+			this.object.highlight(current);
+		}
+
 	}
 
 	this.goLeft() = function(){
 		if (current -= 1 < 0){
 			console.log("Too far left");
 		}
-		this.object.highlight(current);
+		else{
+			current+=1;
+			this.object.highlight(current);
+		}
 	}
 
 	this.removeValue() = function(location){
 		this.arr[location] = null;
+		for (var i = 0; i < arr.length; i++)	{
+			arr[i] = arr[i+1];
+		}
 	}
 };
 
