@@ -100,6 +100,7 @@ faproto.loadFAFromJFLAPFile = function (url) {
 		layoutGraph();
 	}*/
 };
+
 /*
  NFA to DFA conversion
 Note: g.transitionFunction takes a single node and returns an array of node values
@@ -334,3 +335,89 @@ for (var next = nodes.next(); next; next = nodes.next()) {
 	}
 }
 };
+
+
+var visualizeConvertToDFA = function(jsav, graph, opts) {
+	// jsav.label("Converted:");
+	var left = 10;
+	var options = $.extend(true, {layout: 'automatic'}, opts);
+	var g = jsav.ds.fa(options),
+			alphabet = Object.keys(graph.alphabet),
+			startState = graph.initial,
+			newStates = [];
+	// Get the first converted state
+	jsav.umsg("The first step is to find the lambda closure for the NFA start state.");
+	var first = lambdaClosure([startState.value()], graph).sort().join();
+	var listOfFirstNodes = first.split(',');
+	var highlightedNodes = [];
+	for(var i = 0; i< listOfFirstNodes.length; i++ ){
+		var node = graph.getNodeWithValue(listOfFirstNodes[i])
+		node.highlight();
+		highlightedNodes.push(node);
+	}
+	newStates.push(first);
+	jsav.step();
+	jsav.umsg("The result we got is the start state for the DFA.");
+	var temp = newStates.slice(0);
+	
+	first = g.addNode({value: first}); 
+	left += 50;
+	g.makeInitial(first);
+	g.layout();
+	for(var state in highlightedNodes){
+		highlightedNodes[state].unhighlight();
+	}
+	jsav.step();
+	jsav.umsg("Nest step is to identify the transitons for the DFA start state.");
+
+	// Repeatedly get next states and apply lambda closure
+	while (temp.length > 0) {
+		var val = temp.pop(),
+				valArr = val.split(',');
+		var prev = g.getNodeWithValue(val);
+		for (var i = 0; i < alphabet.length; i++) {
+			var letter = alphabet[i];
+			var next = [];
+			for (var j = 0; j < valArr.length; j++) {
+				next = _.union(next, lambdaClosure(graph.transitionFunction(graph.getNodeWithValue(valArr[j]), letter), graph));
+			}
+			var nodeName = next.sort().join();
+			var node;
+	
+			if (nodeName) {
+				if (!_.contains(newStates, nodeName)) {
+					temp.push(nodeName);
+					newStates.push(nodeName);
+					node = g.addNode({value: nodeName});
+					if(left + 50 < opts.width)
+						left+=50;
+					g.layout();
+				} else {
+					node = g.getNodeWithValue(nodeName);
+				}
+				var edge = g.addEdge(prev, node, {weight: letter});
+			}
+		}
+		if(temp.length > 0)
+		{
+			jsav.step();
+			jsav.umsg("repeat the same process for each new node we find");
+		}
+	}
+// add the final markers
+jsav.umsg("Determine the final states");
+addFinals(g, graph);
+g.layout();
+jsav.step();
+jsav.umsg("Final step is to rename the states names.")
+var nodes = g.nodes();
+for (var next = nodes.next(); next; next = nodes.next()) {
+	next.stateLabel(next.value());
+	next.stateLabelPositionUpdate();
+}
+g.updateNodes();
+return g;
+};
+function getRandomInt(max) {
+	return Math.floor(Math.random() * Math.floor(max));
+  }

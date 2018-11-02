@@ -101,12 +101,20 @@ In the tree, each step after that corresponds to testing the given
 character against the states in that subset to see if they all go to
 the same subset.
 Split them up when they do not go to the same place.
-   
+
+
 .. TODO::
    :type: Slideshow
 
    Replace the images above with a slideshow that presents,
    step-by-step, the process of minimizing the DFA. 
+
+
+.. inlineav:: Minimization1CON ss
+   :links:   AV/VisFormalLang/Minimization/Minimization1CON.css
+   :scripts: AV/VisFormalLang/Minimization/Minimization1CON.js
+   :output: show
+
 
 **Example**:
 
@@ -118,3 +126,11 @@ Split them up when they do not go to the same place.
    :alt: Minimization 2
 
    Minimization 2
+    
+
+.. inlineav:: Minimization2CON ss
+   :links:   AV/VisFormalLang/Minimization/Minimization2CON.css
+   :scripts: AV/VisFormalLang/Minimization/Minimization2CON.js
+   :output: show
+  
+
