@@ -1,4 +1,6 @@
 // Turing Machine "class", extending Automaton
+
+//instead of toggleinitial or togglefinal
 var TuringMachine = function(jsav, options) {
 	Automaton.apply(this, arguments);
 	this.transitions = [];
@@ -182,70 +184,141 @@ tm.serializeToXML = function() {
 // load a TM from an XML file
 tm.initFromXML = function(text) {
 	var parser,
-			xmlDoc;
-	if (window.DOMParser) {
-		parser=new DOMParser();
-		xmlDoc=parser.parseFromString(text,"text/xml");
-	} else {
-		xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
-		xmlDoc.async=false;
-		xmlDoc.loadXML(text);
-	}
-	if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'turing') {
-		alert('File does not contain a Turing machine.');
-	} else if (xmlDoc.getElementsByTagName("tapes")[0] && Number(xmlDoc.getElementsByTagName("tapes")[0].childNodes[0].nodeValue) !== 1) {
-		alert('File contains a multitape Turing machine.');
-		var loaded = $('#loadbutton');
-		loaded.wrap('<form>').closest('form').get(0).reset();
-		loaded.unwrap();
-		return;
-	} else {
-		var nodes = this.nodes();
-		for (var node = nodes.next(); node; node = nodes.next()) {
-			this.removeNode(node);
-		}
-		var nodeMap = {};			// map node IDs to nodes
-		var xmlStates = xmlDoc.getElementsByTagName("state");
-		xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})
-			var xmlTrans = xmlDoc.getElementsByTagName("transition");
-		for (var i = 0; i < xmlStates.length; i++) {
-			var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
-			var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
-			var newNode = this.addNode({left: x, top: y});
-			var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
-			var isFinal = xmlStates[i].getElementsByTagName("final")[0];
-			var isLabel = xmlStates[i].getElementsByTagName("label")[0];
-			if (isInitial) {
-				this.makeInitial(newNode);
-			}
-			if (isFinal) {
-				newNode.addClass('final');
-			}
-			if (isLabel) {
-				newNode.stateLabel(isLabel.childNodes[0].nodeValue);
-			}
-			nodeMap[xmlStates[i].id] = newNode;
-		}
-		for (var i = 0; i < xmlTrans.length; i++) {
-			var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
-			var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
-			var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
-			var write = xmlTrans[i].getElementsByTagName("write")[0].childNodes[0];
-			var move = xmlTrans[i].getElementsByTagName("move")[0].childNodes[0].nodeValue;
-			if (!read) {
-				read = square;
-			} else {
-				read = read.nodeValue;
-			}
-			if (!write) {
-				write = square;
-			} else {
-				write = write.nodeValue;
-			}
-			this.addEdge(nodeMap[from], nodeMap[to], {weight: read + ";" + write + "," + move});
-		}
-		this.layout();
-	}
+      xmlDoc;
+  if (window.DOMParser) {
+      parser=new DOMParser();
+      xmlDoc=parser.parseFromString(text,"text/xml");
+  } else {
+      xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+      xmlDoc.async=false;
+      xmlDoc.loadXML(text);
+  }
+  if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'turing') {
+      alert('File does not contain a turing machine.');
+      // clear input
+      var loaded = $('#loadbutton');
+      loaded.wrap('<form>').closest('form').get(0).reset();
+      loaded.unwrap();
+      return;
+  } else {
+    var nodes = this.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      this.removeNode(node);
+    }
+    // $('.jsavgraph').off();
+  }
+  var nodeMap = {};     // map node IDs to nodes
+  var xmlStates = xmlDoc.getElementsByTagName("state");
+  xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})
+  var xmlTrans = xmlDoc.getElementsByTagName("transition");
+  for (var i = 0; i < xmlStates.length; i++) {
+    var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
+    var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
+    var newNode = this.addNode({left: x, top: y});
+    var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
+    var isFinal = xmlStates[i].getElementsByTagName("final")[0];
+    var isLabel = xmlStates[i].getElementsByTagName("label")[0];
+    if (isInitial) {
+      this.makeInitial(newNode);
+    }
+    if (isFinal) {
+      newNode.addClass('final');
+    }
+    if (isLabel) {
+      newNode.stateLabel(isLabel.childNodes[0].nodeValue);
+    }
+    nodeMap[xmlStates[i].id] = newNode;
+  }
+  for (var i = 0; i < xmlTrans.length; i++) {
+    var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
+    var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
+    var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
+    var write = xmlTrans[i].getElementsByTagName("write")[0].childNodes[0];//pop
+    var move = xmlTrans[i].getElementsByTagName("move")[0].childNodes[0];//push
+    if (!read) {
+      read = emptystring;
+    } else {
+      read = read.nodeValue;
+    }
+    if (!write) {
+      write = emptystring;
+    } else {
+      write = write.nodeValue;
+    }
+    if (!move) {
+      move = emptystring;
+    } else {
+      move = move.nodeValue;
+    }
+    this.addEdge(nodeMap[from], nodeMap[to], {weight: read + "," + write + ";" + move});
+  }
+  this.layout();
+
+	// var parser,
+	// 		xmlDoc;
+	// if (window.DOMParser) {
+	// 	parser=new DOMParser();
+	// 	xmlDoc=parser.parseFromString(text,"text/xml");
+	// } else {
+	// 	xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+	// 	xmlDoc.async=false;
+	// 	xmlDoc.loadXML(text);
+	// }
+	// if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'turing') {
+	// 	alert('File does not contain a Turing machine.');
+	// } else if (xmlDoc.getElementsByTagName("tapes")[0] && Number(xmlDoc.getElementsByTagName("tapes")[0].childNodes[0].nodeValue) !== 1) {
+	// 	alert('File contains a multitape Turing machine.');
+	// 	var loaded = $('#loadbutton');
+	// 	loaded.wrap('<form>').closest('form').get(0).reset();
+	// 	loaded.unwrap();
+	// 	return;
+	// } else {
+	// 	var nodes = this.nodes();
+	// 	for (var node = nodes.next(); node; node = nodes.next()) {
+	// 		this.removeNode(node);
+	// 	}
+	// 	var nodeMap = {};			// map node IDs to nodes
+	// 	var xmlStates = xmlDoc.getElementsByTagName("state");
+	// 	xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})
+	// 		var xmlTrans = xmlDoc.getElementsByTagName("transition");
+	// 	for (var i = 0; i < xmlStates.length; i++) {
+	// 		var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
+	// 		var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
+	// 		var newNode = this.addNode({left: x, top: y});
+	// 		var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
+	// 		var isFinal = xmlStates[i].getElementsByTagName("final")[0];
+	// 		var isLabel = xmlStates[i].getElementsByTagName("label")[0];
+	// 		if (isInitial) {
+	// 			this.makeInitial(newNode);
+	// 		}
+	// 		if (isFinal) {
+	// 			newNode.addClass('final');
+	// 		}
+	// 		if (isLabel) {
+	// 			newNode.stateLabel(isLabel.childNodes[0].nodeValue);
+	// 		}
+	// 		nodeMap[xmlStates[i].id] = newNode;
+	// 	}
+	// 	for (var i = 0; i < xmlTrans.length; i++) {
+	// 		var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
+	// 		var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
+	// 		var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
+	// 		var write = xmlTrans[i].getElementsByTagName("write")[0].childNodes[0];
+	// 		var move = xmlTrans[i].getElementsByTagName("move")[0].childNodes[0].nodeValue;
+	// 		if (!read) {
+	// 			read = square;
+	// 		} else {
+	// 			read = read.nodeValue;
+	// 		}
+	// 		if (!write) {
+	// 			write = square;
+	// 		} else {
+	// 			write = write.nodeValue;
+	// 		}
+	// 		this.addEdge(nodeMap[from], nodeMap[to], {weight: read + ";" + write + "," + move});
+	// 	}
+	// 	this.layout();
+	// }
 };
 
 
