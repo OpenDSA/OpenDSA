@@ -68,7 +68,8 @@
     "Deterministic Finite Acceptors": {
       "OpenFLAP/FLConcepts": {},
       "OpenFLAP/DFA": {},
-      "OpenFLAP/TestZiyou": {}
+      "OpenFLAP/TestZiyou": {},
+      "OpenFLAP/RegEx": {}
     },
     "Identifying Non-regular Languages (Lecture 7)": {
       "OpenFLAP/NonRegular": {},
