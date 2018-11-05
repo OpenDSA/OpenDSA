@@ -34,22 +34,22 @@ Consider the following **tree_test** list as an example::
                               [31, [], []]]]
 
 We want to develop a function that takes in an integer tree
-represented as a list of lists of …lists of integers and returns the sum
+represented as a list of lists of ... lists of integers and returns the sum
 of the integers in the tree.
 
-
-::
-
-    var sumTree = function (ns) {
-        if (fp.isNull(ns)) {
-            return 0;
-        } else if (???????) {
-            return ?????????;
-        } else {
-            return ?????????;
-        }
-    }
-
+.. 
+.. ::
+.. 
+..     var sumTree = function (ns) {
+..         if (fp.isNull(ns)) {
+..             return 0;
+..         } else if (???????) {
+..             return ?????????;
+..         } else {
+..             return ?????????;
+..         }
+..     }
+.. 
 
 .. inlineav:: FP3Code1CON ss
    :long_name: Illustrate Deep Recursion On List To Return Numeric Value
