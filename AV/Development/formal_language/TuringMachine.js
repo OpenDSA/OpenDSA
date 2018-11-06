@@ -100,6 +100,7 @@ tm.traverse = function(currentStates) {
 	var nextStates = [];
 	for (var j = 0; j < currentStates.length; j++) {
 		var currentState = currentStates[j];
+		console.log(currentState)
 		var successors = currentState.state.neighbors();
 		for (var next = successors.next(); next; next = successors.next()) {
 			var edge = this.getEdge(currentState.state, next),
@@ -303,57 +304,71 @@ tmTrans.getWeight = function() {
  */
 var Tape = function(str) {
 	"use strict";
-	this.arr = new Array(str.length);
-	for (var i = 0; i < str.length; i++)	{
-		arr[i] = str.charAt(i);
-	}
+	this.arr = str.split("");
+	// var arr = new Array();
+	// for (var i = 0; i < str.length; i++)	{
+	// 	arr.push(str.charAt(i));
+	// }
 	this.size = str.length;
 	this.current = 0;
 	// this.jsav;
 
-	this.toString() = function(){
+	this.toString = function(){
 		console.log(this.arr);
 		return;
 	}
 
-	this.object = this.jsav.av.ds.array(this.arr);
+	// this.object = this.jsav.av.ds.array(this.arr);
 
-	this.write() = function(value, location){
+	this.write = function(value, location){
 		this.arr[location] = value;
 		size++;
-		current = location;
+		this.current = location;
 	}
 
-	this.getCurrent() = function(){
-		this.object.highlight(current);
-		return current;
+	this.value = function(){
+		// this.object.highlight(current);
+		return this.current;
 	}
 
-	this.goRight() = function(){
-		if (current += 1 > str.length){
+	this.goRight = function(){
+		if (this.current += 1 > str.length){
 			console.log("Too far right");
 		}
 		else{
-			current+=1;
-			this.object.highlight(current);
+			this.current+=1;
+			this.toString();
+			console.log(this.current)
+			// this.object.highlight(current);
 		}
 
 	}
 
-	this.goLeft() = function(){
-		if (current -= 1 < 0){
+	this.goLeft = function(){
+		if (this.current -= 1 < 0){
 			console.log("Too far left");
 		}
 		else{
-			current+=1;
-			this.object.highlight(current);
+			this.current+=1;
+			// this.object.highlight(current);
 		}
 	}
 
-	this.removeValue() = function(location){
+	this.removeValue = function(location){
 		this.arr[location] = null;
 		for (var i = 0; i < arr.length; i++)	{
 			arr[i] = arr[i+1];
+		}
+	}
+
+	// Move the tape and read the symbol
+	this.move = function (str) {
+		if (str === "L") {
+			return this.goLeft();
+		} else if (str === "R") {
+			return this.goRight();
+		} else if (str === "S") {
+			return this.current;
 		}
 	}
 };
