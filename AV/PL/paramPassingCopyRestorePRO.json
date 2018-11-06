@@ -1,0 +1,16 @@
+{
+  "translations" :{
+    "en": {
+      ".exerciseTitle": "Parameter Passing By Copy Restore Exercise",
+      ".instructLabel": "Instructions:",
+      ".instructions":  "Directions: First, type the evaluated value of the right hand side. Then click the location where that value will be stored",
+      "#help": "Help",
+      "#about": "About",
+      "av_c10": "Exercise is done, check your grade."
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "fix"
+  }
+}
