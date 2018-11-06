@@ -97,10 +97,11 @@ tm.isFinal = function(state) {
 
 // given a list of configurations, returns the set of next configurations
 tm.traverse = function(currentStates) {
+	console.log("Current states:" + currentStates[0]);	//this is also undegined
+	console.log("length: " + currentStates.length); //but the length is 1
 	var nextStates = [];
 	for (var j = 0; j < currentStates.length; j++) {
 		var currentState = currentStates[j];
-		console.log(currentState)
 		var successors = currentState.state.neighbors();
 		for (var next = successors.next(); next; next = successors.next()) {
 			var edge = this.getEdge(currentState.state, next),
@@ -108,6 +109,8 @@ tm.traverse = function(currentStates) {
 			for (var i = 0; i < weight.length; i++) {
 				weight[i] = toColonForm(weight[i]);
 				var w = weight[i].split(':');
+				console.log("The w:" + w[0]);
+				console.log("The tape value:" + currentState);	//this is undefined
 				if (currentState.tape.value() === w[0]) {
 					var nextConfig = new Configuration(next, currentState.tape);
 					nextConfig.tape.value(w[1]);
@@ -115,13 +118,13 @@ tm.traverse = function(currentStates) {
 					nextStates.push(nextConfig);
 					break;
 				}
-				// if (currentState.tape.value() === w[0]) {
-				// 	var nextConfig = new Configuration(next, currentState.tape);
-				// 	nextConfig.tape.value(w[1]);
-				// 	nextConfig.tape.move(w[2]);
-				// 	nextStates.push(nextConfig);
-				// 	break;
-				// }
+				if (currentState.tape.value() === w[0]) {
+					var nextConfig = new Configuration(next, currentState.tape);
+					nextConfig.tape.value(w[1]);
+					nextConfig.tape.move(w[2]);
+					nextStates.push(nextConfig);
+					break;
+				}
 			}
 		}
 	}
@@ -304,13 +307,22 @@ tmTrans.getWeight = function() {
  */
 var Tape = function(str) {
 	"use strict";
-	this.arr = str.split("");
-	// var arr = new Array();
-	// for (var i = 0; i < str.length; i++)	{
-	// 	arr.push(str.charAt(i));
-	// }
-	this.size = str.length;
+	this.arr;
 	this.current = 0;
+	this.currentIndex = 0;
+
+	if (typeof str === 'string') {
+		this.arr = str.split("");
+		this.current = this.arr[0];  // the current symbol
+		this.currentIndex = 0;                // the current position
+	}
+	// else, assume that a Tape object was passed in, and create a copy of it
+	else {
+		this.arr = str.getArr();
+		this.current = this.arr[0];  // the current symbol
+		this.currentIndex = 0;                // the current position
+	}
+
 	// this.jsav;
 
 	this.toString = function(){
@@ -326,19 +338,28 @@ var Tape = function(str) {
 		this.current = location;
 	}
 
-	this.value = function(){
+	this.getArr = function(){
+		return this.arr;
+	}
+
+	this.value = function(newValue){
 		// this.object.highlight(current);
-		return this.current;
+		if (typeof val === "undefined"){
+			return this.arr[this.current];
+		}
+		this.arr[this.current] = newValue;
+		return this.arr[this.current];
 	}
 
 	this.goRight = function(){
-		if (this.current += 1 > str.length){
+		if (this.currentIndex += 1 > str.length){
 			console.log("Too far right");
 		}
 		else{
-			this.current+=1;
-			this.toString();
-			console.log(this.current)
+			this.currentIndex+=1;
+			this.current = this.arr[this.currentIndex];
+			return this.current;
+			//TODO: highlight?
 			// this.object.highlight(current);
 		}
 
@@ -349,7 +370,9 @@ var Tape = function(str) {
 			console.log("Too far left");
 		}
 		else{
-			this.current+=1;
+			this.currentIndex+=1;
+			this.current = this.arr[this.currentIndex];
+			return this.current;
 			// this.object.highlight(current);
 		}
 	}
@@ -372,6 +395,7 @@ var Tape = function(str) {
 		}
 	}
 };
+
 
 	// if the tape is initialized using a string, writes the string to the new tape
 	// if (typeof str === 'string') {
