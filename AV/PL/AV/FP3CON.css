@@ -28,3 +28,26 @@
     max-width : 60px !important;
 }
 
+#FP3Code2CON {
+  height: 380px;
+}
+
+#FP3Code2CON .jsavcode {
+  margin-left: 315px;
+  width: 530px;
+}
+
+#FP3Code2CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP3Code2CON .jsavoutput.jsavline {
+  height: 30px;
+}
+
+/* Makes just one cell wider */
+#FP3Code2CON  .jsavindex.jsavnode.wider {
+    min-width : 60px !important;
+    max-width : 60px !important;
+}
+

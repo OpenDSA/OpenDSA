@@ -144,8 +144,11 @@ following review problem, which asks you to slightly modify *removeFirst*.
    :long_name: Recursion on Flat Lists 2
 
 
+.. _subst:
+
 Recursive List Processing (3)
 -----------------------------
+
 
 As a final example in this section consider a function that takes in two integers
 :math:`n` (for ’new’) and :math:`o` (for ’old’) and an integer list
