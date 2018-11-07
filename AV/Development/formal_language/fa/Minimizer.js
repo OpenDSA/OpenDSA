@@ -67,6 +67,7 @@ minimizer.init = function(jsav, referenceGraph, tree) {
 
 // minimizing DFA needs a complete FA, so this function adds trap states
 minimizer.addTrapState = function() {
+	
 	var nodes = this.referenceGraph.nodes();
 	var trapEdge = this.alphabet.join("<br>");
 	var trapNode;
@@ -76,11 +77,17 @@ minimizer.addTrapState = function() {
 			var toNode = this.referenceGraph.transitionFunction(node, letter)[0];
 			if (toNode) continue;
 			if (!trapNode) {
+				this.jsav.step();
+				this.jsav.umsg("Adding a Trap state to the DFA");
 				trapNode = this.referenceGraph.addNode();
 				this.referenceGraph.addEdge(trapNode, trapNode, {weight: trapEdge});
 			}
 			this.referenceGraph.addEdge(node, trapNode, {weight: letter});
 		}
+	}
+	if(trapNode){
+		this.referenceGraph.layout();
+		this.jsav.step();
 	}
 };
 

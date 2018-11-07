@@ -1,10 +1,10 @@
 var lambda = String.fromCharCode(955), // Instance variable to store the JavaScript representation of lambda.
-    jsav = new JSAV("av"),
+    //jsav = new JSAV("av"),
     epsilon = String.fromCharCode(949), // Instance variable to store the JavaScript representation of epsilon.
     none = String.fromCharCode(248), // empty set symbol used for converting to RE
     emptystring = lambda,
     collapseStateTable, // table that shows relevant transitions of a collapsed node
-    g, //reference graph
+    //g, //reference graph
     transitions;
 
 var FAtoREController = function(jsav, fa, options) {
@@ -16,12 +16,14 @@ var controllerProto = FAtoREController.prototype;
 controllerProto.init = function(jsav, fa, options) {
   this.jsav = jsav;
   this.fa = fa;
+  this.visualize = false;
 };
 
 controllerProto.checkForTransitions = function() {
   var edgesNum = this.fa.edges().length;
   var nodesNum = this.fa.nodes().length;
   if (edgesNum == nodesNum * nodesNum) {
+    if(this.visualize == false){
     $("#collapseButton").show();
     $("#finalize").show();
     $("#cheat").hide();
@@ -29,6 +31,7 @@ controllerProto.checkForTransitions = function() {
     $(".jsavgraph").removeClass("addEdges");
     //this.jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
     $("p").text("Use collapse state tool to remove nonfinal, noninitial states.");
+    }
     if (this.fa.nodes().length == 2) this.generateExpression();
   }
 };
@@ -82,7 +85,7 @@ function transitionsTableHandler(row, col, e) {
   step3._label.element.addClass("testingLambda");
 }
 
-controllerProto.collapseState = function(node) {
+controllerProto.collapseState = function(node, transitionOptions) {
   if (!node) {
     $(".jsavgraph").addClass("collapse2");
     $(".jsavgraph").removeClass("editNodes");
@@ -99,9 +102,9 @@ controllerProto.collapseState = function(node) {
     for (var to = nodes2.next(); to; to = nodes2.next()) {
       if (from == this.fa.selected || to == this.fa.selected) continue;
       var straight = this.fa.getEdge(from, to).weight();
-      var begin = this.fa.getEdge(from, this.fa.selected).weight();
-      var pause = this.fa.getEdge(this.fa.selected, this.fa.selected).weight();
-      var end = this.fa.getEdge(this.fa.selected, to).weight();
+      var begin = this.fa.getEdge(from, node).weight();
+      var pause = this.fa.getEdge(node, node).weight();
+      var end = this.fa.getEdge(node, to).weight();
       var indirect = "";
 
       //var direct = normalizeTransitionToRE(straight);
@@ -143,14 +146,18 @@ controllerProto.collapseState = function(node) {
   collapseStateTable = table;
 
 //  $dialog = $("#dialog");
-  var tav = new JSAV("dialog2");
+ // var tav = new JSAV("dialog2");
 //  if (transitions) transitions.clear();
   if (transitions) delete transitions;
   localStorage.setItem("trans", "true");
-  transitions = tav.ds.matrix(table, {style: "table", element: $("#TransitionTable")});
+  if(this.visualize)
+  transitions = this.jsav.ds.matrix(table, {left: transitionOptions.left, style: "table"});
+  else
+    transitions = this.jsav.ds.matrix(table, {style: "table", element: $("#TransitionTable")});
   transitions.element.data({fa: this.fa});
   transitions.click(transitionsTableHandler);
-  $("p").text("Click Finalize to complete state removal.");
+  if(this.visualize == false)
+    $("p").text("Click Finalize to complete state removal.");
 //  $dialog.dialog({
 //    dialogClass: "no-close",
 //    width: 10,
@@ -182,6 +189,7 @@ controllerProto.finalizeRE = function() {
   }
   //$("#dialog").dialog("close");
   $("#TransitionTable").empty();
+  if(this.visualize == false)
   $("p").text("Use collapse state tool to remove nonfinal, noninitial states.");
   localStorage.removeItem("trans");
 
@@ -255,12 +263,15 @@ controllerProto.generateExpression = function() {
     }
     expression = cycle + target;
   }
+  if(this.visualize == false){
   $("p").text("Generalized transition graph finished! Expression: " + expression + ". Click Export to open the regular expression in a new window.");
   $("#finalize").hide();
   $("#exportButton").show();
   $("#exportButton").click(function() {
     exportToRE(expression);
   });
+}
+return expression;
 };
 
 function exportToRE(expression) {
@@ -293,4 +304,51 @@ function needParentheses(word) {
 
 function addParentheses(word) {
   return "(" + word + ")";
+}
+
+controllerProto.visualizeConversion = function(transitionOptions = {}, finaGraphOptions = {}){
+  this.visualize = true;
+  this.jsav.step();
+  this.jsav.umsg("We need to complete all the missing tansitions for this Machine");
+  this.completeTransitions();
+  var nodes = getAllNonStartNorFinalStates(this.fa);
+  for (var i = 0; i< nodes.length; i++){
+    this.jsav.step();
+    this.jsav.umsg("We should collapse the node " + nodes[i].value());
+    localStorage.trans = 'false';
+    nodes[i].highlight();
+    this.fa.selected = nodes[i];
+    this.collapseState(nodes[i], transitionOptions);
+    this.jsav.step();
+    this.jsav.umsg("You can click on each table row to heighlight the affected transitions.");
+    nodes[i].unhighlight();
+    this.jsav.step();
+    this.jsav.umsg("Removing the node " + nodes[i].value() + " will create an new but equivalent graph");
+    this.finalizeRE();
+  }
+  this.jsav.step();
+  this.jsav.umsg("After removing all nodes that are not fianl and not start, the resulting Regular Exepression is");
+  drawTheFinalGraph(this.jsav, finaGraphOptions, this.generateExpression());
+}
+function getAllNonStartNorFinalStates(graph){
+  var listOfNodes = graph.nodes();
+  var results = [];
+  listOfNodes.map(function(node){
+    if(!node.hasClass("final") && !node.hasClass("start"))
+      results.push(node);
+  });
+  return results;
+}
+
+function drawTheFinalGraph(jsav, options, expression)
+{
+  var fa = jsav.ds.fa($.extend(options));
+	var start = fa.addNode({left: '15px'});
+	var height = options.height || 440;
+	var width = options.width || 750;
+	var end = fa.addNode({left: width - 10, top: height - 40});
+	fa.makeInitial(start);
+	fa.makeFinal(end);
+  var t = fa.addEdge(start, end, {weight: expression});
+  return fa;
 }

@@ -199,12 +199,13 @@ if(visualizable){
 	jsav.step();
 	jsav.umsg("Final step is to rename the states names.")
 }
-var nodes = g.nodes();
+/*var nodes = g.nodes();
 for (var next = nodes.next(); next; next = nodes.next()) {
 	next.stateLabel(next.value());
 	next.stateLabelPositionUpdate();
-}
+}*/
 g.updateNodes();
+g.layout();
 return g;
 };
 
