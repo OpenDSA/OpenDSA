@@ -64,7 +64,7 @@ $(document).ready(function() {
   }
 
   Stackproto.formStack = function() {
-    var graph = $('.jsavgraph')
+    var graph = $('#' + this.jsav.id() + ' > .jsavcanvas > .jsavgraph')
 
     if ( this.x_coord + (this.stack.length * this.cell_size) > graph.height() ) {
       var distance = graph.height() - this.x_coord;
