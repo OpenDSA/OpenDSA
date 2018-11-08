@@ -74,8 +74,8 @@ Following the two paths for a *<list_of_ints>* in this grammar -- one for the em
 
 .. inlineav:: FP2Code1CON ss
    :long_name: Illustrate Simple Recursion On List To Return Numeric Value
-   :links: AV/PL/AV/FP2CON.css
-   :scripts: AV/PL/AV/FP2Code1CON.js
+   :links: AV/PL/FP/FP2CON.css
+   :scripts: AV/PL/FP/FP2Code1CON.js
    :output: show
 
 Think about how to complete this function and then try the following
@@ -116,8 +116,8 @@ provided in the first slide below.
 
 .. inlineav:: FP2Code2CON ss
    :long_name: Illustrate Simple Recursion On List To Define IsMember
-   :links: AV/PL/AV/FP2CON.css
-   :scripts: AV/PL/AV/FP2Code2CON.js
+   :links: AV/PL/FP/FP2CON.css
+   :scripts: AV/PL/FP/FP2Code2CON.js
    :output: show
 		      
 
@@ -170,8 +170,8 @@ established by the BNF grammar for a *<list_of_ints>*.
 
 .. inlineav:: FP2Code3CON ss
    :long_name: Illustrate Simple Recursion On List To Do Substitution
-   :links: AV/PL/AV/FP2CON.css
-   :scripts: AV/PL/AV/FP2Code3CON.js
+   :links: AV/PL/FP/FP2CON.css
+   :scripts: AV/PL/FP/FP2Code3CON.js
    :output: show
 
 
