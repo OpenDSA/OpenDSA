@@ -16,7 +16,8 @@ $(document).ready(function() {
     this.cell_size = 30;
 
     this.jsav = jsav;
-    this.stack = element
+    this.stack = element;
+    this.displayStack = null;
     this.x_coord = x_coord;
     this.y_coord = y_coord;
     this.options = options;
@@ -27,9 +28,8 @@ $(document).ready(function() {
       //default position of array's top center and call JSAV array constructor
       var left_arr = String(x_coord) + "px";
       var top_arr = String(y_coord - 16) + "px";
-      this.arr = this.jsav.ds.array(this.stack, {left: left_arr, top: top_arr, layout: 'vertical'});
-
-      //this.arr.css(0, {"border-top": "3px solid yellow"});
+      this.formStack()
+      this.arr = this.jsav.ds.array(this.displayStack, {left: left_arr, top: top_arr, layout: 'vertical'});
 
       this.arr.css(0, {"background": "yellow"});
 
@@ -52,13 +52,30 @@ $(document).ready(function() {
     //default position of array's top center and call JSAV array constructor
     var left_arr = String(this.x_coord) + "px";
     var top_arr = String(this.y_coord - 16) + "px";
-    this.arr = this.jsav.ds.array(this.stack, {left: left_arr, top: top_arr, layout: 'vertical'});
-    //this.arr.css(0, {"border-top": "3px solid yellow"});
+
+    this.formStack()
+    this.arr = this.jsav.ds.array(this.displayStack, {left: left_arr, top: top_arr, layout: 'vertical'});
+    
     this.arr.css(0, {"background": "yellow"});
   }
 
   Stackproto.hide = function() {
     this.arr.hide()
+  }
+
+  Stackproto.formStack = function() {
+    var graph = $('.jsavgraph')
+
+    if ( this.x_coord + (this.stack.length * this.cell_size) > graph.height() ) {
+      var distance = graph.height() - this.x_coord;
+      var cellsToShow = (distance / this.cell_size);
+      var tempArr = this.stack.slice(0, cellsToShow);
+      tempArr.push('...');
+      this.displayStack = tempArr;
+    } 
+    else {
+      this.displayStack = this.stack;
+    }
   }
 
 }(jQuery));
