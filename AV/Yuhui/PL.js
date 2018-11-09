@@ -7,22 +7,24 @@ $(document).ready(function() {
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
-  // Declare and initialize state variable for user
-  var outstr = "w: ";
-  var str;
-  var xn;
-  var yn;
-  var zn;
-  var x;
-  var y;
-  var z;
-  var count = 0;
+  // Declare and initialize state variable for user first
+  var container = document.getElementById("container"); //container
+  var lastoption = document.getElementById("option").value; //user last option
+  var para0, para11, para12; //paragraph for step 0,1
+  var para21, para22, para23, para24, para3; //paragraph for step 2,3
+  var para41, para42, para43;  //paragraph for step 4
+  var paraerr, paraerr1;
+  var x, y, z;  //substrings x,y,z
+  var xl, yl, zl; //user input for x,y,z
+  var xn, yn, zn; //integers x,y,z
+  var str; //output for string
+  var outstr = "w: ";  //w: + str
+  var count = 0;  //count for the number of next button click
   var first = 0;
   var errcount = 0;
   var valid = 1;
   var valid1 = 1;
-  var container = document.getElementById("container");
-  var lastoption = document.getElementById("option").value;
+  var valid2 = 1;
   var zeroinput = "input";
   var firstinput = "input1";
   var secondinput = "input2";
@@ -30,79 +32,79 @@ $(document).ready(function() {
   var chaoptcount = 0;
   var chafinpcount = 0;
   var errp = "paraerr1";
-  var strsize = "";
-  var laststrsize = "";
-  var lastfstsize = "";
-  var lastsecsize = "";
-  var lastthdsize = "";
-  var para0;
-  var para11;
-  var para12;
-  var para21;
-  var para22;
-  var para23;
-  var para24;
-  var para3;
-  var para41;
-  var para42;
-  var para43;
-  var valid2 = 1;
-  var paraerr;
-  var paraerr1;
-  var xl = "";
-  var yl = "";
-  var zl = "";
-
-  //Declare for computer
-  var p0;
-  var p01;
-  var p1;
-  var p11;
-  var pe2;
-  var p2;
-  var p31;
-  var p4;
-  var p4e;
-  var p41;
+  var strsize;
+  var laststrsize, lastfstsize, lastsecsize, lastthdsize;
+  //Declare and initialize state variable for computer first
+  var p0, p01, p1, p11, pe2, p2, p22, p3, p31, p4, p4e, p41;
   var i3;
   var ranc;
   var strc = "";
   var validc = 1;
-  var xc = "";
-  var yc = "";
-  var zc = "";
-  var ivalue;
-  var lastivalue = "";
-
+  var xc, yc, zc;
+  var ivalue, lastivalue;
   // Main action: Result of clicking "Next" button
-  function Calculate() {    
+  function Next() {    
     var option = document.getElementById("option").value;
-    
     if (option != lastoption && first != 0) {
-      
       strsize = 0;
-      outstr = "w: ";
       chaoptcount = chaoptcount + 1;
-      if (count >= 1) {
-        para0.style.display = "none";
+      if (lastoption == "user") {
+        if (count >= 1) {
+          para0.style.display = "none";
+        }
+        if (count >= 2) {
+          para11.style.display = "none";
+          para12.style.display = "none";
+          outstr = "w: ";
+        }
+        if (count >= 3) {
+          para21.style.display = "none";
+          para22.style.display = "none";
+          para23.style.display = "none";
+          para24.style.display = "none";
+        }
+        if (count >= 4) {
+          para3.style.display = "none";
+        }
+        if (count >= 5) {
+          para41.style.display = "none";
+          para42.style.display = "none";
+          para43.style.display = "none";
+        }
+        if (valid1 == 0) {
+          paraerr1.style.display = "none";
+          valid1 = 1;
+        }
       }
-      if (count >= 2) {
-        para11.style.display = "none";
-        para12.style.display = "none";
-      }
-      if (count >= 3) {
-        para21.style.display = "none";
-        para22.style.display = "none";
-        para23.style.display = "none";
-        para24.style.display = "none";
-      }
-      if (count >= 4) {
-        para3.style.display = "none";
-      }
-      if (count >= 5) {
-        para41.style.display = "none";
-        para42.style.display = "none";
-        para43.style.display = "none";
+      else {
+          if (count >= 1) {
+            p0.style.display = "none";
+            p01.style.display = "none";
+          }
+          if (count >= 2) {
+            p1.style.display = "none";
+            p11.style.display = "none";
+          }
+          if (count >= 3) {
+            if (validc == 0) {
+              pe2.style.display = "none";
+              validc = 1;
+            }
+            p2.style.display = "none";
+            p22.style.display = "none";
+          }
+          if (count >= 4) {
+            p3.style.display = "none";
+            p31.style.display = "none";
+          }
+          if (count >= 5) {
+            if (valid2 == 0) {
+              p4e.style.display = "none";
+              valid2 = 1;
+            }
+            p4.style.display = "none";
+            p41.style.display = "none";
+          }
       }
       count = 0;
     }
@@ -118,12 +120,12 @@ $(document).ready(function() {
         node0 = document.createTextNode("1. Please select a value for m: ");
         para0.appendChild(node0);
         var i;
-        // for (i = 0; i < chaoptcount; i++) {
-        //   zeroinput = zeroinput + "0";
-        // }
-        // for (i = 0; i < chafinpcount; i++) {
-        //   zeroinput = zeroinput + "0";
-        // }
+        for (i = 0; i < chaoptcount; i++) {
+          zeroinput = zeroinput + "0";
+        }
+        for (i = 0; i < chafinpcount; i++) {
+          zeroinput = zeroinput + "0";
+        }
         var input0 = document.createElement("input");
         input0.type = "number";
         input0.setAttribute("id",zeroinput);
@@ -133,7 +135,7 @@ $(document).ready(function() {
       if (count == 1) { 
         strsize = document.getElementById(zeroinput).value;
         var ssize = parseInt(strsize);
-        if (ssize < 4 || ssize > 18) {
+        if (!(ssize >= 4 && ssize <= 18)) {
           if (valid == 1) {
             paraerr = document.createElement("p");
             paraerr.setAttribute("id","paraerr");
@@ -193,6 +195,10 @@ $(document).ready(function() {
             para42.style.display = "none";
             para43.style.display = "none";
           }
+          if (valid1 == 0) {
+            paraerr1.style.display = "none";
+            valid1 = 1;
+          }
           count = 0;
         } 
       }
@@ -216,16 +222,16 @@ $(document).ready(function() {
         para24.appendChild(node24);
         container.appendChild(para21); 
         var i;
-        // for (i = 0; i < chaoptcount; i++) {
-        //   firstinput = firstinput + "1";
-        //   secondinput = secondinput + "2";
-        //   thirdinput = thirdinput + "3";
-        // }  
-        // for (i = 0; i < chafinpcount; i++) {
-        //   firstinput = firstinput + "1";
-        //   secondinput = secondinput + "2";
-        //   thirdinput = thirdinput + "3";
-        // }
+        for (i = 0; i < chaoptcount; i++) {
+          firstinput = firstinput + "1";
+          secondinput = secondinput + "2";
+          thirdinput = thirdinput + "3";
+        }  
+        for (i = 0; i < chafinpcount; i++) {
+          firstinput = firstinput + "1";
+          secondinput = secondinput + "2";
+          thirdinput = thirdinput + "3";
+        }
         input1 = document.createElement("input");
         input1.type = "number";
         input1.setAttribute("id",firstinput);     
@@ -251,93 +257,48 @@ $(document).ready(function() {
         yn = parseInt(yl);
         zn = parseInt(zl);
         var i;
-        
-        if (valid1 == 1) {
-          for (i = 0; i < errcount; i++) {
-            errp = errp + "1";
-          }
-          paraerr1 = document.createElement("p");
-          paraerr1.setAttribute("id", errp);
-          if ((xn + yn + zn) != (2*parseInt(strsize))) {
-            var nodeerr1 = document.createTextNode("The sum of x, y and z must equal to the length of string.");
-            paraerr1.appendChild(nodeerr1);
-            valid1 = 0;
-          }
-          if (xn + yn > parseInt(strsize)) {
-            var nodeerr2 = document.createTextNode("Condition violated: |xy| <= m");
-            paraerr1.appendChild(nodeerr2);
-            valid1 = 0;
-          }
-          if (yn <= 0) {
-            var nodeerr3 = document.createTextNode("Condition violated: |y| > 0");
-            paraerr1.appendChild(nodeerr3);
-            valid1 = 0;
-          }
-          if (xn < 0 && zn < 0) {
-            var nodeerr4 = document.createTextNode("x and z cannot be negative.");
-            paraerr1.appendChild(nodeerr4);
-            valid1 = 0;
-          } 
           if (valid1 == 0) {
-            count = count - 1;
-            errcount += 1;
+            document.getElementById(errp).style.display = "none";
+            valid1 = 1;
           }
-          else {
-            str = outstr.substring(3);
-            x = str.substring(0, xn);
-            y = str.substring(xn, (xn + yn));
-            z = str.substring((xn + yn), (xn + yn + zn));
-            para3 = document.createElement("p");
-            para3.setAttribute("id","para3");
-            var node = document.createTextNode("x: ");
-            var node1 = document.createTextNode(x);
-            var node2 = document.createTextNode("\xa0\xa0\xa0\xa0\xa0y: ");
-            var node3 = document.createTextNode(y);
-            var node4 = document.createTextNode("\xa0\xa0\xa0\xa0\xa0z: ");
-            var node5 = document.createTextNode(z);
-            para3.appendChild(node);
-            para3.appendChild(node1);
-            para3.appendChild(node2);
-            para3.appendChild(node3);
-            para3.appendChild(node4);
-            para3.appendChild(node5);
-            container.appendChild(para3);   
-            lastfstsize = xl;
-            lastsecsize = yl;
-            lastthdsize = zl; 
-          }
-          container.appendChild(paraerr1);
-        }
-        else {
-          document.getElementById(errp).style.display = "none";
-          //console.log(errp);
-          valid1 = 1;
           var i;
           for (i = 0; i < errcount; i++) {
             errp = errp + "1";
           }
           paraerr1 = document.createElement("p");
           paraerr1.setAttribute("id", errp);
+          var numerr = 0;
           if ((xn + yn + zn) != (2*parseInt(strsize))) {
-            var nodeerr1 = document.createTextNode("The sum of x, y and z must equal to the length of string. ");
+            numerr = numerr + 1;
+            var nodeerr1 = document.createTextNode(numerr.toString() + ". The sum of x, y and z must equal to the length of string. ");
             paraerr1.appendChild(nodeerr1);
             valid1 = 0;
           }
           if (xn + yn > parseInt(strsize)) {
-            var nodeerr2 = document.createTextNode("Condition violated: |xy| <= m ");
+            numerr = numerr + 1;
+            var nodeerr2 = document.createTextNode("\xa0\xa0" + numerr.toString() + ". Condition violated: |xy| <= m ");
             paraerr1.appendChild(nodeerr2);
             valid1 = 0;
           }
           if (yn <= 0) {
-            var nodeerr3 = document.createTextNode("Condition violated: |y| > 0 ");
+            numerr = numerr + 1;
+            var nodeerr3 = document.createTextNode("\xa0\xa0" + numerr.toString() + ". Condition violated: |y| > 0 ");
             paraerr1.appendChild(nodeerr3);
             valid1 = 0;
           }
-          if (xn < 0 && zn < 0) {
-            var nodeerr4 = document.createTextNode("x and z cannot be negative. ");
+          if (xn < 0) {
+            numerr = numerr + 1;
+            var nodeerr4 = document.createTextNode("\xa0\xa0" + numerr.toString() + ". x cannot be negative.");
             paraerr1.appendChild(nodeerr4);
             valid1 = 0;
+          }
+          if (zn < 0) {
+            numerr = numerr + 1;
+            var nodeerr5 = document.createTextNode("\xa0\xa0" + numerr.toString() + ". z cannot be negative.");
+            paraerr1.appendChild(nodeerr5);
+            valid1 = 0;
           } 
+          numerr = 0;
           if (valid1 == 0) {
               count = count - 1;
               errcount += 1;
@@ -367,9 +328,6 @@ $(document).ready(function() {
             lastsecsize = yl;
             lastthdsize = zl; 
           }
-        }
-        
-        
       }
       if (count >= 4) {
         xl = document.getElementById(firstinput).value;
@@ -472,27 +430,25 @@ $(document).ready(function() {
         else {
           if (validc == 0) {
             pe2.style.display = "none";
+            validc = 1;
           }
           p2 = document.createElement("p");
           var n2 = document.createTextNode("3. I have decomposed w into the following...");
           p2.appendChild(n2);
           container.appendChild(p2);
-          var i;
-          for (i = 0; i < ranc; i++) {
-            zc = zc + "b";
-          }
           var ycl = Math.floor(Math.random() * ranc) + 1; //random number from 1 to m
           var xcl = ranc - ycl;
           xc = strc.substring(0, xcl);
           yc = strc.substring(xcl, (xcl + ycl));
-          var p22 = document.createElement("p");
+          zc = strc.substring((xcl + ycl),);
+          p22 = document.createElement("p");
           var n22 = document.createTextNode("X = " + xc + "; Y = " + yc + "; Z = " + zc);
           p22.appendChild(n22);
           container.appendChild(p22);
         }
       }
       if (count == 3) {
-        var p3 = document.createElement("p");
+        p3 = document.createElement("p");
         var n3 = document.createTextNode("4. Please enter a possible value for i.");
         p3.appendChild(n3);
         container.appendChild(p3);
@@ -521,6 +477,7 @@ $(document).ready(function() {
         else {
           if (valid2 == 0) {
             p4e.style.display = "none";
+            valid2 = 1;
           }
           var pumpstr1 = xc;
           var i;
@@ -536,7 +493,6 @@ $(document).ready(function() {
           var n4 = document.createTextNode("Pumped String: " + pumpstr1);
           p4.appendChild(n4);
           container.appendChild(p4);
-
           p41 = document.createElement("p");
           p41.setAttribute("id", "p41");
           var n41 = document.createTextNode(tempy + " = " + pumpstr1 + " is Not in the language. YOU WIN!");
@@ -553,13 +509,11 @@ $(document).ready(function() {
           count = 3;
         }
       }
-      
       count += 1;
       first += 1;
     } 
-    
   }
   // Action callbacks for form entities
   $("#about").click(about);
-  $("#next").click(Calculate);
+  $("#next").click(Next);
 });
