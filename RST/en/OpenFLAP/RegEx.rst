@@ -221,6 +221,11 @@ that :math:`L = L(M)`.
       :capalign: justify
       :figwidth: 90%
       :alt: nfatore1
+      
+   .. inlineav:: RegExf1 dgm
+      :links: AV/OpenFLAP/RegExf1.css
+      :scripts: AV/OpenFLAP/RegExf1.js
+      :align: center
 
    Add an arrow to the start state. Then, the corresponding regular
    expression is:
@@ -246,6 +251,11 @@ that :math:`L = L(M)`.
       :capalign: justify
       :figwidth: 90%
       :alt: nfatore2
+      
+   .. inlineav:: RegExf2 dgm
+      :links: AV/OpenFLAP/RegExf2.css
+      :scripts: AV/OpenFLAP/RegExf2.js
+      :align: center
 
    In this case, make the following replacements:
 
@@ -296,6 +306,16 @@ that :math:`L = L(M)`.
    :capalign: justify
    :figwidth: 90%
    :alt: stnfatore2s
+   
+.. inlineav:: RegExf3 dgm
+   :links: AV/OpenFLAP/RegExf3.css
+   :scripts: AV/OpenFLAP/RegExf3.js
+   :align: center
+
+.. inlineav:: RegExf3b dgm
+   :links: AV/OpenFLAP/RegExf3b.css
+   :scripts: AV/OpenFLAP/RegExf3b.js
+   :align: center
 
 You should convince yourself that, in this image, the right side is a
 proper re-creation of the left side.
