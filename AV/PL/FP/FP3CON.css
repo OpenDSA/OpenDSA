@@ -1,5 +1,5 @@
 #FP3Code1CON {
-  height: 340px;
+  height: 420px;
 }
 
 #FP3Code1CON .jsavcode {
@@ -12,7 +12,7 @@
 }
 
 #FP3Code1CON .jsavoutput.jsavline {
-  height: 40px;
+  height: 70px;
 }
 
 /* Makes all cells wider */
@@ -24,6 +24,29 @@
 
 /* Makes just one cell wider */
 #FP3Code1CON  .jsavindex.jsavnode.wider {
+    min-width : 60px !important;
+    max-width : 60px !important;
+}
+
+#FP3Code2CON {
+  height: 380px;
+}
+
+#FP3Code2CON .jsavcode {
+  margin-left: 315px;
+  width: 530px;
+}
+
+#FP3Code2CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP3Code2CON .jsavoutput.jsavline {
+  height: 30px;
+}
+
+/* Makes just one cell wider */
+#FP3Code2CON  .jsavindex.jsavnode.wider {
     min-width : 60px !important;
     max-width : 60px !important;
 }

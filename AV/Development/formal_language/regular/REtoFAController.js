@@ -26,20 +26,24 @@ var catBeginMade = false, catEndMade = false;
 
 paper.install(window);
 
-var REtoFAController = function(jsav, options) {
-	this.init(jsav, options);
+var REtoFAController = function(jsav, expression = "", options, visualize = false) {
+	this.init(jsav, expression, visualize, options);
 };
 
 var controllerProto = REtoFAController.prototype;
 
-controllerProto.init = function(jsav, expression, options) {
+controllerProto.init = function(jsav, expression, visualize, options) {
+	this.visualize = visualize;
 	this.jsav = jsav;	
 	this.fa = jsav.ds.fa($.extend({width: '750px', height: 440, layout: 'automatic'}, options));
 	var start = this.fa.addNode({left: '15px'});
-	var end = this.fa.addNode({left: '700px', top: '400px'});
+	var height = options.height || 440;
+	var width = options.width || 750;
+	var end = this.fa.addNode({left: width - 10, top: height - 40});
 	this.fa.makeInitial(start);
 	this.fa.makeFinal(end);
 	var t = this.fa.addEdge(start, end, {weight: expression});
+	this.jsav.umsg("In the begining, we put the reqular expression " + expression + " on a transition between a start state and a final state");
 	this.transition = t;
 	var action = this.requiredAction(expression);
 	if (action == NOTRECOGNIZED) {
@@ -104,6 +108,7 @@ controllerProto.transitionCheck = function(transition) {
 	this.transition = transition;
 	toDo.splice(0, 1);
 	var label = transition.weight();
+	var umsgString = "";
 	switch (action) {
 		case DEPARENS: {
 			var s1 = transition.start(), s2 = transition.end();
@@ -118,18 +123,31 @@ controllerProto.transitionCheck = function(transition) {
 		case DESTAR:
 			replacements = this.replaceTransition(transition, [delambda(label.substring(0,label.length - 1))]);
 			transitionNeeded = 4;
+			umsgString = "De-staring"
 			break;
 		case DEOR:
 			replacements = this.replaceTransition(transition, or(label));
 			transitionNeeded = 2 * replacements.length;
+			umsgString = "De-oring ";
 			break;
 		case DECAT:
 			replacements = this.replaceTransition(transition, cat(label));
 			transitionNeeded = replacements.length + 1;
 			catBeginMade = catEndMade = false;
+			umsgString = "De-concatenating ";
 			break;
 	}
+	if(replacements.length >1){
+	var repExpr = "";
+	replacements.map(function(replacement){repExpr += replacement.weight() + ",";})
+	repExpr = repExpr.slice(0, -1);
+	var lastCommaIndex = repExpr.lastIndexOf(',');
+	repExpr = repExpr.slice(0, lastCommaIndex  ) + ", and " + repExpr.slice(lastCommaIndex + 1);
+	this.jsav.umsg(umsgString + " the expression " + transition.weight() + " into " + replacements.length + " transitions " + repExpr);
 	this.nextStep();
+	}
+	else
+	this.jsav.umsg(umsgString + " the expression " + transition.weight() );
 }
 
 
@@ -173,22 +191,27 @@ controllerProto.completeStep = function() {
 controllerProto.nextStep = function() {
 	if (transitionNeeded == 0) {
 		if (toDo.length > 0) {
-			if (action != 0)
-				this.jsav.umsg("Resolution complete.");
-			else
+			//if (action != 0)
+				
+			//	this.jsav.umsg("Resolution complete.");
+			/*else
 				this.jsav.umsg("Welcome to the converter.");
-			this.jsav.umsg(toDo.length + " more resolutions needed.");
+			
+				this.jsav.umsg(toDo.length + " more resolutions needed.");*/
 			action = 0;
 			return;
 		}
 		action = 0;
 		// We're all done.
+		this.jsav.step();
 		this.jsav.umsg("The automaton is complete.");
-		$('#export').show();
+		this.fa.layout();
+
+		//$('#export').show();
 	}
 
 	//convertPane.detailLabel.setText(transitionNeeded + " more "+Universe.curProfile.getEmptyString()+"-transitions needed.");
-	switch (action) {
+	/*switch (action) {
 		case DEOR:
 			this.jsav.umsg("De-oring " + this.transition.weight());
 			break;
@@ -198,7 +221,7 @@ controllerProto.nextStep = function() {
 		case DESTAR:
 			this.jsav.umsg("De-staring " + this.transition.weight());
 			break;
-	}
+	}*/
 }
 
 controllerProto.exportToFA = function() {
@@ -212,8 +235,15 @@ controllerProto.exportToFA = function() {
  * Does everything.
  */
 controllerProto.completeAll = function() {
-	while (action != 0 || toDo.length > 0)
+	while (action != 0 || toDo.length > 0){
+		if(this.visualize){
+			this.jsav.step();
+			//var todo = toDo[0];
+			//this.jsav.umsg("Spliting the transition from node " + todo.startnode.value() + " to node " + todo.endnode.value() + " with weight " + todo.weight );
+		}
 		this.completeStep();
+	}
+	return this.fa;
 }
 
 /**
@@ -236,9 +266,9 @@ controllerProto.replaceTransition = function(transition, exps) {
 	var pStart = new Point(startPos.left, startPos.top);
 	var pEnd = new Point(endPos.left, endPos.top);
 
-	at.translate(pStart.x, pStart.y);
-	at.scale(pStart.getDistance(pEnd), pStart.getDistance(pEnd));
-	at.rotate(Math.atan2(pEnd.y - pStart.y, pEnd.x - pStart.x));
+	at = at.translate(pStart.x, pStart.y);
+	at = at.scale(pStart.getDistance(pEnd), pStart.getDistance(pEnd));
+	at = at.rotate(Math.atan2(pEnd.y - pStart.y, pEnd.x - pStart.x));
 
 	var ps = new Point(0.2, 0.0);
 	var pe = new Point(0.8, 0.0);	

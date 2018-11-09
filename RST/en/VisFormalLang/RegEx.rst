@@ -177,6 +177,12 @@ approach to proving such things!)
    then convert the NFA to a DFA, then minimize the DFA.
 
 
+.. inlineav:: REtoMinimizedDFACON ss
+   :links:   AV/VisFormalLang/RegularExpressions/REtoMinimizedDFACON.css
+   :scripts: AV/VisFormalLang/RegularExpressions/REtoMinimizedDFACON.js
+   :output: show
+  
+
 **Theorem:** Let :math:`L` be regular. Then :math:`\exists` R.E. such
 that :math:`L = L(r)`.
 
@@ -309,3 +315,9 @@ the right.
 
 We have now demonstrated that R.E. is equivalent (meaning, goes both
 directions) to DFA.
+
+
+.. inlineav:: NFAtoRECON ss
+   :links:   AV/VisFormalLang/RegularExpressions/NFAtoRECON.css
+   :scripts: AV/VisFormalLang/RegularExpressions/NFAtoRECON.js
+   :output: show
