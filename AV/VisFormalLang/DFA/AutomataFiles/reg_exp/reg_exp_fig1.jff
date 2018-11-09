@@ -3,6 +3,7 @@
 	<automaton>
 		<!--The list of states.-->
 		<state id="0" name="qi">
+			<x>108.0</x>
 			<y>97.0</y>
 			<initial/>
 		</state>
