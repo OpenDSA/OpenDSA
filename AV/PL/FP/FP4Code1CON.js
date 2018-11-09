@@ -101,7 +101,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 4
-    av.umsg("Each time we recur, we build up build up the accumulator, so we cons the head of the current list onto the accumulator.");
+    av.umsg("Each time we recur, we build up build up the accumulator by consing the head of the current list onto the accumulator.");
     pseudo.hide("call-ques");
     pseudo.show("call-ans");
     pseudo.unhighlight("else-ans1");

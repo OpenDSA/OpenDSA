@@ -42,14 +42,6 @@ This is illustrated in the slide show below.
    :output: show
 
 
-Then we would call this helper function with a *reverse* function that
-acted as a front-end, passing in the initial value for *a*. The extra
-parameter in the helper function is called an **accumulator**.
-
-::
-   
-    var reverse = function (ns) { return reverse_helper(ns, ??? ); }
-
 
 As another example of using an accumulator, consider how you would
 design a split function that takes in an integer :math:`n` and a list
