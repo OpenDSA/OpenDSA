@@ -265,8 +265,10 @@ tm.initFromXML = function(text) {
 // Configuration class
 var Configuration = function(state, tape) {
 	this.state = state;
+	console.log("My state: " + state);
+	console.log("My tape: " + tape);
 	// this.tape = new Tape(tape);
-	this.tape = new Tape(tape)
+	this.tape = new Tape(tape);
 	// toString returns the state value + the 'viewport' of the tape, to be displayed to the user
 	this.toString = function() {
 		return this.tape.toString();
@@ -307,12 +309,17 @@ tmTrans.getWeight = function() {
  */
 var Tape = function(str) {
 	"use strict";
-	this.arr;
+	this.arr = [];
 	this.current = 0;
 	this.currentIndex = 0;
+	console.log("I'm getting it" + str);
 
 	if (typeof str === 'string') {
 		this.arr = str.split("");
+		console.log(this.arr);
+		// for (var i = 0; i < this.arr.length; i++){
+		// 	console.log(i + this.arr.get[i]);
+		// }
 		this.current = this.arr[0];  // the current symbol
 		this.currentIndex = 0;                // the current position
 	}
@@ -345,14 +352,14 @@ var Tape = function(str) {
 	this.value = function(newValue){
 		// this.object.highlight(current);
 		if (typeof val === "undefined"){
-			return this.arr[this.current];
+			return this.arr[this.currentIndex];
 		}
-		this.arr[this.current] = newValue;
-		return this.arr[this.current];
+		this.arr[this.currentIndex] = newValue;
+		return this.arr[this.currentIndex];
 	}
 
 	this.goRight = function(){
-		if (this.currentIndex += 1 > str.length){
+		if (this.currentIndex += 1 > this.arr.length){
 			console.log("Too far right");
 		}
 		else{
