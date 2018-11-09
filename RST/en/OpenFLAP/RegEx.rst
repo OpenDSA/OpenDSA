@@ -312,6 +312,11 @@ that :math:`L = L(M)`.
    :scripts: AV/OpenFLAP/RegExf3.js
    :align: center
 
+.. inlineav:: RegExf3b dgm
+   :links: AV/OpenFLAP/RegExf3b.css
+   :scripts: AV/OpenFLAP/RegExf3b.js
+   :align: center
+
 You should convince yourself that, in this image, the right side is a
 proper re-creation of the left side.
 In other words, the R.E labeling the self-loop for the left state
