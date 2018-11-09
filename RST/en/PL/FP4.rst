@@ -26,18 +26,21 @@ reverse order?
     > reverse( [ ] )
     [ ]
 
-With an accumulator we could use a recursive helper function that
-takes in the input list *ns*and the list *a* being built and returns ...
 
-::
 
-    var reverse_helper = function (ns, a) {
-                            if (fp.isNull(ns)) {
-                                 return ???  
-                            } else {
-                                 ??????????
-                            }
-    }
+The essence of using the *accumulator pattern* is to add an extra
+argument, called an *accumulator* to a helper function for the
+function we are trying to develop.  For *reverse* we could use a recursive helper
+function that takes in the input list *ns*and the list *acc* that is being built.
+This is illustrated in the slide show below.
+
+
+.. inlineav:: FP4Code1CON ss
+   :long_name: Illustrate Use of Accumulator in Developing Reverse Function
+   :links: AV/PL/FP/FP4CON.css
+   :scripts: AV/PL/FP/FP4Code1CON.js
+   :output: show
+
 
 Then we would call this helper function with a *reverse* function that
 acted as a front-end, passing in the initial value for *a*. The extra
