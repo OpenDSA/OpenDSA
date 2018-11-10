@@ -290,4 +290,4 @@ function layoutTable (mat, index) {
       this.jsav.umsg("For each production, we need to draw the appropriate transition.")
       this.convertGrammarHandler(i);
     }
-  }
+  };
