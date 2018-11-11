@@ -58,19 +58,15 @@ contains all of the elements of :math:`ns` that are smaller than
     [ [ ] [ ] ]
 
 We call the first argument of split the *pivot* because of a famous
-algorithm that uses split (see the second review problem).
-
-::
-
-    var split_helper = function (pivot,ns,smalls,bigs) {
-
-                ??????
-    }
+algorithm that uses split (see the second review problem below).
 
 
-    var split = function (pivot,ns) {
-        return split_helper(pivot, ns, [ ], [ ]);
-    }
+.. inlineav:: FP4Code2CON ss
+   :long_name: Illustrate Use of Accumulator in Developing Split Function
+   :links: AV/PL/FP/FP4CON.css
+   :scripts: AV/PL/FP/FP4Code2CON.js
+   :output: show
+
 
 The first review problem will test your understanding of *split* and
 another function called *join*, which is also developed using an
