@@ -392,32 +392,69 @@ $(document).ready(function () {
         }
       }
     };
+    if(hasLambda(productions)){
     derivers = Object.keys(derivers);
     // parse
     counter = 0;
-    var queue = [];
-    queue.push(productions[0][0]);
-    while(queue.length !== 0){
+    var queue = new Set();
+    queue.add(productions[0][0]);
+    var asd = queue.values();
+    while(asd.length !== 0){
       if(counter > 5000){
         break;
       }
-      var next = queue.shift();
+      var next = queue.values().next().value;
+      queue.delete(next);
       if(removeLambda(next) === inputString){
         return [true, next, table];
       }
       for(var i = 0; i < replaceLHS(productions, next).length; i++){
-        queue.push(replaceLHS(productions, next)[i]);
+        queue.add(replaceLHS(productions, next)[i]);
         table[replaceLHS(productions, next)[i]] = next;
       }
       counter++;
+      asd = queue.values();
     }
     return [false, next, table];
+  }
+  else{
+    derivers = Object.keys(derivers);
+    // parse
+    counter = 0;
+    var queue = new Set();
+    queue.add(productions[0][0]);
+    var asd = queue.values();
+    while(asd.length !== 0){
+      var next = queue.values().next().value;
+      queue.delete(next);
+      if(next.length > inputString.length)
+      {
+        counter--;
+        continue;
+      }
+      
+      if(removeLambda(next) === inputString){
+        return [true, next, table];
+      }
+      for(var i = 0; i < replaceLHS(productions, next).length; i++){
+        var newValue = replaceLHS(productions, next)[i];
+        if(newValue.length <= inputString.length)
+          {
+            queue.add(newValue);
+            table[replaceLHS(productions, next)[i]] = next;
+          }
+      }
+      counter++;
+      asd = queue.values();
+    }
+    return [false, next, table];
+  }
   }
 
   //returns all the possibilities to replace LHS in a sentential
   function replaceLHS(productions, sentential){
     result = [];
-    for (var i = 0; i < productions.length; i++) {
+    for (var i = productions.length - 1; i>=0; i--) {
 			for (var j = 0; j < sentential.length; j++) {
 				for (var k = 1; k < sentential.length + 1 - j; k++) {
 					var subString = sentential.substring(j, j + k);
@@ -525,3 +562,9 @@ $(document).ready(function () {
   };
 
 });
+var hasLambda = function(productions){
+  for (var i = 0; i < productions.length; i++) 
+    if (productions[i][2] === emptystring)
+      return true;
+  return false; 
+}
