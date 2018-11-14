@@ -1850,7 +1850,7 @@ $(document).ready(function () {
     modelDFA.layout();
     var unitProductions = _.filter(productions, function(x) {
       // return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
-      return x[2].length === 1 && variables.indexOf(x[2]) === -1;
+      return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
     });
     selectedNode = null;
     // handler for the VDG for adding transitions
