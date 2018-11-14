@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
    :requires: Deterministic Finite Automata
    :satisfies: Context-Free Languages
    :topic: Finite Automata
@@ -142,6 +142,10 @@ productions were applied.
    replaced! We could however get a leftmost or rightmost derivation 
    easily from looking at the tree. 
 
+.. inlineav:: ParseTree1CON ss
+   :links:   AV/VisFormalLang/CFG/ParseTree1CON.css
+   :scripts: AV/VisFormalLang/CFG/ParseTree1CON.js
+   :output: show
 
 **Definitions:** Partial derivation tree - subtree of derivation tree.
 
@@ -428,6 +432,11 @@ Ambiguity
    Then the only way to include a ":math:`+`"
    before the multiplication is if the addition is enclosed in 
    parenthesis. Thus, there is only one meaning that is accepted. 
+
+.. inlineav:: ParseTreeForExpCON ss
+   :links:   AV/VisFormalLang/CFG/ParseTreeForExpCON.css
+   :scripts: AV/VisFormalLang/CFG/ParseTreeForExpCON.js
+   :output: show
 
 **Definition:** If :math:`L` is CFL and :math:`G` is an unambiguous
 CFG such that :math:`L = L(G)`, then :math:`L` is unambiguous.
