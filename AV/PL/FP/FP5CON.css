@@ -17,7 +17,7 @@
 }
 
 #FP5Code1CON .jsavoutput.jsavline {
-  height: 80px;
+  height: 100px;
 }
 
 /* Makes all cells wider */
@@ -33,6 +33,10 @@
     max-width : 150px !important;
 }
 
+#FP5Code1CON  .jsavindex.jsavnode.inaccessible {
+    background-color: Gray;
+}
+
 #FP5Code1CON .jsavcodeline.scope1 {
     background-color: LightGreen;
 }
@@ -45,3 +49,4 @@
     color: #458a4f;
     background-color: #7cc5ef
 }*/
+
