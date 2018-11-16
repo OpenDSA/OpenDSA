@@ -42,16 +42,42 @@ an interpreter like **node**.
    :scripts: AV/PL/FP/FP5Code1CON.js
    :output: show
 
+In most other languages, it is better to give each variable the
+smallest scope possible, by declaring the variable as close as
+possible to its uses. Not so in JavaScript, because **JavaScript does
+not have block scope** and variable declarations are always *hoisted*
+to the top of the function.  Consider how this plays out in the
+following example, remembering to take into account what was said
+earlier about scope in JavaScript being defined by the body of a
+function and not by an inner set of curly braces.
 
-.. 
-.. 
-..     var x = "outside";                              // what is the scope of this x?
-..     var f1 = function() { var x = "inside f1"; };   // what is the scope of this x?
-..     f1();    
-..     // what is the value of x right here?
-..     var f2 = function() { x = "inside f2"; };       // what is the scope of this x?
-..                                                     // is this a trick question?
-..     f2();    
-..     // what is the value of x right here?
+.. inlineav:: FP5Code2CON ss
+   :long_name: Illustrate Variable Hoisting
+   :links: AV/PL/FP/FP5CON.css
+   :scripts: AV/PL/FP/FP5Code2CON.js
+   :output: show
+
+
+
+
+..     var x = 10;
+..     var f = function(y) { 
+..                console.log(y);
+..                if (true) {
+..                     var x = 20;   
+..                }
+..                console.log(x);
+..     }
+..     f(x);    
+
+
+The prior example illustrates something allowed but considered a bad
+practice in JavaScript.  Inside the body of a function, you should
+never declare a variable inside any nested block. You should always
+declare your variables in the outermost block (that is, the block
+defining the body of the function). Furthermore, always declare your
+variables at the beginning of that body.
+
+
 
 
