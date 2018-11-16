@@ -79,9 +79,10 @@ defining the body of the function). Furthermore, always declare your
 variables at the beginning of that body.
 
 
-When an expression refers to a variable *x* but there is no declaration of
-*x* in the smallest scope containing the expression, how is the use of *x*
-bound to a declaration?  The following code illustrates this situation.
+When an expression refers to a variable for which there is no
+declaration in the smallest scope containing the expression, how is
+the use of that variable bound to a declaration?  The following code illustrates
+this situation.
 
 .. inlineav:: FP5Code3CON ss
    :long_name: Illustrate Nested Scopes
@@ -98,6 +99,26 @@ bound to a declaration?  The following code illustrates this situation.
 ..     }
 
 
+Here is another example illustrating the nuances of using variables of
+the same name at different levels of scope.  Consider what happens
+when this code is loaded into a read-eval-print interpreter.
 
+.. inlineav:: FP5Code4CON ss
+   :long_name: Illustrate Static vs Dynamic Binding
+   :links: AV/PL/FP/FP5CON.css
+   :scripts: AV/PL/FP/FP5Code4CON.js
+   :output: show
+
+
+
+..     var x = 1;
+..     var f = function () {  return x; }   // the variable x is bound to which declaration of x?
+..     x = 2;
+..     var g = function () {
+..                 var x = 20;              // which type of binding does JS use?
+..                 return f();
+..     }
+..     x = 3;
+..     g();       // what is the value returned here with dynamic binding? with static binding?  
 
 
