@@ -79,5 +79,25 @@ defining the body of the function). Furthermore, always declare your
 variables at the beginning of that body.
 
 
+When an expression refers to a variable *x* but there is no declaration of
+*x* in the smallest scope containing the expression, how is the use of *x*
+bound to a declaration?  The following code illustrates this situation.
+
+.. inlineav:: FP5Code3CON ss
+   :long_name: Illustrate Nested Scopes
+   :links: AV/PL/FP/FP5CON.css
+   :scripts: AV/PL/FP/FP5Code3CON.js
+   :output: show
+
+
+..     var f = function (x,y) {
+..         var g = function (x) {     // what is the scope of g?
+..                   return x + y;    // line A
+..         }
+..         return g(10*x);            // line B
+..     }
+
+
+
 
 
