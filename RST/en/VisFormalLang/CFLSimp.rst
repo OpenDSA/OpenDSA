@@ -252,7 +252,14 @@ Resulting Grammar :math:`G'` is such that :math:`L(G) = L(G')` and
       G': \ \ \ \ & S \rightarrow aB \\ 
       & B \rightarrow Sa \mid b \\ 
       \end{array}
-      
+
+
+.. inlineav:: RemoveUselessCON ss
+   :links:   AV/VisFormalLang/CFG/RemoveUselessCON.css
+   :scripts: AV/VisFormalLang/CFG/RemoveUselessCON.js
+   :output: show
+
+
 Q: How would you implement II?
 How do you know which nodes are accessible from S?
 Use DFS or BFS. 
@@ -302,6 +309,11 @@ Then :math:`\exists` a CFG :math:`G'` having no
       \end{array}
       
    NOTE: Don't add :math:`A \rightarrow \lambda`! 
+
+.. inlineav:: RemoveLambdaCON ss
+   :links:   AV/VisFormalLang/CFG/RemoveLambdaCON.css
+   :scripts: AV/VisFormalLang/CFG/RemoveLambdaCON.js
+   :output: show
 
 **Definition:** :term:`Unit Production <unit production>`
 
