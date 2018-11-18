@@ -109,6 +109,22 @@ when this code is loaded into a read-eval-print interpreter.
    :scripts: AV/PL/FP/FP5Code4CON.js
    :output: show
 
+The slide-show above indicates that JavaScript (and most other
+functional languages) use **static binding**.  That is, the use of *x*
+in expression :math:`e` is bound to the declaration of *x* that
+appears in the smallest scope that contains :math:`e` at the time the
+function was defined.
+
+Static binding is also called **static scoping** or **lexical
+scoping**.
+	    
+There is a different type of binding called **dynamic binding**, in
+which the declaration that binds a use of *x* in expression :math:`e`
+is first looked for in the function (say, *f*) that contains
+:math:`e`, then, if needed, in the function (say, *g*) that called
+*f*, then in the function that called *g*, etc.  Note that, if
+JavaScript used dynamic binding, the the value returned in the
+previous example would have been 20 instead of 3.
 
 
 ..     var x = 1;
