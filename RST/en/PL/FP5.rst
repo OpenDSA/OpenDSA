@@ -109,7 +109,7 @@ when this code is loaded into a read-eval-print interpreter.
    :scripts: AV/PL/FP/FP5Code4CON.js
    :output: show
 
-The slide-show above indicates that JavaScript (and most other
+The example above indicates that JavaScript (and most other
 functional languages) use **static binding**.  That is, the use of *x*
 in expression :math:`e` is bound to the declaration of *x* that
 appears in the smallest scope that contains :math:`e` at the time the
@@ -127,6 +127,7 @@ JavaScript used dynamic binding, the the value returned in the
 previous example would have been 20 instead of 3.
 
 
+
 ..     var x = 1;
 ..     var f = function () {  return x; }   // the variable x is bound to which declaration of x?
 ..     x = 2;
@@ -137,4 +138,71 @@ previous example would have been 20 instead of 3.
 ..     x = 3;
 ..     g();       // what is the value returned here with dynamic binding? with static binding?  
 
+
+We saw that a function can be declared inside another function.
+Furthermore, recall that, in functional languages (and in the subset
+of JavaScript we are considering), functions are *first-class
+values*. This implies that a function, like any other value, can be
+the return value of a function call. Hence a function can return the
+value of any one of its local variables.  It makes no difference
+whether that returned variable is bound to an integer, a boolean, or a
+function.  A function that returns another function (or that takes in
+a function as an argument) is called a **higher-order function**, as
+illustrated in the following example.
+
+::
+
+    var f = function () {
+        var add1 = function (x)  { return x + 1; }
+        return add1;
+    }
+    var g = f();   // g is now the function that takes in one argument and adds 1 to it
+    g(5);          // returns 6
+    f()(5);        // same thing
+
+Here, f is a higher-order function,
+
+What happens when a function f returns a local function that refers
+to a parameter or a local variable of f as in the following example?
+
+::
+
+    var f = function () {
+        var y = 1;
+        var addY = function (x)  { return x + y; }
+        return addY;
+    }
+    var g = f(); // after f returns, the variable y 
+                 // in f is gone from the stack
+    g(5);        // but g can still access it!
+    f()(5);      // still returns 6
+
+When a local function refers to a variable defined in an enclosing
+function, the local function is implemented as a **closure**, that is,
+the local function contains not only its own code, but also the
+variables its code refers to that were defined in the environment at the
+time the local function was created.
+
+So far, we have seen three **distinct and independent** concepts that
+are central to functional programming:
+
+-  Functions as first-class values and higher-order functions,
+
+-  Closures, and
+
+-  Static binding.
+
+Since JavaScript implements all of these, it is quite natural and
+powerful to use the functional programming paradigm in JavaScript.
+One powerful aspect of is that it allows us to easily build new
+functions at run-time as in the following example.  Consider the
+following example.
+
+
+
+.. inlineav:: FP5Code5CON ss
+   :long_name: Illustrate Closures
+   :links: AV/PL/FP/FP5CON.css
+   :scripts: AV/PL/FP/FP5Code5CON.js
+   :output: show
 

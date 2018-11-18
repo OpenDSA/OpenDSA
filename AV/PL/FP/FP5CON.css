@@ -192,3 +192,47 @@
 #FP5Code4CON .jsavcodeline.scope2 {
     background-color: LightBlue;
 }
+
+
+/* -----------  Code 5---------------------------------- */
+
+#FP5Code5CON {
+  height: 430px;
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP5Code5CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP5Code5CON .jsavcode {
+  margin-left: 40px;
+  width: 600px;
+}
+
+#FP5Code5CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP5Code5CON .jsavoutput.jsavline {
+  height: 80px;
+}
+
+
+/* Makes just one cell wider */
+#FP5Code5CON  .jsavindex.jsavnode.wider {
+    min-width : 200px !important;
+    max-width : 200px !important;
+}
+
+#FP5Code5CON  .jsavindex.jsavnode.inaccessible {
+    background-color: Gray;
+}
+
+#FP5Code5CON .jsavcodeline.scope1 {
+    background-color: LightGreen;
+}
+
+#FP5Code5CON .jsavcodeline.scope2 {
+    background-color: LightBlue;
+}

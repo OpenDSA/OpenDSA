@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
     "use strict";
-    var av_name = "FP5Code4CON";
+    var av_name = "FP5Code5CON";
     var av = new JSAV(av_name);
     var leftMargin = 10;
     var offset_for_each_var = 50;
@@ -34,7 +34,7 @@ $(document).ready(function() {
         ],
         {
             lineNumbers: true,
-            left: 200,
+            left: 250,
             top: 0
         }
     );
@@ -108,7 +108,7 @@ $(document).ready(function() {
     av.step();
     
     // Slide 10
-    av.umsg("We begin the execution of f.  f was called from g, where there was a local x.   So when we are actually executing f, which x is used -- x in the scope from which f was called or x in scope at the time of f's definition?  During f's execution, x in the local scope of g is inaccessible.  Hence the value returned is that currently associated with the global x, namely, 3.");
+    av.umsg("We begin the execution of f.  f was called from g, where there was a local x.   So when we are actually executing f, which x is used -- x in the scope from which f was called or x that was in scope at the time of f's definition?  During f's execution, x in the local scope of g is inaccessible.  Hence The value returned is that currently associated with the global x, namely, 3.");
     pseudo.unhighlight(8);
     pseudo.highlight(3);
     x.removeClass(0,"inaccessible");
