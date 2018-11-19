@@ -195,8 +195,7 @@ are central to functional programming:
 Since JavaScript implements all of these, it is quite natural and
 powerful to use the functional programming paradigm in JavaScript.
 One powerful aspect of is that it allows us to easily build new
-functions at run-time as in the following example.  Consider the
-following example.
+functions at run-time as in the following example.  
 
 
 
@@ -206,3 +205,48 @@ following example.
    :scripts: AV/PL/FP/FP5Code5CON.js
    :output: show
 
+Once you become comfortable with the notion of functions as
+first-class values, you will fund the use of **anonymous functions** as
+illustrated in the final slide in the above example is a technique
+that often enhances the readability of your code.  Why use a "temporary
+variable" such as *incr* to store something that could just as well be
+returned directly?
+
+This first problem is about higher-order functions and uses closures
+and anonymous functions. This problem is randomized. You must solve it
+correctly three times in a row.
+
+.. avembed:: Exercises/PL/HigherOrderFuncs1.html ka
+   :long_name: Higher Order Function 1
+
+Scope, Closures, Higher-order Functions (2)
+-------------------------------------------
+
+
+This problem is about higher-order functions and scoping rules. It uses
+closures and anonymous functions.
+
+.. avembed:: Exercises/PL/HigherOrderFuncs2.html ka
+   :long_name: Higher Order Functions 2
+
+
+Scope, Closures, Higher-order Functions (3)
+-------------------------------------------
+
+This problem uses the same code as the previous problem and illustrates
+the same topics.
+
+.. avembed:: Exercises/PL/HigherOrderFuncs3.html ka
+   :long_name: Higher Order Functions 3
+
+Static vs. Dynamic Binding
+--------------------------
+
+This problem uses the same code as the previous two problems but
+focuses on the difference between static and dynamic binding rules.
+
+.. avembed:: Exercises/PL/StaticDynamic.html ka
+   :long_name: Static vs. Dynamic Binding
+
+
+	       

@@ -221,18 +221,18 @@
 
 /* Makes just one cell wider */
 #FP5Code5CON  .jsavindex.jsavnode.wider {
-    min-width : 200px !important;
-    max-width : 200px !important;
+    min-width : 280px !important;
+    max-width : 280px !important;
 }
 
 #FP5Code5CON  .jsavindex.jsavnode.inaccessible {
     background-color: Gray;
 }
 
-#FP5Code5CON .jsavcodeline.scope1 {
-    background-color: LightGreen;
+#FP5Code5CON .jsavcodeline.twolines {
+    background-color: LightCoral;
 }
 
-#FP5Code5CON .jsavcodeline.scope2 {
+#FP5Code5CON .jsavcodeline.oneline {
     background-color: LightBlue;
 }
