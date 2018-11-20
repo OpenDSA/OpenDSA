@@ -75,9 +75,34 @@ $(document).ready(function() {
         }
     );
     
+    var code3 = [
+	"var doubleIt = function (x) { return fp.add(x,x); };",
+	"var map = function (f,ns) {",
+	"  if (fp.isNull(ns))",
+	"      return [ ];",
+	"  else",
+	"      return fp.cons(",
+	"                 f(fp.hd(ns)), ",
+	"                 map(f, fp.tl(ns)));",
+	"}",
+	"map( doubleIt, [1,2,3,4,5] );",
+	"map( function (x) { return x+1; }, [1,2,3,4,5] );"
+	];
+
+    var pseudo3 = av.code(
+	code3,
+        {
+ 	    left: 300,
+	    top: 250,
+	    lineNumbers: false
+        }
+    );
+    
+
 
     // Slide 1
     av.umsg("Here we have two local scopes -- one associated with function f1 in lines 2-5 and one associated with function f2 in lines 7-10.");
+//    pseudo3.addClass("test");
     av.displayInit();
 
     

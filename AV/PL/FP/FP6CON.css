@@ -38,6 +38,11 @@
     background-color: Gray;
 }
 
+/* Why didn't this work? */
+/*#FP6Code1CON .jsavcode.test{
+    width: 395px;
+}*/
+
 #FP6Code1CON .jsavcodeline.green {
     background-color: LightGreen;
 }
