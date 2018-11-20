@@ -1,9 +1,22 @@
+document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../AV/Development/formal_language/css/FA.css\" />");
+document.write('<script src="../../../JSAV/lib/dagre.min.js"></script>');
+
+
 $(document).ready(function() {
     "use strict";
     var av_name = "RemoveUselessCON";
     var av = new JSAV(av_name);
     var arrow = String.fromCharCode(8594);
-    var grammar = "[[\"S\",\"→\",\"aB\"],[\"B\",\"→\",\"Sa\"],[\"B\",\"→\",\"a\"],[\"C\",\"→\",\"cBc\"],[\"C\",\"→\",\"a\"]]";
+    var grammar = "[[\"S\",\"→\",\"aB\"],\
+                    [\"S\",\"→\",\"bA\"],\
+                    [\"A\",\"→\",\"aA\"],\
+                    [\"B\",\"→\",\"Sa\"],\
+                    [\"B\",\"→\",\"b\"],\
+                    [\"C\",\"→\",\"cBc\"],\
+                    [\"C\",\"→\",\"a\"],\
+                    [\"D\",\"→\",\"bCb\"],\
+                    [\"E\",\"→\",\"Aa\"],\
+                    [\"E\",\"→\",\"b\"]]";
     var grammerArray = JSON.parse(grammar);
     var lastRow = grammerArray.length;
     grammerArray.push(["", arrow, ""]);
