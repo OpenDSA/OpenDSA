@@ -18,7 +18,11 @@ $(document).ready(function() {
 
     var arrValues = [3, 2, 5, 8];
     var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: 20});
-
+    var arr_label = av.label("ns", {left: leftMargin, top: 0});
+    var arr_ret = av.ds.array([4,3,6,9], {indexed: false, left: leftMargin, top: 90});
+    var arr_ret_label = av.label("addBonusPoint:", {left: leftMargin, top: 70});
+    var arr_ret1 = av.ds.array([6,4,10,16], {indexed: false, left: leftMargin, top: 160});
+    var arr_ret_label1 = av.label("doubleAll:", {left: leftMargin, top: 140});
     var code1 =         [
 	    "var add1 = function (x) { ",
 	    "                 return fp.add(x,1); };",
@@ -30,7 +34,7 @@ $(document).ready(function() {
 	    "               add1(fp.hd(ns)),",
 	    "               addBonusPoint(fp.tl(ns)));",
 	    "}",
-	    "addBonusPoint( [1,2,3,4,5] );"
+	    "addBonusPoint( [3, 2, 5, 8] );"
         ];
 
     
@@ -60,7 +64,7 @@ $(document).ready(function() {
 	    "               doubleIt(fp.hd(ns)), ",
 	    "               doubleAll(fp.tl(ns)));",
 	    "}",
-	    "doubleAll( [1,2,3,4,5] );"
+	    "doubleAll( [3, 2, 5, 8] );"
         ];
 
     var pseudo2 = av.code(
@@ -92,19 +96,51 @@ $(document).ready(function() {
     var pseudo3 = av.code(
 	code3,
         {
- 	    left: 300,
+ 	    left: 250,
 	    top: 250,
 	    lineNumbers: false
         }
     );
-    
+    pseudo3.addClass([0,1,2,3,4,5,6,7,8,9,10,11], "mapfuncwidth");
+    pseudo3.hide();
 
 
     // Slide 1
-    av.umsg("Here we have two local scopes -- one associated with function f1 in lines 2-5 and one associated with function f2 in lines 7-10.");
-//    pseudo3.addClass("test");
+    av.umsg("Both addBonusPoint and doubleAll use very similar patterns of computation. Given a list ns, they return a new list by applying a function -- add1 for addBonusPoint and doubleIt for doubleAll -- to every element of the given list.  This is done by calling the function with the head of the list and then using recursion to process the remainder of the list.");
+    pseudo1.addClass([8,9], "red");
+    pseudo2.addClass([8,9], "red");
+    pseudo1.hide(11);
+    pseudo2.hide(11);
+    arr_ret_label.hide();
+    arr_ret.hide();
+    arr_ret_label1.hide();
+    arr_ret1.hide();
     av.displayInit();
 
+    // Slide 2
+    av.umsg("The call, highlighted in blue, to addBonusPoint in the code on the left will return the list also highlighted in blue.   The call, highlighted in green, to doubleAll in the code on the right will return the list also highlighted in blue.");
+    arr_ret_label.show();
+    arr_ret.show();
+    arr_ret.addClass([0,1,2,3], "addBonusPoint");
+    arr_ret_label1.show();
+    arr_ret1.show();
+    arr_ret1.addClass([0,1,2,3], "doubleAll");
+    pseudo1.show(11);
+    pseudo1.addClass(11,"blue");
+    pseudo2.show(11);
+    pseudo2.addClass(11,"green");
+    av.step();
+    
+//     // Slide 3
+//     av.umsg("The call, highlighted in green, to doubleAll in the code on the right will return the indicated list.");
+//     arr_ret.value(0,6);
+//     arr_ret.value(1,4);
+//     arr_ret.value(2,10);
+//     arr_ret.value(3,16);
+//     pseudo1.removeClass(11,"blue");
+//     pseudo2.show(11);
+//     pseudo2.addClass(11,"green");
+//     av.step();
     
     av.recorded();
 });

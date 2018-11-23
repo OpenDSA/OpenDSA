@@ -34,14 +34,17 @@
     max-width : 150px !important;
 }
 
-#FP6Code1CON  .jsavindex.jsavnode.inaccessible {
-    background-color: Gray;
+#FP6Code1CON  .jsavindex.jsavnode.addBonusPoint {
+    background-color: LightBlue;
 }
 
-/* Why didn't this work? */
-/*#FP6Code1CON .jsavcode.test{
-    width: 395px;
-}*/
+#FP6Code1CON  .jsavindex.jsavnode.doubleAll {
+    background-color: LightGreen;
+}
+
+#FP6Code1CON .jsavcodeline.mapfuncwidth{
+    width: 450px;
+}
 
 #FP6Code1CON .jsavcodeline.green {
     background-color: LightGreen;
