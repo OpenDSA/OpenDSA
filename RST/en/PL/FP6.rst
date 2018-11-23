@@ -95,23 +95,15 @@ argument and then applies *f* to that result. In other words:
 
 .. math::
 
-   h(x) = (f \circ g)(x) = f( g(x) )  
+   compose(f,g)(x) = (f \circ g)(x) = f( g(x) )  
 
-::
+.. inlineav:: FP6Code2CON ss
+   :long_name: Illustrate Function Composition
+   :links: AV/PL/FP/FP6CON.css
+   :scripts: AV/PL/FP/FP6Code2CON.js
+   :output: show
 
-    var compose = function (f,g) {
 
-           return ?????
-    }
-
-Once you've completed the *compose* function, use it to compose the
-*doubleIt* function with the *add1* function and apply the resulting
-function *h* to the value 2.
-
-::
-
-   > var h = ???
-   > h(2)  // returns ???
 
 This next problem is about function composition.
 
