@@ -1,5 +1,5 @@
 #FP6Code1CON {
-    height: 760px;
+    height: 700px;
     width: 960px
 }
 
@@ -15,6 +15,10 @@
 
 #FP6Code1CON .jsavlabel{
   margin-bottom: 0;
+}
+
+#FP6Code1CON .jsavlabel.emphasize{
+  font-weight: bold;
 }
 
 #FP6Code1CON .jsavoutput.jsavline {
@@ -43,7 +47,7 @@
 }
 
 #FP6Code1CON .jsavcodeline.mapfuncwidth{
-    width: 450px;
+    width: 455px;
 }
 
 #FP6Code1CON .jsavcodeline.green {
