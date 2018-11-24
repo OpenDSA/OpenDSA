@@ -110,3 +110,106 @@ This next problem is about function composition.
 .. avembed:: Exercises/PL/Compose.html ka
    :long_name: Function Composition
 
+
+
+Currying
+--------
+
+In the *map* function we developed earlier::
+
+      var map = function (f,ns) {
+      if (fp.isNull(ns))
+          return [ ];
+      else
+          return fp.cons(
+                     f(fp.hd(ns)), 
+                     map(f, fp.tl(ns)));
+    }
+
+we cannot separate the computations we want to do on list elements,
+for example, "doubling all of the elements of a list" or "incrementing
+all of the elements of a list" from their argument list because the
+map function needs both of its arguments simultaneously.
+
+Instead, we would like to write a function, *map1* below, that takes
+in only a function, for example *doubleIt*, and returns another
+function, in our example, the function *doubleAll* that can be applied
+in general to all lists of numbers.  *map1* is a function-creating
+function whereas *map* is not.
+
+::
+
+    var map1 = function (f) {
+      return function (ns) {
+         if (fp.isNull(ns))
+           return [ ];
+         else
+           return fp.cons(f(fp.hd(ns)), map1(f)(fp.tl(ns))); 
+        };
+    }
+    var doubleAll = map1(doubleIt);
+    doubleAll( [1,2,3,4,5] );
+
+*Currying* is the process of transforming a function that takes two or
+more arguments (such as *map*) into a function (such as *map1*) that
+takes the first argument and returns another function that takes in
+the second argument and returns another function that has the first
+argument "wired into it" because of the closure that is created by the
+definition of the outer function.   This process is named after renowned logician
+`Haskell Curry`_.
+
+.. _Haskell Curry:  https://en.wikipedia.org/wiki/Haskell_Curry
+
+So our *map1* function is a curried version of our *map* function.
+
+We will abstract this currying pattern by writing a function called
+*curry* that curries *any* two-argument function:
+
+::
+
+    var curry = function (f) {
+       return function (x) {
+          return function (y) { 
+             return f(x,y); 
+          };
+       };
+    }
+
+Now we no longer need to write *map1* but instead can have *curry*
+create it for us.
+
+::
+
+    var map1 = curry(map);
+
+As another example of using *curry*, consider the following *fillIn* function:
+    
+	       
+.. inlineav:: FP6Code3CON ss
+   :long_name: Illustrate Currying
+   :links: AV/PL/FP/FP6CON.css
+   :scripts: AV/PL/FP/FP6Code3CON.js
+   :output: show
+
+Although the above example may seem a bit contrived, the importance of
+currying cannot be overstated.  It allows us to convert any function of two
+arguments into a function of one argument that returns a function of
+one argument.   We will return to the importance of doing this in Chapter 3 when
+we discuss the lambda calculus.
+
+The next problem is about both currying and function composition.
+
+.. avembed:: Exercises/PL/Curry1.html ka
+   :long_name: Curry and compose 1
+
+
+More currying
+-------------
+
+The final problem in this module on procedural abstraction will give
+you intensive practice with the ``curry`` and ``compose``
+functions. This problem is randomized and must be solved three times
+in a row.
+
+.. avembed:: Exercises/PL/Curry2.html ka
+   :long_name: Curry and compose 2

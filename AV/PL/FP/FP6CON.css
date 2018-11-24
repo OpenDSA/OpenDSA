@@ -123,3 +123,58 @@
 }
 
 
+/* -------------------  Code 3 ------------------*/
+
+#FP6Code3CON {
+    height: 400px;
+    width: 800px
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP6Code3CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP6Code3CON .jsavcode {
+  margin-left: 285px;
+  width: 500px;
+}
+
+#FP6Code3CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP6Code3CON .jsavlabel.emphasize{
+  font-weight: bold;
+}
+
+#FP6Code3CON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+/* Makes all cells wider */
+/*#FP6Code3CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#FP6Code3CON  .jsavindex.jsavnode.wider {
+    min-width : 260px !important;
+    max-width : 260px !important;
+}
+
+#FP6Code3CON .jsavcodeline.green {
+    background-color: LightGreen;
+}
+
+#FP6Code3CON .jsavcodeline.blue {
+    background-color: LightBlue;
+}
+
+#FP6Code3CON .jsavcodeline.red {
+    background-color: LightCoral;
+}
+
+

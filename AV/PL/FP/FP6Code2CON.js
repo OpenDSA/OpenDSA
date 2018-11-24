@@ -79,14 +79,14 @@ $(document).ready(function() {
     av.step();
 
     // Slide 5
-    av.umsg('By the definition of h, we first apply the "add 1" function to 4.');
+    av.umsg('By the definition of h, we first apply the "add 1 to x" function to 4.');
     h4.show();
     h4.addClass(0, "wider");
     h4_label.show();
     av.step();
     
     // Slide 5
-    av.umsg('By the definition of h, the "square" function is applied next.');
+    av.umsg('By the definition of h, the "square x" function is applied next.');
     h4.value(0,"5 is squared, yielding 25");
     av.step();
     
