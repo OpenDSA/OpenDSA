@@ -252,7 +252,14 @@ Resulting Grammar :math:`G'` is such that :math:`L(G) = L(G')` and
       G': \ \ \ \ & S \rightarrow aB \\ 
       & B \rightarrow Sa \mid b \\ 
       \end{array}
-      
+
+
+.. inlineav:: RemoveUselessCON ss
+   :links:   AV/VisFormalLang/CFG/RemoveUselessCON.css
+   :scripts: AV/VisFormalLang/CFG/RemoveUselessCON.js
+   :output: show
+
+
 Q: How would you implement II?
 How do you know which nodes are accessible from S?
 Use DFS or BFS. 
@@ -302,6 +309,11 @@ Then :math:`\exists` a CFG :math:`G'` having no
       \end{array}
       
    NOTE: Don't add :math:`A \rightarrow \lambda`! 
+
+.. inlineav:: RemoveLambdaCON ss
+   :links:   AV/VisFormalLang/CFG/RemoveLambdaCON.css
+   :scripts: AV/VisFormalLang/CFG/RemoveLambdaCON.js
+   :output: show
 
 **Definition:** :term:`Unit Production <unit production>`
 
@@ -396,6 +408,13 @@ have any unit-productions and :math:`L(G) = L(G')`.
       & D \rightarrow c \mid Bb \mid Da\\ 
       \end{array} 
 
+
+.. inlineav:: RemoveUnitCON ss
+   :links:   AV/VisFormalLang/CFG/RemoveUnitCON.css
+   :scripts: AV/VisFormalLang/CFG/RemoveUnitCON.js
+   :output: show
+
+
 **Theorem:** Let :math:`L` be a CFL that does not contain :math:`\lambda`.
 Then :math:`\exists` a CFG for :math:`L` that does not have any
 useless productions, :math:`\lambda`-productions, or unit-productions.
@@ -472,6 +491,13 @@ Because it is easier to work with in proofs.
 
    NOTE: Can get rid of :math:`\lambda`-productions and unit
    productions first!
+
+
+.. inlineav:: ChomskyCON ss
+   :links:   AV/VisFormalLang/CFG/ChomskyCON.css
+   :scripts: AV/VisFormalLang/CFG/ChomskyCON.js
+   :output: show
+
 
 **Definition:** A CFG is in Greibach normal form (GNF) if 
 all productions have the form 

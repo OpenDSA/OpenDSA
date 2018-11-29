@@ -78,6 +78,8 @@ $(document).ready(function() {
     pseudo.highlight(3);
     fx.addClass(0, "inaccessible");
     gx.value(0,20);
+    fy.highlight(0);
+    gx.highlight(0);
     av.step();
 
     av.recorded();

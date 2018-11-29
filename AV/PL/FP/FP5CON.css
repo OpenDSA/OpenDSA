@@ -51,7 +51,7 @@
 }*/
 
 
-/* ----------------------------------------------------------- */
+/* ------------------- Code 2---------------------------------------- */
 
 #FP5Code2CON {
   height: 390px;
@@ -106,7 +106,7 @@
 }*/
 
 
-/* --------------------------------------------- */
+/* --------------  Code 3------------------------------- */
 
 #FP5Code3CON {
   height: 430px;
@@ -146,5 +146,93 @@
 }
 
 #FP5Code3CON .jsavcodeline.scope2 {
+    background-color: LightBlue;
+}
+
+
+/* -----------  Code 4---------------------------------- */
+
+#FP5Code4CON {
+  height: 430px;
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP5Code4CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP5Code4CON .jsavcode {
+  margin-left: 40px;
+  width: 600px;
+}
+
+#FP5Code4CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP5Code4CON .jsavoutput.jsavline {
+  height: 80px;
+}
+
+
+/* Makes just one cell wider */
+#FP5Code4CON  .jsavindex.jsavnode.wider {
+    min-width : 150px !important;
+    max-width : 150px !important;
+}
+
+#FP5Code4CON  .jsavindex.jsavnode.inaccessible {
+    background-color: Gray;
+}
+
+#FP5Code4CON .jsavcodeline.scope1 {
+    background-color: LightGreen;
+}
+
+#FP5Code4CON .jsavcodeline.scope2 {
+    background-color: LightBlue;
+}
+
+
+/* -----------  Code 5---------------------------------- */
+
+#FP5Code5CON {
+  height: 430px;
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP5Code5CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP5Code5CON .jsavcode {
+  margin-left: 40px;
+  width: 600px;
+}
+
+#FP5Code5CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP5Code5CON .jsavoutput.jsavline {
+  height: 80px;
+}
+
+
+/* Makes just one cell wider */
+#FP5Code5CON  .jsavindex.jsavnode.wider {
+    min-width : 280px !important;
+    max-width : 280px !important;
+}
+
+#FP5Code5CON  .jsavindex.jsavnode.inaccessible {
+    background-color: Gray;
+}
+
+#FP5Code5CON .jsavcodeline.twolines {
+    background-color: LightCoral;
+}
+
+#FP5Code5CON .jsavcodeline.oneline {
     background-color: LightBlue;
 }

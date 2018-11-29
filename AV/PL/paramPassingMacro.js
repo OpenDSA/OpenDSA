@@ -26,6 +26,8 @@ $(document).ready(function() {
   var fooLabels = {};
   var currentLineMain = 0;
   var currentLineFoo = 0;
+  var currentLineMainO = 0;
+  var currentLineOld = 0;
   var output = '';
   var unhighlightAll = function(){
     unhighlightElements(classVars);
@@ -56,6 +58,7 @@ $(document).ready(function() {
   while(codeLines[i].indexOf('void foo') == -1){
     macroCodeLines.push(codeLines[i++]);
   }
+  currentLineFoo = i + 1;
   var fooCodeLines = [codeLines[i]];
   while(codeLines[i].indexOf('}') == -1){
     fooCodeLines.push(codeLines[++i]);
@@ -63,6 +66,8 @@ $(document).ready(function() {
   while(++i < codeLines.length){
     if(codeLines[i].indexOf('int main') !== -1){
       currentLineMain = i + 1;
+      currentLineMainO = currentLineMain;
+      currentLineOld = currentLineMainO;
     }
     if(codeLines[i].indexOf('foo') !== -1){
       var fooKeys = getVarNamesFromPrototype(fooCodeLines[0]);
@@ -81,6 +86,7 @@ $(document).ready(function() {
     {left: leftMargin, top: topMargin, lineNumbers: false}
   );
 
+  var codeLinesO = codeLines;
   codeLines = macroCodeLines;
 
   var pseudo = av.code(codeLines, {
@@ -176,6 +182,7 @@ $(document).ready(function() {
     av.umsg("main's "+mainVarName+" is initialized to "+varVal.value[0]+".");
 
     pseudo.setCurrentLine(++currentLineMain);
+    pseudoO.setCurrentLine(++currentLineOld);
 
     av.step();
   }
@@ -211,6 +218,11 @@ $(document).ready(function() {
 
     av.umsg(outMsg);
     pseudo.setCurrentLine(currentLineMain++);
+    if(codeLinesO[currentLineOld].indexOf('foo') !== -1){
+      currentLineMainO = currentLineOld;
+      currentLineOld = currentLineFoo;
+    }
+    pseudoO.setCurrentLine(++currentLineOld);
     av.step();
   }
 
@@ -228,13 +240,12 @@ $(document).ready(function() {
   while(codeLines[currentLineMain-1].indexOf('}') === -1){
     av.umsg(printVar(codeLines[currentLineMain-1],contexts));
     pseudo.setCurrentLine(currentLineMain++);
+    if(codeLinesO[currentLineOld].indexOf('}') !== -1){
+      currentLineOld = ++currentLineMainO;
+    }
+    pseudoO.setCurrentLine(++currentLineOld);
     av.step();
   }
-  av.umsg('Return to main');
-  pseudo.setCurrentLine(currentLineMain++);
-  av.step();
-
-  contexts = [mainVars, classVars];
 
   av.recorded();
 

@@ -15,65 +15,71 @@ The Mapping Pattern
 
 **Abstraction** is one of the most powerful tools in programming. But
 what is it?  Let's begin getting our head around this notion by
-considering the following two examples.
+considering the following two examples called *addBonusPoint* and *doubleAll* .
 
-::
+.. 
+.. ::
+.. 
+..     var add1 = function (x) { 
+..                      return fp.add(x,1); };
+..     var addBonusPoint = function (ns) {
+..       if (fp.isNull(ns))
+..           return [ ];
+..       else
+..           return fp.cons( 
+..                    add1(fp.hd(ns)),
+..                    addBonusPoint(fp.tl(ns)));
+..     }
+..     addBonusPoint( [1,2,3,4,5] );
+.. 
+.. ::
+.. 
+..     var doubleIt = function (x) { 
+..                      return fp.add(x,x); };
+..     var doubleAll = function (ns) {
+..       if (fp.isNull(ns))
+..           return [ ];
+..       else
+..           return fp.cons( 
+..                    doubleIt(fp.hd(ns)), 
+..                    doubleAll(fp.tl(ns)));
+..     }
+..     doubleAll( [1,2,3,4,5] );
+.. 
+.. 
+.. 
+..     
+.. Both *addBonusPoint* and *doubleAll* use very similar patterns of
+.. computation.  Given a list, they return a new list by applying a
+.. function to every element of the given list.  How can we lift this
+.. pattern of computation to a level where we can write it once and be
+.. done with it?
+.. 
+.. ::
+.. 
+..     var doubleIt = function (x) { return fp.add(x,x); };
+..     var map = function (f,ns) {
+..       if (fp.isNull(ns))
+..           return [ ];
+..       else
+..           return fp.cons(
+..                      f(fp.hd(ns)), 
+..                      map(f, fp.tl(ns)));
+..     }
+..     map( doubleIt, [1,2,3,4,5] );
+..     map( function (x) { return x+1; }, [1,2,3,4,5] );
 
-    var add1 = function (x) { 
-                     return fp.add(x,1); };
-    var addBonusPoint = function (ns) {
-      if (fp.isNull(ns))
-          return [ ];
-      else
-          return fp.cons( 
-                   add1(fp.hd(ns)),
-                   addBonusPoint(fp.tl(ns)));
-    }
-    addBonusPoint( [1,2,3,4,5] );
 
-::
+.. inlineav:: FP6Code1CON ss
+   :long_name: Illustrate Mapping Pattern
+   :links: AV/PL/FP/FP6CON.css
+   :scripts: AV/PL/FP/FP6Code1CON.js
+   :output: show
 
-    var doubleIt = function (x) { 
-                     return fp.add(x,x); };
-    var doubleAll = function (ns) {
-      if (fp.isNull(ns))
-          return [ ];
-      else
-          return fp.cons( 
-                   doubleIt(fp.hd(ns)), 
-                   doubleAll(fp.tl(ns)));
-    }
-    doubleAll( [1,2,3,4,5] );
-
-
-Both *addBonusPoint* and *doubleAll* use very similar patterns of
-computation.  Given a list, they return a new list by applying a
-function to every element of the given list.  How can we lift this
-pattern of computation to a level where we can write it once and be
-done with it?
-
-::
-
-    var doubleIt = function (x) { return fp.add(x,x); };
-    var map = function (f,ns) {
-      if (fp.isNull(ns))
-          return [ ];
-      else
-          return fp.cons(
-                     f(fp.hd(ns)), 
-                     map(f, fp.tl(ns)));
-    }
-    map( doubleIt, [1,2,3,4,5] );
-    map( function (x) { return x+1; }, [1,2,3,4,5] );
-
-In the code above, we isolated the list-traversal process (abstracted as
-*map*) from the element-processing step (abstracted as *f*).
-
-This pattern of computation is called the **mapping pattern**: it takes
-a function and a list and returns the list obtained by applying the
-function to each element in the input list.
- 
-This problem is about the mapping pattern.
+This pattern of computation in the preceding example is called the
+**mapping pattern**: it takes a function and a list and returns the
+list obtained by applying the function to each element in the input
+list.  This problem is about the mapping pattern.
 
 .. avembed:: Exercises/PL/Map.html ka
    :long_name: Mapping Pattern
@@ -89,23 +95,15 @@ argument and then applies *f* to that result. In other words:
 
 .. math::
 
-   h(x) = (f \circ g)(x) = f( g(x) )  
+   compose(f,g)(x) = (f \circ g)(x) = f( g(x) )  
 
-::
+.. inlineav:: FP6Code2CON ss
+   :long_name: Illustrate Function Composition
+   :links: AV/PL/FP/FP6CON.css
+   :scripts: AV/PL/FP/FP6Code2CON.js
+   :output: show
 
-    var compose = function (f,g) {
 
-           return ?????
-    }
-
-Once you've completed the *compose* function, use it to compose the
-*doubleIt* function with the *add1* function and apply the resulting
-function *h* to the value 2.
-
-::
-
-   > var h = ???
-   > h(2)  // returns ???
 
 This next problem is about function composition.
 
@@ -157,7 +155,10 @@ more arguments (such as *map*) into a function (such as *map1*) that
 takes the first argument and returns another function that takes in
 the second argument and returns another function that has the first
 argument "wired into it" because of the closure that is created by the
-definition of the outer function.
+definition of the outer function.   This process is named after renowned logician
+`Haskell Curry`_.
+
+.. _Haskell Curry:  https://en.wikipedia.org/wiki/Haskell_Curry
 
 So our *map1* function is a curried version of our *map* function.
 
@@ -182,27 +183,21 @@ create it for us.
     var map1 = curry(map);
 
 As another example of using *curry*, consider the following *fillIn* function:
+    
+	       
+.. inlineav:: FP6Code3CON ss
+   :long_name: Illustrate Currying
+   :links: AV/PL/FP/FP6CON.css
+   :scripts: AV/PL/FP/FP6Code3CON.js
+   :output: show
 
-::
+Although the above example may seem a bit contrived, the importance of
+currying cannot be overstated.  It allows us to convert any function of two
+arguments into a function of one argument that returns a function of
+one argument.   We will return to the importance of doing this in Chapter 3 when
+we discuss the lambda calculus.
 
-    var fillIn = function(n1,n2) {
-        if (fp.isEq(n1,n2))
-            return [n1];
-        else if (fp.isLT(n1,n2))
-            return fp.cons(n1, fillIn( fp.add(n1,1), n2));
-        else
-            return fp.cons(n1, fillIn( fp.sub(n1,1), n2));
-    }
-
-What does this function do? What would it mean to curry it?   Convince yourself that ...
-
-::
-
-   var countUpTo = curry(fillIn)(1);
-   countUpTo( 5 );  // returns [1,2,3,4,5]
-
-
-This problem is about both currying and function composition.
+The next problem is about both currying and function composition.
 
 .. avembed:: Exercises/PL/Curry1.html ka
    :long_name: Curry and compose 1
@@ -211,9 +206,10 @@ This problem is about both currying and function composition.
 More currying
 -------------
 
-This problem will give you intensive practice with the ``curry`` and
-``compose`` functions. This problem is randomized and must be solved
-three times in a row.
+The final problem in this module on procedural abstraction will give
+you intensive practice with the ``curry`` and ``compose``
+functions. This problem is randomized and must be solved three times
+in a row.
 
 .. avembed:: Exercises/PL/Curry2.html ka
    :long_name: Curry and compose 2
