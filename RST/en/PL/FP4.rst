@@ -10,7 +10,8 @@
 Functional Programming - Using Helper Functions with Accumulators
 =================================================================
 
-   
+.. _reverse:
+
 Using helpers to write reverse and split functions
 --------------------------------------------------
 

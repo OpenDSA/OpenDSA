@@ -135,11 +135,11 @@ $(document).ready(function() {
     arr_ret_label.show();
     arr_ret_labela.show();
     arr_ret.show();
-    arr_ret.addClass([0,1,2,3], "blue");
+    arr_ret.addClass([0,1,2,3], "arrayblue");
     arr_ret_label1.show();
     arr_ret_label1a.show();
     arr_ret1.show();
-    arr_ret1.addClass([0,1,2,3], "green");
+    arr_ret1.addClass([0,1,2,3], "arraygreen");
     pseudo1.show("call");
     pseudo1.addClass("call","blue");
     pseudo2.show("call");

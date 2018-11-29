@@ -40,4 +40,30 @@ This first problem deals with the filtering pattern.
 .. avembed:: Exercises/PL/Filter.html ka
    :long_name: Filtering Pattern
 
+Folding/Reducing
+----------------
+
+To discover our next pattern, recall that, in the section
+:ref:`reverse`, we used a helper function with an accumulator to
+perform a **cons** operation prior to making a recursive call instead
+of after returning from a recursive call.  Keep that in mind as you look for
+the commonality in the following two examples.
+
+
+.. inlineav:: FP7Code2CON ss
+   :long_name: Illustrate Reduce/Folding Pattern
+   :links: AV/PL/FP/FP7CON.css
+   :scripts: AV/PL/FP/FP7Code2CON.js
+   :output: show
+
+
+
+Later ...
+
+**Reducing from the right:** Whereas the *reduce* function we have defined applies its helper
+function *f* to produce the accumulated value *acc* in left-to-right
+order as it works through the list, we could also define a similar
+function that applied the helper function in right-to-left fashion as
+it worked through the list.
+
 
