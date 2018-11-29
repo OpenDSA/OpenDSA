@@ -4,9 +4,9 @@
     g, // variable to store the JSAV graph
     lambda = String.fromCharCode(955), // lambda empty string representation
     epsilon = String.fromCharCode(949), // epsilon empty string representation
-    configurations;
-  var stackViz = jsav.ds.stack(['Z'], 35, 5);
-  stackViz.hide()
+    configurations,
+    currentStates;
+  var statesViz = [];
 
   // Initializes a new graph and runs a traversal input. Called whenever the page is loaded.
   var initialize = function() {
@@ -155,41 +155,46 @@
 
   var run = function(inputString) {
     // Start with the closure of the initial state.
+    var reducedInput = inputString
     g.initial.addClass('current');
-    var currentStates = [new Configuration(g.configurations, g.initial, ['Z'], inputString, 0)];
+    currentStates = [new Configuration(g.configurations, g.initial, ['Z'], inputString, 0)];
     currentStates = g.addLambdaClosure(currentStates);
     var nextStates = currentStates;
     this.configurations = $("<ul>");
 
-    stackViz.update(['Z'])
+    // stackViz.update(['Z'])
     var textArray = [];
     for (var i = 0; i < inputString.length; i++) {
       textArray.push(inputString[i]);
     }
     // Use this array to initialize the JSAV array.
     arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
+    var tempViz = jsav.ds.PDAState(30, 470, 150, 100, 'abbb', ['z'], 'q0')
+    statesViz.push(tempViz)
     jsav.displayInit();
 
     for (var i = 0; i < inputString.length; i++) {
       for (var j = 0; j < currentStates.length; j++) {
         currentStates[j].state.removeClass('current');
       }
-
-      nextStates = traverse(g, currentStates, inputString[i]);
+      reducedInput = reducedInput.substring(1)
+      nextStates = traverse(g, currentStates, inputString[i], reducedInput);
       if (nextStates.length == 0) {
         for (var k = 0; k < currentStates.length; k++) {
           currentStates[k].state.addClass('rejected')
         }
-        arr.css(i, {"background-color": red});
+        arr.css(i, {"background-color": "red"});
         jsav.step();
         break
       }
       
       currentStates = nextStates
+      showStatesViz()
       arr.css(i, {"background-color": "yellow"});
       jsav.step();
     }
 
+    clearStates()
     var rejected = true;
     for (var k = 0; k < currentStates.length; k++) {
       if(currentStates[k].state.hasClass('final') && nextStates.length > 0) {
@@ -225,7 +230,7 @@
     arr.click(arrayClickHandler);
   }
 
-  var traverse = function(graph, currentStates, letter) {
+  var traverse = function(graph, currentStates, letter, reducedInput) {
     var nextStates = []
     for (var i =0; i < currentStates.length; i++) {
       var successors = currentStates[i].state.neighbors();
@@ -254,10 +259,8 @@
                 newStack = newStack + pushOnTo[k]
               }
             }
-            var updatedStack = newStack.slice(0).split('')
-            updatedStack = updatedStack.slice(0, updatedStack.length).reverse();
-            stackViz.update(updatedStack)
-            var nextConfig = new Configuration(this.configurations, next, newStack, '', 0);
+
+            var nextConfig = new Configuration(this.configurations, next, newStack, reducedInput, 0);
             nextStates.push(nextConfig);
           }
         }
@@ -266,6 +269,41 @@
     }
     nextStates = g.addLambdaClosure(nextStates)
     return nextStates
+  }
+
+  var showStatesViz = function() {
+    clearStates();
+    var xBase = 30;
+    var yBase = 470;
+    var width = 150;
+    var height = 100;
+    var width_spacer = 40;
+    var height_spacer = 10;
+
+    for(var i = 0; i < currentStates.length; i++) {
+      var config = currentStates[i];
+      if( config.state.hasClass('current')) {
+        var updatedStack = [''];
+        if(config.stack.length > 0){
+          updatedStack = config.stack.slice(0).split('')
+          updatedStack = updatedStack.slice(0, updatedStack.length).reverse();
+        }
+
+        var width_shift = statesViz.length % 5;
+        var height_shift = Math.floor(statesViz.length / 5);
+        var x_coord = xBase + (width + width_spacer) * width_shift;
+        var y_coord = yBase + (height + height_spacer) * height_shift
+        var tempViz =  jsav.ds.PDAState(x_coord, y_coord, width, height, config.inputString, updatedStack, config.state.value())
+        statesViz.push(tempViz)
+      }
+    }
+  }
+
+  var clearStates = function() {
+    while(statesViz.length != 0) {
+      var temp = statesViz.pop();
+      temp.hide()
+    }
   }
 
   // Configuration object

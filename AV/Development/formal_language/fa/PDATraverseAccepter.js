@@ -82,7 +82,7 @@ var Configuration = function(configurations, state, stack, str, index) {
     configurations.append(newL);
     this.element.show();
   }
-  this.toString = function() {
+  /*this.toString = function() {
     return this.state.value() + ' ' + this.inputString.substring(0, this.curIndex) + ' ' + this.stack.join();
-  }
+  }*/
 };
