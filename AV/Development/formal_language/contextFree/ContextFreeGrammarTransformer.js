@@ -365,8 +365,14 @@ transformerProto.findReachable = function (start, pDict, visited) {
 };
 
 // convert to Chomsky Normal Form
-transformerProto.convertToChomsky = function () {
+transformerProto.convertToChomsky = function (GrammarMatrix) {
   var v = {};
+  var emptyLine = _.filter(this.productions, function(x) { return true;});
+  for(var i = 0; i< 3*this.productions.length; i++)
+    emptyLine.push(["", arrow, ""]);
+  var newGrammerMatrix = this.jsav.ds.matrix(emptyLine, {style: "table", left: 210});
+  for(var i = 0; i< 3*this.productions.length; i++)
+    newGrammerMatrix._arrays[this.productions.length + i].hide();
   // find all the variables in the grammar
   var productions = this.productions;
   for (var i = 0; i < productions.length; i++) {
@@ -386,8 +392,10 @@ transformerProto.convertToChomsky = function () {
   var varCounter = 1;
   // replace terminals with equivalent variables where necessary
   for (var i = 0; i < productions.length; i++) {
+    unhighlightMatrix(newGrammerMatrix);
     if (productions[i][2].length === 1 && variables.indexOf(productions[i][2][0]) === -1) {
-      this.jsav.umsg("This production " + productions[i].join('') + " is in Comskey normal form.");
+      this.jsav.umsg("This production " + productions[i].join('') + " is in Comskey normal form. So no need to modify it.");
+      highlightProductionByIndex(newGrammerMatrix, i);
       this.jsav.step();
       continue;
     } else {
@@ -396,31 +404,44 @@ transformerProto.convertToChomsky = function () {
         if (r[j].length === 1 && variables.indexOf(r[j]) === -1) {
           var temp = "B(" + r[j] + ")";
           if (!_.find(productions, function(x) { return x[0] === temp;})) {
-            this.jsav.umsg("This production " + productions[i].join('') + " is not in Comskey normal form. The RHS will be converted to " + r[j]);
+            this.jsav.umsg("This production " + productions[i].join('') + " is not in Comskey normal form. The terminal " + r[j] +" will be converted to " + temp + ". We need to add a new production " + [temp, arrow, [r[j]]].join('') + " to the grammar productions");
+            highlightProductionByIndex(newGrammerMatrix, i);
             this.jsav.step();
             productions.push([temp, arrow, [r[j]]]);
+            addNewProduction(newGrammerMatrix, [temp, arrow, [r[j]]], productions.length)
+            highlightProductionByIndex(newGrammerMatrix, productions.length - 1);
             tempVars.push(temp);
           }
           r[j] = temp;
+          modifyProduction(r.join(''), newGrammerMatrix, i, 2);
         }
       }
     }
   }
+  var jsav = this.jsav;
   // Function to break productions down into pairs of variables
   var chomskyHelper = function () {
+    
     for (var i = 0; i < productions.length; i++) {
       var r = productions[i][2];
       if (r.length === 1 && variables.indexOf(r[0]) === -1) {
         
         continue;
       } else if (r.length > 2) {
+        highlightProductionByIndex(newGrammerMatrix, i);
+        jsav.umsg("The production " + productions[i].join('') +  " has more than 2 variables on its RHS.");
+        jsav.step();
         var temp = "D(" + varCounter + ")";
         var temp2 = r.splice(1, r.length - 1, temp);
         var present = _.find(productions, function(x) { return x[0].length > 1 && x[2].join('') === temp2.join('');});
         if (present) {
           r[1] = present[0];
         } else {
+          jsav.umsg("We need to add a new production " + [temp, arrow, temp2].join('') +". And replace " +temp2 + " by " + temp + " in the original production.");
+          jsav.step();
           productions.push([temp, arrow, temp2]);
+          addNewProduction(newGrammerMatrix, [temp, arrow, temp2], productions.length)
+          modifyProduction(r.join(''), newGrammerMatrix, i, 2);
           tempVars.push(temp);
           varCounter++;
         }
@@ -430,17 +451,24 @@ transformerProto.convertToChomsky = function () {
     return false;
   };
   var counter = 0;
+  jsav.umsg("The next step is to convert any production that has more than 2 variables on the RHS to Chomsky normal from.");
+  unhighlightMatrix(newGrammerMatrix);
+  jsav.step();
   while (chomskyHelper()) {
     counter++;
     if (counter > 500) {
       console.log(counter);
       break;
     }
+    unhighlightMatrix(newGrammerMatrix);
   }
   for (var i = 0; i < productions.length; i++) {
     var x = productions[i];
     x[2] = x[2].join("");
   }
+  this.jsav.umsg("This is the resulting grammar in Chomsky Normal Form");
+  GrammarMatrix.hide();
+  this.jsav.step();
   var ret =  _.map(productions, function(x) {return x.join('');});
   return ret;
 };
@@ -516,4 +544,12 @@ var drawAnEdge = function(from, to, graph){
   });
   graph.addEdge(fromNode, toNode);
   graph.layout();
+}
+var addNewProduction = function(matrix, listOfData, length){
+  matrix._arrays[length - 1].show();
+  matrix._arrays[length - 1]._indices[0].value(listOfData[0]);
+  matrix._arrays[length - 1]._indices[2].value(listOfData[2]);
+}
+var modifyProduction = function(newValue, matrix, row, col){
+  matrix._arrays[row]._indices[col].value(newValue);
 }
