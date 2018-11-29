@@ -29,6 +29,17 @@ SkipLists
       :output: show
    
 
+.. slide:: Analysis
+
+   * Best-case behavior is "balanced": :math:`\Theta(\log n)` (like a
+     BST).
+   * Worst-case behavior: All nodes at the same level (regardless of
+     what level): Effectively degenerates to a linked list (like a
+     BST).
+   * Reality: Its behavior is not so dependent on order of inserts as
+     a BST. Its similar to what BST cost would be if we randomized the
+     input order. A huge improvement in expected performance!
+
 .. slide:: Programming Principles
 
    #. All container classes should be general.

@@ -71,9 +71,11 @@ $(document).ready(function() {
     if (prev) {
       arr.value(size, prev.value());
       size--;
-      node.edgeFrom(prev).css({"arrow-end": "classic-wide-long"});
-      node.edgeFrom(prev).addClass("markpath");
-      node.edgeTo(prev).hide();
+      g.removeEdge(prev,node);
+      g.addEdge(prev,node).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
+//      node.edgeFrom(prev).css({"arrow-end": "classic-wide-long"});
+//      node.edgeFrom(prev).addClass("markpath");
+//      node.edgeTo(prev).hide();
       g.layout();
       av.umsg("Add " + prev.value() + " to the recursion stack and add the new edge to the DFS tree");
       av.step();
