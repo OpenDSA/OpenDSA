@@ -40,6 +40,7 @@ $(document).ready(function() {
   var ranc;
   var strc = "";
   var validc = 1;
+  var valids = 1;
   var xc, yc, zc;
   var ivalue, lastivalue;
   // Main action: Result of clicking "Next" button
@@ -86,9 +87,10 @@ $(document).ready(function() {
             p11.style.display = "none";
           }
           if (count >= 3) {
-            if (validc == 0) {
+            if (validc == 0 || valids == 0) {
               pe2.style.display = "none";
               validc = 1;
+              valids = 1;
             }
             p2.style.display = "none";
             p22.style.display = "none";
@@ -391,7 +393,7 @@ $(document).ready(function() {
         var n0 = document.createTextNode("1. I have selected a value for m, displayed below.");
         p0.appendChild(n0);
         p01 = document.createElement("p");
-        ranc = Math.floor(Math.random() * (18 - 4 + 1)) + 4;;; //random number from 4 to 18
+        ranc = Math.floor(Math.random() * (8 - 4 + 1)) + 4; //random number from 4 to 18
         var n01 = document.createTextNode(ranc.toString());
         p01.appendChild(n01);
         container.appendChild(p0);
@@ -399,12 +401,12 @@ $(document).ready(function() {
       }
       if (count == 1) {
         var i;
-        for (i = 0; i < ranc; i++) {
-          strc = strc + "a";
-        }
-        for (i = 0; i < ranc; i++) {
-          strc = strc + "b";
-        }
+        // for (i = 0; i < ranc; i++) {
+        //   strc = strc + "a";
+        // }
+        // for (i = 0; i < ranc; i++) {
+        //   strc = strc + "b";
+        // }
         p1 = document.createElement("p");
         var n1 = document.createTextNode("2. Please enter a possible value for w.");
         p1.appendChild(n1);
@@ -417,34 +419,73 @@ $(document).ready(function() {
       }
       if (count == 2) {
         var inputstr = document.getElementById("i1").value;
-        if (inputstr != strc) {
-          if (validc == 1) {
-            pe2 = document.createElement("p");
-            var ne2 = document.createTextNode("That string is not in the language. Please enter another.");
-            pe2.appendChild(ne2);
-            container.appendChild(pe2);
-          }
-          validc = 0;
-          count = 1;
-        }
-        else {
+        if (inputstr.length < ranc) {
           if (validc == 0) {
             pe2.style.display = "none";
             validc = 1;
           }
-          p2 = document.createElement("p");
-          var n2 = document.createTextNode("3. I have decomposed w into the following...");
-          p2.appendChild(n2);
-          container.appendChild(p2);
-          var ycl = Math.floor(Math.random() * ranc) + 1; //random number from 1 to m
-          var xcl = ranc - ycl;
-          xc = strc.substring(0, xcl);
-          yc = strc.substring(xcl, (xcl + ycl));
-          zc = strc.substring((xcl + ycl),);
-          p22 = document.createElement("p");
-          var n22 = document.createTextNode("X = " + xc + "; Y = " + yc + "; Z = " + zc);
-          p22.appendChild(n22);
-          container.appendChild(p22);
+          if (valids == 1) {
+            pe2 = document.createElement("p");
+            pe2.setAttribute("id","pe2");
+            var ne2 = document.createTextNode("Remember |w| must be >= m");
+            pe2.appendChild(ne2);
+            container.appendChild(pe2);
+          }
+          valids = 0;
+          count = 1;
+        }
+        else {
+          var firstpart;
+          var secondpart;
+          var legal = 1;
+          if (inputstr.length % 2 == 1){
+            legal = 0;
+          }
+          else {
+            firstpart = inputstr.substr(0, inputstr.length / 2);
+            secondpart = inputstr.substr((inputstr.length / 2));
+            var i;
+            for (i = 0; i < inputstr.length / 2; i++){
+              if (firstpart.charAt(i) != "a" || secondpart.charAt(i) != "b"){
+                legal = 0;
+              }
+            }
+          }
+          if (legal == 0) {
+            if (valids == 0) {
+              pe2.style.display = "none";
+              valids = 1;
+            }
+            if (validc == 1) {
+              pe2 = document.createElement("p");
+              pe2.setAttribute("id","pe2");
+              var ne2 = document.createTextNode("That string is not in the language. Please enter another.");
+              pe2.appendChild(ne2);
+              container.appendChild(pe2);
+              validc = 0;
+              count = 1;
+            }
+          } 
+          else {
+            if (validc == 0 || valids == 0) {
+              pe2.style.display = "none";
+              validc = 1;
+              valids = 1;
+            }
+            p2 = document.createElement("p");
+            var n2 = document.createTextNode("3. I have decomposed w into the following...");
+            p2.appendChild(n2);
+            container.appendChild(p2);
+            var ycl = Math.floor(Math.random() * (ranc + 1)); //random number from 0 to m
+            var xcl = ranc - ycl;
+            xc = inputstr.substring(0, xcl);
+            yc = inputstr.substring(xcl, ycl);
+            zc = inputstr.substring(ycl);
+            p22 = document.createElement("p");
+            var n22 = document.createTextNode("X = " + xc + "; Y = " + yc + "; Z = " + zc);
+            p22.appendChild(n22);
+            container.appendChild(p22);
+          }
         }
       }
       if (count == 3) {
