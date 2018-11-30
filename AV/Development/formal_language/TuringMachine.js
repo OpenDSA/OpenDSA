@@ -97,7 +97,7 @@ tm.isFinal = function(state) {
 
 // given a list of configurations, returns the set of next configurations
 tm.traverse = function(currentStates) {
-	console.log("Current states:" + currentStates[0]);	//this is also undegined
+	console.log("Current states:" + currentStates[0]);	//this is also undefined
 	console.log("length: " + currentStates.length); //but the length is 1
 	var nextStates = [];
 	for (var j = 0; j < currentStates.length; j++) {
@@ -312,11 +312,11 @@ var Tape = function(str) {
 	this.arr = [];
 	this.current = 0;
 	this.currentIndex = 0;
-	console.log("I'm getting it" + str);
+	// console.log("I'm getting it" + str);
 
 	if (typeof str === 'string') {
 		this.arr = str.split("");
-		console.log(this.arr);
+		console.log("My array is:" + this.arr);
 		// for (var i = 0; i < this.arr.length; i++){
 		// 	console.log(i + this.arr.get[i]);
 		// }
@@ -401,6 +401,39 @@ var Tape = function(str) {
 			return this.current;
 		}
 	}
+};
+
+var viewTape = function (t) {
+	var arr = new Array(15);    // arbitrary size
+	for (var i = 0; i < 15; i++) {
+		arr[i] = String.fromCharCode(9633);;
+	}
+	i = 7;
+	var temp = t.current;
+	while (temp) {
+		if (i < 0) {break;}
+		arr[i] = temp.value();
+		i--;
+		temp = temp._left;
+	}
+	i = 7;
+	temp = t.current;
+	while (temp) {
+		if (i >= arr.length) {break;}
+		arr[i] = temp.value();
+		i++;
+		temp = temp._right;
+	}
+	var view = "|";
+	for (var i = 0; i < arr.length; i++) {
+		if (i === 7) {
+			view+="<mark>" + arr[i] + "</mark>";
+		} else {
+			view+=arr[i];
+		}
+	}
+	view+="|";
+	return view;
 };
 
 
