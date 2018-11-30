@@ -29,6 +29,7 @@ tm.play = function(inputString) {
 			cur,
 			counter = 0,
 			configView = [];		// configurations to display in the message box
+	console.log("maybe current state: " + currentStates[0]);
 	for (var j = 0; j < currentStates.length; j++) {
 		configView.push(currentStates[j].toString());
 	}
