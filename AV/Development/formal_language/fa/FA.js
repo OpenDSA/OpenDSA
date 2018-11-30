@@ -149,7 +149,7 @@ if(visualizable){
 		highlightedNodes[state].unhighlight();
 	}
 	jsav.step();
-	jsav.umsg("Nest step is to identify the transitons for the DFA start state.");
+	jsav.umsg("Nest step is to identify the transitions for the DFA start state.");
 
 }
 // Repeatedly get next states and apply lambda closure

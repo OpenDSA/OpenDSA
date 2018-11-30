@@ -102,9 +102,8 @@ $(document).ready(function() {
         var neighbor = adjNode[0];
         if (!neighbor.hasClass("marked")) {
           markIt(neighbor);
-          neighbor.edgeFrom(node).addClass("markpath");
-          neighbor.edgeFrom(node).css({"arrow-end": "classic-wide-long"});
-          neighbor.edgeTo(node).hide();
+      g.removeEdge(node,neighbor);
+      g.addEdge(node,neighbor).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
           g.layout();
           av.umsg("Add the edge from " + node.value() + " to " + neighbor.value() + " to the BFS tree");
           av.step();

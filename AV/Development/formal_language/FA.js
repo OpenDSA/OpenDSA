@@ -569,7 +569,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			}
 		}
 		// Use this array to populate the JSAV array.
-		jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
+		jsavArray = jsav.ds.array(travArray, {top: 0, left: 0});//element: $('.arrayPlace')});
 		for (var j = 0; j < inputs.length; j++) {
 			if (willRejectFunction(g, inputs[j])) {
 				// If rejected, color red.
@@ -582,7 +582,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		}
 		// Remove any click handlers already on the JSAV array.
 		// Add the click handler and show the JSAV array.
-		$('.arrayPlace').off("click");
+		//$('.arrayPlace').off("click");
 		jsavArray.click(arrayClickHandler);
 		jsavArray.show();
 	};

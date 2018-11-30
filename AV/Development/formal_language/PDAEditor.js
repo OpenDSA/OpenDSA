@@ -21,6 +21,7 @@
     type,//type of editor: fixer, tester or editor
     fatoreController,
     exerController;
+  var stepBy = '';
 
 // initialize graph
   var initGraph = function(opts) {
@@ -346,6 +347,16 @@
     }
   };
 
+  var onClickTraverseClosure = function() {
+    stepBy = 'closure'
+    onClickTraverse()
+  }
+
+  var onClickTraverseState = function() {
+    stepBy = 'state'
+    onClickTraverse()
+  }
+
   var onClickTraverse = function() {
     if (!g.initial) {
       alert('Please define an initial state');
@@ -355,15 +366,96 @@
     if (inputString === null) {
       return;
     }
-    jsav.umsg("");
-    var textArray = [];
-    $("#functionality").hide();     //disable buttons
-    $("#mode").html('');
-    $('.jsavcontrols').show();
-    $('#configurations').show();
-    $('#alphabets').show();
-    $('#closeAv').show();
-    g.play(inputString);
+    var inputs = [inputString]
+    var nodes = g.nodes();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      // Remove "current", or else it will mess with the traversal algorithms.
+      // (Traversal algorithms use "current" to mark states as visited.)
+      next.removeClass('current');
+    }
+    var travArray = [];
+    readyTraversal();
+    for (var i = 0; i < inputs.length; i++) {
+      // Create an array of the input strings.
+      if (inputs[i]) {
+        if(willReject(g,inputs[i])){
+          travArray.push(inputs[i]+"(" + String.fromCharCode(10005) + ")");
+        }else{
+          travArray.push(inputs[i]+"(" + String.fromCharCode(10003) + ")");
+        }
+      }
+      else {
+        travArray.push(emptystring);
+      }
+    }
+    // Use this array to populate the JSAV array.
+    jsavArray = jsav.ds.array(travArray, {top: 0, left: 0});//element: $('.arrayPlace')});
+    for (var j = 0; j < inputs.length; j++) {
+      if (willReject(g, inputs[j])) {
+        // If rejected, color red.
+        jsavArray.css(j, {"background-color": "red"});
+      }
+      else {
+        // If accepted, color green.
+        jsavArray.css(j, {"background-color": "green"});
+      }
+    }
+    jsavArray.click(arrayClickHandler);
+    jsavArray.show();
+  };
+
+  // Exit out of all editing modes and prepare the view for the input string JSAV array.
+  var readyTraversal = function() {
+    removeModeClasses();
+    jsav.umsg('Click on an input to trace its traversal.');
+  };
+
+  // Click handler for the JSAV array.
+  function arrayClickHandler(index) {
+    play(this.value(index));
+  };
+
+  // Function to open the graph in another window and run the input string on it.
+  // Triggered by clicking on an input string in the JSAV array.
+  var play = function (inputString) {
+    localStorage['graph'] = serialize(g);
+    localStorage['traversal'] = inputString.slice(0, -3);
+    localStorage['stepBy'] = stepBy;
+    window.open("./PDATraversal.html", "popupWindow", "width=830, height=800, scrollbars=yes");
+  };
+
+  var willAccept = function(graph, input) {
+    return graph.traverseOneInput(input)
+  }
+
+  // Disable all editing modes so that click handlers do not fire.
+  // Called when the user switches editing modes, or otherwise presses a button that changes the view.
+  var removeModeClasses = function() {
+    // Clear all superfluous or otherwise outdated information on the page.
+    //$('.arrayPlace').empty();
+    //$('#download').html('');
+    jsav.umsg('');
+    // Unselect and unhighlight any selected nodes or edges.
+    if (g.first) {
+      g.first.unhighlight();
+      g.first = null;
+    }
+    if (g.selected) {
+      g.selected.unhighlight();
+      g.selected = null;
+    }
+    if ($(".jsavgraph").hasClass("deleteNodes")) {
+      $(".jsavgraph").removeClass("deleteNodes");
+      // Return edges to normal size.
+      collapseEdges();
+    }
+    else {
+      $(".jsavgraph").removeClass("addNodes");
+      $(".jsavgraph").removeClass("addEdges");
+      $(".jsavgraph").removeClass("editNodes");
+      $(".jsavgraph").removeClass("moveNodes");
+      $(".jsavgraph").removeClass("working");
+    }
   };
 
   var save = function() {
@@ -567,7 +659,8 @@
   // $('#convertToGrammarButton').click(convertToGrammar);
   // $('#completeConvertButton').hide();
   $('#saveButton').click(save);
-  $('#singleRunButton').click(onClickTraverse);
+  $('#stepByClosureButton').click(onClickTraverseClosure);
+  $('#stepByStateButton').click(onClickTraverseState);
 
   $('#undoButton').click(function() {
     g.undo();

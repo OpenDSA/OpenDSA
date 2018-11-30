@@ -1,4 +1,5 @@
-//document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"></script>');
+document.write('<script src="../../../AV/Development/formal_language/fa/TraverseAccepter.js"></script>');
+
 $(document).ready(function() {
   "use strict";
   var av_name = "TraceEvenBinaryDFACON";
@@ -7,7 +8,7 @@ $(document).ready(function() {
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;
   var url = interpret("fa1");
-    
+  /*  
   function TapeHead(headX, headY){
     this.Y = headY;
     this.X = headX;
@@ -108,6 +109,17 @@ Tape.prototype = {
   nodes[1].highlight();
   av.step();
   av.umsg("Now the string is finished and the state is on a final (accepting) state. Thus, the string 11010 is accepted by the DFA");
-  //q1.unhighlight();
+  //q1.unhighlight();*/
+  av.umsg("In this slideshow, we will trace the acceptance or rejections of some strings. The given machine can accept any even number. You can click on any cell to see the process again starting from the clicked cell")
+
+  av.displayInit();
+
+var BinaryDFA = new av.ds.fa({left: 10});
+
+  FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA,url);
+  BinaryDFA.disableDragging();
+  var acceptor = new TraversAcceptor(av, BinaryDFA);
+  acceptor.visualize(["0 0 1 0 1 0 0 1 0".split(' '), "0 1 1 0".split(' '), "0 1 0 1 0 0 0 1 0".split(' ')], {left: 600});
   av.recorded();
+
 });

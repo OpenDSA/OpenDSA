@@ -92,15 +92,25 @@
       "CS3slides/Binary3": {},
       "CS3slides/Heaps": {}
     },
-    "Weeks 6-7": {
+    "Weeks 6-8": {
       "CS3slides/Sorting1": {},
       "CS3slides/Sorting2": {}
     },
-    "Week 8": {
+    "Week 9": {
       "CS3slides/FileProc": {}
     },
-    "Week 9": {
+    "Week 10": {
       "CS3slides/Hashing": {}
+    },
+    "Week 11": {
+      "CS3slides/Huffman": {},
+      "CS3slides/SkipList": {}
+    },
+    "Week 12-13": {
+      "CS3slides/Indexing": {}
+    },
+    "Week 14-15": {
+      "CS3slides/Graphs": {}
     },
     "Appendix": {}
   }

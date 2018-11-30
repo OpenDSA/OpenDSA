@@ -1,0 +1,147 @@
+#FP7Code1CON {
+    height: 740px;
+    width: 960px
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP7Code1CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP7Code1CON .jsavcode {
+  margin-left: 20px;
+  width: 400px;
+}
+
+#FP7Code1CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP7Code1CON .jsavlabel.emphasize{
+  font-weight: bold;
+}
+
+#FP7Code1CON .jsavoutput.jsavline {
+  height: 100px;
+}
+
+/* Makes all cells wider */
+/*#FP7Code1CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#FP7Code1CON  .jsavindex.jsavnode.wider {
+    min-width : 150px !important;
+    max-width : 150px !important;
+}
+
+
+#FP7Code1CON  .jsavindex.jsavnode.arrayblue {
+    background-color: LightBlue;
+}
+
+#FP7Code1CON  .jsavindex.jsavnode.arraygreen {
+    background-color: LightGreen;
+}
+
+
+
+#FP7Code1CON .jsavcodeline.extrawidth{
+    width: 455px;
+}
+
+#FP7Code1CON .jsavcodeline.green {
+    background-color: LightGreen;
+}
+
+#FP7Code1CON .jsavcodeline.blue {
+    background-color: LightBlue;
+}
+
+#FP7Code1CON .jsavcodeline.red {
+    background-color: LightCoral;
+}
+
+/*.newcolor {
+    color: #458a4f;
+    background-color: #7cc5ef
+}*/
+
+
+/* --------------------  Code 2 ------------------------*/
+
+#FP7Code2CON {
+    height: 780px;
+    width: 960px
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP7Code2CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP7Code2CON .jsavcode {
+  margin-left: 20px;
+  width: 400px;
+}
+
+#FP7Code2CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP7Code2CON .jsavlabel.emphasize{
+  font-weight: bold;
+}
+
+#FP7Code2CON .jsavoutput.jsavline {
+  height: 100px;
+}
+
+/* Makes all cells wider */
+/*#FP7Code2CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#FP7Code2CON  .jsavindex.jsavnode.wider {
+    min-width : 150px !important;
+    max-width : 150px !important;
+}
+
+#FP7Code2CON .jsavcodeline.extrawidth{
+    width: 465px;
+}
+
+
+#FP7Code2CON  .jsavindex.jsavnode.arrayblue {
+    background-color: LightBlue;
+}
+
+#FP7Code2CON  .jsavindex.jsavnode.arraygreen {
+    background-color: LightGreen;
+}
+
+
+#FP7Code2CON .jsavcodeline.green {
+    background-color: LightGreen;
+}
+
+#FP7Code2CON .jsavcodeline.blue {
+    background-color: LightBlue;
+}
+
+#FP7Code2CON .jsavcodeline.red {
+    background-color: LightCoral;
+}
+
+/*.newcolor {
+    color: #458a4f;
+    background-color: #7cc5ef
+}*/
+
+

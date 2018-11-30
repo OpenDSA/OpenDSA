@@ -1,0 +1,238 @@
+#FP5Code1CON {
+  height: 460px;
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP5Code1CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP5Code1CON .jsavcode {
+  margin-left: 40px;
+  width: 600px;
+}
+
+#FP5Code1CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP5Code1CON .jsavoutput.jsavline {
+  height: 100px;
+}
+
+/* Makes all cells wider */
+/*#FP5Code1CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#FP5Code1CON  .jsavindex.jsavnode.wider {
+    min-width : 150px !important;
+    max-width : 150px !important;
+}
+
+#FP5Code1CON  .jsavindex.jsavnode.inaccessible {
+    background-color: Gray;
+}
+
+#FP5Code1CON .jsavcodeline.scope1 {
+    background-color: LightGreen;
+}
+
+#FP5Code1CON .jsavcodeline.scope2 {
+    background-color: LightBlue;
+}
+
+/*.newcolor {
+    color: #458a4f;
+    background-color: #7cc5ef
+}*/
+
+
+/* ------------------- Code 2---------------------------------------- */
+
+#FP5Code2CON {
+  height: 390px;
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP5Code2CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP5Code2CON .jsavcode {
+  margin-left: 40px;
+  width: 600px;
+}
+
+#FP5Code2CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP5Code2CON .jsavoutput.jsavline {
+  height: 60px;
+}
+
+/* Makes all cells wider */
+/*#FP5Code2CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#FP5Code2CON  .jsavindex.jsavnode.wider {
+    min-width : 150px !important;
+    max-width : 150px !important;
+}
+
+#FP5Code2CON  .jsavindex.jsavnode.inaccessible {
+    background-color: Gray;
+}
+
+#FP5Code2CON .jsavcodeline.scope1 {
+    background-color: LightGreen;
+}
+
+#FP5Code2CON .jsavcodeline.scope2 {
+    background-color: LightBlue;
+}
+
+/*.newcolor {
+    color: #458a4f;
+    background-color: #7cc5ef
+}*/
+
+
+/* --------------  Code 3------------------------------- */
+
+#FP5Code3CON {
+  height: 430px;
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP5Code3CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP5Code3CON .jsavcode {
+  margin-left: 40px;
+  width: 600px;
+}
+
+#FP5Code3CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP5Code3CON .jsavoutput.jsavline {
+  height: 80px;
+}
+
+
+/* Makes just one cell wider */
+#FP5Code3CON  .jsavindex.jsavnode.wider {
+    min-width : 150px !important;
+    max-width : 150px !important;
+}
+
+#FP5Code3CON  .jsavindex.jsavnode.inaccessible {
+    background-color: Gray;
+}
+
+#FP5Code3CON .jsavcodeline.scope1 {
+    background-color: LightGreen;
+}
+
+#FP5Code3CON .jsavcodeline.scope2 {
+    background-color: LightBlue;
+}
+
+
+/* -----------  Code 4---------------------------------- */
+
+#FP5Code4CON {
+  height: 430px;
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP5Code4CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP5Code4CON .jsavcode {
+  margin-left: 40px;
+  width: 600px;
+}
+
+#FP5Code4CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP5Code4CON .jsavoutput.jsavline {
+  height: 80px;
+}
+
+
+/* Makes just one cell wider */
+#FP5Code4CON  .jsavindex.jsavnode.wider {
+    min-width : 150px !important;
+    max-width : 150px !important;
+}
+
+#FP5Code4CON  .jsavindex.jsavnode.inaccessible {
+    background-color: Gray;
+}
+
+#FP5Code4CON .jsavcodeline.scope1 {
+    background-color: LightGreen;
+}
+
+#FP5Code4CON .jsavcodeline.scope2 {
+    background-color: LightBlue;
+}
+
+
+/* -----------  Code 5---------------------------------- */
+
+#FP5Code5CON {
+  height: 430px;
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP5Code5CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP5Code5CON .jsavcode {
+  margin-left: 40px;
+  width: 600px;
+}
+
+#FP5Code5CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP5Code5CON .jsavoutput.jsavline {
+  height: 80px;
+}
+
+
+/* Makes just one cell wider */
+#FP5Code5CON  .jsavindex.jsavnode.wider {
+    min-width : 280px !important;
+    max-width : 280px !important;
+}
+
+#FP5Code5CON  .jsavindex.jsavnode.inaccessible {
+    background-color: Gray;
+}
+
+#FP5Code5CON .jsavcodeline.twolines {
+    background-color: LightCoral;
+}
+
+#FP5Code5CON .jsavcodeline.oneline {
+    background-color: LightBlue;
+}

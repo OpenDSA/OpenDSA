@@ -6,8 +6,8 @@ var PDA = function(jsav, options) {
   this.stack = ['Z'];
   this.undoStack = [];
   this.redoStack = [];
-  this.stackViz = this.jsav.ds.stack(['Z'], 5, 5)
-  this.stackViz.hide()
+  //this.stackViz = this.jsav.ds.stack(['Z'], 20, 5)
+  //this.stackViz.hide()
   //this.inputViz = this.jsav.ds.tape([], 36, 5)
   //this.inputViz.hide()
 }
@@ -80,8 +80,8 @@ pda.toggleLambda = function() {
 //====================
 //traversal
 
-pda.play = function(inputString) {
-  this.setupControls();
+/*pda.playTraverse = function(inputString) {
+  //this.setupControls();
 
   // var configArray = this.jsav.ds.array();
   // this.configViews.push(configArray.element);
@@ -152,7 +152,7 @@ pda.play = function(inputString) {
     this.jsav.umsg("Rejected");
   }
   this.jsav.recorded();
-};
+};*/
 
 pda.traverse = function(currentStates) {
   // currentStates is an array of configurations

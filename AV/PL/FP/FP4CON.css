@@ -1,0 +1,60 @@
+#FP4Code1CON {
+  height: 360px;
+}
+
+#FP4Code1CON .jsavcode {
+  margin-left: 285px;
+  width: 560px;
+}
+
+#FP4Code1CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP4Code1CON .jsavoutput.jsavline {
+  height: 80px;
+}
+
+/* Makes all cells wider */
+/*#FP4Code1CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#FP4Code1CON  .jsavindex.jsavnode.wider {
+    min-width : 60px !important;
+    max-width : 60px !important;
+}
+
+#FP4Code2CON {
+  height: 460px;
+}
+
+#FP4Code2CON .jsavcode {
+  margin-left: 285px;
+  width: 560px;
+}
+
+#FP4Code2CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP4Code2CON .jsavoutput.jsavline {
+  height: 80px;
+}
+
+/* Makes all cells wider */
+/*#FP4Code2CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#FP4Code2CON  .jsavindex.jsavnode.wider {
+    min-width : 60px !important;
+    max-width : 60px !important;
+}
+

@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
    :requires:
    :satisfies: Regular Grammar
    :topic: Finite Automata
@@ -145,6 +145,11 @@ grammar G such that :math:`L = L(G)`.
    state to an accepting state on B.
 
 
+.. inlineav:: REtoFACON ss
+   :links:   AV/VisFormalLang/RegularGrammar/REtoFACON.css
+   :scripts: AV/VisFormalLang/RegularGrammar/REtoFACON.js
+   :output: show
+
 
 Right-linear Regular Grammar from DFA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -173,6 +178,13 @@ Right-linear Regular Grammar from DFA
    |    :math:`P =`
    |      :math:`Q0 \rightarrow a Q1`
    |      :math:`Q1 \rightarrow a Q0 | b Q1 | \lambda`
+
+
+.. inlineav:: FAtoRegGrammmarCON ss
+   :links:   AV/VisFormalLang/RegularGrammar/FAtoRegGrammmarCON.css
+   :scripts: AV/VisFormalLang/RegularGrammar/FAtoRegGrammmarCON.js
+   :output: show
+
 
 
 Something to Think About

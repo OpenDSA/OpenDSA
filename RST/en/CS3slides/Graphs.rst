@@ -129,14 +129,16 @@ Graphs
 
 .. slide:: Depth First Search (2)
 
-   .. avembed:: AV/Graph/graphDFS.html ss
+   .. inlineav:: DFSCON ss
+      :long_name: Depth-First Search Slideshow
+      :links: AV/Graph/DFSCON.css
+      :scripts: AV/Graph/DFSCON.js
+      :output: show
+
+
+.. slide:: Depth First Search (3)
 
    Cost: :math:`\Theta(|V| + |E|)`.
-
-
-.. slide:: .
-
-   .
 
 
 .. slide:: Breadth First Search (1)
@@ -144,21 +146,18 @@ Graphs
    * Like DFS, but replace stack with a queue.
       * Visit vertex’s neighbors before continuing deeper in the tree.
 
-
-.. slide:: Breadth First Search (2)
-
    .. codeinclude:: Graphs/BFS
       :tag: BFS
 
 
 .. slide:: Breadth First Search (3)
 
-   .. avembed:: AV/Graph/graphBFS.html ss
+   .. inlineav:: BFSCON ss
+      :long_name: Breadth-First Search Slideshow
+      :links: AV/Graph/BFSCON.css
+      :scripts: AV/Graph/BFSCON.js
+      :output: show
 
-
-.. slide:: .
-
-   .
 
 .. slide:: Topological Sort
 

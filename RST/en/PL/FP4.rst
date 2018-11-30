@@ -10,7 +10,8 @@
 Functional Programming - Using Helper Functions with Accumulators
 =================================================================
 
-   
+.. _reverse:
+
 Using helpers to write reverse and split functions
 --------------------------------------------------
 
@@ -26,26 +27,21 @@ reverse order?
     > reverse( [ ] )
     [ ]
 
-With an accumulator we could use a recursive helper function that
-takes in the input list *ns*and the list *a* being built and returns ...
 
-::
 
-    var reverse_helper = function (ns, a) {
-                            if (fp.isNull(ns)) {
-                                 return ???  
-                            } else {
-                                 ??????????
-                            }
-    }
+The essence of using the *accumulator pattern* is to add an extra
+argument, called an *accumulator* to a helper function for the
+function we are trying to develop.  For *reverse* we could use a recursive helper
+function that takes in the input list *ns*and the list *acc* that is being built.
+This is illustrated in the slide show below.
 
-Then we would call this helper function with a *reverse* function that
-acted as a front-end, passing in the initial value for *a*. The extra
-parameter in the helper function is called an **accumulator**.
 
-::
-   
-    var reverse = function (ns) { return reverse_helper(ns, ??? ); }
+.. inlineav:: FP4Code1CON ss
+   :long_name: Illustrate Use of Accumulator in Developing Reverse Function
+   :links: AV/PL/FP/FP4CON.css
+   :scripts: AV/PL/FP/FP4Code1CON.js
+   :output: show
+
 
 
 As another example of using an accumulator, consider how you would
@@ -63,19 +59,15 @@ contains all of the elements of :math:`ns` that are smaller than
     [ [ ] [ ] ]
 
 We call the first argument of split the *pivot* because of a famous
-algorithm that uses split (see the second review problem).
-
-::
-
-    var split_helper = function (pivot,ns,smalls,bigs) {
-
-                ??????
-    }
+algorithm that uses split (see the second review problem below).
 
 
-    var split = function (pivot,ns) {
-        return split_helper(pivot, ns, [ ], [ ]);
-    }
+.. inlineav:: FP4Code2CON ss
+   :long_name: Illustrate Use of Accumulator in Developing Split Function
+   :links: AV/PL/FP/FP4CON.css
+   :scripts: AV/PL/FP/FP4Code2CON.js
+   :output: show
+
 
 The first review problem will test your understanding of *split* and
 another function called *join*, which is also developed using an

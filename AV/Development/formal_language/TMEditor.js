@@ -8,20 +8,20 @@ var lambda = String.fromCharCode(955),
 	jsav.displayInit();
 	var g;
 
-// initialize graph
+	// initialize graph
 	var initGraph = function(opts) {
 		g = jsav.ds.tm($.extend({width: '750px', height: 440, emptystring: square, editable: true}, opts));
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
-				gHeight = g.element.height();
+		gHeight = g.element.height();
   		// var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),		
-    //   		b = g.addNode({left: 0.35 * gWidth, top: 0.7 * gHeight}),
-    //   		c = g.addNode({left: 0.10 * gWidth, top: 0.7 * gHeight}),
-    //   		d = g.addNode({left: 0.6 * gWidth, top: 0.7 * gHeight}),
-    //   		e = g.addNode({left: 0.85 * gWidth, top: 0.5 * gHeight}),
-    //   		f = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight});
-    //   	g.makeInitial(a);
-    //   	c.addClass('final');
+	    //   		b = g.addNode({left: 0.35 * gWidth, top: 0.7 * gHeight}),
+	    //   		c = g.addNode({left: 0.10 * gWidth, top: 0.7 * gHeight}),
+	    //   		d = g.addNode({left: 0.6 * gWidth, top: 0.7 * gHeight}),
+	    //   		e = g.addNode({left: 0.85 * gWidth, top: 0.5 * gHeight}),
+	    //   		f = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight});
+	    //   	g.makeInitial(a);
+	    //   	c.addClass('final');
 
 	   //  g.addEdge(a, b, {weight: 'a;#,R'});
 	   // 	g.addEdge(a, a, {weight: '#;#,R'});
@@ -32,7 +32,7 @@ var lambda = String.fromCharCode(955),
 	   //  g.addEdge(b, d, {weight: 'a;a,R'});
 
 	   // 	g.addEdge(d, d, {weight: '#;#,R'});
-	   //  g.addEdge(d, e, {weight: 'a;#,R'});
+	   //   g.addEdge(d, e, {weight: 'a;#,R'});
 	   // 	g.addEdge(d, f, {weight: square + ';' + square + ',L'});
 
 	   //  g.addEdge(e, e, {weight: '#;#,R'});
@@ -42,9 +42,11 @@ var lambda = String.fromCharCode(955),
 	   //  g.addEdge(f, f, {weight: 'a;a,L'});
 	   //  g.addEdge(f, a, {weight: square + ';' + square + ',R'});
 	
-    $(".jsavgraph").click(graphClickHandler);
-    g.click(nodeClickHandler);
+    	jsav.displayInit();
+
+    	g.click(nodeClickHandler);
 		g.click(edgeClickHandler, {edge: true});
+		$('.jsavgraph').click(graphClickHandler);
 		$('.jsavedgelabel').click(labelClickHandler);
 		return g;
 	};
@@ -149,8 +151,8 @@ var lambda = String.fromCharCode(955),
 				nodeY = newNode.element.height()/2.0;
 			$(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
 		} 
-		else if ($('.jsavgraph').hasClass('moveNodes')) {
-		}
+		// else if ($('.jsavgraph').hasClass('moveNodes')) {
+		// }
 	};
 
 	// handler for the nodes of the graph
@@ -197,6 +199,9 @@ var lambda = String.fromCharCode(955),
 	//editing modes
 
 	var addNodesMode = function() {
+		   highlight_select_button();
+    removeModeClasses();
+
 		cancel();
 		var jg = $(".jsavgraph");
 		jg.addClass("addNodes");
@@ -416,6 +421,37 @@ var lambda = String.fromCharCode(955),
 		jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
 	}
 
+	  // Disable all editing modes so that click handlers do not fire.
+	  // Called when the user switches editing modes, or otherwise presses a button that changes the view.
+	var removeModeClasses = function() {
+	    // Clear all superfluous or otherwise outdated information on the page.
+	    $('.arrayPlace').empty();
+	    $('#download').html('');
+	    jsav.umsg('');
+	    // Unselect and unhighlight any selected nodes or edges.
+	    if (g.first) {
+	      g.first.unhighlight();
+	      g.first = null;
+	    }
+	    if (g.selected) {
+	      g.selected.unhighlight();
+	      g.selected = null;
+	    }
+	    if ($(".jsavgraph").hasClass("deleteNodes")) {
+	      $(".jsavgraph").removeClass("deleteNodes");
+	      // Return edges to normal size.
+	      collapseEdges();
+	    }
+	    else {
+	      $(".jsavgraph").removeClass("addNodes");
+	      $(".jsavgraph").removeClass("addEdges");
+	      $(".jsavgraph").removeClass("editNodes");
+	      $(".jsavgraph").removeClass("moveNodes");
+	      $(".jsavgraph").removeClass("working");
+	    }
+	  };
+
+
 	// Function to reset the size of the undo stack and the redo stack.
 	// Since both of them are empty, both buttons are also disabled.
 	// Called whenever the user loads a new graph.
@@ -423,6 +459,27 @@ var lambda = String.fromCharCode(955),
 		document.getElementById("undoButton").disabled = true;
 		document.getElementById("redoButton").disabled = true;
 	};
+
+	  function highlight_select_button(){
+    // Add active class to the current button (highlight it)
+    /*var header = document.getElementById("menu_options");
+    var btns = header.getElementsByClassName("icon_btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }*/
+    $('#undoButton').removeClass("active");
+    $('#redoButton').removeClass("active");
+    $('#deleteButton').removeClass("active");
+    $('#editButton').removeClass("active");
+    $('#nodeButton').removeClass("active");
+    $('#edgeButton').removeClass("active");
+        $('#collapseButton').removeClass("active");
+  }
+
 
 	$('#playButton').click(function() {onClickTraverse()});
 	//$('#multiplebutton').click(displayTraversals);
