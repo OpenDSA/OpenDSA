@@ -21,6 +21,7 @@
     type,//type of editor: fixer, tester or editor
     fatoreController,
     exerController;
+  var stepBy = '';
 
 // initialize graph
   var initGraph = function(opts) {
@@ -346,6 +347,16 @@
     }
   };
 
+  var onClickTraverseClosure = function() {
+    stepBy = 'closure'
+    onClickTraverse()
+  }
+
+  var onClickTraverseState = function() {
+    stepBy = 'state'
+    onClickTraverse()
+  }
+
   var onClickTraverse = function() {
     if (!g.initial) {
       alert('Please define an initial state');
@@ -391,16 +402,6 @@
     }
     jsavArray.click(arrayClickHandler);
     jsavArray.show();
-
-    /*jsav.umsg("");
-    var textArray = [];
-    $("#functionality").hide();     //disable buttons
-    $("#mode").html('');
-    $('.jsavcontrols').show();
-    $('#configurations').show();
-    $('#alphabets').show();
-    $('#closeAv').show();
-    g.play(inputString);*/
   };
 
   // Exit out of all editing modes and prepare the view for the input string JSAV array.
@@ -419,6 +420,7 @@
   var play = function (inputString) {
     localStorage['graph'] = serialize(g);
     localStorage['traversal'] = inputString.slice(0, -3);
+    localStorage['stepBy'] = stepBy;
     window.open("./PDATraversal.html", "popupWindow", "width=830, height=800, scrollbars=yes");
   };
 
@@ -657,7 +659,8 @@
   // $('#convertToGrammarButton').click(convertToGrammar);
   // $('#completeConvertButton').hide();
   $('#saveButton').click(save);
-  $('#singleRunButton').click(onClickTraverse);
+  $('#stepByClosureButton').click(onClickTraverseClosure);
+  $('#stepByStateButton').click(onClickTraverseState);
 
   $('#undoButton').click(function() {
     g.undo();
