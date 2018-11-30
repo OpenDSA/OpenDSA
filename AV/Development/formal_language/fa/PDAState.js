@@ -3,11 +3,8 @@ $(document).ready(function() {
   if (typeof JSAV === "undefined") { return; }
 
   /*
-  Stack class implementation
-  Extended from the JSAV array class.
-  element is an array with values to put into the tape
-  x_coord is the x-coordinate
-  y-coord is the y-coordinate
+  Class for vizualization of a current state in  a pda traversal
+  Shows current stack, unreadinput, and the node it represents
   */
   function PDAState(jsav, x_coord, y_coord, rect_width, rect_height, input, stack, node) {
     
@@ -21,7 +18,7 @@ $(document).ready(function() {
 
     this.outline = this.jsav.g.rect(this.x_coord, this.y_coord, this.rect_width, this.rect_height);
     this.stackViz = this.jsav.ds.stack(this.stack, this.x_coord + 5, this.y_coord + 5, this.rect_height - 5)
-    this.inputViz = this.jsav.ds.stack(this.input, this.x_coord + 40, this.y_coord + 5, this.rect_width - 40, 'horizontal')
+    this.inputViz = this.jsav.ds.stack(this.input, this.x_coord + 40, this.y_coord + 5,this.rect_width - 40, 'horizontal')
     this.nodeViz = this.jsav.g.circle(this.x_coord + 85, this.y_coord + 60, 15, {fill: 'yellow'})
     this.label = this.jsav.label(node, {left: this.x_coord + 75, top: this.y_coord + 35})
     this.label.css({"z-index": 999})

@@ -6,8 +6,8 @@ var PDA = function(jsav, options) {
   this.stack = ['Z'];
   this.undoStack = [];
   this.redoStack = [];
-  this.stackViz = this.jsav.ds.stack(['Z'], 20, 5)
-  this.stackViz.hide()
+  //this.stackViz = this.jsav.ds.stack(['Z'], 20, 5)
+  //this.stackViz.hide()
   //this.inputViz = this.jsav.ds.tape([], 36, 5)
   //this.inputViz.hide()
 }
