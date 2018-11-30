@@ -164,7 +164,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 5
-    av.umsg('To create the reduce function in merely one instruction, we can pass in a function to reduce that uses cons as indicated in green below.   There is a small complication in that when reduce applies the operation to the head and accumulator, it uses the accmulator as the first argument.   But fp.cons has it accumulating list as its second argument.   So we must create a function that compensates for this "flip" in the order of parameters.');
+    av.umsg('To create the reduce function in merely one instruction, we can pass in a function to reduce that uses cons as indicated in green below.   There is a small complication in that when reduce applies the operation to the head and accumulator, it uses the accumulator as the first argument.   But fp.cons has its list (the accumulator) as its second argument.   So we must create a function that compensates for this "flip" in the order of parameters.');
     pseudo3.show("call2");
     pseudo3.addClass("call2","green");
     av.step();
