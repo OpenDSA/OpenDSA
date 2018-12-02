@@ -83,9 +83,11 @@ This is illustrated in the next set of examples.
 Note that the *reduceRight* function expects the function we pass in
 for the operation that "accumulates" values to have its first
 parameter represent the head of the list, that is, the "next" value to
-be accumulated.  This is the opposite of *reduce*, which expected a
-function that had the second parameter playing that role.  This
-emphasize the right versus left associativity of the two patterns.
+be accumulated.  Its second parameter is consequently the accumulator.
+This is the opposite of *reduce*, which expected a function that had
+the first parameter playing the role of the accumulator, and its
+second the "next value to be accumulated..  This emphasizes the right
+versus left associativity of the two patterns.
 
 Also note that, because *reduce* captures the accumulation pattern as
 we described it in `the section on helper functions`_, it results in
