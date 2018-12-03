@@ -69,7 +69,7 @@
       "Graph/GraphIntro": {},
       "Graph/GraphImpl": {},
       "Graph/GraphTraversal": {},
-      "Ivan/GraphTopsort": {},
+      "Graph/GraphTopsort": {},
       "Ivan/GraphShortest": {},
       "Ivan/MCST": {},
       "Ivan/Kruskal": {}

@@ -213,7 +213,7 @@ $(document).ready(function() {
 
     destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
-    var outMsg = ((mainDestContext)?'main\'s':'class')+" "+destStr+
+    var outMsg = ((mainDestContext)?'main\'s':'global')+" "+destStr+
                   ' set to the value of '+rhs.value;
 
     av.umsg(outMsg);

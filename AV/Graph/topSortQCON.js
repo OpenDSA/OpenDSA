@@ -2,7 +2,7 @@
 /*global alert: true, ODSA */
 
 $(document).ready(function() {
-  var jsav = new JSAV("qTopSort");
+  var jsav = new JSAV("topSortQCON");
   var g;
   var queue;
   var Courses;
@@ -14,17 +14,17 @@ $(document).ready(function() {
   var c1, c2, c3, c4, c5, c6, c7, c8;
   var Count=new Array();
 
-  g = jsav.ds.graph({width: 500, height: 400, left: 0, top: 100, layout: "manual", directed: true});
+  g = jsav.ds.graph({width: 500, height: 500, left: 55, top: 20, layout: "manual", directed: true});
 
-  queue = jsav.ds.array(["<b>Queue</b>","","","","","","","",""],  {left: 395, top: 200}).css({"font-size": "8px", "min-width": "80px", "height": "70"}); //"min-width": "80px" doesnt work, .autoresize doesnt work, "width: "80" doesnt work
+  queue = jsav.ds.array(["<b>Queue</b>","","","","","","","",""],  {left: 475, top: 200}).css({"font-size": "8px", "width": "100px"}); //"min-width": "80px" doesnt work, .autoresize doesnt work, "width: "80" doesnt work
   var data = ["<b>&nbsp;Nodes&nbsp;</b>", "&nbsp;2505&nbsp;","&nbsp;2114&nbsp;","&nbsp;3604&nbsp;","&nbsp;3304&nbsp;","&nbsp;1114&nbsp;","&nbsp;2506&nbsp;","&nbsp;3114&nbsp;","&nbsp;3214&nbsp;"];
-  Courses = new jsav.ds.array(data,{left:395,top: 100}).css({"font-size": "10px"}).css({"font-size" : "8px"});
-  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>","","","","","","","",""],{left: 395,top:135}).css({"font-size": "8px", "width": "100px"});
-  Ecount.css(0,{"background-color":"#CC6633"}); //orignal 80 added font-size
+  Courses = new jsav.ds.array(data,{left: 475,top: 100}).css({"font-size" : "8px"});
+  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>","","","","","","","",""],{left: 475,top:135}).css({"font-size": "8px"});
+  Ecount.css(0,{"background-color":"#CC6633"});
   Courses.css(0,{width:80,"background-color":"#CC6633"});
-  queue.css(0,{"width": "80","background-color":"#CC6633"});
-  oparr = jsav.ds.array(["<b>Output</b>","","","","","","","",""],  {left: 395, top: 275}).css({"font-size": "8px", "width": "100px"});;
-  oparr.css(0,{width:100,"background-color":"#CC6633"});
+  queue.css(0,{"background-color":"#CC6633"});
+  oparr = jsav.ds.array(["<b>Output</b>","","","","","","","",""],  {left: 475, top: 275}).css({"font-size": "8px"});;
+  oparr.css(0,{"background-color":"#CC6633"});
   oparrcnt=1;
   initGraph();
   var v;
@@ -67,7 +67,6 @@ function displaySort() {
 function markIt(node,q) {
   node.addClass("marked");
   jsav.umsg("Enqueue "+ node.value() +" since it has no incoming edges.");
-  //node.edgeFrom(q).addClass("markpath");
   for(var i=0;i<q.length;i++)
   	queue.value(i+1,q[i].value());
   node.highlight();
@@ -87,13 +86,6 @@ function dequeueIt(node,q) {
   Ecount.addClass(i+1,"marked");
   Courses.unhighlight(i+1);
   Ecount.unhighlight(i+1);
-
-
-
-  node.edgeFrom(oparr(oparrcnt)).addClass("markpath");
-
-
-
   jsav.step();
 }
 
@@ -174,22 +166,19 @@ function about() {
 // Graph prepartion for initial stage of visualization
 
 function initGraph() {
-
-  c1 = g.addNode("2505", {"left": 60, "top": 150});
+  c1 = g.addNode("1114", {"left": 230});
   c2 = g.addNode("2114", {"left": 100, "top": 75});
-  c3 = g.addNode("3604", {"left": 160, "top": 220});
-  c4 = g.addNode("3304", {"left": 225, "top": 220});
-  c5 = g.addNode("1114", {"left": 230});
-  c6 = g.addNode("2506", {"left": 100, "top": 270});
+  c5 = g.addNode("2505", {"left": 0, "top": 150});
   c7 = g.addNode("3114", {"left": 200, "top": 150});
-  c8 = g.addNode("3214", {"left": 30, "top": 300});
+  c3 = g.addNode("3604", {"left": 160, "top": 220});
+  c6 = g.addNode("2506", {"left": 100, "top": 270});
+  c4 = g.addNode("3304", {"left": 225, "top": 220});
+  c8 = g.addNode("3214", {"left": -30, "top": 350});
 
-  g.addEdge(c5, c2);
-  g.addEdge(c2, c1);
-  g.addEdge(c2, c7);
-  g.addEdge(c1, c7);
-  g.addEdge(c1, c3);
-  g.addEdge(c1, c6);
+  g.addEdge(c1, c2);
+  g.addEdge(c2, c5);
+  g.addEdge(c5, c7);
+  g.addEdge(c5, c6);
   g.addEdge(c7, c3);
   g.addEdge(c7, c4);
   g.addEdge(c6, c8);

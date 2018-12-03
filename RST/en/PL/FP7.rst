@@ -58,12 +58,73 @@ the commonality in the following two examples.
 
 
 
-Later ...
 
-**Reducing from the right:** Whereas the *reduce* function we have defined applies its helper
-function *f* to produce the accumulated value *acc* in left-to-right
-order as it works through the list, we could also define a similar
-function that applied the helper function in right-to-left fashion as
-it worked through the list.
+The *reduce* function we have defined in the previous examples applies
+its helper function *f* to produce the accumulated value *acc* in
+left-to-right order as it works through the list.  Moreover, it does
+this in tail-recursive fashion because the helper function *f* is
+applied within the arguments to the recursive call, not to the result
+being returned from the recursive call.  This left-to-right order was
+essential for the definition of *reverse* to work correctly.  For
+*sum*, it was inconsequential because of the commutative property of addition.
+
+We could also define a similar function that applied the helper
+function in right-to-left fashion as it worked through the list.
+This is illustrated in the next set of examples.
 
 
+.. inlineav:: FP7Code3CON ss
+   :long_name: Illustrate ReduceRight Pattern
+   :links: AV/PL/FP/FP7CON.css
+   :scripts: AV/PL/FP/FP7Code3CON.js
+   :output: show
+
+
+Note that the *reduceRight* function expects the function we pass in
+for the operation that "accumulates" values to have its first
+parameter represent the head of the list, that is, the "next" value to
+be accumulated.  Its second parameter is consequently the accumulator.
+This is the opposite of *reduce*, which expected a function that had
+the first parameter playing the role of the accumulator, and its
+second the "next value to be accumulated..  This emphasizes the right
+versus left associativity of the two patterns.
+
+Also note that, because *reduce* captures the accumulation pattern as
+we described it in `the section on helper functions`_, it results in
+tail-recursive calls.  This is not true of *reduceRight* since it
+applies its function parameter *f* to the result of making the
+recursive call instead of applying recursion to the result of applying
+*f*.  The *acc* parameter that *reduce* takes is a true accumulator,
+which builds up its values on the descent into recursion, so that all
+the necessary computation is completed by the time the base case is
+reached.  The *acc* parameter that *reduceRight* takes is merely a
+starting point for the accumulation of values that must be computed as we
+recursively ascend from reaching the base level.
+
+.. _the section on helper functions: FP4.html
+      
+
+This problem deals with the reducing patterns described above.
+
+.. avembed:: Exercises/PL/Reduce1.html ka
+   :long_name: Reducing 1
+
+
+Folding/Reducing (2)
+--------------------
+
+This problem uses both the mapping and the reduce patterns.
+
+.. avembed:: Exercises/PL/Reduce2.html ka
+   :long_name: Reduce and Map
+
+
+Folding/Reducing (3)
+--------------------
+
+This problem will give you intensive practice with the reduce
+pattern. This problem is randomized and must be solved three times in
+a row.
+
+.. avembed:: Exercises/PL/Reduce3.html ka
+   :long_name: Reducing 3
