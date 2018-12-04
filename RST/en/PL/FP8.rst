@@ -52,6 +52,16 @@ The following *bestSalesPerson* function achieves this computation by
 defining two functions -- the *mapper* and the *reducer* and then
 appropriately calling on *fp.reduce*.   Think about how the sets of question marks **???** should
 be filled in before you attempt the review problem that follows
+
+
+
+.. inlineav:: FP8Code1CON ss
+   :long_name: Illustrate MapReduce Pattern
+   :links: AV/PL/FP/FP8CON.css
+   :scripts: AV/PL/FP/FP8Code1CON.js
+   :output: show
+
+
     
 ::
 
