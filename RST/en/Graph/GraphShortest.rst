@@ -58,9 +58,9 @@ We assume that all weights are positive.
 
 .. _DistExamp:
 
-.. inlineav:: dijkstraCON dgm
+.. inlineav:: DistanceExampCON dgm
    :links:
-   :scripts: AV/Graph/dijkstraCON.js
+   :scripts: AV/Graph/DistanceExampCON.js
    :align: center
 
    Example graph for shortest-path definitions.
@@ -156,9 +156,18 @@ At the end, array ``D`` will contain the shortest distance values.
 .. codeinclude:: Graphs/Dijkstra
    :tag: GraphDijk1
 
-.. avembed:: AV/Graph/DijkstraAV.html ss
-   :long_name: Dijkstra's Algorithm Visualization
+.. inlineav:: DijkstraCON ss
+   :long_name: Dijkstra Slideshow
+   :links: AV/Graph/DijkstraCON.css
+   :scripts: AV/Graph/DijkstraCON.js
+   :output: show
 
+.. TODO::
+   :type: AV
+
+   Provide an AV that runs on a random graph. An initial version is in 
+   ``AV/Development/dijkstraAV.*``.
+   
 There are two reasonable solutions to the key issue of finding the
 unvisited vertex with minimum distance value during each pass through
 the main ``for`` loop.

@@ -1,13 +1,13 @@
 $(document).ready(function () {
   "use strict";
-  var av = new JSAV("dijkstraCON", {"animationMode": "none"});
+  var av = new JSAV("DistanceExampCON", {"animationMode": "none"});
   var g = av.ds.graph({width: 300, height: 200,
                          layout: "manual", directed: true});
-  var a = g.addNode("a", {"left": 0, "top":  75});
-  var b = g.addNode("b", {"left": 100, "top":  0});
-  var c = g.addNode("c", {"left": 100, "top": 150});
-  var d = g.addNode("d", {"left": 250, "top":  25});
-  var e = g.addNode("e", {"left": 250, "top": 150});
+  var a = g.addNode("A", {"left": 0, "top":  75});
+  var b = g.addNode("B", {"left": 100, "top":  0});
+  var c = g.addNode("C", {"left": 100, "top": 150});
+  var d = g.addNode("D", {"left": 250, "top":  25});
+  var e = g.addNode("E", {"left": 250, "top": 150});
 
   g.addEdge(a, b, {"weight": 10});
   g.addEdge(a, c, {"weight":  3});

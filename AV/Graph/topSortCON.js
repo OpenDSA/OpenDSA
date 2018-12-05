@@ -1,6 +1,6 @@
 $(document).ready(function () {
   "use strict";
-  var av = new JSAV("topsortCON", {"animationMode": "none"});
+  var av = new JSAV("topSortCON", {"animationMode": "none"});
   var g = av.ds.graph({width: 500, height: 200,
                        layout: "manual", directed: true});
   var j1 = g.addNode("J1", {"left":   0, "top":  75});

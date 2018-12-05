@@ -1,5 +1,4 @@
 #topSortQCON {
-  width: 800px;
   height: 600px;
 }
 
@@ -14,4 +13,21 @@
 #topSortQCON .jsavarray.jsavindex {
 height: 50px;
 width: 100px;
+}
+
+
+#topSortQCON .jsavhorizontalarray .jsavnode {
+  line-height: 45px !important;
+  min-width: 45px !important;
+  max-width: 45px !important;
+  min-height: 45px !important;
+  max-height: 45px !important;
+}
+
+#topSortQCON .jsavverticalarray .jsavnode {
+  line-height: 45px !important;
+  min-width: 45px !important;
+  max-width: 45px !important;
+  min-height: 45px !important;
+  max-height: 45px !important;
 }

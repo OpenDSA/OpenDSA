@@ -8,6 +8,7 @@ $(document).ready(function() {
   var Courses;
   var Ecount;
   var oparr;
+  var arrleft = 420;
 
   var oparrcnt ;
   var output = new Array();
@@ -16,14 +17,17 @@ $(document).ready(function() {
 
   g = jsav.ds.graph({width: 500, height: 500, left: 55, top: 20, layout: "manual", directed: true});
 
-  queue = jsav.ds.array(["<b>Queue</b>","","","","","","","",""],  {left: 475, top: 200}).css({"font-size": "8px", "width": "100px"}); //"min-width": "80px" doesnt work, .autoresize doesnt work, "width: "80" doesnt work
+  queue = jsav.ds.array(["<b>Queue</b>","","","","","","","",""],  {left: arrleft, top: 200}).css({"font-size": "10px", "width": "100px"}); //"min-width": "80px" doesnt work, .autoresize doesnt work, "width: "80" doesnt work
   var data = ["<b>&nbsp;Nodes&nbsp;</b>", "&nbsp;2505&nbsp;","&nbsp;2114&nbsp;","&nbsp;3604&nbsp;","&nbsp;3304&nbsp;","&nbsp;1114&nbsp;","&nbsp;2506&nbsp;","&nbsp;3114&nbsp;","&nbsp;3214&nbsp;"];
-  Courses = new jsav.ds.array(data,{left: 475,top: 100}).css({"font-size" : "8px"});
-  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>","","","","","","","",""],{left: 475,top:135}).css({"font-size": "8px"});
-  Ecount.css(0,{"background-color":"#CC6633"});
-  Courses.css(0,{width:80,"background-color":"#CC6633"});
   queue.css(0,{"background-color":"#CC6633"});
-  oparr = jsav.ds.array(["<b>Output</b>","","","","","","","",""],  {left: 475, top: 275}).css({"font-size": "8px"});;
+
+  Courses = new jsav.ds.array(data,{left: arrleft, top: 90}).css({"font-size" : "10px"});
+  Courses.css(0,{width:80,"background-color":"#CC6633"});
+
+  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>","","","","","","","",""],{left: arrleft, top:135}).css({"font-size": "10px"});
+  Ecount.css(0,{"background-color":"#CC6633"});
+
+  oparr = jsav.ds.array(["<b>Output</b>","","","","","","","",""],  {left: arrleft, top: 275}).css({"font-size": "10px"});;
   oparr.css(0,{"background-color":"#CC6633"});
   oparrcnt=1;
   initGraph();

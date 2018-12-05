@@ -30,9 +30,9 @@ meet the prerequisite rules is called a :term:`topological sort`.
 
 .. _TopSort:
 
-.. inlineav:: topsortCON dgm
+.. inlineav:: topSortCON dgm
    :links:
-   :scripts: AV/Graph/topsortCON.js
+   :scripts: AV/Graph/topSortCON.js
    :align: center
 
    An example graph for topological sort. Seven tasks have

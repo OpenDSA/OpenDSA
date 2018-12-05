@@ -2,7 +2,7 @@
 /*global alert: true, ODSA */
 
 $(document).ready(function() {
-  var jsav = new JSAV("dijkstraCON");
+  var jsav = new JSAV("DijkstraCON");
   var graph;
   var mst;   //A graph representing the resulted path
   var gnodes = [];
@@ -18,26 +18,26 @@ $(document).ready(function() {
 
 
   graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
-	mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
-	initGraph();
-	graph.layout();
+  mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
+  initGraph();
+  graph.layout();
   mst.hide();
-	arr = new Array(graph.nodeCount());
-    for (i = 0; i < arr.length; i++) {
-      arr[i] = Infinity;
-    }
-    distances = jsav.ds.array(arr, {layout: "vertical", left: 650, top: 50});
-    distances.css({width: 40});
-    for (i = 0; i < arr.length; i++) {
-      arr[i] = gnodes[i].value();
-    }
-    labels = jsav.ds.array(arr, {layout: "vertical", left: 603, top: 50});
-    jsav.umsg("We will call Dijkstra's algorithm with a start vertex of " +
-              gnodes[0].value());
-    jsav.displayInit();
-    dijkstra(gnodes[0]);            // Run Dijkstra's algorithm from start node.
-    displayMST();
-    jsav.recorded();
+  arr = new Array(graph.nodeCount());
+  for (i = 0; i < arr.length; i++) {
+    arr[i] = Infinity;
+  }
+  distances = jsav.ds.array(arr, {layout: "vertical", left: 650, top: 0});
+  distances.css({width: 40});
+  for (i = 0; i < arr.length; i++) {
+    arr[i] = gnodes[i].value();
+  }
+  labels = jsav.ds.array(arr, {layout: "vertical", left: 605, top: 0});
+  jsav.umsg("We will call Dijkstra's algorithm with a start vertex of " +
+            gnodes[0].value());
+  jsav.displayInit();
+  dijkstra(gnodes[0]);            // Run Dijkstra's algorithm from start node.
+  displayMST();
+  jsav.recorded();
 
 
   function displayMST() {
@@ -56,9 +56,9 @@ $(document).ready(function() {
     distances.highlight(gnodes.indexOf(node));
     labels.highlight(gnodes.indexOf(node));
     node.highlight();
-	nodesOrdered[step] = node;
-	step++;
-	//console.log("Nodes added so far: "+step);
+    nodesOrdered[step] = node;
+    step++;
+    //console.log("Nodes added so far: "+step);
     jsav.step();
   }
 
@@ -89,7 +89,7 @@ $(document).ready(function() {
     var cost;         // Cost of adding a node to the path
     var next, i;
 
-  // Initialize the MST "parents" to dummy values
+    // Initialize the MST "parents" to dummy values
     for (next = gnodes.next(); next; next = gnodes.next()) {
       next.parent = next;
     }
@@ -108,10 +108,12 @@ $(document).ready(function() {
       if (v !== s) {
         //Add an edge
         var edge = graph.getEdge(v.parent, v);
-	console.log(v.parent.value() + '    ' + v.value());
-        edge.css({"stroke-width": "4", "stroke": "red"});
+        console.log(v.parent.value() + '    ' + v.value());
+//        edge.css({"stroke-width": "4", "stroke": "red"});
+        edge.css({"arrow-end": "classic-wide-long"}).addClass("markpath");
         var mstedge = mst.addEdge(mstnodes[v.parent.index], mstnodes[v.index], {"weight": edge.weight()});
-        mstedge.css({"stroke-width": "4", "stroke": "red"});
+        mstedge.css({"arrow-end": "classic-wide-long"}).addClass("markpath");
+//      mstedge.css({"stroke-width": "4", "stroke": "red"});
         jsav.umsg("Add edge (" + v.parent.value() + "," + v.value() + ")");
         jsav.step();
       }
@@ -144,29 +146,29 @@ $(document).ready(function() {
 
   // Initialize the graph.
   function initGraph() {
-      //Nodes of the original graph
-      var a = graph.addNode("A", {"left": 25, "top": 50});
-      var b = graph.addNode("B", {"left": 325, "top": 50});
-      var c = graph.addNode("C", {"left": 145, "top": 75});
-      var d = graph.addNode("D", {"left": 145, "top": 200});
-      var e = graph.addNode("E", {"left": 0, "top": 300});
-      var f = graph.addNode("F", {"left": 325, "top": 250});
-      //Nodes of the MST
-      mst.addNode("A", {"left": 25, "top": 50});
-      mst.addNode("B", {"left": 325, "top": 50});
-      mst.addNode("C", {"left": 145, "top": 75});
-      mst.addNode("D", {"left": 145, "top": 200});
-      mst.addNode("E", {"left": 0, "top": 300});
-      mst.addNode("F", {"left": 325, "top": 250});
-      //Original graph edges
-      graph.addEdge(a, c, {"weight": 7});
-      graph.addEdge(a, e, {"weight": 9});
-      graph.addEdge(c, b, {"weight": 5});
-      graph.addEdge(c, d, {"weight": 1});
-      graph.addEdge(c, f, {"weight": 2});
-      graph.addEdge(f, b, {"weight": 6});
-      graph.addEdge(d, f, {"weight": 2});
-      graph.addEdge(e, f, {"weight": 1});
+    //Nodes of the original graph
+    var a = graph.addNode("A", {"left": 25, "top": 50});
+    var b = graph.addNode("B", {"left": 325, "top": 50});
+    var c = graph.addNode("C", {"left": 145, "top": 75});
+    var d = graph.addNode("D", {"left": 145, "top": 200});
+    var e = graph.addNode("E", {"left": 0, "top": 300});
+    var f = graph.addNode("F", {"left": 325, "top": 250});
+    //Nodes of the MST
+    mst.addNode("A", {"left": 25, "top": 50});
+    mst.addNode("B", {"left": 325, "top": 50});
+    mst.addNode("C", {"left": 145, "top": 75});
+    mst.addNode("D", {"left": 145, "top": 200});
+    mst.addNode("E", {"left": 0, "top": 300});
+    mst.addNode("F", {"left": 325, "top": 250});
+    //Original graph edges
+    graph.addEdge(a, c, {"weight": 7});
+    graph.addEdge(a, e, {"weight": 9});
+    graph.addEdge(c, b, {"weight": 5});
+    graph.addEdge(c, d, {"weight": 1});
+    graph.addEdge(c, f, {"weight": 2});
+    graph.addEdge(f, b, {"weight": 6});
+    graph.addEdge(d, f, {"weight": 2});
+    graph.addEdge(e, f, {"weight": 1});
 
 
     gnodes = graph.nodes();

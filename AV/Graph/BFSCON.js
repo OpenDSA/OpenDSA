@@ -13,7 +13,7 @@ $(document).ready(function() {
 
   g = av.ds.graph({width: 500, height: 360, layout: "manual", directed: true});
   arr = av.ds.array(["", "", "", "", "", ""],
-                    {left: 700, top: 50, layout: "vertical"});
+                    {left: 700, top: 20, layout: "vertical"});
   firstElement = 0;
   lastElement = 0;
   initGraph();

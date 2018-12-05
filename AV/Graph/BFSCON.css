@@ -10,3 +10,11 @@
   stroke-width: 4;
   stroke: #f61010; //red
 }
+
+#BFSCON .jsavverticalarray .jsavnode {
+  line-height: 45px !important;
+  min-width: 45px !important;
+  max-width: 45px !important;
+  min-height: 45px !important;
+  max-height: 45px !important;
+}
