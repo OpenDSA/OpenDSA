@@ -9,13 +9,13 @@ $(document).ready(function() {
 //    var offset_between_var_label_and_cell = 20;
 
     var ll = av.label("Lists in DB", {left: leftMargin, top: 0});
-    var l1 = av.ds.array(["Smith", 4, 1, 8, 32, 45], {indexed: false, left: leftMargin, top: 20}).hide();
-    var l2 = av.ds.array(["Jones", 9, 2, 8, 6, 4], {indexed: false, left: leftMargin, top: 20 + offset_for_each_var}).hide();
+    var l1 = av.ds.array(["Jones", 9, 2, 8, 6, 4], {indexed: false, left: leftMargin, top: 20}).hide();
+    var l2 = av.ds.array(["Smith", 4, 1, 8, 32, 45], {indexed: false, left: leftMargin, top: 20 + offset_for_each_var}).hide();
     var l3 = av.ds.array(["Green", 4, 4, 6, 1, 12, 8], {indexed: false, left: leftMargin, top: 20 + 2 * offset_for_each_var}).hide();
     
     var ml = av.label("Application of the mapper produces", {left: leftMargin, top: 20 + 3.4 * offset_for_each_var}).hide();
-    var m1 = av.ds.array(["Smith", 90], {indexed: false, left: leftMargin, top: 20 + 4 * offset_for_each_var}).hide();
-    var m2 = av.ds.array(["Jones", 29], {indexed: false, left: leftMargin, top: 20 + 5 * offset_for_each_var}).hide();
+    var m1 = av.ds.array(["Jones", 29], {indexed: false, left: leftMargin, top: 20 + 4 * offset_for_each_var}).hide();
+    var m2 = av.ds.array(["Smith", 90], {indexed: false, left: leftMargin, top: 20 + 5 * offset_for_each_var}).hide();
     var m3 = av.ds.array(["Green", 35], {indexed: false, left: leftMargin, top: 20 + 6 * offset_for_each_var}).hide();
     
     var rl = av.label("The reducer picks", {left: leftMargin, top: 20 + 7.4 * offset_for_each_var}).hide();
@@ -57,9 +57,9 @@ $(document).ready(function() {
     var pseudo1 = av.code(
         code1,
         {
-            left: leftMargin + 250,
+            left: leftMargin + 270,
             top: 0,
-            lineNumbers: false,
+            lineNumbers: true,
 	    tags: {
 		"mapperques": [5,7],
 		"mapperans": [6,8],
@@ -73,7 +73,7 @@ $(document).ready(function() {
     
 
     // Slide 1
-    av.umsg('Our database is a list of records where each record r is a list whose head is the name of a salesperson and whose tail is a list of their sales.  The sample database on the left below has three such records. Ultimately our answer will be returned by applying reduce to another list of records produced by applying the map operation to each list in the database.   The function we give to the map operation is called "mapper".');
+    av.umsg('Our database is a list of records where each record r is a list whose head is the name of a salesperson and whose tail is a list of their sales.  The sample database on the left below has three such records. Ultimately our answer will be returned by applying reduce to another list of records produced by applying the map operation to each list in the database.   The function we give to the map operation in line 20 is called mapper (lines 3-7).  How should mapper determine the [name, totalSales] pair it must return?');
     l1.show();
     l1.addClass(0,"wider");
     l2.show();
@@ -87,7 +87,7 @@ $(document).ready(function() {
     av.displayInit();
 
     // S 2
-    av.umsg('What should mapper do to each of the lists r that it works on?   It should return a two-element list whose first element is the name of the salesperson and whose second element is the sum of the remaining elements of r, that is, the sum of the elements in the tail of r.   We can easily obtain this sum by using reduce to compute it as highlighted in red below.  Thus, the mapper function is actually using reduce to do the work that needs to be done on each list.');
+    av.umsg('What should mapper do to each of the lists r that it works on?   It should return a two-element list whose first element is the name of the salesperson, which is the head of r, and whose second element is the sum of the remaining elements of r, that is, the sum of the elements in the tail of r.   We can easily obtain this sum by using reduce to compute it as highlighted in line 6 below.  Thus, the mapper function is actually using reduce at a deeper level to do the work that needs to be done on each list.');
     m1.show();
     m1.addClass(0,"wider");
     m2.show();
@@ -102,7 +102,7 @@ $(document).ready(function() {
     av.step();
 
     // S 3
-    av.umsg('Given the list of name-sales pairs produced by the mapper, the call to reduce that returns the final answer must perform an "accumulation" process that picks the pair with the highest total sales. To do this we use a function called "reducer" that, given two name-sales pairs, will return the pair having the greater sales.   As a starting point for this accumulation, we give reduce a "dummy" pair with a sales total of -1.');
+    av.umsg('Given the list of name-sales pairs produced by the mapper, the call to reduce in lines 18-22 that returns the final answer must perform an "accumulation" process that picks the pair with the highest total sales. To do this we use a function called reducer in lines 12-13 that, given two name-sales pairs, will return the pair having the greater sales.   As a starting point for this accumulation, we give reduce a "dummy" pair with a sales total of -1 in line 21.');
     pseudo1.unhighlight([23,3, 4, 5, 6, 7, 8, 9]); 
     pseudo1.unhighlight("mapperans");
     pseudo1.removeClass("mapperans","red");
@@ -124,7 +124,11 @@ $(document).ready(function() {
     pseudo1.unhighlight([14,16]);
     pseudo1.unhighlight(22);
     pseudo1.show([21, 22, 23, 25, 26]);
-    pseudo1.addClass([21, 22, 23, 25, 26], "red");
+    // Pseudocode highlighting gets messed up after a lot of
+    // high/unhighlighting.  This seems to reset everything
+    pseudo1.unhighlight(0);  
+    pseudo1.highlight([21, 22, 23, 25, 26]);
+//     pseudo1.addClass([21, 22, 23, 25, 26], "red");
     av.step();
     
     av.recorded();

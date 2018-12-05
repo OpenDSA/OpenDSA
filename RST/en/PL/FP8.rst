@@ -33,7 +33,7 @@ sales records of "Jones" on a second computer, and the sales records of
 
 ::
 
-    var db2 = [ ["Smith", 4, 1, 8, 32, 45], ["Jones", 9, 2, 8, 6, 4], 
+    var db2 = [ ["Jones", 9, 2, 8, 6, 4], ["Smith", 4, 1, 8, 32, 45], 
                 ["Green", 4, 4, 6, 1, 12, 8] ];
 
 
