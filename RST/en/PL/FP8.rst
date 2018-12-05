@@ -50,8 +50,9 @@ picks out the salesperson who sold the most.
 
 The following *bestSalesPerson* function achieves this computation by
 defining two functions -- the *mapper* and the *reducer* and then
-appropriately calling on *fp.reduce*.   Think about how the sets of question marks **???** should
-be filled in before you attempt the review problem that follows
+appropriately calling on *fp.reduce*.  Read through the following
+slide show for more details and then attempt the review problem that
+follows.
 
 
 
@@ -61,26 +62,6 @@ be filled in before you attempt the review problem that follows
    :scripts: AV/PL/FP/FP8Code1CON.js
    :output: show
 
-
-    
-::
-
-    // Our database is a list of records where each record r is a list whose
-    // head is the name of a salesperson and whose tail is a list of their sales
-
-    var bestSalesPerson = function (db) {
-
-        // mapper must return the pair [name, totalSales] for a given record
-        var mapper = function (r) {
-            return fp.makeList( ???, ??? );
-        }
-        // reducer returns the input pair [name, totalSales] with the largest totalSales
-        var reducer = function(p1,p2) {
-            return (fp.isGT(fp.hd(fp.tl(p1)), fp.hd(fp.tl(p2)))) ? p1 : p2;
-        }
-        // returns [salesPerson, totalSales] with the largest totalSales in the DB
-        return fp.reduce( ???, ???, ??? ); 
-    }
 
 
 This randomized problem is about the MapReduce model.

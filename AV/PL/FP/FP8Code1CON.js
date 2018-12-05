@@ -13,12 +13,12 @@ $(document).ready(function() {
     var l2 = av.ds.array(["Jones", 9, 2, 8, 6, 4], {indexed: false, left: leftMargin, top: 20 + offset_for_each_var}).hide();
     var l3 = av.ds.array(["Green", 4, 4, 6, 1, 12, 8], {indexed: false, left: leftMargin, top: 20 + 2 * offset_for_each_var}).hide();
     
-    var ml = av.label("Application of the mapper produces", {left: leftMargin, top: 20 + 3.4 * offset_for_each_var});
+    var ml = av.label("Application of the mapper produces", {left: leftMargin, top: 20 + 3.4 * offset_for_each_var}).hide();
     var m1 = av.ds.array(["Smith", 90], {indexed: false, left: leftMargin, top: 20 + 4 * offset_for_each_var}).hide();
     var m2 = av.ds.array(["Jones", 29], {indexed: false, left: leftMargin, top: 20 + 5 * offset_for_each_var}).hide();
     var m3 = av.ds.array(["Green", 35], {indexed: false, left: leftMargin, top: 20 + 6 * offset_for_each_var}).hide();
     
-    var rl = av.label("The reducer picks", {left: leftMargin, top: 20 + 7.4 * offset_for_each_var});
+    var rl = av.label("The reducer picks", {left: leftMargin, top: 20 + 7.4 * offset_for_each_var}).hide();
     var r1 = av.ds.array(["Smith", 90], {indexed: false, left: leftMargin, top: 20 + 8 * offset_for_each_var}).hide();
 
     var code1 =         [
@@ -73,30 +73,59 @@ $(document).ready(function() {
     
 
     // Slide 1
-    av.umsg('.');
+    av.umsg('Our database is a list of records where each record r is a list whose head is the name of a salesperson and whose tail is a list of their sales.  The sample database on the left below has three such records. Ultimately our answer will be returned by applying reduce to another list of records produced by applying the map operation to each list in the database.   The function we give to the map operation is called "mapper".');
     l1.show();
     l1.addClass(0,"wider");
     l2.show();
     l2.addClass(0,"wider");
     l3.show();
     l3.addClass(0,"wider");
+    pseudo1.hide("mapperans");
+    pseudo1.hide("reducerans");
+    pseudo1.hide("accumstartans");
+    pseudo1.highlight([23,3, 4, 5, 6, 7, 8, 9]); 
+    av.displayInit();
+
+    // S 2
+    av.umsg('What should mapper do to each of the lists r that it works on?   It should return a two-element list whose first element is the name of the salesperson and whose second element is the sum of the remaining elements of r, that is, the sum of the elements in the tail of r.   We can easily obtain this sum by using reduce to compute it as highlighted in red below.  Thus, the mapper function is actually using reduce to do the work that needs to be done on each list.');
     m1.show();
     m1.addClass(0,"wider");
     m2.show();
     m2.addClass(0,"wider");
     m3.show();
-    m3.addClass(0,"wider");
-    m1.show();
-    m1.addClass(0,"wider");
+    m3.addClass(0,"wider");    
+    ml.show();
+    pseudo1.hide("mapperques");
+    pseudo1.show("mapperans");
+    pseudo1.unhighlight("mapperans");
+    pseudo1.addClass("mapperans","red");
+    av.step();
+
+    // S 3
+    av.umsg('Given the list of name-sales pairs produced by the mapper, the call to reduce that returns the final answer must perform an "accumulation" process that picks the pair with the highest total sales. To do this we use a function called "reducer" that, given two name-sales pairs, will return the pair having the greater sales.   As a starting point for this accumulation, we give reduce a "dummy" pair with a sales total of -1.');
+    pseudo1.unhighlight([23,3, 4, 5, 6, 7, 8, 9]); 
+    pseudo1.unhighlight("mapperans");
+    pseudo1.removeClass("mapperans","red");
+    pseudo1.show("reducerans");
+    pseudo1.show("accumstartans");
+    pseudo1.highlight("reducerans");
+    pseudo1.highlight("accumstartans");
+    pseudo1.highlight([22,14]);
+    pseudo1.hide("reducerques");
+    pseudo1.hide("accumstartques");
+    rl.show();
     r1.show();
     r1.addClass(0,"wider");
-    pseudo1.hide("mapperans");
-    pseudo1.hide("reducerans");
-    pseudo1.hide("accumstartans");
-    av.displayInit();
-
-    // S 2
-
+    av.step();
+    
+    // S 4
+    av.umsg('Having defined all three arguments to reduce, we merely need to call it to return the answer from bestSalesPerson.  The interplay of the mapping and reducing operations will do all the heavy lifting provided we set up those operations correctly.');
+    pseudo1.unhighlight("accumstartans");
+    pseudo1.unhighlight([14,16]);
+    pseudo1.unhighlight(22);
+    pseudo1.show([21, 22, 23, 25, 26]);
+    pseudo1.addClass([21, 22, 23, 25, 26], "red");
+    av.step();
     
     av.recorded();
 });
