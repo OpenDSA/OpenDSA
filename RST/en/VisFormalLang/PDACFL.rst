@@ -94,6 +94,13 @@ Each move either increases or decreases stack contents by a single symbol.
 **Theorem:** If :math:`L = L(M)` for some NPDA :math:`M`,
 then :math:`L` is a CFL.
 
+
+.. inlineav:: PDAtoCFLCON ss
+   :links: AV/VisFormalLang/PDA/PDAtoCFLCON.css
+   :scripts: AV/VisFormalLang/PDA/PDAtoCFLCON.js
+   :output: show
+
+
 .. note::
 
    Want to show that each NPDA represents a CFL, so we 

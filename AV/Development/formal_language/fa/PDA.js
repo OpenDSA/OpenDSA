@@ -417,7 +417,20 @@ pda.serializeToXML = function () {
   text = text + "</automaton></structure>"
     return text;
 };
-
+pda.loadFAFromJFLAPFile = function (url) {
+	var parser,
+		xmlDoc,
+		text,
+		jsav = this.jsav;
+	$.ajax( {
+		url: url,
+		async: false, // we need it now, so not asynchronous request
+		success: function(data) {
+		  text = data;
+		}
+  });
+  this.initFromXML(text);
+}
 // load a PDA from a XML file
 pda.initFromXML = function(text) {
   var parser,

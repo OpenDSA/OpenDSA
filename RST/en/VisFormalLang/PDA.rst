@@ -146,6 +146,14 @@ state.
       \mbox{input:} & aaabbb &aabbb &abbb &bbb & bb & b \\ 
       \end{array} 
 
+
+.. inlineav:: PDATrace1 ss
+   :links: AV/VisFormalLang/PDA/PDATrace1.css
+   :scripts: AV/VisFormalLang/PDA/PDATrace1.js
+   :align: center
+
+
+
 **Another Definition for Language Acceptance:**
 NPDA :math:`M` accepts :math:`L(M)` by empty stack:
 
@@ -239,6 +247,13 @@ such that :math:`L = L(M)`.
       :figwidth: 90%
       :alt: stnfaints
 
+
+.. inlineav:: PDADeterministic dgm
+   :links: AV/VisFormalLang/PDA/PDADeterministic.css
+   :scripts: AV/VisFormalLang/PDA/PDADeterministic.js
+   :align: center
+
+
 .. topic:: Example
            
    :math:`L = \{a^nb^{n+m}c^m | n, m > 0\}, \Sigma = \{a, b, c\}`
@@ -250,6 +265,14 @@ such that :math:`L = L(M)`.
       :figwidth: 90%
       :alt: stnfaints
 
+
+.. inlineav:: PDAProbDeterministic dgm
+   :links: AV/VisFormalLang/PDA/PDAProbDeterministic.css
+   :scripts: AV/VisFormalLang/PDA/PDAProbDeterministic.js
+   :align: center
+
+
+
 .. topic:: Example
            
    :math:`L = \{a^nb^{2n} | n > 0\}, \Sigma=\{a, b\}` 
@@ -260,6 +283,13 @@ such that :math:`L = L(M)`.
       :capalign: justify
       :figwidth: 90%
       :alt: stnfaints
+
+
+.. inlineav:: PDANonDeterministic dgm
+   :links: AV/VisFormalLang/PDA/PDANonDeterministic.css
+   :scripts: AV/VisFormalLang/PDA/PDANonDeterministic.js
+   :align: center
+
 
 
 Equivalence of Acceptance Definitions
