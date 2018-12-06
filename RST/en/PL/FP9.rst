@@ -109,29 +109,32 @@ the 3 has been processed is the function that takes
 :math:`x \times 4`) and finally passes this new value as input to the
 continuation for the next recursive call.
 
-The resulting code is in the *product3* function appearing below.
-When programming in the **continuation-passing style** (CPS), every
-function takes an extra parameter, namely a continuation.
+.. The resulting code is in the *product3* function appearing below.
+.. When programming in the **continuation-passing style** (CPS), every
+.. function takes an extra parameter, namely a continuation.
+.. 
+.. ::
+.. 
+..     var product3 = function (ns) {
+..         var cps_product = function (ns,k) {
+..             if (fp.isNull(ns)) {
+..                 return k(1);
+..             } else {
+..                 return cps_product(fp.tl(ns),
+..                                    function (x) {
+..                                        return k(fp.mul(x,fp.hd(ns)));
+..                                    });
+..             }
+..         };
+..         return cps_product(ns, function (x) { return x; });
+..     }
+.. 
+.. To initiate the computation, the CPS helper function is given the
+.. identity function.
 
-::
-
-    var product3 = function (ns) {
-        var cps_product = function (ns,k) {
-            if (fp.isNull(ns)) {
-                return k(1);
-            } else {
-                return cps_product(fp.tl(ns),
-                                   function (x) {
-                                       return k(fp.mul(x,fp.hd(ns)));
-                                   });
-            }
-        };
-        return cps_product(ns, function (x) { return x; });
-    }
-
-To initiate the computation, the CPS helper function is given the
-identity function.
-
+To see how the notion of a continuation actually leads to a new
+tail-recursive version of the product function, read through the
+description of the *product3* function in the following slide show.
 
 .. inlineav:: FP9Code1CON ss
    :long_name: Illustrate Continuation Passing

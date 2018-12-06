@@ -18,11 +18,12 @@
 }
 
 #FP9Code1CON .jsavlabel.emphasize{
-  font-weight: bold;
+    font-weight: bold;
+    color: red;
 }
 
 #FP9Code1CON .jsavoutput.jsavline {
-  height: 100px;
+  height: 120px;
 }
 
 /* Makes all cells wider */
