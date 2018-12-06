@@ -62,11 +62,16 @@ the commonality in the following two examples.
 The *reduce* function we have defined in the previous examples applies
 its helper function *f* to produce the accumulated value *acc* in
 left-to-right order as it works through the list.  Moreover, it does
-this in tail-recursive fashion because the helper function *f* is
-applied within the arguments to the recursive call, not to the result
-being returned from the recursive call.  This left-to-right order was
-essential for the definition of *reverse* to work correctly.  For
-*sum*, it was inconsequential because of the commutative property of addition.
+this in what is known as *tail-recursive* fashion because the helper
+function *f* is applied within the arguments to the recursive call,
+not to the result being returned from the recursive call.  This
+left-to-right order was essential for the definition of *reverse* to
+work correctly.  For *sum*, it was inconsequential because of the
+commutative property of addition.  We will return to a more extensive
+discussion of tail-recursive functions in
+the `section on continuation passing style`_.
+
+.. _section on continuation passing style: FP9.html
 
 We could also define a similar function that applied the helper
 function in right-to-left fashion as it worked through the list.
@@ -90,16 +95,18 @@ second the "next value to be accumulated..  This emphasizes the right
 versus left associativity of the two patterns.
 
 Also note that, because *reduce* captures the accumulation pattern as
-we described it in `the section on helper functions`_, it results in
-tail-recursive calls.  This is not true of *reduceRight* since it
-applies its function parameter *f* to the result of making the
-recursive call instead of applying recursion to the result of applying
-*f*.  The *acc* parameter that *reduce* takes is a true accumulator,
-which builds up its values on the descent into recursion, so that all
-the necessary computation is completed by the time the base case is
-reached.  The *acc* parameter that *reduceRight* takes is merely a
-starting point for the accumulation of values that must be computed as we
-recursively ascend from reaching the base level.
+we described it in `the section on helper functions`_, the accumulator
+has undergone all the computation necessary to achieve the final
+answer by the time the end of the list is reached.  This is not true
+of *reduceRight* since it applies its function parameter *f* to the
+result of making the recursive call instead of applying recursion to
+the result of applying *f*.  The *acc* parameter that *reduce* takes
+is a true accumulator, which builds up its values on the descent into
+recursion, so that all the necessary computation is completed by the
+time the base case is reached.  The *acc* parameter that *reduceRight*
+takes is merely a starting point for the accumulation of values that
+must be computed as we recursively ascend from reaching the base
+level.
 
 .. _the section on helper functions: FP4.html
       
