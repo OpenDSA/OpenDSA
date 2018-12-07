@@ -142,5 +142,137 @@ description of the *product3* function in the following slide show.
    :scripts: AV/PL/FP/FP9Code1CON.js
    :output: show
 
+The next slide show offers a recap of the three versions of the
+product function that we've seen so far.
+
+.. inlineav:: FP9Code2CON ss
+   :long_name: Compare CPS with non-tail recursive and accumulation
+   :links: AV/PL/FP/FP9CON.css
+   :scripts: AV/PL/FP/FP9Code2CON.js
+   :output: show
+
+
+In addition to providing a technique that guarantees TCO can be
+performed, CPS offer a couple of other advantages over
+straight-forward recursion and the accumulation technique.  First,
+suppose we want to make sure that no unnecessary computations are
+performed when the input list contains a zero.  We can define a new and
+improved version of the function, which is called *product4* and
+appears below.
+
+::
+
+    var product4 = function (ns) {
+        var cps_zero = function (ns,k) {
+            if (fp.isNull(ns)) {
+                return k(1);
+            } else  if (fp.isEq(fp.hd(ns),0)) {
+                return 0;  // *** the continuation is never invoked! ***
+            } else {
+                return cps_zero(fp.tl(ns),
+                                function (x) {
+                                    return k(fp.mul(x,fp.hd(ns)));
+                                });
+            }
+        };
+        return cps_zero(ns, function (x) { return x; });
+    }
+
+Note that, although we could add a similar case to return 0 in the
+*product1* function, the 0 that we return would be unnecessarily used
+in computations multiple times as we unwind from recursion.  We could
+also add a similar "return 0" case in *product2*, but potentially many
+unnecessary multiplications would have already been performed on the
+accumulator argument by the time that zero was encountered.
+    
+To illustrate one more neat aspect of functions that use continuation
+passing style, recall that negative numbers are not allowed in the
+input list.  Hence we could view the erroneous appearance of a
+negative number in the list as an exception, for which we would want
+to immediately throw an error message and abandon the computation of
+the product without doing any multiplications.  Using continuation
+passing style to handle exceptions in this fashion is illustrated in
+the *product5* version of the function below.
+
+::
+
+    var product5 = function (ns) {
+        var cps_exception = function (ns,k) {
+            if (fp.isNull(ns)) {
+                return k(1);
+            } else  if (fp.isEq(fp.hd(ns),0)) {
+                return 0;
+            } else  if (fp.isLT(fp.hd(ns),0)) {
+                return "Negative numbers are not allowed.";
+            } else {
+                return cps_exception(fp.tl(ns),
+                                     function (x) {
+                                         return k(fp.mul(x,fp.hd(ns)));
+                                     });
+            }
+        };
+        return cps_exception(ns, function (x) { return x; });
+    }
+
+Adding such an exception-handling case that returns a string would be
+impossible in *product1* since that string would have to participate
+in all the multiplications that occur as we unwind from recursion.
+Although we could add such a case in *product2*, it would defeat one
+of the main goals of exception handling, namely to protect the values
+of critical variables from "damage" that may have occurred before the
+exception was encountered.  Although *product2* is simple enough as to
+not have any damaging side effects that could occur prior to an
+exception, in more complicated situations the accumulator technique
+could not avoid this because it performs computations as we descend
+into recursive calls.  In contrast, *product5* has performed absolutely
+no computations when the exception is encountered.  Instead all it has
+done is to have partially defined the continuation function, which we can
+harmlessly decide to not call upon encountering the exception.
+
+    
+This review problem is the first one in a sequence of three problems
+that require you to complete the implementation of a recursive
+function that uses continuation-passing style programming. This
+problem uses the :math:`gcd` function introduced in the first problem
+in this set, but you do not need to remember how it was implemented.
+
+.. avembed:: Exercises/PL/ContinuationPassing1.html ka
+   :long_name: CPS Style 1
+
+Continuation Passing Style (2)
+------------------------------
+
+This review problem is the second one in a sequence of three problems
+that require you to complete the implementation of a recursive
+function that uses continuation-passing style programming. This
+problem uses the :math:`gcd` function introduced in the first problem
+in this set, but you do not need to remember how it was implemented.
+
+.. avembed:: Exercises/PL/ContinuationPassing2.html ka
+   :long_name: CPS Style 2
+
+Continuation Passing Style (3)
+------------------------------
+
+This review problem is the last one in a sequence of three problems
+that require you to complete the implementation of a recursive
+function that uses continuation-passing style programming. This
+problem uses the :math:`gcd` function introduced in the first problem
+in this set, but you do not need to remember how it was implemented.
+
+.. avembed:: Exercises/PL/ContinuationPassing3.html ka
+   :long_name: CPS Style 3
+
+
+More CPS Practice
+-----------------
+
+This randomized review problem will give you more practice writing
+recursive functions in the continuation-passing style. To get credit
+for it, you must solve it correctly three times in a row.
+
+.. avembed:: Exercises/PL/ContinuationPassing4.html ka
+   :long_name: Randomized CPS practice
+	    
 
 

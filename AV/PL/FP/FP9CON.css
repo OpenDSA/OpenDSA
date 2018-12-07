@@ -72,3 +72,80 @@
 }*/
 
 
+/* ---------------  Code 2 ---------------*/
+
+#FP9Code2CON {
+    height: 740px;
+    width: 960px
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#FP9Code2CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#FP9Code2CON .jsavcode {
+  margin-left: 20px;
+  width: 400px;
+}
+
+#FP9Code2CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#FP9Code2CON .jsavlabel.emphasize{
+    font-weight: bold;
+    color: red;
+}
+
+#FP9Code2CON .jsavoutput.jsavline {
+  height: 120px;
+}
+
+/* Makes all cells wider */
+/*#FP9Code2CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#FP9Code2CON  .jsavindex.jsavnode.wider {
+    min-width : 60px !important;
+    max-width : 60px !important;
+}
+
+
+#FP9Code2CON  .jsavindex.jsavnode.arrayblue {
+    background-color: LightBlue;
+}
+
+#FP9Code2CON  .jsavindex.jsavnode.arraygreen {
+    background-color: LightGreen;
+}
+
+
+
+#FP9Code2CON .jsavcodeline.extrawidth{
+    width: 500px;
+/*    font-size: 10pt*/
+}
+
+#FP9Code2CON .jsavcodeline.green {
+    background-color: LightGreen;
+}
+
+#FP9Code2CON .jsavcodeline.blue {
+    background-color: LightBlue;
+}
+
+#FP9Code2CON .jsavcodeline.red {
+    background-color: LightCoral;
+}
+
+/*.newcolor {
+    color: #458a4f;
+    background-color: #7cc5ef
+}*/
+
+
