@@ -14,6 +14,19 @@ Introduction to Functional Programming - List Construction and Deconstruction
 FP - Constructing Lists with cons
 ---------------------------------
 
+
+.. Just a test to see if we can visualize a beta reduction
+
+Just a test to see if we can visualize a beta reduction -- delete when done testing
+   
+.. inlineav:: FP3Code2CON ss
+   :long_name: Illustrate Deep Recursion On BST
+   :links: AV/PL/FP/FP3CON.css
+   :scripts: AV/PL/FP/FP3Code2CON.js
+   :output: show
+
+
+
 **Functional programming** (FP) is a programming paradigm where
 functions are the main abstraction and in which functions are pure,
 first-class values and data is immutable.

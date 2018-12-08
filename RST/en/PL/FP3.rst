@@ -54,8 +54,8 @@ of the integers in the tree.
 
 .. inlineav:: FP3Code1CON ss
    :long_name: Illustrate Deep Recursion On List To Return Numeric Value
-   :links: AV/PL/AV/FP3CON.css
-   :scripts: AV/PL/AV/FP3Code1CON.js
+   :links: AV/PL/FP/FP3CON.css
+   :scripts: AV/PL/FP/FP3Code1CON.js
    :output: show
 
 
@@ -125,8 +125,8 @@ tree.   We will address this shortcoming in the
 
 .. inlineav:: FP3Code2CON ss
    :long_name: Illustrate Deep Recursion On BST
-   :links: AV/PL/AV/FP3CON.css
-   :scripts: AV/PL/AV/FP3Code2CON.js
+   :links: AV/PL/FP/FP3CON.css
+   :scripts: AV/PL/FP/FP3Code2CON.js
    :output: show
 
 
