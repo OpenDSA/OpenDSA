@@ -286,6 +286,11 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
       :capalign: justify
       :figwidth: 90%
       :alt: lt7pf1
+      
+   .. inlineav:: PDA dgm
+      :links: AV/OpenFLAP/PDA.css
+      :scripts: AV/OpenFLAP/PDA.js
+      :align: center
 
    | Here, :math:`x` is any symbol in :math:`{\Gamma}^{'}`.
      (:math:`l` represents :math:`\lambda`).
@@ -314,6 +319,11 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
       :capalign: justify
       :figwidth: 90%
       :alt: lt7pf2
+      
+   .. inlineav:: PDA2 dgm
+      :links: AV/OpenFLAP/PDA2.css
+      :scripts: AV/OpenFLAP/PDA2.js
+      :align: center
 
    | If :math:`M` accepted in some state, then that means the stack
      was empty.
