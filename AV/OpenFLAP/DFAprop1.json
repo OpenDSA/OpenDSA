@@ -1,0 +1,16 @@
+{
+    "translations": {
+      "en": {
+        "prop1": "../../../AV/VisFormalLang/DFA/AutomataFiles/DFAprop/DFAprop1.jff",
+        "prop2": "../../../AV/VisFormalLang/DFA/AutomataFiles/DFAprop/DFAprop2.jff",
+        "prop3": "../../../AV/VisFormalLang/DFA/AutomataFiles/DFAprop/DFAprop3.jff",
+        "prop4": "../../../AV/VisFormalLang/DFA/AutomataFiles/DFAprop/DFAprop4.jff",
+        "prop5": "../../../AV/VisFormalLang/DFA/AutomataFiles/DFAprop/DFAprop5.jff"
+      }
+    },
+    "code":
+    {
+  
+    }
+  }
+  
