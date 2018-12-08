@@ -48,6 +48,11 @@ Proof:
    :capalign: justify
    :figwidth: 90%
    :alt: Problem 1 proof
+   
+.. inlineav:: DFAprop1 ss
+   :links: AV/OpenFLAP/DFAprop1.css
+   :scripts: AV/OpenFLAP/DFAprop1.js
+   :output: show
 
    Problem 1 proof
 
@@ -91,6 +96,7 @@ How do you know? We built a DFA for this language.
    :capalign: justify
    :figwidth: 90%
    :alt: Problem 2 proof
+   
 
    Problem 2 proof
 
