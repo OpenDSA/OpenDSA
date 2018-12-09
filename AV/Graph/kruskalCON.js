@@ -26,18 +26,18 @@ $(document).ready(function () {
   for (i = 0; i < arr.length; i++) {
     arr[i] = "("+graph.edges()[i].start().value()+","+graph.edges()[i].end().value()+")";
   }
-  labels = jsav.ds.array(arr, {layout: "vertical", left: 673, top: 0});
+  labels = jsav.ds.array(arr, {layout: "vertical", left: 675, top: -10});
   for (i = 0; i < arr.length; i++) {
     arr[i] = graph.edges()[i].weight();
   }
-  weights = jsav.ds.array(arr, {layout: "vertical", left: 720, top: 0});
+  weights = jsav.ds.array(arr, {layout: "vertical", left: 720, top: -10});
 
   arr = new Array(gnodes.length);
   //Initializing the labels
   for (i = 0; i < arr.length; i++) {
     arr[i] = String.fromCharCode(i + 65);
   }
-  treeLabels = jsav.ds.array(arr, {left: 0, top: 40, indexed: true});
+  treeLabels = jsav.ds.array(arr, {left: 0, top: 38, indexed: true});
   //Initializing the parent pointer
   for (i = 0; i < arr.length; i++) {
     arr[i] = "/";
@@ -195,7 +195,7 @@ $(document).ready(function () {
   }
   function initTree() {
     var newNode;
-    tree = jsav.ds.tree({left: 0, top: 90, nodegap: 20});
+    tree = jsav.ds.tree({left: 0, top: 120, nodegap: 20});
     var root = tree.newNode("X");
     tree.root(root);
     root.id("root");

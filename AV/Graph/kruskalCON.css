@@ -1,22 +1,12 @@
-#container {
-  width: 800px;
-  height: 670px;
+#kruskalCON {
+  height: 550px;
 }
-.jsavline {
-      height: 90px;
+
+#kruskalCON .jsavline {
+      height: 110px;
 }
-#root, path[data-endnode="root"] {
-    opacity: 0 !important;
-    pointer-events: none;
-}
-.jsavtree .jsavnode, .jsavgraph .jsavnode {
-  line-height: 30px !important;
-  min-width: 30px !important;
-  max-width: 30px !important;
-  min-height: 30px !important;
-  max-height: 30px !important;
-}
-.jsavverticalarray .jsavindex:first-of-type, .jsavverticalarray .jsavindex:first-of-type .jsavvalue {
+
+#kruskalCON .jsavverticalarray .jsavindex:first-of-type, .jsavverticalarray .jsavindex:first-of-type .jsavvalue {
   -ms-border-top-left-radius: 0px;
   -moz-border-top-left-radius: 0px;
   -o-border-top-left-radius: 0px;
@@ -28,7 +18,7 @@
   -webkit-border-top-right-radius: 0px;
   border-top-right-radius: 0px;
 }
-.jsavverticalarray .jsavindex:last-of-type, .jsavverticalarray .jsavindex:last-of-type .jsavvalue {
+#kruskalCON .jsavverticalarray .jsavindex:last-of-type, .jsavverticalarray .jsavindex:last-of-type .jsavvalue {
   -ms-border-bottom-left-radius: 0px;
   -moz-border-bottom-left-radius: 0px;
   -o-border-bottom-left-radius: 0px;
@@ -40,7 +30,7 @@
   -webkit-border-bottom-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-.jsavhorizontalarray .jsavindex:first-of-type, .jsavhorizontalarray .jsavindex:first-of-type .jsavvalue {
+#kruskalCON .jsavhorizontalarray .jsavindex:first-of-type, .jsavhorizontalarray .jsavindex:first-of-type .jsavvalue {
   -ms-border-top-left-radius: 0px;
   -ms-border-bottom-left-radius: 0px;
   -moz-border-top-left-radius: 0px;
@@ -52,7 +42,7 @@
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
-.jsavhorizontalarray .jsavindex:last-of-type, .jsavhorizontalarray .jsavindex:last-of-type .jsavvalue {
+#kruskalCON .jsavhorizontalarray .jsavindex:last-of-type, .jsavhorizontalarray .jsavindex:last-of-type .jsavvalue {
   -ms-border-top-right-radius: 0px;
   -ms-border-bottom-right-radius: 0px;
   -moz-border-top-right-radius: 0px;
@@ -63,4 +53,29 @@
   -webkit-border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
+}
+
+#kruskalCON .jsavverticalarray .jsavnode {
+  line-height: 45px !important;
+  min-width: 45px !important;
+  max-width: 45px !important;
+  min-height: 45px !important;
+  max-height: 45px !important;
+}
+
+#kruskalCON .jsavhorizontalarray .jsavnode {
+  line-height: 45px !important;
+  min-width: 45px !important;
+  max-width: 45px !important;
+  min-height: 45px !important;
+  max-height: 45px !important;
+}
+
+#DijkstraCON .jsavgraph .jsavedge {
+  stroke-width: 1.5px;
+}
+
+#kruskalCON .jsavedge.markpath {
+  stroke-width: 4;
+  stroke: #f61010; //red
 }

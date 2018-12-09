@@ -26,8 +26,11 @@ An edge is added to the MCST, and two disjoint sets combined,
 if the edge connects two vertices in different disjoint sets.
 This process is repeated until only one disjoint set remains.
 
-.. avembed:: AV/Development/KruskalUFAV.html ss
-   :long_name: Kruskal's Algorithm Visualization
+.. inlineav:: kruskalCON ss
+   :long_name: Kruskal Slideshow
+   :links: AV/Graph/kruskalCON.css
+   :scripts: AV/Graph/kruskalCON.js
+   :output: show
 
 The edges can be processed in order of weight by using a
 min-heap.
@@ -67,5 +70,3 @@ If so, the cost is often close to
    :type: Exercise
 
     Summary battery of questions for Prim's and Kruskal's algorithms.
-
-.. odsascript:: AV/Graph/MCSTCON.js
