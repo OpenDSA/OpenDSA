@@ -47,7 +47,8 @@ Figure :num:`Figure #MCSTdgm` shows the MCST for an example graph.
 
    A graph and its MCST.
    All edges appear in the original graph.
-   Those edges drawn in red indicate the subset making up the MCST.
+   Those edges drawn with heavy lines indicate
+   the subset making up the MCST.
    Note that edge :math:`(C, F)` could be replaced with edge
    :math:`(D, F)` to form a different MCST with equal cost.
 
@@ -74,7 +75,7 @@ Next, pick the least-cost edge coming from either :math:`N` or
 Add this edge and the new vertex it reaches to the MCST.
 This process continues, at each step expanding the MCST by selecting
 the least-cost edge from a vertex currently in the MCST to a vertex
-not currently in the MCST. 
+not currently in the MCST.
 
 Prim's algorithm is quite similar to Dijkstra's algorithm for finding
 the single-source shortest
@@ -111,8 +112,11 @@ The implementation above also contains calls to
 ``AddEdgetoMST`` to indicate which edges are actually added to the
 MCST.
 
-.. avembed:: AV/Graph/PrimAV.html ss
-   :long_name: Prim's Algorithm Visualization
+.. inlineav:: primCON ss
+   :long_name: Prim's Minimum Cost Spanning Tree Algorithm Slideshow
+   :links: AV/Graph/primCON.css
+   :scripts: AV/Graph/primCON.js
+   :output: show
 
 
 Prim's Algorithm Alternative Implementation
@@ -132,11 +136,6 @@ the :term:`heap` stores ``DijkElem`` objects.
 
    Implement a slideshow demonstrating the Priority Queue version of
    Prim's algorithm
-
-Here is an AV that lets you try Prim's algorithm on other graphs.
-
-.. avembed:: AV/Graph/PrimAVPQ.html ss
-   :long_name: Prim's with Priority Queue Algorithm Visualization
 
 Prim's algorithm is an example of a greedy
 algorithm.
@@ -158,7 +157,7 @@ cost?
    Prim's algorithm does *not* generate an MCST.
    Define an ordering on the vertices according to the order in which
    they were added by Prim's algorithm to the MCST:
-   :math:`v_0, v_1, ..., v_{n-1}`. 
+   :math:`v_0, v_1, ..., v_{n-1}`.
    Let edge :math:`e_i` connect :math:`(v_x, v_i)` for
    some :math:`x < i` and :math:`i \leq 1`.
    Let :math:`e_j` be the lowest numbered (first) edge added
@@ -183,7 +182,7 @@ cost?
    available.
    It would have selected :math:`e'`, not :math:`e_j`.
    Thus, it is a contradiction that Prim's algorithm would have selected
-   the wrong edge, and thus, Prim's algorithm must be correct.
+   the wrong edge, and thus, Prim's algorithm must be correct. BOX HERE
 
 .. _PrimProof:
 
@@ -198,15 +197,16 @@ cost?
    The left oval contains that portion of the graph where Prim's MCST
    and the "true" MCST :math:`\mathbf{T}` agree.
    The right oval contains the rest of the graph.
-   The two portions of the graph are connected by (at least) edges 
+   The two portions of the graph are connected by (at least) edges
    :math:`e_j` (selected by Prim's algorithm to be in the MCST) and
    :math:`e'` (the "correct" edge to be placed in the MCST).
    Note that the path from :math:`v_w` to :math:`v_j` cannot
    include any marked vertex :math:`v_i, i \leq j`, because to do so
    would form a cycle.
 
-.. avembed:: AV/Graph/PrimAVPE.html pe
+.. avembed:: AV/Graph/PrimPE.html pe
    :long_name: Prim's Algorithm Proficiency Exercise
+
 
 .. TODO::
    :type: Exercise

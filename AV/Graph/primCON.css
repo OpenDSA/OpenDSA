@@ -1,8 +1,8 @@
-#container {
-  width: 800px;
-  height: 400px;
+#primCON {
+  height: 450px;
 }
-.jsavverticalarray .jsavindex:first-of-type, .jsavverticalarray .jsavindex:first-of-type .jsavvalue {
+
+#primCON .jsavverticalarray .jsavindex:first-of-type, .jsavverticalarray .jsavindex:first-of-type .jsavvalue {
   -ms-border-top-left-radius: 0px;
   -moz-border-top-left-radius: 0px;
   -o-border-top-left-radius: 0px;
@@ -14,7 +14,8 @@
   -webkit-border-top-right-radius: 0px;
   border-top-right-radius: 0px;
 }
-.jsavverticalarray .jsavindex:last-of-type, .jsavverticalarray .jsavindex:last-of-type .jsavvalue {
+
+#primCON .jsavverticalarray .jsavindex:last-of-type, .jsavverticalarray .jsavindex:last-of-type .jsavvalue {
   -ms-border-bottom-left-radius: 0px;
   -moz-border-bottom-left-radius: 0px;
   -o-border-bottom-left-radius: 0px;
@@ -27,6 +28,15 @@
   border-bottom-right-radius: 0px;
 }
 
-.jsavgraph .jsavedge {
-  stroke-width: 1.5px;
+#primCON .jsavverticalarray .jsavnode {
+  line-height: 45px !important;
+  min-width: 45px !important;
+  max-width: 45px !important;
+  min-height: 45px !important;
+  max-height: 45px !important;
+}
+
+#primCON .jsavedge.markpath {
+  stroke-width: 4;
+  stroke: #f61010; //red
 }

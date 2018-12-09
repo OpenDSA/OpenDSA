@@ -71,7 +71,7 @@
       "Graph/GraphTraversal": {},
       "Graph/GraphTopsort": {},
       "Graph/GraphShortest": {},
-      "Ivan/MCST": {},
+      "Graph/MCST": {},
       "Ivan/Kruskal": {}
     },
     "Appendix": {

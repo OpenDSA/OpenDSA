@@ -78,7 +78,7 @@ $(document).ready(function() {
         v = next;
       }
     }
-    console.log("v is " + v.value() + ", Distance for v is " + distances.value(v.index));
+//    console.log("v is " + v.value() + ", Distance for v is " + distances.value(v.index));
     return v;
   }
 
@@ -108,7 +108,7 @@ $(document).ready(function() {
       if (v !== s) {
         //Add an edge
         var edge = graph.getEdge(v.parent, v);
-        console.log(v.parent.value() + '    ' + v.value());
+//        console.log(v.parent.value() + '    ' + v.value());
 //        edge.css({"stroke-width": "4", "stroke": "red"});
         edge.css({"arrow-end": "classic-wide-long"}).addClass("markpath");
         var mstedge = mst.addEdge(mstnodes[v.parent.index], mstnodes[v.index], {"weight": edge.weight()});

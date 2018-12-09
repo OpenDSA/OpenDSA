@@ -16,29 +16,27 @@ $(document).ready(function() {
   var step;               //A counter of the nodes added so far
   var q;                  //Question
 
-
-
-  graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});
-	mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: true});
-	initGraph();
-	graph.layout();
+  graph = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: false});
+  mst = jsav.ds.graph({width: 600, height: 300, layout: "manual", directed: true});
+  initGraph();
+  graph.layout();
   mst.hide(); //removes final graph....
 
-	arr = new Array(graph.nodeCount());
-    for (i = 0; i < arr.length; i++) {
-      arr[i] = Infinity;
-    }
-    distances = jsav.ds.array(arr, {layout: "vertical", left: 650, top: 50});
-    for (i = 0; i < arr.length; i++) {
-      arr[i] = gnodes[i].value();
-    }
-    labels = jsav.ds.array(arr, {layout: "vertical", left: 603, top: 50});
-    jsav.umsg("We will call Prim's algorithm with a start vertex of " +
-              gnodes[0].value() + ". Any vertex would do to start.");
-    jsav.displayInit();
-    prim(gnodes[0]);            // Run Prim's algorithm from start node.
-    displayMST();
-    jsav.recorded();
+  arr = new Array(graph.nodeCount());
+  for (i = 0; i < arr.length; i++) {
+    arr[i] = Infinity;
+  }
+  distances = jsav.ds.array(arr, {layout: "vertical", left: 650, top: 0});
+  for (i = 0; i < arr.length; i++) {
+    arr[i] = gnodes[i].value();
+  }
+  labels = jsav.ds.array(arr, {layout: "vertical", left: 605, top: 0});
+  jsav.umsg("We will call Prim's algorithm with a start vertex of " +
+            gnodes[0].value() + ". Any vertex would do to start.");
+  jsav.displayInit();
+  prim(gnodes[0]);            // Run Prim's algorithm from start node.
+  displayMST();
+  jsav.recorded();
 
 
   function displayMST() {
@@ -53,30 +51,30 @@ $(document).ready(function() {
   // Mark a node in the graph.
   function markIt(node) {
     if(step === 2) {
-	  var minNode = minVertex();
-	  var notVisitedNodes = [];
-	  var j = 0;
-	  for (var i = 0; i < gnodes.length; i++) {
-	    if (!gnodes[i].hasClass('visited') && gnodes[i]!== minNode) {
-		  notVisitedNodes[j] = gnodes[i];
-		  j++;
-		}
-	  }
-	  q = jsav.question("MC", "Which Node will be added Next to the MST?")
-                .addChoice(minNode.value(), {correct: true})
-                .addChoice(notVisitedNodes[0].value())
-                .addChoice(notVisitedNodes[1].value())
-                .show();
-	  jsav.step();
-	}
+      var minNode = minVertex();
+      var notVisitedNodes = [];
+      var j = 0;
+      for (var i = 0; i < gnodes.length; i++) {
+        if (!gnodes[i].hasClass('visited') && gnodes[i]!== minNode) {
+          notVisitedNodes[j] = gnodes[i];
+          j++;
+        }
+      }
+      q = jsav.question("MC", "Which Node will be added Next to the MST?")
+        .addChoice(minNode.value(), {correct: true})
+        .addChoice(notVisitedNodes[0].value())
+        .addChoice(notVisitedNodes[1].value())
+        .show();
+      jsav.step();
+    }
     node.addClass("visited");
     jsav.umsg("The unmarked vertex with the smallest value is now " + node.value() + ". Mark it and add to the MST.");
     distances.highlight(gnodes.indexOf(node));
     labels.highlight(gnodes.indexOf(node));
     node.highlight();
-	nodesOrdered[step] = node;
-	step++;
-	//console.log("Nodes added so far: "+step);
+    nodesOrdered[step] = node;
+    step++;
+    //console.log("Nodes added so far: "+step);
     jsav.step();
   }
 
@@ -96,7 +94,7 @@ $(document).ready(function() {
         v = next;
       }
     }
-    console.log("v is " + v.value() + ", Distance for v is " + distances.value(v.index));
+//    console.log("v is " + v.value() + ", Distance for v is " + distances.value(v.index));
     return v;
   }
   // Compute Prim's algorithm and return edges
@@ -106,7 +104,7 @@ $(document).ready(function() {
     var weight;         // Weight of current edge
     var next, i;
 
-  // Initialize the MST "parents" to dummy values
+    // Initialize the MST "parents" to dummy values
     for (next = gnodes.next(); next; next = gnodes.next()) {
       next.parent = next;
     }
@@ -122,12 +120,12 @@ $(document).ready(function() {
         return;
       }
       if (v !== s) {
-        //Add an edge to the MST
+        //Add an edge to the MCST
         var edge = graph.getEdge(v.parent, v);
-		console.log(v.parent.value()+'    '+v.value());
-        edge.css({"stroke-width": "4", "stroke": "red"});
+//        console.log(v.parent.value()+'    '+v.value());
+        edge.css({"arrow-end": "classic-wide-long"}).addClass("markpath");
         var mstedge = mst.addEdge(mstnodes[v.parent.index], mstnodes[v.index], {"weight": edge.weight()});
-        mstedge.css({"stroke-width": "2", "stroke": "red"});
+        mstedge.css({"arrow-end": "classic-wide-long"}).addClass("markpath");
         jsav.umsg("Add edge (" + v.parent.value() + "," + v.value() + ") to the MST");
         jsav.step();
       }
@@ -160,30 +158,31 @@ $(document).ready(function() {
 
   // Initialize the graph.
   function initGraph() {
-
-      //Nodes of the original graph
-      var a = graph.addNode("A", {"left": 25, "top": 50});
-      var b = graph.addNode("B", {"left": 325, "top": 50});
-      var c = graph.addNode("C", {"left": 145, "top": 75});
-      var d = graph.addNode("D", {"left": 145, "top": 200});
-      var e = graph.addNode("E", {"left": 0, "top": 300});
-      var f = graph.addNode("F", {"left": 325, "top": 250});
-      //Nodes of the MST
-      mst.addNode("A", {"left": 25, "top": 50});
-      mst.addNode("B", {"left": 325, "top": 50});
-      mst.addNode("C", {"left": 145, "top": 75});
-      mst.addNode("D", {"left": 145, "top": 200});
-      mst.addNode("E", {"left": 0, "top": 300});
-      mst.addNode("F", {"left": 325, "top": 250});
-      //Original graph edges
-      graph.addEdge(a, c, {"weight": 7});
-      graph.addEdge(a, e, {"weight": 9});
-      graph.addEdge(c, b, {"weight": 5});
-      graph.addEdge(c, d, {"weight": 1});
-      graph.addEdge(c, f, {"weight": 2});
-      graph.addEdge(f, b, {"weight": 6});
-      graph.addEdge(d, f, {"weight": 2});
-      graph.addEdge(e, f, {"weight": 1});
+    var gtop = 0;
+    
+    //Nodes of the original graph
+    var a = graph.addNode("A", {"left": 25, "top": gtop});
+    var b = graph.addNode("B", {"left": 325, "top": gtop});
+    var c = graph.addNode("C", {"left": 145, "top": gtop + 25});
+    var d = graph.addNode("D", {"left": 145, "top": gtop + 150});
+    var e = graph.addNode("E", {"left": 0, "top": gtop + 250});
+    var f = graph.addNode("F", {"left": 325, "top": gtop + 200});
+    //Nodes of the MST
+    mst.addNode("A", {"left": 25, "top": gtop});
+    mst.addNode("B", {"left": 325, "top": gtop});
+    mst.addNode("C", {"left": 145, "top": gtop + 25});
+    mst.addNode("D", {"left": 145, "top": gtop + 150});
+    mst.addNode("E", {"left": 0, "top": gtop + 250});
+    mst.addNode("F", {"left": 325, "top": gtop + 200});
+    //Original graph edges
+    graph.addEdge(a, c, {"weight": 7});
+    graph.addEdge(a, e, {"weight": 9});
+    graph.addEdge(c, b, {"weight": 5});
+    graph.addEdge(c, d, {"weight": 1});
+    graph.addEdge(c, f, {"weight": 2});
+    graph.addEdge(f, b, {"weight": 6});
+    graph.addEdge(d, f, {"weight": 2});
+    graph.addEdge(e, f, {"weight": 1});
 
     gnodes = graph.nodes();
     mstnodes = mst.nodes();
