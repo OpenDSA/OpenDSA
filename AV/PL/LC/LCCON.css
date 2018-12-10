@@ -1,0 +1,93 @@
+
+#LC1CON {
+  height: 320px;
+}
+
+#LC1CON     p.jsavoutput.jsavline {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      height: 25px;
+    }
+#LC1CON     ol.jsavarray {
+         margin-left: auto;
+         margin-right: auto;
+
+    }
+#LC1CON     div.jsavcanvas {
+        text-align: center;
+        width: 900px;
+        max-width: 900px;
+    }
+#LC1CON     span.jsavcounter {
+         position: relative;
+         top: -80px;
+    }
+
+#LC1CON     div.jsavcontainer ol {
+         width: 900px;
+         max-width: 900px;
+    }
+
+#LC1CON     .jsavcontainer {
+
+    width: 900px;
+    max-width: 900px;
+   }
+
+#LC1CON     .jsavnode {
+
+    width: 6px;
+    max-width: 6px;
+   }
+
+#LC1CON     ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+    }
+
+/*
+#LC1CON     ol.jsavarray .lambdaWidth {
+        width : 25px;
+        min-width : 25px;
+    }
+
+#LC1CON     ol.jsavarray .oneCharWidth {
+        width : 13px;
+        min-width : 13px;
+    }
+
+#LC1CON     ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+*/
+
+#LC1CON     .lambdaWidth {
+        max-width : 25px !important;
+        min-width : 25px !important;
+    }
+
+#LC1CON     .jsavindex.jsavnode.oneCharWidth {
+        max-width : 13px !important;
+        min-width : 13px !important;
+    }
+
+#LC1CON     .jsavindex.jsavnode.parenWidth {
+        max-width : 7px !important;
+        min-width : 7px !important;
+    }
+
+
+#LC1CON     .jsavindex.jsavnode.emptyWidth {
+        max-width : 0px !important;
+        min-width : 0px !important;
+    }
+
+#LC1CON     .highlightCell { 
+        background-color : #BCE;
+    }
+
+#LC1CON     .unhighlightCell { 
+        background-color : #FFF;
+    }
+

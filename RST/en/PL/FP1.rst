@@ -19,10 +19,10 @@ FP - Constructing Lists with cons
 
 Just a test to see if we can visualize a beta reduction -- delete when done testing
    
-.. inlineav:: FP3Code2CON ss
-   :long_name: Illustrate Deep Recursion On BST
-   :links: AV/PL/FP/FP3CON.css
-   :scripts: AV/PL/FP/FP3Code2CON.js
+.. inlineav:: LC1CON ss
+   :long_name: Illustrate Lambda Calculus applicative order
+   :links: AV/PL/LC/LCCON.css
+   :scripts: AV/PL/interpreters/lambdacalc/version1.4.used.in.book/scripts/init.js AV/PL/interpreters/lambdacalc/version1.4.used.in.book/scripts/grammar.js AV/PL/interpreters/lambdacalc/version1.4.used.in.book/scripts/absyn.js AV/PL/interpreters/lambdacalc/version1.4.used.in.book/scripts/interpreter.js AV/PL/interpreters/lambdacalc/version1.4.used.in.book/scripts/randomExamples.js AV/PL/LC/LC1CON.js
    :output: show
 
 

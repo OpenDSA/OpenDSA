@@ -9,3 +9,17 @@ Version 1.3: switched to a single array with content being replaced for each
              slide
 Version 1.4: expanded the grammar of the pure lambda calculus to include
              Church numerals and boolean constants, and operators.
+
+version1.4.used.in.book: This is a version that can be used to
+generate an AV from an RST file.  To do so, here is an example of the
+embedding that should occur in the RST file.  All the front-end JS
+file (see example LC1CON.js below) has to do is pass in the
+appropriate JSAV container name.
+
+.. inlineav:: LC1CON ss
+   :long_name: Illustrate Lambda Calculus applicative order
+   :links: AV/PL/LC/LCCON.css
+   :scripts: AV/PL/interpreters/lambdacalc/version1.4.used.in.book/scripts/init.js AV/PL/interpreters/lambdacalc/version1.4.used.in.book/scripts/grammar.js AV/PL/interpreters/lambdacalc/version1.4.used.in.book/scripts/absyn.js AV/PL/interpreters/lambdacalc/version1.4.used.in.book/scripts/interpreter.js AV/PL/interpreters/lambdacalc/version1.4.used.in.book/scripts/randomExamples.js AV/PL/LC/LC1CON.js
+   :output: show
+
+
