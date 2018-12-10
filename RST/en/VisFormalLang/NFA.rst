@@ -253,9 +253,9 @@ letter :math:`a`. This would be the subset :math:`q_3,q_4`.
    NFA, and then shows, step-by-step, the process of building the DFA.
 
 
-.. inlineav:: NFAtoDFACON ff
+.. inlineav:: NFAtoDFACON ss
    :links: AV/VisFormalLang/NFA/NFAtoDFACON.css
-   :scripts: AV/VisFormalLang/NFA/NFAtoDFACON.js DataStructures/PIFrames.js
+   :scripts: AV/VisFormalLang/NFA/NFAtoDFACON.js
    :output: show
 
 Conclusion: NFA adds no new capability. So why bother with the idea?
