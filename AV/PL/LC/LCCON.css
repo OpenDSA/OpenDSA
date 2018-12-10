@@ -1,6 +1,6 @@
 
 #LC1CON {
-  height: 320px;
+  height: 300px;
 }
 
 #LC1CON     p.jsavoutput.jsavline {
@@ -62,14 +62,14 @@
     }
 */
 
-#LC1CON     .lambdaWidth {
-        max-width : 25px !important;
-        min-width : 25px !important;
+#LC1CON     .jsavindex.jsavnode.lambdaWidth {
+        max-width : 22px !important;
+        min-width : 22px !important;
     }
 
 #LC1CON     .jsavindex.jsavnode.oneCharWidth {
-        max-width : 13px !important;
-        min-width : 13px !important;
+        max-width : 11px !important;
+        min-width : 11px !important;
     }
 
 #LC1CON     .jsavindex.jsavnode.parenWidth {

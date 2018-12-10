@@ -580,7 +580,9 @@ var parenChar = function(x) {
 
 function startAV(av_name, exps,order) {
     var redexType = order === "applicative" ? "innermost" : "outermost";
+
 //  The following does not seem to have any effect
+
 //     if (typeof MathJax !== 'undefined') {
 //       MathJax.Hub.Config({
 //         tex2jax: {
@@ -605,35 +607,20 @@ function startAV(av_name, exps,order) {
 //         MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
 //       });
 //     }
-// 
+
 
     JSAV.init();
     JSAV.ext.SPEED = 50;
 
     // Make sure that we initialize everything if this is being re-created
-//     $(".jsavcontrols").html("");
-//     $(".jsavcanvas").empty();
+    //     $(".jsavcontrols").html("");
+    //     $(".jsavcanvas").empty();
 
     // TN    var av = new JSAV($(".avcontainer")); // From David's original
 
-    // TN
-    
-    
-    // Use this for testing in standalone parseTree.html file
-    //        var av = new JSAV($("#parseTree"));
-    //    var av = new JSAV($(".avcontainer"));
-    //var av = new JSAV($(av_name));
-    // End of declaration for standalone
-    
-    // Use this for inlineav reference in RST file
-    // 	var av_name = "parseTree";
     // 	var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
-     	var av = new JSAV(av_name);
-    // End of section for reference in inlineav
-    
-    
-    
-    // TN end
+    var av = new JSAV(av_name);
+
 
     var numCols = Math.max.apply(null, exps.map(function(x) 
 						{ return myLength(x[0]); }));   
