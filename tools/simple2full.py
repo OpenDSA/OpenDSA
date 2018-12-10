@@ -31,6 +31,11 @@ default_ex_options = {
       'points': 0,
       'threshold': 1
     }, 
+    'ff': {
+      'required': False,
+      'points': 0,
+      'threshold': 1
+    }, 
     'pe': {
       'required': True,
       'points': 1,
@@ -516,6 +521,19 @@ def extract_exs_config(exs_json):
               exs_config[exer_name][key] = value
           del ex_options[current_module][exer_name]
 
+      if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ff":
+        ex_obj = x['inlineav']
+        exer_name = ex_obj['@exer_name']
+        exs_config[exer_name] = OrderedDict()
+        exs_config[exer_name]['long_name'] = ex_obj['@long_name']
+        exs_config[exer_name]['required'] = default_ex_options[ex_obj['@type']]['required']
+        exs_config[exer_name]['points'] = float(ex_obj['@points'])
+        exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
+        if exer_name in ex_options[current_module]:
+          for key, value in ex_options[current_module][exer_name].iteritems():
+              exs_config[exer_name][key] = value
+          del ex_options[current_module][exer_name]
+
       if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "dgm":
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
@@ -549,6 +567,19 @@ def extract_exs_config(exs_json):
           del ex_options[current_module][ex_obj['@resource_name']]
 
     if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ss":
+      ex_obj = exs_json['inlineav']
+      exer_name = ex_obj['@exer_name']
+      exs_config[exer_name] = OrderedDict()
+      exs_config[exer_name]['long_name'] = ex_obj['@long_name']
+      exs_config[exer_name]['required'] = default_ex_options[ex_obj['@type']]['required']
+      exs_config[exer_name]['points'] = float(ex_obj['@points'])
+      exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
+      if exer_name in ex_options[current_module]:
+          for key, value in ex_options[current_module][exer_name].iteritems():
+              exs_config[exer_name][key] = value
+          del ex_options[current_module][exer_name]
+
+    if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ff":
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
@@ -668,7 +699,7 @@ def get_options(conf_data):
 def validate_glob_config(conf_data):
   global ex_options, default_ex_options, sect_options, mod_options
 
-  for ex_type in ['ka', 'ss', 'pe']:
+  for ex_type in ['ka', 'ff', 'ss', 'pe']:
       field = 'glob_{0}_options'.format(ex_type)
       if field not in conf_data:
         print_err('WARNING: Missing "{0}", using default values instead.'.format(field))
@@ -691,6 +722,7 @@ def validate_glob_config(conf_data):
   default_ex_options = {
       'ka': conf_data['glob_ka_options'], 
       'ss': conf_data['glob_ss_options'], 
+      'ff': conf_data['glob_ff_options'], 
       'pe': conf_data['glob_pe_options'],
       'extr': conf_data['glob_extr_options'],
       'dgm': {
@@ -714,6 +746,7 @@ def generate_full_config(config_file_path, slides):
   full_config['chapters'] = OrderedDict()
   del full_config['glob_ka_options']
   del full_config['glob_ss_options']
+  del full_config['glob_ff_options']
   del full_config['glob_pe_options']
   del full_config['glob_extr_options']
 
@@ -743,7 +776,7 @@ def generate_full_config(config_file_path, slides):
                   settings_overrides={'output_encoding': 'utf8',
                   'initial_header_level': 2},
                   writer_name="xml",
-		  source_path=mod_path)
+      source_path=mod_path)
 
       mod_json = xmltodict.parse(rst_parts['whole'])
       mod_config = extract_mod_config(mod_json)
@@ -771,4 +804,3 @@ if __name__ == '__main__':
 
   with open(output_file, 'w') as outfile:
     json.dump(full_conf, outfile, indent=2)
-

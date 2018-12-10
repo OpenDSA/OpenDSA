@@ -31,6 +31,9 @@ class av_dgm(Element): pass
 class av_anchor(Element): pass
 class av_ss(Element):pass
 
+#InlineAV frames class
+class av_ff(Element):pass
+
 
 def visit_av_dgm_html(self, node):
   self.body.append(self.starttag(node, 'div', CLASS='divdgm'))
@@ -51,6 +54,16 @@ def visit_av_anchor_html(self, node):
 def depart_av_anchor_html(self, node):
   self.body.append('</div>\n')
 
+
+def visit_av_ff_html(self, node):
+  self.body.append(self.starttag(node, 'div', CLASS='' ))
+  self.body.append(node['res'])
+
+def depart_av_ff_html(self, node):
+  self.body.append('</div>\n')
+
+
+
 def doctree_read(app, doctree):
   # first generate figure numbers for each figure
   env = app.builder.env
@@ -67,7 +80,7 @@ def doctree_read(app, doctree):
     if env.docname in json_data:
       module = env.docname
       num_module = json_data[env.docname]
-    if isinstance( avdgm_info, av_dgm ) or ( isinstance( avdgm_info, av_ss ) and len(avdgm_info['ids'])>0 ):
+    if isinstance( avdgm_info, av_dgm ) or ( isinstance( avdgm_info, av_ss) and len(avdgm_info['ids'])>0 ):
       for cap in avdgm_info.traverse(caption):
         cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
       for id in avdgm_info['ids']:
@@ -86,6 +99,8 @@ def setup(app):
   app.add_node(av_dgm,html=(visit_av_dgm_html, depart_av_dgm_html))
   app.add_node(av_anchor,html=(visit_av_anchor_html, depart_av_anchor_html))
   app.add_node(av_ss,html=(visit_av_ss_html, depart_av_ss_html))
+  app.add_node(av_ff,html=(visit_av_ff_html, depart_av_ff_html))
+
   app.add_directive('inlineav',inlineav)
 
 def loadTable():
@@ -100,6 +115,27 @@ def loadTable():
 # div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
 SLIDESHOW = '''\
 <div id="%(exer_name)s" class="ssAV" data-points="%(points)s" data-threshold="%(threshold)s" data-type="%(type)s" data-required="%(required)s" data-long-name="%(long_name)s" data-exer-id="%(id)s">
+ <span class="jsavcounter"></span>
+ <a class="jsavsettings" href="#">Settings</a>
+ <div class="jsavcontrols"></div>
+ %(output_code)s
+ <div class="jsavcanvas"></div>
+ <div class="prof_indicators">
+  <img id="%(exer_name)s_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" alt="Proficient" />
+  <span id="%(exer_name)s_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+  <span id="%(exer_name)s_cm_error_msg" class="cm_error_msg">
+   <img id="%(exer_name)s_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" alt="Error Saving" /><br />
+   Server Error<br />
+   <a href="#" class="resubmit_link">Resubmit</a>
+  </span>
+ </div>
+</div>
+<p></p>
+'''
+
+#second copy for frames option
+FRAMES = '''\
+<div id="%(exer_name)s" class="ffAV" data-points="%(points)s" data-threshold="%(threshold)s"  data-type="%(type)s" data-required="%(required)s" data-long-name="%(long_name)s" data-exer-id="%(id)s">
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
@@ -195,17 +231,19 @@ class inlineav(Directive):
         caption['align']= self.options['align']
         avss_node += caption
       return [avss_node]
+    elif self.options['type'] == "ff":
+      res = FRAMES % self.options
+      return [nodes.raw('', res, format='html')]
     else:
       res = SLIDESHOW % self.options
       return [nodes.raw('', res, format='html')]
 
 
+
 source = """\
 This is some text.
-
 .. inlineav:: exer_name type
    :output:
-
 This is some more text.
 """
 
@@ -220,4 +258,3 @@ if __name__ == '__main__':
           writer_name="html")
 
   print doc_parts['html_body']
-
