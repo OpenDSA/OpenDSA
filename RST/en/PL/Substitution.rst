@@ -68,7 +68,7 @@ where :math:`a` and :math:`b` are arbitrary lambda expressions and
 
 Note that :math:`subst(a, p, b)` means "substitute :math:`a` for
 :math:`p` in :math:`b`" or equivalently, "replace :math:`p` by
-:math:`a` in :math:`b`. Whichever way you choose to phrase it,
+:math:`a` in :math:`b`". Whichever way you choose to phrase it,
 :math:`b` is always the expression inside which we are performing the
 substitution, :math:`p` is always the expression that gets taken out
 of :math:`b` and :math:`a` is always the expression that gets
