@@ -62,6 +62,12 @@ If the parameter passing method call-by-value is used...
    :scripts: AV/PL/paramPassingByVal.js
    :output: show
 
+A proficiency exercise for pass-by-value ...
+	    
+.. avembed:: AV/PL/paramPassingByValPRO.html pe
+   :long_name: Pass-by-value Proficiency Exercise
+
+
 If the parameter passing method call-by-reference is used...
 
 .. inlineav:: paramPassingByRef ss
