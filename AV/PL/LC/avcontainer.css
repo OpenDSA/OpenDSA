@@ -1,0 +1,93 @@
+
+.avcontainer {
+  height: 300px;
+}
+
+.avcontainer     p.jsavoutput.jsavline {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      height: 25px;
+    }
+.avcontainer     ol.jsavarray {
+         margin-left: auto;
+         margin-right: auto;
+
+    }
+.avcontainer     div.jsavcanvas {
+        text-align: center;
+        width: 900px;
+        max-width: 900px;
+    }
+.avcontainer     span.jsavcounter {
+         position: relative;
+         top: -80px;
+    }
+
+.avcontainer     div.jsavcontainer ol {
+         width: 900px;
+         max-width: 900px;
+    }
+
+.avcontainer     .jsavcontainer {
+
+    width: 900px;
+    max-width: 900px;
+   }
+
+.avcontainer     .jsavnode {
+
+    width: 6px;
+    max-width: 6px;
+   }
+
+.avcontainer     ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+    }
+
+/*
+.avcontainer     ol.jsavarray .lambdaWidth {
+        width : 25px;
+        min-width : 25px;
+    }
+
+.avcontainer     ol.jsavarray .oneCharWidth {
+        width : 13px;
+        min-width : 13px;
+    }
+
+.avcontainer     ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+*/
+
+.avcontainer     .jsavindex.jsavnode.lambdaWidth {
+        max-width : 22px !important;
+        min-width : 22px !important;
+    }
+
+.avcontainer     .jsavindex.jsavnode.oneCharWidth {
+        max-width : 11px !important;
+        min-width : 11px !important;
+    }
+
+.avcontainer     .jsavindex.jsavnode.parenWidth {
+        max-width : 7px !important;
+        min-width : 7px !important;
+    }
+
+
+.avcontainer     .jsavindex.jsavnode.emptyWidth {
+        max-width : 0px !important;
+        min-width : 0px !important;
+    }
+
+.avcontainer     .highlightCell { 
+        background-color : #BCE;
+    }
+
+.avcontainer     .unhighlightCell { 
+        background-color : #FFF;
+    }
+

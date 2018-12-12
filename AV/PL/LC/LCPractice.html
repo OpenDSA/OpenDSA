@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Step through beta reduction in applicative and normal order</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="avcontainer.css" type="text/css" />
+</head>
+
+<body>
+<div id="container">
+  <table class="headerTable">
+    <tr>
+      <td class="headerLeft">
+        <input type="button" id="help" name="help" value="Help" />
+      </td>
+      <td class="headerCenter avTitle">
+        Choose either a new randomized expression and its reduction order or try a different reduction order on the prior expression
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+      </td>
+    </tr>
+  </table>
+
+  <form id="ssperform">
+    <p>
+      <input type="button" id="runitna" name="runitna" value="New expression, applicative" />
+      <input type="button" id="runitnn" name="runitnn" value="New expression, normal" />
+      <input type="button" id="runitpa" name="runitpa" value="Previous expression, applicative" />
+      <input type="button" id="runitpn" name="runitpn" value="Previous expression, normal" />
+      <input type="button" id="reset" name="reset" value="Reset" />
+<!--       <label id="expLabel" for="expValue"></label>
+      <input size="60" name="expValue" id="expValue" type="text" value="A + B * C + ( E * F + G )"/> -->
+    </p>
+  </form>
+
+  <div id="avcontainer" class="avcontainer">
+    <span class="jsavcounter"></span>
+    <div class="jsavcontrols"></div>
+    <p class="jsavoutput jsavline"></p>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="../../../JSAV/lib/jquery.transit.js"></script>
+<script src="../../../JSAV/lib/raphael.js"></script>
+<script src="../../../JSAV/build/JSAV-min.js"></script>
+<script src="../../../lib/odsaUtils.js"></script>
+<script src="../../../lib/odsaAV.js"></script>
+<script>var LAMBDA = {};</script>
+<script src="../interpreters/lambdacalc/version1.4.used.in.book/scripts/init.js"></script>
+<script src="../interpreters/lambdacalc/version1.4.used.in.book/scripts/grammar.js"></script>
+<script src="../interpreters/lambdacalc/version1.4.used.in.book/scripts/absyn.js"></script>
+<script src="../interpreters/lambdacalc/version1.4.used.in.book/scripts/interpreter.js"></script>
+<script src="../interpreters/lambdacalc/version1.4.used.in.book/scripts/randomExamples.js"></script>
+<script src="LCPractice.js"></script>
+</body>
+</html>
+

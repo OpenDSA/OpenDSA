@@ -37,33 +37,35 @@ which raises the following questions:
 
 #.  Do different reduction strategies lead to different results?
 
-A key to partially answering the second and third questions above is the **Church-Rosser Theorem**, which
-we will merely state and not prove.    According to the Church-Rosser theorem, 
-*if two different reduction strategies both
-lead to an answer, then they will lead to the same answer.*
+A key to partially answering the second and third questions above is
+the **Church-Rosser Theorem**, which we will merely state and not
+prove.  According to the Church-Rosser theorem, *if two different
+reduction strategies both lead to an answer, then they will lead to
+the same answer.*
 
 So the answers to the second and third questions are no with the
 following caveat: any reduction strategy that leads to an answer will
 give the same answer.  The key here is whether or not the strategy
 leads to an answer, and the Church-Rosser theorem neither guarantees
 termination nor does it guarantee that an answer will be found if it
-exists.
+exists.   In instance where the strategy leads to an answer that cannot be further reduced, we say that the expression is in **beta-normal form**.
 
 The strategy that JavaScript uses in the substitution model of
 computation is called **applicative order reduction**. With this
 strategy, to evaluate an expression of the form 
 ``f(arg1,arg2,arg3,...)``, we:
 
-#. Evaluate each of the subexpressions from left to right, including *f*
+#. Evaluate each of the sub-expressions from left to right, including *f*
    if it requires evaluation. (How could it require evaluation?)
 
 #. Apply the leftmost result, which should be a function, to the rest of
-   the evaluated subexpressions.
+   the evaluated sub-expressions.
 
-The applicative order strategy is characterized by evaluating the subexpressions first.
-That is, we only perform an application when each of the
-subexpressions has been reduced and there are no redexes left except
-the topmost application. Consider:
+The applicative order strategy is characterized by proceeding
+left-to-right, evaluating the innermost sub-expressions first.  That
+is, we only perform an application when each of the sub-expressions has
+been reduced and there are no redexes remaining except the topmost
+application. Consider:
 
 :math:`(\lambda x.((x \; y) \; (y \; x)) \; (\lambda w.(w \;  w) \; z))`
 
@@ -83,11 +85,16 @@ Normal Order
 ------------
 
 **Normal order reduction** reduces the leftmost :math:`\beta` redex
-first before reducing the subexpressions inside of it and those that
+first before reducing the sub-expressions inside of it and those that
 follow it. While applicative order proceeds by evaluating the
-subexpressions and then applying the function, normal order evaluation
+sub-expressions and then applying the function, normal order evaluation
 proceeds by applying the function first and then evaluating the
-subexpressions.  Because normal order reduction delays its evaluation
+sub-expressions.  In other words, normal order reduction always seeks
+the leftmost outermost reduction whereas applicative order always
+seeks the leftmost innermost reduction.
+
+
+Because normal order reduction delays its evaluation
 of the arguments to a function, it correctly gets :math:`m` when
 applied to the example
 :math:`(\lambda`\ x.m (:math:`\lambda x.(x \; x) \; \lambda x.(x \; x)))`
@@ -103,7 +110,18 @@ for both of the :math:`x` appearing in
 It will then have to evaluate :math:`(\lambda w.(w \;  w) \; z)` **twice** before getting the final answer
 :math:`(((z \; z) \; y) \; (y \; (z \; z)))`.      
       
+If you are still not certain of the exact difference between
+applicative and normal order, use the following visualization to watch
+them go through their respective steps on a variety of randomized
+:math:`\lambda`-expressions.  Once you feel confident that you can
+always predict what the next step of the visualization will be, you
+are ready to tackle the practice problems that follow.
 
+.. avembed:: AV/PL/LC/LCPractice.html ss
+
+
+      
+      
 Beta Reduction Order (1)
 ------------------------
 
