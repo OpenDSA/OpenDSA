@@ -34,7 +34,7 @@ the items in the preceding list.  Let's first examine some of the encodings for 
 -  FALSE = :math:`\lambda x.  \lambda y.y`
 -  AND = :math:`\lambda p. \lambda q.((p \; q) \; FALSE)`
 
-The following slideshow indicates how TRUE AND FALSE is :math:`\beta` reduced.
+Note that AND is a curried function of the two variables *p* and *q*.  The following slideshow indicates how TRUE AND FALSE, which is ((AND TRUE) FALSE) in curried form, is :math:`\beta` reduced.
    
 .. inlineav:: church_bool ss
    :long_name: Church boolean slideshow
@@ -42,7 +42,7 @@ The following slideshow indicates how TRUE AND FALSE is :math:`\beta` reduced.
    :scripts: AV/PL/AV/church_bool.js
    :output: show
 
-As one would expect for boolean operations, TRUE AND FALSE reduces to FALSE. 
+Just as one would expect for boolean operations, TRUE AND FALSE reduces to FALSE.  You are encouraged to try similar reductions for FALSE AND TRUE, FALSE AND FALSE, TRUE AND TRUE to convince yourself that our definition of AND does exactly what it needs to do for all four possibilities. 
    
 
 Encoding If-Then-Else
