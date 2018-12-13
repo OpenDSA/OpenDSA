@@ -38,7 +38,7 @@ Note that AND is a curried function of the two variables *p* and *q*.  The follo
    
 .. inlineav:: church_bool ss
    :long_name: Church boolean slideshow
-   :links: 
+   :links:  AV/PL/AV/church_string.css
    :scripts: AV/PL/AV/church_bool.js
    :output: show
 
