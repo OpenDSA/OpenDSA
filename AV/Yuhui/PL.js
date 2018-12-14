@@ -477,7 +477,7 @@ $(document).ready(function() {
             p2.appendChild(n2);
             container.appendChild(p2);
             var ycl = Math.floor(Math.random() * (ranc + 1)); //random number from 0 to m
-            var xcl = Math.floor(Math.random() * (ycl + 1));
+            var xcl = Math.floor(Math.random() * ycl);
             xc = inputstr.substring(0, xcl);
             yc = inputstr.substring(xcl, ycl);
             zc = inputstr.substring(ycl);
