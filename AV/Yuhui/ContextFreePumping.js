@@ -526,19 +526,14 @@ $(document).ready(function() {
             p2.appendChild(n2);
             container.appendChild(p2);
             var uvxyz = inputstr.length;
-            var vxy = Math.floor(Math.random() * (ranc + 1)); //random number from 0 to m
-            var vcl = Math.floor(Math.random() * (vxy + 1)); //random number from 0 to the length of vxy
-            var ycl = Math.floor(Math.random() * (vxy - vcl + 1)); //random number from 0 to the length of vxy
+            var vxy = Math.floor(Math.random() * (ranc + 1)); //length of vxy = random number from 0 to m
+            var vcl = Math.floor(Math.random() * (vxy + 1)); //length of v = random number from 0 to the length of vxy
+            var ycl = Math.floor(Math.random() * (vxy - vcl + 1)); //random number from 0 to the length of vxy - length of v
             if (vxy + ycl == 0) {
-              vcl = Math.floor(Math.random() * vxy) + 1;
+              vcl = 1;
             }
-            // while (vcl + ycl < 1 || vcl + ycl > ranc) {
-            //   vcl = Math.floor(Math.random() * (vxy + 1)); //random number from 0 to the length of vxy
-            //   ycl = Math.floor(Math.random() * (vxy + 1)); //random number from 0 to the length of vxy
-            // }
             var xcl = vxy - vcl - ycl;
-            var ucl = uvxyz - vxy;
-            // 
+            var ucl = Math.floor(Math.random() * ((uvxyz - vxy) + 1));
             uc = inputstr.substring(0, ucl);
             vc = inputstr.substring(ucl, ucl + vcl);
             xc = inputstr.substring(ucl + vcl, ucl + vcl + xcl);
