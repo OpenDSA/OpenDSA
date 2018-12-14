@@ -13,12 +13,11 @@ Recursive Functions
 The Y Fixed-point Combinator
 ----------------------------
 
-To turn the :math:`\lambda` calculus into a "real" programming
-language, we need to be able to manipulate, we saw in the previous
-section that we could appropriately define boolean constants (true,
-false), conditionals (if-then-else), logical operators (and, or, not),
-integers (0, 1, 2, 3, etc.), and arithmetic operators (:math:`+`,
-:math:`-`, etc.).
+In our endeavor to turn the :math:`\lambda` calculus into a "real"
+programming language, we saw in the previous section that we could
+appropriately define boolean constants (true, false), conditionals
+(if-then-else), logical operators (and, or, not), integers (0, 1, 2,
+3, etc.), and arithmetic operators (:math:`+`, :math:`-`, etc.).
 
 However, one thing is missing.  We still need to be able to define
 recursive functions (factorial, etc.). But to recur, we need a "name"
@@ -27,12 +26,13 @@ function we are creating. And the :math:`\lambda` calculus does not
 give us global names. Instead we only have a variable that represents
 the parameter in a function abstraction.  So is there a way out of
 this dilemma?  The answer is "yes", and it's called a **fixed point
-combinator**.   
+combinator**.  We begin by defining the notion of a **fixed point**
+for a function.
 
-For any :math:`f` and :math:`x`, if :math:`f(x) = x` then :math:`x` is
+For any function :math:`f` and :math:`x`, if :math:`f(x) = x` then :math:`x` is
 called a **fixed point** of the function :math:`f`.
 
-Examples to consider when the functions are functions of real numbers:
+Here are some examples to consider when the functions are functions of real numbers:
 
 #. Can you find one or more fixed points for the function
    :math:`f(t) = t^2`?
@@ -44,10 +44,9 @@ Examples to consider when the functions are functions of real numbers:
    :math:`f(t) = t+1`?
 
 
-When we are dealing with functions of real numbers, the "algorithm" to
+When we are dealing with functions of real numbers such as the examples above, the "algorithm" to
 find a fixed point to solve the equation :math:`f(x) = x`.
 If a solution can be found, the function has a fixed point; otherwise it doesn't.
-fixed point of any numerical function?
 
 Is there a similar technique to find the fixed point of any
 :math:`\lambda` calculus function?   Consider a function that we call :math:`Y`
@@ -56,31 +55,60 @@ for historical reasons.   It is defined as follows:
 .. math:: Y = \lambda h.(\lambda x.(h \; (x \; x)) \lambda x.(h \; (x \; x)))
 
 
-:math:`Y` will find the *fixed point* of any function F. That is, for any
-function F, :math:`(F \; (Y \; F)) = (Y \; F)`.   To see this, note that the substitution dictated by
-:math:`\beta` reduction leads us to:      
+:math:`Y` will find the *fixed point* of any function F. That is, for
+any function F, :math:`(F \; (Y \; F)) = (Y \; F)`.  In other words,
+if we apply *Y* to *F*, the result is a value that, when given to *F*,
+will give us *Y* applied to *F* again.
 
+To see this, note that the substitution dictated by
+:math:`\beta`-reducing :math:`(Y \; F) leads us to:      
 
+      
 .. math:: (Y \; F) = (\lambda h.(\lambda x.(h \; (x \; x)) \; \lambda x.(h \; (x \; x))) \; F) = (\lambda x.(F \;  (x \; x)) \; \lambda x.(F \; (x \; x))) = (F \; (\lambda x.(F \; (x \; x)) \; \lambda x.(F \; (x \;x)))) = (F \; (Y \; F))
 
-Now using the IF-THEN-ELSE, MULT, ISZERO, and PRED functions that were defined within the :math:`\lambda` calculus in the previous section, we can define a new function:
+Hence *Y* has the remarkable property that, once applied to *any* function *F*, it can keep generating applications of *F* to *(Y F)*.    That is,
+	  
+.. math:: (Y \; F) = (F \; (Y \; F)) = (F \; (F \; (Y \; F))) = (F \; (F \; (F \; (Y \; F)))) = ...
+	  
+If we use this property and define a function *F* in a way that makes it "almost recursive", *Y* applied to that almost recursive function will result in the recursive function we want.  In other words, *Y* turns "almost recursive" functions into recursive functions.
 
-.. math:: \lambda g. \lambda n.(IF \; (ISZERO \; n) \; THEN \; 1 \; ELSE \; (MULT \; n \; (g \; (PRED \; n))))
+To illustrate, let's use the Church numerals,IF-THEN-ELSE, MULT,
+ISZERO, and PRED functions that were defined within the
+:math:`\lambda`-calculus in the previous section to define a new
+"almost recursive" function:
+
+.. math:: \lambda g. \lambda n.(IF \; (ISZERO \; n) \; THEN \; ONE \; ELSE \; ((MULT \; n) \; (g \; (PRED \; n))))
 
 
 This new function resembles what we would normally think of as a
 recursively defined factorial function *except* it uses a parameter
 :math:`g` instead of a globally defined name :math:`g`.  Hence it is a
 valid definition in the :math:`\lambda` calculus.  Although valid, it
-is also unfortunately not a recursive factorial function.  The amazing thing, however, is that, if we apply :math:`Y` to this function, that is:
+is also unfortunately not a recursive factorial function.  The amazing
+thing, however, is that, if we apply :math:`Y` to this function, that
+is:
 
-.. math:: (Y \; \lambda g. \lambda n.(IF \; (ISZERO \; n) \; THEN \; 1 \; ELSE \; (MULT \; n \; (g \; (PRED \; n)))))
+.. math:: (Y \; \lambda g. \lambda n.(IF \; (ISZERO \; n) \; THEN \; ONE \; ELSE \; ((MULT \; n) \; (g \; (PRED \; n)))))
 
 we get the factorial function.  It may take awhile to convince yourself of this.   Try carrying out the :math:`\beta` reductions that would come into play when
 	  
-.. math:: ((Y \; \lambda g. \lambda n.(IF \; (ISZERO \; n) \; THEN \; 1 \; ELSE \; (MULT \; n \; (g \; (PRED \; n))))) \; THREE) 
+.. math:: ((Y \; \lambda g. \lambda n.(IF \; (ISZERO \; n) \; THEN \; ONE \; ELSE \; ((MULT \; n) \; (g \; (PRED \; n))))) \; THREE) 
 
-is evaluated, and you should see how the Church numeral :math:`SIX` is eventually produced.
+is evaluated, and you should see how the Church numeral :math:`SIX` is eventually produced.   To get started on this, you may want to abbreviate the :math:`\lambda g` abstraction above as *AFACT*.   Then note that:
+
+.. math:: ((Y \; AFACT) \; THREE) = ((AFACT \; (Y \; AFACT)) \; THREE)
+
+In the term on the right above, substitute :math:`(Y \; AFACT)` for the *g* parameter in the definition of *AFACT* and you will get ... 	  
+
+.. math:: ((AFACT \; (Y \; AFACT)) \; THREE) = ( \lambda n.(IF \; (ISZERO \; n) \; THEN \; ONE \; ELSE \; ((MULT \; n) \; ((Y \; AFACT) \; (PRED \; n)))) \;  THREE ) 
+
+Note that :math:`(Y \; AFACT)` is re-introduced inside the *ELSE*.   The combinator property allows us to replace this :math:`(Y \; AFACT)` with :math:`(AFACT \; (Y \; AFACT)`, whence we can again replace the *g* parameter of the *AFACT* abstraction with :math:`(Y \; AFACT)`.   Continue from here and you will eventually reach *SIX* as the value that is returned.
+
+Hence, remaining the totally within the world defined by the Church
+booleans and numerals, we have been able to produce a recursive
+version of the factorial function.  This is of great theoretic
+importance because it demonstrates that Church's :math:`\lambda`-calculus
+has the full power of recursively defined functions.
 
 Identifying Fixed Point Combinators
 -----------------------------------
