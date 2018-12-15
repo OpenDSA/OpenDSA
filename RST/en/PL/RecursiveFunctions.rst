@@ -98,17 +98,20 @@ is evaluated, and you should see how the Church numeral :math:`SIX` is eventuall
 
 .. math:: ((Y \; AFACT) \; THREE) = ((AFACT \; (Y \; AFACT)) \; THREE)
 
-In the term on the right above, substitute :math:`(Y \; AFACT)` for the *g* parameter in the definition of *AFACT* and you will get ... 	  
+β-reduce the leftmost redex in term on the right above, that is, substitute :math:`(Y \; AFACT)` for the *g* parameter in the definition of *AFACT*, and you will get ... 	  
 
-.. math:: ((AFACT \; (Y \; AFACT)) \; THREE) = ( \lambda n.(IF \; (ISZERO \; n) \; THEN \; ONE \; ELSE \; ((MULT \; n) \; ((Y \; AFACT) \; (PRED \; n)))) \;  THREE ) 
+
+.. .. math:: (subst((Y \; AFACT), g, \lambda g. \lambda n.(IF \; (ISZERO \; n) \; THEN \; ONE \; ELSE \; ((MULT \; n) \; (g \; (PRED \; n))))) \; THREE) = ( \lambda n.(IF \; (ISZERO \; n) \; THEN \; ONE \; ELSE \; ((MULT \; n) \; ((Y \; AFACT) \; (PRED \; n)))) \;  THREE ) 
+
+.. math::  ( \lambda n.(IF \; (ISZERO \; n) \; THEN \; ONE \; ELSE \; ((MULT \; n) \; ((Y \; AFACT) \; (PRED \; n)))) \;  THREE ) 
 
 Note that :math:`(Y \; AFACT)` is re-introduced inside the *ELSE*.   The combinator property allows us to replace this :math:`(Y \; AFACT)` with :math:`(AFACT \; (Y \; AFACT)`, whence we can again replace the *g* parameter of the *AFACT* abstraction with :math:`(Y \; AFACT)`.   Continue from here and you will eventually reach *SIX* as the value that is returned.
 
-Hence, remaining the totally within the world defined by the Church
+Amazingly, remaining the totally within the world defined by the Church
 booleans and numerals, we have been able to produce a recursive
 version of the factorial function.  This is of great theoretic
 importance because it demonstrates that Church's :math:`\lambda`-calculus
-has the full power of recursively defined functions.
+can harness the full power of recursively defined functions.
 
 Identifying Fixed Point Combinators
 -----------------------------------
