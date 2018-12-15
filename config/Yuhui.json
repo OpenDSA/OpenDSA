@@ -66,7 +66,8 @@
   },
   "chapters": {
     "Yuhui": {
-      "Yuhui/Recurrence": {}
+      "Yuhui/Recurrence": {},
+      "Yuhui/NonRegular": {}
     },
     "Appendix": {
       "Glossary": {},
