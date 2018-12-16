@@ -75,6 +75,9 @@
       "OpenFLAP/NonRegular": {},
       "OpenFLAP/DFAproperties": {}
     },
+    "PDA": {
+      "OpenFLAP/PDA": {}
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}

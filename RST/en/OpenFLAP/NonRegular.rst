@@ -46,8 +46,8 @@ So, what about a language that was mentioned earlier, with no clear resolution?
 
 .. inlineav:: Proof1PumpingLemmaCON ss
    :long_name: Pumping Lemma Proof 1 Slideshow
-   :links: AV/Yuhui/Proof1PumpingLemmaCON.css
-   :scripts: AV/Yuhui/Proof1PumpingLemmaCON.js
+   :links: AV/VisFormalLang/Proof1PumpingLemmaCON.css
+   :scripts: AV/VisFormalLang/Proof1PumpingLemmaCON.js
    :output: show
 
 **Prove** that :math:`L_2 = \{a^nb^n | n > 0 \}` is not regular.
