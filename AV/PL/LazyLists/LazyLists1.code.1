@@ -1,0 +1,27 @@
+// Construct a new sequence comprised of the given integer and thunk
+var cons = function (n,thunk)
+
+// Example of constructing a sequence using the is module-- the
+// sequence consisting of all 1's
+var ones = is.cons(1,
+		   function () { return ones; } );
+
+// Get the first integer in the  sequence
+var hd = function (seq) 
+
+// Example of using the is.hs operation
+is.hd(ones);
+
+// Get the the infinite sequence following the first element.  This
+// will itself be in the form of an integer followed by a thunk
+var tl = function (seq) 
+
+// Example of using the is.tl operation
+var more_ones = is.tl(ones);
+
+// Return the (finite, non-lazy) list containing the first n
+// integers in the given sequence
+var take = function (seq,n)  
+
+// Example of using the is.take operation
+is.take(ones,5);
