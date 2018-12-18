@@ -111,21 +111,23 @@ tm.traverse = function(currentStates) {
 				weight[i] = toColonForm(weight[i]);
 				var w = weight[i].split(':');
 				console.log("The w:" + w[0]);
-				console.log("The tape value:" + currentState);	//this is undefined
+				console.log("The tape value:" + currentState.tape.value());	//this is undefined
 				if (currentState.tape.value() === w[0]) {
+					// here
 					var nextConfig = new Configuration(next, currentState.tape);
 					nextConfig.tape.value(w[1]);
 					nextConfig.tape.move(w[2]);
 					nextStates.push(nextConfig);
 					break;
 				}
-				if (currentState.tape.value() === w[0]) {
-					var nextConfig = new Configuration(next, currentState.tape);
-					nextConfig.tape.value(w[1]);
-					nextConfig.tape.move(w[2]);
-					nextStates.push(nextConfig);
-					break;
-				}
+				// if (currentState.tape.value() === w[0]) {
+				// 	// and here
+				// 	var nextConfig = new Configuration(next, currentState.tape);
+				// 	nextConfig.tape.value(w[1]);
+				// 	nextConfig.tape.move(w[2]);
+				// 	nextStates.push(nextConfig);
+				// 	break;
+				// }
 			}
 		}
 	}
