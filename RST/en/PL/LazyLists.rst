@@ -88,12 +88,65 @@ to construct and then expose various parts of an infinite sequence of
    :output: show
 
 
-    
-In addition to the functions listed above, the **is** module has some
-helper functions that are "infinite analogues" to their counterparts
-in finite lists (our **fp** module).  Think about how the set of
-question marks should be filled in to complete these functions before
-proceeding to the practice problems
+Let's now turn our attention to how these four basic functions in the
+**is** module -- *cons, hd, tl*, and *take* -- are implemented.  The
+underlying representation of a lazy list is a two-element array *seq*.
+*seq[0]* stores the head of the list, which is already evaluated, and
+*seq[1]* stores the thunk that must be evaluated to expose the
+remainder of the of the list.
+
+::
+
+   // Construct a new sequence comprised of the given integer and thunk
+   var cons = function (x, thunk) {
+     return [x, thunk];
+   };
+
+   // Get the first integer in the  sequence
+   var hd = function (seq) {
+     return seq[0];
+   };
+
+   // Get the the infinite sequence following the first element.  This
+   // will itself be in the form of an integer followed by a thunk
+   var tl = function (seq) {
+     return thaw(seq[1]);
+   };
+
+   // thaw is a helper function for tl.   It returns the result
+   // of evaluating the function that 
+   var thaw = function (thunk) { return thunk(); };
+   
+   // Return the (finite, non-lazy) list containing the first n
+   // integers in the given sequence
+   var take = function (seq, n) {
+     if (n === 0)
+       return [];
+     else {
+       // Get a copy of the result of recursive call with n - 1
+       var result = take(tl(seq), n - 1).slice(0); // slice(0) gives a copy of the array
+       // And use Javascript's unshift to put the hd at the beginning of result
+       result.unshift(hd(seq));
+       return result;
+     }
+   };
+
+So far the only sequence that we have been able to create has been a
+boring sequence consisting of all ones.  To make it easier to
+construct more interesting sequences, in addition to *cons, hd, tl*,
+and *take*, the **is** module has some utility functions that are
+"infinite analogues" to their counterparts in finite lists (our **fp**
+module).  Each of these utility functions -- *from, map, filter,
+iterates*, and *drop* are discussed and illustrated below.
+
+::
+
+   from here
+
+
+.. Think about how the set of question marks should be filled
+.. in to complete these functions before proceeding to the practice
+.. problems
 
 ::
 
@@ -180,4 +233,10 @@ a sequence.
 
 .. avembed:: Exercises/PL/InfSeq4.html ka
    :long_name: Matching sequence to code that produced it (3)
+
+.. inlineav:: LazyLists2CON ss
+   :long_name: Illustrate From
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists2CON.js
+   :output: show
 
