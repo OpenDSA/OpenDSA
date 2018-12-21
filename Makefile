@@ -115,6 +115,9 @@ CT: min
 CTEX: min
 	python $(CONFIG_SCRIPT) config/CTEX.json --no-lms
 
+Sam: min
+	python $(CONFIG_SCRIPT) config/Sam.json --no-lms
+
 NP: min
 	python $(CONFIG_SCRIPT) config/NP.json --no-lms
 
