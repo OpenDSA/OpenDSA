@@ -26,74 +26,127 @@ Instead of simply passing a textual representation of the argument, we
 pass in a parameterless anonymous function that returns the argument.
 Such an anonymous function is called a **thunk**.
 
-Understanding the difference between an argument that is evaluated and
-a thunk is to understand the difference between *7* and
-**function () { return 7; }**.
-
+Understanding the difference between an passing an argument that is
+evaluated before calling the function and a thunk is to understand the
+difference between *7* and **function () { return 7; }**.  The former,
+when passed as an argument, is already evaluated.  The function can
+use that value without having to do anything else to it.  However, the
+latter, when passed as an argument, requires that the parameterless be
+executed to "unwrap" the value that the function should be using in
+its computation.
+ 
 Instead of evaluating the argument before calling the function and
 using that value in the function, every time a parameter is referenced
-in the function body, the thunk is *thawed* to obtain the argument’s
-value.
+in the function body, the thunk is evaluated to obtain the argument’s
+value.  The evaluation process is often referred to as *thawing the
+thunk*.
 
 **Call-by-name lists**
 
 To illustrate the use of thunks, we will implement call-by-name lists,
-which are similar to the way they are used by default in Haskell and,
-as a programmer-chosen option, in Python.  Call-by-name lists
-essentially give you **lazy lists**, which can also be thought of as
-"infinite sequences".  
+which are similar to the fashion in which lists are used by default in
+Haskell, as a programmer-chosen option, in Python and Scala.
+Call-by-name lists essentially give you **lazy lists**, and we will
+see that they can also be thought of as "infinite sequences".  This
+perspective offers a very different approach to the way in which one
+works with such lists.
 
-Below is a partial code listing for a JavaScript module for infinite
-sequences called the **is** module.
+Below is documentation for some of the functions that we will provide
+in a JavaScript module for infinite sequences called the **is**
+module.
 
 The constructor for sequences (i.e., the **cons** function) takes two
 arguments, namely the element we want at the head of the sequence and
 a thunk that will return the tail of the sequence if we ever need to
 go beyond the first element.  For simplicity, we will only manipulate
-sequences of integers.
-
-Here is the code for some of the functions in the **is** module.
+infinite sequences of integers.  
 
 ::
 
-    // return the sequence frozen in the given thunk
-    // this function is NOT exported
-    var thaw = function (thunk) { 
-        return thunk(); 
-    };
+   // Construct a new sequence comprised of the given integer and thunk
+   var cons = function (n,thunk) 
 
-    // construct a new sequence made of the given integer and thunk 
-    var cons = function (n,thunk) { 
-        return [n, thunk];  
-    };
+   // Get the first integer in the  sequence
+   var hd = function (seq) 
 
-    // get the first integer in the  sequence
-    var hd = function (seq) { 
-        return seq[0]; 
-    };
+   // Get the the infinite sequence following the first element.  This
+   // will itself be in the form of an integer followed by a thunk
+   var tl = function (seq) 
+   
+   // Return the (finite, non-lazy) list containing the first n
+   // integers in the given sequence
+   var take = function (seq,n) 
 
-    // return the sequence that is obtained by deleting the head of the given sequence 
-    var tl = function (seq) { 
-        return thaw(seq[1]); 
-    };
+The following slide-show illustrates how we could use these operations
+to construct and then expose various parts of an infinite sequence of
+1's.
 
-    // return the list containing the first n integers in the given sequence
-    var take = function (seq,n) {
-        if (n === 0)
-            return [];
-        else {
-            var result = take(tl(seq), n - 1).slice(0); 
-            result.unshift(hd(seq));
-            return result;
-        }
-    };
+.. inlineav:: LazyLists1CON ss
+   :long_name: Illustrate Basic Lazy List Operations
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists1CON.js
+   :output: show
 
 
-In addition to the functions listed above, the **is** module has some
-helper functions that are "infinite analogues" to their counterparts
-in finite lists (our **fp** module).  Think about how the set of
-question marks should be filled in to complete these functions before
-proceeding to the practice problems
+Let's now turn our attention to how these four basic functions in the
+**is** module -- *cons, hd, tl*, and *take* -- are implemented.  The
+underlying representation of a lazy list is a two-element array *seq*.
+*seq[0]* stores the head of the list, which is already evaluated, and
+*seq[1]* stores the thunk that must be evaluated to expose the
+remainder of the of the list.
+
+::
+
+   // Construct a new sequence comprised of the given integer and thunk
+   var cons = function (x, thunk) {
+     return [x, thunk];
+   };
+
+   // Get the first integer in the  sequence
+   var hd = function (seq) {
+     return seq[0];
+   };
+
+   // Get the the infinite sequence following the first element.  This
+   // will itself be in the form of an integer followed by a thunk
+   var tl = function (seq) {
+     return thaw(seq[1]);
+   };
+
+   // thaw is a helper function for tl.   It returns the result
+   // of evaluating the function that 
+   var thaw = function (thunk) { return thunk(); };
+   
+   // Return the (finite, non-lazy) list containing the first n
+   // integers in the given sequence
+   var take = function (seq, n) {
+     if (n === 0)
+       return [];
+     else {
+       // Get a copy of the result of recursive call with n - 1
+       var result = take(tl(seq), n - 1).slice(0); // slice(0) gives a copy of the array
+       // And use Javascript's unshift to put the hd at the beginning of result
+       result.unshift(hd(seq));
+       return result;
+     }
+   };
+
+So far the only sequence that we have been able to create has been a
+boring sequence consisting of all ones.  To make it easier to
+construct more interesting sequences, in addition to *cons, hd, tl*,
+and *take*, the **is** module has some utility functions that are
+"infinite analogues" to their counterparts in finite lists (our **fp**
+module).  Each of these utility functions -- *from, map, filter,
+iterates*, and *drop* are discussed and illustrated below.
+
+::
+
+   from here
+
+
+.. Think about how the set of question marks should be filled
+.. in to complete these functions before proceeding to the practice
+.. problems
 
 ::
 
@@ -180,4 +233,10 @@ a sequence.
 
 .. avembed:: Exercises/PL/InfSeq4.html ka
    :long_name: Matching sequence to code that produced it (3)
+
+.. inlineav:: LazyLists2CON ss
+   :long_name: Illustrate From
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists2CON.js
+   :output: show
 

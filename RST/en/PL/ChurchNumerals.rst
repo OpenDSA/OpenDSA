@@ -97,32 +97,35 @@ To help you see how the successor function works, watch the following slideshow 
    
 .. inlineav:: church_numeral ss
    :long_name: Church numeral slideshow
-   :links: 
+   :links: AV/PL/AV/church_string.css
    :scripts: AV/PL/AV/church_numeral.js
    :output: show
 
-Addition and multiplication can be encoded as:
+Addition and multiplication can be encoded as curried functions:
 	    
 -  PLUS = :math:`\lambda m. \lambda n. \lambda f. \lambda x.((n \;f) \; ((m \; f) \; x))`
 
 -  MULT = :math:`\lambda m. \lambda n. \lambda f.(m \; (n \; f))`
 
-To see how the multiplication function works, watch the following slideshow of how (MULT TWO THREE) reduced to SIX.
+To see how the multiplication function works, watch the following slideshow of how (MULT TWO THREE) is reduced to SIX.
    
 .. inlineav:: church_mult ss
    :long_name: Church multiplication slideshow
-   :links: 
+   :links: AV/PL/AV/church_string.css
    :scripts: AV/PL/AV/church_mult.js
    :output: show
 
-An encoding for a predecessor operation:
+We add a Church encoding for an operation that tests for the predecessor of a Church numeral *n*:
 
 PRED = :math:`\lambda n. \lambda f. \lambda x.(((n \; \lambda g. \lambda h.(h \; (g \; f))) \lambda u.x) \; \lambda u.u)`
 
-And an operation to test for zero in an **if-then-else**    
+And finally an operation to test for zero, which can be used in the **if-then-else** you identified in the previous practice problem (see above).    
 
 ISZERO = :math:`\lambda n.((n \; \lambda x.FALSE) \; TRUE)`
 
+Just as we did in the preceding slide-shows, you should do some
+:math:`\beta`-reductions using these defined operations to convince
+yourself that they work as expected.
 	    
 
 Church numerals with addition and multiplication

@@ -11,12 +11,12 @@ $(document).ready(function() {
   var container = document.getElementById("container"); //container
   var lastoption = document.getElementById("option").value; //user last option
   var para0, para11, para12; //paragraph for step 0,1
-  var para21, para22, para23, para24, para3; //paragraph for step 2,3
+  var para21, para22, para23, para24, para25, para26, para3; //paragraph for step 2,3
   var para41, para42, para43;  //paragraph for step 4
   var paraerr, paraerr1;
-  var x, y, z;  //substrings x,y,z
-  var xl, yl, zl; //user input for x,y,z
-  var xn, yn, zn; //integers x,y,z
+  var u, v, x, y, z;  //substrings u,v,x,y,z
+  var ul, vl, xl, yl, zl; //user input for u,v,x,y,z
+  var un, vn, xn, yn, zn; //integers u,v,x,y,z
   var str; //output for string
   var outstr = "w: ";  //w: + str
   var count = 0;  //count for the number of next button click
@@ -29,11 +29,13 @@ $(document).ready(function() {
   var firstinput = "input1";
   var secondinput = "input2";
   var thirdinput = "input3";
+  var fourthinput = "input4";
+  var fifthinput = "input5";
   var chaoptcount = 0;
   var chafinpcount = 0;
   var errp = "paraerr1";
   var strsize;
-  var laststrsize, lastfstsize, lastsecsize, lastthdsize;
+  var laststrsize, lastfstsize, lastsecsize, lastthdsize, lastforsize, lastfifsize;
   //Declare and initialize state variable for computer first
   var p0, p01, p1, p11, pe2, p2, p22, p3, p31, p4, p4e, p41;
   var i3;
@@ -41,7 +43,7 @@ $(document).ready(function() {
   var strc = "";
   var validc = 1;
   var valids = 1;
-  var xc, yc, zc;
+  var uc, vc, xc, yc, zc;
   var ivalue, lastivalue;
   // Main action: Result of clicking "Next" button
   function Next() {    
@@ -63,6 +65,8 @@ $(document).ready(function() {
           para22.style.display = "none";
           para23.style.display = "none";
           para24.style.display = "none";
+          para25.style.display = "none";
+          para26.style.display = "none";
         }
         if (count >= 4) {
           para3.style.display = "none";
@@ -114,6 +118,8 @@ $(document).ready(function() {
     var input1;
     var input2;
     var input3;
+    var input4;
+    var input5;
     if (option == "user") {  
       if (count == 0) {
         var node0;
@@ -160,6 +166,9 @@ $(document).ready(function() {
           for (i = 0; i < ssize; i++){
             outstr += "b";
           }
+          for (i = 0; i < ssize; i++){
+            outstr += "c";
+          }
           para11 = document.createElement("p");
           para11.setAttribute("id","para11");
           var node11 = document.createTextNode("2. I have selected w such that |w| >= m.");
@@ -188,6 +197,8 @@ $(document).ready(function() {
             para22.style.display = "none";
             para23.style.display = "none";
             para24.style.display = "none";
+            para25.style.display = "none";
+            para26.style.display = "none";
           }
           if (count >= 4) {
             para3.style.display = "none";
@@ -211,28 +222,40 @@ $(document).ready(function() {
         var node21 = document.createTextNode("3. Select decompositon of w into xyz.");
         para22 = document.createElement("p");
         para22.setAttribute("id","para22");
-        var node22 = document.createTextNode("|x|: ");
+        var node22 = document.createTextNode("|u|: ");
         para23 = document.createElement("p");
         para23.setAttribute("id","para23");
-        var node23 = document.createTextNode("|y|: ");
+        var node23 = document.createTextNode("|v|: ");
         para24 = document.createElement("p");
         para24.setAttribute("id","para24");
-        var node24 = document.createTextNode("|z|: ");
+        var node24 = document.createTextNode("|x|: ");
+        para25 = document.createElement("p");
+        para25.setAttribute("id","para25");
+        var node25 = document.createTextNode("|y|: ");
+        para26 = document.createElement("p");
+        para26.setAttribute("id","para26");
+        var node26 = document.createTextNode("|z|: ");
         para21.appendChild(node21);
         para22.appendChild(node22); 
         para23.appendChild(node23);
         para24.appendChild(node24);
+        para25.appendChild(node25);
+        para26.appendChild(node26);
         container.appendChild(para21); 
         var i;
         for (i = 0; i < chaoptcount; i++) {
           firstinput = firstinput + "1";
           secondinput = secondinput + "2";
           thirdinput = thirdinput + "3";
+          fourthinput = fourthinput + "4";
+          fifthinput = fifthinput + "5";
         }  
         for (i = 0; i < chafinpcount; i++) {
           firstinput = firstinput + "1";
           secondinput = secondinput + "2";
           thirdinput = thirdinput + "3";
+          fourthinput = fourthinput + "4";
+          fifthinput = fifthinput + "5";
         }
         input1 = document.createElement("input");
         input1.type = "number";
@@ -243,18 +266,31 @@ $(document).ready(function() {
         input3 = document.createElement("input");
         input3.type = "number";
         input3.setAttribute("id",thirdinput);
+        input4 = document.createElement("input");
+        input4.type = "number";
+        input4.setAttribute("id",fourthinput);
+        input5 = document.createElement("input");
+        input5.type = "number";
+        input5.setAttribute("id",fifthinput);
         para22.appendChild(input1);
         para23.appendChild(input2);
         para24.appendChild(input3);
-        //input.className = "css-class-name"; // set the CSS class
+        para25.appendChild(input4);
+        para26.appendChild(input5);
         container.appendChild(para22);
         container.appendChild(para23);
         container.appendChild(para24);
+        container.appendChild(para25);
+        container.appendChild(para26);
       }
       if (count == 3) {
-        xl = document.getElementById(firstinput).value;
-        yl = document.getElementById(secondinput).value;
-        zl = document.getElementById(thirdinput).value;
+        ul = document.getElementById(firstinput).value;
+        vl = document.getElementById(secondinput).value;
+        xl = document.getElementById(thirdinput).value;
+        yl = document.getElementById(fourthinput).value;
+        zl = document.getElementById(fifthinput).value;
+        un = parseInt(ul);
+        vn = parseInt(vl);
         xn = parseInt(xl);
         yn = parseInt(yl);
         zn = parseInt(zl);
@@ -270,36 +306,30 @@ $(document).ready(function() {
           paraerr1 = document.createElement("p");
           paraerr1.setAttribute("id", errp);
           var numerr = 0;
-          if ((xn + yn + zn) != (2*parseInt(strsize))) {
+          if ((un + vn + xn + yn + zn) != (3*parseInt(strsize))) {
             numerr = numerr + 1;
-            var nodeerr1 = document.createTextNode(numerr.toString() + ". The sum of x, y and z must equal to the length of string. ");
+            var nodeerr1 = document.createTextNode(numerr.toString() + ". The sum of u, v, x, y and z must equal to the length of string. ");
             paraerr1.appendChild(nodeerr1);
             valid1 = 0;
           }
-          if (xn + yn > parseInt(strsize)) {
+          if (vn + xn + yn > parseInt(strsize)) {
             numerr = numerr + 1;
-            var nodeerr2 = document.createTextNode("\xa0\xa0" + numerr.toString() + ". Condition violated: |xy| <= m ");
+            var nodeerr2 = document.createTextNode("\xa0\xa0" + numerr.toString() + ". Condition violated: |vxy| <= m ");
             paraerr1.appendChild(nodeerr2);
             valid1 = 0;
           }
-          if (yn <= 0) {
+          if (vn + yn < 1) {
             numerr = numerr + 1;
-            var nodeerr3 = document.createTextNode("\xa0\xa0" + numerr.toString() + ". Condition violated: |y| > 0 ");
+            var nodeerr3 = document.createTextNode("\xa0\xa0" + numerr.toString() + ". Condition violated: |vy| >= 1 ");
             paraerr1.appendChild(nodeerr3);
             valid1 = 0;
           }
-          if (xn < 0) {
+          if (un < 0 || vn < 0 || xn < 0 || yn < 0 || zn < 0) {
             numerr = numerr + 1;
-            var nodeerr4 = document.createTextNode("\xa0\xa0" + numerr.toString() + ". x cannot be negative.");
+            var nodeerr4 = document.createTextNode("\xa0\xa0" + numerr.toString() + ". Negative number is not accepted.");
             paraerr1.appendChild(nodeerr4);
             valid1 = 0;
           }
-          if (zn < 0) {
-            numerr = numerr + 1;
-            var nodeerr5 = document.createTextNode("\xa0\xa0" + numerr.toString() + ". z cannot be negative.");
-            paraerr1.appendChild(nodeerr5);
-            valid1 = 0;
-          } 
           numerr = 0;
           if (valid1 == 0) {
               count = count - 1;
@@ -308,34 +338,49 @@ $(document).ready(function() {
           }
           else {
             str = outstr.substring(3);
-            x = str.substring(0, xn);
-            y = str.substring(xn, (xn + yn));
-            z = str.substring((xn + yn), (xn + yn + zn));
+            u = str.substring(0, un);
+            v = str.substring(un, (un + vn));
+            x = str.substring((un + vn), (un + vn + xn));
+            y = str.substring((un + vn + xn), (un + vn + xn + yn));
+            z = str.substring((un + vn + xn + yn), (un + vn + xn + yn + zn));
             para3 = document.createElement("p");
             para3.setAttribute("id","para3");
-            var node = document.createTextNode("x: ");
-            var node1 = document.createTextNode(x);
-            var node2 = document.createTextNode("\xa0\xa0\xa0\xa0\xa0y: ");
-            var node3 = document.createTextNode(y);
-            var node4 = document.createTextNode("\xa0\xa0\xa0\xa0\xa0z: ");
-            var node5 = document.createTextNode(z);
+            var node = document.createTextNode("u: ");
+            var node1 = document.createTextNode(u);
+            var node2 = document.createTextNode("\xa0\xa0\xa0\xa0\xa0v: ");
+            var node3 = document.createTextNode(v);
+            var node4 = document.createTextNode("\xa0\xa0\xa0\xa0\xa0x: ");
+            var node5 = document.createTextNode(x);
+            var node6 = document.createTextNode("\xa0\xa0\xa0\xa0\xa0y: ");
+            var node7 = document.createTextNode(y);
+            var node8 = document.createTextNode("\xa0\xa0\xa0\xa0\xa0z: ");
+            var node9 = document.createTextNode(z);
             para3.appendChild(node);
             para3.appendChild(node1);
             para3.appendChild(node2);
             para3.appendChild(node3);
             para3.appendChild(node4);
             para3.appendChild(node5);
+            para3.appendChild(node6);
+            para3.appendChild(node7);
+            para3.appendChild(node8);
+            para3.appendChild(node9);
             container.appendChild(para3);   
-            lastfstsize = xl;
-            lastsecsize = yl;
-            lastthdsize = zl; 
+            lastfstsize = ul;
+            lastsecsize = vl;
+            lastthdsize = xl; 
+            lastforsize = yl;
+            lastfifsize = zl;
           }
       }
       if (count >= 4) {
-        xl = document.getElementById(firstinput).value;
-        yl = document.getElementById(secondinput).value;
-        zl = document.getElementById(thirdinput).value;
-        if ((lastfstsize != xl) || (lastsecsize != yl) || (lastthdsize != zl)) {
+        ul = document.getElementById(firstinput).value;
+        vl = document.getElementById(secondinput).value;
+        xl = document.getElementById(thirdinput).value;
+        yl = document.getElementById(fourthinput).value;
+        zl = document.getElementById(fifthinput).value;
+
+        if ((lastfstsize != ul) || (lastsecsize != vl) ||(lastthdsize != xl) || (lastforsize != yl) || (lastfifsize != zl)) {
           para3.style.display = "none";
           if (count >= 5) {
             para41.style.display = "none";
@@ -359,9 +404,13 @@ $(document).ready(function() {
         para42.setAttribute("id","para42");
         var node42 = document.createTextNode("i = " + ran.toString());
         var pumpstr = "";
-        pumpstr = pumpstr + x;
+        pumpstr = pumpstr + u;
         var i;
         //Pumping 
+        for (i = 0; i < ran; i++) {
+          pumpstr = pumpstr + v;
+        }
+        pumpstr = pumpstr + x;
         for (i = 0; i < ran; i++) {
           pumpstr = pumpstr + y;
         }
@@ -372,13 +421,16 @@ $(document).ready(function() {
         para43 = document.createElement("p");
         para43.setAttribute("id","para43");
         var tempy;
+        var tempv;
         if (ran == 2) {
           tempy = "yy";
+          tempv = "vv";
         }
         else {
-          tempy = ""
+          tempy = "";
+          tempv = "";
         }
-        var node44 = document.createTextNode("x" + tempy + "z = " + pumpstr + " is NOT in the language. Please try again.");
+        var node44 = document.createTextNode("u" + tempv + "x" + tempy + "z = " + pumpstr + " is NOT in the language. Please try again.");
         para43.appendChild(node44);
         container.appendChild(para41);
         container.appendChild(para42);
@@ -387,6 +439,7 @@ $(document).ready(function() {
       count += 1;
       first += 1;
     }
+    //computer first
     else {
       if (count == 0) {
         p0 = document.createElement("p");
@@ -401,12 +454,6 @@ $(document).ready(function() {
       }
       if (count == 1) {
         var i;
-        // for (i = 0; i < ranc; i++) {
-        //   strc = strc + "a";
-        // }
-        // for (i = 0; i < ranc; i++) {
-        //   strc = strc + "b";
-        // }
         p1 = document.createElement("p");
         var n1 = document.createTextNode("2. Please enter a possible value for w.");
         p1.appendChild(n1);
@@ -437,16 +484,18 @@ $(document).ready(function() {
         else {
           var firstpart;
           var secondpart;
+          var thirdpart;
           var legal = 1;
-          if (inputstr.length % 2 == 1){
+          if (inputstr.length % 3 == 1){
             legal = 0;
           }
           else {
-            firstpart = inputstr.substr(0, inputstr.length / 2);
-            secondpart = inputstr.substr((inputstr.length / 2));
+            firstpart = inputstr.substr(0, inputstr.length / 3);
+            secondpart = inputstr.substr((inputstr.length / 3), (2 * inputstr.length / 3));
+            thirdpart = inputstr.substr((2 * inputstr.length / 3));
             var i;
-            for (i = 0; i < inputstr.length / 2; i++){
-              if (firstpart.charAt(i) != "a" || secondpart.charAt(i) != "b"){
+            for (i = 0; i < inputstr.length / 3; i++){
+              if (firstpart.charAt(i) != "a" || secondpart.charAt(i) != "b" || thirdpart.charAt(i) != "c"){
                 legal = 0;
               }
             }
@@ -476,13 +525,22 @@ $(document).ready(function() {
             var n2 = document.createTextNode("3. I have decomposed w into the following...");
             p2.appendChild(n2);
             container.appendChild(p2);
-            var ycl = Math.floor(Math.random() * (ranc + 1)); //random number from 0 to m
-            var xcl = Math.floor(Math.random() * ycl);
-            xc = inputstr.substring(0, xcl);
-            yc = inputstr.substring(xcl, ycl);
-            zc = inputstr.substring(ycl);
+            var uvxyz = inputstr.length;
+            var vxy = Math.floor(Math.random() * (ranc + 1)); //length of vxy = random number from 0 to m
+            var vcl = Math.floor(Math.random() * (vxy + 1)); //length of v = random number from 0 to the length of vxy
+            var ycl = Math.floor(Math.random() * (vxy - vcl + 1)); //random number from 0 to the length of vxy - length of v
+            if (vxy + ycl == 0) {
+              vcl = 1;
+            }
+            var xcl = vxy - vcl - ycl;
+            var ucl = Math.floor(Math.random() * ((uvxyz - vxy) + 1));
+            uc = inputstr.substring(0, ucl);
+            vc = inputstr.substring(ucl, ucl + vcl);
+            xc = inputstr.substring(ucl + vcl, ucl + vcl + xcl);
+            yc = inputstr.substring(ucl + vcl + xcl, ucl + vcl + xcl + ycl);
+            zc = inputstr.substring(ucl + vcl + xcl + ycl);
             p22 = document.createElement("p");
-            var n22 = document.createTextNode("X = " + xc + "; Y = " + yc + "; Z = " + zc);
+            var n22 = document.createTextNode("U = " + uc + "; V = " + vc + "; X = " + xc + "; Y = " + yc + "; Z = " + zc);
             p22.appendChild(n22);
             container.appendChild(p22);
           }
@@ -520,9 +578,15 @@ $(document).ready(function() {
             p4e.style.display = "none";
             valid2 = 1;
           }
-          var pumpstr1 = xc;
+          var pumpstr1 = uc;
           var i;
-          var tempy = "x";
+          var tempy = "u";
+          for (i = 0; i < parseInt(ivalue); i++) {
+            pumpstr1 = pumpstr1 + vc;
+            tempy = tempy + "v";
+          }
+          tempy = tempy + "x";
+          pumpstr1 = pumpstr1 + xc;
           for (i = 0; i < parseInt(ivalue); i++) {
             pumpstr1 = pumpstr1 + yc;
             tempy = tempy + "y";

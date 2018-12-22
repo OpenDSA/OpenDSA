@@ -36,9 +36,11 @@ $(document).ready(function() {
   var line6 = av.g.polyline([[375, 65], [390, 20], [600, 20], [620, 80]], {"arrow-end": "classic-wide-long"});
 
   // labels  
-  av.label("qs", {left: 160, top: 75});
+  av.label("q", {left: 160, top: 75});
+  av.label("s", {left: 168, top: 83});
   av.label("M", {left: 310, top: 25});
-  av.label("qf", {left: 633, top: 75});
+  av.label("q", {left: 633, top: 75});
+  av.label("f", {left: 641, top: 83});
   av.label("λ , z'; zz'", {left: 200, top: 65});
   av.label("λ , z'; λ", {left: 520, top: 45});
   av.label("λ , z'; λ", {left: 520, top: 115});

@@ -34,10 +34,13 @@ $(document).ready(function() {
   var line4 = av.g.polyline([[618, 90], [650, 80], [645, 110],[630, 120], [620, 113]], {"arrow-end": "classic-wide-long"});
   
   // labels  
-  av.label("qs", {left: 160, top: 75});
+  av.label("q", {left: 160, top: 75});
+  av.label("s", {left: 168, top: 83});
   av.label("M", {left: 310, top: 25});
-  av.label("q0", {left: 300, top: 75});
-  av.label("qf", {left: 593, top: 75});
+  av.label("q", {left: 300, top: 75});
+  av.label("0", {left: 308, top: 83});
+  av.label("q", {left: 593, top: 75});
+  av.label("f", {left: 601, top: 83});
   av.label("λ , z'; zz'", {left: 200, top: 65});
   av.label("λ , x; λ", {left: 480, top: 45});
   av.label("λ , x; λ", {left: 480, top: 115});

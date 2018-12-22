@@ -83,6 +83,11 @@ the path.
    :capalign: justify
    :figwidth: 90%
    :alt: lt8ptree1
+   
+.. inlineav:: CFLprop1 dgm
+   :links: AV/OpenFLAP/CFLprop1.css
+   :scripts: AV/OpenFLAP/CFLprop1.js
+   :align: center
 
 | :math:`N \stackrel{*}{\Rightarrow} vNy` and
   :math:`N \stackrel{*}{\Rightarrow} x`. 
@@ -97,6 +102,11 @@ the path.
    :capalign: justify
    :figwidth: 90%
    :alt: lt8ptree2
+   
+.. inlineav:: CFLprop2 dgm
+   :links: AV/OpenFLAP/CFLprop2.css
+   :scripts: AV/OpenFLAP/CFLprop2.js
+   :align: center
 
 QED 
 
@@ -458,6 +468,11 @@ Example: :math:`L=\{a^nb^n | n>0\}`,
          :capalign: justify
          :figwidth: 90%
          :alt: lt10inter
+         
+      .. inlineav:: CFLprop3 dgm
+         :links: AV/OpenFLAP/CFLprop3.css
+         :scripts: AV/OpenFLAP/CFLprop3.js
+         :align: center
 
       Note this is not a proof, but sketches how we will combine the DFA and NPDA. 
       We must formally define :math:`{\delta}_3`. If
