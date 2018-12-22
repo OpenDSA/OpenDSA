@@ -1,5 +1,4 @@
 /** mbhatia@vt.edu */
-
 (function($) {
 
 
@@ -20,28 +19,28 @@
 
             }),
 
-        //0 signifies a backward click; used by injector to decrement queue if necessary
-        $(".jsavbackward").click(function() {
-            var buttonGroup = $(this).parent();
-            var parentAV = $(buttonGroup).parent().attr('id')
-            PIFRAMES.callInjector(parentAV, 0)
+            //0 signifies a backward click; used by injector to decrement queue if necessary
+            $(".jsavbackward").click(function() {
+                var buttonGroup = $(this).parent();
+                var parentAV = $(buttonGroup).parent().attr('id')
+                PIFRAMES.callInjector(parentAV, 0)
 
-        }),
+            }),
 
 
-        $(".jsavbegin").click(function() {
-            var buttonGroup = $(this).parent();
-            var parentAV = $(buttonGroup).parent().attr('id')
-            PIFRAMES.callInjector(parentAV, -1)
+            $(".jsavbegin").click(function() {
+                var buttonGroup = $(this).parent();
+                var parentAV = $(buttonGroup).parent().attr('id')
+                PIFRAMES.callInjector(parentAV, -1)
 
-        }),
+            }),
 
-        $(".jsavend").click(function() {
-            var buttonGroup = $(this).parent();
-            var parentAV = $(buttonGroup).parent().attr('id')
-            PIFRAMES.callInjector(parentAV)
+            $(".jsavend").click(function() {
+                var buttonGroup = $(this).parent();
+                var parentAV = $(buttonGroup).parent().attr('id')
+                PIFRAMES.callInjector(parentAV)
 
-        })
+            })
 
     });
 
@@ -74,6 +73,9 @@
                 //used for dynamic resizing
                 originalAVHeight: 0,
 
+                //current dynamic height of AV
+                currentAVHeight: 0,
+
                 //may use this format if we decide to create a custom version of av.umsg()
                 revealQuestionButton: $('<button />', {
                     "class": 'revealbutton',
@@ -94,8 +96,8 @@
                 },
 
                 toggleButtonSpace(height) {
-                    this.originalAVHeight = $(`#${this.av_name}`).height() + (2 * height);
-                    $(`#${this.av_name}`).height(this.originalAVHeight + 2 * height);
+                    this.currentAVHeight = $(`#${this.av_name}`).outerHeight() + (2 * height);
+                    $(`#${this.av_name}`).height(this.currentAVHeight + 2 * height);
 
                 },
 
@@ -103,15 +105,23 @@
                 resizeContainer: function(height) {
 
                     if (this.originalAVHeight == 0) {
-                        this.originalAVHeight = $(`#${this.av_name}`).height();
+                        this.currentAVHeight = $(`#${this.av_name}`).outerHeight();
+                        this.originalAVHeight = this.currentAVHeight;
                     }
 
-                    $(`#${this.av_name}`).height(this.originalAVHeight + 1.25 * height);
-
                     if ($(`.${this.buttonDiv}`).children().length > 0 && height == 0) {
-                        var buttonHeight = $(`.${this.buttonDiv}`).height();
-                        this.toggleButtonSpace(-buttonHeight);
+
                         $(`.${this.buttonDiv}`).empty();
+                        this.updateCanvas(null);
+                    }
+
+                    if (height == 0) {
+                        $(`#${this.av_name}`).outerHeight(this.originalAVHeight);
+                        this.currentAVHeight = this.originalAVHeight;
+                    } else {
+                        this.currentAVHeight += 1.25 * height;
+                        $(`#${this.av_name}`).outerHeight(this.currentAVHeight);
+
                     }
 
                 },
@@ -125,7 +135,7 @@
                         var theHtml = this.buildElement(question);
                         this.updateCanvas(theHtml);
 
-                        var childHeight = $(`#${this.av_name}`).children(`div.${this.class}`).height();
+                        var childHeight = $(`#${this.av_name}`).children(`div.${this.class}`).outerHeight();
                         this.resizeContainer(childHeight);
 
 
@@ -265,6 +275,7 @@
                         }
                     } else {
                         //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
+                        alert("you have answered the question incorrectly!")
                         this.disableForwardButton();
 
                     }
@@ -279,17 +290,20 @@
 
                     this.updateSlideCounter(jsavControl);
 
+                    this.resizeContainer(0);
                     if ($(`#${this.av_name}`).find('.REVEAL').length) {
 
-                        this.resizeContainer(0);
+                        // this.resizeContainer(0);
                         $(`.${this.buttonDiv}`).append(this.revealQuestionButton);
-                        var height = $(`.${this.buttonDiv}`).height();
-                        this.toggleButtonSpace(height);
+                        var height = $(`.${this.buttonDiv}`).outerHeight();
+
+                        this.resizeContainer(4 * height);
+                        // this.toggleButtonSpace(height);
                         this.questionSlideListener();
 
                     } else {
                         this.updateCanvas(null);
-                        this.resizeContainer(0);
+                        // this.resizeContainer(0);
                         this.enableForwardButton();
 
                     }
@@ -310,6 +324,8 @@
                     var current = this.queue.current;
                     if (!this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])) {
                         this.disableForwardButton();
+                    } else {
+                        this.enableForwardButton();
                     }
                 }
             }
