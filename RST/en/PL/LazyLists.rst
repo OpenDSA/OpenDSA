@@ -235,8 +235,14 @@ a sequence.
    :long_name: Matching sequence to code that produced it (3)
 
 .. inlineav:: LazyLists2CON ss
-   :long_name: Illustrate From
+   :long_name: Illustrate from operation in is module
    :links: AV/PL/LazyLists/LazyListsCON.css
    :scripts: AV/PL/LazyLists/LazyLists2CON.js
+   :output: show
+
+.. inlineav:: LazyLists3CON ss
+   :long_name: Illustrate map operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists3CON.js
    :output: show
 

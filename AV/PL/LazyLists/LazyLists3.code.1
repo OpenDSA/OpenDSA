@@ -1,0 +1,23 @@
+// Analouge to what the map operation did for finite lists in the fp
+// module, that is, return a new sequence obtained by applying the
+// given function f onto each member of the given sequence seq
+var map = function (f,seq) {
+    return cons (???-1st arg to cons-???,
+    return cons (f(hd(seq)), 
+		 ???-2nd arg to cons-??? );
+		 function ()  {
+		     return map (f, tl(seq));
+		 }
+		);
+};
+
+// Examples of using map
+var intsFrom1 = is.from(1);
+var s1 = is.take(is.map( function (n) { return 2 * n; },
+			 intsFrom1),
+		 5);
+var s2 = is.take(is.map( function (n) { return n * n; },
+			 intsFrom1),
+		 5);
+
+	
