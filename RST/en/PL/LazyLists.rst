@@ -246,3 +246,9 @@ a sequence.
    :scripts: AV/PL/LazyLists/LazyLists3CON.js
    :output: show
 
+.. inlineav:: LazyLists4CON ss
+   :long_name: Illustrate filter operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists4CON.js
+   :output: show
+
