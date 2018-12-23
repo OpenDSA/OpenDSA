@@ -139,9 +139,37 @@ and *take*, the **is** module has some utility functions that are
 module).  Each of these utility functions -- *from, map, filter,
 iterates*, and *drop* are discussed and illustrated below.
 
-::
+* The **from** operation:
+  
+.. inlineav:: LazyLists2CON ss
+   :long_name: Illustrate from operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists2CON.js
+   :output: show
 
-   from here
+* The **map** operation
+
+.. inlineav:: LazyLists3CON ss
+   :long_name: Illustrate map operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists3CON.js
+   :output: show
+
+* The **filter** operation
+
+.. inlineav:: LazyLists4CON ss
+   :long_name: Illustrate filter operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists4CON.js
+   :output: show
+
+* The **drop** operation:
+
+.. inlineav:: LazyLists5CON ss
+   :long_name: Illustrate drop operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists5CON.js
+   :output: show
 
 
 .. Think about how the set of question marks should be filled
@@ -233,22 +261,4 @@ a sequence.
 
 .. avembed:: Exercises/PL/InfSeq4.html ka
    :long_name: Matching sequence to code that produced it (3)
-
-.. inlineav:: LazyLists2CON ss
-   :long_name: Illustrate from operation in is module
-   :links: AV/PL/LazyLists/LazyListsCON.css
-   :scripts: AV/PL/LazyLists/LazyLists2CON.js
-   :output: show
-
-.. inlineav:: LazyLists3CON ss
-   :long_name: Illustrate map operation in is module
-   :links: AV/PL/LazyLists/LazyListsCON.css
-   :scripts: AV/PL/LazyLists/LazyLists3CON.js
-   :output: show
-
-.. inlineav:: LazyLists4CON ss
-   :long_name: Illustrate filter operation in is module
-   :links: AV/PL/LazyLists/LazyListsCON.css
-   :scripts: AV/PL/LazyLists/LazyLists4CON.js
-   :output: show
 
