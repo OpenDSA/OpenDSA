@@ -3,7 +3,7 @@
 $(document).ready(function () {
   // Relative offsets
   var leftMargin = 25;
-  var topMargin = 200;
+  var topMargin = 250;
   var currentTopMargin = 0;
   var currentFooTopMargin;
   var labelMargin = 10;
@@ -27,6 +27,11 @@ $(document).ready(function () {
   var highlightedLine;
   var output = '';
   var jsavElements;
+  var pointerindex;
+  var pointerMode = false;
+  var instructionLabel;
+  var instructionRegular = 'Evaluate the value of the right hand side of the hightlighted line and type that into the input above. Then click the location where that value belongs.';
+  var instructionNamePointer = 'Click where %variable% should point now that the current operation has been performed.';
 
   var initialArrays;
 
@@ -47,15 +52,29 @@ $(document).ready(function () {
 
   function clickHandler(jsavArr){
     return function(index){
-      unhighlightAll();
       var valInput = $('#answer');
-      var answer = valInput.val().replace(/\s+/g, '');
-      valInput.val('');
-      jsavArr.highlight(index);
-      jsavArr.value(index, parseInt(answer));
+      if(pointerMode){
+        if(jsavArr == fooVars[fooVarNames[1]]){
+          pointerindex.value(0,index);
+        }
+        else{
+          pointerindex.value(0,null);
+        }
+        fooLabels[fooVarNames[1]].target(jsavArr,{targetIndex:index});
+        pseudo.setCurrentLine(++highlightedLine);
+        valInput.focus();
+        instructionLabel.text(instructionRegular);
+      }
+      else{
+        unhighlightAll();
+        var answer = valInput.val().replace(/\s+/g, '');
+        valInput.val('');
+        jsavArr.highlight(index);
+        jsavArr.value(index, parseInt(answer));
+        instructionLabel.text(instructionNamePointer.replace('%variable%', fooVarNames[1]));
+      }
+      pointerMode = !pointerMode;
       exer.gradeableStep();
-      pseudo.setCurrentLine(++highlightedLine);
-      valInput.focus();
     }
   }
 
@@ -72,7 +91,7 @@ $(document).ready(function () {
     mainVarNum = 0;
     mainIndex = null;
 
-    fooIndex = mainIndex = null;
+    fooIndex = mainIndex = pointerindex = instructionLabel = null;
     classVars = {};
     classLabels = {};
     mainVars = {};
@@ -84,6 +103,7 @@ $(document).ready(function () {
     currentLineMain = 0;
     currentLineFoo = 0;
     output = '';
+    pointerMode = false;
     initialArrays = {
       classVars: {},
       mainVars: {},
@@ -125,10 +145,8 @@ $(document).ready(function () {
       }
     }
 
-    var pointer = av.pointer(fooVarNames[1],classVars[1],{
-      targetIndex: 0,
-      left: lineHeight
-    })
+    var pointerindex = modeljsavAV.ds.array([fooVars[fooVarNames[0]].value(0)],{visible:false});
+    jsavElements.push(pointerindex);
 
     modeljsavAV.displayInit();
 
@@ -168,18 +186,18 @@ $(document).ready(function () {
       modeljsavAV.gradeableStep();
 
       if(lhs == fooVarNames[0]){
-        var arrName = fooPassedIn[1].charAt(0);
-        recomputeThunk(fooLabels[fooVarNames[1]],classVars[arrName],rhs.value);
-        fooVars[fooVarNames[1]+'-index'] = rhs.value;
-        modeljsavAV.umsg(fooVarNames[1]+' now points to '+arrName+'['+rhs.value+']');
-        modeljsavAV.gradeableStep();
+        fooVars[fooVarNames[1]+'-index'] = parseInt(rhs.value[0]);
+        pointerindex.value(0,parseInt(rhs.value[0]));
+        modeljsavAV.umsg(fooVarNames[1]+' now points to '+fooVarNames[1]+'['+rhs.value+']');
       }
+      modeljsavAV.gradeableStep();
 
     }
 
     var jsavArrs = {
       classVars,
       mainVars,
+      pointer:{index:pointerindex}
     }
 
     return arrayFromObj(jsavArrs);
@@ -190,6 +208,9 @@ $(document).ready(function () {
     CallByAllFive.init();
     clearAllJsavObj();
     av.umsg("");
+
+    instructionLabel = av.label(instructionRegular);
+    jsavElements.push(instructionLabel);
 
     codeLines = CallByAllFive.expression.split('<br />');
     for(var i = 0; i < codeLines.length; i++){
@@ -311,18 +332,24 @@ $(document).ready(function () {
       jsavElements.push(fooLabels[fooVarNames[i]]);
     }
 
+    pointerindex = av.ds.array([fooVars[fooVarNames[0]].value(0)],{visible:false});
+    jsavElements.push(pointerindex);
+
     highlightedLine = currentLineFoo+1;
     pseudo.setCurrentLine(highlightedLine);
 
     var jsavArrs = {
       classVars,
-      mainVars
+      mainVars,
+      pointer:{index:pointerindex}
     }
 
     for(var key in jsavArrs){
       for(var vararr in jsavArrs[key]){
-        vararr = jsavArrs[key][vararr]
-        vararr.click(clickHandler(vararr));
+        if(jsavArrs[key] != pointerindex){
+          vararr = jsavArrs[key][vararr];
+          vararr.click(clickHandler(vararr));
+        }
       }
     }
 
@@ -333,7 +360,7 @@ $(document).ready(function () {
   // is used and the fix errors mode is on.
   function fixState(modelState) {
     pseudo.setCurrentLine(highlightedLine);
-    var current = arrayFromObj({classVars, mainVars});
+    var current = arrayFromObj({classVars, mainVars, pointer:{index:pointerindex}});
     for(var i = 0; i < modelState.length && i < current.length; i++){
       for(var j = 0; j < current[i].size(); j++) {
         current[i].value(j, modelState[i].value(j));
@@ -345,8 +372,7 @@ $(document).ready(function () {
         }
       }
     }
-
-
+    fooLabels[fooVarNames[1]].target(fooVars[fooVarNames[1]],{targetIndex:pointerindex.value(0)});
   }
 
    // Connect the action callbacks to the HTML entities
