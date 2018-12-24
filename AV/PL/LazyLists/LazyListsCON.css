@@ -310,7 +310,7 @@
 }
 
 #LazyLists5CON .jsavoutput.jsavline {
-  height: 80px;
+  height: 100px;
 }
 
 /* Makes all cells wider */
@@ -322,8 +322,8 @@
 
 /* Makes just one cell wider */
 #LazyLists5CON  .jsavindex.jsavnode.wider {
-    min-width : 225px !important;
-    max-width : 225px !important;
+    min-width : 230px !important;
+    max-width : 230px !important;
 }
 
 #LazyLists5CON  .jsavindex.jsavnode.addBonusPoint {
