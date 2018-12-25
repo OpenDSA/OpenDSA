@@ -225,6 +225,23 @@ iterates*, and *drop* are discussed and illustrated below.
 ..     };
 
 
+**The Sieve of Erastosthenes -- an example that takes advantage of lazy lists**
+
+The need to compute various prime numbers occurs in a variety of
+applcations, for example, public-key encryption.  A long known
+technique to compute all the prime numbers up to a limit *n* with
+relative efficiency is the *Sieve of Erastosthenes*.  The slide slow
+below describes the sieve algorithm in a language with eager (as
+opposed to lazy) evaluation.
+
+.. inlineav:: LazyLists7CON ss
+   :long_name: Illustrate sieve of Erastonthenes
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists7CON.js
+   :output: show
+
+
+
 **Call-by-need**
    
 What's the difference between our call-by-name implementation of

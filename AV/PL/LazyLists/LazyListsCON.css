@@ -428,3 +428,29 @@
 }*/
 
 
+/* ------------ LazyLists7 --------- */
+
+#LazyLists7CON {
+  height: 400px;
+  width: 950px;
+}
+
+#LazyLists7CON .jsavoutput.jsavline {
+  height: 15px;
+}
+
+#LazyLists7CON .jsavcodeline.extrawidth{
+    width: 580px;
+}
+
+#LazyLists7CON  .jsavindex.jsavnode.narrow {
+    min-width : 27px !important;
+    max-width : 27px !important;
+}
+
+#LazyLists7CON .jsavlabel.emphasize{
+    font-weight: bold;
+    color: red;
+    font-size: 20px;
+}
+
