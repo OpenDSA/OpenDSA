@@ -172,48 +172,58 @@ iterates*, and *drop* are discussed and illustrated below.
    :output: show
 
 
+* The **iterates** operation:
+
+.. inlineav:: LazyLists6CON ss
+   :long_name: Illustrate iterates operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists6CON.js
+   :output: show
+
+
 .. Think about how the set of question marks should be filled
 .. in to complete these functions before proceeding to the practice
 .. problems
 
-::
+.. ::
+.. 
+..     // return the sequence of successive integers starting at n
+..     var from = function (n) {
+..         return cons(n, function () { ?????? });
+..     };
+.. 
+..     // return the sequence obtained by removing the first n integers from the given sequence 
+..     var drop = function (seq,n) {
+..         if (n === 0)
+..             return seq;
+..         else {
+..             return drop( ?????? );
+..         }
+..     };
+.. 
+..     // return a new sequence obtained by mapping the given function onto the given sequence
+..     var map = function (f,seq) {
+..         return cons (  ?????? );
+.. 
+..     };
+.. 
+..     // return a new sequence obtained by filtering the given sequence with the given predicate
+..     var filter = function (pred,seq) {
+..         if (pred(hd(seq))) {
+..             return cons ( ?????? );
+..         } else {
+..             return ??????;
+..         }
+..     };
+.. 
+..     // return a new sequence obtained by repeatedly applying the given function to the
+..     // previous term of the sequence (starting with the given integer).   That is, return
+..     // the sequence n, f(n), f(f(n)), f(f(f(n))), ...
+..     var iterates = function (f,n) {
+.. 
+..         return cons(n, ?????? );
+..     };
 
-    // return the sequence of successive integers starting at n
-    var from = function (n) {
-        return cons(n, function () { ?????? });
-    };
-
-    // return the sequence obtained by removing the first n integers from the given sequence 
-    var drop = function (seq,n) {
-        if (n === 0)
-            return seq;
-        else {
-            return drop( ?????? );
-        }
-    };
-
-    // return a new sequence obtained by mapping the given function onto the given sequence
-    var map = function (f,seq) {
-        return cons (  ?????? );
-
-    };
-
-    // return a new sequence obtained by filtering the given sequence with the given predicate
-    var filter = function (pred,seq) {
-        if (pred(hd(seq))) {
-            return cons ( ?????? );
-        } else {
-            return ??????;
-        }
-    };
-
-    // return a new sequence obtained by repeatedly applying the given function to the
-    // previous term of the sequence (starting with the given integer).   That is, return
-    // the sequence n, f(n), f(f(n)), f(f(f(n))), ...
-    var iterates = function (f,n) {
-
-        return cons(n, ?????? );
-    };
 
 **Call-by-need**
    

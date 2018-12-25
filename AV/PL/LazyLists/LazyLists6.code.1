@@ -1,0 +1,16 @@
+// Return a new sequence obtained by repeatedly applying the given
+// function to the previous term of the sequence (starting with the
+// given integer n).  That is, return the sequence n, f(n), f(f(n)),
+// f(f(f(n))), ...
+var iterates = function (f, n) {
+    return cons(
+        ??????
+	n,
+        ??????
+	function () { return iterates(f, f(n)); }
+    );
+};
+
+is.take(is.iterates(function (x) { return 2 * x; }, 1), 6);
+is.take(is.iterates(function (x) { return ?????? ; }, ??????), 6);
+is.take(is.iterates(function (x) { return 3 + x; }, 3), 6);
