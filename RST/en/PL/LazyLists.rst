@@ -230,7 +230,7 @@ iterates*, and *drop* are discussed and illustrated below.
 The need to compute various prime numbers occurs in a variety of
 applcations, for example, public-key encryption.  A long known
 technique to compute all the prime numbers up to a limit *n* with
-relative efficiency is the *Sieve of Erastosthenes*.  The slide slow
+reasonable efficiency is the *Sieve of Erastosthenes*.  The slide slow
 below describes the sieve algorithm in a language with eager (as
 opposed to lazy) evaluation.
 
@@ -240,7 +240,9 @@ opposed to lazy) evaluation.
    :scripts: AV/PL/LazyLists/LazyLists7CON.js
    :output: show
 
-
+There is a problem with this algorithm, however, from the perspective
+of its utility.  That is, how well can it answer the questions
+regarding primes we might want to ask of it?   While it can answer a question like "Find all primes
 
 **Call-by-need**
    
