@@ -228,32 +228,51 @@ iterates*, and *drop* are discussed and illustrated below.
 **The Sieve of Erastosthenes -- an example that takes advantage of lazy lists**
 
 The need to compute various prime numbers occurs in a variety of
-applcations, for example, public-key encryption.  A long known
+applications, for example, public-key encryption.  A long known
 technique to compute all the prime numbers up to a limit *n* with
 reasonable efficiency is the *Sieve of Erastosthenes*.  The slide slow
 below describes the sieve algorithm in a language with eager (as
 opposed to lazy) evaluation.
 
 .. inlineav:: LazyLists7CON ss
-   :long_name: Illustrate sieve of Erastonthenes
+   :long_name: Illustrate sieve of Erastosthenes with eager evaluation
    :links: AV/PL/LazyLists/LazyListsCON.css
    :scripts: AV/PL/LazyLists/LazyLists7CON.js
    :output: show
 
 There is a problem with this algorithm, however, from the perspective
-of its utility.  That is, how well can it answer the questions
-regarding primes we might want to ask of it?   While it can answer a question like "Find all primes
+of its utility.  Think about how well can it respond to the requests
+regarding primes that we might want to ask of it.  While it can handle
+a request like "Find all primes less than or equal to n", it comes up
+short on requests like "Find the first 1000 prime numbers" or "Find
+the first prime number larger that 1 billion".  The reason for this is
+that the underlying eager evaluation of the algorithm is limited by the
+finite nature of the value *n* that it is given.  On the other hand,
+with lazy evaluation of lists, we need not be bound by a finite *n*.
+Instead we can construct the infinite sequence of primes, relying on
+repeated applications of a thunk to take us to any point in the
+sequence that we need to reach.  The following slide show indicates
+how the Sieve of Erastosthenes would be implemented using lazy lists.
+
+.. inlineav:: LazyLists8CON ss
+   :long_name: Illustrate sieve of Erastosthenes with lazy evaluation
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists8CON.js
+   :output: show
+
 
 **Call-by-need**
    
 What's the difference between our call-by-name implementation of
 infinite sequences and the way it is done in Haskell?  In Haskell, the
 analogue of the **is.tl** and **is.take** functions are done with
-call-by-need instead of call-by-name. In call-by-need, the value
+*call-by-need* instead of *call-by-name*. In call-by-need, the value
 returned by a thunk is stored (that is, cached) after it is thawed for
 the first time. This is much more efficient since it never results in
-a thunk being thawed more than once..
+a thunk being thawed more than once.
 
+Now it's your chance to get some practice with infinite sequences in
+the following problems.
 
 This problem will help you better understand code that creates
 call-by-name infinite sequences.
