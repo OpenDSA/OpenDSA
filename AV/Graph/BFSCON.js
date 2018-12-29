@@ -115,6 +115,7 @@ $(document).ready(function() {
         }
         adjNode.shift();
       }
+      
       av.umsg("Now we are all done processing node " + node.value());
       av.step();
     }

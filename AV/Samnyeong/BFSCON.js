@@ -19,7 +19,7 @@ $(document).ready(function() {
   initGraph();
 
   // Slide 1
-  av.umsg("Let's look at the details of how a breadth-first seach works.");
+  av.umsg("Let's look at the details of how a breadth-first seach works. TESTING");
   av.displayInit();
   av.step();
 
@@ -102,15 +102,20 @@ $(document).ready(function() {
         var neighbor = adjNode[0];
         if (!neighbor.hasClass("marked")) {
           markIt(neighbor);
-      g.removeEdge(node,neighbor);
-      g.addEdge(node,neighbor, {weight: 1}).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
-          g.layout();
-          av.umsg("Add the edge from " + node.value() + " to " + neighbor.value() + " to the BFS tree");
-          av.step();
-          q.push(neighbor);
+          g.removeEdge(node,neighbor);
+          if (node = c && neighbor == f){
+            g.addEdge(node, neighbor, {weight: 2}).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
+          } else {
+            g.addEdge(node,neighbor, {weight: q.length}).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
+            g.layout();
+            av.umsg("Add the edge from " + node.value() + " to " + neighbor.value() + " to the BFS tree");
+            av.step();
+            q.push(neighbor);
+          }
         } else {
           av.umsg("Follow edge to node " + neighbor.value() + ", but it is already marked so we skip it.");
           av.step();
+          weig++;
         }
         adjNode.shift();
       }
@@ -122,7 +127,7 @@ $(document).ready(function() {
 
   // Resulting graph from completed breadth-first search
   function finalGraph() {
-    av.umsg("Here is the completed BFS tree");
+    av.umsg("Here is the completed BFS tree TESTING");
     g.removeEdge(e, f);
     g.removeEdge(d, f);
     g.removeEdge(b, f);
