@@ -60,8 +60,7 @@ any function F, :math:`(F \; (Y \; F)) = (Y \; F)`.  In other words,
 if we apply *Y* to *F*, the result is a value that, when given to *F*,
 will give us *Y* applied to *F* again.
 
-To see this, note that the substitution dictated by
-:math:`\beta`-reducing :math:`(Y \; F) leads us to:      
+To see this, note that the substitution dictated by :math:`\beta`-reducing :math:`(Y \; F)` leads us to:      
 
       
 .. math:: (Y \; F) = (\lambda h.(\lambda x.(h \; (x \; x)) \; \lambda x.(h \; (x \; x))) \; F) = (\lambda x.(F \;  (x \; x)) \; \lambda x.(F \; (x \; x))) = (F \; (\lambda x.(F \; (x \; x)) \; \lambda x.(F \; (x \;x)))) = (F \; (Y \; F))

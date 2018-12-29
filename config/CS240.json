@@ -150,7 +150,7 @@
       }
     },
     "Algorithm Analysis": {
-      "AlgAnal/AnalChap": {}, 
+      "AlgAnal/AnalChap": {},
       "AlgAnal/AnalPrelim": {
         "AnalPrelimSumm": {
           "threshold": 4
@@ -165,7 +165,7 @@
           "threshold": 3
         }
       }, 
-      "AlgAnal/AnalCases": {}, 
+      "AlgAnal/AnalCases": {},
       "AlgAnal/AnalCompvsAlg": {
         "FasterCorASumm": {
           "threshold": 2
@@ -200,7 +200,7 @@
       "AlgAnal/AnalSpace": {}, 
       "AlgAnal/AnalTuning": {}, 
       "AlgAnal/AlgAnalSummCS3": {}
-    }, 
+    },
     "Linear Structures": {
       "List/ListIntro": {}, 
       "List/ListADT": {

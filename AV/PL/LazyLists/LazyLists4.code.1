@@ -1,0 +1,21 @@
+// Filters the given sequence with the given predicate
+var filter = function (pred,seq) {
+    if (pred(hd(seq))) {
+        return cons ( ?????? );
+	return cons (hd(seq),
+		     function () {
+			 return filter(pred, tl(seq));
+		     });
+    } else {
+        return ??????;
+	return filter(pred, tl(seq));
+    }
+};
+
+var intsFrom1 = is.from(1);
+var evens = is.take(
+    is.filter(
+	function (n) { return n % 2 == 0; },
+	intsFrom1
+    ),
+    10);

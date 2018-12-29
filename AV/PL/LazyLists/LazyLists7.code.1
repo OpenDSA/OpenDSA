@@ -1,0 +1,8 @@
+Create a boolean array indexed through n
+Set indices 0 and 1 to false.  All others to true
+Initially, let p equal 2, the smallest prime number
+"Sift" multiples of p, starting at 2*p, by setting them to false
+Find the first index > p and <= square-root(n) that is true
+    If there as no such index, stop
+    Otherwise, let p = this index and repeat from step 4
+Upon termination, the indexes that remain true are all the primes <= n

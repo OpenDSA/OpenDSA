@@ -139,53 +139,110 @@ and *take*, the **is** module has some utility functions that are
 module).  Each of these utility functions -- *from, map, filter,
 iterates*, and *drop* are discussed and illustrated below.
 
-::
+* The **from** operation:
+  
+.. inlineav:: LazyLists2CON ss
+   :long_name: Illustrate from operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists2CON.js
+   :output: show
 
-   from here
+* The **map** operation
+
+.. inlineav:: LazyLists3CON ss
+   :long_name: Illustrate map operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists3CON.js
+   :output: show
+
+* The **filter** operation
+
+.. inlineav:: LazyLists4CON ss
+   :long_name: Illustrate filter operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists4CON.js
+   :output: show
+
+* The **drop** operation:
+
+.. inlineav:: LazyLists5CON ss
+   :long_name: Illustrate drop operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists5CON.js
+   :output: show
+
+
+* The **iterates** operation:
+
+.. inlineav:: LazyLists6CON ss
+   :long_name: Illustrate iterates operation in is module
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists6CON.js
+   :output: show
 
 
 .. Think about how the set of question marks should be filled
 .. in to complete these functions before proceeding to the practice
 .. problems
 
-::
+.. ::
+.. 
+..     // return the sequence of successive integers starting at n
+..     var from = function (n) {
+..         return cons(n, function () { ?????? });
+..     };
+.. 
+..     // return the sequence obtained by removing the first n integers from the given sequence 
+..     var drop = function (seq,n) {
+..         if (n === 0)
+..             return seq;
+..         else {
+..             return drop( ?????? );
+..         }
+..     };
+.. 
+..     // return a new sequence obtained by mapping the given function onto the given sequence
+..     var map = function (f,seq) {
+..         return cons (  ?????? );
+.. 
+..     };
+.. 
+..     // return a new sequence obtained by filtering the given sequence with the given predicate
+..     var filter = function (pred,seq) {
+..         if (pred(hd(seq))) {
+..             return cons ( ?????? );
+..         } else {
+..             return ??????;
+..         }
+..     };
+.. 
+..     // return a new sequence obtained by repeatedly applying the given function to the
+..     // previous term of the sequence (starting with the given integer).   That is, return
+..     // the sequence n, f(n), f(f(n)), f(f(f(n))), ...
+..     var iterates = function (f,n) {
+.. 
+..         return cons(n, ?????? );
+..     };
 
-    // return the sequence of successive integers starting at n
-    var from = function (n) {
-        return cons(n, function () { ?????? });
-    };
 
-    // return the sequence obtained by removing the first n integers from the given sequence 
-    var drop = function (seq,n) {
-        if (n === 0)
-            return seq;
-        else {
-            return drop( ?????? );
-        }
-    };
+**The Sieve of Erastosthenes -- an example that takes advantage of lazy lists**
 
-    // return a new sequence obtained by mapping the given function onto the given sequence
-    var map = function (f,seq) {
-        return cons (  ?????? );
+The need to compute various prime numbers occurs in a variety of
+applcations, for example, public-key encryption.  A long known
+technique to compute all the prime numbers up to a limit *n* with
+reasonable efficiency is the *Sieve of Erastosthenes*.  The slide slow
+below describes the sieve algorithm in a language with eager (as
+opposed to lazy) evaluation.
 
-    };
+.. inlineav:: LazyLists7CON ss
+   :long_name: Illustrate sieve of Erastonthenes
+   :links: AV/PL/LazyLists/LazyListsCON.css
+   :scripts: AV/PL/LazyLists/LazyLists7CON.js
+   :output: show
 
-    // return a new sequence obtained by filtering the given sequence with the given predicate
-    var filter = function (pred,seq) {
-        if (pred(hd(seq))) {
-            return cons ( ?????? );
-        } else {
-            return ??????;
-        }
-    };
-
-    // return a new sequence obtained by repeatedly applying the given function to the
-    // previous term of the sequence (starting with the given integer).   That is, return
-    // the sequence n, f(n), f(f(n)), f(f(f(n))), ...
-    var iterates = function (f,n) {
-
-        return cons(n, ?????? );
-    };
+There is a problem with this algorithm, however, from the perspective
+of its utility.  That is, how well can it answer the questions
+regarding primes we might want to ask of it?   While it can answer a question like "Find all primes
 
 **Call-by-need**
    
@@ -233,10 +290,4 @@ a sequence.
 
 .. avembed:: Exercises/PL/InfSeq4.html ka
    :long_name: Matching sequence to code that produced it (3)
-
-.. inlineav:: LazyLists2CON ss
-   :long_name: Illustrate From
-   :links: AV/PL/LazyLists/LazyListsCON.css
-   :scripts: AV/PL/LazyLists/LazyLists2CON.js
-   :output: show
 
