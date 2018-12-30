@@ -33,13 +33,13 @@ $(document).ready(function() {
     );
     
     // Slide 1
-    av.umsg("Our sieve function is given all the integers starting at 2");
+    av.umsg("Our sieve function is given all the integers starting at 2.");
     pseudo1.hide([2,6,7]);
     pseudo1.highlight([11,12]);
     arr.addClass(1,"wider");
     av.displayInit();
 
-    av.umsg('In our implementation, the sieve method retains 2 but must "lazily" sift out all multiples in the thunk that follows it');
+    av.umsg('In our implementation, the sieve method retains 2 but we must "lazily" sift out all multiples in the thunk that follows it.');
     arr1.show();
     arr_label1.show();
     arr1.addClass(1,"wider");
@@ -60,9 +60,10 @@ $(document).ready(function() {
     arr2.addClass([0,1,2,3,4,5,6,7,8,9], "initialattempt");
     av.step();
 
-    av.umsg('The code highlighted in red is what we need.   Our initial attempt had forgotten to embed a recursive call to sieve in the thunk and thus only sifted multiples of 2, but not multiples of primes that follow 2.');
+    av.umsg("The code highlighted in red is what we need.   Our initial attempt had forgotten to embed a recursive call to sieve in the thunk and thus only sifted multiples of 2, but not multiples of primes that follow 2.   Remember - if you're not embedding a recursive call inside the thunk, chances are your lazy list code won't work.");
     pseudo1.show(7);
     pseudo1.addClass(7,"correctversion");
+    pseudo1.addClass(6,"st");
     arr3.show();
     arr_label3.show();
     arr3.addClass([0,1,2,3,4,5,6,7,8,9], "narrow");

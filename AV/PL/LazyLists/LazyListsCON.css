@@ -480,7 +480,7 @@
 }
 
 #LazyLists8CON .jsavoutput.jsavline {
-  height: 40px;
+  height: 70px;
 }
 
 /* Makes all cells wider */
@@ -527,6 +527,10 @@
 
 #LazyLists8CON .initialattempt {
     background-color: LightBlue;
+}
+
+#LazyLists8CON .jsavcodeline.initialattempt.st {
+  text-decoration: line-through;
 }
 
 #LazyLists8CON .correctversion {
