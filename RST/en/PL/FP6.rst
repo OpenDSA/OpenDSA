@@ -110,7 +110,7 @@ This next problem is about function composition.
 .. avembed:: Exercises/PL/Compose.html ka
    :long_name: Function Composition
 
-
+.. _currying:
 
 Currying
 --------

@@ -10,29 +10,36 @@
 Variations on how languages think about types
 =============================================
 
-Examples in various languages
------------------------------
+Examples of type-related considerations in various languages
+------------------------------------------------------------
 
--  Is a PL *weakly typed* or *strongly typed*? In the latter, an attempt
-   to use an operation on data of the wrong type results in a type error
-   (when? – see the next bullet). In the former, such an attempt just
-   does whatever the hardware wants to do (is that good or bad?).
+- Is a PL *weakly typed* or *strongly typed*? In the latter, an
+   attempt to use an operation on data of the wrong type results in a
+   type error (when does the type error occur? – see the next
+   bullet). In the former, such an attempt just does whatever the
+   hardware wants to do with the bit pattern that happens to be there
+   (is that good or bad?).
 
--  If strongly typed, the typing dynamic (type error determined at
-   run-time) or static (type error determined at compile time)
+-  If strongly typed, is the typing *dynamic* (meaning that type error determined at
+   run-time) or *static* (meaning that the type error determined at compile time)
 
--  A type-safe language is one that guarantees all type errors will be
+-  A *type-safe language* is one that guarantees all type errors will be
    caught dynamically or statically
 
 -  What’s best - weakly typed, dynamic strongly typed, static strongly
    typed?
 
--  Issues to consider:
+-  Other issues to consider:
 
    -  How to define a type system in a strongly typed language
 
    -  Type inferencing
 
+Following are examples in JavaScript, Python, and Java.  Think about
+each of them and how the particular language handles the typing
+considerations it encounters with the program.  Discuss this from the
+perspective of the terms in the bullet list above.
+      
 **Consider the following JavaScript program**
 
 ::
@@ -57,8 +64,8 @@ Examples in various languages
     console.log (divide(6,"Green Bay Packers"));
     console.log (divide("Aaron", "Rodgers"));
 
-What is JS’s behavior, when fed this program, and what does that tell us
-about JS’s typing capabilities?
+What is JavaScript’s behavior when it is given this program, and what does that tell us
+about JavaScript’s typing capabilities?
 
 **Python behaves differently**
 
@@ -134,7 +141,10 @@ question marks for a type environment *tenv* assuming your language is
 Java: ``{ (true, ???), (1, ???), (3.4, ???) }``
 
 Typing rules are specified relative to a type environment by a
-conditional specification known as a *Post system*.
+conditional specification known as a *Post system*.  The "givens" in
+this conditional specification are specified above a dotted line.  The
+conclusion(s) that can be drawn from the "givens" are specified below
+the dotted line.
 
 For example, in type environment *tenv*:
 
@@ -178,12 +188,14 @@ definitions and function applications.
 ::
 
     In type environment tenv:
+
     type-of <identifier> is T1
     type-of <expr> is T2
     ---------------
     type-of (fn <identifier> => <expr>) is T1 -> T2
 
     In type environment tenv:
+
     type-of <expr1> is T1 -> T2
     type-of <expr2> is T1
     ---------------
@@ -194,12 +206,16 @@ Another example of a Post system rule for mini-ML
 ::
 
     In type environment tenv:
+
     type-of x is bool
     type-of y is int
     -----------------
     type-of (fn x => fn y => if x then 1 else y) is ???
 
-Here are examples of how the ML type-inferencing engine responds for some function definitions.
+Here are examples of how the ML type-inferencing engine responds for
+some function definitions.  Put yourself in the place of the ML type
+analyzer and try to determine why ML responds in the fashion it does
+using the previously defined Post system rules.
 
 ::
     
@@ -235,8 +251,8 @@ two identity functions *id1* and *id2* in Java.
 
 **Parametric polymorphism in ML**
 
-In a static strongly-typed type-inferencing interpreter with parametric
-polymorphism, such as ML, the type analysis algorithm will always
+ML is a static, strongly-typed, type-inferencing interpreter with parametric
+polymorphism.   What does this mean?  The type analysis algorithm will always
 re-construct the least restrictive type possible for a parameter. That’s
 why it has type variables.
 
@@ -255,7 +271,8 @@ The *hd* and *tl* functions in ML are just like their counterparts in
 the *fp* module we used. To cons onto a list, use the *::* operator.
 For example, *1::[2,3]*
 
-Now for the parametric polymorphic punchline.  Consider how ML reasons about the following functions involving lists.
+Now for the parametric polymorphic punchline.  Consider how ML reasons
+about the following functions involving lists.
 
 ::
 
@@ -271,12 +288,17 @@ Now for the parametric polymorphic punchline.  Consider how ML reasons about the
 
     ML response: lengthlist = fn : ''a list -> int
 
-Here *a* is a type variable indicating that *lengthlist* will accept a list of any type -- in contrast to *sumlist*, which will only work on a list of integers.
+Here *a* is a type variable indicating that *lengthlist* will accept a
+list of any type -- in contrast to *sumlist*, which will only work on
+a list of integers.
    
 **More type inferencing in ML** 
 
-Although all ML functions are functions of one argument, that argument
-can be what ML calls a *tuple*. Examples of tuples:
+All ML functions are functions of one argument.  When we want to have
+the equivalent of a function with multiple arguments in ML, there are
+two strategies.  The first is to use :ref:`currying` as we have
+previously described.  The second is to use a single argument that is
+an ML *tuple*. Examples of tuples in ML:
 
 ::
 
@@ -334,7 +356,8 @@ What does ML infer about this function?
 Type Inferencing Problem 1
 --------------------------
 
-Below you see six expressions numbered 1 through 6. Each of them is a function definition that I've typed into ML.
+Below you see six expressions numbered 1 through 6. Each of them is a
+function definition that has been typed into ML.
 
 **SIX ML FUNCTION DEFINITIONS**
 ::
@@ -349,7 +372,7 @@ Below you see six expressions numbered 1 through 6. Each of them is a function d
 Next you see the six type-inferencing responses that ML provided when the above
 expressions were entered.  Unfortunately they've become scrambled, and
 I've lost track of which response goes with which function definition.
-In the six practice problems that follow, you will help me
+In the six practice problems that follow, you will help 
 re-establish that order.
 
 **ML'S TYPE INFERENCE RESPONSES (SCRAMBLED)**
