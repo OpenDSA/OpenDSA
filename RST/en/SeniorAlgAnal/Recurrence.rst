@@ -311,62 +311,11 @@ These terms are again expanded, and so on, until a full series
 with no recurrence results.
 This yields a :ref:`summation <summation> <Summations>`,
 and techniques for solving summations can then be used.
-A more complex example is given next.
 
-.. topic:: Example
-
-   Find the solution for
-
-   .. math::
-
-      {\bf T}(n) = 2{\bf T}(n/2) + 5 n^2; \quad {\bf T}(1) = 7.
-
-   For simplicity we assume that :math:`n` is a power of two,
-   so we will rewrite it as :math:`n = 2^k`.
-   This recurrence can be expanded as follows:
-
-   .. math::
-
-      \begin{eqnarray*}
-      {\bf T}(n) & = & 2{\bf T}(n/2) + 5n^2\\
-                 & = & 2(2{\bf T}(n/4) + 5(n/2)^2) + 5n^2\\
-                 & = & 2(2(2{\bf T}(n/8) + 5(n/4)^2) + 5(n/2)^2) + 5n^2\\
-                 & = & 2^k{\bf T}(1) + 2^{k-1}\cdot5\left (\frac{n}{2^{k-1}}\right )^2
-                         + \cdots + 2\cdot5\left (\frac{n}{2}\right )^2
-                         + 5n^2.
-      \end{eqnarray*}
-
-   This last expression can best be represented by a summation
-   as follows:
-
-   .. math::
-
-      \begin{eqnarray*}
-      &   & 7n + 5\sum_{i=0}^{k-1} n^2/2^i\\
-      & = & 7n + 5n^2\sum_{i=0}^{k-1} 1/2^i.\\
-      \end{eqnarray*}
-
-   From Equation (6) of Module :ref:`Summation <Summation> <Summations>`,
-   we have:
-
-   .. math::
-
-      \begin{eqnarray*}
-      & = & 7n + 5n^2\left (2 - 1/2^{k-1}\right )\\
-      & = & 7n + 5n^2(2 - 2/n)\\
-      & = & 7n + 10 n^2 - 10n\\
-      & = & 10n^2 - 3n.
-      \end{eqnarray*}
-
-   This is the *exact* solution to the recurrence for :math:`n`
-   a power of two.
-   At this point, we should use a simple induction proof to verify
-   that our solution is indeed correct.
-   
-.. inlineav:: DivideAndConquerRecurrencesCON ss
+.. inlineav:: ExpandRecurrenceCON ss
    :long_name: Divide-and-Conquer Expansion Slideshow
-   :links: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.css
-   :scripts: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.js
+   :links: AV//SeniorAlgAnal/ExpandRecurrenceCON.css
+   :scripts: AV/SeniorAlgAnal/ExpandRecurrenceCON.js
    :output: show
 
 .. topic:: Example
@@ -443,7 +392,21 @@ solution for any divide and conquer recurrence, assuming that
      & = &ca^m\sum_{i=0}^{m} (b^k/a)^i.
    \end{eqnarray*}
 
-Note that
+Here is a more visual presentation of this same derivation.
+
+.. inlineav:: DandCRecurrenceCON ss
+   :long_name: Divide-and-Conquer Expansion Slideshow2
+   :links: AV/SeniorAlgAnal/DandCRecurrenceCON.css
+   :scripts: AV/SeniorAlgAnal/DandCRecurrenceCON.js
+   :output: show
+
+So, we are left with this result:
+
+.. math::
+
+   {\bf T}(n) = ca^m\sum_{i=0}^{m} (b^k/a)^i.
+
+At this point, it is useful to note that
 
 .. math::
 
@@ -452,8 +415,14 @@ Note that
    a^m = a^{\log_bn} = n^{\log_ba}.
    \end{eqnarray}
 
-The summation is a geometric series whose sum depends on the ratio
-:math:`r = b^k/a`.
+This gives us
+
+.. math::
+
+   {\bf T}(n) = c n^{\log_ba} \sum_{i=0}^{m} (b^k/a)^i.
+
+The summation part of this equation is a geometric series whose sum
+depends on the ratio :math:`r = b^k/a`.
 There are three cases.
 
 (#) :math:`r<1`.
@@ -518,7 +487,7 @@ sometimes referred to as the :term:`Master Theorem`.
 
       {\bf T}(n) = \left\{ \begin{array}{ll}
                    \Theta(n^{\log_ba}) & \mbox{if \(a > b^k\)} \\
-                   \Theta(n^k\log n)   & \mbox{if \(a = b^k\)} \\
+                   \Theta(n^k\log_b n)   & \mbox{if \(a = b^k\)} \\
                    \Theta(n^k)         & \mbox{if \(a < b^k\).}
                   \end{array}
          \right.
