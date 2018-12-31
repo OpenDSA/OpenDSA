@@ -220,6 +220,9 @@ COMPSCI186: min
 testcmap: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
 
+CMP: min
+	python $(CONFIG_SCRIPT) config/CMP.json --no-lms
+
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js

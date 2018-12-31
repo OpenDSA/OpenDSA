@@ -236,7 +236,6 @@ Glossary
    array-based stack
       :to-term: array-based list :label: analogous to
       :to-term: stack :label: implementing
-      :to-term: array :label: uses
 
       Analogous to an :term:`array-based list`, this uses an :term:`array` to
       store the elements when implementing the :term:`stack` ADT.
@@ -244,7 +243,6 @@ Glossary
    array-based queue
       :to-term: array-based list :label: analogous to
       :to-term: queue :label: implementing
-      :to-term: array :label: uses
 
       Analogous to an :term:`array-based list`, this uses an :term:`array` to
       store the elements when implementing the :term:`queue` ADT.
@@ -374,6 +372,12 @@ Glossary
       It is essentially a :term:`depth-first search` of the solution
       space.
       This can be improved using a :term:`branch-and-bounds algorithm`.
+
+   bad reference
+      :to-term: NullPointerException :label: raises
+
+      A reference is referred to as a bad reference if it is allocated
+      but not initialized.
 
    bag
       :to-term: multilist :label: synonym
@@ -952,6 +956,8 @@ Glossary
       hig-level program into something that the computer can execute.
 
    compile-time polymorphism
+      :to-term: Overloading :label: known as
+
       A form of :term:`polymorphism` known as Overloading.
       Overloaded methods have the same names, but different signatures
       as a method available elsewhere in the class.
@@ -2057,7 +2063,6 @@ Glossary
       :to-term: vertices <vertex> :label: contains
       :to-term: adjacency matrix :label: implemented by
       :to-term: adjacency list :label: implemented by
-      :to-term: minimal-cost spanning tree :label: problems
       :to-term: traversal :label: problems
       :to-term: topological sort :label: problems
       :to-term: shortest paths :label: problems
@@ -2232,7 +2237,7 @@ Glossary
       :to-term: heap :label: concept of
 
       A sorting algorithm that costs :math:`\Theta(n \log n)` time in
-      the :term`best <best case>`, :term:`average <average case>`,
+      the :term:`best <best case>`, :term:`average <average case>`,
       and :term:`worst <worst case>` cases.
       It tends to be slower than :term:`Mergesort` and
       :term:`Quicksort`.
@@ -2379,6 +2384,9 @@ Glossary
       An induction variable must be an integer.
 
    inherit
+      :to-term: base class :label: has
+      :to-term: subclass :label: has
+
       In :term:`object-oriented programming <object-oriented programming paradigm>`,
       the process by which a :term:`subclass` gains
       :term:`data members <data member>` and :term:`methods <method>`
@@ -2397,7 +2405,7 @@ Glossary
 
    Insertion Sort
       A sorting algorithm with :math:`\Theta(n^2)`
-      :term`average <average case>` and :term:`worst case` cost,
+      :term:`average <average case>` and :term:`worst case` cost,
       and :math:`Theta(n)` :term:`best case` cost.
       This best case cost makes it useful when we have reason to
       expect the input to be nearly sorted.
@@ -2842,7 +2850,6 @@ Glossary
       Hash systems usually try to keep the load factor below 50%.
 
    local variable
-   local variables
       :to-term: automatic variable :label: synonym
       :to-term: stack variable :label: synonym
 
@@ -3132,6 +3139,12 @@ Glossary
    minimal-cost spanning tree
       :to-term: Kruskal's algorithm :label: algorithms
       :to-term: Prim's algorithm :label: algorithms
+      :to-term: MCST :label: abbreviation
+      :to-term: MST :label: abbreviation
+      :to-term: weighted graph :label: derived from
+      :to-term: edges <edge> :label: subset of
+      :to-term: cycle :label: never have
+      :to-term: tree :label: is a
 
       Abbreviated as MCST, or sometimes as MST.
       Derived from a :term:`weighted graph`, the MCST is the
@@ -3255,7 +3268,7 @@ Glossary
       In contrast to a :term:`terminal`, a non-terminal is an abstract
       state in a :term:`production rule`. Begining with the
       :term:`start symbol`, all non-terminals must be converted into
-      terminals in order to complete a :term`derivation`.
+      terminals in order to complete a :term:`derivation`.
 
    node
       :to-term: neighbor :label: linked to
@@ -3343,6 +3356,11 @@ Glossary
 
    object-oriented programming paradigm
       :to-term: cohesion :label: key concept
+      :to-term: inherit :label: principle
+      :to-term: encapsulation :label: principle
+      :to-term: polymorphism :label: principle
+      :to-term: abstraction :label: principle
+      :to-term: object :label: consists of
 
       An approach to problem-solving where all computations are
       carried out using :term:`objects <object>`.
@@ -3578,7 +3596,7 @@ Glossary
       data, and each surface has its own :term:`I/O head`.
 
    point quadtree
-      A `term:`spatial data structure` for storing point data.
+      A :term:`spatial data structure` for storing point data.
       It is similar to a :term:`PR quadtree` in that it (in two
       dimensions) splits the world into four parts.
       However, it splits using an :term:`object-space decomposition`.
@@ -3592,6 +3610,15 @@ Glossary
       :term:`PR quadtree`.
 
    pointer
+      :to-term: variable :label: is a
+      :to-term: address :label: value
+      :to-term: binary tree :label: used in
+      :to-term: linked list :label: used in
+      :to-term: pointee :label: point to
+      :to-term: shallow copy :label: default copy
+      :to-term: dereference :label: get pointee value
+      :to-term: initialization :label: requires
+
       A variable whose value is the :term:`address` of another variable; a link.
 
    pointer-based implementation for binary tree nodes
@@ -3603,6 +3630,9 @@ Glossary
       pointer is stored.
 
    polymorphism
+      :to-term: run-time polymorphism :label: form
+      :to-term: compile-time polymorphism :label: form
+
       An :term:`object-oriented programming <object-oriented programming paradigm>`
       term meaning *one name, many forms*.
       It describes the ability of software to change its behavior
@@ -3622,6 +3652,9 @@ Glossary
       by position.
 
    pointee
+      :to-term: array :label: example
+      :to-term: object :label: example
+
       The term pointee refers to anything that is pointed to by a
       :term:`pointer` or :term:`reference`.
 
@@ -3702,6 +3735,7 @@ Glossary
 
    Prim's algorithm
       :to-term: greedy algorithm :label: is a
+      :to-term: Dijkstra's algorith :label: identical to
 
       A :term:`greedy algorithm` for computing the :term:`MCST` of a
       :term:`graph`.
@@ -3716,7 +3750,7 @@ Glossary
       methods to create clustering in sections of the hash table.
       The classic example is :term:`linear probing`.
       This tends to happen when a group of keys follow the same
-      :term`probe sequence` during collision resolution.
+      :term:`probe sequence` during collision resolution.
 
    primitive data type
       In Java, one of a particular group of
@@ -3778,7 +3812,7 @@ Glossary
       that we can prove over all :term:`algorithms <algorithm>`
       for that :term:`problem`.
       This is often much harder to determine than the
-      `:term:`problem upper bound`.
+      :term:`problem upper bound`.
       Since the lower bound for the algorithm can be very different
       for different situations (such as the :term:`best case` or
       :term:`worst case`), we typically have to specify which
@@ -4055,6 +4089,7 @@ Glossary
    recursive function
       :to-term: base case :label: includes
       :to-term: recursive call :label: includes
+      :to-term: binary search :label: example
 
       A function that includes a :term:`recursive call`.
 
@@ -4078,6 +4113,9 @@ Glossary
       :term:`NP-Complete`.
 
    reference
+      :to-term: pointer :label: similar to
+      :to-term: bad reference :label: if not initialized
+
       A value that enables a program to directly access some
       particular :term:`data item`.
       An example might be a byte position within a file where the
@@ -4195,6 +4233,8 @@ Glossary
       and it conducts the execution of the program.
 
    run-time polymorphism
+      :to-term: Overriding :label: Known as
+
       A form of :term:`polymorphism` known as Overriding.
       Overridden methods are those which implement a new method
       with the same signature as a method inherited from its
@@ -4556,7 +4596,7 @@ Glossary
 
    sorting lower bound
       The lower bound for the :term:`problem` of
-      :term:sorting <sorting problem>` is :math:`\Omega(n \log n)`.
+      :term:`sorting <sorting problem>` is :math:`\Omega(n \log n)`.
       This is traditionally proved using a :term:`decision tree` model
       for sorting algorithms, and recognizing that the minimum depth
       of the decision tree for any sorting algorithm is
@@ -4981,7 +5021,7 @@ Glossary
       :term:`preorder <preorder traversal>` and
       :term:`postorder <postorder traversal>` traversals for both
       :term:`binary <binary tree>` and :term:`general <general tree>`
-      trees, and :term`inorder traversal` that is most
+      trees, and :term:`inorder traversal` that is most
       appropriate for a :term:`BST`.
 
    trie
