@@ -1,15 +1,12 @@
-// document.write('<script src="../../../AV/Development/formal_language/fa/Automaton.js"></script>');
-// document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"></script>');
-// document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../AV/Development/formal_language/css/FA.css\" />");
-
+// Written by Ziyou Shang from an image by Susan Rodger
 $(document).ready(function() {
   "use strict";
 
   var av_name = "PDA2";
   var av = new JSAV(av_name, {animationMode: "none"});
   
-  var radiusS = 20;
-  var radiusF = 25;
+  var radiusS = 15;
+  var radiusF = 20;
   
   // machine and final state
   var rect = av.g.rect(260, 30, 240, 300);

@@ -68,6 +68,7 @@
     "Deterministic Finite Acceptors": {
       "OpenFLAP/FLConcepts": {},
       "OpenFLAP/DFA": {},
+      "OpenFLAP/NFA": {},
       "OpenFLAP/TestZiyou": {},
       "OpenFLAP/RegEx": {}
     },
