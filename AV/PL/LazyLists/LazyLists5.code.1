@@ -1,0 +1,20 @@
+// Return a sequence formed by removing the first n items
+// from seq
+var drop = function (seq, n) {
+    if (n === 0)
+	return ????;
+        return seq;
+    else {
+	return ????;
+	return drop(tl(seq), n - 1);
+    }
+};
+
+var intsFrom1 = is.from(1);
+var evens12 = is.drop(
+    is.filter(
+	function (n) { return n % 2 == 0; },
+	intsFrom1
+    ),
+    5);
+var first6 = is.take(evens12,6);

@@ -1,0 +1,13 @@
+var sieve = function (seq) {
+    var sift =  function (p) { return p % is.hd(seq) !== 0; };
+    return is.cons(is.hd(seq),
+		   function () {
+		       return ??????;
+		       return is.filter( sift, is.tl(seq));
+		       return is.filter( sift, sieve(is.tl(seq)));
+		   });
+};
+
+var primes = sieve(is.from(2));
+is.take(primes, 10);
+

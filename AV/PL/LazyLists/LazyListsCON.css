@@ -1,0 +1,539 @@
+#LazyLists1CON {
+    height: 650px;
+    width: 960px
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#LazyLists1CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#LazyLists1CON .jsavcode {
+  margin-left: 20px;
+  width: 650px;
+}
+
+#LazyLists1CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#LazyLists1CON .jsavlabel.emphasize{
+  font-weight: bold;
+}
+
+#LazyLists1CON .jsavoutput.jsavline {
+  height: 100px;
+}
+
+/* Makes all cells wider */
+/*#LazyLists1CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#LazyLists1CON  .jsavindex.jsavnode.wider {
+    min-width : 215px !important;
+    max-width : 215px !important;
+}
+
+#LazyLists1CON  .jsavindex.jsavnode.addBonusPoint {
+    background-color: LightBlue;
+}
+
+#LazyLists1CON  .jsavindex.jsavnode.doubleAll {
+    background-color: LightGreen;
+}
+
+#LazyLists1CON .jsavcodeline.mapfuncwidth{
+    width: 455px;
+}
+
+#LazyLists1CON .jsavcodeline.green {
+    background-color: LightGreen;
+}
+
+#LazyLists1CON .jsavcodeline.blue {
+    background-color: LightBlue;
+}
+
+#LazyLists1CON .jsavcodeline.red {
+    background-color: LightCoral;
+}
+
+/*.newcolor {
+    color: #458a4f;
+    background-color: #7cc5ef
+}*/
+
+
+/*  --- LazyLists2 --- */
+
+#LazyLists2CON {
+    height: 450px;
+    width: 960px
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#LazyLists2CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#LazyLists2CON .jsavcode {
+  margin-left: 20px;
+  width: 650px;
+}
+
+#LazyLists2CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#LazyLists2CON .jsavlabel.emphasize{
+  font-weight: bold;
+}
+
+#LazyLists2CON .jsavoutput.jsavline {
+  height: 100px;
+}
+
+/* Makes all cells wider */
+/*#LazyLists2CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#LazyLists2CON  .jsavindex.jsavnode.wider {
+    min-width : 225px !important;
+    max-width : 225px !important;
+}
+
+#LazyLists2CON  .jsavindex.jsavnode.addBonusPoint {
+    background-color: LightBlue;
+}
+
+#LazyLists2CON  .jsavindex.jsavnode.doubleAll {
+    background-color: LightGreen;
+}
+
+#LazyLists2CON .jsavcodeline.mapfuncwidth{
+    width: 455px;
+}
+
+#LazyLists2CON .jsavcodeline.green {
+    background-color: LightGreen;
+}
+
+#LazyLists2CON .jsavcodeline.blue {
+    background-color: LightBlue;
+}
+
+#LazyLists2CON .jsavcodeline.red {
+    background-color: LightCoral;
+}
+
+/*.newcolor {
+    color: #458a4f;
+    background-color: #7cc5ef
+}*/
+
+
+/*  --- LazyLists3 --- */
+
+#LazyLists3CON {
+    height: 520px;
+    width: 960px
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#LazyLists3CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#LazyLists3CON .jsavcode {
+  margin-left: 20px;
+  width: 650px;
+}
+
+#LazyLists3CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#LazyLists3CON .jsavlabel.emphasize{
+  font-weight: bold;
+}
+
+#LazyLists3CON .jsavoutput.jsavline {
+  height: 80px;
+}
+
+/* Makes all cells wider */
+/*#LazyLists3CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#LazyLists3CON  .jsavindex.jsavnode.wider {
+    min-width : 225px !important;
+    max-width : 225px !important;
+}
+
+#LazyLists3CON  .jsavindex.jsavnode.addBonusPoint {
+    background-color: LightBlue;
+}
+
+#LazyLists3CON  .jsavindex.jsavnode.doubleAll {
+    background-color: LightGreen;
+}
+
+#LazyLists3CON .jsavcodeline.mapfuncwidth{
+    width: 455px;
+}
+
+#LazyLists3CON .jsavcodeline.green {
+    background-color: LightGreen;
+}
+
+#LazyLists3CON .jsavcodeline.blue {
+    background-color: LightBlue;
+}
+
+#LazyLists3CON .jsavcodeline.red {
+    background-color: LightCoral;
+}
+
+/*.newcolor {
+    color: #458a4f;
+    background-color: #7cc5ef
+}*/
+
+
+/*  --- LazyLists4 --- */
+
+#LazyLists4CON {
+    height: 600px;
+    width: 960px
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#LazyLists4CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#LazyLists4CON .jsavcode {
+  margin-left: 20px;
+  width: 650px;
+}
+
+#LazyLists4CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#LazyLists4CON .jsavlabel.emphasize{
+  font-weight: bold;
+}
+
+#LazyLists4CON .jsavoutput.jsavline {
+  height: 80px;
+}
+
+/* Makes all cells wider */
+/*#LazyLists4CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#LazyLists4CON  .jsavindex.jsavnode.wider {
+    min-width : 225px !important;
+    max-width : 225px !important;
+}
+
+#LazyLists4CON  .jsavindex.jsavnode.addBonusPoint {
+    background-color: LightBlue;
+}
+
+#LazyLists4CON  .jsavindex.jsavnode.doubleAll {
+    background-color: LightGreen;
+}
+
+#LazyLists4CON .jsavcodeline.mapfuncwidth{
+    width: 455px;
+}
+
+#LazyLists4CON .jsavcodeline.green {
+    background-color: LightGreen;
+}
+
+#LazyLists4CON .jsavcodeline.blue {
+    background-color: LightBlue;
+}
+
+#LazyLists4CON .jsavcodeline.red {
+    background-color: LightCoral;
+}
+
+/*.newcolor {
+    color: #458a4f;
+    background-color: #7cc5ef
+}*/
+
+
+/*  --- LazyLists5 --- */
+
+#LazyLists5CON {
+    height: 600px;
+    width: 960px
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#LazyLists5CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#LazyLists5CON .jsavcode {
+  margin-left: 20px;
+  width: 650px;
+}
+
+#LazyLists5CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#LazyLists5CON .jsavlabel.emphasize{
+  font-weight: bold;
+}
+
+#LazyLists5CON .jsavoutput.jsavline {
+  height: 100px;
+}
+
+/* Makes all cells wider */
+/*#LazyLists5CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#LazyLists5CON  .jsavindex.jsavnode.wider {
+    min-width : 230px !important;
+    max-width : 230px !important;
+}
+
+#LazyLists5CON  .jsavindex.jsavnode.addBonusPoint {
+    background-color: LightBlue;
+}
+
+#LazyLists5CON  .jsavindex.jsavnode.doubleAll {
+    background-color: LightGreen;
+}
+
+#LazyLists5CON .jsavcodeline.mapfuncwidth{
+    width: 455px;
+}
+
+#LazyLists5CON .jsavcodeline.green {
+    background-color: LightGreen;
+}
+
+#LazyLists5CON .jsavcodeline.blue {
+    background-color: LightBlue;
+}
+
+#LazyLists5CON .jsavcodeline.red {
+    background-color: LightCoral;
+}
+
+/*.newcolor {
+    color: #458a4f;
+    background-color: #7cc5ef
+}*/
+
+
+/*  --- LazyLists6 --- */
+
+#LazyLists6CON {
+    height: 500px;
+    width: 960px
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#LazyLists6CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#LazyLists6CON .jsavcode {
+  margin-left: 20px;
+  width: 650px;
+}
+
+#LazyLists6CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#LazyLists6CON .jsavlabel.emphasize{
+  font-weight: bold;
+}
+
+#LazyLists6CON .jsavoutput.jsavline {
+  height: 100px;
+}
+
+/* Makes all cells wider */
+/*#LazyLists6CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#LazyLists6CON  .jsavindex.jsavnode.wider {
+    min-width : 230px !important;
+    max-width : 230px !important;
+}
+
+#LazyLists6CON  .jsavindex.jsavnode.addBonusPoint {
+    background-color: LightBlue;
+}
+
+#LazyLists6CON  .jsavindex.jsavnode.doubleAll {
+    background-color: LightGreen;
+}
+
+#LazyLists6CON .jsavcodeline.mapfuncwidth{
+    width: 455px;
+}
+
+#LazyLists6CON .jsavcodeline.green {
+    background-color: LightGreen;
+}
+
+#LazyLists6CON .jsavcodeline.blue {
+    background-color: LightBlue;
+}
+
+#LazyLists6CON .jsavcodeline.red {
+    background-color: LightCoral;
+}
+
+/*.newcolor {
+    color: #458a4f;
+    background-color: #7cc5ef
+}*/
+
+
+/* ------------ LazyLists7 --------- */
+
+#LazyLists7CON {
+  height: 400px;
+  width: 950px;
+}
+
+#LazyLists7CON .jsavoutput.jsavline {
+  height: 15px;
+}
+
+#LazyLists7CON .jsavcodeline.extrawidth{
+    width: 580px;
+}
+
+#LazyLists7CON  .jsavindex.jsavnode.narrow {
+    min-width : 27px !important;
+    max-width : 27px !important;
+}
+
+#LazyLists7CON .jsavlabel.emphasize{
+    font-weight: bold;
+    color: red;
+    font-size: 20px;
+}
+
+/*  --- LazyLists8 --- */
+
+#LazyLists8CON {
+    height: 380px;
+    width: 960px
+}
+
+/* For some reason, this was necessary to get vert height to encompass all code */
+#LazyLists8CON .jsavcanvas{
+    min-height: -webkit-fill-available;
+}
+
+#LazyLists8CON .jsavcode {
+  margin-left: 20px;
+  width: 650px;
+}
+
+#LazyLists8CON .jsavlabel{
+  margin-bottom: 0;
+}
+
+#LazyLists8CON .jsavlabel.emphasize{
+  font-weight: bold;
+}
+
+#LazyLists8CON .jsavoutput.jsavline {
+  height: 70px;
+}
+
+/* Makes all cells wider */
+/*#LazyLists8CON .jsavarray .jsavnode {
+  font-size: 15px;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}*/
+
+/* Makes just one cell wider */
+#LazyLists8CON  .jsavindex.jsavnode.wider {
+    min-width : 225px !important;
+    max-width : 225px !important;
+}
+
+#LazyLists8CON  .jsavindex.jsavnode.narrow {
+    min-width : 23px !important;
+    max-width : 23px !important;
+}
+
+#LazyLists8CON  .jsavindex.jsavnode.addBonusPoint {
+    background-color: LightBlue;
+}
+
+#LazyLists8CON  .jsavindex.jsavnode.doubleAll {
+    background-color: LightGreen;
+}
+
+#LazyLists8CON .jsavcodeline.mapfuncwidth{
+    width: 455px;
+}
+
+#LazyLists8CON .jsavcodeline.green {
+    background-color: LightGreen;
+}
+
+#LazyLists8CON .jsavcodeline.blue {
+    background-color: LightBlue;
+}
+
+#LazyLists8CON .jsavcodeline.red {
+    background-color: LightCoral;
+}
+
+#LazyLists8CON .initialattempt {
+    background-color: LightBlue;
+}
+
+#LazyLists8CON .jsavcodeline.initialattempt.st {
+  text-decoration: line-through;
+}
+
+#LazyLists8CON .correctversion {
+    background-color: LightCoral;
+}
+

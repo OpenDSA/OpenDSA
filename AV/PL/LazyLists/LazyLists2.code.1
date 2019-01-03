@@ -1,0 +1,14 @@
+// return the sequence of successive integers starting at n
+var from = function (n) {
+    return cons(n, function () { ?????? });
+    return cons(n, function () { return n + 1; });
+    return cons(n, function () { return from(n + 1); });
+};
+
+// Example of using from
+var intsFrom1 = is.from(1);
+var h = is.hd(intsFrom1);
+var s1 = is.tl(intsFrom1);
+var s2 = is.tl(is.tl(intsFrom1));
+var s3 = is.take(s2, 6);
+

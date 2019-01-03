@@ -2,8 +2,7 @@ var SLang = {};
 var slideshowCorrent = true;
 var getRightSideValue = function(context, lineText){
   var result = {
-    value: 0,
-    string: 'TODO'
+    value: 0
   };
 
   var linesplit = lineText.split('=');
@@ -38,12 +37,6 @@ var getRightSideValue = function(context, lineText){
     result.value = [result.value];
   }
   return result;
-  /*
-  else{
-    result = [linesplit.replace(' ','')];
-  }
-  return result;*/
-
 }
 
 var getIndexFromString = function(str){
@@ -116,9 +109,6 @@ var getVarNamesFromPrototype = function(proto){
   for(var i=0; i<split.length; i++){
     var paramsplit = split[i].split(' ');
     results.push(paramsplit[paramsplit.length-1]);
-    /*if(split[i-1].endsWith('int')){
-      results.push(split[i].replace(/[^a-z]/gi, ''));
-    }*/
   }
   return results;
 }

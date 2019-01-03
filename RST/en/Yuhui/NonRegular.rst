@@ -44,44 +44,14 @@ is an infinite regular language.
 So, what about a language that was mentioned earlier, with no clear resolution?
 :math:`L_2 = \{a^nb^n | n > 0 \}` is an infinite language.
 
-.. inlineav:: Proof1PumpingLemmaCON ss
-   :long_name: Pumping Lemma Proof 1 Slideshow
-   :links: AV/Yuhui/Proof1PumpingLemmaCON.css
-   :scripts: AV/Yuhui/Proof1PumpingLemmaCON.js
-   :output: show
-
 **Prove** that :math:`L_2 = \{a^nb^n | n > 0 \}` is not regular.
 
-| Proof 1 (by contradiction)
-|   Suppose that :math:`L_2` is regular. 
-|   If :math:`L_2` is regular then  :math:`\exists` DFA :math:`M`
-    that recognizes :math:`L_2`.
-|   :math:`M` has a finite number of states, say :math:`k` states. 
-|   Consider a long string :math:`a^kb^k \in L_2`. 
-|   Since there are :math:`k` states and :math:`k` a's,
-    some state in :math:`M` must be reached more than once when
-    following the path of :math:`a^k`. 
-|   In that case, there is a loop with one or more a's
-    (say :math:`t` a's for some :math:`t > 1`) along the path. 
-|   Suppose we start at the initial state, traverse the same path for
-    :math:`a^kb^k`, but we traverse the loop of :math:`a` 's one
-    additional time.
-|   We will end up in the same final state that :math:`a^kb^k` did,
-    but our actual number of a's is some other value (call it
-    :math:`m`).
-|   Therefore, the string :math:`a^mb^k` is accepted by :math:`M`,
-    but this string is not in :math:`L_2`. Contradiction!
-|   Thus, :math:`L_2` is not regular.
+.. inlineav:: Proof1PumpingLemmaCON ss
+   :long_name: Pumping Lemma Proof 1 Slideshow
+   :links: AV/VisFormalLang/Proof1PumpingLemmaCON.css
+   :scripts: AV/VisFormalLang/Proof1PumpingLemmaCON.js
+   :output: show
 
-This is an example of the :term:`Pigeonhole Principle`.
-The Pigeonhole Principle states that, given :math:`n` pigeonholes
-and :math:`n+1` pigeons, when all of the pigeons go into the holes we
-can be sure that at least one hole contains more than one pigeon.
-In our case, the number of :math:`a` 's are the pigeons,
-and the states in the DFA are the pigeonholes.
-We can't distinguish the various possibilities for the number of
-:math:`a` 's, so we can't verify that they properly match the number
-of :math:`b` 's.
 
 The Concept of Pumping
 ~~~~~~~~~~~~~~~~~~~~~~

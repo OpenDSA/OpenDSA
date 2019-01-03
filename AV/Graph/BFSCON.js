@@ -93,17 +93,18 @@ $(document).ready(function() {
     var q = [];
     q.push(start);
     markIt(start);
-
+    var weig = 0;
     while (q.length > 0) {
       node = q.shift();
       dequeueIt(node);
       adjNode = node.neighbors();
+      weig++;
       while (adjNode.length > 0) {
         var neighbor = adjNode[0];
         if (!neighbor.hasClass("marked")) {
           markIt(neighbor);
       g.removeEdge(node,neighbor);
-      g.addEdge(node,neighbor).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
+      g.addEdge(node,neighbor, {weight: weig}).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
           g.layout();
           av.umsg("Add the edge from " + node.value() + " to " + neighbor.value() + " to the BFS tree");
           av.step();
@@ -114,6 +115,7 @@ $(document).ready(function() {
         }
         adjNode.shift();
       }
+      
       av.umsg("Now we are all done processing node " + node.value());
       av.step();
     }
