@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Regular Pumping Lemma</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="PL1.css" type="text/css" />
+</head>
+
+<body>
+  <div id="container">
+    <input type="button" id="about" name="about" />
+    <p class="instructions">
+      Regular Pumping Lemma <br/>
+    </p>
+    <p id="anbn" style="visibility: hidden;" class="language1" >
+      \(L = \{a^nb^n \text{: } n \geq 0 \}\)
+    </p>
+    <p id="nanb" style="visibility: hidden;" class="language2" >
+      \(L = \{w \in \{a, b\}^*\text{: } n_a(w) < n_b(w)\}\)
+    </p>
+    <p id="wwr" style="visibility: hidden;" class="language3" >
+      \(L = \{ww^R \text{: } w \in \{a, b\}^*\}\)
+    </p>
+    <p id="abnak" style="visibility: hidden;" class="language4" >
+      \(L = \{(ab)^na^k \text{: } n > k, k \geq 0\}\)
+    </p>
+    <p id="anbkcnk" style="visibility: hidden;" class="language4" >
+        \(L = \{a^nb^kc^{n+k} \text{: } n \geq 0, k \geq 0\}\)
+    </p>
+    <p id="anblak" style="visibility: hidden;" class="language5" >
+        \(L = \{a^nb^la^k \text{: } n > 5, l > 3, k \leq l\}\)
+    </p>
+    <p id="an" style="visibility: hidden;" class="language1" >
+        \(L = \{a^n \text{: n is even}\}\)
+    </p>
+    <p id="anbk" style="visibility: hidden;" class="language5" >
+        \(L = \{a^nb^k \text{: n is odd or k is even.}\}\)
+    </p>
+    <p id="bbabanan1" style="visibility: hidden;" class="language1" >
+        \(L = \{bba(ba)^na^{n-1}\}\)
+    </p>
+    <p id="b5w" style="visibility: hidden;" class="language6" >
+        \(L = \{b^5w \text{: } w \in \{a, b\}^* \text{, } 2n_a(w) = 3n_b(w)\}\)
+    </p>
+    <p id="b5wmod" style="visibility: hidden;" class="language7" >
+        \(L = \{b^5w \text{: } w \in \{a, b\}^* \text{, } (2n_a(w) + 5n_b(w)) \text{ mod } 3 = 0\}\)
+    </p>
+    <p id="bkabnban" style="visibility: hidden;" class="language6" >
+        \(L = \{b^k(ab)^n(ba)^n \text{: } k \geq 4 \text{, } n = 1,2,...\}\)
+    </p>
+    <p id="ab2n" style="visibility: hidden;" class="language4" >
+        \(L = \{(ab)^{2n} \text{: } n = 1,2,...\}\)
+    </p>
+    <p id="movepara">
+      <br/>
+      First choose who makes the first move. <br/>
+      <select id="move">
+      <option value = "select" selected disabled hidden>Pick who makes the first move</option>
+      <option value = "user">You go first</option>
+      <option value = "computer">Computer goes first</option>
+      </select>
+    </p>
+    
+    <p id="lemmapara">
+      Then select a lemma and press "Enter" button to continue.<br/>
+      <select id="lemma" size="14">
+        <option id="myOption" value = "select2">Pick select a lemma</option>
+        <option value = "anbn">L = (a^n)(b^n): n >= 0</option>
+        <option value = "nanb">L = {w &#8712; {a, b}*: n_a(w) &#60; n_b(w)}</option>
+        <option value = "wwr">L = {ww^R: w &#8712 {a, b}*}</option>
+        <option value = "abnak">L = {((ab)^n)(a^k): n > k, k &#8805; 0}</option>
+        <option value = "anbkcnk">L = {(a^n)(b^k)(c^(n+k)): n &#8805; 0, k &#8805; 0}</option>
+        <option value = "anblak">L = {(a^n)(b^l)(a^k): n > 5, k > 0, k &#8804; l}</option>
+        <option value = "an">L = {a^n: n is even}</option>
+        <option value = "anbk">L = {(a^n)(b^k): n is odd or k is even.}</option>
+        <option value = "bbabanan1">L = {bba((ba)^n)(a^(n-1))}</option>
+        <option value = "b5w">L = {b^5w: w &#8712; {a, b}*, 2n_a(w) = 3n_b(w)}</option>
+        <option value = "b5wmod">L = {b^5w: w &#8712; {a, b}*, (2n_a(w) + 5n_b(w)) mod 3 = 0}</option>
+        <option value = "bkabnban">L = {(b^k)((ab)^n)((ba)^n): k &#8805; 4, n = 1, 2...}</option>
+        <option value = "ab2n">L = {(ab)^(2n): n = 1, 2...}</option>
+      </select>
+    </p>
+    
+    <input type="button" id="enter" name="enter"/>
+    <input type="button" id="reset" name="reset"/>
+    <input style="display: none" type="button" id="next" name="next"/>
+    <p id="paraObjective"></p>
+    <p>
+      <input style="display: none" type="button" id="clear" name="clear"/>
+      <input style="display: none" type="button" id="explain" name="explain"/>
+      <input style="display: none" type="button" id="setxyz" name="setxyz"/>
+    </p>
+    <p id="step1"></p>
+    <!-- <p class="output"></p> -->
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
+  <script src="PL1.js"></script>
+  <script>
+    //update the text according to the change of ranger of x
+    function updateTextInputx(val, str) {
+      document.getElementById("valueOfx").value = val;
+      document.getElementById("x").value = str.substring(0, val);
+    }
+    //update the text according to the change of ranger of y
+    function updateTextInputy(val, str) {
+      document.getElementById("valueOfy").value = val;
+      var xval = document.getElementById("x").value.length;
+      document.getElementById("y").value = str.substring(xval, xval + parseInt(val));
+      //document.getElementById("rangeOfy").max = document.getElementById("input1").value * 2 - document.getElementById("valueOfx").value;
+    }
+    //update the text according to the change of ranger of z
+    function updateTextInputz(val, str) {
+      document.getElementById("valueOfz").value = val;
+      var xval = document.getElementById("x").value.length;
+      var yval = document.getElementById("y").value.length;
+      document.getElementById("z").value = str.substring(xval + yval, xval + yval + parseInt(val));
+      //document.getElementById("rangeOfz").max = document.getElementById("input1").value * 2 - document.getElementById("valueOfx").value - document.getElementById("valueOfy").value;
+    }
+  </script>
+</body>
+</html>
