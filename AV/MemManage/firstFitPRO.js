@@ -10,11 +10,6 @@
     // settings for the AV
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
 
-    // add the layout setting preference
-    var arrayLayout = settings.add("layout", {"type": "select",
-          "options": {"bar": "Bar", "array": "Array"},
-          "label": "Array layout: ", "value": "array"});
-
     //containing HTML element with id ShellsortProficiency.
     var av = new JSAV($('.avcontainer'), {settings: settings});
     av.recorded();
@@ -192,7 +187,7 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
       ODSA.AV.logExerciseInit(initData);
 
       if(!theArray) {
-        theArray = av.ds.array(freeValues, {center: false, layout: arrayLayout.val()}).css({"x": "275", "y": "180"});
+        theArray = av.ds.array(freeValues, {center: false}).css({"x": "275", "y": "180"});
       } else {
         for(i = 0; i < 4; i++) {
           theArray.value(i, freeValues[i]);

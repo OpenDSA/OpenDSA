@@ -7,9 +7,13 @@
         inputData,
         jsavArr,
         jsavInputPos,
-        jsav = new JSAV($('.avcontainer')),
         exercise,
         task;
+
+    // settings for the AV
+    var settings = new JSAV.utils.Settings($(".jsavsettings"));
+    // create a JSAV instance
+    var jsav = new JSAV($(".avcontainer"), {settings: settings});
 
     jsav.recorded();
 
