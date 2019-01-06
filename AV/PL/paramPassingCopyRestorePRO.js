@@ -26,8 +26,12 @@ $(document).ready(function () {
   var currentLineMain = 0;
   var currentLineFoo = 0;
   var highlightedLine;
+  var instructionLabel;
   var output = '';
   var jsavElements;
+
+  var instructionRegular = 'Evaluate the value of the right hand side of the hightlighted line and type that into the input above. Then click the location where that value belongs.';
+  var instructionRestore = 'Restore the two variables one at a time. Order does not matter.';
 
   var currentStep = 0;
   var mainSteps = 0;
@@ -68,6 +72,7 @@ $(document).ready(function () {
       }
       else{
         pseudo.setCurrentLine(currentLineMain);
+        instructionLabel.text(instructionRestore);
       }
       valInput.focus();
     }
@@ -86,7 +91,7 @@ $(document).ready(function () {
     mainVarNum = 0;
     mainIndex = null;
 
-    fooIndex = mainIndex = null;
+    fooIndex = mainIndex = instructionLabel = null;
     classVars = {};
     classLabels = {};
     mainVars = {};
@@ -211,6 +216,9 @@ $(document).ready(function () {
     CallByAllFive.init();
     clearAllJsavObj();
     av.umsg("");
+
+    instructionLabel = av.label(instructionRegular);
+    jsavElements.push(instructionLabel);
 
     codeLines = CallByAllFive.expression.split('<br />');
     for(var i = 0; i < codeLines.length; i++){
