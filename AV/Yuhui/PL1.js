@@ -7,7 +7,7 @@ $(document).ready(function () {
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
-  // Declare and initialize state variable for user first
+  // Declare and initialize state variable
   var container = document.getElementById("container"); //container
   var move; //who makes the frist move  
   var lemma; //choosen lemma 
@@ -17,6 +17,8 @@ $(document).ready(function () {
   var strlen;
   var x, y, z;
   var attemps = 0; //how many times the user attemps
+  var num; //random number for first step for computer first
+
   // Result of clicking "Enter" button
   function Enter() {
     lemma = document.getElementById("lemma").value;
@@ -31,6 +33,7 @@ $(document).ready(function () {
       document.getElementById("next").style.display = "block"; //add next step button
       document.getElementById("clear").style.display = "block"; //add clear button
       document.getElementById("explain").style.display = "block"; //add explain button
+      //add titles
       if (lemma == "anbn") {
         document.getElementById("anbn").style.visibility = "visible"; //add instructions
       }
@@ -70,19 +73,44 @@ $(document).ready(function () {
       if (lemma == "ab2n") {
         document.getElementById("ab2n").style.visibility = "visible"; //add instructions
       }
-      //Appends objective to container
-      paraObjective = document.getElementById("paraObjective");
-      paraObjective.appendChild(document.createElement("br"));
-      paraObjective.appendChild(document.createTextNode("Objective: Find a valid partition that can be pumped."));
       //Step 1 for user first
       if (move == "user") {
+        //Appends objective to container
+        paraObjective = document.getElementById("paraObjective");
+        paraObjective.appendChild(document.createElement("br"));
+        paraObjective.appendChild(document.createTextNode("Objective: Find a valid partition that can be pumped."));
         var step1 = document.getElementById("step1");
-        step1.appendChild(document.createTextNode("1. Please select a value for m and press \"Next Step\" to continue."));
-        var input1 = document.createElement("input"); //input for the first step
+        step1.appendChild(document.createTextNode("1. Please select a value for m and press \"Next Step\". (m is a possitive constant such that any w \u2208 L with |w| \u2265 m)"));
+        var input1 = document.createElement("input"); //input for the first step in user first
         input1.type = "number";
         input1.id = "input1";
+        step1.appendChild(document.createElement("br"));
         step1.appendChild(input1);
         stepcounter = 1;
+      }
+      //step 1 and step 2 for computer first
+      if (move == "computer") {
+        //Appends objective to container
+        paraObjective = document.getElementById("paraObjective");
+        paraObjective.appendChild(document.createElement("br"));
+        paraObjective.appendChild(document.createTextNode("Objective: Prevent the computer from finding a valid partition."));
+        //step 1
+        var step1 = document.getElementById("step1");
+        step1.appendChild(document.createTextNode("1. I have selected a value for a constant m, displayed below. (m is a possitive constant such that any w \u2208 L with |w| \u2265 m)"));
+        step1.appendChild(document.createElement("br"));
+        stepcounter = 1;
+        validInput();
+        step1.appendChild(document.createTextNode(num.toString()));
+        //step 2
+        var step2 = document.createElement("p");
+        step2.id = "step2";
+        step2.appendChild(document.createTextNode("2. Please enter a possible value for a string w \u2208 L and press \"Next\"."));
+        var input2 = document.createElement("input"); //input for the second step in computer first
+        input2.type = "text";
+        input2.id = "input2";
+        step2.appendChild(input2);
+        container.appendChild(step2);
+        stepcounter = 2;
       }
     }
   }
@@ -99,6 +127,7 @@ $(document).ready(function () {
           stepcounter = 1;
         }
         else {
+          document.getElementById("input1").disabled = true;
           str = getString();
           var step2 = document.createElement("p");
           step2.id = "step2";
@@ -115,7 +144,7 @@ $(document).ready(function () {
         var len = str.length;  //the length of the string
         var step3 = document.createElement("p"); //create the paragraph for step 3
         step3.id = "step3";
-        step3.appendChild(document.createTextNode("3. Select decompostion of x into xyz. Click \"Set xyz\" to set decomposition."));
+        step3.appendChild(document.createTextNode("3. Select decompostion of w into xyz. Click \"Set xyz\" to set decomposition."));
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("x: "));
         x = document.createElement("INPUT"); //the text to display x
@@ -186,6 +215,144 @@ $(document).ready(function () {
         stepcounter--;
       }
     }
+    //computer first
+    if (move == "computer") {
+      //step 3 
+      if (stepcounter == 3) {
+        str = str + document.getElementById("input2").value;
+        var bool = validInput();
+        if (bool == 1) {   //invalid input
+          stepcounter = 2;
+          str = "";
+        }
+        else {
+          var step3 = document.createElement("p"); //create the paragraph for step 3
+          step3.id = "step3";
+          step3.appendChild(document.createTextNode("3. I have decomposed w into the following..."));
+          step3.appendChild(document.createElement("br"));
+          document.getElementById("input2").disabled = true;
+          if (lemma == "an") {
+            x = "λ";
+            y = "aa";
+            z = str.substring(2);
+            if (z == "") {
+              z = "λ";
+            }
+            step3.appendChild(document.createTextNode("X = λ; \xa0Y = aa; \xa0Z = " + z));
+          }
+          else if (lemma == "anbk") {
+            if (str[1] == 'a') {
+              x = "λ";
+              y = "aa";
+              z = str.substring(2);
+              if (z == "") {
+                z = "λ";
+              }
+              step3.appendChild(document.createTextNode("X = λ; \xa0Y = aa; \xa0Z = " + z));
+            }
+            if (str[1] == 'b') {
+              x = "a";
+              y = "bb";
+              z = str.substring(3);
+              if (z == "") {
+                z = "λ";
+              }
+              step3.appendChild(document.createTextNode("X = a; \xa0Y = bb; \xa0Z = " + z));
+            }
+          }
+          else if (lemma == "b5wmod") {
+            x = "bbbbb";
+            y = str.substring(5, 8);
+            z = str.substring(8);
+            if (z == "") {
+              z = "λ";
+            }
+            step3.appendChild(document.createTextNode("X = bbbbb; \xa0Y = " + str.substring(5, 8) + "; \xa0Z = " + z));
+          }
+          else if (lemma == "ab2n") {
+            x = "λ";
+            y = "abab";
+            z = str.substring(4);
+            if (z == "") {
+              z = "λ";
+            }
+            step3.appendChild(document.createTextNode("X = λ; \xa0Y = abab; \xa0Z = " + z));
+          }
+          else {
+            var temp = Math.floor(Math.random() * (num - 1)) + 1;
+            var xy = str.substring(0, temp);
+            var ylength = Math.floor(Math.random() * (xy.length - 1)) + 1;
+            x = xy.substring(0, xy.length - ylength);
+            y = xy.substring(xy.length - ylength);
+            z = str.substring(temp);
+            if (x == "") {
+              x = "λ";
+            }
+            if (z == "") {
+              z = "λ";
+            }
+            step3.appendChild(document.createTextNode("X = " + x + "; Y = " + y + "; Z = " + z));
+          }
+          container.appendChild(step3);
+        }
+      }
+    }
+    // Step 4
+    if (stepcounter == 4) {
+      var step4 = document.createElement("p"); //create the paragraph for step 4
+      step4.id = "step4";
+      step4.appendChild(document.createTextNode("4. Please enter a possible value for i and press \"Next\". (i is a positive integer such that xy^iz \u2208 L for all i \u2265 0)"));
+      step4.appendChild(document.createElement("br"));
+      step4.appendChild(document.createTextNode("i: "));
+      var i = document.createElement("INPUT");
+      i.type = "number";
+      i.id = "i";
+      step4.appendChild(i);
+      container.appendChild(step4);
+    }
+    if (stepcounter == 5) {
+      attemps++;
+      var i = document.getElementById("i").value;
+      if (i.length == 0) {  //empty input
+        alert("Please enter a possible integer in range [0, 2...12} for best results.");
+        stepcounter = 4;
+      }
+      else if (i != 0 && (i < 2 || i > 12)) {
+        alert("Please enter a possible integer in range [0, 2...12} for best results.");
+        stepcounter = 4;
+      }
+      else {
+        document.getElementById("i").disabled = true;
+        var step4 = document.getElementById("step4");
+        step4.appendChild(document.createTextNode("\xa0\xa0\xa0\xa0\xa0pumped string: "));
+        var pumpstr = "";
+        if (x != "λ") {
+          pumpstr = pumpstr + x;
+        }
+        var temp;
+        temp = "xy^" + i.toString() + "z = x";
+        var j;
+        for (j = 0; j < i; j++) {
+          pumpstr = pumpstr + y;
+          temp = temp + "y";
+        }
+        if (z != "λ") {
+          pumpstr = pumpstr + z;
+        }
+        if (lemma == "an" || lemma == "anbk" || lemma == "b5wmod" || lemma == "ab2n") {
+          temp = temp + "z = " + pumpstr + " is in the language. YOU WIN!";
+          alert("My attemps:\n" + attemps.toString() + ": X = " + x + "; Y = " + y + "; Z = " + z + "; I = " + i + "; WON");
+        }
+        else {
+          temp = temp + "z = " + pumpstr + " is NOT in the language. Please try again!";
+          alert("My attemps:\n" + attemps.toString() + ": X = " + x + "; Y = " + y + "; Z = " + z + "; I = " + i + "; Failed");
+        
+        }
+        step4.appendChild(document.createTextNode(pumpstr));
+        step4.appendChild(document.createElement("br"));
+        step4.appendChild(document.createTextNode(temp));
+      }
+    }
   }
 
   // Reload the whole page when the user click the Reset button
@@ -215,12 +382,48 @@ $(document).ready(function () {
       //reset step 1
       var step1 = document.createElement("p");
       step1.id = "step1";
-      step1.appendChild(document.createTextNode("1. Please select a value for m and press \"Next Step\" to continue."));
+      step1.appendChild(document.createTextNode("1. Please select a value for m and press \"Next Step\". (m is a possitive constant such that any w \u2208 L with |w| \u2265 m)"));
+      step1.appendChild(document.createElement("br"));
       var input1 = document.createElement("input"); //input for the first step
       input1.type = "number";
       input1.id = "input1";
       step1.appendChild(input1);
       container.appendChild(step1);
+    }
+    else {
+      //remove each step
+      if (stepcounter >= 1) {
+        document.getElementById("step1").remove();
+      }
+      if (stepcounter >= 2) {
+        document.getElementById("step2").remove();
+      }
+      if (stepcounter >= 3) {
+        document.getElementById("step3").remove();
+      }
+      if (stepcounter >= 4) {
+        document.getElementById("step4").remove();
+      }
+      str = "";  //clean str
+      // reset step 1 and step 2
+      var step1 = document.createElement("p");
+      step1.id = "step1";
+      step1.appendChild(document.createTextNode("1. I have selected a value for a constant m, displayed below. (m is a possitive constant such that any w \u2208 L with |w| \u2265 m)"));
+      step1.appendChild(document.createElement("br"));
+      stepcounter = 1;
+      validInput();
+      step1.appendChild(document.createTextNode(num.toString()));
+      container.appendChild(step1);
+      //step 2
+      var step2 = document.createElement("p");
+      step2.id = "step2";
+      step2.appendChild(document.createTextNode("2. Please enter a possible value for a string w \u2208 L and press \"Next\"."));
+      var input2 = document.createElement("input"); //input for the second step in computer first
+      input2.type = "text";
+      input2.id = "input2";
+      step2.appendChild(input2);
+      container.appendChild(step2);
+      stepcounter = 2;
     }
   }
   //Result of clicking "Explain" button
@@ -287,9 +490,9 @@ $(document).ready(function () {
   //Set xyz buttion in step 3 and step 4
   function Setxyz() {
     if (stepcounter == 3) {
-      var x = document.getElementById("x").value;
-      var y = document.getElementById("y").value;
-      var z = document.getElementById("z").value;
+      x = document.getElementById("x").value;
+      y = document.getElementById("y").value;
+      z = document.getElementById("z").value;
       var xval = x.length;
       var yval = y.length;
       var zval = z.length;
@@ -310,9 +513,19 @@ $(document).ready(function () {
         //Step 4
         else {
           attemps++;
+          document.getElementById("x").disabled = true;
+          document.getElementById("y").disabled = true;
+          document.getElementById("z").disabled = true;
+          document.getElementById("valueOfx").disabled = true;
+          document.getElementById("valueOfy").disabled = true;
+          document.getElementById("valueOfz").disabled = true;
+          document.getElementById("rangeOfx").disabled = true;
+          document.getElementById("rangeOfy").disabled = true;
+          document.getElementById("rangeOfz").disabled = true;
+          
           var step4 = document.createElement("p");
           step4.id = "step4";
-          step4.appendChild(document.createTextNode("4. I have selected i to give a contradiction, which i is how many times the string pumps. In orther word, i is the order of y. It is displayed below"));
+          step4.appendChild(document.createTextNode("4. I have selected i to give a contradiction.(i is a positive integer such that xy^iz \u2208 L for all i \u2265 0) It is displayed below"));
           var br = document.createElement("br");
           step4.appendChild(br);
           var ran = Math.floor(Math.random() * 3); // random number from 0 to 2
@@ -453,86 +666,597 @@ $(document).ready(function () {
     }
   }
   //helper function for error message of invalid input based on different lemma
+  //also generate a random number for computer first
   function validInput() {
     if (lemma == "anbn") {
-      if (!(strlen >= 4 && strlen <= 18)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (18 - 4)) + 4; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        if (str.length % 2 != 0) {
+          alert("That string was not in the language. Please enter another.");
+          return 1;
+        }
+        else {
+          var head = str.substring(0, str.length / 2);
+          var tail = str.substring(str.length / 2);
+          var i;
+          for (i = 0; i < head.length; i++) {
+            if (head[i] != 'a' || tail[i] != 'b') {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 4 && strlen <= 18) && move == "user") {
         alert("Please enter a positive integer in range [4, 18] for best results"); //error message
         return 1;
       }
     }
     if (lemma == "nanb") {
-      if (!(strlen >= 2 && strlen <= 17)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (17 - 2)) + 2; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        var acounter = 0;
+        var bcounter = 0;
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        for (i = 0; i < str.length; i++) {
+          if (str[i] == 'a') {
+            acounter++;
+          }
+          if (str[i] == 'b') {
+            bcounter++;
+          }
+        }
+        if (acounter >= bcounter) {
+          alert("That string was not in the language. Please enter another.");
+          return 1;
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 2 && strlen <= 17) && move == "user") {
         alert("Please enter a positive integer in range [2, 17] for best results"); //error message
         return 1;
       }
     }
     if (lemma == "wwr") {
-      if (!(strlen >= 2 && strlen <= 10)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (10 - 2)) + 2; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        if (str.length % 2 != 0) {
+          alert("That string was not in the language. Please enter another.");
+          return 1;
+        }
+        else {
+          var head = str.substring(0, str.length / 2);
+          var tail = str.substring(str.length / 2);
+          var i;
+          var splitString = head.split("");
+          var reverseArray = splitString.reverse();
+          head = reverseArray.join("");
+          for (i = 0; i < head.length; i++) {
+            if (head[i] != tail[i]) {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 2 && strlen <= 10) && move == "user") {
         alert("Please enter a positive integer in range [2, 10] for best results"); //error message
         return 1;
       }
     }
     if (lemma == "abnak") {
-      if (!(strlen >= 2 && strlen <= 11)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (10 - 2)) + 2; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        else {
+          var i;
+          var lastb = 0;
+          for (i = 0; i < str.length; i++) {
+            if (str[i] == 'b') {
+              lastb = i;
+            }
+          }
+          var head = str.substring(0, lastb + 1);
+          var tail = str.substring(lastb + 1);
+          if (head.length % 2 != 0) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          if (tail.length < 0 || head.length / 2 <= tail.length) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] != 'a') {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+          for (i = 0; i < head.length; i++) {
+            if (((i % 2 == 0) && (head[i] != 'a')) || ((i % 2 == 1) && (head[i] != 'b'))) {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 2 && strlen <= 11) && move == "user") {
         alert("Please enter a positive integer in range [2, 11] for best results"); //error message
         return 1;
       }
     }
     if (lemma == "anbkcnk") {
-      if (!(strlen >= 2 && strlen <= 9)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (9 - 2)) + 2; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        else {
+          var i;
+          var firstb = -1;
+          var firstc = -1;
+          for (i = 0; i < str.length; i++) {
+            if (str[i] == 'b' && firstb == -1) {
+              firstb = i;
+            }
+            if (str[i] == 'c' && firstc == -1) {
+              firstc = i;
+            }
+          }
+          if (firstc == -1) {   //which means there is no "c"s in the string, which is invalid.
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          var tail = str.substring(firstc);
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] != 'c') {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+          var head;
+          var mid;
+          if (firstb == -1) {   //which means there is no "b"s in the string.
+            head = str.substring(0, firstc);
+            mid = "";
+          }
+          else {
+            mid = str.substring(firstb, firstc);
+            for (i = 0; i < mid.length; i++) {
+              if (mid[i] != 'b') {
+                alert("That string was not in the language. Please enter another.");
+                return 1;
+              }
+            }
+            head = str.substring(0, firstb);
+          }
+          if (head.length != 0) {
+            for (i = 0; i < head.length; i++) {
+              if (head[i] != 'a') {
+                alert("That string was not in the language. Please enter another.");
+                return 1;
+              }
+            }
+          }
+          if (head.length + mid.length != tail.length) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 2 && strlen <= 9) && move == "user") {
         alert("Please enter a positive integer in range [2, 9] for best results"); //error message
         return 1;
       }
     }
     if (lemma == "anblak") {
-      if (!(strlen >= 2 && strlen <= 15)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (15 - 2)) + 2; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        else {
+          var head;
+          var mid;
+          var tail;
+          var firstb = -1;
+          var lastb = -1;
+          var i;
+          for (i = 0; i < str.length; i++) {
+            if (str[i] == 'b' && firstb == -1) {
+              firstb = i;
+            }
+            if (str[i] == 'b') {
+              lastb = i;
+            }
+          }
+          if (firstb == -1) { //which means there is no "b"s in the string, which is invalid.
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          head = str.substring(0, firstb);
+          mid = str.substring(firstb, lastb + 1);
+          tail = str.substring(lastb + 1);
+          if (head.length <= 5 || mid.length <= 3 || tail.length > mid.length) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          for (i = 0; i < head.length; i++) {
+            if (head[i] != 'a') {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+          for (i = 0; i < mid.length; i++) {
+            if (mid[i] != 'b') {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] != 'a') {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 2 && strlen <= 15) && move == "user") {
         alert("Please enter a positive integer in range [2, 15] for best results"); //error message
         return 1;
       }
+
     }
     if (lemma == "an") {
-      if (!(strlen >= 2 && strlen <= 18)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (18 - 2)) + 2; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        else {
+          if (str.length % 2 != 0) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          var i;
+          for (i = 0; i < str.length; i++) {
+            if (str[i] != 'a') {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 2 && strlen <= 18) && move == "user") {
         alert("Please enter a positive integer in range [2, 18] for best results"); //error message
         return 1;
       }
     }
     if (lemma == "anbk") {
-      if (!(strlen >= 3 && strlen <= 10)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (10 - 3)) + 3; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        else {
+          var i;
+          var firstb = -1;
+          for (i = 0; i < str.length; i++) {
+            if (str[i] == 'b' && firstb == -1) {
+              firstb = i;
+            }
+          }
+          if (firstb == -1) {
+            for (i = 0; i < str.length; i++) {
+              if (str[i] != 'a' || str.length % 2 != 1) {
+                alert("That string was not in the language. Please enter another.");
+                return 1;
+              }
+            }
+          }
+          else {
+            var head = str.substring(0, firstb);
+            var tail = str.substring(firstb);
+            if (head.length % 2 != 1 && tail.length % 2 != 0) {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+            for (i = 0; i < head.length; i++) {
+              if (head[i] != 'a') {
+                alert("That string was not in the language. Please enter another.");
+                return 1;
+              }
+            }
+            for (i = 0; i < tail.length; i++) {
+              if (tail[i] != 'b') {
+                alert("That string was not in the language. Please enter another.");
+                return 1;
+              }
+            }
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 3 && strlen <= 10) && move == "user") {
         alert("Please enter a positive integer in range [3, 10] for best results"); //error message
         return 1;
       }
     }
     if (lemma == "bbabanan1") {
-      if (!(strlen >= 5 && strlen <= 10)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (10 - 5)) + 5; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        else {
+          var i;
+          var lastb = -1;
+          var head = str.substring(0, 3);
+          var tail = str.substring(3);
+          if (head != "bba" || str[str.length - 1] != 'a') {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] == 'b') {
+              lastb = i;
+            }
+          }
+          if (lastb == -1) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          var mid = tail.substring(0, lastb + 2);
+          tail = tail.substring(lastb + 2);
+          for (i = 0; i < mid.length; i++) {
+            if ((i % 2 == 0 && mid[i] != 'b') || (i % 2 == 1 && mid[i] != 'a')) {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+          if (mid.length % 2 != 0) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          else {
+            if (mid.length / 2 - 1 != tail.length) {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] != 'a') {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 5 && strlen <= 10) && move == "user") {
         alert("Please enter a positive integer in range [5, 10] for best results"); //error message
         return 1;
       }
     }
     if (lemma == "b5w") {
-      if (!(strlen >= 6 && strlen <= 10)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (10 - 6)) + 6; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        else {
+          var i;
+          var head = str.substring(0, 5);
+          var tail = str.substring(5);
+          var acounter = 0;
+          var bcounter = 0;
+          if (head != "bbbbb") {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] == 'a') {
+              acounter++;
+            }
+            else if (tail[i] == 'b') {
+              bcounter++;
+            }
+            else {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+          if (2 * acounter != 3 * bcounter) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 6 && strlen <= 10) && move == "user") {
         alert("Please enter a positive integer in range [6, 10] for best results"); //error message
         return 1;
       }
     }
     if (lemma == "b5wmod") {
-      if (!(strlen >= 8 && strlen <= 20)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (20 - 8)) + 8; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        else {
+          var i;
+          var head = str.substring(0, 5);
+          var tail = str.substring(5);
+          var acounter = 0;
+          var bcounter = 0;
+          if (head != "bbbbb") {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] == 'a') {
+              acounter++;
+            }
+            else if (tail[i] == 'b') {
+              bcounter++;
+            }
+            else {
+              alert("That string was not in the language. Please enter another.");
+              return 1;
+            }
+          }
+          if ((2 * acounter + 5 * bcounter) % 3 != 0) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 8 && strlen <= 20) && move == "user") {
         alert("Please enter a positive integer in range [8, 20] for best results"); //error message
         return 1;
       }
     }
     if (lemma == "bkabnban") {
-      if (!(strlen >= 4 && strlen <= 15)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (15 - 4)) + 4; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        else {
+          var i;
+          var head;
+          var tail;
+          var first = -1;
+          for (i = 0; i < str.length; i++) {
+            if (str[i] != 'b' && first == -1) {
+              first = i;
+            }
+          }
+          if (first < 4) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          var tempstr = str.substring(first);
+          if (tempstr.length % 2 != 0) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          else {
+            head = tempstr.substring(0, tempstr.length / 2);
+            tail = tempstr.substring(tempstr.length / 2);
+            for (i = 0; i < head.length; i++) {
+              if ((i % 2 == 0 && (head[i] != 'a' || tail[i] != 'b')) || (i % 2 == 1 && (head[i] != 'b' || tail[i] != 'a'))) {
+                alert("That string was not in the language. Please enter another.");
+                return 1;
+              }
+            }
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 4 && strlen <= 15) && move == "user") {
         alert("Please enter a positive integer in range [4, 15] for best results"); //error message
         return 1;
       }
     }
     if (lemma == "ab2n") {
-      if (!(strlen >= 4 && strlen <= 10)) {
+      if (move == "computer" && stepcounter == 1) {
+        num = Math.floor(Math.random() * (10 - 4)) + 4; //generate random input for computer first
+      }
+      //determine wheter the input is valid or not for computer first
+      if (move == "computer" && stepcounter == 3) {
+        if (str.length < num) {
+          alert("Rember |w| must be >= m");
+          return 1;
+        }
+        else {
+          if (str.length % 4 != 0) {
+            alert("That string was not in the language. Please enter another.");
+            return 1;
+          }
+          else {
+            var i;
+            for (i = 0; i < str.length; i++) {
+              if ((i % 2 == 0 && str[i] != 'a') || (i % 2 == 1 && str[i] != 'b')) {
+                alert("That string was not in the language. Please enter another.");
+                return 1;
+              }
+            }
+          }
+        }
+      }
+      //determine wheter the input is valid or not for user first
+      if (!(strlen >= 4 && strlen <= 10) && move == "user") {
         alert("Please enter a positive integer in range [4, 10] for best results"); //error message
         return 1;
       }
     }
-
     return 0;
   }
   //helper function to generate different string based on different languages
