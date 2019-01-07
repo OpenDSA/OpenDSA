@@ -1,7 +1,7 @@
 /*global ODSA */
 "use strict";
 $(document).ready(function () {
-  var av_name = "Proof1PumpingLemmaCON";
+  var av_name = "Proof1NonRegularCON";
   var av;
   
   var xoffset = -30;
@@ -40,7 +40,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 4
-  av.umsg("Consider a long string $a^{k+1}b^{k+1} \\in L_2$.");
+  av.umsg("Consider a long string $a^kb^k \\in L_2$.");
   var arrValues = ["a", "a", "...", "a", "b", "...", "b", "b"];
   var arr = av.ds.array(arrValues);
   var labelab = av.label("$|---k+1---|---k+1---|$", {"left": xoffset + 338, "top": yoffset + 250});
@@ -50,7 +50,7 @@ $(document).ready(function () {
   var arrow4 = av.g.line(320, 230, 210, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var arrow5 = av.g.line(350, 230, 290, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var arrow6 = av.g.line(410, 230, 450, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  av.umsg("Since there are $k$ states and $k+1$ a's, some state $i$ in $M$ must be reached more than once when following the path of $a^{k+1}$.");
+  av.umsg("Since there are $k$ states and $k$ a's (followed by some b's), some state $i$ in $M$ must be reached more than once when following the path of $a^k$.");
   av.step();
 
   // Slide 6
@@ -82,11 +82,11 @@ $(document).ready(function () {
   av.step();
 
   // Slide 7
-  av.umsg("Suppose we start at the initial state, traverse the same path for $a^{k+1}b^{k+1}$, but we traverse the loop of a's one additional time.");
+  av.umsg("Suppose we start at the initial state, traverse the same path for $a^kb^k$, but we traverse the loop of a's one additional time.");
   av.step();
 
   // Slide 8
-  av.umsg("We will end up in the same final state that $a^{k+1}b^{k+1}$ did, but our actual number of a's is some other value (such as $a^{k + 1 + t}$). Let's call that value $m$.");
+  av.umsg("We will end up in the same final state that $a^kb^k$ did, but our actual number of a's is actually $a^{k + t}$.");
   arr.hide();
   arrow10.hide();
   arrow11.hide();
@@ -103,11 +103,11 @@ $(document).ready(function () {
   av.step();
 
   // Slide 9
-  av.umsg("Therefore, the string $a^mb^{k+1}$ is accepted by $M$, but this string is not in $L_2$. Contradiction!");
+  av.umsg("Therefore, the string $a^{k+t}b^k$ is accepted by $M$, but this string is not in $L_2$. Contradiction!");
   av.step();
 
   // Slide 10
-  av.umsg("Thus, $L_2$ is not regular.");
+  av.umsg("This must happen no matter what machine we created that can accept $a^kb^k$. Thus, $L_2$ is not regular.");
   av.step();
 
   // Slide 11
