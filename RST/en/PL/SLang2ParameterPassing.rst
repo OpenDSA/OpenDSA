@@ -63,7 +63,7 @@ If the parameter passing method call-by-value is used...
    :output: show
 
 A proficiency exercise for pass-by-value ...
-	    
+
 .. avembed:: AV/PL/paramPassingByValPRO.html pe
    :long_name: Pass-by-value Proficiency Exercise
 
@@ -341,3 +341,6 @@ depth in the context of a specific example known as a *lazy list*.
 
 .. .. avembed:: Exercises/PL/RP31part2.html ka
 ..    :long_name: RP set #31, question #2
+
+
+.. odsascript:: AV/PL/paramPassingSlideshowFixHeight.js
