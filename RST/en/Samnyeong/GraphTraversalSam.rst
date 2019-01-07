@@ -25,34 +25,12 @@ Note that if the graph is a tree and the start vertex is at the root,
 BFS is equivalent to visiting vertices level by level from top to
 bottom.
 
-This visualization shows a graph and the result of performing a BFS on
-it, resulting in a breadth-first search tree.
-
-.. inlineav:: BFSCON ss
-   :long_name: Breadth-First Search Slideshow
-   :links: AV/Samnyeong/BFSCON.css
-   :scripts: AV/Samnyeong/BFSCON.js
-   :output: show
-
-Here is an implementation for BFS.
-
-.. codeinclude:: Graphs/BFS
-   :tag: BFS
-
 The following visualization shows a random graph each time that you
 start it, so that you can see the behavior on different examples.
 It can show you BFS run on a directed graph or an undirected graph.
 Be sure to look at an example for each type of graph.
 
-.. avembed:: AV/Graph/BFSAV.html ss
+.. avembed:: AV/Samnyeong/BFSAV.html ss
     :long_name: BFS AV
 
-Here is an exercise for you to practice BFS.
 
-.. avembed:: AV/Graph/BFSPE.html pe
-   :long_name: BFS Proficiency Exercise
-
-.. TODO::
-   :type: Exercise
-
-   Summary exercise for graph traversals.

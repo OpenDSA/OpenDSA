@@ -41,7 +41,7 @@ $(document).ready(function() {
     g.layout();
 
     graph = g;
-    av.umsg("Let's look at the details of how a breadth-first seach works.");
+    av.umsg("Test something Let's look at the details of how a breadth-first seach works.");
     av.displayInit();
     av.step();
     var start = graph.nodes()[0];
