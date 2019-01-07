@@ -190,6 +190,9 @@ CS2: min
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
+CS415: min
+	python $(CONFIG_SCRIPT) config/CS415.json --no-lms
+
 CSCD320: min
 	python $(CONFIG_SCRIPT) config/CSCD320.json --no-lms
 
