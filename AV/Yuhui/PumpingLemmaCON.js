@@ -1,62 +1,57 @@
 /*global ODSA */
 "use strict";
 $(document).ready(function () {
-  var av_name = "PumpingLemmaCON";
-  var av;
-  
-  var xoffset = -30;
-  var yoffset = 0;
-  var circRadius = 20;
-  av = new JSAV(av_name);
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-  $(".avcontainer").on("jsav-message", function() {
-    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-  });
-
-  //Slide 1 
-    av.umsg("Let $L$ be an infinite regular language, and then choose an arbitrary long string $w$, which $w$ in $L$.");   
-    var g = av.ds.graph({directed: true});
-    var q0 = g.addNode("q0", {left: xoffset, top: yoffset + 100});   
-    var q1 = g.addNode("q1", {left: xoffset + 80, top: yoffset + 100});
-    var e1 = g.addEdge(q0, q1);
-    var qs = g.addNode("qs", {left: xoffset + 160, top: yoffset + 100});
-    var e2 = g.addEdge(q1, qs);
-    var qt = g.addNode("qt", {left: xoffset + 300, top: yoffset + 100});
-    var e3 = g.addEdge(qs, qt);
-    var qq = g.addNode(" ",{left: xoffset + 190, top: yoffset});
-    var qq2 = g.addNode(" ",{left: xoffset + 280, top: yoffset});
-    var e4 = g.addEdge(qq, qs);
-    var e5 = g.addEdge(qq2, qq);
-    var e6 = g.addEdge(qt, qq2);
-    var qn = g.addNode("qn", {left: xoffset + 430, top: yoffset + 98});
-    var label1 = av.label("$.......$", {"top": yoffset + 90, "left": xoffset + 340});
-    var label2 = av.label("$.............$", {"top": yoffset + 90, "left": xoffset + 430});
-    var label3 = av.label("$........$", {"top": yoffset + 60, "left": xoffset + 380}).addClass('rotated');
-    var label4 = av.label("$........$", {"top": yoffset + 60, "left": xoffset + 525}).addClass('rotated2');
-    var label5 = av.label("$........$", {"top": yoffset - 20, "left": xoffset + 450});
-    var label5 = av.label("$..........$", {"top": yoffset + 90, "left": xoffset + 570});
-    var label6 = av.label("$|----------------w---------------|$", {"top": yoffset + 170, "left": xoffset + 230});
-    var e = g.addEdge(qt, qn);
-    qn.addClass('final');
-    g.layout();
+    var av_name = "PumpingLemmaCON";
+    var av;
+    av = new JSAV(av_name);
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    $(".avcontainer").on("jsav-message", function() {
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    });
+    var xoffset = 350;
+    var yoffset = 0;
+    //Slide 1
+    av.umsg("Let $L$ be an infinite regular language.");
     av.displayInit();
 
     //Slide 2
-    av.umsg("There exist a constant $m > 0$ such that $|w| > m$. $w$ can be decomposed into three parts as $w = xyz$.")
-    var labelxyz = av.label("$|------x------|-----y-----|------z----|$", {"top": yoffset + 140, "left": xoffset + 230});
-    var labelyi = av.label("$y$", {"top": yoffset + 50, "left": xoffset + 475});
+    av.umsg("There exists a constant $m>0$ such that any $w \\in L$ with $|w| \\geq m$ can be decomposed into three parts as $w=xyz$ with:");
+    var arrValues = ["x", "y", "z"];
+    var arr = av.ds.array(arrValues, {"left": xoffset, "top": yoffset + 50});
+    var labelm = av.label("$|-- \\geq m--|$", {"left": xoffset, "top": yoffset + 25});
+    var labelw = av.label("$w$: ", {"left": xoffset - 50, "top": yoffset + 50});
+    av.step();  
+    
+    //Slidw 3
+    av.umsg("1. $|xy| \\leq m$");
+    var labelxy = av.label("$xy \\leq m$",{"left": xoffset + 10, "top": yoffset + 90});
     av.step();
 
-    //Slide 3
-    
-    label6.hide();
-    av.umsg("There are 3 properties of w: ");
-    av.umsg("1. $|xy| \\leq m$ ", {"preserve": true});
-    av.umsg("2. $|y| \\geq 1$ ", {"preserve": true});
-    av.umsg("3. $xy^iz \\in L$ for all $i \\geq 0$", {"preserve": true});
-    var labelm = av.label("$|------------\\leq m----------|$", {"top": yoffset + 170, "left": xoffset + 230});
+    //Slide 4 
+    av.umsg("2. $|y| \\geq 1$");
+    labelxy.hide();
+    var labely = av.label("$|y| \\geq 1$",{"left": xoffset + 25, "top": yoffset + 90});
     av.step();
+
+    //Slide 5
+    av.umsg("3. $xy^iz \\in L$  for all $i \\geq 0$");
+    labely.hide();
+    labelm.hide();
+    labelw.hide();
+    labelw = av.label("$w$: ", {"left": xoffset - 150, "top": yoffset + 50});
+    var arrValues1 = ["x", "y", "y", "z"];
+    var arr1 = av.ds.array(arrValues1, {"left": xoffset, "top": yoffset + 150});
+    var labelxyz = av.label("$xy^2z \\in L$($i = 2$): ",{"left": xoffset - 150, "top": yoffset + 150});
+    var arrow1 = av.g.line(xoffset + 50, yoffset + 95, xoffset + 50, yoffset + 165, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+    var labelp1 = av.label("Pump $1$ time", {"left": xoffset + 60, "top": yoffset + 110});
+    var arrow2 = av.g.line(xoffset + 50, yoffset + 195, xoffset + 50, yoffset + 265, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+    var labelp2 = av.label("...Pump $i - 1$ times", {"left": xoffset + 60, "top": yoffset + 210});
+    var arrValues2 = ["x", "y","...", "y", "z"];
+    var arr2 = av.ds.array(arrValues2, {"left": xoffset, "top": yoffset + 250});
+    var labelxyz2 = av.label("$xy^iz \\in L$($i \\geq 0$): ",{"left": xoffset - 150, "top": yoffset + 250});
+    av.step();
+
+    //Slide 6
+    av.umsg("<b>Meaning:</b> Every sufficiently long string in $L$ (the constant m corresponds to the finite number of states in $M$) can be partitioned into three parts such that the middle part can be pumped, resulting in strings that must be in $L$.");
     av.recorded(); 
-    
 });
-

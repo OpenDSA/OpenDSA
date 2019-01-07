@@ -114,20 +114,11 @@ In general, the DFA accepts all strings like  :math:`w = w_1v^*w_2`.
 Pumping Lemma
 ~~~~~~~~~~~~~
 
-Let :math:`L` be an infinite regular language. 
-:math:`\exists` a constant :math:`m > 0` such that any
-:math:`w \in L` with :math:`|w| \ge m` can be decomposed into three
-parts as :math:`w=xyz` with:
-
-   |  :math:`|xy| \le m`
-   |  :math:`|y| \ge 1`
-   |  :math:`xy^iz \in L` for all :math:`i\ge 0`
-
-**Meaning:** Every sufficiently long string in :math:`L`
-(the constant :math:`m` corresponds to the finite number of states in
-:math:`M`)
-can be partitioned into three parts such that the middle 
-part can be "pumped", resulting in strings that must be in :math:`L`. 
+.. inlineav:: PumpingLemmaCON ss
+   :long_name: Pumping Lemma Slideshow
+   :links: AV/Yuhui/PumpingLemmaCON.css
+   :scripts: AV/Yuhui/PumpingLemmaCON.js
+   :output: show
 
 **How To Use the Pumping Lemma to prove L is not regular:**
 
@@ -135,12 +126,12 @@ part can be "pumped", resulting in strings that must be in :math:`L`.
    | Assume L is regular.
    | Therefore :math:`L` satisfies the pumping lemma. 
    | Choose a long string :math:`w \in L`, :math:`|w| \ge m`.
-     (The choice of the string is crucial.
-     We must pick a string that will yield a contradiction). 
+     The choice of the string is crucial.
+     We must pick a string that will yield a contradiction.
    | Show that there is NO division of :math:`w` into :math:`xyz`
-     (must consider all possible divisions) such that
+     (we must consider all possible divisions) such that
      :math:`|xy| \le m`, :math:`|y| \ge 1` and :math:`xy^iz \in L \forall i \ge 0`.
-   | The pumping lemma does not hold. Contradiction!
+   | If we show that there is NO possible division, then we have a contradiction!
    | :math:`\Rightarrow L` is not regular.
 
 Note that, unfortunately, the pumping lemma is one-way:
@@ -151,13 +142,6 @@ is regular.
 And the pumping lemma is not a universal solution for determining that
 a language is non-regular.
 Its just a tool in the toolbox.
-
-.. inlineav:: PumpingLemma ss
-   :long_name: Pumping Lemma Slideshow
-   :links: AV/Yuhui/PumpingLemma.css
-   :scripts: AV/Yuhui/PumpingLemma.js
-   :output: show
-
 
 .. topic:: Example
 

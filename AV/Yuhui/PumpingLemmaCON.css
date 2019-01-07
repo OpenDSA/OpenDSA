@@ -1,17 +1,3 @@
-.final {
-	border: 3px double;
-}
-.rotated {
-	-webkit-transform: rotate(110deg);
-	-moz-transform: rotate(110deg);
-	-ms-transform: rotate(110deg);
-	-o-transform: rotate(110deg);
-	transform: rotate(110deg);
-}
-.rotated2 {
-	-webkit-transform: rotate(78deg);
-	-moz-transform: rotate(78deg);
-	-ms-transform: rotate(78deg);
-	-o-transform: rotate(78deg);
-	transform: rotate(78deg);
+#PumpingLemmaCON {
+    height: 500px;
 }
