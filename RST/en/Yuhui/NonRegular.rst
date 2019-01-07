@@ -151,6 +151,7 @@ Its just a tool in the toolbox.
 
 .. inlineav:: PumpingLemma ss
    :long_name: Pumping Lemma Slideshow
+   :links: AV/Yuhui/PumpingLemma.css
    :scripts: AV/Yuhui/PumpingLemma.js
    :output: show
 
