@@ -108,9 +108,6 @@ Now, if the cycle is skipped, then we get :math:`w = w_1w_2`, and if
 its executed twice we get :math:`w = w_1v^2w_2`.
 In general, the DFA accepts all strings like  :math:`w = w_1v^*w_2`.
 
-.. avembed:: AV/Yuhui/PL1.html ss
-   :long_name: Regular Pumping Lemmma
-
 Pumping Lemma
 ~~~~~~~~~~~~~
 
@@ -548,3 +545,7 @@ not regular. Contradiction.
         :math:`L_4 = L_3 \cap \{a^{*}b^{*}\} = \{a^nb^n | n > 0\}` is regular. 
       | We already proved that :math:`L_4` is not regular. Contradiction.
       | :math:`\Rightarrow L_1` is not regular.
+
+
+.. avembed:: AV/Yuhui/PL1.html ss
+   :long_name: Regular Pumping Lemmma
