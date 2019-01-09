@@ -2066,7 +2066,7 @@ Glossary
       :to-term: traversal :label: problems
       :to-term: topological sort :label: problems
       :to-term: shortest paths :label: problems
-      :to-term: dense :label: types
+      :to-term: dense graph :label: types
       :to-term: sparse graph :label: types
       :to-term: directed graph :label: types
       :to-term: acyclic graph :label: types
@@ -3141,8 +3141,6 @@ Glossary
       :to-term: Prim's algorithm :label: algorithms
       :to-term: MCST :label: abbreviation
       :to-term: MST :label: abbreviation
-      :to-term: weighted graph :label: derived from
-      :to-term: edges <edge> :label: subset of
       :to-term: cycle :label: never have
       :to-term: tree :label: is a
 
