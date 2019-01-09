@@ -36,14 +36,21 @@ $(document).ready(function () {
 
   // Slide 3
   av.umsg("$M$ has a finite number of states, say $k$ states.");
-  var labelK = av.label("$|----------------k-----------------|$", {"top": yoffset + 70, "left": xoffset + 230});
+  var labelK = av.label("$k$", {"top": yoffset + 73, "left": xoffset + 450});
+  var arrowK1 = av.g.line(xoffset + 440, yoffset + 100, xoffset + 240, yoffset + 100, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var arrowK2 = av.g.line(xoffset + 470, yoffset + 100, xoffset + 670, yoffset + 100, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.step();
 
   // Slide 4
   av.umsg("Consider a long string $a^kb^k \\in L_2$.");
   var arrValues = ["a", "a", "...", "a", "b", "...", "b", "b"];
   var arr = av.ds.array(arrValues);
-  var labelab = av.label("$|---k+1---|---k+1---|$", {"left": xoffset + 338, "top": yoffset + 250});
+  var labelab1 = av.label("$k$", {"left": xoffset + 390, "top": yoffset + 250});
+  var labelab2 = av.label("$k$", {"left": xoffset + 512, "top": yoffset + 250});
+  var arrowa1 = av.g.line(xoffset + 380, yoffset + 278, xoffset + 340, yoffset + 278, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var arrowa2 = av.g.line(xoffset + 408, yoffset + 278, xoffset + 455, yoffset + 278, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var arrowb1 = av.g.line(xoffset + 500, yoffset + 278, xoffset + 455, yoffset + 278, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var arrowb2 = av.g.line(xoffset + 533, yoffset + 278, xoffset + 575, yoffset + 278, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.step();
   
   // Slide 5
@@ -57,11 +64,13 @@ $(document).ready(function () {
   av.umsg("In that case, there is a loop with one or more a's (say $t$ a's for some $t \\geq 1$) along the path.");
   arrow2.hide();
   arrow1.hide();
+  arrowK1.hide();
+  arrowK2.hide();
   labelM.hide();
   labelK.hide();
   label.hide();
   var arrow7 = av.g.line(307, 130, 347, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  var label1 = av.label("$..........$", {"top": yoffset + 100, "left": xoffset + 380});
+  var label1 = av.label("$........$", {"top": yoffset + 100, "left": xoffset + 385});
   var arrow8 = av.g.line(407, 130, 447, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var qi = g.addNode("qi", {left: xoffset + 250, top: yoffset + 100});
   var qi1 = g.addNode(" ", {left: xoffset + 200, top: yoffset});
@@ -71,7 +80,7 @@ $(document).ready(function () {
   var e4 = av.g.line(495, 30, 470, 30, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var e5 = av.g.line(450, 30, 425, 30, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var arrow = av.g.line(477, 130, 527, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  var label2 = av.label("$..........$", {"top": yoffset + 100, "left": xoffset + 560});
+  var label2 = av.label("$.......$", {"top": yoffset + 100, "left": xoffset + 565});
   var label3 = av.label(".....", {"top": yoffset, "left": xoffset + 480});
   var labela = av.label("$t$ a's", {"top": yoffset + 45, "left": xoffset + 480});
   var arrow9 = av.g.line(580, 130, 626, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
@@ -88,14 +97,24 @@ $(document).ready(function () {
   // Slide 8
   av.umsg("We will end up in the same final state that $a^kb^k$ did, but our actual number of a's is actually $a^{k + t}$.");
   arr.hide();
+  arrowa1.hide();
+  arrowa2.hide();
+  arrowb1.hide();
+  arrowb2.hide();
   arrow10.hide();
   arrow11.hide();
-  labelab.hide();
+  labelab1.hide();
+  labelab2.hide();
   arrow4.hide();
   arrow5.hide();
   var arrValues2 = ["a", "a", "...", "a", "a", "...", "a", "b", "...", "b", "b"];
   var arr2 = av.ds.array(arrValues2);
-  var labelaab = av.label("$|------m>k-------|----k----|$", {"left": 260, "top": 250});
+  var labelaab1 = av.label("$k + t$", {"left": xoffset + 382, "top": yoffset + 250});
+  var labelaab2 = av.label("$k$", {"left": xoffset + 557, "top": yoffset + 250});
+  var arrowKt1 = av.g.line(xoffset + 372, yoffset + 277, xoffset + 293, yoffset + 277, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var arrowKt2 = av.g.line(xoffset + 420, yoffset + 277, xoffset + 500, yoffset + 277, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var arrowKt3 = av.g.line(xoffset + 550, yoffset + 277, xoffset + 500, yoffset + 277, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var arrowKt4 = av.g.line(xoffset + 573, yoffset + 277, xoffset + 620, yoffset + 277, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var arrow12 = av.g.line(280, 230, 210, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var arrow13 = av.g.line(310, 230, 290, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var arrow14 = av.g.line(380, 230, 460, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
@@ -113,7 +132,8 @@ $(document).ready(function () {
   // Slide 11
   av.umsg("This is an example of the Pigeonhole Principle. The Pigeonhole Principle states that, given $n$ pigeonholes and $n+1$ pigeons, when all of the pigeons go into the holes we can be sure that at least one hole contains more than one pigeon.");
   arr2.hide();
-  labelaab.hide();
+  labelaab1.hide();
+  labelaab2.hide();
   labela.hide();
   label1.hide();
   label2.hide();
@@ -129,6 +149,10 @@ $(document).ready(function () {
   arrow13.hide();
   arrow14.hide();
   arrow15.hide();
+  arrowKt1.hide();
+  arrowKt2.hide();
+  arrowKt3.hide();
+  arrowKt4.hide();
   q0.hide();
   q1.hide();
   qi.hide();
@@ -159,7 +183,7 @@ $(document).ready(function () {
   var labelph2 = av.label("$.........$", {"left": 490, "top": 200});
   var labelpg = av.label("Pigeon: ", {"left": 100, "top": 100});
   var labelpg = av.label("Pigeonholes: ", {"left": 100, "top": 200});
-  var arrowph = av.g.line(665, 146, 470, 218, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var arrowph = av.g.line(664, 148, 470, 218, {"stroke-width": 1.5, "arrow-end": "classic-wide-long"});
   g.layout();
   av.step();
 
