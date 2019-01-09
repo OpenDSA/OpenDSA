@@ -54,14 +54,6 @@ $(document).ready(function () {
   av.step();
   
   // Slide 5
-  var arrow4 = av.g.line(320, 230, 210, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  var arrow5 = av.g.line(350, 230, 290, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  var arrow6 = av.g.line(410, 230, 450, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  av.umsg("Since there are $k$ states and $k$ a's (followed by some b's), some state $i$ in $M$ must be reached more than once when following the path of $a^k$.");
-  av.step();
-
-  // Slide 6
-  av.umsg("In that case, there is a loop with one or more a's (say $t$ a's for some $t \\geq 1$) along the path.");
   arrow2.hide();
   arrow1.hide();
   arrowK1.hide();
@@ -69,24 +61,33 @@ $(document).ready(function () {
   labelM.hide();
   labelK.hide();
   label.hide();
+  
+  var arrow4 = av.g.line(320, 230, 210, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var arrow5 = av.g.line(350, 230, 290, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var arrow7 = av.g.line(307, 130, 347, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var label1 = av.label("$........$", {"top": yoffset + 100, "left": xoffset + 385});
   var arrow8 = av.g.line(407, 130, 447, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var qi = g.addNode("qi", {left: xoffset + 250, top: yoffset + 100});
+  var arrow = av.g.line(477, 130, 527, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var label2 = av.label("$.......$", {"top": yoffset + 100, "left": xoffset + 565});
+  
+  
+  var arrow9 = av.g.line(580, 130, 626, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var arrow10 = av.g.line(410, 230, 560, 140, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var arrow11 = av.g.line(380, 230, 463, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  av.umsg("Since there are $k$ states and $k$ a's (followed by some b's), some state $i$ in $M$ must be reached more than once when following the path of $a^k$.");
+  av.step();
+
+  // Slide 6
+  av.umsg("In that case, there is a loop with one or more a's (say $t$ a's for some $t \\geq 1$) along the path.");
+  var labela = av.label("$t$ a's", {"top": yoffset + 45, "left": xoffset + 480});
+  var label3 = av.label("...", {"top": yoffset, "left": xoffset + 485});
   var qi1 = g.addNode(" ", {left: xoffset + 200, top: yoffset});
   var qi2 = g.addNode(" ", {left: xoffset + 300, top: yoffset});
   var e2 = g.addEdge(qi, qi2);
   var e3 = g.addEdge(qi1, qi);
-  var e4 = av.g.line(495, 30, 470, 30, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  var e5 = av.g.line(450, 30, 425, 30, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  var arrow = av.g.line(477, 130, 527, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  var label2 = av.label("$.......$", {"top": yoffset + 100, "left": xoffset + 565});
-  var label3 = av.label(".....", {"top": yoffset, "left": xoffset + 480});
-  var labela = av.label("$t$ a's", {"top": yoffset + 45, "left": xoffset + 480});
-  var arrow9 = av.g.line(580, 130, 626, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  arrow6.hide();
-  var arrow10 = av.g.line(410, 230, 560, 140, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  var arrow11 = av.g.line(380, 230, 463, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var e4 = av.g.line(497, 30, 472, 30, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var e5 = av.g.line(452, 30, 426, 30, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   g.layout();
   av.step();
 
