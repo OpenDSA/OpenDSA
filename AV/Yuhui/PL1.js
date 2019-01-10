@@ -80,7 +80,7 @@ $(document).ready(function () {
         paraObjective.appendChild(document.createElement("br"));
         paraObjective.appendChild(document.createTextNode("Objective: Find a valid partition that can be pumped."));
         var step1 = document.getElementById("step1");
-        step1.appendChild(document.createTextNode("1. Please select a value for m and press \"Next Step\". (m is a possitive constant such that any w \u2208 L with |w| \u2265 m)"));
+        step1.appendChild(document.createTextNode("1. Please select a value for m and press \"Next Step\". (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
         var input1 = document.createElement("input"); //input for the first step in user first
         input1.type = "number";
         input1.id = "input1";
@@ -96,7 +96,7 @@ $(document).ready(function () {
         paraObjective.appendChild(document.createTextNode("Objective: Prevent the computer from finding a valid partition."));
         //step 1
         var step1 = document.getElementById("step1");
-        step1.appendChild(document.createTextNode("1. I have selected a value for a constant m, displayed below. (m is a possitive constant such that any w \u2208 L with |w| \u2265 m)"));
+        step1.appendChild(document.createTextNode("1. I have selected a value for a constant m, displayed below. (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
         step1.appendChild(document.createElement("br"));
         stepcounter = 1;
         validInput();
@@ -382,7 +382,7 @@ $(document).ready(function () {
       //reset step 1
       var step1 = document.createElement("p");
       step1.id = "step1";
-      step1.appendChild(document.createTextNode("1. Please select a value for m and press \"Next Step\". (m is a possitive constant such that any w \u2208 L with |w| \u2265 m)"));
+      step1.appendChild(document.createTextNode("1. Please select a value for m and press \"Next Step\". (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
       step1.appendChild(document.createElement("br"));
       var input1 = document.createElement("input"); //input for the first step
       input1.type = "number";
@@ -408,7 +408,7 @@ $(document).ready(function () {
       // reset step 1 and step 2
       var step1 = document.createElement("p");
       step1.id = "step1";
-      step1.appendChild(document.createTextNode("1. I have selected a value for a constant m, displayed below. (m is a possitive constant such that any w \u2208 L with |w| \u2265 m)"));
+      step1.appendChild(document.createTextNode("1. I have selected a value for a constant m, displayed below. (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
       step1.appendChild(document.createElement("br"));
       stepcounter = 1;
       validInput();
