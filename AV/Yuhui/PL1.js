@@ -96,15 +96,20 @@ $(document).ready(function () {
         paraObjective.appendChild(document.createTextNode("Objective: Prevent the computer from finding a valid partition."));
         //step 1
         var step1 = document.getElementById("step1");
-        step1.appendChild(document.createTextNode("1. I have selected a value for a constant m, displayed below. (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
+        step1.appendChild(document.createTextNode("1. I have selected a value for a constant m, displayed below. (m is a positive constant such that any w \u2208 L with |w| \u2265 m) Please press \"Next Step\" to continue."));
         step1.appendChild(document.createElement("br"));
         stepcounter = 1;
         validInput();
-        step1.appendChild(document.createTextNode(num.toString()));
+        var step1m = document.createElement("INPUT"); //the text to display m
+        step1m.setAttribute("type", "text");
+        step1m.id = "step1m";
+        step1m.value = num.toString();
+        step1m.disabled = true;
+        step1.appendChild(step1m);
         //step 2
         var step2 = document.createElement("p");
         step2.id = "step2";
-        step2.appendChild(document.createTextNode("2. Please enter a possible value for a string w \u2208 L and press \"Next\"."));
+        step2.appendChild(document.createTextNode("2. Please enter a possible value for a string w \u2208 L and press \"Next Step\"."));
         var input2 = document.createElement("input"); //input for the second step in computer first
         input2.type = "text";
         input2.id = "input2";
@@ -131,10 +136,16 @@ $(document).ready(function () {
           str = getString();
           var step2 = document.createElement("p");
           step2.id = "step2";
-          step2.appendChild(document.createTextNode("2. I have selected w such that |w| >= m. It is displayed below."));
+          step2.appendChild(document.createTextNode("2. I have selected w such that |w| >= m. It is displayed below. Please press \"Next Step\" to continue."));
           var br = document.createElement("br");
           step2.appendChild(br);
-          step2.appendChild(document.createTextNode("w: " + str));
+          var outstep2 = document.createElement("INPUT"); //the text to display w
+          outstep2.setAttribute("type", "text");
+          outstep2.id = "outstep2";
+          outstep2.value = str;
+          outstep2.disabled = true;
+          step2.appendChild(document.createTextNode("w: "));
+          step2.appendChild(outstep2);
           container.appendChild(step2);
         }
       }
@@ -212,7 +223,8 @@ $(document).ready(function () {
         container.appendChild(step3);
       }
       if (stepcounter == 4) {
-        stepcounter--;
+        alert("Please click \"set xyz\" to continue.");
+        stepcounter = 3;
       }
     }
     //computer first
@@ -228,9 +240,21 @@ $(document).ready(function () {
         else {
           var step3 = document.createElement("p"); //create the paragraph for step 3
           step3.id = "step3";
-          step3.appendChild(document.createTextNode("3. I have decomposed w into the following..."));
+          step3.appendChild(document.createTextNode("3. I have decomposed w into the following... Please click \"Next Step\" to continue."));
           step3.appendChild(document.createElement("br"));
           document.getElementById("input2").disabled = true;
+          var step3x = document.createElement("INPUT"); //the text to display x
+          step3x.setAttribute("type", "text");
+          step3x.id = "step3x";
+          step3x.disabled = true;
+          var step3y = document.createElement("INPUT"); //the text to display y
+          step3y.setAttribute("type", "text");
+          step3y.id = "step3y";
+          step3y.disabled = true;
+          var step3z = document.createElement("INPUT"); //the text to display z
+          step3z.setAttribute("type", "text");
+          step3z.id = "step3z";
+          step3z.disabled = true;
           if (lemma == "an") {
             x = "λ";
             y = "aa";
@@ -238,7 +262,9 @@ $(document).ready(function () {
             if (z == "") {
               z = "λ";
             }
-            step3.appendChild(document.createTextNode("X = λ; \xa0Y = aa; \xa0Z = " + z));
+            step3x.value = "λ";
+            step3y.value = "aa";
+            step3z.value = z;
           }
           else if (lemma == "anbk") {
             if (str[1] == 'a') {
@@ -248,7 +274,9 @@ $(document).ready(function () {
               if (z == "") {
                 z = "λ";
               }
-              step3.appendChild(document.createTextNode("X = λ; \xa0Y = aa; \xa0Z = " + z));
+              step3x.value = "λ";
+              step3y.value = "aa";
+              step3z.value = z;
             }
             if (str[1] == 'b') {
               x = "a";
@@ -257,7 +285,9 @@ $(document).ready(function () {
               if (z == "") {
                 z = "λ";
               }
-              step3.appendChild(document.createTextNode("X = a; \xa0Y = bb; \xa0Z = " + z));
+              step3x.value = "a";
+              step3y.value = "bb";
+              step3z.value = z;
             }
           }
           else if (lemma == "b5wmod") {
@@ -267,7 +297,9 @@ $(document).ready(function () {
             if (z == "") {
               z = "λ";
             }
-            step3.appendChild(document.createTextNode("X = bbbbb; \xa0Y = " + str.substring(5, 8) + "; \xa0Z = " + z));
+            step3x.value = "bbbbb";
+            step3y.value = y;
+            step3z.value = z;
           }
           else if (lemma == "ab2n") {
             x = "λ";
@@ -276,7 +308,9 @@ $(document).ready(function () {
             if (z == "") {
               z = "λ";
             }
-            step3.appendChild(document.createTextNode("X = λ; \xa0Y = abab; \xa0Z = " + z));
+            step3x.value = "λ";
+            step3y.value = "abab";
+            step3z.value = z;
           }
           else {
             var temp = Math.floor(Math.random() * (num - 1)) + 1;
@@ -291,66 +325,81 @@ $(document).ready(function () {
             if (z == "") {
               z = "λ";
             }
-            step3.appendChild(document.createTextNode("X = " + x + "; Y = " + y + "; Z = " + z));
+            step3x.value = x;
+            step3y.value = y;
+            step3z.value = z;
           }
+          step3.appendChild(document.createTextNode("X = "));
+          step3.appendChild(step3x);
+          step3.appendChild(document.createElement("br"));
+          step3.appendChild(document.createTextNode("Y = "));
+          step3.appendChild(step3y);
+          step3.appendChild(document.createElement("br"));
+          step3.appendChild(document.createTextNode("Z = "));
+          step3.appendChild(step3z);
           container.appendChild(step3);
         }
       }
-    }
-    // Step 4
-    if (stepcounter == 4) {
-      var step4 = document.createElement("p"); //create the paragraph for step 4
-      step4.id = "step4";
-      step4.appendChild(document.createTextNode("4. Please enter a possible value for i and press \"Next\". (i is a positive integer such that xy^iz \u2208 L for all i \u2265 0)"));
-      step4.appendChild(document.createElement("br"));
-      step4.appendChild(document.createTextNode("i: "));
-      var i = document.createElement("INPUT");
-      i.type = "number";
-      i.id = "i";
-      step4.appendChild(i);
-      container.appendChild(step4);
-    }
-    if (stepcounter == 5) {
-      attemps++;
-      var i = document.getElementById("i").value;
-      if (i.length == 0) {  //empty input
-        alert("Please enter a possible integer in range [0, 2...12} for best results.");
-        stepcounter = 4;
+      //here 
+      // Step 4
+      if (stepcounter == 4) {
+        var step4 = document.createElement("p"); //create the paragraph for step 4
+        step4.id = "step4";
+        step4.appendChild(document.createTextNode("4. Please enter a possible value for i and press \"Next Step\". (i is a positive integer such that xy^iz \u2208 L for all i \u2265 0)"));
+        step4.appendChild(document.createElement("br"));
+        step4.appendChild(document.createTextNode("i: "));
+        var i = document.createElement("INPUT");
+        i.type = "number";
+        i.id = "i";
+        step4.appendChild(i);
+        container.appendChild(step4);
       }
-      else if (i != 0 && (i < 2 || i > 12)) {
-        alert("Please enter a possible integer in range [0, 2...12} for best results.");
-        stepcounter = 4;
-      }
-      else {
-        document.getElementById("i").disabled = true;
-        var step4 = document.getElementById("step4");
-        step4.appendChild(document.createTextNode("\xa0\xa0\xa0\xa0\xa0pumped string: "));
-        var pumpstr = "";
-        if (x != "λ") {
-          pumpstr = pumpstr + x;
+      if (stepcounter == 5) {
+        attemps++;
+        var i = document.getElementById("i").value;
+        if (i.length == 0) {  //empty input
+          alert("Please enter a possible integer in range [0, 2...12} for best results.");
+          stepcounter = 4;
         }
-        var temp;
-        temp = "xy^" + i.toString() + "z = x";
-        var j;
-        for (j = 0; j < i; j++) {
-          pumpstr = pumpstr + y;
-          temp = temp + "y";
-        }
-        if (z != "λ") {
-          pumpstr = pumpstr + z;
-        }
-        if (lemma == "an" || lemma == "anbk" || lemma == "b5wmod" || lemma == "ab2n") {
-          temp = temp + "z = " + pumpstr + " is in the language. YOU WIN!";
-          alert("My attemps:\n" + attemps.toString() + ": X = " + x + "; Y = " + y + "; Z = " + z + "; I = " + i + "; WON");
+        else if (i != 0 && (i < 2 || i > 12)) {
+          alert("Please enter a possible integer in range [0, 2...12} for best results.");
+          stepcounter = 4;
         }
         else {
-          temp = temp + "z = " + pumpstr + " is NOT in the language. Please try again!";
-          alert("My attemps:\n" + attemps.toString() + ": X = " + x + "; Y = " + y + "; Z = " + z + "; I = " + i + "; Failed");
-        
+          document.getElementById("i").disabled = true;
+          var step4 = document.getElementById("step4");
+          step4.appendChild(document.createTextNode("pumped string: "));
+          var pumpstr = "";
+          if (x != "λ") {
+            pumpstr = pumpstr + x;
+          }
+          var temp;
+          temp = "xy^" + i.toString() + "z = x";
+          var j;
+          for (j = 0; j < i; j++) {
+            pumpstr = pumpstr + y;
+            temp = temp + "y";
+          }
+          if (z != "λ") {
+            pumpstr = pumpstr + z;
+          }
+          if (lemma == "an" || lemma == "anbk" || lemma == "b5wmod" || lemma == "ab2n") {
+            temp = temp + "z = " + pumpstr + " is in the language. YOU WIN!";
+            //alert("My attemps:\n" + attemps.toString() + ": X = " + x + "; Y = " + y + "; Z = " + z + "; I = " + i + "; WON");
+          }
+          else {
+            temp = temp + "z = " + pumpstr + " is NOT in the language. Please try again!";
+            //alert("My attemps:\n" + attemps.toString() + ": X = " + x + "; Y = " + y + "; Z = " + z + "; I = " + i + "; Failed");
+          }
+          var step4ps = document.createElement("INPUT"); //the text to display pumped string
+          step4ps.setAttribute("type", "text");
+          step4ps.id = "step4ps";
+          step4ps.value = pumpstr;
+          step4ps.disabled = true;
+          step4.appendChild(step4ps);
+          step4.appendChild(document.createElement("br"));
+          step4.appendChild(document.createTextNode(temp));
         }
-        step4.appendChild(document.createTextNode(pumpstr));
-        step4.appendChild(document.createElement("br"));
-        step4.appendChild(document.createTextNode(temp));
       }
     }
   }
@@ -412,12 +461,17 @@ $(document).ready(function () {
       step1.appendChild(document.createElement("br"));
       stepcounter = 1;
       validInput();
-      step1.appendChild(document.createTextNode(num.toString()));
+      var step1m = document.createElement("INPUT"); //the text to display m
+      step1m.setAttribute("type", "text");
+      step1m.id = "step1m";
+      step1m.value = num.toString();
+      step1m.disabled = true;
+      step1.appendChild(step1m);
       container.appendChild(step1);
       //step 2
       var step2 = document.createElement("p");
       step2.id = "step2";
-      step2.appendChild(document.createTextNode("2. Please enter a possible value for a string w \u2208 L and press \"Next\"."));
+      step2.appendChild(document.createTextNode("2. Please enter a possible value for a string w \u2208 L and press \"Next Step\"."));
       var input2 = document.createElement("input"); //input for the second step in computer first
       input2.type = "text";
       input2.id = "input2";
@@ -522,10 +576,10 @@ $(document).ready(function () {
           document.getElementById("rangeOfx").disabled = true;
           document.getElementById("rangeOfy").disabled = true;
           document.getElementById("rangeOfz").disabled = true;
-          
+
           var step4 = document.createElement("p");
           step4.id = "step4";
-          step4.appendChild(document.createTextNode("4. I have selected i to give a contradiction.(i is a positive integer such that xy^iz \u2208 L for all i \u2265 0) It is displayed below"));
+          step4.appendChild(document.createTextNode("4. I have selected i to give a contradiction.(i is a positive integer such that xy^iz \u2208 L for all i \u2265 0) It is displayed below."));
           var br = document.createElement("br");
           step4.appendChild(br);
           var ran = Math.floor(Math.random() * 3); // random number from 0 to 2
@@ -540,7 +594,20 @@ $(document).ready(function () {
             pumpstr = pumpstr + y;
           }
           pumpstr = pumpstr + z;
-          step4.appendChild(document.createTextNode("i: " + ran.toString() + "\xa0\xa0\xa0\xa0pumped string: " + pumpstr));
+          var step4i = document.createElement("INPUT"); //the text to display i
+          step4i.setAttribute("type", "text");
+          step4i.id = "step4i";
+          step4i.value = ran.toString();
+          step4i.disabled = true;
+          var step4ps = document.createElement("INPUT"); //the text to display pumped string
+          step4ps.setAttribute("type", "text");
+          step4ps.id = "step4ps";
+          step4ps.value = pumpstr;
+          step4ps.disabled = true;
+          step4.appendChild(document.createTextNode("i: "));
+          step4.appendChild(step4i);
+          step4.appendChild(document.createTextNode("pumped string: "));
+          step4.appendChild(step4ps);
           step4.appendChild(document.createElement("br"));
           var tempy;
           var yorder;
@@ -659,7 +726,7 @@ $(document).ready(function () {
             outstring = "My attemps:\n" + attemps.toString() + ": X = " + localx + "; Y = " + y + "; Z = " + localz + "; I = " + ran + "; Failed";
           }
           container.appendChild(step4);
-          alert(outstring);
+          //alert(outstring);
           stepcounter++;
         }
       }
