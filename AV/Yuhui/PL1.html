@@ -56,7 +56,7 @@
     <p id="movepara">
       <br/>
       First choose who makes the first move. <br/>
-      <select id="move">
+      <select id="move" onchange="setEnter1()">
       <option value = "select" selected disabled hidden>Pick who makes the first move</option>
       <option value = "user">You go first</option>
       <option value = "computer">Computer goes first</option>
@@ -65,7 +65,7 @@
     
     <p id="lemmapara">
       Then select a lemma and press "Enter" button to continue.<br/>
-      <select id="lemma" size="14">
+      <select id="lemma" size="14" onchange="setEnter2()">
         <option id="myOption" value = "select2">Pick select a lemma</option>
         <option value = "anbn">L = (a^n)(b^n): n &#8805; 0</option>
         <option value = "nanb">L = {w &#8712; {a, b}*: n_a(w) &#60; n_b(w)}</option>
@@ -83,7 +83,7 @@
       </select>
     </p>
     
-    <input type="button" id="enter" name="enter"/>
+    <input type="button" id="enter" name="enter" disabled/>
     <input type="button" id="reset" name="reset"/>
     <input style="display: none" type="button" id="next" name="next"/>
     <p id="paraObjective"></p>
@@ -103,6 +103,8 @@
   <script src="../../lib/odsaAV-min.js"></script>
   <script src="PL1.js"></script>
   <script>
+    var bool1 = 0;
+    var bool2 = 0;  
     //update the text according to the change of ranger of x
     function updateTextInputx(val, str) {
       document.getElementById("valueOfx").value = val;
@@ -122,6 +124,24 @@
       var yval = document.getElementById("y").value.length;
       document.getElementById("z").value = str.substring(xval + yval, xval + yval + parseInt(val));
       //document.getElementById("rangeOfz").max = document.getElementById("input1").value * 2 - document.getElementById("valueOfx").value - document.getElementById("valueOfy").value;
+    }
+    function setEnter1() {
+      var x = document.getElementById("move").value;
+      if (x != "select") {
+  	    bool1 = 1;  
+      }
+      if (x != "select" && bool2 == 1) {
+    	  document.getElementById("enter").disabled = false;
+      } 
+    }
+    function setEnter2() {
+      var x = document.getElementById("lemma").value;
+      if (x != "select2") {
+  	    bool2 = 1;  
+      }
+      if (x != "select2" && bool1 == 1) {
+  	    document.getElementById("enter").disabled = false;
+      } 
     }
   </script>
 </body>
