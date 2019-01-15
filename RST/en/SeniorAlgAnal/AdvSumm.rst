@@ -366,3 +366,10 @@ pattern in terms of :math:`f(n) - g(n)` or :math:`f(n)/g(n)`.
    .. math::
 
       = (n-1)2^{n+1} + 2.
+
+Here is another example.
+
+.. inlineav:: GeometricSumProofCON ss
+   :links: AV/SeniorAlgAnal/GeometricSumProofCON.css
+   :scripts: AV/SeniorAlgAnal/GeometricSumProofCON.js
+   :output: show

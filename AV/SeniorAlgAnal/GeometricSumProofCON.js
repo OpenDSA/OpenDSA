@@ -1,6 +1,6 @@
 $(document).ready(function() {
   "use strict";
-  var av_name = "summation_equ_proof";
+  var av_name = "GeometricSumProofCON";
   var av = new JSAV(av_name);
   var xoffset = 50;
   var yoffset = 20;
@@ -9,21 +9,21 @@ $(document).ready(function() {
   $(".avcontainer").on("jsav-message", function() {
     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
   });
-  //Slide 1
+
+  // Slide 1
   av.umsg("Proof of sum of a geometric series:");
   av.umsg("<br> Assume that $a \\neq 1$, and let the sum of the first $n + 1$ items a geometric series equal to $s$, which means:", {"preserve": true});
   av.umsg("<br> $s = 1 + a + a^2 + ... + a^n$", {"preserve": true});
-
   av.displayInit();
-  //Slide 2
-  av.umsg("Proof of sum of a geometric series:");
-  av.umsg("<br> Multiply $a$ on the both sides of the equation, we get:", {"preserve": true});
+
+  // Slide 2
+  av.umsg("Multiply $a$ on the both sides of the equation, we get:");
   av.umsg("<br> $s = 1 + a + a^2 + ... + a^n$", {"preserve": true});
   av.umsg("<br> $as = a + a^2 + a^3 + ... + a^{n + 1}$", {"preserve": true});
   av.step();
-  //Slide 3
-  av.umsg("Proof of sum of a geometric series:");
-  av.umsg("<br> Subtract the second equation from the first equation, there are only two elements left, which is $1$ and $a^{n + 1}$", {"preserve": true});
+
+  // Slide 3
+  av.umsg("Subtract the second equation from the first equation, there are only two elements left, which is $1$ and $a^{n + 1}$");
   av.umsg("<br> $s = 1 + a + a^2 + ... + a^n$", {"preserve": true});
   av.umsg("<br> $as = a + a^2 + a^3 + ... + a^{n + 1}$", {"preserve": true});
   av.umsg("<br> $s - as = 1 - a^{n + 1}$", {"preserve": true});
@@ -37,7 +37,6 @@ $(document).ready(function() {
   var l1 = av.g.line(xoffset + 171, yoffset + 22, xoffset + 105, yoffset + 61, {"stroke-width": 1.5});
   var l2 = av.g.line(xoffset + 242, yoffset + 22, xoffset + 171, yoffset + 61, {"stroke-width": 1.5});
   var l3 = av.g.line(xoffset + 360, yoffset + 22, xoffset + 290, yoffset + 61, {"stroke-width": 1.5});
-
   g.layout();
   var lab1 = av.label("$s \\;\\;=\\;\\;\\;\\; 1 \\;\\;\\;\\;\\; +$", {"top": yoffset - 20, "left": xoffset + 50});
   var lab2 = av.label("$as \\;\\;=$", {"top": yoffset + 50, "left": xoffset + 42});
@@ -57,15 +56,14 @@ $(document).ready(function() {
   // var l2 = av.g.line(xoffset + 222, yoffset + 17, xoffset + 178, yoffset + 37);
   // var l3 = av.g.line(xoffset + 265, yoffset + 17, xoffset + 222, yoffset + 37);
   // var l4 = av.g.line(xoffset + 354, yoffset + 17, xoffset + 315, yoffset + 37);
-  
   av.step();
-  //Slide 4
-  av.umsg("Proof of sum of a geometric series:");
-  av.umsg("<br> $s(1 - a) = 1 - a^{n + 1}$", {"preserve": true});
+
+  // Slide 4
+  av.umsg("$s(1 - a) = 1 - a^{n + 1}$");
   av.step();
-  //Slide 5
-  av.umsg("Proof of sum of a geometric series:");
-  av.umsg("<br> Now we get the final result:", {"preserve": true});
+
+  // Slide 5
+  av.umsg("Now we get the final result:");
   av.umsg("<br> $s = \\frac{1 - a^{n + 1}}{(1 - a)}$", {"preserve": true});
   av.recorded();
 });

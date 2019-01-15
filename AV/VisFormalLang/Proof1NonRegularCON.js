@@ -42,7 +42,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 4
-  av.umsg("Consider a long string $a^kb^k \\in L_2$.");
+  av.umsg("Consider a long string $a^kb^k \\in L_2$. The key point is that this string has more characters than there are states in the machine.");
   var arrValues = ["a", "a", "...", "a", "b", "...", "b", "b"];
   var arr = av.ds.array(arrValues);
   var labelab1 = av.label("$k$", {"left": xoffset + 390, "top": yoffset + 250});
@@ -96,7 +96,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 8
-  av.umsg("We will end up in the same final state that $a^kb^k$ did, but our actual number of a's is actually $a^{k + t}$.");
+  av.umsg("We will end up in the same final state that $a^kb^k$ did, but our actual number of a's is $a^{k + t}$.");
   arr.hide();
   arrowa1.hide();
   arrowa2.hide();
