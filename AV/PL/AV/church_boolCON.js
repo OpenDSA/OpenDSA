@@ -1,7 +1,7 @@
 // Reduction of true && false using Church bools
 $(document).ready(function() {
     "use strict";
-    var av_name = "church_bool";
+    var av_name = "church_boolCON";
 
     var av = new JSAV(av_name);
     var l = av.label("((λp.λq.((p q) λx.λy.y) λx.λy.x) λx.λy.y)");

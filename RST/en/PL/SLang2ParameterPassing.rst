@@ -18,8 +18,14 @@
 Parameter-Passing Mechanisms
 ============================
 
-Call By Reference
------------------
+
+Call By Value vs. Call By Reference
+-----------------------------------
+
+**Author's Note**: All of the visualizations of parameter-passing methods
+in this were developed by Universtiy of Wisconsin Oshkosh CS major
+Cory Sanin.  His work on these has greatly improved the original
+version of the module.
 
 Parameter-passing techniques may be broken down as follows:
 
@@ -39,6 +45,8 @@ Parameter-passing techniques may be broken down as follows:
 
    -  Call-by-need
 
+
+
 The difference between call-by-value and call-by-reference is
 exemplified by the difference between denoted values in our
 interpreters for SLang 1 and SLang 2.  That is, in call-by-value, the
@@ -47,14 +55,7 @@ argument whereas, in call-by-reference, the function is given the
 address of the argument.  Given the address, the function has the
 capability of modifying the argument.
 
-Consider the following code:
-
-::
-
-    TODO: Credit Cory
-
-
-If the parameter passing method call-by-value is used...
+To see how call-by-value works, consider the following slide show.
 
 .. inlineav:: paramPassingByVal ss
    :long_name: Parameter Passing By Value
@@ -62,19 +63,27 @@ If the parameter passing method call-by-value is used...
    :scripts: AV/PL/paramPassingByVal.js
    :output: show
 
-A proficiency exercise for pass-by-value ...
+Test yourself on call-by-value by completing the following proficiency
+exercise.
 
 .. avembed:: AV/PL/paramPassingByValPRO.html pe
    :long_name: Pass-by-value Proficiency Exercise
 
 
-If the parameter passing method call-by-reference is used...
+In comparison to call-by-value, call-by-reference is illustrated by the following slide show.
 
 .. inlineav:: paramPassingByRef ss
    :long_name: Parameter Passing By Reference
    :links:
    :scripts: AV/PL/paramPassingByRef.js
    :output: show
+
+Test yourself on call-by-value by completing the following proficiency
+exercise.
+
+.. avembed:: AV/PL/paramPassingByRefPRO.html pe
+   :long_name: Pass-by-reference Proficiency Exercise
+
 
 This problem will help you review the difference between *call by
 value* and *call by reference* in C++, where the presence of an
