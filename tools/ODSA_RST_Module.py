@@ -542,35 +542,19 @@ class ODSA_RST_Module:
                   link_opts = opt_line[len(':links:'):].split()
                   if len(link_opts) > 0:
                     links_found = True
-                    if os.environ['SLIDES'] == 'no':
-                      for link in link_opts:
-                        if link not in links:
-                          links[link] = False
-                    else:
-                      for link in link_opts:
-                        link_included = links.get(link)
-                        if not link_included:
-                          links[link] = True
-                          mod_data[i] = '   .. odsalink:: {0}\n{1}'.format(link, mod_data[i])
+                    for link in link_opts:
+                      if link not in links:
+                        links[link] = False 
                   del mod_data[j]
                   j -= 1
-
 
                 elif opt_line.startswith(':scripts:'):
                   script_opts = opt_line[len(':scripts:'):].split()
                   if len(script_opts) > 0:
                     scripts_found = True
-                    if os.environ['SLIDES'] == 'no':
-                      for script in script_opts:
-                        if script not in scripts:
-                          scripts[script] = False
-                    else:
-                      for script in script_opts:
-                        script_included = scripts.get(script)
-                        if not script_included:
-                          scripts[script] = True
-                          mod_data[i] ='   .. odsascript:: {0}\n{1}'.format(script, mod_data[i])
-
+                    for script in script_opts:
+                      if script not in scripts:
+                        scripts[script] = False
                   del mod_data[j]
                   j -=1
 
@@ -755,18 +739,29 @@ class ODSA_RST_Module:
       if not avmetadata_found:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
 
-      for link, has_directive in links.iteritems():
+      if os.environ['SLIDES'] == 'no':
+        mod_data.append('\n')
+        for script, has_directive in scripts.iteritems():
+          if not os.path.exists('{0}/{1}'.format(config.odsa_dir,script)):
+            print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, script))
+          if not has_directive:
+            mod_data.append('.. odsascript:: {0}\n'.format(script))
+      else:
+        for script, has_directive in reversed(scripts.items()):
+          if not os.path.exists('{0}/{1}'.format(config.odsa_dir,script)):
+            print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, script))
+          if not has_directive:
+            # for some reason scripts seem to be somewhat randomly omitted when compiling
+            # with the slides option (-s). Doubling up the directives seems to fix this,
+            # and won't affect performance.
+            mod_data.insert(1, '\n.. odsascript:: {0}\n'.format(script))
+            mod_data.insert(1, '\n.. odsascript:: {0}\n'.format(script))
+
+      for link, has_directive in reversed(links.items()):
         if not os.path.exists('{0}/{1}'.format(config.odsa_dir, link)):
           print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, link))
         if not has_directive:
-            mod_data.insert(1, '.. odsalink:: {0}\n'.format(link))
-
-      mod_data.append('\n')
-      for script, has_directive in scripts.iteritems():
-        if not os.path.exists('{0}/{1}'.format(config.odsa_dir,script)):
-          print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, script))
-        if not has_directive:
-          mod_data.append('.. odsascript:: {0}\n'.format(script))
+          mod_data.insert(1, '\n.. odsalink:: {0}\n'.format(link))
 
       mod_sections = mod_attrib['sections'].keys() if 'sections' in mod_attrib and mod_attrib['sections'] != None else []
 
