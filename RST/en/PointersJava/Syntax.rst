@@ -89,7 +89,7 @@ changeHeadPointer1
 ------------------
 
 .. extrtoolembed:: 'changeHeadPointer1'
-   :learning_tool: code-workout-jhavepop
+
 
 
 Reference Rules Summary

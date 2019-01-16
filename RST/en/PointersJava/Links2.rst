@@ -16,7 +16,7 @@ createList
 ----------
 
 .. extrtoolembed:: 'createList'
-   :learning_tool: code-workout-jhavepop
+
 
 
 One can easily write a loop to iterate through all the Links on a
@@ -31,7 +31,7 @@ chain, without needing to know how many there actually are.
 iterateOverList
 ---------------
 .. extrtoolembed:: 'iterateOverList'
-   :learning_tool: code-workout-jhavepop
+
 
 
 One can remove a Link from a chain.
@@ -46,7 +46,7 @@ changePointeeNext1
 ------------------
 
 .. extrtoolembed:: 'changePointeeNext1'
-   :learning_tool: code-workout-jhavepop
+
 
 
 
@@ -62,4 +62,4 @@ addNodeAtHead
 -------------
 
 .. extrtoolembed:: 'addNodeAtHead'
-   :learning_tool: code-workout-jhavepop
+
