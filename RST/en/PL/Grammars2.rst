@@ -32,7 +32,7 @@ Example Grammar 2
    &|& <exp> / <exp> \\
    <exp> &::=& <pri> \\
    &|& ( <exp> ) \\
-   <pri> &:==& A | B | C | \ldots | X | Y | Z
+   <pri> &::=& A | B | C | \ldots | X | Y | Z
    \end{eqnarray*}
 
 Let's try to parse the expression :math:`A+B*C` using this grammar.
