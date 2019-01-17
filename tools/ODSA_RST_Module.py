@@ -739,23 +739,15 @@ class ODSA_RST_Module:
       if not avmetadata_found:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
 
-      if os.environ['SLIDES'] == 'no':
-        mod_data.append('\n')
-        for script, has_directive in scripts.iteritems():
-          if not os.path.exists('{0}/{1}'.format(config.odsa_dir,script)):
-            print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, script))
-          if not has_directive:
-            mod_data.append('.. odsascript:: {0}\n'.format(script))
-      else:
-        for script, has_directive in reversed(scripts.items()):
-          if not os.path.exists('{0}/{1}'.format(config.odsa_dir,script)):
-            print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, script))
-          if not has_directive:
-            # for some reason scripts seem to be somewhat randomly omitted when compiling
-            # with the slides option (-s). Doubling up the directives seems to fix this,
-            # and won't affect performance.
-            mod_data.insert(1, '\n.. odsascript:: {0}\n'.format(script))
-            mod_data.insert(1, '\n.. odsascript:: {0}\n'.format(script))
+      # the odsascript directive needs to be indented when compiling slides, otherwise
+      # the directive will be stripped during compilation
+      indent = '' if os.environ['SLIDES'] == 'no' else '   '
+      mod_data.append('\n')
+      for script, has_directive in scripts.iteritems():
+        if not os.path.exists('{0}/{1}'.format(config.odsa_dir,script)):
+          print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, script))
+        if not has_directive:
+          mod_data.append('{0}.. odsascript:: {1}\n'.format(indent, script))
 
       for link, has_directive in reversed(links.items()):
         if not os.path.exists('{0}/{1}'.format(config.odsa_dir, link)):
