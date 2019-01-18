@@ -135,6 +135,8 @@ $(document).ready(function () {
       currentTopMargin += lineHeight;
     }
 
+    currentTopMargin += lineHeight;
+
     jsavElements.push(modeljsavAV.label("main",
       {
         relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
