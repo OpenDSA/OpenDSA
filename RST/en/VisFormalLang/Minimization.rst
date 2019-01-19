@@ -103,11 +103,7 @@ the same subset.
 Split them up when they do not go to the same place.
 
 
-.. TODO::
-   :type: Slideshow
-
-   Replace the images above with a slideshow that presents,
-   step-by-step, the process of minimizing the DFA. 
+The following slideshow presents, step-by-step, the process of minimizing the DFA. 
 
 
 .. inlineav:: Minimization1CON ss
@@ -116,21 +112,10 @@ Split them up when they do not go to the same place.
    :output: show
 
 
-**Example**:
-
-.. odsafig:: Images/stmindfa2s.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Minimization 2
-
-   Minimization 2
-    
+**Another Example**:
 
 .. inlineav:: Minimization2CON ss
    :links:   AV/VisFormalLang/Minimization/Minimization2CON.css
    :scripts: AV/VisFormalLang/Minimization/Minimization2CON.js
    :output: show
-  
-
+    

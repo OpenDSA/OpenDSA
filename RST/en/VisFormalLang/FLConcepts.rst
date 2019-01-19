@@ -299,12 +299,10 @@ Answer:
 Automata
 --------
 
-.. odsafig:: Images/stautomata.png
-   :width: 400
+.. inlineav:: AutomataCON dgm
+   :links: AV/VisFormalLang/Introduction/AutomataCON.css
+   :scripts: AV/VisFormalLang/Introduction/AutomataCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Basic machine
 
    Abstract model of a digital computer.
    Note that in the control unit, the numbers are symbolizing
