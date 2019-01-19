@@ -166,7 +166,7 @@ occurrences of :math:`o` in :math:`l` have been replaced by :math:`n`::
     [ [ 1, 2 ], 3 ]
 
 
-Again the template for the *subst* function follows the pattern
+Note that we stretched the semantics of the *subst* function a bit since the third argument in the last call above is not an integer list. Again the template for the *subst* function follows the pattern
 established by the BNF grammar for a *<list_of_ints>*.
 
 
