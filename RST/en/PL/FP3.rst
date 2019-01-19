@@ -15,7 +15,7 @@ Deep Recursion in FP (1)
 ------------------------
 
 In the previous section, we limited our treatment of list-processing
-functions to operating on *flat* lists of integers, that is, list that
+functions to operating on *flat* lists of integers, that is, lists that
 do not themselves contain nested inner lists.  In this section, we
 will consider how to operate on lists that can contain not only
 integers, but also lists.  This will lead to a discussion of *deep recursion*,
@@ -23,16 +23,19 @@ which can handle trees represented as lists of lists of ...  lists of integers
 nested arbitrarily deep.
 
 A good guideline for deep recursion is the following.  When recurring
-on a list of creatures *lst* that may themselves be lists, recur on both
+on a list *lst* of elements that may themselves be lists, recur on both
 *fp.hd(lst)* and *fp.tl(lst)* – just make sure *lst* is not empty and
 that *fp.hd(lst)* is a list.
 
 Consider the following **tree_test** list as an example::
 
-    var tree_test = [14, [7, [], [12, [], []]],
-                         [26, [20, [17, [], []],
-                                   [] ],
-                              [31, [], []]]]
+    var tree_test = [ 14,
+                      [ 7, [], [12, [], []] ],
+                      [ 26,
+		        [ 20, [17, [], []], [] ],
+                        [ 31, [], [] ]
+		      ]
+		    ]
 
 We want to develop a function that takes in an integer tree
 represented as a list of lists of ... lists of integers and returns the sum
