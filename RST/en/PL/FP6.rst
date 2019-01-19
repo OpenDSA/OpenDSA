@@ -15,7 +15,7 @@ The Mapping Pattern
 
 **Abstraction** is one of the most powerful tools in programming. But
 what is it?  Let's begin getting our head around this notion by
-considering the following two examples called *addBonusPoint* and *doubleAll* .
+considering the following two examples called *addBonusPoint* and *doubleAll*.
 
 .. 
 .. ::

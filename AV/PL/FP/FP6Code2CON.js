@@ -31,7 +31,7 @@ $(document).ready(function() {
         "       return ???????;",	  // 3
         "       return f( g(x) );",	  // 4
         "    };",			  // 5
-        "}",				  // 6
+        "};",				  // 6
         "",				  // 7
         "var h = compose( function (x) { return x*x; },", // 8
         "                 function (x) { return x+1; });", // 9
@@ -62,7 +62,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 3
-    av.umsg('Suppose that we now give compose the two anonymous functions highlighted below and call the function returned by compose h.');
+    av.umsg('Suppose that we now give compose the two anonymous functions highlighted below and call h the function returned by compose.');
     pseudo1.removeClass(4, "red");
     pseudo1.show([8,9]);
     pseudo1.addClass([8,9],"red");
