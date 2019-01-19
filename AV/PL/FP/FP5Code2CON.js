@@ -25,7 +25,7 @@ $(document).ready(function() {
 	    "                var x = 20;   ", // 5
 	    "           }",		      // 6
 	    "           console.log(x);",     // 7
-	    "}",			      // 8
+	    "};",			      // 8
 	    "f(x);    "			      // 9
         ],
         {
@@ -58,7 +58,7 @@ $(document).ready(function() {
     av.step();
     
     // Slide 4
-    av.umsg('In line 9, f is called, passing in the value of the global x for y parameter of the function.');
+    av.umsg('In line 9, f is called, passing in the value of the global x for the y parameter of the function.');
     fy.show();
     label_fy.show();
     glx.removeClass(0,"inaccessible");
@@ -81,7 +81,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 7
-    av.umsg('When x is output online 12, we will see the value of the "hoisted" x in the local scope of f.   That is, 20 will be output.');
+    av.umsg('When x is output on line 12, we will see the value of the "hoisted" x in the local scope of f.   That is, 20 will be output.');
     pseudo.unhighlight([4,5,6]);
     pseudo.highlight(7);
     av.step();
