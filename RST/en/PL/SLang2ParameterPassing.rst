@@ -55,13 +55,18 @@ argument whereas, in call-by-reference, the function is given the
 address of the argument.  Given the address, the function has the
 capability of modifying the argument.
 
-To see how call-by-value works, consider the following slide show.
+To see how call-by-value works, step through a few sample programs
+using the slide show generator below.  Once you're confident that you
+understand each step, test yourself with the proficiency exercise that
+follows.
 
-.. inlineav:: paramPassingByVal ss
-   :long_name: Parameter Passing By Value
-   :links:
-   :scripts: AV/PL/paramPassingByVal.js
-   :output: show
+.. avembed:: AV/PL/paramPassingByVal.html ss
+
+.. .. inlineav:: paramPassingByVal ss
+..    :long_name: Parameter Passing By Value
+..    :links:
+..    :scripts: AV/PL/paramPassingByVal.js
+..    :output: show
 
 Test yourself on call-by-value by completing the following proficiency
 exercise.
