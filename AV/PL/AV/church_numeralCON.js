@@ -1,7 +1,7 @@
 // Reduction of (SUCC THREE) using Church bools
 $(document).ready(function() {
     "use strict";
-    var av_name = "church_numeral";
+    var av_name = "church_numeralCON";
 
     var av = new JSAV(av_name);
     var l = av.label("(λn.λf.λx.(f ((n f) x)) λf.λx.(f (f (f x))))");

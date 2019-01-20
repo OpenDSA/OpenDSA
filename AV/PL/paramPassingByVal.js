@@ -1,9 +1,21 @@
-$(document).ready(function() {
+/* global first_time, document, console, $, JSAV */
+
+
+(function ($) {
+//$(document).ready(function() {
   "use strict";
-  var av_name = "paramPassingByVal";
+//   var av_name = "paramPassingByVal";
+// 
+//   var av = new JSAV(av_name);
 
-  var av = new JSAV(av_name);
-
+function do_everything() {
+    
+//    console.log("Hello 2");
+   ODSA.AV.reset(true);
+   var av_name = $('.avcontainer');
+   var av = new JSAV(av_name);
+   CallByAllFive.init();
+    
   // Relative offsets
   var leftMargin = 25;
   var topMargin = 0;
@@ -215,8 +227,8 @@ $(document).ready(function() {
 
     destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
-    var outMsg = ((fooDestContext)?'foo':'class')+"'s "+destStr+
-                  ' set to the value of '+rhs.value;
+    var outMsg = ((fooDestContext)?'foo':'the global scope')+"'s "+destStr+
+                  ' is set to the value of '+rhs.value;
 
     av.umsg(outMsg);
     pseudo.setCurrentLine(currentLineFoo++);
@@ -257,4 +269,24 @@ $(document).ready(function() {
   if(CallByAllFive.byvalOutput != output){
     alert("byval error");
   }
-});
+
+} // End do_everything
+    
+    function about() {
+	alert("Generate a (randomized) illustration of call-by-value parameter passing.");
+    };
+    
+    function help() {
+	alert("Click the generate button each time you want to launch a new slide show.");
+    };
+    
+    $('#about').click(about);
+    $('#help').click(help);
+    $('#genprog').click(do_everything);
+    $('#reset').click(ODSA.AV.reset);
+
+//    if (first_time) { console.log("Hello"); do_everything(); first_time = false; }
+
+}(jQuery));
+
+//});

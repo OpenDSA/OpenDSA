@@ -13,17 +13,17 @@ Functional Programming - Combining Map and Reduce
 The MapReduce Paradigm
 ----------------------
 
-In 2004 `Jeffrey Dean and Sanjay Ghemawat of Google published a paper
+In 2004, `Jeffrey Dean and Sanjay Ghemawat of Google published a paper
 <https://research.google.com/archive/mapreduce.html>`_ describing a
 paradigm for distributed computation that has come to be called
 **MapReduce**.  It illustrated the influence of functional programming on
 the way in which Google organized computational work that could be
-parallelized on distributed clusters of computer.
+parallelized on distributed clusters of computers.
 
 The essence of Dean and Ghemawat's idea was to define a *mapping
 function* that would perform a specified task in parallel on multiple
-data sets distributed across many computers.  The results each mapping
-function were then returned to a central *reducing function* that
+data sets distributed across many computers.  The results of each mapping
+function were then returned to a *reducing function* that
 accumulated the results into the "answer" being sought.
 
 To illustrate, suppose we had a distributed database, called *db2*, of
@@ -40,7 +40,7 @@ sales records of "Jones" on a second computer, and the sales records of
 Given this database, we want a computation (the mapping function) done
 on each computer that returns the name of the salesperson along with
 the sum of all the sales records for that person.  The results of
-those three computation are then returned to a reducing function that
+those three computations are then returned to a reducing function that
 picks out the salesperson who sold the most.
 		
 ::
@@ -49,7 +49,7 @@ picks out the salesperson who sold the most.
    [ 'Smith', 90 ]
 
 The following *bestSalesPerson* function achieves this computation by
-defining two functions -- the *mapper* and the *reducer* and then
+defining two functions (the *mapper* and the *reducer*) and then
 appropriately calling on *fp.reduce*.  Read through the following
 slide show for more details and then attempt the review problem that
 follows.

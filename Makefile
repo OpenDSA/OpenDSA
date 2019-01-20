@@ -193,6 +193,9 @@ CS3: min
 CS3C: min
 	python $(CONFIG_SCRIPT) config/CS3C.json --no-lms
 
+CSCI271: min
+	python $(CONFIG_SCRIPT) config/CSCI271.json --no-lms
+
 CS415: min
 	python $(CONFIG_SCRIPT) config/CS415.json --no-lms
 

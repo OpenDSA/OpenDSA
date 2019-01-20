@@ -18,7 +18,7 @@ In the previous section, we introduced three predicates that are part
 of the *fp* module -- *isEq*, *isZero*, and *isNull*.  We will now
 introduce some additional predicates and arithmetic functions that we
 will then use to write recursive list-processing functions, including
-``sum``, ``isMember``, ``removeFirst``, and ``subst``
+``sum``, ``isMember``, ``removeFirst``, and ``subst``.
 
 First, to check whether something is a list or not, you must use the
 ``isList`` function::
@@ -48,7 +48,7 @@ respectively::
     > fp.isLT(2,3)
     true
 
-We're now ready write a recursive ``sum`` function that takes in an integer list and
+We're now ready to write a recursive ``sum`` function that takes in an integer list and
 returns the sum of all of the values in the input list.
 ::
 
@@ -67,10 +67,12 @@ of integer lists:
 
    \begin{eqnarray*} 
          <list\_of\_ints> &::=& \epsilon \\
-         & | & <int> <list\_of-\_ints> \\
+         & | & <int> <list\_of\_ints> \\
    \end{eqnarray*}	 
 
-Following the two paths for a *<list_of_ints>* in this grammar -- one for the empty list and one for a non-empty list leads us to structure a *sum* function as
+Following the two paths for a *<list_of_ints>* in this grammar -- one for the empty list and one for a non-empty list leads us to structure a *sum* function as shown below.
+
+Think about how to complete this function.
 
 .. inlineav:: FP2Code1CON ss
    :long_name: Illustrate Simple Recursion On List To Return Numeric Value
@@ -78,7 +80,7 @@ Following the two paths for a *<list_of_ints>* in this grammar -- one for the em
    :scripts: AV/PL/FP/FP2Code1CON.js
    :output: show
 
-Think about how to complete this function and then try the following
+Then try the following
 review problem, which uses similar recursive list-processing logic.
 Note that this problem is randomized. You must solve it correctly
 three times in a row to earn the point associated with it.
@@ -100,7 +102,7 @@ its first argument is a member of the second argument::
     > isMember( 2, [ 1, [ 2, 3 ] ] )
     false
 
-Keep in mind the recursive definition of integer
+Note that the second argument in the last call above is not an integer list. Keep in mind the recursive definition of integer
 lists:
 
 .. math::
@@ -164,7 +166,7 @@ occurrences of :math:`o` in :math:`l` have been replaced by :math:`n`::
     [ [ 1, 2 ], 3 ]
 
 
-Again the template for the *subst* function follows the pattern
+Note that we stretched the semantics of the *subst* function a bit since the third argument in the last call above is not an integer list. Again the template for the *subst* function follows the pattern
 established by the BNF grammar for a *<list_of_ints>*.
 
 

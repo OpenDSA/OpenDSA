@@ -1,18 +1,8 @@
-/* global first_time, document, console, $, JSAV */
-
-(function ($) {
-//$(document).ready(function() {
+$(document).ready(function() {
   "use strict";
-//   var av_name = "paramPassingByRef";
-// 
-//   var av = new JSAV(av_name);
+  var av_name = "paramPassingByVal";
 
-function do_everything() {
-    
-   ODSA.AV.reset(true);
-   var av_name = $('.avcontainer');
-   var av = new JSAV(av_name);
-    CallByAllFive.init();
+  var av = new JSAV(av_name);
 
   // Relative offsets
   var leftMargin = 25;
@@ -39,6 +29,7 @@ function do_everything() {
   var unhighlightAll = function(){
     unhighlightElements(classVars);
     unhighlightElements(mainVars);
+    unhighlightElements(fooVars);
   }
 
   av.umsg("main() begins execution.");
@@ -104,7 +95,7 @@ function do_everything() {
   currentTopMargin += lineHeight;
 
   fooVarNames = getVarNamesFromPrototype(codeLines[fooIndex-1]);
-  var numVars = mainVarNum;
+  var numVars = Math.max(fooVarNames.length,mainVarNum);
 
   //numVars = Math.max(numVars,/\(([^)]+)\)/)
   var mainBox = av.g.rect(2*leftMargin+pseudo.element[0].clientWidth,
@@ -155,8 +146,9 @@ function do_everything() {
   }
 
   var fooPassedIn = getVarNamesFromPrototype(codeLines[currentLineMain]);
+  //console.log(getVarNamesFromPrototype(codeLines[currentLineMain]));
 
-  av.umsg("foo is called, with a reference to main's "+fooPassedIn[0]+
+  av.umsg("foo is called, with a copy of main's "+fooPassedIn[0]+
           " and "+fooPassedIn[1]+" passed in.");//,{preserve: false}
 
   pseudo.setCurrentLine(++currentLineMain);
@@ -170,29 +162,29 @@ function do_everything() {
   }
 
   for(var i=0; i<fooVarNames.length; i++){
-    var target;
-    var pIndex = 0;
-    if(fooPassedIn[i] in mainVars){
-      target = mainVars[fooPassedIn[i]]
-    }
-    else{
-      target = classVars[fooPassedIn[i].split('[')[0]]
-      pIndex = getValueOfVar(
-        [mainVars,classVars],
-        getIndexFromString(fooPassedIn[i])
-      )['value']
-    }
-    fooLabels[fooVarNames[i]] = av.pointer(fooVarNames[i],target,{
-      targetIndex: pIndex,
-      left: lineHeight
-    })
-    fooVars[fooVarNames[i]] = target;
-    fooVars[fooVarNames[i]+'-index'] = pIndex;
+    fooLabels[fooVarNames[i]] = av.label(fooVarNames[i],
+      {
+        relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+        left: leftMargin+boxWidth+3*boxPadding, top: currentFooTopMargin
+      }
+    );
+    fooVars[fooVarNames[i]] = av.ds.array([fooPassedInValues[i]],
+      {
+        indexed: false,relativeTo:fooLabels[fooVarNames[i]], anchor:"right top",
+        myAnchor:"left top", left: labelMargin,
+        top:-1*jsavArrayOffset
+      }
+    );
+
+    currentFooTopMargin += lineHeight;
   }
 
-  av.umsg("foo's "+fooVarNames[0]+" points to "+fooPassedIn[0]+
-          " and foo's "+fooVarNames[1]+" points to "+
-          fooPassedIn[1]+".");
+  av.umsg("foo's "+fooVarNames[0]+" is initialized to the value "+fooPassedInValues[0]+
+          " and foo's "+fooVarNames[1]+" is initialized to "+
+          fooPassedInValues[1]+".");
+
+  fooLabel.show();
+  fooBox.show();
 
   pseudo.setCurrentLine(currentLineFoo++);
 
@@ -211,10 +203,7 @@ function do_everything() {
     var destination = (fooDestContext)?fooVars:classVars;
     var destIndex = 0;
     var destStr = lhs.charAt(0);
-    if(destination === fooVars){
-      destIndex = fooVars[lhs.charAt(0)+'-index']
-    }
-    else if(lhs.length > 1){
+    if(lhs.length > 1){
       destIndex = getValueOfVar(
                                   contexts,
                                   getIndexFromString(lhs)
@@ -226,8 +215,8 @@ function do_everything() {
 
     destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
-    var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
-                  ' is set to the value of '+rhs.value;
+    var outMsg = ((fooDestContext)?'foo':'class')+"'s "+destStr+
+                  ' set to the value of '+rhs.value;
 
     av.umsg(outMsg);
     pseudo.setCurrentLine(currentLineFoo++);
@@ -253,6 +242,7 @@ function do_everything() {
   av.umsg('Return to main');
   pseudo.setCurrentLine(currentLineMain++);
   av.step();
+
   contexts = [mainVars, classVars];
   //main() print lines
   while(codeLines[currentLineMain-1].indexOf('}') === -1){
@@ -263,28 +253,8 @@ function do_everything() {
 
   av.recorded();
 
-  if(CallByAllFive.byrefOutput != output){
-    alert("byref error");
+
+  if(CallByAllFive.byvalOutput != output){
+    alert("byval error");
   }
-
-
-} // End do_everything
-    
-    function about() {
-	alert("Generate a (randomized) illustration of call-by-reference parameter passing.");
-    };
-    
-    function help() {
-	alert("Click the generate button each time you want to launch a new slide show.");
-    };
-    
-    $('#about').click(about);
-    $('#help').click(help);
-    $('#genprog').click(do_everything);
-    $('#reset').click(ODSA.AV.reset);
-
-//    if (first_time) { console.log("Hello"); do_everything(); first_time = false; }
-
-}(jQuery));
-
-//});
+});

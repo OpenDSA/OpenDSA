@@ -15,14 +15,14 @@ $(document).ready(function() {
   var DFA = convertToDFA(av, FA, {left: nfaWidth+50, top: 0, width: 500, height: 350}, true)
   DFA.disableDragging();
 
-  av.umsg(injector.injectQuestion("q1"));
-  av.step();
+  //av.umsg(injector.injectQuestion("q1"));
+  //av.step();
 
-  av.umsg(injector.injectQuestion("q2"));
-  av.step();
+  //av.umsg(injector.injectQuestion("q2"));
+  //av.step();
 
-  av.umsg(injector.injectQuestion("q3"));
-  av.step();
+  //av.umsg(injector.injectQuestion("q3"));
+  //av.step();
 
   av.recorded();
 

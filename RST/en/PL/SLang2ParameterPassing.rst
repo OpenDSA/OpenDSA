@@ -18,8 +18,14 @@
 Parameter-Passing Mechanisms
 ============================
 
-Call By Reference
------------------
+
+Call By Value vs. Call By Reference
+-----------------------------------
+
+**Author's Note**: All of the visualizations of parameter-passing methods
+in this were developed by University of Wisconsin Oshkosh CS major
+Cory Sanin.  His work on these has greatly improved the original
+version of the module.
 
 Parameter-passing techniques may be broken down as follows:
 
@@ -39,6 +45,8 @@ Parameter-passing techniques may be broken down as follows:
 
    -  Call-by-need
 
+
+
 The difference between call-by-value and call-by-reference is
 exemplified by the difference between denoted values in our
 interpreters for SLang 1 and SLang 2.  That is, in call-by-value, the
@@ -47,40 +55,53 @@ argument whereas, in call-by-reference, the function is given the
 address of the argument.  Given the address, the function has the
 capability of modifying the argument.
 
-Consider the following code:
+To see how call-by-value works, step through a few sample programs
+using the slide show generator below.  Once you're confident that you
+understand each step, test yourself with the proficiency exercise that
+follows.
 
-::
+.. avembed:: AV/PL/paramPassingByVal.html ss
 
-    TODO: Credit Cory
+.. .. inlineav:: paramPassingByVal ss
+..    :long_name: Parameter Passing By Value
+..    :links:
+..    :scripts: AV/PL/paramPassingByVal.js
+..    :output: show
 
-
-If the parameter passing method call-by-value is used...
-
-.. inlineav:: paramPassingByVal ss
-   :long_name: Parameter Passing By Value
-   :links:
-   :scripts: AV/PL/paramPassingByVal.js
-   :output: show
-
-A proficiency exercise for pass-by-value ...
+Test yourself on call-by-value by completing the following proficiency
+exercise.
 
 .. avembed:: AV/PL/paramPassingByValPRO.html pe
    :long_name: Pass-by-value Proficiency Exercise
 
 
-If the parameter passing method call-by-reference is used...
+In comparison to call-by-value, call-by-reference is illustrated by
+the following slide show generator.  Again step through a few of the
+generated slide shows until you're ready for the proficiency exercise
+that follows.
 
-.. inlineav:: paramPassingByRef ss
-   :long_name: Parameter Passing By Reference
-   :links:
-   :scripts: AV/PL/paramPassingByRef.js
-   :output: show
+.. avembed:: AV/PL/paramPassingByRef.html ss
 
-This problem will help you review the difference between *call by
-value* and *call by reference* in C++, where the presence of an
-ampersand in front of the parameter's name is used to indicate
-call-by-reference semantics. To earn credit for it, you must complete
-this randomized problem correctly three times in a row.
+.. .. inlineav:: paramPassingByRef ss
+..    :long_name: Parameter Passing By Reference
+..    :links:
+..    :scripts: AV/PL/paramPassingByRef.js
+..    :output: show
+
+Test yourself on call-by-reference by completing the following proficiency
+exercise.
+
+.. avembed:: AV/PL/paramPassingByRefPRO.html pe
+   :long_name: Pass-by-reference Proficiency Exercise
+
+
+Now that you've seen the difference between call-by-value and
+call-by-reference, we will end this section with a problem will help
+you review the difference between *call by value* and *call by
+reference* in the language C++, where the presence of an ampersand in
+front of the parameter's name is used to indicate call-by-reference
+semantics. To earn credit for it, you must complete this randomized
+problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/CallByValVsRef.html ka
    :long_name: Call By Value Vs Reference
@@ -235,7 +256,7 @@ it is actually used in the body of the macro.
 
 One possible implementation of macro-expansion is to perform a double
 textual substitution. For example, the C++
-preprocessor performs this double substitution, and then the compiler
+pre-processor performs this double substitution, and then the compiler
 processes the resulting code, never seeing the macro call. Of course, no
 function call is executed at run-time either.
 

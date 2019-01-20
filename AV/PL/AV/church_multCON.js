@@ -1,7 +1,7 @@
 // Reduction of (MULT TWO THREE) using Church bools
 $(document).ready(function() {
     "use strict";
-    var av_name = "church_mult";
+    var av_name = "church_multCON";
 
     var av = new JSAV(av_name);
     var l = av.label("((λm.λn.λf.(m (n f)) λf.λx.(f (f x))) λf.λx.(f (f (f x))))");

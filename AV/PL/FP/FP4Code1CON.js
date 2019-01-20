@@ -67,7 +67,7 @@ $(document).ready(function() {
     var label_ns = av.label("ns", {left: leftMargin, top: 20});
 
     // Slide 1
-    av.umsg("When using the accumulator pattern, it is the helper function that does the heavy lifting.   The responsibility of the top-level function (here reverse) to start the accumulator argument at its correct value");
+    av.umsg("When using the accumulator pattern, it is the helper function that does the heavy lifting.   The responsibility of the top-level function (here reverse) is to start the accumulator argument at its correct value");
     pseudo.hide("init-hidden");
     arr.show();
     av.displayInit();
@@ -86,7 +86,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 3
-    av.umsg("We recur down list until ns is passed in as a null list");
+    av.umsg("We recur down the list until ns is passed in as a null list");
     pseudo.hide("call-ques");
     pseudo.show("call-ans");
     pseudo.hide("else-ques1");
@@ -101,7 +101,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 4
-    av.umsg("Each time we recur, we build up build up the accumulator by consing the head of the current list onto the accumulator.");
+    av.umsg("Each time we recur, we build up the accumulator by consing the head of the current list onto the accumulator.");
     pseudo.hide("call-ques");
     pseudo.show("call-ans");
     pseudo.unhighlight("else-ans1");
@@ -229,7 +229,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 9
-    av.umsg("ns is finally passed in as a null list.   All the hard work has been done in building up the accumulator, so we merely return that as the answer.");
+    av.umsg("ns is finally passed in as a null list.   All the hard work has been done in building up the accumulator; so we merely return its value as the answer.");
     arr.highlight(3);
     arrow1.translate(arr_cell_offset,0);
     arrow2.translatePoint(0,arr_cell_offset,0);

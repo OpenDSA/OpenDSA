@@ -406,9 +406,21 @@ acceptorProto.visualize = function(listOfStrings, arrayOptions){
 	this.matrix = this.jsav.ds.matrix(listOfStrings, {style: "table", top: arrayOptions.top, left: arrayOptions.left});
 	for(var i = 0; i< listOfStrings.length; i++){
 		this.jsav.umsg("The " + special[i + 1] + " string is " + listOfStrings[i].join(''));
+		this.resetFA();
 		this.run(listOfStrings[i], i);
 	}
 	this.matrix.click(this.matrixClickHandler);
+}
+acceptorProto.resetFA = function(){
+	var nodes = this.FA.nodes();
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			if (next.hasClass('rejected')) {
+				next.removeClass('rejected');
+			}
+			if (next.hasClass('accepted')) {
+				next.removeClass('accepted');
+			}
+		}
 }
 acceptorProto.matrixClickHandler = function(row, column) {
 	// Temporarily turn off animation (if it was on).

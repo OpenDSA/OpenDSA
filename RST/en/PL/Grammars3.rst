@@ -36,12 +36,12 @@ Example Grammar 3
    <exp> &::=& <trm>\\
    &|& <exp> + <trm> \\
    &|& <exp> - <trm> \\
-   <trm> &:==& <fac> \\
+   <trm> &::=& <fac> \\
    &|&  <trm> * <fac> \\
    &|&  <trm> / <fac> \\
    <fac> &::=& <pri> \\
    &|& ( <exp> ) \\
-   <pri> &:==& A | B | C | \ldots | X | Y | Z
+   <pri> &::=& A | B | C | \ldots | X | Y | Z
    \end{eqnarray*}
 
 Note how the parse tree in the slide-show below produced by Example Grammar 3 is different from the one produced by :ref:`eg1`.
@@ -127,17 +127,17 @@ collectively comprise what is known as *Backus-Naur Form* (BNF).  In
 already used in BNF notation:
 
 
-   1. Kleene closure operator :math:`*`, which means "zero or more" Hence if :math:`<fn\_name>`   were a non-terminal representing a valid function name and :math:`<parameter>` were a non-terminal representing a valid parameter, then the EBNF notation for function calls with zero or more parameters would be
+   1. Kleene closure operator :math:`*`, which means "zero or more". Hence if :math:`<fn\_name>`   were a non-terminal representing a valid function name and :math:`<argument>` were a non-terminal representing a valid argument, then the EBNF notation for function calls with zero or more arguments (with no commas between them) would be
 
       .. math::
 
-        <fn\_name> "(" <parameter>* ")"
+        <fn\_name> "(" <argument>* ")"
 
-   2. Positive closure operator :math:`+`.  The EBNF notation for function calls that must have at least one parameter would be
+   2. Positive closure operator :math:`+`.  The EBNF notation for function calls that must have at least one argument would be
 
       .. math::
 
-        <fn\_name> "(" <parameter>+ ")"
+        <fn\_name> "(" <argument>+ ")"
 
    3. The two paired parenthesis symbols :math:`( \; )`, which are used for grouping.  For example, if :math:`<positive\_number>` were the non-terminal denoting a valid positive number, then the following EBNF would dictate that we *must* have a plus or minus sign preceding a number
 

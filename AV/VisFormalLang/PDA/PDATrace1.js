@@ -15,6 +15,6 @@ $(document).ready(function() {
     var pda = new av.ds.pda({width: 600, height: 200});
     PDA.prototype.loadFAFromJFLAPFile.call(pda,url);
     pda.disableDragging();
-//    var results = run(pda, inputString, true);
+    var results = run(pda, inputString, true);
     av.recorded();
   });

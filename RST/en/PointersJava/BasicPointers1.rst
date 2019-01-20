@@ -164,7 +164,7 @@ changePointeeDataDirect
 -----------------------
 
 .. extrtoolembed:: 'changePointeeDataDirect'
-   :learning_tool: code-workout-jhavepop
+
 
 
 The Employee Class
@@ -224,4 +224,4 @@ circularList1
 -------------
 
 .. extrtoolembed:: 'circularList1'
-   :learning_tool: code-workout-jhavepop
+

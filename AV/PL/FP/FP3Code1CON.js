@@ -49,20 +49,20 @@ $(document).ready(function() {
     );
 
     // Slide 1
-    av.umsg("Essential to developing recursive functions is analyzing, at any level of the recursion, the cases that the function must be prepared to handle and, for each of those cases, what should be returned to the prior level of recursion.");
+    av.umsg("Essential to developing recursive functions is analyzing, at any level of the recursion, the cases that the function must be prepared to handle and, for each one of those cases, what should be returned to the prior level of recursion.");
     pseudo.hide([4,5,8,9,10,11,12,15,16,17]);
     
     av.displayInit();
 
     // Slide 2
-    av.umsg("When the argument to sumTree is null, as it would be for the highlighted item, then the sum of all the numbers an empty tree is zero, so that is what we return.");
+    av.umsg("When the argument to sumTree is null, as it would be for the highlighted item, then the sum of all the numbers in an empty tree is zero; so that is what we return.");
     pseudo.hide([2,3]);
     pseudo.show([4,5]);
     arr_l.highlight(1);
     av.step();
 
     // Slide 3
-    av.umsg("When the argument to sumTree is a list whose head is also a list, as it would be for the two-component highlighted list, then we must ...");
+    av.umsg("When the argument to sumTree is a list whose head is also a list, as it would be for the two-element highlighted list, then we must ...");
     pseudo.hide([6,7]);
     pseudo.show([8,9,10,11,12]);
     arr_l.unhighlight(1);
@@ -97,7 +97,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 7
-    av.umsg("When the argument to sumTree is a list whose head is a number, as it would be for the three-component highlighted list, then we must ... ");
+    av.umsg("When the argument to sumTree is a list whose head is a number, as it would be for the three-element highlighted list, then we must ... ");
     pseudo.unhighlight([9,10,11,12]);
     arr.unhighlight([1,2]);
     pseudo.hide([14]);

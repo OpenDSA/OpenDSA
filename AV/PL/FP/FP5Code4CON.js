@@ -41,7 +41,7 @@ $(document).ready(function() {
     
 
     // Slide 1
-    av.umsg("Here we have two non-nested local scopes associated with the function f and g.");
+    av.umsg("Here we have two non-nested local scopes associated with the functions f and g.");
     pseudo.addClass([2,3,4], "scope1");
     pseudo.addClass([6,7,8,9], "scope2");
     av.displayInit();
@@ -102,7 +102,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 9
-    av.umsg("Next f is called.  Notice that, at the time of the call, the global x is inaccesible.");
+    av.umsg("Next f is called.  Notice that, at the time of the call, the global x is inaccessible.");
     pseudo.unhighlight(7);
     pseudo.highlight(8);
     av.step();

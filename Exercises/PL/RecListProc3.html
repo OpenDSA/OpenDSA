@@ -27,7 +27,7 @@ var subst = function (n,o,ns) {
 </pre>
           <p class="question">Suppose that you want to make this
            function perform a "deep substitution" at all levels of a
-           list. For example:</p>
+           (generalized) list. For example:</p>
 <pre>
 > subst( 2, 3, [3, 9, [4, 2, 3], 3, 5] ) 
 [ 2, 9, [ 4, 2, 2 ], 2, 5 ]

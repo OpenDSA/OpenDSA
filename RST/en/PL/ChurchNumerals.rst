@@ -36,10 +36,10 @@ the items in the preceding list.  Let's first examine some of the encodings for 
 
 Note that AND is a curried function of the two variables *p* and *q*.  The following slideshow indicates how TRUE AND FALSE, which is ((AND TRUE) FALSE) in curried form, is :math:`\beta` reduced.
    
-.. inlineav:: church_bool ss
+.. inlineav:: church_boolCON ss
    :long_name: Church boolean slideshow
    :links:  AV/PL/AV/church_string.css
-   :scripts: AV/PL/AV/church_bool.js
+   :scripts: AV/PL/AV/church_boolCON.js
    :output: show
 
 Just as one would expect for boolean operations, TRUE AND FALSE reduces to FALSE.  You are encouraged to try similar reductions for FALSE AND TRUE, FALSE AND FALSE, TRUE AND TRUE to convince yourself that our definition of AND does exactly what it needs to do for all four possibilities. 
@@ -95,10 +95,10 @@ To encode the non-negative integers, Church used the following encoding:
 
 To help you see how the successor function works, watch the following slideshow of how the successor of THREE is reduced to FOUR.
    
-.. inlineav:: church_numeral ss
+.. inlineav:: church_numeralCON ss
    :long_name: Church numeral slideshow
    :links: AV/PL/AV/church_string.css
-   :scripts: AV/PL/AV/church_numeral.js
+   :scripts: AV/PL/AV/church_numeralCON.js
    :output: show
 
 Addition and multiplication can be encoded as curried functions:
@@ -109,10 +109,10 @@ Addition and multiplication can be encoded as curried functions:
 
 To see how the multiplication function works, watch the following slideshow of how (MULT TWO THREE) is reduced to SIX.
    
-.. inlineav:: church_mult ss
+.. inlineav:: church_multCON ss
    :long_name: Church multiplication slideshow
    :links: AV/PL/AV/church_string.css
-   :scripts: AV/PL/AV/church_mult.js
+   :scripts: AV/PL/AV/church_multCON.js
    :output: show
 
 We add a Church encoding for an operation that tests for the predecessor of a Church numeral *n*:

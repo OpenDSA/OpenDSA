@@ -71,7 +71,7 @@ Example Grammar 1
    &|& <exp> / <trm> \\
    <trm> &::=& <pri> \\
    &|& ( <exp> ) \\
-   <pri> &:==& A | B | C | \ldots | X | Y | Z
+   <pri> &::=& A | B | C | \ldots | X | Y | Z
    \end{eqnarray*}
 
 
@@ -97,7 +97,7 @@ and a traversal of the tree that would output these leaf nodes
 would reproduce the expression being parsed.  This is indicated by the red
 highlighting in the above slide-show.
 
-The following set of four review problems for this module should be completed before you go on.   In these review problems, the symbol :math:`\epsilon` is used to represent the *empty production*.   When :math:`\epsilon` appears on the right of a production, it means that one of the possibilities for the non-terminal on the left side of the production is for it to derive the empty string, that is, the string with no characters.  This is typically used when the syntax for the language being parsed allows the option of the non-terminal not appearing at all.   Often with productions that are recursive, it provides a way for the recursion to bottom out -- similar to the way a recursive termination condition would work in a recursive algorithm.
+The following set of four review problems for this module should be completed before you go on.   In these review problems, the symbol :math:`\epsilon` is used to represent the *empty string*.   When :math:`\epsilon` appears on the right of a production, it means that one of the possibilities for the non-terminal on the left side of the production is for it to derive the empty string, that is, the string with no characters.  This is typically used when the syntax for the language being parsed allows the option of the non-terminal not appearing at all.   Often with productions that are recursive, it provides a way for the recursion to bottom out -- similar to the way a recursive termination condition would work in a recursive algorithm.
 
 The first problem is about building a parse tree given a grammar and a string.
 

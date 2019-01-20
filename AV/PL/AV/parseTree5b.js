@@ -42,7 +42,7 @@ $(document).ready(function () {
     av.displayInit();
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    label1.text("First we wiil use the &lt;exp&gt; * &lt;exp&gt; production.");
+    label1.text("First we will use the &lt;exp&gt; * &lt;exp&gt; production.");
     tree.root().addChild(lt+"exp"+gt).addChild("*").addChild(lt+"exp"+gt);
     tree.root().child(1).highlight();
     tree.root().child(0).addClass("wider");

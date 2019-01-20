@@ -28,7 +28,7 @@ Note that, with **curry**, we could use the **filter** function to actually crea
 ::
 
     > var keepPositive = fp.curry(filter)(function (n) { return fp.isGT(n,0); });
-    > var keepEven = fp.curry(filter)(function(n) { return fp.isZero(n % 2); });
+    > var keepEven = fp.curry(filter)(function (n) { return fp.isZero(n % 2); });
 
 This illustrates the function-creating powers of currying.  It allows
 us to not only replicate the behavior of individual functions such as
@@ -91,12 +91,12 @@ parameter represent the head of the list, that is, the "next" value to
 be accumulated.  Its second parameter is consequently the accumulator.
 This is the opposite of *reduce*, which expected a function that had
 the first parameter playing the role of the accumulator, and its
-second the "next value to be accumulated..  This emphasizes the right
+second the "next value to be accumulated".  This emphasizes the right
 versus left associativity of the two patterns.
 
 Also note that, because *reduce* captures the accumulation pattern as
 we described it in `the section on helper functions`_, the accumulator
-has undergone all the computation necessary to achieve the final
+has undergone all the computations necessary to achieve the final
 answer by the time the end of the list is reached.  This is not true
 of *reduceRight* since it applies its function parameter *f* to the
 result of making the recursive call instead of applying recursion to

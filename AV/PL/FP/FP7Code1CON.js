@@ -53,7 +53,7 @@ $(document).ready(function() {
     
     var code2 =         [
         "var isEven = function (n) {",
-        "  return fp.isZero (n % 2);",
+        "  return fp.isZero(n % 2);",
         "};",
         "",
         "var keepEven = function (ns) {",
@@ -95,9 +95,9 @@ $(document).ready(function() {
         "    return filter(pred,fp.tl(ns));",
         "}",
 	"filter(isPos, [-1, -8, 4, 3] );",
-        "filter(function(n) { return fp.isZero(n % 2); },",
-	"       [-1, -8, 4, 3] );",
-	//"filter(isEven, [-1, -8, 4, 3] );"
+        "filter(function (n) { return fp.isZero(n % 2); },",
+	"       [-1, -8, 4, 3] );"
+	//"filter(isEven, [-1, -8, 4, 3] );
         ];
 
     var pseudo3 = av.code(
@@ -117,7 +117,7 @@ $(document).ready(function() {
 
 
     // Slide 1
-    av.umsg('Both keepPositive and keepEven use very similar patterns of computation. Given a list ns, they return a new list by applying a boolean-valued "filtering" function -- isPos for keepPositive and isEven for keepEven -- to every element of the given list.  This is done by calling the function with the head of the list and, if the filter test is passed, then consing that result onto what recursion returns from the tail of the list.  This pattern is highlighted in red below.');
+    av.umsg('Both keepPositive and keepEven use very similar patterns of computation. Given a list ns, they return a new list by applying a boolean-valued "filtering" function -- isPos for keepPositive and isEven for keepEven -- to every element of the given list.  This is done by applying the filtering function to the head of the list and, if that value passes the filter test, then consing it onto what recursion returns from the tail of the list.  This pattern is highlighted in red below.');
     pseudo1.addClass("pattern", "red");
     pseudo2.addClass("pattern", "red");
     pseudo1.hide("call");
