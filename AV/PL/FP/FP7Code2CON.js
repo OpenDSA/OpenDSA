@@ -92,7 +92,7 @@ $(document).ready(function() {
         "var sum = function (ns) { return reduce(fp.add,ns,0); };",
         "var reverse = function (ns) { ",
         "     return reduce(  // Flip parameters",
-        "                     function(a,n) { ",
+        "                     function (a,n) { ",
         "                        return fp.cons(n,a); },",
 	"                     ns, ",
 	"                     []",
@@ -148,7 +148,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 3
-    av.umsg('The pattern of computation in each of these two functions is highlighted by the two red lines.    That pattern is: apply an operation to the head of the list and an accumulator to create a "bigger" version of the accumulator as we work our way down the list in the recursive call.   How to capture this pattern in our abstraction?  With functions as first-class values, we can pass in the operation to apply to the head and the accumulator as a function parameter f.  This is done in the reduce function that now appears below.');
+    av.umsg('The pattern of computation in each one of these two functions is highlighted by the two red lines.    That pattern is: apply an operation to the head of the list and an accumulator to create a "bigger" version of the accumulator as we work our way down the list in the recursive call.   How to capture this pattern in our abstraction?  With functions as first-class values, we can pass in the operation to apply to the head and the accumulator as a function parameter f.  This is done in the reduce function that now appears below.');
     map_label.addClass("emphasize");
     map_label.show();
     pseudo3.show();

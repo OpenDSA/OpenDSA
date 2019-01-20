@@ -64,7 +64,7 @@ $(document).ready(function() {
             "                   append(fp.tl(l1), l2));",
             "    }",
             "};",
-	    "append(li, l2);"
+	    "append(l1, l2);"
         ];
 
 
@@ -124,7 +124,7 @@ $(document).ready(function() {
     av.displayInit();
 
     // Slide 2
-    av.umsg("Highlighted in blue, the two calls to subRt in the code on the left will return the values also highlighted in blue.   Note that subRt(l1) returns (1 - (3 - (2 - 0))) = 0 because we subtract the result of the recursive call in right associative order.   Because 0 is returned when the list is empty, 2 - 0 is the first subtraction performed.   Similarly subRt(l2) returns (1 - (2 - (3 - 0))) = 2.");
+    av.umsg("Highlighted in blue, the two calls to subRt in the code on the left will return the values also highlighted in blue.   Note that subRt(l1) returns (1 - (3 - (2 - 0))) = 0 because we subtract the result of the recursive call in right-associative order.   Because 0 is returned when the list is empty, 2 - 0 is the first subtraction performed.   Similarly subRt(l2) returns (1 - (2 - (3 - 0))) = 2.");
     arr_ret_label.show();
     arr_ret_labela.show();
     arr_ret.show();
@@ -150,7 +150,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 4
-    av.umsg('The pattern of computation in each of these two functions is highlighted by the two red lines.  That pattern is: apply an operation to the head of the list and the result of a recursive call on the tail of the list.  To capture this pattern, we pass in the operation to apply to the head and the result of the recursive call as a function parameter f.  The base case for recursion is handled by third parameter acc, which is the starting point for the computation.  This is done in the reduce function that now appears below.');
+    av.umsg('The pattern of computation in each one of these two functions is highlighted by the two red lines.  That pattern is: apply an operation to the head of the list and the result of a recursive call on the tail of the list.  To capture this pattern, we pass in the operation to apply to the head and the result of the recursive call as a function parameter f.  The base case for recursion is handled by the third parameter acc, which is the starting point for the computation.  This is done in the reduce function that now appears below.');
     map_label.addClass("emphasize");
     map_label.show();
     pseudo3.show();
@@ -166,7 +166,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 6
-    av.umsg('To create the append function in merely one instruction, we can pass in the fp.cons function to reduceRight as indicated in the green below.');
+    av.umsg('To create the append function in merely one instruction, we can pass in the fp.cons function to reduceRight as indicated in green below.');
     pseudo3.show("call2");
     pseudo3.addClass("call2","green");
     av.step();
