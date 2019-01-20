@@ -124,7 +124,7 @@ In the *map* function we developed earlier::
           return fp.cons(
                      f(fp.hd(ns)), 
                      map(f, fp.tl(ns)));
-    }
+    };
 
 we cannot separate the computations we want to do on list elements,
 for example, "doubling all of the elements of a list" or "incrementing
@@ -146,7 +146,7 @@ function whereas *map* is not.
          else
            return fp.cons(f(fp.hd(ns)), map1(f)(fp.tl(ns))); 
         };
-    }
+    };
     var doubleAll = map1(doubleIt);
     doubleAll( [1,2,3,4,5] );
 
@@ -173,7 +173,7 @@ We will abstract this currying pattern by writing a function called
              return f(x,y); 
           };
        };
-    }
+    };
 
 Now we no longer need to write *map1* but instead can have *curry*
 create it for us.
