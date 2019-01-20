@@ -38,7 +38,7 @@ You would first look up the definition of the function :code:`f`, say:
 
 .. code::
 
-  var f = function(x) { return  2 * x - 5; };
+  var f = function (x) { return  2 * x - 5; };
 
 
 Then you could compute the value of :code:`f(8)` by computing the
@@ -93,7 +93,7 @@ algorithm **Case 1a**. Second, if :math:`p` and :math:`x` are two
 different variables, then :math:`subst(a,p,x)` is equal to :math:`x`,
 because the variable :math:`p` does not occur in :math:`x` and no
 substitutions are needed or possible. We call this part of the
-algorithm **Case 1b**
+algorithm **Case 1b**.
 
 
 Let's look at two examples of substitutions that belong to
@@ -118,12 +118,12 @@ abstraction,
 there are three sub-cases to consider:
 
 - **Case 2a:** :math:`p` and :math:`x` are one and the same variable,
-  say :math:`v` :math:`subst(a,v,\lambda v.E)` should return
+  say :math:`v`, then  :math:`subst(a,v,\lambda v.E)` should return
   :math:`\lambda v.E`.  For example, :math:`subst(\lambda z.z, x, \lambda x.x)`
   returns :math:`\lambda x.x`
 
 - **Case 2b:** :math:`p` and :math:`x` are two distinct variables and
-  :math:`x` does not occur free in :math:`a`, :math:`subst(a,p,\lambda x.E)` should
+  :math:`x` does not occur free in :math:`a`, then :math:`subst(a,p,\lambda x.E)` should
   return :math:`\lambda x.subst(a,p,E)`.  For example, 
   :math:`subst((w \; z), y, \lambda x.y)` returns :math:`\lambda x.(w \; z)`
 
@@ -131,8 +131,8 @@ there are three sub-cases to consider:
   :math:`x` does occur free in :math:`a`, then :math:`\lambda x.E` should be alpha-converted
   so that Case 2b becomes applicable.    
   For example, :math:`subst((w \; x), y, \lambda x.x)` should return
-  :math:`\lambda a.(w \; x)` where :math:`a` is a appropriate variable chosen during the
-  alpha-conversion process
+  :math:`\lambda a.a` where :math:`a` is an appropriate variable chosen during the
+  alpha-conversion process.
 
 **Case 3:** If :math:`b` is an application expression, say
 :math:`(e_1\ e_2)`, where :math:`e_1` and :math:`e_2` are arbitrary
@@ -147,9 +147,7 @@ v.u\ u))`. Since the expression we are substituting into (i.e., the
 third one) is an application expression, the algorithm requires us to
 return the application that results from recursively substituting
 :math:`\lambda y.(y\ x)` for :math:`u` in both components of this
-application. Since we already performed these two substitutions in the
-examples listed above, the final result of the algorithm is
-:math:`(\lambda v.\lambda y.(y\ x)\ \lambda y.(y\ x))`.
+application, yielding :math:`(\lambda v.\lambda y.(y\ x)\ \lambda y.(y\ x))`.
 
 
 Identifying Substitution Cases
