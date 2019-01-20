@@ -23,7 +23,7 @@ Call By Value vs. Call By Reference
 -----------------------------------
 
 **Author's Note**: All of the visualizations of parameter-passing methods
-in this were developed by Universtiy of Wisconsin Oshkosh CS major
+in this were developed by University of Wisconsin Oshkosh CS major
 Cory Sanin.  His work on these has greatly improved the original
 version of the module.
 
@@ -75,26 +75,33 @@ exercise.
    :long_name: Pass-by-value Proficiency Exercise
 
 
-In comparison to call-by-value, call-by-reference is illustrated by the following slide show.
+In comparison to call-by-value, call-by-reference is illustrated by
+the following slide show generator.  Again step through a few of the
+generated slide shows until you're ready for the proficiency exercise
+that follows.
 
-.. inlineav:: paramPassingByRef ss
-   :long_name: Parameter Passing By Reference
-   :links:
-   :scripts: AV/PL/paramPassingByRef.js
-   :output: show
+.. avembed:: AV/PL/paramPassingByRef.html ss
 
-Test yourself on call-by-value by completing the following proficiency
+.. .. inlineav:: paramPassingByRef ss
+..    :long_name: Parameter Passing By Reference
+..    :links:
+..    :scripts: AV/PL/paramPassingByRef.js
+..    :output: show
+
+Test yourself on call-by-reference by completing the following proficiency
 exercise.
 
 .. avembed:: AV/PL/paramPassingByRefPRO.html pe
    :long_name: Pass-by-reference Proficiency Exercise
 
 
-This problem will help you review the difference between *call by
-value* and *call by reference* in C++, where the presence of an
-ampersand in front of the parameter's name is used to indicate
-call-by-reference semantics. To earn credit for it, you must complete
-this randomized problem correctly three times in a row.
+Now that you've seen the difference between call-by-value and
+call-by-reference, we will end this section with a problem will help
+you review the difference between *call by value* and *call by
+reference* in the language C++, where the presence of an ampersand in
+front of the parameter's name is used to indicate call-by-reference
+semantics. To earn credit for it, you must complete this randomized
+problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/CallByValVsRef.html ka
    :long_name: Call By Value Vs Reference
@@ -249,7 +256,7 @@ it is actually used in the body of the macro.
 
 One possible implementation of macro-expansion is to perform a double
 textual substitution. For example, the C++
-preprocessor performs this double substitution, and then the compiler
+pre-processor performs this double substitution, and then the compiler
 processes the resulting code, never seeing the macro call. Of course, no
 function call is executed at run-time either.
 
