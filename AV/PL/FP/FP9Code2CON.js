@@ -101,11 +101,11 @@ $(document).ready(function() {
 
 
     // Slide 1
-    av.umsg('product1 is "straight-forward" recursion that is not tail recursive because a multiplication occurs after we return from the recursive call in lines 5-6.  Because multiplication occurs after we start to unwind from recursion, the base case in lines 2-3 returns the identity element for multiplication, namely 1.  Because it is not tail recursive, TCO could not be performed on product 1.');
+    av.umsg('product1 is "straightforward" recursion that is not tail recursive because a multiplication occurs after we return from the recursive call in lines 5-6.  Because multiplication occurs after we start to unwind from recursion, the base case in lines 2-3 returns the identity element for multiplication, namely 1.  Because it is not tail recursive, TCO could not be performed on product 1.');
     pseudo1.highlight([2,3,5,6]);
     av.displayInit();
 
-    av.umsg('product2 is tail-recursive because it uses the accumulator technique.  The multiplication occurs within the second argument to the recursive call in lines 6-7.  This second argument is the accumulator and, because all the multiplication takes place before we start unwinding from recursion, all we have to do upon reaching the base case in lines 3-4 is return the already computed answer.  Unlike product1, the computations occur as we descend into recursion, not as we unwind from recursion.  TCO could be performed on product2.');
+    av.umsg('product2 is tail-recursive because it uses the accumulator technique.  The multiplication occurs within the second argument to the recursive call in lines 6-7.  This second argument is the accumulator and, because the multiplication takes place before we start unwinding from recursion, all we have to do upon reaching the base case in lines 3-4 is return the already computed answer.  Unlike product1, the computations occur as we descend into recursion, not as we unwind from recursion.  TCO could be performed on product2.');
     pseudo2.highlight([3,4,6,7]);
     av.step();
 
