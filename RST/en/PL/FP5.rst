@@ -10,6 +10,7 @@
 Functional Programming - Scope, Closures, Higher-order Functions, Static vs. Dynamic Binding
 ============================================================================================
 
+.. _scope:
    
 Scope, Closures, Higher-order Functions (1)
 -------------------------------------------
