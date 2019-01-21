@@ -22,14 +22,14 @@ Parameter-Passing Mechanisms
 Call By Value vs. Call By Reference
 -----------------------------------
 
-**Author's Note**: All of the visualizations of parameter-passing methods
+*Author's Note: All of the visualizations of parameter-passing methods
 in this were developed by University of Wisconsin Oshkosh CS major
 Cory Sanin.  His work on these has greatly improved the original
-version of the module.
+version of the module.*
 
 Parameter-passing techniques may be broken down as follows:
 
--  Eager evaluation (applicative order) techniques
+-  Eager evaluation (applicative order) techniques.   What these methods have in common is that the arguments passed in for a function's parameters are evaluated before the function is called.
 
    -  Call-by-value
 
@@ -37,7 +37,7 @@ Parameter-passing techniques may be broken down as follows:
 
    -  Call-by-copy-restore (also known as value-result, copy-in-copy-out)
 
--  Lazy evaluation (normal order) techniques
+-  Lazy evaluation (normal order) techniques.   What these methods have in common is that the evaluation of the arguments passed in for a function's parameters is delayed until the argument is actually used in the execution of the function.
 
    -  Macro expansion
 
@@ -116,7 +116,7 @@ protocol for this techniques dictates that the function make a copy of
 the parameter before executing the function body.  This copy is then
 worked with in the function body.  When the function body has
 completed, the protocol for copy-restore dictates that copy of the
-parameter be "copied into" the original parameter using the address of
+parameter be "restored into" the original parameter using the address of
 the parameter, hence potentially modifying that parameter.  Note that
 although the original parameter is modified, the timing of when the
 modification occurs is slightly different from what it was under
@@ -161,17 +161,35 @@ the following C++ code.
       cout << "Call-by-copy-restore semantics: " << x << " " << y << endl;
     }
 
-.. inlineav:: paramPassingCopyRestore ss
-   :long_name: Parameter Passing By Copy Restore
-   :links:
-   :scripts: AV/PL/paramPassingCopyRestore.js
-   :output: show
+As you've done with by-value and by-reference, use the following slide
+show generator to step through a few examples of the copy-restore
+method and then test yourself by working on the proficiency exercise
+that follows.
+   
+.. avembed:: AV/PL/paramPassingCopyRestore.html ss
 
-Figure out what the output of the preceding program would be before
-tackling the next practice problem, which consequently will help you
-review the differences among *call by value*, *call by reference*, and
-*call by copy-restore*. To earn credit for it, you must complete this
-randomized problem correctly three times in a row.
+..     
+.. .. inlineav:: paramPassingCopyRestore ss
+..    :long_name: Parameter Passing By Copy Restore
+..    :links:
+..    :scripts: AV/PL/paramPassingCopyRestore.js
+..    :output: show
+
+And next test yourself with a copy-restore proficiency exercise.
+
+.. avembed:: AV/PL/paramPassingCopyRestorePRO.html pe
+   :long_name: Copy-restore Proficiency Exercise
+
+
+   
+We've now covered the three parameter-passing methods that use eager
+evaluation of function arguments.  To compare and contrast these three
+methods, figure out what the output of of the program in the next
+practice problem would be under *call by value*, *call by reference*,
+and *call by copy-restore*. Doing this should clarify the subtle
+differences among these three methods.  To earn credit for the
+practice problem, you must complete it correctly for randomized
+program it generates three times in a row.
 
 .. avembed:: Exercises/PL/CallByValVsRefVsCR.html ka
    :long_name: Call By Value vs Reference vs CR

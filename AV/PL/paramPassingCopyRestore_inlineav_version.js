@@ -1,18 +1,8 @@
-/* global first_time, document, console, $, JSAV */
-
-(function ($) {
-//    $(document).ready(function() {
+$(document).ready(function() {
   "use strict";
-//  var av_name = "paramPassingCopyRestore";
+  var av_name = "paramPassingCopyRestore";
 
-//  var av = new JSAV(av_name);
-
-function do_everything() {    
-   ODSA.AV.reset(true);
-   var av_name = $('.avcontainer');
-   var av = new JSAV(av_name);
-   CallByAllFive.init();
-    
+  var av = new JSAV(av_name);
 
   // Relative offsets
   var leftMargin = 25;
@@ -245,7 +235,7 @@ function do_everything() {
     destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
     var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
-                  ' is set to the value of '+rhs.value;
+                  ' set to the value of '+rhs.value;
 
     av.umsg(outMsg);
     pseudo.setCurrentLine(currentLineFoo++);
@@ -319,24 +309,4 @@ function do_everything() {
   if(CallByAllFive.bycprOutput != output){
     alert("bycpr error");
   }
-
-} // End do_everything
-    
-    function about() {
-	alert("Generate a (randomized) illustration of copy-restore parameter passing.");
-    };
-    
-    function help() {
-	alert("Click the generate button each time you want to launch a new slide show.");
-    };
-    
-    $('#about').click(about);
-    $('#help').click(help);
-    $('#genprog').click(do_everything);
-    $('#reset').click(ODSA.AV.reset);
-
-//    if (first_time) { console.log("Hello"); do_everything(); first_time = false; }
-
-}(jQuery));
-    
-//});
+});
