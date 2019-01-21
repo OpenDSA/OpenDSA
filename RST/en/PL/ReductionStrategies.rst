@@ -13,21 +13,21 @@ Reduction Strategies
 Applicative Order
 -----------------
 
-How many :math:`\beta` redexes are in
+How many :math:`\beta`-redexes are in
 :math:`(\lambda x.m \; (\lambda x.(x \; x) \; \lambda x.(x \; x)))`?
 You should be able to find two.   Depending on which one you choose to reduce first,
 you may find that you end up with :math:`m` as your "answer" or that you end up
 with the same expression that you started with,
-that is, the beta-reduction equivalent of an infinite loop.
+that is, the :math:`\beta`-reduction equivalent of an infinite loop.
 
 We have seen that evaluation of expressions in the
-:math:`\lambda` calculus is essentially :math:`\beta` reduction, which
+:math:`\lambda` calculus is essentially :math:`\beta`-reduction, which
 can be defined simply in terms of substitution:
 :math:`(\lambda p.b \; a) \equiv subst(a,p,b)` 
 
-But there is an additional consideration involved: :math:`a` and :math:`b` in the preceding :math:`\beta` redex
+But there is an additional consideration involved: :math:`a` and :math:`b` in the preceding :math:`\beta`-redex
 can each contain
-:math:`\beta` redexes themselves. We then need to recursively reduce them,
+:math:`\beta`-redexes themselves. We then need to recursively reduce them,
 which raises the following questions:
 
 #.  Which redex should we reduce first, the top-level redex, or a nested
@@ -48,7 +48,7 @@ following caveat: any reduction strategy that leads to an answer will
 give the same answer.  The key here is whether or not the strategy
 leads to an answer, and the Church-Rosser theorem neither guarantees
 termination nor does it guarantee that an answer will be found if it
-exists.   In instance where the strategy leads to an answer that cannot be further reduced, we say that the expression is in **beta-normal form**.
+exists.   In instances where the strategy leads to an answer that cannot be further reduced, we say that the expression is in **beta-normal form** (or :math:`\beta`-normal form).
 
 The strategy that JavaScript uses in the substitution model of
 computation is called **applicative order reduction**. With this
@@ -84,7 +84,7 @@ we end up in the infinite loop we referred to earlier.
 Normal Order
 ------------
 
-**Normal order reduction** reduces the leftmost :math:`\beta` redex
+**Normal order reduction** reduces the leftmost :math:`\beta`-redex
 first before reducing the sub-expressions inside of it and those that
 follow it. While applicative order proceeds by evaluating the
 sub-expressions and then applying the function, normal order evaluation
@@ -101,11 +101,11 @@ applied to the example
 on which applicative order looped
 infinitely.
 
-When applied to our other example       
+Now, when applied to 
 :math:`(\lambda x.((x \; y) \; (y \; x)) \; (\lambda w.(w \;  w) \; z))`,
 normal order will substitute       
 :math:`(\lambda w.(w \;  w) \; z)`
-for both of the :math:`x` appearing in
+for both occurrences of :math:`x` in
 :math:`((x \; y) \; (y \; x))`.
 It will then have to evaluate :math:`(\lambda w.(w \;  w) \; z)` **twice** before getting the final answer
 :math:`(((z \; z) \; y) \; (y \; (z \; z)))`.      
@@ -113,7 +113,7 @@ It will then have to evaluate :math:`(\lambda w.(w \;  w) \; z)` **twice** befor
 If you are still not certain of the exact difference between
 applicative and normal order, use the following visualization to watch
 them go through their respective steps on a variety of randomized
-:math:`\lambda`-expressions.  Once you feel confident that you can
+:math:`\lambda` expressions.  Once you feel confident that you can
 always predict what the next step of the visualization will be, you
 are ready to tackle the practice problems that follow.
 
@@ -122,22 +122,22 @@ are ready to tackle the practice problems that follow.
 
       
       
-Beta Reduction Order (1)
+Beta-Reduction Order (1)
 ------------------------
 
 This problem focuses on the first step (i.e., :math:`\beta`-reduction)
-in the evaluation of a :math:`\lambda`-expression with the two
+in the evaluation of a :math:`\lambda` expression with the two
 evaluation strategies that we discussed. To get credit for this
 randomized exercise, you must solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/BetaReductionOrder1.html ka
    :long_name: Beta Reduction Order 1
 
-Beta Reduction Order (2)
+Beta-Reduction Order (2)
 ------------------------
 
 In this problem, you have to study the complete evaluation of a
-:math:`\lambda`-expression with the two evaluation strategies that we
+:math:`\lambda` expression with the two evaluation strategies that we
 discussed. To get credit for this randomized exercise, you must solve
 it correctly three times in a row.
 

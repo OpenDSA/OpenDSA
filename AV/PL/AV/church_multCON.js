@@ -14,7 +14,7 @@ $(document).ready(function() {
     av.umsg("Doing that reduction will yield ...");
     l.text("(λn.λf.(λf.λx.(f (f x)) (n f)) λf.λx.(f (f (f x))))");
     av.step();
-    av.umsg("Next the β-reduce leftmost innermost redex");
+    av.umsg("Next β-reduce the leftmost innermost redex");
     l.text("(λn.λf.<span style='color:red'>(λf.λx.(f (f x)) (n f))</span> λf.λx.(f (f (f x))))");
     av.step();
     av.umsg("That reduction yields ...");
@@ -38,13 +38,13 @@ $(document).ready(function() {
     av.umsg("That reduction yields ...");
     l.text("λf.λx.(λx.(f (f (f x))) (λx.(f (f (f x))) x))");
     av.step();
-    av.umsg("Next the innermost redex highlighted below");
+    av.umsg("Next reduce the innermost redex highlighted below");
     l.text("λf.λx.(λx.(f (f (f x))) <span style='color:red'>(λx.(f (f (f x))) x)</span>)");
     av.step();
     av.umsg("That reduction yields ...");
     l.text("λf.λx.(λx.(f (f (f x))) (f (f (f x))))");
     av.step();
-    av.umsg("Reduce the the lone remaining β-redex highlighted below");
+    av.umsg("Reduce the lone remaining β-redex highlighted below");
     l.text("λf.λx.<span style='color:red'>(λx.(f (f (f x))) (f (f (f x))))</span>");
     av.step();
 
