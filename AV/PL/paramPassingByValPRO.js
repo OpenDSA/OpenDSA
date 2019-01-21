@@ -201,7 +201,7 @@ $(document).ready(function () {
       currentTopMargin += lineHeight;
     }
 
-    pseudo.setCurrentLine(++currentLine);
+    pseudo.setCurrentLine(currentLine++);
 
     modeljsavAV.displayInit();
 
@@ -209,6 +209,7 @@ $(document).ready(function () {
     currentLineFoo = fooIndex;
     while(codeLines[currentLineFoo].indexOf('print') === -1){//JSAV runs this twice- copy currentLineFoo into function
       unhighlightAll();
+      pseudo.setCurrentLine(currentLine++);
       var split = codeLines[currentLineFoo].trim().split('=');
 
       var rhs = getRightSideValue([fooVars, classVars], codeLines[currentLineFoo++]);
@@ -236,7 +237,6 @@ $(document).ready(function () {
       modeljsavAV.umsg(outMsg);
 
       modeljsavAV.gradeableStep();
-      pseudo.setCurrentLine(++currentLine);
     }
 
     var jsavArrs = {

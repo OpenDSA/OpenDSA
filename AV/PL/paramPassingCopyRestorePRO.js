@@ -246,7 +246,7 @@ $(document).ready(function () {
 
       currentTopMargin += lineHeight;
     }
-    pseudo.setCurrentLine(++currentLine);
+    pseudo.setCurrentLine(currentLine++);
 
     modeljsavAV.displayInit();
 
