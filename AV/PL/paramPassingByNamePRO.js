@@ -113,27 +113,81 @@ $(document).ready(function () {
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+    alert(ODSA.AV.aboutstring('By Name proficiency exercise', 'Cory Sanin'));
   }
 
   // generates the model answer
   function modelSolution(modeljsavAV) {
+    var currentTopMargin = 0;
+    var topMargin = 0;
     var fooVars = {};
     var classVars = {};
     var mainVars = {};
+    var fooPntr = {};
+    var labelobj;
+    var currentLine = fooIndex;
     function unhighlightAll(){
       unhighlightElements(classVars);
       unhighlightElements(mainVars);
     }
 
+    var pseudo = modeljsavAV.code(codeLines,
+      {left: leftMargin, top: topMargin, lineNumbers: false}
+    );
+    jsavElements.push(pseudo);
+
     //run foo()
     for(arr in initialArrays.classVars){
-      classVars[arr] = modeljsavAV.ds.array(initialArrays.classVars[arr]);
-      jsavElements.push(classVars[arr]);
+      labelobj = modeljsavAV.label(arr,
+        {
+          relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+          left: leftMargin, top: currentTopMargin
+        }
+      );
+      classVars[arr] = modeljsavAV.ds.array(initialArrays.classVars[arr],
+        {
+          indexed: initialArrays.classVars[arr].length > 1,relativeTo:labelobj, anchor:"right top",
+          myAnchor:"left top", left: labelMargin,
+          top:-1*jsavArrayOffset
+        }
+      );
+      jsavElements.push(classVars[arr], labelobj);
+      currentTopMargin += lineHeight;
     }
+
+    currentTopMargin += lineHeight;
+
+    jsavElements.push(modeljsavAV.label("main",
+      {
+        relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+        left: leftMargin, top: currentTopMargin
+      }
+    ));
+
+    currentTopMargin += lineHeight;
+    var numVars = Object.keys(initialArrays.mainVars).length;
+
+    jsavElements.push(modeljsavAV.g.rect(2*leftMargin+pseudo.element[0].clientWidth,
+                            currentTopMargin+topMargin,
+                            boxWidth,
+                            lineHeight*numVars+boxPadding*numVars
+                     ));
+
     for(arr in initialArrays.mainVars){
-      mainVars[arr] = modeljsavAV.ds.array(initialArrays.mainVars[arr]);
-      jsavElements.push(mainVars[arr]);
+      labelobj = modeljsavAV.label(arr,
+        {
+          relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+          left: leftMargin, top: currentTopMargin
+        }
+      );
+      mainVars[arr] = modeljsavAV.ds.array(initialArrays.mainVars[arr],
+        {
+          indexed: initialArrays.mainVars[arr].length > 1,relativeTo:labelobj, anchor:"right top",
+          myAnchor:"left top", left: labelMargin,
+          top:-1*jsavArrayOffset
+        }
+      );
+      jsavElements.push(mainVars[arr], labelobj);
     }
     for(var arr in initialArrays.fooVars){
       if(arr.length > 1){
@@ -142,18 +196,25 @@ $(document).ready(function () {
       else{
         var split = initialArrays.fooVars[arr].split(':');
         fooVars[arr] = ((split[0]==='mainVars')?mainVars:classVars)[split[1]];
+        fooPntr[arr] = modeljsavAV.pointer(arr, ((split[0]==='mainVars')?mainVars:classVars)[split[1]],{
+          targetIndex: initialArrays.fooVars[arr+'-index'],
+          left: lineHeight
+        });
+        jsavElements.push(fooPntr[arr]);
       }
     }
 
     var pointerindex = modeljsavAV.ds.array([fooVars[fooVarNames[0]].value(0)],{visible:false});
     jsavElements.push(pointerindex);
 
+    pseudo.setCurrentLine(currentLine++);
     modeljsavAV.displayInit();
 
     var contexts = [fooVars,classVars];
     currentLineFoo = fooIndex;
     while(codeLines[currentLineFoo].indexOf('print') === -1){
       unhighlightAll();
+      pseudo.setCurrentLine(currentLine++);
       var split = codeLines[currentLineFoo].trim().split('=');
 
       var rhs = getRightSideValue([fooVars, classVars], codeLines[currentLineFoo++]);
@@ -189,6 +250,12 @@ $(document).ready(function () {
         fooVars[fooVarNames[1]+'-index'] = parseInt(rhs.value[0]);
         pointerindex.value(0,parseInt(rhs.value[0]));
         modeljsavAV.umsg(fooVarNames[1]+' now points to '+fooVarNames[1]+'['+rhs.value+']');
+        fooPntr[fooVarNames[1]].target(fooVars[fooVarNames[1]],{
+          targetIndex: parseInt(rhs.value[0])
+        });
+      }
+      else{
+        modeljsavAV.umsg('No pointers need to move.');
       }
       modeljsavAV.gradeableStep();
 
