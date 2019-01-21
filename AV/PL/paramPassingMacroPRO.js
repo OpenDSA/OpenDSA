@@ -111,34 +111,104 @@ $(document).ready(function () {
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+    alert(ODSA.AV.aboutstring('By Macro proficiency exercise', 'Cory Sanin'));
   }
 
   // generates the model answer
   function modelSolution(modeljsavAV) {
+    var currentTopMargin = 0;
+    var topMargin = 0;
     var classVars = {};
     var mainVars = {};
+    var labelobj;
+    var currentLine = fooIndex;
     function unhighlightAll(){
       unhighlightElements(classVars);
       unhighlightElements(mainVars);
     }
 
+    var pseudo = modeljsavAV.code(codeLines,
+      {left: leftMargin, top: topMargin, lineNumbers: false}
+    );
+    jsavElements.push(pseudo);
+
     //run foo()
     for(var arr in initialArrays.classVars){
-      classVars[arr] = modeljsavAV.ds.array(initialArrays.classVars[arr]);
-      jsavElements.push(classVars[arr]);
+      labelobj = modeljsavAV.label(arr,
+        {
+          relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+          left: leftMargin, top: currentTopMargin
+        }
+      );
+      classVars[arr] = modeljsavAV.ds.array(initialArrays.classVars[arr],
+        {
+          indexed: initialArrays.classVars[arr].length > 1,relativeTo:labelobj, anchor:"right top",
+          myAnchor:"left top", left: labelMargin,
+          top:-1*jsavArrayOffset
+        }
+      );
+      jsavElements.push(classVars[arr], labelobj);
+      currentTopMargin += lineHeight;
     }
+    currentTopMargin += lineHeight;
+    jsavElements.push(modeljsavAV.label("main",
+      {
+        relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+        left: leftMargin, top: currentTopMargin
+      }
+    ));
+    currentTopMargin += lineHeight;
+    var numVars = Object.keys(initialArrays.mainVars).length;
+
+    jsavElements.push(modeljsavAV.g.rect(2*leftMargin+pseudo.element[0].clientWidth,
+                            currentTopMargin+topMargin,
+                            boxWidth,
+                            lineHeight*numVars+boxPadding*numVars
+                     ));
     for(arr in initialArrays.mainVars){
-      mainVars[arr] = modeljsavAV.ds.array(initialArrays.mainVars[arr]);
-      jsavElements.push(mainVars[arr]);
+      labelobj = modeljsavAV.label(arr,
+        {
+          relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+          left: leftMargin+3, top: currentTopMargin
+        }
+      );
+      mainVars[arr] = modeljsavAV.ds.array(initialArrays.mainVars[arr],
+        {
+          indexed: initialArrays.mainVars[arr].length > 1,relativeTo:labelobj, anchor:"right top",
+          myAnchor:"left top", left: labelMargin,
+          top:-1*jsavArrayOffset
+        }
+      );
+      jsavElements.push(mainVars[arr], labelobj);
     }
+    for(var arr in initialArrays.fooVars){
+      labelobj = modeljsavAV.label(arr,
+        {
+          relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+          left: leftMargin+boxWidth+3*boxPadding, top: currentTopMargin
+        }
+      );
+      fooVars[arr] = modeljsavAV.ds.array(initialArrays.fooVars[arr],
+        {
+          indexed: initialArrays.fooVars[arr].length > 1,relativeTo:labelobj, anchor:"right top",
+          myAnchor:"left top", left: labelMargin,
+          top:-1*jsavArrayOffset
+        }
+      );
+      jsavElements.push(fooVars[arr], labelobj);
+      currentTopMargin += lineHeight;
+    }
+    pseudo.setCurrentLine(currentLine);
+
 
     modeljsavAV.displayInit();
+
 
     var contexts = [mainVars,classVars];
     currentLineMain = mainIndex;
     while(codeLines[++currentLineMain].indexOf('print') === -1){//JSAV runs this twice- copy currentLineMain into function
       unhighlightAll();
+      pseudo.setCurrentLine(++currentLine);
       var split = codeLines[currentLineMain].trim().split('=');
 
       var rhs = getRightSideValue([mainVars, classVars], codeLines[currentLineMain]);
@@ -156,9 +226,8 @@ $(document).ready(function () {
         destStr += '['+destIndex+']';
       }
 
-      destination[lhs.charAt(0)].highlight(destIndex);
-
       destination[lhs.charAt(0)].value(destIndex,rhs.value);
+      destination[lhs.charAt(0)].highlight(destIndex);
 
       var outMsg = ((mainDestContext)?'main':'global')+"'s "+destStr+
                     ' set to the value of '+rhs.value;
@@ -234,7 +303,7 @@ $(document).ready(function () {
         currentLineMain = mainIndex = i + 1;
       }
     }
-    jsavElements.push(pseudo, pseudoO)
+    jsavElements.push(pseudo, pseudoO);
 
     for(var i = 0; i < mainIndex - 1; i++){
       if(codeLines[i]){
