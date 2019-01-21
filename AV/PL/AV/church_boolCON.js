@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     var av = new JSAV(av_name);
     var l = av.label("((λp.λq.((p q) λx.λy.y) λx.λy.x) λx.λy.y)");
-    av.umsg("TRUE AND FALSE in Church booleans");
+    av.umsg("TRUE AND FALSE in Church Booleans");
     l.addClass("church");
     av.displayInit();
     av.umsg("First beta-reduce the application containing the λp abstraction by applying the λp abstraction to λx.λy.x");
@@ -26,7 +26,7 @@ $(document).ready(function() {
     av.umsg("That reduction will give us ...");
     l.text("(λq.q λx.λy.y)");
     av.step();
-    av.umsg("Finally reduce the β-redex that remains, that is, the one starting with λq abstraction");
+    av.umsg("Finally reduce the β-redex that remains, that is, the one starting with the λq abstraction");
     l.text("(λq.q λx.λy.y)");
     av.step();
     av.umsg("This yields what we have defined to be FALSE");
