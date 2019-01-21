@@ -33,7 +33,7 @@ this can happen.)
 
 Let's start with some basic questions.
 First, if a language :math:`L` is finite, is :math:`L` regular?
-Yes! All finite languages are regular.
+Yes! All finite languages are regular. [Why?]
 
 If :math:`L` is infinite, is :math:`L` regular? 
 It might be and it might not.
@@ -42,14 +42,16 @@ For example,
 is an infinite regular language. 
 
 So, what about a language that was mentioned earlier, with no clear resolution?
-:math:`L_2 = \{a^nb^n | n > 0 \}` is an infinite language.
+:math:`L_2 = \{a^nb^n | n > 0 \}` is an infinite language. [How do we
+know this?]
 
 **Prove** that :math:`L_2 = \{a^nb^n | n > 0 \}` is not regular.
+The follosing visualization presents Proof 1 for this.
 
-.. inlineav:: Proof1PumpingLemmaCON ss
-   :long_name: Pumping Lemma Proof 1 Slideshow
-   :links: AV/VisFormalLang/Proof1PumpingLemmaCON.css
-   :scripts: AV/VisFormalLang/Proof1PumpingLemmaCON.js
+.. inlineav:: Proof1NonRegularCON ss
+   :long_name: Proof 1 Non-Regular Grammar Slideshow
+   :links: AV/VisFormalLang/Proof1NonRegularCON.css
+   :scripts: AV/VisFormalLang/Proof1NonRegularCON.js
    :output: show
 
 
