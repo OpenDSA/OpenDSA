@@ -396,11 +396,11 @@ $(document).ready(function () {
             pumpstr = pumpstr + z;
           }
           if (lemma == "an" || lemma == "anbk" || lemma == "b5wmod" || lemma == "ab2n") {
-            temp = temp + "z = " + pumpstr + " is in the language. YOU WIN!";
+            temp = temp + "z = " + pumpstr + " is in the language. Please try again!";
             //alert("My attemps:\n" + attemps.toString() + ": X = " + x + "; Y = " + y + "; Z = " + z + "; I = " + i + "; WON");
           }
           else {
-            temp = temp + "z = " + pumpstr + " is NOT in the language. Please try again!";
+            temp = temp + "z = " + pumpstr + " is NOT in the language. YOU WIN!";
             //alert("My attemps:\n" + attemps.toString() + ": X = " + x + "; Y = " + y + "; Z = " + z + "; I = " + i + "; Failed");
           }
           var step4ps = document.createElement("INPUT"); //the text to display pumped string
