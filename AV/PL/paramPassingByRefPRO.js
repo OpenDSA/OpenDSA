@@ -182,12 +182,14 @@ $(document).ready(function () {
       }
     }
 
+    pseudo.setCurrentLine(currentLine++);
     modeljsavAV.displayInit();
 
     var contexts = [fooVars,classVars];
     currentLineFoo = fooIndex;
     while(codeLines[currentLineFoo].indexOf('print') === -1){
       unhighlightAll();
+      pseudo.setCurrentLine(currentLine++);
       var split = codeLines[currentLineFoo].trim().split('=');
 
       var rhs = getRightSideValue([fooVars, classVars], codeLines[currentLineFoo++]);
