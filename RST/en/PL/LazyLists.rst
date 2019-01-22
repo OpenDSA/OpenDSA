@@ -241,7 +241,7 @@ opposed to lazy) evaluation.
    :output: show
 
 There is a problem with this algorithm, however, from the perspective
-of its utility.  Think about how well can it respond to the requests
+of its utility.  Think about how well it can respond to the requests
 regarding primes that we might want to ask of it.  While it can handle
 a request like "Find all primes less than or equal to n", it comes up
 short on requests like "Find the first 1000 prime numbers" or "Find
