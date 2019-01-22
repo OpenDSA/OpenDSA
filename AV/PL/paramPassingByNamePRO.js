@@ -239,8 +239,15 @@ $(document).ready(function () {
 
       destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
-      var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
-                    ' set to the value of '+rhs.value;
+//       var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
+//                     ' set to the value of '+rhs.value;
+
+      var outMsg;
+      if (fooDestContext)
+	  outMsg = "The location referenced by foo's " + destStr +  ' is set to the value of '+rhs.value;
+      else
+	  outMsg = "The global scope's " + destStr +  ' is set to the value of '+rhs.value;
+
 
       modeljsavAV.umsg(outMsg);
 
@@ -249,7 +256,8 @@ $(document).ready(function () {
       if(lhs == fooVarNames[0]){
         fooVars[fooVarNames[1]+'-index'] = parseInt(rhs.value[0]);
         pointerindex.value(0,parseInt(rhs.value[0]));
-        modeljsavAV.umsg(fooVarNames[1]+' now points to '+fooVarNames[1]+'['+rhs.value+']');
+//        modeljsavAV.umsg(fooVarNames[1]+' now points to '+fooVarNames[1]+'['+rhs.value+']');
+        modeljsavAV.umsg(fooVarNames[1]+' now points to index '+rhs.value+' in the global array.');
         fooPntr[fooVarNames[1]].target(fooVars[fooVarNames[1]],{
           targetIndex: parseInt(rhs.value[0])
         });

@@ -276,8 +276,8 @@ $(document).ready(function () {
 
       destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
-      var outMsg = ((fooDestContext)?'foo':'class')+"'s "+destStr+
-                    ' set to the value of '+rhs.value;
+      var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
+                    ' is set to the value of '+rhs.value;
 
       modeljsavAV.umsg(outMsg);
 

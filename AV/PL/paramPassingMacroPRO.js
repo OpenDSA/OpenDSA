@@ -229,8 +229,8 @@ $(document).ready(function () {
       destination[lhs.charAt(0)].value(destIndex,rhs.value);
       destination[lhs.charAt(0)].highlight(destIndex);
 
-      var outMsg = ((mainDestContext)?'main':'global')+"'s "+destStr+
-                    ' set to the value of '+rhs.value;
+      var outMsg = ((mainDestContext)?'main':'the global scope')+"'s "+destStr+
+                    ' is set to the value of '+rhs.value;
 
       modeljsavAV.umsg(outMsg);
 

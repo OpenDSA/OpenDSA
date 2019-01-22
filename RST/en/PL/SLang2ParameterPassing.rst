@@ -212,22 +212,11 @@ The first lazy-evaluation technique we will discuss is macro-expansion.
 
 Steps involved in macro-expansion are:
 
-1. No evaluation:
-    The literal text of each argument in the macro call is substituted
-    for the corresponding formal parameter everywhere in the macro’s
-    body.
+1. No evaluation: The literal text of each argument in the macro call is substituted for the corresponding formal parameter everywhere in the macro’s body.
 
-2. No evaluation: The body of the macro's code resulting from Step 1
-    is textually substituted for the macro call in the caller program.
+2. No evaluation: The body of the macro's code resulting from Step 1 is textually substituted for the macro call in the caller program.
 
-3. Evaluation: The body of the macro is executed **in the caller’s
-    environment**.  That is, because of the textual substitution of
-    the macro's code in the caller program, the scope of the variables
-    involved is determined on the basis of where the macro is called
-    from rather than where the definition of the macro appears in the
-    program.  You will see this in the second step of the following
-    slide show, where the code resulting from Step 1 and Step 2 above
-    is presented side-by-side with the original code.
+3. Evaluation: The body of the macro is executed **in the caller’s environment**.  That is, because of the textual substitution of the macro's code in the caller program, the scope of the variables involved is determined on the basis of where the macro is called from rather than where the definition of the macro appears in the program.  You will see this in the second step of the following slide show, where the code resulting from Step 1 and Step 2 above is presented side-by-side with the original code.
 
 .. avembed:: AV/PL/paramPassingMacro.html ss
    :long_name: Macro Slide Show	     
@@ -247,7 +236,6 @@ yourself with the following proficiency exercise.
    :long_name: Macro Proficiency Exercise
 
 
-    
 We will finish this section on macro-style parameter passing by
 considering the use of macros in C++, where a parameter like *a* and
 *b* in the example below must be wrapped in parentheses when it is
@@ -299,11 +287,11 @@ of the main program in each example.
 
 **Implementation of macro-expansion in C++**
 
-One possible implementation of macro-expansion is to perform a double
-textual substitution. For example, the C++
-pre-processor performs this double substitution, and then the compiler
-processes the resulting code, never seeing the macro call. Of course, no
-function call is executed at run-time either.
+The implementation of macro-expansion suggested by the 3-step process
+described previously is to perform a double textual substitution. For
+example, the C++ pre-processor performs this double substitution, and
+then the compiler processes the resulting code, never seeing the macro
+call. Of course, no function call is executed at run-time either.
 
 Because the body of the macro is, at least conceptually, spliced into
 the caller’s code after the arguments have been substituted
@@ -366,13 +354,32 @@ actual parameters, which are substituted for the formal parameters,
 
 Call-by-name differs from macro expansion in that only the parameters
 are evaluated in the caller's context, not the whole body of the
-function.
+function.  Step through a few slide shows of some call-by-name
+examples to see what the ramifications of this.  When you are
+confident that you understand the subtleties involved, try the
+proficiency exercise that follows.
 
-.. inlineav:: paramPassingByName ss
-   :long_name: Parameter Passing By Name
-   :links:
-   :scripts: AV/PL/paramPassingByName.js
-   :output: show
+.. avembed:: AV/PL/paramPassingByName.html ss
+   :long_name: By-name Slide Show	     
+
+
+.. .. inlineav:: paramPassingByName ss
+..    :long_name: Parameter Passing By Name
+..    :links:
+..    :scripts: AV/PL/paramPassingByName.js
+..    :output: show
+
+Now it is time for you to do a proficiency exercise to see how well
+you understand call-by-name.  When you do this proficiency exercise,
+each assignment statement will require two steps.  In the first step
+corresponding to an assignment statement, you will have to compute the
+value on the right-hand side and then click the location where that
+value will be stored.  In the second step, you will have to click on a
+potentially new pointer destination resulting from the computation and
+assignment that comprised your answer for the first step.
+
+.. avembed:: AV/PL/paramPassingByNamePRO.html pe
+   :long_name: Macro Proficiency Exercise
 
 
 This problem will help you review the differences among *call by
@@ -389,12 +396,13 @@ times in a row.
 Comprehensive review of the five methods studied so far
 -------------------------------------------------------
 
-This problem will help you review the differences among *call by
-value*, *call by reference*, *call by copy-restore*, *call by macro*,
-and *call by name*. To earn credit for it, you must complete this
-randomized problem correctly three times in a row.  In the next
-section, we will examine call-by-name versus call-by-need in greater
-depth in the context of a specific example known as a *lazy list*.
+In the next section, we will examine call-by-name versus call-by-need
+in greater depth in the context of a specific example known as a *lazy
+list*.  However, before proceeding test your comprehensive
+understanding of all five techniques studied so far:  *call-by-value*, *call-by-reference*,
+*call-by-copy-restore*, *call-by-macro*,
+and *call-by-name*. To earn credit for it, you must complete this
+randomized problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/CallByAllFive.html ka
    :long_name: RP set #31, question #2
