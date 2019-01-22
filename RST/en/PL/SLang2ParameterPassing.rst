@@ -217,11 +217,13 @@ Steps involved in macro-expansion are:
     for the corresponding formal parameter everywhere in the macro’s
     body.
 
-2. No evaluation: The body of the macro's code resulting from Step 1
+2. No evaluation:
+    The body of the macro's code resulting from Step 1
     is textually substituted for the macro call in the caller program.
 
-3. Evaluation: The body of the macro is executed **in the caller’s
-    environment**.  That is, because of the textual substitution of
+3. Evaluation:
+    The body of the macro is executed **in the caller’s environment**.
+    That is, because of the textual substitution of
     the macro's code in the caller program, the scope of the variables
     involved is determined on the basis of where the macro is called
     from rather than where the definition of the macro appears in the
