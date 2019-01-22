@@ -55,7 +55,7 @@ $(document).ready(function() {
     av.step();
 
     // S4
-    av.umsg('The first argument to the cons function is straight forward.  We must merely apply the operation f to the head of the sequence.');
+    av.umsg('The first argument to the cons function is straightforward.  We must merely apply the operation f to the head of the sequence.');
     pseudo1.unhighlight([5,7]);
     pseudo1.hide(5);
     pseudo1.show(6);
