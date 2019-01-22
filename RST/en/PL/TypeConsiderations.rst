@@ -356,7 +356,7 @@ What does ML infer about this function?
 Type Inferencing Problem 1
 --------------------------
 
-Below you see six expressions numbered 1 through 6. Each of them is a
+Six (numbered) ML expressions are listed below. Each one of them is a
 function definition that has been typed into ML.
 
 **SIX ML FUNCTION DEFINITIONS**
@@ -369,11 +369,11 @@ function definition that has been typed into ML.
     5  val x = fn (f, g, h) => if g f then f h else (h + 3);
     6  val x = fn f => fn g => fn h => if g f then f h else (h + 3);
 
-Next you see the six type-inferencing responses that ML provided when the above
-expressions were entered.  Unfortunately they've become scrambled, and
-I've lost track of which response goes with which function definition.
-In the six practice problems that follow, you will help 
-re-establish that order.
+Six type-inferencing responses that ML provided when the six
+expressions above were entered are listed below.  Unfortunately
+they have become scrambled. In the six practice problems that
+follow, you will help match each type-inferencing response with the correct
+ML expression above.
 
 **ML'S TYPE INFERENCE RESPONSES (SCRAMBLED)**
 ::
@@ -386,7 +386,9 @@ re-establish that order.
     6  fn : real -> real -> real -> real 
 
 
-These definitions are to be used in each of the following six practice problems.
+The six function definitions and six type-inferencing responses listed
+above are referenced in each one of the following six practice
+problems.
 
 .. avembed:: Exercises/PL/Typing1.html ka
    :long_name: ML type inferencing 1
