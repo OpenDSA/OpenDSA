@@ -7,10 +7,10 @@
    :author: David Furcy and Tom Naps
 
 
-Defining SLang 1
+Defining SLang1
 ================
 
-Syntax of SLang 1
+Syntax of SLang1
 -----------------
 
 So far we have examined how to program from a functional programming

@@ -7,10 +7,10 @@
    :author: David Furcy and Tom Naps
 
 
-Defining SLang 2
+Defining SLang2
 ================
 
-SLang 2: An Imperative Language
+SLang2: An Imperative Language
 -------------------------------
 We will now add features to our simple language which lie outside the
 realm of pure functional programming.   These features include:
@@ -125,7 +125,7 @@ block (except the last one) be?
 Output of SLang2 Program
 ------------------------
 
-This problem will help you master the syntax and semantics of SLang 2. To earn
+This problem will help you master the syntax and semantics of SLang2. To earn
 credit for it, you must complete this randomized problem
 correctly three times in a row.
 
