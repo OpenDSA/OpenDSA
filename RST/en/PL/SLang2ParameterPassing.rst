@@ -167,6 +167,7 @@ method and then test yourself by working on the proficiency exercise
 that follows.
    
 .. avembed:: AV/PL/paramPassingCopyRestore.html ss
+   :long_name: Copy Restore Slide Show	     
 
 ..     
 .. .. inlineav:: paramPassingCopyRestore ss
@@ -216,16 +217,42 @@ Steps involved in macro-expansion are:
     for the corresponding formal parameter everywhere in the macro’s
     body.
 
-2. No evaluation:
-    The body of the macro is substituted for the macro call in the
-    caller program.
+2. No evaluation: The body of the macro's code resulting from Step 1
+    is textually substituted for the macro call in the caller program.
 
-3. Evaluation
-    The body of the macro is executed **in the caller’s environment**.
+3. Evaluation: The body of the macro is executed **in the caller’s
+    environment**.  That is, because of the textual substitution of
+    the macro's code in the caller program, the scope of the variables
+    involved is determined on the basis of where the macro is called
+    from rather than where the definition of the macro appears in the
+    program.  You will see this in the second step of the following
+    slide show, where the code resulting from Step 1 and Step 2 above
+    is presented side-by-side with the original code.
 
-Let’s look at some examples of macros in C++, where a parameter like
-*a* and *b* in the example below must be wrapped in parentheses when
-it is actually used in the body of the macro.
+.. avembed:: AV/PL/paramPassingMacro.html ss
+   :long_name: Macro Slide Show	     
+
+
+.. .. inlineav:: paramPassingMacro ss
+..    :long_name: Parameter Passing By Macro
+..    :links:
+..    :scripts: AV/PL/paramPassingMacro.js
+..    :output: show
+
+Once you have observed enough example slide shows to fully understand
+the details of each step in macro-style parameter passing, test
+yourself with the following proficiency exercise.
+   
+.. avembed:: AV/PL/paramPassingMacroPRO.html pe
+   :long_name: Macro Proficiency Exercise
+
+
+    
+We will finish this section on macro-style parameter passing by
+considering the use of macros in C++, where a parameter like *a* and
+*b* in the example below must be wrapped in parentheses when it is
+actually used in the body of the macro.  Try to determine the output
+of the main program in each example.
 
 ::
 
@@ -314,12 +341,6 @@ following code.
       test_static();
     }
 
-
-.. inlineav:: paramPassingMacro ss
-   :long_name: Parameter Passing By Macro
-   :links:
-   :scripts: AV/PL/paramPassingMacro.js
-   :output: show
 
 
 This problem will help you review the differences among *call by
