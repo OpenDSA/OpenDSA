@@ -143,7 +143,7 @@ The SLang1 "program" **(fn (a,b) => b y 3)** would result in the following parse
 
 										     
 
-The expression in the bottom-right corner of the example above is a representation of the abstract syntax tree as a list of lists in JavaScript.
+The expression in the bottom-right corner of the example above is a representation of the abstract syntax tree as a list of lists.
 
 Concrete Syntax SLang1
 ----------------------

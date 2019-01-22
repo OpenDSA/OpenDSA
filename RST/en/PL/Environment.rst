@@ -91,16 +91,16 @@ current environment, that is, the one existing at the time the function
 is defined.
 
 | For example, defining the anonymous function: **fn (f) => (f x)**
-| in the environment: **E1 = ["Env",[["x",5]],["EmptyEnv"]]**
-| results in the following new value: **["Clo",[f],(f x),E1]** 
+| in the environment: **E1 = [ "Env", [ ["x", 5] ], [ "EmptyEnv" ] ]**
+| results in the following new value: **[ "Clo", [ "f" ], (f x), E1 ]** 
 | that is, the anonymous function whose only parameter is a function **f**, whose body is the call of **f** on the argument **x** and whose environment is **E1**.
 
 | If this closure is later bound to the variable **g**, as in: **(fn (g) => (g 1) fn (f) => (f x))**
-| then the environment at the point where **g** is being applied to 1 is: **E2 = ["Env",[["g",["Clo",["f"],(f x),E1]]],E1]**
+| then the environment at the point where **g** is being applied to 1 is: **E2 = [ "Env", [ ["g", [ "Clo", [ "f" ], (f x), E1 ] ] ], E1 ]**
 
 In programming languages, a **denoted value** is any kind of value that
 can be bound to a variable name. So, an **environment** is just a
-mapping from identifiers (e.g., "x" and "f") to denoted values.
+mapping from identifiers (e.g., "x" and "g") to denoted values.
 
 The types of denoted values vary from programming language to
 programming language. In SLang1, the only types of denoted value are
@@ -113,11 +113,11 @@ This means that, if we had been faithful to our
 representation of environments in **E1** above, we would have shown a binding of 5 to
 "x" as:
 
-**["x",["Num",5]]**
+**[ "x", [ "Num", 5 ] ]**
 
 instead of
 
-**["x",5]**
+**[ "x", 5 ]**
 	  
     
 Determining Values Bound to a Variable
