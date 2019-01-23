@@ -35,7 +35,7 @@ $(document).ready(function() {
     );
     
     // Slide 1
-    av.umsg("The is.iterates function takes two parameters -- n and f.  It returns a new sequence starting with n and having its consequent elements computed by repeatedly applying the given function to the previous term of the sequence.  That is, it return the sequence n, f(n), f(f(n)), f(f(f(n))), ....   The example highlighted below shows how we could use the is.iterates operation to compute the sequence comprised of the powers of 2.");
+    av.umsg("The is.iterates function takes two parameters n and f.  It returns a new sequence starting with n and having its consequent elements computed by repeatedly applying the given function to the previous term of the sequence.  That is, it return the sequence n, f(n), f(f(n)), f(f(f(n))), ....   The example highlighted below shows how we could use the is.iterates operation to compute the sequence comprised of the powers of 2.");
     pseudo1.hide([8,10,15,16]);
     pseudo1.highlight([14]);
     av.displayInit();
@@ -65,7 +65,7 @@ $(document).ready(function() {
     av.step();
 
     // S 4
-    av.umsg('The argument n must be consed onto the front of the sequence we return.  For the recursive call, f(n) must be passed in as the first element of the rest of the sequence.  Since the "rest" for the sequence must be a thunk, this recursive call in embedded in a parameterless function -- a technique we have also seen in the implementation of the map and filter operations.');
+    av.umsg('The argument n must be consed onto the front of the sequence we return.  For the recursive call, f(n) must be passed in as the first element of the rest of the sequence.  Since the "rest" for the sequence must be a thunk, this recursive call is embedded in a parameterless function, a technique we have also seen in the implementation of the map and filter operations.');
     pseudo1.unhighlight([7,9]);
     pseudo1.hide([7,9]);
     pseudo1.highlight([8,10]);

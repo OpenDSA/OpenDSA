@@ -1,12 +1,12 @@
-// Analouge to what the map operation did for finite lists in the fp
+// Analogue to what the map operation did for finite lists in the fp
 // module, that is, return a new sequence obtained by applying the
-// given function f onto each member of the given sequence seq
+// given function f to each member of the given sequence seq
 var map = function (f,seq) {
     return cons (???-1st arg to cons-???,
     return cons (f(hd(seq)), 
 		 ???-2nd arg to cons-??? );
-		 function ()  {
-		     return map (f, tl(seq));
+		 function () {
+		     return map(f, tl(seq));
 		 }
 		);
 };

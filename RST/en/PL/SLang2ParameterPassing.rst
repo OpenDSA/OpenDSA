@@ -49,14 +49,14 @@ Parameter-passing techniques may be broken down as follows:
 
 The difference between call-by-value and call-by-reference is
 exemplified by the difference between denoted values in our
-interpreters for SLang 1 and SLang 2.  That is, in call-by-value, the
+interpreters for SLang1 and SLang2.  That is, in call-by-value, the
 argument for a function parameter is a copy of the value of the
 argument whereas, in call-by-reference, the function is given the
 address of the argument.  Given the address, the function has the
 capability of modifying the argument.
 
 To see how call-by-value works, step through a few sample programs
-using the slide show generator below.  Once you're confident that you
+using the slideshow generator below.  Once you're confident that you
 understand each step, test yourself with the proficiency exercise that
 follows.
 
@@ -76,8 +76,8 @@ exercise.
 
 
 In comparison to call-by-value, call-by-reference is illustrated by
-the following slide show generator.  Again step through a few of the
-generated slide shows until you're ready for the proficiency exercise
+the following slideshow generator.  Again step through a few of the
+generated slideshows until you're ready for the proficiency exercise
 that follows.
 
 .. avembed:: AV/PL/paramPassingByRef.html ss
@@ -96,7 +96,7 @@ exercise.
 
 
 Now that you've seen the difference between call-by-value and
-call-by-reference, we will end this section with a problem will help
+call-by-reference, we will end this section with a problem that will help
 you review the difference between *call by value* and *call by
 reference* in the language C++, where the presence of an ampersand in
 front of the parameter's name is used to indicate call-by-reference
@@ -112,13 +112,13 @@ Copy-Restore
 
 In copy-restore parameter passing, the function is still given the
 address of the argument, as it was in call-by-reference.  However, the
-protocol for this techniques dictates that the function make a copy of
-the parameter before executing the function body.  This copy is then
+protocol for this technique dictates that the function make a copy of
+the argument before executing the function body.  This copy is then
 worked with in the function body.  When the function body has
-completed, the protocol for copy-restore dictates that copy of the
-parameter be "restored into" the original parameter using the address of
-the parameter, hence potentially modifying that parameter.  Note that
-although the original parameter is modified, the timing of when the
+completed, the protocol for copy-restore dictates that the copy of the
+argument be "restored into" the original argument using the address of
+the argument, hence potentially modifying that argument.  Note that
+although the original argument is modified, the timing of when the
 modification occurs is slightly different from what it was under
 call-by-reference semantics.  In the *Ada* programming language, the
 programmer could choose to use copy-restore semantics by designating a
@@ -161,8 +161,8 @@ the following C++ code.
       cout << "Call-by-copy-restore semantics: " << x << " " << y << endl;
     }
 
-As you've done with by-value and by-reference, use the following slide
-show generator to step through a few examples of the copy-restore
+As you've done with by-value and by-reference, use the following
+slideshow generator to step through a few examples of the copy-restore
 method and then test yourself by working on the proficiency exercise
 that follows.
    
@@ -185,11 +185,11 @@ And next test yourself with a copy-restore proficiency exercise.
    
 We've now covered the three parameter-passing methods that use eager
 evaluation of function arguments.  To compare and contrast these three
-methods, figure out what the output of of the program in the next
+methods, figure out what the output of the program in the next
 practice problem would be under *call by value*, *call by reference*,
 and *call by copy-restore*. Doing this should clarify the subtle
 differences among these three methods.  To earn credit for the
-practice problem, you must complete it correctly for randomized
+practice problem, you must complete it correctly for the randomized
 program it generates three times in a row.
 
 .. avembed:: Exercises/PL/CallByValVsRefVsCR.html ka
@@ -228,7 +228,7 @@ Steps involved in macro-expansion are:
 ..    :scripts: AV/PL/paramPassingMacro.js
 ..    :output: show
 
-Once you have observed enough example slide shows to fully understand
+Once you have observed enough example slideshows to fully understand
 the details of each step in macro-style parameter passing, test
 yourself with the following proficiency exercise.
    

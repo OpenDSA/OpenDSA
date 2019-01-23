@@ -128,7 +128,7 @@ function do_everything() {
 //           "Then code is executed like normal.");
 
     av.umsg("Macro expansion results in the code on the right.   Notice that the text of "+
-	    "arguments has been substituted for the function's parameters (Step 1), and then " +
+	    "the arguments has been substituted for the function's parameters (Step 1), and then " +
 	    "the text of the resulting code has been spliced into main (Step 2).");
     
   pseudo.show();
