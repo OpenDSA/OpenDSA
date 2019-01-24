@@ -18,7 +18,6 @@ following **split** function.
 ::
 
     var split = function (pivot,list) {
-        count++;
         if (fp.isNull(list)) { 
             return [[],[]]; 
         } else {
@@ -42,7 +41,7 @@ produce the exact same result.
 
 It would be much better to cache the result of a call to **split** and
 then use that cached result in place of the two calls.  We could do
-this in SLang 1 if we had the ability to declare a symbol local to the
+this in SLang1 if we had the ability to declare a symbol local to the
 scope where it was needed and "assign" that symbol the result of
 calling **split**.  Then, instead of calling **split** twice, we could
 just twice use the result that had been cached by association with the
@@ -100,12 +99,12 @@ Example 3
     end
 
 
-Interestingly, the **let block** is just *syntactic sugar* for an
+Interestingly, the **let block** (or  **let expression**) is just *syntactic sugar* for an
 existing construct in SLang1.  That is, when the SLang1 interpreter
 encounters a **let block** it can just "translate" it into that
 existing construct right away as it builds the abstract syntax tree.
 To see what this existing structure is, figure out what the sets of
-question marks should be in each of the following statements.
+question marks should be in each one of the following statements.
 
 
 Statement 1: When we evaluate **let x = 1 y = 2 in <exp> end**, we return the value
@@ -138,7 +137,7 @@ This randomized problem focuses on the evaluation of nested
 credit for it.
 
 When you provide your answer, remember to include the full denoted
-value, for example **["Num",0]** and not just **0**.
+value, for example **[ "Num", 0 ]** and not just **0**.
 
 .. avembed:: Exercises/PL/LetNested.html ka
    :long_name: Nested Lets

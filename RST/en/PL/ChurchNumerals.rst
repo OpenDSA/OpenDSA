@@ -17,24 +17,24 @@ Church Booleans
 To turn the  :math:`\lambda` calculus into a "real" programming language, we
 need to be able to manipulate:
 
--  boolean constants (true, false)
+-  Boolean constants (true, false)
 -  logical operators (and, or, not)
 -  conditionals (if)
 -  integers (0, 1, 2, 3, etc.)
 -  arithmetic operators (:math:`+`, :math:`-`, etc.)
 -  mathematical functions (factorial, etc.)
 
-Alonzo Church, the creator of the :math:`lambda` calculus, realized
+Alonzo Church, the creator of the :math:`\lambda` calculus, realized
 this and consequently set about to make a series of encodings of
-lambda expressions designed to satisfy the properties we expect from
+:math:`\lambda` expressions designed to satisfy the properties we expect from
 the items in the preceding list.  Let's first examine some of the encodings for the
-*church boolean* constants and operations.
+*Church Boolean* constants and operations.
 
 -  TRUE = :math:`\lambda x.  \lambda y.x`
 -  FALSE = :math:`\lambda x.  \lambda y.y`
 -  AND = :math:`\lambda p. \lambda q.((p \; q) \; FALSE)`
 
-Note that AND is a curried function of the two variables *p* and *q*.  The following slideshow indicates how TRUE AND FALSE, which is ((AND TRUE) FALSE) in curried form, is :math:`\beta` reduced.
+Note that AND is a curried function of the two variables *p* and *q*.  The following slideshow indicates how TRUE AND FALSE, which is ((AND TRUE) FALSE) in curried form, is :math:`\beta`-reduced.
    
 .. inlineav:: church_boolCON ss
    :long_name: Church boolean slideshow
@@ -42,7 +42,7 @@ Note that AND is a curried function of the two variables *p* and *q*.  The follo
    :scripts: AV/PL/AV/church_boolCON.js
    :output: show
 
-Just as one would expect for boolean operations, TRUE AND FALSE reduces to FALSE.  You are encouraged to try similar reductions for FALSE AND TRUE, FALSE AND FALSE, TRUE AND TRUE to convince yourself that our definition of AND does exactly what it needs to do for all four possibilities. 
+Just as one would expect for Boolean operations, TRUE AND FALSE reduces to FALSE.  You are encouraged to try similar reductions for FALSE AND TRUE, FALSE AND FALSE, TRUE AND TRUE to convince yourself that our definition of AND does exactly what it needs to do for all four possibilities. 
    
 
 Encoding If-Then-Else
@@ -115,15 +115,15 @@ To see how the multiplication function works, watch the following slideshow of h
    :scripts: AV/PL/AV/church_multCON.js
    :output: show
 
-We add a Church encoding for an operation that tests for the predecessor of a Church numeral *n*:
+We add a Church encoding for an operation that computes the predecessor of a Church numeral *n*:
 
-PRED = :math:`\lambda n. \lambda f. \lambda x.(((n \; \lambda g. \lambda h.(h \; (g \; f))) \lambda u.x) \; \lambda u.u)`
+PRED = :math:`\lambda n. \lambda f. \lambda x.(((n \; \lambda g. \lambda h.(h \; (g \; f)))\; \lambda u.x) \; \lambda u.u)`
 
-And finally an operation to test for zero, which can be used in the **if-then-else** you identified in the previous practice problem (see above).    
+And finally, we add an operation to test for zero, which can be used in the **if-then-else** you identified in the previous practice problem (see above).    
 
 ISZERO = :math:`\lambda n.((n \; \lambda x.FALSE) \; TRUE)`
 
-Just as we did in the preceding slide-shows, you should do some
+Just as we did in the preceding slideshows, you should do some
 :math:`\beta`-reductions using these defined operations to convince
 yourself that they work as expected.
 	    

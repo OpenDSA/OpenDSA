@@ -31,7 +31,7 @@ $(document).ready(function () {
   var jsavElements;
 
   var instructionRegular = 'Evaluate the value of the right hand side of the hightlighted line and type that into the input above. Then click the location where that value belongs.';
-  var instructionRestore = 'Restore the two variables one at a time. Order does not matter.';
+  var instructionRestore = 'Restore the two variables one at a time. The order in which you do this does not matter in this example.';
 
   var currentStep = 0;
   var mainSteps = 0;
@@ -276,8 +276,8 @@ $(document).ready(function () {
 
       destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
-      var outMsg = ((fooDestContext)?'foo':'class')+"'s "+destStr+
-                    ' set to the value of '+rhs.value;
+      var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
+                    ' is set to the value of '+rhs.value;
 
       modeljsavAV.umsg(outMsg);
 

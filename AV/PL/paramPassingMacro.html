@@ -1,66 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>By Name Proficiency Exercise</title>
+  <title>Step through macro-style parameter passing</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-  <link rel="stylesheet" href="paramPassingPRO.css" type="text/css" />
   <style>
     #avcontainer {
       width: 880px;
-      height: 760px;
+      height: 600px;
     }
   </style>
-
 </head>
 
 <body>
 <div id="container">
-  <table class="proHeaderTable">
+  <table class="headerTable">
     <tr>
       <td class="headerLeft">
-        <input type="button" id="help" name="help" />
+        <input type="button" id="help" name="help" value="Help" />
       </td>
-      <td class="headerCenter">
-        <p class="jsavexercisecontrols"></p>
+      <td class="headerCenter avTitle">
+        Generate sample programs that use macro-style parameter passing and step through their execution
       </td>
       <td class="headerRight">
-        <input type="button" id="about" name="about" />
-        <a id="settings" class="jsavsettings" href="#"></a>
+        <input type="button" id="about" name="about" value="About" />
       </td>
     </tr>
   </table>
-  <form class="avcontainer">
-    <div class="jsavcanvas">
-      <p class="instructLabel"></p>
-      <p class="instructions"></p>
-      <span class="jsavscore"></span>
-      </p>
 
-      <span align="center">
-	<p><strong>Value:</strong>
-	<input type="text" name="answer" id="answer" size="5"></p>
-      </span>
-
-      <p class="jsavoutput jsavline"></p>
-    </div>
+  <form id="ssperform">
+    <p>
+      <input type="button" id="genprog" name="genprog" value="Generate new program to step through" />
+      <input type="button" id="reset" name="reset" value="Reset" />
+    </p>
   </form>
-</div> <!-- container -->
+
+  <div id="avcontainer" class="avcontainer">
+    <span class="jsavcounter"></span>
+    <div class="jsavcontrols"></div>
+    <p class="jsavoutput jsavline"></p>
+  </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="../../JSAV/lib/jquery.transit.js"></script>
 <script src="../../JSAV/lib/raphael.js"></script>
 <script src="../../JSAV/build/JSAV-min.js"></script>
-<script src="../../lib/odsaUtils-min.js"></script>
-<script src="../../lib/odsaAV-min.js"></script>
+<script src="../../lib/odsaUtils.js"></script>
+<script src="../../lib/odsaAV.js"></script>
+<script>var SLang = {};</script>
+<!-- <script>var first_time = true;</script> -->
 <script src="paramPassingGenerator.js"></script>
 <script type="text/javascript" src="../../Exercises/PL/CallByAllFive.js"></script>
 <script src="interpreters/version2.00/scripts/absyn.js"></script>
 <script src="interpreters/version2.00/scripts/env.js"></script>
 <script src="interpreters/version2.00/scripts/grammar.js"></script>
 <script src="interpreters/version2.00/scripts/interpreter.js"></script>
-<script src="paramPassingByNamePRO.js"></script>
+<script src="paramPassingMacro.js"></script>
 </body>
 </html>
+

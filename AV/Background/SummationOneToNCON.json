@@ -11,7 +11,7 @@
       "sc5.2": "<br> $\\displaystyle\\sum_{i=1}^{n=5}i = 1 + 2 +$ <span style='color:red;'>3</span> $+ \\displaystyle\\sum_{i=4}^{n=5}i$",
       "sc6.1": "When $i = 4$, this adds $4$ to the summation. Represent this by four rectangles.",
       "sc6.2": "<br> $\\displaystyle\\sum_{i=1}^{n=5}i = 1 + 2 + 3 +$ <span style='color:red;'>4</span> $+ \\displaystyle\\sum_{i=5}^{n=5}i$",
-      "sc7.1": "When $i = 5$, this adds $4$ to the summation. Represent this by five rectangles.",
+      "sc7.1": "When $i = 5$, this adds $5$ to the summation. Represent this by five rectangles.",
       "sc7.2": "<br> $\\displaystyle\\sum_{i=1}^{n=5}i = 1 + 2 + 3 + 4 +$ <span style='color:red;'>5</span>",
       "sc8": "The closed form solution for this summation can be found by calculating the area of the resulting shape.",
       "sc9": "The area will be the area of the big triangle",

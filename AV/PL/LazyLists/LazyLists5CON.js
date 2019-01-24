@@ -32,7 +32,7 @@ $(document).ready(function() {
     );
     
     // Slide 1
-    av.umsg("The is.drop function takes an infinite sequence and returns a new sequence with the first n elements removed.  Note that what is returned is still an infinite sequence since we have only removed a finite number.   This is illustrated by the call to is.drop below, which returns a sequence of the even integers starting with 12.  is.drop returns an infinite sequence, which is always an integer followed by a think.   Contrast that with is.take, which returns a finite list, as illustrated by first6.");
+    av.umsg("The is.drop function takes an infinite sequence and returns a new sequence with the first n elements removed.  Note that what is returned is still an infinite sequence since we have only removed a finite number.   This is illustrated by the call to is.drop below, which returns a sequence of the even integers starting with 12.  is.drop returns an infinite sequence, which is always an integer followed by a thunk.   Contrast that with is.take, which returns a finite list, as illustrated by first6.");
     arr.addClass(1,"wider");
     arr1.addClass(1,"wider");
     arr1.show();

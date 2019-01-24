@@ -52,142 +52,142 @@
     "Grammars": {
       "PL/Grammars1": {
         "CharacterizeLang1": {
-          "threshold": 1
+          "threshold": 3
         },
         "CharacterizeLang2": {
-          "threshold": 1
+          "threshold": 3
         },
         "NumParseTreeNodes": {
-          "threshold": 1
+          "threshold": 3
         },
         "StringGenFromGmr": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/Grammars2": {
         "NumParseTrees1": {
-          "threshold": 1
+          "threshold": 3
         },
         "NumParseTrees2": {
-          "threshold": 1
+          "threshold": 3
         },
         "NumParseTrees3": {
-          "threshold": 1
+          "threshold": 3
         },
         "DeterminingAmbiguities": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/Grammars3": {
         "Associativity": {
-          "threshold": 1
+          "threshold": 3
         },
         "CharacterizeLang3": {
-          "threshold": 1
+          "threshold": 3
         },
         "ExtendedBNF": {
-          "threshold": 1
+          "threshold": 3
         },
         "PrecedenceAndAssociativity": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/Grammars4": {
         "Jison2": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/Grammars5": {
         "AnnotatingJison": {
-          "threshold": 1
+          "threshold": 3
         }
       }
     },
     "Functional Programming": {
       "PL/FP1": {
         "FPcons": {
-          "threshold": 1
+          "threshold": 3
         },
         "FPHdTlCons2": {
-          "threshold": 1
+          "threshold": 3
         },
         "FPisEq": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/FP2": {
         "RecListProc2": {
-          "threshold": 1
+          "threshold": 3
         },
         "RecListProc3": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/FP3": {
         "DeepRecur2": {
-          "threshold": 1
+          "threshold": 3
         },
         "DeepRecur3": {
-          "threshold": 1
+          "threshold": 3
         },
         "DeepRecur1": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/FP4": {
         "SplitAndJoin": {
-          "threshold": 1
+          "threshold": 3
         },
         "QuickSort": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/FP5": {
         "HigherOrderFuncs2": {
-          "threshold": 1
+          "threshold": 3
         },
         "HigherOrderFuncs3": {
-          "threshold": 1
+          "threshold": 3
         },
         "StaticDynamic": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/FP6": {
         "Curry1": {
-          "threshold": 1
+          "threshold": 3
         },
         "Compose": {
-          "threshold": 1
+          "threshold": 3
         },
         "Map": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/FP7": {
         "Reduce1": {
-          "threshold": 1
+          "threshold": 3
         },
         "Reduce2": {
-          "threshold": 1
+          "threshold": 3
         },
         "Filter": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/FP8": {},
       "PL/FP9": {
         "ContinuationPassing1": {
-          "threshold": 1
+          "threshold": 3
         },
         "ContinuationPassing2": {
-          "threshold": 1
+          "threshold": 3
         },
         "ContinuationPassing3": {
-          "threshold": 1
+          "threshold": 3
         },
         "TailRecursion": {
-          "threshold": 1
+          "threshold": 3
         }
       }
     },
@@ -195,7 +195,7 @@
       "PL/Syntax": {},
       "PL/Semantics": {
         "LambdaCalcSemantics": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/FreeBoundVariables": {},
@@ -205,20 +205,20 @@
       "PL/ReductionStrategies": {},
       "PL/ChurchNumerals": {
         "ChurchIfThen": {
-          "threshold": 1
+          "threshold": 3
         },
         "ChurchOR": {
-          "threshold": 1
+          "threshold": 3
         }
       },
       "PL/RecursiveFunctions": {}
     },
-    "Interpreting the Functional Language SLang 1": {
+    "Interpreting the Functional Language SLang1": {
       "PL/SLang1": {},
       "PL/Environment": {},
       "PL/SLang1withLetExpressions": {}
     },
-    "Interpreting the Imperative Language SLang 2": {
+    "Interpreting the Imperative Language SLang2": {
       "PL/SLang2": {},
       "PL/SLang2TTK": {}
     },

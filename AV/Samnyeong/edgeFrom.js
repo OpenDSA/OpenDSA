@@ -72,7 +72,7 @@ $(document).ready(function() {
     node.addClass("dequeued");
     arr.value(firstElement, "");
     firstElement++;
-    weig++;
+    
     av.umsg("Dequeue " + node.value());
     av.step();
   }
@@ -85,12 +85,14 @@ $(document).ready(function() {
     var q = [];
     
     q.push(start);
-
+    
     while (q.length > 0) {
       node = q.shift();
       dequeueIt(node);
       adjNode = node.neighbors();
-      
+      if (node.neighbors().length > 0) {
+        weig++;
+      }
       // var i;
       // for (i = 0; i < node.neighbors().length; i++) {
       //   if (node.neighbors().value != "A") {
@@ -106,15 +108,17 @@ $(document).ready(function() {
         var neighbor = adjNode[0];
         if (!neighbor.hasClass("marked")) {
           markIt(neighbor);
-          // neighbor.edgeFrom(node).addClass("markpath").label(weig, 5);
+          neighbor.edgeFrom(node).addClass("markpath").label(weig);
           
-          var start = neighbor.edgeFrom(node).addClass("markpath").start();
-          var end = neighbor.edgeFrom(node).addClass("markpath").end();
-          var w = neighbor.edgeFrom(node).weight();
-
-          graph.removeEdge(start, end);
-          graph.addEdge(start, end, {weight: weig}).addClass("markpath");
-          graph.layout();
+          // var start = neighbor.edgeFrom(node).addClass("markpath").start();
+          // var end = neighbor.edgeFrom(node).addClass("markpath").end();
+          // neighbor.edgeFrom(node).weight(weig);
+          
+          // neighbor.edgeFrom(node).addClass("markpath").weight(weig);
+          // console.log(neighbor.edgeFrom(node).weight());
+          // graph.removeEdge(start, end);
+          // graph.addEdge(start, end, {weight: weig}).addClass("markpath");
+          // graph.layout();
           
           q.push(neighbor);
           av.umsg("Add the edge from " + node.value() + " to " + neighbor.value() + " to the BFS tree");

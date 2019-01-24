@@ -14,7 +14,7 @@ $(document).ready(function() {
     av.umsg("Doing that β-reduction will yield the following");
     l.text("λf.λx.(f ((λf.λx.(f (f (f x))) f) x))");
     av.step();
-    av.umsg("Then beta-reduce the the redex highlighted below");
+    av.umsg("Then beta-reduce the  redex highlighted below");
     l.text("λf.λx.(f (&nbsp;&nbsp <span style='color:red'>(λf.λx.(f (f (f x))) f)</span> &nbsp;&nbsp; x))");
     av.step();
     av.umsg("Doing that β-reduction yields ...");

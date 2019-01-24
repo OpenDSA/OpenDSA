@@ -113,8 +113,8 @@ Pumping Lemma
 
 .. inlineav:: PumpingLemmaCON ss
    :long_name: Pumping Lemma Slideshow
-   :links: AV/Yuhui/PumpingLemmaCON.css
-   :scripts: AV/Yuhui/PumpingLemmaCON.js
+   :links: AV/VisFormalLang/PumpingLemmaCON.css
+   :scripts: AV/VisFormalLang/PumpingLemmaCON.js
    :output: show
 
 **How To Use the Pumping Lemma to prove L is not regular:**

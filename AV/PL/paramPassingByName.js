@@ -1,10 +1,21 @@
-$(document).ready(function() {
+/* global first_time, document, console, $, JSAV */
+
+//$(document).ready(function() {
+
+(function ($) {
+
   "use strict";
-  var av_name = "paramPassingByName";
+//   var av_name = "paramPassingByName";
+// 
+//   var av = new JSAV(av_name);
 
-  var av = new JSAV(av_name);
-
-  // Relative offsets
+    function do_everything() {
+	
+	ODSA.AV.reset(true);
+	var av_name = $('.avcontainer');
+	var av = new JSAV(av_name);
+	CallByAllFive.init();
+    // Relative offsets
   var leftMargin = 25;
   var topMargin = 0;
   var currentTopMargin = topMargin;
@@ -220,8 +231,16 @@ $(document).ready(function() {
 
     destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
-    var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
-                  ' set to the value of '+rhs.value;
+//     var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
+//                   ' is set to the value of '+rhs.value;
+
+      var outMsg;
+      if (fooDestContext)
+	  outMsg = "The location referenced by foo's " + destStr +  ' is set to the value of '+rhs.value;
+      else
+	  //	  outMsg = "main's " + destStr +  ' is set to the value of '+rhs.value;
+	  outMsg = "The global scope's " + destStr +  ' is set to the value of '+rhs.value;
+	  //	  outMsg = "The appropriate " + destStr +  ' is set to the value of '+rhs.value;
 
 
     pseudo.setCurrentLine(currentLineFoo++);
@@ -230,7 +249,8 @@ $(document).ready(function() {
       var arrName = fooPassedIn[1].charAt(0);
       recomputeThunk(fooLabels[fooVarNames[1]],classVars[arrName],rhs.value);
       fooVars[fooVarNames[1]+'-index'] = rhs.value;
-      outMsg += '. '+fooVarNames[1]+' now points to '+arrName+'['+rhs.value+']';
+//      outMsg += '. '+fooVarNames[1]+' now points to '+arrName+'['+rhs.value+']';
+      outMsg += '. That change will consequently result in '+fooVarNames[1]+' pointing to '+arrName+'['+rhs.value+'] when it is next evaluated as a by-name parameter.';
     }
     av.umsg(outMsg);
 
@@ -269,4 +289,24 @@ $(document).ready(function() {
   if(CallByAllFive.bynamOutput != output){
     alert("byname error");
   }
-});
+
+} // End do_everything
+    
+    function about() {
+	alert("Generate a (randomized) illustration of call-by-name parameter passing.");
+    };
+    
+    function help() {
+	alert("Click the generate button each time you want to launch a new slide show.");
+    };
+    
+    $('#about').click(about);
+    $('#help').click(help);
+    $('#genprog').click(do_everything);
+    $('#reset').click(ODSA.AV.reset);
+
+//    if (first_time) { console.log("Hello"); do_everything(); first_time = false; }
+
+}(jQuery));
+
+//});

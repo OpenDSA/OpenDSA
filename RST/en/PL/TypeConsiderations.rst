@@ -7,37 +7,38 @@
    :author: David Furcy and Tom Naps
 
 
-Variations on how languages think about types
+Variations on how Languages Think about Types
 =============================================
 
-Examples of type-related considerations in various languages
-------------------------------------------------------------
+Examples of Type-related Considerations in Programming Languages
+----------------------------------------------------------------
 
-- Is a PL *weakly typed* or *strongly typed*? In the latter, an
-   attempt to use an operation on data of the wrong type results in a
-   type error (when does the type error occur? – see the next
-   bullet). In the former, such an attempt just does whatever the
-   hardware wants to do with the bit pattern that happens to be there
-   (is that good or bad?).
+- Is a PL *weakly typed* or *strongly typed*? In a strongly-typed
+  language, an attempt to use an operation on data of the wrong type
+  results in a type error (when does the type error occur? see the
+  next bullet point). In a weakly-typed language, such an attempt just does
+  whatever the hardware wants to do with the bit pattern that happens
+  to be there (is that good or bad?).
 
--  If strongly typed, is the typing *dynamic* (meaning that type error determined at
-   run-time) or *static* (meaning that the type error determined at compile time)
+- If a language is strongly typed, is the typing *dynamic*, meaning
+  that type errors are caught at run-time, or *static*, meaning that
+  type errors caught at compile time?
 
 -  A *type-safe language* is one that guarantees all type errors will be
-   caught dynamically or statically
+   caught dynamically or statically.
 
--  What’s best - weakly typed, dynamic strongly typed, static strongly
+-  What’s best, weakly typed, dynamic strongly typed, static strongly
    typed?
 
--  Other issues to consider:
+-  Other issues to consider include:
 
-   -  How to define a type system in a strongly typed language
+   -  How to define a type system in a strongly typed language?
 
    -  Type inferencing
 
 Following are examples in JavaScript, Python, and Java.  Think about
-each of them and how the particular language handles the typing
-considerations it encounters with the program.  Discuss this from the
+each one of them and how the particular language handles the typing
+considerations it pertaining to the program.  Discuss this from the
 perspective of the terms in the bullet list above.
       
 **Consider the following JavaScript program**
@@ -64,8 +65,8 @@ perspective of the terms in the bullet list above.
     console.log (divide(6,"Green Bay Packers"));
     console.log (divide("Aaron", "Rodgers"));
 
-What is JavaScript’s behavior when it is given this program, and what does that tell us
-about JavaScript’s typing capabilities?
+What is JavaScript’s behavior when it is given this program, and what
+does that tell us about JavaScript’s type system?
 
 **Python behaves differently**
 
@@ -77,7 +78,7 @@ about JavaScript’s typing capabilities?
     print mult(4,3)
     print mult("hello", "goodbye")
 
-What does this example tell us about Python’s typing capabilities?
+What does this example tell us about Python’s type system?
 
 **Consider the following three Java programs**
 
@@ -113,23 +114,24 @@ What does this example tell us about Python’s typing capabilities?
         }
     }
 
-Which of the following statements are true about the three preceding Java programs?
+Which ones of the following statements are true about the three
+preceding Java programs?
 
--  foo compiles successfully
+-  foo compiles successfully.
 
--  foo runs successfully
+-  foo runs successfully.
 
--  foobar compiles successfully
+-  foobar compiles successfully.
 
--  foobar runs successfully
+-  foobar runs successfully.
 
--  foobaz compiles successfully
+-  foobaz compiles successfully.
 
--  foobaz runs successfully
+-  foobaz runs successfully.
 
--  foobaz should compile successfully
+-  foobaz should compile successfully.
 
--  foobaz should run successfully
+-  foobaz should run successfully.
 
 
 Type Environments and Typing Rules Expressed as Post Systems
@@ -176,7 +178,7 @@ real, and bools.
 
     <expr> ::= <identifier>
                | fn <identifier> => <expr> 
-               | <expr> <expr>                                      {Note: function applications don't have to be parenthesized}
+               | <expr> <expr>                         {Note: function applications don't have to be parenthesized}
                | if <expr> then <expr> else <expr> 
 
 **Using Post system rules to describe type inferencing in ML**
@@ -201,7 +203,7 @@ definitions and function applications.
     ---------------
     type-of <expr1> <expr2> is ???
 
-Another example of a Post system rule for mini-ML
+Another example of a Post system rule for mini-ML:
 
 ::
 
@@ -212,7 +214,7 @@ Another example of a Post system rule for mini-ML
     -----------------
     type-of (fn x => fn y => if x then 1 else y) is ???
 
-Here are examples of how the ML type-inferencing engine responds for
+Here are examples of how the ML type-inferencing engine responds to
 some function definitions.  Put yourself in the place of the ML type
 analyzer and try to determine why ML responds in the fashion it does
 using the previously defined Post system rules.
@@ -288,9 +290,9 @@ about the following functions involving lists.
 
     ML response: lengthlist = fn : ''a list -> int
 
-Here *a* is a type variable indicating that *lengthlist* will accept a
-list of any type -- in contrast to *sumlist*, which will only work on
-a list of integers.
+Here *a* (you can ignore the two preceding primes here) is a type
+variable indicating that *lengthlist* will accept a list of any type,
+in contrast to *sumlist*, which will only work on a list of integers.
    
 **More type inferencing in ML** 
 
@@ -356,7 +358,7 @@ What does ML infer about this function?
 Type Inferencing Problem 1
 --------------------------
 
-Below you see six expressions numbered 1 through 6. Each of them is a
+Six (numbered) ML expressions are listed below. Each one of them is a
 function definition that has been typed into ML.
 
 **SIX ML FUNCTION DEFINITIONS**
@@ -369,11 +371,11 @@ function definition that has been typed into ML.
     5  val x = fn (f, g, h) => if g f then f h else (h + 3);
     6  val x = fn f => fn g => fn h => if g f then f h else (h + 3);
 
-Next you see the six type-inferencing responses that ML provided when the above
-expressions were entered.  Unfortunately they've become scrambled, and
-I've lost track of which response goes with which function definition.
-In the six practice problems that follow, you will help 
-re-establish that order.
+Six type-inferencing responses that ML provided when the six
+expressions above were entered are listed below.  Unfortunately
+they have become scrambled. In the six practice problems that
+follow, you will help match each type-inferencing response with the correct
+ML expression above.
 
 **ML'S TYPE INFERENCE RESPONSES (SCRAMBLED)**
 ::
@@ -386,7 +388,9 @@ re-establish that order.
     6  fn : real -> real -> real -> real 
 
 
-These definitions are to be used in each of the following six practice problems.
+The six function definitions and six type-inferencing responses listed
+above are referenced in each one of the following six practice
+problems.
 
 .. avembed:: Exercises/PL/Typing1.html ka
    :long_name: ML type inferencing 1
