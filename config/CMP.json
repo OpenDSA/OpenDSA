@@ -71,7 +71,10 @@
   },
   "chapters": {
     "Concept Map Excercises Test": {
-      "CMP/EhsanTest": {}
+      "CMP/GraphCM": {},
+      "CMP/DatatypesCM": {},
+      "CMP/ObjectorientedCM": {},
+      "CMP/PointersCM": {}
     },
     "Appendix": {
       "Glossary": {},
