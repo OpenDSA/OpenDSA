@@ -408,9 +408,10 @@ class ODSA_RST_Module:
             section_title_found = True
           elif module_title_found and not section_title_found \
           and not content_before_section \
-          and re.match('(^\.\. (?!\w+::).+)|(^$)|(^=+$)', line) == None:
+          and (re.match('^(\.\. )+(avembed|inlineav):: [^\s]+( )?(pe|ka)?$', line) != None \
+               or re.match('^(\.\. )+(extrtoolembed):: [^\r\n]+$', line) != None):
               content_before_section = True
-              errors.append(("%sERROR: %s: line %s ('%s') - should not have content between module title and first section" % (console_msg_prefix, mod_path, i, line), False))
+              errors.append(("%sERROR: %s: line %s ('%s') - exercises must be inside a section" % (console_msg_prefix, mod_path, i, line), True))
           
         # Determine the type of directive
         dir_type = get_directive_type(line)
