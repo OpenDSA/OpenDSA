@@ -9,8 +9,8 @@
    :satisfies:
    :topic: Concept Maps
 
-Concept Map Exercises
-=====================
+Pointers Concepts
+=================
 
 Pointers Concepts
 -----------------

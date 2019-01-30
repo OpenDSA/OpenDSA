@@ -81,6 +81,11 @@
         "IntroADTSumm": {
           "threshold": 4
         }
+      },
+      "CMP/DatatypesCM": {
+        "CMdatatypeSumm": {
+          "threshold": 5
+        }
       }
     },
     "Programming Tutorials": {
@@ -604,7 +609,12 @@
       "Graph/GraphShortest": {},
       "Graph/MCST": {}, 
       "Graph/Kruskal": {},
-      "Graph/Floyd": {}
+      "Graph/Floyd": {},
+      "CMP/GraphCM": {
+        "CMgraphSumm": {
+          "threshold": 5
+        }
+      }
     }, 
     "Advanced Data Structures": {
       "SearchStruct/SkipList": {},

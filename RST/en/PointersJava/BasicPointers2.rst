@@ -71,10 +71,7 @@ their own.
    :scripts: AV/Pointers/shallowdeepCON.js
    :align: center
 
-Here is an example of the difference between shallow and deep copying:
-
-.. codeinclude:: Pointers/shallowCopy
-   :tag: shallow
+|
 
 .. inlineav:: shallowdeepExampleCON ss
    :long_name: Shallow Deep Copy Slideshow

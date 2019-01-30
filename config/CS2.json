@@ -83,12 +83,22 @@
         "IntroADTSumm": {
           "threshold": 4
         }
+      },
+      "CMP/DatatypesCM": {
+        "CMdatatypeSumm": {
+          "threshold": 5
+        }
       }
     },
     "Object Oriented Programming": {
       "Design/IntroOO": {}, 
       "Design/IntroUML": {}, 
-      "Design/IntroProcess": {}
+      "Design/IntroProcess": {},
+      "CMP/ObjectorientedCM": {
+        "CMoopSumm": {
+          "threshold": 5
+        }
+      }
     },
     "List Interface & Array based Lists": {
       "List/ListADT": {
@@ -165,6 +175,11 @@
         }
       },
       "PointersJava/Links2": {},
+      "CMP/PointersCM": {
+        "CMpointersSumm": {
+          "threshold": 5
+        }
+      },
       "PointersJava/Exercises": {}
     }, 
     "Stacks": {

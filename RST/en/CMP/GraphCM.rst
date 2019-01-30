@@ -9,8 +9,8 @@
    :satisfies:
    :topic: Concept Maps
 
-Concept Map Exercises
-=====================
+Graph Concepts
+==============
 
 Graph Concepts
 --------------

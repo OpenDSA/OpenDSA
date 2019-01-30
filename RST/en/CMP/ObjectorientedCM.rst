@@ -9,8 +9,8 @@
    :satisfies:
    :topic: Concept Maps
 
-Concept Map Exercises
-=====================
+Object-Oriented Programming Concepts
+====================================
 
 Object-Oriented Programming Concepts
 ------------------------------------
