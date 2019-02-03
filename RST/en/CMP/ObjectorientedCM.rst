@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Ehsand Elgendi
+   :author: Ehsan Elgendi
    :requires:
    :satisfies:
    :topic: Concept Maps
