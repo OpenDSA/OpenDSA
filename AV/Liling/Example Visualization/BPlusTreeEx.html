@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>B+ Tree Sample</title>
+</head>
+
+<style>
+	div.info {
+		width: 80px;
+		padding: 5px;
+		border: 1px solid black;
+		margin: 0;
+	}
+
+	canvas{
+		width: 80px;
+		height: 70px;
+		border: 1px solid white;
+		margin: 0;
+	}
+
+</style>
+
+<body>
+	<h1>
+		B+ Tree Sample
+	</h1>
+
+	<!--Level 1-->
+	<center>
+		<div class = info>53 &nbsp &nbsp &nbsp 65</div>
+	</center>
+
+
+	<!--Level 2-->
+	<canvas id = "line1" style = "margin-left: 23%; width: 365px;"></canvas>
+	<canvas id = "line2"></canvas>
+	<canvas id = "line3" style = "width: 320px;"></canvas>
+
+	<div class = info style = "width: 120px; float: left; margin-left: 18%">
+		&nbsp 24 &nbsp &nbsp &nbsp 37 &nbsp &nbsp &nbsp 50</div>
+  <div class = info style = "width: 30px; float: left; margin-left: 20%">&nbsp 55</div>
+	<div class = info style = "width: 120px; float: left; margin-left: 20%">
+		&nbsp 73 &nbsp &nbsp &nbsp 81 &nbsp &nbsp &nbsp 91</div>
+
+
+	<!--Level 3-->
+  <br>
+	<canvas id = "line4" style = "margin-left: -72%; margin-top: 2%; width: 180px;"></canvas>
+	<canvas id = "line5" style = "margin-left: -3%;"></canvas>
+	<canvas id = "line6" style = "width: 70px;"></canvas>
+	<canvas id = "line7" style = "width: 105px;"></canvas>
+	<canvas id = "line8" style = "margin-left: 8%;"></canvas>
+	<canvas id = "line9" style = "margin-left: 2%;"></canvas>
+	<canvas id = "line10" style = "margin-left: 7%; width: 120px"></canvas>
+	<canvas id = "line11" style = "width: 60px;"></canvas>
+	<canvas id = "line12" style = "width: 100px;"></canvas>
+	<canvas id = "line13" style = "margin-left: -4%; width: 180px"></canvas>
+  <br>
+	<div class = info style = "width: 80px; float: left; margin-left: 3%">
+		&nbsp 10 &nbsp &nbsp &nbsp 16</div>
+	<div class = info style = "width: 80px; float: left; margin-left: 3%">
+		&nbsp 24 &nbsp &nbsp &nbsp 34</div>
+	<div class = info style = "width: 80px; float: left; margin-left: 3%">
+		&nbsp 37 &nbsp &nbsp &nbsp 40</div>
+	<div class = info style = "width: 80px; float: left; margin-left: 3%">
+		&nbsp 50 &nbsp &nbsp &nbsp 53</div>
+	<div class = info style = "width: 80px; float: left; margin-left: 3%">
+		&nbsp 53 &nbsp &nbsp &nbsp 54</div>
+	<div class = info style = "width: 80px; float: left; margin-left: 3%">
+		&nbsp 55 &nbsp &nbsp &nbsp 64</div>
+	<div class = info style = "width: 120px; float: left; margin-left: 3%">
+		&nbsp 65 &nbsp &nbsp &nbsp 67 &nbsp &nbsp &nbsp 71</div>
+	<div class = info style = "width: 80px; float: left; margin-left: 3%">
+		&nbsp 73 &nbsp &nbsp &nbsp 77</div>
+	<div class = info style = "width: 80px; float: left; margin-left: 3%">
+		&nbsp 81 &nbsp &nbsp &nbsp 88</div>
+	<div class = info style = "width: 80px; float: left; margin-left: 3%">
+		&nbsp 91 &nbsp &nbsp &nbsp 92</div>
+
+		<script>
+			var ctx1 = document.getElementById("line1").getContext("2d");
+			ctx1.moveTo(365,-30);
+			ctx1.lineTo(0,150);
+			ctx1.stroke();
+			var ctx2 = document.getElementById("line2").getContext("2d");
+			ctx2.moveTo(140,0);
+			ctx2.lineTo(60,150);
+			ctx2.stroke();
+			var ctx3 = document.getElementById("line3").getContext("2d");
+			ctx3.moveTo(0,0);
+			ctx3.lineTo(300,150);
+			ctx3.stroke();
+
+			var ctx4 = document.getElementById("line4").getContext("2d");
+			ctx4.moveTo(310,0);
+			ctx4.lineTo(0,150);
+			ctx4.stroke();
+			var ctx5 = document.getElementById("line5").getContext("2d");
+			ctx5.moveTo(300,0);
+			ctx5.lineTo(0,150);
+			ctx5.stroke();
+			var ctx6 = document.getElementById("line6").getContext("2d");
+			ctx6.moveTo(130,0);
+			ctx6.lineTo(130,150);
+			ctx6.stroke();
+			var ctx7 = document.getElementById("line7").getContext("2d");
+			ctx7.moveTo(0,0);
+			ctx7.lineTo(200,150);
+			ctx7.stroke();
+			var ctx8 = document.getElementById("line8").getContext("2d");
+			ctx8.moveTo(300,0);
+			ctx8.lineTo(60,150);
+			ctx8.stroke();
+			var ctx9 = document.getElementById("line9").getContext("2d");
+			ctx9.moveTo(0,0);
+			ctx9.lineTo(160,150);
+			ctx9.stroke();
+			var ctx10 = document.getElementById("line10").getContext("2d");
+			ctx10.moveTo(320,0);
+			ctx10.lineTo(0,150);
+			ctx10.stroke();
+			var ctx11 = document.getElementById("line11").getContext("2d");
+			ctx11.moveTo(130,0);
+			ctx11.lineTo(130,150);
+			ctx11.stroke();
+			var ctx12 = document.getElementById("line12").getContext("2d");
+			ctx12.moveTo(50,0);
+			ctx12.lineTo(300,150);
+			ctx12.stroke();
+			var ctx13 = document.getElementById("line13").getContext("2d");
+			ctx13.moveTo(20,0);
+			ctx13.lineTo(300,150);
+			ctx13.stroke();
+		</script>
+
+</body>
+
+
+</html>
