@@ -20,7 +20,9 @@ ex_options = None     # custom options specified for exercises/slideshows
 sect_options = None   # custom options specified for sections
 current_module = None # the path of the current module being processed
 
-default_ex_options = {
+# default options that will be used if options 
+# aren't specified for a given exercise
+_default_ex_options = {
     'ka': {
       'required': True,
       'points': 1,
@@ -49,6 +51,15 @@ default_ex_options = {
     'extr': {
       'points': 1.0
     }
+}
+
+# Like above, but only contains default exercise options for
+# exercise types that are actually contained in the configuration.
+# This is so we can avoid printing warning messages saying that
+# default options are missing for an exercise type that is not contained
+# in the configuration anyway.
+default_ex_options = {
+
 }
 
 EXERCISE_FIELDS = ['points', 'required', 'long_name', 'threshold', 'exer_options', 'showhide']
@@ -108,10 +119,9 @@ class avembed(Directive):
     self.options['type'] = self.arguments[1]
     self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
 
-    self.options['required'] = default_ex_options[self.options['type']]['required']
-    self.options['points'] = default_ex_options[self.options['type']]['points']
-    self.options['threshold'] = default_ex_options[self.options['type']]['threshold']
-
+    self.options['required'] = get_default_ex_option(self.options['type'], 'required')
+    self.options['points'] = get_default_ex_option(self.options['type'], 'points')
+    self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
     if self.options['exer_name'] in ex_options[current_module]:
       for key, value in ex_options[current_module][self.options['exer_name']].iteritems():
         self.options[key] = value
@@ -170,12 +180,7 @@ class extrtoolembed(Directive):
     if 'learning_tool' not in self.options or self.options['learning_tool'] == '':
       self.options['learning_tool'] = 'code-workout'
     if 'points' not in self.options or self.options['points'] == '':
-      if self.options['learning_tool'] in default_ex_options['extr'] \
-          and 'points' in default_ex_options['extr'][self.options['learning_tool']]:
-
-        self.options['points'] = default_ex_options['extr'][self.options['learning_tool']]['points']
-      else:
-        self.options['points'] = default_ex_options['extr']['points']
+      self.options['points'] = get_default_ex_option('extr', 'points', self.options['learning_tool'])
 
     res = extertool_element % (self.options)
     return [nodes.raw('', res, format='xml')]
@@ -201,9 +206,9 @@ class inlineav(Directive):
     self.options['exer_name'] = self.arguments[0]
     self.options['type'] = self.arguments[1]
 
-    self.options['required'] = default_ex_options[self.options['type']]['required']
-    self.options['points'] = default_ex_options[self.options['type']]['points']
-    self.options['threshold'] = default_ex_options[self.options['type']]['threshold']
+    self.options['required'] = get_default_ex_option(self.options['type'], 'required')
+    self.options['points'] = get_default_ex_option(self.options['type'], 'points')
+    self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
 
     if self.options['exer_name'] in ex_options[current_module]:
         for key, value in ex_options[current_module][self.options['exer_name']].iteritems():
@@ -386,6 +391,47 @@ def print_err(err_msg):
   '''
   sys.stderr.write('%s\n' % err_msg)
 
+def get_default_ex_option(ex_type, option, learning_tool=None):
+  if ex_type in ['ka', 'ff', 'ss', 'pe']:
+    glob = 'glob_{0}_options'.format(ex_type)
+    if ex_type not in default_ex_options:
+      print_err('WARNING: Missing "{0}", using default values instead.'.format(glob))
+      default_ex_options[ex_type] = _default_ex_options[ex_type]
+      if option in default_ex_options[ex_type]:
+        return default_ex_options[ex_type][option]
+      else:
+        print_err('ERROR: Unknown exercise option "{0}" for exercise type "{1}"'.format(option, ex_type))
+        sys.exit(1)
+    if option in _default_ex_options[ex_type]:
+      if option in default_ex_options[ex_type]:
+        return default_ex_options[ex_type][option]
+      else:
+        def_val = _default_ex_options[ex_type][option]
+        print_err('WARNING: "{0}" is missing field "{1}". Using default value "{2}".'.format(glob, option, def_val))
+    else:
+      print_err('ERROR: Unknown exercise option "{0}" for exercise type "{1}"'.format(option, ex_type))
+      sys.exit(1)
+  elif ex_type == 'extr':
+    if 'extr' not in default_ex_options:
+      print_err('WARNING: Missing "glob_extr_options", using default values instead.')
+      default_ex_options['extr'] = _default_ex_options['extr']
+      return default_ex_options['extr']['points']
+    elif learning_tool in default_ex_options['extr']:
+      if 'points' in default_ex_options['extr'][learning_tool]:
+        return default_ex_options['extr'][learning_tool]['points']
+    if 'points' not in default_ex_options['extr']:
+      def_val = _default_ex_options['extr']['points']
+      print_err('WARNING: "glob_extr_options" is missing field "points". Using default value "{0}".'.format(def_val))
+      default_ex_options['extr']['points'] = def_val
+      return def_val
+    else:
+      return default_ex_options['extr']['points']
+  elif ex_type == 'dgm':
+    return _default_ex_options['dgm']
+  else:
+    print_err('ERROR: Unknown exercise type "{0}"'.format(ex_type))
+    sys.exit(1)
+
 def extract_mod_config(mod_json):
   '''
   '''
@@ -486,7 +532,7 @@ def extract_exs_config(exs_json):
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
         exs_config[exer_name]['long_name'] = ex_obj['@long_name']
-        exs_config[exer_name]['required'] = default_ex_options[ex_obj['@type']]['required']
+        exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
         threshold = float(ex_obj['@threshold'])
         exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
@@ -513,7 +559,7 @@ def extract_exs_config(exs_json):
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
         exs_config[exer_name]['long_name'] = ex_obj['@long_name']
-        exs_config[exer_name]['required'] = default_ex_options[ex_obj['@type']]['required']
+        exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
         exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
         if exer_name in ex_options[current_module]:
@@ -526,7 +572,7 @@ def extract_exs_config(exs_json):
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
         exs_config[exer_name]['long_name'] = ex_obj['@long_name']
-        exs_config[exer_name]['required'] = default_ex_options[ex_obj['@type']]['required']
+        exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
         exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
         if exer_name in ex_options[current_module]:
@@ -545,7 +591,7 @@ def extract_exs_config(exs_json):
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
       exs_config[exer_name]['long_name'] = ex_obj['@long_name']
-      exs_config[exer_name]['required'] = default_ex_options[ex_obj['@type']]['required']
+      exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
       threshold = float(ex_obj['@threshold'])
       exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
@@ -571,7 +617,7 @@ def extract_exs_config(exs_json):
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
       exs_config[exer_name]['long_name'] = ex_obj['@long_name']
-      exs_config[exer_name]['required'] = default_ex_options[ex_obj['@type']]['required']
+      exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
       exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
       if exer_name in ex_options[current_module]:
@@ -584,7 +630,7 @@ def extract_exs_config(exs_json):
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
       exs_config[exer_name]['long_name'] = ex_obj['@long_name']
-      exs_config[exer_name]['required'] = default_ex_options[ex_obj['@type']]['required']
+      exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
       exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
       if exer_name in ex_options[current_module]:
@@ -700,37 +746,19 @@ def validate_glob_config(conf_data):
   global ex_options, default_ex_options, sect_options, mod_options
 
   for ex_type in ['ka', 'ff', 'ss', 'pe']:
-      field = 'glob_{0}_options'.format(ex_type)
-      if field not in conf_data:
-        print_err('WARNING: Missing "{0}", using default values instead.'.format(field))
-        conf_data[field] = default_ex_options[ex_type]
-      else:
-        for field_name in REQUIRED_EXERCISE_FIELDS:
-          if field_name not in conf_data[field]:
-            print_err('WARNING: "{0}" is missing field "{1}". Using default value.'.format(field, field_name))
-            conf_data[field][field_name] = default_ex_options[ex_type][field_name]
+    glob = 'glob_{0}_options'.format(ex_type)
+    if glob in conf_data:
+      default_ex_options[ex_type] = conf_data[glob]
+      for field in REQUIRED_EXERCISE_FIELDS:
+        if field not in default_ex_options[ex_type]:
+          def_val = _default_ex_options[ex_type][field]
+          print_err('WARNING: "{0}" is missing field "{1}". Using default  "{2}".'.format(glob, field, def_val))
+          default_ex_options[ex_type][field] = def_val
 
-  if 'glob_extr_options' not in conf_data:
-    print_err('WARNING: Missing "glob_extr_options", using default values instead.')
-    conf_data['glob_extr_options'] = default_ex_options['extr']
-  else:
-    if 'points' not in conf_data['glob_extr_options']:
-      print_err('WARNING: "glob_extr_options" is missing field "points". Using default value.')
-      conf_data['glob_extr_options']['points'] = 1.0
+  if 'glob_extr_options' in conf_data:
+    default_ex_options['extr'] = conf_data['glob_extr_options']
 
   ex_options, sect_options, mod_options = get_options(conf_data)
-  default_ex_options = {
-      'ka': conf_data['glob_ka_options'], 
-      'ss': conf_data['glob_ss_options'], 
-      'ff': conf_data['glob_ff_options'], 
-      'pe': conf_data['glob_pe_options'],
-      'extr': conf_data['glob_extr_options'],
-      'dgm': {
-        'required': False,
-        'points': 0,
-        'threshold': 1
-      }
-  }
 
 def generate_full_config(config_file_path, slides):
   ''' Generates a full configuration from a simplified configuration
@@ -744,11 +772,16 @@ def generate_full_config(config_file_path, slides):
   full_config = OrderedDict()
   full_config = conf_data.copy()
   full_config['chapters'] = OrderedDict()
-  del full_config['glob_ka_options']
-  del full_config['glob_ss_options']
-  del full_config['glob_ff_options']
-  del full_config['glob_pe_options']
-  del full_config['glob_extr_options']
+  if 'glob_ka_options' in full_config:
+    del full_config['glob_ka_options']
+  if 'glob_ss_options' in full_config:
+    del full_config['glob_ss_options']
+  if 'glob_ff_options' in full_config:
+    del full_config['glob_ff_options']
+  if 'glob_pe_options' in full_config:
+    del full_config['glob_pe_options']
+  if 'glob_extr_options' in full_config:
+    del full_config['glob_extr_options']
 
   mod_files = get_chapter_module_files(conf_data)
   for chapter, files in mod_files.iteritems():
@@ -795,7 +828,7 @@ def generate_full_config(config_file_path, slides):
 if __name__ == '__main__':
   args = sys.argv
   if len(args) != 3:
-      print('Usage: {0} config_file output_file', args[0])
+      print('Usage: {0} config_file output_file'.format(args[0]))
       sys.exit(1)
 
   config_file = args[1]
