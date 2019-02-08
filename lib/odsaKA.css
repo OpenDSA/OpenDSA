@@ -49,3 +49,7 @@ footer .footer-container {
   /* Set  borders */
   border: 1.5px solid #000;
 }
+
+#warning-bar {
+  height: 50px;
+}
