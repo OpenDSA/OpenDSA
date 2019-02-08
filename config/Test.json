@@ -71,7 +71,37 @@
   },
   "chapters": {
     "Stuff": {
-      "MemManage/Buddy": {}
+      "Sorting/InsertionSort": {}, 
+      "Sorting/Quicksort": {
+        "quicksortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "fix"
+          }
+        }
+      }, 
+      "Sorting/Heapsort": {
+        "HeapsortStepPRO": {
+          "points": 2.0
+        }, 
+        "heapsortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "fix"
+          }
+        }
+      }, 
+      "Sorting/RadixSort": {
+        "RadixsortPRO": {
+          "points": 2.0, 
+          "threshold": 4
+        }
+      }, 
+      "Sorting/SortingLowerBound": {
+        "SortBoundSumm": {
+          "threshold": 4
+        }
+      }
     },
     "Appendix": {
       "Glossary": {},

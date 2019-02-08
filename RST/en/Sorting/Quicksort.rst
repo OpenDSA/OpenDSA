@@ -168,8 +168,8 @@ And here is a visualization illustrating the running time analysis of the partit
 
 .. inlineav:: QuickSortPartitionAnalysisCON ss
    :long_name: Quicksort Partition Analysis Slideshow
-   :links: AV/Development/QuickSortPartitionAnalysisCON.css
-   :scripts: AV/Development/QuickSortPartitionAnalysisCON.js
+   :links: AV/Sorting/QuickSortPartitionAnalysisCON.css
+   :scripts: AV/Sorting/QuickSortPartitionAnalysisCON.js
    :output: show
 
 
@@ -202,8 +202,8 @@ This visualization explains the worst-case running time of Quick Sort
 
 .. inlineav:: QuickSortWorstCaseCON ss
    :long_name: Quicksort Worst Case Analysis Slideshow
-   :links: AV/Development/QuickSortWorstCaseCON.css
-   :scripts: AV/Development/QuickSortWorstCaseCON.js
+   :links: AV/Sorting/QuickSortWorstCaseCON.css
+   :scripts: AV/Sorting/QuickSortWorstCaseCON.js
    :output: show
 
 This is terrible, no better than Bubble Sort.
@@ -220,8 +220,8 @@ This visualization explains the best-case running time of Quick Sort
 
 .. inlineav:: QuickSortBestCaseCON ss
    :long_name: Quicksort Best Case Analysis Slideshow
-   :links: AV/Development/QuickSortBestCaseCON.css
-   :scripts: AV/Development/QuickSortBestCaseCON.js
+   :links: AV/Sorting/QuickSortBestCaseCON.css
+   :scripts: AV/Sorting/QuickSortBestCaseCON.js
    :output: show
 
 Quicksort's average-case behavior falls somewhere
@@ -249,8 +249,8 @@ relation was formed.
 
 .. inlineav:: QuickSortAverageCaseCON ss
    :long_name: Quicksort Average Case Analysis Slideshow
-   :links: AV/Development/QuickSortAverageCaseCON.css
-   :scripts: AV/Development/QuickSortAverageCaseCON.js
+   :links: AV/Sorting/QuickSortAverageCaseCON.css
+   :scripts: AV/Sorting/QuickSortAverageCaseCON.js
    :output: show
 
 This is an unusual situation that the average case cost and the worst
