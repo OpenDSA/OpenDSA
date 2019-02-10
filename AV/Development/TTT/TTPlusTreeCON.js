@@ -1,7 +1,7 @@
+$(document).ready(function() {
 "use strict";
 
 (function () {
-  var global = window.ttplustree;
   var av = new JSAV("tree");
   var leafList = [];
   var arrowList = [];
@@ -62,7 +62,7 @@
 
   // Slide 1
   // Create insert node
-  var ins = global.newNode(av, ["52"], true, ["B"]); // Array for insert values
+  var ins = TTTreeNode.newNode(av, ["52"], true, ["B"]); // Array for insert values
   ins.array.element.addClass('insert-node');
   var canvas = $(ins.array.element).parent();
   var w = $(canvas).innerWidth();
@@ -75,7 +75,7 @@
   step(false, true);
 
   // Slide 2
-  var n1 = global.newNode(av, ["", ""], true, ["", ""]);
+  var n1 = TTTreeNode.newNode(av, ["", ""], true, ["", ""]);
   var nw = $(n1.array.element).outerWidth(); // Node width
   var nhg = 30; // Node horizontal gap
   var nvg = 70; // Node vertical gap
@@ -108,10 +108,10 @@
   // Slide 8
   var shift = ((nw) / 2) + (nhg / 2); // Horizontal shift for center nodes
   n1.move(-shift, 0);
-  var n2 = global.newNode(av, ["", ""], true, ["", ""]);
+  var n2 = TTTreeNode.newNode(av, ["", ""], true, ["", ""]);
   n2.move(shift, 0);
   var rect;
-  rect = global.drawRectangle(av, rect, n1, n2);
+  rect = TTTree.drawRectangle(av, rect, n1, n2);
   step();
 
   // Slide 9
@@ -123,15 +123,15 @@
   // Slide 10
   leafList.push(n1);
   leafList.push(n2);
-  global.drawLeafArrows(av, leafList, arrowList);
+  TTTree.drawLeafArrows(av, leafList, arrowList);
   step();
 
   // Slide 11
   n1.move(0, nvg);
   n2.move(0, nvg);
   rect.translateY(nvg);
-  global.drawLeafArrows(av, leafList, arrowList);
-  var n3 = global.newNode(av, ["", ""], false);
+  TTTree.drawLeafArrows(av, leafList, arrowList);
+  var n3 = TTTreeNode.newNode(av, ["", ""], false);
   n3.addChild(n1);
   n3.addChild(n2);
   n3.hideEdges();
@@ -188,7 +188,7 @@
 
   // Slide 21
   n3.child(1).highlightToggle();
-  var n4 = global.newNode(av, ["", ""], true, ["", ""]);
+  var n4 = TTTreeNode.newNode(av, ["", ""], true, ["", ""]);
   shift = nw + nhg;
   n4.move(shift, nvg);
   n3.addChild(n4);
@@ -197,8 +197,8 @@
   n3.child(0).move(-shift, 0);
   n3.child(1).move(-shift, 0);
   n3.updateEdges().showEdge(0).showEdge(1);
-  global.drawLeafArrows(av, leafList, arrowList);
-  rect = global.drawRectangle(av, rect, n3.child(1), n4);
+  TTTree.drawLeafArrows(av, leafList, arrowList);
+  rect = TTTree.drawRectangle(av, rect, n3.child(1), n4);
   step();
 
   // Slide 22
@@ -208,7 +208,7 @@
 
   // Slide 23
   leafList.push(n4);
-  global.drawLeafArrows(av, leafList, arrowList);
+  TTTree.drawLeafArrows(av, leafList, arrowList);
   step();
 
   // Slide 24
@@ -236,7 +236,7 @@
 
   // Slide 28
   n3.child(2).highlightToggle();
-  var n5 = global.newNode(av, ["", ""], true, ["", ""]);
+  var n5 = TTTreeNode.newNode(av, ["", ""], true, ["", ""]);
   shift = (nw * 1.5) + (nhg * 1.5);
   n5.move(shift, nvg);
   shift = (nw / 2) + (nhg / 2);
@@ -244,8 +244,8 @@
   n3.child(1).move(-shift);
   n3.child(2).move(-shift);
   n3.updateEdges();
-  global.drawLeafArrows(av, leafList, arrowList);
-  rect = global.drawRectangle(av, rect, n3.child(2), n5);
+  TTTree.drawLeafArrows(av, leafList, arrowList);
+  rect = TTTree.drawRectangle(av, rect, n3.child(2), n5);
   step();
 
   // Slide 29
@@ -255,7 +255,7 @@
 
   // Slide 30
   leafList.push(n5);
-  global.drawLeafArrows(av, leafList, arrowList);
+  TTTree.drawLeafArrows(av, leafList, arrowList);
   step();
 
   // Slide 31
@@ -267,13 +267,13 @@
 
   // Slide 33
   n3.highlightToggle();
-  var n6 = global.newNode(av, ["", ""], false, ["", ""]);
+  var n6 = TTTreeNode.newNode(av, ["", ""], false, ["", ""]);
   shift = (nw / 2) + (nhg / 2) + ((nw + nhg) / 2);
   n3.move(-shift, 0);
   n6.move(shift, 0);
   n3.updateEdges();
   var rect2;
-  rect2 = global.drawRectangle(av, rect2, n3, n6);
+  rect2 = TTTree.drawRectangle(av, rect2, n3, n6);
   step();
 
   // Slide 34
@@ -293,7 +293,7 @@
   step();
 
   // Slide 37
-  var n7 = global.newNode(av, ["", ""], false, ["", ""]);
+  var n7 = TTTreeNode.newNode(av, ["", ""], false, ["", ""]);
   n3.child(0).move(0, nvg);
   n3.child(1).move(0, nvg);
   n6.child(0).move(0, nvg);
@@ -303,7 +303,7 @@
   n6.move(0, nvg);
   n3.updateEdges();
   n6.updateEdges();
-  global.drawLeafArrows(av, leafList, arrowList);
+  TTTree.drawLeafArrows(av, leafList, arrowList);
   step();
 
   // Slide 38
@@ -348,15 +348,15 @@
   }
 
   // Setup initial tree state
-  var root = global.newNode(av, ["52", ""], false);
-  root.addChild(global.newNode(av, ["22", "46"], false));
-  root.addChild(global.newNode(av, ["65", "71"], false));
-  root.child(0).addChild(global.newNode(av, ["15", ""], true, ["J", ""]));
-  root.child(0).addChild(global.newNode(av, ["22", "33"], true, ["X", "O"]));
-  root.child(0).addChild(global.newNode(av, ["46", "47"], true, ["H", "L"]));
-  root.child(1).addChild(global.newNode(av, ["52", ""], true, ["B", ""]));
-  root.child(1).addChild(global.newNode(av, ["65", ""], true, ["S", ""]));
-  root.child(1).addChild(global.newNode(av, ["71", "89"], true, ["W", "M"]));
+  var root = TTTreeNode.newNode(av, ["52", ""], false);
+  root.addChild(TTTreeNode.newNode(av, ["22", "46"], false));
+  root.addChild(TTTreeNode.newNode(av, ["65", "71"], false));
+  root.child(0).addChild(TTTreeNode.newNode(av, ["15", ""], true, ["J", ""]));
+  root.child(0).addChild(TTTreeNode.newNode(av, ["22", "33"], true, ["X", "O"]));
+  root.child(0).addChild(TTTreeNode.newNode(av, ["46", "47"], true, ["H", "L"]));
+  root.child(1).addChild(TTTreeNode.newNode(av, ["52", ""], true, ["B", ""]));
+  root.child(1).addChild(TTTreeNode.newNode(av, ["65", ""], true, ["S", ""]));
+  root.child(1).addChild(TTTreeNode.newNode(av, ["71", "89"], true, ["W", "M"]));
 
   // Position tree nodes.
   var nw = $(root.array.element).outerWidth(); // Node width
@@ -377,10 +377,10 @@
   // Draw node edges
   root.updateEdges(true);
   leafList = root.getLeafs();
-  global.drawLeafArrows(av, leafList, arrowList);
+  TTTree.drawLeafArrows(av, leafList, arrowList);
 
   // Create "find" node and label
-  var find = global.newNode(av, [""], false); // Array for insert values
+  var find = TTTreeNode.newNode(av, [""], false); // Array for insert values
   find.array.element.addClass('find-node');
   var canvas = $(find.array.element).parent();
   var w = $(canvas).innerWidth();
@@ -395,7 +395,7 @@
   step(false, true);
 
   // Find 65
-  var result = global.findKey(av, 65, root, find);
+  var result = TTTree.findKey(av, 65, root, find);
 
   result.highlightToggle();
   find.highlightToggle();
@@ -403,7 +403,7 @@
   step();
 
   // Find 15
-  result = global.findKey(av, 15, root, find);
+  result = TTTree.findKey(av, 15, root, find);
 
   result.highlightToggle();
   find.highlightToggle();
@@ -411,7 +411,7 @@
   step();
 
   // Find 47
-  global.findKey(av, 47, root, find);
+  TTTree.findKey(av, 47, root, find);
 
   av.recorded();
 }());
@@ -459,15 +459,15 @@
   }
 
   // Setup initial tree state
-  var root = global.newNode(av, ["51", ""], false);
-  root.addChild(global.newNode(av, ["22", "46"], false));
-  root.addChild(global.newNode(av, ["65", "71"], false));
-  root.child(0).addChild(global.newNode(av, ["15", ""], true, ["J", ""]));
-  root.child(0).addChild(global.newNode(av, ["22", "33"], true, ["X", "O"]));
-  root.child(0).addChild(global.newNode(av, ["46", "47"], true, ["H", "L"]));
-  root.child(1).addChild(global.newNode(av, ["51", "52"], true, ["B", "T"]));
-  root.child(1).addChild(global.newNode(av, ["65", "70"], true, ["S", "F"]));
-  root.child(1).addChild(global.newNode(av, ["71", "89"], true, ["W", "M"]));
+  var root = TTTreeNode.newNode(av, ["51", ""], false);
+  root.addChild(TTTreeNode.newNode(av, ["22", "46"], false));
+  root.addChild(TTTreeNode.newNode(av, ["65", "71"], false));
+  root.child(0).addChild(TTTreeNode.newNode(av, ["15", ""], true, ["J", ""]));
+  root.child(0).addChild(TTTreeNode.newNode(av, ["22", "33"], true, ["X", "O"]));
+  root.child(0).addChild(TTTreeNode.newNode(av, ["46", "47"], true, ["H", "L"]));
+  root.child(1).addChild(TTTreeNode.newNode(av, ["51", "52"], true, ["B", "T"]));
+  root.child(1).addChild(TTTreeNode.newNode(av, ["65", "70"], true, ["S", "F"]));
+  root.child(1).addChild(TTTreeNode.newNode(av, ["71", "89"], true, ["W", "M"]));
 
   // Position tree nodes.
   var nw = $(root.array.element).outerWidth(); // Node width
@@ -488,10 +488,10 @@
   // Draw node edges
   root.updateEdges(true);
   leafList = root.getLeafs();
-  global.drawLeafArrows(av, leafList, arrowList);
+  TTTree.drawLeafArrows(av, leafList, arrowList);
 
   // Create "del" node and label
-  var del = global.newNode(av, [""], false); // Array for insert values
+  var del = TTTreeNode.newNode(av, [""], false); // Array for insert values
   del.array.element.addClass('delete-node');
   var canvas = $(del.array.element).parent();
   var w = $(canvas).innerWidth();
@@ -506,7 +506,7 @@
   step(false, true);
 
   // Find 51
-  var result = global.findKey(av, 51, root, del);
+  var result = TTTree.findKey(av, 51, root, del);
 
   // Delete 51
   del.highlightToggle();
@@ -528,7 +528,7 @@
   step();
 
   // Find 70
-  result = global.findKey(av, 70, root, del);
+  result = TTTree.findKey(av, 70, root, del);
 
   // Delete 70
   del.highlightToggle();
@@ -540,7 +540,7 @@
   step();
 
   // Find 65
-  result = global.findKey(av, 65, root, del);
+  result = TTTree.findKey(av, 65, root, del);
 
   // Delete 65
   del.highlightToggle();
@@ -563,7 +563,7 @@
   step();
 
   // Find 71
-  result = global.findKey(av, 71, root, del);
+  result = TTTree.findKey(av, 71, root, del);
 
   // Delete 71
   del.highlightToggle();
@@ -576,7 +576,7 @@
   root.child(1).drawEdge(2);
   leafList.splice(4, 1);
   arrowList.splice(3, 1)[0].hide();
-  global.drawLeafArrows(av, leafList, arrowList);
+  TTTree.drawLeafArrows(av, leafList, arrowList);
   step();
 
   av.effects.moveValue(root.child(1).array, 1, root.child(1).array, 0);
@@ -588,7 +588,7 @@
   step();
 
   // Find 71
-  global.findKey(av, 89, root, del);
+  TTTree.findKey(av, 89, root, del);
 
   // Delete 89
   del.highlightToggle();
@@ -604,12 +604,12 @@
   var node = root.child(0).removeChild(2);
   root.child(1).insertChild(0, node);
   shift = nw + nhg;
-  global.moveNodes(leafList, shift, 0);
+  TTTree.moveNodes(leafList, shift, 0);
   shift = shift / 2;
   root.child(0).move(shift, 0);
   root.child(1).move(-shift, 0);
   root.updateEdges(true);
-  global.drawLeafArrows(av, leafList, arrowList)
+  TTTree.drawLeafArrows(av, leafList, arrowList)
   step();
 
   av.effects.moveValue(root.array, 0, root.child(1).array, 0);
@@ -618,3 +618,5 @@
 
   av.recorded();
 }());
+
+});
