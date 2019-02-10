@@ -99,7 +99,7 @@ Your instructor will provide specific instructions about how to use Jison at you
   * Then type a valid expression for **Example Grammar 3** into the *Test Your Parser* area, and click the *Parse* button.   If your expression was indeed valid, you should see the message "The program is valid" produced.   Why?   Because *program* is the top-level start symbol in the Jison version of this grammar, and in the Jison specification above, this is the string that should be returned when we have a successful parse  (because of the line in the grammar **return "The program is valid"**).   If the expression you type in isn't valid, you will see a detailed error message that is produced by Jison.
     
 
-The review problem set for this module contains two review problems
+The practice problem set for this module contains two practice problems
 that involve simple Jison grammars.  Before starting those problems,
 there is one Jison convention for expressing lexical structure of
 which you need to be aware.  In the example grammar above, this
