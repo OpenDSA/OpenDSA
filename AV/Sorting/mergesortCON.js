@@ -1,8 +1,8 @@
 /*global ODSA */
-"use strict";
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "mergesortCON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
   var blockWidth = 32;  // Width of an array element
   var leftArray = [4, 8, 11, 25, 30];
@@ -14,8 +14,10 @@ $(document).ready(function () {
   // Calculate leftoffset: use width of the container to find center,
   // then subtract half of the 9-element-long array width
   var left_offset = ($("#mergesortCON").width() - blockWidth * 9) / 2;
+  var answerarr = av.ds.array(empty,   // let this auto-center
+                              {indexed: true, center: true, layout: "array"});
 
-  var move = function (a, o, i) {
+  function move(a, o, i) {
     av.step();
     av.umsg(interpret("av_c1"));
     av.effects.moveValue(a, i, answerarr, o);
@@ -23,19 +25,17 @@ $(document).ready(function () {
     av.step();
     av.umsg(interpret("av_c2"));
     a.highlight(i + 1);
-  };
+  }
 
-  var answerarr = av.ds.array(empty,   // let this auto-center
-                             {indexed: true, center: true, layout: "array"});
   // position the left array relative to the answer array
   var leftarr = av.ds.array(leftArray,
                             {indexed: true, center: false, layout: "array",
-                             left: left_offset - (blockWidth / 2), top: 75,
-				myAnchor: "left top", anchor: "left bottom"});
+                              left: left_offset - (blockWidth / 2), top: 75,
+                              myAnchor: "left top", anchor: "left bottom"});
   var rightarr = av.ds.array(rightArray,
                              {indexed: true, center: false, layout: "array",
-                              left: left_offset + blockWidth * 5.5, top: 75,
-                              myAnchor: "left top", anchor: "left bottom"});
+                               left: left_offset + blockWidth * 5.5, top: 75,
+                               myAnchor: "left top", anchor: "left bottom"});
   // Slide 1
   av.umsg(interpret("av_c3"));
   av.displayInit();

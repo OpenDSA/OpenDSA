@@ -48,21 +48,21 @@ $(document).ready(function() {
   av.label("$i=5$",  {top: "240px", left: "530px"});
 
   //Horizontal Line
-  av.g.line (leftAlign, 3 * rectHeight + topAlign,
-             leftAlign + 2 * rectWidth,
-             3 * rectHeight + topAlign,
-             {"stroke-width": 2, "arrow-start":"classic-wide-long"});
-  av.g.line (leftAlign + 3 * rectWidth,
-             3 * rectHeight + topAlign, leftAlign + 5 * rectWidth,
-             3 * rectHeight + topAlign,
-             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.g.line(leftAlign, 3 * rectHeight + topAlign,
+            leftAlign + 2 * rectWidth,
+            3 * rectHeight + topAlign,
+            {"stroke-width": 2, "arrow-start": "classic-wide-long"});
+  av.g.line(leftAlign + 3 * rectWidth,
+            3 * rectHeight + topAlign, leftAlign + 5 * rectWidth,
+            3 * rectHeight + topAlign,
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.line(leftAlign, 2.5 * rectHeight + topAlign,
-           leftAlign, 3.5 * rectHeight + topAlign);
+            leftAlign, 3.5 * rectHeight + topAlign);
   av.g.line(leftAlign + 5 * rectWidth, 2.5 * rectHeight + topAlign,
             leftAlign + 5 * rectWidth, 3.5 * rectHeight + topAlign);
-  av.label ("$n - 1$", 
-            {top: topAlign + 1.5 * rectHeight,
-             left: leftAlign + 2 * rectWidth + labelGap}); 
+  av.label("$n - 1$",
+           {top: topAlign + 1.5 * rectHeight,
+             left: leftAlign + 2 * rectWidth + labelGap});
   av.step();
 
   //Slide 5

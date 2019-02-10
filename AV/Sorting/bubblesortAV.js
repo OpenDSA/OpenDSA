@@ -1,6 +1,24 @@
-"use strict";
 /*global alert: true, ODSA */
-(function ($) {
+$(document).ready(function() {
+  "use strict";
+  var av,     // for JSAV library object
+      arr,    // for the JSAV array
+      pseudo; // for the pseudocode display
+
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code,                   // get the code object
+      settings = config.getSettings();      // Settings for the AV
+
+  // add the layout setting preference
+  var arrayLayout =
+      settings.add("layout",
+                   {type: "select", options: {bar: "Bar", array: "Array"},
+                     label: "Array layout: ", value: "bar"});
+
+  // Initialize the arraysize dropdown list
+  ODSA.AV.initArraySize(5, 16, 8);
   // Process About button: Pop up a message with an Alert
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
@@ -47,11 +65,10 @@
   // Execute the "Run" button function
   function runIt() {
     var arrValues = ODSA.AV.processArrayValues();
-    
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       ODSA.AV.reset(true);
-      av = new JSAV($('.avcontainer'), {settings: settings});
+      av = new JSAV($(".avcontainer"), {settings: settings});
 
       // Create a new array using the layout the user has selected
       arr = av.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
@@ -64,31 +81,10 @@
   }
 
   // Connect action callbacks to the HTML entities
-  $('#about').click(about);
-  $('#run').click(runIt);
-  $('#reset').click(ODSA.AV.reset);
-
-  //////////////////////////////////////////////////////////////////
-  // Start processing here
-  //////////////////////////////////////////////////////////////////
-  var av,     // for JSAV library object
-      arr,    // for the JSAV array
-      pseudo; // for the pseudocode display
-
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig(),
-      interpret = config.interpreter,       // get the interpreter
-      code = config.code,                   // get the code object
-      settings = config.getSettings();      // Settings for the AV
+  $("#about").click(about);
+  $("#run").click(runIt);
+  $("#reset").click(ODSA.AV.reset);
 
   // Placeholder text translation needs to be set explicitly
   $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
-
-  // add the layout setting preference
-  var arrayLayout = settings.add("layout",
-          {"type": "select", "options": {"bar": "Bar", "array": "Array"},
-           "label": "Array layout: ", "value": "bar"});
-
-  // Initialize the arraysize dropdown list
-  ODSA.AV.initArraySize(5, 16, 8);
-}(jQuery));
+});

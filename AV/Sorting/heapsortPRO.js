@@ -13,7 +13,7 @@ $(document).ready(function() {
       codeOptions = {after: {element: $(".instructions")}, visible: true},
       settings = config.getSettings(),      // Settings for the AV
 
-  // Create a JSAV instance
+      // Create a JSAV instance
       exercise,
       av = new JSAV($(".avcontainer"), {settings: settings});
 
@@ -47,8 +47,8 @@ $(document).ready(function() {
     exInitData.gen_array = initData;
     ODSA.AV.logExerciseInit(exInitData);
 
-    bh = av.ds.binheap(initData, {nodegap: 25,
-                                  compare: function(a, b) { return b - a; }});
+    bh = av.ds.binheap(initData,
+                       {nodegap: 25, compare: function(a, b) { return b - a; }});
     swapIndex = av.variable(-1);
     av.displayInit();
 
@@ -70,8 +70,9 @@ $(document).ready(function() {
   }
 
   function model(modelav) {
-    var modelbh = modelav.ds.binheap(initData,
-                          {nodegap: 20, compare: function(a, b) { return b - a; }});
+    var modelbh =
+        modelav.ds.binheap(initData,
+                           {nodegap: 20, compare: function(a, b) { return b - a; }});
     modelbh.origswap = modelbh.swap; // store original heap grade function
     // set all steps gradeable that include a swap
     modelbh.swap = function(ind1, ind2, opts) {

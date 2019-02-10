@@ -1,6 +1,36 @@
-"use strict";
 /*global alert: true, ODSA */
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter;       // get the interpreter
+
+  // Placeholder text translation needs to be set explicitly
+  $("#increments").attr("placeholder", interpret("av_incrementsPlaceholder"));
+
+  // Create the AV object. We turn off slideshow mode, since this is a
+  // "static" form-based activity
+  var av = new JSAV("ssperform", {animationMode: "none"});
+
+  // The permanent array of numbers.
+  // This is "permanent" in that we want to use the same values
+  // each time that we sort, so that we can compare costs.
+  // It only changes when the user re-sets the array size, at which
+  // time a new set of random numbers is drawn.
+  var theArray = [];
+
+  var ASize = parseInt($("#arraysize").val(), 10); // Array size
+
+  var comps; // Count for comparisions
+  var swaps; // Count for swaps
+  // These are stored to compare later against user's series for credit
+  var twosComps; // Number of comparisons for Divide-by-2's series
+  var twosSwaps; // Number of swaps for Divide-by-2's series
+
+  // True if we have already printed baseline info;
+  // False means we need to print it out again on "run", and toggle
+  var InitFlag = false;
+
   // Process About button: Pop up a message with an Alert
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
@@ -68,11 +98,10 @@ $(document).ready(function () {
       }
     }
   }
-      
+
   // Validate the increment series
   function checkIncrements() {
     var i,
-        num,
         prev = Number.MAX_VALUE;
 
     // Convert user's increments to an array,
@@ -104,7 +133,7 @@ $(document).ready(function () {
 
     // This should only happen the very first time we run
     if (theArray.length !== ASize) { initArray(ASize); }
-      
+
     // Log the initial state of the exercise
     var initData = {};
     initData.user_array_len = ASize;
@@ -171,39 +200,4 @@ $(document).ready(function () {
   $("#clear").click(Clear);
   $("#arraysize").focusout(Change);
   $("#increments").focusout(checkIncrements);
-
-
-  //////////////////////////////////////////////////////////////////
-  // Start processing here
-  //////////////////////////////////////////////////////////////////
-
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig(),
-      interpret = config.interpreter;       // get the interpreter
-
-  // Placeholder text translation needs to be set explicitly
-  $("#increments").attr("placeholder", interpret("av_incrementsPlaceholder"));
-
-  // Create the AV object. We turn off slideshow mode, since this is a
-  // "static" form-based activity
-  var av = new JSAV("ssperform", {"animationMode": "none"});
-
-  // The permanent array of numbers.
-  // This is "permanent" in that we want to use the same values
-  // each time that we sort, so that we can compare costs.
-  // It only changes when the user re-sets the array size, at which
-  // time a new set of random numbers is drawn.
-  var theArray = [];
-
-  var ASize = parseInt($("#arraysize").val(), 10); // Array size
-
-  var comps; // Count for comparisions
-  var swaps; // Count for swaps
-  // These are stored to compare later against user's series for credit
-  var twosComps; // Number of comparisons for Divide-by-2's series
-  var twosSwaps; // Number of swaps for Divide-by-2's series
-
-  // True if we have already printed baseline info;
-  // False means we need to print it out again on "run", and toggle
-  var InitFlag = false;
 });

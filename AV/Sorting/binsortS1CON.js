@@ -1,6 +1,6 @@
 /*global ODSA, JSAV, document */
-"use strict";
 $(document).ready(function() {
+  "use strict";
   var av_name = "binsortS1CON";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 

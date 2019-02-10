@@ -123,8 +123,8 @@ $(document).ready(function() {
     }
 
     // Dynamically create and position arrays
-    var arr = jsav.ds.array(contents, {indexed: true, center: false,
-                                     layout: "array"});
+    var arr = jsav.ds.array(contents,
+                            {indexed: true, center: false, layout: "array"});
 
     var id = "array_" + level + "_" + column;
     if (isModelAnswer) {
