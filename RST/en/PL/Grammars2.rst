@@ -25,12 +25,11 @@ Example Grammar 2
 .. math::
 
    \begin{eqnarray*} 
-   <exp> &::=& <exp>\\
-   &|& <exp> + <exp> \\
+   <exp> &::=& <exp> + <exp> \\
    &|& <exp> - <exp> \\
    &|& <exp> * <exp> \\
    &|& <exp> / <exp> \\
-   <exp> &::=& <pri> \\
+   &|& <pri> \\
    &|& ( <exp> ) \\
    <pri> &::=& A | B | C | \ldots | X | Y | Z
    \end{eqnarray*}

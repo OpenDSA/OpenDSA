@@ -107,15 +107,15 @@ convention is illustrated in the specification::
       
   [A-Z]                 return "PRI"    /* A primary is an individual upper-case letter */
 
-The **[A-Z]** notation tells Jison that a primary (that is, a variable in our simple expression language) must consist of one upper-case letter between "A" and "Z".   If we also wanted to allowe lower-case letters to be used, the following specification would be given::
+The **[A-Z]** notation tells Jison that a primary (that is, a variable in our simple expression language) must consist of one upper-case letter between "A" and "Z".   If we also wanted to allow lower-case letters to be used, the following specification would be given::
 
-  [A-Z]|[a-z]           return "PRI"    /* A primary is an individual upper-case letter */
+  [A-Z]|[a-z]           return "PRI"    /* A primary is an individual upper- or lower-case letter */
 
 Note the vertical line, which indicates "or".
 
 If we wanted to specify that a primary is a single upper-case letter followed by a single digit, we would have::
   
-  [A-Z][0-9]            return "PRI"    /* A primary is an individual upper-case letter */
+  [A-Z][0-9]            return "PRI"    /* A primary is an individual upper-case letter followed by a single digit */
 
 Here the absence of a vertical line specifies that the two characters must appear in sequence, as opposed to one or the other.
   
