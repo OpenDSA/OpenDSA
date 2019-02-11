@@ -98,8 +98,6 @@ tm.isFinal = function(state) {
 
 // given a list of configurations, returns the set of next configurations
 tm.traverse = function(currentStates) {
-	console.log("Current states:" + currentStates[0]);	//this is also undefined
-	console.log("length: " + currentStates.length); //but the length is 1
 	var nextStates = [];
 	for (var j = 0; j < currentStates.length; j++) {
 		var currentState = currentStates[j];
@@ -110,7 +108,11 @@ tm.traverse = function(currentStates) {
 			for (var i = 0; i < weight.length; i++) {
 				weight[i] = toColonForm(weight[i]);
 				var w = weight[i].split(':');
-				console.log("The w:" + w[0]);
+				console.log("START=========");
+				for (var d = 0; d < w.length; d++){
+					console.log(w[d]);
+				}
+				console.log("END=========");
 				console.log("The tape value:" + currentState.tape.value());	//this is undefined
 				if (currentState.tape.value() === w[0]) {
 					// here
@@ -120,14 +122,15 @@ tm.traverse = function(currentStates) {
 					nextStates.push(nextConfig);
 					break;
 				}
-				// if (currentState.tape.value() === w[0]) {
+				if (currentState.tape.value() !== w[0]) {
+					console.log("Not equal");
 				// 	// and here
 				// 	var nextConfig = new Configuration(next, currentState.tape);
 				// 	nextConfig.tape.value(w[1]);
 				// 	nextConfig.tape.move(w[2]);
 				// 	nextStates.push(nextConfig);
 				// 	break;
-				// }
+				}
 			}
 		}
 	}
@@ -268,7 +271,7 @@ tm.initFromXML = function(text) {
 // Configuration class
 var Configuration = function(state, tape) {
 	this.state = state;
-	console.log("My state: " + state);
+	console.log("My state: " + this.state.value());
 	console.log("My tape: " + tape);
 	// this.tape = new Tape(tape);
 	this.tape = new Tape(tape);
