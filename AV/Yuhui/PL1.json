@@ -1,0 +1,15 @@
+{
+  "translations" : {
+    "en": {
+      ".avTitle": "Regular Pumping Lemma",
+      "av_Authors": "Yuhui",
+      "#about": "About",
+      "#enter": "Enter",
+      "#next": "Next Step",
+      "#clear": "Clear",
+      "#explain": "Explain",
+      "#reset": "Reset",
+      "#setxyz": "Set xyz"
+    }
+  }
+}

@@ -48,6 +48,11 @@
     "points": 0.0, 
     "required": false
   }, 
+  "glob_ff_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  },
   "glob_ka_options": {
     "threshold": 5, 
     "points": 1.0, 
@@ -78,12 +83,22 @@
         "IntroADTSumm": {
           "threshold": 4
         }
+      },
+      "CMP/DatatypesCM": {
+        "CMdatatypeSumm": {
+          "threshold": 5
+        }
       }
     },
     "Object Oriented Programming": {
       "Design/IntroOO": {}, 
       "Design/IntroUML": {}, 
-      "Design/IntroProcess": {}
+      "Design/IntroProcess": {},
+      "CMP/ObjectorientedCM": {
+        "CMoopSumm": {
+          "threshold": 5
+        }
+      }
     },
     "List Interface & Array based Lists": {
       "List/ListADT": {
@@ -142,7 +157,8 @@
     },
     "Introduction to Pointers in Java": {
       "PointersJava/PointerIntro": {},
-      "PointersJava/BasicPointers": {
+      "PointersJava/BasicPointers1": {},
+      "PointersJava/BasicPointers2": {
         "PointerEX1PRO": {
           "threshold": 1
         }, 
@@ -153,9 +169,15 @@
       "PointersJava/Syntax": {},
       "PointersJava/LocalMem": {}, 
       "PointersJava/HeapMem": {}, 
-      "PointersJava/Links": {
+      "PointersJava/Links1": {
         "PointerEX3PRO": {
           "threshold": 1
+        }
+      },
+      "PointersJava/Links2": {},
+      "CMP/PointersCM": {
+        "CMpointersSumm": {
+          "threshold": 5
         }
       },
       "PointersJava/Exercises": {}

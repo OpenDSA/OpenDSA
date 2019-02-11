@@ -1,8 +1,19 @@
-$(document).ready(function() {
-  "use strict";
-  var av_name = "paramPassingMacro";
+/* global first_time, document, console, $, JSAV */
 
-  var av = new JSAV(av_name);
+(function ($) {
+//$(document).ready(function() {
+  "use strict";
+//   var av_name = "paramPassingMacro";
+// 
+//   var av = new JSAV(av_name);
+
+function do_everything() {
+    
+
+   ODSA.AV.reset(true);
+   var av_name = $('.avcontainer');
+   var av = new JSAV(av_name);
+   CallByAllFive.init();
 
   // Relative offsets
   var leftMargin = 25;
@@ -113,8 +124,13 @@ $(document).ready(function() {
   av.displayInit();
   av.step();
 
-  av.umsg("In macro expansion, the function is spliced in main. "+
-          "Then code is executed like normal.");
+//   av.umsg("In macro expansion, the function is spliced in main. "+
+//           "Then code is executed like normal.");
+
+    av.umsg("Macro expansion results in the code on the right.   Notice that the text of "+
+	    "the arguments has been substituted for the function's parameters (Step 1), and then " +
+	    "the text of the resulting code has been spliced into main (Step 2).");
+    
   pseudo.show();
 
   for(var i = 0; i < mainIndex - 1; i++){
@@ -213,8 +229,8 @@ $(document).ready(function() {
 
     destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
-    var outMsg = ((mainDestContext)?'main\'s':'global')+" "+destStr+
-                  ' set to the value of '+rhs.value;
+    var outMsg = ((mainDestContext)?'main\'s':'the global scope\'s')+" "+destStr+
+                  ' is set to the value of '+rhs.value;
 
     av.umsg(outMsg);
     pseudo.setCurrentLine(currentLineMain++);
@@ -251,6 +267,27 @@ $(document).ready(function() {
 
 
   if(CallByAllFive.bymacOutput != output){
-    alert("mymacro error");
+    alert("bymacro error");
   }
-});
+
+} // End do_everything
+    
+    function about() {
+	alert("Generate a (randomized) illustration of macro-style parameter passing.");
+    };
+    
+    function help() {
+	alert("Click the generate button each time you want to launch a new slide show.");
+    };
+    
+    $('#about').click(about);
+    $('#help').click(help);
+    $('#genprog').click(do_everything);
+    $('#reset').click(ODSA.AV.reset);
+
+//    if (first_time) { console.log("Hello"); do_everything(); first_time = false; }
+
+}(jQuery));
+
+
+//});

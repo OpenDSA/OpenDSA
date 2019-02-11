@@ -164,6 +164,7 @@ controllerProto.collapseState = function(node, transitionOptions) {
 //    maxHeight: 800
 //  });
 //  $dialog.dialog("open");
+this.transitions = transitions;
 };
 
 // add empty transitions to states without transitions to each other
@@ -328,6 +329,7 @@ controllerProto.visualizeConversion = function(transitionOptions = {}, finaGraph
   }
   this.jsav.step();
   this.jsav.umsg("After removing all nodes that are not fianl and not start, the resulting Regular Exepression is");
+  this.transitions.hide();
   drawTheFinalGraph(this.jsav, finaGraphOptions, this.generateExpression());
 }
 function getAllNonStartNorFinalStates(graph){

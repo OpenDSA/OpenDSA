@@ -19,7 +19,7 @@ $(document).ready(function() {
 	    "                return 0;",
 	    "             } else {",
 	    "                return SOMETHING ELSE;",
-	    "                return fp.add( fp.hd(ns), sum(fp.tl(ns) );",
+	    "                return fp.add( fp.hd(ns), sum(fp.tl(ns)) );",
 	    "             }",
 	    "          }",
 	    ""
@@ -61,7 +61,7 @@ $(document).ready(function() {
     labelReturn.hide();
 
     // Slide 1
-    av.umsg("Following the alternatives in the BNF definition of a list, we want a function that returns the sum of the numbers in list below");
+    av.umsg("Following the alternatives in the BNF definition of a list, we want a function that returns the sum of the numbers in the list below");
     pseudo.hide([3,5,8]);
     arr.show();
     av.displayInit();

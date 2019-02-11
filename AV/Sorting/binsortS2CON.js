@@ -1,8 +1,8 @@
 /*global ODSA */
-"use strict";
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "binsortS2CON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
   var maxKeyLength = 15;
   var theArray = [12, 14, 2, 7, 0];
@@ -16,11 +16,11 @@ $(document).ready(function () {
 
   // Create an array object under control of JSAV library
   var arrA = av.ds.array(theArray, {indexed: true});
-  var labelA = av.label("A", {before: arrA, left: 325, top: -7});
   var arrB = av.ds.array(emptyLong, {indexed: true});
-  var labelB = av.label("B", {before: arrB, left: 170, top: 69});
   var arrOut = av.ds.array(emptyShort, {indexed: true});
-  var labelOut = av.label("Output", {before: arrOut, left: 280, top: 145});
+  av.label("Output", {before: arrOut, left: 280, top: 145});
+  av.label("A", {before: arrA, left: 325, top: -7});
+  av.label("B", {before: arrB, left: 170, top: 69});
   av.umsg(interpret("av_c1"));
   av.displayInit();
   for (i = 0; i < theArray.length; i++) {

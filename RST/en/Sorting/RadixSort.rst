@@ -114,8 +114,8 @@ Radix Sort Analysis
 
 .. inlineav:: RadixSortAnalysisCON ss
    :long_name: Radix Sort Analysis Slideshow
-   :links: AV/Development/RadixSortAnalysisCON.css
-   :scripts: AV/Development/RadixSortAnalysisCON.js
+   :links: AV/Sorting/RadixSortAnalysisCON.css
+   :scripts: AV/Sorting/RadixSortAnalysisCON.js
    :output: show
 
 **Is it really a reasonable assumption to treat** :math:`k` **as a

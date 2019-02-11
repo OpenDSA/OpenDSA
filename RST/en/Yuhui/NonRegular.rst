@@ -33,7 +33,7 @@ this can happen.)
 
 Let's start with some basic questions.
 First, if a language :math:`L` is finite, is :math:`L` regular?
-Yes! All finite languages are regular.
+Yes! All finite languages are regular. [Why?]
 
 If :math:`L` is infinite, is :math:`L` regular? 
 It might be and it might not.
@@ -42,14 +42,16 @@ For example,
 is an infinite regular language. 
 
 So, what about a language that was mentioned earlier, with no clear resolution?
-:math:`L_2 = \{a^nb^n | n > 0 \}` is an infinite language.
+:math:`L_2 = \{a^nb^n | n > 0 \}` is an infinite language. [How do we
+know this?]
 
 **Prove** that :math:`L_2 = \{a^nb^n | n > 0 \}` is not regular.
+The follosing visualization presents Proof 1 for this.
 
-.. inlineav:: Proof1PumpingLemmaCON ss
-   :long_name: Pumping Lemma Proof 1 Slideshow
-   :links: AV/VisFormalLang/Proof1PumpingLemmaCON.css
-   :scripts: AV/VisFormalLang/Proof1PumpingLemmaCON.js
+.. inlineav:: Proof1NonRegularCON ss
+   :long_name: Proof 1 Non-Regular Grammar Slideshow
+   :links: AV/VisFormalLang/Proof1NonRegularCON.css
+   :scripts: AV/VisFormalLang/Proof1NonRegularCON.js
    :output: show
 
 
@@ -59,10 +61,11 @@ The Concept of Pumping
 Proof 2 (by contradiction, but worded a little differently)
 
    | Proof: Suppose that :math:`L_2` is regular. 
-   | Then  :math:`\exists` DFA :math:`M` that recognizes :math:`L_2`.
+   | Then there exists DFA :math:`M` that recognizes :math:`L_2`.
    | :math:`M` has a finite number of states, say :math:`k` states. 
    | Consider a long string :math:`a^kb^k \in L_2`. 
-   | Since there are :math:`k` states and :math:`k` a's,
+   | Since there are :math:`k` states and :math:`k` a's
+     (followed by some b's),
      some state in :math:`M` must be reached more than once when
      following the path of :math:`a^k`. 
    | In that case, there is a loop with one or more a's
@@ -75,7 +78,7 @@ Proof 2 (by contradiction, but worded a little differently)
      but this string is not in :math:`L_2`. Contradiction! 
    | Thus, :math:`L_2` is not regular.
 
-In this version, we introduce the concept of "pumping" the string as
+In Proof 2, we introduce the concept of "pumping" the string as
 we go around the loop.
 Loops are how we get infinite languages.
 They are also how we lose count or otherwise lose the ability to
@@ -108,20 +111,11 @@ In general, the DFA accepts all strings like  :math:`w = w_1v^*w_2`.
 Pumping Lemma
 ~~~~~~~~~~~~~
 
-Let :math:`L` be an infinite regular language. 
-:math:`\exists` a constant :math:`m > 0` such that any
-:math:`w \in L` with :math:`|w| \ge m` can be decomposed into three
-parts as :math:`w=xyz` with:
-
-   |  :math:`|xy| \le m`
-   |  :math:`|y| \ge 1`
-   |  :math:`xy^iz \in L` for all :math:`i\ge 0`
-
-**Meaning:** Every sufficiently long string in :math:`L`
-(the constant :math:`m` corresponds to the finite number of states in
-:math:`M`)
-can be partitioned into three parts such that the middle 
-part can be "pumped", resulting in strings that must be in :math:`L`. 
+.. inlineav:: PumpingLemmaCON ss
+   :long_name: Pumping Lemma Slideshow
+   :links: AV/VisFormalLang/PumpingLemmaCON.css
+   :scripts: AV/VisFormalLang/PumpingLemmaCON.js
+   :output: show
 
 **How To Use the Pumping Lemma to prove L is not regular:**
 
@@ -129,12 +123,12 @@ part can be "pumped", resulting in strings that must be in :math:`L`.
    | Assume L is regular.
    | Therefore :math:`L` satisfies the pumping lemma. 
    | Choose a long string :math:`w \in L`, :math:`|w| \ge m`.
-     (The choice of the string is crucial.
-     We must pick a string that will yield a contradiction). 
+     The choice of the string is crucial.
+     We must pick a string that will yield a contradiction.
    | Show that there is NO division of :math:`w` into :math:`xyz`
-     (must consider all possible divisions) such that
+     (we must consider all possible divisions) such that
      :math:`|xy| \le m`, :math:`|y| \ge 1` and :math:`xy^iz \in L \forall i \ge 0`.
-   | The pumping lemma does not hold. Contradiction!
+   | If we show that there is NO possible division, then we have a contradiction!
    | :math:`\Rightarrow L` is not regular.
 
 Note that, unfortunately, the pumping lemma is one-way:
@@ -145,12 +139,6 @@ is regular.
 And the pumping lemma is not a universal solution for determining that
 a language is non-regular.
 Its just a tool in the toolbox.
-
-.. inlineav:: PumpingLemma ss
-   :long_name: Pumping Lemma Slideshow
-   :scripts: AV/Yuhui/PumpingLemma.js
-   :output: show
-
 
 .. topic:: Example
 
@@ -557,3 +545,7 @@ not regular. Contradiction.
         :math:`L_4 = L_3 \cap \{a^{*}b^{*}\} = \{a^nb^n | n > 0\}` is regular. 
       | We already proved that :math:`L_4` is not regular. Contradiction.
       | :math:`\Rightarrow L_1` is not regular.
+
+
+.. avembed:: AV/Yuhui/PL1.html ss
+   :long_name: Regular Pumping Lemmma

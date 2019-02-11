@@ -1,8 +1,18 @@
-$(document).ready(function() {
-  "use strict";
-  var av_name = "paramPassingByRef";
+/* global first_time, document, console, $, JSAV */
 
-  var av = new JSAV(av_name);
+(function ($) {
+//$(document).ready(function() {
+  "use strict";
+//   var av_name = "paramPassingByRef";
+// 
+//   var av = new JSAV(av_name);
+
+function do_everything() {
+    
+   ODSA.AV.reset(true);
+   var av_name = $('.avcontainer');
+   var av = new JSAV(av_name);
+    CallByAllFive.init();
 
   // Relative offsets
   var leftMargin = 25;
@@ -217,7 +227,7 @@ $(document).ready(function() {
     destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
     var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
-                  ' set to the value of '+rhs.value;
+                  ' is set to the value of '+rhs.value;
 
     av.umsg(outMsg);
     pseudo.setCurrentLine(currentLineFoo++);
@@ -256,4 +266,25 @@ $(document).ready(function() {
   if(CallByAllFive.byrefOutput != output){
     alert("byref error");
   }
-});
+
+
+} // End do_everything
+    
+    function about() {
+	alert("Generate a (randomized) illustration of call-by-reference parameter passing.");
+    };
+    
+    function help() {
+	alert("Click the generate button each time you want to launch a new slide show.");
+    };
+    
+    $('#about').click(about);
+    $('#help').click(help);
+    $('#genprog').click(do_everything);
+    $('#reset').click(ODSA.AV.reset);
+
+//    if (first_time) { console.log("Hello"); do_everything(); first_time = false; }
+
+}(jQuery));
+
+//});

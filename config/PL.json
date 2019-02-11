@@ -24,6 +24,11 @@
     "points": 0.0,
     "required": false
   },
+  "glob_ff_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  },
   "glob_ka_options": {
     "threshold": 3,
     "points": 1.0,
@@ -208,12 +213,12 @@
       },
       "PL/RecursiveFunctions": {}
     },
-    "Interpreting the Functional Language SLang 1": {
+    "Interpreting the Functional Language SLang1": {
       "PL/SLang1": {},
       "PL/Environment": {},
       "PL/SLang1withLetExpressions": {}
     },
-    "Interpreting the Imperative Language SLang 2": {
+    "Interpreting the Imperative Language SLang2": {
       "PL/SLang2": {},
       "PL/SLang2TTK": {}
     },

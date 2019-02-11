@@ -66,7 +66,7 @@ Note that:
 #. We are limiting ourselves to lists of integers for now, and
 
 #. The grammar above describes the **abstract syntax or structure** of
-   lists, not its **concrete structure**, that is, how lists actually
+   lists, not its **concrete syntax**, that is, how lists actually
    appear in any particular FP language.
 
 For our functional programming module, the concrete syntax of lists will use square brackets

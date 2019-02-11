@@ -1,22 +1,11 @@
 /*global ODSA */
-$(document).ready(function () {
+$(document).ready(function() {
   "use strict";
-  var move = function (o, i) {
-    av.step();
-    av.umsg(interpret("av_c1"));
-    av.effects.moveValue(arrtemp, i, arr, o);
-    arrtemp.unhighlight(i);
-    av.step();
-    if (o !== 8) {
-      av.umsg(interpret("av_c2"));
-      arrtemp.highlight(i + 1);
-    }
-  };
 
   var av_name = "mergeImplS1CON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
-
+  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var startArray = [4, 8, 11, 25, 30, 2, 3, 17, 20];
+  var i;
   var empty = [];
   empty.length = 9;
   var av = new JSAV(av_name);
@@ -25,10 +14,23 @@ $(document).ready(function () {
                         {indexed: true, center: true, layout: "array"});
   var arrtemp = av.ds.array(empty,
                             {indexed: true, center: true, layout: "array"});
+
+  function move(o, ii) {
+    av.step();
+    av.umsg(interpret("av_c1"));
+    av.effects.moveValue(arrtemp, ii, arr, o);
+    arrtemp.unhighlight(i);
+    av.step();
+    if (o !== 8) {
+      av.umsg(interpret("av_c2"));
+      arrtemp.highlight(ii + 1);
+    }
+  }
+
   av.umsg(interpret("av_c3"));
   av.displayInit();
   av.umsg(interpret("av_c4"));
-  for (var i = 0; i < empty.length; i++) {
+  for (i = 0; i < empty.length; i++) {
     av.effects.moveValue(arr, i, arrtemp, i);
   }
   av.step();

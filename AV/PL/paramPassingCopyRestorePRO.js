@@ -3,7 +3,7 @@
 $(document).ready(function () {
   // Relative offsets
   var leftMargin = 25;
-  var topMargin = 200;
+  var topMargin = 250;
   var currentTopMargin = 0;
   var currentFooTopMargin;
   var labelMargin = 10;
@@ -26,8 +26,12 @@ $(document).ready(function () {
   var currentLineMain = 0;
   var currentLineFoo = 0;
   var highlightedLine;
+  var instructionLabel;
   var output = '';
   var jsavElements;
+
+  var instructionRegular = 'Evaluate the value of the right hand side of the hightlighted line and type that into the input above. Then click the location where that value belongs.';
+  var instructionRestore = 'Restore the two variables one at a time. The order in which you do this does not matter in this example.';
 
   var currentStep = 0;
   var mainSteps = 0;
@@ -68,6 +72,7 @@ $(document).ready(function () {
       }
       else{
         pseudo.setCurrentLine(currentLineMain);
+        instructionLabel.text(instructionRestore);
       }
       valInput.focus();
     }
@@ -86,7 +91,7 @@ $(document).ready(function () {
     mainVarNum = 0;
     mainIndex = null;
 
-    fooIndex = mainIndex = null;
+    fooIndex = mainIndex = instructionLabel = null;
     classVars = {};
     classLabels = {};
     mainVars = {};
@@ -111,15 +116,19 @@ $(document).ready(function () {
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+    alert(ODSA.AV.aboutstring('Copy-Restore proficiency exercise', 'Cory Sanin'));
   }
 
   // generates the model answer
   function modelSolution(modeljsavAV) {
+    var currentTopMargin = 0;
+    var topMargin = 0;
     var fooVars = {};
     var classVars = {};
     var mainVars = {};
     var cprVars = {};
+    var labelobj;
+    var currentLine = fooIndex;
     mainSteps = 0;
     function unhighlightAll(){
       unhighlightElements(classVars);
@@ -127,18 +136,75 @@ $(document).ready(function () {
       unhighlightElements(fooVars);
     }
 
+    var pseudo = modeljsavAV.code(codeLines,
+      {left: leftMargin, top: topMargin, lineNumbers: false}
+    );
+    jsavElements.push(pseudo);
+
     //run foo()
-    for(var arr in initialArrays.fooVars){
-      fooVars[arr] = modeljsavAV.ds.array(initialArrays.fooVars[arr]);
-      jsavElements.push(fooVars[arr]);
-    }
     for(arr in initialArrays.classVars){
-      classVars[arr] = modeljsavAV.ds.array(initialArrays.classVars[arr]);
-      jsavElements.push(classVars[arr]);
+      labelobj = modeljsavAV.label(arr,
+        {
+          relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+          left: leftMargin, top: currentTopMargin
+        }
+      );
+      classVars[arr] = modeljsavAV.ds.array(initialArrays.classVars[arr],
+        {
+          indexed: initialArrays.classVars[arr].length > 1,relativeTo:labelobj, anchor:"right top",
+          myAnchor:"left top", left: labelMargin,
+          top:-1*jsavArrayOffset
+        }
+      );
+      jsavElements.push(classVars[arr], labelobj);
+      currentTopMargin += lineHeight;
     }
+
+    jsavElements.push(modeljsavAV.label("main",
+      {
+        relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+        left: leftMargin, top: currentTopMargin
+      }
+    ));
+    var fooLabel = modeljsavAV.label("foo",
+      {
+        relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+        left: leftMargin+boxWidth+boxPadding*2, top: currentTopMargin
+      }
+    );
+    jsavElements.push(fooLabel);
+
+    currentTopMargin += lineHeight;
+
+    var numVars = Object.keys(initialArrays.fooVars).length;
+
+    jsavElements.push(modeljsavAV.g.rect(2*leftMargin+pseudo.element[0].clientWidth,
+                            currentTopMargin+topMargin,
+                            boxWidth,
+                            lineHeight*numVars+boxPadding*numVars
+                      ));
+    jsavElements.push(modeljsavAV.g.rect(2*leftMargin+pseudo.element[0].clientWidth+boxWidth+
+                              boxPadding*2,
+                            currentTopMargin+topMargin,
+                            boxWidth,
+                            lineHeight*numVars+boxPadding*numVars
+                      ));
+
     for(arr in initialArrays.mainVars){
-      mainVars[arr] = modeljsavAV.ds.array(initialArrays.mainVars[arr]);
-      jsavElements.push(mainVars[arr]);
+      labelobj = modeljsavAV.label(arr,
+        {
+          relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+          left: leftMargin+3, top: currentTopMargin
+        }
+      );
+      mainVars[arr] = modeljsavAV.ds.array(initialArrays.mainVars[arr],
+        {
+          indexed: initialArrays.mainVars[arr].length > 1,relativeTo:labelobj, anchor:"right top",
+          myAnchor:"left top", left: labelMargin,
+          top:-1*jsavArrayOffset
+        }
+      );
+      jsavElements.push(mainVars[arr], labelobj);
     }
     for(var arr in initialArrays.cprVars){
       if(arr.length > 1){
@@ -149,6 +215,38 @@ $(document).ready(function () {
         cprVars[arr] = ((split[0]==='mainVars')?mainVars:classVars)[split[1]];
       }
     }
+    for(var arr in initialArrays.fooVars){
+      labelobj = modeljsavAV.label(arr,
+        {
+          relativeTo:pseudo, anchor:"right top", myAnchor:"left top",
+          left: leftMargin+boxWidth+10*boxPadding, top: currentTopMargin
+        }
+      );
+      fooVars[arr] = modeljsavAV.ds.array(initialArrays.fooVars[arr],
+        {
+          indexed: initialArrays.fooVars[arr].length > 1,relativeTo:labelobj, anchor:"right top",
+          myAnchor:"left top", left: labelMargin,
+          top:-1*jsavArrayOffset
+        }
+      );
+      jsavElements.push(fooVars[arr], labelobj);
+
+      labelobj = modeljsavAV.pointer(arr,fooVars[arr],{
+        targetIndex: 0,
+        fixed: true,
+        left: (leftMargin * -1.75),
+        top: 8,
+        anchor: 'left center'
+      })
+      labelobj.target(cprVars[arr],{
+        targetIndex: cprVars[arr+'-index'],
+        arrowAnchor: ((initialArrays.cprVars[arr].split(':')[0] == 'mainVars')?'right center':'center bottom')
+      })
+      jsavElements.push(labelobj);
+
+      currentTopMargin += lineHeight;
+    }
+    pseudo.setCurrentLine(currentLine++);
 
     modeljsavAV.displayInit();
 
@@ -156,6 +254,7 @@ $(document).ready(function () {
     currentLineFoo = fooIndex;
     while(codeLines[currentLineFoo].indexOf('print') === -1){
       unhighlightAll();
+      pseudo.setCurrentLine(currentLine++);
       var split = codeLines[currentLineFoo].trim().split('=');
 
       var rhs = getRightSideValue([fooVars, classVars], codeLines[currentLineFoo++]);
@@ -177,8 +276,8 @@ $(document).ready(function () {
 
       destination[lhs.charAt(0)].value(destIndex,rhs.value);
 
-      var outMsg = ((fooDestContext)?'foo':'class')+"'s "+destStr+
-                    ' set to the value of '+rhs.value;
+      var outMsg = ((fooDestContext)?'foo':'main')+"'s "+destStr+
+                    ' is set to the value of '+rhs.value;
 
       modeljsavAV.umsg(outMsg);
 
@@ -187,6 +286,8 @@ $(document).ready(function () {
     }
 
     unhighlightAll();
+
+    pseudo.setCurrentLine(mainIndex+2);
 
     for(var fooVar in fooVars){
       cprVars[fooVar].highlight(cprVars[fooVar+'-index']);
@@ -211,6 +312,9 @@ $(document).ready(function () {
     CallByAllFive.init();
     clearAllJsavObj();
     av.umsg("");
+
+    instructionLabel = av.label(instructionRegular);
+    jsavElements.push(instructionLabel);
 
     codeLines = CallByAllFive.expression.split('<br />');
     for(var i = 0; i < codeLines.length; i++){
@@ -325,9 +429,7 @@ $(document).ready(function () {
 
     for(var i=0; i<fooPassedIn.length; i++){
       fooPassedInValues.push(getValueOfVar([mainVars, classVars], fooPassedIn[i])['value']);
-    }
 
-    for(var i=0; i<fooPassedIn.length; i++){
       var target;
       var pIndex = 0;
       if(fooPassedIn[i] in mainVars){
@@ -340,11 +442,6 @@ $(document).ready(function () {
           getIndexFromString(fooPassedIn[i])
         )['value']
       }
-      fooLabels[fooVarNames[i]] = av.pointer(fooVarNames[i],target,{
-        targetIndex: pIndex,
-        left: lineHeight
-      })
-      jsavElements.push(fooLabels[fooVarNames[i]]);
       cprVars[fooVarNames[i]] = target;
       cprVars[fooVarNames[i] + '-index'] = pIndex;
       cprVars[fooVarNames[i] + '-classvar'] = !(fooPassedIn[i] in mainVars);
@@ -355,7 +452,7 @@ $(document).ready(function () {
           left: leftMargin+boxWidth+10*boxPadding, top: currentFooTopMargin
         }
       );
-      jsavElements.push(fooLabels[fooVarNames[i]])
+      jsavElements.push(fooLabels[fooVarNames[i]]);
       fooVars[fooVarNames[i]] = av.ds.array([fooPassedInValues[i]],
         {
           indexed: false,relativeTo:fooLabels[fooVarNames[i]], anchor:"right top",
@@ -364,6 +461,18 @@ $(document).ready(function () {
         }
       );
       jsavElements.push(fooVars[fooVarNames[i]])
+
+      fooLabels[fooVarNames[i]] = av.pointer(fooVarNames[i],fooVars[fooVarNames[i]],{
+        targetIndex: 0,
+        fixed: true,
+        left: (leftMargin * -1.75),
+        top: 8,
+        anchor: 'left center'
+      })
+      fooLabels[fooVarNames[i]].target(target,{
+        targetIndex: pIndex,
+        arrowAnchor: ((i==1)?'center bottom':'right center')
+      })
 
       initialArrays.cprVars[fooVarNames[i]] = ((fooPassedIn[i] in mainVars)?'mainVars':'classVars')+':'+fooPassedIn[i].charAt(0);
       initialArrays.cprVars[fooVarNames[i]+'-index'] = pIndex;

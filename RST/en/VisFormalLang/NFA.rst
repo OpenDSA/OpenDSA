@@ -42,20 +42,13 @@ transitions to more than one state.
 
 **Example**:
 
-.. odsafig:: Images/NFAexample.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Basic NFA
-
-   Example of NFA
-
-
 .. inlineav:: NFAexampleCON dgm
    :links: AV/VisFormalLang/NFA/NFAexampleCON.css
    :scripts: AV/VisFormalLang/NFA/NFAexampleCON.js
    :align: center
+
+   Example of NFA
+
 
 In this example, :math:`\delta(q_0, a) = \{q_1, q_2\}`.
 (So, :math:`\delta` is no longer meets the mathematical definition
@@ -70,20 +63,15 @@ effectively giving us the union of two languages:
 
 :math:`L = \{(ab)^n \mid n>0\} \cup \{a^nb \mid n>0\}`.
 
-.. odsafig:: Images/NFAexample2.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Second NFA
-
-   Second Example of NFA
-   A simple "go this way or go the other way".
-
 .. inlineav:: NFAexample2CON dgm
    :links: AV/VisFormalLang/NFA/NFAexample2CON.css
    :scripts: AV/VisFormalLang/NFA/NFAexample2CON.js
    :align: center
+
+   Second Example of NFA
+   A simple "go this way or go the other way".
+
+
 
 
 **Definition**: :math:`q_j \in {\delta}^{*}(q_i,w)` if and only if
@@ -127,19 +115,14 @@ NFA vs. DFA: Which is more powerful?
 Consider the following NFA.
 Can this NFA be converted to a DFA?
 
-.. odsafig:: Images/NFA2DFA.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: An NFA and equivalent DFA
-
-   An NFA and equivalent DFA
-
 .. inlineav:: NFA2DFACON dgm
    :links: AV/VisFormalLang/NFA/NFA2DFACON.css
    :scripts: AV/VisFormalLang/NFA/NFA2DFACON.js
    :align: center
+
+   An NFA and equivalent DFA
+
+
 
 .. note::
 
@@ -199,19 +182,14 @@ That would be members of the powerset of :math:`M_D` states.
       
 **Example**:
 
-.. odsafig:: Images/NFA2DFA2a.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Another NFA to convert
-
-   Another NFA to convert
-
 .. inlineav:: NFA2DFA2aCON dgm
    :links: AV/VisFormalLang/NFA/NFA2DFA2aCON.css
    :scripts: AV/VisFormalLang/NFA/NFA2DFA2aCON.js
    :align: center
+
+   Another NFA to convert
+
+
 
 Let's begin with the start state.
 Closure(:math:`q_0`) in :math:`M_N` is :math:`\{q_0, q_1, q_2\}`.
@@ -231,32 +209,24 @@ letter :math:`a`. This would be the subset :math:`q_3,q_4`.
 
 **Answer**:
 
-.. odsafig:: Images/NFA2DFA2b.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Converted DFA
-
-   Converted DFA
-
 .. inlineav:: NFA2DFA2bCON dgm
    :links: AV/VisFormalLang/NFA/NFA2DFA2bCON.css
    :scripts: AV/VisFormalLang/NFA/NFA2DFA2bCON.js
    :align: center
 
+   Converted DFA
 
-.. TODO::
-   :type: Slideshow
 
-   Replace the images above with a slideshow that presents first the
-   NFA, and then shows, step-by-step, the process of building the DFA.
+
+
+The following slideshow presents first the NFA, and then shows, step-by-step, the process of building the DFA.
 
 
 .. inlineav:: NFAtoDFACON ss
    :links: AV/VisFormalLang/NFA/NFAtoDFACON.css
-   :scripts: AV/VisFormalLang/NFA/NFAtoDFACON.js
+   :scripts: AV/VisFormalLang/NFA/NFAtoDFACON.js DataStructures/PIFrames.js
    :output: show
+
 
 Conclusion: NFA adds no new capability. So why bother with the idea?
 

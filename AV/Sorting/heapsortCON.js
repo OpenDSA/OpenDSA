@@ -1,14 +1,14 @@
 /*global ODSA */
-"use strict";
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "heapsortCON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
   var startArray = [73, 6, 57, 88, 60, 42, 83, 72, 48, 85];
   var av = new JSAV(av_name);
   var bh = av.ds.binheap(startArray,
-                 {compare: function (a, b) { return b - a; }, // maxheap
-                  steps: false, heapify: false});
+                         {compare: function(a, b) { return b - a; }, // maxheap
+                           steps: false, heapify: false});
 
   // Slide 1
   av.umsg(interpret("av_c1"));

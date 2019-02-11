@@ -251,7 +251,7 @@ Lists
 
 .. slide:: Doubly Linked Lists
 
-.. inlineav:: dlistDiagramCON dgm
+   .. inlineav:: dlistDiagramCON dgm
       :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
       :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistDiagramCON.js
       :output: show

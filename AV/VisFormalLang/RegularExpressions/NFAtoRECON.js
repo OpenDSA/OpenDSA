@@ -13,9 +13,5 @@ $(document).ready(function() {
     FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(NFA,url);
     var fatoreController = new FAtoREController(av, NFA, {});
     fatoreController.visualizeConversion({left: 350}, {left: 570, width: 350, height: 250, top:0});
-    var regex = "ab*+c";
-    var Width = 500,
-        Height = 300;
-
     av.recorded();
 });

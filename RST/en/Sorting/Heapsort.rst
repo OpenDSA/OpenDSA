@@ -90,8 +90,8 @@ This visualization presents the running time analysis of Heap Sort
 
 .. inlineav:: HeapSortAnalysisCON ss
    :long_name: Heapsort Analysis Slideshow
-   :links: AV/Development/HeapSortAnalysisCON.css
-   :scripts: DataStructures/binaryheap.js AV/Development/HeapSortAnalysisCON.js
+   :links: AV/Sorting/HeapSortAnalysisCON.css
+   :scripts: DataStructures/binaryheap.js AV/Sorting/HeapSortAnalysisCON.js
    :output: show
 
 While typically slower than Quicksort by a constant factor

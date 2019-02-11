@@ -46,6 +46,11 @@
     "points": 0.0, 
     "required": false
   }, 
+  "glob_ff_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  },
   "glob_ka_options": {
     "threshold": 5, 
     "points": 1.0, 
@@ -150,7 +155,7 @@
       }
     },
     "Algorithm Analysis": {
-      "AlgAnal/AnalChap": {}, 
+      "AlgAnal/AnalChap": {},
       "AlgAnal/AnalPrelim": {
         "AnalPrelimSumm": {
           "threshold": 4
@@ -165,7 +170,7 @@
           "threshold": 3
         }
       }, 
-      "AlgAnal/AnalCases": {}, 
+      "AlgAnal/AnalCases": {},
       "AlgAnal/AnalCompvsAlg": {
         "FasterCorASumm": {
           "threshold": 2
@@ -200,7 +205,7 @@
       "AlgAnal/AnalSpace": {}, 
       "AlgAnal/AnalTuning": {}, 
       "AlgAnal/AlgAnalSummCS3": {}
-    }, 
+    },
     "Linear Structures": {
       "List/ListIntro": {}, 
       "List/ListADT": {

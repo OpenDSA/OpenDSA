@@ -1,6 +1,24 @@
-"use strict";
 /*global alert: true, ODSA, console */
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
+  var av;   // for JSAV library object
+
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
+
+  // Placeholder text translation needs to be set explicitly
+  $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
+
+  // add the array layout setting preference
+  var arrayLayout = settings.add("layout", {type: "select",
+    options: {bar: "Bar", array: "Array"},
+    label: "Array layout: ", value: "array"});
+
+  // Initialize the arraysize dropdown list
+  ODSA.AV.initArraySize(5, 12, 8);
+
   // Process About button: Pop up a message with an Alert
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
@@ -27,9 +45,9 @@ $(document).ready(function () {
     }
   }
 
-  function quicksort(arr, left, right)
-  {
+  function quicksort(arr, left, right) {
     av.umsg(interpret("av_c2"));
+
     var pivotIndex = Math.floor((left + right) / 2);
     arr.addClass(pivotIndex, "processing");
     av.step();
@@ -63,8 +81,7 @@ $(document).ready(function () {
       av.step();
       arr.toggleArrow(finalPivotIndex - 1);
       arr.addClass(left, "deemph");
-    }
-    else if (subArr1.length > 1) {
+    } else if (subArr1.length > 1) {
       av.umsg(interpret("av_c8"));
       av.step();
       quicksort(arr, left, finalPivotIndex - 1);
@@ -78,8 +95,7 @@ $(document).ready(function () {
       av.step();
       arr.toggleArrow(finalPivotIndex + 1);
       arr.addClass(finalPivotIndex + 1, "deemph");
-    }
-    else if (subArr2.length > 1) {
+    } else if (subArr2.length > 1) {
       av.umsg(interpret("av_c10"));
       av.step();
       quicksort(arr, finalPivotIndex + 1, right);
@@ -126,8 +142,7 @@ $(document).ready(function () {
         arr.swap(left, right);
         av.step();
         arr.unhighlight([left, right]);
-      }
-      else {
+      } else {
         av.umsg(interpret("av_c17"));
         arr.unhighlight(left);
         av.step();
@@ -148,22 +163,4 @@ $(document).ready(function () {
   $("#about").click(about);
   $("#run").click(runIt);
   $("#reset").click(ODSA.AV.reset);
-
-  var av;   // for JSAV library object
-
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig(),
-      interpret = config.interpreter,       // get the interpreter
-      settings = config.getSettings();      // Settings for the AV
-
-  // Placeholder text translation needs to be set explicitly
-  $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
-
-  // add the array layout setting preference
-  var arrayLayout = settings.add("layout", {"type": "select",
-    "options": {"bar": "Bar", "array": "Array"},
-    "label": "Array layout: ", "value": "array"});
-
-  // Initialize the arraysize dropdown list
-  ODSA.AV.initArraySize(5, 12, 8);
 });

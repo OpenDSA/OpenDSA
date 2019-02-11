@@ -14,12 +14,6 @@ $(document).ready(function() {
   var leftAlign = 300;
   var topAlign = 0;
   var labelGap = 5;
-  function insert_equation(current, added) {
-    var new_equation;
-    var end_index = current.indexOf("\\end{eqnarray*}");
-    new_equation = current.substr(0, end_index) + added + current.substr(end_index);
-    return new_equation;
-  }
 
   // Slide 1
   av.umsg(interpret("sc1"));
@@ -50,21 +44,21 @@ $(document).ready(function() {
   //Slide 6
   av.umsg(interpret("sc6"));
   var eq = av.label("$\\displaystyle\\sum_{i=1}^{n-1}\\frac{i}{2}$", {top: "0px", left: "15px"}).addClass("mediumLabel");
-  
+
   //Horizontal Line
-  av.g.line (leftAlign, topAlign + 70,
-             leftAlign + 75, topAlign + 70,
-             {"stroke-width": 2, "arrow-start":"classic-wide-long"});
-  av.g.line (leftAlign + 135, topAlign + 70,
-             leftAlign + 210, topAlign + 70,
-             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.g.line(leftAlign, topAlign + 70,
+            leftAlign + 75, topAlign + 70,
+            {"stroke-width": 2, "arrow-start": "classic-wide-long"});
+  av.g.line(leftAlign + 135, topAlign + 70,
+            leftAlign + 210, topAlign + 70,
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.line(leftAlign, topAlign + 60,
-           leftAlign, topAlign + 80);
+            leftAlign, topAlign + 80);
   av.g.line(leftAlign + 210, topAlign + 60,
             leftAlign + 210,  topAlign + 80);
-  av.label ("$n - 1$", 
-            {top: topAlign + 40,
-             left: leftAlign + 80 + labelGap}); 
+  av.label("$n - 1$",
+           {top: topAlign + 40,
+             left: leftAlign + 80 + labelGap});
 
   pseudo.highlight("loop1");
   arr.unhighlight(4);
@@ -74,7 +68,7 @@ $(document).ready(function() {
   //Slide 7
   av.umsg(interpret("sc7"));
   eq.hide();
-  var eq = av.label("$\\displaystyle\\sum_{i=1}^{n-1}\\frac{i}{2} = \\frac{n(n+1)}{4}$", {top: "0px", left: "15px"}).addClass("mediumLabel");
+  av.label("$\\displaystyle\\sum_{i=1}^{n-1}\\frac{i}{2} = \\frac{n(n+1)}{4}$", {top: "0px", left: "15px"}).addClass("mediumLabel");
   av.step();
 
   //Slide 8

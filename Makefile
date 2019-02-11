@@ -115,6 +115,9 @@ CT: min
 CTEX: min
 	python $(CONFIG_SCRIPT) config/CTEX.json --no-lms
 
+Sam: min
+	python $(CONFIG_SCRIPT) config/Sam.json --no-lms
+
 NP: min
 	python $(CONFIG_SCRIPT) config/NP.json --no-lms
 
@@ -187,6 +190,15 @@ CS2: min
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
+CS3C: min
+	python $(CONFIG_SCRIPT) config/CS3C.json --no-lms
+
+CSCI271: min
+	python $(CONFIG_SCRIPT) config/CSCI271.json --no-lms
+
+CS415: min
+	python $(CONFIG_SCRIPT) config/CS415.json --no-lms
+
 CSCD320: min
 	python $(CONFIG_SCRIPT) config/CSCD320.json --no-lms
 
@@ -216,6 +228,9 @@ COMPSCI186: min
 
 testcmap: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
+
+CMP: min
+	python $(CONFIG_SCRIPT) config/CMP.json --no-lms
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js

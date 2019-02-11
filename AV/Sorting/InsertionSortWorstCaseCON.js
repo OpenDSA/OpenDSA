@@ -5,11 +5,9 @@ $(document).ready(function() {
   "use strict";
   var av_name = "InsertionSortWorstCaseCON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({
-      av_name: av_name
-    }),
-    interpret = config.interpreter, // get the interpreter
-    code = config.code; // get the code object
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+      interpret = config.interpreter, // get the interpreter
+      code = config.code; // get the code object
   var av = new JSAV(av_name);
   var pseudo = av.code(code[0]).hide();
   var arr;
@@ -155,41 +153,41 @@ $(document).ready(function() {
   av.umsg(interpret("sc21"));
   var rect5 = av.g.rect(310, 260, 268, 1);
   rect5.rotate(-22);
-  
+
   //Horizontal Line
-  av.g.line (leftAlign, 3 * rectHeight + topAlign,
-             leftAlign + 2 * rectWidth,
-             3 * rectHeight + topAlign,
-             {"stroke-width": 2, "arrow-start":"classic-wide-long"});
-  av.g.line (leftAlign + 3 * rectWidth,
-             3 * rectHeight + topAlign, leftAlign + 5 * rectWidth,
-             3 * rectHeight + topAlign,
-             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.g.line(leftAlign, 3 * rectHeight + topAlign,
+            leftAlign + 2 * rectWidth,
+            3 * rectHeight + topAlign,
+            {"stroke-width": 2, "arrow-start": "classic-wide-long"});
+  av.g.line(leftAlign + 3 * rectWidth,
+            3 * rectHeight + topAlign, leftAlign + 5 * rectWidth,
+            3 * rectHeight + topAlign,
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.line(leftAlign, 2.5 * rectHeight + topAlign,
-           leftAlign, 3.5 * rectHeight + topAlign);
+            leftAlign, 3.5 * rectHeight + topAlign);
   av.g.line(leftAlign + 5 * rectWidth, 2.5 * rectHeight + topAlign,
             leftAlign + 5 * rectWidth, 3.5 * rectHeight + topAlign);
-  av.label ("$n - 1$", 
-            {top: topAlign + 1.5 * rectHeight,
-             left: leftAlign + 2 * rectWidth + labelGap}); 
+  av.label("$n - 1$",
+           {top: topAlign + 1.5 * rectHeight,
+             left: leftAlign + 2 * rectWidth + labelGap});
 
   //Vertical Line
-  av.g.line (leftAlign + 5.5 * rectWidth, topAlign - rectHeight,
-             leftAlign + 5.5 * rectWidth,
-             topAlign +  rectHeight,
-             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
-  
-  av.g.line (leftAlign + 5.5 * rectWidth, topAlign - 2 * rectHeight,
-             leftAlign + 5.5 * rectWidth,
-             topAlign -  4 * rectHeight,
-             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.g.line(leftAlign + 5.5 * rectWidth, topAlign - rectHeight,
+            leftAlign + 5.5 * rectWidth,
+            topAlign +  rectHeight,
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+
+  av.g.line(leftAlign + 5.5 * rectWidth, topAlign - 2 * rectHeight,
+            leftAlign + 5.5 * rectWidth,
+            topAlign -  4 * rectHeight,
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.line(leftAlign + 5.75 * rectWidth, topAlign + rectHeight,
-           leftAlign + 5.25 * rectWidth, topAlign + rectHeight);
+            leftAlign + 5.25 * rectWidth, topAlign + rectHeight);
   av.g.line(leftAlign + 5.75 * rectWidth, topAlign - 4 * rectHeight,
             leftAlign + 5.25 * rectWidth, topAlign - 4 * rectHeight);
-  av.label ("$n - 1$", 
-            {top: topAlign - 3 * rectHeight,
-             left: leftAlign + 5 * rectWidth + labelGap}); 
+  av.label("$n - 1$",
+           {top: topAlign - 3 * rectHeight,
+             left: leftAlign + 5 * rectWidth + labelGap});
 
   // Slide 22
   av.umsg(interpret("sc22_1"));

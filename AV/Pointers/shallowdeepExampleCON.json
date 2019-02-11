@@ -1,15 +1,14 @@
 {
   "translations": {
     "en": {
-      "sc1": "Let's look at the below example to see the difference between shallow and deep copying.",
-      "sc2": "First, create a Employee, Sam, and shallow copy firstEmployee to the shallowCopyEmployee which is a new Employee reference.",
-      "sc3": "Now, using setName() method, update the Employee object's name as \"John\", which shallowCopyEmployee is pointing to.",
-      "sc4": "If you print out the name of the firstEmployee, now you will see that the name of the Employee is now \"John,\" not \"Sam.\".",
-      "sc5": "Now, you will create 2 Employee objects secondEmployee and deepCopyEmployee. Set the name of secondEmployee as \"Patrice.\"",
-      "sc6": "After that, copy the name of the seconEmployee and set the name as deepCopyEmployee's name. So you deep-copied secondEmployee.",
-      "sc7": "Set the deepCopyEmployee's name as \"John.\"",
-      "sc8": "Finally, if you print the name of the secondEmployee's name, it is stil \"Patrice\" and changeing deepCopyEmployee's name did not effect any to secondEmployee's variable."
-
+      "sc1": "Let's look at an example to see the difference between shallow and deep copying.",
+      "sc2": "First, create a Employee, Sam, and shallow copy firstEmployee to shallowCopyEmployee, which is a new Employee reference.",
+      "sc3": "Now, using setName(), update the Employee object's name as \"John\", which shallowCopyEmployee is pointing to.",
+      "sc4": "If you print out the name of firstEmployee, you will see that the name of the Employee is now \"John,\" not \"Sam.\".",
+      "sc5": "Now, we create 2 Employee objects secondEmployee and deepCopyEmployee. Set the name of secondEmployee as \"Patrice.\"",
+      "sc6": "After that, copy the name of seconEmployee and set the name as deepCopyEmployee's name. So you deep-copied secondEmployee.",
+      "sc7": "Set deepCopyEmployee's name as \"John.\"",
+      "sc8": "Finally, if you print the name of secondEmployee, it is stil \"Patrice\" and changing deepCopyEmployee's name did not effect any of secondEmployee's values."
     }
   },
   "code": {

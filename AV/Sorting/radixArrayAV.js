@@ -1,6 +1,26 @@
-"use strict";
 /*global alert: true, ODSA */
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
+  // Load the config object with interpreter
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
+  var av,     // for JSAV library object
+      arr,    // for the JSAV array
+      arrC,
+      arrO;
+  // Number of values in the array
+  var ASize = $("#arraysize").val();
+  // The array of numbers
+  var countArray = [];
+  var outArray = [];
+
+  // Placeholder text translation needs to be set explicitly
+  $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
+
+  // Initialize the arraysize dropdown list
+  ODSA.AV.initArraySize(5, 16, 8);
+
   // Process About button: Pop up a message with an Alert
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
@@ -17,11 +37,11 @@ $(document).ready(function () {
     var dSize = $("#digitsize").val(),
         i;
     var arrValues = ODSA.AV.processArrayValues(Math.pow(10, dSize));
-    
+
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       ODSA.AV.reset(true);
-      av = new JSAV($('.avcontainer'), {settings: settings});
+      av = new JSAV($(".avcontainer"), {settings: settings});
 
       // Set the digit size to the length of the largest number in the array
       var max = Math.max.apply(Math, arrValues);
@@ -132,31 +152,4 @@ $(document).ready(function () {
   $("#about").click(about);
   $("#run").click(runIt);
   $("#reset").click(ODSA.AV.reset);
-
-
-  //////////////////////////////////////////////////////////////////
-  // Start processing here
-  //////////////////////////////////////////////////////////////////
-  // Load the config object with interpreter
-  var config = ODSA.UTILS.loadConfig(),
-      interpret = config.interpreter,       // get the interpreter
-      settings = config.getSettings();      // Settings for the AV
-
-  var av,     // for JSAV library object
-      arr,    // for the JSAV array
-      arrC,
-      arrO;
-
-  // Number of values in the array
-  var ASize = $("#arraysize").val();
-
-  // The array of numbers
-  var countArray = [];
-  var outArray = [];
-
-  // Placeholder text translation needs to be set explicitly
-  $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
-
-  // Initialize the arraysize dropdown list
-  ODSA.AV.initArraySize(5, 16, 8);
 });

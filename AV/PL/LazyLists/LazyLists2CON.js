@@ -48,7 +48,7 @@ $(document).ready(function() {
     av.step();
 
 
-    av.umsg('When we invoke is.tl on intsFrom1, we thaw the thunk stored in the second element of intsFrom1.   It is important to realize that the evaluation of such a thunk must give us another infinite sequence -- otherwise the lazy list would "stop" here.   The sequence we get by evaluating this thunk is another sequence containing 2 as its first element and thunk that could then be invoked to get at the integers after 2.');
+    av.umsg('When we invoke is.tl on intsFrom1, we thaw the thunk stored in the second element of intsFrom1.   It is important to realize that the evaluation of such a thunk must give us another infinite sequence -- otherwise the lazy list would "stop" here.   The sequence we get by evaluating this thunk is another sequence containing 2 as its first element and a thunk that could then be invoked to get at the integers after 2.');
     arr2.addClass(1,"wider");
     arr2.show();
     arr_label2.show();
@@ -85,7 +85,7 @@ $(document).ready(function() {
     pseudo1.highlight(4);
     av.step();
 
-    av.umsg("To get the capability to continue indefinitely, instead of having the thunk just return n + 1, we must return a thunk that invokes the function from recursively.   We saw this technique of using recursion within the thunk before when we created an infinite sequence of 1's.  We most certainly will see it again and again as we proceed.   One of the interesting aspects of this lazy recursion is that, because the list is infinite, there is no need for a recursive terminiation condition.");
+    av.umsg("To get the capability to continue indefinitely, instead of having the thunk just return n + 1, we must return a thunk that invokes the function from recursively.   We saw this technique of using recursion within the thunk before when we created an infinite sequence of 1's.  We most certainly will see it again and again as we proceed.   One of the interesting aspects of this lazy recursion is that, because the list is infinite, there is no need for a recursive termination condition.");
     pseudo1.hide(4);
     pseudo1.show(5);
     pseudo1.highlight(5);

@@ -94,7 +94,7 @@ in one of three flavors:
      Note that in the lambda calculus, the parentheses
      surround both the function and its argument, while in many modern
      programming languages (and in mathematical notation), the
-     function would come first and be followed by the formal parameter
+     function would come first and be followed by the argument
      in parentheses, like this: :math:`f(x)`. In the lambda calculus,
      the parentheses are not optional around function
      calls. Furthermore, the grammar above makes it clear that they

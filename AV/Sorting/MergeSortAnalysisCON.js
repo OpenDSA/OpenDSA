@@ -3,6 +3,34 @@
 // Merge Sort Analysis
 $(document).ready(function() {
   "use strict";
+
+  function merge(loc_av, a1, a2, return_into) {
+    var ii = 0, j = 0, l = 0;
+    for (var k = 0; k < a1.size() * 2; k++) {
+      if (a1.value(ii) <= a2.value(j)) {
+        loc_av.effects.moveValue(a1, ii, return_into, k);
+        ii++;
+        if (ii === a1.size()) {
+          for (l = j; l < a2.size(); l++) {
+            k++;
+            loc_av.effects.moveValue(a2, l, return_into, k);
+          }
+          return;
+        }
+      } else {
+        loc_av.effects.moveValue(a2, j, return_into, k);
+        j++;
+      }
+      if (j === a2.size()) {
+        for (l = ii; l < a1.size(); l++) {
+          k++;
+          loc_av.effects.moveValue(a1, l, return_into, k);
+        }
+        return;
+      }
+    }
+  }
+
   var av_name = "MergeSortAnalysisCON";
   // Load the config object with interpreter
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
@@ -13,34 +41,6 @@ $(document).ready(function() {
   var i;
   var rectTopAlign = 35;
   var rectLeftAlign = 350;
-
-  function merge(a1, a2, return_into){
-    var i = 0, j = 0;
-    for (var k = 0; k < a1.size()*2; k++){
-      if(a1.value(i) <= a2.value(j)){
-        av.effects.moveValue(a1, i, return_into, k);
-        i++;
-        if (i == a1.size()){
-          for (var l = j; l < a2.size(); l++){
-            k++;
-            av.effects.moveValue(a2, l, return_into, k);
-          }
-          return;
-        }
-      }
-      else{
-        av.effects.moveValue(a2, j, return_into, k);
-        j++;
-      }
-      if (j == a2.size()){
-        for (var l = i; l < a1.size(); l++){
-          k++;
-          av.effects.moveValue(a1, l, return_into, k);
-        }
-        return;
-      }
-    }
-  }
 
   // Slide 1
   av.umsg(interpret("Slide 1"));
@@ -105,7 +105,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 10
-  merge(arr31, arr32, arr21);
+  merge(av, arr31, arr32, arr21);
   arr31.hide();
   arr32.hide();
   av.label(interpret("lab2"),  {top: "-22px", left: "620px"}).addClass("largeLabel");
@@ -139,7 +139,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 14
-  merge(arr33, arr34, arr22);
+  merge(av, arr33, arr34, arr22);
   arr33.hide();
   arr34.hide();
   av.label("$\\frac{n}{8}$ ",  {top: "215px", left: rectLeftAlign + 252 + 60});
@@ -158,7 +158,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 16
-  merge(arr21, arr22, arr11);
+  merge(av, arr21, arr22, arr11);
   arr21.hide();
   arr22.hide();
   av.label("|--- $\\frac{n}{2}$ ---|",  {top: "140px", left: rectLeftAlign + 250 + 8});
@@ -203,7 +203,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 22
-  merge(arr35, arr36, arr23);
+  merge(av, arr35, arr36, arr23);
   arr35.hide();
   arr36.hide();
   av.label("$\\frac{n}{8}$ ",  {top: "215px", left: rectLeftAlign + 252 + 120});
@@ -236,11 +236,11 @@ $(document).ready(function() {
   av.step();
 
   // Slide 26
-  merge(arr37, arr38, arr24);
+  merge(av, arr37, arr38, arr24);
   arr37.hide();
   arr38.hide();
   av.label("$\\frac{n}{8}$ ",  {top: "215px", left: rectLeftAlign + 252 + 180});
-  av.label("$\\frac{n}{8}$ ",  {top: "215px", left: rectLeftAlign + 282 + 180 });
+  av.label("$\\frac{n}{8}$ ",  {top: "215px", left: rectLeftAlign + 282 + 180});
   for (i = 0; i < 2; i++) {
     av.g.rect(rectLeftAlign + 250 + 180 + (i * 20 + i * 10), 255, 20, 20);
   }
@@ -255,7 +255,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 28
-  merge(arr23, arr24, arr12);
+  merge(av, arr23, arr24, arr12);
   arr23.hide();
   arr24.hide();
   av.label("|--- $\\frac{n}{2}$ ---|",  {top: "140px", left: "708px"});
@@ -271,7 +271,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 30
-  merge(arr11, arr12, arr);
+  merge(av, arr11, arr12, arr);
   arr11.hide();
   arr12.hide();
   av.label("|----------- $n$ -----------|",  {top: "65px", left: rectLeftAlign + 250 + 5});

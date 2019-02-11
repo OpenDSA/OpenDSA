@@ -12,6 +12,9 @@
 Another Example
 ===============
 
+Another Example
+---------------
+
 Here is another example to let you practice testing.
 This is testing a bowling game.
 Each frame starts with 10 pins, the user enters the number of pins hit

@@ -10,6 +10,7 @@
 Functional Programming - Scope, Closures, Higher-order Functions, Static vs. Dynamic Binding
 ============================================================================================
 
+.. _scope:
    
 Scope, Closures, Higher-order Functions (1)
 -------------------------------------------
@@ -18,8 +19,8 @@ Every **variable** is a memory location. Each variable has a name, by
 which you can refer to this location in your program, and a value that
 is associated with the location.
 
-In the statement *x = x + 1*, does the leftmost *x* refers to a
-location or a value?  Does the rightmost “x” refers to a location or a
+In the statement *x = x + 1*, does the leftmost *x* refer to a
+location or a value?  Does the rightmost “x” refer to a location or a
 value?
 
 Additionally  every variable also has a **scope** which comprises all of the
@@ -123,7 +124,7 @@ which the declaration that binds a use of *x* in expression :math:`e`
 is first looked for in the function (say, *f*) that contains
 :math:`e`, then, if needed, in the function (say, *g*) that called
 *f*, then in the function that called *g*, etc.  Note that, if
-JavaScript used dynamic binding, the the value returned in the
+JavaScript used dynamic binding, the value returned in the
 previous example would have been 20 instead of 3.
 
 
@@ -153,14 +154,14 @@ illustrated in the following example.
 ::
 
     var f = function () {
-        var add1 = function (x)  { return x + 1; }
+        var add1 = function (x)  { return x + 1; };
         return add1;
     }
     var g = f();   // g is now the function that takes in one argument and adds 1 to it
     g(5);          // returns 6
     f()(5);        // same thing
 
-Here, f is a higher-order function,
+Here, f is a higher-order function. However, add1 is not a higher-order function. What about g?
 
 What happens when a function f returns a local function that refers
 to a parameter or a local variable of f as in the following example?
@@ -169,7 +170,7 @@ to a parameter or a local variable of f as in the following example?
 
     var f = function () {
         var y = 1;
-        var addY = function (x)  { return x + y; }
+        var addY = function (x)  { return x + y; };
         return addY;
     }
     var g = f(); // after f returns, the variable y 
@@ -194,7 +195,7 @@ are central to functional programming:
 
 Since JavaScript implements all of these, it is quite natural and
 powerful to use the functional programming paradigm in JavaScript.
-One powerful aspect of is that it allows us to easily build new
+One powerful aspect of it is that it allows us to easily build new
 functions at run-time as in the following example.  
 
 
@@ -206,7 +207,7 @@ functions at run-time as in the following example.
    :output: show
 
 Once you become comfortable with the notion of functions as
-first-class values, you will fund the use of **anonymous functions** as
+first-class values, you will find the use of **anonymous functions** as
 illustrated in the final slide in the above example is a technique
 that often enhances the readability of your code.  Why use a "temporary
 variable" such as *incr* to store something that could just as well be

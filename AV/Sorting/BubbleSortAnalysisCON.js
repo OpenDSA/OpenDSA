@@ -202,44 +202,35 @@ $(document).ready(function() {
 
   // Slide 21
   av.umsg(interpret("sc21"));
-  
   //Horizontal Line
-  av.g.line (leftAlign, 3 * rectHeight + topAlign,
-             leftAlign + 2 * rectWidth,
-             3 * rectHeight + topAlign,
-             {"stroke-width": 2, "arrow-start":"classic-wide-long"});
-  av.g.line (leftAlign + 3 * rectWidth,
-             3 * rectHeight + topAlign, leftAlign + 5 * rectWidth,
-             3 * rectHeight + topAlign,
-             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.g.line(leftAlign, 3 * rectHeight + topAlign,
+            leftAlign + 2 * rectWidth,
+            3 * rectHeight + topAlign,
+            {"stroke-width": 2, "arrow-start": "classic-wide-long"});
+  av.g.line(leftAlign + 3 * rectWidth, 3 * rectHeight + topAlign,
+            leftAlign + 5 * rectWidth, 3 * rectHeight + topAlign,
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.line(leftAlign, 2.5 * rectHeight + topAlign,
-           leftAlign, 3.5 * rectHeight + topAlign);
+            leftAlign, 3.5 * rectHeight + topAlign);
   av.g.line(leftAlign + 5 * rectWidth, 2.5 * rectHeight + topAlign,
             leftAlign + 5 * rectWidth, 3.5 * rectHeight + topAlign);
-  av.label ("$n - 1$", 
-            {top: topAlign + 1.5 * rectHeight,
-             left: leftAlign + 2 * rectWidth + labelGap}); 
-
-
+  av.label("$n - 1$",
+           {top: topAlign + 1.5 * rectHeight,
+             left: leftAlign + 2 * rectWidth + labelGap});
   //Vertical Line
-  av.g.line (leftAlign - 0.5 * rectWidth, topAlign - rectHeight,
-             leftAlign - 0.5 * rectWidth,
-             topAlign +  rectHeight,
-             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
-  
-  av.g.line (leftAlign - 0.5 * rectWidth, topAlign - 2 * rectHeight,
-             leftAlign - 0.5 * rectWidth,
-             topAlign -  4 * rectHeight,
-             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.g.line(leftAlign - 0.5 * rectWidth, topAlign - rectHeight,
+            leftAlign - 0.5 * rectWidth, topAlign +  rectHeight,
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  av.g.line(leftAlign - 0.5 * rectWidth, topAlign - 2 * rectHeight,
+            leftAlign - 0.5 * rectWidth, topAlign -  4 * rectHeight,
+            {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.g.line(leftAlign - 0.75 * rectWidth, topAlign + rectHeight,
-           leftAlign - 0.25 * rectWidth, topAlign + rectHeight);
+            leftAlign - 0.25 * rectWidth, topAlign + rectHeight);
   av.g.line(leftAlign - 0.75 * rectWidth, topAlign - 4 * rectHeight,
             leftAlign - 0.25 * rectWidth, topAlign - 4 * rectHeight);
-  av.label ("$n - 1$", 
-            {top: topAlign - 3 * rectHeight,
-             left: leftAlign - rectWidth + labelGap}); 
-
-
+  av.label("$n - 1$",
+           {top: topAlign - 3 * rectHeight,
+             left: leftAlign - rectWidth + labelGap});
   av.step();
 
   // Slide 22

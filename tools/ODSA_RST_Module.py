@@ -408,9 +408,10 @@ class ODSA_RST_Module:
             section_title_found = True
           elif module_title_found and not section_title_found \
           and not content_before_section \
-          and re.match('(^\.\. (?!\w+::).+)|(^$)|(^=+$)', line) == None:
+          and (re.match('^(\.\. )+(avembed|inlineav):: [^\s]+( )?(pe|ka)?$', line) != None \
+               or re.match('^(\.\. )+(extrtoolembed):: [^\r\n]+$', line) != None):
               content_before_section = True
-              errors.append(("%sERROR: %s: line %s ('%s') - should not have content between module title and first section" % (console_msg_prefix, mod_path, i, line), False))
+              errors.append(("%sERROR: %s: line %s ('%s') - exercises must be inside a section" % (console_msg_prefix, mod_path, i, line), True))
           
         # Determine the type of directive
         dir_type = get_directive_type(line)
@@ -542,35 +543,19 @@ class ODSA_RST_Module:
                   link_opts = opt_line[len(':links:'):].split()
                   if len(link_opts) > 0:
                     links_found = True
-                    if os.environ['SLIDES'] == 'no':
-                      for link in link_opts:
-                        if link not in links:
-                          links[link] = False
-                    else:
-                      for link in link_opts:
-                        link_included = links.get(link)
-                        if not link_included:
-                          links[link] = True
-                          mod_data[i] = '   .. odsalink:: {0}\n{1}'.format(link, mod_data[i])
+                    for link in link_opts:
+                      if link not in links:
+                        links[link] = False 
                   del mod_data[j]
                   j -= 1
-
 
                 elif opt_line.startswith(':scripts:'):
                   script_opts = opt_line[len(':scripts:'):].split()
                   if len(script_opts) > 0:
                     scripts_found = True
-                    if os.environ['SLIDES'] == 'no':
-                      for script in script_opts:
-                        if script not in scripts:
-                          scripts[script] = False
-                    else:
-                      for script in script_opts:
-                        script_included = scripts.get(script)
-                        if not script_included:
-                          scripts[script] = True
-                          mod_data[i] ='   .. odsascript:: {0}\n{1}'.format(script, mod_data[i])
-
+                    for script in script_opts:
+                      if script not in scripts:
+                        scripts[script] = False
                   del mod_data[j]
                   j -=1
 
@@ -755,18 +740,21 @@ class ODSA_RST_Module:
       if not avmetadata_found:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
 
-      for link, has_directive in links.iteritems():
-        if not os.path.exists('{0}/{1}'.format(config.odsa_dir, link)):
-          print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, link))
-        if not has_directive:
-            mod_data.insert(1, '.. odsalink:: {0}\n'.format(link))
-
+      # the odsascript directive needs to be indented when compiling slides, otherwise
+      # the directive will be stripped during compilation
+      indent = '' if os.environ['SLIDES'] == 'no' else '   '
       mod_data.append('\n')
       for script, has_directive in scripts.iteritems():
         if not os.path.exists('{0}/{1}'.format(config.odsa_dir,script)):
           print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, script))
         if not has_directive:
-          mod_data.append('.. odsascript:: {0}\n'.format(script))
+          mod_data.append('{0}.. odsascript:: {1}\n'.format(indent, script))
+
+      for link, has_directive in reversed(links.items()):
+        if not os.path.exists('{0}/{1}'.format(config.odsa_dir, link)):
+          print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, link))
+        if not has_directive:
+          mod_data.insert(1, '\n.. odsalink:: {0}\n'.format(link))
 
       mod_sections = mod_attrib['sections'].keys() if 'sections' in mod_attrib and mod_attrib['sections'] != None else []
 

@@ -7,10 +7,10 @@
    :author: David Furcy and Tom Naps
 
 
-Defining SLang 1
+Defining SLang1
 ================
 
-Syntax of SLang 1
+Syntax of SLang1
 -----------------
 
 So far we have examined how to program from a functional programming
@@ -21,7 +21,7 @@ language based on the lambda calculus.  We'll call that language
 *SLang1*, short for "Simple Language 1".   
 
 The development process for this interpeter will require our writing a
-JISON grammar to define the syntax of the language and transform
+Jison grammar to define the syntax of the language and transform
 programs in the language into an *abstract syntax tree* (AST).
 
 How does **abstract syntax** differ from **concrete syntax**? In other
@@ -60,8 +60,8 @@ This is illustrated in the example below.
                 term                3   +
                  /|\                   / \
              term * factor            4   2
-              |      /|\
-              |     / | \
+              /      /|\
+             /      / | \
           factor   ( exp )
             |        /|\
             3     exp + term
@@ -72,7 +72,7 @@ This is illustrated in the example below.
                    |
                    4
 
-Additionally an AST often does not contain any nodes corresponding to non-terminals.  Nonetheless, it contains all of the information that is needed for the interpreter to derive the correct meaning of the input program, that is, to evaluate the program and return its correct value.
+An AST often contains few nodes corresponding to non-terminals.  Nonetheless, it contains all of the information that is needed for the interpreter to derive the correct meaning of the input program, that is, to evaluate the program and return its correct value.
 
 ::
 
@@ -87,8 +87,8 @@ Additionally an AST often does not contain any nodes corresponding to non-termin
              y = x*2;                                /      \       /  | \  \
           }                                     stmtList   stmt    ID  = exp ;
                                                /      \       \   (y)   / | \
-              AST                      stmtList      stmt     ...     exp * term
-              ===                          |       / | |  \            |      |
+                 AST                   stmtList      stmt     ...     exp * term
+                 ===                       |       / | |  \            |      |
                                         epsilon   ID = exp ;         term   factor
               methodBody                          (x)   |              |      |
              /          \                            INTLITERAL     factor   INT
@@ -101,14 +101,14 @@ Additionally an AST often does not contain any nodes corresponding to non-termin
                                       ID  INT    
                                       (x) (2)    
 
-The concrete syntax of Slang1 is defined by the following grammar:
+The concrete syntax of Slang1 is defined by the following EBNF grammar:
 				      
 ::
 
     <program>  ::= <exp>
-    <exp>      ::= <var_exp> | <fn_exp> | <app_exp> \red{| <papp_exp> | <int>}
+    <exp>      ::= <var_exp> | <fn_exp> | <app_exp> | <papp_exp> | <int>
     <fn_exp>   ::= fn '(' (<var_exp> (',' <var_exp>)*)? ')' => <exp>
-    <app_exp>  ::= '(' <exp> <exp> ')'
+    <app_exp>  ::= '(' <exp> <exp>* ')'
     <papp_exp> ::= <prim_op> '(' <args>? ')'
     <args>     ::= <exp> (',' <exp>)*
     <prim_op>  ::= + | * | add1
@@ -142,6 +142,8 @@ The SLang1 "program" **(fn (a,b) => b y 3)** would result in the following parse
 
 
 										     
+
+The expression in the bottom-right corner of the example above is a representation of the abstract syntax tree as a list of lists.
 
 Concrete Syntax SLang1
 ----------------------

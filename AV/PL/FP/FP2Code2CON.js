@@ -19,7 +19,7 @@ $(document).ready(function() {
             "                     return false;",                               //5
 	    "                  } else { ",                                      //6
             "                     CHECK IF THE HEAD OF THE LIST MATCHES n",     //7
-	    "                  } else if ( fp.isEq(fp.hd(ns), n ) {",             //8
+	    "                  } else if ( fp.isEq(fp.hd(ns), n) ) {",             //8
 	    "                     return true;",                                //9
 	    "                  } else { ",                                      //10
 	    "                     WE STILL DO NOT KNOW",                        //11
@@ -60,7 +60,7 @@ $(document).ready(function() {
 
     // Slide 1
     av.umsg("Following the alternatives in the BNF definition of a list, we want a function that determines whether n is a member of the list ns");
-    pseudo.hide([3,5,8,9,10,11,12,13]);
+    pseudo.hide([3,5,8,9,10,11,12]);   // deleted 13
     arr.show();
     av.displayInit();
 
@@ -93,7 +93,7 @@ $(document).ready(function() {
     label_tl.hide();
     label_tl = av.label("tl", {left: leftMargin + 45 + 2*arr_cell_offset, top: -20});
     pseudo.hide([6,7]);
-    pseudo.show([8,9,10,11,13,15]);
+    pseudo.show([8,9,10,11]);
     pseudo.unhighlight([3,5]);
     pseudo.highlight([8,9]);
     arr_n.value(0,5);

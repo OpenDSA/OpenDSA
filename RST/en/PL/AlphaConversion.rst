@@ -124,8 +124,8 @@ this version and the original version of the application, the final
 value of the application will be :math:`y`, since the function being
 called ignores its argument and always returns :math:`y`.
 
-However, if we :math:`\alpha`-convert the lambda abstraction with the
-variable :math:`y`, we get:
+However, if we :math:`\alpha`-converted the lambda abstraction with the
+variable :math:`y`, we would get:
 
 .. math::
 

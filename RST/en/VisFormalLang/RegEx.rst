@@ -221,12 +221,10 @@ that :math:`L = L(M)`.
 
 #. If the GTG has only two states, then it has this form:
 
-   .. odsafig:: Images/nfatore1.png
-      :width: 250
+   .. inlineav:: RegExf1 dgm
+      :links: AV/OpenFLAP/RegExf1.css
+      :scripts: AV/OpenFLAP/RegExf1.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: nfatore1
 
    Add an arrow to the start state. Then, the corresponding regular
    expression is:
@@ -246,12 +244,10 @@ that :math:`L = L(M)`.
 
 #. If the GTG has three states, then it must have the following form:
 
-   .. odsafig:: Images/nfatore2.png
-      :width: 250
+   .. inlineav:: RegExf2 dgm
+      :links: AV/OpenFLAP/RegExf2.css
+      :scripts: AV/OpenFLAP/RegExf2.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: nfatore2
 
    In this case, make the following replacements:
 
@@ -296,12 +292,10 @@ that :math:`L = L(M)`.
 
    And similar rules.
 
-.. odsafig:: Images/stnfatore2s.png
-   :width: 400
+.. inlineav:: RegExf3b dgm
+   :links: AV/OpenFLAP/RegExf3b.css
+   :scripts: AV/OpenFLAP/RegExf3b.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: stnfatore2s
 
 You should convince yourself that, in this image, the right side is a
 proper re-creation of the left side.

@@ -131,8 +131,8 @@ sorting lower bound proof.
 
 .. inlineav:: SortingLowerBoundCON ss
    :long_name: Sorting Lower Bound Slideshow
-   :links: AV/Development/SortingLowerBoundCON.css
-   :scripts: AV/Development/SortingLowerBoundCON.js
+   :links: AV/Sorting/SortingLowerBoundCON.css
+   :scripts: AV/Sorting/SortingLowerBoundCON.js
    :output: show
 
 Any sorting algorithm requiring :math:`\Omega(n \log n)` comparisons

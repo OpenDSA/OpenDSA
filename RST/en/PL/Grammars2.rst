@@ -25,14 +25,13 @@ Example Grammar 2
 .. math::
 
    \begin{eqnarray*} 
-   <exp> &::=& <exp>\\
-   &|& <exp> + <exp> \\
+   <exp> &::=& <exp> + <exp> \\
    &|& <exp> - <exp> \\
    &|& <exp> * <exp> \\
    &|& <exp> / <exp> \\
-   <exp> &::=& <pri> \\
+   &|& <pri> \\
    &|& ( <exp> ) \\
-   <pri> &:==& A | B | C | \ldots | X | Y | Z
+   <pri> &::=& A | B | C | \ldots | X | Y | Z
    \end{eqnarray*}
 
 Let's try to parse the expression :math:`A+B*C` using this grammar.

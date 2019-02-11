@@ -20,10 +20,10 @@ $(document).ready(function() {
     var pseudo = av.code(
         [
 	    "var makeIncrementer = function (x) {", // 1
-	    "  var incr = function (y)  {return y + x;}", // 2
+	    "  var incr = function (y)  {return y + x;};", // 2
 	    "  return incr;",				  // 3
-	    "  return function (y) {return y + x;}  // anonymous function",	  // 4
-	    "}",					  // 5
+	    "  return function (y) {return y + x;};  // anonymous function",	  // 4
+	    "};",					  // 5
 	    "var incrBy1 = makeIncrementer(1);",	  // 6
 	    "var incrBy5 = makeIncrementer(5);",	  // 7
 	    "incrBy1(10);             ",	  // 8

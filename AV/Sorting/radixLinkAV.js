@@ -1,6 +1,25 @@
-"use strict";
 /*global alert: true, ODSA */
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
+  var av,   // for JSAV library object
+      arr,    // for the JSAV array
+      arrDigit,
+      arrOut;
+  // Number of values in the array
+  var ASize = $("#arraysize").val();
+  // The array of numbers
+  var digitArray = [];
+  var outArray = [];
+
+  // Placeholder text translation needs to be set explicitly
+  $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
+
+  // Initialize the arraysize dropdown list
+  ODSA.AV.initArraySize(5, 10, 8);
+
   // Process About button: Pop up a message with an Alert
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
@@ -17,11 +36,11 @@ $(document).ready(function () {
     var dSize = $("#digitsize").val(),
         i,
         arrValues = ODSA.AV.processArrayValues(Math.pow(10, dSize));
-    
+
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       ODSA.AV.reset(true);
-      av = new JSAV($('.avcontainer'), {settings: settings});
+      av = new JSAV($(".avcontainer"), {settings: settings});
 
       // Set the digit size to the length of the largest number in the array
       var max = Math.max.apply(Math, arrValues);
@@ -40,14 +59,17 @@ $(document).ready(function () {
       }
 
       // Create a new array using the layout the user has selected
-      arr = av.ds.array(arrValues, {indexed: true, layout: "vertical",
-                                    center: false, top: 35, left: 30});
+      arr = av.ds.array(arrValues,
+                        {indexed: true, layout: "vertical",
+                          center: false, top: 35, left: 30});
       av.label("Input", {before: arr, left: 45, top: 12});
-      arrDigit = av.ds.array(digitArray, {indexed: true, layout: "vertical",
-                                          center: false, top: 35, left: 200});
+      arrDigit = av.ds.array(digitArray,
+                             {indexed: true, layout: "vertical",
+                               center: false, top: 35, left: 200});
       av.label("Digit", {before: arrDigit, left: 215, top: 12});
-      arrOut = av.ds.array(outArray, {indexed: true, layout: "vertical",
-                                      center: false, top: 35, left: 720});
+      arrOut = av.ds.array(outArray,
+                           {indexed: true, layout: "vertical",
+                             center: false, top: 35, left: 720});
       av.label("Output", {before: arrOut, left: 728, top: 12});
       av.umsg("Starting Radix Sort. We will process digits from right to left.");
       av.displayInit();
@@ -59,7 +81,7 @@ $(document).ready(function () {
 
   //Radix linked list sort
   function radsort() {
-    var i, j, d, curr;
+    var i, d, curr;
     var shift = 1;
     var answer;
     var lists = [];
@@ -76,8 +98,8 @@ $(document).ready(function () {
         lists[i].layout({center: false});
         // create initially hidden arrows from array indices to lists
         arrows[i] = av.g.line(230, 75 + i * cellheight, 270, 75 + i * cellheight,
-                       {"arrow-end": "classic-wide-long", "opacity": 0,
-                        "stroke-width": 2});
+                              {"arrow-end": "classic-wide-long", opacity: 0,
+                                "stroke-width": 2});
       }
       av.umsg(interpret("av_c1"));
       av.step();
@@ -135,31 +157,4 @@ $(document).ready(function () {
   $("#about").click(about);
   $("#run").click(runIt);
   $("#reset").click(ODSA.AV.reset);
-
-
-  //////////////////////////////////////////////////////////////////
-  // Start processing here
-  //////////////////////////////////////////////////////////////////
-  // Load the config object with interpreter
-  var config = ODSA.UTILS.loadConfig(),
-      interpret = config.interpreter,       // get the interpreter
-      settings = config.getSettings();      // Settings for the AV
-
-  var av,   // for JSAV library object
-      arr,    // for the JSAV array
-      arrDigit,
-      arrOut;
-
-  // Number of values in the array
-  var ASize = $("#arraysize").val();
-
-  // The array of numbers
-  var digitArray = [];
-  var outArray = [];
-
-  // Placeholder text translation needs to be set explicitly
-  $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
-
-  // Initialize the arraysize dropdown list
-  ODSA.AV.initArraySize(5, 10, 8);
 });

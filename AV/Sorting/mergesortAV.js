@@ -1,6 +1,22 @@
-"use strict";
 /*global alert: true, ODSA */
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
+  var av,   // for JSAV library object
+      arr;  // for the JSAV array
+
+  // Load the interpreter created by odsaAV.js
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      settings = config.getSettings();      // Settings for the AV
+
+  $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
+
+  // Note that unlike many sorting AVs, we are not going to let the user
+  // select "bar" display for the array because there is not enough room
+
+  // Initialize the arraysize dropdown list
+  ODSA.AV.initArraySize(5, 12, 8);
+
   // Process about button: Pop up a message with an Alert
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
@@ -13,27 +29,25 @@ $(document).ready(function () {
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       ODSA.AV.reset(true);
-      av = new JSAV($('.avcontainer'), {settings: settings});
-       // Create a new array using the layout the user has selected
+      av = new JSAV($(".avcontainer"), {settings: settings});
+      // Create a new array using the layout the user has selected
       arr = av.ds.array(arrValues, {indexed: true});
       av.displayInit();
-      // BEGIN MERGESORT IMPLEMENTATION
 
+      // BEGIN MERGESORT IMPLEMENTATION
       var level = 1;
       var column = 1;
-      var arrLen = arr.size();
-
       av.umsg(interpret("av_c1"));
       mergesort(arr, level, column);
-
       // END MERGESORT IMPLEMENTATION
+
       av.umsg(interpret("av_c2"));
       av.recorded(); // mark the end
     }
   }
 
   // The space required for each row to be displayed
-  var canvasWidth = $('#container').width();
+  var canvasWidth = $("#container").width();
   var rowHeight = 75;
   var blockWidth = 32;
 
@@ -57,8 +71,7 @@ $(document).ready(function () {
       av.umsg(interpret("av_c3"));
       av.step();
       arr.unhighlight();
-    }
-    else if (arrLen > 1) { // General recursive case
+    } else if (arrLen > 1) { // General recursive case
       av.step();
       av.umsg(interpret("av_c4"));
       arr.unhighlight();
@@ -204,36 +217,16 @@ $(document).ready(function () {
     var top = rowHeight * (level - 1);
 
     // Set the top and left values so that all arrays are spaced properly
-    arr.element.css({"left": left, "top": top});
+    arr.element.css({left: left, top: top});
   }
 
   // Connect action callbacks to the HTML entities
-  $('#about').click(about);
-  $('#run').click(runIt);
-  $('#ssperform').submit(function (evt) {
+  $("#about").click(about);
+  $("#run").click(runIt);
+  $("#ssperform").submit(function(evt) {
     evt.stopPropagation();
     evt.preventDefault();
     runIt();
   });
-  $('#reset').click(ODSA.AV.reset);
-
-
-  //////////////////////////////////////////////////////////////////
-  // Start processing here
-  //////////////////////////////////////////////////////////////////
-  var av,   // for JSAV library object
-      arr;    // for the JSAV array
-
-  // Load the interpreter created by odsaAV.js
-  var config = ODSA.UTILS.loadConfig(),
-      interpret = config.interpreter,
-      settings = config.getSettings();      // Settings for the AV
-
-  $('#arrayValues').attr('placeholder', interpret("av_arrValsPlaceholder"));
-
-  // Note that unlike many sorting AVs, we are not going to let the user
-  // select "bar" display for the array because there is not enough room
-
-  // Initialize the arraysize dropdown list
-  ODSA.AV.initArraySize(5, 12, 8);
+  $("#reset").click(ODSA.AV.reset);
 });

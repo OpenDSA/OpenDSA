@@ -1,15 +1,12 @@
-// document.write('<script src="../../../AV/Development/formal_language/fa/Automaton.js"></script>');
-// document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"></script>');
-// document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../AV/Development/formal_language/css/FA.css\" />");
-
+// Written by Ziyou Shang from an image by Susan Rodger
 $(document).ready(function() {
   "use strict";
 
   var av_name = "PDA";
   var av = new JSAV(av_name, {animationMode: "none"});
   
-  var radiusS = 20;
-  var radiusF = 25;
+  var radiusS = 15;
+  var radiusF = 20;
   
   // machine and states that are not final states
   var rect = av.g.rect(260, 30, 200, 280);
@@ -34,10 +31,13 @@ $(document).ready(function() {
   var line4 = av.g.polyline([[618, 90], [650, 80], [645, 110],[630, 120], [620, 113]], {"arrow-end": "classic-wide-long"});
   
   // labels  
-  av.label("qs", {left: 160, top: 75});
+  av.label("q", {left: 160, top: 75});
+  av.label("s", {left: 168, top: 83});
   av.label("M", {left: 310, top: 25});
-  av.label("q0", {left: 300, top: 75});
-  av.label("qf", {left: 593, top: 75});
+  av.label("q", {left: 300, top: 75});
+  av.label("0", {left: 308, top: 83});
+  av.label("q", {left: 593, top: 75});
+  av.label("f", {left: 601, top: 83});
   av.label("λ , z'; zz'", {left: 200, top: 65});
   av.label("λ , x; λ", {left: 480, top: 45});
   av.label("λ , x; λ", {left: 480, top: 115});

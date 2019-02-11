@@ -13,25 +13,25 @@ $(document).ready(function() {
     var pseudo = av.code(
         [
 	    "var split = function (pivot,ns) {", // 1
-	    "    return split_helper (?????);",  // 2
-	    "    return split_helper (pivot, ns, [ ], [ ]);", // 3
+	    "    return split_helper(?????);",  // 2
+	    "    return split_helper(pivot, ns, [ ], [ ]);", // 3
 	    "};",						  // 4
 	    "var split_helper = function (pivot,ns,smalls,bigs) {", // 5
-	    "    if ( fp.isNull(ns)) {",				// 6
+	    "    if (fp.isNull(ns)) {",				// 6
 	    "       return fp.cons(?????);",			// 7
 	    "       return fp.cons(smalls,fp.cons(bigs,[]));",	// 8
 	    "    } else if (fp.isLT(fp.hd(ns), pivot)) {",		// 9
-	    "       return split_helper(pivot, ?????)",		// 10
-	    "       return split_helper(pivot, fp.tl(ns), ?????)", // 11
+	    "       return split_helper(pivot, ?????);",		// 10
+	    "       return split_helper(pivot, fp.tl(ns), ?????);", // 11
 	    "       return split_helper(pivot, fp.tl(ns),", // 12
 	    "                           fp.cons(fp.hd(ns), smalls), ?????)", // 13
 	    "                           fp.cons(fp.hd(ns), smalls), bigs);", // 14
 	    "    } else {",						   // 15
-	    "       return split_helper(pivot, ?????)",	// 16
-	    "       return split_helper(pivot, fp.tl(ns), ????)", // 17
+	    "       return split_helper(pivot, ?????);",	// 16
+	    "       return split_helper(pivot, fp.tl(ns), ????);", // 17
 	    "       return split_helper(pivot, fp.tl(ns),", // 18
 	    "                           smalls, ?????)",    // 19
-	    "                           smalls, fp.cons(fp.hd(ns),bigs))", // 20
+	    "                           smalls, fp.cons(fp.hd(ns),bigs));", // 20
 	    "    }",		// 21
 	    "};"		// 22
         ],
@@ -87,13 +87,13 @@ $(document).ready(function() {
     var label_ns = av.label("ns", {left: leftMargin, top: 20});
 
     // Slide 1
-    av.umsg("When using the accumulator pattern, it is the helper function that does the heavy lifting.   The responsibility of the top-level function (here split) to start the accumulator argument at its correct value");
+    av.umsg("When using the accumulator pattern, it is the helper function that does the heavy lifting.   The responsibility of the top-level function (here split) is to start the accumulator argument at its correct value.");
     pseudo.hide("init-hidden");
     arr.show();
     av.displayInit();
 
     // Slide 2
-    av.umsg("Since here the accumulator will be a list of two lists, the top-level function calls split_helper with two empty lists for the arguments to smalls and bigs.");
+    av.umsg("Since here the accumulator will be a list of two lists, the top-level function calls split_helper with two empty lists for the arguments smalls and bigs.");
     pseudo.hide("call-ques");
     pseudo.show("call-ans");
     pseudo.highlight("call-ans");
@@ -147,7 +147,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 6
-    av.umsg("Keep recurring, moving down the list ns and building up the appropriate accumulator.  On this call, the head of the list is bigger than the pivot.");
+    av.umsg("Keep recurring, moving down the list ns and building up the two-component accumulator appropriately.  On this call, the head of the list is bigger than the pivot.");
     arr.highlight(0);
     arrow1.translate(arr_cell_offset,0);
     arrow2.translatePoint(0,arr_cell_offset,0);
@@ -202,7 +202,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 9
-    av.umsg("Keep recurring, moving down the list ns and building up the appropriate accumulators.  On this call, the head of the list is smaller than the pivot, so ...");
+    av.umsg("Keep recurring, moving down the list ns and building up the two-component accumulator appropriately.  On this call, the head of the list is smaller than the pivot, so ...");
     arr.highlight(1);
     arrow1.translate(arr_cell_offset,0);
     arrow2.translatePoint(0,arr_cell_offset,0);
@@ -234,7 +234,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 10
-    av.umsg("Keep recurring, moving down the list ns and building up the appropriate accumulators.  On this call, the head of the list is bigger than the pivot, so ...");
+    av.umsg("Keep recurring, moving down the list ns and building up the two-component accumulator appropriately.  On this call, the head of the list is bigger than the pivot, so ...");
     arr.highlight(2);
     arrow1.translate(arr_cell_offset,0);
     arrow2.translatePoint(0,arr_cell_offset,0);
@@ -264,7 +264,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 11
-    av.umsg("We've now passed in an empty list for the ns argument");
+    av.umsg("We've now passed in an empty list for the ns argument.");
     arr.highlight(3);
     arrow1.translate(arr_cell_offset,0);
     arrow2.translatePoint(0,arr_cell_offset,0);
@@ -293,7 +293,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 12
-    av.umsg("So we use our two accumulators to return a two-element list, having smalls as its first element and bigs as its second.   That is, we return the list [ [2, 3], [8, 5] ]");
+    av.umsg("So we use our two accumulator components to build and return a two-element list, having smalls as its first element and bigs as its second.   That is, we return the list [ [2, 3], [8, 5] ].");
     arr.highlight(3);
 //     arrow1.translate(arr_cell_offset,0);
 //     arrow2.translatePoint(0,arr_cell_offset,0);

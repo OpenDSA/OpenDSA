@@ -15,7 +15,7 @@ Deep Recursion in FP (1)
 ------------------------
 
 In the previous section, we limited our treatment of list-processing
-functions to operating on *flat* lists of integers, that is, list that
+functions to operating on *flat* lists of integers, that is, lists that
 do not themselves contain nested inner lists.  In this section, we
 will consider how to operate on lists that can contain not only
 integers, but also lists.  This will lead to a discussion of *deep recursion*,
@@ -23,16 +23,19 @@ which can handle trees represented as lists of lists of ...  lists of integers
 nested arbitrarily deep.
 
 A good guideline for deep recursion is the following.  When recurring
-on a list of creatures *lst* that may themselves be lists, recur on both
+on a list *lst* of elements that may themselves be lists, recur on both
 *fp.hd(lst)* and *fp.tl(lst)* – just make sure *lst* is not empty and
 that *fp.hd(lst)* is a list.
 
 Consider the following **tree_test** list as an example::
 
-    var tree_test = [14, [7, [], [12, [], []]],
-                         [26, [20, [17, [], []],
-                                   [] ],
-                              [31, [], []]]]
+    var tree_test = [ 14,
+                      [ 7, [], [12, [], []] ],
+                      [ 26,
+		        [ 20, [17, [], []], [] ],
+                        [ 31, [], [] ]
+		      ]
+		    ]
 
 We want to develop a function that takes in an integer tree
 represented as a list of lists of ... lists of integers and returns the sum
@@ -70,16 +73,15 @@ problem.
 Deep Recursion 2
 ----------------
 
-Notice that, although our **sumTree** function would work an arbitrary
+Note that, although our **sumTree** function would work on an arbitrary
 nested list, our particular **tree\_test** example is actually a
 binary search tree under the interpretation that the first nested list
 following a given number is the left subtree of that number, which
 contains only values less than or equal to the number, and the second
 nested list following a number is the right subtree, which contains
-only numbers greater than the given number.  Using this represented of
-the tree, we could develop helper the helper functions below that
-would help in processing those nested lists that are binary search
-trees.
+only numbers greater than the given number.  Using this representation of
+a tree, we could develop the helper functions below that
+process those nested lists that are binary search trees.
 
 ::
 
@@ -99,21 +101,25 @@ trees.
     };
 
 
-Using these helper functions we can easily write a function **path**
+Using these helper functions, we can easily write a function **path**
 (with one caveat addressed below)
 
-**var path = function (n, bst)**
+**var path = function (n, bst) { ... };**
 
 where **n** is a number and **bst** is a binary search tree that
 **contains the number n**.  **path** should return a list of 0’s and
 1’s showing how to find the node containing **n**, where 1 indicates
-"go right" and 0 indicates "go left". If *n* is found at the root, the
+"go right" and 0 indicates "go left". If **n** is found at the root, the
 empty list is returned. Example usage::
 
-    > var tree_test = [14, [7, [], [12, [], []]],
-                         [26, [20, [17, [], []],
-                              [] ],
-                              [31, [], []]]]
+    > var tree_test = [ 14,
+                        [ 7, [], [12, [], []] ],
+                        [ 26,
+                          [ 20, [17, [], []], [] ],
+                          [ 31, [], [] ]
+		        ]
+		      ]
+
     > path(17, tree_test)
     [1, 0, 0]
 

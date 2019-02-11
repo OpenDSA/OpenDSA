@@ -46,6 +46,11 @@
     "points": 0.0, 
     "required": false
   }, 
+  "glob_ff_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  },
   "glob_ka_options": {
     "threshold": 5, 
     "points": 1.0, 
@@ -75,6 +80,11 @@
       "Design/ADT": {
         "IntroADTSumm": {
           "threshold": 4
+        }
+      },
+      "CMP/DatatypesCM": {
+        "CMdatatypeSumm": {
+          "threshold": 5
         }
       }
     },
@@ -542,7 +552,16 @@
       "MemManage/MemmanIntro": {}, 
       "MemManage/Dynamic": {}, 
       "MemManage/SequentialFit": {}, 
-      "MemManage/FirstFit": {}, 
+      "MemManage/FirstFit": {
+        "firstFitPRO": {
+          "exer_options": {
+            "JXOP-code": "none", 
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "undo"
+          }, 
+          "points": 2.0
+        }
+      },
       "MemManage/CircularFit": {}, 
       "MemManage/BestFit": {}, 
       "MemManage/WorstFit": {}, 
@@ -590,7 +609,12 @@
       "Graph/GraphShortest": {},
       "Graph/MCST": {}, 
       "Graph/Kruskal": {},
-      "Graph/Floyd": {}
+      "Graph/Floyd": {},
+      "CMP/GraphCM": {
+        "CMgraphSumm": {
+          "threshold": 5
+        }
+      }
     }, 
     "Advanced Data Structures": {
       "SearchStruct/SkipList": {},

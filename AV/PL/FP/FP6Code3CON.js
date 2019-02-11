@@ -37,12 +37,12 @@ $(document).ready(function() {
 	"        return fp.cons(n1, fillIn( fp.add(n1,1), n2));", // 5
 	"    else",						  // 6
 	"        return fp.cons(n1, fillIn( fp.sub(n1,1), n2));", // 7
-	"}",							  // 8
+	"};",							  // 8
 	"",							  // 9
 	"var countFrom = curry(fillIn);",  			  // 10
 	"var countFrom3To = countFrom(3):",			  // 11
 	"countFrom3To( 6 );  ",                   		  // 12
-	"fp.curry(fillIn)(3)(6);  // countFrom3To anonymously"	  // 13
+	"curry(fillIn)(3)(6);  // countFrom3To anonymously"	  // 13
         ];
 
     
@@ -60,7 +60,7 @@ $(document).ready(function() {
     av.displayInit();
 
     // S 2
-    av.umsg('If n1 < n2, then the highlighted recursive call will count n1 up to n2, ultimately returning the list indicated below.');
+    av.umsg('If n1 < n2, then the highlighted recursive call will count from n1 up to n2, ultimately returning the list indicated below.');
     pseudo1.highlight(5);
     n1.show();
     n1_label.show();
@@ -71,7 +71,7 @@ $(document).ready(function() {
     av.step();
    
     // S3
-    av.umsg('Conversely if n1 > n2, then the highlighted recursive call will count n1 down to n2, ultimately returning the list indicated below.');
+    av.umsg('Conversely if n1 > n2, then the highlighted recursive call will count from n1 down to n2, ultimately returning the list indicated below.');
     pseudo1.unhighlight(5);
     pseudo1.highlight(7);
     n1.value(0,6);
@@ -107,7 +107,7 @@ $(document).ready(function() {
     av.step();
     
     // S6
-    av.umsg('We can now use the countFrom3To function that curry has created to create a list from the wired-in 3 to any other value.   In the example below, the other value is 6.');
+    av.umsg('We can now use the countFrom3To function that curry has created to build a list from the wired-in 3 to any other value.   In the example below, the other value is 6.');
     cf3t.show();
     cf3t_label.show();
     pseudo1.show(12);

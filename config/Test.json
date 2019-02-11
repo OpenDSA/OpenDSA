@@ -48,6 +48,11 @@
     "points": 0.0,
     "required": false
   },
+  "glob_ff_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  },
   "glob_ka_options": {
     "threshold": 5,
     "points": 1.0,
@@ -65,9 +70,97 @@
     "required": true
   },
   "chapters": {
-    "Stuff": {
-      "MemManage/Buddy": {}
-    },
+    "Sorting": {
+      "Sorting/InSort": {}, 
+      "Sorting/SortNotation": {
+        "SortIntroSumm": {
+          "threshold": 3
+        }
+      }, 
+      "Sorting/InsertionSort": {}, 
+      "Sorting/BubbleSort": {
+        "BubsortPRO": {
+          "points": 2.0, 
+          "threshold": 3
+        }
+      }, 
+      "Sorting/SelectionSort": {
+        "SelsortPRO": {
+          "points": 2.0
+        }
+      }, 
+      "Sorting/ExchangeSort": {
+        "FindInversionsPRO": {
+          "points": 2.0
+        }
+      }, 
+      "Sorting/SortOpt": {
+        "insertionSortWithoutSwapPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          }, 
+          "points": 0.0
+        }
+      }, 
+      "Sorting/Shellsort": {
+        "shellsortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "fix"
+          }
+        }, 
+        "shellsortPerf": {
+          "threshold": 1.0
+        }
+      }, 
+      "Sorting/Mergesort": {
+        "mergesortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "fix"
+          }
+        }
+      }, 
+      "Sorting/MergesortImpl": {}, 
+      "Sorting/Quicksort": {
+        "quicksortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "fix"
+          }
+        }
+      }, 
+      "Sorting/Heapsort": {
+        "HeapsortStepPRO": {
+          "points": 2.0
+        }, 
+        "heapsortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous", 
+            "JXOP-fixmode": "fix"
+          }
+        }
+      }, 
+      "Sorting/BinSort": {}, 
+      "Sorting/RadixSort": {
+        "RadixsortPRO": {
+          "points": 2.0, 
+          "threshold": 4
+        }
+      }, 
+      "Sorting/SortingEmpirical": {},
+      "Sorting/SortingLowerBound": {
+        "SortBoundSumm": {
+          "threshold": 4
+        }
+      }, 
+      "Sorting/SortSumm": {
+        "SortChapterSumm": {
+          "points": 2, 
+          "threshold": 10
+        }
+      }
+    }, 
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}

@@ -24,6 +24,11 @@
     "points": 0.0,
     "required": false
   },
+  "glob_ff_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  },
   "glob_ka_options": {
     "threshold": 5,
     "points": 1.0,
@@ -43,7 +48,8 @@
   "chapters": {
     "Introduction to Pointers in Java": {
       "PointersJava/PointerIntro": {},
-      "PointersJava/BasicPointers": {
+      "PointersJava/BasicPointers1": {},
+      "PointersJava/BasicPointers2": {
         "PointerEX1PRO": {
           "threshold": 1
         }, 
@@ -54,11 +60,12 @@
       "PointersJava/Syntax": {},
       "PointersJava/LocalMem": {},
       "PointersJava/HeapMem": {},
-      "PointersJava/Links": {
+      "PointersJava/Links1": {
         "PointerEX3PRO": {
           "threshold": 1
         }
       },
+      "PointersJava/Links2": {},
       "PointersJava/Exercises": {}
     },
     "Appendix": {

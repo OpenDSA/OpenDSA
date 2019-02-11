@@ -40,12 +40,10 @@ At the end of processing the letters of the string, the DFA can answer
 For example, "yes" if 6789 is a valid integer,
 or if SUM is a valid variable name in C++.
 
-.. odsafig:: Images/DFAexample.png
-   :width: 350
+.. inlineav:: DFAExampleCON dgm
+   :links: AV/VisFormalLang/DFA/DFAExampleCON.css
+   :scripts: AV/VisFormalLang/DFA/DFAExampleCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Basic DFA
 
    Example of DFA
 
@@ -56,10 +54,6 @@ or if SUM is a valid variable name in C++.
    We want enough information so that we can "build" the machine.
    But no more.
 
-.. todo::
-      :type: diagram
-      
-      Redraw this figure using JSAV dgm
 
 
 Define a DFA as :math:`(Q, \Sigma, \delta, q_0, F)` where
@@ -85,20 +79,15 @@ Example
 
 DFA that accepts even binary numbers.
 
-.. odsafig:: Images/stnfaEx1.png
-   :width: 250
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: DFA Example
-
-   DFA Example: Odd numbers
-
-
 .. inlineav:: EvenBinaryDFACON dgm
    :links: AV/VisFormalLang/DFA/EvenBinaryDFACON.css
    :scripts: AV/VisFormalLang/DFA/EvenBinaryDFACON.js
    :align: center
+
+   DFA Example: Odd numbers
+
+
+
 
 
 We can assign meaning to the states:
@@ -157,21 +146,15 @@ Example of a trace: 11010
 
 Pictorial Example of a trace for 100:
 
-.. odsafig:: Images/stnfapict.png
-   :width: 450
+.. inlineav:: OddNumbersTraceCON dgm
+   :links: AV/OpenFLAP/OddNumbersTraceCON.css
+   :scripts: AV/OpenFLAP/OddNumbersTraceCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: DFA Example
-
-.. todo::
-      :type: diagram
-      
-      Redraw this figure using JSAV dgm
 
 
-   DFA Example: Odd numbers trace
+   DFA Example: Even numbers trace
 
+Now let's see how this machine accepts / rejects some strings.
 
 .. inlineav:: TraceEvenBinaryDFACON ss
    :links: AV/VisFormalLang/DFA/TraceEvenBinaryDFACON.css
@@ -243,20 +226,15 @@ accepted.
 To be complete, we can add one or more "trap" states, and put in all
 of the "extra" transitions. As follows.
 
-.. odsafig:: Images/stnfaEx3.png
-   :width: 350
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: DFA Example: Complete
-
-   DFA Example: Complete
-
-
 .. inlineav:: DFA_withTrapStateCON dgm
    :links: AV/VisFormalLang/DFA/DFA_withTrapStateCON.css
    :scripts: AV/VisFormalLang/DFA/DFA_withTrapStateCON.js
    :align: center
+
+   DFA Example: Complete
+
+
+
 
 
 Note that there is nothing "special" about the trap state.
@@ -280,20 +258,15 @@ even number of 1's.
 |   :math:`q_2` - odd number, odd number of 1's, 
 |   :math:`q_3` - odd number, even number of 1's 
 
-.. odsafig:: Images/stnfaEx2.png
-   :width: 375
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Complicated DFA Example
-
-   More complicated DFA Example
-
-
 .. inlineav:: EvenBinaryEvenOnesDFACON dgm
    :links: AV/VisFormalLang/DFA/EvenBinaryEvenOnesDFACON.css
    :scripts: AV/VisFormalLang/DFA/EvenBinaryEvenOnesDFACON.js
    :align: center
+
+   More complicated DFA Example
+
+
+
 
 
 Determinism means that there is only one choice about what to do when
