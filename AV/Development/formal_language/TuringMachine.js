@@ -288,7 +288,7 @@ var Configuration = function(state, tape) {
 	// toString returns the state value + the 'viewport' of the tape, to be displayed to the user
 	this.toString = function() {
 		return this.tape.toString();
-		// return this.state.value() + ' ' + viewTape(this.tape);
+		//return this.state.value() + ' ' + viewTape(this.tape);
 	}
 	this.toID = function() {
 		// console.log(this.tape.currentIndex);
@@ -324,10 +324,10 @@ tmTrans.getWeight = function() {
 	 as well as the beginning of the string.
  */
 var Tape = function(str) {
-	"use strict";
-	this.arr = [];
-	this.current = 0;
-	this.currentIndex;
+	// "use strict";
+	// this.arr = [];
+	// this.current = 0;
+	// this.currentIndex;
 	// console.log("I'm getting it" + str);
 
 	if (typeof str === 'string') {
@@ -341,7 +341,8 @@ var Tape = function(str) {
 	}
 	// else, assume that a Tape object was passed in, and create a copy of it
 	else {
-		console.log("str's index"+str.currentIndex)
+		console.log("str's index"+str.currentIndex);
+		console.log("str's array"+str.getArr());
 		this.currentIndex = str.currentIndex;
 		this.arr = str.getArr();
 		this.current = this.arr[this.currentIndex];  // the current symbol
@@ -379,29 +380,30 @@ var Tape = function(str) {
 	}
 
 	this.goRight = function(){
-		if (this.currentIndex += 1 > this.arr.length){
-			console.log("Too far right");
-		}
-		else{
+		// if (this.currentIndex += 1 > this.arr.length){
+		// 	console.log("Too far right");
+		// }
+		//else{
 			this.currentIndex+=1;
+			console.log("updated currentIndex" + this.currentIndex);
 			this.current = this.arr[this.currentIndex];
 			return this.current;
 			//TODO: highlight?
 			// this.object.highlight(current);
-		}
+		//}
 
 	}
 
 	this.goLeft = function(){
-		if (this.current -= 1 < 0){
-			console.log("Too far left");
-		}
-		else{
-			this.currentIndex+=1;
+		// if (this.current -= 1 < 0){
+		// 	console.log("Too far left");
+		// }
+		//else{
+			this.currentIndex-=1;
 			this.current = this.arr[this.currentIndex];
 			return this.current;
 			// this.object.highlight(current);
-		}
+		//}
 	}
 
 	this.removeValue = function(location){
@@ -414,8 +416,10 @@ var Tape = function(str) {
 	// Move the tape and read the symbol
 	this.move = function (str) {
 		if (str === "L") {
+			console.log("going left");
 			return this.goLeft();
 		} else if (str === "R") {
+			console.log("going right");
 			return this.goRight();
 		} else if (str === "S") {
 			return this.current;
