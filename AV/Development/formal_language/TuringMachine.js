@@ -1,5 +1,7 @@
 // Turing Machine "class", extending FiniteAutomaton
 //Galina Belolipetski
+//To do: make a visualization of this class and the second class
+// PDA has a similar stack, concept to a tape, that is fully implemented
 var TuringMachine = function(jsav, options) {
 	Automaton.apply(this, arguments);
 	this.transitions = [];
