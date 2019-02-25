@@ -112,19 +112,27 @@ tm.traverse = function(currentStates) {
 				var w = weight[i].split(':');
 				console.log("START=========");
 				for (var d = 0; d < w.length; d++){
+					if (d == 0){
+						console.log("printing the 0th");
+					}
 					console.log(w[d]);
 				}
 				console.log("END=========");
-				console.log("The tape value:" + currentState.tape.value());	//this is undefined
+				console.log("The tape value:" + currentState.tape.value());
 				if (currentState.tape.value() === w[0]) {
-					// here
+					console.log("Met expectation: " + w[0]);
+					console.log("Tape before: " + currentState.tape.toString());
 					var nextConfig = new Configuration(next, currentState.tape);
+					console.log("Tape during: " + nextConfig.tape.toString());
+					console.log("Why undefined tho: " + w[1]);
 					nextConfig.tape.value(w[1]);
 					nextConfig.tape.move(w[2]);
+					console.log("Tape after: " + nextConfig.tape.toString());
 					nextStates.push(nextConfig);
+					console.log(nextStates.length);
 					break;
 				}
-				if (currentState.tape.value() !== w[0]) {
+				else if (currentState.tape.value() !== w[0]) {
 					console.log("Not equal");
 				// 	// and here
 				// 	var nextConfig = new Configuration(next, currentState.tape);
@@ -273,8 +281,8 @@ tm.initFromXML = function(text) {
 // Configuration class
 var Configuration = function(state, tape) {
 	this.state = state;
-	console.log("My state: " + this.state.value());
-	console.log("My tape: " + tape);
+	console.log("My state: " + state.value());
+	console.log("My tape: " + tape); //tape is undefined
 	// this.tape = new Tape(tape);
 	this.tape = new Tape(tape);
 	// toString returns the state value + the 'viewport' of the tape, to be displayed to the user
@@ -319,7 +327,7 @@ var Tape = function(str) {
 	"use strict";
 	this.arr = [];
 	this.current = 0;
-	this.currentIndex = 0;
+	this.currentIndex;
 	// console.log("I'm getting it" + str);
 
 	if (typeof str === 'string') {
@@ -333,16 +341,17 @@ var Tape = function(str) {
 	}
 	// else, assume that a Tape object was passed in, and create a copy of it
 	else {
+		console.log("str's index"+str.currentIndex)
+		this.currentIndex = str.currentIndex;
 		this.arr = str.getArr();
-		this.current = this.arr[0];  // the current symbol
-		this.currentIndex = 0;                // the current position
+		this.current = this.arr[this.currentIndex];  // the current symbol
+		               // the current position
 	}
 
 	// this.jsav;
 
 	this.toString = function(){
-		console.log(this.arr);
-		return;
+		return this.arr.toString();
 	}
 
 	// this.object = this.jsav.av.ds.array(this.arr);
@@ -359,10 +368,13 @@ var Tape = function(str) {
 
 	this.value = function(newValue){
 		// this.object.highlight(current);
-		if (typeof val === "undefined"){
+		if (typeof newValue === "undefined"){
+			console.log("I'm undefined");
 			return this.arr[this.currentIndex];
 		}
+		console.log("before value: "+this.arr[this.currentIndex]);
 		this.arr[this.currentIndex] = newValue;
+		console.log("after value: "+this.arr[this.currentIndex]);
 		return this.arr[this.currentIndex];
 	}
 
