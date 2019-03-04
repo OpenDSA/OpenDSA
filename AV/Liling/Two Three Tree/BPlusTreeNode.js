@@ -9,142 +9,66 @@ $(document).ready(function() {
     } else {
       arr.element.addClass("internal-node");
     }
-    return new BPTNode(jsav, max, arr).center();
+    return new BPTNode(valueArr, jsav, max, arr);
   }
 
   // Node constructor.
-  function BPTNode(jsav, maximum, arr) {
+  function BPTNode(valueArr, jsav, maximum, arr) {
     this.jsav = jsav;
     this.max = maximum;
-    this.size = 0;
+    this.size_value = 0;
+    this.size_child = 0;
     this.array = arr;
     this.value = [];
     this.child = [];
+    this.edge = [];
     for(var i = 0; i < maximum; i++){
-      this.value.push(0);
-      this.child.push(null);
+      if(valueArr[i] != ""){
+        this.value[i] = valueArr[i];
+        this.size_value++;
+      }
     }
   }
   //Add functions to node prototype
   var BPTNodeproto = BPTNode.prototype;
 
-  //move array to the center
-  // Move the node horizontally to the center of the canvas.
-  BPTNodeproto.center = function() {
-    var canvas = $(this.array.element).parent();
-    var cw = $(canvas).outerWidth();
-    var aw = $(this.array.element).outerWidth();
-    var left_offset = (cw / 2) - (aw / 2);
-    this.array.css({left: left_offset + "px", top: "15px"});
-    return this;
-  };
-
-  // Shift the position of the node.
-  BPTNodeproto.move = function(left, ttop) {
-    this.array.css({left: "+=" + left + "px", top: "+=" + ttop + "px"});
-  };
-
+  //Add new child into child array and graph the child
   BPTNodeproto.addChild = function(newChild) {
-    this.children.push(newChild);
-    this.drawEdge(this.children.length - 1);
-  };
-
-  // Draw edge from this node to child node.
-  BPTNodeproto.drawEdge = function(child_node) {
-    // Calculate edge position
-    var pos = $(this.array.element).position();
-    var c_pos = $(child_node.array.element).position();
-    var x1 = pos.left,
-        y1 = pos.top,
-        x2 = c_pos.left,
-        y2 = c_pos.top;
-
-    // Adjust coordinates to align edges with arrays
-    //var left_off = ($(this.array.element).outerWidth() / $(this.array.element).children("li").size()) * child_idx;
-    var top_off = $(this.array.element).outerHeight();
-    //x1 += left_off;
-    y1 += top_off;
-    x2 += $(child_node.array.element).outerWidth() / 2;
-    y2 += 2;
-
-    //edge = this.jsav.g.line(x1, y1, x2, y2);
-    //edge.movePoints([[0, x1, y1], [1, x2, y2]]);
-  };
-
-  //check full
-  BPTNodeproto.isFull = function(){
-    return this.max == this.size;
+    this.child[this.size_child] = newChild;
+    this.size_child++;
   }
 
-  //Set new to the val array at index position
-  BPTNodeproto.setValue = function(index, newValue){
-    this.value[index] = newValue;
-  }
-
-  //Set newChild to the Children array at index Position
+  /*
+   * Set newChild to the Children array at index Position
+   * precondition: index < this.max
+   */
   BPTNodeproto.setChildren = function(index, newChild){
-    this.children[index] = newChild;
-  }
-
-  BPTNodeproto.clearValue = function(){
-    this.size = 0;
-    for(var i = 0; i < this.max; i++){
-      this.value[i] = 0;
-    }
+    this.child[index] = newChild;
   }
 
   BPTNodeproto.getChildrenSize = function(){
-    var s = 0;
-    for(var i = 0; i < this.max + 1; i++){
-      if(this.children[i] != null){
-        s++;
-      }else{
-        break;
-      }
-    }
-    return s;
+    return this.size_child;
   }
 
   BPTNodeproto.clearChildren = function(){
-    for(var i = 0; i < this.max + 1; i++){
-      this.children[i] = null;
-    }
+    this.size_child = 0;
   }
 
-  //add addInfo into the value array in the right order
-  BPTNodeproto.insert = function(addInfo){
-    if(this.isFull()){
-      return false;
-    }else if(size == 0){
-      this.value[0] = addInfo;
-      this.size += 1;
-      return true;
-    }else{
-      var pos = this.insertPos(addInfo, 0, this.size - 1);
-      for(var i = size; i > pos; i--){
-        this.value[i] = this.value[i - 1];
-      }
-      this.value[pos] = addInfo;
-      this.size += 1;
-      return true;
-    }
+  BPTNodeproto.clearValue = function(){
+    this.size_value = 0;
   }
 
-  BPTNodeproto.delete = function(delInfo){
-    var pos = -1;
-    for(var i = 0; i < this.size; i++){
-      if(this.value[i] == delInfo){
-        pos = i;
-      }
-    }
-    if(pos != -1){
-      this.size -= 1;
-      for(var i = pos; i < this.size; i++){
-        this.value[i] = this.value[i + 1];
-      }
-      return true;
-    }
-    return false;
+  //check full for the value
+  BPTNodeproto.isFull = function(){
+    return this.size_value == this.max;
+  }
+
+  /*
+   * Set new to the val array at index position
+   * precondition: index < this.max
+   */
+  BPTNodeproto.setValue = function(index, newValue){
+    this.value[index] = newValue;
   }
 
   /**
@@ -175,14 +99,14 @@ $(document).ready(function() {
    }
 
    /**
-	 * find the position to add in the array: inside insert(when addInfo equal to
-	 * the value in the parent, go to right side) used for delete
-	 *
-	 * @param addInfo the information that will be add in
-	 * @param small   the smallest bound (pos)
-	 * @param big     the biggest bound (pos)
-	 * @return the index that we are going to added in
-	 */
+  * find the position to add in the array: inside insert(when addInfo equal to
+  * the value in the parent, go to right side) used for delete
+  *
+  * @param addInfo the information that will be add in
+  * @param small   the smallest bound (pos)
+  * @param big     the biggest bound (pos)
+  * @return the index that we are going to added in
+  */
    BPTNodeproto.findHelp = function(addInfo, small, big){
      if(addInfo < this.value[small]){
        return small;
@@ -201,6 +125,58 @@ $(document).ready(function() {
      }
    }
 
+  //add addInfo into the value array in the right order
+  BPTNodeproto.insert = function(addInfo){
+    if(this.isFull()){
+      return false;
+    }else if(size_value == 0){
+      this.value[0] = addInfo;
+      this.size_value += 1;
+      return true;
+    }else{
+      var pos = this.insertPos(addInfo, 0, this.size_value - 1);
+      for(var i = this.size_value; i > pos; i--){
+        this.value[i] = this.value[i - 1];
+      }
+      this.value[pos] = addInfo;
+      this.size_value++;
+      return true;
+    }
+  }
+
+  BPTNodeproto.delete = function(delInfo){
+    var pos = -1;
+    for(var i = 0; i < this.size_value; i++){
+      if(this.value[i] == delInfo){
+        pos = i;
+      }
+    }
+    if(pos != -1){
+      this.size_value--;
+      for(var i = pos; i < this.size_value; i++){
+        this.value[i] = this.value[i + 1];
+      }
+      return true;
+    }
+    return false;
+  }
+
+  BPTNodeproto.size = function(){
+    return this.size_value;
+  }
+
+  BPTNodeproto.setSize = function(newSize){
+    this.size_value = newSize;
+  }
+
+  BPTNodeproto.getValue = function(){
+    return this.value;
+  }
+
+  BPTNodeproto.getChildren = function(){
+    return this.child;
+  }
+
    /**
 	 * the Position that we will add Children in
 	 *
@@ -215,51 +191,21 @@ $(document).ready(function() {
        if(b <= curr.getValue()[0]){
          break;
        }else{
-         pos += 1;
+         pos++;
          curr = this.getChildren()[pos];
        }
      }
      if(b > curr.getValue()[0]){
-       pos += 1;
+       pos++;
      }
      return pos;
    }
 
-   BPTNodeproto.size = function(){
-     return this.size;
-   }
-
-   BPTNodeproto.setSize = function(newSize){
-     this.size = newSize;
-   }
-
-   BPTNodeproto.getValue = function(){
-     return this.value;
-   }
-
-   BPTNodeproto.getChildren = function(){
-     return this.children;
-   }
-
    BPTNodeproto.isLeaf = function(){
-     for(var i = 0; i < this.max + 1; i++){
-       if(this.children[i] != null){
-         return false;
-       }
+     if(size_child == 0){
+       return true;
      }
-     return true;
-   }
-
-   //Testing function: toString
-   BPTNodeproto.toString = function(){
-     var result = "[";
-     for(var i = 0; i < this.size - 1; i++){
-       result += this.value[i];
-       result += ",";
-     }
-     result += this.value[this.size - 1];
-     result += "]";
-     console.log(result);
+     return false;
    }
 
   // Publicize the public functions

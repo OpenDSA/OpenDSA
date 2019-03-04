@@ -38,7 +38,7 @@ $(document).ready(function() {
     this.size = 0;
   }
 
-  /**
+ /**
   * Get the node in givenPosition PreCondition: List is not empty
   *
   * @param givenPosition position that the Node we want stored in
@@ -48,18 +48,22 @@ $(document).ready(function() {
   * @return node at givenPosition
   */
   function getNodeAt(givenPosition){
+    if(givenPosition >= 0 && givenPosition < this.size)
+
+    var curr = this.head;
+    var index = 0;
+    while(index != givenPosition){
+      curr = curr.next();
+      index += 1;
+    }
+    return curr;
+
     if(givenPosition < 0 || givenPosition > this.size){
       throw "Index exceeds the size!";
     }else if(this.head == null){
       throw "Nothing in the List!";
     }else{
-      var curr = this.head;
-      var index = 0;
-      while(index != givenPosition){
-        curr = curr.next();
-        index += 1;
-      }
-      return curr;
+
     }
   }
 

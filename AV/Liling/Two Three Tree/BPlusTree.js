@@ -2,18 +2,47 @@
 $(document).ready(function() {
   "use strict";
 
-function tree(maximum){
-  this.list = new List();
-  this.level = 1;
-  this.max = maximum;
-  this.root = new BPTreeNode(maximum);
-  this.leafValue = new List();
-  this.leafValue.add(this.root);
-  this.list.add(this.leafValue);
-  var update = -1;
-}
+  function tree(jsav, maximum){
+    this.jsav = jsav;
+    this.list = []; //store array with different level inside
+    this.level = 1;
+    this.max = maximum;
+    this.root; //root will be stored as a BPTreeNode
+    this.leafValue = []; //stored BPTreeNode for the leaf Node
+    this.leafValue[0] = this.root;
+    this.list[0] = this.leafValue;
+    this.update = -1;
+  }
 
   var BPTreeproto = tree.prototype;
+
+  //add to the specific index in the data structure arrays
+  BPTreeproto.addDataStructure = function(arrds, index, obj){
+    for(var i = arrds.length; i--; i > index){
+      arrds[i] = arrds[i - 1];
+    }
+    arrds[index] = obj;
+    return arrds;
+  }
+
+  /*
+   * move array to the center
+   * Move the node horizontally
+   * to the center of the canvas.
+   */
+   // BPTreeproto.center = function() {
+   //   var canvas = $(this.array.element).parent();
+   //   var cw = $(canvas).outerWidth();
+   //   var aw = $(this.array.element).outerWidth();
+   //   var left_offset = (cw / 2) - (aw / 2);
+   //   this.array.css({left: left_offset + "px", top: "15px"});
+   //   return this;
+   // };
+
+   // Shift the position of the node.
+   // BPTreeproto.move = function(left, ttop) {
+   //   this.array.css({left: "+=" + left + "px", top: "+=" + ttop + "px"});
+   // };
 
   BPTreeproto.getLevel = function(){
     return this.level;
@@ -31,9 +60,9 @@ function tree(maximum){
 	 * @return the new TreeNode that will be created
 	 */
   BPTreeproto.split = function(rt, addInfo){
-    var leftSize = (this.max + 1) / 2;
+    var leftSize = Math.round((this.max + 1) / 2);
     var addPos = rt.insertPos(addInfo,0, this.max - 1);
-    var next = new BPTreeNode(this.max);
+    var next = BPTreeNode.newNode({"", "", "", ""}, av, this.max, false);
     //add new value to the left TreeNode
     if(addPos < leftSize){
       for(var i = leftSize - 1; i < this.max; i++){
@@ -41,7 +70,7 @@ function tree(maximum){
       }
       rt.setSize(leftSize);
       for(var i = leftSize - 1;i > addPos; i--){
-        rt.setValue(i, rt.getValue()[i -1]);
+        rt.setValue(i, rt.getValue()[i - 1]);
       }
       rt.setValue(addPos, addInfo);
     }
@@ -57,8 +86,8 @@ function tree(maximum){
   }
 
   BPTreeproto.parentSplit = function(rt) {
-		var next = new BPTreeNode(this.max);
-		var leftSize = (this.max + 1) / 2;
+    var next = BPTreeNode.newNode({"", "", "", ""}, av, this.max, false);
+		var leftSize = Math.round((this.max + 1) / 2);
 		var addPos = rt.insertPos(this.update, 0, this.max - 1);
 		// deal with parentNode
 		if (addPos < leftSize) {
@@ -89,6 +118,10 @@ function tree(maximum){
 		return next;
 	}
 
+  BPTreeproto.add = function(addInfo) {
+		this.insert(this.root, addInfo, this.level);
+	}
+
 	/**
 	 * insert into the B+ Tree
 	 *
@@ -104,48 +137,50 @@ function tree(maximum){
 				return rt;
 			} else {
 				// split
-				var next = split(rt, addInfo);
-				insertTreeNode(leafValue, next);// add in the single linked list
-				update = next.getValue()[0];
-				if (rt == root) {
-					var parent = new BPTreeNode(this.max); // add new parent node
+				var next = this.split(rt, addInfo);
+				this.leafValue = this.insertTreeNode(this.leafValue, next);// add in the single linked list
+				this.update = next.getValue()[0];
+				if (rt == this.root) {
+					var parent = BPTreeNode.newNode({"", "", "", ""}, av, this.max, false); // add new parent node
 					parent.insert(this.update);
 					parent.setChildren(0, rt);
 					parent.setChildren(1, next);
 					this.root = parent;
 					this.update = -1;
 					this.level++;
-					list.add(new List());
-					list.get(this.level - 1).add(parent);
+          var newList = [];
+          newList[0] = parent;
+					this.list[this.level - 1] = newList;
 					return parent;
 				}
 				return next;
 			}
 		} else {
 			var pos = rt.insertPos(addInfo, 0, rt.size() - 1);
-			var next = insert(rt.getChildren()[pos], addInfo, lev - 1); // new child
+			var next = this.insert(rt.getChildren()[pos], addInfo, lev - 1); // new child
 			if (next != rt.getChildren()[pos]) {
-				var checkAdd = rt.insert(update);
+				var checkAdd = rt.insert(this.update);
 				if (checkAdd) {
-					addChildren(rt, next, false, null);
+					this.addChildren(rt, next, false, null);
 					this.update = -1;
 					return rt;
 				} else {
 					// split
-					var nextNode = parentSplit(rt); // parallel with rt
-					insertTreeNode(list.get(lev - 1), nextNode);
+					var nextNode = this.parentSplit(rt); // parallel with rt
+					this.list[lev - 1] = this.insertTreeNode(this.list[lev - 1], nextNode);
 					// change children
-					addChildren(rt, next, true, nextNode);
-					if (rt == root) {
-						var parent = new BPTreeNode(max); // add new parent node
-						parent.insert(update);
+					this.addChildren(rt, next, true, nextNode);
+					if (rt == this.root) {
+						var parent = BPTreeNode.newNode({"", "", "", ""}, av, this.max, false); // add new parent node
+						parent.insert(this.update);
 						parent.setChildren(0, rt);
 						parent.setChildren(1, nextNode);
-						root = parent;
-						update = -1;
-						level++;
-						list.add(new List());
-						list.get(level - 1).add(parent);
+						this.root = parent;
+						this.update = -1;
+						this.level++;
+            var newList = [];
+            newList[0] = parent;
+  					this.list[this.level - 1] = newList;
 						return parent;
 					}
 					return nextNode;
@@ -168,7 +203,7 @@ function tree(maximum){
 	 */
 	BPTreeproto.addChildren = function(parent, newChild, split, newParent) {
 		var pos = parent.insertChildrenPos(newChild);
-		if (split) {
+		if (this.split) {
 			var leftSize = (this.max + 1) / 2;
 			if (pos > leftSize) {
 				var j = 0;
@@ -199,29 +234,27 @@ function tree(maximum){
 	/**
 	 * add TreeNode into the linkedList: outside insert (Leaf)
 	 *
-	 * @param obj the TreeNode that will be added in the linked list
+	 * @param obj the TreeNode that will be added in the Data Structure
 	 */
-	BPTreeproto.insertTreeNode = function(linkedlist, obj) {
+	BPTreeproto.insertTreeNode = function(listt, obj) {
 		var pos = 0;
 		var b = obj.getValue()[obj.size() - 1];
-		var curr = linkedlist.get(pos);
-		while (pos < linkedlist.size() - 1) {
+		var curr = listt[pos];
+		while (pos < listt.length - 1) {
 			if (b <= curr.getValue()[0]) {
 				break;
 			} else {
 				pos++;
-				curr = linkedlist.get(pos);
+				curr = listt[pos];
 			}
 		}
 		if (b > curr.getValue()[0]) {
 			pos++;
 		}
-		linkedlist.add(pos, obj);
+    listt = addDataStructure(listt, pos, obj);
+    return listt;
 	}
 
-	BPTreeproto.add = function(addInfo) {
-		insert(root, addInfo, level);
-	}
 
 	/**
 	 * delete help method which check if this b plus tree has value of delInfo
@@ -240,14 +273,14 @@ function tree(maximum){
 			return false;
 		} else {
 			var pos = rt.findHelp(delInfo, 0, rt.size() - 1);
-			return find(rt.getChildren()[pos], delInfo);
+			return this.find(rt.getChildren()[pos], delInfo);
 		}
 	}
 
 	BPTreeproto.delete = function(rt, delInfo) {
-		if (find(rt, delInfo)) {
-			if (leafValue.size() > 1) {
-				remove(rt, delInfo, level);
+		if (this.find(rt, delInfo)) {
+			if (this.leafValue.length > 1) {
+				this.remove(rt, delInfo, this.level);
 			} else {
 				rt.delete(delInfo);
 			}
@@ -256,36 +289,38 @@ function tree(maximum){
 		}
 	}
 
-	BPTreeproto.getPosInList = function(search, node) {
-		for (var i = 0; i < search.size(); i++) {
-			if (search.get(i) == node) {
+ //search will be the datastructure
+  BPTreeproto.getPosInList = function(search, node) {
+		for (var i = 0; i < search.length; i++) {
+			if (search[i] == node) {
 				return i;
 			}
 		}
 		return -1;
 	}
 
-	BPTreeproto.mergeLeaf = function(rt) {
+  //rt will be the treeNode
+  BPTreeproto.mergeLeaf = function(rt) {
 		if (rt.size() < max / 2) { // need borrow or merge
-			var index = getPosInList(leafValue, rt);
+			var index = getPosInList(this.leafValue, rt);
 			// Borrow from Left
-			if (index != 0 && (leafValue.get(index - 1).size() - 1) >= max / 2) {
-				var biggestPos = leafValue.get(index - 1).size() - 1;
-				var biggest = leafValue.get(index - 1).getValue()[biggestPos];
-				leafValue.get(index - 1).delete(biggest);
+			if (index != 0 && (this.leafValue.[index - 1].size() - 1) >= max / 2) {
+				var biggestPos = this.leafValue[index - 1].size() - 1;
+				var biggest = this.leafValue[index - 1].getValue()[biggestPos];
+				this.leafValue[index - 1].delete(biggest);
 				rt.insert(biggest);
 			}
 			// Borrow from Right
-			else if (index != leafValue.size() - 1
-					&& (leafValue.get(index + 1).size() - 1) >= (max / 2)) {
-				var smallest = leafValue.get(index + 1).getValue()[0];
-				leafValue.get(index + 1).delete(smallest);
+			else if (index != this.leafValue.length - 1
+					&& (this.leafValue[index + 1].size() - 1) >= (max / 2)) {
+				var smallest = this.leafValue[index + 1].getValue()[0];
+				this.leafValue[index + 1].delete(smallest);
 				rt.insert(smallest);
-				return leafValue.get(index + 1);
+				return this.leafValue[index + 1];
 			}
 			// Merge to the Left - Deal with the Value
 			else if (index != 0) {
-				var prev = leafValue.get(index - 1);
+				var prev = this.leafValue[index - 1];
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
 					prev.insert(del);
@@ -294,7 +329,7 @@ function tree(maximum){
 			}
 			// Merge to the Right - Deal with the Value
 			else {
-				var next = leafValue.get(index + 1);
+				var next = this.leafValue[index + 1];
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
 					next.insert(del);
@@ -317,7 +352,7 @@ function tree(maximum){
 			return rt;
 		} else {
 			var pos = rt.findHelp(info, 0, rt.size() - 1);
-			var next = updateParent(rt.getChildren()[pos], info);
+			var next = this.updateParent(rt.getChildren()[pos], info);
 			if (next != null && pos == 0) {
 				return rt;
 			} else if (next != null) {
@@ -328,19 +363,19 @@ function tree(maximum){
 	}
 
 	BPTreeproto.mergeParent = function(rt, lev) {
-		var parentValue = list.get(lev - 1);
-		var index = getPosInList(parentValue, rt);
+		var parentValue = this.list[ev - 1]; //parentValue will be an array
+		var index = this.getPosInList(parentValue, rt);
 		// Borrow from Left
-		if (index != 0 && parentValue.get(index - 1).size() != 1) {
+		if (index != 0 && parentValue[index - 1].size() != 1) {
 			// deal with value
-			var biggestPos = parentValue.get(index - 1).size() - 1;
-			var biggest = parentValue.get(index - 1).getValue()[biggestPos];
-			parentValue.get(index - 1).delete(biggest);
+			var biggestPos = parentValue[index - 1].size() - 1;
+			var biggest = parentValue[index - 1].getValue()[biggestPos];
+			parentValue[index - 1].delete(biggest);
 			rt.clearValue();
 			rt.insert(getSmallest(rt.getChildren()[0]));
 			// deal with children
-			var moveChild = parentValue.get(index - 1).getChildren()[biggestPos + 1];
-			parentValue.get(index - 1).setChildren(biggestPos + 1, null);
+			var moveChild = parentValue[index - 1].getChildren()[biggestPos + 1];
+			parentValue[index - 1].setChildren(biggestPos + 1, null);
 			var lowerBound = rt.getChildrenSize();
 			for (var j = lowerBound; j > 0; j--) {
 				rt.setChildren(j, rt.getChildren()[j - 1]);
@@ -353,29 +388,29 @@ function tree(maximum){
 			return node;
 		}
 		// Borrow from Right
-		else if (index != parentValue.size() - 1 && parentValue.get(index + 1).size() != 1) {
+		else if (index != parentValue.length - 1 && parentValue[index + 1].size() != 1) {
 			// deal with value
-			var smallest = parentValue.get(index + 1).getValue()[0];
-			parentValue.get(index + 1).delete(smallest);
+			var smallest = parentValue[index + 1].getValue()[0];
+			parentValue[index + 1].delete(smallest);
 			rt.clearValue();
 			// deal with children
-			rt.setChildren(1, parentValue.get(index + 1).getChildren()[0]);
-			var upperBound = parentValue.get(index + 1).getChildrenSize() - 1;
+			rt.setChildren(1, parentValue[index + 1].getChildren()[0]);
+			var upperBound = parentValue[index + 1].getChildrenSize() - 1;
 			for (var j = 0; j < upperBound; j++) {
-				parentValue.get(index + 1).setChildren(j, parentValue.get(index + 1).getChildren()[j + 1]);
+				parentValue[index + 1].setChildren(j, parentValue[index + 1].getChildren()[j + 1]);
 			}
-			parentValue.get(index + 1).setChildren(parentValue.get(index + 1).getChildrenSize() - 1, null);
+			parentValue[index + 1].setChildren(parentValue[index + 1].getChildrenSize() - 1, null);
 			rt.insert(getSmallest(rt.getChildren()[1]));
-			var node = parentValue.get(index + 1);
+			var node = parentValue[index + 1];
 			while (node.getChildren()[0] != null) {
 				node = node.getChildren()[0];
 			}
-			updateParent(node, node.getValue()[0]);
+			this.updateParent(node, node.getValue()[0]);
 			return null;
 		}
 		// Merge to the Left - Deal with the Value
 		else if (index != 0) {
-			var prev = parentValue.get(index - 1);
+			var prev = parentValue[index - 1];
 			// deal with value
 			rt.clearValue();
 			prev.insert(getSmallest(rt.getChildren()[0]));
@@ -388,13 +423,13 @@ function tree(maximum){
 		else {
 			// deal with value
 			rt.clearValue();
-			parentValue.get(index + 1).insert(getSmallest(rt.getChildren()[0]));
+			parentValue[index + 1].insert(getSmallest(rt.getChildren()[0]));
 			// deal with children
-			var oriSize = parentValue.get(index + 1).getChildrenSize();
+			var oriSize = parentValue[index + 1].getChildrenSize();
 			for (var j = oriSize; j > 0; j--) {
-				parentValue.get(index + 1).setChildren(j, parentValue.get(index + 1).getChildren()[j]);
+				parentValue[index + 1].setChildren(j, parentValue[index + 1].getChildren()[j]);
 			}
-			parentValue.get(index + 1).setChildren(0, rt.getChildren()[0]);
+			parentValue[index + 1].setChildren(0, rt.getChildren()[0]);
 			rt.clearChildren();
 			return rt;
 		}
@@ -403,16 +438,16 @@ function tree(maximum){
 	BPTreeproto.remove = function(rt, delInfo, lev) {
 		if (rt.isLeaf()) { // leaf node
 			rt.delete(delInfo);
-			return mergeLeaf(rt);
+			return this.mergeLeaf(rt);
 		} else { // parent node
 			var pos = rt.findHelp(delInfo, 0, rt.size() - 1);
 			var change = remove(rt.getChildren()[pos], delInfo, lev - 1); // changed child
 			if (change != null) {
 				var mergeNode = change;
 				if (change.size() == 0) { // update parent rt after merging
-					var i = getPosInList(list.get(lev - 2), change);
+					var i = getPosInList(this.list[lev - 2], change);
 					if (pos == 0) {
-						mergeNode = list.get(lev - 2).get(i + 1);
+						mergeNode = this.list[lev - 2][i + 1];
 						while (mergeNode.getChildren()[0] != null) {
 							mergeNode = mergeNode.getChildren()[0];
 						}
