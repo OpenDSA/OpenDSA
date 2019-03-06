@@ -103,11 +103,13 @@ far and returns the final product. Of course, the final product is still
 computed recursively. So :math:`k` only computes one multiplication and
 then calls another continuation to process the rest of the list.
 
-For example, if the input list is *[2,3,4,5,6]*, the continuation after
-the 3 has been processed is the function that takes
+For example, if the input list is *[2,3,4,5,6]*, the continuation
+after the 3 has been processed is the function that takes
 :math:`x=6=2\times 3` as input, computes the next product (namely,
 :math:`x \times 4`) and finally passes this new value as input to the
-continuation for the next recursive call.
+continuation for the next recursive call. [Note: In reality, in this case,
+the product will be computed in reverse, from the end of the list toward
+its head, but that is a detail at this point].
 
 .. The resulting code is in the *product3* function appearing below.
 .. When programming in the **continuation-passing style** (CPS), every
