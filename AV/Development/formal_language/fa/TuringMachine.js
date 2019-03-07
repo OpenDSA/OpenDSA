@@ -30,6 +30,7 @@ tm.play = function(inputString) {
 			cur,
 			counter = 0,
 			configView = [];		// configurations to display in the message box
+			//TODO: issue here, displaying multiple configurations in the message box
 	for (var j = 0; j < currentStates.length; j++) {
 		configView.push(currentStates[j].toString());
 	}
@@ -366,7 +367,7 @@ var Tape = function (str) {
 		this.head = makeTape(str);
 		this.current = this.head.right()[0];  // the current symbol
 		this.currentIndex = 0;                // the current position
-	} 
+	}
 	// else, assume that a Tape object was passed in, and create a copy of it
 	else {
 		var copy = copyTape(str);
@@ -437,8 +438,8 @@ var TapeNode = function (left, right, val) {
 		}
 	};
 	/*
-		 Traverse left or right and read. 
-		 If can't, create empty tape nodes. 
+		 Traverse left or right and read.
+		 If can't, create empty tape nodes.
 		 Returns an array containing the read symbol and the new head of the string
 	 */
 	this.left = function (n) {
@@ -494,7 +495,7 @@ var copyTape = function (t) {
 };
 
 /*
-	 Creates n empty tape nodes to the beginning or end of the tape 
+	 Creates n empty tape nodes to the beginning or end of the tape
 	 and returns the read symbol and the leftmost/rightmost new node
  */
 var extendTape = function (dir, node, n) {
