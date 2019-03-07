@@ -110,36 +110,12 @@ tm.traverse = function(currentStates) {
 			for (var i = 0; i < weight.length; i++) {
 				weight[i] = toColonForm(weight[i]);
 				var w = weight[i].split(':');
-				console.log("START=========");
-				for (var d = 0; d < w.length; d++){
-					if (d == 0){
-						console.log("printing the 0th");
-					}
-					console.log(w[d]);
-				}
-				console.log("END=========");
-				console.log("The tape value:" + currentState.tape.value());
 				if (currentState.tape.value() === w[0]) {
-					console.log("Met expectation: " + w[0]);
-					console.log("Tape before: " + currentState.tape.toString());
 					var nextConfig = new Configuration(next, currentState.tape);
-					console.log("Tape during: " + nextConfig.tape.toString());
-					console.log("Why undefined tho: " + w[1]);
 					nextConfig.tape.value(w[1]);
 					nextConfig.tape.move(w[2]);
-					console.log("Tape after: " + nextConfig.tape.toString());
 					nextStates.push(nextConfig);
-					console.log(nextStates.length);
 					break;
-				}
-				else if (currentState.tape.value() !== w[0]) {
-					console.log("Not equal");
-				// 	// and here
-				// 	var nextConfig = new Configuration(next, currentState.tape);
-				// 	nextConfig.tape.value(w[1]);
-				// 	nextConfig.tape.move(w[2]);
-				// 	nextStates.push(nextConfig);
-				// 	break;
 				}
 			}
 		}
@@ -344,11 +320,19 @@ var Tape = function(str) {
 		console.log("str's index"+str.currentIndex);
 		console.log("str's array"+str.getArr());
 		this.currentIndex = str.currentIndex;
-		this.arr = str.getArr();
+		this.arr = this.copy(str.getArr());
+		//this.arr = str.getArr();
 		this.current = this.arr[this.currentIndex];  // the current symbol
 		               // the current position
 	}
 
+	this.copy = function(value){
+		var newarr = new Array(value.length);
+		for (var i = 0; i < value.length; i++){
+			newarr[i] = value[i];
+		}
+		return newarr;
+	}
 	// this.jsav;
 
 	this.toString = function(){
