@@ -113,7 +113,7 @@ $(document).ready(function() {
     pseudo3.highlight([6,7,8,9]);
     av.step();
 
-    av.umsg('When we reach the base case of product3 in lines 3-4, instead of merely returning an already computed numeric value, we must call the function we have defined with all those multiplications nested inside it, initially passing in 1 -- the identity element for multiplication.  So although the computations occur as we begin unwinding from recursion, they are all performed in one function call, namely the call to the continuation that we have built up.   No computations are preformed after returning from the call to cps_product in lines 6-9.');
+    av.umsg('When we reach the base case of product3 in lines 3-4, instead of merely returning an already computed numeric value, we must call the function we have defined with all those multiplications nested inside it, initially passing in 1 -- the identity element for multiplication.  So although the computations occur as we begin unwinding from recursion, they are all performed in one function call, namely the call to the continuation that we have built up.   No computations are performed after returning from the call to cps_product in lines 6-9.');
     pseudo3.highlight([3,4]);
     
     av.recorded();

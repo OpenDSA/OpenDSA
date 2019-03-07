@@ -37,6 +37,7 @@
     stroke-width: 4.0
 }
 
+/*size of internal and leaf node*/
 .jsavarray, .jsavarray .jsavnode {
     min-height: 30px;
     height: 30px;
@@ -44,6 +45,7 @@
     width: 35px
 }
 
+/*size of leaf node*/
 .jsavarray.leaf-node, .jsavarray.leaf-node .jsavnode {
     min-height: 45px;
     height: 45px;
