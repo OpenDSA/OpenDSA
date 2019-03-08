@@ -315,7 +315,7 @@ function (ns) {
       "you replace the comment made up of question marks with the correct " +
       "answer, this function is supposed to return an integer that is equal " +
       " to the bitwise AND of all of the integers in the input list. " +
-      "For example, <span class='string'>f([1,2,3])</span> must " +
+      "For example, <span class='string'>f([1,3,5])</span> must " +
       "return <span class='string'>1</span>. Note that, as soon as a 0 is " +
       "encountered in the input list, the final answer is known right away " +
       "without ever calling a continuation (i.e., without performing any " +
@@ -902,4 +902,6 @@ function (ns) {
 
     window.ContinuationPassing4 = window.ContinuationPassing4 || ContinuationPassing4;
 }());
+
+
 
