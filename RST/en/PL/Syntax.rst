@@ -124,7 +124,7 @@ to build the parse tree for a given lambda expression.
 
 
 Q1. Why does the non-terminal :math:`<var>` not appear on the
-left-hand size of any productions in the grammar above? Is the grammar
+left-hand side of any productions in the grammar above? Is the grammar
 incomplete?
 
 Q2. How many terminals does this grammar contain? 
