@@ -1,10 +1,13 @@
-// Array tree diagram
+// This is an experimental version of the AVs presented in
+// the 23-Tree module, converted to use the arraytree implementation
+// for nodes and trees.
+// I don't know why this is showing nodes with 3 boxes instead of 2.
 (function() {
   var jsav = new JSAV("TTTreeDgm");
   var at = jsav.ds.arraytree(); // Create Array Tree
 
   // Create root node and all child nodes.
-  var r = at.root([18, 31]);
+  var r = at.root([18, 32]);
   r.addChild([12, ""]);
   r.addChild([23, 30]);
   r.addChild([48, ""]);
@@ -30,7 +33,7 @@
   var ins_arr = jsav.ds.array([14], {left: "8%", top: "0px"});
 
   // Create root node and all child nodes.
-  var r = at.root([18, 31]);
+  var r = at.root([18, 32]);
   r.addChild([12, ""]);
   r.addChild([23, 30]);
   r.addChild([48, ""]);
@@ -101,7 +104,7 @@
 
 
   // Create root node and all child nodes.
-  var r = at.root([18, 31]);
+  var r = at.root([18, 32]);
   r.addChild([12, ""]);
   r.addChild([23, 30]);
   r.addChild([48, ""]);
@@ -198,7 +201,7 @@
   var prom_arr = jsav.ds.array([""], {left: "9%", top: "2%"});
 
   // Create root node and all child nodes.
-  var r = at.root([18, 31]);
+  var r = at.root([18, 32]);
   r.addChild([12, ""]);
   r.addChild([23, 30]);
   r.addChild(["", ""]);
@@ -309,10 +312,12 @@
 
   // Slide 12
   var root = at.root(["", ""]);
-  root.addChild(r);
+  // root.addChild(r);  // THIS IS BUGGY FOR SOME REASON
   root.addChild(["", ""]);
   at.layout();
   step();
+
+  // Remaining steps from the original slideshow are missing here
 
   jsav.recorded(); // End slide show
 }());
