@@ -126,7 +126,7 @@ File Structure and File Naming Conventions
 ------------------------------------------
 
 The following refers to the OpenDSA content or "client side"
-repositories ("OpenDSA" and "OpenDSA-stable").
+repository ("OpenDSA").
 
 Content materials come in the form of modules (in RST), exercises,
 AVs, etc. There are various top-level directories, as explained below
@@ -243,17 +243,14 @@ catalog.
 Disabling the Browser Cache and Debugging
 -----------------------------------------
 
-When you right-click a web page in Chrome
-(or Firefox when Firebug is installed), you get a popup
-menu whose bottom item is "Inspect Element".
-This brings up the Chrome Developer Tools panel (in Chrome) or Firebug
-(in Firefox).
+When you right-click a web page in Chrome or Firefox, you get a popup
+menu whose bottom item is "Inspect" or "Inspect Element".
+This brings up the Developer Tools panel.
 The first thing that you will want to do is to turn off your browser
 cache when you have the developer panel open, so that reloading your
 page will show updates to your JavaScript and CSS files that you have
 been working so hard on.
-In Crome click on the button with 3 vertical dots to the right of the
-the developer panel, and then click ``settings`` in the popup window.
+In Chrome or Firefox click on Network tab in the Developer Tools panel.
 Find and check the box that says "Disable cache (while DevTools is open)".
 
 The Developer panel can do a lot, but two key things are the console
@@ -264,13 +261,7 @@ specified DOM element.
 For details on how to view and
 even edit on-the-fly your CSS settings in force (for example, to see
 what you should change), see
-https://developers.google.com/chrome-developer-tools/docs/elements-styles.
-
-While Chrome has built-in developer tools (and a lite version of
-Firebug), we highly recommend using the full version of Firebug,
-available for Firefox, for JavaScript debugging.
-More information about Firebug's features can be found here:
-https://getfirebug.com/.
+https://developers.google.com/web/tools/chrome-devtools/css/reference.
 
 The following are highlights for some debugger features and how they
 can be used.
@@ -293,6 +284,12 @@ can be used.
 * Debugger - a full featured JavaScript debugger (useful for debugging
   or simply following code execution).
 
+  For more details on browser developer tools see the 
+  `Chrome Developer Tools documentation`_,
+  or the `Firefox developer tools documentation`_.
+
+  .. _Chrome Developer Tools documentation: https://developers.google.com/web/tools/chrome-devtools/
+  .. _Firefox developer tools documentation: https://developer.mozilla.org/en-US/docs/Tools
 
 ------------------------------------------
 Setting up a Local Development Environment
@@ -311,7 +308,7 @@ set up the toolchain manually (see the next section), or use the
 virtual box to set everything up automatically.
 If you plan to do more, including running the OpenDSA or Code
 Workout back-end servers, then the only practical approach is to
-install the OpenDSA DevStack in a virutal box.
+install the OpenDSA DevStack in a virtual box.
 To make this relatively easy for most developers, we have created a
 package to deliver a complete "OpenDSA in a box" on a virtual
 machine.

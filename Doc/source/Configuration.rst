@@ -37,9 +37,9 @@ instance (given the existance of a configuration file named
 
 
 Separate from book instances is the concept of a "course instance" or "course offering".
-Depending on the course software (typically an LMS such as Canvas) that you are using, you will likely need to compile a special
-instance of a given OpenDSA book instance for each course that intends
-to use it.
+Depending on the course software (typically an LMS such as Canvas) that you are 
+using, you will likely need to compile a special
+instance of a given OpenDSA book instance for each course that intends to use it.
 
 Details about how to define a course related information and how to
 create a course offering using OpenDSA web interfaces is in
@@ -315,7 +315,11 @@ All are required unless otherwise specified.
   Defaults to ``true`` if omitted.
 
 * **narration_enabled** - (optional) A boolean controlling whether text-to-speech
-  narration of JSAV slideshows is enabled. Defaults to ``true`` if omitted.
+  narration of JSAV slideshows is enabled. If enabled, a small
+  speaker button will be displayed in the top right corner of every 
+  JSAV slideshow. If a user clicks the speaker button, narration will be
+  enabled. If the user clicks the button again, narration will be disabled.
+  Defaults to ``true`` if omitted.
 
 * **start_chap_num** - (optional) Specifies at which number to start
   numbering chapters.
@@ -409,8 +413,7 @@ All are required unless otherwise specified.
         are appended to the directive, please
         see the :ref:`Extensions <ODSAExtensions>` section for a list
         of supported arguments.
-      * A section in an RST file may contain multiple exercises objects 
-        only one of which is gradable (has points greater than 0). 
+      * A section in an RST file may contain multiple exercises objects. 
         Each exercise object may contain the following attributes:
 
         * **points** - (optional) The number of points the exercise is
@@ -547,7 +550,8 @@ If you only wish to change the point values of the exercises in the book, or add
 additional modules to the book, you may update the existing configuration 
 directly and ge-generate your Canvas course. However, if you wish to remove or 
 reorder the modules in the book, then you must save your configuration as a new 
-template book and create a new course.
+template book and create a new course. These configurations are stored in the 
+OpenDSA-LTI database.
 
 3. **Select Configuration File:** If you have a book configuration file (.json),
 you may load it using this option.
@@ -654,7 +658,7 @@ Book Content
 
 This two-pane drag-and-drop interface allows you to specify the content
 that should be in your book. Before you can select the content in your book,
-you must first either 1) select the book language, or 2) load an existing 
+you must first either select the book language, or load an existing 
 configuration.
 
 * The left pane (Included Modules) lists the content that is included in your book.
@@ -692,12 +696,12 @@ Once you are finished configuring your book you can:
 
     1. Click "Save New Configuration" to save the configuration as a template
     book to the OpenDSA database. The book will then show up in the list of 
-    available books when creating a new course.
+    available books when creating a new course offering.
 
     2. If you have loaded one of your existing configurations you can click 
     "Update Configuration". You can then update your Canvas course by 
-    regenerating it. Note that this option does not support removing 
-    chapters and/or modules.
+    regenerating it. Note that this option does not support removing or 
+    reordering chapters and/or modules.
 
     3. Click "Download Configuration" to download a json file containing the 
     configuration.
@@ -727,116 +731,125 @@ The reason is that the internal cross links between the various parts
 of the book instance are often defined in the context of a specific
 course instance within the LMS.
 
-A specific course instance on a specific LMS installation is defined
-by a course configuration file.
-By convention, the file name will end with ``_LMSconf.json``.
-A template for course configuration can be found
-`here <https://github.com/OpenDSA/OpenDSA/blob/LTI/config/template_LMSconf.json>`_.
+Process
+~~~~~~~
 
-Since course configuration files routinely store sensitive information
-such as account passwords and access keys, they are not stored in the
-OpenDSA repository.
-This documentation along with the template file should provide enough
-information for you to successfully define the contents of a
-configuration file.
+The following is a description of the steps involved in creating a 
+course offering and publishing it to an LMS, including what happens behind the scenes. It is assumed that
+the user in this scenario has instructor access.
+This description is intended for infrastructure developers.
+For a guide aimed at helping instructors publish a course offering to an LMS, see https://opendsa-server.cs.vt.edu/guides/opendsa-bookinstance.
 
-A set of ``make`` targets are available in the OpenDSA Makefile.
-From the top level of an OpenDSA repository, you can
-compile the HTML files for a book instance by typing
-
-``make <courseinstance>``
-
-So, if there existed a book with a configuration file named
-``config/foo.json``, you would type
-
-``make foo``
-
-This much (locally creating the HTML files) uses just the book
-configuration file.
-
-If you want to bind a book instance to a particular course instance on
-a given LMS, that requires both compiling the book and pushing
-information about it to the LMS.
-Pushing information to the LMS is where the course configuration file
-comes into play.
-**After** you set up the proper course configuration file in
-``config/foo_LMSconf.json``,  you can type:
-
-``make foo opts="-c True"``
-
-to push the necessary book data to your LMS.
-Alternatively, there may already be a Makefile target named ``fooLMS``
-that has this same effect by typing
-
-``make fooLMS``
+1. An instructor navigates to the course offering creation page and fills out the New Course Offering form.
+  
+  Files involved:
+  
+    * `app/controllers/course_offerings_controller.rb <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/controllers/course_offerings_controller.rb>`_
+    * `app/views/course_offerings/new.html.haml <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/views/course_offerings/new.html.haml>`_
+    * `app/views/course_offerings/_form.html.haml <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/views/course_offerings/_form.html.haml>`_
+    * `app/assets/javascripts/course_offerings.js <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/assets/javascripts/course_offerings.js>`_
 
 
-Format
-~~~~~~
+2. The instructor clicks submit on the New Course Offering form.
+  
+  Files involved:
+  
+    * `app/views/course_offerings/new.html.haml <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/views/course_offerings/new.html.haml>`_
+    * `app/views/course_offerings/_form.html.haml <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/views/course_offerings/_form.html.haml>`_
 
-To understand the following description of configuration file data
-fields, it helps to understand that running a "course" using
-OpenDSA requires communication between several entities, including:
+3. A post request is sent to the /course_offerings endpoint, 
+which results in the ``create`` method of  the 
+``CourseOfferingsController`` (course_offerings_controller.rb) being run.
+  
+  Files involved:
+  
+    * `app/assets/javascripts/course_offerings.js <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/assets/javascripts/course_offerings.js>`_ (``handle_submit`` method)
+    * `app/controllers/course_offerings_controller.rb <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/controllers/course_offerings_controller.rb>`_
 
-* An LTI tool provider.
-  This is the site that hosts the book, which is probably where the book
-  is being compiled.
-* An LMS. The LMS has to grant access to the LTI provider in order for
-  it to send scores and define the modules.
-* The OpenDSA scoring, logging, and programming exercise server(s).
-  Communications with these are required in order to handle crucial
-  aspects of exercise scoring.
+4. The ``create`` method searches for any existing course offering 
+for the same course, term, label, and lms instance. If no course offering exists, 
+then a new course offering is created in the course_offerings table of the database.
+Then, the template book instance that 
+the user selected in the New Course Offering form is cloned, 
+meaning a copy is made and saved to the database. This cloned book
+instance is associated with the new course offering (by setting the course_offering_id attribute). 
+The user creating the course offering is enrolled in the new course offering as an instructor. The url of the new course offering's page is included in the server's response.
+  
+  Files involved:
+  
+    * `app/controllers/course_offerings_controller.rb <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/controllers/course_offerings_controller.rb>`_
 
-Here are the fields in the configuration file.
+5. The url from the server's response in the previous step is used to redirect the user to the page listing the course offerings
+for the course the user selected in the New Course Offering form.
+  
+  Files involved:
+  
+    * `app/assets/javascripts/course_offerings.js <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/assets/javascripts/course_offerings.js>`_ (``handle_submit`` method)
+    * `app/controllers/organizations_controller.rb <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/controllers/courses_controller.rb>`_ (``show`` method)
+    * `app/views/courses/show.html.haml <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/views/courses/show.html.haml>`_
+    * `app/views/inst_books/_inst_book.html.haml <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/views/inst_books/_inst_book.html.haml>`_
 
-* **title** - The title for the course intance.
-* **odsa_username** - A viable user account on the course instance
-  (OpenDSA) scoring server.
-* **odsa_password** - The corresponding password on the course instance
-  (OpenDSA) scoring server.
-* **target_LMS** - LMS name. We currently support 'canvas'.
-  Other LMSs like moodle and Desire2Learn will be supported in the future.
-* **LMS_url** - The URL for the LMS.
-* **course_code** - The name used at the LMS to identify the
-  course. In Canvas, this is the identfier given when creating the course.
-* **access_token** - This is normally issued by the LMS to allow an
-  LTI tool provider to communicate with it.
-  In Canvas, go to your account-level settings.
-  Near the bottom of the page you should see a big blue button that
-  reads "New Access Token". Click this, then copy the string that is
-  generated, and paste it into this field in the configuration file.
-  If you (the creator of the config file and the one who compiles the
-  book) are not the course instructor (with access to the LMS), then
-  the course instructor will need to provide this access token.
-* **LTI_consumer_key** - The key required by the LTI tool provider.
-* **LTI_secret** - Effectively the password for the LTI tool
-  provider.
-* **module_origin** - The protocol and domain where the module files are hosted
+6. The user finds the course offering they just 
+created, and clicks the "Generate Canvas Course" button for 
+that course offering. This sends a request to the 
+/inst_books/:id route, resulting in the ``compile`` method
+of the ``InstBooksController`` (inst_books_controller.rb) 
+being run.
+  
+  Files involved:
+  
+    * `app/views/courses/show.html.haml <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/views/courses/show.html.haml>`_
+    * `app/views/inst_books/_inst_book.html.haml <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/views/inst_books/_inst_book.html.haml>`_
+    * `app/controllers/inst_books_controller.rb <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/controllers/inst_books_controller.rb>`_
 
-  * Used by embedded exercises as the target of HTML5 post messages
-    which send information to the parent (module) page
-  * Ex: "module_origin": "http://algoviz.org",
+7. The ``compile`` method enqueues a new ``GenerateCourseJob`` using
+the `delayed job gem`_. This creates a new row in the delayed_jobs 
+table of the database. A background process reads this job from 
+the database and executes the job.
+  
+  Files involved:
+  
+    * `app/controllers/inst_books_controller.rb <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/controllers/inst_books_controller.rb>`_
+    * `app/jobs/generate_course_job.rb <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/jobs/generate_course_job.rb>`_
 
-* **exercise_server** - The protocol and domain (and port
-  number, if different than the protocol default) of the exercise
-  server that provides verification for the programming exercises.
-  Defaults to an empty string (exercise server disabled) if omitted.
+.. _delayed job gem: https://github.com/collectiveidea/delayed_job/
 
-  * Trailing '/' is optional
-  * Ex: "exercise_server": "https://opendsa.cs.vt.edu/",
+8. The ``GenerateCourseJob`` first uses the Canvas API to generate the
+chapters and modules in Canvas so that it can record the Canvas module and 
+assignment id's for each chapter and module. 
+These ID's are saved to the correspoding OpenDSA chapter and module records in the OpenDSA database.
+These ID's will be used by the book compilation script next. 
+OpenDSA makes calls to the Canvas API using the `Pandarus client`_ provided by Instructure. This step also involves creating an external tool configuration for OpenDSA in Canvas.
+ 
+  Files involved:
 
-* **logging_server** - The protocol and domain (and port
-  number, if different than the protocol default) of the logging
-  server that supports interaction data collection.
-  Defaults to an empty string (logging server disabled) if omitted.
+    * `app/jobs/generate_course_job.rb <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/jobs/generate_course_job.rb>`_
 
-  * Trailing '/' is optional
-  * Ex: "logging_server": "https://opendsa.cs.vt.edu/",
+.. _Pandarus client: https://github.com/instructure/pandarus
 
-* **score_server** - The protocol and domain (and port
-  number, if different than the protocol default) of the score server
-  that supports centralized user score collection.
-  Defaults to an empty string (score server disabled) if omitted.
+9. After setting up the necessary infrastructure in the Canvas course, 
+the ``GenerateCourseJob`` will then load the book 
+instance from the database, convert the 
+instance to json `using a jbuilder`_, then dump
+the json to a temporary configuration file in the public/OpenDSA/config/temp folder. 
+The configuration file created by the jbuilder includes the ID's generate by the 
+LMS in the previous step. The temp file will be named in the format 
+``temp_{user_id}_{timestamp}.json``.
+  
+  Files involved:
 
-  * Trailing '/' is optional
-  * Ex: "score_server": "https://opendsa.cs.vt.edu/",
+    * `app/jobs/generate_course_job.rb <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/jobs/generate_course_job.rb>`_
+    * `app/views/inst_books/show.json.jbuilder <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/views/inst_books/show.json.jbuilder>`_ 
+
+.. _using a jbuilder: https://github.com/rails/jbuilder
+
+10. The ``GenerateCourseJob`` will then execute the book
+compilation script at public/OpenDSA/tools/configure.py, 
+passing the path of the temporary config file just created.
+This will generate the HTML files for each module in the book.
+  
+  Files involved:
+
+    * `app/jobs/generate_course_job.rb <https://github.com/OpenDSA/OpenDSA-LTI/blob/master/app/jobs/generate_course_job.rb>`_
+    * `public/OpenDSA/tools/configure.py <https://github.com/OpenDSA/OpenDSA/blob/master/tools/configure.py>`_  
+

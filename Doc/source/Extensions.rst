@@ -31,6 +31,8 @@ SYNOPSIS::
     .. avembed:: {relative_path} {type}
        [:exer_opts: {string}]
        [:long_name: {string}]
+       [:links: {list of .css file paths}]
+       [:scripts: {list of .js file paths}]
        [:module: {string}]
        [:points: {number}]
        [:required: true|false]
@@ -56,7 +58,18 @@ DESCRIPTION
     ``:long_name: {string}``
 
       Long name for the embedded object. The "short" name is the file name.
-      **Added automatically by the configuration process, do NOT add manually.**
+
+    ``:links: {list of .css file paths}``
+
+      A space delimited list of .css files associated with the 
+      embedded exercise. Paths should be relative to the OpenDSA 
+      root directory.
+
+    ``:scripts: {list of .js file paths}``
+
+      A space delimited list of .js files associated with the 
+      embedded exercise. Paths should be relative to the OpenDSA 
+      root directory.
 
     ``:module: {string}``
 
@@ -99,6 +112,24 @@ extrtoolembed
 NAME
     extrtoolembed - embed an external exercise inside a ReST document.
 
+SYNOPSIS::
+
+    .. extrtoolembed:: '{exercise name}'
+       [:learning_tool: {string}]
+
+DESCRIPTION
+    ``:learning_tool: {string}``
+
+      The name of the learning tool the exercise is from.
+      Defaults to ``code-workout`` if excluded.
+      For plain HTML books, the list of available
+      external tools is located in `extrtoolembed.py <https://github.com/OpenDSA/OpenDSA/blob/master/RST/ODSAextensions/odsa/extrtoolembed/extrtoolembed.py>`_.
+      For exercises delivered through LTI, the list of 
+      available external tools is located in the learning_tools table
+      of the OpenDSA-LTI database, and should have the same
+      tool names as listed in extrtoolembed.py, although other
+      information such as the tool launch URL is likely to be 
+      different.
 
 avmetadata
 ----------
@@ -190,6 +221,9 @@ SYNOPSIS::
 
     .. inlineav:: {avId} {type}
        [:output: show|hide]
+       :long_name: {string}
+       :links: {list of .css file paths}
+       :scripts: {list of .js file paths}
        :points: {number}
        :required: true|false
        :threshold: {number}
@@ -199,13 +233,10 @@ DESCRIPTION
     ``.. inlineav:: avId type``
 
       Create a container for an inline AV with the given ID and type.
-      If the type is ``ss`` a slideshow will be created and if it is
-      ``dgm`` a diagram will be created. inlineav diagrams behave like
+      If the type is ``ss`` a slideshow will be created, if it is
+      ``dgm`` a diagram will be created, and if it is ``ff`` a frame will be created. inlineav diagrams behave like
       typicall reStructuredText figures. Cross reference target and
       caption are declared using the standard syntax.
-
-      ``<type>`` **is automatically appended to the inlineav directive
-      by the configuration process and should not be added manually.**
 
     ``[:output: show|hide]``
 
@@ -215,7 +246,16 @@ DESCRIPTION
     ``:long_name:``
 
       Long-form name for a slideshow object.
-      **Added automatically by the configuration process, do NOT add manually.**
+
+    ``:links: {list of .css file paths}``
+
+      A space delimited list of .css files associated with a slideshow.
+      Paths should be relative to the OpenDSA root directory.
+
+    ``:scripts: {list of .js file paths}``
+
+      A space delimited list of .js files associated with a slideshow.
+      Paths should be relative to the OpenDSA root directory.
 
     ``:points: {number}``
 
@@ -231,7 +271,6 @@ DESCRIPTION
 
       Threshold number of points required for credit.
       **Added automatically by the configuration process, do NOT add manually.**
-
 
     ``:align: left|right|center|justify|inherit``
 
