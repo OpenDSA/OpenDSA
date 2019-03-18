@@ -5,7 +5,7 @@ $(document).ready(function() {
   var av = new JSAV("tree");
 
   var msg = [
-    "First Node"
+    "Example Tree"
   ];
 
 
@@ -21,8 +21,45 @@ $(document).ready(function() {
   }
 
   var third1 = [2, 11, 22, ""];
-  var n11 = BPTreeNode.newNode(third1, av, 4, false);
+  var third2 = [34, 42, "", ""];
+  var third3 = [47, 50, "", ""];
+  var third4 = [53, 58, 60, ""];
+  var third5 = [67, 76, "", ""];
+  //var third6 = [83, 90, 100, ""];
+  var second1 = [34, 47, "", ""];
+  var second2 = [67, "", "", ""];
+  var first1 = [53, "", "", ""];
+  //level
+  var n11 = BPTreeNode.newNode(first1, av, 4, false);
+  var n21 = BPTreeNode.newNode(second1, av, 4, false);
+  var n22 = BPTreeNode.newNode(second2, av, 4, false);
+  var n31 = BPTreeNode.newNode(third1, av, 4, true);
+  var n32 = BPTreeNode.newNode(third2, av, 4, true);
+  var n33 = BPTreeNode.newNode(third3, av, 4, true);
+  var n34 = BPTreeNode.newNode(third4, av, 4, true);
+  var n35 = BPTreeNode.newNode(third5, av, 4, true);
+  //var n36 = BPTreeNode.newNode(third6, av, 4, true);
+  //Add chilrdren
+  n11.setChildren(0, n21);
+  n11.setChildren(1, n22);
+  n21.setChildren(0, n31);
+  n21.setChildren(1, n32);
+  n21.setChildren(2, n33);
+  n22.setChildren(0, n34);
+  n22.setChildren(1, n35);
 
+  n11.size_child = 2;
+  n21.size_child = 3;
+  n22.size_child = 2;
+  //n22.setChildren(2, n36);
+  //create a tree
+  var t = BPTree.newTree(av, 4, n11);
+  t.printTree();
+  step();
+  //var n11 = BPTreeNode.newNode(third1, av, 4, false);
+  //var t = BPTree.newTree(av, 4);
+  //console.log(t);
+  //t.tempAdd();
   av.recorded();
 
 }());

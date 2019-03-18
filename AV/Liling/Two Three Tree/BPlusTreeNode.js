@@ -21,7 +21,9 @@ $(document).ready(function() {
     this.array = arr;
     this.value = [];
     this.child = [];
-    this.edge = [];
+    // this.left = null;
+    // this.right = null;
+    //this.edge = [];
     for(var i = 0; i < maximum; i++){
       if(valueArr[i] != ""){
         this.value[i] = valueArr[i];
@@ -31,6 +33,35 @@ $(document).ready(function() {
   }
   //Add functions to node prototype
   var BPTNodeproto = BPTNode.prototype;
+
+  //following functions are for graphing
+
+  /*
+   * move array to the center
+   * Move the node horizontally
+   * to the center of the canvas.
+   */
+   BPTNodeproto.center = function() {
+     var canvas = $(this.array.element).parent();
+     var cw = $(canvas).outerWidth();
+     var aw = $(this.array.element).outerWidth();
+     var left_offset = (cw / 2) - (aw / 2);
+     this.array.css({left: left_offset + "px", top: "0px"});
+     return this;
+   };
+
+   //Shift the position of the node.
+   BPTNodeproto.move = function(left, ttop) {
+     this.array.css({left: "+=" + left + "px", top: "+=" + ttop + "px"});
+   };
+
+  // BPTNodeproto.setLeft = function(newLeftNode){
+  //   this.left = newLeftNode;
+  // }
+  //
+  // BPTNodeproto.setRight = function(newRightNode){
+  //   this.right = newRightNode;
+  // }
 
   //Add new child into child array and graph the child
   BPTNodeproto.addChild = function(newChild) {
@@ -56,6 +87,7 @@ $(document).ready(function() {
 
   BPTNodeproto.clearValue = function(){
     this.size_value = 0;
+    //for(var i = 0; i < )
   }
 
   //check full for the value
@@ -69,6 +101,7 @@ $(document).ready(function() {
    */
   BPTNodeproto.setValue = function(index, newValue){
     this.value[index] = newValue;
+    this.array.value(index, newValue);
   }
 
   /**
@@ -129,7 +162,7 @@ $(document).ready(function() {
   BPTNodeproto.insert = function(addInfo){
     if(this.isFull()){
       return false;
-    }else if(size_value == 0){
+    }else if(this.size_value == 0){
       this.value[0] = addInfo;
       this.size_value += 1;
       return true;
@@ -202,7 +235,7 @@ $(document).ready(function() {
    }
 
    BPTNodeproto.isLeaf = function(){
-     if(size_child == 0){
+     if(this.size_child == 0){
        return true;
      }
      return false;
