@@ -101,7 +101,7 @@
 
                 },
 
-                //expands the canvas at bottom to allow injection of question
+                // //expands the canvas at bottom to allow injection of question
                 resizeContainer: function(height) {
 
                     if (this.originalAVHeight == 0) {
@@ -125,6 +125,31 @@
                     }
 
                 },
+                
+                //expands the canvas at bottom to allow injection of question
+                // resizeContainerWidth: function(width) {
+
+                //     if (this.originalAVWidth == 0) {
+                //         this.currentAVWidth = $(`#${this.av_name}`).outerWidth();
+                //         this.originalAVWidth = this.currentAVWidth;
+                //     }
+
+                //     if ($(`.${this.buttonDiv}`).children().length > 0 && width == 0) {
+
+                //         $(`.${this.buttonDiv}`).empty();
+                //         this.updateCanvas(null);
+                //     }
+
+                //     if (width == 0) {
+                //         $(`#${this.av_name}`).outerWidth(this.originalAVWidth);
+                //         this.currentAVWidth = this.originalAVWidth;
+                //     } else {
+                //         this.currentAVWidth += 1.25 * width;
+                //         $(`#${this.av_name}`).outerWidth(this.currentAVWidth);
+
+                //     }
+
+                // },
 
                 appendQuestion: function() {
                     var current = this.queue.current;
@@ -135,8 +160,8 @@
                         var theHtml = this.buildElement(question);
                         this.updateCanvas(theHtml);
 
-                        var childHeight = $(`#${this.av_name}`).children(`div.${this.class}`).outerHeight();
-                        this.resizeContainer(childHeight);
+                        var childWidth = $(`#${this.av_name}`).children(`div.${this.class}`).outerWidth();
+                        this.resizeContainer(childWidth);
 
 
                     }
@@ -210,7 +235,7 @@
 
                 alertMessage: function() {
 
-                    var message = `<p class="REVEAL">You must answer the question to proceed forward. Click Show Question</p>`;
+                    var message = `<p class="REVEAL">You must answer the question to proceed forward. Click Show Question ----------------------------------------------------------------------------</p>`;
                     return message;
                 },
 
@@ -360,24 +385,40 @@
         init(av_name, av) {
             var container = $(`#${av_name}`);
 
-            var div1 = $('<div />', {
+            var qButton = $('<div />', {
                 "class": 'SHOWQUESTION'
             });
 
-            var div2 = $('<div />', {
+            var question = $('<div />', {
                 "class": 'PIFRAMES'
             });
 
-            $(div2).css({
+            
+            $(".jsavoutput.jsavline").css({
+                "display": "table-cell"
+            });
+            $(".jsavcanvas").css({
+                "width": "300px",
+                "height": "500px",
+                "display": "table-cell"
+            });
+            $(qButton).css({
+                "display": "table-cell",
+                // "right": 0,
+                // "float": right
+            });
+            $(question).css({
+                // "margin-left": "20px",
                 "position": "absolute",
                 "width": "100%",
+                // "width": "50%",
                 "overflow": "scroll",
                 "border-top": "1px dotted black"
 
             });
 
-            $(container).append(div1);
-            $(container).append(div2);
+            $(".jsavcanvas").append(qButton);
+            $(".jsavcanvas").append(question);
 
             return this.getQuestions(av_name);
         },
@@ -401,3 +442,5 @@
     PIFrames.table = {};
     window.PIFRAMES = PIFrames;
 })(jQuery);
+
+// Width로 바꾸고 원래 container 사이즈 줄이기

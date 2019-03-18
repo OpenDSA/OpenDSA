@@ -9,10 +9,11 @@
    :satisfies: Non-deterministic Finite Automata
    :topic: Finite Automata
 
-Test Frames
-===========
-
-.. inlineav:: Frames ss
+Non-Deterministic Finite Automata
+=================================
+NFA: Non-Deterministic Finite Automata
+--------------------------------------
+.. inlineav:: Frames ff
    :links: AV/PIExample/Frames.css
-   :scripts: AV/PIExample/Frames.js
+   :scripts: AV/PIExample/Frames.js DataStructures/PIFrames.js
    :output: show
