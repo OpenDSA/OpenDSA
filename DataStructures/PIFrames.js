@@ -160,8 +160,8 @@
                         var theHtml = this.buildElement(question);
                         this.updateCanvas(theHtml);
 
-                        var childWidth = $(`#${this.av_name}`).children(`div.${this.class}`).outerWidth();
-                        this.resizeContainer(childWidth);
+                        var childHeight = $(`#${this.av_name}`).children(`div.${this.class}`).outerHeight();
+                        this.resizeContainer(childHeight);
 
 
                     }
@@ -442,5 +442,3 @@
     PIFrames.table = {};
     window.PIFRAMES = PIFrames;
 })(jQuery);
-
-// Width로 바꾸고 원래 container 사이즈 줄이기
