@@ -43,7 +43,6 @@ $(document).ready(function() {
     this.list[0] = n3;
     this.leafValue = n3;*/
     //example end
-
     var nvg = 80; //node vertical gap
     //get canvas width
     var canvas = $(this.root.array.element).parent();
@@ -250,7 +249,8 @@ $(document).ready(function() {
 		if (b > curr.getValue()[0]) {
 			pos++;
 		}
-    listt = this.addDataStructure(listt, pos, obj);
+    listt.splice(pos, 0, obj);
+    //listt = this.addDataStructure(listt, pos, obj);
     return listt;
 	}
 
@@ -290,7 +290,7 @@ $(document).ready(function() {
 		if (rt.size() < this.max / 2) { // need borrow or merge
 			var index = this.getPosInList(this.leafValue, rt);
 			// Borrow from Left
-			if (index != 0 && (this.leafValue[index - 1].size() - 1) >= max / 2) {
+			if (index != 0 && (this.leafValue[index - 1].size() - 1) >= this.max / 2) {
 				var biggestPos = this.leafValue[index - 1].size() - 1;
 				var biggest = this.leafValue[index - 1].getValue()[biggestPos];
 				this.leafValue[index - 1].delete(biggest);
@@ -349,7 +349,7 @@ $(document).ready(function() {
 	}
 
 	BPTreeproto.mergeParent = function(rt, lev) {
-		var parentValue = this.list[ev - 1]; //parentValue will be an array
+		var parentValue = this.list[lev - 1]; //parentValue will be an array
 		var index = this.getPosInList(parentValue, rt);
 		// Borrow from Left
 		if (index != 0 && parentValue[index - 1].size() != 1) {
@@ -358,24 +358,26 @@ $(document).ready(function() {
 			var biggest = parentValue[index - 1].getValue()[biggestPos];
 			parentValue[index - 1].delete(biggest);
 			rt.clearValue();
-			rt.insert(getSmallest(rt.getChildren()[0]));
+			rt.insert(this.getSmallest(rt.getChildren()[0]));
 			// deal with children
 			var moveChild = parentValue[index - 1].getChildren()[biggestPos + 1];
-			parentValue[index - 1].setChildren(biggestPos + 1, null);
+			parentValue[index - 1].popChild();
 			var lowerBound = rt.getChildrenSize();
 			for (var j = lowerBound; j > 0; j--) {
 				rt.setChildren(j, rt.getChildren()[j - 1]);
 			}
 			rt.setChildren(0, moveChild);
+      rt.size_child++;
 			var node = moveChild;
-			while (node.getChildren()[0] != null) {
+			while (node.size_child > 0) {
 				node = node.getChildren()[0];
 			}
 			return node;
 		}
 		// Borrow from Right
 		else if (index != parentValue.length - 1 && parentValue[index + 1].size() != 1) {
-			// deal with value
+      console.log("Borrow from Right");
+      // deal with value
 			var smallest = parentValue[index + 1].getValue()[0];
 			parentValue[index + 1].delete(smallest);
 			rt.clearValue();
@@ -385,7 +387,7 @@ $(document).ready(function() {
 			for (var j = 0; j < upperBound; j++) {
 				parentValue[index + 1].setChildren(j, parentValue[index + 1].getChildren()[j + 1]);
 			}
-			parentValue[index + 1].setChildren(parentValue[index + 1].getChildrenSize() - 1, null);
+      parentValue[index + 1].popChild();
 			rt.insert(getSmallest(rt.getChildren()[1]));
 			var node = parentValue[index + 1];
 			while (node.getChildren()[0] != null) {
@@ -396,6 +398,7 @@ $(document).ready(function() {
 		}
 		// Merge to the Left - Deal with the Value
 		else if (index != 0) {
+      console.log("merge to left");
 			var prev = parentValue[index - 1];
 			// deal with value
 			rt.clearValue();
@@ -409,13 +412,14 @@ $(document).ready(function() {
 		else {
 			// deal with value
 			rt.clearValue();
-			parentValue[index + 1].insert(getSmallest(rt.getChildren()[0]));
+			parentValue[index + 1].insert(this.getSmallest(parentValue[index + 1].getChildren()[0]));
 			// deal with children
 			var oriSize = parentValue[index + 1].getChildrenSize();
 			for (var j = oriSize; j > 0; j--) {
-				parentValue[index + 1].setChildren(j, parentValue[index + 1].getChildren()[j]);
+				parentValue[index + 1].setChildren(j, parentValue[index + 1].getChildren()[j - 1]);
 			}
 			parentValue[index + 1].setChildren(0, rt.getChildren()[0]);
+      parentValue[index + 1].size_child++;
 			rt.clearChildren();
 			return rt;
 		}
@@ -428,13 +432,14 @@ $(document).ready(function() {
 		} else { // parent node
 			var pos = rt.findHelp(delInfo, 0, rt.size() - 1);
 			var change = this.remove(rt.getChildren()[pos], delInfo, lev - 1); // changed child
-			if (change != null) {
+      if (change != null) {
 				var mergeNode = change;
 				if (change.size() == 0) { // update parent rt after merging
+          change.hide();
 					var i = this.getPosInList(this.list[lev - 2], change);
 					if (pos == 0) {
 						mergeNode = this.list[lev - 2][i + 1];
-						while (mergeNode.getChildren()[0] != null) {
+						while (mergeNode.size_child > 0) {
 							mergeNode = mergeNode.getChildren()[0];
 						}
 					}
@@ -443,7 +448,7 @@ $(document).ready(function() {
 					for (var j = pos; j < upperBound - 1; j++) {
 						rt.setChildren(j, rt.getChildren()[j + 1]);
 					}
-					rt.setChildren(upperBound - 1, null);
+					rt.popChild();
 					rt.clearValue();
 					for (var j = 1; j < upperBound - 1; j++) {
 						rt.insert(this.getSmallest(rt.getChildren()[j]));
@@ -454,10 +459,13 @@ $(document).ready(function() {
 					}
 				}
 				if (rt == this.root && rt.getChildrenSize() == 1) {
+          rt.hide();
 					this.root = rt.getChildren()[0];
+          this.list.pop();
+          this.level--;
 					return this.root;
 				} else if (rt.getChildrenSize() == 1) { // need borrow and merge
-					return mergeParent(rt, lev);
+					return this.mergeParent(rt, lev);
 				} else if (change.size() == 0) {
 					if (change != mergeNode) {
 						return mergeNode;
@@ -471,17 +479,6 @@ $(document).ready(function() {
 			return null;
 		}
 	}
-
-  //add to the specific index in the data structure arrays
-  BPTreeproto.addDataStructure = function(arrds, index, obj){
-    arrds.splice(index, 0, obj);
-    return arrds;
-  }
-
-  //delete the specific value at the index position in the array arrds
-  BPTreeproto.removeDataStructrue = function(arrds, index){
-    arrds.splice(index, 1);
-  }
 
   /**
 	 * insert into the B+ Tree
@@ -542,7 +539,6 @@ $(document).ready(function() {
             var newList = [];
             newList[0] = parent;
   					this.list[this.level - 1] = newList;
-            console.log(this.list);
 						return parent;
 					}
 					return nextNode;

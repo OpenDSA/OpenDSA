@@ -70,6 +70,7 @@ $(document).ready(function() {
   }
 
   BPTNodeproto.clearChildren = function(){
+    this.child.splice(0, this.size_child);
     this.size_child = 0;
   }
 
@@ -97,8 +98,8 @@ $(document).ready(function() {
   }
 
   BPTNodeproto.popChild = function(){
-    this.child.pop();
     this.size_child--;
+    this.child.pop();
   }
 
   //help method for value
@@ -116,10 +117,11 @@ $(document).ready(function() {
   }
 
   BPTNodeproto.clearValue = function(){
-    this.size_value = 0;
     for(var i = 0; i < this.size_value; i++){
       this.array.value(i, "");
     }
+    this.value.splice(0, this.size_value);
+    this.size_value = 0;
   }
 
   BPTNodeproto.isFull = function(){
