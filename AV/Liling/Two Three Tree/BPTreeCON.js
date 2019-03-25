@@ -30,7 +30,7 @@ $(document).ready(function() {
   var second2 = [67, "", "", ""];
   var first1 = [53, "", "", ""];
   //level
-  var n11 = BPTreeNode.newNode(first1, av, 4, false);
+  /*var n11 = BPTreeNode.newNode(first1, av, 4, false);
   var n21 = BPTreeNode.newNode(second1, av, 4, false);
   var n22 = BPTreeNode.newNode(second2, av, 4, false);
   var n31 = BPTreeNode.newNode(third1, av, 4, true);
@@ -38,7 +38,6 @@ $(document).ready(function() {
   var n33 = BPTreeNode.newNode(third3, av, 4, true);
   var n34 = BPTreeNode.newNode(third4, av, 4, true);
   var n35 = BPTreeNode.newNode(third5, av, 4, true);
-  //var n36 = BPTreeNode.newNode(third6, av, 4, true);
   //Add chilrdren
   n11.setChildren(0, n21);
   n11.setChildren(1, n22);
@@ -50,12 +49,57 @@ $(document).ready(function() {
 
   n11.size_child = 2;
   n21.size_child = 3;
-  n22.size_child = 2;
+  n22.size_child = 2;*/
   //n22.setChildren(2, n36);
   //create a tree
-  var t = BPTree.newTree(av, 4, n11);
-  t.printTree();
+  //var t = BPTree.newTree(av, 4, n11);
+  var t = BPTree.newTree(av, 4, null);
+
+  t.add(12);
+
   step();
+  t.add(5);
+  step();
+  t.add(3);
+  step();
+  t.add(22);
+  step();
+
+  t.add(20);
+  step();
+  t.add(4);
+  step();
+  t.add(120);
+  step();
+  t.add(200);
+  step();
+  t.add(300);
+  step();
+  t.add(260);
+  step();
+  t.add(220);
+  step();
+  t.add(280);
+  step();
+  t.add(290);
+  step();
+  // t.add(295);
+  // step();
+  // t.add(1);
+  // step();
+  // t.add(6);
+  // step();
+  t.delete(5);
+  step();
+  t.delete(4);
+  step();
+  // t.add(6);
+  // step();
+  //  console.log(t);
+
+t.printTree();
+step();
+
   //var n11 = BPTreeNode.newNode(third1, av, 4, false);
   //var t = BPTree.newTree(av, 4);
   //console.log(t);
