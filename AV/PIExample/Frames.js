@@ -13,7 +13,7 @@ $(document).ready(function() {
     // var answer = q.show();
     // alert(answer);
     av.step();
-    av.umsg("Second Information");
+    av.umsg("Second Information Check how long this can be -------------------------------------------------------------------------------------------------------------------");
     av.step();
     av.umsg(injector.injectQuestion("q1"));
     av.step();

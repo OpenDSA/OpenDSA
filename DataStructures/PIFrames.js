@@ -72,9 +72,11 @@
 
                 //used for dynamic resizing
                 originalAVHeight: 0,
+                originalAVWidth: 0,
 
                 //current dynamic height of AV
                 currentAVHeight: 0,
+                currentAVWidth: 0,
 
                 //may use this format if we decide to create a custom version of av.umsg()
                 revealQuestionButton: $('<button />', {
@@ -126,30 +128,30 @@
 
                 },
                 
-                //expands the canvas at bottom to allow injection of question
-                // resizeContainerWidth: function(width) {
+                // expands the canvas to right to allow injection of question
+                resizeContainerWidth: function(width) {
 
-                //     if (this.originalAVWidth == 0) {
-                //         this.currentAVWidth = $(`#${this.av_name}`).outerWidth();
-                //         this.originalAVWidth = this.currentAVWidth;
-                //     }
+                    if (this.originalAVWidth == 0) {
+                        this.currentAVWidth = $(`#${this.av_name}`).outerWidth();
+                        this.originalAVWidth = this.currentAVWidth;
+                    }
 
-                //     if ($(`.${this.buttonDiv}`).children().length > 0 && width == 0) {
+                    if ($(`.${this.buttonDiv}`).children().length > 0 && width == 0) {
 
-                //         $(`.${this.buttonDiv}`).empty();
-                //         this.updateCanvas(null);
-                //     }
+                        $(`.${this.buttonDiv}`).empty();
+                        this.updateCanvas(null);
+                    }
 
-                //     if (width == 0) {
-                //         $(`#${this.av_name}`).outerWidth(this.originalAVWidth);
-                //         this.currentAVWidth = this.originalAVWidth;
-                //     } else {
-                //         this.currentAVWidth += 1.25 * width;
-                //         $(`#${this.av_name}`).outerWidth(this.currentAVWidth);
+                    if (width == 0) {
+                        $(`#${this.av_name}`).outerWidth(this.originalAVWidth);
+                        this.currentAVWidth = this.originalAVWidth;
+                    } else {
+                        this.currentAVWidth += 1.25 * width;
+                        $(`#${this.av_name}`).outerWidth(this.currentAVWidth);
 
-                //     }
+                    }
 
-                // },
+                },
 
                 appendQuestion: function() {
                     var current = this.queue.current;
@@ -160,8 +162,8 @@
                         var theHtml = this.buildElement(question);
                         this.updateCanvas(theHtml);
 
-                        var childHeight = $(`#${this.av_name}`).children(`div.${this.class}`).outerHeight();
-                        this.resizeContainer(childHeight);
+                        // var childHeight = $(`#${this.av_name}`).children(`div.${this.class}`).outerHeight();
+                        // this.resizeContainer(childHeight);
 
 
                     }
@@ -316,22 +318,29 @@
                     this.updateSlideCounter(jsavControl);
 
                     this.resizeContainer(0);
+                    // this.resizeContainerWidth(0);
                     if ($(`#${this.av_name}`).find('.REVEAL').length) {
 
                         // this.resizeContainer(0);
                         $(`.${this.buttonDiv}`).append(this.revealQuestionButton);
                         var height = $(`.${this.buttonDiv}`).outerHeight();
-
-                        this.resizeContainer(4 * height);
+                        var width = $(`.${this.buttonDiv}`).outerWidth();
+                        //this.resizeContainer(4 * height);
+                        // this.resizeContainerWidth(4 * width);
                         // this.toggleButtonSpace(height);
                         this.questionSlideListener();
+
+                        $(".jsavcanvas").css("width", "300px");
 
                     } else {
                         this.updateCanvas(null);
                         // this.resizeContainer(0);
                         this.enableForwardButton();
-
+                        $(".jsavcanvas").css("width", "0px");
                     }
+
+                    
+
                 },
 
                 //injects the appropriate question into the slide handler
@@ -398,12 +407,12 @@
                 "display": "table-cell"
             });
             $(".jsavcanvas").css({
-                "width": "300px",
-                "height": "500px",
+                "width": "0px",
+                "height": "600px",
                 "display": "table-cell"
             });
             $(qButton).css({
-                "display": "table-cell",
+                //"display": "table-cell",
                 // "right": 0,
                 // "float": right
             });
@@ -412,7 +421,7 @@
                 "position": "absolute",
                 "width": "100%",
                 // "width": "50%",
-                "overflow": "scroll",
+                "overflow": "auto",
                 "border-top": "1px dotted black"
 
             });
