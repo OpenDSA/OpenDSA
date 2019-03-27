@@ -7,6 +7,8 @@ var TuringMachine = function(jsav, options) {
 	this.transitions = [];
 }
 
+var square = String.fromCharCode(9633);
+
 JSAV.ext.ds.tm = function (options) {
 	var opts = $.extend(true, {visible: true, autoresize: true}, options);
 	return new TuringMachine(this, opts);
@@ -103,6 +105,8 @@ tm.traverse = function(currentStates) {
 	var nextStates = [];
 	for (var j = 0; j < currentStates.length; j++) {
 		var currentState = currentStates[j];
+		var tapeValue = currentState.tape.currentValue();
+		// var tapeValue = currentState.tape.value();
 		var successors = currentState.state.neighbors();
 		for (var next = successors.next(); next; next = successors.next()) {
 			var edge = this.getEdge(currentState.state, next),
@@ -110,13 +114,30 @@ tm.traverse = function(currentStates) {
 			for (var i = 0; i < weight.length; i++) {
 				weight[i] = toColonForm(weight[i]);
 				var w = weight[i].split(':');
-				if (currentState.tape.value() === w[0]) {
+				console.log(w[0]);
+				//TODO: the issue is in here, there's not a proper way of handling
+				// whether we go back to the proper location
+				//how should this be handled?
+				if (tapeValue === w[0]) {
+					console.log("My tape value is: " + tapeValue);
 					var nextConfig = new Configuration(next, currentState.tape);
-					nextConfig.tape.value(w[1]);
+					if (w[1] !== square){
+						nextConfig.tape.value(w[1]);
+					}
 					nextConfig.tape.move(w[2]);
 					nextStates.push(nextConfig);
 					break;
 				}
+				else if (w[0] === square){
+					var nextConfig = new Configuration(next, currentState.tape);
+					if (w[1] !== square){
+						nextConfig.tape.value(w[1]);
+					}
+					nextConfig.tape.move(w[2]);
+					nextStates.push(nextConfig);
+					break;
+				}
+				console.log("whatever");
 			}
 		}
 	}
@@ -320,8 +341,8 @@ var Tape = function(str) {
 		console.log("str's index"+str.currentIndex);
 		console.log("str's array"+str.getArr());
 		this.currentIndex = str.currentIndex;
-		this.arr = this.copy(str.getArr());
-		//this.arr = str.getArr();
+		//this.arr = this.copy(str.getArr());
+		this.arr = str.getArr();
 		this.current = this.arr[this.currentIndex];  // the current symbol
 		               // the current position
 	}
@@ -351,11 +372,17 @@ var Tape = function(str) {
 		return this.arr;
 	}
 
+	this.currentValue = function(){
+		return this.arr[this.currentIndex];
+	}
+
 	this.value = function(newValue){
-		// this.object.highlight(current);
+		//this.object.highlight(this.current);
+		console.log("myValue is :"+newValue);
 		if (typeof newValue === "undefined"){
-			console.log("I'm undefined");
-			return this.arr[this.currentIndex];
+			//console.log("I'm undefined");
+			return undefined;
+			// return this.arr[this.currentIndex];
 		}
 		console.log("before value: "+this.arr[this.currentIndex]);
 		this.arr[this.currentIndex] = newValue;
@@ -369,8 +396,9 @@ var Tape = function(str) {
 		// }
 		//else{
 			this.currentIndex+=1;
-			console.log("updated currentIndex" + this.currentIndex);
+			console.log("updated currentIndex: " + this.currentIndex);
 			this.current = this.arr[this.currentIndex];
+			console.log(this.current);
 			return this.current;
 			//TODO: highlight?
 			// this.object.highlight(current);
