@@ -1,4 +1,4 @@
-/*global JSAV, document */
+/*global JSAV */
 // Written by Ziyou Shang
 
 $(document).ready(function() {
