@@ -1,8 +1,6 @@
 /*global JSAV, document */
 // Written by Ziyou Shang
 
-document.write('<script src="../../../AV/OpenFLAP/tape.js"></script>');
-
 $(document).ready(function() {
   "use strict";
   var av = new JSAV("test2", {animationMode: "none"});

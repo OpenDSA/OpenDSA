@@ -1,8 +1,6 @@
 /*global JSAV, document */
 // Written by Ziyou Shang
 
-document.write('<script src="../../../DataStructures/FL_resources/FA.js"></script>');
-
 $(document).ready(function() {
   "use strict";
 

@@ -84,8 +84,8 @@
     "PDA": {
       "OpenFLAP/PDA": {}
     },
-    "CFLprop": {
-      "OpenFLAP/CFLprop": {}
+    "CFLProp": {
+      "OpenFLAP/CFLProp": {}
     },
     "Appendix": {
       "Glossary": {},

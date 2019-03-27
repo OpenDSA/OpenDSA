@@ -44,7 +44,7 @@ transitions to more than one state.
 
 .. inlineav:: test1 dgm
    :links: AV/OpenFLAP/test1.css
-   :scripts: AV/OpenFLAP/test1.js
+   :scripts: DataStructures/FL_resources/FA.js AV/OpenFLAP/test1.js
    :align: center
 
    Example of NFA
@@ -55,7 +55,7 @@ of a function!)
 
 .. inlineav:: test2 dgm
    :links: AV/OpenFLAP/test2.css
-   :scripts: AV/OpenFLAP/test2.js
+   :scripts: AV/OpenFLAP/tape.js AV/OpenFLAP/test2.js
    :align: center
 
    Example of NFA
