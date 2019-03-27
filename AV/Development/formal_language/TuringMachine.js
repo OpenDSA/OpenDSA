@@ -34,6 +34,7 @@ tm.play = function(inputString) {
 			counter = 0,
 			configView = [];		// configurations to display in the message box
 	//TODO: issue here, displaying multiple configurations in the message box
+	//This is where the visual tape generation happens
 	for (var j = 0; j < currentStates.length; j++) {
 		configView.push(currentStates[j].toString());
 	}
@@ -66,6 +67,8 @@ tm.play = function(inputString) {
 			}
 			configView.push(currentStates[j].toString());
 		}
+		// this.jsav.umsg();
+		//av.ds.tape(configView, 35, 20, "right");
 		this.jsav.umsg(configView.join(' | '));
 		this.jsav.step();
 	}
@@ -128,7 +131,7 @@ tm.traverse = function(currentStates) {
 					nextStates.push(nextConfig);
 					break;
 				}
-				else if (w[0] === square){
+				else if ((tapeValue === undefined) && w[0] === square){
 					var nextConfig = new Configuration(next, currentState.tape);
 					if (w[1] !== square){
 						nextConfig.tape.value(w[1]);
