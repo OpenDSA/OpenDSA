@@ -143,7 +143,7 @@ code fragment.
     abstraction, that is, a function that is being defined and called
     right away. In JavaScript, this type of function application is a
     common idiom sometimes referred to as an :abbr:`IIFE (Immediately
-    inviked Function Expression)`.
+    invoked Function Expression)`.
 
     .. list-table:: 
        :widths: 1 2 10 7
