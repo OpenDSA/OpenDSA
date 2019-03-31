@@ -4,7 +4,7 @@
 (function() {
     "use strict";
     var L = LAMBDA;
-    var words = [ "coca",  "comma",  "counterplea",  "credenza",  "dilemma",  "gondola",  "gorilla",  "hoopla",  "hypoglycemia",  "hypothermia",  "lemma",  "leukemia",  "lymphoma",  "mimosa",  "minutia",  "pizza",  "pneumonia",  "tesla",  "tibia",  "trivia",  "xenophobia", "absolutely", "already", "anarchy", "annoy", "apathy",  "apply", "astrology" , "beworry", "bully", "hurry", "marry", "worry" ];
+    var words = [ "coca",  "comma",  "counterplea",  "credenza",  "dilemma",  "gondola",  "gorilla",  "hoopla",  "hypoglycemia",  "hypothermia",  "lemma",  "leukemia",  "lymphoma",  "mimosa",  "minutia",  "pizza",  "pneumonia",  "tibia",  "trivia",  "xenophobia", "absolutely", "already", "anarchy", "annoy", "apathy",  "apply", "astrology" , "beworry", "bully", "hurry", "marry", "worry" ];
 
     var FixedPointCombinators = {    
 
