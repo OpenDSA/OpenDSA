@@ -4,12 +4,12 @@ $(document).ready(function() {
 
   function newNode(valueArr, jsav, max, isLeaf){
     var arr = jsav.ds.array(valueArr, {left: "0", top: "0"});
-    arr.element.addClass("internal-node");
-    // if (isLeaf) {
-    //   arr.element.addClass("leaf-node");
-    // } else {
-    //   arr.element.addClass("internal-node");
-    // }
+    // arr.element.addClass("internal-node");
+    if (isLeaf) {
+      arr.element.addClass("leaf-node");
+    } else {
+      arr.element.addClass("internal-node");
+    }
     return new BPTNode(valueArr, jsav, max, arr);
   }
 
@@ -22,6 +22,7 @@ $(document).ready(function() {
     this.array = arr;
     this.value = [];
     this.child = [];
+    this.info = [];
     for(var i = 0; i < maximum; i++){
       if(valueArr[i] != ""){
         this.value[i] = valueArr[i];
@@ -121,6 +122,7 @@ $(document).ready(function() {
       this.array.value(i, "");
     }
     this.value.splice(0, this.size_value);
+    this.info.splice(0, this.size_value);//clear info
     this.size_value = 0;
   }
 
@@ -128,9 +130,11 @@ $(document).ready(function() {
     return this.size_value == this.max;
   }
 
-  BPTNodeproto.setValue = function(index, newValue){
+  BPTNodeproto.setValue = function(index, newValue, information){
     this.value[index] = newValue;
     this.array.value(index, newValue);
+    //set infor
+    this.info[index] = information;
   }
 
   /**
@@ -161,29 +165,29 @@ $(document).ready(function() {
    }
 
    /**
-  * find the position to add in the array: inside insert(when addInfo equal to
+  * find the position to add in the array: inside insert(when delInfo equal to
   * the value in the parent, go to right side) used for delete
   *
-  * @param addInfo the information that will be add in
+  * @param delInfo the information that will be add in
   * @param small   the smallest bound (pos)
   * @param big     the biggest bound (pos)
   * @return the index that we are going to added in
   */
-   BPTNodeproto.findHelp = function(addInfo, small, big){
-     if(addInfo < this.value[small]){
+   BPTNodeproto.findHelp = function(delInfo, small, big){
+     if(delInfo < this.value[small]){
        return small;
-     }else if(addInfo == this.value[small]){
+     }else if(delInfo == this.value[small]){
        return small + 1;
-     }else if(addInfo >= this.value[big]){
+     }else if(delInfo >= this.value[big]){
        return big + 1;
      }
-     var index = (big + small) / 2;
+     var index = Math.trunc((big + small) / 2);
      if(big - small == 1){
        return big;
-     }else if(addInfo >= this.value[index]){
-       return this.insertPos(addInfo, index, big);
+     }else if(delInfo >= this.value[index]){
+       return this.findHelp(delInfo, index, big);
      }else{
-       return this.insertPos(addInfo, small, index);
+       return this.findHelp(delInfo, small, index);
      }
    }
 
@@ -211,11 +215,11 @@ $(document).ready(function() {
      return pos;
    }
 
-  BPTNodeproto.insert = function(addInfo){
+  BPTNodeproto.insert = function(addInfo, information){
     if(this.isFull()){
       return false;
     }else if(this.size_value == 0){
-      this.setValue(0, addInfo);
+      this.setValue(0, addInfo, information); //add information
       this.size_value += 1;
       return true;
     }else{
@@ -223,8 +227,10 @@ $(document).ready(function() {
       for(var i = this.size_value; i > pos; i--){
         this.value[i] = this.value[i - 1];
         this.array.value(i, this.value[i - 1]);
+        //shift info array
+        this.info[i] = this.info[i - 1];
       }
-      this.setValue(pos, addInfo);
+      this.setValue(pos, addInfo, information); //set new info
       this.size_value++;
       return true;
     }
@@ -240,10 +246,11 @@ $(document).ready(function() {
     if(pos != -1){
       this.size_value--;
       for(var i = pos; i < this.size_value; i++){
-        this.setValue(i, this.value[i + 1]);
+        this.setValue(i, this.value[i + 1], this.info[i + 1]); //shift both value and info
         this.array.value(i, this.value[i + 1]);
       }
       this.value.pop();
+      this.info.pop(); //pop info from array
       this.array.value(this.size_value, "");
       return true;
     }
