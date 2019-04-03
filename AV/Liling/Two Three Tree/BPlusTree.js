@@ -45,11 +45,7 @@ $(document).ready(function() {
     var leafNodeSize = this.leafValue.length;
     var nhgl = w / (leafNodeSize + 1);
     var trackLeafIndex = 0;
-    // var try = this.leafValue[0].value[0] + "<br><div class='leaf-node-value'>" + this.leafValue[0].info[0] + "</div>";
-    //add key value in the graph
-    // this.leafValue[0].array.value(0, this.leafValue[0].value[0] + "<br><div class='leaf-node-value'>" + this.leafValue[0].info[0] + "</div>");
     while(trackLeafIndex < this.leafValue.length){
-      //this.leafValue[trackLeafIndex].array.element.addClass("leaf-node");
       var hori = (trackLeafIndex + 1) * nhgl - aw;
       var vert = (this.list.length - 1) * nvg;
       this.leafValue[trackLeafIndex].move(hori, vert);
@@ -252,7 +248,6 @@ $(document).ready(function() {
 			pos++;
 		}
     listt.splice(pos, 0, obj);
-    //listt = this.addDataStructure(listt, pos, obj);
     return listt;
 	}
 
@@ -521,9 +516,6 @@ $(document).ready(function() {
         this.updateInfo = "";
         //add key
         rt.addInfoGraph();
-        // for(var i = 0; i < rt.size_value; i++){
-        //     rt.array.value(i, rt.value[i] + "<br><div class='leaf-node-value'>" + rt.info[i] + "</div>");
-        // }
 				return rt;
 			} else {
 				// split
@@ -531,12 +523,6 @@ $(document).ready(function() {
         //add key
         rt.addInfoGraph();
         next.addInfoGraph();
-        // for(var i = 0; i < rt.size_value; i++){
-        //     rt.array.value(i, rt.value[i] + "<br><div class='leaf-node-value'>" + rt.info[i] + "</div>");
-        // }
-        // for(var i = 0; i < next.size_value; i++){
-        //     next.array.value(i, next.value[i] + "<br><div class='leaf-node-value'>" + next.info[i] + "</div>");
-        // }
 				this.leafValue = this.insertTreeNode(this.leafValue, next);// add in the single linked list
         this.update = next.getValue()[0];
         this.updateInfo = next.info[0];//information

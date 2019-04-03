@@ -5,7 +5,25 @@ $(document).ready(function() {
   var av = new JSAV("tree");
 
   var msg = [
-    "Example Tree"
+    "Example Tree: adding 12",
+    "add 13",
+    "add 14",
+    "add 23",
+    "add 5",
+    "add 100",
+    "add 20",
+    "add 37",
+    "delete 5",
+    "delete 23",
+    "delete 37",
+    "add 120",
+    "add 1000",
+    "add 230",
+    "add 222",
+    "add 111",
+    "add 225",
+    "add 226",
+    "delete 120"
   ];
 
 
