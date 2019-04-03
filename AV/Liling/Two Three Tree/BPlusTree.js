@@ -16,14 +16,13 @@ $(document).ready(function() {
     this.level = 1;
     this.max = maximum;
     this.root = BPTreeNode.newNode(this.emptyArray, jsav, maximum, true); //root will be stored as a BPTreeNode
-    // if(this.root.size() == 0){
-    //   this.root.hide();
-    // }
+    this.root.center();
     this.leafValue = []; //stored BPTreeNode for the leaf Node
     this.leafValue[0] = this.root;
     this.list[0] = this.leafValue;
     this.update = -1;
     this.updateInfo = "";
+    this.edge = [];
   }
 
   var BPTreeproto = tree.prototype;
@@ -31,36 +30,26 @@ $(document).ready(function() {
   //following function is for graphing
 
   BPTreeproto.printTree = function(){
-    //example: need to be deleted after
-    /*var n1 = [];
-    n1[0] = this.root;
-    this.list[2] = n1;
-    var n2 = [];
-    n2[0] = this.root.child[0];
-    n2[1] = this.root.child[1];
-    this.list[1] = n2;
-    var n3 = [];
-    n3[0] = n2[0].child[0];
-    n3[1] = n2[0].child[1];
-    n3[2] = n2[0].child[2];
-    n3[3] = n2[1].child[0];
-    n3[4] = n2[1].child[1];
-    this.list[0] = n3;
-    this.leafValue = n3;*/
-    //example end
+    //hide edge and redraw
+    for(var i = this.edge.length - 1; i >= 0; i--){
+      this.edge[i].hide();
+      this.edge.pop();
+    }
     var nvg = 80; //node vertical gap
     //get canvas width
-    var canvas = $(this.root.array.element).parent();
+    var canvas = $(this.root.array.element).parent();//get canvas width
     var w = $(canvas).innerWidth();
-    var aw = $(this.root.array.element).outerWidth() / 2; //half of the width
+    var aw = $(this.root.array.element).outerWidth() / 2; //half of the outerWidth
     var ah = $(this.root.array.element).outerHeight(); //height
     //graph leaf nodes
     var leafNodeSize = this.leafValue.length;
     var nhgl = w / (leafNodeSize + 1);
     var trackLeafIndex = 0;
+    // var try = this.leafValue[0].value[0] + "<br><div class='leaf-node-value'>" + this.leafValue[0].info[0] + "</div>";
+    //add key value in the graph
+    // this.leafValue[0].array.value(0, this.leafValue[0].value[0] + "<br><div class='leaf-node-value'>" + this.leafValue[0].info[0] + "</div>");
     while(trackLeafIndex < this.leafValue.length){
-      console.log("leaf: " + this.leafValue[trackLeafIndex].info);//console log
-      this.leafValue[trackLeafIndex].array.element.addClass("leaf-node");
+      //this.leafValue[trackLeafIndex].array.element.addClass("leaf-node");
       var hori = (trackLeafIndex + 1) * nhgl - aw;
       var vert = (this.list.length - 1) * nvg;
       this.leafValue[trackLeafIndex].move(hori, vert);
@@ -72,9 +61,6 @@ $(document).ready(function() {
     while(tl < this.list.length){
       var tli = 0; //track list info index
       while(tli < this.list[tl].length){
-        console.log(tl);
-        console.log(tli);
-        console.log("inner: " + this.list[tl][tli].info);
         this.list[tl][tli].array.element.addClass("internal-node");
         var cs = this.list[tl][tli].size_child; //size of children
         //front edge
@@ -107,6 +93,7 @@ $(document).ready(function() {
           var x1 = x + i * oblock;
           var y1 = y + vw;
           var a = this.jsav.g.line(x1, y1, x2, y2, { "stroke-width": 1.0});
+          this.edge.push(a);
         }
         tci++;
       }
@@ -127,7 +114,7 @@ $(document).ready(function() {
   BPTreeproto.split = function(rt, addInfo, information){
     var leftSize = Math.trunc((this.max + 1) / 2);
     var addPos = rt.insertPos(addInfo,0, this.max - 1);
-    var next = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, false);
+    var next = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, true);
     //add new value to the left TreeNode
     if(addPos < leftSize){
       for(var i = leftSize - 1; i < this.max; i++){
@@ -306,42 +293,44 @@ $(document).ready(function() {
 			var index = this.getPosInList(this.leafValue, rt);
 			// Borrow from Left
 			if (index != 0 && (this.leafValue[index - 1].size() - 1) >= this.max / 2) {
-        console.log("borrow from left: leaf");
 				var biggestPos = this.leafValue[index - 1].size() - 1;
 				var biggest = this.leafValue[index - 1].getValue()[biggestPos];
         var biggestInfo = this.leafValue[index - 1].info[biggestPos];
 				this.leafValue[index - 1].delete(biggest);
 				rt.insert(biggest,biggestInfo);
+        rt.array.value(rt.size_value, rt.value[0] + "<br><div class='leaf-node-value'>" + rt.info[0] + "</div>");
+
 			}
 			// Borrow from Right
 			else if (index != this.leafValue.length - 1
 					&& (this.leafValue[index + 1].size() - 1) >= (this.max / 2)) {
-            console.log("borrow from right: leaf");
 				var smallest = this.leafValue[index + 1].getValue()[0];
         var smallestInfo = this.leafValue[index + 1].info[0];
 				this.leafValue[index + 1].delete(smallest);
 				rt.insert(smallest, smallestInfo);
+        var len = rt.size_value;
+        rt.array.value(len - 1, rt.value[len - 1] + "<br><div class='leaf-node-value'>" + rt.info[len - 1] + "</div>");
 				return this.leafValue[index + 1];
 			}
 			// Merge to the Left - Deal with the Value
 			else if (index != 0) {
-        console.log("merge to the left: leaf");
 				var prev = this.leafValue[index - 1];
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
 					prev.insert(del, rt.info[i]);
 					rt.delete(del);
 				}
+        prev.addInfoGraph();
 			}
 			// Merge to the Right - Deal with the Value
 			else {
-        console.log("merge to the right: leaf");
 				var next = this.leafValue[index + 1];
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
 					next.insert(del, rt.info[i]);
 					rt.delete(del);
 				}
+        next.addInfoGraph();
 			}
 		}
 		return rt;
@@ -381,7 +370,6 @@ $(document).ready(function() {
 		var index = this.getPosInList(parentValue, rt);
 		// Borrow from Left
 		if (index != 0 && parentValue[index - 1].size() != 1) {
-      console.log("borrow from left: parent");
 			// deal with value
 			var biggestPos = parentValue[index - 1].size() - 1;
 			var biggest = parentValue[index - 1].getValue()[biggestPos];
@@ -405,7 +393,6 @@ $(document).ready(function() {
 		}
 		// Borrow from Right
 		else if (index != parentValue.length - 1 && parentValue[index + 1].size() != 1) {
-      console.log("borrow from right: parent");
       // deal with value
 			var smallest = parentValue[index + 1].getValue()[0];
 			parentValue[index + 1].delete(smallest);
@@ -427,7 +414,6 @@ $(document).ready(function() {
 		}
 		// Merge to the Left - Deal with the Value
 		else if (index != 0) {
-      console.log("merge to the left: parent");
 			var prev = parentValue[index - 1];
 			// deal with value
 			rt.clearValue();
@@ -439,7 +425,6 @@ $(document).ready(function() {
 		}
 		// Merge to the Right - Deal with the Value
 		else {
-      console.log("merge to the right: parent");
 			// deal with value
 			rt.clearValue();
       var neededInfo = this.getSmallestInfo(parentValue[index + 1].getChildren()[0]);
@@ -459,6 +444,7 @@ $(document).ready(function() {
 	BPTreeproto.remove = function(rt, delInfo, lev) {
 		if (rt.isLeaf()) { // leaf node
 			rt.delete(delInfo);
+      rt.addInfoGraph();
 			return this.mergeLeaf(rt);
 		} else { // parent node
 			var pos = rt.findHelp(delInfo, 0, rt.size() - 1);
@@ -533,10 +519,24 @@ $(document).ready(function() {
 			if (checkAdd) {
 				this.update = -1;
         this.updateInfo = "";
+        //add key
+        rt.addInfoGraph();
+        // for(var i = 0; i < rt.size_value; i++){
+        //     rt.array.value(i, rt.value[i] + "<br><div class='leaf-node-value'>" + rt.info[i] + "</div>");
+        // }
 				return rt;
 			} else {
 				// split
 				var next = this.split(rt, addInfo, information);
+        //add key
+        rt.addInfoGraph();
+        next.addInfoGraph();
+        // for(var i = 0; i < rt.size_value; i++){
+        //     rt.array.value(i, rt.value[i] + "<br><div class='leaf-node-value'>" + rt.info[i] + "</div>");
+        // }
+        // for(var i = 0; i < next.size_value; i++){
+        //     next.array.value(i, next.value[i] + "<br><div class='leaf-node-value'>" + next.info[i] + "</div>");
+        // }
 				this.leafValue = this.insertTreeNode(this.leafValue, next);// add in the single linked list
         this.update = next.getValue()[0];
         this.updateInfo = next.info[0];//information
@@ -595,13 +595,15 @@ $(document).ready(function() {
 
   //following two functions are for ADD and DELETE in the B+Tree
   BPTreeproto.add = function(addInfo, information) {
-    this.insert(this.root, addInfo, this.level, information);
+    var node = this.insert(this.root, addInfo, this.level, information);
+    this.printTree();
   }
 
   BPTreeproto.delete = function(delInfo) {
     if (this.find(this.root, delInfo)) {
       if (this.leafValue.length > 1) {
         this.remove(this.root, delInfo, this.level);
+        this.printTree();
       } else {
         this.root.delete(delInfo);
       }

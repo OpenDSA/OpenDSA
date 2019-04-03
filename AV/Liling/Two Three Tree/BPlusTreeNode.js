@@ -54,8 +54,15 @@ $(document).ready(function() {
    };
 
    BPTNodeproto.move = function(left, ttop) {
-     this.array.css({left: "+=" + left + "px", top: "+=" + ttop + "px"});
+     this.array.css({left: "+" + left + "px", top: "+" + ttop + "px"});
    };
+
+   //rt will be a node
+   BPTNodeproto.addInfoGraph = function(){
+     for(var i = 0; i < this.size_value; i++){
+         this.array.value(i, this.value[i] + "<br><div class='leaf-node-value'>" + this.info[i] + "</div>");
+     }
+   }
 
    BPTNodeproto.isLeaf = function(){
      if(this.size_child == 0){
