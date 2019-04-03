@@ -56,7 +56,7 @@ from urlparse import urlparse
 missing_exercises = []
 
 # List of modules that have been processed, do not allow multiple modules
-# with the same name (would cause a conflict in the database)
+# with the same path (would cause a conflict in the database)
 processed_modules = []
 
 # List of images encountered while processing module files, these will be
@@ -210,14 +210,14 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, de
     if section_name != '' and num_ref_map[section_name] == -1:
         num_ref_map[section_name] = mod_name
 
-    # Print error message and exit if duplicate module name is detected
-    if mod_name in processed_modules:
+    # Print error message and exit if duplicate module path is detected
+    if mod_path in processed_modules:
         print_err(
             'ERROR: Duplicate module name detected, module: %s' % mod_name)
         sys.exit(1)
 
     # Add module to list of modules processed
-    processed_modules.append(mod_name)
+    processed_modules.append(mod_path)
 
     print("  " * depth) + mod_name
     index_rst.write("   %s\n" % mod_name)

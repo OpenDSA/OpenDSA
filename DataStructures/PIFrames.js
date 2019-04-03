@@ -174,8 +174,20 @@
                     if ($(`.${this.class}`).children().length > 0) {
                         $(`.${this.class}`).empty();
                         $(`.${this.class}`).append(theHtml);
+
+                        
                     } else {
                         $(`.${this.class}`).append(theHtml);
+                    }
+
+                    if ($(".PIFRAMES").find("iframe").length > 0) {
+                            $(".jsavoutput.jsavline").css("display", "none");
+                            $(".jsavcanvas").css("width", "900px");
+                            $(".PIFRAMES").css("height", "100%");
+                    } else {
+                        $(".jsavoutput.jsavline").css("display", "table-cell");
+                        $(".jsavcanvas").css("width", "300px");
+                        $(".PIFRAMES").css("height", "");
                     }
                 },
 
@@ -259,14 +271,16 @@
 
                 buildElement: function(question) {
                     var type = question.type;
-
+                    
+                    
                     switch (type) {
-
                         case "multiple":
                             return this.buildMultipleChoice(question);
                         case "true/false":
                         case "select":
                         case "drawing":
+                        case "iframe":
+                            return this.buildiFrames(question);
 
                     }
 
@@ -287,6 +301,18 @@
                     html.push(submit);
 
                     return form.append(html.join(''));
+                },
+
+                // <iframe id="bubblesortAV_iframe" src="../../../AV/Sorting/bubblesortAV.html?selfLoggingEnabled=false&amp;localMode=true&amp;module=BubbleSort&amp;JOP-lang=en&amp;JXOP-code=java&amp;scoringServerEnabled=false&amp;threshold=1&amp;points=0.0&amp;required=False" class="embeddedExercise" width="950" height="650" data-showhide="show" scrolling="no" style="width: 792px; height: 582px; position: relative; top: 0px;">Your browser does not support iframes.</iframe>
+                // ../../../AV/Sorting/bubblesortAV.html?selfLoggingEnabled=false&amp;localMode=true&amp;module=BubbleSort&amp;JOP-lang=en&amp;JXOP-code=java&amp;scoringServerEnabled=false&amp;threshold=1&amp;points=0.0&amp;required=False
+                // <iframe width="700px" height="500px" src="../../../AV/Development/formal_language/FAEditor.html#"></iframe>
+                buildiFrames: function(question) {
+                    var src =  question.src;
+                    var header = question.header;
+                    var className = "embeddedExercise";
+                    var iframe = $(`<iframe width="100%" height="100%" src=${src}></iframe>`);
+
+                    return iframe;
                 },
 
                 saveAndCheckStudentAnswer(answer) {
@@ -320,7 +346,7 @@
                     this.resizeContainer(0);
                     // this.resizeContainerWidth(0);
                     if ($(`#${this.av_name}`).find('.REVEAL').length) {
-
+                        
                         // this.resizeContainer(0);
                         $(`.${this.buttonDiv}`).append(this.revealQuestionButton);
                         var height = $(`.${this.buttonDiv}`).outerHeight();
@@ -329,9 +355,8 @@
                         // this.resizeContainerWidth(4 * width);
                         // this.toggleButtonSpace(height);
                         this.questionSlideListener();
-
+                        
                         $(".jsavcanvas").css("width", "300px");
-
                     } else {
                         this.updateCanvas(null);
                         // this.resizeContainer(0);
@@ -412,6 +437,7 @@
                 "display": "table-cell"
             });
             $(qButton).css({
+                "padding-left": "5px"
                 //"display": "table-cell",
                 // "right": 0,
                 // "float": right
@@ -420,9 +446,9 @@
                 // "margin-left": "20px",
                 "position": "absolute",
                 "width": "100%",
-                // "width": "50%",
+                // "height": "100%",
                 "overflow": "auto",
-                "border-top": "1px dotted black"
+                // "border-left": "1px dotted black"
 
             });
 
@@ -451,3 +477,4 @@
     PIFrames.table = {};
     window.PIFRAMES = PIFrames;
 })(jQuery);
+
