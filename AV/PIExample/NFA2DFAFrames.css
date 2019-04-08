@@ -1,6 +1,6 @@
 #NFA2DFAFrames {
-    height: 700px/*700px*/;
-    width: 900px/*900px*/;
+    height: 700px;
+    width: 900px;
 }
 .start {
     font-style: italic;
@@ -76,4 +76,7 @@
 .new {
     display: inline !important;
     border: none !important;
+}
+.jsavcontrols {
+    display: unset !important;
 }
