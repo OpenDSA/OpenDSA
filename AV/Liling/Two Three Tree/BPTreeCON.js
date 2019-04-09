@@ -40,21 +40,21 @@ $(document).ready(function() {
 
   var t = BPTree.newTree(av, 3, null);
 
-  t.add(12, "T");
+  t.add(12, "T", true);
   step(false, true);
-  t.add(13, "K");
+  t.add(13, "K", true);
   step();
-  t.add(14, "E");
+  t.add(14, "E", true);
   step();
-  t.add(23, "Q");
+  t.add(23, "Q", true);
   step();
-  t.add(5, "F");
+  t.add(5, "F", true);
   step();
-  t.add(100, "B");
+  t.add(100, "B", true);
   step();
-  t.add(20, "J");
+  t.add(20, "J", true);
   step();
-  t.add(37, "N");
+  t.add(37, "N", true);
   step()
   t.delete(5);
   step();
@@ -62,19 +62,19 @@ $(document).ready(function() {
   step();
   t.delete(37);
   step();
-  t.add(120, "Y");
+  t.add(120, "Y", true);
   step();
-  t.add(1000, "B");
+  t.add(1000, "B", true);
   step();
-  t.add(230, "A");
+  t.add(230, "A", true);
   step();
-  t.add(222, "F");
+  t.add(222, "F", true);
   step();
-  t.add(111, "O");
+  t.add(111, "O", true);
   step();
-  t.add(225, "M");
+  t.add(225, "M", true);
   step();
-  t.add(226, "L");
+  t.add(226, "L", true);
   step();
   t.delete(120);
 // t.printTree();

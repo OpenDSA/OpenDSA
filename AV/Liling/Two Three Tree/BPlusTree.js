@@ -506,9 +506,10 @@ $(document).ready(function() {
 	 *
 	 * @param rt      parent Node
 	 * @param addInfo new Info that will be added in
+   * @param detail true which will display the each step in the visualization
 	 * @return current TreeNode
 	 */
-	BPTreeproto.insert = function(rt, addInfo, lev, information) {
+	BPTreeproto.insert = function(rt, addInfo, lev, information, detail) {
 		if (rt.isLeaf()) {
 			var checkAdd = rt.insert(addInfo, information);
 			if (checkAdd) {
@@ -544,7 +545,7 @@ $(document).ready(function() {
 			}
 		} else {
 			var pos = rt.insertPos(addInfo, 0, rt.size() - 1);
-			var next = this.insert(rt.getChildren()[pos], addInfo, lev - 1, information); // new child
+			var next = this.insert(rt.getChildren()[pos], addInfo, lev - 1, information, detail); // new child
       if (next != rt.getChildren()[pos]) {
 				var checkAdd = rt.insert(this.update, this.updateInfo);
 				if (checkAdd) {
@@ -580,8 +581,8 @@ $(document).ready(function() {
 	}
 
   //following two functions are for ADD and DELETE in the B+Tree
-  BPTreeproto.add = function(addInfo, information) {
-    var node = this.insert(this.root, addInfo, this.level, information);
+  BPTreeproto.add = function(addInfo, information, detail) {
+    var node = this.insert(this.root, addInfo, this.level, information, detail);
     this.printTree();
   }
 
