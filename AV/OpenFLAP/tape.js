@@ -23,6 +23,9 @@ $(document).ready(function() {
     this.y_coord = y_coord;
     this.direction = direction;
     this.options = options;
+    // this.current = 0;
+    //this.consider;
+    //this.accept;
 
     if ($.isArray(element)) {
       // x & y control
@@ -32,7 +35,7 @@ $(document).ready(function() {
       var left_arr = String(x_coord) + "px";
       var top_arr = String(y_coord - 16) + "px";
       var arr = jsav.ds.array(element, {left: left_arr, top: top_arr});
-
+      // arr.highlight(this.current);
 
       //right and left points to draw the "infinite sign" with poly-lines
       var points = [[0, 0], [15, 0], [11, 3], [21, 7], [5, 12], [9, 20], [28, 28], [0, 28]];
@@ -70,6 +73,11 @@ $(document).ready(function() {
     var poly_l = jsav.g.polyline(points_l);
     poly_l.show();
   }
+
+  // function highlightPosition(location){
+  //   arr.unhighlight(this.current);
+  //   arr.highlight(location);
+  // }
 
 
   // Add the Tape constructor to the public facing JSAV interface.

@@ -42,6 +42,8 @@ var lambda = String.fromCharCode(955),
 	    g.addEdge(f, f, {weight: 'a;a,L'});
 	    g.addEdge(f, a, {weight: square + ';' + square + ',R'});
 
+			var arr2 = jsav.ds.tape(['1', '2', '3'], 35, 20, "right");
+
     $(".jsavgraph").click(graphClickHandler);
     g.click(nodeClickHandler);
 		g.click(edgeClickHandler, {edge: true});
