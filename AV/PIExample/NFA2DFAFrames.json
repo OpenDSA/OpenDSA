@@ -1,0 +1,28 @@
+{
+    "translations": {
+      "en": {
+        "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+        "q1": {
+          "type": "multiple",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "question":"What is the start state?",
+          "answer": "q_0, q_1, q_2",
+          "choices": ["q_0, q_1, q_2", "q_1, q_2, q_3","q_3, q_4, q_5" ,"q_3, q_4, q_5"]
+        },
+        "q2": {
+          "type": "iframe",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "question":"What is the final state?",
+          "answer": "q_1, q_2, q_3",
+          "choices": ["q_0, q_1, q_2", "q_1, q_2, q_3","q_3, q_4, q_5" ]
+        },
+        "q3": {
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer": "q_3, q_4, q_5",
+          "choices": ["q_0, q_1, q2", "q_1, q_2, q_3","q_3, q_4, q_5" ]
+        }
+      }
+    }
+  }
+  
