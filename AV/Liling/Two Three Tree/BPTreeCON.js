@@ -38,23 +38,23 @@ $(document).ready(function() {
     }
   }
 
-  var t = BPTree.newTree(av, 3, null);
+  var t = BPTree.newTree(av, 3, true);
 
-  t.add(12, "T", true);
+  t.add(12, "T");
   step(false, true);
-  t.add(13, "K", true);
+  t.add(13, "K");
   step();
-  t.add(14, "E", true);
+  t.add(14, "E");
   step();
-  t.add(23, "Q", true);
+  t.add(23, "Q");
   step();
-  t.add(5, "F", true);
+  t.add(5, "F");
   step();
-  t.add(100, "B", true);
+  t.add(100, "B");
   step();
-  t.add(20, "J", true);
+  t.add(20, "J");
   step();
-  t.add(37, "N", true);
+  t.add(37, "N");
   step()
   t.delete(5);
   step();
@@ -62,19 +62,19 @@ $(document).ready(function() {
   step();
   t.delete(37);
   step();
-  t.add(120, "Y", true);
+  t.add(120, "Y");
   step();
-  t.add(1000, "B", true);
+  t.add(1000, "B");
   step();
-  t.add(230, "A", true);
+  t.add(230, "A");
   step();
-  t.add(222, "F", true);
+  t.add(222, "F");
   step();
-  t.add(111, "O", true);
+  t.add(111, "O");
   step();
-  t.add(225, "M", true);
+  t.add(225, "M");
   step();
-  t.add(226, "L", true);
+  t.add(226, "L");
   step();
   t.delete(120);
 // t.printTree();
