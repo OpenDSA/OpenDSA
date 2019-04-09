@@ -182,11 +182,21 @@
 
                     if ($(".PIFRAMES").find("iframe").length > 0) {
                             $(".jsavoutput.jsavline").css("display", "none");
-                            $(".jsavcanvas").css("width", "900px");
+                            $(".jsavcanvas").css({
+                                "width": "900px",
+                                "height": "600px"
+                            });
                             $(".PIFRAMES").css("height", "100%");
                     } else {
-                        $(".jsavoutput.jsavline").css("display", "table-cell");
-                        $(".jsavcanvas").css("width", "300px");
+                        $(".jsavoutput.jsavline").css({
+                            "display": "inline-block",
+                            "width": "70%",
+                            "vertical-align": "top"
+                        });
+                        $(".jsavcanvas").css({
+                            "width": "29%",
+                            "height": "100%"
+                        });
                         $(".PIFRAMES").css("height", "");
                     }
                 },
@@ -264,6 +274,15 @@
                 },
 
                 injectQuestion: function(id) {
+                    // $(".jsavoutput.jsavline").css({
+                    //     "display": "inline-block",
+                    //     "width": "70%"
+                    // });
+                    // $(".jsavcanvas").css({
+                    //     "width": "0px",
+                    //     "height": "100%",
+                    //     "display": "inline-block"
+                    // });
                     this.queue.elements.push(id)
                     return this.alertMessage();
 
@@ -308,9 +327,7 @@
                 // <iframe width="700px" height="500px" src="../../../AV/Development/formal_language/FAEditor.html#"></iframe>
                 buildiFrames: function(question) {
                     var src =  question.src;
-                    var header = question.header;
-                    var className = "embeddedExercise";
-                    var iframe = $(`<iframe width="100%" height="100%" src=${src}></iframe>`);
+                    var iframe = $(`<iframe width="100%" height="600px" src=${src}></iframe>`);
 
                     return iframe;
                 },
@@ -346,7 +363,7 @@
                     this.resizeContainer(0);
                     // this.resizeContainerWidth(0);
                     if ($(`#${this.av_name}`).find('.REVEAL').length) {
-                        
+                    
                         // this.resizeContainer(0);
                         $(`.${this.buttonDiv}`).append(this.revealQuestionButton);
                         var height = $(`.${this.buttonDiv}`).outerHeight();
@@ -355,13 +372,22 @@
                         // this.resizeContainerWidth(4 * width);
                         // this.toggleButtonSpace(height);
                         this.questionSlideListener();
-                        
-                        $(".jsavcanvas").css("width", "300px");
+                        $(".jsavoutput.jsavline").css({
+                            "display": "inline-block",
+                            "width": "70%",                          
+                            // "vertical-align": "top"
+                        });
+                        $(".jsavcanvas").css({
+                            "display": "inline-block",
+                            "width": "29%"
+                        });
+                        // $(".jsavcanvas").css("width", "30%");
                     } else {
                         this.updateCanvas(null);
                         // this.resizeContainer(0);
                         this.enableForwardButton();
-                        $(".jsavcanvas").css("width", "0px");
+                        $(".jsavoutput.jsavline").css("width", "100%");
+                        // $(".jsavcanvas").css("width", "0px");
                     }
 
                     
@@ -427,28 +453,17 @@
                 "class": 'PIFRAMES'
             });
 
-            
-            $(".jsavoutput.jsavline").css({
-                "display": "table-cell"
-            });
             $(".jsavcanvas").css({
                 "width": "0px",
-                "height": "600px",
-                "display": "table-cell"
+                "overflow": "hidden"
             });
-            $(qButton).css({
-                "padding-left": "5px"
-                //"display": "table-cell",
-                // "right": 0,
-                // "float": right
-            });
+            // $(qButton).css({
+            //     "padding-left": "5px"
+            // });
             $(question).css({
-                // "margin-left": "20px",
                 "position": "absolute",
                 "width": "100%",
-                // "height": "100%",
-                "overflow": "auto",
-                // "border-left": "1px dotted black"
+                "overflow": "hidden",
 
             });
 
