@@ -314,8 +314,8 @@ $(document).ready(function() {
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
 					prev.insert(del, rt.info[i]);
-					rt.delete(del);
 				}
+				rt.clearValue();
         prev.addInfoGraph();
 			}
 			// Merge to the Right - Deal with the Value
@@ -324,8 +324,8 @@ $(document).ready(function() {
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
 					next.insert(del, rt.info[i]);
-					rt.delete(del);
 				}
+				rt.clearValue();
         next.addInfoGraph();
 			}
 		}
