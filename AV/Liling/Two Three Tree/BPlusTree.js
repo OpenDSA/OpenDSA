@@ -2,11 +2,11 @@
 $(document).ready(function() {
   "use strict";
 
-  function newTree(jsav, maximum){
-    return new tree(jsav, maximum);
+  function newTree(jsav, maximum, detail){
+    return new tree(jsav, maximum, detail);
   }
 
-  function tree(jsav, maximum){
+  function tree(jsav, maximum, d){
     this.emptyArray = [];
     for(var i = 0; i < maximum; i++){
       this.emptyArray.push("");
@@ -23,6 +23,7 @@ $(document).ready(function() {
     this.update = -1;
     this.updateInfo = "";
     this.edge = [];
+    this.detail = d;
   }
 
   var BPTreeproto = tree.prototype;
@@ -313,8 +314,8 @@ $(document).ready(function() {
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
 					prev.insert(del, rt.info[i]);
-					rt.delete(del);
 				}
+				rt.clearValue();
         prev.addInfoGraph();
 			}
 			// Merge to the Right - Deal with the Value
@@ -323,8 +324,8 @@ $(document).ready(function() {
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
 					next.insert(del, rt.info[i]);
-					rt.delete(del);
 				}
+				rt.clearValue();
         next.addInfoGraph();
 			}
 		}
@@ -506,6 +507,7 @@ $(document).ready(function() {
 	 *
 	 * @param rt      parent Node
 	 * @param addInfo new Info that will be added in
+   * @param detail true which will display the each step in the visualization
 	 * @return current TreeNode
 	 */
 	BPTreeproto.insert = function(rt, addInfo, lev, information) {
@@ -580,9 +582,11 @@ $(document).ready(function() {
 	}
 
   //following two functions are for ADD and DELETE in the B+Tree
-  BPTreeproto.add = function(addInfo, information) {
+  BPTreeproto.add = function(addInfo, information, detail) {
     var node = this.insert(this.root, addInfo, this.level, information);
     this.printTree();
+    (this.jsav).umsg("add " + addInfo);
+    (this.jsav).step();
   }
 
   BPTreeproto.delete = function(delInfo) {
@@ -596,6 +600,8 @@ $(document).ready(function() {
     } else {
        alert ("Element " + delInfo + " is not found!");
     }
+    (this.jsav).umsg("delete " + delInfo);
+    (this.jsav).step();
   }
 
   // Publicize the public functions

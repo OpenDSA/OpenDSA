@@ -1,4 +1,4 @@
-	ifeq ($(OS),Windows_NT)
+ifeq ($(OS),Windows_NT)
 	SHELL=C:/Windows/System32/cmd.exe
 endif
 RM = rm -rf
@@ -189,6 +189,9 @@ CS2: min
 
 CS2J: min
 	python $(CONFIG_SCRIPT) config/CS2J.json --no-lms
+
+Codio: min
+	python $(CONFIG_SCRIPT) config/Codio.json --no-lms
 
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
