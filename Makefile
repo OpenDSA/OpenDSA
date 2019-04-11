@@ -187,6 +187,9 @@ CS4104: min
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
+Codio: min
+	python $(CONFIG_SCRIPT) config/Codio.json --no-lms
+
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
