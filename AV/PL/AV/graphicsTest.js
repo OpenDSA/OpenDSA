@@ -4,7 +4,7 @@
 
 (function ($) {
     "use strict";
-    var av;
+    var av = new JSAV($('.avcontainer'));
 
     var canvas;
     var program;

@@ -160,6 +160,9 @@ PointersCPP: min
 PL: min
 	python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
+GraphicsBook: min
+	python $(CONFIG_SCRIPT) config/GraphicsBook.json --no-lms
+
 PLdev: min
 	python $(CONFIG_SCRIPT) config/PLdev.json --no-lms
 
