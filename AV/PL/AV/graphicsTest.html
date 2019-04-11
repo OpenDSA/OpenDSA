@@ -3,9 +3,9 @@
 <head>
   <title>Testing WebGL container</title>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" />
+<!--    <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" />  -->
   <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
-  <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" /> 
   <link rel="stylesheet" href="graphicsTest.css" type="text/css" />
 </head>
 
@@ -17,38 +17,36 @@
         <input type="button" id="help" name="help" value="Help" />
       </td>
       <td class="headerCenter avTitle">
-        Enter your expression to parse in the text box below
+        Three dimensional rotations
       </td>
       <td class="headerRight">
         <input type="button" id="about" name="about" value="About" />
       </td>
     </tr>
   </table>
+  <p>
+    Use the buttons to see the effect of accumulated three-dimensional rotations around each of the axes.  
+  </p>
 
   <form id="ssperform">
     <p>
-      <input type="button" id="runit" name="runit" value="Parse" />
       <input type="button" id="reset" name="reset" value="Reset" />
-<!--      <label id="arraysizeLabel" for="arraysize"></label>
-      <select id="arraysize"></select>-->
-<!--    </p>
-    <p>-->
-      <label id="expLabel" for="expValue"></label>
-      <input size="60" name="expValue" id="expValue" type="text" value="A + B * C + ( E * F + G )"/>
       <button id="xButton">Rotate X</button>
       <button id="yButton">Rotate Y</button>
       <button id="zButton">Rotate Z</button>
+      <button id="toggleCont">Toggle Continuous Rotation</button>
     </p>
   </form>
     <canvas id="gl-canvas" width="512" height="512">
       Oops ... your browser does not support the HTML5 canvas element
     </canvas>
 
-  <div class="avcontainer">
+<!--   <div class="avcontainer">
     <span class="jsavcounter"></span>
     <div class="jsavcontrols"></div>
     <p class="jsavoutput jsavline"></p>
-  </div>
+  </div> -->
+
 </div>
 
 
@@ -88,18 +86,15 @@ main()
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="../../../JSAV/lib/jquery.transit.js"></script>
-<script src="../../../JSAV/lib/raphael.js"></script>
+<!-- <script src="../../../JSAV/lib/raphael.js"></script>
 <script src="../../../JSAV/build/JSAV-min.js"></script>
 <script src="../../../lib/odsaUtils.js"></script>
-<script src="../../../lib/odsaAV.js"></script>
+<script src="../../../lib/odsaAV.js"></script> -->
 
 <script type="text/javascript" src="Common/webgl-utils.js"></script>
 <script type="text/javascript" src="Common/initShaders.js"></script>
 <script type="text/javascript" src="Common/MV.js"></script>
 <script type="text/javascript" src="Common/webgl-debug.js"></script>
 <script type="text/javascript" src="graphicsTest.js"></script>
-
-<!-- <script src="graphicsTest.js"></script> -->
-
 
 </html>
