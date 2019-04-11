@@ -585,6 +585,8 @@ $(document).ready(function() {
   BPTreeproto.add = function(addInfo, information, detail) {
     var node = this.insert(this.root, addInfo, this.level, information);
     this.printTree();
+    (this.jsav).umsg("add " + addInfo);
+    (this.jsav).step();
   }
 
   BPTreeproto.delete = function(delInfo) {
@@ -598,6 +600,8 @@ $(document).ready(function() {
     } else {
        alert ("Element " + delInfo + " is not found!");
     }
+    (this.jsav).umsg("delete " + delInfo);
+    (this.jsav).step();
   }
 
   // Publicize the public functions
