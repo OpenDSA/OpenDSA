@@ -11,16 +11,16 @@ clean:
 
 Demo: UpDown
 
-UpDown: Demo/UpDown.1 Demo/UpDown.2 Utils/Processing.java
+UpDown: Demo/UpDown.java
 	@echo "UpDown Test"
 	-@rm -rf build/UpDown
 	@mkdir build/UpDown
-	cat Demo/UpDown.1 Utils/Processing.java Demo/UpDown.2 > build/UpDown/UpDown.java
+	cp Demo/UpDown.java build/UpDown/
 	cd build/UpDown; \
 	javac $(CFLAGS) UpDown.java; \
 	$(JAVA) $(RFLAGS) UpDown
 
-Misc: LargestTest Anal
+Misc: LargestTest Anal TOH
 
 LargestTest: build/LargestTest/success
 
@@ -43,6 +43,17 @@ build/Anal/success: Misc/Anal.java
 	cd build/Anal; \
 	javac $(CFLAGS) Anal.java; \
 	$(JAVA) $(RFLAGS) Anal
+
+TOH: build/TOH/success
+
+build/TOH/success: Misc/TOH.java Lists/Stack.java Lists/AStack.java 
+	@echo "TOH Code Test"
+	-@rm -rf build/TOH
+	@mkdir build/TOH
+	cp Misc/TOH.java Lists/Stack.java Lists/AStack.java build/TOH
+	cd build/TOH; \
+	javac $(CFLAGS) TOH.java; \
+	$(JAVA) $(RFLAGS) TOH
 
 Lists: ListTest DoubleTest FreeList StackTest QueueTest
 

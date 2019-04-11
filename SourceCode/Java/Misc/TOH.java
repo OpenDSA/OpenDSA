@@ -1,27 +1,32 @@
-boolean SUCCESS = true;
-int counter;
+import java.io.*;
 
-// Fake an "enum" -- a Processing deficiency
-final int MOVE = 13;
-final int TOH = 15;
+// Tester for TOH code
+public class TOH {
 
-class Pole {
-  int poleNum;
-  
-  Pole(int value) {
-    poleNum = value;
+  static boolean SUCCESS = true;
+  static int counter;
+
+  // Fake an "enum" -- a Processing deficiency
+  static final int MOVE = 13;
+  static final int TOH = 15;
+
+  static class Pole {
+    int poleNum;
+
+    Pole(int value) {
+      poleNum = value;
+    }
+
+    // Override Object.toString
+    public String toString() {
+      return Integer.toString(poleNum);
+    }
   }
 
-  // Override Object.toString
-  String toString() {
-    return Integer.toString(poleNum);
+  static void move(Pole start, Pole goal) {
+    System.out.println(counter + ": Move " + start + " to " + goal);
+    counter++;
   }
-}
-
-static void move(Pole start, Pole goal) {
-  System.out.println(counter + ": Move " + start + " to " + goal);
-  counter++;
-}
 
 /* *** ODSATag: TOH *** */
 // Compute the moves to solve a Tower of Hanoi puzzle.
@@ -32,17 +37,17 @@ static void move(Pole start, Pole goal) {
 // goal: The goal pole
 // temp: The other pole
 /* *** ODSATag: TOHshort *** */
-static void TOH(int n, Pole start, Pole goal, Pole temp) {
+static void TOHr(int n, Pole start, Pole goal, Pole temp) {
   if (n == 0) return;          // Base case
-  TOH(n-1, start, temp, goal); // Recursive call: n-1 rings
+  TOHr(n-1, start, temp, goal); // Recursive call: n-1 rings
   move(start, goal);            // Move bottom disk to goal
-  TOH(n-1, temp, goal, start); // Recursive call: n-1 rings
+  TOHr(n-1, temp, goal, start); // Recursive call: n-1 rings
 }
 /* *** ODSAendTag: TOHshort *** */
 /* *** ODSAendTag: TOH *** */
 
 /* *** ODSATag: TOHstack *** */
-class TOHobj {
+static class TOHobj {
   int op;
   int num;
   Pole start, goal, temp;
@@ -56,7 +61,7 @@ class TOHobj {
   { op = o; start = s; goal = g; }
 }
 
-void TOHs(int n, Pole start, Pole goal, Pole temp) {
+static void TOHs(int n, Pole start, Pole goal, Pole temp) {
   // Make a stack just big enough
   Stack S = new AStack(2*n+1);
   S.push(new TOHobj(TOH, n, start, goal, temp));
@@ -73,26 +78,26 @@ void TOHs(int n, Pole start, Pole goal, Pole temp) {
 }
 /* *** ODSAendTag: TOHstack *** */
 
-void setup() {
-  long temp1, temp2;
+  public static void main(String args[]) throws IOException {
+    long temp1, temp2;
 
-  Pole start = new Pole(1);
-  Pole goal = new Pole(2);
-  Pole temp = new Pole(3);
+    Pole start = new Pole(1);
+    Pole goal = new Pole(2);
+    Pole temp = new Pole(3);
 
-  counter = 1;
-  TOH(4, start, goal, temp);
-  counter = 1;
-  TOHs(4, start, goal, temp);
+    counter = 1;
+    TOHr(4, start, goal, temp);
+    counter = 1;
+    TOHs(4, start, goal, temp);
 
-  if (SUCCESS) {
-    PrintWriter output = createWriter("success");
-    output.println("Success");
-    output.flush();
-    output.close();
-  } else {
-    println("Testing failed");
+    if (SUCCESS) {
+      PrintWriter output = new PrintWriter("success");
+      output.println("Success");
+      output.flush();
+      output.close();
+    } else {
+      System.out.println("Testing failed");
+    }
   }
 
-  exit();
 }

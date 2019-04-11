@@ -187,8 +187,14 @@ CS4104: min
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
+CS2J: min
+	python $(CONFIG_SCRIPT) config/CS2J.json --no-lms
+
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
+
+CS3J: min
+	python $(CONFIG_SCRIPT) config/CS3J.json --no-lms
 
 CS3C: min
 	python $(CONFIG_SCRIPT) config/CS3C.json --no-lms

@@ -3,7 +3,6 @@ import java.io.*;
 
 public class UpDown {
 
-
 static long runs = 1000;
 
 public static void main(String args[]) throws IOException {
