@@ -4,6 +4,11 @@
 
 (function ($) {
     "use strict";
+    // The next line is not needed when the graphicsTest.html file is
+    // loaded directly into a browser.  However, it must be present
+    // for the visualization to be seen in an iframe in a book built
+    // from an RST that uses an avembed directive.  The line serves no
+    // purpose itself beyond that in the code that follows.
     var av = new JSAV($('.avcontainer'));
 
     var canvas;
@@ -14,7 +19,7 @@
     var vColor;
     var vPosition;
 
-    var NumVertices  = 36;		// Why 36?
+    var NumVertices  = 36;		// 12 triangles are needed for the cube
 
     var points = [];
     var colors = [];
