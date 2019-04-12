@@ -9,7 +9,15 @@
     // for the visualization to be seen in an iframe in a book built
     // from an RST that uses an avembed directive.  The line serves no
     // purpose itself beyond that in the code that follows.
-    var av = new JSAV($('.avcontainer'));
+
+    // The problem noted above has now "mysteriously" disappeared and
+    // the book in gra[hicsTest.RST seems to build correctly
+    // independent of whether the JSAV object is present.  I'm at a
+    // loos to explain why it suddenly started to work so, for the
+    // time being, I'll leave the line there in commented-out fashion.
+    // T.N., 4/12/19
+   
+//    var av = new JSAV($('.avcontainer'));
 
     var canvas;
     var program;
