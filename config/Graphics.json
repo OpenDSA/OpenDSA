@@ -50,7 +50,7 @@
       "Intro": {}
     },
     "Proof-of-Concept Animation": {
-      "PL/graphicsTest": {
+      "Graphics/GraphicsTest": {
       }
     }
   }
