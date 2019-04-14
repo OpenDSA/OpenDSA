@@ -44,7 +44,8 @@ sys.path.append(os.path.abspath('/vagrant/OpenDSA/RST/ODSAextensions/odsa/odsata
 sys.path.append(os.path.abspath('/vagrant/OpenDSA/RST/ODSAextensions/odsa/chapref'))
 sys.path.append(os.path.abspath('/vagrant/OpenDSA/RST/ODSAextensions/odsa/odsatoctree'))
 sys.path.append(os.path.abspath('/vagrant/OpenDSA/RST/ODSAextensions/odsa/showhidecontent'))
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'numfig', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree','showhidecontent']
+sys.path.append(os.path.abspath('/vagrant/OpenDSA/RST/ODSAextensions/odsa/iframe'))
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'numfig', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree','showhidecontent', 'iframe']
 
 slides_lib = ''
 

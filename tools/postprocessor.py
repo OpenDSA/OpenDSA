@@ -209,7 +209,7 @@ def break_up_sections(path, module_data, config):
   if verbose:
     print "Found HTML file:", mod_name
 
-  TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href') ]
+  TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href'), ('iframe', 'src') ]
 
   # KILL MATHJAX
   #'''Helpful for debugging, because MathJax takes forever to load'''

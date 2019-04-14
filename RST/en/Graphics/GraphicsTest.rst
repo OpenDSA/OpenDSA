@@ -20,13 +20,7 @@ instead of JSAV to put animations into an OpenDSA book.
 
 In the demonstration below, you can use the "Rotate" buttons to control the axis on which the color-cube accumulates additional rotations (by 2 degrees each time the frame is updated).   If you want to explore what the accumulated rotations do without the continual rotation, just click the "Toggle" button
 
-.. raw:: html
-
-   <center> 
-   <iframe id="GraphicsTest" 
-        src="../../../AV/Graphics/GraphicsTest.html"
-        width="1100" height="800"
-        frameborder="1" marginwidth="0" marginheight="0"
-	scrolling="no">
-   </iframe>
-   </center>
+.. iframe:: AV/Graphics/graphicsTest.html
+    :name: GraphicsTest
+    :width: 1100
+    :height: 800

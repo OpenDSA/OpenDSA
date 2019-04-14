@@ -386,6 +386,23 @@ class odsafig(Directive):
   def run(self):
     return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
 
+class iframe(Directive):
+  '''
+  '''
+  required_arguments = 1
+  optional_arguments = 4
+  final_argument_whitespace = True
+  has_content = True
+  option_spec = {
+                  'height': directives.unchanged,
+                  'width': directives.unchanged,
+                  'name': directives.unchanged,
+                  'absolute_url': directives.flag,
+                  }
+  
+  def run(self):
+    return [nodes.raw('', '<iframe>null</iframe>', format='xml')]
+
 def print_err(err_msg):
   '''
   '''
@@ -663,6 +680,7 @@ def register():
   directives.register_directive('odsafig',odsafig)
   directives.register_directive('slide', slide)
   directives.register_directive('slideconf', slideconf)
+  directives.register_directive('iframe', iframe)
 
 
 def remove_markup(source):
