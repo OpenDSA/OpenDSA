@@ -89,12 +89,10 @@ main()
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="../../../JSAV/lib/jquery.transit.js"></script>
 
-<!-- The next four scripts are needed only when the line
-
-    var av = new JSAV($('.avcontainer'));
-
-is used in graphicsTest.js.   This line is apparently only needed when
-graphicsTest is built into a book from an RST file. -->
+<!-- The next four scripts are not needed when the line graphicsTest.html
+is loaded directly into the browser.   But when they are commented out,
+the book build does not correctly build the IFrame for the canvas.
+-->
 
 <script src="../../../JSAV/lib/raphael.js"></script>
 <script src="../../../JSAV/build/JSAV-min.js"></script>
