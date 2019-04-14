@@ -7,7 +7,8 @@
 
         //disable jsavend, as it allows student to jump to last slide
         //automatically enabled by injector once all questions for slideshow have been answered
-        $(".jsavend").css("pointer-events", "none");
+        // $(".jsavend").css("pointer-events", "none");
+        $(".jsavend").css("visibility", "hidden");
 
 
         //edge case: what if first slide has question?
@@ -15,6 +16,7 @@
         $(".jsavforward").click(function() {
                 var buttonGroup = $(this).parent();
                 var parentAV = $(buttonGroup).parent().attr('id')
+                
                 PIFRAMES.callInjector(parentAV, 1);
 
             }),
@@ -39,7 +41,7 @@
                 var buttonGroup = $(this).parent();
                 var parentAV = $(buttonGroup).parent().attr('id')
                 PIFRAMES.callInjector(parentAV)
-
+                
             })
 
     });
@@ -232,28 +234,37 @@
                 disableForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
                     $(forwardButton).css("pointer-events", "none");
-
-
+                    $(forwardButton).css("visibility", "hidden");
+                    // $(".jsavforward").off().click(function() {
+                        
+                    //     alert("you must answer the question first")
+        
+                    // })
                 },
 
                 enableForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
                     $(forwardButton).css("pointer-events", "auto");
+                    $(forwardButton).css("visibility", "visible");
 
+                    // $(".jsavforward").click(function() {
+                    //     on()
+        
+                    // })
 
                 },
 
                 disableFastForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavend");
                     $(forwardButton).css("pointer-events", "none");
-
+                    $(forwardButton).css("visibility", "hidden");
 
                 },
 
                 enableFastForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavend");
                     $(forwardButton).css("pointer-events", "auto");
-
+                    $(forwardButton).css("visibility", "visible");
 
                 },
 
@@ -274,15 +285,6 @@
                 },
 
                 injectQuestion: function(id) {
-                    // $(".jsavoutput.jsavline").css({
-                    //     "display": "inline-block",
-                    //     "width": "70%"
-                    // });
-                    // $(".jsavcanvas").css({
-                    //     "width": "0px",
-                    //     "height": "100%",
-                    //     "display": "inline-block"
-                    // });
                     this.queue.elements.push(id)
                     return this.alertMessage();
 
@@ -327,7 +329,7 @@
                 // <iframe width="700px" height="500px" src="../../../AV/Development/formal_language/FAEditor.html#"></iframe>
                 buildiFrames: function(question) {
                     var src =  question.src;
-                    var iframe = $(`<iframe width="100%" height="600px" src=${src}></iframe>`);
+                    var iframe = $(`<iframe width="91%" height="600px" src=${src}></iframe>`);
 
                     return iframe;
                 },
@@ -347,7 +349,7 @@
                         //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
                         alert("you have answered the question incorrectly!")
                         this.disableForwardButton();
-
+                        
                     }
                 },
 
@@ -382,6 +384,7 @@
                             "width": "29%"
                         });
                         // $(".jsavcanvas").css("width", "30%");
+                        
                     } else {
                         this.updateCanvas(null);
                         // this.resizeContainer(0);
@@ -409,6 +412,9 @@
                     var current = this.queue.current;
                     if (!this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])) {
                         this.disableForwardButton();
+                        // if (($(`#${this.av_name}`).find('.REVEAL').length)) {
+                        //     alert("You need to answer the question first");
+                        // }
                     } else {
                         this.enableForwardButton();
                     }

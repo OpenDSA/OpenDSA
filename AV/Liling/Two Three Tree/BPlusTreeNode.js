@@ -44,6 +44,22 @@ $(document).ready(function() {
     this.array.show();
   }
 
+  BPTNodeproto.highlight = function(boolean){
+    if(boolean){
+      this.array.highlight(boolean);
+    }else{
+      for(var i = 0; i < this.max; i++){
+        this.array.unhighlight(i);
+      }
+    }
+  }
+
+  BPTNodeproto.unhighlight = function(levelArr){
+    for(var i = 0; i < levelArr.length; i++){
+        levelArr[i].highlight(false);
+    }
+  }
+
    BPTNodeproto.center = function() {
      var canvas = $(this.array.element).parent();
      var cw = $(canvas).outerWidth();

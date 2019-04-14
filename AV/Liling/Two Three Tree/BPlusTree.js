@@ -512,16 +512,34 @@ $(document).ready(function() {
 	 */
 	BPTreeproto.insert = function(rt, addInfo, lev, information) {
 		if (rt.isLeaf()) {
+      if(this.level > 1){
+        rt.unhighlight(this.list[1]);
+      }
+      if(this.detail){
+        rt.highlight(true);
+        (this.jsav).umsg("add " + addInfo);
+        (this.jsav).step();
+      }
 			var checkAdd = rt.insert(addInfo, information);
 			if (checkAdd) {
 				this.update = -1;
         this.updateInfo = "";
         //add key
         rt.addInfoGraph();
+        if(this.detail){
+          rt.highlight(false);
+          (this.jsav).umsg("add " + addInfo);
+          (this.jsav).step();
+        }
 				return rt;
 			} else {
 				// split
-				var next = this.split(rt, addInfo, information);
+        if(this.detail){
+          rt.highlight(false);
+          (this.jsav).umsg("add " + addInfo);
+          (this.jsav).step();
+        }
+  			var next = this.split(rt, addInfo, information);
         //add key
         rt.addInfoGraph();
         next.addInfoGraph();
@@ -530,7 +548,7 @@ $(document).ready(function() {
         this.updateInfo = next.info[0];//information
 				if (rt == this.root) {
 					var parent = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, false); // add new parent node
-					parent.insert(this.update, this.updateInfo);
+          parent.insert(this.update, this.updateInfo);
           parent.addChildrenInNode(rt);
           parent.addChildrenInNode(next);
 					this.root = parent;
@@ -540,19 +558,58 @@ $(document).ready(function() {
           var newList = [];
           newList[0] = parent;
 					this.list[this.level - 1] = newList;
+          if(this.detail){
+            this.printTree();
+            parent.highlight(true);
+            (this.jsav).umsg("add " + addInfo);
+            (this.jsav).step();
+            parent.highlight(false);
+            // this.printTree();
+            (this.jsav).umsg("add " + addInfo);
+            (this.jsav).step();
+          }
 					return parent;
 				}
+        if(this.detail){
+          this.printTree();
+          (this.jsav).umsg("add " + addInfo);
+          (this.jsav).step();
+        }
 				return next;
 			}
-		} else {
+		}
+    //internal node
+    else {
+      if(this.level > lev){
+        rt.unhighlight(this.list[lev]);
+      }
+      if(this.detail){
+        rt.highlight(true);
+        (this.jsav).umsg("add " + addInfo);
+        (this.jsav).step();
+      }
 			var pos = rt.insertPos(addInfo, 0, rt.size() - 1);
 			var next = this.insert(rt.getChildren()[pos], addInfo, lev - 1, information); // new child
       if (next != rt.getChildren()[pos]) {
+        if(this.detail){
+          rt.highlight(true);
+          (this.jsav).umsg("add " + addInfo);
+          (this.jsav).step();
+        }
 				var checkAdd = rt.insert(this.update, this.updateInfo);
 				if (checkAdd) {
 					this.addChildren(rt, next, false, null);
 					this.update = -1;
           this.updateInfo = "";
+          if(this.detail){
+            rt.highlight(true);
+            (this.jsav).umsg("add " + addInfo);
+            (this.jsav).step();
+            rt.highlight(false);
+            this.printTree();
+            (this.jsav).umsg("add " + addInfo);
+            (this.jsav).step();
+          }
 					return rt;
 				} else {
 					// split
@@ -572,8 +629,20 @@ $(document).ready(function() {
             var newList = [];
             newList[0] = parent;
   					this.list[this.level - 1] = newList;
+            if(this.detail){
+              rt.highlight(false);
+              this.printTree();
+              (this.jsav).umsg("add " + addInfo);
+              (this.jsav).step();
+            }
 						return parent;
 					}
+          if(this.detail){
+            rt.highlight(false);
+            this.printTree();
+            (this.jsav).umsg("add " + addInfo);
+            (this.jsav).step();
+          }
 					return nextNode;
 				}
 			}
@@ -584,9 +653,11 @@ $(document).ready(function() {
   //following two functions are for ADD and DELETE in the B+Tree
   BPTreeproto.add = function(addInfo, information, detail) {
     var node = this.insert(this.root, addInfo, this.level, information);
-    this.printTree();
-    (this.jsav).umsg("add " + addInfo);
-    (this.jsav).step();
+    if(!this.detail){
+      this.printTree();
+      (this.jsav).umsg("add " + addInfo);
+      (this.jsav).step();
+    }
   }
 
   BPTreeproto.delete = function(delInfo) {
@@ -600,8 +671,10 @@ $(document).ready(function() {
     } else {
        alert ("Element " + delInfo + " is not found!");
     }
-    (this.jsav).umsg("delete " + delInfo);
-    (this.jsav).step();
+    if(!this.detail){
+      (this.jsav).umsg("delete " + delInfo);
+      (this.jsav).step();
+    }
   }
 
   // Publicize the public functions
