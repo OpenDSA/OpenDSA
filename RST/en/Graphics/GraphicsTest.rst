@@ -24,3 +24,11 @@ In the demonstration below, you can use the "Rotate" buttons to control the axis
     :name: GraphicsTest
     :width: 1100
     :height: 800
+
+Simple Exercise
+---------------
+
+.. avembed:: Exercises/Graphics/SimpleExerciseTest.html ka
+   :long_name: Simple Exercise Test
+
+	     
