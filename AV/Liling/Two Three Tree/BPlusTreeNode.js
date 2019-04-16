@@ -2,7 +2,7 @@
 $(document).ready(function() {
   "use strict";
 
-  function newNode(valueArr, jsav, max, isLeaf){
+  function newNode(valueArr, jsav, max, isLeaf, detail){
     var arr = jsav.ds.array(valueArr, {left: "0", top: "0"});
     // arr.element.addClass("internal-node");
     if (isLeaf) {
@@ -10,11 +10,11 @@ $(document).ready(function() {
     } else {
       arr.element.addClass("internal-node");
     }
-    return new BPTNode(valueArr, jsav, max, arr);
+    return new BPTNode(valueArr, jsav, max, arr, detail);
   }
 
   // Node constructor.
-  function BPTNode(valueArr, jsav, maximum, arr) {
+  function BPTNode(valueArr, jsav, maximum, arr, det) {
     this.jsav = jsav;
     this.max = maximum;
     this.size_value = 0;
@@ -23,6 +23,7 @@ $(document).ready(function() {
     this.value = [];
     this.child = [];
     this.info = [];
+    this.detail = det;
     for(var i = 0; i < maximum; i++){
       if(valueArr[i] != ""){
         this.value[i] = valueArr[i];
@@ -85,6 +86,26 @@ $(document).ready(function() {
        return true;
      }
      return false;
+   }
+
+   BPTNodeproto.drawRectangle = function(rect, node1, node2) {
+     var padding = 10;
+     var n1p = $(node1.array.element).position();
+     var n2p = $(node2.array.element).position();
+     var width = $(node1.array.element).outerWidth();
+     var height = $(node1.array.element).outerHeight();
+
+     var x = n1p.left - padding + 3;
+     var y = n1p.top - padding + 3;
+     var w = (n2p.left + width) - (n1p.left) + (padding * 2);
+     var h = height + (padding * 2);
+
+     if (rect) {
+       rect.hide();
+     }
+     rect = this.jsav.g.rect(x, y, w, h);
+     rect.addClass("node-split-rect");
+     return rect;
    }
 
    //help method for Children
@@ -247,11 +268,18 @@ $(document).ready(function() {
       return true;
     }else{
       var pos = this.insertPos(addInfo, 0, this.size_value - 1);
+      this.array.value(this.size_value, "");
       for(var i = this.size_value; i > pos; i--){
         this.value[i] = this.value[i - 1];
         this.array.value(i, this.value[i - 1]);
         //shift info array
         this.info[i] = this.info[i - 1];
+        if(this.detail){
+          this.array.swap(i, i-1);
+          this.array.value(i-1, "");
+          (this.jsav).umsg("add " + addInfo);
+          (this.jsav).step();
+        }
       }
       this.setValue(pos, addInfo, information); //set new info
       this.size_value++;

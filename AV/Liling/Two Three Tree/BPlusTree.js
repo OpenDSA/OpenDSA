@@ -11,11 +11,12 @@ $(document).ready(function() {
     for(var i = 0; i < maximum; i++){
       this.emptyArray.push("");
     }
+    this.detail = d;
     this.jsav = jsav;
     this.list = []; //store array with different level inside
     this.level = 1;
     this.max = maximum;
-    this.root = BPTreeNode.newNode(this.emptyArray, jsav, maximum, true); //root will be stored as a BPTreeNode
+    this.root = BPTreeNode.newNode(this.emptyArray, jsav, maximum, true, this.detail); //root will be stored as a BPTreeNode
     this.root.center();
     this.leafValue = []; //stored BPTreeNode for the leaf Node
     this.leafValue[0] = this.root;
@@ -23,7 +24,10 @@ $(document).ready(function() {
     this.update = -1;
     this.updateInfo = "";
     this.edge = [];
-    this.detail = d;
+    this.canvas = $(this.root.array.element).parent();//get canvas width
+    this.w = $(this.canvas).innerWidth();
+    this.aw = $(this.root.array.element).outerWidth() / 2; //half of the outerWidth
+    // this.ah = $(this.root.array.element).outerHeight(); //height
   }
 
   var BPTreeproto = tree.prototype;
@@ -31,23 +35,27 @@ $(document).ready(function() {
   //following function is for graphing
 
   BPTreeproto.printTree = function(){
-    //hide edge and redraw
+    this.printNode();
+    this.printArrow(this.aw, this.ah);
+  }
+
+  BPTreeproto.hideEdge = function(){
     for(var i = this.edge.length - 1; i >= 0; i--){
       this.edge[i].hide();
       this.edge.pop();
     }
+  }
+
+  BPTreeproto.printNode = function(){
+    //hide edge and redraw
+    this.hideEdge();
     var nvg = 80; //node vertical gap
-    //get canvas width
-    var canvas = $(this.root.array.element).parent();//get canvas width
-    var w = $(canvas).innerWidth();
-    var aw = $(this.root.array.element).outerWidth() / 2; //half of the outerWidth
-    var ah = $(this.root.array.element).outerHeight(); //height
     //graph leaf nodes
     var leafNodeSize = this.leafValue.length;
-    var nhgl = w / (leafNodeSize + 1);
+    var nhgl = this.w / (leafNodeSize + 1);
     var trackLeafIndex = 0;
     while(trackLeafIndex < this.leafValue.length){
-      var hori = (trackLeafIndex + 1) * nhgl - aw;
+      var hori = (trackLeafIndex + 1) * nhgl - this.aw;
       var vert = (this.list.length - 1) * nvg;
       this.leafValue[trackLeafIndex].move(hori, vert);
       trackLeafIndex++;
@@ -71,12 +79,12 @@ $(document).ready(function() {
       }
       tl++;
     }
-    this.printArrow(aw, ah);
   }
 
   //hw is the half of the width that the block has
   //vw is the height that the block has
-  BPTreeproto.printArrow = function(hw, vw){
+  BPTreeproto.printArrow = function(hw){
+    var vw = $(this.root.array.element).outerHeight(); //height
     var oblock = (hw * 2) / this.max; //the width of one block in one node
     var tli = this.list.length - 1; //list index, starting from the root
     while(tli > 0){
@@ -111,7 +119,35 @@ $(document).ready(function() {
   BPTreeproto.split = function(rt, addInfo, information){
     var leftSize = Math.trunc((this.max + 1) / 2);
     var addPos = rt.insertPos(addInfo,0, this.max - 1);
-    var next = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, true);
+    var next = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, true, this.detail);
+    if(this.detail){
+      this.printTree();
+      //hide all arrow
+      this.hideEdge();
+      var nvg = 80; //node vertical gap
+      var leafNodeSize = this.leafValue.length;
+      var nhgl = this.w / (leafNodeSize + 2);
+      var trackLeafIndex = 0;
+      var vert = (this.list.length - 1) * nvg;
+      while(trackLeafIndex < this.leafValue.length){
+        var hori = (trackLeafIndex + 1) * nhgl - this.aw;
+        this.leafValue[trackLeafIndex].move(hori, vert);
+        if(this.leafValue[trackLeafIndex] == rt){
+          break;
+        }
+        trackLeafIndex++;
+      }
+      trackLeafIndex++;
+      next.move($(rt.array.element).position().left + nhgl, vert);
+      while(trackLeafIndex < this.leafValue.length){
+        var hori = (trackLeafIndex + 2) * nhgl - this.aw;
+        this.leafValue[trackLeafIndex].move(hori, vert);
+        trackLeafIndex++;
+      }
+
+      (this.jsav).umsg("add " + addInfo);
+      (this.jsav).step();
+    }
     //add new value to the left TreeNode
     if(addPos < leftSize){
       for(var i = leftSize - 1; i < this.max; i++){
@@ -123,18 +159,39 @@ $(document).ready(function() {
       for(var i = leftSize - 1;i > addPos; i--){
         rt.setValue(i, rt.getValue()[i - 1], rt.info[i - 1]);
       }
+      rt.setValue(addPos, "", information);
+      if(this.detail){
+        next.addInfoGraph();
+        (this.jsav).umsg("add " + addInfo);
+        (this.jsav).step();
+      }
       rt.setValue(addPos, addInfo, information);
+      if(this.detail){
+        rt.addInfoGraph();
+        (this.jsav).umsg("add " + addInfo);
+        (this.jsav).step();
+      }
     }
     //add new value to the next TreeNode
     else {
 			for (var i = leftSize; i < this.max; i++) {
 				next.insert(rt.getValue()[i], rt.info[i]);
 			}
-			next.insert(addInfo, information);
       for(var i = this.max - 1; i >= leftSize; i--){
         rt.delete(rt.getValue()[i]);
       }
+      if(this.detail){
+        next.addInfoGraph();
+        (this.jsav).umsg("add " + addInfo);
+        (this.jsav).step();
+      }
+			next.insert(addInfo, information);
 		}
+    if(this.detail){
+      next.addInfoGraph();
+      (this.jsav).umsg("add " + addInfo);
+      // (this.jsav).step();
+    }
 		return next;
   }
 
@@ -185,9 +242,37 @@ $(document).ready(function() {
 
 	}
 
-  BPTreeproto.parentSplit = function(rt) {
-    var next = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, false);
-		var leftSize = Math.trunc((this.max + 1) / 2);
+  BPTreeproto.parentSplit = function(rt, lev) {
+    var next = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, false, this.detail);
+    if(this.detail){
+      this.printTree();
+      //hide all arrow
+      this.hideEdge();
+      var nvg = 80; //node vertical gap
+      var leafNodeSize = this.list[lev - 1].length;
+      var nhgl = this.w / (leafNodeSize + 2);
+      var trackLeafIndex = 0;
+      var vert = $(rt.array.element).position().top;
+      while(trackLeafIndex < leafNodeSize){
+        var hori = (trackLeafIndex + 1) * nhgl - this.aw;
+        this.list[lev- 1][trackLeafIndex].move(hori, vert);
+        if(this.list[lev - 1][trackLeafIndex] == rt){
+          break;
+        }
+        trackLeafIndex++;
+      }
+      trackLeafIndex++;
+      next.move($(rt.array.element).position().left + nhgl, vert);
+      while(trackLeafIndex < leafNodeSize){
+        var hori = (trackLeafIndex + 2) * nhgl - this.aw;
+        this.list[lev - 1][trackLeafIndex].move(hori, vert);
+        trackLeafIndex++;
+      }
+      rt.highlight(false);
+      (this.jsav).umsg("update " + this.update);
+      (this.jsav).step();
+    }
+    var leftSize = Math.trunc((this.max + 1) / 2);
 		var addPos = rt.insertPos(this.update, 0, this.max - 1);
 		// deal with parentNode
 		if (addPos < leftSize) {
@@ -202,6 +287,11 @@ $(document).ready(function() {
 			for (var i = leftSize - 1; i > addPos; i--) {
 				rt.setValue(i, rt.getValue()[i - 1], rt.info[i - 1]);
 			}
+      if(this.detail){
+        rt.highlight(false);
+        (this.jsav).umsg("update " + this.update);
+        (this.jsav).step();
+      }
 			rt.setValue(addPos, this.update, this.updateInfo);
 			this.update = updateBackUp;
       this.updateInfo = updateBackUpInfo;
@@ -215,6 +305,10 @@ $(document).ready(function() {
       for(var i = this.max - 1; i >= leftSize; i--){
         rt.delete(rt.getValue()[i]);
       }
+      if(this.detail){
+        (this.jsav).umsg("update " + this.update);
+        (this.jsav).step();
+      }
 			this.update = updateBackUp;
       this.updateInfo = updateBackUpInfo;
 		} else {
@@ -223,6 +317,10 @@ $(document).ready(function() {
 			}
       for(var i = this.max - 1; i >= leftSize; i--){
         rt.delete(rt.getValue()[i]);
+      }
+      if(this.detail){
+        (this.jsav).umsg("update " + this.update);
+        (this.jsav).step();
       }
 		}
 		return next;
@@ -515,7 +613,7 @@ $(document).ready(function() {
       if(this.level > 1){
         rt.unhighlight(this.list[1]);
       }
-      if(this.detail){
+      if(this.detail && this.level != 1){
         rt.highlight(true);
         (this.jsav).umsg("add " + addInfo);
         (this.jsav).step();
@@ -534,7 +632,7 @@ $(document).ready(function() {
 				return rt;
 			} else {
 				// split
-        if(this.detail){
+        if(this.detail && this.level != 1){
           rt.highlight(false);
           (this.jsav).umsg("add " + addInfo);
           (this.jsav).step();
@@ -547,7 +645,7 @@ $(document).ready(function() {
         this.update = next.getValue()[0];
         this.updateInfo = next.info[0];//information
 				if (rt == this.root) {
-					var parent = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, false); // add new parent node
+					var parent = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, false, this.detail); // add new parent node
           parent.insert(this.update, this.updateInfo);
           parent.addChildrenInNode(rt);
           parent.addChildrenInNode(next);
@@ -559,22 +657,20 @@ $(document).ready(function() {
           newList[0] = parent;
 					this.list[this.level - 1] = newList;
           if(this.detail){
-            this.printTree();
-            parent.highlight(true);
+            this.printNode();
             (this.jsav).umsg("add " + addInfo);
             (this.jsav).step();
-            parent.highlight(false);
-            // this.printTree();
+            this.printArrow(this.aw);
             (this.jsav).umsg("add " + addInfo);
             (this.jsav).step();
           }
 					return parent;
 				}
-        if(this.detail){
-          this.printTree();
-          (this.jsav).umsg("add " + addInfo);
-          (this.jsav).step();
-        }
+        // if(this.detail){
+        //   this.printTree();
+        //   (this.jsav).umsg("add " + addInfo);
+        //   (this.jsav).step();
+        // }
 				return next;
 			}
 		}
@@ -613,12 +709,12 @@ $(document).ready(function() {
 					return rt;
 				} else {
 					// split
-					var nextNode = this.parentSplit(rt); // parallel with rt
+					var nextNode = this.parentSplit(rt, lev); // parallel with rt
 					this.list[lev - 1] = this.insertTreeNode(this.list[lev - 1], nextNode);
 					// change children
 					this.addChildren(rt, next, true, nextNode);
 					if (rt == this.root) {
-						var parent = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, false); // add new parent node
+						var parent = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, false, this.detail); // add new parent node
             parent.insert(this.update, this.updateInfo);
             parent.addChildrenInNode(rt);
 						parent.addChildrenInNodeIndex(1, nextNode);
@@ -630,15 +726,17 @@ $(document).ready(function() {
             newList[0] = parent;
   					this.list[this.level - 1] = newList;
             if(this.detail){
-              rt.highlight(false);
-              this.printTree();
+              this.printNode();
+              (this.jsav).umsg("add " + addInfo);
+              (this.jsav).step();
+              this.printArrow(this.aw);
               (this.jsav).umsg("add " + addInfo);
               (this.jsav).step();
             }
 						return parent;
 					}
           if(this.detail){
-            rt.highlight(false);
+            // rt.highlight(false);
             this.printTree();
             (this.jsav).umsg("add " + addInfo);
             (this.jsav).step();
