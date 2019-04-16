@@ -31,4 +31,10 @@ Simple Exercise
 .. avembed:: Exercises/Graphics/SimpleExerciseTest.html ka
    :long_name: Simple Exercise Test
 
+Simple Exercise With Graphics
+-----------------------------
+
+.. avembed:: Exercises/Graphics/SimpleExerciseTestWithCanvas.html ka
+   :long_name: Simple Exercise Test With Graphics in Canvas
+
 	     
