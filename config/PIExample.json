@@ -73,7 +73,8 @@
       "Intro": {}
     },
     "Example": {
-      "PIExample/FrameExample": {}
+      "PIExample/FrameExample": {},
+      "PIExample/NFAtoDFAExample":{}
     }
   }
 }

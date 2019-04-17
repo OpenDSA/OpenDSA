@@ -49,7 +49,7 @@ av.displayInit();
     toggleInitial(DFA, dfaQ0);
   av.step();
   // Slide 3
-  av.umsg("Now, we should determine the the possible transitions from out new start state. To do so, we need to check the transitions from {$q_0,q_1,q_2$} with $a$ and $b$ ");
+  av.umsg("Now, we should determine the the possible transitions from our new start state. To do so, we need to check the transitions from {$q_0,q_1,q_2$} with $a$ and $b$ ");
     q0.unhighlight();
     q1.unhighlight();
     q2.unhighlight();
@@ -63,17 +63,22 @@ av.displayInit();
     dfaQ0.unhighlight();
     q3_q4.highlight();
     var q1_q5_q6 = DFA.newNode("{q1,q5,q6}", {left:200, top: 50});
-    var DFA_q4 = DFA.newNode("{q4}", {left:100, top: 250});
+    //var DFA_q4 = DFA.newNode("{q4}", {left:100, top: 250});
     DFA.addEdge(q3_q4, q1_q5_q6, {weight: "b"});
+    //DFA.addEdge(q3_q4, DFA_q4, {weight: "a"});
+    av.step();
+    av.umsg(injector.injectQuestion("q1"));
+    av.step();
+    av.umsg("Correct.");
+    var DFA_q4 = DFA.newNode("{q4}", {left:100, top: 250});
     DFA.addEdge(q3_q4, DFA_q4, {weight: "a"});
   av.step();
   // Slide 5
-  av.umsg("Find transition for {$q_1,q_5, q_6$} with $a$ and $b$");
+  av.umsg("Find transition for {$q_1,q_5, q_6$} with $b$");
     q3_q4.unhighlight();
     q1_q5_q6.highlight();
     var DFA_q3 = DFA.newNode("{q3}", {left:300, top: 50});
     DFA.addEdge(q1_q5_q6, DFA_q3, {weight: "a"});
-
     av.step();
     // Slide 6
     av.umsg("Find transition for {q3} with $a$ and $b$");
@@ -81,7 +86,8 @@ av.displayInit();
     q1_q5_q6.unhighlight();
     var q5_q1 = DFA.newNode("{q5, q1}", {left:300, top: 250});
     DFA.addEdge(DFA_q3, q5_q1, {weight: "b"});
-
+    av.step();
+    av.umsg(injector.injectQuestion("q2"));
     av.step();
     // Slide 7
     av.umsg("Find transition for {$q_4$} with $a$ and $b$");
@@ -98,14 +104,19 @@ av.displayInit();
     DFA.addEdge(q5_q1, DFA_q3, {weight: "a"});
     av.step();
 
-    av.umsg("Finall, we need to determine the final states. Any state that include $q_5$ of $q_6$ will be final state.");
+    av.umsg("Finall, we need to determine the final states. Any state that include $q_5$ of $q_6$ will be final state. In this slide we will show 2 final states only.");
     toggleFinal(DFA, q1_q5_q6);
-    toggleFinal(DFA, q5_q1);
+    //toggleFinal(DFA, q5_q1);
     toggleFinal(DFA, DFA_q6);
     q1_q5_q6.highlight();
-    q5_q1.highlight();
+    //q5_q1.highlight();
     DFA_q6.highlight();
-
+    av.step();
+    av.umsg(injector.injectQuestion("q3"));
+    av.step();
+    av.umsg("Your answer is correct");
+    toggleFinal(DFA, q5_q1);
+    q5_q1.highlight();
     av.step();
     q1_q5_q6.unhighlight();
     q5_q1.unhighlight();
@@ -119,5 +130,7 @@ av.displayInit();
     q5_q1.value("q5");
     DFA_q6.value("q6");
     DFA.layout();
+    av.step();
+    av.umsg(injector.injectQuestion("q4"));
   av.recorded();
 });
