@@ -7,6 +7,7 @@
     
     // JQuery's equivalent to window.onload -- see https://api.jquery.com/ready/
     $(function() {
+	console.log("FOO");
 	init();
     });
     
