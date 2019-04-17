@@ -7,8 +7,12 @@
     
     // JQuery's equivalent to window.onload -- see https://api.jquery.com/ready/
     $(function() {
-	console.log("FOO");
-	init();
+        $(Khan).bind("problemChanged", function(event, problemInfo) {
+            if (problemInfo.id === 'GraphicsExTestWithCanvas') {
+                console.log("FOO");
+                init();
+            }
+        });
     });
     
     // window.onload = init;
