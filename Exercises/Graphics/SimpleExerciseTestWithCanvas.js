@@ -80,42 +80,6 @@
 	gl.drawArrays( gl.TRIANGLE_FAN, 0, 4 );
     };
 
-
-
-    //     function about() {
-    // 	alert("Proof of concept example os drawing in canvas with WebGL");
-    //     }
-    //     
-    //     function help() {
-    // 	alert("Use the buttons as indicated");
-    //     }
-    
-    // Connect action callbacks to the HTML entities
-    //     $('#about').click(about);
-    //    $('#runit').click(init);
-    //     $('#runit').click(runit);
-    //     $("#ssperform").submit(function(evt) {
-    // 	evt.stopPropagation();
-    // 	evt.preventDefault();
-    // //	runit();
-    //     });
-    //     $('#help').click(help);
-    //     $('#xButton').click( function () {
-    //         axis = xAxis;
-    // 	if (!continuousAnim) render();
-    //     } );
-    //     $('#yButton').click( function () {
-    //         axis = yAxis;
-    // 	if (!continuousAnim) render();
-    //     } );
-    //     $('#zButton').click( function () {
-    //         axis = zAxis;
-    // 	if (!continuousAnim) render();
-    //     } );
-    //     $('#toggleCont').click(function () { continuousAnim = !continuousAnim;
-    // 				        if (continuousAnim) render(); });
-    //     $('#reset').click(function () { theta = [0, 0, 0]; axis = xAxis;
-    // 				    if (!continuousAnim) render(); } );
 }(jQuery));
 
 //});
