@@ -10,7 +10,7 @@
         "choices": ["q_0, q_1, q_2", "q_1, q_2, q_3","q_3, q_4, q_5" ,"q_3, q_4, q_5"]
       },
       "q2": {
-        "type": "multiple",
+        "type": "iframe",
         "src": "../../../AV/Development/formal_language/FAEditor.html",
         "question":"What is the final state?",
         "answer": "q_1, q_2, q_3",

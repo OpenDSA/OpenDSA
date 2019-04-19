@@ -184,23 +184,27 @@
 
                     if ($(".PIFRAMES").find("iframe").length > 0) {
                             $(".jsavoutput.jsavline").css("display", "none");
-                            $(".jsavcanvas").css({
+                            $(".picanvas").css({
                                 "width": "900px",
                                 "height": "600px"
                             });
-                            $(".PIFRAMES").css("height", "100%");
-                    } else {
-                        $(".jsavoutput.jsavline").css({
-                            "display": "inline-block",
-                            "width": "70%",
-                            "vertical-align": "top"
-                        });
-                        $(".jsavcanvas").css({
-                            "width": "29%",
-                            "height": "100%"
-                        });
-                        $(".PIFRAMES").css("height", "");
-                    }
+                            $(".PIFRAMES").css({
+                                "width": "100%",
+                                "height": "100%"
+                            });
+                    } 
+                    // else {
+                    //     $(".jsavoutput.jsavline").css({
+                    //         "display": "inline-block",
+                    //         "width": "70%",
+                    //         "vertical-align": "top"
+                    //     });
+                    //     $(".picanvas").css({
+                    //         "width": "0%",
+                    //         "height": "100%"
+                    //     });
+                    //     $(".PIFRAMES").css("height", "");
+                    // }
                 },
 
                 updateSlideCounter: function(jsavControl) {
@@ -379,18 +383,18 @@
                             "width": "70%",                          
                             // "vertical-align": "top"
                         });
-                        $(".jsavcanvas").css({
+                        $(".picanvas").css({
                             "display": "inline-block",
                             "width": "29%"
                         });
-                        // $(".jsavcanvas").css("width", "30%");
+                        // $(".picanvas").css("width", "30%");
                         
                     } else {
                         this.updateCanvas(null);
                         // this.resizeContainer(0);
                         this.enableForwardButton();
                         $(".jsavoutput.jsavline").css("width", "100%");
-                        // $(".jsavcanvas").css("width", "0px");
+                        // $(".picanvas").css("width", "0px");
                     }
 
                     
@@ -447,7 +451,7 @@
             return injector;
         },
 
-        //add div to the av_name's jsavcanvas, so that dynamic questions have a hooking point
+        //add div to the av_name's picanvas, so that dynamic questions have a hooking point
         init(av_name, av) {
             var container = $(`#${av_name}`);
 
@@ -459,7 +463,7 @@
                 "class": 'PIFRAMES'
             });
 
-            $(".jsavcanvas").css({
+            $(".picanvas").css({
                 "width": "0px",
                 "overflow": "hidden"
             });
@@ -468,14 +472,18 @@
             // });
             $(question).css({
                 "position": "absolute",
-                "width": "100%",
+                "width": "29%",
                 "overflow": "hidden",
 
             });
 
-            $(".jsavcanvas").append(qButton);
-            $(".jsavcanvas").append(question);
+            // $(".jsavcanvas").append(qButton);
+            // $(".jsavcanvas").append(question);
+            $(container).append(qButton);
+            $(container).append(question);
 
+            $('.SHOWQUESTION,.PIFRAMES').wrapAll('<div class="picanvas"></div>');
+            $(".picanvas").insertBefore($(".jsavcanvas"));
             return this.getQuestions(av_name);
         },
 
