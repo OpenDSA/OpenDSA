@@ -380,20 +380,30 @@
                         this.questionSlideListener();
                         $(".jsavoutput.jsavline").css({
                             "display": "inline-block",
-                            "width": "70%",                          
+                            "width": "60%",                          
                             // "vertical-align": "top"
                         });
                         $(".picanvas").css({
                             "display": "inline-block",
-                            "width": "29%"
+                            "width": "39%"
                         });
-                        // $(".picanvas").css("width", "30%");
+                        $(".jsavcanvas").css({
+                            "min-width": "0px",
+                            "width": "60%",
+                            "overflow": "hidden",
+                            "margin-left": 0
+                        });
                         
                     } else {
                         this.updateCanvas(null);
                         // this.resizeContainer(0);
                         this.enableForwardButton();
                         $(".jsavoutput.jsavline").css("width", "100%");
+                        $(".jsavcanvas").css({
+                            "width": "100%",
+                            "overflow-x": "auto",
+                            "margin-left": "auto"
+                        });
                         // $(".picanvas").css("width", "0px");
                     }
 
