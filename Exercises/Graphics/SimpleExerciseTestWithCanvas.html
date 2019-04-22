@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- The name of the corresponding JS file must included in the data-require attribute -->
+<html data-require="math SimpleExerciseTestWithCanvas" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Simple Exercise Test With Graphics</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+
+<!--     <link rel="stylesheet"  href="./styles.css" type="text/css" /> -->
+  </head>
+
+  <body data-height="600" data-width="950">
+<!--     Located here we see part of the canvas below the exercise -->
+
+<!--     <p>
+      <div class="avcontainer">
+	<br>
+	<canvas id="gl-canvas" width="150" height="150">
+	  Oops ... your browser does not support the HTML5 canvas element
+	</canvas>
+      </div>
+    </p>  -->
+    <div class="exercise">
+      <div class="problems">
+        <div id="GraphicsExTestWithCanvas">
+          <p class="question">What is the viewport used in the graphics display below?</p>
+
+	  <p>
+	    <div class="avcontainer">
+	      <br>
+	      <canvas id="gl-canvas" width="150" height="150">
+		Oops ... your browser does not support the HTML5 canvas element
+	      </canvas>
+	    </div>
+	  </p>
+
+          <div class="solution">Left = 0, Bottom = 0, Width = 150, Height = 150</div>
+          <ul class="choices" data-category="true">
+            <li>Left = 0, Bottom = 0, Width = 150, Height = 150</li>
+            <li>Left = 0, Bottom = 50, Width = 150, Height = 150</li>
+            <li>Left = 50, Bottom = 0, Width = 150, Height = 150</li>
+            <li>Left = 50, Bottom = 50, Width = 150, Height = 150</li>
+          </ul>
+
+          <div class="hints">
+	    <p>Take into consideration the position of the white rectangle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script id="vertex-shader" type="x-shader/x-vertex">
+  // GLSL vertex shader code
+  attribute vec4 vPosition;  
+
+  void main()
+  {
+    gl_Position = vPosition;  
+  }
+  </script>
+
+  <script id="fragment-shader" type="x-shader/x-fragment">
+  // GLSL fragment shader code
+  precision mediump float;
+
+  void main()
+  {
+    gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
+  }
+  </script>
+  <script type="text/javascript" src="../../AV/Graphics/Common/webgl-utils.js"></script>
+  <script type="text/javascript" src="../../AV/Graphics/Common/initShaders.js"></script>
+  <script type="text/javascript" src="../../AV/Graphics/Common/MV.js"></script>
+  <script type="text/javascript" src="../../AV/Graphics/Common/webgl-debug.js"></script>
+  <!--   This file is included in the data-require attribute at the top instead of at this point -->
+  <!-- <script type="text/javascript" src="SimpleExerciseTestWithCanvas.js"></script> -->
+
+</html>

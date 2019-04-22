@@ -276,6 +276,51 @@ DESCRIPTION
 
       The alignment of the caption within the page.
 
+.. _iframe:
+
+iframe
+-------
+NAME
+    iframe - embed an HTML page inside a ReST document.
+
+SYNOPSIS::
+
+    .. iframe:: {iframe_src}
+       [:name: {string}]
+       [:height: {number}]
+       [:width: {number}]
+       [:absolute_url:]
+
+DESCRIPTION
+    ``.. iframe: {iframe_src}``
+
+      ``{iframe_src}`` is the path to the embedded page. This will be used to 
+      set the ``src`` attribute of the HTML iframe. By default, 
+      this path must be relative to the OpenDSA home directory. 
+      However, if the ``absolute_url`` option of the directive is present,
+      then the value ``{iframe_src}`` will be directly used as the 
+      ``src`` attribute of  the HTML iframe.
+
+    ``:name: {string}``
+
+      A name for the iframe. This will be used to set the ``id`` attribute of the
+      HTML iframe element. If omitted, then the filename of the embedded page will be used.
+
+    ``:height: {number}``
+
+      The height of the iframe in pixels. If omitted, then a default value will be used.
+
+    ``:width: {number}``
+
+      The width of the iframe in pixels. If omitted, then a default value will be used.
+
+    ``:absolute_url:``
+
+      This option does not take any arguments. If this option is omitted, then 
+      the ``{iframe_src}`` argument will be treated as relative to the OpenDSA home
+      directory. If included, then the ``{iframe_src}`` argument will be treated as an absolute URL.
+
+
 .. _numref:
 
 numref

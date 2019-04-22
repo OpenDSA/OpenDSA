@@ -1,91 +1,43 @@
 $(document).ready(function() {
-"use strict";
+  "use strict";
 
-(function () {
-  var av = new JSAV("tree");
+  (function () {
+    var av = new JSAV("tree");
 
-  var msg = [
-    "Example Tree: adding 12",
-    "add 13",
-    "add 14",
-    "add 23",
-    "add 5",
-    "add 100",
-    "add 20",
-    "add 37",
-    "delete 5",
-    "delete 23",
-    "delete 37",
-    "add 120",
-    "add 1000",
-    "add 230",
-    "add 222",
-    "add 111",
-    "add 225",
-    "add 226",
-    "delete 120"
-  ];
+    av.umsg("Example BP Tree Visualization");
+    av.displayInit();
 
-
-  function step(skip_message, init) {
-    if (!skip_message) {
-      av.umsg(msg.shift());
-    }
-    if (init) {
-      av.displayInit();
-    } else {
-      av.step();
-    }
-  }
-
-  var t = BPTree.newTree(av, 3, null);
-
-  t.add(12, "T");
-  step(false, true);
-  t.add(13, "K");
-  step();
-  t.add(14, "E");
-  step();
-  t.add(23, "Q");
-  step();
-  t.add(5, "F");
-  step();
-  t.add(100, "B");
-  step();
-  t.add(20, "J");
-  step();
-  t.add(37, "N");
-  step()
-  t.delete(5);
-  step();
-  t.delete(23);
-  step();
-  t.delete(37);
-  step();
-  t.add(120, "Y");
-  step();
-  t.add(1000, "B");
-  step();
-  t.add(230, "A");
-  step();
-  t.add(222, "F");
-  step();
-  t.add(111, "O");
-  step();
-  t.add(225, "M");
-  step();
-  t.add(226, "L");
-  step();
-  t.delete(120);
-// t.printTree();
-// step();
-
-  //var n11 = BPTreeNode.newNode(third1, av, 4, false);
-  //var t = BPTree.newTree(av, 4);
-  //console.log(t);
-  //t.tempAdd();
-  av.recorded();
-
-}());
-
+    var t = BPTree.newTree(av, 3, true);
+    t.add(12, "T");
+    t.add(13, "K");
+    t.add(9, "E");
+    t.add(3, "Q");
+    t.add(15, "F");
+    t.add(100, "B");
+    t.add(37, "N");
+    // t.delete(5);
+    // t.delete(23);
+    // t.delete(37);
+    t.add(120, "Y");
+    t.add(1000, "B");
+    t.add(38, "A");
+    t.add(39, "F");
+    // t.add(227, "Y");
+    // t.add(228, "B");
+    // t.add(229, "A");
+    // t.add(230, "F");
+    // t.add(1222, "F");
+    // t.add(1111, "O");
+    // t.add(1225, "M");
+    // t.add(1226, "L");
+    // t.add(1227, "Y");
+    // t.add(1228, "B");
+    // t.add(2227, "Y");
+    // t.add(2228, "B");
+    // t.add(3228, "B");
+    // t.add(3227, "Y");
+    // t.add(3228, "B");
+    // t.delete(120);
+    av.recorded();
+  }());
 });

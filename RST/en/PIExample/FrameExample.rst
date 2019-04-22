@@ -10,17 +10,6 @@
    :topic: Finite Automata
 
 
-NFA to DFA Frames
-=================
-Here is an example that uses the Frames
----------------------------------------
-
-.. inlineav:: NFA2DFAFrames ff
-   :links: AV/PIExample/NFA2DFAFrames.css
-   :scripts: AV/PIExample/NFA2DFAFrames.js DataStructures/PIFrames.js
-   :output: show
-
-
 Non-Deterministic Finite Automata
 =================================
 NFA: Non-Deterministic Finite Automata
@@ -29,4 +18,5 @@ NFA: Non-Deterministic Finite Automata
    :links: AV/PIExample/Frames.css
    :scripts: AV/PIExample/Frames.js DataStructures/PIFrames.js
    :output: show
+
 

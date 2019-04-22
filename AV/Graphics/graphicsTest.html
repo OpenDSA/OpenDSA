@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Testing WebGL container</title>
+  <meta charset="utf-8" />
+   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" /> 
+  <link rel="stylesheet" href="graphicsTest.css" type="text/css" />
+</head>
+
+<body>
+<div id="container">
+  <table class="headerTable">
+    <tr>
+      <td class="headerLeft">
+        <input type="button" id="help" name="help" value="Help" />
+      </td>
+      <td class="headerCenter avTitle">
+        Three dimensional rotations
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+      </td>
+    </tr>
+  </table>
+  <p>
+    Use the buttons to see the effect of accumulated three-dimensional rotations around each of the axes.  
+  </p>
+
+  <form id="ssperform">
+    <p>
+      <input type="button" id="reset" name="reset" value="Reset" />
+      <button id="xButton">Rotate X</button>
+      <button id="yButton">Rotate Y</button>
+      <button id="zButton">Rotate Z</button>
+      <button id="toggleCont">Toggle Continuous Rotation</button>
+    </p>
+  </form>
+
+  <div class="avcontainer">
+    
+    <br>
+    <canvas id="gl-canvas" width="512" height="512">
+      Oops ... your browser does not support the HTML5 canvas element
+    </canvas>
+  </div>
+
+</div>
+
+
+</body>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute  vec4 vPosition;
+attribute  vec4 vColor;
+varying vec4 fColor;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+
+void main() 
+{
+    gl_Position = projectionMatrix*modelViewMatrix*vPosition;
+    fColor = vColor;
+} 
+
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+   
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="../../JSAV/lib/jquery.transit.js"></script>
+
+
+<script src="../../JSAV/lib/raphael.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/odsaUtils.js"></script>
+<script src="../../lib/odsaAV.js"></script>
+
+<script type="text/javascript" src="Common/webgl-utils.js"></script>
+<script type="text/javascript" src="Common/initShaders.js"></script>
+<script type="text/javascript" src="Common/MV.js"></script>
+<script type="text/javascript" src="Common/webgl-debug.js"></script>
+<script type="text/javascript" src="graphicsTest.js"></script>
+
+</html>

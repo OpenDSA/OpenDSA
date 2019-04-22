@@ -157,7 +157,7 @@ algorithm.
 Function ``move(start, goal)`` takes the top ring from Pole
 ``start`` and moves it to Pole ``goal``.
 If ``move`` were to print the values of its parameters,
-then the result of calling ``TOH`` would be a list of
+then the result of calling ``TOHr`` would be a list of
 ring-moving instructions that solves the problem.
 
 .. codeinclude:: Misc/TOH 

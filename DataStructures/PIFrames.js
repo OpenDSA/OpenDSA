@@ -7,7 +7,8 @@
 
         //disable jsavend, as it allows student to jump to last slide
         //automatically enabled by injector once all questions for slideshow have been answered
-        $(".jsavend").css("pointer-events", "none");
+        // $(".jsavend").css("pointer-events", "none");
+        $(".jsavend").css("visibility", "hidden");
 
 
         //edge case: what if first slide has question?
@@ -15,6 +16,7 @@
         $(".jsavforward").click(function() {
                 var buttonGroup = $(this).parent();
                 var parentAV = $(buttonGroup).parent().attr('id')
+                
                 PIFRAMES.callInjector(parentAV, 1);
 
             }),
@@ -39,7 +41,7 @@
                 var buttonGroup = $(this).parent();
                 var parentAV = $(buttonGroup).parent().attr('id')
                 PIFRAMES.callInjector(parentAV)
-
+                
             })
 
     });
@@ -182,13 +184,27 @@
 
                     if ($(".PIFRAMES").find("iframe").length > 0) {
                             $(".jsavoutput.jsavline").css("display", "none");
-                            $(".jsavcanvas").css("width", "900px");
-                            $(".PIFRAMES").css("height", "100%");
-                    } else {
-                        $(".jsavoutput.jsavline").css("display", "table-cell");
-                        $(".jsavcanvas").css("width", "300px");
-                        $(".PIFRAMES").css("height", "");
-                    }
+                            $(".picanvas").css({
+                                "width": "900px",
+                                "height": "600px"
+                            });
+                            $(".PIFRAMES").css({
+                                "width": "100%",
+                                "height": "100%"
+                            });
+                    } 
+                    // else {
+                    //     $(".jsavoutput.jsavline").css({
+                    //         "display": "inline-block",
+                    //         "width": "70%",
+                    //         "vertical-align": "top"
+                    //     });
+                    //     $(".picanvas").css({
+                    //         "width": "0%",
+                    //         "height": "100%"
+                    //     });
+                    //     $(".PIFRAMES").css("height", "");
+                    // }
                 },
 
                 updateSlideCounter: function(jsavControl) {
@@ -222,28 +238,37 @@
                 disableForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
                     $(forwardButton).css("pointer-events", "none");
-
-
+                    $(forwardButton).css("visibility", "hidden");
+                    // $(".jsavforward").off().click(function() {
+                        
+                    //     alert("you must answer the question first")
+        
+                    // })
                 },
 
                 enableForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
                     $(forwardButton).css("pointer-events", "auto");
+                    $(forwardButton).css("visibility", "visible");
 
+                    // $(".jsavforward").click(function() {
+                    //     on()
+        
+                    // })
 
                 },
 
                 disableFastForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavend");
                     $(forwardButton).css("pointer-events", "none");
-
+                    $(forwardButton).css("visibility", "hidden");
 
                 },
 
                 enableFastForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavend");
                     $(forwardButton).css("pointer-events", "auto");
-
+                    $(forwardButton).css("visibility", "visible");
 
                 },
 
@@ -308,9 +333,7 @@
                 // <iframe width="700px" height="500px" src="../../../AV/Development/formal_language/FAEditor.html#"></iframe>
                 buildiFrames: function(question) {
                     var src =  question.src;
-                    var header = question.header;
-                    var className = "embeddedExercise";
-                    var iframe = $(`<iframe width="100%" height="100%" src=${src}></iframe>`);
+                    var iframe = $(`<iframe width="91%" height="600px" src=${src}></iframe>`);
 
                     return iframe;
                 },
@@ -330,7 +353,7 @@
                         //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
                         alert("you have answered the question incorrectly!")
                         this.disableForwardButton();
-
+                        
                     }
                 },
 
@@ -346,7 +369,7 @@
                     this.resizeContainer(0);
                     // this.resizeContainerWidth(0);
                     if ($(`#${this.av_name}`).find('.REVEAL').length) {
-                        
+                    
                         // this.resizeContainer(0);
                         $(`.${this.buttonDiv}`).append(this.revealQuestionButton);
                         var height = $(`.${this.buttonDiv}`).outerHeight();
@@ -355,13 +378,33 @@
                         // this.resizeContainerWidth(4 * width);
                         // this.toggleButtonSpace(height);
                         this.questionSlideListener();
+                        $(".jsavoutput.jsavline").css({
+                            "display": "inline-block",
+                            "width": "60%",                          
+                            // "vertical-align": "top"
+                        });
+                        $(".picanvas").css({
+                            "display": "inline-block",
+                            "width": "39%"
+                        });
+                        $(".jsavcanvas").css({
+                            "min-width": "0px",
+                            "width": "60%",
+                            "overflow": "hidden",
+                            "margin-left": 0
+                        });
                         
-                        $(".jsavcanvas").css("width", "300px");
                     } else {
                         this.updateCanvas(null);
                         // this.resizeContainer(0);
                         this.enableForwardButton();
-                        $(".jsavcanvas").css("width", "0px");
+                        $(".jsavoutput.jsavline").css("width", "100%");
+                        $(".jsavcanvas").css({
+                            "width": "100%",
+                            "overflow-x": "auto",
+                            "margin-left": "auto"
+                        });
+                        // $(".picanvas").css("width", "0px");
                     }
 
                     
@@ -383,6 +426,9 @@
                     var current = this.queue.current;
                     if (!this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])) {
                         this.disableForwardButton();
+                        // if (($(`#${this.av_name}`).find('.REVEAL').length)) {
+                        //     alert("You need to answer the question first");
+                        // }
                     } else {
                         this.enableForwardButton();
                     }
@@ -415,7 +461,7 @@
             return injector;
         },
 
-        //add div to the av_name's jsavcanvas, so that dynamic questions have a hooking point
+        //add div to the av_name's picanvas, so that dynamic questions have a hooking point
         init(av_name, av) {
             var container = $(`#${av_name}`);
 
@@ -427,34 +473,27 @@
                 "class": 'PIFRAMES'
             });
 
-            
-            $(".jsavoutput.jsavline").css({
-                "display": "table-cell"
-            });
-            $(".jsavcanvas").css({
+            $(".picanvas").css({
                 "width": "0px",
-                "height": "600px",
-                "display": "table-cell"
+                "overflow": "hidden"
             });
-            $(qButton).css({
-                "padding-left": "5px"
-                //"display": "table-cell",
-                // "right": 0,
-                // "float": right
-            });
+            // $(qButton).css({
+            //     "padding-left": "5px"
+            // });
             $(question).css({
-                // "margin-left": "20px",
                 "position": "absolute",
-                "width": "100%",
-                // "height": "100%",
-                "overflow": "auto",
-                // "border-left": "1px dotted black"
+                "width": "29%",
+                "overflow": "hidden",
 
             });
 
-            $(".jsavcanvas").append(qButton);
-            $(".jsavcanvas").append(question);
+            // $(".jsavcanvas").append(qButton);
+            // $(".jsavcanvas").append(question);
+            $(container).append(qButton);
+            $(container).append(question);
 
+            $('.SHOWQUESTION,.PIFRAMES').wrapAll('<div class="picanvas"></div>');
+            $(".picanvas").insertBefore($(".jsavcanvas"));
             return this.getQuestions(av_name);
         },
 

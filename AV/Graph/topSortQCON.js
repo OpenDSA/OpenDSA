@@ -121,7 +121,7 @@ function topSortBFS(start) {
   var v=0;
   var ctr=0;
   var cntZero = new Array();
-  jsav.umsg("The \"Nodes\" array lists the courses and the \"Count\" array shows the number of unresolved dependencies of the node directly above it. Dependencies are denoted by incoming edges.");
+  jsav.umsg("The \"Nodes\" array begins with a list of the courses. These are effectively in some random order. The \"Count\" array shows the number of unresolved dependencies for the node directly above it. The number of dependencies is the number of incoming edges.");
   jsav.step();
   for(v=0;v<g.nodeCount();v++)
 	if(Count[v]==0){

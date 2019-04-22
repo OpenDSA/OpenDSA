@@ -1,4 +1,4 @@
-	ifeq ($(OS),Windows_NT)
+ifeq ($(OS),Windows_NT)
 	SHELL=C:/Windows/System32/cmd.exe
 endif
 RM = rm -rf
@@ -160,6 +160,9 @@ PointersCPP: min
 PL: min
 	python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
+Graphics: min
+	python $(CONFIG_SCRIPT) config/Graphics.json --no-lms
+
 PLdev: min
 	python $(CONFIG_SCRIPT) config/PLdev.json --no-lms
 
@@ -187,8 +190,17 @@ CS4104: min
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
+CS2J: min
+	python $(CONFIG_SCRIPT) config/CS2J.json --no-lms
+
+Codio: min
+	python $(CONFIG_SCRIPT) config/Codio.json --no-lms
+
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
+
+CS3J: min
+	python $(CONFIG_SCRIPT) config/CS3J.json --no-lms
 
 CS3C: min
 	python $(CONFIG_SCRIPT) config/CS3C.json --no-lms
