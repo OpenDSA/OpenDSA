@@ -74,12 +74,13 @@ $(document).ready(function() {
     var poly_l = jsav.g.polyline(points_l);
     poly_l.show();
   }
+	var proto = tape.prototype;
 
   //attempt to highlight a particular position, but need access to the tape arr object
-  // function highlightPosition(location){
-  //   arr.unhighlight(this.current);
-  //   arr.highlight(location);
-  // }
+  proto.highlightPosition = function(location){
+    this.arr.unhighlight(this.current);
+    this.arr.highlight(location);
+  }
 
 
   // Add the Tape constructor to the public facing JSAV interface.
