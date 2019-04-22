@@ -287,7 +287,8 @@ var Configuration = function(state, tape) {
 	this.tape = new Tape(tape);
 	// toString returns the state value + the 'viewport' of the tape, to be displayed to the user
 	this.toString = function() {
-		return this.tape.toString();
+		return viewTape(this.tape.getArr());
+		// return this.tape.toString();
 		//return this.state.value() + ' ' + viewTape(this.tape);
 	}
 	this.toID = function() {
@@ -443,36 +444,40 @@ var Tape = function(str) {
 };
 
 var viewTape = function (t) {
-	var arr = new Array(15);    // arbitrary size
-	for (var i = 0; i < 15; i++) {
-		arr[i] = String.fromCharCode(9633);;
-	}
-	i = 7;
-	var temp = t.current;
-	while (temp) {
-		if (i < 0) {break;}
-		arr[i] = temp.value();
-		i--;
-		temp = temp._left;
-	}
-	i = 7;
-	temp = t.current;
-	while (temp) {
-		if (i >= arr.length) {break;}
-		arr[i] = temp.value();
-		i++;
-		temp = temp._right;
-	}
-	var view = "|";
-	for (var i = 0; i < arr.length; i++) {
-		if (i === 7) {
-			view+="<mark>" + arr[i] + "</mark>";
-		} else {
-			view+=arr[i];
-		}
-	}
-	view+="|";
-	return view;
+	//TODO: where to declare the tape visual
+	// var arr = av.ds.tape(av.ds.array(t), 35, 140, "both");
+	return t;
+
+	// var arr = new Array(15);    // arbitrary size
+	// for (var i = 0; i < 15; i++) {
+	// 	arr[i] = String.fromCharCode(9633);;
+	// }
+	// i = 7;
+	// var temp = t.current;
+	// while (temp) {
+	// 	if (i < 0) {break;}
+	// 	arr[i] = temp.value();
+	// 	i--;
+	// 	temp = temp._left;
+	// }
+	// i = 7;
+	// temp = t.current;
+	// while (temp) {
+	// 	if (i >= arr.length) {break;}
+	// 	arr[i] = temp.value();
+	// 	i++;
+	// 	temp = temp._right;
+	// }
+	// var view = "|";
+	// for (var i = 0; i < arr.length; i++) {
+	// 	if (i === 7) {
+	// 		view+="<mark>" + arr[i] + "</mark>";
+	// 	} else {
+	// 		view+=arr[i];
+	// 	}
+	// }
+	// view+="|";
+	// return view;
 };
 
 
