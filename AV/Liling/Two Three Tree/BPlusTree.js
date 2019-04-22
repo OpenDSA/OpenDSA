@@ -145,7 +145,7 @@ $(document).ready(function() {
         trackLeafIndex++;
       }
 
-      (this.jsav).umsg("add " + addInfo);
+      (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): " + "Leaf node is full, the leaf node has to be split, add another empty node to the right.");
       (this.jsav).step();
     }
     //add new value to the left TreeNode
@@ -153,23 +153,24 @@ $(document).ready(function() {
       for(var i = leftSize - 1; i < this.max; i++){
         next.insert(rt.getValue()[i], rt.info[i]);
       }
-      for(var i = this.max - 1; i >= leftSize; i--){
+      for(var i = this.max - 1; i >= leftSize - 1; i--){
         rt.delete(rt.getValue()[i]);
       }
-      for(var i = leftSize - 1;i > addPos; i--){
-        rt.setValue(i, rt.getValue()[i - 1], rt.info[i - 1]);
-      }
-      rt.setValue(addPos, "", information);
       if(this.detail){
         next.addInfoGraph();
-        (this.jsav).umsg("add " + addInfo);
+        (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): " + "because the position we need to add " + addInfo + " is smaller than " + leftSize + " which is the min size of this full node, move the rest of the key-value pair to the new node to make sure the current node has min size after adding key-value pair (" + addInfo + ", " + information + ").");
         (this.jsav).step();
       }
-      rt.setValue(addPos, addInfo, information);
+      rt.insert(addInfo, information);
+      // for(var i = leftSize - 1;i > addPos; i--){
+      //   rt.setValue(i, rt.getValue()[i - 1], rt.info[i - 1]);
+      // }
+      // rt.setValue(addPos, "", information);
+      // rt.setValue(addPos, addInfo, information);
       if(this.detail){
         rt.addInfoGraph();
-        (this.jsav).umsg("add " + addInfo);
-        (this.jsav).step();
+        (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + ").");
+        // (this.jsav).step();
       }
     }
     //add new value to the next TreeNode
@@ -182,15 +183,15 @@ $(document).ready(function() {
       }
       if(this.detail){
         next.addInfoGraph();
-        (this.jsav).umsg("add " + addInfo);
+        (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): " + "because the position we need to add " + addInfo + " is bigger than " + leftSize + " which is the min size of this full node, move the rest of the key-value pair to the new node.");
         (this.jsav).step();
       }
 			next.insert(addInfo, information);
 		}
     if(this.detail){
       next.addInfoGraph();
-      (this.jsav).umsg("add " + addInfo);
-      // (this.jsav).step();
+      (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + ").");
+      (this.jsav).step();
     }
 		return next;
   }
@@ -269,7 +270,7 @@ $(document).ready(function() {
         trackLeafIndex++;
       }
       rt.highlight(false);
-      (this.jsav).umsg("update " + this.update);
+      (this.jsav).umsg("The parent node is full, it has to be split.");
       (this.jsav).step();
     }
     var leftSize = Math.trunc((this.max + 1) / 2);
@@ -287,12 +288,12 @@ $(document).ready(function() {
 			for (var i = leftSize - 1; i > addPos; i--) {
 				rt.setValue(i, rt.getValue()[i - 1], rt.info[i - 1]);
 			}
+      rt.setValue(addPos, this.update, this.updateInfo);
       if(this.detail){
         rt.highlight(false);
-        (this.jsav).umsg("update " + this.update);
+        (this.jsav).umsg("Update key-value pair (" + this.update + "," + this.updateInfo + "): " + "move all the key-value pair after index " + leftSize + " (included) which is the min size in a node to the new parent node and change the new update key-value pair to (" + updateBackUp + "," + updateBackUpInfo + ").");
         (this.jsav).step();
       }
-			rt.setValue(addPos, this.update, this.updateInfo);
 			this.update = updateBackUp;
       this.updateInfo = updateBackUpInfo;
 		} else if (addPos > leftSize) {
@@ -306,7 +307,7 @@ $(document).ready(function() {
         rt.delete(rt.getValue()[i]);
       }
       if(this.detail){
-        (this.jsav).umsg("update " + this.update);
+        (this.jsav).umsg("Update key-value pair (" + this.update + "," + this.updateInfo + "): " + "move all the key-value pair after index " + leftSize + " (but not included) which is the min size in a node to the new parent node and change the new update key-value pair to (" + updateBackUp + "," + updateBackUpInfo + ").");
         (this.jsav).step();
       }
 			this.update = updateBackUp;
@@ -319,7 +320,7 @@ $(document).ready(function() {
         rt.delete(rt.getValue()[i]);
       }
       if(this.detail){
-        (this.jsav).umsg("update " + this.update);
+        (this.jsav).umsg("Update key-value pair (" + this.update + "," + this.updateInfo + "): " + "move all the key-value pair after index " + leftSize + " (included) which is the min size in a node to the new parent node and keep the update key-value pair to (" + this.update + "," + this.updateInfo + ").");
         (this.jsav).step();
       }
 		}
@@ -615,7 +616,7 @@ $(document).ready(function() {
       }
       if(this.detail && this.level != 1){
         rt.highlight(true);
-        (this.jsav).umsg("add " + addInfo);
+        (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): We have found the correct leaf node.");
         (this.jsav).step();
       }
 			var checkAdd = rt.insert(addInfo, information);
@@ -626,7 +627,7 @@ $(document).ready(function() {
         rt.addInfoGraph();
         if(this.detail){
           rt.highlight(false);
-          (this.jsav).umsg("add " + addInfo);
+          (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + ")");
           (this.jsav).step();
         }
 				return rt;
@@ -634,8 +635,8 @@ $(document).ready(function() {
 				// split
         if(this.detail && this.level != 1){
           rt.highlight(false);
-          (this.jsav).umsg("add " + addInfo);
-          (this.jsav).step();
+          // (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): The leaf node has to be split.");
+          // (this.jsav).step();
         }
   			var next = this.split(rt, addInfo, information);
         //add key
@@ -646,6 +647,8 @@ $(document).ready(function() {
         this.updateInfo = next.info[0];//information
 				if (rt == this.root) {
 					var parent = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, false, this.detail); // add new parent node
+          var temp = this.update;
+          var tempInfo = this.updateInfo;
           parent.insert(this.update, this.updateInfo);
           parent.addChildrenInNode(rt);
           parent.addChildrenInNode(next);
@@ -657,11 +660,14 @@ $(document).ready(function() {
           newList[0] = parent;
 					this.list[this.level - 1] = newList;
           if(this.detail){
+            parent.setValue(0, "", "");
             this.printNode();
-            (this.jsav).umsg("add " + addInfo);
+            (this.jsav).umsg("a new internal node is created. This is going to become the new root node.");
             (this.jsav).step();
+            parent.setValue(0, temp, tempInfo);
+            this.printNode();
             this.printArrow(this.aw);
-            (this.jsav).umsg("add " + addInfo);
+            (this.jsav).umsg("Set the key of the internal node and links to the leaf node.");
             (this.jsav).step();
           }
 					return parent;
@@ -679,17 +685,24 @@ $(document).ready(function() {
       if(this.level > lev){
         rt.unhighlight(this.list[lev]);
       }
+			var pos = rt.insertPos(addInfo, 0, rt.size() - 1);
       if(this.detail){
         rt.highlight(true);
-        (this.jsav).umsg("add " + addInfo);
+        if(pos == 0){
+          (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is less or equal than " + rt.value[0] + ", go to the most left child node.");
+        }else if(pos == rt.size_value){
+          (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is bigger than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
+        }else{
+          (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is bigger than " + rt.value[pos - 1] + " and " + addInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+        }
         (this.jsav).step();
       }
-			var pos = rt.insertPos(addInfo, 0, rt.size() - 1);
 			var next = this.insert(rt.getChildren()[pos], addInfo, lev - 1, information); // new child
+      //if create another node
       if (next != rt.getChildren()[pos]) {
         if(this.detail){
           rt.highlight(true);
-          (this.jsav).umsg("add " + addInfo);
+          (this.jsav).umsg("The lowest value in the new node created gets promoted: Update current parent node (insert the update key-value pair (" + this.update + "," + this.updateInfo + "))");
           (this.jsav).step();
         }
 				var checkAdd = rt.insert(this.update, this.updateInfo);
@@ -698,12 +711,9 @@ $(document).ready(function() {
 					this.update = -1;
           this.updateInfo = "";
           if(this.detail){
-            rt.highlight(true);
-            (this.jsav).umsg("add " + addInfo);
-            (this.jsav).step();
             rt.highlight(false);
             this.printTree();
-            (this.jsav).umsg("add " + addInfo);
+            (this.jsav).umsg("Link the leaf node get updated");
             (this.jsav).step();
           }
 					return rt;
@@ -727,20 +737,20 @@ $(document).ready(function() {
   					this.list[this.level - 1] = newList;
             if(this.detail){
               this.printNode();
-              (this.jsav).umsg("add " + addInfo);
+              (this.jsav).umsg("a new internal node is created. This is going to become the new root node.");
               (this.jsav).step();
               this.printArrow(this.aw);
-              (this.jsav).umsg("add " + addInfo);
+              (this.jsav).umsg("Link all the node");
               (this.jsav).step();
             }
 						return parent;
 					}
-          if(this.detail){
+          // if(this.detail){
             // rt.highlight(false);
-            this.printTree();
-            (this.jsav).umsg("add " + addInfo);
-            (this.jsav).step();
-          }
+            // this.printTree();
+            // (this.jsav).umsg("add " + addInfo);
+            // (this.jsav).step();
+          // }
 					return nextNode;
 				}
 			}
@@ -753,7 +763,7 @@ $(document).ready(function() {
     var node = this.insert(this.root, addInfo, this.level, information);
     if(!this.detail){
       this.printTree();
-      (this.jsav).umsg("add " + addInfo);
+      (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + ").");
       (this.jsav).step();
     }
   }

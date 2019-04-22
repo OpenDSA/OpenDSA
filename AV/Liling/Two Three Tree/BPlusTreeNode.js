@@ -277,7 +277,7 @@ $(document).ready(function() {
         if(this.detail){
           this.array.swap(i, i-1);
           this.array.value(i-1, "");
-          (this.jsav).umsg("add " + addInfo);
+          (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): because " + addInfo + " is less than " + this.value[i-1] + ", swap " + this.value[i - 1] + " with right side value to create a space for " + addInfo);
           (this.jsav).step();
         }
       }
