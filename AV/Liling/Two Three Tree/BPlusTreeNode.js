@@ -299,17 +299,19 @@ $(document).ready(function() {
       this.size_value--;
       this.array.value(pos, "");
       if(this.detail && show){
-        (this.jsav).umsg("Delete " + delInfo);
+        (this.jsav).umsg("Delete " + delInfo + ".");
         (this.jsav).step();
       }
       for(var i = pos; i < this.size_value; i++){
         this.setValue(i, this.value[i + 1], this.info[i + 1]); //shift both value and info
         this.array.value(i, this.value[i + 1]);
         if(this.detail && show){
+          (this.jsav).umsg("Swap " + this.value[i + 1] + " with previous empty value to remove the empty space.");
           this.array.swap(i, i+1);
           this.array.value(i+1, "");
-          (this.jsav).umsg("Delete " + delInfo);
-          (this.jsav).step();
+          if(i != this.size_value - 1){
+              (this.jsav).step();
+          }
         }
       }
       this.value.pop();
