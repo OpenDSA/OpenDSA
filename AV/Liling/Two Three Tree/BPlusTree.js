@@ -151,7 +151,7 @@ $(document).ready(function() {
     //add new value to the left TreeNode
     if(addPos < leftSize){
       for(var i = leftSize - 1; i < this.max; i++){
-        next.insert(rt.getValue()[i], rt.info[i]);
+        next.insert(rt.getValue()[i], rt.info[i], true);
       }
       for(var i = this.max - 1; i >= leftSize - 1; i--){
         rt.delete(rt.getValue()[i]);
@@ -161,7 +161,7 @@ $(document).ready(function() {
         (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): " + "because the position we need to add " + addInfo + " is smaller than " + leftSize + " which is the min size of this full node, move the rest of the key-value pair to the new node to make sure the current node has min size after adding key-value pair (" + addInfo + ", " + information + ").");
         (this.jsav).step();
       }
-      rt.insert(addInfo, information);
+      rt.insert(addInfo, information, true);
       // for(var i = leftSize - 1;i > addPos; i--){
       //   rt.setValue(i, rt.getValue()[i - 1], rt.info[i - 1]);
       // }
@@ -176,7 +176,7 @@ $(document).ready(function() {
     //add new value to the next TreeNode
     else {
 			for (var i = leftSize; i < this.max; i++) {
-				next.insert(rt.getValue()[i], rt.info[i]);
+				next.insert(rt.getValue()[i], rt.info[i], true);
 			}
       for(var i = this.max - 1; i >= leftSize; i--){
         rt.delete(rt.getValue()[i]);
@@ -186,7 +186,7 @@ $(document).ready(function() {
         (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): " + "because the position we need to add " + addInfo + " is bigger than " + leftSize + " which is the min size of this full node, move the rest of the key-value pair to the new node.");
         (this.jsav).step();
       }
-			next.insert(addInfo, information);
+			next.insert(addInfo, information, true);
 		}
     if(this.detail){
       next.addInfoGraph();
@@ -280,7 +280,7 @@ $(document).ready(function() {
 			var updateBackUp = rt.getValue()[leftSize - 1];
       var updateBackUpInfo = rt.info[leftSize - 1];
 			for (var i = leftSize; i < this.max; i++) {
-				next.insert(rt.getValue()[i], rt.info[i]);
+				next.insert(rt.getValue()[i], rt.info[i], true);
 			}
       for(var i = this.max - 1; i >= leftSize; i--){
         rt.delete(rt.getValue()[i]);
@@ -300,9 +300,9 @@ $(document).ready(function() {
 			var updateBackUp = rt.getValue()[leftSize];
       var updateBackUpInfo = rt.info[leftSize];
 			for (var i = leftSize + 1; i < this.max; i++) {
-				next.insert(rt.getValue()[i], rt.info[i]);
+				next.insert(rt.getValue()[i], rt.info[i], true);
 			}
-			next.insert(this.update, this.updateInfo);
+			next.insert(this.update, this.updateInfo, true);
       for(var i = this.max - 1; i >= leftSize; i--){
         rt.delete(rt.getValue()[i]);
       }
@@ -314,7 +314,7 @@ $(document).ready(function() {
       this.updateInfo = updateBackUpInfo;
 		} else {
 			for (var i = leftSize; i < this.max; i++) {
-				next.insert(rt.getValue()[i], rt.info[i]);
+				next.insert(rt.getValue()[i], rt.info[i], true);
 			}
       for(var i = this.max - 1; i >= leftSize; i--){
         rt.delete(rt.getValue()[i]);
@@ -392,7 +392,7 @@ $(document).ready(function() {
 				var biggest = this.leafValue[index - 1].getValue()[biggestPos];
         var biggestInfo = this.leafValue[index - 1].info[biggestPos];
 				this.leafValue[index - 1].delete(biggest);
-				rt.insert(biggest,biggestInfo);
+				rt.insert(biggest,biggestInfo, false);
         rt.array.value(rt.size_value, rt.value[0] + "<br><div class='leaf-node-value'>" + rt.info[0] + "</div>");
 
 			}
@@ -402,7 +402,7 @@ $(document).ready(function() {
 				var smallest = this.leafValue[index + 1].getValue()[0];
         var smallestInfo = this.leafValue[index + 1].info[0];
 				this.leafValue[index + 1].delete(smallest);
-				rt.insert(smallest, smallestInfo);
+				rt.insert(smallest, smallestInfo, false);
         var len = rt.size_value;
         rt.array.value(len - 1, rt.value[len - 1] + "<br><div class='leaf-node-value'>" + rt.info[len - 1] + "</div>");
 				return this.leafValue[index + 1];
@@ -412,7 +412,7 @@ $(document).ready(function() {
 				var prev = this.leafValue[index - 1];
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
-					prev.insert(del, rt.info[i]);
+					prev.insert(del, rt.info[i], false);
 				}
 				rt.clearValue();
         prev.addInfoGraph();
@@ -422,7 +422,7 @@ $(document).ready(function() {
 				var next = this.leafValue[index + 1];
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
-					next.insert(del, rt.info[i]);
+					next.insert(del, rt.info[i], false);
 				}
 				rt.clearValue();
         next.addInfoGraph();
@@ -470,7 +470,7 @@ $(document).ready(function() {
 			var biggest = parentValue[index - 1].getValue()[biggestPos];
 			parentValue[index - 1].delete(biggest);
 			rt.clearValue();
-			rt.insert(this.getSmallest(rt.getChildren()[0]), this.getSmallestInfo(rt.getChildren()[0]));
+			rt.insert(this.getSmallest(rt.getChildren()[0]), this.getSmallestInfo(rt.getChildren()[0]), false);
 			// deal with children
 			var moveChild = parentValue[index - 1].getChildren()[biggestPos + 1];
 			parentValue[index - 1].popChild();
@@ -499,7 +499,7 @@ $(document).ready(function() {
 				parentValue[index + 1].setChildren(j, parentValue[index + 1].getChildren()[j + 1]);
 			}
       parentValue[index + 1].popChild();
-			rt.insert(this.getSmallest(rt.getChildren()[1]), this.getSmallestInfo(rt.getChildren()[1]));
+			rt.insert(this.getSmallest(rt.getChildren()[1]), this.getSmallestInfo(rt.getChildren()[1]), false);
 			var node = parentValue[index + 1];
 			while (node.size_child > 0) {
 				node = node.getChildren()[0];
@@ -512,7 +512,7 @@ $(document).ready(function() {
 			var prev = parentValue[index - 1];
 			// deal with value
 			rt.clearValue();
-			prev.insert(this.getSmallest(rt.getChildren()[0]), this.getSmallestInfo(rt.getChildren()[0]));
+			prev.insert(this.getSmallest(rt.getChildren()[0]), this.getSmallestInfo(rt.getChildren()[0]), false);
 			// deal with children
 			prev.addChildrenInNodeIndex(prev.getChildrenSize(), rt.getChildren()[0]);
 			rt.clearChildren();
@@ -523,7 +523,7 @@ $(document).ready(function() {
 			// deal with value
 			rt.clearValue();
       var neededInfo = this.getSmallestInfo(parentValue[index + 1].getChildren()[0]);
-			parentValue[index + 1].insert(this.getSmallest(parentValue[index + 1].getChildren()[0]), neededInfo);
+			parentValue[index + 1].insert(this.getSmallest(parentValue[index + 1].getChildren()[0]), neededInfo, false);
 			// deal with children
 			var oriSize = parentValue[index + 1].getChildrenSize();
 			for (var j = oriSize; j > 0; j--) {
@@ -563,7 +563,7 @@ $(document).ready(function() {
 					rt.popChild();
 					rt.clearValue();
 					for (var j = 1; j < upperBound - 1; j++) {
-						rt.insert(this.getSmallest(rt.getChildren()[j]), this.getSmallestInfo(rt.getChildren()[j]));
+						rt.insert(this.getSmallest(rt.getChildren()[j]), this.getSmallestInfo(rt.getChildren()[j]), false);
 					}
 				} else {// borrow from the right
 					if (pos + 1 < rt.getChildrenSize() && rt.getChildren()[pos + 1] == change) {
@@ -619,7 +619,7 @@ $(document).ready(function() {
         (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): We have found the correct leaf node.");
         (this.jsav).step();
       }
-			var checkAdd = rt.insert(addInfo, information);
+			var checkAdd = rt.insert(addInfo, information, true);
 			if (checkAdd) {
 				this.update = -1;
         this.updateInfo = "";
@@ -649,7 +649,7 @@ $(document).ready(function() {
 					var parent = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, false, this.detail); // add new parent node
           var temp = this.update;
           var tempInfo = this.updateInfo;
-          parent.insert(this.update, this.updateInfo);
+          parent.insert(this.update, this.updateInfo, true);
           parent.addChildrenInNode(rt);
           parent.addChildrenInNode(next);
 					this.root = parent;
@@ -705,7 +705,7 @@ $(document).ready(function() {
           (this.jsav).umsg("The lowest value in the new node created gets promoted: Update current parent node (insert the update key-value pair (" + this.update + "," + this.updateInfo + "))");
           (this.jsav).step();
         }
-				var checkAdd = rt.insert(this.update, this.updateInfo);
+				var checkAdd = rt.insert(this.update, this.updateInfo, true);
 				if (checkAdd) {
 					this.addChildren(rt, next, false, null);
 					this.update = -1;
@@ -725,7 +725,7 @@ $(document).ready(function() {
 					this.addChildren(rt, next, true, nextNode);
 					if (rt == this.root) {
 						var parent = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, false, this.detail); // add new parent node
-            parent.insert(this.update, this.updateInfo);
+            parent.insert(this.update, this.updateInfo, true);
             parent.addChildrenInNode(rt);
 						parent.addChildrenInNodeIndex(1, nextNode);
 						this.root = parent;
@@ -774,13 +774,13 @@ $(document).ready(function() {
         this.remove(this.root, delInfo, this.level);
         this.printTree();
       } else {
-        this.root.delete(delInfo);
+        this.root.delete2(delInfo);
       }
     } else {
        alert ("Element " + delInfo + " is not found!");
     }
     if(!this.detail){
-      (this.jsav).umsg("delete " + delInfo);
+      (this.jsav).umsg("Delete " + delInfo);
       (this.jsav).step();
     }
   }
