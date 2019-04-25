@@ -149,6 +149,19 @@ $(document).ready(function() {
 
   //help method for value
 
+  //parameter jsarr is the array in javascript
+  BPTNodeproto.checkSame = function(jsarr){
+    if(this.size_value == jsarr.length){
+      for(var i = 0; i < jsarr.length; i++){
+        if(this.value[i] != jsarr[i]){
+          return false;
+        }
+      }
+      return true;
+    }
+    return false;
+  }
+
   BPTNodeproto.size = function(){
     return this.size_value;
   }
@@ -300,7 +313,9 @@ $(document).ready(function() {
       this.array.value(pos, "");
       if(this.detail && show){
         (this.jsav).umsg("Delete " + delInfo + ".");
-        (this.jsav).step();
+        if(pos != this.size_value){
+            (this.jsav).step();
+        }
       }
       for(var i = pos; i < this.size_value; i++){
         this.setValue(i, this.value[i + 1], this.info[i + 1]); //shift both value and info
