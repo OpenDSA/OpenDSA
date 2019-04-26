@@ -345,9 +345,9 @@ Call By Name
 In macro expansion, the body of the macro is spliced into the caller's
 code after the actual parameters have been substituted (without being
 evaluated) for the formal parameters. Therefore, the whole body of the
-macro is executed in the caller's context.
+macro is executed in the caller's context (i.e., the caller's environment).
 
-In call by name, no code is spliced into the caller's code. Instead,
+In call-by-name, no code is spliced into the caller's code. Instead,
 the body of the function is executed in its own context, but the
 actual parameters, which are substituted for the formal parameters,
 *are* evaluated in the caller's context.
@@ -383,7 +383,7 @@ assignment that comprised your answer for the first step.
 
 
 This problem will help you review the differences among *call by
-copy-restore*, *call by macro*, and *call by name*. To earn credit
+copy-restore*, *call by macro*, and *call-by-name*. To earn credit
 for it, you must complete this randomized problem correctly three
 times in a row.
 
