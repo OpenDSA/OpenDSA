@@ -355,7 +355,7 @@ actual parameters, which are substituted for the formal parameters,
 Call-by-name differs from macro expansion in that only the parameters
 are evaluated in the caller's context, not the whole body of the
 function.  Step through a few slide shows of some call-by-name
-examples to see what the ramifications of this.  When you are
+examples to see what the ramifications of this are.  When you are
 confident that you understand the subtleties involved, try the
 proficiency exercise that follows.
 
