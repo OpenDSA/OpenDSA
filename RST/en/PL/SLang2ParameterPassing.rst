@@ -237,7 +237,7 @@ yourself with the following proficiency exercise.
 
 
 We will finish this section on macro-style parameter passing by
-considering the use of macros in C++, where a parameter like *a* and
+considering the use of macros in C++, where a parameter like *a* or
 *b* in the example below must be wrapped in parentheses when it is
 actually used in the body of the macro.  Try to determine the output
 of the main program in each example.
