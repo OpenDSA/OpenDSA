@@ -379,7 +379,7 @@ potentially new pointer destination resulting from the computation and
 assignment that comprised your answer for the first step.
 
 .. avembed:: AV/PL/paramPassingByNamePRO.html pe
-   :long_name: Macro Proficiency Exercise
+   :long_name: ByName Proficiency Exercise
 
 
 This problem will help you review the differences among *call by
@@ -391,7 +391,7 @@ times in a row.
 ..    :long_name: CR vs Macro vs Name
 
 .. avembed:: Exercises/PL/CallByCRVsMacroVsName.html ka
-   :long_name: CR vs Macro vs Name
+   :long_name: ByCR vs ByMacro vs ByName
 
 Comprehensive review of the five methods studied so far
 -------------------------------------------------------
@@ -405,7 +405,7 @@ and *call-by-name*. To earn credit for it, you must complete this
 randomized problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/CallByAllFive.html ka
-   :long_name: RP set #31, question #2
+   :long_name: ByVal, ByRef, ByCR, ByMacro, ByName
 
 .. .. avembed:: Exercises/PL/RP31part2.html ka
 ..    :long_name: RP set #31, question #2
