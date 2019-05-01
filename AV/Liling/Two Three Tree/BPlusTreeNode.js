@@ -4,7 +4,6 @@ $(document).ready(function() {
 
   function newNode(valueArr, jsav, max, isLeaf, detail){
     var arr = jsav.ds.array(valueArr, {left: "0", top: "0"});
-    // arr.element.addClass("internal-node");
     if (isLeaf) {
       arr.element.addClass("leaf-node");
     } else {
@@ -190,7 +189,6 @@ $(document).ready(function() {
   BPTNodeproto.setValue = function(index, newValue, information){
     this.value[index] = newValue;
     this.array.value(index, newValue);
-    //set infor
     this.info[index] = information;
   }
 

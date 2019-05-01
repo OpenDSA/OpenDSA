@@ -1,6 +1,19 @@
 $(document).ready(function() {
   "use strict";
 
+  /*
+   * Create a new tree:
+   * BPTree.newTree(av, sizeOfNode, detail);
+   * Add a value:
+   * t.add(key, value);
+   * Add without detail (use for find and delete)
+   * t.addWithoutGraphic(key, value);
+   * Delete a value:
+   * t.delete(key);
+   * find value:
+   * t.findDetail(t.root, key, t.root);
+   */
+
   (function () {
     var av = new JSAV("tree");
 
@@ -25,7 +38,6 @@ $(document).ready(function() {
     var av = new JSAV("find");
 
     av.umsg("Example BP Tree Visualization - Find");
-    // av.displayInit();
 
     var t = BPTree.newTree(av, 3, false);
     t.addWithoutGraphic(25, "T");
@@ -50,7 +62,6 @@ $(document).ready(function() {
     var av = new JSAV("delete");
 
     av.umsg("Example BP Tree Visualization - Delete");
-    // av.displayInit();
 
     var t = BPTree.newTree(av, 3, false);
     t.addWithoutGraphic(27, "T");

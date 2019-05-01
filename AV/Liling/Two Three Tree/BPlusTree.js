@@ -28,7 +28,6 @@ $(document).ready(function() {
     this.canvas = $(this.root.array.element).parent();//get canvas width
     this.w = $(this.canvas).innerWidth();
     this.aw = $(this.root.array.element).outerWidth() / 2; //half of the outerWidth
-    // this.ah = $(this.root.array.element).outerHeight(); //height
   }
 
   var BPTreeproto = tree.prototype;
@@ -163,15 +162,9 @@ $(document).ready(function() {
         (this.jsav).step();
       }
       rt.insert(addInfo, information);
-      // for(var i = leftSize - 1;i > addPos; i--){
-      //   rt.setValue(i, rt.getValue()[i - 1], rt.info[i - 1]);
-      // }
-      // rt.setValue(addPos, "", information);
-      // rt.setValue(addPos, addInfo, information);
       if(this.detail){
         rt.addInfoGraph();
         (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + ").");
-        // (this.jsav).step();
       }
     }
     //add new value to the next TreeNode
@@ -716,7 +709,6 @@ $(document).ready(function() {
 					if (change != mergeNode) {
             if(this.detail && rt == this.root){
               rt.highlight(false);
-              // (this.jsav).umsg("Unhighlight the current node");
             }
 						return mergeNode;
 					}
@@ -735,7 +727,6 @@ $(document).ready(function() {
           }
           if(this.detail && rt == this.root){
             rt.highlight(false);
-            // (this.jsav).umsg("Unhighlight the current node");
           }
 					return change;
 				}
@@ -758,7 +749,6 @@ $(document).ready(function() {
       }
       if(this.detail && rt == this.root){
         rt.highlight(false);
-        // (this.jsav).umsg("Unhighlight the current node");
       }
 			return null;
 		}
