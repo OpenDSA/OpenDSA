@@ -13,12 +13,12 @@ $(document).ready(function() {
   arr.css(true, {"border-radius":"1px"});
 
   arr.css(9, {"border-right": "none"});
-  
-  var arr2 = av.ds.tape(['1', '2', '3'], 35, 20, "right");
-  var arr3 = av.ds.tape(['1', '2', '3'], 35, 60, "left");
-  var arr4 = av.ds.tape(['1', '2', '3'], 35, 100, "both");
-  var arr5 = av.ds.tape(['1', '2', '3'], 35, 140, "none");
-  
+
+  var arr2 = av.ds.tape(['1', '2', '3'], 35, 20, "right", "undefined");
+  var arr3 = av.ds.tape(['1', '2', '3'], 35, 60, "left", "undefined");
+  var arr4 = av.ds.tape(['1', '2', '3'], 35, 100, "both", "undefined");
+  var arr5 = av.ds.tape(['1', '2', '3'], 35, 140, "none", "undefined");
+
 
   av.displayInit();
   av.recorded();

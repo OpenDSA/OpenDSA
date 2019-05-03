@@ -1,5 +1,5 @@
 // Support for creating tapes for autometa visualization. (extends JSAV array class)
-// Written by Ziyou Shang, Kaiyang Zhang
+// Written by Ziyou Shang, Kaiyang Zhang, Galina Belolipetski
 
 $(document).ready(function() {
   "use strict";
@@ -19,14 +19,12 @@ $(document).ready(function() {
 
     // set the constructors
     this.jsav = jsav;
-    this.x_coord = x_coord;
-    this.y_coord = y_coord;
-    this.direction = direction;
+    this.x_coord = x_coord; //x coordinate of placement
+    this.y_coord = y_coord; //y coordinate of placement
+    this.direction = direction; // in which direction tape extends
     this.options = options;
-    this.current = index;
+    this.current = index; //the location to highlight
     this.arr = null;
-    //this.consider;
-    //this.accept;
 
     if ($.isArray(element)) {
       // x & y control
@@ -37,12 +35,12 @@ $(document).ready(function() {
       var top_arr = String(y_coord - 16) + "px";
       this.arr = jsav.ds.array(element, {left: left_arr, top: top_arr});
 
-      console.log(this.current);
+      //unhighlights everything
       for (var i = 0; i < this.arr.size(); i++) {
         this.arr.unhighlight(i);
       }
       if (this.current > -1 && this.current < this.arr.size()) {
-        this.arr.highlight(this.current); //highlights the current position, 0
+        this.arr.highlight(this.current); //highlights the current position
       }
 
       //right and left points to draw the "infinite sign" with poly-lines
@@ -98,13 +96,14 @@ $(document).ready(function() {
   var proto = Tape.prototype;
 
   //attempt to highlight a particular position, but need access to the tape arr object
-  //not necessary, but kept here
+  //not necessary, but kept here for the future; this method can be used if the
+  // tape does not have an initial highlighed location passed in
+  // unhighlights everything and highlights the necessary position
   proto.highlightPosition = function(loc) {
     if (this.current !== "undefined") {
       for (var i = 0; i < this.arr.size(); i++) {
         this.arr.unhighlight(i);
       }
-      // alert("stop here");
     }
     if (loc !== "undefined") {
       this.arr.highlight(loc);
