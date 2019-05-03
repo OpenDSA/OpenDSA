@@ -24,6 +24,7 @@ $(document).ready(function() {
     this.direction = direction;
     this.options = options;
     this.current = 0;
+    this.arr = null;
     //this.consider;
     //this.accept;
 
@@ -34,9 +35,9 @@ $(document).ready(function() {
       //default position of array's top center and call JSAV array constructor
       var left_arr = String(x_coord) + "px";
       var top_arr = String(y_coord - 16) + "px";
-      var arr = jsav.ds.array(element, {left: left_arr, top: top_arr});
+      this.arr = jsav.ds.array(element, {left: left_arr, top: top_arr});
 
-      arr.highlight(this.current); //highlights the current position, 0
+      this.arr.highlight(this.current); //highlights the current position, 0
 
       //right and left points to draw the "infinite sign" with poly-lines
       var points = [[0, 0], [15, 0], [11, 3], [21, 7], [5, 12], [9, 20], [28, 28], [0, 28]];
@@ -48,7 +49,7 @@ $(document).ready(function() {
       if (direction === "both") { plot_right(jsav, right, y_coord, points); plot_left(jsav, x_coord, y_coord, points_l); }
 
       // change the style (shape) of the JSAV array class
-      arr.css(true, {"border-radius": "0px"});
+      this.arr.css(true, {"border-radius": "0px"});
     }
   }
 
@@ -74,13 +75,13 @@ $(document).ready(function() {
     var poly_l = jsav.g.polyline(points_l);
     poly_l.show();
   }
-	var proto = tape.prototype;
+  var proto = Tape.prototype;
 
   //attempt to highlight a particular position, but need access to the tape arr object
-  proto.highlightPosition = function(location){
+  proto.highlightPosition = function(loc) {
     this.arr.unhighlight(this.current);
-    this.arr.highlight(location);
-  }
+    this.arr.highlight(loc);
+  };
 
 
   // Add the Tape constructor to the public facing JSAV interface.

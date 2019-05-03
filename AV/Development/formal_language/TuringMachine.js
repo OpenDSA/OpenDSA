@@ -29,7 +29,7 @@ tm.addTransition = function(start, end, toRead, toWrite, direction) {
 
 // traverse on a given input string (can do nondeterministic traversal)
 tm.play = function(inputString) {
-	var currentStates = [new Configuration(this.initial, inputString)],
+	var currentStates = [new Configuration(this.initial, inputString, this.jsav)],
 			cur,
 			counter = 0,
 			configView = [];		// configurations to display in the message box
@@ -38,7 +38,7 @@ tm.play = function(inputString) {
 	for (var j = 0; j < currentStates.length; j++) {
 		configView.push(currentStates[j].toString());
 	}
-	this.jsav.umsg(configView.join(' | '));
+	// this.jsav.umsg(configView.join(' | '));
 	this.initial.highlight();
 	this.jsav.displayInit();
 
@@ -69,7 +69,7 @@ tm.play = function(inputString) {
 		}
 		// this.jsav.umsg();
 		//av.ds.tape(configView, 35, 20, "right");
-		this.jsav.umsg(configView.join(' | '));
+		//this.jsav.umsg(configView.join(' | '));
 		this.jsav.step();
 	}
 	for (var k = 0; k < currentStates.length; k++) {
@@ -123,7 +123,7 @@ tm.traverse = function(currentStates) {
 				//how should this be handled?
 				if (tapeValue === w[0]) {
 					console.log("My tape value is: " + tapeValue);
-					var nextConfig = new Configuration(next, currentState.tape);
+					var nextConfig = new Configuration(next, currentState.tape, this.jsav);
 					if (w[1] !== square){
 						nextConfig.tape.value(w[1]);
 					}
@@ -132,7 +132,7 @@ tm.traverse = function(currentStates) {
 					break;
 				}
 				else if ((tapeValue === undefined) && w[0] === square){
-					var nextConfig = new Configuration(next, currentState.tape);
+					var nextConfig = new Configuration(next, currentState.tape, this.jsav);
 					if (w[1] !== square){
 						nextConfig.tape.value(w[1]);
 					}
@@ -279,7 +279,7 @@ tm.initFromXML = function(text) {
 
 
 // Configuration class
-var Configuration = function(state, tape) {
+var Configuration = function(state, tape, av) {
 	this.state = state;
 	console.log("My state: " + state.value());
 	console.log("My tape: " + tape); //tape is undefined
@@ -287,8 +287,8 @@ var Configuration = function(state, tape) {
 	this.tape = new Tape(tape);
 	// toString returns the state value + the 'viewport' of the tape, to be displayed to the user
 	this.toString = function() {
-		return viewTape(this.tape.getArr());
-		// return this.tape.toString();
+		return viewTape(this.tape.getArr(), av);
+		//return this.tape.toString();
 		//return this.state.value() + ' ' + viewTape(this.tape);
 	}
 	this.toID = function() {
@@ -328,7 +328,7 @@ var Tape = function(str) {
 	// "use strict";
 	// this.arr = [];
 	// this.current = 0;
-	// this.currentIndex;
+	this.currentIndex = 0;
 	// console.log("I'm getting it" + str);
 
 	if (typeof str === 'string') {
@@ -348,6 +348,7 @@ var Tape = function(str) {
 		//this.arr = this.copy(str.getArr());
 		this.arr = str.getArr();
 		this.current = this.arr[this.currentIndex];  // the current symbol
+
 		               // the current position
 	}
 
@@ -443,10 +444,12 @@ var Tape = function(str) {
 	}
 };
 
-var viewTape = function (t) {
+var viewTape = function (t, av) {
 	//TODO: where to declare the tape visual
 	// var arr = av.ds.tape(av.ds.array(t), 35, 140, "both");
-	return t;
+	var arr = av.ds.tape(av.ds.array(t), 35, 140, "both");
+	arr.highlightPosition(this.current);
+	return arr;
 
 	// var arr = new Array(15);    // arbitrary size
 	// for (var i = 0; i < 15; i++) {
