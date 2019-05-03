@@ -3,13 +3,13 @@
       "en": {
         "q1": {
           "type": "multiple",
-          "question":"Now we need to determine the transition from state $$Q_3$$, and $$q_4$$ with the alphabet a. Select the appropriate state:",
+          "question":"Now we need to determine the transition from state q_3, and q_4 with the alphabet a. Select the appropriate state:",
           "answer": "q_4",
           "choices": ["q_0, q_1, q_2", "q_1, q_2, q_3","q_3, q_4, q_5" ,"q_4"]
         },
         "q2": {
           "type": "multiple",
-          "question":"What is the trnsition from state $$q_3$$ with the alphabet a?",
+          "question":"What is the trnsition from state q_3 with the alphabet a?",
           "answer": "No transition",
           "choices": ["q_5, q_1", "q_1, q_5, q_6","No transition"]
         },

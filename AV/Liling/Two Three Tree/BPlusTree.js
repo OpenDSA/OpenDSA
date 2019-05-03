@@ -23,11 +23,11 @@ $(document).ready(function() {
     this.list[0] = this.leafValue;
     this.update = -1;
     this.updateInfo = "";
+    this.checkUpdateMergeLeaf = false;
     this.edge = [];
     this.canvas = $(this.root.array.element).parent();//get canvas width
     this.w = $(this.canvas).innerWidth();
     this.aw = $(this.root.array.element).outerWidth() / 2; //half of the outerWidth
-    // this.ah = $(this.root.array.element).outerHeight(); //height
   }
 
   var BPTreeproto = tree.prototype;
@@ -162,15 +162,9 @@ $(document).ready(function() {
         (this.jsav).step();
       }
       rt.insert(addInfo, information);
-      // for(var i = leftSize - 1;i > addPos; i--){
-      //   rt.setValue(i, rt.getValue()[i - 1], rt.info[i - 1]);
-      // }
-      // rt.setValue(addPos, "", information);
-      // rt.setValue(addPos, addInfo, information);
       if(this.detail){
         rt.addInfoGraph();
         (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + ").");
-        // (this.jsav).step();
       }
     }
     //add new value to the next TreeNode
@@ -385,40 +379,74 @@ $(document).ready(function() {
   //rt will be the treeNode
   BPTreeproto.mergeLeaf = function(rt) {
 		if (rt.size() < this.max / 2) { // need borrow or merge
+      this.checkUpdateMergeLeaf = true;
 			var index = this.getPosInList(this.leafValue, rt);
 			// Borrow from Left
 			if (index != 0 && (this.leafValue[index - 1].size() - 1) >= this.max / 2) {
+        if(this.detail){
+          (this.jsav).umsg("The size of the current node is less than the half of the maximum size of one node, however, its left side sibling has enough to give one key-value pair to the current node.");
+          (this.jsav).step();
+        }
 				var biggestPos = this.leafValue[index - 1].size() - 1;
 				var biggest = this.leafValue[index - 1].getValue()[biggestPos];
         var biggestInfo = this.leafValue[index - 1].info[biggestPos];
 				this.leafValue[index - 1].delete(biggest);
 				rt.insert(biggest,biggestInfo);
-        rt.array.value(rt.size_value, rt.value[0] + "<br><div class='leaf-node-value'>" + rt.info[0] + "</div>");
-
+        rt.array.value(0, rt.value[0] + "<br><div class='leaf-node-value'>" + rt.info[0] + "</div>");
+        rt.addInfoGraph();
+        if(this.detail){
+          (this.jsav).umsg("Borrow key-value pair (" + biggest + ", " + biggestInfo + ") from the left side sibling to the current node.");
+          (this.jsav).step();
+        }
 			}
 			// Borrow from Right
 			else if (index != this.leafValue.length - 1
 					&& (this.leafValue[index + 1].size() - 1) >= (this.max / 2)) {
+        if(this.detail){
+          (this.jsav).umsg("The size of the current node is less than the half of the maximum size of one node, however, its right side sibling has enough to give one key-value pair to the current node. (We cannot borrow from the left sibling, because after borrowing, left side sibling will have the size of node less than a half of the maximum size of a node.)");
+          (this.jsav).step();
+        }
 				var smallest = this.leafValue[index + 1].getValue()[0];
         var smallestInfo = this.leafValue[index + 1].info[0];
 				this.leafValue[index + 1].delete(smallest);
-				rt.insert(smallest, smallestInfo);
+        this.leafValue[index + 1].addInfoGraph();
+        rt.insert(smallest, smallestInfo);
         var len = rt.size_value;
         rt.array.value(len - 1, rt.value[len - 1] + "<br><div class='leaf-node-value'>" + rt.info[len - 1] + "</div>");
-				return this.leafValue[index + 1];
+        if(this.detail){
+          (this.jsav).umsg("Borrow key-value pair (" + smallest + ", " + smallestInfo + ") from the right side sibling to the current node.");
+          (this.jsav).step();
+        }
+        if(this.detail){
+          rt.highlight(false);
+        }
+        this.leafValue[index + 1].addInfoGraph();
+        return this.leafValue[index + 1];
 			}
 			// Merge to the Left - Deal with the Value
 			else if (index != 0) {
+        if(this.detail){
+          (this.jsav).umsg("The size of the current node is less than the half of the maximum size of one node, however, we cannot borrow key-value pair from either of the left or right sibling node, so we need to merge current node to the left side sibling.");
+          (this.jsav).step();
+        }
 				var prev = this.leafValue[index - 1];
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
-					prev.insert(del, rt.info[i]);
+					prev.insert(del, rt.info[i], false);
 				}
 				rt.clearValue();
         prev.addInfoGraph();
+        if(this.detail){
+          (this.jsav).umsg("Move key-value pairs to the left sibling node.");
+          (this.jsav).step();
+        }
 			}
 			// Merge to the Right - Deal with the Value
 			else {
+        if(this.detail){
+          (this.jsav).umsg("The size of the current node is less than the half of the maximum size of one node, however, we cannot borrow key-value pair from either of the left or right sibling node, and also cannot merge to the left side sibling, so we need to merge current node to the right side sibling.");
+          (this.jsav).step();
+        }
 				var next = this.leafValue[index + 1];
 				for (var i = 0; i < rt.size(); i++) {
 					var del = rt.getValue()[i];
@@ -426,8 +454,15 @@ $(document).ready(function() {
 				}
 				rt.clearValue();
         next.addInfoGraph();
+        if(this.detail){
+          (this.jsav).umsg("Move key-value pairs to the right sibling node.");
+          (this.jsav).step();
+        }
 			}
 		}
+    if(this.detail){
+      rt.highlight(false);
+    }
 		return rt;
 	}
 
@@ -470,7 +505,7 @@ $(document).ready(function() {
 			var biggest = parentValue[index - 1].getValue()[biggestPos];
 			parentValue[index - 1].delete(biggest);
 			rt.clearValue();
-			rt.insert(this.getSmallest(rt.getChildren()[0]), this.getSmallestInfo(rt.getChildren()[0]));
+			rt.insert(this.getSmallest(rt.getChildren()[0]), this.getSmallestInfo(rt.getChildren()[0]), false);
 			// deal with children
 			var moveChild = parentValue[index - 1].getChildren()[biggestPos + 1];
 			parentValue[index - 1].popChild();
@@ -484,6 +519,13 @@ $(document).ready(function() {
 			while (node.size_child > 0) {
 				node = node.getChildren()[0];
 			}
+      if(this.detail){
+        this.printTree();
+        rt.highlight(true);
+        (this.jsav).umsg("After remove the empty node, current node only has one child, and since left sibling has more than 2 child, we will borrow one child from left sibling.");
+        (this.jsav).step();
+        this.checkUpdateMergeLeaf = false;
+      }
 			return node;
 		}
 		// Borrow from Right
@@ -499,12 +541,19 @@ $(document).ready(function() {
 				parentValue[index + 1].setChildren(j, parentValue[index + 1].getChildren()[j + 1]);
 			}
       parentValue[index + 1].popChild();
-			rt.insert(this.getSmallest(rt.getChildren()[1]), this.getSmallestInfo(rt.getChildren()[1]));
+			rt.insert(this.getSmallest(rt.getChildren()[1]), this.getSmallestInfo(rt.getChildren()[1]), false);
 			var node = parentValue[index + 1];
 			while (node.size_child > 0) {
 				node = node.getChildren()[0];
 			}
 			this.updateParent(node, node.getValue()[0]);
+      if(this.detail){
+        this.printTree();
+        rt.highlight(true);
+        (this.jsav).umsg("After remove the empty node, current node only has one child, and since left sibling only has 2 children and right sibling has more than 2 children, we will borrow one child from right sibling.");
+        (this.jsav).step();
+        this.checkUpdateMergeLeaf = false;
+      }
 			return null;
 		}
 		// Merge to the Left - Deal with the Value
@@ -512,10 +561,17 @@ $(document).ready(function() {
 			var prev = parentValue[index - 1];
 			// deal with value
 			rt.clearValue();
-			prev.insert(this.getSmallest(rt.getChildren()[0]), this.getSmallestInfo(rt.getChildren()[0]));
-			// deal with children
+			prev.insert(this.getSmallest(rt.getChildren()[0]), this.getSmallestInfo(rt.getChildren()[0]), false);
+      if(this.detail){
+        this.printTree();
+        rt.highlight(true);
+        (this.jsav).umsg("After remove the empty node, current node only has one child, and since both left and right sibling only has 2 children, we will merge current internal node to left sibling.");
+        (this.jsav).step();
+        this.checkUpdateMergeLeaf = false;
+      }
+      // deal with children
 			prev.addChildrenInNodeIndex(prev.getChildrenSize(), rt.getChildren()[0]);
-			rt.clearChildren();
+      rt.clearChildren();
 			return rt;
 		}
 		// Merge to the Right - Deal with the Value
@@ -523,8 +579,15 @@ $(document).ready(function() {
 			// deal with value
 			rt.clearValue();
       var neededInfo = this.getSmallestInfo(parentValue[index + 1].getChildren()[0]);
-			parentValue[index + 1].insert(this.getSmallest(parentValue[index + 1].getChildren()[0]), neededInfo);
+			parentValue[index + 1].insert(this.getSmallest(parentValue[index + 1].getChildren()[0]), neededInfo, false);
 			// deal with children
+      if(this.detail){
+        this.printTree();
+        rt.highlight(true);
+        (this.jsav).umsg("After remove the empty node, current node only has one child, and since both left and right sibling only has 2 children, and there is no left sibling, we will merge current internal node to right sibling.");
+        (this.jsav).step();
+        this.checkUpdateMergeLeaf = false;
+      }
 			var oriSize = parentValue[index + 1].getChildrenSize();
 			for (var j = oriSize; j > 0; j--) {
 				parentValue[index + 1].setChildren(j, parentValue[index + 1].getChildren()[j - 1]);
@@ -538,12 +601,53 @@ $(document).ready(function() {
 
 	BPTreeproto.remove = function(rt, delInfo, lev) {
 		if (rt.isLeaf()) { // leaf node
-			rt.delete(delInfo);
+      if(this.detail){
+        rt.unhighlight(this.list[lev]);
+        rt.highlight(true);
+        (this.jsav).umsg("We have found the correct leaf node, now delete " + delInfo);
+        (this.jsav).step();
+      }
+      if(this.level > 1){
+        rt.delete(delInfo);
+      }else{
+          rt.delete(delInfo, true);
+      }
       rt.addInfoGraph();
 			return this.mergeLeaf(rt);
 		} else { // parent node
-			var pos = rt.findHelp(delInfo, 0, rt.size() - 1);
+      var pos = rt.findHelp(delInfo, 0, rt.size() - 1);
+      if(this.detail){
+        if(rt != this.root){
+          rt.unhighlight(this.list[lev]);
+          if(pos == 0){
+            (this.jsav).umsg("Delete " + delInfo + ": Because " + delInfo + " is less than " + rt.value[0] + ", go to the most left child node.");
+          }else if(pos == rt.size_value){
+            (this.jsav).umsg("Delete " + delInfo + ": Because " + delInfo + " is bigger or equal than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
+          }else{
+            (this.jsav).umsg("Delete " + delInfo + ": Because " + delInfo + " is bigger than " + rt.value[pos - 1] + " and " + delInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+          }
+        }else {
+          if(pos == 0){
+            (this.jsav).umsg("Delete " + delInfo + ": First look at the root node, because " + delInfo + " is less than " + rt.value[0] + ", go to the most left child node.");
+          }else if(pos == rt.size_value){
+            (this.jsav).umsg("Delete " + delInfo + ": First look at the root node, because " + delInfo + " is bigger or equal than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
+          }else{
+            (this.jsav).umsg("Delete " + delInfo + ": First look at the root node, because " + delInfo + " is bigger than " + rt.value[pos - 1] + " and " + delInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+          }
+        }
+        rt.highlight(true);
+        (this.jsav).step();
+      }
+      if(lev > 2 && this.detail){
+        var tempuse = [];
+        for(var k = 0; k < rt.size_value; k++){
+          tempuse[k] = rt.value[k];
+        }
+      }
 			var change = this.remove(rt.getChildren()[pos], delInfo, lev - 1); // changed child
+      if(this.detail){
+        rt.unhighlight(this.list[lev - 2]);
+      }
       if (change != null) {
 				var mergeNode = change;
 				if (change.size() == 0) { // update parent rt after merging
@@ -563,23 +667,49 @@ $(document).ready(function() {
 					rt.popChild();
 					rt.clearValue();
 					for (var j = 1; j < upperBound - 1; j++) {
-						rt.insert(this.getSmallest(rt.getChildren()[j]), this.getSmallestInfo(rt.getChildren()[j]));
+						rt.insert(this.getSmallest(rt.getChildren()[j]), this.getSmallestInfo(rt.getChildren()[j]), false);
 					}
+          if(this.detail && lev > 2 && !rt.checkSame(tempuse)){
+            this.printTree();
+            rt.highlight(true);
+            (this.jsav).umsg("Update internal node.");
+            (this.jsav).step();
+          }
+          if(this.detail && this.checkUpdateMergeLeaf && rt.size_child != 1){
+            this.printTree();
+            rt.highlight(true);
+            (this.jsav).umsg("Remove the empty node and update the parent node");
+            (this.jsav).step();
+            this.checkUpdateMergeLeaf = false;
+          }
 				} else {// borrow from the right
 					if (pos + 1 < rt.getChildrenSize() && rt.getChildren()[pos + 1] == change) {
 						pos++;
 					}
+          if(this.detail && this.checkUpdateMergeLeaf){
+            this.printTree();
+            rt.highlight(true);
+            (this.jsav).umsg("Update the parent node.");
+            (this.jsav).step();
+            this.checkUpdateMergeLeaf = false;
+          }
 				}
 				if (rt == this.root && rt.getChildrenSize() == 1) {
           rt.hide();
 					this.root = rt.getChildren()[0];
           this.list.pop();
           this.level--;
+          if(this.detail){
+            (this.jsav).umsg("Since the root node is empty and only has one child, remove the root node, and set the only child to be root.");
+          }
 					return this.root;
 				} else if (rt.getChildrenSize() == 1) { // need borrow and merge
 					return this.mergeParent(rt, lev);
 				} else if (change.size() == 0) {
 					if (change != mergeNode) {
+            if(this.detail && rt == this.root){
+              rt.highlight(false);
+            }
 						return mergeNode;
 					}
 				} else if (pos != 0 && !rt.isLeaf() && rt.child[0].isLeaf()) {
@@ -590,12 +720,35 @@ $(document).ready(function() {
         }else if(pos != 0){
 					rt.setValue(pos - 1, change.getValue()[0], change.info[0]);
 				} else {
+          if(this.detail && lev > 2 && !rt.checkSame(tempuse)){
+            rt.highlight(true);
+            (this.jsav).umsg("Update internal node.");
+            (this.jsav).step();
+          }
+          if(this.detail && rt == this.root){
+            rt.highlight(false);
+          }
 					return change;
 				}
 			}else if(rt.size_child > pos + 1){
         var small = this.getSmallest(rt.getChildren()[pos + 1]);
         var smallestInfo = this.getSmallestInfo(rt.getChildren()[pos + 1]);
+        if(this.detail){
+          var temp = rt.value[pos];
+          if(temp != small){
+            rt.highlight(true);
+            (this.jsav).umsg("update Internal node");
+          }
+        }
 				rt.setValue(pos, small, smallestInfo);
+      }
+      if(this.detail && lev > 2 && !rt.checkSame(tempuse)){
+        rt.highlight(true);
+        (this.jsav).umsg("Update internal node.");
+        (this.jsav).step();
+      }
+      if(this.detail && rt == this.root){
+        rt.highlight(false);
       }
 			return null;
 		}
@@ -635,8 +788,6 @@ $(document).ready(function() {
 				// split
         if(this.detail && this.level != 1){
           rt.highlight(false);
-          // (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): The leaf node has to be split.");
-          // (this.jsav).step();
         }
   			var next = this.split(rt, addInfo, information);
         //add key
@@ -672,11 +823,6 @@ $(document).ready(function() {
           }
 					return parent;
 				}
-        // if(this.detail){
-        //   this.printTree();
-        //   (this.jsav).umsg("add " + addInfo);
-        //   (this.jsav).step();
-        // }
 				return next;
 			}
 		}
@@ -688,12 +834,22 @@ $(document).ready(function() {
 			var pos = rt.insertPos(addInfo, 0, rt.size() - 1);
       if(this.detail){
         rt.highlight(true);
-        if(pos == 0){
-          (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is less or equal than " + rt.value[0] + ", go to the most left child node.");
-        }else if(pos == rt.size_value){
-          (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is bigger than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
+        if(rt == this.root){
+          if(pos == 0){
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is less or equal than " + rt.value[0] + ", go to the most left child node.");
+          }else if(pos == rt.size_value){
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is bigger than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
+          }else{
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is bigger than " + rt.value[pos - 1] + " and " + addInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+          }
         }else{
-          (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is bigger than " + rt.value[pos - 1] + " and " + addInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+          if(pos == 0){
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is less or equal than " + rt.value[0] + ", go to the most left child node.");
+          }else if(pos == rt.size_value){
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is bigger than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
+          }else{
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is bigger than " + rt.value[pos - 1] + " and " + addInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+          }
         }
         (this.jsav).step();
       }
@@ -745,18 +901,43 @@ $(document).ready(function() {
             }
 						return parent;
 					}
-          // if(this.detail){
-            // rt.highlight(false);
-            // this.printTree();
-            // (this.jsav).umsg("add " + addInfo);
-            // (this.jsav).step();
-          // }
 					return nextNode;
 				}
 			}
 			return rt;
 		}
 	}
+
+  BPTreeproto.addWithoutGraphic = function(addInfo, information) {
+    var node = this.insert(this.root, addInfo, this.level, information);
+  }
+
+  BPTreeproto.findDetail = function(rt, findInfo, last){
+    if(rt.isLeaf()){
+      last.highlight(false);
+      rt.highlight(true);
+      (this.jsav).umsg("We have find the correct leaf node.");
+      (this.jsav).step();
+    }else{
+      if(rt == this.root){
+        rt.unhighlight(this.list[0]);
+      }
+      var pos = rt.insertPos(findInfo, 0, rt.size() - 1);
+      rt.highlight(true);
+      if(pos == 0){
+        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is less or equal than " + rt.value[0] + ", go to the most left child node.");
+      }else if(pos == rt.size_value){
+        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is bigger than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
+      }else{
+        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is bigger than " + rt.value[pos - 1] + " and " + findInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+      }
+      (this.jsav).step();
+      if(rt != this.root){
+        last.highlight(false);
+      }
+      this.findDetail(rt.getChildren()[pos], findInfo, rt);
+    }
+  }
 
   //following two functions are for ADD and DELETE in the B+Tree
   BPTreeproto.add = function(addInfo, information, detail) {
@@ -771,16 +952,20 @@ $(document).ready(function() {
   BPTreeproto.delete = function(delInfo) {
     if (this.find(this.root, delInfo)) {
       if (this.leafValue.length > 1) {
+        if(this.detail){
+          (this.jsav).umsg("Delete " + delInfo + ": First we need to find the leaf node with matching key.");
+          (this.jsav).step();
+        }
         this.remove(this.root, delInfo, this.level);
         this.printTree();
       } else {
-        this.root.delete(delInfo);
+        this.root.delete(delInfo, true);
       }
     } else {
        alert ("Element " + delInfo + " is not found!");
     }
     if(!this.detail){
-      (this.jsav).umsg("delete " + delInfo);
+      (this.jsav).umsg("Delete " + delInfo + ".");
       (this.jsav).step();
     }
   }

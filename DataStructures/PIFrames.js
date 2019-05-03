@@ -274,7 +274,7 @@
 
                 alertMessage: function() {
 
-                    var message = `<p class="REVEAL">You must answer the question to proceed forward. Click Show Question ----------------------------------------------------------------------------</p>`;
+                    var message = `<p class="REVEAL">You must answer the question to proceed forward. Click Show Question</p>`;
                     return message;
                 },
 

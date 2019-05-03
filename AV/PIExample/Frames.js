@@ -8,12 +8,12 @@ $(document).ready(function() {
         interpret = config.interpreter, // get the interpreter
         code = config.code;             // get the code object
     var goNext = false;
-    av.umsg("First Information Check how long this can be -------------------------------------------------------------------------------------------------------------------");
+    av.umsg("First Information");
     // var q = av.question("TF", "Understand the given information", {correct: true, falseLabel: "No", trueLabel: "Yes"});
     // var answer = q.show();
     // alert(answer);
     av.step();
-    av.umsg("Second Information Check how long this can be -------------------------------------------------------------------------------------------------------------------");
+    av.umsg("Second Information");
     av.step();
     av.umsg(injector.injectQuestion("q1"));
     av.step();

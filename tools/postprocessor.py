@@ -178,7 +178,7 @@ def update_TermDef(glossary_file, terms_dict):
     i += 1
 
 
-triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
+triple_up = re.compile(r'^((\.\.[\/\\])+)')
 def break_up_sections(path, module_data, config):
   print(path)
   book_name = config.book_name
@@ -222,8 +222,9 @@ def break_up_sections(path, module_data, config):
   for tag_name, tag_url in TAGS+[('div', 'data-frame-src')]:
     for a_tag in soup(tag_name):
       if a_tag.has_attr(tag_url):
-        if triple_up.match(a_tag[tag_url]):
-          a_tag[tag_url] = '/OpenDSA/' + a_tag[tag_url][len('../../../../../../'):]
+        match = triple_up.match(a_tag[tag_url])
+        if match:
+          a_tag[tag_url] = '/OpenDSA/' + a_tag[tag_url][len(match.group(0)):]
         elif a_tag[tag_url].startswith('_static/'):
           a_tag[tag_url] = '/OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
         elif a_tag[tag_url].startswith('_images/'):

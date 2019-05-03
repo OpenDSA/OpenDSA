@@ -117,12 +117,10 @@ tm.traverse = function(currentStates) {
 			for (var i = 0; i < weight.length; i++) {
 				weight[i] = toColonForm(weight[i]);
 				var w = weight[i].split(':');
-				console.log(w[0]);
 				//TODO: the issue is in here, there's not a proper way of handling
 				// whether we go back to the proper location
 				//how should this be handled?
 				if (tapeValue === w[0]) {
-					console.log("My tape value is: " + tapeValue);
 					var nextConfig = new Configuration(next, currentState.tape, this.jsav);
 					if (w[1] !== square){
 						nextConfig.tape.value(w[1]);
@@ -140,7 +138,6 @@ tm.traverse = function(currentStates) {
 					nextStates.push(nextConfig);
 					break;
 				}
-				console.log("whatever");
 			}
 		}
 	}
@@ -287,7 +284,7 @@ var Configuration = function(state, tape, av) {
 	this.tape = new Tape(tape);
 	// toString returns the state value + the 'viewport' of the tape, to be displayed to the user
 	this.toString = function() {
-		return viewTape(this.tape.getArr(), av);
+		this.tape.viewTape(this.tape.getArr(), av);
 		//return this.tape.toString();
 		//return this.state.value() + ' ' + viewTape(this.tape);
 	}
@@ -325,7 +322,7 @@ tmTrans.getWeight = function() {
 	 as well as the beginning of the string.
  */
 var Tape = function(str) {
-	// "use strict";
+	"use strict";
 	// this.arr = [];
 	// this.current = 0;
 	this.currentIndex = 0;
@@ -401,9 +398,7 @@ var Tape = function(str) {
 		// }
 		//else{
 			this.currentIndex+=1;
-			console.log("updated currentIndex: " + this.currentIndex);
 			this.current = this.arr[this.currentIndex];
-			console.log(this.current);
 			return this.current;
 			//TODO: highlight?
 			// this.object.highlight(current);
@@ -433,55 +428,21 @@ var Tape = function(str) {
 	// Move the tape and read the symbol
 	this.move = function (str) {
 		if (str === "L") {
-			console.log("going left");
 			return this.goLeft();
 		} else if (str === "R") {
-			console.log("going right");
 			return this.goRight();
 		} else if (str === "S") {
 			return this.current;
 		}
 	}
+
+	this.viewTape = function (t, av) {
+		var arr = av.ds.tape(t, 325, 30, "both", this.currentIndex);
+		return arr;
+	}
 };
 
-var viewTape = function (t, av) {
-	//TODO: where to declare the tape visual
-	// var arr = av.ds.tape(av.ds.array(t), 35, 140, "both");
-	var arr = av.ds.tape(av.ds.array(t), 35, 140, "both");
-	arr.highlightPosition(this.current);
-	return arr;
 
-	// var arr = new Array(15);    // arbitrary size
-	// for (var i = 0; i < 15; i++) {
-	// 	arr[i] = String.fromCharCode(9633);;
-	// }
-	// i = 7;
-	// var temp = t.current;
-	// while (temp) {
-	// 	if (i < 0) {break;}
-	// 	arr[i] = temp.value();
-	// 	i--;
-	// 	temp = temp._left;
-	// }
-	// i = 7;
-	// temp = t.current;
-	// while (temp) {
-	// 	if (i >= arr.length) {break;}
-	// 	arr[i] = temp.value();
-	// 	i++;
-	// 	temp = temp._right;
-	// }
-	// var view = "|";
-	// for (var i = 0; i < arr.length; i++) {
-	// 	if (i === 7) {
-	// 		view+="<mark>" + arr[i] + "</mark>";
-	// 	} else {
-	// 		view+=arr[i];
-	// 	}
-	// }
-	// view+="|";
-	// return view;
-};
 
 
 	// if the tape is initialized using a string, writes the string to the new tape

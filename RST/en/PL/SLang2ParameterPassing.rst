@@ -237,7 +237,7 @@ yourself with the following proficiency exercise.
 
 
 We will finish this section on macro-style parameter passing by
-considering the use of macros in C++, where a parameter like *a* and
+considering the use of macros in C++, where a parameter like *a* or
 *b* in the example below must be wrapped in parentheses when it is
 actually used in the body of the macro.  Try to determine the output
 of the main program in each example.
@@ -345,9 +345,9 @@ Call By Name
 In macro expansion, the body of the macro is spliced into the caller's
 code after the actual parameters have been substituted (without being
 evaluated) for the formal parameters. Therefore, the whole body of the
-macro is executed in the caller's context.
+macro is executed in the caller's context (i.e., the caller's environment).
 
-In call by name, no code is spliced into the caller's code. Instead,
+In call-by-name, no code is spliced into the caller's code. Instead,
 the body of the function is executed in its own context, but the
 actual parameters, which are substituted for the formal parameters,
 *are* evaluated in the caller's context.
@@ -355,7 +355,7 @@ actual parameters, which are substituted for the formal parameters,
 Call-by-name differs from macro expansion in that only the parameters
 are evaluated in the caller's context, not the whole body of the
 function.  Step through a few slide shows of some call-by-name
-examples to see what the ramifications of this.  When you are
+examples to see what the ramifications of this are.  When you are
 confident that you understand the subtleties involved, try the
 proficiency exercise that follows.
 
@@ -379,11 +379,11 @@ potentially new pointer destination resulting from the computation and
 assignment that comprised your answer for the first step.
 
 .. avembed:: AV/PL/paramPassingByNamePRO.html pe
-   :long_name: Macro Proficiency Exercise
+   :long_name: ByName Proficiency Exercise
 
 
 This problem will help you review the differences among *call by
-copy-restore*, *call by macro*, and *call by name*. To earn credit
+copy-restore*, *call by macro*, and *call-by-name*. To earn credit
 for it, you must complete this randomized problem correctly three
 times in a row.
 
@@ -391,7 +391,7 @@ times in a row.
 ..    :long_name: CR vs Macro vs Name
 
 .. avembed:: Exercises/PL/CallByCRVsMacroVsName.html ka
-   :long_name: CR vs Macro vs Name
+   :long_name: ByCR vs ByMacro vs ByName
 
 Comprehensive review of the five methods studied so far
 -------------------------------------------------------
@@ -405,7 +405,7 @@ and *call-by-name*. To earn credit for it, you must complete this
 randomized problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/CallByAllFive.html ka
-   :long_name: RP set #31, question #2
+   :long_name: ByVal, ByRef, ByCR, ByMacro, ByName
 
 .. .. avembed:: Exercises/PL/RP31part2.html ka
 ..    :long_name: RP set #31, question #2

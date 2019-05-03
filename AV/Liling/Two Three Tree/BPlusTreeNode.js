@@ -4,7 +4,6 @@ $(document).ready(function() {
 
   function newNode(valueArr, jsav, max, isLeaf, detail){
     var arr = jsav.ds.array(valueArr, {left: "0", top: "0"});
-    // arr.element.addClass("internal-node");
     if (isLeaf) {
       arr.element.addClass("leaf-node");
     } else {
@@ -149,6 +148,19 @@ $(document).ready(function() {
 
   //help method for value
 
+  //parameter jsarr is the array in javascript
+  BPTNodeproto.checkSame = function(jsarr){
+    if(this.size_value == jsarr.length){
+      for(var i = 0; i < jsarr.length; i++){
+        if(this.value[i] != jsarr[i]){
+          return false;
+        }
+      }
+      return true;
+    }
+    return false;
+  }
+
   BPTNodeproto.size = function(){
     return this.size_value;
   }
@@ -177,7 +189,6 @@ $(document).ready(function() {
   BPTNodeproto.setValue = function(index, newValue, information){
     this.value[index] = newValue;
     this.array.value(index, newValue);
-    //set infor
     this.info[index] = information;
   }
 
@@ -259,7 +270,7 @@ $(document).ready(function() {
      return pos;
    }
 
-  BPTNodeproto.insert = function(addInfo, information){
+  BPTNodeproto.insert = function(addInfo, information, show){
     if(this.isFull()){
       return false;
     }else if(this.size_value == 0){
@@ -274,7 +285,7 @@ $(document).ready(function() {
         this.array.value(i, this.value[i - 1]);
         //shift info array
         this.info[i] = this.info[i - 1];
-        if(this.detail){
+        if(this.detail&& show){
           this.array.swap(i, i-1);
           this.array.value(i-1, "");
           (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): because " + addInfo + " is less than " + this.value[i-1] + ", swap " + this.value[i - 1] + " with right side value to create a space for " + addInfo);
@@ -287,7 +298,8 @@ $(document).ready(function() {
     }
   }
 
-  BPTNodeproto.delete = function(delInfo){
+  //no details show delete
+  BPTNodeproto.delete = function(delInfo, show){
     var pos = -1;
     for(var i = 0; i < this.size_value; i++){
       if(this.value[i] == delInfo){
@@ -296,9 +308,24 @@ $(document).ready(function() {
     }
     if(pos != -1){
       this.size_value--;
+      this.array.value(pos, "");
+      if(this.detail && show){
+        (this.jsav).umsg("Delete " + delInfo + ".");
+        if(pos != this.size_value){
+            (this.jsav).step();
+        }
+      }
       for(var i = pos; i < this.size_value; i++){
         this.setValue(i, this.value[i + 1], this.info[i + 1]); //shift both value and info
         this.array.value(i, this.value[i + 1]);
+        if(this.detail && show){
+          (this.jsav).umsg("Swap " + this.value[i + 1] + " with previous empty value to remove the empty space.");
+          this.array.swap(i, i+1);
+          this.array.value(i+1, "");
+          if(i != this.size_value - 1){
+              (this.jsav).step();
+          }
+        }
       }
       this.value.pop();
       this.info.pop(); //pop info from array
@@ -307,6 +334,7 @@ $(document).ready(function() {
     }
     return false;
   }
+
 
   // Publicize the public functions
   var BPTreeNode = {};
