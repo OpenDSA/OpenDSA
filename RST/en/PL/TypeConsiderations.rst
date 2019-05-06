@@ -38,7 +38,7 @@ Examples of Type-related Considerations in Programming Languages
 
 Following are examples in JavaScript, Python, and Java.  Think about
 each one of them and how the particular language handles the typing
-considerations it pertaining to the program.  Discuss this from the
+considerations pertaining to the program.  Discuss this from the
 perspective of the terms in the bullet list above.
       
 **Consider the following JavaScript program**
