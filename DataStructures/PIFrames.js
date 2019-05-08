@@ -237,8 +237,11 @@
                 },
                 disableForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
-                    $(forwardButton).css("pointer-events", "none");
-                    $(forwardButton).css("visibility", "hidden");
+                    $(forwardButton).css({
+                        "pointer-events": "none",
+                        "background-color": "silver"
+                    });
+                    // $(forwardButton).css("visibility", "hidden");
                     // $(".jsavforward").off().click(function() {
                         
                     //     alert("you must answer the question first")
@@ -248,8 +251,11 @@
 
                 enableForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
-                    $(forwardButton).css("pointer-events", "auto");
-                    $(forwardButton).css("visibility", "visible");
+                    $(forwardButton).css({
+                        "pointer-events": "auto",
+                        "background-color": "white"
+                    });
+                    // $(forwardButton).css("visibility", "visible");
 
                     // $(".jsavforward").click(function() {
                     //     on()
@@ -260,15 +266,21 @@
 
                 disableFastForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavend");
-                    $(forwardButton).css("pointer-events", "none");
-                    $(forwardButton).css("visibility", "hidden");
+                    $(forwardButton).css({
+                        "pointer-events": "none",
+                        "background-color": "silver"
+                    });
+                    // $(forwardButton).css("visibility", "hidden");
 
                 },
 
                 enableFastForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavend");
-                    $(forwardButton).css("pointer-events", "auto");
-                    $(forwardButton).css("visibility", "visible");
+                    $(forwardButton).css({
+                        "pointer-events": "auto",
+                        "background-color": "white"
+                    });
+                    // $(forwardButton).css("visibility", "visible");
 
                 },
 
