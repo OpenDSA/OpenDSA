@@ -340,9 +340,7 @@
                     return form.append(html.join(''));
                 },
 
-                // <iframe id="bubblesortAV_iframe" src="../../../AV/Sorting/bubblesortAV.html?selfLoggingEnabled=false&amp;localMode=true&amp;module=BubbleSort&amp;JOP-lang=en&amp;JXOP-code=java&amp;scoringServerEnabled=false&amp;threshold=1&amp;points=0.0&amp;required=False" class="embeddedExercise" width="950" height="650" data-showhide="show" scrolling="no" style="width: 792px; height: 582px; position: relative; top: 0px;">Your browser does not support iframes.</iframe>
-                // ../../../AV/Sorting/bubblesortAV.html?selfLoggingEnabled=false&amp;localMode=true&amp;module=BubbleSort&amp;JOP-lang=en&amp;JXOP-code=java&amp;scoringServerEnabled=false&amp;threshold=1&amp;points=0.0&amp;required=False
-                // <iframe width="700px" height="500px" src="../../../AV/Development/formal_language/FAEditor.html#"></iframe>
+                
                 buildiFrames: function(question) {
                     var src =  question.src;
                     var iframe = $(`<iframe width="91%" height="600px" src=${src}></iframe>`);
@@ -356,6 +354,8 @@
                     if (this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])) {
                         this.enableForwardButton();
                         alert("you have answered the question correctly!")
+                        $('input[type=submit]').remove()
+                        $(".PIFRAMES").append(`<p>Correct!</p>`)
 
                         //the last question in the slideshow has been answered correctly, so enable the jsavend button
                         if (current == (this.queue.elements.length - 1)) {
@@ -383,7 +383,8 @@
                     if ($(`#${this.av_name}`).find('.REVEAL').length) {
                     
                         // this.resizeContainer(0);
-                        $(`.${this.buttonDiv}`).append(this.revealQuestionButton);
+                        // $(`.${this.buttonDiv}`).append(this.revealQuestionButton);
+                        PIFRAMES.revealQuestion(av_name);
                         var height = $(`.${this.buttonDiv}`).outerHeight();
                         var width = $(`.${this.buttonDiv}`).outerWidth();
                         //this.resizeContainer(4 * height);
