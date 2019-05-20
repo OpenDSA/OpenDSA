@@ -33,6 +33,21 @@ external_tools_urls = {
           "url": "https://codeworkout.cs.vt.edu/gym/workouts/embed",
           "width": 1000,
           "height": 900
+    },
+    "mastery-grid-jsparsons-python": {
+          "url": "https://pitt-acos.herokuapp.com/html/jsparsons/jsparsons-python/",
+          "width": 1000,
+          "height": 900
+    },
+    "mastery-grid-java-animations": {
+          "url": "https://pitt-acos.herokuapp.com/html/jsvee/jsvee-java/",
+          "width": 1000,
+          "height": 900
+    },
+    "mastery-grid-python-animations": {
+          "url": "https://pitt-acos.herokuapp.com/html/jsvee/jsvee-python/",
+          "width": 1000,
+          "height": 900
     }
 }
 
