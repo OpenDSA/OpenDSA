@@ -107,43 +107,42 @@ ae_adl_ifelse
 Explanation of if else statements to check if a number is even or odd
 
 .. extrtoolembed:: 'ae_adl_ifelse'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_ifelifelse
 -----------------------
 Explanation of else if statements
 
 .. extrtoolembed:: 'ae_adl_ifelifelse'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_nested_if
 -----------------
 Explanation of nested if statements
 
 .. extrtoolembed:: 'ae_adl_nested_if'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_while
 -----------------------
 Demonstration of while loop
 
 .. extrtoolembed:: 'ae_adl_while'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_for
 -----------------------
 Demonstration of for loop
 
 .. extrtoolembed:: 'ae_adl_for'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_strings
 -----------------------
 Explanation of string concatenation and use of length function
 
 .. extrtoolembed:: 'ae_adl_strings'
-  :learning_tool: mastery-grid-python-animations
-
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_lists1
 -----------------------
@@ -157,42 +156,42 @@ ae_adl_lists2
 Demonstration of looping through the list
 
 .. extrtoolembed:: 'ae_adl_lists2'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_lists3
 -----------------------
 Multiplying each element in list by a constant
 
 .. extrtoolembed:: 'ae_adl_lists3'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_format1
 -----------------
 Demonstration of strings formatting using format function
 
 .. extrtoolembed:: 'ae_adl_format1'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_format2
 -----------------------
 Demonstration of formatting floating point numbers us- ing format function
 
 .. extrtoolembed:: 'ae_adl_format2'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_findmax
 -----------------------
 Finding the maximum element in the list
 
 .. extrtoolembed:: 'ae_adl_findmax'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_functions1
 -----------------------
 Use of basic functions.
 
 .. extrtoolembed:: 'ae_adl_functions1'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_functions2
 -----------------------
@@ -206,49 +205,49 @@ ae_adl_functions3
 Use of multiple functions where return value of one function is passed as an input parameter to the second function
 
 .. extrtoolembed:: 'ae_adl_functions3'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_recursion
 -----------------------
 Explanation of recursion using the factorial program
 
 .. extrtoolembed:: 'ae_adl_recursion'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_dict1
 -----------------
 Explanation of the working of Dictionaries in Python
 
 .. extrtoolembed:: 'ae_adl_dict1'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_dict2
 -----------------------
 Changing values in Python Dictionaries
 
 .. extrtoolembed:: 'ae_adl_dict2'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_dict3
 -----------------------
 Demonstration of looping through Dictionaries to find the maximum value
 
 .. extrtoolembed:: 'ae_adl_dict3'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_objects1
 -----------------------
 Explanation of basic Python Objects
 
 .. extrtoolembed:: 'ae_adl_objects1'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_objects2
 -----------------------
 Explanation of Python Objects by defining a complex class
 
 .. extrtoolembed:: 'ae_adl_objects2'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_objects3
 -----------------------
@@ -262,63 +261,63 @@ ae_python_intro
 Add two values and assign the result to variable dollars.
 
 .. extrtoolembed:: 'ae_python_intro'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_assignment
 -----------------------
 Explanation of how an assignment operator works
 
 .. extrtoolembed:: 'ae_python_assignment'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_input
 -----------------
 Use of two important built-in functions. The function input is used to read data from the user and print is used to print out the given values.
 
 .. extrtoolembed:: 'ae_python_input'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_float
 -----------------------
 Explanation of how type conversion works in Python.
 
 .. extrtoolembed:: 'ae_python_float'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_if
 -----------------------
 Explanation of how boolean values True and False can be used together with an if statement.
 
 .. extrtoolembed:: 'ae_python_if'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_while
 -----------------------
 Another explanation of while loop with if condition
 
 .. extrtoolembed:: 'ae_python_while'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_for
 -----------------------
 Another explanation of the for loop
 
 .. extrtoolembed:: 'ae_python_for'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_function
 -----------------------
 Working of functions. How the parameter passing and the return value work.
 
 .. extrtoolembed:: 'ae_python_function'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_list
 -----------------------
 Using lists with functions
 
 .. extrtoolembed:: 'ae_python_list'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_split
 -----------------------
@@ -334,14 +333,14 @@ ae_python_dict
 Another animation of using a dictionary in Python
 
 .. extrtoolembed:: 'ae_python_dict'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_file
 -----------------------
 Explanation of how we can read the contents of a file.
 
 .. extrtoolembed:: 'ae_python_file'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_class1
 -----------------
@@ -349,60 +348,60 @@ Create two Bus instances and call methods to change and query the state of the
 object.
 
 .. extrtoolembed:: 'ae_python_class1'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_python_class2
 -----------------------
 Explanation of how the class is implemented and how the methods work.
 
 .. extrtoolembed:: 'ae_python_class2'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_vals_refs1
 -----------------------
 Explanation of how variables are not passed by reference to functions
 
 .. extrtoolembed:: 'ae_adl_vals_refs1'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_vals_refs2
 -----------------------
 Explanation of how lists are passed by reference to functions
 
 .. extrtoolembed:: 'ae_adl_vals_refs2'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_vals_refs3
 -----------------------
 Explanation of cloned list objects point to the same objects.
 
 .. extrtoolembed:: 'ae_adl_vals_refs3'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_tryexcept1
 -----------------
 Demonstration of basic try, except statements.
 
 .. extrtoolembed:: 'ae_adl_tryexcept1'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_tryexcept2
 -----------------------
 Demonstration of try, except statements using functions.
 
 .. extrtoolembed:: 'ae_adl_tryexcept2'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_file1
 -----------------------
 Reading integers from a file.
 
 .. extrtoolembed:: 'ae_adl_file1'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
 
 ae_adl_file2
 -----------------------
 Reading strings from a file.
 
 .. extrtoolembed:: 'ae_adl_file2'
-  :learning_tool: mastery-grid-python-animations
+   :learning_tool: mastery-grid-python-animations
