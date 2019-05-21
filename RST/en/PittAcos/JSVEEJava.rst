@@ -50,7 +50,7 @@ ae_BJ4_ch02_s06_ConstructorDemo
 ----------------------------------
 Use of constructors to initialize objects
 
-.. extrtoolembed:: 'ae_cash_register_constant_demo'
+.. extrtoolembed:: 'ae_BJ4_ch02_s06_ConstructorDemo'
    :learning_tool: mastery-grid-java-animations
 
 ae_BJ4_ch02_s07_AccessorMutatorDemo
@@ -86,7 +86,7 @@ ae_BJ4_ch03_s06_BankAccountTester
 --------------------------------
 Another demonstration of the use of classes
 
-.. extrtoolembed:: 'ae_BJ4_ch02_s03_VariableDemo'
+.. extrtoolembed:: 'ae_BJ4_ch03_s06_BankAccountTester'
    :learning_tool: mastery-grid-java-animations
 
 ae_BJ4_ch03_s06_CashRegisterTester
