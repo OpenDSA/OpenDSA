@@ -55,13 +55,34 @@
   },
   "chapters": {
     "Java JSVEE": {
-      "PittAcos/JSVEEJava": {}
+      "PittAcos/JSVEEJava1": {},
+      "PittAcos/JSVEEJava2": {},
+      "PittAcos/JSVEEJava3": {},
+      "PittAcos/JSVEEJava4": {},
+      "PittAcos/JSVEEJava5": {},
+      "PittAcos/JSVEEJava6": {},
+      "PittAcos/JSVEEJava7": {},
+      "PittAcos/JSVEEJava8": {},
+      "PittAcos/JSVEEJava9": {}
     },
     "Python JSVEE": {
-      "PittAcos/JSVEEPython": {}
+      "PittAcos/JSVEEPython1": {},
+      "PittAcos/JSVEEPython2": {},
+      "PittAcos/JSVEEPython3": {},
+      "PittAcos/JSVEEPython4": {},
+      "PittAcos/JSVEEPython5": {},
+      "PittAcos/JSVEEPython6": {},
+      "PittAcos/JSVEEPython7": {},
+      "PittAcos/JSVEEPython8": {},
+      "PittAcos/JSVEEPython9": {}
     },
     "Python Parsons Problems": {
-      "PittAcos/JsParsonsPython": {}
+      "PittAcos/JsParsonsPython1": {},
+      "PittAcos/JsParsonsPython2": {},
+      "PittAcos/JsParsonsPython3": {},
+      "PittAcos/JsParsonsPython4": {},
+      "PittAcos/JsParsonsPython5": {},
+      "PittAcos/JsParsonsPython6": {}
     }
   }
 }
