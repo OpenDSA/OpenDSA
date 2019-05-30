@@ -91,6 +91,9 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
+PittACOS: min
+	python $(CONFIG_SCRIPT) config/PittACOS.json --no-lms
+
 OpenFLAP: min
 	python $(CONFIG_SCRIPT) config/OpenFLAP.json --no-lms
 
