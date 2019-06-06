@@ -3,28 +3,28 @@
       "en": {
         "q1": {
           "type": "multiple",
-          "question":"Now we need to determine the transition from state q_3, and q_4 with the alphabet a. Select the appropriate state:",
-          "answer": "q_4",
-          "choices": ["q_0, q_1, q_2", "q_1, q_2, q_3","q_3, q_4, q_5" ,"q_4"]
+          "question":"Now we need to determine the transition from state q3, and q4 with the alphabet a. Select the appropriate state:",
+          "answer": "q4",
+          "choices": ["q0, q1, q2", "q1, q2, q3","q3, q4, q5" ,"q4"]
         },
         "q2": {
           "type": "multiple",
           "question":"What is the trnsition from state q_3 with the alphabet a?",
           "answer": "No transition",
-          "choices": ["q_5, q_1", "q_1, q_5, q_6","No transition"]
+          "choices": ["q5, q1", "q1, q5, q6","No transition"]
         },
         "q4": {
           "type": "iframe",
           "src": "../../../AV/FLA/billyu/ui/FAFixer.html",
           "question":"What is the final state?",
-          "answer": "q_1, q_2, q_3",
-          "choices": ["q_0, q_1, q_2", "q_1, q_5, q_6","q_4" ]
+          "answer": "q1, q2, q3",
+          "choices": ["q0, q1, q2", "q1, q5, q6","q4" ]
         },
         "q3": {
           "type": "multiple",
           "question":"What is the remaining final state?",
-          "answer": "q_1, q_5",
-          "choices": ["q_0, q_1, q2", "q_3, q_4","q_1, q_5" ]
+          "answer": "q1, q5",
+          "choices": ["q0, q1, q2", "q3, q4","q1, q5" ]
         }
       }
     }

@@ -25,7 +25,7 @@ major concepts for the semester:
 Languages
 ---------
 
-* :math:`\Sigma`: A set of symbols, an alphabet
+* The alphabet set, :math:`\Sigma`: A set of symbols.
 * string: Finite sequence of symbols (from some alphabet)
 * language: A set of strings defined over :math:`\Sigma`
 
@@ -42,10 +42,9 @@ Examples
 
   :math:`L = \{ab, ac, cabb\}`
 
+  How any strings could be in :math:`L`?
   :math:`L` is a language with 3 strings, each string is a sequence of
   strings formed over the alphabet.
-
-  How any strings could be in :math:`L`?
 
 * :math:`\Sigma = \{a, b\}`
 
@@ -58,11 +57,14 @@ Examples
 Notation
 ~~~~~~~~
 
-* Symbols in alphabet: :math:`a, b, c, d, ...`
-* String names: :math:`u,v,w,...`
+* Symbols in alphabet: :math:`a, b, c, d, 0, 1, ...`
+* String names: :math:`u, v, w, x, y, z, ...`
 
 Definition of concatenation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The concatenation of two strings :math:`u`, and :math:`v` will be the string that contains all symbols of :math:`u` followed by all symbols og :math:`v`.
+
+Example: 
 
 Let :math:`w = a_1a_2...a_n` and :math:`v=b_1b_2...b_n`
 
@@ -81,13 +83,15 @@ Strings: :math:`w=abbc`, :math:`v=ab`, :math:`u=c`
 
   :math:`v^3 = vvv = v \circ v \circ v = ababab`
 
-* :math:`v^0 = \lambda`
+* :math:`v^0 = \lambda` (the empty string)
 
-* :math:`w^R = cbba`
+* Reverse of the string
+
+  :math:`w^R = cbba`
 
 * :math:`|vv^Rw|= 8`
 
-* :math:`ab \circ λ = ab`
+* :math:`ab \circ λ = λ \circ ab = ab`
 
 * :math:`\Sigma^∗ =` set of strings obtained by concatenating 0 or more
   symbols from :math:`\Sigma`
