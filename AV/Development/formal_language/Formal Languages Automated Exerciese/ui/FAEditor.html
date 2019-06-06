@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="FAEditor">
+		<meta name="author" content="Bill Yu">
+
+		<title>FA Editor</title>
+    <link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
+    <link rel="stylesheet" href="./css/FA.css" type="text/css" />
+    <link rel="stylesheet" href="./css/tester.css" type="text/css" />
+		<link rel="stylesheet" href="./css/FAtoRE.css" type="text/css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <h1 id="editor">Finite Automaton Editor</h1>
+			<button id="helpButton"><img src="./help.png" /></button>
+      <div id="dialogueoverlay"></div>
+      <div id="dialoguebox">
+        <div>
+          <div id="dialogueboxhead"></div>
+          <div id="dialogueboxbody"></div>
+          <div id="dialogueboxfoot"></div>
+        </div>
+      </div>
+			<div id="dialog" title="Transitions">
+				<div id="transitions"></div>	
+				<div align="center">
+				<button id="finalize">Finalize</button> 
+				</div>
+			</div>
+			<div id="help" title="Help" style="display:none">
+				<div id="helpInfo">
+					<p>Click on "Add Nodes" and then on the graph to add a new node.</p>
+					<p>Click on "Add Edges" and then drag from one node to another to add an edge.</p>
+					<p>Drag to move nodes.</p>
+					<p>Click on the edit button and then click on nodes, edges or edge labels to edit.</p>
+					<p>Click on the delete button and then on nodes, edges, or edge labels to delete.</p>
+					<p>Right click on a node to make it the initial/final node, change/clear its label or delete.</p>
+				</div>
+			</div>
+      <p align="center" class="arrayPlace"></p>
+      <button class="functionality" id="begin">Traverse</button>
+      <button class="functionality" id="saveButton">Save</button>
+      <button class="createExercise" id="finish">Finish</button>
+      <input type="file" id="loadFile">
+      <div id="av">
+        <button id="undoButton">Undo</button>
+        <button id="redoButton">Redo</button>
+        <button id="cancelButton">Cancel</button>
+        <br>
+        <button id="nodeButton">Add Nodes</button>
+        <button id="edgeButton">Add Edges</button>
+        <button id="moveButton">Move Nodes</button>
+        <button id="editButton">Edit Nodes/Edges</button>
+        <button id="deleteButton">Delete Nodes/Edges</button>
+				<button id="clearLabelButton">Clear Labels</button>
+				<button id="collapseButton">Collapse State</button>
+				<button id="cheat">Do It</button>
+				<button id="exportButton">Export</button>
+        <span id='mode'></span>
+        <p class="jsavoutput jsavline"></p>
+      </div>
+      <button id="layoutButton">Layout</button>
+      <button class="functionality" id="ndButton">Highlight Nondeterminism</button>
+      <button class="functionality" id="lambdaButton">Highlight &lambda;-Transitions</button>
+      <button class="functionality" id="epsilonButton">&epsilon; Mode</button>
+      <button class="functionality" id="shorthandButton">Enable Shorthand</button>
+			<br>
+      <button class="functionality" id="toDFAButton" title="convert to DFA" >to DFA</button>
+      <button class="functionality" id="minimizeButton">Minimize DFA</button>
+      <button class="functionality" id="toGrammarButton" title="convert to Right Linear Grammar">to RLG</button>
+      <button class="functionality" id="toREButton" title="convert to Regular Expression" >to RE</button>
+      <div id='download'></div>
+      <div id="rmenu"></div>
+
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+      <script src="../../../../JSAV/lib/jquery.transit.js"></script>
+      <script src="../../../../JSAV/lib/raphael.js"></script>
+      <script src="../../../../JSAV/lib/dagre.min.js"></script>
+      <script src="../../../../JSAV/build/JSAV.js"></script>
+      <script src="../../../../lib/odsaUtils-min.js"></script>
+      <script src="../../../../lib/odsaAV-min.js"></script>
+      <script src="../fa/serializableGraph.js"></script>
+      <script src="../../resources/underscore-min.js"></script>
+      <script src="../fa/FA.js"></script>
+			<script src="../fa/TuringMachine.js"></script>
+      <script src="./CustomPrompt.js"></script>
+      <script src="../fa/Commands.js"></script>
+      <script src="../fa/TraverseAccepter.js"></script>
+			<script src="../regular/FAtoREController.js"></script>
+			<script src="../exerController/ExerciseController.js"></script>
+      <script src="./FAEditor.js"></script>
+    </div>
+  </body>
+</html>
