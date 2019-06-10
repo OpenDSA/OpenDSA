@@ -138,12 +138,12 @@
 		var editButton = $(this);
 		var problemIndex = editButton.parent().index();
 		//let FAEditor know we are editing graphs for exercises so we don't need certain functions.
-		//localStorage['createExercise'] = true;
+		localStorage['createExercise'] = true;
 		localStorage['exerciseIndex'] = problemIndex;
 		localStorage['fromEditor'] = true;
 		if (graphType == "fa")
 		{
-			window.open("../ui/FAEditor.html");
+			window.open("../../FA.html");
 		}
 		else if (graphType == "pad")
 		{
@@ -163,7 +163,7 @@
 		var json = JSON.stringify(problems);
 		localStorage['json'] = json;
 		window.buttonid = document.getElementById('fixerButton');
-		window.open("../ui/FAFixer.html");
+		window.open("../../FAFixer.html");
 	}
 
 	//Open the FATester page
@@ -173,14 +173,14 @@
 		var json = JSON.stringify(problems);
 		localStorage['json'] = json;
 		window.buttonid = document.getElementById('testerButton');
-		window.open("../ui/FATester.html");
+		window.open("../../FATester.html");
 	}
 
 	function uploadGraph() {
 		var uploadButton = $(this);
 		var problemIndex = uploadButton.parent().index();
 		//let FAEditor know we are editing graphs for exercises so we don't need certain functions.
-		//localStorage['createExercise'] = true;
+		localStorage['createExercise'] = true;
 		localStorage['exerciseIndex'] = problemIndex;
 		// console.log('PROBLEM INDEX: ' + problemIndex);
 
@@ -347,5 +347,6 @@
 	$("#uploadGraph").click(uploadGraph);
 	$("#uploadGraph").hide();
 	$("#upload").change(loadGraph);
+	localStorage.clear();
 	localStorage['problem0'] = '{"nodes":[],"edges":[]}';
 }(jQuery));

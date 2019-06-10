@@ -24,7 +24,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		if (type == 'fixer' || type == 'tester') {
 			switch (type) {
 			case 'fixer':
-				exerController = new ExerciseController(jsav, g, "../exercises/fixerTests.json", "json", {initGraph: initGraph});
+				exerController = new ExerciseController(jsav, g, "./Formal Languages Automated Exerciese/exercises/fixerTests.json", "json", {initGraph: initGraph});
 				exerController.load();
 				break;
 			case 'tester':
@@ -46,6 +46,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 				$(".createExercise").show();
 				exerciseIndex = localStorage['exerciseIndex'];
 				data = localStorage['problem' + exerciseIndex];
+				localStorage['createExercise'] = false;
 			}
 			else {
 				$(".functionality").show();

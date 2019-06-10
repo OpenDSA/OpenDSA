@@ -19,8 +19,10 @@ controllerProto.load = function () {
 	var filePath = this.filePath;
 	var dataType = this.dataType;
 	var tests;
+
 	$.ajax({
 		url: filePath,
+		crossDomain: true,
 		dataType: dataType,
 		async: false,
 		success: function (data) {
