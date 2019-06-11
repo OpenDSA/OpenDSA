@@ -107,7 +107,6 @@ sorted".
 .. inlineav:: shellsortCON3 dgm
    :links: 
    :scripts: AV/Sorting/shellsortCODE.js AV/Sorting/shellsortCON3.js
-   :scripts: 
 
 The second pass of Shellsort looks at fewer, bigger sublists.
 In our example, the second pass will have an increment of size 4,
