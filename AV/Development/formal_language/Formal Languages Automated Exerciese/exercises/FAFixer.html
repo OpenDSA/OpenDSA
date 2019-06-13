@@ -2,19 +2,22 @@
 
 <html>
 	<head>
-		<title>FA Tester</title>
+		<script>
+			getExerciseLocation = function(){ return "./FAwithExpression.json"};
+		</script>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="FAEditor">
 		<meta name="author" content="Bill Yu">
-    	<link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-    	<link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
-    	<link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
-    	<link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
-    	<link rel="stylesheet" href="./css/FA.css" type="text/css" />
-    	<link rel="stylesheet" href="./css/tester.css" type="text/css" />
-		<link rel="stylesheet" href="./css/FAtoRE.css" type="text/css" />
+		<title>FA Fixer</title>
+    	<link rel="stylesheet" href="../../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    	<link rel="stylesheet" href="../../../../../lib/odsaAV-min.css" type="text/css" />
+    	<link rel="stylesheet" href="../../../../../lib/odsaStyle-min.css" type="text/css" />
+    	<link rel="stylesheet" href="../../css/customPrompt.css" type="text/css" />
+    	<link rel="stylesheet" href="../../css/FA.css" type="text/css" />
+    	<link rel="stylesheet" href="../../css/tester.css" type="text/css" />
+		<link rel="stylesheet" href="../../css/FAtoRE.css" type="text/css" />
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
      	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -29,36 +32,41 @@
 	</head>
 	<body>
 		<div id="container">
-			<h1 id="tester">Finite Automaton Tester</h1>
+			<!-- <h1 id="editor">Finite Automaton Editor</h1>
+				  <button id="helpButton"><img src="./help.png" /></button> -->
+			<h1 id="fixer">Finite Automaton Fixer</h1>
 			<h2>Questions: </h2>
 			<p id="exerciseLinks"></p>
-			<h2 id="question">Give an NFA or DFA that accepts the language: L(<span id="expression"></span>)</h2>
+			<h2 id="question">Fix the FA below so that it accepts the language L(<span id="expression"></span>)</h2>
 			<h2 id="description"></h2>
 			<div id="dialogueoverlay"></div>
-  			<div id="dialoguebox">
-  		 		<div>
-    				<div id="dialogueboxhead"></div>
-      				<div id="dialogueboxbody"></div>
-      				<div id="dialogueboxfoot"></div>
-    			</div>
-  			</div>
+			<div id="dialoguebox">
+				<div>
+					<div id="dialogueboxhead"></div>
+					<div id="dialogueboxbody"></div>
+					<div id="dialogueboxfoot"></div>
+				</div>
+			</div>
 			<p align="center" class="arrayPlace"></p>
 			<button id="testSolution">Test</button>
 			<button id="saveButton">Save</button>
 			<button id="showResult">Show Results</button>
-			<input type="file" id="loadFile">
+	  
+				
+	  
+			<!--<hr style="margin-top: 0px; border-top: 1px solid #333; margin-bottom: 0px;">-->
 			
 			<div style="display:inline;">
-					<div style="float: right;" id="menu_options">
+			  	<div style="float: right;" id="menu_options">
 					<button id="editButton" class="icon_btn"><i class="fa fa-mouse-pointer"></i></button>
 					<button id="nodeButton" class="icon_btn"><i class="fa fa-dot-circle-o"></i></button>
 					<button id="edgeButton" class="icon_btn"><i class="fa fa-long-arrow-right"></i></button>
 					<button id="deleteButton" class="icon_btn"><i class="fa fa-close"></i></button>
 					<button id="undoButton" class="icon_btn"><i class="fa fa-undo"></i></button>
 					<button id="redoButton" class="icon_btn"><i class="fa fa-undo fa-rotate-180 fa-flip-horizontal"></i></button>
-					</div>
-		
-					<div style="float: left;">
+			  	</div>
+	  
+			  	<div style="float: left;">
 					<table class="headerTable" style="font-size: 12px; border-style: hidden;">
 						<tr>
 							<td style="display: -webkit-box;border:  hidden;margin-top: 5px;">
@@ -105,38 +113,36 @@
 					</table>
 				</div>
 			</div>
-		
+
 			<p id="percentage"></p>
 			<table id="testResults"></table>
 
 			<div id="rmenu"></div>
 			<div id="av">
-					<p class="jsavoutput jsavline"></p>
+				<p class="jsavoutput jsavline"></p>
 			</div>
 			<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 			<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-			<script src="../../../JSAV/lib/jquery.transit.js"></script>
-			<script src="../../../JSAV/lib/raphael.js"></script>
-			<script src="../../../JSAV/lib/dagre.min.js"></script>
-			<script src="../../../JSAV/build/JSAV.js"></script>
-			<script src="../../../lib/odsaUtils-min.js"></script>
-			<script src="../../../lib/odsaAV-min.js"></script>
-			<script src="./fa/serializableGraph.js"></script>
-			<script src="../../../DataStructures/FL_resources/underscore-min.js"></script>
-			<script src="../../../DataStructures/FL_resources/Commands.js"></script>
-			<script src="./fa/Automaton.js"></script>
-			<script src="./fa/FA.js"></script>
-			<script src="../../../DataStructures/FL_resources/html2canvas.js"></script>
-			<script src="./fa/TuringMachine.js"></script>
-			<script src="./CustomPrompt.js"></script>
-			<script src="./fa/Commands.js"></script>
-			<script src="./fa/TraverseAccepter.js"></script>
-			<script src="./regular/FAtoREController.js"></script>
-			<script src="./Formal Languages Automated Exerciese/exerController/ExerciseController.js"></script>
-			<script src="./FA.js"></script>
+			<script src="../../../../../JSAV/lib/jquery.transit.js"></script>
+			<script src="../../../../../JSAV/lib/raphael.js"></script>
+			<script src="../../../../../JSAV/lib/dagre.min.js"></script>
+			<script src="../../../../../JSAV/build/JSAV.js"></script>
+			<script src="../../../../../lib/odsaUtils-min.js"></script>
+			<script src="../../../../../lib/odsaAV-min.js"></script>
+			<script src="../../fa/serializableGraph.js"></script>
+			<script src="../../../../../DataStructures/FL_resources/underscore-min.js"></script>
+			<script src="../../../../../DataStructures/FL_resources/Commands.js"></script>
+			<script src="../../fa/Automaton.js"></script>
+			<script src="../../fa/FA.js"></script>
+			<script src="../../../../../DataStructures/FL_resources/html2canvas.js"></script>
+			<script src="../../fa/TuringMachine.js"></script>
+			<script src="../../CustomPrompt.js"></script>
+			<script src="../../fa/Commands.js"></script>
+			<script src="../../fa/TraverseAccepter.js"></script>
+			<script src="../../regular/FAtoREController.js"></script>
+			<script src="../exerController/ExerciseController.js"></script>
+			<script src="../../FA.js"></script>
 			<script type="text/javascript"></script>
-			<!--		<script src="./FAEditor.js"></script>-->
-
 		</div>
    	</body>
 </html>

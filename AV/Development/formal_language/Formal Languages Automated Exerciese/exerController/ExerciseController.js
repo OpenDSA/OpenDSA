@@ -35,7 +35,7 @@ controllerProto.load = function () {
 		$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
 	}
 	var proto = this;
-	$('#begin').click(function() {
+	$('#testSolution').click(function() {
 		proto.startTesting();
 	});
 	$('.links').click(function() {
@@ -75,6 +75,7 @@ controllerProto.startTesting = function() {
 	}
 	var exer = {};
 	exer['Attempt' + tryC.toString()] = testRes;
+	exer['studentSolution'] = serialize(this.fa);
 	var exNum = parseInt(this.currentExercise) + 1;
 	if (count > logRecord['Exercise' + exNum +'_Highest']) {
 	 	logRecord['Exercise' + exNum +'_Highest'] = count;

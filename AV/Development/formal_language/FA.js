@@ -1,4 +1,5 @@
 var latexit = "http://latex.codecogs.com/svg.latex?";
+var exerciseLocation;
 (function ($) {
     "use strict";
 	var jsav = new JSAV("av"), // Instance variable to store the JSAV algorithm visualization.
@@ -21,14 +22,19 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	function onLoadHandler() {
 		// initialize right click menu and hide it for future use
 		type = $('h1').attr('id');
+		$('#begin').click(displayTraversals);
 		if (type == 'fixer' || type == 'tester') {
+			exerciseLocation = getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
+			document.getElementById("finish").hidden = true;
 			switch (type) {
 			case 'fixer':
-				exerController = new ExerciseController(jsav, g, "./Formal Languages Automated Exerciese/exercises/fixerTests.json", "json", {initGraph: initGraph});
+				var exercisePath = (exerciseLocation == null)? "./Formal Languages Automated Exerciese/exercises/fixerTests.json": exerciseLocation;
+				exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
 				exerController.load();
 				break;
 			case 'tester':
-				exerController = new ExerciseController(jsav, g, "../exercises/FAwithExpression.json", "json", {initGraph: initGraph});
+				var exercisePath = (exerciseLocation == null)? "./Formal Languages Automated Exerciese/exercises/FAwithExpression.json": exerciseLocation;
+				exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
 				exerController.load();
 				break;
 			default:
@@ -36,7 +42,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			}
 		}
 		else {
-			$('#begin').click(displayTraversals);
+			//$('#begin').click(displayTraversals);
 			var data;
 			//this editor is opened from exercise generator
 			if (localStorage['createExercise'] == 'true') {
