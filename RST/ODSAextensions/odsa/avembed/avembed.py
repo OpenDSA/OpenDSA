@@ -81,8 +81,11 @@ def getDimensions(exer_path):
   if '?' in exer_path:
     exer_path = exer_path[:exer_path.index('?')]
 
-  with open(exer_path, 'r') as exer_file:
-    lines = exer_file.readlines()
+  try:
+    with open(exer_path, 'r') as exer_file:
+      lines = exer_file.readlines()
+  except:
+    return {'err': 'failed to open exercise file. Check that it exists.'}
 
   # Loop through all the lines in the file until it find the body tag
   for line in lines:

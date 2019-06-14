@@ -82,7 +82,10 @@ def doctree_read(app, doctree):
       num_module = json_data[env.docname]
     if isinstance( avdgm_info, av_dgm ) or ( isinstance( avdgm_info, av_ss) and len(avdgm_info['ids'])>0 ):
       for cap in avdgm_info.traverse(caption):
-        cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
+        if num_module != '':
+          cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
+        else:
+          cap[0] = Text(" %s %d: %s" % (app.config.figure_caption_prefix, i, cap[0]))
       for id in avdgm_info['ids']:
         figids[id] = i
         figid_docname_map[id] = env.docname

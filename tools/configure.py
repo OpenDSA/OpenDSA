@@ -137,7 +137,7 @@ def read_conf_file(config_file_path):
 
     return conf_data
 
-def process_section(config, section, index_rst, depth, current_section_numbers=[], section_name=''):
+def process_section(config, section, index_rst, depth, current_section_numbers=[], section_name='', standalone_modules=False):
     # Initialize the section number for the current depth
     if depth >= len(current_section_numbers):
         current_section_numbers.append(config.start_chap_num)
@@ -153,7 +153,7 @@ def process_section(config, section, index_rst, depth, current_section_numbers=[
 
         if 'exercises' in section[subsect]:
             process_module(config, index_rst, subsect, section[
-                           subsect], depth, current_section_numbers, section_name)
+                           subsect], depth, current_section_numbers, section_name, standalone_modules)
         else:
             # List of characters Sphinx uses for headers, the depth of a
             # section header determines which character to use
@@ -173,7 +173,7 @@ def process_section(config, section, index_rst, depth, current_section_numbers=[
             index_rst.write("   :numbered:\n")
             index_rst.write("   :maxdepth: 3\n\n")
             process_section(config, section[
-                            subsect], index_rst, depth + 1, current_section_numbers, subsect_name)
+                            subsect], index_rst, depth + 1, current_section_numbers, subsect_name, standalone_modules)
 
         # Increments the section count at the current depth
         current_section_numbers[depth] += 1
@@ -192,7 +192,7 @@ def process_section(config, section, index_rst, depth, current_section_numbers=[
 #   - depth - the depth of the recursion, used to determine the number of spaces to print before the module name to ensure proper indentation
 #   - current_section_numbers - a list that contains the numbering scheme for each section or module ([chapter].[section].[...].[module])
 #   - section_name - a string passed to modules for inclusion in the RST header that specifies which chapter / section the module belongs to
-def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, depth=0, current_section_numbers=[], section_name=''):
+def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, depth=0, current_section_numbers=[], section_name='', standalone_modules=False):
     global todo_list
     global images
     global missing_exercises
@@ -224,7 +224,7 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, de
 
     # Initialize the module
     module = ODSA_RST_Module(
-        config, mod_path, mod_attrib, satisfied_requirements, section_name, depth, current_section_numbers)
+        config, mod_path, mod_attrib, satisfied_requirements, section_name, depth, current_section_numbers, standalone_modules)
 
     # Append data from the processed module to the global variables
     todo_list += module.todo_list
@@ -243,14 +243,14 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, de
 
     # Hack to maintain the same numbering scheme as the old preprocessor
     mod_num = ''
-    if len(current_section_numbers) > 0:
+    if len(current_section_numbers) > 0 and not standalone_modules:
         mod_num = '%s.%d' % ('.'.join(
             str(j) for j in current_section_numbers[:-1]), (current_section_numbers[-1] + 1))
 
     num_ref_map[mod_name] = mod_num
 
 
-def generate_index_rst(config, slides=False):
+def generate_index_rst(config, slides=False, standalone_modules=False):
     """Generates the index.rst file, calls process_section() on config.chapters to recursively process all the modules in the book (in order), as each is processed it is added to the index.rst"""
 
     print ("Generating index.rst\n")
@@ -272,7 +272,7 @@ def generate_index_rst(config, slides=False):
         index_rst.write(rst_header % header_data)
 
         # Process all the chapter and module information
-        process_section(config, config.chapters, index_rst, 0)
+        process_section(config, config.chapters, index_rst, 0, standalone_modules=standalone_modules)
 
         index_rst.write(".. toctree::\n")
         index_rst.write("   :maxdepth: 3\n\n")
@@ -433,6 +433,7 @@ def configure(config_file_path, options):
 
     slides = options.slides
     no_lms = options.no_lms
+    standalone_modules = options.standalone_modules
     conf_data = None
 
     if no_lms or slides:
@@ -480,7 +481,7 @@ def configure(config_file_path, options):
     # Initialize output directory, create index.rst, and process all of the
     # modules
     initialize_output_directory(config)
-    generate_index_rst(config, slides)
+    generate_index_rst(config, slides, standalone_modules)
 
     # Print out a list of any exercises found in RST files that do not appear
     # in the config file
@@ -544,7 +545,7 @@ def configure(config_file_path, options):
     # Calls the postprocessor to update chapter, section, and module numbers,
     # and glossary terms definition
     update_TOC(config.book_src_dir, config.book_dir +
-               config.rel_book_output_path, module_chap_map)
+               config.rel_book_output_path, module_chap_map, standalone_modules)
     if 'Glossary' in processed_modules:
         update_TermDef(
             config.book_dir + config.rel_book_output_path + 'Glossary.html', cmap_map['concepts'])
@@ -554,7 +555,7 @@ def configure(config_file_path, options):
             json.dump(cmap_map, graph_defs_file)
 
     if not slides and not no_lms:
-        make_lti(config, no_lms)
+        make_lti(config, no_lms, standalone_modules)
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
@@ -564,6 +565,7 @@ if __name__ == "__main__":
     parser.add_option("-b", help="Accepts a custom directory name instead of using the config file's name.",dest="output_directory", default=None)
     parser.add_option("--local", help="Causes the compiled book to work in local mode, which means no communication with the server",dest="local", action="store_true", default=True)
     parser.add_option("--no-lms", help="Compile book without changing internal links required by LMS",dest="no_lms", action="store_true", default=False)
+    parser.add_option("--standalone-modules", help="Compile all modules such that each module has no links to other modules.",dest="standalone_modules",action="store_true",default=False)
     (options, args) = parser.parse_args()
 
     if options.slides:

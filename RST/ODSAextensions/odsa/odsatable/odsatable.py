@@ -39,7 +39,10 @@ def doctree_read(app, doctree):
             num_module = json_data[env.docname]
         if isinstance( odsat_info, odsatable ):
             for cap in odsat_info.traverse(caption):
-                cap[0] = Text(" %s %s.%d: %s" % ('Table', num_module, i, cap[0]))
+                if num_module != '':
+                    cap[0] = Text(" %s %s.%d: %s" % ('Table', num_module, i, cap[0]))
+                else:
+                    cap[0] = Text(" %s %d: %s" % ('Table', i, cap[0]))
             i += 1
 
 def html_visit_odsatable(self, node):

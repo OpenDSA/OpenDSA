@@ -218,14 +218,16 @@ def get_directive_type(directive):
 
 def update_counters(label_line, dir_type, mod_num, num_ref_map, counters):
   label = ''
-
   # Parse the label from format '.. _Label:' (if it exists)
   if label_line.startswith('.. _'):
     label = label_line.strip()[4:-1]
 
   if label != '':
     # If the item is labeled, record its number and increment its counter
-    num_ref_map[label] = mod_num + '.%s#' % counters[dir_type]
+    pattern = '%s#'
+    if mod_num:
+      pattern = '.' + pattern
+    num_ref_map[label] = mod_num + pattern % counters[dir_type]
     counters[dir_type] += 1
   elif dir_type not in ['table', '']:
     # If the directive is for an unlabeled figure, record its number and increment the 'anon_fig' counter (in addition to the standard figure counter)
@@ -239,7 +241,7 @@ def update_counters(label_line, dir_type, mod_num, num_ref_map, counters):
 
   return (num_ref_map, counters)
 
-def process_ref_chap(extension, line, book_objects, start_space, last):
+def process_ref_chap(extension, line, book_objects, start_space, last, standalone_modules=False):
   """
     method responsible of converting :ref: and :chap: to :term: when
     reference / chapter is missing.
@@ -254,12 +256,12 @@ def process_ref_chap(extension, line, book_objects, start_space, last):
     rel_tags = re.split('<|>', rel_labels)
     #We encountered the alternate :ref:/:chap: syntax
     if len(rel_tags) == 3:
-      if not rel_tags[1].strip().lower() in lower_listed_modules:
+      if (not rel_tags[1].strip().lower() in lower_listed_modules) or standalone_modules:
         #just output anchor text
         line_t = line_t.replace(extension,'')
         line_t = line_t.replace('`' + rel_labels + '`', rel_tags[0])
     if len(rel_tags) == 5:
-      if rel_tags[3].strip().lower() in lower_listed_modules:
+      if (rel_tags[3].strip().lower() in lower_listed_modules) and not standalone_modules:
         #module is present swith to standard :rel: syntax
         newDir = '%s <%s>' %(rel_tags[0], rel_tags[3])
         if extension == ':chap:':
@@ -275,7 +277,7 @@ def process_ref_chap(extension, line, book_objects, start_space, last):
 
 class ODSA_RST_Module:
 
-  def __init__(self, config, mod_path, mod_attrib = {'exercises': {} }, satisfied_requirements = [], chap = '', depth = 0, current_section_numbers = []):
+  def __init__(self, config, mod_path, mod_attrib = {'exercises': {} }, satisfied_requirements = [], chap = '', depth = 0, current_section_numbers = [], standalone_modules=False):
     console_msg_prefix = '  ' * (depth + 1)
 
     mod_path = os.path.splitext(mod_path)[0]
@@ -283,7 +285,7 @@ class ODSA_RST_Module:
     mod_num = ''
 
     # Hack to maintain the same numbering scheme as the old preprocessor
-    if len(current_section_numbers) > 0:
+    if len(current_section_numbers) > 0 and not standalone_modules:
       mod_num = '%s.%d' % ('.'.join(str(j) for j in current_section_numbers[:-1]), (current_section_numbers[-1] + 1))
 
     images = []
@@ -442,7 +444,7 @@ class ODSA_RST_Module:
              last = '\n'
           else:
              last = ' '
-          mod_data[i] = process_ref_chap(':ref:', line, config.listed_modules, start_space, last)
+          mod_data[i] = process_ref_chap(':ref:', line, config.listed_modules, start_space, last, standalone_modules)
           line = mod_data[i].strip().lower()
 
         if ':chap:' in line:
@@ -450,7 +452,7 @@ class ODSA_RST_Module:
              last = '\n'
           else:
              last = ' '
-          mod_data[i] = process_ref_chap(':chap:', line, config.listed_chapters, start_space, last)
+          mod_data[i] = process_ref_chap(':chap:', line, config.listed_chapters, start_space, last, standalone_modules)
           line = mod_data[i].strip().lower()
 
 
@@ -712,13 +714,19 @@ class ODSA_RST_Module:
           # Looks for math equations (with a label on the next line), increments the equation counter, and saves the information in 'num_ref_map'
           i += 1
           equation = re.split(':label:', mod_data[i], re.IGNORECASE)[1].strip()
-          num_ref_map['equation-' + equation] = mod_num + '.%s#' % str(counters['equation'])
+          pattern = '%s#'
+          if mod_num:
+            pattern = '.' + pattern
+          num_ref_map['equation-' + equation] = mod_num + pattern % str(counters['equation'])
           counters['equation'] += 1
         elif ':target:' in line:
           trgt =  re.split('target:', mod_data[i], re.IGNORECASE)[1]
           # Remove all whitespace from the target
           trgt = "".join(trgt.split())
-          num_ref_map[trgt] = mod_num + '.%s#' % counters['figure']
+          pattern = '%s#'
+          if mod_num:
+            pattern = '.' + pattern
+          num_ref_map[trgt] = mod_num + pattern % counters['figure']
           counters['figure'] += 1
         elif line.startswith('.. odsalink::'):
           args = parse_directive_args(line, i, 1, console_msg_prefix)
