@@ -15,7 +15,7 @@ B-Trees
 B-Trees
 -------
 
-This section presents the B-tree.
+This module presents the B-tree.
 B-trees are usually attributed to R. Bayer and E. McCreight
 who described the B-tree in a 1972 paper.
 By 1979, B-trees had replaced virtually all large-file access
@@ -210,6 +210,43 @@ in the node's leftmost subtree.
 :math:`\mathrm{B}^+` tree implementations typically store an
 additional dummy record in the leftmost leaf node whose key value is
 less than any legal key value.
+
+Let's see in some detail how the simplest :math:`\mathrm{B}^+` tree
+works.
+This would be the ":math:`2-3^+` tree", or a :math:`\mathrm{B}^+` tree of
+order 3.
+
+.. _TTPbuild:
+
+.. inlineav:: TTPbuild ss
+   :links: AV/Development/TTT/TTPlusTreeX.css
+   :scripts: DataStructures/TTPlusTree.js AV/Development/TTT/TTPlusTreeXCON.js
+   :align: center
+
+   An example of building a ":math:`2-3^+` tree
+
+Next, let's see how to search.
+
+   .. _TTPsearch:
+
+.. inlineav:: TTPfind ss
+   :links: AV/Development/TTT/TTPlusTreeX.css
+   :scripts: DataStructures/TTPlusTree.js AV/Development/TTT/TTPlusTreeXCON.js
+   :align: center
+
+   An example of searching a ":math:`2-3^+` tree
+
+Finally, let's see an example of deleting from the ":math:`2-3^+` tree
+
+
+.. inlineav:: TTPdelete ss
+   :links: AV/Development/TTT/TTPlusTreeX.css
+   :scripts: DataStructures/TTPlusTree.js AV/Development/TTT/TTPlusTreeXCON.js
+   :align: center
+
+   An example of deleting from a ":math:`2-3^+` tree
+
+Now, let's extend these ideas to a :math:`\mathrm{B}^+` tree of higher order.
 
 :math:`\mathrm{B}^+` trees are exceptionally good for range queries.
 Once the first record in the range has been found, the rest of the
