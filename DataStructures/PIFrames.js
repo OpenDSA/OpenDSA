@@ -286,7 +286,7 @@
 
                 alertMessage: function() {
 
-                    var message = `<p class="REVEAL">You must answer the question to proceed forward. Click Show Question</p>`;
+                    var message = `<p class="REVEAL">You must answer the question to proceed forward.</p>`;//removed  Click Show Question since we removed the button
                     return message;
                 },
 
@@ -315,6 +315,7 @@
                             return this.buildMultipleChoice(question);
                         case "true/false":
                         case "select":
+                            return this.buildSelectFromMultipleChoices(question);
                         case "drawing":
                         case "iframe":
                             return this.buildiFrames(question);
@@ -333,6 +334,23 @@
                     for (var i = 0; i < choices.length; i++) {
                         var radio = `<input type="radio" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
                         html.push(radio);
+                    }
+                    var submit = `<br><input type="submit" value="Submit">`;
+                    html.push(submit);
+
+                    return form.append(html.join(''));
+                },
+
+                buildSelectFromMultipleChoices: function(question) {
+                    var choices = question.choices;
+                    var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
+                    var form = $(`<form class=${this.av_name} onsubmit='return ${execute}'></form>`);
+                    var html = [];
+                    var header = `<p>${question.question}</p>`
+                    html.push(header);
+                    for (var i = 0; i < choices.length; i++) {
+                        var checkbox = `<input type="checkbox" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
+                        html.push(checkbox);
                     }
                     var submit = `<br><input type="submit" value="Submit">`;
                     html.push(submit);
@@ -372,7 +390,21 @@
 
                 studentHasAnsweredQuestionCorrectly: function(id) {
                     var question = this.getQuestion(id);
-                    return (question.studentAnswer == question.answer);
+                    if(Array.isArray(question.studentAnswer))
+                    {
+                        if(question.studentAnswer.length !== question.answer.length)
+                            return false;
+                        var studentsAnswerSorted = question.studentAnswer.sort();
+                        var correctAnswerSorted = question.answer.sort();
+                        for(var i = 0; i< studentsAnswerSorted.length; i++)
+                        {
+                            if(studentsAnswerSorted[i] !== correctAnswerSorted[i])
+                                return false;
+                        }
+                        return true;
+                    }
+                    else
+                        return (question.studentAnswer == question.answer);
                 },
 
                 checkIfSlideHasQuestion: function(jsavControl) {
@@ -517,7 +549,16 @@
 
         saveAndCheckStudentAnswer: function(av_name) {
             form = $(`form.${av_name}`);
-            checked = form.children(`input[name=${av_name}]:checked`).val();
+            if(form.children(`input[name=${av_name}]:checked`).length > 1)//If we have more than answer selected, in case of checkboxes, create a list and push all answers inside the list
+            {
+                checked = [];
+                for(var i = 0; i < form.children(`input[name=${av_name}]:checked`).length; i++)
+                {
+                    checked.push(form.children(`input[name=${av_name}]:checked`)[i].defaultValue)
+                }
+            }
+            else
+                checked = form.children(`input[name=${av_name}]:checked`).val();
             console.log(checked)
             this.table[av_name].saveAndCheckStudentAnswer(checked);
 
