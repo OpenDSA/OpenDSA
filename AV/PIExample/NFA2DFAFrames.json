@@ -73,7 +73,7 @@
           "answer": "No transition",
           "choices": ["q3","q5, q1", "q1, q5, q6","No transition"]
         },
-        "q12": {
+        "q12notUSed": {
           "type": "iframe",
           "src": "../../../AV/FLA/billyu/ui/FAFixer.html",
           "question":"What is the final state?",
