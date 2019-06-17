@@ -1,30 +1,90 @@
 {
     "translations": {
       "en": {
+        "q0": {
+          "type": "multiple",
+          "question":"What is transition from state {q3, q4} with the alphabet a. Select the appropriate state:",
+          "answer": "q4",
+          "choices": ["q0, q1, q2", "q1, q2, q3","q1, q5, q6" ,"q4"]
+        },
         "q1": {
           "type": "multiple",
-          "question":"Now we need to determine the transition from state q3, and q4 with the alphabet a. Select the appropriate state:",
-          "answer": "q4",
-          "choices": ["q0, q1, q2", "q1, q2, q3","q3, q4, q5" ,"q4"]
+          "question":"What is the transition from state {q3, q4} with the alphabet b. Select the appropriate state:",
+          "answer": "q1, q5, q6",
+          "choices": ["q0, q1, q2", "q1, q2, q3","q1, q5, q6" ,"q4"]
         },
         "q2": {
           "type": "multiple",
-          "question":"What is the trnsition from state q_3 with the alphabet a?",
-          "answer": "No transition",
-          "choices": ["q5, q1", "q1, q5, q6","No transition"]
+          "question":"What is transition from state {q1, q5, q6} with the alphabet a. Select the appropriate state:",
+          "answer": "q3",
+          "choices": ["q0, q1, q2", "q1, q2, q3","q3, q4, q5" ,"q3"]
+        },
+        "q3": {
+          "type": "multiple",
+          "question":"What is the transition from state {q1, q5, q6} with the alphabet b. Select the appropriate state:",
+          "answer": "No Transition",
+          "choices": ["q0, q1, q2", "q1, q2, q3","q1, q5, q6" ,"No Transition"]
         },
         "q4": {
+          "type": "multiple",
+          "question":"What is the transition from state {q3} with the alphabet a?",
+          "answer": "No Transition",
+          "choices": ["q4", "q1, q2, q3","q5, q1" ,"No Transition"]
+        },
+        "q5": {
+          "type": "multiple",
+          "question":"What is the trnsition from state {q3} with the alphabet b?",
+          "answer": "q5, q1",
+          "choices": ["q6","q5, q1", "q1, q5, q6","No transition"]
+        },
+        "q6": {
+          "type": "multiple",
+          "question":"What is the transition from state {q4} with the alphabet a?",
+          "answer": "q6",
+          "choices": ["q6", "q1, q2, q3","q5, q1" ,"No Transition"]
+        },
+        "q7": {
+          "type": "multiple",
+          "question":"What is the trnsition from state {q4} with the alphabet b?",
+          "answer": "No transition",
+          "choices": ["q6","q5, q1", "q1, q5, q6","No transition"]
+        },
+        "q8": {
+          "type": "multiple",
+          "question":"What is the transition from state {q5, q1} with the alphabet a?",
+          "answer": "q3",
+          "choices": ["q3", "q1, q2, q3","q5, q1" ,"No transition"]
+        },
+        "q9": {
+          "type": "multiple",
+          "question":"What is the trnsition from state {q5, q1} with the alphabet b?",
+          "answer": "No transition",
+          "choices": ["q3","q5, q1", "q1, q5, q6","No transition"]
+        },
+        "q10": {
+          "type": "multiple",
+          "question":"What is the transition from state {q6} with the alphabet a?",
+          "answer": "No transition",
+          "choices": ["q6", "q1, q2, q3","q5, q1" ,"No transition"]
+        },
+        "q11": {
+          "type": "multiple",
+          "question":"What is the trnsition from state {q6} with the alphabet b?",
+          "answer": "No transition",
+          "choices": ["q3","q5, q1", "q1, q5, q6","No transition"]
+        },
+        "q12": {
           "type": "iframe",
           "src": "../../../AV/FLA/billyu/ui/FAFixer.html",
           "question":"What is the final state?",
           "answer": "q1, q2, q3",
           "choices": ["q0, q1, q2", "q1, q5, q6","q4" ]
         },
-        "q3": {
-          "type": "multiple",
-          "question":"What is the remaining final state?",
-          "answer": "q1, q5",
-          "choices": ["q0, q1, q2", "q3, q4","q1, q5" ]
+        "q13": {
+          "type": "select",
+          "question":"What are the final state? Note that, any state that include states $q5$ or $q6$ should be a final state",
+          "answer": ["q5, q1", "q1, q5, q6", "q6"],
+          "choices": ["q0, q1, q2", "q3, q4","q4", "q1, q5, q6", "q3", "q6", "q5, q1"]
         }
       }
     }
