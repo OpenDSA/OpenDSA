@@ -353,9 +353,10 @@
                     this.setStudentAnswer(this.queue.elements[current], answer);
                     if (this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])) {
                         this.enableForwardButton();
-                        alert("you have answered the question correctly!")
-                        // $('input[type=submit]').remove()
-                        // $(".PIFRAMES").append(`<p>Correct!</p>`)
+                        //alert("you have answered the question correctly!")
+                        //Hide the button and show the correct statement
+                        $('input[type=submit]').hide();
+                        $(".PIFRAMES").append(`<p>Correct!</p>`)
 
                         //the last question in the slideshow has been answered correctly, so enable the jsavend button
                         if (current == (this.queue.elements.length - 1)) {
@@ -383,14 +384,14 @@
                     if ($(`#${this.av_name}`).find('.REVEAL').length) {
                     
                         // this.resizeContainer(0);
-                        $(`.${this.buttonDiv}`).append(this.revealQuestionButton);
-                        // PIFRAMES.revealQuestion(av_name);
+                        //$(`.${this.buttonDiv}`).append(this.revealQuestionButton);
                         var height = $(`.${this.buttonDiv}`).outerHeight();
                         var width = $(`.${this.buttonDiv}`).outerWidth();
                         //this.resizeContainer(4 * height);
                         // this.resizeContainerWidth(4 * width);
                         // this.toggleButtonSpace(height);
                         this.questionSlideListener();
+                        PIFRAMES.revealQuestion(av_name);
                         $(".jsavoutput.jsavline").css({
                             "display": "inline-block",
                             "width": "60%",                          
