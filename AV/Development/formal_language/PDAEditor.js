@@ -21,15 +21,109 @@
     type,//type of editor: fixer, tester or editor
     fatoreController,
     exerController;
-  var stepBy = '';
+    var stepBy = '';
 
-// initialize graph
+  
+    // Add This function to allow creating automated exercises and solving exercises. Copied from FA.JS file associated with FA.HTML
+    function onLoadHandler() {
+      // initialize right click menu and hide it for future use
+      type = $('h1').attr('id');
+      //$('#begin').click(displayTraversals);
+      if (type == 'fixer' || type == 'tester') {
+        exerciseLocation = getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
+        document.getElementById("finish").hidden = true;
+        switch (type) {
+        case 'fixer':
+          var exercisePath = (exerciseLocation == null)? "./Formal Languages Automated Exerciese/exercises/fixerTests.json": exerciseLocation;
+          exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
+          exerController.load();
+          break;
+        case 'tester':
+          var exercisePath = (exerciseLocation == null)? "./Formal Languages Automated Exerciese/exercises/FAwithExpression.json": exerciseLocation;
+          exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
+          exerController.load();
+          break;
+        default:
+          break;
+        }
+      }
+      else {
+        //$('#begin').click(displayTraversals);
+        var data;
+        //this editor is opened from exercise generator
+        if (localStorage['createExercise'] == 'true') {
+          jsav.umsg("When you're done, click 'finish'.");
+          // exercise generator does not need the functionality buttons
+          //$(".functionality").hide();
+          $(".createExercise").show();
+          exerciseIndex = localStorage['exerciseIndex'];
+          data = localStorage['problem' + exerciseIndex];
+          localStorage['createExercise'] = false;
+        }
+        else {
+          $(".functionality").show();
+          $(".createExercise").hide();
+          if (localStorage['toConvert'] === "true") {
+            data = localStorage['converted'];
+            $('#clearLabelButton').show();				
+          }
+          else if (localStorage['toMinimize'] === "true") {
+            data = localStorage['minimized'];
+            $('#clearLabelButton').show();
+          }
+          else if (localStorage['REtoFA'] == "true") {
+            data = localStorage['FAfromRE'];
+          }
+          else {
+            data = '{"nodes":[],"edges":[]}';
+          }
+        }
+        initialize(data);
+      }
+		$('#undoButton').click(function(){
+			highlight_select_button();
+			//$('#undoButton').addClass("active");
+			g.undo();
+			$('.jsavgraph').click(graphClickHandler);
+			$('.jsavedgelabel').click(labelClickHandler);
+		});
+		$('#redoButton').click(function(){
+			highlight_select_button()
+			//$('#redoButton').addClass("active");
+			g.redo();
+			$('.jsavgraph').click(graphClickHandler);
+			$('.jsavedgelabel').click(labelClickHandler);
+		});
+		resetUndoButtons();
+	};
+
+  //add this funcion to allow the editor from reading the stored graph from the local storage. Copied as OnLoadHandler
+  var initialize = function(graph) {
+    g = graph;
+    initGraph({layout: "automatic"});
+  };
+  // initialize graph. Modified to allow the editor from reading the stored graph
   var initGraph = function(opts) {
+    var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
+    g =  jsav.ds.pda($.extend({width: '750px', height: 440, emptystring: lambda, editable: true}, opts))
+    var ratio = 1;
+    g.initFromParsedJSONSource(source, ratio);
+
+    // Clear anything in local storage as we do not need it anymore.
+    // (Local storage is used to transfer graph information between different windows. It is used by conversionExercise.html and minimizationTest.html.)
+    localStorage['toConvert'] = false;
+    localStorage['toMinimize'] = false;
+    localStorage['REtoFA'] = false;
+    finalize();
+    return g;
+    //This is the original code for initGraph
+    /*
     g = jsav.ds.pda($.extend({width: '750px', height: 440, emptystring: lambda, editable: true}, opts));
     emptystring = g.emptystring;
     finalize();
 
     return g;
+    */
   };
 
   var finalize = function() {
@@ -680,10 +774,22 @@
   $('#editEdge').hide()
   $('#alphabets').hide();
   $('#closeAv').hide();
-  // onLoadHandler();
+  onLoadHandler();
 
-  g = initGraph({layout: "manual"});
-  g.layout();
-  resetUndoButtons();
-  jsav.displayInit();
+  //g = initGraph({layout: "manual"});
+  //g.layout();
+  //resetUndoButtons();
+  //jsav.displayInit();
+  //***********************************************************/
+  //This code is added to provide PDA automated exercises
+  //***********************************************************/
+  //This line create action listener to the Finish button
+  $("#finish").click(finishExercise);
+  //Function to close the editor and store the pda inside the local storage to pass it to the paren window (Create Exercises HTML page)
+  function finishExercise() {
+		localStorage['problem' + exerciseIndex] = serialize(g);
+		localStorage['createExercise'] = false;
+		window.close();
+  }
+  
 }(jQuery));

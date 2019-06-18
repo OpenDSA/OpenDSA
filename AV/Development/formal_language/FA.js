@@ -48,7 +48,7 @@ var exerciseLocation;
 			if (localStorage['createExercise'] == 'true') {
 				jsav.umsg("When you're done, click 'finish'.");
 				// exercise generator does not need the functionality buttons
-				$(".functionality").hide();
+				//$(".functionality").hide();
 				$(".createExercise").show();
 				exerciseIndex = localStorage['exerciseIndex'];
 				data = localStorage['problem' + exerciseIndex];

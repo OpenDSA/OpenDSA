@@ -147,11 +147,11 @@
 		}
 		else if (graphType == "pad")
 		{
-			window.open("../ui/NPDAEditor.html");
+			window.open("../../PDAEditor.html");
 		}
 		else{
 			//OpenDSA/AV/Development/formal_language/TMEditor.html
-			window.open("../../../Development/formal_language/TMEditor.html");
+			window.open("../../../formal_language/TMEditor.html");
 		}
 
 	}
@@ -206,7 +206,7 @@
 			window.alert('File does not contain an automaton.');
 			return;
 		}
-		if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'fa') {
+		if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== graphType){//check that the machine matches the graph type
 			// This file was created by a different automaton editor.
 			window.alert('File does not contain a finite automaton.');
 			return;
