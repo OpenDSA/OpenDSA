@@ -24,7 +24,11 @@ var exerciseLocation;
 		type = $('h1').attr('id');
 		$('#begin').click(displayTraversals);
 		if (type == 'fixer' || type == 'tester') {
-			exerciseLocation = getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
+			var params = JSAV.utils.getQueryParameter();
+			//******************** */
+			//This code to extract the file location from the parameters
+			exerciseLocation = params.module.split(":url_params:+fileLocation=")[1];//getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
+			//******************** */
 			document.getElementById("finish").hidden = true;
 			switch (type) {
 			case 'fixer':
