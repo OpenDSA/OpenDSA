@@ -77,6 +77,7 @@ avembed_element = '''\
     points="%(points)s"
     required="True"
     threshold="%(threshold)s"
+    av_address="%(av_address)s"
     mod_name="%(mod_name)s">
 </avembed>
 '''
@@ -131,6 +132,8 @@ class avembed(Directive):
     self.options['points'] = get_default_ex_option(self.options['type'], 'points')
     self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
     self.options['mod_name'] = current_module_base
+    self.options['av_address'] = av_path
+
     if self.options['exer_name'] in ex_options[current_module]:
       for key, value in ex_options[current_module][self.options['exer_name']].iteritems():
         self.options[key] = value
@@ -575,6 +578,7 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
         if expanded:
           exs_config[exer_name]['type'] = ex_obj['@type']
+          exs_config[exer_name]['av_address'] = ex_obj['@av_address']
           exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
         threshold = float(ex_obj['@threshold'])
         exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
@@ -653,6 +657,7 @@ def extract_exs_config(exs_json):
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
       if expanded:
         exs_config[exer_name]['type'] = ex_obj['@type']
+        exs_config[exer_name]['av_address'] = ex_obj['@av_address']
         exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
       threshold = float(ex_obj['@threshold'])
       exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)

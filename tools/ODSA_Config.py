@@ -135,7 +135,7 @@ def validate_exercise(exer_name, exercise):
     optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold', 'external_url'
                         'inst_book_id','module_position','inst_exercise_id',
                         'inst_chapter_id','options','inst_module_id','id', 'total_points',
-                        'type', 'links', 'scripts', 'mod_name']
+                        'type', 'links', 'scripts', 'av_address', 'mod_name']
 
     # Ensure required fields are present
     for field in required_fields:

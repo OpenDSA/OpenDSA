@@ -64,6 +64,7 @@ CONTAINER_HTML= '''\
     class="embedContainer"
     data-exer-name="%(exer_name)s"
     data-long-name="%(long_name)s"
+    data-short-name="%(short_name)s"
     data-frame-src="%(tool_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
@@ -106,6 +107,7 @@ class extrtoolembed(Directive):
     self.options['type'] = 'external_tool'
     self.options['content'] = ''
     self.options['exer_name'] = self.options['long_name'].replace(":", "").replace(" ", "_")
+    self.options['short_name'] = self.options['long_name']
 
     external_tool = external_tools_urls[self.options['learning_tool']]
     self.options['width'] = external_tool['width']
