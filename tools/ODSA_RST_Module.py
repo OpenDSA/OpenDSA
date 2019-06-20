@@ -610,8 +610,13 @@ class ODSA_RST_Module:
           args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
 
           if args:
-            (av_name, av_type) = args
-            av_name = os.path.splitext(os.path.basename(av_name))[0]
+            (av_path, av_type) = args
+
+            # check that the av file exists
+            if not os.path.exists('{0}/{1}'.format(config.odsa_dir,av_path)):
+              print_err("{0}WARNING: In module '{1}' -- the avembed file '{2}' does not exist.".format(console_msg_prefix, mod_path, av_path))
+
+            av_name = os.path.splitext(os.path.basename(av_path))[0]
 
             # If the config file states the exercise should be removed, remove it
             if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
