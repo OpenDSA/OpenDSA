@@ -87,6 +87,7 @@ def doctree_read(app, doctree):
     _table = 1
     _exple = 1
     _thrm = 1
+    standalone_module = False
     for figure_info in doctree.traverse(Element): # figure):
             if app.builder.name != 'latex' and app.config.number_figures:
                 if env.docname != module:
@@ -94,19 +95,19 @@ def doctree_read(app, doctree):
                    _table = 1
                    _exple = 1
                    _thrm = 1
-            # num_module will be '' if we are compiling stand-alone modules
-            standalone_module = (num_module == '')
             if isinstance( figure_info, figure):
                 if env.docname in json_data:
                     module = env.docname  
                     num_module = json_data[env.docname]  
+                    # num_module will be blank if we are compiling stand-alone modules
+                    standalone_module = (num_module == '')
                 for cap in figure_info.traverse(caption):
                     if standalone_module:
-                        cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
-                        figids_1[env.docname]= '%s.%d' %(num_module, i) 
-                    else:
                         cap[0] = Text(" %s %d: %s" % (app.config.figure_caption_prefix, i, cap[0]))
                         figids_1[env.docname]= '%d' %(i)
+                    else:
+                        cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
+                        figids_1[env.docname]= '%s.%d' %(num_module, i) 
                 for id in figure_info['ids']:
                     figids[id] = i
                     figid_docname_map[id] = env.docname
@@ -127,6 +128,8 @@ def doctree_read(app, doctree):
                 if  env.docname in json_data:
                     module = env.docname
                     num_module = json_data[env.docname]
+                    # num_module will be blank if we are compiling stand-alone modules
+                    standalone_module = (num_module == '')
                     if module not in app.config.expleid:
                         app.config.expleid[module] = {}
                 if len(figure_info.attributes['ids']) > 0:
@@ -142,9 +145,9 @@ def doctree_read(app, doctree):
                     title = str(figure_info.children[0].children[0]) + numbered_label
                     figure_info.children[0].children[0] = Text(title)
                     if standalone_module:
-                        title = 'Example %s.%d ' %(num_module,_exple)
-                    else:
                         title = 'Example %d ' %(_exple)
+                    else:
+                        title = 'Example %s.%d ' %(num_module,_exple)
                     figure_info.children[0].children[0] = Text(title)
                     #_exple += 1
                     for mod in app.config.expleid:
@@ -159,18 +162,18 @@ def doctree_read(app, doctree):
                     title = str(figure_info.children[0].children[0]) + numbered_label
                     figure_info.children[0].children[0] = Text(title)
                     if standalone_module:
-                        title = 'Table %s.%d %s' %(num_module,_table,str(figure_info.children[0].children[0]).split('Table')[1])
-                    else:
                         title = 'Table %d %s' %(_table,str(figure_info.children[0].children[0]).split('Table')[1])
+                    else:
+                        title = 'Table %s.%d %s' %(num_module,_table,str(figure_info.children[0].children[0]).split('Table')[1])
                     figure_info.children[0].children[0] = Text(title)
                     _table += 1
                 if 'theorem' in figure_info.children[0].children[0].lower():
                     title = str(figure_info.children[0].children[0]) + numbered_label
                     figure_info.children[0].children[0] = Text(title)
                     if standalone_module:
-                        title = 'Theorem %s.%d %s' %(num_module,_thrm,str(figure_info.children[0].children[0]).split('Theorem')[1])
-                    else:
                         title = 'Theorem %d %s' %(_thrm,str(figure_info.children[0].children[0]).split('Theorem')[1])
+                    else:
+                        title = 'Theorem %s.%d %s' %(num_module,_thrm,str(figure_info.children[0].children[0]).split('Theorem')[1])
                     figure_info.children[0].children[0] = Text(title)
                     _thrm += 1
     env.figid_docname_map = figid_docname_map
