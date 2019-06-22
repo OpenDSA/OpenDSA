@@ -1,9 +1,9 @@
 {
   "translations" :{
     "en": {
-      "sc1": "For some algorithms, different inputs of a given size require different amounts of time. For example, consider the problem of searching an array containing $n$ integers to find the one with a particular value $K$ (assume that $K$ appears exactly once in the array).",
-      "sc2": "The algorithm accepts as its input an array of $n$ keys and the target key $K$ to search for.",
-      "sc3": "The sequential search algorithm begins at the first position in the array and looks at each value in turn until $K$ is found. Once $K$ is found, the algorithm stops. This is different from the largest-value sequential search algorithm, which always examines every array value.",
+      "sc1": "Here we have the two files associated with a WebGL program.  The HTML file containing the vertex and fragment shaders appears on the left.  The WebGL JavaScript code appear on the right.",  
+      "sc2": "In the HTML file, the vertex shader is highlighted below.  Since in this simple HelloWorld example the vertex shader will not transform its vertex in any way, it simply assigns the attribute associated with the vertex (called vPosition) to the GLSL reserved variable gl_Position, which is then passed on to the interpolator in preparation for the fragment shader as per the programmable pipeline in Figure 2.1",
+      "sc3": "In the HTML file, the fragment shader is highlighted below.   Each GPU core executing this code operates on one pixel whose location within a fragment like a triangle is interpolated from the three vertices that comprise the triangle.   The fragment shader must assign a color to that pixel using a <b>vec4</b> whose first three components are the RGB components of the color.  In this case since all three components are 1, the color will be white.  The fourth component is called the alpha factor and will always be 1 in our early examples.",
       "sc4": "There is a wide range of possible running times for the sequential search algorithm. The first integer in the array could have value $K$, and so only one integer is examined.",
       "sc5": "In this case the running time is short. This is the <b>best case</b> for this algorithm, because it is not possible for sequential search to look at less than one value. In this case the sequencial search algorithm will find $K$ at the first comparison.",
       "sc6": "<br>After that the algorithm will terminate, returning 0 as the target's index.",
@@ -20,17 +20,32 @@
     }
   },
   "code" : {
-    "javascript": [{
-      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: Sequential *** */",
-      "endBefore": "/* *** ODSAendTag: Sequential *** */",
-      "top": 90,
-      "left": 395,
+    "pseudo": [
+    {
+      "url": "../../../SourceCode/JavaScript/Graphics/HelloWorldSetup.html",
+      "lineNumbers": true,
+      "startAfter": "/* *** ODSATag: HelloWorldSetupHTML *** */",
+      "endBefore": "/* *** ODSAendTag: HelloWorldSetupHTML *** */",
+      "top": 30,
+      "left": 5,
+      "tags": {
+        "vertex_shader": [5,6,7,8,9,10,11,12,13],
+        "fragment_shader": [15,16,17,18,19,20,21,22,23],
+        "attribute": [7,11]
+      }
+    },
+    {
+      "url": "../../../SourceCode/JavaScript/Graphics/HelloWorldSetup.js",
+      "lineNumbers": true,
+      "startAfter": "/* *** ODSATag: HelloWorldSetupJS *** */",
+      "endBefore": "/* *** ODSAendTag: HelloWorldSetupJS *** */",
+      "top": 30,
+      "left": 505,
       "tags": {
         "comparison": 3,
         "return": 4
       }
-    }]
+    }	
+  ]
   }
 }
