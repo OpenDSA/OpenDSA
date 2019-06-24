@@ -9,14 +9,6 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   var pseudoHTML = av.code(code[0]);
   var pseudoJS = av.code(code[1]);
-//   var arr;
-//   var arr_values = [];
-//   var topAlign = 60;
-//   var leftAlign = 10;
-//   var rectWidth = 230;
-//   var rectHeight = 200;
-//   var arraySize = 7;
-//   var i;
 
   // Slide 1
   av.umsg(interpret("sc1"));
@@ -35,22 +27,33 @@ $(document).ready(function() {
 
   // Slide 4
   av.umsg(interpret("sc4"));
+  pseudoHTML.unhighlight("fragment_shader");
+  pseudoHTML.highlight("support_libs");
   av.step();
 
   // Slide 5
   av.umsg(interpret("sc5"));
+  pseudoHTML.unhighlight("support_libs");
+  pseudoHTML.highlight("JS_code_ref");
   av.step();
 
   // Slide 6
-  av.umsg(interpret("sc6"), {preserve: true});
+  av.umsg(interpret("sc6"));
+  pseudoHTML.unhighlight("JS_code_ref");
+  pseudoHTML.highlight("gl_canvas");
   av.step();
 
   // Slide 7
   av.umsg(interpret("sc7"));
+  pseudoHTML.highlight("gl_canvas");
+  pseudoJS.highlight("handle_to_canvas");
   av.step();
 
   // Slide 8
-  av.umsg(interpret("sc8"), {preserve: true});
+  av.umsg(interpret("sc8"));
+  pseudoHTML.unhighlight("gl_canvas");
+  pseudoJS.unhighlight("handle_to_canvas");
+  pseudoJS.highlight("vertices");
   av.step();
 
   // Slide 9

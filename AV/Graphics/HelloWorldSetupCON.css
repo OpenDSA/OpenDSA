@@ -18,8 +18,13 @@
   height: 75px;
 }*/
 
+/*Using auto below works much better than a fixed size
 #HelloWorldSetupCON .jsavoutput.jsavline {
-  height: 90px;
+  height: 90;
+}*/
+
+#HelloWorldSetupCON .jsavoutput.jsavline {
+  height: auto;
 }
 
 #HelloWorldSetupCON .jsavline{

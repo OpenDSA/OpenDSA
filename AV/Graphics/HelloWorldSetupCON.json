@@ -4,10 +4,10 @@
       "sc1": "Here we have the two files associated with a WebGL program.  The HTML file containing the vertex and fragment shaders appears on the left.  The WebGL JavaScript code appear on the right.",  
       "sc2": "In the HTML file, the vertex shader is highlighted below.  Since in this simple HelloWorld example the vertex shader will not transform its vertex in any way, it simply assigns the attribute associated with the vertex (called vPosition) to the GLSL reserved variable gl_Position, which is then passed on to the interpolator in preparation for the fragment shader as per the programmable pipeline in Figure 2.1",
       "sc3": "In the HTML file, the fragment shader is highlighted below.   Each GPU core executing this code operates on one pixel whose location within a fragment like a triangle is interpolated from the three vertices that comprise the triangle.   The fragment shader must assign a color to that pixel using a <b>vec4</b> whose first three components are the RGB components of the color.  In this case since all three components are 1, the color will be white.  The fourth component is called the alpha factor and will always be 1 in our early examples.",
-      "sc4": "There is a wide range of possible running times for the sequential search algorithm. The first integer in the array could have value $K$, and so only one integer is examined.",
-      "sc5": "In this case the running time is short. This is the <b>best case</b> for this algorithm, because it is not possible for sequential search to look at less than one value. In this case the sequencial search algorithm will find $K$ at the first comparison.",
-      "sc6": "<br>After that the algorithm will terminate, returning 0 as the target's index.",
-      "sc7": "Alternatively, if the last position in the array contains $K$, then the running time is relatively long, because the algorithm must examine $n$ values.",
+      "sc4": "The HTML file must include the JavaScript support libraries we will use throughout the book.",
+      "sc5": "It must also include a reference to the CPU-based JavaScript code that we write to interact with the GPU shader code.",
+      "sc6": "The final component of the HTML file is to establish a drawing canvas where the graphics will be displayed on the HTML page.  In this example code, the canvas will have a width and hieght of 512 pixels.",
+      "sc7": "In the JavaScript file, the init function is called when the HTML page is loaded into the browser.  The highlighted lines in the JS code below establish a link between a JS variable we chhose to call <i>canvas</i> and the display region established in the HTML file.",
       "sc8": "<br>This is the <b>worst case</b> for this algorithm, because sequential search never looks at more than each of the $n$ values in the array.",
       "sc9": "If we implement sequential search as a program and run it many times on many different arrays of size $n$, or search for many different values of $K$ within the same array, we expect the algorithm on average to go halfway through the array before finding the value we seek.",
       "sc10": "<br>On average, the algorithm examines $\\frac{n+1}{2}$ values. We call this the <b>average case</b> for this algorithm.",
@@ -21,31 +21,35 @@
   },
   "code" : {
     "pseudo": [
-    {
-      "url": "../../../SourceCode/JavaScript/Graphics/HelloWorldSetup.html",
-      "lineNumbers": true,
-      "startAfter": "/* *** ODSATag: HelloWorldSetupHTML *** */",
-      "endBefore": "/* *** ODSAendTag: HelloWorldSetupHTML *** */",
-      "top": 30,
-      "left": 5,
-      "tags": {
-        "vertex_shader": [5,6,7,8,9,10,11,12,13],
-        "fragment_shader": [15,16,17,18,19,20,21,22,23],
-        "attribute": [7,11]
-      }
-    },
-    {
-      "url": "../../../SourceCode/JavaScript/Graphics/HelloWorldSetup.js",
-      "lineNumbers": true,
-      "startAfter": "/* *** ODSATag: HelloWorldSetupJS *** */",
-      "endBefore": "/* *** ODSAendTag: HelloWorldSetupJS *** */",
-      "top": 30,
-      "left": 505,
-      "tags": {
-        "comparison": 3,
-        "return": 4
-      }
-    }	
-  ]
+      {
+	"url": "../../../SourceCode/JavaScript/Graphics/HelloWorldSetup.html",
+	"lineNumbers": true,
+	"startAfter": "/* *** ODSATag: HelloWorldSetupHTML *** */",
+	"endBefore": "/* *** ODSAendTag: HelloWorldSetupHTML *** */",
+	"top": 5,
+	"left": 5,
+	"tags": {
+	  "vertex_shader": [5,6,7,8,9,10,11,12,13],
+	  "fragment_shader": [15,16,17,18,19,20,21,22,23],
+	  "support_libs" : [26,27,28,29],
+	  "JS_code_ref" : [30],
+	  "gl_canvas": [33],
+	  "attribute": [7,11]
+	}
+      },
+      {
+	"url": "../../../SourceCode/JavaScript/Graphics/HelloWorldSetup.js",
+	"lineNumbers": true,
+	"startAfter": "/* *** ODSATag: HelloWorldSetupJS *** */",
+	"endBefore": "/* *** ODSAendTag: HelloWorldSetupJS *** */",
+	"top": 5,
+	"left": 505,
+	"tags": {
+	  "handle_to_canvas": [6,7],
+	  "vertices": [9,10],
+	  "return": 4
+	}
+      }	
+    ]
   }
 }
