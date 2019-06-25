@@ -1,6 +1,6 @@
 {
-  "title": "Test",
-  "desc": "Test",
+  "title": "Obsolete",
+  "desc": "Obsolete Stuff",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -71,14 +71,8 @@
   },
   "chapters": {
     "Stuff": {
-      "Indexing/TwoThreeTree": {
-      },
-      "Indexing/BTree": {
+      "Obsolete/TwoThreeTest": {
       }
-    }, 
-    "Appendix": {
-      "Glossary": {},
-      "Bibliography": {}
     }
   }
 }

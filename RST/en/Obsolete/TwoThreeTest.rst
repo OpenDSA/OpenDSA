@@ -17,8 +17,8 @@
 --------------
 
 .. inlineav:: TTTreeDgm dgm
-   :links: DataStructures/ArrayTree.css AV/Development/TTT/TTTreeCON.css
-   :scripts: DataStructures/ArrayTree.js AV/Development/TTT/TTTreeCON.js
+   :links: DataStructures/ArrayTree.css AV/Obsolete/TTT/TTTreeCON.css
+   :scripts: DataStructures/ArrayTree.js AV/Obsolete/TTT/TTTreeCON.js
    :align: center
 
    An example of a 2-3 tree.
@@ -27,8 +27,8 @@
 
 .. inlineav:: TTTreeSimpleInsert ss
    :long_name: 2-3 Tree Insert Slideshow
-   :links: DataStructures/ArrayTree.css AV/Development/TTT/TTTreeCON.css
-   :scripts: DataStructures/ArrayTree.js AV/Development/TTT/TTTreeCON.js
+   :links: DataStructures/ArrayTree.css AV/Obsolete/TTT/TTTreeCON.css
+   :scripts: DataStructures/ArrayTree.js AV/Obsolete/TTT/TTTreeCON.js
    :output: show
    :align: justify
 
@@ -38,8 +38,8 @@ Next example.
            
 .. inlineav:: TTTreePromoteInsert ss
    :long_name: 2-3 Tree Insert Promotion Slideshow
-   :links: DataStructures/ArrayTree.css AV/Development/TTT/TTTreeCON.css
-   :scripts: DataStructures/ArrayTree.js AV/Development/TTT/TTTreeCON.js
+   :links: DataStructures/ArrayTree.css AV/Obsolete/TTT/TTTreeCON.css
+   :scripts: DataStructures/ArrayTree.js AV/Obsolete/TTT/TTTreeCON.js
    :output: show
 
 Here is an illustration for what happens when promotions
@@ -48,8 +48,8 @@ Note that all leaf nodes continue to have equal depth.
 
 .. inlineav:: TTTreeSplitInsert ss
    :long_name: 2-3 Tree Insert Split Slideshow
-   :links: DataStructures/ArrayTree.css AV/Development/TTT/TTTreeCON.css
-   :scripts: DataStructures/ArrayTree.js AV/Development/TTT/TTTreeCON.js
+   :links: DataStructures/ArrayTree.css AV/Obsolete/TTT/TTTreeCON.css
+   :scripts: DataStructures/ArrayTree.js AV/Obsolete/TTT/TTTreeCON.js
    :output: show
 
 Here is an implementation for the insertion process.
