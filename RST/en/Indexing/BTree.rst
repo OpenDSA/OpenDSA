@@ -35,8 +35,8 @@ when implementing disk-based search trees:
 
 #. Update and search operations affect only those disk blocks on the
    path from the root to the leaf node containing the query record.
-   The fewer the number of disk blocks affected, the less disk I/O is
-   required.
+   The fewer the number of disk blocks affected during an operation,
+   the less disk I/O is required.
 
 #. B-trees keep related records (that is, records with similar key
    values) on the same disk block, which helps to minimize disk I/O on
