@@ -1,0 +1,27 @@
+#TTPbuildCON .jsavcanvas {
+  height: 250px;
+}
+
+#TTPbuildCON .jsavoutput.jsavline {
+  height: 75px;
+}
+
+#TTPfindCON .jsavcanvas {
+  height: 250px;
+}
+
+#TTPfindCON .jsavoutput.jsavline {
+  30px;
+}
+
+#TTPdeleteCON {
+  height: 350px;
+}
+
+#TTPdeleteCON .jsavcanvas {
+  height: 250px;
+}
+
+#TTPdeleteCON .jsavoutput.jsavline {
+  75px;
+}

@@ -218,30 +218,33 @@ order 3.
 
 .. _TTPbuild:
 
-.. inlineav:: TTPbuild ss
-   :links: AV/Development/TTT/TTPlusTreeX.css
-   :scripts: DataStructures/TTPlusTree.js AV/Development/TTT/TTPlusTreeXCON.js
-   :align: center
+.. inlineav:: TTPbuildCON ss
+   :links: AV/Indexing/BPTree.css AV/Indexing/TTPTreeCON.css
+   :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/TTPbuildCON.js
+   :output: show
 
    An example of building a ":math:`2-3^+` tree
 
 Next, let's see how to search.
 
-   .. _TTPsearch:
+.. _TTPsearch:
 
-.. inlineav:: TTPfind ss
-   :links: AV/Development/TTT/TTPlusTreeX.css
-   :scripts: DataStructures/TTPlusTree.js AV/Development/TTT/TTPlusTreeXCON.js
+.. inlineav:: TTPfindCON ss
+   :links: AV/Indexing/BPTree.css AV/Indexing/TTPTreeCON.css
+   :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/TTPfindCON.js
+   :output: show
    :align: center
 
    An example of searching a ":math:`2-3^+` tree
 
 Finally, let's see an example of deleting from the ":math:`2-3^+` tree
 
+   .. _TTPdelete:
 
-.. inlineav:: TTPdelete ss
-   :links: AV/Development/TTT/TTPlusTreeX.css
-   :scripts: DataStructures/TTPlusTree.js AV/Development/TTT/TTPlusTreeXCON.js
+.. inlineav:: TTPdeleteCON ss
+   :links: AV/Indexing/BPTree.css AV/Indexing/TTPTreeCON.css
+   :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/TTPdeleteCON.js
+   :output: show
    :align: center
 
    An example of deleting from a ":math:`2-3^+` tree
@@ -258,31 +261,20 @@ tree.
 
 .. _BPexamp:
 
-.. odsafig:: Images/BPexamp.png
-   :width: 400
+.. inlineav:: BPfindCON ss
+   :links: AV/Indexing/BPTree.css AV/Indexing/BPTreeCON.css
+   :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPfindCON.js
+   :output: show
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Example of a :math:`\mathrm{B}^+` tree.
 
-   Example of a :math:`\mathrm{B}^+` tree of order four.
+   An example of search in a B+ tree of order four.
    Internal nodes must store between two and four children.
-   For this example, the record size is assumed to be such that
-   leaf nodes store between three and five records.
 
 Search in a :math:`\mathrm{B}^+` tree is nearly identical to search in
 a regular B-tree, except that the search must always continue to the
 proper leaf node.
 Even if the search-key value is found in an internal node, this is
 only a placeholder and does not provide access to the actual record.
-To find a record with key value 33 in the :math:`\mathrm{B}^+` tree of
-Figure :num:`Figure #BPexamp`, search begins at the root.
-The value 33 stored in the root merely serves as a placeholder,
-indicating that keys with values greater than or equal to 33 are found
-in the second subtree.
-From the second child of the root, the first branch is taken to reach
-the leaf node containing the actual record (or a pointer to the actual
-record) with key value 33.
 Here is a pseudocode sketch of the :math:`\mathrm{B}^+` tree search
 algorithm.
 
@@ -306,25 +298,12 @@ several examples.
 
 .. _BPins:
 
-.. odsafig:: Images/BPins.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Examples of :math:`\mathrm{B}^+` tree insertion.
+.. inlineav:: BPbuildCON ss
+   :links: AV/Indexing/BPTree.css AV/Indexing/BPTreeCON.css
+   :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPbuildCON.js
+   :output: show
 
-
-   Examples of :math:`\mathrm{B}^+` tree insertion.
-   (a) B-:math:`\mathrm{B}^+` tree containing five records.
-   (b) The result of inserting a record with key value 50 into the tree
-   of (a).
-   The leaf node splits, causing creation of the first internal node.
-   (c) The :math:`\mathrm{B}^+` tree of (b) after further insertions.
-   (d) The result of inserting a record with key value 30 into the tree
-   of (c).
-   The second leaf node splits, which causes the internal node to split
-   in turn, creating a new root.
-
+   An example of building a B+ tree of order four.
 
 Here is a a Java-like pseudocode sketch of the :math:`\mathrm{B}^+`
 tree insert algorithm.
@@ -345,22 +324,13 @@ This is demonstrated by Figure :num:`Figure #BPdelsimp`.
 
 .. _BPdelsimp:
 
-.. odsafig:: Images/BPsimDel.png
-   :width: 400
+.. inlineav:: BPdeleteCON ss
+   :links: AV/Indexing/BPTree.css AV/Indexing/BPTreeCON.css
+   :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPdeleteCON.js
+   :output: show
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Simple deletion from a :math:`\mathrm{B}^+` tree.
 
-   Simple deletion from a :math:`\mathrm{B}^+` tree.
-   The record with key value 18 is removed from the tree of
-   Figure :num:`Figure #BPexamp`.
-   Note that even though 18 is also a placeholder used to direct search
-   in the parent node, that value need not be removed from internal nodes
-   even if no record in the tree has key value 18.
-   Thus, the leftmost node at level one in this example retains the key
-   with value 18 after the record with key value 18 has been removed
-   from the second leaf node.
+   An example of deletion in a B+ tree of order four.
 
 If deleting a record reduces the number of records in the node below
 the minimum threshold (called an :term:`underflow`), then we must do
@@ -374,27 +344,6 @@ This is done so as to delay as long as possible the next time when a
 delete causes this node to underflow again.
 This process might require that the parent node has its placeholder
 key value revised to reflect the true first key value in each node.
-Figure :num:`Figure #BPborrow` illustrates the process.
-
-.. _BPborrow:
-
-.. odsafig:: Images/BPborrow.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Deletion from a :math:`\mathrm{B}^+` tree via borrowing from
-         a sibling.
-
-   Deletion from the :math:`\mathrm{B}^+` tree of Figure
-   :num:`Figure #BPexamp` via borrowing from a sibling.
-   The key with value 12 is deleted from the leftmost leaf, causing the
-   record with key value 18 to shift to the leftmost leaf to take its
-   place.
-   Note that the parent must be updated to properly indicate the key
-   range within the subtrees.
-   In this example, the parent node has its leftmost key value changed
-   to 19.
 
 If neither sibling can lend a record to the under-full node
 (call it :math:`N`),
@@ -408,28 +357,6 @@ This merge process combines two subtrees of the parent, which might
 cause it to underflow in turn.
 If the last two children of the root merge together, then the tree
 loses a level.
-Figure :num:`Figure #BPmerge` illustrates the node-merge deletion
-process.
-
-.. _BPmerge:
-
-.. odsafig:: Images/BPmerge.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Deletion from a :math:`\mathrm{B}^+` tree via collapsing siblings
-
-   Deleting the record with key value 33 from the :math:`\mathrm{B}^+`
-   tree of Figure :num:`Figure #BPexamp` via collapsing siblings.
-   (a) The two leftmost leaf nodes merge together to form a single leaf.
-   Unfortunately, the parent node now has only one child.
-   (b) Because the left subtree has a spare leaf node, that node is passed
-   to the right subtree.
-   The placeholder values of the root and the right internal node are
-   updated to reflect the changes.
-   Value 23 moves to the root, and old root value 33 moves to the
-   rightmost internal node.
 
 Here is a Java-like pseudocode for the :math:`\mathrm{B}^+` tree
 delete algorithm.
@@ -457,6 +384,19 @@ If the sibling is also full, then these two nodes split into three.
 Similarly, when a node underflows, it is combined with its two
 siblings, and the total reduced to two nodes.
 Thus, the nodes are always at least two thirds full. [#]_
+
+Finally, here is an example of building a B+ Tree of order five. You
+can compare this to the example above of building a tree of order four
+with the same records.
+
+.. _BPins5:
+
+.. inlineav:: BPbuild5CON ss
+   :links: AV/Indexing/BPTree.css AV/Indexing/BPTreeCON.css
+   :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPbuild5CON.js
+   :output: show
+
+   An example of building a B+ tree of degree 5
 
 |galles_BPTree| for a visualization that will let you construct and
 interact with a :math:`\mathrm{B}^+` tree.

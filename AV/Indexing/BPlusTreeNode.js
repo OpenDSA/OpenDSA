@@ -1,4 +1,5 @@
-// Helper function for tree nodes
+// Written by Liling Yuan, Spring 2019
+// B+ Tree Node implementation
 $(document).ready(function() {
   "use strict";
 

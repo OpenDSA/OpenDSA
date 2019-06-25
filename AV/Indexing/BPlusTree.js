@@ -1,4 +1,5 @@
-// Helper function for tree implementation
+// Written by Liling Yuan, Spring 2019
+// B+ Tree implementation
 $(document).ready(function() {
   "use strict";
 
