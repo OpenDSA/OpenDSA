@@ -1,5 +1,10 @@
-boolean SUCCESS = true;
-int Values[];
+import java.io.*;
+
+// Tester for Fibonnaci code
+public class Fibonnaci {
+
+static boolean SUCCESS = true;
+static int Values[];
 
 /* *** ODSATag: FibR *** */
 /** Recursively generate and return the n'th Fibonacci
@@ -13,7 +18,7 @@ static long fibr(int n) {
 /* *** ODSAendTag: FibR *** */
 
 /* *** ODSATag: FibRT *** */
-int fibrt(int n) {
+static int fibrt(int n) {
   // Assume Values has at least n slots, and all
   // slots are initialized to 0
   if ((n <= 0) || (n > 91)) return -1;
@@ -42,7 +47,7 @@ static long fibi(int n) {
 }
 /* *** ODSAendTag: FibI *** */
 
-void setup() {
+public static void main(String args[]) throws IOException {
   long temp1, temp2, temp3;
 
   Values = new int[92];
@@ -51,18 +56,19 @@ void setup() {
   temp1 = fibr(30);
   temp2 = fibrt(30);
   temp3 = fibi(30);
-  println("Got " + temp1);
+  System.out.println("Got " + temp1);
   if ((temp1 != temp2) || (temp1 != temp3))
     SUCCESS = false;
 
   if (SUCCESS) {
-    PrintWriter output = createWriter("success");
+    PrintWriter output = new PrintWriter("success");
     output.println("Success");
     output.flush();
     output.close();
+    System.out.println("Success!");
   } else {
-    println("Testing failed");
+    System.out.println("Testing failed");
   }
+}
 
-  exit();
 }

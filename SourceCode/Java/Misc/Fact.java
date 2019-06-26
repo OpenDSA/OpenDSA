@@ -1,8 +1,13 @@
-boolean SUCCESS = true;
+import java.io.*;
+
+// Tester for factorial code
+public class Fact {
+
+static boolean SUCCESS = true;
 
 /* *** ODSATag: RFact *** */
 // Recursively compute and return n!
-long rfact(int n) {
+static long rfact(int n) {
   // fact(20) is the largest value that fits in a long
   if ((n < 0) || (n > 20)) return -1;
   if (n <= 1)  return 1;  // Base case: return base solution
@@ -12,7 +17,7 @@ long rfact(int n) {
 
 /* *** ODSATag: Sfact *** */
 // Return n!
-long sfact(int n) {
+static long sfact(int n) {
   // fact(20) is the largest value that fits in a long
   if ((n < 0) || (n > 20)) return -1;
   // Make a stack just big enough
@@ -25,7 +30,7 @@ long sfact(int n) {
 }
 /* *** ODSAendTag: Sfact *** */
 
-void setup() {
+public static void main(String args[]) throws IOException {
   long temp1, temp2;
 
   temp1 = rfact(10);
@@ -34,13 +39,14 @@ void setup() {
     SUCCESS = false;
 
   if (SUCCESS) {
-    PrintWriter output = createWriter("success");
+    PrintWriter output = new PrintWriter("success");
     output.println("Success");
     output.flush();
     output.close();
+    System.out.println("Success!");
   } else {
-    println("Testing failed");
+    System.out.println("Testing failed");
   }
+}
 
-  exit();
 }

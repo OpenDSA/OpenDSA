@@ -3,11 +3,14 @@ JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
-all: Demo Misc Lists Binary Sorting Searching
+all: Analysis Demo Misc Lists Binary Sorting Searching Randomized BufferPool Memman Indexing
 
 clean:
 	-rm -rf build
 	mkdir build
+
+Analysis: Analysis/Increment.java
+	@echo "TODO: ANALYSIS: DOES INCREMENT.JAVA GET USED FOR ANYTHING?"
 
 Demo: UpDown
 
@@ -20,9 +23,9 @@ UpDown: Demo/UpDown.java
 	javac $(CFLAGS) UpDown.java; \
 	$(JAVA) $(RFLAGS) UpDown
 
-Misc: LargestTest Anal TOH
+Misc: Largest Anal TOH Fact Fibonnaci Collatz MinMax
 
-LargestTest: build/LargestTest/success
+Largest: build/LargestTest/success
 
 build/LargestTest/success: Misc/LargestTest.java
 	@echo "Largest Test"
@@ -55,7 +58,37 @@ build/TOH/success: Misc/TOH.java Lists/Stack.java Lists/AStack.java
 	javac $(CFLAGS) TOH.java; \
 	$(JAVA) $(RFLAGS) TOH
 
-Lists: ListTest DoubleTest FreeList StackTest QueueTest
+Fact: build/Fact/success
+
+build/Fact/success: Misc/Fact.java Lists/Stack.java Lists/AStack.java
+	@echo "Fact Code Test"
+	-@rm -rf build/Fact
+	@mkdir build/Fact
+	@cp Misc/Fact.java build/Fact
+	@cp Lists/Stack.java build/Fact
+	@cp Lists/AStack.java build/Fact
+	cd build/Fact; \
+	javac $(CFLAGS) Fact.java; \
+	$(JAVA) $(RFLAGS) Fact
+
+Fibonnaci: build/Fibonnaci/success
+
+build/Fibonnaci/success: Misc/Fibonnaci.java
+	@echo "Fibonnaci Test"
+	-@rm -rf build/Fibonnaci
+	@mkdir build/Fibonnaci
+	@cp Misc/Fibonnaci.java build/Fibonnaci
+	cd build/Fibonnaci; \
+	javac $(CFLAGS) Fibonnaci.java; \
+	$(JAVA) $(RFLAGS) Fibonnaci
+
+Collatz: Misc/Collatz.java
+	@echo "TODO: NEED TO COMPLETE COLLATZ"
+
+MinMax: Misc/MinMax.java
+	@echo "TODO: DOES MINMAX GET USED FOR ANYTHING?"
+
+Lists: ListTest DoubleTest FreeList StackTest QueueTest ListAlt
 
 ListTest: build/ListTest/success
 
@@ -136,6 +169,40 @@ build/QueueTest/success: Lists/Queue.java Lists/AQueue.java Lists/Link.java List
 	cd build/QueueTest; \
 	javac $(CFLAGS) QueueTest.java; \
 	$(JAVA) $(RFLAGS) QueueTest
+
+ListAlt: build/ListAlt/success
+
+build/ListAlt/success: ListAlt/ListAlt.java ListAlt/ListIndex.java ListAlt/List.java ListAlt/AList.java
+	@echo "Alternate list implementation test"
+	-@rm -rf build/ListAlt
+	@mkdir build/ListAlt
+	@cp ListAlt/List.java build/ListAlt
+	@cp ListAlt/AList.java build/ListAlt/
+	@cp ListAlt/ListAlt.java build/ListAlt/
+	@cp ListAlt/ListIndex.java build/ListAlt/
+	cd build/ListAlt; \
+	javac $(CFLAGS) ListAlt.java; \
+	$(JAVA) $(RFLAGS) ListAlt
+
+Design: Dictionary
+
+Dictionary: build/DictionaryTest/success
+
+build/DictionaryTest/success: Design/Dictionary.java Design/DictionaryTest.java Design/Payroll.java Design/UALDictionary.java Utils/KVPair.java Lists/AList.java Lists/List.java
+	@echo "Dictionary Test"
+	-@rm -rf build/DictionaryTest
+	@mkdir build/DictionaryTest
+	@cp Design/Dictionary.java build/DictionaryTest
+	@cp Design/DictionaryTest.java build/DictionaryTest
+	@cp Design/Payroll.java build/DictionaryTest
+	@cp Design/UALDictionary.java build/DictionaryTest
+	@cp Utils/KVPair.java build/DictionaryTest
+	@cp Lists/AList.java build/DictionaryTest
+	@cp Lists/List.java build/DictionaryTest
+	cd build/DictionaryTest; \
+	javac $(CFLAGS) DictionaryTest.java; \
+	$(JAVA) $(RFLAGS) DictionaryTest
+
 
 Binary: Traverse BST
 
@@ -259,3 +326,34 @@ build/Sequential/success: Searching/Sequential.java
 	cd build/Sequential; \
 	javac $(CFLAGS) Sequential.java; \
 	$(JAVA) $(RFLAGS) Sequential
+
+Randomized: SkipList
+
+SkipList: build/SkipListTest/success
+
+build/SkipListTest/success: Randomized/SkipList.java Randomized/SkipListTest.java Design/Dictionary.java Utils/KVPair.java
+	@echo "SkipList Test"
+	-@rm -rf build/SkipListTest
+	@mkdir build/SkipListTest
+	cp Randomized/SkipListTest.java build/SkipListTest
+	cp Randomized/SkipList.java build/SkipListTest
+	@cp Design/Dictionary.java build/SkipListTest
+	@cp Utils/KVPair.java build/SkipListTest
+	cd build/SkipListTest; \
+	javac $(CFLAGS) SkipListTest.java; \
+	$(JAVA) $(RFLAGS) SkipListTest
+
+BufferPool: build/BufferPool/success
+
+build/BufferPool/success: BufferPool/BuffBuffADT.java BufferPool/BufferADT.java BufferPool/BufferPoolADT.java BufferPool/BuffMsgADT.java
+	@echo "TODO: BUFFERPOOL"
+
+Memman: build/Memman/success
+
+build/Memman/success: Memman/MemmanADT.java
+	@echo "TODO: MEMMAN"
+
+Indexing: build/Indexing/success
+
+build/Indexing/success:
+	@echo "TODO: Indexing"

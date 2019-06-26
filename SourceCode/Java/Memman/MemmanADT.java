@@ -1,5 +1,5 @@
 // Memory Manager abstract class
-interface MemManager {
+public interface MemManager {
   // Store a record and return a handle to it
   public MemHandle insert(byte[] info);
 
@@ -9,4 +9,3 @@ interface MemManager {
   // Get back a copy of a stored record
   public byte[] getRecord(MemHandle h);
 }
-

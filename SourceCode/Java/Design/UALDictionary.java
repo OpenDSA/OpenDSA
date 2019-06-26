@@ -1,31 +1,31 @@
 /* *** ODSATag: UALDictionary *** */
 // Dictionary implemented by unsorted array-based list.
-class UALdictionary implements Dictionary {
+public class UALDictionary implements Dictionary {
   private static final int defaultSize = 10; // Default size
   private AList list;                        // To store dictionary
 
   // Constructors
-  UALdictionary() { this(defaultSize); }
-  UALdictionary(int sz) { list = new AList(sz); }
+  UALDictionary() { this(defaultSize); }
+  UALDictionary(int sz) { list = new AList(sz); }
 
   // Reinitialize
-  void clear() { list.clear(); }
+  public void clear() { list.clear(); }
 
   // Insert an element: append to list
-  void insert(Comparable k, Object e) {
+  public void insert(Comparable k, Object e) {
     KVPair temp = new KVPair(k, e);
     list.append(temp);
   }
 
   // Use sequential search to find the element to remove
-  Object remove(Comparable k) {
+  public Object remove(Comparable k) {
     Object temp = find(k);
     if (temp != null) list.remove();
     return temp;
   }
 
   // Remove the last element
-  Object removeAny() {
+  public Object removeAny() {
     if (size() != 0) {
       list.moveToEnd();
       list.prev();
@@ -37,17 +37,17 @@ class UALdictionary implements Dictionary {
 
   // Find k using sequential search
   // Return the record with key value k
-  Object find(Comparable k) {
+  public Object find(Comparable k) {
     for(list.moveToStart(); list.currPos() < list.length();
         list.next()) {
       KVPair temp = (KVPair)list.getValue();
-      if (k.compareTo(temp.key()))
+      if (k.compareTo(temp.key()) == 0)
         return temp.value();
     }
     return null; // "k" does not appear in dictionary
   }
 
   // Return list size
-  int size() { return list.length(); }
+  public int size() { return list.length(); }
 }
 /* *** ODSAendTag: UALDictionary *** */

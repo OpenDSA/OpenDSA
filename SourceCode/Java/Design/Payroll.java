@@ -1,6 +1,6 @@
 /* *** ODSATag: Payroll *** */
 /** A simple payroll entry with ID, name, address fields */
-class Payroll {
+public class Payroll {
 
   private Integer ID;
   private String name;
@@ -14,8 +14,8 @@ class Payroll {
   }
 
   /** Data member access functions */
-  Integer getID() { return ID; }
-  String getname() { return name; }
-  String getaddr() { return address; }
+  public Integer getID() { return ID; }
+  public String getname() { return name; }
+  public String getaddr() { return address; }
 }
 /* *** ODSAendTag: Payroll *** */
