@@ -1,6 +1,6 @@
 /* *** ODSATag: UF1 *** */
 // General Tree implementation for UNION/FIND
-class ParPtrTree {
+public class ParPtrTree {
   private int[] array;     // Node array
 
   ParPtrTree(int size) {
@@ -10,7 +10,7 @@ class ParPtrTree {
   }
 
   // Merge two subtrees if they are different
-  void UNION(int a, int b) {
+  public void UNION(int a, int b) {
     int root1 = FIND(a);     // Find root of node a
     int root2 = FIND(b);     // Find root of node b
     if (root1 != root2)          // Merge two trees
@@ -18,14 +18,14 @@ class ParPtrTree {
   }
 
   // Return the root of curr's tree
-  int FIND(int curr) {
+  public int FIND(int curr) {
     while (array[curr] != -1)
       curr = array[curr];
     return curr; // Now at root
   }
 /* *** ODSAendTag: UF1 *** */
 
-  String print() {
+  public String print() {
     String out = "";
     for (int i=0; i<array.length; i++)
       out = out + array[i] + " ";

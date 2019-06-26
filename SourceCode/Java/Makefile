@@ -3,7 +3,7 @@ JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
-all: Analysis Demo Misc Lists Binary Sorting Searching Randomized BufferPool Memman Indexing
+all: Analysis Demo Misc Lists Binary Sorting Searching Randomized BufferPool Memman Indexing General
 
 clean:
 	-rm -rf build
@@ -303,7 +303,7 @@ SelsortTime: Sorting/Selectionsort.java Sorting/SortTime.1 Sorting/SortTime.2 Ut
 	javac $(CFLAGS) SortTime.java; \
 	$(JAVA) $(RFLAGS) SortTime
 
-Searching: Bsearch Sequential
+Searching: Bsearch Sequential Interpolation SequentialNoComments
 
 Bsearch: build/Bsearch/success
 
@@ -326,6 +326,12 @@ build/Sequential/success: Searching/Sequential.java
 	cd build/Sequential; \
 	javac $(CFLAGS) Sequential.java; \
 	$(JAVA) $(RFLAGS) Sequential
+
+Interpolation: Searching/interpolationSearch.java
+	@echo "TODO: Searching: DEAL WITH INTERPOLATIONSEARCH"
+
+SequentialNoComments: Searching/SequentialNoComments.java
+	@echo "TODO: Searching: DEAL WITH SequentialNoComments"
 
 Randomized: SkipList
 
@@ -357,3 +363,40 @@ Indexing: build/Indexing/success
 
 build/Indexing/success:
 	@echo "TODO: Indexing"
+
+General: GenTree UFTest1 UFTest2
+
+GenTree: build/GenTree/success
+
+build/GenTree/success: General/GenTree.java
+	@echo "GenTree Test"
+	-@rm -rf build/GenTree
+	@mkdir build/GenTree
+	@cp General/GenTree.java build/GenTree
+	cd build/GenTree; \
+	javac $(CFLAGS) GenTree.java; \
+	$(JAVA) $(RFLAGS) GenTree
+
+UFTest1: build/UFTest1/success
+
+build/UFTest1/success: General/ParPtrTree1.java General/UFTest1.java
+	@echo "UFTest1 Test"
+	-@rm -rf build/UFTest1
+	@mkdir build/UFTest1
+	@cp General/ParPtrTree1.java build/UFTest1/ParPtrTree.java
+	@cp General/UFTest1.java build/UFTest1
+	cd build/UFTest1; \
+	javac $(CFLAGS) UFTest1.java; \
+	$(JAVA) $(RFLAGS) UFTest1
+
+UFTest2: build/UFTest2/success
+
+build/UFTest2/success: General/ParPtrTree2.java General/UFTest2.java
+	@echo "UFTest2 Test"
+	-@rm -rf build/UFTest2
+	@mkdir build/UFTest2
+	@cp General/ParPtrTree2.java build/UFTest2/ParPtrTree.java
+	@cp General/UFTest2.java build/UFTest2
+	cd build/UFTest2; \
+	javac $(CFLAGS) UFTest2.java; \
+	$(JAVA) $(RFLAGS) UFTest2

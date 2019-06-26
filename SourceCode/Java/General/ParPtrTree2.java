@@ -1,5 +1,5 @@
 // General Tree class implementation for UNION/FIND
-class ParPtrTree {
+public class ParPtrTree {
   private int[] array;      // Node array
   private int[] weights;
 
@@ -13,7 +13,7 @@ class ParPtrTree {
   }
 
   // Determine if nodes are in different trees
-  boolean differ(int a, int b) {
+  public boolean differ(int a, int b) {
     int root1 = FIND(a);     // Find root of node a
     int root2 = FIND(b);     // Find root of node b
     return root1 != root2;       // Compare roots
@@ -21,7 +21,7 @@ class ParPtrTree {
 
   // Merge two subtrees with weighted union
   /* *** ODSATag: UnionFind *** */
-  void UNION(int a, int b) {
+  public void UNION(int a, int b) {
     int root1 = FIND(a);     // Find root of node a
     int root2 = FIND(b);     // Find root of node b
     if (root1 != root2)          // Merge with weighted union
@@ -37,18 +37,17 @@ class ParPtrTree {
 
   /* *** ODSATag: PathCompress *** */
   // Return the root of curr's tree with path compression
-  int FIND(int curr) {
+  public int FIND(int curr) {
     if (array[curr] == -1) return curr; // At root
     array[curr] = FIND(array[curr]);
     return array[curr];
   }
   /* *** ODSAendTag: PathCompress *** */
 
-  String print() {
+  public String print() {
     String out = "";
     for (int i=0; i<array.length; i++)
       out = out + array[i] + " ";
     return out;
   }
 }
-
