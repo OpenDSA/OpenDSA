@@ -204,7 +204,7 @@ build/DictionaryTest/success: Design/Dictionary.java Design/DictionaryTest.java 
 	$(JAVA) $(RFLAGS) DictionaryTest
 
 
-Binary: Traverse ExpTree ExpTreeC BST BSTDict RecTutor Huffman
+Binary: Traverse ExpTree ExpTreeC BST BSTDict RecTutor MinHeap MaxHeap Huffman
 
 Traverse: build/Traverse/success
 
@@ -255,7 +255,9 @@ build/BSTTest/success: Binary/BST.java Binary/BSTTest1.java Binary/checkBST.java
 	@cp Binary/BST.java build/BSTTest
 	@cp Binary/BSTNode.java build/BSTTest
 	@cp Binary/BinNode.java build/BSTTest
-	@cat Binary/BSTTest1.java Utils/Permute.java Utils/Swap.java Binary/checkBST.java Binary/Preorder.java Binary/BSTTest.java > build/BSTTest/BSTTest.java
+	@cp Utils/Permute.java build/BSTTest
+	@cp Utils/Swap.java build/BSTTest
+	@cat Binary/BSTTest1.java Binary/checkBST.java Binary/Preorder.java Binary/BSTTest.java > build/BSTTest/BSTTest.java
 	@cp Utils/KVPair.java build/BSTTest
 	cd build/BSTTest; \
 	javac $(CFLAGS) BSTTest.java; \
@@ -263,7 +265,7 @@ build/BSTTest/success: Binary/BST.java Binary/BSTTest1.java Binary/checkBST.java
 
 BSTDict: build/BSTDictTest/success
 
-build/BSTDictTest/success: Binary/BST.java Binary/BSTDict.java Binary/BSTDictTest.java Binary/BSTDictTest1.java Binary/BSTNode.java Binary/BinNode.java Utils/Permute.java Utils/Swap.java Utils/KVPair.java Design/Dictionary.java
+build/BSTDictTest/success: Binary/BST.java Binary/BSTDict.java Binary/BSTDictTest.java Binary/BSTNode.java Binary/BinNode.java Utils/Permute.java Utils/Swap.java Utils/KVPair.java Design/Dictionary.java
 	@echo "BST Dictionary Test"
 	-@rm -rf build/BSTDictTest
 	@mkdir build/BSTDictTest
@@ -271,7 +273,9 @@ build/BSTDictTest/success: Binary/BST.java Binary/BSTDict.java Binary/BSTDictTes
 	@cp Binary/BSTNode.java build/BSTDictTest
 	@cp Binary/BinNode.java build/BSTDictTest
 	@cp Design/Dictionary.java build/BSTDictTest
-	@cat Binary/BSTDictTest1.java Utils/Permute.java Utils/Swap.java Binary/BSTDictTest.java > build/BSTDictTest/BSTDictTest.java
+	@cp Utils/Permute.java build/BSTDictTest
+	@cp Utils/Swap.java build/BSTDictTest
+	@cp Binary/BSTDictTest.java build/BSTDictTest
 	@cp Binary/BSTDict.java build/BSTDictTest
 	@cp Utils/KVPair.java build/BSTDictTest
 	cd build/BSTDictTest; \
@@ -291,6 +295,34 @@ build/RecTutor/success: Binary/BSTNode.java Binary/BinNode.java Binary/RecTutor.
 	javac $(CFLAGS) RecTutor.java; \
 	$(JAVA) $(RFLAGS) RecTutor
 
+Minheap: build/MinheapTest/success
+
+build/MinheapTest/success: Binary/MinHeap.java Binary/MinheapTest.java Utils/Permute.java Utils/Swap.java
+	@echo "Minheap Test"
+	-@rm -rf build/MinheapTest
+	@mkdir build/MinheapTest
+	@cp Binary/MinHeap.java build/MinheapTest
+	@cp Utils/Swap.java build/MinheapTest
+	@cp Utils/Permute.java build/MinheapTest
+	@cp Binary/MinheapTest.java build/MinheapTest
+	cd build/MinheapTest; \
+	javac $(CFLAGS) MinheapTest.java; \
+	$(JAVA) $(RFLAGS) MinheapTest
+
+Maxheap: build/MaxheapTest/success
+
+build/MaxheapTest/success: Binary/MaxHeap.java Binary/MaxheapTest.java Utils/Permute.java Utils/Swap.java
+	@echo "Maxheap Test"
+	-@rm -rf build/MaxheapTest
+	@mkdir build/MaxheapTest
+	@cp Binary/MaxHeap.java build/MaxheapTest
+	@cp Utils/Swap.java build/MaxheapTest
+	@cp Utils/Permute.java build/MaxheapTest
+	@cp Binary/MaxheapTest.java build/MaxheapTest
+	cd build/MaxheapTest; \
+	javac $(CFLAGS) MaxheapTest.java; \
+	$(JAVA) $(RFLAGS) MaxheapTest
+
 Huffman: build/Huffman/success
 
 build/Huffman/success: Binary/Huffman.java
@@ -303,7 +335,7 @@ build/Huffman/success: Binary/Huffman.java
 	$(JAVA) $(RFLAGS) Huffman
 
 
-Sorting: Inssort Bubblesort Selsort
+Sorting: Inssort Bubblesort Selsort Binsort Shellsort Mergesort Quicksort Heapsort Binsort Radixsort
 
 Sorttime: InssortTime BubblesortTime SelsortTime
 
@@ -313,7 +345,8 @@ build/InssortTest/success: Sorting/Insertionsort.java Sorting/SortTest.1 Sorting
 	@echo "Insertionsort Test"
 	-@rm -rf build/InssortTest
 	@mkdir build/InssortTest
-	cat Sorting/SortTest.1 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Sorting/Insertionsort.java Sorting/SortTest.2 > build/InssortTest/SortTest.java
+	cat Sorting/SortTest.1 Utils/Processing.java Utils/Checkorder.java Sorting/Insertionsort.java Sorting/SortTest.2 > build/InssortTest/SortTest.java
+	@cp Utils/Swap.java build/InssortTest
 	cp Utils/KVPair.java build/InssortTest
 	cd build/InssortTest; \
 	javac $(CFLAGS) SortTest.java; \
@@ -325,7 +358,8 @@ build/BubblesortTest/success: Sorting/Bubblesort.java Sorting/SortTest.1 Sorting
 	@echo "Bubblesort Test"
 	-@rm -rf build/BubblesortTest
 	@mkdir build/BubblesortTest
-	cat Sorting/SortTest.1 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Sorting/Bubblesort.java Sorting/SortTest.2 > build/BubblesortTest/SortTest.java
+	cat Sorting/SortTest.1 Utils/Processing.java Utils/Checkorder.java Sorting/Bubblesort.java Sorting/SortTest.2 > build/BubblesortTest/SortTest.java
+	@cp Utils/Swap.java build/BubblesortTest
 	cp Utils/KVPair.java build/BubblesortTest
 	cd build/BubblesortTest; \
 	javac $(CFLAGS) SortTest.java; \
@@ -337,9 +371,91 @@ build/SelsortTest/success: Sorting/Selectionsort.java Sorting/SortTest.1 Sorting
 	@echo "Selectionsort Test"
 	-@rm -rf build/SelsortTest
 	@mkdir build/SelsortTest
-	cat Sorting/SortTest.1 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Sorting/Selectionsort.java Sorting/SortTest.2 > build/SelsortTest/SortTest.java
+	cat Sorting/SortTest.1 Utils/Processing.java Utils/Checkorder.java Sorting/Selectionsort.java Sorting/SortTest.2 > build/SelsortTest/SortTest.java
+	@cp Utils/Swap.java build/SelsortTest
 	cp Utils/KVPair.java build/SelsortTest
 	cd build/SelsortTest; \
+	javac $(CFLAGS) SortTest.java; \
+	$(JAVA) $(RFLAGS) SortTest
+
+Shellsort: build/ShellsortTest/success
+
+build/ShellsortTest/success: Sorting/Shellsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+	@echo "Shellsort Test"
+	-@rm -rf build/ShellsortTest
+	@mkdir build/ShellsortTest
+	cat Sorting/SortTest.1 Utils/Processing.java Utils/Checkorder.java Sorting/Shellsort.java Sorting/SortTest.2 > build/ShellsortTest/SortTest.java
+	@cp Utils/Swap.java build/ShellsortTest
+	cp Utils/KVPair.java build/ShellsortTest
+	cd build/ShellsortTest; \
+	javac $(CFLAGS) SortTest.java; \
+	$(JAVA) $(RFLAGS) SortTest
+
+Mergesort: build/MergesortTest/success
+
+build/MergesortTest/success: Sorting/Mergesort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+	@echo "Mergesort Test"
+	-@rm -rf build/MergesortTest
+	@mkdir build/MergesortTest
+	cat Sorting/SortTest.1 Utils/Processing.java Utils/Checkorder.java Sorting/Mergesort.java Sorting/SortTest.2 > build/MergesortTest/SortTest.java
+	@cp Utils/Swap.java build/MergesortTest
+	cp Utils/KVPair.java build/MergesortTest
+	cd build/MergesortTest; \
+	javac $(CFLAGS) SortTest.java; \
+	$(JAVA) $(RFLAGS) SortTest
+
+Quicksort: build/QuicksortTest/success
+
+build/QuicksortTest/success: Sorting/Quicksort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+	@echo "Quicksort Test"
+	-@rm -rf build/QuicksortTest
+	@mkdir build/QuicksortTest
+	cat Sorting/SortTest.1 Utils/Processing.java Utils/Checkorder.java Sorting/Quicksort.java Sorting/SortTest.2 > build/QuicksortTest/SortTest.java
+	@cp Utils/Swap.java build/QuicksortTest
+	cp Utils/KVPair.java build/QuicksortTest
+	cd build/QuicksortTest; \
+	javac $(CFLAGS) SortTest.java; \
+	$(JAVA) $(RFLAGS) SortTest
+
+Heapsort: build/HeapsortTest/success
+
+build/HeapsortTest/success: Sorting/Heapsort.java Binary/MaxHeap.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+	@echo "Heapsort Test"
+	-@rm -rf build/HeapsortTest
+	@mkdir build/HeapsortTest
+	cat Sorting/SortTest.1 Utils/Processing.java Utils/Checkorder.java Sorting/Heapsort.java Sorting/SortTest.2 > build/HeapsortTest/SortTest.java
+	@cp Binary/MaxHeap.java build/HeapsortTest
+	@cp Utils/Swap.java build/HeapsortTest
+	@cp Utils/Permute.java build/HeapsortTest
+	cp Utils/KVPair.java build/HeapsortTest
+	cd build/HeapsortTest; \
+	javac $(CFLAGS) SortTest.java; \
+	$(JAVA) $(RFLAGS) SortTest
+
+Binsort: build/BinsortTest/success
+
+build/BinsortTest/success: Sorting/Binsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java Utils/Permute.java
+	@echo "Binsort Test"
+	-@rm -rf build/BinsortTest
+	@mkdir build/BinsortTest
+	cat Sorting/SortTest.1 Utils/Processing.java Utils/Checkorder.java Sorting/Binsort.java Sorting/SortTest.2 > build/BinsortTest/SortTest.java
+	@cp Utils/Permute.java build/BinsortTest
+	@cp Utils/Swap.java build/BinsortTest
+	cp Utils/KVPair.java build/BinsortTest
+	cd build/BinsortTest; \
+	javac $(CFLAGS) SortTest.java; \
+	$(JAVA) $(RFLAGS) SortTest
+
+Radixsort: build/RadixsortTest/success
+
+build/RadixsortTest/success: Sorting/Radixsort.java Sorting/SortTest.1 Sorting/SortTest.2 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Utils/KVPair.java
+	@echo "Radixsort Test"
+	-@rm -rf build/RadixsortTest
+	@mkdir build/RadixsortTest
+	cat Sorting/SortTest.1 Utils/Processing.java Utils/Checkorder.java Sorting/Radixsort.java Sorting/SortTest.2 > build/RadixsortTest/SortTest.java
+	@cp Utils/Swap.java build/RadixsortTest
+	cp Utils/KVPair.java build/RadixsortTest
+	cd build/RadixsortTest; \
 	javac $(CFLAGS) SortTest.java; \
 	$(JAVA) $(RFLAGS) SortTest
 

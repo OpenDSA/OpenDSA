@@ -1,9 +1,13 @@
-void sorttest(Comparable[] A) {
+
+static Boolean sorttest(int[] A) {
+  int i;
   shellsort(A);
+  if (!checkorder(A)) return false;
+  return true;
 }
 
 /* *** ODSATag: Shellsort *** */
-void shellsort(Comparable[] A) {
+static void shellsort(int[] A) {
   for (int i=A.length/2; i>2; i/=2) // For each increment
     for (int j=0; j<i; j++)         // Sort each sublist
       inssort2(A, j, i);
@@ -11,9 +15,9 @@ void shellsort(Comparable[] A) {
 }
 
 /** Modified Insertion Sort for varying increments */
-void inssort2(Comparable[] A, int start, int incr) {
+static void inssort2(int[] A, int start, int incr) {
   for (int i=start+incr; i<A.length; i+=incr)
-    for (int j=i; (j>=incr) && (A[j].compareTo(A[j-incr]) < 0); j-=incr)
-      swap(A, j, j-incr);
+    for (int j=i; (j>=incr) && (A[j] < A[j-incr]); j-=incr)
+      Swap.swap(A, j, j-incr);
 }
 /* *** ODSAendTag: Shellsort *** */

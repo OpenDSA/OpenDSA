@@ -1,14 +1,19 @@
-void sorttest(Comparable[] A) {
+static boolean sorttest(int[] inA) {
+  int i;
+  Comparable[] A = new Comparable[inA.length];
+  for (i=0; i<inA.length; i++)
+    A[i] = new Integer(inA[i]);
   Comparable[] temp = new Comparable[A.length];
   Comparable[] B = new Comparable[A.length];
-  for(int i=0; i<A.length; i++) B[i] = A[i];
+  for(i=0; i<A.length; i++) B[i] = A[i];
   mergesort(A, temp, 0, A.length-1);
-  checkorder(A);
+  if (!checkorder(A)) return false;
   mergesortOpt(B, temp, 0, A.length-1);
-  checkorder(B);
+  if (!checkorder(B)) return false;
+  return true;
 }
 
-void sorttime(Comparable[] B) {
+static void sorttime(Comparable[] B) {
   int i;
   Comparable[] A = new Comparable[B.length];
   Comparable[] temp;
@@ -25,7 +30,7 @@ void sorttime(Comparable[] B) {
     checkorder(A);
     totaltime += (time2-time1);
   }
-  println("Standard Mergesort for " + numruns + " runs: Size " +
+  System.out.println("Standard Mergesort for " + numruns + " runs: Size " +
           testsize + ", Time: " + totaltime);
   totaltime = 0;
   for (runs=0; runs<numruns; runs++) {
@@ -43,7 +48,7 @@ void sorttime(Comparable[] B) {
 
 
 /* *** ODSATag: Mergesort *** */
-void mergesort(Comparable[] A, Comparable[] temp, int left, int right) {
+static void mergesort(Comparable[] A, Comparable[] temp, int left, int right) {
   if (left == right) return;         // List has one record
   int mid = (left+right)/2;          // Select midpoint
   mergesort(A, temp, left, mid);     // Mergesort first half
@@ -66,8 +71,26 @@ void mergesort(Comparable[] A, Comparable[] temp, int left, int right) {
 }
 /* *** ODSAendTag: Mergesort *** */
 
-void inssort(Comparable[] A, int left, int right) {
+static void inssort(Comparable[] A, int left, int right) {
   for (int i=left+1; i<=right; i++)        // Insert i'th record
     for (int j=i; (j>left) && (A[j].compareTo(A[j-1]) < 0); j--)
-      swap(A, j, j-1);
+      Swap.swap(A, j, j-1);
 }
+
+/* *** ODSATag: MergesortOpt *** */
+static void mergesortOpt(Comparable[] A, Comparable[] temp, int left, int right) {
+  int i, j, k, mid = (left+right)/2;  // Select the midpoint
+  if (left == right) return;          // List has one record
+  if ((mid-left) >= THRESHOLD) mergesortOpt(A, temp, left, mid);
+  else inssort(A, left, mid);
+  if ((right-mid) > THRESHOLD) mergesortOpt(A, temp, mid+1, right);
+  else inssort(A, mid+1, right);
+  // Do the merge operation.  First, copy 2 halves to temp.
+  for (i=left; i<=mid; i++) temp[i] = A[i];
+  for (j=right; j>mid; j--) temp[i++] = A[j];
+  // Merge sublists back to array
+  for (i=left,j=right,k=left; k<=right; k++)
+    if (temp[i].compareTo(temp[j]) <= 0) A[k] = temp[i++];
+    else A[k] = temp[j--];
+}
+/* *** ODSAendTag: MergesortOpt *** */

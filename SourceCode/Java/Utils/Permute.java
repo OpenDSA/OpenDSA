@@ -1,3 +1,7 @@
+import java.util.*;
+import java.math.*;
+
+public class Permute {
   /** Initialize the random variable */
   static private Random value = new Random(); // Hold the Random class object
 
@@ -7,15 +11,22 @@
       @param n The upper bound for the range.
       @return A value in the range 0 to n-1.
   */
-  static int random(int n) {
+  public static int random(int n) {
         return Math.abs(value.nextInt()) % n;
   }
 
 
 /* *** ODSATag: Permute *** */
 // Randomly permute the values in array A
-static void permute(Object[] A) {
+public static void permute(Object[] A) {
   for (int i = A.length; i > 0; i--) // for each i
-    swap(A, i-1, random(i));         //   swap A[i-1] with a random
+    Swap.swap(A, i-1, random(i));         //   swap A[i-1] with a random
 }                                    //   position in the range 0 to i-1.
 /* *** ODSAendTag: Permute *** */
+
+// Randomly permute the values in array A
+public static void permute(int[] A) {
+  for (int i = A.length; i > 0; i--) // for each i
+    Swap.swap(A, i-1, random(i));         //   swap A[i-1] with a random
+}                                    //   position in the range 0 to i-1.
+}

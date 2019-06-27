@@ -1,3 +1,8 @@
+import java.io.*;
+
+// Tester for BST-based dictionary code
+public class BSTDictTest {
+
 static boolean SUCCESS = true;
 static final int OFFSET = 10000000;
 static final int testsize = 100;
@@ -12,7 +17,7 @@ public static void main(String args[]) throws IOException {
   for (i=0; i<A.length; i++)
     A[i] = i;
   // Now, generate a permuation on the numbers
-  permute(A);
+  Permute.permute(A);
 
   // Now, build the dictionary
   // Each record will have a random key value from the permuation.

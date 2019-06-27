@@ -1,5 +1,11 @@
-void sorttest(Integer[] A) {
+static boolean sorttest(int[] B) {
+  int i;
+  Integer[] A = new Integer[B.length];
+  for (i=0; i<B.length; i++)
+    A[i] = new Integer(B[i]);
   radix(A, 4, 256);
+  if (!checkorder(A)) return false;
+  return true;
 }
 
 /* *** ODSATag: Radixsort *** */

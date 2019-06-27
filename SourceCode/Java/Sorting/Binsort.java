@@ -1,71 +1,67 @@
-final int numtests = 5;
-final int testsize = 100;
-boolean SUCCESS = true;
-final int MaxKeyValue = 200;
+static final int MaxKeyValue = 200;
 
 // The following are dummy declarations to keep the compiler happy.
 // Need to implement this for real when there is a list class
 // available.
-interface List {
-  void append(Object it);
+public interface List {
+  public void append(int it);
 
-  void next();
+  public void next();
 
-  void moveToStart();
+  public void moveToStart();
 
-  Object getValue();
+  public int getValue();
 }
 
-class LinkedList implements List {
+public static class LinkedList implements List {
   LinkedList() {}
 
-  void append(Object it) {}
+  public void append(int it) {}
 
-  void next() {}
+  public void next() {}
 
-  void moveToStart() {}
+  public void moveToStart() {}
 
-  Object getValue() { return null; }
+  public int getValue() { return -1; }
 }
 
-void output(Object x) {}
+static void output(Object x) {}
 
 /* *** ODSATag: Binsort *** */
-void binsort(Integer[] A) {
+static void binsort(int[] A) {
   List[] B = new LinkedList[MaxKeyValue+1];
-  Object item;
+  int item;
   for (int i=0; i<=MaxKeyValue; i++)
     B[i] = new LinkedList();
-  for (int i=0; i<A.length; i++) B[A[i]].append(new Integer(A[i]));
+  for (int i=0; i<A.length; i++) B[A[i]].append(A[i]);
   int pos = 0;
   for (int i=0; i<=MaxKeyValue; i++)
-    for (B[i].moveToStart(); (item = B[i].getValue()) != null; B[i].next())
-      A[pos++] = (Integer)item;
+    for (B[i].moveToStart(); (item = B[i].getValue()) != -1; B[i].next())
+      A[pos++] = item;
 }
 /* *** ODSAendTag: Binsort *** */
 
 
-void simplebinsort(Integer[] A, Integer[] B) {
+static void simplebinsort(int[] A, int[] B) {
   int i;
-/* *** ODSATag: simplebinsort *** */
+  /* *** ODSATag: simplebinsort *** */
   for (i=0; i<A.length; i++)
     B[A[i]] = A[i];
-/* *** ODSAendTag: simplebinsort *** */
+  /* *** ODSAendTag: simplebinsort *** */
 }
 
 
-void simplebinsort2(Integer[] A) {
+static void simplebinsort2(int[] A) {
   int i;
-/* *** ODSATag: simplebinsort2 *** */
-for (i=0; i<A.length; i++)
-  while (A[i] != i) // Swap element A[i] with A[A[i]]
-    swap(A, i, A[i]);
-/* *** ODSAendTag: simplebinsort2 *** */
+  /* *** ODSATag: simplebinsort2 *** */
+  for (i=0; i<A.length; i++)
+    while (A[i] != i) // Swap element A[i] with A[A[i]]
+      Swap.swap(A, i, A[i]);
+  /* *** ODSAendTag: simplebinsort2 *** */
 }
 
-void setup() {
-  Integer[] A = new Integer[testsize];
-  Integer[] B = new Integer[testsize];
+static Boolean sorttest(int[] A) {
+  int[] B = new int[A.length];
   int i;
 
   // Perform numtests trials to test this
@@ -74,35 +70,31 @@ void setup() {
       A[i] = i;
       B[i] = 0;
     }
-    permute(A);
+    Permute.permute(A);
     simplebinsort(A, B);
-    for (i=1; i<A.length; i++)
+    for (i=1; i<A.length; i++) {
       if (B[i] < B[i-1]) {
-        println("Error! Value " + B[i] + " at position " + i +
-                " was less than " + B[i-1] + " at position " + (i-1));
+        System.out.println("Error! Value " + B[i] + " at position " + i +
+                           " was less than " + B[i-1] + " at position " + (i-1));
         SUCCESS = false;
       }
+    }
   }
+
 
   for (int tests=0; tests<numtests; tests++) {
-    for (i=0; i<A.length; i++) {
-      A[i] = i;
+    for (i=0; i<B.length; i++) {
+      B[i] = i;
     }
-    permute(A);
-    simplebinsort2(A);
-    for (i=1; i<A.length; i++)
-      if (A[i] < A[i-1]) {
-        println("Error! Value " + A[i] + " at position " + i +
-                " was less than " + A[i-1] + " at position " + (i-1));
+    Permute.permute(B);
+    simplebinsort2(B);
+    for (i=1; i<B.length; i++) {
+      if (B[i] < B[i-1]) {
+        System.out.println("Error! Value " + B[i] + " at position " + i +
+                           " was less than " + B[i-1] + " at position " + (i-1));
         SUCCESS = false;
       }
+    }
   }
-
-  if (SUCCESS) {
-    PrintWriter output = createWriter("success");
-    output.println("Success");
-    output.flush();
-    output.close();
-  }
-  exit();
+  return SUCCESS;
 }
