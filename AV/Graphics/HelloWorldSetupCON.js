@@ -58,15 +58,57 @@ $(document).ready(function() {
 
   // Slide 9
   av.umsg(interpret("sc9"));
-//   pseudoHTML.unhighlight("return");
-//   pseudoJS.unhighlight("return");
+  pseudoJS.unhighlight("vertices");
+  pseudoJS.highlight("clear_color");
   av.step();
 
   // Slide 10
-  av.umsg(interpret("sc10"), {preserve: true});
+  av.umsg(interpret("sc10"));
+  pseudoJS.unhighlight("clear_color");
+  pseudoJS.highlight("init_shaders");
   av.step();
 
   // Slide 11
   av.umsg(interpret("sc11"));
+  pseudoJS.unhighlight("init_shaders");
+  pseudoJS.highlight("load_buffer");
+  av.step();
+
+  // Slide 12
+  av.umsg(interpret("sc12"));
+  pseudoJS.unhighlight("load_buffer");
+  pseudoJS.highlight("connect_buffer_to_attribute");
+  pseudoHTML.highlight("attribute");
+  av.step();
+
+  // Slide 13
+  av.umsg(interpret("sc13"));
+  pseudoJS.unhighlight("connect_buffer_to_attribute");
+  pseudoHTML.unhighlight("attribute");
+  pseudoJS.highlight("call_render");
+  av.step();
+
+  // Slide 14
+  av.umsg(interpret("sc14"));
+  pseudoJS.unhighlight("call_render");
+  pseudoJS.highlight("clear_canvas");
+  av.step();
+
+    
+  // Last slide
+  av.umsg(interpret("sc15"));
+  pseudoJS.unhighlight("clear_canvas");
+  pseudoJS.highlight("draw_square");
   av.recorded();
 });
+
+/*
+	  "vertices": [9,10],
+	  "clear_color": [12],
+	  "init_shaders": [13,14,15],
+	  "load_buffer": [16,17,18,19],
+	  "connect_buffer_to_attribute": [20,21,22,23],
+	  "call_render"; [25],
+	  "clear_canvas": [29],
+	  "draw_square": [30],
+*/
