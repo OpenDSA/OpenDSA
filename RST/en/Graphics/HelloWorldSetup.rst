@@ -65,5 +65,11 @@ program described below.
    :scripts: AV/Graphics/HelloWorldSetupCON.js
    :output: show
 
-When analyzing an algorithm, should we study the best, worst, or
-average case?
+When the code from our HelloWorld example executes, in your browser the resulting display is:
+
+.. iframe:: AV/Graphics/HelloWorld.html
+    :name: HelloWorld
+    :width: 1100
+    :height: 800
+	    
+
