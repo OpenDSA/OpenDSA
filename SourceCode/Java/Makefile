@@ -204,7 +204,7 @@ build/DictionaryTest/success: Design/Dictionary.java Design/DictionaryTest.java 
 	$(JAVA) $(RFLAGS) DictionaryTest
 
 
-Binary: Traverse BST
+Binary: Traverse ExpTree ExpTreeC BST BSTDict RecTutor Huffman
 
 Traverse: build/Traverse/success
 
@@ -220,6 +220,32 @@ build/Traverse/success: Binary/BinNode.java Binary/BSTNode.java Binary/Traverse1
 	javac $(CFLAGS) Traverse.java; \
 	$(JAVA) $(RFLAGS) Traverse
 
+ExpTree: build/ExpTree/success
+
+build/ExpTree/success: Binary/ExpressionTree.java Binary/Visit.java Binary/ExpTree.java
+	@echo "Expression Tree Test"
+	-@rm -rf build/ExpTree
+	@mkdir build/ExpTree
+	@cp Binary/ExpTree.java build/ExpTree
+	@cp Binary/ExpressionTree.java build/ExpTree
+	@cp Binary/Visit.java build/ExpTree
+	cd build/ExpTree; \
+	javac $(CFLAGS) ExpTree.java; \
+	$(JAVA) $(RFLAGS) ExpTree
+
+ExpTreeC: build/ExpTreeC/success
+
+build/ExpTreeC/success: Binary/ExpressionTreeC.java Binary/Visit.java Binary/ExpTreeC.java
+	@echo "Expression Tree Test: Composite"
+	-@rm -rf build/ExpTreeC
+	@mkdir build/ExpTreeC
+	@cp Binary/ExpTreeC.java build/ExpTreeC
+	@cp Binary/ExpressionTreeC.java build/ExpTreeC
+	@cp Binary/Visit.java build/ExpTreeC
+	cd build/ExpTreeC; \
+	javac $(CFLAGS) ExpTreeC.java; \
+	$(JAVA) $(RFLAGS) ExpTreeC
+
 BST: build/BSTTest/success
 
 build/BSTTest/success: Binary/BST.java Binary/BSTTest1.java Binary/checkBST.java Binary/Preorder.java Binary/BSTTest.java Binary/BSTNode.java Binary/BinNode.java Utils/Permute.java Utils/Swap.java Binary/Traverse.java Utils/KVPair.java
@@ -234,6 +260,47 @@ build/BSTTest/success: Binary/BST.java Binary/BSTTest1.java Binary/checkBST.java
 	cd build/BSTTest; \
 	javac $(CFLAGS) BSTTest.java; \
 	$(JAVA) $(RFLAGS) BSTTest
+
+BSTDict: build/BSTDictTest/success
+
+build/BSTDictTest/success: Binary/BST.java Binary/BSTDict.java Binary/BSTDictTest.java Binary/BSTDictTest1.java Binary/BSTNode.java Binary/BinNode.java Utils/Permute.java Utils/Swap.java Utils/KVPair.java Design/Dictionary.java
+	@echo "BST Dictionary Test"
+	-@rm -rf build/BSTDictTest
+	@mkdir build/BSTDictTest
+	@cp Binary/BST.java build/BSTDictTest
+	@cp Binary/BSTNode.java build/BSTDictTest
+	@cp Binary/BinNode.java build/BSTDictTest
+	@cp Design/Dictionary.java build/BSTDictTest
+	@cat Binary/BSTDictTest1.java Utils/Permute.java Utils/Swap.java Binary/BSTDictTest.java > build/BSTDictTest/BSTDictTest.java
+	@cp Binary/BSTDict.java build/BSTDictTest
+	@cp Utils/KVPair.java build/BSTDictTest
+	cd build/BSTDictTest; \
+	javac $(CFLAGS) BSTDictTest.java; \
+	$(JAVA) $(RFLAGS) BSTDictTest
+
+RecTutor: build/RecTutor/success
+
+build/RecTutor/success: Binary/BSTNode.java Binary/BinNode.java Binary/RecTutor.java
+	@echo "RecTutor Test: TODO: I don't think this is the right code"
+	-@rm -rf build/RecTutor
+	@mkdir build/RecTutor
+	@cp Binary/RecTutor.java build/RecTutor
+	@cp Binary/BSTNode.java build/RecTutor
+	@cp Binary/BinNode.java build/RecTutor
+	cd build/RecTutor; \
+	javac $(CFLAGS) RecTutor.java; \
+	$(JAVA) $(RFLAGS) RecTutor
+
+Huffman: build/Huffman/success
+
+build/Huffman/success: Binary/Huffman.java
+	@echo "Huffman Test"
+	-@rm -rf build/Huffman
+	@mkdir build/Huffman
+	@cp Binary/Huffman.java build/Huffman
+	cd build/Huffman; \
+	javac $(CFLAGS) Huffman.java; \
+	$(JAVA) $(RFLAGS) Huffman
 
 
 Sorting: Inssort Bubblesort Selsort

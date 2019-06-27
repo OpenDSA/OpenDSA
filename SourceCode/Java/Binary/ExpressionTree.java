@@ -1,39 +1,39 @@
 /* *** ODSATag: ExpressionTree *** */
 /* *** ODSATag: ExpressionTree1 *** */
 // Base class for expression tree nodes
-interface VarBinNode {
-  boolean isLeaf(); // All subclasses must implement
+public interface VarBinNode {
+  public boolean isLeaf(); // All subclasses must implement
 }
 
 /** Leaf node */
-class VarLeafNode implements VarBinNode {
+public class VarLeafNode implements VarBinNode {
   private String operand;                 // Operand value
 
   VarLeafNode(String val) { operand = val; }
-  boolean isLeaf() { return true; }
-  String value() { return operand; }
+  public boolean isLeaf() { return true; }
+  public String value() { return operand; }
 }
 /* *** ODSAendTag: ExpressionTree1 *** */
 
 /* *** ODSATag: ExpressionTree2 *** */
-/** Internal node */
-class VarIntlNode implements VarBinNode {
+// Internal node
+public class VarIntlNode implements VarBinNode {
   private VarBinNode left;                // Left child
   private VarBinNode right;               // Right child
   private Character operator;             // Operator value
 
   VarIntlNode(Character op, VarBinNode l, VarBinNode r)
     { operator = op; left = l; right = r; }
-  boolean isLeaf() { return false; }
-  VarBinNode leftchild() { return left; }
-  VarBinNode rightchild() { return right; }
-  Character value() { return operator; }
+  public boolean isLeaf() { return false; }
+  public VarBinNode leftchild() { return left; }
+  public VarBinNode rightchild() { return right; }
+  public Character value() { return operator; }
 }
 /* *** ODSAendTag: ExpressionTree2 *** */
 
-/** Preorder traversal */
+// Preorder traversal
 /* *** ODSATag: pointer based preorder *** */
-static void traverse(VarBinNode rt) {
+public static void traverse(VarBinNode rt) {
   if (rt == null) return;          // Nothing to visit
   if (rt.isLeaf())                 // Process leaf node
     Visit.VisitLeafNode(((VarLeafNode)rt).value());
@@ -45,15 +45,3 @@ static void traverse(VarBinNode rt) {
 }
 /* *** ODSAendTag: pointer based preorder *** */
 /* *** ODSAendTag: ExpressionTree *** */
-
-
-
-
-
-
-
-
-
-
-
-

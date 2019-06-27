@@ -1,8 +1,8 @@
-boolean SUCCESS = true;
-final int OFFSET = 10000000;
-final int testsize = 100;
+static boolean SUCCESS = true;
+static final int OFFSET = 10000000;
+static final int testsize = 100;
 
-void setup() {
+public static void main(String args[]) throws IOException {
   Integer[] A = new Integer[testsize];
   int i;
   Dictionary b = new BSTDict();
@@ -22,7 +22,7 @@ void setup() {
     b.insert(A[i], i + OFFSET);
 
   if (b.size() != testsize) {
-    println("Oops! Tree size is " + b.size() + ", it should be " + testsize);
+    System.out.println("Oops! Tree size is " + b.size() + ", it should be " + testsize);
     SUCCESS = false;
   }
   // Now, let's test removeAny
@@ -31,11 +31,14 @@ void setup() {
   }
 
   if (SUCCESS) {
-    PrintWriter output = createWriter("success");
+    PrintWriter output = new PrintWriter("success");
     output.println("Success");
     output.flush();
     output.close();
-    println("Success!");
+    System.out.println("Success!");
+  } else {
+    System.out.println("BST-based Dictionary code testing failed");
   }
-  exit();
+
+}
 }

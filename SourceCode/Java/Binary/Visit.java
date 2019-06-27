@@ -1,4 +1,4 @@
-static class Visit {
+public class Visit {
   static private StringBuffer out;
 
   static void VisitInit() {

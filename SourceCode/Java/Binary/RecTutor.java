@@ -1,4 +1,9 @@
-boolean SUCCESS = true;
+import java.io.*;
+
+// Tester for analysis code
+public class RecTutor {
+
+static boolean SUCCESS = true;
 
 /* *** ODSATag: EffCnt *** */
 static int count(BinNode root) {
@@ -29,13 +34,13 @@ static int ineff_count(BinNode root) {
 /* *** ODSATag: IneffbtInc *** */
 static void ineff_BTinc(BinNode root) {
   if (root != null) {
-    root.setValue((root.value()) + 1);
+      root.setValue((int)(root.value()) + 1);
     if (root.left() != null) {
-      root.left().setValue((root.left().value()) + 1);
+      root.left().setValue((int)(root.left().value()) + 1);
       ineff_BTinc(root.left().left());
     }
     if (root.right() != null) {
-      root.right().setValue((root.right().value()) + 1);
+      root.right().setValue((int)(root.right().value()) + 1);
       ineff_BTinc(root.right().right());
     }
   }
@@ -46,14 +51,13 @@ static void ineff_BTinc(BinNode root) {
 static int bad_count(BinNode root) {
   if (root == null) return 0;  // Nothing to count
   bad_count(root.left());
-  1 + bad_count(root.left()) + bad_count(root.right());
+  return 1 + bad_count(root.left()) + bad_count(root.right());
 }
 /* *** ODSAendTag: bad_count *** */
 
 
 
-void setup() {
- 
+public static void main(String args[]) throws IOException {
    BSTNode root = null;
    root = new BSTNode(10);
    BSTNode leftChild = new BSTNode(15);
@@ -61,18 +65,20 @@ void setup() {
    root.setLeft(leftChild); 
    root.setRight(rightChild);
   
-  int x= eff_count(root);
+  int x= count(root);
 
   x = ineff_count(root);
 
-  ineff_btInc(root, 15);
+  ineff_BTinc(root);
 
   if (SUCCESS) {
-    PrintWriter output = createWriter("success");
+    PrintWriter output = new PrintWriter("success");
     output.println("Success");
     output.flush();
     output.close();
-    println("Success!");
+    System.out.println("Success!");
+  } else {
+    System.out.println("RecTutor code testing failed");
   }
-  exit();
+}
 }
