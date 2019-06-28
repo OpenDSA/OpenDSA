@@ -16,8 +16,8 @@
     }
   },
   "code": {
-    "processing": {
-      "url": "../../../SourceCode/Processing/Sorting/Quicksort.pde",
+    "java": {
+      "url": "../../../SourceCode/Java/Sorting/Quicksort.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: partition *** */",
       "endBefore": "/* *** ODSAendTag: partition *** */",

@@ -1,5 +1,5 @@
 /* *** ODSATag: TopsortDFS *** */
-void topsortDFS(Graph G) {
+static void topsortDFS(Graph G) {
   int v;
   for (v=0; v<G.nodeCount(); v++)
     G.setValue(v, null); // Initialize
@@ -8,7 +8,7 @@ void topsortDFS(Graph G) {
       tophelp(G, v);
 }
 
-void tophelp(Graph G, int v) {
+static void tophelp(Graph G, int v) {
   G.setValue(v, VISITED);
   int[] nList = G.neighbors(v);
   for (int i=0; i< nList.length; i++)

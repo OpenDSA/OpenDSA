@@ -10,37 +10,6 @@
   }
  },
   "code" : {
-    "processing": [
-       {
-        "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV1.pde",
-        "tags": {
-         "bc": 3,
-         "rc": 5
-        }
-       },
-      {
-        "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV2.pde",
-        "tags": {
-         "bc": 3,
-         "rc": 6,
-         "ret": 8
-       }
-      },
-      {
-        "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV3.pde",
-        "tags": {
-         "bc": 3,
-         "rc": 5      
-	  }
-      },
-      {
-        "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV4.pde",
-        "tags": {
-         "bc": 3,
-         "rc": 5
-      }
-     }
-    ],
     "java": [
        {
         "url": "../../../SourceCode/Java/RecurTutor/WrtSumV1.java",

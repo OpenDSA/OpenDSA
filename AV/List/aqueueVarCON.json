@@ -9,19 +9,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Lists/AQueue.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: AQueue1 *** */",
-      "endBefore": "/* *** ODSAendTag: AQueue1 *** */",
-      "tags": {
-        "array": 6,
-        "constructor": 9,
-        "setmaxsize": 10,
-        "varmaxsize": 3,
-        "varrear": 5
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Lists/AQueue.java",
       "lineNumbers": false,

@@ -3,7 +3,7 @@ JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
-all: Analysis Demo Misc Lists Binary Sorting Searching Randomized BufferPool Memman Indexing General
+all: Analysis Demo Misc Lists Binary Sorting Searching Randomized BufferPool Memman Indexing General Graphs
 
 clean:
 	-rm -rf build
@@ -583,3 +583,82 @@ build/UFTest2/success: General/ParPtrTree2.java General/UFTest2.java
 	cd build/UFTest2; \
 	javac $(CFLAGS) UFTest2.java; \
 	$(JAVA) $(RFLAGS) UFTest2
+
+Graphs: GraphDummy GraphTrav GraphTop GraphDijk Floyd MCST
+
+GraphDummy: build/GraphDummy/success
+
+build/GraphDummy/success: Graphs/GraphDummy.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java
+	@echo "GraphDummy Test"
+	-@rm -rf build/GraphDummy
+	@mkdir build/GraphDummy
+	@cp Graphs/GraphDummy.java build/GraphDummy
+	@cp Graphs/Graph.java build/GraphDummy
+	@cp Graphs/GraphM.java build/GraphDummy
+	@cp Graphs/GraphL.java build/GraphDummy
+	cd build/GraphDummy; \
+	javac $(CFLAGS) GraphDummy.java; \
+	$(JAVA) $(RFLAGS) GraphDummy
+
+GraphTrav: build/GraphTrav/success
+
+build/GraphTrav/success: Graphs/BFS.java Graphs/DFS.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java Graphs/GraphTrav.gph Graphs/GraphCreate.java Lists/Queue.java Lists/LQueue.java Lists/Link.java Graphs/GraphTrav.java Graphs/GraphTrav1.java
+	@echo "GraphTrav Test"
+	-@rm -rf build/GraphTrav
+	@mkdir build/GraphTrav
+	@cat Graphs/GraphTrav1.java Graphs/GraphCreate.java Graphs/BFS.java Graphs/DFS.java Graphs/GraphTrav.java > build/GraphTrav/GraphTrav.java
+	@cp Graphs/GraphTrav.gph build/GraphTrav
+	@cp Graphs/Graph.java build/GraphTrav
+	@cp Graphs/GraphM.java build/GraphTrav
+	@cp Graphs/GraphL.java build/GraphTrav
+	@cp Lists/Queue.java build/GraphTrav
+	@cp Lists/LQueue.java build/GraphTrav
+	@cp Lists/Link.java build/GraphTrav
+	cd build/GraphTrav; \
+	javac $(CFLAGS) GraphTrav.java; \
+	$(JAVA) $(RFLAGS) GraphTrav
+
+GraphTop: build/GraphTop/success
+
+build/GraphTop/success: Graphs/TopsortBFS.java Graphs/TopsortDFS.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java Graphs/GraphTop.gph Graphs/GraphCreate.java Lists/Queue.java Lists/LQueue.java Lists/Link.java Graphs/GraphTop.java Graphs/GraphTop1.java
+	@echo "GraphTop Test"
+	-@rm -rf build/GraphTop
+	@mkdir build/GraphTop
+	@cat Graphs/GraphTop1.java Graphs/GraphCreate.java Graphs/TopsortBFS.java Graphs/TopsortDFS.java Graphs/GraphTop.java > build/GraphTop/GraphTop.java
+	@cp Graphs/GraphTop.gph build/GraphTop
+	@cp Graphs/Graph.java build/GraphTop
+	@cp Graphs/GraphM.java build/GraphTop
+	@cp Graphs/GraphL.java build/GraphTop
+	@cp Lists/Queue.java build/GraphTop
+	@cp Lists/LQueue.java build/GraphTop
+	@cp Lists/Link.java build/GraphTop
+	cd build/GraphTop; \
+	javac $(CFLAGS) GraphTop.java; \
+	$(JAVA) $(RFLAGS) GraphTop
+
+GraphDijk: build/GraphDijk/success
+
+build/GraphDijk/success: Graphs/Dijkstra.java Graphs/DijkstraPQ.java Graphs/Graph.java Graphs/GraphM.java Graphs/GraphL.java Graphs/GraphDijk.gph Graphs/GraphCreate.java Lists/Queue.java Lists/LQueue.java Lists/Link.java Graphs/GraphDijk.java Graphs/GraphDijk1.java Utils/KVPair.java Binary/MinHeap.java Utils/Swap.java
+	@echo "GraphDijk Test"
+	-@rm -rf build/GraphDijk
+	@mkdir build/GraphDijk
+	@cat Graphs/GraphDijk1.java Graphs/GraphCreate.java Graphs/Dijkstra.java Graphs/DijkstraPQ.java Graphs/GraphDijk.java > build/GraphDijk/GraphDijk.java
+	@cp Graphs/GraphDijk.gph build/GraphDijk
+	@cp Graphs/Graph.java build/GraphDijk
+	@cp Graphs/GraphM.java build/GraphDijk
+	@cp Graphs/GraphL.java build/GraphDijk
+	@cp Lists/Queue.java build/GraphDijk
+	@cp Lists/LQueue.java build/GraphDijk
+	@cp Lists/Link.java build/GraphDijk
+	@cp Utils/KVPair.java build/GraphDijk
+	@cp Utils/Swap.java build/GraphDijk
+	@cp Binary/MinHeap.java build/GraphDijk
+	cd build/GraphDijk; \
+	javac $(CFLAGS) GraphDijk.java; \
+	$(JAVA) $(RFLAGS) GraphDijk
+
+Floyd: Graphs/Floyde.java
+	@echo "TODO: Graphs: Floyd.java"
+
+MCST: GraphMCST.java Kruskal.java Prim.java PrimPQ.java
+	@echo "TODO: Graphs: TEST MCST CODE"

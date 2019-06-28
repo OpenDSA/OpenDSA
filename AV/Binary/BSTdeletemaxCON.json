@@ -10,18 +10,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Binary/BST.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: deletemax *** */",
-      "endBefore": "/* *** ODSAendTag: deletemax *** */",
-      "tags": {
-        "sig": 2,
-        "checknull": 3,
-        "setright": 4,
-        "return": 5
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Binary/BST.java",
       "lineNumbers": false,

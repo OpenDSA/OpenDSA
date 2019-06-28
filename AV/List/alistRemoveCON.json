@@ -10,20 +10,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Lists/AList.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: AListRemove *** */",
-      "endBefore": "/* *** ODSAendTag: AListRemove *** */",
-      "tags": {
-        "sig": 2,
-        "copy": 5,
-        "for": 6,
-        "forbody": 7,
-        "dec": 8,
-        "return": 9
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Lists/AList.java",
       "lineNumbers": false,

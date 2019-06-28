@@ -7,17 +7,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Lists/AStack.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: AStack1 *** */",
-      "endBefore": "/* *** ODSAendTag: AStack1 *** */",
-      "tags": {
-        "sig": 2,
-        "top": 5,
-        "constructor": 8
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Lists/AStack.java",
       "lineNumbers": false,

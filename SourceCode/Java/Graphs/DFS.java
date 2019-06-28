@@ -1,5 +1,5 @@
 /* *** ODSATag: DFS *** */
-void DFS(Graph G, int v) {
+static void DFS(Graph G, int v) {
   PreVisit(G, v);
   G.setValue(v, VISITED);
   int[] nList = G.neighbors(v);

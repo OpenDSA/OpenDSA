@@ -106,7 +106,7 @@ Make the call, and let their own base case handle it.
    The following solution has an error, since it does redundant
    manipulation to left and the right children of each node.
   
-   .. codeinclude:: Binary/RecExCode
+   .. codeinclude:: Binary/RecTutor
       :tag: IneffbtInc
 	
    The efficient solution should not explicitly set the children

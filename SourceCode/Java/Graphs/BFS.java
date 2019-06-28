@@ -1,5 +1,5 @@
 /* *** ODSATag: BFS *** */
-void BFS(Graph G, int v) {
+static void BFS(Graph G, int v) {
   LQueue Q = new LQueue(G.nodeCount());
   Q.enqueue(v);
   G.setValue(v, VISITED);

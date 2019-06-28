@@ -17,16 +17,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: SequentialLargest *** */",
-      "endBefore": "/* *** ODSAendTag: SequentialLargest *** */",
-      "top": 80,
-      "left": 397,
-      "tags": {
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
