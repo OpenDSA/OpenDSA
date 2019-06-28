@@ -56,6 +56,8 @@ shader receives must be a location that is *interpolated* based on the
 location within the triangular region determined by three vertices
 that define the fragment.
 
+.. _HelloWorldExample:
+
 With this overview in mind, consider the simple "Hello World" WebGL
 program described below.
 
@@ -65,7 +67,7 @@ program described below.
    :scripts: AV/Graphics/HelloWorldSetupCON.js
    :output: show
 
-When the code from our HelloWorld example executes, in your browser the resulting display is:
+When the code from our HelloWorldExample_ executes, in your browser the resulting display is:
 
 .. iframe:: AV/Graphics/HelloWorld.html
     :name: HelloWorld
