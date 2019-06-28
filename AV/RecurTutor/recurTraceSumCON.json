@@ -19,46 +19,6 @@
     }
   },
   "code" : {
-    "processing": [
-    {
-      "url": "../../../SourceCode/Processing/RecurTutor/WrtSumex.pde",
-      "lineNumbers": false,
-      "tags": {
-       "sig": 1,
-       "bc": 2,
-       "bcac": 3,
-       "rc": 5  
-      }
-    },
-    {
-      "url": "../../../SourceCode/Processing/RecurTutor/WrtSumex0.pde",
-      "lineNumbers": false,
-      "tags": {
-       "bcac": 3
-      }
-    },
-    {
-      "url": "../../../SourceCode/Processing/RecurTutor/WrtSumex1.pde",
-      "lineNumbers": false,
-      "tags": {
-        "rc": 5
-      }
-    },
-    {
-      "url": "../../../SourceCode/Processing/RecurTutor/WrtSumex2.pde",
-      "lineNumbers": false,
-      "tags": {
-       "rc": 5  
-      }
-    },
-    {
-      "url": "../../../SourceCode/Processing/RecurTutor/WrtSumex3.pde",
-      "lineNumbers": false,
-      "tags": {
-        "rc": 5  
-      }
-    }   
-    ],
     "java":[ 
     {
       "url": "../../../SourceCode/Java/RecurTutor/WrtSumex.java",

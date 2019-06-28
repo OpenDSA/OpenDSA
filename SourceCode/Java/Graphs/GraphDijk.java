@@ -1,10 +1,10 @@
-final Object VISITED = "Visited";
-final Object UNVISITED = "unVisited";
-final int INFINITY = Integer.MAX_VALUE;
-String out;
-Boolean SUCCESS = true;
+static final Object VISITED = "Visited";
+static final Object UNVISITED = "unVisited";
+static final int INFINITY = Integer.MAX_VALUE;
+static String out;
+static Boolean SUCCESS = true;
 
-void test(Graph G) {
+static void test(Graph G) throws FileNotFoundException {
   GraphCreate(G, "GraphDijk.gph");
   int[] D = new int[G.nodeCount()];
   int i;
@@ -13,7 +13,7 @@ void test(Graph G) {
   for (i=0; i<G.nodeCount(); i++)
     out = out + D[i] + " ";
   if (out.equals("0 5 3 10 18 ") != true) {
-    println("ERROR IN Dijkstra!!!:" + out);
+    System.out.println("ERROR IN Dijkstra!!!:" + out);
     SUCCESS = false;
   }
   out = "";
@@ -23,7 +23,7 @@ void test(Graph G) {
   for (i=0; i<G.nodeCount(); i++)
     out = out + D[i] + " ";
   if (out.equals("0 5 3 10 18 ") != true) {
-    println("ERROR IN DijkstraPQ!!!:" + out);
+    System.out.println("ERROR IN DijkstraPQ!!!:" + out);
     SUCCESS = false;
   }
 
@@ -38,7 +38,7 @@ void test(Graph G) {
   for (i=0; i<G.nodeCount(); i++)
     out = out + D[i] + " ";
   if (out.equals("0 5 3 10 2147483647 ") != true) {
-    println("ERROR IN Dijkstra!!!:" + out);
+    System.out.println("ERROR IN Dijkstra!!!:" + out);
     SUCCESS = false;
   }
   out = "";
@@ -50,23 +50,26 @@ void test(Graph G) {
   for (i=0; i<G.nodeCount(); i++)
     out = out + D[i] + " ";
   if (out.equals("0 5 3 10 2147483647 ") != true) {
-    println("ERROR IN DijkstraPQ!!!:" + out);
+    System.out.println("ERROR IN DijkstraPQ!!!:" + out);
     SUCCESS = false;
   }
 
 }
 
-void setup() {
+public static void main(String args[]) throws IOException {
   GraphM GM = new GraphM();
   GraphL GL = new GraphL();
 
   test(GM);
   test(GL);
   if (SUCCESS) {
-    PrintWriter output = createWriter("success");
+    PrintWriter output = new PrintWriter("success");
     output.println("Success");
     output.flush();
     output.close();
+    System.out.println("Success!");
+  } else {
+    System.out.println("Graph Traversal code testing failed");
   }
-  exit();
+}
 }

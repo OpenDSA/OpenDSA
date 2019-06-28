@@ -1,5 +1,5 @@
 /* *** ODSATag: GraphL *** */
-class GraphL implements Graph {
+public class GraphL implements Graph {
 
   private class Edge { // Doubly linked list node
     int vertex, weight;
@@ -21,7 +21,7 @@ class GraphL implements Graph {
   GraphL() {}
 
   // Initialize the graph with n vertices
-  void init(int n) {
+  public void init(int n) {
     nodeArray = new Edge[n];
     // List headers;
     for (int i=0; i<n; i++) nodeArray[i] = new Edge(-1, -1, null, null);
@@ -30,16 +30,16 @@ class GraphL implements Graph {
   }
 
   // Return the number of vertices
-  int nodeCount() { return nodeArray.length; }
+  public int nodeCount() { return nodeArray.length; }
 
   // Return the current number of edges
-  int edgeCount() { return numEdge; }
+  public int edgeCount() { return numEdge; }
 
   // Get the value of node with index v
-  Object getValue(int v) { return nodeValues[v]; }
+  public Object getValue(int v) { return nodeValues[v]; }
 
   // Set the value of node with index v
-  void setValue(int v, Object val) { nodeValues[v] = val; }
+  public void setValue(int v, Object val) { nodeValues[v] = val; }
   
   // Return the link in v's neighbor list that preceeds the
   // one with w (or where it would be)
@@ -51,7 +51,7 @@ class GraphL implements Graph {
   }
 
   // Adds a new edge from node v to node w with weight wgt
-  void addEdge(int v, int w, int wgt) {
+  public void addEdge(int v, int w, int wgt) {
     if (wgt == 0) return; // Can't store weight of 0
     Edge curr = find(v, w);
     if ((curr.next != null) && (curr.next.vertex == w))
@@ -64,14 +64,14 @@ class GraphL implements Graph {
   }
 
   // Get the weight value for an edge
-  int weight(int v, int w) {
+  public int weight(int v, int w) {
     Edge curr = find(v, w);
     if ((curr.next == null) || (curr.next.vertex != w)) return 0;
     else return curr.next.weight;
   }
 
   // Removes the edge from the graph.
-  void removeEdge(int v, int w) {
+  public void removeEdge(int v, int w) {
     Edge curr = find(v, w);
     if ((curr.next == null) || curr.next.vertex != w) return;
     else {
@@ -82,10 +82,10 @@ class GraphL implements Graph {
   }
 
   // Returns true iff the graph has the edge
-  boolean hasEdge(int v, int w) { return weight(v, w) != 0; }
+  public boolean hasEdge(int v, int w) { return weight(v, w) != 0; }
 
   // Returns an array containing the indicies of the neighbors of v
-  int[] neighbors(int v) {
+  public int[] neighbors(int v) {
     int cnt = 0;
     Edge curr;
     for (curr = nodeArray[v].next; curr != null; curr = curr.next)

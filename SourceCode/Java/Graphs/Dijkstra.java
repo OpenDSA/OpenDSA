@@ -1,6 +1,6 @@
 /* *** ODSATag: MinVertex *** */
 // Find the unvisited vertex with the smalled distance
-int minVertex(Graph G, int[] D) {
+static int minVertex(Graph G, int[] D) {
   int v = 0;  // Initialize v to any unvisited vertex;
   for (int i=0; i<G.nodeCount(); i++)
     if (G.getValue(i) != VISITED) { v = i; break; }
@@ -14,7 +14,7 @@ int minVertex(Graph G, int[] D) {
 
 /* *** ODSATag: GraphDijk1 *** */
 // Compute shortest path distances from s, store them in D
-void Dijkstra(Graph G, int s, int[] D) {
+static void Dijkstra(Graph G, int s, int[] D) {
   for (int i=0; i<G.nodeCount(); i++)    // Initialize
     D[i] = INFINITY;
   D[s] = 0;

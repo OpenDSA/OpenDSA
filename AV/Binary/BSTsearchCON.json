@@ -18,22 +18,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Binary/BST.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: findhelp *** */",
-      "endBefore": "/* *** ODSAendTag: findhelp *** */",
-      "tags": {
-        "sig": 1,
-        "checknull": 2,
-        "checkgreater": 3,
-        "visitleft": 4,
-        "checkequal": 5,
-        "found": 6,
-        "visitright": 7,
-        "end": 8
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Binary/BST.java",
       "lineNumbers": false,

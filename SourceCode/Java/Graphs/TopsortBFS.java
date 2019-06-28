@@ -1,5 +1,5 @@
 /* *** ODSATag: TopsortBFS *** */
-void topsortBFS(Graph G) {          // Topological sort: Queue
+static void topsortBFS(Graph G) {   // Topological sort: Queue
   Queue Q = new LQueue(G.nodeCount());
   int[] Count = new int[G.nodeCount()];
   int[] nList;

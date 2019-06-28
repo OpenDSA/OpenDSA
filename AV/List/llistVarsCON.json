@@ -11,19 +11,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Lists/LList.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: LListVars *** */",
-      "endBefore": "/* *** ODSAendTag: LListVars *** */",
-      "tags": {
-        "sig": 1,
-        "head": 2,
-        "tail": 3,
-        "curr": 4,
-        "listSize": 5
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Lists/LList.java",
       "lineNumbers": false,

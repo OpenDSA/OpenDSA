@@ -14,20 +14,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Binary/Traverse.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: inorder *** */",
-      "endBefore": "/* *** ODSAendTag: inorder *** */",
-      "tags": {
-        "sig": 1,
-        "checknull": 2,
-        "visitleft": 3,
-        "visit": 4,
-        "visitright": 5,
-        "end": 6
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Binary/Traverse.java",
       "lineNumbers": false,

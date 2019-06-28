@@ -14,31 +14,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Lists/LList.pde",
-      "startAfter": "/* *** ODSATag: LListNext *** */",
-      "endBefore": "/* *** ODSAendTag: LListNext *** */",
-      "tags": {
-        "sig": 2
-      }
-    }, {
-      "url": "../../../SourceCode/Processing/Lists/LList.pde",
-      "startAfter": "/* *** ODSATag: LListPrev *** */",
-      "endBefore": "/* *** ODSAendTag: LListPrev *** */",
-      "tags": {
-        "sig": 2,
-        "while": 6,
-        "curr": 7
-      }
-    }, {
-      "url": "../../../SourceCode/Processing/Lists/LList.pde",
-      "startAfter": "/* *** ODSATag: LListPos *** */",
-      "endBefore": "/* *** ODSAendTag: LListPos *** */",
-      "tags": {
-        "sig": 2,
-        "for": 5
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Lists/LList.java",
       "startAfter": "/* *** ODSATag: LListNext *** */",

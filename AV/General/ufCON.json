@@ -3,8 +3,8 @@
     "en": {}
   },
   "code": {
-    "processing": {
-      "url": "../../../SourceCode/Processing/General/ParPtrTree2.pde",
+    "java": {
+      "url": "../../../SourceCode/Java/General/ParPtrTree2.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: UnionFind *** */",
       "endBefore": "/* *** ODSAendTag: UnionFind *** */",

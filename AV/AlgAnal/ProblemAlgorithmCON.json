@@ -28,29 +28,6 @@
     }
   },
   "code": {
-    "processing": [
-      {
-        "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",
-        "lineNumbers": false,
-        "startAfter": "/* *** ODSATag: Sequential *** */",
-        "endBefore": "/* *** ODSAendTag: Sequential *** */",
-        "top": 80,
-        "left": 397,
-        "tags": {
-        }
-      },
-      {
-        "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
-        "lineNumbers": false,
-        "startAfter": "/* *** ODSATag: Sequential *** */",
-        "endBefore": "/* *** ODSAendTag: Sequential *** */",
-        "top": 80,
-        "left": 397,
-        "tags": {
-
-        }
-      }
-    ],
     "java": [
       {
         "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",

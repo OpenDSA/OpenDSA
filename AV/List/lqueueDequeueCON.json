@@ -11,20 +11,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Lists/LQueue.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: LQueueDequeue *** */",
-      "endBefore": "/* *** ODSAendTag: LQueueDequeue *** */",
-      "tags": {
-        "sig": 2,
-        "empty": 3,
-        "copy": 4,
-        "setNext": 5,
-        "endcheck": 6,
-        "return": 7
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Lists/LQueue.java",
       "lineNumbers": false,

@@ -9,20 +9,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Lists/DList.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: DListPrev *** */",
-      "endBefore": "/* *** ODSAendTag: DListPrev *** */",
-      "tags": {
-        "sig": 1,
-        "new": 2,
-        "setNext": 3,
-        "setElem": 4,
-        "size": 5,
-        "return": 6
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Lists/DList.java",
       "lineNumbers": false,

@@ -37,7 +37,7 @@ class MinHeap {
   }
 
   // Insert val into heap
-  void insert(int key) {
+  void insert(Comparable key) {
     if (n >= size) {
       System.out.println("Heap is full");
       return;
