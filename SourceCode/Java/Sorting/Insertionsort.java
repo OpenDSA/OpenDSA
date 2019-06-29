@@ -111,6 +111,6 @@ static Boolean sorttest(int[] B) {
 static <T extends Comparable<T>> void inssort(T[] A) {
   for (int i=1; i<A.length; i++) // Insert i'th record
     for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
-      swap(A, j, j-1);
+      Swap.swap(A, j, j-1);
 }
 /* *** ODSAendTag: Insertionsort *** */

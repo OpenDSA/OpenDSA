@@ -86,7 +86,7 @@ or to sum the values of all the nodes.
    redundant checks on the left and the right child of each visited
    node.
 	    
-   .. codeinclude:: Binary/RecExCode
+   .. codeinclude:: Binary/RecTutor
       :tag: IneffCnt
 
 When you write a recursive function that returns a value,

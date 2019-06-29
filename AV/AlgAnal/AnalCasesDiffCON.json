@@ -20,18 +20,6 @@
     }
   },
   "code" : {
-    "processing": [{
-      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: Sequential *** */",
-      "endBefore": "/* *** ODSAendTag: Sequential *** */",
-      "top": 90,
-      "left": 395,
-      "tags": {
-        "comparison": 3,
-        "return": 4
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,

@@ -13,22 +13,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Lists/DList.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: DListRemove *** */",
-      "endBefore": "/* *** ODSAendTag: DListRemove *** */",
-      "tags": {
-        "sig": 1,
-        "tailcheck": 2,
-        "elem": 3,
-        "setNext": 4,
-        "setPrev": 5,
-        "curr": 6,
-        "size": 7,
-        "return": 8
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Lists/DList.java",
       "lineNumbers": false,

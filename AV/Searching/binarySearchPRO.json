@@ -41,15 +41,6 @@
         "tbl_mid_lt_key": 8,
         "tbl_mid_gt_key": 9
       }
-    },
-    "processing": {
-      "url": "../../SourceCode/Processing/Searching/Bsearch.pde",
-      "lineNumbers": true,
-      "tags": {
-        "highlight": 7,
-        "tbl_mid_lt_key": 8,
-        "tbl_mid_gt_key": 9
-      }
     }
   },
   "params": {

@@ -1,6 +1,4 @@
 /*global ODSA */
-// Written by Mohammed Farghally and Cliff Shaffer
-// Best, Worst, Average Cases definitions
 $(document).ready(function() {
   "use strict";
   var av_name = "HelloWorldSetupCON";
@@ -9,124 +7,108 @@ $(document).ready(function() {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code[0]).hide();
-  var arr;
-  var arr_values = [];
-  var topAlign = 60;
-  var leftAlign = 10;
-  var rectWidth = 230;
-  var rectHeight = 200;
-  var arraySize = 7;
-  var i;
+  var pseudoHTML = av.code(code[0]);
+  var pseudoJS = av.code(code[1]);
 
   // Slide 1
   av.umsg(interpret("sc1"));
-  var rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
-  var label = av.label(interpret("lab1"),  {top: topAlign - 25, left: leftAlign + 420}).addClass("codelabel");
   av.displayInit();
 
   // Slide 2
   av.umsg(interpret("sc2"));
-  var nlabel = av.label("|---------------------------- $n$ ----------------------------|", {left: leftAlign + 25, top: topAlign + 60});
-  var count = 0;
-  while (count < arraySize) {
-    var value = Math.round(Math.random() * 10) + 1;
-    if (arr_values.indexOf(value) === -1) {
-      arr_values[count] = value;
-      count++;
-    }
-  }
-  arr = av.ds.array(arr_values, {left: leftAlign, top: topAlign, indexed: true});
+  pseudoHTML.highlight("vertex_shader");
   av.step();
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  pseudo.show();
+  pseudoHTML.unhighlight("vertex_shader");
+  pseudoHTML.highlight("fragment_shader");
   av.step();
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  var pointer = av.pointer("$k$", arr.index(0));
-  pseudo.highlight("comparison");
+  pseudoHTML.unhighlight("fragment_shader");
+  pseudoHTML.highlight("support_libs");
   av.step();
 
   // Slide 5
   av.umsg(interpret("sc5"));
-  pseudo.unhighlight("comparison");
-  pseudo.highlight("return");
+  pseudoHTML.unhighlight("support_libs");
+  pseudoHTML.highlight("JS_code_ref");
   av.step();
 
   // Slide 6
-  av.umsg(interpret("sc6"), {preserve: true});
-  var labelOutput = av.label("index = $0$",
-                             {top: topAlign + 15, left: leftAlign + 395 + rectWidth});
-  arr.addClass([0], "greenbg");
-  pseudo.unhighlight("return");
+  av.umsg(interpret("sc6"));
+  pseudoHTML.unhighlight("JS_code_ref");
+  pseudoHTML.highlight("gl_canvas");
   av.step();
 
   // Slide 7
   av.umsg(interpret("sc7"));
-  arr.removeClass([0], "greenbg");
-  pointer.target(arr.index(arraySize - 1));
-  arr.unhighlight(0);
-  labelOutput.hide();
-  pseudo.highlight("comparison");
+  pseudoHTML.highlight("gl_canvas");
+  pseudoJS.highlight("handle_to_canvas");
   av.step();
 
   // Slide 8
-  av.umsg(interpret("sc8"), {preserve: true});
-  pseudo.unhighlight("comparison");
-  pseudo.highlight("return");
-  var indices = [];
-  for (i = 0; i < arr_values.length; i++) {
-    indices[i] = i;
-  }
-  arr.addClass(indices, "redbg");
-  labelOutput = av.label("index  = " + (arraySize - 1),
-                         {top: topAlign + 15, left: leftAlign + 395 + rectWidth});
+  av.umsg(interpret("sc8"));
+  pseudoHTML.unhighlight("gl_canvas");
+  pseudoJS.unhighlight("handle_to_canvas");
+  pseudoJS.highlight("vertices");
   av.step();
 
   // Slide 9
   av.umsg(interpret("sc9"));
-  pseudo.unhighlight("return");
-  arr.removeClass(indices, "redbg");
-  pointer.target(arr.index(parseInt(arraySize / 2, 10)));
-  arr.unhighlight();
-  labelOutput.hide();
+  pseudoJS.unhighlight("vertices");
+  pseudoJS.highlight("clear_color");
   av.step();
 
   // Slide 10
-  av.umsg(interpret("sc10"), {preserve: true});
-  pseudo.highlight("comparison");
-  for (i = 0; i <= parseInt(arraySize / 2, 10); i++) {
-    arr.highlight(i);
-  }
+  av.umsg(interpret("sc10"));
+  pseudoJS.unhighlight("clear_color");
+  pseudoJS.highlight("init_shaders");
   av.step();
 
   // Slide 11
   av.umsg(interpret("sc11"));
-  rect.hide();
-  arr.hide();
-  nlabel.hide();
-  pointer.hide();
-  label.hide();
-  pseudo.hide();
-  labelOutput.hide();
-  topAlign = 15;
-  var arr1 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 20, indexed: true});
-  av.pointer("$k$", arr1.index(0));
-  arr1.addClass([0], "greenbg");
-  av.label(interpret("lab2"),  {top: topAlign + 25, left: leftAlign + 395});
-  var arr2 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 120, indexed: true});
-  av.pointer("$k$", arr2.index(arraySize - 1));
-  arr2.addClass(indices, "redbg");
-  av.label(interpret("lab3"),  {top: topAlign + 125, left: leftAlign + 395});
+  pseudoJS.unhighlight("init_shaders");
+  pseudoJS.highlight("load_buffer");
+  av.step();
 
-  var arr3 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 220, indexed: true});
-  for (i = 0; i <= parseInt(arraySize / 2, 10); i++) {
-    arr3.highlight(i);
-  }
-  av.label(interpret("lab4"),  {top: topAlign + 225, left: leftAlign + 395});
+  // Slide 12
+  av.umsg(interpret("sc12"));
+  pseudoJS.unhighlight("load_buffer");
+  pseudoJS.highlight("connect_buffer_to_attribute");
+  pseudoHTML.highlight("attribute");
+  av.step();
 
+  // Slide 13
+  av.umsg(interpret("sc13"));
+  pseudoJS.unhighlight("connect_buffer_to_attribute");
+  pseudoHTML.unhighlight("attribute");
+  pseudoJS.highlight("call_render");
+  av.step();
+
+  // Slide 14
+  av.umsg(interpret("sc14"));
+  pseudoJS.unhighlight("call_render");
+  pseudoJS.highlight("clear_canvas");
+  av.step();
+
+    
+  // Last slide
+  av.umsg(interpret("sc15"));
+  pseudoJS.unhighlight("clear_canvas");
+  pseudoJS.highlight("draw_square");
   av.recorded();
 });
+
+/*
+	  "vertices": [9,10],
+	  "clear_color": [12],
+	  "init_shaders": [13,14,15],
+	  "load_buffer": [16,17,18,19],
+	  "connect_buffer_to_attribute": [20,21,22,23],
+	  "call_render"; [25],
+	  "clear_canvas": [29],
+	  "draw_square": [30],
+*/

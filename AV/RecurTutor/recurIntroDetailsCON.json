@@ -15,17 +15,6 @@
     }
   },
   "code" : {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/RecurTutor/Recmultiply.pde",
-      "lineNumbers": false,
-      "tags": {
-        "sig": 1,
-        "bc": [2,3],
-        "rc": 5,
-        "bccond": 2,
-        "bcac": 3
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/RecurTutor/Recmultiply.java",
       "lineNumbers": false,

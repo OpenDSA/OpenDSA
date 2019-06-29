@@ -10,13 +10,6 @@
       ],
       "label": "Java",
       "lang": "java"
-    },
-    "Processing": {
-      "ext": [
-        "pde"
-      ],
-      "label": "Processing",
-      "lang": "java"
     }
   },
   "lang": "en",

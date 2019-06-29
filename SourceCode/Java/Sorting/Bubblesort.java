@@ -70,7 +70,7 @@ static void bubblesortcheck(int[] A) {
     boolean swaps = false;
     for (int j=1; j<A.length-i; j++)
       if (A[j-1] > A[j]) {
-        swap(A, j-1, j);
+        Swap.swap(A, j-1, j);
         swaps = true;
       }
     if(!swaps) { println("Quit at " + i); break; }  // Can quit early
@@ -84,7 +84,7 @@ static void bubblesortcheck2(int[] A) {
     int top = A.length;
     for (int j=1; j<top; j++)
       if (A[j-1] > A[j]) {
-        swap(A, j-1, j);
+        Swap.swap(A, j-1, j);
         lastseen = j-1;
       }
     top = lastseen;
@@ -101,7 +101,7 @@ static <T extends Comparable<T>> void bubblecheckswap(T[] A) {
     for (int i = 0; i < n; i++) {
       /* if this pair is out of order */
       if (A[i].compareTo(A[i+1]) > 0) {
-        swap(A, i, i+1);
+        Swap.swap(A, i, i+1);
         newn = i;
       }
     }
@@ -117,7 +117,7 @@ static void unwikipedia(int[] A) {
     for (int i=0; i<n; i++)
       /* if this pair is out of order */
       if (A[i] > A[i+1]) {
-        swap(A, i, i+1);
+        Swap.swap(A, i, i+1);
       }
     n -= 1;
   }
@@ -133,7 +133,7 @@ static void wikipedia2(int[] A) {
     for (int i=0; i<n; i++)
       /* if this pair is out of order */
       if (A[i] > A[i+1]) {
-        swap(A, i, i+1);
+        Swap.swap(A, i, i+1);
         newn = i;
       }
   }
@@ -163,6 +163,6 @@ static <T extends Comparable<T>> void bubblesort(T[] A) {
   for (int i=0; i<A.length-1; i++) // Insert i'th record
     for (int j=1; j<A.length-i; j++)
       if (A[j-1].compareTo(A[j]) > 0)
-        swap(A, j-1, j);
+        Swap.swap(A, j-1, j);
 }
 /* *** ODSAendTag: Bubblesort *** */

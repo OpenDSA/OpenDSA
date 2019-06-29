@@ -50,19 +50,6 @@
     }
   },
   "code" : {
-    "processing": {
-      "url": "../../SourceCode/Processing/Sorting/Insertionsort.pde",
-      "startAfter": "/* *** ODSATag: Insertionsort *** */",
-      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
-      "lineNumbers": false,
-      "tags": {
-        "sig": 1,
-        "outloop": 2,
-        "inloop": 3,
-        "swap": 4,
-        "end": 5
-      }
-    },
     "c++": {
       "url": "../../SourceCode/C++/Sorting/Insertionsort.cpp",
       "startAfter": "/* *** ODSATag: Insertionsort *** */",

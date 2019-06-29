@@ -16,22 +16,6 @@
     }
   },
   "code" : {
-    "processing": {
-      "url": "../../../SourceCode/Processing/Searching/Bsearch.pde",
-      "startAfter": "/* *** ODSATag: BinarySearch *** */",
-      "endBefore": "/* *** ODSAendTag: BinarySearch *** */",
-      "lineNumbers": false,
-      "tags": {
-        "sig": 3,
-        "init": [4, 5],
-        "while": 6,
-        "compute": 7,
-        "right": 8,
-        "left": 9,
-	"found": 10,
-        "return": 12
-      }
-    },
     "java": {
       "url": "../../../SourceCode/Java/Searching/Bsearch.java",
       "startAfter": "/* *** ODSATag: BinarySearch *** */",

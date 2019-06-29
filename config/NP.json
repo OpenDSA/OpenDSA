@@ -4,11 +4,11 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Processing": {
+    "Java": {
       "ext": [
-        "pde"
+        "java"
       ],
-      "label": "Processing",
+      "label": "Java",
       "lang": "java"
     }
   },

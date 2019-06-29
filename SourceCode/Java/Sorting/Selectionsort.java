@@ -39,7 +39,7 @@ static void selsortcheck(int[] A) {
       if (A[j] > A[bigindex])        // Found something bigger  
         bigindex = j;                // Remember bigger index
     if (bigindex != A.length-i-1)
-      swap(A, bigindex, A.length-i-1); // Put it into place
+      Swap.swap(A, bigindex, A.length-i-1); // Put it into place
   }
 }
 
@@ -67,7 +67,7 @@ static <T extends Comparable<T>> void selsort(T[] A) {
     for (int j=1; j<A.length-i; j++)       // Find the max value
       if (A[j].compareTo(A[bigindex]) > 0) // Found something bigger  
         bigindex = j;                      // Remember bigger index
-    swap(A, bigindex, A.length-i-1);       // Put it into place
+    Swap.swap(A, bigindex, A.length-i-1);  // Put it into place
   }
 }
 /* *** ODSAendTag: Selectionsort *** */

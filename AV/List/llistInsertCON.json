@@ -13,19 +13,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Lists/LList.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: LListInsert *** */",
-      "endBefore": "/* *** ODSAendTag: LListInsert *** */",
-      "tags": {
-        "sig": 2,
-        "setnext": 3,
-        "setelem": 4,
-        "listSize": 6,
-        "return": 7
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Lists/LList.java",
       "lineNumbers": false,

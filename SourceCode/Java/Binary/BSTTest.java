@@ -18,7 +18,7 @@ public static void main(String args[]) throws IOException {
   for (i=0; i<A.length; i++)
     A[i] = i;
   // Now, generate a permuation on the numbers
-  permute(A);
+  Permute.permute(A);
 
   // Now, build the BST
   // Each record will have a random key value from the permuation.
@@ -35,7 +35,7 @@ public static void main(String args[]) throws IOException {
   }
 
   // Now, let's test delete by randomly removing all the keys
-  permute(A);
+  Permute.permute(A);
   for (i=0; i<A.length; i++) {
     KVPair key = new KVPair(new Integer(A[i]), null);
     KVPair k = (KVPair)b.remove(key);
@@ -50,7 +50,7 @@ public static void main(String args[]) throws IOException {
   }
 
   // Now we are going to run timing tests on our two traversals
-  permute(A);
+  Permute.permute(A);
   BST btest = new BST();
   for (i=0; i<A.length; i++)
     btest.insert(new KVPair(new Integer(A[i]), new Integer(i + OFFSET)));
@@ -73,9 +73,9 @@ public static void main(String args[]) throws IOException {
   // Ultimately, these are going to be our random keys
   int newlen = testsize/10;
   for (i=0; i<AA.length; i++)
-    AA[i] = random(newlen);
+    AA[i] = Permute.random(newlen);
   // Now, generate a permuation on the numbers
-  permute(AA);
+  Permute.permute(AA);
 
   // Now, build the BST
   // Each record will have a random key value from the permuation.
