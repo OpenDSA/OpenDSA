@@ -149,7 +149,7 @@
 		{
 			window.open("../../PDAEditor.html");
 		}
-		else{
+		else if (graphType == "tm"){
 			//OpenDSA/AV/Development/formal_language/TMEditor.html
 			window.open("../../../formal_language/TMEditor.html");
 		}
@@ -326,8 +326,12 @@
 		else if ($(this).val() == 'fa'){
 			graphType = "fa";
 		}
-		else{
+		else if ($(this).val() == 'tm'){
 			graphType = "tm"
+		}
+		else if ($(this).val() == 'regulargrammar'){
+			//FIXME hides the graph radio button
+			;
 		}
 	});
 

@@ -1,10 +1,12 @@
+var latexit = "http://latex.codecogs.com/svg.latex?";
+var arr;
 $(document).ready(function () {
   "use strict";
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
   var arrow = String.fromCharCode(8594),
       lastRow,            // index of the last visible row (the empty row)
-      arr,                // the grammar
+      //arr,                // the grammar
       backup = null,      // a copy of the original grammar (as a string) before it is transformed
       m,                  // the grammar table
       tGrammar,           // transformed grammar
@@ -3249,31 +3251,47 @@ $(document).ready(function () {
       $('.jsavmatrix').addClass("editMode");
       return;
     }
-    $.ajax({
-      url: "../exercises/grammarTests.xml",
-      dataType: 'xml',
-      async: true,
-      success: function(data) {
-        grammars = data.getElementsByTagName("grammar");
-        initQuestionLinks();
-        updateExercise(0);
-        switch (type) {
-        case "bf":
-          bfParse();
-          break;
-        case "ll":
-          llParse();
-          break;
-        case "slr":
-          slrParse();
-          break;
-        default:
-          break;
+    if (type == "grammarexercise") {
+      var params = JSAV.utils.getQueryParameter();
+			//******************** */
+			//This code to extract the file location from the parameters
+			var exerciseLocation = "./Formal_Languages_Automated_Exerciese/exercises/Sheet_1/Exercise4.json";//params.module.split(":url_params:+fileLocation=")[1];//getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
+      //******************** */
+      m = init();
+      var exercisePath = (exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/fixerTests.json": exerciseLocation;
+  		var exerController = new GrammarExerciseController(jsav, m, exercisePath, "json");
+      exerController.load();
+      
+      $('.jsavmatrix').addClass("editMode");
+
+    }
+    else{//this part loads a grammar from xml file. We may use it when we need to provide an exercise that requires loading grammars
+      $.ajax({
+        url: "./Formal_Languages_Automated_Exerciese/exercises/grammarTests.xml",
+        dataType: 'xml',
+        async: true,
+        success: function(data) {
+          grammars = data.getElementsByTagName("grammar");
+          initQuestionLinks();
+          updateExercise(0);
+          switch (type) {
+          case "bf":
+            bfParse();
+            break;
+          case "ll":
+            llParse();
+            break;
+          case "slr":
+            slrParse();
+            break;
+          default:
+            break;
+          }
+          m = init();
+          $('.jsavmatrix').addClass("editMode");
         }
-        m = init();
-        $('.jsavmatrix').addClass("editMode");
-      }
-    });
+      });
+    }
   }
 
   function initQuestionLinks() {
@@ -3338,8 +3356,8 @@ $(document).ready(function () {
   onLoadHandler();
 
 
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////
 
   function displayHelp(){
     alert(document.getElementById('helpInfo').innerHTML);
