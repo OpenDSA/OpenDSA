@@ -24,10 +24,11 @@ var exerciseLocation;
 		type = $('h1').attr('id');
 		$('#begin').click(displayTraversals);
 		if (type == 'fixer' || type == 'tester') {
-			var params = JSAV.utils.getQueryParameter();
+			var params = window.location.search;
 			//******************** */
-			//This code to extract the file location from the parameters
-			exerciseLocation = params.module.split(":url_params:+fileLocation=")[1];//getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
+			var end = params.indexOf(".json");
+			var start = params.indexOf("fileLocation=")
+			var exerciseLocation = params.substring(start, end + 5).split('=')[1];
 			//******************** */
 			document.getElementById("finish").hidden = true;
 			switch (type) {

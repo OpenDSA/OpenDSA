@@ -3254,8 +3254,13 @@ $(document).ready(function () {
     if (type == "grammarexercise") {
       var params = JSAV.utils.getQueryParameter();
 			//******************** */
-			//This code to extract the file location from the parameters
-			var exerciseLocation = "./Formal_Languages_Automated_Exerciese/exercises/Sheet_1/Exercise4.json";//params.module.split(":url_params:+fileLocation=")[1];//getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
+      //This code to extract the file location from the parameters
+      var params = window.location.search;
+			//******************** */
+			var end = params.indexOf(".json");
+			var start = params.indexOf("fileLocation=")
+			var exerciseLocation = params.substring(start, end + 5).split('=')[1];
+			//var exerciseLocation = "./Formal_Languages_Automated_Exerciese/exercises/Sheet_1/Exercise4.json";//params.module.split(":url_params:+fileLocation=")[1];//getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
       //******************** */
       m = init();
       var exercisePath = (exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/fixerTests.json": exerciseLocation;

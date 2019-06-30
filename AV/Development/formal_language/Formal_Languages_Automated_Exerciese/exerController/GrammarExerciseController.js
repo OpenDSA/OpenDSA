@@ -139,10 +139,10 @@ controllerProto.updateExercise = function(id) {
 };
 controllerProto.convertToPDA = function () {
     var productions = this.grammar;
-    this.builtPDA = this.jsav.ds.pda({visible: true});
-    var a = this.builtPDA.addNode({visible: true}),
-        b = this.builtPDA.addNode({visible: true}),
-        c = this.builtPDA.addNode({visible: true});
+    this.builtPDA = this.jsav.ds.pda({visible: false});
+    var a = this.builtPDA.addNode({visible: false}),
+        b = this.builtPDA.addNode({visible: false}),
+        c = this.builtPDA.addNode({visible: false});
     this.builtPDA.makeInitial(a);
     c.addClass('final');
     var startVar = productions[0][0];
