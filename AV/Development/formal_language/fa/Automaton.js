@@ -1097,11 +1097,23 @@ transitionproto.layout = function(options) {
 	// If the edge is a loop:
 	if (this.start().equals(this.end())) {
 		var adjust = Math.sqrt(2) / 2.0;
-		fromY = Math.round(fromY - adjust * sHeight);
 		fromX = Math.round(fromX - adjust * sWidth);
 		var loopR = Math.round(0.8 * sWidth);
-		this.g.path("M" + fromX + ',' + fromY + ' a' + loopR + ',' + loopR + ' -45 1,1 ' 
+		//this.g.path("M" + fromX + ',' + fromY + ' a' + loopR + ',' + loopR + ' -45 1,1 ' 
+		//		+ (Math.round(2 * sWidth * adjust) + 2) + ',' + 0, options);
+		/************************This code is added to determine the arc direction for the loop arrow. if the state is in the second half of the 
+		FA, then the acr will be in the button. */
+		if((this.end().position().top > this.container.element.height()/2)){//this means, draw the arrow at the button
+			fromY = Math.round(fromY + sHeight);//Change the - sign to + in case we need to flip the loop arrow and remove "adjust"
+			this.g.path("M" + fromX + ',' + fromY + ' a' + loopR + ',' + loopR + ' -45 1,0 '  //this 1 is to draw it from the top. Make it 0 to flip it.
 				+ (Math.round(2 * sWidth * adjust) + 2) + ',' + 0, options);
+		}
+		else
+		{
+			fromY = Math.round(fromY - adjust * sHeight);
+			this.g.path("M" + fromX + ',' + fromY + ' a' + loopR + ',' + loopR + ' -45 1,1 '  //this 1 is to draw it from the top. Make it 0 to flip it.
+				+ (Math.round(2 * sWidth * adjust) + 2) + ',' + 0, options);
+		}
 	}
 	// If the edge should be an arc (implemented as a quadratic bezier curve)
 	else if (this.options.arc) {
@@ -1127,8 +1139,11 @@ transitionproto.layout = function(options) {
 				bbleft = Math.min(fromPoint[0], toPoint[0]),
 				bbwidth = Math.abs(fromPoint[0] - toPoint[0]),
 				bbheight = Math.abs(fromPoint[1] - toPoint[1]);
-		if (this.start().equals(this.end())) {
+		if (this.start().equals(this.end())) {//in case of loop arrow we need to do the same as we did for the arrow direction. 
 			bbtop = Math.round(start.top - 1.1 * sHeight);
+			if((this.end().position().top > this.container.element.height()/2)){
+				bbtop = Math.round(start.top + sHeight * 2 + 2.6 * sHeight);
+			}
 			bbleft = Math.round(start.left);
 			bbwidth = Math.round(2 * sWidth);
 			bbheight = Math.round(0.5 * sHeight);

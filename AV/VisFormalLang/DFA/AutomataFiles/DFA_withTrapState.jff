@@ -18,7 +18,7 @@
 		</state>
 		<state id="3" name="trap">
 			<x>214.0</x>
-			<y>160.0</y>
+			<y>140.0</y>
 		</state>
 		<!--The list of transitions.-->
 		<transition>

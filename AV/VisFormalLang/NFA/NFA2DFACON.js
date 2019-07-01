@@ -8,10 +8,10 @@ $(document).ready(function() {
   
     var url1 = interpret("fa1");
     var url2 = interpret("fa2");
-    var NFAa = new av.ds.fa({center: true});
+    var NFAa = new av.ds.fa({left:0});
     FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(NFAa,url1);
     NFAa.disableDragging();
-    var NFAb = new av.ds.fa({center: true});
+    var NFAb = new av.ds.fa({left: 250, top:0});
     FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(NFAb,url2);
     NFAb.disableDragging();
     av.displayInit();
