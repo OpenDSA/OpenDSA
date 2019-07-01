@@ -27,8 +27,9 @@ $(document).ready(function() {
   // Right most  straight vertical line of input tape
   av.g.line(left + 385, top, left + 385, top + 35, {"stroke-width": 1});*/
 
-  var arr = av.ds.array(['a', 'a', 'b', 'b', 'a', 'b', '', '', '', '' ], {"left": left + 30, "top": top - 10});
-
+  //var arr = av.ds.array(['a', 'a', 'b', 'b', 'a', 'b', '', '', '', '' ], {"left": left + 30, "top": top - 10});
+  var elements = ['a', 'a', 'b', 'b', 'a', 'b', '', '', '', '' ];
+  var tape = av.ds.tape(elements, left + 30, top, "right");
   //Control unit
   av.g.rect(left + 50, top + 105, 148, 152, {"stroke-width": 1});
   av.g.circle(left + 124, top + 194, 48, {"stroke-width": 1});

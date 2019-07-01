@@ -305,7 +305,7 @@ Automata
 
 .. inlineav:: AutomataCON dgm
    :links: AV/VisFormalLang/Introduction/AutomataCON.css
-   :scripts: AV/VisFormalLang/Introduction/AutomataCON.js
+   :scripts: AV/VisFormalLang/Introduction/AutomataCON.js AV/OpenFLAP/tape.js
    :align: center
 
    Abstract model of a digital computer.
