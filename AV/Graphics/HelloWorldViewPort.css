@@ -1,0 +1,9 @@
+html, body {
+    margin: 0;
+}
+
+#container {
+    width: 750px;
+    height: 750px;
+}
+
