@@ -1,0 +1,60 @@
+{
+  "translations" :{
+    "en": {
+      "sc1": "Here we have the two files associated with a WebGL program.  The HTML file containing the vertex and fragment shaders appears on the left.  The WebGL JavaScript code appear on the right.",  
+      "sc2": "In the HTML file, the vertex shader is highlighted below.  Since in this simple HelloWorld example the vertex shader will not transform its vertex in any way, it simply assigns the attribute associated with the vertex (called vPosition) to the GLSL reserved variable gl_Position, which is then passed on to the interpolator in preparation for the fragment shader as per the programmable pipeline in Figure 2.1",
+      "sc3": "In the HTML file, the fragment shader is highlighted below.   Each GPU core executing this code operates on one pixel whose location within a fragment like a triangle is interpolated from the three vertices that comprise the triangle.   The fragment shader must assign a color to that pixel using a <b>vec4</b> whose first three components are the RGB components of the color.  In this case since all three components are 1, the color will be white.  The fourth component is called the alpha factor and will always be 1 in our early examples.",
+      "sc4": "The HTML file must include the JavaScript support libraries we will use throughout the book.",
+      "sc5": "It must also include a reference to the CPU-based JavaScript code that we write to interact with the GPU shader code.",
+      "sc6": "The final component of the HTML file is to establish a drawing canvas where the graphics will be displayed on the HTML page.  In this example code, the canvas will have a width and height of 512 pixels.",
+      "sc7": "In the JavaScript file, the init function is called when the HTML page is loaded into the browser.  The highlighted lines in the JS code below establish a link between a JS variable we called <i>canvas</i> and the display region established in the HTML file.",
+      "sc8": "Next the JS code establishes the vertices for the square that we wish to display.  Notice that these vertices are in Cartesian coordinates, not in the pixel coordinates of the Canvas.",
+      "sc9": "The clearColor function establishes the background color for the canvas before any graphic fragments are displayed.  Since R, G, and B are all zero, we are using black as background color.",
+      "sc10": "The call to initShaders links the JavaScript variable <i>program</i> to the GLSL vertex and fragment shaders in the HTML file.  If those shaders have syntax errors, they will be caught at this time and an alert will be raised.",
+      "sc11": "Lines 17-19 transfer the data from the JavaScript array of vec2's to the GPU vertex buffer.  The vertex buffer is merely a sequence of bytes, not objects.   Hence we call the utility <i>flatten</i> function to transform each vec2 object into a the byte sequence that it comprises.",
+      "sc12": "Lines 21-23 inform the GPU how the bytes in the vertex buffer are to be partitioned and used by each GPU core as it executes the vertex shader.  In this example we are telling the GPU that each GPU core will work with an attribute called <i>vPosition</i>.   For the time being, don't worry about all of the parameters in the call to the <i>vertexAttribPointer</i> function.  We will explore those in more detail soon.  Also note that in the GLSL code this attribute must be a <b>vec4</b> instead of the <b>vec2</b> that was used in out JS CPU code.",
+      "sc13": "By calling the <i>render</i> function, we actually begin the display of graphic fragments (in this case two triangles comprising a square) on our canvas.",
+      "sc14": "In <i>render</i> we begin by clearing the canvas to the background color (black) that we established in line 12.   In this particular example, we are just rendering the canvas once.   More typically we would be doing an animation.   In such cases, <i>render</i> would be called in an animation-generated loop.   Each time it is called the canvas would be cleared for the display of the graphic fragments that have been updated since the previous display.    We will soon see how to control such animations.  For the time being we follow the convention of always beginning the <i>render</i> with a clearing of the canvas.",
+      "sc15": "Finally the call to the <i>drawArrays</i> function using a <i>TRIANGLE_FAN</i> draws a square comprised of two triangles. A <i>TRIANGLE_FAN</i> is comprised of $n$ vertices.  The first vertex is used as an anchor point from which all other triangles radiate.  Hence $n - 2$ triangles are drawn with the following groups of three vertices comprising each successive triangle $\\{v_0, v_1, v_2\\}$, $\\{v_0, v_2, v_3\\}$, ... $\\{v_0, v_{n-2}, v_{n-1}\\}$"
+    }
+  },
+  "code" : {
+    "pseudo": [
+      {
+	"url": "../../../SourceCode/JavaScript/Graphics/HelloWorldSetup.html",
+	"lineNumbers": true,
+	"startAfter": "/* *** ODSATag: HelloWorldSetupHTML *** */",
+	"endBefore": "/* *** ODSAendTag: HelloWorldSetupHTML *** */",
+	"top": 5,
+	"left": 5,
+	"tags": {
+	  "vertex_shader": [5,6,7,8,9,10,11,12,13],
+	  "fragment_shader": [15,16,17,18,19,20,21,22,23],
+	  "support_libs" : [26,27,28,29],
+	  "JS_code_ref" : [30],
+	  "gl_canvas": [33],
+	  "attribute": [7,11]
+	}
+      },
+      {
+	"url": "../../../SourceCode/JavaScript/Graphics/HelloWorldSetup.js",
+	"lineNumbers": true,
+	"startAfter": "/* *** ODSATag: HelloWorldSetupJS *** */",
+	"endBefore": "/* *** ODSAendTag: HelloWorldSetupJS *** */",
+	"top": 5,
+	"left": 505,
+	"tags": {
+	  "handle_to_canvas": [6,7],
+	  "vertices": [9,10],
+	  "clear_color": [12],
+	  "init_shaders": [13,14],
+	  "load_buffer": [16,17,18,19],
+	  "connect_buffer_to_attribute": [20,21,22,23],
+	  "call_render": [25],
+	  "clear_canvas": [29],
+	  "draw_square": [30]
+	}
+      }	
+    ]
+  }
+}

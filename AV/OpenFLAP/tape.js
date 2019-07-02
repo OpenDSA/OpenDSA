@@ -44,8 +44,8 @@ $(document).ready(function() {
       }
 
       //right and left points to draw the "infinite sign" with poly-lines
-      var points = [[0, 0], [15, 0], [11, 3], [21, 7], [5, 12], [9, 20], [28, 28], [0, 28]];
-      var points_l = [[0, 0], [15, 0], [11, 3], [21, 7], [5, 12], [9, 20], [28, 28], [0, 28]];
+      var points = [[-5, 0], [15, 0], [11, 3], [21, 7], [5, 12], [9, 20], [28, 28], [-5, 28]];
+      var points_l = [[-5, 0], [15, 0], [11, 3], [21, 7], [5, 12], [9, 20], [28, 28], [-5, 28]];
 
 
       var highlightLeft = (this.current === -1);
@@ -56,7 +56,7 @@ $(document).ready(function() {
       if (direction === "both") { plot_right(jsav, right, y_coord, points, highlightRight); plot_left(jsav, x_coord, y_coord, points_l, highlightLeft); }
 
       // change the style (shape) of the JSAV array class
-      this.arr.css(true, {"border-radius": "0px"});
+      //this.arr.css(true, {"border-radius": "0px"});
     }
   }
 

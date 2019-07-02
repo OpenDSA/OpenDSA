@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demonstrate View Ports</title>
+  <meta charset="utf-8" />
+   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" /> 
+  <link rel="stylesheet" href="HelloWorldViewPort.css" type="text/css" />
+</head>
+
+<body>
+<div id="container">
+  <table class="headerTable">
+    <tr>
+      <td class="headerLeft">
+        <input type="button" id="help" name="help" value="Help" />
+      </td>
+      <td class="headerCenter avTitle">
+        Demonstrate Viewports
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+      </td>
+    </tr>
+  </table>
+  <p>
+    Use the buttons to see the effect of adjusting each of the four viewport parameters.  
+  </p>
+
+  <form id="ssperform">
+    <p>
+      <input type="button" id="reset" name="reset" value="Reset" />
+      <button id="LeftPlus">Increase Left</button>
+      <button id="LeftMinus">Decrease Left</button>
+      <button id="BottomPlus">Increase Bottom</button>
+      <button id="BottomMinus">Decrease Bottom</button>
+      <button id="WidthPlus">Increase Width</button>
+      <button id="WidthMinus">Decrease Width</button>
+      <button id="HeightPlus">Increase Height</button>
+      <button id="HeightMinus">Decrease Height</button>
+    </p>
+  </form>
+
+  <div class="avcontainer">
+    
+    <br>
+    <canvas id="gl-canvas" width="512" height="512">
+      Oops ... your browser does not support the HTML5 canvas element
+    </canvas>
+  </div>
+
+</div>
+
+
+</body>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+  // GLSL vertex shader code
+  attribute vec4 vPosition;  
+  
+  void main()
+  {
+    gl_Position = vPosition;  
+  }
+
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+  // GLSL fragment shader code
+  precision mediump float;
+
+  void main()
+  {
+    gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
+  }
+</script>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="../../JSAV/lib/jquery.transit.js"></script>
+
+
+<script src="../../JSAV/lib/raphael.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/odsaUtils.js"></script>
+<script src="../../lib/odsaAV.js"></script>
+
+<script type="text/javascript" src="Common/webgl-utils.js"></script>
+<script type="text/javascript" src="Common/initShaders.js"></script>
+<script type="text/javascript" src="Common/MV.js"></script>
+<script type="text/javascript" src="Common/webgl-debug.js"></script>
+<script type="text/javascript" src="HelloWorldViewPort.js"></script>
+
+</html>

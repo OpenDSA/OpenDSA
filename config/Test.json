@@ -18,13 +18,6 @@
       "label": "Java",
       "lang": "java"
     },
-    "Processing": {
-      "ext": [
-        "pde"
-      ],
-      "label": "Processing",
-      "lang": "java"
-    },
     "C++": {
       "ext": [
         "cpp",
@@ -71,7 +64,9 @@
   },
   "chapters": {
     "Stuff": {
-      "Indexing/TwoThreeTest": {
+      "Indexing/TwoThreeTree": {
+      },
+      "Indexing/BTree": {
       },
       "Indexing/BTreeTest": {
       }

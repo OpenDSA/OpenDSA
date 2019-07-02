@@ -22,22 +22,6 @@
     }
   },
   "code" : {
-    "processing": {
-      "url": "../../SourceCode/Processing/Sorting/Selectionsort.pde",
-      "startAfter": "/* *** ODSATag: Selectionsort *** */",
-      "endBefore": "/* *** ODSAendTag: Selectionsort *** */",
-      "lineNumbers": false,
-      "tags": {
-        "sig": 1,
-        "outloop": 2,
-        "initbig": 3,
-        "inloop": 4,
-        "compare": 5,
-        "setbig": 6,
-        "swap": 7,
-        "end": 9
-      }
-    },
     "c++": {
       "url": "../../SourceCode/C++/Sorting/Selectionsort.cpp",
       "startAfter": "/* *** ODSATag: Selectionsort *** */",

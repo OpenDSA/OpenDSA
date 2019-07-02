@@ -51,7 +51,7 @@ faproto.loadFAFromJFLAPFile = function (url) {
 		  return;
 	}
 	else {
-		
+		var maxYvalue = 0;
 		var nodeMap = {};			// map node IDs to nodes
 		  var xmlStates = xmlDoc.getElementsByTagName("state");
 		  //xmlStates = sortBy(xmlStates, function(x) { return x.id; })
@@ -61,6 +61,7 @@ faproto.loadFAFromJFLAPFile = function (url) {
 		  for (var i = 0; i < xmlStates.length; i++) {
 			var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
 			var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
+			maxYvalue = (y>maxYvalue)? x:maxYvalue;
 			var newNode = this.addNode({left: x, top: y, value: xmlStates[i].attributes[1].nodeValue});
 			// Add the various details, including initial/final states and state labels.
 			var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
@@ -94,6 +95,8 @@ faproto.loadFAFromJFLAPFile = function (url) {
 			  var edge = this.addEdge(nodeMap[from], nodeMap[to], {weight: read});
 			  edge.layout();
 		  }
+		  var currentFAHeight = this.element.height();
+		  this.element.height(Math.max(currentFAHeight, maxYvalue));
 		  jsav.displayInit();
 		}
 	/*if (auto === 'auto'){

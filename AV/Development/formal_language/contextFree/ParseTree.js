@@ -93,7 +93,8 @@ var ParseTreeController = function(jsav, grammar, string, treeOptions) {
       }
       counter++;
     }
-    return [false, next, table];}
+    return [false, next, table];
+  }
     else
     {
         derivers = Object.keys(derivers);
@@ -104,6 +105,8 @@ var ParseTreeController = function(jsav, grammar, string, treeOptions) {
     var asd = queue.values();
     while(asd.length !== 0){
       var next = queue.values().next().value;
+      if(next === undefined)
+        return [false, null, table];//I added this line to reject a string not in the grammar. For grammar exercise controller
       queue.delete(next);
       if(next.length > inputString.length)
       {

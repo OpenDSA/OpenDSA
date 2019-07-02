@@ -49,10 +49,8 @@ content.
 Actual visualizations and exercises generally live in the
 ``OpenDSA/AV`` and ``OpenDSA/Exercises`` directories.
 See the self-documenting demonstration at
-``OpenDSA/RST/en/SimpleDemo/DemoIntro.rst`` for getting started (use
-the command ``make SimpleDemo`` to compile a copy of this book
-instance for yourself).
-
+``OpenDSA/RST/en/SimpleDemo/DemoIntro.rst`` for getting started
+(see the end of this page for details on compiling the ``SimpleDemo`` book).
 
 ----------------------
 Project Communications
@@ -411,9 +409,12 @@ to learn.
 To get you productive quickly, we created the ``SimpleDemo``
 materials.
 Once you have your development environment installed, you should
-compile the ``SimpleDemo`` book instance
-(do ``make SimpleDemo`` from the top level of the OpenDSA repository).
-Then read the module, but also look at the sourcecode for both the
+compile the ``SimpleDemo`` book instance.
+This is done by typing ``make SimpleDemo`` from the top level of the
+OpenDSA repository.
+At that point, you can find the book by running the simple web server
+described above, and navigating to ``Books/SimpleDemo``.
+Read the module, but also look at the sourcecode for both the
 module and the various examples.
 These will show you a lot of what you will need to implement your own
 visualizations and exercises.

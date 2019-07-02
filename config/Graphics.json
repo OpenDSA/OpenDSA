@@ -52,6 +52,10 @@
     "Proof-of-Concept Animation": {
       "Graphics/GraphicsTest": {
       }
+    },
+    "Introduction to WebGL": {
+      "Graphics/HelloWorldSetup": {
+      }
     }
   }
 }

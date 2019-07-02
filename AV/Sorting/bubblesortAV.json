@@ -53,20 +53,6 @@
     }
   },
   "code" : {
-    "processing": {
-      "url": "../../SourceCode/Processing/Sorting/Bubblesort.pde",
-      "startAfter": "/* *** ODSATag: Bubblesort *** */",
-      "endBefore": "/* *** ODSAendTag: Bubblesort *** */",
-      "lineNumbers": false,
-      "tags": {
-        "sig": 1,
-        "outloop": 2,
-        "inloop": 3,
-        "compare": 4,
-        "swap": 5,
-        "end": 6
-      }
-    },
     "c++": {
       "url": "../../SourceCode/C++/Sorting/Bubblesort.cpp",
       "startAfter": "/* *** ODSATag: Bubblesort *** */",

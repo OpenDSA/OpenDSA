@@ -1,0 +1,37 @@
+/* *** ODSATag: HelloWorldSetupHTML *** */
+<!-- HelloWorld.html -->
+<!DOCTYPE html>
+<html>
+
+  <script id="vertex-shader" type="x-shader/x-vertex">
+  // GLSL vertex shader code
+  attribute vec4 vPosition;  
+
+  void main()
+  {
+    gl_Position = vPosition;  
+  }
+  </script>
+
+  <script id="fragment-shader" type="x-shader/x-fragment">
+  // GLSL fragment shader code
+  precision mediump float;
+
+  void main()
+  {
+    gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
+  }
+  </script>
+
+  <!--Include WebGL support libraries-->
+  <script type="text/javascript" src="../Common/webgl-utils.js"></script>
+  <script type="text/javascript" src="../Common/initShaders.js"></script>
+  <script type="text/javascript" src="../Common/MV.js"></script>
+  <script type="text/javascript" src="../Common/webgl-debug.js"></script>
+  <script type="text/javascript" src="HelloWorld.js"></script>
+
+  <body>
+    <canvas id="gl-canvas" width="512" height="512"></canvas>
+  </body>
+</html>
+/* *** ODSAendTag: HelloWorldSetupHTML *** */

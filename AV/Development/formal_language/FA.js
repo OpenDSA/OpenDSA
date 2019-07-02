@@ -1,4 +1,5 @@
 var latexit = "http://latex.codecogs.com/svg.latex?";
+var exerciseLocation;
 (function ($) {
     "use strict";
 	var jsav = new JSAV("av"), // Instance variable to store the JSAV algorithm visualization.
@@ -21,14 +22,24 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	function onLoadHandler() {
 		// initialize right click menu and hide it for future use
 		type = $('h1').attr('id');
+		$('#begin').click(displayTraversals);
 		if (type == 'fixer' || type == 'tester') {
+			var params = window.location.search;
+			//******************** */
+			var end = params.indexOf(".json");
+			var start = params.indexOf("fileLocation=")
+			var exerciseLocation = params.substring(start, end + 5).split('=')[1];
+			//******************** */
+			document.getElementById("finish").hidden = true;
 			switch (type) {
 			case 'fixer':
-				exerController = new ExerciseController(jsav, g, "./Formal Languages Automated Exerciese/exercises/fixerTests.json", "json", {initGraph: initGraph});
+				var exercisePath = (exerciseLocation == null)? "./Formal Languages Automated Exerciese/exercises/fixerTests.json": exerciseLocation;
+				exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
 				exerController.load();
 				break;
 			case 'tester':
-				exerController = new ExerciseController(jsav, g, "../exercises/FAwithExpression.json", "json", {initGraph: initGraph});
+				var exercisePath = (exerciseLocation == null)? "./Formal Languages Automated Exerciese/exercises/FAwithExpression.json": exerciseLocation;
+				exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
 				exerController.load();
 				break;
 			default:
@@ -36,13 +47,13 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			}
 		}
 		else {
-			$('#begin').click(displayTraversals);
+			//$('#begin').click(displayTraversals);
 			var data;
 			//this editor is opened from exercise generator
 			if (localStorage['createExercise'] == 'true') {
 				jsav.umsg("When you're done, click 'finish'.");
 				// exercise generator does not need the functionality buttons
-				$(".functionality").hide();
+				//$(".functionality").hide();
 				$(".createExercise").show();
 				exerciseIndex = localStorage['exerciseIndex'];
 				data = localStorage['problem' + exerciseIndex];
@@ -476,7 +487,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	// Triggered by clicking the "Highlight Lambda/Epsilon Transitions" button.
 	var testLambda = function() {
 		removeModeClasses();
-		var edges = g.edges();
+		var edges = g.edges(), wSplit;
 		for (var next = edges.next(); next; next = edges.next()) {
 			wSplit = next.weight().split('<br>');
 			for (var i = 0; i < wSplit.length; i++) {

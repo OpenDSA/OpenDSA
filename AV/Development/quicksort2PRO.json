@@ -38,8 +38,8 @@
     }
   },
   "code" : {
-    "processing": {
-      "url": "../../SourceCode/Processing/Sorting/Quicksort.pde",
+    "java": {
+      "url": "../../SourceCode/Java/Sorting/Quicksort.java",
       "startAfter": "/* *** ODSATag: partition *** */",
       "endBefore": "/* *** ODSAendTag: Quicksort *** */",
       "tags": {

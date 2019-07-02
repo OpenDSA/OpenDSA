@@ -13,8 +13,8 @@
     "JXOP-fixmode":"undo"
   },
   "code": {
-    "processing": {
-      "url": "../../SourceCode/Processing/Binary/BST.pde",
+    "java": {
+      "url": "../../SourceCode/Java/Binary/BST.java",
       "startAfter": "/* *** ODSATag: inserthelp *** */",
       "endBefore": "/* *** ODSAendTag: inserthelp *** */",
       "tags": {}

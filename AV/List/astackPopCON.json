@@ -8,17 +8,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Lists/AStack.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: AStackPop *** */",
-      "endBefore": "/* *** ODSAendTag: AStackPop *** */",
-      "tags": {
-        "sig": 1,
-        "empty": 2,
-        "return": 3
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Lists/AStack.java",
       "lineNumbers": false,

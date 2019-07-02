@@ -97,6 +97,9 @@ PittACOS: min
 OpenFLAP: min
 	python $(CONFIG_SCRIPT) config/OpenFLAP.json --no-lms
 
+Obsolete: min
+	python $(CONFIG_SCRIPT) config/Obsolete.json --no-lms
+
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
@@ -105,9 +108,6 @@ TestIvan: min
 
 TestIrena: min
 	python $(CONFIG_SCRIPT) config/TestIrena.json --no-lms
-
-Liling: min
-	python $(CONFIG_SCRIPT) config/Liling.json --no-lms
 
 SimpleDemo: min
 	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms

@@ -10,17 +10,6 @@
     }
   },
   "code": {
-    "processing": [{
-      "url": "../../../SourceCode/Processing/Lists/LStack.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: LStackPush *** */",
-      "endBefore": "/* *** ODSAendTag: LStackPush *** */",
-      "tags": {
-        "sig": 1,
-        "new": 2,
-        "size": 3
-      }
-    }],
     "java": [{
       "url": "../../../SourceCode/Java/Lists/LStack.java",
       "lineNumbers": false,

@@ -11,13 +11,6 @@
       "label": "Java",
       "lang": "java"
     },
-    "Processing": {
-      "ext": [
-        "pde"
-      ],
-      "label": "Processing",
-      "lang": "java"
-    },
     "Java_Generic": {
       "ext": [
         "java"
@@ -126,6 +119,9 @@
       "NP/Reduction": {},
       "VisFormalLang/RecEnum": {},
       "SeniorAlgAnal/Impossible": {}
+    },
+    "Assignments": {
+      "VisFormalLang/Sheet1":{}
     },
     "Appendix": {
       "Glossary": {},

@@ -192,7 +192,7 @@
   var exportToFA = function() {
 	 localStorage.toConvert = true;
 	 localStorage.converted = serialize(studentGraph);
-	 window.open("./FAEditor.html");
+	 window.open("./FA.html");
   };
 
   var checkDone = function() {
