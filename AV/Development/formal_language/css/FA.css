@@ -50,7 +50,7 @@
 	height: 500px;
 }
 .jsavgraph {
-	/*outline: 1px black solid;*/
+	outline: 1px black solid;
 	border: 10px transparent solid;
 }
 .jsavnode {

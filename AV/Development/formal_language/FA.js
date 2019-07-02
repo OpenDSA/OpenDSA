@@ -487,7 +487,7 @@ var exerciseLocation;
 	// Triggered by clicking the "Highlight Lambda/Epsilon Transitions" button.
 	var testLambda = function() {
 		removeModeClasses();
-		var edges = g.edges();
+		var edges = g.edges(), wSplit;
 		for (var next = edges.next(); next; next = edges.next()) {
 			wSplit = next.weight().split('<br>');
 			for (var i = 0; i < wSplit.length; i++) {
