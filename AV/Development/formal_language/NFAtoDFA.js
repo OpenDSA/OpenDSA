@@ -85,110 +85,132 @@
 	}	
 
 	// handler for the graph window
-  var graphClickHandlers = function(e) {
-	 if ($(".jsavgraph").hasClass("working")) {
-		 // user is allowed to omit 'q' and separate state names with empty space or commas
-		 var targetS = prompt("Which group of NFA states will that go to on " + expandT + "?");
-		 if (!targetS) {
-			 return;
-		 }
-		 var inputArr = targetS.trim().split(/\s*[,\s]\s*/);
-		 for (var i = 0; i < inputArr.length; i++) {
-			 if (inputArr[i].indexOf("q") === -1) {
-				 inputArr[i] = "q" + inputArr[i];
-			 }
-		 }
-		 targetS = inputArr.sort().join();
-		 if (targetS !== expanded) {
-			 alert("State label is incorrect.");
-			 $(".editButton").show();
-			 $(".jsavgraph").removeClass("working");
-			 selectedNode.unhighlight();
-			 jsav.umsg("Choose a state to expand:");
-			 return;
-		 }
-		 // create the new state
-		 var newNode = studentGraph.addNode(),
-				 nodeX = newNode.element.width() / 2.0,
-				 nodeY = newNode.element.height() / 2.0;
-		 $(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-		 var check = expanded.split(",");
-		 // make the new state final if any of the original states were final
-		 for (var i = 0; i < check.length; i++) {
-			 if (referenceGraph.getNodeWithValue(check[i]).hasClass("final")) {
-				 newNode.addClass("final");
-				 break;
-			 }
-		 }
-		 newNode.stateLabel(expanded);
-		 newNode.stateLabelPositionUpdate();
-		 var newEdge = studentGraph.addEdge(selectedNode, newNode, {weight: expandT});
-			 if (newEdge) { newEdge.layout(); }
+var graphClickHandlers = function(e) {
+	if ($(".jsavgraph").hasClass("working")) {
+		// user is allowed to omit 'q' and separate state names with empty space or commas
+		var targetS = prompt("Which group of NFA states will that go to on " + expandT + "?");
+		if (!targetS) {
+			return;
+		}
+		var inputArr = targetS.trim().split(/\s*[,\s]\s*/);
+		for (var i = 0; i < inputArr.length; i++) {
+			if (inputArr[i].indexOf("q") === -1) {
+				inputArr[i] = "q" + inputArr[i];
+			}
+		}
+		targetS = inputArr.sort().join();
+		if (targetS !== expanded) {
+			alert("State label is incorrect.");
+			$(".editButton").show();
+			$(".jsavgraph").removeClass("working");
+			selectedNode.unhighlight();
+			jsav.umsg("Choose a state to expand:");
+			return;
+		}
+		//check to see if the new node already exisit with the same label
+		var graphNodes = studentGraph.nodes();
+		for(var nodeIndex = 0; nodeIndex < graphNodes.length; nodeIndex++){
+			if(graphNodes[nodeIndex].stateLabel() === targetS){
+				alert("State label already exists.");
+				$(".editButton").show();
+				$(".jsavgraph").removeClass("working");
+				selectedNode.unhighlight();
+				jsav.umsg("Choose a state to expand:");
+				return;
+			}
+		}
+		// create the new state
+		var newNode = studentGraph.addNode(),
+				nodeX = newNode.element.width() / 2.0,
+				nodeY = newNode.element.height() / 2.0;
+		$(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+		var check = expanded.split(",");
+		// make the new state final if any of the original states were final
+		for (var i = 0; i < check.length; i++) {
+			if (referenceGraph.getNodeWithValue(check[i]).hasClass("final")) {
+				newNode.addClass("final");
+				break;
+			}
+		}
+		newNode.stateLabel(expanded);
+		newNode.stateLabelPositionUpdate();
+		var newEdge = studentGraph.addEdge(selectedNode, newNode, {weight: expandT});
+			if (newEdge) { newEdge.layout(); }
 
-		 $(".editButton").show();
-		 $(".jsavgraph").removeClass("working");
-		 selectedNode.unhighlight();
-		 newNode.unhighlight();
-		 jsav.umsg("Choose a state to expand:");
-	 }
-  };
+		$(".editButton").show();
+		$(".jsavgraph").removeClass("working");
+		selectedNode.unhighlight();
+		newNode.unhighlight();
+		jsav.umsg("Choose a state to expand:");
+	}
+};
 
 	// handler for the nodes of the DFA
-  var nodeClickHandlers = function(e) {
+var nodeClickHandlers = function(e) {
 	 this.highlight();
 	 // allow user to remove nodes since there is no check to see if a new node already exists
-	 if ($(".jsavgraph").hasClass("removeNodes")) {
-		 if (!this.equals(studentGraph.initial)) {		//dont remove if it's an initial state
-			 studentGraph.removeNode(this);
-		 }
-		 this.unhighlight();
-	 }	 else if (!$(".jsavgraph").hasClass("working")) {
-			 selectedNode = this;
-			 expandT = prompt("Expand on what terminal?");
-			 if (expandT === null) {
-				 this.unhighlight();
-				 return;
-			 } else if (!_.contains(alphabet, expandT)) {
-				 alert("That terminal is not in the alphabet!");
+	if ($(".jsavgraph").hasClass("removeNodes")) {
+		if (!this.equals(studentGraph.initial)) {		//dont remove if it's an initial state
+			studentGraph.removeNode(this);
+		}
+		this.unhighlight();
+	}	 
+	else if (!$(".jsavgraph").hasClass("working")) {
+		selectedNode = this;
+		expandT = prompt("Expand on what terminal?");
+		if (expandT === null) {
+			this.unhighlight();
+			return;
+		} else if (!_.contains(alphabet, expandT)) {
+			alert("That terminal is not in the alphabet!");
 
-				 this.unhighlight();
-				 return;
-			 }
-				 var next = [],
-						 valArr = this.stateLabel().split(","),
-						 finality = false;
-				 for (var j = 0; j < valArr.length; j++) {
-					 next = _.union(next, lambdaClosure(referenceGraph.transitionFunction(referenceGraph.getNodeWithValue(valArr[j]),
-									 expandT), referenceGraph));
-				 }
-				 var node = next.sort().join();
-				 if (!node) {
-					 alert("There are no paths on that terminal!");
+			this.unhighlight();
+			return;
+		}
+		//check if there exist another edge for the same lable
+		var selectedNodeEdges = this.getOutgoing();
+		for(var edgeNumber = 0; edgeNumber< selectedNodeEdges.length; edgeNumber++){
+			if(selectedNodeEdges[edgeNumber]._weight === expandT){
+				alert("There is an existing transition for the same alpabet");
+				this.unhighlight();
+				return;
+			}
+		}
+		var next = [],
+			valArr = this.stateLabel().split(","),
+			finality = false;
+		for (var j = 0; j < valArr.length; j++) {
+			next = _.union(next, lambdaClosure(referenceGraph.transitionFunction(referenceGraph.getNodeWithValue(valArr[j]),
+							expandT), referenceGraph));
+		}
+		var node = next.sort().join();
+		if (!node) {
+			alert("There are no paths on that terminal!");
 
-					 this.unhighlight();
-					 return;
-				 }
-				 expanded = node;
-				 $(".editButton").hide();
-				 $(".jsavgraph").addClass("working");
-				 jsav.umsg("Click to place new state");
-				 e.stopPropagation();
-		 } else {
-			 // add transition if this is the toNode
-			 if (this.stateLabel() === expanded) {
-				 var newEdge = studentGraph.addEdge(selectedNode, this, {weight: expandT});
-				 if (newEdge) { newEdge.layout(); }
-			 }			 else {
-				 alert("State label is incorrect.");
-			 }
-			 $(".editButton").show();
-			 $(".jsavgraph").removeClass("working");
-			 selectedNode.unhighlight();
-			 this.unhighlight();
-			 jsav.umsg("Choose a state to expand:");
-			 e.stopPropagation();
-		 }
-  };
+			this.unhighlight();
+			return;
+		}
+		expanded = node;
+		$(".editButton").hide();
+		$(".jsavgraph").addClass("working");
+		jsav.umsg("Click to place new state");
+		e.stopPropagation();
+	} else {
+		// add transition if this is the toNode
+		if (this.stateLabel() === expanded) {
+			var newEdge = studentGraph.addEdge(selectedNode, this, {weight: expandT});
+			if (newEdge) { newEdge.layout(); }
+		}			 else {
+			alert("State label is incorrect.");
+		}
+		$(".editButton").show();
+		$(".jsavgraph").removeClass("working");
+		selectedNode.unhighlight();
+		this.unhighlight();
+		jsav.umsg("Choose a state to expand:");
+		e.stopPropagation();
+	}
+};
 
 	//================================
 	//editing modes
@@ -224,12 +246,59 @@
   };
 
   var checkDone = function() {
-    if (studentGraph.equals(answerGraph)) {
+    //if (studentGraph.equals(answerGraph)) {
+	if(checkIfSolutionIsDone(studentGraph, answerGraph)){
       jsav.umsg("Conversion completed.");
       $("#exportButton").show();
     }		else {
       jsav.umsg("You're not done yet.");
     }
+  };
+  var checkIfSolutionIsDone = function(solution, modelAnswer){
+    if (solution.nodeCount() !== modelAnswer.nodeCount() ||
+    solution.edgeCount() !== modelAnswer.edgeCount()) { return false; }
+
+    var myNodes = solution.nodes().sort(nodeSortFunctionLabel),
+        otherNodes = modelAnswer.nodes().sort(nodeSortFunctionOptionsValue);
+    for (var i = myNodes.length; i--; ) {
+      // if a pair of nodes isn't equal, graphs are not equal
+      if (!equalNodes(myNodes[i],otherNodes[i])) {
+        return false;
+      }
+    }
+    return true;
+  };
+  var nodeSortFunctionValue = function(a, b) {
+    return a.value().localeCompare(b.value());
+  };
+  var nodeSortFunctionLabel = function(a, b) {
+    return a.stateLabel().localeCompare(b.stateLabel());
+  };
+  var nodeSortFunctionOptionsValue = function(a, b) {
+    return a.options.value.localeCompare(b.options.value);
+  };
+  var equalNodes = function(thisNode, otherNode, options) {
+    var myNeighbors = thisNode.neighbors().sort(nodeSortFunctionLabel),
+        otherNeighbors = otherNode.neighbors().sort(nodeSortFunctionOptionsValue),
+        myNeighbor, otherNeighbor;
+    // different number of neighbors -> cannot be equal nodes
+    if (myNeighbors.length !== otherNeighbors.length) { return false; }
+
+    var i;
+    for (i = myNeighbors.length; i--; ) {
+      myNeighbor = myNeighbors[i];
+      otherNeighbor = otherNeighbors[i];
+      // if edges differ -> not the same nodes
+      if (!thisNode.container.getEdge(thisNode, myNeighbor)
+                .equals(otherNode.container.getEdge(otherNode, otherNeighbor),
+                        $.extend({}, options, {dontCheckNodes: true})
+                        //options
+                        )) {
+        return false;
+      }
+    }
+
+    return true; // values equal, neighbors equal, edges equal, nothing else to compare
   };
 
   onLoadHandler();
