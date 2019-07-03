@@ -15,9 +15,9 @@ Sheet 2
 Exercise 1 Part a
 -----------------
 
-.. avembed:: AV/Development/formal_language/FATester.html ss
-    :long_name: Sheet 1 Exercise 1
-    :url_params: fileLocation=Formal_Languages_Automated_Exerciese/exercises/Sheet_1/Exercise1.json
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/ExercisesEditors/NFAtoDFAExerciseEditor.html ss
+    :long_name: Sheet 2 Exercise 1 part a
+    :url_params: fileLocation=../exercises/Sheet_2/exercise1_a.json
 
 Exercise 1 Part b
 -----------------

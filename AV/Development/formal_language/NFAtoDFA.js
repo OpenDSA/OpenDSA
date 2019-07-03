@@ -359,6 +359,8 @@ var nodeClickHandlers = function(e) {
 			$('#download a')[0].click();
 	});
 	$("#reset").click(function () {	
+		$("#testResults").empty();
+		$("#percentage").empty();
 		initialize();
 		exerciseLog.errorMessages = [];
 		exerciseLog.numberOfSteps=0;
