@@ -64,19 +64,19 @@
 				</div>
 			</div>
 			<p align="center" class="arrayPlace"></p>
-			<button id="testSolution">Test</button>
-			<!--<button id="saveButton">Save</button>-->
+			<button id="saveButton">Save</button>
 			<button id="showResult">Show Results</button>
+			<button type="button" id="reset">Reset</button>
+			<button type="button" id="checkDone">Done?</button>
 			<p id="percentage"></p>
 			<table id="testResults"></table>
 			<div id="av">
 				<div style="display:inline;">
 					<div style="float: right;" id="menu_options">
-					<button id="editButton" class="icon_btn"><i class="fa fa-mouse-pointer"></i></button>
+					<!--<button id="editButton" class="icon_btn"><i class="fa fa-mouse-pointer"></i></button>-->
 					<!--<button id="not_implemented" class="icon_btn" title="Expand Group on (T)erminal"><i class="fa fa-joomla"></i></button>
 					<button id="not_implemented" class="icon_btn" title="Expand State"><i class="fa fa-share-alt"></i></button>-->
 					<!--<button type="button" id="completeButton">Complete</button>-->
-					<button type="button" id="checkDone">Done?</button>
 					<!--<button type="button" id="exportButton">Export</button>-->
 					</div>
 					<p class="jsavoutput jsavline"></p>
@@ -85,19 +85,11 @@
 						<tr>
 							<td style="display: -webkit-box;border:  hidden;margin-top: 5px;">
 							<div class="dropdown" style="height: 20px !important;">
-							<button type="button" data-toggle="dropdown">File
-							<span class="caret"></span></button>
-							<ul class="dropdown-menu">
-								<li><a href="#" class="functionality" id="saveButton">Save Machine</a></li>
-								<li><a href="#" class="functionality" id="savePDF">Save as Jpeg</a></li>
-								<li><a href="#" id="new">
-								<label id="getFileLabel" for="loadFile" style="display: inline-block;height: 50%; width: 100%">Load File</label>
-								<input type="file" id="loadFile" style=" display: none;" /></a></li>
-							</ul>
+							
 
 							</div>
 
-							<button class="functionality" id="begin">Input</button>
+							
 							<!--<div class="dropdown" style="height: 20px !important; width: 73px;">
 							<button type="button" data-toggle="dropdown">Convert
 							<span class="caret"></span></button>
@@ -123,7 +115,7 @@
 				<br>
 				<br>
 				<hr style="margin-top: 0px; border-top: 1px solid #333; margin-bottom: 0px;">
-				
+				<div id='download'></div>
 				<div id="graphs">
 					<div id="reference" class="jsavcanvas"></div>
 					<div id="editable" class="jsavcanvas"></div>

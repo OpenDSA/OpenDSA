@@ -36,47 +36,36 @@ controllerProto.load = function () {
 		$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
 	}
 	var proto = this;
-	$('#testSolution').click(function() {
+	/*$('#testSolution').click(function() {
 		proto.startTesting();
 	});
-	$('.links').click(function() {
+*/	$('.links').click(function() {
 		proto.toExercise(this);
 	});
 	$('#showResult').click(function () {
 		alert(JSON.stringify(logRecord));
 	});
 	$("#testResults").hide();
-	this.updateExercise(this.currentExercise);
+    this.updateExercise(this.currentExercise);
 }
 
-controllerProto.startTesting = function() {
+controllerProto.startTesting = function(studentSolution) {
 	tryC++;
-	if (this.fa.initial == null) {
+	if (studentSolution == null) {
 		window.alert("FA traversal requires an initial state.");
 		return;
 	}
 	$("#testResults").empty();
-	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
+	$("#testResults").append("<tr><td>Number of incorrect steps</td><td>Error Messages</td></tr>");
 	var count = 0;
-	var testRes = [];
-	for (i = 0; i < this.testCases.length; i++) {
-		var testNum = i + 1;
-		var testCase = this.testCases[i];
-		var input = Object.keys(testCase)[0];
-		var inputResult = willReject(this.fa, input);
-		if (inputResult !== testCase[input]) {
-			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
-			count++;
-			testRes.push('Test' + testNum +':' + 'Correct');
-		}
-		else {
-			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
-			testRes.push('Test' + testNum + ':' + 'Wrong');
-		}
-	}
+    var testRes = [];
+    $("#testResults").append("<tr><td>" + exerciseLog.errorsCount + "</td><td>" + exerciseLog.errorMessages[0]);
+	for (i = 1; i < exerciseLog.errorMessages.length; i++) {
+        $("#testResults").append("<tr><td>" + "</td><td>" + exerciseLog.errorMessages[i]);	
+    }
 	var exer = {};
 	exer['Attempt' + tryC.toString()] = testRes;
-	exer['studentSolution'] = serialize(this.fa);
+	exer['studentSolution'] = serialize(studentSolution);
 	var exNum = parseInt(this.currentExercise) + 1;
 	if (count > logRecord['Exercise' + exNum +'_Highest']) {
 	 	logRecord['Exercise' + exNum +'_Highest'] = count;
@@ -84,8 +73,7 @@ controllerProto.startTesting = function() {
 	logRecord['Exercise' + exNum].push(exer);
 	var end = new Date;
 	logRecord['Exercise' + exNum + '_Time'].push(end);
-
-	$("#percentage").text("Correct cases: " + count + " / " + this.testCases.length);
+	$("#percentage").text("Correctness: " + exerciseLog.numberOfSteps + " / " + (exerciseLog.numberOfSteps + exerciseLog.errorsCount));
 	$("#percentage").show();
 	$("#testResults").show();
 	window.scrollTo(0,document.body.scrollHeight);
@@ -136,4 +124,9 @@ controllerProto.updateExercise = function(id) {
 	logRecord['Exercise' + exNum + '_Time'] = [];
 	logRecord['Exercise' + exNum + '_Time'].push(start);
 
+};
+var exerciseLog = {
+    errorsCount:0,
+    errorMessages : [],
+    numberOfSteps:0
 };

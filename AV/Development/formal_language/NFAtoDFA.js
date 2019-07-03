@@ -105,6 +105,10 @@ var graphClickHandlers = function(e) {
 			$(".jsavgraph").removeClass("working");
 			selectedNode.unhighlight();
 			jsav.umsg("Choose a state to expand:");
+			if(exerciseLog){
+				exerciseLog.errorsCount++;
+				exerciseLog.errorMessages.push(targetS + ": State label is incorrect");
+			}
 			return;
 		}
 		//check to see if the new node already exisit with the same label
@@ -116,6 +120,10 @@ var graphClickHandlers = function(e) {
 				$(".jsavgraph").removeClass("working");
 				selectedNode.unhighlight();
 				jsav.umsg("Choose a state to expand:");
+				if(exerciseLog){
+					exerciseLog.errorsCount++;
+					exerciseLog.errorMessages.push(targetS + ": State label already exists");
+				}
 				return;
 			}
 		}
@@ -142,6 +150,8 @@ var graphClickHandlers = function(e) {
 		selectedNode.unhighlight();
 		newNode.unhighlight();
 		jsav.umsg("Choose a state to expand:");
+		if(exerciseLog)
+			exerciseLog.numberOfSteps++;
 	}
 };
 
@@ -163,8 +173,12 @@ var nodeClickHandlers = function(e) {
 			return;
 		} else if (!_.contains(alphabet, expandT)) {
 			alert("That terminal is not in the alphabet!");
-
+			if(exerciseLog){
+				exerciseLog.errorsCount++;
+				exerciseLog.errorMessages.push(expandT + ": That terminal is not in the alphabet");
+			}
 			this.unhighlight();
+			
 			return;
 		}
 		//check if there exist another edge for the same lable
@@ -172,6 +186,10 @@ var nodeClickHandlers = function(e) {
 		for(var edgeNumber = 0; edgeNumber< selectedNodeEdges.length; edgeNumber++){
 			if(selectedNodeEdges[edgeNumber]._weight === expandT){
 				alert("There is an existing transition for the same alpabet");
+				if(exerciseLog){
+					exerciseLog.errorsCount++;
+					exerciseLog.errorMessages.push(expandT + ": There is an existing transition for the same alpabet");
+				}
 				this.unhighlight();
 				return;
 			}
@@ -186,7 +204,10 @@ var nodeClickHandlers = function(e) {
 		var node = next.sort().join();
 		if (!node) {
 			alert("There are no paths on that terminal!");
-
+			if(exerciseLog){
+				exerciseLog.errorsCount++;
+				exerciseLog.errorMessages.push(expandT + ": There are no paths on that terminal");
+			}
 			this.unhighlight();
 			return;
 		}
@@ -194,6 +215,8 @@ var nodeClickHandlers = function(e) {
 		$(".editButton").hide();
 		$(".jsavgraph").addClass("working");
 		jsav.umsg("Click to place new state");
+		if(exerciseLog)
+			exerciseLog.numberOfSteps++;
 		e.stopPropagation();
 	} else {
 		// add transition if this is the toNode
@@ -202,6 +225,10 @@ var nodeClickHandlers = function(e) {
 			if (newEdge) { newEdge.layout(); }
 		}			 else {
 			alert("State label is incorrect.");
+			if(exerciseLog){
+				exerciseLog.errorsCount++;
+				exerciseLog.errorMessages.push(expandT + ": State label is incorrect");
+			}
 		}
 		$(".editButton").show();
 		$(".jsavgraph").removeClass("working");
@@ -209,6 +236,8 @@ var nodeClickHandlers = function(e) {
 		this.unhighlight();
 		jsav.umsg("Choose a state to expand:");
 		e.stopPropagation();
+		if(exerciseLog)
+			exerciseLog.numberOfSteps++;
 	}
 };
 
@@ -251,8 +280,14 @@ var nodeClickHandlers = function(e) {
       jsav.umsg("Conversion completed.");
       $("#exportButton").show();
     }		else {
-      jsav.umsg("You're not done yet.");
-    }
+	  jsav.umsg("You're not done yet.");
+	  if(exerciseLog){
+		exerciseLog.errorsCount++;
+		exerciseLog.errorMessages.push("You're not done yet");
+		}
+	}
+	if(exerController)
+		exerController.startTesting(studentGraph);
   };
   /*
   These function added to compare student solution with the expected solution. Previously, the code was calling the equals method for Grapths, which depend that the 
@@ -315,4 +350,19 @@ var nodeClickHandlers = function(e) {
   $("#exportButton").click(exportToFA);
   $("#checkDone").click(checkDone);
   $("#exportButton").hide();
+  //this function to save student solution
+  	$("#saveButton").click(function () {
+		$('#download').hide();
+		$('#download').html('');
+		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(studentGraph));
+		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.xml">Download FA</a>');
+			$('#download a')[0].click();
+	});
+	$("#reset").click(function () {	
+		initialize();
+		exerciseLog.errorMessages = [];
+		exerciseLog.numberOfSteps=0;
+		exerciseLog.errorsCount=0;
+	});
+
 }(jQuery));
