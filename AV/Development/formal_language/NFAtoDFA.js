@@ -254,6 +254,11 @@ var nodeClickHandlers = function(e) {
       jsav.umsg("You're not done yet.");
     }
   };
+  /*
+  These function added to compare student solution with the expected solution. Previously, the code was calling the equals method for Grapths, which depend that the 
+  student solution is generated in the same order as the answer graph :O. Now we compare based on the labels of the nodes. So what ever the order, the labels 
+  must be the same.
+  */
   var checkIfSolutionIsDone = function(solution, modelAnswer){
     if (solution.nodeCount() !== modelAnswer.nodeCount() ||
     solution.edgeCount() !== modelAnswer.edgeCount()) { return false; }
@@ -271,9 +276,11 @@ var nodeClickHandlers = function(e) {
   var nodeSortFunctionValue = function(a, b) {
     return a.value().localeCompare(b.value());
   };
+  //the student solution should be sorted based on the state label
   var nodeSortFunctionLabel = function(a, b) {
     return a.stateLabel().localeCompare(b.stateLabel());
   };
+  //the model answer graph should be sorted on the labels also, but the labels are stored in options.value
   var nodeSortFunctionOptionsValue = function(a, b) {
     return a.options.value.localeCompare(b.options.value);
   };
