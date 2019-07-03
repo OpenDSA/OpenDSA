@@ -8,53 +8,81 @@
       referenceGraph,							// reference (original NFA)
       studentGraph,							// working conversion
       answerGraph,
-      alphabet;
+	  alphabet,
+	  exerController;
 
-  var lambda = String.fromCharCode(955),
-      epsilon = String.fromCharCode(949);
+  	var lambda = String.fromCharCode(955),
+    epsilon = String.fromCharCode(949);
 
 	// initializes the reference/original NFA
-  function initGraph() {
-	 if (localStorage.convertNFA == "true") {
-	   localStorage.convertNFA = false;
-		 //localStorage['convertNFA'] = false;
-		 var data = localStorage.toConvert;
-		 referenceGraph = deserialize(data);
-		 initialize();
- }	 else {
-		 alert("If you want to convert an NFA, please use FAEditor.");
-		 window.close();
-	 }
-  }
+	function onLoadHandler(){
+		var type = $('h1').attr('id');
+		if (type == 'Exercise') {
+			var params = window.location.search;
+			//******************** */
+			var end = params.indexOf(".json");
+			var start = params.indexOf("fileLocation=")
+			var exerciseLocation = params.substring(start, end + 5).split('=')[1];
+			var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_2/exercise1_a.json": exerciseLocation;
+			exerController = new NFAtoDFAMinimizationController(jsav, g, exercisePath, "json", {initGraph: initGraph});
+			exerController.load();		
+		}
+		else
+			initGraph();
+	}
+	function initGraph(opts) {
+		var type = $('h1').attr('id');
+		if (localStorage.convertNFA == "true") {
+			localStorage.convertNFA = false;
+			//localStorage['convertNFA'] = false;
+			var data = localStorage.toConvert;
+			referenceGraph = deserialize(data);
+			initialize();
+		}
+		else if(type == 'Exercise')
+		{
+			var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
+			referenceGraph = jsav.ds.fa({width: "45%", height: 440, layout: "manual", element: $("#reference")});
+			referenceGraph.initFromParsedJSONSource(source, 0.5);
+			referenceGraph.updateAlphabet();
+			alphabet = Object.keys(referenceGraph.alphabet).sort();
+			$("#alphabet").html(String(alphabet));
+			initialize();
+		}
+		else {
+			alert("If you want to convert an NFA, please use FAEditor.");
+			window.close();
+		}
+	}
 
-  function deserialize(data) {
-	 var gg = jQuery.parseJSON(data);
-	 var graph = jsav.ds.fa({width: "45%", height: 440, layout: "manual", element: $("#reference")});
-	 graph.initFromParsedJSONSource(gg, 0.5);
-	 graph.updateAlphabet();
-	 alphabet = Object.keys(graph.alphabet).sort();
-	 $("#alphabet").html(String(alphabet));
-	 return graph;
-  }
+  	function deserialize(data) {
+		var gg = jQuery.parseJSON(data);
+		var graph = jsav.ds.fa({width: "45%", height: 440, layout: "manual", element: $("#reference")});
+		graph.initFromParsedJSONSource(gg, 0.5);
+		graph.updateAlphabet();
+		alphabet = Object.keys(graph.alphabet).sort();
+		$("#alphabet").html(String(alphabet));
+		return graph;
+  	}
 
 	// initializes the DFA to be created by the user
-  function initialize() {
-	 if (studentGraph) {
-		 $("#editable").empty();
-	 }
-	 jsav.umsg("Choose a state to expand:");
-	 studentGraph = jsav.ds.fa({width: "45%", height: 440, element: $("#editable")});
-	 var initialNode = studentGraph.addNode({left: "20px"});
-	 initialNode.stateLabel(lambdaClosure([referenceGraph.initial.value()], referenceGraph).sort().join());
-	 initialNode.stateLabelPositionUpdate();
-	 studentGraph.makeInitial(initialNode);
+  	function initialize() {
+		if (studentGraph) {
+			$("#editable").empty();
+		}
+		jsav.umsg("Choose a state to expand:");
+		studentGraph = jsav.ds.fa({width: "45%", height: 440, element: $("#editable")});
+		var initialNode = studentGraph.addNode({left: "20px"});
+		initialNode.stateLabel(lambdaClosure([referenceGraph.initial.value()], referenceGraph).sort().join());
+		initialNode.stateLabelPositionUpdate();
+		studentGraph.makeInitial(initialNode);
 
-	 $("#editable").off("click").click(graphClickHandlers);
-	 studentGraph.click(nodeClickHandlers);
-	 answerGraph = convertToDFA(jsav, referenceGraph, {width: "45%", height: 440, layout: "automatic", element: $("#answer")});
-	 answerGraph.hide();
-	 return studentGraph;
-  }
+		$("#editable").off("click").click(graphClickHandlers);
+		studentGraph.click(nodeClickHandlers);
+		answerGraph = convertToDFA(jsav, referenceGraph, {width: "45%", height: 440, visible: false, element: $("#answer")});
+		//answerGraph.hide();
+		return studentGraph;
+	}	
 
 	// handler for the graph window
   var graphClickHandlers = function(e) {
@@ -204,7 +232,7 @@
     }
   };
 
-  initGraph();
+  onLoadHandler();
   $("#conversionButton").click(conversionMode);
   $("#removenodesbutton").click(removeNodesMode);
   $("#completeButton").click(complete);
