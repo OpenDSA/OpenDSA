@@ -64,6 +64,8 @@
   },
   "chapters": {
     "Stuff": {
+      "Binary/BST": {
+      },
       "Indexing/TwoThreeTree": {
       },
       "Indexing/BTree": {

@@ -34,9 +34,9 @@ sorted order from lowest to highest.
 
 .. _BSTShape:
 
-.. inlineav:: BSTFirstImageTry dgm
-   :links: AV/Binary/BSTFirstImageTry.css
-   :scripts: AV/Binary/BSTFirstImageTry.js
+.. inlineav:: BSTShapeCON dgm
+   :links: AV/Binary/BSTShapeCON.css
+   :scripts: AV/Binary/BSTShapeCON.js
    :align: justify
 
    Two Binary Search Trees for a collection of values.
