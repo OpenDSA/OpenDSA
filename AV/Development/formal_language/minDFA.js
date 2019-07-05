@@ -28,17 +28,31 @@ if computational complexity is a concern, should be changed to use a union-find 
 		alphabet,
 		partitions = [],			// user created partitions
 		checkNodeArr = [],			// correct partitions
-		minimizedEdges = {};		// adjlist of minimized DFA
+		minimizedEdges = {},		// adjlist of minimized DFA
+		exerciseController,			//for creating exercise
+		type;						//determinie the type of the editor (exercise or not)
 	
 	var lambda = String.fromCharCode(955),
 			epsilon = String.fromCharCode(949);
   
 	// initialize reference/original DFA
-	function initGraph() {
+	function initGraph(opts) {
 		if (localStorage['minimizeDFA'] == "true") {
 			localStorage['minimizeDFA'] = false;
 			var data = localStorage['toMinimize'];
 			return deserialize(data);
+		}
+		else if(type == 'Exercise')
+		{
+			var source = opts.graph;
+			referenceGraph = jsav.ds.fa({width: "45%", height: 440, layout: "manual", element: $("#reference")});
+			referenceGraph.initFromParsedJSONSource(source, 0.5);
+			referenceGraph.updateAlphabet();
+			alphabet = Object.keys(referenceGraph.alphabet).sort();
+			$("#alphabet").html(String(alphabet));
+			jsav.umsg('Select a leaf node in the tree to split. Then click on set terminals button.');
+			initializeBT();
+			referenceGraph.click(refClickHandlers);
 		}
 		else {
 			alert("Use FAEditor to minimize DFA.");
@@ -124,6 +138,10 @@ if computational complexity is a concern, should be changed to use a union-find 
 				}
 				if (!_.find(leaves, function(v){return _.difference(dArr, v.split(',')).length === 0}) && dArr.length !== 0) {
 					jsav.umsg("There are distinguishable states remaining");
+					if(type === 'Exercise'){
+						exerciseLog.errorMessages.push("There are distinguishable states remaining");
+						exerciseLog.errorsCount++;
+					}
 					return;
 				}
 			}
@@ -273,6 +291,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 	var addEdgesMode = function() {
 		$(".jsavgraph").addClass("addEdges");
 		$("#mode").html('Adding edges');
+		$("#mode").hide();
 		jsav.umsg("Click a state");
 	};
 
@@ -288,6 +307,12 @@ if computational complexity is a concern, should be changed to use a union-find 
 					var newEdge = studentGraph.addEdge(n1, n2, {weight: w});
 					if (newEdge) {
 						newEdge.layout();
+					}
+					if(type === 'Exercise')
+					{
+						if(exerciseLog.numberOfHints>=2)
+							$('#hintbutton').hide();
+						exerciseLog.numberOfHints++;
 					}
 					return;
 				}
@@ -324,11 +349,20 @@ if computational complexity is a concern, should be changed to use a union-find 
 		// if not complete, tell the user how many transitions are left
 		if (currentCount !== minimizedCount) {
 			alert("" + (minimizedCount - currentCount) + ' transitions remain to be placed.')
+			if(type === 'Exercise'){
+				exerciseLog.errorMessages.push('Incomplete DFA transitions');
+				exerciseLog.errorsCount++;
+			}
 		}
 		else {
 			jsav.umsg("You got it!");
 			$('.hide').hide();
 			$('#exportbutton').show();
+			if(type === 'Exercise'){
+				exerciseLog.numberOfSteps++;
+				exerController.startTesting(studentGraph, "minimization");
+
+			}
 		}
 	};
 
@@ -361,8 +395,14 @@ if computational complexity is a concern, should be changed to use a union-find 
 			$('.treework').hide();
 			$('.split').show();
 			jsav.umsg("The expansion is correct - Split a leaf node");
+			if(type === 'Exercise')
+				exerciseLog.numberOfSteps++;
 		} else {
 			alert('Those partitions are incorrect');
+			if(type === 'Exercise'){
+				exerciseLog.errorMessages.push('Wrong node partitioning');
+				exerciseLog.errorsCount++;
+			}
 		}
 	};
 
@@ -389,7 +429,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		var leaves = getLeaves(bt.root());
 		var val = selectedNode.value().split(',');
 		
-		input = prompt("Set terminal");
+		input = prompt("Set the terminal that will split the selected node");
 		if (input === null) {
 			return;
 		} else if (!_.contains(alphabet, input)) {
@@ -414,8 +454,15 @@ if computational complexity is a concern, should be changed to use a union-find 
 				var leaf = leaves[i].split(',');
 				if (_.difference(nArr, leaf).length === 0) {
 					alert(input + " does not distinguish these states");
+					if (type == 'Exercise'){
+						exerciseLog.errorsCount++;
+						exerciseLog.errorMessages.push(input + " does not distinguish these states");
+					}
 					return;
 				}
+			}
+			if (type == 'Exercise'){
+				exerciseLog.numberOfSteps++;
 			}
 			// map leaves to states which transition into that leaf
 			for (var i = 0; i < leaves.length; i++) {
@@ -447,7 +494,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 			$('.split').hide();
 			selectedNode.unhighlight();
 			selectedNode = null;
-			jsav.umsg('Enter states');
+			jsav.umsg('Click on a partion and enter its states by selecting them from the DFA. Click on ckeck nodes when you are done');
 			bt.layout();
 			return;
 		}
@@ -489,6 +536,13 @@ if computational complexity is a concern, should be changed to use a union-find 
 				selectedNode.unhighlight();
 				unhighlightAll(referenceGraph);
 				selectedNode = null;
+				if(type == 'Exercise'){
+					exerciseLog.errorMessages.push("Wrong auto partitioning for a node");
+					exerciseLog.errorsCount++;
+					if(exerciseLog.numberOfAutoPartitions>=2)
+						$('#autobutton').hide();
+					exerciseLog.numberOfAutoPartitions++;
+				}
 				return;
 			}
 		}
@@ -521,6 +575,13 @@ if computational complexity is a concern, should be changed to use a union-find 
 		} 
 		jsav.umsg('Split a leaf node');
 		bt.layout();
+		
+		if(type === 'Exercise')
+		{
+			if(exerciseLog.numberOfAutoPartitions>=2)
+				$('#autobutton').hide();
+			exerciseLog.numberOfAutoPartitions++;
+		}
 		return;
 	};
 
@@ -538,16 +599,28 @@ if computational complexity is a concern, should be changed to use a union-find 
 	$('#exportbutton').click(exportToFA);
 
 	var onLoadHandler = function() {
-		referenceGraph = initGraph();
-		jsav.umsg('Split a leaf node');
-		initializeBT();
-		referenceGraph.layout();
-		referenceGraph.updateAlphabet();
-		alphabet = Object.keys(referenceGraph.alphabet).sort();
-		$("#alphabet").html("" + alphabet);
-		referenceGraph.click(refClickHandlers);
+		type = $('h1').attr('id');
+		if (type == 'Exercise') {
+			var params = window.location.search;
+			//******************** */
+			var end = params.indexOf(".json");
+			var start = params.indexOf("fileLocation=")
+			var exerciseLocation = params.substring(start, end + 5).split('=')[1];
+			var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_2/dfaminimization.json": exerciseLocation;
+			exerController = new NFAtoDFAMinimizationController(jsav, g, exercisePath, "json", {initGraph: initGraph});
+			exerController.load();		
+		}
+		else{
+			referenceGraph = initGraph();
+			jsav.umsg('Split a leaf node');
+			initializeBT();
+			referenceGraph.layout();
+			referenceGraph.updateAlphabet();
+			alphabet = Object.keys(referenceGraph.alphabet).sort();
+			$("#alphabet").html("" + alphabet);
+			referenceGraph.click(refClickHandlers);
+		}
 	}
 
 	onLoadHandler();
-
 }(jQuery));

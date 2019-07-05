@@ -49,7 +49,7 @@ controllerProto.load = function () {
     this.updateExercise(this.currentExercise);
 }
 
-controllerProto.startTesting = function(studentSolution) {
+controllerProto.startTesting = function(studentSolution, exerciseType) {//exerciseType = "minimization" OR "NFAtoDFA"
 	tryC++;
 	if (studentSolution == null) {
 		window.alert("FA traversal requires an initial state.");
@@ -59,20 +59,27 @@ controllerProto.startTesting = function(studentSolution) {
 	$("#testResults").append("<tr><td>Number of incorrect steps</td><td>Error Messages</td></tr>");
 	var count = 0;
     var testRes = [];
-    $("#testResults").append("<tr><td>" + exerciseLog.errorsCount + "</td><td>" + exerciseLog.errorMessages[0]);
-	for (i = 1; i < exerciseLog.errorMessages.length; i++) {
-        $("#testResults").append("<tr><td>" + "</td><td>" + exerciseLog.errorMessages[i]);	
+    if(exerciseLog.errorsCount != 0){
+        $("#testResults").append("<tr><td>" + exerciseLog.errorsCount + "</td><td>" + exerciseLog.errorMessages[0]);
+	    for (i = 1; i < exerciseLog.errorMessages.length; i++) {
+            $("#testResults").append("<tr><td>" + "</td><td>" + exerciseLog.errorMessages[i]);	
+        }
     }
-	var exer = {};
+    var exer = {};
 	exer['Attempt' + tryC.toString()] = testRes;
 	exer['studentSolution'] = serialize(studentSolution);
 	var exNum = parseInt(this.currentExercise) + 1;
 	if (count > logRecord['Exercise' + exNum +'_Highest']) {
 	 	logRecord['Exercise' + exNum +'_Highest'] = count;
-	}
+    }
+    if(exerciseType === "minimization"){
+        exer['Auto_partitions_used'] =  exerciseLog.numberOfAutoPartitions + '/3';
+        exer['Hints_used'] = exerciseLog.numberOfHints + '/3';
+    }
 	logRecord['Exercise' + exNum].push(exer);
 	var end = new Date;
-	logRecord['Exercise' + exNum + '_Time'].push(end);
+    logRecord['Exercise' + exNum + '_Time'].push(end);
+    
 	$("#percentage").text("Correctness: " + exerciseLog.numberOfSteps + " / " + (exerciseLog.numberOfSteps + exerciseLog.errorsCount));
 	$("#percentage").show();
 	$("#testResults").show();
@@ -128,5 +135,7 @@ controllerProto.updateExercise = function(id) {
 var exerciseLog = {
     errorsCount:0,
     errorMessages : [],
-    numberOfSteps:0
+    numberOfSteps:0,
+    numberOfHints:0,
+    numberOfAutoPartitions:0
 };
