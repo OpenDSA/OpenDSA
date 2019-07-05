@@ -105,7 +105,7 @@ Here is an implementation for max heaps.
 The class uses records that support the Comparable interface to
 provide flexibility.
 
-.. codeinclude:: Binary/Maxheap
+.. codeinclude:: Binary/MaxHeap
    :tag: Maxheap
 
 This class definition makes two concessions to the fact that an
