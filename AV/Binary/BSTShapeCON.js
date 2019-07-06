@@ -1,10 +1,14 @@
+// Written by Yujie Chen and Cliff Shaffer, Summer 2019
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("BSTFirstImageTry", {animationMode: "none"});
+  var av_name = "BSTShapeCON";
+
+  var av = new JSAV(av_name, {animationMode: "none"});
   // Setup the init location of trees
   var btTop = -5;
   var btLeft = 180;
   var btRight = 530;
+
   // Left Tree
   var bt = av.ds.binarytree({nodegap: 15, left: btLeft, top: btTop + 70});
   bt.root("37");
@@ -39,5 +43,4 @@ $(document).ready(function() {
 
   av.displayInit();
   av.recorded();
-
 });

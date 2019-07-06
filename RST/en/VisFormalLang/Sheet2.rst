@@ -22,9 +22,9 @@ Exercise 1 Part a
 Exercise 1 Part b
 -----------------
 
-.. avembed:: AV/Development/formal_language/FATester.html ss
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/ExercisesEditors/DFAminimizationExerciseEditor.html ss
     :long_name: Sheet 1 Exercise 1
-    :url_params: fileLocation=Formal_Languages_Automated_Exerciese/exercises/Sheet_1/Exercise1.json
+    :url_params: fileLocation=../exercises/Sheet_2/dfaminimization.json
 
 Exercise 3
 ----------
