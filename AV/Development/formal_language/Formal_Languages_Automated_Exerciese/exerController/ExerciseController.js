@@ -108,6 +108,11 @@ controllerProto.updateExercise = function(id) {
 		$("#question").show();
 		$("#description").hide();
 	}
+	else if(type == "both"){
+		$("#description").html(exercise["description"] + 'L(<span id="expression2"></span>)');
+		$("#expression2").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
+		$("#question").hide();
+	}
 	else {
 		$("#description").text(exercise["description"]);
 		$("#description").show();
