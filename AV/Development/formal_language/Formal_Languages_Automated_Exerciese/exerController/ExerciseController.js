@@ -63,9 +63,9 @@ controllerProto.startTesting = function() {
 	var type = exercise["type"];
 	var numberOfTestCases = this.testCases.length;
 	if(type == "describtion" || type == "both"){
-		numberOfTestCases++;
 		var t = $("#description").text();
 		if(t.indexOf("DFA") > 0 && t.indexOf("NFA") < 0){
+			numberOfTestCases++;
 			var isDFA = !this.testND();
 			if(isDFA){
 				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='correct'>" + (inputResult ? "Yes": "No") + "</td></tr>");
