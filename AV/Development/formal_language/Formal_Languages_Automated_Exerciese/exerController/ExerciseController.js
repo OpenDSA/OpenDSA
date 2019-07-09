@@ -58,6 +58,26 @@ controllerProto.startTesting = function() {
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
 	var count = 0;
 	var testRes = [];
+	//For DFA exercises, we need to check if the machine is a DFA not an NFA.
+	var exercise = this.tests[this.currentExercise];
+	var type = exercise["type"];
+	var numberOfTestCases = this.testCases.length;
+	if(type == "describtion" || type == "both"){
+		var t = $("#description").text();
+		if(t.indexOf("DFA") > 0 && t.indexOf("NFA") < 0){
+			numberOfTestCases++;
+			var isDFA = !this.testND();
+			if(isDFA){
+				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='correct'>" + (inputResult ? "Yes": "No") + "</td></tr>");
+				count++;
+				testRes.push('Test' + testNum +':' + 'Correct');
+			}
+			else{
+				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='wrong'>" + (inputResult ? "Yes": "No") + "</td></tr>");
+				testRes.push('Test' + testNum +':' + 'Wrong');
+			}
+		}
+	}
 	for (i = 0; i < this.testCases.length; i++) {
 		var testNum = i + 1;
 		var testCase = this.testCases[i];
@@ -84,7 +104,7 @@ controllerProto.startTesting = function() {
 	var end = new Date;
 	logRecord['Exercise' + exNum + '_Time'].push(end);
 
-	$("#percentage").text("Correct cases: " + count + " / " + this.testCases.length);
+	$("#percentage").text("Correct cases: " + count + " / " + numberOfTestCases);
 	$("#percentage").show();
 	$("#testResults").show();
 	window.scrollTo(0,document.body.scrollHeight);
@@ -107,6 +127,11 @@ controllerProto.updateExercise = function(id) {
 		$("#expression").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
 		$("#question").show();
 		$("#description").hide();
+	}
+	else if(type == "both"){
+		$("#description").html(exercise["description"] + 'L(<span id="expression2"></span>)');
+		$("#expression2").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
+		$("#question").hide();
 	}
 	else {
 		$("#description").text(exercise["description"]);
@@ -133,4 +158,31 @@ controllerProto.updateExercise = function(id) {
 	logRecord['Exercise' + exNum + '_Time'] = [];
 	logRecord['Exercise' + exNum + '_Time'].push(start);
 
+};
+
+controllerProto.testND = function() {
+	var g = this.fa;
+	var nd = false;
+	var nodes = g.nodes();
+	for(var next = nodes.next(); next; next = nodes.next()) {
+		var findLambda = false;
+		var findMultiple = false;
+		var transition = g.transitionFunction(next, emptystring);
+		if (transition.length > 0) {
+			findLambda = true;
+		}
+		for (var key in g.alphabet) {
+			// If edges have sequences of input symbols on them, only the first one matters.
+			// Reason why is because this is the outgoing edge input symbol for the node.
+			transition = g.transitionFunctionMultiple(next, key);
+			if (transition.length > 1) {
+				findMultiple = true;
+				break;
+			}
+		}
+		if (findLambda || findMultiple) {
+			nd = true;
+		}
+	}
+	return nd;
 };
