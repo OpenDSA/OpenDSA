@@ -1,0 +1,11 @@
+{
+    "translations" :{
+      "en": {
+        "Slide 1": "Consider a list $L$ containing 7 records.",
+        "Slide 2": "The associated keys are 3 1 7 6 4 8 0",
+        "Slide 3": "Define $L_S$ to be $L$.",
+        "Slide 4": "Arranging the records so that the keys are in non-decreasing order."
+      }
+    }
+  }
+  
