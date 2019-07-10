@@ -65,8 +65,7 @@
   },
   "chapters": {
     "Stuff": {
-      "Sorting/SortNotationTest": {
-      },
+      "BTRecurTutor/BSTCheck": {}, 
       "Indexing/TwoThreeTree": {
       },
       "Indexing/BTree": {
