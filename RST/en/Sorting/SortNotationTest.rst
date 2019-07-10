@@ -17,29 +17,18 @@ Sorting Terminology and Notation
 
 .. index:: key, search key
 
-Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`
-with associated key values :math:`k_1`, :math:`k_2`, ..., :math:`k_n`,
-the :term:`Sorting Problem` is to
-arrange the records into any order :math:`s` such that records
-:math:`r_{s_1}`, :math:`r_{s_2}`, ..., :math:`r_{s_n}`
-have keys obeying the property
-:math:`k_{s_1} \leq k_{s_2} \leq ... \leq k_{s_n}`.
-In other words, the sorting problem is to arrange a set of records so
-that the values of their key fields are in non-decreasing order.
-
 .. inlineav:: SortNotationS1CON ss
    :long_name: Sorting Terminology and Notation Slideshow 1
-   :links: 
+   :links: AV/Sorting/SortNotationS1CON.css
    :scripts: AV/Sorting/SortNotationS1CON.js
    :output: show
 
-As defined, the Sorting Problem allows input with two or more
+As defined, the :term:`Sorting Problem` allows input with two or more
 records that have the same key value.
 Certain applications require that input not contain
 duplicate key values.
 Typically, sorting algorithms can handle duplicate key values unless
 noted otherwise.
-
 When duplicate key values are allowed, there might be an implicit
 ordering to the duplicates, typically based on their order of
 occurrence within the input.
