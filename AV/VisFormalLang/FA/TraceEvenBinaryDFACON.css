@@ -1,39 +1,39 @@
 #TraceEvenBinaryDFACON {
-    height: 600px;
-    width: 1000px;
+    height: 410px;
 }
-.start {
+
+#TraceEvenBinaryDFACON .start {
     font-style: italic;
     font-weight: bold;
 }
-.final {
+#TraceEvenBinaryDFACON .final {
     border: 3px double;
 }
-.testingND {
+#TraceEvenBinaryDFACON .testingND {
     background-color: blue;
 }
-.current {
+#TraceEvenBinaryDFACON .current {
     background-color: yellow;
 }
-.accepted {
+#TraceEvenBinaryDFACON .accepted {
     background-color: green;
 }
-.rejected {
+#TraceEvenBinaryDFACON .rejected {
     background-color: red;
 }
 
-.jsavlabel {
+#TraceEvenBinaryDFACON .jsavlabel {
     font-size: 2em;
     text-align: center;
 }
-.jsavstatelabel {
+#TraceEvenBinaryDFACON .jsavstatelabel {
     font-size: 1em;
     z-index: 700;
     position: absolute;
     display: inline-block;
     margin: 0;
 }
-.jsavmooreoutput {
+#TraceEvenBinaryDFACON .jsavmooreoutput {
     font-size: 1em;
     z-index: 700;
     position: absolute;
@@ -41,39 +41,39 @@
     margin: 0;
 }
 
-.jsavnode {
+#TraceEvenBinaryDFACON .jsavnode {
     cursor: pointer;
 }
-.jsavedge {
+#TraceEvenBinaryDFACON .jsavedge {
     cursor: pointer;
     stroke: black;
     stroke-width: 1;
 }
-.testingLambda {
+#TraceEvenBinaryDFACON .testingLambda {
     color: red;
     stroke-width: 3;
     stroke: red;
 }
-.testingShorthand {
+#TraceEvenBinaryDFACON .testingShorthand {
     stroke-width: 3;
     stroke: orange;
 }
-.edgeSelect {
+#TraceEvenBinaryDFACON .edgeSelect {
     stroke-width: 3;
 }
-.jsavedgelabel {
+#TraceEvenBinaryDFACON .jsavedgelabel {
     cursor: pointer;
     font-size: 1.0em;
 }
-.jsavarray .jsavindex {
+#TraceEvenBinaryDFACON .jsavarray .jsavindex {
     width: 200px;
     max-width: 1000px;
 }
 
-.jsavgraph .jsavedge {
+#TraceEvenBinaryDFACON .jsavgraph .jsavedge {
     stroke-width: 2.0px !important;
 }
-.new {
+#TraceEvenBinaryDFACON .new {
     display: inline !important;
     border: none !important;
 }

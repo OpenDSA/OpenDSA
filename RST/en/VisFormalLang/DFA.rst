@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
    :requires: FL Concepts
-   :satisfies: Deterministic Finite Acceptor
+   :satisfies: Deterministic Finite Automata
    :topic: Finite Automata
 
 Deterministic Finite Acceptors
@@ -34,15 +34,14 @@ that might have some range of options on how to proceed when in a
 given state with a given symbol.
 We'll talk about non-deterministic automata later.
 
-
 At the end of processing the letters of the string, the DFA can answer
 "yes" or "no".
 For example, "yes" if 6789 is a valid integer,
 or if SUM is a valid variable name in C++.
 
 .. inlineav:: DFAExampleCON dgm
-   :links: AV/VisFormalLang/DFA/DFAExampleCON.css
-   :scripts: AV/VisFormalLang/DFA/DFAExampleCON.js
+   :links: AV/VisFormalLang/FA/DFAExampleCON.css
+   :scripts: AV/OpenFLAP/tape.js AV/VisFormalLang/FA/DFAExampleCON.js
    :align: center
 
    Example of DFA
@@ -53,8 +52,6 @@ or if SUM is a valid variable name in C++.
    characterize/describe/define a given DFA?
    We want enough information so that we can "build" the machine.
    But no more.
-
-
 
 Define a DFA as :math:`(Q, \Sigma, \delta, q_0, F)` where
 
@@ -80,14 +77,11 @@ Example
 DFA that accepts even binary numbers.
 
 .. inlineav:: EvenBinaryDFACON dgm
-   :links: AV/VisFormalLang/DFA/EvenBinaryDFACON.css
-   :scripts: AV/VisFormalLang/DFA/EvenBinaryDFACON.js
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/EvenBinaryDFACON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/EvenBinaryDFACON.js
    :align: center
 
    DFA Example: Odd numbers
-
-
-
 
 
 We can assign meaning to the states:
@@ -147,18 +141,17 @@ Example of a trace: 11010
 Pictorial Example of a trace for 100:
 
 .. inlineav:: OddNumbersTraceCON dgm
-   :links: AV/OpenFLAP/OddNumbersTraceCON.css
-   :scripts: AV/OpenFLAP/OddNumbersTraceCON.js
+   :links: AV/OpenFLAP/tape.js AV/VisFormalLang/FA/OddNumbersTraceCON.css
+   :scripts: AV/VisFormalLang/FA/OddNumbersTraceCON.js
    :align: center
-
 
    DFA Example: Even numbers trace
 
 Now let's see how this machine accepts / rejects some strings.
 
 .. inlineav:: TraceEvenBinaryDFACON ss
-   :links: AV/VisFormalLang/DFA/TraceEvenBinaryDFACON.css
-   :scripts: AV/VisFormalLang/DFA/TraceEvenBinaryDFACON.js
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/TraceEvenBinaryDFACON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/TraceEvenBinaryDFACON.js
    :output: show
 
 Definitions
@@ -214,7 +207,7 @@ So, here is one way to make a drawing:
 .. TODO::
    :type: Drawing
 
-   Show the minimal form of the next drawing without trap state, etc.
+   First show the minimal form of the next drawing without trap state, etc.
 
 Note that this is technically incomplete, in that there are
 transitions not being show here.
@@ -227,14 +220,11 @@ To be complete, we can add one or more "trap" states, and put in all
 of the "extra" transitions. As follows.
 
 .. inlineav:: DFA_withTrapStateCON dgm
-   :links: AV/VisFormalLang/DFA/DFA_withTrapStateCON.css
-   :scripts: AV/VisFormalLang/DFA/DFA_withTrapStateCON.js
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/DFA_withTrapStateCON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/DFA_withTrapStateCON.js
    :align: center
 
    DFA Example: Complete
-
-
-
 
 
 Note that there is nothing "special" about the trap state.
@@ -259,15 +249,11 @@ even number of 1's.
 |   :math:`q_3` - odd number, even number of 1's 
 
 .. inlineav:: EvenBinaryEvenOnesDFACON dgm
-   :links: AV/VisFormalLang/DFA/EvenBinaryEvenOnesDFACON.css
-   :scripts: AV/VisFormalLang/DFA/EvenBinaryEvenOnesDFACON.js
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/EvenBinaryEvenOnesDFACON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/EvenBinaryEvenOnesDFACON.js
    :align: center
 
    More complicated DFA Example
-
-
-
-
 
 Determinism means that there is only one choice about what to do when
 in a given state and the machine sees a given character.

@@ -79,17 +79,17 @@
       "Background/SetDef": {},
       "Background/Proofs": {}
     },
-    "Deterministic Finite Acceptors": {
+    "Finite Acceptors": {
       "VisFormalLang/DFA": {},
       "VisFormalLang/NFA": {},
       "VisFormalLang/Minimization": {}
     },
-    "Regular Languages (Lectures 5, 6)": {
+    "Regular Languages": {
       "VisFormalLang/RegEx": {},
       "VisFormalLang/RegGrammar": {},
       "VisFormalLang/RegClosure": {}
     },
-    "Identifying Non-regular Languages (Lecture 7)": {
+    "Identifying Non-regular Languages": {
       "VisFormalLang/NonRegular": {},
       "VisFormalLang/DFAproperties": {}
     },

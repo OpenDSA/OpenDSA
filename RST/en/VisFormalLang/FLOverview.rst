@@ -133,23 +133,22 @@ but the last step.
 
    Stages of a compiler
 
-PART 1: Iidentifying the tokens in a program.
+PART 1: Identifying the tokens in a program.
 Our unit on regular languages gives the foundation for this.
 
 Lexical analysis (focus is on regular languages)
-identifies piece of the program
+identifies the pieces (tokens) of the program.
 
 token: integer, keyword, variable name, symbol such as +
 
 PART 2: Identifying if the tokens fit together in the correct
 way so the program is syntactically valid.
-
 This is called Syntax analysis.
 We will be learning the theory for this in our unit on context free
 languages.
 This will also involve studying several parsing algorithms.
 
 PART 3. Creating the parse tree.
-NOTE: You’ll write an interpretor, it walks through the parse tree and
-immediately executes the code.
+An interpretor walks through the parse tree and immediately executes
+the code.
 (Does not generate the code)

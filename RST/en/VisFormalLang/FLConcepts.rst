@@ -215,17 +215,6 @@ A grammar :math:`G = (V, T, S, P)` where
 
   Here, :math:`x \in (V \cup T)^+, y \in (V \cup T)^*`.
 
-.. TODO::
-   :type: Question
-
-   Is this really correct? In this example, x is a single
-   non-terminal.
-   In general, we can't have just a terminal on the left side, can we?
-   Later, more complicated grammars might have a series of things on
-   the left side with suitable restrictions. Do we want to bring that
-   up here?
-
-
 Question: What are :math:`S, T, V, P` in the "english" grammar example above?
 
 
@@ -309,13 +298,14 @@ Automata
    :align: center
 
    Abstract model of a digital computer.
-   Note that in the control unit, the numbers are symbolizing
+   Note that in the control unit, the numbers represent
    "states", which are the specific positions on the dial that the
    arrow may point to.
    While this picture shows the physical components of the "computer",
-   it is not showing the control behavior (what to do if in a given
-   state with a given symbol on the current square of the tape, and a
-   given value at the current position in the storage unit).
+   it is not showing the control behavior (what to do when we are in a
+   given state with a given symbol on the current square of the
+   tape, and a given value is at the current position in the storage
+   unit).
    This control behavior is like the "software" of the computer.
 
 
@@ -324,4 +314,4 @@ and the input is processed once from left to right.
 Some versions have an additional storage unit.
 We will define specific automata throughout the semester.
 
-This is the topic for the next chapter.
+This is the topic for the chapter on :ref:`DFAs <DFA> <DFA>`.
