@@ -43,12 +43,11 @@ transitions to more than one state.
 **Example**:
 
 .. inlineav:: NFAexampleCON dgm
-   :links: AV/VisFormalLang/NFA/NFAexampleCON.css
-   :scripts: AV/VisFormalLang/NFA/NFAexampleCON.js
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFAexampleCON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFAexampleCON.js
    :align: center
 
    Example of NFA
-
 
 In this example, :math:`\delta(q_0, a) = \{q_1, q_2\}`.
 (So, :math:`\delta` is no longer meets the mathematical definition
@@ -58,21 +57,17 @@ Hopefully this one is easy to understand: We two disjoint paths,
 effectively giving us the union of two languages:
 :math:`L = \{aa\} \cup \{ab^nb \mid n \ge 0\}`.
 
-
 **Example**:
 
 :math:`L = \{(ab)^n \mid n>0\} \cup \{a^nb \mid n>0\}`.
 
 .. inlineav:: NFAexample2CON dgm
-   :links: AV/VisFormalLang/NFA/NFAexample2CON.css
-   :scripts: AV/VisFormalLang/NFA/NFAexample2CON.js
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFAexample2CON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFAexample2CON.js
    :align: center
 
    Second Example of NFA
    A simple "go this way or go the other way".
-
-
-
 
 **Definition**: :math:`q_j \in {\delta}^{*}(q_i,w)` if and only if
 there exists some walk from :math:`q_i` to :math:`q_j` labeled :math:`w`.
@@ -122,14 +117,22 @@ Can this NFA be converted to a DFA?
 
    An NFA and equivalent DFA
 
+.. note::
 
+   Q: Is this a proof?
+
+   A: Yes. It is a proof by construction. The theorem is of the form
+   "There exists X". (In our case, it was written as "Does there
+   exist a DFA that corresponds to **this** NFA?") The proof is of the
+   form "Here is an example of X". (In our case, "Here is an acceptable
+   DFA that answers the question".)
 
 .. note::
 
-   Try this out using JFLAP.
+   Try this conversion out using JFLAP.
    JFLAP can convert a NFA to a DFA.
 
-
+ 
 .. topic:: Theorem and Proof
 
    **Theorem**: Given an NFA

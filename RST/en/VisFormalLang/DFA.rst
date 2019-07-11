@@ -83,7 +83,6 @@ DFA that accepts even binary numbers.
 
    DFA Example: Odd numbers
 
-
 We can assign meaning to the states:
 :math:`q_0` for odd numbers, :math:`q_1` for even numbers, 
 

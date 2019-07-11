@@ -11,20 +11,20 @@
 			<x>116.0</x>
 			<y>20.0</y>
 		</state>
-		<state id="2" name="q2">
+		<state id="2" name="q3">
 			<x>272.0</x>
 			<y>83.0</y>
 		</state>
-		<state id="3" name="q3">
+		<state id="3" name="q5">
 			<x>397.0</x>
 			<y>20.0</y>
 			<final/>
 		</state>
-		<state id="4" name="q4">
+		<state id="4" name="q2">
 			<x>129.0</x>
 			<y>173.0</y>
 		</state>
-		<state id="5" name="q5">
+		<state id="5" name="q4">
 			<x>276.0</x>
 			<y>173.0</y>
 		</state>
@@ -67,7 +67,7 @@
 		<transition>
 			<from>3</from>
 			<to>1</to>
-			<read>a</read>
+			<read>1</read>
 		</transition>
 		<transition>
 			<from>0</from>

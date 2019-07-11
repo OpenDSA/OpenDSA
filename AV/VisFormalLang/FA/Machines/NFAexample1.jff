@@ -11,12 +11,12 @@
 			<x>164.0</x>
 			<y>24.0</y>
 		</state>
-		<state id="2" name="q2">
+		<state id="2" name="q3">
 			<x>286.0</x>
 			<y>74.0</y>
 			<final/>
 		</state>
-		<state id="3" name="q3">
+		<state id="3" name="q2">
 			<x>170.0</x>
 			<y>132.0</y>
 		</state>
