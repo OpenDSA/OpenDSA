@@ -1,3 +1,4 @@
+    
 {
   "title": "Test",
   "desc": "Test",
@@ -64,6 +65,7 @@
   },
   "chapters": {
     "Stuff": {
+      "BTRecurTutor/BSTCheck": {}, 
       "Indexing/TwoThreeTree": {
       },
       "Indexing/BTree": {

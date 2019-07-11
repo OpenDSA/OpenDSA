@@ -14,7 +14,7 @@ Properties
 ==========
 
 Properties and Proving: Problem 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------
 
 Consider the property Replace_one_a_with_b or R1awb for short.
 If :math:`L` is regular, prove that R1awb(:math:`L`) is regular. 
@@ -53,7 +53,7 @@ Proof:
 
 
 Properties and Proving - Problem 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------
 
 Consider the property Truncate_all_preceeding_b's or TruncPreb for
 short.

@@ -29,7 +29,7 @@
   },
   "lang": "en",
   "build_JSAV": false,
-  "suppress_todo": true,
+  "suppress_todo": false,
   "assumes": "recursion",
   "dispModComp": true,
   "glob_exer_options": {
@@ -62,18 +62,6 @@
     "required": true
   }, 
   "chapters": {
-    "Preface": {
-      "Intro": {}
-    },
-    "Introduction (Lecture 1.1)": {
-      "FormalLang/FLIntro": {},
-      "FormalLang/FLOverview": {},
-      "FormalLang/FLConcepts": {}
-    },
-    "Mathematical Background": {
-      "Background/SetDef": {},
-      "Background/Proofs": {}
-    },
     "Deterministic Finite Acceptors (Lectures 1.2, 2.1, 2.2)": {
       "FormalLang/DFA": {},
       "FormalLang/NFA": {},

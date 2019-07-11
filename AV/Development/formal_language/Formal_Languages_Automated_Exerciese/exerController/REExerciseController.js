@@ -4,15 +4,14 @@ var ExerciseController = function (jsav, fa, filePath, dataType, options, check)
 var controllerProto = ExerciseController.prototype;
 var logRecord = new Object();
 var tryC = 0;
-controllerProto.init = function (jsav, fa, filePath, dataType, options) {
+controllerProto.init = function (jsav, filePath, dataType) {
 	this.filePath = filePath;
 	this.dataType = dataType;
 	this.tests;
 	this.jsav = jsav;
-	this.fa = fa;
+	this.fa = null;
 	this.currentExercise = 0;
 	this.testCases;
-	this.initGraph = options.initGraph;
 }
 
 controllerProto.load = function () {
@@ -35,9 +34,9 @@ controllerProto.load = function () {
 		$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
 	}
 	var proto = this;
-	$('#testSolution').click(function() {
+	/*$('#testSolution').click(function() {Implemented in the REtoFA.js
 		proto.startTesting();
-	});
+	});*/
 	$('.links').click(function() {
 		proto.toExercise(this);
 	});
@@ -48,12 +47,9 @@ controllerProto.load = function () {
 	this.updateExercise(this.currentExercise);
 }
 
-controllerProto.startTesting = function() {
-	tryC++;
-	if (this.fa.initial == null) {
-		window.alert("FA traversal requires an initial state.");
-		return;
-	}
+controllerProto.startTesting = function(fa, solution) {
+    tryC++;
+    this.fa = fa;
 	$("#testResults").empty();
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
 	var count = 0;
@@ -62,22 +58,6 @@ controllerProto.startTesting = function() {
 	var exercise = this.tests[this.currentExercise];
 	var type = exercise["type"];
 	var numberOfTestCases = this.testCases.length;
-	if(type == "describtion" || type == "both"){
-		var t = $("#description").text();
-		if(t.indexOf("DFA") > 0 && t.indexOf("NFA") < 0){
-			numberOfTestCases++;
-			var isDFA = !this.testND();
-			if(isDFA){
-				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='correct'>" + (inputResult ? "Yes": "No") + "</td></tr>");
-				count++;
-				testRes.push('Test' + testNum +':' + 'Correct');
-			}
-			else{
-				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='wrong'>" + (inputResult ? "Yes": "No") + "</td></tr>");
-				testRes.push('Test' + testNum +':' + 'Wrong');
-			}
-		}
-	}
 	for (i = 0; i < this.testCases.length; i++) {
 		var testNum = i + 1;
 		var testCase = this.testCases[i];
@@ -95,7 +75,7 @@ controllerProto.startTesting = function() {
 	}
 	var exer = {};
 	exer['Attempt' + tryC.toString()] = testRes;
-	exer['studentSolution'] = serialize(this.fa);
+	exer['studentSolution'] = solution;
 	var exNum = parseInt(this.currentExercise) + 1;
 	if (count > logRecord['Exercise' + exNum +'_Highest']) {
 	 	logRecord['Exercise' + exNum +'_Highest'] = count;
@@ -115,7 +95,8 @@ controllerProto.startTesting = function() {
 // change the problem displayed
 controllerProto.toExercise = function(button) {
 	this.currentExercise = button.getAttribute('id');
-	this.updateExercise(this.currentExercise);
+    this.updateExercise(this.currentExercise);
+    document.getElementById('tb1').value = "";
 };
 
 // the function that really changes the problem displayed
@@ -128,11 +109,6 @@ controllerProto.updateExercise = function(id) {
 		$("#question").show();
 		$("#description").hide();
 	}
-	else if(type == "both"){
-		$("#description").html(exercise["description"] + 'L(<span id="expression2"></span>)');
-		$("#expression2").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
-		$("#question").hide();
-	}
 	else {
 		$("#description").text(exercise["description"]);
 		$("#description").show();
@@ -141,11 +117,6 @@ controllerProto.updateExercise = function(id) {
 	$(".links").removeClass("currentExercise");
 	$("#" + this.currentExercise).addClass("currentExercise");
 	this.testCases = exercise["testCases"];
-	if (!exercise["graph"]) {
-		this.fa = this.initGraph({graph: {"nodes":[], "edges":[]}, layout: "automatic"});
-	} else {
-		this.fa = this.initGraph({graph: exercise["graph"], layout: "automatic"});
-	}
 	$("#testResults").hide();
 	$("#percentage").hide();
 	var exNum = parseInt(this.currentExercise) + 1;
@@ -158,31 +129,4 @@ controllerProto.updateExercise = function(id) {
 	logRecord['Exercise' + exNum + '_Time'] = [];
 	logRecord['Exercise' + exNum + '_Time'].push(start);
 
-};
-
-controllerProto.testND = function() {
-	var g = this.fa;
-	var nd = false;
-	var nodes = g.nodes();
-	for(var next = nodes.next(); next; next = nodes.next()) {
-		var findLambda = false;
-		var findMultiple = false;
-		var transition = g.transitionFunction(next, emptystring);
-		if (transition.length > 0) {
-			findLambda = true;
-		}
-		for (var key in g.alphabet) {
-			// If edges have sequences of input symbols on them, only the first one matters.
-			// Reason why is because this is the outgoing edge input symbol for the node.
-			transition = g.transitionFunctionMultiple(next, key);
-			if (transition.length > 1) {
-				findMultiple = true;
-				break;
-			}
-		}
-		if (findLambda || findMultiple) {
-			nd = true;
-		}
-	}
-	return nd;
 };

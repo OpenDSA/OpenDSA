@@ -20,8 +20,8 @@ By the end you will know how everything in this picture applies to how
 compilers work, and to how hard a problem is to solve.
 
 .. inlineav:: HierarchyCON dgm
-   :links: AV/FormalLang/HierarchyCON.css
-   :scripts: AV/FormalLang/HierarchyCON.js
+   :links: AV/VisFormalLang/Intro/HierarchyCON.css
+   :scripts: AV/VisFormalLang/Intro/HierarchyCON.js
    :align: center
 
 You are familiar with programming languages, now we’ll look in finer
@@ -116,7 +116,7 @@ Application: Compilers
 
 .. inlineav:: CompileCON dgm
    :links: 
-   :scripts: AV/FormalLang/CompileCON.js
+   :scripts: AV/VisFormalLang/Intro/CompileCON.js
    :align: center
 
 
@@ -128,28 +128,27 @@ but the last step.
 
 .. inlineav:: CompileStagesCON dgm
    :links: 
-   :scripts: AV/FormalLang/CompileStagesCON.js
+   :scripts: AV/VisFormalLang/Intro/CompileStagesCON.js
    :align: center
 
    Stages of a compiler
 
-PART 1: Iidentifying the tokens in a program.
+PART 1: Identifying the tokens in a program.
 Our unit on regular languages gives the foundation for this.
 
 Lexical analysis (focus is on regular languages)
-identifies piece of the program
+identifies the pieces (tokens) of the program.
 
 token: integer, keyword, variable name, symbol such as +
 
 PART 2: Identifying if the tokens fit together in the correct
 way so the program is syntactically valid.
-
 This is called Syntax analysis.
 We will be learning the theory for this in our unit on context free
 languages.
 This will also involve studying several parsing algorithms.
 
 PART 3. Creating the parse tree.
-NOTE: You’ll write an interpretor, it walks through the parse tree and
-immediately executes the code.
+An interpretor walks through the parse tree and immediately executes
+the code.
 (Does not generate the code)
