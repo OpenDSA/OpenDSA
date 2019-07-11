@@ -4,7 +4,7 @@ $(document).ready(function() {
   var av = new JSAV("OddNumbersTraceCON", {animationMode: "none"});
 
   var xStart = 135;
-  var yStart = 0;
+  var yStart = 5;
 
   av.label("1)", {left: 0 + xStart, top: 0 + yStart});
   av.ds.tape([1, 0, 0,,,,,], 30 + xStart, yStart + 20, "right");

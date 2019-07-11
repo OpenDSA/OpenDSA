@@ -8,7 +8,7 @@ $(document).ready(function() {
   var xStart = 250;
   var yStart = 0;
   av.label("Grammars", {left: 0 + xStart, top: 0 + yStart});
-  av.label("Machine", {left: 320 + xStart, top: 0 + yStart});
+  av.label("Machines", {left: 320 + xStart, top: 0 + yStart});
 
   av.label("Unrestricted", {left: 0 + xStart, top: 40 + yStart});
   av.label("grammar", {left: 5 + xStart, top: 55 + yStart});

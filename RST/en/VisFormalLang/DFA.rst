@@ -151,7 +151,7 @@ Now let's see how this machine accepts / rejects some strings.
 
 .. inlineav:: TraceEvenBinaryDFACON ss
    :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/TraceEvenBinaryDFACON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/TraceEvenBinaryDFACON.js
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/Development/formal_language/fa/TraverseAccepter.js AV/VisFormalLang/FA/TraceEvenBinaryDFACON.js
    :output: show
 
 Definitions
@@ -204,20 +204,30 @@ Example: Consider the language :math:`L(M) = \{b^na | n > 0\}`
 
 So, here is one way to make a drawing:
 
-.. TODO::
-   :type: Drawing
+.. inlineav:: DFA_noTrapStateCON dgm
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/DFA_noTrapStateCON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/DFA_noTrapStateCON.js
+   :align: center
 
-   First show the minimal form of the next drawing without trap state, etc.
+   DFA Example: Incomplete
+
+.. note::
+
+   Question: Did we need state :math:`q_0`?
+
+   Answer: Yes, to force at least one "b".
 
 Note that this is technically incomplete, in that there are
 transitions not being show here.
-The idea is that if we CAN reach and accepting state, then the string
-is accepted. But if we make a transition not shown in the diagram (or
+The idea is that if we CAN reach an accepting state, then the string
+is accepted.
+But if we make a transition not shown in the diagram (or
 end up somewhere other than accepting state), then the string is not
 accepted.
 
 To be complete, we can add one or more "trap" states, and put in all
-of the "extra" transitions. As follows.
+of the "extra" transitions.
+As follows.
 
 .. inlineav:: DFA_withTrapStateCON dgm
    :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/DFA_withTrapStateCON.css

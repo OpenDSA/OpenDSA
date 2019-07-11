@@ -20,8 +20,8 @@ By the end you will know how everything in this picture applies to how
 compilers work, and to how hard a problem is to solve.
 
 .. inlineav:: HierarchyCON dgm
-   :links: AV/FormalLang/HierarchyCON.css
-   :scripts: AV/FormalLang/HierarchyCON.js
+   :links: AV/VisFormalLang/Intro/HierarchyCON.css
+   :scripts: AV/VisFormalLang/Intro/HierarchyCON.js
    :align: center
 
 You are familiar with programming languages, now we’ll look in finer
@@ -116,7 +116,7 @@ Application: Compilers
 
 .. inlineav:: CompileCON dgm
    :links: 
-   :scripts: AV/FormalLang/CompileCON.js
+   :scripts: AV/VisFormalLang/Intro/CompileCON.js
    :align: center
 
 
@@ -128,7 +128,7 @@ but the last step.
 
 .. inlineav:: CompileStagesCON dgm
    :links: 
-   :scripts: AV/FormalLang/CompileStagesCON.js
+   :scripts: AV/VisFormalLang/Intro/CompileStagesCON.js
    :align: center
 
    Stages of a compiler
