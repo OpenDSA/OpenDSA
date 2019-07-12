@@ -14,10 +14,7 @@ $(document).ready(function() {
   var leftMargin = 10;
   var topMargin = 40;
   var list = av.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
-  list.addFirst(30)
-      .addFirst(21)
-      .addFirst(3)
-      .addFirst("null");
+  list.addFirst(30).addFirst(21).addFirst(3).addFirst("null");
   var newNode = list.newNode("10");
   newNode.css({top: topMargin + 20});
   list.layout();

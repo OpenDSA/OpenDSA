@@ -15,9 +15,9 @@ $(document).ready(function() {
   var topMargin = 35;
   var list = av.ds.list({nodegap: 30, left: leftMargin + 60, top: topMargin});
   list.addFirst(15)
-      .addFirst(12)
-      .addFirst(8)
-      .addFirst(23);
+    .addFirst(12)
+    .addFirst(8)
+    .addFirst(23);
 
   var firstnode = list.get(0);
   var topPointer = av.pointer("top", firstnode);

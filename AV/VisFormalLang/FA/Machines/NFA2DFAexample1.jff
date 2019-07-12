@@ -3,29 +3,33 @@
 	<automaton>
 		<!--The list of states.-->
 		<state id="0" name="q0">
-			<x>16.0</x>
-			<y>14.0</y>
+			<x>21.0</x>
+			<y>115.0</y>
 			<initial/>
 		</state>
-		<state id="1" name="q1">
-			<x>157.0</x>
-			<y>13.0</y>
+		<state id="1" name="q2">
+			<x>142.0</x>
+			<y>116.0</y>
 			<final/>
 		</state>
-		<state id="2" name="q2">
-			<x>106.0</x>
-			<y>129.0</y>
-			<final/>
+		<state id="2" name="q1">
+			<x>145.0</x>
+			<y>21.0</y>
 		</state>
 		<!--The list of transitions.-->
 		<transition>
 			<from>2</from>
-			<to>1</to>
+			<to>0</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>2</to>
 			<read>a</read>
 		</transition>
 		<transition>
-			<from>1</from>
-			<to>2</to>
+			<from>2</from>
+			<to>1</to>
 			<read>b</read>
 		</transition>
 		<transition>

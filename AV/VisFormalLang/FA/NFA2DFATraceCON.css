@@ -1,39 +1,40 @@
-#NFAtoDFACON {
+#NFA2DFATraceCON {
     height: 600px;
     width: 1000px;
 }
-.start {
+
+#NFA2DFATraceCON .start {
     font-style: italic;
     font-weight: bold;
 }
-.final {
+
+#NFA2DFATraceCON .final {
     border: 3px double;
 }
-.testingND {
+
+#NFA2DFATraceCON .testingND {
     background-color: blue;
 }
-.current {
+
+#NFA2DFATraceCON .current {
     background-color: yellow;
 }
-.accepted {
+
+#NFA2DFATraceCON .accepted {
     background-color: green;
 }
-.rejected {
+
+#NFA2DFATraceCON .rejected {
     background-color: red;
 }
 
-.jsavlabel {
+
+#NFA2DFATraceCON .jsavlabel {
     font-size: 2em;
     text-align: center;
 }
-.jsavstatelabel {
-    font-size: 1em;
-    z-index: 700;
-    position: absolute;
-    display: inline-block;
-    margin: 0;
-}
-.jsavmooreoutput {
+
+#NFA2DFATraceCON .jsavstatelabel {
     font-size: 1em;
     z-index: 700;
     position: absolute;
@@ -41,42 +42,59 @@
     margin: 0;
 }
 
-.jsavnode {
+#NFA2DFATraceCON .jsavmooreoutput {
+    font-size: 1em;
+    z-index: 700;
+    position: absolute;
+    display: inline-block;
+    margin: 0;
+}
+
+#NFA2DFATraceCON .jsavnode {
     cursor: pointer;
 }
-.jsavedge {
+
+#NFA2DFATraceCON .jsavedge {
     cursor: pointer;
     stroke: black;
     stroke-width: 1;
 }
-.testingLambda {
+
+#NFA2DFATraceCON .testingLambda {
     color: red;
     stroke-width: 3;
     stroke: red;
 }
-.testingShorthand {
+
+#NFA2DFATraceCON .testingShorthand {
     stroke-width: 3;
     stroke: orange;
 }
-.edgeSelect {
+
+#NFA2DFATraceCON .edgeSelect {
     stroke-width: 3;
 }
-.jsavedgelabel {
+
+#NFA2DFATraceCON .jsavedgelabel {
     cursor: pointer;
     font-size: 1.0em;
 }
-.jsavarray .jsavindex {
+
+#NFA2DFATraceCON .jsavarray .jsavindex {
     width: 200px;
     max-width: 1000px;
 }
 
-.jsavgraph .jsavedge {
+
+#NFA2DFATraceCON .jsavgraph .jsavedge {
     stroke-width: 2.0px !important;
 }
-.new {
+
+#NFA2DFATraceCON .new {
     display: inline !important;
     border: none !important;
 }
-.jsavcontrols {
+
+#NFA2DFATraceCON .jsavcontrols {
     display: unset !important;
 }

@@ -21,8 +21,8 @@ $(document).ready(function() {
   path += " C" + fx1 + "," + fy;
   path += " " + tx + "," + ty2;
   path += " " + tx + "," + ty;
-  var curve = av.g.path(path, {"stroke-width" : 2, "arrow-end" : "classic-wide-long"});
-  var cir = av.circular(cx, cy, r1, r2, 12, {"stroke-width" : 2});
+  var curve = av.g.path(path, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  var cir = av.circular(cx, cy, r1, r2, 12, {"stroke-width": 2});
   curve.hide();
 
   // Slide 1

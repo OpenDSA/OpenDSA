@@ -1,12 +1,10 @@
 document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
 $(document).ready(function() {
   "use strict";
-  var av_name = "NFAtoDFACON";
+  var av_name = "NFA2DFATraceCON";
   var av = new JSAV(av_name);
   var injector = PIFRAMES.init(av_name);
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
-  var nfaURL = interpret("fa1");
+  var nfaURL = "../../../AV/VisFormalLang/FA/Machines/NFA2DFA2a.jff";
   var nfaWidth = 400;
   var FA = new av.ds.fa({left: 10, top:0, width: nfaWidth});
 
@@ -25,6 +23,4 @@ $(document).ready(function() {
   //av.step();
 
   av.recorded();
-
- 
 });
