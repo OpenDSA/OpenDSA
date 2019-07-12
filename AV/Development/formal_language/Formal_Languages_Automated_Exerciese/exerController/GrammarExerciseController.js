@@ -1,17 +1,17 @@
-var GrammarExerciseController = function (jsav, matrix, filePath, dataType) {
-	this.init(jsav, matrix, filePath, dataType);
+var GrammarExerciseController = function (jsav, m, filePath, dataType) {
+	this.init(jsav, m, filePath, dataType);
 };
 var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var controllerProto = GrammarExerciseController.prototype;
 var logRecord = new Object();
 var tryC = 0;
-controllerProto.init = function (jsav, matrix, filePath, dataType) {
+controllerProto.init = function (jsav, m, filePath, dataType) {
 	this.filePath = filePath;
 	this.dataType = dataType;
 	this.tests;
 	this.currentExercise = 0;
     this.testCases;
-    this.grammarMatrix = matrix;
+    this.grammar = m;//an instance from grammar editor to control the matrix
     this.jsav = jsav;
 }
 controllerProto.load = function () {
@@ -60,17 +60,52 @@ controllerProto.startTesting = function() {
 	$("#testResults").empty();
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
 	var count = 0;
-    var testRes = [];
-    //we need to convert the grammar to a PDA to test the grammar.
-    var pda = this.convertToPDA();
-    //var parser = new ParseTreeController(this.jsav, JSON.stringify(this.grammar),"", {visible: false});
-	for (i = 0; i < this.testCases.length; i++) {
+	var testRes = [];
+	var pda, parser;
+	var index = 0;
+	var firstTestcase = Object.keys(this.testCases[index])[0];
+	var correctGrammarType = false,
+	grammarType;
+	//Check if there is a specific tyoe of grammras is required in the first test case.
+	if(firstTestcase.indexOf("regular") >= 0 || firstTestcase.indexOf("linear") >= 0)
+	{
+		grammarType = this.identifyGrammar();
+		if(firstTestcase.indexOf("regular") >= 0){
+			correctGrammarType = (grammarType === 'RLG' || grammarType === 'LLG') ;
+		}
+		else{
+			if(firstTestcase.indexOf("right")>=0)
+				correctGrammarType = (grammarType === 'RLG');
+			else if(firstTestcase.indexOf("left")>=0)
+			correctGrammarType = (grammarType === 'LLG');
+		}
+		if(correctGrammarType){
+			$("#testResults").append("<tr><td>" + firstTestcase + "</td><td>" + "Satisfied" + "</td><td class='correct'>" + (correctGrammarType ? "Yes": "No") + "</td></tr>");
+			count++;
+			testRes.push('Test' + index +':' + 'Correct');
+		}
+		else{
+			$("#testResults").append("<tr><td>" + firstTestcase + "</td><td>" + "Satisfied" + "</td><td class='wrong'>" + (correctGrammarType ? "Yes": "No") + "</td></tr>");
+			testRes.push('Test' + index +':' + 'Correct');
+		}
+		index++;
+	}
+	//we need to convert the grammar to a PDA to test the grammar.
+	if(grammarType !== "LLG")
+		pda = this.convertToPDA();
+	else
+		parser = this.buildDFAforLLG();//new ParseTreeController(this.jsav, JSON.stringify(this.grammar),"", {visible: false});
+	for (i = index; i < this.testCases.length; i++) {
 		var testNum = i + 1;
 		var testCase = this.testCases[i];
         var input = Object.keys(testCase)[0];
-        var inputResult = pda.traverseOneInput(input);
-        //parser.inputString = input;
-        //var inputResult = parser.stringAccepted()[0];
+		var inputResult;
+		if(grammarType !== "LLG")
+			inputResult = pda.traverseOneInput(input);
+		else{
+			//parser.inputString = input;
+        	inputResult = !willReject(parser, input.split("").reverse().join(""));//parser.stringAccepted()[0];
+		}
 		if (inputResult === testCase[input]) {
 			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
 			count++;
@@ -104,6 +139,7 @@ controllerProto.startTesting = function() {
 controllerProto.toExercise = function(button) {
 	this.currentExercise = button.getAttribute('id');
 	this.updateExercise(this.currentExercise);
+	//FIXMEEEEEEEEEE we need to control the matrix inside this controller. The best obtion is to creat a prototype for grammar and use it.
 };
 
 // the function that really changes the problem displayed
@@ -117,9 +153,27 @@ controllerProto.updateExercise = function(id) {
 		$("#description").hide();
 	}
 	else {
-		$("#description").text(exercise["description"]);
+		var text = exercise["description"];
+		if(text.indexOf('___') >0)
+		{
+			var parts = text.split("___");
+			text = parts[0] + " " + '<span id="expression2"></span>' + ' ' + parts[1];
+			$("#description").html(text);
+			$("#expression2").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
+		}
+		else
+			$("#description").text(text);
 		$("#description").show();
 		$("#question").hide();
+	}
+	//if the exercise contains a FA, then draw it and show the graph. Hide the graph otherwise
+	if(exercise.graph && exercise.graph.nodes.length > 0){//there is a grapth and we need to draw it to the student
+		var exerciseFA = this.jsav.ds.fa($.extend({width: "45%", height: 440, layout: "manual", element: $("#graph")}));
+		var ratio = 1;
+		exerciseFA.initFromParsedJSONSource(exercise.graph, ratio);
+	}
+	else{
+		document.getElementById("graph").style.display = "none";
 	}
 	$(".links").removeClass("currentExercise");
 	$("#" + this.currentExercise).addClass("currentExercise");
@@ -192,4 +246,153 @@ controllerProto.serializeGrammar = function () {
         }
       }
     }
+  };
+
+  controllerProto.isRegularGrammar = function(){
+    return (this.checkRightLinear() || this.checkLeftLinear());
+  };
+
+  controllerProto.checkLeftLinear = function(){
+    var productions = _.filter(arr, function(x) { return x[0]});
+    for (var i = 0; i < productions.length; i++) {
+      //r is the RHS
+      var r = productions[i][2];
+      for (var j = 0; j < r.length; j++) {
+        if (variables.indexOf(r[j]) !== -1 && j !== 0) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
+  controllerProto.checkRightLinear = function () {
+    var productions = _.filter(arr, function(x) { return x[0]});
+    for (var i = 0; i < productions.length; i++) {
+      var r = productions[i][2];
+      for (var j = 0; j < r.length; j++) {
+        if (variables.indexOf(r[j]) !== -1 && j !== r.length - 1) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
+  controllerProto.isContextFreeGrammar = function(){
+    var productions = _.filter(arr, function(x) { return x[0]});
+    for (var i = 0; i < productions.length; i++) {
+      var lhs = productions[i][0];
+      if (lhs.length !== 1 || variables.indexOf(lhs) === -1) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+
+  controllerProto.checkLHSVariables = function(){
+    //check if there is more than one variable on the LHS
+    var productions = _.filter(arr, function(x) { return x[0]});
+    for (var i = 0; i < productions.length; i++) {
+      var lhs = productions[i][0];
+      if (lhs.length !== 1) {
+        return true;
+      } else if (variables.indexOf(lhs) === -1){
+        return true;
+      }
+    }
+    return false;
+  };
+  controllerProto.identifyGrammar = function() {
+
+    //Check if there is more than one variable on the LHS, if so it is an unrestricted grammar.
+    if(this.checkLHSVariables()){
+		return 'unrestricted'; 
+    }
+
+    if(this.checkLeftLinear()) {
+		return 'LLG';
+    }
+
+    if(this.checkRightLinear()) {
+		return 'RLG';
+    }
+
+    if(this.isContextFreeGrammar()){
+		return 'CFG';
+    }
+  };
+
+  controllerProto.convertLLGtoRLG = function(){
+	var productions = _.filter(arr, function(x) { return x[0]});
+	for(var i =0; i< productions.length; i++){
+		productions[i][2] = productions[i][2].split("").reverse().join("");
+	}
+	return productions;
+  }
+  controllerProto.buildDFAforLLG = function(){
+	var productions = this.convertLLGtoRLG();
+	return this.convertToFA(productions);
+	
+  }
+  
+  controllerProto.convertToFA = function (productions) {
+    // keep a map of variables to FA states
+    var nodeMap = {};
+    var builtDFA = this.jsav.ds.fa({visible:false});
+    var newStates = [];     // variables
+    for (var i = 0; i < productions.length; i++) {
+      newStates.push(productions[i][0]);
+      newStates = newStates.concat(_.filter(productions[i][2], function(x) {return variables.indexOf(x) !== -1;}));
+    }
+    newStates = _.uniq(newStates);
+    // create FA states
+    for (var i = 0; i < newStates.length; i++) {
+      var n = builtDFA.addNode();
+      nodeMap[newStates[i]] = n;
+      if (i === 0) {
+        builtDFA.makeInitial(n);
+      }
+      n.stateLabel(newStates[i]);
+    }
+    // add final state
+    var f = builtDFA.addNode();
+    // nodeMap[emptystring] = f;
+    f.addClass("final");
+    builtDFA.layout();
+
+    var completeConvertToFA = function() {
+      for (var i = 0; i < productions.length; i++) {
+        // if the current production is not finished yet
+          var start = nodeMap[productions[i][0]];
+          var rhs = productions[i][2];
+          //if there is no capital letter, then go to final state
+          if(variables.indexOf(rhs[rhs.length-1]) === -1){
+            var end = f;
+            var w = rhs;
+          } else {
+            var end = nodeMap[rhs[rhs.length-1]];
+            var w = rhs.substring(0, rhs.length-1);
+		  }
+		  if(w.length > 1){//we need to add dummy nodes
+			var previousNode = start;
+			var nextNode = builtDFA.addNode();
+			builtDFA.addEdge(previousNode, nextNode, {weight: w[0]});
+			for(var l = 1; l< w.length; l++){
+				previousNode = nextNode;
+				if(l== w.length - 1)
+					nextNode = end;
+				else
+					nextNode = builtDFA.addNode();
+				builtDFA.addEdge(previousNode, nextNode, {weight: w[l]});
+			}
+		  }
+		  else{
+		  	builtDFA.addEdge(start, end, {weight: w});
+		  }
+        }
+	}
+	completeConvertToFA();
+	return builtDFA;
   };

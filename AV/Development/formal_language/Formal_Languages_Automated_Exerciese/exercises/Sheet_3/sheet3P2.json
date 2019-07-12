@@ -1,0 +1,153 @@
+[
+    {
+        "expression": "",
+        "description": "Give a left-linear grammar for the following NFA",
+        "type": "description",
+        "testCases": [
+            {
+                "left-linear": true
+            },
+            {
+                "": true
+            },
+            {
+                "1": false
+            },
+            {
+                "11111111111": false
+            },
+            {
+                "10": true
+            },
+            {
+                "10101010101010": true
+            }
+        ],
+        "graph": {
+            "nodes": [
+                {
+                    "left": 43.19999694824219,
+                    "top": 22.76666259765625,
+                    "i": true,
+                    "f": true
+                },
+                {
+                    "left": 213.1999969482422,
+                    "top": 20.76666259765625,
+                    "i": false,
+                    "f": false
+                },
+                {
+                    "left": 131.1999969482422,
+                    "top": 143.76666259765625,
+                    "i": false,
+                    "f": false
+                }
+            ],
+            "edges": [
+                {
+                    "start": 0,
+                    "end": 1,
+                    "weight": "1"
+                },
+                {
+                    "start": 0,
+                    "end": 2,
+                    "weight": "&lambda;"
+                },
+                {
+                    "start": 1,
+                    "end": 0,
+                    "weight": "0"
+                },
+                {
+                    "start": 1,
+                    "end": 2,
+                    "weight": "0"
+                },
+                {
+                    "start": 2,
+                    "end": 2,
+                    "weight": "1"
+                }
+            ],
+            "shorthand": false
+        }
+    },
+    {
+        "expression": "(aaab^*ba)^*",
+        "description": "Give a left-linear grammar for the language L(___)",
+        "type": "description",
+        "testCases": [
+            {
+                "left-linear": true
+            },
+            {
+                "": true
+            },
+            {
+                "aaaba": true
+            },
+            {
+                "aaabbbbba": true
+            },
+            {
+                "aaabaaaabaaaabaaaaba": true
+            },
+            {
+                "aaabbbbbaaaabbbbba": true
+            },
+            {
+                "ba": false
+            },
+            {
+                "aaabaaabba": false
+            },
+            {
+                "aaaaaa": false
+            }
+        ],
+        "graph": {
+            "nodes": [],
+            "edges": []
+        }
+    },
+    {
+        "expression": "a^nb^m",
+        "description": "Find a regular grammar for the language L={___ where n+m is odd}.",
+        "type": "description",
+        "testCases": [
+            {
+                "regular-grammar": true
+            },
+            {
+                "": false
+            },
+            {
+                "a": true
+            },
+            {
+                "b": true
+            },
+            {
+                "aab": true
+            },
+            {
+                "abb": true
+            },
+            {
+                "aabb": false
+            },
+            {
+                "aaaaaabbbbb": true
+            },
+            {
+                "ba": false
+            }
+        ],
+        "graph": {
+            "nodes": [],
+            "edges": []
+        }
+    }
+]
