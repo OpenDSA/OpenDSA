@@ -12,7 +12,8 @@ controllerProto.init = function (jsav, m, filePath, dataType) {
 	this.currentExercise = 0;
     this.testCases;
     this.grammar = m;//an instance from grammar editor to control the matrix
-    this.jsav = jsav;
+	this.jsav = jsav;
+	this.exerciseFA;
 }
 controllerProto.load = function () {
 	var filePath = this.filePath;
@@ -168,9 +169,15 @@ controllerProto.updateExercise = function(id) {
 	}
 	//if the exercise contains a FA, then draw it and show the graph. Hide the graph otherwise
 	if(exercise.graph && exercise.graph.nodes.length > 0){//there is a grapth and we need to draw it to the student
-		var exerciseFA = this.jsav.ds.fa($.extend({width: "45%", height: 440, layout: "manual", element: $("#graph")}));
+		if(!this.exerciseFA){
+		this.exerciseFA = this.jsav.ds.fa($.extend({width: "45%", height: 440, layout: "manual", element: $("#graph")}));
 		var ratio = 1;
-		exerciseFA.initFromParsedJSONSource(exercise.graph, ratio);
+		this.exerciseFA.initFromParsedJSONSource(exercise.graph, ratio);
+		document.getElementById("graph").style.float = "left";
+		}
+		else
+			document.getElementById("graph").style.display = "initial";	
+			this.exerciseFA.layout();
 	}
 	else{
 		document.getElementById("graph").style.display = "none";
