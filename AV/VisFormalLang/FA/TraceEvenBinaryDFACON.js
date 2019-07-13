@@ -8,7 +8,7 @@ $(document).ready(function() {
   var BinaryDFA = new av.ds.fa({left: 10});
   FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA,url);
   BinaryDFA.disableDragging();
-  var acceptor = new TraversAcceptor(av, BinaryDFA);
+  var acceptor = new TraverseAcceptor(av, BinaryDFA);
   acceptor.visualize([["0", "0", "1", "0", "1", "0", "0", "1", "0"],
                       ["0", "1", "1", "1"],
                       ["0", "1", "0", "1", "0", "0", "0", "1", "0"]],

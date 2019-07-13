@@ -203,7 +203,7 @@ That would be members of the powerset of :math:`M_D` states.
 **Example**:
 
 .. inlineav:: NFA2DFAEx2aCON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFAEx2aCON.css
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
    :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAEx2aCON.js
    :align: center
 
@@ -229,14 +229,11 @@ letter :math:`a`. This would be the subset :math:`q_3,q_4`.
 **Answer**:
 
 .. inlineav:: NFA2DFAEx2bCON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFAEx2bCON.css
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
    :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAEx2bCON.js
    :align: center
 
    Converted DFA
-
-   
-The following slideshow presents first the NFA, and then shows, step-by-step, the process of building the DFA.
 
 .. inlineav:: NFA2DFATraceCON ss
    :links: AV/VisFormalLang/FA/NFA2DFATraceCON.css
