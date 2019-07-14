@@ -263,7 +263,7 @@ minimizer.done = function(newGraphDimensions) {
 	}
 	// if complete create minimized DFA
 	
-	var graph = this.jsav.ds.fa({width: newGraphDimensions.width, 
+	var graph = this.jsav.ds.FA({width: newGraphDimensions.width, 
 								height: newGraphDimensions.height, layout: 'automatic', 
 								left: newGraphDimensions.left, 
 								top: newGraphDimensions.top});

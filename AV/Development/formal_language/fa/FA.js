@@ -9,7 +9,7 @@ var FiniteAutomaton = function(jsav, options) {
   this.step = 0; // current step the user is at, used for changing configuration display          
 }
 
-JSAV.ext.ds.fa = function (options) {
+JSAV.ext.ds.FA = function (options) {
   var opts = $.extend(true, {visible: true, autoresize: true}, options);
   return new FiniteAutomaton(this, opts);
 };
@@ -113,13 +113,13 @@ var convertToDFA = function(jsav, graph, opts, visualizable = false) {
   var left = 10;
   var g;
   if(!visualizable)
-    g = jsav.ds.fa($.extend({layout: 'automatic'}, opts)),
+    g = jsav.ds.FA($.extend({layout: 'automatic'}, opts)),
   alphabet = Object.keys(graph.alphabet),
   startState = graph.initial,
   newStates = [];
   else{
     var options = $.extend(true, {layout: 'automatic'}, opts);
-    g = jsav.ds.fa(options),
+    g = jsav.ds.FA(options),
     alphabet = Object.keys(graph.alphabet),
     startState = graph.initial,
     newStates = [];
@@ -345,7 +345,7 @@ var visualizeConvertToDFA = function(jsav, graph, opts) {
   // jsav.label("Converted:");
   var left = 10;
   var options = $.extend(true, {layout: 'automatic'}, opts);
-  var g = jsav.ds.fa(options),
+  var g = jsav.ds.FA(options),
       alphabet = Object.keys(graph.alphabet),
       startState = graph.initial,
       newStates = [];

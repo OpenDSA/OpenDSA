@@ -7,8 +7,7 @@ $(document).ready(function() {
   // var injector = PIFRAMES.init(av_name);
   var nfaURL = "../../../AV/VisFormalLang/FA/Machines/NFA2DFA2a.jff";
   var nfaWidth = 400;
-  var fa = av.ds.fa({left: 10, top: 0, width: nfaWidth});
-
+  var fa = new av.ds.FA({left: 10, top: 0, width: nfaWidth});
   FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(fa, nfaURL);
   fa.disableDragging();
 
