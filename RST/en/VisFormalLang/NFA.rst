@@ -245,9 +245,11 @@ Conclusion: NFA adds no new capability. So why bother with the idea?
 
 * First, it wasn't obvious that they are the same. NFA is a useful
   concept.
-* NFA tend to be "smaller" and "simpler" than the equivalent DFA.
-  (At least morphologically, but perhaps the language of a NFA is hard
-  to grasp.)
-* We will see times when it is easier to see a conversion from
-  something to a NFA,
-  and we know that this can always be converted in turn to a DFA.
+* An NFA tends to be "smaller" and "simpler" than the equivalent DFA.
+  (At least in terms of the number of states and transition. But
+  perhaps the language of a NFA is harder for a person to grasp.)
+* Throughout the semester, we will do a lot of converting from one
+  machine type to another.
+  The conversion process might be easier to understand when the target
+  is an NFA, and we know that this can always be converted in turn to
+  a DFA.
