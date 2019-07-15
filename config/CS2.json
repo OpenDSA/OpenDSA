@@ -73,25 +73,22 @@
         }
       },
       "Design/ADT": {
-        "IntroADTSumm": {
-          "threshold": 4
-        }
-      },
-      "CMP/DatatypesCM": {
         "CMdatatypeSumm": {
           "threshold": 5
+        },
+        "IntroADTSumm": {
+          "threshold": 4
         }
       }
     },
     "Object Oriented Programming": {
-      "Design/IntroOO": {}, 
-      "Design/IntroUML": {}, 
-      "Design/IntroProcess": {},
-      "CMP/ObjectorientedCM": {
+      "Design/IntroOO": {
         "CMoopSumm": {
           "threshold": 5
         }
-      }
+      },
+      "Design/IntroUML": {}, 
+      "Design/IntroProcess": {}
     },
     "List Interface & Array based Lists": {
       "List/ListADT": {
@@ -168,7 +165,7 @@
         }
       },
       "PointersJava/Links2": {},
-      "CMP/PointersCM": {
+      "PointersJava/PointersCM": {
         "CMpointersSumm": {
           "threshold": 5
         }

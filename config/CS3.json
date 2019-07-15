@@ -71,13 +71,11 @@
         }
       },
       "Design/ADT": {
-        "IntroADTSumm": {
-          "threshold": 4
-        }
-      },
-      "CMP/DatatypesCM": {
         "CMdatatypeSumm": {
           "threshold": 5
+        },
+        "IntroADTSumm": {
+          "threshold": 4
         }
       }
     },
@@ -603,7 +601,7 @@
       "Graph/MCST": {}, 
       "Graph/Kruskal": {},
       "Graph/Floyd": {},
-      "CMP/GraphCM": {
+      "Graph/GraphCM": {
         "CMgraphSumm": {
           "threshold": 5
         }
