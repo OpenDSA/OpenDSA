@@ -201,13 +201,13 @@ FileInputStream to an InputStream variable.
 
 The *InputStream* class exposes common methods which all subclasses of *InputStream* inherit.
 
-:void available(): 
+:int available(): 
     Returns an estimate of the number of bytes that can be 
     read (or skipped over) from this input stream without blocking by the next 
     invocation of a method for this input stream.
-:int close(): 
+:void close(): 
     Closes this input stream and releases any system resources associated with the stream.
-:mark(int readlimit): 
+:void mark(int readlimit): 
     Marks the current position in this input stream.
 :boolean markSupported(): 
     Tests if this input stream supports the mark and reset methods.
