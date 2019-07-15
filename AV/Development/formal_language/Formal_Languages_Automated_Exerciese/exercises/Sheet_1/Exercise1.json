@@ -14,7 +14,7 @@
                 "aaa": true
             },
             {
-                " ": false
+                "": false
             }
         ],
         "graph": {
@@ -28,7 +28,7 @@
         "type": "description",
         "testCases": [
             {
-                " ": false
+                "": false
             },
             {
                 "b": true
@@ -95,7 +95,7 @@
         "type": "description",
         "testCases": [
             {
-                " ": true
+                "": true
             },
             {
                 "aabb": true

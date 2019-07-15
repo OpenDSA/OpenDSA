@@ -40,6 +40,7 @@ CONTAINER_HTML= '''\
     class="embedContainer"
     data-exer-name="%(exer_name)s"
     data-long-name="%(long_name)s"
+    data-short-name="%(short_name)s"
     data-frame-src="%(av_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
@@ -81,8 +82,11 @@ def getDimensions(exer_path):
   if '?' in exer_path:
     exer_path = exer_path[:exer_path.index('?')]
 
-  with open(exer_path, 'r') as exer_file:
-    lines = exer_file.readlines()
+  try:
+    with open(exer_path, 'r') as exer_file:
+      lines = exer_file.readlines()
+  except:
+    return {'err': 'failed to open exercise file. Check that it exists.'}
 
   # Loop through all the lines in the file until it find the body tag
   for line in lines:
@@ -192,6 +196,7 @@ class avembed(Directive):
 
     self.options['content'] = ''
     self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
+    self.options['short_name'] = self.options['exer_name']
 
     # Use reasonable defaults
     self.options['width'] = 950

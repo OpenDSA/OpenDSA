@@ -77,7 +77,7 @@ def update_index_html(dest_dir, sectnum):
 
 
 # Update the headers and navigation hyperlinks in module HTML files
-def update_mod_html(file_path, data, prefix):
+def update_mod_html(file_path, data, prefix, standalone_modules):
   # Read contents of module HTML file
   with open(file_path, 'r') as html_file:
     html = html_file.readlines()
@@ -119,8 +119,15 @@ def update_mod_html(file_path, data, prefix):
 
       if '<title>' in line:
         title = re.search(title_pattern, line).group('title')
-        numbered_title = '%s.' % chap_num + title
-        html[line_num] = line.replace(title, numbered_title)
+        if standalone_modules:
+          # remove numbering and book name
+          title_start = title.find(' ') + 1
+          title_end = title.find(' &mdash;')
+          new_title = title[title_start:title_end]
+          html[line_num] = line.replace(title, new_title)
+        else:
+          numbered_title = '%s.' % chap_num + title
+          html[line_num] = line.replace(title, numbered_title)
       elif '<h2 class="heading"><span>' in line:
         heading = re.search(h2_pattern, line).group('header')
         header = '%s %s %s' % (prefix, chap_num, chap_title)
@@ -128,7 +135,12 @@ def update_mod_html(file_path, data, prefix):
 
       if re.search(header_pattern, line):
         section_title = re.search(header_pattern, line).group('header')
-        new_section_title = '%s.' % chap_num + section_title
+        if standalone_modules:
+          new_section_title = section_title[section_title.find('.')+1:]
+          if new_section_title.startswith(' '):
+            new_section_title = new_section_title[1:]
+        else:
+          new_section_title = '%s.' % chap_num + section_title
         html[line_num] = line.replace(section_title, new_section_title)
 
   # Replace original HTML file with modified contents
@@ -136,7 +148,7 @@ def update_mod_html(file_path, data, prefix):
     html_file.writelines(html)
 
 
-def update_TOC(source_dir, dest_dir, data = None):
+def update_TOC(source_dir, dest_dir, data = None, standalone_modules=False):
   (sectnum, prefix) = parse_index_rst(source_dir)
 
   update_index_html(dest_dir, sectnum)
@@ -149,7 +161,7 @@ def update_TOC(source_dir, dest_dir, data = None):
   html_files = [file for file in os.listdir(dest_dir) if file.endswith('.html')]
 
   for file in html_files:
-    update_mod_html(dest_dir + file, data, prefix)
+    update_mod_html(dest_dir + file, data, prefix, standalone_modules)
 
 
 def update_TermDef(glossary_file, terms_dict):
@@ -179,13 +191,13 @@ def update_TermDef(glossary_file, terms_dict):
 
 
 triple_up = re.compile(r'^((\.\.[\/\\])+)')
-def break_up_sections(path, module_data, config):
+def break_up_sections(path, module_data, config, standalone_modules):
   print(path)
   book_name = config.book_name
   sections = module_data['sections']
   module_map = config['module_map']
   course_id = config.course_id
-  if bool(module_map):
+  if bool(module_map) and not standalone_modules:
     item_url = config.LMS_url+"/courses/{course_id}/modules/items/{module_item_id}"
     assignment_url = config.LMS_url+"/courses/{course_id}/assignments/{assignment_id}?module_item_id={module_item_id}"
 
@@ -226,9 +238,9 @@ def break_up_sections(path, module_data, config):
         if match:
           a_tag[tag_url] = '/OpenDSA/' + a_tag[tag_url][len(match.group(0)):]
         elif a_tag[tag_url].startswith('_static/'):
-          a_tag[tag_url] = '/OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
+          a_tag[tag_url] = '/OpenDSA/' + config.build_dir + '/'+book_name+'/html/'+a_tag[tag_url]
         elif a_tag[tag_url].startswith('_images/'):
-          a_tag[tag_url] = '/OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
+          a_tag[tag_url] = '/OpenDSA/' + config.build_dir + '/'+book_name+'/html/'+a_tag[tag_url]
 
   '''
   Skip any sections that don't have points
@@ -253,6 +265,9 @@ def break_up_sections(path, module_data, config):
     elif href.startswith('http://'):
       # Offsite
       continue
+    elif href.startswith('https://'):
+      # Offsite
+      continue
     elif href.startswith('../'):
       # Current directory
       continue
@@ -265,19 +280,23 @@ def break_up_sections(path, module_data, config):
       else:
         external, internal = href, ''
       if external.endswith('.html'):
-        # Snip off the ".html"
-        external = external[:-5]
+        if standalone_modules:
+          # remove links
+          del link['href']
+        else:
+          # Snip off the ".html"
+          external = external[:-5]
 
-        # Map it to the proper folder in canvas
-        if bool(module_map):
-          if external in module_map:
-            module_obj = module_map[external]
-            if 'assignment_id' in module_map[external] and module_obj.get('assignment_id') != None:
-              external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
-            else:
-              external = item_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'))
-        # Force it to approach it from the top
-        link['href'] = '#'.join((external,internal))
+          # Map it to the proper folder in canvas
+          if bool(module_map):
+            if external in module_map:
+              module_obj = module_map[external]
+              if 'assignment_id' in module_map[external] and module_obj.get('assignment_id') != None:
+                external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
+              else:
+                external = item_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'))
+          # Force it to approach it from the top
+          link['href'] = '#'.join((external,internal))
       # Do something with the actual href
 
   # Move header scripts out of header, kill header
@@ -310,7 +329,7 @@ def pretty_print_xml(data, file_path):
         resaved_file.write(xml.toprettyxml()[23:])
 
 
-def make_lti(config, no_lms = False):
+def make_lti(config, no_lms = False, standalone_modules = False):
   if not no_lms:
     config['module_map'] = get_module_map(config)
   dest_dir = config.book_dir + config.rel_book_output_path
@@ -329,7 +348,7 @@ def make_lti(config, no_lms = False):
       if isinstance(module_data, dict):
         name = module_name.split('/')[1] if '/' in module_name else module_name
         path = os.path.join(dest_dir, name+".html")
-        break_up_sections(path, module_data, config)
+        break_up_sections(path, module_data, config, standalone_modules)
 
   # save config object to use ut later for course update
   config_file_path = os.path.join(dest_dir, '..', 'lti_html', 'lti_config.json')

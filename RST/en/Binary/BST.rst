@@ -34,12 +34,10 @@ sorted order from lowest to highest.
 
 .. _BSTShape:
 
-.. odsafig:: Images/BSTShape2.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Two Binary Search Trees
+.. inlineav:: BSTShapeCON dgm
+   :links: AV/Binary/BSTShapeCON.css
+   :scripts: AV/Binary/BSTShapeCON.js
+   :align: justify
 
    Two Binary Search Trees for a collection of values.
    Tree (a) results if values are inserted

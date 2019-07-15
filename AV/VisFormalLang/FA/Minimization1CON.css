@@ -1,0 +1,17 @@
+#Minimization1CON {
+  height: 750px;
+  width: 1000px;
+}
+
+#Minimization1CON .jsavcontrols {
+  display: unset !important;
+}
+
+#Minimization1CON .jsavnode.jsavtreenode {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  max-width: 500px;
+  min-height: 0;
+  max-height: 500px;
+}

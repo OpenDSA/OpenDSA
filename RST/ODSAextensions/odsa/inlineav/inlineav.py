@@ -82,7 +82,10 @@ def doctree_read(app, doctree):
       num_module = json_data[env.docname]
     if isinstance( avdgm_info, av_dgm ) or ( isinstance( avdgm_info, av_ss) and len(avdgm_info['ids'])>0 ):
       for cap in avdgm_info.traverse(caption):
-        cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
+        if num_module != '':
+          cap[0] = Text(" %s %s.%d: %s" % (app.config.figure_caption_prefix, num_module, i, cap[0]))
+        else:
+          cap[0] = Text(" %s %d: %s" % (app.config.figure_caption_prefix, i, cap[0]))
       for id in avdgm_info['ids']:
         figids[id] = i
         figid_docname_map[id] = env.docname
@@ -114,7 +117,7 @@ def loadTable():
 
 # div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
 SLIDESHOW = '''\
-<div id="%(exer_name)s" class="ssAV" data-points="%(points)s" data-threshold="%(threshold)s" data-type="%(type)s" data-required="%(required)s" data-long-name="%(long_name)s" data-exer-id="%(id)s">
+<div id="%(exer_name)s" class="ssAV" data-points="%(points)s" data-threshold="%(threshold)s" data-type="%(type)s" data-required="%(required)s" data-short-name="%(short_name)s" data-long-name="%(long_name)s" data-exer-id="%(id)s">
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
@@ -176,6 +179,7 @@ class inlineav(Directive):
   def run(self):
     """ Restructured text extension for including inline JSAV content on module pages """
     self.options['exer_name'] = self.arguments[0]
+    self.options['short_name'] = self.arguments[0]
     self.options['type'] = self.arguments[1]
     self.options['odsa_path'] = os.path.relpath(conf.odsa_path,conf.ebook_path)
 

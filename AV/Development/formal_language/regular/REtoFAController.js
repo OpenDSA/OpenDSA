@@ -26,13 +26,14 @@ var catBeginMade = false, catEndMade = false;
 
 paper.install(window);
 
-var REtoFAController = function(jsav, expression = "", options, visualize = false) {
-	this.init(jsav, expression, visualize, options);
+var REtoFAController = function(jsav, expression = "", options, visualize = false, exercise = false) {
+	this.init(jsav, expression, visualize, exercise, options);
 };
 
 var controllerProto = REtoFAController.prototype;
 
-controllerProto.init = function(jsav, expression, visualize, options) {
+controllerProto.init = function(jsav, expression, visualize, exercise, options) {
+	this.exercise = exercise;
 	this.visualize = visualize;
 	this.jsav = jsav;	
 	this.fa = jsav.ds.fa($.extend({width: '750px', height: 440, layout: 'automatic'}, options));
@@ -203,10 +204,11 @@ controllerProto.nextStep = function() {
 		}
 		action = 0;
 		// We're all done.
+		if(!this.exercise){
 		this.jsav.step();
 		this.jsav.umsg("The automaton is complete.");
 		this.fa.layout();
-
+		}
 		//$('#export').show();
 	}
 

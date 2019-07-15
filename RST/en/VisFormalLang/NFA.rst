@@ -43,12 +43,11 @@ transitions to more than one state.
 **Example**:
 
 .. inlineav:: NFAexampleCON dgm
-   :links: AV/VisFormalLang/NFA/NFAexampleCON.css
-   :scripts: AV/VisFormalLang/NFA/NFAexampleCON.js
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFAexampleCON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFAexampleCON.js
    :align: center
 
    Example of NFA
-
 
 In this example, :math:`\delta(q_0, a) = \{q_1, q_2\}`.
 (So, :math:`\delta` is no longer meets the mathematical definition
@@ -58,21 +57,17 @@ Hopefully this one is easy to understand: We two disjoint paths,
 effectively giving us the union of two languages:
 :math:`L = \{aa\} \cup \{ab^nb \mid n \ge 0\}`.
 
-
 **Example**:
 
 :math:`L = \{(ab)^n \mid n>0\} \cup \{a^nb \mid n>0\}`.
 
 .. inlineav:: NFAexample2CON dgm
-   :links: AV/VisFormalLang/NFA/NFAexample2CON.css
-   :scripts: AV/VisFormalLang/NFA/NFAexample2CON.js
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFAexample2CON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFAexample2CON.js
    :align: center
 
-   Second Example of NFA
-   A simple "go this way or go the other way".
-
-
-
+   Second Example of NFA:
+   A simple "go this way or go the other way" choice.
 
 **Definition**: :math:`q_j \in {\delta}^{*}(q_i,w)` if and only if
 there exists some walk from :math:`q_i` to :math:`q_j` labeled :math:`w`.
@@ -113,23 +108,48 @@ NFA vs. DFA: Which is more powerful?
 ------------------------------------
 
 Consider the following NFA.
-Can this NFA be converted to a DFA?
 
-.. inlineav:: NFA2DFACON dgm
-   :links: AV/VisFormalLang/NFA/NFA2DFACON.css
-   :scripts: AV/VisFormalLang/NFA/NFA2DFACON.js
+.. inlineav:: NFA2DFAaCON dgm
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFACON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAaCON.js
    :align: center
 
-   An NFA and equivalent DFA
-
-
+   An NFA.
 
 .. note::
 
-   Try this out using JFLAP.
+   Q: What language is this?
+
+   A: Alternating a's and b's, starting with a.
+
+Can this NFA be converted to a DFA?
+
+Yes, because here is one. Note that the names of the states are chosen
+to help see their relationships to the original NFA.
+
+.. inlineav:: NFA2DFAbCON dgm
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFACON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAbCON.js
+   :align: center
+
+   A DFA that accepts the same language.
+
+.. note::
+
+   Q: Is this a proof?
+
+   A: Yes. It is a proof by construction. The theorem is of the form
+   "There exists X". (In our case, it was written as "Does there
+   exist a DFA that corresponds to **this** NFA?") The proof is of the
+   form "Here is an example of X". (In our case, "Here is an acceptable
+   DFA that answers the question".)
+
+.. note::
+
+   Try this conversion out using JFLAP.
    JFLAP can convert a NFA to a DFA.
 
-
+ 
 .. topic:: Theorem and Proof
 
    **Theorem**: Given an NFA
@@ -182,13 +202,12 @@ That would be members of the powerset of :math:`M_D` states.
       
 **Example**:
 
-.. inlineav:: NFA2DFA2aCON dgm
-   :links: AV/VisFormalLang/NFA/NFA2DFA2aCON.css
-   :scripts: AV/VisFormalLang/NFA/NFA2DFA2aCON.js
+.. inlineav:: NFA2DFAEx2aCON dgm
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAEx2aCON.js
    :align: center
 
    Another NFA to convert
-
 
 
 Let's begin with the start state.
@@ -209,22 +228,16 @@ letter :math:`a`. This would be the subset :math:`q_3,q_4`.
 
 **Answer**:
 
-.. inlineav:: NFA2DFA2bCON dgm
-   :links: AV/VisFormalLang/NFA/NFA2DFA2bCON.css
-   :scripts: AV/VisFormalLang/NFA/NFA2DFA2bCON.js
+.. inlineav:: NFA2DFAEx2bCON dgm
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAEx2bCON.js
    :align: center
 
    Converted DFA
 
-
-
-
-The following slideshow presents first the NFA, and then shows, step-by-step, the process of building the DFA.
-
-
-.. inlineav:: NFAtoDFACON ss
-   :links: AV/VisFormalLang/NFA/NFAtoDFACON.css
-   :scripts: AV/VisFormalLang/NFA/NFAtoDFACON.js DataStructures/PIFrames.js
+.. inlineav:: NFA2DFATraceCON ss
+   :links: AV/VisFormalLang/FA/NFA2DFATraceCON.css
+   :scripts: DataStructures/PIFrames.js AV/VisFormalLang/FA/NFA2DFATraceCON.js
    :output: show
 
 
@@ -232,12 +245,11 @@ Conclusion: NFA adds no new capability. So why bother with the idea?
 
 * First, it wasn't obvious that they are the same. NFA is a useful
   concept.
-* NFA tend to be "smaller" and "simpler" than the equivalent DFA.
-  (At least morphologically, but perhaps the language of a NFA is hard
-  to grasp.)
-* We will see times when it is easier to see a conversion from
-  something to a NFA,
-  and we know that this can always be converted in turn to a DFA.
-    
-  
-
+* An NFA tends to be "smaller" and "simpler" than the equivalent DFA.
+  (At least in terms of the number of states and transition. But
+  perhaps the language of a NFA is harder for a person to grasp.)
+* Throughout the semester, we will do a lot of converting from one
+  machine type to another.
+  The conversion process might be easier to understand when the target
+  is an NFA, and we know that this can always be converted in turn to
+  a DFA.

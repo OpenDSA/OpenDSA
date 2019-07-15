@@ -1,6 +1,8 @@
 var jsav,
 		expression, // input by user
-		controller; // REtoFA controller object
+		controller, // REtoFA controller object
+		exerciseController,
+		pageType; //determine weather the page is an RE exercise or REtoFA
 
 (function($) {
 	var start = function() {
@@ -15,13 +17,25 @@ var jsav,
 			alert("put in something, don't try to trick the program!");
 			expression = prompt("Regular Expression:");
 		}
-		controller = new REtoFAController(jsav, expression, {});
+		controller = new REtoFAController(jsav, expression, {});	
 	}
-
 	var onLoad = function() {
 		jsav = new JSAV("av");
-		start();
-		if (!controller) console.log("error! no controller.");
+		pageType = $('h1').attr('id');
+		if(pageType !== "Exercise"){
+			start();
+			if (!controller) console.log("error! no controller.");
+		}
+		else{
+			$('#av').hide();
+			var params = window.location.search;
+			var end = params.indexOf(".json");
+			var startL = params.indexOf("fileLocation=")
+			var exerciseLocation = params.substring(startL, end + 5).split('=')[1];
+			var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_3/sheet3P1.json": exerciseLocation;
+			exerciseController = new ExerciseController(jsav, exercisePath, 'json');
+			exerciseController.load();
+		}
 		$('#nextStep').click(function() {
 			controller.completeStep();
 		});
@@ -35,6 +49,18 @@ var jsav,
 			controller.exportToFA();
 		});
 		$('#export').hide();
+
+		$('#testSolution').click(function(){
+			//we need to write the code to test the entered RE
+			expression = document.getElementById('tb1').value;
+			if(controller)
+				controller.clear();
+			controller = new REtoFAController(jsav, expression, false, true, {});
+			controller.completeAll();
+			this.resultingFA = controller.fa;
+			exerciseController.startTesting(this.resultingFA, expression);
+		});
+		
 	}
 
 	$(document).ready(onLoad);

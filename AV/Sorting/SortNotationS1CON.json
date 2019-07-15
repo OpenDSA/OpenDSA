@@ -1,0 +1,10 @@
+{
+  "translations" :{
+    "en": {
+      "sc1": "Consider a list $L$ containing seven records, named $r_1$ through $r_7$.",
+      "sc2": "The records could be complex, with many fields. But assume that each record includes a particular field that we will call the <i>key</i>. In this example, the associated keys are 3 1 7 6 4 7 0.",
+      "sc3": "The <b>Sorting Problem</b> is to arrange the records into any order $s$ such that records $r_{s_1}$, $r_{s_2}$, ..., $r_{s_n}$ have keys obeying the property $k_{s_1} \\leq k_{s_2} \\leq ... \\leq k_{s_n}$. In other words, the sorting problem is to arrange a set of records so that the values of their key fields are in non-decreasing order.",
+      "sc4": "Define $L_S$ to be a sorted version of $L$. The records in $L_S$ are arranged so that the keys are in non-decreasing order. Records $r_3$ and $r_6$ could have appeared in either order since their key values are the same."
+    }
+  }
+}

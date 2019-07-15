@@ -19,6 +19,9 @@ mod_options = None    # custom options specified for modules
 ex_options = None     # custom options specified for exercises/slideshows
 sect_options = None   # custom options specified for sections
 current_module = None # the path of the current module being processed
+current_module_base = None # the name of the current module without the folder or extension
+expanded = False # whether we are generating the expanded version of the full configuration
+                 # which contains additional info about the exercises
 
 # default options that will be used if options 
 # aren't specified for a given exercise
@@ -73,7 +76,9 @@ avembed_element = '''\
     long_name="%(long_name)s"
     points="%(points)s"
     required="True"
-    threshold="%(threshold)s">
+    threshold="%(threshold)s"
+    av_address="%(av_address)s"
+    mod_name="%(mod_name)s">
 </avembed>
 '''
 
@@ -82,7 +87,8 @@ extertool_element = '''\
     resource_name=%(resource_name)s
     resource_type="%(resource_type)s"
     learning_tool="%(learning_tool)s"
-    points="%(points)s">
+    points="%(points)s"
+    mod_name="%(mod_name)s">
 </extertool>
 '''
 
@@ -94,7 +100,10 @@ inlineav_element = '''\
     points="%(points)s"
     output="%(output)s"
     required="True"
-    threshold="%(threshold)s">
+    threshold="%(threshold)s"
+    links="%(links)s"
+    scripts="%(scripts)s"
+    mod_name="%(mod_name)s">
 </inlineav>
 '''
 
@@ -122,6 +131,9 @@ class avembed(Directive):
     self.options['required'] = get_default_ex_option(self.options['type'], 'required')
     self.options['points'] = get_default_ex_option(self.options['type'], 'points')
     self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
+    self.options['mod_name'] = current_module_base
+    self.options['av_address'] = av_path
+
     if self.options['exer_name'] in ex_options[current_module]:
       for key, value in ex_options[current_module][self.options['exer_name']].iteritems():
         self.options[key] = value
@@ -182,13 +194,15 @@ class extrtoolembed(Directive):
     if 'points' not in self.options or self.options['points'] == '':
       self.options['points'] = get_default_ex_option('extr', 'points', self.options['learning_tool'])
 
+    self.options['mod_name'] = current_module_base
+    
     res = extertool_element % (self.options)
     return [nodes.raw('', res, format='xml')]
 
 
 class inlineav(Directive):
   required_arguments = 2
-  optional_arguments = 6
+  optional_arguments = 8
   final_argument_whitespace = True
   option_spec = {
                   'long_name': directives.unchanged,
@@ -197,6 +211,8 @@ class inlineav(Directive):
                   'points': directives.unchanged,
                   'required': directives.unchanged,
                   'threshold': directives.unchanged,
+                  'scripts': directives.unchanged,
+                  'links': directives.unchanged
                 }
   has_content = True
 
@@ -209,6 +225,8 @@ class inlineav(Directive):
     self.options['required'] = get_default_ex_option(self.options['type'], 'required')
     self.options['points'] = get_default_ex_option(self.options['type'], 'points')
     self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
+    
+    self.options['mod_name'] = current_module_base
 
     if self.options['exer_name'] in ex_options[current_module]:
         for key, value in ex_options[current_module][self.options['exer_name']].iteritems():
@@ -217,6 +235,11 @@ class inlineav(Directive):
 
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
+
+    if 'links' not in self.options:
+      self.options['links'] = ''
+    if 'scripts' not in self.options:
+      self.options['scripts'] = ''
 
     self.options['align'] = None
     self.options['output'] = None
@@ -541,6 +564,8 @@ def extract_sec_config(sec_json):
 def extract_exs_config(exs_json):
   '''
   '''
+  global expanded
+
   exs_config = OrderedDict()
   if isinstance(exs_json, list):
     for x in exs_json:
@@ -551,6 +576,10 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['long_name'] = ex_obj['@long_name']
         exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
+        if expanded:
+          exs_config[exer_name]['type'] = ex_obj['@type']
+          exs_config[exer_name]['av_address'] = ex_obj['@av_address']
+          exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
         threshold = float(ex_obj['@threshold'])
         exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
 
@@ -566,6 +595,9 @@ def extract_exs_config(exs_json):
         exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
         exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
         exs_config['extertool']['points'] = float(ex_obj['@points'])
+        if expanded:
+          exs_config['extertool']['type'] = 'extr'
+          exs_config['extertool']['mod_name'] = ex_obj['@mod_name']
         if ex_obj['@resource_name'] in ex_options[current_module]:
           for key, value in ex_options[current_module][ex_obj['@resource_name']].iteritems():
               exs_config['extertool'][key] = value
@@ -579,6 +611,11 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
         exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
+        if expanded:
+          exs_config[exer_name]['type'] = ex_obj['@type']
+          exs_config[exer_name]['links'] = ex_obj['@links'].split()
+          exs_config[exer_name]['scripts'] = ex_obj['@scripts'].split()
+          exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
         if exer_name in ex_options[current_module]:
           for key, value in ex_options[current_module][exer_name].iteritems():
               exs_config[exer_name][key] = value
@@ -592,6 +629,11 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
         exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
+        if expanded:
+          exs_config[exer_name]['type'] = ex_obj['@type']
+          exs_config[exer_name]['links'] = ex_obj['@links'].split()
+          exs_config[exer_name]['scripts'] = ex_obj['@scripts'].split()
+          exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
         if exer_name in ex_options[current_module]:
           for key, value in ex_options[current_module][exer_name].iteritems():
               exs_config[exer_name][key] = value
@@ -601,6 +643,9 @@ def extract_exs_config(exs_json):
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
+        if expanded:
+          exs_config[exer_name]['type'] = ex_obj['@type']
+          exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
 
   elif isinstance(exs_json, dict):
     if 'avembed' in exs_json.keys():
@@ -610,6 +655,10 @@ def extract_exs_config(exs_json):
       exs_config[exer_name]['long_name'] = ex_obj['@long_name']
       exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
+      if expanded:
+        exs_config[exer_name]['type'] = ex_obj['@type']
+        exs_config[exer_name]['av_address'] = ex_obj['@av_address']
+        exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
       threshold = float(ex_obj['@threshold'])
       exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
       if exer_name in ex_options[current_module]:
@@ -624,6 +673,9 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
       exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
       exs_config['extertool']['points'] = float(ex_obj['@points'])
+      if expanded:
+        exs_config['extertool']['type'] = 'extr'
+        exs_config['extertool']['mod_name'] = ex_obj['@mod_name']
       if ex_obj['@resource_name'] in ex_options[current_module]:
           for key, value in ex_options[current_module][ex_obj['@resource_name']].iteritems():
               exs_config['extertool'][key] = value
@@ -637,6 +689,11 @@ def extract_exs_config(exs_json):
       exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
       exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
+      if expanded:
+        exs_config[exer_name]['type'] = ex_obj['@type']
+        exs_config[exer_name]['links'] = ex_obj['@links'].split()
+        exs_config[exer_name]['scripts'] = ex_obj['@scripts'].split()
+        exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
       if exer_name in ex_options[current_module]:
           for key, value in ex_options[current_module][exer_name].iteritems():
               exs_config[exer_name][key] = value
@@ -650,6 +707,11 @@ def extract_exs_config(exs_json):
       exs_config[exer_name]['required'] = get_default_ex_option(ex_obj['@type'], 'required')
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
       exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
+      if expanded:
+        exs_config[exer_name]['type'] = ex_obj['@type']
+        exs_config[exer_name]['links'] = ex_obj['@links'].split()
+        exs_config[exer_name]['scripts'] = ex_obj['@scripts'].split()
+        exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
       if exer_name in ex_options[current_module]:
           for key, value in ex_options[current_module][exer_name].iteritems():
               exs_config[exer_name][key] = value
@@ -659,6 +721,9 @@ def extract_exs_config(exs_json):
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
+      if expanded:
+        exs_config[exer_name]['type'] = ex_obj['@type']
+        exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
 
   return exs_config
 
@@ -687,11 +752,16 @@ def remove_markup(source):
   '''
   remove unnecessary markups in the rst files
   '''
+  global expanded
+
   source = source.replace(' --- ','')
   source = source.replace('|---|','')
-  source = re.sub(r"\s+:links:.+\n", '\n', source, flags=re.MULTILINE)
-  source = re.sub(r"\s+:scripts:.+\n", '\n', source, flags=re.MULTILINE)
-  source = re.sub(r"\:(?!output)[a-zA-Z]+\:", '',source, flags=re.MULTILINE)
+  if expanded:
+    source = re.sub(r"\:(ref|num|term|numref|chap|eq|dfn|abbr|index)\:", '',source, flags=re.MULTILINE)
+  else:
+    source = re.sub(r"\s+:links:.+\n", '\n', source, flags=re.MULTILINE)
+    source = re.sub(r"\s+:scripts:.+\n", '\n', source, flags=re.MULTILINE)
+    source = re.sub(r"\:(?!output)[a-zA-Z]+\:", '',source, flags=re.MULTILINE)
   source = re.sub(r"\[.+\]\_", '',source, flags=re.MULTILINE)
 
   return source
@@ -778,10 +848,15 @@ def validate_glob_config(conf_data):
 
   ex_options, sect_options, mod_options = get_options(conf_data)
 
-def generate_full_config(config_file_path, slides):
+def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=False):
   ''' Generates a full configuration from a simplified configuration
   '''
   global current_module
+  global current_module_base
+  global expanded
+
+  expanded = gen_expanded
+
   register()
 
   conf_data = read_conf_file(config_file_path)
@@ -812,7 +887,11 @@ def generate_full_config(config_file_path, slides):
       else:
         mod_path = rst_dir_name + '/' + rst_fname
       
+
       current_module = mod_path
+      if verbose:
+        print("Processing module " + mod_path)
+      current_module_base = os.path.basename(mod_path)
 
       if not os.path.isfile(x):
         print_err("ERROR: '{0}' is not a valid module path".format(mod_path))
@@ -844,14 +923,18 @@ def generate_full_config(config_file_path, slides):
   return full_config
 
 if __name__ == '__main__':
-  args = sys.argv
-  if len(args) != 3:
-      print('Usage: {0} config_file output_file'.format(args[0]))
-      sys.exit(1)
+  parser = OptionParser()
+  parser.add_option("--expanded", help="Generates an expanded configuration with extra details",dest="expanded", action="store_true", default=False)
+  parser.add_option("--verbose", help="Prints progress information.",dest="verbose", action="store_true", default=False)
+  (options, args) = parser.parse_args()
 
-  config_file = args[1]
-  output_file = args[2]
-  full_conf = generate_full_config(config_file, False)
+  if len(args) != 2:
+    print_err("Usage: " + sys.argv[0] + " config_file_path output_file_path [--expanded]")
+    sys.exit(1)
+
+  config_file = args[0]
+  output_file = args[1]
+  full_conf = generate_full_config(config_file, False, options.expanded, options.verbose)
 
   with open(output_file, 'w') as outfile:
     json.dump(full_conf, outfile, indent=2)
