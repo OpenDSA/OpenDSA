@@ -1,12 +1,12 @@
 #Minimization2CON {
-    height: 1000px;
-    width: 1120px;}
+    height: 730px;
+    width: 1100px;}
 
-.jsavcontrols {
+#Minimization2CON .jsavcontrols {
     display: unset !important;
 }
 
-.jsavnode.jsavtreenode {
+#Minimization2CON .jsavnode.jsavtreenode {
 	width: auto;
 	height: auto;
 	min-width: 0;

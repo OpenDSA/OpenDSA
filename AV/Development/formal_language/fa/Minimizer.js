@@ -9,7 +9,7 @@ minimizer.minimizeDFA = function(jsav, referenceGraph, tree, newGraphDimensions)
 	var listOfLeaves = this.getLeaves(this.tree.root());
 	var leaf;
 	var moreToSplit = true;
-	this.jsav.umsg("Now we will test the treminals against the states in that subset to see if they all go to the same subset. Split them up when they do not go to the same place.")
+	this.jsav.umsg("Now we will test the terminals against the states in that subset to see if they all go to the same subset. Split them up when they do not go to the same place.")
 	while(moreToSplit){
 		moreToSplit = null;
 	for(var i = 0; i< listOfLeaves.length; i++){
@@ -31,7 +31,7 @@ minimizer.minimizeDFA = function(jsav, referenceGraph, tree, newGraphDimensions)
 	this.jsav.step();
 	this.unhighlightAllTreeNodes(this.tree);
 	this.unhighlightAll(this.referenceGraph);
-	this.jsav.umsg("Since we do not have any more splits, the resulting tree represents the nodes in the minimized DFA");
+	this.jsav.umsg("Since we do not have any more splits, the resulting tree represents the nodes in the minimized DFA.");
 	this.jsav.step();
 	return this.done(newGraphDimensions);
 }
@@ -202,7 +202,7 @@ minimizer.autoPartition = function(treeNode) {
 			//this.selectedNode.unhighlight();
 			this.unhighlightAll(this.referenceGraph);
 			//this.selectedNode = null;
-			this.jsav.umsg("Node " +latixifyNodeName(treeNode) + " will not be devided");
+			this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will not be divided.");
 			highlightAllNodes(treeNode.split(','), this.referenceGraph);
 			return false;
 		}
@@ -235,7 +235,7 @@ minimizer.autoPartition = function(treeNode) {
 	}
 	nodeListAsString = listOFNodesToString(nodeListAsString);
 	nodeListAsString+= " by using the transition label " + letter;
-	this.jsav.umsg("Node "+ latixifyNodeName(treeNode) +" will be divided into " + nodeListAsString);
+	this.jsav.umsg("Node "+ latixifyNodeName(treeNode) +" will be divided into " + nodeListAsString + ".");
 	highlightAllNodes(treeNode.split(','), this.referenceGraph);
 	//this.unhighlightAll(this.referenceGraph);
 	this.tree.layout();
@@ -263,7 +263,7 @@ minimizer.done = function(newGraphDimensions) {
 	}
 	// if complete create minimized DFA
 	
-	var graph = this.jsav.ds.fa({width: newGraphDimensions.width, 
+	var graph = this.jsav.ds.FA({width: newGraphDimensions.width, 
 								height: newGraphDimensions.height, layout: 'automatic', 
 								left: newGraphDimensions.left, 
 								top: newGraphDimensions.top});
@@ -314,7 +314,7 @@ minimizer.done = function(newGraphDimensions) {
 	graph.layout();
 	this.jsav.step();
 	//graph.click(nodeClickHandlers);
-	this.jsav.umsg("Finish the DFA by finding the transisitons between noods");
+	this.jsav.umsg("Finish the DFA by finding the transisitons between nodes.");
 	studentGraph = graph;
 	return this.complete(graph);
 };

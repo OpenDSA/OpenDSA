@@ -66,8 +66,8 @@ effectively giving us the union of two languages:
    :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFAexample2CON.js
    :align: center
 
-   Second Example of NFA
-   A simple "go this way or go the other way".
+   Second Example of NFA:
+   A simple "go this way or go the other way" choice.
 
 **Definition**: :math:`q_j \in {\delta}^{*}(q_i,w)` if and only if
 there exists some walk from :math:`q_i` to :math:`q_j` labeled :math:`w`.
@@ -108,14 +108,31 @@ NFA vs. DFA: Which is more powerful?
 ------------------------------------
 
 Consider the following NFA.
-Can this NFA be converted to a DFA?
 
-.. inlineav:: NFA2DFACON dgm
-   :links: AV/VisFormalLang/NFA/NFA2DFACON.css
-   :scripts: AV/VisFormalLang/NFA/NFA2DFACON.js
+.. inlineav:: NFA2DFAaCON dgm
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFACON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAaCON.js
    :align: center
 
-   An NFA and equivalent DFA
+   An NFA.
+
+.. note::
+
+   Q: What language is this?
+
+   A: Alternating a's and b's, starting with a.
+
+Can this NFA be converted to a DFA?
+
+Yes, because here is one. Note that the names of the states are chosen
+to help see their relationships to the original NFA.
+
+.. inlineav:: NFA2DFAbCON dgm
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFACON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAbCON.js
+   :align: center
+
+   A DFA that accepts the same language.
 
 .. note::
 
@@ -185,13 +202,12 @@ That would be members of the powerset of :math:`M_D` states.
       
 **Example**:
 
-.. inlineav:: NFA2DFA2aCON dgm
-   :links: AV/VisFormalLang/NFA/NFA2DFA2aCON.css
-   :scripts: AV/VisFormalLang/NFA/NFA2DFA2aCON.js
+.. inlineav:: NFA2DFAEx2aCON dgm
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAEx2aCON.js
    :align: center
 
    Another NFA to convert
-
 
 
 Let's begin with the start state.
@@ -212,22 +228,16 @@ letter :math:`a`. This would be the subset :math:`q_3,q_4`.
 
 **Answer**:
 
-.. inlineav:: NFA2DFA2bCON dgm
-   :links: AV/VisFormalLang/NFA/NFA2DFA2bCON.css
-   :scripts: AV/VisFormalLang/NFA/NFA2DFA2bCON.js
+.. inlineav:: NFA2DFAEx2bCON dgm
+   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
+   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAEx2bCON.js
    :align: center
 
    Converted DFA
 
-
-
-
-The following slideshow presents first the NFA, and then shows, step-by-step, the process of building the DFA.
-
-
-.. inlineav:: NFAtoDFACON ss
-   :links: AV/VisFormalLang/NFA/NFAtoDFACON.css
-   :scripts: AV/VisFormalLang/NFA/NFAtoDFACON.js DataStructures/PIFrames.js
+.. inlineav:: NFA2DFATraceCON ss
+   :links: AV/VisFormalLang/FA/NFA2DFATraceCON.css
+   :scripts: DataStructures/PIFrames.js AV/VisFormalLang/FA/NFA2DFATraceCON.js
    :output: show
 
 
@@ -235,12 +245,11 @@ Conclusion: NFA adds no new capability. So why bother with the idea?
 
 * First, it wasn't obvious that they are the same. NFA is a useful
   concept.
-* NFA tend to be "smaller" and "simpler" than the equivalent DFA.
-  (At least morphologically, but perhaps the language of a NFA is hard
-  to grasp.)
-* We will see times when it is easier to see a conversion from
-  something to a NFA,
-  and we know that this can always be converted in turn to a DFA.
-    
-  
-
+* An NFA tends to be "smaller" and "simpler" than the equivalent DFA.
+  (At least in terms of the number of states and transition. But
+  perhaps the language of a NFA is harder for a person to grasp.)
+* Throughout the semester, we will do a lot of converting from one
+  machine type to another.
+  The conversion process might be easier to understand when the target
+  is an NFA, and we know that this can always be converted in turn to
+  a DFA.

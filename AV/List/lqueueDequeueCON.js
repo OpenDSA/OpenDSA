@@ -17,9 +17,9 @@ $(document).ready(function() {
     var left = node.element.offset().left - lav.container.find(".jsavcanvas:first").offset().left;
     var topp = node.element.offset().top - lav.container.find(".jsavcanvas:first").offset().top;
     var opts = $.extend({leftOffset: nodegap / 2,
-                       rightOffset: nodegap / 2, topOffset: 15,
-                       nodeGap: nodegap, nodeWidth: nodeWidth,
-                       nodeHeight: nodeHeight}, options);
+                         rightOffset: nodegap / 2, topOffset: 15,
+                         nodeGap: nodegap, nodeWidth: nodeWidth,
+                         nodeHeight: nodeHeight}, options);
 
     arrow = lav.g.polyline([[left - opts.nodeGap - 6, topp + opts.nodeHeight / 2],
                             [left - opts.leftOffset, topp + opts.nodeHeight / 2],

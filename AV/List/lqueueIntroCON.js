@@ -14,10 +14,7 @@ $(document).ready(function() {
   var leftMargin = 20;
   var topMargin = 50;
   var list = av.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
-  list.addFirst(25)
-      .addFirst(10)
-      .addFirst(5)
-      .addFirst("null");
+  list.addFirst(25).addFirst(10).addFirst(5).addFirst("null");
   list.layout();
   var frontP = av.pointer("front", list.get(0));
   var rearP = av.pointer("rear", list.get(3));
@@ -27,8 +24,9 @@ $(document).ready(function() {
   listInit.addFirst("null");
   listInit.layout();
   var frontIP = av.pointer("front", listInit.get(0));
-  var rearIP = av.pointer("rear", listInit.get(0), {anchor: "right top",
-                                myAnchor: "left bottom", left: -10});
+  var rearIP = av.pointer("rear", listInit.get(0),
+                          {anchor: "right top",
+                           myAnchor: "left bottom", left: -10});
   listInit.hide();
   frontIP.hide();
   rearIP.hide();

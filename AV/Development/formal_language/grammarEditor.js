@@ -3263,7 +3263,7 @@ $(document).ready(function () {
 			//var exerciseLocation = "./Formal_Languages_Automated_Exerciese/exercises/Sheet_1/Exercise4.json";//params.module.split(":url_params:+fileLocation=")[1];//getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
       //******************** */
       m = init();
-      var exercisePath = (exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/fixerTests.json": exerciseLocation;
+      var exercisePath = (exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3P2.json": exerciseLocation;
   		var exerController = new GrammarExerciseController(jsav, m, exercisePath, "json");
       exerController.load();
       

@@ -2,16 +2,16 @@
 	<type>fa</type>
 	<automaton>
 		<!--The list of states.-->
-		<state id="0" name="q0">
+		<state id="0" name="q0,q1,q2">
 			<x>22.0</x>
 			<y>61.0</y>
 			<initial/>
 		</state>
-		<state id="1" name="q1">
+		<state id="1" name="q3,q4">
 			<x>176.0</x>
 			<y>34.0</y>
 		</state>
-		<state id="2" name="q2">
+		<state id="2" name="q1,q5,q6">
 			<x>298.0</x>
 			<y>36.0</y>
 			<final/>
@@ -20,12 +20,12 @@
 			<x>414.0</x>
 			<y>40.0</y>
 		</state>
-		<state id="4" name="q4">
+		<state id="4" name="q5,q1">
 			<x>528.0</x>
 			<y>40.0</y>
 			<final/>
 		</state>
-		<state id="5" name="q5">
+		<state id="5" name="q4">
 			<x>101.0</x>
 			<y>118.0</y>
 		</state>
