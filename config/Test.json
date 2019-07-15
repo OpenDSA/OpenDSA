@@ -64,12 +64,18 @@
   },
   "chapters": {
     "Stuff": {
-      "Indexing/TwoThreeTree": {
-      },
+
+	"Indexing/twoThreeTree":{
+},
       "Indexing/BTree": {
       },
-      "Indexing/BTreeTest": {
+"Indexing/BTreeTest": {
+      },
+      "me/CFLnew":{
+      },
+      "VisFormalLang/CFL":{
       }
+    
     }, 
     "Appendix": {
       "Glossary": {},
