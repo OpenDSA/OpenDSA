@@ -193,17 +193,14 @@ CS4104: min
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
-CS2J: min
-	python $(CONFIG_SCRIPT) config/CS2J.json --no-lms
+CS5040: min
+	python $(CONFIG_SCRIPT) config/CS5040.json --no-lms
 
 Codio: min
 	python $(CONFIG_SCRIPT) config/Codio.json --no-lms
 
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
-
-CS3J: min
-	python $(CONFIG_SCRIPT) config/CS3J.json --no-lms
 
 CS3C: min
 	python $(CONFIG_SCRIPT) config/CS3C.json --no-lms
@@ -243,9 +240,6 @@ COMPSCI186: min
 
 testcmap: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
-
-CMP: min
-	python $(CONFIG_SCRIPT) config/CMP.json --no-lms
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
