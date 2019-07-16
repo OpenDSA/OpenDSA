@@ -8,9 +8,8 @@ var lambda = String.fromCharCode(955),
 		emptystring = lambda,
 		menuSelected; // stores the node that's right clicked on
 
-var Automaton;
 
-$(document).ready(function() {
+(function($) {
   "use strict";
 	if (typeof JSAV === "undefined") {
 		console.log("Error!!! No JSAV lib!!!");
@@ -25,12 +24,12 @@ $(document).ready(function() {
 		 Automaton class, used for DFAs/NFAs, PDAs, Mealy/Moore machines, and Turing Machines.
 		 Extended from the JSAV graph class.
 	 */
-	Automaton = function (jsav, options) {
+	var Automaton = function (jsav, options) {
 		this.init(jsav, options);
 	};
 	JSAV.utils.extend(Automaton, JSAV._types.ds.Graph);
 	var automatonproto = Automaton.prototype;
-
+	window.Automaton = Automaton;
 	automatonproto.init = function (jsav, options) {
 		this._nodes = [];
 		this._edges = [];
@@ -1341,15 +1340,15 @@ var dstypes = JSAV._types.ds;
 dstypes.Automaton = Automaton;
 dstypes.State = State;
 dstypes.Transition = Transition;
-
-});
-//END of Automaton class
-
 var toColonForm = function(string) {
 	var re = string.replace(/,/g, ":");
 	re = re.replace(/;/g, ":");
 	return re;
 }
+window.toColonForm = toColonForm;
+}(jQuery));
+//END of Automaton class
+
 
 /*
 ****************************************************************************
@@ -1357,8 +1356,9 @@ var toColonForm = function(string) {
   An extension to the JFLAP library.
 ****************************************************************************
 */
+(function($) {
 var FiniteAutomaton = function(jsav, options) {
-  Automaton.apply(this, arguments);
+	Automaton.apply(this, arguments);
   this.configurations = $("<ul>"); // configurations jQuery object used to setup view at a step
   this.configViews = []; // configurations view for a step
   this.step = 0; // current step the user is at, used for changing configuration display          
@@ -1373,7 +1373,7 @@ JSAV.utils.extend(FiniteAutomaton, JSAV._types.ds.Graph);
 
 FiniteAutomaton.prototype = Object.create(Automaton.prototype, {});
 var faproto = FiniteAutomaton.prototype;
-
+window.FiniteAutomaton = FiniteAutomaton;
 faproto.loadFAFromJFLAPFile = function (url) {
   var parser,
       xmlDoc,
@@ -1777,6 +1777,7 @@ var visualizeConvertToDFA = function(jsav, graph, opts) {
   g.updateNodes();
   return g;
 };
+}(jQuery));
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }

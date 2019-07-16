@@ -78,7 +78,7 @@ DFA that accepts even binary numbers.
 
 .. inlineav:: EvenBinaryDFACON dgm
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/EvenBinaryDFACON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/EvenBinaryDFACON.js
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/EvenBinaryDFACON.js
    :align: center
 
    DFA Example: Odd numbers
@@ -205,7 +205,7 @@ So, here is one way to make a drawing:
 
 .. inlineav:: DFA_noTrapStateCON dgm
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/DFA_noTrapStateCON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/DFA_noTrapStateCON.js
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFA_noTrapStateCON.js
    :align: center
 
    DFA Example: Incomplete
@@ -230,7 +230,7 @@ As follows.
 
 .. inlineav:: DFA_withTrapStateCON dgm
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/DFA_withTrapStateCON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/DFA_withTrapStateCON.js
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFA_withTrapStateCON.js
    :align: center
 
    DFA Example: Complete
@@ -259,7 +259,7 @@ even number of 1's.
 
 .. inlineav:: EvenBinaryEvenOnesDFACON dgm
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/EvenBinaryEvenOnesDFACON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/EvenBinaryEvenOnesDFACON.js
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/EvenBinaryEvenOnesDFACON.js
    :align: center
 
    More complicated DFA Example
