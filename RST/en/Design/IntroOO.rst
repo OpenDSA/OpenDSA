@@ -407,3 +407,6 @@ For very large programs, which might contain hundreds or even
 thousands of entities, lack of cohesion can introduce errors, make
 programs more difficult to understand and maintain, and complicate the
 development of very large programs.
+
+.. avembed:: Exercises/CMP/CMoopSumm.html ka
+   :long_name: Concept map OOP exercises

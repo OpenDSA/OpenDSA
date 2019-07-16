@@ -304,5 +304,8 @@ The interface becomes a form of communication between the two programmers.
    Within the class, a variety of physical implementations for lists
    is possible.
 
+.. avembed:: Exercises/CMP/CMdatatypeSumm.html ka
+   :long_name: Concept map data types exercises
+
 .. avembed:: Exercises/Design/IntroADTSumm.html ka
    :long_name: ADT Summary Questions

@@ -65,6 +65,7 @@
   },
   "chapters": {
     "Stuff": {
+<<<<<<< HEAD
 
 	"Indexing/twoThreeTree":{
 },
@@ -77,11 +78,12 @@
       },
 "Indexing/BTreeTest": {
       },
+=======
+>>>>>>> 31c193dceb8495cd9ad75197622a331066df61f1
       "Jeffrey_Peng_Test/CFLnew":{
       },
       "VisFormalLang/CFL":{
       }
-    
     }, 
     "Appendix": {
       "Glossary": {},

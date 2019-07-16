@@ -9,11 +9,11 @@
    :satisfies:
    :topic: Concept Maps
 
-Object-Oriented Programming Concepts
-====================================
+Graph Concepts Summary
+======================
 
-Object-Oriented Programming Concepts
-------------------------------------
+Graph Concepts Summary
+----------------------
 
-.. avembed:: Exercises/CMP/CMoopSumm.html ka
-   :long_name: Concept map OOP exercises
+.. avembed:: Exercises/CMP/CMgraphSumm.html ka
+   :long_name: Concept map graph exercises

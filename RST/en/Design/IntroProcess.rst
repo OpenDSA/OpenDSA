@@ -51,7 +51,7 @@ At the time, there was no professional class of programmers.
 Engineers, mathematicians, and physicists wrote programs to support their work.
 The first software development processes were adapted from manufacturing and engineering
 processes.
-Among the earliest was the systems development life cycle (SLDC).
+Among the earliest was the systems development life cycle (SDLC).
 The goals of the SDLC were 
 "to pursue the development of information systems in a very deliberate, 
 structured and methodical way, requiring each stage of the life cycle from 

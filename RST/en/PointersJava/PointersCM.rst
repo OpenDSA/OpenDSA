@@ -9,11 +9,11 @@
    :satisfies:
    :topic: Concept Maps
 
-Graph Concepts
-==============
+Pointers Concepts Summary
+=========================
 
-Graph Concepts
---------------
+Pointers Concepts Summary
+-------------------------
 
-.. avembed:: Exercises/CMP/CMgraphSumm.html ka
-   :long_name: Concept map graph exercises
+.. avembed:: Exercises/CMP/CMpointersSumm.html ka
+   :long_name: Concept map pointers exercises
