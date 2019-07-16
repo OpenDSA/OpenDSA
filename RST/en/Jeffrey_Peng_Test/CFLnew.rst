@@ -118,8 +118,8 @@ productions were applied.
      :math:`A \in V, a_i \in (T \cup V \cup \{\lambda\})`,
 
    .. inlineav:: mineAssigned dgm
-      :links: RST/en/Jeffrey_Peng_Test/CFLnew.css
-      :scripts: RST/en/Jeffrey_Peng_Test/CFLnew.js
+      :links: AV/Jeffrey_Peng_Test/CFLnew.css
+      :scripts: AV/Jeffrey_Peng_Test/CFLnew.js
       :align: justify
 
 
@@ -132,8 +132,8 @@ productions were applied.
    |    :math:`B \rightarrow Bbb\ |\ \lambda`
 
    .. inlineav:: mineAssigned2 dgm
-      :links: RST/en/Jeffrey_Peng_Test/CFLnew2.css
-      :scripts: RST/en/Jeffrey_Peng_Test/CFLnew2.js
+      :links: AV/Jeffrey_Peng_Test/CFLnew2.css
+      :scripts: AV/Jeffrey_Peng_Test/CFLnew2.js
       :align: justify
 
    NOTE: Derivation trees do not denote the order variables are

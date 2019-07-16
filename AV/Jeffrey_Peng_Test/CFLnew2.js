@@ -2,8 +2,6 @@ $(document).ready(function() {
   "use strict";
   var av = new JSAV("mineAssigned2", {animationMode: "none"});
   // Setup the tree
-  var btTop = -50;
-  var btLeft = 305;
   var bt = av.ds.tree({nodegap: 15});
   bt.root("S");
   var rt = bt.root();
@@ -12,7 +10,7 @@ $(document).ready(function() {
   var lt3 = bt.newNode("B");
   var lt4 = bt.newNode("B");
   rt.addChild(lt);
-  rt.addChild("C");
+  rt.addChild("c");
   rt.addChild(lt3);
   lt.addChild("a");
   lt.addChild(lt2);
