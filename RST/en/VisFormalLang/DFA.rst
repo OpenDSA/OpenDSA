@@ -77,7 +77,7 @@ Example
 DFA that accepts even binary numbers.
 
 .. inlineav:: EvenBinaryDFACON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/EvenBinaryDFACON.css
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/EvenBinaryDFACON.css
    :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/EvenBinaryDFACON.js
    :align: center
 
@@ -149,8 +149,8 @@ Pictorial Example of a trace for 100:
 Now let's see how this machine accepts / rejects some strings.
 
 .. inlineav:: TraceEvenBinaryDFACON ss
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/TraceEvenBinaryDFACON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/Development/formal_language/fa/TraverseAccepter.js AV/VisFormalLang/FA/TraceEvenBinaryDFACON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/TraceEvenBinaryDFACON.css
+   :scripts: DataStructures/FLA/FA.js AV/Development/formal_language/fa/TraverseAccepter.js AV/VisFormalLang/FA/TraceEvenBinaryDFACON.js
    :output: show
 
 Definitions
@@ -204,7 +204,7 @@ Example: Consider the language :math:`L(M) = \{b^na | n > 0\}`
 So, here is one way to make a drawing:
 
 .. inlineav:: DFA_noTrapStateCON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/DFA_noTrapStateCON.css
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/DFA_noTrapStateCON.css
    :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/DFA_noTrapStateCON.js
    :align: center
 
@@ -229,7 +229,7 @@ of the "extra" transitions.
 As follows.
 
 .. inlineav:: DFA_withTrapStateCON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/DFA_withTrapStateCON.css
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/DFA_withTrapStateCON.css
    :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/DFA_withTrapStateCON.js
    :align: center
 
@@ -258,7 +258,7 @@ even number of 1's.
 |   :math:`q_3` - odd number, even number of 1's 
 
 .. inlineav:: EvenBinaryEvenOnesDFACON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/EvenBinaryEvenOnesDFACON.css
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/EvenBinaryEvenOnesDFACON.css
    :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/EvenBinaryEvenOnesDFACON.js
    :align: center
 
