@@ -1632,6 +1632,7 @@ var convertToDFA = function(jsav, graph, opts, visualizable = false) {
     }*/
   g.updateNodes();
   g.layout();
+  g.disableDragging();
   return g;
 };
 
@@ -1787,7 +1788,7 @@ var visualizeConvertToDFA = function(jsav, graph, opts) {
  * MAke publicly available methods
  */
 FiniteAutomaton.convertNFAtoDFA = convertToDFA;
-FiniteAutomaton.visualizeConvertNFAtoDFA = visualizeConvertToDFA;
+FiniteAutomaton.DepthFirstSearch = dfs;
 }(jQuery));
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));

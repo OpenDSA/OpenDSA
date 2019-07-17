@@ -119,8 +119,8 @@ The following slideshow presents, step-by-step, the process of
 minimizing the DFA.
 
 .. inlineav:: Minimization1CON ss
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/Minimization1CON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/Development/formal_language/fa/Minimizer.js AV/VisFormalLang/FA/Minimization1CON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/Minimization1CON.css
+   :scripts: DataStructures/FLA/FA.js AV/Development/formal_language/fa/Minimizer.js AV/VisFormalLang/FA/Minimization1CON.js lib/underscore.js
    :output: show
 
 
@@ -136,7 +136,6 @@ minimizing the DFA.
    Minimization 2
 
 .. inlineav:: Minimization2CON ss
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/Minimization2CON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/Development/formal_language/fa/Minimizer.js AV/VisFormalLang/FA/Minimization2CON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/Minimization2CON.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/FLA/Minimizer.js AV/VisFormalLang/FA/Minimization2CON.js lib/underscore.js
    :output: show
-    

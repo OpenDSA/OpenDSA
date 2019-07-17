@@ -140,7 +140,7 @@ Example of a trace: 11010
 Pictorial Example of a trace for 100:
 
 .. inlineav:: OddNumbersTraceCON dgm
-   :links: AV/OpenFLAP/tape.js AV/VisFormalLang/FA/OddNumbersTraceCON.css
+   :links: DataStructures/FLA/tape.js AV/VisFormalLang/FA/OddNumbersTraceCON.css
    :scripts: AV/VisFormalLang/FA/OddNumbersTraceCON.js
    :align: center
 

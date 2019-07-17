@@ -11,7 +11,6 @@ $(document).ready(function() {
   av.umsg("Let's see a step-by-step conversion of an NFA to a DFA.");
   av.displayInit();
 
-  var dfa = FiniteAutomaton.convertNFAtoDFA(av, fa, {left: nfaWidth + 50, top: 0, width: 500, height: 350}, true);
-  dfa.disableDragging();
+  FiniteAutomaton.convertNFAtoDFA(av, fa, {left: nfaWidth + 50, top: 0, width: 500, height: 350}, true);
   av.recorded();
 });

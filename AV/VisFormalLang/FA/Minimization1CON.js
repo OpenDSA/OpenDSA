@@ -1,5 +1,4 @@
 /*global FiniteAutomaton*/
-document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
 
 $(document).ready(function() {
   "use strict";
@@ -13,8 +12,7 @@ $(document).ready(function() {
   var minm = new Minimizer();
   av.displayInit();
   var newGraphDimensions = {top: 280, left: 535, width: 400, height: 250};
-  var minimizedDFA = minm.minimizeDFA(av, dfa, mytree, newGraphDimensions);
-  minimizedDFA.disableDragging();
-  //dfa.disableDragging();
+  minm.minimizeDFA(av, dfa, mytree, newGraphDimensions);
+
   av.recorded();
 });
