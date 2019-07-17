@@ -268,8 +268,8 @@ minimizer.done = function(newGraphDimensions) {
 								left: newGraphDimensions.left, 
 								top: newGraphDimensions.top});
 	for (var i = 0; i < leaves.length; i ++) {
-		var node = graph.addNode();
-		node.stateLabel(leaves[i]);
+		var node = graph.addNode({value:leaves[i]});
+		//node.stateLabel(leaves[i]);
 		var leaf = leaves[i].split(',');
 		for (var j = 0; j < leaf.length; j++) {
 			var n = this.referenceGraph.getNodeWithValue(leaf[j]);
@@ -293,10 +293,10 @@ minimizer.done = function(newGraphDimensions) {
 			node1, 
 			node2;
 		for (var next2 = nodes.next(); next2; next2 = nodes.next()) {
-			if (next2.stateLabel().split(',').indexOf(ns) !== -1) {
+			if (next2.value().split(',').indexOf(ns) !== -1) {
 				node1 = next2;
 			} 
-			if (next2.stateLabel().split(',').indexOf(ne) !== -1) {
+			if (next2.value().split(',').indexOf(ne) !== -1) {
 				node2 = next2;
 			}
 		}
@@ -357,9 +357,10 @@ var listOFNodesToString = function(nodeListAsString){
 var latixifyNodeName = function(nodeListAsString){
 	var re = /q\d+/g;
 	var listOfNodes = nodeListAsString.match(re);
-	listOfNodes.map( function(node) {
-		nodeListAsString = nodeListAsString.replace(node, '$' + node.slice(0, 1) + '_{' + node.slice(1) + '}$');
-   })
+	if(listOfNodes)
+		listOfNodes.map( function(node) {
+			nodeListAsString = nodeListAsString.replace(node, '$' + node.slice(0, 1) + '_{' + node.slice(1) + '}$');
+   		})
    return nodeListAsString;
 }
 

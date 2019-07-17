@@ -2,33 +2,33 @@
 	<type>fa</type>
 	<automaton>
 		<!--The list of states.-->
-		<state id="0" name="q0">
+		<state id="0" name="A">
 			<x>41.0</x>
 			<y>42.0</y>
 			<initial/>
 		</state>
-		<state id="1" name="q1">
+		<state id="1" name="B">
 			<x>173.0</x>
 			<y>86.0</y>
 		</state>
-		<state id="2" name="q2">
+		<state id="2" name="C">
 			<x>362.0</x>
 			<y>42.0</y>
 			<final/>
 		</state>
-		<state id="3" name="q3">
+		<state id="3" name="D">
 			<x>52.0</x>
 			<y>203.0</y>
 		</state>
-		<state id="4" name="q4">
+		<state id="4" name="E">
 			<x>147.0</x>
 			<y>145.0</y>
 		</state>
-		<state id="5" name="q5">
+		<state id="5" name="F">
 			<x>351.0</x>
 			<y>147.0</y>
 		</state>
-		<state id="6" name="q6">
+		<state id="6" name="G">
 			<x>458.0</x>
 			<y>228.0</y>
 		</state>

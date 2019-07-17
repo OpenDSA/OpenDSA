@@ -166,7 +166,12 @@ automatonproto.initFromParsedJSONSource = function(source, ratio) {
 		this.removeNode(next);
 	}
 	for (var i = 0; i < source.nodes.length; i++) {
-		var node = this.addNode('q' + i),
+		var nodeName;
+		if(source.names)
+			nodeName = source.names[i];
+		else
+		nodeName = 'q' + i;
+		var node = this.addNode({value:nodeName}),
 				offset = $('.jsavgraph').offset(),
 				offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
 		var topOffset = parseInt(source.nodes[i].top) + offset.top + offset2;

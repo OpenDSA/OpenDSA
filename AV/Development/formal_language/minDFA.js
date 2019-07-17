@@ -45,7 +45,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		else if(type == 'Exercise')
 		{
 			var source = opts.graph;
-			referenceGraph = jsav.ds.fa({width: "45%", height: 440, layout: "manual", element: $("#reference")});
+			referenceGraph = jsav.ds.FA({width: "45%", height: 440, layout: "manual", element: $("#reference")});
 			referenceGraph.initFromParsedJSONSource(source, 0.5);
 			referenceGraph.updateAlphabet();
 			alphabet = Object.keys(referenceGraph.alphabet).sort();
@@ -62,7 +62,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 
 	function deserialize (data) {
 		var gg = jQuery.parseJSON(data);
-		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
+		var graph = jsav.ds.FA({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
 		graph.initFromParsedJSONSource(gg, 0.5);
 		graph.updateAlphabet();
 		alphabet = Object.keys(graph.alphabet).sort();
@@ -152,10 +152,10 @@ if computational complexity is a concern, should be changed to use a union-find 
 		$('.hide').show();
 		$('#exportbutton').hide();
 		$('#editable').empty();
-		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'automatic', element: $('#editable')});
+		var graph = jsav.ds.FA({width: '45%', height: 440, layout: 'automatic', element: $('#editable')});
 		for (var i = 0; i < leaves.length; i ++) {
-			var node = graph.addNode();
-			node.stateLabel(leaves[i]);
+			var node = graph.addNode({value:leaves[i]});
+			//node.stateLabel(leaves[i]);
 			var leaf = leaves[i].split(',');
 			for (var j = 0; j < leaf.length; j++) {
 				var n = referenceGraph.getNodeWithValue(leaf[j]);
@@ -179,10 +179,10 @@ if computational complexity is a concern, should be changed to use a union-find 
 				node1, 
 				node2;
 			for (var next2 = nodes.next(); next2; next2 = nodes.next()) {
-				if (next2.stateLabel().split(',').indexOf(ns) !== -1) {
+				if (next2.value().split(',').indexOf(ns) !== -1) {
 					node1 = next2;
 				} 
-				if (next2.stateLabel().split(',').indexOf(ne) !== -1) {
+				if (next2.value().split(',').indexOf(ne) !== -1) {
 					node2 = next2;
 				}
 			}
