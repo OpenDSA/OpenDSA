@@ -69,11 +69,11 @@
 
 	"Indexing/twoThreeTree":{
 },
-
+=======
       "BTRecurTutor/BSTCheck": {}, 
       "Indexing/TwoThreeTree": {
       },
-
+>>>>>>> 56d48daab784568f5da1afc4e3df211fc860ef11
       "Indexing/BTree": {
       },
 "Indexing/BTreeTest": {
