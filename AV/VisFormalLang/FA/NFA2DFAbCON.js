@@ -4,9 +4,7 @@ $(document).ready(function() {
   var av_name = "NFA2DFAbCON";
   var av = new JSAV(av_name, {animationMode: "none"});
   var url = "../../../AV/VisFormalLang/FA/Machines/NFA2DFAexample2.jff";
-  var dfa = new av.ds.FA();
-  FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(dfa, url);
-  dfa.disableDragging();
+  new av.ds.FA({url:url});
   av.displayInit();
   av.recorded();
 });

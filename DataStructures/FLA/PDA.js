@@ -1,4 +1,4 @@
-$(document).ready(function() {
+(function($) {
 var PDA = function(jsav, options) {
   Automaton.apply(this, arguments);
   this.configurations = $("<ul>"); // configurations jQuery object used to setup view at a step
@@ -575,6 +575,7 @@ pda.setupControls = function() {
     $configView.append(t.configViews[t.step]);
   });
 };
+}(jQuery));
 /**********************************************************************************
  * Code form PDAState.js
  */
@@ -582,6 +583,7 @@ pda.setupControls = function() {
   Class for vizualization of a current state in  a pda traversal
   Shows current stack, unreadinput, and the node it represents
   */
+ (function($) {
  function PDAState(jsav, x_coord, y_coord, rect_width, rect_height, input, stack, node) {
     
   this.jsav = jsav;
@@ -616,7 +618,7 @@ PDAStateproto.hide = function() {
   this.nodeViz.hide()
   this.label.hide()
 }
-
+}(jQuery));
 /*****************************************************************
  * Code from formal_lang/fa/Stack.js
  */
@@ -627,6 +629,8 @@ PDAStateproto.hide = function() {
   x_coord is the x-coordinate
   y-coord is the y-coordinate
   */
+(function($) {
+
  function Stack(jsav, element, x_coord, y_coord, max_length, options) {
   this.cell_size = 30;
 

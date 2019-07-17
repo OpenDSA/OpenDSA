@@ -4,9 +4,7 @@ $(document).ready(function() {
   var av_name = "EvenBinaryEvenOnesDFACON";
   var av = new JSAV(av_name, {animationMode: "none"});
   var url = "../../../AV/VisFormalLang/FA/Machines/EvenBinaryEvenOnesDFA.jff";
-  var BinaryDFA = new av.ds.FA({center: true});
-  FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA, url);
-  BinaryDFA.disableDragging();
+  new av.ds.FA({center: true, url:url});
   av.displayInit();
   av.recorded();
 });

@@ -1345,6 +1345,70 @@ var toColonForm = function(string) {
 	re = re.replace(/;/g, ":");
 	return re;
 }
+
+
+// function to toggle the intitial state of a node
+// appears as a button in the right click menu
+var toggleInitial = function(g, node) {
+	$("#rmenu").hide();
+	node.unhighlight();
+	if (node.equals(g.initial)) {
+	  g.removeInitial(node);
+	}
+	else {
+	  if (g.initial) {
+		alert("There can only be one intial state!");
+	  } else {
+		g.makeInitial(node);
+	  }
+	}
+  };
+  
+  // function to toggle the final state of a node
+  // appears as a button in the right click menu
+  var toggleFinal = function(g, node) {
+	if (node.hasClass("final")) {
+	  node.removeClass("final");
+	}
+	else {
+	  node.addClass("final");
+	}
+	$("#rmenu").hide();
+	node.unhighlight();
+  };
+  
+  // function to change the customized label of a node
+  // an option in right click menu
+  var changeLabel = function(node) {
+	$("#rmenu").hide();
+	var nodeLabel = prompt("How do you want to label it?");
+	if (!nodeLabel || nodeLabel == "null") {
+	  nodeLabel = "";
+	}
+	node.stateLabel(nodeLabel);
+	node.stateLabelPositionUpdate();
+	node.unhighlight();
+  }
+  
+  // function to clear the customized label
+  // an option in the right click menu
+  var clearLabel = function(node) {
+	$("#rmenu").hide();
+	node.unhighlight();
+	node.stateLabel("");
+  }
+  
+  // Function to switch which empty string is being used (lambda or epsilon) if a loaded graph uses the opposite representation to what the editor is currently using.
+  var checkEmptyString = function(w) {
+	var wArray = w.split("<br>");
+	// It is necessary to check every transition on the edge.
+	for (var i = 0; i < wArray.length; i++) {
+	  if ((wArray[i] == lambda || wArray[i] == epsilon) && wArray[i] != emptystring) {
+		emptyString();
+	  }
+	}
+	return wArray.join("<br>");
+  };
 window.toColonForm = toColonForm;
 }(jQuery));
 //END of Automaton class
@@ -1361,7 +1425,11 @@ var FiniteAutomaton = function(jsav, options) {
 	Automaton.apply(this, arguments);
   this.configurations = $("<ul>"); // configurations jQuery object used to setup view at a step
   this.configViews = []; // configurations view for a step
-  this.step = 0; // current step the user is at, used for changing configuration display          
+  this.step = 0; // current step the user is at, used for changing configuration display      
+  if(options.url){ //load the machine from the file
+	this.loadFAFromJFLAPFile(options.url);
+	this.disableDragging();
+  }    
 }
 
 JSAV.ext.ds.FA = function (options) {
@@ -1618,69 +1686,6 @@ var dfs = function (visited, node, options) {
 
 
 
-// function to toggle the intitial state of a node
-// appears as a button in the right click menu
-var toggleInitial = function(g, node) {
-  $("#rmenu").hide();
-  node.unhighlight();
-  if (node.equals(g.initial)) {
-    g.removeInitial(node);
-  }
-  else {
-    if (g.initial) {
-      alert("There can only be one intial state!");
-    } else {
-      g.makeInitial(node);
-    }
-  }
-};
-
-// function to toggle the final state of a node
-// appears as a button in the right click menu
-var toggleFinal = function(g, node) {
-  if (node.hasClass("final")) {
-    node.removeClass("final");
-  }
-  else {
-    node.addClass("final");
-  }
-  $("#rmenu").hide();
-  node.unhighlight();
-};
-
-// function to change the customized label of a node
-// an option in right click menu
-var changeLabel = function(node) {
-  $("#rmenu").hide();
-  var nodeLabel = prompt("How do you want to label it?");
-  if (!nodeLabel || nodeLabel == "null") {
-    nodeLabel = "";
-  }
-  node.stateLabel(nodeLabel);
-  node.stateLabelPositionUpdate();
-  node.unhighlight();
-}
-
-// function to clear the customized label
-// an option in the right click menu
-var clearLabel = function(node) {
-  $("#rmenu").hide();
-  node.unhighlight();
-  node.stateLabel("");
-}
-
-// Function to switch which empty string is being used (lambda or epsilon) if a loaded graph uses the opposite representation to what the editor is currently using.
-var checkEmptyString = function(w) {
-  var wArray = w.split("<br>");
-  // It is necessary to check every transition on the edge.
-  for (var i = 0; i < wArray.length; i++) {
-    if ((wArray[i] == lambda || wArray[i] == epsilon) && wArray[i] != emptystring) {
-      emptyString();
-    }
-  }
-  return wArray.join("<br>");
-};
-
 // Function to add final markers to the resulting DFA
 var addFinals = function(g1, g2) {
   var nodes = g1.nodes();
@@ -1777,6 +1782,12 @@ var visualizeConvertToDFA = function(jsav, graph, opts) {
   g.updateNodes();
   return g;
 };
+
+/**
+ * MAke publicly available methods
+ */
+FiniteAutomaton.convertNFAtoDFA = convertToDFA;
+FiniteAutomaton.visualizeConvertNFAtoDFA = visualizeConvertToDFA;
 }(jQuery));
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));

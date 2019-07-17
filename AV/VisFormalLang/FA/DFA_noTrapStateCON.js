@@ -4,9 +4,7 @@ $(document).ready(function() {
   var av_name = "DFA_noTrapStateCON";
   var av = new JSAV(av_name, {animationMode: "none"});
   var url = "../../../AV/VisFormalLang/FA/Machines/DFA_noTrapState.jff";
-  var binaryDFA = new av.ds.FA();
-  FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(binaryDFA, url);
-  binaryDFA.disableDragging();
+  new av.ds.FA({url:url});
   av.displayInit();
   av.recorded();
 });

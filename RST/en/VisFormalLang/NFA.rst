@@ -43,8 +43,8 @@ transitions to more than one state.
 **Example**:
 
 .. inlineav:: NFAexampleCON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFAexampleCON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFAexampleCON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFAexampleCON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFAexampleCON.js
    :align: center
 
    Example of NFA
@@ -62,8 +62,8 @@ effectively giving us the union of two languages:
 :math:`L = \{(ab)^n \mid n>0\} \cup \{a^nb \mid n>0\}`.
 
 .. inlineav:: NFAexample2CON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFAexample2CON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFAexample2CON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFAexample2CON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFAexample2CON.js
    :align: center
 
    Second Example of NFA:
@@ -110,8 +110,8 @@ NFA vs. DFA: Which is more powerful?
 Consider the following NFA.
 
 .. inlineav:: NFA2DFAaCON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFACON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAaCON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFACON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFAaCON.js
    :align: center
 
    An NFA.
@@ -128,8 +128,8 @@ Yes, because here is one. Note that the names of the states are chosen
 to help see their relationships to the original NFA.
 
 .. inlineav:: NFA2DFAbCON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFACON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAbCON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFACON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFAbCON.js
    :align: center
 
    A DFA that accepts the same language.
@@ -203,8 +203,8 @@ That would be members of the powerset of :math:`M_D` states.
 **Example**:
 
 .. inlineav:: NFA2DFAEx2aCON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAEx2aCON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFAEx2aCON.js
    :align: center
 
    Another NFA to convert
@@ -229,8 +229,8 @@ letter :math:`a`. This would be the subset :math:`q_3,q_4`.
 **Answer**:
 
 .. inlineav:: NFA2DFAEx2bCON dgm
-   :links: AV/Development/formal_language/css/FA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
-   :scripts: AV/Development/formal_language/fa/Automaton.js AV/Development/formal_language/fa/FA.js AV/VisFormalLang/FA/NFA2DFAEx2bCON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFAEx2bCON.js
    :align: center
 
    Converted DFA
