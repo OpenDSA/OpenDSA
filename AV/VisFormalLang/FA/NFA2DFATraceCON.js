@@ -1,5 +1,4 @@
 /*global FiniteAutomaton, convertToDFA*/
-document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
 $(document).ready(function() {
   "use strict";
   var av_name = "NFA2DFATraceCON";

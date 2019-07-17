@@ -237,7 +237,7 @@ letter :math:`a`. This would be the subset :math:`q_3,q_4`.
 
 .. inlineav:: NFA2DFATraceCON ss
    :links: AV/VisFormalLang/FA/NFA2DFATraceCON.css
-   :scripts: DataStructures/PIFrames.js AV/VisFormalLang/FA/NFA2DFATraceCON.js
+   :scripts: AV/VisFormalLang/FA/NFA2DFATraceCON.js lib/underscore.js
    :output: show
 
 
