@@ -179,7 +179,7 @@ approach to proving such things!)
 
 .. inlineav:: REtoMinimizedDFACON ss
    :links:   AV/VisFormalLang/RegularExpressions/REtoMinimizedDFACON.css
-   :scripts: AV/VisFormalLang/RegularExpressions/REtoMinimizedDFACON.js
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/RegularExpressions/REtoMinimizedDFACON.js lib/paper-core.min.js DataStructures/FLA/REtoFAController.js lib/underscore.js DataStructures/FLA/Discretizer.js
    :output: show
   
 

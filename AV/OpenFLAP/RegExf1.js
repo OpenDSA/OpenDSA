@@ -1,6 +1,3 @@
-document.write('<script src="../../../AV/Development/formal_language/fa/Automaton.js"></script>');
-document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"></script>');
-
 $(document).ready(function() {
   "use strict";
 
@@ -10,7 +7,7 @@ $(document).ready(function() {
   interpret = config.interpreter;
   var url = interpret("regexp1");
 
-  var BinaryDFA = new av.ds.fa();
+  var BinaryDFA = new av.ds.FA();
   FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA,url);
   BinaryDFA.disableDragging();
   av.displayInit();

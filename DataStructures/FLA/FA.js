@@ -1788,7 +1788,7 @@ var visualizeConvertToDFA = function(jsav, graph, opts) {
  * MAke publicly available methods
  */
 FiniteAutomaton.convertNFAtoDFA = convertToDFA;
-FiniteAutomaton.DepthFirstSearch = dfs;
+window.FADepthFirstSearch = dfs;
 }(jQuery));
 /*
 ****************************************************************************
@@ -2253,3 +2253,957 @@ var willReject = function (graph, inputString) {
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
+
+
+/*********************************************
+ * FAtoGrammarConverter
+ */
+(function($) {
+	var FAtoGrammarConverter = function(jsav, FA) {
+		this.init(jsav, FA);
+	  };
+	  window.FAtoGrammarConverter = FAtoGrammarConverter;
+	  var controllerProto = FAtoGrammarConverter.prototype;
+	  
+	  controllerProto.init = function(jsav, FA) {
+		  this.jsav = jsav;
+		  this.FA = FA;
+	  }
+	  controllerProto.convertToGrammar = function (grammarMatrix) {
+		// by default sets S to be the start variable
+		var variables = "SABCDEFGHIJKLMNOPQRTUVWXYZ";
+		var s = this.FA.initial;
+		var newVariables = [s];
+		var nodes = this.FA.nodes();
+		var arrow = String.fromCharCode(8594);
+		var converted = [];
+		var matrixIndex = 0;
+		// quit if the FA is too large for conversion
+		if (this.FA.nodeCount() > 26) {
+			window.alert('The FA must have at most 26 states to convert it into a grammar!');
+			return;
+		}
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			if (!next.equals(s)) {
+				newVariables.push(next);
+			}
+		}
+		var finals = [];
+		this.jsav.step();
+		this.jsav.umsg("Now we need to check every state and transition to determine grammar productions.");
+		for (var i = 0; i < newVariables.length; i++) {
+			var edges = newVariables[i].getOutgoing();
+			this.jsav.step();
+			if(i>0){
+				newVariables[i - 1].unhighlight();     
+				newVariables[i - 1].getOutgoing().map(function(edge){
+					edge.removeClass("testingLambda");
+					edge._label.removeClass("testingLambda");
+				});
+			}
+			this.jsav.umsg("For state: " + newVariables[i].value() + ", there " + ((edges.length>1)? "are ": "is ") + edges.length + " transition" + ((edges.length>1)?"s": ""));
+			newVariables[i].highlight();
+			for (var j = 0; j < edges.length; j++) {
+				var toVar = variables[newVariables.indexOf(edges[j].end())];
+				var weight = edges[j].weight().split("<br>");
+				newVariables[i].getOutgoing().map(function(edge){
+					edge.addClass("testingLambda");
+					edge._label.addClass("testingLambda");
+				});
+				for (var k = 0; k < weight.length; k++) {
+					var terminal = weight[k];
+					if (weight[k] === emptystring) {
+						terminal = "";
+					}
+					converted.push([variables[i], arrow, terminal + toVar]);
+					grammarMatrix.value(matrixIndex, 0 , variables[i]);
+					grammarMatrix.value(matrixIndex, 2, terminal + toVar);
+					grammarMatrix._arrays[matrixIndex++].show();
+					
+				}
+			}
+			if (newVariables[i].hasClass('final')) {
+				this.jsav.step();
+				this.jsav.umsg("Since " + variables[i] + " is the final state, we need to add a new transition with "+ emptystring);
+				finals.push([variables[i], arrow, emptystring]);
+				grammarMatrix.value(matrixIndex, 0 , variables[i]);
+				grammarMatrix.value(matrixIndex, 2, emptystring);
+				grammarMatrix._arrays[matrixIndex].show();
+			}
+		}
+		newVariables[newVariables.length - 1].unhighlight();     
+		newVariables[newVariables.length - 1].getOutgoing().map(function(edge){
+			edge.removeClass("testingLambda");
+			edge._label.removeClass("testingLambda");
+		});
+		converted = converted.concat(finals);
+		// save resulting grammar as an array of arrays of strings
+		// (same format as how the grammarEditor reads grammars)
+	   
+		return JSON.stringify(converted);
+	};
+}(jQuery));
+
+
+/*********************************************
+ * FAtoREController
+ */
+(function($) {
+	var lambda = String.fromCharCode(955), // Instance variable to store the JavaScript representation of lambda.
+    //jsav = new JSAV("av"),
+    epsilon = String.fromCharCode(949), // Instance variable to store the JavaScript representation of epsilon.
+    none = String.fromCharCode(248), // empty set symbol used for converting to RE
+    emptystring = lambda,
+    collapseStateTable, // table that shows relevant transitions of a collapsed node
+    //g, //reference graph
+    transitions;
+
+var FAtoREController = function(jsav, fa, options) {
+  this.init(jsav, fa, options);
+};
+window.FAtoREController = FAtoREController;
+var controllerProto = FAtoREController.prototype;
+
+controllerProto.init = function(jsav, fa, options) {
+  this.jsav = jsav;
+  this.fa = fa;
+  this.visualize = false;
+};
+
+controllerProto.checkForTransitions = function() {
+  var edgesNum = this.fa.edges().length;
+  var nodesNum = this.fa.nodes().length;
+  if (edgesNum == nodesNum * nodesNum) {
+    if(this.visualize == false){
+    $("#collapseButton").show();
+    $("#finalize").show();
+    $("#cheat").hide();
+    $("#edgeButton").hide();
+    $(".jsavgraph").removeClass("addEdges");
+    //this.jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
+    $("p").text("Use collapse state tool to remove nonfinal, noninitial states.");
+    }
+    if (this.fa.nodes().length == 2) this.generateExpression();
+  }
+};
+
+// change ...<br>... to (...+...)
+// add parentheses to the ones with + sign
+function normalizeTransitionToRE(transition, last) {
+//  var arr = transition.split("<br>");
+//  if (arr.length == 1) {
+//    return transition;
+//  }
+//  if (arr.length == 0 && last) return re;
+//  var re = "(" + arr[0];
+//  for (var i = 1; i < arr.length; i++) {
+//    re += "+" + arr[i];
+//  }
+//  re += ")";
+//  return re;
+//}
+  if (needParentheses(transition)) {
+    return addParentheses(transition);
+  }
+  return transition;
+}
+
+function transitionsTableHandler(row, col, e) {
+  var fa = this.element.data("fa");
+  for (var i = 0; i < transitions._arrays.length; i++) {
+    transitions.unhighlight(i);
+  }
+  transitions.highlight(row);
+  var edges = fa.edges();
+  for (var edge = edges.next(); edge; edge = edges.next()) {
+    edge.element.removeClass("testingLambda");
+    edge._label.element.removeClass("testingLambda");
+  }
+  var table = collapseStateTable;
+  var from = fa.getNodeWithValue(table[row][0]);
+  var to = fa.getNodeWithValue(table[row][1]);
+  var direct = fa.getEdge(from, to);
+  var step1 = fa.getEdge(from, fa.selected);
+  var step2 = fa.getEdge(fa.selected, fa.selected);
+  var step3 = fa.getEdge(fa.selected, to);
+  direct.element.addClass("testingLambda");
+  step1.element.addClass("testingLambda");
+  step2.element.addClass("testingLambda");
+  step3.element.addClass("testingLambda");
+  direct._label.element.addClass("testingLambda");
+  step1._label.element.addClass("testingLambda");
+  step2._label.element.addClass("testingLambda");
+  step3._label.element.addClass("testingLambda");
+}
+
+controllerProto.collapseState = function(node, transitionOptions) {
+  if (!node) {
+    $(".jsavgraph").addClass("collapse2");
+    $(".jsavgraph").removeClass("editNodes");
+    return;
+  }
+  if (localStorage.trans === "true") {
+    return;
+  }
+  var table = [];
+  var nodes1 = this.fa.nodes();
+  var nodes2 = this.fa.nodes();
+  for (var from = nodes1.next(); from; from = nodes1.next()) {
+    nodes2.reset();
+    for (var to = nodes2.next(); to; to = nodes2.next()) {
+      if (from == this.fa.selected || to == this.fa.selected) continue;
+      var straight = this.fa.getEdge(from, to).weight();
+      var begin = this.fa.getEdge(from, node).weight();
+      var pause = this.fa.getEdge(node, node).weight();
+      var end = this.fa.getEdge(node, to).weight();
+      var indirect = "";
+
+      //var direct = normalizeTransitionToRE(straight);
+      var direct = straight;
+      if (begin == none || end == none) {
+        table.push([from.value(), to.value(), direct]);
+      }			else {
+//        var step1 = normalizeTransitionToRE(begin);
+//        var step2 = normalizeTransitionToRE(pause);
+//        var step3 = normalizeTransitionToRE(end);
+        var step1 = begin;
+        var step2 = pause;
+        var step3 = end;
+        if (step2 == none || step2 == lambda) {
+          if (step1 == lambda) {
+            indirect = step3;
+          }					else if (step3 == lambda) {
+            indirect = step1;
+          }					else {
+            indirect = step1 + step3;
+          }
+        }				else if (step1 == lambda && step3 == lambda) {
+          indirect = addStar(step2);
+        }					else if (step1 == lambda) {
+          indirect = addStar(step2) + step3;
+        }					else if (step3 == lambda) {
+          indirect = step1 + addStar(step2);
+        }					else {
+          indirect = step1 + addStar(step2) + step3;
+        }
+        if (direct == none) {
+          table.push([from.value(), to.value(), indirect]);
+        }				else {
+          table.push([from.value(), to.value(), direct + "+" + indirect]);
+        }
+      }
+    }
+  }
+  collapseStateTable = table;
+
+//  $dialog = $("#dialog");
+ // var tav = new JSAV("dialog2");
+//  if (transitions) transitions.clear();
+  if (transitions) delete transitions;
+  localStorage.setItem("trans", "true");
+  if(this.visualize)
+  transitions = this.jsav.ds.matrix(table, {left: transitionOptions.left, style: "table"});
+  else
+    transitions = this.jsav.ds.matrix(table, {style: "table", element: $("#TransitionTable")});
+  transitions.element.data({fa: this.fa});
+  transitions.click(transitionsTableHandler);
+  if(this.visualize == false)
+    $("p").text("Click Finalize to complete state removal.");
+//  $dialog.dialog({
+//    dialogClass: "no-close",
+//    width: 10,
+//    maxHeight: 800
+//  });
+//  $dialog.dialog("open");
+this.transitions = transitions;
+};
+
+// add empty transitions to states without transitions to each other
+controllerProto.completeTransitions = function() {
+  var nodes1 = this.fa.nodes();
+  var nodes2 = this.fa.nodes();
+  for (var from = nodes1.next(); from; from = nodes1.next()) {
+    for (var to = nodes2.next(); to; to = nodes2.next()) {
+      if (!this.fa.hasEdge(from, to)) {
+        this.fa.addEdge(from, to, {weight: none});
+      }
+    }
+    nodes2.reset();
+  }
+  this.checkForTransitions();
+};
+
+// closes the transitions box and update FA
+controllerProto.finalizeRE = function() {
+  if (localStorage.trans !== "true") {
+    alert("You need to select the state collapser button and click on a noninitial, nonfinal node before you can click finalize.");
+    return;
+  }
+  //$("#dialog").dialog("close");
+  $("#TransitionTable").empty();
+  if(this.visualize == false)
+  $("p").text("Use collapse state tool to remove nonfinal, noninitial states.");
+  localStorage.removeItem("trans");
+
+  var table = collapseStateTable;
+  for (var i = 0; i < table.length; i++) {
+    var row = table[i];
+    var from = this.fa.getNodeWithValue(row[0]);
+    var to = this.fa.getNodeWithValue(row[1]);
+    var newTransition = row[2];
+    this.fa.removeEdge(from, to);
+    this.fa.addEdge(from, to, {weight: newTransition});
+  }
+  this.fa.removeNode(this.fa.selected);
+  if (this.fa.nodes().length == 2) {
+    this.generateExpression();
+  }
+};
+
+// get the RE from last two states;
+controllerProto.generateExpression = function() {
+  var from = this.fa.initial;
+  var to = this.fa.getFinals()[0];
+  var fromm = normalizeTransitionToRE(this.fa.getEdge(from, from).weight());
+  var fromTo = normalizeTransitionToRE(this.fa.getEdge(from, to).weight(), true);
+  var toFrom = normalizeTransitionToRE(this.fa.getEdge(to, from).weight());
+  var too = normalizeTransitionToRE(this.fa.getEdge(to, to).weight());
+  var cycle = "",
+      target = "",
+      expression = "";
+  if (fromTo == none) {
+    expression = none;
+  } else if (toFrom == none) {
+    //cycle = "";
+    if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
+      expression = fromTo;
+    } else if (fromm == none || fromm == lambda) {
+      if (too.length > 1) {
+        expression = fromTo + addStar(too);
+      } else {
+        expression = fromTo + too + "*";
+      }
+    } else if (too == none || too == lambda) {
+      if (fromm.length > 1) {
+        expression = addStar(fromm) + fromTo;
+      } else {
+        expression = fromm + "*" + fromTo;
+      }
+    } else if (fromm.length > 1 && too.length > 1) {
+      expression = addStar(fromm) + fromTo + addStar(too);
+    } else if (fromm.length > 1) {
+      expression = addStar(fromm) + fromTo + too + "*";
+    } else if (too.length > 1) {
+      expression = fromm + "*" + fromTo + addStar(too);
+    } else {
+      expression = fromm + "*" + fromTo + too + "*";
+    }
+  } else {
+    //cycle = something;
+    if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
+      cycle = addStar(fromTo + toFrom);
+      target = fromTo;
+    } else if (fromm == none || fromm == lambda) {
+      cycle = addStar(fromTo + addStar(too) + toFrom);
+      target = fromTo + addStar(too);
+    } else if (too == none || too == lambda) {
+      cycle = addStar(addStar(fromm) + fromTo + toFrom);
+      target = addStar(fromm) + fromTo;
+    } else {
+      cycle = addStar(addStar(fromm) + fromTo + addStar(too) + toFrom);
+      target = addStar(fromm) + fromTo + addStar(too);
+    }
+    expression = cycle + target;
+  }
+  if(this.visualize == false){
+  $("p").text("Generalized transition graph finished! Expression: " + expression + ". Click Export to open the regular expression in a new window.");
+  $("#finalize").hide();
+  $("#exportButton").show();
+  $("#exportButton").click(function() {
+    exportToRE(expression);
+  });
+}
+return expression;
+};
+
+function exportToRE(expression) {
+  localStorage.expression = expression;
+  window.open("./REtoFA.html");
+}
+
+// add star if needed for transitions
+function addStar(transition) {
+  if (transition.length == 1) return transition + "*";
+  var count = 0;
+  if (transition.charAt(0) !== "(") return "(" + transition + ")*";
+  for (var i = 0; i < transition.length; i++) {
+    if (transition.charAt(i) == "(") count++;
+    else if (transition.charAt(i) == ")") count--;
+    if (count == 0 && i < transition.length - 1) return "(" + transition + ")*";
+  }
+  return transition + "*";
+}
+
+//returns true if word needs parentheses (if it is an "+" (OR) expression)
+function needParentheses(word) {
+  for (var i = 0; i < word.length; i++) {
+    if (word.charAt(i) === "+") {
+      return true;
+    }
+  }
+  return false;
+}
+
+function addParentheses(word) {
+  return "(" + word + ")";
+}
+
+controllerProto.visualizeConversion = function(transitionOptions = {}, finaGraphOptions = {}){
+  this.visualize = true;
+  this.jsav.step();
+  this.jsav.umsg("We need to complete all the missing tansitions for this Machine");
+  this.completeTransitions();
+  var nodes = getAllNonStartNorFinalStates(this.fa);
+  for (var i = 0; i< nodes.length; i++){
+    this.jsav.step();
+    this.jsav.umsg("We should collapse the node " + nodes[i].value());
+    localStorage.trans = 'false';
+    nodes[i].highlight();
+    this.fa.selected = nodes[i];
+    this.collapseState(nodes[i], transitionOptions);
+    this.jsav.step();
+    this.jsav.umsg("You can click on each table row to heighlight the affected transitions.");
+    nodes[i].unhighlight();
+    this.jsav.step();
+    this.jsav.umsg("Removing the node " + nodes[i].value() + " will create an new but equivalent graph");
+    this.finalizeRE();
+  }
+  this.jsav.step();
+  this.jsav.umsg("After removing all nodes that are not fianl and not start, the resulting Regular Exepression is");
+  this.transitions.hide();
+  drawTheFinalGraph(this.jsav, finaGraphOptions, this.generateExpression());
+}
+function getAllNonStartNorFinalStates(graph){
+  var listOfNodes = graph.nodes();
+  var results = [];
+  listOfNodes.map(function(node){
+    if(!node.hasClass("final") && !node.hasClass("start"))
+      results.push(node);
+  });
+  return results;
+}
+
+function drawTheFinalGraph(jsav, options, expression)
+{
+  var fa = jsav.ds.fa($.extend(options));
+	var start = fa.addNode({left: '15px'});
+	var height = options.height || 440;
+	var width = options.width || 750;
+	var end = fa.addNode({left: width - 10, top: height - 40});
+	fa.makeInitial(start);
+	fa.makeFinal(end);
+  var t = fa.addEdge(start, end, {weight: expression});
+  return fa;
+}
+}(jQuery));
+
+
+/*********************************************
+ * tape.js
+ */
+(function($) {
+	// Support for creating tapes for autometa visualization. (extends JSAV array class)
+// Written by Ziyou Shang, Kaiyang Zhang, Galina Belolipetski
+	"use strict";
+	if (typeof JSAV === "undefined") { return; }
+  
+	/*
+	Tape class implementation
+	Extended from the JSAV array class.
+	element is an array with values to put into the tape
+	x_coord is the x-coordinate
+	y-coord is the y-coordinate
+	direction is the side to put the "infinite" sign, with choice of "none", "left", "right", or "both"
+	*/
+	var Tape = function(jsav, element, x_coord, y_coord, direction, index, options) {
+	  // constant to calculate position to draw the "infinite" sign
+	  var cell_size = 30;
+  
+	  // set the constructors
+	  this.jsav = jsav;
+	  this.x_coord = x_coord; //x coordinate of placement
+	  this.y_coord = y_coord; //y coordinate of placement
+	  this.direction = direction; // in which direction tape extends
+	  this.options = options;
+	  this.current = index; //the location to highlight
+	  this.arr = null;
+  
+	  if ($.isArray(element)) {
+		// x & y control
+		var right = x_coord + element.length * cell_size; //topright
+  
+		//default position of array's top center and call JSAV array constructor
+		var left_arr = String(x_coord) + "px";
+		var top_arr = String(y_coord - 16) + "px";
+		this.arr = jsav.ds.array(element, {left: left_arr, top: top_arr});
+  
+		//unhighlights everything
+		for (var i = 0; i < this.arr.size(); i++) {
+		  this.arr.unhighlight(i);
+		}
+		if (this.current > -1 && this.current < this.arr.size()) {
+		  this.arr.highlight(this.current); //highlights the current position
+		}
+  
+		//right and left points to draw the "infinite sign" with poly-lines
+		var points = [[-5, 0], [15, 0], [11, 3], [21, 7], [5, 12], [9, 20], [28, 28], [-5, 28]];
+		var points_l = [[-5, 0], [15, 0], [11, 3], [21, 7], [5, 12], [9, 20], [28, 28], [-5, 28]];
+  
+  
+		var highlightLeft = (this.current === -1);
+		var highlightRight = (this.current >= this.arr.size());
+  
+		if (direction === "right") { plot_right(jsav, right, y_coord, points, highlightRight); }
+		if (direction === "left") { plot_left(jsav, x_coord, y_coord, points_l, highlightLeft); }
+		if (direction === "both") { plot_right(jsav, right, y_coord, points, highlightRight); plot_left(jsav, x_coord, y_coord, points_l, highlightLeft); }
+  
+		// change the style (shape) of the JSAV array class
+		//this.arr.css(true, {"border-radius": "0px"});
+	  }
+	}
+  
+	// extend JSAV array class
+	JSAV.utils.extend(Tape, JSAV._types.ds.AVArray);
+  
+	// function to draw right "infinite" tape sign
+	function plot_right(jsav, right, y_coord, points, highlightRight) {
+	  for (var i = 0; i < points.length; i++) {
+		points[i][0] += right;
+		points[i][1] += y_coord;
+	  }
+	  var poly;
+	  if (highlightRight) {
+		poly = jsav.g.polyline(points, {"stroke-width": 2, stroke: "#ff7"});
+	  } else {
+		poly = jsav.g.polyline(points, {"stroke-width": 2});
+	  }
+	  poly.show();
+	}
+  
+	// function to draw left "infinite" tape sign
+	function plot_left(jsav, x_coord, y_coord, points_l, highlightLeft) {
+	  for (var i = 0; i < points_l.length; i++) {
+		points_l[i][0] = x_coord - points_l[i][0];
+		points_l[i][1] = y_coord + points_l[i][1];
+	  }
+	  var poly_l;
+	  if (highlightLeft) {
+		poly_l = jsav.g.polyline(points_l, {"stroke-width": 2, stroke: "#ff7"});
+	  } else {
+		poly_l = jsav.g.polyline(points_l, {"stroke-width": 2});
+	  }
+  
+	  poly_l.show();
+	}
+	var proto = Tape.prototype;
+  
+	//attempt to highlight a particular position, but need access to the tape arr object
+	//not necessary, but kept here for the future; this method can be used if the
+	// tape does not have an initial highlighed location passed in
+	// unhighlights everything and highlights the necessary position
+	proto.highlightPosition = function(loc) {
+	  if (this.current !== "undefined") {
+		for (var i = 0; i < this.arr.size(); i++) {
+		  this.arr.unhighlight(i);
+		}
+	  }
+	  if (loc !== "undefined") {
+		this.arr.highlight(loc);
+	  }
+	};
+  
+	// Add the Tape constructor to the public facing JSAV interface.
+	JSAV.ext.ds.tape = function(element, x_coord, y_coord, direction, options) {
+	  return new Tape(this, element, x_coord, y_coord, direction, options);
+	};
+	JSAV._types.ds.Tape = Tape;
+}(jQuery));
+
+/**********************************
+ * Minimizer.js
+ */
+
+(function($) {
+	var Minimizer = function() {
+	}
+	
+	var minimizer = Minimizer.prototype;
+	window.Minimizer = Minimizer;
+	minimizer.minimizeDFA = function(jsav, referenceGraph, tree, newGraphDimensions){
+		this.init(jsav, referenceGraph, tree);
+		var listOfVisitedLeaves = [];
+		var listOfLeaves = this.getLeaves(this.tree.root());
+		var leaf;
+		var moreToSplit = true;
+		this.jsav.umsg("Now we will test the terminals against the states in that subset to see if they all go to the same subset. Split them up when they do not go to the same place.")
+		while(moreToSplit){
+			moreToSplit = null;
+		for(var i = 0; i< listOfLeaves.length; i++){
+			listOfVisitedLeaves = listOfVisitedLeaves.concat(listOfLeaves);
+			this.jsav.step();
+			this.unhighlightAllTreeNodes(this.tree);
+			this.unhighlightAll(this.referenceGraph);
+			leaf = listOfLeaves[i];
+			var leafTreeNode = getTreeNode(leaf, this.tree.root());
+			leafTreeNode.highlight();
+			var split = this.autoPartition(leaf);
+			if(moreToSplit !== null)
+				moreToSplit =  split || moreToSplit;
+			else
+				moreToSplit = split;
+		}
+		listOfLeaves = _.difference(this.getLeaves(this.tree.root()), listOfVisitedLeaves);
+		}
+		this.jsav.step();
+		this.unhighlightAllTreeNodes(this.tree);
+		this.unhighlightAll(this.referenceGraph);
+		this.jsav.umsg("Since we do not have any more splits, the resulting tree represents the nodes in the minimized DFA.");
+		this.jsav.step();
+		return this.done(newGraphDimensions);
+	}
+	minimizer.init = function(jsav, referenceGraph, tree) {
+		this.selectedNode = null;
+		this.jsav = jsav;
+		this.referenceGraph = referenceGraph;
+		this.alphabet = Object.keys(this.referenceGraph.alphabet);
+		this.tree = tree;
+		this.finals = [];
+		this.nonfinals = [];
+		this.reachable = [];
+		this.minimizedEdges = {};
+	
+		this.addTrapState();
+		var val = this.getReachable();
+		this.initTree(val);
+		this.jsav.umsg("Initially, the tree will consist of 2 nodes. A node for nonfinal states, and another state for final states.")
+		this.jsav.step();
+		this.jsav.umsg("These are the nonfinal states.")
+		highlightAllNodes(this.nonfinals, this.referenceGraph);
+		getTreeNode(this.nonfinals.sort().join(), this.tree.root()).highlight();
+		this.jsav.step();
+		this.unhighlightAllTreeNodes(this.tree);
+		this.unhighlightAll(this.referenceGraph);
+		this.jsav.umsg("These are the final states.")
+		highlightAllNodes(this.finals, this.referenceGraph);
+		getTreeNode(this.finals.sort().join(), this.tree.root()).highlight();
+		this.jsav.step();
+		this.unhighlightAllTreeNodes(this.tree);
+		this.unhighlightAll(this.referenceGraph);
+	}
+	
+	// minimizing DFA needs a complete FA, so this function adds trap states
+	minimizer.addTrapState = function() {
+		
+		var nodes = this.referenceGraph.nodes();
+		var trapEdge = this.alphabet.join("<br>");
+		var trapNode;
+		for (var node = nodes.next(); node; node = nodes.next()) {
+			for (var i = 0; i < this.alphabet.length; i++) {
+				var letter = this.alphabet[i];
+				var toNode = this.referenceGraph.transitionFunction(node, letter)[0];
+				if (toNode) continue;
+				if (!trapNode) {
+					this.jsav.step();
+					this.jsav.umsg("Adding a Trap state to the DFA");
+					trapNode = this.referenceGraph.addNode();
+					this.referenceGraph.addEdge(trapNode, trapNode, {weight: trapEdge});
+				}
+				this.referenceGraph.addEdge(node, trapNode, {weight: letter});
+			}
+		}
+		if(trapNode){
+			this.referenceGraph.layout();
+			this.jsav.step();
+		}
+	};
+	
+	// Function to get reachable states from the initial state
+	// returns all reachable states in an array val
+	minimizer.getReachable = function() {
+		var val = [];
+		this.reachable = [this.referenceGraph.initial];
+		FADepthFirstSearch(this.reachable, this.referenceGraph.initial);
+		for (var i = 0; i < this.reachable.length; i++) {
+			val.push(this.reachable[i].value());
+			if (this.reachable[i].hasClass('final')) {
+				this.finals.push(this.reachable[i].value());
+			} else {
+				this.nonfinals.push(this.reachable[i].value());
+			}
+		}
+		return val;
+	}
+	
+	minimizer.initTree = function(val) {
+		this.tree.root(val.sort().join());
+		this.tree.root().child(0, this.nonfinals.sort().join());
+		this.tree.root().child(1, this.finals.sort().join());
+		this.tree.root().child(1).addClass('final');
+		this.tree.layout();
+		
+	}
+	
+	minimizer.treeIsComplete = function() {
+		var leaves = this.getLeaves(this.tree.root());
+		for (var i = 0; i < leaves.length; i++) {
+			var leaf = leaves[i].split(',');
+			for (var k = 0; k < this.alphabet.length; k++) {
+				var dArr = [],
+						letter = this.alphabet[k];
+				for (var j = 0 ; j < leaf.length; j++) {
+					var node = this.referenceGraph.getNodeWithValue(leaf[j]);
+					var next = this.referenceGraph.transitionFunction(node, letter);
+					if (next[0]) {
+						dArr.push(next[0]);
+					}
+				}
+				// I apologize for this, I don't understand it either.
+				if (!_.find(leaves, function(v){return _.difference(dArr, v.split(',')).length === 0}) && dArr.length !== 0) {
+					return false;
+				}
+			}
+		}
+	}
+	
+	minimizer.getLeaves = function(node) {
+		// gets the leaf values of a tree
+		var arr = [];
+		if (node.childnodes == false) {
+			return arr.concat([node.value()]);
+		} else { 
+			for (var i = 0; i < node.childnodes.length; i++) {
+				arr = arr.concat(this.getLeaves(node.child(i)));
+			}
+			return arr;
+		}
+	}
+	minimizer.getTreeNodes = function(node) {
+		// gets the leaf values of a tree
+		var arr = [];
+		if (node.childnodes == false) {
+			return arr.concat([node]);
+		} else { 
+			arr = arr.concat([node]);
+			for (var i = 0; i < node.childnodes.length; i++) {
+				arr = arr.concat(this.getTreeNodes(node.child(i)));
+			}
+			return arr;
+		}
+	}
+	minimizer.unhighlightAll = function(graph) {
+		var nodes = graph.nodes();
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			next.unhighlight();
+		}
+	};
+	minimizer.unhighlightAllTreeNodes = function(tree) {
+		var leaves = this.getTreeNodes(tree.root());
+		leaves.map(function(node){
+			node.unhighlight();
+		})
+	};
+	minimizer.autoPartition = function(treeNode) {
+		var leaves = this.getLeaves(this.tree.root());
+		var val = treeNode.split(',');//this.selectedNode.value().split(',');
+		var nObj = {},
+			sets = {},
+			letter;
+		// check all terminals (even if one was inputted by the user)
+		for (var k = 0; k < this.alphabet.length; k++) {
+			nObj = {};
+			letter = this.alphabet[k];
+			for (var j = 0 ; j < val.length; j++) {
+				var node = this.referenceGraph.getNodeWithValue(val[j]);
+				var next = this.referenceGraph.transitionFunction(node, letter);
+				if (!nObj.hasOwnProperty(next[0])) {
+					nObj[next[0]] = [];
+				}
+				nObj[next[0]].push(node.value());
+			}
+			var nArr = Object.keys(nObj);
+			if (!_.find(leaves, function(v){return _.difference(nArr, v.split(',')).length === 0})) {
+				break;
+			}
+			else if (k === this.alphabet.length - 1) {
+				//this.selectedNode.unhighlight();
+				this.unhighlightAll(this.referenceGraph);
+				//this.selectedNode = null;
+				this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will not be divided.");
+				highlightAllNodes(treeNode.split(','), this.referenceGraph);
+				return false;
+			}
+		}
+		var nArr = Object.keys(nObj);
+		for (var i = 0; i < leaves.length; i++) {
+			var leaf = leaves[i].split(',');
+			for (var j = 0; j < nArr.length; j++) {
+				if (!sets.hasOwnProperty(leaves[i])) {
+					sets[leaves[i]] = [];
+				}
+				if (_.contains(leaf, nArr[j])) {
+					sets[leaves[i]] = _.union(sets[leaves[i]], nObj[nArr[j]]);
+				}
+			}
+		}
+		var sArr = Object.keys(sets);
+		var node = getTreeNode(treeNode, this.tree.root())
+		//node.highlight();
+		var nodeListAsString = "";
+		for (var i = 0; i < sArr.length; i++) {
+			var nVal = sets[sArr[i]].sort().join();
+			if (nVal) {
+				if(nodeListAsString!== "")
+					nodeListAsString += "-";
+				//this.selectedNode.addChild(nVal, {edgeLabel: letter});
+				node.addChild(nVal, {edgeLabel: letter});
+				nodeListAsString += "Node " +nVal;
+			}
+		}
+		nodeListAsString = listOFNodesToString(nodeListAsString);
+		nodeListAsString+= " by using the transition label " + letter;
+		this.jsav.umsg("Node "+ latixifyNodeName(treeNode) +" will be divided into " + nodeListAsString + ".");
+		highlightAllNodes(treeNode.split(','), this.referenceGraph);
+		//this.unhighlightAll(this.referenceGraph);
+		this.tree.layout();
+		return true;
+	};
+	minimizer.done = function(newGraphDimensions) {
+		var leaves = this.getLeaves(this.tree.root());
+		for (var i = 0; i < leaves.length; i++) {
+			var leaf = leaves[i].split(',');
+			for (var k = 0; k < this.alphabet.length; k++) {
+				var dArr = [],
+					letter = this.alphabet[k];
+				for (var j = 0 ; j < leaf.length; j++) {
+					var node = this.referenceGraph.getNodeWithValue(leaf[j]);
+					var next = this.referenceGraph.transitionFunction(node, letter);
+					if (next[0]) {
+						dArr.push(next[0]);
+					}
+				}
+				if (!_.find(leaves, function(v){return _.difference(dArr, v.split(',')).length === 0}) && dArr.length !== 0) {
+					this.jsav.umsg("There are distinguishable states remaining");
+					return;
+				}
+			}
+		}
+		// if complete create minimized DFA
+		
+		var graph = this.jsav.ds.FA({width: newGraphDimensions.width, 
+									height: newGraphDimensions.height, layout: 'automatic', 
+									left: newGraphDimensions.left, 
+									top: newGraphDimensions.top});
+		for (var i = 0; i < leaves.length; i ++) {
+			var node = graph.addNode({value:leaves[i]});
+			//node.stateLabel(leaves[i]);
+			var leaf = leaves[i].split(',');
+			for (var j = 0; j < leaf.length; j++) {
+				var n = this.referenceGraph.getNodeWithValue(leaf[j]);
+				if (n.equals(this.referenceGraph.initial)) {
+					graph.makeInitial(node);
+					break;
+				}
+				else if (n.hasClass('final')) {
+					node.addClass('final');
+					break;
+				}
+			}
+		}
+		var edges = this.referenceGraph.edges();
+		// "create" edges, store as a reference
+		for (var next = edges.next(); next; next = edges.next()) {
+			// get nodes make edges
+			var ns = next.start().value(),
+				ne = next.end().value(),
+				nodes = graph.nodes(),
+				node1, 
+				node2;
+			for (var next2 = nodes.next(); next2; next2 = nodes.next()) {
+				if (next2.value().split(',').indexOf(ns) !== -1) {
+					node1 = next2;
+				} 
+				if (next2.value().split(',').indexOf(ne) !== -1) {
+					node2 = next2;
+				}
+			}
+			// graph.addEdge(node1, node2, {weight: next.weight()});
+			if(!this.minimizedEdges.hasOwnProperty(node1.value())) {
+				this.minimizedEdges[node1.value()] = [];
+			}
+			var edgesFrom1 = this.minimizedEdges[node1.value()];
+			if (!edgesFrom1.hasOwnProperty(node2.value())) {
+				edgesFrom1[node2.value()] = [];
+			}
+			edgesFrom1[node2.value()] = _.union(edgesFrom1[node2.value()], 
+					next.weight().split("<br>"));
+		}
+		graph.layout();
+		this.jsav.step();
+		//graph.click(nodeClickHandlers);
+		this.jsav.umsg("Finish the DFA by finding the transisitons between nodes.");
+		studentGraph = graph;
+		return this.complete(graph);
+	};
+	minimizer.complete = function(studentGraph) {
+		for (var i in this.minimizedEdges) {
+			for (var j in this.minimizedEdges[i]) {
+				var n1 = studentGraph.getNodeWithValue(i),
+					n2 = studentGraph.getNodeWithValue(j),
+					w = this.minimizedEdges[i][j].join('<br>');
+				var newEdge = studentGraph.addEdge(n1, n2, {weight: w});
+				if (newEdge) {
+					newEdge.layout();
+				}
+			}
+		}
+		studentGraph.disableDragging();
+		return studentGraph;
+	};
+	var getTreeNode = function(nodeValue, node){
+		if (node.childnodes == false && node.value()===nodeValue) {//leaf
+			return node;
+		} else {
+			var result = null; 
+			for (var i = 0; i < node.childnodes.length; i++) {
+				result = result || getTreeNode(nodeValue, node.child(i));
+			}
+			return result;
+		}
+	}
+	
+	var listOFNodesToString = function(nodeListAsString){
+		var lastCommaIndex = nodeListAsString.lastIndexOf('-');
+		if(lastCommaIndex > 0){
+			nodeListAsString = nodeListAsString.slice(0, lastCommaIndex  ) + ", and " + nodeListAsString.slice(lastCommaIndex + 1);
+			nodeListAsString = nodeListAsString.split('-').join(', ');
+		}
+	
+		return latixifyNodeName(nodeListAsString);
+	}
+	var latixifyNodeName = function(nodeListAsString){
+		var re = /q\d+/g;
+		var listOfNodes = nodeListAsString.match(re);
+		if(listOfNodes)
+			listOfNodes.map( function(node) {
+				nodeListAsString = nodeListAsString.replace(node, '$' + node.slice(0, 1) + '_{' + node.slice(1) + '}$');
+			   })
+	   return nodeListAsString;
+	}
+	
+	var highlightAllNodes = function (listOfNodes, graph){
+		for (var i = 0; i< listOfNodes.length; i++) {
+			graph.getNodeWithValue(listOfNodes[i]).highlight("green");
+		}
+	}
+	
+}(jQuery));

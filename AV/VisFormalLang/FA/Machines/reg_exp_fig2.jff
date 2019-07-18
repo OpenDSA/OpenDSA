@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 7.1.--><structure>
+	<type>fa</type>
+	<automaton>
+		<!--The list of states.-->
+		<state id="0" name="qi">
+			<x>23.0</x>
+			<y>46.0</y>
+			<initial/>
+		</state>
+		<state id="1" name="qj">
+			<x>234.0</x>
+			<y>47.0</y>
+			<final/>
+		</state>
+		<state id="2" name="qk">
+			<x>120.0</x>
+			<y>164.0</y>
+		</state>
+		<!--The list of transitions.-->
+		<transition>
+			<from>2</from>
+			<to>2</to>
+			<read>rkk</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>1</to>
+			<read>rjj</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>0</to>
+			<read>rii</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>1</to>
+			<read>rkj</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>rjk</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>rij</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>0</to>
+			<read>rji</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>2</to>
+			<read>rik</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>0</to>
+			<read>rki</read>
+		</transition>
+	</automaton>
+</structure>
