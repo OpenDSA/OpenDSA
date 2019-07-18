@@ -27,12 +27,12 @@ Not Regular languages:
 * block structures (:math:`\{\}` in Java/C++ and ``begin`` ... ``end`` in Pascal)
 
 We know that not all languages are not regular, since we've proved
-some are not. 
+some are not.
 
 Now we will look at a class of languages that is larger than the
-regular languages, and more powerful: Context-free languages. 
+regular languages, and more powerful: Context-free languages.
 
-**Definition:** A grammar :math:`G = (V, T, S, P)` is 
+**Definition:** A grammar :math:`G = (V, T, S, P)` is
 context-free if all productions are of the form
 
    | :math:`A \rightarrow x`
@@ -55,15 +55,15 @@ context-free if all productions are of the form
    .. note::
 
       We have seen this before! Its not regular!
-      
+
    **Definition:** A linear grammar has at most one variable on the
    right hand side of any production.
-   Thus, right linear and left linear grammars are also linear grammars. 
+   Thus, right linear and left linear grammars are also linear grammars.
 
-   So, this is a linear grammar. 
+   So, this is a linear grammar.
 
 .. topic:: Example
-           
+
    | :math:`G = (\{S\}, \{a, b\}, S, P)`
    |   :math:`S \rightarrow aSa\ |\ bSb\ |\ a\ |\ b\ |\ \lambda`
 
@@ -81,7 +81,7 @@ context-free if all productions are of the form
    |   :math:`B \rightarrow Bbb\ |\ \lambda`
    | :math:`L(G) = \{a^{2n}cb^{2m} | n, m \ge 0\}`
 
-   | Note this is a context-free language and also a regular language. 
+   | Note this is a context-free language and also a regular language.
 
    | Derivations of :math:`aacbb`:
    |    1. :math:`S \Rightarrow \underline{A}cB \Rightarrow a\underline{A}acB
@@ -91,11 +91,11 @@ context-free if all productions are of the form
    |        Note: Next variable to be replaced is underlined.
    |        There are more derivations of this.
 
-   This grammar is **not** a linear grammar, as there is a choice of 
-   which variable to replace. 
+   This grammar is **not** a linear grammar, as there is a choice of
+   which variable to replace.
 
-   To write an algorithm to perform replacements, we need some order. 
-   We will see this when we look at parsing algorithms. 
+   To write an algorithm to perform replacements, we need some order.
+   We will see this when we look at parsing algorithms.
 
 **Definition:** Leftmost derivation: in each step of a derivation,
 replace the leftmost variable. (See derivation 1 above).
@@ -108,7 +108,7 @@ represents a derivation, but does not show the order in which
 productions were applied.
 
 .. topic:: Example
-           
+
    A derivation tree for :math:`G = (V, T, S, P)`:
 
    * root is labeled :math:`S`
@@ -117,12 +117,12 @@ productions were applied.
    * For rule :math:`A \rightarrow a_1a_2a_3\ldots a_n`, where
      :math:`A \in V, a_i \in (T \cup V \cup \{\lambda\})`,
 
-   .. odsafig:: Images/lt3ptree1.png
-      :width: 300
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt3ptree1
+   .. inlineav:: derivIdeaCON dgm
+      :links: AV/VisFormalLang/CFG/derivIdeaCON.css
+      :scripts: AV/VisFormalLang/CFG/derivIdeaCON.js
+      :align: justify
+
+   |
 
 .. topic:: Example
 
@@ -131,16 +131,25 @@ productions were applied.
    |    :math:`A \rightarrow aAa\ |\ \lambda`
    |    :math:`B \rightarrow Bbb\ |\ \lambda`
 
-   .. odsafig:: Images/lt3ptree2.png
-      :width: 250
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt3ptree2
+   .. inlineav:: derivEx1CON dgm
+      :links: AV/VisFormalLang/CFG/derivEx1CON.css
+      :scripts: AV/VisFormalLang/CFG/derivEx1CON.js
+      :align: justify
 
-   NOTE: Derivation trees do not denote the order variables are 
-   replaced! We could however get a leftmost or rightmost derivation 
-   easily from looking at the tree. 
+   NOTE: Derivation trees do not define an order in which variables are
+   replaced! We could however get a leftmost or rightmost derivation
+   easily from looking at the tree.
+
+    .. note::
+                    
+       Question: What string is this?
+
+       Answer: aacbb
+   
+       Question: Describe the language that this grammar produces.
+
+       Answer: Zero or more pairs of a's followed by c followed by zero
+       or more pairs of b's.
 
 .. inlineav:: ParseTree1CON ss
    :links:   AV/VisFormalLang/CFG/ParseTree1CON.css
@@ -161,7 +170,7 @@ If :math:`w` is the yield of a derivation tree, then it must be that
 The yield for the example above is :math:`aacbb`.
 
 .. topic:: Example
-   
+
    A partial derivation tree that has root S:
 
    .. odsafig:: Images/lt3ptree3.png
@@ -174,7 +183,7 @@ The yield for the example above is :math:`aacbb`.
    The yield of this example is :math:`aAacB` (which is a sentential form).
 
 .. topic:: Example
-   
+
    A partial derivation tree that does not have root S:
 
    .. odsafig:: Images/lt3ptree4.png
@@ -184,7 +193,7 @@ The yield for the example above is :math:`aacbb`.
       :figwidth: 90%
       :alt: lt3ptree4
 
-**Membership:** Given CFG :math:`G` and string :math:`w \in \Sigma^*`, 
+**Membership:** Given CFG :math:`G` and string :math:`w \in \Sigma^*`,
 is :math:`w \in L(G)`?
 
 If we can find a derivation of :math:`w`, then we would know that
@@ -199,7 +208,7 @@ Why would anybody want to do this? :math:`G =` Java,
 :math:`w =` Java program.
 Is :math:`w` a syntactically correct program?
 This is (part of) what a compiler does.
-You write a program, you compile it, and the compiler finds all your 
+You write a program, you compile it, and the compiler finds all your
 syntax mistakes.
 (It also "translates" the program into "bytecode" to be
 executed.
@@ -242,8 +251,8 @@ the start symbol.
    |   5. :math:`S \Rightarrow aSa \Rightarrow aSSa`
    |   ...
 
-   Note: Will we find :math:`w`? How long will it take? If we just do leftmost 
-   derivations, then for :math:`i = 2`, 8 of length 2. 
+   Note: Will we find :math:`w`? How long will it take? If we just do leftmost
+   derivations, then for :math:`i = 2`, 8 of length 2.
 
    When :math:`i = 6` we will find the derivation of :math:`w`.
 
@@ -252,22 +261,22 @@ the start symbol.
 Question: What happens if :math:`w` is not in :math:`L(G)`?
 When do we stop the loop in the algorithm and know for sure that
 :math:`w` is not going to be derived?
-:math:`S \Rightarrow SS ... \Rightarrow SSSSSSSSSS ... \Rightarrow S` 
+:math:`S \Rightarrow SS ... \Rightarrow SSSSSSSSSS ... \Rightarrow S`
 
-We cannot determine that :math:`baaba` is not in :math:`L(G)`. 
+We cannot determine that :math:`baaba` is not in :math:`L(G)`.
 
 .. note::
 
    What happens if you run this in JFLAP?
 
-We want to consider special forms of context free grammars such that 
-we can determine when strings are or are not in the language. 
-Easy to write a context-free grammar and then convert it into 
-a special form, it will be easier to test membership. 
+We want to consider special forms of context free grammars such that
+we can determine when strings are or are not in the language.
+Easy to write a context-free grammar and then convert it into
+a special form, it will be easier to test membership.
 
 .. topic:: Theorem
-           
-   **Theorem:** If CFG :math:`G` does not contain rules of the form 
+
+   **Theorem:** If CFG :math:`G` does not contain rules of the form
 
       | :math:`A \rightarrow \lambda`
       | :math:`A \rightarrow B`
@@ -281,10 +290,10 @@ a special form, it will be easier to test membership.
       | 1. length of sentential forms
       | 2. number of terminal symbols in a sentential form
 
-   Either 1 or 2 increases with each derivation. 
+   Either 1 or 2 increases with each derivation.
 
-   Derivation of string :math:`w` in :math:`L(G)` takes :math:`\le 2|w|` times through loop in 
-   the exhaustive algorithm. 
+   Derivation of string :math:`w` in :math:`L(G)` takes :math:`\le 2|w|` times through loop in
+   the exhaustive algorithm.
 
    Thus, if there are :math:`> 2|w|` times through loop, then
    :math:`w \not\in L(G)`.
@@ -295,7 +304,7 @@ a special form, it will be easier to test membership.
 
       :math:`S \rightarrow SS\ |\ aa\ |\ aSa\ |\ b`
 
-   NOTE that this grammar is in the correct form for the theorem. 
+   NOTE that this grammar is in the correct form for the theorem.
 
    Show :math:`baaba \not\in  L(G)`.
 
@@ -315,8 +324,8 @@ a special form, it will be easier to test membership.
    |   7. :math:`S \Rightarrow aSa \Rightarrow aaaa`
    |   8. :math:`S \Rightarrow aSa \Rightarrow aba`
 
-   With each substitution, either there is at least one more 
-   terminal or the length of the sentential form has increased. 
+   With each substitution, either there is at least one more
+   terminal or the length of the sentential form has increased.
 
    So after we process the loop for :math:`i = 10`, we can conclude
    that :math:`baaba` is not in :math:`L(G)`.
@@ -326,7 +335,7 @@ transforming it into an equivalent (or almost equivalent) grammar.
 We will see that some ways of writing a grammar for a language are
 better than others, in terms of our ability to write practical
 algorithms for solving the membership problem.
-For now, here is another form that will make membership testing easier. 
+For now, here is another form that will make membership testing easier.
 
 **Definition:** Simple grammar (or s-grammar) has all productions
 of the form:
@@ -358,7 +367,7 @@ Ambiguity
 
    Derivation of :math:`a+b*a` is:
 
-      | :math:`E \Rightarrow \underline{E}+E \Rightarrow \underline{I}+E 
+      | :math:`E \Rightarrow \underline{E}+E \Rightarrow \underline{I}+E
                \Rightarrow a+\underline{E} \Rightarrow a+\underline{E}*E
                \Rightarrow a+\underline{I}*E \Rightarrow a+b*\underline{E}
                \Rightarrow a+b*\underline{I} \Rightarrow a+b*a`
@@ -374,7 +383,7 @@ Ambiguity
 
    Derivation trees of expressions are evaluated bottom up. So if
    :math:`a = 2` and :math:`b = 4`, then the "result" of this
-   expression is :math:`2+(4*2) = 10`.  
+   expression is :math:`2+(4*2) = 10`.
 
 
    Another derivation of :math:`a+b*a` is:
@@ -394,11 +403,11 @@ Ambiguity
       :alt: lt4ptree2
 
    If :math:`a = 2` and :math:`b = 4`, then the "result" of this
-   expression is :math:`(2+4)*2 = 12`. 
+   expression is :math:`(2+4)*2 = 12`.
 
-   There are two distinct derivation trees for the same string. Thus the 
-   grammar is ambiguous. The string can have different meanings depending 
-   on which way it is interpreted. 
+   There are two distinct derivation trees for the same string. Thus the
+   grammar is ambiguous. The string can have different meanings depending
+   on which way it is interpreted.
 
    If :math:`G` is a grammar for Java programs and :math:`w` is Bob's
    Java program, he doesn't want one compiler to give one meaning to
@@ -425,13 +434,13 @@ Ambiguity
       :figwidth: 90%
       :alt: lt4ptree3
 
-   Try to get a derivation tree with the other meaning of :math:`a+b*c`, when 
-   :math:`*` is closer to the root of the tree. 
+   Try to get a derivation tree with the other meaning of :math:`a+b*c`, when
+   :math:`*` is closer to the root of the tree.
 
    :math:`E \Rightarrow T \Rightarrow T*F ...`
    Then the only way to include a ":math:`+`"
-   before the multiplication is if the addition is enclosed in 
-   parenthesis. Thus, there is only one meaning that is accepted. 
+   before the multiplication is if the addition is enclosed in
+   parenthesis. Thus, there is only one meaning that is accepted.
 
 .. inlineav:: ParseTreeForExpCON ss
    :links:   AV/VisFormalLang/CFG/ParseTreeForExpCON.css
@@ -456,7 +465,7 @@ CFG such that :math:`L = L(G)`, then :math:`L` is unambiguous.
    main () {
      int a;     int b;   int sum;
      a = 40;    b = 6;   sum = a + b;
-     cout << "sum is "<< sum << endl; 
+     cout << "sum is "<< sum << endl;
    }
 
 
@@ -481,7 +490,7 @@ etc., Must expand all nonterminals!
 So a derivation of the program test would look like:
 
 .. math::
-   
+
    <\mbox{program}> &\Rightarrow&\ \mbox{main} ()\ <\mbox{block}> \\
                     &\Rightarrow&\ \mbox{main} ()\ \{\ <\mbox{stmt-list}>\ \} \\
                     &\Rightarrow&\ \mbox{main} ()\ \{\ <\mbox{decl}>\ <\mbox{stmt-list}>\ \} \\
@@ -491,9 +500,9 @@ So a derivation of the program test would look like:
 
 **More on CFG for C++**
 
-Last time we "attempted" to write a CFG for C++, 
-it is possible to write a CFG that recognizes all syntactically 
-correct C++ programs, but there is a problem that the CFG 
+Last time we "attempted" to write a CFG for C++,
+it is possible to write a CFG that recognizes all syntactically
+correct C++ programs, but there is a problem that the CFG
 also accepts incorrect programs.
 For example, it can't recognize that it is an error to declare the
 same variable twice, once as an integer and once as a char.
@@ -507,3 +516,4 @@ and type:
 
    | declare: int Sum(int a, int b, int c) ...
    | call: newsum = Sum(x,y);
+

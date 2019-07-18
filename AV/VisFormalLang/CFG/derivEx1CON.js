@@ -1,6 +1,7 @@
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("mineAssigned2", {animationMode: "none"});
+  var av_name = "derivEx1CON";
+  var av = new JSAV(av_name, {animationMode: "none"});
   // Setup the tree
   var bt = av.ds.tree({nodegap: 15});
   bt.root("S");
@@ -20,7 +21,6 @@ $(document).ready(function() {
   lt3.addChild("b");
   lt3.addChild("b");
   lt4.addChild("λ");
-
   bt.layout();
   av.displayInit();
   av.recorded();
