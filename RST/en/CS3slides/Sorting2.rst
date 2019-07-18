@@ -63,8 +63,8 @@ Sorting Part 2
 
    .. inlineav:: QuickSortPartitionAnalysisCON ss
       :long_name: Quicksort Partition Analysis Slideshow
-      :links: AV/Development/QuickSortPartitionAnalysisCON.css
-      :scripts: AV/Development/QuickSortPartitionAnalysisCON.js
+      :links: AV/Sorting/QuickSortPartitionAnalysisCON.css
+      :scripts: AV/Sorting/QuickSortPartitionAnalysisCON.js
       :output: show
 
 
@@ -77,8 +77,8 @@ Sorting Part 2
 
    .. inlineav:: QuickSortWorstCaseCON ss
       :long_name: Quicksort Worst Case Analysis Slideshow
-      :links: AV/Development/QuickSortWorstCaseCON.css
-      :scripts: AV/Development/QuickSortWorstCaseCON.js
+      :links: AV/Sorting/QuickSortWorstCaseCON.css
+      :scripts: AV/Sorting/QuickSortWorstCaseCON.js
       :output: show
 
 
@@ -90,8 +90,8 @@ Sorting Part 2
 
    .. inlineav:: QuickSortBestCaseCON ss
       :long_name: Quicksort Best Case Analysis Slideshow
-      :links: AV/Development/QuickSortBestCaseCON.css
-      :scripts: AV/Development/QuickSortBestCaseCON.js
+      :links: AV/Sorting/QuickSortBestCaseCON.css
+      :scripts: AV/Sorting/QuickSortBestCaseCON.js
       :output: show
 
 
@@ -101,12 +101,11 @@ Sorting Part 2
 
 .. slide:: Quicksort Average Case
 
-   .. inlineav:: QuickSortAverageCaseCON ss
+   .. inlineav:: QuickSortAverageCaseCON ss 
       :long_name: Quicksort Average Case Analysis Slideshow
-      :links: AV/Development/QuickSortAverageCaseCON.css
-      :scripts: AV/Development/QuickSortAverageCaseCON.js
+      :links: AV/Sorting/QuickSortAverageCaseCON.css
+      :scripts: AV/Sorting/QuickSortAverageCaseCON.js
       :output: show
-
 
 .. slide:: Optimizations for Quicksort
 
@@ -122,7 +121,6 @@ Sorting Part 2
 
    .. inlineav:: heapsortCON ss
       :long_name: Heapsort Slideshow
-      :links: 
       :scripts: DataStructures/binaryheap.js AV/Sorting/heapsortCON.js
       :output: show
 
@@ -131,8 +129,8 @@ Sorting Part 2
 
    .. inlineav:: HeapSortAnalysisCON ss
       :long_name: Heapsort Analysis Slideshow
-      :links: AV/Development/HeapSortAnalysisCON.css
-      :scripts: DataStructures/binaryheap.js AV/Development/HeapSortAnalysisCON.js
+      :links: AV/Sorting/HeapSortAnalysisCON.css
+      :scripts: DataStructures/binaryheap.js AV/Sorting/HeapSortAnalysisCON.js
       :output: show
 
 
@@ -177,8 +175,8 @@ Sorting Part 2
 
    .. inlineav:: RadixSortAnalysisCON ss
       :long_name: Radix Sort Analysis Slideshow
-      :links: AV/Development/RadixSortAnalysisCON.css
-      :scripts: AV/Development/RadixSortAnalysisCON.js
+      :links: AV/Sorting/RadixSortAnalysisCON.css
+      :scripts: AV/Sorting/RadixSortAnalysisCON.js
       :output: show
 
 
@@ -223,4 +221,7 @@ Sorting Part 2
 
 .. slide:: Sorting Lower Bound (2)
 
-   .. avembed:: AV/Development/SortingLowerBound.html ss
+   .. inlineav:: SortingLowerBoundCON ss
+      :long_name: Sorting Lower Bound
+      :links: AV/Sorting/SortingLowerBoundCON.css
+      :scripts: AV/Sorting/SortingLowerBoundCON.js
