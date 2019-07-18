@@ -179,8 +179,9 @@ Graphs
 
 .. slide:: Depth-First Topological Sort (1)
 
-   .. avembed:: AV/Graph/topSort.html ss
-
+   .. inlineav:: topSortCON ss
+      :scripts: AV/Graph/topSortCON.js
+      :output: show
 
 .. slide:: .
 
@@ -199,9 +200,11 @@ Graphs
 
 
 .. slide:: Queue-Based Topsort (2)
-
-   .. avembed:: AV/Graph/qTopSort.html ss
-
+   
+   .. inlineav:: topSortQCON ss
+      :links: AV/Graph/topSortQCON.css
+      :scripts: AV/Graph/topSortQCON.js
+      :output: show
 
 .. slide:: .
 
@@ -232,10 +235,10 @@ Graphs
    * If there is no such edge, then :math:`w(A, B) = \infty`.
 
 
-   .. inlineav:: dijkstraCON dgm
-      :links:
-      :scripts: AV/Graph/dijkstraCON.js
+   .. inlineav:: DijkstraCON dgm
+      :scripts: AV/Graph/DijkstraCON.js
       :align: center
+      :output: show
 
 
 .. slide:: Single-Source Shortest Paths
@@ -255,8 +258,10 @@ Graphs
 
 .. slide:: Dijkstra’s Algorithm Example
 
-   .. avembed:: AV/Graph/DijkstraAV.html ss
-
+   .. inlineav:: DijkstraCON ss
+      :links: AV/Graph/DijkstraCON.css
+      :scripts: AV/Graph/DijkstraCON.js
+      :output: show
 
 .. slide:: .
 
@@ -349,7 +354,10 @@ Graphs
 
 .. slide:: Prim’s MST Algorithm
 
-   .. avembed:: AV/Graph/PrimAV.html ss
+   .. inlineav:: primCON ss
+      :links: AV/Graph/primCON.css
+      :scripts: AV/Graph/primCON.js
+      :output: show
 
 
 .. slide:: .

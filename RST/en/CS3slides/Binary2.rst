@@ -92,12 +92,9 @@ Binary Trees Part 2
 
 .. slide:: Binary Search Trees
 
-   .. odsafig:: Images/BSTShape2.png
-      :width: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Two Binary Search Trees
+   .. inlineav:: AV/Binary/BinDiffCON dgm
+      :links: AV/Binary/BinDiffCON.css
+      :scripts: AV/Binary/BinDiffCON.js
 
 .. slide:: BST as a Dictionary (1)
 
