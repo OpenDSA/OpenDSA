@@ -41,7 +41,7 @@ or if SUM is a valid variable name in C++.
 
 .. inlineav:: DFAExampleCON dgm
    :links: AV/VisFormalLang/FA/DFAExampleCON.css
-   :scripts: DataStructures/FLA/tape.js AV/VisFormalLang/FA/DFAExampleCON.js
+   :scripts: DataStructures/FLA/Tape.js AV/VisFormalLang/FA/DFAExampleCON.js
    :align: center
 
    Example of DFA
@@ -140,8 +140,8 @@ Example of a trace: 11010
 Pictorial Example of a trace for 100:
 
 .. inlineav:: OddNumbersTraceCON dgm
-   :links: DataStructures/FLA/tape.js AV/VisFormalLang/FA/OddNumbersTraceCON.css
-   :scripts: AV/VisFormalLang/FA/OddNumbersTraceCON.js
+   :links: AV/VisFormalLang/FA/OddNumbersTraceCON.css
+   :scripts: DataStructures/FLA/Tape.js AV/VisFormalLang/FA/OddNumbersTraceCON.js
    :align: center
 
    DFA Example: Even numbers trace
