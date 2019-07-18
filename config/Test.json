@@ -65,22 +65,18 @@
   },
   "chapters": {
     "Stuff": {
-<<<<<<< HEAD
+
 
 	"Indexing/twoThreeTree":{
 },
-=======
       "BTRecurTutor/BSTCheck": {}, 
       "Indexing/TwoThreeTree": {
       },
->>>>>>> 56d48daab784568f5da1afc4e3df211fc860ef11
-      "Indexing/BTree": {
+	"Indexing/BTree": {
       },
 "Indexing/BTreeTest": {
       },
-=======
->>>>>>> 31c193dceb8495cd9ad75197622a331066df61f1
-      "Jeffrey_Peng_Test/CFLnew":{
+	"Jeffrey_Peng_Test/CFLnew":{
       },
       "VisFormalLang/CFL":{
       }
