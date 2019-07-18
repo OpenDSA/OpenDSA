@@ -41,7 +41,7 @@ or if SUM is a valid variable name in C++.
 
 .. inlineav:: DFAExampleCON dgm
    :links: AV/VisFormalLang/FA/DFAExampleCON.css
-   :scripts: AV/OpenFLAP/tape.js AV/VisFormalLang/FA/DFAExampleCON.js
+   :scripts: DataStructures/FLA/tape.js AV/VisFormalLang/FA/DFAExampleCON.js
    :align: center
 
    Example of DFA
@@ -150,7 +150,7 @@ Now let's see how this machine accepts / rejects some strings.
 
 .. inlineav:: TraceEvenBinaryDFACON ss
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/TraceEvenBinaryDFACON.css
-   :scripts: DataStructures/FLA/FA.js AV/Development/formal_language/fa/TraverseAccepter.js AV/VisFormalLang/FA/TraceEvenBinaryDFACON.js
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/TraceEvenBinaryDFACON.js
    :output: show
 
 Definitions
