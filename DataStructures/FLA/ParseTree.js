@@ -77,21 +77,29 @@ var ParseTreeController = function(jsav, grammar, string, treeOptions) {
     derivers = Object.keys(derivers);
     // parse
     counter = 0;
-    var queue = [];
-    queue.push(productions[0][0]);
-    while(queue.length !== 0){
-      if(counter > 5000){
+    //var queue = [];
+    var queue = new Set();
+    //queue.push(productions[0][0]);
+    queue.add(productions[0][0]);
+    var asd = queue.values();
+    while(asd.length !== 0){
+      if(counter > 10000){
         break;
       }
-      var next = queue.shift();
+      var next = queue.values().next().value;
+      queue.delete(next);
       if(this.removeLambda(next) === inputString){
         return [true, next, table];
       }
       for(var i = 0; i < this.replaceLHS(productions, next).length; i++){
-        queue.push(this.replaceLHS(productions, next)[i]);
-        table[this.replaceLHS(productions, next)[i]] = next;
+        var newString = this.replaceLHS(productions, next)[i];
+        if(!shouldSkipString(inputString, newString)){
+          queue.add(this.removeLambda(newString));
+          table[this.replaceLHS(productions, next)[i]] = next;
+        }
       }
       counter++;
+      asd = queue.values();
     }
     return [false, next, table];
   }
@@ -119,11 +127,12 @@ var ParseTreeController = function(jsav, grammar, string, treeOptions) {
       }
       for(var i = 0; i < this.replaceLHS(productions, next).length; i++){
         var newValue = this.replaceLHS(productions, next)[i];
-        if(newValue.length <= inputString.length)
-          {
-            queue.add(newValue);
-            table[this.replaceLHS(productions, next)[i]] = next;
-          }
+        if(!shouldSkipString(inputString, newValue))
+          if(newValue.length <= inputString.length)
+            {
+              queue.add(newValue);
+              table[this.replaceLHS(productions, next)[i]] = next;
+            }
       }
       counter++;
       asd = queue.values();
@@ -311,4 +320,28 @@ var ParseTreeController = function(jsav, grammar, string, treeOptions) {
       }*/
       this.jsav.recorded();
     }
+  }
+
+  var shouldSkipString = function (target, proposedString){
+    var numberOfTerminals = getTheNumberOfTerminals(proposedString);
+    if(numberOfTerminals <= target.length){
+    for(var i = 0; i< target. length; i++){
+      if(variables.indexOf(proposedString[i]) <0 && proposedString[i] != lambda){ //not a varuialble so compare the letters
+        if(target[i] !== proposedString[i])
+          return true;
+      }
+      else // a variable so stop looking
+        return false;
+    }
+
+  }
+  else
+    return false;
+}
+  var getTheNumberOfTerminals = function (proposedString){
+    var count =0;
+    for(var i = 0; i<proposedString.length; i++)
+      if(variables.indexOf(proposedString[i])<0 && proposedString[i] !== lambda)
+        count++;
+    return count;
   }

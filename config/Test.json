@@ -1,4 +1,4 @@
-    
+
 {
   "title": "Test",
   "desc": "Test",
@@ -43,8 +43,8 @@
     "required": false
   },
   "glob_ff_options": {
-    "threshold": 1.0, 
-    "points": 0.0, 
+    "threshold": 1.0,
+    "points": 0.0,
     "required": false
   },
   "glob_ka_options": {
@@ -65,26 +65,16 @@
   },
   "chapters": {
     "Stuff": {
-<<<<<<< HEAD
-
-	"Indexing/twoThreeTree":{
-},
-=======
-      "BTRecurTutor/BSTCheck": {}, 
+      "BTRecurTutor/BSTCheck": {},
       "Indexing/TwoThreeTree": {
       },
->>>>>>> 56d48daab784568f5da1afc4e3df211fc860ef11
       "Indexing/BTree": {
       },
-"Indexing/BTreeTest": {
-      },
-=======
->>>>>>> 31c193dceb8495cd9ad75197622a331066df61f1
-      "Jeffrey_Peng_Test/CFLnew":{
+      "Indexing/BTreeTest": {
       },
       "VisFormalLang/CFL":{
       }
-    }, 
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}

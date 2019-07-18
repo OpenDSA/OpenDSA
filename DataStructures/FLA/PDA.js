@@ -13,7 +13,7 @@ var PDA = function(jsav, options) {
   //this.inputViz.hide()
 }
 
-JSAV.ext.ds.pda = function (options) {
+JSAV.ext.ds.PDA = function (options) {
   var opts = $.extend(true, {visible: true, autoresize: true}, options);
   return new PDA(this, opts);
 };
@@ -21,6 +21,7 @@ JSAV.ext.ds.pda = function (options) {
 JSAV.utils.extend(PDA, JSAV._types.ds.Graph);
 
 PDA.prototype = Object.create(Automaton.prototype, {});
+window.PDA = PDA;
 var pda = PDA.prototype;
 
 pda.showAccept = function(state) {
@@ -584,7 +585,7 @@ pda.setupControls = function() {
   Shows current stack, unreadinput, and the node it represents
   */
  (function($) {
- function PDAState(jsav, x_coord, y_coord, rect_width, rect_height, input, stack, node) {
+ var PDAState = function (jsav, x_coord, y_coord, rect_width, rect_height, input, stack, node) {
     
   this.jsav = jsav;
   this.x_coord = x_coord;
@@ -602,7 +603,7 @@ pda.setupControls = function() {
   this.label.css({"z-index": 999})
   //this.node  = this.jsav.ds.node(this.x_coord + 5, this.y_coord + 5)
 }
-
+window.PDAState = PDAState;
 // Add the Stack constructor to the public facing JSAV interface.
 JSAV.ext.ds.PDAState = function(x_coord, y_coord, rect_width, rect_height, input, stack, node, options) {
   return new PDAState(this, x_coord, y_coord, rect_width, rect_height, input, stack, node);
@@ -631,7 +632,7 @@ PDAStateproto.hide = function() {
   */
 (function($) {
 
- function Stack(jsav, element, x_coord, y_coord, max_length, options) {
+ var Stack = function (jsav, element, x_coord, y_coord, max_length, options) {
   this.cell_size = 30;
 
   this.jsav = jsav;
@@ -661,7 +662,7 @@ PDAStateproto.hide = function() {
   }
 
 }
-
+window.Stack = Stack;
 // Add the Stack constructor to the public facing JSAV interface.
 JSAV.ext.ds.stack = function(element, x_coord, y_coord, max_length, options) {
   return new Stack(this, element, x_coord, y_coord, max_length, options);

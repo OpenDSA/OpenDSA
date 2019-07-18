@@ -693,11 +693,6 @@
         }
       }
     }, 
-    "General Trees": {
-      "General/GenTreeIntro": {},
-      "General/UnionFind": {},
-      "General/SequentialRep": {}
-    }, 
     "Graphs": {
       "Graph/GraphIntro": {
         "GspaceCalcSumm": {
