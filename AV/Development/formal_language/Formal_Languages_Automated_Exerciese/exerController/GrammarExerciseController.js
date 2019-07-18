@@ -93,19 +93,22 @@ controllerProto.startTesting = function() {
 	}
 	//we need to convert the grammar to a PDA to test the grammar.
 	if(grammarType !== "LLG")
-		pda = this.convertToPDA();
+		parser = new ParseTreeController(this.jsav, JSON.stringify(this.grammar),"", {visible: false});//pda = this.convertToPDA();
 	else
-		parser = this.buildDFAforLLG();//new ParseTreeController(this.jsav, JSON.stringify(this.grammar),"", {visible: false});
+		parser = this.buildDFAforLLG();
 	for (i = index; i < this.testCases.length; i++) {
 		var testNum = i + 1;
 		var testCase = this.testCases[i];
         var input = Object.keys(testCase)[0];
 		var inputResult;
-		if(grammarType !== "LLG")
-			inputResult = pda.traverseOneInput(input);
+		if(grammarType !== "LLG"){
+			//inputResult = pda.traverseOneInput(input);
+			parser.inputString = input;
+			inputResult = parser.stringAccepted()[0];
+		}
 		else{
-			//parser.inputString = input;
-        	inputResult = !willReject(parser, input.split("").reverse().join(""));//parser.stringAccepted()[0];
+			
+        	inputResult = !willReject(parser, input.split("").reverse().join(""));
 		}
 		if (inputResult === testCase[input]) {
 			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
