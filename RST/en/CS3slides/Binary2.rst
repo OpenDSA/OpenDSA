@@ -92,9 +92,10 @@ Binary Trees Part 2
 
 .. slide:: Binary Search Trees
 
-   .. inlineav:: AV/Binary/BinDiffCON dgm
+   .. inlineav:: BinDiffCON dgm
       :links: AV/Binary/BinDiffCON.css
       :scripts: AV/Binary/BinDiffCON.js
+      :align: center
 
 .. slide:: BST as a Dictionary (1)
 

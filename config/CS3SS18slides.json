@@ -69,12 +69,14 @@
       "CS3slides/QuickHash": {},
       "CS3slides/AlgAnal": {}
     },
-    "Week 3": {
+    "Week 3a": {
       "CS3slides/JUnit": {},
       "CS3slides/Coding": {},
       "CS3slides/Lists": {},
       "CS3slides/Binary": {},
-      "CS3slides/Binary2": {},
+      "CS3slides/Binary2": {}
+    },
+    "Week 3b": {
       "CS3slides/Binary3": {},
       "CS3slides/23Tree": {}
     },
