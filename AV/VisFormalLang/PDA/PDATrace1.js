@@ -12,9 +12,7 @@ $(document).ready(function() {
     av.displayInit();
     var url = interpret("pda1");
     var inputString = "aaabbb";
-    var pda = new av.ds.pda({width: 600, height: 200});
-    PDA.prototype.loadFAFromJFLAPFile.call(pda,url);
-    pda.disableDragging();
-    var results = run(pda, inputString, true);
+    var pda = new av.ds.pda({width: 600, height: 200, url: url});
+    runPDA(pda, inputString, true);
     av.recorded();
   });
