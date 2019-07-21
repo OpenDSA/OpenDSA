@@ -151,6 +151,11 @@ productions were applied.
        Answer: Zero or more pairs of a's followed by c followed by zero
        or more pairs of b's.
 
+       Question: What if we want the same number of a's and b's?
+
+       Answer: S -> c | aaSbb
+       
+
 .. inlineav:: ParseTree1CON ss
    :links:   AV/VisFormalLang/CFG/ParseTree1CON.css
    :scripts: AV/VisFormalLang/CFG/ParseTree1CON.js

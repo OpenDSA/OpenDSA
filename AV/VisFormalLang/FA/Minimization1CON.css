@@ -1,10 +1,9 @@
 #Minimization1CON {
-  height: 750px;
-  width: 1000px;
+  height: 680px;
 }
 
-#Minimization1CON .jsavcontrols {
-  display: unset !important;
+#Minimization1CON .jsavoutput.jsavline {
+  height: 30px;
 }
 
 #Minimization1CON .jsavnode.jsavtreenode {

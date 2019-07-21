@@ -120,7 +120,7 @@ minimizing the DFA.
 
 .. inlineav:: Minimization1CON ss
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/Minimization1CON.css
-   :scripts: DataStructures/FLA/FA.js AV/Development/formal_language/fa/Minimizer.js AV/VisFormalLang/FA/Minimization1CON.js lib/underscore.js
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/VisFormalLang/FA/Minimization1CON.js
    :output: show
 
 
@@ -137,5 +137,5 @@ minimizing the DFA.
 
 .. inlineav:: Minimization2CON ss
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/Minimization2CON.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/FLA/Minimizer.js AV/VisFormalLang/FA/Minimization2CON.js lib/underscore.js
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/VisFormalLang/FA/Minimization2CON.js
    :output: show
