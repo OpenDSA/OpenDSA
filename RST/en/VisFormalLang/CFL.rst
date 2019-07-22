@@ -158,7 +158,7 @@ productions were applied.
 
 .. inlineav:: ParseTree1CON ss
    :links:   AV/VisFormalLang/CFG/ParseTree1CON.css
-   :scripts: AV/VisFormalLang/CFG/ParseTree1CON.js
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/CFG/ParseTree1CON.js
    :output: show
 
 **Definitions:** Partial derivation tree - subtree of derivation tree.

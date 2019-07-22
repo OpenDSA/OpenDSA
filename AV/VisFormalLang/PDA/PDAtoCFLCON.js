@@ -1,7 +1,7 @@
-document.write('<script src="../../../AV/Development/formal_language/fa/Automaton.js"></script>');
-document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
-document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"></script>');
-document.write('<script src="../../../AV/Development/formal_language/contextFree/ConvertPDAtoGrammar.js"></script>');
+//document.write('<script src="../../../AV/Development/formal_language/fa/Automaton.js"></script>');
+//document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
+//document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"></script>');
+//document.write('<script src="../../../AV/Development/formal_language/contextFree/ConvertPDAtoGrammar.js"></script>');
 
 $(document).ready(function() {
     "use strict";

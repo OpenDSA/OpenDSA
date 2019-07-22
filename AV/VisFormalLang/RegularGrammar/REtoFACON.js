@@ -1,8 +1,8 @@
-document.write('<script src="../../../AV/Development/formal_language/fa/Automaton.js"></script>');
-document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"></script>');
-document.write('<script src="../../../AV/Development/formal_language/regular/Discretizer.js"></script>');
-document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
-document.write('<script src="../../../AV/Development/formal_language/regular/GrammarToFAConverter.js"></script>');
+//document.write('<script src="../../../AV/Development/formal_language/fa/Automaton.js"></script>');
+//document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"></script>');
+//document.write('<script src="../../../AV/Development/formal_language/regular/Discretizer.js"></script>');
+//document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
+//document.write('<script src="../../../AV/Development/formal_language/regular/GrammarToFAConverter.js"></script>');
 
 //document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../AV/Development/formal_language/css/FA.css\" />");
 $(document).ready(function() {

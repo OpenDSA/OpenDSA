@@ -96,8 +96,8 @@ then :math:`L` is a CFL.
 
 
 .. inlineav:: PDAtoCFLCON ss
-   :links: AV/VisFormalLang/PDA/PDAtoCFLCON.css
-   :scripts: AV/VisFormalLang/PDA/PDAtoCFLCON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/PDA/PDAtoCFLCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/PDA/PDAtoCFLCON.js
    :output: show
 
 

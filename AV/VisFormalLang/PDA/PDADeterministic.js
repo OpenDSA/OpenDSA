@@ -11,7 +11,7 @@ $(document).ready(function() {
         interpret = config.interpreter;
   
     var url = interpret("pda1");
-    var pda = new av.ds.pda({width: 600, height: 200});
+    var pda = new av.ds.PDA({width: 600, height: 200});
     PDA.prototype.loadFAFromJFLAPFile.call(pda,url);
     pda.disableDragging();
     av.displayInit();

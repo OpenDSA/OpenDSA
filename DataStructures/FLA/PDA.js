@@ -813,7 +813,7 @@ Stackproto.formStack = function() {
         for(var i = 0; i < this.replaceLHS(productions, next).length; i++){
           var newString = this.replaceLHS(productions, next)[i];
           if(!shouldSkipString(inputString, newString)){
-            queue.add(this.removeLambda(newString));
+            queue.add(newString);
             table[this.replaceLHS(productions, next)[i]] = next;
           }
         }
@@ -1659,7 +1659,7 @@ Stackproto.formStack = function() {
   transformerProto.convertToPDA = function () {
       var productions = this.productions;
       this.jsav.umsg("The first step is to create a new PDA with three states.")
-      this.builtDFA = this.jsav.ds.fa({width: 500, top: 0, left: 100});
+      this.builtDFA = this.jsav.ds.FA({width: 500, top: 0, left: 100});
       var gWidth = this.builtDFA.element.width(),
           gHeight = this.builtDFA.element.height();
       var a = this.builtDFA.addNode({left: 0.17 * gWidth, top: 0.87 * gHeight}),
@@ -1671,6 +1671,7 @@ Stackproto.formStack = function() {
       this.builtDFA.layout();
       this.jsav.step();
       this.convertToPDAinLL(a, b, c, productions, startVar);
+      this.builtDFA.disableDragging();
     };
   
     transformerProto.convertToPDAinLL = function(a, b, c, productions, startVar) {
@@ -1910,7 +1911,25 @@ Stackproto.formStack = function() {
     jsav.recorded();
     arr.click(arrayClickHandler);
   }
-
+  function arrayClickHandler(index) {
+		// Temporarily turn off animation (if it was on).
+		var oldFx = $.fx.off || false;
+    	$.fx.off = true;
+    	// If the step clicked on comes after the current step, increment until you reach that step.
+    	if (index > jsav.currentStep() - 1) {
+    		while (index > jsav.currentStep() - 1 && jsav._redo.length) {
+				jsav.forward();
+			}
+    	}
+    	// If the step clicked on comes before the current step, decrement until you reach that step.
+    	if (index < jsav.currentStep() - 1) {
+    		while (index < jsav.currentStep() - 1 && jsav._undo.length) {
+				jsav.backward();
+			}
+    	}
+    	// If animation was originally on, turn it back on again now.
+		$.fx.off = oldFx;
+	};
   window.runPDA = run;
   
   var traverse = function(graph, currentStates) {

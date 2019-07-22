@@ -1102,7 +1102,14 @@ transitionproto.layout = function(options) {
 		//		+ (Math.round(2 * sWidth * adjust) + 2) + ',' + 0, options);
 		/************************This code is added to determine the arc direction for the loop arrow. if the state is in the second half of the 
 		FA, then the acr will be in the button. */
-		if((this.end().position().top > this.container.element.height()/2)){//this means, draw the arrow at the button
+		var FAnodes = this.container._nodes;
+		var minToplocation = FAnodes[0].position().top, maxTopLocation = FAnodes[0].position().top;
+		for(var n = 1; n< FAnodes.length; n++)
+		{
+			minToplocation = Math.min(minToplocation, FAnodes[n].position().top);
+			maxTopLocation = Math.max(maxTopLocation, FAnodes[n].position().top);
+		}
+		if((this.end().position().top > this.container.element.height()/2) && minToplocation !== maxTopLocation){//this means, draw the arrow at the button
 			fromY = Math.round(fromY + sHeight);//Change the - sign to + in case we need to flip the loop arrow and remove "adjust"
 			this.g.path("M" + fromX + ',' + fromY + ' a' + loopR + ',' + loopR + ' -45 1,0 '  //this 1 is to draw it from the top. Make it 0 to flip it.
 				+ (Math.round(2 * sWidth * adjust) + 2) + ',' + 0, options);
@@ -1139,8 +1146,15 @@ transitionproto.layout = function(options) {
 				bbwidth = Math.abs(fromPoint[0] - toPoint[0]),
 				bbheight = Math.abs(fromPoint[1] - toPoint[1]);
 		if (this.start().equals(this.end())) {//in case of loop arrow we need to do the same as we did for the arrow direction. 
+			var FAnodes = this.container._nodes;
+			var minToplocation = FAnodes[0].position().top, maxTopLocation = FAnodes[0].position().top;
+			for(var n = 1; n< FAnodes.length; n++)
+			{
+				minToplocation = Math.min(minToplocation, FAnodes[n].position().top);
+				maxTopLocation = Math.max(maxTopLocation, FAnodes[n].position().top);
+			}
 			bbtop = Math.round(start.top - 1.1 * sHeight);
-			if((this.end().position().top > this.container.element.height()/2)){
+			if((this.end().position().top > this.container.element.height()/2) && minToplocation!== maxTopLocation){
 				bbtop = Math.round(start.top + sHeight * 2 + 2.6 * sHeight);
 			}
 			bbleft = Math.round(start.left);

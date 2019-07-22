@@ -146,8 +146,8 @@ grammar G such that :math:`L = L(G)`.
 
 
 .. inlineav:: REtoFACON ss
-   :links:   AV/VisFormalLang/RegularGrammar/REtoFACON.css
-   :scripts: AV/VisFormalLang/RegularGrammar/REtoFACON.js
+   :links:   DataStructures/FLA/FLA.css AV/VisFormalLang/RegularGrammar/REtoFACON.css
+   :scripts: lib/underscore.js DataStructures/FLA/Discretizer.js DataStructures/FLA/FA.js AV/VisFormalLang/RegularGrammar/REtoFACON.js
    :output: show
 
 

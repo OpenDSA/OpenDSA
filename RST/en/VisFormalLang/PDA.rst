@@ -148,8 +148,8 @@ state.
 
 
 .. inlineav:: PDATrace1 ss
-   :links: AV/VisFormalLang/PDA/PDATrace1.css
-   :scripts: AV/VisFormalLang/PDA/PDATrace1.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/PDA/PDATrace1.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/PDA/PDATrace1.js
    :align: center
 
 

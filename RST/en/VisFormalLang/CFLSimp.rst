@@ -256,7 +256,7 @@ Resulting Grammar :math:`G'` is such that :math:`L(G) = L(G')` and
 
 .. inlineav:: RemoveUselessCON ss
    :links:   AV/VisFormalLang/CFG/RemoveUselessCON.css
-   :scripts: AV/VisFormalLang/CFG/RemoveUselessCON.js
+   :scripts: lib/underscore.js JSAV/lib/dagre.min.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/CFG/RemoveUselessCON.js
    :output: show
 
 

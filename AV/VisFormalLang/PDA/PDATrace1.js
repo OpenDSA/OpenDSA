@@ -12,7 +12,7 @@ $(document).ready(function() {
     av.displayInit();
     var url = interpret("pda1");
     var inputString = "aaabbb";
-    var pda = new av.ds.pda({width: 600, height: 200, url: url});
+    var pda = new av.ds.PDA({width: 600, height: 200, url: url});
     runPDA(pda, inputString, true);
     av.recorded();
   });
