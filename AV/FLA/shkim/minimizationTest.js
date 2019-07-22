@@ -39,7 +39,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 			var data = localStorage['toMinimize'];
 			return deserialize(data);
 		}
-		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
+		var graph = jsav.ds.FA({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
 		var gWidth = graph.element.width();
 		var a = graph.addNode({left: 0.05*gWidth, top: 50}),		
       		b = graph.addNode({left: 0.2*gWidth, top: 300}),
@@ -86,7 +86,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 
 	function deserialize (data) {
 		var gg = jQuery.parseJSON(data);
-		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
+		var graph = jsav.ds.FA({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
 		for (var i = 0; i < gg.nodes.length; i++) {
 	    	var node = graph.addNode('q' + i),
 	    		offset = $('.jsavgraph').offset(),
@@ -177,7 +177,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		$('#autobutton').hide();
 		$('.hide').show();
 		$('#editable').empty();
-		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'automatic', element: $('#editable')});
+		var graph = jsav.ds.FA({width: '45%', height: 440, layout: 'automatic', element: $('#editable')});
 		for (var i = 0; i < leaves.length; i ++) {
 			var node = graph.addNode();
 			node.stateLabel(leaves[i]);

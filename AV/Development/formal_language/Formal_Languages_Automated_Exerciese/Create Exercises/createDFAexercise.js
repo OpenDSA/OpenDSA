@@ -212,7 +212,7 @@
 			return;
 		}
 		else {
-			g = new jsav.ds.fa({width: '730px', height: 440, layout: "automatic", editable: true});
+			g = new jsav.ds.FA({width: '730px', height: 440, layout: "automatic", editable: true});
 			var nodeMap = {};			// map node IDs to nodes
 			var xmlStates = xmlDoc.getElementsByTagName("state");
 			xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })

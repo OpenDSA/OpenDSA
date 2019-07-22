@@ -26,7 +26,7 @@
 	// Function to create a graph out of a serialized representation.
 	var initGraph = function(opts) {
 		var gg = jQuery.parseJSON(g);
-		var graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+		var graph = jsav.ds.FA($.extend({width: '90%', height: 440}, opts));
 		// For each node in the JSON, initialize it on the graph.
 		for (var i = 0; i < gg.nodes.length; i++) {
 	    	var node = graph.addNode('q' + i),

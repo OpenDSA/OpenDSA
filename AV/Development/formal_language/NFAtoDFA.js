@@ -42,7 +42,7 @@
 		else if(type == 'Exercise')
 		{
 			var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
-			referenceGraph = jsav.ds.fa({width: "45%", height: 440, layout: "manual", element: $("#reference")});
+			referenceGraph = jsav.ds.FA({width: "45%", height: 440, layout: "manual", element: $("#reference")});
 			referenceGraph.initFromParsedJSONSource(source, 0.5);
 			referenceGraph.updateAlphabet();
 			alphabet = Object.keys(referenceGraph.alphabet).sort();
@@ -57,7 +57,7 @@
 
   	function deserialize(data) {
 		var gg = jQuery.parseJSON(data);
-		var graph = jsav.ds.fa({width: "45%", height: 440, layout: "manual", element: $("#reference")});
+		var graph = jsav.ds.FA({width: "45%", height: 440, layout: "manual", element: $("#reference")});
 		graph.initFromParsedJSONSource(gg, 0.5);
 		graph.updateAlphabet();
 		alphabet = Object.keys(graph.alphabet).sort();
@@ -71,7 +71,7 @@
 			$("#editable").empty();
 		}
 		jsav.umsg("Choose a state to expand:");
-		studentGraph = jsav.ds.fa({width: "45%", height: 440, element: $("#editable")});
+		studentGraph = jsav.ds.FA({width: "45%", height: 440, element: $("#editable")});
 		var initialNode = studentGraph.addNode({left: "20px"});
 		initialNode.stateLabel(lambdaClosure([referenceGraph.initial.value()], referenceGraph).sort().join());
 		initialNode.stateLabelPositionUpdate();
@@ -79,7 +79,7 @@
 
 		$("#editable").off("click").click(graphClickHandlers);
 		studentGraph.click(nodeClickHandlers);
-		answerGraph = convertToDFA(jsav, referenceGraph, {width: "45%", height: 440, visible: false, element: $("#answer")});
+		answerGraph = FiniteAutomaton.convertNFAtoDFA(jsav, referenceGraph, {width: "45%", height: 440, visible: false, element: $("#answer")});
 		//answerGraph.hide();
 		return studentGraph;
 	}	

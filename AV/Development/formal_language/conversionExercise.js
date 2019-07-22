@@ -56,7 +56,7 @@ var correctSteps = 0,
 
  function deserialize (data) {
 	 var gg = jQuery.parseJSON(data);
-	 var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
+	 var graph = jsav.ds.FA({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
 	 for (var i = 0; i < gg.nodes.length; i++) {
 		 var node = graph.addNode('q' + i),
 				 offset = $('.jsavgraph').offset(),
@@ -94,7 +94,7 @@ var correctSteps = 0,
 		 $('#editable').empty();
 	 }
 	 jsav.umsg("Choose a state to expand:");
-	 studentGraph = jsav.ds.fa({width: '45%', height: 440, element: $('#editable')});
+	 studentGraph = jsav.ds.FA({width: '45%', height: 440, element: $('#editable')});
 	 var initialNode = studentGraph.addNode({left: "20px"});
 	 initialNode.stateLabel(lambdaClosure([referenceGraph.initial.value()], referenceGraph).sort().join());
 	 initialNode.stateLabelPositionUpdate();
@@ -287,7 +287,7 @@ var correctSteps = 0,
 		//because this clear step deletes the html as well
 		$("#graphs").prepend("<div id='reference' class='jsavcanvas'></div>");
 	 }
-	 	referenceGraph = jsav.ds.fa({width: '45%', height: 440, layout: "automatic", element: $("#reference")});
+	 	referenceGraph = jsav.ds.FA({width: '45%', height: 440, layout: "automatic", element: $("#reference")});
 	 var nodeMap = {};			// map node IDs to nodes
 	 var xmlStates = automaton.getElementsByTagName("state");
 	 xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })

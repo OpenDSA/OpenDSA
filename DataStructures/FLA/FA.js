@@ -1803,6 +1803,7 @@ var visualizeConvertToDFA = function(jsav, graph, opts) {
  */
 FiniteAutomaton.convertNFAtoDFA = convertToDFA;
 window.FADepthFirstSearch = dfs;
+window.lambdaClosure = lambdaClosure;
 }(jQuery));
 /*
 ****************************************************************************

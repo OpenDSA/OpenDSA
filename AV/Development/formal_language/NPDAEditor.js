@@ -406,7 +406,7 @@ var lambda = String.fromCharCode(955),
     }
     return false;
   };
-  // dfs on the dictionary
+  // FADepthFirstSearch on the dictionary
   function findReachable (start, pDict, visited) {
     for (var i = 0; i < pDict[start].length; i++) {
       if (!(pDict[start][i] in visited)) {

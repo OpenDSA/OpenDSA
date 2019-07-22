@@ -1030,7 +1030,7 @@ It may even be better to move the proofs into separate demos.
     arrayStep = 1;
 
     // build DFA to model the parsing stack
-    modelDFA = jsav.ds.fa({width: '90%', height: 440, layout: 'automatic'});
+    modelDFA = jsav.ds.FA({width: '90%', height: 440, layout: 'automatic'});
     var sNode = modelDFA.addNode();
     modelDFA.makeInitial(sNode);
     sNode.stateLabel("S'"+arrow+dot+productions[0][0]);
@@ -1202,7 +1202,7 @@ It may even be better to move the proofs into separate demos.
       $('#parsetablebutton').show();
       jsav.umsg('Build the DFA: Click a state.');
       // create the DFA
-      builtDFA = jsav.ds.fa({width: '90%', height: 440});
+      builtDFA = jsav.ds.FA({width: '90%', height: 440});
       builtDFA.click(dfaHandler);
       $('.jsavgraph').click(graphHandler);
       $('#av').append($('#dfabuttons'));
@@ -2639,7 +2639,7 @@ It may even be better to move the proofs into separate demos.
     jsav.umsg('Complete the FA.');
     // keep a map of variables to FA states
     var nodeMap = {};
-    builtDFA = jsav.ds.fa({width: '90%', height: 440, layout: "automatic"});
+    builtDFA = jsav.ds.FA({width: '90%', height: 440, layout: "automatic"});
     var newStates = [];     // variables
     for (var i = 0; i < productions.length; i++) {
       newStates.push(productions[i][0]);
@@ -2789,7 +2789,7 @@ It may even be better to move the proofs into separate demos.
     $('.jsavcontrols').hide();
     $(m.element).css("margin-left", "auto");
     jsav.umsg('Complete the NPDA.');
-    builtDFA = jsav.ds.fa({width: '90%', height: 440});
+    builtDFA = jsav.ds.FA({width: '90%', height: 440});
     var gWidth = builtDFA.element.width(),
         gHeight = builtDFA.element.height();
     var a = builtDFA.addNode({left: 0.17 * gWidth, top: 0.87 * gHeight}),    

@@ -14,7 +14,7 @@
 	// initialize TM
 	// The default TM has two tapes and is hardcoded (will be the default no matter how many tapes the user selects)
 	var initGraph = function(opts) {
-		g = jsav.ds.fa($.extend({width: '90%', height: 440, emptystring: square}, opts));
+		g = jsav.ds.FA($.extend({width: '90%', height: 440, emptystring: square}, opts));
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 			gHeight = g.element.height();
@@ -767,7 +767,7 @@
 				g.clear();
 				$('.jsavgraph').off();
 			}
-			g = new jsav.ds.fa({width: '90%', height: 440, emptystring: square, layout: "manual"});
+			g = new jsav.ds.FA({width: '90%', height: 440, emptystring: square, layout: "manual"});
 			if (xmlDoc.getElementsByTagName("tapes")[0]) {
 				tapeNumber = Number(xmlDoc.getElementsByTagName("tapes")[0].childNodes[0].nodeValue);
 			} else {

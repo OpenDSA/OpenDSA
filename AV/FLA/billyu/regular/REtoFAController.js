@@ -34,7 +34,7 @@ var controllerProto = REtoFAController.prototype;
 
 controllerProto.init = function(jsav, expression, options) {
 	this.jsav = jsav;	
-	this.fa = jsav.ds.fa($.extend({width: '750px', height: 440, layout: 'automatic'}, options));
+	this.fa = jsav.ds.FA($.extend({width: '750px', height: 440, layout: 'automatic'}, options));
 	var start = this.fa.addNode({left: '15px'});
 	var end = this.fa.addNode({left: '700px', top: '400px'});
 	this.fa.makeInitial(start);

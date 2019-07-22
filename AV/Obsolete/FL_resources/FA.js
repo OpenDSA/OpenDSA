@@ -10,7 +10,7 @@ var menuSelected; // variable for node that's right clicked on
     return;
   }
   var Edge = JSAV._types.ds.Edge;
-  JSAV.ext.ds.fa = function (options) {
+  JSAV.ext.ds.FA = function (options) {
     var opts = $.extend(true, {visible: true, autoresize: true}, options);
     return new FiniteAutomaton(this, opts);
   };
@@ -1084,7 +1084,7 @@ The commented code creates a slideshow of the conversion (buggy).
 */
 var convertToDFA = function(jsav, graph, opts) {
   // jsav.label("Converted:");
-  var g = jsav.ds.fa($.extend({layout: 'automatic'}, opts)),
+  var g = jsav.ds.FA($.extend({layout: 'automatic'}, opts)),
       alphabet = Object.keys(graph.alphabet),
       startState = graph.initial,
       newStates = [];

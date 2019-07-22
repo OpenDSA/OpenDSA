@@ -10,7 +10,7 @@ var exerciseLocation;
 		epsilon = String.fromCharCode(949), // Instance variable to store the JavaScript representation of epsilon.
 		none = String.fromCharCode(248), // empty set symbol used for converting to RE
 		emptystring = lambda, // Instance variable to store which empty string notation is being used.
-		willRejectFunction = willReject, // Instance variable to indicate which traversal function to run (shorthand or no).
+		willRejectFunction = FiniteAutomaton.willReject, // Instance variable to indicate which traversal function to run (shorthand or no).
 		exerciseIndex,//for creating exercises
 		type,//type of editor: fixer, tester or editor
 		fatoreController,
@@ -122,7 +122,7 @@ var exerciseLocation;
     
     function deserialize(data) {
       var gg = jQuery.parseJSON(data);
-      var graph = jsav.ds.fa({width: "55%", height: 440, layout: "manual", editable: true, element: $("#reference")});
+      var graph = jsav.ds.FA({width: "55%", height: 440, layout: "manual", editable: true, element: $("#reference")});
       graph.initFromParsedJSONSource(gg, 0.5);
 	  graph.updateAlphabet();
 	  var alphabet = Object.keys(graph.alphabet).sort();
@@ -157,7 +157,7 @@ var exerciseLocation;
           fatoreController.checkForTransitions();
   } else {
 		var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
-		g = jsav.ds.fa($.extend({width: '750px', height: 440, editable: true}, opts));
+		g = jsav.ds.FA($.extend({width: '750px', height: 440, editable: true}, opts));
 		var ratio = 1;
 		if (localStorage['toConvert'] == "true" || localStorage['toMinimize'] == "true") {
 			ratio = 2;
@@ -708,7 +708,7 @@ var exerciseLocation;
 	    	if (g) {
 				g.clear();
 			}
-			g = new jsav.ds.fa({width: '730px', height: 440, layout: "automatic", editable: true});
+			g = new jsav.ds.FA({width: '730px', height: 440, layout: "automatic", editable: true});
 			var nodeMap = {};			// map node IDs to nodes
 	      	var xmlStates = xmlDoc.getElementsByTagName("state");
 	      	xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })

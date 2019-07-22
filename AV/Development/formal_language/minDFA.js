@@ -80,7 +80,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 			nonfinals = [];
 		// ignore unreachable states
 		var reachable = [referenceGraph.initial];
-		dfs(reachable, referenceGraph.initial);
+		FADepthFirstSearch(reachable, referenceGraph.initial);
 		for (var i = 0; i < reachable.length; i++) {
 			val.push(reachable[i].value());
 			if (reachable[i].hasClass('final')) {

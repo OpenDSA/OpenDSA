@@ -83,7 +83,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 
 	function deserialize (data) {
 		var gg = jQuery.parseJSON(data);
-		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
+		var graph = jsav.ds.FA({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
 		graph.initFromParsedJSONSource(gg, 0.5);
 		graph.updateAlphabet();
 		alphabet = Object.keys(graph.alphabet).sort();
@@ -169,7 +169,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		$('.hide').show();
 		$('#exportbutton').hide();
 		$('#editable').empty();
-		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'automatic', element: $('#editable')});
+		var graph = jsav.ds.FA({width: '45%', height: 440, layout: 'automatic', element: $('#editable')});
 		for (var i = 0; i < leaves.length; i ++) {
 			var node = graph.addNode();
 			node.stateLabel(leaves[i]);
@@ -564,7 +564,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		//because this clear step deletes the html as well
 		$("#graphs").prepend("<div id='reference' class='jsavcanvas'></div>");
 	 }
-	 	referenceGraph = jsav.ds.fa({width: '45%', height: 440, layout: "automatic", element: $("#reference")});
+	 	referenceGraph = jsav.ds.FA({width: '45%', height: 440, layout: "automatic", element: $("#reference")});
 	 var nodeMap = {};			// map node IDs to nodes
 	 var xmlStates = automaton.getElementsByTagName("state");
 	 xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })

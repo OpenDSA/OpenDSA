@@ -18,7 +18,7 @@
 			var data = localStorage['toConvert'];
 			return deserialize(data);
 		}
-		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'automatic', element: $('#reference')});
+		var graph = jsav.ds.FA({width: '45%', height: 440, layout: 'automatic', element: $('#reference')});
 		var a = graph.addNode(),		
 	  		b = graph.addNode(),
 	  		c = graph.addNode(),
@@ -43,7 +43,7 @@
 
 	function deserialize (data) {
 		var gg = jQuery.parseJSON(data);
-		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
+		var graph = jsav.ds.FA({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
 		for (var i = 0; i < gg.nodes.length; i++) {
 	    	var node = graph.addNode('q' + i),
 	    		offset = $('.jsavgraph').offset(),
@@ -82,7 +82,7 @@
 			$('#editable').empty();
 		}
 		jsav.umsg("Choose a state to expand:");
-		g = jsav.ds.fa({width: '45%', height: 440, element: $('#editable')});
+		g = jsav.ds.FA({width: '45%', height: 440, element: $('#editable')});
 		var a = g.addNode();
 		a.stateLabel(lambdaClosure([g1.initial.value()], g1).sort().join());
 		a.stateLabelPositionUpdate();

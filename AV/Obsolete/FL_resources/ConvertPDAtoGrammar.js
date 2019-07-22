@@ -21,7 +21,7 @@ var PDAtoGrammarTransformer = function(jsav, grammar, grammerMatrix) {
 transformerProto.convertToPDA = function () {
     var productions = this.productions;
     this.jsav.umsg("The first step is to create a new PDA with three states.")
-    this.builtDFA = this.jsav.ds.fa({width: 500, top: 0, left: 100});
+    this.builtDFA = this.jsav.ds.FA({width: 500, top: 0, left: 100});
     var gWidth = this.builtDFA.element.width(),
         gHeight = this.builtDFA.element.height();
     var a = this.builtDFA.addNode({left: 0.17 * gWidth, top: 0.87 * gHeight}),

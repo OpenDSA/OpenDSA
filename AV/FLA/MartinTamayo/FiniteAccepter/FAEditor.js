@@ -23,7 +23,7 @@
 		// Remove the old graph, parse JSON, and initialize the new graph.
 		$('.jsavgraph').remove();
 		var gg = jQuery.parseJSON(g);
-		g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+		g = jsav.ds.FA($.extend({width: '90%', height: 440}, opts));
 		// Add the JSON nodes to the graph.
 		for (var i = 0; i < gg.nodes.length; i++) {
 	    	var node = g.addNode('q' + i),
@@ -745,7 +745,7 @@
 	    	if (g) {
 				g.clear();
 			}
-			g = new jsav.ds.fa({width: '90%', height: 440, layout: "automatic"});
+			g = new jsav.ds.FA({width: '90%', height: 440, layout: "automatic"});
 			var nodeMap = {};			// map node IDs to nodes
 	      	var xmlStates = xmlDoc.getElementsByTagName("state");
 	      	xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })

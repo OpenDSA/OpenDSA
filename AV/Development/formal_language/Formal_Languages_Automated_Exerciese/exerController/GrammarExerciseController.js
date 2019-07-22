@@ -173,7 +173,7 @@ controllerProto.updateExercise = function(id) {
 	//if the exercise contains a FA, then draw it and show the graph. Hide the graph otherwise
 	if(exercise.graph && exercise.graph.nodes.length > 0){//there is a grapth and we need to draw it to the student
 		if(!this.exerciseFA){
-		this.exerciseFA = this.jsav.ds.fa($.extend({width: "45%", height: 440, layout: "manual", element: $("#graph")}));
+		this.exerciseFA = this.jsav.ds.FA($.extend({width: "45%", height: 440, layout: "manual", element: $("#graph")}));
 		var ratio = 1;
 		this.exerciseFA.initFromParsedJSONSource(exercise.graph, ratio);
 		document.getElementById("graph").style.float = "left";
@@ -350,7 +350,7 @@ controllerProto.serializeGrammar = function () {
   controllerProto.convertToFA = function (productions) {
     // keep a map of variables to FA states
     var nodeMap = {};
-    var builtDFA = this.jsav.ds.fa({visible:false});
+    var builtDFA = this.jsav.ds.FA({visible:false});
     var newStates = [];     // variables
     for (var i = 0; i < productions.length; i++) {
       newStates.push(productions[i][0]);

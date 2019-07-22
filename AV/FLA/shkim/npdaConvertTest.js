@@ -9,7 +9,7 @@
 
 	// initialize PDA
 	var initGraph = function(opts) {
-		g = jsav.ds.fa($.extend({width: '45%', height: 440, element: $('#reference')}, opts));
+		g = jsav.ds.FA($.extend({width: '45%', height: 440, element: $('#reference')}, opts));
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 			gHeight = g.element.height();
@@ -281,7 +281,7 @@
 	    	if (g) {
 				$('#reference').empty();
 			}
-			g = new jsav.ds.fa({width: '45%', height: 440, layout: "manual", element: $('#reference')});
+			g = new jsav.ds.FA({width: '45%', height: 440, layout: "manual", element: $('#reference')});
 			var nodeMap = {};			// map node IDs to nodes
 	      	var xmlStates = xmlDoc.getElementsByTagName("state");
 	      	xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})

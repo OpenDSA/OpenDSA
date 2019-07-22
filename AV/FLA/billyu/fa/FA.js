@@ -15,7 +15,7 @@ var FiniteAutomaton;
 		console.log("Error!!! No JSAV lib!!!");
 	}
 	var Edge = JSAV._types.ds.Edge;
-	JSAV.ext.ds.fa = function (options) {
+	JSAV.ext.ds.FA = function (options) {
 		var opts = $.extend(true, {visible: true, autoresize: true}, options);
 		return new FiniteAutomaton(this, opts);
 	};
@@ -1186,7 +1186,7 @@ Requires underscore.js
  */
 var convertToDFA = function(jsav, graph, opts) {
 	// jsav.label("Converted:");
-	var g = jsav.ds.fa($.extend({layout: 'automatic'}, opts)),
+	var g = jsav.ds.FA($.extend({layout: 'automatic'}, opts)),
 			alphabet = Object.keys(graph.alphabet),
 			startState = graph.initial,
 			newStates = [];

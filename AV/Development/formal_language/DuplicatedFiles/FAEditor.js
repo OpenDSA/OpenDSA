@@ -109,7 +109,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		// Remove the old graph, parse JSON, and initialize the new graph.
 		$('.jsavgraph').remove();
 		var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
-		g = jsav.ds.fa($.extend({width: '750px', height: 440, editable: true}, opts));
+		g = jsav.ds.FA($.extend({width: '750px', height: 440, editable: true}, opts));
 		var ratio = 1;
 		if (localStorage['toConvert'] == "true" || localStorage['toMinimize'] == "true") {
 			ratio = 2;
@@ -609,7 +609,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	    	if (g) {
 				g.clear();
 			}
-			g = new jsav.ds.fa({width: '730px', height: 440, layout: "automatic", editable: true});
+			g = new jsav.ds.FA({width: '730px', height: 440, layout: "automatic", editable: true});
 			var nodeMap = {};			// map node IDs to nodes
 	      	var xmlStates = xmlDoc.getElementsByTagName("state");
 	      	xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })

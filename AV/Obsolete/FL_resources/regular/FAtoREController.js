@@ -344,7 +344,7 @@ function getAllNonStartNorFinalStates(graph){
 
 function drawTheFinalGraph(jsav, options, expression)
 {
-  var fa = jsav.ds.fa($.extend(options));
+  var fa = jsav.ds.FA($.extend(options));
 	var start = fa.addNode({left: '15px'});
 	var height = options.height || 440;
 	var width = options.width || 750;
