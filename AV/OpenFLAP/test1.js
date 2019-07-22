@@ -12,7 +12,7 @@ $(document).ready(function() {
   var top = 25;
 
   // graph and nodes
-  var FA = new av.ds.fa();
+  var FA = new av.ds.FA();
   var q0 = FA.addNode({left: left - 150, top: top + 50}),
       q1 = FA.addNode({left: left - 50, top: top}),
       q2 = FA.addNode({left: left - 50, top: top + 100}),

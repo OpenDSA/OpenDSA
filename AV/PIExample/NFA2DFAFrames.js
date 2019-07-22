@@ -12,8 +12,8 @@ var injector = PIFRAMES.init(av_name);
 var config = ODSA.UTILS.loadConfig({av_name: av_name}),
     interpret = config.interpreter, // get the interpreter
     code = config.code;             // get the code object
-var FA = new av.ds.fa({width: 350, height: 240,left: 10, top:0});
-var DFA = new av.ds.fa({width: 350, height: 300, left: 10, top:250});
+var FA = new av.ds.FA({width: 350, height: 240,left: 10, top:0});
+var DFA = new av.ds.FA({width: 350, height: 300, left: 10, top:250});
 //var separator =  av.g.path(["M", 350, 0, "v", 500].join(","));
 //separator.show();
 // Slide 1

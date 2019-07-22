@@ -2695,7 +2695,7 @@ function getAllNonStartNorFinalStates(graph){
 
 function drawTheFinalGraph(jsav, options, expression)
 {
-  var fa = jsav.ds.fa($.extend(options));
+  var fa = jsav.ds.FA($.extend(options));
 	var start = fa.addNode({left: '15px'});
 	var height = options.height || 440;
 	var width = options.width || 750;
@@ -3343,7 +3343,7 @@ function layoutTable (mat, index) {
     //this.jsav.umsg('Complete the FA.');
     // keep a map of variables to FA states
     this.nodeMap = {};
-    this.builtDFA = this.jsav.ds.fa({width: NFAoptions.width, height: NFAoptions.height, left: NFAoptions.left, top: NFAoptions.top, layout: "automatic"});
+    this.builtDFA = this.jsav.ds.FA({width: NFAoptions.width, height: NFAoptions.height, left: NFAoptions.left, top: NFAoptions.top, layout: "automatic"});
     this.builtDFA.enableDragging();
     var newStates = [];     // variables
     for (var i = 0; i < productions.length; i++) {

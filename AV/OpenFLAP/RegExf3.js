@@ -10,7 +10,7 @@ $(document).ready(function() {
   interpret = config.interpreter;
   var url = interpret("regexp3");
 
-  var BinaryDFA = new av.ds.fa();
+  var BinaryDFA = new av.ds.FA();
   FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA,url);
   BinaryDFA.disableDragging();
   av.displayInit();

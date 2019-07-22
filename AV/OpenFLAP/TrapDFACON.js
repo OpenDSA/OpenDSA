@@ -9,7 +9,7 @@ $(document).ready(function() {
   var top = 50;
 
   // graph and nodes
-  var DFA = new av.ds.fa();
+  var DFA = new av.ds.FA();
 
   //var graph = av.ds.graph({layout: "manual"});
   var q0 = DFA.addNode({left: left - 200, top: top}),

@@ -7,9 +7,7 @@ $(document).ready(function() {
   interpret = config.interpreter;
   var url = interpret("regexp2");
 
-  var BinaryDFA = new av.ds.fa();
-  FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA,url);
-  BinaryDFA.disableDragging();
+  new av.ds.FA({url:url});
   av.displayInit();
   av.recorded();
 });

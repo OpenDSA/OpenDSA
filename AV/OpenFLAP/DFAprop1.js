@@ -11,7 +11,7 @@ $(document).ready(function() {
   interpret = config.interpreter;
   var url = interpret("prop1");
 
-  var BinaryDFA = new av.ds.fa();
+  var BinaryDFA = new av.ds.FA();
   FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA,url);
   BinaryDFA.disableDragging();
 　
@@ -20,28 +20,28 @@ $(document).ready(function() {
   // change slides
   //BinaryDFA.hide();
   var url2 = interpret("prop2");
-  var BinaryDFA2 = new av.ds.fa();
+  var BinaryDFA2 = new av.ds.FA();
   FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA2,url2);
   BinaryDFA2.disableDragging();
   av.step();
   
   //BinaryDFA2.hide();
   var url3 = interpret("prop3");
-  var BinaryDFA3 = new av.ds.fa();
+  var BinaryDFA3 = new av.ds.FA();
   FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA3,url3);
   BinaryDFA3.disableDragging();
   av.step();
   
   //BinaryDFA3.hide();
   var url4 = interpret("prop4");
-  var BinaryDFA4 = new av.ds.fa();
+  var BinaryDFA4 = new av.ds.FA();
   FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA4,url4);
   BinaryDFA4.disableDragging();
   av.step();
   
   //BinaryDFA4.hide();
   var url5 = interpret("prop5");
-  var BinaryDFA5 = new av.ds.fa();
+  var BinaryDFA5 = new av.ds.FA();
   FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(BinaryDFA5,url5);
   BinaryDFA5.disableDragging();
   

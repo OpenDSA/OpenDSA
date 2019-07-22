@@ -18,7 +18,7 @@ $(document).ready(function() {
     for (var i = lastRow + 1; i < arr.length; i++) {
         grammarMatrix._arrays[i].hide();
     }
-    var FA = new av.ds.fa({width: 300, height: 150, left: 10});
+    var FA = new av.ds.FA({width: 300, height: 150, left: 10});
     FiniteAutomaton.prototype.loadFAFromJFLAPFile.call(FA,url);
     av.umsg("Suppose we need to convert this NFA to a Regular Grammar");
     var FAtoGrammar = new FAtoGrammarConverter(av, FA);

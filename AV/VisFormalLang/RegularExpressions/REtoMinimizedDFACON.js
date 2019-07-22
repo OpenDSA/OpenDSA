@@ -24,7 +24,7 @@ $(document).ready(function() {
     av.step();
     av.umsg("The next step is to convert the NFA to DFA");
     av.step();
-    var DFA = convertToDFA(av, NFA, {left: Width+50, top: 0, width: Width, height: Height}, true);
+    var DFA = FiniteAutomaton.convertNFAtoDFA(av, NFA, {left: Width+50, top: 0, width: Width, height: Height}, true);
     av.step();
     av.umsg("Now, we need to minimize the DFA");
     var tree = new av.ds.tree($.extend({width: Width, height: Height, editable: true, left: 10, top: Height + 50}));
