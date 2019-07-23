@@ -767,7 +767,10 @@ class ODSA_RST_Module:
         if not os.path.exists('{0}/{1}'.format(config.odsa_dir, link)):
           print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, link))
         if not has_directive:
-          mod_data.insert(1, '\n.. odsalink:: {0}\n'.format(link))
+          if os.environ['SLIDES'] == 'no':
+            mod_data.insert(1, '\n.. odsalink:: {0}\n'.format(link))
+          else:
+            mod_data.append('\n{0}.. odsalink:: {1}'.format(indent, link))
 
       mod_sections = mod_attrib['sections'].keys() if 'sections' in mod_attrib and mod_attrib['sections'] != None else []
 
