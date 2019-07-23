@@ -215,88 +215,77 @@ Indexing
      stores keys.
 
 
-.. slide:: B+-Tree Example
+.. slide:: 23+-Tree Build Example
 
-   .. odsafig:: Images/BPexamp.png
-      :width: 800
+   .. inlineav:: TTPbuildCON ss
+      :links: AV/Indexing/BPTree.css AV/Indexing/TTPTreeCON.css
+      :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/TTPbuildCON.js
+      :output: show
+
+      An example of building a ":math:`2-3^+` tree
+
+.. slide:: 23+-Tree Search Example
+
+   .. inlineav:: TTPfindCON ss
+      :links: AV/Indexing/BPTree.css AV/Indexing/TTPTreeCON.css
+      :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/TTPfindCON.js
+      :output: show
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Example of a :math:`\mathrm{B}^+` tree.
 
-   * In this example, an internal node can have 2 to 4 children
-   * A leaf node can hold 3 to 5 keys
+      An example of searching a ":math:`2-3^+` tree
 
-.. slide:: B+-Tree Insertion
+.. slide:: 23+-Tree Delete Example
 
-   .. odsafig:: Images/BPins.png
-      :width: 600
+   .. inlineav:: TTPdeleteCON ss
+      :links: AV/Indexing/BPTree.css AV/Indexing/TTPTreeCON.css
+      :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/TTPdeleteCON.js
+      :output: show
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Examples of :math:`\mathrm{B}^+` tree insertion.
+
+      An example of deleting from a ":math:`2-3^+` tree
 
 
-.. slide:: B+-Tree Deletion (1)
+.. slide:: B+-Tree Find
 
-   .. odsafig:: Images/BPexamp.png
-      :width: 800
+   .. inlineav:: BPfindCON ss
+      :links: AV/Indexing/BPTree.css AV/Indexing/BPTreeCON.css
+      :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPfindCON.js
+      :output: show
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Example of a :math:`\mathrm{B}^+` tree.
 
-   * Delete 18
+      An example of search in a B+ tree of order four.
+      Internal nodes must store between two and four children.
 
-   .. odsafig:: Images/BPsimDel.png
-      :width: 800
+
+.. slide:: B+-Tree Insert
+
+   .. inlineav:: BPbuildCON ss
+      :links: AV/Indexing/BPTree.css AV/Indexing/BPTreeCON.css
+      :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPbuildCON.js
+      :output: show
+
+      An example of building a B+ tree of order four.
+
+
+.. slide:: B+-Tree Deletion
+
+   .. inlineav:: BPdeleteCON ss
+      :links: AV/Indexing/BPTree.css AV/Indexing/BPTreeCON.css
+      :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPdeleteCON.js
+      :output: show
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Simple deletion from a :math:`\mathrm{B}^+` tree.
 
+      An example of deletion in a B+ tree of order four.
 
-.. slide:: B+-Tree Deletion (2)
+.. slide:: B+-Tree Insert (Degree 5)
 
-   .. odsafig:: Images/BPexamp.png
-      :width: 800
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Example of a :math:`\mathrm{B}^+` tree.
+   .. inlineav:: BPbuild5CON ss
+      :links: AV/Indexing/BPTree.css AV/Indexing/BPTreeCON.css
+      :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPbuild5CON.js
+      :output: show
 
-   * Delete 12
+      An example of building a B+ tree of degree 5
 
-   .. odsafig:: Images/BPborrow.png
-      :width: 800
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Deletion from a :math:`\mathrm{B}^+` tree via borrowing from
-            a sibling.
-
-
-.. slide:: B+-Tree Deletion (3)
-
-   .. odsafig:: Images/BPexamp.png
-      :width: 800
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Example of a :math:`\mathrm{B}^+` tree.
-
-   * Delete 33
-
-   .. odsafig:: Images/BPmerge.png
-      :width: 800
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Deletion from a :math:`\mathrm{B}^+` tree via collapsing siblings
-
-.. slide:: .
-
-   .
 
 .. slide:: B-Tree Space Analysis (1)
 

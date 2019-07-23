@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   var xStart = 250;
   var yStart = 0;
-  av.label("Grammars", {left: 0 + xStart, top: 0 + yStart});
+  av.label("Grammars, etc.", {left: 0 + xStart, top: 0 + yStart});
   av.label("Machines", {left: 320 + xStart, top: 0 + yStart});
 
   av.label("Unrestricted", {left: 0 + xStart, top: 40 + yStart});
@@ -39,6 +39,8 @@ $(document).ready(function() {
 
   av.label("Regular", {left: 0 + xStart, top: 180 + yStart});
   av.label("grammar", {left: 5 + xStart, top: 195 + yStart});
+  av.label("(RegEx)", {left: 5 + xStart, top: 212 + yStart});
+
   av.g.line(65 + xStart, 220 + yStart, 155 + xStart, 175 + yStart,
             {"arrow-end": "classic-wide-long"});
   av.label("Finite", {left: 320 + xStart, top: 180 + yStart});

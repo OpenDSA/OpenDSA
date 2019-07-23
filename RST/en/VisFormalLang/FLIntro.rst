@@ -116,18 +116,19 @@ the following.
   But, can you can solve this simpler than that, without a stack?
   You can actually do this with one integer variable:
   add one for left paren, subtract one for right paren.
-  The requiremens are that the count starts at 0, never goes negative,
+  The requirements are that the count starts at 0, never goes negative,
   and ends with 0.
 
-* But, can you do it if if your machine had no additional memory other
+* But, can you do it if your machine had no additional memory other
   than the program itself?
   That is, you can’t store any values or look at them again.
 
-  The answer is NO, you have to have memory to keep track of left
-  versus right parenthesis.
+  The answer is NO, you have to have memory (at least an integer
+  variable) to keep track of left versus right parenthesis.
   There is no way to solve this problem without extra memory.
   We can't use the "state" trick mentioned above,
-  because there are an unlimited number of possible "states".
+  because there are an unlimited number of possible "states" (one
+  "state" for each value of the integer variable).
 
 * Could you solve this problem (without memory) if you were limited
   to look at expressions of length 12 or less?
@@ -147,7 +148,7 @@ the following.
   currently are.
   In this case, this works because we can't have more than 12 such
   states.
-  So, we don't nee working memory.
+  So, we don't need working memory.
 
 * Can you write a program to determine the **value** of a valid
   mathematical expression?

@@ -29,7 +29,10 @@ Languages
 * string: Finite sequence of symbols (from some alphabet)
 * language: A set of strings defined over :math:`\Sigma`
 
-Languages are sets, a subset of the powerset of :math:`\Sigma`
+:term:`Languages <language>` are sets, a subset of the powerset of :math:`\Sigma`.
+("Powerset of :math:`\Sigma`" just means all strings made from letters of
+the alphabet :math:`\Sigma`.
+And so a language is just some subset of these strings.)
 
 Examples
 ~~~~~~~~

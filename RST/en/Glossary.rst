@@ -4157,6 +4157,11 @@ Glossary
       there exists a :term:`Deterministic Finite Automata` :math:`M`
       such that :math:`L = L(M)`.
 
+   regular expression
+      A way to specify a set of strings that define a language using
+      the operators of union, contatenation, and star-closure.
+      A regular expression defines some :term:`regular language`.
+
    relation
       In set notation, a relation :math:`R` over set
       :math:`\mathbf{S}` is a set of ordered pairs from

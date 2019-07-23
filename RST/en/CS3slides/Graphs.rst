@@ -167,7 +167,7 @@ Graphs
 
    .. inlineav:: topsortCON dgm
       :links: 
-      :scripts: AV/Graph/topsortCON.js
+      :scripts: AV/Graph/topSortCON.js
       :align: center
 
 

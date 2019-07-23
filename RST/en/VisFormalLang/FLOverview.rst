@@ -12,12 +12,27 @@
 Overview
 ========
 
+Languages, Grammars, and Machines
+---------------------------------
+
+A :term:`language` is simply a collection of strings.
+A fundamental thing to be able to do with a string is to determine
+whether or not it is part of a given language.
+This semester, we are studying various types of machines to see what
+languages they can reliably "recognize", that is, reliably determine
+whether any given string is in that language or not.
+In parallel, we will study other ways of expressing or defining
+languages.
+These ways include :term:`grammars <grammar>`, and other
+"language defining languages"
+like :term:`regular expressions <regular expression>`.
+
 Language Hierarchy
 ------------------
 
 This is a picture of what we will do most of the semester.
 By the end you will know how everything in this picture applies to how
-compilers work, and to how hard a problem is to solve.
+compilers work, and to how hard a related problem is to solve.
 
 .. inlineav:: HierarchyCON dgm
    :links: AV/VisFormalLang/Intro/HierarchyCON.css
@@ -35,9 +50,10 @@ We’ll be examining simpler languages and grammars and then building up
 to how programming languages are formed.
 We start with :term:`finite automata` (also called
 :term:`finite state machines <finite state machine>`).
-We will see an automaton represents a simple language, and that a type
-of grammar (regular grammar) can represent the same language.
-Also we will look at regular expressions.
+We will see that an automaton represents a simple language,
+and that a type of grammar (:term:`regular grammar`) can represent the
+same language.
+Also we will look at :term:`regular expressions <regular expression>`.
 Remember these represent languages that can be represented by a
 program with no extra memory.
 
@@ -152,3 +168,25 @@ PART 3. Creating the parse tree.
 An interpretor walks through the parse tree and immediately executes
 the code.
 (Does not generate the code)
+
+
+Some Mindbending Ideas
+----------------------
+
+There are a lot of "meta" concepts related to Formal Languages.
+Here are a few things to think about.
+
+The descriptions of languages are just strings.
+Which means that, for example, the set of (strings that are) regular
+expressions is a language.
+Which leads to some questions like:
+
+* What type of language (from our hierarchy) is the set of regular
+  expressions?
+* What type of language (from our hierarchy) is Java?
+* What type of language is a Context Free Grammar?
+
+Here is another interesting "meta" questions.
+For any given language :math:`L`, define the language co-:math:`L` to be all
+strings **not** in :math:`L`.
+Is co-:math:`L` always the same type of language (in our hierarchy) as :math:`L`?

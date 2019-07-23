@@ -32,6 +32,10 @@ Sorting Part 2
    .. avembed:: AV/Sorting/mergesortAV.html ss
 
 
+.. slide:: .
+
+   .
+
 .. slide:: Mergesort cost
 
    * Mergesort cost:
