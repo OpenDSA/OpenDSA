@@ -69,21 +69,3 @@ Huffman Coding
       :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
       :scripts: DataStructures/huffman.js AV/Binary/huffmanDecodeCON.js
       :output: show
-
-
-.. slide:: Tree vs. Trie (1)
-
-   .. inlineav:: TreeTimelineCON ss
-      :long_name: Tree timeline Slideshow
-      :links: AV/Development/TreeTrieCON.css
-      :scripts: AV/Development/TreeTimelineCON.js
-      :output: show
-
-
-.. slide:: Tree vs. Trie (2)
-
-   .. inlineav:: TrieTimelineCON ss
-      :long_name: Trie timeline Slideshow
-      :links: AV/Development/TreeTrieCON.css
-      :scripts: AV/Development/TrieTimelineCON.js
-      :output: show
