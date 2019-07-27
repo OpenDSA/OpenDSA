@@ -263,7 +263,7 @@ $(document).ready(function () {
   var ec10 = g4.addEdge(cc5, cc10);
   var ec11 = g4.addEdge(cc2, cc6);
   var ec12 = g4.addEdge(cc2, cc9);
-  var ec13 = g4.addEdge(cc3, cc6);
+//  var ec13 = g4.addEdge(cc3, cc6);
   var ec14 = g4.addEdge(cc3, cc10);
   var ec16 = g4.addEdge(cc4, cc10);
   var ec17 = g4.addEdge(cc10, cc9);
@@ -325,7 +325,7 @@ $(document).ready(function () {
   cc6.addClass("nodecolor9");
   ec1.addClass("edgecolor9");
   ec11.addClass("edgecolor9");
-  ec13.addClass("edgecolor9");
+//  ec13.addClass("edgecolor9");
 
   cc7.addClass("nodecolor11");
   ec22.addClass("edgecolor11");
