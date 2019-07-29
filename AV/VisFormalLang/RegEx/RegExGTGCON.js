@@ -1,9 +1,9 @@
 $(document).ready(function() {
   "use strict";
-  var av_name = "RegExf3";
+  var av_name = "RegExGTGCON";
   var av = new JSAV(av_name, {animationMode: "none"});
-  var url = "../../../AV/VisFormalLang/FA/Machines/reg_exp_fig3.jff";
-  new av.ds.FA({url:url});
+  var url = "../../../AV/VisFormalLang/RegEx/Machines/RegExGTG.jff";
+  var dfa = new av.ds.FA({url: url});
   av.displayInit();
   av.recorded();
 });

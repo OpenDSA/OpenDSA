@@ -178,8 +178,8 @@ approach to proving such things!)
 
 
 .. inlineav:: REtoMinimizedDFACON ss
-   :links:   AV/VisFormalLang/RegularExpressions/REtoMinimizedDFACON.css
-   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/RegularExpressions/REtoMinimizedDFACON.js lib/paper-core.min.js DataStructures/FLA/REtoFAController.js lib/underscore.js DataStructures/FLA/Discretizer.js
+   :links:   AV/VisFormalLang/RegEx/REtoMinimizedDFACON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/RegEx/REtoMinimizedDFACON.js lib/paper-core.min.js DataStructures/FLA/REtoFAController.js lib/underscore.js DataStructures/FLA/Discretizer.js
    :output: show
   
 
@@ -221,9 +221,9 @@ that :math:`L = L(M)`.
 
 #. If the GTG has only two states, then it has this form:
 
-   .. inlineav:: RegExf1 dgm
-      :links: AV/OpenFLAP/RegExf1.css
-      :scripts: AV/OpenFLAP/RegExf1.js
+   .. inlineav:: RegExGTGCON dgm
+      :links: AV/VisFormalLang/RegEx/RegExGTGCON.css
+      :scripts: AV/VisFormalLang/RegEx/RegExGTGCON.js
       :align: center
 
    Add an arrow to the start state. Then, the corresponding regular
@@ -244,9 +244,9 @@ that :math:`L = L(M)`.
 
 #. If the GTG has three states, then it must have the following form:
 
-   .. inlineav:: RegExf2 dgm
-      :links: AV/OpenFLAP/RegExf2.css
-      :scripts: AV/OpenFLAP/RegExf2.js
+   .. inlineav:: RegExGTG3sCON dgm
+      :links: AV/VisFormalLang/RegEx/RegExGTG3sCON.css
+      :scripts: AV/VisFormalLang/RegEx/RegExGTG3sCON.js
       :align: center
 
    In this case, make the following replacements:
@@ -292,10 +292,22 @@ that :math:`L = L(M)`.
 
    And similar rules.
 
-.. inlineav:: RegExf3b dgm
-   :links: AV/OpenFLAP/RegExf3b.css
-   :scripts: AV/OpenFLAP/RegExf3b.js
+   .. inlineav:: RegExf3 dgm
+      :links: AV/OpenFLAP/RegExf3.css
+      :scripts: AV/OpenFLAP/RegExf3.js
+      :align: center
+
+   .. inlineav:: RegExf3b dgm
+      :links: AV/OpenFLAP/RegExf3b.css
+      :scripts: AV/OpenFLAP/RegExf3b.js
+      :align: center
+
+.. odsafig:: Images/stnfatore2s.png
+   :width: 400
    :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: stnfatore2s
 
 You should convince yourself that, in this image, the right side is a
 proper re-creation of the left side.
@@ -307,11 +319,12 @@ state in the machine on the right is correctly characterizing all the
 ways that one can go from :math:`q_0` to :math:`q_2` in the machine on
 the right.
 
-We have now demonstrated that R.E. is equivalent (meaning, goes both
-directions) to DFA.
-
+We have now demonstrated that regular expressions are equivalent to DFAs.
+Meaning that given any regular expression, we have an algorithm to
+convert it to some DFA.
+And vice versa.
 
 .. inlineav:: NFAtoRECON ss
-   :links:   AV/VisFormalLang/RegularExpressions/NFAtoRECON.css
-   :scripts: AV/VisFormalLang/RegularExpressions/NFAtoRECON.js
+   :links:   AV/VisFormalLang/RegEx/NFAtoRECON.css
+   :scripts: AV/VisFormalLang/RegEx/NFAtoRECON.js
    :output: show

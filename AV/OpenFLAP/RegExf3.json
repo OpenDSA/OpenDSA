@@ -1,7 +1,7 @@
 {
     "translations": {
       "en": {
-        "regexp3": "../../../AV/VisFormalLang/DFA/AutomataFiles/reg_exp/reg_exp_fig3.jff"
+        "regexp3": "../../../AV/VisFormalLang/FA/Machines/reg_exp/reg_exp_fig3.jff"
       }
     },
     "code":
