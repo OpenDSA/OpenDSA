@@ -292,22 +292,10 @@ that :math:`L = L(M)`.
 
    And similar rules.
 
-   .. inlineav:: RegExf3 dgm
-      :links: AV/OpenFLAP/RegExf3.css
-      :scripts: AV/OpenFLAP/RegExf3.js
+   .. inlineav:: RegExConvertCON dgm
+      :links: AV/VisFormalLang/RegEx/RegExConvertCON.css
+      :scripts: AV/VisFormalLang/RegEx/RegExConvertCON.js
       :align: center
-
-   .. inlineav:: RegExf3b dgm
-      :links: AV/OpenFLAP/RegExf3b.css
-      :scripts: AV/OpenFLAP/RegExf3b.js
-      :align: center
-
-.. odsafig:: Images/stnfatore2s.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: stnfatore2s
 
 You should convince yourself that, in this image, the right side is a
 proper re-creation of the left side.

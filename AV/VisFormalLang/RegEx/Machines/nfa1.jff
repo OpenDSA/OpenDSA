@@ -4,16 +4,16 @@
 		<!--The list of states.-->
 		<state id="0" name="q0">
 			<x>34.0</x>
-			<y>175.0</y>
+			<y>145.0</y>
 			<initial/>
 		</state>
 		<state id="1" name="q1">
 			<x>169.0</x>
-			<y>46.0</y>
+			<y>15.0</y>
 		</state>
 		<state id="2" name="q2">
 			<x>200.0</x>
-			<y>203.0</y>
+			<y>170.0</y>
 			<final/>
 		</state>
 		<!--The list of transitions.-->

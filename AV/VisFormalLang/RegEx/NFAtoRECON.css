@@ -1,18 +1,17 @@
 #NFAtoRECON {
-    height: 450px;
-    width: 1100px;
+  height: 400px;
 }
 
-.jsavmatrix {
-    margin-left: 0;
+#NFAtoRECON .jsavmatrix {
+  margin-left: 0;
 }
 
-.jsavhorizontalarray .jsavnode {
-    min-width: 50px !important;
-    max-width: 50px !important;
+#NFAtoRECON .jsavhorizontalarray .jsavnode {
+  min-width: 50px !important;
+  max-width: 50px !important;
 }
 
-.jsavhorizontalarray .jsavnode:nth-child(3) {
-    min-width: 100px !important;
-    max-width: 100px !important;
+#NFAtoRECON .jsavhorizontalarray .jsavnode:nth-child(3) {
+  min-width: 100px !important;
+  max-width: 100px !important;
 }
