@@ -1,5 +1,5 @@
 /*global JSAV */
-// Written by Ziyou Shang
+// Written by Ziyou Shang and Cliff Shaffer
 
 $(document).ready(function() {
   "use strict";
@@ -18,19 +18,21 @@ $(document).ready(function() {
       q2 = FA.addNode({left: left - 50, top: top + 100}),
       q3 = FA.addNode({left: left + 100, top: top + 50});
       
-  FA.disableDragging();
+  FA.disableDragging(); // I don't understand when this has to be turned off,
+                        // and when it defaults to being off.
+                        // Maybe it defaults off only when reading file?
 
   // set initial and final states
-  toggleInitial(FA, q0);
-  toggleFinal(FA, q3);
+  FA.makeInitial(q0);
+  FA.makeFinal(q3);
 
   // set edges and weights
   FA.addEdge(q0, q1, {weight: "a"});
-  FA.addEdge(q0, q2, {weight: "a"});
+  FA.addEdge(q0, q1, {weight: "b"});
+  FA.addEdge(q0, q2, {weight: "a, b"});
   FA.addEdge(q1, q1, {weight: "b"});
   FA.addEdge(q1, q3, {weight: "b"});
   FA.addEdge(q2, q3, {weight: "a"});
-
 
   FA.layout();
   av.displayInit();

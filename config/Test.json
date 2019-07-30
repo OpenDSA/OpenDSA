@@ -65,6 +65,7 @@
   },
   "chapters": {
     "Stuff": {
+      "VisFormalLang/Test": {},
       "BTRecurTutor/BSTCheck": {},
       "Indexing/TwoThreeTree": {
       },
