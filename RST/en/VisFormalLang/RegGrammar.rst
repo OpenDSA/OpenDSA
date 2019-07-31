@@ -146,8 +146,8 @@ grammar G such that :math:`L = L(G)`.
 
 
 .. inlineav:: REtoFACON ss
-   :links:   DataStructures/FLA/FLA.css AV/VisFormalLang/RegularGrammar/REtoFACON.css
-   :scripts: lib/underscore.js DataStructures/FLA/Discretizer.js DataStructures/FLA/FA.js AV/VisFormalLang/RegularGrammar/REtoFACON.js
+   :links:   DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/REtoFACON.css
+   :scripts: lib/underscore.js DataStructures/FLA/Discretizer.js DataStructures/FLA/FA.js AV/VisFormalLang/Regular/REtoFACON.js
    :output: show
 
 
@@ -181,8 +181,8 @@ Right-linear Regular Grammar from DFA
 
 
 .. inlineav:: FAtoRegGrammmarCON ss
-   :links:   AV/VisFormalLang/RegularGrammar/FAtoRegGrammmarCON.css
-   :scripts: AV/VisFormalLang/RegularGrammar/FAtoRegGrammmarCON.js
+   :links:   AV/VisFormalLang/Regular/FAtoRegGrammmarCON.css
+   :scripts: AV/VisFormalLang/Regular/FAtoRegGrammmarCON.js
    :output: show
 
 

@@ -5,8 +5,7 @@ $(document).ready(function() {
     var arrow = String.fromCharCode(8594);
     var av_name = "FAtoRegGrammmarCON";
     var av = new JSAV(av_name);
-    var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
-    var url = interpret("fa1");
+    var url = "../../../AV/VisFormalLang/Regular/Machines/FA1.jff"
     av.displayInit();
     var arr = new Array(5);    // arbitrary array size
     for (var i = 0; i < arr.length; i++) {
@@ -18,7 +17,7 @@ $(document).ready(function() {
     for (var i = lastRow + 1; i < arr.length; i++) {
         grammarMatrix._arrays[i].hide();
     }
-    var FA = new av.ds.FA({width: 300, height: 150, left: 10, url:url});
+    var FA = new av.ds.FA({width: 300, height: 150, left: 10, url: url});
     av.umsg("Suppose we need to convert this NFA to a Regular Grammar");
     var FAtoGrammar = new FAtoGrammarConverter(av, FA);
     

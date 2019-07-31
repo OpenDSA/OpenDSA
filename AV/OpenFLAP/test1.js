@@ -1,5 +1,7 @@
 /*global JSAV */
 // Written by Ziyou Shang and Cliff Shaffer
+// Most FLA AVs now read the automata from a .jff file.
+// But here is a demonstration for how to make a machine "by hand".
 
 $(document).ready(function() {
   "use strict";
@@ -18,7 +20,7 @@ $(document).ready(function() {
       q2 = FA.addNode({left: left - 50, top: top + 100}),
       q3 = FA.addNode({left: left + 100, top: top + 50});
       
-  FA.disableDragging(); // I don't understand when this has to be turned off,
+//  FA.disableDragging(); // I don't understand when this has to be turned off,
                         // and when it defaults to being off.
                         // Maybe it defaults off only when reading file?
 

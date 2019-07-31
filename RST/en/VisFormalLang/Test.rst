@@ -32,7 +32,14 @@ Test
 |
 
 .. inlineav:: PDA dgm
-   :links: AV/OpenFLAP/PDA.css
-   :scripts: AV/OpenFLAP/PDA.js
+   :links: DataStructures/FLA/FLA.css AV/OpenFLAP/PDA.css
+   :scripts: DataStructures/FLA/FA.js AV/OpenFLAP/PDA.js
+   :align: center
+
+|
+
+.. inlineav:: PDA2 dgm
+   :links: DataStructures/FLA/FLA.css AV/OpenFLAP/PDA2.css
+   :scripts: DataStructures/FLA/FA.js AV/OpenFLAP/PDA2.js
    :align: center
 

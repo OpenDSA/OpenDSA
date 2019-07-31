@@ -178,8 +178,8 @@ approach to proving such things!)
 
 
 .. inlineav:: REtoMinimizedDFACON ss
-   :links:   AV/VisFormalLang/RegEx/REtoMinimizedDFACON.css
-   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/RegEx/REtoMinimizedDFACON.js lib/paper-core.min.js DataStructures/FLA/REtoFAController.js lib/underscore.js DataStructures/FLA/Discretizer.js
+   :links:   AV/VisFormalLang/Regular/REtoMinimizedDFACON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/REtoMinimizedDFACON.js lib/paper-core.min.js DataStructures/FLA/REtoFAController.js lib/underscore.js DataStructures/FLA/Discretizer.js
    :output: show
   
 
@@ -222,8 +222,8 @@ that :math:`L = L(M)`.
 #. If the GTG has only two states, then it has this form:
 
    .. inlineav:: RegExGTGCON dgm
-      :links: AV/VisFormalLang/RegEx/RegExGTGCON.css
-      :scripts: AV/VisFormalLang/RegEx/RegExGTGCON.js
+      :links: AV/VisFormalLang/Regular/RegExGTGCON.css
+      :scripts: AV/VisFormalLang/Regular/RegExGTGCON.js
       :align: center
 
    Add an arrow to the start state. Then, the corresponding regular
@@ -245,8 +245,8 @@ that :math:`L = L(M)`.
 #. If the GTG has three states, then it must have the following form:
 
    .. inlineav:: RegExGTG3sCON dgm
-      :links: AV/VisFormalLang/RegEx/RegExGTG3sCON.css
-      :scripts: AV/VisFormalLang/RegEx/RegExGTG3sCON.js
+      :links: AV/VisFormalLang/Regular/RegExGTG3sCON.css
+      :scripts: AV/VisFormalLang/Regular/RegExGTG3sCON.js
       :align: center
 
    In this case, make the following replacements:
@@ -293,8 +293,8 @@ that :math:`L = L(M)`.
    And similar rules.
 
    .. inlineav:: RegExConvertCON dgm
-      :links: AV/VisFormalLang/RegEx/RegExConvertCON.css
-      :scripts: AV/VisFormalLang/RegEx/RegExConvertCON.js
+      :links: AV/VisFormalLang/Regular/RegExConvertCON.css
+      :scripts: AV/VisFormalLang/Regular/RegExConvertCON.js
       :align: center
 
 You should convince yourself that, in this image, the right side is a
@@ -313,6 +313,6 @@ convert it to some DFA.
 And vice versa.
 
 .. inlineav:: NFAtoRECON ss
-   :links:   AV/VisFormalLang/RegEx/NFAtoRECON.css
-   :scripts: AV/VisFormalLang/RegEx/NFAtoRECON.js
+   :links:   AV/VisFormalLang/Regular/NFAtoRECON.css
+   :scripts: AV/VisFormalLang/Regular/NFAtoRECON.js
    :output: show
