@@ -8,7 +8,7 @@ OpenDSA and the LMS
 
 OpenDSA now works in conjunction with a Learning Management System
 (LMS).
-Currently, OpenDSA LTI is confirmed to work with Canvas and Moodle.
+Currently, OpenDSA LTI is confirmed to work with Canvas, Moodle, and Blackboard.
 However, publishing complete books is only supported for Canvas.
 All tasks related to class roll management, creating assignments from
 exercises, due dates, and tracking scores and progress are done using
