@@ -1964,7 +1964,7 @@ $(document).ready(function () {
     // transition from creating VDG to modifying the grammar
     var continueUnit = function () {
       jsav.umsg('Modify the grammar to remove unit productions. Click on unit productions to remove them and click on the empty row to add new productions.');
-      var tGrammar = new jsav.ds.matrix(tArr);
+      tGrammar = jsav.ds.matrix(tArr);
       layoutTable(tGrammar, 2);
       //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
       tGrammar.click(removeUnitHandler);
