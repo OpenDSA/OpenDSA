@@ -20,7 +20,7 @@ $(document).ready(function () {
       selectedNode,       // used for FA/graph editing
       modelDFA,           // DFA used to build SLR parse table
       builtDFA,           // DFA created by the user
-      type,               // type of parsing, can be bf, ll, slr
+      type = $("h1").attr('id'),               // type of parsing, can be bf, ll, slr
       grammars,           // stores grammar exercises, xml
       currentExercise = 0,// current exercise index
       multiple = false,   // if multiple grammar editing is enabled
@@ -39,7 +39,8 @@ $(document).ready(function () {
   If there is a grammar in local storage, load that grammar.
   This is used to import grammars from certain proofs.
   */
-  if (localStorage["grammar"]) {
+   //do not look at the storage if the editor is for an exercise
+  if (type == null && localStorage["grammar"]) {
     // the grammar is saved as a string of a list of strings:
     // turn each production into an array containing the left side, arrow, and right side
     // arr = _.map(localStorage['grammar'].split(','), function(x) {
@@ -61,7 +62,7 @@ $(document).ready(function () {
     }
     lastRow = 0;
   }
-
+  
   // Function to initialize/reinitialize the grammar display
   var init = function () {
     if (m) {
@@ -73,7 +74,8 @@ $(document).ready(function () {
       m2._arrays[i].hide();
     }
     layoutTable(m2, 2);
-    m2.on('click', matrixClickHandler);
+    if(type !== "transformation")
+      m2.on('click', matrixClickHandler);
     return m2;
   };
 
@@ -1962,7 +1964,7 @@ $(document).ready(function () {
     // transition from creating VDG to modifying the grammar
     var continueUnit = function () {
       jsav.umsg('Modify the grammar to remove unit productions. Click on unit productions to remove them and click on the empty row to add new productions.');
-      tGrammar = jsav.ds.matrix(tArr);
+      var tGrammar = new jsav.ds.matrix(tArr);
       layoutTable(tGrammar, 2);
       //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
       tGrammar.click(removeUnitHandler);
@@ -3240,7 +3242,6 @@ $(document).ready(function () {
   });
 
   function onLoadHandler() {
-    type = $("h1").attr('id');
     $('#loadFile').hide();
     $('#saveFile').hide();
     $('#backbutton').hide();
@@ -3264,6 +3265,24 @@ $(document).ready(function () {
       //******************** */
       m = init();
       var exercisePath = (exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3P2.json": exerciseLocation;
+  		var exerController = new GrammarExerciseController(jsav, m, exercisePath, "json");
+      exerController.load();
+      
+      $('.jsavmatrix').addClass("editMode");
+
+    } 
+    else if (type == "transformation") {//grammar transformation exercise
+      var params = JSAV.utils.getQueryParameter();
+			//******************** */
+      //This code to extract the file location from the parameters
+      var params = window.location.search;
+			//******************** */
+			var end = params.indexOf(".json");
+			var start = params.indexOf("fileLocation=")
+			var exerciseLocation = params.substring(start, end + 5).split('=')[1];
+			//var exerciseLocation = "./Formal_Languages_Automated_Exerciese/exercises/Sheet_1/Exercise4.json";//params.module.split(":url_params:+fileLocation=")[1];//getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
+      //******************** */
+      var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_6/sheet6P3_4_5.json": exerciseLocation;
   		var exerController = new GrammarExerciseController(jsav, m, exercisePath, "json");
       exerController.load();
       
