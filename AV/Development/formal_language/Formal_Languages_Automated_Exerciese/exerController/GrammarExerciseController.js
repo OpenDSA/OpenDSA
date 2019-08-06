@@ -42,6 +42,7 @@ controllerProto.load = function () {
   
   $("#nextStep").click(function(){
     transformGrammar(proto.jsav, proto.grammar);
+    document.getElementById("nextStep").disabled = true;
   });
 
 	$('#testSolution').click(function() {
@@ -152,8 +153,6 @@ controllerProto.startTesting = function() {
 controllerProto.toExercise = function(button) {
 	this.currentExercise = button.getAttribute('id');
   this.updateExercise(this.currentExercise);
-  transformGrammar();
-	//FIXMEEEEEEEEEE we need to control the matrix inside this controller. The best obtion is to creat a prototype for grammar and use it.
 };
 
 // the function that really changes the problem displayed
@@ -196,7 +195,8 @@ controllerProto.updateExercise = function(id) {
     document.getElementById("graph").style.display = "none";
     
 	if(exercise.grammar && exercise.grammar.length > 0){//the json file include a grammar. Load it and show it
-		if(!exercise.exerciseGrammarObject){
+		//if(!exercise.exerciseGrammarObject || (exercise.exerciseGrammarObject&& exercise.exerciseGrammarObject.productions.length === 0)){
+      clearView(this.jsav);
 			exercise["exerciseGrammarObject"] = new GrammarMatrix(this.jsav,null,{style: "table"});
 			for(var index = 0; index < exercise.grammar.length; index++){
 				var prodctionRule = exercise.grammar[index];
@@ -206,12 +206,12 @@ controllerProto.updateExercise = function(id) {
       for(var i = 0; i < this.tests.length; i++)
       if(i != id && this.tests[i].exerciseGrammarObject)
         this.tests[i].exerciseGrammarObject.hide();
-    }
+    /*}
     else{
       for(var i = 0; i < this.tests.length; i++)
         if(i != id && this.tests[i].exerciseGrammarObject)
           this.tests[i].exerciseGrammarObject.hide();
-    }
+    }*/
     this.grammar = exercise.exerciseGrammarObject;
     this.grammar.show();
     arr = this.grammar.getProductions();
@@ -233,6 +233,18 @@ controllerProto.updateExercise = function(id) {
 	logRecord['Exercise' + exNum + '_Time'].push(start);
 
 };
+var clearView = function(jsav){
+  document.getElementById("nextStep").disabled = false;
+  //If there are other matrices we need to remove them
+  jsav.umsg("");
+  var others = document.getElementsByClassName("jsavmatrix");
+  while(others[0])
+    others[0].remove();
+  others = document.getElementsByClassName("jsavgraph");
+  while(others[0])
+    others[0].remove();
+///////////////////
+}
 controllerProto.convertToPDA = function () {
     var productions = this.grammar;
     this.builtPDA = this.jsav.ds.pda({visible: false});
@@ -486,10 +498,10 @@ var transformGrammar = function (jsav, grammar) {
     return;
   }
   // apply each transformation to the original grammar to find which step to start with
-  var noLambda = removeLambda();
-  var noUnit = removeUnit();
-  var noUseless = removeUseless();
-  var fullChomsky = convertToChomsky();
+  var noLambda = removeLambda(productions);
+  var noUnit = removeUnit(productions);
+  var noUseless = removeUseless(productions);
+  var fullChomsky = convertToChomsky(grammar.getProductions());
   var strP = _.map(productions, function(x) {return x.join('');});
   // store original grammar for reloading later
   backup = ""+strP;
@@ -507,6 +519,10 @@ var transformGrammar = function (jsav, grammar) {
     jsav.umsg('Grammar already in Chomsky Normal Form.');
     return true;
   }
+  /*noUseless = removeUseless(noUnit.map(function(x){return [x.split(arrow)[0], arrow, x.split(arrow)[1]]}));
+  fullChomsky = convertToChomsky(noUseless.map(function(x){return [x.split(arrow)[0], arrow, x.split(arrow)[1]]}));
+  grammar = new GrammarMatrix(jsav, noUseless.map(function(x){return [x.split(arrow)[0], arrow, x.split(arrow)[1]]}));
+  interactableChomsky(jsav, grammar, fullChomsky.map(function(x){return [x.split(arrow)[0], arrow, x.split(arrow)[1]]}))*/
 };
 
 var interactableLambdaTransform = function (jsav, grammar, noLambda) {
@@ -609,17 +625,17 @@ var interactableLambdaTransform = function (jsav, grammar, noLambda) {
         return;
       }
       var strT = _.map(tArr, function(x) {return x.join('')});
-      var noUnit = removeUnit();
+      var noUnit = removeUnit(strT);
       if (!checkTransform(strT, noUnit)) {
         interactableUnitTransform(grammar, noUnit);
         return;
       }
-      var noUseless = removeUseless();
+      var noUseless = removeUseless(tArr);
       if (!checkTransform(strT, noUseless)) {
         interactableUselessTransform(grammar, noUseless);
         return;
       }
-      var fullChomsky = convertToChomsky();
+      var fullChomsky = convertToChomsky(tArr);
       if (!checkTransform(strT, fullChomsky)) {
         interactableChomsky(grammar, fullChomsky);
         return;
@@ -708,6 +724,7 @@ var interactableUnitTransform = function (jsav, grammar, noUnit) {
       if (!input2) {
         return;
       }
+      /*
       var toAdd = input1 + arrow + input2;
       if (noUnit.indexOf(toAdd) === -1) {
         alert('This production is not part of the reformed grammar.');
@@ -716,26 +733,31 @@ var interactableUnitTransform = function (jsav, grammar, noUnit) {
         alert('This production is already in the grammar.');
         return;
       }
-      this.appendRow([input1, arrow, input2]);
+      this.addNewProductionRule([input1, arrow, input2]);
       this.layout();
+      */
+     addProductionsToGrammar(input1, input2, this, noUnit);
     }
     this.layout();
-    var tArr = this.productions;
-    if (tArr.length - 1 === noUnit.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
+    var tArr = this.getProductions();
+    if (tArr.length === noUnit.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
       alert("All Unit productions are removed.")
       if (!grammar.value(0,0)) {//check to see if there is a start variable
         jsav.umsg("Null start variable; transformation finished.");
         return;
       }
       var strT = _.map(tArr, function(x) {return x.join('')});
-      var noUseless = removeUseless();
+      var noUseless = removeUseless(tArr);
+      modelDFA.clear();
+      grammar.clear();
       if (!checkTransform(strT, noUseless)) {
-        interactableUselessTransform(noUseless);
+        interactableUselessTransform(jsav, this, noUseless);
         return;
       }
-      var fullChomsky = convertToChomsky();
+      var fullChomsky = convertToChomsky(tArr);
       if (!checkTransform(strT, fullChomsky)) {
-        interactableChomsky(fullChomsky);
+        this.element.remove();//clear the existing matrix
+        interactableChomsky(jsav, this, fullChomsky);
         return;
       } else {
         jsav.umsg("Grammar transformation finished.");
@@ -755,12 +777,11 @@ var interactableUnitTransform = function (jsav, grammar, noUnit) {
   modelDFA.click(unitVdgHandler);
 };
 
-var interactableUselessTransform = function (noUseless) {
-  var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
-  m = init();
+var interactableUselessTransform = function (jsav, grammar, noUseless) {
+  var productions = grammar.getProductions();
   startParse(grammar);
-  $('.jsavcontrols').hide();
-  $(m.element).css("margin-left", "auto");
+  //$('.jsavcontrols').hide();
+  //$(m.element).css("margin-left", "auto");
 
   var derivers = {};  // variables that derive a string of terminals
   var counter = 0;
@@ -774,9 +795,7 @@ var interactableUselessTransform = function (noUseless) {
   var builtDeriveSet = [];      // set of terminal-deriving variables, for the user to create
   // handler for the table for finding terminal-deriving variables
   var findDeriveHandler = function (index) {
-    for (var i = 0; i < this._arrays.length; i++) {
-      this.unhighlight(i);
-    }
+    this.unhighlight();
     this.highlight(index);
     var vv = this.value(index, 0);
     var found = builtDeriveSet.indexOf(vv);
@@ -784,10 +803,8 @@ var interactableUselessTransform = function (noUseless) {
       builtDeriveSet.push(vv);
       jsav.umsg(vv + ' added! Variables that predicate terminals: [' + builtDeriveSet + ']');
       if (builtDeriveSet.length === Object.keys(derivers).length) {
-        for (var i = 0; i < m._arrays.length; i++) {
-          m.unhighlight(i);
-        }
-        m.element.off();
+        this.unhighlight();
+        this.element.off();
         continueUseless();
       }
     } else if (!(vv in derivers)) {
@@ -801,33 +818,23 @@ var interactableUselessTransform = function (noUseless) {
     if (this.value(index, 0)) {
       if (noUseless.indexOf(this.value(index,0) + arrow + this.value(index,2)) === -1) {
         tArr.splice(index, 1);
-        var tempG = jsav.ds.matrix(tArr);
-        tGrammar.clear();
-        tGrammar = tempG;
-        layoutTable(tGrammar, 2);
-        //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
-        tGrammar.click(removeUselessHandler);
+        this.removeProduction(index);
       } else {
         alert('This production should not be deleted.');
         return;
       }
     }
     if (tArr.length - 1 === noUseless.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
-      var confirmed = confirm('Grammar completed; export?');
-      if (confirmed) {
-        localStorage['grammar'] = noUseless;
-        window.open('grammarTest.html', '');
-      }
-      arr = tArr;
-      lastRow = arr.length - 1;
+      alert('Grammar has no more useless productions.');
       if (!tArr[0][0]) {
         jsav.umsg("Null start variable; transformation finished.");
         return;
       }
       var strT = _.map(tArr, function(x) {return x.join('')});
-      var fullChomsky = convertToChomsky();
+      var fullChomsky = convertToChomsky(tArr);
+      this.element.remove();
       if (!checkTransform(strT, fullChomsky)) {
-        interactableChomsky(fullChomsky);
+        interactableChomsky(jsav, this, fullChomsky);
         return;
       } else {
         jsav.umsg("Grammar transformation finished.");
@@ -835,7 +842,7 @@ var interactableUselessTransform = function (noUseless) {
     }
   };
 
-  var tArr = [].concat(productions);
+  var tArr = grammar.getProductions();
   tArr = _.filter(tArr, function(x) {
     return x[0] in derivers && _.every(x[2], function(y) {return variables.indexOf(y) === -1 || y in derivers});
   });
@@ -898,50 +905,60 @@ var interactableUselessTransform = function (noUseless) {
   };
   // transition from finding terminal-deriving variables to creating the VDG
   var continueUseless = function () {
-    //$(m.element).css("margin-left", "50px");
-    modelDFA = jsav.ds.graph({layout: "layered", directed: true});
-    //modelDFA = jsav.ds.graph({left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top", layout: "layered", directed: true});
     var da = Object.keys(derivers);
-    for (var i = 0; i < da.length; i++) {
-      modelDFA.addNode(da[i]);
+    /*
+    What if the grammar has no DG. All nodes are go to terminals only. (Special case)
+    */
+    for(var variableIndex = 0; variableIndex < da.length; variableIndex++){
+      var variable = da[variableIndex];
+      var onlyTerminalsExist = true;
+      var variableProductions = grammar.getProductionsForSpecificVariable(variable);
+      for(var ruleIndex = 0; ruleIndex < variableProductions.length; ruleIndex++){
+        var rule = variableProductions[ruleIndex];
+        if(_.filter(rule[2], function(x){return variables.indexOf(x)>=0}).length !==0){
+          onlyTerminalsExist = false;
+          break;
+        }
+      }
     }
-    modelDFA.layout();
-    modelDFA.click(uselessVdgHandler);
-    jsav.umsg('Complete dependency graph by adding edges between variables. Variables that predicate terminals: [' + builtDeriveSet + ']')
+    if(!onlyTerminalsExist){//The graph will be used as there will be some links. Work as normal(No special case)
+      modelDFA = jsav.ds.graph({layout: "layered", directed: true});
+      for (var i = 0; i < da.length; i++) {
+        modelDFA.addNode(da[i]);
+      }
+      modelDFA.layout();
+      modelDFA.click(uselessVdgHandler);
+      jsav.umsg('Complete dependency graph by adding edges between variables. Variables that predicate terminals: [' + builtDeriveSet + ']')
+    }
+    else//No need for the graph. Skip this step and continue (this is the special case)
+    continueUselessSecond();
   };
   // transition from VDG to removing useless productions
   var continueUselessSecond = function () {
     jsav.umsg('Modify the grammar to remove useless productions. Click on unreachable productions to remove them.');
-    tGrammar = jsav.ds.matrix(tArr);
-    layoutTable(tGrammar, 2);
+    //tGrammar = jsav.ds.matrix(tArr);
+    //layoutTable(tGrammar, 2);
     //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
-    tGrammar.click(removeUselessHandler);
+    grammar.element.off();
+    grammar.click(removeUselessHandler);
   };
   jsav.umsg('Removing useless productions: Select variables that derive terminals.');
-  m.click(findDeriveHandler);
+  grammar.element.off();
+  grammar.click(findDeriveHandler);
 };
 
-var interactableChomsky = function (fullChomsky) {
-  var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
-  m = init();
+var interactableChomsky = function (jsav, grammar, fullChomsky) {
+  var productions = grammar.getProductions();
   startParse(grammar);
-  $('.jsavcontrols').hide();
-
-  $(m.element).css("margin-left", "auto");
-  //$(m.element).css("margin-left", "15%");
-  $(m.element).css('position', 'absolute');
-
   // array holding the productions
-  var tArr = [].concat(productions);
+  var tArr = productions;
   // Right sides are arrays (unlike the matrix, where RHS is a string)
   _.each(tArr, function(x) { x[2] = x[2].split('');});
   var varCounter = 1;
 
   // handler for the table for converting productions
   var chomskyHandler = function (index) {
-    for (var i = 0; i < this._arrays.length; i++) {
-      this.unhighlight(i);
-    }
+    this.unhighlight(i);
     this.highlight(index);
     var r = tArr[index][2];
     if (r.length === 1 && variables.indexOf(r[0]) === -1) {
@@ -965,16 +982,23 @@ var interactableChomsky = function (fullChomsky) {
     }
     if (sliceIn.length > 0) {
       tArr = tArr.slice(0, index + 1).concat(sliceIn).concat(tArr.slice(index+1));
-      var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
+      var tempG = new GrammarMatrix(jsav, _.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
       tGrammar.clear();
       tGrammar = tempG;
-      layoutTable(tGrammar, 2);
-      //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+      tGrammar.layout();
       tGrammar.click(chomskyHandler);
       for (var i = 0; i < sliceIn.length + 1; i++) {
         tGrammar.highlight(index + i);
       }
-    } else {
+    } else if(_.find(tArr.concat(sliceIn), function(x) {return x[0] === tempB;})){//the rule already added before
+      var tempG = new GrammarMatrix(jsav, _.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
+      tGrammar.clear();
+      tGrammar = tempG;
+      tGrammar.layout();
+      tGrammar.click(chomskyHandler);
+      tGrammar.highlight(index);
+    }
+     else {
       // replace variables
       var tempD = "D(" + varCounter + ")";
       var temp2 = r.splice(1, r.length - 1, tempD);
@@ -984,62 +1008,25 @@ var interactableChomsky = function (fullChomsky) {
       } else {
         tArr.splice(index + 1, 0, [tempD, arrow, temp2]);
         varCounter++;
-        var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
+        var tempG = new GrammarMatrix(jsav, _.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
         tGrammar.clear();
         tGrammar = tempG;
-        layoutTable(tGrammar, 2);
-        //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+        tGrammar.layout();
         tGrammar.click(chomskyHandler);
         tGrammar.highlight(index);
         tGrammar.highlight(index + 1);
       }
     }
     jsav.umsg('Converted.');
-    if (tArr.length === fullChomsky.length) {
-      jsav.umsg('All productions completed.');
+    if (checkTransform(tArr.map(function(x){return ""+x[0] + arrow + x[2].join('')}), fullChomsky)) {
+      tGrammar.jsav.umsg('All productions completed.');
       tGrammar.element.off();
-      var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
-      if (c) {
-        attemptExport();
-      }
-      for (var i = 0; i < tGrammar._arrays.length; i++) {
-        tGrammar.unhighlight(i);
-      }
+      confirm('All productions completed.');
+      tGrammar.unhighlight(i);
     }
   };
-  // attempts to convert and export the completed CNF grammar
-  var attemptExport = function () {
-    var tempVars = [];
-    for (var i = 0; i < tArr.length; i++) {
-      if (tArr[i][0].length > 1 && tArr[i][0][0] === 'B') {
-        tempVars.push(tArr[i][0]);
-      }
-    }
-    var newVariables = _.difference(variables.split(""), _.map(tArr, function(x) {return x[0];}));
-    if (tempVars.length + varCounter > newVariables.length) {
-      alert('Too large to export!');
-      return;
-    }
-    tempVars.sort();
-    var iOffset = tempVars.length;
-    for (var i = 1; i < varCounter + 1; i++) {
-      tempVars.push("D(" + i + ")");
-    }
-    _.each(tArr, function(x) {x[2] = x[2].join('');});
-    for (var i = 0; i < tempVars.length; i++) {
-      var re = tempVars[i].replace(/[\(\)]/g, "\\$&");
-      var regex = new RegExp(re, 'g');
-      for (var j = 0; j < tArr.length; j++) {
-        tArr[j][0] = tArr[j][0].replace(regex, newVariables[i]);
-        tArr[j][2] = tArr[j][2].replace(regex, newVariables[i]);
-      }
-    }
-    localStorage['grammar'] = _.map(tArr, function(x) {return x.join('');});
-    window.open('grammarTest.html', '');
-  };
-
-  tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
-  layoutTable(tGrammar, 2);
+  tGrammar = new GrammarMatrix(jsav, grammar.getProductions());
+  tGrammar.layout();
   //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
   tGrammar.click(chomskyHandler);
 
@@ -1191,9 +1178,9 @@ var removeUnitHelper = function (productions, pDict) {
 };
 
  // remove useless productions
-var removeUseless = function () {
+var removeUseless = function (productions) {
   var derivers = {};  // variables that derive a string of terminals
-  var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+  //var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
   var counter = 0;
   while (findDerivable(derivers, productions)) {
     counter++;
@@ -1210,7 +1197,7 @@ var removeUseless = function () {
     }
   }
   var pDict = {};   // dictionary to hold reachable variables
-  var start = transformed[0][0];
+  var start = "S";//transformed[0][0];
   for (var i = 0; i < transformed.length; i++) {
     if (!(transformed[i][0] in pDict)) {
       pDict[transformed[i][0]] = [];
@@ -1252,10 +1239,10 @@ var findReachable = function (start, pDict, visited) {
 };
 
 // convert to Chomsky Normal Form
-var convertToChomsky = function () {
+var convertToChomsky = function (productions) {
   var v = {};
   // find all the variables in the grammar
-  var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+  //var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
   for (var i = 0; i < productions.length; i++) {
     var x = productions[i];
     // change RHS to an array
@@ -1330,30 +1317,6 @@ var startParse = function (grammar) {
   
   $(".jsavmatrix").removeClass('editMode');
   $(".jsavmatrix").removeClass('deleteMode');
-  /*$("#firstinput").remove();
-  $("#mode").html('');
-  $('#editbutton').hide();
-  $('#deletebutton').hide();
-  $('#addrowbutton').hide();
-  $('#convertRLGbutton').hide();
-  $('#convertCFGbuttonLL').hide();
-  $('#convertCFGbuttonLR').hide();
-  $('#transformbutton').hide();
-  $('#addExerciseButton').hide();
-
-  $('#identifybutton').hide();
-  $('#clearbutton').hide();
-
-  $('.jsavcontrols').show();
-  if (type !== "ll" && type !== "slr") $('#backbutton').show();
-  $('#bfpbutton').hide();
-  $('#mbfpbutton').hide();
-  $('#llbutton').hide();
-  $('#slrbutton').hide();
-  $('#files').hide();
-  $('#cykbutton').hide();
-  */$(grammar.element).css("margin-left", "50px");
-  // m._arrays[lastRow].hide();
 };
 
 var checkTransform = function (strP, g) {
@@ -1363,3 +1326,37 @@ var checkTransform = function (strP, g) {
   }
   return false;
 };
+
+var addProductionsToGrammar = function(lhs, rhs, grammar, compareToGrammar){
+  var toAdd;
+  if(rhs.indexOf('|')>0){
+    var correct = true;
+    var listOfRHS = rhs.split('|');
+    var listOfRules = listOfRHS.map(function(singleRHS){return lhs + arrow + singleRHS})
+    for(var i = 0; i< listOfRules.length; i++){
+      var rule = listOfRules[i];
+      if (compareToGrammar.indexOf(rule) === -1) {
+        alert(rule + ': is not part of the reformed grammar.');
+        correct = false;
+        break;
+      } if (grammar.findProduction(rule)) {
+        alert(rule + ': is already in the grammar.');
+        correct = false;
+        break;
+      }
+    }
+    if(correct)
+    grammar.addNewProductionRule([lhs, arrow, rhs]);
+  } else {
+  toAdd = lhs + arrow + rhs;
+    if (compareToGrammar.indexOf(toAdd) === -1) {
+      alert(toAdd + ': is not part of the reformed grammar.');
+      return;
+    } if (grammar.findProduction(toAdd)) {
+      alert(toAdd + ': is already in the grammar.');
+      return;
+    }
+    grammar.addNewProductionRule([input1, arrow, input2]);
+    this.layout();
+  }
+}

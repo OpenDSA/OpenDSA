@@ -141,18 +141,33 @@
     this._arrays[row]._indices[column].value(newValue);
   }
 
-  matrixproto.highlight = function (index){
-    if(index > this._arrays.length) 
-      return;
-    this._arrays[index].highlight();
+  matrixproto.unhighlight = function(index){
+    if(index && index < this._arrays.length){
+      this._arrays[index].unhighlight();
+    } else {
+      for(var i = 0; i<this._arrays.length; i++)  {
+        this._arrays[i].unhighlight();
+        //var row = this._arrays[i];
+        /*for(var j = 0; j<row._indices.length; j++){
+            row.unhighlight(j);
+        }*/
+      }
+    }
   }
-
-  matrixproto.unhighlight = function (index){
-    if(index > this._arrays.length) 
-      return;
-    this._arrays[index].unhighlight();
+  
+  matrixproto.highlight = function(index){
+    if(index !== undefined && index < this._arrays.length){
+      this._arrays[index].highlight();
+    } else {
+      for(var i = 0; i<this._arrays.length; i++)  {
+        this._arrays[i].highlight();
+        //var row = this._arrays[i];
+        /*for(var j = 0; j<row._indices.length; j++){
+            row.unhighlight(j);
+        }*/
+      }
+    }
   }
-
   matrixproto.addEmptyRow = function(){
     if(!(this._arrays.length > 0 && this._arrays[this._arrays.length - 1]._values[0] === "")){//there is no empty line
       this.createRow(["", arrow, ""]);
@@ -189,7 +204,17 @@
     JSAV.utils._helpers.handleVisibility(this, arrayOpts);
   }
   matrixproto.getProductions = function(){
-    return this.productions;
+    return $.extend(true,[],this.productions);
+  }
+
+  matrixproto.getProductionsForSpecificVariable = function (variable){
+    var result = [];
+    for(var i = 0; i< this.productions.length; i++){
+      var production = this.productions[i];
+      if(production[0] === variable)
+        result.push(production);
+    }
+    return result;
   }
 
   matrixproto.addNewProductionRule = function (rule){
@@ -212,8 +237,9 @@
   matrixproto.clear = function(){
     this.productions = [];
     this._arrays = [];
-    this.jsav.clear();
-  }
+    if (this.element) {
+      this.element.remove();
+    }  }
 
   matrixproto.createNewMatrix = function(newProductions){
     this.productions = newProductions;
@@ -314,15 +340,7 @@
       }
     }
   }
-  matrixproto.unhighlightMatrix = function(){
-    for(var i = 0; i<this._arrays.length; i++)  {
-      var row = this._arrays[i];
-      for(var j = 0; j<row._indices.length; j++){
-          row.unhighlight(j);
-      }
-    }
-  }
-  
+
   matrixproto.removeProduction = function(index){
     this.productions.splice(index, 1);
     this._arrays.splice(index, 1);

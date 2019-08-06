@@ -1535,7 +1535,8 @@ $(document).ready(function () {
       }
     }
     var pDict = {};   // dictionary to hold reachable variables
-    var start = transformed[0][0];
+    //var start = transformed[0][0];//IT SHOULD BE S
+    var start = 'S';//I changed this to S.
     for (var i = 0; i < transformed.length; i++) {
       if (!(transformed[i][0] in pDict)) {
         pDict[transformed[i][0]] = [];
@@ -2117,16 +2118,35 @@ $(document).ready(function () {
     };
     // transition from finding terminal-deriving variables to creating the VDG
     var continueUseless = function () {
-      //$(m.element).css("margin-left", "50px");
-      modelDFA = jsav.ds.graph({layout: "layered", directed: true});
+      //$(m.element).css("margin-left", "50px")
       //modelDFA = jsav.ds.graph({left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top", layout: "layered", directed: true});
       var da = Object.keys(derivers);
+       /*
+    What if the grammar has no DG. All nodes are go to terminals only. (Special case)
+    */
+   var onlyTerminalsExist = true;
+   for(var variableIndex = 0; variableIndex < da.length; variableIndex++){
+    var variable = da[variableIndex];
+    var variableProductions = _.filter(productions,function(x){ return x[0] == variable;});
+    for(var ruleIndex = 0; ruleIndex < variableProductions.length; ruleIndex++){
+      var rule = variableProductions[ruleIndex];
+      if(_.filter(rule[2], function(x){return variables.indexOf(x)>=0}).length !==0){
+        onlyTerminalsExist = false;
+        break;
+      }
+    }
+  }
+  if(!onlyTerminalsExist){
+    modelDFA = jsav.ds.graph({layout: "layered", directed: true});
       for (var i = 0; i < da.length; i++) {
         modelDFA.addNode(da[i]);
       }
       modelDFA.layout();
       modelDFA.click(uselessVdgHandler);
       jsav.umsg('Complete dependency graph by adding edges between variables. Variables that predicate terminals: [' + builtDeriveSet + ']')
+    }
+    else
+      continueUselessSecond();
     };
     // transition from VDG to removing useless productions
     var continueUselessSecond = function () {
