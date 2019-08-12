@@ -10,7 +10,7 @@
 
   var jsav = new JSAV("BTreedgmCON");
 
-  // Create all the arrays that represent the nodes in the 2-3 tree.
+  // Create all the arrays that represent the nodes in the B-tree.
   var arrays = window.BTree.getArrayNodes(jsav);
   // Position the array nodes.
   var width = 840;
