@@ -238,8 +238,8 @@ var correctSteps = 0,
  };
  var exercise = jsav.exercise(modelAnswer, initialize, {compare: {class: "jsavhighlight"}, modelButtonTitle: "Answer", feedback: "continuous"});
  //use customized score showing instead of poorly documented jsavscore
- $(".jsavscore").hide();
- $(".realScore").show();
+ $(".jsavscore").show();
+ //$(".realScore").show();
  exercise.reset();
 
  //================================
@@ -260,7 +260,7 @@ var correctSteps = 0,
 
  function modelAnswer (modeljsav) {
 	 // bug: all of the edges seem to be shifted a screen to the right
-	 var graph = convertToDFA(modeljsav, referenceGraph, {width: '90%', height: 440, layout: 'automatic', element: $('.jsavmodelanswer .jsavcanvas')});
+	 var graph = FiniteAutomaton.convertNFAtoDFA (modeljsav, referenceGraph, {width: '90%', height: 440, layout: 'automatic', element: $('.jsavmodelanswer .jsavcanvas')});
 	 graph.layout();
 	 if (graph.equals(studentGraph)) {
 		 jsav.umsg("You got it!");
@@ -337,7 +337,7 @@ var correctSteps = 0,
 
  function loadXML () {
 		$.ajax({
-			url: "../exercises/conversions.xml",
+			url: "./Formal_Languages_Automated_Exerciese/exercises/conversions.xml",
 			dataType: 'xml',
 			async: false,
 			success: function(data) {
