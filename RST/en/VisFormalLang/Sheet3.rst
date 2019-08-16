@@ -15,7 +15,7 @@ Sheet 3
 Exercise 1
 ----------
 
-.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/ExercisesEditors/RegularExpressionsExerciseEditor.html ss
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/ExercisesEditors/RegularExpressionsExerciseEditor.html pe
    :long_name: Sheet 3 Exercise 1
    :url_params: fileLocation=../exercises/Sheet_3/sheet3P1.json
 
@@ -23,6 +23,6 @@ Exercise 1
 Exercise 2
 ----------
 
-.. avembed:: AV/Development/formal_language/grammarExercisesEditor.html ss
+.. avembed:: AV/Development/formal_language/grammarExercisesEditor.html pe
    :long_name: Sheet 3 Exercise 2
    :url_params: fileLocation=Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3P2.json

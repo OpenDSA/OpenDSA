@@ -24,12 +24,6 @@ var exerciseLocation;
 		$('#begin').click(displayTraversals);
 
         jsav.recorded();// we are not recording an AV with an algorithm
-        var params = window.location.search;
-        //******************** */
-        var end = params.indexOf(".json");
-        var start = params.indexOf("fileLocation=")
-        var exerciseLocation = params.substring(start, end + 5).split('=')[1];
-        //******************** */
         document.getElementById("finish").hidden = true;
         switch (type) {
         case 'fixer':
@@ -60,7 +54,12 @@ var exerciseLocation;
 			$('.jsavgraph').click(graphClickHandler);
 			$('.jsavedgelabel').click(labelClickHandler);
 		});
-		resetUndoButtons();
+    resetUndoButtons();
+    
+    var exercise = jsav.flexercise(modelSolution, initialize,
+      {feedback: "attend",compare: {class: "jsavhighlight"},
+      controls: $(".jsavexercisecontrols")});
+    exercise.reset();
 	};
 	// Sets click handler for when the user clicks a JSAV edge label.
 	var labelClickHandler = function(e) {
@@ -90,6 +89,27 @@ var exerciseLocation;
 		finalize();
 		return g;
 	};
+
+	//Function sent to exercise constructor to initialize the exercise
+	function initialize() {
+		exerController.load();
+  }
+  
+  //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
+  //In our case, we will make this function show the test cases only.
+  function modelSolution(modeljsav) {
+    var testCases = exerController.tests[0]["testCases"];
+    var list = [["Test Number", "Test String", "Accept/Reject"]];
+    for (i = 0; i < testCases.length; i++) {
+      var testNum = i + 1;
+      var testCase = testCases[i];
+      var input = Object.keys(testCase)[0];
+      //var inputResult = FiniteAutomaton.willReject(this.fa, input);
+      list.push([testNum, input, testCase[input]]);
+    }
+    modeljsav.displayInit();
+    return modeljsav.ds.matrix(list, {stayle: "table"});
+  } 
 
 	// Update input character alphabet, display the graph, and add click handlers.
 	var finalize = function() {
