@@ -35,7 +35,6 @@
       <h1 id="tester">Finite Automaton Tester</h1>
       <h2>Questions: </h2>
       <p id="exerciseLinks"></p>
-      <p align="center" class="jsavexercisecontrols"></p>
       <h2 id="question">Give an NFA or DFA that accepts the language: L(<span id="expression"></span>)</h2>
       <h2 id="description"></h2>
       <div id="dialogueoverlay"></div>
@@ -114,7 +113,10 @@
       <table id="testResults"></table>
       <div id='download'></div>
       <div id="rmenu"></div>
-      <div id="av">
+      <div id="jsavcontainer">
+        <a class="jsavsettings" href="#">Settings</a>
+        <p align="center" class="jsavexercisecontrols"></p>
+        <p class="jsavscore"></p>
         <p class="jsavoutput jsavline"></p>
       </div>
       <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -134,7 +136,7 @@
 			<script src="../../../DataStructures/FLA/Commands.js"></script>
 			<script src="./CustomPrompt.js"></script>
 			<script src="./Formal_Languages_Automated_Exerciese/exerController/ExerciseController.js"></script>
-			<script src="./FA.js"></script>
+			<script src="./FAPROF.js"></script>
 			<script type="text/javascript"></script>
       <!--              <script src="./FAEditor.js"></script>-->
     </div>
