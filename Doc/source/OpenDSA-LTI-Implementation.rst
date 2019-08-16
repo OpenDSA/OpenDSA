@@ -374,6 +374,8 @@ and created corresponding database records every time the module changes.
 A `Rake`_ task, update_module_versions.rb_, is used to generate the HTML files and 
 database records for stand-alone module versions.
 This Rake task is automatically run as part of the OpenDSA deployment script (deploy.rb_).
+The task can be run manually (e.g. on your development machine) by using the command
+``bundle exec rake update_module_versions`` from the OpenDSA-LTI folder.
 The Rake task first goes over each of the module RST files and checks if a new version needs to be
 compiled.
 This check is done by looking at the git commit hash of the commit that the file was
