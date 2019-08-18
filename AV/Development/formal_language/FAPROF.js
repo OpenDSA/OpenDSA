@@ -57,8 +57,7 @@ var exerciseLocation;
     resetUndoButtons();
     
     var exercise = jsav.flexercise(modelSolution, initialize,
-      {feedback: "attend",compare: {class: "jsavhighlight"},
-      controls: $(".jsavexercisecontrols")});
+      {feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols")});
     exercise.reset();
 	};
 	// Sets click handler for when the user clicks a JSAV edge label.
@@ -107,8 +106,10 @@ var exerciseLocation;
       //var inputResult = FiniteAutomaton.willReject(this.fa, input);
       list.push([testNum, input, testCase[input]]);
     }
+    var model = modeljsav.ds.matrix(list);
+    //layoutTable(model);
     modeljsav.displayInit();
-    return modeljsav.ds.matrix(list, {stayle: "table"});
+    return model;
   } 
 
 	// Update input character alphabet, display the graph, and add click handlers.
@@ -988,4 +989,29 @@ var exerciseLocation;
 	// magic happens here
 	onLoadHandler();
 
+
+  function layoutTable (mat, index) {
+    // if column index is given, does layout for that column, otherwise lays out all columns
+    if (typeof index === 'undefined') {
+      for (var i = 0; i < mat._arrays[0]._indices.length; i++) {
+        layoutColumn(mat, i);
+      }
+    } else {
+      layoutColumn(mat, index);
+    }
+    mat.layout();
+  };
+
+  // Function to lay out a single column width
+  function layoutColumn (mat, index) {
+    var maxWidth = 100;     // default cell size
+
+      for (var i = 0; i < mat._arrays.length; i++) {
+        var cell = mat._arrays[i]._indices[index].element;
+        $(cell).find('.jsavvalue').width(maxWidth);
+        $(cell).find('.jsavindex').width(maxWidth);
+        $(cell).find('.jsavindex').width(maxWidth);
+      }
+
+  };
 }(jQuery));

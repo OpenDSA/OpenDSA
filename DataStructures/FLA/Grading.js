@@ -10,7 +10,6 @@
   var gradeStepFilterFunction = function(step) { return step.options.grade; };
 
   var FLExercise = function(jsav, options) {
-    alert("Welcome");
     this.jsav = jsav;
     this.options = jQuery.extend({reset: function() { }, controls: null, feedback: "atend",
                                   feedbackSelectable: false, fixmode: "undo",
@@ -36,7 +35,7 @@
     // function to handle the model answer event
     var modelHandler = function() {
       cont.addClass("active");
-      self.jsav.logEvent({type: "jsav-exercise-model-open"});
+      //self.jsav.logEvent({type: "jsav-exercise-model-open"});
       self.showModelanswer();
       cont.removeClass("active");
     };
@@ -46,7 +45,7 @@
     if (cont.size()) {
       var $reset = $('<input type="button" name="reset" value="' + this.options.resetButtonTitle + '" />')
                       .click(resetHandler),
-          $model = $('<input type="button" name="answer" value="' + this.options.modelButtonTitle + '" />')
+          $model = $('<input type="button" name="answer" value="' + "Show Test Cases" + '" />')
                       .click(modelHandler),
           $action = $('<span class="actionIndicator"></span>');
       // only add undo and grade button if not in continuous mode
@@ -113,6 +112,7 @@
     };
   };
   FLExercise.GradeStepFilterFunction = gradeStepFilterFunction;
+
   var allEqual = function(initial, model, compare) {
     if ($.isArray(initial)) {
       if (!compare ) { compare = [];} // initialize compare to an empty array
@@ -127,59 +127,7 @@
     }
   };
   var graders = {
-    "default": function() {
-      var studentSteps = 0,
-          correct = true,
-          forwStudent = true,
-          forwModel = true,
-          modelAv = this.modelav,
-          studentAv = this.jsav,
-          modelTotal = modelAv.totalSteps(), // "cache" the size
-          studentTotal = studentAv.totalSteps(); // "cache" the size
-
-      this.score.correct = 0;
-      this.score.student = 0;
-      while (correct && forwStudent && forwModel && modelAv.currentStep() <= modelTotal &&
-            studentAv.currentStep() <= studentTotal) {
-        forwStudent = studentAv.forward(gradeStepFilterFunction);
-        forwModel = modelAv.forward(gradeStepFilterFunction);
-        if (forwStudent) { studentSteps++; }
-        correct = false;
-        if (forwModel) {
-          if (forwModel && forwStudent) {
-            if (allEqual(this.initialStructures, this.modelStructures, this.options.compare)) {
-              correct = true;
-              this.score.correct++;
-            }
-          }
-        }
-      }
-      // figure out the total number of graded steps in student answer
-      forwStudent = true;
-      while (forwStudent && studentAv.currentStep() < studentTotal) {
-        forwStudent = studentAv.forward(gradeStepFilterFunction);
-        if (forwStudent) {
-          studentSteps++;
-        }
-      }
-      this.score.student = studentSteps;
-    },
-    "default-continuous": function() {
-      var modelAv = this.modelav,
-          studentAv = this.jsav,
-          forwModel;
-      if (modelAv.currentStep() < modelAv.totalSteps() &&
-              studentAv.currentStep() <= studentAv.totalSteps()) {
-        forwModel = modelAv.forward(gradeStepFilterFunction);
-        this.score.student++;
-        if (forwModel) {
-          if (allEqual(this.initialStructures, this.modelStructures, this.options.compare)) {
-            this.score.correct++;
-          }
-        }
-      }
-      studentAv.forward();
-    },
+    //I removed other grades as we do not need them.
     // A grader that only compares the student structures and model structures at the last
     // step of both animation sequences. Useful in exercises where only the final state is relevant
     // instead of the process how student got there.
@@ -192,40 +140,9 @@
       if (allEqual(this.initialStructures, this.modelStructures, this.options.compare)) {
         this.score.correct = 1;
       }
-    },
-    finder: function() {
-      var studentSteps = 0,
-          cont = true,
-          forwStudent = true,
-          forwModel = true,
-          modelAv = this.modelav,
-          studentAv = this.jsav,
-          modelTotal = modelAv.totalSteps(), // "cache" the size
-          studentTotal = studentAv.totalSteps(); // "cache" the size
-
-      this.score.correct = 0;
-      this.score.student = 0;
-      while (forwModel && cont && modelAv.currentStep() <= modelTotal &&
-            studentAv.currentStep() <= studentTotal) {
-        forwModel = modelAv.forward(gradeStepFilterFunction);
-        if (forwModel) {
-          forwStudent = true;
-          while (forwStudent && !allEqual(this.initialStructures, this.modelStructures, this.options.compare) &&
-            studentAv.currentStep() <= studentTotal) {
-              forwStudent = studentAv.forward();
-          }
-          if (allEqual(this.initialStructures, this.modelStructures, this.options.compare)) {
-            this.score.correct++;
-          } else {
-            cont = false;
-          }
-        }
-      }
     }
   }; // end grader specification
-  // set the continuous finalStep grader the same as normal finalStep
-  graders["finalStep-continuous"] = graders.finalStep;
-
+  
   var exerproto = FLExercise.prototype;
   exerproto._updateScore = function() {
     if (this.options.feedback === "continuous") {
@@ -293,6 +210,7 @@
     $.fx.off = prevFx;
     return this.score;
   };
+
   exerproto.showGrade = function() {
     // shows an alert box of the grade
     this.grade();
@@ -303,6 +221,7 @@
     }
     window.alert(msg);
   };
+
   exerproto.modelanswer = function(returnToStep) {
     if (this.modelDialog) {
       this.modelDialog.remove();
@@ -310,15 +229,10 @@
     var model = this.options.model,
         modelav,
         self = this,
-        modelOpts = $.extend({"title": this.jsav._translate("modelWindowTitle"),
+        modelOpts = $.extend({"title": "Test Cases",
                               "closeOnClick": false,
                               "modal": false,
-                              "closeCallback": function() {
-                                self.jsav.logEvent({type: "jsav-exercise-model-close"});
-                                if (typeof returnToStep === "number") {
-                                  modelav.jumpToStep(returnToStep);
-                                }
-                              }
+                              "closeCallback": function() {}//i removed the logging of model show and close
                              },
                             this.options.modelDialog); // options passed for the model answer window
     // add a class to "hide" the dialog when preparing it
@@ -400,31 +314,7 @@
     // this enables other components on a page to get access to the exercise object
     this.jsav.logEvent({type: "jsav-exercise-init", exercise: this});
   };
-  exerproto.undo = function() {
-    var oldFx = $.fx.off || false;
-    $.fx.off = true;
-    // undo last step
-    this.jsav.backward(); // the empty new step
-    this.jsav.backward(); // the new graded step
-    // undo until the previous graded step
-    var undoGraders = ["default", "finder", "finalStep"];
-    if ((undoGraders.indexOf(this.options.grader) !== -1 ) && this.jsav.backward(gradeStepFilterFunction)) {
-      // if such step was found, redo it
-      this.jsav.forward();
-      this.jsav.step({updateRelative: false});
-    } else {
-      // ..if not, the first student step was incorrent and we can rewind to beginning
-      this.jsav.begin();
-    }
-    this.jsav._redo = [];
-    $.fx.off = oldFx;
-  };
-  var moveModelBackward = function(exer) {
-    exer.modelav.backward();
-    if (exer.modelav.backward(gradeStepFilterFunction)) {
-      exer.modelav.forward();
-    }
-  };
+
   exerproto.gradeableStep = function() {
     var prevFx = $.fx.off || false;
     $.fx.off = true;
@@ -435,86 +325,17 @@
       }
       return;
     }
+    //I remove a lot of code that is not used in my case.
     this.jsav.stepOption("grade", true);
     this.jsav.step();
     var that = this;
-    if ((this.feedback && this.feedback.val() === "continuous") ||
-        (!this.feedback && this.options.feedback === "continuous")) {
-      var doContinuousGrading = function() {
-        var grade = that.grade(true); // true is for continuous mode
-        if (grade.student === grade.correct) { // all student's steps are correct
-          that.jsav.logEvent({ type: "jsav-exercise-grade-change", score: $.extend({}, grade)});
-          that._updateScore();
-          return;
-        }
-        if (grade.correct === grade.total) { // student continues with the exercise even after done
-          return;
-        }
-        var fixmode = that.fixmode?that.fixmode.val():that.options.fixmode;
-        // undo until last graded step
-        if (fixmode !== "none") {
-          that.undo();
-          that.score.student--;
-        }
-        if (fixmode === "fix" && $.isFunction(that.options.fix)) {
-          // call the fix function of the exercise to correct the state
-          that._fixing = true;
-          var modelAv = that.modelav, studentAv = that.jsav;
-          that.fix(that.modelStructures);
-          delete that._fixing;
-          that.score.fix++;
-          that.jsav.stepOption("grade", true);
-          that.jsav.step();
-          if (that.options.debug && !allEqual(that.initialStructures, that.modelStructures, that.options.compare)) {
-            console.error("The fix function did not work as expected, the structures aren't equal");
-          }
-          that.jsav.logEvent({type: "jsav-exercise-step-fixed", score: $.extend({}, grade)});
-          window.alert(that.jsav._translate("fixedPopup"));
-        } else if (fixmode === "fix") {
-          if (!that._undoneSteps[that.jsav.currentStep()]) {
-            that.score.undo++;
-            that._undoneSteps[that.jsav.currentStep()] = true;
-          }
-          that.jsav.logEvent({type: "jsav-exercise-step-undone", score: $.extend({}, grade)});
-          moveModelBackward(that);
-          window.alert(that.jsav._translate("fixFailedPopup"));
-        } else if (fixmode === "none") {
-          // DO nothing
-        } else {
-          if (!that._undoneSteps[that.jsav.currentStep()]) {
-            that.score.undo++;
-            that._undoneSteps[that.jsav.currentStep()] = true;
-          }
-          that.jsav.logEvent({type: "jsav-exercise-step-undone", score: $.extend({}, grade)});
-          moveModelBackward(that);
-          window.alert(that.jsav._translate("undonePopup"));
-        }
-        that._updateScore();
-      };
-      that.jsav._clearPlaying(function() {
-        // log the gradeable step event
-        that.jsav.logEvent({type: "jsav-exercise-gradeable-step"});
-        // set a timer to do the grading once animation is finished
-        doContinuousGrading();
-        $.fx.off = prevFx;
-      });
-    } else {
-      this.jsav._clearPlaying(function() {
-        // log the event of gradeable step after the animation is finished
-        that.jsav.logEvent({type: "jsav-exercise-gradeable-step"});
-      });
-      $.fx.off = prevFx;
-    }
+    this.jsav._clearPlaying(function() {
+      // log the event of gradeable step after the animation is finished
+      that.jsav.logEvent({type: "jsav-exercise-gradeable-step"});
+    });
+    $.fx.off = prevFx;
   };
-  exerproto.fix = function() {
-    var fix = this.options.fix;
-    if ($.isFunction(fix)) {
-      var prevFx = $.fx.off || false;
-      $.fx.off = true;
-      fix(this.modelStructures);
-      $.fx.off = prevFx;
-    }
-  };
+
   exerproto._jsondump = function() {
     var jsav = this.jsav,
         states = [],
