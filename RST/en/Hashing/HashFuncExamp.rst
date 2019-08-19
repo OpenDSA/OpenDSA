@@ -18,11 +18,10 @@ Simple Mod Function
 ~~~~~~~~~~~~~~~~~~~
 
 Consider the following hash function used to hash integers to a table
-of sixteen slots::
+of sixteen slots.
 
-   int h(int x) {
-     return x % 16;
-   }
+.. codeinclude:: Hashing/Hash
+   :tag: Mod
 
 Here "%" is the symbol for the mod function.
 
@@ -190,18 +189,10 @@ A Simple Hash Function for Strings
 
 Now we will examine some hash functions suitable for storing strings
 of characters.
-We start with a simple summation function::
+We start with a simple summation function.
 
-   int sascii(String x, int M) {
-     char ch[];
-     ch = x.toCharArray();
-     int xlength = x.length();
-
-     int i, sum;
-     for (sum=0, i=0; i < x.length(); i++)
-       sum += ch[i];
-     return sum % M;
-   }
+.. codeinclude:: Hashing/Hash
+   :tag: sascii
 
 This function sums the ASCII values of the letters in a string.
 If the hash table size :math:`M` is small compared to the
@@ -246,7 +237,7 @@ String Folding
 
 Here is a much better hash function for strings.
 
-.. codeinclude:: Hashing/sfold
+.. codeinclude:: Hashing/Hash
    :tag: sfold
   
 This function takes a string as input.
