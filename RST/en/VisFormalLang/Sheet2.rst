@@ -16,15 +16,14 @@ Exercise 1 Part a
 -----------------
 
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/ExercisesEditors/NFAtoDFAExerciseEditor.html pe
-   :long_name: Sheet 2 Exercise 1 part a
-   :url_params: fileLocation=../exercises/Sheet_2/exercise1_a.json
+   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
+
 
 Exercise 1 Part b
 -----------------
 
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/ExercisesEditors/DFAminimizationExerciseEditor.html pe
-   :long_name: Sheet 1 Exercise 1 part b
-   :url_params: fileLocation=../exercises/Sheet_2/dfaminimization.json
+   :long_name: Sheet 1 Exercise 1 DFA minimization
 
 Exercises 3 and 4
 -----------------

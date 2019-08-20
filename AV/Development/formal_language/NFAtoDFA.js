@@ -18,10 +18,6 @@
 	function onLoadHandler(){
 		var type = $('h1').attr('id');
 		if (type == 'Exercise') {
-			var params = window.location.search;
-			//******************** */
-			var end = params.indexOf(".json");
-			var start = params.indexOf("fileLocation=")
 			var exerciseLocation = getExerciseLocation();
 			//var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_2/exercise1_a.json": exerciseLocation;
 			exerController = new NFAtoDFAMinimizationController(jsav, g, exerciseLocation, "json", {initGraph: initGraph});

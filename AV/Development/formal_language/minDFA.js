@@ -142,7 +142,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 						exerciseLog.errorMessages.push("There are distinguishable states remaining");
 						exerciseLog.errorsCount++;
 					}
-					return;
+					return false;
 				}
 			}
 		}
@@ -352,7 +352,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 			if(type === 'Exercise'){
 				exerciseLog.errorMessages.push('Incomplete DFA transitions');
 				exerciseLog.errorsCount++;
-			}
+      }
+      return 0;
 		}
 		else {
 			jsav.umsg("You got it!");
@@ -360,7 +361,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 			$('#exportbutton').show();
 			if(type === 'Exercise'){
 				exerciseLog.numberOfSteps++;
-				exerController.startTesting(studentGraph, "minimization");
+				return exerController.startTesting(studentGraph, "minimization");
 
 			}
 		}
@@ -394,7 +395,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 			$('#editable').removeClass("working");
 			$('.treework').hide();
 			$('.split').show();
-			jsav.umsg("The expansion is correct - Split a leaf node");
+			jsav.umsg("The expansion is correct - Split another leaf node if needed");
 			if(type === 'Exercise')
 				exerciseLog.numberOfSteps++;
 		} else {
@@ -433,7 +434,11 @@ if computational complexity is a concern, should be changed to use a union-find 
 		if (input === null) {
 			return;
 		} else if (!_.contains(alphabet, input)) {
-			alert("That terminal is not in the alphabet!");
+      alert("That terminal is not in the alphabet!");
+      if (type == 'Exercise'){
+        exerciseLog.errorsCount++;
+        exerciseLog.errorMessages.push(input + " is not in the alphabet!");
+      }
 			return;
 		} else {
 			var nObj = {};
@@ -597,18 +602,60 @@ if computational complexity is a concern, should be changed to use a union-find 
 	$('#layoutRef').click(function(){referenceGraph.layout()});
 	$('#dfadonebutton').click(dfaDone);
 	$('#exportbutton').click(exportToFA);
+  
+  function initializeExercise(){
+    exerController.updateExercise(0);
+    jsav.umsg('Split a leaf node');
+    $("#setterminalbutton").show();
+    $("#autobutton").show();
+    $("#donebutton").show();
+    $('.treework').hide();
+    $('.hide').hide();
+    $('#editable').removeClass("working");
+	}
 
+	//Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
+  //In our case, we will make this function show the test cases only.
+  function modelSolution(modeljsav) {
+		var testCases = exerController.tests[0]["testCases"];
+		var list = [["Test Number", "Test String"]];
+		for (i = 0; i < testCases.length; i++) {
+		var testNum = i + 1;
+		var testCase = testCases[i];
+		var input = Object.keys(testCase)[0];
+		//var inputResult = FiniteAutomaton.willReject(this.fa, input);
+		list.push([testNum, input]);
+		}
+		var model = modeljsav.ds.matrix(list);
+		//layoutTable(model);
+		modeljsav.displayInit();
+		return model;
+  }  
+  var checkDone = function(){
+    var treeDone = done();
+    if(treeDone !== false)
+      return dfaDone();
+    else {
+      alert("You did not finish building the tree.")
+      return 0;
+    }
+  }
 	var onLoadHandler = function() {
 		type = $('h1').attr('id');
 		if (type == 'Exercise') {
-			var params = window.location.search;
-			//******************** */
-			var end = params.indexOf(".json");
-			var start = params.indexOf("fileLocation=")
-			var exerciseLocation = params.substring(start, end + 5).split('=')[1];
-			var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_2/dfaminimization.json": exerciseLocation;
-			exerController = new NFAtoDFAMinimizationController(jsav, g, exercisePath, "json", {initGraph: initGraph});
-			exerController.load();		
+			var exerciseLocation = getExerciseLocation();
+			//var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_2/dfaminimization.json": exerciseLocation;
+			exerController = new NFAtoDFAMinimizationController(jsav, g, exerciseLocation, "json", {initGraph: initGraph});
+			exerController.load();
+			var exercise = jsav.flexercise(modelSolution, initializeExercise,
+				{
+				  feedback: "atend", 
+				  grader: "finalStep", 
+				  controls: $(".jsavexercisecontrols"), 
+				  exerciseController: exerController,
+				  checkSolutionFunction: checkDone
+				});
+			  exercise.reset();		
 		}
 		else{
 			referenceGraph = initGraph();
