@@ -22,14 +22,46 @@
 			//******************** */
 			var end = params.indexOf(".json");
 			var start = params.indexOf("fileLocation=")
-			var exerciseLocation = params.substring(start, end + 5).split('=')[1];
-			var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_2/exercise1_a.json": exerciseLocation;
-			exerController = new NFAtoDFAMinimizationController(jsav, g, exercisePath, "json", {initGraph: initGraph});
-			exerController.load();		
+			var exerciseLocation = getExerciseLocation();
+			//var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_2/exercise1_a.json": exerciseLocation;
+			exerController = new NFAtoDFAMinimizationController(jsav, g, exerciseLocation, "json", {initGraph: initGraph});
+      exerController.load();		
+
+      var exercise = jsav.flexercise(modelSolution, initializeExercise,
+        {
+          feedback: "atend", 
+          grader: "finalStep", 
+          controls: $(".jsavexercisecontrols"), 
+          exerciseController: exerController,
+          checkSolutionFunction: checkDone
+        });
+      exercise.reset();
 		}
 		else
 			initGraph();
 	}
+	function initializeExercise(){
+		exerController.updateExercise(0);
+	}
+
+	//Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
+  //In our case, we will make this function show the test cases only.
+  function modelSolution(modeljsav) {
+		var testCases = exerController.tests[0]["testCases"];
+		var list = [["Test Number", "Test String"]];
+		for (i = 0; i < testCases.length; i++) {
+		var testNum = i + 1;
+		var testCase = testCases[i];
+		var input = Object.keys(testCase)[0];
+		//var inputResult = FiniteAutomaton.willReject(this.fa, input);
+		list.push([testNum, input]);
+		}
+		var model = modeljsav.ds.matrix(list);
+		//layoutTable(model);
+		modeljsav.displayInit();
+		return model;
+  }  
+
 	function initGraph(opts) {
 		var type = $('h1').attr('id');
 		if (localStorage.convertNFA == "true") {
@@ -73,7 +105,7 @@
 		jsav.umsg("Choose a state to expand:");
 		studentGraph = jsav.ds.FA({width: "45%", height: 440, element: $("#editable")});
 		var initialNode = studentGraph.addNode({left: "20px"});
-		initialNode.stateLabel(lambdaClosure([referenceGraph.initial.value()], referenceGraph).sort().join());
+		initialNode.value(lambdaClosure([referenceGraph.initial.value()], referenceGraph).sort().join());
 		initialNode.stateLabelPositionUpdate();
 		studentGraph.makeInitial(initialNode);
 
@@ -114,7 +146,7 @@ var graphClickHandlers = function(e) {
 		//check to see if the new node already exisit with the same label
 		var graphNodes = studentGraph.nodes();
 		for(var nodeIndex = 0; nodeIndex < graphNodes.length; nodeIndex++){
-			if(graphNodes[nodeIndex].stateLabel() === targetS){
+			if(graphNodes[nodeIndex].value() === targetS){
 				alert("State label already exists.");
 				$(".editButton").show();
 				$(".jsavgraph").removeClass("working");
@@ -140,7 +172,7 @@ var graphClickHandlers = function(e) {
 				break;
 			}
 		}
-		newNode.stateLabel(expanded);
+		newNode.value(expanded);
 		newNode.stateLabelPositionUpdate();
 		var newEdge = studentGraph.addEdge(selectedNode, newNode, {weight: expandT});
 			if (newEdge) { newEdge.layout(); }
@@ -195,7 +227,7 @@ var nodeClickHandlers = function(e) {
 			}
 		}
 		var next = [],
-			valArr = this.stateLabel().split(","),
+			valArr = this.value().split(","),
 			finality = false;
 		for (var j = 0; j < valArr.length; j++) {
 			next = _.union(next, lambdaClosure(referenceGraph.transitionFunction(referenceGraph.getNodeWithValue(valArr[j]),
@@ -220,7 +252,7 @@ var nodeClickHandlers = function(e) {
 		e.stopPropagation();
 	} else {
 		// add transition if this is the toNode
-		if (this.stateLabel() === expanded) {
+		if (this.value() === expanded) {
 			var newEdge = studentGraph.addEdge(selectedNode, this, {weight: expandT});
 			if (newEdge) { newEdge.layout(); }
 		}			 else {
@@ -277,17 +309,18 @@ var nodeClickHandlers = function(e) {
   var checkDone = function() {
     //if (studentGraph.equals(answerGraph)) {
 	if(checkIfSolutionIsDone(studentGraph, answerGraph)){
-      jsav.umsg("Conversion completed.");
+      alert("Conversion completed. Good job");
       $("#exportButton").show();
     }		else {
 	  jsav.umsg("You're not done yet.");
 	  if(exerciseLog){
 		exerciseLog.errorsCount++;
 		exerciseLog.errorMessages.push("You're not done yet");
-		}
+    }
+    return 0;
 	}
 	if(exerController)
-		exerController.startTesting(studentGraph);
+		return exerController.startTesting(studentGraph);
   };
   /*
   These function added to compare student solution with the expected solution. Previously, the code was calling the equals method for Grapths, which depend that the 
@@ -313,7 +346,7 @@ var nodeClickHandlers = function(e) {
   };
   //the student solution should be sorted based on the state label
   var nodeSortFunctionLabel = function(a, b) {
-    return a.stateLabel().localeCompare(b.stateLabel());
+    return a.value().localeCompare(b.value());
   };
   //the model answer graph should be sorted on the labels also, but the labels are stored in options.value
   var nodeSortFunctionOptionsValue = function(a, b) {

@@ -16,44 +16,44 @@ Exercise 1
 ----------
 
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise1.html pe
-   :long_name: Sheet 1 Exercise 1
+   :long_name: Sheet 1 Exercise 1 Draw a FA for a language
 
 Exercise 2
 ----------
 
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise2.html pe
-   :long_name: Sheet 1 Exercise 2
+   :long_name: Sheet 1 Exercise 2 Draw a FA for a language
 
 
 Exercise 3
 ----------
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise3.html pe
-   :long_name: Sheet 1 Exercise 3
+   :long_name: Sheet 1 Exercise 3 Draw a FA for a language
 
 
 Exercise 4
 ----------
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise4.html pe
-   :long_name: Sheet 1 Exercise 4
+   :long_name: Sheet 1 Exercise 4 Draw a FA for a language
 
 
 Exercise 5
 ----------
 
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise5.html pe
-   :long_name: Sheet 1 Exercise 5
+   :long_name: Sheet 1 Exercise 5 write a grammar for a language
 
 
 Exercise 6
 ----------
 
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise6.html pe
-   :long_name: Sheet 1 Exercise 6
+   :long_name: Sheet 1 Exercise 6 write a grammar for a language
 
 
 Exercise 7
 ----------
 
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise7.html pe
-   :long_name: Sheet 1 Exercise 7
+   :long_name: Sheet 1 Exercise 7 write a grammar for a language
 

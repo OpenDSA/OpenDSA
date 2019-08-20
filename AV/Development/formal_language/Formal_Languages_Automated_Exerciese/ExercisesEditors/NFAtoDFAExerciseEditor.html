@@ -2,6 +2,9 @@
 <html>
 	<head>
 		<title>Convert NFA to DFA Exercise</title>
+		<script>
+			getExerciseLocation = function(){ return "../exercises/Sheet_2/exercise1_a.json"};
+		</script>
 			<link rel="stylesheet" href="../../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 			<link rel="stylesheet" href="../../../../../lib/odsaAV-min.css" type="text/css" />
 			<link rel="stylesheet" href="../../../../../lib/odsaStyle-min.css" type="text/css" />
@@ -44,15 +47,17 @@
     		}
     		.jsavmodelanswer {
     			text-align: center;
-    		}
+			}
+			.jsavhorizontalarray .jsavnode {
+    			min-width: 200px !important;
+    			max-width: 400px !important;
+			}
 		</style>
 	</head>
 	<body>
 
 		<div id="container">
 			<h1 id="Exercise">NFA to DFA exercises</h1>
-			<h2>Questions: </h2>
-			<p id="exerciseLinks"></p>
 			<h2 id="question">Convert the following NFA to a DFA</h2>
 			<h2 id="description"></h2>
 			<div id="dialogueoverlay"></div>
@@ -64,56 +69,19 @@
 				</div>
 			</div>
 			<p align="center" class="arrayPlace"></p>
+			<!--
 			<button id="saveButton">Save</button>
 			<button id="showResult">Show Results</button>
 			<button type="button" id="reset">Reset</button>
 			<button type="button" id="checkDone">Done?</button>
+			-->
 			<p id="percentage"></p>
 			<table id="testResults"></table>
 			<div id="av">
-				<div style="display:inline;">
-					<div style="float: right;" id="menu_options">
-					<!--<button id="editButton" class="icon_btn"><i class="fa fa-mouse-pointer"></i></button>-->
-					<!--<button id="not_implemented" class="icon_btn" title="Expand Group on (T)erminal"><i class="fa fa-joomla"></i></button>
-					<button id="not_implemented" class="icon_btn" title="Expand State"><i class="fa fa-share-alt"></i></button>-->
-					<!--<button type="button" id="completeButton">Complete</button>-->
-					<!--<button type="button" id="exportButton">Export</button>-->
-					</div>
-					<p class="jsavoutput jsavline"></p>
-					<div style="float: left;">
-					<table class="headerTable" style="font-size: 12px; border-style: hidden;">
-						<tr>
-							<td style="display: -webkit-box;border:  hidden;margin-top: 5px;">
-							<div class="dropdown" style="height: 20px !important;">
-							
-
-							</div>
-
-							
-							<!--<div class="dropdown" style="height: 20px !important; width: 73px;">
-							<button type="button" data-toggle="dropdown">Convert
-							<span class="caret"></span></button>
-							<ul class="dropdown-menu">
-
-								<li><a href="#" class="functionality" id="toDFAButton">Convert to DFA</a></li>
-								
-								<li><a href="#" class="functionality" id="minimizeButton">Minimize DFA</a></li>
-								
-								<li><a href="#" class="functionality" id="toDFAButton" title="convert to Right Linear Grammar">Convert to RLG</a></li>
-								
-								<li><a href="#" class="functionality" id="toREButton" title="convert to Regular Expression">Convert To RE</a></li>
-							
-							</ul>
-							
-							</div> 
-						-->
-						</td>
-						</tr>
-					</table>
-					</div>
-				</div>
-				<br>
-				<br>
+				<a class="jsavsettings" href="#">Settings</a>
+				<p align="center" class="jsavexercisecontrols"></p>
+				<p class="jsavscore"></p>
+				<p class="jsavoutput jsavline"></p>
 				<hr style="margin-top: 0px; border-top: 1px solid #333; margin-bottom: 0px;">
 				<div id='download'></div>
 				<div id="graphs">
@@ -140,6 +108,7 @@
 		<script src="../../../../../DataStructures/FLA/serializableGraph.js"></script>
 		<script src="../../../../../DataStructures/FLA/FA.js"></script>
 		<script src="../exerController/NFAtoDFAMinimizationController.js"></script>
+		<script src="../../../../../DataStructures/FLA/Grading.js"></script>
 		<script src="../../NFAtoDFA.js"></script>
    	</body>
   </html>

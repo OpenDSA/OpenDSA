@@ -5,7 +5,7 @@
         "type": "description",
         "testCases": [
             {
-                "": true
+                "The resulting FA is a DFA": true
             }
         ],
         "graph": {

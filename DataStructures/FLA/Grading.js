@@ -114,7 +114,10 @@
       this.score.total = 1;
       this.modelav.end();
       this.jsav.end();
-      this.score.correct = this.options.exerciseController.startTesting();
+      if(this.options.checkSolutionFunction)
+        this.score.correct = this.options.checkSolutionFunction();
+      else
+        this.score.correct = this.options.exerciseController.startTesting();
     }
   }; // end grader specification
   
