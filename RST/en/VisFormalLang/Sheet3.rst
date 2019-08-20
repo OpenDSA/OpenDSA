@@ -15,14 +15,40 @@ Sheet 3
 Exercise 1
 ----------
 
-.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/ExercisesEditors/RegularExpressionsExerciseEditor.html pe
-   :long_name: Sheet 3 Exercise 1
-   :url_params: fileLocation=../exercises/Sheet_3/sheet3P1.json
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3exercise1.html pe
+   :long_name: Sheet 3 Exercise 1 Regular Expressions Exercise
 
 
 Exercise 2
 ----------
 
-.. avembed:: AV/Development/formal_language/grammarExercisesEditor.html pe
-   :long_name: Sheet 3 Exercise 2
-   :url_params: fileLocation=Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3P2.json
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3exercise2.html pe
+   :long_name: Sheet 3 Exercise 1 Regular Expressions Exercise
+
+Exercise 3
+----------
+
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3exercise3.html pe
+   :long_name: Sheet 3 Exercise 1 Regular Expressions Exercise
+
+
+Exercise 4
+----------
+
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3exercise4.html pe
+   :long_name: Sheet 3 Exercise 4 Give a left-linear grammar for the following an NFA
+
+
+Exercise 5
+----------
+
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3exercise5.html pe
+   :long_name: Sheet 3 Exercise 5 Give a left-linear grammar for a language
+
+
+Exercise 6
+----------
+
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3exercise6.html pe
+   :long_name: Sheet 3 Exercise 6 Find a regular grammar for a language
+

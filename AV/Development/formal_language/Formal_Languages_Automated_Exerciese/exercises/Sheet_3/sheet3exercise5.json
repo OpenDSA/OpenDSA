@@ -1,0 +1,40 @@
+[
+    {
+    "expression": "(aaab^*ba)^*",
+    "description": "Give a left-linear grammar for the language L(___)",
+    "type": "description",
+    "testCases": [
+        {
+            "left-linear": true
+        },
+        {
+            "": true
+        },
+        {
+            "aaaba": true
+        },
+        {
+            "aaabbbbba": true
+        },
+        {
+            "aaabaaaabaaaabaaaaba": true
+        },
+        {
+            "aaabbbbbaaaabbbbba": true
+        },
+        {
+            "ba": false
+        },
+        {
+            "aaabaaabba": false
+        },
+        {
+            "aaaaaa": false
+        }
+    ],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    }
+}
+]

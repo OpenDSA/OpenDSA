@@ -28,12 +28,8 @@ var jsav,
 		}
 		else{
 			$('#av').hide();
-			var params = window.location.search;
-			var end = params.indexOf(".json");
-			var startL = params.indexOf("fileLocation=")
-			var exerciseLocation = params.substring(startL, end + 5).split('=')[1];
-			var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_3/sheet3P1.json": exerciseLocation;
-			exerciseController = new ExerciseController(jsav, exercisePath, 'json');
+			var exerciseLocation = getExerciseLocation();
+			exerciseController = new ExerciseController(jsav, exerciseLocation, 'json');
 			exerciseController.load();
 		}
 		$('#nextStep').click(function() {
