@@ -45,11 +45,6 @@
     "points": 0.0, 
     "required": false
   },
-  "glob_ff_options": {
-    "threshold": 1.0, 
-    "points": 0.0, 
-    "required": false
-  },
   "glob_ka_options": {
     "threshold": 5, 
     "points": 1.0, 
@@ -62,8 +57,8 @@
     "points": 1.0
   }, 
   "glob_pe_options": {
-    "threshold": 0.9, 
-    "points": 2.0, 
+    "threshold": 1.0, 
+    "points": 10.0, 
     "required": true
   }, 
   "chapters": {
@@ -145,7 +140,20 @@
         }
 
       },
-      "VisFormalLang/Sheet2":{},
+      "VisFormalLang/Sheet2":{
+        "NFAtoDFAExerciseEditor":{
+          "points": 10.0
+        },
+        "DFAminimizationExerciseEditor":{
+          "points": 10.0
+        },
+        "sheet2exercise3":{
+          "points": 7.0
+        },
+        "sheet2exercise4":{
+          "points": 10.0
+        }
+      },
       "VisFormalLang/Sheet3":{},
       "VisFormalLang/Sheet5":{}
     },
