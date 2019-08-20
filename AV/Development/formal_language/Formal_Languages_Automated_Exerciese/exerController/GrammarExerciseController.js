@@ -66,7 +66,13 @@ controllerProto.load = function () {
 }
 
 controllerProto.startTesting = function() {
-	tryC++;
+  tryC++;
+  var productions = _.filter(arr, function(x) { return x[0]});
+  if(productions.length == 0)
+  {
+    alert("No Grammar to grade");
+    return 0;
+  }
 	//we need to find an initial test to know if the student has something to test or not
 	$("#testResults").empty();
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
@@ -121,7 +127,8 @@ controllerProto.startTesting = function() {
 		else{
 			
         	inputResult = !FiniteAutomaton.willReject(parser, input.split("").reverse().join(""));
-		}
+    }
+    input = input ===""?lambda:input;
 		if (inputResult === testCase[input]) {
 			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
 			count++;

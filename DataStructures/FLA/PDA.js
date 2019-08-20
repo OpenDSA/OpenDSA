@@ -800,12 +800,11 @@ Stackproto.formStack = function() {
       var queue = new Set();
       //queue.push(productions[0][0]);
       queue.add(productions[0][0]);
-      var asd = queue.values();
-      while(queue.values.length !== 0){
+      for(let nextValue = queue.values().next(); nextValue.done !== true; nextValue = queue.values().next()){
         if(counter > 10000){
           break;
         }
-        var next = queue.values().next().value;
+        var next = nextValue.value;
         queue.delete(next);
 
         if(this.removeLambda(next) === inputString){
@@ -819,7 +818,6 @@ Stackproto.formStack = function() {
           }
         }
         counter++;
-        asd = queue.values();
       }
       return [false, next, table];
     }
@@ -830,9 +828,8 @@ Stackproto.formStack = function() {
       counter = 0;
       var queue = new Set();
       queue.add(productions[0][0]);
-      var asd = queue.values();
-      while(queue.values.length !== 0){
-        var next = queue.values().next().value;
+      for(let nextValue = queue.values().next(); nextValue.done !== true; nextValue = queue.values().next()){
+        var next = nextValue.value;
         if(next === undefined)
           return [false, null, table];//I added this line to reject a string not in the grammar. For grammar exercise controller
         queue.delete(next);
@@ -855,7 +852,6 @@ Stackproto.formStack = function() {
               }
         }
         counter++;
-        asd = queue.values();
       }
       return [false, next, table];
       }
@@ -1050,13 +1046,13 @@ Stackproto.formStack = function() {
           if(target[i] !== proposedString[i])
             return true;
         }
-        else // a variable so stop looking
+        else // a variable or a terminal
           return false;
       }
   
     }
     else
-      return false;
+      return true;
   }
     var getTheNumberOfTerminals = function (proposedString){
       var count =0;

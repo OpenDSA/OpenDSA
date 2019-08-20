@@ -83,6 +83,16 @@ $(document).ready(function () {
 
   //Function sent to exercise constructor to initialize the exercise
 	function initialize() {
+    var arr2 = new Array(20);    // arbitrary array size
+    for (var i = 0; i < arr2.length; i++) {
+      arr2[i] = ["", arrow, ""];
+    }
+    lastRow = 0;
+    arr = arr2;
+
+    m = init();
+    fi = null;
+    $('.jsavmatrix').addClass("editMode");
 		exerController.updateExercise(0);
     }
 
@@ -106,7 +116,7 @@ $(document).ready(function () {
   
   // handler for grammar editing
   var matrixClickHandler = function(index, index2) {
-    console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
+    //console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
 
     // if ((row != index || col != index2) && fi) {
 
@@ -1383,13 +1393,13 @@ $(document).ready(function () {
     $('.jsavmatrix').addClass("deleteMode");
     $('.jsavmatrix').removeClass("addrowMode");
     $('.jsavmatrix').removeClass("editMode");
-    $("#mode").html('Deleting');
+    $("#mode").html('Select a row to delete. Click on Edit Grammar when you are finished deleting.');
   };
   var addrowMode = function(){
     $('.jsavmatrix').addClass("addrowMode");
     $('.jsavmatrix').removeClass("deleteMode");
     $('.jsavmatrix').removeClass("editMode");
-    $("#mode").html('Adding');
+    $("#mode").html('Click on the last row to add a new one. Click on Edit Grammar when you are finished adding');
   }
 
   //=================================
