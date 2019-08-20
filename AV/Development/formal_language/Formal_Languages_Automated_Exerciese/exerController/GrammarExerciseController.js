@@ -76,7 +76,9 @@ controllerProto.startTesting = function() {
 	var index = 0;
 	var firstTestcase = Object.keys(this.testCases[index])[0];
 	var correctGrammarType = false,
-	grammarType;
+  grammarType = this.identifyGrammar();
+  var numberOfTestCases = this.testCases.length;
+
 	//Check if there is a specific tyoe of grammras is required in the first test case.
 	if(firstTestcase.indexOf("regular") >= 0 || firstTestcase.indexOf("linear") >= 0)
 	{
@@ -101,9 +103,9 @@ controllerProto.startTesting = function() {
 		}
 		index++;
 	}
-	//we need to convert the grammar to a PDA to test the grammar.
+	//we need to convert the grammar to a PDA to test the gramm a PDA to test the grammar.
 	if(grammarType !== "LLG")
-		parser = new ParseTreeController(this.jsav, JSON.stringify(this.grammar),"", {visible: false});//pda = this.convertToPDA();
+		parser = new ParseTreeController(this.jsav, JSON.stringify(arr),"", {visible: false});//pda = this.convertToPDA();
 	else
 		parser = this.buildDFAforLLG();
 	for (i = index; i < this.testCases.length; i++) {
@@ -118,7 +120,7 @@ controllerProto.startTesting = function() {
 		}
 		else{
 			
-        	inputResult = !willReject(parser, input.split("").reverse().join(""));
+        	inputResult = !FiniteAutomaton.willReject(parser, input.split("").reverse().join(""));
 		}
 		if (inputResult === testCase[input]) {
 			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
@@ -145,7 +147,10 @@ controllerProto.startTesting = function() {
 	$("#percentage").show();
 	$("#testResults").show();
 	window.scrollTo(0,document.body.scrollHeight);
-	$('#container').scrollTop($('#container').prop("scrollHeight"));
+  $('#container').scrollTop($('#container').prop("scrollHeight"));
+  if(count === 0)
+		return 0;
+	return count / numberOfTestCases;
 };
 
 // binded with question links at the top of the page

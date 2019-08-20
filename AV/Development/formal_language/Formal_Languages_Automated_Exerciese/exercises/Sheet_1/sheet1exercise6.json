@@ -1,0 +1,31 @@
+[
+    {
+        "expression": "$\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq 0\\}$",
+        "description": "",
+        "type": "expression",
+        "testCases": [
+            {
+                "": false
+            },
+            {
+                "aaaaaaaaaaaa": true
+            },
+            {
+                "bbbb": false
+            },
+            {
+                "abbbbbbbbbbb": true
+            },
+            {
+                "aaaaaaaaaaaaaaab": true
+            },
+            {
+                "bab": false
+            }
+        ],
+        "graph": {
+            "nodes": [],
+            "edges": []
+        }
+    }
+]

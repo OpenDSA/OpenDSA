@@ -42,7 +42,7 @@ controllerProto.load = function () {
 }
 
 controllerProto.startTesting = function() {
-	if (this.fa.initial == null) {
+	if (z.fa.initial == null) {
 		window.alert("FA traversal requires an initial state.");
 		return;
 	}

@@ -32,28 +32,22 @@ controllerProto.load = function () {
 	});
 	this.tests = tests;
 
-	for (i = 0; i < this.tests.length; i++) {
-		$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
-	}
 	var proto = this;
 	$('#testSolution').click(function() {
 		proto.startTesting();
-	});
-	$('.links').click(function() {
-		proto.toExercise(this);
 	});
 	$('#showResult').click(function () {
 		alert(JSON.stringify(logRecord));
 	});
 	$("#testResults").hide();
-	this.updateExercise(this.currentExercise);
+	this.updateExercise(0);
 }
 
 controllerProto.startTesting = function() {
 	tryC++;
 	if (this.fa.initial == null) {
 		window.alert("FA traversal requires an initial state.");
-		return;
+		return 0;
 	}
 	$("#testResults").empty();
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
@@ -110,6 +104,9 @@ controllerProto.startTesting = function() {
 	$("#testResults").show();
 	window.scrollTo(0,document.body.scrollHeight);
 	$('#container').scrollTop($('#container').prop("scrollHeight"));
+	if(count === 0)
+		return 0;
+	return count / numberOfTestCases;
 };
 
 // binded with question links at the top of the page

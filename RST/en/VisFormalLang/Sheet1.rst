@@ -15,13 +15,45 @@ Sheet 1
 Exercise 1
 ----------
 
-.. avembed:: AV/Development/formal_language/FATester.html pe
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise1.html pe
    :long_name: Sheet 1 Exercise 1
-   :url_params: fileLocation=Formal_Languages_Automated_Exerciese/exercises/Sheet_1/Exercise1.json
 
 Exercise 2
 ----------
 
-.. avembed:: AV/Development/formal_language/grammarExercisesEditor.html pe
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise2.html pe
    :long_name: Sheet 1 Exercise 2
-   :url_params: fileLocation=Formal_Languages_Automated_Exerciese/exercises/Sheet_1/Exercise4.json
+
+
+Exercise 3
+----------
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise3.html pe
+   :long_name: Sheet 1 Exercise 3
+
+
+Exercise 4
+----------
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise4.html pe
+   :long_name: Sheet 1 Exercise 4
+
+
+Exercise 5
+----------
+
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise5.html pe
+   :long_name: Sheet 1 Exercise 5
+
+
+Exercise 6
+----------
+
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise6.html pe
+   :long_name: Sheet 1 Exercise 6
+
+
+Exercise 7
+----------
+
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_1/sheet1exercise7.html pe
+   :long_name: Sheet 1 Exercise 7
+

@@ -24,7 +24,7 @@ var exerciseLocation;
 		$('#begin').click(displayTraversals);
 
         jsav.recorded();// we are not recording an AV with an algorithm
-        document.getElementById("finish").hidden = true;
+        //document.getElementById("finish").hidden = true;
         switch (type) {
         case 'fixer':
             var exercisePath = (exerciseLocation == null)? "./Formal Languages Automated Exerciese/exercises/fixerTests.json": exerciseLocation;
@@ -32,7 +32,7 @@ var exerciseLocation;
             exerController.load();
             break;
         case 'tester':
-            var exercisePath = (exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/FAwithExpression.json": exerciseLocation;
+            var exercisePath = getExerciseLocation();//(exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/FAwithExpression.json": exerciseLocation;
             exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
             exerController.load();
             break;
@@ -57,7 +57,7 @@ var exerciseLocation;
     resetUndoButtons();
     
     var exercise = jsav.flexercise(modelSolution, initialize,
-      {feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols")});
+      {feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController});
     exercise.reset();
 	};
 	// Sets click handler for when the user clicks a JSAV edge label.
@@ -91,7 +91,7 @@ var exerciseLocation;
 
 	//Function sent to exercise constructor to initialize the exercise
 	function initialize() {
-		exerController.load();
+		exerController.updateExercise(0);
   }
   
   //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.

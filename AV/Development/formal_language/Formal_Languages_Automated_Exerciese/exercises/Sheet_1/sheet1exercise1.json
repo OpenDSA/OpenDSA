@@ -1,0 +1,25 @@
+[
+    {
+        "expression": "",
+        "description": "Give a DFA that accepts the language over Σ ={a} of any odd number of a’s.",
+        "type": "description",
+        "testCases": [
+            {
+                "a": true
+            },
+            {
+                "aa": false
+            },
+            {
+                "aaa": true
+            },
+            {
+                "": false
+            }
+        ],
+        "graph": {
+            "nodes": [],
+            "edges": []
+        }
+    }
+]

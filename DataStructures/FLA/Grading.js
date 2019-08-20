@@ -48,24 +48,14 @@
           $model = $('<input type="button" name="answer" value="' + "Show Test Cases" + '" />')
                       .click(modelHandler),
           $action = $('<span class="actionIndicator"></span>');
-      // only add undo and grade button if not in continuous mode
-      if (this.options.feedback !== "continuous") {
-        var $grade = $('<input type="button" name="grade" value="' + this.options.gradeButtonTitle + '" />').click(
+      var $grade = $('<input type="button" name="grade" value="' + this.options.gradeButtonTitle + '" />').click(
               function() {
                 cont.addClass("active");
                 self.showGrade();
                 cont.removeClass("active");
                 self.jsav.logEvent({type: "jsav-exercise-grade", score: $.extend({}, self.score)});
-              }),
-            $undo = $('<input type="button" name="undo" value="' + this.options.undoButtonTitle + '" />"').click(
-              function() {
-                self.jsav.logEvent({type: "jsav-exercise-undo"});
-                self.undo();
               });
-        cont.append($undo, $reset, $model, $grade, $action);
-      } else {
-        cont.append($reset, $model, $action);
-      }
+          cont.append($reset, $model, $grade, $action);
       $action.position({of: cont.children().last(), at: "right center", my: "left+5 center-2"});
     }
     // if feedbacktype can be selected, add settings for it
@@ -113,19 +103,6 @@
   };
   FLExercise.GradeStepFilterFunction = gradeStepFilterFunction;
 
-  var allEqual = function(initial, model, compare) {
-    if ($.isArray(initial)) {
-      if (!compare ) { compare = [];} // initialize compare to an empty array
-      for (var i = 0; i < initial.length; i++) {
-        if (!model[i].equals(initial[i], compare[i])) {
-          return false;
-        }
-      }
-      return true;
-    } else {
-      return model.equals(initial, compare);
-    }
-  };
   var graders = {
     //I removed other grades as we do not need them.
     // A grader that only compares the student structures and model structures at the last
@@ -137,9 +114,7 @@
       this.score.total = 1;
       this.modelav.end();
       this.jsav.end();
-      if (allEqual(this.initialStructures, this.modelStructures, this.options.compare)) {
-        this.score.correct = 1;
-      }
+      this.score.correct = this.options.exerciseController.startTesting();
     }
   }; // end grader specification
   

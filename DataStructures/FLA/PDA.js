@@ -801,12 +801,13 @@ Stackproto.formStack = function() {
       //queue.push(productions[0][0]);
       queue.add(productions[0][0]);
       var asd = queue.values();
-      while(asd.length !== 0){
+      while(queue.values.length !== 0){
         if(counter > 10000){
           break;
         }
         var next = queue.values().next().value;
         queue.delete(next);
+
         if(this.removeLambda(next) === inputString){
           return [true, next, table];
         }
@@ -830,7 +831,7 @@ Stackproto.formStack = function() {
       var queue = new Set();
       queue.add(productions[0][0]);
       var asd = queue.values();
-      while(asd.length !== 0){
+      while(queue.values.length !== 0){
         var next = queue.values().next().value;
         if(next === undefined)
           return [false, null, table];//I added this line to reject a string not in the grammar. For grammar exercise controller

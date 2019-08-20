@@ -1,0 +1,28 @@
+[
+    {
+        "expression": "$\\Sigma = \\{a, b\\}, \\quad L = \\{b, ab, bab\\}$",
+        "description": "",
+        "type": "expression",
+        "testCases": [
+            {
+                "b": true
+            },
+            {
+                "ab": true
+            },
+            {
+                "bab": true
+            },
+            {
+                "a": false
+            },
+            {
+                "bb": false
+            }
+        ],
+        "graph": {
+            "nodes": [],
+            "edges": []
+        }
+    }
+]

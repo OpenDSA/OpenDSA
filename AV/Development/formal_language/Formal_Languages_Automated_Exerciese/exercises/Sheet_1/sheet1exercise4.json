@@ -1,0 +1,37 @@
+[
+    {
+        "expression": "",
+        "description": "Give a DFA that accepts the language over Σ ={a, b} where the number of a’s and b’s are either both even or both odd.",
+        "type": "description",
+        "testCases": [
+            {
+                "": true
+            },
+            {
+                "aabb": true
+            },
+            {
+                "ababab": true
+            },
+            {
+                "abababab": true
+            },
+            {
+                "aabbb": false
+            },
+            {
+                "baab": false
+            },
+            {
+                "aabbabababbababbababa": false
+            },
+            {
+                "aabbabababbababbabaa": true
+            }
+        ],
+        "graph": {
+            "nodes": [],
+            "edges": []
+        }
+    }
+]

@@ -121,7 +121,30 @@
       "SeniorAlgAnal/Impossible": {}
     },
     "Assignments": {
-      "VisFormalLang/Sheet1":{},
+      "VisFormalLang/Sheet1":{
+        "sheet1exercise1":{
+          "points": 5.0
+        },
+        "sheet1exercise2":{
+          "points": 5.0
+        },
+        "sheet1exercise3":{
+          "points": 5.0
+        },
+        "sheet1exercise4":{
+          "points": 5.0
+        },
+        "sheet1exercise5":{
+          "points": 2.0
+        },
+        "sheet1exercise6":{
+          "points": 2.0
+        },
+        "sheet1exercise7":{
+          "points": 2.0
+        }
+
+      },
       "VisFormalLang/Sheet2":{},
       "VisFormalLang/Sheet3":{},
       "VisFormalLang/Sheet5":{}

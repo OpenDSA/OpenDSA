@@ -3,7 +3,7 @@ var arr;
 $(document).ready(function () {
   "use strict";
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var jsav = new JSAV("av");
+  var jsav = new JSAV($("#jsavcontainer"));
   var arrow = String.fromCharCode(8594),
       lastRow,            // index of the last visible row (the empty row)
       //arr,                // the grammar
@@ -26,7 +26,8 @@ $(document).ready(function () {
       multiple = false,   // if multiple grammar editing is enabled
       fi,                 // input box for matrix
       row,              // row number for input box
-      col;              // column number for input box
+      col,              // column number for input box
+      exerController;
 
   var parenthesis = "(";
 
@@ -79,6 +80,30 @@ $(document).ready(function () {
     return m2;
   };
 
+
+  //Function sent to exercise constructor to initialize the exercise
+	function initialize() {
+		exerController.updateExercise(0);
+    }
+
+  //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
+  //In our case, we will make this function show the test cases only.
+  function modelSolution(modeljsav) {
+    var testCases = exerController.tests[0]["testCases"];
+    var list = [["Test Number", "Test String", "Accept/Reject"]];
+    for (i = 0; i < testCases.length; i++) {
+      var testNum = i + 1;
+      var testCase = testCases[i];
+      var input = Object.keys(testCase)[0];
+      //var inputResult = FiniteAutomaton.willReject(this.fa, input);
+      list.push([testNum, input, testCase[input]]);
+    }
+    var model = modeljsav.ds.matrix(list);
+    //layoutTable(model);
+    modeljsav.displayInit();
+    return model;
+  } 
+  
   // handler for grammar editing
   var matrixClickHandler = function(index, index2) {
     console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
@@ -3267,25 +3292,24 @@ $(document).ready(function () {
     $('#backbutton').hide();
     $('.multiple').hide();
     $('#addExerciseButton').hide();
-    if (type == "editor") {
-      m = init();
-      $('.jsavmatrix').addClass("editMode");
-      return;
-    }
     if (type == "grammarexercise") {
       var exerciseLocation = getExerciseLocation();
 		  m = init();
       //var exercisePath = (exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3P2.json": exerciseLocation;
-  		var exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
+  		exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
       exerController.load();
       
       $('.jsavmatrix').addClass("editMode");
+
+      var exercise = jsav.flexercise(modelSolution, initialize,
+        {feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController});
+      exercise.reset();
 
     } 
     else if (type == "transformation") {//grammar transformation exercise
       var exerciseLocation = getExerciseLocation();
       //var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_6/sheet6P3_4_5.json": exerciseLocation;
-  		var exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
+  		exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
       exerController.load();
       
       $('.jsavmatrix').addClass("editMode");
