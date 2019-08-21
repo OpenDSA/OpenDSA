@@ -154,7 +154,26 @@
           "points": 10.0
         }
       },
-      "VisFormalLang/Sheet3":{},
+      "VisFormalLang/Sheet3":{
+        "sheet3exercise1":{
+          "points": 5.0
+        },
+        "sheet3exercise2":{
+          "points": 5.0
+        },
+        "sheet3exercise3":{
+          "points": 5.0
+        },
+        "sheet3exercise4":{
+          "points": 5.0
+        },
+        "sheet3exercise5":{
+          "points": 5.0
+        },
+        "sheet3exercise6":{
+          "points": 5.0
+        }
+      },
       "VisFormalLang/Sheet5":{}
     },
     "Appendix": {

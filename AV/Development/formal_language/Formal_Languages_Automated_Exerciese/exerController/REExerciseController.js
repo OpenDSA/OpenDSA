@@ -62,7 +62,7 @@ controllerProto.startTesting = function(fa, solution) {
 		var testNum = i + 1;
 		var testCase = this.testCases[i];
 		var input = Object.keys(testCase)[0];
-		var inputResult = willReject(this.fa, input);
+		var inputResult = FiniteAutomaton.willReject(this.fa, input);
 		if (inputResult !== testCase[input]) {
 			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
 			count++;

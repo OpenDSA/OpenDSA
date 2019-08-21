@@ -35,6 +35,7 @@
     			height: 440px;
     			display: inline-block;
         }
+        
         .hide {
     			display: none;
     		}
@@ -64,51 +65,28 @@
                           <div id="dialogueboxfoot"></div>
                     </div>
                   </div>
-                <p align="center" class="arrayPlace"></p>
-                <button id="testSolution">Test</button>
-                <button id="showResult">Show Results</button>
-                <button type="button" id="editbutton">Edit</button>
-                <button type="button" id="addrowbutton">Add Row</button>
-                <button type="button" id="deletebutton">Delete</button>
-                <button type="button" class="function" id="identifybutton">Identify Grammar</button>
-                <button type="button" class="function" id="clearbutton">Clear All</button>
+                  <p align="center" class="arrayPlace"></p>
+                  <!--
+                          <button id="testSolution">Test</button>
+                          <button id="showResult">Show Results</button>
+                          -->
+                  <button type="button" id="editbutton">Edit</button>
+                  <button type="button" id="addrowbutton">Add Row</button>
+                  <button type="button" id="deletebutton">Delete</button>
+                  <button type="button" class="function" id="identifybutton">Identify Grammar</button>
+                  <!--<button type="button" class="function" id="clearbutton">Clear All</button>-->
     <div id="buttons" align="center">
         <span id='mode'></span><br>
-        
-        <!-- Since this is an exercise editor, we do not need to show the student all these buttons. We will show them only ehat they need to solve the question
-        <button type="button" class="function" id="bfpbutton">Brute Force Parse</button> 
-        <button type="button" class="function" id="mbfpbutton">Brute Force Parse</button> 
-        <button type="button" class="function" id="llbutton">LL(1) Parse</button>
-        <button type="button" class="function" id="slrbutton">SLR(1) Parse</button>
-        <button type="button" class="function" id="cykbutton">CYK Parse</button>
-        <button type="button" class="parsingbutton" id="followbutton">Next</button>
-        <button type="button" class="parsingbutton" id="slrdfabutton">Next</button>
-        <button type="button" class="parsingbutton" id="parsetablebutton">Next</button>
-        <button type="button" class="parsingbutton" id="parsereadybutton">Next</button>
-        <button type="button" class="parsingbutton" id="parsebutton">Parse</button>
-        <button type="button" id="backbutton">Back</button><br>
-        <button type="button" class="function" id="convertRLGbutton">Convert RLG to FA</button>
-        <button type="button" class="function" id="convertCFGbuttonLL">Convert CFG to PDA (LL)</button>
-        <button type="button" class="function" id="convertCFGbuttonLR">Convert CFG to PDA (LR1)</button>
-        <button type="button" class="function" id="transformbutton">Transform Grammar</button>
-        <button type="button" class="function" id="completeallbutton">Complete All</button>-->
-        
-        
       
-      <!-- I do not see any use of these here
-          <div id="dfabuttons">
-        <button type="button" id="finalbutton">Make final</button>
-        <button type="button" id="gotobutton">Continue DFA</button>
-      </div>
-      <input style="display: none;" type="button" id="convertmovebutton" value="Move states">
-    </div>
-    -->
     <p id="percentage"></p>
       <table id="testResults"></table>
       <div id="graph" class="jsavcanvas"></div>
       <div id="jsavcontainer">
-        <div class="jsavcontrols"></div>
-        <p align="center" class="jsavoutput jsavline"></p>
+        <a class="jsavsettings" href="#">Settings</a>
+        <p align="center" class="jsavexercisecontrols"></p>
+        <p class="jsavscore"></p>
+        <p class="jsavoutput jsavline"></p>
+        
     </div>
     <div id="files">
       <input id="savefile" type="button" value="Save">
