@@ -174,7 +174,14 @@
           "points": 5.0
         }
       },
-      "VisFormalLang/Sheet5":{}
+      "VisFormalLang/Sheet5":{
+        "sheet5exercise1":{
+          "points": 5.0
+        },
+        "sheet5exercise2":{
+          "points": 5.0
+        }
+      }
     },
     "Appendix": {
       "Glossary": {},
