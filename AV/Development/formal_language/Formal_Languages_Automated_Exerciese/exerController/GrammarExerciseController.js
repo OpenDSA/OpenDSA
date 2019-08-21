@@ -67,97 +67,136 @@ controllerProto.load = function () {
 
 controllerProto.startTesting = function() {
   tryC++;
-  var productions = _.filter(arr, function(x) { return x[0]});
-  if(productions.length == 0)
-  {
-    alert("No Grammar to grade");
-    return 0;
+  if($('h1').attr('id') === "transformation"){//Grammar transformation exercise
+    tryC++;
+    $("#testResults").empty();
+    $("#testResults").append("<tr><td>Number of incorrect steps</td><td>Error Messages</td></tr>");
+    var count = 0;
+      var testRes = [];
+      if(exerciseLog.errorsCount != 0){
+          $("#testResults").append("<tr><td>" + exerciseLog.errorsCount + "</td><td>" + exerciseLog.errorMessages[0]);
+        for (i = 1; i < exerciseLog.errorMessages.length; i++) {
+              $("#testResults").append("<tr><td>" + "</td><td>" + exerciseLog.errorMessages[i]);	
+          }
+      }
+    var exer = {};
+    exer['Attempt' + tryC.toString()] = testRes;
+    exer['studentSolution'] = serialize(studentSolution);
+    var exNum = parseInt(this.currentExercise) + 1;
+    if (count > logRecord['Exercise' + exNum +'_Highest']) {
+      logRecord['Exercise' + exNum +'_Highest'] = count;
+      }
+      if(exerciseType === "minimization"){
+          exer['Auto_partitions_used'] =  exerciseLog.numberOfAutoPartitions + '/3';
+          exer['Hints_used'] = exerciseLog.numberOfHints + '/3';
+      }
+    logRecord['Exercise' + exNum].push(exer);
+    var end = new Date;
+      logRecord['Exercise' + exNum + '_Time'].push(end);
+      
+    $("#percentage").text("Correctness: " + exerciseLog.numberOfSteps + " / " + (exerciseLog.numberOfSteps + exerciseLog.errorsCount));
+    $("#percentage").show();
+    $("#testResults").show();
+    window.scrollTo(0,document.body.scrollHeight);
+    $('#container').scrollTop($('#container').prop("scrollHeight"));
+    if(exerciseLog.numberOfSteps > 0)
+      return exerciseLog.numberOfSteps / (exerciseLog.numberOfSteps + exerciseLog.errorsCount);
+    else
+      return 0;
   }
-	//we need to find an initial test to know if the student has something to test or not
-	$("#testResults").empty();
-	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
-	var count = 0;
-	var testRes = [];
-	var pda, parser;
-	var index = 0;
-	var firstTestcase = Object.keys(this.testCases[index])[0];
-	var correctGrammarType = false,
-  grammarType = this.identifyGrammar();
-  var numberOfTestCases = this.testCases.length;
-
-	//Check if there is a specific tyoe of grammras is required in the first test case.
-	if(firstTestcase.indexOf("regular") >= 0 || firstTestcase.indexOf("linear") >= 0)
-	{
-		grammarType = this.identifyGrammar();
-		if(firstTestcase.indexOf("regular") >= 0){
-			correctGrammarType = (grammarType === 'RLG' || grammarType === 'LLG') ;
-		}
-		else{
-			if(firstTestcase.indexOf("right")>=0)
-				correctGrammarType = (grammarType === 'RLG');
-			else if(firstTestcase.indexOf("left")>=0)
-			correctGrammarType = (grammarType === 'LLG');
-		}
-		if(correctGrammarType){
-			$("#testResults").append("<tr><td>" + firstTestcase + "</td><td>" + "Satisfied" + "</td><td class='correct'>" + (correctGrammarType ? "Yes": "No") + "</td></tr>");
-			count++;
-			testRes.push('Test' + index +':' + 'Correct');
-		}
-		else{
-			$("#testResults").append("<tr><td>" + firstTestcase + "</td><td>" + "Satisfied" + "</td><td class='wrong'>" + (correctGrammarType ? "Yes": "No") + "</td></tr>");
-			testRes.push('Test' + index +':' + 'Correct');
-		}
-		index++;
-	}
-	//we need to convert the grammar to a PDA to test the gramm a PDA to test the grammar.
-	if(grammarType !== "LLG")
-		parser = new ParseTreeController(this.jsav, JSON.stringify(arr),"", {visible: false});//pda = this.convertToPDA();
-	else
-		parser = this.buildDFAforLLG();
-	for (i = index; i < this.testCases.length; i++) {
-		var testNum = i + 1;
-		var testCase = this.testCases[i];
-        var input = Object.keys(testCase)[0];
-		var inputResult;
-		if(grammarType !== "LLG"){
-			//inputResult = pda.traverseOneInput(input);
-			parser.inputString = input;
-			inputResult = parser.stringAccepted()[0];
-		}
-		else{
-			
-        	inputResult = !FiniteAutomaton.willReject(parser, input.split("").reverse().join(""));
+  else{ //Writing grammar exercise
+    var productions = _.filter(arr, function(x) { return x[0]});
+    if(productions.length == 0)
+    {
+      alert("No Grammar to grade");
+      return 0;
     }
-    input = input ===""?lambda:input;
-		if (inputResult === testCase[input]) {
-			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
-			count++;
-			testRes.push('Test' + testNum +':' + 'Correct');
-		}
-		else {
-			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
-			testRes.push('Test' + testNum + ':' + 'Wrong');
-		}
-	}
-	var exer = {};
-	exer['Attempt' + tryC.toString()] = testRes;
-	exer['studentSolution'] = this.serializeGrammar();//this function is defined inside grammarEditor.js. It serializaes the current grammar
-	var exNum = parseInt(this.currentExercise) + 1;
-	if (count > logRecord['Exercise' + exNum +'_Highest']) {
-	 	logRecord['Exercise' + exNum +'_Highest'] = count;
-	}
-	logRecord['Exercise' + exNum].push(exer);
-	var end = new Date;
-	logRecord['Exercise' + exNum + '_Time'].push(end);
+    //we need to find an initial test to know if the student has something to test or not
+    $("#testResults").empty();
+    $("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
+    var count = 0;
+    var testRes = [];
+    var pda, parser;
+    var index = 0;
+    var firstTestcase = Object.keys(this.testCases[index])[0];
+    var correctGrammarType = false,
+    grammarType = this.identifyGrammar();
+    var numberOfTestCases = this.testCases.length;
 
-	$("#percentage").text("Correct cases: " + count + " / " + this.testCases.length);
-	$("#percentage").show();
-	$("#testResults").show();
-	window.scrollTo(0,document.body.scrollHeight);
-  $('#container').scrollTop($('#container').prop("scrollHeight"));
-  if(count === 0)
-		return 0;
-	return count / numberOfTestCases;
+    //Check if there is a specific tyoe of grammras is required in the first test case.
+    if(firstTestcase.indexOf("regular") >= 0 || firstTestcase.indexOf("linear") >= 0)
+    {
+      grammarType = this.identifyGrammar();
+      if(firstTestcase.indexOf("regular") >= 0){
+        correctGrammarType = (grammarType === 'RLG' || grammarType === 'LLG') ;
+      }
+      else{
+        if(firstTestcase.indexOf("right")>=0)
+          correctGrammarType = (grammarType === 'RLG');
+        else if(firstTestcase.indexOf("left")>=0)
+        correctGrammarType = (grammarType === 'LLG');
+      }
+      if(correctGrammarType){
+        $("#testResults").append("<tr><td>" + firstTestcase + "</td><td>" + "Satisfied" + "</td><td class='correct'>" + (correctGrammarType ? "Yes": "No") + "</td></tr>");
+        count++;
+        testRes.push('Test' + index +':' + 'Correct');
+      }
+      else{
+        $("#testResults").append("<tr><td>" + firstTestcase + "</td><td>" + "Satisfied" + "</td><td class='wrong'>" + (correctGrammarType ? "Yes": "No") + "</td></tr>");
+        testRes.push('Test' + index +':' + 'Correct');
+      }
+      index++;
+    }
+    //we need to convert the grammar to a PDA to test the gramm a PDA to test the grammar.
+    if(grammarType !== "LLG")
+      parser = new ParseTreeController(this.jsav, JSON.stringify(arr),"", {visible: false});//pda = this.convertToPDA();
+    else
+      parser = this.buildDFAforLLG();
+    for (i = index; i < this.testCases.length; i++) {
+      var testNum = i + 1;
+      var testCase = this.testCases[i];
+          var input = Object.keys(testCase)[0];
+      var inputResult;
+      if(grammarType !== "LLG"){
+        //inputResult = pda.traverseOneInput(input);
+        parser.inputString = input;
+        inputResult = parser.stringAccepted()[0];
+      }
+      else{
+        
+            inputResult = !FiniteAutomaton.willReject(parser, input.split("").reverse().join(""));
+      }
+      input = input ===""?lambda:input;
+      if (inputResult === testCase[input]) {
+        $("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
+        count++;
+        testRes.push('Test' + testNum +':' + 'Correct');
+      }
+      else {
+        $("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
+        testRes.push('Test' + testNum + ':' + 'Wrong');
+      }
+    }
+    var exer = {};
+    exer['Attempt' + tryC.toString()] = testRes;
+    exer['studentSolution'] = this.serializeGrammar();//this function is defined inside grammarEditor.js. It serializaes the current grammar
+    var exNum = parseInt(this.currentExercise) + 1;
+    if (count > logRecord['Exercise' + exNum +'_Highest']) {
+      logRecord['Exercise' + exNum +'_Highest'] = count;
+    }
+    logRecord['Exercise' + exNum].push(exer);
+    var end = new Date;
+    logRecord['Exercise' + exNum + '_Time'].push(end);
+
+    $("#percentage").text("Correct cases: " + count + " / " + this.testCases.length);
+    $("#percentage").show();
+    $("#testResults").show();
+    window.scrollTo(0,document.body.scrollHeight);
+    $('#container').scrollTop($('#container').prop("scrollHeight"));
+    if(count === 0)
+      return 0;
+    return count / numberOfTestCases;
+  }
 };
 
 // binded with question links at the top of the page
@@ -497,7 +536,7 @@ controllerProto.serializeGrammar = function () {
     errorsCount:0,
     errorMessages : [],
     numberOfSteps:0,
-};
+  };
 
 var transformGrammar = function (jsav, grammar) {
   if (typeof getCombinations === "undefined") {
@@ -594,6 +633,8 @@ var interactableLambdaTransform = function (jsav, grammar, noLambda) {
         tGrammar.click(removeLambdaHandler);
       } else {
         alert('This production should not be deleted.');
+         exerciseLog.errorMessages.push("Removing a production that is not a lambda production");
+         exerciseLog.errorsCount++;
         return;
       }
     } else {
@@ -608,13 +649,18 @@ var interactableLambdaTransform = function (jsav, grammar, noLambda) {
       var toAdd = input1 + arrow + input2;
       if (transformed.indexOf(toAdd) === -1) {
         alert('This production is not part of the reformed grammar.');
+        exerciseLog.errorMessages.push( toAdd + " is not part of the reformed grammar.");
+        exerciseLog.errorsCount++;
         return;
       } if (_.map(tArr, function(x) {return x.join('');}).indexOf(toAdd) !== -1) {
         alert('This production is already in the grammar.');
+        exerciseLog.errorMessages.push( toAdd + " is already in the grammar.");
+        exerciseLog.errorsCount++;
         return;
       }
       tArr[index] = [input1, arrow, input2];
       tArr.push(["", arrow, ""]);
+      exerciseLog.numberOfSteps++;
       var tempG = jsav.ds.matrix(tArr);
       tGrammar.clear();
       tGrammar = tempG;
@@ -624,6 +670,7 @@ var interactableLambdaTransform = function (jsav, grammar, noLambda) {
     }
     if (tArr.length - 1 === transformed.length && !_.find(tArr, function(x){return x[2]===emptystring})) {
       var confirmed = confirm('Grammar completed; export?');
+      exerciseLog.numberOfSteps++;
       // if export, open the completed grammar in a new tab
       if (confirmed) {
         localStorage['grammar'] = transformed;
@@ -653,6 +700,7 @@ var interactableLambdaTransform = function (jsav, grammar, noLambda) {
         return;
       } else {
         jsav.umsg("Grammar transformation finished.");
+        exerciseLog.numberOfSteps++;
       }
     }
   };
@@ -697,6 +745,7 @@ var interactableUnitTransform = function (jsav, grammar, noUnit) {
         var newEdge = modelDFA.addEdge(selectedNode, self);
         if (newEdge) { modelDFA.layout();}
         jsav.umsg('Transition added.');
+        exerciseLog.numberOfSteps++;
         if (modelDFA.edgeCount() === unitProductions.length) {
           modelDFA.element.off();
           selectedNode.unhighlight();
@@ -707,6 +756,8 @@ var interactableUnitTransform = function (jsav, grammar, noUnit) {
         }
       } else {
         jsav.umsg('Transition is not part of VDG.');
+        exerciseLog.errorMessages.push('Transition ' + selectedNode.value() + arrow + self.value() +' is not part of Directed Graph.');
+        exerciseLog.errorsCount++;
       }
       selectedNode.unhighlight();
       self.unhighlight();
@@ -725,6 +776,8 @@ var interactableUnitTransform = function (jsav, grammar, noUnit) {
         this.removeProduction(index);
       } else {
         alert('This production should not be deleted.');
+        exerciseLog.errorMessages.push("Attepmt to remove " +this.value(index,0) + arrow + this.value(index, 2) + " which is not a unit production");
+        exerciseLog.errorsCount++;
         return;
       }
     } else {
@@ -814,6 +867,7 @@ var interactableUselessTransform = function (jsav, grammar, noUseless) {
     if ((vv in derivers) && found === -1) {
       builtDeriveSet.push(vv);
       jsav.umsg(vv + ' added! Variables that predicate terminals: [' + builtDeriveSet + ']');
+      exerciseLog.numberOfSteps++;
       if (builtDeriveSet.length === Object.keys(derivers).length) {
         this.unhighlight();
         this.element.off();
@@ -821,8 +875,12 @@ var interactableUselessTransform = function (jsav, grammar, noUseless) {
       }
     } else if (!(vv in derivers)) {
       jsav.umsg(vv + ' does not predicate terminals. Variables that predicate terminals: [' + builtDeriveSet + ']');
+      exerciseLog.errorMessages.push("Mistakebly consider " + vv + " as variable that predicts a terminal.")
+      exerciseLog.errorsCount++;
     } else if (found !== -1) {
       jsav.umsg(vv + ' already selected! Variables that predicate terminals: [' + builtDeriveSet + ']');
+      exerciseLog.errorMessages.push("Mistakebly select " + vv + " more than once as a variable that predict a terminal.")
+      exerciseLog.errorsCount++;
     }
   };
   // handler for the table for removing unreachable productions
@@ -833,11 +891,14 @@ var interactableUselessTransform = function (jsav, grammar, noUseless) {
         this.removeProduction(index);
       } else {
         alert('This production should not be deleted.');
+        exerciseLog.errorMessages.push("Attempt to remove " + this.value(index,0) + arrow + this.value(index,2) +". But it is not a useless production.");
+        exerciseLog.errorsCount++;
         return;
       }
     }
     if (tArr.length - 1 === noUseless.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
       alert('Grammar has no more useless productions.');
+      exerciseLog.numberOfSteps++;
       if (!tArr[0][0]) {
         jsav.umsg("Null start variable; transformation finished.");
         return;
@@ -897,6 +958,7 @@ var interactableUselessTransform = function (jsav, grammar, noUseless) {
         var newEdge = modelDFA.addEdge(selectedNode, self);
         if (newEdge) { modelDFA.layout();}
         jsav.umsg('Transition added.');
+        exerciseLog.numberOfSteps++;
         if (modelDFA.edgeCount() === tCount) {
           modelDFA.element.off();
           selectedNode.unhighlight();
@@ -907,6 +969,8 @@ var interactableUselessTransform = function (jsav, grammar, noUseless) {
         }
       } else {
         jsav.umsg('Transition is not part of VDG.');
+        exerciseLog.errorMessages.push("Attempt to add an edge " + selectedNode.value() + arrow + self.value() +" to the useless productions dependency graph.");
+        exerciseLog.errorsCount++;
       }
       selectedNode.unhighlight();
       self.unhighlight();
@@ -974,11 +1038,15 @@ var interactableChomsky = function (jsav, grammar, fullChomsky) {
     this.highlight(index);
     var r = tArr[index][2];
     if (r.length === 1 && variables.indexOf(r[0]) === -1) {
-      jsav.umsg('Conversion unneeded.');
+      jsav.umsg('Conversion unneeded, the production has a single terminal.');
+      exerciseLog.errorMessages.push("Attempt to convert the prodution " + tArr + " to Chomksy. But the production is in the correct form.");
+      exerciseLog.errorsCount++;
       return;
     }
     if (r.length === 2 && variables.indexOf(r[0][0]) !== -1 && variables.indexOf(r[1][0]) !== -1) {
-      jsav.umsg('Conversion unneeded.');
+      jsav.umsg('Conversion unneeded, the production has only 2 variables.');
+      exerciseLog.errorMessages.push("Attempt to convert the prodution " + tArr + " to Chomksy. But the production is in the correct form.");
+      exerciseLog.errorsCount++;
       return;
     }
     var sliceIn = [];
@@ -1030,6 +1098,7 @@ var interactableChomsky = function (jsav, grammar, fullChomsky) {
       }
     }
     jsav.umsg('Converted.');
+    exerciseLog.numberOfSteps++;
     if (checkTransform(tArr.map(function(x){return ""+x[0] + arrow + x[2].join('')}), fullChomsky)) {
       tGrammar.jsav.umsg('All productions completed.');
       tGrammar.element.off();
@@ -1349,26 +1418,37 @@ var addProductionsToGrammar = function(lhs, rhs, grammar, compareToGrammar){
       var rule = listOfRules[i];
       if (compareToGrammar.indexOf(rule) === -1) {
         alert(rule + ': is not part of the reformed grammar.');
+        exerciseLog.errorMessages.push(rule + ': is not part of the reformed grammar.');
+        exerciseLog.errorsCount++;
         correct = false;
         break;
       } if (grammar.findProduction(rule)) {
         alert(rule + ': is already in the grammar.');
+        exerciseLog.errorMessages.push(rule + ': is already in the grammar.');
+        exerciseLog.errorsCount++;
         correct = false;
         break;
       }
     }
-    if(correct)
-    grammar.addNewProductionRule([lhs, arrow, rhs]);
+    if(correct){
+      grammar.addNewProductionRule([lhs, arrow, rhs]);
+      exerciseLog.numberOfSteps = exerciseLog.numberOfSteps + listOfRules;
+    }
   } else {
   toAdd = lhs + arrow + rhs;
     if (compareToGrammar.indexOf(toAdd) === -1) {
       alert(toAdd + ': is not part of the reformed grammar.');
+      exerciseLog.errorMessages.push(rule + ': is not part of the reformed grammar.');
+      exerciseLog.errorsCount++;
       return;
     } if (grammar.findProduction(toAdd)) {
       alert(toAdd + ': is already in the grammar.');
+      exerciseLog.errorMessages.push(toAdd + ': is already in the grammar.');
+      exerciseLog.errorsCount++;
       return;
     }
     grammar.addNewProductionRule([input1, arrow, input2]);
+    exerciseLog.numberOfSteps++;
     this.layout();
   }
 }
