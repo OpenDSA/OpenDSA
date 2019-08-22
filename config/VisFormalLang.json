@@ -193,7 +193,22 @@
           "points": 10.0
         },
         "sheet6exercise4":{
-          "points": 10.0
+          "points": 10.0,
+          "threshold": 0.9
+        }
+      }, 
+      "VisFormalLang/Sheet7":{
+        "sheet7exercise1":{
+          "points": 5.0
+        },
+        "sheet7exercise2":{
+          "points": 5.0
+        },
+        "sheet7exercise3":{
+          "points": 5.0
+        },
+        "sheet7exercise4":{
+          "points": 5.0
         }
       }
     },
