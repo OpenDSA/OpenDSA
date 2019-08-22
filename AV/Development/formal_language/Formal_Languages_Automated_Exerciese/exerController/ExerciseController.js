@@ -132,9 +132,20 @@ controllerProto.updateExercise = function(id) {
 		$("#question").hide();
 	}
 	else {
+		var text = exercise["description"];
+		if(text.indexOf('___') >0)
+		{
+			var parts = text.split("___");
+			text = parts[0] + " " + '<span id="expression2"></span>' + ' ' + parts[1];
+			$("#description").html(text);
+			$("#expression2").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
+		}
+		else{
 		$("#description").text(exercise["description"]);
 		$("#description").show();
+		}
 		$("#question").hide();
+
 	}
 	$(".links").removeClass("currentExercise");
 	$("#" + this.currentExercise).addClass("currentExercise");

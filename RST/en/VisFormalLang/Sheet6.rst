@@ -12,6 +12,12 @@
 Sheet 6
 =======
 
+Exercise 1
+----------
+
+.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_6/sheet6exercise1.html pe
+   :long_name: Sheet 6 Exercise 1 Draw a DFA for a language
+
 Exercise 2
 ----------
 

@@ -81,8 +81,8 @@ $(document).ready(function () {
   };
 
 
-  //Function sent to exercise constructor to initialize the exercise
-	function initialize() {
+  //Function sent to exercise constructor to initialize grammar exercises
+	function initializeGrammarExercise() {
     var arr2 = new Array(20);    // arbitrary array size
     for (var i = 0; i < arr2.length; i++) {
       arr2[i] = ["", arrow, ""];
@@ -95,6 +95,13 @@ $(document).ready(function () {
     $('.jsavmatrix').addClass("editMode");
 		exerController.updateExercise(0);
     }
+
+  function initializeTransformationExercise(){
+    exerciseLog.errorMessages = [];
+    exerciseLog.errorsCount = 0;
+    exerciseLog.numberOfSteps = 0;
+    exerController.updateExercise(0);
+  }
 
   //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
   //In our case, we will make this function show the test cases only.
@@ -3311,7 +3318,7 @@ $(document).ready(function () {
       
       $('.jsavmatrix').addClass("editMode");
 
-      var exercise = jsav.flexercise(modelSolution, initialize,
+      var exercise = jsav.flexercise(modelSolution, initializeGrammarExercise,
         {feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController});
       exercise.reset();
 
@@ -3321,7 +3328,9 @@ $(document).ready(function () {
       //var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_6/sheet6P3_4_5.json": exerciseLocation;
   		exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
       exerController.load();
-      
+      var exercise = jsav.flexercise(modelSolution, initializeTransformationExercise,
+        {feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController});
+      exercise.reset();
       $('.jsavmatrix').addClass("editMode");
 
     }

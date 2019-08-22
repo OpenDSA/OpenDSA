@@ -1,11 +1,17 @@
 var GrammarExerciseController = function (jsav, m, filePath, dataType) {
 	this.init(jsav, m, filePath, dataType);
 };
+var exerciseLog = {
+  errorsCount:0,
+  errorMessages : [],
+  numberOfSteps:0
+};
 var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var arrow = String.fromCharCode(8594);
 var controllerProto = GrammarExerciseController.prototype;
 var logRecord = new Object();
 var tryC = 0;
+var exerciseController;
 controllerProto.init = function (jsav, m, filePath, dataType) {
 	this.filePath = filePath;
 	this.dataType = dataType;
@@ -14,7 +20,12 @@ controllerProto.init = function (jsav, m, filePath, dataType) {
     this.testCases;
     this.grammar = m;//an instance from grammar editor to control the matrix
 	this.jsav = jsav;
-	this.exerciseFA;
+  this.exerciseFA;
+  this.testChomskey = false; //Not all transformation exercises will ask for Chomsky
+  exerciseController = this;
+  this.NoLambda = false;
+  this.NoUnit = false;
+  this.NoUseless = false;
 }
 controllerProto.load = function () {
 	var filePath = this.filePath;
@@ -66,34 +77,53 @@ controllerProto.load = function () {
 }
 
 controllerProto.startTesting = function() {
-  tryC++;
   if($('h1').attr('id') === "transformation"){//Grammar transformation exercise
     tryC++;
-    $("#testResults").empty();
-    $("#testResults").append("<tr><td>Number of incorrect steps</td><td>Error Messages</td></tr>");
-    var count = 0;
-      var testRes = [];
-      if(exerciseLog.errorsCount != 0){
-          $("#testResults").append("<tr><td>" + exerciseLog.errorsCount + "</td><td>" + exerciseLog.errorMessages[0]);
-        for (i = 1; i < exerciseLog.errorMessages.length; i++) {
-              $("#testResults").append("<tr><td>" + "</td><td>" + exerciseLog.errorMessages[i]);	
-          }
-      }
+    if(!this.NoLambda && !this.NoUnit && !this.NoUseless){
+      alert("You did not start the exercise to grade it. Click on Start Grammar Transformation button to start.")
+      return 0;
+    }else if(!this.NoLambda){
+      alert("Your grammar contains Lambda production(s).");
+      exerciseLog.errorMessages.push("You are not Done yet. Your grammar contains Lambda production(s).");
+      exerciseLog.errorsCount++;
+      return 0;
+    } else if(!this.NoUnit){
+      alert("Your grammar contains Unit production(s).");
+      exerciseLog.errorMessages.push("You are not Done yet. Your grammar contains Unit production(s).");
+      exerciseLog.errorsCount++;
+      return 0;
+    }
+    else if(!this.NoUseless){
+      alert("Your grammar contains Useless production(s).");
+      exerciseLog.errorMessages.push("You are not Done yet. Your grammar contains Useless production(s).");
+      exerciseLog.errorsCount++;
+      return 0;
+    } else if(this.testChomskey && !this.grammerInChomskey){
+      alert("Your grammar is not in CNF.");
+      exerciseLog.errorMessages.push("You are not Done yet. Your grammar is not in CNF.");
+      exerciseLog.errorsCount++;
+      return 0;
+    } else{
+	  $("#testResults").empty();
+	  $("#testResults").append("<tr><td>Number of incorrect steps</td><td>Error Messages</td></tr>");
+	  var count = 0;
+    var testRes = [];
+    if(exerciseLog.errorsCount != 0){
+        $("#testResults").append("<tr><td>" + exerciseLog.errorsCount + "</td><td>" + exerciseLog.errorMessages[0]);
+	    for (i = 1; i < exerciseLog.errorMessages.length; i++) {
+            $("#testResults").append("<tr><td>" + "</td><td>" + exerciseLog.errorMessages[i]);	
+        }
+    }
     var exer = {};
     exer['Attempt' + tryC.toString()] = testRes;
-    exer['studentSolution'] = serialize(studentSolution);
     var exNum = parseInt(this.currentExercise) + 1;
     if (count > logRecord['Exercise' + exNum +'_Highest']) {
       logRecord['Exercise' + exNum +'_Highest'] = count;
-      }
-      if(exerciseType === "minimization"){
-          exer['Auto_partitions_used'] =  exerciseLog.numberOfAutoPartitions + '/3';
-          exer['Hints_used'] = exerciseLog.numberOfHints + '/3';
-      }
+    }
     logRecord['Exercise' + exNum].push(exer);
     var end = new Date;
       logRecord['Exercise' + exNum + '_Time'].push(end);
-      
+    
     $("#percentage").text("Correctness: " + exerciseLog.numberOfSteps + " / " + (exerciseLog.numberOfSteps + exerciseLog.errorsCount));
     $("#percentage").show();
     $("#testResults").show();
@@ -104,7 +134,9 @@ controllerProto.startTesting = function() {
     else
       return 0;
   }
+  }
   else{ //Writing grammar exercise
+    tryC++;
     var productions = _.filter(arr, function(x) { return x[0]});
     if(productions.length == 0)
     {
@@ -209,7 +241,9 @@ controllerProto.toExercise = function(button) {
 // the function that really changes the problem displayed
 // called by toExercise
 controllerProto.updateExercise = function(id) {
-	var exercise = this.tests[id];
+  var exercise = this.tests[id];
+  this.testCases = exercise["testCases"];
+  this.testChomskey = Object.keys(this.testCases[this.testCases.length -1])[0] === 'CNF'; //identify weather studetns shoud transform the grammar to CNF or Not
 	var type = exercise["type"];
 	if (type == "expression") {
 		$("#expression").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
@@ -531,13 +565,6 @@ controllerProto.serializeGrammar = function () {
     window.scrollTo(0,document.body.scrollHeight);
     $('#container').scrollTop($('#container').prop("scrollHeight"));
   }
-
-  var exerciseLog = {
-    errorsCount:0,
-    errorMessages : [],
-    numberOfSteps:0,
-  };
-
 var transformGrammar = function (jsav, grammar) {
   if (typeof getCombinations === "undefined") {
     console.error("No generator support.");
@@ -560,14 +587,21 @@ var transformGrammar = function (jsav, grammar) {
   if (!checkTransform(strP, noLambda)) {
     interactableLambdaTransform(jsav, grammar, noLambda);
   } else if (!checkTransform(strP, noUnit)) {
+    exerciseController.NoLambda = true;//calling unit means that no need to remove lambda productions
     interactableUnitTransform(jsav, grammar, noUnit);
   } else if (!checkTransform(strP, noUseless)) {
+    exerciseController.NoLambda = true;//calling useless means that no need to remove lambda productions
+    exerciseController.NoUnit = true;//calling useless means that no need to remove Unit productions
     interactableUselessTransform(jsav, grammar, noUseless);
-  } else if (!checkTransform(strP, fullChomsky)) {
+  } else if (exerciseController.testChomskey && !checkTransform(strP, fullChomsky)) {
+    exerciseController.NoLambda = true;//calling chomskey means that no need to remove lambda productions
+    exerciseController.NoUnit = true;//calling chomskey means that no need to remove Unit productions
+    exerciseController.NoUseless = true;
     interactableChomsky(jsav, grammar, fullChomsky);
   } else {
     backup = null;
     jsav.umsg('Grammar already in Chomsky Normal Form.');
+    exerciseController.grammerInChomskey = true;
     return true;
   }
   /*noUseless = removeUseless(noUnit.map(function(x){return [x.split(arrow)[0], arrow, x.split(arrow)[1]]}));
@@ -670,6 +704,7 @@ var interactableLambdaTransform = function (jsav, grammar, noLambda) {
     }
     if (tArr.length - 1 === transformed.length && !_.find(tArr, function(x){return x[2]===emptystring})) {
       var confirmed = confirm('Grammar completed; export?');
+      exerciseController.NoLambda = true;
       exerciseLog.numberOfSteps++;
       // if export, open the completed grammar in a new tab
       if (confirmed) {
@@ -691,11 +726,15 @@ var interactableLambdaTransform = function (jsav, grammar, noLambda) {
       }
       var noUseless = removeUseless(tArr);
       if (!checkTransform(strT, noUseless)) {
+        exerciseController.NoUnit = true;
         interactableUselessTransform(grammar, noUseless);
         return;
       }
       var fullChomsky = convertToChomsky(tArr);
-      if (!checkTransform(strT, fullChomsky)) {
+      if (exerciseController.testChomskey && !checkTransform(strT, fullChomsky)) {
+        exerciseController.NoLambda = true;
+        exerciseController.NoUnit = true;
+        exerciseController.NoUseless = true;
         interactableChomsky(grammar, fullChomsky);
         return;
       } else {
@@ -807,6 +846,7 @@ var interactableUnitTransform = function (jsav, grammar, noUnit) {
     var tArr = this.getProductions();
     if (tArr.length === noUnit.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
       alert("All Unit productions are removed.")
+      exerciseController.NoUnit = true;
       if (!grammar.value(0,0)) {//check to see if there is a start variable
         jsav.umsg("Null start variable; transformation finished.");
         return;
@@ -820,8 +860,11 @@ var interactableUnitTransform = function (jsav, grammar, noUnit) {
         return;
       }
       var fullChomsky = convertToChomsky(tArr);
-      if (!checkTransform(strT, fullChomsky)) {
+      if (exerciseController.testChomskey && !checkTransform(strT, fullChomsky)) {
         this.element.remove();//clear the existing matrix
+        exerciseController.NoLambda = true;
+        exerciseController.NoUnit = true;
+        exerciseController.NoUseless = true;
         interactableChomsky(jsav, this, fullChomsky);
         return;
       } else {
@@ -898,6 +941,7 @@ var interactableUselessTransform = function (jsav, grammar, noUseless) {
     }
     if (tArr.length - 1 === noUseless.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
       alert('Grammar has no more useless productions.');
+      exerciseController.NoUseless = true;
       exerciseLog.numberOfSteps++;
       if (!tArr[0][0]) {
         jsav.umsg("Null start variable; transformation finished.");
@@ -906,7 +950,10 @@ var interactableUselessTransform = function (jsav, grammar, noUseless) {
       var strT = _.map(tArr, function(x) {return x.join('')});
       var fullChomsky = convertToChomsky(tArr);
       this.element.remove();
-      if (!checkTransform(strT, fullChomsky)) {
+      if (exerciseController.testChomskey && !checkTransform(strT, fullChomsky)) {
+        exerciseController.NoLambda = true;
+        exerciseController.NoUnit = true;
+        exerciseController.NoUseless = true;
         interactableChomsky(jsav, this, fullChomsky);
         return;
       } else {
@@ -1039,13 +1086,13 @@ var interactableChomsky = function (jsav, grammar, fullChomsky) {
     var r = tArr[index][2];
     if (r.length === 1 && variables.indexOf(r[0]) === -1) {
       jsav.umsg('Conversion unneeded, the production has a single terminal.');
-      exerciseLog.errorMessages.push("Attempt to convert the prodution " + tArr + " to Chomksy. But the production is in the correct form.");
+      exerciseLog.errorMessages.push("Attempt to convert the prodution " + tArr[index][0] + arrow + tArr[index][2].join('') + " to Chomksy. But the production is in the correct form.");
       exerciseLog.errorsCount++;
       return;
     }
     if (r.length === 2 && variables.indexOf(r[0][0]) !== -1 && variables.indexOf(r[1][0]) !== -1) {
       jsav.umsg('Conversion unneeded, the production has only 2 variables.');
-      exerciseLog.errorMessages.push("Attempt to convert the prodution " + tArr + " to Chomksy. But the production is in the correct form.");
+      exerciseLog.errorMessages.push("Attempt to convert the prodution " + tArr[index][0] + arrow + tArr[index][2].join('') + " to Chomksy. But the production is in the correct form.");
       exerciseLog.errorsCount++;
       return;
     }
@@ -1098,6 +1145,7 @@ var interactableChomsky = function (jsav, grammar, fullChomsky) {
       }
     }
     jsav.umsg('Converted.');
+    exerciseController.grammerInChomskey = true;
     exerciseLog.numberOfSteps++;
     if (checkTransform(tArr.map(function(x){return ""+x[0] + arrow + x[2].join('')}), fullChomsky)) {
       tGrammar.jsav.umsg('All productions completed.');
@@ -1432,7 +1480,7 @@ var addProductionsToGrammar = function(lhs, rhs, grammar, compareToGrammar){
     }
     if(correct){
       grammar.addNewProductionRule([lhs, arrow, rhs]);
-      exerciseLog.numberOfSteps = exerciseLog.numberOfSteps + listOfRules;
+      exerciseLog.numberOfSteps = exerciseLog.numberOfSteps + listOfRules.length;
     }
   } else {
   toAdd = lhs + arrow + rhs;
