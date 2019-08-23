@@ -16,7 +16,7 @@
     parenthesis = "(",
     variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     emptystring = lambda, // Instance variable to store which empty string notation is being used.
-    willRejectFunction = PDAwillReject.willReject, // Instance variable to indicate which traversal function to run (shorthand or no).
+    willRejectFunction = PDAwillReject, // Instance variable to indicate which traversal function to run (shorthand or no).
     exerciseIndex,//for creating exercises
     type,//type of editor: fixer, tester or editor
     fatoreController,
@@ -32,7 +32,7 @@
       if (type == 'exercise') {
         jsav = new JSAV($("#jsavcontainer"));
         exerciseLocation = getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
-        exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: PDA});
+        exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: "PDA"});
         exerController.load();
         
         var exercise = jsav.flexercise(modelSolution, initializeExercise,
@@ -107,7 +107,6 @@
       var testNum = i + 1;
       var testCase = testCases[i];
       var input = Object.keys(testCase)[0];
-      //var inputResult = FiniteAutomaton.willReject(this.fa, input);
       list.push([testNum, input, testCase[input]]);
     }
     var model = modeljsav.ds.matrix(list);
@@ -490,7 +489,7 @@
     for (var i = 0; i < inputs.length; i++) {
       // Create an array of the input strings.
       if (inputs[i]) {
-        if(willReject(g,inputs[i])){
+        if(willRejectFunction(g,inputs[i])){
           travArray.push(inputs[i]+"(" + String.fromCharCode(10005) + ")");
         }else{
           travArray.push(inputs[i]+"(" + String.fromCharCode(10003) + ")");
@@ -503,7 +502,7 @@
     // Use this array to populate the JSAV array.
     jsavArray = jsav.ds.array(travArray, {top: 0, left: 0});//element: $('.arrayPlace')});
     for (var j = 0; j < inputs.length; j++) {
-      if (willReject(g, inputs[j])) {
+      if (willRejectFunction(g, inputs[j])) {
         // If rejected, color red.
         jsavArray.css(j, {"background-color": "red"});
       }

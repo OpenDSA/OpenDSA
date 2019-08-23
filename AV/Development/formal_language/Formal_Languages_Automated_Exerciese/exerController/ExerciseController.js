@@ -14,6 +14,7 @@ controllerProto.init = function (jsav, fa, filePath, dataType, options) {
 	this.testCases;
 	this.initGraph = options.initGraph;
 	this.jsav.recorded();
+	this.options = options;
 }
 
 controllerProto.load = function () {
@@ -77,7 +78,11 @@ controllerProto.startTesting = function() {
 		var testNum = i + 1;
 		var testCase = this.testCases[i];
 		var input = Object.keys(testCase)[0];
-		var inputResult = FiniteAutomaton.willReject(this.fa, input);
+		var inputResult;
+		if(this.options.type && this.options.type == "PDA")
+			inputResult = PDAwillReject(this.fa, input);
+		else
+			inputResult = FiniteAutomaton(this.fa, input);
 		if (inputResult !== testCase[input]) {
 			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
 			count++;
