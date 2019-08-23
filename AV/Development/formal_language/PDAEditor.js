@@ -4,9 +4,9 @@
     emptystring,
     parenthesis = "(",
     variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";*/
-
-(function($) {
-  var jsav = new JSAV("av"),
+    var latexit = "http://latex.codecogs.com/svg.latex?";
+  (function($) {
+    var jsav,
     g,
     lambda = String.fromCharCode(955), // Instance variable to store the JavaScript representation of lambda.
     epsilon = String.fromCharCode(949), // Instance variable to store the JavaScript representation of epsilon.
@@ -29,25 +29,19 @@
       // initialize right click menu and hide it for future use
       type = $('h1').attr('id');
       //$('#begin').click(displayTraversals);
-      if (type == 'fixer' || type == 'tester') {
+      if (type == 'exercise') {
+        jsav = new JSAV($("#jsavcontainer"));
         exerciseLocation = getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
-        document.getElementById("finish").hidden = true;
-        switch (type) {
-        case 'fixer':
-          var exercisePath = (exerciseLocation == null)? "./Formal Languages Automated Exerciese/exercises/fixerTests.json": exerciseLocation;
-          exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
-          exerController.load();
-          break;
-        case 'tester':
-          var exercisePath = (exerciseLocation == null)? "./Formal Languages Automated Exerciese/exercises/FAwithExpression.json": exerciseLocation;
-          exerController = new ExerciseController(jsav, g, exercisePath, "json", {initGraph: initGraph});
-          exerController.load();
-          break;
-        default:
-          break;
-        }
+        exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: PDA});
+        exerController.load();
+        
+        var exercise = jsav.flexercise(modelSolution, initializeExercise,
+          {feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController});
+        exercise.reset();
+
       }
       else {
+        jsav = new JSAV("av");
         //$('#begin').click(displayTraversals);
         var data;
         //this editor is opened from exercise generator
@@ -97,6 +91,30 @@
 		resetUndoButtons();
 	};
 
+
+  //Function sent to exercise constructor to initialize the exercise
+	function initializeExercise() {
+    $('.jsavgraph').remove();
+		exerController.updateExercise(0);
+  }
+  
+  //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
+  //In our case, we will make this function show the test cases only.
+  function modelSolution(modeljsav) {
+    var testCases = exerController.tests[0]["testCases"];
+    var list = [["Test Number", "Test String", "Accept/Reject"]];
+    for (i = 0; i < testCases.length; i++) {
+      var testNum = i + 1;
+      var testCase = testCases[i];
+      var input = Object.keys(testCase)[0];
+      //var inputResult = FiniteAutomaton.willReject(this.fa, input);
+      list.push([testNum, input, testCase[input]]);
+    }
+    var model = modeljsav.ds.matrix(list);
+    //layoutTable(model);
+    modeljsav.displayInit();
+    return model;
+  } 
   //add this funcion to allow the editor from reading the stored graph from the local storage. Copied as OnLoadHandler
   var initialize = function(graph) {
     g = graph;

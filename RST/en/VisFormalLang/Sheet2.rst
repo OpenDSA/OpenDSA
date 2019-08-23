@@ -25,7 +25,7 @@ Exercise 2
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/ExercisesEditors/DFAminimizationExerciseEditor.html pe
    :long_name: Sheet 1 Exercise 2 DFA minimization
 
-Exercises 3
+Exercise 3
 -----------
 
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_2/sheet2exercise3.html pe
@@ -36,5 +36,5 @@ Exercise 4
 ----------
 
 .. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_2/sheet2exercise4.html pe
-   :long_name: Sheet 2 Exercise 4 onstruct the NFA that accepts a language
+   :long_name: Sheet 2 Exercise 4 Construct the NFA that accepts a language
 

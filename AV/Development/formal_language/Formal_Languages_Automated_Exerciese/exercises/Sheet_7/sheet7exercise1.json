@@ -1,0 +1,43 @@
+[
+    {
+        "expression": "\\{a^ic^jb^i \\mid i, j \\geq 0\\}",
+        "description": "Construct the PDA that accepts L(___)",
+        "type": "expression",
+        "testCases": [
+            {
+                "": true
+            },
+            {
+                "ccccc": true
+            },
+            {
+                "ab": true
+            },
+            {
+                "aaabbb": true
+            },
+            {
+                "aaacccccccccccccbbb": true
+            },
+            {
+                "aaaaaaaacbbbbbbbb": true
+            },
+            {
+                "accccccccccccccccb": true
+            },
+            {
+                "aaaaaaaaa": false
+            },
+            {
+                "bbbbbbbbbbb": false
+            },
+            {
+                "aaaccb": false
+            }
+        ],
+        "graph": {
+            "nodes": [],
+            "edges": []
+        }
+    }
+]

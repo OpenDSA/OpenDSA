@@ -1,0 +1,43 @@
+[
+    {
+        "expression": "\\{w \\mid w \\in \\{a, b\\}^*",
+        "description": "Construct the PDA that accepts L(___)",
+        "type": "expression",
+        "testCases": [
+            {
+                "": false
+            },
+            {
+                "aab": true
+            },
+            {
+                "aba": true
+            },
+            {
+                "baa": true
+            },
+            {
+                "aaabab": true
+            },
+            {
+                "baabbbaaaa": true
+            },
+            {
+                "bbbaaaaaabaa": true
+            },
+            {
+                "aaaaaa": false
+            },
+            {
+                "bbbbbbbbbb": false
+            },
+            {
+                "baabbaaaa": false
+            }
+        ],
+        "graph": {
+            "nodes": [],
+            "edges": []
+        }
+    }
+]
