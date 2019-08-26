@@ -15,25 +15,25 @@ Sheet 6
 Exercise 1
 ----------
 
-.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_6/sheet6exercise1.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_6/sheet6exercise1.html pe
    :long_name: Sheet 6 Exercise 1 Draw a DFA for a language
 
 Exercise 2
 ----------
 
-.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_6/sheet6exercise2.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_6/sheet6exercise2.html pe
    :long_name: Sheet 6 Exercise 1 Grammer Exercise 1
 
 
 Exercise 3
 ----------
 
-.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_6/sheet6exercise3.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_6/sheet6exercise3.html pe
    :long_name: Sheet 6 Exercise 1 Grammer Exercise 2
 
 
 Exercise 4
 ----------
 
-.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_6/sheet6exercise4.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_6/sheet6exercise4.html pe
    :long_name: Sheet 6 Exercise 1 Grammer Exercise 2

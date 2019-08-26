@@ -15,25 +15,25 @@ Sheet 7
 Exercise 1
 ----------
 
-.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_7/sheet7exercise1.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_7/sheet7exercise1.html pe
    :long_name: Sheet 7 Exercise 1 Draw a PDA for a language
 
 Exercise 2
 ----------
 
-.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_7/sheet7exercise2.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_7/sheet7exercise2.html pe
    :long_name: Sheet 7 Exercise 1 Draw a PDA for a language
 
 
 Exercise 3
 ----------
 
-.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_7/sheet7exercise3.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_7/sheet7exercise3.html pe
    :long_name: Sheet 7 Exercise 1 Draw a PDA for a language
 
 
 Exercise 4
 ----------
 
-.. avembed:: AV/Development/formal_language/Formal_Languages_Automated_Exerciese/exercises/Sheet_7/sheet7exercise4.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_7/sheet7exercise4.html pe
    :long_name: Sheet 7 Exercise 1 Draw a PDA for a language
