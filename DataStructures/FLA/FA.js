@@ -1457,6 +1457,10 @@ FiniteAutomaton.prototype = Object.create(Automaton.prototype, {});
 var faproto = FiniteAutomaton.prototype;
 window.FiniteAutomaton = FiniteAutomaton;
 faproto.loadFAFromJFLAPFile = function (url) {
+	if(ODSA.UTILS.scoringServerEnabled()){//we need to change the url from relative path to absolute path
+		var oldUrlParts = url.split('/AV');
+		url = '/OpenDSA/AV' + oldUrlParts[1];
+	}
   var parser,
       xmlDoc,
       text,
