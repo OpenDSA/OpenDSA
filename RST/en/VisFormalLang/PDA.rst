@@ -149,7 +149,7 @@ state.
 
 .. inlineav:: PDATrace1 ss
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/PDA/PDATrace1.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/PDA/PDATrace1.js
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/PDA/PDATrace1.js
    :align: center
 
 
@@ -311,8 +311,8 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
      The only time the stack will be empty is in :math:`q_f`.
 
    .. inlineav:: PDA dgm
-      :links: AV/OpenFLAP/PDA.css
-      :scripts: AV/OpenFLAP/PDA.js
+      :links: AV/OpenFLAP-Test/PDA.css
+      :scripts: AV/OpenFLAP-Test/PDA.js
       :align: center
 
    | Here, :math:`x` is any symbol in :math:`{\Gamma}^{'}`.
@@ -337,8 +337,8 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
      :math:`q \in Q`. 
 
    .. inlineav:: PDA2 dgm
-      :links: AV/OpenFLAP/PDA2.css
-      :scripts: AV/OpenFLAP/PDA2.js
+      :links: AV/OpenFLAP-Test/PDA2.css
+      :scripts: AV/OpenFLAP-Test/PDA2.js
       :align: center
 
    | If :math:`M` accepted in some state, then that means the stack

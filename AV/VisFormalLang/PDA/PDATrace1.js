@@ -1,7 +1,3 @@
-document.write('<script src="../../../AV/Development/formal_language/fa/PDATraverseAccepter.js"></script>');
-document.write('<script src="../../../AV/Development/formal_language/fa/PDAState.js"></script>');
-document.write('<script src="../../../AV/Development/formal_language/fa/Stack.js"></script>');
-
 $(document).ready(function() {
     "use strict";
   

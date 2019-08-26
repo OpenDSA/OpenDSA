@@ -1,7 +1,3 @@
-document.write('<script src="../../../AV/Development/formal_language/fa/Automaton.js"></script>');
-document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
-document.write('<script src="../../../AV/Development/formal_language/fa/PDA.js"></script>');
-
 $(document).ready(function() {
     "use strict";
   
