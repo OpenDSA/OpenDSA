@@ -133,6 +133,9 @@ FormalLang: min
 VisFormalLang: min
 	python $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
 
+FL2019: min
+	python $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
+
 PIExample: min
 	python $(CONFIG_SCRIPT) config/PIExample.json --no-lms
 
