@@ -82,7 +82,7 @@ controllerProto.startTesting = function() {
 		if(this.options.type && this.options.type == "PDA")
 			inputResult = PDAwillReject(this.fa, input);
 		else
-			inputResult = FiniteAutomaton(this.fa, input);
+			inputResult = FiniteAutomaton.willReject(this.fa, input);
 		if (inputResult !== testCase[input]) {
 			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
 			count++;
