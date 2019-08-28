@@ -3363,7 +3363,7 @@ function layoutTable (mat, index) {
     // keep a map of variables to FA states
     this.nodeMap = {};
     this.builtDFA = this.jsav.ds.FA({width: NFAoptions.width, height: NFAoptions.height, left: NFAoptions.left, top: NFAoptions.top, layout: "automatic"});
-    this.builtDFA.enableDragging();
+    this.builtDFA.disableDragging();
     var newStates = [];     // variables
     for (var i = 0; i < productions.length; i++) {
       newStates.push(productions[i][0]);
@@ -3372,15 +3372,15 @@ function layoutTable (mat, index) {
     newStates = _.uniq(newStates);
     // create FA states
     for (var i = 0; i < newStates.length; i++) {
-      var n = this.builtDFA.addNode();
+      var n = this.builtDFA.addNode({value:newStates[i]});
       this.nodeMap[newStates[i]] = n;
       if (i === 0) {
         this.builtDFA.makeInitial(n);
       }
-      n.stateLabel(newStates[i]);
+      //n.stateLabel(newStates[i]);
     }
     // add final state
-    this.finalNode = this.builtDFA.addNode();
+    this.finalNode = this.builtDFA.addNode({value: "F"});
     // nodeMap[emptystring] = f;
     this.finalNode.addClass("final");
     this.builtDFA.layout();
