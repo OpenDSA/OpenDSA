@@ -15,52 +15,87 @@ Regular Grammars
 Regular Grammars
 ----------------
 
-Here is another way to describe a regular language.
-
-Grammar :math:`G = (V, T, S, P)`
+Regular grammars are another way that describe regular languages.
+Now comes the question, what makes a grammar regular?
+The answer is, any grammar that has at most a single variable in the right hand side (RHS) of every production rule.
+And this variable, if exist, is always in the beginning or at the end of each production rule RHS.
+Suppose we have the following Grammar :math:`G = (V, T, S, P)` where,
 
 .. math::
 
    \begin{array}{lll}
    & & \mbox{represented by} \\
-   V & \mbox{variables (nonterminals)} & A,B,..,Z \\ 
-   T & \mbox{terminals}  & a,b,..,z,0,1,...9 \\ 
+   V & \mbox{variables (nonterminals)} & A,B,..,Z \\
+   T & \mbox{terminals}  & a,b,..,z,0,1,...9 \\
    S & \mbox{start symbol} \\
    P & \mbox{productions (rules)}\\
    \end{array}
 
 :math:`V`, :math:`T`, and :math:`P` are finite sets.
 
-:term:`Right-linear grammar`:
+:term:`Linear grammar`:
+a grammar is linear if has a single variable
+in the RHS of every production rule.
 
 .. math::
-   
+
    \begin{array}{c}
    \mbox{all productions of form} \\
    A \rightarrow xB \\
+   A \rightarrow Cx \\
    A \rightarrow x \\
-   \mbox{where}\ A,B \in V, x \in T^*
+   \mbox{where}\ A,B,C \in V, x \in T^*
+   \end{array}
+
+In this grammar, each production rule has at most one variable on the RHS.
+
+:term:`Right-linear grammar`: is a special case from linear grammars.
+If a grammar is linear and the variable, if exist, always occur at
+the end of the RHS, then the grammar is called Right-linear grammar.
+For example,
+
+.. math::
+
+   \begin{array}{c}
+   \mbox{all productions of form} \\
+   A \rightarrow xB \\
+   A \rightarrow xC \\
+   A \rightarrow x \\
+   \mbox{where}\ A,B,C \in V, x \in T^*
    \end{array}
 
 Note: :math:`x` is a string of length 0 or more.
+In the previous grammar, each production has at most once variable
+B, or C (the grammar is linear),
+the occurance of variables B, and C are at the end of the RHS
+(so it is a right linear grammar).
 
-:term:`Left-linear grammar`:
+:term:`Left-linear grammar`: it is the same as :term:`Right-linear grammar`,
+but the occurance of any variable, if exist, is in the begining of each
+production RHS. For example,
 
 .. math::
-   
+
    \begin{array}{c}
    \mbox{all productions of form} \\
    A \rightarrow Bx \\
+   A \rightarrow Cx \\
    A \rightarrow x \\
-   \mbox{where}\ A,B \in V, x \in T^*
+   \mbox{where}\ A,B,C \in V, x \in T^*
    \end{array}
+
+In the previous grammar, each production has at most once variable
+B, or C (the grammar is linear),
+the occurance of variables B, and C are in the begining of the RHS
+(so it is a right linear grammar).
 
 **Definition:**
 
 A :term:`regular grammar` is a right-linear or left-linear grammar.
 
+.. 
 .. note::
-
+.. 
    There is a more restrictive definition in which the length of
    :math:`x` is :math:`\leq 1`. (Exercise in book.)
 
@@ -114,7 +149,7 @@ grammar G such that :math:`L = L(G)`.
 
    | (Doing here for RR grammar, see book for proof sketch for LR
      grammar.)
-   | (:math:`\Longleftarrow`) Given a regular grammar G, 
+   | (:math:`\Longleftarrow`) Given a regular grammar G,
      Construct NFA M such that :math:`L(G)=L(M)`
    | Make a state for each non-terminal.
    | Make a transition on each terminal in that production rule.
