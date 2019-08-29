@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
    :requires: Deterministic Pushdown Automata Grammars
    :satisfies: CFL Pumping Lemma
    :topic: Finite Automata

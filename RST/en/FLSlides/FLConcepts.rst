@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
    :requires: FL Introduction
    :satisfies: FL Concepts
    :topic: Introduction
@@ -95,6 +95,11 @@ Key Concepts
 
    Here, :math:`x \in (V \cup T)^+, y \in (V \cup T)^*`.
 
+.. slide:: Example
+
+    .. avembed:: AV/OpenFLAP/examples/braces.html ss
+       :long_name: write a grammar for a language example
+
 
 .. slide:: Grammar Notation
 
@@ -120,19 +125,10 @@ Key Concepts
 
 .. slide:: Key Concept: Automata
 
-   .. odsafig:: Images/stautomata.png
-      :width: 370
+   .. inlineav:: AutomataCON dgm
+      :links: AV/VisFormalLang/Intro/AutomataCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Intro/AutomataCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Basic machine
 
    Numbers in control unit symbolize "states", which are the specific
    positions on the dial that the arrow may point to.
-
-   There is also the control behavior (like the "software" of the computer).
-
-   "In State 1, if see letter :math:`a`, then write :math:`c`
-   and go to State 2. If see :math:`b`, move right."
-
-

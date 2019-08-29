@@ -198,14 +198,14 @@ controllerProto.startTesting = function() {
         
             inputResult = !FiniteAutomaton.willReject(parser, input.split("").reverse().join(""));
       }
-      input = input ===""?lambda:input;
+      var inputOrLambda = input ===""?lambda:input;
       if (inputResult === testCase[input]) {
-        $("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
+        $("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
         count++;
         testRes.push('Test' + testNum +':' + 'Correct');
       }
       else {
-        $("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
+        $("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Accept": "Reject") + "</td></tr>");
         testRes.push('Test' + testNum + ':' + 'Wrong');
       }
     }

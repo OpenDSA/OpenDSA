@@ -1,0 +1,61 @@
+[
+    {
+        "expression": "",
+        "description": "Give a DFA that accepts the language over Σ ={0, 1a} of any binary number that is divisable by 3.",
+        "type": "description",
+        "testCases": [
+            {
+                "0": true
+            },
+            {
+                "1": false
+            },
+            {
+                "10": false
+            },
+            {
+                "11": true
+            },
+            {
+                "100": false
+            },
+            {
+                "101": false
+            },
+            {
+                "110": true
+            },
+            {
+                "111": false
+            },
+            {
+                "1000": false
+            },
+            {
+                "1001": true
+            },
+            {
+                "1010": false
+            },
+            {
+                "1011": false
+            },
+            {
+                "1100": true
+            },
+            {
+                "1101": false
+            },
+            {
+                "1110": false
+            },
+            {
+                "1111": true
+            }
+        ],
+        "graph": {
+            "nodes": [],
+            "edges": []
+        }
+    }
+]

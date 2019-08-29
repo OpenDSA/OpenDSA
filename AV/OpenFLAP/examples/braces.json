@@ -1,0 +1,34 @@
+[
+{
+    "expression": "",
+    "description": "Write a Grammar for the language of correctly closed braces.",
+    "type": "description",
+    "testCases": [
+        {
+            "": true
+        },
+        {
+            "()": true
+        },
+        {
+            "()()": true
+        },
+        {
+            "(()())": true
+        },
+        {
+            "(((((": false
+        },
+        {
+            "((())": false
+        },
+        {
+            "((()))": true
+        }
+    ],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    }
+}
+]

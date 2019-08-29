@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
    :requires: FL Introduction
    :satisfies: Deterministic Finite Automata
    :topic: DFA
@@ -38,12 +38,10 @@ Deterministic Finite Acceptors
    |   Acceptor: It only decides whether or not a string is in this
        machine's language (so it has no ability to modify the tape)
 
-   .. odsafig:: Images/DFAexample.png
-      :width: 350
+   .. inlineav:: DFAExampleCON dgm
+      :links: AV/VisFormalLang/FA/DFAExampleCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFAExampleCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Basic DFA
 
 
 .. slide:: DFA: Formal Definition
@@ -64,12 +62,10 @@ Deterministic Finite Acceptors
 
    Example: A DFA that accepts even binary numbers.
 
-   .. odsafig:: Images/stnfaEx1.png
-      :width: 250
+   .. inlineav:: EvenBinaryDFACON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/EvenBinaryDFACON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/EvenBinaryDFACON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: DFA Example
 
    | Assign meaning to the states: q0 - odd numbers, q1 - even numbers, 
    | Note the arrow: Start State
@@ -119,14 +115,12 @@ Deterministic Finite Acceptors
 
 .. slide:: Trace
 
-   Example of a trace: 11010
+   Example of a trace: 100
 
-   .. odsafig:: Images/stnfapict.png
-      :width: 450
+   .. inlineav:: OddNumbersTraceCON dgm
+      :links: AV/VisFormalLang/FA/OddNumbersTraceCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/OddNumbersTraceCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: DFA Example
 
 
 .. slide:: Definitions
@@ -156,15 +150,10 @@ Deterministic Finite Acceptors
 
    Consider the language :math:`L(M) = \{b^na | n > 0\}`
 
-   <<Draw Figure>>
-
-   .. TODO:: Example
-
-      Need example here for :math:`L(M) = \{b^na | n > 0\}`
-      This is the top three circles and their transitions from next
-      figure.
-
-      Ask what language this is.
+   .. inlineav:: DFA_noTrapStateCON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/DFA_noTrapStateCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFA_noTrapStateCON.js
+      :align: center
 
    This is technically incomplete. It shows all ways that we **can**
    reach an accepting state.
@@ -175,12 +164,10 @@ Deterministic Finite Acceptors
    Can complete by adding one or more "trap" states with the
    "extra" transitions.
 
-   .. odsafig:: Images/stnfaEx3.png
-      :width: 300
+   .. inlineav:: DFA_withTrapStateCON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/DFA_withTrapStateCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFA_withTrapStateCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: DFA Example: Complete
 
    | There is nothing "special" about the trap state, they are
      just conceptual.
@@ -193,14 +180,8 @@ Deterministic Finite Acceptors
 
 .. slide:: Another Example
 
-   Example: Create a DFA that accepts even binary numbers that have an
-   even number of 1's.
-
-   | Assign labels:
-   |   :math:`q_0` - start, 
-   |   :math:`q_1` - even binary number: even number of 1's, 
-   |   :math:`q_2` - odd number, odd number of 1's, 
-   |   :math:`q_3` - odd number, even number of 1's 
+    .. avembed:: AV/OpenFLAP/examples/mod3.html ss
+       :long_name: draw a DFA for a language example
 
 
 .. slide:: Regular Languages
@@ -218,7 +199,7 @@ Deterministic Finite Acceptors
 .. slide:: A Final Example
 
    Consider the language "accept all strings on :math:`\{0, 1\}` that
-   does not contain the substring 001. [Linz Example 2.4]
+   does not contain the substring 001.
 
    You should work this out on your own, its a good test of your
    understanding!
