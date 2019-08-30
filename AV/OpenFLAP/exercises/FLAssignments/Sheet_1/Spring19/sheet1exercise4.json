@@ -1,35 +1,32 @@
 [
     {
         "expression": "",
-        "description": "Give a DFA that accepts the language over Σ ={a, b} where every string does not have 3 consecutive a's.",
+        "description": "Give a DFA that accepts the language over Σ ={a, b} where the number of a’s and b’s are either both even or both odd.",
         "type": "description",
         "testCases": [
             {
                 "": true
             },
             {
-                "bbbbbb": true
+                "aabb": true
             },
             {
-                "bbabb": true
+                "ababab": true
             },
             {
-                "babbabbb": true
+                "abababab": true
             },
             {
-                "bbbbaabbbaabbaa": true
+                "aabbb": false
             },
             {
-                "baabaaa": false
+                "baab": false
             },
             {
-                "aabbabababbababbababa": true
+                "aabbabababbababbababa": false
             },
             {
                 "aabbabababbababbabaa": true
-            },
-            {
-                "aaabababbababbabaa": false
             }
         ],
         "graph": {

@@ -1,6 +1,6 @@
 [
 {
-    "expression": "$\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^{2n} \\mid n > 0\\}$",
+    "expression": "$\\Sigma = \\{a, b\\}, \\quad L = \\{a^{2n}b^n \\mid n > 0\\}$",
     "description": "",
     "type": "expression",
     "testCases": [
@@ -8,19 +8,19 @@
             "": false
         },
         {
-            "bb": false
+            "aa": false
         },
         {
-            "abb": true
+            "aab": true
         },
         {
-            "aabbbb": true
+            "aaaabb": true
         },
         {
-            "aaaa": false
+            "bbb": false
         },
         {
-            "aaabbbbbb": true
+            "aaaaaaaaaabbbbb": true
         }
     ],
     "graph": {

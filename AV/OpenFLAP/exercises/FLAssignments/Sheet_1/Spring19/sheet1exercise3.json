@@ -1,29 +1,29 @@
 [
     {
         "expression": "",
-        "description": "Give a DFA that accepts the language over Σ ={a, b} of any odd number of a’s and at most three b’s.",
+        "description": "Give a DFA that accepts the language over Σ ={a, b} of any even number of a’s and at least three b’s.",
         "type": "description",
         "testCases": [
             {
-                "bbb": false
+                "bbb": true
             },
             {
-                "bbab": true
+                "bbab": false
             },
             {
-                "babb": true
+                "babb": false
             },
             {
-                "bababa": true
+                "babab": true
             },
             {
-                "aaabbb": true
+                "aabbb": true
             },
             {
-                "aabbbaab": false
+                "aabbbaab": true
             },
             {
-                "aaaaaaaaabbbb": false
+                "aaaaaaaaabbb": false
             }
         ],
         "graph": {

@@ -83,13 +83,14 @@ controllerProto.startTesting = function() {
 			inputResult = PDAwillReject(this.fa, input);
 		else
 			inputResult = FiniteAutomaton.willReject(this.fa, input);
+		var inputOrLambda = input ===""?lambda:input;
 		if (inputResult !== testCase[input]) {
-			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
+			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
 			count++;
 			testRes.push('Test' + testNum +':' + 'Correct');
 		}
 		else {
-			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
+			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
 			testRes.push('Test' + testNum + ':' + 'Wrong');
 		}
 	}

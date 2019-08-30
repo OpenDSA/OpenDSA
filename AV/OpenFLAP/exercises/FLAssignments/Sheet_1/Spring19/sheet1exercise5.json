@@ -1,26 +1,23 @@
 [
     {
-        "expression": "$\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq n\\}$",
+        "expression": "$\\Sigma = \\{a, b\\}, \\quad L = \\{b, ab, bab\\}$",
         "description": "",
         "type": "expression",
         "testCases": [
             {
-                "": true
+                "b": true
             },
             {
-                "aaabbb": true
+                "ab": true
             },
             {
-                "bbbb": true
+                "bab": true
             },
             {
-                "abbbbbb": true
+                "a": false
             },
             {
-                "aaaaaaab": false
-            },
-            {
-                "bab": false
+                "bb": false
             }
         ],
         "graph": {

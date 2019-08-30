@@ -1,38 +1,32 @@
 [
     {
         "expression": "",
-        "description": "Give a DFA that accepts the language over Σ ={a, b} of any odd number of a’s.",
+        "description": "Give a DFA that accepts the language over Σ ={a, b} of any even number of a’s and any odd number of b’s.",
         "type": "description",
         "testCases": [
             {
-                "a": true
+                "": false
             },
             {
-                "bbbba": true
-            },
-            {
-                "abbbb": true
+                "b": true
             },
             {
                 "aa": false
             },
             {
-                "bbbbb": false
+                "aba": true
             },
             {
-                "aaa": true
+                "aab": true
             },
             {
-                "abbabbba": true
+                "baa": true
             },
             {
-                "aaabbbb": true
+                "abbabbababbbaaaba": true
             },
             {
-                "bbbaaa": true
-            },
-            {
-                "": false
+                "bbababababaaaabab": false
             }
         ],
         "graph": {
