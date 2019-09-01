@@ -103,11 +103,8 @@ Obsolete: min
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
-TestIvan: min
-	python $(CONFIG_SCRIPT) config/TestIvan.json --no-lms
-
-TestIrena: min
-	python $(CONFIG_SCRIPT) config/TestIrena.json --no-lms
+TJeffrey: min
+	python $(CONFIG_SCRIPT) config/TJeffrey.json --no-lms
 
 SimpleDemo: min
 	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
