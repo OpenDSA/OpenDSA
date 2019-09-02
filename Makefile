@@ -106,6 +106,9 @@ Test: min
 TJeffrey: min
 	python $(CONFIG_SCRIPT) config/TJeffrey.json --no-lms
 
+Michael: min
+	python $(CONFIG_SCRIPT) config/Michael.json --no-lms
+
 SimpleDemo: min
 	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
 
