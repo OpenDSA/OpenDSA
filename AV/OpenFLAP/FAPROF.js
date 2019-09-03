@@ -21,7 +21,7 @@ var exerciseLocation;
 	// Otherwise simply initializes a default data set.
 	function onLoadHandler() {
 		// initialize right click menu and hide it for future use
-		$('#begin').click(displayTraversals);
+		//$('#begin').click(displayTraversals);
 
         jsav.recorded();// we are not recording an AV with an algorithm
         //document.getElementById("finish").hidden = true;
@@ -229,7 +229,7 @@ var exerciseLocation;
 			if (weights[i].length > 1) {
 				window.alert("Shorthand notation is disabled for this automaton.\n\nTo traverse, please enter only single character transition labels.");
 				edge.addClass('testingShorthand');
-				document.getElementById("begin").disabled = true;
+				//document.getElementById("begin").disabled = true;
 				break;
 			}
 		}
@@ -241,7 +241,7 @@ var exerciseLocation;
 		if (g.shorthand) {
 			return;
 		}
-		document.getElementById("begin").disabled = false;
+		//document.getElementById("begin").disabled = false; IN PE we donot have any item with id = begin
 		var edges = g.edges();
 		for (var next = edges.next(); next; next = edges.next()) {
 			next.removeClass('testingShorthand');
@@ -249,7 +249,7 @@ var exerciseLocation;
 			for (var i = 0; i < weights.length; i++) {
 				if (weights[i].length > 1) {
 					next.addClass('testingShorthand');
-					document.getElementById("begin").disabled = true;
+					//document.getElementById("begin").disabled = true;
 				}
 			}
 		}
@@ -565,7 +565,7 @@ var exerciseLocation;
 		if (type !== "editor") return;
 		g.setShorthand(setBoolean);
 		if (g.shorthand) {
-			document.getElementById("begin").disabled = false;
+			//document.getElementById("begin").disabled = false;
 			document.getElementById("shorthandButton").innerHTML = "Disable Shorthand";
 			// The traversal function to run needs to be changed.
 			willRejectFunction = willRejectShorthand;
