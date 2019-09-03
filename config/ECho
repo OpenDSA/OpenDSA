@@ -62,4 +62,9 @@
     "points": 2.0,
     "required": true
   },
+  "Context-Free Grammars and Languages": {
+      "VisFormalLang/CFL": {},
+      "VisFormalLang/CFLSimp": {}
+    },
+    
 }
