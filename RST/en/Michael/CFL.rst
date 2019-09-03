@@ -178,9 +178,9 @@ The yield for the example above is :math:`aacbb`.
 
    A partial derivation tree that has root S:
 
-   .. inlineav:: partialDerivEX1CON dgm
-      :links: AV/Michael/partialDerivEX1CON.css
-      :scripts: AV/Michael/partialDerivEX1CON.js
+   .. inlineav:: partialDerivEx1CON dgm
+      :links: AV/Michael/partialDerivEx1CON.css
+      :scripts: AV/Michael/partialDerivEx1CON.js
       :align: justify
 
    The yield of this example is :math:`aAacB` (which is a sentential form).
