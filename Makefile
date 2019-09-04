@@ -244,6 +244,9 @@ COMPSCI186: min
 testcmap: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
 
+WuChen: min
+	python $(CONFIG_SCRIPT) config/WuChen.json --no-lms
+
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js
