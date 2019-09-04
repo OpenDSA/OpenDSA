@@ -49,12 +49,10 @@ Non-Deterministic Finite Acceptor
 
 .. slide:: NFA Example 1
 
-   .. odsafig:: Images/NFAexample.png
-      :width: 300
+   .. inlineav:: NFAexampleCON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFAexampleCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFAexampleCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Basic NFA
 
    | In this example, :math:`\delta(q_0, a) =` << ?? >>.
    | (So, :math:`\delta` is no longer meets the mathematical definition
@@ -74,12 +72,10 @@ Non-Deterministic Finite Acceptor
 
    :math:`L = \{(ab)^n \mid n>0\} \cup \{a^nb \mid n>0\}`.
 
-   .. odsafig:: Images/NFA3.png
-      :width: 600
+   .. inlineav:: NFAexample2CON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFAexample2CON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFAexample2CON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Second NFA
 
    | A simple "go this way or go the other way".
    | Unfortunately, they are not always so simple to understand!
@@ -134,14 +130,17 @@ Non-Deterministic Finite Acceptor
 
 .. slide:: Which is more powerful?
 
-   .. odsafig:: Images/NFA2.png
-      :width: 300
+   .. inlineav:: NFA2DFAaCON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFACON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFAaCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: An NFA and equivalent DFA
 
    Can this NFA be converted to a DFA?
+
+   .. inlineav:: NFA2DFAbCON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFACON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFAbCON.js
+      :align: center
 
 
 .. slide:: Key Question
@@ -217,12 +216,10 @@ Non-Deterministic Finite Acceptor
 
 .. slide:: Example: NFA to DFA
 
-   .. odsafig:: Images/NFA2DFA2a.png
-      :width: 500
+   .. inlineav:: NFA2DFAEx2aCON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFAEx2aCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Another NFA to convert
 
 
 .. slide:: Example: NFA to DFA Result
@@ -243,6 +240,12 @@ Non-Deterministic Finite Acceptor
       :figwidth: 90%
       :alt: Converted DFA
 
+.. slide:: Step by Step
+
+   .. inlineav:: NFA2DFATraceCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFATraceCON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFATraceCON.js
+      :output: show
 
 .. slide:: So, why NFA?
            

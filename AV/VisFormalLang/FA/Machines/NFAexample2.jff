@@ -37,7 +37,7 @@
 		<transition>
 			<from>0</from>
 			<to>4</to>
-			<read>1</read>
+			<read/>
 		</transition>
 		<transition>
 			<from>5</from>
@@ -67,12 +67,12 @@
 		<transition>
 			<from>3</from>
 			<to>1</to>
-			<read>1</read>
+			<read/>
 		</transition>
 		<transition>
 			<from>0</from>
 			<to>1</to>
-			<read>1</read>
+			<read/>
 		</transition>
 	</automaton>
 </structure>
