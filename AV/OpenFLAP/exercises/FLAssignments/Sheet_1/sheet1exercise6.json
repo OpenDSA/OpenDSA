@@ -5,7 +5,7 @@
         "type": "expression",
         "testCases": [
             {
-                "": true
+                "": false
             },
             {
                 "aaabbb": true
