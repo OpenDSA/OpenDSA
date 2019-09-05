@@ -384,7 +384,7 @@ var nodeClickHandlers = function(e) {
 		$('#download').hide();
 		$('#download').html('');
 		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(studentGraph));
-		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.xml">Download FA</a>');
+		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.jff">Download FA</a>');
 			$('#download a')[0].click();
 	});
 	$("#reset").click(function () {	

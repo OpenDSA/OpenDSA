@@ -94,7 +94,7 @@ the occurance of variables B, and C are in the begining of the RHS
 A :term:`regular grammar` is a right-linear or left-linear grammar.
 
 .. 
-.. note::
+.. .. note::
 .. 
    There is a more restrictive definition in which the length of
    :math:`x` is :math:`\leq 1`. (Exercise in book.)
