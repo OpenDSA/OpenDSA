@@ -1,0 +1,59 @@
+[
+    {
+        "expression": "",
+        "description": "Conver the following NFA to DFA",
+        "type": "description",
+        "testCases": [
+            {
+                "The resulting FA is a DFA": true
+            }
+        ],
+        "graph": {
+            "nodes": [
+                {
+                    "left": 155.203125,
+                    "top": 137.203125,
+                    "i": true,
+                    "f": false,
+                    "stateLabel": "<p class=\"label_css\"> </p>"
+                },
+                {
+                    "left": 343.203125,
+                    "top": 68.203125,
+                    "i": false,
+                    "f": false
+                },
+                {
+                    "left": 534.203125,
+                    "top": 160.203125,
+                    "i": false,
+                    "f": true,
+                    "stateLabel": "<p class=\"label_css\"> </p>"
+                }
+            ],
+            "edges": [
+                {
+                    "start": 0,
+                    "end": 0,
+                    "weight": "a<br>b"
+                },
+                {
+                    "start": 0,
+                    "end": 1,
+                    "weight": "a"
+                },
+                {
+                    "start": 0,
+                    "end": 2,
+                    "weight": "&lambda;"
+                },
+                {
+                    "start": 1,
+                    "end": 2,
+                    "weight": "b"
+                }
+            ],
+            "shorthand": false
+        }
+    }
+]

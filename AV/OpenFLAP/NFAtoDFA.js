@@ -104,6 +104,14 @@
 		initialNode.value(lambdaClosure([referenceGraph.initial.value()], referenceGraph).sort().join());
 		initialNode.stateLabelPositionUpdate();
 		studentGraph.makeInitial(initialNode);
+		var check = initialNode.value().split(",");
+		// make the new state final if any of the original states were final
+		for (var i = 0; i < check.length; i++) {
+			if (referenceGraph.getNodeWithValue(check[i]).hasClass("final")) {
+				initialNode.addClass("final");
+				break;
+			}
+		}
 
 		$("#editable").off("click").click(graphClickHandlers);
 		studentGraph.click(nodeClickHandlers);
