@@ -252,6 +252,11 @@ Non-Deterministic Finite Acceptor
    .. avembed:: AV/OpenFLAP/examples/nfatodfa.html ss
       :long_name: draw a DFA for a language example
 
+.. slide:: Harder exercise
+
+   .. avembed:: AV/OpenFLAP/examples/nfatodfa2.html ss
+      :long_name: draw a DFA for a language example
+
 .. slide:: So, why NFA?
 
    Conclusion: NFA adds no new capability. So why bother with the idea?
