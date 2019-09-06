@@ -109,6 +109,9 @@ TJeffrey: min
 Michael: min
 	python $(CONFIG_SCRIPT) config/Michael.json --no-lms
 
+Raghu: min
+	python $(CONFIG_SCRIPT) config/Raghu.json --no-lms
+
 SimpleDemo: min
 	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
 
