@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with
-JFLAP 7.1.-->
+<?xml version="1.0" encoding="utf-8"?>
 <structure>
   <type>fa</type>
   <automaton>
-    <!--The list of states.-->
     <state id="0" name="q0">
       <x>43.0</x>
       <y>109.0</y>
+      <label>
+        <p class="label_css"></p>
+      </label>
       <initial/>
     </state>
     <state id="1" name="q1">
@@ -14,12 +15,6 @@ JFLAP 7.1.-->
       <y>109.0</y>
       <final/>
     </state>
-    <!--The list of transitions.-->
-    <transition>
-      <from>1</from>
-      <to>1</to>
-      <read>b</read>
-    </transition>
     <transition>
       <from>0</from>
       <to>1</to>
@@ -29,6 +24,11 @@ JFLAP 7.1.-->
       <from>1</from>
       <to>0</to>
       <read>a</read>
+    </transition>
+    <transition>
+      <from>1</from>
+      <to>1</to>
+      <read>b</read>
     </transition>
   </automaton>
 </structure>

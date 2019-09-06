@@ -202,12 +202,11 @@ Right-linear Regular Grammar from DFA
 
    Construct the Regular Grammar for the NFA
 
-   .. odsafig:: Images/stnfatorg.png
-      :width: 200
+   .. inlineav:: RlRegGramDFACON dgm
+      :links:   AV/WuChen/RlRegGramDFACON.css
+      :scripts: AV/WuChen/RlRegGramDFACON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfatorg
+      :output: show
 
    |  :math:`G = (\{S,B\},\{a,b\},S,P)`,
    |    :math:`P =`
