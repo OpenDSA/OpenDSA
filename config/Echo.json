@@ -1,4 +1,5 @@
-"title": "Test",
+{
+  "title": "Test",
   "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
@@ -61,8 +62,10 @@
     "points": 2.0,
     "required": true
   },
+  "chapters": {
   "Context-Free Grammars and Languages": {
-      "VisFormalLang/CFL": {},
-      "VisFormalLang/CFLSimp": {}
-    },
+      "Echo/CFL": {},
+      "Echo/CFLSimp": {}
+    }
+  }
 }
