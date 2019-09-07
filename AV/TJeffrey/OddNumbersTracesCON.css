@@ -1,0 +1,21 @@
+#OddNumbersTracesCON {
+  height: 400px;
+}
+
+#OddNumbersTracesCON .jsavoutput.jsavline {
+  height: 70px;
+}
+
+.highlight{
+        fill: gray;
+}
+
+.largeLabel{
+        font-size: 16px;
+        text-align: center;
+}
+
+.thickLine{
+        stroke-width: 3;
+}
+
