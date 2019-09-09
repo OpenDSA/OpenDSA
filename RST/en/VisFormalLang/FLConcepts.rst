@@ -142,6 +142,8 @@ Definitions
 Grammars
 --------
 
+One way to describe a language (that is, a collection of strings) is
+in the form of a grammar.
 Before looking at formal grammars to define formal languages and 
 programming languages, let's look at a grammar you can maybe relate
 to, a grammar for english.
@@ -160,7 +162,7 @@ far!
 
    <article> :math:`\rightarrow` the | an | a
 
-Note that any grammar has variables (non-terminals) and terminals.
+Any grammar has variables (also called "non-terminals") and terminals.
 Terminals are generally strings.
 Variables are things that ultimately are replaced by terminals.
 In this example, we put :math:`<>` brackets around all of the
