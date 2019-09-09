@@ -101,7 +101,7 @@
       "VisFormalLang/CFLProp": {}
     },
     "Models of Computation": {
-      "VisFormalLang/Turing": {}
+      "SeniorAlgAnal/Turing": {}
     },
     "Parsing": {
       "VisFormalLang/ParseIntro": {},
