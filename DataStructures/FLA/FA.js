@@ -1540,7 +1540,7 @@ faproto.loadFAFromJFLAPFile = function (url) {
     }
     var currentFAHeight = this.element.height();
     this.element.height(Math.max(currentFAHeight, maxYvalue));
-    jsav.displayInit();
+    //jsav.displayInit();
   }
   /*if (auto === 'auto'){
     layoutGraph();

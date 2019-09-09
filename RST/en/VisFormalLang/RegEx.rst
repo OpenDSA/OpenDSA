@@ -240,19 +240,23 @@ them all.
             
 **Example:** :math:`ab^* + c`
 
-.. TODO::
-   :type: Diagram
+Here is an NFA that accepts :math:`ab^* + c`
 
-   Here is the "intutive" NFA to implement :math:`ab^* + c`
+.. inlineav:: ABStarOrCCON dgm
+   :links:   AV/VisFormalLang/Regular/ABStarOrCCON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/ABStarOrCCON.js
+   :output: show
 
-.. TODO::
-   :type: Slide Show
 
-   This slideshow shows an overview of the process.
-   First the "intuitive" NFA from the diagram above,
-   then the resulting DFA from the automated conversion process, and
-   then the minimized DFA from the automated minimization process.
-   
+Since we have the NFA that accepts :math:`ab^* + c`, we can convert it to a DFA
+then to a minimized DFA.
+
+
+.. inlineav:: RENFAtoDFACON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/RENFAtoDFACON.js
+   :output: show
+
+
 .. note::
 
    At this point, you should go to OpenFLAP and try it for yourself.
@@ -272,11 +276,10 @@ such as combining two machines to OR them or to AND them, etc.
 graph whose edges can be labeled with any regular expression.
 Thus, it "generalizes" the standard transition graph.
 
-.. TODO::
-   :type: Diagram
-
-   Illustrate the GTG by showing a start node, a final node, and a
-   transition labeled :math:`ab^* + c`
+.. inlineav:: GTGExampleCON dgm
+   :links:   AV/VisFormalLang/Regular/GTGExampleCON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/GTGExampleCON.js
+   :output: show
 
 The process for automatically converting from a R.E. to an NFA simply
 moves step by step through the R.E. from the lowest precedence
@@ -284,11 +287,9 @@ operators (OR) to break the R.E. down into partial machines that are
 combined together.
 It is fairly simple process, as seen here.
 
-.. TODO::
-   :type: Slide Show
-
-   Show the process of converting the initial GTG to the NFA for
-   :math:`ab^* + c`
+.. inlineav:: GTGtoNFACON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/GTGtoNFACON.js
+   :output: show
 
 One thing that this example should make clear is that the concept of
 an NFA is really helpful for our understanding.
