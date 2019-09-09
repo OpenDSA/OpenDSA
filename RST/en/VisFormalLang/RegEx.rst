@@ -220,9 +220,6 @@ transitions to both :math:`r` and :math:`s`.
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicORRepCON.js
    :output: show
 
-   Create a slideshow that shows how we create a machine that
-   OR's two machines, like Linz Figure 3.3
-
 :math:`r \cdot s`. Add new start state and new final state,
 and connect them with :math:`\lambda` transitions in series.
 
@@ -233,9 +230,10 @@ and connect them with :math:`\lambda` transitions in series.
 :math:`r^*`. Add new start and final states, along with
 :math:`\lambda` transitions that allow free movement between
 them all.
-    
-.. TODO::
-   :type: Slide Show
+
+.. inlineav:: schematicStarRepCON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicStarRepCON.js
+   :output: show
 
    Create a slideshow that shows how we create a machine that
    implements star closure, like Linz Figure 3.5
