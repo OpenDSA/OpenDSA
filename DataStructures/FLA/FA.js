@@ -1424,6 +1424,8 @@ var toggleInitial = function(g, node) {
 	return wArray.join("<br>");
   };
 window.toColonForm = toColonForm;
+window.toggleInitial = toggleInitial;
+window.toggleFinal = toggleFinal;
 }(jQuery));
 //END of Automaton class
 

@@ -154,11 +154,26 @@ Or are they just different collections of languages?
 We can easily see NFAs for :math:`\emptyset`, :math:`\lambda`, and
 :math:`a \in \Sigma`.
 
-.. TODO::
-   :type: Slideshow
+.. inlineav:: phiREtoNFACON dgm
+   :links:   DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/phiREtoNFACON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/phiREtoNFACON.js
+   :output: show
 
-   Create a slideshow that shows the 3 machines. Use Linz Figure 3.1
-   as a guide.
+This is an NFA that accept nothing (:math:`\emptyset`).
+
+.. inlineav:: lambdaREtoNFACON dgm
+   :links:   AV/VisFormalLang/Regular/lambdaREtoNFACON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/lambdaREtoNFACON.js
+   :output: show
+
+This is an NFA that accept an empty string (:math:`\lambda`).
+
+.. inlineav:: aREtoNFACON dgm
+   :links:   AV/VisFormalLang/Regular/aREtoNFACON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/aREtoNFACON.js
+   :output: show
+
+This is an NFA that accept :math:`a \in \Sigma`.
 
 But what about the "more interesting" regular expressions that are
 built from AND, OR, and concatenation?
@@ -187,36 +202,34 @@ But not all NFA have a single final state.
    state for the machine.
    Figure out for yourself how you can do this.
 
+.. inlineav:: schematicRepCON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicRepCON.js
+   :output: show
 
-.. TODO::
-   :type: Slide Show
 
-   Create a slideshow that explains the concept of a
-   schematic representation like Linz Figure 3.2
 
 OK, now that we have the idea of an abstract NFA that could represent
 any NFA, we are ready to see how we can put them together to do all of
 the operations that a regular expression can do.
-   
+
 :math:`r + s`. Simply add a new start state and a new final
 state, each connected (in parallel) with :math:`\lambda`
 transitions to both :math:`r` and :math:`s`.
 
-.. TODO::
-   :type: Slide Show
+.. inlineav:: schematicORRepCON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicORRepCON.js
+   :output: show
 
    Create a slideshow that shows how we create a machine that
    OR's two machines, like Linz Figure 3.3
-            
+
 :math:`r \cdot s`. Add new start state and new final state,
 and connect them with :math:`\lambda` transitions in series.
 
-.. TODO::
-   :type: Slide Show
+.. inlineav:: schematicConcatRepCON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicConcatRepCON.js
+   :output: show
 
-   Create a slideshow that shows how we create a machine that
-   AND's two machines, like Linz Figure 3.4
-            
 :math:`r^*`. Add new start and final states, along with
 :math:`\lambda` transitions that allow free movement between
 them all.
