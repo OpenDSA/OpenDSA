@@ -242,18 +242,75 @@ them all.
             
 **Example:** :math:`ab^* + c`
 
+.. TODO::
+   :type: Diagram
+
+   Here is the "intutive" NFA to implement :math:`ab^* + c`
+
+.. TODO::
+   :type: Slide Show
+
+   This slideshow shows an overview of the process.
+   First the "intuitive" NFA from the diagram above,
+   then the resulting DFA from the automated conversion process, and
+   then the minimized DFA from the automated minimization process.
+   
 .. note::
 
-   Try this for yourself in JFLAP.
+   At this point, you should go to OpenFLAP and try it for yourself.
    Type in the R.E, then convert it to an NFA,
    then convert the NFA to a DFA, then minimize the DFA.
 
+You should notice that when OpenFLAP automatically converts the
+R.E. to a NFA, the resulting NFA does not look like the "intuitive"
+version in the diagram above.
+This is because the automatic process is a little more complicated.
+To understand how an algorithm can automatically convert an R.E. to a
+NFA, a lot of the steps are simply building the machine with the
+transformations in the diagrams shown earlier in this module |---|
+such as combining two machines to OR them or to AND them, etc.
+
+**Definition:** A Generalized Transition Graph (GTG) is a transition
+graph whose edges can be labeled with any regular expression.
+Thus, it "generalizes" the standard transition graph.
+
+.. TODO::
+   :type: Diagram
+
+   Illustrate the GTG by showing a start node, a final node, and a
+   transition labeled :math:`ab^* + c`
+
+The process for automatically converting from a R.E. to an NFA simply
+moves step by step through the R.E. from the lowest precedence
+operators (OR) to break the R.E. down into partial machines that are
+combined together.
+It is fairly simple process, as seen here.
+
+.. TODO::
+   :type: Slide Show
+
+   Show the process of converting the initial GTG to the NFA for
+   :math:`ab^* + c`
+
+One thing that this example should make clear is that the concept of
+an NFA is really helpful for our understanding.
+While every NFA **can** be replaced by an equivalent DFA,
+it is a lot easier to understand instuitively the process of
+converting an R.E. to an NFA than it would be if we had
+come up with the DFA directly.
+
+Finally, here is a slideshow that presents all of the details that an
+automated process would go through to convert an R.E. to a minimized DFA.
 
 .. inlineav:: REtoMinimizedDFACON ss
    :links:   AV/VisFormalLang/Regular/REtoMinimizedDFACON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/REtoMinimizedDFACON.js lib/paper-core.min.js DataStructures/FLA/REtoFAController.js lib/underscore.js DataStructures/FLA/Discretizer.js
    :output: show
-  
+
+
+Converting Regular Languages to Regular Expressions
+---------------------------------------------------
+
 Since every regular expression has an NFA that implements it,
 this means that the regular expressions are a subset of
 the regular languages.
@@ -276,10 +333,6 @@ This proof is rather difficult, and we are just going to give a sketch.
     with the resulting regular expression as the transition.
 |   This regular expression left as the sole transition is equivalent
     to the original NFA.
-
-**Definition:** A Generalized Transition Graph (GTG) is a transition
-graph whose edges can be labeled with any regular expression.
-Thus, it "generalizes" the standard transition graph. [See Linz 3.8]
 
 **Definition:** A complete GTG is a complete graph, meaning that every
 state has a transition to every other state.
