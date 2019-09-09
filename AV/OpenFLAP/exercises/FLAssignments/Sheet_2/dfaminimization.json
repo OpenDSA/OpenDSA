@@ -1,1 +1,163 @@
-[{"expression":"","description":"Minimize the following DFA","type":"description","testCases":[{"":true}],"graph":{"nodes":[{"left":589.9999847412109,"top":356,"i":true,"f":false},{"left":433.99998474121094,"top":276,"i":false,"f":false},{"left":210,"top":297,"i":false,"f":false},{"left":459.99998474121094,"top":153,"i":false,"f":true},{"left":383.99998474121094,"top":50,"i":false,"f":false},{"left":295.99998474121094,"top":0,"i":false,"f":true},{"left":10,"top":288,"i":false,"f":true}],"edges":[{"start":0,"end":1,"weight":"a"},{"start":1,"end":2,"weight":"a"},{"start":1,"end":3,"weight":"b"},{"start":2,"end":2,"weight":"a"},{"start":2,"end":6,"weight":"b"},{"start":3,"end":4,"weight":"a"},{"start":4,"end":5,"weight":"b"},{"start":5,"end":4,"weight":"a"}],"shorthand":false}}]
+[
+    {
+        "expression": "",
+        "description": "Minimize the following DFA",
+        "type": "description",
+        "testCases": [
+            {
+                "": true
+            }
+        ],
+        "graph": {
+            "nodes": [
+                {
+                    "left": 10,
+                    "top": 12,
+                    "i": true,
+                    "f": false
+                },
+                {
+                    "left": 0,
+                    "top": 185,
+                    "i": false,
+                    "f": false
+                },
+                {
+                    "left": 135,
+                    "top": 96,
+                    "i": false,
+                    "f": false
+                },
+                {
+                    "left": 204,
+                    "top": 203,
+                    "i": false,
+                    "f": false
+                },
+                {
+                    "left": 234,
+                    "top": 69,
+                    "i": false,
+                    "f": true
+                },
+                {
+                    "left": 127,
+                    "top": 8,
+                    "i": false,
+                    "f": false
+                },
+                {
+                    "left": 379,
+                    "top": 213,
+                    "i": false,
+                    "f": false
+                },
+                {
+                    "left": 40,
+                    "top": 345,
+                    "i": false,
+                    "f": true
+                },
+                {
+                    "left": 408,
+                    "top": 72,
+                    "i": false,
+                    "f": false
+                }
+            ],
+            "edges": [
+                {
+                    "start": 0,
+                    "end": 2,
+                    "weight": "a"
+                },
+                {
+                    "start": 0,
+                    "end": 1,
+                    "weight": "b"
+                },
+                {
+                    "start": 1,
+                    "end": 2,
+                    "weight": "b"
+                },
+                {
+                    "start": 1,
+                    "end": 7,
+                    "weight": "a"
+                },
+                {
+                    "start": 2,
+                    "end": 3,
+                    "weight": "a"
+                },
+                {
+                    "start": 2,
+                    "end": 4,
+                    "weight": "b"
+                },
+                {
+                    "start": 3,
+                    "end": 7,
+                    "weight": "b"
+                },
+                {
+                    "start": 3,
+                    "end": 3,
+                    "weight": "a"
+                },
+                {
+                    "start": 4,
+                    "end": 5,
+                    "weight": "a"
+                },
+                {
+                    "start": 4,
+                    "end": 8,
+                    "weight": "b"
+                },
+                {
+                    "start": 5,
+                    "end": 0,
+                    "weight": "b"
+                },
+                {
+                    "start": 5,
+                    "end": 4,
+                    "weight": "a"
+                },
+                {
+                    "start": 6,
+                    "end": 2,
+                    "weight": "a"
+                },
+                {
+                    "start": 6,
+                    "end": 4,
+                    "weight": "b"
+                },
+                {
+                    "start": 7,
+                    "end": 6,
+                    "weight": "a"
+                },
+                {
+                    "start": 7,
+                    "end": 3,
+                    "weight": "b"
+                },
+                {
+                    "start": 8,
+                    "end": 4,
+                    "weight": "a"
+                },
+                {
+                    "start": 8,
+                    "end": 6,
+                    "weight": "b"
+                }
+            ],
+            "shorthand": false
+        }
+    }
+]
