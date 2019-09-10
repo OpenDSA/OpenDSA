@@ -109,19 +109,11 @@ Minimizing the Number of States in a DFA
 
 .. slide:: Example 1 (2)
 
-   .. odsafig:: Images/stmindfa1s.png
-      :width: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Minimization 1
+   .. avembed:: AV/OpenFLAP/examples/dfaminimization2.html ss
+      :long_name: Minimization example 1
 
 
 .. slide:: Example 2
 
-   .. odsafig:: Images/stmindfa2s.png
-      :width: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Minimization 2
+   .. avembed:: AV/OpenFLAP/examples/dfaminimization1.html ss
+      :long_name: Minimization example 2
