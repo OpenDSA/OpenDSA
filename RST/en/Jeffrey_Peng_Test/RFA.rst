@@ -145,6 +145,12 @@ Pictorial Example of a trace for 100:
    :scripts: AV/TJeffrey/OddNumbersTracesCON.js
    :output: show
 
+.. inlineav:: OddNumbersTraceCON dgm
+   :links: AV/VisFormalLang/FA/OddNumbersTraceCON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/OddNumbersTraceCON.js
+   :align: center
+
+   DFA Example: Even numbers trace
 
 
 
@@ -281,4 +287,5 @@ called a :term:`family <family of languages>`.
 Therefore, the DFAs define a family of languages that they accept.
 A language is :term:`regular <regular language>` if and only iff
 there exists a DFA :math:`M` such that :math:`L = L(M)`.
+
 
