@@ -6,7 +6,7 @@ $(document).ready(function () {
     av.displayInit();
     av.umsg("Let's begin by creating our first DFA.");
     var url1 = "../../../AV/Raghu/Machines/DFAIntersection1CON.jff";
-    new av.ds.FA({ left: 0, top: -20, url: url1 });
+    new av.ds.FA({ left: 50, top: -20, url: url1 });
     av.step();
     av.umsg("We then create our second DFA.");
     var url2 = "../../../AV/Raghu/Machines/DFAIntersection2CON.jff";

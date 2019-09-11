@@ -104,7 +104,7 @@ Here is another approach by construction.
    :math:`L_1 = a^*b` and :math:`L_2 = aa\{a|b\}^*`
 
    .. inlineav:: DFAIntersectionCON ss
-      :links: AV/Raghu/DFAIntersectionCON.css
+      :links: DataStructures/FLA/FLA.css AV/Raghu/DFAIntersectionCON.css
       :scripts: DataStructures/FLA/FA.js AV/Raghu/DFAIntersectionCON.js
       :align: justify
       :output: show
