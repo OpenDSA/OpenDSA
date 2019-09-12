@@ -111,16 +111,11 @@ Here is another approach, by construction.
 
 .. topic:: Example
            
-   Create the DFA for the intersection of two DFAs:
-
-   :math:`L_1 = a^*b` and :math:`L_2 = aa\{a|b\}^*`
-
-   .. odsafig:: Images/stnfaints.png
-      :width: 400
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
+   .. inlineav:: DFAIntersectionCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/DFAIntersectionCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/DFAIntersectionCON.js
+      :align: justify
+      :output: show
 
 
 Regular languages are closed under these operations

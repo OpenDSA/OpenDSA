@@ -12,12 +12,12 @@
 			<y>19.0</y>
 		</state>
 		<state id="2" name="1C">
-			<x>272.0</x>
+			<x>258.0</x>
 			<y>19.0</y>
 		</state>
 		<state id="3" name="2C">
-			<x>375.0</x>
-			<y>19.0</y>
+			<x>358.0</x>
+			<y>17.0</y>
 			<final/>
 		</state>
 		<!--The list of transitions.-->
