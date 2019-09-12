@@ -38,6 +38,11 @@
 	}
 	function initializeExercise(){
 		exerController.updateExercise(0);
+		exerciseLog.errorsCount = 0;
+		exerciseLog.errorMessages = [];
+		exerciseLog.numberOfSteps = 0;
+		exerciseLog.numberOfHints =0;
+		exerciseLog.numberOfAutoPartitions=0
 	}
 
 	//Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
@@ -55,11 +60,6 @@
 		var model = modeljsav.ds.matrix(list);
 		//layoutTable(model);
 		modeljsav.displayInit();
-		exerciseLog.errorsCount = 0;
-		exerciseLog.errorMessages = [];
-		exerciseLog.numberOfSteps = 0;
-		exerciseLog.numberOfHints =0;
-		exerciseLog.numberOfAutoPartitions=0
 		return model;
   }  
 
