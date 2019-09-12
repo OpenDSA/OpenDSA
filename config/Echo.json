@@ -64,4 +64,5 @@
   "Context-Free Grammars and Languages": {
       "VisFormalLang/CFL": {},
       "VisFormalLang/CFLSimp": {}
-    },
+   }
+}
