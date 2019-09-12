@@ -1,38 +1,29 @@
 [
     {
-        "expression": "((aa)^+bb)^*",
-        "description": "Construct the DFA that accepts the complement of ",
-        "type": "both",
+        "expression": "",
+        "description": "Construct the DFA that accepts the complement of L, where L is the he language over Σ ={a,b} of any even number of a’s and at least three b’s",
+        "type": "",
         "testCases": [
             {
-                "": false
+                "bbb": false
             },
             {
-                "aabb": false
+                "bbab": true
             },
             {
-                "aabbaabb": false
+                "babb": true
             },
             {
-                "aaaabbaabbaaaaaabb": false
+                "babab": false
             },
             {
-                "a": true
+                "aabbb": false
             },
             {
-                "bb": true
+                "aabbbaab": false
             },
             {
-                "aabbbb": true
-            },
-            {
-                "ab": true
-            },
-            {
-                "aaaaaaaaaaaaaaaaaaa": true
-            },
-            {
-                "bbbbbbbbbbbbbbbbbb": true
+                "aaaaaaaaabbb": true
             }
         ],
         "graph": {

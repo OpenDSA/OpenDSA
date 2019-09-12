@@ -3,11 +3,15 @@
 var TuringMachine = function(jsav, options) {
 	Automaton.apply(this, arguments);
 	this.transitions = [];
+	if(options.url){ //load the machine from the file
+		this.loadFromFile(options.url);
+		this.disableDragging();
+	  }    
 }
 
 var square = String.fromCharCode(9633);
 
-JSAV.ext.ds.tm = function (options) {
+JSAV.ext.ds.TM = function (options) {
 	var opts = $.extend(true, {visible: true, autoresize: true}, options);
 	return new TuringMachine(this, opts);
 };
@@ -197,6 +201,20 @@ tm.serializeToXML = function() {
 		return text;
 };
 
+tm.loadFromFile = function(url){
+	if(ODSA.UTILS.scoringServerEnabled()){//we need to change the url from relative path to absolute path
+		var oldUrlParts = url.split('/AV');
+		url = '/OpenDSA/AV' + oldUrlParts[1];
+	}
+  $.ajax( {
+    url: url,
+    async: false, // we need it now, so not asynchronous request
+    success: function(data) {
+      tm.initFromXML(data);
+    }
+  });
+}
+
 // load a TM from an XML file
 tm.initFromXML = function(text) {
 	var parser,
@@ -218,10 +236,12 @@ tm.initFromXML = function(text) {
 		loaded.unwrap();
 		return;
 	} else {
-		var nodes = this.nodes();
-		for (var node = nodes.next(); node; node = nodes.next()) {
-			this.removeNode(node);
-		}
+		/*	
+			var nodes = this.nodes();
+			for (var node = nodes.next(); node; node = nodes.next()) {
+				this.removeNode(node);
+			}
+		*/
 		var nodeMap = {};			// map node IDs to nodes
 		var xmlStates = xmlDoc.getElementsByTagName("state");
 		xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})

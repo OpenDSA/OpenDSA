@@ -571,7 +571,7 @@
 
   var save = function() {
     var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(g.serializeToXML());
-    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.xml">Download PDA</a>');
+    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.jff">Download PDA</a>');
     $('#download a')[0].click();
   }
 

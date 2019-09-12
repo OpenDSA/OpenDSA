@@ -1424,6 +1424,8 @@ var toggleInitial = function(g, node) {
 	return wArray.join("<br>");
   };
 window.toColonForm = toColonForm;
+window.toggleInitial = toggleInitial;
+window.toggleFinal = toggleFinal;
 }(jQuery));
 //END of Automaton class
 
@@ -1538,7 +1540,7 @@ faproto.loadFAFromJFLAPFile = function (url) {
     }
     var currentFAHeight = this.element.height();
     this.element.height(Math.max(currentFAHeight, maxYvalue));
-    jsav.displayInit();
+    //jsav.displayInit();
   }
   /*if (auto === 'auto'){
     layoutGraph();

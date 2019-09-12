@@ -52,6 +52,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 			$("#alphabet").html(String(alphabet));
 			jsav.umsg('Select a leaf node in the tree to split. Then click on set terminals button.');
 			initializeBT();
+			$('#reference').unbind('click');//remove any attached on click events.
+
 			referenceGraph.click(refClickHandlers);
 		}
 		else {
@@ -310,7 +312,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 					}
 					if(type === 'Exercise')
 					{
-						if(exerciseLog.numberOfHints>=2)
+						if(exerciseLog.numberOfHints>=1)
 							$('#hintbutton').hide();
 						exerciseLog.numberOfHints++;
 					}
@@ -544,7 +546,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 				if(type == 'Exercise'){
 					exerciseLog.errorMessages.push("Wrong auto partitioning for a node");
 					exerciseLog.errorsCount++;
-					if(exerciseLog.numberOfAutoPartitions>=2)
+					if(exerciseLog.numberOfAutoPartitions>=1)
 						$('#autobutton').hide();
 					exerciseLog.numberOfAutoPartitions++;
 				}
@@ -583,7 +585,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		
 		if(type === 'Exercise')
 		{
-			if(exerciseLog.numberOfAutoPartitions>=2)
+			if(exerciseLog.numberOfAutoPartitions>=1)
 				$('#autobutton').hide();
 			exerciseLog.numberOfAutoPartitions++;
 		}

@@ -109,6 +109,9 @@ TJeffrey: min
 Michael: min
 	python $(CONFIG_SCRIPT) config/Michael.json --no-lms
 
+Raghu: min
+	python $(CONFIG_SCRIPT) config/Raghu.json --no-lms
+
 SimpleDemo: min
 	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
 
@@ -243,6 +246,12 @@ COMPSCI186: min
 
 testcmap: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
+
+WuChen: min
+	python $(CONFIG_SCRIPT) config/WuChen.json --no-lms
+
+Echo: min
+	python $(CONFIG_SCRIPT) config/Echo.json --no-lms
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js

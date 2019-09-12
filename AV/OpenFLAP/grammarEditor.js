@@ -2351,7 +2351,7 @@ $(document).ready(function () {
   };
   var exportConvertedFA = function () {
     var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(builtDFA));
-    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.xml">Download FA</a>');
+    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.jff">Download FA</a>');
     $('#download a')[0].click();
     $('#download').html('');
   };
@@ -2414,7 +2414,7 @@ $(document).ready(function () {
   };
   var exportConvertedPDA = function () {
     var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializePDAToXML(builtDFA));
-      $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.xml">Download PDA</a>');
+      $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.jff">Download PDA</a>');
       $('#download a')[0].click();
   };
 
@@ -2757,7 +2757,7 @@ $(document).ready(function () {
       data += "</structure>";
       downloadData += encodeURIComponent(data);
     }
-    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="grammar.xml">Download Grammar</a>');
+    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="grammar.jff">Download Grammar</a>');
     $('#download a')[0].click();
   };
 
@@ -3293,7 +3293,7 @@ $(document).ready(function () {
     }
     else{//this part loads a grammar from xml file. We may use it when we need to provide an exercise that requires loading grammars
       $.ajax({
-        url: "./Formal_Languages_Automated_Exerciese/exercises/grammarTests.xml",
+        url: "./Formal_Languages_Automated_Exerciese/exercises/grammarTests.jff",
         dataType: 'xml',
         async: true,
         success: function(data) {

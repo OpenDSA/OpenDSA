@@ -247,8 +247,18 @@ Non-Deterministic Finite Acceptor
       :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFATraceCON.js
       :output: show
 
+.. slide:: Lets do an exercise
+
+   .. avembed:: AV/OpenFLAP/examples/nfatodfa.html ss
+      :long_name: draw a DFA for a language example
+
+.. slide:: Harder exercise
+
+   .. avembed:: AV/OpenFLAP/examples/nfatodfa2.html ss
+      :long_name: draw a DFA for a language example
+
 .. slide:: So, why NFA?
-           
+
    Conclusion: NFA adds no new capability. So why bother with the idea?
 
    * First, it wasn't obvious that they are the same.

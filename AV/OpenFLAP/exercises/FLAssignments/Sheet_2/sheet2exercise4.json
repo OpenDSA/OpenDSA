@@ -1,14 +1,26 @@
 [
     {
-        "expression": "((ab)^*ba) + (b^*(ab)^+)",
+        "expression": "((ab)^+ba*) + (b^*(ab)^*)",
         "description": "Construct an NFA that accepts",
         "type": "both",
         "testCases": [
             {
-                "ba": true
+                "": true
+            },
+            {
+                "ba": false
             },
             {
                 "abababababba": true
+            },
+            {
+                "ababababab": true
+            },
+            {
+                "ababb": true
+            },
+            {
+                "abbaaaaaaa": true
             },
             {
                 "ab": true
@@ -17,13 +29,10 @@
                 "abababababab": true
             },
             {
-                "bbbbbbbbbbbbbbbbbbbab": true
+                "bbbbbbbab": true
             },
             {
-                "": false
-            },
-            {
-                "aaaaaaaaaaaaaa": false
+                "aaaaaaaaa": false
             },
             {
                 "baa": false
@@ -32,7 +41,7 @@
                 "aab": false
             },
             {
-                "bbbbbbbbbbbbbbbbbb": false
+                "bbbbb": true
             }
         ],
         "graph": {

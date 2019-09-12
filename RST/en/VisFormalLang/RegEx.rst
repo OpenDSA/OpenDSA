@@ -15,12 +15,12 @@ Regular Expressions
 Regular Expressions
 -------------------
 
-Regular expressions are a way to specify a set of strings that define
-a language.
+Regular expressions (RegEx or R.E.) are a way to specify a set of
+strings that define a language.
 
 There are three operators that can be used:
 
-* :math:`+` union (or)
+* :math:`+` union (OR)
 * :math:`\cdot` concatenation (AND)
 * :math:`*` star-closure (repeat 0 or more times)
 
@@ -28,42 +28,46 @@ We often omit showing the :math:`\cdot` for concatenation.
   
 | Example:
 |   :math:`(a + b)^* \cdot a \cdot (a + b)^* = (a + b)^*a(a + b)^*`
-|   What language is this? 
-    All strings from :math:`\{a, b\}^*` that contain at least one
+|   Q: What language is this? 
+    A: All strings from :math:`\{a, b\}^*` that contain at least one
     :math:`a`.
 
 | Example: 
 |   :math:`(aa)*`
-|   What language is this?
-    Strings of :math:`a` 's with an even number of :math:`a` 's.
+|   Q: What language is this?
+    A: Strings of :math:`a` 's with an even number of :math:`a` 's.
 |   Note that we need to be careful about our alphabet.
-    Here, we only want strings of :math:`a` 's, and if other letters
-    are in the alphabet its not clear in English to just say "strings
+    Here, we only want strings of :math:`a` 's regardless of the
+    actual alphabet. Written as a RegEx, this is clear regardless of
+    whether the actual alphabet contains other letters (such as b's).
+    But its not so clear in English when we say "strings
     with an even number of a's" if we want to rule out "aabaa" from
-    the alphabet of :math:`\Sigma = \{a, b\}`.
+    the alphabet of :math:`\Sigma = \{a, b\}` or not.
 
 **Definition:** Given :math:`\Sigma`,
 
 #. :math:`\emptyset`, :math:`\lambda`, and :math:`a \in \Sigma` are R.E.
 
-#. If :math:`r` and :math:`s` are R.E. then
+#. If :math:`r` and :math:`s` are regular expressions, then
 
-   * :math:`r + s` is R.E.
-   * :math:`r s` is R.E.
-   * :math:`(r)` is R.E.
-   * :math:`r^*` is R.E.
+   * :math:`r + s` is a R.E.
+   * :math:`r s` is a R.E.
+   * :math:`(r)` is a R.E.
+   * :math:`r^*` is a R.E.
 
-#. :math:`r` is a R.E iff it can be derived from (1) with a finite
-   number of applications of (2).
+#. :math:`r` is a R.E if and only if it can be derived from (1) with a
+   finite number of applications of (2).
 
-**Definition:** :math:`L(r) =` language denoted by R.E. :math:`r`.
+**Definition:** :math:`L(r)` is the language denoted by regular
+expression :math:`r`.
 
 #. :math:`\emptyset`, :math:`\{\lambda\}`, and :math:`\{a \in \Sigma\}`
-   are languages denoted by a R.E.
+   are each languages denoted by some R.E.
 
    Note that :math:`\emptyset = \{\}` (the empty set),
    while :math:`\lambda = \{ \lambda \}`,
    meaning the set containing just the empty string.
+   Q: Does every regular language include the empty string?
 
 #. If :math:`r` and :math:`s` are R.E. then
 
@@ -90,7 +94,7 @@ Examples
    has an odd number of :math:`a` 's followed by an even number of
    :math:`b` 's :math:`\}`.
 
-   :math:`(aa)^{*}a(bb)^{*}`
+   :math:`(aa)^{*}a(bb)^{*}` Q: Does this language include the empty string?
 
 
 #. :math:`\Sigma=\{a,b\}`, :math:`\{w \in {\Sigma}^{*} \mid w` has no more than
@@ -102,8 +106,10 @@ Examples
 
    :math:`0 + (- + \lambda)((1+2+\ldots +9)(0+1+2+\ldots +9)^{*})`
 
-   What is acceptable, and not acceptable? 
+   Q: What is acceptable for this language, and what is not acceptable?
 
+Q: Can every finite set of strings be described by a R.E.?
+   
 Now that we have defined what regular expressions are, a good question
 to ask is: Why do we need them?
 In particular, we already know two ways to define a language.
@@ -118,15 +124,16 @@ Describing it in English is imprecise.
 Even if we use math to make it precise, its something that we cannot
 easily operationalize.
 On the other hand, defining a DFA (or NFA) is a bit time consuming.
-We can use a tool like JFLAP, but that takes a long time to work
-through the GUI, even if it is a relatively small machine.
+We can use a tool like JFLAP or OpenFLAP, but that takes a relatively
+long time to work through the GUI, even if it is a relatively small
+machine.
 In contrast, we can type out a regular expression within a system like
 JFLAP.
 In that case, it is both fast to type and operationalizeable
-(in the sense that we can then implement the acceptor for the regular
-expression).
-Of course, while a program can be shorter or longer, it might be
-hard for us to come up with the program.
+(in the sense that we can then convert the RegEx to a DFA, which
+implements the acceptor for the regular expression).
+Of course, while a program (or machine) can be shorter or longer,
+it might be hard for us to come up with the program.
 In the same way, we might have to struggle to come up with the regular
 expression.
 But its probably short to type once we have it.
@@ -137,70 +144,194 @@ Regular Expressions vs. Regular Languages
 
 Recall that we **define** the term :term:`regular language` to mean
 the languages that are recognized by a DFA.
-(Which is the same as the languages recognized by an NFA.)
+(Which we know is the same as the languages recognized by an NFA,
+because we know that every NFA can be converted to a DFA.)
 How do regular expressions relate to these?
+Are they the same languages?
+Is one a subset of the other?
+Or are they just different collections of languages?
 
 We can easily see NFAs for :math:`\emptyset`, :math:`\lambda`, and
-:math:`a \in \Sigma` (see Linz Figure 3.1).
-But what about the "more interesting" regular expressions?
-And, can any regular language be described by a regular expression?
+:math:`a \in \Sigma`.
 
-**Theorem:** Let :math:`r` be a R.E.
-Then :math:`\exists` NFA :math:`M` such that :math:`L(M) = L(r)`.
+.. inlineav:: phiREtoNFACON dgm
+   :links:   DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/phiREtoNFACON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/phiREtoNFACON.js
+   :output: show
 
-**Proof:** By simple simulation/construction. (This is a standard
-approach to proving such things!)
+This is an NFA that accept nothing (:math:`\emptyset`).
 
-   We aleady know that we can easily do :math:`\emptyset`, 
-   :math:`\{\lambda\}`, and :math:`\{a\}` for :math:`a \in \Sigma`.
+.. inlineav:: lambdaREtoNFACON dgm
+   :links:   AV/VisFormalLang/Regular/lambdaREtoNFACON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/lambdaREtoNFACON.js
+   :output: show
 
-   Suppose that :math:`r` and :math:`s` are R.E. (By induction...)
-   That means that there is an NFA for :math:`r` and an NFA for
-   :math:`s`.
+This is an NFA that accept an empty string (:math:`\lambda`).
 
-      #. :math:`r + s`. Simply add a new start state and a new final
-         state, each connected (in parallel) with :math:`\lambda`
-         transitions to both :math:`r` and :math:`s`. [Linz 3.3]
-      #. :math:`r \cdot s`. Add new start state and new final state,
-         and connect them with :math:`\lambda` transitions in series.
-         [Linz 3.4]
-      #. :math:`r^*`. Add new start and final states, along with
-         :math:`\lambda` transitions that allow free movement between
-         them all. [Linz 3.5]
-    
+.. inlineav:: aREtoNFACON dgm
+   :links:   AV/VisFormalLang/Regular/aREtoNFACON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/aREtoNFACON.js
+   :output: show
+
+This is an NFA that accept :math:`a \in \Sigma`.
+
+But what about the "more interesting" regular expressions that are
+built from AND, OR, and concatenation?
+Do these all have maching NFAs?
+If we could find a way to "simulate" each of these operations with an
+NFA, then we know that we can construct a machine for any R.E.
+This idea of "simulation" is a standard approach to proving such things!
+
+Suppose that :math:`r` and :math:`s` are R.E. (By induction...)
+That means that there is an NFA for :math:`r` and an NFA for
+:math:`s`.
+To help us visualize such things, it helps if we can have a standard
+way to draw the idea of an arbitrary NFA.
+And since we want to combine machines together, it will be much easier
+if we know that the arbitrary machine has one start state and one
+final state.
+Well, we already know that all NFA have a single start state.
+But not all NFA have a single final state.
+
+.. Note::
+
+   Consider any NFA, and its various final states.
+   Is there an easy way to convert this to an equivalent NFA with a
+   single final state?
+   The answer is "yes", by adding a new state that will be the final
+   state for the machine.
+   Figure out for yourself how you can do this.
+
+.. inlineav:: schematicRepCON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicRepCON.js
+   :output: show
+
+
+
+OK, now that we have the idea of an abstract NFA that could represent
+any NFA, we are ready to see how we can put them together to do all of
+the operations that a regular expression can do.
+
+:math:`r + s`. Simply add a new start state and a new final
+state, each connected (in parallel) with :math:`\lambda`
+transitions to both :math:`r` and :math:`s`.
+
+.. inlineav:: schematicORRepCON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicORRepCON.js
+   :output: show
+
+:math:`r \cdot s`. Add new start state and new final state,
+and connect them with :math:`\lambda` transitions in series.
+
+.. inlineav:: schematicConcatRepCON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicConcatRepCON.js
+   :output: show
+
+:math:`r^*`. Add new start and final states, along with
+:math:`\lambda` transitions that allow free movement between
+them all.
+
+.. inlineav:: schematicStarRepCON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicStarRepCON.js
+   :output: show
+
+   Create a slideshow that shows how we create a machine that
+   implements star closure, like Linz Figure 3.5
+            
 **Example:** :math:`ab^* + c`
+
+Here is an NFA that accepts :math:`ab^* + c`
+
+.. inlineav:: ABStarOrCCON dgm
+   :links:   AV/VisFormalLang/Regular/ABStarOrCCON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/ABStarOrCCON.js
+   :output: show
+
+
+Since we have the NFA that accepts :math:`ab^* + c`, we can convert it to a DFA
+then to a minimized DFA.
+
+
+.. inlineav:: RENFAtoDFACON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/RENFAtoDFACON.js
+   :output: show
+
 
 .. note::
 
-   Try this for yourself in JFLAP.
+   At this point, you should go to OpenFLAP and try it for yourself.
    Type in the R.E, then convert it to an NFA,
    then convert the NFA to a DFA, then minimize the DFA.
 
+You should notice that when OpenFLAP automatically converts the
+R.E. to a NFA, the resulting NFA does not look like the "intuitive"
+version in the diagram above.
+This is because the automatic process is a little more complicated.
+To understand how an algorithm can automatically convert an R.E. to a
+NFA, a lot of the steps are simply building the machine with the
+transformations in the diagrams shown earlier in this module |---|
+such as combining two machines to OR them or to AND them, etc.
+
+**Definition:** A Generalized Transition Graph (GTG) is a transition
+graph whose edges can be labeled with any regular expression.
+Thus, it "generalizes" the standard transition graph.
+
+.. inlineav:: GTGExampleCON dgm
+   :links:   AV/VisFormalLang/Regular/GTGExampleCON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/GTGExampleCON.js
+   :output: show
+
+The process for automatically converting from a R.E. to an NFA simply
+moves step by step through the R.E. from the lowest precedence
+operators (OR) to break the R.E. down into partial machines that are
+combined together.
+It is fairly simple process, as seen here.
+
+.. inlineav:: GTGtoNFACON ss
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/GTGtoNFACON.js
+   :output: show
+
+One thing that this example should make clear is that the concept of
+an NFA is really helpful for our understanding.
+While every NFA **can** be replaced by an equivalent DFA,
+it is a lot easier to understand instuitively the process of
+converting an R.E. to an NFA than it would be if we had
+come up with the DFA directly.
+
+Finally, here is a slideshow that presents all of the details that an
+automated process would go through to convert an R.E. to a minimized DFA.
 
 .. inlineav:: REtoMinimizedDFACON ss
    :links:   AV/VisFormalLang/Regular/REtoMinimizedDFACON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/REtoMinimizedDFACON.js lib/paper-core.min.js DataStructures/FLA/REtoFAController.js lib/underscore.js DataStructures/FLA/Discretizer.js
    :output: show
-  
 
-**Theorem:** Let :math:`L` be regular. Then :math:`\exists` R.E. such
-that :math:`L = L(r)`.
 
-Perhaps you see that any regular expression can be
-implemented as a NFA.
-For most of us, its not obvious that any NFA can be converted to a
+Converting Regular Languages to Regular Expressions
+---------------------------------------------------
+
+Since every regular expression has an NFA that implements it,
+this means that the regular expressions are a subset of
+the regular languages.
+The next question is: Does every regular language have a regular
+expression?
+
+**Theorem:** Let :math:`L` be regular.
+Then there exists an R.E. such that :math:`L = L(r)`.
+
+Perhaps you thought it fairly intuitive to see that any regular
+expression can be implemented as a NFA, as described above.
+But for most of us, its not obvious that any NFA can be converted to a
 regular expression.
+This proof is rather difficult, and we are just going to give a sketch.
 
 | Proof Idea:
-|    Remove states sucessively, generating equivalent 
-     generalized transition graphs (GTG) until only two states are
-     left (initial state and one final state).
-|    The transition between these states is a regular expression
-     that is equivalent to the original NFA. 
-
-**Definition:** A Generalized Transition Graph (GTG) is a transition
-graph whose edges can be labeled with any regular expression.
-Thus, it "generalizes" the standard transition graph. [See Linz 3.8]
+|   Use a process that removes states sucessively,
+    generating equivalent generalized transition graphs (GTG) until
+    only two states are left (the initial state and one final state),
+    with the resulting regular expression as the transition.
+|   This regular expression left as the sole transition is equivalent
+    to the original NFA.
 
 **Definition:** A complete GTG is a complete graph, meaning that every
 state has a transition to every other state.

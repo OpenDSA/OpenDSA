@@ -614,7 +614,7 @@ var exerciseLocation;
 	var saveXML = function () {
 		removeModeClasses();
 		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(g));
-    	$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.xml">Download FA</a>');
+    	$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.jff">Download FA</a>');
 			$('#download a')[0].click();
     	jsav.umsg("Saved");
 	};

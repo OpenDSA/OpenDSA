@@ -15,18 +15,22 @@ Regular Grammars
 Regular Grammars
 ----------------
 
-Regular grammars are another way that describe regular languages.
-Now comes the question, what makes a grammar regular?
-The answer is, any grammar that has at most a single variable in the right hand side (RHS) of every production rule.
-And this variable, if exist, is always in the beginning or at the end of each production rule RHS.
+Regular grammars are another way to describe regular languages.
+Recall that a grammar is made of of terminals, variables, and
+production rule.
+As the name implies, a **regular** grammar is a special type of
+grammar (we will see plenty of grammars later that are not regular).
+Which begs the question: What makes a grammar regular?
+Before we can properly answer that, we need some definitions.
+
 Suppose we have the following Grammar :math:`G = (V, T, S, P)` where,
 
 .. math::
 
    \begin{array}{lll}
    & & \mbox{represented by} \\
-   V & \mbox{variables (nonterminals)} & A,B,..,Z \\
-   T & \mbox{terminals}  & a,b,..,z,0,1,...9 \\
+   V & \mbox{variables (nonterminals)} & A,B,..,Z (that is, capital letters)\\
+   T & \mbox{terminals}  & a,b,..,z,0,1,...9 (lower case letters and numbers)\\
    S & \mbox{start symbol} \\
    P & \mbox{productions (rules)}\\
    \end{array}
@@ -34,67 +38,70 @@ Suppose we have the following Grammar :math:`G = (V, T, S, P)` where,
 :math:`V`, :math:`T`, and :math:`P` are finite sets.
 
 :term:`Linear grammar`:
-a grammar is linear if has a single variable
+A grammar is linear if has a single variable
 in the RHS of every production rule.
 
 .. math::
 
    \begin{array}{c}
-   \mbox{all productions of form} \\
+   \mbox{All productions are of the form} \\
    A \rightarrow xB \\
    A \rightarrow Cx \\
    A \rightarrow x \\
    \mbox{where}\ A,B,C \in V, x \in T^*
    \end{array}
 
-In this grammar, each production rule has at most one variable on the RHS.
+In this grammar, each production rule has at most one variable on the
+RHS.
+(Note: It does not need to be the same terminal :math:`x` in every production!)
 
-:term:`Right-linear grammar`: is a special case from linear grammars.
-If a grammar is linear and the variable, if exist, always occur at
-the end of the RHS, then the grammar is called Right-linear grammar.
+:term:`Right-linear grammar`: This is a special case of linear
+grammar.
+If a grammar is linear and any variable, if it exists, always occurs at
+the right end of the RHS, then the grammar is called a Right-linear grammar.
+For example, the grammar:
+
+.. math::
+
+   \begin{array}{c}
+   A \rightarrow xB \\
+   A \rightarrow xC \\
+   A \rightarrow y \\
+   \mbox{where}\ A,B,C \in V, x,y \in T^*
+   \end{array}
+
+Note: :math:`x` or :math:`y` is a string of length 0 or more.
+Each production has at most one variable, so the grammar is linear.
+The variables (B and C) are at the end of the RHS,
+so it is a right linear grammar.
+
+:term:`Left-linear grammar`: This is the same as :term:`Right-linear grammar`,
+but the occurance of any variable, if it exists, is at the begining of each
+production RHS.
 For example,
 
 .. math::
 
    \begin{array}{c}
-   \mbox{all productions of form} \\
-   A \rightarrow xB \\
-   A \rightarrow xC \\
-   A \rightarrow x \\
-   \mbox{where}\ A,B,C \in V, x \in T^*
-   \end{array}
-
-Note: :math:`x` is a string of length 0 or more.
-In the previous grammar, each production has at most once variable
-B, or C (the grammar is linear),
-the occurance of variables B, and C are at the end of the RHS
-(so it is a right linear grammar).
-
-:term:`Left-linear grammar`: it is the same as :term:`Right-linear grammar`,
-but the occurance of any variable, if exist, is in the begining of each
-production RHS. For example,
-
-.. math::
-
-   \begin{array}{c}
-   \mbox{all productions of form} \\
    A \rightarrow Bx \\
-   A \rightarrow Cx \\
+   A \rightarrow Cy \\
    A \rightarrow x \\
-   \mbox{where}\ A,B,C \in V, x \in T^*
+   \mbox{where}\ A,B,C \in V, x,y \in T^*
    \end{array}
 
-In the previous grammar, each production has at most once variable
-B, or C (the grammar is linear),
-the occurance of variables B, and C are in the begining of the RHS
-(so it is a right linear grammar).
+Each production has at most one variable, so the grammar is linear.
+The variables (B and C) are at the start of the RHS,
+so it is a left linear grammar.
+
+OK, so now we have the definitions that  we need to define a regular
+grammar.
 
 **Definition:**
 
 A :term:`regular grammar` is a right-linear or left-linear grammar.
 
 .. 
-.. note::
+.. .. note::
 .. 
    There is a more restrictive definition in which the length of
    :math:`x` is :math:`\leq 1`. (Exercise in book.)
@@ -144,11 +151,10 @@ Our Next Step
 NFA from Regular Grammar
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Theorem:** L is a regular language if and only if :math:`\exists` regular
-grammar G such that :math:`L = L(G)`.
+**Theorem:** L is a regular language if and only if there exists a regular
+grammar :math:`G` such that :math:`L = L(G)`.
 
-   | (Doing here for RR grammar, see book for proof sketch for LR
-     grammar.)
+   | (Doing here for RR grammar)
    | (:math:`\Longleftarrow`) Given a regular grammar G,
      Construct NFA M such that :math:`L(G)=L(M)`
    | Make a state for each non-terminal.
@@ -189,30 +195,30 @@ grammar G such that :math:`L = L(G)`.
 Right-linear Regular Grammar from DFA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   **Theorem:** L is a regular language iff :math:`\exists` regular
-   grammar G such that :math:`L = L(G)`.
+**Theorem:** L is a regular language if and only if there exists a
+regular grammar G such that :math:`L = L(G)`.
 
-   (:math:`\Longrightarrow`) Given a DFA :math:`M`,
-   construct regular grammar :math:`G` such that :math:`L(G)=L(M)`
+(:math:`\Longrightarrow`) Given a DFA :math:`M`,
+construct regular grammar :math:`G` such that :math:`L(G)=L(M)`
 
-   | The process is pretty much the same as when we made an NFA from
-     RRG:
-   |    Each DFA state gets a non-terminal.
-   |    Each transition gets a production rule.
+| The process is pretty much the same as when we made an NFA from
+  RRG:
+|    Each DFA state gets a non-terminal.
+|    Each transition gets a production rule.
 
-   Construct the Regular Grammar for the NFA
+Construct the Regular Grammar for the NFA
 
-   .. odsafig:: Images/stnfatorg.png
-      :width: 200
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfatorg
+.. odsafig:: Images/stnfatorg.png
+   :width: 200
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: stnfatorg
 
-   |  :math:`G = (\{S,B\},\{a,b\},S,P)`,
-   |    :math:`P =`
-   |      :math:`Q0 \rightarrow a Q1`
-   |      :math:`Q1 \rightarrow a Q0 | b Q1 | \lambda`
+|  :math:`G = (\{S,B\},\{a,b\},S,P)`,
+|    :math:`P =`
+|      :math:`Q0 \rightarrow a Q1`
+|      :math:`Q1 \rightarrow a Q0 | b Q1 | \lambda`
 
 
 .. inlineav:: FAtoRegGrammmarCON ss

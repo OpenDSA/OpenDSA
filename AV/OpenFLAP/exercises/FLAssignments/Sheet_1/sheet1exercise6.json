@@ -5,13 +5,13 @@
         "type": "expression",
         "testCases": [
             {
-                "": true
+                "": false
             },
             {
                 "aaabbb": true
             },
             {
-                "bbbb": true
+                "bbbb": false
             },
             {
                 "abbbbbb": true
