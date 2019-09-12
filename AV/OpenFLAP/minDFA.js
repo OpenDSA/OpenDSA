@@ -119,6 +119,37 @@ if computational complexity is a concern, should be changed to use a union-find 
 	};
 
 	// check if tree is complete
+	function doneForExercise(){
+		if (selectedNode) {
+			selectedNode.unhighlight();
+			selectedNode = null;
+		}
+		unhighlightAll(referenceGraph);
+		var leaves = getLeaves(bt.root());
+		for (var i = 0; i < leaves.length; i++) {
+			var leaf = leaves[i].split(',');
+			for (var k = 0; k < alphabet.length; k++) {
+				var dArr = [],
+					letter = alphabet[k];
+				for (var j = 0 ; j < leaf.length; j++) {
+					var node = referenceGraph.getNodeWithValue(leaf[j]);
+					var next = referenceGraph.transitionFunction(node, letter);
+					if (next[0]) {
+						dArr.push(next[0]);
+					}
+				}
+				if (!_.find(leaves, function(v){return _.difference(dArr, v.split(',')).length === 0}) && dArr.length !== 0) {
+					jsav.umsg("There are distinguishable states remaining");
+					if(type === 'Exercise'){
+						exerciseLog.errorMessages.push("There are distinguishable states remaining");
+						exerciseLog.errorsCount++;
+					}
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 	function done() {
 		if (selectedNode) {
 			selectedNode.unhighlight();
@@ -354,8 +385,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 			if(type === 'Exercise'){
 				exerciseLog.errorMessages.push('Incomplete DFA transitions');
 				exerciseLog.errorsCount++;
-      }
-      return 0;
+      		}
+     		return 0;
 		}
 		else {
 			jsav.umsg("You got it!");
@@ -639,7 +670,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		return model;
   }  
   var checkDone = function(){
-    var treeDone = done();
+    var treeDone = doneForExercise();
     if(treeDone !== false)
       return dfaDone();
     else {
