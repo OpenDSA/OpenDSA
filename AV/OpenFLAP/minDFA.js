@@ -613,7 +613,12 @@ if computational complexity is a concern, should be changed to use a union-find 
     $("#donebutton").show();
     $('.treework').hide();
     $('.hide').hide();
-    $('#editable').removeClass("working");
+	$('#editable').removeClass("working");
+	exerciseLog.errorsCount = 0;
+	exerciseLog.errorMessages = [];
+	exerciseLog.numberOfSteps = 0;
+	exerciseLog.numberOfHints = 0;
+	exerciseLog.numberOfAutoPartitions = 0;
 	}
 
 	//Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.

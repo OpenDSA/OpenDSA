@@ -55,6 +55,11 @@
 		var model = modeljsav.ds.matrix(list);
 		//layoutTable(model);
 		modeljsav.displayInit();
+		exerciseLog.errorsCount = 0;
+		exerciseLog.errorMessages = [];
+		exerciseLog.numberOfSteps = 0;
+		exerciseLog.numberOfHints =0;
+		exerciseLog.numberOfAutoPartitions=0
 		return model;
   }  
 
