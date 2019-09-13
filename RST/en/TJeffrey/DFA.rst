@@ -28,7 +28,7 @@ That is, an acceptor does not modify the contents of the tape.
 
 :term:`Deterministic` in this context has a particular meaning:
 When the DFA is in a given state, there is only one thing that
-it can do for any given input symbol.
+it can do for any given input symbol. 
 This is in contrast to a :term:`non-deterministic` machine,
 that might have some range of options on how to proceed when in a
 given state with a given symbol.
@@ -36,12 +36,14 @@ We'll talk about non-deterministic automata later.
 
 At the end of processing the letters of the string, the DFA can answer
 "yes" or "no".
-For example, "yes" if 6789 is a valid integer,
-or if SUM is a valid variable name in C++.
+For example, a DFA that tests to see if a string is a valid integer
+should output "yes" if given 6789 as input.
+A DFA that tests to see if a string is a valid C++ variable name
+should output "yes" if given SUM input.
 
 .. inlineav:: DFAExampleCON dgm
    :links: AV/VisFormalLang/FA/DFAExampleCON.css
-   :scripts: AV/OpenFLAP/tape.js AV/VisFormalLang/FA/DFAExampleCON.js
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFAExampleCON.js
    :align: center
 
    Example of DFA
@@ -56,13 +58,18 @@ or if SUM is a valid variable name in C++.
 Define a DFA as :math:`(Q, \Sigma, \delta, q_0, F)` where
 
 * :math:`Q` is a finite set of states
-* :math:`\Sigma` is the input alphabet (a finite set)
+* :math:`\Sigma` is the input alphabet (a finite set) 
 * :math:`\delta: Q \times\Sigma \rightarrow Q`.
   A set of transitions like :math:`(q_i, a) \rightarrow q_j`
   meaning that when in state :math:`q_i`, if you see letter :math:`a`,
   consume it and go to state :math:`q_j`.
 * :math:`q_0` is the initial state (:math:`q_0 \in Q`)
 * :math:`F \subseteq Q` is a set of final states
+
+We interpret the DFA as outputting a value of "yes" on a given
+input string if the DFA ends processing of that string in a final
+state, and we say that the DFA outputs "no" if it is not in a final
+state at the end of processing that string.
 
 A DFA is a simple machine with not a lot of power.
 We will see that there are many questions that it cannot answer about
@@ -74,21 +81,29 @@ arithmetic expression or not.
 Example
 ~~~~~~~
 
-DFA that accepts even binary numbers.
+Here is a graphical presentation for a DFA that accepts even binary
+numbers.
 
 .. inlineav:: EvenBinaryDFACON dgm
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/EvenBinaryDFACON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/EvenBinaryDFACON.js
    :align: center
 
-   DFA Example: Odd numbers
+   DFA Example: Even numbers. The start state is :math:`q_0`.
+   State :math:`q_1` is a final state.
 
-We can assign meaning to the states:
-:math:`q_0` for odd numbers, :math:`q_1` for even numbers,
+We can assign semantic meaning to the states:
+the machine is in state :math:`q_0` when the digits proccessed so far
+make an odd number, and the machine is in state :math:`q_1` when the
+digits processed so far make an even number.
+Of course, our thinking about them in this way is just to help with
+our understanding of what is going on.
+Saying that this is what the states "mean" does not change the actual
+behavior of the machine.
 
 .. note::
 
-   At this point, you should try building this machine in JFLAP.
+   At this point, you should try building this machine in OpenFLAP.
 
 Formal definition:
 
@@ -96,7 +111,7 @@ Formal definition:
 
    :math:`(\{q0,q1\}, \{0,1\}, \delta, q0, \{q1\})`
 
-Tabular Format for :math:`\delta`:
+Here is a tabular format for :math:`\delta`:
 
 .. note::
 
@@ -114,12 +129,12 @@ Tabular Format for :math:`\delta`:
 
 .. math::
 
-   \begin{array}{r|cc}
+   \begin{array}{r|cc} 
    & 0 & 1 \\
-   \hline
-   q0 & q1 & q0 \\
-   q1 & q1 & q0 \\
-   \end{array}
+   \hline 
+   q0 & q1 & q0 \\ 
+   q1 & q1 & q0 \\ 
+   \end{array} 
 
 Example of a move: :math:`\delta(q0, 1) = q0`
 
@@ -135,30 +150,20 @@ Algorithm for DFA:
 |    s = next symbol to the right on tape
 | if :math:`q \in F` then accept
 
-Example of a trace: 11010
 
-Pictorial Example of a trace for 100:
-
-.. inlineav:: OddNumbersTracesCON ss
-   :long_name: Odd Numbers Traces Slideshow
-   :links: AV/TJeffrey/OddNumbersTracesCON.css
-   :scripts: AV/TJeffrey/OddNumbersTracesCON.js
+.. inlineav:: MachineTraceCON ss
+   :long_name: Machine Trace Slideshow
+   :links: AV/TJeffrey/MachineTraceCON.css
+   :scripts: DataStructures/FLA/FA.js AV/TJeffrey/MachineTraceCON.js
    :output: show
 
-.. inlineav:: OddNumbersTraceCON dgm
-   :links: AV/VisFormalLang/FA/OddNumbersTraceCON.css
-   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/OddNumbersTraceCON.js
-   :align: center
-
    DFA Example: Even numbers trace
-
-
 
 Now let's see how this machine accepts / rejects some strings.
 
 .. inlineav:: TraceEvenBinaryDFACON ss
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/TraceEvenBinaryDFACON.css
-   :scripts: DataStructures/FLA/FA.js AV/Development/formal_language/fa/TraverseAccepter.js AV/VisFormalLang/FA/TraceEvenBinaryDFACON.js
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/TraceEvenBinaryDFACON.js
    :output: show
 
 Definitions
@@ -185,7 +190,7 @@ Definitions
   .. note::
 
      Draw a picture: q0 arc ... some final state, any path to a final
-     state is a string that is accepted.
+     state is a string that is accepted. 
 
      This is the language accepted by DFA M.
      All strings formed of the alphabet such that if you start in q0
@@ -260,10 +265,10 @@ Example: Create a DFA that accepts even binary numbers that have an
 even number of 1's.
 
 | Assign labels:
-|   :math:`q_0` - start,
-|   :math:`q_1` - even binary number: even number of 1's,
-|   :math:`q_2` - odd number, odd number of 1's,
-|   :math:`q_3` - odd number, even number of 1's
+|   :math:`q_0` - start, 
+|   :math:`q_1` - even binary number: even number of 1's, 
+|   :math:`q_2` - odd number, odd number of 1's, 
+|   :math:`q_3` - odd number, even number of 1's 
 
 .. inlineav:: EvenBinaryEvenOnesDFACON dgm
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/EvenBinaryEvenOnesDFACON.css
@@ -278,7 +283,7 @@ in a given state and the machine sees a given character.
 
 Concept: Power of DFAs
 ~~~~~~~~~~~~~~~~~~~~~~
-
+           
 A given DFA can accept a set of strings (which is all that a language is).
 All of the possible DFAs form a class of machines.
 Given some class or type of Finite Automata, the
@@ -287,5 +292,3 @@ called a :term:`family <family of languages>`.
 Therefore, the DFAs define a family of languages that they accept.
 A language is :term:`regular <regular language>` if and only iff
 there exists a DFA :math:`M` such that :math:`L = L(M)`.
-
-

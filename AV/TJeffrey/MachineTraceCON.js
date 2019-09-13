@@ -1,9 +1,9 @@
 // Odd Numbers Traces
 $(document).ready(function() {
   "use strict";
-  var av_name = "OddNumbersTracesCON";
-  var config = ODSA.UTILS.loadConfig({av_name: av_name}), 
-      interpret = config.interpreter;
+  var av_name = "MachineTraceCON";
+  //  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+  //      interpret = config.interpreter;
 
   // Load the config object with interpreter and code created by odsaUtils.js
   var av;
@@ -14,7 +14,7 @@ $(document).ready(function() {
 
   var xStart = 150;
   var yStart = 0;
-  av.umsg(interpret("Step 1: The tape head is at the character 1, with a current state of q0"));
+  av.umsg("In this example, we see how the machine head moves over the tape when processing input string '100'. Step 1: Initially, the tape head is at the leftmost tape cell with character '1', and the current state is q0");
   var p1 = av.label("1)", {left: 170 + xStart, top: 0 + yStart});
   av.ds.tape([1, 0, 0, "", "", "", ""], 200 + xStart, yStart + 20, "right");
   var c0 = av.g.rect(200 + xStart, 100 + yStart, 110, 80);
@@ -28,10 +28,8 @@ $(document).ready(function() {
   av.displayInit();
 
 
-
-
   // Slide 2
-  av.umsg(interpret("Step 2: The tape head shifts right to the character 0 and the current state reaminds the same"));
+  av.umsg("Step 2: The tape head shifts right one cell. The current state remains in q0.");
   var p5 = av.label("2)", {left: 170 + xStart, top: 0 + yStart});
   var p6 = av.g.line(245 + xStart, 100 + yStart, 245 + xStart, 55 + yStart,
                      {"arrow-end": "classic-wide-long"});
@@ -42,9 +40,8 @@ $(document).ready(function() {
   p3.hide();
   av.step();
 
-
   // Slide 3
-  av.umsg(interpret("Step 3: The tape head shifts right again onto another 0, however, this time the current state changes from q0 to q1"));
+  av.umsg("Step 3: The tape head shifts right one cell. The current state changes to q1.");
   var p8 = av.label("3)", {left: 170 + xStart, top: 0 + yStart});
   p5.hide();
   p6.hide();
@@ -53,11 +50,10 @@ $(document).ready(function() {
                      {"arrow-end": "classic-wide-long"});
   var p10 = av.g.line(270 + xStart, 145 + yStart, 240 + xStart, 165 + yStart,
                       {"arrow-end": "classic-wide-long"});
-
   av.step();
 
   // Slide 4
-  av.umsg(interpret("Step 4: The tape head shifts right again on a place with no value and the current state remains the same"));
+  av.umsg("Step 4: The tape head shifts right one cell. The current state remains in q1. Since the last character of the string has now been processed, the machine is done with this input.");
   av.label("4)", {left: 170 + xStart, top: 0 + yStart});
   p8.hide();
   p9.hide();
@@ -75,4 +71,3 @@ $(document).ready(function() {
   av.step();
   av.recorded();
 });
-

@@ -101,8 +101,9 @@ function delambdafyMoore(outputChar) {
 function serializeGraphToXML (graph) {
 	var text = '<?xml version="1.0" encoding="utf-8"?>';
 	text = text + "<structure>";
-	text = text + "<type>fa</type>"
-		text = text + "<automaton>"
+	text = text + "<type>fa</type>";
+		text = text + "<automaton>";
+		text = text + "\n";
 		var nodes = graph.nodes();
 	// iterate over the nodes and add them all to the serialization.
 	for (var next = nodes.next(); next; next = nodes.next()) {
@@ -112,18 +113,25 @@ function serializeGraphToXML (graph) {
 		var f = next.hasClass("final");
 		var label = next.stateLabel();
 		text = text + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">';
+		text = text + "\n";
 		text = text + '<x>' + left + '</x>';
+		text = text + "\n";
 		text = text + '<y>' + top + '</y>';
+		text = text + "\n";
 		if (label) {
 			text = text + '<label>' + label + '</label>';
+			text = text + "\n";
 		}
 		if (i) {
 			text = text + '<initial/>';
+			text = text + "\n";
 		}
 		if (f) {
 			text = text + '<final/>';
+			text = text + "\n";
 		}
 		text = text + '</state>';
+		text = text + "\n";
 	}
 	var edges = graph.edges();
 	// now iterate over the edges and do the same with them.
@@ -133,15 +141,21 @@ function serializeGraphToXML (graph) {
 		var w = next.weight().split('<br>');
 		for (var i = 0; i < w.length; i++) {
 			text = text + '<transition>';
+			text = text + "\n";
 			text = text + '<from>' + fromnode + '</from>';
+			text = text + "\n";
 			text = text + '<to>' + tonode + '</to>';
+			text = text + "\n";
 			if (w[i] === lambda) {
 				text = text + '<read/>';
+				text = text + "\n";
 			}
 			else {
 				text = text + '<read>' + w[i] + '</read>';
+				text = text + "\n";
 			}
 			text = text + '</transition>';
+			text = text + "\n";
 		}
 	}
 	text = text + "</automaton></structure>"
