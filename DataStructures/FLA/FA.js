@@ -364,12 +364,14 @@ var lambda = String.fromCharCode(955),
     if (edge) {
       var otherEdge = edge.endnode.getOutgoing();
       for (var i = 0; i < otherEdge.length; i++) {
-        if (otherEdge[i].endnode.equals(edge.startnode) && !otherEdge[i].shift) //It the other edge is going to the same node
+        if (otherEdge[i].endnode.equals(edge.startnode) && !otherEdge[i].shift && !edge.shift && !otherEdge[i].endnode.equals(otherEdge[i].startnode)) //It the other edge is going to the same node
         {
           otherEdge[i].shift = true;
-          otherEdge[i].shfitedTo = -1;
+          otherEdge[i].shiftedTo = -1;
+          otherEdge[i].layout();
           edge.shift = true;
-          edge.shfitedTo = +1;
+          edge.shiftedTo = 1;
+          break;
         }
       }
       // Acquire each distinct edge transition.
@@ -1008,6 +1010,7 @@ var lambda = String.fromCharCode(955),
     this.jsav = jsav;
     this.startnode = start;
     this.shift = false;
+    this.shiftedTo = 0;
     this.endnode = end;
     this.options = $.extend(true, { "display": true }, options);
     this.container = start.container;
@@ -1147,19 +1150,24 @@ var lambda = String.fromCharCode(955),
         midY = ((fromPoint[1] + toPoint[1]) / 2.0),
         vectorX = fromPoint[1] - toPoint[1],
         vectorY = toPoint[0] - fromPoint[0],
-        scaling = this.options.arcoffset / Math.sqrt(Math.pow(vectorX, 2) + Math.pow(vectorY, 2)),
-        controlPointX = midX + scaling * vectorX,
-        controlPointY = midY + scaling * vectorY;
+        scaling = this.options.arcoffset / Math.sqrt(Math.pow(vectorX, 2) + Math.pow(vectorY, 2));
+        
       if (this.shift) {
-        if (this.shfitedTo == -1) {
-          fromPoint[1] -= 5;
-          toPoint[1] -= 5;
+        if (this.shiftedTo == -1) {
+          fromPoint[1] -= 2.5;
+          toPoint[1] -= 2.5;
+          if(vectorY > 0)
+            vectorY*=-1;
         } else {
-          fromPoint[1] += 5;
-          toPoint[1] += 5;
+          fromPoint[1] += 2.5;
+          toPoint[1] += 2.5;
+          if(vectorY<0)
+            vectorY*=-1;
         }
 
       }
+      var controlPointX = midX + scaling * vectorX,
+        controlPointY = midY + scaling * vectorY;
       //controlPointY = (controlPointY <= 70)? controlPointY + controlPoint_offset: controlPointY;
       //controlPointY = (controlPointY >= 140)? controlPointY - controlPoint_offset: controlPointY;
       this.g.path('M ' + fromPoint[0] + ',' + fromPoint[1] + ' Q' + controlPointX + ',' +
