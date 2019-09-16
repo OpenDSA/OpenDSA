@@ -2241,111 +2241,6 @@ var lambda = String.fromCharCode(955),
     this.jsav.step();
     //jsav.recorded();
   };
-<<<<<<< HEAD
-  
-  var acceptorProto = TraverseAcceptor.prototype;
-  
-  acceptorProto.init = function(jsav, FA) {
-	this.jsav = jsav;
-	this.FA = FA;
-  }	
-  
-  acceptorProto.run = function(inputString, matrixRow) {
-	// Start with the closure of the initial state.
-	this.FA.initial.addClass('current');
-	var currentStates = [this.FA.initial];
-	currentStates = addLambdaClosure(this.FA, currentStates);
-	var nextStates = currentStates;
-	
-	// Create an array of characters in the input string.
-	var textArray = [];
-	for (var i = 0; i < inputString.length; i++) {
-	  textArray.push(inputString[i]);
-	}
-	// Use this array to initialize the JSAV array.
-	//var arr = this.jsav.ds.array(textArray);//{element: $('.arrayPlace')});
-	//jsav.displayInit();
-	//this.ListOfArr.push(arr);
-	// Iterate over each character in the input string.
-	for (var i = 0; i < inputString.length; i++) {
-	  // "Current" is used to mark states as visited, so start by removing "Current" from every node.
-	  for (var j = 0; j < currentStates.length; j++) {
-		currentStates[j].removeClass('current');
-	  }
-	  // Run traversal step to find next states.
-	  nextStates = traverse(this.FA, currentStates, inputString[i]);
-	  if (nextStates.length == 0) {
-		// If there are no next states, the input string was rejected. Update CSS of JSAV graph and array.
-		for (var k = 0; k < currentStates.length; k++) {
-		  currentStates[k].addClass('rejected');
-		}
-		//arr.css(i, {"background-color": "red"});
-		this.matrix.css(matrixRow, i, {"background-color": "red"});
-		// Add a step to the slideshow and break out of the loop.
-		this.jsav.step();
-		break;
-	  }
-	  // Prepare for the next iteration of the loop. Update the current character in the JSAV array and add a step to the slideshow.
-	  currentStates = nextStates;
-	  //arr.css(i, {"background-color": "yellow"});
-	  this.jsav.umsg("Read a lettter and follow its transition out of the current state.");
-	  this.matrix.css(matrixRow, i, {"background-color": "yellow"});
-	  this.jsav.step();
-	}
-  
-	var rejected = true;
-	for (var k = 0; k < currentStates.length; k++) {
-	  // If we finished on a final state, the input string was accepted (unless we didn't make it to the end of the input string).
-	  if (currentStates[k].hasClass('final') && nextStates.length > 0) {
-		// If there are no next states, it means the break statement in line 128 was triggered. Otherwise, we know we made it to the end of the input string.
-		currentStates[k].addClass('accepted');
-		rejected = false;
-	  }
-	}
-  
-	if (rejected) {
-	  // If the input string was rejected, color every character in the JSAV array red.
-	  for (var l = 0; l < inputString.length; l++) {
-		//arr.css(l, {"background-color": "red"});
-		this.matrix.css(matrixRow, i, {"background-color": "red"});
-	  }
-	  this.jsav.umsg("We are at the end of the string, but we are not in a final state. So the string is REJECTED.");
-	}
-  
-	else {
-	  // If the input string was accepted, color every character in the JSAV array green.
-	  for (var l = 0; l < inputString.length; l++) {
-		//arr.css(l, {"background-color": "green"});
-		this.matrix.css(matrixRow, l, {"background-color": "green"});
-	  }
-	  this.jsav.umsg("We are at the end of the string, and we are in a final state. So the string is ACCEPTED.");
-	}
-  
-	// If the input string was rejected, label every current node as rejected.
-	var nodes = this.FA.nodes();
-	for (var next = nodes.next(); next; next = nodes.next()) {
-	  if (next.hasClass('current') && rejected) {
-		next.addClass('rejected');
-	  }
-	  next.removeClass('current');
-	}
-  
-	// Add the last step to the slideshow, stop recording the slideshow, and add the click handler to the JSAV array.
-	this.jsav.step();
-	//jsav.recorded();
-  };
-  
-  acceptorProto.visualize = function(listOfStrings, arrayOptions){
-	var special = ['zeroth','first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth'];
-	this.matrix = this.jsav.ds.matrix(listOfStrings, {style: "table", top: arrayOptions.top, left: arrayOptions.left});
-	for(var i = 0; i< listOfStrings.length; i++){
-	  this.jsav.umsg("The " + special[i + 1] + " string is " + listOfStrings[i].join(''));
-	  this.jsav.step();
-	  this.resetFA();
-	  this.run(listOfStrings[i], i);
-	}
-	this.matrix.click(this.matrixClickHandler);
-=======
 
   acceptorProto.visualize = function (listOfStrings, arrayOptions) {
     var special = ['zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth'];
@@ -2357,7 +2252,6 @@ var lambda = String.fromCharCode(955),
       this.run(listOfStrings[i], i);
     }
     this.matrix.click(this.matrixClickHandler);
->>>>>>> 839a71c6cd74ff9d9296b2eaf8d3253cace7bad2
   }
   acceptorProto.resetFA = function () {
     var nodes = this.FA.nodes();
