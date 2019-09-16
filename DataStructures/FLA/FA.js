@@ -174,7 +174,8 @@ var lambda = String.fromCharCode(955),
       this.removeNode(next);
     }
     for (var i = 0; i < source.nodes.length; i++) {
-      var node = this.addNode('q' + i),
+      var nodeValue = (source.nodes[i].nodeValue)? source.nodes[i].nodeValue: 'q' + i;
+      var node = this.addNode({value: nodeValue}),
         offset = $('.jsavgraph').offset(),
         offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
       var topOffset = parseInt(source.nodes[i].top) + offset.top + offset2;
