@@ -2134,7 +2134,7 @@ var willReject = function (graph, inputString) {
   acceptorProto.init = function(jsav, FA) {
 	this.jsav = jsav;
 	this.FA = FA;
-  }
+  }	
   
   acceptorProto.run = function(inputString, matrixRow) {
 	// Start with the closure of the initial state.
