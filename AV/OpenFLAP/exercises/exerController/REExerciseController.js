@@ -54,6 +54,10 @@ controllerProto.startTesting = function(fa, solution) {
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
 	var count = 0;
 	var testRes = [];
+	if(solution.indexOf('*' <0)){
+		alert("Your Regular Expression is not generic");
+		return 0;
+	}
 	//For DFA exercises, we need to check if the machine is a DFA not an NFA.
 	var exercise = this.tests[this.currentExercise];
 	var type = exercise["type"];
