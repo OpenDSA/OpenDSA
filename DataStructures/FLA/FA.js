@@ -320,7 +320,7 @@ var lambda = String.fromCharCode(955),
   /*
      Function to add an edge to the FA.
      Should always provide an edge weight, or there will be errors.
-   */
+     */
   automatonproto.addEdge = function (fromNode, toNode, options) {
     // assumes a weight is always given
     if (options.weight === "" || options.weight == lambda) {
@@ -367,10 +367,12 @@ var lambda = String.fromCharCode(955),
         if (otherEdge[i].endnode.equals(edge.startnode) && !otherEdge[i].shift && !edge.shift && !otherEdge[i].endnode.equals(otherEdge[i].startnode)) //It the other edge is going to the same node
         {
           otherEdge[i].shift = true;
-          otherEdge[i].shiftedTo = -1;
           otherEdge[i].layout();
           edge.shift = true;
-          edge.shiftedTo = 1;
+          
+          edge.shiftedTo = -1;
+          otherEdge[i].shiftedTo = 1;
+          otherEdge[i].layout();
           break;
         }
       }
