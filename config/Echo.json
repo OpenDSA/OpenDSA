@@ -64,8 +64,14 @@
   },
   "chapters": {
   "Context-Free Grammars and Languages": {
+<<<<<<< HEAD
+      "VisFormalLang/CFL": {},
+      "VisFormalLang/CFLSimp": {}
+   }
+=======
       "Echo/CFL": {},
       "Echo/CFLSimp": {}
     }
   }
+
 }
