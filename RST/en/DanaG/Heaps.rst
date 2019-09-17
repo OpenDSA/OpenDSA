@@ -227,7 +227,16 @@ This situation is illustrated by this figure:
 
 .. _HeapInduct:
 
+<<<<<<< HEAD
 .. inlineav:: HeapsAV dgm
+=======
+.. inlineav:: Heaps2 dgm
+   :links: AV/DanaG/Heaps2.css
+   :scripts: AV/DanaG/Heaps2.js
+   :align: justify
+
+.. inlineav:: Heaps dgm
+>>>>>>> d324f00b8f6120ce3487b5f359b88e41dd84e97d
    :links: AV/DanaG/Heaps.css
    :scripts: AV/DanaG/Heaps.js
    :align: justify

@@ -153,8 +153,8 @@ Algorithm for DFA:
 
 .. inlineav:: MachineTraceCON ss
    :long_name: Machine Trace Slideshow
-   :links: DataStructures/FLA/TJeffrey/FLA.css AV/TJeffrey/MachineTraceCON.css 
-   :scripts: DataStructures/FLA/TJeffrey/FA.js AV/TJeffrey/MachineTraceCON.js
+   :links: AV/TJeffrey/FLA.css AV/TJeffrey/MachineTraceCON.css 
+   :scripts: AV/TJeffrey/FA.js AV/TJeffrey/MachineTraceCON.js
    :output: show
 
    DFA Example: Even numbers trace
