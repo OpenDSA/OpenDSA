@@ -1,6 +1,6 @@
 [
     {
-    "expression": "bbb^*aaaa^*",
+    "expression": "(aaab^*ba)^*",
     "description": "Give a left-linear grammar for the language L(___)",
     "type": "description",
     "testCases": [
@@ -8,28 +8,28 @@
             "left-linear": true
         },
         {
-            "": false
+            "": true
         },
         {
-            "bbbbb": false
+            "aaaba": true
         },
         {
-            "aaaa": false
+            "aaabbbbba": true
         },
         {
-            "bbaa": false
+            "aaabaaaabaaaabaaaaba": true
         },
         {
-            "bbbbbaaa": true
+            "aaabbbbbaaaabbbbba": true
         },
         {
-            "bbaaa": true
+            "ba": false
         },
         {
-            "bbbbbbbbbbbaaa": true
+            "aaabaaabba": false
         },
         {
-            "bbaaaaaa": true
+            "aaaaaa": false
         }
     ],
     "graph": {

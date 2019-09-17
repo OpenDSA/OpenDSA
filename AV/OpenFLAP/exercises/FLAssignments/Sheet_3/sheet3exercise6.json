@@ -1,35 +1,38 @@
 [
     {
-        "expression": "a^nb^m",
-        "description": "Find a regular grammar for the language L={___ where n+m is odd}.",
+        "expression": "",
+        "description": "Find a regular grammar for the language over {a, b}, where the number of a's in any string is divisible by 3 .",
         "type": "description",
         "testCases": [
             {
                 "regular-grammar": true
             },
             {
-                "": false
+                "": true
             },
             {
-                "a": true
+                "aaa": true
             },
             {
-                "b": true
+                "bbbbb": true
             },
             {
-                "aab": true
+                "bababa": true
             },
             {
-                "abb": true
+                "abbbbabbbbabb": true
             },
             {
-                "aabb": false
+                "aabab": true
             },
             {
-                "aaaaaabbbbb": true
+                "bbabbabbbbabbababba": true
             },
             {
-                "ba": false
+                "ababbaaaaaaa": true
+            },
+            {
+                "bbbbbbbbbb": true
             }
         ],
         "graph": {

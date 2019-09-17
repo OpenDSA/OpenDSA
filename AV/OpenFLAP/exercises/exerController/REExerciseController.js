@@ -54,22 +54,28 @@ controllerProto.startTesting = function(fa, solution) {
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
 	var count = 0;
 	var testRes = [];
+	if(solution.indexOf('*') <0){
+		alert("Your Regular Expression is not generic");
+		return 0;
+	}
 	//For DFA exercises, we need to check if the machine is a DFA not an NFA.
 	var exercise = this.tests[this.currentExercise];
+	this.fa = FiniteAutomaton.convertNFAtoDFA(this.jsav, this.fa);
 	var type = exercise["type"];
 	var numberOfTestCases = this.testCases.length;
 	for (i = 0; i < this.testCases.length; i++) {
 		var testNum = i + 1;
 		var testCase = this.testCases[i];
 		var input = Object.keys(testCase)[0];
+		var inputOrLambda = input ===""?lambda:input;
 		var inputResult = FiniteAutomaton.willReject(this.fa, input);
 		if (inputResult !== testCase[input]) {
-			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
+			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
 			count++;
 			testRes.push('Test' + testNum +':' + 'Correct');
 		}
 		else {
-			$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
+			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
 			testRes.push('Test' + testNum + ':' + 'Wrong');
 		}
 	}
@@ -89,6 +95,7 @@ controllerProto.startTesting = function(fa, solution) {
 	$("#testResults").show();
 	window.scrollTo(0,document.body.scrollHeight);
 	$('#container').scrollTop($('#container').prop("scrollHeight"));
+	return count / numberOfTestCases;
 };
 
 // binded with question links at the top of the page

@@ -1,74 +1,96 @@
 [
     {
         "expression": "",
-        "description": "Give a left-linear grammar for the following NFA",
+        "description": "Give a right-linear grammar for the following NFA",
         "type": "description",
         "testCases": [
             {
-                "left-linear": true
+                "right-linear": true
             },
             {
-                "": true
+                "": false
             },
             {
-                "1": false
+                "aaaa": false
             },
             {
-                "11111111111": false
+                "bbbb": true
             },
             {
-                "10": true
+                "bbbbbb": true
             },
             {
-                "10101010101010": true
+                "ababa": true
+            },
+            {
+                "bbb": false
+            },
+            {
+                "abbaa": true
+            },
+            {
+                "baaaaaab":true
+            },
+            {
+                "aababa": false
             }
         ],
         "graph": {
             "nodes": [
                 {
-                    "left": 43.19999694824219,
-                    "top": 22.76666259765625,
+                    "left": 7,
+                    "top": 20.203125,
                     "i": true,
+                    "nodeValue": "S",
+                    "f": false
+                },
+                {
+                    "left": 177.203125,
+                    "top": 0,
+                    "nodeValue": "A",
+                    "i": false,
                     "f": true
                 },
                 {
-                    "left": 213.1999969482422,
-                    "top": 20.76666259765625,
+                    "left": 122.203125,
+                    "top": 127.203125,
+                    "nodeValue": "B",
                     "i": false,
                     "f": false
                 },
                 {
-                    "left": 131.1999969482422,
-                    "top": 143.76666259765625,
+                    "left": 223.203125,
+                    "top": 174.203125,
+                    "nodeValue": "C",
                     "i": false,
-                    "f": false
+                    "f": true
                 }
             ],
             "edges": [
                 {
                     "start": 0,
                     "end": 1,
-                    "weight": "1"
+                    "weight": "a"
                 },
                 {
                     "start": 0,
                     "end": 2,
-                    "weight": "&lambda;"
-                },
-                {
-                    "start": 1,
-                    "end": 0,
-                    "weight": "0"
+                    "weight": "b"
                 },
                 {
                     "start": 1,
                     "end": 2,
-                    "weight": "0"
+                    "weight": "a<br>b"
                 },
                 {
                     "start": 2,
-                    "end": 2,
-                    "weight": "1"
+                    "end": 1,
+                    "weight": "a<br>b"
+                },
+                {
+                    "start": 2,
+                    "end": 3,
+                    "weight": "a<br>b"
                 }
             ],
             "shorthand": false

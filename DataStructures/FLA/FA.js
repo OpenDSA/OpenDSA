@@ -174,7 +174,8 @@ var lambda = String.fromCharCode(955),
       this.removeNode(next);
     }
     for (var i = 0; i < source.nodes.length; i++) {
-      var node = this.addNode('q' + i),
+      var nodeValue = (source.nodes[i].nodeValue)? source.nodes[i].nodeValue: 'q' + i;
+      var node = this.addNode({value: nodeValue}),
         offset = $('.jsavgraph').offset(),
         offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
       var topOffset = parseInt(source.nodes[i].top) + offset.top + offset2;
@@ -320,7 +321,7 @@ var lambda = String.fromCharCode(955),
   /*
      Function to add an edge to the FA.
      Should always provide an edge weight, or there will be errors.
-   */
+     */
   automatonproto.addEdge = function (fromNode, toNode, options) {
     // assumes a weight is always given
     if (options.weight === "" || options.weight == lambda) {
@@ -367,10 +368,11 @@ var lambda = String.fromCharCode(955),
         if (otherEdge[i].endnode.equals(edge.startnode) && !otherEdge[i].shift && !edge.shift && !otherEdge[i].endnode.equals(otherEdge[i].startnode)) //It the other edge is going to the same node
         {
           otherEdge[i].shift = true;
-          otherEdge[i].shiftedTo = -1;
-          otherEdge[i].layout();
           edge.shift = true;
-          edge.shiftedTo = 1;
+          
+          edge.shiftedTo = -1;
+          otherEdge[i].shiftedTo = 1;
+          otherEdge[i].layout();
           break;
         }
       }
@@ -1153,17 +1155,48 @@ var lambda = String.fromCharCode(955),
         scaling = this.options.arcoffset / Math.sqrt(Math.pow(vectorX, 2) + Math.pow(vectorY, 2));
         
       if (this.shift) {
-        if (this.shiftedTo == -1) {
-          fromPoint[1] -= 2.5;
-          toPoint[1] -= 2.5;
-          if(vectorY > 0)
-            vectorY*=-1;
-        } else {
+        if(vectorX > -10 && vectorY >-10){//Top
+          this.shiftedTo = 1;
+          if(Math.abs(fromPoint[1] - toPoint[1]) > Math.abs(fromPoint[0] - toPoint[1])){
+          fromPoint[0] += 2.5;
+          toPoint[0] += 2.5;
+          
+          }
+          else{
+            fromPoint[1] += 2.5;
+            toPoint[1] += 2.5;
+          }
+          vectorY = Math.abs(vectorY) + 3;
+          vectorX = Math.abs(vectorX) + 3;
+        } else if(vectorX< 10 && vectorY < 10) {//bottom
+          this.shiftedTo = -1;
+          if(Math.abs(fromPoint[1] - toPoint[1]) > Math.abs(fromPoint[0] - toPoint[1])){
+            fromPoint[0] -= 2.5;
+            toPoint[0] -= 2.5;
+          }else{
+            fromPoint[1] -= 2.5;
+            toPoint[1] -= 2.5;
+          }
+
+          vectorY = -Math.abs(vectorY) - 3;
+          vectorX = -Math.abs(vectorX) - 3;
+        }
+        else{
+          if(vectorX >-10 && vectorY <10){//top
+            this.shiftedTo = 1;
+            fromPoint[0] += 2.5;
+            toPoint[0] += 2.5;
+            fromPoint[1] -= 2.5;
+            toPoint[1] -= 2.5;
+        }
+        else{
+          this.shiftedTo = -1;
+          fromPoint[0] -= 2.5;
+          toPoint[0] -= 2.5;
           fromPoint[1] += 2.5;
           toPoint[1] += 2.5;
-          if(vectorY<0)
-            vectorY*=-1;
         }
+      }
 
       }
       var controlPointX = midX + scaling * vectorX,

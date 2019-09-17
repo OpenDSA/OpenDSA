@@ -154,7 +154,10 @@ controllerProto.startTesting = function() {
     var correctGrammarType = false,
     grammarType = this.identifyGrammar();
     var numberOfTestCases = this.testCases.length;
-
+    if(grammarType == 'unrestricted'){
+      alert("Incorrect Grammar.");
+      return 0;
+    }
     //Check if there is a specific tyoe of grammras is required in the first test case.
     if(firstTestcase.indexOf("regular") >= 0 || firstTestcase.indexOf("linear") >= 0)
     {
@@ -176,6 +179,8 @@ controllerProto.startTesting = function() {
       else{
         $("#testResults").append("<tr><td>" + firstTestcase + "</td><td>" + "Satisfied" + "</td><td class='wrong'>" + (correctGrammarType ? "Yes": "No") + "</td></tr>");
         testRes.push('Test' + index +':' + 'Correct');
+        $("#testResults").show();
+        return 0;
       }
       index++;
     }
