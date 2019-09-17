@@ -227,6 +227,11 @@ This situation is illustrated by this figure:
 
 .. _HeapInduct:
 
+.. inlineav:: Heaps2 dgm
+   :links: AV/DanaG/Heaps2.css
+   :scripts: AV/DanaG/Heaps2.js
+   :align: justify
+
 .. inlineav:: Heaps dgm
    :links: AV/DanaG/Heaps.css
    :scripts: AV/DanaG/Heaps.js
