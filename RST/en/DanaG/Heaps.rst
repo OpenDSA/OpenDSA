@@ -227,7 +227,7 @@ This situation is illustrated by this figure:
 
 .. _HeapInduct:
 
-.. inlineav:: BinExampCON dgm
+.. inlineav:: Heaps dgm
    :links: AV/DanaG/Heaps.css
    :scripts: AV/DanaG/Heaps.js
    :align: justify
