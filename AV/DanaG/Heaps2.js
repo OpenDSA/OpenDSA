@@ -1,31 +1,32 @@
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("heapsAgain", animationMode: "none"});
+  var av = new JSAV("Heaps2", {animationMode: "none"});
 
   //Circle
   var circleY = 30;
-  var circleX = 200;
-  var lineEndY = circleY + 45;
-  var leftEndX = circleX - 30;
-  var rightEndX = circleX + 45;
-  av.g.circle(circleX, circleY, 15);
-  av.label("R", {left:circleX - 10, top: circleY - 10});
+  var circleX = 450;
+  var lineEndY = circleY + 65;
+  var leftEndX = circleX - 75;
+  var rightEndX = circleX + 75;
+  var radius = 20;
+  av.g.circle(circleX, circleY, radius);
+  av.label("R", {left:circleX - 6, top: circleY - 25});
 
   //Connector lines
-  av.g.line(circleX, circleY + 15, leftEndX, lineEndY, {"stroke-width": 2});
-  av.g.line(circleX, circleY + 15, rightEndX, lineEndY, {"stroke-width": 2});
+  av.g.line(circleX, circleY + radius, leftEndX, lineEndY, {"stroke-width": 2});
+  av.g.line(circleX, circleY + radius, rightEndX, lineEndY, {"stroke-width": 2});
 
   //Triangles
-  av.g.line(rightEndX, lineEndY, rightEndX - 8, lineEndY + 15, {"stroke-width": 3});
-  av.g.line(rightEndX, lineEndY, rightEndX + 8, lineEndY + 15, {"stroke-width": 3});  
-  av.g.line(rightEndX - 8, lineEndY + 15, rightEndX + 8, lineEndY + 15, {"stroke-width": 3});
-  av.g.line(leftEndX, lineEndY, rightEndX - 8, lineEndY + 15, {"stroke-width": 3});
-  av.g.line(leftEndX, lineEndY, rightEndX + 8, lineEndY + 15, {"stroke-width": 3});  
-  av.g.line(leftEndX - 8, lineEndY + 15, rightEndX + 8, lineEndY + 15, {"stroke-width": 3});
+  av.g.line(rightEndX, lineEndY, rightEndX - radius - 5, lineEndY + 2 * radius, {"stroke-width": 1});
+  av.g.line(rightEndX, lineEndY, rightEndX + radius + 5, lineEndY + 2 * radius, {"stroke-width": 1});  
+  av.g.line(rightEndX - radius - 5, lineEndY + 2* radius, rightEndX + radius + 5, lineEndY + 2 * radius, {"stroke-width": 1});
+  av.g.line(leftEndX, lineEndY, leftEndX - radius - 5, lineEndY + 2 * radius, {"stroke-width": 1});
+  av.g.line(leftEndX, lineEndY, leftEndX + radius + 5, lineEndY + 2 * radius, {"stroke-width": 1});  
+  av.g.line(leftEndX - radius - 5, lineEndY + 2* radius, leftEndX + radius + 5, lineEndY + 2 * radius, {"stroke-width": 1});
 
   //Triangle labels
-  av.label("H1", {left: leftEndX - 4, top: lineEndY + 4});
-  av.label("H2", {left: rightEndX - 4, top: lineEndY + 4});
+  av.label("H1", {left: leftEndX - 8, top: lineEndY + 4});
+  av.label("H2", {left: rightEndX - 8, top: lineEndY + 4});
 
 
   av.displayInit();
