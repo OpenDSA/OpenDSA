@@ -100,11 +100,10 @@ function delambdafyMoore(outputChar) {
 // function to serialize the current graph to xml format.
 function serializeGraphToXML (graph) {
 	var text = '<?xml version="1.0" encoding="utf-8"?>';
-	text = text + "<structure>";
-	text = text + "<type>fa</type>";
-		text = text + "<automaton>";
-		text = text + "\n";
-		var nodes = graph.nodes();
+	text = text + '<structure>' + "\n";
+	text = text + "\t" + "<type>fa</type>" + "\n";
+	text = text + "\t" + "<automaton>" + "\n";
+	var nodes = graph.nodes();
 	// iterate over the nodes and add them all to the serialization.
 	for (var next = nodes.next(); next; next = nodes.next()) {
 		var left = next.position().left;
@@ -112,26 +111,19 @@ function serializeGraphToXML (graph) {
 		var i = next.hasClass("start");
 		var f = next.hasClass("final");
 		var label = next.stateLabel();
-		text = text + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">';
-		text = text + "\n";
-		text = text + '<x>' + left + '</x>';
-		text = text + "\n";
-		text = text + '<y>' + top + '</y>';
-		text = text + "\n";
+		text = text + "\t\t" + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">' + "\n";
+		text = text + "\t\t\t" '<x>' + left + '</x>' + "\n";
+		text = text + "\t\t\t" + '<y>' + top + '</y>' + "\n";
 		if (label) {
 			text = text + '<label>' + label + '</label>';
-			text = text + "\n";
 		}
 		if (i) {
-			text = text + '<initial/>';
-			text = text + "\n";
+			text = text + "\t\t\t" + '<initial/>' + "\n";
 		}
 		if (f) {
-			text = text + '<final/>';
-			text = text + "\n";
+			text = text + "\t\t\t" + '<final/>' + "\n";
 		}
-		text = text + '</state>';
-		text = text + "\n";
+		text = text + "\t\t" '</state>' + "\n";
 	}
 	var edges = graph.edges();
 	// now iterate over the edges and do the same with them.
@@ -140,25 +132,19 @@ function serializeGraphToXML (graph) {
 		var tonode = next.end().value().substring(1);
 		var w = next.weight().split('<br>');
 		for (var i = 0; i < w.length; i++) {
-			text = text + '<transition>';
-			text = text + "\n";
-			text = text + '<from>' + fromnode + '</from>';
-			text = text + "\n";
-			text = text + '<to>' + tonode + '</to>';
-			text = text + "\n";
+			text = text + "\t\t" +'<transition>'+ "\n";
+			text = text + "\t\t\t" + '<from>' + fromnode + '</from>' + "\n";
+			text = text + "\t\t\t" + '<to>' + tonode + '</to>' + "\n";
 			if (w[i] === lambda) {
 				text = text + '<read/>';
-				text = text + "\n";
 			}
 			else {
-				text = text + '<read>' + w[i] + '</read>';
-				text = text + "\n";
+				text = text + "\t\t\t" + '<read>' + w[i] + '</read>' + "\n";
 			}
-			text = text + '</transition>';
-			text = text + "\n";
+			text = text + "\t\t" + '</transition>' + "\n";
 		}
 	}
-	text = text + "</automaton></structure>"
+	text = text + "\t" + "</automaton>" + "\n" + "</structure>"
 		// this xml format mimics that used by jflap 7, and is thus compatible with the software.
 		return text;
 };

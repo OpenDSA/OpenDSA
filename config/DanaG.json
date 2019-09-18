@@ -1,21 +1,22 @@
+
 {
-  "title": "Formal Languages With Visualizations",
-  "desc": "Formal Languages With Visualizations",
+  "title": "Test",
+  "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Java": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java",
-      "lang": "java"
-    },
     "Java_Generic": {
       "ext": [
         "java"
       ],
       "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
       "lang": "java"
     },
     "C++": {
@@ -29,9 +30,10 @@
   },
   "lang": "en",
   "build_JSAV": false,
-  "suppress_todo": false,
-  "assumes": "recursion",
+  "build_cmap": false,
+  "suppress_todo": true,
   "dispModComp": true,
+  "tag": "CPP;CS2",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
@@ -57,18 +59,14 @@
     "points": 1.0
   },
   "glob_pe_options": {
-    "threshold": 1.0,
-    "points": 10.0,
+    "threshold": 0.9,
+    "points": 2.0,
     "required": true
   },
   "chapters": {
-    "Preface": {
-      "Intro": {}
-    },
-    "Finite Acceptors": {
-      "TJeffrey/DFA": {},
-      "VisFormalLang/NFA": {},
-      "VisFormalLang/Minimization": {}
+    "Stuff": {
+      "DanaG/Heaps": {},
+      "BTRecurTutor/BSTCheck": {}
     },
     "Appendix": {
       "Glossary": {},
@@ -76,4 +74,3 @@
     }
   }
 }
-

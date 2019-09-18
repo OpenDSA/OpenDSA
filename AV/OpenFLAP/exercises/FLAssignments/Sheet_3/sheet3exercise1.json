@@ -1,38 +1,38 @@
 [
     {
         "expression": "",
-        "description": "Give a regular expression whose language is strings over {a, b} in which the number of a’s is divisible by 3.",
+        "description": "Give a regular expression whose language is strings over {a, b} in  w contains bba as a substring that starts in an even numbered position.",
         "type": "description",
         "testCases": [
             {
-                "": true
+                "": false
             },
             {
-                "bbbbbbbbbbb": true
+                "bba": true
             },
             {
-                "a": false
+                "abababaa": false
             },
             {
-                "babab": false
+                "aabba": true
             },
             {
-                "aaa": true
+                "babba": true
             },
             {
-                "bbbaaa": true
+                "bbaabaaa": true
             },
             {
-                "babaa": true
+                "bbaabbabab": true
             },
             {
-                "bababa": true
+                "bbabbbb": true
             },
             {
-                "aaabbbbbb": true
+                "bbaaaaa": true
             },
             {
-                "aaaaaaaaaaaaaaa": true
+                "abbabba": true
             }
         ],
         "graph": {

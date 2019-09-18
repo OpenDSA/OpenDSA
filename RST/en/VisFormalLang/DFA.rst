@@ -36,8 +36,10 @@ We'll talk about non-deterministic automata later.
 
 At the end of processing the letters of the string, the DFA can answer
 "yes" or "no".
-For example, "yes" if 6789 is a valid integer,
-or if SUM is a valid variable name in C++.
+For example, a DFA that tests to see if a string is a valid integer
+should output "yes" if given 6789 as input.
+A DFA that tests to see if a string is a valid C++ variable name
+should output "yes" if given SUM input.
 
 .. inlineav:: DFAExampleCON dgm
    :links: AV/VisFormalLang/FA/DFAExampleCON.css
@@ -64,6 +66,11 @@ Define a DFA as :math:`(Q, \Sigma, \delta, q_0, F)` where
 * :math:`q_0` is the initial state (:math:`q_0 \in Q`)
 * :math:`F \subseteq Q` is a set of final states
 
+We interpret the DFA as outputting a value of "yes" on a given
+input string if the DFA ends processing of that string in a final
+state, and we say that the DFA outputs "no" if it is not in a final
+state at the end of processing that string.
+
 A DFA is a simple machine with not a lot of power.
 We will see that there are many questions that it cannot answer about
 strings.
@@ -74,21 +81,29 @@ arithmetic expression or not.
 Example
 ~~~~~~~
 
-DFA that accepts even binary numbers.
+Here is a graphical presentation for a DFA that accepts even binary
+numbers.
 
 .. inlineav:: EvenBinaryDFACON dgm
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/EvenBinaryDFACON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/EvenBinaryDFACON.js
    :align: center
 
-   DFA Example: Odd numbers
+   DFA Example: Even numbers. The start state is :math:`q_0`.
+   State :math:`q_1` is a final state.
 
-We can assign meaning to the states:
-:math:`q_0` for odd numbers, :math:`q_1` for even numbers, 
+We can assign semantic meaning to the states:
+the machine is in state :math:`q_0` when the digits proccessed so far
+make an odd number, and the machine is in state :math:`q_1` when the
+digits processed so far make an even number.
+Of course, our thinking about them in this way is just to help with
+our understanding of what is going on.
+Saying that this is what the states "mean" does not change the actual
+behavior of the machine.
 
 .. note::
 
-   At this point, you should try building this machine in JFLAP.
+   At this point, you should try building this machine in OpenFLAP.
 
 Formal definition:
 
@@ -96,7 +111,7 @@ Formal definition:
 
    :math:`(\{q0,q1\}, \{0,1\}, \delta, q0, \{q1\})`
 
-Tabular Format for :math:`\delta`:
+Here is a tabular format for :math:`\delta`:
 
 .. note::
 
@@ -135,9 +150,6 @@ Algorithm for DFA:
 |    s = next symbol to the right on tape
 | if :math:`q \in F` then accept
 
-Example of a trace: 11010
-
-Pictorial Example of a trace for 100:
 
 .. inlineav:: OddNumbersTraceCON dgm
    :links: AV/VisFormalLang/FA/OddNumbersTraceCON.css

@@ -31,6 +31,9 @@ var jsav,
 			var exerciseLocation = getExerciseLocation();
 			exerciseController = new ExerciseController(jsav, exerciseLocation, 'json');
 			exerciseController.load();
+			var exercise = jsav.flexercise(modelSolution, initialize,
+				{feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), checkSolutionFunction: testSolution});
+			  exercise.reset();
 		}
 		$('#nextStep').click(function() {
 			controller.completeStep();
@@ -48,9 +51,7 @@ var jsav,
 
 		$('#testSolution').click(testSolution);
     
-    var exercise = jsav.flexercise(modelSolution, initialize,
-      {feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), checkSolutionFunction: testSolution});
-    exercise.reset();
+    
 	}
 
   var testSolution = function(){
@@ -61,7 +62,7 @@ var jsav,
     controller = new REtoFAController(jsav, expression, false, true, {});
     controller.completeAll();
     this.resultingFA = controller.fa;
-    exerciseController.startTesting(this.resultingFA, expression);
+    return exerciseController.startTesting(this.resultingFA, expression);
   }
 	//Function sent to exercise constructor to initialize the exercise
 	function initialize() {
