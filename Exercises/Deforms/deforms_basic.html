@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+    <title>Deforms Basic Problem</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../../khan-exercises/local-only/main.js"></script>
+</head>
+ 
+<body>
+    <div class="exercise">
+        <div class="vars" 
+        data-ensure="abs(CS1_enable) + 
+        abs(CS2_enable) + 
+        abs(L_enable) + 
+        abs(gap_enable) + 
+        abs(nT_enable) +
+        abs(E_enable) +
+        abs(a_enable) == 6">
+            <var id="CS1">0.05</var>
+            <var id="CS1_enable">-1</var>
+            <var id="CS2">0.05</var>
+            <var id="CS2_enable">-1</var>
+            <var id="L">randRange(1,999) * pow(10, randRange(-2,3))</var>
+            <var id="L_enable">randRange(0,1)</var>
+            <var id="gap" data-ensure="L > 10000 * gap">(randRange(1,999) * pow(10, randRange(-5,-3)))</var>
+            <var id="gap_enable">randRange(0,1)</var>
+            <var id="T">25</var>
+            <var id="nT">randRange(25000, 200000) * pow(10, -3)</var>
+            <var id="nT_enable">randRange(0,1)</var>
+            <var id="E">70000000</var>
+            <var id="E_enable">-1</var>
+            <var id="a">0.000023</var>
+            <var id="a_enable">randRange(0,1)</var>
+        </div>
+
+        <div class="problems">
+            <div id="equation-solving">
+                <p class="problem">
+                    A solid square bar of cross-sectional dimensions  
+                    <var>CS1</var> x <var>CS1</var> is attached rigidly to the wall at point A 
+                    and has a gap of 1 mm  from the rigid wall at point B at <var>T</var> degree C.
+                    Knowing the bar is made of aluminum,
+                    <div data-if="abs(L_enable) > 0">
+                        <code>L =</code> <var>L</var> m
+                    </div>
+                    <div data-if="abs(gap_enable) > 0">
+                        <code>\delta=</code><var>gap</var> m
+                    </div>
+                    <div data-if="abs(nT_enable) > 0">
+                        <code>T_n=</code><var>nT</var> degree C
+                    </div>
+                    <div data-if="abs(E_enable) > 0">
+                        <code>E=</code><var>E</var> Pa
+                    </div>
+                    <div data-if="abs(a_enable) > 0">
+                        <code>\alpha=</code><var>a</var>
+                    </div>
+                    And the equation for expansion is as follows: <code>\delta = \alpha \Delta T L</code>
+                </p>
+                <p class="question">
+                    <div data-if="nT_enable == 0">
+                        1. At what temperature does the gap close?
+                        <var>gap / (a*L) + T</var>
+                    </div>
+                    <div data-if="gap_enable == 0">
+                        1. At a temperature of <var>nT</var> degree C, what is the length expansion of the bar?
+                        <var>a * (nT-T) * L</var>
+                    </div>
+                    <div data-if="a_enable == 0">
+                        1. Given the expansion of the bar in the present condition, what is the value of alpha for aluminium?
+                        <var>gap / (L * (nT-T))</var>
+                    </div>
+                    <div data-if="L_enable == 0">
+                        1. Given the expansion of the bar in the present condition, what is the length of the bar prior to expansion?
+                        <var>gap / (a * (nT-T))</var>
+                    </div>    
+                    <!-- gap=<var>gap_enable</var>
+                    nT=<var>nT_enable</var>
+                    a=<var>a_enable</var>
+                    L=<var>L_enable</var> -->
+                </p>
+                <p class="question">
+                    <!--2.  What stress exists in the bar at a temperature of $100^\\circ C$?-->
+                </p>
+                <img class="figure1" src="../../Fig/deforms_figure.png"
+                alt="rigid bar attached to wall A, with a small gap between right edge of bar and wall B">
+                
+                <div data-if="nT_enable == 0">
+                    <p class="solution" data-type="decimal"> <var>round((gap / (a*L) + T)*1000) / 1000</var>
+                        <!-- Replace this with a conditional based on which enable variable is 0-->
+                        The correct answer expected from the student
+                    </p>
+                </div>
+                <div data-if="gap_enable == 0">
+                    <p class="solution" data-type="decimal"> <var>round((a * (nT-T) * L)*1000) / 1000</var>
+                        <!-- Replace this with a conditional based on which enable variable is 0-->
+                        The correct answer expected from the student
+                    </p>
+                </div>
+                <div data-if="a_enable == 0">
+                    <p class="solution" data-type="decimal"> <var>round((gap / (L * (nT-T)))*1000) / 1000</var>
+                        <!-- Replace this with a conditional based on which enable variable is 0-->
+                        The correct answer expected from the student
+                    </p>
+                </div>
+                <div data-if="L_enable == 0">
+                    <p class="solution" data-type="decimal"> <var>round((gap / (a * (nT-T)))*1000) / 1000</var>
+                        <!-- Replace this with a conditional based on which enable variable is 0-->
+                        The correct answer expected from the student
+                    </p>
+                </div>  
+            </div>
+        </div>
+
+        <div class="hints">
+            Insert hints here subject to conditions governed by states of variables
+        </div>
+    </div>
+</body>
+</html>
