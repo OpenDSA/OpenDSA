@@ -250,7 +250,7 @@ The moves in the game are:
         values for :math:`x, y, z`.
 
 
-**How To turn the Pumping Lemma instruction to a prove:**
+**How To turn the Pumping Lemma instruction into a prove:**
 
 | Consider the Pumping Lemma definition again:
 |   Let :math:`L` be an infinite regular language. 
