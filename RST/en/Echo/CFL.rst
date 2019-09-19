@@ -191,12 +191,13 @@ The yield for the example above is :math:`aacbb`.
 
    A partial derivation tree that does not have root S:
 
-   .. odsafig:: Images/lt3ptree4.png
-      :width: 130
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt3ptree4
+   .. inlineav:: partialDerivationCON dgm
+      :links: AV/Echo/partialDerivationCON.css
+      :scripts: AV/Echo/partialDerivationCON.js
+      :align: justify
+      
+   
+
 
 **Membership:** Given CFG :math:`G` and string :math:`w \in \Sigma^*`,
 is :math:`w \in L(G)`?
