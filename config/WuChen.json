@@ -64,11 +64,9 @@
   },
   "chapters": {
       "Stuff": {
-          "VisFormalLang/Test": {},
-          "WuChen/RegGrammarTest": {},
           "WuChen/NonRegularTest": {},
           "WuChen/DFApropertiesTest": {},
-          "WuChen/NonRegularTest2": {}
+          "WuChen/RegGrammarTest": {}
       },
       "Appendix": {
           "Glossary": {},
