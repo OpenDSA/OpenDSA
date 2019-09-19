@@ -64,8 +64,7 @@
   },
   "chapters": {
   "Context-Free Grammars and Languages": {
-      "Echo/CFL": {},
-      "Echo/CFLSimp": {}
+      "Echo/CFL": {}
     }
   }
 }
