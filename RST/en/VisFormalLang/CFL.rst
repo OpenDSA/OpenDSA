@@ -176,7 +176,8 @@ The yield for the example above is :math:`aacbb`.
 
 .. topic:: Example
 
-   A partial derivation tree that has root S:
+   A partial derivation tree that has root S (so it is a sentential
+   form):
 
    .. odsafig:: Images/lt3ptree3.png
       :width: 200
@@ -185,18 +186,19 @@ The yield for the example above is :math:`aacbb`.
       :figwidth: 90%
       :alt: lt3ptree3
 
-   The yield of this example is :math:`aAacB` (which is a sentential form).
+   The yield for this example is :math:`aAacB`.
+
 
 .. topic:: Example
 
    A partial derivation tree that does not have root S:
 
-   .. odsafig:: Images/lt3ptree4.png
-      :width: 130
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt3ptree4
+   .. inlineav:: partialDerivationCON dgm
+      :links: AV/VisFormalLang/CFG/partialDerivationCON.css
+      :scripts: AV/VisFormalLang/CFG/partialDerivationCON.js
+      :align: justify
+
+   |      
 
 **Membership:** Given CFG :math:`G` and string :math:`w \in \Sigma^*`,
 is :math:`w \in L(G)`?
@@ -204,13 +206,9 @@ is :math:`w \in L(G)`?
 If we can find a derivation of :math:`w`, then we would know that
 :math:`w` is in :math:`L(G)`.
 
-| **Motivation:**
-|    :math:`G` is the grammar for Java.
-|    :math:`w` is your Java program.
-|    Is :math:`w` syntactically correct?
-
-Why would anybody want to do this? :math:`G =` Java,
-:math:`w =` Java program.
+Why would anybody want to do this?
+Consider the case where :math:`G` is a grammar for Java,
+and :math:`w` is a Java program.
 Is :math:`w` a syntactically correct program?
 This is (part of) what a compiler does.
 You write a program, you compile it, and the compiler finds all your
@@ -231,8 +229,9 @@ We won't talk much about that aspect of compilers in this class.)
 
 **Exhaustive Search Algorithm**
 
-If you were to run this in JFLAP, it takes a LONG time, but eventually
-accepts... The problem is that this approach is rather inefficient
+If you were to run this in OpenFLAP, it takes a LONG time, but
+eventually accepts.
+The problem is that this approach is rather inefficient
 since it is using an exhaustive search for all ways of expanding from
 the start symbol.
 
@@ -266,18 +265,14 @@ the start symbol.
 Question: What happens if :math:`w` is not in :math:`L(G)`?
 When do we stop the loop in the algorithm and know for sure that
 :math:`w` is not going to be derived?
-:math:`S \Rightarrow SS ... \Rightarrow SSSSSSSSSS ... \Rightarrow S`
-
-We cannot determine that :math:`baaba` is not in :math:`L(G)`.
-
-.. note::
-
-   What happens if you run this in JFLAP?
+:math:`S \Rightarrow SS \Rightarrow ... \Rightarrow SSSSSSSSSS \Rightarrow ...`
+This process cannot determine that :math:`baaba` is **not** in :math:`L(G)`.
 
 We want to consider special forms of context free grammars such that
 we can determine when strings are or are not in the language.
-Easy to write a context-free grammar and then convert it into
-a special form, it will be easier to test membership.
+It turns out to be easy take a context-free grammar and
+convert it into a special form that makes it easier to test
+membership.
 
 .. topic:: Theorem
 

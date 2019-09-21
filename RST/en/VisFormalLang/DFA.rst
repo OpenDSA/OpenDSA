@@ -151,10 +151,11 @@ Algorithm for DFA:
 | if :math:`q \in F` then accept
 
 
-.. inlineav:: OddNumbersTraceCON dgm
-   :links: AV/VisFormalLang/FA/OddNumbersTraceCON.css
-   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/OddNumbersTraceCON.js
-   :align: center
+.. inlineav:: MachineTraceCON ss
+   :long_name: Machine Trace Slideshow
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/MachineTraceCON.css 
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/MachineTraceCON.js
+   :output: show
 
    DFA Example: Even numbers trace
 
