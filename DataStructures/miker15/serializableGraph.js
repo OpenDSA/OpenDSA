@@ -112,7 +112,7 @@ function serializeGraphToXML (graph) {
 		var f = next.hasClass("final");
 		var label = next.stateLabel();
 		text = text + "\t\t" + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">' + "\n";
-		text = text + "\t\t\t" '<x>' + left + '</x>' + "\n";
+		text = text + "\t\t\t" + '<x>' + left + '</x>' + "\n";
 		text = text + "\t\t\t" + '<y>' + top + '</y>' + "\n";
 		if (label) {
 			text = text + '<label>' + label + '</label>';
@@ -123,7 +123,7 @@ function serializeGraphToXML (graph) {
 		if (f) {
 			text = text + "\t\t\t" + '<final/>' + "\n";
 		}
-		text = text + "\t\t" '</state>' + "\n";
+		text = text + "\t\t" + '</state>' + "\n";
 	}
 	var edges = graph.edges();
 	// now iterate over the edges and do the same with them.

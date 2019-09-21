@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+    <title>Deforms Basic Problem</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.1/math.min.js"></script>
+    <script src="./jiggzson-nerdamer-432dd54/nerdamer.core.js"></script>
+    <script src="./jiggzson-nerdamer-432dd54/Algebra.js"></script>
+    <script src="./jiggzson-nerdamer-432dd54/Calculus.js"></script>
+    <script src="./jiggzson-nerdamer-432dd54/Solve.js"></script>
+    <script src="./jiggzson-nerdamer-432dd54/Extra.js"></script>
+</head>
+
+<body>
+    <script>
+        var eq = nerdamer('a*x^2+b*x=y').evaluate({y: 'x-7'});
+        console.log(eq.toString());
+        var solutions = eq.solveFor('x').toString();
+        console.log(solutions);
+
+        var soln = nerdamer.solveEquations(
+                    [
+                        "alpha_s=0.5",
+                        "alpha_a=0.3",
+                        "T_0=25",
+                        "T=29",
+                        "L_s=8",
+                        "L_a=5",
+                        "delta_s=(-T_0+T)*L_s*alpha_s",
+                        "delta_a=(-T_0+T)*L_a*alpha_a",
+                        "delta=delta_a+delta_s"
+                    ]
+                )
+        document.write(soln.toString())
+        /*try {
+            var soln = nerdamer.solveFor(
+                    [
+                        "delta_s=(-T_0+T)*L_s*alpha_s",
+                        "delta_a=(-T_0+T)*L_a*alpha_a",
+                        "delta=delta_a+delta_s"
+                    ]
+                )
+            document.write("<p>"+soln.toString()+"</p>")
+        } catch (SolveError) {
+            document.write("<p>The System does not have a distinct solution</p>")
+        } catch (Error) {
+            //Matrix is not square
+        }
+        */
+    </script>
+</body>

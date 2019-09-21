@@ -51,7 +51,7 @@ The following visualization presents Proof 1 for this.
 .. inlineav:: Proof1NonRegularCON ss
    :long_name: Proof 1 Non-Regular Grammar Slideshow
    :links: AV/VisFormalLang/Proof1NonRegularCON.css
-   :scripts: AV/VisFormalLang/Proof1NonRegularCON.js
+   :scripts: AV/WuChen/Proof1NonRegularCON.js
    :output: show
 
 
@@ -117,7 +117,7 @@ Pumping Lemma
    :scripts: AV/VisFormalLang/PumpingLemmaCON.js
    :output: show
 
-**How To Use the Pumping Lemma to prove :math:`L` is not regular:**
+**How To Use the Pumping Lemma to prove L is not regular:**
 
    | Proof by Contradiction.
    | Assume :math:`L` is regular.
@@ -146,7 +146,7 @@ Its just a tool in the toolbox.
 
    **Theorem:** :math:`L` is not regular.
 
-   **Proof:**
+   **Proof:** (proof by contradiction)
 
       | Assume :math:`L` is regular, therefore the pumping lemma holds. 
       | Choose :math:`w = a^mb^m`
@@ -197,7 +197,7 @@ The moves in the game are:
    :math:`L = \{ww^R : w \in \Sigma^*\}`.
 
    **Theorem:** :math:`L` is not regular.
-   
+
    **Proof:**
 
       | For any value :math:`m`, we pick the string
@@ -217,7 +217,7 @@ The moves in the game are:
 
    :math:`L = \{a^mb^n \mid n+m` is odd :math:`\}`
 
-   | Prove :math:`L = \{a^mb^n \mid n+m` is odd :math:`\}` is not regular.
+   |   Prove :math:`L = \{a^mb^n \mid n+m` is odd :math:`\}` is not regular.
    |   If the opponent picks :math:`m = 1`, then we can pick
        :math:`w = abb`.
    |   Whatever the adversary picks for 
@@ -236,7 +236,7 @@ The moves in the game are:
 
    **Theorem:** :math:`L` is not regular.
    
-   **Proof:**
+   **Proof:** 
 
       | Say that the opponent picks :math:`m = 3`.
       | We can choose this string that is in the language:
@@ -249,6 +249,9 @@ The moves in the game are:
         of :math:`m`, such that the opponent cannot also pick workable
         values for :math:`x, y, z`.
 
+
+**How To turn the Pumping Lemma instruction into a prove:**
+
 | Consider the Pumping Lemma definition again:
 |   Let :math:`L` be an infinite regular language. 
     There exists a constant :math:`m > 0` such that any
@@ -257,12 +260,6 @@ The moves in the game are:
 |     :math:`|xy| \le m`
 |     :math:`|y| \ge 1`
 |     :math:`xy^iz \in L` for all :math:`i\ge 0`
-
-| 1. The opponent picks :math:`m`.
-| 2. We pick string :math:`w`.
-| 3. The opponent chooses the decomposition :math:`xyz`.
-| 4. We try to pick :math:`i`.
-
 
 | **WE** seek to prove the language non-regular.
 | **The adversary** seeks to stop us.
@@ -284,7 +281,7 @@ The moves in the game are:
 
    **Theorem:** :math:`L` is not regular.
 
-   **Proof:**
+   **Proof:** (proof by contradiction)
 
       | Assume :math:`L` is regular, therefore the pumping lemma holds. 
       | Choose :math:`w = a^mcb^m`
@@ -317,7 +314,7 @@ The moves in the game are:
 
    **Theorem:** :math:`L` is not regular.
 
-   **Proof:**
+   **Proof:** (proof by contradiction)
 
       | Assume :math:`L` is regular, therefore the pumping lemma holds. 
       | Choose :math:`w = a^mb^{m+s}c^s` where :math:`m` is the
@@ -349,7 +346,7 @@ The moves in the game are:
 
    **Theorem:** :math:`L` is not regular.
 
-   **Proof:**
+   **Proof:** (proof by contradiction)
 
       | Assume :math:`L` is regular, therefore the pumping lemma holds. 
       | Choose :math:`w = a^{m+1}b^{m}` where :math:`m` is the
@@ -382,7 +379,7 @@ The moves in the game are:
 
    **Theorem:** :math:`L` is not regular.
 
-   **Proof:**
+   **Proof:** (proof by contradiction)
 
       | Assume :math:`L` is regular, therefore the pumping lemma holds. 
       | Choose :math:`w = a^3b^mc^{m-3}` where :math:`m` is the
