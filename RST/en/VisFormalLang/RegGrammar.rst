@@ -215,6 +215,12 @@ Construct the Regular Grammar for the NFA
    :figwidth: 90%
    :alt: stnfatorg
 
+.. inlineav:: RlRegGramDFACON dgm
+   :links:   AV/VisFormalLang/Regular/RlRegGramDFACON.css
+   :scripts: AV/VisFormalLang/Regular/RlRegGramDFACON.js
+   :align: center
+   :output: show
+
 |  :math:`G = (\{S,B\},\{a,b\},S,P)`,
 |    :math:`P =`
 |      :math:`Q0 \rightarrow a Q1`
