@@ -15,5 +15,5 @@ Here is an example that uses the Frames
 
 .. inlineav:: NFA2DFAFrames ff
    :links: AV/PIExample/NFA2DFAFrames.css
-   :scripts: AV/PIExample/NFA2DFAFrames.js DataStructures/PIFrames.js
+   :scripts: DataStructures/FLA/FA.js AV/PIExample/NFA2DFAFrames.js DataStructures/PIFrames.js
    :output: show
