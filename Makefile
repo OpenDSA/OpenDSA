@@ -205,6 +205,12 @@ CS2: min
 CS5040: min
 	python $(CONFIG_SCRIPT) config/CS5040.json --no-lms
 
+CS5040notes: min
+	python $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
+
+CS5040slides: min
+	python $(CONFIG_SCRIPT) -s config/CS5040slides.json --no-lms
+
 Codio: min
 	python $(CONFIG_SCRIPT) config/Codio.json --no-lms
 

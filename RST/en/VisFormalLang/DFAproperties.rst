@@ -20,7 +20,7 @@ Consider the property Replace_one_a_with_b or R1awb for short.
 If :math:`L` is regular, prove that R1awb(:math:`L`) is regular. 
 
 The property R1awb applied to a language :math:`L` replaces one
-:math:`a` in each string with a :math:`b`.
+:math:`a` in each string with one :math:`b`.
 If a string does not have an :math:`a`, then the string is not in 
 R1awb(:math:`L`). 
 

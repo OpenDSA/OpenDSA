@@ -46,12 +46,12 @@ So, what about a language that was mentioned earlier, with no clear resolution?
 know this?]
 
 **Prove** that :math:`L_2 = \{a^nb^n | n > 0 \}` is not regular.
-The follosing visualization presents Proof 1 for this.
+The following visualization presents Proof 1 for this.
 
 .. inlineav:: Proof1NonRegularCON ss
    :long_name: Proof 1 Non-Regular Grammar Slideshow
-   :links: AV/VisFormalLang/Proof1NonRegularCON.css
-   :scripts: AV/VisFormalLang/Proof1NonRegularCON.js
+   :links: AV/VisFormalLang/NonReg/Proof1NonRegularCON.css
+   :scripts: AV/VisFormalLang/NonReg/Proof1NonRegularCON.js
    :output: show
 
 
@@ -113,8 +113,8 @@ Pumping Lemma
 
 .. inlineav:: PumpingLemmaCON ss
    :long_name: Pumping Lemma Slideshow
-   :links: AV/VisFormalLang/PumpingLemmaCON.css
-   :scripts: AV/VisFormalLang/PumpingLemmaCON.js
+   :links: AV/VisFormalLang/NonReg/PumpingLemmaCON.css
+   :scripts: AV/VisFormalLang/NonReg/PumpingLemmaCON.js
    :output: show
 
 **How To Use the Pumping Lemma to prove L is not regular:**
@@ -217,15 +217,19 @@ The moves in the game are:
 
    :math:`L = \{a^mb^n \mid n+m` is odd :math:`\}`
 
-   | Prove :math:`L = \{a^mb^n \mid n+m` is odd :math:`\}` is not regular.
+   | Prove :math:`L` is not regular.
    |   If the opponent picks :math:`m = 1`, then we can pick
        :math:`w = abb`.
    |   Whatever the adversary picks for 
        :math:`xyz`, we end up with :math:`y` such that we can pump
        strings not in the language.
-   |   SO... does this mean that :math:`L` is non-regular?
-   |   NO!! The adversary will not pick a
-       bad choice for :math:`m` if they don't have to!
+       
+   | **Warning:**
+   |    When the opponent picked :math:`m = 1`, they could not
+        reach the conclusion that :math:`L` is non-regular.
+        Does this fact alone mean that :math:`L` is regular?
+   |    NO!! The adversary will not pick a
+        bad choice for :math:`m` if they don't have to!
 
 .. topic:: Example
 
