@@ -675,16 +675,9 @@ var exerciseLocation;
   // Note that there are some browser-specific differences in how this is handled.
   var saveXML = function () {
 
-    removeModeClasses();
-    var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(g));
-
-    var Prompt = new FileSaver();
-    Prompt.render();
-
-    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download= ' + Prompt. + '.jff>Download FA</a>');
-    $('#download a')[0].click();
-    jsav.umsg("Saved");
-      
+    removeModeClasses(); 
+    var saver = new FileSaver(g);
+    saver.render();
   };
 
   // Function to parse an XML file and initialize a graph from it.

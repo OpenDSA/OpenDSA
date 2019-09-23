@@ -500,31 +500,40 @@ function MealyEdgePrompt(func, nostr) {
 
 //Michael Richter 9.19.2019
 // Custom prompt box for Saving Files in the Finite Automaton Editor.
-function FileSaver() {
-
+function FileSaver(graph) {
+    this.fileName = "";
     // Render function is used to initialize the prompt box in the view.
     this.render = function() {
         renderBox();
         // Add content to the prompt box, with references to the functions to run within the buttons.
         document.getElementById('dialogueboxhead').innerHTML = "Save File: ";
         document.getElementById('dialogueboxbody').innerHTML = '';
-        document.getElementById('dialogueboxbody').innerHTML += '<br>File Name: <input id="label">';
+        document.getElementById('dialogueboxbody').innerHTML += '<br>File Name: <input id="saveFAName" >';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="ok()">OK</button> <button onclick="terminate()">Cancel</button>';
-    
+        
         // Place the cursor in the state label text field by default (since this is the only text field in the prompt box).
-        document.getElementById('label').focus();
-
-        fileName = document.getElementById('label').value;
-        return fileName;
+        $('#saveFAName').keypress(function(e) {
+            if (e.which == 13) {
+            ok();
+            }
+          });
+        
     }
 
     // Called upon clicking "OK".
     ok = function() {
         // Variable for the name of the file
-        fileName = document.getElementById('label').value;
-
         //exit out of the prompt box.
+        this.fileName = document.getElementById('saveFAName').value;
         terminate();
-        return fileName;
+        var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(graph));
+        $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="' + this.fileName + '.jff">Download FA</a>');
+        $('#download a')[0].click();
+        graph.jsav.umsg("Saved");
+    }
+    enter = function(event){
+        var letter = document.getElementById("saveFAName");
+        if (letter.value.charCodeAt(letter.lenght -1) === 13)
+            ok();
     }
 }

@@ -1,7 +1,3 @@
-document.write('<script src="../../../AV/Development/formal_language/fa/Automaton.js"></script>');
-document.write('<script src="../../../AV/Development/formal_language/fa/FA.js"></script>');
-
-
 $(document).ready(function() {
 "use strict";
 var av_name = "NFA2DFAFrames";
