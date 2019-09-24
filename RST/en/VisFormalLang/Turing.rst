@@ -130,11 +130,13 @@ The followin fiagram shows the machine states and transitions.
 
 .. topic:: Example
 
-   :math:`M = (Q, \Sigma, \delta, s)` where
+   :math:`M = (Q, \Sigma, \Gamma, s, q_0, F, \delta)` where
 
-   * :math:`Q = \{q_0\}`,
-   * :math:`\Sigma = \{a, \#\}`,
+   * :math:`Q = \{q_0, q_1, q_2, q_3\}`,
+   * :math:`\Sigma = \{a, b, c\}`,
+   * :math:`\Gamma = \Sigma \cup \{\#\}`,
    * :math:`s = q_0`,
+   * :math:`F = {q_2}`,
    * :math:`\delta =`
 
      .. math::
@@ -143,8 +145,15 @@ The followin fiagram shows the machine states and transitions.
         \hline
         q&\sigma&\delta(q, \sigma)\\
         \hline
-        q_0&a&(q_0, L)\\
-        q_0&\#&(h, \#)\\
+        q_0&a&(q_0, a, R)\\
+        q_0&b&(q_1, b, R)\\
+        q_0&a&(q_3, c, R)\\
+        q_0&a&(q_2, \#, S)\\
+        q_1&a&(q_1, b, R)\\
+        q_1&c&(q_3, c, R)\\
+        q_1&a&(q_2, \#, S)\\
+        q_3&a&(q_3, c, R)\\
+        q_3&a&(q_2, \#, S)\\
         \end{array}
 
    This machine will scan left until it encounters :math:`\#`, and
