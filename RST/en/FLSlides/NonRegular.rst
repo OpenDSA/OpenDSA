@@ -367,9 +367,9 @@ Identifying Non-regular Languages
    |   We showed earlier that :math:`\{a^nb^n | n > 0 \}` is not
        regular. Contradiction.
 
-
+.. 
 .. slide:: Example
-
+.. 
    | Prove that :math:`L_1 = \{a^nb^na^n\ |\ n > 0\}` is not regular.
    |   Assume :math:`L_1` is regular.
    |   The goal is to try to construct :math:`\{a^nb^n | n > 0\}` which

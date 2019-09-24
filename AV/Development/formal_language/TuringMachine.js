@@ -202,6 +202,7 @@ tm.serializeToXML = function() {
 };
 
 tm.loadFromFile = function(url){
+	var text;
 	if(ODSA.UTILS.scoringServerEnabled()){//we need to change the url from relative path to absolute path
 		var oldUrlParts = url.split('/AV');
 		url = '/OpenDSA/AV' + oldUrlParts[1];
@@ -210,9 +211,11 @@ tm.loadFromFile = function(url){
     url: url,
     async: false, // we need it now, so not asynchronous request
     success: function(data) {
-      tm.initFromXML(data);
+      text = data;
     }
   });
+  if(text)
+  	this.initFromXML(text);
 }
 
 // load a TM from an XML file
