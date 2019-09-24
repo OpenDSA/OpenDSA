@@ -201,18 +201,18 @@ set of values in an array.
 
 .. _HeapBuild:
 
-.. inlineav:: heapsSlides ss
-   :long_name: Heaps Slideshow
-   :links: 
-   :scripts: DataStructures/binaryheap.js AV/DanaG/heapsSlides.js
-   :output: show
-
 .. odsafig:: Images/HeapBld.png
    :width: 500
    :align: center
    :capalign: justify
    :figwidth: 90%
    :alt: Two series of exchanges to build a heap
+
+.. inlineav:: heapsSlides ss
+   :long_name: Heaps Slideshow
+   :links: 
+   :scripts: DataStructures/binaryheap.js AV/DanaG/heapsSlides.js
+   :output: show
 
    Two series of exchanges to build a max heap.
    (a) This heap is built by a series of nine exchanges in the order
