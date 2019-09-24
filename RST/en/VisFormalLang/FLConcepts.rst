@@ -25,11 +25,15 @@ major concepts for the semester:
 Languages
 ---------
 
-* The alphabet set, :math:`\Sigma`: A set of symbols.
-* string: Finite sequence of symbols (from some alphabet)
+Now we give a formal definition of our most important concept:
+Language.
+
+* First we need the alphabet set, :math:`\Sigma`, which is a set of symbols.
+* Given some :math:`\Sigma`, a string is a finite sequence of symbols from :math:`Sigma`.
 * language: A set of strings defined over :math:`\Sigma`
 
-:term:`Languages <language>` are sets, a subset of the powerset of :math:`\Sigma`.
+:term:`Languages <language>` are sets, a subset of the powerset of
+:math:`\Sigma`.
 ("Powerset of :math:`\Sigma`" just means all strings made from letters of
 the alphabet :math:`\Sigma`.
 And so a language is just some subset of these strings.)
@@ -59,9 +63,15 @@ Examples
 
 Notation
 ~~~~~~~~
+Useful notations: We usually use these symbols in our course.
 
-* Symbols in alphabet: :math:`a, b, c, d, 0, 1, ...`
-* String names: :math:`u, v, w, x, y, z, ...`
+* For symbols in some alphabet :math:`\Sigma`,
+  we typically use either digits or letters near the start of the
+  common English alphabet: :math:`a, b, c, d, 0, 1`.
+* For string names (that is, a variable name that is meant to refer to
+  a string), we usually use letters near the end of the common English
+  alphabet: :math:`u, v, w, x, y, z`.
+
 
 Definition of concatenation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
