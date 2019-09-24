@@ -201,6 +201,12 @@ set of values in an array.
 
 .. _HeapBuild:
 
+.. inlineav:: heapsSlides ss
+   :long_name: Heaps Slideshow
+   :links: 
+   :scripts: DataStructures/binaryheap.js AV/DanaG/heapsSlides.js
+   :output: show
+
 .. odsafig:: Images/HeapBld.png
    :width: 500
    :align: center
