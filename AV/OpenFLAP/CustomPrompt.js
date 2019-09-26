@@ -96,12 +96,12 @@ function TraversePrompt(func) {
 
 // Custom prompt box for editing nodes in the Finite Automaton Editor.
 // Supports editing of initial states, final states, and state labels.
-function FANodePrompt(func) {
+function FANodePrompt(func, wasInitial, wasFinal, lab) {
     var nodeFunction = func;
     // Prompt box needs a reference to the function to run upon clicking "OK".
 
     // Render function is used to initialize the prompt box in the view.
-    this.render = function(value, is, fs, lab) {
+    this.render = function(value) {
         renderBox();
         // Add content to the prompt box, with references to the functions to run within the buttons.
         document.getElementById('dialogueboxhead').innerHTML = "Edit Node <b>" + value + ":</b>";
@@ -110,6 +110,10 @@ function FANodePrompt(func) {
         document.getElementById('dialogueboxbody').innerHTML += '<br>Final State:<input type="checkbox" id="final_state">';
         document.getElementById('dialogueboxbody').innerHTML += '<br>State Label: <input id="label">';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="ok()">OK</button> <button onclick="terminate()">Cancel</button>';
+        if(wasFinal)
+            document.getElementById('final_state').checked = true;
+        if(wasInitial)
+            document.getElementById('initial_state').checked = true;
         // If the node being edited has a state label, display this text in the "State Label" text field.
         if (lab) {
             document.getElementById('label').value = lab.split(">")[1].split("<")[0];
@@ -128,12 +132,13 @@ function FANodePrompt(func) {
     // Update node on the graph. Called upon clicking "OK".
     ok = function() {
         // Check every field in the prompt box and update the node accordingly.
-        var node_label = document.getElementById('label').value;
-        var node_label = '<p class = "label_css"> ' + node_label + '</p>';
+        var node_label = document.getElementById('label').value.trim();
+        if(node_label !== "")
+            var node_label = '<p class = "label_css"> ' + node_label + '</p>';
         var initial_state = document.getElementById('initial_state').checked;
         var final_state = document.getElementById('final_state').checked;
         // Call the node function on these values, then exit out of the prompt box.
-        nodeFunction(initial_state, final_state, node_label);
+        nodeFunction(wasInitial, initial_state, wasFinal, final_state, node_label);
         terminate();
     }
 

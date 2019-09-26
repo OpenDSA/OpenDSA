@@ -211,8 +211,8 @@ var exerciseLocation;
       g.saveFAState();
       g.selected = this;
       g.selected.highlight();
-      var Prompt = new FANodePrompt(updateNode);
-      Prompt.render(g.selected.value(), g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
+      var Prompt = new FANodePrompt(updateNode, g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
+      Prompt.render(g.selected.value());
       g.selected.unhighlight();
     }
     else if ($('.jsavgraph').hasClass('deleteNodes')) {
@@ -242,10 +242,10 @@ var exerciseLocation;
   };
 
   // Called by the edit node custom prompt box to save the graph and update the node upon clicking "OK".
-  function updateNode(initial_state, final_state, node_label) {
+  function updateNode(wasInitialState, initial_state, wasFinalState, final_state, node_label) {
     g.saveFAState();
     //executeEditFANode(g, g.selected, initial_state, final_state, node_label);
-    executeEditNode(g, g.selected, initial_state, final_state, node_label);
+    executeEditNode(g, g.selected, wasInitialState, initial_state, wasFinalState, final_state, node_label);
   };
 
   // Called by the add edge custom prompt box to save the graph and create the edge upon clicking "Done".

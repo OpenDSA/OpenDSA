@@ -105,23 +105,25 @@
 		// Updating layout is necessary so that the new label is positioned appropriately on the edge.
 	};
 	window.executeEditEdge = executeEditEdge;
-	var executeEditNode = function(graph, node, initialState, finalState, nodeLabel){
-		if (initialState) {
+	var executeEditNode = function(graph, node, wasInitialState, initial_state, wasFinalState, final_state, node_label){
+		if (initial_state) {
 			// If this node is the initial state, no other node may be the initial state.
 			for (var i = 0; i < graph.nodeCount(); i++) {
 				graph.removeInitial(graph.nodes()[i]);
 			}
 			graph.makeInitial(node);
 		}
-		if (finalState){
-			// If this node is the initial state, no other node may be the initial state.
-			for (var i = 0; i < graph.nodeCount(); i++) {
-				graph.removeFinal(graph.nodes()[i]);
-			}
+		else if(wasInitialState){//the state was initial state and now it is not
+			graph.removeInitial(node);
+		}
+		if (final_state){
 			graph.makeFinal(node);
 		}
+		else if(wasFinalState){//the state was final state and now it is not
+			graph.removeFinal(node);
+		}
 		// Add the state label (if applicable) and update its position relative to that of the node.
-		node.stateLabel(nodeLabel);
+		node.stateLabel(node_label);
 		node.stateLabelPositionUpdate();
 		// Note that since this is a Mealy Machine, there is no such thing as a "final state".
 	}
