@@ -61,18 +61,30 @@
     "required": true
   }, 
   "chapters": {
-    "Graphs": {
-      "Graph/GraphIntro": {
-        "GspaceCalcSumm": {
+    "Assignments": {
+      "Samnyeong/Sheet1":{
+        "sheet1exercise1":{
+          "points": 5.0
+        },
+        "sheet1exercise2":{
+          "points": 5.0
+        },
+        "sheet1exercise3":{
+          "points": 5.0
+        },
+        "sheet1exercise4":{
+          "points": 5.0
+        },
+        "sheet1exercise5":{
           "points": 2.0
-        }, 
-        "GraphIntroSumm": {
-          "points": 3.0, 
-          "threshold": 10
+        },
+        "sheet1exercise6":{
+          "points": 2.0
+        },
+        "sheet1exercise7":{
+          "points": 2.0
         }
-      }, 
-      "Graph/GraphImpl": {},
-      "Samnyeong/GraphTraversalSam": {}
+      }
     },
     "Appendix": {
       "Glossary": {},
