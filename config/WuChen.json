@@ -64,9 +64,7 @@
   },
   "chapters": {
       "Stuff": {
-          "WuChen/NonRegularTest": {},
-          "WuChen/DFApropertiesTest": {},
-          "WuChen/RegGrammarTest": {}
+          "WuChen/NonRegularTest": {}
       },
       "Appendix": {
           "Glossary": {},
