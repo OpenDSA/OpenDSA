@@ -66,9 +66,9 @@
       "Intro": {}
     },
     "Finite Acceptors": {
-      "TJeffrey/DFA": {},
       "VisFormalLang/NFA": {},
-      "VisFormalLang/Minimization": {}
+      "VisFormalLang/Minimization": {},
+      "TJeffrey/Turing": {}
     },
     "Appendix": {
       "Glossary": {},
