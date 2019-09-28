@@ -207,13 +207,6 @@ construct regular grammar :math:`G` such that :math:`L(G)=L(M)`
 
 Construct the Regular Grammar for the NFA
 
-.. odsafig:: Images/stnfatorg.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: stnfatorg
-
 .. inlineav:: RlRegGramDFACON dgm
    :links:   AV/VisFormalLang/Regular/RlRegGramDFACON.css
    :scripts: AV/VisFormalLang/Regular/RlRegGramDFACON.js
