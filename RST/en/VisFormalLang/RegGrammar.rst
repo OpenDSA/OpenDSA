@@ -170,13 +170,6 @@ grammar :math:`G` such that :math:`L = L(G)`.
    |   This is a right linear grammar representing the language
    |   :math:`L = \{` strings with an even number of a's :math:`\}, \Sigma = \{a,b\}`
 
-   .. odsafig:: Images/strgtonfa.png
-      :width: 200
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: strgtonfa
-
    .. inlineav:: RILinearGramNFACON dgm
       :links:   AV/VisFormalLang/Regular/RILinearGramNFACON.css
       :scripts: AV/VisFormalLang/Regular/RILinearGramNFACON.js
