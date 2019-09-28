@@ -177,6 +177,12 @@ grammar :math:`G` such that :math:`L = L(G)`.
       :figwidth: 90%
       :alt: strgtonfa
 
+   .. inlineav:: RILinearGramNFACON dgm
+      :links:   AV/VisFormalLang/Regular/RILinearGramNFACON.css
+      :scripts: AV/VisFormalLang/Regular/RILinearGramNFACON.js
+      :align: center
+      :output: show
+
    What about a rule like :math:`S \rightarrow abB`?
    Make two states (S to intermediate state on a, then intermediate
    state to B on b).
