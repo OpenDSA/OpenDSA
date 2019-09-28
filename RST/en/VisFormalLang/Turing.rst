@@ -113,18 +113,18 @@ enter state :math:`p`, replace :math:`a` with :math:`b`, and move the head
         q&\gamma&\delta(q, \gamma)\\
         \hline
         q_0&a&(q_0, \#, R)\\
-        q_0&\#&(q_2, \#, S)\\
+        q_0&\#&(q_1, \#, S)\\
         \end{array}
 
    This machine will scan right, changing any :math:`a` that it sees
    to a :math:`\#`.
    When it first hits a :math:`\#`, it will halt.
 
-The followin fiagram shows the machine states and transitions.
+The following diagram shows the machine states and transitions.
 
-.. inlineav:: TuringMachinesExample1CON dgm
-   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TuringMachinesExample1CON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TuringMachinesExample1CON.js
+.. inlineav:: RClearCON dgm
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/RClearCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
    :align: center
 
 
@@ -159,6 +159,10 @@ The followin fiagram shows the machine states and transitions.
    This machine will scan left until it encounters :math:`\#`, and
    then halt.
 
+.. inlineav:: TuringMachinesExample2CON dgm
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TuringMachinesExample2CON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TuringMachinesExample2CON.js
+   :align: center
 
 Interpreting Turing Machines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -512,4 +516,3 @@ Machines.
   state for one of the non-deteriministic choices.
   So we see that while non-determinism can save a lot of time, it does
   not change what can (eventually) be done.
-

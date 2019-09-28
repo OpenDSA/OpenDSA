@@ -1,3 +1,4 @@
+// Written by Jeffrey Peng, Fall 2019
 $(document).ready(function() {
     "use strict";
 
