@@ -3,31 +3,33 @@
       "en": {
         "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
         "q1": {
-          "type": "multiple",
+          "type": "select",
           "src": "../../../AV/Development/formal_language/FAEditor.html",
           "question":"Which of the following are  alphabet sets?",
-          "answer": "{a, b, c}",
+          "answer": ["{a, b, c}", "{0, 1}", "{?, a, x}"],
           "choices": ["{a, b, c}", "{0, 1}","A" ,"{?, a, x}"]
         },
         "q2": {
-          "type": "multiple",
+          "type": "select",
           "src": "../../../AV/Development/formal_language/FAEditor.html",
           "question":"Suppose we have Σ = {a, b}, which of the following are valid strings?",
-          "answer": "babababbaba",
+          "answer": ["babababbaba", "a"],
           "choices": ["babababbaba", "a","{aaa, bbb}", "bacbabcba" ]
         },
         "q3": {
-          "type": "multiple",
+          "type": "select",
           "question":"What states can be combined?",
-          "answer": "Σ={0,1,2,3,4,5,6,7,8, 9} L={set of all even numbers}",
+          "answer": ["Σ={0,1,2,3,4,5,6,7,8, 9} L={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,...}", 
+            "Σ={a,b,c} L={ab,ac,cabb}",
+            "Σ={0,1,2,3,4,5,6,7,8, 9} L={set of all even numbers}" ],
           "choices": ["Σ={0,1,2,3,4,5,6,7,8, 9} L={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,...}", 
             "Σ={a,b,c} L={ab,ac,cabb}",
             "Σ={0,1,2,3,4,5,6,7,8, 9} L={set of all even numbers}" ]
         },
         "q4":{
-          "type": "multiple",
-          "question":"What states can be combined?",
-          "answer": "DD"
+          "type": "fill in blank",
+          "question":"List the power set of {a, b}",
+          "answer": ["a", "b", "a, b"]
         },
         "q5":{
           "type": "multiple",
@@ -42,67 +44,94 @@
           "choices": ["The character ‘w’", "Some string given the name ‘w’"]
         },
         "q6":{
-          "type": "multiple",
+          "type": "fill in blank",
           "question":"Let w=abbc, v=ab, What is |w| + |v|",
-          "answer":"6",
-          "choices": ["6", "7"]
+          "answer":"6"
         },
         "q7":{
-          "type": "multiple",
+          "type": "fill in blank",
           "question": "Let w = abc, v = 012, What is w∘v?",
-          "answer":"abc012",
-          "choices": ["6", "abc012"]
-
+          "answer":"abc012"
         },
         "q8":{
-          "type": "multiple",
-          "question":"What states can be combined?",
-          "answer":""
+          "type": "select",
+          "question":"let v = ab, what is v3 ?",
+          "answer": ["vvv", "v∘v∘v", "ababab"],
+          "choices": ["vvv", "v∘v∘v", "ababab"]
+        },
+        "q8_1":{
+          "type": "fill in blank",
+          "question":"Is this a language? {λ}",
+          "answer":"yes"
         },
         "q9":{
-          "type": "multiple",
-          "question":"What states can be combined?",
-          "answer":""
+          "type": "fill in blank",
+          "question":"What is λ∘acb∘λ?",
+          "answer":"acb"
         },
         "q10":{
-          "type": "multiple",
-          "question":"What states can be combined?",
-          "answer":""
+          "type": "fill in a blank",
+          "question":"Let w = abbc, what is wR?",
+          "answer":"cbba"
         },
         "q11":{
-          "type": "multiple",
-          "question":"What states can be combined?",
-          "answer":""
+          "type": "fill in a blank",
+          "question":"let w=abbc, and v=ab. What is |vvRw|",
+          "answer":"8"
         },
         "q12":{
-          "type": "multiple",
-          "question":"What states can be combined?",
-          "answer":""
+          "type": "select",
+          "question":"Which of the following are strings in Σ∗?",
+          "answer":["λ", "a", "b", "aa", "abbabb"],
+          "choices": ["λ", "a", "b", "aa", "abbabb", "aaabababcc"]
+        },
+        "q12_1":{
+          "type": "select",
+          "question":"Which are examples of w* where w = abc?",
+          "answer":["Λ", "abc", "abcabc"],
+          "choices": ["Λ", "abc", "abcabc", "aabbcc"]
         },
         "q13":{
-          "type": "multiple",
-          "question":"What states can be combined?",
-          "answer":""
+          "type": "select",
+          "question":"Let  Σ = {a,b}, Which of the following are strings in Σ∗?",
+          "answer":  ["a", "b", "aa", "abbabb"],
+          "choices": ["λ", "a", "b", "aa", "abbabb", "aaabababcc"]
         },
         "q14":{
-          "type": "multiple",
-          "question":"What states can be combined?",
-          "answer":""
+          "type": "fill in blank",
+          "question":" Let Σ={a,b,c}, L1={ab,bc,aba}, L2={c,bc,bcc}, What is L1∪L2 ?",
+          "answer":"{ab,bc,aba,c,bcc}"
         },
         "q15":{
-          "type": "multiple",
-          "question":"What states can be combined?",
-          "answer":""
+          "type": "fill in blank",
+          "question":"Let Σ={a,b,c}, L1={ab,bc,aba}, L2={c,bc,bcc}, What is L1∩L2 ?",
+          "answer":" {bc}"
         },
         "q16":{
           "type": "multiple",
-          "question":"What states can be combined?",
+          "question":"What is ?",
           "answer":""
         },
         "q17":{
           "type": "multiple",
           "question":"What states can be combined?",
           "answer":""
+        },
+        "q18":{
+          "type": "multiple",
+          "question":"Let Σ={a,b}, L1={ab,aba}, What is L0?",
+          "answer":"{λ}",
+          "choices": ["{λ}", "{}<Empty set>", "λ"]
+        },
+        "q19":{
+          "type": "fill in blank",
+          "question":"Let Σ={a,b}, L1={ab,aba}, What is L2? ",
+          "answer":"{abab, ababa, abaab, abaaba}"
+        },
+        "q19_1":{
+          "type": "fill in blank",
+          "question":"Let Σ={a,b}, L1={ab,aba}, What is L3?",
+          "answer":"{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}"
         }
       }
     }
