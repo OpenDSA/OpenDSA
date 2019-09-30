@@ -14,23 +14,30 @@ Context-Free Languages
 
 Context-Free Languages
 ----------------------
+In the previous chapters, we see that some languages are regular languages,
+which means that we can define a DFA, NFA, Regular expression, or Regular
+grammar for them.
+
 Examples of regular languages:
 
 * keywords in a programming language
 * names of identifiers
 * integers
-* a finite list of miscillaneous symbols: = \  ;
+* a finite list of miscillaneous symbols: = \ ;
 
-Not Regular languages:
+Then we covered the Pumping Lemma which is a tool to
+prove that if a language is not regular.
+
+Examples for Not Regular languages:
 
 * expressions: :math:`((a + b) - c)`
-* block structures (:math:`\{\}` in Java/C++ and ``begin`` ... ``end`` in Pascal)
+* block structures (:math:`\{\}` in Java/C++ and ``begin`` ... ``end``
+  in Pascal)
 
 We know that not all languages are not regular, since we've proved
-some are not.
-
-Now we will look at a class of languages that is larger than the
-regular languages, and more powerful: Context-free languages.
+some are not. Now we will look at a class of languages that is
+larger than the regular languages, and more powerful:
+Context-free languages..
 
 **Definition:** A grammar :math:`G = (V, T, S, P)` is
 context-free if all productions are of the form
@@ -44,6 +51,11 @@ context-free if all productions are of the form
 :math:`\exists` context-free grammar (CFG) :math:`G` such that
 :math:`L = L(G)`.
 
+The above definition for Grammars is exactly the same as the one we
+keep using from the first chapter in this book.
+This means that all grammras we used (including the Regular Grammars)
+are Context Free Grammars.
+
 .. topic:: Example
 
    | :math:`G =(\{S\}, \{a, b\}, S, P)`
@@ -56,11 +68,11 @@ context-free if all productions are of the form
 
       We have seen this before! Its not regular!
 
-   **Definition:** A linear grammar has at most one variable on the
-   right hand side of any production.
-   Thus, right linear and left linear grammars are also linear grammars.
+**Definition:** A linear grammar has at most one variable on the
+right hand side of any production.
+Thus, right linear and left linear grammars are also linear grammars.
 
-   So, this is a linear grammar.
+So, this is a linear grammar.
 
 .. topic:: Example
 
