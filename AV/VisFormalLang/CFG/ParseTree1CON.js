@@ -11,6 +11,7 @@ var grammerArray = JSON.parse(grammar);
 grammerArray.length;
 grammerArray.push(["", arrow, ""]);
 av.ds.matrix(grammerArray, {style: "table", left: 10});
+av.umsg("Here is an example that shows how can we build a parse tree for the string $aacbb$ for the given grammar.")
 av.displayInit();
 var pt = new ParseTreeController(av, grammar, "aacbb", {top: 0, left: 400});
 pt.displayTree();

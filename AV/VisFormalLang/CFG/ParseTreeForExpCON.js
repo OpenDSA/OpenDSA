@@ -9,6 +9,7 @@ $(document).ready(function() {
     var lastRow = grammerArray.length;
     grammerArray.push(["", arrow, ""]);
     var grammerMatrix = av.ds.matrix(grammerArray, {style: "table", left: 10});
+    av.umsg("Here is an example that shows how can we build a parse tree for the string $a+b*a$ for the given grammar.")
     av.displayInit();
     var pt = new ParseTreeController(av, grammar, "a+b*a", {top: 0, left: 400});
     pt.displayTree();

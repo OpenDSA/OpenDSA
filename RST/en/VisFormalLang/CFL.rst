@@ -84,6 +84,10 @@ So, this is a linear grammar.
 
    | :math:`\Sigma = \{a, b\}, L(G) = \{w \in {\Sigma}^{*} | w=w^R\}`,
 
+**Definition:** String derivation is to start at the starting point of
+the grammar and do replacements until you can do no more replacements.
+A variable in the grammar can be replaced by the right hand side of its
+rule
 
 .. topic:: Example
 
@@ -106,8 +110,10 @@ So, this is a linear grammar.
    This grammar is **not** a linear grammar, as there is a choice of
    which variable to replace.
 
-   To write an algorithm to perform replacements, we need some order.
-   We will see this when we look at parsing algorithms.
+By looking at the previous example, some sentential forms have multiple
+variables, this raises a question, Which variable should be replaced?
+To write an algorithm to perform replacements, we need some order.
+We will see this when we look at parsing algorithms.
 
 **Definition:** Leftmost derivation: in each step of a derivation,
 replace the leftmost variable. (See derivation 1 above).
@@ -167,6 +173,9 @@ productions were applied.
 
        Answer: S -> c | aaSbb
        
+
+
+Let us see an example for how the previous parse tree was built.
 
 .. inlineav:: ParseTree1CON ss
    :links:   AV/VisFormalLang/CFG/ParseTree1CON.css
@@ -453,6 +462,8 @@ Ambiguity
    Then the only way to include a ":math:`+`"
    before the multiplication is if the addition is enclosed in
    parenthesis. Thus, there is only one meaning that is accepted.
+
+Let us see how the previous parse tree was built.
 
 .. inlineav:: ParseTreeForExpCON ss
    :links:   AV/VisFormalLang/CFG/ParseTreeForExpCON.css
