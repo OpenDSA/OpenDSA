@@ -67,7 +67,8 @@
     },
     "Example": {
       "PIExample/FrameExample": {},
-      "PIExample/NFAtoDFAExample":{}
+      "PIExample/NFAtoDFAExample":{},
+      "PIExample/RestingFillInSpace":{}
     }
   }
 }
