@@ -56,8 +56,7 @@ _default_ex_options = {
     },
     'ae': {
       'required': True,
-      'points': 1,
-      'threshold': 0.9
+      'points': 1
     }
 }
 
