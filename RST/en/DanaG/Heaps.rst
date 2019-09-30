@@ -245,6 +245,11 @@ This situation is illustrated by this figure:
    :scripts: AV/DanaG/Heaps2.js
    :align: justify
 
+.. inlineav:: linkNodes1CON ss
+   :links: AV/DanaG/linkNodes1CON.css
+   :scripts: AV/DanaG/linkNodes1CON.js
+   :output: show
+
 
    Final stage in the heap-building algorithm.
    Both subtrees of node :math:`R` are heaps.
