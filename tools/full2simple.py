@@ -79,6 +79,11 @@ def decide_defaults(conf_data, ex_types):
     'extr': {
       'points': {}
     }
+    'ae' : {
+      'points': {},
+      'threshold': {},
+      'required': {}
+    }
   }
 
   for modules in conf_data['chapters'].values():
@@ -129,7 +134,8 @@ def decide_defaults(conf_data, ex_types):
     'ff': {},
     'ka': {},
     'pe': {},
-    'extr': {}
+    'extr': {},
+    'ae': {}
   }
 
   for ex_type, freqs in option_freqs.iteritems():
