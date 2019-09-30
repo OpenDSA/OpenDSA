@@ -170,12 +170,11 @@ grammar :math:`G` such that :math:`L = L(G)`.
    |   This is a right linear grammar representing the language
    |   :math:`L = \{` strings with an even number of a's :math:`\}, \Sigma = \{a,b\}`
 
-   .. odsafig:: Images/strgtonfa.png
-      :width: 200
+   .. inlineav:: RILinearGramNFACON dgm
+      :links:   AV/VisFormalLang/Regular/RILinearGramNFACON.css
+      :scripts: AV/VisFormalLang/Regular/RILinearGramNFACON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: strgtonfa
+      :output: show
 
    What about a rule like :math:`S \rightarrow abB`?
    Make two states (S to intermediate state on a, then intermediate
@@ -207,13 +206,6 @@ construct regular grammar :math:`G` such that :math:`L(G)=L(M)`
 |    Each transition gets a production rule.
 
 Construct the Regular Grammar for the NFA
-
-.. odsafig:: Images/stnfatorg.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: stnfatorg
 
 .. inlineav:: RlRegGramDFACON dgm
    :links:   AV/VisFormalLang/Regular/RlRegGramDFACON.css

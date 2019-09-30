@@ -2,14 +2,14 @@
 	<type>turing</type>
 	<automaton>
 		<!--The list of states.-->
-		<state id="1" name="q1">
+		<state id="1" name="q0">
 			<x>57.0</x>
-			<y>56.0</y>
+			<y>35.0</y>
 			<initial/>
 		</state>
-		<state id="2" name="q2">
+		<state id="2" name="q1">
 			<x>252.0</x>
-			<y>62.0</y>
+			<y>35.0</y>
 			<final/>
 		</state>
 		<!--The list of transitions.-->
