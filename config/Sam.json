@@ -56,10 +56,15 @@
     "points": 1.0
   }, 
   "glob_pe_options": {
-    "threshold": 0.9, 
+    "threshold": 0.9,
     "points": 2.0, 
     "required": true
   }, 
+  "glob_ae_options": {
+    "threshold": 0,
+    "points": 2.0,
+    "required": true
+  },
   "chapters": {
     "Assignments": {
       "Samnyeong/Sheet1":{

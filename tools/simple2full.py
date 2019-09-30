@@ -46,6 +46,11 @@ _default_ex_options = {
       'points': 1,
       'threshold': 0.9
     },
+    'ae': {
+      'required': True,
+      'points': 1,
+      'threshold': 0
+    },
     'dgm': {
       'required': False,
       'points': 0,
@@ -53,10 +58,6 @@ _default_ex_options = {
     },
     'extr': {
       'points': 1.0
-    },
-    'ae': {
-      'required': True,
-      'points': 1
     }
 }
 
