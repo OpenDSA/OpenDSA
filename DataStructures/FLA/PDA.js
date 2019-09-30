@@ -363,14 +363,14 @@ var Configuration = function(configurations, state, stack, str, index) {
   }
 };
 
-//======================
-// Save/Load
-// save PDA as XML
+/**
+ * Saves the PDA as an XML file with formatting.
+ */
 pda.serializeToXML = function () {
   var text = '<?xml version="1.0" encoding="UTF-8"?>';
-  text = text + "<structure>";
-  text = text + "<type>pda</type>"
-    text = text + "<automaton>"
+  text = text + "<structure>" + "\n";
+  text = text + "\t" + "<type>pda</type>" + "\n";
+    text = text + "\t" + "<automaton>" + "\n";
     var nodes = this.nodes();
   for (var next = nodes.next(); next; next = nodes.next()) {
     var left = next.position().left;
@@ -378,19 +378,19 @@ pda.serializeToXML = function () {
     var i = next.hasClass("start");
     var f = next.hasClass("final");
     var label = next.stateLabel();
-    text = text + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">';
-    text = text + '<x>' + left + '</x>';
-    text = text + '<y>' + top + '</y>';
+    text = text + "\t\t" + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">' + "\n";
+    text = text + "\t\t\t" + '<x>' + left + '</x>' + "\n";
+    text = text + "\t\t\t" + '<y>' + top + '</y>' + "\n";
     if (label) {
       text = text + '<label>' + label + '</label>';
     }
     if (i) {
-      text = text + '<initial/>';
+      text = text + "\t\t\t" + '<initial/>' + "\n";
     }
     if (f) {
-      text = text + '<final/>';
+      text = text + "\t\t\t" + '<final/>' + "\n";
     }
-    text = text + '</state>';
+    text = text + "\t\t" + '</state>' + "\n";
   }
   var edges = this.edges();
   for (var next = edges.next(); next; next = edges.next()) {
@@ -398,30 +398,30 @@ pda.serializeToXML = function () {
     var toNode = next.end().value().substring(1);
     var w = next.weight().split('<br>');
     for (var i = 0; i < w.length; i++) {
-      text = text + '<transition>';
-      text = text + '<from>' + fromNode + '</from>';
-      text = text + '<to>' + toNode + '</to>';
+      text = text + "\t\t" + '<transition>' + "\n";
+      text = text + "\t\t\t" + '<from>' + fromNode + '</from>' + "\n";
+      text = text + "\t\t\t" + '<to>' + toNode + '</to>' + "\n";
       w[i] = toColonForm(w[i]);
       var wSplit = w[i].split(":");
       if (wSplit[0] === emptystring) {
-        text = text + '<read/>';
+        text = text + "\t\t\t" + '<read/>' + "\n";
       } else {
-        text = text + '<read>' + wSplit[0] + '</read>';
+        text = text + "\t\t\t" + '<read>' + wSplit[0] + '</read>' + "\n";
       }
       if (wSplit[1] === emptystring) {
-        text = text + '<pop/>';
+        text = text + "\t\t\t" + '<pop/>' + "\n";
       } else {
-        text = text + '<pop>' + wSplit[1] + '</pop>';
+        text = text + "\t\t\t" + '<pop>' + wSplit[1] + '</pop>' + "\n";
       }
       if (wSplit[2] === emptystring) {
-        text = text + '<push/>';
+        text = text + "\t\t\t" + '<push/>' + "\n";
       } else {
-        text = text + '<push>' + wSplit[2] + '</push>';
+        text = text + "\t\t\t" + '<push>' + wSplit[2] + '</push>' + "\n";
       }
-      text = text + '</transition>';
+      text = text + "\t\t" + '</transition>' + "\n";
     }
   }
-  text = text + "</automaton></structure>"
+  text = text + "\t" + "</automaton>" + "\n" + "</structure>"
     return text;
 };
 pda.loadFAFromJFLAPFile = function (url) {

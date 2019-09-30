@@ -121,12 +121,15 @@ function FANodePrompt(func, wasInitial, wasFinal, lab) {
         // Place the cursor in the state label text field by default (since this is the only text field in the prompt box).
         document.getElementById('label').focus();
 
-        // For Enter key functionality
-        $('#label').keypress(function(e) {
+        // Enter and Esc key functionality
+        $('#label').keydown(function(e) {
             if (e.which == 13) {
-            ok();
+                ok();
+                }
+            if (e.which == 27) {
+                terminate();
             }
-          });
+        });
     }
 
     // Update node on the graph. Called upon clicking "OK".
@@ -140,13 +143,6 @@ function FANodePrompt(func, wasInitial, wasFinal, lab) {
         // Call the node function on these values, then exit out of the prompt box.
         nodeFunction(wasInitial, initial_state, wasFinal, final_state, node_label);
         terminate();
-    }
-
-    // Triggers clicking "OK" in the case where enter is pressed.
-    enter = function(event){
-        var letter = document.getElementById("label");
-        if (letter.value.charCodeAt(letter.length -1) === 13)
-            ok();
     }
 }
 
@@ -176,12 +172,15 @@ function MealyNodePrompt(func) {
         // Place the cursor in the state label text field by default (since this is the only text field in the prompt box).
         document.getElementById('label').focus();
 
-        // For Enter key functionality
-        $('#label').keypress(function(e) {
+        // Enter and Esc key functionality
+        $('#label').keydown(function(e) {
             if (e.which == 13) {
-            ok();
+                ok();
+                }
+            if (e.which == 27) {
+                terminate();
             }
-          });
+        });
     }
 
     // Update node on the graph. Called upon clicking "OK".
@@ -192,13 +191,6 @@ function MealyNodePrompt(func) {
         // Call the node function on these values, then exit out of the prompt box.
         nodeFunction(initial_state, node_label);
         terminate();
-    }
-
-    // Triggers clicking "OK" in the case where enter is pressed.
-    enter = function(event){
-        var letter = document.getElementById("label");
-        if (letter.value.charCodeAt(letter.length -1) === 13)
-            ok();
     }
 }
 
@@ -246,12 +238,15 @@ function MooreNodePrompt(func, cancelFunc, nostr) {
         // Place the cursor in the output character text field by default.
         document.getElementById('moore').focus();
 
-        // For Enter key functionality
-        $('#moore').keypress(function(e) {
+          // Enter and Esc key functionality
+          $('#moore').keydown(function(e) {
             if (e.which == 13) {
-            ok();
+                ok();
+                }
+            if (e.which == 27) {
+                cancel();
             }
-          });
+        });
     }
 
     // Cancel changes, then exit out of the prompt box. Called upon clicking "Cancel".
@@ -274,13 +269,6 @@ function MooreNodePrompt(func, cancelFunc, nostr) {
         // Call the node function on these values, then exit out of the prompt box.
         nodeFunction(initial_state, node_label, output_char);
         terminate();
-    }
-
-    // Triggers clicking "OK" in the case where enter is pressed.
-    enter = function(event){
-        var letter = document.getElementById("moore");
-        if (letter.value.charCodeAt(letter.length -1) === 13)
-            ok();
     }
 }
 
@@ -545,7 +533,9 @@ function MealyEdgePrompt(func, nostr) {
     }
 }
 
-// Custom prompt box for Saving Files in the Finite Automaton Editor.
+/**
+ * Custom prompt box for Saving Files in the Finite Automaton Editor.
+ */
 function FileSaver(graph) {
     this.fileName = "";
     // Render function is used to initialize the prompt box in the view.
@@ -560,12 +550,15 @@ function FileSaver(graph) {
         // Place the cursor in the File Name: text field by default.
         document.getElementById('saveFAName').focus();
 
-        // For Enter key functionality
-        $('#saveFAName').keypress(function(e) {
+        // Enter and Esc key functionality
+        $('#saveFAName').keydown(function(e) {
             if (e.which == 13) {
-            ok();
+                ok();
+                }
+            if (e.which == 27) {
+                terminate();
             }
-          });
+        });
         
     }
 
@@ -581,16 +574,11 @@ function FileSaver(graph) {
         $('#download a')[0].click();
         graph.jsav.umsg("Saved");
     }
-
-    // Triggers clicking "OK" in the case where enter is pressed.
-    enter = function(event){
-        var letter = document.getElementById("saveFAName");
-        if (letter.value.charCodeAt(letter.length -1) === 13)
-            ok();
-    }
 }
 
-// Custom prompt box for Saving Files in the PDA Editor.
+/**
+ * Custom prompt box for Saving Files in the PDA Editor.
+ */
 function FileSaverPDA(graph) {
     this.fileName = "";
     // Render function is used to initialize the prompt box in the view.
@@ -599,38 +587,34 @@ function FileSaverPDA(graph) {
         // Add content to the prompt box, with references to the functions to run within the buttons.
         document.getElementById('dialogueboxhead').innerHTML = "Save File: ";
         document.getElementById('dialogueboxbody').innerHTML = '';
-        document.getElementById('dialogueboxbody').innerHTML += '<br>File Name: <input id="saveFAName" >';
+        document.getElementById('dialogueboxbody').innerHTML += '<br>File Name: <input id="savePDAName" >';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="ok()">OK</button> <button onclick="terminate()">Cancel</button>';
         
         // Place the cursor in the File Name: text field by default.
-        document.getElementById('saveFAName').focus();
+        document.getElementById('savePDAName').focus();
 
-        // For Enter key functionality
-        $('#saveFAName').keypress(function(e) {
+        // Enter and Esc key functionality
+        $('#savePDAName').keydown(function(e) {
             if (e.which == 13) {
-            ok();
+                ok();
+                }
+            if (e.which == 27) {
+                terminate();
             }
-          });
+        });
         
     }
 
     // Called upon clicking "OK".
     ok = function() {
         // Variable for the name of the file
-        this.fileName = document.getElementById('saveFAName').value;
+        this.fileName = document.getElementById('savePDAName').value;
         // Exit out of the prompt box.
         terminate();
         // Code for downloading the file
         var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(graph.serializeToXML());
-        $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="' + this.fileName + '.jff">Download FA</a>');
+        $('#download').html('<a hidden href="data:' + downloadData + '" target="_blank" download="' + this.fileName + '.jff">Download PDA</a>');
         $('#download a')[0].click();
         graph.jsav.umsg("Saved");
-    }
-
-    // Triggers clicking "OK" in the case where enter is pressed.
-    enter = function(event){
-        var letter = document.getElementById("saveFAName");
-        if (letter.value.charCodeAt(letter.length -1) === 13)
-            ok();
     }
 }

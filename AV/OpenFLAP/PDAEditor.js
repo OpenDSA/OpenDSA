@@ -569,10 +569,16 @@
     }
   };
 
+  /**
+   * Function to download the diagram as an xml file with a dialog box for entering file the file name.
+   * Calls FileSaverPDA in CustomPrompt.js
+   * 
+   * Michael Richter
+   */
   var save = function() {
-    var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(g.serializeToXML());
-    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.jff">Download PDA</a>');
-    $('#download a')[0].click();
+    removeModeClasses(); 
+    var saver = new FileSaverPDA(g);
+    saver.render();
   }
 
   var load = function() {
