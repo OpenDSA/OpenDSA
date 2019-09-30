@@ -1,0 +1,110 @@
+{
+    "translations": {
+      "en": {
+        "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+        "q1": {
+          "type": "multiple",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "question":"Which of the following are  alphabet sets?",
+          "answer": "{a, b, c}",
+          "choices": ["{a, b, c}", "{0, 1}","A" ,"{?, a, x}"]
+        },
+        "q2": {
+          "type": "multiple",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "question":"Suppose we have Σ = {a, b}, which of the following are valid strings?",
+          "answer": "babababbaba",
+          "choices": ["babababbaba", "a","{aaa, bbb}", "bacbabcba" ]
+        },
+        "q3": {
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer": "Σ={0,1,2,3,4,5,6,7,8, 9} L={set of all even numbers}",
+          "choices": ["Σ={0,1,2,3,4,5,6,7,8, 9} L={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,...}", 
+            "Σ={a,b,c} L={ab,ac,cabb}",
+            "Σ={0,1,2,3,4,5,6,7,8, 9} L={set of all even numbers}" ]
+        },
+        "q4":{
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer": "DD"
+        },
+        "q5":{
+          "type": "multiple",
+          "question":"So, when you see b in a sentence, it probably refers to:",
+          "answer": "The character ‘b’.",
+          "choices": ["The character ‘b’.", "Some string named ‘b’."]
+        },
+        "q5_1":{
+          "type": "multiple",
+          "question":"And if y see w in a sentence, it probably refers to ",
+          "answer":"Some string given the name ‘w’",
+          "choices": ["The character ‘w’", "Some string given the name ‘w’"]
+        },
+        "q6":{
+          "type": "multiple",
+          "question":"Let w=abbc, v=ab, What is |w| + |v|",
+          "answer":"6",
+          "choices": ["6", "7"]
+        },
+        "q7":{
+          "type": "multiple",
+          "question": "Let w = abc, v = 012, What is w∘v?",
+          "answer":"abc012",
+          "choices": ["6", "abc012"]
+
+        },
+        "q8":{
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer":""
+        },
+        "q9":{
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer":""
+        },
+        "q10":{
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer":""
+        },
+        "q11":{
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer":""
+        },
+        "q12":{
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer":""
+        },
+        "q13":{
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer":""
+        },
+        "q14":{
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer":""
+        },
+        "q15":{
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer":""
+        },
+        "q16":{
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer":""
+        },
+        "q17":{
+          "type": "multiple",
+          "question":"What states can be combined?",
+          "answer":""
+        }
+      }
+    }
+  }
+  

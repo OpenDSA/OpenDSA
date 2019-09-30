@@ -6,17 +6,17 @@
 .. avmetadata::
    :author: eunoh cho
    :requires: Deterministic Finite Automata
-   :satisfies: Non-deterministic Finite Automata
+   :satisfies: example
    :topic: Finite Automata
 
 
-Non-Deterministic Finite Automata
+Example
 =================================
-NFA: Non-Deterministic Finite Automata
+Example
 --------------------------------------
 .. inlineav:: Frames ff
-   :links: AV/PIExample_Echo/Frames2.css
-   :scripts: AV/PIExample_Echo/fexample2.js DataStructures/PIFrames.js
+   :links: AV/PIExample_Echo/Frames3.css
+   :scripts: AV/PIExample_Echo/Frames3.js DataStructures/PIFrames.js
    :output: show
 
 
