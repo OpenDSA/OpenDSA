@@ -12,7 +12,7 @@ $(document).ready(function() {
   var linkedListStartPositionX = 350,
       linkedListStartPositionY = 40;
   var arr = av.ds.array([], {left: linkedListStartPositionX + 410, top: linkedListStartPositionY, visible: false});
-  //arr.clear();
+
 
 
   // Slide 1
