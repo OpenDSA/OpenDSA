@@ -505,7 +505,7 @@ all productions have the form
 
 where :math:`a \in T` and :math:`x \in V^*`
 
-This is like an s-grammar (or simple grammar, p.142 Linz), 
+This is like an s-grammar (or simple grammar), 
 except the s-grammar definition includes a further restriction that
 any pair :math:`(A, a)` can occur at most in one rule. 
 
