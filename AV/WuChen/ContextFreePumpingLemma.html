@@ -53,18 +53,11 @@
     <p id="w1vvrw2" style="visibility: hidden;" class="language7">
       \(L = \{w_1vv^Rw_2 \text{: } n_a(w_1) = n_a(w_2) \text{, } |v| > 3, v, w_1, w_2 \in \{a, b\}^*\}\)
     </p>
-    <p id="movepara">
-      <br />
-      First choose who makes the first move. <br />
-      <select id="move" onchange="setEnter1()">
-        <option value="select" selected disabled hidden>Pick who makes the first move</option>
-        <option value="user">You go first</option>
-        <option value="computer">Computer goes first</option>
-      </select>
-    </p>
+    
 
     <p id="lemmapara">
-      Then select a lemma and press "Enter" button to continue.<br />
+      <br />
+      1. Select a lemma and press "Enter" button to continue.<br />
       <select id="lemma" size="14" onchange="setEnter2()">
         <option id="myOption" value="select2">Pick select a lemma</option>
         <option value="anbncn">L = {(a^n)(b^n)(c^n): n &#8805; 0}</option>
@@ -81,6 +74,16 @@
             <option value="w1cw2cw3cw4">L = {(w_1)c(w_2)c(w_3)c(w_4): w_1 = w_2 or w_3 = w_4, w_i &#8712; {a, b}*,
             |w_i| > 0}</option>
         <option value="w1vvrw2">L = {(w_1)v(v^R)(w_2): n_a(w_1) = n_a(w_2), |v| > 3, v, w_1, w_2 &#8712; {a, b}*}</option>
+      </select>
+    </p>
+
+    <p id="movepara">
+      <br />
+      2. Choose who makes the first move. <br />
+      <select id="move" onchange="setEnter1()">
+        <option value="select" selected disabled hidden>Pick who makes the first move</option>
+        <option value="user">You go first</option>
+        <option value="computer">Computer goes first</option>
       </select>
     </p>
 

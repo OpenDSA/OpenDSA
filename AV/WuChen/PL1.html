@@ -52,18 +52,10 @@
     <p id="ab2n" style="visibility: hidden;" class="language4">
       \(L = \{(ab)^{2n} \text{: } n = 1,2,...\}\)
     </p>
-    <p id="movepara">
-      <br />
-      First choose who makes the first move. <br />
-      <select id="move" onchange="setEnter1()">
-        <option value="select" selected disabled hidden>Pick who makes the first move</option>
-        <option value="user">You go first</option>
-        <option value="computer">Computer goes first</option>
-      </select>
-    </p>
-
+    
     <p id="lemmapara">
-      Then select a lemma and press "Enter" button to continue.<br />
+      <br />
+      1. Select a lemma and press "Enter" button to continue.<br />
       <select id="lemma" size="14" onchange="setEnter2()">
         <option id="myOption" value="select2">Pick select a lemma</option>
         <option value="anbn">L = (a^n)(b^n): n &#8805; 0</option>
@@ -81,7 +73,15 @@
         <option value="ab2n">L = {(ab)^(2n): n = 1, 2...}</option>
       </select>
     </p>
-
+    <p id="movepara">
+      <br />
+      2. Choose who makes the first move. <br />
+      <select id="move" onchange="setEnter1()">
+        <option value="select" selected disabled hidden>Pick who makes the first move</option>
+        <option value="user">You go first</option>
+        <option value="computer">Computer goes first</option>
+      </select>
+    </p>
     <input type="button" id="enter" name="enter" disabled />
     <input type="button" id="reset" name="reset" />
     <input style="display: none" type="button" id="next" name="next" />

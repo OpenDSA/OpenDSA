@@ -552,3 +552,5 @@ not regular. Contradiction.
 
 .. avembed:: AV/WuChen/PL1.html ss
    :long_name: Regular Pumping Lemmma
+.. avembed:: AV/WuChen/ContextFreePumpingLemma.html ss
+   :long_name: Context Free Pumping Lemma

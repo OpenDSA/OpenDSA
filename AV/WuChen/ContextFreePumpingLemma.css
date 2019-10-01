@@ -61,13 +61,13 @@
 
 #enter {
   position: absolute;
-  left: 15px;
-  top: 455px;
+  left: 5px;
+  top: 435px;
 }
 #next {
   position: absolute;
-  left: 5px;
-  top: 5px;
+  left: 15px;
+  top: 585px;
 }
 #explain {
   position: absolute;
