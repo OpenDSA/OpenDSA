@@ -1,7 +1,7 @@
 [
     {
         "expression": "",
-        "description": "Construct a CFG over {a,b, 0, 1} whose language contains precisely the strings with the same number of a’s and b’s.",
+        "description": "Construct a CFG over {a,b} whose language contains precisely the strings with the same number of a’s and b’s.",
         "type": "description",
         "testCases": [
             {

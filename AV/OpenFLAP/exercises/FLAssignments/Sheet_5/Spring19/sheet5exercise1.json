@@ -1,7 +1,7 @@
 [
     {
-        "expression": "",
-        "description": "Construct a CFG over {a,b, 0, 1} whose language contains precisely the strings with the same number of a’s and b’s.",
+        "expression": "a^mb^ia^n:i=m+n",
+        "description": "Construct a CFG over {a, b} whose language is {___}",
         "type": "description",
         "testCases": [
             {
@@ -14,31 +14,28 @@
                 "ba": true
             },
             {
-                "aabb": true
-            },
-            {
-                "bbaa": true
-            },
-            {
                 "abba": true
             },
             {
-                "abab": true
+                "aaaabbbbba": true
             },
             {
-                "baba": true
+                "aa": false
             },
             {
-                "baab": true
+                "aba": false
             },
             {
-                "ababa": false
+                "aaaaaaaaaaa": false
             },
             {
-                "abbab": false
+                "bbbbbbb": false
             },
             {
-                "aaabbbab": true
+                "aaaabbbb": true
+            },
+            {
+                "bbbbaaaa": true
             }
         ],
         "graph": {

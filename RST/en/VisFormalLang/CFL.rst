@@ -530,11 +530,14 @@ also accepts incorrect programs.
 For example, it can't recognize that it is an error to declare the
 same variable twice, once as an integer and once as a char.
 
-We can write a CFG :math:`G` such that :math:`L(G) = \{ \mbox{syntactically correct C++ programs} \}`.
+We can write a CFG :math:`G` such that
+:math:`L(G) = \{ \mbox{syntactically correct C++ programs} \}`.
 
-But note that :math:`\{ \mbox{semantically correct C++ programs} \} \subset L(G)`.
+But note that
+:math:`\{ \mbox{semantically correct C++ programs} \} \subset L(G)`.
 
-Another example: Can't recognize if formal parameters match actual parameters in number
+Another example:
+Can't recognize if formal parameters match actual parameters in number
 and type:
 
    | declare: int Sum(int a, int b, int c) ...
