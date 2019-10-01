@@ -18,16 +18,15 @@ Transforming Grammars
 We use grammars to represent a programming language.
 Want to know: Is a given string (or program :math:`x`) valid
 (syntactically correct)?
-Same as asking if it is in the language.
+Same as asking if it is in the language (the membership problem).
 
-Last time we showed that if we could transform a CFG into 
-a CFG with no :math:`\lambda`-productions, and no rules like 
+Last time we showed that if we could transform a CFG into
+a CFG with no :math:`\lambda`-productions, and no rules like
 :math:`A \rightarrow B`, then we could determine if :math:`w` is in or
 not in :math:`L(G)` in :math:`2|w|` rounds, each step adding a terminal
 or increasing in length.
-(Linz 5.2) 
 
-This works, but it is not fast, that is, not linear! 
+This works, but it is not fast, that is, not linear!
 
 We will look at lots of methods for transforming grammars.
 Some will be forms that are easier to work with,
