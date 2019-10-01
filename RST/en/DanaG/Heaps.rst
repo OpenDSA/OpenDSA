@@ -233,23 +233,10 @@ This situation is illustrated by this figure:
 
 .. _HeapInduct:
 
-.. odsafig:: Images/HeapInd.png
-   :width: 250
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: An example of heap building
-
-.. inlineav:: Heaps2 dgm
-   :links: AV/DanaG/Heaps2.css
-   :scripts: AV/DanaG/Heaps2.js
+.. inlineav:: HeapsInd dgm
+   :links: AV/Binary/HeapsInd.css
+   :scripts: AV/Binary/HeapsInd.js
    :align: justify
-
-.. inlineav:: linkNodes1CON ss
-   :links: AV/DanaG/linkNodes1CON.css
-   :scripts: AV/DanaG/linkNodes1CON.js
-   :output: show
-
 
    Final stage in the heap-building algorithm.
    Both subtrees of node :math:`R` are heaps.
