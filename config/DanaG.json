@@ -65,9 +65,7 @@
   },
   "chapters": {
     "Stuff": {
-      "DanaG/Heaps": {},
-      "BTRecurTutor/BSTCheck": {},
-      "DanaG/Links": {}
+      "DanaG/Heaps": {}
     },
     "Appendix": {
       "Glossary": {},
