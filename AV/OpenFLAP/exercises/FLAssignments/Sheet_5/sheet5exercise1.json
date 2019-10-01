@@ -1,41 +1,41 @@
 [
     {
-        "expression": "a^mb^ia^n:i=m+n",
+        "expression": "a^nb^m : m \\geq n, m-n\\> is\\> odd",
         "description": "Construct a CFG over {a, b} whose language is {___}",
         "type": "description",
         "testCases": [
             {
-                "": true
+                "": false
             },
             {
-                "ab": true
+                "b": true
             },
             {
-                "ba": true
+                "bb": false
             },
             {
-                "abba": true
+                "bbb": true
             },
             {
-                "aaaabbbbba": true
+                "bbbbb": true
             },
             {
-                "aa": false
+                "aaaa": false
             },
             {
-                "aba": false
+                "aaab": false
             },
             {
-                "aaaaaaaaaaa": false
+                "aaabbb": false
             },
             {
-                "bbbbbbb": false
+                "aaabbbb": true
             },
             {
-                "aaaabbbb": true
+                "aaabbbbbb": true
             },
             {
-                "bbbbaaaa": true
+                "aaabbbbb": false
             }
         ],
         "graph": {

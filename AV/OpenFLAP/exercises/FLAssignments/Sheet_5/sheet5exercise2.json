@@ -1,44 +1,41 @@
 [
     {
-        "expression": "",
-        "description": "Construct a CFG over {a,b, 0, 1} whose language contains precisely the strings with the same number of a’s and b’s.",
+        "expression": "a^mb^ic^n \\mid m > n, 0 \\leq i < 3,  n \\geq 0",
+        "description": "Construct a CFG over {a, b, c} whose language is {___}",
         "type": "description",
         "testCases": [
             {
-                "": true
+                "": false
+            },
+            {
+                "bb": false
+            },
+            {
+                "a": true
             },
             {
                 "ab": true
             },
             {
-                "ba": true
+                "abb": true
             },
             {
-                "aabb": true
+                "abbb": false
             },
             {
-                "bbaa": true
+                "abbc": false
             },
             {
-                "abba": true
+                "aabbc": true
             },
             {
-                "abab": true
+                "aaaaccc": true
             },
             {
-                "baba": true
+                "aaaaa": true
             },
             {
-                "baab": true
-            },
-            {
-                "ababa": false
-            },
-            {
-                "abbab": false
-            },
-            {
-                "aaabbbab": true
+                "aaabbccc": false
             }
         ],
         "graph": {
