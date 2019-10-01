@@ -11,6 +11,9 @@ $(document).ready(function() {
   pseudo.hide();
   var linkedListStartPositionX = 350,
       linkedListStartPositionY = 40;
+  var arr = av.ds.array([], {left: linkedListStartPositionX + 410, top: linkedListStartPositionY, visible: false});
+  //arr.clear();
+
 
   // Slide 1
   av.umsg("We'll start with the following four <tt>Link</tt> objects, already connected together, and the first one pointed to by reference variable <tt>head</tt>. By the way, notice that we use a slash through a <tt>Next</tt> field to represent <tt>null</tt>, in the last <tt>Link</tt> here.");
@@ -43,7 +46,11 @@ $(document).ready(function() {
   av.umsg("Assuming that each of these <tt>Link</tt> objects references an <tt>Integer</tt> object in their <tt>Data</tt> fields, we can retrieve the value of some <tt>Link</tt> object as shown in the fourth line.");
   pseudo.setCurrentLine(4);
   av.label("myVal", {left: linkedListStartPositionX + 360, top:linkedListStartPositionY + 5});
-  av.g.rect(linkedListStartPositionX + 410, linkedListStartPositionY + 15, 45, 30);
-  av.label("30", {left: linkedListStartPositionX + 423, top:linkedListStartPositionY + 3});
+  //av.g.rect(linkedListStartPositionX + 410, linkedListStartPositionY + 15, 45, 30);
+  //av.label("30", {left: linkedListStartPositionX + 423, top:linkedListStartPositionY + 3});
+  arr.show();
+  av.effects.copyValue(list.get(1), arr, 0);
   av.recorded();
+
+
 });
