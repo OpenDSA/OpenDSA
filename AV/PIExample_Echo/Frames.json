@@ -27,9 +27,10 @@
             "Σ={0,1,2,3,4,5,6,7,8, 9} L={set of all even numbers}" ]
         },
         "q4":{
-          "type": "fill in blank",
+          "type": "select",
           "question":"List the power set of {a, b}",
-          "answer": ["a", "b", "a, b"]
+          "answer": ["a"],
+          "choices": ["a", "b", "a, b"]
         },
         "q5":{
           "type": "multiple",
@@ -49,9 +50,10 @@
           "answer":"6"
         },
         "q7":{
-          "type": "fill in blank",
+          "type": "select",
           "question": "Let w = abc, v = 012, What is w∘v?",
-          "answer":"abc012"
+          "answer":"abc012",
+          "choices": ["abc012"]
         },
         "q8":{
           "type": "select",
@@ -60,19 +62,22 @@
           "choices": ["vvv", "v∘v∘v", "ababab"]
         },
         "q8_1":{
-          "type": "fill in blank",
+          "type": "select",
           "question":"Is this a language? {λ}",
-          "answer":"yes"
+          "answer":"yes",
+          "choices": ["yes"]
         },
         "q9":{
-          "type": "fill in blank",
+          "type": "select",
           "question":"What is λ∘acb∘λ?",
-          "answer":"acb"
+          "answer":"acb",
+          "choices": ["acb"]
         },
         "q10":{
-          "type": "fill in a blank",
+          "type": "select",
           "question":"Let w = abbc, what is wR?",
-          "answer":"cbba"
+          "answer":"cbba",
+          "choices": ["cbba"]
         },
         "q11":{
           "type": "fill in a blank",
@@ -98,24 +103,29 @@
           "choices": ["λ", "a", "b", "aa", "abbabb", "aaabababcc"]
         },
         "q14":{
-          "type": "fill in blank",
+          "type": "select",
           "question":" Let Σ={a,b,c}, L1={ab,bc,aba}, L2={c,bc,bcc}, What is L1∪L2 ?",
-          "answer":"{ab,bc,aba,c,bcc}"
+          "answer":"{ab,bc,aba,c,bcc}",
+          "choices": ["{ab,bc,aba,c,bcc}"]
+
         },
         "q15":{
           "type": "fill in blank",
           "question":"Let Σ={a,b,c}, L1={ab,bc,aba}, L2={c,bc,bcc}, What is L1∩L2 ?",
-          "answer":" {bc}"
+          "answer":"{bc}",
+          "choices": ["{bc}"]
         },
         "q16":{
           "type": "multiple",
           "question":"What is ?",
-          "answer":""
+          "answer":" " ,
+          "choices": [" "]
         },
         "q17":{
-          "type": "multiple",
+          "type": "select",
           "question":"What states can be combined?",
-          "answer":""
+          "answer":"{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}",
+          "choices":["{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}"]
         },
         "q18":{
           "type": "multiple",
@@ -124,14 +134,16 @@
           "choices": ["{λ}", "{}<Empty set>", "λ"]
         },
         "q19":{
-          "type": "fill in blank",
+          "type": "select",
           "question":"Let Σ={a,b}, L1={ab,aba}, What is L2? ",
-          "answer":"{abab, ababa, abaab, abaaba}"
+          "answer":"{abab, ababa, abaab, abaaba}" ,
+          "choices": ["{abab, ababa, abaab, abaaba}"]
         },
         "q19_1":{
           "type": "fill in blank",
           "question":"Let Σ={a,b}, L1={ab,aba}, What is L3?",
-          "answer":"{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}"
+          "answer":"{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}" ,
+          "choices": ["{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}"]
         }
       }
     }
