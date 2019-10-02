@@ -226,9 +226,9 @@ This situation is illustrated by this figure:
 
 .. _HeapInduct:
 
-.. inlineav:: HeapsInd dgm
-   :links: AV/Binary/HeapsInd.css
-   :scripts: AV/Binary/HeapsInd.js
+.. inlineav:: HeapsIndCON dgm
+   :links: AV/Binary/HeapsIndCON.css
+   :scripts: AV/Binary/HeapsIndCON.js
    :align: justify
 
    Final stage in the heap-building algorithm.
