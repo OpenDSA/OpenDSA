@@ -1,21 +1,19 @@
 $(document).ready(function() {
   "use strict";
   var av_name = "heapsSlides";
-//  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
-//      interpret = config.interpreter;   
-//      code = config.code;
+
   var av = new JSAV(av_name);
-  var bt1Top = 10;
-  var bt1Left = 50;
-  var bt2Left = 250;
-  var bt3Top = 180;
+  var bt1Top = 5;
+  var bt1Left = 150;
+  var bt2Left = 500;
+  var bt3Top = 170;
 
   //Slide 1
-  av.umsg("av_c1");
+  av.umsg("Two series of exchanges to build a max heap:");
   av.displayInit();
 
   //Slide 2
-  av.umsg("av_c2");
+  av.umsg("(a) This heap is built by a series of nine exchanges in the order (4-2), (4-1), (2-1), (5-2), (5-4), (6-3), (6-5), (7-5), (7-6). ");
   var bt1 = av.ds.binarytree({nodegap: 15, left: bt1Left, top: bt1Top});
   bt1.root("1");
   var rt1 = bt1.root();
@@ -24,7 +22,10 @@ $(document).ready(function() {
   rt1.left().right("5");
   rt1.right("3");
   rt1.right().left("6");
-  rt1.right().left("7");
+  rt1.right().right("7");
+  bt1.layout();
+  var arrow1 = av.g.line(375, 70, 450, 70, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  av.label("(a)", {left: 405, top: 70});
   var bt2 = av.ds.binarytree({nodegap: 15, left: bt2Left, top: bt1Top});
   bt2.root("7");
   var rt2 = bt2.root();
@@ -33,11 +34,12 @@ $(document).ready(function() {
   rt2.left().right("2");
   rt2.right("6");
   rt2.right().left("3");
-  rt2.right().left("5");
+  rt2.right().right("5");
+  bt2.layout();
   av.step();
 
   //Slide 3
-  av.umsg("av_c3");
+  av.umsg("(b) This heap is built by a series of four exchanges in the order (5-2), (7-3), (7-1), (6-1).");
   var bt3 = av.ds.binarytree({nodegap: 15, left: bt1Left, top: bt3Top});
   bt3.root("1");
   var rt3 = bt3.root();
@@ -46,8 +48,11 @@ $(document).ready(function() {
   rt3.left().right("5");
   rt3.right("3");
   rt3.right().left("6");
-  rt3.right().left("7");
+  rt3.right().right("7");
+  bt3.layout();
   var bt4 = av.ds.binarytree({nodegap: 15, left: bt2Left, top: bt3Top});
+  var arrow2 = av.g.line(375, 250, 450, 250, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
+  av.label("(b)", {left: 405, top: 250});  
   bt4.root("7");
   var rt4 = bt4.root();
   rt4.left("5");
@@ -55,7 +60,8 @@ $(document).ready(function() {
   rt4.left().right("2");
   rt4.right("6");
   rt4.right().left("1");
-  rt4.right().left("3");
+  rt4.right().right("3");
+  bt4.layout();
   av.recorded();
 
 });
