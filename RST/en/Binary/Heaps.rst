@@ -201,12 +201,11 @@ set of values in an array.
 
 .. _HeapBuild:
 
-.. odsafig:: Images/HeapBld.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Two series of exchanges to build a heap
+.. inlineav:: HeapBldChoiceCON ss
+   :long_name: Heap Build Choices
+   :links: AV/Binary/HeapBldChoiceCON.css
+   :scripts: DataStructures/binaryheap.js AV/Binary/HeapBldChoiceCON.js
+   :output: show
 
    Two series of exchanges to build a max heap.
    (a) This heap is built by a series of nine exchanges in the order
@@ -227,12 +226,10 @@ This situation is illustrated by this figure:
 
 .. _HeapInduct:
 
-.. odsafig:: Images/HeapInd.png
-   :width: 250
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: An example of heap building
+.. inlineav:: HeapsInd dgm
+   :links: AV/Binary/HeapsInd.css
+   :scripts: AV/Binary/HeapsInd.js
+   :align: justify
 
    Final stage in the heap-building algorithm.
    Both subtrees of node :math:`R` are heaps.
