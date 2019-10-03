@@ -64,6 +64,7 @@
   },
   "chapters": {
       "Stuff": {
+          "WuChen/RegExTest": {},
           "WuChen/NonRegularTest": {}
       },
       "Appendix": {
@@ -72,3 +73,5 @@
       }
   }
 }
+
+
