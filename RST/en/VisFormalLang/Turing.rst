@@ -128,6 +128,8 @@ The following diagram shows the machine states and transitions.
    :align: center
 
 
+Turing Machines can accept Regular Languages and Context-Free Languages.
+In the following example, we have a TM that accepts :math:`L(a^*b^*c^*)`.
 .. topic:: Example
 
    :math:`M = (Q, \Sigma, \Gamma, s, q_0, F, \delta)` where
@@ -156,8 +158,7 @@ The following diagram shows the machine states and transitions.
         q_3&a&(q_2, \#, S)\\
         \end{array}
 
-   This machine will scan left until it encounters :math:`\#`, and
-   then halt.
+   Turing machine that accepts :math:`L(a^*b^*c^*)` then halt.
 
 .. inlineav:: TuringMachinesExample2CON dgm
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TuringMachinesExample2CON.css
@@ -170,41 +171,59 @@ Interpreting Turing Machines
 A :term:`configuration` for a Turing machine looks like this:
 
 .. math::
-
    (q, aaba\#\underline{\#}a)
 
-A :term:`halted configuration` occurs when :math:`q` is :math:`h`, the
-halt state.
+This means that the TM is on state :math:`q`,
+the tape contains :math:`aaba\#\underline{\#}a` and read / write
+head position is on the underlined :math:`a`. In this book, any TM
+starts running with the read/write head position is on the first Tape letter
+from the left.
 
-A :term:`hanging configuration` occurs when the I/O head moves to the
-left from the left-most square of the tape.
+
+A :term:`halted configuration` occurs when the machine do not find
+a move from the given state using the tape letter (the current configuration).
+In other words, TM halts if there is no :math:`\Delta` defined. That is why
+in this book we always assume that there are no transitions defined
+out of the final state. Therefore, any TM will halt once it entered a
+final state.
+
 
 A :term:`computation` is a sequence of configurations for some
 length :math:`n \geq 0`.
-Execution on the first machine example from the starting configuration
-show would appear as follows:
 
-.. math::
+.. topic:: Example
 
-   \begin{eqnarray*}
-   (q_0, \underline{a}aaa) &\vdash_M&(q_1, \underline{\#}aaa)\\
-   &\vdash_M&(q_0, \#\underline{a}aa)\\
-   &\vdash_M&(q_1, \#\underline{\#}aa)\\
-   &\vdash_M&(q_0, \#\#\underline{a}a)\\
-   &\vdash_M&(q_1, \#\#\underline{\#}a)\\
-   &\vdash_M&(q_0, \#\#\#\underline{a})\\
-   &\vdash_M&(q_1, \#\#\#\underline{\#})\\
-   &\vdash_M&(q_0, \#\#\#\#\underline{\#})\\
-   &\vdash_M&(h, \#\#\#\#\underline{\#})\\
-   \end{eqnarray*}
+   Recall the TM example that earases all a's from the tape.
+   .. inlineav:: RClearCON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/RClearCON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
+      :align: center
+
+   Here are the cofigurations for the input aaaa
+   .. math::
+
+      \begin{eqnarray*}
+      (q_0, \underline{a}aaa) &\vdash_M&(q_1, \underline{\#}aaa)\\
+      &\vdash_M&(q_0, \#\underline{a}aa)\\
+      &\vdash_M&(q_1, \#\underline{\#}aa)\\
+      &\vdash_M&(q_0, \#\#\underline{a}a)\\
+      &\vdash_M&(q_1, \#\#\underline{\#}a)\\
+      &\vdash_M&(q_0, \#\#\#\underline{a})\\
+      &\vdash_M&(q_1, \#\#\#\underline{\#})\\
+      &\vdash_M&(q_0, \#\#\#\#\underline{\#})\\
+      &\vdash_M&(h, \#\#\#\#\underline{\#})\\
+      \end{eqnarray*}
 
 :math:`M` is said to **halt on input :math:`w`** iff
 :math:`(s, \#w\underline{\#})` yields some halted configuration.
 
 :math:`M` is said to **hang on input :math:`w`** if
 :math:`(s, \#w\underline{\#})` yields some hanging configuration.
-That means *either* move left from left end *or* go into an infinite loop.
+That means go into an infinite loop.
 
+
+Turing Acceptors and Trurng Transducers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Turing machines compute functions from strings to strings.
 Formally: Let :math:`f` be a function from :math:`\Sigma^*_0` to
 :math:`\Sigma^*_1`.
