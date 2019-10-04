@@ -130,6 +130,7 @@ The following diagram shows the machine states and transitions.
 
 Turing Machines can accept Regular Languages and Context-Free Languages.
 In the following example, we have a TM that accepts :math:`L(a^*b^*c^*)`.
+
 .. topic:: Example
 
    :math:`M = (Q, \Sigma, \Gamma, s, q_0, F, \delta)` where
@@ -194,36 +195,31 @@ length :math:`n \geq 0`.
 .. topic:: Example
 
    Recall the TM example that earases all a's from the tape.
-   .. inlineav:: RClearCON dgm
-      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/RClearCON.css
-      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
-      :align: center
-
    Here are the cofigurations for the input aaaa
+
    .. math::
 
       \begin{eqnarray*}
-      (q_0, \underline{a}aaa) &\vdash_M&(q_1, \underline{\#}aaa)\\
-      &\vdash_M&(q_0, \#\underline{a}aa)\\
-      &\vdash_M&(q_1, \#\underline{\#}aa)\\
-      &\vdash_M&(q_0, \#\#\underline{a}a)\\
-      &\vdash_M&(q_1, \#\#\underline{\#}a)\\
-      &\vdash_M&(q_0, \#\#\#\underline{a})\\
-      &\vdash_M&(q_1, \#\#\#\underline{\#})\\
-      &\vdash_M&(q_0, \#\#\#\#\underline{\#})\\
-      &\vdash_M&(h, \#\#\#\#\underline{\#})\\
+      (q_0, \underline{a}aaa) &\vdash_M&(q_0, \underline{\#}aaa)\\
+      &\vdash_M&(q_0, \#\underline{\#}aa)\\
+      &\vdash_M&(q_0, \#\#\underline{\#}a)\\
+      &\vdash_M&(q_0, \#\#\#\underline{\#})\\
+      &\vdash_M&(q_1, \#\#\#\#\underline{\#})\\
       \end{eqnarray*}
+      
 
 :math:`M` is said to **halt on input :math:`w`** iff
-:math:`(s, \#w\underline{\#})` yields some halted configuration.
+:math:`(s, w\underline{\#})` yields some halted configuration.
 
 :math:`M` is said to **hang on input :math:`w`** if
-:math:`(s, \#w\underline{\#})` yields some hanging configuration.
+:math:`(s, w\underline{\#})` yields some hanging configuration.
 That means go into an infinite loop.
 
 
 Turing Acceptors and Trurng Transducers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 Turing machines compute functions from strings to strings.
 Formally: Let :math:`f` be a function from :math:`\Sigma^*_0` to
 :math:`\Sigma^*_1`.
