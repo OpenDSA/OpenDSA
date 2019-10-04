@@ -33,7 +33,7 @@ Here are the basic four steps that you need to write any recursive function.
    :long_name: Recursion Code Writing Slideshow 1
    :links: AV/RecurTutor/recurWriteCON.css
    :scripts: AV/RecurTutor/recurWriteStepsCON.js
-   :output: show  
+   :output: show
 
 
 Now le't see some different ways that we could write ``Sum`` recursively.
