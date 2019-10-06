@@ -78,6 +78,9 @@
       "CS5040slides/Lists": {}
     },
     "Week 3, Day 1": {
+      "CS5040slides/Lists": {}
+    },
+    "Week 3, Day 2": {
       "CS5040slides/StackQueue": {},
       "CS5040slides/Coding": {}
     },
@@ -101,13 +104,21 @@
       "CS5040slides/Huffman": {},
       "CS5040slides/Trie": {}
     },
-    "Week 7-8": {
+    "Week 7, Day 1": {
       "CS5040slides/Overconstrained": {},
-      "CS5040slides/Sorting1": {},
+      "CS5040slides/Sorting1": {}
+    },
+    "Week 7, Day 2": {
       "CS5040slides/Sorting2": {}
     },
-    "Week 8-9": {
+    "Week 8, Day 1": {
+      "CS5040slides/Sorting3": {}
+    },
+    "Week 8, Day 2": {
       "CS5040slides/FileProc": {}
+    },
+    "Week 9, Day 1": {
+      "CS5040slides/Buffering": {}
     },
     "Week 10": {
       "CS5040slides/Hashing": {},

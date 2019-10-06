@@ -9,12 +9,12 @@
 .. slideconf::
    :autoslides: False
 
-==============
-Sorting Part 1
-==============
+========================
+Sorting: Quadratic Sorts
+========================
 
-Sorting Part 1
---------------
+Quadratic Sorts
+---------------
 
 .. slide:: Sorting
 
