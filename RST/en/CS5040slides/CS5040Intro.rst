@@ -19,14 +19,51 @@ Introduction
 
 .. TODO::
    
+   | Handouts:
+        There are no actual handouts, since this is a zoom course. So
+        I cannot actually give out the syllabus, or a signup sheet.
    | Lesson Plan for Today:
-   |    Explain the role of the course
-        (and how it relates to undergrad curriculum)
-   |    Give a little bit of prep for P1: They should read it
-   |    Give Chapter 1 intro
-
-   | Relationship to CSOs:
-   |    CSO...
+   |    Virtual signup Sheet: Need some way to know who attended today.
+   |    Force Adds: Everyone ought to be able to register online at
+        HokieSpa, but there are always reasons why there is a
+        problem. Talk to me about this so that we can get it resolved!
+   |    Go over syllabus
+   |    Dual nature of course: Programming vs. analytical material
+   |       - If you can do well at these projects, then you are ready to work
+             at any software house in the world w.r.t. programming skills
+   |       - Superficial understanding of "data structures" is trivially
+             easy. Don't fool yourself.
+   |       - Real understanding of the content, especially analysis, is a
+             challenge.
+   |    OpenDSA: This IS the textbook
+   |       - In Canvas, follow the link to the other Canvas shell, then click
+             on "Modules" to see the TOC.
+   |       - Mastery-based [So likely to get all credit]
+   |       - "Impossible to cheat" philosophy (can only cheat yourself)
+   |       - Work a little bit every day (will really help at study time)
+   |       - Homework assignments roughly once/class, on short schedule
+             (typically required reading before a lecture, or within a day or
+             two after)
+   |       - NOTE FIRST HW ASSIGNMENT -- INTRO CHAPTER DUE THURSDAY EVENING]
+   |    P1 spec posted, start reading. We will discuss background material
+        on Thursday. You need to be ready for that discussion with
+        understanding the project context.
+           - First P1 milestone will be due next week (Details will be
+             posted on Piazza)
+           - Partners: OK, but be careful!
+   |    Programming:
+   |       - How people fail the course
+   |       - Keeping up, pacing
+   |       - Incremental development
+   |       - Web-CAT issues
+   |       - Milestones
+   | Homework:
+   |    Look at Canvas course site
+   |    Check out Piazza (register)
+   |    Intro module in OpenDSA due by Thursday @ 11pm
+   |    Look at P1 spec (posted to website). We will cover P1 in more
+        detail at next class.
+   | Course Content: Proceed to Intro chapter slides as time permits
 
 .. slide:: Introduction
 
@@ -38,12 +75,10 @@ Introduction
 
 .. slide:: Administration stuff
 
-   * Sign-in sheet (be sure to sign-in on one of them)
-   * Get a copy of the syllabus
-   * Force Add System:
-      * https://cs.vt.edu/Academics/Undergraduate/ForceAdd.html/
-      * See at end "By Permission"
-
+   * Canvas site
+   * Do you have a ForceAdd issue?
+   * Who is here today?
+     
 .. slide:: Course Mechanics
 
    * Go over Syllabus
@@ -118,6 +153,4 @@ Introduction
 
 .. slide:: Before you leave today
 
-   * Put your name and PID on sign-up sheet
-   * If you need to force add the course:
-      *  https://cs.vt.edu/Academics/Undergraduate/ForceAdd.html/
+   * Talk to me if there is a ForceAdd issue
