@@ -2,6 +2,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 var arr;
 $(document).ready(function () {
   "use strict";
+  localStorage["jsav-speed"] = 1;
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV($("#jsavcontainer"));
   var arrow = String.fromCharCode(8594),
