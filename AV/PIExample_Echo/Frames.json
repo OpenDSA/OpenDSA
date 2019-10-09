@@ -45,15 +45,16 @@
           "choices": ["The character ‘w’", "Some string given the name ‘w’"]
         },
         "q6":{
-          "type": "fill in blank",
+          "type": "select",
           "question":"Let w=abbc, v=ab, What is |w| + |v|",
-          "answer":"6"
+          "answer":["6"],
+          "choices": ["6", "k"]
         },
         "q7":{
           "type": "select",
           "question": "Let w = abc, v = 012, What is w∘v?",
-          "answer":"abc012",
-          "choices": ["abc012"]
+          "answer":["abc012"],
+          "choices": ["abc012", "j"]
         },
         "q8":{
           "type": "select",
@@ -64,25 +65,26 @@
         "q8_1":{
           "type": "select",
           "question":"Is this a language? {λ}",
-          "answer":"yes",
-          "choices": ["yes"]
+          "answer":["yes"],
+          "choices": ["yes", "i"]
         },
         "q9":{
           "type": "select",
           "question":"What is λ∘acb∘λ?",
-          "answer":"acb",
-          "choices": ["acb"]
+          "answer":["acb"],
+          "choices": ["acb", "h"]
         },
         "q10":{
           "type": "select",
           "question":"Let w = abbc, what is wR?",
-          "answer":"cbba",
-          "choices": ["cbba"]
+          "answer":["cbba"],
+          "choices": ["cbba", "g"]
         },
         "q11":{
-          "type": "fill in a blank",
+          "type": "select",
           "question":"let w=abbc, and v=ab. What is |vvRw|",
-          "answer":"8"
+          "answer":["8"],
+          "choices": ["8", "f"]
         },
         "q12":{
           "type": "select",
@@ -106,44 +108,44 @@
           "type": "select",
           "question":" Let Σ={a,b,c}, L1={ab,bc,aba}, L2={c,bc,bcc}, What is L1∪L2 ?",
           "answer":"{ab,bc,aba,c,bcc}",
-          "choices": ["{ab,bc,aba,c,bcc}"]
+          "choices": ["{ab,bc,aba,c,bcc}", "e"]
 
         },
         "q15":{
-          "type": "fill in blank",
+          "type": "select",
           "question":"Let Σ={a,b,c}, L1={ab,bc,aba}, L2={c,bc,bcc}, What is L1∩L2 ?",
-          "answer":"{bc}",
-          "choices": ["{bc}"]
+          "answer":["{bc}"],
+          "choices": ["{bc}", "d"]
         },
         "q16":{
           "type": "multiple",
           "question":"What is ?",
-          "answer":" " ,
+          "answer":[" " ],
           "choices": [" "]
         },
         "q17":{
           "type": "select",
           "question":"What states can be combined?",
-          "answer":"{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}",
-          "choices":["{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}"]
+          "answer":["{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}"],
+          "choices":["{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}", "c"]
         },
         "q18":{
           "type": "multiple",
           "question":"Let Σ={a,b}, L1={ab,aba}, What is L0?",
-          "answer":"{λ}",
+          "answer": ["{λ}"],
           "choices": ["{λ}", "{}<Empty set>", "λ"]
         },
         "q19":{
           "type": "select",
           "question":"Let Σ={a,b}, L1={ab,aba}, What is L2? ",
-          "answer":"{abab, ababa, abaab, abaaba}" ,
-          "choices": ["{abab, ababa, abaab, abaaba}"]
+          "answer": ["{abab, ababa, abaab, abaaba}"],
+          "choices": ["{abab, ababa, abaab, abaaba}", "b"]
         },
         "q19_1":{
-          "type": "fill in blank",
+          "type": "select",
           "question":"Let Σ={a,b}, L1={ab,aba}, What is L3?",
-          "answer":"{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}" ,
-          "choices": ["{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}"]
+          "answer": ["{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}"],
+          "choices": ["{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}", "a"]
         }
       }
     }
