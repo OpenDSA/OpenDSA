@@ -21,6 +21,11 @@
         "question":"What states can be combined?",
         "answer": "q_3, q_4, q_5",
         "choices": ["q_0, q_1, q2", "q_1, q_2, q_3","q_3, q_4, q_5" ]
+      },
+      "q4": {
+        "type": "textBox",
+        "question":"What color is the sky?",
+        "answer": "blue"
       }
     }
   }

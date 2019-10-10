@@ -20,12 +20,17 @@ $(document).ready(function() {
 
     av.umsg("Third Information");
     av.step();
-    av.umsg(injector.injectQuestion("q2"));
+    av.umsg(injector.injectQuestion("q4"));
     av.step();
 
     av.umsg("Fourth Information");
     av.step();
     av.umsg(injector.injectQuestion("q3"));
+    av.step();
+
+    av.umsg("Fifth Information");
+    av.step();
+    av.umsg(injector.injectQuestion("q2"));
     av.step();
 
     av.recorded();

@@ -314,6 +314,8 @@
                         case "multiple":
                             return this.buildMultipleChoice(question);
                         case "true/false":
+                        case "textBox":
+                            return this.buildTextBox(question)
                         case "select":
                             return this.buildSelectFromMultipleChoices(question);
                         case "drawing":
@@ -336,6 +338,33 @@
                         html.push(radio);
                     }
                     var submit = `<br><input type="submit" value="Submit">`;
+                    html.push(submit);
+
+                    return form.append(html.join(''));
+                },
+
+                buildTextBox: function(question){
+                    
+                    var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
+                    var form = $(`<form class=${this.av_name} onsubmit='return ${execute}'></form>`);
+                    var html = [];
+                    var header = `<p>${question.question}</p>`
+                    html.push(header);
+
+                    var answerHeader = `Answer:`
+                    html.push(answerHeader);
+
+                    var textBox = `<br> <input type="text" name=${this.av_name} autofocus="autofocus"/> </br>`;
+                    html.push(textBox);
+                
+                    /**
+                    for (var i = 0; i < choices.length; i++) {
+                        var radio = `<input type="radio" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
+                        html.push(radio);
+                    }
+                    */
+                    
+                    var submit = `<br><input type="submit" value="Submit"> </br>`;
                     html.push(submit);
 
                     return form.append(html.join(''));
