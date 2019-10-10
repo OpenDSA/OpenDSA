@@ -3,7 +3,7 @@ $(document).ready(function() {
   
 var av_name = "schematicRepCON";
   var av = new JSAV(av_name);
-  av.umsg("Lets suppose that we have a reqular expression $r$, we need to find a simple representation for the NFA that accepts $r$");
+  av.umsg("Lets suppose that we have a regular expression $r$, we need to find a simple representation for the NFA that accepts $r$");
   av.displayInit();
   av.umsg("The NFA should has a start and a final states.");
   var leftMargin = 200;

@@ -6,7 +6,7 @@ $(document).ready(function() {
     var regex = "ab*+c";
     var avWidth = 800,
         avHeight = 500;
-    av.umsg("In this example, we will convert following GTG  to an NFA.");
+    av.umsg("In this example, we will convert the above GTG to an NFA.");
     av.displayInit();
     var REtoFA = new REtoFAController(av, regex,{width: avWidth, height: avHeight, left: 10}, true);
     var NFA = REtoFA.completeAll();
