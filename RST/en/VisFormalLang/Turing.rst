@@ -122,10 +122,12 @@ enter state :math:`p`, replace :math:`a` with :math:`b`, and move the head
 
 The following diagram shows the machine states and transitions.
 
-.. inlineav:: RClearCON dgm
+.. inlineav:: RClearCON ss
+   :long_name: Turing Machine RClear
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/RClearCON.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
    :align: center
+   :output: show
 
 
 Turing Machines can accept Regular Languages and Context-Free Languages.
@@ -161,9 +163,9 @@ In the following example, we have a TM that accepts :math:`L(a^*b^*c^*)`.
 
    Turing machine that accepts :math:`L(a^*b^*c^*)` then halt.
 
-.. inlineav:: TuringMachinesExample2CON dgm
-   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TuringMachinesExample2CON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TuringMachinesExample2CON.js
+.. inlineav:: TMabcCON dgm
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMabcCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMabcCON.js
    :align: center
 
 Interpreting Turing Machines
