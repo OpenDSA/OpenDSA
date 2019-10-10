@@ -48,8 +48,9 @@
 
 
     var PIFrames = {
-
+        questionType : "",
         Injector(data, av_name) {
+           
 
             var obj = {
                 myData: data,
@@ -309,7 +310,7 @@
                 buildElement: function(question) {
                     var type = question.type;
                     
-                    
+                    questionType = type;
                     switch (type) {
                         case "multiple":
                             return this.buildMultipleChoice(question);
@@ -354,15 +355,8 @@
                     var answerHeader = `Answer:`
                     html.push(answerHeader);
 
-                    var textBox = `<br> <input type="text" name=${this.av_name} autofocus="autofocus"/> </br>`;
+                    var textBox = `<br> <input type="text" name=${this.av_name} autofocus="autofocus" /> </br>`;
                     html.push(textBox);
-                
-                    /**
-                    for (var i = 0; i < choices.length; i++) {
-                        var radio = `<input type="radio" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
-                        html.push(radio);
-                    }
-                    */
                     
                     var submit = `<br><input type="submit" value="Submit"> </br>`;
                     html.push(submit);
@@ -578,7 +572,11 @@
 
         saveAndCheckStudentAnswer: function(av_name) {
             form = $(`form.${av_name}`);
-            if(form.children(`input[name=${av_name}]:checked`).length > 1)//If we have more than answer selected, in case of checkboxes, create a list and push all answers inside the list
+            if(questionType === "textBox")
+            {
+                checked = form.children(`input[name=${av_name}]`)[0].value;
+            } 
+            else if(questionType === "select")//If we have more than answer selected, in case of checkboxes, create a list and push all answers inside the list
             {
                 checked = [];
                 for(var i = 0; i < form.children(`input[name=${av_name}]:checked`).length; i++)
@@ -586,14 +584,15 @@
                     checked.push(form.children(`input[name=${av_name}]:checked`)[i].defaultValue)
                 }
             }
-            else
+            else if(questionType === "multiple")
+            {
                 checked = form.children(`input[name=${av_name}]:checked`).val();
+            }
             console.log(checked)
             this.table[av_name].saveAndCheckStudentAnswer(checked);
 
             //prevents form from making crud call
             return false;
-
         }
 
     }
