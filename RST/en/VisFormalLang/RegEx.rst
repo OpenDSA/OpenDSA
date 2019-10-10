@@ -15,27 +15,27 @@ Regular Expressions
 Regular Expressions
 -------------------
 
-Regular expressions (RegEx or R.E.) are a way to specify a set of
-strings that define a language.
+**Regular expression** (RegEx or R.E.) is a way to specify a set of
+strings that defines a language.
 
 There are three operators that can be used:
 
-* :math:`+` union (OR)
-* :math:`\cdot` concatenation (AND)
-* :math:`*` star-closure (repeat 0 or more times)
+  * :math:`+` union (OR)
+  * :math:`\cdot` concatenation (AND)
+  * :math:`*` star-closure (repeat 0 or more times)
 
 We often omit showing the :math:`\cdot` for concatenation.
   
 | Example:
 |   :math:`(a + b)^* \cdot a \cdot (a + b)^* = (a + b)^*a(a + b)^*`
 |   Q: What language is this? 
-    A: All strings from :math:`\{a, b\}^*` that contain at least one
+|   A: All strings from :math:`\{a, b\}^*` that contain at least one
     :math:`a`.
 
 | Example: 
 |   :math:`(aa)*`
 |   Q: What language is this?
-    A: Strings of :math:`a` 's with an even number of :math:`a` 's.
+|   A: Strings of :math:`a` 's with an even number of :math:`a` 's.
 |   Note that we need to be careful about our alphabet.
     Here, we only want strings of :math:`a` 's regardless of the
     actual alphabet. Written as a RegEx, this is clear regardless of
@@ -43,58 +43,60 @@ We often omit showing the :math:`\cdot` for concatenation.
     But its not so clear in English when we say "strings
     with an even number of a's" if we want to rule out "aabaa" from
     the alphabet of :math:`\Sigma = \{a, b\}` or not.
+|
 
 **Definition:** Given :math:`\Sigma`,
 
-#. :math:`\emptyset`, :math:`\lambda`, and :math:`a \in \Sigma` are R.E.
+  #. :math:`\emptyset`, :math:`\lambda`, and :math:`a \in \Sigma` are R.E.
 
-#. If :math:`r` and :math:`s` are regular expressions, then
+  #. If :math:`r` and :math:`s` are regular expressions, then
 
-   * :math:`r + s` is a R.E.
-   * :math:`r s` is a R.E.
-   * :math:`(r)` is a R.E.
-   * :math:`r^*` is a R.E.
+      * :math:`r + s` is a R.E.
+      * :math:`r s` is a R.E.
+      * :math:`(r)` is a R.E.
+      * :math:`r^*` is a R.E.
 
-#. :math:`r` is a R.E if and only if it can be derived from (1) with a
-   finite number of applications of (2).
+  #. :math:`r` is a R.E if and only if it can be derived from (1) with
+     a finite number of applications of (2). 
 
 **Definition:** :math:`L(r)` is the language denoted by regular
 expression :math:`r`.
 
-#. :math:`\emptyset`, :math:`\{\lambda\}`, and :math:`\{a \in \Sigma\}`
-   are each languages denoted by some R.E.
+  #. :math:`\emptyset`, :math:`\{\lambda\}`, and :math:`\{a \in \Sigma\}` are each languages denoted by some R.E.
+     
+      Note that :math:`\emptyset = \{\}` (the empty set),
+      while :math:`\lambda = \{ \lambda \}`,
+      meaning the set containing just the empty string.
+      Q: Does every regular language include the empty string?
 
-   Note that :math:`\emptyset = \{\}` (the empty set),
-   while :math:`\lambda = \{ \lambda \}`,
-   meaning the set containing just the empty string.
-   Q: Does every regular language include the empty string?
-
-#. If :math:`r` and :math:`s` are R.E. then
+  #. If :math:`r` and :math:`s` are R.E. then
 
    * :math:`L(r + s) = L(r) \cup L(s)`
    * :math:`L(r s) = L(r) \cdot L(s)`
    * :math:`L((r)) = L(r)`
    * :math:`L((r)^*) = (L(r)^*)`
 
-
 Precedence Rules
 ~~~~~~~~~~~~~~~~
 
-* :math:`*` highest
-* :math:`\cdot`
-* :math:`+` lowest
+  * :math:`*` highest
+  * :math:`\cdot`
+  * :math:`+` lowest
 
-Example: :math:`ab^* + c = (a(b)^*) + c`
+  Example: :math:`ab^* + c = (a(b)^*) + c`
 
-Examples
-~~~~~~~~
+
+Examples of Regular Expressions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. :math:`\Sigma = \{a,b\}`,
    :math:`\{w \in {\Sigma}^{*} \mid w`
    has an odd number of :math:`a` 's followed by an even number of
    :math:`b` 's :math:`\}`.
 
-   :math:`(aa)^{*}a(bb)^{*}` Q: Does this language include the empty string?
+   :math:`(aa)^{*}a(bb)^{*}`
+
+   Q: Does this language include the empty string?
 
 
 #. :math:`\Sigma=\{a,b\}`, :math:`\{w \in {\Sigma}^{*} \mid w` has no more than
@@ -109,6 +111,7 @@ Examples
    Q: What is acceptable for this language, and what is not acceptable?
 
 Q: Can every finite set of strings be described by a R.E.?
+You should be able to answer this question.   
    
 Now that we have defined what regular expressions are, a good question
 to ask is: Why do we need them?
@@ -154,26 +157,26 @@ Or are they just different collections of languages?
 We can easily see NFAs for :math:`\emptyset`, :math:`\lambda`, and
 :math:`a \in \Sigma`.
 
+Here is an NFA that accepts nothing (:math:`\emptyset`).
+
 .. inlineav:: phiREtoNFACON dgm
    :links:   DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/phiREtoNFACON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/phiREtoNFACON.js
    :output: show
 
-This is an NFA that accept nothing (:math:`\emptyset`).
+Here is an NFA that accepts an empty string (:math:`\lambda`).
 
 .. inlineav:: lambdaREtoNFACON dgm
    :links:   AV/VisFormalLang/Regular/lambdaREtoNFACON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/lambdaREtoNFACON.js
    :output: show
 
-This is an NFA that accept an empty string (:math:`\lambda`).
+Here is an NFA that accepts :math:`a \in \Sigma`.
 
 .. inlineav:: aREtoNFACON dgm
    :links:   AV/VisFormalLang/Regular/aREtoNFACON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/aREtoNFACON.js
    :output: show
-
-This is an NFA that accept :math:`a \in \Sigma`.
 
 But what about the "more interesting" regular expressions that are
 built from AND, OR, and concatenation?
@@ -190,30 +193,34 @@ way to draw the idea of an arbitrary NFA.
 And since we want to combine machines together, it will be much easier
 if we know that the arbitrary machine has one start state and one
 final state.
-Well, we already know that all NFA have a single start state.
-But not all NFA have a single final state.
+Well, we already know that all NFAs have a single start state.
+But not all NFAs have a single final state.
 
 .. Note::
 
    Consider any NFA, and its various final states.
-   Is there an easy way to convert this to an equivalent NFA with a
-   single final state?
+   Is there an easy way to convert this to an **equivalent NFA** with a
+   **single final state**?
    The answer is "yes", by adding a new state that will be the final
    state for the machine.
    Figure out for yourself how you can do this.
+
+The following slideshow shows how to convert an NFA with multiple
+final states to one with a single final state. 
 
 .. inlineav:: schematicRepCON ss
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicRepCON.js
    :output: show
 
+Our next step is to show how, for each R.E. operator, we can build an
+NFA that implements the behavior of that operator on its operand NFAs.
 
+OR: :math:`r + s`.
 
-OK, now that we have the idea of an abstract NFA that could represent
-any NFA, we are ready to see how we can put them together to do all of
-the operations that a regular expression can do.
-
-:math:`r + s`. Simply add a new start state and a new final
-state, each connected (in parallel) with :math:`\lambda`
+This means that we have NFAs :math:`r` and :math:`s`, and we want a
+new NFA that OR's them together.
+Simply add a new start state and a new final state,
+each connected (in parallel) with :math:`\lambda`
 transitions to both :math:`r` and :math:`s`.
 
 .. inlineav:: schematicORRepCON ss
@@ -238,7 +245,7 @@ them all.
    Create a slideshow that shows how we create a machine that
    implements star closure, like Linz Figure 3.5
             
-**Example:** :math:`ab^* + c`
+**Example:** :math:`ab^* + c` (Multiple Final Stage)
 
 Here is an NFA that accepts :math:`ab^* + c`
 
