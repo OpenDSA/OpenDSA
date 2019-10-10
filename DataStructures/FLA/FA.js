@@ -1225,7 +1225,10 @@ var lambda = String.fromCharCode(955),
         }
         bbtop = Math.round(start.top - 1.1 * sHeight);
         if ((this.end().position().top > this.container.element.height() / 2) && minToplocation !== maxTopLocation) {
-          bbtop = Math.round(start.top + sHeight * 2 + 2.6 * sHeight);
+
+          var labelCount = this._weight.split("<br>").length;
+          
+          bbtop = Math.round(start.top + sHeight * 2 + 2.6 * sHeight + sHeight * (labelCount -1));
         }
         bbleft = Math.round(start.left);
         bbwidth = Math.round(2 * sWidth);
