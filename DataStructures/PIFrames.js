@@ -262,7 +262,6 @@
                     //     on()
         
                     // })
-
                 },
 
                 disableFastForwardButton: function() {
@@ -277,12 +276,14 @@
 
                 enableFastForwardButton: function() {
                     var forwardButton = $(`#${this.av_name}`).find("span.jsavend");
+
                     $(forwardButton).css({
                         "pointer-events": "auto",
                         "background-color": "white"
                     });
                     // $(forwardButton).css("visibility", "visible");
-
+                    
+                    //forwardButton.click();
                 },
 
                 alertMessage: function() {
@@ -396,8 +397,14 @@
                         this.enableForwardButton();
                         //alert("you have answered the question correctly!")
                         //Hide the button and show the correct statement
-                        $('input[type=submit]').hide();
-                        $(".PIFRAMES").append(`<p>Correct!</p>`)
+                        if($('input[type=submit]').is(":visible"))
+                        {
+                            $('input[type=submit]').hide();
+                            $(".PIFRAMES").append(`<p>Correct!</p>`)
+
+                            var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");   
+                            setTimeout(() => forwardButton.click(), 1000);
+                        }
 
                         //the last question in the slideshow has been answered correctly, so enable the jsavend button
                         if (current == (this.queue.elements.length - 1)) {
