@@ -81,6 +81,9 @@ First define two sets, :math:`\mathbf{P}` and :math:`\mathbf{Q}`.
 :math:`|\mathbf{P}| = 3`  (because :math:`\mathbf{P}` has three
 members) and :math:`|\mathbf{Q}| = 2`
 (because :math:`\mathbf{Q}` has two members).
+Both of these sets are finite in length.
+Other sets can be infinite, for example, the set of integers.
+
 The union of :math:`\mathbf{P}` and :math:`\mathbf{Q}`, written
 :math:`\mathbf{P} \cup \mathbf{Q}`, is the set of elements in either
 :math:`\mathbf{P}` or :math:`\mathbf{Q}`, which is {2, 3, 5, 10}.
