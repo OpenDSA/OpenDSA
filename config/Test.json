@@ -65,16 +65,8 @@
   },
   "chapters": {
     "Stuff": {
-      "VisFormalLang/Test": {},
-      "BTRecurTutor/BSTCheck": {},
-      "Indexing/TwoThreeTree": {
-      },
-      "Indexing/BTree": {
-      },
-      "Indexing/BTreeTest": {
-      },
-      "VisFormalLang/CFL":{
-      }
+      "VisFormalLang/FLSetNotes": {},
+      "VisFormalLang/CFL":{}
     },
     "Appendix": {
       "Glossary": {},

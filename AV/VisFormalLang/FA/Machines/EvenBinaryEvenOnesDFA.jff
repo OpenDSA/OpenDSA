@@ -12,13 +12,13 @@
 			<y>18.0</y>
 			<final/>
 		</state>
-		<state id="2" name="q2">
-			<x>329.0</x>
-			<y>23.0</y>
-		</state>
-		<state id="3" name="q3">
+		<state id="3" name="q2">
 			<x>161.0</x>
 			<y>132.0</y>
+		</state>
+		<state id="2" name="q3">
+			<x>329.0</x>
+			<y>23.0</y>
 		</state>
 		<!--The list of transitions.-->
 		<transition>
