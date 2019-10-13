@@ -174,8 +174,8 @@ var lambda = String.fromCharCode(955),
       this.removeNode(next);
     }
     for (var i = 0; i < source.nodes.length; i++) {
-      var nodeValue = (source.nodes[i].nodeValue)? source.nodes[i].nodeValue: 'q' + i;
-      var node = this.addNode({value: nodeValue}),
+      var nodeValue = (source.nodes[i].nodeValue) ? source.nodes[i].nodeValue : 'q' + i;
+      var node = this.addNode({ value: nodeValue }),
         offset = $('.jsavgraph').offset(),
         offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
       var topOffset = parseInt(source.nodes[i].top) + offset.top + offset2;
@@ -369,7 +369,7 @@ var lambda = String.fromCharCode(955),
         {
           otherEdge[i].shift = true;
           edge.shift = true;
-          
+
           edge.shiftedTo = -1;
           otherEdge[i].shiftedTo = 1;
           otherEdge[i].layout();
@@ -1153,27 +1153,27 @@ var lambda = String.fromCharCode(955),
         vectorX = fromPoint[1] - toPoint[1],
         vectorY = toPoint[0] - fromPoint[0],
         scaling = this.options.arcoffset / Math.sqrt(Math.pow(vectorX, 2) + Math.pow(vectorY, 2));
-        
+
       if (this.shift) {
-        if(vectorX > -10 && vectorY >-10){//Top
+        if (vectorX > -10 && vectorY > -10) {//Top
           this.shiftedTo = 1;
-          if(Math.abs(fromPoint[1] - toPoint[1]) > Math.abs(fromPoint[0] - toPoint[1])){
-          fromPoint[0] += 2.5;
-          toPoint[0] += 2.5;
-          
+          if (Math.abs(fromPoint[1] - toPoint[1]) > Math.abs(fromPoint[0] - toPoint[1])) {
+            fromPoint[0] += 2.5;
+            toPoint[0] += 2.5;
+
           }
-          else{
+          else {
             fromPoint[1] += 2.5;
             toPoint[1] += 2.5;
           }
           vectorY = Math.abs(vectorY) + 3;
           vectorX = Math.abs(vectorX) + 3;
-        } else if(vectorX< 10 && vectorY < 10) {//bottom
+        } else if (vectorX < 10 && vectorY < 10) {//bottom
           this.shiftedTo = -1;
-          if(Math.abs(fromPoint[1] - toPoint[1]) > Math.abs(fromPoint[0] - toPoint[1])){
+          if (Math.abs(fromPoint[1] - toPoint[1]) > Math.abs(fromPoint[0] - toPoint[1])) {
             fromPoint[0] -= 2.5;
             toPoint[0] -= 2.5;
-          }else{
+          } else {
             fromPoint[1] -= 2.5;
             toPoint[1] -= 2.5;
           }
@@ -1181,22 +1181,22 @@ var lambda = String.fromCharCode(955),
           vectorY = -Math.abs(vectorY) - 3;
           vectorX = -Math.abs(vectorX) - 3;
         }
-        else{
-          if(vectorX >-10 && vectorY <10){//top
+        else {
+          if (vectorX > -10 && vectorY < 10) {//top
             this.shiftedTo = 1;
             fromPoint[0] += 2.5;
             toPoint[0] += 2.5;
             fromPoint[1] -= 2.5;
             toPoint[1] -= 2.5;
+          }
+          else {
+            this.shiftedTo = -1;
+            fromPoint[0] -= 2.5;
+            toPoint[0] -= 2.5;
+            fromPoint[1] += 2.5;
+            toPoint[1] += 2.5;
+          }
         }
-        else{
-          this.shiftedTo = -1;
-          fromPoint[0] -= 2.5;
-          toPoint[0] -= 2.5;
-          fromPoint[1] += 2.5;
-          toPoint[1] += 2.5;
-        }
-      }
 
       }
       var controlPointX = midX + scaling * vectorX,
