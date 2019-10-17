@@ -105,7 +105,7 @@ $(document).ready(function () {
         document.getElementById("next").disabled = true;
         var step1 = document.createElement("p");
         step1.id = "step1";
-        step1.appendChild(document.createTextNode("1. I have selected a value for a constant m, displayed below. (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
+        step1.appendChild(document.createTextNode("1. Opponent have selected a value for a constant m, displayed below. (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
         step1.appendChild(document.createElement("br"));
         stepcounter = 1;
         generateRandom(); //generate random number
@@ -171,7 +171,7 @@ $(document).ready(function () {
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("Please keep in mind the following rules"));
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(document.createTextNode("|aa|≤m"));
+        step3.appendChild(document.createTextNode("|xy|≤m"));
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("|y|≥1"));
         step3.appendChild(document.createElement("br"));
@@ -263,7 +263,15 @@ $(document).ready(function () {
         str = str + document.getElementById("input2").value;
         var step3 = document.createElement("p"); //create the paragraph for step 3
         step3.id = "step3";
-        step3.appendChild(document.createTextNode("3. I have decomposed w into the following... Please click \"Next Step\" to continue."));
+        step3.appendChild(document.createTextNode("3. Opponent have decomposed w into the following form based on rules:"));
+        step3.appendChild(document.createElement("br"));
+        step3.appendChild(document.createTextNode("|xy|≤m"));
+        step3.appendChild(document.createElement("br"));
+        step3.appendChild(document.createTextNode("|y|≥1"));
+        step3.appendChild(document.createElement("br"));
+        step3.appendChild(document.createTextNode("xy^iz∈L  for all i≥0"));
+        step3.appendChild(document.createElement("br"));
+        step3.appendChild(document.createTextNode("Please click \"Next Step\" to continue."));
         step3.appendChild(document.createElement("br"));
         document.getElementById("input2").disabled = true;
         var step3x = document.createElement("INPUT"); //the text to display x
@@ -363,9 +371,9 @@ $(document).ready(function () {
         step3.appendChild(step3z);
         container.appendChild(step3);
 
-      }
+
       // Step 4
-      if (stepcounter == 4) {
+        stepcounter++;
         document.getElementById("next").disabled = true;
         var step4 = document.createElement("p"); //create the paragraph for step 4
         step4.id = "step4";
@@ -382,6 +390,7 @@ $(document).ready(function () {
         container.appendChild(step4);
         container.appendChild(hint4);
       }
+      //step 5
       if (stepcounter == 5) {
         attemps++;
         document.getElementById("hint4").style.display = "none"; //remove hint4
