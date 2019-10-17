@@ -113,7 +113,7 @@
       var upperbound = arr[1];
       var hint = document.getElementById('hint');
       if (!(input >= lowerbound && input <= upperbound)) {
-        hint.innerHTML = "Please enter a positive integer in range [" + lowerbound.toString() + ", " + upperbound.toString() + "] for best results";
+        hint.innerHTML = "Please enter a positive integer in range [" + lowerbound.toString() + ", " + upperbound.toString() + "] to avoid creating a too long or too short string.";
       }
       else {
         document.getElementById("next").disabled = false;

@@ -57,7 +57,7 @@
       <br />
       1. Select a lemma.<br />
       <select id="lemma" size="14" onchange="setEnter2()">
-        <option id="myOption" value="select2">Pick select a lemma</option>
+        <option id="myOption" value="select2">Select a lemma</option>
         <option value="anbn">L = (a^n)(b^n): n &#8805; 0</option>
         <option value="nanb">L = {w &#8712; {a, b}*: n_a(w) &#60; n_b(w)}</option>
         <option value="wwr">L = {ww^R: w &#8712 {a, b}*}</option>
@@ -113,7 +113,7 @@
       var upperbound = arr[1];
       var hint = document.getElementById('hint');
       if (!(input >= lowerbound && input <= upperbound)) {
-        hint.innerHTML = "Please enter a positive integer in range [" + lowerbound.toString() + ", " + upperbound.toString() + "] for best results";
+        hint.innerHTML = "Please enter a positive integer in range [" + lowerbound.toString() + ", " + upperbound.toString() + "] to avoid creating a too long or too short string";
       }
       else {
         document.getElementById("next").disabled = false;

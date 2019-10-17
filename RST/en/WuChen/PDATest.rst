@@ -341,7 +341,7 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
       :scripts: AV/OpenFLAP-Test/PDA2.js
       :align: center
 
-   | If :math:`M` accepted in some state, then that means the stack
+   | If :math:`M` is accepted in some state, then that means the stack
      was empty.
      In :math:`M'`, at the same state, the stack will contain only
      :math:`z'`, and the new transition can be followed to

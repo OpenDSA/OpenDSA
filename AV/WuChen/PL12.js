@@ -167,15 +167,15 @@ $(document).ready(function () {
         var len = str.length;  //the length of the string
         var step3 = document.createElement("p"); //create the paragraph for step 3
         step3.id = "step3";
-        step3.appendChild(document.createTextNode("3. Select decomposition of w into xyz. Click \"Set xyz\" to set decomposition."));
+        step3.appendChild(document.createTextNode("3. Select decomposition of w into xyz."));
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(document.createTextNode("Please keep in mind the following rules"));
+        step3.appendChild(document.createTextNode("Please keep in mind the following rules:"));
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(document.createTextNode("|xy|≤m"));
+        step3.appendChild(document.createTextNode("|xy| ≤ m"));
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(document.createTextNode("|y|≥1"));
+        step3.appendChild(document.createTextNode("|y| ≥ 1"));
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(document.createTextNode("xyiz∈L  for all i≥0"));
+        step3.appendChild(document.createTextNode("x*(y^i)*z ∈ L  for all i ≥ 0"));
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("x: "));
 
@@ -755,16 +755,16 @@ $(document).ready(function () {
           bool = 0;
         }
         if (bool == 1) {
-          step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is in the language. Opponent have failed to prove that this language is not regular.YOU WIN!"));
+          step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is in the language. Opponent has failed to prove that this language is not regular.YOU WIN!"));
           outstring = "My attemps:\n" + attemps.toString() + ": X = " + localx + "; Y = " + y + "; Z = " + localz + "; I = " + ran + "; WON";
         }
         else {
-          step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is NOT in the language. Opponent have proved that this language is not regular. Please try again."));
+          step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is NOT in the language. Opponent has proved that this language is not regular. Please try again."));
           outstring = "My attemps:\n" + attemps.toString() + ": X = " + localx + "; Y = " + y + "; Z = " + localz + "; I = " + ran + "; Failed";
         }
       }
       else {
-        step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is NOT in the language. Opponent have proved that this language is not regular. Please try again."));
+        step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is NOT in the language. Opponent has proved that this language is not regular. Please try again."));
         outstring = "My attemps:\n" + attemps.toString() + ": X = " + localx + "; Y = " + y + "; Z = " + localz + "; I = " + ran + "; Failed";
       }
       container.appendChild(step4);
