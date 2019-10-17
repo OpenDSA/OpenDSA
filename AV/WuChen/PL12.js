@@ -422,11 +422,11 @@ $(document).ready(function () {
             pumpstr = pumpstr + z;
           }
           if (lemma == "an" || lemma == "anbk" || lemma == "b5wmod" || lemma == "ab2n") {
-            temp = temp + "z = " + pumpstr + " is in the language. Please try again!";
+            temp = temp + "z = " + pumpstr + " is in the language. You have failed to prove that this language is not regular. Please try again!";
             //alert("My attemps:\n" + attemps.toString() + ": X = " + x + "; Y = " + y + "; Z = " + z + "; I = " + i + "; WON");
           }
           else {
-            temp = temp + "z = " + pumpstr + " is NOT in the language. YOU WIN!";
+            temp = temp + "z = " + pumpstr + " is NOT in the language. You have proved that this language is not regular. YOU WIN!";
             //alert("My attemps:\n" + attemps.toString() + ": X = " + x + "; Y = " + y + "; Z = " + z + "; I = " + i + "; Failed");
           }
           var step4ps = document.createElement("INPUT"); //the text to display pumped string
@@ -755,16 +755,16 @@ $(document).ready(function () {
           bool = 0;
         }
         if (bool == 1) {
-          step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is in the language. YOU WIN!"));
+          step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is in the language. Opponent have failed to prove that this language is not regular.YOU WIN!"));
           outstring = "My attemps:\n" + attemps.toString() + ": X = " + localx + "; Y = " + y + "; Z = " + localz + "; I = " + ran + "; WON";
         }
         else {
-          step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is NOT in the language. Please try again."));
+          step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is NOT in the language. Opponent have proved that this language is not regular. Please try again."));
           outstring = "My attemps:\n" + attemps.toString() + ": X = " + localx + "; Y = " + y + "; Z = " + localz + "; I = " + ran + "; Failed";
         }
       }
       else {
-        step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is NOT in the language. Please try again."));
+        step4.appendChild(document.createTextNode("w = " + "xy" + yorder + "z = " + "x" + tempy + "z = " + pumpstr + " is NOT in the language. Opponent have proved that this language is not regular. Please try again."));
         outstring = "My attemps:\n" + attemps.toString() + ": X = " + localx + "; Y = " + y + "; Z = " + localz + "; I = " + ran + "; Failed";
       }
       container.appendChild(step4);
