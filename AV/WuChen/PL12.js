@@ -190,7 +190,7 @@ $(document).ready(function () {
         rangeOfx.setAttribute("type", "range"); //range slider of x
         rangeOfx.id = "rangeOfx";
         rangeOfx.min = "0";
-        rangeOfx.max = 1;//len.toString(); //max value of range slider equals to the length of the string
+        rangeOfx.max = len.toString(); //max value of range slider equals to the length of the string
         rangeOfx.value = "0";
         rangeOfx.name = str;
         rangeOfx.setAttribute('oninput', 'updateTextInputx(rangeOfx.value, rangeOfx.name)');  //value of range slider will change
