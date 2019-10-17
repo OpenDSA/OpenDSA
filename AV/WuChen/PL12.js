@@ -140,8 +140,9 @@ $(document).ready(function () {
     stepcounter++;
     //user first
     if (move == "user") {
-      //step 2
+      //step 2 and step 3
       if (stepcounter == 2) {
+        //step 2
         document.getElementById("hint").style.display = "none"; //remove hint
         strlen = document.getElementById("input1").value;
         document.getElementById("input1").disabled = true;
@@ -159,9 +160,10 @@ $(document).ready(function () {
         step2.appendChild(document.createTextNode("w: "));
         step2.appendChild(outstep2);
         container.appendChild(step2);
-      }
+        stepcounter++;
+      
       //step 3
-      if (stepcounter == 3) {
+      
         var len = str.length;  //the length of the string
         var step3 = document.createElement("p"); //create the paragraph for step 3
         step3.id = "step3";
@@ -250,6 +252,7 @@ $(document).ready(function () {
         stepcounter--;
         document.getElementById("next").disabled = true;
         Setxyz()
+        stepcounter++;
       }
     }
     //computer first
