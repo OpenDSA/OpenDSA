@@ -1500,7 +1500,7 @@ var addProductionsToGrammar = function(lhs, rhs, grammar, compareToGrammar){
       exerciseLog.errorsCount++;
       return;
     }
-    grammar.addNewProductionRule([input1, arrow, input2]);
+    grammar.addNewProductionRule([lhs, arrow, rhs]);
     exerciseLog.numberOfSteps++;
     this.layout();
   }
