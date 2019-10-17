@@ -248,6 +248,7 @@ $(document).ready(function () {
       //step 4
       if (stepcounter == 4){
         stepcounter--;
+        document.getElementById("next").disabled = true;
         Setxyz()
       }
     }
