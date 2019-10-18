@@ -13,15 +13,15 @@ $(document).ready(function() {
     // var answer = q.show();
     // alert(answer);
     av.step();
-    av.umsg("Start with the alphabet set. We normally represent an alphabet set with Σ. The alphabet set is a set of symbols (typically letters or characters, but it could include any symbols}.");
+    av.umsg("Start with the alphabet set. We normally represent an alphabet set with $\\sigma$. The alphabet set is a set of symbols (typically letters or characters, but it could include any symbols}.");
     av.step();
     av.umsg(injector.injectQuestion("q1"));
     av.step();
 
     //second frame
-    av.umsg("Given some alphabet set Σ, a string is a finite sequence of symbols (taken from Σ, of course).");
+    av.umsg("Given some alphabet set $\\sigma$, a string is a finite sequence of symbols (taken from $\\sigma$, of course).");
     av.step();
-    av.umsg("Suppose we have Σ = {a, b}, which of the following are valid strings?");
+    av.umsg("Suppose we have $\\sigma = {a, b\\}$, which of the following are valid strings?");
     av.step();
     av.umsg(injector.injectQuestion("q2"));
     av.step();
@@ -34,7 +34,7 @@ $(document).ready(function() {
     // av.step();
     
     //thrid frame
-    av.umsg("A language is simply a collection of strings defined over Σ.");
+    av.umsg("A language is simply a collection of strings defined over $\\sigma$.");
     av.step();
     av.umsg(injector.injectQuestion("q3"));
     av.step();
@@ -56,7 +56,7 @@ $(document).ready(function() {
     av.step();
 
     //fourth frame
-    av.umsg("Another definition of a language is a subset of the powerset of Σ.");
+    av.umsg("Another definition of a language is a subset of the powerset of $\\sigma$.");
     av.step();
     av.umsg("Remember from Discrete Math class that a power set of any set is the set of all possible subsets from the given set.");
     av.step();
@@ -64,7 +64,7 @@ $(document).ready(function() {
     av.step();
 
     //fifth 
-    av.umsg("Useful notations: We usually use these symbols in our book, For symbols in some alphabet Σ, we typically use either digits or letters near the start of the common English alphabet: a,b,c,d,0,1 For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the common English alphabet: u,v,w,x,y,z");
+    av.umsg("Useful notations: We usually use these symbols in our book, For symbols in some alphabet $\\sigma$, we typically use either digits or letters near the start of the common English alphabet: $a,b,c,d,0,1$ For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the common English alphabet: $u,v,w,x,y,z$");
     av.step();
     av.umsg(injector.injectQuestion("q5"));
     av.step();
@@ -82,31 +82,31 @@ $(document).ready(function() {
     av.step();
 
     //seventh frame
-    av.umsg("Another important operation is string concatenation. The concatenation of two strings u, and v is just the string that contains the symbols of u followed by the symbols of v. We use the symbol ∘ to represent concatenation:");
+    av.umsg("Another important operation is string concatenation. The concatenation of two strings $u$, and v is just the string that contains the symbols of $u$ followed by the symbols of $v$. We use the symbol ∘ to represent concatenation:");
     av.step();
-    av.umsg("Example : Let w=a1a2...an, and v=b1b2...bn Then, w∘v  = a1a2...anb1b2...bm");
+    av.umsg("Example : Let $w$=$a1a2...an$, and $v$=$b1b2...bn$ Then, $w∘v$  = $a1a2...anb1b2...bm$$");
     av.step();
     av.umsg(injector.injectQuestion("q7"));
     av.step();
-    av.umsg("In reality, we use concatenation so much that we hardly ever want to be that formal. When we mean w∘v, we will normally simply write wv instead.");
+    av.umsg("In reality, we use concatenation so much that we hardly ever want to be that formal. When we mean w∘v, we will normally simply write $wv$ instead.");
     av.step();
     av.umsg(injector.injectQuestion("q7_1"));
     av.step();
 
     //eight frame
-    av.umsg("Sometimes we want to talk about the string that has no characters. If we literally wrote a string with no characters, it would be hard for you to understand what we wrote! So we have a special symbol to use for the empty string: λ.");
+    av.umsg("Sometimes we want to talk about the string that has no characters. If we literally wrote a string with no characters, it would be hard for you to understand what we wrote! So we have a special symbol to use for the empty string: $\\lambda$.");
     av.step();
-    av.umsg("Recall, since a language is just a subset of all possible strings, that the empty set of strings is a language: L = {} = <empty set symbol>.");
+    av.umsg("Recall, since a language is just a subset of all possible strings, that the empty set of strings is a language: $L$ = {} = <empty set symbol>.");
     av.step();
     av.umsg(injector.injectQuestion("q8_1"));
     av.step();
-    av.umsg("Another form of string concatenation is to concatenate a string with itself. Suppose we have a string v.  The notation v3 means concatenate v with itself 3 times. Concatenating a string with itself zero times yields the empty string λ");
+    av.umsg("Another form of string concatenation is to concatenate a string with itself. Suppose we have a string $v$.  The notation $v34 means concatenate v with itself 3 times. Concatenating a string with itself zero times yields the empty string $\\lambda$");
     av.step();
     av.umsg(injector.injectQuestion("q8"));
     av.step();
 
     //nineth frame
-    av.umsg("Concatenating any string with λ gives the same string. In other words, λ is the concatenation identity. For example, ab∘λ=λ∘ab=ab");
+    av.umsg("Concatenating any string with $\\lambda$  gives the same string. In other words, $\\lambda$ is the concatenation identity. For example, $ab$∘$\\lambda$=$\\lambda$∘$ab$=$ab$");
     av.step();
     av.umsg(injector.injectQuestion("q9"));
     av.step();
@@ -122,7 +122,7 @@ $(document).ready(function() {
     av.step();
     
     //twelveth frame
-    av.umsg("One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have Σ = {a,b}, Σ* means the set of strings obtained by concatenating 0 or more symbols from Σ. ");
+    av.umsg("One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\sigma$ = {a,b}, $\\sigma$* means the set of strings obtained by concatenating 0 or more symbols from $\\sigma$. ");
     av.step();
     av.umsg(injector.injectQuestion("q12"));
     av.step();
@@ -130,7 +130,7 @@ $(document).ready(function() {
     av.step();
 
     //13th frame
-    av.umsg("Slightly different from the * operator, sometimes we want to have at least one copy of the thing that we are concatenating. Then we use +. One way of thinking of this: Σ+=Σ∗−{λ}");
+    av.umsg("Slightly different from the * operator, sometimes we want to have at least one copy of the thing that we are concatenating. Then we use +. One way of thinking of this: $\\sigma$+=$\\sigma$∗−{$\\lambda$}");
     av.step();
     av.umsg(injector.injectQuestion("q13"));
     av.step();
@@ -148,25 +148,25 @@ $(document).ready(function() {
     av.step();
 
     //16th frame
-    av.umsg("In languages, Σ∗  represents the Universe set U.  For, example, the complement of L1 will be the set of all strings in Σ  except the strings in L. in other words,");
+    av.umsg("In languages, $\\sigma$∗  represents the Universe set $U4.  For, example, the complement of $L1$ will be the set of all strings in $\\sigma$  except the strings in $L$. in other words,");
     av.step();
     av.umsg(injector.injectQuestion("q16"));
     av.step();
 
     //17th frame
-    av.umsg("Sets concatenation. Concatenating two sets L1, and L2 means concatenating every string in L1 with each string in L2.");
+    av.umsg("Sets concatenation. Concatenating two sets $L1$, and $L2$ means concatenating every string in $L1$ with each string in $L2$.");
     av.step();
     av.umsg(injector.injectQuestion("q17"));
     av.step();
 
     //18th frame
-    av.umsg("Sets concatenation. Concatenating a set zero times will give the set of the empty string λ.");
+    av.umsg("Sets concatenation. Concatenating a set zero times will give the set of the empty string $\\lambda$.");
     av.step();
     av.umsg(injector.injectQuestion("q18"));
     av.step();
 
     //19th frame
-    av.umsg("Sets concatenation. Concatenating a set n times means concatenating every string in L with each string in L n times");
+    av.umsg("Sets concatenation. Concatenating a set n times means concatenating every string in L with each string in $L$ n times");
     av.step();
     av.umsg(injector.injectQuestion("q19"));
     av.step();
