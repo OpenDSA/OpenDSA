@@ -822,6 +822,21 @@ var lambda = String.fromCharCode(955),
     return edges;
   };
   /*
+     Function to get all incoming edges of a node.
+     Returns a normal array, not an iterable array like .getNodes does.
+   */
+  stateproto.getIncoming = function () {
+    var edges = [];
+    for (var i = 0; i < this.container._edges.length; i++ ) {
+      for (var j = 0; j < this.container._edges[i].length; j++) {
+        if (this.container._edges[i][j].end() === this) {   
+          edges.push(this.container._edges[i][j]);
+        }  
+      }
+    }
+    return edges;
+  };
+  /*
      Function to set the state label or get the current value of the state label.
      "node.stateLabel()" does not return the state label if the node is hidden!
      "node._stateLabel.element[0].innerHTML" will return the state label regardless of visibility
@@ -1132,6 +1147,13 @@ var lambda = String.fromCharCode(955),
       for (var n = 1; n < FAnodes.length; n++) {
         minToplocation = Math.min(minToplocation, FAnodes[n].position().top);
         maxTopLocation = Math.max(maxTopLocation, FAnodes[n].position().top);
+      }
+      if (this.end().element.position().top <= 0) {
+        this.end().element.offset({ top: this.end().element.offset().top + this.end().element.position().top + 50 });
+        this.endnode.getIncoming().forEach(edge => edge.layout());
+      } else if (this.end().element.height() + this.end().element.position().top >= 200 ) {
+        this.end().element.offset({ top: this.end().element.offset().top - 50 });
+        this.endnode.getIncoming().forEach(edge => edge.layout());
       }
       if ((this.end().position().top > this.container.element.height() / 2) && minToplocation !== maxTopLocation) { //this means, draw the arrow at the button
         fromY = Math.round(fromY + sHeight); //Change the - sign to + in case we need to flip the loop arrow and remove "adjust"
