@@ -24,7 +24,7 @@
       },
       "q4": {
         "type": "textBox",
-        "question":"What color is the sky?",
+        "question":"What color is the table?",
         "answer": "blue"
       }
     }

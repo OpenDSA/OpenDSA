@@ -10,13 +10,13 @@
    :topic: Finite Automata
 
 
-Frame Example
+Frame Example Eunoh cho
 =================================
-Frame Example
+Frame Example 
 --------------------------------------
 .. inlineav:: Frames ff
-   :links: AV/PIExample_Echo/Frames.css
-   :scripts: AV/PIExample_Echo/Frames.js DataStructures/PIFrames.js
+   :links: AV/PIEcho/Frames.css
+   :scripts: AV/PIECho/Frames.js DataStructures/PIFrames.js
    :output: show
 
 
