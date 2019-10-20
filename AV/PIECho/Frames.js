@@ -13,15 +13,15 @@ $(document).ready(function() {
     // var answer = q.show();
     // alert(answer);
     av.step();
-    av.umsg("Start with the alphabet set. We normally represent an alphabet set with $\\sigma$. The alphabet set is a set of symbols (typically letters or characters, but it could include any symbols}.");
+    av.umsg("Start with the alphabet set. We normally represent an alphabet set with $\\Sigma$. The alphabet set is a set of symbols (typically letters or characters, but it could include any symbols}.");
     av.step();
     av.umsg(injector.injectQuestion("q1"));
     av.step();
 
     //second frame
-    av.umsg("Given some alphabet set $\\sigma$, a string is a finite sequence of symbols (taken from $\\sigma$, of course).");
+    av.umsg("Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course).");
     av.step();
-    av.umsg("Suppose we have $\\sigma = {a, b\\}$, which of the following are valid strings?");
+    av.umsg("Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?");
     av.step();
     av.umsg(injector.injectQuestion("q2"));
     av.step();
@@ -34,7 +34,7 @@ $(document).ready(function() {
     // av.step();
     
     //thrid frame
-    av.umsg("A language is simply a collection of strings defined over $\\sigma$.");
+    av.umsg("A language is simply a collection of strings defined over $\\Sigma$.");
     av.step();
     av.umsg(injector.injectQuestion("q3"));
     av.step();
@@ -56,7 +56,7 @@ $(document).ready(function() {
     av.step();
 
     //fourth frame
-    av.umsg("Another definition of a language is a subset of the powerset of $\\sigma$.");
+    av.umsg("Another definition of a language is a subset of the powerset of $\\Sigma$.");
     av.step();
     av.umsg("Remember from Discrete Math class that a power set of any set is the set of all possible subsets from the given set.");
     av.step();
@@ -64,7 +64,7 @@ $(document).ready(function() {
     av.step();
 
     //fifth 
-    av.umsg("Useful notations: We usually use these symbols in our book, For symbols in some alphabet $\\sigma$, we typically use either digits or letters near the start of the common English alphabet: $a,b,c,d,0,1$ For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the common English alphabet: $u,v,w,x,y,z$");
+    av.umsg("Useful notations: We usually use these symbols in our book, For symbols in some alphabet $\\Sigma$, we typically use either digits or letters near the start of the common English alphabet: $a,b,c,d,0,1$ For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the common English alphabet: $u,v,w,x,y,z$");
     av.step();
     av.umsg(injector.injectQuestion("q5"));
     av.step();
@@ -122,7 +122,7 @@ $(document).ready(function() {
     av.step();
     
     //twelveth frame
-    av.umsg("One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\sigma$ = {a,b}, $\\sigma$* means the set of strings obtained by concatenating 0 or more symbols from $\\sigma$. ");
+    av.umsg("One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\Sigma$ = {a,b}, $\\Sigma$* means the set of strings obtained by concatenating 0 or more symbols from $\\Sigma$. ");
     av.step();
     av.umsg(injector.injectQuestion("q12"));
     av.step();
@@ -130,7 +130,7 @@ $(document).ready(function() {
     av.step();
 
     //13th frame
-    av.umsg("Slightly different from the * operator, sometimes we want to have at least one copy of the thing that we are concatenating. Then we use +. One way of thinking of this: $\\sigma$+=$\\sigma$∗−{$\\lambda$}");
+    av.umsg("Slightly different from the * operator, sometimes we want to have at least one copy of the thing that we are concatenating. Then we use +. One way of thinking of this: $\\Sigma$+=$\\Sigma$∗−{$\\lambda$}");
     av.step();
     av.umsg(injector.injectQuestion("q13"));
     av.step();
@@ -148,7 +148,7 @@ $(document).ready(function() {
     av.step();
 
     //16th frame
-    av.umsg("In languages, $\\sigma$∗  represents the Universe set $U4.  For, example, the complement of $L1$ will be the set of all strings in $\\sigma$  except the strings in $L$. in other words,");
+    av.umsg("In languages, $\\Sigma$∗  represents the Universe set $U4.  For, example, the complement of $L1$ will be the set of all strings in $\\Sigma$  except the strings in $L$. in other words,");
     av.step();
     av.umsg(injector.injectQuestion("q16"));
     av.step();

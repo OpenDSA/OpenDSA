@@ -12,7 +12,7 @@
         "q2": {
           "type": "select",
           "src": "../../../AV/Development/formal_language/FAEditor.html",
-          "question":"Suppose we have \\sigma = {$a$, $b$}, which of the following are valid strings?",
+          "question":"Suppose we have \\Sigma = {$a$, $b$}, which of the following are valid strings?",
           "answer": ["$babababbaba$", "$a$"],
           "choices": ["$babababbaba$", "$a$","{$aaa$, $bbb$}", "$bacbabcba$" ]
         },
@@ -29,12 +29,12 @@
         "q3": {
           "type": "select",
           "question":"What states can be combined?",
-          "answer": ["$\\sigma$={$0,1,2,3,4,5,6,7,8, 9}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,...\\}$", 
-            "\\sigma={a,b,c} L={ab,ac,cabb}",
-            "\\sigma={0,1,2,3,4,5,6,7,8, 9} $L=\\{set of all even numbers\\}$" ],
-          "choices": ["$\\sigma$={$0,1,2,3,4,5,6,7,8, 9}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,...\\}$", 
-            "\\sigma={a,b,c} L={ab,ac,cabb}",
-            "\\sigma={0,1,2,3,4,5,6,7,8, 9} $L=\\{set of all even numbers\\}$" ]
+          "answer": ["$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,...\\}$", 
+            "\\Sigma={a,b,c} L={ab,ac,cabb}",
+            "\\Sigma={0,1,2,3,4,5,6,7,8, 9} $L=\\{set of all even numbers\\}$" ],
+          "choices": ["$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,...\\}$", 
+            "\\Sigma={a,b,c} L={ab,ac,cabb}",
+            "\\Sigma={0,1,2,3,4,5,6,7,8, 9} $L=\\{set of all even numbers\\}$" ]
         },
         "q3_2":{
           "type": "multiple",
@@ -121,7 +121,7 @@
         },
         "q12":{
           "type": "select",
-          "question":"Which of the following are strings in \\sigma∗?",
+          "question":"Which of the following are strings in \\Sigma∗?",
           "answer":["$\\lambda$", "a", "b", "aa", "abbabb"],
           "choices": ["λ", "a", "b", "aa", "abbabb", "aaabababcc"]
         },
