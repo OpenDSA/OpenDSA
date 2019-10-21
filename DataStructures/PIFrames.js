@@ -412,9 +412,13 @@
                         }
                     } else {
                         //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
-                        alert("you have answered the question incorrectly!")
-                        this.disableForwardButton();
-                        
+                        if($('input[type=submit]').is(":visible"))
+                        {
+                            $('input[type=submit]').hide();
+                            $(".PIFRAMES").append(`<p>Incorrect!</p>`);
+                            this.disableForwardButton();
+                            setTimeout(() => $('input[type=submit]').show(), 1000);
+                        }
                     }
                 },
 
