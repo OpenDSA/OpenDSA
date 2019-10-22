@@ -265,9 +265,6 @@ WuChen: min
 Echo: min
 	python $(CONFIG_SCRIPT) config/Echo.json --no-lms
 
-PIECho: min
-	python $(CONFIG_SCRIPT) config/PIExample_Echo.json --no-lms
-
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js

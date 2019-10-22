@@ -63,8 +63,8 @@
     "required": true
   },
   "chapters": {
-  "Context-Free Grammars and Languages": {
-      "Echo/CFL": {}
+    "PI Example": {
+      "PIExample_Echo/FrameExample": {}
     }
   }
 }
