@@ -64,6 +64,7 @@
   },
   "chapters": {
     "PI Example": {
+      "Echo/CFLSimp": {},
       "PIExample_Echo/FrameExample": {}
     }
   }
