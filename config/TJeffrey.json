@@ -65,8 +65,8 @@
     "Preface": {
       "Intro": {}
     },
-    "Finite Acceptors": {
-      "VisFormalLang/Turing": {}
+    "Models of Computation": {
+      "TJeffrey/Turing": {}
     },
     "Appendix": {
       "Glossary": {},

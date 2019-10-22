@@ -8,7 +8,7 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
 
   // Slide 1
-  av.umsg("In this example, we see how the machine head moves over the tape when processing input string 'aaaa'.");
+  av.umsg("Here we see a Turing Machine's states and transitions presented in the form of a graph. We also see the tape and the head when beginning to process input string 'aaaa'.");
   var url = "../../../AV/VisFormalLang/TM/Machines/TMexample1.jff";
   var tm = new av.ds.TM({width: 600, height: 200, left: 50, url: url});
   av.ds.tape(["a", "a", "a", "a", "#", "#", "#"], 500, 50, "both");
@@ -29,7 +29,7 @@ $(document).ready(function() {
   av.displayInit();
 
   // Slide 2
-  av.umsg("Step 1: Initially, the tape head is at the leftmost tape cell with character 'a', and the current state is q0");
+  av.umsg("Step 1: Initially, the tape head is scanning the leftmost non-blank tape cell, and the current state is q0");
   node[0].highlight();
   av.step();
 
@@ -66,7 +66,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 7
-  av.umsg("Step 6: The tape head shifts right one cell. The current state changes to q1.");
+  av.umsg("Step 6: The tape head shifts right one cell. The current state changes to q1. Since q1 is a member of the Final State set $F$, the machine immediately halts.");
   p4.hide();
   av.g.line(570 + xStart, 195 + yStart, 540 + xStart, 212 + yStart,
             {"arrow-end": "classic-wide-long"});

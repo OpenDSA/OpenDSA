@@ -13,17 +13,17 @@
 		</state>
 		<state id="2" name="q2">
 			<x>234.0</x>
-			<y>238.0</y>
-			<final/>
+			<y>111.0</y>
 		</state>
 		<state id="3" name="q3">
 			<x>234.0</x>
-			<y>111.0</y>
+			<y>238.0</y>
+			<final/>
 		</state>
 		<!--The list of transitions.-->
 		<transition>
-			<from>3</from>
-			<to>2</to>
+			<from>2</from>
+			<to>3</to>
 			<read/>
 			<write/>
 			<move>S</move>
@@ -43,29 +43,22 @@
 			<move>R</move>
 		</transition>
 		<transition>
-			<from>3</from>
-			<to>3</to>
+			<from>2</from>
+			<to>2</to>
 			<read>c</read>
 			<write>c</write>
 			<move>R</move>
 		</transition>
 		<transition>
 			<from>0</from>
-			<to>2</to>
+			<to>3</to>
 			<read/>
 			<write/>
 			<move>S</move>
 		</transition>
 		<transition>
 			<from>0</from>
-			<to>3</to>
-			<read>c</read>
-			<write>c</write>
-			<move>R</move>
-		</transition>
-		<transition>
-			<from>1</from>
-			<to>3</to>
+			<to>2</to>
 			<read>c</read>
 			<write>c</write>
 			<move>R</move>
@@ -73,6 +66,13 @@
 		<transition>
 			<from>1</from>
 			<to>2</to>
+			<read>c</read>
+			<write>c</write>
+			<move>R</move>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>3</to>
 			<read/>
 			<write/>
 			<move>S</move>

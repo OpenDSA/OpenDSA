@@ -4982,6 +4982,10 @@ Glossary
       reducing the number of special cases that must be programmed
       for.
 
+   transducer
+      A machine that takes an input and creates an output.
+      A :term:`Turing Machine` is an example of a transducer.
+
    transitive
       In set notation, relation :math:`R` is transitive if whenever
       :math:`aRb` and :math:`bRc`, then :math:`aRc`, for all
