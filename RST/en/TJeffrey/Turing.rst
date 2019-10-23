@@ -399,41 +399,44 @@ computes :math:`f': \{I\}^* \rightarrow \{I\}^*` where
 Turing-Decideable vs. Turing-Acceptable Languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A language :math:`L \subset \Sigma_0^*` is :term:`Turing-decidable`
-iff function :math:`\chi_L: \Sigma^*_0 \rightarrow \{\fbox{Y}, \fbox{N}\}`
-is Turing-computable, where for each :math:`w \in \Sigma^*_0`,
+Recall that we defined a convention for accepting/rejecting whether an
+input string is in a specified language:
+The string is accepted as being in the language if the machine halts
+in a Final State, and the string is rejected if the machine halts by
+following an undefined transition.
+The key here is that the machine halts (with separate mechanisms for
+accept or reject).
+We define a language to be :term:`Turing-decidable`
+if every string results in one of these two outcomes.
 
-.. math::
+Unfortunately, there is a third possible outcome:
+The machine might go into an infinite loop.
 
-   \chi_L(w) = \left\{
-   \begin{array}{ll}
-   \fbox{Y} & \mbox{if $w \in L$}\\
-   \fbox{N}  & \mbox{otherwise}
-   \end{array}
-   \right.
-
-Example: Let :math:`\Sigma_0 = \{a\}`, and let
-:math:`L = \{w \in \Sigma^*_0: |w|\ \mbox{is even}\}`.
-
-:math:`M` erases the marks from left to right, with current parity
-encode by state.
-Once the blank to the left of the input is reached, mark
-:math:`\fbox{Y}` or :math:`\fbox{N}` as appropriate.
-
-There are many views of computation.
-One is functions mapping input to output
-(:math:`N \rightarrow N`, or
-strings to strings, for examples).
-Another is deciding if a string is in a language.
-
-:math:`M` :term:`accepts <accept>` a string :math:`w` if :math:`M`
-halts on input :math:`w`.
+We can define another concept: :math:`Turing-acceptable`.
+We say that machine :math:`M` :term:`accepts <accept>` a string
+:math:`w` if :math:`M` halts on input :math:`w`.
+Then,
 
 * :math:`M` accepts a language iff :math:`M` halts on :math:`w` iff
   :math:`w \in L`.
 * A language is :math:`Turing-acceptable` if there is some Turing
   machine that accepts it.
 
+So, a language is Turing-decideable if it halts on every input, in two
+different ways so that we can tell if the string is in the language or
+not.
+Separately, a language is Turing-acceptable if it halts on strings in
+the language, and does not halt on strings not in the language.
+
+It is easy to turn any Turing-decideable machine into a
+Turing-acceptable machine.
+If the machine would reject the string, then simply go into an
+infinite loop by moving right regardless of the value of the symbol
+seen.
+But, can every Turing-acceptable machine be converted into a
+Turing-decideable machine?
+
+Consider this example:
 Example: :math:`\Sigma_0 = \{a, b\}`,
 :math:`L = \{w \in \Sigma^*_0: w\ \mbox{contains at least one}\ a\}`.
 
@@ -441,36 +444,53 @@ Example: :math:`\Sigma_0 = \{a, b\}`,
 
    \begin{array}{lll}
    \hline
-   q&\sigma&\delta(q, \sigma)\\
+   q&\sigma&\delta(q, \sigma, \{R, L, S\})\\
    \hline
-   q_0&a&(h, a)\\
-   q_0&b&(q_0, L)\\
-   q_0&\#&(q_0, L)\\
+   q_0&a&(h, a, R)\\
+   q_0&b&(q_0, b, R)\\
+   q_0&\#&(q_0, \#, R)\\
    \hline
    \end{array}
 
+This machine is Turing-acceptable.
+It halts if it sees an 'a', and it hangs if there is no 'a'.
+
 Is this language Turing decidable?
-Of course. Instead of just running left, invoke another state that
-means "seen an :math:`a`", and print :math:`\fbox{Y}` if we reach
-:math:`\#` in that state, :math:`\fbox{N}` otherwise.
+Of course.
+Instead of running right when a # is seen, the machine can halt.
+Here is the modified machine:
 
-Every Turing-decidable language is Turing-acceptable,
-because if the machine would have printed :math:`\fbox{Y}`,
-then the machine can halt instead,
-or if the machine would have printed :math:`\fbox{N}`,
-then it can hang left.
+.. math::
 
-Is every Turing-acceptible language Turing decidable?
-This is know as the :term:`Halting Problem`.
+   \begin{array}{lll}
+   \hline
+   q&\sigma&\delta(q, \sigma, \{R, L, S\})\\
+   \hline
+   q_0&a&(h, a, R)\\
+   q_0&b&(q_0, b, R)\\
+   \hline
+   \end{array}
 
-Of course, if the Turing-acceptible language would halt,
-we write :math:`\fbox{Y}`.
-But if the Turing-acceptible language would hang,
-can we *always* replace it with logic to write :math:`\fbox{N}`
-instead?
+All that we have done is remove the transition for what to do when a
+blank symbol is seen.
+Thus, the machine halts instead of moving to the right (thus starting
+the infinite loop).
+
+(You might ask: But what if there is an 'a' to the right of the #?
+Recall that we only care about the machine's behavior when it begins
+in a legal start configuration.)
+
+But, we can ask again: Is every Turing-acceptible language Turing
+decidable?
+In other words, whenever the Turing-acceptible machine would hang,
+can we *always* replace it with logic to trigger a non-existant
+transition instead?
+This is known as the :term:`Halting Problem`.
 
 It turns out that we can **prove** that there are always languages
 that cannot be converted from Turing-acceptable to Turing-decideable.
+In other words, we can **prove** that the Halting Problem is
+unsolveable.
 
 
 Making More Complicated Machines
