@@ -147,6 +147,8 @@ state.
       \end{array} 
 
 
+Let us see the tace for accepting the string $aaabbb$.
+
 .. inlineav:: PDATrace1 ss
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/PDA/PDATrace1.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/PDA/PDATrace1.js

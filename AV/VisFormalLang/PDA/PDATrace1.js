@@ -5,6 +5,7 @@ $(document).ready(function() {
     var av = new JSAV(av_name);
     var config = ODSA.UTILS.loadConfig({av_name: av_name}),
         interpret = config.interpreter;
+    av.umsg("Let us see the tace for accepting the string $aaabbb$.");
     av.displayInit();
     var url = interpret("pda1");
     var inputString = "aaabbb";
