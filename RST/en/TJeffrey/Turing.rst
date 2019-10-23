@@ -234,7 +234,7 @@ movement of a head across the tape.
    in the language if the machine halts in a Final State (:math:`q_3`
    in this case), and the string is rejected if the machine halts by
    following an undefined transition.
-   For example, on the string "abac", when the second `a' is
+   For example, on the string "abac", when the second 'a' is
    encountered there is no transition for what to do.
    So, the machine halts, and we interpret this to mean that the
    string has been rejected since it is not currently in a Final State.
@@ -260,32 +260,32 @@ A :term:`configuration` for a Turing machine looks like this:
 
 This means that the TM is on state :math:`q`,
 the tape contains :math:`\underline{a}aba` and the read/write
-head position is on the underlined :math:`a`.
+head position is on the underlined 'a'.
 Recall that we assume at the start of processing input for any TM,
 the read/write head position is on the leftmost non-blank character.
 
 Don't forget that the tape is infinite in both directions.
-So to the left of the leftmost `a` in this configuration is an
+So to the left of the leftmost 'a' in this configuration is an
 infinite number of blank squares, and to the right of the rightmost a
 is also an infinite number of blank squares.
 
 A :term:`halted configuration` occurs when the machine does not find
 a move from the current state using the current tape letter
 (the current configuration).
-In other words, a TM halts if there is no :math:`\Delta` defined.
+In other words, a TM halts if there is no :math:`\delta` defined.
 Note that we never define any transitions out of any Final State.
-So in some sense, there is redundancy when we said earlier that the
+So there is some redundancy when we said earlier that the
 machine halts when either it is in any Final State, or when there is
 no current transition.
-But having both definitions for halting makes it easy to define the
-difference between accepting and rejecting a string.
+But having two such definitions for halting makes it easy to define
+the difference between accepting and rejecting a string.
 
 A :term:`computation` is a sequence of configurations of some
 length :math:`n \geq 0`.
 
 .. topic:: Example
 
-   Recall the TM example that earases all a's from the tape.
+   Recall the TM example that erases all a's from the tape.
    Here are the configurations for the input "aaaa".
 
    .. math::
@@ -298,22 +298,27 @@ length :math:`n \geq 0`.
       &\vdash_M&(q_1, \#\#\#\#\underline{\#})\\
       \end{eqnarray*}
       
+**Notation**: Given a string :math:`w`, the notation
+:math:`\underline{w}` for a configuration means that the read/write
+head is scanning the leftmost character in :math:`w`.
+
 
 :math:`M` is said to **halt** on input :math:`w` iff
-:math:`(s, w\underline{\#})` yields some halted configuration.
+:math:`(s, \underline{w})` yields some halted configuration.
 
 :math:`M` is said to **hang** on input :math:`w` if
-:math:`(s, w\underline{\#})` yields some hanging configuration.
+:math:`(s, \underline{w})` yields some hanging configuration.
 
 Wait, what? What is a "hanging" configuration?
-That means that the machine goes into an infinite loop.
+The machine hangs when it goes into an infinite loop.
 Anytime you provide the mechanism to create loops that only end on a
 condition, you have also created the conditions that might allow an
 infinite loop to happen.
 Consider the following machine on strings of a's and b's that scans
-right until it sees a `b'.
-If it does not see a 'b', then it will never halt.
-This means that it hangs.
+right until it sees a 'b'.
+If it never sees a 'b', then it will never halt.
+This means that it goes into an infinite loop (or hangs) anytime the
+input string does not contain a 'b'.
 
 .. TODO::
    :type: Diagram
@@ -322,28 +327,30 @@ This means that it hangs.
    q0 for 'a' or #, and goes to (final) state q1 when it sees 'b'.    
 
 
-
-Turing Acceptors and Trurng Transducers
+Turing Acceptors and Turing Transducers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Turing machines compute functions from strings to strings.
 Formally: Let :math:`f` be a function from :math:`\Sigma^*_0` to
 :math:`\Sigma^*_1`.
 Turing machine :math:`M` is said to **compute** :math:`f` when,
-for any :math:`w \in \Sigma^*_0`, if :math:`f(w) = u` then
+for any string :math:`w \in \Sigma^*_0`, if :math:`f(w) = u` then
 
 .. math::
 
-   (s, \#w\underline{\#}) \vdash^*_M (h, \#u\underline{\#}).
+   (s, \#\underline{w}) \vdash^*_M (h, \#u\underline{\#})
 
-Such a function :math:`f` is said to be a :term:`Turing-computable function`.
+for some state :math:`h \in F` (that is, a Final State for :math:`M`).
+
+Such a function :math:`f` is said to be a
+:term:`Turing-computable function`.
 
 Here is how we express multiple parameters:
 For :math:`f(w_1, ..., w_k) = u`,
 
 .. math::
 
-   (s, \#w_1\#w_2\#...\#w_k\underline{\#}) \vdash^*_M (h, \#u\underline{\#}).
+   (s, \#\underline{w_1}\#w_2\#...\#w_k) \vdash^*_M (h, \#u\underline{\#}).
 
 One way to express functions on natural numbers is to represent a
 number using :term:`unary notation`.
@@ -357,7 +364,7 @@ computes :math:`f': \{I\}^* \rightarrow \{I\}^*` where
 
 .. topic:: Example
 
-   Compute :math:`f(n) = n + 1` for each :math:`n \in \mathbb{N}`.
+   Compute :math:`f(n) = n + 1` for any :math:`n \in \mathbb{N}`.
 
    .. math::
 
@@ -365,22 +372,29 @@ computes :math:`f': \{I\}^* \rightarrow \{I\}^*` where
       \hline
       q&\sigma&\delta(q, \sigma)\\
       \hline
-      q_0&I&(h, R)\\
-      q_0&\#&(q_0, I)\\
+      q_0&I&(q_0, I, R)\\
+      q_0&\#&(h, I, R)\\
       \end{array}
 
    An example computation:
 
    .. math::
 
-      (q_0, \#II\underline{\#}) \vdash_M (q_0, \#II\underline{I}) \vdash_M
-      (h, \#III\underline{\#}).
+      (q_0, \#\underline{I}I\#) \vdash_M (q_0, \#I\underline{I}\#) \vdash_M
+      (q_0, \#II\underline{\#}) \vdash_M (h, \#III\underline{\#}).
 
    In general,
-   :math:`(q_0, \#I^n\underline{\#}) \vdash^*_M (h, \#I^{n+1}\underline{\#})`.
+   :math:`(q_0, \#\underline{I^n}\#) \vdash^*_M (h, \#I^{n+1}\underline{\#})`.
    What about :math:`n = 0`?
-   The input is no marks in unary, and it works OK.
+   The input is no marks in unary, and it works OK (that is, the
+   result is the head to the right of a single mark).
 
+.. TODO::
+   :type: Slideshow
+
+   Add to the previous example a slideshow showing the graph version
+   and the behavior on this input.
+      
 
 Turing-Decideable vs. Turing-Acceptable Languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -401,10 +415,10 @@ is Turing-computable, where for each :math:`w \in \Sigma^*_0`,
 Example: Let :math:`\Sigma_0 = \{a\}`, and let
 :math:`L = \{w \in \Sigma^*_0: |w|\ \mbox{is even}\}`.
 
-:math:`M` erases the marks from right to left, with current parity
+:math:`M` erases the marks from left to right, with current parity
 encode by state.
-Once blank at left is reached, mark :math:`\fbox{Y}` or
-:math:`\fbox{N}` as appropriate.
+Once the blank to the left of the input is reached, mark
+:math:`\fbox{Y}` or :math:`\fbox{N}` as appropriate.
 
 There are many views of computation.
 One is functions mapping input to output
@@ -415,7 +429,7 @@ Another is deciding if a string is in a language.
 :math:`M` :term:`accepts <accept>` a string :math:`w` if :math:`M`
 halts on input :math:`w`.
 
-* :math:`M` accepts a language iff :math:M` halts on :math:`w` iff
+* :math:`M` accepts a language iff :math:`M` halts on :math:`w` iff
   :math:`w \in L`.
 * A language is :math:`Turing-acceptable` if there is some Turing
   machine that accepts it.
@@ -447,15 +461,20 @@ or if the machine would have printed :math:`\fbox{N}`,
 then it can hang left.
 
 Is every Turing-acceptible language Turing decidable?
-This is the Halting Problem.
+This is know as the :term:`Halting Problem`.
 
 Of course, if the Turing-acceptible language would halt,
 we write :math:`\fbox{Y}`.
 But if the Turing-acceptible language would hang,
 can we *always* replace it with logic to write :math:`\fbox{N}`
 instead?
-Example: Collatz function.
 
+It turns out that we can **prove** that there are always languages
+that cannot be converted from Turing-acceptable to Turing-decideable.
+
+
+Making More Complicated Machines
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. TODO::
    :type: Diagram
@@ -476,10 +495,6 @@ Example: Collatz function.
    accept state). Of course, if it encounters something that it
    doesn't like, that's going to be a missing transition, so it rejects.
 
-
-
-Making More Complicated Machines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Lemma**: If
 
