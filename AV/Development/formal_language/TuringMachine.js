@@ -9,7 +9,7 @@ var TuringMachine = function(jsav, options) {
 	  }    
 }
 
-var square = String.fromCharCode(9633);
+var square = String.fromCharCode(35);
 
 JSAV.ext.ds.TM = function (options) {
 	var opts = $.extend(true, {visible: true, autoresize: true}, options);
@@ -252,7 +252,7 @@ tm.initFromXML = function(text) {
 		for (var i = 0; i < xmlStates.length; i++) {
 			var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
 			var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
-			var newNode = this.addNode({left: x, top: y});
+			var newNode = this.addNode({left: x, top: y, value: xmlStates[i].attributes[1].nodeValue});
 			var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
 			var isFinal = xmlStates[i].getElementsByTagName("final")[0];
 			var isLabel = xmlStates[i].getElementsByTagName("label")[0];
