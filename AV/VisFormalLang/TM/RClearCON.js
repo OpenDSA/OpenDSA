@@ -68,12 +68,9 @@ $(document).ready(function() {
   // Slide 7
   av.umsg("Step 6: The tape head stays on the current cell. The current state changes to q1. Since q1 is a member of the Final State set $F$, the machine immediately halts.");
   p4.hide();
-  av.g.line(570 + xStart, 195 + yStart, 540 + xStart, 212 + yStart,
+  av.g.line(540 + xStart, 195 + yStart, 510 + xStart, 212 + yStart,
             {"arrow-end": "classic-wide-long"});
   node[0].unhighlight();
   node[1].highlight();
-  g.translateX(30);
-  c1.translateX(30);
-  c2.translateX(30);
   av.recorded();
 });
