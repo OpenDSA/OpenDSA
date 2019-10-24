@@ -188,17 +188,12 @@ $(document).ready(function () {
         valueOfx.setAttribute("type", "text");
         valueOfx.id = "valueOfx";
         valueOfx.value = "0";
-        var rangeOfx = document.createElement("INPUT");
-        rangeOfx.setAttribute("type", "range"); //range slider of x
-        rangeOfx.id = "rangeOfx";
-        rangeOfx.min = "0";
-        rangeOfx.max = len.toString(); //max value of range slider equals to the length of the string
-        rangeOfx.value = "0";
-        rangeOfx.name = str;
-        rangeOfx.setAttribute('oninput', 'updateTextInputx(rangeOfx.value, rangeOfx.name)');  //value of range slider will change
+        valueOfx.max = len.toString(); //max value of range slider equals to the length of the string
+        valueOfx.name = str;
+        valueOfx.setAttribute('oninput', 'updateTextInputx(valueOfx.value, valueOfx.name)');  //value of range slider will change
         step3.appendChild(valueOfx);
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(rangeOfx);
+        // step3.appendChild(rangeOfx);
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("y: "));
         y = document.createElement("INPUT"); //the text to display y
@@ -210,16 +205,12 @@ $(document).ready(function () {
         valueOfy.setAttribute("type", "text");
         valueOfy.id = "valueOfy";
         valueOfy.value = "0";
-        var rangeOfy = document.createElement("INPUT");
-        rangeOfy.setAttribute("type", "range"); //range slider of y
-        rangeOfy.id = "rangeOfy";
-        rangeOfy.min = "0";
-        rangeOfy.max = len.toString(); //max value of range slider equals to the length of the string
-        rangeOfy.value = "0";
-        rangeOfy.setAttribute('oninput', 'updateTextInputy(rangeOfy.value, rangeOfx.name)');  //value of range slider will change
+        valueOfy.max = len.toString(); //max value of range slider equals to the length of the string
+        valueOfy.name = str;
+        valueOfy.setAttribute('oninput', 'updateTextInputy(valueOfy.value, valueOfx.name)');  //value of range slider will change
         step3.appendChild(valueOfy);
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(rangeOfy);
+        //step3.appendChild(rangeOfy);
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("z: "));
         z = document.createElement("INPUT"); //the text to z
@@ -231,16 +222,12 @@ $(document).ready(function () {
         valueOfz.setAttribute("type", "text");
         valueOfz.id = "valueOfz";
         valueOfz.value = "0";
-        var rangeOfz = document.createElement("INPUT");
-        rangeOfz.setAttribute("type", "range"); //range slider of z
-        rangeOfz.id = "rangeOfz";
-        rangeOfz.min = "0";
-        rangeOfz.max = len.toString(); //max value of range slider equals to the length of the string
-        rangeOfz.value = "0";
-        rangeOfz.setAttribute('oninput', 'updateTextInputz(rangeOfz.value, rangeOfx.name)');  //value of range slider will change
+        valueOfz.max = len.toString(); //max value of range slider equals to the length of the string
+        valueOfz.name = str;
+        valueOfz.setAttribute('oninput', 'updateTextInputz(valueOfz.value, valueOfx.name)');  //value of range slider will change
         step3.appendChild(valueOfz);
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(rangeOfz);
+        //step3.appendChild(rangeOfz);
         var hint3 = document.createElement("p"); //create the paragraph for hints in step 3
         hint3.id = "hint3";
         container.appendChild(step3);
@@ -616,9 +603,11 @@ $(document).ready(function () {
       document.getElementById("valueOfx").disabled = true;
       document.getElementById("valueOfy").disabled = true;
       document.getElementById("valueOfz").disabled = true;
-      document.getElementById("rangeOfx").disabled = true;
-      document.getElementById("rangeOfy").disabled = true;
-      document.getElementById("rangeOfz").disabled = true;
+      // document.getElementById("rangeOfx").disabled = true;
+      // document.getElementById("rangeOfy").disabled = true;
+      // document.getElementById("rangeOfz").disabled = true;
+
+      console.log("Before s4")
 
       var step4 = document.createElement("p");
       step4.id = "step4";

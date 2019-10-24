@@ -701,7 +701,8 @@
           if (x + y + z == str) {
             if (x.length + z.length + parseInt(val) == str.length) {
               document.getElementById("next").disabled = false;
-              hint.innerHTML = "Click \"Set xyz \" to set decomposition.";
+              // set xyz -> next step 
+              hint.innerHTML = "Click \"Next Step \" to set decomposition.";
             }
             else {
               document.getElementById("next").disabled = true;
@@ -736,7 +737,7 @@
           if (x + y + z == str) {
             if (x.length + y.length + parseInt(val) == str.length) {
               document.getElementById("next").disabled = false;
-              hint.innerHTML = "Click \"Set xyz \" to set decomposition.";
+              hint.innerHTML = "Click \"Next Step \" to set decomposition.";
             }
             else {
               document.getElementById("next").disabled = true;
