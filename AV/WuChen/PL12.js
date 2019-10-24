@@ -177,6 +177,8 @@ $(document).ready(function () {
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("x*(y^i)*z ∈ L  for all i ≥ 0"));
         step3.appendChild(document.createElement("br"));
+        step3.appendChild(document.createTextNode("Please decompose the w by the length of x, y, and z"));
+        step3.appendChild(document.createElement("br"));
 
         //x
         step3.appendChild(document.createTextNode("|x|: "));
@@ -460,7 +462,7 @@ $(document).ready(function () {
       //reset step 1
       var step1 = document.createElement("p");
       step1.id = "step1";
-      step1.appendChild(document.createTextNode("1. Please select a value for m. (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
+      step1.appendChild(document.createTextNode("1. Please enter a value for m. (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
       step1.appendChild(document.createElement("br"));
       var input1 = document.createElement("input"); //input for the first step
       input1.type = "number";
