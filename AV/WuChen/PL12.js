@@ -185,7 +185,7 @@ $(document).ready(function () {
         var valueOfx = document.createElement("INPUT"); //the text to display the value of range slider of x
         valueOfx.setAttribute("type", "text");
         valueOfx.id = "valueOfx";
-        valueOfx.value = "0";
+        valueOfx.value = "";
         valueOfx.max = len.toString(); //max value of range slider equals to the length of the string
         valueOfx.name = str;
         valueOfx.setAttribute('oninput', 'updateTextInputx(valueOfx.value, valueOfx.name)');  //value of range slider will change
@@ -202,7 +202,7 @@ $(document).ready(function () {
         var valueOfy = document.createElement("INPUT"); //the text to display the value of range slider of y
         valueOfy.setAttribute("type", "text");
         valueOfy.id = "valueOfy";
-        valueOfy.value = "0";
+        valueOfy.value = "";
         valueOfy.max = len.toString(); //max value of range slider equals to the length of the string
         valueOfy.name = str;
         valueOfy.setAttribute('oninput', 'updateTextInputy(valueOfy.value, valueOfx.name)');  //value of range slider will change
@@ -219,7 +219,7 @@ $(document).ready(function () {
         var valueOfz = document.createElement("INPUT"); //the text to display the value of range slider of z
         valueOfz.setAttribute("type", "text");
         valueOfz.id = "valueOfz";
-        valueOfz.value = "0";
+        valueOfz.value = "";
         valueOfz.max = len.toString(); //max value of range slider equals to the length of the string
         valueOfz.name = str;
         valueOfz.setAttribute('oninput', 'updateTextInputz(valueOfz.value, valueOfx.name)');  //value of range slider will change
