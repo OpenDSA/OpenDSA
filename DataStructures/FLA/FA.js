@@ -979,6 +979,7 @@ var lambda = String.fromCharCode(955),
 
   // draggable functions
   function dragStart(event, node) {
+    $(document).trigger("jsav-speed-change", 50);
     var dragNode = node.helper.data("node");
     dragNode.wasHighlighted = dragNode.hasClass("jsavhighlight");
     dragNode.highlight();
@@ -989,6 +990,7 @@ var lambda = String.fromCharCode(955),
     if (!dragNode.wasHighlighted) {
       dragNode.unhighlight();
     }
+    $(document).trigger("jsav-speed-change", JSAV.ext.SPEED);
   };
 
   function dragging(event, node) {
