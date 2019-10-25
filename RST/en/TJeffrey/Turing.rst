@@ -496,18 +496,18 @@ unsolveable.
 Making More Complicated Machines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Obviously, Turing Machines can take an input and modify it.
+We will see examples of how this leads to powerful computational
+capability, even if it does not seem yet like they are so powerful.
+To get a quick idea of their power, consider the following relatively
+simple machine to accept :math:`L(a^nb^nc^n)`.
+This is significant, because this language is in fact not context
+free!
+Which means that this simple Turing Machine is doing something that no
+DFA, NFA, or PDA can do!
+
 .. TODO::
    :type: Diagram
-
-   Obviously, Turing Machines can take an input an modify it.
-   We will see examples of how this leads to powerful computational
-   capability, even if it does not seem yet like they are so powerful.
-   To get a quick idea of their power, consider the following relatively
-   simple machine to accept :math:`L(a^nb^nc^n)`.
-   This is significant, because this language is in fact not context
-   free!
-   Which means that this simple Turing Machine is doing something that no
-   DFA, NFA, or PDA can do!
 
    Add here a diagram showing the machine. What it needs to do is to
    write an X on the first a, b, c, and keep doing that until it
@@ -515,39 +515,56 @@ Making More Complicated Machines
    accept state). Of course, if it encounters something that it
    doesn't like, that's going to be a missing transition, so it rejects.
 
+But while Turing machines might be able to do powerful things, when
+operating at the individual state level, it can get rather difficult
+and tedious to program them.
+In fact, it might feel in some ways like writing machine code or
+assembly language.
+The secret to modern software is to build up more powerful tools,
+especially by packaging behavior together and manipulating the
+packages.
+We might be able to build up similar capability with Turing Machines.
 
-**Lemma**: If
+.. TODO::
+   :type: Prose
 
-.. math::
+   Since we are not using a one-sided tape, the following material
+   needs to be replaced with a treatment like in Linz. 
+   Note that the Stay "move" simplifies the if-then-else as compared
+   to Linz.
+   
+   **Lemma**: If
 
-   (q_1, w_1\underline{a_1}u_1) \vdash_M^* (q_2, ww_2\underline{a_2}u_2)
+   .. math::
 
-for string :math:`w` and
+      (q_1, w_1\underline{a_1}u_1) \vdash_M^* (q_2, ww_2\underline{a_2}u_2)
 
-.. math::
+   for string :math:`w` and
 
-   (q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3),
+   .. math::
 
-then
+      (q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3),
 
-.. math::
+   then
 
-   (q_1, w_1\underline{a_1}u_1) \vdash^*_M (q_3, ww_3\underline{a_3}u_3).
+   .. math::
 
-Insight: Since
-:math:`(q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3)`,
-this computation must take place without moving the head left of :math:`w_2`
-The machine cannot "sense" the left end of the tape.
-(And if it had moved left, it would have hung.)
-Thus, the head won't move left of :math:`w_2` even if it is not at the
-left end of the tape.
+      (q_1, w_1\underline{a_1}u_1) \vdash^*_M (q_3, ww_3\underline{a_3}u_3).
 
-This means that Turing machine computations can be combined into
-larger machines:
+   Insight: Since
+   :math:`(q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3)`,
+   this computation must take place without moving the head left of :math:`w_2`
+   The machine cannot "sense" the left end of the tape.
+   (And if it had moved left, it would have hung.)
+   Thus, the head won't move left of :math:`w_2` even if it is not at the
+   left end of the tape.
 
-* :math:`M_2` prepares string as input to :math:`M_1`.
-* :math:`M_2` passes control to :math:`M_1` with I/O head at end of input.
-* :math:`M_2` retrieves control when :math:`M_1` has completed.
+   This means that Turing machine computations can be combined into
+   larger machines:
+
+   * :math:`M_2` prepares string as input to :math:`M_1`.
+   * :math:`M_2` passes control to :math:`M_1` with I/O head at end of input.
+   * :math:`M_2` retrieves control when :math:`M_1` has completed.
 
 Here are some basic machines and notation
 
