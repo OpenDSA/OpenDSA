@@ -6,7 +6,7 @@ var TuringMachine = function(jsav, options) {
 	this.transitions = [];
 }
 
-JSAV.ext.ds.tm = function (options) {
+JSAV.ext.ds.TM = function (options) {
 	var opts = $.extend(true, {visible: true, autoresize: true}, options);
 	return new TuringMachine(this, opts);
 };
