@@ -1,26 +1,34 @@
-/* ADT list - array-based implementation
- * July 2014
- */
-#ifndef ALIST_H
-#define ALIST_H
+/* ADT list */
 
-const int MAX_SIZE = 10;
+#ifndef LIST_H
+#define LIST_H
+
+#include <string>
+
+using namespace std;
+
 typedef int ListItemType;
 
 /* *** ODSATag: ListADT *** */
-class List { // List class ADT 
-  // Remove all contents from the list, so it is once again empty
+// List class ADT.
+class List { // List class ADT
 public:
+  // Destructor
+  virtual ~ List () =default; // TODO do we want to do this?
+
+  // Remove all contents from the list, so it is once again empty
   virtual void clear() =0;
 
-  // Inserts an item into the list at position index
-  virtual bool insert(const ListItemType& newItem) =0;
-    
+  // Insert "it" at the current location
+  // The client must ensure that the list's capacity is not exceeded
+  virtual bool insert(const ListItemType& it) =0;
+
   // Append "it" at the end of the list
   // The client must ensure that the list's capacity is not exceeded
-  virtual bool append(const ListItemType& newItem) =0;
+  virtual bool append(const ListItemType& it) =0;
 
-  // Deletes an item from the list at a given position
+  // Remove and return the current element
+// TODO  virtual ListItemType& remove() =0;
   virtual ListItemType remove() =0;
 
   // Set the current position to the start of the list
@@ -29,18 +37,18 @@ public:
   // Set the current position to the end of the list
   virtual void moveToEnd() =0;
 
-   // Move the current position one step left, no change if already at beginning
+  // Move the current position one step left, no change if already at beginning
   virtual void prev() =0;
 
   // Move the current position one step right, no change if already at end
   virtual void next() =0;
-  
-  //Return the number of items stored in the list
+
+  // Return the number of elements in the list
   virtual int length() =0;
 
   // Return the position of the current element
   virtual int currPos() =0;
-  
+
   // Set the current position to "pos"
   virtual bool moveToPos(int pos) =0;
 
@@ -50,7 +58,10 @@ public:
   // Return the current element
   virtual ListItemType getValue() =0;
   
+  virtual bool isEmpty() =0;
+
+  virtual string toString() =0;
 };
 /* *** ODSAendTag: ListADT *** */
 
-#endif /* ALIST H */
+#endif /* LIST_H */
