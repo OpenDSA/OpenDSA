@@ -14,7 +14,7 @@ typedef int ListItemType;
 class List { // List class ADT
 public:
   // Destructor
-  virtual ~ List () =default; // TODO do we want to do this?
+  virtual ~ List () =default; // TODO discuss in text on why desirable when base class
 
   // Remove all contents from the list, so it is once again empty
   virtual void clear() =0;
@@ -28,7 +28,6 @@ public:
   virtual bool append(const ListItemType& it) =0;
 
   // Remove and return the current element
-// TODO  virtual ListItemType& remove() =0;
   virtual ListItemType remove() =0;
 
   // Set the current position to the start of the list

@@ -55,13 +55,10 @@ public:
 
 /* *** ODSATag: AListRemove *** */
   // Remove and return the current element
-  // TODO should this be ListItemType& ? If so, remove cstdlib include
+  // TODO maybe discuss in text about why not ListItemType&
   ListItemType remove() {
-  // TODO ListItemType& remove() {
-    if ((curr < 0) || (curr >= listSize))  // No current element
-      return (ListItemType)NULL;  // TODO discuss weird cast in text
-      // TODO return &(new int(0)); // TODO messed up
-    // TODO ListItemType* it = &listArray[curr];     // Copy the element
+    if ((curr < 0) || (curr >= listSize)) // No current element
+      return (ListItemType)NULL;  // TODO discuss weird cast in text and how this isn't great since probably shows up as 0 with int.
     ListItemType it = listArray[curr];     // Copy the element
     for(int i = curr; i < listSize-1; i++) // Shift them down
       listArray[i] = listArray[i+1];
@@ -88,7 +85,6 @@ public:
   bool isAtEnd() { return curr == listSize; }
 
   // Return the current element
-  // TODO & ? above
   ListItemType getValue() {
     if ((curr < 0) || (curr >= listSize)) // No current element
       return (ListItemType)NULL;

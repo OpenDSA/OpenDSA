@@ -1,6 +1,5 @@
 // #include "LList.h"
 #include "AList.h"
-// #include "FList.h"
 #include "ErrorRec.h"
 #include <iostream>
 #include <fstream>
@@ -88,6 +87,8 @@ int main(void)
   AList *list = new AList();
 
   ListTest::testList(*list);
+
+  delete list;
 
   record->feedback();
 
