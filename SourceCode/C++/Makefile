@@ -39,13 +39,14 @@ lists: ListTest
 
 ListTest: build build/ListTest/success
 
-build/ListTest/success: Lists/List.h Lists/AList.h Lists/ListTest.cpp
+build/ListTest/success: Lists/List.h Lists/AList.h Lists/ListTest.cpp Utils/ErrorRec.h
 	@echo "Array-based List Test"
 	-@rm -rf build/ListTest
 	@mkdir build/ListTest
 	@cp Lists/List.h build/ListTest
 	@cp Lists/AList.h build/ListTest
 	@cp Lists/ListTest.cpp build/ListTest
+	@cp Utils/ErrorRec.h build/ListTest
 	cd build/ListTest; \
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o ListTest.o ListTest.cpp; \
 	$(CC) $(CFLAGS) ListTest.o -o ListTest; \

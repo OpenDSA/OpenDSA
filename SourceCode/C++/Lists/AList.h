@@ -13,7 +13,7 @@ using namespace std;
 /* *** ODSATag: AListVars *** */
 class AList : public List {
   ListItemType* listArray;            // Array holding list elements
-  const int DEFAULT_SIZE = 10;        // Default size
+  static const int DEFAULT_SIZE = 10; // Default size
   int maxSize;                        // Maximum size of list
   int listSize;                       // Current # of list items
   int curr;                           // Position of current element
