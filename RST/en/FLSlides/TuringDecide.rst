@@ -29,41 +29,30 @@ Decideability vs. Acceptability
 
    :math:`M` erases the marks from right to left, with current parity
    encode by state.
-   Once blank at left is reached, mark :math:`\fbox{Y}` or
+   Once the string is finished, mark :math:`\fbox{Y}` or
    :math:`\fbox{N}` as appropriate.
 
 
 .. slide:: Turing-acceptable Languages (1)
 
-   | :math:`M` **accepts** a string :math:`w` if :math:`M` halts on
+   | :math:`M` **accepts** a string :math:`w` if :math:`M` halts on a final state for the
      input :math:`w`.
    |    :math:`M` accepts a language iff :math:`M` halts on :math:`w`
         iff :math:`w \in L`. 
    | A language is **Turing-acceptable** if some Turing machine accepts it.
 
-   | Example: :math:`\Sigma_0 = \{a, b\}`,
-     :math:`L = \{w \in \Sigma^*_0: w\ \mbox{contains at least one}\ a\}`.
-   |
-   |    :math:`\begin{array}{lll} \hline q&\sigma&\delta(q, \sigma)\\ \hline q_0&a&(h, a)\\ q_0&b&(q_0, L)\\ q_0&\#&(q_0, L)\\ \hline \end{array}`
-
-   | Does this machine show the language to be Turing decidable?
-
-   .. The machine, as written, is only Turing Acceptable.
-      It halts if string is in the language, and hangs left otherwise.
-
 
 .. slide:: Turing-acceptable Languages (2)
 
-   | Can this machine be rewritten to be Turing decidable?
-   |    Of course. Instead of just running left when string is not in
-        language, invoke another state that means "seen an :math:`a`",
-        and print :math:`\fbox{Y}` if we reach # in that state.
+   | Can a Turing acceptable be rewritten to be Turing decidable?
+   |    Of course. Instead of just accepting a string in the
+        language, print :math:`\fbox{Y}`.
    |    Otherwise, print :math:`\fbox{N}`.
    |    Need to "clean up" either way.
 
    | Every Turing-decidable language is Turing-acceptable.
-   |    If we would have printed :math:`\fbox{Y}`, then halt.
-   |    If we would have printed :math:`\fbox{N}`, then hang left.
+   |    If we would have printed :math:`\fbox{Y}`, then halt on an accept state.
+   |    If we would have printed :math:`\fbox{N}`, then do not halt on an accept state.
 
 
 .. slide:: Turing-acceptable Languages (3)
@@ -72,15 +61,12 @@ Decideability vs. Acceptability
    |    This is the Halting Problem.
 
    | Of course, if the TA language would halt, we write :math:`\fbox{Y}`.
-   | But if the TA lang would hang, can we \emph{always} replace it with
+   | But if the TA lang would not halt on an accept state, it may loop forever, can we always replace it with
      logic to write :math:`\fbox{N}` instead?
    |    Example: Collatz function.
 
-   .. Does the following loop terminate for ALL positive integers n?
-
+   | Does the following loop terminate for ALL positive integers n?
       while (n > 1)
-        if (even(n))
-          n = n/2;
-        else
-          n = 3n + 1;
+        if (even(n))          n = n/2;
+        else          n = 3n + 1;
 
