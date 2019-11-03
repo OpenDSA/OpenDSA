@@ -145,17 +145,10 @@ states in :math:`Q` and with edges corresponding to the transitions in
 Further, we can visualize the processing of the machine as the
 movement of a head across the tape.
 
-.. TODO::
-   :type: Slideshow Revision
-
-   Jeffey -- Please modify the following slideshow so that there is a
-   blank square (that is, a square with a # symbol in it) to the left
-   of the first 'a'.
-
 .. inlineav:: RClearCON ss
    :long_name: Turing Machine RClear
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/RClearCON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/RClearCON.js
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
    :align: center
    :output: show
 
@@ -320,15 +313,9 @@ If it never sees a 'b', then it will never halt.
 This means that it goes into an infinite loop (or hangs) anytime the
 input string does not contain a 'b'.
 
-.. TODO::
-   :type: Diagram
-
-   Jeffrey -- Show the machine that has state q0 that stays in state
-   q0 for 'a' or #, and goes to (final) state q1 when it sees 'b'.    
-
 .. inlineav:: TMabCON dgm
-   :links: DataStructures/FLA/FLA.css AV/TJeffrey/TMabCON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TMabCON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMabCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMabCON.js
    :align: center
    :output: show
 
@@ -390,24 +377,19 @@ computes :math:`f': \{I\}^* \rightarrow \{I\}^*` where
       (q_0, \#\underline{I}I\#) \vdash_M (q_0, \#I\underline{I}\#) \vdash_M
       (q_0, \#II\underline{\#}) \vdash_M (h, \#III\underline{\#}).
 
+   .. inlineav:: TMPlusoneCON ss
+      :long_name: Turing Machine Replace
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMPlusoneCON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMPlusoneCON.js
+      :align: center
+      :output: show
+
    In general,
    :math:`(q_0, \#\underline{I^n}\#) \vdash^*_M (h, \#I^{n+1}\underline{\#})`.
    What about :math:`n = 0`?
    The input is no marks in unary, and it works OK (that is, the
    result is the head to the right of a single mark).
 
-.. TODO::
-   :type: Slideshow
-
-   Add to the previous example a slideshow showing the graph version
-   and the behavior on this input.
-      
-.. inlineav:: TMReplaceCON ss
-   :long_name: Turing Machine Replace
-   :links: DataStructures/FLA/FLA.css AV/TJeffrey/TMReplaceCON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TMReplaceCON.js
-   :align: center
-   :output: show
 
 Turing-Decideable vs. Turing-Acceptable Languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -520,17 +502,15 @@ Which means that this simple Turing Machine is doing something that no
 DFA, NFA, or PDA can do!
 
 .. TODO::
-   :type: Diagram
+   :type: Slideshow
 
-   Add here a diagram showing the machine. What it needs to do is to
-   write an X on the first a, b, c, and keep doing that until it
-   either turns all of the a's, b's, c's to X's (and then goes to an
-   accept state). Of course, if it encounters something that it
-   doesn't like, that's going to be a missing transition, so it rejects.
+   This diagram looks good. But let's add a slideshow to show two
+   examples: One that is in the language (aabbcc) and one that is not
+   in the language (aabbbc).
 
-.. inlineav:: TMXCON dgm
-   :links: DataStructures/FLA/FLA.css AV/TJeffrey/TMXCON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TMXCON.js
+.. inlineav:: TManbncnCON dgm
+   :links: DataStructures/FLA/FLA.css AV/TJeffrey/TManbncnCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TManbncnCON.js
    :align: center
    :output: show
 
