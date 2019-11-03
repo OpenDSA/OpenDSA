@@ -155,7 +155,7 @@ movement of a head across the tape.
 .. inlineav:: RClearCON ss
    :long_name: Turing Machine RClear
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/RClearCON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/RClearCON.js
    :align: center
    :output: show
 
@@ -326,6 +326,13 @@ input string does not contain a 'b'.
    Jeffrey -- Show the machine that has state q0 that stays in state
    q0 for 'a' or #, and goes to (final) state q1 when it sees 'b'.    
 
+.. inlineav:: TMabCON dgm
+   :links: DataStructures/FLA/FLA.css AV/TJeffrey/TMabCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TMabCON.js
+   :align: center
+   :output: show
+
+
 
 Turing Acceptors and Turing Transducers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -395,6 +402,12 @@ computes :math:`f': \{I\}^* \rightarrow \{I\}^*` where
    Add to the previous example a slideshow showing the graph version
    and the behavior on this input.
       
+.. inlineav:: TMReplaceCON ss
+   :long_name: Turing Machine Replace
+   :links: DataStructures/FLA/FLA.css AV/TJeffrey/TMReplaceCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TMReplaceCON.js
+   :align: center
+   :output: show
 
 Turing-Decideable vs. Turing-Acceptable Languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -514,6 +527,12 @@ DFA, NFA, or PDA can do!
    either turns all of the a's, b's, c's to X's (and then goes to an
    accept state). Of course, if it encounters something that it
    doesn't like, that's going to be a missing transition, so it rejects.
+
+.. inlineav:: TMXCON dgm
+   :links: DataStructures/FLA/FLA.css AV/TJeffrey/TMXCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TMXCON.js
+   :align: center
+   :output: show
 
 But while Turing machines might be able to do powerful things, when
 operating at the individual state level, it can get rather difficult
