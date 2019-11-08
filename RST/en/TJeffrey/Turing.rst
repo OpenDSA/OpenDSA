@@ -31,7 +31,7 @@ capabilities.
 We will discuss a particular one, called a :term:`Turing machine`.
 As we define "capability", the key is *ability*, not *efficiency*.
 
-The necessary capabilites for any such "machine" are these:
+The necessary capabilities for any such "machine" are these:
 
 * Read
 * Write
@@ -68,7 +68,7 @@ Note that including :math:`\#` in the alphabet is for convenience
 only.
 We want to be able to read our specifications without being confused.
 
-The input to the machine is the intial contents of the tape, which is
+The input to the machine is the initial contents of the tape, which is
 described by listing all of the tape squares from the leftmost
 non-blank tape cell to the rightmost non-blank tape cell.
 Naturally, there must be a finite number of non-blank symbols on the
@@ -475,9 +475,9 @@ the infinite loop).
 Recall that we only care about the machine's behavior when it begins
 in a legal start configuration.)
 
-But, we can ask again: Is every Turing-acceptible language Turing
+But, we can ask again: Is every Turing-acceptable language Turing
 decidable?
-In other words, whenever the Turing-acceptible machine would hang,
+In other words, whenever the Turing-acceptable machine would hang,
 can we *always* replace it with logic to trigger a non-existant
 transition instead?
 This is known as the :term:`Halting Problem`.
@@ -519,10 +519,11 @@ operating at the individual state level, it can get rather difficult
 and tedious to program them.
 In fact, it might feel in some ways like writing machine code or
 assembly language.
-The secret to modern software is to build up more powerful tools,
+The secret to success in modern software development is to build up
+more powerful tools,
 especially by packaging behavior together and manipulating the
 packages.
-We might be able to build up similar capability with Turing Machines.
+We can hope to build up similar capability with Turing Machines.
 
 .. TODO::
    :type: Prose
@@ -562,7 +563,8 @@ We might be able to build up similar capability with Turing Machines.
    larger machines:
 
    * :math:`M_2` prepares string as input to :math:`M_1`.
-   * :math:`M_2` passes control to :math:`M_1` with I/O head at end of input.
+   * :math:`M_2` passes control to :math:`M_1` with I/O head at the
+     end of the input.
    * :math:`M_2` retrieves control when :math:`M_1` has completed.
 
 Here are some basic machines and notation
@@ -585,7 +587,7 @@ Here are some basic machines and notation
    :align: center
 
    First do :math:`M_1`, then do :math:`M_2` or :math:`M_3` depending
-   on current symbol.
+   on the current symbol.
 
 |
 
@@ -639,8 +641,8 @@ Here are some basic machines and notation
 Turing Machine Extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When we give extentions or new functionality to a computing system,
-sometimes they change something fundamental about the capabilies of
+When we give extensions or new functionality to a computing system,
+sometimes they change something fundamental about the capabilities of
 the system.
 For example, when we add non-determinism to an algorithm, we **might**
 change the cost of the underlying problem from exponential to
@@ -675,7 +677,7 @@ Machines.
   Again, we can simulate this with encoding multiple symbols into a
   single table cell.
   For example, to simulate two tapes (each with a head), we encode in
-  each cell the corresponding two symbols, and a two binary markers to
+  each cell the corresponding two symbols, and two binary markers to
   indicate if the tape head is currently in the corresponding cell of
   the two tapes.
 
@@ -704,8 +706,8 @@ Machines.
 
 * Non-determinism
 
-  We can simulate nondeterministic behavior in sequence, doing all
+  We can simulate non-deterministic behavior in sequence, doing all
   length 1 computations, then length 2, etc., until we reach a halt
-  state for one of the non-deteriministic choices.
+  state for one of the non-deterministic choices.
   So we see that while non-determinism can save a lot of time, it does
   not change what can (eventually) be done.
