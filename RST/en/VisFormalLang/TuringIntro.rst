@@ -15,8 +15,8 @@ Models of Computation
 
 So far we have seen a few simple machine types, such as DFA, NFA, PDA,
 RegEx.
-And we have seen corresponding grammars: Regular grammars, context
-free grammars, etc.
+And we have seen corresponding grammars: Regular grammars,
+context-free grammars, etc.
 There are some differences in the machines.
 DFAs are deterministic.
 NFAs add non-determinism, which simply means that there can be
@@ -27,7 +27,7 @@ These machines all have some similarities.
 They all take an input string.
 They all march across the string from left to right, one character at
 each step.
-They stop when they reach the end of the string, and then make a
+They stop when they reach the end of the string and then make a
 simple decision: If the machine is in a final state, then it accepts
 the string, and otherwise it rejects the string.
 In other words, they are :term:`acceptors` for some language.
@@ -52,7 +52,7 @@ Of course, modern peripheral devices like keyboards, mice, and computer
 monitors give us rich ways to express input strings (perhaps as button
 presses), and rich ways to interpret output strings (say, as
 pictures).
-But its not a huge stretch of the imagination to consider computation
+But it's not a huge stretch of the imagination to consider computation
 as converting an input string to an output string.
 
 This concept of converting is far more powerful than simple accepting.
