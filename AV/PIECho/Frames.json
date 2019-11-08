@@ -12,7 +12,7 @@
         "q2": {
           "type": "select",
           "src": "../../../AV/Development/formal_language/FAEditor.html",
-          "question":"Suppose we have \\Sigma = {$a$, $b$}, which of the following are valid strings?",
+          "question":"Suppose we have $\\Sigma$ = {$a$, $b$}, which of the following are valid strings?",
           "answer": ["$babababbaba$", "$a$"],
           "choices": ["$babababbaba$", "$a$","{$aaa$, $bbb$}", "$bacbabcba$" ]
         },
