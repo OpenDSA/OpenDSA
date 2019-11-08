@@ -242,55 +242,30 @@ such that :math:`L = L(M)`.
 
    :math:`L = \{a^nb^m | m > n, m, n > 0\}, \Sigma =\{a, b\}, \Gamma = \{z, a\}`
 
-   .. odsafig:: Images/lt7pda2.png
-      :width: 400
+   .. inlineav:: PDADeterministic dgm
+      :links: AV/VisFormalLang/PDA/PDADeterministic.css
+      :scripts: AV/VisFormalLang/PDA/PDADeterministic.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
-
-
-.. inlineav:: PDADeterministic dgm
-   :links: AV/VisFormalLang/PDA/PDADeterministic.css
-   :scripts: AV/VisFormalLang/PDA/PDADeterministic.js
-   :align: center
 
 
 .. topic:: Example
            
    :math:`L = \{a^nb^{n+m}c^m | n, m > 0\}, \Sigma = \{a, b, c\}`
 
-   .. odsafig:: Images/lt7pda5.png
-      :width: 400
+   .. inlineav:: PDAProbDeterministic dgm
+      :links: AV/VisFormalLang/PDA/PDAProbDeterministic.css
+      :scripts: AV/VisFormalLang/PDA/PDAProbDeterministic.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
-
-
-.. inlineav:: PDAProbDeterministic dgm
-   :links: AV/VisFormalLang/PDA/PDAProbDeterministic.css
-   :scripts: AV/VisFormalLang/PDA/PDAProbDeterministic.js
-   :align: center
-
 
 
 .. topic:: Example
            
    :math:`L = \{a^nb^{2n} | n > 0\}, \Sigma=\{a, b\}` 
 
-   .. odsafig:: Images/lt7pda6.png
-      :width: 400
+   .. inlineav:: PDANonDeterministic dgm
+      :links: AV/VisFormalLang/PDA/PDANonDeterministic.css
+      :scripts: AV/VisFormalLang/PDA/PDANonDeterministic.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
-
-
-.. inlineav:: PDANonDeterministic dgm
-   :links: AV/VisFormalLang/PDA/PDANonDeterministic.css
-   :scripts: AV/VisFormalLang/PDA/PDANonDeterministic.js
-   :align: center
 
 
 

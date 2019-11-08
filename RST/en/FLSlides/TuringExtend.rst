@@ -30,7 +30,7 @@ Turing Machine Extensions
 
 .. slide:: Extensions (1)
 
-   | 2-way infinite tape
+   | 2-way infinite tape (Our model)
    |    Just bend infinite tape in the middle to get back to one-way
         tape, but with two layers.
         Now, expand the language. The new language is ordered pairs of the
@@ -40,11 +40,6 @@ Turing Machine Extensions
       :links: AV/SeniorAlgAnal/TuringExt1CON.css
       :scripts: AV/SeniorAlgAnal/TuringExt1CON.js
       :align: center
-
-   | Linz model: Write to tape AND move L or R
-   |    My machine could use a second state to do the move.
-   |    Linz machine could use a second state to "move back" to
-        implement "stay"
 
 
 .. slide:: Extensions (2)
@@ -146,9 +141,9 @@ Turing Machine Extensions
 
 .. slide:: The Language Hierarchy
 
-   | Turing Acceptable (Recur Enum) Language == Unrestricted Grammar
-   | Turing Decideable (Recursive) Language == Linear Bounded Automata
-   | Context-sensitive Grammar
+   | Turing Acceptable (Recur Enum) Language == Unrestricted Grammar (Turing Acceptable)
+   | Turing Decideable (Recursive) Language == Turing Decideable
+   | Context-sensitive Grammar == Linear Bounded Automata
    | Context-free Grammar == Non-deterministic Pushdown Automata
    | Deterministic Context-free Grammar == Deterministic Pushdown Automata
    | Regular Expression == Regular Grammar == DFA == NFA

@@ -1,8 +1,8 @@
 [
     {
-        "expression": "\\{w \\mid w \\in \\{a, b\\}^*",
-        "description": "Construct the PDA that accepts L(___)",
-        "type": "expression",
+        "expression": "\\{w \\mid w \\in \\{a, b\\}^* \\;\\;and\\;\\; w\\;\\; has\\;\\; twice\\;\\; as\\;\\; many\\;\\; n_a(w)\\;\\;as\\;\\; n_b(w)",
+        "description": "Construct the PDA that accepts ",
+        "type": "both",
         "testCases": [
             {
                 "": false
@@ -20,7 +20,7 @@
                 "aaabab": true
             },
             {
-                "baabbbaaaa": true
+                "baabbbaaaa": false
             },
             {
                 "bbbaaaaaabaa": true
@@ -32,7 +32,7 @@
                 "bbbbbbbbbb": false
             },
             {
-                "baabbaaaa": false
+                "baabbaaaa": true
             }
         ],
         "graph": {

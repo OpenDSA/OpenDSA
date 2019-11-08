@@ -7,7 +7,50 @@ var lambda = String.fromCharCode(955),
 	var jsav = new JSAV("av");
 	jsav.displayInit();
 	var g;
+	var exerController,
+	exerciseLocation;
 
+	var loadHandler = function()
+	{
+		
+		type = $('h1').attr('id');
+		if(type == 'tester'){
+			exerciseLocation = getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
+        	exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: "PDA"});
+        	exerController.load();
+        
+        	var exercise = jsav.flexercise(modelSolution, initializeExercise,
+          	{feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController});
+        	exercise.reset();
+		}
+		else{
+			g = initGraph({layout: "manual"});
+			g.layout();
+			resetUndoButtons();
+			jsav.displayInit();
+		}
+	}
+	//Function sent to exercise constructor to initialize the exercise
+	function initializeExercise() {
+		
+	  }
+	  
+	  //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
+	  //In our case, we will make this function show the test cases only.
+	  function modelSolution(modeljsav) {
+		var testCases = exerController.tests[0]["testCases"];
+		var list = [["Test Number", "Test String", "Accept/Reject"]];
+		for (i = 0; i < testCases.length; i++) {
+		  var testNum = i + 1;
+		  var testCase = testCases[i];
+		  var input = Object.keys(testCase)[0];
+		  list.push([testNum, input, testCase[input]]);
+		}
+		var model = modeljsav.ds.matrix(list);
+		//layoutTable(model);
+		modeljsav.displayInit();
+		return model;
+	  }  
 	// initialize graph
 	var initGraph = function(opts) {
 		g = jsav.ds.TM($.extend({width: '750px', height: 440, emptystring: square, editable: true}, opts));
@@ -509,9 +552,6 @@ var lambda = String.fromCharCode(955),
 		}
 	});
 
-	g = initGraph({layout: "manual"});
-	g.layout();
-	resetUndoButtons();
-	jsav.displayInit();
+	loadHandler();
 
 }(jQuery));

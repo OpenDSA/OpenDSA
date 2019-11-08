@@ -34,6 +34,7 @@ var lambda = String.fromCharCode(955),
     this._nodes = [];
     this._edges = [];
     this._alledges = null;
+    this.isDraggable = false;
     this.alphabet = {}; // input alphabet
     this.jsav = jsav;
     this.initial; // initial state
@@ -229,12 +230,17 @@ var lambda = String.fromCharCode(955),
     }
     var newNode = this.newNode(value, options);
     newNode.automaton = this;
-    newNode.element.draggable({
-      start: dragStart,
-      stop: dragStop,
-      drag: dragging,
-      containment: "parent"
-    });
+      newNode.element.draggable({
+        start: dragStart,
+        stop: dragStop,
+        drag: dragging,
+        containment: "parent"
+      });
+      if (!this.isDraggable) {
+        newNode.element.draggable('disable');
+      } else {
+        newNode.element.draggable('enable');
+      }
     if (this.editable) {
       newNode.element.contextmenu(function (e) {
         newNode.showMenu(e);
@@ -254,12 +260,14 @@ var lambda = String.fromCharCode(955),
   }
 
   automatonproto.enableDragging = function () {
+    this.isDraggable = true;
     for (var i = this._nodes.length; i--;) {
       this._nodes[i].element.draggable('enable');
     }
   };
 
   automatonproto.disableDragging = function () {
+    this.isDraggable = false;
     for (var i = 0; i < this._nodes.length; i++) {
       this._nodes[i].element.draggable('disable');
     }
@@ -827,11 +835,11 @@ var lambda = String.fromCharCode(955),
    */
   stateproto.getIncoming = function () {
     var edges = [];
-    for (var i = 0; i < this.container._edges.length; i++ ) {
+    for (var i = 0; i < this.container._edges.length; i++) {
       for (var j = 0; j < this.container._edges[i].length; j++) {
-        if (this.container._edges[i][j].end() === this) {   
+        if (this.container._edges[i][j].end() === this) {
           edges.push(this.container._edges[i][j]);
-        }  
+        }
       }
     }
     return edges;
@@ -971,6 +979,7 @@ var lambda = String.fromCharCode(955),
 
   // draggable functions
   function dragStart(event, node) {
+    $(document).trigger("jsav-speed-change", 50);
     var dragNode = node.helper.data("node");
     dragNode.wasHighlighted = dragNode.hasClass("jsavhighlight");
     dragNode.highlight();
@@ -981,10 +990,10 @@ var lambda = String.fromCharCode(955),
     if (!dragNode.wasHighlighted) {
       dragNode.unhighlight();
     }
+    $(document).trigger("jsav-speed-change", JSAV.ext.SPEED);
   };
 
   function dragging(event, node) {
-    $('path[opacity="0"]').remove();
     var dragNode = node.helper.data("node");
     g = dragNode.automaton;
     if (dragNode == g.initial) {
@@ -1151,7 +1160,7 @@ var lambda = String.fromCharCode(955),
       if (this.end().element.position().top <= 0) {
         this.end().element.offset({ top: this.end().element.offset().top + this.end().element.position().top + 50 });
         this.endnode.getIncoming().forEach(edge => edge.layout());
-      } else if (this.end().element.height() + this.end().element.position().top >= 200 ) {
+      } else if (this.end().element.height() + this.end().element.position().top >= 200) {
         this.end().element.offset({ top: this.end().element.offset().top - 50 });
         this.endnode.getIncoming().forEach(edge => edge.layout());
       }

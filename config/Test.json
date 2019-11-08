@@ -65,6 +65,7 @@
   },
   "chapters": {
     "Stuff": {
+      "NP/threeSAT_to_hamiltonianCycle": {},
       "VisFormalLang/CFL":{}
     },
     "Appendix": {

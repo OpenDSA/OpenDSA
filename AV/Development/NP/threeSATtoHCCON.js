@@ -407,15 +407,15 @@ $(document).ready(function () {
   PE3[1][0][1]=g.addEdge(C[1] , P[1][2]).addClass("clauseedge"); 
   PE3[1][1][0]=g.addEdge(P[2][2] , C[1]).addClass("clauseedge"); 
   PE3[1][1][1]=g.addEdge(C[1] , P[2][3]).addClass("clauseedge"); 
-  PE3[1][2][0]=g.addEdge(C[1] , P[3][2]).addClass("clauseedge"); 
-  PE3[1][2][1]=g.addEdge(P[3][3] , C[1]).addClass("clauseedge"); 
+  PE3[1][2][0]=g.addEdge(P[3][2] , C[1]).addClass("clauseedge"); 
+  PE3[1][2][1]=g.addEdge(C[1] , P[3][3]).addClass("clauseedge"); 
 
-  PE3[2][0][0]=g.addEdge(P[0][5] , C[2]).addClass("clauseedge"); 
-  PE3[2][0][1]=g.addEdge(C[2] , P[0][4]).addClass("clauseedge"); 
-  PE3[2][1][0]=g.addEdge(P[1][4] , C[2]).addClass("clauseedge"); 
-  PE3[2][1][1]=g.addEdge(C[2] , P[1][5]).addClass("clauseedge"); 
-  PE3[2][2][0]=g.addEdge(C[2] , P[3][4]).addClass("clauseedge"); 
-  PE3[2][2][1]=g.addEdge(P[3][5] , C[2]).addClass("clauseedge"); 
+  PE3[2][0][0]=g.addEdge(C[2] , P[0][5]).addClass("clauseedge"); 
+  PE3[2][0][1]=g.addEdge(P[0][4] , C[2]).addClass("clauseedge"); 
+  PE3[2][1][0]=g.addEdge(C[2] , P[1][4]).addClass("clauseedge"); 
+  PE3[2][1][1]=g.addEdge(P[1][5] , C[2]).addClass("clauseedge"); 
+  PE3[2][2][0]=g.addEdge(P[3][4] , C[2]).addClass("clauseedge"); 
+  PE3[2][2][1]=g.addEdge(C[2] , P[3][5]).addClass("clauseedge"); 
 
   for(var i=0;i<3;i++){
     for(var j=0;j<3;j++){
@@ -440,7 +440,7 @@ $(document).ready(function () {
   jsav.step();
 
   // Slide 17
-  label4 = jsav.label("a. right to left if $C_j$ contains $x_i$" , 
+  label4 = jsav.label("a. left to right if $C_j$ contains $x_i$" , 
                      {"left":40 , "top":75} );
   label5 = jsav.label("For example : $C_1$ i.e. ($x_1$ + $x_2$ + $\\overline{x_3}$)" 
                       +" contains $x_1$. So $C_1$ should be connected as:" , 
@@ -459,7 +459,7 @@ $(document).ready(function () {
 
   // Slide 18
   y1=250;
-  label7 = jsav.label("b. left to right if $C_j$ contains $\\overline{x_i}$", 
+  label7 = jsav.label("b. right to left if $C_j$ contains $\\overline{x_i}$", 
                       {"left":40 , "top":y1} );
   label8 = jsav.label("For example : $C_2$ i.e. ($\\overline{x_2}$ + $x_3$ + $x_4$) " 
                      +"contains $\\overline{x_2}$. So $\\overline{C_2}$ should be connected"
