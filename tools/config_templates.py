@@ -300,9 +300,9 @@ html_context = {"script_files": [
                 ],
                 "odsa_scripts": [
                   'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
-                  '%(eb2root)sJSAV/lib/jquery.transit.js',
-                  '%(eb2root)sJSAV/lib/raphael.js',
-                  '%(eb2root)sJSAV/build/JSAV-min.js',
+                  '%(eb2root)slib/jquery.transit.js',
+                  '%(eb2root)slib/raphael.js',
+                  '%(eb2root)slib/JSAV-min.js',
                   '_static/config.js',
                   '%(eb2root)slib/odsaUtils-min.js',
                   '%(eb2root)slib/odsaMOD-min.js',
@@ -313,7 +313,7 @@ html_context = {"script_files": [
                 ],
                 "css_files": [
                   '%(eb2root)slib/normalize.css',
-                  '%(eb2root)sJSAV/css/JSAV.css',
+                  '%(eb2root)slib/JSAV.css',
                   '%(eb2root)slib/odsaMOD-min.css',
                   'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
                   '%(eb2root)slib/odsaStyle-min.css'
