@@ -43,29 +43,29 @@ static boolean find(List L, Object k) {
 /* *** ODSAendTag: listfind *** */
 
   static void testInt(List l) {
-  // Check empty list
-  checkEmp(l);
+    // Check empty list
+    checkEmp(l);
 
-  // Test moveToStart, moveToEnd, prev, and next
-  doSomethingOnEmpList(l);
+    // Test moveToStart, moveToEnd, prev, and next
+    doSomethingOnEmpList(l);
 
-  // Compare list with java.util.list to test length, getValue,
-  // toString, currPos, and remove. Add items by inserting
-  LinkedList<Object> tester = new LinkedList<Object>();
-  for (int i = 0; i < TEST_SIZE; i++) {
-    checkIns(l, tester, 100 + i);
-  }
+    // Compare list with java.util.list to test length, getValue,
+    // toString, currPos, and remove. Add items by inserting
+    LinkedList<Object> tester = new LinkedList<Object>();
+    for (int i = 0; i < TEST_SIZE; i++) {
+     checkIns(l, tester, 100 + i);
+    }
 
-  // Clear both lists
-  reset(l, tester);
+    // Clear both lists
+    reset(l, tester);
 
-  // Compare list with java.util.list to test length, getValue,
-  // toString, currPos, and remove. Add items by appending
-  for (int i = 0; i < TEST_SIZE; i++) {
-    checkApp(l, tester, 100 + i);
-  }
+    // Compare list with java.util.list to test length, getValue,
+    // toString, currPos, and remove. Add items by appending
+    for (int i = 0; i < TEST_SIZE; i++) {
+      checkApp(l, tester, 100 + i);
+    }
 
-  doSomethingOnNonEmpList(l, tester);
+    doSomethingOnNonEmpList(l, tester);
   }
 
   static void testStr(List l) {
