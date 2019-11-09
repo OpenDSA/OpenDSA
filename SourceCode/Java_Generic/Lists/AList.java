@@ -82,25 +82,25 @@ class AList<E> implements List<E> {
   }
   
   public String toString() {
-	StringBuffer out = new StringBuffer((listSize + 1) * 4);
+    StringBuffer out = new StringBuffer((listSize + 1) * 4);
 
-	out.append("< ");
-	for (int i = 0; i < curr; i++) {
-		out.append(listArray[i]);
-		out.append(" ");
-	}
-	out.append("| ");
-	for (int i = curr; i < listSize; i++) {
-		out.append(listArray[i]);
-		out.append(" ");
-	}
-	out.append(">");
-	return out.toString();
+    out.append("< ");
+    for (int i = 0; i < curr; i++) {
+      out.append(listArray[i]);
+      out.append(" ");
+    }
+    out.append("| ");
+    for (int i = curr; i < listSize; i++) {
+      out.append(listArray[i]);
+      out.append(" ");
+    }
+    out.append(">");
+    return out.toString();
   }
   
   //Tell if the list is empty or not
   public boolean isEmpty() {
-	  return listSize == 0;
+    return listSize == 0;
   }
 }
 /* *** ODSAendTag: AList *** */
