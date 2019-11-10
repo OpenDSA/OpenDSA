@@ -17,10 +17,10 @@ Pushdown Automata
 
 Recall: A DFA :math:`=(Q, \Sigma, \delta, q_0, F)`.
 
-   .. inlineav:: AutomataCON dgm
-      :links: AV/VisFormalLang/Intro/AutomataCON.css
-      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Intro/AutomataCON.js
-      :align: center
+.. inlineav:: DFAExampleCON dgm
+   :links: AV/VisFormalLang/FA/DFAExampleCON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFAExampleCON.js
+   :align: center
 
 In a DFA, the tape is read only, the head moves to the right only.
 DFAs are limited in power.
