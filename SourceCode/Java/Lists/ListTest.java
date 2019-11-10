@@ -42,6 +42,11 @@ static boolean find(List L, Object k) {
 }
 /* *** ODSAendTag: listfind *** */
 
+  /**
+  * Test a list holding int to see if it works correctly.
+  * 
+  * @param l List to test.
+  */
   static void testInt(List l) {
     // Check empty list
     checkEmp(l);
@@ -68,6 +73,11 @@ static boolean find(List L, Object k) {
     doSomethingOnNonEmpList(l, tester);
   }
 
+  /**
+  * Test a list holding String to see if it works correctly.
+  * 
+  * @param l List to test.
+  */
   static void testStr(List l) {
   // Check empty list
     checkEmp(l);
@@ -94,11 +104,23 @@ static boolean find(List L, Object k) {
     doSomethingOnNonEmpList(l, tester);
   }
 
+  /**
+   * Set both lists provided to empty/new state.
+   * 
+   * @param l OpenDSA list
+   * @param tester Java standard list
+   */
   static void reset(List l, LinkedList<Object> tester) {
     l.clear();
     tester.clear();
   }
 
+  /**
+   * Take a list that should be empty and perform operations
+   * to see if it acts as expected.
+   * 
+   * @param l List that should be empty for testing.
+   */
   static void doSomethingOnEmpList(List l) {
     // Nothing changes
     l.moveToStart();
@@ -108,6 +130,11 @@ static boolean find(List L, Object k) {
     checkEmp(l);
   }
 
+  /**
+   * Takes a list that should be empty and makes sure it acts as expected
+   *
+   * @param l List that should be empty for testing.
+   */
   static void checkEmp(List l) {
     // Test length with empty stack
     if (l.length() != 0) {
@@ -147,6 +174,12 @@ static boolean find(List L, Object k) {
     }
   }
 
+  /**
+   * Takes a list that should be nonempty and makes sure it acts as expected
+   *
+   * @param l List that should be nonempty for testing.
+   * @param tester Same logical list as l but standard Java one.
+   */
   static void doSomethingOnNonEmpList(List l, LinkedList<Object> tester) {
     // Test moveToStart and remove
     l.moveToStart();
@@ -227,24 +260,49 @@ static boolean find(List L, Object k) {
     }
   }
 
+  /**
+   * Check that inserting on both the OpenDSA and standard
+   * Java list works and does the same thing.
+   * 
+   * @param l List that should be nonempty for testing.
+   * @param tester Same logical list as l but standard Java one.
+   * @param item item to insert on lists
+   */
   static void checkIns(List l, LinkedList<Object> tester, Object item) {
     // Insert the item to both lists
     tester.add(l.currPos(), item);
     if (!l.insert(item)) {
       record.printError("The insert method in " + l.getClass() + " returned false.");
     }
+    // Verify lists are the same.
     check(l, tester, l.currPos());
   }
 
+  /**
+   * Check that appending on both the OpenDSA and standard
+   * Java list works and does the same thing.
+   * 
+   * @param l List that should be nonempty for testing.
+   * @param tester Same logical list as l but standard Java one.
+   * @param item item to append on lists
+   */
   static void checkApp(List l, LinkedList<Object> tester, Object item) {
     // Append the item to both lists
     tester.add(item);
     if (!l.append(item)) {
       record.printError("The append method in " + l.getClass() + " returned false.");
     }
+    // Verify lists are the same.
     check(l, tester, l.currPos());
   }
 
+  /**
+   * Check that two list are the same thing.
+   * 
+   * @param l OpenDSA List that should be nonempty for testing.
+   * @param tester Same logical list as l but standard Java one.
+   * @param curr index of current item on list
+   */
   static void check(List l, LinkedList<Object> tester, int curr) {
     // Check the length of list
     if (l.length() != tester.size()) {
@@ -300,6 +358,8 @@ static boolean find(List L, Object k) {
     l.moveToPos(curr);
   }
 
+  // TODO where does it do DLIST?
+  // TODO need to run in VSC
   /**
    * Runs tests on generic AList, LList, and DList Class with Integer and String.
    * 
