@@ -167,12 +167,10 @@ NOTE: 3-tuples above are configurations. Moving from one to another.
 
    Note: What is the smallest length string that is accepted? 
 
-   .. odsafig:: Images/lt7pda4.png
-      :width: 400
+   .. inlineav:: example_7_1_2 dgm
+      :links: AV/Ming/example_7_1_2.css
+      :scripts: AV/Ming/example_7_1_2.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
 
 .. topic:: Example
             

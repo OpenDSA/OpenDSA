@@ -17,7 +17,7 @@
         //var solutions = eq.solveFor('x').toString();
         //console.log(solutions);
 
-        /*var soln = nerdamer.solveEquations(
+        var soln = nerdamer.solveEquations(
                     [
                         "alpha_s=0.5",
                         "alpha_a=0.3",
@@ -30,16 +30,24 @@
                         "delta=delta_a+delta_s"
                     ]
                 )
-        */
+        //document.write(soln.toString())
+
         //Unknowns: \delta, \sigma, \delta_T
         //NOTE: All the constants have been substituted. Please follow patterns accordingly later on.
-        var soln = nerdamer.solveEquations(
+        /*var soln = nerdamer.solveEquations(
                     [
-                        "d=sigma*0.8/70000000000",
+                        "d=sigma*sqrt(0.8/70000000000)",
                         "d_T=0.000023*(100-25)*0.8",
                         "d+d_T=0.001"
                     ]
+        )*/
+        
+        var soln = nerdamer.solveEquations(
+                    [
+                        "0.32=sin(x)"
+                    ]
         )
+        
         /*
         var subs = [
              nerdamer("d_T=a*(T-T_0)*L"),

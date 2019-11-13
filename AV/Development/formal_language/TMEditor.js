@@ -54,6 +54,7 @@ var lambda = String.fromCharCode(955),
 	// initialize graph
 	var initGraph = function(opts) {
 		g = jsav.ds.TM($.extend({width: '750px', height: 440, emptystring: square, editable: true}, opts));
+		g.enableDragging();
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 		gHeight = g.element.height();
@@ -255,7 +256,6 @@ var lambda = String.fromCharCode(955),
 		cancel();
 		var jg = $(".jsavgraph");
 		jg.addClass("addEdges");
-		g.disableDragging();
 		$(".jsavgraph").addClass("addEdges");
 		$('.jsavgraph').off('mousedown').mousedown(mouseDown);
 		$('.jsavgraph').off('mousemove').mousemove(mouseMove);
@@ -446,6 +446,8 @@ var lambda = String.fromCharCode(955),
 		var direction = $('#direction').val();
 		var edgeWeight = toRead + ";" + toWrite + "," + direction;
 		g.addEdge(first, g.selected, {weight: edgeWeight});
+
+
 		$('.jsavedgelabel').off('click').click(labelClickHandler);
 
 		edgeInput.hide();

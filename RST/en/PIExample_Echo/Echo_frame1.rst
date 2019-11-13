@@ -15,7 +15,7 @@ Frame example
 --------------------------------------
 
 .. inlineav:: Frames ff
-   :links: AV/PIEcho/Frames.css
+   :links: AV/PIECho/Frames.css
    :scripts: AV/PIECho/Frames.js DataStructures/PIFrames.js
    :output: show
 
@@ -25,8 +25,8 @@ Frame example
 1.3.3
 -------------------------------
 .. inlineav:: ChomskyCON ss
-   :links:   AV/PIECho/section133CON.css
-   :scripts: AV/PIECho/section133CON.js
+   :links:   AV/PIECho/ChomskyCON.css
+   :scripts: AV/PIECho/ChomskyCON.js
    :output: show
    
 

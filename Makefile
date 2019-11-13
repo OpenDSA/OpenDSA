@@ -119,7 +119,7 @@ Weihao: min
 	python $(CONFIG_SCRIPT) config/Weihao.json --no-lms
 
 SimpleDemo: min
-	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
+	python2 $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
 
 CT: min
 	python $(CONFIG_SCRIPT) config/CT.json --no-lms
@@ -147,6 +147,9 @@ FL2019: min
 
 PIExample: min
 	python $(CONFIG_SCRIPT) config/PIExample.json --no-lms
+
+DeformsTesting: min
+	python $(CONFIG_SCRIPT) config/DeformsTesting.json --no-lms
 
 OpenPOPExercises: min
 	python $(CONFIG_SCRIPT) config/OpenPOPExercises.json --no-lms
