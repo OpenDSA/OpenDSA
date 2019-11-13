@@ -1,6 +1,6 @@
 $(document).ready(function(){
     "use strict";
-    var av_name = "section133CON";
+    var av_name = "ChomskyCON";
     var av = new JSAV(av_name);
     var arrow = String.fromCharCode(8594);
     var grammar =  "[\
