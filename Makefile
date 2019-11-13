@@ -268,8 +268,11 @@ WuChen: min
 Echo: min
 	python $(CONFIG_SCRIPT) config/Echo.json --no-lms
 
+Ming: min
+	python $(CONFIG_SCRIPT) config/Ming.json --no-lms
+
 nomin:
-	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
+	@cp lib/JSAV.js lib/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js
 	@cp lib/odsaMOD.js lib/odsaMOD-min.js
 	@cp lib/odsaAV.js lib/odsaAV-min.js
@@ -290,7 +293,6 @@ pull:
 	git pull
 	git submodule init
 	git submodule update
-	make -s -C JSAV
 	make -s min
 	make -C Doc
 

@@ -994,7 +994,6 @@ var lambda = String.fromCharCode(955),
   };
 
   function dragging(event, node) {
-    $('path[opacity="0"]').remove();
     var dragNode = node.helper.data("node");
     g = dragNode.automaton;
     if (dragNode == g.initial) {

@@ -11,7 +11,7 @@ $(document).ready(function() {
   av.umsg("Here we see a Turing Machine's states and transitions presented in the form of a graph. We also see the tape and the head when beginning to process input string 'aaaa'.");
   var url = "../../../AV/VisFormalLang/TM/Machines/TMexample1.jff";
   var tm = new av.ds.TM({width: 600, height: 200, left: 50, url: url});
-  av.ds.tape(["a", "a", "a", "a", "#", "#", "#"], 500, 50, "both");
+  av.ds.tape(["#", "a", "a", "a", "a", "#", "#", "#"], 470, 50, "both");
   var rect = av.g.rect(350 + xStart, 150 + yStart, 110, 80);
   var c1 = av.label("q0", {left: 370 + xStart, top: 155 + yStart});
   var c2 = av.label("q1", {left: 370 + xStart, top: 185 + yStart});
@@ -37,7 +37,7 @@ $(document).ready(function() {
   av.umsg("Step 2: The tape head shifts right one cell. The previous cell turns into a blank or # and the current state remains in q0.");
   g.translateX(30);
   c1.translateX(30);
-  av.ds.tape(["#", "a", "a", "a", "#", "#", "#"], 500, 50, "right");
+  av.ds.tape(["#", "#", "a", "a", "a", "#", "#", "#"], 470, 50, "right");
   c2.translateX(30);
   av.step();
 
@@ -45,7 +45,7 @@ $(document).ready(function() {
   av.umsg("Step 3: The tape head shifts right one cell.  The previous cell turns into a blank or # and the current state remains in q0.");
   g.translateX(30);
   c1.translateX(30);
-  av.ds.tape(["#", "#", "a", "a", "#", "#", "#"], 500, 50, "right");
+  av.ds.tape(["#", "#", "#", "a", "a", "#", "#", "#"], 470, 50, "right");
   c2.translateX(30);
   av.step();
 
@@ -53,7 +53,7 @@ $(document).ready(function() {
   av.umsg("Step 4: The tape head shifts right one cell.  The previous cell turns into a blank or # and the current state remains in q0.");
   g.translateX(30);
   c1.translateX(30);
-  av.ds.tape(["#", "#", "#", "a", "#", "#", "#"], 500, 50, "right");
+  av.ds.tape(["#", "#", "#", "#", "a", "#", "#", "#"], 470, 50, "right");
   c2.translateX(30);
   av.step();
 
@@ -61,7 +61,7 @@ $(document).ready(function() {
   av.umsg("Step 5: The tape head shifts right one cell to the value of #.  The previous cell turns into a blank or # and the current state remains in q0.");
   g.translateX(30);
   c1.translateX(30);
-  av.ds.tape(["#", "#", "#", "#", "#", "#", "#"], 500, 50, "right");
+  av.ds.tape(["#", "#", "#", "#", "#", "#", "#", "#"], 470, 50, "right");
   c2.translateX(30);
   av.step();
 

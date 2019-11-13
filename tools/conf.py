@@ -197,9 +197,9 @@ html_context = {"script_files": [
                 ],
                 "odsa_scripts": [
                   'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
-                  '../../../JSAV/lib/jquery.transit.js',
-                  '../../../JSAV/lib/raphael.js',
-                  '../../../JSAV/build/JSAV-min.js',
+                  '../../../lib/jquery.transit.js',
+                  '../../../lib/raphael.js',
+                  '../../../lib/JSAV-min.js',
                   '_static/config.js',
                   '../../../lib/odsaUtils-min.js',
                   '../../../lib/odsaMOD-min.js',
@@ -210,7 +210,7 @@ html_context = {"script_files": [
                 ],
                 "css_files": [
                   '../../../lib/normalize.css',
-                  '../../../JSAV/css/JSAV.css',
+                  '../../../lib/JSAV.css',
                   '../../../lib/odsaMOD-min.css',
                   'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
                   '../../../lib/odsaStyle-min.css'

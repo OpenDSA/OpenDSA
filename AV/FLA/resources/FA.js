@@ -89,7 +89,12 @@ var menuSelected; // variable for node that's right clicked on
 			stop: dragStop,
 			drag: dragging,
 			containment: "parent"
-		});
+    });
+    if (!this.isDraggable) {
+      newNode.element.draggable('disable');
+    } else {
+      newNode.element.draggable('enable');
+    }
 		newNode.element.contextmenu(function(e) {
 			this.data('node').showMenu(e);
 		});
