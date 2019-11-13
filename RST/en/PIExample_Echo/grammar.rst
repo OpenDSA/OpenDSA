@@ -13,7 +13,7 @@
 ================================
 1.3.3
 -------------------------------
-.. inlineav:: section133CON ff
-   :links:   AV/PIECho/section133CON.css
-   :scripts: DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/PIECho/section133CON.js
+.. inlineav:: ChomskyCON ff
+   :links:   AV/PIECho/ChomskyCON.css
+   :scripts: DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/PIECho/ChomskyCON.js
    :output: show

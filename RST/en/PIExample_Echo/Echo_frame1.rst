@@ -20,14 +20,6 @@ Frame example
    :output: show
 
 
-1.3.3 example
-================================
-1.3.3
--------------------------------
-.. inlineav:: ChomskyCON ss
-   :links:   AV/PIECho/ChomskyCON.css
-   :scripts: AV/PIECho/ChomskyCON.js
-   :output: show
    
 
 
