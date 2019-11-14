@@ -235,7 +235,7 @@ $(document).ready(function () {
         document.getElementById("next").disabled = false;
       }
       //step 4
-      if (stepcounter == 4){
+      if (stepcounter == 4) {
         stepcounter--;
         document.getElementById("next").disabled = true;
         Setxyz()
@@ -603,9 +603,6 @@ $(document).ready(function () {
       document.getElementById("valueOfx").disabled = true;
       document.getElementById("valueOfy").disabled = true;
       document.getElementById("valueOfz").disabled = true;
-      // document.getElementById("rangeOfx").disabled = true;
-      // document.getElementById("rangeOfy").disabled = true;
-      // document.getElementById("rangeOfz").disabled = true;
 
       console.log("Before s4")
 

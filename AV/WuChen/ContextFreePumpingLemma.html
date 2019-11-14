@@ -59,7 +59,7 @@
       <br />
       1. Select a lemma. <br />
       <select id="lemma" size="14" onchange="setEnter2()">
-        <option id="myOption" value="select2">Pick select a lemma</option>
+        <option id="myOption" value="select2"disabled>Pick select a lemma</option>
         <option value="anbncn">L = {(a^n)(b^n)(c^n): n &#8805; 0}</option>
         <option value="ww">L = {ww: w &#8712 {a, b}*}</option>
         <option value="anbjanbj">L = {(a^n)(b^j)(a^n)(b^j): n &#8805; 0, b &#8805; j}</option>
@@ -94,7 +94,8 @@
     <p>
       <input style="display: none" type="button" id="clear" name="clear" />
       <input style="display: none" type="button" id="explain" name="explain" />
-      <input style="display: none" type="button" id="setuvxyz" name="setuvxyz" />
+      <input style="display: none" type="button" id="setxyz" name="setxyz" />
+     
     </p>
     <!-- <p id="step1"></p> -->
     <!-- <p class="output"></p> -->
@@ -118,7 +119,7 @@
       var upperbound = arr[1];
       var hint = document.getElementById('hint');
       if (!(input >= lowerbound && input <= upperbound)) {
-        hint.innerHTML = "Please enter a positive integer in range [" + lowerbound.toString() + ", " + upperbound.toString() + "] for best results";
+        hint.innerHTML = "Please enter a positive integer in range [" + lowerbound.toString() + ", " + upperbound.toString() + "] to avoid creating a too short or too long string";
       }
       else {
         document.getElementById("next").disabled = false;
@@ -146,12 +147,12 @@
       var input2 = document.getElementById("input2").value;
       var hint2 = document.getElementById("hint2");
       if (input2.length < number) {
-        hint2.innerHTML = "Rember |w| must be >= m";
+        hint2.innerHTML = "Remember |w| must be >= m";
       }
       else {
         if (lemma == "anbncn") {
           if (input2.length % 3 != 0) {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
           else {
@@ -162,7 +163,7 @@
             var i;
             for (i = 0; i < head.length; i++) {
               if (head[i] != 'a' || mid[i] != 'b' || tail[i] != 'c') {
-                hint2.innerHTML = "That string was not in the language. Please enter another.";
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
                 bool = 0;
                 document.getElementById("next").disabled = true;
                 break;
@@ -178,7 +179,7 @@
           var acounter = 0;
           var bool = 1;
           if (input2.length % 2 != 0) {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
           else {
@@ -210,14 +211,14 @@
               document.getElementById("next").disabled = false;
             }
             else {
-              hint2.innerHTML = "That string was not in the language. Please enter another.";
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
               document.getElementById("next").disabled = true;
             }
           }
         }
         if (lemma == "ww") {
           if (input2.length % 2 != 0) {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
           else {
@@ -227,7 +228,7 @@
             var i;
             for (i = 0; i < head.length; i++) {
               if (head[i] != tail[i] || (head[i] != 'a' && head[i] != 'b') || (tail[i] != 'a' && tail[i] != 'b')) {
-                hint2.innerHTML = "That string was not in the language. Please enter another.";
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
                 bool = 0;
                 document.getElementById("next").disabled = true;
                 break;
@@ -265,7 +266,7 @@
             document.getElementById("next").disabled = false;
           }
           else {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
         }
@@ -295,7 +296,7 @@
             document.getElementById("next").disabled = false;
           }
           else {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
         }
@@ -335,14 +336,14 @@
             document.getElementById("next").disabled = false;
           }
           else {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
 
         }
         if (lemma == "anbn") {
           if (input2.length % 2 != 0) {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
           else {
@@ -352,7 +353,7 @@
             var i;
             for (i = 0; i < head.length; i++) {
               if (head[i] != 'a' || tail[i] != 'b') {
-                hint2.innerHTML = "That string was not in the language. Please enter another.";
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
                 bool = 0;
                 document.getElementById("next").disabled = true;
                 break;
@@ -416,7 +417,7 @@
             document.getElementById("next").disabled = false;
           }
           else {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
         }
@@ -425,7 +426,7 @@
           var bool = 1;
           for (i = 0; i < input2.length; i++) {
             if ((input2[i] != 'a' && input2[i] != 'b') || input2.length < 5) {
-              hint2.innerHTML = "That string was not in the language. Please enter another.";
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
               document.getElementById("next").disabled = true;
               bool = 0;
               break;
@@ -438,7 +439,7 @@
         }
         if (lemma == "ww1wr2") {
           if (input2.length % 3 != 0) {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
           else {
@@ -463,7 +464,7 @@
               document.getElementById("next").disabled = false;
             }
             else {
-              hint2.innerHTML = "That string was not in the language. Please enter another.";
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
               document.getElementById("next").disabled = true;
             }
           }
@@ -505,7 +506,7 @@
                     break;
                   }
                   else {
-                    hint2.innerHTML = "That string was not in the language. Please enter another.";
+                    hint2.innerHTML = "That string is not in the language. Please enter another.";
                     document.getElementById("next").disabled = true;
                   }
                 }
@@ -513,7 +514,7 @@
             }
           }
           else {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
         }
@@ -562,7 +563,7 @@
             document.getElementById("next").disabled = false;
           }
           else {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
         }
@@ -600,7 +601,7 @@
             document.getElementById("next").disabled = false;
           }
           else {
-            hint2.innerHTML = "That string was not in the language. Please enter another.";
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
             document.getElementById("next").disabled = true;
           }
         }
@@ -632,26 +633,26 @@
         if (v.length + y.length + parseInt(val) <= document.getElementById("input1").value) {
           if (u + v + x + y + z == str) {
             if (v.length + x.length + y.length + z.length + parseInt(val) == str.length) {
-              document.getElementById("setuvxyz").disabled = false;
-              hint.innerHTML = "Click \"Set uvxyz \" to set decomposition.";
+              document.getElementById("next").disabled = false;
+              hint.innerHTML = "Click \"Next Step \" to set decomposition.";
             }
             else {
-              document.getElementById("setuvxyz").disabled = true;
+              document.getElementById("next").disabled = true;
               hint.innerHTML = "The sum of |u|, |v|, |x|, |y|, and |z| should equal to the length of string.";
             }
           }
           else {
-            document.getElementById("setuvxyz").disabled = true;
+            document.getElementById("next").disabled = true;
             hint.innerHTML = "This is not a correct decomposition of w.";
           }
         }
         else {
-          document.getElementById("setuvxyz").disabled = true;
+          document.getElementById("next").disabled = true;
           hint.innerHTML = "Condition violated: |vxy| <= m";
         }
       }
       else {
-        document.getElementById("setuvxyz").disabled = true;
+        document.getElementById("next").disabled = true;
         hint.innerHTML = "Condition violated: |vy| > 0";
       }
     }
@@ -669,26 +670,26 @@
         if (v.length + x.length + y.length <= document.getElementById("input1").value) {
           if (u + v + x + y + z == str) {
             if (u.length + parseInt(val) + x.length + y.length + z.length == str.length) {
-              document.getElementById("setuvxyz").disabled = false;
-              hint.innerHTML = "Click \"Set xyz \" to set decomposition.";
+              document.getElementById("next").disabled = false;
+              hint.innerHTML = "Click \"Next Step \" to set decomposition.";
             }
             else {
-              document.getElementById("setuvxyz").disabled = true;
+              document.getElementById("next").disabled = true;
               hint.innerHTML = "The sum of |u|, |v|, |x|, |y|, and |z| should equal to the length of string.";
             }
           }
           else {
-            document.getElementById("setuvxyz").disabled = true;
+            document.getElementById("next").disabled = true;
             hint.innerHTML = "This is not a correct decomposition of w.";
           }
         }
         else {
-          document.getElementById("setuvxyz").disabled = true;
+          document.getElementById("next").disabled = true;
           hint.innerHTML = "Condition violated: |vxy| <= m";
         }
       }
       else {
-        document.getElementById("setuvxyz").disabled = true;
+        document.getElementById("next").disabled = true;
         hint.innerHTML = "Condition violated: |vy| > 0";
       }
     }
@@ -706,26 +707,26 @@
         if (v.length + x.length + y.length <= document.getElementById("input1").value) {
           if (u + v + x + y + z == str) {
             if (u.length + v.length + parseInt(val) + y.length + z.length == str.length) {
-              document.getElementById("setuvxyz").disabled = false;
-              hint.innerHTML = "Click \"Set xyz \" to set decomposition.";
+              document.getElementById("next").disabled = false;
+              hint.innerHTML = "Click \"Next Step \" to set decomposition.";
             }
             else {
-              document.getElementById("setuvxyz").disabled = true;
+              document.getElementById("next").disabled = true;
               hint.innerHTML = "The sum of |u|, |v|, |x|, |y|, and |z| should equal to the length of string.";
             }
           }
           else {
-            document.getElementById("setuvxyz").disabled = true;
+            document.getElementById("next").disabled = true;
             hint.innerHTML = "This is not a correct decomposition of w.";
           }
         }
         else {
-          document.getElementById("setuvxyz").disabled = true;
+          document.getElementById("next").disabled = true;
           hint.innerHTML = "Condition violated: |vxy| <= m";
         }
       }
       else {
-        document.getElementById("setuvxyz").disabled = true;
+        document.getElementById("next").disabled = true;
         hint.innerHTML = "Condition violated: |vy| > 0";
       }
     }
@@ -743,26 +744,27 @@
         if (v.length + x.length + y.length <= document.getElementById("input1").value) {
           if (u + v + x + y + z == str) {
             if (u.length + v.length + x.length + parseInt(val) + z.length == str.length) {
-              document.getElementById("setuvxyz").disabled = false;
-              hint.innerHTML = "Click \"Set xyz \" to set decomposition.";
+              document.getElementById("next").disabled = false;
+              // set xyz -> next step 
+              hint.innerHTML = "Click \"Next Step \" to set decomposition.";
             }
             else {
-              document.getElementById("setuvxyz").disabled = true;
+              document.getElementById("next").disabled = true;
               hint.innerHTML = "The sum of |u|, |v|, |x|, |y|, and |z| should equal to the length of string.";
             }
           }
           else {
-            document.getElementById("setuvxyz").disabled = true;
+            document.getElementById("next").disabled = true;
             hint.innerHTML = "This is not a correct decomposition of w.";
           }
         }
         else {
-          document.getElementById("setuvxyz").disabled = true;
+          document.getElementById("next").disabled = true;
           hint.innerHTML = "Condition violated: |vxy| <= m";
         }
       }
       else {
-        document.getElementById("setuvxyz").disabled = true;
+        document.getElementById("next").disabled = true;
         hint.innerHTML = "Condition violated: |vy| > 0";
       }
     }
@@ -780,26 +782,26 @@
         if (v.length + x.length + y.length <= document.getElementById("input1").value) {
           if (u + v + x + y + z == str) {
             if (u.length + v.length + x.length + y.length + parseInt(val) == str.length) {
-              document.getElementById("setuvxyz").disabled = false;
-              hint.innerHTML = "Click \"Set xyz \" to set decomposition.";
+              document.getElementById("next").disabled = false;
+              hint.innerHTML = "Click \"Next Step \" to set decomposition.";
             }
             else {
-              document.getElementById("setuvxyz").disabled = true;
+              document.getElementById("next").disabled = true;
               hint.innerHTML = "The sum of |u|, |v|, |x|, |y|, and |z| should equal to the length of string.";
             }
           }
           else {
-            document.getElementById("setuvxyz").disabled = true;
+            document.getElementById("next").disabled = true;
             hint.innerHTML = "This is not a correct decomposition of w.";
           }
         }
         else {
-          document.getElementById("setuvxyz").disabled = true;
+          document.getElementById("next").disabled = true;
           hint.innerHTML = "Condition violated: |vxy| <= m";
         }
       }
       else {
-        document.getElementById("setuvxyz").disabled = true;
+        document.getElementById("next").disabled = true;
         hint.innerHTML = "Condition violated: |vy| > 0";
       }
     }

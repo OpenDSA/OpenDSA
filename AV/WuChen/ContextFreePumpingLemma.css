@@ -1,6 +1,6 @@
 #container {
   width: 550px;
-  height: 620px;
+  height: 700px;
   position: relative;
 }
 
@@ -67,7 +67,7 @@
 #next {
   position: absolute;
   left: 15px;
-  top: 585px;
+  top: 672px;
 }
 #explain {
   position: absolute;
