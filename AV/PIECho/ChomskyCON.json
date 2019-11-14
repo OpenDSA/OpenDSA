@@ -1,0 +1,21 @@
+{
+    "translations": {
+        "en": {
+          "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+          "q1": {
+            "type": "textBox",
+            "src": "../../../AV/Development/formal_language/FAEditor.html",
+            "question":"Write a sentence that belongs to this tiny subset.",
+            "answer": "The ball hit the Fritz"
+            
+          },
+          "q2": {
+            "type": "select",
+            "src": "../../../AV/Development/formal_language/FAEditor.html",
+            "question":"Suppose we have $\\Sigma$ = {$a$, $b$}, which of the following are valid strings?",
+            "answer": ["$babababbaba$", "$a$"],
+            "choices": ["$babababbaba$", "$a$","{$aaa$, $bbb$}", "$bacbabcba$" ]
+          }
+        }
+    }
+}

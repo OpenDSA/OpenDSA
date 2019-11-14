@@ -151,7 +151,7 @@
 		}
 		else if (graphType == "tm"){
 			//OpenDSA/AV/Development/formal_language/TMEditor.html
-			window.open("../../../formal_language/TMEditor.html");
+			window.open("../../../Development/formal_language/TMEditor.html");
 		}
 
 	}

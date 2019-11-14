@@ -12,7 +12,7 @@ $(document).ready(function() {
     // var q = av.question("TF", "Understand the given information", {correct: true, falseLabel: "No", trueLabel: "Yes"});
     // var answer = q.show();
     // alert(answer);
-    av.step();
+    av.displayInit();
     av.umsg("Start with the alphabet set. We normally represent an alphabet set with $\\Sigma$. The alphabet set is a set of symbols (typically letters or characters, but it could include any symbols}.");
     av.step();
     av.umsg(injector.injectQuestion("q1"));

@@ -177,55 +177,58 @@ $(document).ready(function () {
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("x*(y^i)*z ∈ L  for all i ≥ 0"));
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(document.createTextNode("x: "));
+        step3.appendChild(document.createTextNode("Please decompose the w by the length of x, y, and z"));
+        step3.appendChild(document.createElement("br"));
 
-        x = document.createElement("INPUT"); //the text to display x
-        x.setAttribute("type", "text");
-        x.id = "x";
-        step3.appendChild(x);
+        //x
         step3.appendChild(document.createTextNode("|x|: "));
         var valueOfx = document.createElement("INPUT"); //the text to display the value of range slider of x
         valueOfx.setAttribute("type", "text");
         valueOfx.id = "valueOfx";
-        valueOfx.value = "0";
+        valueOfx.value = "";
         valueOfx.max = len.toString(); //max value of range slider equals to the length of the string
         valueOfx.name = str;
         valueOfx.setAttribute('oninput', 'updateTextInputx(valueOfx.value, valueOfx.name)');  //value of range slider will change
         step3.appendChild(valueOfx);
+        step3.appendChild(document.createTextNode("x: "));
+        x = document.createElement("INPUT"); //the text to display x
+        x.setAttribute("type", "text");
+        x.id = "x";
+        step3.appendChild(x);
         step3.appendChild(document.createElement("br"));
-        // step3.appendChild(rangeOfx);
+        // y
         step3.appendChild(document.createElement("br"));
+        step3.appendChild(document.createTextNode("|y|: "));
+        var valueOfy = document.createElement("INPUT"); //the text to display the value of range slider of y
+        valueOfy.setAttribute("type", "text");
+        valueOfy.id = "valueOfy";
+        valueOfy.value = "";
+        valueOfy.max = len.toString(); //max value of range slider equals to the length of the string
+        valueOfy.name = str;
+        valueOfy.setAttribute('oninput', 'updateTextInputy(valueOfy.value, valueOfx.name)');  //value of range slider will change
+        step3.appendChild(valueOfy);
         step3.appendChild(document.createTextNode("y: "));
         y = document.createElement("INPUT"); //the text to display y
         y.setAttribute("type", "text");
         y.id = "y";
         step3.appendChild(y);
-        step3.appendChild(document.createTextNode("|y|: "));
-        var valueOfy = document.createElement("INPUT"); //the text to display the value of range slider of y
-        valueOfy.setAttribute("type", "text");
-        valueOfy.id = "valueOfy";
-        valueOfy.value = "0";
-        valueOfy.max = len.toString(); //max value of range slider equals to the length of the string
-        valueOfy.name = str;
-        valueOfy.setAttribute('oninput', 'updateTextInputy(valueOfy.value, valueOfx.name)');  //value of range slider will change
-        step3.appendChild(valueOfy);
         step3.appendChild(document.createElement("br"));
-        //step3.appendChild(rangeOfy);
+        //z
         step3.appendChild(document.createElement("br"));
+        step3.appendChild(document.createTextNode("|z|: "));
+        var valueOfz = document.createElement("INPUT"); //the text to display the value of range slider of z
+        valueOfz.setAttribute("type", "text");
+        valueOfz.id = "valueOfz";
+        valueOfz.value = "";
+        valueOfz.max = len.toString(); //max value of range slider equals to the length of the string
+        valueOfz.name = str;
+        valueOfz.setAttribute('oninput', 'updateTextInputz(valueOfz.value, valueOfx.name)');  //value of range slider will change
+        step3.appendChild(valueOfz);
         step3.appendChild(document.createTextNode("z: "));
         z = document.createElement("INPUT"); //the text to z
         z.setAttribute("type", "text");
         z.id = "z";
         step3.appendChild(z);
-        step3.appendChild(document.createTextNode("|z|: "));
-        var valueOfz = document.createElement("INPUT"); //the text to display the value of range slider of z
-        valueOfz.setAttribute("type", "text");
-        valueOfz.id = "valueOfz";
-        valueOfz.value = "0";
-        valueOfz.max = len.toString(); //max value of range slider equals to the length of the string
-        valueOfz.name = str;
-        valueOfz.setAttribute('oninput', 'updateTextInputz(valueOfz.value, valueOfx.name)');  //value of range slider will change
-        step3.appendChild(valueOfz);
         step3.appendChild(document.createElement("br"));
         //step3.appendChild(rangeOfz);
         var hint3 = document.createElement("p"); //create the paragraph for hints in step 3
@@ -459,7 +462,7 @@ $(document).ready(function () {
       //reset step 1
       var step1 = document.createElement("p");
       step1.id = "step1";
-      step1.appendChild(document.createTextNode("1. Please select a value for m. (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
+      step1.appendChild(document.createTextNode("1. Please enter a value for m. (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
       step1.appendChild(document.createElement("br"));
       var input1 = document.createElement("input"); //input for the first step
       input1.type = "number";

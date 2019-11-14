@@ -6,7 +6,7 @@ $(document).ready(function() {
   var av_name = "TTPdeleteCON";
   var av = new JSAV(av_name);
 
-  av.umsg("Example 2-3+ Tree Visualization: Search");
+  av.umsg("Example 2-3+ Tree Visualization: Delete");
 
   var t = BPTree.newTree(av, 2, false);
   t.addWithoutGraphic(89, "M");

@@ -6,13 +6,13 @@
 .. avmetadata::
    :author: Mostafa Mohammed
    :requires: Deterministic Finite Automata
-   :satisfies: Non-deterministic Finite Automata
+   :satisfies: Frame example
    :topic: Finite Automata
 
 
-Non-Deterministic Finite Automata
+Frame example
 =================================
-NFA: Non-Deterministic Finite Automata
+Frame example
 --------------------------------------
 .. inlineav:: Frames ff
    :links: AV/PIExample/Frames.css

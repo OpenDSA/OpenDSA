@@ -4,19 +4,22 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: eunoh cho
-   :requires: Deterministic Finite Automata
-   :satisfies: example
+   :author: Eunoh Cho
+   :satisfies: Frame example
    :topic: Finite Automata
 
 
-Example
+Frame example
 =================================
-Example
+Frame example
 --------------------------------------
+
 .. inlineav:: Frames ff
-   :links: AV/PIExample_Echo/Frames3.css
-   :scripts: AV/PIExample_Echo/Frames3.js DataStructures/PIFrames.js
+   :links: AV/PIECho/Frames.css
+   :scripts: AV/PIECho/Frames.js DataStructures/PIFrames.js
    :output: show
+
+
+   
 
 

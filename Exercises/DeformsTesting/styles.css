@@ -1,0 +1,224 @@
+#MasterWorkspace {
+    display: grid;
+    width: 767px;
+    height: 1500px;
+    grid-template-columns: 3.5fr 2fr;
+    grid-template-areas: "workspace equations";
+}
+
+#float {
+    position: fixed;
+    z-index: 100;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: none;
+    opacity: 0.8;
+    text-overflow: clip;
+}
+
+#unit_conversion {
+    display: none;
+    position: absolute;
+    z-index: 200;
+    border-radius: 4px;
+    list-style: none;
+    padding: 1em;
+    background: white;
+    font-family: serif;
+    box-shadow: 1px 1px 6px 2px #AAA;
+}
+
+#unit_conversion li {
+    cursor: pointer;
+    margin: .2em 0;
+}
+
+#unit_conversion .current-unit {
+    cursor: not-allowed;
+    background: #CCC;
+}
+
+#unit_conversion li:hover {
+    background: #CCC;
+}
+
+#problem_statement {
+    grid-area: problem;
+}
+
+#equation_bank {
+    font-size: 1.5em;
+    /*grid-area: equations;*/
+}
+
+#EquationBank {
+    font-size: 1.5em;
+    grid-area: equations;
+    background-color: whitesmoke;
+}
+
+.workspace {
+    /*grid-area: workspace;*/
+    position: relative;
+    min-height: 150px;
+    margin: 5px;
+}
+
+.workspace_id {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+}
+
+.close_x {
+    position: absolute !important;
+    right: 10px;
+    top: 5px;
+}
+
+#WorkspaceList {
+    grid-area: workspace;
+    background-color: grey;
+}
+
+#workspace .blueprint {
+    font-size: 1.5em;
+    display: inline-block;
+    margin: auto 2em;
+    color: gray;
+}
+
+#workspace .boxed-equation {
+    display: inline-block;
+    font-size: 3em;
+}
+
+#workspace .boxed-equation * {
+    vertical-align: middle;
+}
+
+#workspace .box {
+    font-family: serif;
+    border: .05em solid red;
+    min-height: 1em;
+    min-width: 1em;
+    padding: .2em;
+    border-radius: .2em;
+    display: inline-block;
+    text-align: center;
+}
+
+#workspace .var-name-box {
+    color: #CCC;
+    transform: translateY(.2em);
+}
+
+#workspace .filled-box .var-name-box {
+    display: none;
+}
+
+#workspace .fillable-box {
+    display: none;
+}
+
+#workspace .filled-box .fillable-box {
+    display: block;
+}
+
+.value-box {
+    font-size: .8em;
+    line-height: .8em;
+}
+
+.no-unit {
+    margin-top: .2em;
+}
+
+.no-unit .unit-box {
+    display: none;
+}
+
+.unit-box {
+    font-style: italic;
+    font-size: .4em;
+    padding-top: .5em;
+    line-height: .5em;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.param {
+    cursor: grab;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+.param[data-domain="length"] {
+    background-color: rgb(126, 255, 126);
+}
+
+.param[data-domain="temperature"] {
+    background-color: rgb(126, 210, 255);
+}
+
+.param[data-domain="pressure"] {
+    background-color: rgb(249, 152, 175);
+}
+
+.param[data-domain="coefficient"] {
+    background-color: rgb(193, 193, 193);
+}
+
+
+#figures {
+    position: relative;
+}
+
+.text-overlay {
+    position: absolute;
+}
+
+.blueprint_wrapper {
+    padding: .2em 1em;
+}
+
+#equation_bank .blueprint {
+    cursor: pointer;
+    background: #f9f984;
+    padding: 1em;
+    margin: 0 !important;
+    border-radius: 8px;
+}
+
+mjx-container:focus {
+    outline: none !important;
+}
+
+.selected {
+    border: red 2px solid;
+}
+
+
+.droppable {
+    animation: flashingBg 1.6s infinite linear;
+}
+
+.droppable:hover {
+    cursor: copy;
+    animation: none;
+    background: #f9f984;
+}
+
+@keyframes flashingBg {
+    0% {
+        background: #f9f98433;
+    }
+
+    50% {
+        background: #f9f984ff;
+    }
+
+    100% {
+        background: #f9f98433;
+    }
+}

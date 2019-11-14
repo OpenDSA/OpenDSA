@@ -1,8 +1,8 @@
 [
     {
         "expression": "\\{a^ib^jc^k \\mid i = j$ or $j = k\\}",
-        "description": "Construct the PDA that accepts L(___)",
-        "type": "expression",
+        "description": "Construct the PDA that accepts ",
+        "type": "both",
         "testCases": [
             {
                 "": false

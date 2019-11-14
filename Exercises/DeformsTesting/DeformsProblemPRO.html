@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html data-require="jsav math DeformsProblemPRO">
+<!-- <html data-require="jsav math"> -->
+<head>
+  <title>Deforms Basic Problem</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <!-- <script src="~/OpenDSA/khan-exercises/local-only/main.js"></script> -->
+  <script src="../../khan-exercises/local-only/main.js"></script>
+  <!-- <script src="./DeformsProblemPRO.js"></script> -->
+  <link rel = "stylesheet" type = "text/css" href = "./styles.css" />
+  <style>
+      /*#MasterWorkspace {
+        height: 1200px;
+        width: 770px;
+        position: relative;
+        margin: auto;
+        background-color: #EEEEEE;
+      }*/
+
+      /* We make the arrays bigger than the OpenDSA stylesheet standard
+      so that we  have reasonable room for the linked lists */
+      .jsavverticalarray .jsavnode {
+        line-height: 45px !important;
+        min-width: 45px !important;
+        max-width: 400px !important;
+        min-height: 25px !important;
+        max-height: 60px !important;
+        padding: 5% 5% 5% 5% !important;
+      }
+    </style>
+</head>
+
+<body data-height="860" data-width="950">
+  <div class="exercise">
+    <div class="vars">
+        <!-- order is: name, value, enable, unit-->
+        <var id="L">
+          ["L", randRange(1,999) * pow(10, randRange(-2,3)), 1, "m"]
+        </var>
+        <var id="gap">
+          ["\\delta", (randRange(1,999) * pow(10, randRange(-5,-3))), 0, "mm"]
+        </var>
+        <var id="CS1">
+          ["cs1", 0.05, -1, "mm"]
+        </var>
+        <var id="CS2">
+          ["cs2", 0.05, -1, "mm"]
+        </var>
+        <var id="T">
+          ["T_0", 25, -1, "^{\\circ} C" ]
+        </var>
+        <var id="nT">
+          ["T", randRange(25000, 200000) * pow(10, -3), 1, "^{\\circ} C"]
+        </var>
+        <var id="E">
+          ["E", 7000000, -1, "Pa"]
+        </var>
+        <var id="a">
+          ["\\alpha", 0.000023, 1, ""]
+        </var>
+    </div>
+    <div class="vars">
+      <var id="equations">
+      [ 
+        {
+          eqnText:"\\delta_{univ} = \\alpha (T-T_0) L",
+          eqnVars:["\\delta_{univ}","\\alpha","T","T_0","L"]
+        },
+        {
+          eqnText:"\\sigma = - \\frac{P L}{A E}",
+          eqnVars:["\\sigma","P","L","A","E"]
+        }
+      ]
+      </var>
+      <var id="parameters">
+        [ L, gap]
+      </var>
+      <!-- <var id="JSAV">eqnSolverPRO.initJSAV(equations, parameters)</var> -->
+    </div>
+
+    <div class="problems">
+      <div id="DeformsProblemPROp">
+        <p class="problem">
+          A solid square bar of cross-sectional dimensions  
+          <var>CS1[1]</var> <var>CS1[3]</var> x 
+          <var>CS2[1]</var> <var>CS1[3]</var> is attached rigidly to the wall at point A 
+          and has a gap of 1 mm  from the rigid wall at point B at 
+          <code><var>T[1]</var> <var>T[3]</var></code>.
+          Knowing the bar is made of aluminum, 
+          
+        </p>
+
+        <div class="question">
+          <p class="question">
+            1. Given the expansion of the bar in the present condition, 
+            what is the length of the bar prior to expansion?
+          </p>
+          <p class="question">
+            2. At what temperature does the gap close?
+          </p>
+          <img class="figure1" src="../../Fig/deforms_figure.png"
+          alt="rigid bar attached to wall A, with a small gap between 
+          right edge of bar and wall B">
+          <br>
+        </div>
+        
+        <!-- <input id="reset" type="button" value="Reset" /> 
+        <input id="solve" type="button" value="Solve" /> -->
+        <!--<div id="EqnSolverPRO" class="jsavcanvas"></div>-->
+        <!-- the MasterWorkspace gets added here-->
+        
+        <div class="solution" data-type="custom">
+          <div class="guess"> 
+            <!--[ eqnSolverPRO.userInput ]--> 
+          </div>
+          <div class="validator-function">
+            <!--
+              if (!eqnSolverPRO.checkAnswer() && !guess[0]) {
+              return ""; // User did not click, and correct answer is not
+                          // initial array state
+            } else { return eqnSolverPRO.checkAnswer(arr_size); }
+          -->
+          </div>
+        </div>
+
+        <div data-if="L[2] == 0">
+          <p class="solution" data-type="decimal"> 
+            <var>round((gap / (a * (nT-T)))*1000) / 1000</var>
+              <!-- Replace this with a conditional based on which enable variable is 0-->
+              The correct answer expected from the student
+          </p>
+        </div>  
+      </div>
+
+    </div>
+
+    <div class="hints">
+        <p>
+          Add different levels of hints corresponding to reaction from
+          the evaluator function in JS file.
+        </p>
+      </div>
+
+  </div>
+</body>
+
+</html>

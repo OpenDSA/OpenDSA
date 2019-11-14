@@ -64,8 +64,10 @@
   },
   "chapters": {
     "PI Example": {
-      "Echo/CFLSimp": {},
-      "PIExample_Echo/FrameExample": {}
+      "PIExample_Echo/Echo_frame1": {}
+    },
+    "grammars": {
+      "PIExample_Echo/grammar": {}
     }
   }
 }

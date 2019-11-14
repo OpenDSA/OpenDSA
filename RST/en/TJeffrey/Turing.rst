@@ -31,7 +31,7 @@ capabilities.
 We will discuss a particular one, called a :term:`Turing machine`.
 As we define "capability", the key is *ability*, not *efficiency*.
 
-The necessary capabilites for any such "machine" are these:
+The necessary capabilities for any such "machine" are these:
 
 * Read
 * Write
@@ -68,7 +68,7 @@ Note that including :math:`\#` in the alphabet is for convenience
 only.
 We want to be able to read our specifications without being confused.
 
-The input to the machine is the intial contents of the tape, which is
+The input to the machine is the initial contents of the tape, which is
 described by listing all of the tape squares from the leftmost
 non-blank tape cell to the rightmost non-blank tape cell.
 Naturally, there must be a finite number of non-blank symbols on the
@@ -144,13 +144,6 @@ states in :math:`Q` and with edges corresponding to the transitions in
 :math:`\delta`.
 Further, we can visualize the processing of the machine as the
 movement of a head across the tape.
-
-.. TODO::
-   :type: Slideshow Revision
-
-   Jeffey -- Please modify the following slideshow so that there is a
-   blank square (that is, a square with a # symbol in it) to the left
-   of the first 'a'.
 
 .. inlineav:: RClearCON ss
    :long_name: Turing Machine RClear
@@ -320,11 +313,12 @@ If it never sees a 'b', then it will never halt.
 This means that it goes into an infinite loop (or hangs) anytime the
 input string does not contain a 'b'.
 
-.. TODO::
-   :type: Diagram
+.. inlineav:: TMabCON dgm
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMabCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMabCON.js
+   :align: center
+   :output: show
 
-   Jeffrey -- Show the machine that has state q0 that stays in state
-   q0 for 'a' or #, and goes to (final) state q1 when it sees 'b'.    
 
 
 Turing Acceptors and Turing Transducers
@@ -383,18 +377,19 @@ computes :math:`f': \{I\}^* \rightarrow \{I\}^*` where
       (q_0, \#\underline{I}I\#) \vdash_M (q_0, \#I\underline{I}\#) \vdash_M
       (q_0, \#II\underline{\#}) \vdash_M (h, \#III\underline{\#}).
 
+   .. inlineav:: TMPlusoneCON ss
+      :long_name: Turing Machine Replace
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMPlusoneCON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMPlusoneCON.js
+      :align: center
+      :output: show
+
    In general,
    :math:`(q_0, \#\underline{I^n}\#) \vdash^*_M (h, \#I^{n+1}\underline{\#})`.
    What about :math:`n = 0`?
    The input is no marks in unary, and it works OK (that is, the
    result is the head to the right of a single mark).
 
-.. TODO::
-   :type: Slideshow
-
-   Add to the previous example a slideshow showing the graph version
-   and the behavior on this input.
-      
 
 Turing-Decideable vs. Turing-Acceptable Languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -480,9 +475,9 @@ the infinite loop).
 Recall that we only care about the machine's behavior when it begins
 in a legal start configuration.)
 
-But, we can ask again: Is every Turing-acceptible language Turing
+But, we can ask again: Is every Turing-acceptable language Turing
 decidable?
-In other words, whenever the Turing-acceptible machine would hang,
+In other words, whenever the Turing-acceptable machine would hang,
 can we *always* replace it with logic to trigger a non-existant
 transition instead?
 This is known as the :term:`Halting Problem`.
@@ -496,58 +491,81 @@ unsolveable.
 Making More Complicated Machines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Obviously, Turing Machines can take an input and modify it.
+We will see examples of how this leads to powerful computational
+capability, even if it does not seem yet like they are so powerful.
+To get a quick idea of their power, consider the following relatively
+simple machine to accept :math:`L(a^nb^nc^n)`.
+This is significant, because this language is in fact not context
+free!
+Which means that this simple Turing Machine is doing something that no
+DFA, NFA, or PDA can do!
+
 .. TODO::
-   :type: Diagram
+   :type: Slideshow
 
-   Obviously, Turing Machines can take an input an modify it.
-   We will see examples of how this leads to powerful computational
-   capability, even if it does not seem yet like they are so powerful.
-   To get a quick idea of their power, consider the following relatively
-   simple machine to accept :math:`L(a^nb^nc^n)`.
-   This is significant, because this language is in fact not context
-   free!
-   Which means that this simple Turing Machine is doing something that no
-   DFA, NFA, or PDA can do!
+   This diagram looks good. But let's add a slideshow to show two
+   examples: One that is in the language (aabbcc) and one that is not
+   in the language (aabbbc).
 
-   Add here a diagram showing the machine. What it needs to do is to
-   write an X on the first a, b, c, and keep doing that until it
-   either turns all of the a's, b's, c's to X's (and then goes to an
-   accept state). Of course, if it encounters something that it
-   doesn't like, that's going to be a missing transition, so it rejects.
+.. inlineav:: TManbncnCON dgm
+   :links: DataStructures/FLA/FLA.css AV/TJeffrey/TManbncnCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TManbncnCON.js
+   :align: center
+   :output: show
 
+But while Turing machines might be able to do powerful things, when
+operating at the individual state level, it can get rather difficult
+and tedious to program them.
+In fact, it might feel in some ways like writing machine code or
+assembly language.
+The secret to success in modern software development is to build up
+more powerful tools,
+especially by packaging behavior together and manipulating the
+packages.
+We can hope to build up similar capability with Turing Machines.
 
-**Lemma**: If
+.. TODO::
+   :type: Prose
 
-.. math::
+   Since we are not using a one-sided tape, the following material
+   needs to be replaced with a treatment like in Linz. 
+   Note that the Stay "move" simplifies the if-then-else as compared
+   to Linz.
+   
+   **Lemma**: If
 
-   (q_1, w_1\underline{a_1}u_1) \vdash_M^* (q_2, ww_2\underline{a_2}u_2)
+   .. math::
 
-for string :math:`w` and
+      (q_1, w_1\underline{a_1}u_1) \vdash_M^* (q_2, ww_2\underline{a_2}u_2)
 
-.. math::
+   for string :math:`w` and
 
-   (q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3),
+   .. math::
 
-then
+      (q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3),
 
-.. math::
+   then
 
-   (q_1, w_1\underline{a_1}u_1) \vdash^*_M (q_3, ww_3\underline{a_3}u_3).
+   .. math::
 
-Insight: Since
-:math:`(q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3)`,
-this computation must take place without moving the head left of :math:`w_2`
-The machine cannot "sense" the left end of the tape.
-(And if it had moved left, it would have hung.)
-Thus, the head won't move left of :math:`w_2` even if it is not at the
-left end of the tape.
+      (q_1, w_1\underline{a_1}u_1) \vdash^*_M (q_3, ww_3\underline{a_3}u_3).
 
-This means that Turing machine computations can be combined into
-larger machines:
+   Insight: Since
+   :math:`(q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3)`,
+   this computation must take place without moving the head left of :math:`w_2`
+   The machine cannot "sense" the left end of the tape.
+   (And if it had moved left, it would have hung.)
+   Thus, the head won't move left of :math:`w_2` even if it is not at the
+   left end of the tape.
 
-* :math:`M_2` prepares string as input to :math:`M_1`.
-* :math:`M_2` passes control to :math:`M_1` with I/O head at end of input.
-* :math:`M_2` retrieves control when :math:`M_1` has completed.
+   This means that Turing machine computations can be combined into
+   larger machines:
+
+   * :math:`M_2` prepares string as input to :math:`M_1`.
+   * :math:`M_2` passes control to :math:`M_1` with I/O head at the
+     end of the input.
+   * :math:`M_2` retrieves control when :math:`M_1` has completed.
 
 Here are some basic machines and notation
 
@@ -569,7 +587,7 @@ Here are some basic machines and notation
    :align: center
 
    First do :math:`M_1`, then do :math:`M_2` or :math:`M_3` depending
-   on current symbol.
+   on the current symbol.
 
 |
 
@@ -623,8 +641,8 @@ Here are some basic machines and notation
 Turing Machine Extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When we give extentions or new functionality to a computing system,
-sometimes they change something fundamental about the capabilies of
+When we give extensions or new functionality to a computing system,
+sometimes they change something fundamental about the capabilities of
 the system.
 For example, when we add non-determinism to an algorithm, we **might**
 change the cost of the underlying problem from exponential to
@@ -659,7 +677,7 @@ Machines.
   Again, we can simulate this with encoding multiple symbols into a
   single table cell.
   For example, to simulate two tapes (each with a head), we encode in
-  each cell the corresponding two symbols, and a two binary markers to
+  each cell the corresponding two symbols, and two binary markers to
   indicate if the tape head is currently in the corresponding cell of
   the two tapes.
 
@@ -688,8 +706,8 @@ Machines.
 
 * Non-determinism
 
-  We can simulate nondeterministic behavior in sequence, doing all
+  We can simulate non-deterministic behavior in sequence, doing all
   length 1 computations, then length 2, etc., until we reach a halt
-  state for one of the non-deteriministic choices.
+  state for one of the non-deterministic choices.
   So we see that while non-determinism can save a lot of time, it does
   not change what can (eventually) be done.
