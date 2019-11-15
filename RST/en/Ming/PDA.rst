@@ -168,8 +168,8 @@ NOTE: 3-tuples above are configurations. Moving from one to another.
    Note: What is the smallest length string that is accepted? 
 
    .. inlineav:: example_7_1_2 dgm
-      :links: AV/Ming/example_7_1_2.css
-      :scripts: AV/Ming/example_7_1_2.js
+      :links: AV/Ming/example_7_1_2/example_7_1_2.css
+      :scripts: AV/Ming/example_7_1_2/example_7_1_2.js
       :align: center
 
 .. topic:: Example
