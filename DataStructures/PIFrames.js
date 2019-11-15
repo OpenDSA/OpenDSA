@@ -398,15 +398,11 @@
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
 
-          if (question.studentAnswer !== undefined) {
-            question.studentAnswer = question.studentAnswer.replace("$", "");
-            question.answer = question.answer.replace("$", "");
-
-            question.studentAnswer = question.studentAnswer.replace(" ", "");
-            question.answer = question.answer.replace(" ", "");
-          }
-
-          if (Array.isArray(question.studentAnswer)) {
+          if (question.answer.includes("{") && question.answer.includes("}")) {
+            if (question.studentAnswer !== undefined) {
+              return this.permutation(question.studentAnswer, question.answer);
+            }
+          } else if (Array.isArray(question.studentAnswer)) {
             if (question.studentAnswer.length !== question.answer.length)
               return false;
             var studentsAnswerSorted = question.studentAnswer.sort();
@@ -417,6 +413,54 @@
             }
             return true;
           } else return question.studentAnswer == question.answer;
+        },
+
+        permutation: function(studentAnswer, questionAnswer) {
+          var length = studentAnswer.length == questionAnswer.length;
+          var studentSet =
+            studentAnswer.charAt(0) == "{" &&
+            studentAnswer.charAt(studentAnswer.length - 1) == "}";
+          var questionSet =
+            questionAnswer.charAt(0) == "{" &&
+            questionAnswer.charAt(questionAnswer.length - 1) == "}";
+
+          if (length && studentSet && questionSet) {
+            studentAnswer = studentAnswer.replace(/{/g, "");
+            studentAnswer = studentAnswer.replace(/}/g, "");
+
+            questionAnswer = questionAnswer.replace(/{/g, "");
+            questionAnswer = questionAnswer.replace(/}/g, "");
+
+            var studentArray = studentAnswer.split(",");
+            var questionArray = questionAnswer.split(",");
+
+            var map = new Map();
+
+            for (var i = 0; i < studentArray.length; i++) {
+              if (map.has(studentArray[i])) {
+                map.set(studentArray[i], map.get(studentArray[i]) + 1);
+              } else {
+                map.set(studentArray[i], 1);
+              }
+
+              if (map.has(questionArray[i])) {
+                map.set(questionArray[i], map.get(questionArray[i]) - 1);
+              } else {
+                map.set(questionArray[i], -1);
+              }
+            }
+
+            //loop through and return that the values in all the maps are zero
+            for (var j = 0; j < questionArray.length; j++) {
+              if (map.get(questionArray[j]) !== 0) {
+                return false;
+              }
+            }
+
+            return true;
+          }
+
+          return false;
         },
 
         checkIfSlideHasQuestion: function(jsavControl) {
