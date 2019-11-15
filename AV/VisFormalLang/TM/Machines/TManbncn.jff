@@ -2,11 +2,11 @@
 	<type>turing</type>
 	<automaton>
 		<!--The list of states.-->
-		<state id="4" name="q9">
+		<state id="4" name="q4">
             <x>30.0</x>
             <y>300.0</y>
         </state>
-        <state id="5" name="q7">
+        <state id="5" name="q5">
             <x>180.0</x>
             <y>300.0</y>
         </state>

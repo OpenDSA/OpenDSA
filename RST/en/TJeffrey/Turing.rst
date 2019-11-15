@@ -508,7 +508,7 @@ DFA, NFA, or PDA can do!
    examples: One that is in the language (aabbcc) and one that is not
    in the language (aabbbc).
 
-.. inlineav:: TManbncnCON dgm
+.. inlineav:: TManbncnCON ss
    :links: DataStructures/FLA/FLA.css AV/TJeffrey/TManbncnCON.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TManbncnCON.js
    :align: center
