@@ -31,8 +31,6 @@ var config = ODSA.UTILS.loadConfig({av_name: av_name}),
 var goNext = false;
 av.umsg("let's look at a grammar you can maybe relate to, a grammar for english. This will be a tiny subset of the english language, not complete by far!");
 av.displayInit();
-av.umsg("Start with the alphabet set. We normally represent an alphabet set with $\\Sigma$. The alphabet set is a set of symbols (typically letters or characters, but it could include any symbols}.");
-av.step();
 av.umsg(injector.injectQuestion("q1"));
 av.step();
 
