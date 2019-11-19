@@ -76,8 +76,11 @@ To illustrate this, let us consider another problem.
    from each list make a pair, the next smallest values from each list
    make a pair, and so on.
 
-.. avembed:: AV/Development/NP/pairToSortReduction.html ss
-   :long_name: Reduction of Pairing to Sorting
+.. inlineav:: pairToSortCON ss
+   :long_name: Pair to Sorting Reduction Slideshow
+   :links: AV/NP/pairToSortCON.css
+   :scripts: AV/NP/pairToSortCON.js
+   :output: show
 
 Figure :num:`Figure #Pair` illustrates PAIRING.
 One way to solve PAIRING is to use an existing sorting
