@@ -214,7 +214,7 @@ $(document).ready(function() {
     av.step();
 
     //Slide 11
-    av.umsg("Step 10: The tape head shifts right one cell to the value of b.  The previous cell stays teh same and the current state remains in q1.");
+    av.umsg("Step 10: The tape head shifts right one cell to the value of b.  The previous cell stays the same and the current state remains in q1.");
     g.translateX(30);
     c1.translateX(30);
     av.ds.tape(["#", "A", "A", "B", "b", "C", "c", "#"], 770, 50, "both");
