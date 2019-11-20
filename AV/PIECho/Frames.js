@@ -2,6 +2,7 @@ $(document).ready(function() {
     "use strict";
     var av_name = "Frames";
     var av = new JSAV(av_name);
+    av.container.on('jsav-updatecounter', () => MathJax.Hub.Queue(["Typeset",MathJax.Hub]));
     var injector = PIFRAMES.init(av_name);
     // Load the config object with interpreter and code created by odsaUtils.js
     var config = ODSA.UTILS.loadConfig({av_name: av_name}),
