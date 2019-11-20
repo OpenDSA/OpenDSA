@@ -63,7 +63,7 @@ only about :math:`|\mathbf{V}|` edges must be processed.
 If so, the cost is often close to
 :math:`\Theta(|\mathbf{V}| \log |\mathbf{E}|)` in the average case.
 
-.. avembed:: AV/Development/KruskalPE.html pe
+.. avembed:: AV/Graph/KruskalPE.html pe
    :long_name: Kruskal's Algorithm Proficiency Exercise
 
 .. TODO::

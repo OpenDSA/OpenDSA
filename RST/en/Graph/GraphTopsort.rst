@@ -132,16 +132,16 @@ Here is the code to implement the queue-based topological sort:
    Provide a proficiency exercise that randomly alternates between
    proficiency for DFS-based and queue-based Topsort.
    The bare beginnings of an exercise can be found in
-   ``AV/Development/topSortDFSPE.*``
+   ``AV/Development/TopSort/topSortDFSPE.*``
 
 .. TODO::
    :type: AV
 
    Provide a unified AV that can allow the user to pick which topsort
    (DFS or Queue), with or without cycles in the graph. The start of
-   this is in ``AV/Development/topSortAV*`` (for just random DFS),
-   ``AV/Development/qTopSortAV.*`` (for just random queue-based
-   topsort), and ``AV/Development/topsortAVs*`` (tries to unify).
+   this is in ``AV/Development/TopSort/topSortAV*`` (for just random DFS),
+   ``AV/Development/TopSort/qTopSortAV.*`` (for just random queue-based
+   topsort), and ``AV/Development/TopSort/topSortAVs*`` (tries to unify).
 
 
 .. TODO::

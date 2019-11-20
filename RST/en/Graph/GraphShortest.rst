@@ -166,7 +166,7 @@ At the end, array ``D`` will contain the shortest distance values.
    :type: AV
 
    Provide an AV that runs on a random graph. An initial version is in 
-   ``AV/Development/dijkstraAV.*``.
+   ``AV/Development/TopSort/dijkstraAV.*``.
    
 There are two reasonable solutions to the key issue of finding the
 unvisited vertex with minimum distance value during each pass through
