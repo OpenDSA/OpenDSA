@@ -1,0 +1,95 @@
+#independentSetCON {
+  height: 500px;
+}
+
+#independentSetCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#independentSetCON .nodecolor1{
+  background-color:Brown;
+}
+#independentSetCON .edgecolor1{
+  stroke: Brown;
+  stroke-width: 2;
+}
+
+#independentSetCON .nodecolor2{
+  background-color:#669966;
+}
+#independentSetCON .edgecolor2{
+  stroke: #669966;
+  stroke-width: 2;
+}
+
+#independentSetCON .nodecolor3{
+  background-color:#FFCC66;
+}
+#independentSetCON .edgecolor3{
+  stroke: #FFCC66;
+  stroke-width: 2;
+}
+
+#independentSetCON .nodecolor4{
+  background-color:#996699;
+}
+#independentSetCON .edgecolor4{
+  stroke: #996699;
+  stroke-width: 2;
+}
+
+#independentSetCON .nodecolor5{
+  background-color:#00CCCC;
+}
+#independentSetCON .edgecolor5{
+  stroke: #00CCCC;
+  stroke-width: 2;
+}
+
+#independentSetCON .nodecolor6{
+  background-color:PaleVioletRed;
+}
+#independentSetCON .edgecolor6{
+  stroke: PaleVioletRed;
+  stroke-width: 2;
+}
+
+#independentSetCON .nodecolor7{
+  background-color:Chocolate;
+}
+#independentSetCON .edgecolor7{
+  stroke: Chocolate;
+  stroke-width: 2;
+}
+
+#independentSetCON .nodecolor8{
+  background-color:IndianRed;
+}
+#independentSetCON .edgecolor8{
+  stroke: IndianRed;
+  stroke-width: 2;
+}
+
+#independentSetCON .nodecolor9{
+  background-color:Silver;
+}
+#independentSetCON .edgecolor9{
+  stroke: Silver;
+  stroke-width: 2;
+}
+
+#independentSetCON .nodecolor10{
+  background-color:SlateBlue;
+}
+#independentSetCON .edgecolor10{
+  stroke: SlateBlue;
+  stroke-width: 2;
+}
+
+#independentSetCON .nodecolor11{
+  background-color:Teal;
+}
+#independentSetCON .edgecolor11{
+  stroke: Teal;
+  stroke-width: 2;
+}

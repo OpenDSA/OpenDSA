@@ -126,7 +126,7 @@ The various proofs will link the problems together as shown here:
 
 .. _NPCreduction:
 
-.. inlineav:: NPCProofDiagramCON  dgm
+.. inlineav:: NPCProofDiagramCON dgm
    :links: 
    :scripts: AV/NP/NPCProofDiagramCON.js
    :align: center

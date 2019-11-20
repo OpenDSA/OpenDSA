@@ -1,0 +1,18 @@
+#threeSATCON {
+  height: 475px;
+}
+
+#threeSATCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#threeSATCON .headerrow{
+  background-color:Silver !important;
+}
+
+#threeSATCON .celltrue{
+  background-color: #93C572 !important;
+}
+#threeSATCON .cellfalse{
+  background-color: #CB6D51 !important;
+}

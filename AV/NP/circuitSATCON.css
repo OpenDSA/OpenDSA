@@ -1,55 +1,43 @@
 #circuitSATCON {
-  width: 800px;
   height: 550px;
 }
 
-.avcontainer{
-  overflow: visible;
+#circuitSATCON .jsavoutput.jsavline {
+  height: 35px;
 }
 
-.jsavline{
-  height: 50px;
-}
-.jsavarray .jsavindex{
-	min-width:30px;
-	min-height:30px;
-	height:30px;
-	line-height:30px;
-        text-align:center;
-}
-
-.headerrow{
+#circuitSATCON .headerrow{
 	background-color:Silver !important;
 }
 
-.labeltrue{
+#circuitSATCON .labeltrue{
 	color: Green;
 }
-.labelfalse{
+#circuitSATCON .labelfalse{
 	color: Red;
 }
-.celltrue{
+#circuitSATCON .celltrue{
 	background-color: #93C572 !important;
 }
-.cellfalse{
+#circuitSATCON .cellfalse{
 	background-color: #CB6D51 !important;
 }
-.numlabel{
+#circuitSATCON .numlabel{
        color:Blue;
 }
-.gatefocus{
+#circuitSATCON .gatefocus{
        fill: #6A5ACD;
        opacity:0.5;
        fill-opacity:0.5;
 }
-.cellfocus{
+#circuitSATCON .cellfocus{
        background-color: SlateBlue !important;
        opacity:0.5;
 }
-.cellfill{
+#circuitSATCON .cellfill{
        background-color: Tan !important;
        opacity:0.5;
 }
-.truthtablefalse{
+#circuitSATCON .truthtablefalse{
        background-color: #FFB6C1 !important;
 }

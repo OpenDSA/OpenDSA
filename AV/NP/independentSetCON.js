@@ -1,47 +1,43 @@
-//Written by Nabanita Maji and Cliff Shaffer
-/*global ODSA, setPointerL */
- "use strict";
+//Written by Nabanita Maji and Cliff Shaffer, Spring 2015
+/*global ODSA */
 $(document).ready(function () {
+  "use strict";
   var av_name = "independentSetCON";
 
-    $(".avcontainer").on("jsav-message" ,  function() {
-      // invoke MathJax to do conversion again
-      MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
-    });
-    $(".avcontainer").on("jsav-updatecounter" ,  function(){
-      // invoke MathJax to do conversion again 
-     MathJax.Hub.Queue(["Typeset" , MathJax.Hub]); });
+  $(".avcontainer").on("jsav-message" ,  function() {
+    // invoke MathJax to do conversion again
+    MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
+  });
+  $(".avcontainer").on("jsav-updatecounter" ,  function(){
+    // invoke MathJax to do conversion again 
+    MathJax.Hub.Queue(["Typeset" , MathJax.Hub]); });
 
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
-      interpret = config.interpreter,       // get the interpreter
-      code = config.code;                   // get the code object
   var av = new JSAV(av_name);
- 
+  
   var label1, label2 , label3, label4, label5, label6,label7,label8,label9;
   //slide2
   var y = 0;
 
-    av.umsg("<br><b>Introduction to the Independent Set Problem </b>");
-    var nl1=av.label("This slideshow introduces and explains the \""+
-"Independent Set\" Problem.</b> <br><br><br> We start with some "+
-"definitions  and background.",{top:0});
+  av.umsg("<br><b>Introduction to the Independent Set Problem </b>");
+  var nl1=av.label("This slideshow introduces and explains the \""+
+                   "Independent Set\" Problem.</b> <br><br><br> We start with some "+
+                   "definitions  and background.",{top:0});
 
 
-    av.displayInit();
+  av.displayInit();
 
-    av.step();
+  av.step();
 
   av.umsg("<br><b>Independent Set</b>"); 
   nl1.hide();
   nl1=av.label("An Independent Set of a graph is a set of vertices such "+
-"that no two of them are connected <br>i.e. there exists no edge between any two "+
-"vertices of an Independent Set.",{top:-10}); 
+               "that no two of them are connected <br>i.e. there exists no edge between any two "+
+               "vertices of an Independent Set.",{top:-10}); 
 
   av.step();
 
   var nl2=av.label("The largest possible Independent Set of a graph is called "+
-"the \"Maximum Independent Set\".",{top:50}); 
+                   "the \"Maximum Independent Set\".",{top:50}); 
 
   av.step();
   
@@ -57,7 +53,7 @@ $(document).ready(function () {
   var c6 = g.addNode("6", {"left": x+160, "top": y+120});
   var c7 = g.addNode("7", {"left": x+35, "top": y+200});
   
- 
+  
   var e1 = g.addEdge(c1, c2);
   var e2 = g.addEdge(c1, c4);
   var e3 = g.addEdge(c2, c3);
@@ -86,22 +82,22 @@ $(document).ready(function () {
   g.layout();
   g.show(); 
 
-   av.step();
-   label1 = av.label("The colored vertices in this graph form an independent set."
-,{left:500,top: 150}); 
-   label2 = av.label("The Independent set is {$1, 3, 5, 7$}",{left:500,top: 200}); 
+  av.step();
+  label1 = av.label("The colored vertices in this graph form an independent set."
+                    ,{left:500,top: 150}); 
+  label2 = av.label("The Independent set is {$1, 3, 5, 7$}",{left:500,top: 200}); 
 
-   av.step();
- y=0;
- g.hide(); 
-   nl1.hide();
-   nl2.hide();
- label1.hide();
- label2.hide();
+  av.step();
+  y=0;
+  g.hide(); 
+  nl1.hide();
+  nl2.hide();
+  label1.hide();
+  label2.hide();
   av.umsg("<br><b>Example of Independent Set in graph </b>");
   nl1=av.label("The following graph contains an Independent Set of size $3$."+
-" (i.e. {$2,4,5$})",{top:0}); 
- 
+               " (i.e. {$2,4,5$})",{top:0}); 
+  
   x=0;
   y=0;
 
@@ -112,7 +108,7 @@ $(document).ready(function () {
   var cb4 = g2.addNode("4", {"left": x+250, "top": y+50});
   var cb5 = g2.addNode("5", {"left": x+150, "top": y+150});
   
- 
+  
   var eb1 = g2.addEdge(cb1, cb2);
   var eb2 = g2.addEdge(cb2, cb3);
   var eb3 = g2.addEdge(cb3, cb4);
@@ -135,16 +131,16 @@ $(document).ready(function () {
   g2.layout();
   g2.show();
 
- av.step();
+  av.step();
 
 
-   av.umsg("<br><b>Example of Independent Set in graph </b>");
-   g2.hide();
+  av.umsg("<br><b>Example of Independent Set in graph </b>");
+  g2.hide();
 
   y=0;
   nl1.hide(); 
   nl1=av.label("The following graph contains an Independent Set"
-+" of size $5$. ( i.e. {$2,3,4,6,10$} ) ",{top:-10}); 
+               +" of size $5$. ( i.e. {$2,3,4,6,10$} ) ",{top:-10}); 
 
   x=70;
   y=-10;
@@ -161,7 +157,7 @@ $(document).ready(function () {
   var ca9 = g1.addNode("9", {"left": x-45, "top": y+240});
   var ca10 = g1.addNode("10", {"left": x+300, "top": y+200});
   
- 
+  
   var ea1 = g1.addEdge(ca1, ca6);
   var ea2 = g1.addEdge(ca1, ca4);
   var ea4 = g1.addEdge(ca2, ca7);
@@ -213,19 +209,19 @@ $(document).ready(function () {
   g1.show();
 
 
- //slide 5 
-    av.step();
-    nl1.hide();
-    g1.hide();
-    av.umsg("<br><b>The Independent Set Problem </b>");
-    nl1=av.label("The Independent Set Problem can be defined as either "
-+"of the following: <br><br><br><b>Given a graph $G = (V , E)$, find "
-+"the Maximum Independent Set in $G$.</b><br><br><br>Or<br><br><br><b>"
-+"Given a graph $G = (V , E)$, and a number $k$, does $G$ contain an "
-+"Independent Set of size >= $k$ ?</b>",{top:0});
+  //slide 5 
+  av.step();
+  nl1.hide();
+  g1.hide();
+  av.umsg("<br><b>The Independent Set Problem </b>");
+  nl1=av.label("The Independent Set Problem can be defined as either "
+               +"of the following: <br><br><br><b>Given a graph $G = (V , E)$, find "
+               +"the Maximum Independent Set in $G$.</b><br><br><br>Or<br><br><br><b>"
+               +"Given a graph $G = (V , E)$, and a number $k$, does $G$ contain an "
+               +"Independent Set of size >= $k$ ?</b>",{top:0});
 
 
-//silde 6 
+  //silde 6 
   av.step();
   nl1.hide();
   y=0;
@@ -252,7 +248,7 @@ $(document).ready(function () {
   var cc10 = g4.addNode("10", {"left": x+245, "top": y+250});
   var cc11 = g4.addNode("11", {"left": x-70, "top": y+180});
   
- 
+  
   var ec1 = g4.addEdge(cc1, cc6);
   var ec2 = g4.addEdge(cc1, cc4);
   var ec3 = g4.addEdge(cc1, cc5);
@@ -263,7 +259,7 @@ $(document).ready(function () {
   var ec10 = g4.addEdge(cc5, cc10);
   var ec11 = g4.addEdge(cc2, cc6);
   var ec12 = g4.addEdge(cc2, cc9);
-//  var ec13 = g4.addEdge(cc3, cc6);
+  //  var ec13 = g4.addEdge(cc3, cc6);
   var ec14 = g4.addEdge(cc3, cc10);
   var ec16 = g4.addEdge(cc4, cc10);
   var ec17 = g4.addEdge(cc10, cc9);
@@ -277,7 +273,7 @@ $(document).ready(function () {
   g4.layout();
   g4.show();
 
-//slide 7 
+  //slide 7 
   av.step();
 
   y=0;
@@ -292,7 +288,7 @@ $(document).ready(function () {
 
   nl1=av.label("Does the graph below have an independent set of size >=$7$ ?",{top:-10}); 
 
-//slide 9
+  //slide 9
 
   av.step();
 
@@ -325,7 +321,7 @@ $(document).ready(function () {
   cc6.addClass("nodecolor9");
   ec1.addClass("edgecolor9");
   ec11.addClass("edgecolor9");
-//  ec13.addClass("edgecolor9");
+  //  ec13.addClass("edgecolor9");
 
   cc7.addClass("nodecolor11");
   ec22.addClass("edgecolor11");
@@ -339,4 +335,3 @@ $(document).ready(function () {
   g4.show();
   av.recorded();
 });
-

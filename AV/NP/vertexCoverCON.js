@@ -1,42 +1,38 @@
-//Written by Nabanita Maji and Cliff Shaffer
-/*global ODSA, setPointerL */
- "use strict";
+//Written by Nabanita Maji and Cliff Shaffer, Spring 2015
+/*global ODSA */
 $(document).ready(function () {
+  "use strict";
   var av_name = "vertexCoverCON";
 
-    $(".avcontainer").on("jsav-message" ,  function() {
-      // invoke MathJax to do conversion again
-      MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
-    });
-    $(".avcontainer").on("jsav-updatecounter" ,  function(){
-      // invoke MathJax to do conversion again 
-     MathJax.Hub.Queue(["Typeset" , MathJax.Hub]); });
+  $(".avcontainer").on("jsav-message" ,  function() {
+    // invoke MathJax to do conversion again
+    MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
+  });
+  $(".avcontainer").on("jsav-updatecounter" ,  function(){
+    // invoke MathJax to do conversion again 
+    MathJax.Hub.Queue(["Typeset" , MathJax.Hub]); });
 
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
-      interpret = config.interpreter,       // get the interpreter
-      code = config.code;                   // get the code object
   var av = new JSAV(av_name);
- 
+  
   var label1, label2 , label3, label4, label5, label6,label7,label8,label9;
   //slide2
   var y = 0;
 
   av.umsg("<br><b>Introduction to the Vertex Cover problem </b>");
   var nl1=av.label("This slideshow introduces and explains the \"Vertex Cover\" Problem."
-+"</b> <br><br><br> We start with some definitions  and background.",{top:0});
+                   +"</b> <br><br><br> We start with some definitions  and background.",{top:0});
 
 
-    av.displayInit();
+  av.displayInit();
 
-    av.step();
-    nl1.hide();
+  av.step();
+  nl1.hide();
   av.umsg("<br><b>Vertex Cover</b>"); 
 
-   nl1=av.label("A Vertex Cover of a graph is a set of vertices such that "+
-"any edge of the graph is incident on at least one vertex of the set."
-+"<br><br><br>The smallest possible Vertex Cover of a graph is called "+
-"the \"Minimum Vertex cover\".",{top:-10});
+  nl1=av.label("A Vertex Cover of a graph is a set of vertices such that "+
+               "any edge of the graph is incident on at least one vertex of the set."
+               +"<br><br><br>The smallest possible Vertex Cover of a graph is called "+
+               "the \"Minimum Vertex cover\".",{top:-10});
 
   av.step();
 
@@ -51,7 +47,7 @@ $(document).ready(function () {
   var c6 = g.addNode("6", {"left": x+160, "top": y+200});
   var c7 = g.addNode("7", {"left": x+260, "top": y+200});
   
- 
+  
   var e1 = g.addEdge(c1, c2);
   var e2 = g.addEdge(c1, c4);
   var e3 = g.addEdge(c2, c3);
@@ -79,19 +75,19 @@ $(document).ready(function () {
   g.show();
   //slide 3
 
-   av.step();
-   label1 = av.label("The colored vertices in this graph form a Vertex Cover."
-+"<br>The Vertex Cover is {1, 3, 5}",
-{left:500,top: 200});
+  av.step();
+  label1 = av.label("The colored vertices in this graph form a Vertex Cover."
+                    +"<br>The Vertex Cover is {1, 3, 5}",
+                    {left:500,top: 200});
   
-   av.step();
-   nl1.hide();
-   av.umsg("<br><b>Example of Vertex Cover in graph </b>");
-   g.hide();
-   label1.hide();
+  av.step();
+  nl1.hide();
+  av.umsg("<br><b>Example of Vertex Cover in graph </b>");
+  g.hide();
+  label1.hide();
   y=0; 
   nl1=av.label("The following graph contains a Vertex Cover  of size"+
-" 6. (i.e. {1,2,3,6,9,10})",{top:-15}); 
+               " 6. (i.e. {1,2,3,6,9,10})",{top:-15}); 
 
   x=70;
   y=10;
@@ -108,7 +104,7 @@ $(document).ready(function () {
   var ca9 = g1.addNode("9", {"left": x-45, "top": y+280});
   var ca10 = g1.addNode("10", {"left": x+245, "top": y+280});
   
- 
+  
   var ea1 = g1.addEdge(ca1, ca6);
   var ea2 = g1.addEdge(ca1, ca4);
   var ea3 = g1.addEdge(ca1, ca5);
@@ -161,15 +157,15 @@ $(document).ready(function () {
 
   g1.layout();
   g1.show();
-//slide 4 
- av.step();
-nl1.hide(); 
- y=0;
-   av.umsg("<br><b>Example of Vertex Cover in graph </b>");
-   g1.hide();
+  //slide 4 
+  av.step();
+  nl1.hide(); 
+  y=0;
+  av.umsg("<br><b>Example of Vertex Cover in graph </b>");
+  g1.hide();
   nl1=av.label("The following graph contains a Vertex Cover  of size"+
-" 3. (i.e. {1,2,3})",{top:-10}); 
- 
+               " 3. (i.e. {1,2,3})",{top:-10}); 
+  
   x=50;
   y=0;
 
@@ -182,7 +178,7 @@ nl1.hide();
   var cb6 = g2.addNode("6", {"left": x+250, "top": y+200});
   var cb7 = g2.addNode("7", {"left": x+250, "top": y+300});
   
- 
+  
   var eb1 = g2.addEdge(cb1, cb5);
   var eb2 = g2.addEdge(cb1, cb6);
   var eb3 = g2.addEdge(cb2, cb4);
@@ -214,18 +210,18 @@ nl1.hide();
 
 
 
- //slide 5 
+  //slide 5 
   av.step();
   nl1.hide();
   g2.hide();
-    av.umsg("<br><b>The Vertex Cover Problem </b>");
-    nl1=av.label("The Vertex Cover Problem can be defined as either "
-+"of the following: "+
-"<br><br><br><b>Given a graph $G = (V , E)$, find the Minimum "
-+"Vertex Cover in $G$.</b>"+
-"<br><br><br>Or"+
-"<br><br><br><b>Given a graph $G = (V , E)$, and a number "
-+"$k$, does $G$ contain an Vertex Cover of size $<= k$ ?</b>",{top:5});
+  av.umsg("<br><b>The Vertex Cover Problem </b>");
+  nl1=av.label("The Vertex Cover Problem can be defined as either "
+               +"of the following: "+
+               "<br><br><br><b>Given a graph $G = (V , E)$, find the Minimum "
+               +"Vertex Cover in $G$.</b>"+
+               "<br><br><br>Or"+
+               "<br><br><br><b>Given a graph $G = (V , E)$, and a number "
+               +"$k$, does $G$ contain an Vertex Cover of size $<= k$ ?</b>",{top:5});
 
 
   av.step();
@@ -235,7 +231,7 @@ nl1.hide();
   av.umsg("<br><b>Example of Vertex Cover Problem: </b>");  
 
   nl1=av.label("Does the graph below have a vertex cover of size "
-+"<=3 ?",{top:-15}); 
+               +"<=3 ?",{top:-15}); 
 
   x=70;
   y=10;
@@ -252,7 +248,7 @@ nl1.hide();
   var cc9 = g4.addNode("9", {"left": x-45, "top": y+280});
   var cc10 = g4.addNode("10", {"left": x+245, "top": y+280});
   
- 
+  
   var ec1 = g4.addEdge(cc1, cc6);
   var ec2 = g4.addEdge(cc1, cc4);
   var ec3 = g4.addEdge(cc1, cc5);
@@ -288,7 +284,7 @@ nl1.hide();
   nl1.hide();
 
   nl1=av.label("Does the graph below have a vertex cover of size "
-+"<=4 ?",{top:-15}); 
+               +"<=4 ?",{top:-15}); 
 
   av.step();
 
@@ -325,4 +321,3 @@ nl1.hide();
   g4.show();
   av.recorded();
 });
-
