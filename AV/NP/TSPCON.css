@@ -1,0 +1,30 @@
+#TSPCON {
+  height: 600px;
+}
+
+#TSPCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#TSPCON .jsavedgelabel{
+        background-color:AliceBlue;
+}
+
+#TSPCON .jsavnode{
+	width:30px;
+	height:30px;
+	min-width:30px;
+	min-height:30px;
+	font-size:75%; 
+	background-color:AntiqueWhite;
+}
+#TSPCON .edgehighlight{
+	stroke : IndianRed;
+	stroke-width:5px;
+	opacity:0.75;
+}
+#TSPCON .edgehighlightbold{
+	stroke : IndianRed;
+	stroke-width:8px;
+	opacity:0.75;
+}

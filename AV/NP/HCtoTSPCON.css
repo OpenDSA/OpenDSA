@@ -1,0 +1,41 @@
+#HCtoTSPCON {
+  height: 550px;
+}
+
+#HCtoTSPCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#HCtoTSPCON .jsavarray .jsavindex{
+	min-width:30px;
+	min-height:30px;
+	height:30px;
+	line-height:30px;
+        text-align:center;
+}
+
+#HCtoTSPCON .jsavgraphnode{
+	width:35px !important;
+	height:35px !important; 
+	min-width:35px !important;
+ 	min-height:35px !important;
+	background-color:AntiqueWhite;
+}
+
+#HCtoTSPCON .jsavedgelabel{
+       background-color:AliceBlue;
+}
+
+#HCtoTSPCON .jsavgraphedge{
+	stroke-width:1.5px;
+}
+
+#HCtoTSPCON .extraedge{
+	stroke:Teal;
+}
+
+#HCtoTSPCON .hcedge{
+	stroke:IndianRed;
+	stroke-width:8px !important;
+	opacity:0.75;
+}

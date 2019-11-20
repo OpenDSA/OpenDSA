@@ -18,8 +18,8 @@ problem can be reduced to an instance of Clique problem in
 polynomial time.
  
 .. inlineav:: threeSATtoCliqueCON ss
-   :links: AV/Development/NP/threeSATtoCliqueCON.css
-   :scripts: AV/Development/NP/threeSATtoCliqueCON.js
+   :links: AV/NP/threeSATtoCliqueCON.css
+   :scripts: AV/NP/threeSATtoCliqueCON.js
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 

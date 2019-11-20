@@ -1,0 +1,110 @@
+#threeSATtoHCCON {
+  height: 570px;
+}
+
+#threeSATtoHCCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#threeSATtoHCCON .node{
+  radius: 15;
+  fill: blue;
+}
+#threeSATtoHCCON .jsavarray .jsavindex{
+  min-width:30px;
+  min-height:30px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+}
+
+#threeSATtoHCCON .pointing-left {
+  -webkit-transform: translateY(-5px) translateX(1px);
+  -moz-transform: translateY(-5px) translateX(1px);
+  -o-transform: translateY(5px) translateX(-1px);
+  transform: translateY(-5px) translateX(1px);
+}
+#threeSATtoHCCON .pointing-right {
+  -webkit-transform: translateY(5px) translateX(-1px);
+  -moz-transform: translateY(5px) translateX(-1px);
+  -o-transform: translateY(5px) translateX(-1px);
+  transform: translateY(5px) translateX(-1px);
+}
+
+#threeSATtoHCCON .blur{
+  opacity:0.5;
+}
+
+#threeSATtoHCCON .variablenode{
+  background-color:Tan;
+  width:30px;
+  height:30px;
+  min-width:30px;
+  min-height:30px;
+}
+
+#threeSATtoHCCON .invisible{
+  opacity:0;
+}
+
+
+#threeSATtoHCCON .jsavgraphedge{
+  stroke-width:1.5px;
+}
+
+#threeSATtoHCCON .edgetrue{
+  stroke:DarkGreen;
+}
+
+#threeSATtoHCCON .edgefalse{
+  stroke:FireBrick;
+}
+
+#threeSATtoHCCON .edgeconnect{
+  stroke:DarkViolet;
+}
+
+#threeSATtoHCCON .zoomlabel{
+  font-size: 125%;
+}
+
+#threeSATtoHCCON .extranode{
+  width:40px !important;
+  height:40px !important;
+  min-width:40px !important;
+  min-height:40px !important;
+  opacity:0.65;
+  background-color:Khaki;
+}
+
+#threeSATtoHCCON .democlausenode{
+  width:50px !important;
+  height:50px !important;
+  min-width:50px !important;
+  min-height:50px !important;
+  opacity:0.65;
+  background-color:Teal;
+}
+
+
+#threeSATtoHCCON .clausenode{
+  width:50px !important;
+  height:50px !important;
+  min-width:50px !important;
+  min-height:50px !important;
+  opacity:0.65;
+}
+
+#threeSATtoHCCON .clauseedge{
+  stroke: SlateGray;
+}
+
+#threeSATtoHCCON .boldedge{
+  stroke-width:3.5px !important;
+}
+
+#threeSATtoHCCON .highlightedge{
+  stroke:Blue;
+  stroke-width:3px !important;
+  opacity:1;
+}

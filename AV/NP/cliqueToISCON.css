@@ -1,0 +1,45 @@
+#cliqueToISCON {
+  height: 520px;
+}
+
+#cliqueToISCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#cliqueToISCON .jsavarray .jsavindex{
+	min-width:30px;
+	min-height:30px;
+	height:30px;
+	line-height:30px;
+        text-align:center;
+}
+
+#cliqueToISCON .jsavnode{
+	width:35px;
+	height:35px;
+	min-width:35px;
+	min-height:35px;
+	background-color:AntiqueWhite;
+}
+
+#cliqueToISCON .jsavedge{
+	stroke-width:1.5px;
+}
+
+#cliqueToISCON .bluredge{
+       stroke-opacity:0.1;
+}
+
+#cliqueToISCON .semibluredge{
+       stroke-opacity:0.5;
+}
+
+#cliqueToISCON .highlightedge{
+	stroke:SlateBlue;
+	stroke-width:3.5px;
+	stroke-opacity:1;
+}
+
+#cliqueToISCON .highlightnode{
+	background-color:Teal;
+}

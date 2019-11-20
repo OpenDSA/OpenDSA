@@ -1,0 +1,30 @@
+#SATto3SATCON {
+  height: 550px;
+}
+
+
+#SATto3SATCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#SATto3SATCON .falsecolor{
+   	color:red;
+}
+#SATto3SATCON .truecolor{
+   	color:green;
+}
+#SATto3SATCON .color1{
+   	color:blue;
+}
+#SATto3SATCON .color2{
+   	color:Chocolate;
+}
+#SATto3SATCON .invisible{
+	opacity:0;
+}
+#SATto3SATCON .fontbold{
+	font-weight:bold;
+}
+#SATto3SATCON .cellhighlight{
+	background-color: AquaMarine;
+}

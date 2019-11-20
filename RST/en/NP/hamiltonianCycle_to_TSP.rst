@@ -19,8 +19,8 @@ polynomial time.
  
 .. inlineav:: HCtoTSPCON ss
    :long_name: HC to TSP Reduction
-   :links: AV/Development/NP/HCtoTSPCON.css
-   :scripts: AV/Development/NP/HCtoTSPCON.js
+   :links: AV/NP/HCtoTSPCON.css
+   :scripts: AV/NP/HCtoTSPCON.js
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 

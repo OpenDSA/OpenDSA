@@ -19,8 +19,8 @@ in polynomial time.
  
 .. inlineav:: IStoVCCON ss
    :long_name: IS to VC Reduction
-   :links: AV/Development/NP/IStoVCCON.css
-   :scripts: AV/Development/NP/IStoVCCON.js
+   :links: AV/NP/IStoVCCON.css
+   :scripts: AV/NP/IStoVCCON.js
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 

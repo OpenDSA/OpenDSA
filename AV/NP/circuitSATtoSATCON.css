@@ -1,0 +1,77 @@
+#circuitSATtoSATCON {
+  height: 550px;
+}
+
+#circuitSATtoSATCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#circuitSATtoSATCON .headerrow{
+  background-color:Tan;
+  opacity:0.5;
+}
+#circuitSATtoSATCON .gatefocus{
+  fill:Tan;
+}
+#circuitSATtoSATCON .font125{
+  font-size:125%;
+}
+#circuitSATtoSATCON .outputcolor{
+  color:OrangeRed;
+}
+#circuitSATtoSATCON .gatecolor1{
+  fill:Blue;
+  fill-opacity:0.5;
+}
+#circuitSATtoSATCON .labelcolor1{
+  color:Blue;
+  opacity:0.75;
+}
+#circuitSATtoSATCON .gatecolor2{
+  fill:DarkCyan;
+  fill-opacity:0.5;
+}
+#circuitSATtoSATCON .labelcolor2{
+  color:DarkCyan;
+  opacity:0.75;
+}
+#circuitSATtoSATCON .gatecolor3{
+  fill:BlueViolet;
+  fill-opacity:0.5;
+}
+#circuitSATtoSATCON .labelcolor3{
+  color:BlueViolet;
+  opacity:0.75;
+}
+#circuitSATtoSATCON .gatecolor4{
+  fill:DarkRed;
+  fill-opacity:0.5;
+}
+#circuitSATtoSATCON .labelcolor4{
+  color:DarkRed;
+  opacity:0.75;
+}
+#circuitSATtoSATCON .gatecolor5{
+  fill:MediumVioletRed;
+  fill-opacity:0.5;
+}
+#circuitSATtoSATCON .labelcolor5{
+  color:MediumVioletRed;
+  opacity:0.75;
+}
+#circuitSATtoSATCON .gatecolor6{
+  fill:DarkGoldenRod;
+  fill-opacity:0.5;
+}
+#circuitSATtoSATCON .labelcolor6{
+  color:DarkGoldenRod;
+  opacity:0.75;
+}
+#circuitSATtoSATCON .gatecolor7{
+  fill:DarkSlateGray;
+  fill-opacity:0.5;
+}
+#circuitSATtoSATCON .labelcolor7{
+  color:DarkSlateGray;
+  opacity:0.75;
+}

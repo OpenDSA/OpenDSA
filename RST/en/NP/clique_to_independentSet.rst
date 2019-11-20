@@ -19,8 +19,8 @@ in polynomial time.
  
 .. inlineav:: cliqueToISCON ss
    :long_name: Clique to IS Reduction
-   :links: AV/Development/NP/cliqueToISCON.css
-   :scripts: AV/Development/NP/cliqueToISCON.js
+   :links: AV/NP/cliqueToISCON.css
+   :scripts: AV/NP/cliqueToISCON.js
    :output: show
 
 This reduction can help in providing an NP Completeness proof for 
