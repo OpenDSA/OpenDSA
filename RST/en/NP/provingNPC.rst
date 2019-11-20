@@ -128,7 +128,7 @@ The various proofs will link the problems together as shown here:
 
 .. inlineav:: NPCProofDiagramCON  dgm
    :links: 
-   :scripts: AV/Development/NP/NPCProofDiagramCON.js
+   :scripts: AV/NP/NPCProofDiagramCON.js
    :align: center
 
    We will use this sequence of reductions for the NP Complete Proof

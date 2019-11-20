@@ -1,6 +1,6 @@
-//Written by Nabanita Maji and Cliff Shaffer
-"use strict";
+//Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 $(document).ready(function () {
+  "use strict";
   var av = new JSAV("NPCProofDiagramCON", {animationMode: 'none'});
   var x=325;
   var y=20;
@@ -38,6 +38,5 @@ $(document).ready(function () {
   y+=75;
   av.g.rect(x2,y+0,l,w,r,{"fill":"Silver","opacity":"0.5"});
   av.label("<b>Vertex Cover</b>",{top:y-10,left:x2+l/5});
-  av.recorded();
   av.recorded();
 });

@@ -1,9 +1,7 @@
-//Written by Nabanita Maji and Cliff Shaffer
-"use strict";
-/*global alert: true, ODSA */
-
-(function ($) {
-  var jsav;
+//Written by Nabanita Maji and Cliff Shaffer, March 2015
+/*global ODSA */
+$(document).ready(function() {
+  "use strict";
   var input;
   var iparr;
   var pair1;
@@ -16,14 +14,15 @@
   var line1;
   var yoffset = 20;
 
-function runit() {
-  ODSA.AV.reset(true);
-  jsav = new JSAV($('.avcontainer'));
+  var av_name = "sortToPairCON";
+  var jsav = new JSAV(av_name);
 
+  // Slide 1
   jsav.umsg("Sorting of a given array by reducing it to Pairing problem.");
   jsav.displayInit();
   jsav.step();
 
+  // Slide 2
   input = new Array(23,42,17,93,88,12,57,90);
   iparr = jsav.ds.array(input,  {left: 230, top: -8 + yoffset,indexed:true});
   for(var i=0;i<8;i++)
@@ -31,14 +30,16 @@ function runit() {
   jsav.label("<b>Array to be sorted</b>",{left: 290, top: -28 + yoffset});
   jsav.step();
 
+  // Slide 3
+  jsav.umsg("Transformation step to reduce into pairing problem");
   var l1= jsav.g.line(355,40 + yoffset,355,83 + yoffset);
   l1.show();
-  jsav.umsg("Transformation step to reduce into pairing problem");
   jsav.label("<b>Transformation (Cost=O(n))</b>",{left: 375, top: 45 + yoffset});
   var r1 = jsav.g.rect(80,85 + yoffset,550,45);
   r1.show();
   jsav.step();
 
+  // Slide 4
   jsav.umsg("The Input array and Position array is given as an input to the Pairing problem. The Position array contains a value <i>k</i> at the k<sup>th</sup> index");
   pair1 = jsav.ds.array([0,1,2,3,4,5,6,7],  {left: 90 , top: 75 + yoffset});
   for(var i=0;i<8;i++)
@@ -50,6 +51,7 @@ function runit() {
   jsav.label("Input <br>array",{left: 640, top: 75 + yoffset});
   jsav.step();
 
+  // Slide 5
   jsav.umsg("The two arrays are fed into the Pairing problem as input");
   jsav.label("<b>Pairing</b>",{left: 375, top: 120 + yoffset});
   var l2= jsav.g.line(355,130 + yoffset,355,160 + yoffset);
@@ -58,6 +60,7 @@ function runit() {
   r2.show();
   jsav.step();
 
+  // Slide 6
   jsav.umsg("Pairing problem is to be solved on the two arrays");
   pair11 = jsav.ds.array([0,1,2,3,4,5,6,7],  {left: 230 , top: 152 + yoffset});
   for(var i=0;i<8;i++)
@@ -67,6 +70,7 @@ function runit() {
     pair21.css(i,{"background-color":"AntiqueWhite"});
   jsav.step();
  
+  // Slide 7
   jsav.umsg("Pairing problem is solved on the two arrays");
   pairs = new Array([23,2],[42,3],[17,1],[93,7],[88,5],[12,0],[57,4],[90,6]);
 
@@ -134,18 +138,4 @@ function runit() {
   jsav.umsg("Total cost of sorting = O(n) + Cost of Pairing");
   jsav.step();
   jsav.recorded();
-}
-
-function about() {
-     var mystring = "Example of Reduction\nWritten by Nabanita Maji and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during March, 2015\nJSAV library version " + JSAV.version();
-    alert(mystring);
-
-}
-  
-
-// Connect action callbacks to the HTML entities
-$('#about').click(about);
-$('#runit').click(runit);
-$('#help').click(help);
-$('#reset').click(ODSA.AV.reset);
-}(jQuery));
+});

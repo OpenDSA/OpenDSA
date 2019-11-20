@@ -1,19 +1,67 @@
-//Written by Nabanita Maji and Cliff Shaffer
-"use strict";
-/*global alert: true, ODSA */
+//Written by Nabanita Maji and Cliff Shaffer, March 2015
+/*global ODSA */
+$(document).ready(function() {
+  "use strict";
 
-(function ($) {
-  var jsav;
+  function transpose(matrix,row,col){
+    var result = new Array(col);;
+    for(var i=0;i<col;i++)
+      result[i]=new Array(row); 
+    for(var i=0;i<col;i++){
+      for(var j=0;j<row;j++){
+        result[i][j] = matrix[j][i];
+      }
+    }
+    return result;
+  }
+
+  function zeroMat(row,col){
+    var result = new Array(row);
+    for(var i=0;i<row;i++)
+      result[i]=new Array(col); 
+    for(var i=0;i<row;i++)
+      for(var j=0;j<col;j++)
+        result[i][j]=0;
+    return result;
+  }
+
+  function transform(matrix,row,col,flag){
+    var num = row+col;
+    var result = zeroMat(num,num);
+    var matrixT = transpose(matrix,row,col) ;
+    for(var i=0;i<row;i++){
+      for(var j=0;j<col;j++){
+        if(flag==0){
+          result[i][row+j]=matrix[i][j];
+          result[row+j][i]=matrixT[j][i];
+        }
+        else if(flag==1) {
+          result[j][col+i]=matrixT[j][i];
+          result[col+i][j]=matrix[i][j];
+        }
+      }
+    }
+    return result;
+  }
+
+  function multiply(mat1,mat2,row,col,mid){
+    var result = zeroMat(row,col);
+    for(var i=0;i<row;i++)
+      for(var j=0;j<col;j++)
+        for(var k=0;k<mid;k++)
+          result[i][j]+=mat1[i][k]*mat2[k][j];
+    return result;
+  }
+
   var x;
   var y;
   var mat1,mat2;
   var mat1data;
   var mat2data;
-  
+  var av_name = "matrixMulCON";
+  var jsav = new JSAV(av_name);
 
-function runit() {
-  ODSA.AV.reset(true);
-  jsav = new JSAV($('.avcontainer'));
+  // Slide 1
   jsav.umsg("The following two matrices need to be multiplied.");
   x = 0; y = 0;
   mat1data=[[2,3],[6,7],[4,9]];
@@ -31,6 +79,8 @@ function runit() {
   mat2.show();
   jsav.displayInit();
   jsav.step();
+
+  // Slide 2
   jsav.umsg ("Each of the two matrices are transformed into corresponding symmeric matrices by using its transpose as shown.");
   var r21 = jsav.g.rect(0,200,435,220);
   r21.show();
@@ -68,6 +118,8 @@ function runit() {
       mat2TransDisp.css(i,j,{"background-color":"PowderBlue"});
   mat2TransDisp.show();
   jsav.step();
+
+  // Slide 3
   jsav.umsg("Then the two symmetric matrices are multiplied.");
   var r31 = jsav.g.rect(535,200,200,220);
   r31.show();
@@ -78,10 +130,12 @@ function runit() {
   var productDisp = new jsav.ds.matrix(product,{style:"matrix",left:x+550,top:y+200});
   productDisp.show();
   jsav.step();
+
+  // Slide 4
+  jsav.umsg("The 3*3 matrix in the upper left corner gives the output array.");
   for(var i=0;i<3;i++)
     for(var j=0;j<3;j++)
       productDisp.css(i,j,{"background-color":"#CCFF99"});
-
   var r32 = jsav.g.rect(560,220,95,100);
   r31.show();
   var r4 = jsav.g.rect(550,150,200,20);
@@ -91,8 +145,10 @@ function runit() {
   l31.show();
   var l32 = jsav.g.line(640,170,640,200, {"stroke-width": 3});
   l32.show();
-  jsav.umsg("The 3*3 matrix in the upper left corner gives the output array.");
   jsav.step();
+
+  // Slide 5
+  jsav.umsg("Total cost = O(mn) + cost of symmetric multiply.");
   var verifyprod = multiply(mat1data,mat2data,3,3,2); 
   var verifyprodDisp = new jsav.ds.matrix(verifyprod,{style:"matrix",left:x+600,top:y+0});
   for(var i=0;i<3;i++)
@@ -100,73 +156,5 @@ function runit() {
       verifyprodDisp.css(i,j,{"background-color":"#CCFF99"});
   verifyprodDisp.show();
   jsav.label("Output Array", {left: 610, top: -15});
-  jsav.umsg("Total cost = O(mn) + cost of symmetric multiply.");
-   
   jsav.recorded();
-}
-
-function transpose(matrix,row,col){
-	var result = new Array(col);;
-	for(var i=0;i<col;i++)
-   		result[i]=new Array(row); 
-	for(var i=0;i<col;i++){
-		for(var j=0;j<row;j++){
-			result[i][j] = matrix[j][i];
-		}
-	}
-	return result;
-}
-
-function zeroMat(row,col){
-	var result = new Array(row);
-	for(var i=0;i<row;i++)
-   		result[i]=new Array(col); 
-	for(var i=0;i<row;i++)
-		for(var j=0;j<col;j++)
-       	        	result[i][j]=0;
-	
-	return result;
-}
-
-function transform(matrix,row,col,flag){
-        var num = row+col;
-	var result = zeroMat(num,num);
-        var matrixT = transpose(matrix,row,col) ;
-        for(var i=0;i<row;i++){
-		for(var j=0;j<col;j++){
-			if(flag==0){
-				result[i][row+j]=matrix[i][j];
-				result[row+j][i]=matrixT[j][i];
-			}
-			else if(flag==1) {
-				result[j][col+i]=matrixT[j][i];
-				result[col+i][j]=matrix[i][j];
-			}
-		}
-	}
-	return result;
-}
-
-function multiply(mat1,mat2,row,col,mid){
-	var result = zeroMat(row,col);
-	for(var i=0;i<row;i++)
-		for(var j=0;j<col;j++)
-			for(var k=0;k<mid;k++)
-				result[i][j]+=mat1[i][k]*mat2[k][j];
-				
-	return result;
-}
-
-function about() {
-    var mystring = "Example of Reduction\nWritten by Nabanita Maji and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during March, 2015\nJSAV library version " + JSAV.version();
-    alert(mystring);
-
-}
-  
-
-// Connect action callbacks to the HTML entities
-$('#about').click(about);
-$('#runit').click(runit);
-$('#help').click(help);
-$('#reset').click(ODSA.AV.reset);
-}(jQuery));
+});

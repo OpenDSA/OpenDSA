@@ -229,8 +229,11 @@ the two transformations.
 Next is a slideshow that shows the steps for 
 the reduction of **SORTING** to **PAIRING**.
 
-.. avembed:: AV/Development/NP/sortToPairReduction.html ss
-   :long_name: Reduction of Sorting to Pairing
+.. inlineav:: sortToPairCON ss
+   :long_name: Sorting to Pairing Reduction Slideshow
+   :links: AV/NP/sortToPairCON.css
+   :scripts: AV/NP/sortToPairCON.js
+   :output: show
 
 It is important to note that the reduction process does not give us
 an algorithm for solving either problem by itself.
@@ -374,8 +377,11 @@ matrices :math:`A` and :math:`B` together.
 
 The following slideshow illustrates this reduction process.
 
-.. avembed:: AV/Development/NP/matrixMulReduction.html ss
+.. inlineav:: matrixMulCON ss
    :long_name: Matrix Multiplication
+   :links: AV/NP/matrixMulCON.css
+   :scripts: AV/NP/matrixMulCON.js
+   :output: show
 
 .. [#] The transpose operation
        takes position :math:`ij` of the original matrix and places it

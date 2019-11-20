@@ -1,4 +1,4 @@
-//Written by Nabanita Maji and Cliff Shaffer
+//Written by Nabanita Maji and Cliff Shaffer, March 2015
 /*global ODSA */
 $(document).ready(function() {
   "use strict";
