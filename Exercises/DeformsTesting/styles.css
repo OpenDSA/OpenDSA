@@ -1,10 +1,17 @@
-#MasterWorkspace {
+.jsavcanvas {
     display: grid;
-    width: 767px;
+    width: 771px;
     height: 1500px;
-    grid-template-columns: 3.5fr 2fr;
+    grid-template-columns: 2fr 1fr;
     grid-template-areas: "workspace equations";
 }
+
+.workspacelabel {
+    color: black;
+    font-size: 120%;
+    font-weight: 600;
+    z-index: 500;
+   }
 
 #float {
     position: fixed;

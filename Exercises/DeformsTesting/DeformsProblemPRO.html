@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html data-require="jsav math DeformsProblemPRO">
-<!-- <html data-require="jsav math"> -->
 <head>
   <title>Deforms Basic Problem</title>
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-  <!-- <script src="~/OpenDSA/khan-exercises/local-only/main.js"></script> -->
   <script src="../../khan-exercises/local-only/main.js"></script>
-  <!-- <script src="./DeformsProblemPRO.js"></script> -->
   <link rel = "stylesheet" type = "text/css" href = "./styles.css" />
   <style>
       /*#MasterWorkspace {
@@ -33,7 +30,7 @@
 <body data-height="860" data-width="950">
   <div class="exercise">
     <div class="vars">
-        <!-- order is: name, value, enable, unit-->
+        <!-- order is: name, value, enable, unit -->
         <var id="L">
           ["L", randRange(1,999) * pow(10, randRange(-2,3)), 1, "m"]
         </var>
@@ -60,22 +57,7 @@
         </var>
     </div>
     <div class="vars">
-      <var id="equations">
-      [ 
-        {
-          eqnText:"\\delta_{univ} = \\alpha (T-T_0) L",
-          eqnVars:["\\delta_{univ}","\\alpha","T","T_0","L"]
-        },
-        {
-          eqnText:"\\sigma = - \\frac{P L}{A E}",
-          eqnVars:["\\sigma","P","L","A","E"]
-        }
-      ]
-      </var>
-      <var id="parameters">
-        [ L, gap]
-      </var>
-      <!-- <var id="JSAV">eqnSolverPRO.initJSAV(equations, parameters)</var> -->
+      <var id="JSAV">deformsProblemPRO.initJSAV()</var>
     </div>
 
     <div class="problems">
@@ -106,12 +88,14 @@
         
         <!-- <input id="reset" type="button" value="Reset" /> 
         <input id="solve" type="button" value="Solve" /> -->
-        <!--<div id="EqnSolverPRO" class="jsavcanvas"></div>-->
+        <div id="DeformsProblemPRO" class="jsavcanvas">
+          <!-- add all the things in here -->
+        </div>
         <!-- the MasterWorkspace gets added here-->
         
         <div class="solution" data-type="custom">
           <div class="guess"> 
-            <!--[ eqnSolverPRO.userInput ]--> 
+            <!-- [ deformsProblemPRO.userInput ] -->
           </div>
           <div class="validator-function">
             <!--
@@ -126,7 +110,7 @@
         <div data-if="L[2] == 0">
           <p class="solution" data-type="decimal"> 
             <var>round((gap / (a * (nT-T)))*1000) / 1000</var>
-              <!-- Replace this with a conditional based on which enable variable is 0-->
+              <!-- Replace this with a conditional based on which enable variable is 0 -->
               The correct answer expected from the student
           </p>
         </div>  
@@ -142,6 +126,10 @@
       </div>
 
   </div>
+
+  <script src="../../../../../DataStructures/MechSolver/EquationBank.js"></script>
+  <script src="../../../../../DataStructures/MechSolver/Workspace.js"></script>
+  <script src="../../../../../DataStructures/MechSolver/WorkspaceList.js"></script>
 </body>
 
 </html>
