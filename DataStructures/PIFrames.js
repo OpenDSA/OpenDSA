@@ -497,9 +497,9 @@
             this.updateCanvas(null);
             // this.resizeContainer(0);
             this.enableForwardButton();
-            $(".jsavoutput.jsavline").css("width", "100%");
+            $(".jsavoutput.jsavline").css("width", "60%");
             $(".jsavcanvas").css({
-              width: "100%",
+              width: "60%",
               "overflow-x": "auto",
               "margin-left": "auto"
             });
