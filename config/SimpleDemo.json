@@ -40,8 +40,9 @@
     "Preface": {
       "Intro": {}
     },
-    "A Simple Example": {
-      "SimpleDemo/DemoIntro": {}
+    "Simple Demonstration Examples": {
+      "SimpleDemo/DemoIntro": {},
+      "SimpleDemo/MoreExamples": {}
     }
   }
 }

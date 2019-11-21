@@ -1,4 +1,4 @@
-$(document).ready(function() {
+(function ($) {
   "use strict";
 
   /*
@@ -75,7 +75,7 @@ $(document).ready(function() {
       return $.inArray(ds, this.ds);
     },
 
-    //get a structure
+    //get a structure 
     getDs: function (index) {
       return this.ds[index];
     },
@@ -583,4 +583,4 @@ $(document).ready(function() {
   if (window) {
     window.ClickHandler = ClickHandler;
   }
-});
+}(jQuery));

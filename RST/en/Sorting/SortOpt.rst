@@ -64,7 +64,7 @@ Here is an implementation for Insertion Sort using this optimization.
 
 Now, you can test whether you understand how this works.
 
-.. avembed:: AV/Development/insertionSortWithoutSwapPRO.html pe
+.. avembed:: AV/Sorting/insertionSortWithoutSwapPRO.html pe
    :long_name: Insertion Sort Without Swap Proficiency Exercise
 
 .. _OptimizeTable:

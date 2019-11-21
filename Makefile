@@ -119,7 +119,7 @@ Weihao: min
 	python $(CONFIG_SCRIPT) config/Weihao.json --no-lms
 
 SimpleDemo: min
-	python2 $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
+	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
 
 CT: min
 	python $(CONFIG_SCRIPT) config/CT.json --no-lms

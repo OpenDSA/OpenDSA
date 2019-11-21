@@ -8,7 +8,7 @@ $(document).ready(function() {
       queue,
       stack,
       $array = $("#exerArray"),
-      av = new JSAV($("#jsavcontainer")),
+      av = new JSAV($("#avcontainer")),
       clickHandler;
 
   av.recorded(); // we are not recording an AV with an algorithm
