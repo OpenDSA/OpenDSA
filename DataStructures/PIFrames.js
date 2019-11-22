@@ -44,7 +44,6 @@
     questionType: "",
     submit: `<br><input type="submit" value="Submit"> </br>`,
     feedback: `<p hidden id="feedback">Incorrect!</p>`,
-    textBoxFlag: false,
     Injector(data, av_name) {
       var obj = {
         myData: data,
@@ -313,7 +312,6 @@
         },
 
         buildTextBox: function(question) {
-          this.textBoxFlag = true;
           var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
           var form = $(
             `<form class=${this.av_name} onsubmit='return ${execute}'></form>`
@@ -405,24 +403,35 @@
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
 
-          if(Array.isArray(question.answer) && this.textBoxFlag && question.studentAnswer !== undefined)
+          if(this.questionType == "textBox" && question.studentAnswer !== undefined)
           {
-            for(var index = 0; index < question.answer.length; index++)
+            if (question.answer.includes("{") && question.answer.includes("}"))
             {
-              if(question.studentAnswer == question.answer[index])
-              {
-                return true;
-              }
-            }
-            return false;
-          }
-          else if (question.answer.includes("{") && question.answer.includes("}") && this.textBoxFlag) {
-            if (question.studentAnswer !== undefined) {
               return this.permutation(question.studentAnswer, question.answer);
             }
+            else if(Array.isArray(question.answer))
+            {
+              for(var index = 0; index < question.answer.length; index++)
+              {
+                if(question.studentAnswer == question.answer[index])
+                {
+                  return true;
+                }
+              }
+              return false;
+            }
+            else
+            {
+              return question.studentAnswer == question.answer;
+            }
+<<<<<<< HEAD
           } else if (Array.isArray(question.studentAnswer)) {
 
             console.log("selectquestion");
+=======
+          }
+          else if (Array.isArray(question.studentAnswer)) {
+>>>>>>> 3fd54a260067c7dffd7ac3a6e70fbfb666de0b2e
             if (question.studentAnswer.length !== question.answer.length)
               return false;
             var studentsAnswerSorted = question.studentAnswer.sort();
