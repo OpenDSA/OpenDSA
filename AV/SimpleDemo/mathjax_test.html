@@ -5,7 +5,6 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
-  <link rel="stylesheet" href="InsertionSortAnalysis.css" type="text/css" />
 </head>
 
 <body>
@@ -43,7 +42,19 @@
 <script src="../../lib/odsaUtils-min.js"></script>
 <script src="../../lib/odsaAV-min.js"></script>
 <script src="../../DataStructures/binaryheap.js"></script>
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": {
+        scale: "80"
+      }
+    });
+    </script>
 <script src="mathjax_test.js"></script>
 </body>
 </html>

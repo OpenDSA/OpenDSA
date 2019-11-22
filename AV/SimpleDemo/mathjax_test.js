@@ -1,7 +1,7 @@
 "use strict";
 /*global alert: true, ODSA, console */
 
-(function ($) {
+$(document).ready(function() {
   var av;
   av = new JSAV($(".avcontainer"));
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
@@ -18,4 +18,4 @@
 
   // Connect action callbacks to the HTML entities
   $('#reset').click(ODSA.AV.reset);
-}(jQuery));
+});
