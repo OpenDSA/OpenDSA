@@ -18,13 +18,13 @@
       },
       "q2_2": {
         "type": "textBox",
-        "question": "Why not answer c) {$aaa$, $bbb$} ?",
+        "question": "Why not answer c)??",
         "answer": "it is a set"
       },
       "q2_3": {
         "type": "textBox",
-        "question": "Why not answer d) $bacbabcba$ ?",
-        "answer": "it uses symbols not in question"
+        "question": "Why not answer d)?",
+        "answer": "it uses symbols not in Σ"
       },
       "q3": {
         "type": "select",

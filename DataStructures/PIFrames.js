@@ -263,13 +263,8 @@
           this.myData.translations.en[id].studentAnswer = answer;
         },
 
-        injectQuestion: function(id, description) {
+        injectQuestion: function(id) {
           this.queue.elements.push(id);
-          if(description != undefined)
-          {
-            var message = `<p class="REVEAL">${description}</p>`; 
-            return message;
-          }
           return this.alertMessage();
         },
 

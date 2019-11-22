@@ -1,11 +1,16 @@
 {
   "translations": {
     "en": {
+<<<<<<< HEAD
+=======
+      "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+>>>>>>> parent of 14f3965cd... editing the echo first frame with questions and combining the slides
       "q1": {
-        "type": "textBox",
+        "type": "select",
         "src": "../../../AV/Development/formal_language/FAEditor.html",
-        "question":"Write a sentence that belongs to this tiny subset.",
-        "answer": "The ball hit the Fritz"
+        "question":"Which of the following are  alphabet sets?",
+        "answer": ["{$a$, $b$, $c$}", "{0, 1}", "{?, $a$, $x$}"],
+        "choices": ["{$a$, $b$, $c$}", "{0, 1}","$A$" ,"{?, $a$, $x$}"]
       },
       "q2": {
         "type": "textBox",
@@ -17,8 +22,8 @@
       "q2_2":{
         "type": "textBox",
         "question":"What are the variables in the given grammar?",
-        "answer": "(noun)",
-        "choices": ["(sentence)", "(subject)", "(verb)", "(d.o.)", "(article)", "(noun)", "a", "the", "Fritz", "ran", "ate"]
+        "answer": "<noun>",
+        "choices": ["<sentence>", "<subject>", "<verb>", "<d.o.>", "<article>", "<noun>", "a", "the", "Fritz", "ran", "ate"]
       },
       "q3": {
         "type": "select",

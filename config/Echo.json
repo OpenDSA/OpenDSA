@@ -64,7 +64,7 @@
   },
   "chapters": {
     "PI Example": {
-      "PIExample_Echo/Echo_frame1": {} 
+      "PIExample_Echo/Echo_frame1": {}
     },
     "grammars": {
       "PIExample_Echo/grammar": {}
