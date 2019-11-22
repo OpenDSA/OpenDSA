@@ -478,31 +478,14 @@
             // this.toggleButtonSpace(height);
             this.questionSlideListener();
             PIFRAMES.revealQuestion(av_name);
-            $(".jsavoutput.jsavline").css({
-              display: "inline-block",
-              width: "60%"
-              // "vertical-align": "top"
-            });
             $(".picanvas").css({
               display: "inline-block",
               width: "39%"
-            });
-            $(".jsavcanvas").css({
-              "min-width": "0px",
-              width: "60%",
-              overflow: "hidden",
-              "margin-left": 0
             });
           } else {
             this.updateCanvas(null);
             // this.resizeContainer(0);
             this.enableForwardButton();
-            $(".jsavoutput.jsavline").css("width", "60%");
-            $(".jsavcanvas").css({
-              width: "60%",
-              "overflow-x": "auto",
-              "margin-left": "auto"
-            });
             // $(".picanvas").css("width", "0px");
           }
         },
@@ -584,6 +567,18 @@
         position: "absolute",
         width: "29%",
         overflow: "hidden"
+      });
+
+      $(".jsavoutput.jsavline").css({
+        display: "inline-block",
+        width: "60%"
+      });
+
+      $(".jsavcanvas").css({
+        "min-width": "0px",
+        width: "60%",
+        overflow: "hidden",
+        "margin-left": 0
       });
 
       // $(".jsavcanvas").append(qButton);
