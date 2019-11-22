@@ -421,6 +421,8 @@
               return this.permutation(question.studentAnswer, question.answer);
             }
           } else if (Array.isArray(question.studentAnswer)) {
+
+            console.log("selectquestion");
             if (question.studentAnswer.length !== question.answer.length)
               return false;
             var studentsAnswerSorted = question.studentAnswer.sort();
@@ -430,7 +432,11 @@
                 return false;
             }
             return true;
-          } else return question.studentAnswer == question.answer;
+          } else 
+          {
+            console.log("direct comparison")
+            return question.studentAnswer == question.answer;
+          }
         },
 
         permutation: function(studentAnswer, questionAnswer) {

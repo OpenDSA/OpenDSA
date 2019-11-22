@@ -31,30 +31,30 @@
         "question": "What states can be combined?",
         "answer": [
           "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,...\\}$",
-          "$\\Sigma$={a,b,c} L={ab,ac,cabb}",
-          "$\\Sigma$={0,1,2,3,4,5,6,7,8, 9} $L=\\{set of all even numbers\\}$"
+          "$\\Sigma$={$a,b,c\\}$ $L=\\{ab,ac,cabb\\}$",
+          "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{set of all even numbers\\}$"
         ],
         "choices": [
           "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,...\\}$",
           "$\\Sigma$={$a,b,c\\}$ $L=\\{ab,ac,cabb\\}$",
-          "$\\Sigma$={0,1,2,3,4,5,6,7,8, 9} $L=\\{set of all even numbers\\}$"
+          "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{set of all even numbers\\}$"
         ]
       },
       "q3_2": {
         "type": "multiple",
-        "question": "\\Sigma=${a,b,c}$ $L = ab$",
+        "question": "Is this one a langue?  $\\Sigma$=${a,b,c}$ $L = ab$",
         "answer": "No",
         "choices": ["Yes", "No"]
       },
       "q3_3": {
         "type": "multiple",
-        "question": "$//Sigma={a,b,c}$ $L = {a}$",
+        "question": "Is this one a langue?  $\\Sigma$=${a,b,c}$ $L = {a}$",
         "answer": "Yes",
         "choices": ["Yes", "No"]
       },
       "q3_4": {
         "type": "multiple",
-        "question": "$//Sigma={a,b,c}$ $L$ = {}",
+        "question": "Is this one a langue?  $\\Sigma$=${a,b,c}$ $L$ = {}",
         "answer": "Yes",
         "choices": ["Yes", "No"]
       },
@@ -62,7 +62,7 @@
         "type": "multiple",
         "question": "Oh, and remember that we have a special symbol for “empty” set. Which is it?",
         "answer": "{}",
-        "choices": ["//Sigma", "$E$", "{}"]
+        "choices": ["$\\Sigma$", "$E$", "{}"]
       },
       "q4": {
         "type": "textBox",
@@ -82,9 +82,9 @@
         "choices": ["The character ‘$w$’", "Some string given the name ‘$w$’"]
       },
       "q6": {
-        "type": "select",
+        "type": "multiple",
         "question": "Let $w=abbc$, $v=ab$, What is $|w|$ + $|v|$",
-        "answer": ["6"],
+        "answer": "6",
         "choices": ["6", "$k$"]
       },
       "q7": {
@@ -105,7 +105,7 @@
       },
       "q8_1": {
         "type": "textBox",
-        "question": "Is this a language? {\\lambda}",
+        "question": "Is this a language? {$\\lambda$}",
         "answer": "yes"
       },
       "q9": {
@@ -115,7 +115,7 @@
       },
       "q10": {
         "type": "textBox",
-        "question": "Let $w = abbc$, what is wR?",
+        "question": "Let $w = abbc$, what is $w^R$?",
         "answer": "cbba"
       },
       "q11": {
@@ -125,22 +125,22 @@
       },
       "q12": {
         "type": "select",
-        "question": "Which of the following are strings in \\Sigma∗?",
+        "question": "Which of the following are strings in $\\Sigma∗$?",
         "answer": ["$\\lambda$", "a", "b", "aa", "abbabb"],
-        "choices": ["λ", "a", "b", "aa", "abbabb", "aaabababcc"]
+        "choices": ["$\\lambda$", "a", "b", "aa", "abbabb", "aaabababcc"]
       },
       "q12_1": {
         "type": "select",
-        "question": "Which are examples of w* where w = abc?",
+        "question": "Which are examples of $w*$ where $w = abc$?",
         "answer": ["$Λ$", "$abc$", "$abcabc$"],
         "choices": ["$Λ$", "$abc$", "$abcabc$", "$aabbcc$"]
       },
       "q13": {
         "type": "select",
-        "question": "Let  //lambda = {$a,b$}, Which of the following are strings in ?",
+        "question": "Let  $//lambda$ = {$a,b$}, Which of the following are strings in ?",
         "answer": ["$a$", "$b$", "$aa$", "$abbabb$"],
         "choices": [
-          "\\lambda",
+          "$\\lambda$",
           "$a$",
           "$b$",
           "$aa$",
@@ -150,7 +150,7 @@
       },
       "q14": {
         "type": "textBox",
-        "question": " Let //sigma={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, What is $L1∪L2$ ?",
+        "question": " Let $\\sigma$={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, What is $L1∪L2$ ?",
         "answer": "ab,bc,aba,c,bcc"
       },
       "q15": {
