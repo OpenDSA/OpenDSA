@@ -27,3 +27,31 @@ exercises to show the user input values to be dealt with.
 
 .. avembed:: AV/SimpleDemo/stackTest.html ss
 
+Automatic node resize
+---------------------
+
+Nodes more-or-less automatically resize to match the value
+string.
+
+.. avembed:: AV/SimpleDemo/autonodes.html ss
+
+.. TODO::
+   :type: Visualization
+
+   This would be better if there was padding on the string, and if it
+   were better centered vertically. It also only works because we
+   leave out lib/odsaStyle.css. This should get fixed to work with
+   that. Finally, it ought to be a diagram, not a standalone AV.
+   
+MathJAX
+-------
+
+Examples of using MathJAX.
+
+.. avembed:: AV/SimpleDemo/mathjax_test.html ss
+
+.. TODO::
+   :type: Visualization
+
+   This could be cleaned up a bit.
+
