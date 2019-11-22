@@ -1,13 +1,12 @@
 {
   "translations": {
     "en": {
-      "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+
       "q1": {
-        "type": "select",
+        "type": "textBox",
         "src": "../../../AV/Development/formal_language/FAEditor.html",
-        "question":"Which of the following are  alphabet sets?",
-        "answer": ["{$a$, $b$, $c$}", "{0, 1}", "{?, $a$, $x$}"],
-        "choices": ["{$a$, $b$, $c$}", "{0, 1}","$A$" ,"{?, $a$, $x$}"]
+        "question":"Write a sentence that belongs to this tiny subset.",
+        "answer": "The ball hit the Fritz"
       },
       "q2": {
         "type": "textBox",
@@ -19,8 +18,8 @@
       "q2_2":{
         "type": "textBox",
         "question":"What are the variables in the given grammar?",
-        "answer": "<noun>",
-        "choices": ["<sentence>", "<subject>", "<verb>", "<d.o.>", "<article>", "<noun>", "a", "the", "Fritz", "ran", "ate"]
+        "answer": "(noun)",
+        "choices": ["(sentence)", "(subject)", "(verb)", "(d.o.)", "(article)", "(noun)", "a", "the", "Fritz", "ran", "ate"]
       },
       "q3": {
         "type": "select",
