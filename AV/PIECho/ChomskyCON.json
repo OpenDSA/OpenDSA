@@ -1,7 +1,6 @@
 {
   "translations": {
     "en": {
-
       "q1": {
         "type": "textBox",
         "src": "../../../AV/Development/formal_language/FAEditor.html",
