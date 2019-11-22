@@ -424,14 +424,9 @@
             {
               return question.studentAnswer == question.answer;
             }
-<<<<<<< HEAD
           } else if (Array.isArray(question.studentAnswer)) {
 
             console.log("selectquestion");
-=======
-          }
-          else if (Array.isArray(question.studentAnswer)) {
->>>>>>> 3fd54a260067c7dffd7ac3a6e70fbfb666de0b2e
             if (question.studentAnswer.length !== question.answer.length)
               return false;
             var studentsAnswerSorted = question.studentAnswer.sort();

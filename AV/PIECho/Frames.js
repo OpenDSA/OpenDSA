@@ -87,7 +87,7 @@ $(document).ready(function() {
     // av.step();
     // av.umsg("Another important operation is string concatenation. The concatenation of two strings $u$, and v is just the string that contains the symbols of $u$ followed by the symbols of $v$. We use the symbol ∘ to represent concatenation: Example : Let $w$=$a1a2...an$, and $v$=$b1b2...bn$ Then, $w∘v$  = $a1a2...anb1b2...bm$$");
     // av.step();
-    av.umsg(injector.injectQuestion("q7", "Another important operation is string concatenation. The concatenation of two strings $u$, and v is just the string that contains the symbols of $u$ followed by the symbols of $v$. We use the symbol ∘ to represent concatenation: Example : Let $w$=$a1a2...an$, and $v$=$b1b2...bn$ Then, $w∘v$  = $a1a2...anb1b2...bm$$"));
+    av.umsg(injector.injectQuestion("q7", "Another important operation is string concatenation. The concatenation of two strings $u$, and v is just the string that contains the symbols of $u$ followed by the symbols of $v$. We use the symbol ∘ to represent concatenation: Example : Let $w$=$a1a2...an$, and $v$=$b1b2...bn$ Then, $w∘v$  = $a1a2...anb1b2...bm$"));
     av.step();
     // av.umsg("In reality, we use concatenation so much that we hardly ever want to be that formal. When we mean w∘v, we will normally simply write $wv$ instead.");
     // av.step();
@@ -151,7 +151,7 @@ $(document).ready(function() {
     //16th frame
     // av.umsg("In languages, $\\Sigma$∗  represents the Universe set $U4.  For, example, the complement of $L1$ will be the set of all strings in $\\Sigma$  except the strings in $L$. in other words,");
     // av.step();
-    av.umsg(injector.injectQuestion("q16", "In languages, $\\Sigma$∗  represents the Universe set $U4.  For, example, the complement of $L1$ will be the set of all strings in $\\Sigma$  except the strings in $L$. in other words,"));
+    av.umsg(injector.injectQuestion("q16", "In languages, $\\Sigma$∗  represents the Universe set $U4$.  For, example, the complement of $L1$ will be the set of all strings in $\\Sigma$  except the strings in $L$. in other words,"));
     av.step();
 
     //17th frame

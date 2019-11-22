@@ -104,9 +104,10 @@
         "choices": ["$vvv$", "$v∘v∘v$", "$ababab$"]
       },
       "q8_1": {
-        "type": "textBox",
+        "type": "multiple",
         "question": "Is this a language? {$\\lambda$}",
-        "answer": "yes"
+        "answer": "yes",
+        "choices": ["yes", "no"]
       },
       "q9": {
         "type": "textBox",
@@ -137,7 +138,7 @@
       },
       "q13": {
         "type": "select",
-        "question": "Let  $//lambda$ = {$a,b$}, Which of the following are strings in ?",
+        "question": "Let  $\\lambda$ = {$a,b$}, Which of the following are strings in ?",
         "answer": ["$a$", "$b$", "$aa$", "$abbabb$"],
         "choices": [
           "$\\lambda$",
@@ -155,7 +156,7 @@
       },
       "q15": {
         "type": "textBox",
-        "question": "Let //sigma={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, What is $L1∩L2$ ?",
+        "question": "Let $\\Sigma$={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, What is $L1∩L2$ ?",
         "answer": "{bc}"
       },
       "q16": {
@@ -171,18 +172,18 @@
       },
       "q18": {
         "type": "multiple",
-        "question": "Let //sigma={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L0$?",
+        "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L0$?",
         "answer": ["{$λ$}"],
         "choices": ["{$λ$}", "{}<Empty set>", "$λ$"]
       },
       "q19": {
         "type": "textBox",
-        "question": "Let //sigma={$a$,$b4}, $L1$={$ab$,$aba$}, What is $L2$? ",
+        "question": "Let $\\Sigma$={$a$,$b4}, $L1$={$ab$,$aba$}, What is $L2$? ",
         "answer": "{abab, ababa, abaab, abaaba}"
       },
       "q19_1": {
         "type": "textBox",
-        "question": "Let //sigma={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L3$?",
+        "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L3$?",
         "answer": "{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}"
       }
     }
