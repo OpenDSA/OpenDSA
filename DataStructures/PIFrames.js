@@ -525,16 +525,16 @@
           }
           var current = this.queue.current;
           if (
-            !this.studentHasAnsweredQuestionCorrectly(
+            this.studentHasAnsweredQuestionCorrectly(
               this.queue.elements[current]
             )
           ) {
-            this.disableForwardButton();
+            this.enableForwardButton();
             // if (($(`#${this.av_name}`).find('.REVEAL').length)) {
             //     alert("You need to answer the question first");
             // }
           } else {
-            this.enableForwardButton();
+            this.disableForwardButton();
           }
         }
       };
