@@ -44,6 +44,7 @@
     questionType: "",
     submit: `<br><input type="submit" value="Submit"> </br>`,
     feedback: `<p hidden id="feedback">Incorrect!</p>`,
+    textBoxFlag: false,
     Injector(data, av_name) {
       var obj = {
         myData: data,
@@ -307,6 +308,7 @@
         },
 
         buildTextBox: function(question) {
+          this.textBoxFlag = true;
           var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
           var form = $(
             `<form class=${this.av_name} onsubmit='return ${execute}'></form>`
@@ -398,7 +400,18 @@
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
 
-          if (question.answer.includes("{") && question.answer.includes("}")) {
+          if(Array.isArray(question.answer) && this.textBoxFlag && question.studentAnswer !== undefined)
+          {
+            for(var index = 0; index < question.answer.length; index++)
+            {
+              if(question.studentAnswer == question.answer[index])
+              {
+                return true;
+              }
+            }
+            return false;
+          }
+          else if (question.answer.includes("{") && question.answer.includes("}") && this.textBoxFlag) {
             if (question.studentAnswer !== undefined) {
               return this.permutation(question.studentAnswer, question.answer);
             }
