@@ -17,8 +17,8 @@ class ErrorRec
   const string DEFAULT_MSG_START = "* ***OpenDSA Error Start*** *\n";
   // Added at the beginning of error messages
   const string DEFAULT_MSG_END = "\n* ***OpenDSA Error End*** *\n";
-  // Added at the beginning of the name of error log file
-  const string FILE_NAME = "error log.";
+  // Added at the end of the name of error log file
+  const string FILE_NAME = "_error.log";
 
   /*
 	 * useFile: true if you want to create a text file to record errors (true by default)
@@ -29,14 +29,15 @@ public:
   {
     if (useFile)
     {
+      string filenameUse = className + FILE_NAME;
       // Overwrite if exists since only want current messages
-      errorFile.open(FILE_NAME + className, ios::trunc);
+      errorFile.open(filenameUse, ios::trunc);
       if (!errorFile.is_open())
       {
         // File not ready for appending.
-        cerr << " file " << FILE_NAME + className << " could not be appended so no error file" << endl;
+        cerr << " file " << filenameUse << " could not be appended so no error file" << endl;
       } else {
-        cout << "Any error message will be in file " + FILE_NAME + className << endl;
+        cout << "Any error message will be in file " + filenameUse << endl;
       }
     }
   }

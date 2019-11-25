@@ -9,14 +9,24 @@
 
 using namespace std;
 
-// TODO does not have timing
+/* 
+ * Note that typeid(l).name() is implementation specific. As a result, the code
+ * may not return the true class name in error messages. It usually is close but
+ * with a number in front that seems to be the number of characters in the class
+ * name. However, this may not always be the case.
+ */
+
+
+// For reasons I cannot figure out, there are linking error if these static
+// variables are put in the class. Prefer if not global.
 
 // True if you want to create a text file to record errors
-const bool useFile = true;
+static const bool useFile = true;
 // Instance of ErrorRec class which holds the number of errors and prints
 // out error messages
-static ErrorRec *record;// Hack to store output from doSomething
-static string doSomethingResult; // TODO how put in class??
+static ErrorRec *record;
+// Allows doSomething to produce result without arguments so it can be tested.
+static string doSomethingResult;
 
 /*
  * This program checks if all the methods in AList, LList and DList classes work
@@ -30,7 +40,7 @@ private:
 
 public:
   static void listIter(List &L) {
-  ListItemType it;
+    ListItemType it;
 /* *** ODSATag: listiter *** */
 for (L.moveToStart(); !L.isAtEnd(); L.next()) {
   it = L.getValue();
@@ -165,7 +175,7 @@ static bool find(List &L, ListItemType k) {
     // Test length with empty stack
     if (l.length() != 0)
     {
-      record->printError("On empty list an unexpected length from " + string(typeid(l).name()) + ". \nLength of stack: " + to_string(l.length()) + "\nLength expected: 0");
+      record->printError("On empty list an unexpected length from " + string(typeid(l).name()) + ". \nLength of list: " + to_string(l.length()) + "\nLength expected: 0");
     }
 
     // isEmpty should return true
@@ -199,7 +209,6 @@ static bool find(List &L, ListItemType k) {
     if (l.toString().compare("< | >") != 0)
     {
       record->printError(
-          // TODO the name printed is 5AList - not sure why not actual name
           "The clear method in " + string(typeid(l).name()) + " does not work. \nPrinted list: " + l.toString());
     }
   }
@@ -411,8 +420,6 @@ static bool find(List &L, ListItemType k) {
 /* Runs tests on generic AList, LList, and DList Class. */
 int main(void)
 {
-  // TODO in progress; no LList tests
-
   // Create a file to record errors if necessary
   record = new ErrorRec("ListTest", useFile);
 
@@ -440,3 +447,5 @@ int main(void)
 
   return 0;
 }
+
+// Decision made not to do timing test at this time that are in the Java versions.
