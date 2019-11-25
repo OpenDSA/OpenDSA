@@ -8,10 +8,58 @@
 
 .workspacelabel {
     color: black;
+    font-size: 100%;
+    font-weight: 400;
+    z-index: 500;
+   }
+
+.addworkspace {
+    color: black;
+    font-size: 120%;
+    font-weight: 600;
+    z-index: 500;
+    cursor: pointer;
+   }
+
+.addequation {
+    color: blue;
+    font-size: 120%;
+    font-weight: 600;
+    z-index: 500;
+    cursor: pointer;
+   }
+
+.delequation {
+    color: red;
+    font-size: 120%;
+    font-weight: 600;
+    z-index: 500;
+    cursor: pointer;
+   }
+
+.solveequation {
+    color: black;
+    font-size: 120%;
+    font-weight: 600;
+    z-index: 500;
+    cursor: crosshair;
+   }
+
+
+.close_x {
+    color: black;
     font-size: 120%;
     font-weight: 600;
     z-index: 500;
    }
+
+.close_x:hover {
+    cursor: pointer;
+}
+
+.equation-page {
+
+}
 
 #float {
     position: fixed;
@@ -74,12 +122,6 @@
 .workspace_id {
     position: absolute;
     left: 10px;
-    top: 5px;
-}
-
-.close_x {
-    position: absolute !important;
-    right: 10px;
     top: 5px;
 }
 

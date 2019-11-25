@@ -9,12 +9,14 @@
         "WORKSPACE_LIST": {
             "X": 1,
             "Y": 1,
-            "WIDTH": 511
+            "WIDTH": 511,
+            "HEIGHT": 50
         },
         "EQBANK": {
-            "X": 515,
-            "Y": 1,
-            "WIDTH": 255
+            "CORNER_X": 515,
+            "CORNER_Y": 1,
+            "WIDTH": 255,
+            "HEIGHT": 500
         },
     };
 
@@ -35,7 +37,7 @@
     
         //Setup the new display
         av = new JSAV("DeformsProblemPRO");
-        var eqbank = new EquationBank(av, "equation_bank.js", CANVAS_DIMENSIONS);
+        var eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         var wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS)
             
         // Initialize other variables

@@ -11,14 +11,83 @@
  */
 
 class EquationBank{
-    constructor(jsavCanvasObj, filename, dim_obj) {
-        this.equationBankBox = jsavCanvasObj.g.rect(
-            dim_obj["EQBANK"]["X"], dim_obj["EQBANK"]["Y"], dim_obj["EQBANK"]["WIDTH"], 500,
+    constructor(jsavCanvasObj, dim_obj) 
+    {
+        this.globalSectionObj = jsavCanvasObj;
+        this.DIMENSIONS = {
+            "POSITION_X": dim_obj["EQBANK"]["CORNER_X"],
+            "POSITION_Y": dim_obj["EQBANK"]["CORNER_Y"],
+            "WIDTH": dim_obj["EQBANK"]["WIDTH"],
+            "HEIGHT": dim_obj["EQBANK"]["HEIGHT"]
+        }
+
+        // Initializing the equation bank list: pointers to actual objects
+        // + list representations
+        this.equation_pages = this.createEquationPages();
+        console.log(this.equation_pages);
+        // Structure:
+        /* 
+        {
+            group:
+            {
+                pagediv: pageDivObject, // control css display attribute for selection.
+                equations:
+                {
+                    equationObj:
+                    {
+                        equationObjectName: equationObject,
+                        equationDivName: equationDiv
+                    }
+                }
+            }
+        }
+         */
+        
+        // Create the main visual element, and start filling in.
+        this.createEquationBank();
+    }
+    createEquationBank()
+    {
+        // Creating the equation div/box
+        this.equationBankBox = this.globalSectionObj.g.rect(
+            this.DIMENSIONS["POSITION_X"],
+            this.DIMENSIONS["POSITION_Y"],
+            this.DIMENSIONS["WIDTH"],
+            this.DIMENSIONS["HEIGHT"],
             {
                 "fill":"whitesmoke",
                 "id": "eqbank",
                 "r": 10
             });
+        this.equationBankDiv = (list => list[list.length-1])
+        (document.getElementsByTagName("rect"))
+
+        this.globalSectionObj.label("Equation Bank", 
+            {
+                left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 46, 
+                top: this.DIMENSIONS["POSITION_Y"]-12,
+            })
+            .addClass("workspacelabel")
+        
+        // Setup the page selection and equation selection mechanisms
+        console.log(this.equationBankDiv);
+        // Add something inside this.
+    }
+    createEquationPages()
+    {
+        // We have access to the equations dictionary in equation_bank.js, we process it directly.
+        for(var object in equations)
+        {
+            console.log(object);
+        }
+    }
+    changePages()
+    {
+        // This function handles the onchange() event for the drop down box
+    }
+    selectEquation()
+    {
+
     }
 }
 window.EquationBank = window.EquationBank || EquationBank
