@@ -263,8 +263,13 @@
           this.myData.translations.en[id].studentAnswer = answer;
         },
 
-        injectQuestion: function(id) {
+        injectQuestion: function(id, description) {
           this.queue.elements.push(id);
+          if(description != undefined)
+          {
+            var message = `<p class="REVEAL">${description}</p>`; 
+            return message;
+          }
           return this.alertMessage();
         },
 
@@ -398,11 +403,30 @@
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
 
-          if (question.answer.includes("{") && question.answer.includes("}")) {
-            if (question.studentAnswer !== undefined) {
+          if(this.questionType == "textBox" && question.studentAnswer !== undefined)
+          {
+            if (question.answer.includes("{") && question.answer.includes("}"))
+            {
               return this.permutation(question.studentAnswer, question.answer);
             }
+            else if(Array.isArray(question.answer))
+            {
+              for(var index = 0; index < question.answer.length; index++)
+              {
+                if(question.studentAnswer == question.answer[index])
+                {
+                  return true;
+                }
+              }
+              return false;
+            }
+            else
+            {
+              return question.studentAnswer == question.answer;
+            }
           } else if (Array.isArray(question.studentAnswer)) {
+
+            console.log("selectquestion");
             if (question.studentAnswer.length !== question.answer.length)
               return false;
             var studentsAnswerSorted = question.studentAnswer.sort();
@@ -412,7 +436,11 @@
                 return false;
             }
             return true;
-          } else return question.studentAnswer == question.answer;
+          } else 
+          {
+            console.log("direct comparison")
+            return question.studentAnswer == question.answer;
+          }
         },
 
         permutation: function(studentAnswer, questionAnswer) {
@@ -478,31 +506,14 @@
             // this.toggleButtonSpace(height);
             this.questionSlideListener();
             PIFRAMES.revealQuestion(av_name);
-            $(".jsavoutput.jsavline").css({
-              display: "inline-block",
-              width: "60%"
-              // "vertical-align": "top"
-            });
             $(".picanvas").css({
               display: "inline-block",
               width: "39%"
-            });
-            $(".jsavcanvas").css({
-              "min-width": "0px",
-              width: "60%",
-              overflow: "hidden",
-              "margin-left": 0
             });
           } else {
             this.updateCanvas(null);
             // this.resizeContainer(0);
             this.enableForwardButton();
-            $(".jsavoutput.jsavline").css("width", "100%");
-            $(".jsavcanvas").css({
-              width: "100%",
-              "overflow-x": "auto",
-              "margin-left": "auto"
-            });
             // $(".picanvas").css("width", "0px");
           }
         },
@@ -524,16 +535,16 @@
           }
           var current = this.queue.current;
           if (
-            !this.studentHasAnsweredQuestionCorrectly(
+            this.studentHasAnsweredQuestionCorrectly(
               this.queue.elements[current]
             )
           ) {
-            this.disableForwardButton();
+            this.enableForwardButton();
             // if (($(`#${this.av_name}`).find('.REVEAL').length)) {
             //     alert("You need to answer the question first");
             // }
           } else {
-            this.enableForwardButton();
+            this.disableForwardButton();
           }
         }
       };
@@ -584,6 +595,18 @@
         position: "absolute",
         width: "29%",
         overflow: "hidden"
+      });
+
+      $(".jsavoutput.jsavline").css({
+        display: "inline-block",
+        width: "60%"
+      });
+
+      $(".jsavcanvas").css({
+        "min-width": "0px",
+        width: "60%",
+        overflow: "hidden",
+        "margin-left": 0
       });
 
       // $(".jsavcanvas").append(qButton);

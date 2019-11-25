@@ -39,6 +39,12 @@ follows:
    A permutation :math:`y_0, y_1, y_2, \ldots, y_{n-1}` of the
    sequence such that :math:`y_i \leq y_j` whenever :math:`i < j`.
 
+.. inlineav:: SortingProblemCON ss
+   :long_name: Sorting Problem
+   :links: AV/NP/SortingProblemCON.css
+   :scripts: AV/NP/SortingProblemCON.js
+   :output: show
+
 
 Example: The Pairing Problem
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
