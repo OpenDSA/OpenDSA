@@ -9,13 +9,14 @@
 
 using namespace std;
 
-// TODO does not have timing, ListIter, doSomething, find
+// TODO does not have timing
 
 // True if you want to create a text file to record errors
 const bool useFile = true;
 // Instance of ErrorRec class which holds the number of errors and prints
 // out error messages
-static ErrorRec *record;
+static ErrorRec *record;// Hack to store output from doSomething
+static string doSomethingResult; // TODO how put in class??
 
 /*
  * This program checks if all the methods in AList, LList and DList classes work
@@ -28,7 +29,79 @@ private:
   static const int TEST_SIZE = 9;
 
 public:
- 
+  static void listIter(List &L) {
+  ListItemType it;
+/* *** ODSATag: listiter *** */
+for (L.moveToStart(); !L.isAtEnd(); L.next()) {
+  it = L.getValue();
+  doSomething(it);
+}
+/* *** ODSAendTag: listiter *** */
+  }
+
+  static void doSomething(ListItemType it) {
+    doSomethingResult.append(to_string(it));
+  }
+
+/* *** ODSATag: listfind *** */
+// Return true if k is in list L, false otherwise
+static bool find(List &L, ListItemType k) {
+  for (L.moveToStart(); !L.isAtEnd(); L.next())
+    if (k == L.getValue()) return true; // Found k
+  return false;                       // k not found
+}
+/* *** ODSAendTag: listfind *** */
+
+//TODO transfer to Java versions
+ /**
+  * Test the find & iterator functions
+  * 
+  * @param l List to test.
+  */
+  static void testOther(List &l)
+  {
+    // Create non-empty list of items.
+    ListItemType item = 10;
+    int loc, locExpect;
+    const int NUMBER = 9;
+    for (int i = 0; i <= NUMBER; i++) {
+      l.append(item);
+      item+= 10;
+    }
+
+    // The three items to test
+    const int NUM_ITEMS = 3;
+    const int VALUES[] = {NUMBER / 2  * 10, NUMBER * 10, 1 * 10};
+    // find these three items.
+    for (int i = 0; i < NUM_ITEMS; i++) {
+      item = (ListItemType)VALUES[i];
+      if (!find(l, item)) {
+        record->printError("item " + to_string(item) + " not found on list");
+      }
+      loc = l.currPos();
+      locExpect = item / 10 - 1;
+      if (loc != locExpect) {
+        record->printError("After find, current is " + to_string(loc) + " and not " + to_string(locExpect));
+    }
+  }
+
+    // Test iterator
+
+    // Expected result
+    string expect;
+    item = 10;
+    for (int i = 0; i <= NUMBER; i++) {
+      expect.append(to_string(item));
+      item += 10;
+    }
+    // Call iterator
+    listIter(l);
+    // Check result
+    if (doSomethingResult.compare(expect) != 0) {
+      record->printError("After iterator got " + doSomethingResult + " but expected " + expect);
+    }
+  }
+
   /**
   * Test a list holding ListIntType to see if it works correctly.
   * 
@@ -54,7 +127,7 @@ public:
     // Clear both lists
     reset(l, tester);
 
-    // Compare list with java.util.list to test length, getValue,
+    // Compare list with C++ vector to test length, getValue,
     // toString, currPos, and remove. Add items by appending
     for (int i = 0; i < TEST_SIZE; i++) {
       checkApp(l, tester, 100 + i);
@@ -343,12 +416,25 @@ int main(void)
   // Create a file to record errors if necessary
   record = new ErrorRec("ListTest", useFile);
 
-  // Run tests of ALIST on a new list.
-  AList *list = new AList();
+  // Run tests of AList on a new list.
+  AList *al = new AList();
+  ListTest::testList(*al);
+  // Test other functions that not in interface
+  al->clear();
+  ListTest::testOther(*al);
+  // Remove list.
+  delete al;
 
-  ListTest::testList(*list);
-
-  delete list;
+/* TODO
+  // Run tests of LList on a new list.
+  AList *ll = new LList();
+  ListTest::testList(*ll);
+  // Test other functions that not in interface
+  al->clear();
+  ListTest::testOther(*ll);
+ // Remove list.
+  delete ll;
+*/
 
   record->feedback();
 
