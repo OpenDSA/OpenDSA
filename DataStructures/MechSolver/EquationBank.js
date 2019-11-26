@@ -23,7 +23,8 @@ class EquationBank{
 
         // Initializing the equation bank list: pointers to actual objects
         // + list representations
-        this.equation_pages = this.createEquationPages();
+        this.equation_pages = {};
+        this.createEquationPages();
         console.log(this.equation_pages);
         // Structure:
         /* 
@@ -71,15 +72,45 @@ class EquationBank{
         
         // Setup the page selection and equation selection mechanisms
         console.log(this.equationBankDiv);
+
         // Add something inside this.
+        var selectDDLDiv = document.createElement("div");
+        selectDDLDiv.className = "selectddl";
+        selectDDLDiv.setAttribute("id","equationSelectDDL");
+        selectDDLDiv.appendChild(document.createElement("select"));
+        console.log(selectDDLDiv);
+        selectDDLDiv.childNodes[0].setAttribute("id", "equation_selector");
+        for(var pagename in this.equation_pages){
+            selectDDLDiv.childNodes[0].innerHTML += "<option value="+pagename+">"+pagename+"</option>";
+        }
+        
+        document.getElementById("DeformsProblemPRO").childNodes[0].appendChild(selectDDLDiv);
+        document.getElementById("equation_selector").addEventListener("change", this.changePages);
     }
     createEquationPages()
     {
         // We have access to the equations dictionary in equation_bank.js, we process it directly.
-        for(var object in equations)
+        for(var objectIndex in equations)
         {
-            console.log(object);
+            var currentObj = equations[objectIndex];
+            if(currentObj["group"] in this.equation_pages)
+                this.equation_pages[currentObj["group"]][objectIndex] = currentObj;
+            else
+            this.equation_pages[currentObj["group"]] = 
+            {
+                "pagediv": null,
+                "equations": {
+                    "equationObj": {
+                        currentObj
+                    },
+                    "SelectableEquationObject": null
+                }
+                
+            };
         }
+
+        // Creating the page objects 
+
     }
     changePages()
     {

@@ -61,6 +61,7 @@ class WorkspaceList
         this.addbutton.addEventListener('click', e => {
             e.stopPropagation();
             this.addNewWorkspace();
+            this.globalSectionObj.logEvent({type: "adding new workspace", "id": this.workspaceCounter});
         });
         
         // Automatically add a new workspace, by default
@@ -85,6 +86,7 @@ class WorkspaceList
             e.stopPropagation();
             var delete_ID = newWkspace.destroyBox();
             delete this.workspace_list[delete_ID];
+            this.globalSectionObj.logEvent({type: "deleting workspace", "id": delete_ID});
             this.updateShape();
         });
     }

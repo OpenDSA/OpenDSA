@@ -4,7 +4,7 @@
     //var definitions
     var av; //The JSAV Object
     const CANVAS_DIMENSIONS = {
-        "TOTAL_WIDTH": 770,
+        "TOTAL_WIDTH": 760,
         "TOTAL_HEIGHT": 1500,
         "WORKSPACE_LIST": {
             "X": 1,
@@ -44,6 +44,10 @@
         av.displayInit();
         av.recorded();
         deformsProblemPRO.userInput = false;
+
+        $("body").on("jsav-log-event", function(event, eventData) {
+            console.log(eventData);
+          });
     }
 
     window.deformsProblemPRO = window.deformsProblemPRO || deformsProblemPRO;

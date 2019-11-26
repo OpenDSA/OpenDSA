@@ -1,9 +1,17 @@
 .jsavcanvas {
     display: grid;
-    width: 771px;
+    width: 761px;
     height: 1500px;
     grid-template-columns: 2fr 1fr;
     grid-template-areas: "workspace equations";
+}
+
+.selectddl {
+    grid-area: equations;
+    z-index: 500;
+    position: relative;
+    top: 25px;
+    left: 20px;
 }
 
 .workspacelabel {

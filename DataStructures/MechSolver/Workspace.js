@@ -90,61 +90,61 @@ class Workspace
             )(document.getElementsByClassName("close_x"))
         
 
-        // // Adding the Add, Remove, Solve Buttons to add, remove, and solve equations
-        // this.elements[3] = {
-        //     "jsav":
-        //         this.globalSectionObj.label("Add", 
-        //         {
-        //             left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 75, 
-        //             top: this.DIMENSIONS["POSITION_Y"]-15
-        //         })
-        //         .addClass("addequation"),
-        //     "div": (list => 
-        //         list[list.length-1]
-        //         )((document.getElementsByClassName("addequation"))),
-        // };
-        // this.elements[3]["div"].setAttribute("id",this.name+"addeq");
-        // document.getElementById(this.name+"addeq").addEventListener('click', e => {
-        //     e.stopPropagation();
-        //     // Add function call to equation addition here.
-        //     this.addNewEquation("Equation name");
-        // });
+        // Adding the Add, Remove, Solve Buttons to add, remove, and solve equations
+        this.elements[3] = {
+            "jsav":
+                this.globalSectionObj.label("Add", 
+                {
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 75, 
+                    top: this.DIMENSIONS["POSITION_Y"]-15
+                })
+                .addClass("addequation"),
+            "div": (list => 
+                list[list.length-1]
+                )((document.getElementsByClassName("addequation"))),
+        };
+        this.elements[3]["div"].setAttribute("id",this.name+"addeq");
+        document.getElementById(this.name+"addeq").addEventListener('click', e => {
+            e.stopPropagation();
+            // Add function call to equation addition here.
+            this.addNewEquation("Equation name");
+        });
 
-        // this.elements[4] = {
-        //     "jsav":
-        //         this.globalSectionObj.label("Remove", 
-        //         {
-        //             left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 41, 
-        //             top: this.DIMENSIONS["POSITION_Y"]-15
-        //         })
-        //         .addClass("delequation"),
-        //     "div": (list => 
-        //         list[list.length-1]
-        //         )((document.getElementsByClassName("delequation"))),
-        // };
-        // this.elements[4]["div"].setAttribute("id",this.name+"deleq");
-        // document.getElementById(this.name+"deleq").addEventListener('click', e => {
-        //     e.stopPropagation();
-        //     // Add function call to equation deletion here.
-        // });
+        this.elements[4] = {
+            "jsav":
+                this.globalSectionObj.label("Remove", 
+                {
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 41, 
+                    top: this.DIMENSIONS["POSITION_Y"]-15
+                })
+                .addClass("delequation"),
+            "div": (list => 
+                list[list.length-1]
+                )((document.getElementsByClassName("delequation"))),
+        };
+        this.elements[4]["div"].setAttribute("id",this.name+"deleq");
+        document.getElementById(this.name+"deleq").addEventListener('click', e => {
+            e.stopPropagation();
+            // Add function call to equation deletion here.
+        });
 
-        // this.elements[5] = {
-        //     "jsav":
-        //         this.globalSectionObj.label("Solve", 
-        //         {
-        //             left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 + 26, 
-        //             top: this.DIMENSIONS["POSITION_Y"]-15
-        //         })
-        //         .addClass("solveequation"),
-        //     "div": (list => 
-        //         list[list.length-1]
-        //         )((document.getElementsByClassName("solveequation"))),
-        // };
-        // this.elements[5]["div"].setAttribute("id",this.name+"solveeq");
-        // document.getElementById(this.name+"solveeq").addEventListener('click', e => {
-        //     e.stopPropagation();
-        //    // Add function call to equation set solving and result propagation here.
-        //});
+        this.elements[5] = {
+            "jsav":
+                this.globalSectionObj.label("Solve", 
+                {
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 + 26, 
+                    top: this.DIMENSIONS["POSITION_Y"]-15
+                })
+                .addClass("solveequation"),
+            "div": (list => 
+                list[list.length-1]
+                )((document.getElementsByClassName("solveequation"))),
+        };
+        this.elements[5]["div"].setAttribute("id",this.name+"solveeq");
+        document.getElementById(this.name+"solveeq").addEventListener('click', e => {
+            e.stopPropagation();
+           // Add function call to equation set solving and result propagation here.
+        });
     }
     destroyBox()
     {
@@ -161,9 +161,9 @@ class Workspace
         this.elements[0]["div"].setAttribute("y", this.DIMENSIONS["POSITION_Y"]+"px");
         this.elements[1]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
         this.elements[2]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
-        // this.elements[3]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
-        // this.elements[4]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
-        // this.elements[5]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
+        this.elements[3]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
+        this.elements[4]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
+        this.elements[5]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
     }
     selectWorkspaceColor()
     {
