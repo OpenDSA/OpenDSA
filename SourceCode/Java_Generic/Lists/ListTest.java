@@ -20,7 +20,7 @@ public class ListTest {
   static long time1, time2;
 
   static void listIter() {
-  List L = new AList();
+  List<Integer> L = new AList<Integer>();
   Object it;
 /* *** ODSATag: listiter *** */
 for (L.moveToStart(); !L.isAtEnd(); L.next()) {
