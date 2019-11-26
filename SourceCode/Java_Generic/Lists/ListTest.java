@@ -4,24 +4,22 @@ import java.util.LinkedList;
 /**
  * This program checks if all the methods in AList, LList and DList classes work
  * properly.
- * 
- * @author Yuya Asano
- *
- */
+  */
 public class ListTest {
-  // The number of items stored in stack during the test
-  static final int TEST_SIZE = 10;
+  // The number of items stored in list during the test
+  static final int TEST_SIZE = 9;
   // True if you want to create a text file to record errors
   static final boolean useFile = true;
   // Instance of ErrorRec class which holds the number of errors and prints
   // out error messages
   static ErrorRec record;
+  // Allows doSomething to produce result without arguments so it can be tested.
+  static String doSomethingResult;
 
   static long time1, time2;
 
-  static void listIter() {
-  List<Integer> L = new AList<Integer>();
-  Object it;
+  static void listIter(List<Integer> L) {
+    Object it;
 /* *** ODSATag: listiter *** */
 for (L.moveToStart(); !L.isAtEnd(); L.next()) {
   it = L.getValue();
@@ -31,6 +29,7 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
   }
 
   static void doSomething(Object it) {
+    doSomethingResult += it;
   }
 
 /* *** ODSATag: listfind *** */
@@ -42,6 +41,60 @@ static boolean find(List<Integer> L, int k) {
 }
 /* *** ODSAendTag: listfind *** */
 
+ /**
+  * Test the find & iterator functions
+  * 
+  * @param l List to test.
+  */
+  static void testOther(List<Integer> l)
+  {
+    // Create non-empty list of items.
+    int item = 10;
+    int loc, locExpect;
+    final int NUMBER = 9;
+    for (int i = 0; i <= NUMBER; i++) {
+      l.append(item);
+      item += 10;
+    }
+
+    // The three items to test
+    final int NUM_ITEMS = 3;
+    final int VALUES[] = {NUMBER / 2  * 10, NUMBER * 10, 1 * 10};
+    // find these three items.
+    for (int i = 0; i < NUM_ITEMS; i++) {
+      item = VALUES[i];
+      if (!find(l, item)) {
+        record.printError("item " + item + " not found on list");
+      }
+      loc = l.currPos();
+      locExpect = item / 10 - 1;
+      if (loc != locExpect) {
+        record.printError("After find, current is " + loc + " and not " + locExpect);
+    }
+  }
+
+    // Test iterator
+
+    // Expected result
+    String expect = "";
+    item = 10;
+    for (int i = 0; i <= NUMBER; i++) {
+      expect += item;
+      item += 10;
+    }
+    // Call iterator
+    listIter(l);
+    // Check result
+    if (!doSomethingResult.equals(expect)) {
+      record.printError("After iterator got " + doSomethingResult + " but expected " + expect);
+    }
+  }
+
+  /**
+  * Test a list holding Integer to see if it works correctly.
+  * 
+  * @param l List to test.
+  */
   static void testInt(List<Integer> l) {
     // Check empty list
     checkEmp(l);
@@ -68,85 +121,113 @@ static boolean find(List<Integer> L, int k) {
     doSomethingOnNonEmpList(l, tester);
   }
 
-static void testStr(List<String> l) {
-  // Check empty list
-  checkEmp(l);
+ /**
+  * Test a list holding String to see if it works correctly.
+  * 
+  * @param l List to test.
+  */
+  static void testStr(List<String> l) {
+    // Check empty list
+    checkEmp(l);
 
-  // Test moveToStart, moveToEnd, prev, and next
-  doSomethingOnEmpList(l);
+    // Test moveToStart, moveToEnd, prev, and next
+    doSomethingOnEmpList(l);
 
-  // Compare list with java.util.list to test length, getValue,
-  // toString, currPos, and remove. Add items by inserting
-  LinkedList<String> tester = new LinkedList<String>();
-  for (int i = 0; i < TEST_SIZE; i++) {
-    checkIns(l, tester, "Str" + i);
+    // Compare list with java.util.list to test length, getValue,
+    // toString, currPos, and remove. Add items by inserting
+    LinkedList<String> tester = new LinkedList<String>();
+    for (int i = 0; i < TEST_SIZE; i++) {
+      checkIns(l, tester, "Str" + i);
+    }
+
+    // Clear both lists
+    reset(l, tester);
+
+    // Compare list with java.util.list to test length, getValue,
+    // toString, currPos, and remove. Add items by appending
+    for (int i = 0; i < TEST_SIZE; i++) {
+      checkApp(l, tester, "Str" + i);
+    }
+
+    doSomethingOnNonEmpList(l, tester);
   }
 
-  // Clear both lists
-  reset(l, tester);
-
-  // Compare list with java.util.list to test length, getValue,
-  // toString, currPos, and remove. Add items by appending
-  for (int i = 0; i < TEST_SIZE; i++) {
-    checkApp(l, tester, "Str" + i);
+  /**
+   * Set both lists provided to empty/new state.
+   * 
+   * @param l OpenDSA list
+   * @param tester Java standard list
+   */
+  static <E> void reset(List<E> l, LinkedList<E> tester) {
+    l.clear();
+    tester.clear();
   }
 
-  doSomethingOnNonEmpList(l, tester);
-}
-
-static <E> void reset(List<E> l, LinkedList<E> tester) {
-  l.clear();
-  tester.clear();
-}
-
-static <E> void doSomethingOnEmpList(List<E> l) {
-  // Nothing changes
-  l.moveToStart();
-  l.moveToEnd();
-  l.prev();
-  l.next();
-  checkEmp(l);
-}
-
-static <E> void checkEmp(List<E> l) {
-  // Test length with empty stack
-  if (l.length() != 0) {
-    record.printError("An unexpected length of " + l.getClass() + ". \nLength of list: " + l.length()
-        + "\nLength expected: 0");
+  /**
+   * Take a list that should be empty and perform operations
+   * to see if it acts as expected.
+   * 
+   * @param l List that should be empty for testing.
+   */
+  static <E> void doSomethingOnEmpList(List<E> l) {
+    // Nothing changes
+    l.moveToStart();
+    l.moveToEnd();
+    l.prev();
+    l.next();
+    checkEmp(l);
   }
 
-  // isEmpty should return true
-  if (!l.isEmpty()) {
-    record.printError(
-        "The isEmpty method in " + l.getClass() + " does not return true when the list is empty.");
+  /**
+   * Takes a list that should be empty and makes sure it acts as expected
+   *
+   * @param l List that should be empty for testing.
+   */
+  static <E> void checkEmp(List<E> l) {
+    // Test length with empty list
+    if (l.length() != 0) {
+      record.printError("On empty list an unexpected length from " + l.getClass() + ". \nLength of list: " + l.length()
+          + "\nLength expected: 0");
+    }
+
+    // isEmpty should return true
+    if (!l.isEmpty()) {
+      record.printError(
+          "The isEmpty method in " + l.getClass() + " does not return true when the list is empty.");
+    }
+
+    // Test currPos with empty list
+    if (l.currPos() != 0) {
+      record.printError("An unexpected current position in empty " + l.getClass() + ". \nCurrent in list: " + l.currPos()
+      + "\nValue expected: 0");
+    }
+
+    // Test remove with empty list
+    E removed = l.remove();
+    if (removed != null) {
+      record.printError("An unexpected value in empty " + l.getClass() + ". \nremove from list: "
+          + removed.toString() + "\nValue expected: null");
+    }
+
+    // Test move to bad positions
+    if (l.moveToPos(-1)) {
+      record.printError("An empty " + l.getClass() + " returned true for moveToPos(-1)");
+    }
+
+    // Test clear
+    l.clear();
+    if (!l.toString().equals("< | >")) {
+      record.printError(
+          "The clear method in " + l.getClass() + " does not work. \nPrinted list: " + l.toString());
+    }
   }
 
-  // Test currPos with empty list
-  if (l.currPos() != 0) {
-    record.printError("An unexpected current position in empty " + l.getClass() + ". \nCurrent in list: " + l.currPos()
-    + "\nValue expected: 0");
-  }
-
-  // Test remove with empty list
-  E removed = l.remove();
-  if (removed != null) {
-    record.printError("An unexpected value in empty " + l.getClass() + ". \nremove from list: "
-        + removed.toString() + "\nValue expected: null");
-  }
-
-  // Test move to bad positions
-  if (l.moveToPos(-1)) {
-    record.printError("An empty " + l.getClass() + " returned true for moveToPos(-1)");
-  }
-
-  // Test clear
-  l.clear();
-  if (!l.toString().equals("< | >")) {
-    record.printError(
-        "The clear method in " + l.getClass() + " does not work. \nPrinted list: " + l.toString());
-  }
-}
-
+  /**
+   * Takes a list that should be nonempty and makes sure it acts as expected
+   *
+   * @param l List that should be nonempty for testing.
+   * @param tester Same logical list as l but standard Java one.
+   */
   static <E> void doSomethingOnNonEmpList(List<E> l, LinkedList<E> tester) {
     // Test moveToStart and remove
     l.moveToStart();
@@ -227,24 +308,49 @@ static <E> void checkEmp(List<E> l) {
     }
   }
 
+  /**
+   * Check that inserting on both the OpenDSA and standard
+   * Java list works and does the same thing.
+   * 
+   * @param l List that should be nonempty for testing.
+   * @param tester Same logical list as l but standard Java one.
+   * @param item item to insert on lists
+   */
   static <E> void checkIns(List<E> l, LinkedList<E> tester, E item) {
     // Insert the item to both lists
     tester.add(l.currPos(), item);
     if (!l.insert(item)) {
       record.printError("The insert method in " + l.getClass() + " returned false.");
     }
+    // Verify lists are the same.
     check(l, tester, l.currPos());
   }
 
+  /**
+   * Check that appending on both the OpenDSA and standard
+   * Java list works and does the same thing.
+   * 
+   * @param l List that should be nonempty for testing.
+   * @param tester Same logical list as l but standard Java one.
+   * @param item item to append on lists
+   */
   static <E> void checkApp(List<E> l, LinkedList<E> tester, E item) {
     // Append the item to both lists
     tester.add(item);
     if (!l.append(item)) {
       record.printError("The append method in " + l.getClass() + " returned false.");
     }
+    // Verify lists are the same.
     check(l, tester, l.currPos());
   }
 
+  /**
+   * Check that two list are the same thing.
+   * 
+   * @param l OpenDSA List that should be nonempty for testing.
+   * @param tester Same logical list as l but standard Java one.
+   * @param curr index of current item on list
+   */
   static <E> void check(List<E> l, LinkedList<E> tester, int curr) {
     // Check the length of list
     if (l.length() != tester.size()) {
@@ -266,7 +372,7 @@ static <E> void checkEmp(List<E> l) {
 
     // Check the value stored in the current position
     if (l.getValue() != tester.get(curr)) {
-      record.printError("An unexpected topValue " + l.getClass() + ". \nTopValue in list: "
+      record.printError("An unexpected list item in " + l.getClass() + ". \nItem in list: "
           + l.getValue().toString() + "\nValue expected: " + tester.get(curr).toString());
     }
 
@@ -301,13 +407,13 @@ static <E> void checkEmp(List<E> l) {
   }
 
   /**
-   * Runs tests on generic AList, LList, and DList Class with Integer and String.
+   * Runs tests on generic AList and LList Class with Integer and String.
    * 
    * @param args
-   *            not used
+   *        not used
    * @throws IOException
-   *             thrown if some errors happen while opening or creating a new text
-   *             file
+   *         thrown if some errors happen while opening or creating a new text
+   *         file
    */
   public static void main(String args[]) throws IOException {
     // Create a file to record errors if necessary
@@ -325,6 +431,14 @@ static <E> void checkEmp(List<E> l) {
     testStr(al1);
     testStr(ll1);
 
+     // Test other functions that not in interface
+     al.clear();
+     doSomethingResult = "";
+     testOther(al);
+     ll.clear();
+     doSomethingResult = "";
+     testOther(ll);
+      
     // Get a feedback about the result (success or fail)
     record.feedback();
 

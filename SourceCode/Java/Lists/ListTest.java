@@ -4,24 +4,21 @@ import java.util.LinkedList;
 /**
  * This program checks if all the methods in AList, LList and DList classes work
  * properly.
- * 
- * @author Yuya Asano
- *
  */
 public class ListTest {
-  // The number of items stored in stack during the test
+  // The number of items stored in list during the test
   static final int TEST_SIZE = 9;
   // True if you want to create a text file to record errors
   static final boolean useFile = true;
   // Instance of ErrorRec class which holds the number of errors and prints
   // out error messages
   static ErrorRec record;
-
+  // Allows doSomething to produce result without arguments so it can be tested.
+  static String doSomethingResult;
   static long time1, time2;
 
-  static void listIter() {
-  List L = new AList();
-  Object it;
+  static void listIter(List L) {
+    Object it;
 /* *** ODSATag: listiter *** */
 for (L.moveToStart(); !L.isAtEnd(); L.next()) {
   it = L.getValue();
@@ -31,6 +28,7 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
   }
 
   static void doSomething(Object it) {
+    doSomethingResult += it;
   }
 
 /* *** ODSATag: listfind *** */
@@ -38,9 +36,58 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
 static boolean find(List L, Object k) {
   for (L.moveToStart(); !L.isAtEnd(); L.next())
     if (k == L.getValue()) return true; // Found k
-  return false;                       // k not found
+  return false;                         // k not found
 }
 /* *** ODSAendTag: listfind *** */
+
+ /**
+  * Test the find & iterator functions
+  * 
+  * @param l List to test.
+  */
+  static void testOther(List l)
+  {
+    // Create non-empty list of items.
+    int item = 10;
+    int loc, locExpect;
+    final int NUMBER = 9;
+    for (int i = 0; i <= NUMBER; i++) {
+      l.append(item);
+      item += 10;
+    }
+
+    // The three items to test
+    final int NUM_ITEMS = 3;
+    final int VALUES[] = {NUMBER / 2  * 10, NUMBER * 10, 1 * 10};
+    // find these three items.
+    for (int i = 0; i < NUM_ITEMS; i++) {
+      item = VALUES[i];
+      if (!find(l, item)) {
+        record.printError("item " + item + " not found on list");
+      }
+      loc = l.currPos();
+      locExpect = item / 10 - 1;
+      if (loc != locExpect) {
+        record.printError("After find, current is " + loc + " and not " + locExpect);
+    }
+  }
+
+    // Test iterator
+
+    // Expected result
+    String expect = "";
+    item = 10;
+    for (int i = 0; i <= NUMBER; i++) {
+      expect += item;
+      item += 10;
+    }
+    // Call iterator
+    listIter(l);
+    // Check result
+    if (!doSomethingResult.equals(expect)) {
+      record.printError("After iterator got " + doSomethingResult + " but expected " + expect);
+    }
+  }
 
   /**
   * Test a list holding int to see if it works correctly.
@@ -136,9 +183,9 @@ static boolean find(List L, Object k) {
    * @param l List that should be empty for testing.
    */
   static void checkEmp(List l) {
-    // Test length with empty stack
+    // Test length with empty list
     if (l.length() != 0) {
-      record.printError("An unexpected length of " + l.getClass() + ". \nLength of list: " + l.length()
+      record.printError("On empty list an unexpected length from " + l.getClass() + ". \nLength of list: " + l.length()
           + "\nLength expected: 0");
     }
 
@@ -324,7 +371,7 @@ static boolean find(List L, Object k) {
 
     // Check the value stored in the current position
     if (l.getValue() != tester.get(curr)) {
-      record.printError("An unexpected topValue " + l.getClass() + ". \nTopValue in list: "
+      record.printError("An unexpected list item in " + l.getClass() + ". \nItem in list: "
           + l.getValue().toString() + "\nValue expected: " + tester.get(curr).toString());
     }
 
@@ -358,10 +405,8 @@ static boolean find(List L, Object k) {
     l.moveToPos(curr);
   }
 
-  // TODO where does it do DLIST?
-  // TODO need to run in VSC
   /**
-   * Runs tests on generic AList, LList, and DList Class with Integer and String.
+   * Runs tests on generic AList and LList Class with Integer and String.
    * 
    * @param args
    *        not used
@@ -385,10 +430,20 @@ static boolean find(List L, Object k) {
     testStr(al1);
     testStr(ll1);
 
+     // Test other functions that not in interface
+     al.clear();
+     doSomethingResult = "";
+     testOther(al);
+     ll.clear();
+     doSomethingResult = "";
+     testOther(ll);
+ 
     // Get a feedback about the result (success or fail)
     record.feedback();
 
-    if (TEST_SIZE != 0) timing();
+    if (TEST_SIZE != 0) {
+      timing();
+    }
   }
 
   static void timing() {
