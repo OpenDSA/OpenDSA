@@ -37,7 +37,7 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
 // Return true if k is in list L, false otherwise
 static boolean find(List L, Object k) {
   for (L.moveToStart(); !L.isAtEnd(); L.next())
-  if (k == L.getValue()) return true; // Found k
+    if (k == L.getValue()) return true; // Found k
   return false;                       // k not found
 }
 /* *** ODSAendTag: listfind *** */
@@ -138,7 +138,7 @@ static boolean find(List L, Object k) {
   static void checkEmp(List l) {
     // Test length with empty stack
     if (l.length() != 0) {
-      record.printError("An unexpected length of " + l.getClass() + ". \nLength of stack: " + l.length()
+      record.printError("An unexpected length of " + l.getClass() + ". \nLength of list: " + l.length()
           + "\nLength expected: 0");
     }
 
@@ -150,14 +150,14 @@ static boolean find(List L, Object k) {
 
     // Test currPos with empty list
     if (l.currPos() != 0) {
-      record.printError("An unexpected topValue in empty " + l.getClass() + ". \nTopValue in list: " + l.currPos()
+      record.printError("An unexpected current position in empty " + l.getClass() + ". \nCurrent in list: " + l.currPos()
          + "\nValue expected: 0");
     }
 
     // Test remove with empty list
     Object removed = l.remove();
     if (removed != null) {
-      record.printError("An unexpected value in empty " + l.getClass() + ". \nDelistd from list: "
+      record.printError("An unexpected value in empty " + l.getClass() + ". \nremove from list: "
          + removed.toString() + "\nValue expected: null");
     }
 
@@ -371,7 +371,7 @@ static boolean find(List L, Object k) {
    */
   public static void main(String args[]) throws IOException {
     // Create a file to record errors if necessary
-    record = new ErrorRec(useFile, "ListTest");
+    record = new ErrorRec("ListTest", useFile);
 
     // Test Integers
     AList al = new AList();

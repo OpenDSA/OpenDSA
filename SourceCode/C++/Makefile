@@ -13,7 +13,7 @@ CC= g++ -std=c++0x
 all: sorting lists
 
 build:
-	mkdir build
+	@mkdir build
 
 clean:
 	-rm -rf build

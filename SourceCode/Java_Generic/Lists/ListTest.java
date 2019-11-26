@@ -111,7 +111,7 @@ static <E> void doSomethingOnEmpList(List<E> l) {
 static <E> void checkEmp(List<E> l) {
   // Test length with empty stack
   if (l.length() != 0) {
-    record.printError("An unexpected length of " + l.getClass() + ". \nLength of stack: " + l.length()
+    record.printError("An unexpected length of " + l.getClass() + ". \nLength of list: " + l.length()
         + "\nLength expected: 0");
   }
 
@@ -123,14 +123,14 @@ static <E> void checkEmp(List<E> l) {
 
   // Test currPos with empty list
   if (l.currPos() != 0) {
-    record.printError("An unexpected topValue in empty " + l.getClass() + ". \nTopValue in list: " + l.currPos()
-        + "\nValue expected: 0");
+    record.printError("An unexpected current position in empty " + l.getClass() + ". \nCurrent in list: " + l.currPos()
+    + "\nValue expected: 0");
   }
 
   // Test remove with empty list
   E removed = l.remove();
   if (removed != null) {
-    record.printError("An unexpected value in empty " + l.getClass() + ". \nDelistd from list: "
+    record.printError("An unexpected value in empty " + l.getClass() + ". \nremove from list: "
         + removed.toString() + "\nValue expected: null");
   }
 
@@ -311,7 +311,7 @@ static <E> void checkEmp(List<E> l) {
    */
   public static void main(String args[]) throws IOException {
     // Create a file to record errors if necessary
-    record = new ErrorRec(useFile, "ListTest");
+    record = new ErrorRec("ListTest", useFile);
 
     // Test Integers
     AList<Integer> al = new AList<Integer>();

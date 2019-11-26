@@ -7,15 +7,14 @@ using namespace std;
 // This class deals with actions regarding errors (creating an error log,
 // printing out error messages, counting the number of errors, and judging
 // success or fail). Based on the Java version.
-class ErrorRec
-{
+class ErrorRec {
   // Hold the number of errors
   int numErr = 0;
   // Print error messages in a text file
   ofstream errorFile;
   // Added at the beginning of error messages
   const string DEFAULT_MSG_START = "* ***OpenDSA Error Start*** *\n";
-  // Added at the beginning of error messages
+  // Added at the end of error messages
   const string DEFAULT_MSG_END = "\n* ***OpenDSA Error End*** *\n";
   // Added at the end of the name of error log file
   const string FILE_NAME = "_error.log";
@@ -27,8 +26,8 @@ class ErrorRec
 public:
   ErrorRec(string className, bool useFile = true)
   {
-    if (useFile)
-    {
+    if (useFile) {
+      // file name to use
       string filenameUse = className + FILE_NAME;
       // Overwrite if exists since only want current messages
       errorFile.open(filenameUse, ios::trunc);
@@ -42,10 +41,8 @@ public:
     }
   }
 
-  ~ErrorRec()
-  {
-    if (errorFile.is_open())
-    {
+  ~ErrorRec() {
+    if (errorFile.is_open()) {
       errorFile.close();
     }
   }
@@ -56,45 +53,36 @@ public:
 	 * 
 	 * message: an error message
 	 */
-  void printError(string message)
-  {
-    if (errorFile.is_open())
-    {
+  void printError(string message) {
+    if (errorFile.is_open()) {
       errorFile << DEFAULT_MSG_START + message + DEFAULT_MSG_END << endl;
     }
-    else
-    {
+    else {
       cerr << DEFAULT_MSG_START + message + DEFAULT_MSG_END << endl;
     }
     numErr++;
   }
 
   /* Tells if there exist errors and, if any, prints out the number of errors. */
-  void feedback()
-  {
+  void feedback() {
     // If there is no error, create a success file and print out success. If
     // not, report the number of errors
-    if (numErr == 0)
-    {
+    if (numErr == 0) {
       // Want new file so wipe out if exists.
       ofstream output("success", ios::out);
-      if (!output.is_open())
-      {
+      if (!output.is_open()) {
         cerr << "Testing had no errors but could not write success file" << endl;
       }
-      else
-      {
+      else {
         output << "Success" << endl;
         output.close();
       }
       cout << "Success!" << endl;
     }
-    else
-    {
+    else {
       cout << endl << "***Testing failed. There is(are) " << numErr << " error(s) in your codes." << endl << endl;
     }
-    if (errorFile.is_open())
-    {
+    if (errorFile.is_open()) {
       errorFile.close();
     }
   }
