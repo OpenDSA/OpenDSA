@@ -1,6 +1,6 @@
 .jsavcanvas {
     display: grid;
-    width: 761px;
+    width: 781px;
     height: 1500px;
     grid-template-columns: 2fr 1fr;
     grid-template-areas: "workspace equations";

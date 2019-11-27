@@ -4,7 +4,7 @@
     //var definitions
     var av; //The JSAV Object
     const CANVAS_DIMENSIONS = {
-        "TOTAL_WIDTH": 760,
+        "TOTAL_WIDTH": 780,
         "TOTAL_HEIGHT": 1500,
         "WORKSPACE_LIST": {
             "X": 1,
