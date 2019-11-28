@@ -1,10 +1,6 @@
 {
   "translations": {
     "en": {
-<<<<<<< HEAD
-=======
-      "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
->>>>>>> parent of 14f3965cd... editing the echo first frame with questions and combining the slides
       "q1": {
         "type": "select",
         "src": "../../../AV/Development/formal_language/FAEditor.html",
