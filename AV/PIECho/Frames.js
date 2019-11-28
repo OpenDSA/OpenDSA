@@ -9,7 +9,7 @@ $(document).ready(function() {
         interpret = config.interpreter, // get the interpreter
         code = config.code;             // get the code object
     var goNext = false;
-    av.umsg("Let’s formally define the concept of a “language”. But first we need some stuff to make them from.");
+    av.umsg("hello here Let’s formally define the concept of a “language”. But first we need some stuff to make them from.");
     // var q = av.question("TF", "Understand the given information", {correct: true, falseLabel: "No", trueLabel: "Yes"});
     // var answer = q.show();
     // alert(answer);
@@ -27,7 +27,7 @@ $(document).ready(function() {
     av.umsg(injector.injectQuestion("q2", "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?"));
     av.step();
 
-    av.umsg(injector.injectQuestion("q2_2"));
+    av.umsg(injector.injectQuestion("q2_2", "This is question2"));
     av.step();
     av.umsg(injector.injectQuestion("q2_3"));
     av.step();
