@@ -9,7 +9,7 @@ $(document).ready(function() {
         interpret = config.interpreter, // get the interpreter
         code = config.code;             // get the code object
     var goNext = false;
-    av.umsg("hello here Let’s formally define the concept of a “language”. But first we need some stuff to make them from.");
+    av.umsg("Let’s formally define the concept of a “language”. But first we need some stuff to make them from.");
     // var q = av.question("TF", "Understand the given information", {correct: true, falseLabel: "No", trueLabel: "Yes"});
     // var answer = q.show();
     // alert(answer);
@@ -27,17 +27,17 @@ $(document).ready(function() {
     av.umsg(injector.injectQuestion("q2", "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?"));
     av.step();
 
-    av.umsg(injector.injectQuestion("q2_2", "This is question2"));
+    av.umsg(injector.injectQuestion("q2_2", "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?"));
     av.step();
-    av.umsg(injector.injectQuestion("q2_3"));
+    av.umsg(injector.injectQuestion("q2_3", "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?"));
     av.step();
     // av.umsg(injector.injectQuestion("q2_2"));
     // av.step();
     
     //thrid frame
-    av.umsg("A language is simply a collection of strings defined over $\\Sigma$.");
-    av.step();
-    av.umsg(injector.injectQuestion("q3"));
+    // av.umsg("A language is simply a collection of strings defined over $\\Sigma$.");
+    // av.step();
+    av.umsg(injector.injectQuestion("q3", "A language is simply a collection of strings defined over $\\Sigma$."));
     av.step();
     // av.umsg("How about this one?");
     // av.step();
@@ -49,19 +49,19 @@ $(document).ready(function() {
     av.step();
     // av.umsg("How about this one?");
     // av.step();
-    av.umsg(injector.injectQuestion("q3_4"));
+    av.umsg(injector.injectQuestion("q3_4", "A language is simply a collection of strings defined over $\\Sigma$."));
     av.step();
-    av.umsg("Good, since a language is just a set of strings, the empty set is a perfectly good language.");
-    av.step();
-    av.umsg(injector.injectQuestion("q3_5"));
+    // av.umsg("Good, since a language is just a set of strings, the empty set is a perfectly good language.");
+    // av.step();
+    av.umsg(injector.injectQuestion("q3_5", "Good, since a language is just a set of strings, the empty set is a perfectly good language."));
     av.step();
 
     //fourth frame
-    av.umsg("Another definition of a language is a subset of the powerset of $\\Sigma$. Remember from Discrete Math class that a power set of any set is the set of all possible subsets from the given set.");
-    av.step();
+    // av.umsg("Another definition of a language is a subset of the powerset of $\\Sigma$. Remember from Discrete Math class that a power set of any set is the set of all possible subsets from the given set.");
+    // av.step();
     // av.umsg("Remember from Discrete Math class that a power set of any set is the set of all possible subsets from the given set.");
     // av.step();
-    av.umsg(injector.injectQuestion("q4"));
+    av.umsg(injector.injectQuestion("q4", "Another definition of a language is a subset of the powerset of $\\Sigma$. Remember from Discrete Math class that a power set of any set is the set of all possible subsets from the given set."));
     av.step();
 
     //fifth 
@@ -71,7 +71,7 @@ $(document).ready(function() {
     av.step();
 
     //fifth second frame
-    av.umsg(injector.injectQuestion("q5_1"));
+    av.umsg(injector.injectQuestion("q5_1", "Useful notations: We usually use these symbols in our book, For symbols in some alphabet $\\Sigma$, we typically use either digits or letters near the start of the common English alphabet: $a,b,c,d,0,1$ For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the common English alphabet: $u,v,w,x,y,z$"));
     av.step();
 
     //sixth frame
@@ -103,7 +103,7 @@ $(document).ready(function() {
     av.step();
     // av.umsg("Another form of string concatenation is to concatenate a string with itself. Suppose we have a string $v$.  The notation $v34 means concatenate v with itself 3 times. Concatenating a string with itself zero times yields the empty string $\\lambda$");
     // av.step();
-    av.umsg(injector.injectQuestion("q8", "Another form of string concatenation is to concatenate a string with itself. Suppose we have a string $v$.  The notation $v34$ means concatenate $v$ with itself 3 times. Concatenating a string with itself zero times yields the empty string $\\lambda$"));
+    av.umsg(injector.injectQuestion("q8", "Another form of string concatenation is to concatenate a string with itself. Suppose we have a string $v$.  The notation $v3$ means concatenate $v$ with itself 3 times. Concatenating a string with itself zero times yields the empty string $\\lambda$"));
     av.step();
 
     //nineth frame

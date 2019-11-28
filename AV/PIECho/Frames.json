@@ -77,7 +77,7 @@
       },
       "q5_1": {
         "type": "multiple",
-        "question": "And if y see w in a sentence, it probably refers to ",
+        "question": "And if you see w in a sentence, it probably refers to ",
         "answer": "Some string given the name ‘$w$’",
         "choices": ["The character ‘$w$’", "Some string given the name ‘$w$’"]
       },
@@ -85,7 +85,7 @@
         "type": "multiple",
         "question": "Let $w=abbc$, $v=ab$, What is $|w|$ + $|v|$",
         "answer": "6",
-        "choices": ["6", "$k$"]
+        "choices": ["6", "7", "8"]
       },
       "q7": {
         "type": "textBox",
@@ -178,7 +178,7 @@
       },
       "q19": {
         "type": "textBox",
-        "question": "Let $\\Sigma$={$a$,$b4}, $L1$={$ab$,$aba$}, What is $L2$? ",
+        "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L2$? ",
         "answer": "{abab, ababa, abaab, abaaba}"
       },
       "q19_1": {
