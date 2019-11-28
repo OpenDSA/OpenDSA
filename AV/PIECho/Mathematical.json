@@ -3,121 +3,64 @@
       "en": {
         "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
         "q1": {
-          "type": "select",
+          "type": "multiple",
           "src": "../../../AV/Development/formal_language/FAEditor.html",
-          "question": "Which of the following are  alphabet sets?",
-          "answer": ["{$a$, $b$, $c$}", "{0, 1}", "{?, $a$, $x$}"],
-          "choices": ["{$a$, $b$, $c$}", "{0, 1}", "$A$", "{?, $a$, $x$}"]
+          "question": "sets may contain duplicated elements.",
+          "answer": ["False"],
+          "choices": ["True", "False"]
         },
         "q2": {
-          "type": "select",
+          "type": "multiple",
           "src": "../../../AV/Development/formal_language/FAEditor.html",
-          "question": "Suppose we have $\\Sigma$ = {$a$, $b$}, which of the following are valid strings?",
-          "answer": ["$babababbaba$", "$a$"],
-          "choices": ["$babababbaba$", "$a$", "{$aaa$, $bbb$}", "$bacbabcba$"]
-        },
-        "q2_2": {
-          "type": "textBox",
-          "question": "Why not answer c) {$aaa$, $bbb$}?",
-          "answer": "it is a set"
-        },
-        "q2_3": {
-          "type": "textBox",
-          "question": "Why not answer d) $bacbabcba$?",
-          "answer": "it uses symbols not in question"
+          "question": "Let P = {7, 11, 42}, Which of the following is correct?",
+          "answer": ["P = {11, 42, 7}"],
+          "choices": ["P = {11, 42, 7}", "P  ≠ {11, 42, 7}"]
         },
         "q3": {
-          "type": "select",
-          "question": "What states can be combined?",
-          "answer": [
-            "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,...\\}$",
-            "$\\Sigma$={$a,b,c\\}$ $L=\\{ab,ac,cabb\\}$",
-            "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{set of all even numbers\\}$"
-          ],
-          "choices": [
-            "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,...\\}$",
-            "$\\Sigma$={$a,b,c\\}$ $L=\\{ab,ac,cabb\\}$",
-            "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{set of all even numbers\\}$"
-          ]
-        },
-        "q3_2": {
           "type": "multiple",
-          "question": "Is this one a langue?  $\\Sigma$=${a,b,c}$ $L = ab$",
-          "answer": "No",
-          "choices": ["Yes", "No"]
-        },
-        "q3_3": {
-          "type": "multiple",
-          "question": "Is this one a langue?  $\\Sigma$=${a,b,c}$ $L = {a}$",
-          "answer": "Yes",
-          "choices": ["Yes", "No"]
-        },
-        "q3_4": {
-          "type": "multiple",
-          "question": "Is this one a langue?  $\\Sigma$=${a,b,c}$ $L$ = {}",
-          "answer": "Yes",
-          "choices": ["Yes", "No"]
-        },
-        "q3_5": {
-          "type": "multiple",
-          "question": "Oh, and remember that we have a special symbol for “empty” set. Which is it?",
-          "answer": "{}",
-          "choices": ["$\\Sigma$", "$E$", "{}"]
+          "question": "Let P = {7, 11, 42}, what is the base type of P elements?",
+          "answer": ["Integers"],
+          "choices": ["Integers", "Real numbers"]
         },
         "q4": {
-          "type": "textBox",
-          "question": "List the power set of ${a, b}$",
-          "answer": ["a"]
+          "type": "select",
+          "question": "Let P = {a, b, c, {d, e}, {f}}. Which of the following is an element in the set.",
+          "answer": ["a","b","c","{d, e}","{f}"],
+          "choices": ["a","b", "c", "d", "e","{d}","{d, e}","f","{f}"]
         },
         "q5": {
           "type": "multiple",
-          "question": "So, when you see $b$ in a sentence, it probably refers to:",
-          "answer": "The character ‘$b$’.",
-          "choices": ["The character ‘$b$’.", "Some string named ‘$b$’."]
-        },
-        "q5_1": {
-          "type": "multiple",
-          "question": "And if you see w in a sentence, it probably refers to ",
-          "answer": "Some string given the name ‘$w$’",
-          "choices": ["The character ‘$w$’", "Some string given the name ‘$w$’"]
+          "question": "Which of the following is a valid set:",
+          "answer": "{a, 2, 3}",
+          "choices": ["1, 2, 3", "{a, 2, 3}"]
         },
         "q6": {
-          "type": "multiple",
-          "question": "Let $w=abbc$, $v=ab$, What is $|w|$ + $|v|$",
-          "answer": "6",
-          "choices": ["6", "7", "8"]
+          "type": "textBox",
+          "question": "Describe the previous set using your own words.",
+          "answer": "yes"
         },
         "q7": {
-          "type": "textBox",
-          "question": "Let $w = abc$, $v = 012$, What is $w∘v$?",
-          "answer": "abc012"
-        },
-        "q7_1": {
-          "type": "textBox",
-          "question": "Let $w = abc$, $v = 012$, What is $wv$?",
-          "answer": "abc012"
+          "type": "select",
+          "question": "Let P = {a, b, c}, which of the following is ∉P",
+          "answer": ["b", "{a, b, c}"],
+          "choices": ["a", "{a}", "b", "{a, b, c}"]
         },
         "q8": {
-          "type": "select",
-          "question": "let $v = ab$, what is $v3$ ?",
-          "answer": ["$vvv$", "$v∘v∘v$", "$ababab$"],
-          "choices": ["$vvv$", "$v∘v∘v$", "$ababab$"]
-        },
-        "q8_1": {
           "type": "multiple",
-          "question": "Is this a language? {$\\lambda$}",
-          "answer": "yes",
-          "choices": ["yes", "no"]
+          "question": "Which of the following ∈Q?",
+          "answer": "a",
+          "choices": ["a", "1", "{a,b}", "Q has no elements because it is the null set."]
         },
         "q9": {
           "type": "textBox",
-          "question": "What is $\\lambda∘acb∘\\lambda$?",
-          "answer": "acb"
+          "question": "What does it mean to say that |P| = 3?",
+          "answer": "P has 3 elements"
         },
         "q10": {
-          "type": "textBox",
-          "question": "Let $w = abbc$, what is $w^R$?",
-          "answer": "cbba"
+          "type": "select",
+          "question": "Let P = {x|x is a positive integer}. Which of the following is a subset of P?",
+          "answer": ["{1, 2, 3}", "{x|x is an even number}", "{x|x is a prime number}"],
+          "choices": ["{1, 2, 3}", "{x|x is an even number}", "{x|x is a real number}", "{x|x is a prime number}"]
         },
         "q11": {
           "type": "textBox",
