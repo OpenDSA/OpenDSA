@@ -48,8 +48,8 @@
 			$(this).find(".testCase").each(function()
 			{
 				var _case = {},
-						testString = $(this).find("input[name='testString']")[1].value,
-						result = $(this).find("input[name='testString']")[2].value;
+						testString = $(this).find("input[name='testStringa']")[0].value,
+						result = $(this).find("input[name='testStringb']")[0].value;
 				// var result = resultButtons[0].checked ? true : false;
 				_case[testString] = result;
 				problem.testCases.push(_case);
@@ -76,7 +76,42 @@
 		isFA = false;
 		problemCount++;
 		resultCount++;
-
+		if (document.getElementById('transducer').checked)
+		{
+			$("#problems").append(""+
+			"<fieldset id='" + problemCount + "'>" + 
+				"<legend>Problem " + problemCount + "</legend>" +
+					"<div><input type='radio' name='mode' value='noGraph' checked>Expression Only" +
+					"<input type='radio' name='mode' value='yesGraph'>With Wrong Graph</div>" +
+					"<input type='radio' name='show" + problemCount + "' value='true' checked>" + 
+					"<span>Expression: </span>" + 
+					"<input type='text' name='expression'>" + 
+					"<br>" + 
+					"<input type='radio' name='show" + problemCount + "' value='false'>" + 
+					"<span>Description: </span>" + 
+					"<input type='text' name='description'" + 
+					"<br>"+
+					"<div class='testCases'>" + 
+					"<div class='testCase'>"+
+					"<span>Test Case 1: </span>"+
+					"<div id='transducerTwo' style='display: block;'>" +
+					"<div id='box1'><p>Input</p> <input type='text' name='testStringa'> </div>  " +
+					"<div id='box2'><p>Output</p> <input type='text' name='testStringb'> </div>  " +
+					// <p>Input</p> <input type='text' name='testStringa" + resultCount + "'> " +
+					// <p>Output</p> <input type='text' name='testStringb" + resultCount + "'/>" +
+					"<br>"+
+					"<br>"+
+					"<br>"+
+					"<br>"+
+					"<br>"+
+					"<br>"+
+					"<br>"+
+					"</div>" +
+					"</div>" +
+					"</div>"+
+			"</fieldset>");
+		}
+			else{
 		$("#problems").append(""+
 			"<fieldset id='" + problemCount + "'>" + 
 				"<legend>Problem " + problemCount + "</legend>" +
@@ -100,6 +135,7 @@
 					"</div>"+
 					"</div>"+
 			"</fieldset>");
+		}
 
 		var addCaseButton = $("<button type='button' id='addTestCase'>Add another test case</button>");
 		addCaseButton.click(addCase);
@@ -138,18 +174,23 @@
 		testCaseNumbers[index]++;
 		caseCount = testCaseNumbers[index];
 		resultCount++;
+
 		if (document.getElementById('transducer').checked)
 		{
-			$('.testCases').append("" +
+			testCases.append("" +
 			"<div class='testCase'>"+
-				"<span>Test Case " + resultCount + ": </span>"+
+				"<br>"+
+				"<br>"+
+				"<br>"+
+				"<br>"+
+				"<br>"+
+				"<br>"+
+				"<span>Test Case " + testCaseNumbers[index] + ": </span>"+
 				"<div id='transducerTwo' style='display: block;'>" +
-				"<div id='box1'><p>Input</p> <input type='text' name='testString'> </div>  " +
-				"<div id='box2'><p>Output</p> <input type='text' name='testString'> </div>  " +
-				"<br>"+
-				"<br>"+
-				"<br>"+
-				"<br>"+
+				"<div id='box1'><p>Input</p> <input type='text' name='testStringa'> </div>  " +
+				"<div id='box2'><p>Output</p> <input type='text' name='testStringb'> </div>  " +
+				// <p>Input</p> <input type='text' name='testStringa" + resultCount + "'> " +
+		        // <p>Output</p> <input type='text' name='testStringb" + resultCount + "'/>" +
 				"<br>"+
 				"<br>"+
 				"<br>"+
@@ -157,9 +198,9 @@
 			"</div>");
 		}
 		else{
-			$('.testCases').append("" +
+			testCases.append("" +
 			"<div class='testCase'>"+
-				"<span>Test Case " + resultCount + ": </span>"+
+				"<span>Test Case " + testCaseNumbers[index] + ": </span>"+
 				"<input type='radio' name='result" + resultCount + "' value='true' checked> <span>Accept</span>"+
 				"<input type='radio' name='result" + resultCount + "' value='false'> <span>Reject</span>"+
 				"<input type='text' name='testString'>"+
