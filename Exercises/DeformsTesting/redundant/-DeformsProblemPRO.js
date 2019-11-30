@@ -1,5 +1,3 @@
-//insert code for deforns.js in here - ALL THAT OBFUSCATED SHIT.
-
 //For now, this:
 (function(){
     "use strict";
