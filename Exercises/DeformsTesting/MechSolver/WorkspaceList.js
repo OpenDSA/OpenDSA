@@ -61,7 +61,7 @@ class WorkspaceList
         this.addbutton.addEventListener('click', e => {
             e.stopPropagation();
             this.addNewWorkspace();
-            this.globalSectionObj.logEvent({type: "adding new workspace", "id": this.workspaceCounter});
+            this.globalSectionObj.logEvent({type: "adding new workspace", "id": this.workspaceCounter-1});
         });
         
         // Automatically add a new workspace, by default

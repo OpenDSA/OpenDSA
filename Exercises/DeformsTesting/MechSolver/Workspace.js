@@ -56,9 +56,9 @@ class Workspace
         this.elements[0]["div"].setAttribute("id",this.name+"box");
 
         // Adding the name of the workspace
+        this.elements[1] = {};
         this.elements[1] = {
-            "jsav":
-                this.globalSectionObj.label(this.name, 
+            "jsav": this.globalSectionObj.label(this.name, 
                 {
                     left: this.DIMENSIONS["POSITION_X"]+4, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
@@ -66,7 +66,7 @@ class Workspace
                 .addClass("workspacelabel"),
             "div": (list => 
                 list[list.length-1]
-                )(document.getElementsByClassName("workspacelabel")),
+                )(document.getElementsByClassName("jsavlabel"))
         };
         this.elements[1]["div"].setAttribute("id",this.name+"label");
         
@@ -81,13 +81,10 @@ class Workspace
                 .addClass("close_x"),
             "div": (list => 
                 list[list.length-1]
-                )((document.getElementsByClassName("close_x"))),
+                )(document.getElementsByClassName("jsavlabel")),
         };
         this.elements[2]["div"].setAttribute("id",this.name+"close");
-        this.removebutton = 
-        (list => 
-            list[list.length-1]
-            )(document.getElementsByClassName("close_x"))
+        this.removebutton = document.getElementById(this.name+"close");
         
 
         // Adding the Add, Remove, Solve Buttons to add, remove, and solve equations
@@ -101,7 +98,7 @@ class Workspace
                 .addClass("addequation"),
             "div": (list => 
                 list[list.length-1]
-                )((document.getElementsByClassName("addequation"))),
+                )(document.getElementsByClassName("jsavlabel")),
         };
         this.elements[3]["div"].setAttribute("id",this.name+"addeq");
         document.getElementById(this.name+"addeq").addEventListener('click', e => {
@@ -120,7 +117,7 @@ class Workspace
                 .addClass("delequation"),
             "div": (list => 
                 list[list.length-1]
-                )((document.getElementsByClassName("delequation"))),
+                )(document.getElementsByClassName("jsavlabel")),
         };
         this.elements[4]["div"].setAttribute("id",this.name+"deleq");
         document.getElementById(this.name+"deleq").addEventListener('click', e => {
@@ -138,7 +135,7 @@ class Workspace
                 .addClass("solveequation"),
             "div": (list => 
                 list[list.length-1]
-                )((document.getElementsByClassName("solveequation"))),
+                )(document.getElementsByClassName("jsavlabel")),
         };
         this.elements[5]["div"].setAttribute("id",this.name+"solveeq");
         document.getElementById(this.name+"solveeq").addEventListener('click', e => {

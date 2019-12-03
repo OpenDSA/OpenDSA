@@ -1,18 +1,29 @@
 .jsavcanvas {
     display: grid;
-    width: 781px;
-    height: 1500px;
-    grid-template-columns: 2fr 1fr;
+    width: 767px;
+    height: 800px;
+    grid-template-columns: 500px 110px;
     grid-template-areas: "workspace equations";
 }
 
-.selectddl {
+/* #equationbox {
     grid-area: equations;
+    height: 0px;
+} */
+
+#WorkspaceList {
+    height: 0px;
+    grid-area: workspace;
+    background-color: grey;
+}
+
+/* #equationSelectDDL {
+    grid-area: inherit;
     z-index: 500;
     position: relative;
-    top: 25px;
+    top: 30px;
     left: 20px;
-}
+} */
 
 .workspacelabel {
     color: black;
@@ -27,6 +38,13 @@
     font-weight: 600;
     z-index: 500;
     cursor: pointer;
+   }
+
+.boldface {
+    color: black;
+    font-size: 120%;
+    font-weight: 600;
+    z-index: 500;
    }
 
 .addequation {
@@ -65,8 +83,12 @@
     cursor: pointer;
 }
 
-.equation-page {
-
+.selectableEquation {
+    border: thin dashed black;
+    padding: 2px;
+    color: black;
+    font-size: 100%;
+    z-index: 500;
 }
 
 #float {
@@ -131,11 +153,6 @@
     position: absolute;
     left: 10px;
     top: 5px;
-}
-
-#WorkspaceList {
-    grid-area: workspace;
-    background-color: grey;
 }
 
 #workspace .blueprint {

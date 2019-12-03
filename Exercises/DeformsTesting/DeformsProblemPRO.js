@@ -4,18 +4,18 @@
     //var definitions
     var av; //The JSAV Object
     const CANVAS_DIMENSIONS = {
-        "TOTAL_WIDTH": 780,
+        "TOTAL_WIDTH": 767,
         "TOTAL_HEIGHT": 1500,
         "WORKSPACE_LIST": {
             "X": 1,
             "Y": 1,
-            "WIDTH": 511,
+            "WIDTH": 500,
             "HEIGHT": 50
         },
         "EQBANK": {
-            "CORNER_X": 515,
+            "CORNER_X": 504,
             "CORNER_Y": 1,
-            "WIDTH": 255,
+            "WIDTH": 230,
             "HEIGHT": 500
         },
     };
@@ -37,6 +37,16 @@
     
         //Setup the new display
         av = new JSAV("DeformsProblemPRO");
+        
+        /* var wkl = document.createElement("div");
+        wkl.setAttribute("id","WorkspaceList");
+        var eqb = document.createElement("div")
+        eqb.setAttribute("id","equationbox");
+        document.getElementById("DeformsProblemPRO").appendChild(wkl);
+        document.getElementById("DeformsProblemPRO").appendChild(eqb); */
+        // document.getElementById("DeformsProblemPRO").childNodes[0].appendChild(wkl);
+        // document.getElementById("DeformsProblemPRO").childNodes[0].appendChild(eqb);
+
         var eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         var wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS)
             
@@ -46,7 +56,7 @@
         deformsProblemPRO.userInput = false;
 
         $("body").on("jsav-log-event", function(event, eventData) {
-            console.log(eventData);
+            //console.log(eventData);
           });
     }
 
