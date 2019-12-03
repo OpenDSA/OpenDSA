@@ -1,6 +1,6 @@
 $(document).ready(function() {
     "use strict";
-    var av_name = "Frames";
+    var av_name = "Mathematical";
     var av = new JSAV(av_name);
     av.container.on('jsav-updatecounter', () => MathJax.Hub.Queue(["Typeset",MathJax.Hub]));
     var injector = PIFRAMES.init(av_name);
@@ -9,14 +9,14 @@ $(document).ready(function() {
         interpret = config.interpreter, // get the interpreter
         code = config.code;             // get the code object
     var goNext = false;
-    av.umsg("Let’s formally define the concept of a “language”. But first we need some stuff to make them from.");
+    av.umsg("The concept of a set in the mathematical sense has a wide application in computer science. The notations and techniques of set theory are commonly used when describing and implementing algorithms because the abstractions associated with sets often help to clarify and simplify algorithm design.");
     // var q = av.question("TF", "Understand the given information", {correct: true, falseLabel: "No", trueLabel: "Yes"});
     // var answer = q.show();
     // alert(answer);
     av.displayInit();
     // av.umsg("Start with the alphabet set. We normally represent an alphabet set with $\\Sigma$. The alphabet set is a set of symbols (typically letters or characters, but it could include any symbols}.");
     // av.step();
-    av.umsg(injector.injectQuestion("q1", "Start with the alphabet set. We normally represent an alphabet set with $\\Sigma$. The alphabet set is a set of symbols (typically letters or characters, but it could include any symbols}."));
+    av.umsg(injector.injectQuestion("q1", "A set is a collection of distinguishable members or elements. There is no concept of duplication in a set."));
     av.step();
 
     //second frame
@@ -24,12 +24,7 @@ $(document).ready(function() {
     // av.step();
     // av.umsg("Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?");
     // av.step();
-    av.umsg(injector.injectQuestion("q2", "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?"));
-    av.step();
-
-    av.umsg(injector.injectQuestion("q2_2", "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?"));
-    av.step();
-    av.umsg(injector.injectQuestion("q2_3", "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?"));
+    av.umsg(injector.injectQuestion("q2", "A set is a collection of distinguishable members or elements. There is no concept of duplication in a set."));
     av.step();
     // av.umsg(injector.injectQuestion("q2_2"));
     // av.step();
@@ -37,23 +32,7 @@ $(document).ready(function() {
     //thrid frame
     // av.umsg("A language is simply a collection of strings defined over $\\Sigma$.");
     // av.step();
-    av.umsg(injector.injectQuestion("q3", "A language is simply a collection of strings defined over $\\Sigma$."));
-    av.step();
-    // av.umsg("How about this one?");
-    // av.step();
-    av.umsg(injector.injectQuestion("q3_2", "A language is simply a collection of strings defined over $\\Sigma$."));
-    av.step();
-    // av.umsg("How about this one?");
-    // av.step();
-    av.umsg(injector.injectQuestion("q3_3", "A language is simply a collection of strings defined over $\\Sigma$."));
-    av.step();
-    // av.umsg("How about this one?");
-    // av.step();
-    av.umsg(injector.injectQuestion("q3_4", "A language is simply a collection of strings defined over $\\Sigma$."));
-    av.step();
-    // av.umsg("Good, since a language is just a set of strings, the empty set is a perfectly good language.");
-    // av.step();
-    av.umsg(injector.injectQuestion("q3_5", "Good, since a language is just a set of strings, the empty set is a perfectly good language."));
+    av.umsg(injector.injectQuestion("q3", "Sets members are typically drawn from some larger population known as the base type"));
     av.step();
 
     //fourth frame
@@ -61,61 +40,35 @@ $(document).ready(function() {
     // av.step();
     // av.umsg("Remember from Discrete Math class that a power set of any set is the set of all possible subsets from the given set.");
     // av.step();
-    av.umsg(injector.injectQuestion("q4", "Another definition of a language is a subset of the powerset of $\\Sigma$. Remember from Discrete Math class that a power set of any set is the set of all possible subsets from the given set."));
+    av.umsg(injector.injectQuestion("q4", "Each member of a set is either a primitive element of the base type or is a set itself."));
     av.step();
 
     //fifth 
     // av.umsg("Useful notations: We usually use these symbols in our book, For symbols in some alphabet $\\Sigma$, we typically use either digits or letters near the start of the common English alphabet: $a,b,c,d,0,1$ For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the common English alphabet: $u,v,w,x,y,z$");
     // av.step();
-    av.umsg(injector.injectQuestion("q5", "Useful notations: We usually use these symbols in our book, For symbols in some alphabet $\\Sigma$, we typically use either digits or letters near the start of the common English alphabet: $a,b,c,d,0,1$ For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the common English alphabet: $u,v,w,x,y,z$"));
-    av.step();
-
-    //fifth second frame
-    av.umsg(injector.injectQuestion("q5_1", "Useful notations: We usually use these symbols in our book, For symbols in some alphabet $\\Sigma$, we typically use either digits or letters near the start of the common English alphabet: $a,b,c,d,0,1$ For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the common English alphabet: $u,v,w,x,y,z$"));
+    av.umsg(injector.injectQuestion("q5", "Sets common symbols: a) {}: braces that surround the set elements."));
     av.step();
 
     //sixth frame
-    // av.umsg("There are some basic string operations we will use a lot.");
-    // av.step();
-    // av.umsg("There are some basic string operations we will use a lot. The size of a string is the number of symbols in the string.  We use the operator || to donate the size of the string.");
-    // av.step();
-    av.umsg(injector.injectQuestion("q6", "There are some basic string operations we will use a lot. The size of a string is the number of symbols in the string.  We use the operator || to donate the size of the string."));
+    av.umsg(injector.injectQuestion("q6", "Sets common symbols: b) {x|x is a positive integer}: A set definition using a set format"));
     av.step();
 
     //seventh frame
-    // av.umsg("Another important operation is string concatenation. The concatenation of two strings $u$, and v is just the string that contains the symbols of $u$ followed by the symbols of $v$. We use the symbol ∘ to represent concatenation:");
-    // av.step();
-    // av.umsg("Another important operation is string concatenation. The concatenation of two strings $u$, and v is just the string that contains the symbols of $u$ followed by the symbols of $v$. We use the symbol ∘ to represent concatenation: Example : Let $w$=$a1a2...an$, and $v$=$b1b2...bn$ Then, $w∘v$  = $a1a2...anb1b2...bm$$");
-    // av.step();
-    av.umsg(injector.injectQuestion("q7", "Another important operation is string concatenation. The concatenation of two strings $u$, and v is just the string that contains the symbols of $u$ followed by the symbols of $v$. We use the symbol ∘ to represent concatenation: Example : Let $w$=$a1a2...an$, and $v$=$b1b2...bn$ Then, $w∘v$  = $a1a2...anb1b2...bm$"));
-    av.step();
-    // av.umsg("In reality, we use concatenation so much that we hardly ever want to be that formal. When we mean w∘v, we will normally simply write $wv$ instead.");
-    // av.step();
-    av.umsg(injector.injectQuestion("q7_1", "In reality, we use concatenation so much that we hardly ever want to be that formal. When we mean w∘v, we will normally simply write $wv$ instead."));
+    av.umsg(injector.injectQuestion("q7", "Sets common symbols: c) x∈P: x is a member of set P d) x∉P: x is not a member of set P"));
     av.step();
 
     //eight frame
-    av.umsg("Sometimes we want to talk about the string that has no characters. If we literally wrote a string with no characters, it would be hard for you to understand what we wrote! So we have a special symbol to use for the empty string: $\\lambda$.");
-    av.step();
-    // av.umsg("Recall, since a language is just a subset of all possible strings, that the empty set of strings is a language: $L$ = {} = <empty set symbol>.");
-    // av.step();
-    av.umsg(injector.injectQuestion("q8_1", "Recall, since a language is just a subset of all possible strings, that the empty set of strings is a language: $L$ = {} = <empty set symbol>."));
-    av.step();
-    // av.umsg("Another form of string concatenation is to concatenate a string with itself. Suppose we have a string $v$.  The notation $v34 means concatenate v with itself 3 times. Concatenating a string with itself zero times yields the empty string $\\lambda$");
-    // av.step();
-    av.umsg(injector.injectQuestion("q8", "Another form of string concatenation is to concatenate a string with itself. Suppose we have a string $v$.  The notation $v3$ means concatenate $v$ with itself 3 times. Concatenating a string with itself zero times yields the empty string $\\lambda$"));
+    av.umsg(injector.injectQuestion("q8", "Sets common symbols: e) ∅: The null or empty set"));
     av.step();
 
     //nineth frame
-    // av.umsg("Concatenating any string with $\\lambda$  gives the same string. In other words, $\\lambda$ is the concatenation identity. For example, $ab$∘$\\lambda$=$\\lambda$∘$ab$=$ab$");
-    // av.step();
-    av.umsg(injector.injectQuestion("q9", "Concatenating any string with $\\lambda$  gives the same string. In other words, $\\lambda$ is the concatenation identity. For example, $ab$∘$\\lambda$=$\\lambda$∘$ab$=$ab$"));
+    av.umsg(injector.injectQuestion("q9", "Sets common symbols: f) |P|: Cardinality: the size of set P or number of members for set P"));
     av.step();
 
     //tenth frame
     // av.umsg("Another useful operation is to reverse a string: Reversing a string means to flip it, in other words, write its symbols in reverse order.");
     // av.step();
-    av.umsg(injector.injectQuestion("q10", "Another useful operation is to reverse a string: Reversing a string means to flip it, in other words, write its symbols in reverse order."));
+    av.umsg(injector.injectQuestion("q10", "Sets common symbols: g) P⊆Q, Q⊇P: Set P is included in set Q, set P is a subset of set Q, or set Q is a superset of the set P"));
     av.step();
 
     //eleventh frame

@@ -68,6 +68,9 @@
     },
     "grammars": {
       "PIExample_Echo/grammar": {}
+    },
+    "mathematical": {
+      "PIExample_Echo/mathematical": {}
     }
   }
 }
