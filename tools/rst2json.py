@@ -116,6 +116,9 @@ class avembed(Directive):
     elif self.options['type'] == 'ff':
       self.options['points'] = 0.0
       self.options['threshold'] = 1.0
+    elif self.options['type'] == 'ae':
+      self.options['points'] = 0.0
+      self.options['threshold'] = 0.0
 
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
