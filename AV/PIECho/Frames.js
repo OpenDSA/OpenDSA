@@ -1,11 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
     "use strict";
     var av_name = "Frames";
     var av = new JSAV(av_name);
-    av.container.on('jsav-updatecounter', () => MathJax.Hub.Queue(["Typeset",MathJax.Hub]));
     var injector = PIFRAMES.init(av_name);
     // Load the config object with interpreter and code created by odsaUtils.js
-    var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+    var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
         interpret = config.interpreter, // get the interpreter
         code = config.code;             // get the code object
     var goNext = false;
@@ -33,7 +32,7 @@ $(document).ready(function() {
     av.step();
     // av.umsg(injector.injectQuestion("q2_2"));
     // av.step();
-    
+
     //thrid frame
     // av.umsg("A language is simply a collection of strings defined over $\\Sigma$.");
     // av.step();
@@ -121,7 +120,7 @@ $(document).ready(function() {
     //eleventh frame
     av.umsg(injector.injectQuestion("q11"));
     av.step();
-    
+
     //twelveth frame
     // av.umsg("One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\Sigma$ = {a,b}, $\\Sigma$* means the set of strings obtained by concatenating 0 or more symbols from $\\Sigma$. ");
     // av.step();
@@ -141,7 +140,7 @@ $(document).ready(function() {
     // av.step();
     av.umsg(injector.injectQuestion("q14", "Sets. As we see, Languages are sets, so all sets of operations can be applied to them."));
     av.step();
-    
+
     //15th frame
     // av.umsg("Sets. As we see, Languages are sets, so all sets of operations can be applied to them.");
     // av.step();
@@ -189,7 +188,7 @@ $(document).ready(function() {
     //     });
 
     // $('.jsavbackward').click(function() {
-          
+
     //     if(index>0){
     //     index--;
     //     $(".jsavforward").css("pointer-events", "auto");
@@ -203,5 +202,3 @@ $(document).ready(function() {
     //     $(".jsavforward").css("pointer-events", "none");  
     //     });
 });
-    
-  
