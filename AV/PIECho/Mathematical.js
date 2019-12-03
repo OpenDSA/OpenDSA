@@ -72,60 +72,69 @@ $(document).ready(function() {
     av.step();
 
     //eleventh frame
-    av.umsg(injector.injectQuestion("q11"));
+    av.umsg(injector.injectQuestion("q11", "Sets common symbols: i) P∪Q:  Union: all elements appearing in P OR Q"));
     av.step();
     
     //twelveth frame
     // av.umsg("One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\Sigma$ = {a,b}, $\\Sigma$* means the set of strings obtained by concatenating 0 or more symbols from $\\Sigma$. ");
     // av.step();
-    av.umsg(injector.injectQuestion("q12", "One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\Sigma$ = {a,b}, $\\Sigma$* means the set of strings obtained by concatenating 0 or more symbols from $\\Sigma$. "));
-    av.step();
-    av.umsg(injector.injectQuestion("q12_1", "One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\Sigma$ = {a,b}, $\\Sigma$* means the set of strings obtained by concatenating 0 or more symbols from $\\Sigma$. "));
+    av.umsg(injector.injectQuestion("q12", "Sets common symbols: i) P∪Q:  Union: all elements appearing in P OR Q"));
     av.step();
 
     //13th frame
     // av.umsg("Slightly different from the * operator, sometimes we want to have at least one copy of the thing that we are concatenating. Then we use +. One way of thinking of this: $\\Sigma$+=$\\Sigma$∗−{$\\lambda$}");
     // av.step();
-    av.umsg(injector.injectQuestion("q13", "Slightly different from the * operator, sometimes we want to have at least one copy of the thing that we are concatenating. Then we use +. One way of thinking of this: $\\Sigma$+=$\\Sigma$∗−{$\\lambda$}"));
+    av.umsg(injector.injectQuestion("q13", "Sets common symbol: i) P∪Q:  Union: all elements appearing in P OR Q"));
     av.step();
 
     //14th frame
     // av.umsg("Sets. As we see, Languages are sets, so all sets of operations can be applied to them.");
     // av.step();
-    av.umsg(injector.injectQuestion("q14", "Sets. As we see, Languages are sets, so all sets of operations can be applied to them."));
+    av.umsg(injector.injectQuestion("q14", "Sets common symbols: j)P∩Q: Intersection: all elements appearing in P AND Q"));
     av.step();
     
     //15th frame
     // av.umsg("Sets. As we see, Languages are sets, so all sets of operations can be applied to them.");
     // av.step();
-    av.umsg(injector.injectQuestion("q15", "Sets. As we see, Languages are sets, so all sets of operations can be applied to them."));
+    av.umsg(injector.injectQuestion("q15", "Sets common symbols: j)P∩Q: Intersection: all elements appearing in P AND Q"));
     av.step();
 
     //16th frame
     // av.umsg("In languages, $\\Sigma$∗  represents the Universe set $U4.  For, example, the complement of $L1$ will be the set of all strings in $\\Sigma$  except the strings in $L$. in other words,");
     // av.step();
-    av.umsg(injector.injectQuestion("q16", "In languages, $\\Sigma$∗  represents the Universe set $U4$.  For, example, the complement of $L1$ will be the set of all strings in $\\Sigma$  except the strings in $L$. in other words,"));
+    av.umsg(injector.injectQuestion("q16", "Sets common symbols: i) P∩Q:  Intersection: all elements appearing in P AND Q"));
     av.step();
 
     //17th frame
     // av.umsg("Sets concatenation. Concatenating two sets $L1$, and $L2$ means concatenating every string in $L1$ with each string in $L2$.");
     // av.step();
-    av.umsg(injector.injectQuestion("q17", "Sets concatenation. Concatenating two sets $L1$, and $L2$ means concatenating every string in $L1$ with each string in $L2$."));
+    av.umsg(injector.injectQuestion("q17", "Sets common symbols: k) P - Q: difference: all elements of set P NOT in set Q"));
     av.step();
 
     //18th frame
     // av.umsg("Sets concatenation. Concatenating a set zero times will give the set of the empty string $\\lambda$.");
     // av.step();
-    av.umsg(injector.injectQuestion("q18", "Sets concatenation. Concatenating a set zero times will give the set of the empty string $\\lambda$."));
+    av.umsg(injector.injectQuestion("q18", "Sets common symbols: k) P - Q: difference: all elements of set P NOT in set Q"));
     av.step();
 
     //19th frame
     // av.umsg("Sets concatenation. Concatenating a set n times means concatenating every string in L with each string in $L$ n times");
     // av.step();
-    av.umsg(injector.injectQuestion("q19", "Sets concatenation. Concatenating a set n times means concatenating every string in L with each string in $L$ n times"));
+    av.umsg(injector.injectQuestion("q19", "Sets common symbols: k) P - Q: difference: all elements of set P NOT in set Q"));
     av.step();
-    av.umsg(injector.injectQuestion("q19_1", "Sets concatenation. Concatenating a set n times means concatenating every string in L with each string in $L$ n times"));
+    
+    //20th
+    av.umsg(injector.injectQuestion("q20", "Sets common symbols: k) P x Q: Set (Cartesian) Product: yields a set of ordered pairs"));
     av.step();
+    //21st
+    av.umsg(injector.injectQuestion("q21", "Sets common symbols: k) P x Q: Set (Cartesian) Product: yields a set of ordered pairs"));
+    av.step();
+
+    //22nd
+    av.umsg(injector.injectQuestion("q22", "The powerset of a set S (denoted 2S ) is the set of all possible subsets for S."));
+    av.step();
+
+
 
     av.recorded();
     // $(".jsavforward").css("pointer-events", "none");  
