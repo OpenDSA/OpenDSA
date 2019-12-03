@@ -1,3 +1,64 @@
-//insert code for deforns.js in here - ALL THAT OBFUSCATED SHIT.
+/*global window*/
+(function() {
+    "use strict";
+    //var definitions
+    var av; //The JSAV Object
+    const CANVAS_DIMENSIONS = {
+        "TOTAL_WIDTH": 767,
+        "TOTAL_HEIGHT": 1500,
+        "WORKSPACE_LIST": {
+            "X": 1,
+            "Y": 1,
+            "WIDTH": 500,
+            "HEIGHT": 50
+        },
+        "EQBANK": {
+            "CORNER_X": 504,
+            "CORNER_Y": 1,
+            "WIDTH": 230,
+            "HEIGHT": 500
+        },
+    };
 
-!function(t){var e={};function i(n){if(e[n])return e[n].exports;var s=e[n]={i:n,l:!1,exports:{}};return t[n].call(s.exports,s,s.exports,i),s.l=!0,s.exports}i.m=t,i.c=e,i.d=function(t,e,n){i.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},i.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},i.t=function(t,e){if(1&e&&(t=i(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(i.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var s in t)i.d(n,s,function(e){return t[e]}.bind(null,s));return n},i.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return i.d(e,"a",e),e},i.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},i.p="",i(i.s=1)}([function(t,e){t.exports=class{constructor(t,e){this.id=e,this.name="wk"+e,this.LIST_OF_EQUATIONS_IN_WORKSPACE={},this.LIST_OF_ASSOCIATIONS={},this.equationCounter=0,this.equationHashMap={},this.workspaceDiv=this.createDiv(t)}createDiv(t){var e=document.createElement("div");return e.setAttribute("id",this.name),e.classList+="workspace",e.innerHTML+="<span class='workspace_id'>"+this.id+"</span>",e.innerHTML+="<input id='"+this.name+"_close' type='button' class='close_x' value='X'/>",e.style.background=this.selectWorkspaceColor(),t.appendChild(e),e}destroyDiv(){return this.workspaceDiv.parentElement.removeChild(this.workspaceDiv),this.id}selectWorkspaceColor(){return"#FBEEE4"}addNewEquation(t){if(this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter]=t,t.name in this.equationHashMap){this.equationHashMap[t.name].push((e=this.equationHashMap[t.name])[e.length-1]+1)}else this.equationHashMap[t.name],this.equationCounter++;var e}}},function(t,e,i){!function(){"use strict";i(2),i(3),i(4),i(5),i(0),i(6);const t=i(7),e=i(8),n=document.getElementById("DeformsProblemPROp");var s=document.createElement("div");s.setAttribute("id","MasterWorkspace"),s.classList+="main",n.appendChild(s);new t(s),new e(s)}()},function(t,e){},function(t,e){},function(t,e){},function(t,e){},function(t,e){},function(t,e){t.exports=class{constructor(t){this.equationBankDiv=document.createElement("div"),this.equationBankDiv.setAttribute("id","EquationBank"),this.equationBankDiv.classList+="EquationBank",t.appendChild(this.equationBankDiv)}}},function(t,e,i){const n=i(0);t.exports=class{constructor(t){this.workspace_list={},this.workspaceGlobalSection=t,this.workspaceCounter=1,this.workspaceListDiv=document.createElement("div"),this.workspaceListDiv.setAttribute("id","WorkspaceList"),this.workspaceListDiv.classList+="WorkspaceList",t.appendChild(this.workspaceListDiv),this.addNewWorkspace()}addNewWorkspace(){var t=new n(this.workspaceListDiv,this.workspaceCounter);this.workspace_list[this.workspaceCounter]=t,this.workspaceCounter++;var e=document.getElementById(t.name+"_close");console.log(e),e.addEventListener("click",(function(t){t.stopPropagation(),console.log("Clicked!")}))}}}]);
+    var deformsProblemPRO = {
+
+        //initializer, creates all the necessary object instances
+        initJSAV: function(){
+            // Creating one rectangle in the middle that allows scrolling through
+            // the list of equations.
+            reset();
+        }
+        
+    };
+
+    function reset(){
+        // Clear the old JSAV canvas
+        if ($("#DeformsProblemPRO")) { $("#DeformsProblemPRO").empty(); }
+    
+        //Setup the new display
+        av = new JSAV("DeformsProblemPRO");
+        
+        /* var wkl = document.createElement("div");
+        wkl.setAttribute("id","WorkspaceList");
+        var eqb = document.createElement("div")
+        eqb.setAttribute("id","equationbox");
+        document.getElementById("DeformsProblemPRO").appendChild(wkl);
+        document.getElementById("DeformsProblemPRO").appendChild(eqb); */
+        // document.getElementById("DeformsProblemPRO").childNodes[0].appendChild(wkl);
+        // document.getElementById("DeformsProblemPRO").childNodes[0].appendChild(eqb);
+
+        var eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
+        var wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS)
+            
+        // Initialize other variables
+        av.displayInit();
+        av.recorded();
+        deformsProblemPRO.userInput = false;
+
+        $("body").on("jsav-log-event", function(event, eventData) {
+            //console.log(eventData);
+          });
+    }
+
+    window.deformsProblemPRO = window.deformsProblemPRO || deformsProblemPRO;
+}());

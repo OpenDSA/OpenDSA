@@ -1,7 +1,6 @@
 {
   "translations": {
     "en": {
-      "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
       "q1": {
         "type": "select",
         "src": "../../../AV/Development/formal_language/FAEditor.html",

@@ -119,7 +119,7 @@ Weihao: min
 	python $(CONFIG_SCRIPT) config/Weihao.json --no-lms
 
 SimpleDemo: min
-	python2 $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
+	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
 
 CT: min
 	python $(CONFIG_SCRIPT) config/CT.json --no-lms
@@ -246,6 +246,9 @@ CSCI2101: min
 
 Yuhui: min
 	python $(CONFIG_SCRIPT) config/Yuhui.json --no-lms
+	
+Yinwen: min
+	python $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
 
 CS3SS18slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3SS18slides.json --no-lms

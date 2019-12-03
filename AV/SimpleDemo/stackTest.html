@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+    <style>
+      #container {
+      height: 350px;
+      width: 800px;
+      }
+      .jsavlist {
+      padding: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Test</h1>
+    <div id="container">
+      <div id="jsavcontainer">
+        <p class="instructLabel">Instructions:</p>
+        <p class="instructions">
+          Test the stack.
+        </p>
+        <p align="center" class="jsavexercisecontrols"></p>
+        <div class="jsavcanvas">
+          <div style="margin: auto; text-align: center; padding: 15px">
+            <button id="buttonPop">Pop</button>
+            <button id="buttonPush">Push</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+      <script src="../../lib/jquery.transit.js"></script>
+      <script src="../../lib/raphael.js"></script>
+      <script src="../../lib/JSAV-min.js"></script>
+      <script src="../../lib/odsaUtils-min.js"></script>
+      <script src="../../lib/odsaAV-min.js"></script>
+      <script src="../../DataStructures/stack.js"></script>
+      <script>
+
+        var stack,
+        av = new JSAV($("#jsavcontainer"));
+
+        av.recorded(); // we are not recording an AV with an algorithm
+
+        function initialize() {
+        
+
+        if (stack) {
+        stack.clear();
+        }
+        stack = av.ds.stack({center: true});
+        stack.addFirst("34");
+        stack.addFirst("49");
+        stack.addFirst("64");
+        stack.addFirst("86");
+        stack.layout();
+
+        return stack;
+        }
+        
+        function modelSolution(jsav) {
+        var modelArray = jsav.ds.array(initialArray);
+
+        return modelArray;
+        }
+        
+        var exercise = av.exercise(modelSolution, initialize, { feedback: "atend"});
+        exercise.reset();
+        
+        $("#buttonPop").click(function () {
+        stack.removeFirst();
+        stack.layout();
+        });
+        $("#buttonPush").click(function () {
+        stack.addFirst(JSAV.utils.rand.numKey(10,100));
+        stack.layout();
+        });
+
+      </script>
+  </body>
+</html>
