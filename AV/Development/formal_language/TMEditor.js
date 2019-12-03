@@ -203,16 +203,12 @@ var lambda = String.fromCharCode(955),
 	var nodeClickHandler = function(e) {	
 		// editing nodes should be changed to match the interface in multitapeTest.js
 		if ($(".jsavgraph").hasClass("edit")) {
-			this.highlight();
-			var input = prompt("State Label: ", this.stateLabel());
-			if (!input || input == "null"){
-				this.unhighlight();
-				return;
-			}
 			g.saveFAState();
-			this.stateLabel(input);
-			this.stateLabelPositionUpdate();
-			this.unhighlight();
+			g.selected = this;
+			g.selected.highlight();
+			var Prompt = new FANodePrompt(updateNode, g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
+			Prompt.render(g.selected.value());
+			g.selected.unhighlight();
 		}
 		else if ($('.jsavgraph').hasClass('moveNodes')) {
 		}
@@ -221,6 +217,11 @@ var lambda = String.fromCharCode(955),
 			g.removeNode(this);
 		}
 	};
+
+	function updateNode(wasInitialState, initial_state, wasFinalState, final_state, node_label) {
+		g.saveFAState();
+    	executeEditNode(g, g.selected, wasInitialState, initial_state, wasFinalState, final_state, node_label);
+  	};
 
 	// handler for the edges of the graph
 	var edgeClickHandler = function(e) {
