@@ -202,11 +202,3 @@ $(document).ready(function () {
     //     $(".jsavforward").css("pointer-events", "none");  
     //     });
 });
-
-
-const ANIMATION_EVENTS = ["jsav-backward", "jsav-forward", "jsav-begin", "jsav-end"]
-$('body').on('jsav-log-event', function (_event, eventData) {
-    if (ANIMATION_EVENTS.includes(eventData.type.toString())) {
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub])
-    }
-})
