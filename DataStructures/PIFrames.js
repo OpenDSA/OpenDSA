@@ -265,9 +265,8 @@
 
         injectQuestion: function(id, description) {
           this.queue.elements.push(id);
-          if(description != undefined)
-          {
-            var message = `<p class="REVEAL">${description}</p>`; 
+          if (description != undefined) {
+            var message = `<p class="REVEAL">${description}</p>`;
             return message;
           }
           return this.alertMessage();
@@ -403,29 +402,26 @@
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
 
-          if(this.questionType == "textBox" && question.studentAnswer !== undefined)
-          {
-            if (question.answer.includes("{") && question.answer.includes("}"))
-            {
+          if (
+            this.questionType == "textBox" &&
+            question.studentAnswer !== undefined
+          ) {
+            if (
+              question.answer.includes("{") &&
+              question.answer.includes("}")
+            ) {
               return this.permutation(question.studentAnswer, question.answer);
-            }
-            else if(Array.isArray(question.answer))
-            {
-              for(var index = 0; index < question.answer.length; index++)
-              {
-                if(question.studentAnswer == question.answer[index])
-                {
+            } else if (Array.isArray(question.answer)) {
+              for (var index = 0; index < question.answer.length; index++) {
+                if (question.studentAnswer == question.answer[index]) {
                   return true;
                 }
               }
               return false;
-            }
-            else
-            {
+            } else {
               return question.studentAnswer == question.answer;
             }
           } else if (Array.isArray(question.studentAnswer)) {
-
             console.log("selectquestion");
             if (question.studentAnswer.length !== question.answer.length)
               return false;
@@ -436,9 +432,8 @@
                 return false;
             }
             return true;
-          } else 
-          {
-            console.log("direct comparison")
+          } else {
+            console.log("direct comparison");
             return question.studentAnswer == question.answer;
           }
         },
@@ -593,7 +588,9 @@
       // });
       $(question).css({
         position: "absolute",
-        width: "29%",
+        top: 69,
+        left: 590,
+        width: "34%",
         overflow: "hidden"
       });
 
