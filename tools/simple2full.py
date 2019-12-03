@@ -46,6 +46,11 @@ _default_ex_options = {
       'points': 1,
       'threshold': 0.9
     },
+    'ae': {
+      'required': True,
+      'points': 1,
+      'threshold': 0
+    },
     'dgm': {
       'required': False,
       'points': 0,
@@ -432,7 +437,7 @@ def print_err(err_msg):
   sys.stderr.write('%s\n' % err_msg)
 
 def get_default_ex_option(ex_type, option, learning_tool=None):
-  if ex_type in ['ka', 'ff', 'ss', 'pe']:
+  if ex_type in ['ka', 'ff', 'ss', 'pe', 'ae']:
     glob = 'glob_{0}_options'.format(ex_type)
     if ex_type not in default_ex_options:
       print_err('WARNING: Missing "{0}", using default values instead.'.format(glob))
@@ -833,7 +838,7 @@ def get_options(conf_data):
 def validate_glob_config(conf_data):
   global ex_options, default_ex_options, sect_options, mod_options
 
-  for ex_type in ['ka', 'ff', 'ss', 'pe']:
+  for ex_type in ['ka', 'ff', 'ss', 'pe', 'ae']:
     glob = 'glob_{0}_options'.format(ex_type)
     if glob in conf_data:
       default_ex_options[ex_type] = conf_data[glob]
@@ -873,6 +878,8 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
     del full_config['glob_ff_options']
   if 'glob_pe_options' in full_config:
     del full_config['glob_pe_options']
+  if 'glob_ae_options' in full_config:
+    del full_config['glob_ae_options']
   if 'glob_extr_options' in full_config:
     del full_config['glob_extr_options']
 
