@@ -11,10 +11,11 @@
 
 class WorkspaceList
 {
-    constructor(jsavCanvasObj, dim_obj)
+    constructor(jsavCanvasObj, dim_obj, equationBank)
     {
         this.workspace_list = {};
         this.globalSectionObj = jsavCanvasObj;
+        this.globalEquationBank = equationBank;
         this.workspaceCounter=1;
 
         this.DIMENSIONS = {
@@ -73,7 +74,8 @@ class WorkspaceList
         var newWkspace = new Workspace(
             this.globalSectionObj,
             this.DIMENSIONS["NEW_WKSPACE"],
-            this.workspaceCounter
+            this.workspaceCounter,
+            this.globalEquationBank
             );
         this.workspace_list[this.workspaceCounter] = newWkspace;
         this.workspaceCounter++;

@@ -9,23 +9,33 @@
 
 class Workspace
 {
-    constructor(jsavCanvasObj, dim_obj, workspaceid)
+    constructor(jsavCanvasObj, dim_obj, workspaceid, geb)
     {
         this.id=workspaceid;
         this.name="wk"+workspaceid;
         this.globalSectionObj = jsavCanvasObj;
+        this.globalEquationBank = geb;
+
+        // INITIALIZATIONS
         this.LIST_OF_EQUATIONS_IN_WORKSPACE = {};
         this.LIST_OF_ASSOCIATIONS = {};
         this.equationCounter = 0;
         this.equationHashMap = {};  // This is used to keep track of an enumerate
                                     // multiple instances of the same equation.
 
-        // Actually create the div for the new workspace
+        // Actually create the region for the new workspace
         this.DIMENSIONS = {
             "POSITION_X": dim_obj["CORNER_X"],
             "POSITION_Y": dim_obj["CORNER_Y"],
             "WIDTH": dim_obj["WIDTH"],
-            "HEIGHT": dim_obj["HEIGHT"]
+            "HEIGHT": dim_obj["HEIGHT"],
+            "ELEMENTS": {
+                "POSITION_X": dim_obj["CORNER_X"]+5,
+                "POSITION_Y": dim_obj["CORNER_Y"]+40,
+                "WIDTH": 30,
+                "HEIGHT_PAD": 5,
+                "HEIGHT": 50
+            }
         }
         
         // Hold references to the individual elements in the box,
@@ -104,7 +114,7 @@ class Workspace
         document.getElementById(this.name+"addeq").addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation addition here.
-            this.addNewEquation("Equation name");
+            this.addNewEquation();
         });
 
         this.elements[4] = {
@@ -208,15 +218,15 @@ class Workspace
         return result; TODO*/
         return "#FBEEE4";
     }
-    addNewEquation(equationListEntity)
+    addNewEquation()
     {
-        console.log(this.name,"adding equation", equationListEntity)
-        return;
+        // Handling the internal initial bookkeeping
+        var equationListEntity = this.globalEquationBank.currentSelectedEquationObject.eqobject;
         // equationListEntity is of type equation (which we will define later) and not 
         // necessarily everything in equation.js
         this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = equationListEntity 
         //        |_>  To be elaborated for additional operations.
-
+        
         if(equationListEntity.name in this.equationHashMap)
         {
             function getLastElement(arraylist)
@@ -228,9 +238,33 @@ class Workspace
         }
         else
         {
-            this.equationHashMap[equationListEntity.name]
+            this.equationHashMap[equationListEntity["name"]] = [equationListEntity];
             this.equationCounter++;
         }
+        console.log(this.equationHashMap);
+
+        // Creating the visual elements.
+        var text = this.globalSectionObj.label(
+            katex.renderToString(equationListEntity["latex"]),
+            {
+                left: this.DIMENSIONS.ELEMENTS["POSITION_X"],
+                top: this.DIMENSIONS.ELEMENTS["POSITION_Y"]
+            }
+        ).addClass("selectableEquation");
+
+        var box = this.globalSectionObj.label(
+            katex.renderToString(equationListEntity["latex_boxes"]),
+            {
+                left: this.DIMENSIONS.ELEMENTS["POSITION_X"]+20+
+                text.element[0].offsetWidth,
+                top: this.DIMENSIONS.ELEMENTS["POSITION_Y"]
+            }
+        ).addClass("boxedEquation");
+        this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=this.DIMENSIONS.ELEMENTS["HEIGHT"]
+    }
+    addAssociations()
+    {
+
     }
 }
 
