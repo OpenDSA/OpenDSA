@@ -1,5 +1,4 @@
 /* ADT list - array-based implementation */
-
 #ifndef ALIST_H
 #define ALIST_H
 
@@ -57,7 +56,10 @@ public:
   // Remove and return the current element
   T remove() {
     if ((curr < 0) || (curr >= listSize)) // No current element
+// TODO this fails on string??
       return (T)NULL;  // TODO is this correct?
+      // return NULL; // TODO this does not work with string
+      // return ""; // TODO
     T it = listArray[curr];     // Copy the element
     for(int i = curr; i < listSize-1; i++) // Shift them down
       listArray[i] = listArray[i+1];
@@ -87,6 +89,7 @@ public:
   T getValue() {
     if ((curr < 0) || (curr >= listSize)) // No current element
       return (T)NULL; // TODO see above
+      // return ""; // TODO
     return listArray[curr];
   }
   
@@ -99,16 +102,26 @@ public:
 
     out.append("< ");                         // Surrounded by < >
     for (int i = 0; i < curr; i++) {          // items before current
-      out.append( to_string(listArray[i]) );
+      out.append( my_to_string(listArray[i]) );
       out.append(" ");
     }
     out.append("| ");                         // current location as |
     for (int i = curr; i < listSize; i++) {   // items after current
-      out.append( to_string(listArray[i]) );  // TODO note in text only works for numeric types in C11 onward
+      // out.append( to_string(listArray[i]) );  // TODO note in text only works for numeric types in C11 onward
+      out.append( my_to_string(listArray[i]) );  // TODO is this the final way??
       out.append(" ");
     }
     out.append(">");
     return out;
+  }
+
+// TODO how deal with these methods - duplicated in test right now
+  static string my_to_string(int value){
+    return to_string(value);
+  }
+
+  static string my_to_string(string value){
+    return value;
   }
 };
 /* *** ODSAendTag: AList *** */

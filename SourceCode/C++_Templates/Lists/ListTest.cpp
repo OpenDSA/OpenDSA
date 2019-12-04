@@ -1,3 +1,6 @@
+// TODO get working with VSC again for debug
+// TODO run through memory checker
+
 // #include "LList.h"
 #include "AList.h"
 #include "ErrorRec.h"
@@ -49,7 +52,7 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
   }
 
   static void doSomething(T it) {
-    doSomethingResult.append(to_string(it));
+    doSomethingResult.append(my_to_string(it));
   }
 
 /* *** ODSATag: listfind *** */
@@ -83,7 +86,7 @@ static bool find(List<T> &L, T k) {
     for (int i = 0; i < NUM_ITEMS; i++) {
       item = VALUES[i];
       if (!find(l, item)) {
-        record->printError("item " + to_string(item) + " not found on list");
+        record->printError("item " + my_to_string(item) + " not found on list");
       }
       loc = l.currPos();
       locExpect = item / 10 - 1;
@@ -98,7 +101,7 @@ static bool find(List<T> &L, T k) {
     string expect;
     item = 10;
     for (int i = 0; i <= NUMBER; i++) {
-      expect.append(to_string(item));
+      expect.append(my_to_string(item));
       item += 10;
     }
     // Call iterator
@@ -119,14 +122,19 @@ static bool find(List<T> &L, T k) {
     checkEmp(l);
 
     // Test moveToStart, moveToEnd, prev, and next
-    doSomethingOnEmpList(l);
+   doSomethingOnEmpList(l);
 
     // Compare list with vector to test length, getValue,
     // toString, currPos, and remove. Add items by inserting
     vector<T> tester;
+    // This is an unused value to pass to methods so method overloading picks the correct one.
+    // It is not initialized but never used.
+    // TODO must initialized when int or get warning but not for string
+    T dummy;
     for (int i = 0; i < TEST_SIZE; i++) {
       // This assumes int and T are compatible.
-        checkIns(l, tester, (T)(100 + i)); // TODO need?
+      // checkIns(l, tester, (T)(100 + i)); // TODO get rid of if next line ok/left
+      checkIns(l, tester, typeFix(i, dummy)); // TODO is this the final solution?
     }
 
     // Clear both lists
@@ -135,11 +143,12 @@ static bool find(List<T> &L, T k) {
     // Compare list with C++ vector to test length, getValue,
     // toString, currPos, and remove. Add items by appending
     for (int i = 0; i < TEST_SIZE; i++) {
-      checkApp(l, tester, 100 + i);
-    }
+      // TODO checkApp(l, tester, (T)(100 + i)); // get rid of if next line kept
+      checkApp(l, tester, typeFix(i, dummy)); // TODO final solution??
+   }
 
     doSomethingOnNonEmpList(l, tester);
-  }
+}
 
   /* Set both lists provided to empty/new state.
   * The first list is OpenDSA.
@@ -182,8 +191,10 @@ static bool find(List<T> &L, T k) {
 
     // Test remove with empty list
     T removed = l.remove();
-    if (removed != (T)NULL) { // TODO need?
-      record->printError("An unexpected value in empty " + string(typeid(l).name()) + ". \nremove from list: " + to_string(removed) + "\nValue expected: NULL");
+    // TODO this does not work with string
+    if (removed != (T)NULL) { // TODO
+    // if (removed != "") { // TODO need - be careful with string?
+      record->printError("An unexpected value in empty " + string(typeid(l).name()) + ". \nremove from list: " + my_to_string(removed) + "\nValue expected: NULL");
     }
 
     // Test move to bad positions
@@ -220,7 +231,7 @@ static bool find(List<T> &L, T k) {
     tester.erase(it);
     if (removed != expected) {
       record->printError("Unexpected removed value at the beginning of " + string(typeid(l).name()) + ".\nRemoved value: "
-          + to_string(removed) + "\nExpected value: " + to_string(expected));
+          + my_to_string(removed) + "\nExpected value: " + my_to_string(expected));
     }
     check(l, tester, 0);
     // Restore values
@@ -247,8 +258,8 @@ static bool find(List<T> &L, T k) {
     expected = *it;
     tester.erase(it);
     if (removed != expected) {
-      record->printError("Unexpected removed value at the end of " + string(typeid(l).name()) + ".\nRemoved value: " + to_string(removed)
-          + "\nExpected value: " + to_string(expected));
+      record->printError("Unexpected removed value at the end of " + string(typeid(l).name()) + ".\nRemoved value: " + my_to_string(removed)
+          + "\nExpected value: " + my_to_string(expected));
     }
     // Curr is out of bound
     l.prev();
@@ -269,7 +280,7 @@ static bool find(List<T> &L, T k) {
       it = tester.erase(it);
       if (removed != expected) {
         record->printError("Unexpected removed value at the index of " + to_string(curr) + " in " + string(typeid(l).name())
-           + ".\nRemoved value: " + to_string(removed) + "\nExpected value: " + to_string(expected));
+           + ".\nRemoved value: " + my_to_string(removed) + "\nExpected value: " + my_to_string(expected));
       }
       // If the lists are empty, call checkEmp. If curr is at tail, it is out of bound
       if (tester.empty()) {
@@ -339,7 +350,7 @@ static bool find(List<T> &L, T k) {
    */
   static void check(List<T> &l, vector<T> &tester, int curr)
   {
-    // Check the length of list
+  // Check the length of list
     if (l.length() != tester.size()) {
       record->printError("An unexpected length of " + string(typeid(l).name()) + ". \nLength of list: " + to_string(l.length()) + "\nLength expected: " + to_string(tester.size()));
     }
@@ -356,8 +367,9 @@ static bool find(List<T> &L, T k) {
     }
 
     // Check the value stored in the current position
+    // Note vector does not work if empty list.
     if (l.getValue() != tester.at(curr)) {
-      record->printError("An unexpected list item in " + string(typeid(l).name()) + ". \nItem in list: " + to_string(l.getValue()) + "\nValue expected: " + to_string(tester.at(curr)));
+      record->printError("An unexpected list item in " + string(typeid(l).name()) + ". \nItem in list: " + my_to_string(l.getValue()) + "\nValue expected: " + my_to_string(tester.at(curr)));
     }
 
     // Check toString
@@ -365,12 +377,12 @@ static bool find(List<T> &L, T k) {
     out.reserve(tester.size() * 4);
     out.append("< ");
     for (int i = 0; i < curr; i++) {
-      out.append(to_string(tester.at(i)));
+      out.append(my_to_string(tester.at(i)));
       out.append(" ");
     }
     out.append("| ");
     for (int i = curr; i < tester.size(); i++) {
-      out.append(to_string(tester.at(i)));
+      out.append(my_to_string(tester.at(i)));
       out.append(" ");
     }
     out.append(">");
@@ -382,11 +394,27 @@ static bool find(List<T> &L, T k) {
     l.moveToStart();
     for (int i = 0; i < tester.size(); i++) {
       if (l.getValue() != tester.at(i)) {
-        record->printError("An unexpected value at the index of " + to_string(i) + " in " + string(typeid(l).name()) + ". \nValue in list: " + to_string(l.getValue()) + "\nValue expected: " + to_string(tester.at(i)));
+        record->printError("An unexpected value at the index of " + to_string(i) + " in " + string(typeid(l).name()) + ". \nValue in list: " + my_to_string(l.getValue()) + "\nValue expected: " + my_to_string(tester.at(i)));
       }
       l.next();
-    }
+   }
     l.moveToPos(curr);
+  }
+
+  static string my_to_string(int value){
+    return to_string(value);
+  }
+
+  static string my_to_string(string value){
+    return value;
+  }
+
+  static int typeFix(int i, int dummy) {
+    return 100 + i;
+  }
+ 
+  static string typeFix(int i, string dummy) {
+    return "str" + to_string(i);
   }
 };
 
@@ -395,6 +423,7 @@ int main(void) {
   // Create a file to record errors if necessary
   record = new ErrorRec("ListTest", useFile);
 
+// TODO make sure tests & delete uncommented
   // Run integer tests of AList on a new list.
   AList<int> *al = new AList<int>();
   ListTest<int>::testList(*al);
@@ -404,13 +433,14 @@ int main(void) {
   // ListTest<string>::testList(*alString);
 
   // Test other functions that not in interface
-  al->clear();
-  doSomethingResult = "";
-  ListTest<int>::testOther(*al);
+  // TODO
+  // al->clear();
+  // doSomethingResult = "";
+  // ListTest<int>::testOther(*al);
 
   // Remove lists.
-  delete al;
-  // delete alString; TODO
+  // delete al;
+  // delete alString;
 
 /* TODO - note interleaved with AList in Java version
   // Run tests of LList on a new list.
