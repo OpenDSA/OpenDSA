@@ -102,7 +102,7 @@ static boolean find(List L, Object k) {
     doSomethingOnEmpList(l);
 
     // Compare list with java.util.list to test length, getValue,
-    // toString, currPos, and remove. Add items by inserting
+    // currPos, and remove. Add items by inserting
     LinkedList<Object> tester = new LinkedList<Object>();
     for (int i = 0; i < TEST_SIZE; i++) {
      checkIns(l, tester, 100 + i);
@@ -112,7 +112,7 @@ static boolean find(List L, Object k) {
     reset(l, tester);
 
     // Compare list with java.util.list to test length, getValue,
-    // toString, currPos, and remove. Add items by appending
+    // currPos, and remove. Add items by appending
     for (int i = 0; i < TEST_SIZE; i++) {
       checkApp(l, tester, 100 + i);
     }
@@ -133,7 +133,7 @@ static boolean find(List L, Object k) {
     doSomethingOnEmpList(l);
 
     // Compare list with java.util.list to test length, getValue,
-    // toString, currPos, and remove. Add items by inserting
+    // currPos, and remove. Add items by inserting
     LinkedList<Object> tester = new LinkedList<Object>();
     for (int i = 0; i < TEST_SIZE; i++) {
       checkIns(l, tester, "Str" + i);
@@ -143,7 +143,7 @@ static boolean find(List L, Object k) {
     reset(l, tester);
 
     // Compare list with java.util.list to test length, getValue,
-    // toString, currPos, and remove. Add items by appending
+    // currPos, and remove. Add items by appending
     for (int i = 0; i < TEST_SIZE; i++) {
       checkApp(l, tester, "Str" + i);
     }
@@ -215,9 +215,22 @@ static boolean find(List L, Object k) {
 
     // Test clear
     l.clear();
-    if (!l.toString().equals("< | >")) {
+     // Test length with empty list
+     if (l.length() != 0) {
+      record.printError("On empty list an unexpected length from " + l.getClass() + ". \nLength of list: " + l.length()
+          + "\nLength expected: 0");
+    }
+
+    // isEmpty should return true
+    if (!l.isEmpty()) {
       record.printError(
-          "The clear method in " + l.getClass() + " does not work. \nPrinted list: " + l.toString());
+          "The isEmpty method in " + l.getClass() + " does not return true when the list is empty.");
+    }
+
+    // Test currPos with empty list
+    if (l.currPos() != 0) {
+      record.printError("An unexpected current position in empty " + l.getClass() + ". \nCurrent in list: " + l.currPos()
+         + "\nValue expected: 0");
     }
   }
 
@@ -373,24 +386,6 @@ static boolean find(List L, Object k) {
     if (l.getValue() != tester.get(curr)) {
       record.printError("An unexpected list item in " + l.getClass() + ". \nItem in list: "
           + l.getValue().toString() + "\nValue expected: " + tester.get(curr).toString());
-    }
-
-    // Check toString
-    StringBuffer out = new StringBuffer(tester.size() * 4);
-    out.append("< ");
-    for (int i = 0; i < curr; i++) {
-      out.append(tester.get(i));
-      out.append(" ");
-    }
-    out.append("| ");
-    for (int i = curr; i < tester.size(); i++) {
-      out.append(tester.get(i));
-      out.append(" ");
-    }
-    out.append(">");
-    if (!l.toString().equals(out.toString())) {
-      record.printError("The toString method in " + l.getClass() + " has some errors.\nValues in list: "
-         + l.toString() + "\nValues expected: " + out.toString());
     }
 
     // Check values in list

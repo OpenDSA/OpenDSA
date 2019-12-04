@@ -84,22 +84,5 @@ class AList implements List {
   
   // Check if the list is empty
   public boolean isEmpty() { return listSize == 0; }
-  
-  public String toString() {
-    StringBuffer out = new StringBuffer((listSize + 1) * 4);
-
-    out.append("< ");
-    for (int i = 0; i < curr; i++) {
-      out.append(listArray[i]);
-      out.append(" ");
-    }
-    out.append("| ");
-    for (int i = curr; i < listSize; i++) {
-      out.append(listArray[i]);
-      out.append(" ");
-    }
-    out.append(">");
-    return out.toString();
-  }
 }
 /* *** ODSAendTag: AList *** */
