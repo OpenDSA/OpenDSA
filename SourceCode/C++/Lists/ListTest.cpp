@@ -135,7 +135,7 @@ static bool find(List &L, ListItemType k) {
     // Compare list with C++ vector to test length, getValue,
     // toString, currPos, and remove. Add items by appending
     for (int i = 0; i < TEST_SIZE; i++) {
-      checkApp(l, tester, 100 + i);
+      checkApp(l, tester, 100 + i); // TODO why no cast here
     }
 
     doSomethingOnNonEmpList(l, tester);
