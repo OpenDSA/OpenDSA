@@ -57,7 +57,6 @@ public:
   
   virtual bool isEmpty() =0;
 
-  virtual string toString() =0;
 };
 /* *** ODSAendTag: ListADT *** */
 

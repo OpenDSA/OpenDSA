@@ -95,25 +95,6 @@ public:
   
   // Check if the list is empty
   bool isEmpty() { return listSize == 0; }
-  
-  // Give a string representation of the list
-  string toString() {
-    string out;
-
-    out.append("< ");                         // Surrounded by < >
-    for (int i = 0; i < curr; i++) {          // items before current
-      out.append( my_to_string(listArray[i]) );
-      out.append(" ");
-    }
-    out.append("| ");                         // current location as |
-    for (int i = curr; i < listSize; i++) {   // items after current
-      // out.append( to_string(listArray[i]) );  // TODO note in text only works for numeric types in C11 onward
-      out.append( my_to_string(listArray[i]) );  // TODO is this the final way??
-      out.append(" ");
-    }
-    out.append(">");
-    return out;
-  }
 
 // TODO how deal with these methods - duplicated in test right now
   static string my_to_string(int value){
