@@ -6,6 +6,15 @@
     grid-template-areas: "workspace equations";
 }
 
+.jsavverticalarray .jsavnode {
+    line-height: 45px !important;
+    /* min-width: 45px !important; */
+    max-width: 400px !important;
+    min-height: 25px !important;
+    max-height: 60px !important;
+    padding: 2% 7% 2% 7% !important;
+}
+
 /* #equationbox {
     grid-area: equations;
     height: 0px;
@@ -88,6 +97,14 @@
     padding: 2px;
     color: black;
     font-size: 100%;
+    z-index: 500;
+}
+
+.boxedEquation {
+    border: thin dashed black;
+    padding: 2px;
+    color: black;
+    font-size: 150%;
     z-index: 500;
 }
 

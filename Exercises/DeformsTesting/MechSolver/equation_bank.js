@@ -24,70 +24,70 @@ const equations = [
         group: 'Basic definitions',
         name: 'Average normal stress in an axial member',
         latex: '\\delta_{avg}=\\frac F A',
-        latex_boxes: '\\square=\\frac \\square \\square',
+        latex_boxes: '\\Box=\\frac \\Box \\Box',
         params: ['\\delta_{avg}', 'F', 'A']
     },
     {
         group: 'Basic definitions',
         name: 'Average direct shear stress',
         latex: '\\tau_{avg}=\\frac V {A_v}',
-        latex_boxes: '\\square=\\frac \\square \\square',
+        latex_boxes: '\\Box=\\frac \\Box \\Box',
         params: ['\\tau_{avg}', 'V', 'A_v']
     },
     {
         group: 'Basic definitions',
         name: 'Average bearing stress',
         latex: '\\delta_b=\\frac V {A_b}',
-        latex_boxes: '',
+        latex_boxes: '\\Box=\\frac \\Box {\\Box}',
         params: ['\\delta_b', 'V', 'A_b']
     },
     {
         group: 'Basic definitions',
         name: 'Average normal strain in an axial member',
         latex: '\\varepsilon_{long}=\\frac{\\Delta L} L',
-        latex_boxes: '',
+        latex_boxes: '\\Box=\\frac{\\Box} \\Box',
         params: []
     },
     {
         group: 'Basic definitions',
         name: 'Average normal strain in an axial member',
         latex: '\\varepsilon_{lat}=\\frac{\\Delta d} d',
-        latex_boxes: '',
+        latex_boxes: '\\\\Box=\\frac{\\Box \\Box} \\Box',
         params: []
     },
     {
         group: 'Basic definitions',
         name: 'Average normal strain caused by temperature change',
         latex: '\\varepsilon_T=\\alpha \\cdot \\Delta L',
-        latex_boxes: '\\square=\\square \\times \\square',
+        latex_boxes: '\\Box=\\Box \\times \\Box',
         params: []
     },
     {
         group: 'Basic definitions',
         name: 'Relationship between E, G, and ν',
         latex: 'G=\\frac E{2(1+\\nu)}',
-        latex_boxes: '',
+        latex_boxes: '\\Box=\\frac \\Box{2(1+\\Box)}',
         params: []
     },
     {
         group: 'Basic definitions',
         name: 'Factor of safety',
         latex: '{FS}=\\frac{\\delta_{failure}}{\\delta_{actual}}',
-        latex_boxes: '',
+        latex_boxes: '{\\Box}=\\frac{\\Box}{\\Box}',
         params: []
     },
     {
         group: 'Axial deformation',
         name: 'Force-temperature-deformation relationship',
         latex: '\\delta=\\frac{F\\cdot L}{A\\cdot E} + \\alpha \\cdot \\Delta T\\cdot L',
-        latex_boxes: '\\square=\\frac{\\square\\times\\square}{\\square\\times\\square} + \\square \\times \\square\\times \\square',
+        latex_boxes: '\\Box=\\frac{\\Box\\times\\Box}{\\Box\\times\\Box} + \\Box \\times \\Box\\times \\Box',
         params: ['\\delta', 'F', 'L', 'A', 'E', 'alpha', '\\Delta T', 'L']
     },
     {
         group: 'Torsion',
         name: 'Maximum torsion shear stress in a circular shaft',
         latex: '\\tau_{max}=\\frac{T_c}J',
-        latex_boxes: '\\square=\\frac \\square \\square',
+        latex_boxes: '\\Box=\\frac \\Box \\Box',
         params: []
     },
     {

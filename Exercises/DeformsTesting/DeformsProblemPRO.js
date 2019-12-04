@@ -3,6 +3,8 @@
     "use strict";
     //var definitions
     var av; //The JSAV Object
+    var eqbank;
+    var wkspacelist;
     const CANVAS_DIMENSIONS = {
         "TOTAL_WIDTH": 767,
         "TOTAL_HEIGHT": 1500,
@@ -47,8 +49,20 @@
         // document.getElementById("DeformsProblemPRO").childNodes[0].appendChild(wkl);
         // document.getElementById("DeformsProblemPRO").childNodes[0].appendChild(eqb);
 
-        var eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
-        var wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS)
+        eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
+        wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, eqbank)
+
+        // Setting up clickhandlers for the equations in the EquationBank
+        // OBSOLETE: MAY TRY TO FIX LATER, MOVING TO DISTRIBUTED APPROACH INSTEAD
+        // for(var page in eqbank.equation_pages){
+        //     for(var eqnNumber in eqbank.equation_pages[page]["equations"]){
+        //         var eqn = eqbank.equation_pages[page]["equations"][eqnNumber];
+        //         eqn["SelectableEquationObject"].element[0].click(e => {
+        //             e.stopPropagation();
+        //             console.log(page,eqnNumber);
+        //         });
+        //     }
+        // }
             
         // Initialize other variables
         av.displayInit();

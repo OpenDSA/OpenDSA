@@ -5,34 +5,34 @@
         "q1": {
           "type": "multiple",
           "src": "../../../AV/Development/formal_language/FAEditor.html",
-          "question": "sets may contain duplicated elements.",
+          "question": "[T/F]Sets may contain duplicated elements.",
           "answer": ["False"],
           "choices": ["True", "False"]
         },
         "q2": {
           "type": "multiple",
           "src": "../../../AV/Development/formal_language/FAEditor.html",
-          "question": "Let P = {7, 11, 42}, Which of the following is correct?",
-          "answer": ["P = {11, 42, 7}"],
-          "choices": ["P = {11, 42, 7}", "P  ≠ {11, 42, 7}"]
+          "question": "Let $P = {7, 11, 42}$, Which of the following is correct?",
+          "answer": ["$P = {11, 42, 7}$"],
+          "choices": ["$P = {11, 42, 7}$", "$P  ≠ {11, 42, 7}$"]
         },
         "q3": {
           "type": "multiple",
-          "question": "Let P = {7, 11, 42}, what is the base type of P elements?",
-          "answer": ["Integers"],
-          "choices": ["Integers", "Real numbers"]
+          "question": "Let $P = {7, 11, 42}$, what is the base type of $P$ elements?",
+          "answer": ["$Integers$"],
+          "choices": ["$Integers$", "$Real$ $numbers$"]
         },
         "q4": {
           "type": "select",
-          "question": "Let P = {a, b, c, {d, e}, {f}}. Which of the following is an element in the set.",
-          "answer": ["a","b","c","{d, e}","{f}"],
-          "choices": ["a","b", "c", "d", "e","{d}","{d, e}","f","{f}"]
+          "question": "Let $P = {a, b, c, {d, e}, {f}}$. Which of the following is an element in the set.",
+          "answer": ["$a$","$b$","$c$","{$d, e$}","{$f$}"],
+          "choices": ["$a$","$b$", "$c$", "$d$", "$e$","{$d$}","{$d, e$}","$f$","{$f$}"]
         },
         "q5": {
           "type": "multiple",
           "question": "Which of the following is a valid set:",
-          "answer": "{a, 2, 3}",
-          "choices": ["1, 2, 3", "{a, 2, 3}"]
+          "answer": "{$a, 2, 3$}",
+          "choices": ["$1$, $2$, $3$", "{$a, 2, 3$}"]
         },
         "q6": {
           "type": "textBox",
@@ -41,93 +41,92 @@
         },
         "q7": {
           "type": "select",
-          "question": "Let P = {a, b, c}, which of the following is ∉P",
-          "answer": ["b", "{a, b, c}"],
-          "choices": ["a", "{a}", "b", "{a, b, c}"]
+          "question": "Let $P = {a, b, c}$, which of the following is ∉P",
+          "answer": ["$b$", "{$a, b, c$}"],
+          "choices": ["$a$", "{$a$}", "$b$", "{$a, b, c$}"]
         },
         "q8": {
           "type": "multiple",
-          "question": "Which of the following ∈Q?",
-          "answer": "a",
-          "choices": ["a", "1", "{a,b}", "Q has no elements because it is the null set."]
+          "question": "Which of the following $∈Q$?",
+          "answer": "$a$",
+          "choices": ["$a$", "1", "{$a,b$}", "$Q has no elements because it is the null set.$"]
         },
         "q9": {
           "type": "textBox",
-          "question": "What does it mean to say that |P| = 3?",
+          "question": "What does it mean to say that $|P|$ = $3$?",
           "answer": "P has 3 elements"
         },
         "q10": {
           "type": "select",
-          "question": "Let P = {x|x is a positive integer}. Which of the following is a subset of P?",
-          "answer": ["{1, 2, 3}", "{x|x is an even number}", "{x|x is a prime number}"],
-          "choices": ["{1, 2, 3}", "{x|x is an even number}", "{x|x is a real number}", "{x|x is a prime number}"]
+          "question": "Let $P = {x|x is a positive integer}$. Which of the following is a subset of $P$?",
+          "answer": ["{$1, 2, 3$}", "{$x|x$ is an even number}", "{$x|x$ is a prime number}"],
+          "choices": ["{$1, 2, 3$}", "{$x|x$ is an even number}", "{$x|x$ is a real number}", "{$x|x$ is a prime number}"]
         },
         "q11": {
           "type": "textBox",
-          "question": "let $w=abbc$, and $v=ab$. What is $|vv^Rw|$",
-          "answer": "8"
+          "question": "Let $P = {1, 3, 5$}, and $Q = {2, 4, 5, 6$} What is $P∪Q$?",
+          "answer": "{1,2,3,4,5,6}"
         },
         "q12": {
-          "type": "select",
-          "question": "Which of the following are strings in $\\Sigma∗$?",
-          "answer": ["$\\lambda$", "a", "b", "aa", "abbabb"],
-          "choices": ["$\\lambda$", "a", "b", "aa", "abbabb", "aaabababcc"]
-        },
-        "q12_1": {
-          "type": "select",
-          "question": "Which are examples of $w*$ where $w = abc$?",
-          "answer": ["$Λ$", "$abc$", "$abcabc$"],
-          "choices": ["$Λ$", "$abc$", "$abcabc$", "$aabbcc$"]
+          "type": "textBox",
+          "question": "Let $P = {1, 3, 5$}, and $Q = {2, 4, 5, 6$} What is $Q∪P$?",
+          "answer": "{1,2,3,4,5,6}"
         },
         "q13": {
-          "type": "select",
-          "question": "Let  $\\lambda$ = {$a,b$}, Which of the following are strings in ?",
-          "answer": ["$a$", "$b$", "$aa$", "$abbabb$"],
+          "type": "multiple",
+          "question": "Select the correct fact about set union ",
+          "answer": "$P∪Q$ = $Q∪P$",
           "choices": [
-            "$\\lambda$",
-            "$a$",
-            "$b$",
-            "$aa$",
-            "$abbabb$",
-            "$aaabababcc$"
+            "$P∪Q$ = $Q∪P$",
+            "$P∪Q$ ≠ $Q∪P$"
           ]
         },
         "q14": {
           "type": "textBox",
-          "question": " Let $\\sigma$={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, What is $L1∪L2$ ?",
-          "answer": "ab,bc,aba,c,bcc"
+          "question": "Let $P = {1, 3, 5}$, and $Q = {2, 4, 5, 6}$ What is P∩Q?",
+          "answer": " {5}"
         },
         "q15": {
           "type": "textBox",
-          "question": "Let $\\Sigma$={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, What is $L1∩L2$ ?",
-          "answer": "{bc}"
+          "question": "Let $P = {1, 3, 5}$, and $Q = {2, 4, 5, 6}$",
+          "answer": "{5}"
         },
         "q16": {
           "type": "multiple",
-          "question": "What is ?",
-          "answer": [" "],
-          "choices": [" "]
+          "question": "Select the correct fact about set union ",
+          "answer": "$P∩Q$ = $Q∩P$",
+          "choices": ["$P∩Q$ = $Q∩P$", "$P∩Q$ ≠ $Q∩P$"]
         },
         "q17": {
           "type": "textBox",
-          "question": "What states can be combined?",
-          "answer": "{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}"
+          "question": "Let $P = {1, 3, 5}$, and $Q = {2, 4, 5, 6}$ What is $P-Q$?",
+          "answer": "{1, 3}"
         },
         "q18": {
-          "type": "multiple",
-          "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L0$?",
-          "answer": ["{$λ$}"],
-          "choices": ["{$λ$}", "{}<Empty set>", "$λ$"]
+          "type": "textBox",
+          "question": "Let $P$ = {$1, 3, 5}$, and $Q$ = {$2, 4, 5, 6}$ What is $Q-P?$",
+          "answer": " {2, 4, 6}"
         },
         "q19": {
-          "type": "textBox",
-          "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L2$? ",
-          "answer": "{abab, ababa, abaab, abaaba}"
+          "type": "multpile",
+          "question": " Select the correct fact about the set difference: ",
+          "answer": "$P-Q$ ≠ $Q - P$",
+          "choices": ["$P-Q$ = $Q - P$", "$P-Q$ ≠ $Q - P$"]
         },
-        "q19_1": {
+        "q20": {
           "type": "textBox",
-          "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L3$?",
-          "answer": "{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}"
+          "question": "Let $P = {1, 3, 5}$, and $Q = {2, 4}$ What is $PxQ$?",
+          "answer": "{(1, 2),(1,4),(3,2),(3,4),(5,2),(5,4)}"
+        },
+        "q21": {
+          "type": "textBox",
+          "question": "Let $P = {1, 3, 5}$, and $Q = {2, 4}$ What is $|PxQ|$?",
+          "answer": "6"
+        },
+        "q22": {
+          "type": "textBox",
+          "question": " Consider the set $S = {a,b,c}$. What is $2S$ ?",
+          "answer": "{∅, {a}, {b}, {c}, {a,b}, {a,c}, {b,c}, {a,b,c}}"
         }
       }
     }

@@ -311,6 +311,7 @@
         },
 
         buildTextBox: function(question) {
+          this.questionType = "textBox";
           var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
           var form = $(
             `<form class=${this.av_name} onsubmit='return ${execute}'></form>`
@@ -402,27 +403,33 @@
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
 
-          if (
-            this.questionType == "textBox" &&
-            question.studentAnswer !== undefined
-          ) {
-            if (
-              question.answer.includes("{") &&
-              question.answer.includes("}")
-            ) {
+          if (this.questionType == "textBox" && question.studentAnswer !== undefined) 
+          {
+            question.studentAnswer = question.studentAnswer.replace(/\s/g, "");
+            question.studentAnswer = question.studentAnswer.toLowerCase();
+            question.answer = question.answer.replace(/\s/g, "");
+            question.answer = question.answer.toLowerCase();
+
+            if (question.answer.includes("{") && question.answer.includes("}")) 
+            {
               return this.permutation(question.studentAnswer, question.answer);
-            } else if (Array.isArray(question.answer)) {
-              for (var index = 0; index < question.answer.length; index++) {
-                if (question.studentAnswer == question.answer[index]) {
+            } 
+            else if (Array.isArray(question.answer)) 
+            {
+              for (var index = 0; index < question.answer.length; index++) 
+              {
+                if (question.studentAnswer == question.answer[index]) 
+                {
                   return true;
                 }
               }
               return false;
-            } else {
+            } 
+            else 
+            {
               return question.studentAnswer == question.answer;
             }
           } else if (Array.isArray(question.studentAnswer)) {
-            console.log("selectquestion");
             if (question.studentAnswer.length !== question.answer.length)
               return false;
             var studentsAnswerSorted = question.studentAnswer.sort();
@@ -433,7 +440,6 @@
             }
             return true;
           } else {
-            console.log("direct comparison");
             return question.studentAnswer == question.answer;
           }
         },
@@ -581,11 +587,9 @@
 
       $(".picanvas").css({
         width: "0px",
-        overflow: "hidden"
+        overflow: "hidden",
       });
-      // $(qButton).css({
-      //     "padding-left": "5px"
-      // });
+      
       $(question).css({
         position: "absolute",
         top: 69,
