@@ -58,8 +58,6 @@ public:
   virtual ListItemType getValue() =0;
   
   virtual bool isEmpty() =0;
-
-  virtual string toString() =0;
 };
 /* *** ODSAendTag: ListADT *** */
 

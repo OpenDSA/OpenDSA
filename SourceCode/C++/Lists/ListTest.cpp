@@ -122,7 +122,7 @@ static bool find(List &L, ListItemType k) {
     doSomethingOnEmpList(l);
 
     // Compare list with vector to test length, getValue,
-    // toString, currPos, and remove. Add items by inserting
+    // currPos, and remove. Add items by inserting
     vector<ListItemType> tester;
     for (int i = 0; i < TEST_SIZE; i++) {
       // This assumes int and ListItemType are compatible.
@@ -133,7 +133,7 @@ static bool find(List &L, ListItemType k) {
     reset(l, tester);
 
     // Compare list with C++ vector to test length, getValue,
-    // toString, currPos, and remove. Add items by appending
+    // currPos, and remove. Add items by appending
     for (int i = 0; i < TEST_SIZE; i++) {
       checkApp(l, tester, 100 + i); // TODO why no cast here
     }
@@ -193,9 +193,20 @@ static bool find(List &L, ListItemType k) {
 
     // Test clear
     l.clear();
-    if (l.toString().compare("< | >") != 0) {
+     // Test length with empty list
+    if (l.length() != 0) {
+      record->printError("On empty list an unexpected length from " + string(typeid(l).name()) + ". \nLength of list: " + to_string(l.length()) + "\nLength expected: 0");
+    }
+
+    // isEmpty should return true
+    if (!l.isEmpty()) {
       record->printError(
-          "The clear method in " + string(typeid(l).name()) + " does not work. \nPrinted list: " + l.toString());
+          "The isEmpty method in " + string(typeid(l).name()) + " does not return true when the list is empty.");
+    }
+
+    // Test currPos with empty list
+    if (l.currPos() != 0) {
+      record->printError("An unexpected current in empty " + string(typeid(l).name()) + ". \nCurrent in list: " + to_string(l.currPos()) + "\nValue expected: 0");
     }
   }
 
@@ -358,24 +369,6 @@ static bool find(List &L, ListItemType k) {
     // Check the value stored in the current position
     if (l.getValue() != tester.at(curr)) {
       record->printError("An unexpected list item in " + string(typeid(l).name()) + ". \nItem in list: " + to_string(l.getValue()) + "\nValue expected: " + to_string(tester.at(curr)));
-    }
-
-    // Check toString
-    string out;
-    out.reserve(tester.size() * 4);
-    out.append("< ");
-    for (int i = 0; i < curr; i++) {
-      out.append(to_string(tester.at(i)));
-      out.append(" ");
-    }
-    out.append("| ");
-    for (int i = curr; i < tester.size(); i++) {
-      out.append(to_string(tester.at(i)));
-      out.append(" ");
-    }
-    out.append(">");
-    if (l.toString().compare(out) != 0) {
-      record->printError("The toString method in " + string(typeid(l).name()) + " has some errors.\nValues in list: " + l.toString() + "\nValues expected: " + out);
     }
 
     // Check values in list
