@@ -265,9 +265,8 @@
 
         injectQuestion: function(id, description) {
           this.queue.elements.push(id);
-          if(description != undefined)
-          {
-            var message = `<p class="REVEAL">${description}</p>`; 
+          if (description != undefined) {
+            var message = `<p class="REVEAL">${description}</p>`;
             return message;
           }
           return this.alertMessage();
@@ -312,6 +311,7 @@
         },
 
         buildTextBox: function(question) {
+          this.questionType = "textBox";
           var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
           var form = $(
             `<form class=${this.av_name} onsubmit='return ${execute}'></form>`
@@ -403,30 +403,33 @@
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
 
-          if(this.questionType == "textBox" && question.studentAnswer !== undefined)
+          if (this.questionType == "textBox" && question.studentAnswer !== undefined) 
           {
-            if (question.answer.includes("{") && question.answer.includes("}"))
+            question.studentAnswer = question.studentAnswer.replace(/\s/g, "");
+            question.studentAnswer = question.studentAnswer.toLowerCase();
+            question.answer = question.answer.replace(/\s/g, "");
+            question.answer = question.answer.toLowerCase();
+
+            if (question.answer.includes("{") && question.answer.includes("}")) 
             {
               return this.permutation(question.studentAnswer, question.answer);
-            }
-            else if(Array.isArray(question.answer))
+            } 
+            else if (Array.isArray(question.answer)) 
             {
-              for(var index = 0; index < question.answer.length; index++)
+              for (var index = 0; index < question.answer.length; index++) 
               {
-                if(question.studentAnswer == question.answer[index])
+                if (question.studentAnswer == question.answer[index]) 
                 {
                   return true;
                 }
               }
               return false;
-            }
-            else
+            } 
+            else 
             {
               return question.studentAnswer == question.answer;
             }
           } else if (Array.isArray(question.studentAnswer)) {
-
-            console.log("selectquestion");
             if (question.studentAnswer.length !== question.answer.length)
               return false;
             var studentsAnswerSorted = question.studentAnswer.sort();
@@ -436,9 +439,7 @@
                 return false;
             }
             return true;
-          } else 
-          {
-            console.log("direct comparison")
+          } else {
             return question.studentAnswer == question.answer;
           }
         },
@@ -586,14 +587,14 @@
 
       $(".picanvas").css({
         width: "0px",
-        overflow: "hidden"
+        overflow: "hidden",
       });
-      // $(qButton).css({
-      //     "padding-left": "5px"
-      // });
+      
       $(question).css({
         position: "absolute",
-        width: "29%",
+        top: 69,
+        left: 590,
+        width: "34%",
         overflow: "hidden"
       });
 
