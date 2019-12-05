@@ -275,6 +275,7 @@ var lambda = String.fromCharCode(955),
 	};
 	var editMode = function() {
 		cancel();
+		moveNodesMode();
 		var jg = $(".jsavgraph");
 		jg.addClass("edit");
 		$("#mode").html('Editing nodes and edges');
