@@ -257,6 +257,7 @@ var lambda = String.fromCharCode(955),
 		cancel();
 		var jg = $(".jsavgraph");
 		jg.addClass("addEdges");
+		g.disableDragging();
 		$(".jsavgraph").addClass("addEdges");
 		$('.jsavgraph').off('mousedown').mousedown(mouseDown);
 		$('.jsavgraph').off('mousemove').mousemove(mouseMove);
