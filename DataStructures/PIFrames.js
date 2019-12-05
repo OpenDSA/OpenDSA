@@ -311,7 +311,7 @@
         },
 
         buildTextBox: function(question) {
-          this.questionType = "textBox";
+          //this.questionType = "textBox";
           var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
           var form = $(
             `<form class=${this.av_name} onsubmit='return ${execute}'></form>`
@@ -405,10 +405,10 @@
 
           if (this.questionType == "textBox" && question.studentAnswer !== undefined) 
           {
-            question.studentAnswer = question.studentAnswer.replace(/\s/g, "");
-            question.studentAnswer = question.studentAnswer.toLowerCase();
-            question.answer = question.answer.replace(/\s/g, "");
-            question.answer = question.answer.toLowerCase();
+            //question.studentAnswer = question.studentAnswer.replace(/\s/g, "");
+            //question.studentAnswer = question.studentAnswer.toLowerCase();
+            //question.answer = question.answer.replace(/\s/g, "");
+            //question.answer = question.answer.toLowerCase();
 
             if (question.answer.includes("{") && question.answer.includes("}")) 
             {
