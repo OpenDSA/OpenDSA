@@ -403,30 +403,39 @@
               setTimeout(() => forwardButton.click(), 2000);
             }
           }
-          else if (
-            this.studentHasAnsweredQuestionCorrectly(
-              this.queue.elements[current]
-            )
-          ) {
+          else if (this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])) 
+          {
             this.enableForwardButton();
-            //Hide the button and show the correct statement
-            if ($("input[type=submit]").is(":visible")) {
-              $("input[type=submit]").hide();
-              $(".PIFRAMES").append(`<p>Correct!</p>`);
 
-              var forwardButton = $(`#${this.av_name}`).find(
-                "span.jsavforward"
-              );
-              setTimeout(() => forwardButton.click(), 1000);
+            if ($("input[type=submit]").is(":visible")) 
+            {
+              $("input[type=submit]").hide();
+              if(question.correctFeedback != undefined)
+              {
+                 //Hide the button and show the correct statement
+                 $(".PIFRAMES").append(`<p>Correct: ${question.correctFeedback}</p>`);
+                 var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
+                 setTimeout(() => forwardButton.click(), 2000);
+              }
+              else
+              {
+                $(".PIFRAMES").append(`<p>Correct!</p>`);
+                var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
+                setTimeout(() => forwardButton.click(), 1000);
+              }
             }
 
             //the last question in the slideshow has been answered correctly, so enable the jsavend button
-            if (current == this.queue.elements.length - 1) {
+            if (current == this.queue.elements.length - 1) 
+            {
               this.enableFastForwardButton();
             }
-          } else {
+          } 
+          else 
+          {
             //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
-            if ($("input[type=submit]").is(":visible")) {
+            if ($("input[type=submit]").is(":visible")) 
+            {
               $("input[type=submit]").hide();
               $("#feedback").show();
               this.disableForwardButton();
