@@ -280,7 +280,9 @@
             case "multiple":
               return this.buildMultipleChoice(question);
             case "true/false":
-            case "textBox":
+            case "textBox": 
+            case "textBoxStrict":
+            case "textBoxFuzzy":
               return this.buildTextBox(question);
             case "textBoxAny":
               return this.buildTextBoxAny(question);
@@ -440,9 +442,11 @@
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
 
-
-
-          if (question.studentAnswer !== undefined && question.type == "textBox") 
+          if(question.studentAnswer !== undefined && question.type == "textBoxFuzzy")
+          {
+              return question.answer.includes(question.studentAnswer);
+          }
+          else if(question.studentAnswer !== undefined && question.type == "textBox") 
           {
             question.studentAnswer = question.studentAnswer.replace(/\s/g, "");
             question.studentAnswer = question.studentAnswer.toLowerCase();
@@ -478,7 +482,7 @@
                 return false;
             }
             return true;
-          } else {
+          } else { //all and textBoxStrictCase
             return question.studentAnswer == question.answer;
           }
         },
@@ -665,7 +669,7 @@
 
     saveAndCheckStudentAnswer: function(av_name) {
       form = $(`form.${av_name}`);
-      if (questionType === "textBox" || questionType === "textBoxAny") {
+      if (questionType === "textBox" || questionType === "textBoxAny" || questionType === "textBoxStrict" || questionType === "textBoxFuzzy") {
         checked = form.children(`input[name=${av_name}]`)[0].value;
       } else if (questionType === "select") {
         //If we have more than answer selected, in case of checkboxes, create a list and push all answers inside the list
