@@ -4,11 +4,11 @@ $(document).ready(function(){
     var av = new JSAV(av_name);
     var arrow = String.fromCharCode(8594);
     var grammar =  "[\
-        [\"(sentence)\",\"→\",\"\(subject)(verb)(d.o.)\"],\
-        [\"(verb)\",\"→\",\"(noun)|(article)(noun)\"],\
-        [\"(d.o.)\",\"→\",\"(article)(noun)|(nounz\"],\
-        [\"(noun)\",\"→\",\"Frits|ball\"],\
-        [\"(article)\",\"→\",\"the|an|a\"]\
+        [\"&lt;sentence&gt;\",\"→\",\"&lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt;\"],\
+        [\"&lt;verb&gt;\",\"→\",\"&lt;noun)|&lt;article&gt;&lt;noun&gt;\"],\
+        [\"&lt;d.o.&gt;\",\"→\",\"&lt;article&gt;&lt;noun&gt;|&lt;nounz&gt;\"],\
+        [\"&lt;noun&gt;\",\"→\",\"Frits|ball\"],\
+        [\"&lt;article&gt;\",\"→\",\"the|an|a\"]\
     ]";
         /****/
     /**<sentence> → <subject><verb><d.o.>
