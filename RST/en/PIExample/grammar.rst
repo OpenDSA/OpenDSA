@@ -9,15 +9,11 @@
    :topic: Finite Automata
 
 
-Frame mathematical
-=================================
-Frame mathematical
---------------------------------------
-
-.. inlineav:: Mathematical ff
-   :links: AV/PIECho/Mathematical.css
-   :scripts: AV/PIECho/Mathematical.js DataStructures/PIFrames.js
+1.3.3 example
+================================
+1.3.3
+-------------------------------
+.. inlineav:: ChomskyCON ff
+   :links:   AV/PIExample/ChomskyCON.css
+   :scripts: DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/PIExample/ChomskyCON.js
    :output: show
-
-
-   

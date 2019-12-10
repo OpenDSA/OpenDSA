@@ -3,29 +3,188 @@
     "en": {
       "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
       "q1": {
-        "type": "multiple",
+        "type": "select",
         "src": "../../../AV/Development/formal_language/FAEditor.html",
-        "question":"What is the start state?",
-        "answer": "q_0, q_1, q_2",
-        "choices": ["q_0, q_1, q_2", "q_1, q_2, q_3","q_3, q_4, q_5" ,"q_3, q_4, q_5"]
+        "question": "Which of the following are  alphabet sets?",
+        "answer": ["{$a$, $b$, $c$}", "{0, 1}", "{?, $a$, $x$}"],
+        "choices": ["{$a$, $b$, $c$}", "{0, 1}", "$A$", "{?, $a$, $x$}"]
       },
       "q2": {
-        "type": "iframe",
+        "type": "select",
         "src": "../../../AV/Development/formal_language/FAEditor.html",
-        "question":"What is the final state?",
-        "answer": "q_1, q_2, q_3",
-        "choices": ["q_0, q_1, q_2", "q_1, q_2, q_3","q_3, q_4, q_5" ]
+        "question": "Suppose we have $\\Sigma$ = {$a$, $b$}, which of the following are valid strings?",
+        "answer": ["$babababbaba$", "$a$"],
+        "choices": ["$babababbaba$", "$a$", "{$aaa$, $bbb$}", "$bacbabcba$"]
+      },
+      "q2_2": {
+        "type": "textBox",
+        "question": "Why not answer c) {$aaa$, $bbb$}?",
+        "answer": "it is a set"
+      },
+      "q2_3": {
+        "type": "textBox",
+        "question": "Why not answer d) $bacbabcba$?",
+        "answer": "it uses symbols not in question"
       },
       "q3": {
+        "type": "select",
+        "question": "What states can be combined?",
+        "answer": [
+          "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,...\\}$",
+          "$\\Sigma$={$a,b,c\\}$ $L=\\{ab,ac,cabb\\}$",
+          "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{set of all even numbers\\}$"
+        ],
+        "choices": [
+          "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,...\\}$",
+          "$\\Sigma$={$a,b,c\\}$ $L=\\{ab,ac,cabb\\}$",
+          "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{set of all even numbers\\}$"
+        ]
+      },
+      "q3_2": {
         "type": "multiple",
-        "question":"What states can be combined?",
-        "answer": "q_3, q_4, q_5",
-        "choices": ["q_0, q_1, q2", "q_1, q_2, q_3","q_3, q_4, q_5" ]
+        "question": "Is this one a langue?  $\\Sigma$=${a,b,c}$ $L = ab$",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q3_3": {
+        "type": "multiple",
+        "question": "Is this one a langue?  $\\Sigma$=${a,b,c}$ $L = {a}$",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q3_4": {
+        "type": "multiple",
+        "question": "Is this one a langue?  $\\Sigma$=${a,b,c}$ $L$ = {}",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q3_5": {
+        "type": "multiple",
+        "question": "Oh, and remember that we have a special symbol for “empty” set. Which is it?",
+        "answer": "{}",
+        "choices": ["$\\Sigma$", "$E$", "{}"]
       },
       "q4": {
         "type": "textBox",
-        "question":"What color is the table?",
-        "answer": "blue"
+        "question": "List the power set of ${a, b}$",
+        "answer": ["a"]
+      },
+      "q5": {
+        "type": "multiple",
+        "question": "So, when you see $b$ in a sentence, it probably refers to:",
+        "answer": "The character ‘$b$’.",
+        "choices": ["The character ‘$b$’.", "Some string named ‘$b$’."]
+      },
+      "q5_1": {
+        "type": "multiple",
+        "question": "And if you see w in a sentence, it probably refers to ",
+        "answer": "Some string given the name ‘$w$’",
+        "choices": ["The character ‘$w$’", "Some string given the name ‘$w$’"]
+      },
+      "q6": {
+        "type": "multiple",
+        "question": "Let $w=abbc$, $v=ab$, What is $|w|$ + $|v|$",
+        "answer": "6",
+        "choices": ["6", "7", "8"]
+      },
+      "q7": {
+        "type": "textBox",
+        "question": "Let $w = abc$, $v = 012$, What is $w∘v$?",
+        "answer": "abc012"
+      },
+      "q7_1": {
+        "type": "textBox",
+        "question": "Let $w = abc$, $v = 012$, What is $wv$?",
+        "answer": "abc012"
+      },
+      "q8": {
+        "type": "select",
+        "question": "let $v = ab$, what is $v3$ ?",
+        "answer": ["$vvv$", "$v∘v∘v$", "$ababab$"],
+        "choices": ["$vvv$", "$v∘v∘v$", "$ababab$"]
+      },
+      "q8_1": {
+        "type": "multiple",
+        "question": "Is this a language? {$\\lambda$}",
+        "answer": "yes",
+        "choices": ["yes", "no"]
+      },
+      "q9": {
+        "type": "textBox",
+        "question": "What is $\\lambda∘acb∘\\lambda$?",
+        "answer": "acb"
+      },
+      "q10": {
+        "type": "textBox",
+        "question": "Let $w = abbc$, what is $w^R$?",
+        "answer": "cbba"
+      },
+      "q11": {
+        "type": "textBox",
+        "question": "let $w=abbc$, and $v=ab$. What is $|vv^Rw|$",
+        "answer": "8"
+      },
+      "q12": {
+        "type": "select",
+        "question": "Which of the following are strings in $\\Sigma∗$?",
+        "answer": ["$\\lambda$", "a", "b", "aa", "abbabb"],
+        "choices": ["$\\lambda$", "a", "b", "aa", "abbabb", "aaabababcc"]
+      },
+      "q12_1": {
+        "type": "select",
+        "question": "Which are examples of $w*$ where $w = abc$?",
+        "answer": ["$Λ$", "$abc$", "$abcabc$"],
+        "choices": ["$Λ$", "$abc$", "$abcabc$", "$aabbcc$"]
+      },
+      "q13": {
+        "type": "select",
+        "question": "Let  $\\lambda$ = {$a,b$}, Which of the following are strings in ?",
+        "answer": ["$a$", "$b$", "$aa$", "$abbabb$"],
+        "choices": [
+          "$\\lambda$",
+          "$a$",
+          "$b$",
+          "$aa$",
+          "$abbabb$",
+          "$aaabababcc$"
+        ]
+      },
+      "q14": {
+        "type": "textBox",
+        "question": " Let $\\sigma$={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, What is $L1∪L2$ ?",
+        "answer": "ab,bc,aba,c,bcc"
+      },
+      "q15": {
+        "type": "textBox",
+        "question": "Let $\\Sigma$={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, What is $L1∩L2$ ?",
+        "answer": "{bc}"
+      },
+      "q16": {
+        "type": "multiple",
+        "question": "What is ?",
+        "answer": [" "],
+        "choices": [" "]
+      },
+      "q17": {
+        "type": "textBox",
+        "question": "What states can be combined?",
+        "answer": "{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}"
+      },
+      "q18": {
+        "type": "multiple",
+        "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L0$?",
+        "answer": ["{$λ$}"],
+        "choices": ["{$λ$}", "{}<Empty set>", "$λ$"]
+      },
+      "q19": {
+        "type": "textBox",
+        "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L2$? ",
+        "answer": "{abab, ababa, abaab, abaaba}"
+      },
+      "q19_1": {
+        "type": "textBox",
+        "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L3$?",
+        "answer": "{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}"
       }
     }
   }
