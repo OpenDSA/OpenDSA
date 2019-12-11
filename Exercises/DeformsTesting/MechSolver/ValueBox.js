@@ -7,6 +7,7 @@ class ValueBox{
             this.unit = element.dataset.unit;
             this.valueDisplay = element.dataset.valueDisplay;
             this.unitDisplay = element.dataset.unitDisplay;
+            this.domain = element.dataset.domain;
             this.globalPointerReference = globalPointerReference;
         }
     }

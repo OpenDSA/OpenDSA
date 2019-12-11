@@ -52,7 +52,7 @@
         //Setup the new display
         av = new JSAV("DeformsProblemPRO");
         eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
-        wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, eqbank)
+        wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, eqbank, globalPointerReference)
 
         // Setting up clickhandlers for the equations in the EquationBank
         // OBSOLETE: MAY TRY TO FIX LATER, MOVING TO DISTRIBUTED APPROACH INSTEAD
@@ -81,13 +81,11 @@
         {
             selectableParameters[index].addEventListener(
                 "click", function() {
-                    var valueBox = 
-                    new ValueBox(true,this,null,globalPointerReference);
-                    globalPointerReference.currentClickedObject = valueBox;
+                    globalPointerReference.currentClickedObject = new ValueBox(true,this,null,globalPointerReference);
                     globalPointerReference.currentClickedObjectType = "value-box";
                     globalPointerReference.currentClickedObjectDescription = 
                     "in-question-description";
-                    console.log(valueBox.valueDisplay, valueBox.unitDisplay);
+                    //console.log(globalPointerReference.currentClickedObject.valueDisplay, globalPointerReference.currentClickedObject.unitDisplay);
                 }
             )
         }

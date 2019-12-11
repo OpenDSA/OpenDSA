@@ -5,13 +5,14 @@ const equations = [
         name: 'Stress in an axial',
         latex: '\\delta_t = \\alpha \\cdot \\Delta T \\cdot L',
         latex_boxes: '\\Box=\\Box\\times\\Box\\times\\Box',
-        params: ['\\delta_t', '\\alpha', '\\Delta T', 'L'],
-        template: '${deform} = ${const} \\cdot ${tempchange} \\cdot ${length}',
+        params_latex: ['\\delta_t', '\\alpha', '\\Delta T', 'L'],
+        template: 'deform = const * tempchange * len',
+        params: ['deform', 'const', 'tempchange', 'len'],
         variables: {
             'deform':'\\delta_t',
             'const':'\\alpha',
             'tempchange':'\\Delta T',
-            'length':'L'
+            'len':'L'
         }
     },
     {
@@ -20,10 +21,13 @@ const equations = [
         name: 'Average normal stress in an axial member',
         latex: '\\delta_{avg}=\\frac F A',
         latex_boxes: '\\Box=\\frac \\Box \\Box',
-        params: ['\\delta_{avg}', 'F', 'A'],
-        template: '',
+        params_latex: ['\\delta_{avg}', 'F', 'A'],
+        template: 'avgdeform = force / area',
+        params: ['avgdeform', 'area', 'force'],
         variables: {
-
+            'avgdeform': '\\delta_{avg}',
+            'force': 'F',
+            'area': 'A'
         }
     },
     {
@@ -32,22 +36,31 @@ const equations = [
         name: 'Average direct shear stress',
         latex: '\\tau_{avg}=\\frac V {A_v}',
         latex_boxes: '\\Box=\\frac \\Box \\Box',
-        params: ['\\tau_{avg}', 'V', 'A_v'],
-        template: '',
+        params_latex: ['\\tau_{avg}', 'V', 'A_v'],
+        template: 'stress = volume / areaV',
+        params: ['stress', 'areaV', 'volume'],
         variables: {
-            
+            'avgstress': '\\tau_{avg}',
+            'volume': 'V',
+            'areaV': '{A_v}'
         }
     },
-
-
-    // {
-    //     group: 'Axial',
-    //     id: "shearStrainMaxInPlane1",
-    //     name: 'Maximum in-plane shear strain',
-    //     latex: '\\gamma_{max}=\\pm2\\sqrt{\\left(\\frac{\\varepsilon_x - \\varepsilon_y}{2}\\right)^2+\\left(\\frac{\\gamma_{xy}}{2}\\right)^2}',
-    //     latex_boxes: '\\Box=\\pm2\\sqrt{\\left(\\frac{\\Box - \\Box}{2}\\right)^2+\\left(\\frac{\\Box}{2}\\right)^2}',
-    //     params: ['\\gamma_{max}', '\\varepsilon_x', '\\varepsilon_y', '\\gamma_{xy}']
-    // },
+    {
+        group: 'Axial',
+        id: "shearStrainMaxInPlane1",
+        name: 'Maximum in-plane shear strain',
+        latex: '\\gamma_{max}=\\pm2\\sqrt{\\left(\\frac{\\varepsilon_x - \\varepsilon_y}{2}\\right)^2+\\left(\\frac{\\gamma_{xy}}{2}\\right)^2}',
+        latex_boxes: '\\Box=\\pm2\\sqrt{\\left(\\frac{\\Box - \\Box}{2}\\right)^2+\\left(\\frac{\\Box}{2}\\right)^2}',
+        params_latex: ['\\gamma_{max}', '\\varepsilon_x', '\\varepsilon_y', '\\gamma_{xy}'],
+        template: 'maxshear=2*sqrt( (epsX - epsY/2)^2 + (shear/2)^2 )',
+        params: ['maxshear', 'epsX', 'epsY', 'shear'],
+        variables: {
+            'maxshear': '\\gamma_{max}',
+            'epsX': '\\varepsilon_x',
+            'epsY': '\\varepsilon_y',
+            'shear': '\\gamma_{xy}',
+        }
+    },
     // {
     //     group: 'Axial',
     //     name: 'Maximum in-plane shear strain',
@@ -128,44 +141,44 @@ const equations = [
     //     latex_boxes: '\\Box=\\frac\\pi 2 [\\Box^4-\\Box^4]',
     //     params: ['J', 'R', 'r']
     // },
-    // {
-    //     group: 'Arithmetic',
-    //     id: "add2",
-    //     name: 'Addition of 2 terms',
-    //     latex: 'c=a+b',
-    //     latex_boxes: '\\Box=\\Box+\\Box',
-    //     params: []
-    // },
-    // {
-    //     group: 'Arithmetic',
-    //     id: "add3",
-    //     name: 'Addition of 3 terms',
-    //     latex: 'c=x+y+z',
-    //     latex_boxes: '\\Box=\\Box+\\Box+\\Box',
-    //     params: []
-    // },
-    // {
-    //     group: 'Arithmetic',
-    //     id: "sub",
-    //     name: 'Subtraction',
-    //     latex: 'c=a-b',
-    //     latex_boxes: '\\Box=\\Box-\\Box',
-    //     params: []
-    // },
-    // {
-    //     group: 'Arithmetic',
-    //     id: "div",
-    //     name: 'Division',
-    //     latex: 'c=\\frac{a}{b}',
-    //     latex_boxes: '\\Box=\\frac{\\Box}{\\Box}',
-    //     params: []
-    // },
-    // {
-    //     group: 'Arithmetic',
-    //     id: "mult",
-    //     name: 'Multiplication',
-    //     latex: 'c=a \\times b',
-    //     latex_boxes: '\\Box=\\Box\\times\\Box',
-    //     params: []
-    // },
+    {
+        group: 'Arithmetic',
+        id: "add2",
+        name: 'Addition of 2 terms',
+        latex: 'c=a+b',
+        latex_boxes: '\\Box=\\Box+\\Box',
+        params: []
+    },
+    {
+        group: 'Arithmetic',
+        id: "add3",
+        name: 'Addition of 3 terms',
+        latex: 'c=x+y+z',
+        latex_boxes: '\\Box=\\Box+\\Box+\\Box',
+        params: []
+    },
+    {
+        group: 'Arithmetic',
+        id: "sub",
+        name: 'Subtraction',
+        latex: 'c=a-b',
+        latex_boxes: '\\Box=\\Box-\\Box',
+        params: []
+    },
+    {
+        group: 'Arithmetic',
+        id: "div",
+        name: 'Division',
+        latex: 'c=\\frac{a}{b}',
+        latex_boxes: '\\Box=\\frac{\\Box}{\\Box}',
+        params: []
+    },
+    {
+        group: 'Arithmetic',
+        id: "mult",
+        name: 'Multiplication',
+        latex: 'c=a \\times b',
+        latex_boxes: '\\Box=\\Box\\times\\Box',
+        params: []
+    },
 ]

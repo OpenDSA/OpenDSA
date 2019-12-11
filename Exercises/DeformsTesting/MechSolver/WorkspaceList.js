@@ -7,8 +7,6 @@
  * workspace-global div id (which is currently the 'workspace' section).
  */
 
-//const Workspace = require("./Workspace");
-
 class WorkspaceList
 {
     constructor(jsavCanvasObj, dim_obj, equationBank, globalPointerReference)

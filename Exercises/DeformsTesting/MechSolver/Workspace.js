@@ -247,7 +247,8 @@ class Workspace
             this.name+"_"+
             equationListEntity["id"]+"_"+(this.equationCounter+1)+"_"+
             lastHashMapID,
-            this.globalSectionObj
+            this.globalSectionObj,
+            this.globalPointerReference
         )
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
         this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
@@ -287,16 +288,34 @@ class Workspace
     {
         // Step 1: See which equations are selected
         var equationSet = [];
+        var equationObjectSet = [];
         for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
         {
             var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
             if(currentEqn.selected == true)
             {
-                console.log(currentEqn.name);
-                // equationSet.push(currentEqn.createSolvableRepresentation())
+                // console.log(currentEqn.name);
+                // for(var varIndex in currentEqn.variables)
+                // {
+                //     console.log(currentEqn.variables[varIndex]);
+                // }
+                equationObjectSet.push(currentEqn);
+                equationSet.push(currentEqn.createSolvableRepresentation());
             }
         }
-        // 
+        console.log(equationSet);
+
+        // Step 2: Feed the list to nerdamer, see the output.
+        var soln = null;
+        if(equationSet.length > 1)
+            soln = nerdamer.solveEquations(equationSet);
+        else
+            //soln = equationObjectSet[0].solve();
+            soln = equationObjectSet[0].solve();
+        console.log(soln.toString());
+
+        // Step 3: Create the solution boxes, new boxes inside the workspace.
+        //sadfasdf
     }
 }
 
