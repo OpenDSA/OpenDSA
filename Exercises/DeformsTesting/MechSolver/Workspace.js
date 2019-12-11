@@ -9,12 +9,13 @@
 
 class Workspace
 {
-    constructor(jsavCanvasObj, dim_obj, workspaceid, geb)
+    constructor(jsavCanvasObj, dim_obj, workspaceid, geb, gpr)
     {
         this.id=workspaceid;
         this.name="wk"+workspaceid;
         this.globalSectionObj = jsavCanvasObj;
         this.globalEquationBank = geb;
+        this.globalPointerReference = gpr;
 
         // INITIALIZATIONS
         this.LIST_OF_EQUATIONS_IN_WORKSPACE = {};
@@ -33,7 +34,7 @@ class Workspace
                 "POSITION_X": dim_obj["CORNER_X"]+5,
                 "POSITION_Y": dim_obj["CORNER_Y"]+40,
                 "WIDTH": 30,
-                "HEIGHT_PAD": 5,
+                "HEIGHT_PAD": 10,
                 "HEIGHT": 50
             }
         }
@@ -129,8 +130,12 @@ class Workspace
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
         };
-        this.elements[4]["div"].setAttribute("id",this.name+"deleq");
-        document.getElementById(this.name+"deleq").addEventListener('click', e => {
+        // this.elements[4]["div"].setAttribute("id",this.name+"deleq");
+        // document.getElementById(this.name+"deleq").addEventListener('click', e => {
+        //     e.stopPropagation();
+        //     // Add function call to equation deletion here.
+        // });
+        this.elements[4]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation deletion here.
         });
@@ -147,10 +152,15 @@ class Workspace
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
         };
-        this.elements[5]["div"].setAttribute("id",this.name+"solveeq");
-        document.getElementById(this.name+"solveeq").addEventListener('click', e => {
+        // this.elements[5]["div"].setAttribute("id",this.name+"solveeq");
+        // document.getElementById(this.name+"solveeq").addEventListener('click', e => {
+        //     e.stopPropagation();
+        //    // Add function call to equation set solving and result propagation here.
+        // });
+        this.elements[5]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
            // Add function call to equation set solving and result propagation here.
+           this.solveEquations();
         });
     }
     destroyBox()
@@ -272,6 +282,21 @@ class Workspace
     addAssociations()
     {
 
+    }
+    solveEquations()
+    {
+        // Step 1: See which equations are selected
+        var equationSet = [];
+        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        {
+            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+            if(currentEqn.selected == true)
+            {
+                console.log(currentEqn.name);
+                // equationSet.push(currentEqn.createSolvableRepresentation())
+            }
+        }
+        // 
     }
 }
 

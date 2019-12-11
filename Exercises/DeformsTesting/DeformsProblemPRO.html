@@ -5,57 +5,11 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
   <script src="../../khan-exercises/local-only/main.js"></script>
   <link rel = "stylesheet" type = "text/css" href = "./styles.css" />
-  <style>
-      /*#MasterWorkspace {
-        height: 1200px;
-        width: 770px;
-        position: relative;
-        margin: auto;
-        background-color: #EEEEEE;
-      }*/
-
-      /* We make the arrays bigger than the OpenDSA stylesheet standard
-      so that we  have reasonable room for the linked lists */
-      /* .jsavverticalarray .jsavnode {
-        line-height: 45px !important;
-        min-width: 45px !important;
-        max-width: 400px !important;
-        min-height: 25px !important;
-        max-height: 60px !important;
-        padding: 5% 5% 5% 5% !important;
-      } */
-    </style>
+  <style></style>
 </head>
 
 <body data-height="860" data-width="950">
   <div class="exercise">
-    <div class="vars">
-        <!-- order is: name, value, enable, unit -->
-        <var id="L">
-          ["L", randRange(1,999) * pow(10, randRange(-2,3)), 1, "m"]
-        </var>
-        <var id="gap">
-          ["\\delta", (randRange(1,999) * pow(10, randRange(-5,-3))), 0, "mm"]
-        </var>
-        <var id="CS1">
-          ["cs1", 0.05, -1, "mm"]
-        </var>
-        <var id="CS2">
-          ["cs2", 0.05, -1, "mm"]
-        </var>
-        <var id="T">
-          ["T_0", 25, -1, "^{\\circ} C" ]
-        </var>
-        <var id="nT">
-          ["T", randRange(25000, 200000) * pow(10, -3), 1, "^{\\circ} C"]
-        </var>
-        <var id="E">
-          ["E", 7000000, -1, "Pa"]
-        </var>
-        <var id="a">
-          ["\\alpha", 0.000023, 1, ""]
-        </var>
-    </div>
     <div class="vars">
       <var id="JSAV">deformsProblemPRO.initJSAV()</var>
     </div>
@@ -63,35 +17,78 @@
     <div class="problems">
       <div id="DeformsProblemPROp">
         <p class="problem">
-          A solid square bar of cross-sectional dimensions  
-          <var>CS1[1]</var> <var>CS1[3]</var> x 
-          <var>CS2[1]</var> <var>CS1[3]</var> is attached rigidly to the wall at point A 
-          and has a gap of 1 mm  from the rigid wall at point B at 
-          <code><var>T[1]</var> <var>T[3]</var></code>.
-          Knowing the bar is made of aluminum, 
-          
+            A solid square bar of cross-sectional dimensions 
+            <span 
+            class="param" id="param1" 
+            data-value="0.05" data-unit="m" 
+            data-value-display="50"
+            data-unit-display="mm" data-domain="length">50mm</span> 
+            x 
+            <span class="param" id="param2" 
+            data-value="0.05" data-unit="m" 
+            data-value-display="50"
+            data-unit-display="mm" data-domain="length">50mm</span> 
+
+            is attached rigidly to the wall at point A and has a gap of 
+            
+            <span class="param" id="param3" 
+            data-value="0.001" data-unit="m" 
+            data-value-display="1"
+            data-unit-display="mm" data-domain="length">1mm</span>
+            from the rigid wall at point B at 
+
+            <span class="param" id="param4" 
+            data-value="25" data-unit="C" 
+            data-value-display="25"
+            data-unit-display="˚C" data-domain="temperature">25
+            <code><var>"^{\\circ}C"</var></code>
+            </span>.
+
+            Knowing the bar is made of aluminum 
+            (E=
+                <span class="param" id="param5" 
+                data-value="70000000" data-unit="Pa" 
+                data-value-display="70"
+                data-unit-display="GPa" data-domain="pressure">70 GPa</span>,
+            <code><var>"{\\alpha}"</var></code>=
+                <span class="param" id="param6"
+                data-value="0.000023" data-unit=""
+                data-value-display="23e-6"
+                data-unit-display="" data-domain="coefficient">
+                <code>
+                  <var>"23\\times10^{-6}"</var>
+                </code>
+                </span>
+            ):
         </p>
 
         <div class="question">
           <p class="question">
             1. Given the expansion of the bar in the present condition, 
             what is the length of the bar prior to expansion?
+            <span class="solution-box"></span>
           </p>
           <p class="question">
-            2. At what temperature does the gap close?
+            2. What stress exists in the bar at a temperature of
+            <span class="param" id="param7"
+            data-value="100" data-unit="C"
+            data-value-display="100"
+            data-unit-display="˚C" data-domain="temperature">100
+            <code><var>"^{\\circ}C"</var></code></span>?
+            <span class="solution-box"></span>
           </p>
-          <img class="figure1" src="../../Fig/deforms_figure.png"
-          alt="rigid bar attached to wall A, with a small gap between 
-          right edge of bar and wall B">
+          <div>
+              <img class="figure1" src="../../Fig/deforms_figure.png"
+              alt="rigid bar attached to wall A, with a small gap between 
+              right edge of bar and wall B">
+                <span class="text-overlay param" style="top: -23px;right: 229px; padding: 2px 7px" 
+                id="param8" data-value="0.8" data-unit="m" data-value-display="0.8"
+                data-unit-display="m" data-domain="length">0.8m</span>
+          </div>
           <br>
         </div>
         
-        <!-- <input id="reset" type="button" value="Reset" /> 
-        <input id="solve" type="button" value="Solve" /> -->
-        <div id="DeformsProblemPRO" class="jsavcanvas">
-          <!-- add all the things in here -->
-        </div>
-        <!-- the MasterWorkspace gets added here-->
+        <div id="DeformsProblemPRO" class="jsavcanvas"></div>
         
         <div class="solution" data-type="custom">
           <div class="guess"> 
@@ -107,13 +104,13 @@
           </div>
         </div>
 
-        <div data-if="L[2] == 0">
+        <!-- <div data-if="L[2] == 0">
           <p class="solution" data-type="decimal"> 
             <var>round((gap / (a * (nT-T)))*1000) / 1000</var>
-              <!-- Replace this with a conditional based on which enable variable is 0 -->
+              <!- Replace this with a conditional based on which enable variable is 0 ->
               The correct answer expected from the student
           </p>
-        </div>  
+        </div> -->
       </div>
 
     </div>
@@ -127,7 +124,15 @@
 
   </div>
 
+  <!-- Nerdamer solver-exclusive scripts -->
+  <script src="./jiggzson-nerdamer-432dd54/nerdamer.core.js"></script> 
+  <script src="./jiggzson-nerdamer-432dd54/Algebra.js"></script>
+  <script src="./jiggzson-nerdamer-432dd54/Calculus.js"></script>
+  <script src="./jiggzson-nerdamer-432dd54/Solve.js"></script>
+  <script src="./jiggzson-nerdamer-432dd54/Extra.js"></script>
+
   <script src="MechSolver/ActiveEquation.js"></script>
+  <script src="MechSolver/ValueBox.js"></script>
   <script src="MechSolver/EquationBank.js"></script>
   <script src="MechSolver/equation_bank.js"></script>
   <script src="MechSolver/Workspace.js"></script>
