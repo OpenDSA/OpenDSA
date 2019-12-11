@@ -280,8 +280,12 @@
             case "multiple":
               return this.buildMultipleChoice(question);
             case "true/false":
-            case "textBox":
+            case "textBox": 
+            case "textBoxStrict":
+            case "textBoxFuzzy":
               return this.buildTextBox(question);
+            case "textBoxAny":
+              return this.buildTextBoxAny(question);
             case "select":
               return this.buildSelectFromMultipleChoices(question);
             case "drawing":
@@ -311,7 +315,6 @@
         },
 
         buildTextBox: function(question) {
-          this.questionType = "textBox";
           var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
           var form = $(
             `<form class=${this.av_name} onsubmit='return ${execute}'></form>`
@@ -328,6 +331,26 @@
 
           html.push(PIFrames.submit);
           html.push(PIFrames.feedback);
+
+          return form.append(html.join(""));
+        },
+
+        buildTextBoxAny: function(question) {
+          var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
+          var form = $(
+            `<form class=${this.av_name} onsubmit='return ${execute}'></form>`
+          );
+          var html = [];
+          var header = `<p>${question.question}</p>`;
+          html.push(header);
+
+          var answerHeader = `Answer:`;
+          html.push(answerHeader);
+
+          var textBox = `<br> <input type="text" name=${this.av_name} autofocus="autofocus" /> </br>`;
+          html.push(textBox);
+
+          html.push(PIFrames.submit);
 
           return form.append(html.join(""));
         },
@@ -364,30 +387,55 @@
         saveAndCheckStudentAnswer(answer) {
           var current = this.queue.current;
           this.setStudentAnswer(this.queue.elements[current], answer);
-          if (
-            this.studentHasAnsweredQuestionCorrectly(
-              this.queue.elements[current]
-            )
-          ) {
+          var question = this.getQuestion(this.queue.elements[current]);
+
+          if(question.type == "textBoxAny") //case where we accept any string as an answer
+          {
+            this.setStudentAnswer(this.queue.elements[current], question.answer);
             this.enableForwardButton();
-            //Hide the button and show the correct statement
             if ($("input[type=submit]").is(":visible")) {
               $("input[type=submit]").hide();
-              $(".PIFRAMES").append(`<p>Correct!</p>`);
+              $(".PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);
 
               var forwardButton = $(`#${this.av_name}`).find(
                 "span.jsavforward"
               );
-              setTimeout(() => forwardButton.click(), 1000);
+              setTimeout(() => forwardButton.click(), 2000);
+            }
+          }
+          else if (this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])) 
+          {
+            this.enableForwardButton();
+
+            if ($("input[type=submit]").is(":visible")) 
+            {
+              $("input[type=submit]").hide();
+              if(question.correctFeedback != undefined)
+              {
+                 //Hide the button and show the correct statement
+                 $(".PIFRAMES").append(`<p>Correct: ${question.correctFeedback}</p>`);
+                 var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
+                 setTimeout(() => forwardButton.click(), 2000);
+              }
+              else
+              {
+                $(".PIFRAMES").append(`<p>Correct!</p>`);
+                var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
+                setTimeout(() => forwardButton.click(), 1000);
+              }
             }
 
             //the last question in the slideshow has been answered correctly, so enable the jsavend button
-            if (current == this.queue.elements.length - 1) {
+            if (current == this.queue.elements.length - 1) 
+            {
               this.enableFastForwardButton();
             }
-          } else {
+          } 
+          else 
+          {
             //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
-            if ($("input[type=submit]").is(":visible")) {
+            if ($("input[type=submit]").is(":visible")) 
+            {
               $("input[type=submit]").hide();
               $("#feedback").show();
               this.disableForwardButton();
@@ -403,7 +451,11 @@
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
 
-          if (this.questionType == "textBox" && question.studentAnswer !== undefined) 
+          if(question.studentAnswer !== undefined && question.type == "textBoxFuzzy")
+          {
+              return question.answer.includes(question.studentAnswer);
+          }
+          else if(question.studentAnswer !== undefined && question.type == "textBox") 
           {
             question.studentAnswer = question.studentAnswer.replace(/\s/g, "");
             question.studentAnswer = question.studentAnswer.toLowerCase();
@@ -439,7 +491,7 @@
                 return false;
             }
             return true;
-          } else {
+          } else { //all and textBoxStrictCase
             return question.studentAnswer == question.answer;
           }
         },
@@ -626,7 +678,7 @@
 
     saveAndCheckStudentAnswer: function(av_name) {
       form = $(`form.${av_name}`);
-      if (questionType === "textBox") {
+      if (questionType === "textBox" || questionType === "textBoxAny" || questionType === "textBoxStrict" || questionType === "textBoxFuzzy") {
         checked = form.children(`input[name=${av_name}]`)[0].value;
       } else if (questionType === "select") {
         //If we have more than answer selected, in case of checkboxes, create a list and push all answers inside the list

@@ -15,8 +15,8 @@ Frame example
 --------------------------------------
 
 .. inlineav:: Frames ff
-   :links: AV/PIECho/Frames.css
-   :scripts: AV/PIECho/Frames.js DataStructures/PIFrames.js
+   :links: AV/PIExample/Frames.css
+   :scripts:  DataStructures/PIFrames.js AV/PIExample/Frames.js
    :output: show
 
 

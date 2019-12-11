@@ -110,7 +110,7 @@ We might want to know if two strings are the same, meaning they have
 the same characters in the same order, **not** whether two
 string reference variables are referencing the same string object.
 If we want to know whether the contents of two strings are the same,
-then in most languages we do **not** simple compare the two reference
+then in most languages we do **not** simply compare the two reference
 variables for equality.
 Instead, we need to do a "deep comparison" where we are looking at the
 characters in the strings themselves.
@@ -125,9 +125,9 @@ objects is the ``.compareTo()`` method.
 This will return -1 if the first is less than the second in
 alphabetical order, 0 if they are the same, and 1 if the first is
 greater than the second.
-It is used like this::
+The following is equivalent to the use of ``.equals()`` shown above::
 
-  if (ref1.compareTo(ref2))
+  if (ref1.compareTo(ref2) == 0)
 
 
 Bad References

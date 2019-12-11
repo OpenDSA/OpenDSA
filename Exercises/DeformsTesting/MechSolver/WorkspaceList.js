@@ -11,11 +11,12 @@
 
 class WorkspaceList
 {
-    constructor(jsavCanvasObj, dim_obj, equationBank)
+    constructor(jsavCanvasObj, dim_obj, equationBank, globalPointerReference)
     {
         this.workspace_list = {};
-        this.globalSectionObj = jsavCanvasObj;
+        this.globalJSAVobject = jsavCanvasObj;
         this.globalEquationBank = equationBank;
+        this.globalPointerReference = globalPointerReference;
         this.workspaceCounter=1;
 
         this.DIMENSIONS = {
@@ -50,7 +51,7 @@ class WorkspaceList
             });
         
         // Add the buttons for adding workspace
-        this.globalSectionObj.label("Add Workspace", 
+        this.globalJSAVobject.label("Add Workspace", 
         {left: this.DIMENSIONS["UPPER_CORNER_X"]+4, top: this.DIMENSIONS["UPPER_CORNER_Y"]-12})
         .addClass("addworkspace");
 
@@ -62,7 +63,7 @@ class WorkspaceList
         this.addbutton.addEventListener('click', e => {
             e.stopPropagation();
             this.addNewWorkspace();
-            this.globalSectionObj.logEvent({type: "adding new workspace", "id": this.workspaceCounter-1});
+            this.globalJSAVobject.logEvent({type: "adding new workspace", "id": this.workspaceCounter-1});
         });
         
         // Automatically add a new workspace, by default
@@ -72,10 +73,11 @@ class WorkspaceList
     {
         // Add the new object
         var newWkspace = new Workspace(
-            this.globalSectionObj,
+            this.globalJSAVobject,
             this.DIMENSIONS["NEW_WKSPACE"],
             this.workspaceCounter,
-            this.globalEquationBank
+            this.globalEquationBank,
+            this.globalPointerReference
             );
         this.workspace_list[this.workspaceCounter] = newWkspace;
         this.workspaceCounter++;
@@ -88,7 +90,7 @@ class WorkspaceList
             e.stopPropagation();
             var delete_ID = newWkspace.destroyBox();
             delete this.workspace_list[delete_ID];
-            this.globalSectionObj.logEvent({type: "deleting workspace", "id": delete_ID});
+            this.globalJSAVobject.logEvent({type: "deleting workspace", "id": delete_ID});
             this.updateShape();
         });
     }

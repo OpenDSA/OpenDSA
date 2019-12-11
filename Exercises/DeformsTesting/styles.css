@@ -20,6 +20,50 @@
     height: 0px;
 } */
 
+.value-box {
+    font-size: em;
+    line-height: .8em;
+}
+
+.param {
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.param:hover {
+    cursor: grab !important;
+}
+
+.param[data-domain="length"] {
+    background-color: rgb(126, 255, 126);
+}
+
+.param[data-domain="temperature"] {
+    background-color: rgb(126, 210, 255);
+}
+
+.param[data-domain="pressure"] {
+    background-color: rgb(249, 152, 175);
+}
+
+.param[data-domain="coefficient"] {
+    background-color: rgb(193, 193, 193);
+}
+
+
+#figures {
+    position: relative;
+}
+
+.solution-box {
+    padding: 5px;
+    background-color: lightgreen;
+    display: inline-block;
+    min-width: 100px;
+    min-height: 15px;
+    vertical-align: middle;
+}
+
 #WorkspaceList {
     height: 0px;
     grid-area: workspace;
@@ -38,7 +82,7 @@
     color: black;
     font-size: 100%;
     font-weight: 400;
-    z-index: 500;
+    z-index: 1000;
    }
 
 .addworkspace {
@@ -104,8 +148,24 @@
     border: thin dashed black;
     padding: 2px;
     color: black;
-    font-size: 150%;
+    font-size: 120%;
     z-index: 500;
+}
+
+.tickunselected {
+    border: thin dashed black;
+    padding: 2px;
+    font-size: 120%;
+    z-index: 500;
+    color: lightgrey;
+}
+
+.tickselected {
+    border: thin dashed black;
+    padding: 2px;
+    font-size: 120%;
+    z-index: 500;
+    color: black;
 }
 
 #float {
@@ -216,57 +276,8 @@
     display: block;
 }
 
-.value-box {
-    font-size: .8em;
-    line-height: .8em;
-}
-
-.no-unit {
-    margin-top: .2em;
-}
-
-.no-unit .unit-box {
-    display: none;
-}
-
-.unit-box {
-    font-style: italic;
-    font-size: .4em;
-    padding-top: .5em;
-    line-height: .5em;
-    box-sizing: border-box;
-    cursor: pointer;
-}
-
-.param {
-    cursor: grab;
-    padding: 0 4px;
-    border-radius: 4px;
-}
-
-.param[data-domain="length"] {
-    background-color: rgb(126, 255, 126);
-}
-
-.param[data-domain="temperature"] {
-    background-color: rgb(126, 210, 255);
-}
-
-.param[data-domain="pressure"] {
-    background-color: rgb(249, 152, 175);
-}
-
-.param[data-domain="coefficient"] {
-    background-color: rgb(193, 193, 193);
-}
-
-
-#figures {
-    position: relative;
-}
-
 .text-overlay {
-    position: absolute;
+    position: relative;
 }
 
 .blueprint_wrapper {
@@ -298,6 +309,23 @@ mjx-container:focus {
     cursor: copy;
     animation: none;
     background: #f9f984;
+}
+
+.no-unit {
+    margin-top: .2em;
+}
+
+.no-unit .unit-box {
+    display: none;
+}
+
+.unit-box {
+    font-style: italic;
+    font-size: .4em;
+    padding-top: .5em;
+    line-height: .5em;
+    box-sizing: border-box;
+    cursor: pointer;
 }
 
 @keyframes flashingBg {

@@ -281,7 +281,7 @@ $(document).ready(function () {
       if (stepcounter == 4) {
         stepcounter--;
         document.getElementById("next").disabled = true;
-        Setxyz()
+        Setuvxyz()
         stepcounter++;
       }
     }
@@ -747,7 +747,6 @@ $(document).ready(function () {
       //Step 4
       attemps++;
       document.getElementById("hint3").style.display = "none";
-      document.getElementById("setuvxyz").disabled = true;
       document.getElementById("u").disabled = true;
       document.getElementById("v").disabled = true;
       document.getElementById("x").disabled = true;
@@ -758,11 +757,6 @@ $(document).ready(function () {
       document.getElementById("valueOfx").disabled = true;
       document.getElementById("valueOfy").disabled = true;
       document.getElementById("valueOfz").disabled = true;
-      document.getElementById("rangeOfu").disabled = true;
-      document.getElementById("rangeOfv").disabled = true;
-      document.getElementById("rangeOfx").disabled = true;
-      document.getElementById("rangeOfy").disabled = true;
-      document.getElementById("rangeOfz").disabled = true;
 
       var step4 = document.createElement("p");
       step4.id = "step4";

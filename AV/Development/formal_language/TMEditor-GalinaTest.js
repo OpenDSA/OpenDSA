@@ -10,7 +10,7 @@ var lambda = String.fromCharCode(955),
 
 // initialize graph
 	var initGraph = function(opts) {
-		g = jsav.ds.tm($.extend({width: '90%', height: 440, emptystring: square, editable: true}, opts));
+		g = jsav.ds.TM($.extend({width: '90%', height: 440, emptystring: square, editable: true}, opts));
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 				gHeight = g.element.height();

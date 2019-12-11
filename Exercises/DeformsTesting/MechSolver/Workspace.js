@@ -9,12 +9,13 @@
 
 class Workspace
 {
-    constructor(jsavCanvasObj, dim_obj, workspaceid, geb)
+    constructor(jsavCanvasObj, dim_obj, workspaceid, geb, gpr)
     {
         this.id=workspaceid;
         this.name="wk"+workspaceid;
         this.globalSectionObj = jsavCanvasObj;
         this.globalEquationBank = geb;
+        this.globalPointerReference = gpr;
 
         // INITIALIZATIONS
         this.LIST_OF_EQUATIONS_IN_WORKSPACE = {};
@@ -33,7 +34,7 @@ class Workspace
                 "POSITION_X": dim_obj["CORNER_X"]+5,
                 "POSITION_Y": dim_obj["CORNER_Y"]+40,
                 "WIDTH": 30,
-                "HEIGHT_PAD": 5,
+                "HEIGHT_PAD": 10,
                 "HEIGHT": 50
             }
         }
@@ -129,8 +130,12 @@ class Workspace
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
         };
-        this.elements[4]["div"].setAttribute("id",this.name+"deleq");
-        document.getElementById(this.name+"deleq").addEventListener('click', e => {
+        // this.elements[4]["div"].setAttribute("id",this.name+"deleq");
+        // document.getElementById(this.name+"deleq").addEventListener('click', e => {
+        //     e.stopPropagation();
+        //     // Add function call to equation deletion here.
+        // });
+        this.elements[4]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation deletion here.
         });
@@ -147,10 +152,15 @@ class Workspace
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
         };
-        this.elements[5]["div"].setAttribute("id",this.name+"solveeq");
-        document.getElementById(this.name+"solveeq").addEventListener('click', e => {
+        // this.elements[5]["div"].setAttribute("id",this.name+"solveeq");
+        // document.getElementById(this.name+"solveeq").addEventListener('click', e => {
+        //     e.stopPropagation();
+        //    // Add function call to equation set solving and result propagation here.
+        // });
+        this.elements[5]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
            // Add function call to equation set solving and result propagation here.
+           this.solveEquations();
         });
     }
     destroyBox()
@@ -220,51 +230,73 @@ class Workspace
     }
     addNewEquation()
     {
-        // Handling the internal initial bookkeeping
-        var equationListEntity = this.globalEquationBank.currentSelectedEquationObject.eqobject;
         // equationListEntity is of type equation (which we will define later) and not 
         // necessarily everything in equation.js
-        this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = equationListEntity 
+        var equationListEntity = this.globalEquationBank.currentSelectedEquationObject.eqobject;
+        var lastHashMapID = 0;
+        if(equationListEntity.name in this.equationHashMap)
+            lastHashMapID = (list => list[list.length-1])
+            (this.equationHashMap[equationListEntity.name]).counter+1;
+        else
+            lastHashMapID = 1;
+
+        // Creating the new active equation object, that handles the display
+        var newActiveEquation = new ActiveEquation(
+            equationListEntity,
+            this.DIMENSIONS.ELEMENTS,
+            this.name+"_"+
+            equationListEntity["id"]+"_"+(this.equationCounter+1)+"_"+
+            lastHashMapID,
+            this.globalSectionObj
+        )
+        this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
+        this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+
+        // Handling the internal initial bookkeeping
+        this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation
         //        |_>  To be elaborated for additional operations.
         
         if(equationListEntity.name in this.equationHashMap)
         {
-            function getLastElement(arraylist)
-            {
-                return arraylist[arraylist.length-1];
-            }
             this.equationHashMap[equationListEntity.name]
-            .push(getLastElement(this.equationHashMap[equationListEntity.name])+1)
+            .push(
+                {
+                    "instance": newActiveEquation,
+                    "counter": lastHashMapID,
+                    "uniqueID": this.equationCounter++,
+                }
+            )
         }
         else
         {
-            this.equationHashMap[equationListEntity["name"]] = [equationListEntity];
-            this.equationCounter++;
+            this.equationHashMap[equationListEntity["name"]] = [
+                {
+                    "instance": newActiveEquation,
+                    "counter": 1,
+                    "uniqueID": this.equationCounter++,
+                }
+            ];
         }
-        console.log(this.equationHashMap);
-
-        // Creating the visual elements.
-        var text = this.globalSectionObj.label(
-            katex.renderToString(equationListEntity["latex"]),
-            {
-                left: this.DIMENSIONS.ELEMENTS["POSITION_X"],
-                top: this.DIMENSIONS.ELEMENTS["POSITION_Y"]
-            }
-        ).addClass("selectableEquation");
-
-        var box = this.globalSectionObj.label(
-            katex.renderToString(equationListEntity["latex_boxes"]),
-            {
-                left: this.DIMENSIONS.ELEMENTS["POSITION_X"]+20+
-                text.element[0].offsetWidth,
-                top: this.DIMENSIONS.ELEMENTS["POSITION_Y"]
-            }
-        ).addClass("boxedEquation");
-        this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=this.DIMENSIONS.ELEMENTS["HEIGHT"]
+        //console.log(this.equationHashMap);
     }
     addAssociations()
     {
 
+    }
+    solveEquations()
+    {
+        // Step 1: See which equations are selected
+        var equationSet = [];
+        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        {
+            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+            if(currentEqn.selected == true)
+            {
+                console.log(currentEqn.name);
+                // equationSet.push(currentEqn.createSolvableRepresentation())
+            }
+        }
+        // 
     }
 }
 

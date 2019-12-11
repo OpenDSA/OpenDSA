@@ -5,6 +5,18 @@
     var av; //The JSAV Object
     var eqbank;
     var wkspacelist;
+    var globalPointerReference = 
+    // This is a hacky way to keep track of what was just clicked on in the question,
+    // specifically for association clicking events. Needless to be said, this is only required
+    // for pointing to the source of an association, and handling it. Any clickhandlers working
+    // with association tasks will receive a pointer to this object, and work with it.
+    // STILL IN PROGRESS
+    {
+        currentClickedObject: null,
+        currentClickedObjectType: null,
+        currentClickedObjectDescription: null,
+    }
+
     const CANVAS_DIMENSIONS = {
         "TOTAL_WIDTH": 767,
         "TOTAL_HEIGHT": 1500,
@@ -39,16 +51,6 @@
     
         //Setup the new display
         av = new JSAV("DeformsProblemPRO");
-        
-        /* var wkl = document.createElement("div");
-        wkl.setAttribute("id","WorkspaceList");
-        var eqb = document.createElement("div")
-        eqb.setAttribute("id","equationbox");
-        document.getElementById("DeformsProblemPRO").appendChild(wkl);
-        document.getElementById("DeformsProblemPRO").appendChild(eqb); */
-        // document.getElementById("DeformsProblemPRO").childNodes[0].appendChild(wkl);
-        // document.getElementById("DeformsProblemPRO").childNodes[0].appendChild(eqb);
-
         eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, eqbank)
 
@@ -72,6 +74,26 @@
         $("body").on("jsav-log-event", function(event, eventData) {
             //console.log(eventData);
           });
+        
+        // Setting up value boxes for those inside the question body
+        var selectableParameters = document.getElementsByClassName("param");
+        for (var index=0; index<selectableParameters.length; index++)
+        {
+            selectableParameters[index].addEventListener(
+                "click", function() {
+                    var valueBox = 
+                    new ValueBox(true,this,null,globalPointerReference);
+                    globalPointerReference.currentClickedObject = valueBox;
+                    globalPointerReference.currentClickedObjectType = "value-box";
+                    globalPointerReference.currentClickedObjectDescription = 
+                    "in-question-description";
+                    console.log(valueBox.valueDisplay, valueBox.unitDisplay);
+                }
+            )
+        }
+
+        // Setting up solution boxes clickhandlers 
+
     }
 
     window.deformsProblemPRO = window.deformsProblemPRO || deformsProblemPRO;
