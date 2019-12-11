@@ -109,7 +109,20 @@ class ActiveEquation{
                 }
             }
         }
-        return nerdamer(splitString.join(" ")).solveFor(subject);
+        var solutions = nerdamer.solveEquations(
+            [splitString.join(" "),
+            subject+" = r_n + 1"]
+            );
+        
+        for(var i in solutions)
+        {
+            if(solutions[i][0] == subject)
+                return solutions[i];
+        }
+        //Substitute the random symbol name with the proper qualified variable name
+
+        // DEFAULT
+        // return ["r_n",0]
     }
 }
 window.ActiveEquation = window.ActiveEquation || ActiveEquation

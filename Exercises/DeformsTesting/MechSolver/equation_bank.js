@@ -21,7 +21,7 @@ const equations = [
         name: 'Average normal stress in an axial member',
         latex: '\\delta_{avg}=\\frac F A',
         latex_boxes: '\\Box=\\frac \\Box \\Box',
-        params_latex: ['\\delta_{avg}', 'F', 'A'],
+        params_latex: ['\\delta_{avg}', 'A', 'F'],
         template: 'avgdeform = force / area',
         params: ['avgdeform', 'area', 'force'],
         variables: {

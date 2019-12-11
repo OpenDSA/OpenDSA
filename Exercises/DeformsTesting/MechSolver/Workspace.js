@@ -312,10 +312,24 @@ class Workspace
         else
             //soln = equationObjectSet[0].solve();
             soln = equationObjectSet[0].solve();
-        console.log(soln.toString());
+        console.log(soln);
 
         // Step 3: Create the solution boxes, new boxes inside the workspace.
-        //sadfasdf
+        new ValueBox(
+            false,
+            {
+                "visuals": this.DIMENSIONS.ELEMENTS,
+                "dataset": {
+                    "value": soln[1],
+                    "unit": "",
+                    "valueDisplay": soln[0]+"="+soln[1],
+                    "unitDisplay": "",
+                    "domain": ""
+                }
+            },
+            this.globalSectionObj,
+            this.globalPointerReference
+        )
     }
 }
 

@@ -7,9 +7,10 @@
     var wkspacelist;
     var globalPointerReference = 
     // This is a hacky way to keep track of what was just clicked on in the question,
-    // specifically for association clicking events. Needless to be said, this is only required
-    // for pointing to the source of an association, and handling it. Any clickhandlers working
-    // with association tasks will receive a pointer to this object, and work with it.
+    // specifically for association clicking events. Needless to be said, this is only 
+    // required for pointing to the source of an association, and handling it. Any 
+    // clickhandlers working with association tasks will receive a pointer to this
+    // object, and work with it.
     // STILL IN PROGRESS
     {
         currentClickedObject: null,
@@ -52,7 +53,8 @@
         //Setup the new display
         av = new JSAV("DeformsProblemPRO");
         eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
-        wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, eqbank, globalPointerReference)
+        wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
+            eqbank, globalPointerReference)
 
         // Setting up clickhandlers for the equations in the EquationBank
         // OBSOLETE: MAY TRY TO FIX LATER, MOVING TO DISTRIBUTED APPROACH INSTEAD
@@ -81,17 +83,35 @@
         {
             selectableParameters[index].addEventListener(
                 "click", function() {
-                    globalPointerReference.currentClickedObject = new ValueBox(true,this,null,globalPointerReference);
+                    globalPointerReference.currentClickedObject = 
+                    new ValueBox(
+                        true,this,null,globalPointerReference
+                        );
                     globalPointerReference.currentClickedObjectType = "value-box";
                     globalPointerReference.currentClickedObjectDescription = 
                     "in-question-description";
-                    //console.log(globalPointerReference.currentClickedObject.valueDisplay, globalPointerReference.currentClickedObject.unitDisplay);
+                    // console.log(
+                    //     globalPointerReference.currentClickedObject.valueDisplay,
+                    //      globalPointerReference.currentClickedObject.unitDisplay);
                 }
             )
         }
 
         // Setting up solution boxes clickhandlers 
-
+        var solutionSubmissionBoxes = document.getElementsByClassName("solution-box");
+        for (var index=0; index<solutionSubmissionBoxes.length; index++)
+        {
+            solutionSubmissionBoxes[index].addEventListener(
+                "click", function() {
+                    // console.log(
+                    //     globalPointerReference.currentClickedObject.valueDisplay,
+                    //     globalPointerReference.currentClickedObject.unitDisplay);
+                    if(globalPointerReference.currentClickedObjectType == "value-box")
+                        this.innerHTML =
+                        globalPointerReference.currentClickedObject.value; 
+                }
+            )
+        }
     }
 
     window.deformsProblemPRO = window.deformsProblemPRO || deformsProblemPRO;
