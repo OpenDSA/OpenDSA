@@ -348,7 +348,7 @@ For :math:`f(w_1, ..., w_k) = u`,
 
 One way to express functions on natural numbers is to represent a
 number using :term:`unary notation`.
-(Remember, we are not concerned about is efficient, we are concerned
+(Remember, we are not concerned about what is efficient, we are concerned
 about what is possible.)
 In this case, we represent the value 0 as an empty string.
 We say that :math:`f: \mathbb{N} \rightarrow \mathbb{N}`
@@ -391,7 +391,7 @@ computes :math:`f': \{I\}^* \rightarrow \{I\}^*` where
    result is the head to the right of a single mark).
 
 
-Turing-Decideable vs. Turing-Acceptable Languages
+Turing-Decidable vs. Turing-Acceptable Languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Recall that we defined a convention for accepting/rejecting whether an
@@ -417,19 +417,19 @@ Then,
 * A language is :math:`Turing-acceptable` if there is some Turing
   machine that accepts it.
 
-So, a language is Turing-decideable if it halts on every input, in two
+So, a language is Turing-decidable if it halts on every input, in two
 different ways so that we can tell if the string is in the language or
 not.
 Separately, a language is Turing-acceptable if it halts on strings in
 the language, and does not halt on strings not in the language.
 
-It is easy to turn any Turing-decideable machine into a
+It is easy to turn any Turing-decidable machine into a
 Turing-acceptable machine.
 If the machine would reject the string, then simply go into an
 infinite loop by moving right regardless of the value of the symbol
 seen.
 But, can every Turing-acceptable machine be converted into a
-Turing-decideable machine?
+Turing-decidable machine?
 
 Consider this example:
 Example: :math:`\Sigma_0 = \{a, b\}`,
@@ -483,7 +483,7 @@ transition instead?
 This is known as the :term:`Halting Problem`.
 
 It turns out that we can **prove** that there are always languages
-that cannot be converted from Turing-acceptable to Turing-decideable.
+that cannot be converted from Turing-acceptable to Turing-decidable.
 In other words, we can **prove** that the Halting Problem is
 unsolveable.
 
@@ -655,6 +655,12 @@ No.
 Likewise, the following extensions do not increase the power of Turing
 Machines.
 
+.. TODO::
+   :type: New example
+
+   Need to replace two-way tape example with one-way, since two-way is
+   what is being used here.
+
 * Provide a two-way infinite tape
 
   .. inlineav:: TuringExt1CON dgm
@@ -692,7 +698,7 @@ Machines.
   We merely encode the heads onto the tape, and simulate moving them
   around.
 
-* A two-dimensional ``tape``
+* A two-dimensional "tape"
 
   All that we need to do is find a mapping from 2D to 1D, which is
   fairly easy.
