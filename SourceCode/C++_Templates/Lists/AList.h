@@ -3,6 +3,7 @@
 #define ALIST_H
 
 #include <cstdlib>
+#include <stdexcept> // std::out_of_range
 #include "List.h"
 
 using namespace std;
@@ -56,10 +57,8 @@ public:
   // Remove and return the current element
   T remove() {
     if ((curr < 0) || (curr >= listSize)) // No current element
-// TODO this fails on string??
-      return (T)NULL;  // TODO is this correct?
-      // return NULL; // TODO this does not work with string
-      // return ""; // TODO
+      throw std::out_of_range("remove() in AList has current of " + to_string(curr) + " and size of "
+        + to_string(listSize) + " that is not a a valid element");
     T it = listArray[curr];     // Copy the element
     for(int i = curr; i < listSize-1; i++) // Shift them down
       listArray[i] = listArray[i+1];
@@ -88,22 +87,13 @@ public:
   // Return the current element
   T getValue() {
     if ((curr < 0) || (curr >= listSize)) // No current element
-      return (T)NULL; // TODO see above
-      // return ""; // TODO
+      throw std::out_of_range("getvalue() in AList has current of " + to_string(curr) +  + " and size of "
+        + to_string(listSize) + " that is not a a valid element");
     return listArray[curr];
   }
   
   // Check if the list is empty
   bool isEmpty() { return listSize == 0; }
-
-// TODO how deal with these methods - duplicated in test right now
-  static string my_to_string(int value){
-    return to_string(value);
-  }
-
-  static string my_to_string(string value){
-    return value;
-  }
 };
 /* *** ODSAendTag: AList *** */
 

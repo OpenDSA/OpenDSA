@@ -120,7 +120,7 @@ static bool find(List &L, ListItemType k) {
 
     // Test moveToStart, moveToEnd, prev, and next
     doSomethingOnEmpList(l);
-
+    
     // Compare list with vector to test length, getValue,
     // currPos, and remove. Add items by inserting
     vector<ListItemType> tester;
@@ -135,7 +135,8 @@ static bool find(List &L, ListItemType k) {
     // Compare list with C++ vector to test length, getValue,
     // currPos, and remove. Add items by appending
     for (int i = 0; i < TEST_SIZE; i++) {
-      checkApp(l, tester, 100 + i); // TODO why no cast here
+      // No cast on last argument since assume ListItemType and int are compatible.
+      checkApp(l, tester, 100 + i);
     }
 
     doSomethingOnNonEmpList(l, tester);
@@ -180,10 +181,22 @@ static bool find(List &L, ListItemType k) {
       record->printError("An unexpected current in empty " + string(typeid(l).name()) + ". \nCurrent in list: " + to_string(l.currPos()) + "\nValue expected: 0");
     }
 
+    ListItemType item;
     // Test remove with empty list
-    ListItemType removed = l.remove();
-    if (removed != (ListItemType)NULL) {
-      record->printError("An unexpected value in empty " + string(typeid(l).name()) + ". \nremove from list: " + to_string(removed) + "\nValue expected: NULL");
+    try {
+      item = l.remove();
+      record->printError("An unexpected result in empty " + string(typeid(l).name()) + ". \nremove did not throw expected exception but returned " + to_string(item));
+    } catch (std::out_of_range &ex) {
+      // Do nothing since expect this exception
+    }
+
+    // TODO add to all versions
+    // check getting value on empty list
+    try {
+      item = l.getValue();
+      record->printError("An unexpected result in empty " + string(typeid(l).name()) + ". \ngetValue did not throw expected exception but returned " + to_string(item));
+    } catch (std::out_of_range &ex) {
+      // Do nothing since expect this exception
     }
 
     // Test move to bad positions
@@ -249,6 +262,25 @@ static bool find(List &L, ListItemType k) {
 
     // Test moveToEnd and remove
     l.moveToEnd();
+
+    ListItemType item;
+    // Test remove at end of list
+    try {
+      item = l.remove();
+      record->printError("An unexpected result at end of " + string(typeid(l).name()) + ". \nremove did not throw expected exception");
+    } catch (std::out_of_range &ex) {
+      // Do nothing since expect this exception
+    }
+ 
+    // TODO add to all versions
+    // Test getValue at end of list
+    try {
+      item = l.getValue();
+      record->printError("An unexpected result result at end of " + string(typeid(l).name()) + ". \ngetValue did not throw expected exception");
+    } catch (std::out_of_range &ex) {
+      // Do nothing since expect this exception
+    }
+
     // Curr is out of bound
     l.prev();
     check(l, tester, tester.size() - 1);

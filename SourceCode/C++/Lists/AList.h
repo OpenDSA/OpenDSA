@@ -4,6 +4,7 @@
 #define ALIST_H
 
 #include <cstdlib>
+#include <stdexcept> // std::out_of_range
 #include "List.h"
 
 using namespace std;
@@ -58,7 +59,8 @@ public:
   // TODO maybe discuss in text about why not ListItemType&
   ListItemType remove() {
     if ((curr < 0) || (curr >= listSize)) // No current element
-      return (ListItemType)NULL;  // TODO discuss weird cast in text and how this isn't great since probably shows up as 0 with int.
+      throw std::out_of_range("remove() in AList has current of " + to_string(curr) + " and size of "
+        + to_string(listSize) + " that is not a a valid element");
     ListItemType it = listArray[curr];     // Copy the element
     for(int i = curr; i < listSize-1; i++) // Shift them down
       listArray[i] = listArray[i+1];
@@ -87,7 +89,8 @@ public:
   // Return the current element
   ListItemType getValue() {
     if ((curr < 0) || (curr >= listSize)) // No current element
-      return (ListItemType)NULL;
+      throw std::out_of_range("getvalue() in AList has current of " + to_string(curr) +  + " and size of "
+        + to_string(listSize) + " that is not a a valid element");
     return listArray[curr];
   }
   

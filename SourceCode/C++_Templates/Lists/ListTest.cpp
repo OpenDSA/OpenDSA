@@ -1,4 +1,3 @@
-// TODO get working with VSC again for debug
 // TODO run through memory checker
 
 // #include "LList.h"
@@ -128,13 +127,10 @@ static bool find(List<T> &L, T k) {
     // currPos, and remove. Add items by inserting
     vector<T> tester;
     // This is an unused value to pass to methods so method overloading picks the correct one.
-    // It is not initialized but never used.
-    // TODO must initialized when int or get warning but not for string
+    // Must initialized or get warning. Not easy to set so just allow compiler warning.
     T dummy;
     for (int i = 0; i < TEST_SIZE; i++) {
-      // This assumes int and T are compatible.
-      // checkIns(l, tester, (T)(100 + i)); // TODO get rid of if next line ok/left
-      checkIns(l, tester, typeFix(i, dummy)); // TODO is this the final solution?
+     checkIns(l, tester, typeFix(i, dummy));
     }
 
     // Clear both lists
@@ -143,8 +139,7 @@ static bool find(List<T> &L, T k) {
     // Compare list with C++ vector to test length, getValue,
     // currPos, and remove. Add items by appending
     for (int i = 0; i < TEST_SIZE; i++) {
-      // TODO checkApp(l, tester, (T)(100 + i)); // get rid of if next line kept
-      checkApp(l, tester, typeFix(i, dummy)); // TODO final solution??
+      checkApp(l, tester, typeFix(i, dummy));
    }
 
     doSomethingOnNonEmpList(l, tester);
@@ -189,12 +184,21 @@ static bool find(List<T> &L, T k) {
       record->printError("An unexpected current in empty " + string(typeid(l).name()) + ". \nCurrent in list: " + to_string(l.currPos()) + "\nValue expected: 0");
     }
 
+    T item;
     // Test remove with empty list
-    T removed = l.remove();
-    // TODO this does not work with string
-    if (removed != (T)NULL) { // TODO
-    // if (removed != "") { // TODO need - be careful with string?
-      record->printError("An unexpected value in empty " + string(typeid(l).name()) + ". \nremove from list: " + my_to_string(removed) + "\nValue expected: NULL");
+    try {
+      item = l.remove();
+      record->printError("An unexpected result in empty " + string(typeid(l).name()) + ". \nremove did not throw expected exception but returned " + my_to_string(item));
+    } catch (std::out_of_range &ex) {
+      // Do nothing since expect this exception
+    }
+
+    // check getting value on empty list
+    try {
+      item = l.getValue();
+      record->printError("An unexpected result in empty " + string(typeid(l).name()) + ". \ngetValue did not throw expected exception but returned " + my_to_string(item));
+    } catch (std::out_of_range &ex) {
+      // Do nothing since expect this exception
     }
 
     // Test move to bad positions
@@ -260,6 +264,24 @@ static bool find(List<T> &L, T k) {
 
     // Test moveToEnd and remove
     l.moveToEnd();
+
+    T item;
+    // Test remove at end of list
+    try {
+      item = l.remove();
+      record->printError("An unexpected result at end of " + string(typeid(l).name()) + ". \nremove did not throw expected exception");
+    } catch (std::out_of_range &ex) {
+      // Do nothing since expect this exception
+    }
+ 
+    // Test getValue at end of list
+    try {
+      item = l.getValue();
+      record->printError("An unexpected result result at end of " + string(typeid(l).name()) + ". \ngetValue did not throw expected exception");
+    } catch (std::out_of_range &ex) {
+      // Do nothing since expect this exception
+    }
+
     // Curr is out of bound
     l.prev();
     check(l, tester, tester.size() - 1);
@@ -351,6 +373,7 @@ static bool find(List<T> &L, T k) {
     if (!l.append(item)) {
       record->printError("The append method in " + string(typeid(l).name()) + " returned false.");
     }
+
     // Verify lists are the same.
     check(l, tester, l.currPos());
   }
@@ -404,6 +427,9 @@ static bool find(List<T> &L, T k) {
     return value;
   }
 
+  // Overloaded versions so the correct type is returned for the test values to work with on the
+  // lists. This is a bit of a kluge where dummy is of type T so the correct version is called for
+  // testing of int and string. You would need to add more versions to test other datatypes.
   static int typeFix(int i, int dummy) {
     return 100 + i;
   }
@@ -418,24 +444,22 @@ int main(void) {
   // Create a file to record errors if necessary
   record = new ErrorRec("ListTest", useFile);
 
-// TODO make sure tests & delete uncommented
   // Run integer tests of AList on a new list.
   AList<int> *al = new AList<int>();
   ListTest<int>::testList(*al);
 
-  // Run string tests of AList on a new list. TODO
-  // AList<string> *alString = new AList<string>();
-  // ListTest<string>::testList(*alString);
+  // Run string tests of AList on a new list.
+  AList<string> *alString = new AList<string>();
+  ListTest<string>::testList(*alString);
 
   // Test other functions that not in interface
-  // TODO
-  // al->clear();
-  // doSomethingResult = "";
-  // ListTest<int>::testOther(*al);
+  al->clear();
+  doSomethingResult = "";
+  ListTest<int>::testOther(*al);
 
   // Remove lists.
-  // delete al;
-  // delete alString;
+  delete al;
+  delete alString;
 
 /* TODO - note interleaved with AList in Java version
   // Run tests of LList on a new list.
