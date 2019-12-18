@@ -1,0 +1,127 @@
+{
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "select",
+        "src": "../../../AV/Development/formal_language/FAEditor.html",
+        "question":"Which of the following are  alphabet sets?",
+        "answer": ["{$a$, $b$, $c$}", "{0, 1}", "{?, $a$, $x$}"],
+        "choices": ["{$a$, $b$, $c$}", "{0, 1}","$A$" ,"{?, $a$, $x$}"]
+      },
+      "q2": {
+        "type": "textBox",
+        "src": "../../../AV/Development/formal_language/FAEditor.html",
+        "question":" Which of these are terminals, and which are non-terminals?",
+        "answer": ""
+        
+      },
+      "q2_2":{
+        "type": "textBox",
+        "question":"What are the variables in the given grammar?",
+        "answer": "<noun>",
+        "choices": ["<sentence>", "<subject>", "<verb>", "<d.o.>", "<article>", "<noun>", "a", "the", "Fritz", "ran", "ate"]
+      },
+      "q3": {
+        "type": "select",
+        "question":"What are the terminals in the given grammar?",
+        "answer":  ["a", "the", "Fritz", "ran", "ate"],
+        "choices": ["<sentence>", "<subject>", "<verb>", "<d.o.>", "<article>", "<noun>", "a", "the", "Fritz", "ran", "ate" ]
+      },
+      "q4":{
+        "type": "multiple",
+        "question":"The <d.o> variable has two productions associated with it. Write one.",
+        "answer": ["<article><noun>", "<noun>"],
+        "choices": ["<article><noun>", "<noun>"]
+      },
+      "q5":{
+        "type": "multiple",
+        "question":"Which variable we must start with?",
+        "answer": "<sentence>",
+        "choices": ["<sentence>", "<subject>", "<verb>", "<d.o.>", "<article>", "<noun>"]
+      },
+      "q6":{
+        "type": "textBox",
+        "question":"What is the substitute for <subject> variable?",
+        "answer": "<noun>"
+      },
+      "q7":{
+        "type": "textBox",
+        "question": "What is the substitute for <noun>?",
+        "answer":"t"
+      },
+      "q8":{
+        "type": "textBox",
+        "question":"What is the substitute for <verb>?",
+        "answer": "hit"
+      },
+      "q9":{
+        "type": "textBox",
+        "question":"What is the substitute for <d.o>??",
+        "answer":"<article><noun>"
+      },
+      "q10":{
+        "type": "textBox",
+        "question":"What is the substitute for <article>?",
+        "answer":"the"
+      },
+      "q11":{
+        "type": "textBox",
+        "question":"What is the substitute for <noun>?",
+        "answer":"ball"
+      },
+      "q12":{
+        "type": "multiple",
+        "question":"Can we derive these sentences?  The ball hit Fritz, or The ball ate the ball",
+        "answer":"Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q13":{
+        "type": "multiple",
+        "question":"Do grammars provide sentences with correct semantics (meaning)?",
+        "answer":"Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q14":{
+        "type": "multiple",
+        "question":"What does x represent?",
+        "answer":"Variables",
+        "choices": ["Variables", "Terminals"]
+
+      },
+      "q15":{
+        "type": "multiple",
+        "question":"What does y represent?",
+        "answer":["Variables", "Terminals"],
+        "choices": ["Variables", "Terminals"]
+      },
+      "q16":{
+        "type": "multiple",
+        "question":"What is ?",
+        "answer":[" " ],
+        "choices": [" "]
+      },
+      "q17":{
+        "type": "textBox",
+        "question":"What states can be combined?",
+        "answer":"{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}"
+      },
+      "q18":{
+        "type": "multiple",
+        "question":"Let //sigma={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L0$?",
+        "answer": ["{$λ$}"],
+        "choices": ["{$λ$}", "{}<Empty set>", "$λ$"]
+      },
+      "q19":{
+        "type": "textBox",
+        "question":"Let //sigma={$a$,$b4}, $L1$={$ab$,$aba$}, What is $L2$? ",
+        "answer": "{abab, ababa, abaab, abaaba}"
+      },
+      "q19_1":{
+        "type": "textBox",
+        "question":"Let //sigma={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L3$?",
+        "answer": "{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}"
+      }
+    }
+  }
+}
+

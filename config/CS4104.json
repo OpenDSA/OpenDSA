@@ -137,6 +137,8 @@
       "NP/threeSAT_to_clique": {},
       "NP/independentSet_to_vertexCover": {},
       "NP/threeSAT_to_hamiltonianCycle": {},
+      "NP/clique_to_independentSet": {},
+      "NP/hamiltonianCycle_to_TSP": {},
       "NP/NPCoping": {},
       "SeniorAlgAnal/Impossible": {},
       "SeniorAlgAnal/Turing": {}

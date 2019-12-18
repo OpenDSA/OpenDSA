@@ -556,3 +556,5 @@ not regular. Contradiction.
    :long_name: Regular Pumping Lemmma
 .. avembed:: AV/WuChen/ContextFreePumpingLemma.html ss
    :long_name: Context Free Pumping Lemma
+.. avembed:: AV/WuChen/ContextFreePumpingLemma2.html ss
+   :long_name: Context Free Pumping Lemma

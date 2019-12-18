@@ -1,0 +1,12 @@
+#cliqueCON {
+  height: 500px;
+}
+
+#cliqueCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#cliqueCON .edgehighlight{
+  stroke:LightCoral;
+  stroke-width: 5;
+}

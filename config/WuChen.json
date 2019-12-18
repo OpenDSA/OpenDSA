@@ -64,7 +64,8 @@
   },
   "chapters": {
       "Stuff": {
-          "WuChen/NonRegularTest": {}
+          "WuChen/NonRegularTest": {},
+          "WuChen/Turing": {}
       },
       "Appendix": {
           "Glossary": {},

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 7.1.--><structure>
+<type>turing</type>
+<automaton>
+  <!--The list of states.-->
+  <state id="4" name="q4">
+    <x>30.0</x>
+    <y>150.0</y>
+  </state>
+  <state id="5" name="q5">
+    <x>180.0</x>
+    <y>200.0</y>
+  </state>
+  <state id="0" name="q0">
+    <x>180.0</x>
+    <y>40.0</y>
+    <initial/>
+  </state>
+  <state id="1" name="q1">
+    <x>330.0</x>
+    <y>40.0</y>
+  </state>
+  <state id="2" name="q2">
+    <x>480.0</x>
+    <y>40.0</y>
+  </state>
+  <state id="3" name="q3">
+    <x>570.0</x>
+    <y>120.0</y>
+  </state>
+  <state id="6" name="q6">
+    <x>400.0</x>
+    <y>200.0</y>
+    <final/>
+  </state>
+
+  <!--The list of transitions.-->
+  <transition>
+    <from>0</from>
+    <to>1</to>
+    <read>a</read>
+    <write>A</write>
+    <move>R</move>
+  </transition>
+  <transition>
+    <from>1</from>
+    <to>1</to>
+    <read>B</read>
+    <write>B</write>
+    <move>R</move>
+  </transition>
+  <transition>
+    <from>1</from>
+    <to>1</to>
+    <read>a</read>
+    <write>a</write>
+    <move>R</move>
+  </transition>
+  <transition>
+    <from>1</from>
+    <to>2</to>
+    <read>b</read>
+    <write>B</write>
+    <move>R</move>
+  </transition>
+  <transition>
+    <from>2</from>
+    <to>2</to>
+    <read>C</read>
+    <write>C</write>
+    <move>R</move>
+  </transition>
+  <transition>
+    <from>2</from>
+    <to>2</to>
+    <read>b</read>
+    <write>b</write>
+    <move>R</move>
+  </transition>
+  <transition>
+    <from>2</from>
+    <to>3</to>
+    <read>c</read>
+    <write>C</write>
+    <move>L</move>
+  </transition>
+  <transition>
+    <from>3</from>
+    <to>3</to>
+    <read>a</read>
+    <write>a</write>
+    <move>L</move>
+  </transition>
+  <transition>
+    <from>3</from>
+    <to>3</to>
+    <read>B</read>
+    <write>B</write>
+    <move>L</move>
+  </transition>
+  <transition>
+    <from>3</from>
+    <to>3</to>
+    <read>C</read>
+    <write>C</write>
+    <move>L</move>
+  </transition>
+  <transition>
+    <from>3</from>
+    <to>3</to>
+    <read>b</read>
+    <write>b</write>
+    <move>L</move>
+  </transition>
+  <transition>
+    <from>3</from>
+    <to>0</to>
+    <read>A</read>
+    <write>A</write>
+    <move>R</move>
+  </transition>
+  <transition>
+    <from>0</from>
+    <to>4</to>
+    <read>B</read>
+    <write>B</write>
+    <move>R</move>
+  </transition>
+  <transition>
+    <from>4</from>
+    <to>4</to>
+    <read>B</read>
+    <write>B</write>
+    <move>R</move>
+  </transition>
+  <transition>
+    <from>4</from>
+    <to>4</to>
+    <read>C</read>
+    <write>C</write>
+    <move>R</move>
+  </transition>
+  <transition>
+    <from>4</from>
+    <to>5</to>
+    <read>#</read>
+    <write>#</write>
+    <move>L</move>
+  </transition>
+  <transition>
+    <from>5</from>
+    <to>5</to>
+    <read>C</read>
+    <write>c</write>
+    <move>L</move>
+  </transition>
+  <transition>
+    <from>5</from>
+    <to>5</to>
+    <read>B</read>
+    <write>b</write>
+    <move>L</move>
+  </transition>
+  <transition>
+    <from>5</from>
+    <to>5</to>
+    <read>A</read>
+    <write>a</write>
+    <move>L</move>
+  </transition>
+  <transition>
+    <from>5</from>
+    <to>6</to>
+    <read>#</read>
+    <write>#</write>
+    <move>R</move>
+  </transition>
+
+
+  
+</automaton>
+</structure>
+

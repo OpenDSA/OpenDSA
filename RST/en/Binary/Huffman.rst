@@ -359,3 +359,8 @@ The problem is that "MUCK" is composed of letters that are not
 expected to occur often.
 If the message does not match the expected frequencies of the letters,
 than the length of the encoding will not be as expected either.
+
+You can use the following visualization to create a huffman tree for
+your own set of letters and frequencies.
+
+.. avembed:: AV/Binary/huffmanCustomBuildAV.html ss

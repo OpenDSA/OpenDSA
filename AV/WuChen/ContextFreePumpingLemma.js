@@ -2,7 +2,7 @@
 $(document).ready(function () {
   "use strict";
   var config = ODSA.UTILS.loadConfig(),
-    interpret = config.interpreter;       // get the interpreter
+      interpret = config.interpreter;       // get the interpreter
   // Process About button: Pop up a message with an Alert
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
@@ -159,15 +159,19 @@ $(document).ready(function () {
         step2.appendChild(document.createTextNode("w: "));
         step2.appendChild(outstep2);
         container.appendChild(step2);
-      }
-      //step 3
-      if (stepcounter == 3) {
-        document.getElementById("setuvxyz").style.display = "block"; //add set uvxyz button
-        document.getElementById("setuvxyz").disabled = true;
+        stepcounter++;
+
+        //step 3
         var len = str.length;  //the length of the string
         var step3 = document.createElement("p"); //create the paragraph for step 3
         step3.id = "step3";
-        step3.appendChild(document.createTextNode("3. Select decomposition of w into xyz. Click \"Set xyz\" to set decomposition."));
+        step3.appendChild(document.createTextNode("3. Select decomposition of w into uvxyz. Remember the following rules:"));
+        step3.appendChild(document.createElement("br"));
+        step3.appendChild(document.createTextNode("|vxy|≤ m"));
+        step3.appendChild(document.createElement("br"));
+        step3.appendChild(document.createTextNode("|vy|≥ 1"));
+        step3.appendChild(document.createElement("br"));
+        step3.appendChild(document.createTextNode("u*(v^i)*x*(y^i)*z ∈ L, for all i ≥ 0"));
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("u: "));
         u = document.createElement("INPUT"); //the text to display u
@@ -179,19 +183,24 @@ $(document).ready(function () {
         valueOfu.setAttribute("type", "text");
         valueOfu.id = "valueOfu";
         valueOfu.value = "0";
-        var rangeOfu = document.createElement("INPUT");
-        rangeOfu.setAttribute("type", "range"); //range slider of u
-        rangeOfu.id = "rangeOfu";
-        rangeOfu.min = "0";
-        rangeOfu.max = len.toString(); //max value of range slider equals to the length of the string
-        rangeOfu.value = "0";
-        rangeOfu.name = str;
-        rangeOfu.setAttribute('oninput', 'updateTextInputu(rangeOfu.value, rangeOfu.name)');  //value of range slider will change
+        //*************************************************
+        // remove slider
+        valueOfu.max = len.toString();
+        valueOfu.name = str;
+        valueOfu.setAttribute('oninput', 'updateTextInputu(valueOfu.value, valueOfu.name)');  //value of range slider will change
+        // var rangeOfu = document.createElement("INPUT");
+        // rangeOfu.setAttribute("type", "range"); //range slider of u
+        // rangeOfu.id = "rangeOfu";
+        // rangeOfu.min = "0";
+        // rangeOfu.max = len.toString(); //max value of range slider equals to the length of the string
+        // rangeOfu.value = "0";
+        // rangeOfu.name = str;
+        // rangeOfu.setAttribute('oninput', 'updateTextInputu(rangeOfu.value, rangeOfu.name)');  //value of range slider will change
+        // *****************************************************
         step3.appendChild(valueOfu);
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(rangeOfu);
+        //step3.appendChild(rangeOfu);
         step3.appendChild(document.createElement("br"));
-
         step3.appendChild(document.createTextNode("v: "));
         v = document.createElement("INPUT"); //the text to display v
         v.setAttribute("type", "text");
@@ -202,17 +211,24 @@ $(document).ready(function () {
         valueOfv.setAttribute("type", "text");
         valueOfv.id = "valueOfv";
         valueOfv.value = "0";
-        var rangeOfv = document.createElement("INPUT");
-        rangeOfv.setAttribute("type", "range"); //range slider of v
-        rangeOfv.id = "rangeOfv";
-        rangeOfv.min = "0";
-        rangeOfv.max = len.toString(); //max value of range slider equals to the length of the string
-        rangeOfv.value = "0";
-        rangeOfv.name = str;
-        rangeOfv.setAttribute('oninput', 'updateTextInputv(rangeOfv.value, rangeOfv.name)');  //value of range slider will change
+        // ***************************************************
+        // remove slider
+        valueOfv.max = len.toString();
+        valueOfv.name = str;
+        valueOfv.setAttribute('oninput', 'updateTextInputv(valueOfv.value, valueOfv.name)');  //value of range slider will change
+        
+        // var rangeOfv = document.createElement("INPUT");
+        // rangeOfv.setAttribute("type", "range"); //range slider of v
+        // rangeOfv.id = "rangeOfv";
+        // rangeOfv.min = "0";
+        // rangeOfv.max = len.toString(); //max value of range slider equals to the length of the string
+        // rangeOfv.value = "0";
+        // rangeOfv.name = str;
+        // rangeOfv.setAttribute('oninput', 'updateTextInputv(rangeOfv.value, rangeOfv.name)');  //value of range slider will change
+        // ******************************************
         step3.appendChild(valueOfv);
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(rangeOfv);
+        // step3.appendChild(rangeOfv);
         step3.appendChild(document.createElement("br"));
 
         step3.appendChild(document.createTextNode("x: "));
@@ -225,17 +241,24 @@ $(document).ready(function () {
         valueOfx.setAttribute("type", "text");
         valueOfx.id = "valueOfx";
         valueOfx.value = "0";
-        var rangeOfx = document.createElement("INPUT");
-        rangeOfx.setAttribute("type", "range"); //range slider of x
-        rangeOfx.id = "rangeOfx";
-        rangeOfx.min = "0";
-        rangeOfx.max = len.toString(); //max value of range slider equals to the length of the string
-        rangeOfx.value = "0";
-        rangeOfx.name = str;
-        rangeOfx.setAttribute('oninput', 'updateTextInputx(rangeOfx.value, rangeOfx.name)');  //value of range slider will change
+        // ***************************************************
+        // remove slider
+        valueOfx.max = len.toString();
+        valueOfx.name = str;
+        valueOfx.setAttribute('oninput', 'updateTextInputx(valueOfx.value, valueOfx.name)');  //value of range slider will change
+        
+        // var rangeOfx = document.createElement("INPUT");
+        // rangeOfx.setAttribute("type", "range"); //range slider of x
+        // rangeOfx.id = "rangeOfx";
+        // rangeOfx.min = "0";
+        // rangeOfx.max = len.toString(); //max value of range slider equals to the length of the string
+        // rangeOfx.value = "0";
+        // rangeOfx.name = str;
+        // rangeOfx.setAttribute('oninput', 'updateTextInputx(rangeOfx.value, rangeOfx.name)');  //value of range slider will change
+        // ***************************************************
         step3.appendChild(valueOfx);
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(rangeOfx);
+        // step3.appendChild(rangeOfx);
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("y: "));
         y = document.createElement("INPUT"); //the text to display y
@@ -247,16 +270,22 @@ $(document).ready(function () {
         valueOfy.setAttribute("type", "text");
         valueOfy.id = "valueOfy";
         valueOfy.value = "0";
-        var rangeOfy = document.createElement("INPUT");
-        rangeOfy.setAttribute("type", "range"); //range slider of y
-        rangeOfy.id = "rangeOfy";
-        rangeOfy.min = "0";
-        rangeOfy.max = len.toString(); //max value of range slider equals to the length of the string
-        rangeOfy.value = "0";
-        rangeOfy.setAttribute('oninput', 'updateTextInputy(rangeOfy.value, rangeOfx.name)');  //value of range slider will change
+        // ***************************************************
+        // remove slider
+        valueOfy.max = len.toString();
+        valueOfy.name = str;
+        valueOfy.setAttribute('oninput', 'updateTextInputy(valueOfy.value, valueOfy.name)');  //value of range slider will change
+        // var rangeOfy = document.createElement("INPUT");
+        // rangeOfy.setAttribute("type", "range"); //range slider of y
+        // rangeOfy.id = "rangeOfy";
+        // rangeOfy.min = "0";
+        // rangeOfy.max = len.toString(); //max value of range slider equals to the length of the string
+        // rangeOfy.value = "0";
+        // rangeOfy.setAttribute('oninput', 'updateTextInputy(rangeOfy.value, rangeOfx.name)');  //value of range slider will change
+        // ***************************************************
         step3.appendChild(valueOfy);
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(rangeOfy);
+        // step3.appendChild(rangeOfy);
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("z: "));
         z = document.createElement("INPUT"); //the text to z
@@ -268,21 +297,34 @@ $(document).ready(function () {
         valueOfz.setAttribute("type", "text");
         valueOfz.id = "valueOfz";
         valueOfz.value = "0";
-        var rangeOfz = document.createElement("INPUT");
-        rangeOfz.setAttribute("type", "range"); //range slider of z
-        rangeOfz.id = "rangeOfz";
-        rangeOfz.min = "0";
-        rangeOfz.max = len.toString(); //max value of range slider equals to the length of the string
-        rangeOfz.value = "0";
-        rangeOfz.setAttribute('oninput', 'updateTextInputz(rangeOfz.value, rangeOfx.name)');  //value of range slider will change
+        // ***************************************************
+        // remove slider
+        valueOfz.max = len.toString();
+        valueOfz.name = str;
+        valueOfz.setAttribute('oninput', 'updateTextInputz(valueOfz.value, valueOfz.name)');  //value of range slider will change
+        // var rangeOfz = document.createElement("INPUT");
+        // rangeOfz.setAttribute("type", "range"); //range slider of z
+        // rangeOfz.id = "rangeOfz";
+        // rangeOfz.min = "0";
+        // rangeOfz.max = len.toString(); //max value of range slider equals to the length of the string
+        // rangeOfz.value = "0";
+        // rangeOfz.setAttribute('oninput', 'updateTextInputz(rangeOfz.value, rangeOfx.name)');  //value of range slider will change
+        // ***************************************************
         step3.appendChild(valueOfz);
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(rangeOfz);
+        //step3.appendChild(rangeOfz);
         var hint3 = document.createElement("p"); //create the paragraph for hints in step 3
         hint3.id = "hint3";
         container.appendChild(step3);
         container.appendChild(hint3);
+        document.getElementById("next").disabled = false;
+      }
+      //step 4
+      if (stepcounter == 4) {
+        stepcounter--;
         document.getElementById("next").disabled = true;
+        Setxyz()
+        stepcounter++;
       }
     }
     //computer first
@@ -491,9 +533,9 @@ $(document).ready(function () {
         step3.appendChild(document.createTextNode("Z = "));
         step3.appendChild(step3z);
         container.appendChild(step3);
-      }
-      // Step 4
-      if (stepcounter == 4) {
+      
+        // Step 4
+        stepcounter++;
         document.getElementById("next").disabled = true;
         var step4 = document.createElement("p"); //create the paragraph for step 4
         step4.id = "step4";
@@ -514,52 +556,61 @@ $(document).ready(function () {
         attemps++;
         document.getElementById("hint4").style.display = "none"; //remove hint4
         var i = document.getElementById("i").value;
-        document.getElementById("i").disabled = true;
-        var step4 = document.getElementById("step4");
-        step4.appendChild(document.createTextNode("pumped string: "));
-        var pumpstr = "";
-        var temp;
-        temp = "uv^" + i.toString() + "xy^" + i.toString() + "z = u";
-        if (u != "λ") {
-          pumpstr = pumpstr + u;
+        if (i.length == 0) {  //empty input
+          alert("Please enter a possible integer in range [0, 2...12} for best results.");
+          stepcounter = 4;
         }
-        var j;
-        for (j = 0; j < i; j++) {
-          if (v != "λ") {
-            pumpstr = pumpstr + v;
+        else if (i != 0 && (i < 2 || i > 12)) {
+          alert("Please enter a possible integer in range [0, 2...12} for best results.");
+          stepcounter = 4;
+        }
+        else{
+          document.getElementById("i").disabled = true;
+          var step4 = document.getElementById("step4");
+          step4.appendChild(document.createTextNode("pumped string: "));
+          var pumpstr = "";
+          var temp;
+          temp = "uv^" + i.toString() + "xy^" + i.toString() + "z = u";
+          if (u != "λ") {
+            pumpstr = pumpstr + u;
           }
-          temp = temp + "v";
-        }
-        if (x != "λ") {
-          pumpstr = pumpstr + x;
-          temp = temp + "x";
-        }
-        for (j = 0; j < i; j++) {
-          if (y != "λ") {
-            pumpstr = pumpstr + y;
+          var j;
+          for (j = 0; j < i; j++) {
+            if (v != "λ") {
+              pumpstr = pumpstr + v;
+            }
+            temp = temp + "v";
           }
-          temp = temp + "y";
-        }
-        if (z != "λ") {
-          pumpstr = pumpstr + z;
-        }
+          if (x != "λ") {
+            pumpstr = pumpstr + x;
+            temp = temp + "x";
+          }
+          for (j = 0; j < i; j++) {
+            if (y != "λ") {
+              pumpstr = pumpstr + y;
+            }
+            temp = temp + "y";
+          }
+          if (z != "λ") {
+            pumpstr = pumpstr + z;
+          }
 
-        if (lemma == "anbn" || lemma == "akbncndj" || lemma == "ww1wr1" || lemma == "w1vvrw2") {
-          temp = temp + "z = " + pumpstr + " is in the language. Please try again!";
+          if (lemma == "anbn" || lemma == "akbncndj" || lemma == "ww1wr1" || lemma == "w1vvrw2") {
+            temp = temp + "z = " + pumpstr + " is in the language. Please try again!";
+          }
+          else {
+            temp = temp + "z = " + pumpstr + " is NOT in the language. YOU WIN!";
+          }
+          var step4ps = document.createElement("INPUT"); //the text to display pumped string
+          step4ps.setAttribute("type", "text");
+          step4ps.id = "step4ps";
+          step4ps.value = pumpstr;
+          step4ps.disabled = true;
+          step4.appendChild(step4ps);
+          step4.appendChild(document.createElement("br"));
+          step4.appendChild(document.createTextNode(temp));
+          document.getElementById("next").disabled = true;
         }
-        else {
-          temp = temp + "z = " + pumpstr + " is NOT in the language. YOU WIN!";
-        }
-        var step4ps = document.createElement("INPUT"); //the text to display pumped string
-        step4ps.setAttribute("type", "text");
-        step4ps.id = "step4ps";
-        step4ps.value = pumpstr;
-        step4ps.disabled = true;
-        step4.appendChild(step4ps);
-        step4.appendChild(document.createElement("br"));
-        step4.appendChild(document.createTextNode(temp));
-        document.getElementById("next").disabled = true;
-
       }
     }
   }

@@ -328,5 +328,5 @@ compression for UNION/FIND, see [Tarjan75]_.
 The survey article by Galil & Italiano [GalilItaliano91]_
 covers many aspects of the equivalence class problem.
 
-.. avembed:: AV/Development/UnionFindPRO.html pe
+.. avembed:: AV/General/UnionFindPRO.html pe
    :long_name: Union/Find Proficiency Exercise

@@ -1,0 +1,42 @@
+#threeSATtoCliqueCON {
+  height: 550px;
+}
+
+#threeSATtoCliqueCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#threeSATtoCliqueCON .jsavgraphnode {
+	min-width:30px;
+	min-height:30px;
+	max-width:30px;
+	max-height:30px;
+	height:30px;
+	line-height:30px;
+        text-align:center;
+}
+#threeSATtoCliqueCON .labelcolor1{
+	color:IndianRed;
+}
+#threeSATtoCliqueCON .nodecolor1{
+	background-color:IndianRed;
+}
+#threeSATtoCliqueCON .labelcolor2{
+	color:SeaGreen;
+}
+#threeSATtoCliqueCON .nodecolor2{
+	background-color:SeaGreen;
+}
+#threeSATtoCliqueCON .labelcolor3{
+	color:SteelBlue;
+}
+#threeSATtoCliqueCON .nodecolor3{
+	background-color:SteelBlue;
+}
+#threeSATtoCliqueCON .edgefocus{
+	stroke: Orange;
+}
+#threeSATtoCliqueCON .edgehighlight{
+	stroke:#CC0099;
+	stroke-width:6;
+}

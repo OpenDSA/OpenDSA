@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dijkstra's Algorithm AV</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="dijkstraAV.css" type="text/css" />
+</head>
+
+<body>
+<div id="container">
+  <table class="headerTable">
+    <tr>
+      <td class="headerLeft">
+        <input type="button" id="help" name="help" value="Help" />
+      </td>
+      <td class="headerCenter avTitle">
+        Dijkstra's Algorithm
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+      </td>
+    </tr>
+  </table>
+
+  <form id="ssperform">
+    <p>
+      <input type="button" id="run" name="run" value="Run" />
+      <input type="button" id="reset" name="reset" value="Reset" />
+    </p>
+  </form>
+
+  <div class="avcontainer">
+    <span class="jsavcounter"></span>
+    <div class="jsavcontrols"></div>
+    <p class="jsavoutput jsavline"></p>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="../../lib/jquery.transit.js"></script>
+<script src="../../lib/raphael.js"></script>
+<script src="../../lib/JSAV-min.js"></script>
+<script src="../../lib/odsaUtils.js"></script>
+<script src="../../lib/odsaAV.js"></script>
+<script src="../Development/graphUtils.js"></script>
+<script src="dijkstraAV.js"></script>
+</body>
+</html>

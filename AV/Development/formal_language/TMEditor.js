@@ -7,10 +7,54 @@ var lambda = String.fromCharCode(955),
 	var jsav = new JSAV("av");
 	jsav.displayInit();
 	var g;
+	var exerController,
+	exerciseLocation;
 
+	var loadHandler = function()
+	{
+		
+		type = $('h1').attr('id');
+		if(type == 'tester'){
+			exerciseLocation = getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
+        	exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: "PDA"});
+        	exerController.load();
+        
+        	var exercise = jsav.flexercise(modelSolution, initializeExercise,
+          	{feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController});
+        	exercise.reset();
+		}
+		else{
+			g = initGraph({layout: "manual"});
+			g.layout();
+			resetUndoButtons();
+			jsav.displayInit();
+		}
+	}
+	//Function sent to exercise constructor to initialize the exercise
+	function initializeExercise() {
+		
+	  }
+	  
+	  //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
+	  //In our case, we will make this function show the test cases only.
+	  function modelSolution(modeljsav) {
+		var testCases = exerController.tests[0]["testCases"];
+		var list = [["Test Number", "Test String", "Accept/Reject"]];
+		for (i = 0; i < testCases.length; i++) {
+		  var testNum = i + 1;
+		  var testCase = testCases[i];
+		  var input = Object.keys(testCase)[0];
+		  list.push([testNum, input, testCase[input]]);
+		}
+		var model = modeljsav.ds.matrix(list);
+		//layoutTable(model);
+		modeljsav.displayInit();
+		return model;
+	  }  
 	// initialize graph
 	var initGraph = function(opts) {
 		g = jsav.ds.TM($.extend({width: '750px', height: 440, emptystring: square, editable: true}, opts));
+		g.enableDragging();
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 		gHeight = g.element.height();
@@ -159,16 +203,12 @@ var lambda = String.fromCharCode(955),
 	var nodeClickHandler = function(e) {	
 		// editing nodes should be changed to match the interface in multitapeTest.js
 		if ($(".jsavgraph").hasClass("edit")) {
-			this.highlight();
-			var input = prompt("State Label: ", this.stateLabel());
-			if (!input || input == "null"){
-				this.unhighlight();
-				return;
-			}
 			g.saveFAState();
-			this.stateLabel(input);
-			this.stateLabelPositionUpdate();
-			this.unhighlight();
+			g.selected = this;
+			g.selected.highlight();
+			var Prompt = new FANodePrompt(updateNode, g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
+			Prompt.render(g.selected.value());
+			g.selected.unhighlight();
 		}
 		else if ($('.jsavgraph').hasClass('moveNodes')) {
 		}
@@ -177,6 +217,11 @@ var lambda = String.fromCharCode(955),
 			g.removeNode(this);
 		}
 	};
+
+	function updateNode(wasInitialState, initial_state, wasFinalState, final_state, node_label) {
+		g.saveFAState();
+    	executeEditNode(g, g.selected, wasInitialState, initial_state, wasFinalState, final_state, node_label);
+  	};
 
 	// handler for the edges of the graph
 	var edgeClickHandler = function(e) {
@@ -230,6 +275,7 @@ var lambda = String.fromCharCode(955),
 	};
 	var editMode = function() {
 		cancel();
+		moveNodesMode();
 		var jg = $(".jsavgraph");
 		jg.addClass("edit");
 		$("#mode").html('Editing nodes and edges');
@@ -403,6 +449,8 @@ var lambda = String.fromCharCode(955),
 		var direction = $('#direction').val();
 		var edgeWeight = toRead + ";" + toWrite + "," + direction;
 		g.addEdge(first, g.selected, {weight: edgeWeight});
+
+
 		$('.jsavedgelabel').off('click').click(labelClickHandler);
 
 		edgeInput.hide();
@@ -509,9 +557,6 @@ var lambda = String.fromCharCode(955),
 		}
 	});
 
-	g = initGraph({layout: "manual"});
-	g.layout();
-	resetUndoButtons();
-	jsav.displayInit();
+	loadHandler();
 
 }(jQuery));

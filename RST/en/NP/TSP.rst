@@ -17,8 +17,8 @@ TRAVELING SALESMAN PROBLEM (TSP)
 
 .. inlineav:: TSPCON ss
    :long_name: Traveling Salesman
-   :links: AV/Development/NP/TSPCON.css
-   :scripts: AV/Development/NP/TSPCON.js
+   :links: AV/NP/TSPCON.css
+   :scripts: AV/NP/TSPCON.js
    :output: show
 
 Try out an instance of the Traveling Salesman problem on your own.

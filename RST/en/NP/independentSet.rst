@@ -17,8 +17,8 @@ INDEPENDENT SET PROBLEM.
 
 .. inlineav:: independentSetCON ss
    :long_name: Independent Set
-   :links: AV/Development/NP/independentSetCON.css
-   :scripts: AV/Development/NP/independentSetCON.js
+   :links: AV/NP/independentSetCON.css
+   :scripts: AV/NP/independentSetCON.js
    :output: show
 
 Try out an instance of the Independent Set problem on your own.

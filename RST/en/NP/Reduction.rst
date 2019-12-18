@@ -39,6 +39,12 @@ follows:
    A permutation :math:`y_0, y_1, y_2, \ldots, y_{n-1}` of the
    sequence such that :math:`y_i \leq y_j` whenever :math:`i < j`.
 
+.. inlineav:: SortingProblemCON ss
+   :long_name: Sorting Problem
+   :links: AV/NP/SortingProblemCON.css
+   :scripts: AV/NP/SortingProblemCON.js
+   :output: show
+
 
 Example: The Pairing Problem
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,8 +82,11 @@ To illustrate this, let us consider another problem.
    from each list make a pair, the next smallest values from each list
    make a pair, and so on.
 
-.. avembed:: AV/Development/NP/pairToSortReduction.html ss
-   :long_name: Reduction of Pairing to Sorting
+.. inlineav:: pairToSortCON ss
+   :long_name: Pair to Sorting Reduction Slideshow
+   :links: AV/NP/pairToSortCON.css
+   :scripts: AV/NP/pairToSortCON.js
+   :output: show
 
 Figure :num:`Figure #Pair` illustrates PAIRING.
 One way to solve PAIRING is to use an existing sorting
@@ -226,8 +235,11 @@ the two transformations.
 Next is a slideshow that shows the steps for 
 the reduction of **SORTING** to **PAIRING**.
 
-.. avembed:: AV/Development/NP/sortToPairReduction.html ss
-   :long_name: Reduction of Sorting to Pairing
+.. inlineav:: sortToPairCON ss
+   :long_name: Sorting to Pairing Reduction Slideshow
+   :links: AV/NP/sortToPairCON.css
+   :scripts: AV/NP/sortToPairCON.js
+   :output: show
 
 It is important to note that the reduction process does not give us
 an algorithm for solving either problem by itself.
@@ -371,8 +383,11 @@ matrices :math:`A` and :math:`B` together.
 
 The following slideshow illustrates this reduction process.
 
-.. avembed:: AV/Development/NP/matrixMulReduction.html ss
+.. inlineav:: matrixMulCON ss
    :long_name: Matrix Multiplication
+   :links: AV/NP/matrixMulCON.css
+   :scripts: AV/NP/matrixMulCON.js
+   :output: show
 
 .. [#] The transpose operation
        takes position :math:`ij` of the original matrix and places it

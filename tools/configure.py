@@ -460,17 +460,7 @@ def configure(config_file_path, options):
 
     # Optionally rebuild JSAV
     if config.build_JSAV:
-        print ("Building JSAV\n")
-        status = 0
-
-        with open(os.devnull, "w") as fnull:
-            status = subprocess.check_call(
-                'make -s -C %s' % (config.odsa_dir + 'JSAV/'), shell=True, stdout=fnull)
-
-        if status != 0:
-            print_err("JSAV make failed")
-            print_err(status)
-            sys.exit(1)
+        print ("We don't build JSAV anymore!\n")
 
     print ("Writing files to " + config.book_dir + "\n")
 

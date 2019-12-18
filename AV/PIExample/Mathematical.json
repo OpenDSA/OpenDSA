@@ -1,0 +1,134 @@
+{
+    "translations": {
+      "en": {
+        "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+        "q1": {
+          "type": "multiple",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "question": "[T/F]Sets may contain duplicated elements.",
+          "answer": ["False"],
+          "choices": ["True", "False"]
+        },
+        "q2": {
+          "type": "multiple",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "question": "Let $P = {7, 11, 42}$, Which of the following is correct?",
+          "answer": ["$P = {11, 42, 7}$"],
+          "choices": ["$P = {11, 42, 7}$", "$P  ≠ {11, 42, 7}$"]
+        },
+        "q3": {
+          "type": "multiple",
+          "question": "Let $P = {7, 11, 42}$, what is the base type of $P$ elements?",
+          "answer": ["$Integers$"],
+          "choices": ["$Integers$", "$Real$ $numbers$"]
+        },
+        "q4": {
+          "type": "select",
+          "question": "Let $P = {a, b, c, {d, e}, {f}}$. Which of the following is an element in the set.",
+          "answer": ["$a$","$b$","$c$","{$d, e$}","{$f$}"],
+          "choices": ["$a$","$b$", "$c$", "$d$", "$e$","{$d$}","{$d, e$}","$f$","{$f$}"]
+        },
+        "q5": {
+          "type": "multiple",
+          "question": "Which of the following is a valid set:",
+          "answer": "{$a, 2, 3$}",
+          "choices": ["$1$, $2$, $3$", "{$a, 2, 3$}"]
+        },
+        "q6": {
+          "type": "textBox",
+          "question": "Describe the previous set using your own words.",
+          "answer": "yes"
+        },
+        "q7": {
+          "type": "select",
+          "question": "Let $P = {a, b, c}$, which of the following is ∉P",
+          "answer": ["$b$", "{$a, b, c$}"],
+          "choices": ["$a$", "{$a$}", "$b$", "{$a, b, c$}"]
+        },
+        "q8": {
+          "type": "multiple",
+          "question": "Which of the following $∈Q$?",
+          "answer": "$a$",
+          "choices": ["$a$", "1", "{$a,b$}", "$Q has no elements because it is the null set.$"]
+        },
+        "q9": {
+          "type": "textBox",
+          "question": "What does it mean to say that $|P|$ = $3$?",
+          "answer": "P has 3 elements"
+        },
+        "q10": {
+          "type": "select",
+          "question": "Let $P = {x|x is a positive integer}$. Which of the following is a subset of $P$?",
+          "answer": ["{$1, 2, 3$}", "{$x|x$ is an even number}", "{$x|x$ is a prime number}"],
+          "choices": ["{$1, 2, 3$}", "{$x|x$ is an even number}", "{$x|x$ is a real number}", "{$x|x$ is a prime number}"]
+        },
+        "q11": {
+          "type": "textBox",
+          "question": "Let $P = {1, 3, 5$}, and $Q = {2, 4, 5, 6$} What is $P∪Q$?",
+          "answer": "{1,2,3,4,5,6}"
+        },
+        "q12": {
+          "type": "textBox",
+          "question": "Let $P = {1, 3, 5$}, and $Q = {2, 4, 5, 6$} What is $Q∪P$?",
+          "answer": "{1,2,3,4,5,6}"
+        },
+        "q13": {
+          "type": "multiple",
+          "question": "Select the correct fact about set union ",
+          "answer": "$P∪Q$ = $Q∪P$",
+          "choices": [
+            "$P∪Q$ = $Q∪P$",
+            "$P∪Q$ ≠ $Q∪P$"
+          ]
+        },
+        "q14": {
+          "type": "textBox",
+          "question": "Let $P = {1, 3, 5}$, and $Q = {2, 4, 5, 6}$ What is P∩Q?",
+          "answer": " {5}"
+        },
+        "q15": {
+          "type": "textBox",
+          "question": "Let $P = {1, 3, 5}$, and $Q = {2, 4, 5, 6}$",
+          "answer": "{5}"
+        },
+        "q16": {
+          "type": "multiple",
+          "question": "Select the correct fact about set union ",
+          "answer": "$P∩Q$ = $Q∩P$",
+          "choices": ["$P∩Q$ = $Q∩P$", "$P∩Q$ ≠ $Q∩P$"]
+        },
+        "q17": {
+          "type": "textBox",
+          "question": "Let $P = {1, 3, 5}$, and $Q = {2, 4, 5, 6}$ What is $P-Q$?",
+          "answer": "{1, 3}"
+        },
+        "q18": {
+          "type": "textBox",
+          "question": "Let $P$ = {$1, 3, 5}$, and $Q$ = {$2, 4, 5, 6}$ What is $Q-P?$",
+          "answer": " {2, 4, 6}"
+        },
+        "q19": {
+          "type": "multpile",
+          "question": " Select the correct fact about the set difference: ",
+          "answer": "$P-Q$ ≠ $Q - P$",
+          "choices": ["$P-Q$ = $Q - P$", "$P-Q$ ≠ $Q - P$"]
+        },
+        "q20": {
+          "type": "textBox",
+          "question": "Let $P = {1, 3, 5}$, and $Q = {2, 4}$ What is $PxQ$?",
+          "answer": "{(1, 2),(1,4),(3,2),(3,4),(5,2),(5,4)}"
+        },
+        "q21": {
+          "type": "textBox",
+          "question": "Let $P = {1, 3, 5}$, and $Q = {2, 4}$ What is $|PxQ|$?",
+          "answer": "6"
+        },
+        "q22": {
+          "type": "textBox",
+          "question": " Consider the set $S = {a,b,c}$. What is $2S$ ?",
+          "answer": "{∅, {a}, {b}, {c}, {a,b}, {a,c}, {b,c}, {a,b,c}}"
+        }
+      }
+    }
+  }
+  

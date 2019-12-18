@@ -193,33 +193,6 @@ $(document).ready(function() {
     this.info[index] = information;
   }
 
-  /**
-	 * find the position to add in the array: inside insert(when addInfo equal to
-	 * the value in the parent, go to left side) used for insert
-	 *
-	 * @param addInfo the information that will be add in
-	 * @param small   the smallest bound (pos)
-	 * @param big     the biggest bound (pos)
-	 * @return the index that we are going to added in
-	 */
-   BPTNodeproto.insertPos = function(addInfo, small, big){
-     if(addInfo <= this.value[small]){
-       return small;
-     }else if(addInfo > this.value[big]){
-       return big + 1;
-     }else if(addInfo == this.value[big]){
-       return big;
-     }
-     var index = Math.trunc((big + small) / 2);
-     if(big - small == 1){
-       return big;
-     }else if(addInfo >= this.value[index]){
-       return this.insertPos(addInfo, index, big);
-     }else{
-       return this.insertPos(addInfo, small, index);
-     }
-   }
-
    /**
   * find the position to add in the array: inside insert(when delInfo equal to
   * the value in the parent, go to right side) used for delete
@@ -279,7 +252,7 @@ $(document).ready(function() {
       this.size_value += 1;
       return true;
     }else{
-      var pos = this.insertPos(addInfo, 0, this.size_value - 1);
+      var pos = this.findHelp(addInfo, 0, this.size_value - 1);
       this.array.value(this.size_value, "");
       for(var i = this.size_value; i > pos; i--){
         this.value[i] = this.value[i - 1];

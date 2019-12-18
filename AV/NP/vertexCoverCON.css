@@ -1,0 +1,95 @@
+#vertexCoverCON {
+  height: 500px;
+}
+
+#vertexCoverCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#vertexCoverCON .nodecolor1{
+  background-color:Brown;
+}
+#vertexCoverCON .edgecolor1{
+  stroke: Brown;
+  stroke-width: 2;
+}
+
+#vertexCoverCON .nodecolor2{
+  background-color:#669966;
+}
+#vertexCoverCON .edgecolor2{
+  stroke: #669966;
+  stroke-width: 2;
+}
+
+#vertexCoverCON .nodecolor3{
+  background-color:#FFCC66;
+}
+#vertexCoverCON .edgecolor3{
+  stroke: #FFCC66;
+  stroke-width: 2;
+}
+
+#vertexCoverCON .nodecolor4{
+  background-color:#996699;
+}
+#vertexCoverCON .edgecolor4{
+  stroke: #996699;
+  stroke-width: 2;
+}
+
+#vertexCoverCON .nodecolor5{
+  background-color:#00CCCC;
+}
+#vertexCoverCON .edgecolor5{
+  stroke: #00CCCC;
+  stroke-width: 2;
+}
+
+#vertexCoverCON .nodecolor6{
+  background-color:PaleVioletRed;
+}
+#vertexCoverCON .edgecolor6{
+  stroke: PaleVioletRed;
+  stroke-width: 2;
+}
+
+#vertexCoverCON .nodecolor7{
+  background-color:Chocolate;
+}
+#vertexCoverCON .edgecolor7{
+  stroke: Chocolate;
+  stroke-width: 2;
+}
+
+#vertexCoverCON .nodecolor8{
+  background-color:IndianRed;
+}
+#vertexCoverCON .edgecolor8{
+  stroke: IndianRed;
+  stroke-width: 2;
+}
+
+#vertexCoverCON .nodecolor9{
+  background-color:Silver;
+}
+#vertexCoverCON .edgecolor9{
+  stroke: Silver;
+  stroke-width: 2;
+}
+
+#vertexCoverCON .nodecolor10{
+  background-color:SlateBlue;
+}
+#vertexCoverCON .edgecolor10{
+  stroke: SlateBlue;
+  stroke-width: 2;
+}
+
+#vertexCoverCON .nodecolor11{
+  background-color:Teal;
+}
+#vertexCoverCON .edgecolor11{
+  stroke: Teal;
+  stroke-width: 2;
+}

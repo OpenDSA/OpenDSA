@@ -1,9 +1,6 @@
 [submodule "QBank"]
 	path = QBank
 	url = https://github.com/OpenDSA/QBank.git
-[submodule "JSAV"]
-	path = JSAV
-	url = https://github.com/vkaravir/JSAV.git
 [submodule "khan-exercises"]
 	path = khan-exercises
 	url = https://github.com/OpenDSA/khan-exercises.git

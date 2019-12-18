@@ -15,8 +15,8 @@ Circuit Satisfiability
 
 .. inlineav:: circuitSATCON ss
    :long_name: Circuit Satisfiability
-   :links: AV/Development/NP/circuitSATCON.css
-   :scripts: AV/Development/NP/circuit/circuit.js AV/Development/NP/circuitSATCON.js
+   :links: AV/NP/circuitSATCON.css
+   :scripts: AV/NP/circuit.js AV/NP/circuitSATCON.js
    :output: show
 
 In the above problem, given a particular assignment, while we can 

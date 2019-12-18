@@ -18,8 +18,8 @@ problem can be reduced to an instance of SAT problem in polynomial time.
  
 .. inlineav:: circuitSATtoSATCON ss
    :long_name: Circuit SAT to SAT
-   :links: AV/Development/NP/circuitSATtoSATCON.css
-   :scripts: AV/Development/NP/circuit/circuit.js AV/Development/NP/circuitSATtoSATCON.js
+   :links: AV/NP/circuitSATtoSATCON.css
+   :scripts: AV/NP/circuit.js AV/NP/circuitSATtoSATCON.js
    :output: show
 
 This reduction can help in providing an NP Completeness proof for SAT.

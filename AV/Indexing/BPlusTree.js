@@ -119,7 +119,7 @@ $(document).ready(function() {
 	 */
   BPTreeproto.split = function(rt, addInfo, information){
     var leftSize = Math.trunc((this.max + 1) / 2);
-    var addPos = rt.insertPos(addInfo,0, this.max - 1);
+    var addPos = rt.findHelp(addInfo,0, this.max - 1);
     var next = BPTreeNode.newNode(this.emptyArray, this.jsav, this.max, true, this.detail);
     if(this.detail){
       this.printTree();
@@ -269,7 +269,7 @@ $(document).ready(function() {
       (this.jsav).step();
     }
     var leftSize = Math.trunc((this.max + 1) / 2);
-		var addPos = rt.insertPos(this.update, 0, this.max - 1);
+		var addPos = rt.findHelp(this.update, 0, this.max - 1);
 		// deal with parentNode
 		if (addPos < leftSize) {
 			var updateBackUp = rt.getValue()[leftSize - 1];
@@ -832,7 +832,7 @@ $(document).ready(function() {
       if(this.level > lev){
         rt.unhighlight(this.list[lev]);
       }
-			var pos = rt.insertPos(addInfo, 0, rt.size() - 1);
+			var pos = rt.findHelp(addInfo, 0, rt.size() - 1);
       if(this.detail){
         rt.highlight(true);
         if(rt == this.root){
@@ -845,11 +845,11 @@ $(document).ready(function() {
           }
         }else{
           if(pos == 0){
-            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is less or equal than " + rt.value[0] + ", go to the most left child node.");
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is less than " + rt.value[0] + ", go to the left-most child node.");
           }else if(pos == rt.size_value){
-            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is bigger than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is bigger than or equal to " + rt.value[rt.size_value - 1] + ", go to the right-most child node.");
           }else{
-            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is bigger than " + rt.value[pos - 1] + " and " + addInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is bigger than or equal to" + rt.value[pos - 1] + " and is less than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
           }
         }
         (this.jsav).step();
@@ -917,20 +917,20 @@ $(document).ready(function() {
     if(rt.isLeaf()){
       last.highlight(false);
       rt.highlight(true);
-      (this.jsav).umsg("We have find the correct leaf node.");
+      (this.jsav).umsg("We have found the correct leaf node.");
       (this.jsav).step();
     }else{
       if(rt == this.root){
         rt.unhighlight(this.list[0]);
       }
-      var pos = rt.insertPos(findInfo, 0, rt.size() - 1);
+      var pos = rt.findHelp(findInfo, 0, rt.size() - 1);
       rt.highlight(true);
       if(pos == 0){
-        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is less or equal than " + rt.value[0] + ", go to the most left child node.");
+        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is less than " + rt.value[0] + ", go to the left-most child node.");
       }else if(pos == rt.size_value){
-        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is bigger than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
+        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is greater than or equal to " + rt.value[rt.size_value - 1] + ", go to the right-most child node.");
       }else{
-        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is bigger than " + rt.value[pos - 1] + " and " + findInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is greater than or equal to " + rt.value[pos - 1] + " and is less than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
       }
       (this.jsav).step();
       if(rt != this.root){

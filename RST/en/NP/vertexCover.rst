@@ -17,8 +17,8 @@ THE VERTEX COVER PROBLEM.
 
 .. inlineav:: vertexCoverCON ss
    :long_name: Vertex Cover
-   :links: AV/Development/NP/vertexCoverCON.css
-   :scripts: AV/Development/NP/vertexCoverCON.js
+   :links: AV/NP/vertexCoverCON.css
+   :scripts: AV/NP/vertexCoverCON.js
    :output: show
 
 Try out an instance of the Vertex Cover problem on your own.

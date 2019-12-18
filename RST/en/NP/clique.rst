@@ -17,8 +17,8 @@ CLIQUE PROBLEM
 
 .. inlineav:: cliqueCON ss
    :long_name: Clique
-   :links: AV/Development/NP/cliqueCON.css
-   :scripts: AV/Development/NP/cliqueCON.js
+   :links: AV/NP/cliqueCON.css
+   :scripts: AV/NP/cliqueCON.js
    :output: show
 
 Try out an instance of the Clique problem on your own.

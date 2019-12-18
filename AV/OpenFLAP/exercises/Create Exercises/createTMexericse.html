@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercise Editor</title>
+    <link rel="stylesheet" href="./createTMexercise.css" type="text/css" />
+
+</head>
+
+<body>
+    <div id="container">
+        <h1>Exercise Generator</h1>
+
+        <div class="dropdown">
+            <button class="dropbtn">Hint</button>
+            <div class="dropdown-content">
+                <p>LaTex supported for expressions.</p>
+            </div>
+        </div>
+        <div>
+            <input class="resetTransducer" type="radio" name="mode2" value="tm" checked> TM(Acceptor)
+            <input id="transducer" type="radio" name="mode2" value="tm"> TM(Transducer)
+        </div>
+        <form name="exercises" action="" method="get">
+            <div id="problems">
+                <fieldset>
+                    <legend>Problem 1</legend>
+                    <div>
+                        <input type="radio" name="mode" value="noGraph" checked>Expression Only
+                        <input type="radio" name="mode" value="yesGraph">With Wrong Graph
+                    </div>
+                    <input type="radio" name="show1" value="true" checked>
+                    <span>Expression: </span>
+                    <input type="text" name="expression">
+                    <br>
+                    <input type="radio" name="show1" value="false">
+                    <span>Description: </span>
+                    <input type="text" name="description">
+                    <br>
+
+                    <div class="testCases">
+                        <div class="testCase">
+                            <span>Test Case 1: </span>
+
+                            <div id="acceptReject">
+                                <input type="radio" name="result1" value="true" checked> <span>Accept</span>
+                                <input type="radio" name="result1" value="false"> <span>Reject</span>
+                            </div>
+
+                            <input id="transducerOne" type="text" name="testString">
+
+                            <div id="transducerTwo">
+                                <div id="box1">
+                                    <p>Input</p>
+                                    <input type="text" name="testStringa">
+                                </div>
+                                <div id="box2">
+                                    <p>Output</p>
+                                    <input type="text" name="testStringb">
+                                </div>
+
+                                <br>
+                            </div>
+                        </div>
+                        </div>
+                        <button type="button" id="addTestCase">Add another test case</button>
+                        <button type="button" id="editGraph">Edit Graph</button>
+                        <button type="button" id="uploadGraph">Upload Graph</button>
+                        <input type="file" id="upload" style="display: none">
+
+                </fieldset>
+            </div>
+        </form>
+        <button id="addExercise">Add another problem</button>
+        <button id="getjson">get JSON</button>
+        <button id="fixerButton">FAFixer</button>
+        <button id="testerButton">FATester</button>
+        <p id="download"></p>
+    </div>
+
+    <div id="av" style="visibility: hidden">
+        <!-- <p class="jsavoutput jsavline"></p> -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="../../../formal_language/fa/underscore-min.js"></script>
+
+    <script src="../../../../../JSAV/lib/jquery.transit.js"></script>
+    <script src="../../../../../JSAV/lib/raphael.js"></script>
+    <script src="../../../../../JSAV/lib/dagre.min.js"></script>
+    <script src="../../../../../JSAV/build/JSAV.js"></script>
+    <script src="../fa/FA.js"></script>
+    <script src="../fa/serializableGraph.js"></script>
+    <script src="createTMexercise.js"></script>
+</body>
+
+</html>

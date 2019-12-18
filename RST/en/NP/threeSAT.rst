@@ -17,8 +17,8 @@
 
 .. inlineav:: threeSATCON ss
    :long_name: 3-Satisfiability
-   :links: AV/Development/NP/threeSATCON.css
-   :scripts: AV/Development/NP/threeSATCON.js
+   :links: AV/NP/threeSATCON.css
+   :scripts: AV/NP/threeSATCON.js
    :output: show
 
 Try out an instance of the 3-SAT problem on your own.

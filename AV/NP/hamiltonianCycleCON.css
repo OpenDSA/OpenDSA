@@ -1,0 +1,17 @@
+#hamiltonianCycleCON {
+  height: 500px;
+}
+
+#hamiltonianCycleCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#hamiltonianCycleCON .edgehighlight1{
+        stroke:Brown;
+        stroke-width: 4;
+}
+
+#hamiltonianCycleCON .edgehighlight2{
+        stroke: SteelBlue;
+        stroke-width: 4;
+}

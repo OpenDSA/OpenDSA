@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Insertion Sort Running Time Analysis</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+</head>
+
+<body>
+<div id="container">
+  <table class="headerTable">
+    <tr>
+      <td class="headerCenter">
+        <h1>Testing Mathjax with JSAV</h1>
+		<h2>Test in HTML $\theta(n^2)$</h2>
+      </td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" value="About" />
+      </td>
+    </tr>
+  </table>
+
+  <form id="ssperform">
+    <p>
+      <input type="button" id="runit" name="runit" value="Run" />
+      <input type="button" id="reset" name="reset" value="Reset" />
+    </p>
+  </form>
+  <div class="avcontainer">
+    <span class="jsavcounter"></span>
+    <div class="jsavcontrols"></div>
+    <p class="jsavoutput jsavline" readonly="readonly"></p>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="../../lib/jquery.transit.js"></script>
+<script src="../../lib/raphael.js"></script>
+<script src="../../lib/JSAV-min.js"></script>
+<script src="../../lib/odsaUtils-min.js"></script>
+<script src="../../lib/odsaAV-min.js"></script>
+<script src="../../DataStructures/binaryheap.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": {
+        scale: "80"
+      }
+    });
+    </script>
+<script src="mathjax_test.js"></script>
+</body>
+</html>

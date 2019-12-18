@@ -261,7 +261,11 @@ Another such problem is called K-CLIQUE.
    **Output:** YES if there is a complete subgraph of at
    least :math:`k` vertices, and NO otherwise.
 
-.. avembed:: AV/Development/clique.html ss
+.. inlineav:: cliqueCON ss
+   :long_name: Clique Problem
+   :links: AV/NP/cliqueCON.css
+   :scripts: AV/NP/cliqueCON.js
+   :output: show
 
 Nobody knows whether there is a polynomial time solution for
 K-CLIQUE, but if such an algorithm is found for K-CLIQUE *or*

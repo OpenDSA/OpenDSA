@@ -1,0 +1,43 @@
+#circuitSATCON {
+  height: 550px;
+}
+
+#circuitSATCON .jsavoutput.jsavline {
+  height: 35px;
+}
+
+#circuitSATCON .headerrow{
+	background-color:Silver !important;
+}
+
+#circuitSATCON .labeltrue{
+	color: Green;
+}
+#circuitSATCON .labelfalse{
+	color: Red;
+}
+#circuitSATCON .celltrue{
+	background-color: #93C572 !important;
+}
+#circuitSATCON .cellfalse{
+	background-color: #CB6D51 !important;
+}
+#circuitSATCON .numlabel{
+       color:Blue;
+}
+#circuitSATCON .gatefocus{
+       fill: #6A5ACD;
+       opacity:0.5;
+       fill-opacity:0.5;
+}
+#circuitSATCON .cellfocus{
+       background-color: SlateBlue !important;
+       opacity:0.5;
+}
+#circuitSATCON .cellfill{
+       background-color: Tan !important;
+       opacity:0.5;
+}
+#circuitSATCON .truthtablefalse{
+       background-color: #FFB6C1 !important;
+}

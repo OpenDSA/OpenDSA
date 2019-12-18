@@ -1,0 +1,19 @@
+#SATCON {
+  height: 475px;
+}
+
+#SATCON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#SATCON .headerrow{
+  background-color:Silver !important;
+}
+
+#SATCON .celltrue{
+  background-color: #93C572 !important;
+}
+#SATCON .cellfalse{
+  background-color: #CB6D51 !important;
+}
+
