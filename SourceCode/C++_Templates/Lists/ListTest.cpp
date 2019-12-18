@@ -130,7 +130,7 @@ static bool find(List<T> &L, T k) {
     // Must initialized or get warning. Not easy to set so just allow compiler warning.
     T dummy;
     for (int i = 0; i < TEST_SIZE; i++) {
-     checkIns(l, tester, typeFix(i, dummy));
+      checkIns(l, tester, typeFix(i, dummy));
     }
 
     // Clear both lists
@@ -143,7 +143,7 @@ static bool find(List<T> &L, T k) {
    }
 
     doSomethingOnNonEmpList(l, tester);
-}
+  }
 
   /* Set both lists provided to empty/new state.
   * The first list is OpenDSA.
@@ -373,7 +373,6 @@ static bool find(List<T> &L, T k) {
     if (!l.append(item)) {
       record->printError("The append method in " + string(typeid(l).name()) + " returned false.");
     }
-
     // Verify lists are the same.
     check(l, tester, l.currPos());
   }
@@ -413,7 +412,7 @@ static bool find(List<T> &L, T k) {
         record->printError("An unexpected value at the index of " + to_string(i) + " in " + string(typeid(l).name()) + ". \nValue in list: " + my_to_string(l.getValue()) + "\nValue expected: " + my_to_string(tester.at(i)));
       }
       l.next();
-   }
+    }
     l.moveToPos(curr);
   }
 

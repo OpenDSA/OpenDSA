@@ -120,7 +120,7 @@ static bool find(List &L, ListItemType k) {
 
     // Test moveToStart, moveToEnd, prev, and next
     doSomethingOnEmpList(l);
-    
+
     // Compare list with vector to test length, getValue,
     // currPos, and remove. Add items by inserting
     vector<ListItemType> tester;
@@ -190,7 +190,6 @@ static bool find(List &L, ListItemType k) {
       // Do nothing since expect this exception
     }
 
-    // TODO add to all versions
     // check getting value on empty list
     try {
       item = l.getValue();
@@ -272,7 +271,6 @@ static bool find(List &L, ListItemType k) {
       // Do nothing since expect this exception
     }
  
-    // TODO add to all versions
     // Test getValue at end of list
     try {
       item = l.getValue();
@@ -399,6 +397,7 @@ static bool find(List &L, ListItemType k) {
     }
 
     // Check the value stored in the current position
+   // Note vector does not work if empty list.
     if (l.getValue() != tester.at(curr)) {
       record->printError("An unexpected list item in " + string(typeid(l).name()) + ". \nItem in list: " + to_string(l.getValue()) + "\nValue expected: " + to_string(tester.at(curr)));
     }

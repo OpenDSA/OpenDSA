@@ -11,7 +11,7 @@ public class ErrorRec {
   // Print error messages in a text file
   PrintWriter errorFile = null;
   // Added at the beginning of error messages
-  static final String DEFAULT_MSG_START = "* ***OpenDSA Error*** *\n";
+  static final String DEFAULT_MSG_START = "* ***OpenDSA Error Start*** *\n";
    // Added at the end of error messages
    static final String DEFAULT_MSG_END = "\n* ***OpenDSA Error End*** *\n";
   // Added at the end of the name of error log file

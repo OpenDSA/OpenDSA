@@ -1,6 +1,6 @@
-/* *** ODSATag: AList *** */
 import java.util.NoSuchElementException;
 
+/* *** ODSATag: AList *** */
 // Array-based list implementation
 /* *** ODSATag: AListVars *** */
 class AList<E> implements List<E> {

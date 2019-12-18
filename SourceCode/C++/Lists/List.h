@@ -7,9 +7,11 @@
 
 using namespace std;
 
+// Can change type stored but assumed int here.
 typedef int ListItemType;
 
 /* *** ODSATag: ListADT *** */
+/* *** ODSATag: ListADT1 *** */
 // List class ADT.
 class List { // List class ADT
 public:
@@ -29,7 +31,9 @@ public:
 
   // Remove and return the current element
   virtual ListItemType remove() =0;
+/* *** ODSAendTag: ListADT1 *** */
 
+/* *** ODSATag: ListADT2 *** */
   // Set the current position to the start of the list
   virtual void moveToStart() =0;
 
@@ -44,7 +48,9 @@ public:
 
   // Return the number of elements in the list
   virtual int length() =0;
+/* *** ODSAendTag: ListADT2 *** */
 
+/* *** ODSATag: ListADT3 *** */
   // Return the position of the current element
   virtual int currPos() =0;
 
@@ -59,6 +65,7 @@ public:
   
   virtual bool isEmpty() =0;
 };
+/* *** ODSAendTag: ListADT3 *** */
 /* *** ODSAendTag: ListADT *** */
 
 #endif /* LIST_H */

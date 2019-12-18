@@ -1,5 +1,4 @@
 /* ADT list - array-based implementation */
-
 #ifndef ALIST_H
 #define ALIST_H
 
@@ -96,7 +95,6 @@ public:
   
   // Check if the list is empty
   bool isEmpty() { return listSize == 0; }
-
 };
 /* *** ODSAendTag: AList *** */
 
