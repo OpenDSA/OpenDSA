@@ -9,11 +9,12 @@
    :topic: Finite Automata
 
 
-1.3.3 example
-================================
-1.3.3
--------------------------------
-.. inlineav:: ChomskyCON ff
-   :links:   AV/PIECho/ChomskyCON.css
-   :scripts: DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/PIECho/ChomskyCON.js
+Frame mathematical
+=================================
+Frame mathematical
+--------------------------------------
+
+.. inlineav:: Mathematical ff
+   :links: AV/PIExample/Mathematical.css
+   :scripts: DataStructures/PIFrames.js AV/PIExample/Mathematical.js
    :output: show

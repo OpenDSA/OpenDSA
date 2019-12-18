@@ -142,11 +142,10 @@ The constructed NPDA:
       state = f
 
 
-   What are drawbacks? 
+   What are the drawbacks? 
 
-   * for larger grammar, case statement can get quite 
-
-   Can put the case statement into a generic routine 
+   * For a larger grammar, case statement can get quite long
+   * Can put the case statement into a generic routine 
 
 
 LL Parse Table: 2-dimensional array

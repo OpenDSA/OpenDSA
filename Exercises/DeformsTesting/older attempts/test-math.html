@@ -3,11 +3,11 @@
 <head>
     <title>Deforms Basic Problem</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.1/math.min.js"></script>
-    <script src="./jiggzson-nerdamer-432dd54/nerdamer.core.js"></script>
-    <script src="./jiggzson-nerdamer-432dd54/Algebra.js"></script>
-    <script src="./jiggzson-nerdamer-432dd54/Calculus.js"></script>
-    <script src="./jiggzson-nerdamer-432dd54/Solve.js"></script>
-    <script src="./jiggzson-nerdamer-432dd54/Extra.js"></script>
+    <script src=".././jiggzson-nerdamer-432dd54/nerdamer.core.js"></script>
+    <script src=".././jiggzson-nerdamer-432dd54/Algebra.js"></script>
+    <script src=".././jiggzson-nerdamer-432dd54/Calculus.js"></script>
+    <script src=".././jiggzson-nerdamer-432dd54/Solve.js"></script>
+    <script src=".././jiggzson-nerdamer-432dd54/Extra.js"></script>
 </head>
 
 <body>
@@ -42,12 +42,13 @@
                     ]
         )*/
         
-        var soln = nerdamer.solveEquations(
+        /* var soln = nerdamer.solveEquations(
                     [
                         "0.32=sin(x)"
                     ]
-        )
+        ) */
         
+        var soln = nerdamer.solveEquations(["0.001 = 0.000023 * x * 0.8","x = y + 0"]);
         /*
         var subs = [
              nerdamer("d_T=a*(T-T_0)*L"),

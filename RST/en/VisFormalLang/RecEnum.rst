@@ -129,7 +129,7 @@ enumerable.
 
    **Proof:** Use diagonalization
 
-   | :math:`S` is countable, so it's elements can be enumerated.
+   | :math:`S` is countable, so its elements can be enumerated.
    | :math:`S = \{s_1,s_2,s_3,s_4,s_5,s_6 \ldots\}`
    | An element :math:`t \in 2^S` can be represented by a sequence of
      0's and 1's such that the :math:`i` th position in :math:`t` is 1
@@ -419,8 +419,9 @@ hand side.
         :math:`S \Rightarrow x \Rightarrow w` 
 
    * List all strings that can be derived in three steps. 
-   * etc. 
-   * It is possible to enumerate all strings in the language. 
+   * Continue in this way for strings deriveable in any finite number
+     of steps.
+   * Therefore, it is possible to enumerate all strings in the language. 
 
 .. topic:: Theorem
            

@@ -1,6 +1,6 @@
 {
-  "title": "Programmed Instruction Example",
-  "desc": "Programmed Instruction Example",
+  "title": "Programmed Instruction Examples",
+  "desc": "Programmed Instruction Examples",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -62,13 +62,18 @@
     "required": true
   }, 
   "chapters": {
-    "Preface": {
-      "Intro": {}
-    },
-    "Example": {
-      "PIExample/FrameExample": {},
+    "Old Examples": {
       "PIExample/NFAtoDFAExample":{},
       "PIExample/RestingFillInSpace":{}
+    },
+    "PI Example": {
+      "PIExample/Echo_frame1": {}
+    },
+    "grammars": {
+      "PIExample/grammar": {}
+    },
+    "mathematical": {
+      "PIExample/mathematical": {}
     }
   }
 }

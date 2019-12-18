@@ -9,23 +9,34 @@
 
 class Workspace
 {
-    constructor(jsavCanvasObj, dim_obj, workspaceid)
+    constructor(jsavCanvasObj, dim_obj, workspaceid, geb, gpr)
     {
         this.id=workspaceid;
         this.name="wk"+workspaceid;
         this.globalSectionObj = jsavCanvasObj;
+        this.globalEquationBank = geb;
+        this.globalPointerReference = gpr;
+
+        // INITIALIZATIONS
         this.LIST_OF_EQUATIONS_IN_WORKSPACE = {};
         this.LIST_OF_ASSOCIATIONS = {};
         this.equationCounter = 0;
         this.equationHashMap = {};  // This is used to keep track of an enumerate
                                     // multiple instances of the same equation.
 
-        // Actually create the div for the new workspace
+        // Actually create the region for the new workspace
         this.DIMENSIONS = {
             "POSITION_X": dim_obj["CORNER_X"],
             "POSITION_Y": dim_obj["CORNER_Y"],
             "WIDTH": dim_obj["WIDTH"],
-            "HEIGHT": dim_obj["HEIGHT"]
+            "HEIGHT": dim_obj["HEIGHT"],
+            "ELEMENTS": {
+                "POSITION_X": dim_obj["CORNER_X"]+5,
+                "POSITION_Y": dim_obj["CORNER_Y"]+40,
+                "WIDTH": 30,
+                "HEIGHT_PAD": 10,
+                "HEIGHT": 50
+            }
         }
         
         // Hold references to the individual elements in the box,
@@ -104,7 +115,7 @@ class Workspace
         document.getElementById(this.name+"addeq").addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation addition here.
-            this.addNewEquation("Equation name");
+            this.addNewEquation();
         });
 
         this.elements[4] = {
@@ -119,8 +130,12 @@ class Workspace
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
         };
-        this.elements[4]["div"].setAttribute("id",this.name+"deleq");
-        document.getElementById(this.name+"deleq").addEventListener('click', e => {
+        // this.elements[4]["div"].setAttribute("id",this.name+"deleq");
+        // document.getElementById(this.name+"deleq").addEventListener('click', e => {
+        //     e.stopPropagation();
+        //     // Add function call to equation deletion here.
+        // });
+        this.elements[4]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation deletion here.
         });
@@ -137,10 +152,15 @@ class Workspace
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
         };
-        this.elements[5]["div"].setAttribute("id",this.name+"solveeq");
-        document.getElementById(this.name+"solveeq").addEventListener('click', e => {
+        // this.elements[5]["div"].setAttribute("id",this.name+"solveeq");
+        // document.getElementById(this.name+"solveeq").addEventListener('click', e => {
+        //     e.stopPropagation();
+        //    // Add function call to equation set solving and result propagation here.
+        // });
+        this.elements[5]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
            // Add function call to equation set solving and result propagation here.
+           this.solveEquations();
         });
     }
     destroyBox()
@@ -208,29 +228,108 @@ class Workspace
         return result; TODO*/
         return "#FBEEE4";
     }
-    addNewEquation(equationListEntity)
+    addNewEquation()
     {
-        console.log(this.name,"adding equation", equationListEntity)
-        return;
         // equationListEntity is of type equation (which we will define later) and not 
         // necessarily everything in equation.js
-        this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = equationListEntity 
-        //        |_>  To be elaborated for additional operations.
+        var equationListEntity = this.globalEquationBank.currentSelectedEquationObject.eqobject;
+        var lastHashMapID = 0;
+        if(equationListEntity.name in this.equationHashMap)
+            lastHashMapID = (list => list[list.length-1])
+            (this.equationHashMap[equationListEntity.name]).counter+1;
+        else
+            lastHashMapID = 1;
 
+        // Creating the new active equation object, that handles the display
+        var newActiveEquation = new ActiveEquation(
+            equationListEntity,
+            this.DIMENSIONS.ELEMENTS,
+            this.name+"_"+
+            equationListEntity["id"]+"_"+(this.equationCounter+1)+"_"+
+            lastHashMapID,
+            this.globalSectionObj,
+            this.globalPointerReference
+        )
+        this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
+        this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+
+        // Handling the internal initial bookkeeping
+        this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation
+        //        |_>  To be elaborated for additional operations.
+        
         if(equationListEntity.name in this.equationHashMap)
         {
-            function getLastElement(arraylist)
-            {
-                return arraylist[arraylist.length-1];
-            }
             this.equationHashMap[equationListEntity.name]
-            .push(getLastElement(this.equationHashMap[equationListEntity.name])+1)
+            .push(
+                {
+                    "instance": newActiveEquation,
+                    "counter": lastHashMapID,
+                    "uniqueID": this.equationCounter++,
+                }
+            )
         }
         else
         {
-            this.equationHashMap[equationListEntity.name]
-            this.equationCounter++;
+            this.equationHashMap[equationListEntity["name"]] = [
+                {
+                    "instance": newActiveEquation,
+                    "counter": 1,
+                    "uniqueID": this.equationCounter++,
+                }
+            ];
         }
+        //console.log(this.equationHashMap);
+    }
+    addAssociations()
+    {
+
+    }
+    solveEquations()
+    {
+        // Step 1: See which equations are selected
+        var equationSet = [];
+        var equationObjectSet = [];
+        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        {
+            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+            if(currentEqn.selected == true)
+            {
+                // console.log(currentEqn.name);
+                // for(var varIndex in currentEqn.variables)
+                // {
+                //     console.log(currentEqn.variables[varIndex]);
+                // }
+                equationObjectSet.push(currentEqn);
+                equationSet.push(currentEqn.createSolvableRepresentation());
+            }
+        }
+        console.log(equationSet);
+
+        // Step 2: Feed the list to nerdamer, see the output.
+        var soln = null;
+        if(equationSet.length > 1)
+            soln = nerdamer.solveEquations(equationSet);
+        else
+            //soln = equationObjectSet[0].solve();
+            soln = equationObjectSet[0].solve();
+        console.log(soln);
+
+        // Step 3: Create the solution boxes, new boxes inside the workspace.
+        new ValueBox(
+            false,
+            {
+                "visuals": this.DIMENSIONS.ELEMENTS,
+                "dataset": {
+                    "value": soln[1],
+                    "unit": "",
+                    "valueDisplay": soln[0]+"="+soln[1],
+                    "unitDisplay": "",
+                    "domain": ""
+                }
+            },
+            this.globalSectionObj,
+            this.globalPointerReference
+        )
     }
 }
 
