@@ -410,19 +410,19 @@
             if ($("input[type=submit]").is(":visible")) 
             {
               $("input[type=submit]").hide();
+              var timeFlag = 1;
               if(question.correctFeedback != undefined)
               {
                  //Hide the button and show the correct statement
                  $(".PIFRAMES").append(`<p>Correct: ${question.correctFeedback}</p>`);
-                 var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
-                 setTimeout(() => forwardButton.click(), 2000);
+                 var timeFlag = 2;
               }
               else
               {
                 $(".PIFRAMES").append(`<p>Correct!</p>`);
-                var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
-                setTimeout(() => forwardButton.click(), 1000);
               }
+              var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
+              setTimeout(() => forwardButton.click(), (1000 * timeFlag));
             }
 
             //the last question in the slideshow has been answered correctly, so enable the jsavend button
@@ -437,13 +437,19 @@
             if ($("input[type=submit]").is(":visible")) 
             {
               $("input[type=submit]").hide();
+              
+              var timeFlag = 1;
+              if(question.incorrectFeedback != undefined)
+              {
+                document.getElementById("feedback").innerHTML = "Incorrect: " + `${question.incorrectFeedback}`;
+                timeFlag = 2;
+              }
               $("#feedback").show();
               this.disableForwardButton();
-
               setTimeout(() => {
                 $("input[type=submit]").show();
                 $("#feedback").hide();
-              }, 1000);
+              }, (1000 * timeFlag));
             }
           }
         },
@@ -678,7 +684,7 @@
 
     saveAndCheckStudentAnswer: function(av_name) {
       form = $(`form.${av_name}`);
-      if (questionType === "textBox" || questionType === "textBoxAny" || questionType === "textBoxStrict" || questionType === "textBoxFuzzy") {
+      if (questionType.includes("textBox")) {
         checked = form.children(`input[name=${av_name}]`)[0].value;
       } else if (questionType === "select") {
         //If we have more than answer selected, in case of checkboxes, create a list and push all answers inside the list

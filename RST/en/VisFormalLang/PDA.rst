@@ -27,7 +27,7 @@ Recall: A DFA :math:`=(Q, \Sigma, \delta, q_0, F)`.
 In a DFA, the tape is read only, the head moves to the right only.
 DFAs are limited in power.
 They recognize regular languages but cannot recognize many other
-"simple" langages like :math:`a^nb^n`. 
+"simple" languages like :math:`a^nb^n`. 
 
 We are now going to give the DFA a stack.
 This new machine is called a Pushdown Automata (PDA). 
@@ -147,7 +147,7 @@ state.
       \end{array} 
 
 
-Let us see the tace for accepting the string $aaabbb$.
+Let us see the trace for accepting the string $aaabbb$.
 
 .. inlineav:: PDATrace1 ss
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/PDA/PDATrace1.css
@@ -318,7 +318,7 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
       :scripts: AV/OpenFLAP-Test/PDA2.js
       :align: center
 
-   | If :math:`M` accepted in some state, then that means the stack
+   | If :math:`M` is accepted in some state, then that means the stack
      was empty.
      In :math:`M'`, at the same state, the stack will contain only
      :math:`z'`, and the new transition can be followed to

@@ -115,8 +115,8 @@ JSAV
 Visualizations are developed using the JSAV (JavaScript Algorithm
 Visualization) library.
 Documentation for the JSAV API can be found at: http://jsav.io/
-If you have installed the development environment, then the JSAV
-git repository will have been loaded as a submodule.
+If you have installed the main OpenDSA repository, then the JSAV
+library will be in OpenDSA's ``lib`` directory.
 
 
 ------------------------------------------
@@ -337,8 +337,10 @@ and then use "MinTTY".
 Then on Windows you will need to install "make"
 from http://gnuwin32.sourceforge.net/packages/make.htm.
 IMPORTANT: Put it in Program Files, NOT Program Files (x86).
-Then,edit your environment variable PATH to add:
+Then, edit your environment variable PATH to add:
 C:/Program Files/GnuWin32/bin.
+If you don't know how to edit an environment variable on Windows,
+google for "windows set environment variable".</p>
 
 Next, install nodejs (on Windows, you can get it from
 https://nodejs.org/en/download/).
@@ -357,11 +359,23 @@ drive, then add C:/Python27 and C:/Python27/Scripts to your PATH.
 Note: If you already have Python 2.7 installed, but it does not have
 pip, then it is so obsolete that it needs to be thrown away and
 replaced.
+By the way, if you think that you have Python installed already, you
+need to make sure that its not Python 3 (which won't work with our
+infrastructure).
+You can check by doing::
 
-Finally pop open a **new** Git Bash window, and clone the OpenDSA
-repo from https://github.com/OpenDSA/OpenDSA.
+  python --version
 
-Then do the following::
+Finally pop open a **new** Git Bash window, and you are ready to get
+started.
+The first thing that you will do is to clone the OpenDSA
+repository from https://github.com/OpenDSA/OpenDSA.
+If you are not already familiar with how to do this, then you will
+need to read some documentation on using Git since there are different
+ways to do the cloning operation.
+
+Once the repository is cloned (we assume here into a directory named
+``OpenDSA``) then do the following::
 
    cd OpenDSA
    pip install -r requirements.txt
