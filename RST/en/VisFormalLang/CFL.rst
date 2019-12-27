@@ -37,7 +37,7 @@ Examples for Not Regular languages:
 We know that not all languages are not regular, since we've proved
 some are not. Now we will look at a class of languages that is
 larger than the regular languages, and more powerful:
-Context-free languages..
+Context-free languages.
 
 **Definition:** A grammar :math:`G = (V, T, S, P)` is
 context-free if all productions are of the form
@@ -53,7 +53,7 @@ context-free if all productions are of the form
 
 The above definition for Grammars is exactly the same as the one we
 keep using from the first chapter in this book.
-This means that all grammras we used (including the Regular Grammars)
+This means that all grammars we used (including the Regular Grammars)
 are Context Free Grammars.
 
 .. topic:: Example
@@ -66,7 +66,7 @@ are Context Free Grammars.
 
    .. note::
 
-      We have seen this before! Its not regular!
+      We have seen this before! It's not regular!
 
 **Definition:** A linear grammar has at most one variable on the
 right hand side of any production.
