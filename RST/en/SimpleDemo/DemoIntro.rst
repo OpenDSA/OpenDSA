@@ -12,8 +12,10 @@ Slide Shows, KA and JSAV Exercises in OpenDSA
 Introduction
 ------------
 
-To get you started, the following "learning module" illustrates how to
-create some slideshows and exercises.
+To get you started, this module illustrates how to create some
+slideshows and exercises.
+The slideshows and exercises shown here can serve as starting points
+for you to create your own content.
 The source files for the visualizations that you see here can be found
 by looking at the source for the reStructuredText (RST) file that holds
 the prose for this tutorial (including the directives for embedding
@@ -21,9 +23,13 @@ the visualizations) at ``RST/en/SimpleDemo/DemoIntro.rst``.
 The configuration file that lets you compile this "book" is in
 ``config/SimpleDemo.json``.
 
-No particular "algorithm" is being illustrated here, we are showing
-slideshows and exercises as starting points for you to create your own
-content.
+If you haven't done so already, you probabably should read the Getting
+Started documentation for setting up the OpenDSA environment on your
+own computer:
+See https://opendsa.readthedocs.io/en/latest/GettingStarted.html.
+You will probably also want to have handy the documentation on the
+JSAV graphics library that we use, available at
+http://jsav.io/.
 
 
 A simple diagram
@@ -151,6 +157,37 @@ If you want user input or interaction, then do it as a standalone AV
 embedded with the ``avembed`` directive.
 
 
+Displaying data structures
+--------------------------
+
+One of JSAV's most important jobs is to support content developers by
+displaying standard data structures for them.
+Here is diagram that uses the linked list ADT.
+
+.. inlineav:: llistRepCON dgm
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistRepCON.js
+   :align: center
+
+And here is a slideshow that shows how to insert into a linked list.
+It also shows a code display object.
+
+.. inlineav:: llistInsertCON ss
+   :long_name: Linked List Insert Slideshow
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/List/llistInsertCON.js
+   :output: show
+
+Here is an example of using the binary tree API, along with a pointer
+object and ``addClass`` to color some nodes.
+
+.. inlineav:: BSTsearchCON ss
+   :long_name: BST Search Slideshow
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTsearchCON.js
+   :output: show
+
+            
 A Khan Academy Exercise with JSAV object
 ----------------------------------------
 
