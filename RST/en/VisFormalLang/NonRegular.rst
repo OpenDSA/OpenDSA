@@ -461,6 +461,11 @@ The moves in the game are:
       | :math:`\Rightarrow` There is no partition of :math:`w`. 
       | :math:`\Rightarrow L` is not regular.
 
+The following lets you play either side of the adversary argument "game".
+
+.. avembed:: AV/VisFormalLang/NonReg/PLGame.html ss
+   :long_name: Regular Pumping Lemmma
+
 
 **Use Closure Properties** to prove :math:`L` is not regular
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -255,7 +255,7 @@ Resulting Grammar :math:`G'` is such that :math:`L(G) = L(G')` and
 
 .. inlineav:: RemoveUselessCON ss
    :links:   AV/VisFormalLang/CFG/RemoveUselessCON.css
-   :scripts: lib/underscore.js JSAV/lib/dagre.min.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/CFG/RemoveUselessCON.js
+   :scripts: lib/underscore.js lib/dagre.min.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/CFG/RemoveUselessCON.js
    :output: show
 
 
@@ -311,7 +311,7 @@ Then :math:`\exists` a CFG :math:`G'` having no
 
 .. inlineav:: RemoveLambdaCON ss
    :links:   AV/VisFormalLang/CFG/RemoveLambdaCON.css
-   :scripts: AV/VisFormalLang/CFG/RemoveLambdaCON.js
+   :scripts: lib/underscore.js DataStructures/FLA/PDA.js AV/VisFormalLang/CFG/RemoveLambdaCON.js
    :output: show
 
 **Definition:** :term:`Unit Production <unit production>`

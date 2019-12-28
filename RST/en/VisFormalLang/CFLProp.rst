@@ -259,9 +259,9 @@ QED
 .. topic:: Exercise
 
    Prove the following is not a CFL by applying the 
-   pumping lemma. (Answer is at the end of this handout). 
+   pumping lemma. (Answer is at the end of this module). 
 
-      | :math:`L = \{ a^{2n}b^{2p}c^nd^p : n,p \ge 0 \}`.
+      | :math:`L = \{ a^{2n}b^{2m}c^nd^m : n,m \ge 0 \}`.
 
 .. topic:: Example
 
@@ -563,3 +563,9 @@ Example: :math:`L=\{a^nb^n | n>0\}`,
         :math:`|vxy| \le m` and for all :math:`i\ ge 0`,
         :math:`uv^ixy^iz` is in :math:`L`.
       | Contradiction, thus, :math:`L` is not a CFL. Q.E.D.
+
+The following "adversary game" is similar to the one used to help
+prove that a grammar is not regular.
+
+.. avembed:: AV/VisFormalLang/CFG/CFPumpingLemma.html ss
+   :long_name: Context Free Pumping Lemma

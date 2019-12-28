@@ -8,7 +8,7 @@ $(document).ready(function() {
     [\"C\",\"→\",\"Cc\"],\
     [\"C\",\"→\",\"e\"]]";
     var grammerArray = JSON.parse(grammar);
-    var lastRow = grammerArraㅔy.length;
+    var lastRow = grammerArray.length;
     grammerArray.push(["", arrow, ""]);
     var grammerMatrix = av.ds.matrix(grammerArray, {style: "table", left: 10});
     av.displayInit();

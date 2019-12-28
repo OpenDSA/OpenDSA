@@ -1,5 +1,3 @@
-document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
-document.write('<script src="../../../AV/Development/formal_language/contextFree/ContextFreeGrammarTransformer.js"></script>');
 $(document).ready(function() {
 "use strict";
 var av_name = "RemoveLambdaCON";
