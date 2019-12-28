@@ -5,6 +5,9 @@ RFLAGS=
 
 all: Analysis Demo Misc Lists Binary Sorting Searching Randomized BufferPool Memman Indexing General Graphs
 
+build:
+	@mkdir build
+
 clean:
 	-rm -rf build
 	mkdir build
@@ -90,7 +93,7 @@ MinMax: Misc/MinMax.java
 
 Lists: ListTest DoubleTest FreeList StackTest QueueTest ListAlt
 
-ListTest: build/ListTest/success
+ListTest: build build/ListTest/success
 
 build/ListTest/success: Lists/ListTest.java Lists/List.java Lists/AList.java Lists/LList.java Lists/Link.java Utils/ErrorRec.java
 	@echo "Array-based and Linked List Test"

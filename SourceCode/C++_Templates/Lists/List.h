@@ -7,13 +7,10 @@
 
 using namespace std;
 
-// Can change type stored but assumed int here.
-typedef int ListItemType;
-
 /* *** ODSATag: ListADT *** */
 /* *** ODSATag: ListADT1 *** */
 // List class ADT.
-class List { // List class ADT
+template<class T> class List { // List class ADT
 public:
   // Destructor
   virtual ~ List () =default;
@@ -23,18 +20,17 @@ public:
 
   // Insert "it" at the current location
   // The client must ensure that the list's capacity is not exceeded
-  virtual bool insert(const ListItemType& it) =0;
+  virtual bool insert(const T& it) =0;
 
   // Append "it" at the end of the list
   // The client must ensure that the list's capacity is not exceeded
-  virtual bool append(const ListItemType& it) =0;
+  virtual bool append(const T& it) =0;
 
   // Remove and return the current element
-  virtual ListItemType remove() =0;
+  virtual T remove() =0;
 /* *** ODSAendTag: ListADT1 *** */
 
-/* *** ODSATag: ListADT2 *** */
-  // Set the current position to the start of the list
+/* *** ODSATag: ListADT2 *** */  // Set the current position to the start of the list
   virtual void moveToStart() =0;
 
   // Set the current position to the end of the list
@@ -61,7 +57,7 @@ public:
   virtual bool isAtEnd() =0;
 
   // Return the current element
-  virtual ListItemType getValue() =0;
+  virtual T getValue() =0;
   
   virtual bool isEmpty() =0;
 };

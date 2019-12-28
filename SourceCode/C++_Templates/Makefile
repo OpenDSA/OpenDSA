@@ -2,7 +2,7 @@
 CFLAGS= -s -Wall -O -DUNIX
 # Debugging
 #CFLAGS= -g -Wall -DUNIX
-CC= g++ -std=c++0x
+CC= g++ -std=c++11
 
 # Imlicit pattern rule for making .o files from .cpp files
 %.o: %.cpp

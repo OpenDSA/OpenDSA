@@ -5,6 +5,9 @@ RFLAGS=
 
 all: Demo Misc Lists Binary Sorting Searching
 
+build:
+	@mkdir build
+
 clean:
 	-rm -rf build
 	mkdir build
@@ -46,7 +49,7 @@ build/Anal/success: Misc/Anal.java
 
 Lists: ListTest DoubleTest FreeList StackTest QueueTest
 
-ListTest: build/ListTest/success
+ListTest: build build/ListTest/success
 
 build/ListTest/success: Lists/ListTest.java Lists/List.java Lists/AList.java Lists/LList.java Lists/Link.java Utils/ErrorRec.java
 	@echo "Array-based and Linked List Test"

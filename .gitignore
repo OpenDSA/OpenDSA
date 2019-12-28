@@ -73,3 +73,20 @@ env
 
 # todo files
 tasks.todo
+
+# Added by Steven Huss-Lederman for Visual Studio Code development on Mac
+# how chose to name executables
+*.out
+# internal C++ files
+*.dSYM
+# configuration folder
+.vscode/
+
+# For Mac file system
+.DS_Store
+# For symbolic link needed for IDE. Actual file in utils/
+SourceCode/C++/Lists/ErrorRec.h
+SourceCode/Java/Lists/ErrorRec.java
+# created when testing in IDE
+success
+ListTest_error.log

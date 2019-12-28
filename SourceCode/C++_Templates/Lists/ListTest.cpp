@@ -1,3 +1,5 @@
+// TODO run through memory checker
+
 // #include "LList.h"
 #include "AList.h"
 #include "ErrorRec.h"
@@ -30,16 +32,16 @@ static string doSomethingResult;
 
 /*
  * This program checks if all the methods in AList, LList and DList classes work
- * properly. All tests are done on ListItemType from the List implementation.
+ * properly.
  */
-class ListTest {
+template<class T> class ListTest {
 private:
   // The number of items stored in list during the test
   static const int TEST_SIZE = 9;
 
 public:
-  static void listIter(List &L) {
-    ListItemType it;
+  static void listIter(List<T> &L) {
+    T it;
 /* *** ODSATag: listiter *** */
 for (L.moveToStart(); !L.isAtEnd(); L.next()) {
   it = L.getValue();
@@ -48,13 +50,13 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
 /* *** ODSAendTag: listiter *** */
   }
 
-  static void doSomething(ListItemType it) {
-    doSomethingResult.append(to_string(it));
+  static void doSomething(T it) {
+    doSomethingResult.append(my_to_string(it));
   }
 
 /* *** ODSATag: listfind *** */
 // Return true if k is in list L, false otherwise
-static bool find(List &L, ListItemType k) {
+static bool find(List<T> &L, T k) {
   for (L.moveToStart(); !L.isAtEnd(); L.next())
     if (k == L.getValue()) return true; // Found k
   return false;                       // k not found
@@ -66,9 +68,9 @@ static bool find(List &L, ListItemType k) {
   * 
   * l List to test.
   */
-  static void testOther(List &l) {
+  static void testOther(List<T> &l) {
     // Create non-empty list of items.
-    ListItemType item = 10;
+    T item = 10;
     int loc, locExpect;
     const int NUMBER = 9;
     for (int i = 0; i <= NUMBER; i++) {
@@ -81,9 +83,9 @@ static bool find(List &L, ListItemType k) {
     const int VALUES[] = {NUMBER / 2  * 10, NUMBER * 10, 1 * 10};
     // find these three items.
     for (int i = 0; i < NUM_ITEMS; i++) {
-      item = (ListItemType)VALUES[i];
+      item = VALUES[i];
       if (!find(l, item)) {
-        record->printError("item " + to_string(item) + " not found on list");
+        record->printError("item " + my_to_string(item) + " not found on list");
       }
       loc = l.currPos();
       locExpect = item / 10 - 1;
@@ -98,7 +100,7 @@ static bool find(List &L, ListItemType k) {
     string expect;
     item = 10;
     for (int i = 0; i <= NUMBER; i++) {
-      expect.append(to_string(item));
+      expect.append(my_to_string(item));
       item += 10;
     }
     // Call iterator
@@ -114,19 +116,21 @@ static bool find(List &L, ListItemType k) {
   * 
   * l List to test.
   */
-  static void testList(List &l) {
+  static void testList(List<T> &l) {
     // Check empty list
     checkEmp(l);
 
     // Test moveToStart, moveToEnd, prev, and next
-    doSomethingOnEmpList(l);
+   doSomethingOnEmpList(l);
 
     // Compare list with vector to test length, getValue,
     // currPos, and remove. Add items by inserting
-    vector<ListItemType> tester;
+    vector<T> tester;
+    // This is an unused value to pass to methods so method overloading picks the correct one.
+    // Must initialized or get warning. Not easy to set so just allow compiler warning.
+    T dummy;
     for (int i = 0; i < TEST_SIZE; i++) {
-      // This assumes int and ListItemType are compatible.
-      checkIns(l, tester, (ListItemType)(100 + i));
+      checkIns(l, tester, typeFix(i, dummy));
     }
 
     // Clear both lists
@@ -135,9 +139,8 @@ static bool find(List &L, ListItemType k) {
     // Compare list with C++ vector to test length, getValue,
     // currPos, and remove. Add items by appending
     for (int i = 0; i < TEST_SIZE; i++) {
-      // No cast on last argument since assume ListItemType and int are compatible.
-      checkApp(l, tester, 100 + i);
-    }
+      checkApp(l, tester, typeFix(i, dummy));
+   }
 
     doSomethingOnNonEmpList(l, tester);
   }
@@ -146,7 +149,7 @@ static bool find(List &L, ListItemType k) {
   * The first list is OpenDSA.
   * The second list is a standard C++ one.
   */
-  static void reset(List &l, vector<int> &tester) {
+  static void reset(List<T> &l, vector<T> &tester) {
     l.clear();
     tester.clear();
   }
@@ -154,7 +157,7 @@ static bool find(List &L, ListItemType k) {
   /* Take a list that should be empty and perform operations
   * to see if it acts as expected.
   */
-  static void doSomethingOnEmpList(List &l) {
+  static void doSomethingOnEmpList(List<T> &l) {
     // Nothing changes
     l.moveToStart();
     l.moveToEnd();
@@ -164,7 +167,7 @@ static bool find(List &L, ListItemType k) {
   }
 
   /* Takes a list that should be empty and makes sure it acts as expected */
-  static void checkEmp(List &l) {
+  static void checkEmp(List<T> &l) {
     // Test length with empty list
     if (l.length() != 0) {
       record->printError("On empty list an unexpected length from " + string(typeid(l).name()) + ". \nLength of list: " + to_string(l.length()) + "\nLength expected: 0");
@@ -181,11 +184,11 @@ static bool find(List &L, ListItemType k) {
       record->printError("An unexpected current in empty " + string(typeid(l).name()) + ". \nCurrent in list: " + to_string(l.currPos()) + "\nValue expected: 0");
     }
 
-    ListItemType item;
+    T item;
     // Test remove with empty list
     try {
       item = l.remove();
-      record->printError("An unexpected result in empty " + string(typeid(l).name()) + ". \nremove did not throw expected exception but returned " + to_string(item));
+      record->printError("An unexpected result in empty " + string(typeid(l).name()) + ". \nremove did not throw expected exception but returned " + my_to_string(item));
     } catch (std::out_of_range &ex) {
       // Do nothing since expect this exception
     }
@@ -193,7 +196,7 @@ static bool find(List &L, ListItemType k) {
     // check getting value on empty list
     try {
       item = l.getValue();
-      record->printError("An unexpected result in empty " + string(typeid(l).name()) + ". \ngetValue did not throw expected exception but returned " + to_string(item));
+      record->printError("An unexpected result in empty " + string(typeid(l).name()) + ". \ngetValue did not throw expected exception but returned " + my_to_string(item));
     } catch (std::out_of_range &ex) {
       // Do nothing since expect this exception
     }
@@ -205,7 +208,7 @@ static bool find(List &L, ListItemType k) {
 
     // Test clear
     l.clear();
-     // Test length with empty list
+    // Test length with empty list
     if (l.length() != 0) {
       record->printError("On empty list an unexpected length from " + string(typeid(l).name()) + ". \nLength of list: " + to_string(l.length()) + "\nLength expected: 0");
     }
@@ -228,22 +231,22 @@ static bool find(List &L, ListItemType k) {
    * l List that should be nonempty for testing.
    * tester Same logical list as l but standard Java one.
    */
-  static void doSomethingOnNonEmpList(List &l, vector<ListItemType> &tester) {
+  static void doSomethingOnNonEmpList(List<T> &l, vector<T> &tester) {
     // iterator to move around this vector.
-    vector<int>::iterator it;
+    typename vector<T>::iterator it;
    // iterator to move around temp vector.
-    vector<int>::iterator itTemp;
+    typename vector<T>::iterator itTemp;
 
     // Test moveToStart and remove
     l.moveToStart();
     check(l, tester, 0);
-    ListItemType removed = l.remove();
+    T removed = l.remove();
     it = tester.begin();
-    ListItemType expected = *it;
+    T expected = *it;
     tester.erase(it);
     if (removed != expected) {
       record->printError("Unexpected removed value at the beginning of " + string(typeid(l).name()) + ".\nRemoved value: "
-          + to_string(removed) + "\nExpected value: " + to_string(expected));
+          + my_to_string(removed) + "\nExpected value: " + my_to_string(expected));
     }
     check(l, tester, 0);
     // Restore values
@@ -262,7 +265,7 @@ static bool find(List &L, ListItemType k) {
     // Test moveToEnd and remove
     l.moveToEnd();
 
-    ListItemType item;
+    T item;
     // Test remove at end of list
     try {
       item = l.remove();
@@ -288,8 +291,8 @@ static bool find(List &L, ListItemType k) {
     expected = *it;
     tester.erase(it);
     if (removed != expected) {
-      record->printError("Unexpected removed value at the end of " + string(typeid(l).name()) + ".\nRemoved value: " + to_string(removed)
-          + "\nExpected value: " + to_string(expected));
+      record->printError("Unexpected removed value at the end of " + string(typeid(l).name()) + ".\nRemoved value: " + my_to_string(removed)
+          + "\nExpected value: " + my_to_string(expected));
     }
     // Curr is out of bound
     l.prev();
@@ -299,7 +302,7 @@ static bool find(List &L, ListItemType k) {
     tester.push_back(expected);
 
     // Keep removing items from the middle of the list
-    vector<ListItemType> temp;
+    vector<T> temp;
     int size = tester.size();
     int curr = size / 2;
     l.moveToPos(curr);
@@ -310,7 +313,7 @@ static bool find(List &L, ListItemType k) {
       it = tester.erase(it);
       if (removed != expected) {
         record->printError("Unexpected removed value at the index of " + to_string(curr) + " in " + string(typeid(l).name())
-           + ".\nRemoved value: " + to_string(removed) + "\nExpected value: " + to_string(expected));
+           + ".\nRemoved value: " + my_to_string(removed) + "\nExpected value: " + my_to_string(expected));
       }
       // If the lists are empty, call checkEmp. If curr is at tail, it is out of bound
       if (tester.empty()) {
@@ -336,7 +339,7 @@ static bool find(List &L, ListItemType k) {
     // Restore values
     itTemp = temp.begin();
     for (int i = 0; i < size; i++) {
-      ListItemType tempRem = *itTemp;
+      T tempRem = *itTemp;
       itTemp = temp.erase(itTemp);
       l.append(tempRem);
       tester.push_back(tempRem);
@@ -348,9 +351,9 @@ static bool find(List &L, ListItemType k) {
    * Java list (second list) works and does the same thing. item is what
    * is to be inserted.
    */
-  static void checkIns(List &l, vector<ListItemType> &tester, ListItemType item) {
+  static void checkIns(List<T> &l, vector<T> &tester, T item) {
     // Insert the item to both lists
-    vector<int>::iterator it = tester.begin() + l.currPos();
+    typename vector<T>::iterator it = tester.begin() + l.currPos();
     tester.insert(it, item);
     if (!l.insert(item)) {
       record->printError("The insert method in " + string(typeid(l).name()) + " returned false.");
@@ -364,7 +367,7 @@ static bool find(List &L, ListItemType k) {
    * C++ list (second list) works and does the same thing. item is what
    * to append to lists.
    */
-  static void checkApp(List &l, vector<ListItemType> &tester, ListItemType item) {
+  static void checkApp(List<T> &l, vector<T> &tester, T item) {
     // Append the item to both lists
     tester.push_back(item);
     if (!l.append(item)) {
@@ -378,9 +381,9 @@ static bool find(List &L, ListItemType k) {
    * C++ list (second list) are the same thing. curr is 
    * the index of the current item on the list.
    */
-  static void check(List &l, vector<ListItemType> &tester, int curr)
+  static void check(List<T> &l, vector<T> &tester, int curr)
   {
-    // Check the length of list
+  // Check the length of list
     if (l.length() != tester.size()) {
       record->printError("An unexpected length of " + string(typeid(l).name()) + ". \nLength of list: " + to_string(l.length()) + "\nLength expected: " + to_string(tester.size()));
     }
@@ -397,20 +400,41 @@ static bool find(List &L, ListItemType k) {
     }
 
     // Check the value stored in the current position
-   // Note vector does not work if empty list.
+    // Note vector does not work if empty list.
     if (l.getValue() != tester.at(curr)) {
-      record->printError("An unexpected list item in " + string(typeid(l).name()) + ". \nItem in list: " + to_string(l.getValue()) + "\nValue expected: " + to_string(tester.at(curr)));
+      record->printError("An unexpected list item in " + string(typeid(l).name()) + ". \nItem in list: " + my_to_string(l.getValue()) + "\nValue expected: " + my_to_string(tester.at(curr)));
     }
 
     // Check values in list
     l.moveToStart();
     for (int i = 0; i < tester.size(); i++) {
       if (l.getValue() != tester.at(i)) {
-        record->printError("An unexpected value at the index of " + to_string(i) + " in " + string(typeid(l).name()) + ". \nValue in list: " + to_string(l.getValue()) + "\nValue expected: " + to_string(tester.at(i)));
+        record->printError("An unexpected value at the index of " + to_string(i) + " in " + string(typeid(l).name()) + ". \nValue in list: " + my_to_string(l.getValue()) + "\nValue expected: " + my_to_string(tester.at(i)));
       }
       l.next();
     }
     l.moveToPos(curr);
+  }
+
+  // Overloaded versions to create output strings for int and string. If you wanted to test another
+  // templated type you would need to add another version of this method.
+  static string my_to_string(int value){
+    return to_string(value);
+  }
+
+  static string my_to_string(string value){
+    return value;
+  }
+
+  // Overloaded versions so the correct type is returned for the test values to work with on the
+  // lists. This is a bit of a kluge where dummy is of type T so the correct version is called for
+  // testing of int and string. You would need to add more versions to test other datatypes.
+  static int typeFix(int i, int dummy) {
+    return 100 + i;
+  }
+ 
+  static string typeFix(int i, string dummy) {
+    return "str" + to_string(i);
   }
 };
 
@@ -419,15 +443,22 @@ int main(void) {
   // Create a file to record errors if necessary
   record = new ErrorRec("ListTest", useFile);
 
-  // Run tests of AList on a new list.
-  AList *al = new AList();
-  ListTest::testList(*al);
+  // Run integer tests of AList on a new list.
+  AList<int> *al = new AList<int>();
+  ListTest<int>::testList(*al);
+
+  // Run string tests of AList on a new list.
+  AList<string> *alString = new AList<string>();
+  ListTest<string>::testList(*alString);
+
   // Test other functions that not in interface
   al->clear();
   doSomethingResult = "";
-  ListTest::testOther(*al);
-  // Remove list.
+  ListTest<int>::testOther(*al);
+
+  // Remove lists.
   delete al;
+  delete alString;
 
 /* TODO - note interleaved with AList in Java version
   // Run tests of LList on a new list.

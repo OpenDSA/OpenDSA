@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 /* *** ODSATag: AList *** */
 // Array-based list implementation
 /* *** ODSATag: AListVars *** */
@@ -47,9 +49,10 @@ class AList implements List {
 
 /* *** ODSATag: AListRemove *** */
   // Remove and return the current element
-  public Object remove() {
+  public Object remove() throws NoSuchElementException {
     if ((curr<0) || (curr>=listSize))  // No current element
-      return null;
+      throw new NoSuchElementException("remove() in AList has current of " + curr + " and size of "
+        + listSize + " that is not a a valid element");
     Object it = listArray[curr];       // Copy the element
     for(int i=curr; i<listSize-1; i++) // Shift them down
       listArray[i] = listArray[i+1];
@@ -76,30 +79,14 @@ class AList implements List {
   public boolean isAtEnd() { return curr == listSize; }
 
   // Return the current element
-  public Object getValue() {
+  public Object getValue() throws NoSuchElementException {
     if ((curr < 0) || (curr >= listSize)) // No current element
-      return null;
+      throw new NoSuchElementException("getvalue() in AList has current of " + curr + " and size of "
+        + listSize + " that is not a a valid element");
     return listArray[curr];
   }
   
   // Check if the list is empty
   public boolean isEmpty() { return listSize == 0; }
-  
-  public String toString() {
-		StringBuffer out = new StringBuffer((listSize + 1) * 4);
-
-		out.append("< ");
-		for (int i = 0; i < curr; i++) {
-			out.append(listArray[i]);
-			out.append(" ");
-		}
-		out.append("| ");
-		for (int i = curr; i < listSize; i++) {
-			out.append(listArray[i]);
-			out.append(" ");
-		}
-		out.append(">");
-		return out.toString();
-	  }
 }
 /* *** ODSAendTag: AList *** */

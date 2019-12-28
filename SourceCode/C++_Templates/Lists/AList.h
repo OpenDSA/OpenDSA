@@ -11,8 +11,8 @@ using namespace std;
 /* *** ODSATag: AList *** */
 // Array-based list implementation
 /* *** ODSATag: AListVars *** */
-class AList : public List {
-  ListItemType* listArray;            // Array holding list elements
+template<class T> class AList : public List<T> {
+  T* listArray;            // Array holding list elements
   static const int DEFAULT_SIZE = 10; // Default size
   int maxSize;                        // Maximum size of list
   int listSize;                       // Current # of list items
@@ -24,7 +24,7 @@ public:
   // Create a new list object with maximum size "size"
   AList(int size = DEFAULT_SIZE) : listSize(0), curr(0) {
     maxSize = size;
-    listArray = new ListItemType[size];         // Create listArray
+    listArray = new T[size];         // Create listArray
   }
   
   ~AList() { delete [] listArray; }      // destructor to remove array
@@ -34,7 +34,7 @@ public:
 
 /* *** ODSATag: AListInsert *** */
   // Insert "it" at current position
-  bool insert(const ListItemType& it) {
+  bool insert(const T& it) {
     if (listSize >= maxSize) return false;
     for (int i = listSize; i > curr; i--)  // Shift elements up
       listArray[i] = listArray[i-1];       // to make room
@@ -46,7 +46,7 @@ public:
 
 /* *** ODSATag: AListAppend *** */
   // Append "it" to list
-  bool append(const ListItemType& it) {
+  bool append(const T& it) {
     if (listSize >= maxSize) return false;
     listArray[listSize++] = it;
     return true;
@@ -55,11 +55,11 @@ public:
 
 /* *** ODSATag: AListRemove *** */
   // Remove and return the current element
-  ListItemType remove() {
+  T remove() {
     if ((curr < 0) || (curr >= listSize)) // No current element
       throw std::out_of_range("remove() in AList has current of " + to_string(curr) + " and size of "
         + to_string(listSize) + " that is not a a valid element");
-    ListItemType it = listArray[curr];     // Copy the element
+    T it = listArray[curr];     // Copy the element
     for(int i = curr; i < listSize-1; i++) // Shift them down
       listArray[i] = listArray[i+1];
     listSize--;                            // Decrement size
@@ -85,7 +85,7 @@ public:
   bool isAtEnd() { return curr == listSize; }
 
   // Return the current element
-  ListItemType getValue() {
+  T getValue() {
     if ((curr < 0) || (curr >= listSize)) // No current element
       throw std::out_of_range("getvalue() in AList has current of " + to_string(curr) +  + " and size of "
         + to_string(listSize) + " that is not a a valid element");

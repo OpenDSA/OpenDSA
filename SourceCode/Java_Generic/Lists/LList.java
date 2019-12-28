@@ -1,4 +1,6 @@
 /* *** ODSATag: LList *** */
+import java.util.NoSuchElementException;
+
 // Linked list implementation
 /* *** ODSATag: LListVars *** */
 class LList<E> implements List<E> {
@@ -43,8 +45,10 @@ class LList<E> implements List<E> {
 
 /* *** ODSATag: LListRemove *** */
   // Remove and return current element
-  public E remove () {
-    if (curr == tail) return null;          // Nothing to remove
+  public E remove () throws NoSuchElementException {
+    if (curr == tail) // Nothing to remove
+      throw new NoSuchElementException("remove() in LList has current of " + curr + " and size of "
+        + listSize + " that is not a a valid element");
     E it = curr.element();                  // Remember value
     curr.setElement(curr.next().element()); // Pull forward the next element
     if (curr.next() == tail) tail = curr;   // Removed last, move tail
@@ -99,33 +103,16 @@ class LList<E> implements List<E> {
   public boolean isAtEnd() { return curr == tail; }
 
   // Return current element value. Note that null gets returned if curr is at the tail
-  public E getValue() {
-    return curr.element();
-  }
-  
-  public String toString() {
-	Link<E> temp = head.next();
-	StringBuffer out = new StringBuffer((listSize + 1) * 4);
-
-	out.append("< ");
-	for (int i = 0; i < currPos(); i++) {
-		out.append(temp.element());
-		out.append(" ");
-		temp = temp.next();
-	}
-	out.append("| ");
-	for (int i = currPos(); i < listSize; i++) {
-		out.append(temp.element());
-		out.append(" ");
-		temp = temp.next();
-	}
-	out.append(">");
-	return out.toString();
-  }
+  public E getValue() throws NoSuchElementException {
+    if (curr == tail) // No current element
+      throw new NoSuchElementException("getvalue() in LList has current of " + curr + " and size of "
+        + listSize + " that is not a a valid element");
+    return curr.element(); 
+ }
   
   //Tell if the list is empty or not
   public boolean isEmpty() {
-	  return listSize == 0;
+    return listSize == 0;
   }
 }
 /* *** ODSAendTag: LList *** */
