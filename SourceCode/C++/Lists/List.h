@@ -16,7 +16,7 @@ typedef int ListItemType;
 class List { // List class ADT
 public:
   // Destructor
-  virtual ~ List () =default; // TODO discuss in text on why desirable when base class
+  virtual ~ List () =default;
 
   // Remove all contents from the list, so it is once again empty
   virtual void clear() =0;

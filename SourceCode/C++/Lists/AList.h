@@ -55,7 +55,6 @@ public:
 
 /* *** ODSATag: AListRemove *** */
   // Remove and return the current element
-  // TODO maybe discuss in text about why not ListItemType&
   ListItemType remove() {
     if ((curr < 0) || (curr >= listSize)) // No current element
       throw std::out_of_range("remove() in AList has current of " + to_string(curr) + " and size of "
