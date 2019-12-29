@@ -39,7 +39,7 @@
       }
     }],
     "c++": [{
-      "url": "../../../SourceCode/C++/Lists/AList.java",
+      "url": "../../../SourceCode/C++/Lists/AList.h",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AListRemove *** */",
       "endBefore": "/* *** ODSAendTag: AListRemove *** */",
