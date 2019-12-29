@@ -501,13 +501,6 @@ free!
 Which means that this simple Turing Machine is doing something that no
 DFA, NFA, or PDA can do!
 
-.. TODO::
-   :type: Slideshow
-
-   This diagram looks good. But let's add a slideshow to show two
-   examples: One that is in the language (aabbcc) and one that is not
-   in the language (aabbbc).
-
 .. inlineav:: TManbncnCON ss
    :links: DataStructures/FLA/FLA.css AV/TJeffrey/TManbncnCON.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TManbncnCON.js
@@ -526,8 +519,14 @@ packages.
 We can hope to build up similar capability with Turing Machines.
 
 .. TODO::
-   :type: Prose
+   :type: Old Prose
 
+   [This is old prose from when our basic model was a one-sided
+   infinite tape. That was easy to explain composition since you knew
+   that any given machine cannot run arbitrarily left. Its not nearly
+   so easy explain composition without that to rely on. We need
+   something new to replace this.]
+   
    Since we are not using a one-sided tape, the following material
    needs to be replaced with a treatment like in Linz. 
    Note that the Stay "move" simplifies the if-then-else as compared
@@ -655,24 +654,22 @@ No.
 Likewise, the following extensions do not increase the power of Turing
 Machines.
 
-.. TODO::
-   :type: New example
+* Limit the tape to be infinite in only one direction
 
-   Need to replace two-way tape example with one-way, since two-way is
-   what is being used here.
-
-* Provide a two-way infinite tape
+  Our first example actually demonstrates that some limitations do not
+  make a difference.
+  Many textbooks on formal languages present the basic Turing Machine
+  as having a tape that is infinite in only one direction.
+  The folling diagram shows that we can easily simulate a tape
+  infinite in two directions with a one-direction infinite tape.
 
   .. inlineav:: TuringExt1CON dgm
      :links: AV/SeniorAlgAnal/TuringExt1CON.css
      :scripts: AV/SeniorAlgAnal/TuringExt1CON.js
      :align: center
 
-  This does not give Turing machines new capability.
-  To make this clear, we can simulate the behavior of a two-way
-  infinite tape using a standard one-way infinite tape.
-  Just bend infinite tape in the middle, and store both directions of
-  the tape into a single cell.
+  The idea is to just bend the 2-way infinite tape in the middle, and
+  store both directions of the tape into a single cell.
   This requires a greatly expanded alphabet, because we now need to be
   able to represent any combination of two characters.
   This will need more states, and probably more time.

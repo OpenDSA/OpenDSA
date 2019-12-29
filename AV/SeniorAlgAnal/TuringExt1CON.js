@@ -34,12 +34,14 @@ $(document).ready(function() {
   av.label("$d$", {top: ytop - 15, left: xleft + 6 + cellwidth * 4});
   av.label("$e$", {top: ytop - 15, left: xleft + 6 + cellwidth * 5});
 
+  av.g.polyline([[xleft + 165, ytop], [xleft + 155, ytop + 10],
+                 [xleft + 165, ytop + 20]], {"stroke-width": 2});
   av.g.line(xleft + 160, ytop + 5, xleft + 180, ytop + 5,
             {"stroke-width": 2});
   av.g.line(xleft + 160, ytop + 15, xleft + 180, ytop + 15,
             {"stroke-width": 2});
   av.g.polyline([[xleft + 175, ytop], [xleft + 185, ytop + 10],
-                 [xleft + 175, ytop + 20]]);
+                 [xleft + 175, ytop + 20]], {"stroke-width": 2});
 
   av.g.line(xleft + 210, ytop - 10, xleft + 210 + 5 *cellwidth, ytop - 10,
             {"stroke-width": 2});
@@ -48,6 +50,7 @@ $(document).ready(function() {
             {"stroke-width": 2});
   av.g.line(xleft + 210, ytop + 30, xleft + 210 + 5 *cellwidth, ytop + 30,
             {"stroke-width": 2});
+
   for (i = 0; i < 5; i++) {
     av.g.line(xleft + 210 + i * cellwidth, ytop - 10,
               xleft + 210 + i * cellwidth, ytop + 30,

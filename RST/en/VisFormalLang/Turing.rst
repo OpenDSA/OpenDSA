@@ -31,7 +31,7 @@ capabilities.
 We will discuss a particular one, called a :term:`Turing machine`.
 As we define "capability", the key is *ability*, not *efficiency*.
 
-The necessary capabilites for any such "machine" are these:
+The necessary capabilities for any such "machine" are these:
 
 * Read
 * Write
@@ -68,7 +68,7 @@ Note that including :math:`\#` in the alphabet is for convenience
 only.
 We want to be able to read our specifications without being confused.
 
-The input to the machine is the intial contents of the tape, which is
+The input to the machine is the initial contents of the tape, which is
 described by listing all of the tape squares from the leftmost
 non-blank tape cell to the rightmost non-blank tape cell.
 Naturally, there must be a finite number of non-blank symbols on the
@@ -129,7 +129,7 @@ definitions require an explicit reject state. We do not.)
 
         \begin{array}{lll}
         \hline
-        q&\gamma&\delta(q, \gamma)\\
+        q&\Gamma&(q, \Gamma, \{L, R, S\})\\
         \hline
         q_0&a&(q_0, \#, R)\\
         q_0&\#&(q_1, \#, S)\\
@@ -153,12 +153,43 @@ movement of a head across the tape.
    :output: show
 
 
-Turing Machines can accept Regular Languages and Context-Free Languages.
-In the following example, we have a TM that accepts :math:`L(a^*b^*c^*)`.
+.. TODO::
+   :type: Exercise
+
+   Create a machine that is just like the one in Example 1.1.1, except that it
+   leaves the tape unchanged (it leaves the "a"s in place, instead of
+   changing them to blanks.
+
+   [Answer: Same as before, but write a instead of # when you see an "a".]
+
+.. TODO::
+   :type: Exercise
+
+   Create a machine that is just like the one in Example 1.1.1 (it
+   replaces the input string with #'s) but it has the alphabet
+   :math:`\Sigma = {a, b,c}`, and so the input strings can be any mix
+   of a's, b's, and c's.
+
+   [Answer: Same as 9.1.1, except that we need to add transitions for
+   what to do when we see "b" or "c", which both write #.]
+
+.. TODO::
+   :type: Exercise
+
+   Create a machine that is just like the one that you just did.
+   However, instead of replacing the string with #'s, you will keep
+   the string intact.
+
+   [Answer: Same as 9.1.1, except that we need to add transitions for
+   what to do when we see "b" or "c". All of the letter transisions
+   re-write the letter.]
 
 .. topic:: Example
 
-   :math:`M = (Q, \Sigma, \Gamma, s, q_0, F, \delta)` where
+   Here is an example of a machine that is slightly more complicated.
+   This Turing machine accepts the language :math:`L(a^*b^*c^*)`.
+
+   :math:`M = (Q, \Sigma, \Gamma, s, F, \delta)` where
 
    * :math:`Q = \{q_0, q_1, q_2, q_3\}`,
    * :math:`\Sigma = \{a, b, c\}`,
@@ -171,25 +202,46 @@ In the following example, we have a TM that accepts :math:`L(a^*b^*c^*)`.
 
         \begin{array}{lll}
         \hline
-        q&\sigma&\delta(q, \sigma)\\
+        q&\Gamma&(q, \Gamma, \{L, R, S\})\\
         \hline
         q_0&a&(q_0, a, R)\\
         q_0&b&(q_1, b, R)\\
-        q_0&a&(q_3, c, R)\\
-        q_0&a&(q_2, \#, S)\\
-        q_1&a&(q_1, b, R)\\
-        q_1&c&(q_3, c, R)\\
-        q_1&a&(q_2, \#, S)\\
-        q_3&a&(q_3, c, R)\\
-        q_3&a&(q_2, \#, S)\\
+        q_0&c&(q_2, c, R)\\
+        q_0&\#&(q_3, \#, S)\\
+        q_1&b&(q_1, b, R)\\
+        q_1&c&(q_2, c, R)\\
+        q_1&\#&(q_3, \#, S)\\
+        q_2&c&(q_2, c, R)\\
+        q_2&\#&(q_3, \#, S)\\
         \end{array}
 
-   Turing machine that accepts :math:`L(a^*b^*c^*)` then halt.
+   However, this specification is missing something important.
+   Regardless of what input you give it on the tape, it will execute
+   something and eventually halt.
+   But how do we know if the machine has determined that the string is
+   in the language or not?
+   The answer is that we use a convention.
+   First, we only care about what happens when the machine starts with
+   the head scanning the first non-blank character.
+   Second, we use the convention that the string is accepted as being
+   in the language if the machine halts in a Final State (:math:`q_3`
+   in this case), and the string is rejected if the machine halts by
+   following an undefined transition.
+   For example, on the string "abac", when the second 'a' is
+   encountered there is no transition for what to do.
+   So, the machine halts, and we interpret this to mean that the
+   string has been rejected since it is not currently in a Final State.
 
-.. inlineav:: TMabcCON dgm
-   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMabcCON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMabcCON.js
-   :align: center
+   Here is the graphical view of the machine.
+
+   .. inlineav:: TMabcCON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMabcCON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMabcCON.js
+      :align: center
+      :output: show
+
+   |
+
 
 Interpreting Turing Machines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -197,30 +249,37 @@ Interpreting Turing Machines
 A :term:`configuration` for a Turing machine looks like this:
 
 .. math::
-   (q, aaba\#\underline{\#}a)
+   (q, \underline{a}aba)
 
 This means that the TM is on state :math:`q`,
-the tape contains :math:`aaba\#\underline{\#}a` and read / write
-head position is on the underlined :math:`a`. In this book, any TM
-starts running with the read/write head position is on the first Tape letter
-from the left.
+the tape contains :math:`\underline{a}aba` and the read/write
+head position is on the underlined 'a'.
+Recall that we assume at the start of processing input for any TM,
+the read/write head position is on the leftmost non-blank character.
 
+Don't forget that the tape is infinite in both directions.
+So to the left of the leftmost 'a' in this configuration is an
+infinite number of blank squares, and to the right of the rightmost a
+is also an infinite number of blank squares.
 
-A :term:`halted configuration` occurs when the machine do not find
-a move from the given state using the tape letter (the current configuration).
-In other words, TM halts if there is no :math:`\Delta` defined. That is why
-in this book we always assume that there are no transitions defined
-out of the final state. Therefore, any TM will halt once it entered a
-final state.
+A :term:`halted configuration` occurs when the machine does not find
+a move from the current state using the current tape letter
+(the current configuration).
+In other words, a TM halts if there is no :math:`\delta` defined.
+Note that we never define any transitions out of any Final State.
+So there is some redundancy when we said earlier that the
+machine halts when either it is in any Final State, or when there is
+no current transition.
+But having two such definitions for halting makes it easy to define
+the difference between accepting and rejecting a string.
 
-
-A :term:`computation` is a sequence of configurations for some
+A :term:`computation` is a sequence of configurations of some
 length :math:`n \geq 0`.
 
 .. topic:: Example
 
-   Recall the TM example that earases all a's from the tape.
-   Here are the cofigurations for the input aaaa
+   Recall the TM example that erases all a's from the tape.
+   Here are the configurations for the input "aaaa".
 
    .. math::
 
@@ -232,40 +291,64 @@ length :math:`n \geq 0`.
       &\vdash_M&(q_1, \#\#\#\#\underline{\#})\\
       \end{eqnarray*}
       
-
-:math:`M` is said to **halt on input :math:`w`** iff
-:math:`(s, w\underline{\#})` yields some halted configuration.
-
-:math:`M` is said to **hang on input :math:`w`** if
-:math:`(s, w\underline{\#})` yields some hanging configuration.
-That means go into an infinite loop.
+**Notation**: Given a string :math:`w`, the notation
+:math:`\underline{w}` for a configuration means that the read/write
+head is scanning the leftmost character in :math:`w`.
 
 
-Turing Acceptors and Trurng Transducers
+:math:`M` is said to **halt** on input :math:`w` iff
+:math:`(s, \underline{w})` yields some halted configuration.
+
+:math:`M` is said to **hang** on input :math:`w` if
+:math:`(s, \underline{w})` yields some hanging configuration.
+
+Wait, what? What is a "hanging" configuration?
+The machine hangs when it goes into an infinite loop.
+Anytime you provide the mechanism to create loops that only end on a
+condition, you have also created the conditions that might allow an
+infinite loop to happen.
+Consider the following machine on strings of a's and b's that scans
+right until it sees a 'b'.
+If it never sees a 'b', then it will never halt.
+This means that it goes into an infinite loop (or hangs) anytime the
+input string does not contain a 'b'.
+
+.. inlineav:: TMabCON dgm
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMabCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMabCON.js
+   :align: center
+   :output: show
+
+
+
+Turing Acceptors and Turing Transducers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Turing machines compute functions from strings to strings.
 Formally: Let :math:`f` be a function from :math:`\Sigma^*_0` to
 :math:`\Sigma^*_1`.
 Turing machine :math:`M` is said to **compute** :math:`f` when,
-for any :math:`w \in \Sigma^*_0`, if :math:`f(w) = u` then
+for any string :math:`w \in \Sigma^*_0`, if :math:`f(w) = u` then
 
 .. math::
 
-   (s, \#w\underline{\#}) \vdash^*_M (h, \#u\underline{\#}).
+   (s, \#\underline{w}) \vdash^*_M (h, \#u\underline{\#})
 
-Such a function :math:`f` is said to be a :term:`Turing-computable function`.
+for some state :math:`h \in F` (that is, a Final State for :math:`M`).
+
+Such a function :math:`f` is said to be a
+:term:`Turing-computable function`.
 
 Here is how we express multiple parameters:
 For :math:`f(w_1, ..., w_k) = u`,
 
 .. math::
 
-   (s, \#w_1\#w_2\#...\#w_k\underline{\#}) \vdash^*_M (h, \#u\underline{\#}).
+   (s, \#\underline{w_1}\#w_2\#...\#w_k) \vdash^*_M (h, \#u\underline{\#}).
 
 One way to express functions on natural numbers is to represent a
 number using :term:`unary notation`.
-(Remember, we are not concerned about is efficient, we are concerned
+(Remember, we are not concerned about what is efficient, we are concerned
 about what is possible.)
 In this case, we represent the value 0 as an empty string.
 We say that :math:`f: \mathbb{N} \rightarrow \mathbb{N}`
@@ -275,7 +358,7 @@ computes :math:`f': \{I\}^* \rightarrow \{I\}^*` where
 
 .. topic:: Example
 
-   Compute :math:`f(n) = n + 1` for each :math:`n \in \mathbb{N}`.
+   Compute :math:`f(n) = n + 1` for any :math:`n \in \mathbb{N}`.
 
    .. math::
 
@@ -283,61 +366,72 @@ computes :math:`f': \{I\}^* \rightarrow \{I\}^*` where
       \hline
       q&\sigma&\delta(q, \sigma)\\
       \hline
-      q_0&I&(h, R)\\
-      q_0&\#&(q_0, I)\\
+      q_0&I&(q_0, I, R)\\
+      q_0&\#&(h, I, R)\\
       \end{array}
 
    An example computation:
 
    .. math::
 
-      (q_0, \#II\underline{\#}) \vdash_M (q_0, \#II\underline{I}) \vdash_M
-      (h, \#III\underline{\#}).
+      (q_0, \#\underline{I}I\#) \vdash_M (q_0, \#I\underline{I}\#) \vdash_M
+      (q_0, \#II\underline{\#}) \vdash_M (h, \#III\underline{\#}).
+
+   .. inlineav:: TMPlusoneCON ss
+      :long_name: Turing Machine Replace
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMPlusoneCON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMPlusoneCON.js
+      :align: center
+      :output: show
 
    In general,
-   :math:`(q_0, \#I^n\underline{\#}) \vdash^*_M (h, \#I^{n+1}\underline{\#})`.
+   :math:`(q_0, \#\underline{I^n}\#) \vdash^*_M (h, \#I^{n+1}\underline{\#})`.
    What about :math:`n = 0`?
-   The input is no marks in unary, and it works OK.
+   The input is no marks in unary, and it works OK (that is, the
+   result is the head to the right of a single mark).
 
 
-Turing-Decideable vs. Turing-Acceptable Languages
+Turing-Decidable vs. Turing-Acceptable Languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A language :math:`L \subset \Sigma_0^*` is :term:`Turing-decidable`
-iff function :math:`\chi_L: \Sigma^*_0 \rightarrow \{\fbox{Y}, \fbox{N}\}`
-is Turing-computable, where for each :math:`w \in \Sigma^*_0`,
+Recall that we defined a convention for accepting/rejecting whether an
+input string is in a specified language:
+The string is accepted as being in the language if the machine halts
+in a Final State, and the string is rejected if the machine halts by
+following an undefined transition.
+The key here is that the machine halts (with separate mechanisms for
+accept or reject).
+We define a language to be :term:`Turing-decidable`
+if every string results in one of these two outcomes.
 
-.. math::
+Unfortunately, there is a third possible outcome:
+The machine might go into an infinite loop.
 
-   \chi_L(w) = \left\{
-   \begin{array}{ll}
-   \fbox{Y} & \mbox{if $w \in L$}\\
-   \fbox{N}  & \mbox{otherwise}
-   \end{array}
-   \right.
+We can define another concept: :math:`Turing-acceptable`.
+We say that machine :math:`M` :term:`accepts <accept>` a string
+:math:`w` if :math:`M` halts on input :math:`w`.
+Then,
 
-Example: Let :math:`\Sigma_0 = \{a\}`, and let
-:math:`L = \{w \in \Sigma^*_0: |w|\ \mbox{is even}\}`.
-
-:math:`M` erases the marks from right to left, with current parity
-encode by state.
-Once blank at left is reached, mark :math:`\fbox{Y}` or
-:math:`\fbox{N}` as appropriate.
-
-There are many views of computation.
-One is functions mapping input to output
-(:math:`N \rightarrow N`, or
-strings to strings, for examples).
-Another is deciding if a string is in a language.
-
-:math:`M` :term:`accepts <accept>` a string :math:`w` if :math:`M`
-halts on input :math:`w`.
-
-* :math:`M` accepts a language iff :math:M` halts on :math:`w` iff
+* :math:`M` accepts a language iff :math:`M` halts on :math:`w` iff
   :math:`w \in L`.
 * A language is :math:`Turing-acceptable` if there is some Turing
   machine that accepts it.
 
+So, a language is Turing-decidable if it halts on every input, in two
+different ways so that we can tell if the string is in the language or
+not.
+Separately, a language is Turing-acceptable if it halts on strings in
+the language, and does not halt on strings not in the language.
+
+It is easy to turn any Turing-decidable machine into a
+Turing-acceptable machine.
+If the machine would reject the string, then simply go into an
+infinite loop by moving right regardless of the value of the symbol
+seen.
+But, can every Turing-acceptable machine be converted into a
+Turing-decidable machine?
+
+Consider this example:
 Example: :math:`\Sigma_0 = \{a, b\}`,
 :math:`L = \{w \in \Sigma^*_0: w\ \mbox{contains at least one}\ a\}`.
 
@@ -345,71 +439,132 @@ Example: :math:`\Sigma_0 = \{a, b\}`,
 
    \begin{array}{lll}
    \hline
-   q&\sigma&\delta(q, \sigma)\\
+   q&\sigma&\delta(q, \sigma, \{R, L, S\})\\
    \hline
-   q_0&a&(h, a)\\
-   q_0&b&(q_0, L)\\
-   q_0&\#&(q_0, L)\\
+   q_0&a&(h, a, R)\\
+   q_0&b&(q_0, b, R)\\
+   q_0&\#&(q_0, \#, R)\\
    \hline
    \end{array}
 
+This machine is Turing-acceptable.
+It halts if it sees an 'a', and it hangs if there is no 'a'.
+
 Is this language Turing decidable?
-Of course. Instead of just running left, invoke another state that
-means "seen an :math:`a`", and print :math:`\fbox{Y}` if we reach
-:math:`\#` in that state, :math:`\fbox{N}` otherwise.
+Of course.
+Instead of running right when a # is seen, the machine can halt.
+Here is the modified machine:
 
-Every Turing-decidable language is Turing-acceptable,
-because if the machine would have printed :math:`\fbox{Y}`,
-then the machine can halt instead,
-or if the machine would have printed :math:`\fbox{N}`,
-then it can hang left.
+.. math::
 
-Is every Turing-acceptible language Turing decidable?
-This is the Halting Problem.
+   \begin{array}{lll}
+   \hline
+   q&\sigma&\delta(q, \sigma, \{R, L, S\})\\
+   \hline
+   q_0&a&(h, a, R)\\
+   q_0&b&(q_0, b, R)\\
+   \hline
+   \end{array}
 
-Of course, if the Turing-acceptible language would halt,
-we write :math:`\fbox{Y}`.
-But if the Turing-acceptible language would hang,
-can we *always* replace it with logic to write :math:`\fbox{N}`
-instead?
-Example: Collatz function.
+All that we have done is remove the transition for what to do when a
+blank symbol is seen.
+Thus, the machine halts instead of moving to the right (thus starting
+the infinite loop).
+
+(You might ask: But what if there is an 'a' to the right of the #?
+Recall that we only care about the machine's behavior when it begins
+in a legal start configuration.)
+
+But, we can ask again: Is every Turing-acceptable language Turing
+decidable?
+In other words, whenever the Turing-acceptable machine would hang,
+can we *always* replace it with logic to trigger a non-existant
+transition instead?
+This is known as the :term:`Halting Problem`.
+
+It turns out that we can **prove** that there are always languages
+that cannot be converted from Turing-acceptable to Turing-decidable.
+In other words, we can **prove** that the Halting Problem is
+unsolveable.
 
 
 Making More Complicated Machines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Lemma**: If
+Obviously, Turing Machines can take an input and modify it.
+We will see examples of how this leads to powerful computational
+capability, even if it does not seem yet like they are so powerful.
+To get a quick idea of their power, consider the following relatively
+simple machine to accept :math:`L(a^nb^nc^n)`.
+This is significant, because this language is in fact not context
+free!
+Which means that this simple Turing Machine is doing something that no
+DFA, NFA, or PDA can do!
 
-.. math::
+.. inlineav:: TManbncnCON ss
+   :links: DataStructures/FLA/FLA.css AV/TJeffrey/TManbncnCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TManbncnCON.js
+   :align: center
+   :output: show
 
-   (q_1, w_1\underline{a_1}u_1) \vdash_M^* (q_2, ww_2\underline{a_2}u_2)
+But while Turing machines might be able to do powerful things, when
+operating at the individual state level, it can get rather difficult
+and tedious to program them.
+In fact, it might feel in some ways like writing machine code or
+assembly language.
+The secret to success in modern software development is to build up
+more powerful tools,
+especially by packaging behavior together and manipulating the
+packages.
+We can hope to build up similar capability with Turing Machines.
 
-for string :math:`w` and
+.. TODO::
+   :type: Old Prose
 
-.. math::
+   [This is old prose from when our basic model was a one-sided
+   infinite tape. That was easy to explain composition since you knew
+   that any given machine cannot run arbitrarily left. Its not nearly
+   so easy explain composition without that to rely on. We need
+   something new to replace this.]
+   
+   Since we are not using a one-sided tape, the following material
+   needs to be replaced with a treatment like in Linz. 
+   Note that the Stay "move" simplifies the if-then-else as compared
+   to Linz.
+   
+   **Lemma**: If
 
-   (q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3),
+   .. math::
 
-then
+      (q_1, w_1\underline{a_1}u_1) \vdash_M^* (q_2, ww_2\underline{a_2}u_2)
 
-.. math::
+   for string :math:`w` and
 
-   (q_1, w_1\underline{a_1}u_1) \vdash^*_M (q_3, ww_3\underline{a_3}u_3).
+   .. math::
 
-Insight: Since
-:math:`(q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3)`,
-this computation must take place without moving the head left of :math:`w_2`
-The machine cannot "sense" the left end of the tape.
-(And if it had moved left, it would have hung.)
-Thus, the head won't move left of :math:`w_2` even if it is not at the
-left end of the tape.
+      (q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3),
 
-This means that Turing machine computations can be combined into
-larger machines:
+   then
 
-* :math:`M_2` prepares string as input to :math:`M_1`.
-* :math:`M_2` passes control to :math:`M_1` with I/O head at end of input.
-* :math:`M_2` retrieves control when :math:`M_1` has completed.
+   .. math::
+
+      (q_1, w_1\underline{a_1}u_1) \vdash^*_M (q_3, ww_3\underline{a_3}u_3).
+
+   Insight: Since
+   :math:`(q_2, w_2\underline{a_2}u_2) \vdash^*_M (q_3, w_3\underline{a_3}u_3)`,
+   this computation must take place without moving the head left of :math:`w_2`
+   The machine cannot "sense" the left end of the tape.
+   (And if it had moved left, it would have hung.)
+   Thus, the head won't move left of :math:`w_2` even if it is not at the
+   left end of the tape.
+
+   This means that Turing machine computations can be combined into
+   larger machines:
+
+   * :math:`M_2` prepares string as input to :math:`M_1`.
+   * :math:`M_2` passes control to :math:`M_1` with I/O head at the
+     end of the input.
+   * :math:`M_2` retrieves control when :math:`M_1` has completed.
 
 Here are some basic machines and notation
 
@@ -431,7 +586,7 @@ Here are some basic machines and notation
    :align: center
 
    First do :math:`M_1`, then do :math:`M_2` or :math:`M_3` depending
-   on current symbol.
+   on the current symbol.
 
 |
 
@@ -485,8 +640,8 @@ Here are some basic machines and notation
 Turing Machine Extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When we give extentions or new functionality to a computing system,
-sometimes they change something fundamental about the capabilies of
+When we give extensions or new functionality to a computing system,
+sometimes they change something fundamental about the capabilities of
 the system.
 For example, when we add non-determinism to an algorithm, we **might**
 change the cost of the underlying problem from exponential to
@@ -499,18 +654,22 @@ No.
 Likewise, the following extensions do not increase the power of Turing
 Machines.
 
-* Provide a two-way infinite tape
+* Limit the tape to be infinite in only one direction
+
+  Our first example actually demonstrates that some limitations do not
+  make a difference.
+  Many textbooks on formal languages present the basic Turing Machine
+  as having a tape that is infinite in only one direction.
+  The folling diagram shows that we can easily simulate a tape
+  infinite in two directions with a one-direction infinite tape.
 
   .. inlineav:: TuringExt1CON dgm
      :links: AV/SeniorAlgAnal/TuringExt1CON.css
      :scripts: AV/SeniorAlgAnal/TuringExt1CON.js
      :align: center
 
-  This does not give Turing machines new capability.
-  To make this clear, we can simulate the behavior of a two-way
-  infinite tape using a standard one-way infinite tape.
-  Just bend infinite tape in the middle, and store both directions of
-  the tape into a single cell.
+  The idea is to just bend the 2-way infinite tape in the middle, and
+  store both directions of the tape into a single cell.
   This requires a greatly expanded alphabet, because we now need to be
   able to represent any combination of two characters.
   This will need more states, and probably more time.
@@ -521,7 +680,7 @@ Machines.
   Again, we can simulate this with encoding multiple symbols into a
   single table cell.
   For example, to simulate two tapes (each with a head), we encode in
-  each cell the corresponding two symbols, and a two binary markers to
+  each cell the corresponding two symbols, and two binary markers to
   indicate if the tape head is currently in the corresponding cell of
   the two tapes.
 
@@ -536,7 +695,7 @@ Machines.
   We merely encode the heads onto the tape, and simulate moving them
   around.
 
-* A two-dimensional ``tape``
+* A two-dimensional "tape"
 
   All that we need to do is find a mapping from 2D to 1D, which is
   fairly easy.
@@ -550,8 +709,8 @@ Machines.
 
 * Non-determinism
 
-  We can simulate nondeterministic behavior in sequence, doing all
+  We can simulate non-deterministic behavior in sequence, doing all
   length 1 computations, then length 2, etc., until we reach a halt
-  state for one of the non-deteriministic choices.
+  state for one of the non-deterministic choices.
   So we see that while non-determinism can save a lot of time, it does
   not change what can (eventually) be done.
