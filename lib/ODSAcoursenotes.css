@@ -1,54 +1,55 @@
 .jsavoutput.jsavline{
-  line-height: 1.2em !important;
-  font-size: 15px !important;
-  font-family: "DejaVu Sans", Arial, Helvetica, sans-serif !important;
-  text-align: justify !important;
-  margin-bottom: 5px !important;
+  line-height: 1.2em;
+  font-size: 15px;
+  font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
+  text-align: justify;
+  margin-bottom: 5px;
 }
 .jsavlabel{
-  font-family: "DejaVu Sans", Arial, Helvetica, sans-serif !important;
-  color: black !important;
+  font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
+  color: black;
 }
 .jsavcontainer{
-  letter-spacing: 0px !important;
-  text-shadow: none !important;
+  letter-spacing: 0px;
+  text-shadow: none;
 }
 .divdgm .jsavlabel{
-  font-size: 15px !important;
+  font-size: 15px;
 }
 .highlight, .highlight-guess{
-  font-size: 15px !important;
+  font-size: 15px;
 }
 /*.jsavcode.jsavcenter{
-  width: 500px !important;
+  width: 500px;
 }*/
 ul li::before {
-    content: none !important;
+    content: none;
     width: 0px;
-    margin-left: 0px !important;
+    margin-left: 0px;
 }
 .jsavcanvas{
-  /*min-height: 600px !important;*/
-  overflow-x: visible !important;
+  /*min-height: 600px;*/
+  overflow-x: visible;
 }
 .hide{
-  display: none !important;
+  display: none;
 }
-/*.jsavvaluelabel{
-  font-size: 15px !important;
-}*/
+.jsavvaluelabel{
+  font-size: 15px;
+}
+
 /*.jsavlabel{
-  line-height: 1em !important;
+  line-height: 1em;
 }*/
 .jsavarray{
-  font-size: 15px !important;
+  font-size: 15px;
 }
 .jsavlist{
-  font-size: 15px !important; 
+  font-size: 15px; 
 }
 .MathJax, .MathJax_Display  {
-  font-size: 40%  !important;
+  font-size: 40% ;
 }
 .ui-widget{
-  font-size: 15px !important;
+  font-size: 15px;
 }

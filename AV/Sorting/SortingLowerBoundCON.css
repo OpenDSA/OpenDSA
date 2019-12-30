@@ -1,30 +1,36 @@
 #SortingLowerBoundCON {
   height: 550px;
 }
-.rotated {
+
+#SortingLowerBoundCON .rotated {
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
-.greenNode{
+
+#SortingLowerBoundCON .greenNode{
   fill: green; 
   opacity: 0.5 !important;
 }
-.redNode{
+
+#SortingLowerBoundCON .redNode{
   fill: red; 
   opacity: 0.5 !important; 
 }
-.smallLabel{
-	font-size: 12px; 
-	text-align: center;
+
+#SortingLowerBoundCON .smallLabel{
+  font-size: 12px; 
+  text-align: center;
 }
-.mediumLabel{
-    font-size: 16px; 
-	text-align: center;	
+
+#SortingLowerBoundCON .mediumLabel{
+  font-size: 16px; 
+  text-align: center;   
 }
-orangeFill{
-	fill: orange; 
-	opacity: 0.5 !important;
+
+#SortingLowerBoundCON orangeFill{
+  fill: orange; 
+  opacity: 0.5 !important;
 }
