@@ -345,6 +345,12 @@ var lambda = String.fromCharCode(955),
 	};
 
 	var onClickTraverse = function() {
+	var phraseChanged = "";
+	var direction = "";
+	var letChanged = "";
+	var letScanned = "";
+	var currState = "";
+	var prevLet = "";	
 		if (!g.initial) {
 			alert('Please define an initial state');
 			return;
@@ -359,20 +365,33 @@ var lambda = String.fromCharCode(955),
 		$('#alphabets').hide();
 		$("#mode").html('');
 		$('.jsavcontrols').show();
-		$('.jsavoutput').css({"text-align": "center", 'font-size': '2em', 'font-family': 'monospace'});
+		$('.jsavoutput').css({"text-align": "left"});
         var arr = new Array(15);    // arbitrary size
         for (var i = 0; i < 15; i++) {
-            arr[i] = String.fromCharCode(9633);;
+			arr[i] = String.fromCharCode(9633);
+			if(arr[i] == "□"){
+				arr[i] = "#";
+			}
 		}
 		var indexx = 7-inputString.length/2;
         for(var x = 0; x < inputString.length; x++){
             arr[7-inputString.length/2 + x] = inputString.charAt(x);
         }
-        jsav.ds.tape([arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8],arr[9], arr[10], arr[11], arr[12], arr[13], arr[14]], 150, 20, "both");
-        var p3 = jsav.g.line(150+30*(7-inputString.length/2 + x)-105, 150, 150 + 30*(7-inputString.length/2 + x)-105, 55, {"arrow-end": "classic-wide-long"});
+        
+        
         var nodess = g.nodes();
-        var edgess = g.edges();
-        nodess[0].highlight();
+		var topos = 0;
+		for(var y = 0; y<nodess.length; y++){
+			if(topos<nodess[y].position().top){
+				topos = nodess[y].position().top;
+			}
+
+		}
+		jsav.umsg("We will see how the machine processes input string '" + inputString + "'.");
+		jsav.ds.tape([arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8],arr[9], arr[10], arr[11], arr[12], arr[13], arr[14]], 150, topos + 50, "both");
+		var p3 = jsav.g.line(165+30*(7-inputString.length/2), 140 + topos, 165 + 30*(7-inputString.length/2), 85 + topos, {"arrow-end": "classic-wide-long"});
+		var rects = jsav.g.rect(150+30*(7-inputString.length/2), 140 + topos, 30, 30);
+		nodess[0].highlight();
         var currentStates = [new Configuration(g.initial, inputString, jsav)],
         cur,
         counter = 0,
@@ -407,7 +426,7 @@ while (true) {
                     weight = edge.weight().split('<br>');
 			for (var i = 0; i < weight.length; i++) {
 				weight[i] = toColonForm(weight[i]);
-                var w = weight[i].split(':');
+				var w = weight[i].split(':');
 				if (tapeValue === w[0]) {
 					var nextConfig = new Configuration(next, currentState.tape, jsav);
 					if (w[1] !== square){
@@ -417,20 +436,75 @@ while (true) {
                     nextConfig.tape.move(w[2]);
                     if(w[2] == "R"){
                         indexx = indexx + 1;
-                        p3.translateX(30);
+						p3.translateX(30);
+						rects.translateX(30);
+						direction = "right one cell, ";
                     }
                     else if(w[2] == "L"){
                         indexx = indexx -1;
-                        p3.translateX(-30);
-                    }
+						p3.translateX(-30);
+						rects.translateX(-30);
+						direction = "left one cell, ";
+					}
+					prevLet = w[0];
+					letChanged = w[1];
+					if(prevLet == letChanged){
+						phraseChanged = "The current cell value remains the same and the tape head shifts " + direction + "scanning " + arr[indexx] +". ";
+					}
+					else{
+						phraseChanged = "The current cell value becomes " + letChanged + " and the tape head shifts " + direction + "scanning " + arr[indexx] + ". ";
+					}
+
 					nextStates.push(nextConfig);
 					break;
 				}
-				else if ((tapeValue === undefined) && w[0] === square){
+				else if ((tapeValue === undefined) && w[0] === "#"){
 					var nextConfig = new Configuration(next, currentState.tape, jsav);
-					if (w[1] !== square){
+					if (w[1] !== "#"){
                         nextConfig.tape.value(w[1]);
-                        arr[indexx] = w[1]
+						arr[indexx] = w[1]
+						if(w[2] == "R"){
+							indexx = indexx + 1;
+							p3.translateX(30);
+							rects.translateX(30);
+							direction = "right one cell, ";
+						}
+						else if(w[2] == "L"){
+							indexx = indexx -1;
+							p3.translateX(-30);
+							rects.translateX(-30);
+							direction = "left one cell, ";
+						}
+						prevLet = w[0];
+						letChanged = w[1];
+						if(prevLet == letChanged){
+							phraseChanged = "The current cell value remains the same and the tape head shifts " + direction + "scanning " + arr[indexx] +". ";
+						}
+						else{
+							phraseChanged = "The current cell value becomes " + letChanged + " and the tape head shifts " + direction + "scanning " + arr[indexx] + ". ";
+						}
+					}
+					else{
+						if(w[2] == "R"){
+							indexx = indexx + 1;
+							p3.translateX(30);
+							rects.translateX(30);
+							direction = "right one cell, ";
+						}
+						else if(w[2] == "L"){
+							indexx = indexx -1;
+							p3.translateX(-30);
+							rects.translateX(-30);
+							direction = "left one cell, ";
+						}
+						prevLet = w[0];
+						letChanged = w[1];
+						if(prevLet == letChanged){
+							phraseChanged = "The current cell value remains the same and the tape head shifts " + direction + "scanning " + arr[indexx] +". ";
+						}
+						else{
+							phraseChanged = "The current cell value becomes " + letChanged + " and the tape head shifts " + direction + "scanning " + arr[indexx] + ". ";
+						}
 					}
 					nextConfig.tape.move(w[2]);
 					nextStates.push(nextConfig);
@@ -446,10 +520,13 @@ while (true) {
     }
     currentStates = cur;
     configView = [];
-    // add highlighting and display
+	// add highlighting and display
+	var previous = 0;
     for (var j = 0; j < currentStates.length; j++) {
 		currentStates[j].state.highlight();
-		jsav.ds.tape([arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8],arr[9], arr[10], arr[11], arr[12], arr[13], arr[14]], 150, 20, "both");
+		currState = "The current state is " + currentStates[j].state.value();
+		jsav.umsg("Step " + counter + ": " + phraseChanged + currState);
+		jsav.ds.tape([arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8],arr[9], arr[10], arr[11], arr[12], arr[13], arr[14]], 150, topos + 50, "both");
         if (g.isFinal(currentStates[j].state)) {
             g.showAccept(currentStates[j].state);
         }
