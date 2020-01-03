@@ -121,19 +121,19 @@
       "CS5040slides/Buffering": {}
     },
     "Week 10": {
-      "CS5040slides/Hashing": {},
-      "CS5040slides/MemManage": {}
+      "CS5040slides/Hashing": {}
     },
     "Week 11": {
+      "CS5040slides/MemManage": {},
       "CS5040slides/Union-Find": {}
-    },
-    "Week 12": {
-      "CS5040slides/Graphs": {}
     },
     "Week 13": {
       "CS5040slides/Indexing": {}
     },
     "Week 14": {
+      "CS5040slides/Graphs": {}
+    },
+    "Week 15": {
       "CS5040slides/General": {}
     }
   }

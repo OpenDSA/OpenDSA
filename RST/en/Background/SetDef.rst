@@ -207,7 +207,7 @@ binary relation over set :math:`\mathbf{S}`.
   :math:`a, b, c \in \mathbf{S}`.
 
 As examples, for the natural numbers, :math:`<` is
-irreflexive (because :math`aRa` is never true),
+irreflexive (because :math:`aRa` is never true),
 antisymmetric (because there is no case where :math:`aRb` and
 :math:`bRa`), and transitive.
 Relation :math:`\leq` is reflexive, antisymmetric, and transitive.

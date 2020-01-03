@@ -11,10 +11,10 @@
 
 
 ==================
-Program Management
+Project Management
 ==================
 
-Program Management
+Project Management
 ------------------
 
 .. slide:: Project Management
@@ -214,7 +214,7 @@ Program Management
 
 .. slide:: Working with a Partner (1)
 
-   | Typically, about half to 2/3 of students work with a partner.
+   | Typically, about half to 2/3 of students work with a partner (CS3114).
    | As a population, we cannot distinguish differences in performance
      in terms of score distribution between partnerships and singles.
    | Data indicate that each member of partnership works about 80% as
@@ -223,7 +223,7 @@ Program Management
 
 .. slide:: Working with a Partner (2)
 
-   | About 1/3 of partnerships end badly.
+   | About 1/3 of partnerships end badly (CS3114).
    |   The common complaint is one blaming the other for "letting me down".
 
    | Two approaches:
@@ -235,8 +235,7 @@ Program Management
    Historically, about 1/3 of CS3114 partnerships have
    crashed-and-burned. The most common culprit appears to be that one
    person thought that the other person "let me down". This stems from
-   (is even possible because of) lack of cohesiveness. Meaning: The
-   did not work together.
+   lack of cohesiveness. Meaning: They did not work together.
 
    Divide-and-conquer reduces to "throw it over the wall". Even if
    both parties hold up their end, this leads to inefficiencies in

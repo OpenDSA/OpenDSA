@@ -399,7 +399,11 @@ Graphs
 
 .. slide:: Kruskal’s MST Algorithm (2)
 
-   .. avembed:: AV/Development/KruskalUFAV.html ss
+   .. inlineav:: kruskalCON ss
+      :long_name: Kruskal Slideshow
+      :links: AV/Graph/kruskalCON.css
+      :scripts: AV/Graph/kruskalCON.js
+      :output: show
 
 
 .. slide:: .
