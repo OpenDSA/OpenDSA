@@ -716,6 +716,11 @@
         }
       }
     }, 
+    "General Trees": {
+      "General/GenTreeIntro": {},
+      "General/UnionFind": {},
+      "General/SequentialRep": {}
+    }, 
     "Advanced Data Structures": {
       "SearchStruct/SkipList": {},
       "Spatial/Spatial": {}, 

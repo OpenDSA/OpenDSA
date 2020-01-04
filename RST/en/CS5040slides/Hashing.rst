@@ -168,7 +168,7 @@ Hashing
 
 .. slide:: String Folding
 
-   .. codeinclude:: Hashing/sfold
+   .. codeinclude:: Hashing/Hash
       :tag: sfold
 
    .. avembed:: AV/Hashing/StringSfold.html pe
