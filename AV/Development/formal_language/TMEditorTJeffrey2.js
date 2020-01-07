@@ -1,3 +1,5 @@
+// TODO: The Traversor code needs to be factored out,
+// along with the copy VisFormalLang/TM/TManbncnCON.js
 var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
 		square = String.fromCharCode(9633),

@@ -502,8 +502,8 @@ Which means that this simple Turing Machine is doing something that no
 DFA, NFA, or PDA can do!
 
 .. inlineav:: TManbncnCON ss
-   :links: DataStructures/FLA/FLA.css AV/TJeffrey/TManbncnCON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/TJeffrey/TManbncnCON.js
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TManbncnCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TManbncnCON.js
    :align: center
    :output: show
 
