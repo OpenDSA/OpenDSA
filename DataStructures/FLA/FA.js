@@ -34,7 +34,7 @@ var lambda = String.fromCharCode(955),
     this._nodes = [];
     this._edges = [];
     this._alledges = null;
-    this.isDraggable = false;
+    this.isDraggable = true;
     this.alphabet = {}; // input alphabet
     this.jsav = jsav;
     this.initial; // initial state
@@ -1541,7 +1541,7 @@ var lambda = String.fromCharCode(955),
     this.step = 0; // current step the user is at, used for changing configuration display    
     if (options.url) { //load the machine from the file
       this.loadFAFromJFLAPFile(options.url);
-      this.disableDragging();
+      //this.disableDragging();
     }
   }
 
@@ -1745,7 +1745,7 @@ var lambda = String.fromCharCode(955),
       }*/
     g.updateNodes();
     g.layout();
-    g.disableDragging();
+    //g.disableDragging();
     return g;
   };
 
