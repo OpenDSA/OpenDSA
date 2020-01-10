@@ -22,6 +22,7 @@ $(document).ready(function() {
   e3.css({"stroke-dasharray": "."});
   fa.css({outline: "1px black solid", border: "10px transparent solid;"});
   av.label("NFA that accepts $" + name + "$", {left: left + 80, top: top +200});
+  fa.disableDragging();
   return fa;
 }  
 var av_name = "schematicConcatRepCON";
@@ -61,5 +62,8 @@ var av_name = "schematicConcatRepCON";
   av.umsg("Concet the final state for the NFA that accepts s with the new finla state by a lambda transition.")
   av.g.line(735, 130, 800, 130, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left:770, top:95});
+  fa.disableDragging();
+  fa2.disableDragging();
   av.recorded();
+
 });

@@ -37,6 +37,7 @@ controllerProto.init = function(jsav, expression, visualize, exercise, options) 
 	this.visualize = visualize;
 	this.jsav = jsav;	
 	this.fa = jsav.ds.FA($.extend({width: '750px', height: 440, layout: 'automatic'}, options));
+	this.fa.disableDragging();
 	var start = this.fa.addNode({left: '15px'});
 	var height = options.height || 440;
 	var width = options.width || 750;
@@ -237,6 +238,7 @@ controllerProto.exportToFA = function() {
  * Does everything.
  */
 controllerProto.completeAll = function() {
+	this.fa.disableDragging();
 	while (action != 0 || toDo.length > 0){
 		if(this.visualize){
 			this.jsav.step();

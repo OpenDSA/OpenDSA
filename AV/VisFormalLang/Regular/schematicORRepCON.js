@@ -22,6 +22,7 @@ function drawScheme(av, name, left, top){
   e3.css({"stroke-dasharray": "."});
   fa.css({outline: "1px black solid", border: "10px transparent solid;"});
   av.label("NFA that accepts $" + name + "$", {left: left + 80, top: top +200});
+  fa.disableDragging();
   return fa;
 }  
 var av_name = "schematicORRepCON";
@@ -63,5 +64,8 @@ var av_name = "schematicORRepCON";
   av.label(lambda, {left:600, top: 260});
   av.step();
   av.umsg("The resulting NFA accepts $r + s$");
+  fa.disableDragging();
+  fa2.disableDragging();
   av.recorded();
+
 });

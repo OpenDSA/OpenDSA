@@ -10,5 +10,6 @@ $(document).ready(function() {
     av.displayInit();
     var REtoFA = new REtoFAController(av, regex,{width: avWidth, height: avHeight, left: 10}, true);
     var NFA = REtoFA.completeAll();
+    av.step();
     av.recorded();
 });

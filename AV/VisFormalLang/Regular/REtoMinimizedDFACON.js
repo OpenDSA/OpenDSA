@@ -24,6 +24,6 @@ $(document).ready(function() {
     width: avWidth,
     height: avHeight};
   var minimizedDFA = minimizer.minimizeDFA(av, DFA,tree, newGraphDimensions);
-  minimizedDFA.disableDragging();
+  //minimizedDFA.disableDragging();
   av.recorded();
 });

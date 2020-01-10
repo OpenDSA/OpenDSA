@@ -9,5 +9,6 @@ $(document).ready(function() {
   var nfa = new av.ds.FA({url: url, top: 0, width: 300, height: 250, left: 0});
   var fatoreController = new FAtoREController(av, nfa, {});
   fatoreController.visualizeConversion({left: 350}, {left: 470, width: 300, height: 250, top:0});
+  nfa.layout();
   av.recorded();
 });
