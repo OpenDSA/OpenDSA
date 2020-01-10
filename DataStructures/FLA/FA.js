@@ -1157,13 +1157,14 @@ var lambda = String.fromCharCode(955),
         minToplocation = Math.min(minToplocation, FAnodes[n].position().top);
         maxTopLocation = Math.max(maxTopLocation, FAnodes[n].position().top);
       }
-      if (this.end().element.position().top <= 0) {
-        this.end().element.offset({ top: this.end().element.offset().top + this.end().element.position().top + 50 });
-        this.endnode.getIncoming().forEach(edge => edge.layout());
-      } else if (this.end().element.height() + this.end().element.position().top >= 200) {
-        this.end().element.offset({ top: this.end().element.offset().top - 50 });
-        this.endnode.getIncoming().forEach(edge => edge.layout());
-      }
+
+      // if (this.end().element.position().top <= 0) {
+      //   this.end().element.offset({ top: this.end().element.offset().top + this.end().element.position().top + 50 });
+      //   this.endnode.getIncoming().forEach(edge => edge.layout());
+      // } else if (this.end().element.height() + this.end().element.position().top >= 200) {
+      //   this.end().element.offset({ top: this.end().element.offset().top - 50 });
+      //   this.endnode.getIncoming().forEach(edge => edge.layout());
+      // }
       if ((this.end().position().top > this.container.element.height() / 2) && minToplocation !== maxTopLocation) { //this means, draw the arrow at the button
         fromY = Math.round(fromY + sHeight); //Change the - sign to + in case we need to flip the loop arrow and remove "adjust"
         this.g.path("M" + fromX + ',' + fromY + ' a' + loopR + ',' + loopR + ' -45 1,0 ' //this 1 is to draw it from the top. Make it 0 to flip it.
