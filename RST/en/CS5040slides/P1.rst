@@ -16,11 +16,78 @@ Project 1 Design
 Project 1 Design
 ----------------
 
-.. slide:: Generalizing Container Classes
+.. slide:: Project 1
 
-   | This is a placeholder for a discussion of P1 design,
-     once I settle on P1.
+   | Be aware of due date, milestone dates
+   | Aim to get it done PRIOR to the EARLY BONUS date.
+   | You need to write a "scanner" or "parser" to read info from
+     command file (text).
+   | You need to use command line parameters
+   |   See Tutorials in Chapter 3 of OpenDSA
+   |   For parsing: Use Scanner Class [3.7] or
+       Pattern/Matcher classes
 
-.. slide:: Breaking Down the Project (1)
+.. slide:: Project 1 Class Organization (1)
 
-   | More placeholder: Good vs. bad design choices
+   | Q: When do you need separate classes?
+   |   Wrong A: When they get too long
+   |   Right A: When they separate meaningfully different behavior
+   | Things you need in this project
+   |   Multiple data structures (hash table class, memory manager class)
+   |   "Main" routine, that sets things up
+   |   Command syntactic parsing (separate the behavior, NOT the code length)
+   |   Command semantic processig (separate the behavior, NOT the code length)
+           
+.. slide:: Project 1 Class Organization (2)
+
+   | Bad:
+   |   Main Class (Scanner/interpreter)  ==> Main Data Structures           
+   | Good:
+   |   Main (Program parameters, initialization) ==>
+   |     Parser (Syntactic processing of commands) ==>
+   |       "Database" or "World" (symantic processing of commands) ==> 
+   |         Various data structures classes
+           
+.. slide:: Scheduling the project
+
+   | Most people find these projects to be hard and/or time consuming
+   |   Need some planning structure
+   |   Milestones help to enforce time management
+   |   Incremental Development is crucial to success
+   | Scheduling the project:
+   |   1. Main/Parser first.
+   |   2. World Database class next.
+   |   3. Hash table, implemented with direct access to strings in memory
+          (hidden behind record interface)
+   |   4. Memory manager last!
+         
+
+.. slide:: General Project Info              
+
+   | You are usually banned from using standard Java data structures
+     classes
+   |   You may **not** use things like ``HashMap``, ``ListArray``, ``Vector``
+   |   You may use standard language features like arrays
+   |   You may use string and file manipulation classes/methods that
+       make parsing of the command file easy.          
+
+.. slide:: Good Design Practice
+
+   | Good names matter. REALLY!
+   | Every competent software development organization enforces some
+     coding style.
+   | Generalize your container classes
+   |   For P1, your hash table should not be more specialized than the
+       fact that it is storing strings.
+   |   For P1, your memory manager should not know anything about the
+       rest of the project, it just stored bytes
+
+.. slide:: Container Classes
+
+   | The hash table is a container class. A container class is anything
+     that stores a collection of arbitrary objects.
+   | Want to support any record type. (Actually, any string is fine)
+   | We will talk about this later in general. For now, just hide
+     details behind some Record class
+   | Need to deal with concept of comparison. Your record should give
+     you back the string as its key.

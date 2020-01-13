@@ -217,6 +217,12 @@ CS5040notes: min
 CS5040slides: min
 	python $(CONFIG_SCRIPT) -s config/CS5040slides.json --no-lms
 
+CS5040MasterN: min
+	python $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
+
+CS5040Master: min
+	python $(CONFIG_SCRIPT) -s config/CS5040Master.json --no-lms
+
 Codio: min
 	python $(CONFIG_SCRIPT) config/Codio.json --no-lms
 
@@ -246,7 +252,7 @@ CSCI2101: min
 
 Yuhui: min
 	python $(CONFIG_SCRIPT) config/Yuhui.json --no-lms
-	
+
 Yinwen: min
 	python $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
 

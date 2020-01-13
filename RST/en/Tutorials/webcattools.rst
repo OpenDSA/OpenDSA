@@ -126,7 +126,7 @@ Put in the following information:
 
 * Submission Definition URL: https://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/wa/assignments/eclipse?institution=VT
 
-* Email: Your VT email address.
+* Email: Your VT email address (PID@vt.edu).
 
 * Username: Your PID.
 
