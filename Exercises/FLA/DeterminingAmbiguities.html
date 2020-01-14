@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Determining Ambiguities</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="920" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="DeterminingAmbiguitiesp">
+          <p class="question">Consider the following grammars:
+	    <table class="grammar">
+	      <tr><td><strong>Grammar 1:</strong></td>
+		<td>S &rarr; a S |  b S | &lambda;
+		</td></tr>
+	      <tr><td><strong>Grammar 2:</strong></td>
+		<td>S &rarr; a | b |  S S | &lambda;
+	      </td></tr>
+	      <tr><td><strong>Grammar 3:</strong></td>
+		<td>S &rarr; a S b | &lambda;</td></tr>
+	      <tr><td><strong>Grammar 4:</strong></td>
+		<td>S &rarr; S a | S b | a</td></tr>
+	      <tr><td><strong>Grammar 5:</strong></td>
+		<td>S &rarr; a R | R</td></tr>
+	      <tr><td></td>
+		<td>R &rarr; b S | S | &lambda;</td></tr>
+	    </table>
+            <p class="question">How many of these grammars are ambiguous?</p>
+          <div class="solution">2</div>
+          <ul class="choices">
+            <li>0</li>
+            <li>1</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+
+          </ul>
+          <div class="hints">
+            <p>Review the definition of an ambiguous grammar.</p>
+	    <p>For each grammar, when looking for strings with
+	    multiple parse trees, start with the shortest strings that
+	    the grammar generates.</p>
+	    <p>Common sources of grammatical ambiguity include
+	    recursive patterns such as double recursion and single,
+	    indirect recursion (i.e., from one non-terminal back to itself
+	    via one or more other non-terminals).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

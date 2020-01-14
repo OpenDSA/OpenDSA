@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html data-require="math PLutils EvalExp" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Evaluating Expression</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="920" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="G">expGrammar.initialize()</var>
+	<var id="E">expGrammar.generate_exp()</var>
+        <var id="V">expGrammar.assign_vals_to_operands()</var>
+<!--        <var id="key">hashFuncSsimple.genKey(len)</var>-->
+        <var id="CorrectAnswer">expGrammar.eval_exp()</var>
+      </div>
+      <div class="problems">
+        <div id="EvalExpp">
+          <div class="question">Consider the following grammar for
+          arithmetic expressions in
+          which <span class="string">&lt;a&gt;</span> is the start
+          symbol:
+	    <p class="string">
+            <var>G</var>
+	    </p>
+
+	    <p>The following is a syntactically correct expression in the above grammar:
+	      <b><var>E</var></b>
+	    </p>
+
+	    <p>Suppose that the variables in this expression have the
+	    following values assigned to them: <br />
+	      <b><var>V</var></b> <br /> What is the integer value of
+	      the expression under this assignment of values?  Assume
+	      that any division that occurs is integer division (i.e.,
+	      it always truncates to the largest integer less than or
+	      equal to the quotient, including negative quotients).
+	      In case a division by zero occurs, indicate this by
+	      giving your answer as the word <em>Infinity</em> (with the first letter
+	      capitalized). Otherwise, the final answer is always an integer.
+	    </p>
+          </div>
+          <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
+          <div class="hints">
+            <p>Be sure to note how the grammar controls the precedence of the operators.</p>
+            <p>Be sure to note how the grammar controls the associativity of the operators.</p>
+<!--             <p>The answer is <var>CorrectAnswer</var>.</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

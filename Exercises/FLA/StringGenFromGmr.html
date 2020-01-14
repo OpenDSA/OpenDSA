@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Determining Whether a String Can Be Generated</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP1part2p">
+          <p class="question">Consider the following grammar:<p>
+            <table class="grammar question">
+              <tr>
+                <td>A</td>
+                <td>&rarr;</td>
+                <td>0 B</td>
+                <td>|</td>
+                <td>1 C</td>
+                <td>|</td>
+                <td>&lambda;</td>
+              </tr>
+
+              <tr>
+                <td>B</td>
+                <td>&rarr;</td>
+                <td>0 A</td>
+                <td>|</td>
+                <td>1 D</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>C</td>
+                <td>&rarr;</td>
+                <td>0 D</td>
+                <td>|</td>
+                <td>1 A</td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>D</td>
+                <td>&rarr;</td>
+                <td>0 C</td>
+                <td>|</td>
+                <td>1 B</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+
+          <p class="question">Which one of the following strings
+            CANNOT be derived from <span class="string">A</span>?
+          </p>
+          <div class="solution">101</div>
+          <ul class="choices">
+            <li>1100</li>
+            <li>001010</li>
+            <li>1111</li>
+          </ul>
+          <div class="hints">
+            <p>Try to build a complete derivation with pencil and paper for
+              each string.</p>
+            <p>Each derivation must start with the
+              non-terminal <span class="string">A</span>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

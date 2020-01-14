@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>Number Of Parse Trees (1)</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="NumParseTrees1p">
+          <p class="question">Consider the following grammar for a language <code>L</code>:</p>
+<pre class="string">
+S &rarr; V = E
+      | S ; S
+      | if B then S
+      | if B then S else S
+V &rarr; x | y | z
+E &rarr; V | 0 | 1 | 2 | 3 | 4
+B &rarr; E === E
+</pre>
+          <p class="question">where, like in JavaScript, = is the assignment operator and === is the equality testing  operator.<br />
+
+ Now consider the following candidate for a
+          statement <span class="string">S</span> in the
+          language <code>L</code>:</p>
+
+	  <p class="question grammar"><span class="string">x = 1; y =
+	  2; if x === y then y = 3</span></p>
+
+          <p class="question">Which one of the following propositions
+          best characterizes the above statement?
+          <div class="solution">It is parsed ambiguously in <code>L</code>.</div>
+          <ul class="choices">
+            <li>It is parsed in <code>L</code> with a unique parse tree.</li>
+            <li>It is not a statement in <code>L</code>.</li>
+          </ul>
+          <div class="hints">
+            <p>Try to build the whole parse tree(s) for this statement
+            with pencil and paper.</p>
+            <p>Review the definition of an ambiguous grammar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

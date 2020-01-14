@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>ExtendedBNF</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="920" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="ExtendedBNFp">
+          <p class="question">Consider the following fragment of a BNF grammar:
+	    <table class="grammar">
+	      <tr><td>&lt;statement-list&gt;</td> 
+		<td>::=</td>
+		<td>&lt;more&gt;</td>
+		<td>| &epsilon;</td></tr>
+	      <tr><td>&lt;more&gt;</td> 
+		<td>::=</td>
+		<td>&lt;statement&gt;</td>
+		<td>| &lt;statement&gt; ; &lt;more&gt;</td></tr>
+	    </table>
+	  <p class="question">Which one of the following EBNF
+          grammars generates the same language as the BNF grammar given above?
+          <div class="solution">
+	    <span class="string">&lt;statement-list&gt; ::= ( 
+	      &lt;statement&gt; ( ; &lt;statement&gt; )* )?</span>
+	  </div>
+          <ul class="choices">
+            <li><span class="string">&lt;statement-list&gt; ::= 
+	      ( &lt;statement&gt; ; )*</span></li>
+            <li><span class="string">&lt;statement-list&gt; ::= 
+	      &lt;statement&gt; ( ; &lt;statement&gt; )*</span></li>
+            <li><span class="string">&lt;statement-list&gt; ::= 
+	       ( &lt;statement&gt; ; )* &lt;statement&gt;?</span></li>
+	    <li>None of the other options is correct.</li>
+          </ul>
+          <div class="hints">
+            <p>First, precisely characterize all of the acceptable
+            lists of statements according to the original BNF grammar
+            fragment.</p>
+	    <p>Second, make sure that the EBNF grammar generates all
+	    of these acceptable lists of statements.</p>
+	    <p>Third, make sure that the EBNF grammar does not generate any
+	    unacceptable lists of statements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
