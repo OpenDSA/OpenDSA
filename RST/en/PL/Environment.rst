@@ -27,7 +27,7 @@ for the implementation of the interpreter and adopt an
 **environment-based model** of evaluation, in which values are bound
 to identifiers (variable names).
 
-Conceptually, an environment is a possibly empty "set" of variable-value
+Conceptually, an environment is a (possibly empty) set of variable-value
 pairs. We’ll represent this set itself and each pair in it as an array.
 For example:
 
