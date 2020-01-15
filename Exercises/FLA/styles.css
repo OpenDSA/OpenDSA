@@ -1,0 +1,33 @@
+table.grammar {
+    border-collapse: separate;
+    border-spacing: 5px 0;
+    font-family: monospace;         
+    margin: auto;
+}
+.string {
+    font-family: monospace;
+}
+
+.raisedString {
+    font-family: monospace;
+    line-height: 1em;
+    position: relative;
+    vertical-align: baseline;
+    bottom: 0.5em;
+}
+
+.answerRP22part2, .answerRP24part1 {
+    font-weight: bold;  
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+
+.answerRP22part2 td , .answerRP24part1 td {
+    vertical-align: top;
+}
+
+table.codeSnippet {
+    border: 1px black solid;
+    font-family: monospace !important;    
+}

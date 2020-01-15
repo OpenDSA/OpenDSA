@@ -13,23 +13,23 @@
       <div class="problems">
         <div id="PrecedenceAndAssociativityp">
           <p class="question">Consider the following BNF grammar in
-          which &lt;s&gt; is the start non-terminal and @, ? and # are three
+          which S is the start non-terminal and @, ? and # are three
           binary operators:
 	    <table class="grammar">
-	      <tr><td>&lt;s&gt;</td> 
-		<td>::=</td>
-		<td>&lt;s&gt; @ &lt;t&gt;</td>
-		<td>| &lt;t&gt;</td></tr>
-	      <tr><td>&lt;t&gt;</td> 
-		<td>::=</td>
-		<td>&lt;u&gt; ? &lt;t&gt;</td>
-		<td>| &lt;u&gt;</td></tr>
-	      <tr><td>&lt;u&gt;</td> 
-		<td>::=</td>
-		<td>&lt;u&gt; # &lt;v&gt;</td>
-		<td>| &lt;v&gt;</td></tr>
-	      <tr><td>&lt;v&gt;</td> 
-		<td>::=</td>
+	      <tr><td>S</td> 
+		<td>&rarr;</td>
+		<td>S @ T</td>
+		<td>| T</td></tr>
+	      <tr><td>T</td> 
+		<td>&rarr;</td>
+		<td>U ? T</td>
+		<td>| U</td></tr>
+	      <tr><td>U</td> 
+		<td>&rarr;</td>
+		<td>U # V</td>
+		<td>| V</td></tr>
+	      <tr><td>V</td> 
+		<td>&rarr;</td>
 		<td>a | b | c</td>
 		<td></td></tr>
 	    </table>
@@ -42,7 +42,7 @@
             higher precedence than #.</li>
             <li>All three operators are right-associative and @ has
             lower precedence than #.</li>
-            <li>&lt;t&gt; is right-associative and ? has higher precedence
+            <li>T is right-associative and ? has higher precedence
             than #.</li>
             <li>? is right-associative and has lower precedence than @.</li>
           </ul>

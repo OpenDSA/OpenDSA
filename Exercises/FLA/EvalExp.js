@@ -130,18 +130,18 @@
 	    infix_priority[end_token] = 0;
 
 	    if (left1) {
-		grammar1 = "&lt;a&gt;&nbsp; ::= &lt;b&gt; | &lt;a&gt; " + ops[0] + " &lt;b&gt; | &lt;a&gt; " + ops[1] + " &lt;b&gt; <br />";
+		grammar1 = "A &rarr; B | A " + ops[0] + " B | A " + ops[1] + " B <br />";
 	    } else {
-		grammar1 = "&lt;a&gt;&nbsp; ::= &lt;b&gt; | &lt;b&gt; " + ops[0] + " &lt;a&gt; | &lt;b&gt; " + ops[1] + " &lt;a&gt; <br />";
+		grammar1 = "A&nbsp; &rarr; B | B " + ops[0] + " A | B " + ops[1] + " A <br />";
 	    }
 	    if (left2) {
-		grammar2 = "&lt;b&gt;&nbsp; ::= &lt;c&gt; | &lt;b&gt; " + ops[2] + " &lt;c&gt; | &lt;b&gt; " + ops[3] + " &lt;c&gt; <br />";
+		grammar2 = "B&nbsp; &rarr; C | B " + ops[2] + " C | B " + ops[3] + " C <br />";
 	    } else {
-		grammar2 = "&lt;b&gt;&nbsp; ::= &lt;c&gt; | &lt;c&gt; " + ops[2] + " &lt;b&gt; | &lt;c&gt; " + ops[3] + " &lt;b&gt; <br />";
+		grammar2 = "B&nbsp; &rarr; C | C " + ops[2] + " B | C " + ops[3] + " B <br />";
 	    }
-	    grammar = grammar1 + grammar2 + "&lt;c&gt;&nbsp; ::= &lt;id&gt; | ( &lt;a&gt; ) <br />";
+	    grammar = grammar1 + grammar2 + "C&nbsp; &rarr; I | ( A ) <br />";
 
-	    return grammar + "&lt;id&gt; ::= " + operands.join(" | "); 
+	    return grammar + "I &rarr; " + operands.join(" | "); 
 	    //	    document.getElementById("grammar").innerHTML = grammar;
 	},
 

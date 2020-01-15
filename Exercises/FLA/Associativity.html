@@ -15,30 +15,30 @@
           <p class="question">Consider the following grammars:
 	    <table class="grammar">
 	      <tr><td><strong>Grammar 1:</strong></td>
-		<td>&lt;exp&gt;</td> 
-		<td>::= &lt;term&gt;</td>
-		<td>| &lt;exp&gt; ^ &lt;term&gt;</td>
+		<td>E</td> 
+		<td>&rarr; T</td>
+		<td>| E ^ T</td>
 		<td></td></tr>
 	      <tr><td></td>
-		<td>&lt;term&gt;</td>
-		<td>::= &lt;integer&gt;</td>
-		<td>| ( &lt;exp&gt; )</td>
+		<td>T</td>
+		<td>&rarr; I</td>
+		<td>| ( E )</td>
 		<td></td></tr>
 	      <tr><td><strong>Grammar 2:</strong></td>
-		<td>&lt;exp&gt;</td> 
-		<td>::= &lt;term&gt;</td>
-		<td>| &lt;term&gt; ^ &lt;exp&gt;</td>
+		<td>E</td> 
+		<td>&rarr; T</td>
+		<td>| T ^ E</td>
 		<td></td></tr>
 	      <tr><td></td>
-		<td>&lt;term&gt;</td>
-		<td>::= &lt;integer&gt;</td>
-		<td>| ( &lt;exp&gt; )</td>
+		<td>T</td>
+		<td>&rarr; I</td>
+		<td>| ( E )</td>
 		<td></td></tr>
 	      <tr><td><strong>Grammar 3:</strong></td>
-		<td>&lt;exp&gt;</td> 
-		<td>::= &lt;integer&gt;</td>
-		<td>| &lt;exp&gt; ^ &lt;exp&gt;</td>
-		<td>| ( &lt;exp&gt;)</td></tr>
+		<td>E</td> 
+		<td>&rarr; I</td>
+		<td>| E ^ E</td>
+		<td>| ( E)</td></tr>
 	    </table>
 	    <p class="question">If ^ represents exponentiation, how
 	    many of these grammars force 2^3^2 to evaluate to 512?</p>
