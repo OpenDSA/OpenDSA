@@ -181,3 +181,10 @@ Windows:
 
 ``Window->Preferences->Java->Code Style->Formatter->import`` the above file,
 then click ``okay``.
+
+.. odsafig:: Images/EclipseFormatter.png
+   :width: 650
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Eclipse Formatter
