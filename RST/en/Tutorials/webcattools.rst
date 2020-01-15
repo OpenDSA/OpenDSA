@@ -150,5 +150,34 @@ Junit 4.
 
 .. |external_link1| raw:: html
 
-   <a href="http://web-cat.org/eclstats/junit-quickstart/" target = "_blank">here</a>
+   <a href="http://web-cat.org/eclstats/junit-quickstart/" target =
+   "_blank">here</a>
+   
 
+Installing formatting support
+-----------------------------
+
+You might want to make sure that your Eclipse style checker is as
+close as possible to the style guide that Web-CAT is enforcing.
+Download this file: |stylefile| (Right click and Save-As).
+Then install it into Eclipse, as described below.
+
+.. |stylefile| raw:: html
+
+   <a href="http://people.cs.vt.edu/~shaffer/vtcsstylefixed.xml" target =
+   "_blank">vtcsstylefixed.xml</a>
+
+Once it is installed, press CTRL-SHIFT-F (Windows) or COMMAND-SHIFT-F (Mac) within Eclipse to format your code. 
+
+
+To install:
+
+Mac:
+
+``Eclipse->Preferences->Java->Code Style->Formatter->import``
+the above file, then click ``okay``.
+
+Windows:
+
+``Window->Preferences->Java->Code Style->Formatter->import`` the above file,
+then click ``okay``.
