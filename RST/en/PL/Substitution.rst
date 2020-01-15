@@ -162,11 +162,23 @@ a row.
 .. avembed:: Exercises/PL/SubstitutionCase1.html ka
    :long_name: Identifying Substitution Subcases of Case 1
 
-	       
-Identifying Substitution Cases
-------------------------------
 
-The following exercise is good practice for identifying which case
+Identifying Substitution Subcases of Case 2
+---------------------------------------------
+
+The following exercise is good practice for identifying which subcase
+of case 2 applies at each step of the substitution algorithm. To get credit for
+this randomized problem, you must solve it correctly three times in
+a row.
+
+.. avembed:: Exercises/PL/SubstitutionCase2.html ka
+   :long_name: Identifying Substitution Subcases of Case 2
+	       
+	       
+Identifying Substitution Cases and Subcases
+-------------------------------------------
+
+The following exercise is good practice for identifying which (sub)case
 applies at each step of the substitution algorithm. To get credit for
 this randomized problem, you must solve it correctly three times in
 a row.
