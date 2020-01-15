@@ -150,6 +150,19 @@ return the application that results from recursively substituting
 application, yielding :math:`(\lambda v.\lambda y.(y\ x)\ \lambda y.(y\ x))`.
 
 
+
+Identifying Substitution Subcases of Case 1
+---------------------------------------------
+
+The following exercise is good practice for identifying which subcase
+of case 1 applies at each step of the substitution algorithm. To get credit for
+this randomized problem, you must solve it correctly three times in
+a row.
+
+.. avembed:: Exercises/PL/SubstitutionCase1.html ka
+   :long_name: Identifying Substitution Subcases of Case 1
+
+	       
 Identifying Substitution Cases
 ------------------------------
 
