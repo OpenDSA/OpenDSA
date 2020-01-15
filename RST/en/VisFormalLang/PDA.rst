@@ -287,9 +287,9 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
    | :math:`F = \{\}`. Irrelevant.
      The only time the stack will be empty is in :math:`q_f`.
 
-   .. inlineav:: PDA dgm
-      :links: AV/OpenFLAP-Test/PDA.css
-      :scripts: AV/OpenFLAP-Test/PDA.js
+   .. inlineav:: PDADiagram dgm
+      :links: AV/VisFormalLang/PDA/PDADiagram.css
+      :scripts: AV/VisFormalLang/PDA/PDADiagram.js
       :align: center
 
    | Here, :math:`x` is any symbol in :math:`{\Gamma}^{'}`.
@@ -314,8 +314,8 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
      :math:`q \in Q`. 
 
    .. inlineav:: PDA2 dgm
-      :links: AV/OpenFLAP-Test/PDA2.css
-      :scripts: AV/OpenFLAP-Test/PDA2.js
+      :links: AV/VisFormalLang/PDA/PDA2.css
+      :scripts: AV/VisFormalLang/PDA/PDA2.js
       :align: center
 
    | If :math:`M` is accepted in some state, then that means the stack
