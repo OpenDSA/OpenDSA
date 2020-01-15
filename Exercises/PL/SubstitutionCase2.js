@@ -104,16 +104,12 @@
 	    var a = subst[1];
 	    var p = subst[2];
 	    var B = subst[3];
-	    var options = ["2a","2b","2c", "This is not an instance of case 2"];
+	    //var options = ["2a","2b","2c", "This is not an instance of case 2"];
 	    this.substExpression = "subst( " + L.printExp(a) + ", " + 
 		L.printExp(p) + ", " + 	L.printExp(B) + " )";
 	    this.answer = substCase;
 	    
-	    options.splice(options.indexOf(substCase),1);
-
-	    this.option1 = options[0];
-	    this.option2 = options[1];
-	    this.option2 = options[1];	    
+	    //options.splice(options.indexOf(substCase),1);
 	} // init function
 
 

@@ -103,21 +103,23 @@
 	    var a = subst[1];
 	    var p = subst[2];
 	    var B = subst[3];
-	    var options = ["1a","1b","2a","2b","2c","3"];
+	    //var options = ["1a","1b","2a","2b","2c","3"];
 	    this.substExpression = "subst( " + L.printExp(a) + ", " + 
 		L.printExp(p) + ", " + 	L.printExp(B) + " )";
 	    //arr = jsav.ds.array([subst]);
 	    //arr.addClass([0],"noBoxShadow");
 	    this.answer = substCase;
-	    
+	    /*
 	    //console.log(this.answer);
 	    options.splice(options.indexOf(substCase),1);
 
+	    
 	    this.option1 = options[0];
 	    this.option2 = options[1];
 	    this.option3 = options[2];
 	    this.option4 = options[3];
 	    this.option5 = options[4];
+	    */
 	} // init function
 
 

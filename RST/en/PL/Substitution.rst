@@ -184,7 +184,7 @@ this randomized problem, you must solve it correctly three times in
 a row.
 
 .. avembed:: Exercises/PL/Substitution1.html ka
-   :long_name: Identifying Substitution Cases
+   :long_name: Identifying Substitution Cases and Subcases
 
 Performing the Substitution Algorithm
 -------------------------------------
