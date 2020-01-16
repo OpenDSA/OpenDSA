@@ -15,9 +15,8 @@ $(document).ready(function() {
     var lastRow = grammerArray.length;
     grammerArray.push(["", arrow, ""]);
     var grammerMatrix = av.ds.matrix(grammerArray, {style: "table", left: 10});
-    av.displayInit();
     av.umsg("To remove unit productions, we need to identify all unit productions using a dependency graph.")
-    av.step();
+    av.displayInit();
     var transformer = new ContextFreeGrammarTransformer(av, grammar);
     var newGrammar = transformer.removeUnit(grammerMatrix);
     av.recorded();

@@ -4,3 +4,8 @@
   .jsavcontrols {
       display: unset !important;
   }
+  .jsavhorizontalarray .jsavnode {
+    min-width: 60px !important;
+    max-width: 1000px !important;
+  }
+  
