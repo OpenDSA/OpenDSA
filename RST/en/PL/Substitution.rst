@@ -173,7 +173,19 @@ a row.
 
 .. avembed:: Exercises/PL/SubstitutionCase2.html ka
    :long_name: Identifying Substitution Subcases of Case 2
-	       
+
+
+Identifying Substitution Case 3
+-------------------------------
+
+The following exercise is good practice for determining whether or not
+case 3 applies at each step of the substitution algorithm. To get
+credit for this randomized problem, you must solve it correctly three
+times in a row.
+
+.. avembed:: Exercises/PL/SubstitutionCase3.html ka
+   :long_name: Identifying Substitution Case 3
+
 	       
 Identifying Substitution Cases and Subcases
 -------------------------------------------
