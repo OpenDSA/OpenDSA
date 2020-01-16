@@ -7,10 +7,10 @@
    :author: David Furcy and Tom Naps
 
 
-Defining SLang1
+Defining SLang 1
 ================
 
-Syntax of SLang1
+Syntax of SLang 1
 -----------------
 
 So far we have examined how to program from a functional programming
@@ -18,7 +18,7 @@ perspective and how the lambda calculus forms the theoretical
 foundation for that perspective.  We will now shift our focus and
 consider how we could actually develop a small interpreter for a
 language based on the lambda calculus.  We'll call that language
-*SLang1*, short for "Simple Language 1".   
+*SLang 1*, short for "Simple Language 1".   
 
 The development process for this interpeter will require our writing a
 Jison grammar to define the syntax of the language and transform
@@ -101,7 +101,7 @@ An AST often contains few nodes corresponding to non-terminals.  Nonetheless, it
                                       ID  INT    
                                       (x) (2)    
 
-The concrete syntax of Slang1 is defined by the following EBNF grammar:
+The concrete syntax of SLang 1 is defined by the following EBNF grammar:
 				      
 ::
 
@@ -114,7 +114,7 @@ The concrete syntax of Slang1 is defined by the following EBNF grammar:
     <prim_op>  ::= + | * | add1
 
 
-The SLang1 "program" **(fn (a,b) => b y 3)** would result in the following parse tree and AST.
+The SLang 1 "program" **(fn (a,b) => b y 3)** would result in the following parse tree and AST.
 			      
 ::
 
@@ -145,39 +145,52 @@ The SLang1 "program" **(fn (a,b) => b y 3)** would result in the following parse
 
 The expression in the bottom-right corner of the example above is a representation of the abstract syntax tree as a list of lists.
 
-Concrete Syntax SLang1
-----------------------
+Concrete Syntax of SLang 1
+--------------------------
 
 This problem will help you master the concrete syntax of SLang 1. To earn
 credit for it, you must complete this randomized problem
 correctly three times in a row.
 
-.. avembed:: Exercises/PL/ConcreteSynSLang1.html ka
-   :long_name: Slang1 ConcreteSyntax
+.. avembed:: Exercises/PL/ConcreteSynSLang1_new.html ka
+   :long_name: SLang 1 Concrete Syntax
 
-Abstract Syntax SLang1
-----------------------
+
+More Practice with the Concrete Syntax of SLang 1
+-------------------------------------------------
+
+This problem will reinforce your mastery of the concrete syntax of
+SLang 1 by providing more intensive practice. To earn credit for it,
+you must complete this randomized problem correctly three times in a
+row.
+
+.. avembed:: Exercises/PL/ConcreteSynSLang1.html ka
+   :long_name: More SLang 1 Concrete Syntax
+
+      
+Abstract Syntax of SLang 1
+--------------------------
 
 This problem will help you master the abstract syntax of SLang 1.
 
 .. avembed:: Exercises/PL/AbstractSynSLang1.html ka
-   :long_name: SLang1 AbstractSyntax
+   :long_name: SLang 1 Abstract Syntax
 
-Curry in SLang1
----------------
+Curry in SLang 1
+----------------
 
 This problem will illustrate the semantics of SLang 1 while helping
 you review the definition of the *curry* function.
 
 .. avembed:: Exercises/PL/CurryInSLang1.html ka
-   :long_name: SLang1 Curry
+   :long_name: Curry in SLang 1
 
 
-Semantics of SLang1
--------------------
+Semantics of SLang 1
+--------------------
 
 This problem focuses on the semantics of SLang 1.
 
 .. avembed:: Exercises/PL/SemanticsSLang1.html ka
-   :long_name: SLang1 Semantics
+   :long_name: SLang 1 Semantics
 
