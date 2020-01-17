@@ -86,8 +86,8 @@ $(document).ready(function () {
 	var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[1,6],$V2=[1,8],$V3=[1,9],$V4=[5,7,8,14],$V5=[1,10],$V6=[1,11],$V7=[5,7,8,10,11,14];
 	var parser = {trace: function trace() { },
 		      yy: {},
-		      symbols_: {"error":2,"program":3,"exp":4,"EOF":5,"trm":6,"PLUS":7,"MINUS":8,"fac":9,"TIMES":10,"DIV":11,"PRI":12,"LPAREN":13,"RPAREN":14,"$accept":0,"$end":1},
-		      terminals_: {2:"error",5:"EOF",7:"PLUS",8:"MINUS",10:"TIMES",11:"DIV",12:"PRI",13:"LPAREN",14:"RPAREN"},
+		      symbols_: {"error":2,"program":3,"exp":4,"EOF":5,"term":6,"PLUS":7,"MINUS":8,"fact":9,"TIMES":10,"DIV":11,"VAR":12,"LPAREN":13,"RPAREN":14,"$accept":0,"$end":1},
+		      terminals_: {2:"error",5:"EOF",7:"PLUS",8:"MINUS",10:"TIMES",11:"DIV",12:"VAR",13:"LPAREN",14:"RPAREN"},
 		      productions_: [0,[3,2],[4,1],[4,3],[4,3],[6,1],[6,3],[6,3],[9,1],[9,3]],
 		      performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 			  /* this == yyval */
@@ -107,19 +107,19 @@ $(document).ready(function () {
 			      this.$ = ['exp',$$[$0-2], '-', $$[$0]]; 
 			      break;
 			  case 5:
-			      this.$ = ['trm', $$[$0]]; 
+			      this.$ = ['term', $$[$0]]; 
 			      break;
 			  case 6:
-			      this.$ = ['trm',$$[$0-2], '*', $$[$0]]; 
+			      this.$ = ['term',$$[$0-2], '*', $$[$0]]; 
 			      break;
 			  case 7:
-			      this.$ = ['trm',$$[$0-2], '/', $$[$0]]; 
+			      this.$ = ['term',$$[$0-2], '/', $$[$0]]; 
 			      break;
 			  case 8:
-			      this.$ = ['fac',['pri', $$[$0]]]; 
+			      this.$ = ['fact',['var', $$[$0]]]; 
 			      break;
 			  case 9:
-			      this.$ = ['fac', '(', $$[$0-1], ')']; 
+			      this.$ = ['fact', '(', $$[$0-1], ')']; 
 			      break;
 			  }
 		      },
@@ -605,7 +605,7 @@ $(document).ready(function () {
 		    switch($avoiding_name_collisions) {
 		    case 0:/* no return statement, so skip whitespace */
 			break;
-		    case 1:return "PRI"
+		    case 1:return "VAR"
 			break;
 		    case 2:return "TIMES"
 			break;
@@ -715,7 +715,6 @@ $(document).ready(function () {
 	    arr_index_to_highlight++;
 	    av.step();
 	}
-	console.log("node " + node.value());
 	var i = 0;
 	var temp = [];
 	label1.text("\nParsing non-terminal " + node.value());
@@ -740,7 +739,7 @@ $(document).ready(function () {
     //    arr = av.ds.array(the_exp.split(" "));
     arr = av.ds.array(the_exp.split("")); // Spaces have been squeezed from the_exp by the time this happens, splitting with an empty string yields an array of the non-space characters
     arr.addClass(true, "oneCharWidth");
-    label1 = av.label("\nBeginning the parse ");
+    label1 = av.label("\nBegin parsing ");
     av.umsg(" ");
     tree = av.ds.tree({nodegap: 10});
 

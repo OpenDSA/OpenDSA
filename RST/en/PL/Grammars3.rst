@@ -9,70 +9,94 @@
 .. odsalink::  AV/PL/AV/parseTree.css
 
 ====================================================
-Grammars - Part 3 - Establishing Order of Operations
+Enforcing Order of Operations
 ====================================================
 
 
 Evaluation of Expressions
 -------------------------
 
-In this module we will learn about
+In this section we will learn about
 
   1. Operator precedence
   2. Operator associativity
   3. EBNF extensions and their advantages
 
-In the previous module, we saw that ambiguous grammars are to be avoided because the parse trees that result from them lead to confusion when we attach semantic meaning to the structure of the parse tree. The tree cannot be relied on to specify the order of operations.
+In the previous section, we saw that ambiguous grammars are to be
+avoided because the parse trees they allow lead to
+confusion when we attach semantics (i.e., meaning) to the structure of
+the parse tree. The tree cannot be relied upon to specify the order of
+operations.
 
-    Although :ref:`eg1` does not suffer from ambiguity, it has another problem.  In particular, if you return to the parse tree slide-show that accompanied :ref:`eg1`, you will note that in parsing :math:`A+B*C`, the :math:`+` operation was at a deeper level in the tree than :math:`*`, thereby indicating that :math:`A+B` would be evaluated first and then multiplied by :math:`C`.  However that order of operation does not coincide with the operator precedence rules in almost every programming language.  So :ref:`eg1`, although unambiguous, is not the algebraic expression grammar that we need.  Instead consider:
+Although :ref:`eg1` does not suffer from ambiguity, it has another
+problem.  In particular, if you return to the parse tree slide show
+that accompanied :ref:`eg1`, you will note that in parsing
+:math:`A+B*C`, the :math:`+` operation was at a deeper level in the
+tree than :math:`*`, thereby indicating that :math:`A+B` would be
+evaluated first and then multiplied by :math:`C`.  However, this order
+of operations does not coincide with the operator precedence rules in
+almost every programming language.  So :ref:`eg1`, although
+unambiguous, is not the algebraic expression grammar that we need.
+Instead consider the following grammar.
 
 
-Example Grammar 3
-^^^^^^^^^^^^^^^^^
+Third Sample Grammar
+^^^^^^^^^^^^^^^^^^^^
 
 .. math::
 
    \begin{eqnarray*}
-   <exp> &::=& <trm>\\
-   &|& <exp> + <trm> \\
-   &|& <exp> - <trm> \\
-   <trm> &::=& <fac> \\
-   &|&  <trm> * <fac> \\
-   &|&  <trm> / <fac> \\
-   <fac> &::=& <pri> \\
+   <exp> &::=& <term>\\
+   &|& <exp> + <term> \\
+   &|& <exp> - <term> \\
+   <term> &::=& <fact> \\
+   &|&  <term> * <fact> \\
+   &|&  <term> / <fact> \\
+   <fact> &::=& <var> \\
    &|& ( <exp> ) \\
-   <pri> &::=& A | B | C | \ldots | X | Y | Z
+   <var> &::=& A\ |\ B\ |\ C\ |\ \ldots\ |\ X\ |\ Y\ |\ Z
    \end{eqnarray*}
 
-Note how the parse tree in the slide-show below produced by Example Grammar 3 is different from the one produced by :ref:`eg1`.
+Note how the parse tree in the slide show below, produced using
+Third Sample Grammar, is different from the one produced by :ref:`eg1`.
 
 .. inlineav:: parseTree3 ss
    :links: 
    :scripts: AV/PL/AV/parseTree3.js
    :output: show
 
-In particular, with Example Grammar 3, the sub-tree corresponding to the
-multiplication operator is at a deeper level than the sub-tree for addition,
-thereby corresponding to normal operator precedence in programming
-languages.
+In particular, with Third Sample Grammar, the sub-tree corresponding
+to the multiplication operator appears at a deeper level in the parse
+tree than the sub-tree for addition, thereby corresponding to normal
+operator precedence in programming languages.
 
-Below you have a slide-show "producer" for Example Grammar 3 that you can
+Below you have a slide show "producer" for Example Grammar 3 that you can
 control by entering the expression for which you want a parse tree
 produced.  You should experiment  with producing a variety of
-slide-shows until you feel confident that you could manually construct
+slide shows until you feel confident that you could manually construct
 the parse tree corresponding to any possible expression.
 
 .. avembed:: AV/PL/AV/parseTree3a.html ss
 
 Once you feel confident working with parse trees, here are two
 questions to consider before you start on the review problems for this
-module.
+section.
 
-**Question 1:** If you are designing a grammar corresponding to expressions, what is the strategy you would employ for introducing a different level of operator precedence -- one that is either higher or lower than that of other operators?  How would this strategy play out with respect to Example Grammar 3 if you wanted to add an operator corresponding to exponentiation?
+**Question 1:** If you are designing a grammar corresponding to
+ expressions, what is the strategy you would employ for introducing a
+ different level of operator precedence, one that is either higher or
+ lower than that of other operators?  How would this strategy play out
+ with respect to Third Sample Grammar if you wanted to add an operator
+ corresponding to exponentiation?
 
-**Question 2:** In Example Grammar 3, operators on the same level of precedence associate in left-to-right fashion, that is, :math:`A+B-C` evaluates as the parenthesized expression :math:`((A+B)-C)`.  What about the grammar dictates this left-to-right associativity?  How would you change the productions to achieve right-to-left associativity, that is, :math:`(A+(B-C))`?
+**Question 2:** In Third Sample Grammar, operators at the same level of
+ precedence associate in left-to-right order, that is, :math:`A+B-C`
+ evaluates as the parenthesized expression :math:`((A+B)-C)`.  What
+ about the grammar dictates this left-to-right associativity?  How
+ would you change the productions to achieve right-to-left
+ associativity, that is, :math:`(A+(B-C))`?
 
-The review problem set for this module contains five review problems,
+The review problem set for this section contains five review problems,
 the first four of which concern themselves with how a grammar dictates
 operator precedence and associativity.  Do not start these problems
 until you have thought through answers to the two questions posed
