@@ -11,9 +11,9 @@
 	    var vs = "uvxyz";
 	    var maxDepth = 5;
 	    var minDepth = 4;
-	    var numCorrect = SL.absyn.getRnd(0,4);
+	    var numCorrect = SL.absyn.getRnd(0,1);
+	    var options = [ "True", "False" ];
 	    var exps = [ ];
-	    var options = [ 0, 1, 2, 3, 4];
 	    var exp, badExp;
 
 	    function getRndExp() {
@@ -101,7 +101,7 @@
 	    }
 
 	    // add non-programs
-	    while (exps.length < 4) {
+	    while (exps.length < 1) {
 		exp = getRndExp();
 		badExp = addSyntaxError( exp );
 		if (exp !== badExp && exps.indexOf(exp) === -1) {
@@ -109,14 +109,8 @@
 		}
 	    }
 
-	    this.expressions = exps.join("<br />");
-	    this.answer = numCorrect + "";
-	    options.splice(numCorrect,1);
-	    //console.log(numCorrect);
-	    this.option1 = options[0];
-	    this.option2 = options[1];
-	    this.option3 = options[2];
-	    this.option4 = options[3];
+	    this.expression = exps[0];
+	    this.answer = numCorrect == 1 ? "True" : "False";
 	}// init function
     };
 
