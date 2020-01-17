@@ -11,7 +11,7 @@
 %lex
 %%
 \s+                   /* no return statement, so skip whitespace */
-[A-Z]                 return "PRI"
+[A-Z]                 return "VAR"
 "*"                   return "TIMES"
 "/"                   return "DIV"
 "-"                   return "MINUS"
@@ -47,8 +47,8 @@ exp
       { $$ = ['exp',$1, '/', $3]; }
     ;
 trm
-    : "PRI"
-      { $$ = ['trm',['pri', $1]]; }	
+    : "VAR"
+      { $$ = ['trm',['var', $1]]; }	
     | "LPAREN" exp "RPAREN"
       { $$ = ['trm', '(', $2, ')']; }	
     ;

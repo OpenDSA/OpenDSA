@@ -86,8 +86,8 @@ $(document).ready(function () {
 	var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,7],$V3=[1,8],$V4=[1,9],$V5=[1,10],$V6=[5,7,8,9,10,13];
 	var parser = {trace: function trace() { },
 		      yy: {},
-		      symbols_: {"error":2,"program":3,"exp":4,"EOF":5,"trm":6,"PLUS":7,"MINUS":8,"TIMES":9,"DIV":10,"PRI":11,"LPAREN":12,"RPAREN":13,"$accept":0,"$end":1},
-		      terminals_: {2:"error",5:"EOF",7:"PLUS",8:"MINUS",9:"TIMES",10:"DIV",11:"PRI",12:"LPAREN",13:"RPAREN"},
+		      symbols_: {"error":2,"program":3,"exp":4,"EOF":5,"term":6,"PLUS":7,"MINUS":8,"TIMES":9,"DIV":10,"VAR":11,"LPAREN":12,"RPAREN":13,"$accept":0,"$end":1},
+		      terminals_: {2:"error",5:"EOF",7:"PLUS",8:"MINUS",9:"TIMES",10:"DIV",11:"VAR",12:"LPAREN",13:"RPAREN"},
 		      productions_: [0,[3,2],[4,1],[4,3],[4,3],[4,3],[4,3],[6,1],[6,3]],
 		      performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 			  /* this == yyval */
@@ -113,10 +113,10 @@ $(document).ready(function () {
 			      this.$ = ['exp',$$[$0-2], '/', $$[$0]]; 
 			      break;
 			  case 7:
-			      this.$ = ['trm',['pri', $$[$0]]]; 
+			      this.$ = ['term',['var', $$[$0]]]; 
 			      break;
 			  case 8:
-			      this.$ = ['trm', '(', $$[$0-1], ')']; 
+			      this.$ = ['term', '(', $$[$0-1], ')']; 
 			      break;
 			  }
 		      },
@@ -602,7 +602,7 @@ $(document).ready(function () {
 		    switch($avoiding_name_collisions) {
 		    case 0:/* no return statement, so skip whitespace */
 			break;
-		    case 1:return "PRI"
+		    case 1:return "VAR"
 			break;
 		    case 2:return "TIMES"
 			break;
@@ -712,7 +712,6 @@ $(document).ready(function () {
 	    arr_index_to_highlight++;
 	    av.step();
 	}
-	console.log("node " + node.value());
 	var i = 0;
 	var temp = [];
 	label1.text("\nParsing non-terminal " + node.value());

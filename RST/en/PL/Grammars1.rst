@@ -9,81 +9,82 @@
 .. odsalink::  AV/PL/AV/parseTree.css
 .. odsalink::  AV/PL/main.css
 
-===============================================
-Grammars - Part 1 - Derivations and Parse Trees
-===============================================
+===========================
+Derivations and Parse Trees
+===========================
 .. (M 2/1/16)
 
 Parse Trees
 -----------
 
-Topics in this module:
+Topics in this section include:
 
-  1. Terminology of grammars
+  1. Grammar terminology
   2. Derivations and parse trees
 
 Grammars provide a formalism for expressing the syntax of programming
 languages.  That syntax is consequently used to parse, that is,
-determine the correctness, of a "program" in the language.  A grammar
-is composed of the following three elements.
+determine the syntactical correctness of, a "program" in the language.
+A grammar is composed of the following three elements.
 
 
-  * A set of terminals.  These terminals represent the tokens --
-    characters, or groups of characters that logically belong
-    together, such as operator symbols, delimiters, keywords, variable
-    names -- that ultimately comprise the program or expression being
-    parsed. In the case of algebraic expressions, the terminals would
-    be variables, numeric constants, parentheses, and the various
-    operators that are allowed.
+  * A set of **terminals**.  These terminals represent the tokens or
+    groups of characters that logically belong together, such as
+    operator symbols, delimiters, keywords, and variable names that
+    ultimately comprise the program or expression being parsed. In the
+    case of algebraic expressions, the terminals would be variables,
+    numeric constants, parentheses, and the various operators that are
+    allowed.
   
-  * A set of non-terminals.  These non-terminals represent the various
+  * A set of **non-terminals**.  These non-terminals represent the various
     grammatical constructs within the language we are parsing. In
     particular, one non-terminal is designated as the start symbol for
     the grammar.
   
-  * A set of productions.  The productions are formal rules defining
+  * A set of **productions**.  The productions are formal rules defining
     the syntactical composition of the non-terminals from the
     previous point. The productions take the form:
 
 .. math::
 
    \begin{eqnarray*} 
-   <nonterminal> &::=& String \; of \; terminals \; and/or \; nonterminals\\
+   <non\mathrm{-}terminal> &::=& String \; of \; terminals \; and/or \; non\mathrm{-}terminals\\
    \end{eqnarray*}
 
 
-We say that the non-terminal on the left of such a production *derives* the string on the right.
+We say that the non-terminal on the left-hand side (LHS) of such a
+production *derives* the string on the right-hand side (RHS).
 
-An example of a context-free grammar should help to clarify this three-part definition.   By convention the non-terminal on the left of the first production is the start symbol, and that is what ultimately must be parsed to have a complete expression in the language.   Hence in the example below, :math:`<exp>` is the start symbol.
+An example of a context-free grammar should help to clarify this three-part definition.   By convention the non-terminal on the LHS of the first production is the start symbol, and that is what ultimately must be parsed to have a complete expression in the language.   Hence in the example below, :math:`<exp>` is the start symbol.
 
 .. _eg1:
 
-Example Grammar 1
-^^^^^^^^^^^^^^^^^
+Example Grammar
+^^^^^^^^^^^^^^^
 
 .. math::
 
    \begin{eqnarray*} 
-   <exp> &::=& <trm>\\
-   &|& <exp> + <trm> \\
-   &|& <exp> - <trm> \\
-   &|& <exp> * <trm> \\
-   &|& <exp> / <trm> \\
-   <trm> &::=& <pri> \\
+   <exp> &::=& <term>\\
+   &|& <exp> + <term> \\
+   &|& <exp> - <term> \\
+   &|& <exp> * <term> \\
+   &|& <exp> / <term> \\
+   <term> &::=& <var> \\
    &|& ( <exp> ) \\
-   <pri> &::=& A | B | C | \ldots | X | Y | Z
+   <var> &::=& A\ |\ B\ |\ C\ |\ \ldots\ |\ X\ |\ Y\ |\ Z
    \end{eqnarray*}
 
 
 This is essentially a grammar for algebraic expressions with variables
-(that is, the :math:`<pri>` non-terminal) allowed to be a single upper-case
+(that is, the :math:`<var>` non-terminal) allowed to be a single uppercase
 letter.  When reading a grammar, the vertical bar :math:`|` means
-"or".  Hence :math:`<pri>` can be A or B or C ...  The :math:`<trm>`
-non-terminal must either be a :math:`<pri>` or a parenthesized
+"or".  Hence :math:`<var>` can be A or B or C ...  The :math:`<term>`
+non-terminal must either be a :math:`<var>` or a parenthesized
 :math:`<exp>`.  A derivation of the expression :math:`A + B * C`
 according to this grammar proceeds as illustrated in the following
 slide show, with the final result being a *parse tree*.  You should step
-through all the slides, making sure that at each step you understand
+through all of the slides, making sure that at each step you understand
 the production that is being applied to "grow" the parse tree.
    
 
@@ -95,9 +96,9 @@ the production that is being applied to "grow" the parse tree.
 Note that, in a complete parse tree, leaf nodes are always terminals,
 and a traversal of the tree that would output these leaf nodes
 would reproduce the expression being parsed.  This is indicated by the red
-highlighting in the above slide-show.
+highlighting in the above slide show.
 
-The following set of four review problems for this module should be completed before you go on.   In these review problems, the symbol :math:`\epsilon` is used to represent the *empty string*.   When :math:`\epsilon` appears on the right of a production, it means that one of the possibilities for the non-terminal on the left side of the production is for it to derive the empty string, that is, the string with no characters.  This is typically used when the syntax for the language being parsed allows the option of the non-terminal not appearing at all.   Often with productions that are recursive, it provides a way for the recursion to bottom out -- similar to the way a recursive termination condition would work in a recursive algorithm.
+The following set of four review problems for this module should be completed before you go on.   In these review problems, the symbol :math:`\epsilon` is used to represent the *empty string*.   When :math:`\epsilon` appears on the RHS of a production, it means that one of the possibilities for the non-terminal on the LHS the production is for it to derive the empty string, that is, the string with no characters.  This is typically used when the syntax for the language being parsed allows the option of the non-terminal not appearing at all.   Often with productions that are recursive, it provides a way for the recursion to bottom out, similarly to the way a recursive termination condition would work in a recursive algorithm.
 
 The first problem is about building a parse tree given a grammar and a string.
 
@@ -114,8 +115,8 @@ generated by a given grammar.
 .. avembed:: Exercises/PL/StringGenFromGmr.html ka
    :long_name: String Generated By a Grammar
 
-Characterizing a Language (1)
------------------------------
+Characterizing a Language: Example 1
+------------------------------------
 
 This problem is about identifying properties of all of the strings in
 a language defined by a given grammar.
@@ -123,8 +124,8 @@ a language defined by a given grammar.
 .. avembed:: Exercises/PL/CharacterizeLang1.html ka
    :long_name: Characterizing a Language, Problem 1
 
-Characterizing a Language (2)
------------------------------
+Characterizing a Language: Example 2
+------------------------------------
 
 This problem is about precisely characterizing the whole language
 generated by a given grammar.
