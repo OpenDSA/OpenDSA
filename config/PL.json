@@ -213,12 +213,12 @@
       },
       "PL/RecursiveFunctions": {}
     },
-    "Interpreting the Functional Language SLang1": {
+    "Interpreting the Functional Language SLang 1": {
       "PL/SLang1": {},
       "PL/Environment": {},
       "PL/SLang1withLetExpressions": {}
     },
-    "Interpreting the Imperative Language SLang2": {
+    "Interpreting the Imperative Language SLang 2": {
       "PL/SLang2": {},
       "PL/SLang2TTK": {}
     },
