@@ -163,6 +163,7 @@
           }
 
           if ($(".PIFRAMES").find("iframe").length > 0) {
+            $(".jsavoutput.jsavline").css("width", "0%");
             $(".jsavoutput.jsavline").css("display", "none");
             $(".picanvas").css({
               width: "900px",
@@ -170,21 +171,25 @@
             });
             $(".PIFRAMES").css({
               width: "100%",
+              height: "100%",
+              left: 50
+            });
+          } else {
+            $(".jsavoutput.jsavline").css({
+              display: "inline-block",
+              width: "60%",
+              "vertical-align": "top"
+            });
+            $(".picanvas").css({
+              width: "0%",
               height: "100%"
             });
+            $(".PIFRAMES").css({
+              width: "34%",
+              height: "none",
+              left: 590
+            });
           }
-          // else {
-          //     $(".jsavoutput.jsavline").css({
-          //         "display": "inline-block",
-          //         "width": "70%",
-          //         "vertical-align": "top"
-          //     });
-          //     $(".picanvas").css({
-          //         "width": "0%",
-          //         "height": "100%"
-          //     });
-          //     $(".PIFRAMES").css("height", "");
-          // }
         },
 
         updateSlideCounter: function(jsavControl) {
@@ -280,7 +285,7 @@
             case "multiple":
               return this.buildMultipleChoice(question);
             case "true/false":
-            case "textBox": 
+            case "textBox":
             case "textBoxStrict":
             case "textBoxFuzzy":
               return this.buildTextBox(question);
@@ -389,9 +394,12 @@
           this.setStudentAnswer(this.queue.elements[current], answer);
           var question = this.getQuestion(this.queue.elements[current]);
 
-          if(question.type == "textBoxAny") //case where we accept any string as an answer
-          {
-            this.setStudentAnswer(this.queue.elements[current], question.answer);
+          if (question.type == "textBoxAny") {
+            //case where we accept any string as an answer
+            this.setStudentAnswer(
+              this.queue.elements[current],
+              question.answer
+            );
             this.enableForwardButton();
             if ($("input[type=submit]").is(":visible")) {
               $("input[type=submit]").hide();
@@ -402,46 +410,44 @@
               );
               setTimeout(() => forwardButton.click(), 2000);
             }
-          }
-          else if (this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])) 
-          {
+          } else if (
+            this.studentHasAnsweredQuestionCorrectly(
+              this.queue.elements[current]
+            )
+          ) {
             this.enableForwardButton();
 
-            if ($("input[type=submit]").is(":visible")) 
-            {
+            if ($("input[type=submit]").is(":visible")) {
               $("input[type=submit]").hide();
               var timeFlag = 1;
-              if(question.correctFeedback != undefined)
-              {
-                 //Hide the button and show the correct statement
-                 $(".PIFRAMES").append(`<p>Correct: ${question.correctFeedback}</p>`);
-                 var timeFlag = 2;
-              }
-              else
-              {
+              if (question.correctFeedback != undefined) {
+                //Hide the button and show the correct statement
+                $(".PIFRAMES").append(
+                  `<p>Correct: ${question.correctFeedback}</p>`
+                );
+                var timeFlag = 2;
+              } else {
                 $(".PIFRAMES").append(`<p>Correct!</p>`);
               }
-              var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
-              setTimeout(() => forwardButton.click(), (1000 * timeFlag));
+              var forwardButton = $(`#${this.av_name}`).find(
+                "span.jsavforward"
+              );
+              setTimeout(() => forwardButton.click(), 1000 * timeFlag);
             }
 
             //the last question in the slideshow has been answered correctly, so enable the jsavend button
-            if (current == this.queue.elements.length - 1) 
-            {
+            if (current == this.queue.elements.length - 1) {
               this.enableFastForwardButton();
             }
-          } 
-          else 
-          {
+          } else {
             //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
-            if ($("input[type=submit]").is(":visible")) 
-            {
+            if ($("input[type=submit]").is(":visible")) {
               $("input[type=submit]").hide();
-              
+
               var timeFlag = 1;
-              if(question.incorrectFeedback != undefined)
-              {
-                document.getElementById("feedback").innerHTML = "Incorrect: " + `${question.incorrectFeedback}`;
+              if (question.incorrectFeedback != undefined) {
+                document.getElementById("feedback").innerHTML =
+                  "Incorrect: " + `${question.incorrectFeedback}`;
                 timeFlag = 2;
               }
               $("#feedback").show();
@@ -449,7 +455,7 @@
               setTimeout(() => {
                 $("input[type=submit]").show();
                 $("#feedback").hide();
-              }, (1000 * timeFlag));
+              }, 1000 * timeFlag);
             }
           }
         },
@@ -457,34 +463,33 @@
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
 
-          if(question.studentAnswer !== undefined && question.type == "textBoxFuzzy")
-          {
-              return question.answer.includes(question.studentAnswer);
-          }
-          else if(question.studentAnswer !== undefined && question.type == "textBox") 
-          {
+          if (
+            question.studentAnswer !== undefined &&
+            question.type == "textBoxFuzzy"
+          ) {
+            return question.answer.includes(question.studentAnswer);
+          } else if (
+            question.studentAnswer !== undefined &&
+            question.type == "textBox"
+          ) {
             question.studentAnswer = question.studentAnswer.replace(/\s/g, "");
             question.studentAnswer = question.studentAnswer.toLowerCase();
             question.answer = question.answer.replace(/\s/g, "");
             question.answer = question.answer.toLowerCase();
 
-            if (question.answer.includes("{") && question.answer.includes("}")) 
-            {
+            if (
+              question.answer.includes("{") &&
+              question.answer.includes("}")
+            ) {
               return this.permutation(question.studentAnswer, question.answer);
-            } 
-            else if (Array.isArray(question.answer)) 
-            {
-              for (var index = 0; index < question.answer.length; index++) 
-              {
-                if (question.studentAnswer == question.answer[index]) 
-                {
+            } else if (Array.isArray(question.answer)) {
+              for (var index = 0; index < question.answer.length; index++) {
+                if (question.studentAnswer == question.answer[index]) {
                   return true;
                 }
               }
               return false;
-            } 
-            else 
-            {
+            } else {
               return question.studentAnswer == question.answer;
             }
           } else if (Array.isArray(question.studentAnswer)) {
@@ -497,7 +502,8 @@
                 return false;
             }
             return true;
-          } else { //all and textBoxStrictCase
+          } else {
+            //all and textBoxStrictCase
             return question.studentAnswer == question.answer;
           }
         },
@@ -645,9 +651,9 @@
 
       $(".picanvas").css({
         width: "0px",
-        overflow: "hidden",
+        overflow: "hidden"
       });
-      
+
       $(question).css({
         position: "absolute",
         top: 69,
