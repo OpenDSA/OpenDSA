@@ -33,7 +33,7 @@ $(document).ready(function () {
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr = av.ds.array(the_exp.split(" "));
     arr.addClass(true, "oneCharWidth");
-    label1 = av.label("Beginning the parse ");
+    label1 = av.label("Begin parsing ");
     av.umsg(" ");
     tree = av.ds.tree({nodegap: 10});
     tree.root(lt+"exp"+gt);
@@ -42,7 +42,7 @@ $(document).ready(function () {
     av.displayInit();
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    label1.text("First we will use the &lt;exp&gt; + &lt;exp&gt; production.");
+    label1.text("First we use the &lt;exp&gt; + &lt;exp&gt; production.");
     tree.root().addChild(lt+"exp"+gt).addChild("+").addChild(lt+"exp"+gt);
     tree.root().child(0).addClass("wider");
     tree.root().child(2).addClass("wider");
@@ -53,7 +53,7 @@ $(document).ready(function () {
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     label1.text("Complete parsing the &lt;exp&gt; on the left");
-    tree.root().child(0).addChild(lt+"pri"+gt);
+    tree.root().child(0).addChild(lt+"var"+gt);
     tree.root().child(0).child(0).addClass("wider");
     tree.root().child(0).child(0).addChild("A");
     tree.root().child(0).child(0).child(0).highlight();
@@ -73,7 +73,7 @@ $(document).ready(function () {
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     label1.text("* will multiply B ...");
-    tree.root().child(2).child(0).addChild(lt+"pri"+gt);
+    tree.root().child(2).child(0).addChild(lt+"var"+gt);
     tree.root().child(2).child(0).child(0).addClass("wider");
     tree.root().child(2).child(0).child(0).addChild("B");
     tree.root().child(2).child(0).child(0).child(0).highlight();
@@ -82,8 +82,8 @@ $(document).ready(function () {
     av.step();
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    label1.text("... times C");
-    tree.root().child(2).child(2).addChild(lt+"pri"+gt);
+    label1.text("... with C");
+    tree.root().child(2).child(2).addChild(lt+"var"+gt);
     tree.root().child(2).child(2).child(0).addClass("wider");
     tree.root().child(2).child(2).child(0).addChild("C");
     tree.root().child(2).child(2).child(0).child(0).highlight();
