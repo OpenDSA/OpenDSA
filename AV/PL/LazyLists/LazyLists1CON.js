@@ -5,15 +5,13 @@ $(document).ready(function() {
     var av_name = "LazyLists1CON";
     var av = new JSAV(av_name);
     var leftMargin = 10;
-//     var offset_for_each_var = 50;
-//     var offset_between_var_label_and_cell = 20;
 
-    var arrValues = [1,"Thunk to expose 1's that follow"];
+    var arrValues = [1,"Thunk to expose 1s that follow"];
     var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: 20});
     var arr_label = av.label("ones", {left: leftMargin, top: 0});
     var arr1 = av.ds.array([1], {indexed: false, left: leftMargin, top: 70}).hide();
     var arr_label1 = av.label("is.hd(ones)", {left: leftMargin, top: 50}).hide();
-    var arr2 = av.ds.array([1,"Another thunk to expose 1's"], {indexed: false, left: leftMargin, top: 120}).hide();
+    var arr2 = av.ds.array([1,"Another thunk to expose 1s"], {indexed: false, left: leftMargin, top: 120}).hide();
     var arr_label2 = av.label("more_ones", {left: leftMargin, top: 100}).hide();
     var arr3 = av.ds.array([1,1,1,1,1], {indexed: false, left: leftMargin, top: 170}).hide();
     var arr_label3 = av.label("is.take(ones,5)", {left: leftMargin, top: 150}).hide();
@@ -31,14 +29,14 @@ $(document).ready(function() {
     );
     
     // Slide 1
-    av.umsg("With documentation for the operation highlighted in blue (lines 1 and 2) and actual code highlighted in red (lines 3-6), the is.cons operation is used to construct an infinite sequence of ones.  Note the thunk that comprises the second argument to the is.cons operation buries a recursive reference to ones inside a parameterless function.  This technique will often be used in constructing infinite sequences.");
+    av.umsg("With documentation for the operation highlighted in blue (lines 1 and 2) and actual code highlighted in red (lines 3-6), the is.cons operation is used to construct an infinite sequence of ones.  Note that the thunk that comprises the second argument to the is.cons operation buries a recursive reference to ones inside a parameterless function.  This technique will often be used in constructing infinite sequences.");
     arr.addClass(1,"wider");
     pseudo1.addClass([1,2], "blue");
     pseudo1.addClass([3,4,5,6], "red");
     av.displayInit();
 
     av.step();
-    av.umsg("Again with documentation for the operation highlighted in blue and actual code that uses the operation code highlighted in red, we see that is.hd on the ones sequence (lines 9-10) will simply return a 1");
+    av.umsg("Again with documentation for the operation highlighted in blue and actual code that uses the operation code highlighted in red, we see that is.hd on the ones sequence (lines 9-10) will simply return a 1.");
     pseudo1.removeClass([1,2], "blue");
     pseudo1.removeClass([3,4,5,6], "red");
     pseudo1.addClass([7,8], "blue");
@@ -64,7 +62,7 @@ $(document).ready(function() {
     pseudo1.removeClass([14,15], "red");
     pseudo1.addClass([16,17,18], "blue");
     pseudo1.addClass([19,20], "red");
-    arr.value(1,"Thunk to expose 1's that follow");
+    arr.value(1,"Thunk to expose 1s that follow");
     arr.unhighlight(1);
     arr3.show();
     arr_label3.show();
