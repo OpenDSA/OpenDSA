@@ -27,8 +27,24 @@ pass in a parameterless anonymous function that returns the argument.
 Such an anonymous function is called a **thunk**.
 
 Understanding the difference between passing an argument that is
-evaluated before calling the function and a thunk is to understand the
-difference between *7* and **function () { return 7; }**.  The former,
+evaluated before calling the function and passing a thunk is to understand the
+difference between
+
+.. math::
+
+   \begin{eqnarray*} 
+   7
+   \end{eqnarray*}	  
+
+and
+
+.. math::
+
+   \begin{eqnarray*} 
+   \verb+function ( ) { return 7; }+
+   \end{eqnarray*}	  
+
+The former,
 when passed as an argument, is already evaluated.  The function can
 use that value without having to do anything else to it.  However, the
 latter, when passed as an argument, requires that the parameterless function be
@@ -79,7 +95,7 @@ infinite sequences of integers.
 
 The following slide-show illustrates how we could use these operations
 to construct and then expose various parts of an infinite sequence of
-1's.
+1s.
 
 .. inlineav:: LazyLists1CON ss
    :long_name: Illustrate Basic Lazy List Operations
@@ -89,7 +105,7 @@ to construct and then expose various parts of an infinite sequence of
 
 
 Let's now turn our attention to how these four basic functions in the
-**is** module -- *cons, hd, tl*, and *take* -- are implemented.  The
+**is** module, i.e.,  *cons, hd, tl*, and *take*, are implemented.  The
 underlying representation of a lazy list is a two-element array *seq*.
 *seq[0]* stores the head of the list, which is already evaluated, and
 *seq[1]* stores the thunk that must be evaluated to expose the
@@ -225,7 +241,7 @@ iterates*, and *drop*) are discussed and illustrated below.
 ..     };
 
 
-**The Sieve of Erastosthenes -- an example that takes advantage of lazy lists**
+**The Sieve of Erastosthenes: an example that takes advantage of lazy lists**
 
 The need to compute various prime numbers occurs in a variety of
 applications, for example, public-key encryption.  A long known
