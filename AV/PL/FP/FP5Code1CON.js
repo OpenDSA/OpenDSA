@@ -40,7 +40,7 @@ $(document).ready(function() {
     
 
     // Slide 1
-    av.umsg("Here we have two local scopes -- one associated with function f1 in lines 2-5 and one associated with function f2 in lines 7-10.");
+    av.umsg("Here we have two local scopes, one associated with function f1 in lines 2-5 and one associated with function f2 in lines 7-10.");
     pseudo.addClass([2, 3, 4, 5], "scope1");
     pseudo.addClass([7, 8, 9, 10], "scope2");
     glx.addClass(0,"wider");

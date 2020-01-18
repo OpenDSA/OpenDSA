@@ -6,24 +6,25 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-============================================================================================
-Functional Programming - Scope, Closures, Higher-order Functions, Static vs. Dynamic Binding
-============================================================================================
+===================================================================
+Scope, Closures, Higher-order Functions, Static vs. Dynamic Binding
+===================================================================
 
 .. _scope:
    
-Scope, Closures, Higher-order Functions (1)
--------------------------------------------
+Scope, Closures, Higher-order Functions
+---------------------------------------
 
 Every **variable** is a memory location. Each variable has a name, by
 which you can refer to this location in your program, and a value that
 is associated with the location.
 
 In the statement *x = x + 1*, does the leftmost *x* refer to a
-location or a value?  Does the rightmost “x” refer to a location or a
-value?
+location or a value?  Hint: Is the value of *x* equal to the value of
+*x + 1*?  Does the rightmost “x” refer to a location or a value? Hint:
+Can 1 be added to a location?
 
-Additionally  every variable also has a **scope** which comprises all of the
+Additionally  every variable also has a **scope**, which comprises all of the
 sections of the program where the variable is visible. So, when the
 variable *x* is in scope, you can refer to it by name. Anywhere else,
 using the name *x* is an error (unless there exists another variable
@@ -43,12 +44,13 @@ an interpreter like **node**.
    :scripts: AV/PL/FP/FP5Code1CON.js
    :output: show
 
-In most other languages, it is better to give each variable the
-smallest scope possible, by declaring the variable as close as
-possible to its uses. Not so in JavaScript, because **JavaScript does
-not have block scope** and variable declarations are always *hoisted*
-to the top of the function.  Consider how this plays out in the
-following example, remembering to take into account what was said
+In most other languages (including JavaScript based on ECMAScript 2016
+and later), it is better to give each variable the smallest scope
+possible, by declaring the variable as close as possible to its
+uses. Not so in pre-ECMAScript 2016 JavaScript, which
+does not have block scope and in which  variable declarations are always
+*hoisted* to the top of the function.  Consider how this plays out in
+the following example, remembering to take into account what was said
 earlier about scope in JavaScript being defined by the body of a
 function and not by an inner set of curly braces.
 
@@ -100,7 +102,7 @@ this situation.
 ..     }
 
 
-Here is another example illustrating the nuances of using variables of
+Here is another example illustrating the nuances of using variables with
 the same name at different levels of scope.  Consider what happens
 when this code is loaded into a read-eval-print interpreter.
 
@@ -159,7 +161,7 @@ illustrated in the following example.
     }
     var g = f();   // g is now the function that takes in one argument and adds 1 to it
     g(5);          // returns 6
-    f()(5);        // same thing
+    f()(5);        // same behavior as for the previous line
 
 Here, f is a higher-order function. However, add1 is not a higher-order function. What about g?
 
@@ -213,15 +215,15 @@ that often enhances the readability of your code.  Why use a "temporary
 variable" such as *incr* to store something that could just as well be
 returned directly?
 
-This first problem is about higher-order functions and uses closures
-and anonymous functions. This problem is randomized. You must solve it
-correctly three times in a row.
+This first problem in this section is about higher-order functions and
+uses closures and anonymous functions. This problem is randomized. You
+must solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/HigherOrderFuncs1.html ka
    :long_name: Higher Order Function 1
 
-Scope, Closures, Higher-order Functions (2)
--------------------------------------------
+Practice with Higher-order Functions and Anonymous Functions
+------------------------------------------------------------
 
 
 This problem is about higher-order functions and scoping rules. It uses
@@ -231,8 +233,8 @@ closures and anonymous functions.
    :long_name: Higher Order Functions 2
 
 
-Scope, Closures, Higher-order Functions (3)
--------------------------------------------
+More Practice with Higher-order Functions and Anonymous Functions
+-----------------------------------------------------------------
 
 This problem uses the same code as the previous problem and illustrates
 the same topics.
@@ -240,8 +242,8 @@ the same topics.
 .. avembed:: Exercises/PL/HigherOrderFuncs3.html ka
    :long_name: Higher Order Functions 3
 
-Static vs. Dynamic Binding
---------------------------
+Practice with Static vs. Dynamic Binding Rules
+---------------------------------------------
 
 This problem uses the same code as the previous two problems but
 focuses on the difference between static and dynamic binding rules.

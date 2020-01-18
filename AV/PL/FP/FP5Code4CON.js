@@ -79,7 +79,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 6
-    av.umsg("Line 10 changes the value assocated with the global variable x.");
+    av.umsg("Line 10 changes the value associated with the global variable x.");
     pseudo.unhighlight([6,7,8,9]);
     pseudo.highlight(10);
     x.value(0,3);
@@ -108,7 +108,7 @@ $(document).ready(function() {
     av.step();
     
     // Slide 10
-    av.umsg("We begin the execution of f.  f was called from g, where there was a local x.   So when we are actually executing f, which x is used -- x in the scope from which f was called or x in scope at the time of f's definition?  During f's execution, x in the local scope of g is inaccessible.  Hence the value returned is that currently associated with the global x, namely, 3.");
+    av.umsg("We begin the execution of f.  f was called from g, where there was a local x.   So when we are actually executing f, which x is used: x in the scope from which f was called or x in scope at the time of f's definition?  During f's execution, x in the local scope of g is inaccessible.  Hence the value returned is that currently associated with the global x, namely, 3.");
     pseudo.unhighlight(8);
     pseudo.highlight(3);
     x.removeClass(0,"inaccessible");
