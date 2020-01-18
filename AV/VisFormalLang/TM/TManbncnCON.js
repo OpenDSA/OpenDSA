@@ -1,4 +1,4 @@
-// Written by Jeffrey Peng and Cliff Shaffer, Fall 2019
+// Written by Jeffrey Peng, Mostafa Mohammed, and Cliff Shaffer, Fall 2019
 // TODO: The Traversor code needs to be moved to the TM library,
 // and the TM editor needs to use the same Traversor code.
 $(document).ready(function() {
@@ -10,6 +10,7 @@ $(document).ready(function() {
   }
 
   Traversor.prototype.onClickTraverse = function(inputStrings) {
+    var tape;
     for(var strCnt = 0; strCnt < inputStrings.length; strCnt++){
       var first = "true";
       var jsav = this.jsavs;
@@ -46,9 +47,14 @@ $(document).ready(function() {
       }
 
       jsav.umsg("We will see how the machine processes input string '" + inputString + "'.");
-      jsav.ds.tape([arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8],arr[9], arr[10], arr[11], arr[12], arr[13], arr[14]], 150, topos + 90, "both");
-      var p3 = jsav.g.line(165+30*(7-Math.round(inputString.length/2)), 180 + topos, 165 + 30*(7-Math.round(inputString.length/2)), 125 + topos, {"arrow-end": "classic-wide-long"});
-      var rects = jsav.g.rect(150+30*(7-Math.round(inputString.length/2)), 180 + topos, 30, 30);
+      if(tape){//tape is defined so we will reset the tape and add new string to it.
+        tape.clearTapeContent();
+        tape.setTapeArray(arr, 7-Math.round(inputString.length/2));
+      }
+      else //create the tape
+        tape = jsav.ds.tape(arr, 150, topos + 140, "both", indexx);
+      /*var p3 = jsav.g.line(165+30*(7-Math.round(inputString.length/2)), 180 + topos, 165 + 30*(7-Math.round(inputString.length/2)), 125 + topos, {"arrow-end": "classic-wide-long"});
+      var rects = jsav.g.rect(150+30*(7-Math.round(inputString.length/2)), 180 + topos, 30, 30);*/
       nodess[0].highlight();
       var currentStates = [new Configuration(g.initial, inputString, jsav)],
           cur,
@@ -95,23 +101,6 @@ $(document).ready(function() {
                 var w = weight[i].split(':');
                 if (tapeValue === w[0]) {
                   var nextConfig = new Configuration(next, currentState.tape, jsav);
-                  if (w[1] !== square){
-                    nextConfig.tape.value(w[1]);
-                    arr[indexx] = w[1]
-                  }
-                  nextConfig.tape.move(w[2]);
-                  if(w[2] == "R"){
-                    indexx = indexx + 1;
-                    p3.translateX(30);
-                    rects.translateX(30);
-                    direction = "right one cell, ";
-                  }
-                  else if(w[2] == "L"){
-                    indexx = indexx -1;
-                    p3.translateX(-30);
-                    rects.translateX(-30);
-                    direction = "left one cell, ";
-                  }
                   prevLet = w[0];
                   letChanged = w[1];
                   if(prevLet == letChanged){
@@ -119,50 +108,63 @@ $(document).ready(function() {
                   }
                   else{
                     phraseChanged = "The current cell value becomes " + letChanged + " and the tape head shifts " + direction + "scanning " + arr[indexx] + ". ";
+                    tape.setCurrentValue(letChanged);
                   }
+                  if (w[1] !== square){
+                    nextConfig.tape.value(w[1]);
+                    arr[indexx] = w[1]
+                  }
+                  nextConfig.tape.move(w[2]);
+                  if(w[2] == "R"){
+                    indexx = indexx + 1;
+                    /*p3.translateX(30);
+                    rects.translateX(30);*/
+                    direction = "right one cell, ";
+                    tape.moveRight();
+                  }
+                  else if(w[2] == "L"){
+                    indexx = indexx -1;
+                    /*p3.translateX(-30);
+                    rects.translateX(-30);*/
+                    direction = "left one cell, ";
+                    tape.moveLeft();
+                  }
+                  
 
                   nextStates.push(nextConfig);
                   break;
                 }
                 else if ((tapeValue === undefined) && w[0] === "#"){
                   var nextConfig = new Configuration(next, currentState.tape, jsav);
+                  prevLet = w[0];
+                    letChanged = w[1];
+                    if(prevLet == letChanged){
+                      phraseChanged = "The current cell value remains the same and the tape head shifts " + direction + "scanning " + arr[indexx] +". ";
+                    }
+                    else{
+                      phraseChanged = "The current cell value becomes " + letChanged + " and the tape head shifts " + direction + "scanning " + arr[indexx] + ". ";
+                      tape.setCurrentValue(letChanged);
+                    }
                   if (w[1] !== "#"){
                     nextConfig.tape.value(w[1]);
                     arr[indexx] = w[1]
                     if(w[2] == "R"){
                       indexx = indexx + 1;
-                      p3.translateX(30);
-                      rects.translateX(30);
+                      /*p3.translateX(30);
+                      rects.translateX(30);*/
                       direction = "right one cell, ";
+                      tape.moveRight();
                     }
                     else if(w[2] == "L"){
                       indexx = indexx -1;
-                      p3.translateX(-30);
-                      rects.translateX(-30);
+                      /*p3.translateX(-30);
+                      rects.translateX(-30);*/
                       direction = "left one cell, ";
+                      tape.moveLeft();
                     }
-                    prevLet = w[0];
-                    letChanged = w[1];
-                    if(prevLet == letChanged){
-                      phraseChanged = "The current cell value remains the same and the tape head shifts " + direction + "scanning " + arr[indexx] +". ";
-                    }
-                    else{
-                      phraseChanged = "The current cell value becomes " + letChanged + " and the tape head shifts " + direction + "scanning " + arr[indexx] + ". ";
-                    }
+                    
                   }
                   else{
-                    if(w[2] == "R"){
-                      indexx = indexx + 1;
-                      p3.translateX(30);
-                      rects.translateX(30);
-                      direction = "right one cell, ";
-                    }
-                    else if(w[2] == "L"){
-                      indexx = indexx -1;
-                      p3.translateX(-30);
-                      rects.translateX(-30);
-                      direction = "left one cell, ";
-                    }
                     prevLet = w[0];
                     letChanged = w[1];
                     if(prevLet == letChanged){
@@ -170,7 +172,23 @@ $(document).ready(function() {
                     }
                     else{
                       phraseChanged = "The current cell value becomes " + letChanged + " and the tape head shifts " + direction + "scanning " + arr[indexx] + ". ";
+                      tape.setCurrentValue(letChanged);
                     }
+                    if(w[2] == "R"){
+                      indexx = indexx + 1;
+                      /*p3.translateX(30);
+                      rects.translateX(30);*/
+                      direction = "right one cell, ";
+                      tape.moveRight();
+                    }
+                    else if(w[2] == "L"){
+                      indexx = indexx -1;
+                      /*p3.translateX(-30);
+                      rects.translateX(-30);*/
+                      direction = "left one cell, ";
+                      tape.moveLeft();
+                    }
+                    
                   }
                   nextConfig.tape.move(w[2]);
                   nextStates.push(nextConfig);
@@ -192,7 +210,7 @@ $(document).ready(function() {
             currentStates[j].state.highlight();
             currState = "The current state is " + currentStates[j].state.value();
             jsav.umsg("Step " + counter + ": " + phraseChanged + currState);
-            jsav.ds.tape([arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8],arr[9], arr[10], arr[11], arr[12], arr[13], arr[14]], 150, topos + 90, "both");
+            //jsav.ds.tape([arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8],arr[9], arr[10], arr[11], arr[12], arr[13], arr[14]], 150, topos + 90, "both");
             if (g.isFinal(currentStates[j].state)) {
               g.showAccept(currentStates[j].state);
             }
@@ -205,13 +223,13 @@ $(document).ready(function() {
         if (g.isFinal(currentStates[k].state)) {
           g.showAccept(currentStates[k].state);
           jsav.umsg("Final State is accepted");
-          p3.hide();
-          rects.hide();
+          /*p3.hide();
+          rects.hide();*/
         } else {
           jsav.umsg("Final State is rejected");
           g.showReject(currentStates[k].state);
-          p3.hide();
-          rects.hide();
+          /*p3.hide();
+          rects.hide();*/
         }
 
       }
@@ -219,8 +237,7 @@ $(document).ready(function() {
       for (var j = 0; j < currentStates.length; j++) {
         currentStates[j].state.unhighlight();
         g.removeAccept(currentStates[j].state);
-        currentStates[j].state.unhighlight();
-        g.removeAccept(currentStates[j].state);
+        g.removeReject(currentStates[j].state);
       }
     }
     jsav.step();

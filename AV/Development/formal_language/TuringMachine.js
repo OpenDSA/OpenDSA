@@ -95,6 +95,10 @@ tm.showReject = function(state) {
 	state.addClass('rejected');
 }
 
+tm.removeReject = function(state) {
+	state.removeClass('rejected');
+}
+
 tm.isInitial = function(state) {
 	return state == this.initial;
 }

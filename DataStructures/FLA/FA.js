@@ -2995,6 +2995,30 @@ function getRandomInt(max) {
     this.arr.index(this.current).unhighlight();
   }
 
+  proto.getCurrentValue = function(){
+    return this.arr.value(this.current);
+  }
+
+  proto.setCurrentValue = function(value){
+    this.arr.value(this.current, value);
+  }
+
+  proto.clearTapeContent = function(){
+    for(var i = 0; i< this.arr.size(); i++){
+      this.arr.value(i, "#");
+    }
+    this.unhighlightCurrent();
+    this.current = 0;
+  }
+
+  proto.setTapeArray = function(newArr, startIndex){
+    var index = startIndex;
+    for(var i = startIndex; i< newArr.length; i++){
+      this.arr.value(i,newArr[index++]);
+    }
+    this.current = startIndex;
+    this.highlightCurrent();
+  }
 
   // Add the Tape constructor to the public facing JSAV interface.
   JSAV.ext.ds.tape = function (element, x_coord, y_coord, direction, options) {
