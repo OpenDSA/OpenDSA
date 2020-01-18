@@ -11,7 +11,7 @@ $(document).ready(function() {
   av.umsg("Here is the graph form for the machine and the intial state of the input tape and the head when beginning to process input string 'II'.");
   var url = "../../../AV/VisFormalLang/TM/Machines/TMPlusone.jff";
   var tm = new av.ds.TM({width: 600, height: 200, left: 50, url: url});
-  av.ds.tape(["#", "I", "I", "#", "#"], 470, 50, "both");
+  var tape = av.ds.tape(["#", "I", "I", "#", "#"], 470, 50, "both");
   var rect = av.g.rect(350 + xStart, 150 + yStart, 110, 110);
   var c1 = av.label("q0", {left: 370 + xStart, top: 155 + yStart});
   var c2 = av.label("q1", {left: 370 + xStart, top: 185 + yStart});
@@ -33,6 +33,7 @@ $(document).ready(function() {
   // Slide 2
   av.umsg("Step 1: Initially, the tape head is scanning the leftmost non-blank tape cell, and the current state is q0");
   node[0].highlight();
+  tape.highlightCurrent();
   av.step();
 
   // Slide 3
@@ -40,7 +41,7 @@ $(document).ready(function() {
   g.translateX(30);
   c1.translateX(30);
   c4.translateX(30);
-  av.ds.tape(["#", "I", "I", "#", "#"], 470, 50, "both");
+  tape.moveRight();
   c2.translateX(30);
   av.step();
 
@@ -49,7 +50,7 @@ $(document).ready(function() {
   g.translateX(30);
   c1.translateX(30);
   c4.translateX(30);
-  av.ds.tape(["#", "I", "I", "#", "#"], 470, 50, "both");
+  tape.moveRight();
   c2.translateX(30);
   av.step();
 
@@ -58,7 +59,8 @@ $(document).ready(function() {
   g.translateX(30);
   c1.translateX(30);
   c4.translateX(30);
-  av.ds.tape(["#", "I", "I", "I", "#"], 470, 50, "both");
+  tape.setValueAt(3, "I");
+  tape.moveRight();
   var newLine = av.g.line(520 + xStart, 215 + yStart, 480 + xStart, 212 + yStart,
                           {"arrow-end": "classic-wide-long"});
   p4.hide();

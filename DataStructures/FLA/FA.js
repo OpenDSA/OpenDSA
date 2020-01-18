@@ -2844,7 +2844,7 @@ function getRandomInt(max) {
     this.y_coord = y_coord; //y coordinate of placement
     this.direction = direction; // in which direction tape extends
     this.options = options;
-    this.current = index; //the location to highlight
+    this.current =  index || 1; //the location to highlight
     this.arr = null;
 
     if ($.isArray(element)) {
@@ -2951,6 +2951,50 @@ function getRandomInt(max) {
       this.arr.highlight(loc);
     }
   };
+
+  proto.getValueAt = function(index){
+    return this.arr.value(index);
+  }
+
+  proto.setValueAt = function(index, value){
+    this.arr.value(index, value);
+  }
+
+  proto.moveLeft = function(){
+    var highlightIndex = false;
+    if(this.arr.isHighlight(this.current)){
+      highlightIndex = true;
+      this.arr.unhighlight(this.current);
+    }
+    if(this.current > 0){
+      this.current--;
+      if(highlightIndex){
+        this.arr.highlight(this.current);
+      }
+    }
+  }
+  proto.moveRight = function(){
+    var highlightIndex = false;
+    if(this.arr.isHighlight(this.current)){
+      highlightIndex = true;
+      this.arr.unhighlight(this.current);
+    }
+
+    if(this.current < this.arr.size() - 1)
+      this.current++;
+      if(highlightIndex){
+        this.arr.highlight(this.current);
+      }
+  }
+
+  proto.highlightCurrent = function(){
+    this.arr.highlight(this.current);
+  }
+
+  proto.unhighlightCurrent = function(){
+    this.arr.index(this.current).unhighlight();
+  }
+
 
   // Add the Tape constructor to the public facing JSAV interface.
   JSAV.ext.ds.tape = function (element, x_coord, y_coord, direction, options) {
