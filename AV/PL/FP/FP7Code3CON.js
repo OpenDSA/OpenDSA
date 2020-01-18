@@ -115,7 +115,7 @@ $(document).ready(function() {
 
 
     // Slide 1
-    av.umsg('Both subRt and append use a nearly identical pattern of computation.  They apply an operation -- fp.sub for subRt and fp.cons for append -- to the head of the list and the result obtained from a recursive call on the tail of the list.  This pattern is highlighted in red below.');
+    av.umsg('Both subRt and append use a nearly identical pattern of computation.  They apply an operation (i.e., fp.sub for subRt and fp.cons for append) to the head of the list and the result obtained from a recursive call on the tail of the list.  This pattern is highlighted in red below.');
     pseudo1.addClass("pattern", "red");
     pseudo2.addClass("pattern", "red");
     pseudo1.hide("call1");
@@ -150,7 +150,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 4
-    av.umsg('The pattern of computation in each one of these two functions is highlighted by the two red lines.  That pattern is: apply an operation to the head of the list and the result of a recursive call on the tail of the list.  To capture this pattern, we pass in the operation to apply to the head and the result of the recursive call as a function parameter f.  The base case for recursion is handled by the third parameter acc, which is the starting point for the computation.  This is done in the reduce function that now appears below.');
+    av.umsg('The pattern of computation in each one of these two functions is highlighted by the two red lines.  That pattern is: apply an operation to the head of the list and the result of a recursive call on the tail of the list.  To capture this pattern, we pass in the operation to apply to the head and the result of the recursive call as a function parameter f.  The base case for recursion is handled by the third parameter acc, which is the starting point for the computation.  This is done in the reduceRight function that now appears below.');
     map_label.addClass("emphasize");
     map_label.show();
     pseudo3.show();

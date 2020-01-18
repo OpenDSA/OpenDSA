@@ -117,7 +117,7 @@ $(document).ready(function() {
 
 
     // Slide 1
-    av.umsg('Both keepPositive and keepEven use very similar patterns of computation. Given a list ns, they return a new list by applying a boolean-valued "filtering" function -- isPos for keepPositive and isEven for keepEven -- to every element of the given list.  This is done by applying the filtering function to the head of the list and, if that value passes the filter test, then consing it onto what recursion returns from the tail of the list.  This pattern is highlighted in red below.');
+    av.umsg('Both keepPositive and keepEven use very similar patterns of computation. Given a list ns, they return a new list by applying a boolean-valued "filtering" function (i.e., isPos for keepPositive and isEven for keepEven) to every element of the given list.  This is done by applying the filtering function to the head of the list and, if that value passes the filter test, then consing it onto what recursion returns from the tail of the list.  This pattern is highlighted in red below.');
     pseudo1.addClass("pattern", "red");
     pseudo2.addClass("pattern", "red");
     pseudo1.hide("call");
@@ -147,7 +147,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 3
-    av.umsg('The pattern of computation in each of these two functions is highlighted by the three red lines.    That pattern is: apply a boolean test (that is, a predicate) to the head and, if the test is passed, cons the head onto the return list.   How to capture this pattern in our abstraction?  With functions as first-class values, we can pass in the test to apply as an additional parameter pred.  This is done in the filter function that now appears below keepPositive and keepEven.');
+    av.umsg('The pattern of computation in each of these two functions is highlighted by the three red lines.    That pattern is: apply a boolean test (that is, a predicate) to the head and, if the test is passed, cons the head onto the return list.   How to capture this pattern in our abstraction?  With functions as first-class values, we can pass in the test to apply as an additional parameter called \'pred\'.  This is done in the filter function that now appears below keepPositive and keepEven.');
     map_label.addClass("emphasize");
     map_label.show();
     pseudo3.show();

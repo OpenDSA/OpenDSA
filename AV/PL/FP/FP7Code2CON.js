@@ -91,7 +91,7 @@ $(document).ready(function() {
         "};",
         "var sum = function (ns) { return reduce(fp.add,ns,0); };",
         "var reverse = function (ns) { ",
-        "     return reduce(  // Flip parameters",
+        "     return reduce(  // flip parameters",
         "                     function (a,n) { ",
         "                        return fp.cons(n,a); },",
 	"                     ns, ",
@@ -118,7 +118,7 @@ $(document).ready(function() {
 
 
     // Slide 1
-    av.umsg('Both sum and reverse have helper functions with an accumulator that use a nearly identical pattern of computation.  That helper function takes an operation -- fp.add for sum and fp.cons for reverse -- and updates the accumulator by applying the operation to the head of the list and the accumulator to create a "bigger" accumulator that is passed in to the recursive call.  This pattern is highlighted in red below.');
+    av.umsg('Both sum and reverse have helper functions with an accumulator that use a nearly identical pattern of computation.  That helper function takes an operation (i.e., fp.add for sum and fp.cons for reverse) and updates the accumulator by applying the operation to the head of the list and the accumulator to create a "bigger" accumulator that is passed in to the recursive call.  This pattern is highlighted in red below.');
     pseudo1.addClass("pattern", "red");
     pseudo2.addClass("pattern", "red");
     pseudo1.hide("call");

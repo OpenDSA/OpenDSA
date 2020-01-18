@@ -6,16 +6,17 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-============================================================================================
-Functional Programming - Procedural Abstraction: The Filtering and Folding (Reduce) Patterns 
-============================================================================================
+======================================================================
+Procedural Abstraction: The Filtering and Folding (or Reduce) Patterns
+======================================================================
 
    
 The Filtering Pattern
 ---------------------
 
-The filter pattern is exemplified below.
-In the example on the right, JavaScript's mod operator **%** is used to test whether or not an integer is even.  
+The filtering (or simply, filter) pattern is exemplified below.  In the
+example on the right, JavaScript's mod operator **%** is used to test
+whether or not an integer is even.
 
 .. inlineav:: FP7Code1CON ss
    :long_name: Illustrate Filtering Pattern
@@ -35,13 +36,13 @@ us to not only replicate the behavior of individual functions such as
 **keepPositive** and **keepEven**, but also to replicate the functions
 themselves without ever having to write their code.
     
-This first problem deals with the filtering pattern.
+The first problem below deals with the filtering pattern.
 
 .. avembed:: Exercises/PL/Filter.html ka
    :long_name: Filtering Pattern
 
-Folding/Reducing
-----------------
+The Folding/Reduce Pattern
+--------------------------
 
 To discover our next pattern, recall that, in the section
 :ref:`reverse`, we used a helper function with an accumulator to
@@ -73,8 +74,8 @@ the `section on continuation passing style`_.
 
 .. _section on continuation passing style: FP9.html
 
-We could also define a similar function that applied the helper
-function in right-to-left fashion as it worked through the list.
+We could also define a similar function that applies the helper
+function in right-to-left order as it works through the list.
 This is illustrated in the next set of examples.
 
 
@@ -91,7 +92,7 @@ parameter represent the head of the list, that is, the "next" value to
 be accumulated.  Its second parameter is consequently the accumulator.
 This is the opposite of *reduce*, which expected a function that had
 the first parameter playing the role of the accumulator, and its
-second the "next value to be accumulated".  This emphasizes the right
+second being the "next value to be accumulated".  This emphasizes the right
 versus left associativity of the two patterns.
 
 Also note that, because *reduce* captures the accumulation pattern as
@@ -111,27 +112,27 @@ level.
 .. _the section on helper functions: FP4.html
       
 
-This problem deals with the reducing patterns described above.
+The following problem deals with the reduce patterns described above.
 
 .. avembed:: Exercises/PL/Reduce1.html ka
-   :long_name: Reducing 1
+   :long_name: Reduce 1
 
 
-Folding/Reducing (2)
---------------------
+Practice with the Mapping and Reduce Patterns
+---------------------------------------------
 
-This problem uses both the mapping and the reduce patterns.
+The following problem uses both the mapping and the reduce patterns.
 
 .. avembed:: Exercises/PL/Reduce2.html ka
    :long_name: Reduce and Map
 
 
-Folding/Reducing (3)
---------------------
+More Practice with the Reduce Pattern
+-------------------------------------
 
-This problem will give you intensive practice with the reduce
+The following problem will give you intensive practice with the reduce
 pattern. This problem is randomized and must be solved three times in
 a row.
 
 .. avembed:: Exercises/PL/Reduce3.html ka
-   :long_name: Reducing 3
+   :long_name: Reduce 3
