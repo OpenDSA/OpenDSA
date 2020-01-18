@@ -57,7 +57,7 @@ $(document).ready(function() {
     av.displayInit();
 
     // Slide 2
-    av.umsg("Because 17 is greater than 14, which is the head of the current list, we recur right to the list whose head is 26");
+    av.umsg("Because 17 is greater than 14, which is the head of the current list, we recur on the right to the list whose head is 26");
     pseudo.highlight("recur-right");
     arr.highlight([0,2]);
     arr_r.highlight(0);

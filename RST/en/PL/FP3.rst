@@ -6,13 +6,13 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-============================================================
-Functional Programming - Recurring On Lists That Aren't Flat
-============================================================
+===================================
+Recurring On Lists That Aren't Flat
+===================================
 
    
-Deep Recursion in FP (1)
-------------------------
+Deep Recursion in FP
+--------------------
 
 In the previous section, we limited our treatment of list-processing
 functions to operating on *flat* lists of integers, that is, lists that
@@ -24,8 +24,8 @@ nested arbitrarily deep.
 
 A good guideline for deep recursion is the following.  When recurring
 on a list *lst* of elements that may themselves be lists, recur on both
-*fp.hd(lst)* and *fp.tl(lst)* – just make sure *lst* is not empty and
-that *fp.hd(lst)* is a list.
+*fp.hd(lst)* and *fp.tl(lst)*, after making sure that *lst* is not empty and
+that *fp.hd(lst)* is indeed a list.
 
 Consider the following **tree_test** list as an example::
 
@@ -70,8 +70,8 @@ problem.
 .. avembed:: Exercises/PL/DeepRecur1.html ka
    :long_name: Deep Recursion 1
 
-Deep Recursion 2
-----------------
+Deep Recursion on Binary Search Trees
+-------------------------------------
 
 Note that, although our **sumTree** function would work on an arbitrary
 nested list, our particular **tree\_test** example is actually a
@@ -146,8 +146,8 @@ the **subst** function that was described in :ref:`subst`.
    :long_name: Deep Recursion 2
 
 
-Deep Recursion 3
-----------------
+Practice with Deep Recursion
+----------------------------
 
 This problem is similar to (and assumes that you have solved) the
 previous problem.
@@ -155,12 +155,12 @@ previous problem.
 .. avembed:: Exercises/PL/DeepRecur3.html ka
    :long_name: Deep Recursion 3
 
-Deep Recursion 4
-----------------
+More Practice with Deep Recursion
+---------------------------------
 
-As a final example to  give you a lot more practice with deep
-recursion, consider the following randomized exercise. You have to solve it
-correctly three times in a row.
+As a final example and to give you a lot more practice with deep
+recursion, consider the following randomized exercise. You have to
+solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/DeepRecur4.html ka
    :long_name: Deep Recursion 4
