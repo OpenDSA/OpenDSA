@@ -6,13 +6,13 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-=============================================================================
-Introduction to Functional Programming - List Construction and Deconstruction
-=============================================================================
+====================================
+List Construction and Deconstruction
+====================================
 
    
-FP - Constructing Lists with cons
----------------------------------
+Constructing Lists with fp.cons
+-------------------------------
 
 
 .. .. Just a test to see if we can visualize a beta reduction
@@ -45,10 +45,10 @@ other data structures, can be used as an argument in a function call and
 can be the return value of a function call. In FP, functions are
 first-class values. Functions that take one or more functions as
 parameters and/or return a function are called **higher-order
-functions** (much, much more on this later).
+functions** (much more on this later).
 
 In FP, all data items are **immutable**: once a value is created, it can
-never be modified. Even in Java, which is an OO language, not a FP
+never be modified. Even in Java, which is an object-oriented language, not a FP
 language, String objects are immutable.
 
 The most basic, built-in data structure in FP languages is the list,
@@ -69,9 +69,9 @@ Note that:
    lists, not its **concrete syntax**, that is, how lists actually
    appear in any particular FP language.
 
-For our functional programming module, the concrete syntax of lists will use square brackets
-around each list and a comma between pairs of consecutive elements in
-the list.
+In this functional programming chapter, the concrete syntax of lists
+will use square brackets around each list and a comma between pairs of
+consecutive elements in the list.
 
 So, the empty list will be represented by::
 
@@ -81,12 +81,13 @@ and non-empty lists will look like this::
 
     [2,3,5,7,11,13,17,19]
 
-Since JavaScript does not come with a built-in immutable list data structure, we
-provide one as part of a module called ``fp.js``, which is used throughout Chapter 2.
+Since JavaScript (JS) does not come with a built-in immutable list data
+structure, we provide one as part of a module called ``fp.js``, which
+is used throughout this chapter.
 
-You can make this module
-available in your JS files by including the
-following line at the top of the file::
+You can make this module (as long as it is located in your current
+directory) available in your JS files by including the following line
+at the top of the file::
 
           var fp = require('./fp');
 
@@ -128,8 +129,8 @@ The following problem deals with the syntax and semantics of the ``fp.cons`` fun
 
 	       
 	       
-FP - Deconstructing Lists with fp.hd and fp.tl
-----------------------------------------------
+Deconstructing Lists with fp.hd and fp.tl
+-----------------------------------------
 
 So far, we can build lists using the ``fp.cons`` and ``fp.makeList``
 constructors. However, we also need to be able to access the elements of
@@ -160,26 +161,26 @@ It is important to note the symmetry between the ``cons`` constructor
 and the list accessors: ``cons`` builds a list using the same building
 blocks that the accessors return.
 
-This problem deals with the semantics of the ``fp.hd``, ``fp.tl``, and
-``fp.cons`` functions. Note that this problem is randomized. You must
-solve it correctly three times in a row to earn the point associated
-with it.
+The following practice problem deals with the semantics of the
+``fp.hd``, ``fp.tl``, and ``fp.cons`` functions. Note that this
+problem is randomized. You must solve it correctly three times in a
+row to earn the point associated with it.
 
 
 .. avembed:: Exercises/PL/FPHdTlCons1.html ka
    :long_name: Head, Tail, and Cons 1
 
-FP - Deconstructing Lists with fp.hd and fp.tl (2)
---------------------------------------------------
+Practicing List Manipulations with the fp module
+------------------------------------------------
 
-This problem once more helps you review the semantics of the ``fp.hd``,
+This problem helps you review the semantics of the ``fp.hd``,
 ``fp.tl``, and ``fp.cons`` functions.
 
 .. avembed:: Exercises/PL/FPHdTlCons2.html ka
    :long_name: Head, Tail, and Cons 2
 
-FP - fp.isNull, fp.isEq, fp.isZero
-----------------------------------
+fp.isNull, fp.isEq, and fp.isZero
+---------------------------------
 
 To check whether a list is empty or not, you must use the
 ’\ ``isNull``\ ’ function:
@@ -194,7 +195,9 @@ To check whether a list is empty or not, you must use the
 The ``isNull`` function is a **predicate**, that is, a function that
 returns a Boolean value, ``true`` or ``false``.
 
-A second predicate that will be useful is ’\ ``isEq``\ ’:
+A second useful predicate is ’\ ``isEq``\ ’, which checks whether two
+*primitive elements* are equal (note that integers are primitive elements but
+lists are not):
 
 ::
 
