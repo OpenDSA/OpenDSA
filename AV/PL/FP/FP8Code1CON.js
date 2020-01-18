@@ -87,7 +87,7 @@ $(document).ready(function() {
     av.displayInit();
 
     // S 2
-    av.umsg('What should mapper do to each of the lists r that it works on?   It should return a two-element list whose first element is the name of the salesperson, which is the head of r, and whose second element is the sum of the remaining elements of r, that is, the sum of the elements in the tail of r.   We can easily obtain this sum by using reduce to compute it as highlighted in line 6 below.  Thus, the mapper function is actually using reduce at a deeper level to do the work that needs to be done on each list.');
+    av.umsg('What should mapper do to each of the lists r that it works on?   It should return a two-element list whose first element is the name of the salesperson, which is the head of r, and whose second element is the sum of the remaining elements of r, that is, the sum of the elements in the tail of r.   We can easily obtain this sum by using reduce to compute it as highlighted in line 6 below.  Thus, the mapper function is actually using reduce at a deeper level to do the work that needs to be done on each list (note that this use of reduce inside  the mapper is not required by MapReduce).');
     m1.show();
     m1.addClass(0,"wider");
     m2.show();

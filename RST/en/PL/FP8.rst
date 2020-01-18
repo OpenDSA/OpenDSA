@@ -6,9 +6,9 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-=================================================
-Functional Programming - Combining Map and Reduce
-=================================================
+========================
+Combining Map and Reduce
+========================
    
 The MapReduce Paradigm
 ----------------------
@@ -64,7 +64,7 @@ follows.
 
 
 
-This randomized problem is about the MapReduce model.
+The following randomized problem is about the MapReduce model.
 You must solve it correctly three times in a row to earn credit for it.
 
 .. avembed:: Exercises/PL/MapReduce.html ka
