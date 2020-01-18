@@ -49,7 +49,7 @@ $(document).ready(function() {
     
 
     // Slide 1
-    av.umsg('When we "translate" the definition of compose above into JavaScript, first note that compose is a function that takes in two functions -- f and g -- and then uses those to build a new function.');
+    av.umsg('When we "translate" the definition of compose above into JavaScript, first note that compose is a function that takes in two functions (i.e., f and g) and then uses those to build a new function.');
     pseudo1.hide([4,8,9,10]);
     pseudo1.addClass(3,"red");
     av.displayInit();

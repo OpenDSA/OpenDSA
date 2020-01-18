@@ -98,7 +98,7 @@ $(document).ready(function() {
 
 
     // Slide 1
-    av.umsg("Both addBonusPoint and doubleAll use very similar patterns of computation. Given a list ns, they return a new list by applying a function -- add1 for addBonusPoint and doubleIt for doubleAll -- to every element of the given list.  This is done by calling the function with the head of the list and then consing that result onto what recursion returns from the tail of the list.  This pattern is highlighted in red below.");
+    av.umsg("Both addBonusPoint and doubleAll use very similar patterns of computation. Given a list ns, they return a new list by applying a function (i.e., add1 for addBonusPoint and doubleIt for doubleAll) to every element of the given list.  This is done by calling the function with the head of the list and then consing that result onto what recursion returns from the tail of the list.  This pattern is highlighted in red below.");
     pseudo1.addClass([7,8,9], "red");
     pseudo2.addClass([7,8,9], "red");
     pseudo1.hide(11);
@@ -128,7 +128,7 @@ $(document).ready(function() {
     av.step();
 
     // Slide 3
-    av.umsg('The pattern of computation in each of these two functions is highlighted by the three red lines.    That pattern is: apply an operation (add1 or doubleIt) to the head and then recur on the tail.   How to capture this pattern in our abstraction?  With functions as first-class values, we can pass in the operation to apply as an additional parameter f.  This is done in the function that now appears below addBonusPoint and doubleAll.   Because the pattern is called the "mapping pattern", we call the function map.');
+    av.umsg('The pattern of computation in each one of these two functions is highlighted by the three red lines.    That pattern is: apply an operation (add1 or doubleIt) to the head and then recur on the tail.   How to capture this pattern in our abstraction?  With functions as first-class values, we can pass in the operation to apply as an additional parameter f.  This is done in the function that now appears below addBonusPoint and doubleAll.   Because the pattern is called the "mapping pattern", we call the function map.');
     map_label.addClass("emphasize");
     map_label.show();
     pseudo3.show();

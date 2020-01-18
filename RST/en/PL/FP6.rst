@@ -7,7 +7,7 @@
    :author: David Furcy and Tom Naps
 
 ========================================================================
-Functional Programming - Procedural Abstraction: Map, Curry, and Compose
+Procedural Abstraction: Map, Curry, and Compose
 ========================================================================
 
 The Mapping Pattern
@@ -79,7 +79,7 @@ considering the following two examples called *addBonusPoint* and *doubleAll*.
 This pattern of computation in the preceding example is called the
 **mapping pattern**: it takes a function and a list and returns the
 list obtained by applying the function to each element in the input
-list.  This problem is about the mapping pattern.
+list.  The following problem is about the mapping pattern.
 
 .. avembed:: Exercises/PL/Map.html ka
    :long_name: Mapping Pattern
@@ -97,6 +97,13 @@ argument and then applies *f* to that result. In other words:
 
    compose(f,g)(x) = (f \circ g)(x) = f( g(x) )  
 
+Note that the function :math:`f \circ g` is sometimes called "f after g" or "f
+following g" because, when the two functions are composed in this
+order, *g* is applied first and *f* second. In contrast, in the
+composed function :math:`g \circ f`, read "g after f", *f* would be
+applied first and *g* second.
+
+ 
 .. inlineav:: FP6Code2CON ss
    :long_name: Illustrate Function Composition
    :links: AV/PL/FP/FP6CON.css
@@ -105,7 +112,7 @@ argument and then applies *f* to that result. In other words:
 
 
 
-This next problem is about function composition.
+The following problem is about function composition.
 
 .. avembed:: Exercises/PL/Compose.html ka
    :long_name: Function Composition
@@ -122,8 +129,9 @@ In the *map* function we developed earlier::
           return [ ];
       else
           return fp.cons(
-                     f(fp.hd(ns)), 
-                     map(f, fp.tl(ns)));
+                          f(fp.hd(ns)), 
+                          map(f, fp.tl(ns))
+			);
     };
 
 we cannot separate the computations we want to do on list elements,
@@ -206,7 +214,7 @@ The next problem is about both currying and function composition.
 More currying
 -------------
 
-The final problem in this module on procedural abstraction will give
+The final problem in this section on procedural abstraction will give
 you intensive practice with the ``curry`` and ``compose``
 functions. This problem is randomized and must be solved three times
 in a row.

@@ -243,7 +243,7 @@ the same topics.
    :long_name: Higher Order Functions 3
 
 Practice with Static vs. Dynamic Binding Rules
----------------------------------------------
+----------------------------------------------
 
 This problem uses the same code as the previous two problems but
 focuses on the difference between static and dynamic binding rules.
