@@ -6,9 +6,9 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-===============================================================
-Functional Programming - Continuations and Continuation Passing
-===============================================================
+======================================
+Continuations and Continuation Passing
+======================================
 
    
 Tail recursive functions
@@ -52,7 +52,7 @@ about it and its advantages.
 
 .. _section on the reduce function: FP7.html
 
-This first problem is about a recursive function to compute the
+The problem below is about a recursive function to compute the
 greatest common divisor (or :math:`gcd`) of two integers.
 
 .. avembed:: Exercises/PL/TailRecursion.html ka
@@ -74,7 +74,7 @@ computation if the input list contains one or more zeros.
 With the *product1* function, no computations are performed until the base case is
 reached. But what if the last number is the first zero in the input
 list? We could save the last recursive call, but we still need to return
-0 all the way back, through the (possibly very high) call stack -- doing
+0 all the way back, through the (possibly very high) call stack, doing
 an unnecessary multiplication by 0 upon each return.
 
 With the *product2* function, TCO removes the sequence of recursive calls and thus
@@ -231,8 +231,11 @@ no computations when the exception is encountered.  Instead all it has
 done is to have partially defined the continuation function, which we can
 harmlessly decide to not call upon encountering the exception.
 
-    
-This review problem is the first one in a sequence of three problems
+
+Continuation-Passing Style Practice Problem (Part 1)
+----------------------------------------------------
+
+The following problem is the first one in a sequence of three problems
 that require you to complete the implementation of a recursive
 function that uses continuation-passing style programming. This
 problem uses the :math:`gcd` function introduced in the first problem
@@ -241,10 +244,10 @@ in this set, but you do not need to remember how it was implemented.
 .. avembed:: Exercises/PL/ContinuationPassing1.html ka
    :long_name: CPS Style 1
 
-Continuation-Passing Style (2)
-------------------------------
+Continuation-Passing Style Practice Problem (Part 2)
+----------------------------------------------------
 
-This review problem is the second one in a sequence of three problems
+The following problem is the second one in a sequence of three problems
 that require you to complete the implementation of a recursive
 function that uses continuation-passing style programming. This
 problem uses the :math:`gcd` function introduced in the first problem
@@ -253,10 +256,10 @@ in this set, but you do not need to remember how it was implemented.
 .. avembed:: Exercises/PL/ContinuationPassing2.html ka
    :long_name: CPS Style 2
 
-Continuation-Passing Style (3)
-------------------------------
+Continuation-Passing Style Practice Problem (Part 3)
+----------------------------------------------------
 
-This review problem is the last one in a sequence of three problems
+The following problem is the last one in a sequence of three problems
 that require you to complete the implementation of a recursive
 function that uses continuation-passing style programming. This
 problem uses the :math:`gcd` function introduced in the first problem

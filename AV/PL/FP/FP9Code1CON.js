@@ -126,7 +126,7 @@ $(document).ready(function() {
     av.step();
     
     // S 9
-    av.umsg('An application of the identity function -- the initial value passed in for k from the top-level call -- to 30.   The result, which is obviously 30, is the final answer returned by this tail-recursive function.  We now see why it was important to pass in the identity function for k in the original call.');
+    av.umsg('An application of the identity function (i.e., the initial value passed in for k from the top-level call) to 30.   The result, which is obviously 30, is the final answer returned by this tail-recursive function.  We now see why it was important to pass in the identity function for k in the original call.');
     lab2.removeClass("emphasize");
     labid.addClass("emphasize");
     av.step();
