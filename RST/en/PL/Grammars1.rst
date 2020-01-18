@@ -25,7 +25,7 @@ Topics in this section include:
 Grammars provide a formalism for expressing the syntax of programming
 languages.  That syntax is consequently used to parse, that is,
 determine the syntactical correctness of, a "program" in the language.
-A grammar is composed of the following three elements.
+A **grammar** is composed of the following three elements.
 
 
   * A set of **terminals**.  These terminals represent the tokens or
@@ -55,7 +55,20 @@ A grammar is composed of the following three elements.
 We say that the non-terminal on the left-hand side (LHS) of such a
 production *derives* the string on the right-hand side (RHS).
 
-An example of a context-free grammar should help to clarify this three-part definition.   By convention the non-terminal on the LHS of the first production is the start symbol, and that is what ultimately must be parsed to have a complete expression in the language.   Hence in the example below, :math:`<exp>` is the start symbol.
+
+The type of grammars we are using in this course (i.e., those with only
+one non-terminal on the LHS of each production) is more precisely
+called a **context-free grammar** or **BNF grammar** (short for
+"Backus-Naur Form). Since we are not going to discuss other types of
+formal grammars in this course, we can safely refer to them simply as
+grammars.
+
+
+An example of a grammar should help to clarify the
+three-part definition above.  By convention, the non-terminal on the LHS of
+the first production is the start symbol, and that is what ultimately
+must be parsed to have a complete expression in the language.  Hence
+in the example below, :math:`<exp>` is the start symbol.
 
 .. _eg1:
 

@@ -16,7 +16,7 @@ Enforcing Order of Operations
 Evaluation of Expressions
 -------------------------
 
-In this section we will learn about
+In this section, we will learn about:
 
   1. Operator precedence
   2. Operator associativity
@@ -39,6 +39,7 @@ almost every programming language.  So :ref:`eg1`, although
 unambiguous, is not the algebraic expression grammar that we need.
 Instead consider the following grammar.
 
+.. _eg3:
 
 Third Sample Grammar
 ^^^^^^^^^^^^^^^^^^^^
