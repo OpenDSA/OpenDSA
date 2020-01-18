@@ -17,12 +17,12 @@ Pushdown Automata
 
 Recall: A DFA :math:`=(Q, \Sigma, \delta, q_0, F)`.
 
-   .. odsafig:: Images/lt6dfa.png
-      :width: 400
+   .. inlineav:: DFAExampleCON dgm
+      :links: AV/VisFormalLang/FA/DFAExampleCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFAExampleCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
+
+   Example of DFA
 
 In a DFA, the tape is read only, the head moves to the right only.
 DFAs are limited in power.
@@ -36,12 +36,12 @@ store symbols on the stack.
 This adds a form of additional memory, letting the machine store and
 retrieve data from the stack.
 
-   .. odsafig:: Images/lt6pda1.png
-      :width: 400
+   .. inlineav:: PDAExampleCON dgm
+      :links: AV/VisFormalLang/PDA/PDAExampleCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/PDA/PDAExampleCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
+
+   Example of DFA
 
 The old limitations still apply: The tape is read only, the head moves
 only to the right.
@@ -148,12 +148,11 @@ state.
 
 
 Let us see the trace for accepting the string $aaabbb$.
-
-.. inlineav:: PDATrace1 ss
-   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/PDA/PDATrace1.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/PDA/PDATrace1.js
-   :align: center
-
+     
+.. inlineav:: PDAAnBnTraceCON ss
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/PDA/PDAAnBnTraceCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/PDA/PDAAnBnTraceCON.js
+   :output: show
 
 
 **Another Definition for Language Acceptance:**
@@ -323,3 +322,4 @@ NPDA :math:`M'` that accepts by empty stack such that :math:`L(M) = L(M')`.
      In :math:`M'`, at the same state, the stack will contain only
      :math:`z'`, and the new transition can be followed to
      :math:`q_f`. QED 
+

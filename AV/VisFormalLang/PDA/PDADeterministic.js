@@ -7,7 +7,6 @@ $(document).ready(function() {
   var url = "../../../AV/VisFormalLang/PDA/Machines/PDADeterministic.jff";
   var pda = new av.ds.PDA({width: 600, height: 200, url: url});
   PDA.prototype.loadFAFromJFLAPFile.call(pda,url);
-  pda.disableDragging();
   av.displayInit();
   av.recorded();
 });

@@ -31,9 +31,9 @@
 		<transition>
 			<from>2</from>
 			<to>3</to>
-			<read>b</read>
+			<read></read>
 			<pop>Z</pop>
-			<push>Z</push>
+			<push></push>
 		</transition>
 		<transition>
 			<from>0</from>

@@ -14,7 +14,6 @@ var PDA = function(jsav, options) {
 
   if(options.url){
     this.loadFAFromJFLAPFile(options.url);
-    this.disableDragging();
   }
 }
 
@@ -1660,7 +1659,7 @@ Stackproto.formStack = function() {
   transformerProto.convertToPDA = function () {
       var productions = this.productions;
       this.jsav.umsg("The first step is to create a new PDA with three states.")
-      this.builtDFA = this.jsav.ds.FA({width: 500, top: 0, left: 100});
+      this.builtDFA = this.jsav.ds.FA({width: 500, top: 0, left: 250});//We need to find a better way to auto align the PDA instead of 250
       var gWidth = this.builtDFA.element.width(),
           gHeight = this.builtDFA.element.height();
       var a = this.builtDFA.addNode({left: 0.17 * gWidth, top: 0.87 * gHeight}),
@@ -1859,7 +1858,7 @@ Stackproto.formStack = function() {
     // Use this array to initialize the JSAV array.
     arr = jsav.ds.array(textArray);
     
-    var tempViz = jsav.ds.PDAState(30, 200, 150, 100, reducedInput, ['z'], 'q0')
+    var tempViz = jsav.ds.PDAState(30, 200, 150, 100, reducedInput, ['Z'], 'q0')
     statesViz.push(tempViz)
     jsav.displayInit();
   
