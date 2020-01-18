@@ -62,7 +62,7 @@ $(document).ready(function() {
     labelReturn.hide();
 
     // Slide 1
-    av.umsg("Following the alternatives in the BNF definition of a list, we want a function that returns a list similar to ns, but all occurrences of o have been replaced by n");
+    av.umsg("Following the alternatives in the BNF definition of a list, we want a function that returns a list similar to ns, all occurrences of o having been replaced by n");
     pseudo.hide([3,5,8,9,10,11,12]);
     arr.show();
     av.displayInit();

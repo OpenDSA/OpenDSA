@@ -7,15 +7,15 @@
    :author: David Furcy and Tom Naps
 
 ==============================================================================
-Functional Programming - Developing basic, recursive list-processing functions 
+Developing Basic, Recursive List-processing Functions 
 ==============================================================================
 
    
-Recursive List Processing (1)
------------------------------
+Recursive List Processing Example: sum( list )
+----------------------------------------------
 
 In the previous section, we introduced three predicates that are part
-of the *fp* module -- *isEq*, *isZero*, and *isNull*.  We will now
+of the *fp* module, namely *isEq*, *isZero*, and *isNull*.  We will now
 introduce some additional predicates and arithmetic functions that we
 will then use to write recursive list-processing functions, including
 ``sum``, ``isMember``, ``removeFirst``, and ``subst``.
@@ -48,9 +48,9 @@ respectively::
     > fp.isLT(2,3)
     true
 
-We're now ready to write a recursive ``sum`` function that takes in an integer list and
-returns the sum of all of the values in the input list.
-::
+We're now ready to write a recursive ``sum`` function that takes in an
+integer list and returns the sum of all of the values in the input
+list.  ::
 
     > var fp = require('./fp')
     > sum( [ 1, 2, 3 ] )
@@ -60,8 +60,8 @@ returns the sum of all of the values in the input list.
     > sum( [ 1, -2, 3, -4] )
     -2
 
-When we design a recursive algorithm, we must keep in mind the recursive BNF definition
-of integer lists:
+When we design a recursive algorithm on lists, we must keep in mind
+the recursive BNF definition of integer lists:
 
 .. math::
 
@@ -70,7 +70,9 @@ of integer lists:
          & | & <int> <list\_of\_ints> \\
    \end{eqnarray*}	 
 
-Following the two paths for a *<list_of_ints>* in this grammar -- one for the empty list and one for a non-empty list leads us to structure a *sum* function as shown below.
+Following the two paths for a *<list_of_ints>* in this grammar, one
+for the empty list and one for a non-empty list, leads us to structure
+a *sum* function as shown below.
 
 Think about how to complete this function.
 
@@ -88,8 +90,8 @@ three times in a row to earn the point associated with it.
 .. avembed:: Exercises/PL/RecListProc1.html ka
    :long_name: Recursion on Flat lists 1
 
-Recursive List Processing (2)
------------------------------
+Recursive List Processing Example: isMember( num, list )
+--------------------------------------------------------
 
 Next consider a function *isMember* that takes in an integer *n* and an integer list *ns* and returns true if and only if
 its first argument is a member of the second argument::
@@ -102,8 +104,8 @@ its first argument is a member of the second argument::
     > isMember( 2, [ 1, [ 2, 3 ] ] )
     false
 
-Note that the second argument in the last call above is not an integer list. Keep in mind the recursive definition of integer
-lists:
+Note that the second argument in the last call above is not an integer
+list. Keep in mind the recursive definition of integer lists:
 
 .. math::
 
@@ -112,8 +114,8 @@ lists:
    & | &  <int> <list\_of\_ints> \\
    \end{eqnarray*}
 
-Following that recursive definition  we design a recursive algorithm for *isMember* using the template
-provided in the first slide below.
+Following this recursive definition, we design a recursive algorithm
+for *isMember* using the template provided in the first slide below.
 
 
 .. inlineav:: FP2Code2CON ss
@@ -123,11 +125,11 @@ provided in the first slide below.
    :output: show
 		      
 
-Using a recursive pattern similar to that for *isMember*, think about
+Using a recursive pattern similar to the one for *isMember*, think about
 how to design a similar list-processing function *removeFirst* that
-takes in an integer :math:`n` and an integer list :math:`l` and
-returns a list identical to :math:`l` but with the first occurrence of
-:math:`n` removed::
+takes in an integer *n* and an integer list *l* and
+returns a list identical to *l* but with the first occurrence of
+*n* removed::
 
        > var fp = require('./fp')
        > removeFirst(3,[1,2,3])
@@ -148,14 +150,15 @@ following review problem, which asks you to slightly modify *removeFirst*.
 
 .. _subst:
 
-Recursive List Processing (3)
------------------------------
+Recursive List Processing Example: subst( new, old, list )
+----------------------------------------------------------
 
 
-As a final example in this section consider a function that takes in two integers
-:math:`n` (for ’new’) and :math:`o` (for ’old’) and an integer list
-:math:`l` and returns a list identical to :math:`l` except that all
-occurrences of :math:`o` in :math:`l` have been replaced by :math:`n`::
+As a final example in this section, consider a function that takes in
+two integers :math:`n` (for ’new’) and :math:`o` (for ’old’) and an
+integer list :math:`l` and returns a list identical to :math:`l`
+except that all occurrences of :math:`o` in :math:`l` have been
+replaced by :math:`n`::
 
     > var fp = require('./fp')
     > subst(10,1,[1,2,3,2,1])
