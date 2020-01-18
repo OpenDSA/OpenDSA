@@ -7,12 +7,12 @@
    :author: David Furcy and Tom Naps
 
 =================================================================
-Functional Programming - Using Helper Functions with Accumulators
+Using Helper Functions with Accumulators
 =================================================================
 
 .. _reverse:
 
-Using helpers to write reverse and split functions
+Using Helpers to Write reverse and split Functions
 --------------------------------------------------
 
 How would you design a *reverse* function that takes in a list of integers
@@ -56,7 +56,7 @@ contains all of the elements of :math:`ns` that are smaller than
     > split(5, [1,9,2,8,3,7])
     [ [ 3, 2, 1 ], [ 7, 8, 9 ] ]  
     > split(5,[ ])
-    [ [ ] [ ] ]
+    [ [ ], [ ] ]
 
 We call the first argument of split the *pivot* because of a famous
 algorithm that uses split (see the second review problem below).
@@ -77,8 +77,8 @@ accumulator.
 .. avembed:: Exercises/PL/SplitAndJoin.html ka
    :long_name: Split and Join with accumulators
 
-Using the split function to develop a sort function
----------------------------------------------------
+Using the split Function to Develop a Sorting Function
+------------------------------------------------------
 
 This problem will have you use the ``split`` function to implement an
 efficient sorting algorithm.

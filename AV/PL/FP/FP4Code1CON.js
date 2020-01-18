@@ -13,7 +13,7 @@ $(document).ready(function() {
     var pseudo = av.code(
         [
 	    "var reverse = function (ns) { return reverse_helper(ns, ??? ); }", // 1
-	    "var reverse = function (ns) { return reverse_helper(ns, [] ); }", // 2
+	    "var reverse = function (ns) { return reverse_helper(ns, []); }", // 2
             " ", 		// 3
             "var reverse_helper = function (ns,acc) {", // 4
             "    if (fp.isNull(ns))",			// 5
