@@ -91,7 +91,7 @@
 	// Used this for loading from stanalone HTML page
 	var av_name = $('.avcontainer');
 	theExp = genExp();
-	console.log($('.avcontainer'));
+	//console.log($('.avcontainer'));
 	LAMBDA.interpret(av_name,theExp[0],"applicative");
     };	
 
@@ -101,7 +101,7 @@
 	// Used this for loading from stanalone HTML page
 	var av_name = $('.avcontainer');
 	theExp = genExp();
-	console.log($('.avcontainer'));
+	//console.log($('.avcontainer'));
 	LAMBDA.interpret(av_name,theExp[0],"normal");
     };	
 
@@ -111,7 +111,7 @@
 	// Used this for loading from stanalone HTML page
 	var av_name = $('.avcontainer');
 	//	theExp = genExp();
-	console.log($('.avcontainer'));
+	//console.log($('.avcontainer'));
 	LAMBDA.interpret(av_name,theExp[0],"applicative");
     };	
 
@@ -121,7 +121,7 @@
 	// Used this for loading from stanalone HTML page
 	var av_name = $('.avcontainer');
 //	theExp = genExp();
-	console.log($('.avcontainer'));
+	//console.log($('.avcontainer'));
 	LAMBDA.interpret(av_name,theExp[0],"normal");
     };	
 

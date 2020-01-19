@@ -53,9 +53,9 @@ exists.   In instances where the strategy leads to an answer that cannot be furt
 The strategy that JavaScript uses in the substitution model of
 computation is called **applicative order reduction**. With this
 strategy, to evaluate an expression of the form 
-``f(arg1,arg2,arg3,...)``, we:
+``f(arg1, arg2, arg3, ...)``, we:
 
-#. Evaluate each of the sub-expressions from left to right, including *f*
+#. Evaluate each one of the sub-expressions from left to right, including *f*
    if it requires evaluation. (How could it require evaluation?)
 
 #. Apply the leftmost result, which should be a function, to the rest of
@@ -125,7 +125,7 @@ are ready to tackle the practice problems that follow.
 Beta-Reduction Order (1)
 ------------------------
 
-This problem focuses on the first step (i.e., :math:`\beta`-reduction)
+The following problem focuses on the first step (i.e., :math:`\beta`-reduction)
 in the evaluation of a :math:`\lambda` expression with the two
 evaluation strategies that we discussed. To get credit for this
 randomized exercise, you must solve it correctly three times in a row.
@@ -136,7 +136,7 @@ randomized exercise, you must solve it correctly three times in a row.
 Beta-Reduction Order (2)
 ------------------------
 
-In this problem, you have to study the complete evaluation of a
+In the following problem, you have to study the complete evaluation of a
 :math:`\lambda` expression with the two evaluation strategies that we
 discussed. To get credit for this randomized exercise, you must solve
 it correctly three times in a row.
@@ -147,7 +147,7 @@ it correctly three times in a row.
 Applicative Order Proficiency Exercise
 --------------------------------------
 
-In this problem, you have to perform a full evaluation of a randomly
+In the following  problem, you have to perform a full evaluation of a randomly
 selected :math:`\lambda` expression, that is, perform as many
 :math:`\beta`-reductions as it takes until a :math:`\beta`-normal form
 is reached. For this problem, you must use the *applicative-order*
@@ -166,7 +166,7 @@ credit, start a new problem instance by clicking the *Reset* button.
 Normal Order Proficiency Exercise
 ---------------------------------
 
-In this problem, you have to perform a full evaluation of a randomly
+In the following problem, you have to perform a full evaluation of a randomly
 selected :math:`\lambda` expression, that is, perform as many
 :math:`\beta`-reductions as it takes until a :math:`\beta`-normal form
 is reached. For this problem, you must use the **normal-order**

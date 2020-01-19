@@ -542,7 +542,7 @@ function fillIn(start,end) {
     }
 }
 function loadArray(chars) {   
-    console.log(chars.join('')); // Uncomment this to get textual trace of reduction
+//    console.log(chars.join('')); // Uncomment this to get textual trace of reduction
     for(var index=0; index<chars.length; index++) {
 	arr.value(index,chars[index]);
     }
@@ -724,6 +724,7 @@ LAMBDA.findLeftmostOutermostBetaRedex = findLeftmostOutermostBetaRedex;
 LAMBDA.beta = beta;
 })();
 
+/*
 // the code below is only used when creating slide shows
 if (typeof running_in_node !== 'undefined') {
     (function () {
@@ -754,3 +755,4 @@ if (typeof running_in_node !== 'undefined') {
 	}
     })();
 };
+*/
