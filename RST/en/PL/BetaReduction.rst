@@ -37,9 +37,9 @@ is to examine its semantics from the perspective of
 Identifying Beta-Redexes
 ------------------------
 
-This randomized problem will help you identify :math:`\beta`-redexes.  To earn
-credit for it, you will have to solve it correctly three times in a
-row.
+The following randomized problem will help you identify
+:math:`\beta`-redexes.  To earn credit for it, you will have to solve
+it correctly three times in a row.
 
 .. avembed:: Exercises/PL/BetaRedex1.html ka
    :long_name: Identifying Beta Redexes 1
@@ -48,16 +48,41 @@ row.
 Beta-Reduction is a Substitution
 --------------------------------
 
-If we have a :math:`\beta`-redex of the form :math:`(\lambda x.E \;\; E')`, then to
-:math:`\beta`-reduce this expression means that we substitute :math:`E'` for :math:`x`
-in :math:`E` using the substitution algorithm developed in the preceding section.  For
-example, :math:`\beta`-reducing  :math:`(\lambda x.(x \; v) \;\; (z \; (v \; u)))` 
-would yield the expression :math:`((z \;\; (v \;\; u)) \;\; v)`.
+If we have a :math:`\beta`-redex of the form :math:`(\lambda x.E \;\;
+E')`, then to :math:`\beta`-reduce this expression means to
+substitute :math:`E'` for :math:`x` in :math:`E` using the
+substitution algorithm developed in the preceding section.
+
+In other words, to evaluate a :math:`\beta`-redex of the form
+
+.. math::
+
+      \begin{eqnarray*}(\lambda x.E \;\; E')\end{eqnarray*}
+
+simply means to perform the following substitution:
+
+.. math::
+
+      \begin{eqnarray*} subst( E', x, E) \end{eqnarray*}
+
+Again, this is just the algorithm that you learned in
+:ref:`substitution-algorithm`. Note that the result of a
+:math:`\beta`-reduction is what you get by first stripping off
+the binding occurrence of the :math:`\lambda`-abstraction, leaving
+just its body, and then substituting :math:`E'` for x in that body.
+
+      
+For example, to :math:`\beta`-reduce :math:`(\lambda x.(x \; v) \;\; (z
+\; (v \; u)))`, you  would first strip off  :math:`\lambda x.`
+to get :math:`(x \; v)` (that is, the body of the
+:math:`\lambda`-abstraction), and then substitute
+:math:`(z \; (v \; u))` for :math:`x` in that body,
+yielding the expression :math:`((z \;\; (v \;\; u)) \;\; v)`.
 
 Some Beta-Reductions Require Alpha-Conversion
 ---------------------------------------------
 
-This randomized problem will help you identify :math:`\beta`-redexes
+The following  randomized problem will help you identify :math:`\beta`-redexes
 and prepare to reduce them by determining whether an
 :math:`\alpha`-conversion is needed.  To earn credit for it, you will
 have to solve it correctly three times in a row.
@@ -68,14 +93,15 @@ have to solve it correctly three times in a row.
 Performing Beta-Reductions
 --------------------------
 
-This randomized problem will provide practice performing
+The following randomized problem will provide practice performing
 :math:`\beta`-reductions. To earn credit for it, you will have to
-solve it correctly three times in a row.   *BeCareful*: remember that, because :math:`\beta`-reducing
-uses the substitution algorithm, it may be necessary to perform an :math:`\alpha`-conversion.
-For example, :math:`\beta`-reducing
-:math:`(\lambda x. \lambda u.(u \;\; x) \;\; (v \;\; u))`
-yields :math:`\lambda a.(a \;\; (v \;\; u))`, where we must do an
-:math:`\alpha`-conversion to avoid capturing the free variable :math:`u`.
+solve it correctly three times in a row.  *Be Careful*: remember that,
+because :math:`\beta`-reducing uses the substitution algorithm, it may
+be necessary to perform an :math:`\alpha`-conversion.  For example,
+:math:`\beta`-reducing :math:`(\lambda x. \lambda u.(u \;\; x) \;\; (v
+\;\; u))` yields :math:`\lambda a.(a \;\; (v \;\; u))`, where we must
+do an :math:`\alpha`-conversion to avoid capturing the free variable
+:math:`u`.
       
 
 .. avembed:: Exercises/PL/BetaReduction.html ka

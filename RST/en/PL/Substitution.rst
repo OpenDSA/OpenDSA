@@ -12,6 +12,8 @@
 The Substitution-Based Model of Evaluation
 ==========================================
 
+.. _substitution-algorithm:
+
 Substitution Algorithm
 ----------------------
 
