@@ -8,8 +8,8 @@ $(document).ready(function() {
     av.umsg("Reduction of ((MULT TWO) THREE) in Church numerals");
     l.addClass("church");
     av.displayInit();
-    av.umsg("First β-reduce by applying the λm abstraction highlighted below to λf.λx.(f (f (f x))))");
-    l.text("(&nbsp;&nbsp;<span style='color:red'>(λm.λn.λf.(m (n f)) λf.λx.(f (f x)))</span> &nbsp;&nbsp; λf.λx.(f (f (f x))))");
+    av.umsg("First β-reduce by applying the λm abstraction highlighted below to λf.λx.(f (f x))");
+    l.text("(&nbsp;&nbsp;(<span style='color:red'>λm.λn.λf.(m (n f))</span> λf.λx.(f (f x))) &nbsp;&nbsp; λf.λx.(f (f (f x))))");
     av.step();
     av.umsg("Doing that reduction will yield ...");
     l.text("(λn.λf.(λf.λx.(f (f x)) (n f)) λf.λx.(f (f (f x))))");
