@@ -36,3 +36,63 @@ var s1 = is.tl(intsFrom1);
 var s2 = is.tl(is.tl(intsFrom1));
 var s3 = is.take(s2, 6);
 /* *** ODSAendTag: LazyList2 *** */
+
+/* *** ODSATag: LazyList3 *** */
+// Analogue to what the map operation did for finite lists in the fp
+// module, that is, return a new sequence obtained by applying the
+// given function f to each member of the given sequence seq
+var map = function (f,seq) {
+    return cons (???-1st arg to cons-???,
+    return cons (f(hd(seq)), 
+		 ???-2nd arg to cons-??? );
+		 function () {
+		     return map(f, tl(seq));
+		 }
+		);
+};
+
+// Examples of using map
+var intsFrom1 = is.from(1);
+var s1 = is.take(is.map( function (n) { return 2 * n; },
+			 intsFrom1),
+		 5);
+var s2 = is.take(is.map( function (n) { return n * n; },
+			 intsFrom1),
+		 5);
+/* *** ODSAendTag: LazyList3 *** */
+
+/* *** ODSATag: LazyList4 *** */
+// Filters the given sequence with the given predicate
+var filter = function (pred,seq) {
+    if (pred(hd(seq))) {
+        return cons ( ?????? );
+	return cons (hd(seq),
+		     function () {
+			 return filter(pred, tl(seq));
+		     });
+    } else {
+        return ??????;
+	return filter(pred, tl(seq));
+    }
+};
+
+var intsFrom1 = is.from(1);
+var evens = is.take(
+    is.filter(
+	function (n) { return n % 2 == 0; },
+	intsFrom1
+    ),
+    10);
+/* *** ODSAendTag: LazyList4 *** */
+
+/* *** ODSATag: LazyList5 *** */
+/* *** ODSAendTag: LazyList5 *** */
+
+/* *** ODSATag: LazyList6 *** */
+/* *** ODSAendTag: LazyList6 *** */
+
+/* *** ODSATag: LazyList7 *** */
+/* *** ODSAendTag: LazyList7 *** */
+
+/* *** ODSATag: LazyList8 *** */
+/* *** ODSAendTag: LazyList8 *** */
