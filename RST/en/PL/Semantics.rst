@@ -22,7 +22,9 @@ of lambda expressions, or in other words, how they are interpreted and what
 their value is. Clearly, the expressive power of the lambda calculus
 is outstanding: its tiny syntax will allow us to express a rich set of
 computations, in fact, all possible computations (for more on this,
-look up the Church-Turing thesis).
+look up the `Church-Turing thesis`_).
+
+.. _Church-Turing thesis:  https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis
 
 Note that all programs in the lambda calculus are expressions, that
 is, programs that get evaluated for their value. The lambda calculus
@@ -206,8 +208,8 @@ code fragment.
    Note that, in example 11 above, the top-level expression is a
    lambda abstraction whose body is a function application.
 
-Mastering Lambda Calculus Semantics
------------------------------------
+Practice with Lambda Calculus Semantics
+---------------------------------------
 
 This problem is about the semantic equivalence between lambda
 expressions and JavaScript expressions.
