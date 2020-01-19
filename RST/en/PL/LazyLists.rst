@@ -93,7 +93,7 @@ infinite sequences of integers.
    // integers in the given sequence
    var take = function (seq,n) { ... };
 
-The following slide-show illustrates how we could use these operations
+The following slide show illustrates how we could use these operations
 to construct and then expose various parts of an infinite sequence of
 1s.
 
