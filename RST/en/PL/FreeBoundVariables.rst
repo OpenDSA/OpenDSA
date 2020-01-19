@@ -122,8 +122,11 @@ Throughout this section, we have attempted to be as intuitive and
 informal as possible. However, it is possible to define the notions of
 free and bound variables systematically. For any precise definition
 pertaining to  lambda calculus, we need only consider the three types of
-lambda expressions defined in the lambda calculus grammar (see
-:ref:`BNF grammar <BNF grammar> <BNF-grammar-for-LC>`).
+lambda expressions defined in the BNF grammar for the lambda calculus (see
+:ref:`syntax-of-LC`).
+
+     
+     
 For example, we say that any variable
 :math:`x` occurs :term:`free` in any lambda expression
 :math:`E` if and only if:
@@ -137,8 +140,10 @@ For example, we say that any variable
       different from :math:`x` and :math:`x` occurs free in :math:`E'`.
 
 Notice that the recursion in cases 2 and 3 above mirrors the recursion
-in the lambda calculus grammar. The following table illustrates
-all cases of this definition.
+in the lambda calculus grammar (the order of these two cases was
+swapped in order to make the examples below more easily
+understandable). The following table illustrates all cases of this
+definition.
 
 
 .. list-table:: 

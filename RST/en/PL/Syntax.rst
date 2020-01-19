@@ -11,6 +11,8 @@
 
 .. index:: ! lambda calculus, Alonzo Church, functional programming ; lambda calculus
 
+.. _syntax-of-LC:
+
 ===============================
  Syntax of the Lambda Calculus
 ===============================
