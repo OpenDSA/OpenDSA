@@ -32,8 +32,6 @@ JavaScript, Java, C++, etc.
 
 .. index:: lambda calculus ; syntax
 
-.. _BNF-grammar-for-LC:
-
 Programs in the lambda calculus are called :dfn:`lambda expressions`
 (abbreviated :math:`\lambda exp`), of which there are only three
 kinds. In fact, here is a complete BNF grammar for the lambda

@@ -75,12 +75,11 @@ of :math:`b` and :math:`a` is always the expression that gets
 inserted into :math:`b`.
 
 Now, back to the substitution algorithm. Since :math:`b` is an
-arbitrary lambda expression, looking back at the BNF grammar for the
-:ref:`lambda calculus <lambda calculus> <Semantics>`,
-we see that we must
-consider three cases for :math:`b`, namely a variable, a lambda
-abstraction or an application expression. Therefore, our description
-of the algorithm is broken down into three numbered cases.
+arbitrary lambda expression, looking back at the BNF grammar (see
+:ref:`syntax-of-LC`), we see that we must consider three cases for
+:math:`b`, namely a variable, a lambda abstraction, or an application
+expression. Therefore, our description of the algorithm is broken down
+into three numbered cases.
 
 **Case 1:** If :math:`b` is a variable, say :math:`x`, then
 :math:`subst(a, p, b)` becomes :math:`subst(a, p,x)`. Recall that
@@ -112,10 +111,9 @@ since both :math:`p` and :math:`b` are equal to the same variable
       :output: show
 
 
-**Case 2:** When substituting :math:`a` for :math:`p` in :math:`\lambda x.E`, that is,
-:math:`subst(a,p,b)` where :math:`b` is a :math:`\lambda`
-abstraction,
-there are three sub-cases to consider:
+**Case 2:** When substituting :math:`a` for :math:`p` in
+:math:`\lambda x.E`, that is, :math:`subst(a,p,b)` where :math:`b` is
+a :math:`\lambda` abstraction (here, :math:`\lambda x.E`), there are three sub-cases to consider:
 
 - **Case 2a:** :math:`p` and :math:`x` are one and the same variable,
   say :math:`v`, then  :math:`subst(a,v,\lambda v.E)` should return
