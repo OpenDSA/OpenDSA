@@ -19,7 +19,7 @@ Alpha-Conversion Rule
 We now turn our attention back to the semantics of the lambda calculus
 by focusing on how :ref:`free-and-bound-variables` in lambda
 expressions impact their meaning. Let us first consider bound variable
-occurrences first.
+occurrences.
 
 When a variable occurrence :math:`x` is bound to a binding occurrence,
 the meaning of :math:`x` depends on the fact that it appears inside
@@ -157,8 +157,8 @@ using the following rule:
     a *new* variable, that is, a variable that does not occur in the body
     of the function being :math:`\alpha`-converted.
 
-Mastering Alpha Conversion
---------------------------
+Practice with Alpha Conversion
+------------------------------
 
 To practice the process of :math:`\alpha`-conversion, complete the
 following exercise. To earn credit for it, you will have to solve it
@@ -170,6 +170,6 @@ correctly three times in a row.
 In conclusion, :math:`\alpha`-conversion simply replaces the name of a
 function parameter with a completely new name in order to avoid
 variable captures. :math:`\alpha`-conversion will be quite useful to
-us in the next section where we describe the main algorithm for
+us in the next section, where we describe the main algorithm for
 determining the meaning of a lambda calculus program, namely the
 process of substitution.
