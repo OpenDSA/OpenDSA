@@ -40,16 +40,6 @@
       <h2 id="question">Give an NFA or DFA that accepts the language: L(<span id="expression"></span>)</h2>
       <h2 id="description"></h2>
     	<!-- new stuff -->
-    <table class="headerTable" style="font-size: 12px; border-style: hidden;">
-        <tr>
-          <td class="headerLeft" style="border:hidden;"></td>
-          <td class="headerCenter">Turing Machine Editor</td>
-          <td class="headerRight" style="border:hidden;">
-<!--             <button id="helpButton" style="width: 20px !important; height: 20px !important; position: inherit !important;"><img src="./help.png" /></button>
- -->          </td>
-        </tr>
-      </table>
-
       <hr style="margin-top: 0px; border-top: 1px solid #333; margin-bottom: 0px;">
       
       <div style="display:inline;">
@@ -66,61 +56,6 @@
           <table class="headerTable" style="font-size: 12px; border-style: hidden;">
             <tr>
                 <td style="display: -webkit-box;border:  hidden;margin-top: 5px;">
-                <div class="dropdown" style="height: 20px !important;">
-                  <button type="button" data-toggle="dropdown">File
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#" class="functionality" id="saveButton">Save Machine</a></li>
-                    <li><a href="#" class="functionality" id="savePDF">Save as Jpeg</a></li>
-                    <li><a href="#" id="new">
-                    <label id="getFileLabel" for="loadFile" style="display: inline-block;height: 50%; width: 100%">Load File</label>
-                    <input type="file" id="loadFile" style=" display: none;" /></a></li>
-                  </ul>
-
-                </div>
-
-<!--                 <div class="dropdown" style="height: 20px !important;">
-                  <button type="button" data-toggle="dropdown">Input
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                  	<li><a href="#" class="functionality" id="playButton">Traverse</a></li>
-                    <li><a href="#" class="functionality" id="singleRunButton">Single Run</a></li>
-                    <li><a href="#" class="functionality" id="openMultiRun">Multiple Run</a></li>
-                  </ul>
-
-                </div>
- -->
-                <div class="dropdown" style="height: 20px !important;">
-                  <button type="button" data-toggle="dropdown">Test
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                  	<li><a href="#" class="functionality" id="playButton">Traverse</a></li>
-<!--                     <li><a href="#" class="functionality" id="ndButton">Highlight Nondeterminism</a></li>
-                    <li><a href="#" class="functionality" id="lambdaButton">Highlight &lambda;-Transitions</a></li>
- -->                  </ul>
-
-                </div>
-                <div class="dropdown" style="height: 20px !important;">
-                  <button type="button" data-toggle="dropdown">View
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#" class="functionality" id="layoutButton">Layout</a></li>
-                  </ul>
-
-                </div>
-                <div class="dropdown" style="height: 20px !important; width: 73px;">
-                  <button type="button" data-toggle="dropdown">Convert<span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-
-                    <li><a href="#" class="functionality" id="toGrammarButton">Convert to Grammar</a></li>
-                    
-                    <li><a href="#" class="functionality" id="combineAutomataButton">Combine Automata</a></li>
-                    
-                   </ul>
-                  
-                </div> 
-
-                <button class="createExercise" id="finish">Finish</button>
               </td>
             </tr>
           </table>
@@ -163,8 +98,7 @@
  -->
       <div id="av">
 <!-- 		<a class="jsavsettings" href="#">Settings</a>
- -->		<div class="jsavcontrols"></div>
-        <p align="center" class="jsavexercisecontrols"></p>
+ -->		<p align="center" class="jsavexercisecontrols"></p>
 				<div id="alphabets" align="center" style="font-size: 20px">&Sigma;: <span id='alphabet'></span><br>&Gamma;: <span id='stackalphabet'></span></div>
       	<p align="center" class="arrayPlace"></p>
       </div>
