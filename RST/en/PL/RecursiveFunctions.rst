@@ -57,10 +57,13 @@ for historical reasons.   It is defined as follows:
 .. math:: Y = \lambda h.(\lambda x.(h \; (x \; x))\; \lambda x.(h \; (x \; x)))
 
 
-:math:`Y` will find the *fixed point* of any function F. That is, for
-any function F, :math:`(F \; (Y \; F)) = (Y \; F)`.  In other words,
-if we apply *Y* to *F*, the result is a value that, when given to *F*,
-will give us *Y* applied to *F* again.
+:math:`Y` will find the *fixed point* of any function F.
+
+
+That is, for any function F, :math:`(Y \; F)` is a fixed-point of F,
+that is, :math:`(F \; (Y \; F)) = (Y \; F)`.  In other words, if we
+apply *Y* to *F*, the result is a value that, when given to *F*, will
+give us *Y* applied to *F* again.
 
 To see this, note that the substitution needed to :math:`\beta`-reduce :math:`(Y \; F)` leads us to:      
 
@@ -120,7 +123,7 @@ can harness the full power of recursively defined functions.
 Identifying Fixed Point Combinators
 -----------------------------------
 
-Although the function :math:`Y` defined above is a famous fixed-point combinator, there are also many other fixed-point combinators, that is, functions :math:`Z` with the property that:
+Although the function :math:`Y` defined above is a famous fixed-point combinator, there are many other fixed-point combinators, that is, functions :math:`Z` with the property that:
 
 .. math:: (F \; (Z \; F)) = (Z \; F)
 
