@@ -79,19 +79,41 @@ controllerProto.startTesting = function() {
 		var testCase = this.testCases[i];
 		var input = Object.keys(testCase)[0];
 		var inputResult;
-		if(this.options.type && this.options.type == "PDA")
+		if(this.options.type && this.options.type == "TM"){
+			var res = this.fa.play(input);
+			res = res.split('|')[1].split('|')[0];
+			res = res.replace('<mark>','').replace('</mark>','');
+			inputResult = res.split(square).filter(function(list){
+				if(list.length > 0)
+					return list;
+			})[0];
+		}
+		else if(this.options.type && this.options.type == "PDA")
 			inputResult = PDAwillReject(this.fa, input);
 		else
 			inputResult = FiniteAutomaton.willReject(this.fa, input);
 		var inputOrLambda = input ===""?lambda:input;
-		if (inputResult !== testCase[input]) {
-			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
-			count++;
-			testRes.push('Test' + testNum +':' + 'Correct');
+		if(this.options.type && this.options.type == "TM"){
+			if (inputResult == testCase[input]) {
+				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + testCase[input] + "</td><td class='correct'>" + inputResult  + "</td></tr>");
+				count++;
+				testRes.push('Test' + testNum +':' + 'Correct');
+			}
+			else {
+				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + testCase[input] + "</td><td class='wrong'>" + inputResult  + "</td></tr>");
+				testRes.push('Test' + testNum + ':' + 'Wrong');
+			}
 		}
-		else {
-			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
-			testRes.push('Test' + testNum + ':' + 'Wrong');
+		else{
+			if (inputResult !== testCase[input]) {
+				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
+				count++;
+				testRes.push('Test' + testNum +':' + 'Correct');
+			}
+			else {
+				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
+				testRes.push('Test' + testNum + ':' + 'Wrong');
+			}
 		}
 	}
 	var exer = {};

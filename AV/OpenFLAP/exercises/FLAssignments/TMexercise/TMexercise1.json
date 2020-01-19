@@ -1,13 +1,1 @@
-[
-    {
-        "expression": "",
-        "description": "Give a TM.",
-        "type": "description",
-        "testCases": [
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{"expression":"","description":"Create a machine that increases the number of a's in the string","type":"description","testCases":[{"aaaaa":"aaaaaa"}],"graph":{"nodes":[],"edges":[]}}]

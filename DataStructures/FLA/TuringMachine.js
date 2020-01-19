@@ -75,6 +75,7 @@ tm.play = function(inputString) {
 	}
 	this.jsav.step();
 	this.jsav.recorded();
+	return configView[0];
 };
 
 tm.showAccept = function(state) {

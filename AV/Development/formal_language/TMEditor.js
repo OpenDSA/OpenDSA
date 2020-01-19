@@ -12,11 +12,10 @@ var lambda = String.fromCharCode(955),
 
 	var loadHandler = function()
 	{
-		
 		type = $('h1').attr('id');
 		if(type == 'tester'){
 			exerciseLocation = getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
-        	exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: "PDA"});
+        	exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: "TM"});
         	exerController.load();
         
         	var exercise = jsav.flexercise(modelSolution, initializeExercise,
@@ -32,7 +31,8 @@ var lambda = String.fromCharCode(955),
 	}
 	//Function sent to exercise constructor to initialize the exercise
 	function initializeExercise() {
-		
+		g.clear();
+		exerController.fa = initGraph();
 	  }
 	  
 	  //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
@@ -58,36 +58,7 @@ var lambda = String.fromCharCode(955),
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 		gHeight = g.element.height();
-  		// var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),		
-	    //   		b = g.addNode({left: 0.35 * gWidth, top: 0.7 * gHeight}),
-	    //   		c = g.addNode({left: 0.10 * gWidth, top: 0.7 * gHeight}),
-	    //   		d = g.addNode({left: 0.6 * gWidth, top: 0.7 * gHeight}),
-	    //   		e = g.addNode({left: 0.85 * gWidth, top: 0.5 * gHeight}),
-	    //   		f = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight});
-	    //   	g.makeInitial(a);
-	    //   	c.addClass('final');
-
-	   //  g.addEdge(a, b, {weight: 'a;#,R'});
-	   // 	g.addEdge(a, a, {weight: '#;#,R'});
-	   //  //g.addEdge(a, d); 		it's a FA, need to always provide a weight
-
-	   //  g.addEdge(b, b, {weight: '#;#,R'});
-	   //  g.addEdge(b, c, {weight: square + ';' + square + ',L'});
-	   //  g.addEdge(b, d, {weight: 'a;a,R'});
-
-	   // 	g.addEdge(d, d, {weight: '#;#,R'});
-	   //   g.addEdge(d, e, {weight: 'a;#,R'});
-	   // 	g.addEdge(d, f, {weight: square + ';' + square + ',L'});
-
-	   //  g.addEdge(e, e, {weight: '#;#,R'});
-	   //  g.addEdge(e, d, {weight: 'a;a,R'});
-
-	   //  g.addEdge(f, f, {weight: '#;#,L'});
-	   //  g.addEdge(f, f, {weight: 'a;a,L'});
-	   //  g.addEdge(f, a, {weight: square + ';' + square + ',R'});
-	
     	jsav.displayInit();
-
     	g.click(nodeClickHandler);
 		g.click(edgeClickHandler, {edge: true});
 		$('.jsavgraph').click(graphClickHandler);
