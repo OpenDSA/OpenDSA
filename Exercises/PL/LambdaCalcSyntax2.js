@@ -135,12 +135,6 @@
 
 	    this.expressions = exps.join("<br />");
 	    this.answer = String(numCorrect);
-	    options.splice(numCorrect,1);
-	    //console.log(numCorrect);
-	    this.option1 = options[0];
-	    this.option2 = options[1];
-	    this.option3 = options[2];
-	    this.option4 = options[3];
 	} //init
 
     };// LambdaCalcSyntax2  

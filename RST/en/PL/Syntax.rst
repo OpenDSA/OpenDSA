@@ -107,11 +107,11 @@ represent all computable functions! Recall that the expressive power
 of BNF grammars comes from recursion, which is present in both the
 second and third productions in the grammar  above.
 
-The following slideshow demonstrates how to use the grammar above
+The following slide show demonstrates how to use the grammar above
 to build the parse tree for a given lambda expression.
 
 .. inlineav:: parseTree ss
-   :long_name: Slideshow for how to build a parse tree
+   :long_name: Slide show for how to build a parse tree
    :links: AV/PL/AV/parseTree.css AV/PL/main.css
    :scripts: AV/PL/AV/parseTree.js
    :output: show
@@ -132,19 +132,18 @@ Q2. How many terminals does this grammar contain?
 Q3. Is this grammar ambiguous, since the third production is doubly recursive?
 
 
-Mastering Lambda Calculus Syntax (1)
+Practice with Lambda Calculus Syntax
 ------------------------------------
 
-Test your mastery of the syntax of the lambda calculus with this
+Test your mastery of the syntax of the lambda calculus with the following
 exercise.  To get credit for this randomized exercise, you must solve
 it correctly three times in a row.
 
 .. avembed:: Exercises/PL/LambdaCalcSyntax1.html ka
    :long_name: Lambda Calc Syntax 1
 
-
-Mastering Lambda Calculus Syntax (2)
-------------------------------------
+More Practice with Lambda Calculus Syntax
+-----------------------------------------
 
 Once you can consistently solve the previous problem, try this more
 intense exercise, in which you have to analyze four expressions each
