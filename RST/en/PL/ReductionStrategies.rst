@@ -117,7 +117,7 @@ them go through their respective steps on a variety of randomized
 always predict what the next step of the visualization will be, you
 are ready to tackle the practice problems that follow.
 
-.. avembed:: AV/PL/LC/LCPractice.html ss
+.. avembed:: AV/PL/LCPractice.html ss
 
 
       
