@@ -208,6 +208,9 @@ CS4104: min
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
+CS2114: min
+	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
+
 CS5040: min
 	python $(CONFIG_SCRIPT) config/CS5040.json --no-lms
 
@@ -231,6 +234,9 @@ CS3: min
 
 CS3C: min
 	python $(CONFIG_SCRIPT) config/CS3C.json --no-lms
+
+CSCI204: min
+	python $(CONFIG_SCRIPT) config/CSCI204.json --no-lms
 
 CSCI271: min
 	python $(CONFIG_SCRIPT) config/CSCI271.json --no-lms
