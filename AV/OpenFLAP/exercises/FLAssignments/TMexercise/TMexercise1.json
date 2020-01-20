@@ -1,9 +1,18 @@
 [
     {
         "expression": "",
-        "description": "Give a TM.",
+        "description": "Create a machine that increases the number of a's in the string",
         "type": "description",
         "testCases": [
+            {
+                "aaa": "aaaa"
+            },
+            {
+                "": "a"
+            },
+            {
+                "aaaaa": "aaaaaa"
+            }
         ],
         "graph": {
             "nodes": [],

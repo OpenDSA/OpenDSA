@@ -75,6 +75,7 @@ tm.play = function(inputString) {
 	}
 	this.jsav.step();
 	this.jsav.recorded();
+	return configView[0];
 };
 
 tm.showAccept = function(state) {
@@ -361,6 +362,7 @@ tmTrans.getWeight = function() {
 	 Holds the tape as a linked list and keeps track of the current position
 	 as well as the beginning of the string.
  */
+//TODO: This tape limits the output to 7 characters, WE NEED TO OVERCOME THIS LIMIT
 var Tape = function (str) {
 	// if the tape is initialized using a string, writes the string to the new tape
 	if (typeof str === 'string') {
