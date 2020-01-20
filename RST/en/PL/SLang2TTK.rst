@@ -13,8 +13,8 @@ Tying The Knot
 Implementing Recursion Efficiently
 ----------------------------------
 
-We next consider how to implement recursive functions in SLang2.  In
-the lambda calculus and SLang1, all functions are anonymous and
+We next consider how to implement recursive functions in SLang 2.  In
+the lambda calculus and SLang 1, all functions are anonymous and
 cannot call themselves. We could use a fixed-point combinator, like
 the :math:`Y` combinator. 
 
@@ -29,7 +29,7 @@ the :math:`Y` combinator.
 
 What is the problem with this approach?
 
-In SLang2, we can take advantage of references and the assignment statement to
+In SLang 2, we can take advantage of references and the assignment statement to
 implement recursion in an efficient way with a technique called "tying
 the knot."
 
@@ -61,7 +61,7 @@ Answer these questions and you will see why this technique is called
 Practice TTK
 ------------
 
-This problem will help you get comfortable with the TTK
+The following problem will help you get comfortable with the TTK
 technique. To earn credit for it, you must complete this randomized
 problem correctly three times in a row.
 
