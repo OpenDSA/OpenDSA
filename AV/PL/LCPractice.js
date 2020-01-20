@@ -1,5 +1,45 @@
 /* global document, console, $, JSAV, LAMBDA */
 
+/*  1/19/2020 note
+
+   The following files:
+     + this file
+     + LCPractice.html
+     + avconstainer.css
+   were moved to this directory, that is:
+           OpenDSA/AV/PL/
+   They were originally in:
+           OpenDSA/AV/PL/LC
+   They were moved due to the fact that the file
+       khan-exercises/images/green_check.png
+   was not loading when the files were in LC/
+
+   Here is the email exchange that motivated this move:
+
+    request from furcy:
+
+    When I build my HTML book and load  Books/PL/html/ReductionStrategies.html
+    I see the attached screenshot, namely the fact that the image
+    khan-exercises/images/green_check.png
+    is looked for in the AV directory but is not there. Instead, it is in:
+    OpenDSA/khan-exercises/images/green_check.png
+    How do I fix this?
+
+    response from shaffer:
+
+    My guess is that this results from trying to compute a relative
+    path in a not so smart way, and its confused because your AV is a
+    level lower in the directory structures than it assumes. This is
+    the type of thing that would be nice to fix, but I don't have the
+    resources to get it fixed right now. I do notice that this is only
+    happening to stand-alone AVs (that are "avembeded"). The
+    inlineav'ed slideshows compute it right (as do the various
+    exercises).
+
+    For now, the simplest solution, if you want the checkmark, is to
+    move this AV up a level, to AV/PL.
+*/
+
 (function ($) {
     "use strict";
     var av;
