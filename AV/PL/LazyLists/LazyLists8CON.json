@@ -1,0 +1,17 @@
+{
+    "translations" :{ 
+	"en": {
+	}
+    },
+    "code" : {
+	"pseudo": [{
+	    "url": "../../../SourceCode/Pseudo/PL/LazyLists.txt",
+	    "lineNumbers": false,
+	    "startAfter": "/* *** ODSATag: LazyList8 *** */",
+	    "endBefore": "/* *** ODSAendTag: LazyList8 *** */",
+	    "left": 260,
+	    "top": -20
+	}]
+    }
+}
+

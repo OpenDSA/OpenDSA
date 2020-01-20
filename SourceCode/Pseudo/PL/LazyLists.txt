@@ -128,7 +128,27 @@ is.take(is.iterates(function (x) { return 3 + x; }, 3), 6);
 /* *** ODSAendTag: LazyList6 *** */
 
 /* *** ODSATag: LazyList7 *** */
+Create a boolean array indexed from 0 to n
+Set indices 0 and 1 to false.  All others to true
+Initially, let p equal 2, the smallest prime number
+"Sift" multiples of p, starting at 2*p, by setting them to false
+Find the first index > p and <= square-root(n) that is true
+    If there is no such index, stop
+    Otherwise, let p = this index and repeat from step 4
+Upon termination, the indexes that remain true are all the primes <= n
 /* *** ODSAendTag: LazyList7 *** */
 
 /* *** ODSATag: LazyList8 *** */
+var sieve = function (seq) {
+    var sift =  function (p) { return p % is.hd(seq) !== 0; };
+    return is.cons(is.hd(seq),
+		   function () {
+		       return ??????;
+		       return is.filter( sift, is.tl(seq));
+		       return is.filter( sift, sieve(is.tl(seq)));
+		   });
+};
+
+var primes = sieve(is.from(2));
+is.take(primes, 10);
 /* *** ODSAendTag: LazyList8 *** */

@@ -12,7 +12,7 @@ Let Expressions
 Let Blocks
 ----------
 
-In Section 2.4, when we introduced helper functions, we considered the
+In :ref:`reverse` where we introduced helper functions, we considered the
 following **split** function.
 
 ::
@@ -41,12 +41,12 @@ produce the exact same result.
 
 It would be much better to cache the result of a call to **split** and
 then use that cached result in place of the two calls.  We could do
-this in SLang1 if we had the ability to declare a symbol local to the
+this in SLang 1 if we had the ability to declare a symbol local to the
 scope where it was needed and "assign" that symbol the result of
 calling **split**.  Then, instead of calling **split** twice, we could
 just twice use the result that had been cached by association with the
 symbol.  It is with this in mind that we introduce a **let block** in
-SLang1.  Consider the following three examples of **let block** usage.
+SLang 1.  Consider the following three examples of **let block** usage.
 In each example, the assignments to symbols following **let** are used
 in the expression enclosed in the keywords **in** and **end**.
 
@@ -100,7 +100,7 @@ Example 3
 
 
 Interestingly, the **let block** (or  **let expression**) is just *syntactic sugar* for an
-existing construct in SLang1.  That is, when the SLang1 interpreter
+existing construct in SLang 1.  That is, when the SLang 1 interpreter
 encounters a **let block** it can just "translate" it into that
 existing construct right away as it builds the abstract syntax tree.
 To see what this existing structure is, figure out what the sets of
@@ -122,7 +122,7 @@ the following practice problems.
 Let Blocks As Syntactic Sugar
 -----------------------------
 
-This randomized problem focuses on *let expressions* as *syntactic
+The following randomized problem focuses on *let expressions* as *syntactic
 sugar*. Solve it correctly three times in a row to get
 credit for it.
 
@@ -132,7 +132,7 @@ credit for it.
 Nested Lets
 -----------
 
-This randomized problem focuses on the evaluation of nested
+The following randomized problem focuses on the evaluation of nested
 *let expressions*. Solve it correctly three times in a row to get
 credit for it.
 
@@ -145,7 +145,7 @@ value, for example **[ "Num", 0 ]** and not just **0**.
 Nested Lets with Closures
 -------------------------
 
-This randomized problem focuses on the evaluation of nested
+The following randomized problem focuses on the evaluation of nested
 *let expressions* with closures. Solve it correctly three times in a row to get
 credit for it.
 

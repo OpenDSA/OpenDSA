@@ -4,6 +4,9 @@ $(document).ready(function() {
     "use strict";
     var av_name = "LazyLists8CON"; // Illustrate and develop the is.map function
     var av = new JSAV(av_name);
+    var code = ODSA.UTILS.loadConfig({av_name: av_name}).code;
+    var pseudo = av.code(code[0]).show();
+
     var leftMargin = 10;
 //    var offset_for_each_var = 70;
      var offset_for_each_var = 50;
@@ -20,22 +23,12 @@ $(document).ready(function() {
     var arr_label3 = av.label("The correct version produces ...", {left: leftMargin, top: 0 + 3 * offset_for_each_var}).hide();
 //     var arr4 = av.ds.array([3,4,5,6,7,8], {indexed: false, left: leftMargin, top: 20 + 4 * offset_for_each_var}).hide();
 //     var arr_label4 = av.label("s3", {left: leftMargin, top: 0 + 4 * offset_for_each_var}).hide();
-    var pseudo1 = av.code(
-	{
-	    url:'../../../AV/PL/LazyLists/LazyLists8.code.1',
-	    relativeTo:arr,
- 	    anchor:'right top',
- 	    myAnchor:'left top',
-	    left: leftMargin+200,
-	    top: -20,
-            lineNumbers: false
-        }
-    );
+
     
     // Slide 1
     av.umsg("Our sieve function is given all the integers starting at 2.");
-    pseudo1.hide([2,6,7]);
-    pseudo1.highlight([11,12]);
+    pseudo.hide([2,6,7]);
+    pseudo.highlight([11,12]);
     arr.addClass(1,"wider");
     av.displayInit();
 
@@ -43,17 +36,17 @@ $(document).ready(function() {
     arr1.show();
     arr_label1.show();
     arr1.addClass(1,"wider");
-    pseudo1.unhighlight([11,12]);
-    pseudo1.highlight([3,4,5,8]);
+    pseudo.unhighlight([11,12]);
+    pseudo.highlight([3,4,5,8]);
     av.step();
 
     av.umsg('We can use the is.filter function in conjunction with a sift function that tests for divisibility by the head of the sequence sieve is given.  The code highlighted in blue indicates what happens.   What has gone wrong?');
-    pseudo1.unhighlight([3,4,5,8]);
-    pseudo1.show(2);
-    pseudo1.highlight(2);
-    pseudo1.hide(5);
-    pseudo1.show(6);
-    pseudo1.addClass(6,"initialattempt");
+    pseudo.unhighlight([3,4,5,8]);
+    pseudo.show(2);
+    pseudo.highlight(2);
+    pseudo.hide(5);
+    pseudo.show(6);
+    pseudo.addClass(6,"initialattempt");
     arr2.show();
     arr_label2.show();
     arr2.addClass([0,1,2,3,4,5,6,7,8,9], "narrow");
@@ -61,9 +54,9 @@ $(document).ready(function() {
     av.step();
 
     av.umsg("The code highlighted in red is what we need.   Our initial attempt had forgotten to embed a recursive call to sieve in the thunk and thus only sifted multiples of 2, but not multiples of primes that follow 2.   Remember - if you're not embedding a recursive call inside the thunk, chances are your lazy list code won't work.");
-    pseudo1.show(7);
-    pseudo1.addClass(7,"correctversion");
-    pseudo1.addClass(6,"st");
+    pseudo.show(7);
+    pseudo.addClass(7,"correctversion");
+    pseudo.addClass(6,"st");
     arr3.show();
     arr_label3.show();
     arr3.addClass([0,1,2,3,4,5,6,7,8,9], "narrow");
