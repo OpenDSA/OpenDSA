@@ -1,6 +1,6 @@
 var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
-		square = String.fromCharCode(9633),
+		square = String.fromCharCode(35),
 		emptystring;
 
 (function($) {

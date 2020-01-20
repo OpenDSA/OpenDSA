@@ -156,26 +156,6 @@ movement of a head across the tape.
 .. TODO::
    :type: Exercise
 
-   Create a machine that is just like the one in Example 1.1.1, except that it
-   leaves the tape unchanged (it leaves the "a"s in place, instead of
-   changing them to blanks.
-
-   [Answer: Same as before, but write a instead of # when you see an "a".]
-
-.. TODO::
-   :type: Exercise
-
-   Create a machine that is just like the one in Example 1.1.1 (it
-   replaces the input string with #'s) but it has the alphabet
-   :math:`\Sigma = {a, b,c}`, and so the input strings can be any mix
-   of a's, b's, and c's.
-
-   [Answer: Same as 9.1.1, except that we need to add transitions for
-   what to do when we see "b" or "c", which both write #.]
-
-.. TODO::
-   :type: Exercise
-
    Create a machine that is just like the one that you just did.
    However, instead of replacing the string with #'s, you will keep
    the string intact.

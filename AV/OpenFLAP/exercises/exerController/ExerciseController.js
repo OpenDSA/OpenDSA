@@ -83,10 +83,15 @@ controllerProto.startTesting = function() {
 			var res = this.fa.play(input);
 			res = res.split('|')[1].split('|')[0];
 			res = res.replace('<mark>','').replace('</mark>','');
-			inputResult = res.split(square).filter(function(list){
-				if(list.length > 0)
-					return list;
-			})[0];
+			var letters =_.uniq(res, false);
+			if(letters.length == 1 && letters[0] == square){
+				inputResult = "";
+			}else{
+				inputResult = res.split(square).filter(function(list){
+					if(list.length > 0)
+						return list;
+				})[0];
+			}
 		}
 		else if(this.options.type && this.options.type == "PDA")
 			inputResult = PDAwillReject(this.fa, input);

@@ -422,11 +422,12 @@ var Tape = function (str) {
 
 // Tape linked list node
 var TapeNode = function (left, right, val) {
+	var square = String.fromCharCode(35);
 	this._left = left;
 	this._right = right;
 	if (typeof val === "undefined") {
 		//this._value = "";
-		this._value = String.fromCharCode(9633);
+		this._value = square;
 	} else {
 		this._value = val;
 	}
@@ -569,9 +570,10 @@ tm.getTapeAlphabet = function () {
 	 The current position is highlighted as well.
  */
 var viewTape = function (t) {
+	var square = String.fromCharCode(35);
 	var arr = new Array(15);    // arbitrary size
 	for (var i = 0; i < 15; i++) {
-		arr[i] = String.fromCharCode(9633);;
+		arr[i] = square;
 	}
 	i = 7;
 	var temp = t.current;
@@ -615,9 +617,10 @@ tm.updateAlphabet = function() {
  */
 
 var produceOutput = function (t) {
+	var square = String.fromCharCode(35);
 	var temp = t.current,
 			output = "";
-	while (temp && temp.value() !== String.fromCharCode(9633)) {
+	while (temp && temp.value() !== square) {
 		output += temp.value();
 		temp = temp._right;
 	}
