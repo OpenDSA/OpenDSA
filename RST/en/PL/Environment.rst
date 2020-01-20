@@ -93,7 +93,7 @@ is defined.
 | For example, defining the anonymous function: **fn (f) => (f x)**
 | in the environment: **E1 = [ "Env", [ ["x", 5] ], [ "EmptyEnv" ] ]**
 | results in the following new value: **[ "Clo", [ "f" ], (f x), E1 ]** 
-| that is, the anonymous function whose only parameter is a function **f**, whose body is the call of **f** on the argument **x** and whose environment is **E1**.
+| that is, the anonymous function whose only parameter is a function **f**, whose body is the call of **f** on the argument **x**, and whose environment is **E1**.
 
 | If this closure is later bound to the variable **g**, as in: **(fn (g) => (g 1) fn (f) => (f x))**
 | then the environment at the point where **g** is being applied to 1 is: **E2 = [ "Env", [ ["g", [ "Clo", [ "f" ], (f x), E1 ] ] ], E1 ]**
@@ -103,7 +103,7 @@ can be bound to a variable name. So, an **environment** is just a
 mapping from identifiers (e.g., "x" and "g") to denoted values.
 
 The types of denoted values vary from programming language to
-programming language. In SLang1, the only types of denoted value are
+programming language. In SLang 1, the only types of denoted value are
 numbers and closures.
 
 As usual, we will represent these denoted values with arrays whose first
@@ -123,8 +123,8 @@ instead of
 Determining Values Bound to a Variable
 --------------------------------------
 
-This problem provides practice determining to which value a SLang
-1 variable is bound. To earn credit for it, you must complete this
+The following problem provides practice determining which value a SLang
+1 variable is bound to. To earn credit for it, you must complete this
 randomized problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/Environment1.html ka
@@ -133,21 +133,21 @@ randomized problem correctly three times in a row.
 Evaluation of Expression Within an Environment
 ----------------------------------------------
 
-This problem provides practice fully evaluating SLang 1 expressions.  To
-earn credit for it, you must complete this randomized problem
-correctly three times in a row.
+The following problem provides practice fully evaluating SLang 1
+expressions.  To earn credit for it, you must complete this randomized
+problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/Environment2.html ka
    :long_name: Expression Evaluation within Environment
 
 
-Determining Denoted Values in SLang1
-------------------------------------
+Determining Denoted Values in SLang 1
+-------------------------------------
 
-This problem gives you practice with denoted values in the SLang 1
+The following problem gives you practice with denoted values in the SLang 1
 interpreter. To earn credit for it, you must complete this randomized
 problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/Environment3.html ka
-   :long_name: Denoted Values in SLang1
+   :long_name: Denoted Values in SLang 1
 
