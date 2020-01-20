@@ -152,17 +152,14 @@ movement of a head across the tape.
    :align: center
    :output: show
 
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/addOnea.html pe
+   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
-.. TODO::
-   :type: Exercise
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/eraseABC.html pe
+   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
-   Create a machine that is just like the one that you just did.
-   However, instead of replacing the string with #'s, you will keep
-   the string intact.
-
-   [Answer: Same as 9.1.1, except that we need to add transitions for
-   what to do when we see "b" or "c". All of the letter transisions
-   re-write the letter.]
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/keepABC.html pe
+   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
 .. topic:: Example
 
@@ -498,21 +495,20 @@ especially by packaging behavior together and manipulating the
 packages.
 We can hope to build up similar capability with Turing Machines.
 
-.. TODO::
-   :type: Old Prose
-
+.. .. TODO::    :type: Old Prose
+.. 
    [This is old prose from when our basic model was a one-sided
    infinite tape. That was easy to explain composition since you knew
    that any given machine cannot run arbitrarily left. Its not nearly
    so easy explain composition without that to rely on. We need
    something new to replace this.]
-   
+..    
    Since we are not using a one-sided tape, the following material
    needs to be replaced with a treatment like in Linz. 
    Note that the Stay "move" simplifies the if-then-else as compared
    to Linz.
    
-   **Lemma**: If
+**Lemma**: If
 
    .. math::
 
