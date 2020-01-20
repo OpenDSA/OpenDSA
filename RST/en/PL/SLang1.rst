@@ -18,13 +18,13 @@ perspective and how the lambda calculus forms the theoretical
 foundation for that perspective.  We will now shift our focus and
 consider how we could actually develop a small interpreter for a
 language based on the lambda calculus.  We'll call that language
-*SLang 1*, short for "Simple Language 1".   
+*SLang 1*, short for "Simple Language version 1".   
 
 The development process for this interpeter will require our writing a
 Jison grammar to define the syntax of the language and transform
 programs in the language into an *abstract syntax tree* (AST).
 
-How does **abstract syntax** differ from **concrete syntax**? In other
+How does **concrete syntax** differ from **abstract syntax**? In other
 words, how do parse trees differ from abstract syntax trees?
 
 A **parse tree** has a leaf node for each token, and an interior node
@@ -148,9 +148,9 @@ The expression in the bottom-right corner of the example above is a representati
 Concrete Syntax of SLang 1
 --------------------------
 
-This problem will help you master the concrete syntax of SLang 1. To earn
-credit for it, you must complete this randomized problem
-correctly three times in a row.
+The following problem will help you master the concrete syntax of
+SLang 1. To earn credit for it, you must complete this randomized
+problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/ConcreteSynSLang1_new.html ka
    :long_name: SLang 1 Concrete Syntax
@@ -159,7 +159,7 @@ correctly three times in a row.
 More Practice with the Concrete Syntax of SLang 1
 -------------------------------------------------
 
-This problem will reinforce your mastery of the concrete syntax of
+The following problem will reinforce your mastery of the concrete syntax of
 SLang 1 by providing more intensive practice. To earn credit for it,
 you must complete this randomized problem correctly three times in a
 row.
@@ -171,7 +171,7 @@ row.
 Abstract Syntax of SLang 1
 --------------------------
 
-This problem will help you master the abstract syntax of SLang 1.
+The following problem will help you master the abstract syntax of SLang 1.
 
 .. avembed:: Exercises/PL/AbstractSynSLang1.html ka
    :long_name: SLang 1 Abstract Syntax
@@ -179,7 +179,7 @@ This problem will help you master the abstract syntax of SLang 1.
 Curry in SLang 1
 ----------------
 
-This problem will illustrate the semantics of SLang 1 while helping
+The following problem will illustrate the semantics of SLang 1 while helping
 you review the definition of the *curry* function.
 
 .. avembed:: Exercises/PL/CurryInSLang1.html ka
@@ -189,7 +189,7 @@ you review the definition of the *curry* function.
 Semantics of SLang 1
 --------------------
 
-This problem focuses on the semantics of SLang 1.
+The following problem focuses on the semantics of SLang 1.
 
 .. avembed:: Exercises/PL/SemanticsSLang1.html ka
    :long_name: SLang 1 Semantics
