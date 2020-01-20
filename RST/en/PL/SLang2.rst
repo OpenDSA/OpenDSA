@@ -7,23 +7,25 @@
    :author: David Furcy and Tom Naps
 
 
-Defining SLang2
+Defining SLang 2
 ================
 
-SLang2: An Imperative Language
--------------------------------
+SLang 2: An Imperative Language
+--------------------------------
+
 We will now add to our simple language features  that lie outside the
 realm of pure functional programming.
 
-In this new version of SLang, called **SLang2**, standard arithmetic
-and Boolean operators are now infix, which is just a minor change in
-the concrete syntax.  More importantly, we added an *if-then-else*
-expression as well as assignment statements, print statements, and
-sequencing of statements within a let block.  Collectively, these last
-three additions (i.e., additions of statements, not expressions)
-change our simple language into an *imperative language*, that is, a
-language in which the programmer relies upon changing the state of
-variables (i.e., side effects) to compute a desired value.
+In this new version of SLang, called **SLang 2** (for Simple Language
+version 2), standard arithmetic and Boolean operators are now infix,
+which is just a minor change in the concrete syntax.  More
+importantly, we added an *if-then-else* expression as well as
+assignment statements, print statements, and sequencing of statements
+within a let block.  Collectively, these last three additions (i.e.,
+additions of statements, not expressions) change our simple language
+into an *imperative language*, that is, a language in which the
+programmer relies upon changing the state of variables (i.e., side
+effects) to compute a desired value.
 
 **Adding assignment statements to SLang**
 
@@ -125,17 +127,17 @@ block (except the last one) be?
 
 
 
-Output of SLang2 Program
-------------------------
+Output of SLang 2 Program
+-------------------------
 
-This problem will help you master the syntax and semantics of SLang2. To earn
-credit for it, you must complete this randomized problem
-correctly three times in a row.
+The following problem will help you master the syntax and semantics of
+SLang 2. To earn credit for it, you must complete this randomized
+problem correctly three times in a row.
 
 When you provide your answer, remember to include full denoted
 values, for example **[ "Num", 0 ]** and not just **0**.
 
 
 .. avembed:: Exercises/PL/OutputOfSLang2Prog.html ka
-   :long_name: Output of SLang2 Program
+   :long_name: Output of SLang 2 Program
 
