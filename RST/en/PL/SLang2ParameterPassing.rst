@@ -382,7 +382,7 @@ actual parameters, which are substituted for the formal parameters,
 Call-by-name differs from macro expansion in that only the parameters
 are evaluated in the caller's context, not the whole body of the
 function.  Step through a few slide shows of some call-by-name
-examples to see what the ramifications of this are.  When you are
+examples to study the ramifications of this change.  When you are
 confident that you understand the subtleties involved, try the
 proficiency exercise that follows.
 
@@ -396,20 +396,28 @@ proficiency exercise that follows.
 ..    :scripts: AV/PL/paramPassingByName.js
 ..    :output: show
 
+*Author's Note: In the slide show above, the arrows from the
+parameters to the arguments are NOT actual pointers but rather a way
+to depict the fact that each parameter has a way (which we'll describe
+under the name 'thunk' in the next section) to refer back to the
+arguments in the caller's environment.*
+
+
+
 Now it is time for you to do a proficiency exercise to see how well
 you understand call-by-name.  When you do this proficiency exercise,
 each assignment statement will require two steps.  In the first step
 corresponding to an assignment statement, you will have to compute the
 value on the right-hand side and then click the location where that
 value will be stored.  In the second step, you will have to click on a
-potentially new pointer destination resulting from the computation and
+potentially new arrow destination resulting from the computation and
 assignment that comprised your answer for the first step.
 
 .. avembed:: AV/PL/paramPassingByNamePRO.html pe
    :long_name: ByName Proficiency Exercise
 
 
-This problem will help you review the differences among *call by
+The following problem will help you review the differences among *call by
 copy-restore*, *call by macro*, and *call-by-name*. To earn credit
 for it, you must complete this randomized problem correctly three
 times in a row.
@@ -420,12 +428,12 @@ times in a row.
 .. avembed:: Exercises/PL/CallByCRVsMacroVsName.html ka
    :long_name: ByCR vs ByMacro vs ByName
 
-Comprehensive review of the five methods studied so far
+Comprehensive Review of the Five Methods Studied So Far
 -------------------------------------------------------
 
 In the next section, we will examine call-by-name versus call-by-need
-in greater depth in the context of a specific example known as a *lazy
-list*.  However, before proceeding test your comprehensive
+in the context of a specific example known as a *lazy
+list*.  However, before proceeding, test your comprehensive
 understanding of all five techniques studied so far:  *call-by-value*, *call-by-reference*,
 *call-by-copy-restore*, *call-by-macro*,
 and *call-by-name*. To earn credit for it, you must complete this
