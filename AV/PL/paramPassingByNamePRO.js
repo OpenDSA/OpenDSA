@@ -30,7 +30,7 @@ $(document).ready(function () {
   var pointerindex;
   var pointerMode = false;
   var instructionLabel;
-  var instructionRegular = 'Evaluate the value of the right hand side of the hightlighted line and type that into the input above. Then click the location where that value belongs.';
+  var instructionRegular = 'Evaluate the value of the right-hand side of the hightlighted line and type that into the input above. Then click the location where that value belongs.';
   var instructionNamePointer = 'Click where %variable% should point now that the current operation has been performed.';
 
   var initialArrays;

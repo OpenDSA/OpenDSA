@@ -35,7 +35,7 @@ Parameter-passing techniques may be broken down as follows:
 
    -  Call-by-reference
 
-   -  Call-by-copy-restore (also known as value-result, copy-in-copy-out)
+   -  Call-by-copy-restore (also known as value-result or copy-in-copy-out)
 
 -  Lazy evaluation (normal order) techniques.   What these methods have in common is that the evaluation of the arguments passed in for a function's parameters is delayed until the argument is actually used in the execution of the function.
 
@@ -49,14 +49,14 @@ Parameter-passing techniques may be broken down as follows:
 
 The difference between call-by-value and call-by-reference is
 exemplified by the difference between denoted values in our
-interpreters for SLang1 and SLang2.  That is, in call-by-value, the
+interpreters for SLang 1 and SLang 2.  That is, in call-by-value, the
 argument for a function parameter is a copy of the value of the
 argument whereas, in call-by-reference, the function is given the
 address of the argument.  Given the address, the function has the
 capability of modifying the argument.
 
 To see how call-by-value works, step through a few sample programs
-using the slideshow generator below.  Once you're confident that you
+using the slide show generator below.  Once you're confident that you
 understand each step, test yourself with the proficiency exercise that
 follows.
 
@@ -76,8 +76,8 @@ exercise.
 
 
 In comparison to call-by-value, call-by-reference is illustrated by
-the following slideshow generator.  Again step through a few of the
-generated slideshows until you're ready for the proficiency exercise
+the following slide show generator.  Again step through a few of the
+generated slide shows until you're ready for the proficiency exercise
 that follows.
 
 .. avembed:: AV/PL/paramPassingByRef.html ss
@@ -162,7 +162,7 @@ the following C++ code.
     }
 
 As you've done with by-value and by-reference, use the following
-slideshow generator to step through a few examples of the copy-restore
+slide show generator to step through a few examples of the copy-restore
 method and then test yourself by working on the proficiency exercise
 that follows.
    
@@ -228,7 +228,7 @@ Steps involved in macro-expansion are:
 ..    :scripts: AV/PL/paramPassingMacro.js
 ..    :output: show
 
-Once you have observed enough example slideshows to fully understand
+Once you have observed enough example slide shows to fully understand
 the details of each step in macro-style parameter passing, test
 yourself with the following proficiency exercise.
    

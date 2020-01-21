@@ -30,7 +30,7 @@ $(document).ready(function () {
   var output = '';
   var jsavElements;
 
-  var instructionRegular = 'Evaluate the value of the right hand side of the hightlighted line and type that into the input above. Then click the location where that value belongs.';
+  var instructionRegular = 'Evaluate the value of the right-hand side of the hightlighted line and type that into the input above. Then click the location where that value belongs.';
   var instructionRestore = 'Restore the two variables one at a time. Assume that variables are restored in left-to-right order according to their appearance in the parameter list.';
 
   var currentStep = 0;
