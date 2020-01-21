@@ -47,8 +47,8 @@ and
 The former,
 when passed as an argument, is already evaluated.  The function can
 use that value without having to do anything else to it.  However, the
-latter, when passed as an argument, requires that the parameterless function be
-executed to "unwrap" the value that the function should be using in
+latter, when passed as an argument, requires that the thunk be
+invoked to "unwrap" the value that the function should be using in
 its computation.
  
 Instead of evaluating the argument before calling the function and
@@ -57,6 +57,22 @@ in the function body, the thunk is evaluated to obtain the argument’s
 value.  The evaluation process is often referred to as *thawing the
 thunk*.
 
+If the thunk contains a reference to a free variable, such as the *x*
+in the following example:
+
+.. math::
+
+   \begin{eqnarray*} 
+   \verb!function ( ) { return x + 7; }!
+   \end{eqnarray*}	  
+
+then the callee (that is passed the thunk as an argument) will be able
+to access the free variable that was defined in the caller's
+environment.  This is because the thunk is a function, in other words
+a closure that includes the environment that existed at the time the
+thunk was created (i.e., the caller's environment that contains the
+definition of *x*).
+   
 **Call-by-name lists**
 
 To illustrate the use of thunks, we will implement call-by-name lists,
@@ -85,7 +101,7 @@ infinite sequences of integers.
    // Get the first integer in the  sequence
    var hd = function (seq) { ... };
 
-   // Get the the infinite sequence following the first element.  This
+   // Get the infinite sequence following the first element.  This
    // will itself be in the form of an integer followed by a thunk
    var tl = function (seq) { ... };
    
