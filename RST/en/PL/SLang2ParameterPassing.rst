@@ -169,6 +169,28 @@ that follows.
 .. avembed:: AV/PL/paramPassingCopyRestore.html ss
    :long_name: Copy Restore Slide Show	     
 
+*Author's Note: In the slide show above, the pointers from r and s
+back to the arguments of the function call exist, and should be shown,
+as soon as the function is invoked and throughout the execution of the
+function call.*
+
+So, as you can tell from the C++ code above, in call-by-copy-restore,
+a function parameter corresponds to two values, both a pointer to the
+corresponding argument and a copy of the value of the argument. First,
+the copy of the argument's value is made. Then, the body of the
+function only uses the copy during its execution. Finally, during the
+restore phase just before the function returns, the local copy of the
+argument (i.e., its final value, once the function's execution has
+completed) is copied back into the argument.
+
+Note that, when there are more than one parameter, the restore phase
+takes place for each parameter from left to right in the function's
+signature. This order is required by the specification of this
+parameter-passing mechanism.
+
+Can you think of scenarios in which the left-to-right order of the restore
+phase matters?
+	       
 ..     
 .. .. inlineav:: paramPassingCopyRestore ss
 ..    :long_name: Parameter Passing By Copy Restore
@@ -176,7 +198,7 @@ that follows.
 ..    :scripts: AV/PL/paramPassingCopyRestore.js
 ..    :output: show
 
-And next test yourself with a copy-restore proficiency exercise.
+Now, test yourself with a copy-restore proficiency exercise.
 
 .. avembed:: AV/PL/paramPassingCopyRestorePRO.html pe
    :long_name: Copy-restore Proficiency Exercise
@@ -184,13 +206,18 @@ And next test yourself with a copy-restore proficiency exercise.
 
    
 We've now covered the three parameter-passing methods that use eager
-evaluation of function arguments.  To compare and contrast these three
-methods, figure out what the output of the program in the next
-practice problem would be under *call by value*, *call by reference*,
-and *call by copy-restore*. Doing this should clarify the subtle
-differences among these three methods.  To earn credit for the
-practice problem, you must complete it correctly for the randomized
-program it generates three times in a row.
+evaluation of function arguments.
+
+Before moving on, make sure that you understand why these three methods
+indeed use eager evaluation.
+
+Now, to compare and contrast these three methods, figure out what the
+output of the program in the next practice problem would be under
+*call by value*, *call by reference*, and *call by
+copy-restore*. Doing this will clarify the subtle differences among
+these three methods.  To earn credit for the following problem, you
+must complete it correctly for the randomized program it generates
+three times in a row.
 
 .. avembed:: Exercises/PL/CallByValVsRefVsCR.html ka
    :long_name: Call By Value vs Reference vs CR
