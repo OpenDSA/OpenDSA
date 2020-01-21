@@ -42,13 +42,13 @@ var s3 = is.take(s2, 6);
 // module, that is, return a new sequence obtained by applying the
 // given function f to each member of the given sequence seq
 var map = function (f,seq) {
-    return cons (<??? 1st arg to cons ???>,
-    return cons (f(hd(seq)), 
-		 <??? 2nd arg to cons ???> );
-		 function () {
-		     return map(f, tl(seq));
-		 }
-		);
+    return cons(<??? 1st arg to cons ???>,
+    return cons(f(hd(seq)), 
+	        <??? 2nd arg to cons ???> );
+		function () {
+		    return map(f, tl(seq));
+		}
+	       );
 };
 
 // Examples of using map
@@ -65,11 +65,11 @@ var s2 = is.take(is.map( function (n) { return n * n; },
 // Filters the given sequence with the given predicate
 var filter = function (pred,seq) {
     if (pred(hd(seq))) {
-        return cons ( ?????? );
-	return cons (hd(seq),
-		     function () {
-			 return filter(pred, tl(seq));
-		     });
+        return cons( ?????? );
+	return cons(hd(seq),
+		    function () {
+		         return filter(pred, tl(seq));
+		    });
     } else {
         return ??????;
 	return filter(pred, tl(seq));

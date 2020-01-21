@@ -24,7 +24,7 @@ $(document).ready(function() {
 //     var arr_label4 = av.label("s3", {left: leftMargin, top: 0 + 4 * offset_for_each_var}).hide();
     
     // Slide 1
-    av.umsg("The is.filter function takes a true-false predicate, in the form of a function, and a sequence.  It returns a sequence of all items in the given sequence that satisfy the predicate.  In the example highlighted below, JavaScript's mod operator is used with filter to create the sequence of all even integers, of which the first 5 are then taken.");
+    av.umsg("The is.filter function takes a predicate (i.e., a function that returns a Boolean), and a sequence.  It returns the sequence of all items in the input sequence that satisfy the predicate.  In the example highlighted below, JavaScript's mod operator is used with filter to create the sequence of all even integers, of which the first 5 are then taken.");
     arr.addClass(1,"wider");
     arr1.show();
     arr_label1.show();
@@ -39,7 +39,7 @@ $(document).ready(function() {
     av.step();
 
     // S 3
-    av.umsg('In this case, we do not want to cons the head of the sequence onto what we return.  So we only need to call recursively with the thunk that is the tail of the sequence.');
+    av.umsg('In this case, we do not want to cons the head of the sequence onto what we return.  So we only need to call filter recursively on the tail of the sequence.');
     pseudo.unhighlight([10]);
     pseudo.hide(10);
     pseudo.show(11);
@@ -47,7 +47,7 @@ $(document).ready(function() {
     av.step();
 
     // S 4
-    av.umsg("Next consider what must be done when the head of the sequence does satisfy the predicate ...");
+    av.umsg("Next, we will consider what must be done when the head of the sequence does satisfy the predicate.");
     pseudo.highlight([4]);
     pseudo.unhighlight([11]);
     av.step();
