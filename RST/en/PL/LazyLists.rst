@@ -306,7 +306,7 @@ a thunk being thawed more than once.
 Now it's your chance to get some practice with infinite sequences in
 the following problems.
 
-This problem will help you better understand code that creates
+The following  problem will help you better understand code that creates
 call-by-name infinite sequences.
 
 .. avembed:: Exercises/PL/InfSeq1.html ka
@@ -315,7 +315,7 @@ call-by-name infinite sequences.
 Practice With Infinite Sequences
 --------------------------------
 
-This problem will help you write recursive code to process infinite
+The following problem will help you write recursive code to process infinite
 sequences. To earn credit for it, you must complete this randomized
 problem correctly three times in a row.
 
@@ -325,7 +325,7 @@ problem correctly three times in a row.
 Practice With Infinite Sequences (2)
 ------------------------------------
 
-This problem reviews recursive definitions of sequences.  To earn
+The following problem reviews recursive definitions of sequences.  To earn
 credit for it, you must complete this randomized problem correctly
 three times in a row.
 
@@ -336,7 +336,7 @@ Practice With Infinite Sequences (3)
 ------------------------------------
 
 
-This problem deals with one more example of a recursive definition of
+The following problem deals with one more example of a recursive definition of
 a sequence.
 
 .. avembed:: Exercises/PL/InfSeq4.html ka

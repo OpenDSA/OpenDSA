@@ -14,7 +14,7 @@ $(document).ready(function() {
 
     var arrValues = [1,2,4,8,16,32];
     var arr = av.ds.array(arrValues, {indexed: false, left: leftMargin, top: 40});
-    var arr_label = av.label("First 6 members using iterates", {left: leftMargin, top: 0});
+    var arr_label = av.label("First 6 elements using iterates", {left: leftMargin, top: 0});
     var arr_label_a = av.label("with the 2 * x function", {left: leftMargin, top: 20});
     var arr1 = av.ds.array([ 3, 6, 9, 12, 15, 18 ], {indexed: false, left: leftMargin, top: 40 + offset_for_each_var}).hide();
     var arr_label1 = av.label("First 6 members of the", {left: leftMargin, top: 0 + offset_for_each_var}).hide();
@@ -28,13 +28,13 @@ $(document).ready(function() {
 
     
     // Slide 1
-    av.umsg("The is.iterates function takes two parameters n and f.  It returns a new sequence starting with n and having its consequent elements computed by repeatedly applying the given function to the previous term of the sequence.  That is, it return the sequence n, f(n), f(f(n)), f(f(f(n))), ....   The example highlighted below shows how we could use the is.iterates operation to compute the sequence comprised of the powers of 2.");
+    av.umsg("The is.iterates function takes two parameters f and n.  It returns a new sequence starting with n and having its subsequent elements computed by repeatedly applying f to the previous term of the sequence.  That is, it returns the sequence n, f(n), f(f(n)), f(f(f(n))), etc.   The example highlighted below shows how we could use the is.iterates operation to compute the sequence comprised of the powers of 2.");
     pseudo.hide([8,10,15,16]);
     pseudo.highlight([14]);
     av.displayInit();
 
     //S 2
-    av.umsg("Suppose that we now want to use iterates to compute the sequence consisting of the multiples of 3, starting with 3.  See if you can correctly determine how to replace the question marks in the highlighted line below to produce this sequence.");
+    av.umsg("Suppose that we now want to use iterates to compute the sequence consisting of the multiples of 3, starting with 3.  Can you correctly determine how to replace the question marks in the highlighted line below to produce this sequence?");
     pseudo.unhighlight([14]);
     pseudo.show(15);
     pseudo.highlight([15]);
@@ -44,7 +44,7 @@ $(document).ready(function() {
     av.step();
 
     // S 3
-    av.umsg('The first term is 3, so that is passed in for the n argument.  Thereafter we can compute the next term in the sequence by adding 3 to the previous term.');
+    av.umsg('The first term is 3; so that is passed in for the n argument.  Thereafter, we compute the next term in the sequence by adding 3 to the previous term.');
     pseudo.unhighlight(15);
     pseudo.hide(15);
     pseudo.highlight(16);
@@ -58,7 +58,7 @@ $(document).ready(function() {
     av.step();
 
     // S 4
-    av.umsg('The argument n must be consed onto the front of the sequence we return.  For the recursive call, f(n) must be passed in as the first element of the rest of the sequence.  Since the "rest" for the sequence must be a thunk, this recursive call is embedded in a parameterless function, a technique we have also seen in the implementation of the map and filter operations.');
+    av.umsg('The argument n must be consed onto the front of the sequence we return.  For the recursive call, f(n) must be passed in as the first element of the rest of the sequence.  Since the "rest" for the sequence must be a thunk, this recursive call is embedded in a parameterless function, a technique we have already used in the implementation of previous operations.');
     pseudo.unhighlight([7,9]);
     pseudo.hide([7,9]);
     pseudo.highlight([8,10]);

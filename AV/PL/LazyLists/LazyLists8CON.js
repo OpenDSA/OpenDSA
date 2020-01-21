@@ -53,7 +53,7 @@ $(document).ready(function() {
     arr2.addClass([0,1,2,3,4,5,6,7,8,9], "initialattempt");
     av.step();
 
-    av.umsg("The code highlighted in red is what we need.   Our initial attempt had forgotten to embed a recursive call to sieve in the thunk and thus only sifted multiples of 2, but not multiples of primes that follow 2.   Remember - if you're not embedding a recursive call inside the thunk, chances are your lazy list code won't work.");
+    av.umsg("The code highlighted in red is what we need.   Our initial attempt had forgotten to embed a recursive call to sieve in the thunk and thus only sifted multiples of 2, but not multiples of primes that follow 2.   Remember: if you're not embedding a recursive call inside the thunk, chances are your lazy list code won't work.");
     pseudo.show(7);
     pseudo.addClass(7,"correctversion");
     pseudo.addClass(6,"st");
