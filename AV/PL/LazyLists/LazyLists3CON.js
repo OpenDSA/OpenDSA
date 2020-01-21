@@ -24,7 +24,7 @@ $(document).ready(function() {
 //     var arr_label4 = av.label("s3", {left: leftMargin, top: 0 + 4 * offset_for_each_var}).hide();
     
     // Slide 1
-    av.umsg("The is.map function applies an operation, in the form of a function, to an entire sequence returning a new sequence.  In the example highlighted below, the function that adds 1 is applied to the sequence of integers starting with 1.  Taking the first five members of the returned sequence results in the sequence s1.");
+    av.umsg("The is.map function applies an operation, in the form of a function, to an entire sequence returning a new sequence.  In the example highlighted below, the function that doubles its argument is applied to the sequence of integers starting with 1.  Taking the first five members of the returned sequence results in the sequence s1.");
     arr.addClass(1,"wider");
     arr1.show();
     arr_label1.show();
