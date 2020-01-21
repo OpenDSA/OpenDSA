@@ -139,13 +139,13 @@ remainder of the list.
      return seq[0];
    };
 
-   // Get the the infinite sequence following the first element.  This
+   // Get the infinite sequence following the first element.  This
    // will itself be in the form of an integer followed by a thunk
    var tl = function (seq) {
      return thaw(seq[1]);
    };
 
-   // thaw is a helper function for tl.   It returns the result
+   // thaw is a helper function for tl. It returns the result
    // of evaluating the function given as argument
    var thaw = function (thunk) { return thunk(); };
    
@@ -261,7 +261,7 @@ iterates*, and *drop*) are discussed and illustrated below.
 
 The need to compute various prime numbers occurs in a variety of
 applications, for example, public-key encryption.  A long known
-technique to compute all the prime numbers up to a limit *n* with
+technique to compute all of the prime numbers up to a limit *n* with
 reasonable efficiency is the *Sieve of Erastosthenes*.  The slide slow
 below describes the sieve algorithm in a language with eager (as
 opposed to lazy) evaluation.
@@ -283,7 +283,7 @@ finite nature of the value *n* that it is given.  On the other hand,
 with lazy evaluation of lists, we need not be bound by a finite *n*.
 Instead we can construct the infinite sequence of primes, relying on
 repeated applications of a thunk to take us to any point in the
-sequence that we need to reach.  The following slide show indicates
+sequence that we need to reach.  The following slide show demonstrates
 how the Sieve of Erastosthenes would be implemented using lazy lists.
 
 .. inlineav:: LazyLists8CON ss

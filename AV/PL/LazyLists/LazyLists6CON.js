@@ -25,17 +25,7 @@ $(document).ready(function() {
 //     var arr_label3 = av.label("s2", {left: leftMargin, top: 0 + 3 * offset_for_each_var}).hide();
 //     var arr4 = av.ds.array([3,4,5,6,7,8], {indexed: false, left: leftMargin, top: 20 + 4 * offset_for_each_var}).hide();
 //     var arr_label4 = av.label("s3", {left: leftMargin, top: 0 + 4 * offset_for_each_var}).hide();
-    var pseudo = av.code(
-	{
-	    url:'../../../AV/PL/LazyLists/LazyLists6.code.1',
-	    relativeTo:arr,
- 	    anchor:'right top',
- 	    myAnchor:'left top',
-	    left: leftMargin+80,
-	    top: -40,
-            lineNumbers: false
-        }
-    );
+
     
     // Slide 1
     av.umsg("The is.iterates function takes two parameters n and f.  It returns a new sequence starting with n and having its consequent elements computed by repeatedly applying the given function to the previous term of the sequence.  That is, it return the sequence n, f(n), f(f(n)), f(f(f(n))), ....   The example highlighted below shows how we could use the is.iterates operation to compute the sequence comprised of the powers of 2.");
