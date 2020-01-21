@@ -255,7 +255,7 @@ Steps involved in macro-expansion are:
 ..    :scripts: AV/PL/paramPassingMacro.js
 ..    :output: show
 
-Once you have observed enough example slide shows to fully understand
+Once you have gone through  enough example slide shows to fully understand
 the details of each step in macro-style parameter passing, test
 yourself with the following proficiency exercise.
    
@@ -263,7 +263,7 @@ yourself with the following proficiency exercise.
    :long_name: Macro Proficiency Exercise
 
 
-We will finish this section on macro-style parameter passing by
+We conclude this section on macro-expansion parameter passing by
 considering the use of macros in C++, where a parameter like *a* or
 *b* in the example below must be wrapped in parentheses when it is
 actually used in the body of the macro.  Try to determine the output
@@ -320,7 +320,7 @@ example, the C++ pre-processor performs this double substitution, and
 then the compiler processes the resulting code, never seeing the macro
 call. Of course, no function call is executed at run-time either.
 
-Because the body of the macro is, at least conceptually, spliced into
+Because the body of the macro is spliced into
 the caller’s code after the arguments have been substituted
 (without being evaluated) for the parameters, the whole body of the macro is
 executed in the caller’s environment.  This allows us to use
@@ -358,7 +358,7 @@ following code.
 
 
 
-This problem will help you review the differences among *call by
+The following problem will help you review the differences among *call by
 reference*, *call by copy-restore*, and *call by macro*. To earn
 credit, you must complete this randomized problem correctly
 three times in a row.

@@ -249,7 +249,7 @@ function do_everything() {
       context,
       varname
     ).value;
-    output += ((output == '')?output:' ')+varVal;
+      output += ((output == '')?output:' ')+varVal;
     return 'In this context, '+varname+' is '+ varVal;
   }
   unhighlightAll();
