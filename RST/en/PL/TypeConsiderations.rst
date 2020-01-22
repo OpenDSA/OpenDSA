@@ -301,41 +301,53 @@ types. For example:
 
 is well behaved and allowed by JavaScript's type system.
 
+Type System: Explicit Versus Implicit typing
+-------------------------------------------
+
+When we specify the type of an entity by explicitly stating it, we are
+doing **explicit typing**.
+The typing of variables and functions in C, C++, and Java is mostly
+explicit. An explicit specification of a type is called a **type annotation**.
+
+When types are not specified explicitly (e.g., Python, JavaScript), we
+have **implicit typing**.
+
+In dynamically typed languages, typing is usually mostly
+implicit. It is therefore tempting to conflate explicit typing with
+static typing. However, the two are NOT the same.
+
+A Haskell or ML compiler performs **type inference** as part of
+static type checking, thereby determining/inferring types from the way
+entities are used in the code. ML types are said to be inferred. While
+type annotations are most often not required in ML, they are still
+allowed (and sometimes needed).
+
+As another example, since 2011, C++ standards have allowed for the increasing
+use of type inference in that language.
+
+Conversely, some dynamically checked and implicitly typed programming
+languages (e.g., Python, JavaScript) are moving in the direction of
+optional type annotations.
 
 
-Examples of Type-related Considerations in Programming Languages
-----------------------------------------------------------------
 
-- Is a PL *weakly typed* or *strongly typed*? In a strongly-typed
-  language, an attempt to use an operation on data of the wrong type
-  results in a type error (when does the type error occur? see the
-  next bullet point). In a weakly-typed language, such an attempt just does
-  whatever the hardware wants to do with the bit pattern that happens
-  to be there (is that good or bad?).
+Type Systems Have Many Uses
+---------------------------
 
-- If a language is strongly typed, is the typing *dynamic*, meaning
-  that type errors are caught at run-time, or *static*, meaning that
-  type errors caught at compile time?
+Type systems are being used for many purposes, including to:
 
--  A *type-safe language* is one that guarantees all type errors will be
-   caught dynamically or statically.
-
--  What’s best, weakly typed, dynamic strongly typed, static strongly
-   typed?
-
--  Other issues to consider include:
-
-   -  How to define a type system in a strongly typed language?
-
-   -  Type inferencing
-
-Following are examples in JavaScript, Python, and Java.  Think about
-each one of them and how the particular language handles the typing
-considerations pertaining to the program.  Discuss this from the
-perspective of the terms in the bullet list above.
-      
-
-**Python behaves differently**
+- determine legal values and operations and thus support type safety
+- enforce **language safety** (how does this differ from type safety?)
+- determine which of multiple possible operations to perform:
+  
+  + e.g., overloading of the + operator
+    
+- enable abstractions and high-level modularity
+- protect the integrity of user-defined abstractions
+- document programs
+- simplify program  maintenance
+- increase efficiency
+- etc.
 
 
 
