@@ -7,8 +7,8 @@
    :author: David Furcy and Tom Naps
 
 
-Variations on how Languages Think about Types
-=============================================
+Types in Programming Languages
+==============================
 
 Examples of Type-related Considerations in Programming Languages
 ----------------------------------------------------------------
@@ -137,18 +137,19 @@ preceding Java programs?
 Type Environments and Typing Rules Expressed as Post Systems
 ------------------------------------------------------------
 
-A type environment is simply an environment associating expressions with
-data types instead of with values. For example, fill in the following
-question marks for a type environment *tenv* assuming your language is
-Java: ``{ (true, ???), (1, ???), (3.4, ???) }``
+A type environment is an environment associating expressions with data
+types (instead of with values, as did the environmentS we have used in
+our interpreters so far). For example, fill in the following question
+marks for a type environment *tenv* assuming your language is Java:
+``[ [true, ???], [1, ???], [3.4, ???] ]``
 
 Typing rules are specified relative to a type environment by a
 conditional specification known as a *Post system*.  The "givens" in
-this conditional specification are specified above a dotted line.  The
+this conditional specification are specified above a dashed line.  The
 conclusion(s) that can be drawn from the "givens" are specified below
-the dotted line.
+the dashed line.
 
-For example, in type environment *tenv*:
+For example, here is a possible typing rule in type environment *tenv*:
 
 ::
 
@@ -158,15 +159,17 @@ For example, in type environment *tenv*:
     ---------------
     type-of (if E1 then E2 else E3) is T
 
-Does this rule accurately describe JavaScript typing? Java typing?
+Does this rule accurately describe JavaScript's type system? Java's type system?
 
 **Typing in a scaled-down ML**
 
 Since we’re going to discuss typing issues, particularly parametric
-polymorphism and type inferencing, in the context of ML, let’s begin by
-rigorously providing the syntax for a very small subset of ML. For the
-moment, think of it as a statically typed lambda calculus with ints,
-real, and bools.
+polymorphism and type inferencing, in the context of the  `programming
+language ML`_, let’s begin by rigorously providing the syntax for a
+very small subset of ML. For the moment, think of it as a statically
+typed lambda calculus with ints, real, and bools.
+
+.. _programming language ML: https://en.wikipedia.org/wiki/ML_(programming_language)
 
 ::
 
@@ -174,7 +177,7 @@ real, and bools.
                | int
                | bool
                | real
-               | <type> -> <type>
+               | <type> -> <type>                      {Example: int -> bool is the type of a predicate}
 
     <expr> ::= <identifier>
                | fn <identifier> => <expr> 
@@ -193,14 +196,14 @@ definitions and function applications.
 
     type-of <identifier> is T1
     type-of <expr> is T2
-    ---------------
+    -----------------------------------------------
     type-of (fn <identifier> => <expr>) is T1 -> T2
 
     In type environment tenv:
 
     type-of <expr1> is T1 -> T2
     type-of <expr2> is T1
-    ---------------
+    ------------------------------
     type-of <expr1> <expr2> is ???
 
 Another example of a Post system rule for mini-ML:
@@ -211,13 +214,21 @@ Another example of a Post system rule for mini-ML:
 
     type-of x is bool
     type-of y is int
-    -----------------
+    ---------------------------------------------------
     type-of (fn x => fn y => if x then 1 else y) is ???
 
-Here are examples of how the ML type-inferencing engine responds to
-some function definitions.  Put yourself in the place of the ML type
-analyzer and try to determine why ML responds in the fashion it does
-using the previously defined Post system rules.
+
+
+Below are examples of how the ML type-inferencing engine responds to
+some function definitions. In each example, the first line is a function
+definition typed in by the programmer; and the second line is ML's output
+of the type it inferred for the given definition.
+
+
+
+Now put yourself in the place of the ML type-inferencing engine and try to
+determine why ML responds in the way it does using the previously
+defined Post system rules.
 
 ::
     
@@ -234,8 +245,8 @@ using the previously defined Post system rules.
 
 **Parametric polymorphism**
 
-To understand what this is, consider the difference between the following
-two identity functions *id1* and *id2* in Java.
+To understand what parametric polymorphism is, consider the difference
+between the following two identity functions *id1* and *id2* in Java.
 
 ::
 
@@ -250,6 +261,8 @@ two identity functions *id1* and *id2* in Java.
        System.out.println(id1(4));
 
        System.out.println(id2("Hello"));
+
+Which one of the methods above exhibits parametric polymorphism?
 
 **Parametric polymorphism in ML**
 
