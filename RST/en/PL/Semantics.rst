@@ -8,9 +8,9 @@
 
 .. _semantics-of-the-lambda-calculus:
 
-==================================
+=================================
  Semantics of the Lambda Calculus
-==================================
+=================================
 
 Semantics of the Lambda Calculus
 --------------------------------

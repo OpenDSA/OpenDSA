@@ -227,7 +227,8 @@
       "PL/LazyLists": {}
     },
     "Type Systems": {
-      "PL/TypeConsiderations": {}
+	"PL/TypeSystems": {},
+	"PL/TypeInference": {}	
     },
     "Appendices": {
       "PL/PL_Glossary": {}
