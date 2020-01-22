@@ -10,6 +10,158 @@
 Types in Programming Languages
 ==============================
 
+Motivating Examples
+-------------------
+
+Consider the following code fragments in three different programming languages.
+
+**JavaScript code fragment**
+
+::
+
+    var g = function (x, y) {
+            return (x ? 1 : y + 13);
+    };
+    var add = function (x, y) {
+        return x + y;
+    };
+    var divide = function (x, y) {
+        return x / y;
+    };
+    console.log (g( (2 < 1), 6));
+    console.log (g( (2 < 1), "Hello"));
+    console.log (g( (2 < 1), [3,2,1]));
+    console.log (g( (2 < 1), [3,[2,1]]));
+    console.log (add(6,4));
+    console.log (add(6,"Green Bay Packers"));
+    console.log (add("Aaron", "Rodgers"));
+    console.log (divide(6,4));
+    console.log (divide(6,"Green Bay Packers"));
+    console.log (divide("Aaron", "Rodgers"));
+
+What is JavaScript’s behavior when it is given this program, and what
+does that tell us about the way JavaScript handles data of different types?
+
+**Python 3 code fragment**
+
+::
+
+    def mult(x, y):
+        return x * y
+
+    print mult(4,3)
+    print mult("hello", "goodbye")
+
+What is Python’s behavior when it is given this program, and what
+does that tell us about the way Python handles data of different types?
+
+**Java code fragments**
+
+::
+
+    // foo program
+    public class foo {
+        static int g (boolean x, int y) {
+            return (x ? 1 : y);
+        }
+        public static void main(String[] args) {
+            System.out.println(g( (2 < 1), 6));
+        }
+    }
+
+    // foobar program
+    public class foobar {
+        static int g (boolean x, int y) {
+            return (x ? 1 : y);
+        }
+        public static void main(String[] args) {
+            System.out.println(g( (2 < 1), "Hello"));
+        }
+    }
+
+    // foobaz program
+    public class foobaz {
+        static g (x, y) {
+            return (x ? 1 : y);
+        }
+        public static void main(String[] args) {
+            System.out.println(g( (2 < 1), 6));
+        }
+    }
+
+What is Java’s behavior when it is given these programs, and what
+does that tell us about the way Java handles data of different types?
+
+More precisely, which ones of the following statements are true about
+the three preceding Java programs?
+
+-  foo compiles successfully.
+
+-  foo runs successfully.
+
+-  foobar compiles successfully.
+
+-  foobar runs successfully.
+
+-  foobaz compiles successfully.
+
+-  foobaz runs successfully.
+
+-  foobaz should compile successfully.
+
+-  foobaz should run successfully.
+
+Type Systems
+------------
+
+Each programming language has a `type system`_, loosely speaking a set
+of rules that assign a *type* to variables, literal values, compound
+expressions, function parameters, function calls, etc., and constrain
+the way that these constructs can be used based on their types, for
+example, whether or not the return value of a function can be
+meaningfully assigned to a variable.
+
+.. _type system: https://en.wikipedia.org/wiki/Type_system
+
+A **type** is a category that is assigned to an expression in a
+program according to the kinds of values that that expression computes
+or may stand for.  And a *type system* is the set of types and typing
+rules that each programming language uses to help the programmer
+avoid certain kinds of errors called **type errors*8, namely situations
+where an operation is attempted on a value (or values) for which this
+operation does not make sense.
+
+In what sense do modern programming languages typically have an extensible
+type system? Hint: What types are available in Java?
+
+It is worthwhile considering a more precise definition of a type
+system due Benjamin Pierce in his 2002 book entitled `Types and
+Programming Languages`-:
+
+.. _Types and Programming Languages: https://www.cis.upenn.edu/~bcpierce/tapl/
+
+
+   A **type system** is a tractable syntactic method for proving the absence of
+   certain program behaviors [...].
+
+
+What does Pierce mean by:
+
+- *method*? A type system is a tool to reason *about* a programming language.
+  
+- syntactic? A type system categorizes expressions based on syntax,
+  that is, on the structure or arrangement of programming language
+  constructs (variables, operators, keywords, etc.). Syntax is thus
+  the basis on which the type system can compute an approximation of
+  the runtime behavior of the expressions and   statements in a program based
+  on the possible values that these constructs may compute.
+  
+- proving?
+  
+- certain program behaviors?
+  
+- tractable?
+  
 Examples of Type-related Considerations in Programming Languages
 ----------------------------------------------------------------
 
@@ -41,97 +193,9 @@ each one of them and how the particular language handles the typing
 considerations pertaining to the program.  Discuss this from the
 perspective of the terms in the bullet list above.
       
-**Consider the following JavaScript program**
-
-::
-
-    var g = function (x, y) {
-            return (x ? 1 : y + 13);
-    };
-    var add = function (x, y) {
-        return x + y;
-    };
-    var divide = function (x, y) {
-        return x / y;
-    };
-    console.log (g( (2 < 1), 6));
-    console.log (g( (2 < 1), "Hello"));
-    console.log (g( (2 < 1), [3,2,1]));
-    console.log (g( (2 < 1), [3,[2,1]]));
-    console.log (add(6,4));
-    console.log (add(6,"Green Bay Packers"));
-    console.log (add("Aaron", "Rodgers"));
-    console.log (divide(6,4));
-    console.log (divide(6,"Green Bay Packers"));
-    console.log (divide("Aaron", "Rodgers"));
-
-What is JavaScript’s behavior when it is given this program, and what
-does that tell us about JavaScript’s type system?
 
 **Python behaves differently**
 
-::
-
-    def mult(x, y):
-        return x * y
-
-    print mult(4,3)
-    print mult("hello", "goodbye")
-
-What does this example tell us about Python’s type system?
-
-**Consider the following three Java programs**
-
-::
-
-    //foo
-    public class foo {
-        static int g (boolean x, int y) {
-            return (x ? 1 : y);
-        }
-        public static void main(String[] args) {
-            System.out.println(g( (2 < 1), 6));
-        }
-    }
-
-    //foobar
-    public class foobar {
-        static int g (boolean x, int y) {
-            return (x ? 1 : y);
-        }
-        public static void main(String[] args) {
-            System.out.println(g( (2 < 1), "Hello"));
-        }
-    }
-
-    //foobaz
-    public class foobaz {
-        static g (x, y) {
-            return (x ? 1 : y);
-        }
-        public static void main(String[] args) {
-            System.out.println(g( (2 < 1), 6));
-        }
-    }
-
-Which ones of the following statements are true about the three
-preceding Java programs?
-
--  foo compiles successfully.
-
--  foo runs successfully.
-
--  foobar compiles successfully.
-
--  foobar runs successfully.
-
--  foobaz compiles successfully.
-
--  foobaz runs successfully.
-
--  foobaz should compile successfully.
-
--  foobaz should run successfully.
 
 
 Type Environments and Typing Rules Expressed as Post Systems
