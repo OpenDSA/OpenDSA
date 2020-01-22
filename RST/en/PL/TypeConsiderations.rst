@@ -154,9 +154,9 @@ For example, here is a possible typing rule in type environment *tenv*:
 ::
 
     type-of E1 is bool
-    type-of E2 is T
+    type-of E2 is T                             {Note: T stands for any type}
     type-of E3 is T
-    ---------------
+    ------------------------------------
     type-of (if E1 then E2 else E3) is T
 
 Does this rule accurately describe JavaScript's type system? Java's type system?
@@ -266,44 +266,56 @@ Which one of the methods above exhibits parametric polymorphism?
 
 **Parametric polymorphism in ML**
 
-ML is a static, strongly-typed, type-inferencing interpreter with parametric
-polymorphism.   What does this mean?  The type analysis algorithm will always
-re-construct the least restrictive type possible for a parameter. That’s
-why it has type variables.
+ML uses a static, strongly-typed, type-inferencing interpreter with
+parametric polymorphism. Make sure you understand the meaning of each
+stated feature of ML's type system.
 
-To illustrate this, first we’ll get our heads around ML lists:
+ML's type-inferencing algorithm will always re-construct the least
+restrictive type possible for a variable or parameter. That’s why it has type
+variables, such as *'a* and *'b* (ML type variables, that is, variables that
+stand for types instead of values, always start with an apostrophe).
+
+For example, a variable whose type is inferred to be *'a list* is a
+list whose elements all have the same type, but this type can be any
+type. So the type variable *'a* could stand for the type int, or the
+type bool, or even the type int list, in which cases the *'a* list is
+an int list (containing only integers), or a bool list (containing
+only Boolean values), or even an int list list (containing only int lists),
+respectively. Instances of these three types of lists are shown below.
+
+Let's first get our heads around ML lists:
 
 ::
 
     [true, false, true]                                  {ML will infer this is a bool list}
     [true, false, true, false]                           {ML will infer this is a bool list}
-    [1,2,3,4,5]                                          {ML will infer this is a int list}
+    [1,2,3,4,5]                                          {ML will infer this is an int list}
     ["foo", "bar", "baz"]                                {ML will infer this is a string list}
     [17, "foo"]                                          {ML will infer this is ILLEGAL}
-    [ [1,2,3], [4,6], [0,233] ]                          {ML will infer this is a int list list}
+    [ [1,2,3], [4,6], [0,233] ]                          {ML will infer this is an int list list}
 
 The *hd* and *tl* functions in ML are just like their counterparts in
 the *fp* module we used. To cons onto a list, use the *::* operator.
-For example, *1::[2,3]*
+For example, *1::[2,3]* yields the list *[1,2,3]*.
 
 Now for the parametric polymorphic punchline.  Consider how ML reasons
 about the following functions involving lists.
 
 ::
 
-    val rec sumlist = fn lst => if lst = nil
+    val rec sumlist = fn lst => if lst = nil                          {Note: nil is the same as the empty list []}
                         then 0
                         else (hd lst) + (sumlist (tl lst));
 
-    ML response: sumlist = fn : int list -> int			
+    ML's response: sumlist = fn : int list -> int			
 
     val rec lengthlist = fn lst => if lst = nil
                         then 0
                         else 1 + (lengthlist (tl lst));
 
-    ML response: lengthlist = fn : ''a list -> int
+    ML's response: lengthlist = fn : ''a list -> int
 
-Here *a* (you can ignore the two preceding primes here) is a type
+Again, *'a* (you can ignore the second preceding apostrophes here) is a type
 variable indicating that *lengthlist* will accept a list of any type,
 in contrast to *sumlist*, which will only work on a list of integers.
    
@@ -366,7 +378,7 @@ And ML’s type inferencer will tell us the following about the type of *add3*.
                             then []
                             else (f (hd lst))::(map (f, (tl lst)));
 
-What does ML infer about this function?
+What does ML infer about this function? What does the keyword *rec* mean?
 
 Type Inferencing Problem 1
 --------------------------
