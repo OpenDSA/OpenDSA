@@ -14,7 +14,7 @@ Type Environments
 -----------------
 
 A **type environment** is an environment associating expressions with data
-types (instead of with values, as did the environmentS we have used in
+types (instead of with values, as did the environments we have used in
 our interpreters so far).
 
 For example, fill in the following question marks for a type
@@ -50,7 +50,7 @@ Since we’re going to discuss typing issues, particularly parametric
 polymorphism and type inferencing, in the context of the  `programming
 language ML`_, let’s begin by rigorously providing the syntax for a
 very small subset of ML. For the moment, think of it as a statically
-typed lambda calculus with ints, real, and bools.
+typed lambda calculus with ints, reals, bools, and conditionals.
 
 .. _programming language ML: https://en.wikipedia.org/wiki/ML_(programming_language)
 
@@ -74,11 +74,11 @@ We’ve already provided a Post system that describes the type of an
 if-then-else expression. We now need Post system rules for function
 definitions and function applications.
 
+In type environment *tenv*:
+    
 ::
 
-    In type environment tenv:
-
-    type-of <identifier> is T1
+    type-of <identifier> is T1                           {Note: T1 and T2 stand for any types}
     type-of <expr> is T2
     -----------------------------------------------
     type-of (fn <identifier> => <expr>) is T1 -> T2
@@ -88,18 +88,16 @@ definitions and function applications.
     type-of <expr1> is T1 -> T2
     type-of <expr2> is T1
     ------------------------------
-    type-of <expr1> <expr2> is ???
+    type-of <expr1> <expr2> is ???                       {What should ??? be?}
 
-Another example of a Post system rule for mini-ML:
+Another example of a Post system rule for mini-ML is, for a given type environment:
 
 ::
-
-    In type environment tenv:
 
     type-of x is bool
     type-of y is int
     ---------------------------------------------------
-    type-of (fn x => fn y => if x then 1 else y) is ???
+    type-of (fn x => fn y => if x then 1 else y) is ???  {What should ??? be?}
 
 
 
@@ -151,14 +149,14 @@ Which one of the methods above exhibits parametric polymorphism?
 
 Let's now turn our attention to how parametric polymorphism is handled in ML.
 
-ML uses a static, strongly-typed, type-inferencing interpreter with
+ML uses a static, safe type-inferencing interpreter with
 parametric polymorphism. Make sure you understand the meaning of each
-stated feature of ML's type system.
+stated feature of ML's type system before continuing.
 
 ML's type-inferencing algorithm will always re-construct the least
 restrictive type possible for a variable or parameter. That’s why it has type
-variables, such as *'a* and *'b* (ML type variables, that is, variables that
-stand for types instead of values, always start with an apostrophe).
+variables, such as *'a* and *'b*. ML type variables, that is, variables that
+stand for types instead of values, always start with an apostrophe.
 
 For example, a variable whose type is inferred to be *'a list* is a
 list whose elements all have the same type, but this type can be any
@@ -178,10 +176,13 @@ Let's first get our heads around ML lists:
     ["foo", "bar", "baz"]                                {ML will infer this is a string list}
     [17, "foo"]                                          {ML will infer this is ILLEGAL}
     [ [1,2,3], [4,6], [0,233] ]                          {ML will infer this is an int list list}
+    [ [1,2,3], [4,6], [0,233], [ [1], [2,3] ] ]          {ML will infer this is ILLEGAL}
+
+Make sure you understand why the last list above is illegal.
 
 The *hd* and *tl* functions in ML are just like their counterparts in
-the *fp* module we used. To cons onto a list, use the *::* operator.
-For example, *1::[2,3]* yields the list *[1,2,3]*.
+the *fp* module we used. However, to cons onto a list, you must use the *::*
+operator (or cons operator).  For example, *1::[2,3]* yields the list *[1,2,3]*.
 
 Now for the parametric polymorphic punchline.  Consider how ML reasons
 about the following functions involving lists.
@@ -200,9 +201,10 @@ about the following functions involving lists.
 
     ML's response: lengthlist = fn : ''a list -> int
 
-Again, *'a* (you can ignore the second preceding apostrophes here) is a type
-variable indicating that *lengthlist* will accept a list of any type,
-in contrast to *sumlist*, which will only work on a list of integers.
+Again, *'a* (you can ignore the second preceding apostrophe here) is a
+type variable indicating that *lengthlist* will accept a list of any
+type, in contrast to *sumlist*, which will only work on a list of
+integers. Can you figure out why this is the case?
    
 Type inferencing in ML
 ----------------------
@@ -211,7 +213,7 @@ All ML functions are functions of one argument.  When we want to have
 the equivalent of a function with multiple arguments in ML, there are
 two strategies.  The first is to use :ref:`currying` as we have
 previously described.  The second is to use a single argument that is
-an ML *tuple*. Examples of tuples in ML:
+an ML *tuple*. Here are examples of tuples in ML:
 
 ::
 
@@ -224,14 +226,27 @@ function of three arguments.
 
 ::
 
-    val add3 = fn (x,y,z) => x + y + z;
+   val add3 = fn (x,y,z) => x + y + z;
 
-And ML’s type inferencer will tell us the following about the type of *add3*.
+And ML’s type inferencer will tell us the following about the type of *add3*:
+
+::
+   
+   add3 = fn : int * int * int -> int 
+
+In contrast:
 
 ::
 
-       add3 = fn : int * int * int -> int 
+    val add3curried = fn x => fn y => fn z => x + y + z;
 
+is a curried version of the same function whose type signature ML infers to be:
+
+::
+   
+   add3curried = fn : int -> int -> int -> int
+    
+       
 .. **Time for you to play the role of ML’s type inferencer**
 .. 
 .. Here are three expressions, each of them a function definition, that are
@@ -269,7 +284,7 @@ What does ML infer about this function? What does the keyword *rec* mean?
 Type Inferencing Problem 1
 --------------------------
 
-Six (numbered) ML expressions are listed below. Each one of them is a
+Six numbered ML expressions are listed below. Each one of them is a
 function definition that has been typed into ML.
 
 **SIX ML FUNCTION DEFINITIONS**
@@ -283,7 +298,7 @@ function definition that has been typed into ML.
     6  val x = fn f => fn g => fn h => if g f then f h else (h + 3);
 
 Six type-inferencing responses that ML provided when the six
-expressions above were entered are listed below.  Unfortunately
+expressions above were entered are listed below.  Unfortunately,
 they have become scrambled. In the six practice problems that
 follow, you will help match each type-inferencing response with the correct
 ML expression above.

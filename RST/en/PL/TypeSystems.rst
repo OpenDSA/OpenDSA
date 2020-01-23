@@ -49,8 +49,8 @@ does that tell us about the way JavaScript handles data of different types?
     def mult(x, y):
         return x * y
 
-    print mult(4,3)
-    print mult("hello", "goodbye")
+    print( mult(4,3) )
+    print( mult("hello", "goodbye") )
 
 What is Python’s behavior when it is given this program, and what
 does that tell us about the way Python handles data of different types?
@@ -127,16 +127,16 @@ A **type** is a category that is assigned to an expression in a
 program according to the kinds of values that that expression computes
 or may stand for.  And a *type system* is the set of types and typing
 rules that each programming language uses to help the programmer
-avoid certain kinds of errors called **type errors*8, namely situations
+avoid certain kinds of errors called **type errors**, namely situations
 where an operation is attempted on a value (or values) for which this
 operation does not make sense.
 
-In what sense do modern programming languages typically have an extensible
+In what sense do modern programming languages typically have an *extensible*
 type system? Hint: What types are available in Java?
 
-It is worthwhile considering a more precise definition of a type
-system due Benjamin Pierce in his 2002 book entitled `Types and
-Programming Languages`-:
+It is worthwhile considering the more precise definition of a type
+system given by Benjamin Pierce in his 2002 book entitled `Types and
+Programming Languages`_:
 
 .. _Types and Programming Languages: https://www.cis.upenn.edu/~bcpierce/tapl/
 
@@ -145,36 +145,45 @@ Programming Languages`-:
    certain program behaviors [...].
 
 
-What does Pierce mean by:
+Now what does Pierce mean by:
 
-- *method*: A type system is a tool to reason *about* a programming language.
+- *method*
   
-- syntactic; A type system categorizes expressions based on syntax,
-  that is, on the structure or arrangement of programming language
-  constructs (variables, operators, keywords, etc.). Syntax is thus
-  the basis on which the type system can compute an approximation of
-  the runtime behavior of the expressions and   statements in a program based
-  on the possible values that these constructs may compute.
+  A type system is a tool to reason *about* a programming language.
   
-- proving: A type system aims to *guarantee* that the errors it views
-  as type errors will never happen; a well-typed program should never
+- *syntactic*
+
+  A type system categorizes expressions based on syntax, that is, on
+  the structure or arrangement of programming language constructs
+  (variables, operators, keywords, etc.). Syntax is thus the basis on
+  which the type system computes an approximation of the runtime
+  behavior of the expressions and statements in a program based on the
+  possible values that these constructs may compute.
+  
+- *proving*
+
+  A type system aims to *guarantee* that the errors it views as type
+  errors will never happen; a well-typed program should never
   misbehave.
   
-- certain program behaviors: Bad behaviors are *stuck states* in which an
-  expression does not have a value and there are no rules that allow the
-  computation of that value to continue (i.e., a runtime error).
+- *certain program behaviors*
+
+  Bad behaviors are *stuck states* in which an expression does not
+  have a value and there are no rules that allow the computation of
+  that value to continue (i.e., a runtime error).
   
-- tractable: Type checkers are built into compilers, linkers, and
-  runtime systems and must do their job automatically with no
-  interaction with the programmer; therefore, we need type-checking
-  algorithms that are not only tractable in theory but also efficient
-  in practice.
+- *tractable*
+
+  Type checkers are built into compilers, linkers, and runtime
+  systems and must do their job automatically with no interaction with
+  the programmer; therefore, we need type-checking algorithms that are
+  not only tractable in theory but also efficient in practice.
 
 Type System: Static Versus  Dynamic
 -----------------------------------
 
 The purpose of a type system is *always* to prevent undesirable
-program states.
+program states, like the stuck states mentioned above.
 
 - In a **static** type system, types are determined and checked
   *before* program execution. This is typically done by a compiler. Type
@@ -214,12 +223,12 @@ analysis, a programming-language *construct*) is **type-safe**
 if it forbids operations that are incorrect for the types on which
 they operate.
 
-Since a type system is static, it must be **conservative**: it can only
+Since a type system is static, it *must* be **conservative**: it can only
 prove the absence of some bad program behaviors;  it cannot prove
 their presence.
 This is because a *safe* and *decidable* type system is always
 **incomplete**, i.e., it *must* sometimes reject programs that behave
-well at runtime.
+well at runtime (why is that the case?).
 For example, the code fragment:
 
 
@@ -229,8 +238,6 @@ For example, the code fragment:
         \mbox{if <complex test> then 5 else <type error>}
    \end{eqnarray*}
 
-
-
 may be rejected as ill-typed even if the test always evaluates to true.
 
 Furthermore, only some kinds of undesired program behaviors 
@@ -239,13 +246,13 @@ can be prevented. Consider:
 - checking that the two arguments of a division operation are integers
 - checking that the second argument is not equal to 0
 
-Which one(s) of these checks can be performed?
+Which one(s) of these checks can be performed statically?
 
 Type System: Strong Versus Weak
 -------------------------------
 
 When talking about programming languages, you should avoid using the
-phrases **strongly typed** and **weakly typed**, since there is no
+phrases **strongly typed** and **weakly typed**, since there are no
 universally agreed-upon definitions for these terms.
 
 For example, is the programming language C weakly or strongly typed? 
@@ -283,11 +290,12 @@ of our motivating examples):
   console.log (g( (2 < 1), 6));
   console.log (g( (2 < 1), "Hello"));
 
-the parameter *y* is not assigend a unique type by the type checker. In
-contrast, the values that are passed as arguments in function calls do have
-a type: 6 is an integer while "Hello" is a string. This is this type tag
-that makes the JavaScript return system use integer addition in the first
-call but string concatenation in the second call.
+the function parameter *y* is not assigned a unique type by the type
+checker. In contrast, the values that are passed in as arguments in
+function calls do have a type: 6 is an integer while "Hello" is a
+string. This is this type tag that makes the JavaScript runtime system
+use integer addition in the first call but string concatenation in the
+second call.
 
 
 Also, in dynamically-checked languages, containers (like lists)
@@ -302,23 +310,23 @@ types. For example:
 is well behaved and allowed by JavaScript's type system.
 
 Type System: Explicit Versus Implicit typing
--------------------------------------------
+--------------------------------------------
 
-When we specify the type of an entity by explicitly stating it, we are
-doing **explicit typing**.
-The typing of variables and functions in C, C++, and Java is mostly
-explicit. An explicit specification of a type is called a **type annotation**.
+When we specify the type of an entity by explicitly stating it in the
+source code, we are doing **explicit typing**.  The typing of variables
+and functions in C, C++, and Java is mostly explicit. An explicit
+specification of a type is called a **type annotation**.
 
 When types are not specified explicitly (e.g., Python, JavaScript), we
 have **implicit typing**.
 
-In dynamically typed languages, typing is usually mostly
+In dynamically-checked languages, typing is usually mostly
 implicit. It is therefore tempting to conflate explicit typing with
 static typing. However, the two are NOT the same.
 
 A Haskell or ML compiler performs **type inference** as part of
 static type checking, thereby determining/inferring types from the way
-entities are used in the code. ML types are said to be inferred. While
+entities are used in the source code. ML types are said to be inferred. While
 type annotations are most often not required in ML, they are still
 allowed (and sometimes needed).
 
@@ -340,7 +348,7 @@ Type systems are being used for many purposes, including to:
 - enforce **language safety** (how does this differ from type safety?)
 - determine which of multiple possible operations to perform:
   
-  + e.g., overloading of the + operator
+  e.g., overloading of the + operator
     
 - enable abstractions and high-level modularity
 - protect the integrity of user-defined abstractions
