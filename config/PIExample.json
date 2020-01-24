@@ -74,6 +74,9 @@
     },
     "mathematical": {
       "PIExample/mathematical": {}
+    },
+    "Set Relations": {
+      "PIExample/setRelations": {}
     }
   }
 }
