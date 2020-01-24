@@ -9,7 +9,7 @@ $(document).ready(function () {
         code = config.code;             // get the code object
     var goNext = false;
 
-    av.umsg("Set Relations frame"); //not the title just for an example
+    av.umsg("Testing Set Relations frame"); //not the title just for an example
     //av.umsg("Test222222222`");
     
     av.displayInit();
@@ -25,4 +25,5 @@ $(document).ready(function () {
     av.umsg(injector.injectQuestion("q4", "Frame: Define the properties of relations as follows, with R a binary relation over set S. 1- R is reflexive if aRa for all a ∈ S."));
     av.step();
     
+    av.recorded();
 });

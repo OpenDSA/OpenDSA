@@ -31,7 +31,7 @@ var config = ODSA.UTILS.loadConfig({av_name: av_name}),
 var goNext = false;
 av.umsg("let's look at a grammar you can maybe relate to, a grammar for english. This will be a tiny subset of the english language, not complete by far!");
 av.displayInit();
-av.umsg(injector.injectQuestion("q1"));
+av.umsg(injector.injectQuestion("q1", "test"));
 av.step();
 
 //second frame
