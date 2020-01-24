@@ -9,20 +9,12 @@ $(document).ready(function () {
         code = config.code;             // get the code object
     var goNext = false;
     av.umsg("Let’s formally define the concept of a “language”. But first we need some stuff to make them from.");
-    // var q = av.question("TF", "Understand the given information", {correct: true, falseLabel: "No", trueLabel: "Yes"});
-    // var answer = q.show();
-    // alert(answer);
+
     av.displayInit();
-    // av.umsg("Start with the alphabet set. We normally represent an alphabet set with $\\Sigma$. The alphabet set is a set of symbols (typically letters or characters, but it could include any symbols}.");
-    // av.step();
     av.umsg(injector.injectQuestion("q1", "Start with the alphabet set. We normally represent an alphabet set with $\\Sigma$. The alphabet set is a set of symbols (typically letters or characters, but it could include any symbols}."));
     av.step();
 
     //second frame
-    // av.umsg("Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?");
-    // av.step();
-    // av.umsg("Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?");
-    // av.step();
     av.umsg(injector.injectQuestion("q2", "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?"));
     av.step();
 
