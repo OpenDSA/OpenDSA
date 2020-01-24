@@ -1,0 +1,15 @@
+{
+    "translations": {
+        "en": {
+            "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+            "q1": {
+                "type": "select",
+                "src": "../../../AV/Development/formal_language/FAEditor.html",
+                "question": "if S {a,b,c}, then which of the following is a relation in S",
+                "answer": ["(a,c)", "(b,c)", "(c,b)", "(a,a)", "(b,b)", "(c,c)"],
+                "choices": ["(a,c)", "(b,c)", "(c,b)", "(a,a)", "(b,b)", "(c,c)"]
+            }
+        }
+    }
+}
+  

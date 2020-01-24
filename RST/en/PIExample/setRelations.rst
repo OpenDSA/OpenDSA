@@ -15,5 +15,5 @@ Set Relations
 -------------------------------
 .. inlineav:: SetRelations ff
    :links:   AV/PIExample/SetRelations.css
-   :scripts: DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/PIExample/SetRelations.js
+   :scripts: DataStructures/PIFrames.js AV/PIExample/SetRelations.js
    :output: show

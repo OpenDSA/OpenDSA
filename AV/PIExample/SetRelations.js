@@ -8,8 +8,11 @@ $(document).ready(function () {
         interpret = config.interpreter, // get the interpreter
         code = config.code;             // get the code object
     var goNext = false;
-    av.umsg("Set Relations frame"); //not the title just for an example
+    //av.umsg("Set Relations frame"); //not the title just for an example
     
     av.displayInit();
+    av.umsg(injector.injectQuestion("q1", "A relation R over set S is a set of ordered pairs from S."));
+    av.step();
+    
     
 });

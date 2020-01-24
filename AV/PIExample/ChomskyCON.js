@@ -35,9 +35,9 @@ av.umsg(injector.injectQuestion("q1"));
 av.step();
 
 //second frame
-av.umsg("Any grammar has variables (also called 'non-terminals') and terminals. Terminals are generally strings. Variables are things that ultimately are replaced by terminals.");
+av.umsg("q1","Any grammar has variables (also called 'non-terminals') and terminals. Terminals are generally strings. Variables are things that ultimately are replaced by terminals.");
 av.step();
-av.umsg(injector.injectQuestion("q2"));
+av.umsg(injector.injectQuestion("q2", "Hello this is second question"));
 av.step();
 
 av.umsg("In this example, we put <> brackets around all of the variables to make them easier to recognize.");
