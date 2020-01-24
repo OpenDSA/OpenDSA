@@ -16,5 +16,5 @@ Frame mathematical
 
 .. inlineav:: Mathematical ff
    :links: AV/PIExample/Mathematical.css
-   :scripts: DataStructures/PIFrames.js AV/PIExample/Mathematical.js
+   :scripts: AV/PIExample/Mathematical.js DataStructures/PIFrames.js 
    :output: show

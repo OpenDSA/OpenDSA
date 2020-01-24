@@ -14,6 +14,6 @@ grammar example
 grammar
 -------------------------------
 .. inlineav:: ChomskyCON ff
-   :links:   AV/PIExample/ChomskyCON.css
-   :scripts: DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/PIExample/ChomskyCON.js
+   :links: AV/PIExample/ChomskyCON.css
+   :scripts: AV/PIExample/ChomskyCON.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
