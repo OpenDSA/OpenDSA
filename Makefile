@@ -130,6 +130,9 @@ CTEX: min
 Sam: min
 	python $(CONFIG_SCRIPT) config/Sam.json --no-lms
 
+Yinwen: min
+	python $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
+
 NP: min
 	python $(CONFIG_SCRIPT) config/NP.json --no-lms
 
@@ -258,9 +261,6 @@ CSCI2101: min
 
 Yuhui: min
 	python $(CONFIG_SCRIPT) config/Yuhui.json --no-lms
-
-Yinwen: min
-	python $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
 
 CS3SS18slides: min
 	python $(CONFIG_SCRIPT) -s config/CS3SS18slides.json --no-lms
