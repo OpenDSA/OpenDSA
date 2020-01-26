@@ -15,55 +15,55 @@
       "q22":{
         "type": "multiple",
         "question":"What are the variables in the given grammar?",
-        "answer": "<noun>",
-        "choices": ["<sentence>", "<subject>", "<verb>", "<d.o.>", "<article>", "<noun>", "a", "the", "Fritz", "ran", "ate"]
+        "answer": "&lt;noun&gt;",
+        "choices": ["&lt;sentence&gt;", "&lt;subject&gt;", "&lt;verb&gt;", "&lt;d.o.&gt;", "&lt;article&gt;", "&lt;noun&gt;", "a", "the", "Fritz", "ran", "ate"]
       },
       "q3": {
         "type": "select",
         "question":"What are the terminals in the given grammar?",
         "answer":  ["a", "the", "Fritz", "ran", "ate"],
-        "choices": ["<sentence>", "<subject>", "<verb>", "<d.o.>", "<article>", "<noun>", "a", "the", "Fritz", "ran", "ate" ]
+        "choices": ["&lt;sentence&gt;", "&lt;subject&gt;", "&lt;verb&gt;", "&lt;d.o.&gt;", "&lt;article&gt;", "&lt;noun&gt;", "a", "the", "Fritz", "ran", "ate" ]
       },
       "q4":{
         "type": "multiple",
         "question":"The <d.o> variable has two productions associated with it. Write one.",
-        "answer": ["<article><noun>", "<noun>"],
-        "choices": ["<article><noun>", "<noun>"]
+        "answer": ["&lt;article&gt;&lt;noun&gt;", "&lt;noun&gt;"],
+        "choices": ["&lt;article&gt;&lt;noun&gt;", "&lt;noun&gt;"]
       },
       "q5":{
         "type": "multiple",
         "question":"Which variable we must start with?",
-        "answer": "<sentence>",
-        "choices": ["<sentence>", "<subject>", "<verb>", "<d.o.>", "<article>", "<noun>"]
+        "answer": "&lt;sentence&gt;",
+        "choices": ["&lt;sentence&gt;", "&lt;subject&gt;", "&lt;verb&gt;", "&lt;d.o.&gt;", "&lt;article&gt;", "&lt;noun&gt;"]
       },
       "q6":{
         "type": "textBox",
-        "question":"What is the substitute for <subject> variable?",
+        "question":"What is the substitute for &lt;subject&gt; variable?",
         "answer": "<noun>"
       },
       "q7":{
         "type": "textBox",
-        "question": "What is the substitute for <noun>?",
+        "question": "What is the substitute for &lt;noun&gt;?",
         "answer":"t"
       },
       "q8":{
         "type": "textBox",
-        "question":"What is the substitute for <verb>?",
+        "question":"What is the substitute for &lt;verb&gt;?",
         "answer": "hit"
       },
       "q9":{
         "type": "textBox",
-        "question":"What is the substitute for <d.o>??",
-        "answer":"<article><noun>"
+        "question":"What is the substitute for &lt;d.o&gt;?",
+        "answer":"&lt;article&gt;&lt;noun&gt;"
       },
       "q10":{
         "type": "textBox",
-        "question":"What is the substitute for <article>?",
+        "question":"What is the substitute for &lt;article&gt;?",
         "answer":"the"
       },
       "q11":{
         "type": "textBox",
-        "question":"What is the substitute for <noun>?",
+        "question":"What is the substitute for &lt;noun&gt;?",
         "answer":"ball"
       },
       "q12":{
@@ -86,7 +86,7 @@
 
       },
       "q15":{
-        "type": "multiple",
+        "type": "select",
         "question":"What does y represent?",
         "answer":["Variables", "Terminals"],
         "choices": ["Variables", "Terminals"]
