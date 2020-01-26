@@ -2,21 +2,18 @@
   "translations": {
     "en": {
       "q1": {
-        "type": "select",
-        "src": "../../../AV/Development/formal_language/FAEditor.html",
-        "question":"Which of the following are  alphabet sets?",
-        "answer": ["{$a$, $b$, $c$}", "{0, 1}", "{?, $a$, $x$}"],
-        "choices": ["{$a$, $b$, $c$}", "{0, 1}","$A$" ,"{?, $a$, $x$}"]
+        "type": "textBox",
+        "question":"What is a grammar?",
+        "answer": "A way to describe languages"
       },
       "q2": {
         "type": "textBox",
-        "src": "../../../AV/Development/formal_language/FAEditor.html",
         "question":" Which of these are terminals, and which are non-terminals?",
-        "answer": ""
+        "answer": "a"
         
       },
-      "q2_2":{
-        "type": "textBox",
+      "q22":{
+        "type": "multiple",
         "question":"What are the variables in the given grammar?",
         "answer": "<noun>",
         "choices": ["<sentence>", "<subject>", "<verb>", "<d.o.>", "<article>", "<noun>", "a", "the", "Fritz", "ran", "ate"]
@@ -93,33 +90,6 @@
         "question":"What does y represent?",
         "answer":["Variables", "Terminals"],
         "choices": ["Variables", "Terminals"]
-      },
-      "q16":{
-        "type": "multiple",
-        "question":"What is ?",
-        "answer":[" " ],
-        "choices": [" "]
-      },
-      "q17":{
-        "type": "textBox",
-        "question":"What states can be combined?",
-        "answer":"{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}"
-      },
-      "q18":{
-        "type": "multiple",
-        "question":"Let //sigma={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L0$?",
-        "answer": ["{$λ$}"],
-        "choices": ["{$λ$}", "{}<Empty set>", "$λ$"]
-      },
-      "q19":{
-        "type": "textBox",
-        "question":"Let //sigma={$a$,$b4}, $L1$={$ab$,$aba$}, What is $L2$? ",
-        "answer": "{abab, ababa, abaab, abaaba}"
-      },
-      "q19_1":{
-        "type": "textBox",
-        "question":"Let //sigma={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L3$?",
-        "answer": "{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}"
       }
     }
   }
