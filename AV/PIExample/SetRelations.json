@@ -5,20 +5,20 @@
             "q1": {
                 "type": "select",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "question": "if S {a,b,c}, then which of the following is a relation in S",
-                "answer": ["(a,c)", "(b,c)", "(c,b)", "(a,a)", "(b,b)", "(c,c)"],
-                "choices": ["(a,c)", "(b,c)", "(c,b)", "(a,a)", "(b,b)", "(c,c)"]
+                "question": "if $S$ $\\{a,b,c\\}$, then which of the following is a relation in $S$",
+                "answer": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"],
+                "choices": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"]
             },
             "q2": {
                 "type": "select",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
                 "question": "The operator < includes which of the following pairs ordered pairs",
-                "answer": ["<1,3>", "<2,23>"],
-                "choices": ["<1,3>", "<2,23>", "<3,2>", "<2,2>"]
+                "answer": ["$<1,3>$", "$<2,23>$"],
+                "choices": ["$<1,3>$", "$<2,23>$", "$<3,2>$", "$<2,2>$"]
             },
             "q3":{
                 "type": "textBox",
-                "question": "What is the infix notation for the pair (4, 5) in the relation <",
+                "question": "What is the infix notation for the pair $(4, 5)$ in the relation $<$",
                 "answer": "4<5"
             },
             "q4": {
@@ -72,7 +72,7 @@
             },
             "q11": {
                 "type": "textBox",
-                "question": "For m = 4, What makes the pair (1, 5) belong to the modulus relation?",
+                "question": "For $m$ = $4$, What makes the pair $(1, 5)$ belong to the modulus relation?",
                 "answer": "1 mod 4 = 5 mod 4"
             },
             "q12": {

@@ -9,46 +9,46 @@ $(document).ready(function () {
         code = config.code;             // get the code object
     var goNext = false;
 
-    av.umsg("The $UNION$ / $FIND$ algorithm efficiently maintains equivalence classes on a set. One application for such disjoint sets is the minimal cost spanning tree."); //not the title just for an example
+    av.umsg("Relations"); //not the title just for an example
     //av.umsg("Test222222222`");
     
     av.displayInit();
-    av.umsg(injector.injectQuestion("q1", "A $relation$ R over set S is a set of ordered pairs from S."));
+    av.umsg(injector.injectQuestion("q1", "A $relation$ $R$ over set $S$ is a set of ordered pairs from $S$."));
     av.step();
     ////
-    av.umsg(injector.injectQuestion("q2", "If tuple ⟨x,y⟩ is in relation R, we may use the infix notation xRy. We often use relations such as the less than operator (<) on the natural numbers"));
+    av.umsg(injector.injectQuestion("q2", "If tuple $⟨x,y⟩$ is in relation $R$, we may use the infix notation $xRy$. We often use relations such as the less than operator ($<$) on the natural numbers"));
     av.step();
     ////
     av.umsg(injector.injectQuestion("q3", "Rather than writing the relationship in terms of ordered pairs, we typically use infix notation for such relations"));
     av.step();
     ////
-    av.umsg(injector.injectQuestion("q4", "Frame: Define the properties of relations as follows, with R a binary relation over set S. 1- R is $reflexive$ if aRa for all a ∈ S."));
+    av.umsg(injector.injectQuestion("q4", "Define the properties of relations as follows, with $R$ a binary relation over set $S$. 1- $R$ is $reflexive$ if $aRa$ for all $a$ ∈ $S$."));
     av.step();
     ////
-    av.umsg(injector.injectQuestion("q5", "Frame: Define the properties of relations as follows, with R a binary relation over set S. 2- R is $irreflexive$ if aRa is not true for all a∈S."));
+    av.umsg(injector.injectQuestion("q5", "Define the properties of relations as follows, with $R$ a binary relation over set $S$. 2- $R$ is $irreflexive$ if $aRa$ is not true for all $a$ ∈ $S$."));
     av.step();
     ////
-    av.umsg(injector.injectQuestion("q6", "Frame: Define the properties of relations as follows, with R a binary relation over set S. 3- R is $symmetric$ if whenever aRb, then bRa, for all a,b ∈ S."));
+    av.umsg(injector.injectQuestion("q6", "Define the properties of relations as follows, with $R$ a binary relation over set $S$. 3- $R$ is $symmetric$ if whenever $aRb$, then $bRa$, for all $a$,$b$ ∈ $S$."));
     av.step();
     ////
-    av.umsg(injector.injectQuestion("q7", "Frame: Define the properties of relations as follows, with R a binary relation over set S. 4- R is $antisymmetric$ if whenever aRb and bRa, then a=b, for all a,b ∈ S"));
+    av.umsg(injector.injectQuestion("q7", "Define the properties of relations as follows, with $R$ a binary relation over set S. 4- $R$ is $antisymmetric$ if whenever $aRb$ and $bRa$, then $a$ $=$ $b$, for all $a,b$ ∈ $S$"));
     av.step();
     ////
-    av.umsg(injector.injectQuestion("q8", "Frame: Define the properties of relations as follows, with R a binary relation over set S. 5- R is $transitive$ if whenever aRb and bRc, then aRc, for all a,b,c∈S."));
+    av.umsg(injector.injectQuestion("q8", "Define the properties of relations as follows, with $R$ a binary relation over set S. 5- $R$ is $transitive$ if whenever $aRb$ and $bRc$, then $aRc$, for all $a,b,c$ ∈ $S$."));
     av.step();
     ////
-    av.umsg(injector.injectQuestion("q9", "R is an $equivalence$ $relation$ on set S if it is reflexive, symmetric, and transitive."));
+    av.umsg(injector.injectQuestion("q9", "$R$ is an $equivalence$ $relation$ on set $S$ if it is reflexive, symmetric, and transitive."));
     av.step();
     ////
-    av.umsg(injector.injectQuestion("q10", "An equivalence relation can be used to partition a set into $equivalence$ $classes$. If two elements a and b are equivalent to each other, we write a≡b."));
+    av.umsg(injector.injectQuestion("q10", "An equivalence relation can be used to partition a set into $equivalence$ $classes$. If two elements $a$ and $b$ are equivalent to each other, we write $a$ ≡ $b$."));
     av.step();
     ////
-    av.umsg("A $partition$ of a set S is a collection of subsets that are $disjoint$ from each other and whose union is S. An $equivalence$ $relation$ on set S partitions the set into disjoint subsets whose elements are equivalent. ");
+    av.umsg("A $partition$ of a set $S$ is a collection of subsets that are $disjoint$ from each other and whose union is $S$. An $equivalence$ $relation$ on set $S$ partitions the set into disjoint subsets whose elements are equivalent. ");
     av.step();
     av.umsg("The $UNION$ / $FIND$ algorithm efficiently maintains equivalence classes on a set. One application for such $disjoint$ $sets$ is the $minimal$ $cost$ $spanning$ $tree$.");
     av.step();
     ////
-    av.umsg(injector.injectQuestion("q11", " For the set of integers, use the modulus function to define a binary relation such that two numbers x and y are in the relation if and only if x mod m=y mod m"));
+    av.umsg(injector.injectQuestion("q11", " For the set of integers, use the modulus function to define a binary relation such that two numbers $x$ and $y$ are in the relation if and only if $x$ mod $m$ = $y$ mod $m$"));
     av.step();
     ////
     //frame title practicing Equivalence Relations Exercise
@@ -56,7 +56,7 @@ $(document).ready(function () {
     av.step();
     //is this the right title?
     ////
-    av.umsg(injector.injectQuestion("q12", " A binary relation is called a partial order if it is antisymmetric and transitive. "));
+    av.umsg(injector.injectQuestion("q12", " A binary relation is called a partial order if it is antisymmetric and transitive."));
     av.step();
     ////
     av.umsg("Practicing: Partial Ordering");    
