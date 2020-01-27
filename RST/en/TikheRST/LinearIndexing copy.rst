@@ -170,13 +170,10 @@ The primary key is a four-character unique identifier.
 
 .. _Inverted:
 
-.. odsafig:: Images/Inverted.png
-   :width: 200
+.. inlineav:: InvListCON dgm
+   :links: AV/TikheAV/InvListCON.css
+   :scripts: AV/TikheAV/InvListCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Illustration of an inverted list
-
 
    Illustration of an inverted list.
    Each secondary key value is stored in the secondary key list.
