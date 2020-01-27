@@ -3,7 +3,7 @@
 // inverted list
 $(document).ready(function() {
   "use strict";
-  var av_name = "InvListCON";
+  var av_name = "InvertedCON";
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;

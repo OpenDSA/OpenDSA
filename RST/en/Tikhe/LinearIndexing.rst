@@ -168,22 +168,25 @@ Figure :num:`Figure #Inverted` illustrates this arrangement.
 Here, we have last names as the secondary key.
 The primary key is a four-character unique identifier.
 
+.. inlineav:: InvertedCON dgm
+   :links: AV/Tikhe/InvertedCON.css
+   :scripts: AV/Tikhe/InvertedCON.js
+   :align: center
+
 .. _Inverted:
 
-.. inlineav:: InvListCON dgm
-   :links: AV/TikheAV/InvListCON.css
-   :scripts: AV/TikheAV/InvListCON.js
+.. odsafig:: Images/Inverted.png
+   :width: 200
    :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Illustration of an inverted list
 
    Illustration of an inverted list.
    Each secondary key value is stored in the secondary key list.
    Each secondary key value on the list has a pointer to a list of the
    primary keys whose associated records have that secondary key
    value.
-
-.. avembed:: AV/Indexing/linearIndexingPRO.html pe
-   :long_name: Linear Indexing Proficiency Exercise
-
 
 Figure :num:`Figure #InvList` shows a better approach to storing inverted
 lists.

@@ -112,6 +112,12 @@ TJeffrey: min
 Michael: min
 	python $(CONFIG_SCRIPT) config/Michael.json --no-lms
 
+Tikhe: min
+	python $(CONFIG_SCRIPT) config/Tikhe.json --no-lms
+
+Taylor: min
+	python $(CONFIG_SCRIPT) config/Taylor.json --no-lms
+
 Raghu: min
 	python $(CONFIG_SCRIPT) config/Raghu.json --no-lms
 

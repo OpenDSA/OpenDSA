@@ -152,7 +152,7 @@ This works well if the index is stored in main memory, but not so
 well when it is stored on disk because the linked list for a given key
 might be scattered across several disk blocks.
 
-CConsider a large database of employee records.
+Consider a large database of employee records.
 If the primary key is the employee's ID number and the secondary key
 is the employee's name, then each record in the name index associates a
 name with one or more ID numbers.
@@ -177,16 +177,11 @@ The primary key is a four-character unique identifier.
    :figwidth: 90%
    :alt: Illustration of an inverted list
 
-
    Illustration of an inverted list.
    Each secondary key value is stored in the secondary key list.
    Each secondary key value on the list has a pointer to a list of the
    primary keys whose associated records have that secondary key
    value.
-
-.. avembed:: AV/Indexing/linearIndexingPRO.html pe
-   :long_name: Linear Indexing Proficiency Exercise
-
 
 Figure :num:`Figure #InvList` shows a better approach to storing inverted
 lists.
