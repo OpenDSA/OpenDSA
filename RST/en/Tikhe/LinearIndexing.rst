@@ -152,7 +152,7 @@ This works well if the index is stored in main memory, but not so
 well when it is stored on disk because the linked list for a given key
 might be scattered across several disk blocks.
 
-CConsider a large database of employee records.
+Consider a large database of employee records.
 If the primary key is the employee's ID number and the secondary key
 is the employee's name, then each record in the name index associates a
 name with one or more ID numbers.
