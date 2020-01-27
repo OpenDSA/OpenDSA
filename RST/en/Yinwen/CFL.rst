@@ -201,8 +201,8 @@ The yield for the example above is :math:`aacbb`.
    form):
 
    .. inlineav:: practice dgm
-      :links: AV/Yinwen/practice.css
-      :scripts: AV/Yinwen/practice.js
+      :links: AV/Yinwen/CFL.css
+      :scripts: AV/Yinwen/CFL.js
       :align: justify
 
    The yield for this example is :math:`aAacB`.
