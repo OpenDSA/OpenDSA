@@ -203,12 +203,10 @@ The yield for the example above is :math:`aacbb`.
    A partial derivation tree that has root S (so it is a sentential
    form):
 
-   .. odsafig:: Images/lt3ptree3.png
-      :width: 200
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt3ptree3
+   .. inlineav:: partDeriv1CON dgm
+      :links: AV/VisFormalLang/CFG/partDeriv1CON.css
+      :scripts: AV/VisFormalLang/CFG/partDeriv1CON.js
+      :align: justify
 
    The yield for this example is :math:`aAacB`.
 
@@ -217,9 +215,9 @@ The yield for the example above is :math:`aacbb`.
 
    A partial derivation tree that does not have root S:
 
-   .. inlineav:: partialDerivationCON dgm
-      :links: AV/VisFormalLang/CFG/partialDerivationCON.css
-      :scripts: AV/VisFormalLang/CFG/partialDerivationCON.js
+   .. inlineav:: partDeriv2CON dgm
+      :links: AV/VisFormalLang/CFG/partDeriv2CON.css
+      :scripts: AV/VisFormalLang/CFG/partDeriv2CON.js
       :align: justify
 
    |      
