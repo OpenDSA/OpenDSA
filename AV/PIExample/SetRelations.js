@@ -10,12 +10,12 @@ $(document).ready(function () {
     var goNext = false;
 
     //frame 1
-    av.umsg("Relations"); //not the title just for an example
+    av.umsg("In this chapter you will learn and practice about $relations$");
     av.displayInit();
 
     //frame 2
     av.umsg(Frames.addQuestion("q1"));
-    av.step();
+   //av.step();
     
     //frame 3
     av.umsg(Frames.addQuestion("q2"));
