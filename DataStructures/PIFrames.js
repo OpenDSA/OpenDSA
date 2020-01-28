@@ -764,5 +764,7 @@
     }
   };
   PIFrames.table = {};
+  //PIFrames.init = init;
+  //PIFrames.addQuestion = addQuestion;
   window.PIFRAMES = PIFrames;
 })(jQuery);
