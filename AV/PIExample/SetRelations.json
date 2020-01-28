@@ -12,33 +12,33 @@
             "q2": {
                 "type": "select",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "question": "The operator < includes which of the following pairs ordered pairs",
+                "question": "The operator $<$ includes which of the following pairs ordered pairs",
                 "answer": ["$<1,3>$", "$<2,23>$"],
                 "choices": ["$<1,3>$", "$<2,23>$", "$<3,2>$", "$<2,2>$"]
             },
             "q3":{
                 "type": "textBox",
-                "question": "What is the infix notation for the pair $(4, 5)$ in the relation $<$",
+                "question": "What is the infix notation for the pair $(4, 5)$ in the relation of $<$?",
                 "answer": "4<5"
             },
             "q4": {
                 "type": "multiple",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "question": "Is the relation less than or equals reflexive?",
+                "question": "Is the relation less than or equal to reflexive?",
                 "answer": ["True"],
                 "choices": ["True", "False"]
             },
             "q5": {
                 "type": "multiple",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "question": "Is the relation less than or equals irreflexive?",
+                "question": "Is the relation less than or equal to irreflexive?",
                 "answer": ["False"],
                 "choices": ["True", "False"]
             },
             "q6": {
                 "type": "multiple",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "question": "Which of the following is a symmetric relation",
+                "question": "Which of the following is a symmetric relation?",
                 "answer": ["="],
                 "choices": ["$<$", "$>$", "="]
             },
@@ -52,7 +52,7 @@
             "q8": {
                 "type": "select",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "question": "Which of the following are transitive relations?",
+                "question": "Which of the followings are transitive relations?",
                 "answer": ["$<$", ">", "="],
                 "choices": ["$<$", ">", "="]
             },
@@ -66,7 +66,7 @@
             "q10": {
                 "type": "select",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "question": "Which of the following are transitive relations?",
+                "question": "Which of the followings are transitive relations?",
                 "answer": ["because it is reflective", "because it is symmetric", "because it is transitive"],
                 "choices": ["because it is reflective", "because it is symmetric", "because it is transitive"]
             },

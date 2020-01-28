@@ -1,5 +1,6 @@
 #SetRelations{
     height: 600px;
+    width: 900px/*900px*/;
 }
 .jsavcontrols{
     display: unset !important;
