@@ -298,6 +298,9 @@ Echo: min
 Ming: min
 	python $(CONFIG_SCRIPT) config/Ming.json --no-lms
 
+Blockchain: min
+	python $(CONFIG_SCRIPT) config/Blockchain.json --no-lms
+
 nomin:
 	@cp lib/JSAV.js lib/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js

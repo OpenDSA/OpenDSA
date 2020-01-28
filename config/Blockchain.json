@@ -1,0 +1,78 @@
+{
+    "title": "Blockchain Tutorial",
+    "desc": "A tutorial for Blockchain Applications",
+    "build_dir": "Books",
+    "code_dir": "SourceCode/",
+    "lang": "en",
+    "build_JSAV": false,
+    "suppress_todo": false,
+    "dispModComp": true,
+    "glob_exer_options": {
+      "JXOP-debug": "true"
+    },
+    "glob_ss_options": {
+      "threshold": 1.0, 
+      "points": 0.0, 
+      "required": false
+    }, 
+    "glob_ff_options": {
+      "threshold": 1.0, 
+      "points": 0.0, 
+      "required": false
+    },
+    "glob_ka_options": {
+      "threshold": 5, 
+      "points": 1.0, 
+      "required": true
+    }, 
+    "glob_extr_options": {
+      "code-workout": {
+        "points": 2.0
+      }, 
+      "points": 1.0
+    }, 
+    "glob_pe_options": {
+      "threshold": 0.9, 
+      "points": 2.0, 
+      "required": true
+    }, 
+    "chapters": {
+      "Blockchain Tutorial": {
+        "Blockchain/Intro": {}
+      },
+      "Chapter 1": {
+        "Blockchain/Chapter1": {}
+      },
+      "Chapter 2": {
+        "Blockchain/Chapter2": {}
+      },
+      "Chapter 3": {
+        "Blockchain/Chapter3": {}
+      },
+      "Chapter 4": {
+        "Blockchain/Chapter4": {}
+      },
+      "Chapter 5": {
+        "Blockchain/Chapter5": {}
+      },
+      "Chapter 6": {
+        "Blockchain/Chapter6": {}
+      },
+      "Chapter 7": {
+        "Blockchain/Chapter7": {}
+      },
+      "Chapter 8": {
+        "Blockchain/Chapter8": {}
+      },
+      "Chapter 9": {
+        "Blockchain/Chapter9": {}
+      },
+      "Chapter 10": {
+        "Blockchain/Chapter10": {}
+      },
+      "Chapter 11": {
+        "Blockchain/Chapter11": {}
+      }
+    }
+  }
+  
