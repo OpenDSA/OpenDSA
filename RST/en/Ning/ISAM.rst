@@ -36,14 +36,11 @@ Typically, updates would cause the index to degrade in performance.
 ISAM is one example of such an index and was
 widely used by IBM prior to adoption of the B-tree.
 
-.. _ISAMfig:
+.. inlineav:: ISAM dgm
+    :links: AV/Ning/Ning.css
+    :scripts: AV/Ning/Ning.js
 
-.. odsafig:: Images/ISAM.png
-   :width: 150
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Illustration of the ISAM indexing system
+
 
    Illustration of the ISAM indexing system.
 
