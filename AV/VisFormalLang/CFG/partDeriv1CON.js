@@ -1,6 +1,6 @@
 $(document).ready(function() {
   "use strict";
-  var av_name = "practice";
+  var av_name = "partDeriv1CON";
   var av = new JSAV(av_name, {animationMode: "none"});
 
   var tr = av.ds.tree({nodegap: 15});

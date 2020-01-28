@@ -1,7 +1,7 @@
 // Written by Euno Cho, Fall 2019
 $(document).ready(function() {
   "use strict";
-  var av_name = "partialDerivationCON";
+  var av_name = "partDeriv2CON";
   var av = new JSAV(av_name, {animationMode: "none"});
 
   //building tree
