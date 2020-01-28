@@ -139,6 +139,9 @@ Sam: min
 Yinwen: min
 	python $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
 
+Ning: min
+	python $(CONFIG_SCRIPT) config/Ning.json --no-lms
+
 NP: min
 	python $(CONFIG_SCRIPT) config/NP.json --no-lms
 
