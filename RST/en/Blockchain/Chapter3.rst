@@ -8,7 +8,7 @@ Chapter 3
 =============================================
 
 Basic Blockchain
-------------
+----------------
 
 a) It's just a linked list with hash pointers
 b) Why this is interesting: It means nobody can change the prior records (if you believe in probability, that is)

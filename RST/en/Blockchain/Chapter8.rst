@@ -8,7 +8,7 @@ Chapter 8
 =============================================
 
 Other Cyptocurrencies 
-------------
+---------------------
 
 a) Ethereum
 b) Algorand (proof of stake)

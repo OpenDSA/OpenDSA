@@ -8,6 +8,6 @@ Chapter 9
 =============================================
 
 Smart Contracts
-------------
+---------------
 
 a) Stuff about Smart Contracts

@@ -8,6 +8,6 @@ Chapter 7
 =============================================
 
 Bitcoin
-------------
+-------
 
 a) Stuff about Bitcoin here

@@ -8,6 +8,6 @@ Chapter 10
 =============================================
 
 Permissioned vs Permissionless blockchains
-------------
+------------------------------------------
 
 a) Hyperledger is a permissioned blockchain

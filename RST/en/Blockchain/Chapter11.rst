@@ -8,7 +8,7 @@ Chapter 11
 =============================================
 
 Other Applications of Blockchain
-------------
+--------------------------------
 
 a) Business applications: Blockone
 b) Can Git be viewed as a blockchain?

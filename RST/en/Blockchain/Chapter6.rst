@@ -8,7 +8,7 @@ Chapter 6
 =============================================
 
 Concensus Algorithms
-------------
+--------------------
 
 a) The concept of a distributed ledger
 b) Simplest form: One public ledger updated by the owner
