@@ -509,7 +509,7 @@
 
           if(this.ParseTree != null)
           {
-            return this.ParseTree();
+            return this.ParseTree(question.studentAnswer);
           }
 
           if (
