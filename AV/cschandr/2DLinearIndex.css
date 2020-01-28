@@ -1,0 +1,21 @@
+#2DLinearIndex {
+        height: 350px;
+}
+
+#2DinearIndex .jsavoutput.jsavline{
+        height: 70px;
+}
+
+.highlight {
+        fill: gray;
+}
+
+.largelabel {
+        font-size: 16px;
+        text-align: center;
+}
+
+.thickLine {
+        stroke-width: 3;
+}
+
