@@ -78,6 +78,7 @@
     questionType: "",
     submit: `<br><input type="submit" value="Submit"> </br>`,
     feedback: `<p hidden id="feedback">Incorrect!</p>`,
+    ParseTree: null,
     Injector(data, av_name) {
       var obj = {
         myData: data,
@@ -303,13 +304,14 @@
           this.myData.translations.en[id].studentAnswer = answer;
         },
 
-        addQuestion: function(id) {
+        addQuestion: function(id, ParseTree) {
+          this.ParseTree = ParseTree;
           this.queue.elements.push(id);
 
           var current = this.queue.descriptionCounter;
           var question = this.getQuestion(this.queue.elements[current]);
           this.queue.descriptionCounter++;
-          
+
           if(question.description != undefined)
           {
             var message = `<p class="REVEAL">${question.description}</p>`;
@@ -504,6 +506,11 @@
 
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
+
+          if(this.ParseTree != null)
+          {
+            return this.ParseTree();
+          }
 
           if (
             question.studentAnswer !== undefined &&
