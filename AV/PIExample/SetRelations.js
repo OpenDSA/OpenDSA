@@ -9,6 +9,7 @@ $(document).ready(function () {
         code = config.code;             // get the code object
     var goNext = false;
 
+    av.umsg("In this chapter you will learn and practice about $relations$")
     //av.umsg("Relations"); //not the title just for an example
     //av.umsg("Test222222222`");
     
@@ -16,7 +17,7 @@ $(document).ready(function () {
     av.umsg(injector.injectQuestion("q1", "A $relation$ $R$ over set $S$ is a set of ordered pairs from $S$."));
     //av.step();
     ////
-    av.umsg(injector.injectQuestion("q2", "If tuple $⟨x,y⟩$ is in relation $R$, we may use the infix notation $xRy$. We often use relations such as the less than operator ($<$) on the natural numbers"));
+    av.umsg(injector.injectQuestion("q2", "If tuple <$x,y$> is in relation $R$, we may use the infix notation $xRy$. We often use relations such as the less than operator ($<$) on the natural numbers"));
     av.step();
     ////
     av.umsg(injector.injectQuestion("q3", "Rather than writing the relationship in terms of ordered pairs, we typically use infix notation for such relations"));

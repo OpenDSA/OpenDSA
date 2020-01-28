@@ -5,16 +5,16 @@
             "q1": {
                 "type": "select",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "question": "if $S$ $\\{a,b,c\\}$, then which of the following is a relation in $S$",
-                "answer": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"],
-                "choices": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"]
+                "question": "if $S$ = $\\{a,b,c\\}$, then which of the following is a relation in $S$",
+                "answer": ["<a,c>", "<b,c>", "<c,b>", "<a,a>", "<b,b>", "<c,c>"],
+                "choices": ["&lt;a,c&gt;", "&lt;b,c&gt;", "&lt;c,b&gt;", "&lt;a,a&gt;", "&lt;b,b&gt;", "&lt;c,c&gt;"]
             },
             "q2": {
                 "type": "select",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "question": "The operator $<$ includes which of the following pairs ordered pairs",
-                "answer": ["$<1,3>$", "$<2,23>$"],
-                "choices": ["$<1,3>$", "$<2,23>$", "$<3,2>$", "$<2,2>$"]
+                "question": "The less than operator ($<$) includes which of the following pairs ordered pairs",
+                "answer": ["<1,3>", "<2,23>"],
+                "choices": ["<1,3>", "<2,23>", "<3,2>", "<2,2>"]
             },
             "q3":{
                 "type": "textBox",
