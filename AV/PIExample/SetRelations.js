@@ -12,10 +12,10 @@ $(document).ready(function () {
     //frame 1
     av.umsg("In this chapter you will learn and practice about $relations$");
     av.displayInit();
-
+    
     //frame 2
     av.umsg(Frames.addQuestion("q1"));
-   av.step();
+    av.step();
     
     //frame 3
     av.umsg(Frames.addQuestion("q2"));
@@ -54,11 +54,11 @@ $(document).ready(function () {
     av.step();
 
     //frame 12
-    av.umsg("A $partition$ of a set $S$ is a collection of subsets that are $disjoint$ from each other and whose union is $S$. An $equivalence$ $relation$ on set $S$ partitions the set into disjoint subsets whose elements are equivalent. ");
+    av.umsg("A $partition$ of a set $S$ is a collection of subsets that are $disjoint$ from each other and whose union is $S$. An $equivalence$ $relation$ on a set $S$ partitions the set into disjoint subsets whose elements are equivalent. ");
     av.step();
 
     //frame 13
-    av.umsg("The $UNION$ / $FIND$ algorithm efficiently maintains equivalence classes on a set. One application for such $disjoint$ $sets$ is the $minimal$ $cost$ $spanning$ $tree$.");
+    av.umsg("The $UNION$ / $FIND$ algorithm efficiently maintains equivalence classes on a set. One application for such $disjoint$ $sets$ is the $minimum$ $cost$ $spanning$ $tree$.");
     av.step();
 
     //frame 14
