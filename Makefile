@@ -142,6 +142,9 @@ Yinwen: min
 NP: min
 	python $(CONFIG_SCRIPT) config/NP.json --no-lms
 
+NP4114: min
+	python $(CONFIG_SCRIPT) config/NP4114.json --no-lms
+
 JFLAP: min
 	python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
 

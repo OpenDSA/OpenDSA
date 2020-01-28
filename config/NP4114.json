@@ -1,0 +1,78 @@
+{
+  "title": "NP Completeness: CS4114",
+  "desc": "NP Completeness: CS4114",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "assumes": "analyzing problems; sorting terminology; logarithms",
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "glob_ss_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  }, 
+  "glob_ff_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  },
+  "glob_ka_options": {
+    "threshold": 5, 
+    "points": 1.0, 
+    "required": true
+  }, 
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2.0
+    }, 
+    "points": 1.0
+  }, 
+  "glob_pe_options": {
+    "threshold": 0.9, 
+    "points": 2.0, 
+    "required": true
+  }, 
+  "chapters": {
+    "Reductions and NP Completeness": {
+      "NP/LimComp": {},
+      "NP/Reduction": {}, 
+      "NP/NPComplete": {}, 
+      "NP/provingNPC": {},
+      "NP/SAT": {}, 
+      "NP/threeSAT": {
+        "threeSATPRO": {
+          "threshold": 1.0
+        }
+      },
+      "NP/SAT_to_threeSAT": {},
+      "NP/clique": {
+        "cliquePRO": {
+          "threshold": 1.0
+        }
+      },
+      "NP/independentSet": {
+        "independentSetPRO": {
+          "threshold": 1.0
+        }
+      },
+      "NP/clique_to_independentSet": {},
+      "NP/threeSAT_to_clique": {},
+      "NP/NPCoping": {},
+      "SeniorAlgAnal/Impossible": {}
+    }
+  }
+}
