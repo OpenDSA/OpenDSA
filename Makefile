@@ -115,6 +115,9 @@ Michael: min
 Tikhe: min
 	python $(CONFIG_SCRIPT) config/Tikhe.json --no-lms
 
+cschandr: min
+	python $(CONFIG_SCRIPT) config/cschandr.json --no-lms
+
 Taylor: min
 	python $(CONFIG_SCRIPT) config/Taylor.json --no-lms
 

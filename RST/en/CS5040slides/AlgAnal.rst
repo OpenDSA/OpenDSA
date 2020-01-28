@@ -63,6 +63,7 @@ Algorithm Analysis
    .. inlineav:: ProblemAlgorithmCON ss
       :links: AV/AlgAnal/ProblemAlgorithmCON.css
       :scripts: AV/AlgAnal/ProblemAlgorithmCON.js
+      :output: show
 
 
 .. slide:: Growth Rate Example (1)
