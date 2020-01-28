@@ -40,6 +40,40 @@
       });
   });
 
+  //KA Update Change
+  // $(document).ready(function (){
+    
+  //   var observer = new MutationObserver(function (mutations) {
+  //     mutations.forEach(function (mutation) {
+  //       if (mutation.attributeName === 'style') {
+  //         alert("correct answer")
+  //       }
+  //     })
+  //   })
+
+  //   var target = document.getElementById('positive-reinforcement');
+  //   var config = {attributes: true};
+
+  //   observer.observe(target, config);
+
+  // });
+
+  // $(function iframeUpdate(){
+  //         var observer = new MutationObserver(function(mutations) {
+  //           alert('Attributes changed!');
+  //         });
+  //         var target = document.querySelector('positive-reinforcement');
+  //         if(!target)
+  //         {
+  //           //alert('couldnt find target');
+  //           window.setTimeout(iframeUpdate, 5000);
+  //           return;
+  //         }
+  //         observer.observe(target, {
+  //           attributes: true
+  //         });
+  // });
+
   var PIFrames = {
     questionType: "",
     submit: `<br><input type="submit" value="Submit"> </br>`,
@@ -62,6 +96,7 @@
           elements: [],
           current: 0,
           slideCounter: 1,
+          descriptionCounter: 0,
           lastEncounteredQuestionSlide: 1000
         },
 
@@ -268,12 +303,19 @@
           this.myData.translations.en[id].studentAnswer = answer;
         },
 
-        injectQuestion: function(id, description) {
+        addQuestion: function(id) {
           this.queue.elements.push(id);
-          if (description != undefined) {
-            var message = `<p class="REVEAL">${description}</p>`;
+
+          var current = this.queue.descriptionCounter;
+          var question = this.getQuestion(this.queue.elements[current]);
+          this.queue.descriptionCounter++;
+          
+          if(question.description != undefined)
+          {
+            var message = `<p class="REVEAL">${question.description}</p>`;
             return message;
           }
+    
           return this.alertMessage();
         },
 
