@@ -221,10 +221,13 @@
               height: "100%"
             });
             $(".PIFRAMES").css({
-              width: "34%",
+              width: "100%",
               height: "none",
-              left: 590
-            });
+              left: 5,
+              position: "relative",
+              top:10
+            });//Mostafa added position:re;ative to fix the problem related to miss positioning the question in some frames(Mathmatical.js)
+            //So the width changed fromm 34 to 100, left from 690 to 5 and added the top.
           }
         },
 
