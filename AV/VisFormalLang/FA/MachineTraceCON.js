@@ -12,7 +12,7 @@ $(document).ready(function() {
   var url = "../../../AV/VisFormalLang/FA/Machines/EvenBinaryDFACON.jff";
   var binaryDFA = new av.ds.FA({left: 10, url: url});
   var node = binaryDFA.nodes();
-  av.ds.tape([1, 0, 0, "", "", "", ""], 300 + xStart, yStart + 20, "right");
+  var tape = av.ds.tape([1, 0, 0, "", "", "", ""], 300 + xStart, yStart + 20, "right", 0);
   var rect = av.g.rect(300 + xStart, 100 + yStart, 110, 80);
   var c1 = av.label("q0", {left: 320 + xStart, top: 105 + yStart});
   var c2 = av.label("q1", {left: 320 + xStart, top: 135 + yStart});
@@ -39,6 +39,7 @@ $(document).ready(function() {
   g.translateX(30);
   c1.translateX(30);
   c2.translateX(30);
+  tape.moveRight();
   av.step();
 
   // Slide 4
@@ -52,6 +53,7 @@ $(document).ready(function() {
   g.translateX(30);
   c1.translateX(30);
   c2.translateX(30);
+  tape.moveRight();
   av.step();
 
   // Slide 5
@@ -59,5 +61,6 @@ $(document).ready(function() {
   g.translateX(30);
   c2.translateX(30);
   c1.translateX(30);
+  tape.moveRight();
   av.recorded();
 });
