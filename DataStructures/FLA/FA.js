@@ -2357,6 +2357,7 @@ var lambda = String.fromCharCode(955),
 
   window.FiniteAutomaton.willReject = willReject;
   window.FiniteAutomaton.addLambdaClosure = addLambdaClosure;
+  window.FiniteAutomaton.traverse = traverse;
   window.TraverseAcceptor = TraverseAcceptor;
 }(jQuery));
 

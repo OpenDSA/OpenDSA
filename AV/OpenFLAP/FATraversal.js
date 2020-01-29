@@ -88,7 +88,7 @@
 		   		currentStates[j].removeClass('current');
 		   	}
 		   	// Run traversal step to find next states.
-		   	nextStates = traverse(g, currentStates, inputString[i]);
+		   	nextStates = FiniteAutomaton.traverse(g, currentStates, inputString[i]);
 		   	if (nextStates.length == 0) {
 		   		// If there are no next states, the input string was rejected. Update CSS of JSAV graph and array.
 		   		for (var k = 0; k < currentStates.length; k++) {
