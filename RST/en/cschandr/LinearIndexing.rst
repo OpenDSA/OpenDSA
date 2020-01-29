@@ -127,11 +127,17 @@ infrequently in applications suited to using this arrangement.
 
 .. _TwoDArray:
 
-..inlineav::2DLinearIndex ss
-   :long_name: Two-dimensional linear index
+.. inlineav:: 2DLinearIndex dgm
    :links: AV/cschandr/2DLinearIndex.css
    :scripts: AV/cschandr/2DLinearIndex.js
    :align: center
+
+.. odsafig:: Images/TwoDArr.png
+   :width: 250
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Two-dimensional linear index
 
    A two-dimensional linear index.
    Each row lists the primary keys associated with a particular
