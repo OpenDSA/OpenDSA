@@ -469,11 +469,15 @@ controllerProto.serializeGrammar = function () {
   };
 
   controllerProto.convertLLGtoRLG = function(){
-	var productions = _.filter(arr, function(x) { return x[0]});
-	for(var i =0; i< productions.length; i++){
-		productions[i][2] = productions[i][2].split("").reverse().join("");
+  var productions = _.filter(arr, function(x) { return x[0]});
+  var newProductions = [];
+  for(var i = 0; i< productions.length; i++){
+    newProductions.push([productions[i][0], arrow, productions[i][2]])
+  }
+	for(var i =0; i< newProductions.length; i++){
+		newProductions[i][2] = newProductions[i][2].split("").reverse().join("");
 	}
-	return productions;
+	return newProductions;
   }
   controllerProto.buildDFAforLLG = function(){
 	var productions = this.convertLLGtoRLG();
