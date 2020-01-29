@@ -127,12 +127,10 @@ infrequently in applications suited to using this arrangement.
 
 .. _TwoDArray:
 
-.. odsafig:: Images/TwoDArr.png
-   :width: 250
+.. inlineav:: TwoDArrCON dgm
+   :links: AV/Indexing/TwoDArrCON.css
+   :scripts: AV/Indexing/TwoDArrCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Two-dimensional linear index
 
    A two-dimensional linear index.
    Each row lists the primary keys associated with a particular

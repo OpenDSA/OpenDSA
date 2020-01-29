@@ -1,9 +1,8 @@
-/*document for JSAv*/
-// written by Chinmayee Schandra
-
+// Written by Chinmayee Schandra, Spring 2020
+// Two dimensional linear index
 $(document).ready(function() {
   "use strict";
-  var avname = "2DLinearIndex";
+  var avname = "TwoDArrCON";
   var av;
   av = new JSAV(avname);
   //positions for table
@@ -59,5 +58,3 @@ $(document).ready(function() {
   av.displayInit();
   av.recorded();
 });
-
-
