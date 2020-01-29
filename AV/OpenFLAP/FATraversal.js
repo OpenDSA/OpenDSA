@@ -69,7 +69,7 @@
 		// Start with the closure of the initial state.
 		g.initial.addClass('current');
 		var currentStates = [g.initial];
-		currentStates = addLambdaClosure(g, currentStates);
+		currentStates = FiniteAutomaton.addLambdaClosure(g, currentStates);
 		var nextStates = currentStates;
 		
 		// Create an array of characters in the input string.
@@ -152,7 +152,7 @@
 		// Start with the closure of the initial state and an empty array of edges.
 		g.initial.addClass('current');
 		var currentStates = [g.initial];
-		currentStates = addLambdaClosure(g, currentStates);
+		currentStates = FiniteAutomaton.addLambdaClosure(g, currentStates);
 		var currentEdges = [];
 		var edgeWeight = [];
 		var edgeProgress = [];
