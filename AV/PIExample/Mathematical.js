@@ -83,8 +83,8 @@ $(document).ready(function() {
     av.step();
 
     //frame 19
-    av.umsg(Frames.addQuestion("q18"));
-    av.step();
+    // av.umsg(Frames.addQuestion("q18"));
+    // av.step();
 
     //frame 20
     av.umsg(Frames.addQuestion("q19"));
