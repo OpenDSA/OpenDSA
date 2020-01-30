@@ -5,10 +5,11 @@ $(document).ready(function(){
     var arrow = String.fromCharCode(8594);
     var grammar =  "[\
         [\"&lt;sentence&gt;\",\"→\",\"&lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt;\"],\
-        [\"&lt;verb&gt;\",\"→\",\"&lt;noun&gt;|&lt;article&gt;&lt;noun&gt;\"],\
-        [\"&lt;d.o.&gt;\",\"→\",\"&lt;article&gt;&lt;noun&gt;|&lt;nounz&gt;\"],\
-        [\"&lt;noun&gt;\",\"→\",\"Frits|ball\"],\
-        [\"&lt;article&gt;\",\"→\",\"the|an|a\"]\
+        [\"&lt;subject&gt;\",\"→\",\"&lt;noun&gt;|&lt;article&gt;&lt;noun&gt;\"],\
+        [\"&lt;verb&gt;\",\"→\",\"hit | ran | ate\"],\
+        [\"&lt;d.o.&gt;\",\"→\",\"&lt;article&gt;&lt;noun&gt;|&lt;noun&gt;\"],\
+        [\"&lt;noun&gt;\",\"→\",\"Frits | ball\"],\
+        [\"&lt;article&gt;\",\"→\",\"the | an | a\"]\
     ]";
         /****/
     /**<sentence> → <subject><verb><d.o.>
@@ -38,9 +39,17 @@ av.displayInit();
 av.umsg(Frames.addQuestion("q1"));
 av.step();
 
+//frame2_1
+av.umsg(Frames.addQuestion("q111"));
+av.step();
+
+//frame2_2
+av.umsg(Frames.addQuestion("q121"));
+av.step();
+
 //frame 3
-// av.umsg(Frames.addQuestion("q2"));
-// av.step();
+av.umsg(Frames.addQuestion("q2"));
+av.step();
 
 //frame 4
 av.umsg(Frames.addQuestion("q2_2"));
