@@ -1,64 +1,55 @@
 /*global alert: true, ODSA */
 $(document).ready(function() {
-  "use strict";
-  var av;
+    "use strict";
 
-  function runit() {
-    var i;
+    async function sha256(blockNum, data, prevHash = "") {
+        // encode as UTF-8
+        const msgBuffer = new TextEncoder('utf-8').encode(prevHash + blockNum + data);                    
 
-    ODSA.AV.reset(true);
+        // hash the message
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
 
-    // Validate the array values a user enters or generate an array of
-    // random numbers < 100 of the size selected in the dropdown list
-    // if none are provided
-    var theArray = ODSA.AV.processArrayValues(100);
+        // convert ArrayBuffer to Array
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
 
-    // If theArray wasn't filled properly, we generate our own
-    if (!theArray) {
-      theArray = [];
-      for (i = 0; i < 12; i++) {
-        theArray.push(Math.trunc(50 * Math.random() + 10));
-      }
+        // convert bytes to hex string                  
+        const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+        return hashHex;
     }
 
-    av = new JSAV($(".avcontainer"));
+    var RecomputeHashes = () => {
+        var one = 1, two = 2, three = 3;
+        var block1Data = $("#blockNum1").text();
+        var block2Data = $("#blockNum2").text();
+        var block3Data = $("#blockNum3").text();
 
-    var arr = av.ds.array(theArray, {indexed: true});
-    av.umsg("Text before displayInit()");
-    // Note: av.displayInit() will not affect the number of slides.
-    // All that it will do is affect what you get to see on the
-    // initial slide.
-    av.displayInit();
-    // We are now starting a new slide (#2)
-    av.umsg("... and text after displayInit()", {preserve: true});
-    arr.swap(3, 7);
-    av.step();
-    // We are now starting a new slide (#3)
-    av.umsg("Text after av.step()");
-    av.recorded();
-    // If you add av.umsg after av.recorded, it will add new slides in
-    // ways that you probably do not expect and probably cannot
-    // control in the way that you want. As av.recorded() rewinds the
-    // slideshow, the new slides would go to the beginning of the slideshow.
-    // So, unless you are trying to add slides on-the-fly
-    // interactively, you don't want to do this.
-    // av.umsg("Text after av.recorded()");
-  }
+        // create the block one hash
+        var block1Hash;
+        sha256(one, block1Data).then(res => {
+            block1Hash = res;
+        });
 
-  function about() {
-    alert("Simple array visualization");
-  }
+        //create the second block hash
+        var block2Hash;
+        sha256(two, block2Data, block1Hash).then(res => {
+            block2Hash = res;
+        });
 
-  function help() {
-    alert("Help for simple array visualization");
-  }
+        //create the second block hash
+        var block3Hash;
+        sha256(three, block3Data, block2Hash).then(res => {
+            block3Hash = res;
+        });
 
-  // Initialize the arraysize dropdown list
-  ODSA.AV.initArraySize(10, 16, 12); // Between 10 and 16, with default at 12
+        $("#block1Hash").text(block1Hash);
+        $("#block2Hash").text(block2Hash);
+        $("#block3Hash").text(block3Hash);
+        $("#block2PrevHash").text(block1Hash);
+        $("#block3PrevHash").text(block2Hash);
+    }
 
-  // Connect action callbacks to the HTML entities
-  $("#about").click(about);
-  $("#runit").click(runit);
-  $("#help").click(help);
-  $("#reset").click(ODSA.AV.reset);
+
+
+    // Connect action callbacks to the HTML entities
+    $("#calculate").click(RecomputeHashes);
 });
