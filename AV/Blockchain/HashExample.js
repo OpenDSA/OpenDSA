@@ -1,11 +1,5 @@
 /*global alert: true, console: true, ODSA */
-// Written by Cliff Shaffer and Nayef Copty
-// WARNING: This is a bit obsolete, in that it is written as an exercise
-// that expects students to answer some specific questions. This behavior
-// has now been replaced in the module with a KA exercise. But for the
-// moment, we are leaving the "exercise" behavior here as a simple example for
-// writing an unstructured exercise. It hopefully does not hurt anything in
-// terms of its behavior as a calculator to leave this in place.
+// Written by Bailey Spell and Jesse Terrazas
 $(document).ready(function() {
   "use strict";
   // Declare and initialize state variables
