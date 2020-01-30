@@ -1,0 +1,16 @@
+{
+    "translations" :{
+      "en": {
+        ".exerciseTitle": "Simple JSAV Proficiency Exercise",
+        ".instructLabel": "Instructions:",
+        ".instructions":  "Directions: From left to right, fill in the new incremented value of an array cell and then click on the cell to highlight it. After you have done this for all the elements, then click on the first and last elements to swap them.",
+        "#calculate": "Calculate",
+        "av_c10": "Exercise is done, check your grade."
+      }
+    },
+    "params": {
+      "JXOP-feedback": "continuous",
+      "JXOP-fixmode": "fix"
+    }
+  }
+  

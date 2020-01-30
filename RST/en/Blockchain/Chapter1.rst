@@ -27,3 +27,10 @@ This example shows how we can get a hash from a blockchain
 
 .. avembed:: AV/Blockchain/BlockExample.html ss
    :long_name: Block Example
+
+This example shows how a blockchain determines the hash for the entire chain.
+
+.. _BlockchainExample:
+
+.. avembed:: AV/Blockchain/BlockchainExample.html ss
+   :long_name: Blockchain Example
