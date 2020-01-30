@@ -723,7 +723,8 @@
         "min-width": "0px",
         width: "60%",
         overflow: "hidden",
-        "margin-left": 0
+        "margin-left": 0,
+        display: "inline-block"
       });
 
       // $(".jsavcanvas").append(qButton);
@@ -732,7 +733,7 @@
       $(container).append(question);
 
       $(".SHOWQUESTION,.PIFRAMES").wrapAll('<div class="picanvas"></div>');
-      $(".picanvas").insertBefore($(".jsavcanvas"));
+      $(".picanvas").insertAfter($(".jsavcanvas"));
       return this.getQuestions(av_name);
     },
 
