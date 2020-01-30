@@ -39,8 +39,8 @@ av.umsg(Frames.addQuestion("q1"));
 av.step();
 
 //frame 3
-av.umsg(Frames.addQuestion("q2"));
-av.step();
+// av.umsg(Frames.addQuestion("q2"));
+// av.step();
 
 //frame 4
 av.umsg(Frames.addQuestion("q2_2"));
