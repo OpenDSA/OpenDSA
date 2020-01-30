@@ -20,7 +20,7 @@
         },
         "q3": {
           "type": "multiple",
-          "description": "Sets members are typically drawn from some larger population known as the base type",
+          "description": "Set members are typically drawn from some larger population known as the base type",
           "question": "Let $P = \\{7, 11, 42\\}$, what is the base type of $P$ elements?",
           "answer": ["$Integers$"],
           "choices": ["$Integers$", "$Real$ $numbers$"]
@@ -34,8 +34,8 @@
         },
         "q5": {
           "type": "multiple",
-          "description": "Sets common symbols: a) {}: braces that surround the set elements.",
-          "question": "Which of the following is a valid set:",
+          "description": "Sets common symbols: a) $\\{\\}$: braces that surround the set elements.",
+          "question": "Which of the following is a valid set? :",
           "answer": "$\\{a, 2, 3\\}$",
           "choices": ["$1$, $2$, $3$", "$\\{a, 2, 3\\}$"]
         },
@@ -48,7 +48,7 @@
         "q7": {
           "type": "select",
           "description": "Sets common symbols: c) $x∈P$: $x$ is a member of set $P$ d) $x∉P$: $x$ is not a member of set $P$",
-          "question": "Let $P = \\{a, b, c\\}$, which of the following is ∉P",
+          "question": "Let $P = \\{a, b, c\\}$, which of the following is $∉P$?",
           "answer": ["$b$", "$\\{a, b, c\\}$"],
           "choices": ["$a$", "$\\{a\\}$", "$b$", "$\\{a, b, c\\}$"]
         },
@@ -87,7 +87,7 @@
         "q13": {
           "type": "multiple",
           "description": "Sets common symbol: i) $P∪Q$:  Union: all elements appearing in $P$ OR $Q$",
-          "question": "Select the correct fact about set union ",
+          "question": "Select the correct fact about set union",
           "answer": "$P∪Q$ = $Q∪P$",
           "choices": [
             "$P∪Q$ = $Q∪P$",
@@ -109,7 +109,7 @@
         "q16": {
           "type": "multiple",
           "description": "Sets common symbols: i) $P∩Q$:  Intersection: all elements appearing in $P$ AND $Q$",
-          "question": "Select the correct fact about set union ",
+          "question": "Select the correct fact about set union",
           "answer": "$P∩Q$ = $Q∩P$",
           "choices": ["$P∩Q$ = $Q∩P$", "$P∩Q$ ≠ $Q∩P$"]
         },
@@ -128,7 +128,7 @@
         "q19": {
           "type": "multiple",
           "description": "Sets common symbols: k) $P$ $-$ $Q$: difference: all elements of set $P$ NOT in set $Q$",
-          "question": " Select the correct fact about the set difference: ",
+          "question": " Select the correct fact about the set difference:",
           "answer": "$P-Q$ ≠ $Q - P$",
           "choices": ["$P-Q$ = $Q - P$", "$P-Q$ ≠ $Q - P$"]
         },
@@ -147,7 +147,7 @@
         "q22": {
           "type": "textBox",
           "description": "The powerset of a set $S$ (denoted 2S ) is the set of all possible subsets for $S$",
-          "question": " Consider the set $S = \\{a,b,c\\}$. What is $2^S$ ?",
+          "question": " Consider the set $S = \\{a,b,c\\}$. What is $2^S$?",
           "answer": "{∅, {a}, {b}, {c}, {a,b}, {a,c}, {b,c}, {a,b,c}}"
         }
       }
