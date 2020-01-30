@@ -2,9 +2,11 @@
   "translations": {
     "en": {
       "q1": {
-        "type": "textBox",
+        "type": "multiple",
+        "description":"One way to describe a language is in the form of a grammar.",
         "question":"What is a grammar?",
-        "answer": "A way to describe languages"
+        "answer": "A way to describe languages",
+        "choices": ["A way to describe languages", "A way to spell sentence right", "A way to write languages", "A way to arrange words in sentence"]
       },
       "q2": {
         "type": "textBox",
