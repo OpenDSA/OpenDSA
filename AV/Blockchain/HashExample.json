@@ -1,0 +1,12 @@
+{
+    "translations" : {
+      "en": {
+        ".avTitle": "Sha-256 Calculator",
+        "av_Authors": "Bailey Spell and Jesse Terrazas",
+        "#about": "About",
+        "#calculate": "Calculate",
+        "#tableSizeLabel": " Input something to be hashed "
+      }
+    }
+  }
+  

@@ -5,7 +5,7 @@
     :author: Bailey Spell and Jesse Terrazas
 
 An Introduction to Blockchain and Its Applications
-=============================================
+==================================================
 
 Intro
 ------------

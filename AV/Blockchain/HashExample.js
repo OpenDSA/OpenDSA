@@ -1,0 +1,58 @@
+/*global alert: true, console: true, ODSA */
+// Written by Cliff Shaffer and Nayef Copty
+// WARNING: This is a bit obsolete, in that it is written as an exercise
+// that expects students to answer some specific questions. This behavior
+// has now been replaced in the module with a KA exercise. But for the
+// moment, we are leaving the "exercise" behavior here as a simple example for
+// writing an unstructured exercise. It hopefully does not hurt anything in
+// terms of its behavior as a calculator to leave this in place.
+$(document).ready(function() {
+  "use strict";
+  // Declare and initialize state variables
+  var tsize = Number($("#tablesize").val()), // Table size
+      recs = Number($("#numrecs").val()), // Number of records
+      birthCredit = false,    // Credit flag for question 1
+      thousandCredit = false, // Credit flag for question 2
+      noCredit = true;        // Have not yet given credit
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter;       // get the interpreter
+
+  // Convenience function for writing output messages
+  function tell(msg) {
+    $("p.output").text(msg);
+  }
+
+  // Process About button: Pop up a message with an Alert
+  function about() {
+    alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+  }
+
+  async function sha256(input) {
+    // encode as UTF-8
+    const msgBuffer = new TextEncoder('utf-8').encode(input);                    
+
+    // hash the message
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+
+    // convert ArrayBuffer to Array
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+    // convert bytes to hex string                  
+    const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+    return hashHex;
+}
+
+  // Main action: Result of clicking "Calculate" button
+  // Most of this behavior relates to checking against the expected
+  // answer for giving credit to the obsolete exercise.
+  function CreateHash() {
+    var input = $("#tablesize").val();
+    sha256(input).then(res => {
+        tell(res);
+    });
+  }
+
+  // Action callbacks for form entities
+  $("#about").click(about);
+  $("#calculate").click(CreateHash);
+});
