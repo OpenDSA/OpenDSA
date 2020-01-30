@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- Simple activity that shows students an example of 
+     hashing that blockchains utilize
+     Written by Bailey Spell and Jesse Terrazas 
+-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Birthday Problem Calculator</title>
+  <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="HashExample.css" type="text/css" />
+</head>
+
+<body>
+  <div id="container">
+    <input type="button" id="about" name="about" />
+    <p class="instructions">
+        Type in any string to discover what its hash value is.<br/>
+        Click the hash button for the has to show. <br/>
+    </p>
+    <p class="tsize"><label id="tableSizeLabel" for="tablesize"></label></p> 
+    <input id="blockNum" name="blockNum" type ="text" />
+    <input id="tablesize" name="tablesize" type = "text" />
+    <input type="button" id="calculate" name="calculate" />
+    <p class="output"></p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="../../lib/JSAV-min.js"></script>
+  <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
+  <script src="HashExample.js"></script>
+</body>
+</html>
