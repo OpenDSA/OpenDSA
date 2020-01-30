@@ -157,8 +157,8 @@
           "type": "multiple",
           "description": "The powerset of a set $S$ (denoted 2S ) is the set of all possible subsets for $S$",
           "question": " Consider the set $S = \\{a,b,c\\}$. What is $2^S$?",
-          "answer": "$\\{∅, ${a}$, ${b}$, ${c}$, ${a,b}$, ${a,c}$, ${b,c}$, ${a,b,c}\\}$",
-          "choices": ["$\\{∅\\}$","$\\{∅, ${a}$, ${b}$, ${c}$, ${a,b}$, ${a,c}$, ${b,c}$, ${a,b,c}\\}$","$\\{∅, ${a}$, ${b}$, ${c}$,\\}$","$\\{∅, ${a}$, ${b}$, ${c}$, ${a,b}$, ${a,c}$\\}$"]
+          "answer": "$\\{∅, ${a}$, ${b}$, ${c}$, ${a,b}$, ${a,c}$, ${b,c}$, ${a,b,c}$\\}$",
+          "choices": ["$\\{∅\\}$","$\\{∅, ${a}$, ${b}$, ${c}$, ${a,b}$, ${a,c}$, ${b,c}$, ${a,b,c}$\\}$","$\\{∅, ${a}$, ${b}$, ${c}$\\}$","$\\{∅, ${a}$, ${b}$, ${c}$, ${a,b}$, ${a,c}$\\}$"]
         }
       }
     }
