@@ -59,16 +59,16 @@ $(document).ready(function() {
     av.step();
     
     //frame 13
-    av.umsg(Frames.addQuestion("q12"));
-    av.step();
+    // av.umsg(Frames.addQuestion("q12"));
+    // av.step();
 
     //frame 14
     av.umsg(Frames.addQuestion("q13"));
     av.step();
 
     //frame 15
-    av.umsg(Frames.addQuestion("q14"));
-    av.step();
+    // av.umsg(Frames.addQuestion("q14"));
+    // av.step();
     
     //frame 16
     av.umsg(Frames.addQuestion("q15"));
