@@ -56,21 +56,21 @@
       "q3_2": {
         "type": "multiple",
         "description": "A language is simply a collection of strings defined over $\\Sigma$.",
-        "question": "Is this one a langue?  $\\Sigma$=${a,b,c}$ $L = ab$",
+        "question": "Can $\\Sigma$=${a,b,c}$ $L = ab$ be a language?",
         "answer": "No",
         "choices": ["Yes", "No"]
       },
       "q3_3": {
         "type": "multiple",
         "description": "A language is simply a collection of strings defined over $\\Sigma$.",
-        "question": "Is this one a langue?  $\\Sigma$=$\\{a,b,c\\}$ $L = \\{a\\}$",
+        "question": "Can $\\Sigma$=$\\{a,b,c\\}$ $L = \\{a\\}$ be a language?",
         "answer": "Yes",
         "choices": ["Yes", "No"]
       },
       "q3_4": {
         "type": "multiple",
         "description": "A language is simply a collection of strings defined over $\\Sigma$.",
-        "question": "Is this one a langue?  $\\Sigma$=$\\{a,b,c\\}$ $L$ = $\\{\\}$",
+        "question": "Can $\\Sigma$=$\\{a,b,c\\}$ $L$ = $\\{\\}$ be a language?",
         "answer": "Yes",
         "choices": ["Yes", "No"]
       },
@@ -84,14 +84,14 @@
       "q4": {
         "type": "select",
         "description": "Another definition of a language is a subset of the powerset of $\\Sigma$. Remember from Discrete Math class that a power set of any set is the set of all possible subsets from the given set.",
-        "question": "List the power set of $\\{a, b\\}$",
+        "question": "Choose what can be the power set of $\\{a, b\\}$",
         "answer": ["$\\{\\}$", "$\\{a\\}$", "$\\{b\\}$", "$\\{ab\\}$"],
-        "choices": ["$\\{\\}$", "$\\{a\\}$", "$\\{b\\}$", "$\\{ab\\}$", "$a$", "$b$", "$ab$"]
+        "choices": ["$\\{\\}$", "$\\{b\\}$", "$a$", "$\\{ab\\}$", "$b$","$\\{a\\}$", "$ab$"]
       },
       "q5": {
         "type": "multiple",
         "description": "Useful notations: We usually use these symbols in our book, For symbols in some alphabet $\\Sigma$, we typically use either digits or letters near the start of the common English alphabet: $a,b,c,d,0,1$ For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the common English alphabet: $u,v,w,x,y,z$",
-        "question": "So, when you see $b$ in a sentence, it probably refers to:",
+        "question": "So, when you see $b$ in a sentence, it probably refers to",
         "answer": "The character ‘$b$’.",
         "choices": ["The character ‘$b$’.", "Some string named ‘$b$’."]
       },
@@ -113,8 +113,8 @@
         "type": "multiple",
         "description": "Another important operation is string concatenation. The concatenation of two strings $u$, and v is just the string that contains the symbols of $u$ followed by the symbols of $v$. We use the symbol ∘ to represent concatenation: Example : Let $w$=$a1a2...an$, and $v$=$b1b2...bn$ Then, $w∘v$  = $a1a2...anb1b2...bm$",
         "question": "Let $w = abc$, $v = 012$, What is $w∘v$?",
-        "answer": "abc012",
-        "choices": ["abc012", "012abc", "012", "abc"]
+        "answer": "$abc012$",
+        "choices": ["$abc012$", "$012abc$", "$012$", "$abc$"]
       },
       "q7_1": {
         "type": "multiple",
@@ -149,7 +149,7 @@
         "description": "Another useful operation is to reverse a string: Reversing a string means to flip it, in other words, write its symbols in reverse order.",
         "question": "Let $w = abbc$, what is $w^R$?",
         "answer": "$cbba$",
-        "choices": ["$abbc$", "$bcab$","$cbba$", "$abcb$", "$cbab$"]
+        "choices": ["$abbc$", "$bcab$", "$abcb$", "$cbab$","$cbba$"]
       },
       "q11": {
         "type": "multiple",
@@ -169,7 +169,7 @@
         "description": "One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\Sigma$ = {a,b}, $\\Sigma$* means the set of strings obtained by concatenating 0 or more symbols from $\\Sigma$. ",
         "question": "Which are examples of $w^*$ where $w = abc$?",
         "answer": ["$Λ$", "$abc$", "$abcabc$"],
-        "choices": ["$Λ$", "$abc$", "$abcabc$", "$aabbcc$"]
+        "choices": ["$Λ$", "$aabbcc$", "$abc$", "$abcabc$"]
       },
       "q13": {
         "type": "select",
@@ -190,28 +190,28 @@
         "description": "Sets. As we see, Languages are sets, so all sets of operations can be applied to them.",
         "question": " Let $\\sigma$={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, which element is included in $L1∪L2$ ?",
         "answer": ["ab" ,"bc","aba","c","bcc"],
-        "choices": ["ab", "bc", "aba","c", "bcc", "a", "bca", "cb"]
+        "choices": ["ab", "bc","a", "bca", "aba","c", "bcc","cb"]
       },
       "q15": {
         "type": "multiple",
         "description": "Sets. As we see, Languages are sets, so all sets of operations can be applied to them.",
         "question": "Let $\\Sigma$={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, What is $L1∩L2$ ?",
         "answer": "$bc$",
-        "choices": ["$bc$", "$aba$", "$ab$", "$c$", "$bcc$"]
+        "choices": ["$aba$", "$ab$", "$c$","$bc$", "$bcc$"]
       },
       "q16": {
         "type": "multiple",
-        "description": "In languages, $\\Sigma$^∗  represents the Universe set $U4$. Forexample, the complement of $L1$ will be the set of all strings in $\\Sigma$  except the strings in $L$. In other words,",
-        "question": "What is ?",
-        "answer": [" "],
-        "choices": [" "]
+        "description": "In languages, $\\Sigma^*$  represents the Universe set $U4$. Forexample, the complement of $L1$ will be the set of all strings in $\\Sigma$  except the strings in $L$. In other words, $\\bar{L1}$ = $\\Sigma$^* - $L$",
+        "question": "What is $\\overline{L1∩L2}$?",
+        "answer": ["$\\Sigma^*$ - &lt;bc&gt;"],
+        "choices": [" $\\Sigma$ - &lt;bc&gt;", " $\\Sigma^*$ - &lt;bc&gt;", " $\\Sigma^*$+ &lt;bc&gt;", "$\\Sigma$ - bc", " $\\Sigma^*$ - bc" ]
       },
       "q17": {
-        "type": "select",
+        "type": "multiple",
         "description": "Sets concatenation. Concatenating two sets $L1$, and $L2$ means concatenating every string in $L1$ with each string in $L2$.",
         "question": "What states can be combined?",
-        "answer": "{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}",
-        "choices": ["{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc}", "{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,abab}", "{abc,abbc,abbcc,bcc,bbcc,bcbcc,abac,abab,ababcc}"]
+        "answer": "$\\{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc\\}$",
+        "choices": [ "$\\{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,abab\\}$","$\\{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc\\}$", "$\\{abc,abbc,abbcc,bcc,bbcc,bcbcc,abac,abab,ababcc\\}$"]
       },
       "q18": {
         "type": "multiple",
@@ -224,14 +224,15 @@
         "type": "multiple",
         "description": "Sets concatenation. Concatenating a set n times means concatenating every string in L with each string in $L$ n times",
         "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L2$? ",
-        "answer": "{abab, ababa, abaab, abaaba}",
-        "choices": ["{abab, ababa, abaab, abaaba}"]
+        "answer": "$\\{abab, ababa, abaab, abaaba\\}$",
+        "choices": ["$\\{abab, ababa, abaab, abaaba\\}$", "$\\{ab, ababa, abaa, abaa\\}$", "$\\{ab, aba, abaab, abaaba\\}$", "$\\{a, b, abaab, abaaba\\}$", "$\\{a, ab, aba, abaaba\\}$"]
       },
       "q19_1": {
-        "type": "textBox",
+        "type": "multiple",
         "description": "Sets concatenation. Concatenating a set n times means concatenating every string in L with each string in $L$ n times",
-        "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L3$?",
-        "answer": "{ababab, ababaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba}"
+        "question": "Let $\\Sigma$=$\\{a,b\\}$, $L1$=$\\{ab,aba\\}$, What is $L3$?",
+        "answer": "$\\{ababab, abaabaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba\\}$",
+        "choices": ["$\\{ababab, abaabaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba\\}$","$\\{ab, ababaab, abaabab, abaabaab, abababa, abaaba, abaababa, abaabaaba\\}$","$\\{ababab, baab, abaabab, abaaba, abab, ababaaba, abaababa, abaabaaba\\}$","$\\{ababab, ababa, abaabab, abaab, ababa, ababaaba, abaababa, abaabaaba\\}$","$\\{ababab, ababaab, abaabab, abaabaab, baba, ababaaba, abaaba, abaaba\\}$"]
       }
     }
   }
