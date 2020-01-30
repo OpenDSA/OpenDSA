@@ -1,21 +1,22 @@
 #container { 
-    width: 800px;
+    width: 1000px;
     height: 350px;
   }
   
   .avcontainer{
     overflow: visible;
+    width:1000px;
   }
   
   .jsavline{
     height: 50px;
   }
 
-  #container {
+  /* #container {
     width: 800px;
     height: 165px;
     position: relative;
-}
+    } */
 
 .instructions {
     border: 0;
@@ -24,68 +25,84 @@
     text-align: center;
 }
 
+table {
+    position: relative;
+    width:800px;
+    height:300px;
+    margin:auto;
+}
+
+td {
+    width:250px;
+    margin:auto;
+}
+input {
+    margin:auto;
+}
 .bsize1 {
-    position: absolute;
-    left: 55px;
+    /* position: absolute; */
+    /* left: 55px;*/
     top: 42px;
+    margin:auto;
 }
 
 #blockNum1 {
-    position: absolute;
-    left: 200px;
+    /* position: absolute; */
+    /* left: 200px; */
     top: 55px;
-    width: 100px;
+    margin:auto;
 }
 
 .bsize2 {
-    position: absolute;
-    left: 55px;
+    /* position: absolute; */
+    /* left: 55px; */
     top: 42px;
+    margin:auto;
 }
 
 #blockNum2 {
-    position: absolute;
-    left: 200px;
+    /* position: absolute; */
+    /* left: 200px; */
     top: 55px;
-    width: 100px;
+    margin:auto;
 }
 
 .bsize3 {
-    position: absolute;
-    left: 55px;
+    /* position: absolute; */
+    /* left: 55px; */
     top: 42px;
+    margin:auto;
 }
 
 #blockNum3 {
-    position: absolute;
-    left: 200px;
+    /* position: absolute; */
+    /* left: 200px; */
     top: 55px;
-    width: 100px;
+    margin:auto;
 }
 
 .tsize {
-    position: absolute;
+    /* position: absolute; */
     left: 55px;
     top: 70px;
 }
 
 #tablesize {
-    position: absolute;
+    /* position: absolute; */
     left: 200px;
     top: 85px;
-    width: 100px;
 }
 
 #calculate {
-    position: absolute;
+    /* position: absolute; */
     right: 5px;
     top: 95px;
 }
 
 .output {
-    position: absolute;
+    /* position: absolute; */
     top: 150px;
     text-align:center;
-    width: 500px;
+    width: 250px;
     margin: 0;
 }
