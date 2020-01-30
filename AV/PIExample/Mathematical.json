@@ -35,7 +35,7 @@
         "q5": {
           "type": "multiple",
           "description": "Sets common symbols: a) $\\{\\}$: braces that surround the set elements.",
-          "question": "Which of the following is a valid set? :",
+          "question": "Which of the following is a valid set?",
           "answer": "$\\{a, 2, 3\\}$",
           "choices": ["$1$, $2$, $3$", "$\\{a, 2, 3\\}$"]
         },
@@ -61,7 +61,7 @@
         },
         "q9": {
           "type": "textBox",
-          "description": "Sets common symbols: f) $|P|$: Cardinality: the size of set $P$ or number of members for set $P$",
+          "description": "Set's common symbols: f) $|P|$: Cardinality: the size of set $P$ or number of members for set $P$",
           "question": "What does it mean to say that $|P|$ = $3$?",
           "answer": "P has 3 elements"
         },
