@@ -12,25 +12,6 @@
     height: 50px;
   }
 
-  /* #container {
-    width: 800px;
-    height: 165px;
-    position: relative;
-    } */
-
-.instructions {
-    border: 0;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
-#testDiv {
-    width:250px;
-    height:150px;
-    background-color: aquamarine;
-    margin:auto;
-}
 table {
     position: relative;
     width:800px;
@@ -51,56 +32,12 @@ td {
     border: 1px solid #B6C0B2;
     background-color: #E2EEDD;
 }
-input {
-    margin:auto;
-}
 .bsize1 {
     /* position: absolute; */
     /* left: 55px;*/
     top: 42px;
     margin:auto;
     text-align: center;
-}
-
-#blockNum1 {
-    /* position: absolute; */
-    /* left: 200px; */
-    top: 55px;
-    margin:auto;
-}
-
-.bsize2 {
-    /* position: absolute; */
-    /* left: 55px; */
-    top: 42px;
-    margin:auto;
-}
-
-#blockNum2 {
-    /* position: absolute; */
-    /* left: 200px; */
-    top: 55px;
-    margin:auto;
-}
-
-.bsize3 {
-    /* position: absolute; */
-    /* left: 55px; */
-    top: 42px;
-    margin:auto;
-}
-
-#blockNum3 {
-    /* position: absolute; */
-    /* left: 200px; */
-    top: 55px;
-    margin:auto;
-}
-
-.tsize {
-    /* position: absolute; */
-    left: 55px;
-    top: 70px;
 }
 
 #tablesize {
@@ -113,17 +50,4 @@ input {
     /* position: absolute; */
     right: 5px;
     top: 95px;
-}
-
-.output {
-    /* position: absolute; */
-    top: 150px;
-    text-align:center;
-    width: 250px;
-    margin: 0;
-}
-
-.wrapText {
-    width: 100px;
-    margin: 0 auto;
 }
