@@ -5,7 +5,10 @@
         ".instructLabel": "Instructions:",
         ".instructions":  "Directions: From left to right, fill in the new incremented value of an array cell and then click on the cell to highlight it. After you have done this for all the elements, then click on the first and last elements to swap them.",
         "#calculate": "Calculate",
-        "av_c10": "Exercise is done, check your grade."
+        "av_c10": "Exercise is done, check your grade.",
+        "#blockNum1": "Block 1",
+        "#blockNum2": "Block 2",
+        "#blockNum3": "Block 3"
       }
     },
     "params": {

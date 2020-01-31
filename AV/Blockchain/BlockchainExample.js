@@ -17,29 +17,36 @@ $(document).ready(function() {
         return hashHex;
     }
 
-    var RecomputeHashes = () => {
+    async function RecomputeHashes() {
         var one = 1, two = 2, three = 3;
         var block1Data = $("#blockNum1").text();
         var block2Data = $("#blockNum2").text();
         var block3Data = $("#blockNum3").text();
+        var block1Hash, block2Hash, block3Hash;
 
-        // create the block one hash
-        var block1Hash;
-        sha256(one, block1Data).then(res => {
+        
+
+        await sha256(one, block1Data).then(res => {
             block1Hash = res;
         });
 
-        //create the second block hash
-        var block2Hash;
-        sha256(two, block2Data, block1Hash).then(res => {
+
+        await sha256(two, block2Data, block1Hash).then(res => {
+            console.log("2")
             block2Hash = res;
         });
 
-        //create the second block hash
-        var block3Hash;
-        sha256(three, block3Data, block2Hash).then(res => {
+        await sha256(three, block3Data, block2Hash).then(res => {
+            console.log("3")
             block3Hash = res;
         });
+
+        console.log("Block1hash: ");
+        console.log(block1Hash);
+        console.log("Block2hash: ");
+        console.log(block2Hash);
+        console.log("Block3hash: ");
+        console.log(block3Hash);
 
         $("#block1Hash").text(block1Hash);
         $("#block2Hash").text(block2Hash);

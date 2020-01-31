@@ -106,3 +106,8 @@ input {
     width: 250px;
     margin: 0;
 }
+
+.wrapText {
+    width: 100px;
+    margin: 0 auto;
+}
