@@ -19,12 +19,10 @@ $(document).ready(function() {
 
     async function RecomputeHashes() {
         var one = 1, two = 2, three = 3;
-        var block1Data = $("#blockNum1").text();
-        var block2Data = $("#blockNum2").text();
-        var block3Data = $("#blockNum3").text();
+        var block1Data = $("#data1").val();
+        var block2Data = $("#data2").val();
+        var block3Data = $("#data3").val();
         var block1Hash, block2Hash, block3Hash;
-
-        
 
         await sha256(one, block1Data).then(res => {
             block1Hash = res;
@@ -32,21 +30,12 @@ $(document).ready(function() {
 
 
         await sha256(two, block2Data, block1Hash).then(res => {
-            console.log("2")
             block2Hash = res;
         });
 
         await sha256(three, block3Data, block2Hash).then(res => {
-            console.log("3")
             block3Hash = res;
         });
-
-        console.log("Block1hash: ");
-        console.log(block1Hash);
-        console.log("Block2hash: ");
-        console.log(block2Hash);
-        console.log("Block3hash: ");
-        console.log(block3Hash);
 
         $("#block1Hash").text(block1Hash);
         $("#block2Hash").text(block2Hash);

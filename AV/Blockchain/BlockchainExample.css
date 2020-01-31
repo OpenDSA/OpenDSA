@@ -19,6 +19,10 @@ table {
     margin:auto;
 }
 
+.scrolling {
+    overflow-x: scroll;
+}
+
 .data {
     width: 95%;
     height: 100px;
@@ -34,10 +38,11 @@ td {
 }
 .bsize1 {
     /* position: absolute; */
-    /* left: 55px;*/
+    /* left: 55px; */
     top: 42px;
     margin:auto;
     text-align: center;
+    word-wrap: break-words;
 }
 
 #tablesize {
