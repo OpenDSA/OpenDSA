@@ -36,6 +36,11 @@ td {
     border: 1px solid #B6C0B2;
     background-color: #E2EEDD;
 }
+
+p {
+    word-break: break-all;
+}
+
 .bsize1 {
     /* position: absolute; */
     /* left: 55px; */
