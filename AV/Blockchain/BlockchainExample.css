@@ -1,6 +1,6 @@
 #container { 
     width: 1000px;
-    height: 350px;
+    height: 750px;
   }
   
   .avcontainer{
@@ -25,6 +25,12 @@
     text-align: center;
 }
 
+#testDiv {
+    width:250px;
+    height:150px;
+    background-color: aquamarine;
+    margin:auto;
+}
 table {
     position: relative;
     width:800px;
@@ -32,9 +38,18 @@ table {
     margin:auto;
 }
 
+.data {
+    width: 95%;
+    height: 100px;
+    display: block;
+    margin : 0 auto;
+    
+}
 td {
     width:250px;
     margin:auto;
+    border: 1px solid #B6C0B2;
+    background-color: #E2EEDD;
 }
 input {
     margin:auto;
@@ -44,6 +59,7 @@ input {
     /* left: 55px;*/
     top: 42px;
     margin:auto;
+    text-align: center;
 }
 
 #blockNum1 {

@@ -1,80 +1,71 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Blockchain Example with Hash Pointers</title>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
+    <title>Blockchain Example with Hash Pointers</title>
+    <meta charset="utf-8" />
+    <!-- <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-  <link rel="stylesheet" href="BlockchainExample.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" /> -->
+    <link rel="stylesheet" href="BlockchainExample.css" type="text/css" />
 </head>
 
 <body>
-<div id="container">
-    <h1 class="headerCenter avTitle">
-        Blockchain Example with Previous Hash Pointers
-    </h1>
 
-    <table>
-        <tr>
-            <td>
-                <p class="bsize1"><label id="blockNumLabel1" for="blockNum"></label></p> 
-                <input id="blockNum1" name="blockNum1" type = "number" />
-                <p class="tsize1"><label id="tableSizeLabel" for="tablesize"></label></p> 
-                <input id="tablesize1" name="tablesize" type = "text" />
-                <p class="wrapText">0000000000000000000000000000000000000000000000000000000000000000</p>
-                <p class="wrapText" id="block1Hash"></p>
-            </td>
-                
-            <td>
-                <p class="bsize2"><label id="blockNumLabel2" for="blockNum"></label></p> 
-                <input id="blockNum2" name="blockNum2" type = "number" />
-                <p class="tsize2"><label id="tableSizeLabel" for="tablesize"></label></p> 
-                <input id="tablesize2" name="tablesize" type = "text" />
-                <p class="wrapText" id="block2PrevHash"></p>
-                <p class="wrapText" id="block2Hash"></p>
-            </td>
+    <div id="container">
+        <h1 class="headerCenter avTitle">
+            Blockchain Example with Previous Hash Pointers
+        </h1>
 
-            <td>
-                <p class="bsize3"><label id="blockNumLabel3" for="blockNum"></label></p> 
+
+        <table>
+            <tr>
+                <td>
+                    <p class="bsize1">Block Number: 1</p>
+                    <p class="bsize1">Data</p>
+                    <input id="tablesize1" class='data' name="tablesize" type="text" />
+                    <p class="bsize1">Prev Hash</p>
+                    <p class="bsize1" id="block1Hash">New Hash</p>
+                </td>
+
+                <td>
+                    <p class="bsize1">Block Number: 2</p>
+                    <p class="bsize1">Data</p>
+                    <input id="tablesize1" class="data" name="tablesize" type="text" />
+                    <p class="bsize1">Prev Hash</p>
+                    <p class="bsize1" id="block1Hash">New Hash</p>
+                </td>
+
+                <td>
+                    <p class="bsize1">Block Number: 3</p>
+                    <p class="bsize1">Data</p>
+                    <input id="tablesize1" class="data" name="tablesize" type="text" />
+                    <p class="bsize1">Prev Hash</p>
+                    <p class="bsize1" id="block1Hash">New Hash</p>
+                </td>
+            </tr>
+
+        </table>
+
+        <input type="button" id="calculate" name="calculate" />
+
+    </div>
+
+    <!-- <p class="bsize3"><label id="blockNumLabel3" for="blockNum"></label></p> 
                 <input id="blockNum3" name="blockNum3" type = "number" />
                 <p class="tsize3"><label id="tableSizeLabel" for="tablesize"></label></p> 
                 <input id="tablesize3" name="tablesize" type = "text" />
                 <p class="wrapText" id="block3PrevHash"></p>
-                <p class="wrapText" id="block3Hash"></p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p class="bsize1"><label id="blockNumLabel1" for="blockNum"></label></p> 
-                <input id="blockNum1" name="blockNum1" type = "number" />
-                <p class="tsize1"><label id="tableSizeLabel" for="tablesize"></label></p> 
-                <input id="tablesize1" name="tablesize" type = "text" />
-                <p class="wrapText">0000000000000000000000000000000000000000000000000000000000000000</p>
-                <p class="wrapText" id="block1Hash"></p>
-            </td>
-                
-            <td>
-                
-            </td>
+                <p class="wrapText" id="block3Hash"></p> -->
 
-            <td>
-                
-            </td>
-        </tr>
-    </table>
-
-    <input type="button" id="calculate" name="calculate" />
- 
-</div>
-
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script src="../../lib/jquery.transit.js"></script>
-<script src="../../lib/raphael.js"></script>
-<script src="../../lib/JSAV-min.js"></script>
-<script src="../../lib/odsaUtils.js"></script>
-<script src="../../lib/odsaAV.js"></script>
-<script src="BlockchainExample.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="../../lib/jquery.transit.js"></script>
+    <script src="../../lib/raphael.js"></script>
+    <script src="../../lib/JSAV-min.js"></script>
+    <script src="../../lib/odsaUtils.js"></script>
+    <script src="../../lib/odsaAV.js"></script>
+    <script src="BlockchainExample.js"></script>
 </body>
+
 </html>
