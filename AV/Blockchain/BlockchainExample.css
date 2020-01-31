@@ -52,7 +52,7 @@ td {
     background-color: #E2EEDD;
 }
 input {
-    margin:auto;
+    text-align: left;
 }
 .bsize1 {
     /* position: absolute; */
