@@ -2,6 +2,9 @@
 $(document).ready(function() {
     "use strict";
 
+    ODSA.UTILS.loadConfig();
+
+    // Creates the hash
     async function sha256(blockNum, data, prevHash = "") {
         // encode as UTF-8
         const msgBuffer = new TextEncoder('utf-8').encode(prevHash + blockNum + data);                    
@@ -17,7 +20,8 @@ $(document).ready(function() {
         return hashHex;
     }
 
-    async function RecomputeHashes() {
+    // Computes the hash for all three blocks
+    async function ComputeHashes() {
         var one = 1, two = 2, three = 3;
         var block1Data = $("#data1").val();
         var block2Data = $("#data2").val();
@@ -28,7 +32,6 @@ $(document).ready(function() {
             block1Hash = res;
         });
 
-
         await sha256(two, block2Data, block1Hash).then(res => {
             block2Hash = res;
         });
@@ -37,15 +40,14 @@ $(document).ready(function() {
             block3Hash = res;
         });
 
-        $("#block1Hash").text(block1Hash);
-        $("#block2Hash").text(block2Hash);
-        $("#block3Hash").text(block3Hash);
-        $("#block2PrevHash").text(block1Hash);
-        $("#block3PrevHash").text(block2Hash);
+        $("#block1PrevHash").val("0000000000000000000000000000000000000000000000000000000000000000");
+        $("#block1Hash").val(block1Hash);
+        $("#block2Hash").val(block2Hash);
+        $("#block3Hash").val(block3Hash);
+        $("#block2PrevHash").val(block1Hash);
+        $("#block3PrevHash").val(block2Hash);
     }
 
-
-
     // Connect action callbacks to the HTML entities
-    $("#calculate").click(RecomputeHashes);
+    $("#compute").click(ComputeHashes);
 });

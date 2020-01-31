@@ -1,14 +1,21 @@
 {
     "translations" :{
       "en": {
-        ".exerciseTitle": "Simple JSAV Proficiency Exercise",
-        ".instructLabel": "Instructions:",
-        ".instructions":  "Directions: From left to right, fill in the new incremented value of an array cell and then click on the cell to highlight it. After you have done this for all the elements, then click on the first and last elements to swap them.",
-        "#calculate": "Calculate",
-        "av_c10": "Exercise is done, check your grade.",
+        ".avTitle": "Blockchain Example",
+        "av_Authors": "Bailey Spell and Jesse Terrazas",
+        "#compute": "Compute Hashes",
         "#blockNum1": "Block 1",
         "#blockNum2": "Block 2",
-        "#blockNum3": "Block 3"
+        "#blockNum3": "Block 3",
+        "#data1Label": "Data:",
+        "#data2Label": "Data:",
+        "#data3Label": "Data:",
+        "#prevHash1Label": "Prev:",
+        "#prevHash2Label": "Prev:",
+        "#prevHash3Label": "Prev:",
+        "#hash1Label": "Hash:",
+        "#hash2Label": "Hash:",
+        "#hash3Label": "Hash:"
       }
     },
     "params": {

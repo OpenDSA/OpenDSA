@@ -16,7 +16,15 @@ table {
     position: relative;
     width:800px;
     height:300px;
-    margin:auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
+
+input {
+    width: 95%;
+    margin: 0 auto;
 }
 
 .scrolling {
@@ -40,7 +48,7 @@ div {
     
 }
 td {
-    width:250px;
+    width:750px;
     margin:auto;
     border: 1px solid #B6C0B2;
     background-color: #E2EEDD;
@@ -66,8 +74,9 @@ p {
     top: 85px;
 }
 
-#calculate {
+#compute {
     /* position: absolute; */
-    right: 5px;
-    top: 95px;
+    margin-right: 225px;
+    float: right;
+    top: 15px;
 }

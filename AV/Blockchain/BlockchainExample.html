@@ -1,94 +1,83 @@
 <!DOCTYPE html>
+<!--
+    Simple demonstration of how hashing works for a blockchain
+    Written by Bailey Spell and Jesse Terrazas
+-->
 <html>
-
 <head>
-    <title>Blockchain Example with Hash Pointers</title>
     <meta charset="utf-8" />
-    <!-- <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" /> -->
+    <title>Blockchain Example with Hash Pointers</title>
     <link rel="stylesheet" href="BlockchainExample.css" type="text/css" />
 </head>
 
 <body>
 
     <div id="container">
-        <h1 class="headerCenter avTitle">
-            Blockchain Example with Previous Hash Pointers
-        </h1>
-
         <div class="scrolling">
             <table>
                 <tr>
                     <td>
 
-                        <p class="bsize1">Block: 1</p>
+                        <p class="bsize1" id="blockNum1"></p>
                         <div>
-                            <p class="bsize1">Data:</p>
+                            <p class="bsize1" id="data1Label"></p>
                             <textarea id="data1" class='data' name="tablesize" type="text"></textarea>
                         </div>
 
                         <div>
-                            <p class="bsize1">Prev:</p>
-                            <input type="text" name="" id="" disabled />
+                            <p class="bsize1" id="prevHash1Label"></p>
+                            <input type="text" name="" id="block1PrevHash" disabled />
                         </div>
                         <div>
-                            <p class="bsize1" id="block1Hash">Hash:</p>
-                            <input type="text" name="" id="" disabled />
+                            <p class="bsize1" id="hash1Label"></p>
+                            <input type="text" id="block1Hash" name="" disabled />
                         </div>
 
                     </td>
 
                     <td>
-                        <p class="bsize1">Block: 2</p>
+                        <p class="bsize1" id="blockNum2"></p>
                         <div>
-                            <p class="bsize1">Data:</p>
+                            <p class="bsize1" id="data2Label"></p>
                             <textarea id="data2" class='data' name="tablesize" type="text"></textarea>
                         </div>
 
                         <div>
-                            <p class="bsize1" id="block2PrevHash">Prev:</p>
-                            <input type="text" name="" id="" disabled />
+                            <p class="bsize1" id="prevHash2Label"></p>
+                            <input type="text" name="" id="block2PrevHash" disabled />
                         </div>
                         <div>
-                            <p class="bsize1" id="block2Hash">Hash:</p>
-                            <input type="text" name="" id="" disabled />
+                            <p class="bsize1" id="hash2Label"></p>
+                            <input type="text" name="" id="block2Hash" disabled />
                         </div>
 
                     </td>
 
                     <td>
-                        <p class="bsize1">Block: 3</p>
+                        <p class="bsize1" id="blockNum3"></p>
                         <div>
-                            <p class="bsize1">Data:</p>
+                            <p class="bsize1" id="data3Label"></p>
                             <textarea id="data3" class='data' name="tablesize" type="text"></textarea>
                         </div>
 
                         <div>
-                            <p class="bsize1" id="block3PrevHash">Prev:</p>
-                            <input type="text" name="" id="" disabled />
+                            <p class="bsize1" id="prevHash3Label"></p>
+                            <input type="text" name="" id="block3PrevHash" disabled />
                         </div>
                         <div>
-                            <p class="bsize1" id="block3Hash">Hash:</p>
-                            <input type="text" name="" id="" disabled />
+                            <p class="bsize1" id="hash3Label"></p>
+                            <input type="text" name="" id="block3Hash" disabled />
                         </div>
 
                     </td>
                 </tr>
 
             </table>
+            <div style="align-content: right">
+                <button id="compute" name="compute" for="compute"></button>
+            </div>
         </div>
-
-        <input type="button" id="calculate" name="calculate" />
-
     </div>
-
-    <!-- <p class="bsize3"><label id="blockNumLabel3" for="blockNum"></label></p> 
-                <input id="blockNum3" name="blockNum3" type = "number" />
-                <p class="tsize3"><label id="tableSizeLabel" for="tablesize"></label></p> 
-                <input id="tablesize3" name="tablesize" type = "text" />
-                <p class="wrapText" id="block3PrevHash"></p>
-                <p class="wrapText" id="block3Hash"></p> -->
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
