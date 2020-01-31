@@ -23,10 +23,19 @@ table {
     overflow-x: scroll;
 }
 
+p {
+    word-break: break-all;
+    display: inline-block;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
 .data {
     width: 95%;
     height: 100px;
-    display: block;
+    display: inline-block;
     margin : 0 auto;
     
 }
@@ -49,6 +58,7 @@ p {
     text-align: center;
     word-wrap: break-words;
 }
+
 
 #tablesize {
     /* position: absolute; */
