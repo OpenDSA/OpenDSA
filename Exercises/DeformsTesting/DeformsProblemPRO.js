@@ -108,7 +108,9 @@
                     //     globalPointerReference.currentClickedObject.unitDisplay);
                     if(globalPointerReference.currentClickedObjectType == "value-box")
                         this.innerHTML =
-                        globalPointerReference.currentClickedObject.value; 
+                        Number(Math.round(
+                            globalPointerReference.currentClickedObject.value
+                            +'e3')+'e-3'); 
                 }
             )
         }

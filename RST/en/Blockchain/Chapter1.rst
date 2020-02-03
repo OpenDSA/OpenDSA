@@ -34,3 +34,11 @@ This example shows how a blockchain determines the hash for the entire chain.
 
 .. avembed:: AV/Blockchain/BlockchainExample.html ss
    :long_name: Blockchain Example
+
+This is a simulation of a blockchain step-by-step with the inclusion of the nonce
+
+.. inlineav:: llistBlockchain ss
+   :long_name: Blockchain Slideshow 1
+   :links: AV/List/llistCON.css
+   :scripts: AV/List/llist.js AV/Blockchain/llistBlockchain.js
+   :output: show
