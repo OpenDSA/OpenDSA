@@ -1,6 +1,6 @@
 $(document).ready(function() {
   "use strict";
-  var av_name = "ISAM";
+  var av_name = "ISAMCON";
   var av = new JSAV(av_name, {animationMode: "none"});
   var left = 310;
 

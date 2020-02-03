@@ -38,12 +38,9 @@ widely used by IBM prior to adoption of the B-tree.
 
 .. _ISAMfig:
 
-.. odsafig:: Images/ISAM.png
-   :width: 150
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Illustration of the ISAM indexing system
+.. inlineav:: ISAMCON dgm
+    :links: AV/Indexing/ISAMCON.css
+    :scripts: AV/Indexing/ISAMCON.js
 
    Illustration of the ISAM indexing system.
 
