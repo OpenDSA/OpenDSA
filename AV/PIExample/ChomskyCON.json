@@ -111,15 +111,15 @@
       "q13":{
         "type": "multiple",
         "description": "The reason why we can derive “The ball hit Fritz”, and “The ball ate the ball” is that grammars only focus on the correct syntax sentences.",
-        "question":"Do grammars provide sentences with correct semantics (meaning)?",
+        "question":"Do grammars provide sentences with incorrect semantics (meaning)?",
         "answer":"Yes",
         "choices": ["Yes", "No"]
       },
       "q14":{
-        "type": "multiple",
+        "type": "select",
         "description": "The formal definition of grammar is G=(V,T,S,P) where V is a finite set of variables (nonterminals) T is a finite set of terminals (generally, these are strings). S is the start variable (S∈V) P is a set of productions (rules) in the form x→y means to replace x by y",
         "question":"What does x represent?",
-        "answer":"Variables",
+        "answer":["Variables", "Terminals"],
         "choices": ["Variables", "Terminals"]
 
       },

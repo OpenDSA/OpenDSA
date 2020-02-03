@@ -22,7 +22,7 @@ $(document).ready(function(){
 var grammerArray = JSON.parse(grammar);
 var lastRow = grammerArray.length;
 grammerArray.push(["", arrow, ""]);
-var grammerMatrix = av.ds.matrix(grammerArray, {style: "table", left: 10});
+var grammerMatrix = av.ds.matrix(grammerArray, {left: 10});
 
 var Frames = PIFRAMES.init(av_name);
 // Load the config object with interpreter and code created by odsaUtils.js
