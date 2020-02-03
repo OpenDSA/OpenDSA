@@ -6,6 +6,7 @@ class ValueBox{
             // We only create the clickhandler for this thing.
             this.value = element.dataset.value;
             this.unit = element.dataset.unit;
+            this.variable = null;
             this.valueDisplay = element.dataset.valueDisplay;
             this.unitDisplay = element.dataset.unitDisplay;
             this.domain = element.dataset.domain;
@@ -15,6 +16,7 @@ class ValueBox{
         {
             this.value = element.dataset.value;
             this.unit = element.dataset.unit;
+            this.variable = element.dataset.variable;
             this.valueDisplay = element.dataset.valueDisplay;
             this.unitDisplay = element.dataset.unitDisplay;
             this.domain = element.dataset.domain;
@@ -29,7 +31,7 @@ class ValueBox{
         // AND the value, unit, etc. things
         var text = globalJSAV.label(
             katex.renderToString(
-                element.dataset.valueDisplay+element.dataset.unitDisplay),
+                element.dataset.variable+"="+element.dataset.valueDisplay+element.dataset.unitDisplay),
             {
                 left: element.visuals["POSITION_X"],
                 top: element.visuals["POSITION_Y"]

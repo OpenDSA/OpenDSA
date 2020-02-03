@@ -50,6 +50,30 @@
     background-color: rgb(193, 193, 193);
 }
 
+.boxparam {
+    padding: 0px 0px;
+    border-radius: 0px;
+}
+
+.boxparam:hover {
+    cursor: grab !important;
+}
+
+.boxparam[data-domain="length"] {
+    background-color: rgb(126, 255, 126);
+}
+
+.boxparam[data-domain="temperature"] {
+    background-color: rgb(126, 210, 255);
+}
+
+.boxparam[data-domain="pressure"] {
+    background-color: rgb(249, 152, 175);
+}
+
+.boxparam[data-domain="coefficient"] {
+    background-color: rgb(193, 193, 193);
+}
 
 #figures {
     position: relative;
