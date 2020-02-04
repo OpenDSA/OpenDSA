@@ -3,7 +3,7 @@
 // Step-by-step simulation of a blockchain
 $(document).ready(function() {
     "use strict";
-    var av_name = "llistBadCON";
+    var av_name = "llistBlockchain";
     var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
     var av = new JSAV(av_name);
   

@@ -1,10 +1,14 @@
 {
-    "translations" :{
-      "en": {
-        "sc1": "Here is a graphical depiction for a linked list storing five integers. The value stored in a pointer variable is indicated by an arrow \"pointing\" to something. A NULL pointer is indicated graphically by a diagonal slash through a pointer variable's box. The vertical line between the nodes labeled 23 and 10 indicates the current position (immediately to the right of this line).",
-        "sc2": "The list's first node is accessed from a pointer named <code>head</code>. To speed access to the end of the list, and to allow the append method to be performed in constant time, <code>tail</code> points to the last node of the list. The position of the current element is indicated by <code>curr</code>.",
-        "sc3": "Here is what we would like to have happen when we delete the current node (the one with value 10)."
-      }
+    "translations": {
+        "en": {
+            "sc1": "Here is the graphical depiction of what the start of a blockchain (the genesis block) would look like.The first hash is all zeroes.",
+            "sc2": "The idea of the blockchain is that every block uses the hash of the preceding block in addition to different values for its own hash. Each block has its own previous hash, data message, nonce, and resulting hash.",
+            "sc3": "The nonce is the foundation of block mining. Given a publicly known previous hash and data message, a nonce can be mined so that the resulting hash begins with some predetermined number of zeroes. Since brute-force calculations are the only method of mining, this provides for an equal opportunity to produce a block.",
+            "sc4": "Here we have mined the nonce and produced a hash derived from the previous hash, data message, and nonce such that the hash begins with four zeroes.",
+            "sc5": "The process then repeats as new data needs to be recorded and is publicly released.",
+            "sc6": "Here we can see the effects of manipulating past values in the blockchain. The hash pointers don't match from then on! Since others are continually producing blocks for the main blockchain, to produce a new branch that agrees with the manipulation and grows in larger size than the main blockchain is impossible.",
+            
+
+        }
     }
-  }
-  
+}
