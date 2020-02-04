@@ -1,6 +1,6 @@
 #container { 
-    width: 1000px;
-    height: 350px;
+    width: 1250px;
+    height: 400px;
   }
   
   .avcontainer{
@@ -12,80 +12,61 @@
     height: 50px;
   }
 
-  /* #container {
-    width: 800px;
-    height: 165px;
-    position: relative;
-    } */
-
-.instructions {
-    border: 0;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
 table {
     position: relative;
     width:800px;
     height:300px;
-    margin:auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
 }
 
-td {
-    width:250px;
-    margin:auto;
-}
 input {
-    margin:auto;
+    width: 95%;
+    margin: 0 auto;
 }
+
+.scrolling {
+    overflow-x: scroll;
+}
+
+p {
+    word-break: break-all;
+    display: inline-block;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+.data {
+    width: 95%;
+    height: 100px;
+    display: inline-block;
+    margin : 0 auto;
+    
+}
+td {
+    width:750px;
+    margin:auto;
+    border: 1px solid #B6C0B2;
+    background-color: #E2EEDD;
+}
+
+p {
+    word-break: break-all;
+}
+
 .bsize1 {
     /* position: absolute; */
-    /* left: 55px;*/
-    top: 42px;
-    margin:auto;
-}
-
-#blockNum1 {
-    /* position: absolute; */
-    /* left: 200px; */
-    top: 55px;
-    margin:auto;
-}
-
-.bsize2 {
-    /* position: absolute; */
     /* left: 55px; */
     top: 42px;
     margin:auto;
+    text-align: center;
+    word-wrap: break-words;
 }
 
-#blockNum2 {
-    /* position: absolute; */
-    /* left: 200px; */
-    top: 55px;
-    margin:auto;
-}
-
-.bsize3 {
-    /* position: absolute; */
-    /* left: 55px; */
-    top: 42px;
-    margin:auto;
-}
-
-#blockNum3 {
-    /* position: absolute; */
-    /* left: 200px; */
-    top: 55px;
-    margin:auto;
-}
-
-.tsize {
-    /* position: absolute; */
-    left: 55px;
-    top: 70px;
-}
 
 #tablesize {
     /* position: absolute; */
@@ -93,16 +74,9 @@ input {
     top: 85px;
 }
 
-#calculate {
+#compute {
     /* position: absolute; */
-    right: 5px;
-    top: 95px;
-}
-
-.output {
-    /* position: absolute; */
-    top: 150px;
-    text-align:center;
-    width: 250px;
-    margin: 0;
+    margin-right: 225px;
+    float: right;
+    top: 15px;
 }

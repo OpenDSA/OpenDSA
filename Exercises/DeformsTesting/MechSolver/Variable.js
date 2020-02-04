@@ -4,6 +4,8 @@ class Variable{
         this.name = name;
         this.symbol = symbol;
         this.value = null;
+        this.valueDisplay = "<span>";
+        this.unitDisplay = "<span>";
         this.element = element;
         this.globalPointerReference = globalPointerReference;
 
@@ -22,15 +24,39 @@ class Variable{
         //console.log(this.globalPointerReference.currentClickedObjectType == "value-box");
         if(this.globalPointerReference.currentClickedObjectType == "value-box")
         {
+            // console.log(this.globalPointerReference)
             // add the value
-            this.value = this.globalPointerReference.currentClickedObject.value;
+            this.value = String(this.globalPointerReference.currentClickedObject.value).slice();
+            this.element.setAttribute("data-domain",
+            this.globalPointerReference.currentClickedObject.domain);
+
             //change the innerHTML
-            this.element.innerHTML = 
-            this.globalPointerReference.currentClickedObject.valueDisplay +
-            this.globalPointerReference.currentClickedObject.unitDisplay;
-            // Add the new class for this value
-            this.element.className += " param";
-            this.element.setAttribute("data-domain",this.globalPointerReference.currentClickedObject.domain);
+            /*
+            The pattern of the code is to change to create
+            a div, with two separate elements in it.
+            */
+            
+            //console.log(this.globalPointerReference.currentClickedObject.unitDisplay.split(""));
+
+            for(var digitindex=0;
+                digitindex<this.globalPointerReference.currentClickedObject.valueDisplay.split("").length;
+                digitindex++
+                )
+            {
+                this.valueDisplay+='<span class="mord">'+
+                this.globalPointerReference.currentClickedObject.valueDisplay.split("")[digitindex]
+                +'</span>';
+            }
+            for(var u=0; u<this.globalPointerReference.currentClickedObject.unitDisplay.split("").length; u++)
+            {
+                this.unitDisplay+='<span class="mord">'+
+                this.globalPointerReference.currentClickedObject.unitDisplay.split("")[u]
+                +'</span>';
+            }
+            this.valueDisplay+="</span>";
+            this.unitDisplay+="</span>";
+
+            this.element.innerHTML = this.valueDisplay + this.unitDisplay;
         }
     }
     changeUnits(){

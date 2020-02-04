@@ -41,7 +41,13 @@ class ActiveEquation{
                 top: position_obj["POSITION_Y"]+3
             }
         ).addClass("selectableEquation");
-
+        
+        /**
+         * Add code her to add an additional span class to every single box,
+         * and associate a click handler with that span class container, so that
+         * elements inside this span class are substituted out.
+         * Look for this: <span class="mord amsrm">□</span>
+         */
         this.jsavequation = jsavObject.label(
             katex.renderToString(this.equationObjectReference["latex_boxes"]),
             {
@@ -52,6 +58,26 @@ class ActiveEquation{
             }
         ).addClass("boxedEquation");
 
+        var boxList = 
+        this.jsavequation.element[0].childNodes[0].childNodes[1].childNodes[2]
+        .querySelectorAll("span.mord.amsrm")
+        //console.log(boxList);
+        
+        /**
+         * Delegation: we handle the modification of the elements here, since we are
+         * creating the boxes here. As for actually setting up the clickhandlers, 
+         * that is done in the call to createVariableBoxes(), so we change the query
+         * for qSA to look for the container.
+         */
+        
+        for(var i=0; i<boxList.length; i++)
+        {
+            //var containerSpan = document.createElement("span");
+            boxList[i].className = "boxparam";
+            boxList[i].setAttribute("data-domain", "empty");
+            boxList[i].innerHTML = '<span class="mord amsrm">&#9634;</span>';
+        }
+
         // Immediately create the variable boxes
         this.createVariableBoxes();
     }
@@ -59,7 +85,9 @@ class ActiveEquation{
         // This one is associated with creating Variable objects to go hand-in-hand with
         // box/parameter positions in the boxed representation
 
-        var boxList = this.jsavequation.element[0].querySelectorAll("span.mord.amsrm");
+        var boxList = this.jsavequation.element[0].childNodes[0].childNodes[1].childNodes[2]
+        .querySelectorAll("span.boxparam");
+        //console.log(boxList);
         for(var boxIndex=0; boxIndex<boxList.length; boxIndex++)
         {
             var currentBox = boxList[boxIndex];

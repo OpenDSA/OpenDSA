@@ -61,6 +61,39 @@ const equations = [
             'shear': '\\gamma_{xy}',
         }
     },
+    {
+        group: 'Axial',
+        id: "Relating deformation to stress L and E",
+        name: 'Intermediate stress equation',
+        latex: '\\delta=\\sigma \\frac L E',
+        latex_boxes: '\\Box=\\Box \\frac \\Box \\Box',
+        params_latex: ['\\delta','\\sigma', 'L', 'E'],
+        template: 'deform = stress * length / pressE',
+        params: ['deform', 'stress', 'pressE', 'length'],
+        variables: {
+            'deform': '\\delta',
+            'stress': '\\sigma',
+            'pressE': 'E',
+            'length': 'L'
+        }
+    },
+    // {
+    //     group: 'Axial',
+    //     id: "deformationToStressLEdemo",
+    //     name: 'Intermediate stress equation',
+    //     latex: '45.856=45.856 \\frac {45.856} {45.856}',
+    //     latex_boxes: '\\Box=\\Box \\frac \\Box \\Box',
+    //     params_latex: ['\\delta','\\sigma', 'L', 'E'],
+    //     template: 'deform = stress * length / pressE',
+    //     params: ['deform', 'stress', 'pressE', 'length'],
+    //     variables: {
+    //         'deform': '\\delta',
+    //         'stress': '\\sigma',
+    //         'pressE': 'E',
+    //         'length': 'L'
+    //     }
+    // },
+    
     // {
     //     group: 'Axial',
     //     name: 'Maximum in-plane shear strain',
@@ -147,7 +180,14 @@ const equations = [
         name: 'Addition of 2 terms',
         latex: 'c=a+b',
         latex_boxes: '\\Box=\\Box+\\Box',
-        params: []
+        params_latex: ['c','b', 'a'],
+        template: 'cterm = aterm + bterm',
+        params: ['cterm', 'bterm', 'aterm'],
+        variables: {
+            'cterm': 'c',
+            'bterm': 'b',
+            'aterm': 'a'
+        }
     },
     {
         group: 'Arithmetic',
@@ -155,7 +195,14 @@ const equations = [
         name: 'Addition of 3 terms',
         latex: 'c=x+y+z',
         latex_boxes: '\\Box=\\Box+\\Box+\\Box',
-        params: []
+        params_latex: ['c', 'x', 'y', 'z'],
+        template: 'cterm = xterm + yterm + zterm',
+        params: ['cterm', 'bterm', 'aterm'],
+        variables: {
+            'cterm': 'c',
+            'bterm': 'b',
+            'aterm': 'a'
+        }
     },
     {
         group: 'Arithmetic',
@@ -163,7 +210,14 @@ const equations = [
         name: 'Subtraction',
         latex: 'c=a-b',
         latex_boxes: '\\Box=\\Box-\\Box',
-        params: []
+        params_latex: ['c','b', 'a'],
+        template: 'cterm = bterm - aterm',
+        params: ['cterm', 'bterm', 'aterm'],
+        variables: {
+            'cterm': 'c',
+            'bterm': 'b',
+            'aterm': 'a'
+        }
     },
     {
         group: 'Arithmetic',
@@ -171,7 +225,14 @@ const equations = [
         name: 'Division',
         latex: 'c=\\frac{a}{b}',
         latex_boxes: '\\Box=\\frac{\\Box}{\\Box}',
-        params: []
+        params_latex: ['c','b', 'a'],
+        template: 'cterm = aterm  bterm',
+        params: ['cterm', 'bterm', 'aterm'],
+        variables: {
+            'cterm': 'c',
+            'bterm': 'b',
+            'aterm': 'a'
+        }
     },
     {
         group: 'Arithmetic',
@@ -179,6 +240,13 @@ const equations = [
         name: 'Multiplication',
         latex: 'c=a \\times b',
         latex_boxes: '\\Box=\\Box\\times\\Box',
-        params: []
+        params_latex: ['c','b', 'a'],
+        template: 'cterm = aterm * bterm',
+        params: ['cterm', 'aterm', 'bterm'],
+        variables: {
+            'cterm': 'c',
+            'bterm': 'b',
+            'aterm': 'a'
+        }
     },
 ]

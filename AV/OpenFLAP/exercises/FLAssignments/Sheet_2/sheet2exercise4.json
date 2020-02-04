@@ -1,6 +1,6 @@
 [
     {
-        "expression": "((ab)^+ba*) + (b^*(ab)^*)",
+        "expression": "((ab)^+ba^*) + (b^*(ab)^*)",
         "description": "Construct an NFA that accepts",
         "type": "both",
         "testCases": [

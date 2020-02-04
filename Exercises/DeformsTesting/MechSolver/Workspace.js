@@ -322,7 +322,8 @@ class Workspace
                 "dataset": {
                     "value": soln[1],
                     "unit": "",
-                    "valueDisplay": soln[0]+"="+soln[1],
+                    "variable": soln[0],
+                    "valueDisplay": String(Number(Math.round(soln[1]+'e3')+'e-3')),
                     "unitDisplay": "",
                     "domain": ""
                 }
@@ -330,6 +331,9 @@ class Workspace
             this.globalSectionObj,
             this.globalPointerReference
         )
+
+        this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
+        this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
     }
 }
 
