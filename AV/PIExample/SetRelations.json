@@ -6,7 +6,7 @@
             "q1": {
                 "type": "select",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "description": "A $relation$ $R$ over set $S$ means a set of ordered pairs from set $S$.",
+                "description": "A $relation$ $R$ over set $S$ means a set of ordered pairs from $set$ $S$.",
                 "question": "if $S$ = $\\{a,b,c\\}$, then which of the following is a relation in $S$",
                 "answer": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"],
                 "choices": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"]
@@ -38,7 +38,7 @@
                 "type": "multiple",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
                 "description": "Define the properties of relations as follows, $R$ is a binary relation over set $S$.\n\n 2- $R$ is $irreflexive$ if $aRa$ is not true for all $a$ ∈ $S$.",
-                "question": "Is the relation less than or equal to irreflexive?",
+                "question": "Is the relation less than or equal to $irreflexive$?",
                 "answer": ["False"],
                 "choices": ["True", "False"]
             },
@@ -46,7 +46,7 @@
                 "type": "multiple",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
                 "description": "Define the properties of relations as follows, $R$ is a binary relation over set $S$.\n\n 3- $R$ is $symmetric$ if whenever $aRb$, then $bRa$, for all $a$,$b$ ∈ $S$.",
-                "question": "Which of the following is a symmetric relation?",
+                "question": "Which of the following is a $symmetric$ relation?",
                 "answer": ["="],
                 "choices": ["$<$", "$>$", "="]
             },
@@ -54,7 +54,7 @@
                 "type": "multiple",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
                 "description": "Define the properties of relations as follows, $R$ is a binary relation over set S.\n\n 4- $R$ is $antisymmetric$ if whenever $aRb$ and $bRa$, then $a$ $=$ $b$, for all $a,b$ ∈ $S$",
-                "question": "Which of the following relation is antisymmetric?",
+                "question": "Which of the following relation is $antisymmetric$?",
                 "answer": ["$>$"],
                 "choices": ["$>$", "=", "$\\leq$"]
             },

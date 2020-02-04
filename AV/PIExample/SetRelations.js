@@ -10,7 +10,7 @@ $(document).ready(function () {
     var goNext = false;
 
     //frame 1
-    av.umsg("In this chapter you will learn and practice about $relations$");
+    av.umsg("Now that you know what $set$ is, in this chapter you will learn about $relations$ in $set$.");
     av.displayInit();
     
     //frame 2
