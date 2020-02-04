@@ -3,7 +3,7 @@
     "en": {
       "q1": {
         "type": "multiple",
-        "description":"One way to describe a language is in the form of a grammar.",
+        "description":"One way to describe a language is in the form of a grammar. ",
         "question":"What is a grammar?",
         "answer": "A way to describe languages",
         "choices": ["A way to describe languages", "A way to spell sentence right", "A way to write languages", "A way to arrange words in sentence"]
@@ -67,28 +67,28 @@
       },
       "q7":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; -> &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; -> &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt;",
+        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt;",
         "question": "What is the substitute for &lt;noun&gt; to derive sentence ‘Frits hit the ball’?",
         "answer": "Fritz",
         "choices": ["hit", "ran", "ate", "Fritz", "ball"]
       },
       "q8":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; -> &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; -> &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt;",
+        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt;",
         "question":"What is the substitute for &lt;verb&gt; to derive sentence ‘Frits hit the ball’?",
         "answer": "hit",
         "choices": ["hit", "ran", "ate", "ball", "the"]
       },
       "q9":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; -> &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; -> &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; -> Fritz &lt;verb&gt;&lt;d.o&gt; -> Fritz hit &lt;d.o&gt;",
+        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz &lt;verb&gt;&lt;d.o&gt; $\\rightarrow$ Fritz hit &lt;d.o&gt;",
         "question":"What is the substitute for &lt;d.o.&gt;? to derive sentence ‘Frits hit the ball’",
         "answer":  "<article><noun>",
         "choices": ["&lt;noun&gt;", "&lt;article&gt;&lt;noun&gt;", "&lt;sentence&gt;", "&lt;verb&gt;", "&lt;article&gt;"]
       },
       "q10":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; -> &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; -> &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; -> Fritz &lt;verb&gt;&lt;d.o&gt; -> Fritz hit &lt;d.o.&gt; -> Fritz hit &lt;article&gt;&lt;noun&gt;",
+        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz &lt;verb&gt;&lt;d.o&gt; $\\rightarrow$ Fritz hit &lt;d.o.&gt; $\\rightarrow$ Fritz hit &lt;article&gt;&lt;noun&gt;",
         "question":"What is the substitute for &lt;article&gt; to derive sentence ‘Frits hit the ball’?",
         "answer": "the",
         "choices": ["ran", "ate", "ball", "the", "an"]
@@ -96,14 +96,14 @@
       },
       "q11":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; -> &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; -> &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; -> Fritz &lt;verb&gt;&lt;d.o.&gt; -> Fritz hit &lt;d.o.&gt; -> Fritz hit &lt;article&gt;&lt;noun&gt; -> Fritz hit the &lt;noun&gt;",
+        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz &lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz hit &lt;d.o.&gt; $\\rightarrow$ Fritz hit &lt;article&gt;&lt;noun&gt; $\\rightarrow$ Fritz hit the &lt;noun&gt;",
         "question":"What is the substitute for &lt;noun&gt; to derive sentence ‘Frits hit the ball’?",
         "answer":"ball",
         "choices": ["ran", "ate", "ball", "an", "a"]
       },
       "q12":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; -> &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; -> &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; -> Fritz &lt;verb&gt;&lt;d.o.&gt; -> Fritz hit &lt;d.o.&gt; -> Fritz hit &lt;article&gt;&lt;noun&gt; -> Fritz hit the &lt;noun&gt;",
+        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz &lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz hit &lt;d.o.&gt; $\\rightarrow$ Fritz hit &lt;article&gt;&lt;noun&gt; $\\rightarrow$ Fritz hit the &lt;noun&gt;",
         "question":"Can we derive these sentences 'The ball hit Fritz', or 'The ball ate the ball'?",
         "answer":"Yes",
         "choices": ["Yes", "No"]
