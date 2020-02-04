@@ -23,8 +23,8 @@
                 "type": "multiple",
                 "description": "Rather than writing the relationship in terms of ordered pairs, we typically use infix notation for such relations",
                 "question": "What is the infix notation for the pair $(4, 5)$ in the relation of $<$?",
-                "answer": "4$<$5",
-                "choices": ["4$<$5", "5$<$4", "4$=$5", "4$\\le$5", "4$\\ge$5"]
+                "answer": "4 $<$ 5",
+                "choices": ["4 $<$ 5", "5 $<$ 4", "4 $=$ 5", "4 $\\le$ 5", "4 $\\ge$ 5"]
             },
             "q4": {
                 "type": "multiple",
@@ -86,8 +86,8 @@
                 "type": "multiple",
                 "description": "For the set of integers, use the modulus function to define a binary relation such that two numbers $x$ and $y$ are in the relation if and only if $x$ mod $m$ = $y$ mod $m$",
                 "question": "For $m$ = $4$, What makes the pair $(1, 5)$ belong to the modulus relation?",
-                "answer": "1 mod 4 $=$ 5 mod 4",
-                "choices": ["4 mod 1 $=$ 4 mod 5","1 mod 5 $=$ 4 mod 5","1 mod 4 $=$ 5 mod 4", "1 mod 4 $=$ 4 mod 5"]
+                "answer": "$1$ mod $4$ $=$ $5$ mod $4$",
+                "choices": ["$4$ mod $1$ $=$ $4$ mod $5$","$1$ mod $5$ $=$ $4$ mod $5$","$1$ mod $4$ $=$ $5$ mod $4$", "$1$ mod $4$ $=$ $4$ mod $5$"]
             },
             "q12": {
                 "type": "select",
