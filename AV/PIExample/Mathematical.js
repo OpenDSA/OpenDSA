@@ -11,7 +11,7 @@ $(document).ready(function() {
     var goNext = false;
 
     //frame 1
-    av.umsg("The concept of a set in the mathematical sense has a wide application in computer science. The notations and techniques of set theory are commonly used when describing and implementing algorithms because the abstractions associated with sets often help to clarify and simplify algorithm design.");
+    av.umsg("The concept of a $set$ in the mathematical sense has a wide application in computer science. The notations and techniques of $set$ theory are commonly used when describing and implementing algorithms because the abstractions associated with $sets$ often help to clarify and simplify algorithm design.");
     av.displayInit();
 
     //frame 2
