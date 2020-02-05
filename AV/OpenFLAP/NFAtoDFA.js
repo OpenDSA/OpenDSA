@@ -303,7 +303,7 @@ var nodeClickHandlers = function(e) {
 	 for (var next = nodes.next(); next; next = nodes.next()) {
 	 	studentGraph.removeNode(next);
 	 }
-	 studentGraph = convertToDFA(jsav, referenceGraph, {width: "45%", height: 440, layout: "automatic", element: $("#editable")});
+	 studentGraph = FiniteAutomaton.convertNFAtoDFA(jsav, referenceGraph, {width: "45%", height: 440, layout: "automatic", element: $("#editable")});
 	 studentGraph.layout();
 	 jsav.umsg("Conversion completed.");
 	 $("#exportButton").show();
