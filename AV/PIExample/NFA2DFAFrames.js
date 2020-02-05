@@ -38,7 +38,7 @@ FA.addEdge(q4, q6, {weight: "b"});
 av.displayInit();
 
   // Slide 2
-  av.umsg("Let's begin with the start state. Closure($q0$) in $M_N$ is {$q0,q1,q2$}. So this is the start state.");
+  av.umsg("Let's begin with the start state. Closure($q0$) in $M_N$ is $\\{q0,q1,q2\\}$. So this is the start state.");
     q0.highlight();
     q1.highlight();
     q2.highlight();
@@ -47,7 +47,7 @@ av.displayInit();
   av.step();
 
   // Slide 3
-  av.umsg("Now, we should determine the the possible transitions from our new start state. To do so, we need to check the transitions from {$q0,q1,q2$} with $a$ and $b$ ");
+  av.umsg("Now, we should determine the the possible transitions from our new start state. To do so, we need to check the transitions from $\\{q0,q1,q2\\}$ with $a$ and $b$ ");
     q0.unhighlight();
     q1.unhighlight();
     q2.unhighlight();
