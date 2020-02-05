@@ -81,3 +81,11 @@ p {
     float: right;
     top: 15px;
 }
+
+#arrow1 {
+    display: none;
+}
+
+#arrow2 {
+    display: none;
+}

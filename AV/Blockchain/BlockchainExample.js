@@ -51,12 +51,13 @@ $(document).ready(function() {
             $("#block3PrevHash").val(block2Hash);
         }
         $("#block3Hash").val(block3Hash);
+
+        if ($("#arrow1").css("display") === "none") {
+            $("#arrow1").css("display", "block");
+            $("#arrow2").css("display", "block");
+        }
     }
 
     // Connect action callbacks to the HTML entities
     $(".data").keyup(testKeyDown);
-    $(".arrow").click((e) => {
-        console.log("offsetY: " + e.offsetY)
-        console.log("offsetX: " + e.offsetX)
-    });
 });
