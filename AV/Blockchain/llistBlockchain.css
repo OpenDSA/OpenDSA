@@ -9,4 +9,5 @@
 
 .jsavlist {
     left: 0px !important;
+    max-lines: 10;
 }
