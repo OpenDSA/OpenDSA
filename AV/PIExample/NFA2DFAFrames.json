@@ -4,6 +4,7 @@
         "q0": {
           "type": "multiple",
           "question":"What is transition from state {q3, q4} with the alphabet a. Select the appropriate state:",
+          "description": "hello world",
           "answer": "q4",
           "choices": ["q0, q1, q2", "q1, q2, q3","q1, q5, q6" ,"q4"]
         },
