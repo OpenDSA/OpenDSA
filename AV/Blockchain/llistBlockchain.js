@@ -9,17 +9,16 @@ $(document).ready(function() {
   
     // Set up the list
     var l = av.ds.list({nodegap: 30, top: 35, left: 257});
-    l.addFirst(15).addFirst(12).addFirst(10).addFirst(23).addFirst(20);
+    l.addFirst("Block Number: 0 \n Hash:0000000000000000000000000000000000000000000000000000000000000000");
     l.layout();
-    l.get(2).addVLine();
   
     // Set up the various pointers
-    var head = av.pointer("head", l.get(0));
-    head.hide();
-    var curr = av.pointer("curr", l.get(2));
-    curr.hide();
-    var tail = av.pointer("tail", l.get(4));
-    tail.hide();
+    // var head = av.pointer("head", l.get(0));
+    // head.hide();
+    // var curr = av.pointer("curr", l.get(2));
+    // curr.hide();
+    // var tail = av.pointer("tail", l.get(4));
+    // tail.hide();
   
     // Slide 1
     av.umsg(interpret("sc1"));
@@ -27,15 +26,27 @@ $(document).ready(function() {
   
     // Slide 2
     av.umsg(interpret("sc2"));
-    head.show();
-    curr.show();
-    tail.show();
+    l.addLast("Block Number: 1 \n Previous:0000000000000000000000000000000000000000000000000000000000000000 \n Nonce:hello \n data:hello \n Hash:");
+    l.layout();
     av.step();
   
     // Slide 3
     av.umsg(interpret("sc3"));
-    l.remove(2);
-    l.layout();
+    // l.remove(2);
+    //l.layout();
+    av.step();
+
+    // Slide 4
+    av.umsg(interpret("sc4"));
+    av.step();
+
+    // Slide 5
+    av.umsg(interpret("sc5"));
+    av.step();
+
+    // Slide 6
+    av.umsg(interpret("sc6"));
+
     av.recorded();
   });
   

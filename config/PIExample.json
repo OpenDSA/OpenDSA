@@ -63,7 +63,6 @@
   }, 
   "chapters": {
     "Old Examples": {
-      "PIExample/NFAtoDFAExample":{},
       "PIExample/RestingFillInSpace":{}
     },
     "PI Example": {
@@ -77,6 +76,9 @@
     },
     "Set Relations": {
       "PIExample/setRelations": {}
+    },
+    "NFA to DFA": {
+      "PIExample/NFAtoDFAExample":{}
     }
   }
 }

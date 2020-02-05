@@ -46,6 +46,6 @@ This is a simulation of a blockchain step-by-step with the inclusion of the nonc
 
 .. inlineav:: llistBlockchain ss
    :long_name: Blockchain Slideshow 1
-   :links: AV/List/llistCON.css
+   :links: AV/Blockchain/llistBlockchain.css
    :scripts: AV/List/llist.js AV/Blockchain/llistBlockchain.js
    :output: show
