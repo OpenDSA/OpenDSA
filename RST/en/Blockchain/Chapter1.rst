@@ -35,6 +35,13 @@ This example shows how a blockchain determines the hash for the entire chain.
 .. avembed:: AV/Blockchain/BlockchainExample.html ss
    :long_name: Blockchain Example
 
+This example shows a Bitcoin example of a blockchain. This conveys the idea of a nonce and how it effects the mining process.
+
+.. _BlockchainNonceExample:
+
+.. avembed:: AV/Blockchain/BlockchainNonceExample.html ss
+   :long_name: Blockchain Nonce Example
+
 This is a simulation of a blockchain step-by-step with the inclusion of the nonce
 
 .. inlineav:: llistBlockchain ss
