@@ -403,7 +403,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 	var exportToFA = function() {
 		localStorage['toMinimize'] = true;
 		localStorage['minimized'] = serialize(studentGraph);
-		window.open('./FAEditor.html');
+		window.open('./FA.html');
 	}
 
 	// tree editing functions:
