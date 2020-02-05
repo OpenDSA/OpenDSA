@@ -150,7 +150,7 @@ av.displayInit();
     
   // Slide 17
   DFA_q6.unhighlight();
-  av.umsg("Finall, we need to determine the final states.");
+  av.umsg("Finall, we need to determine the final states. Go forward to determine the final state");
   av.step();
     
   // Slide 18
@@ -158,13 +158,14 @@ av.displayInit();
   av.step();
 
   // Slide 19
+  av.umsg("The highlighted nodes are the state")
   toggleFinal(DFA, q1_q5_q6);
   //toggleFinal(DFA, q5_q1);
   toggleFinal(DFA, DFA_q6);
   q1_q5_q6.highlight();
   //q5_q1.highlight();
   DFA_q6.highlight();
-  av.step();
+  //av.step();
     
   // Slide 20
   //DFA.hide();
