@@ -30,7 +30,7 @@
   },
   "tabbed_codeinc": false,
   "build_JSAV": false,
-  "suppress_todo": false,
+  "suppress_todo": true,
   "glob_exer_options": {},
   "glob_ss_options": {
     "threshold": 1.0, 
@@ -72,6 +72,14 @@
       "CS5040slides/P1D2": {},
       "CS5040slides/ProjManage": {},
       "CS5040slides/AlgAnal": {}
+    },
+    "Week 3, Day 1": {
+      "CS5040slides/Pointers": {},
+      "CS5040slides/Lists": {}
+    },
+    "Week 3, Day 2": {
+      "CS5040slides/StackQueue": {},
+      "CS5040slides/Coding": {}
     }
   }
 }
