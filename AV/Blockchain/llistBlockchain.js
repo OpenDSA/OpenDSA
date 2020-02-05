@@ -26,7 +26,7 @@ $(document).ready(function() {
   
     // Slide 2
     av.umsg(interpret("sc2"));
-    l.addLast("Block Number: 1 \n Previous:0000000000000000000000000000000000000000000000000000000000000000  \n Nonce:hello \n data:hello \n Hash:");
+    l.addLast("Block Number: 1 \n Previous:0000000000000000000000000000000000000000000000000000000000000000 \n Nonce:hello \n data:hello \n Hash:");
     l.layout();
     av.step();
   
