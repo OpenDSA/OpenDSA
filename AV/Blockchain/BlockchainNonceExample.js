@@ -25,32 +25,32 @@ $(document).ready(function() {
 
     function checkHash() {
         if ($("#block1Hash").val().substring(0,4) === "0000") {
-            // $("#cell1").css("background-color", "#E2EEDD");
-            $("#arrow1").css("display", "block");
+            $("#cell1").css("background-color", "#E2EEDD");
         }
         else {
-            // $("#cell1").css("background-color", "#FA8072");
-            $("#arrow1").css("display", "none");
+            $("#cell1").css("background-color", "#FA8072");
         }
 
         if ($("#block2Hash").val().substring(0,4) === "0000") {
-            // $("#cell2").css("background-color", "#E2EEDD");
+            $("#cell2").css("background-color", "#E2EEDD");
+            $("#arrow1").css("display", "block");
+        }
+        else {
+            $("#cell2").css("background-color", "#FA8072");
+            $("#arrow1").css("display", "none");
+        }
+
+        if ($("#block3Hash").val().substring(0,4) === "0000") {
+            $("#cell3").css("background-color", "#E2EEDD");
             $("#arrow2").css("display", "block");
         }
         else {
-            // $("#cell2").css("background-color", "#FA8072");
+            $("#cell3").css("background-color", "#FA8072");
             $("#arrow2").css("display", "none");
         }
-
-        // if ($("#block3Hash").val().substring(0,4) === "0000") {
-        //     $("#cell3").css("background-color", "#E2EEDD");
-        // }
-        // else {
-        //     $("#cell3").css("background-color", "#FA8072");
-        // }
     }
 
-    async function testKeyDown() {
+    async function testKeyUp(e) {
         var one = 1, two = 2, three = 3;
         var block1Data = $("#data1").val();
         var block2Data = $("#data2").val();
@@ -61,11 +61,6 @@ $(document).ready(function() {
         var block1Hash, block2Hash, block3Hash;
 
         await sha256(one, block1Data, block1Nonce).then(res => {
-            // console.log("one: " + one);
-            // console.log("data: " + block1Data);
-            // console.log("nonce: " + block1Nonce);
-            // console.log("Prev: " + block1Hash)
-            // console.log("Hash: " + res);
             block1Hash = res;
         });
 
@@ -77,13 +72,18 @@ $(document).ready(function() {
             block3Hash = res;
         });
 
-        $("#block1PrevHash").val(defaultHash);
-        $("#block1Hash").val(block1Hash);
-        $("#block2Hash").val(block2Hash);
-        $("#block2PrevHash").val(block1Hash);
-        $("#block3PrevHash").val(block2Hash);
-        $("#block2Hash").val(block2Hash);
-        $("#block3PrevHash").val(block2Hash);
+        if (e.target.id === "data1") {
+            $("#block1PrevHash").val(defaultHash);
+            $("#block1Hash").val(block1Hash);
+            $("#block2PrevHash").val(block1Hash);
+            $("#block2Hash").val(block2Hash);
+            $("#block3PrevHash").val(block2Hash);
+        }
+        else if (e.target.id === "data2") {
+            $("#block2Hash").val(block2Hash);
+            $("#block3PrevHash").val(block2Hash);
+        }
+        
         $("#block3Hash").val(block3Hash);
 
         checkHash();
@@ -102,6 +102,7 @@ $(document).ready(function() {
         var block3Data = $("#data3").val();
         var block1Hash, block2Hash, block3Hash;
         
+        // mine the first block
         for (var i = 0; i < maxNonce; i++) {
             await sha256(one, block1Data, i).then(res => {
                 block1Hash = res;
@@ -116,6 +117,7 @@ $(document).ready(function() {
             }
         }
 
+        // mine the second block
         for (var i = 0; i < maxNonce; i++) {
             await sha256(two, block2Data, i).then(res => {
                 block2Hash = res;
@@ -130,16 +132,20 @@ $(document).ready(function() {
             }
         }
 
+        // mine the third block
         for (var i = 0; i < maxNonce; i++) {
             await sha256(three, block3Data, i).then(res => {
                 block3Hash = res;
             });
 
+            // once all the blocks have been mined, we should stop the spinner
+            // and redisplay the mine button.
             if (block3Hash.substring(0,4) === "0000") {
                 $("#block3Hash").val(block3Hash);
                 $("#nonce3").val(i);
                 $("div:last").removeClass("loader");
                 $("button").css("visibility", "visible");
+                checkHash();
                 break;
             }
         }
@@ -147,7 +153,7 @@ $(document).ready(function() {
     }
 
     // Connect action callbacks to the HTML entities
-    $(".data").keyup(testKeyDown);
-    $(".nonce").keyup(testKeyDown);
+    $(".data").keyup(testKeyUp);
+    $(".nonce").keyup(testKeyUp);
     $("#mine").click(mine)
 });
