@@ -1,0 +1,21 @@
+{
+    "translations": {
+        "en": {
+            "q0": {
+                "type": "select",
+                "question":"What constitutes good proof?",
+                "description": "Solving any problem has two distinct parts: the investigation and the argument. Usually, we used to see only the argument in textbooks and lectures. But to be successful in school (and in life after school), one needs to be good at both and to understand the differences between these two phases of the process.",
+                "answer": ["Investigation", "Argument"],
+                "choices": ["Investigation", "Argument"]
+              },
+            "q1": {
+                "type": "multiple",
+                "question":"What is the transition from state $\\{q3, q4\\}$ with the alphabet b. Select the appropriate state:",
+                "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to",
+                "answer": "q1, q5, q6",
+                "choices": ["q0, q1, q2", "q1, q2, q3","q1, q5, q6" ,"q4"]
+            }
+        }
+    }
+}
+  
