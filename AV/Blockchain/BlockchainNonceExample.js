@@ -4,7 +4,7 @@ $(document).ready(function() {
 
     ODSA.UTILS.loadConfig();
 
-    var defaultHash = "0000000000000000000000000000000000000000000000000000000000000000";
+    const defaultHash = "0000000000000000000000000000000000000000000000000000000000000000";
 
     // Creates the hash
     async function sha256(blockNum, data, nonce, prevHash = defaultHash) {
@@ -19,34 +19,35 @@ $(document).ready(function() {
 
         // convert bytes to hex string                  
         const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+        console.log("hashHex: " + hashHex);
         return hashHex;
     }
 
     function checkHash() {
         if ($("#block1Hash").val().substring(0,4) === "0000") {
-            // $("#cell3").css("background-color", "#E2EEDD");
+            $("#cell1").css("background-color", "#E2EEDD");
             $("#arrow1").css("display", "block");
         }
         else {
-            // $("#cell3").css("background-color", "#FA8072");
+            $("#cell1").css("background-color", "#FA8072");
             $("#arrow1").css("display", "none");
         }
 
         if ($("#block2Hash").val().substring(0,4) === "0000") {
-            // $("#cell3").css("background-color", "#E2EEDD");
+            $("#cell2").css("background-color", "#E2EEDD");
             $("#arrow2").css("display", "block");
         }
         else {
-            // $("#cell3").css("background-color", "#FA8072");
+            $("#cell2").css("background-color", "#FA8072");
             $("#arrow2").css("display", "none");
         }
 
-        // if ($("#block3Hash").val().substring(0,4) === "0000") {
-        //     $("#cell3").css("background-color", "#E2EEDD");
-        // }
-        // else {
-        //     $("#cell3").css("background-color", "#FA8072");
-        // }
+        if ($("#block3Hash").val().substring(0,4) === "0000") {
+            $("#cell3").css("background-color", "#E2EEDD");
+        }
+        else {
+            $("#cell3").css("background-color", "#FA8072");
+        }
     }
 
     async function testKeyDown() {
@@ -60,6 +61,11 @@ $(document).ready(function() {
         var block1Hash, block2Hash, block3Hash;
 
         await sha256(one, block1Data, block1Nonce).then(res => {
+            console.log("one: " + one);
+            console.log("data: " + block1Data);
+            console.log("nonce: " + block1Nonce);
+            console.log("Prev: " + block1Hash)
+            console.log("Hash: " + res);
             block1Hash = res;
         });
 
@@ -99,6 +105,7 @@ $(document).ready(function() {
 
             if (block1Hash.substring(0,4) === "0000") {
                 $("#block1Hash").val(block1Hash);
+                $("#block2PrevHash").val(block1Hash);
                 $("#nonce1").val(i);
                 checkHash();
                 break;
@@ -112,6 +119,7 @@ $(document).ready(function() {
 
             if (block2Hash.substring(0,4) === "0000") {
                 $("#block2Hash").val(block2Hash);
+                $("#block3Hash").val(block2Hash);
                 $("#nonce2").val(i);
                 checkHash();
                 break;
