@@ -327,7 +327,6 @@ pull:
 	git submodule init
 	git submodule update
 	make -s min
-	make -C Doc
 
 lib/odsaUtils-min.js: lib/odsaUtils.js
 	@echo 'Minimizing lib/odsaUtils.js'

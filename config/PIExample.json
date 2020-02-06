@@ -79,6 +79,9 @@
     },
     "NFA to DFA": {
       "PIExample/NFAtoDFAExample":{}
+    },
+    "NFA to ": {
+      "PIExample/proof":{}
     }
   }
 }
