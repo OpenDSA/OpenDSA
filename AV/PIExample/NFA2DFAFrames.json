@@ -16,7 +16,7 @@
           "choices": ["True", "False"]
         },
         "qc": {
-          "type": "multiple",
+          "type": "select",
           "question":"What is transition from state $\\{q3\\}$ with the alphabet b. Select the appropriate state",
           "description": "For every new node we find, we need to determine the possible transitions with $a$ and $b$. Note that, as there is a $\\lambda$ transition from $q5$ to $q1$, we will mention $q1$ whenever we use $q5$",
           "answer": ["q5", "q1"],
