@@ -16,88 +16,86 @@ $(document).ready(function () {
     //frame 2
     av.umsg(Frames.addQuestion("q0"));
     av.step();
-    
+
     //frame 3
+    av.umsg(Frames.addQuestion("q1"));
+    av.step();
+
+    //frame 4
     av.umsg(Frames.addQuestion("q2"));
     av.step();
-    
-    //frame 4
+
+    //frame 5
     av.umsg(Frames.addQuestion("q3"));
     av.step();
     
-    //frame 5
+    //frame 6
     av.umsg(Frames.addQuestion("q4"));
     av.step();
-    
-    //frame 6
-    av.umsg(Frames.addQuestion("q5"));
-    av.step();
-    
+
     //frame 7
-    av.umsg(Frames.addQuestion("q6"));
+    av.umsg("This module briefly introduces three commonly used proof techniques: $\\textbf{1-  Deduction, or direct proof; 2- Proof by contradiction and 3- Proof by mathematical induction.}$");
     av.step();
-    
+
     //frame 8
-    av.umsg(Frames.addQuestion("q7"));
+    av.umsg(Frames.addQuestion("q5"));
     av.step();
 
     //frame 9
-    av.umsg(Frames.addQuestion("q8"));
+    av.umsg(Frames.addQuestion("q6"));
     av.step();
 
     //frame 10
-    av.umsg(Frames.addQuestion("q9"));
+    av.umsg(Frames.addQuestion("q7"));
     av.step();
 
     //frame 11
-    av.umsg(Frames.addQuestion("q10"));
+    av.umsg(Frames.addQuestion("q8"));
     av.step();
 
     //frame 12
-    av.umsg("A $partition$ of a set $S$ is a collection of subsets that are $disjoint$ from each other and whose union is $S$. An $equivalence$ $relation$ on a set $S$ partitions the set into disjoint subsets whose elements are equivalent. ");
+    av.umsg(Frames.addQuestion("q9"));
     av.step();
-
+    
     //frame 13
-    av.umsg("The $UNION$ / $FIND$ algorithm efficiently maintains equivalence classes on a set. One application for such $disjoint$ $sets$ is the $minimum$ $cost$ $spanning$ $tree$.");
+    av.umsg(Frames.addQuestion("q10"));
     av.step();
 
     //frame 14
-    av.umsg(Frames.addQuestion("q11"));
-    av.step();
-    
-    //frame 15
-    //frame title practicing Equivalence Relations Exercise
-    av.umsg("Practicing Equivalence Relations Exercise"); //is this the right title?
-    av.step();
-    
-    //frame 16
-    av.umsg(Frames.addQuestion("q12"));
+    av.umsg("In some domains, proofs are essentially a series of state changes from a start state to an end state. Formal predicate logic can be viewed in this way, with the various 'rules of logic' being used to make the changes from one formula or combining a couple of formulas to make a new formula on the route to the destination. Symbolic manipulations to solve integration problems in introductory calculus classes are similar in spirit, as are high school geometry proofs.");
     av.step();
 
+    //frame 15
+    av.umsg(Frames.addQuestion("q11"));
+    av.step();
+
+    //frame 16
+    av.umsg(Frames.addQuestion("q13"));
+    av.step();
     //frame 17
-    av.umsg("Practicing: Partial Ordering");    
+    av.umsg(Frames.addQuestion("q14"));
     av.step();
 
     //frame 18
-    av.umsg("A relation is called $non-strict$ $partial$ $order$ if it is a partial order relation and reflexive in the same time.")
+    av.umsg(Frames.addQuestion("q15"));
     av.step();
 
     //frame 19
-    av.umsg("A relation is called $strict$ $partial$ $order$ If the relation is $irreflexive$ and partial order.");
+    av.umsg(Frames.addQuestion("q16"));
     av.step();
 
     //frame 20
-    av.umsg("The set on which the partial order is defined is called a $partially$ $ordered$ $set$ or a $poset$.");
+    av.umsg("A related proof technique is $proving$ $the$ $contrapositive$. We can prove that P$\\Rightarrow$Q by proving (not Q)$\\Rightarrow$(not P). This technique works because the truth table for the two logical statements are the same.");
     av.step();
+
+    // //frame 21
+    // av.umsg(Frames.addQuestion("q17"));
+    // av.step();
 
     //frame 21
-    av.umsg("Elements x and y of a set are $comparable$ under a given relation R if either xRy or yRx. Example: For the powerset of the integers, the subset operator defines a partial order (because it is antisymmetric and transitive). For example, {1,2}⊆{1,2,3}. However, sets {1, 2} and {1, 3} are not comparable by the subset operator, because neither is a subset of the other.");
+    av.umsg(Frames.addQuestion("q18"));
     av.step();
-
-    //frame 22
-    av.umsg("If every pair of distinct elements in a partial order are comparable, then the order is called a $total$ $order$ or $linear$ $order$.")
-    av.step();
-
+ 
     av.recorded();
 });
 

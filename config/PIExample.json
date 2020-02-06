@@ -80,8 +80,8 @@
     "NFA to DFA": {
       "PIExample/NFAtoDFAExample":{}
     },
-    "Mathematical Proof Technique": {
-      "PIExample/mathProof": {}
+    "NFA to ": {
+      "PIExample/proof":{}
     }
   }
 }

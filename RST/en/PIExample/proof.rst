@@ -5,16 +5,15 @@
 
 .. avmetadata::
    :author: Eunoh Cho
-   :satisfies: Frame example
-   :topic: Finite Automata
+   :topic: Mathematical Proof Technique
 
 
+Mathematical Proof Technique
+=================
 Mathematical Proof
-=================================
-Frame mathematical
---------------------------------------
+---------------------------------------
 
-.. inlineav:: Mathematical ff
+.. inlineav:: MathProof ff
    :links: AV/PIExample/MathProof.css
-   :scripts: AV/PIExample/MathProof.js DataStructures/PIFrames.js 
+   :scripts:AV/PIExample/MathProof.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
    :output: show
