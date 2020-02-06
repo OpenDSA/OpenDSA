@@ -326,8 +326,13 @@
         return false;
       } else if (pAnswer !== 1 || lAnswer !== 1){
         return false;
-      } else if (empNode.value(0) !== "John, 1000"){
-        return false;
+      } else {
+        var temp = empNode.value(0);
+        temp = temp.replace(/\s+/g, '');
+        temp = temp.toLowerCase();
+        if (temp !== "john,1000") {
+          return false;
+        }
       }
       return true;
     },
