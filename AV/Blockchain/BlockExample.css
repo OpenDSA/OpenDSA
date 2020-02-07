@@ -43,10 +43,16 @@
     top: 95px;
 }
 
+.label {
+    position: absolute;
+    top: 115px;
+}
+
 .output {
     position: absolute;
     top: 150px;
     text-align:center;
-    width: 500px;
-    margin: 0;
+    width: 520px;
+    margin: auto 0;
+    display: block;
 }
