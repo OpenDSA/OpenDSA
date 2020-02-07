@@ -38,7 +38,9 @@ is given to create a new hash.
 
 Blockchains are blocks that utilize the previous block's hash to "chain" together and create the blockchain. It is a linked list where 
 the pointer of each block points to the previous block's hash. The figure below demonstrates that when we change the the data of one block
-we are altering the pointers and hashes from all the blocks behind it. 
+we are altering the pointers and hashes from all the blocks behind it. The reason for this is because the hash of each block is dependent 
+on the hash of the previous block. This is where security on the blockchain becomes to enter, but we will talk about that in future sections.
+As of now, our hashs are created by concatenating the block number, data, and the previous hash.
 
 .. _BlockchainExample:
 
