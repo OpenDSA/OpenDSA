@@ -52,7 +52,7 @@ This example shows a Bitcoin example of a blockchain. This conveys the idea of a
 .. avembed:: AV/Blockchain/BlockchainNonceExample.html ss
    :long_name: Blockchain Nonce Example
 
-This is a simulation of a blockchain step-by-step with the inclusion of the nonce
+Below is a slideshow demonstrating these importance of each of these concepts as a blockchain would grow.
 
 .. inlineav:: llistBlockchain ss
    :long_name: Blockchain Slideshow 1
