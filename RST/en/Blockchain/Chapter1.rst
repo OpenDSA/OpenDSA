@@ -28,14 +28,17 @@ with three lines.
    :long_name: Blockchain Hash Example
 
 As we dive deeping into the building blocks of blockchain, we will look at a simple example of a block. In the figure below, we can see that 
-our block has a corresponding number and then some data corresponding to it. 
+our block has a corresponding number and then some data corresponding to it. What we do here is concatenate the block number to the data that 
+is given to create a new hash.
 
 .. _BlockExample:
 
 .. avembed:: AV/Blockchain/BlockExample.html ss
    :long_name: Block Example
 
-This example shows how a blockchain determines the hash for the entire chain.
+Blockchains are blocks that utilize the previous block's hash to "chain" together and create the blockchain. It is a linked list where 
+the pointer of each block points to the previous block's hash. The figure below demonstrates that when we change the the data of one block
+we are altering the pointers and hashes from all the blocks behind it. 
 
 .. _BlockchainExample:
 
