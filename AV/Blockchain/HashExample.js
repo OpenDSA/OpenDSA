@@ -3,22 +3,12 @@
 $(document).ready(function() {
   "use strict";
   // Declare and initialize state variables
-  var tsize = Number($("#tablesize").val()), // Table size
-      recs = Number($("#numrecs").val()), // Number of records
-      birthCredit = false,    // Credit flag for question 1
-      thousandCredit = false, // Credit flag for question 2
-      noCredit = true;        // Have not yet given credit
   var config = ODSA.UTILS.loadConfig(),
       interpret = config.interpreter;       // get the interpreter
 
   // Convenience function for writing output messages
   function tell(msg) {
     $(".output").val(msg);
-  }
-
-  // Process About button: Pop up a message with an Alert
-  function about() {
-    alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
 
   async function sha256(input) {
@@ -40,13 +30,12 @@ $(document).ready(function() {
   // Most of this behavior relates to checking against the expected
   // answer for giving credit to the obsolete exercise.
   function CreateHash() {
-    var input = $("#tablesize").val();
+    var input = $("#inputArea").val();
     sha256(input).then(res => {
         tell(res);
     });
   }
 
   // Action callbacks for form entities
-  $("#about").click(about);
-  $("#calculate").click(CreateHash);
+  $("#inputArea").keyup(CreateHash);
 });
