@@ -23,7 +23,7 @@ $(document).ready(function() {
 
     //frame 4
 
-    av.umsg("Definition: Given $\\Sigma$, $\\0$, $\\lambda$, and a∈Σ are R.E.");
+    av.umsg("Definition: Given $\\Sigma$, $\\emptyset$, $\\lambda$, and a∈Σ are R.E.");
     av.step();
 
 
