@@ -1,0 +1,19 @@
+#SortingProblemCON {
+  height: 320px;
+}
+
+#SortingProblemCON .jsavline {
+  height: 90px;
+}
+
+#SortingProblemCON .jsavhorizontalarray .jsavnode {
+  min-width: 45px !important;
+  max-width: 200px !important;
+  min-height: 35px !important;
+  max-height: 35px !important;
+}
+
+#SortingProblemCON .largeLabel{
+  font-size: 18px; 
+  text-align: center; 
+}
