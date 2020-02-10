@@ -17,6 +17,16 @@ $(document).ready(function() {
     av.umsg(Frames.addQuestion("q0"));
     av.step();
 
+    //frame 3
+    av.umsg(Frames.addQuestion("q1"));
+    av.step();
+
+    //frame 4
+
+    av.umsg("Definition: Given $\\Sigma$, $\\0$, $\\lambda$, and a∈Σ are R.E.");
+    av.step();
+
+
 
     
     av.recorded();

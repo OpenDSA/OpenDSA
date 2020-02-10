@@ -10,10 +10,10 @@
         },
         "q1":{
           "type": "multiple",
-          "question":"What language can following equation be? $(aa)^∗$",
-          "description": "Now, we should determine the the possible transitions from our new start state. To do so, we need to check the transitions from $\\{q0,q1,q2\\}$ with $a$ and $b$ ",
-          "answer": "False",
-          "choices": ["True", "False"]
+          "question":"What language can following equation be? $(aa)^∗$ (Becareful with alphabet)",
+          "description": "There are three operators that can be used: $+$ union (OR), $\\cdot$ concatenation (AND), $\\ast$ star-closure (repeat 0 or more times). We often omit showing the $\\cdot$ for concatenation.",
+          "answer": "Strings of $a$s with even number of $a$s",
+          "choices": ["Any string of $a$s with an even number of $a$s", "Strings of $a$s with even number of $a$s", "Strings of multiple $a$s and with an odd number of $a$s"]
         },
         "q2": {
           "type": "select",
