@@ -10,7 +10,7 @@ $(document).ready(function() {
     var goNext = false;
 
     //frame 1
-    av.umsg("$\\textbf {Regular expression}$ (RegEx or R.E.) is a way to specify a set of strings that defines a language.");
+    av.umsg("$\\textbf {Regular expression}$ (RegEx or R.E.) is a \n way to specify a set of strings that defines a language.");
     av.displayInit();
 
     //frame 2
@@ -22,8 +22,7 @@ $(document).ready(function() {
     av.step();
 
     //frame 4
-
-    av.umsg("Definition: Given $\\Sigma$, $\\emptyset$, $\\lambda$, and a∈Σ are R.E.");
+    av.umsg("Definition: $\\textbf {1.}$ Given $\\Sigma$, $\\emptyset$, $\\lambda$, and $a$ $\\in$ $\\Sigma$ are R.E. $\\textbf {2.}$ If r and s are regular expressions, then $r$ $+$ $s$, $rs$, $r^∗$ are R.E. $\\textbf {3.}$ r is a R.E if and only if it can be derived from (1) with a finite number of applications of (2)");
     av.step();
 
 
