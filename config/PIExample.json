@@ -62,16 +62,13 @@
     "required": true
   }, 
   "chapters": {
-    "Old Examples": {
-      "PIExample/RestingFillInSpace":{}
-    },
-    "PI Example": {
+    "Formal Languages": {
       "PIExample/Echo_frame1": {}
     },
-    "grammars": {
+    "Grammars": {
       "PIExample/grammar": {}
     },
-    "mathematical": {
+    "Mathematical": {
       "PIExample/mathematical": {}
     },
     "Set Relations": {
@@ -80,7 +77,7 @@
     "NFA to DFA": {
       "PIExample/NFAtoDFAExample":{}
     },
-    "NFA to ": {
+    "Mathematical Proof Technique ": {
       "PIExample/proof":{}
     }
   }

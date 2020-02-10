@@ -11,7 +11,7 @@
 
 Set Relations
 ================================
-Set Relations
+Relations
 -------------------------------
 .. inlineav:: SetRelations ff
    :links: AV/PIExample/SetRelations.css

@@ -9,9 +9,9 @@
    :topic: Finite Automata
 
 
-Frame mathematical
+Mathematical
 =================================
-Frame mathematical
+Mathematical
 --------------------------------------
 
 .. inlineav:: Mathematical ff

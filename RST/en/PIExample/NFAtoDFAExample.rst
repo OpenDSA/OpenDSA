@@ -10,7 +10,7 @@
 
 NFA to DFA Frames
 =================
-Here is an example that uses the Frames
+Converting NFA to DFA
 ---------------------------------------
 
 .. inlineav:: NFA2DFAFrames ff
