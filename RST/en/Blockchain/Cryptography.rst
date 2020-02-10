@@ -75,8 +75,10 @@ Block :math:`t` in a blockchain therefore contains
 the hash of block :math:`t-1` as a backward pointer into the
 blockchain.
 
-.. TODO::
-   :type: Demo
+.. _HashExample: 
+
+.. avembed:: AV/Blockchain/HashExample.html ss
+   :long_name: Hash Example
           
    In this demonstration, you can type in some text and watch as the 
    SHA-256 hash changes completely with each new character.
