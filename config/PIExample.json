@@ -80,7 +80,8 @@
       "PIExample/continuedMathProof":{}
     },
     "Regular Languages": {
-      "PIExample/regularExpression":{}
+      "PIExample/regularExpression":{},
+      "PIExample/grammarRegularExpression": {}
     }
   }
 }
