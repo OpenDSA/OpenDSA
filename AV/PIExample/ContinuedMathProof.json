@@ -25,7 +25,7 @@
         "q3": {
           "type": "multiple",
           "question":"[T/F] The Base case is usually hard to prove",
-          "description": "Mathematical induction states that Thrm is true for any value of parameter n (for n≥c, where c is some constant) if the following two conditions are true: $\\textbf{Base Case}$: $\\textbf {Thrm}$ holds for n=c $\\textbf{Induction Step}$: If $\\textbf {Thrm}$ holds for n−1, then Thrm holds for n",
+          "description": "Mathematical induction states that Thrm is true for any value of parameter n (for n$\\geq$c, where c is some constant) if the following two conditions are true: $\\textbf{Base Case}$: $\\textbf {Thrm}$ holds for n=c $\\textbf{Induction Step}$: If $\\textbf {Thrm}$ holds for n−1, then Thrm holds for n",
           "answer": "False",
           "choices": ["True", "False"]
         },
