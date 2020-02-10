@@ -78,7 +78,9 @@
     "Mathematical Proof Technique ": {
       "PIExample/proof":{},
       "PIExample/continuedMathProof":{}
-      
+    },
+    "Regular Languages": {
+      "PIExample/regularExpression":{}
     }
   }
 }

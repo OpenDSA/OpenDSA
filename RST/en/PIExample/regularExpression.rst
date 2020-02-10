@@ -9,15 +9,13 @@
    :topic: Finite Automata
 
 
-Set and Relations
+Regular Expression
 ================================
 
-Relations
+Introduction to regular expression
 -------------------------------
 
-In this chapter you will learn about set and relations. After this chapter you will have full understanding of set and relations.
-
-.. inlineav:: SetRelations ff
-   :links: AV/PIExample/SetRelations.css
-   :scripts: AV/PIExample/SetRelations.js DataStructures/PIFrames.js 
+.. inlineav:: RegularExpression ff
+   :links: AV/PIExample/RegularExpression.css
+   :scripts: AV/PIExample/RegularExpression.js DataStructures/PIFrames.js 
    :output: show
