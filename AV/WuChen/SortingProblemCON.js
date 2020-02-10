@@ -19,7 +19,7 @@ $(document).ready(function () {
 
 
   // Slide 1
-  av.umsg(interpret("sc3"));
+  av.umsg(interpret("sc2"));
   var rect = av.g.rect(leftAlign + 350, topAlign - 25, rectWidth, rectHeight);
   var labelProblem = av.label(interpret("lab1"),
                               {top: topAlign - 20, left: leftAlign + 360}).addClass("codeLabel");
