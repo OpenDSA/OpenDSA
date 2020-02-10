@@ -8,14 +8,12 @@
    :topic: Mathematical Proof Technique
 
 
-Mathematical Proof Technique
+Mathematical Proof Technique continued
 =================
-Mathematical Proof
+Continued from Mathematical Proof
 ---------------------------------------
 
-.. inlineav:: MathProof ff
-   :links: AV/PIExample/MathProof.css
-   :scripts: AV/PIExample/MathProof.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
+.. inlineav:: ContinuedMathProof ff
+   :links: AV/PIExample/ContinuedMathProof.css
+   :scripts: AV/PIExample/ContinuedMathProof.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
    :output: show
-
-

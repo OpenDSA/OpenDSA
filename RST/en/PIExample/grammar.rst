@@ -11,7 +11,7 @@
 
 Grammar 
 ================================
-Grammar
+Introduction to grammar
 -------------------------------
 .. inlineav:: ChomskyCON ff
    :links: AV/PIExample/ChomskyCON.css

@@ -68,17 +68,17 @@
     "Grammars": {
       "PIExample/grammar": {}
     },
-    "Mathematical": {
-      "PIExample/mathematical": {}
-    },
     "Set Relations": {
+      "PIExample/mathematical": {},
       "PIExample/setRelations": {}
     },
     "NFA to DFA": {
       "PIExample/NFAtoDFAExample":{}
     },
     "Mathematical Proof Technique ": {
-      "PIExample/proof":{}
+      "PIExample/proof":{},
+      "PIExample/continuedMathProof":{}
+      
     }
   }
 }
