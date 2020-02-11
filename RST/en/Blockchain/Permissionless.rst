@@ -51,13 +51,6 @@ to do to "win" the right to determine the next block, by being the
 first to find a nonce to go with their block data that generates a
 hash less than the required value.
 
-.. .. TODO::
-..    :type: Demo
-
-..    Here is a demo of changing the nonce of a block to achieve
-..    different SHA-256 hashes and ultimately finding a hash less than a
-..    target.
-
 .. _PermissionlessNonceDemo:
 
 .. avembed:: AV/Blockchain/PermissionlessNonceDemo.html ss
