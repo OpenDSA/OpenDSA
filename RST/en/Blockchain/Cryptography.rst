@@ -40,8 +40,10 @@ anyone without the private key to sign a message and pass it off as
 signed by the participant.
 This is essential in blockchains to verify who originated a message.
 
-.. TODO::
-   :type: Demo
+.. _PublicKeyExample:
+
+.. avembed:: AV/Blockchain/KeyExample.html ss
+   :long_name: Public Key Example
           
    Give an inline demo of public-key cryptography, such as RSA, 
    here.
