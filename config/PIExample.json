@@ -81,7 +81,8 @@
     },
     "Regular Languages": {
       "PIExample/regularExpression":{},
-      "PIExample/grammarRegularExpression": {}
+      "PIExample/grammarRegularExpression": {},
+      "PIExample/expressionRegular": {}
     }
   }
 }
