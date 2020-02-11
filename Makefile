@@ -101,6 +101,7 @@ Obsolete: min
 	python $(CONFIG_SCRIPT) config/Obsolete.json --no-lms
 
 Test: min
+	python --version
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
 DanaG: min
