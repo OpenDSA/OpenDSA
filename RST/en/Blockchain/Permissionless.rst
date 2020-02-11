@@ -51,12 +51,17 @@ to do to "win" the right to determine the next block, by being the
 first to find a nonce to go with their block data that generates a
 hash less than the required value.
 
-.. TODO::
-   :type: Demo
+.. .. TODO::
+..    :type: Demo
 
-   Here is a demo of changing the nonce of a block to achieve
-   different SHA-256 hashes and ultimately finding a hash less than a
-   target.
+..    Here is a demo of changing the nonce of a block to achieve
+..    different SHA-256 hashes and ultimately finding a hash less than a
+..    target.
+
+.. _PermissionlessNonceDemo:
+
+.. avembed:: AV/Blockchain/PermissionlessNonceDemo.html ss
+   :long_name: Permissionless Nonce Demo
 
 The first miner to solve the puzzle for the next block of transactions is 
 expected to propose that block of transactions as the next one in the 
