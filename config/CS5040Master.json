@@ -78,10 +78,11 @@
       "CS5040slides/Lists": {}
     },
     "Week 3, Day 2": {
-      "CS5040slides/StackQueue": {},
-      "CS5040slides/Coding": {}
+      "CS5040slides/Testing": {},      
+      "CS5040slides/StackQueue": {}
     },
     "Week 4, Day 1": {
+      "CS5040slides/Coding": {},
       "CS5040slides/Binary": {}
     },
     "Week 4, Day 2": {
