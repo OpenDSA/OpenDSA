@@ -22,10 +22,20 @@ $(document).ready(function() {
     av.step();
 
     //frame 4
-    av.umsg("Definition: $\\textbf {1.}$ Given $\\Sigma$, $\\emptyset$, $\\lambda$, and $a$ $\\in$ $\\Sigma$ are R.E. $\\textbf {2.}$ If r and s are regular expressions, then $r$ $+$ $s$, $rs$, $r^∗$ are R.E. $\\textbf {3.}$ r is a R.E if and only if it can be derived from (1) with a finite number of applications of (2)");
+    av.umsg(Frames.addQuestion("q2"));
     av.step();
 
+    //frame 5
+    av.umsg(Frames.addQuestion("q3"));
+    av.step();
 
+    //frame 6
+    av.umsg(Frames.addQuestion("q4"));
+    av.step();
+
+    //frame 7
+    av.umsg(Frames.addQuestion("q5"));
+    av.step();
 
     
     av.recorded();
