@@ -71,7 +71,7 @@ $(document).ready(function () {
     av.step();
 
     //frame 9
-    av.umsg(Frames.addQuestion("Formal Defination for DFA: \n Q is a finite set of states \n is the input alphabet (a finite set) \n :Qx -> Q  A set of transitions like (qi, a)-> qj \n q0 us the initial state (q0 is an element of Q) \n F is the set of all final states") );
+    av.umsg("Formal Defination for DFA: \n Q is a finite set of states \n is the input alphabet (a finite set) \n :Qx -> Q  A set of transitions like (qi, a)-> qj \n q0 us the initial state (q0 is an element of Q) \n F is the set of all final states");
     av.step();
 
     //frame 10

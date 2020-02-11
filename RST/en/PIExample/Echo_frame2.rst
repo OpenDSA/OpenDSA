@@ -16,7 +16,7 @@ What is Formal Language
 
 .. inlineav:: DFAFrame ff
    :links: AV/PIExample/DFAFrame.css
-   :scripts: DataStrucure/FLA/FA.js AV/PIExample/DFAFrame.js DataStructures/PIFrames.js
+   :scripts: AV/PIExample/DFAFrame.js DataStructures/PIFrames.js DataStructures/FLA/FA.js
    :output: show
 
 
