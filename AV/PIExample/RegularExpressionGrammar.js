@@ -9,7 +9,7 @@ $(document).ready(function() {
         interpret = config.interpreter, // get the interpreter
         code = config.code;             // get the code object
     var FA = new av.ds.FA({width: 350, height: 240,left: 10, top:0});
-    var DFA = new av.ds.FA({width: 350, height: 300, left: 10, top:250});
+    //var DFA = new av.ds.FA({width: 350, height: 300, left: 10, top:250});
     //var separator =  av.g.path(["M", 350, 0, "v", 500].join(","));
     //separator.show();
     
@@ -19,7 +19,7 @@ $(document).ready(function() {
     av.displayInit();
 
     //frame 2
-    av.umsg("Here is an NFA that accepts nothing ($\\emptyset$)");
+    av.umsg("Here is an example of NFA that accepts nothing ($\\emptyset$)");
     var q0 = FA.addNode({left: 10, top: 70});
     var q1 = FA.addNode({left: 210, top: 70});
    
@@ -31,12 +31,12 @@ $(document).ready(function() {
     av.step();
 
     //frame 3
-    av.umsg("Here is an NFA that accepts an empty string ($\\lambda$)");
+    av.umsg("Here is an example of NFA that accepts an empty string ($\\lambda$)");
     FA.addEdge(q0, q1, {weight: "$\\lambda$"});
     av.step();
 
     //frame 4
-    av.umsg("Here is an NFA that accepts $a$ $\\in$ $\\Sigma$");
+    av.umsg("Here is an example of NFA that accepts $a$ $\\in$ $\\Sigma$");
     FA.removeEdge(q0, q1, {weight: "$\\lambda$"});
     FA.addEdge(q0, q1, {weight: "a"});
     av.step();
@@ -56,25 +56,31 @@ $(document).ready(function() {
     av.step();
 
     //frame 8
-    av.umsg("Let's suppose that we have a regular expression r, we need to find a simple representation for NFA that accepts r");
+    av.umsg("Let's suppose that we have a regular expression $r$, we need to find a simple representation for NFA that accepts $r$");
     var s = FA.addNode({left: 10, top: 70});
-    var ex1 = FA.addNode({left: 210, top: 70});
-    var ex2 = FA.addNode({left: 210, top: 130});
-    var ex3 = FA.addNode({left: 210, top: 190});
-    var f = FA.addNode({left: 410, top: 70});
+    var ex1 = FA.addNode({left: 160, top: 70});
+    var ex2 = FA.addNode({left: 160, top: 130});
+    var ex3 = FA.addNode({left: 160, top: 190});
+    var m = FA.addNode({left: 310, top: 70});
     FA.disableDragging();
     toggleInitial(FA, s);
-    toggleFinal(FA, f);
-    FA.addEdge(ex1, f, {weight: "$\\lambda$"});
-    FA.addEdge(ex2, f, {weight: "$\\lambda$"});
-    FA.addEdge(ex3, f, {weight: "$\\lambda$"});
+    toggleFinal(FA, m);
+    FA.addEdge(ex1, m, {weight: "$\\lambda$"});
+    FA.addEdge(ex2, m, {weight: "$\\lambda$"});
+    FA.addEdge(ex3, m, {weight: "$\\lambda$"});
 
     av.step();
 
+    //frame 9
+    av.umsg(Frames.addQuestion("q0"));
+    av.step();
 
+    //frame 9
+    av.umsg("To accept any regular expression $r$, the NFA should start from $s$ and go to $\\textbf {intermediate}$ states until it reaches the final state $f$")
+    FA.addEdge(s, ex1, {weight: "$\\lambda$"});
+    FA.addEdge(s, ex2, {weight: "$\\lambda$"});
+    FA.addEdge(s, ex3, {weight: "$\\lambda$"});
+    av.step();
 
-
-    
-    
     av.recorded();
 });
