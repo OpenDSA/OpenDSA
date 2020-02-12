@@ -31,7 +31,7 @@ class ValueBox{
         // AND the value, unit, etc. things
         var text = globalJSAV.label(
             katex.renderToString(
-                element.dataset.variable+"="+element.dataset.valueDisplay+element.dataset.unitDisplay),
+                element.dataset.variableDisplay+"="+element.dataset.valueDisplay+element.dataset.unitDisplay),
             {
                 left: element.visuals["POSITION_X"],
                 top: element.visuals["POSITION_Y"]

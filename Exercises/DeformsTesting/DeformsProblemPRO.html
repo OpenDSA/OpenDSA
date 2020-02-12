@@ -45,20 +45,22 @@
             </span>.
 
             Knowing the bar is made of aluminum 
-            (E=
-                <span class="param" id="param5" 
-                data-value="70000000" data-unit="Pa" 
-                data-value-display="70"
-                data-unit-display="GPa" data-domain="pressure">70 GPa</span>,
-            <code><var>"{\\alpha}"</var></code>=
-                <span class="param" id="param6"
-                data-value="0.000023" data-unit=""
-                data-value-display="23e-6"
-                data-unit-display="" data-domain="coefficient">
-                <code>
-                  <var>"23\\times10^{-6}"</var>
-                </code>
-                </span>
+            (
+              E=
+              <span class="param" id="param5" 
+              data-value="70000000" data-unit="Pa" 
+              data-value-display="70"
+              data-unit-display="GPa" data-domain="pressure">70 GPa
+              </span>,
+              <code><var>"{\\alpha}"</var></code>=
+              <span class="param" id="param6"
+              data-value="0.000023" data-unit="/C"
+              data-value-display="23e-6"
+              data-unit-display="/C" data-domain="temperature-1">
+              <code>
+                <var>"23\\times10^{-6} /^{\\circ}C"</var>
+              </code>
+              </span>
             ):
         </p>
 
@@ -91,35 +93,28 @@
         
         <div class="solution" data-type="custom">
           <div class="guess"> 
-            <!-- [ deformsProblemPRO.userInput ] -->
+            [ deformsProblemPRO.globalSolutionBoxes ]
           </div>
           <div class="validator-function">
-            <!--
-              if (!eqnSolverPRO.checkAnswer() && !guess[0]) {
+            var answer = deformsProblemPRO.checkAnswer();
+            if (!guess[0] && !answer) {
               return ""; // User did not click, and correct answer is not
-                          // initial array state
-            } else { return eqnSolverPRO.checkAnswer(arr_size); }
-          -->
+                         // initial array state
+            } else {
+              return answer;
+            }
           </div>
         </div>
-
-        <!-- <div data-if="L[2] == 0">
-          <p class="solution" data-type="decimal"> 
-            <var>round((gap / (a * (nT-T)))*1000) / 1000</var>
-              <!- Replace this with a conditional based on which enable variable is 0 ->
-              The correct answer expected from the student
-          </p>
-        </div> -->
       </div>
 
     </div>
 
     <div class="hints">
-        <p>
-          Add different levels of hints corresponding to reaction from
-          the evaluator function in JS file.
-        </p>
-      </div>
+      <p>
+        Add different levels of hints corresponding to reaction from
+        the evaluator function in JS file.
+      </p>
+    </div>
 
   </div>
 
@@ -130,6 +125,7 @@
   <script src="./jiggzson-nerdamer-432dd54/Solve.js"></script>
   <script src="./jiggzson-nerdamer-432dd54/Extra.js"></script>
 
+  <!--- Scripts exclusive to MechSolver -->
   <script src="MechSolver/Variable.js"></script>
   <script src="MechSolver/ActiveEquation.js"></script>
   <script src="MechSolver/ValueBox.js"></script>
@@ -137,6 +133,9 @@
   <script src="MechSolver/equation_bank.js"></script>
   <script src="MechSolver/Workspace.js"></script>
   <script src="MechSolver/WorkspaceList.js"></script>
+
+  <!-- Additional script files containing settings and solution files -->
+  <script src="DeformsProblemPROsolution.js"></script>
 
 </body>
 

@@ -13,6 +13,12 @@ const equations = [
             'const':'\\alpha',
             'tempchange':'\\Delta T',
             'len':'L'
+        },
+        domains: {
+            'deform':'length',
+            'const':'temperature-1',
+            'tempchange':'temperature',
+            'len':'length'
         }
     },
     {
@@ -28,6 +34,11 @@ const equations = [
             'avgdeform': '\\delta_{avg}',
             'force': 'F',
             'area': 'A'
+        },
+        domains: {
+            'avgdeform': 'length',
+            'force': 'force',
+            'area': 'length2'
         }
     },
     {
@@ -43,6 +54,11 @@ const equations = [
             'avgstress': '\\tau_{avg}',
             'volume': 'V',
             'areaV': '{A_v}'
+        },
+        domains: {
+            'avgstress': 'pressure',
+            'volume': 'length3',
+            'areaV': 'length2'
         }
     },
     {
@@ -59,6 +75,12 @@ const equations = [
             'epsX': '\\varepsilon_x',
             'epsY': '\\varepsilon_y',
             'shear': '\\gamma_{xy}',
+        },
+        domains: {
+            'maxshear': 'coefficient',
+            'epsX': 'coefficient',
+            'epsY': 'coefficient',
+            'shear': 'coefficient',
         }
     },
     {
@@ -75,6 +97,12 @@ const equations = [
             'stress': '\\sigma',
             'pressE': 'E',
             'length': 'L'
+        },
+        domains: {
+            'deform': 'length',
+            'stress': 'pressure',
+            'pressE': 'pressure',
+            'length': 'length'
         }
     },
     // {
@@ -187,6 +215,11 @@ const equations = [
             'cterm': 'c',
             'bterm': 'b',
             'aterm': 'a'
+        },
+        domains: {
+            'cterm': 'dimensionless',
+            'bterm': 'dimensionless',
+            'aterm': 'dimensionless'
         }
     },
     {
@@ -197,11 +230,18 @@ const equations = [
         latex_boxes: '\\Box=\\Box+\\Box+\\Box',
         params_latex: ['c', 'x', 'y', 'z'],
         template: 'cterm = xterm + yterm + zterm',
-        params: ['cterm', 'bterm', 'aterm'],
+        params: ['cterm', 'xterm', 'yterm', 'zterm'],
         variables: {
             'cterm': 'c',
-            'bterm': 'b',
-            'aterm': 'a'
+            'xterm': 'x',
+            'yterm': 'y',
+            'zterm': 'z'
+        },
+        domains: {
+            'cterm': 'dimensionless',
+            'xterm': 'dimensionless',
+            'yterm': 'dimensionless',
+            'zterm': 'dimensionless'
         }
     },
     {
@@ -217,6 +257,11 @@ const equations = [
             'cterm': 'c',
             'bterm': 'b',
             'aterm': 'a'
+        },
+        domains: {
+            'cterm': 'dimensionless',
+            'bterm': 'dimensionless',
+            'aterm': 'dimensionless'
         }
     },
     {
@@ -232,6 +277,11 @@ const equations = [
             'cterm': 'c',
             'bterm': 'b',
             'aterm': 'a'
+        },
+        domains: {
+            'cterm': 'dimensionless',
+            'bterm': 'dimensionless',
+            'aterm': 'dimensionless'
         }
     },
     {
@@ -247,6 +297,11 @@ const equations = [
             'cterm': 'c',
             'bterm': 'b',
             'aterm': 'a'
+        },
+        domains: {
+            'cterm': 'dimensionless',
+            'bterm': 'dimensionless',
+            'aterm': 'dimensionless'
         }
     },
 ]
