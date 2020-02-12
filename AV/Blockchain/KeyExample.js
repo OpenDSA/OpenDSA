@@ -14,7 +14,7 @@ $(document).ready(function() {
             // Consider using a 4096-bit key for systems that require long-term security
             modulusLength: 2048,
             publicExponent: new Uint8Array([1, 0, 1]),
-            hash: "SHA-256",
+            hash: {name: "SHA-256"},
         },
         true,
         ["encrypt", "decrypt"]
@@ -29,36 +29,33 @@ $(document).ready(function() {
 
     async function encryptMessage() {
         let encoded = getMessageEncoding();
-        cipherText = await window.crypto.subtle.encrypt(
+        let publicKey = (await keys).publicKey;
+        await crypto.subtle.encrypt(
             {
                 name: "RSA-OAEP"
             },
-            (await keys).publicKey,
+            publicKey,
             encoded
-        );
+        ).then(encrypted => cipherText = encrypted);
     
-        let buffer = new Uint8Array(cipherText, 0, 8);
+        let buffer = new Uint8Array(cipherText, 0, 5);
         $(".encryptMsg").val(`${buffer}...[${cipherText.byteLength} bytes total]`);
-        // ciphertextValue.classList.add('fade-in');
-        // ciphertextValue.addEventListener('animationend', () => {
-        //     ciphertextValue.classList.remove('fade-in');
-        // });
-        // ciphertextValue.textContent = `${buffer}...[${cipherText.byteLength} bytes total]`;
     }
 
     async function decryptMessage() {
         let privateKey = (await keys).privateKey;
-        let decrypted = await crypto.subtle.decrypt(
+        var decrypted = await crypto.subtle.decrypt(
             {
                 name: "RSA-OAEP"
             },
             privateKey,
             cipherText
         );
-        
+
+        console.log(cipherText)
         let dec = new TextDecoder();
-        $(".decryptMsg").val(dec.decode(decrypted));
-        console.log(dec.decode(decrypted));
+        $(".decryptMsg").val(dec.decode(decrypted))
+        console.log(data)
     }
     
     // Action callbacks for form entities
