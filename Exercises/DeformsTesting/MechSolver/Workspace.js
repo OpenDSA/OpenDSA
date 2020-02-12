@@ -32,10 +32,10 @@ class Workspace
             "HEIGHT": dim_obj["HEIGHT"],
             "ELEMENTS": {
                 "POSITION_X": dim_obj["CORNER_X"]+5,
-                "POSITION_Y": dim_obj["CORNER_Y"]+40,
+                "POSITION_Y": dim_obj["CORNER_Y"]+20,
                 "WIDTH": 30,
-                "HEIGHT_PAD": 10,
-                "HEIGHT": 50
+                "HEIGHT_PAD": 5,
+                "HEIGHT": 30
             }
         }
         
@@ -303,7 +303,17 @@ class Workspace
                 equationSet.push(currentEqn.createSolvableRepresentation());
             }
         }
-        console.log(equationSet);
+        //console.log(equationSet);
+        var variableSet = {};
+        // Find all the variables in the chosen equationObjectSet
+        for(var i=0; i<equationObjectSet.length; i++)
+        {
+            for(var v in equationObjectSet[i].variables)
+            {
+                variableSet[equationObjectSet[i].variables[v].id] = 
+                equationObjectSet[i].variables[v].parentSymbol;
+            }
+        }
 
         // Step 2: Feed the list to nerdamer, see the output.
         var soln = null;
@@ -312,28 +322,44 @@ class Workspace
         else
             //soln = equationObjectSet[0].solve();
             soln = equationObjectSet[0].solve();
-        console.log(soln);
+        //console.log(soln);
 
         // Step 3: Create the solution boxes, new boxes inside the workspace.
-        new ValueBox(
-            false,
-            {
-                "visuals": this.DIMENSIONS.ELEMENTS,
-                "dataset": {
-                    "value": soln[1],
-                    "unit": "",
-                    "variable": soln[0],
-                    "valueDisplay": String(Number(Math.round(soln[1]+'e3')+'e-3')),
-                    "unitDisplay": "",
-                    "domain": ""
-                }
-            },
-            this.globalSectionObj,
-            this.globalPointerReference
-        )
+        for(var i=0; i<soln.length; i++)
+        {
+            new ValueBox(
+                false,
+                {
+                    "visuals": this.DIMENSIONS.ELEMENTS,
+                    "dataset": {
+                        "value": soln[i][1],
+                        "unit": "",
+                        "variable": soln[i][0],
+                        "valueDisplay": String(Number(Math.round(soln[i][1]+'e3')+'e-3')),
+                        "unitDisplay": "",
+                        "variableDisplay": variableSet[soln[i][0]],
+                        "domain": ""
+                    }
+                },
+                this.globalSectionObj,
+                this.globalPointerReference
+            )
 
-        this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
-        this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+            this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
+            this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+        }
+
+        // De-select selected equations, the list of selections will get cleared anyway.
+        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        {
+            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+            if(currentEqn.selected == true)
+            {
+                currentEqn.visualComponents.tickmark.addClass("tickunselected");
+                currentEqn.visualComponents.tickmark.removeClass("tickselected");
+                currentEqn.selected = false;
+            }
+        }
     }
 }
 

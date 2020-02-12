@@ -26,15 +26,20 @@
 }
 
 .param {
-    padding: 2px 4px;
+    padding: 1px 2px;
     border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    background-color: white;
 }
 
 .param:hover {
     cursor: grab !important;
+    background-color: orange !important;
 }
 
-.param[data-domain="length"] {
+/* .param[data-domain="length"] {
     background-color: rgb(126, 255, 126);
 }
 
@@ -48,18 +53,31 @@
 
 .param[data-domain="coefficient"] {
     background-color: rgb(193, 193, 193);
-}
+} */
 
 .boxparam {
     padding: 0px 0px;
-    border-radius: 0px;
 }
 
 .boxparam:hover {
     cursor: grab !important;
+    opacity: 0.5;
+    background-color: orange !important;
 }
 
-.boxparam[data-domain="length"] {
+/* .boxparam[data-domain='empty']:hover {
+    background-color: orange;
+} */
+
+.boxparam[data-domain='filled'] {
+    padding: 1px 2px;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+/* .boxparam[data-domain="length"] {
     background-color: rgb(126, 255, 126);
 }
 
@@ -73,7 +91,7 @@
 
 .boxparam[data-domain="coefficient"] {
     background-color: rgb(193, 193, 193);
-}
+} */
 
 #figures {
     position: relative;
@@ -81,11 +99,15 @@
 
 .solution-box {
     padding: 5px;
-    background-color: lightgreen;
+    background-color: yellow;
     display: inline-block;
     min-width: 100px;
     min-height: 15px;
     vertical-align: middle;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
 }
 
 #WorkspaceList {
