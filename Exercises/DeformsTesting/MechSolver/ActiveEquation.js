@@ -24,14 +24,14 @@ class ActiveEquation{
             e.stopPropagation();
             if(this.selected==true){
                 this.selected = false;
-                tickmark.addClass("tickunselected");
-                tickmark.removeClass("tickselected");
+                this.visualComponents["tickmark"].addClass("tickunselected");
+                this.visualComponents["tickmark"].removeClass("tickselected");
                 jsavObject.logEvent({type: "tick unselected", id: this.name});
             }
             else{
                 this.selected = true;
-                tickmark.addClass("tickselected");
-                tickmark.removeClass("tickunselected");
+                this.visualComponents["tickmark"].addClass("tickselected");
+                this.visualComponents["tickmark"].removeClass("tickunselected");
                 jsavObject.logEvent({type: "tick selected", id: this.name});
             }
         });
