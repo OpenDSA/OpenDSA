@@ -29,6 +29,7 @@ class Variable{
             this.value = String(this.globalPointerReference.currentClickedObject.value).slice();
             this.element.setAttribute("data-domain",
             this.globalPointerReference.currentClickedObject.domain);
+            // this.globalJSAVobject.logEvent({type: "adding new value", id: this.id });
 
             //change the innerHTML
             /*

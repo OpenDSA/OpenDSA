@@ -7,6 +7,8 @@
  * elsewhere as well.
  */
 
+
+ //Need to add globalJSAVobject for event logger
 class Workspace
 {
     constructor(jsavCanvasObj, dim_obj, workspaceid, geb, gpr)
@@ -115,6 +117,8 @@ class Workspace
         document.getElementById(this.name+"addeq").addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation addition here.
+            this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
+            this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
             this.addNewEquation();
         });
 
@@ -161,13 +165,13 @@ class Workspace
             e.stopPropagation();
            // Add function call to equation set solving and result propagation here.
            this.solveEquations();
+           this.globalSectionObj.logEvent({type: "Solution"});
         });
     }
     destroyBox()
     {
         // Triggered by the clickhandler
         this.elements.forEach(x => x['jsav'].clear())
-
         //This is fine, since the parent knows to remove this from their tracking.
         return this.id;
     }
@@ -250,6 +254,7 @@ class Workspace
             this.globalSectionObj,
             this.globalPointerReference
         )
+        
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
         this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
 

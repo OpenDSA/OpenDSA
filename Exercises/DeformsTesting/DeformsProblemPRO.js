@@ -52,6 +52,9 @@
     
         //Setup the new display
         av = new JSAV("DeformsProblemPRO");
+        // av = new JSAV("DeformsProblemPRO", { logEvent: function(eventData) {
+        //     console.log(eventData);
+        // }});
         eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
             eqbank, globalPointerReference)
@@ -73,9 +76,11 @@
         av.recorded();
         deformsProblemPRO.userInput = false;
 
-        $("body").on("jsav-log-event", function(event, eventData) {
-            //console.log(eventData);
-          });
+        // $("body").on("jsav-log-event", function(event, eventData) {
+        //     console.log(eventData);
+        //     jsav.logEvent({type: "jsav-heap-decrement",
+        //        newSize: bh.heapsize()});
+        //   });
         
         // Setting up value boxes for those inside the question body
         var selectableParameters = document.getElementsByClassName("param");
@@ -108,9 +113,7 @@
                     //     globalPointerReference.currentClickedObject.unitDisplay);
                     if(globalPointerReference.currentClickedObjectType == "value-box")
                         this.innerHTML =
-                        Number(Math.round(
-                            globalPointerReference.currentClickedObject.value
-                            +'e3')+'e-3'); 
+                        globalPointerReference.currentClickedObject.value; 
                 }
             )
         }

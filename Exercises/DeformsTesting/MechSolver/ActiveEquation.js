@@ -24,11 +24,13 @@ class ActiveEquation{
                 this.selected = false;
                 tickmark.addClass("tickunselected");
                 tickmark.removeClass("tickselected");
+                jsavObject.logEvent({type: "tick unselected", id: this.name});
             }
             else{
                 this.selected = true;
                 tickmark.addClass("tickselected");
                 tickmark.removeClass("tickunselected");
+                jsavObject.logEvent({type: "tick selected", id: this.name});
             }
         });
 
