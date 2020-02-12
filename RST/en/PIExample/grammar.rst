@@ -9,9 +9,9 @@
    :topic: Finite Automata
 
 
-grammar example
+Grammar 
 ================================
-grammar
+Introduction to grammar
 -------------------------------
 .. inlineav:: ChomskyCON ff
    :links: AV/PIExample/ChomskyCON.css

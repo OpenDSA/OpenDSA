@@ -1,0 +1,72 @@
+#container {
+    width: 525px;
+    height: 250px;
+    position: relative;
+}
+
+.instructions {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+#msg {
+    position: absolute;
+    top: 45px;
+    left: 115px;
+    width: 325px;
+}
+
+.encryptLabel {
+    position: absolute;
+    top: 95px;
+}
+
+.encryptMsg {
+    position: absolute;
+    top: 130px;
+    width: 520px;
+    margin: auto 0;
+    display: block;
+}
+
+.decryptLabel {
+    position: absolute;
+    top: 145px;
+}
+
+.decryptMsg {
+    position: absolute;
+    top: 180px;
+    width: 520px;
+    margin: auto 0;
+    display: block;
+}
+
+.encrypt {
+    position: absolute;
+    top: 75px;
+    left: 30%;
+    text-align: center;
+}
+
+.decrypt {
+    position: absolute;
+    top: 75px;
+    left: 60%;
+    text-align: center;
+}
+
+.msgLabel {
+    position: absolute;
+    top: 195px;
+}
+
+.msg {
+    position: absolute;
+    top: 230px;
+    width: 520px;
+    margin: auto 0;
+    display: block;
+}

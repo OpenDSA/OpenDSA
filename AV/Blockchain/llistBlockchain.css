@@ -1,0 +1,13 @@
+.jsavlistnode {
+    height: 300px;
+    max-width: 400px !important;
+    width: 400px;
+    max-height: 400px !important;
+    font-size: 10px !important;
+    line-height: 10px !important;
+}
+
+.jsavlist {
+    left: 0px !important;
+    max-lines: 10;
+}

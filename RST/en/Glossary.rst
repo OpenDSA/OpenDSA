@@ -2399,7 +2399,7 @@ Glossary
       In a :term:`binary tree`, a :term:`traversal` that first
       :term:`recursively <recursion>` :term:`visits <visit>` the left
       :term:`child`, then visits the :term:`root`,
-      an then recursively visits the right child.
+      and then recursively visits the right child.
       In a :term:`binary search tree`, this traversal will
       :term:`enumerate <enumeration>` the nodes in sorted order.
 

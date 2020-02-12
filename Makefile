@@ -101,6 +101,7 @@ Obsolete: min
 	python $(CONFIG_SCRIPT) config/Obsolete.json --no-lms
 
 Test: min
+	python --version
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
 DanaG: min
@@ -327,7 +328,6 @@ pull:
 	git submodule init
 	git submodule update
 	make -s min
-	make -C Doc
 
 lib/odsaUtils-min.js: lib/odsaUtils.js
 	@echo 'Minimizing lib/odsaUtils.js'

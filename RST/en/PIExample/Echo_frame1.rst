@@ -9,9 +9,9 @@
    :topic: Finite Automata
 
 
-Frame example
+Formal Language
 =================================
-Frame example
+What is Formal Language
 --------------------------------------
 
 .. inlineav:: Frames ff

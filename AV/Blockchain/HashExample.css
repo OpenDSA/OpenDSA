@@ -11,29 +11,27 @@
     text-align: center;
 }
 
-.tsize {
+.inputLabel {
     position: absolute;
     left: 55px;
     top: 70px;
 }
 
-#tablesize {
+#inputArea {
     position: absolute;
-    left: 200px;
-    top: 85px;
-    width: 100px;
+    top: 45px;
 }
 
-#calculate {
+.label {
     position: absolute;
-    right: 5px;
     top: 95px;
 }
 
 .output {
     position: absolute;
-    top: 150px;
-    text-align:center;
-    width: 500px;
-    margin: 0;
+    top: 130px;
+    text-align: center;
+    width: 520px;
+    margin: auto 0;
+    display: block;
 }

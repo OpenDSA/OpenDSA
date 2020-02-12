@@ -105,13 +105,10 @@ class Variable{
             // console.log(this.globalPointerReference)
             // add the value
             this.value = String(this.globalPointerReference.currentClickedObject.value).slice();
-            this.currentDomain = this.globalPointerReference.currentClickedObject.domain;
-            // This is temporarily disabled for CHEP 2020 presentation, to be enabled
-            // in tutorial mode 
-            // this.element.setAttribute("data-domain",this.currentDomain);
-            this.element.setAttribute("data-domain","filled");
-            this.valueType = "number";
-            
+            this.element.setAttribute("data-domain",
+            this.globalPointerReference.currentClickedObject.domain);
+            // this.globalJSAVobject.logEvent({type: "adding new value", id: this.id });
+
             //change the innerHTML
             /*
             The pattern of the code is to change to create

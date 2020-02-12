@@ -62,21 +62,27 @@
     "required": true
   }, 
   "chapters": {
-    "Old Examples": {
-      "PIExample/NFAtoDFAExample":{},
-      "PIExample/RestingFillInSpace":{}
-    },
-    "PI Example": {
+    "Formal Languages": {
       "PIExample/Echo_frame1": {}
     },
-    "grammars": {
+    "Grammars": {
       "PIExample/grammar": {}
     },
-    "mathematical": {
-      "PIExample/mathematical": {}
-    },
     "Set Relations": {
+      "PIExample/mathematical": {},
       "PIExample/setRelations": {}
+    },
+    "NFA to DFA": {
+      "PIExample/NFAtoDFAExample":{}
+    },
+    "Mathematical Proof Technique ": {
+      "PIExample/proof":{},
+      "PIExample/continuedMathProof":{}
+    },
+    "Regular Languages": {
+      "PIExample/regularExpression":{},
+      "PIExample/grammarRegularExpression": {},
+      "PIExample/expressionRegular": {}
     }
   }
 }

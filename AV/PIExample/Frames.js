@@ -10,7 +10,7 @@ $(document).ready(function () {
     var goNext = false;
 
     //frame 1
-    av.umsg("Let’s formally define the concept of a “language”. But first we need some stuff to make them from.");
+    av.umsg("A $\\textbf{language}$ is simply a collection of strings. A fundamental thing to be able to do with a string is to determine whether or not it is part of a given language. Let’s formally define the concept of a “language”. But first we need some stuff to make them from.");
     av.displayInit();
 
     //frame 2

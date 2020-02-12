@@ -33,13 +33,14 @@ Do the following:
 installed.
 See: http://opendsa.readthedocs.io/en/latest/GettingStarted.html#setting-up-a-local-development-environment
 
-In order to pull a more recent copy of JSAV than what is in the submodule:
+OpenDSA makes use of the JSAV data structures visualization
+library. Nearly all developers and users can make do with the version
+of JSAV distributed with OpenDSA. If you really need the most
+up-to-date version of JSAV, you can find it at 
+https://github.com/vkaravir/JSAV
 
-    cd JSAV
-    git pull https://github.com/vkaravir/JSAV
-
-The source files for the documentation can be found in the "Doc"
-directory.
+The source files for the OpenDSA documentation can be found in the
+"Doc" directory.
 Changes to the documentation source, once pushed back to the
 repository, will automatically revise the public version at
 readthedocs.io.

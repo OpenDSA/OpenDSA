@@ -10,10 +10,10 @@
 
 NFA to DFA Frames
 =================
-Here is an example that uses the Frames
+Converting NFA to DFA
 ---------------------------------------
 
 .. inlineav:: NFA2DFAFrames ff
    :links: AV/PIExample/NFA2DFAFrames.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIExample/NFA2DFAFrames.js
+   :scripts:AV/PIExample/NFA2DFAFrames.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
    :output: show

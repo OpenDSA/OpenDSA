@@ -62,6 +62,7 @@ class WorkspaceList
             e.stopPropagation();
             this.addNewWorkspace();
             this.globalJSAVobject.logEvent({type: "adding new workspace", "id": this.workspaceCounter-1});
+            console.log(this.globalJSAVobject);
         });
         
         // Automatically add a new workspace, by default

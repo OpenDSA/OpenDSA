@@ -1,0 +1,29 @@
+{
+    "translations" :{
+      "en": {
+        ".avTitle": "Blockchain Example",
+        "av_Authors": "Bailey Spell and Jesse Terrazas",
+        "#compute": "Compute Hashes",
+        "#blockNum1": "Block 1",
+        "#blockNum2": "Block 2",
+        "#blockNum3": "Block 3",
+        "#data1Label": "Data:",
+        "#data2Label": "Data:",
+        "#data3Label": "Data:",
+        "#prevHash1Label": "Prev Hash:",
+        "#prevHash2Label": "Prev Hash:",
+        "#prevHash3Label": "Prev Hash:",
+        "#hash1Label": "Hash:",
+        "#hash2Label": "Hash:",
+        "#hash3Label": "Hash:",
+        "#nonce1Label": "Nonce:",
+        "#nonce2Label": "Nonce:",
+        "#nonce3Label": "Nonce:"
+      }
+    },
+    "params": {
+      "JXOP-feedback": "continuous",
+      "JXOP-fixmode": "fix"
+    }
+  }
+  

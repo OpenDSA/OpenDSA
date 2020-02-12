@@ -1,0 +1,78 @@
+{
+    "translations": {
+      "en": {
+        "q0": {
+          "type": "multiple",
+          "question":"[T/F] Proof by induction used to prove the correctness of recursive algorithms",
+          "description": "Induction can help to prove that a recursive function produces the correct result.",
+          "answer": "True",
+          "choices": ["True", "False"]
+        },
+        "q1": {
+          "type": "multiple",
+          "question":"[T/F] induction and Recursion are similar",
+          "description": "Understanding recursion is a big step toward understanding induction, and vice versa, since they work by essentially the same process.",
+          "answer": "True",
+          "choices": ["True", "False"]
+        },
+        "q2": {
+          "type": "select",
+          "question":"How can induction be used in algorithm analysis?",
+          "description": "Within the context of algorithm analysis, one of the most important uses for mathematical induction is a method to test a hypothesis. When  $\\underline{seeking\\ a\\ closed-form\\ solution}$  for a $\\textbf{summation}$ or $\\textbf{recurrence}$, we might first guess or otherwise acquire evidence that a particular formula is a correct solution. If the formula is indeed correct, it is often an easy matter to prove that fact with an induction proof.",
+          "answer": ["To prove the correctness", "To prove the result of a summation", "To prove the result of a recurrence relation"],
+          "choices": ["To prove the correctness", "To prove the result of a summation", "To prove the result of a recurrence relation"]
+        },
+        "q3": {
+          "type": "multiple",
+          "question":"[T/F] The Base case is usually hard to prove",
+          "description": "Mathematical induction states that Thrm is true for any value of parameter n (for n$\\geq$c, where c is some constant) if the following two conditions are true: $\\textbf{Base Case}$: $\\textbf {Thrm}$ holds for n=c $\\textbf{Induction Step}$: If $\\textbf {Thrm}$ holds for n−1, then Thrm holds for n",
+          "answer": "False",
+          "choices": ["True", "False"]
+        },
+        "q4": {
+          "type": "multiple",
+          "question":"[T/F] The proving of the induction step is the same difficulty as the base case.",
+          "description": "Proving the base case is usually easy, typically requiring that some small value such as 1 be substituted for n in the theorem and applying simple algebra or logic as necessary to verify the theorem.",
+          "answer": "False",
+          "choices": ["True", "False"]
+        },
+        "q5": {
+          "type": "multiple",
+          "question":"If $\\textbf {Thrm}$ is valid for n=1, using the induction, $\\textbf {Thrm}$ is proved that it is valid for n $=$ 2. What that says for $\\textbf {Thrm}$ and n $=$ 3.",
+          "description": "Proving either variant of the induction step (in conjunction with verifying the base case) yields a satisfactory proof by mathematical induction.",
+          "answer": "Thrm is caid for any value n > 2",
+          "choices": ["Thrm is valid for n $=$ 3 only", "Thrm is caid for any value n > 2", "Thrm is only proved for n $=$ 1 and n $=$ 2"]
+        },
+        "q6": {
+            "type": "multiple",
+            "question":"If $\\textbf {Thrm}$ is valid for n $=$ 1, and using induction we proved that $\\textbf {Thrm}$ is valid for n $=$ k. This means that ",
+            "description": "What makes mathematical induction so powerful (and so mystifying to most people at first) is that we can take advantage of the assumption that $\\textbf {Thrm}$ holds for all values less than n as a tool to help us prove that $\\textbf {Thrm}$ holds for n. This is known as the $\\textbf {induction hypothesis}$.",
+            "answer": "Thrm is valid for all values 1 $\\leq$ n $\\leq$ k",
+            "choices": ["Thrm is valid for n = 1 and k only", "Thrm is valid for all values 1 $\\leq$ n $\\leq$ k", "Thrm is valid for n = 1 only", "Thrm is valid for n = k only"]
+        },
+        "q7": {
+          "type": "select",
+          "question":"What are the similarities between Recursion and Induction?",
+          "description": "Having the Induction hypothesis makes the induction step easier to prove than tackling the original theorem itself. Being able to rely on the induction hypothesis provides extra information that we can bring to bear on the problem.",
+          "answer": ["There can be one or more base cases","Rely on the truth of the previous steps"],
+          "choices": ["There can be one or more base cases","Rely on the truth of the previous steps"]
+        },
+        "q8": {
+            "type": "multiple",
+            "question":"What is the first step in the induction proof?",
+            "description": "We need to prove that the sum of the first n positive integers $\\textbf {S}$(n) $=$ n(n+1)/2.",
+            "answer": "Check the base case",
+            "choices": ["Check the base case", "State the hypothesis"]
+        },
+        "q9": {
+            "type": "multiple",
+            "question":"What is the total sum of the n/2 pairs?",
+            "description": "Direct Proof example: We need to use direct proof to prove that $\\Sigma_{ni=1}$ $i$ = $(n+1)n/2$",
+            "answer": "$(n+1)n/2$",
+            "choices": ["$n$","$n+1$", "$(n+1)n/2$", "$(n+1)n$", "$(n+1)/2$"]
+        }
+
+      }
+    }
+  }
+  

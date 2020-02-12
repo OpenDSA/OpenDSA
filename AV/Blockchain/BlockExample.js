@@ -13,7 +13,7 @@ $(document).ready(function() {
   
     // Convenience function for writing output messages
     function tell(msg) {
-      $("p.output").text(msg);
+      $(".output").val(msg);
     }
   
     // Process About button: Pop up a message with an Alert

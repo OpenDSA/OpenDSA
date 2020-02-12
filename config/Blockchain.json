@@ -40,11 +40,11 @@
       "Blockchain Tutorial": {
         "Blockchain/Intro": {}
       },
-      "Chapter 1": {
-        "Blockchain/Chapter1": {}
+      "Introduction": {
+        "Blockchain/Introduction": {}
       },
-      "Chapter 2": {
-        "Blockchain/Chapter2": {}
+      "Cryptography": {
+        "Blockchain/Cryptography": {}
       },
       "Chapter 3": {
         "Blockchain/Chapter3": {}
@@ -55,8 +55,10 @@
       "Chapter 5": {
         "Blockchain/Chapter5": {}
       },
-      "Chapter 6": {
-        "Blockchain/Chapter6": {}
+      "Consensus Algorithms": {
+        "Blockchain/Consensus": {},
+        "Blockchain/Permissionless": {},
+        "Blockchain/Permissioned": {}
       },
       "Chapter 7": {
         "Blockchain/Chapter7": {}
@@ -66,9 +68,6 @@
       },
       "Chapter 9": {
         "Blockchain/Chapter9": {}
-      },
-      "Chapter 10": {
-        "Blockchain/Chapter10": {}
       },
       "Chapter 11": {
         "Blockchain/Chapter11": {}

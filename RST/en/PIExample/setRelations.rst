@@ -9,10 +9,14 @@
    :topic: Finite Automata
 
 
-Set Relations
+Set and Relations
 ================================
-Set Relations
+
+Relations
 -------------------------------
+
+In this chapter you will learn about set and relations. After this chapter you will have full understanding of set and relations.
+
 .. inlineav:: SetRelations ff
    :links: AV/PIExample/SetRelations.css
    :scripts: AV/PIExample/SetRelations.js DataStructures/PIFrames.js 

@@ -47,7 +47,8 @@ div {
     margin : 0 auto;
     
 }
-td {
+
+.cell {
     width:750px;
     margin:auto;
     border: 1px solid #B6C0B2;
@@ -79,4 +80,12 @@ p {
     margin-right: 225px;
     float: right;
     top: 15px;
+}
+
+#arrow1 {
+    display: none;
+}
+
+#arrow2 {
+    display: none;
 }

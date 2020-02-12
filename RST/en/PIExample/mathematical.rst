@@ -9,12 +9,14 @@
    :topic: Finite Automata
 
 
-Frame mathematical
+Set Notations
 =================================
-Frame mathematical
+Introduction to set
 --------------------------------------
 
 .. inlineav:: Mathematical ff
    :links: AV/PIExample/Mathematical.css
    :scripts: AV/PIExample/Mathematical.js DataStructures/PIFrames.js 
    :output: show
+
+

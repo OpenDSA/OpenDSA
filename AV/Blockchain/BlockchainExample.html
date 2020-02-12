@@ -16,7 +16,7 @@
         <div class="scrolling">
             <table>
                 <tr>
-                    <td>
+                    <td class="cell">
 
                         <p class="bsize1" id="blockNum1"></p>
                         <div>
@@ -36,6 +36,19 @@
                     </td>
 
                     <td>
+                        <svg id="arrow1" height="275" width="54">
+                            <defs>
+                                <marker id="arrowTip" markerWidth="10" markerHeight="10" refX="-20" refY="3" orient="180deg" markerUnits="strokeWidth">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000" />
+                                </marker>
+                            </defs>
+                            <line x1="31" y1="195" x2="54" y2="195" stroke="rgb(0,0,0)" stroke-width="1" />
+                            <line x1="31" y1="195" x2="31" y2="247" stroke="rgb(0,0,0)" stroke-width="1" />
+                            <line x1="10" y1="247" x2="31" y2="247" stroke="rgb(0,0,0)" stroke-width="1" marker-end="url(#arrowTip)" />
+                        </svg>
+                    </td>
+
+                    <td class="cell">
                         <p class="bsize1" id="blockNum2"></p>
                         <div>
                             <p class="bsize1" id="data2Label"></p>
@@ -54,6 +67,19 @@
                     </td>
 
                     <td>
+                        <svg id="arrow2" height="275" width="54">
+                            <defs>
+                                <marker id="arrowTip" markerWidth="10" markerHeight="10" refX="-20" refY="3" orient="180deg" markerUnits="strokeWidth">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000" />
+                                </marker>
+                            </defs>
+                            <line x1="31" y1="195" x2="54" y2="195" style="stroke:rgb(0,0,0);stroke-width:1" />
+                            <line x1="31" y1="195" x2="31" y2="247" style="stroke:rgb(0,0,0);stroke-width:1" />
+                            <line x1="10" y1="247" x2="31" y2="247" style="stroke:rgb(0,0,0);stroke-width:1" marker-end="url(#arrowTip)" />
+                        </svg>
+                    </td>
+
+                    <td class="cell">
                         <p class="bsize1" id="blockNum3"></p>
                         <div>
                             <p class="bsize1" id="data3Label"></p>
@@ -71,11 +97,7 @@
 
                     </td>
                 </tr>
-
             </table>
-            <div style="align-content: right">
-                <button id="compute" name="compute" for="compute"></button>
-            </div>
         </div>
     </div>
 

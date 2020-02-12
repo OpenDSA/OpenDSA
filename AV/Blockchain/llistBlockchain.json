@@ -1,0 +1,12 @@
+{
+    "translations": {
+        "en": {
+            "sc1": "Here is the graphical depiction of what the start of a blockchain (the genesis block) would look like. The first hash is all zeroes. For this simulation, only the first ten characters of the hash will be shown.",
+            "sc2": "The idea of the blockchain is that every block uses the hash of the preceding block in addition to different values for its own hash. Each block has its own previous hash, data message, nonce, and resulting hash. In this example, the different values are concatenated in the appearing order and hashed using SHA-256.",
+            "sc3": "The nonce is the foundation of block production. Given a publicly known previous hash, block number, and data message, a nonce can be mined so that the resulting hash begins with some predetermined number of zeroes (in our case: four). This creates difficulty in providing an acceptable block. Due to the nature of the hashing, a brute-force method must be used in order to find an acceptable nonce value.",
+            "sc4": "Here we have mined the nonce and produced a hash derived from the previous hash, data message, and nonce such that the hash begins with four zeroes.",
+            "sc5": "The process then repeats as new data messages need to be recorded and are publicly released.",
+            "sc6": "In this example we can see the effects of manipulating past values in the blockchain. The hash pointers won't match from the changed values on! Note that users are constantly producing blocks for the main blockchain. To produce a new branch that includes the manipulation, satisfies block criteria at every block, and grows in larger size than the main blockchain is impossible."
+        }
+    }
+}

@@ -38,7 +38,8 @@ FA.addEdge(q4, q6, {weight: "b"});
 av.displayInit();
 
   // Slide 2
-  av.umsg("Let's begin with the start state. Closure($q0$) in $M_N$ is {$q0,q1,q2$}. So this is the start state.");
+  //av.umsg("Let's begin with the start state. Closure($q0$) in $M_N$ is $\\{q0,q1,q2\\}$. So this is the start state.");
+  av.umsg(Frames.addQuestion("qa"));
     q0.highlight();
     q1.highlight();
     q2.highlight();
@@ -47,7 +48,7 @@ av.displayInit();
   av.step();
 
   // Slide 3
-  av.umsg("Now, we should determine the the possible transitions from our new start state. To do so, we need to check the transitions from {$q0,q1,q2$} with $a$ and $b$ ");
+  av.umsg(Frames.addQuestion("qb"));
     q0.unhighlight();
     q1.unhighlight();
     q2.unhighlight();
@@ -57,7 +58,7 @@ av.displayInit();
   av.step();
 
   // Slide 4
-  av.umsg("For every new node we find, we need to determine the possible transitions with $a$ and $b$. Note that, as there is a $\\lambda$ transition from $q5$ to $q1$, we will mention $q1$ whenever we use $q5$");
+  av.umsg(Frames.addQuestion("qc"));
     dfaQ0.unhighlight();
   av.step();
 
@@ -150,7 +151,7 @@ av.displayInit();
     
   // Slide 17
   DFA_q6.unhighlight();
-  av.umsg("Finall, we need to determine the final states.");
+  av.umsg("Finall, we need to determine the final states. Go forward to determine the final state");
   av.step();
     
   // Slide 18
@@ -158,13 +159,14 @@ av.displayInit();
   av.step();
 
   // Slide 19
+  av.umsg("The highlighted nodes are the state")
   toggleFinal(DFA, q1_q5_q6);
   //toggleFinal(DFA, q5_q1);
   toggleFinal(DFA, DFA_q6);
   q1_q5_q6.highlight();
   //q5_q1.highlight();
   DFA_q6.highlight();
-  av.step();
+  //av.step();
     
   // Slide 20
   //DFA.hide();

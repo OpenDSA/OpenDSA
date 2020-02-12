@@ -1,0 +1,107 @@
+#container { 
+    width: 1250px;
+    height: 400px;
+  }
+  
+  .avcontainer{
+    overflow: visible;
+    width:1000px;
+  }
+  
+  .jsavline{
+    height: 50px;
+  }
+
+table {
+    position: relative;
+    width:800px;
+    height:325px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
+
+input {
+    width: 95%;
+    margin: 0 auto;
+}
+
+p {
+    word-break: break-all;
+    display: inline-block;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+.data {
+    width: 95%;
+    height: 100px;
+    display: inline-block;
+    margin : 0 auto;
+    
+}
+
+.cell {
+    width:750px;
+    margin:auto;
+    border: 1px solid #B6C0B2;
+    background-color: #E2EEDD;
+}
+
+p {
+    word-break: break-all;
+}
+
+.bsize1 {
+    /* position: absolute; */
+    /* left: 55px; */
+    top: 42px;
+    margin:auto;
+    text-align: center;
+    word-wrap: break-words;
+}
+
+#tablesize {
+    /* position: absolute; */
+    left: 200px;
+    top: 85px;
+}
+
+#compute {
+    /* position: absolute; */
+    margin-right: 225px;
+    float: right;
+    top: 15px;
+}
+
+#arrow1 {
+    display: none;
+}
+
+#arrow2 {
+    display: none;
+}
+
+#mine {
+    float: right;
+    margin-right: 225px;
+}
+
+.loader {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 0.5s linear infinite;
+    float: right;
+    margin-right: 225px;
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
