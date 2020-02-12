@@ -6,15 +6,15 @@
 
 .instructions {
     border: 0;
-    padding: 0;
-    margin: 0;
+    margin: auto 0;
+    top: 15px;
     text-align: center;
 }
 
-#msg {
+.msg {
     position: absolute;
     top: 45px;
-    left: 115px;
+    left: 20%;
     width: 325px;
 }
 
@@ -63,7 +63,7 @@
     top: 195px;
 }
 
-.msg {
+.msgReadable {
     position: absolute;
     top: 230px;
     width: 520px;
