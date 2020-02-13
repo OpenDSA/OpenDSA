@@ -1,0 +1,14 @@
+{
+    "translations": {
+        "en": {
+            "q0": {
+                "type": "select",
+                "question":"Select parts that are necessary in constituting a good proof",
+                "description": "First, we need a way to describe the $n^th$ odd number, which is simply $2n−1$. This also allows us to cast the theorem as a summation. Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
+                "answer": ["Investigation", "Argument"],
+                "choices": ["Investigation", "Argument"]
+            }
+        }
+    }
+}
+  

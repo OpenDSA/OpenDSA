@@ -83,6 +83,9 @@
       "PIExample/regularExpression":{},
       "PIExample/grammarRegularExpression": {},
       "PIExample/expressionRegular": {}
+    },
+    "Mathematical Induction": {
+      "PIExample/inductionProof": {}
     }
   }
 }
