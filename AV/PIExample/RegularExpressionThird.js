@@ -34,9 +34,19 @@ $(document).ready(function() {
     av.displayInit();
 
     //frame 2
-    av.umsg("Here is an example of NFA that accepts nothing ($\\emptyset$)");
+    av.umsg(Frames.addQuestion("q0"));
 
     av.step();
+
+    //frame 3
+    av.umsg("testing");
+    var q4 = FA.addNode({left: 510, top: 120});
+    var q5 = FA.addNode({left: 660, top: 70});
+    toggleInitial(FA, q4);
+    toggleFinal(FA, q5);
+
+    av.step();
+
 
 
     av.recorded();
