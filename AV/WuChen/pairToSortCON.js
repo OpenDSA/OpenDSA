@@ -119,7 +119,7 @@ $(document).ready(function() {
 
   // Slide 16
   jsav.umsg("Cost of pairing = O(n) + Cost of sorting");
-  var l13 = jsav.g.line(369,390 + yoffset,369,415 + yoffset);
+  var l13 = jsav.g.line(368,390 + yoffset,368,415 + yoffset);
   l13.show();
   var oparr2= jsav.ds.array([" "," "," "," "," "," "," "," "],  {left: 180, top: 397 + yoffset});
   for(var i=0;i<8;i++)

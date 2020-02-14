@@ -237,8 +237,8 @@ the reduction of **SORTING** to **PAIRING**.
 
 .. inlineav:: sortToPairCON ss
    :long_name: Sorting to Pairing Reduction Slideshow
-   :links: AV/NP/sortToPairCON.css
-   :scripts: AV/NP/sortToPairCON.js
+   :links: AV/WuChen/sortToPairCON.css
+   :scripts: AV/WuChen/sortToPairCON.js
    :output: show
 
 It is important to note that the reduction process does not give us
