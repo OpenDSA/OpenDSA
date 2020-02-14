@@ -1,4 +1,4 @@
-#! /usr/local/bin/python2
+#! /usr/local/bin/python3
 #
 # This script builds an OpenDSA textbook according to a specified configuration file
 #   - Creates an ODSA_Config object from the specified configuration file
@@ -40,7 +40,7 @@ import subprocess
 import codecs
 import datetime
 import threading
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import simple2full
 
 from collections import Iterable
@@ -49,7 +49,7 @@ from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config, parse_error
 from postprocessor import update_TOC, update_TermDef, make_lti
-from urlparse import urlparse
+from urllib.parse import urlparse
 
 # List ocanvas_module_idf exercises encountered in RST files that do not appear in the
 # configuration file
@@ -116,7 +116,7 @@ def read_conf_file(config_file_path):
         else:
             err = ODSA_Config.parse_error(msg).groupdict()
             # cast int captures to int
-            for k, v in err.items():
+            for k, v in list(err.items()):
                 if v and v.isdigit():
                     err[k] = int(v)
 
@@ -159,7 +159,7 @@ def process_section(config, section, index_rst, depth, current_section_numbers=[
             # section header determines which character to use
             sphinx_header_chars = ['=', '-', '`', "'", '.', '*', '+', '^']
 
-            print("  " * depth) + subsect
+            print(("  " * depth) + subsect)
             index_rst.write(subsect + '\n')
             index_rst.write(
                 (sphinx_header_chars[depth] * len(subsect)) + "\n\n")
@@ -219,7 +219,7 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, de
     # Add module to list of modules processed
     processed_modules.append(mod_path)
 
-    print("  " * depth) + mod_name
+    print(("  " * depth) + mod_name)
     index_rst.write("   %s\n" % mod_name)
 
     # Initialize the module
@@ -231,7 +231,7 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, de
     images += module.images
     #missing_exercises += module.missing_exercises
     satisfied_requirements += module.requirements_satisfied
-    num_ref_map = dict(num_ref_map.items() + module.num_ref_map.items())
+    num_ref_map = dict(list(num_ref_map.items()) + list(module.num_ref_map.items()))
     if len(module.cmap_dict['concepts']) > 0:
         cmap_map = module.cmap_dict
 
@@ -393,7 +393,7 @@ def initialize_conf_py_options(config, slides):
 
     # convert the translation text into unicode sstrings
     tmpSTR = ''
-    for k, v in config.text_translated.iteritems():
+    for k, v in config.text_translated.items():
         tmpSTR = tmpSTR + '"%s":u"%s",' % (k, v)
     options['text_translated'] = tmpSTR
     options['av_root_dir'] = config.av_root_dir
@@ -439,7 +439,7 @@ def configure(config_file_path, options):
     if no_lms or slides:
         conf_data = simple2full.generate_full_config(config_file_path, slides)
 
-    print ("Configuring OpenDSA, using " + config_file_path)
+    print(("Configuring OpenDSA, using " + config_file_path))
 
     # Load and validate the configuration
     config = ODSA_Config(config_file_path, options.output_directory, options.no_lms, conf_data=conf_data)
@@ -462,7 +462,7 @@ def configure(config_file_path, options):
     if config.build_JSAV:
         print ("We don't build JSAV anymore!\n")
 
-    print ("Writing files to " + config.book_dir + "\n")
+    print(("Writing files to " + config.book_dir + "\n"))
 
     # local mode option
     config.local_mode = str(options.local).lower()
@@ -530,7 +530,7 @@ def configure(config_file_path, options):
         proc = subprocess.Popen(
             ['make', '-C', config.book_dir], stdout=subprocess.PIPE)
     for line in iter(proc.stdout.readline, ''):
-        print (line.rstrip())
+        print((line.rstrip()))
 
     # Calls the postprocessor to update chapter, section, and module numbers,
     # and glossary terms definition

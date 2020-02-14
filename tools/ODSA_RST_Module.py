@@ -41,11 +41,11 @@ def print_err(err_msg):
 def format_mod_options(options):
   option_str = ''
 
-  for option, value in options.iteritems():
+  for option, value in options.items():
     # Convert Python booleans to JavaScript booleans and quote strings
     if str(value) in ['True', 'False']:
       value = str(value).lower()
-    elif isinstance(value, basestring):
+    elif isinstance(value, str):
       value = "'%s'" % value
 
     # Set JSAV options as necessary and set all others as standard variables
@@ -70,7 +70,7 @@ def determine_module_completable(mod_attrib, dispModComp):
     dispModComp = False
 
     # Display 'Module Complete' only if the module contains at least one required exercise
-    for exer_name, exer_obj in mod_attrib['exercises'].items():
+    for exer_name, exer_obj in list(mod_attrib['exercises'].items()):
       if 'required' in exer_obj and exer_obj['required']:
         dispModComp = True
         break
@@ -321,7 +321,7 @@ class ODSA_RST_Module:
 
       # Merge global module options with local modules options, if applicable, so that local options override the global options
       if 'mod_options' in mod_attrib:
-        mod_options = dict(config.glob_mod_options.items() + mod_attrib['mod_options'].items())
+        mod_options = dict(list(config.glob_mod_options.items()) + list(mod_attrib['mod_options'].items()))
       else:
         mod_options = config.glob_mod_options
 
@@ -389,7 +389,7 @@ class ODSA_RST_Module:
         and line in mod_attrib["sections"] \
         and "showsection" in mod_attrib["sections"][line] \
         and not mod_attrib["sections"][line]["showsection"]:
-          print '%sRemoving section: %s' % (console_msg_prefix, line)
+          print('%sRemoving section: %s' % (console_msg_prefix, line))
           del mod_data[i]
           del mod_data[i]
           line = mod_data[i].strip()
@@ -620,7 +620,7 @@ class ODSA_RST_Module:
 
             # If the config file states the exercise should be removed, remove it
             if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
-              print '%sRemoving: %s' % (console_msg_prefix, av_name)
+              print('%sRemoving: %s' % (console_msg_prefix, av_name))
 
               # Config file states exercise should be removed, remove it from the RST file
               while (i < len(mod_data) and mod_data[i].rstrip() != ''):
@@ -646,12 +646,12 @@ class ODSA_RST_Module:
                 #if av_type not in ['ka', 'ss']:
                 # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
                 if 'exer_options' in exer_conf:
-                  xops = dict(config.glob_exer_options.items() + exer_conf['exer_options'].items())
+                  xops = dict(list(config.glob_exer_options.items()) + list(exer_conf['exer_options'].items()))
                 else:
                   xops = config.glob_exer_options
 
                 # Convert python booleans to JavaScript booleans, URL-encode the string and append it to the RST options
-                xop_str = '&amp;'.join(['%s=%s' % (option, value) if str(value) not in ['True', 'False'] else '%s=%s' % (option, str(value).lower()) for option, value in xops.iteritems()])
+                xop_str = '&amp;'.join(['%s=%s' % (option, value) if str(value) not in ['True', 'False'] else '%s=%s' % (option, str(value).lower()) for option, value in xops.items()])
                 rst_options.append(' '*start_space +'   :exer_opts: %s\n' % xop_str)
 
                 mod_data[i] += ''.join(rst_options)
@@ -690,7 +690,7 @@ class ODSA_RST_Module:
             section_data = mod_attrib['sections'][section_id]
 
             if 'remove' in section_data and section_data['remove']:
-              print '%sRemoving section: %s' % (console_msg_prefix, section_id)
+              print('%sRemoving section: %s' % (console_msg_prefix, section_id))
 
               # Config file states section should be removed, remove it from the RST file
               mod_data[i] = ''
@@ -705,7 +705,7 @@ class ODSA_RST_Module:
             else:
               # Append all options provided in the section configuration unless they are on the ignore list
               ignore_opts = ['remove']
-              rst_options = ['   :%s: %s\n' % (option, value) for option, value in section_data.items() if option not in ignore_opts]
+              rst_options = ['   :%s: %s\n' % (option, value) for option, value in list(section_data.items()) if option not in ignore_opts]
               mod_data[i] += ''.join(rst_options)
         elif line.startswith('.. codeinclude::'):
           code_name = mod_data[i].split(' ')[2].strip()
@@ -757,13 +757,13 @@ class ODSA_RST_Module:
       # the directive will be stripped during compilation
       indent = '' if os.environ['SLIDES'] == 'no' else '   '
       mod_data.append('\n')
-      for script, has_directive in scripts.iteritems():
+      for script, has_directive in scripts.items():
         if not os.path.exists('{0}/{1}'.format(config.odsa_dir,script)):
           print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, script))
         if not has_directive:
           mod_data.append('{0}.. odsascript:: {1}\n'.format(indent, script))
 
-      for link, has_directive in reversed(links.items()):
+      for link, has_directive in reversed(list(links.items())):
         if not os.path.exists('{0}/{1}'.format(config.odsa_dir, link)):
           print_err('%sWARNING: "%s" does not exist.' % (console_msg_prefix, link))
         if not has_directive:
@@ -772,7 +772,7 @@ class ODSA_RST_Module:
           else:
             mod_data.append('\n{0}.. odsalink:: {1}'.format(indent, link))
 
-      mod_sections = mod_attrib['sections'].keys() if 'sections' in mod_attrib and mod_attrib['sections'] != None else []
+      mod_sections = list(mod_attrib['sections'].keys()) if 'sections' in mod_attrib and mod_attrib['sections'] != None else []
 
       # Print a list of sections that appear in the config file but not the module
       missing_sections = list(set(mod_sections) - set(processed_sections))

@@ -140,7 +140,7 @@ class avembed(Directive):
     self.options['av_address'] = av_path
 
     if self.options['exer_name'] in ex_options[current_module]:
-      for key, value in ex_options[current_module][self.options['exer_name']].iteritems():
+      for key, value in ex_options[current_module][self.options['exer_name']].items():
         self.options[key] = value
       #del ex_options[current_module][self.options['exer_name']]
 
@@ -234,7 +234,7 @@ class inlineav(Directive):
     self.options['mod_name'] = current_module_base
 
     if self.options['exer_name'] in ex_options[current_module]:
-        for key, value in ex_options[current_module][self.options['exer_name']].iteritems():
+        for key, value in ex_options[current_module][self.options['exer_name']].items():
             self.options[key] = value
         #del ex_options[current_module][self.options['exer_name']]
 
@@ -487,7 +487,7 @@ def extract_mod_config(mod_json):
   one_sec_only = False
   one_sec_name = None
 
-  for k, v in mod_json['document'].iteritems():
+  for k, v in mod_json['document'].items():
     if k == '@title':
       mod_config['long_name'] = v.replace('\\','')
 
@@ -507,20 +507,20 @@ def extract_mod_config(mod_json):
       # mod_config['sections'][one_sec_name] = extract_exs_config(v)
       if isinstance(v, list):
         for sub_sec_v in v:
-          if 'raw' in sub_sec_v.keys():
+          if 'raw' in list(sub_sec_v.keys()):
             mod_config['sections'][one_sec_name].update(extract_exs_config(sub_sec_v['raw']))
 
           # Sometimes exercises are defined under a topic directive
-          if 'topic' in sub_sec_v.keys() and isinstance(sub_sec_v['topic'], list):
+          if 'topic' in list(sub_sec_v.keys()) and isinstance(sub_sec_v['topic'], list):
             for topic in sub_sec_v['topic']:
-              if 'raw' in topic.keys():
+              if 'raw' in list(topic.keys()):
                 mod_config['sections'][one_sec_name].update(extract_exs_config(topic['raw']))
-          elif 'topic' in sub_sec_v.keys() and isinstance(sub_sec_v['topic'], dict):
-              if 'raw' in sub_sec_v['topic'].keys():
+          elif 'topic' in list(sub_sec_v.keys()) and isinstance(sub_sec_v['topic'], dict):
+              if 'raw' in list(sub_sec_v['topic'].keys()):
                 mod_config['sections'][one_sec_name].update(extract_exs_config(sub_sec_v['topic']['raw']))
 
       elif isinstance(v, dict):
-        if 'raw' in v.keys():
+        if 'raw' in list(v.keys()):
           mod_config['sections'][one_sec_name].update(extract_exs_config(v['raw']))
 
     if k == 'section' and one_sec_only == False:
@@ -540,7 +540,7 @@ def extract_sec_config(sec_json):
     if not type(x) is OrderedDict:
         continue
     sec_title = None
-    for k, v in x.iteritems():
+    for k, v in x.items():
       if k == 'title':
         sec_title = v
         sections_config[sec_title] = OrderedDict()
@@ -551,16 +551,16 @@ def extract_sec_config(sec_json):
       if k == 'section':
         if isinstance(v, list):
           for sub_sec_v in v:
-            if 'raw' in sub_sec_v.keys():
+            if 'raw' in list(sub_sec_v.keys()):
               sections_config[sec_title].update(extract_exs_config(sub_sec_v['raw']))
         elif isinstance(v, dict):
-          if 'raw' in v.keys():
+          if 'raw' in list(v.keys()):
             sections_config[sec_title].update(extract_exs_config(v['raw']))
     if sec_title in sect_options[current_module]:
-      for k, v in sect_options[current_module][sec_title].iteritems():
+      for k, v in sect_options[current_module][sec_title].items():
         sections_config[sec_title][k] = v
       del sect_options[current_module][sec_title]
-    if 'extertool' in sections_config[sec_title].keys():
+    if 'extertool' in list(sections_config[sec_title].keys()):
       sections_config[sec_title] = sections_config[sec_title]['extertool']
 
   return sections_config
@@ -574,7 +574,7 @@ def extract_exs_config(exs_json):
   exs_config = OrderedDict()
   if isinstance(exs_json, list):
     for x in exs_json:
-      if isinstance(x, dict) and 'avembed' in x.keys():
+      if isinstance(x, dict) and 'avembed' in list(x.keys()):
         ex_obj = x['avembed']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
@@ -589,11 +589,11 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
 
         if exer_name in ex_options[current_module]:
-          for key, value in ex_options[current_module][exer_name].iteritems():
+          for key, value in ex_options[current_module][exer_name].items():
               exs_config[exer_name][key] = value
           del ex_options[current_module][exer_name]
 
-      if isinstance(x, dict) and 'extertool' in x.keys():
+      if isinstance(x, dict) and 'extertool' in list(x.keys()):
         ex_obj = x['extertool']
         exs_config['extertool'] = OrderedDict()
         exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
@@ -604,11 +604,11 @@ def extract_exs_config(exs_json):
           exs_config['extertool']['type'] = 'extr'
           exs_config['extertool']['mod_name'] = ex_obj['@mod_name']
         if ex_obj['@resource_name'] in ex_options[current_module]:
-          for key, value in ex_options[current_module][ex_obj['@resource_name']].iteritems():
+          for key, value in ex_options[current_module][ex_obj['@resource_name']].items():
               exs_config['extertool'][key] = value
           del ex_options[current_module][ex_obj['@resource_name']]
 
-      if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ss":
+      if isinstance(x, dict) and 'inlineav' in list(x.keys()) and x['inlineav']['@type'] == "ss":
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
@@ -622,11 +622,11 @@ def extract_exs_config(exs_json):
           exs_config[exer_name]['scripts'] = ex_obj['@scripts'].split()
           exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
         if exer_name in ex_options[current_module]:
-          for key, value in ex_options[current_module][exer_name].iteritems():
+          for key, value in ex_options[current_module][exer_name].items():
               exs_config[exer_name][key] = value
           del ex_options[current_module][exer_name]
 
-      if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ff":
+      if isinstance(x, dict) and 'inlineav' in list(x.keys()) and x['inlineav']['@type'] == "ff":
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
@@ -640,11 +640,11 @@ def extract_exs_config(exs_json):
           exs_config[exer_name]['scripts'] = ex_obj['@scripts'].split()
           exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
         if exer_name in ex_options[current_module]:
-          for key, value in ex_options[current_module][exer_name].iteritems():
+          for key, value in ex_options[current_module][exer_name].items():
               exs_config[exer_name][key] = value
           del ex_options[current_module][exer_name]
 
-      if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "dgm":
+      if isinstance(x, dict) and 'inlineav' in list(x.keys()) and x['inlineav']['@type'] == "dgm":
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
@@ -653,7 +653,7 @@ def extract_exs_config(exs_json):
           exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
 
   elif isinstance(exs_json, dict):
-    if 'avembed' in exs_json.keys():
+    if 'avembed' in list(exs_json.keys()):
       ex_obj = exs_json['avembed']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
@@ -667,11 +667,11 @@ def extract_exs_config(exs_json):
       threshold = float(ex_obj['@threshold'])
       exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
       if exer_name in ex_options[current_module]:
-        for key, value in ex_options[current_module][exer_name].iteritems():
+        for key, value in ex_options[current_module][exer_name].items():
           exs_config[exer_name][key] = value
         del ex_options[current_module][exer_name]
 
-    if 'extertool' in exs_json.keys():
+    if 'extertool' in list(exs_json.keys()):
       ex_obj = exs_json['extertool']
       exs_config['extertool'] = OrderedDict()
       exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
@@ -682,11 +682,11 @@ def extract_exs_config(exs_json):
         exs_config['extertool']['type'] = 'extr'
         exs_config['extertool']['mod_name'] = ex_obj['@mod_name']
       if ex_obj['@resource_name'] in ex_options[current_module]:
-          for key, value in ex_options[current_module][ex_obj['@resource_name']].iteritems():
+          for key, value in ex_options[current_module][ex_obj['@resource_name']].items():
               exs_config['extertool'][key] = value
           del ex_options[current_module][ex_obj['@resource_name']]
 
-    if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ss":
+    if 'inlineav' in list(exs_json.keys()) and exs_json['inlineav']['@type'] == "ss":
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
@@ -700,11 +700,11 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['scripts'] = ex_obj['@scripts'].split()
         exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
       if exer_name in ex_options[current_module]:
-          for key, value in ex_options[current_module][exer_name].iteritems():
+          for key, value in ex_options[current_module][exer_name].items():
               exs_config[exer_name][key] = value
           del ex_options[current_module][exer_name]
 
-    if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ff":
+    if 'inlineav' in list(exs_json.keys()) and exs_json['inlineav']['@type'] == "ff":
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
@@ -718,11 +718,11 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['scripts'] = ex_obj['@scripts'].split()
         exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
       if exer_name in ex_options[current_module]:
-          for key, value in ex_options[current_module][exer_name].iteritems():
+          for key, value in ex_options[current_module][exer_name].items():
               exs_config[exer_name][key] = value
           del ex_options[current_module][exer_name]
 
-    if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "dgm":
+    if 'inlineav' in list(exs_json.keys()) and exs_json['inlineav']['@type'] == "dgm":
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
@@ -777,9 +777,9 @@ def get_chapter_module_files(conf_data):
   '''
   files = OrderedDict()
   odsa_dir = get_odsa_dir()
-  for chapter, modules in conf_data['chapters'].iteritems():
+  for chapter, modules in conf_data['chapters'].items():
     files[chapter] = []
-    for module in modules.keys():
+    for module in list(modules.keys()):
       module = module.replace('/', os.sep)
       files[chapter].append(os.path.join(os.path.abspath('{0}RST{2}{1}{2}'.format(odsa_dir, conf_data['lang'], os.sep)), module + ".rst"))
   return files
@@ -798,17 +798,17 @@ def get_options(conf_data):
   exercises = {}
   sections = {}
   mod_opts = {}
-  for chapter in conf_data['chapters'].values():
-    for module, children in chapter.iteritems():
+  for chapter in list(conf_data['chapters'].values()):
+    for module, children in chapter.items():
       mod_opts[module] = {}
       mod_ex = {}
       mod_sect = {}
       exercises[module] = mod_ex
       sections[module] = mod_sect
       if 'sections' in children:
-        for section_name, exercise_objs in children['sections'].iteritems():
+        for section_name, exercise_objs in children['sections'].items():
           mod_sect[section_name] = {}
-          for key, value in exercise_objs.iteritems():
+          for key, value in exercise_objs.items():
               if type(value) is OrderedDict and any(k in EXERCISE_FIELDS for k in value):
                 if 'long_name' in value:
                   del value['long_name']
@@ -823,7 +823,7 @@ def get_options(conf_data):
 
       if 'long_name' in children:
         del children['long_name']
-      for key, value in children.iteritems():
+      for key, value in children.items():
         if key in MODULE_FIELDS:  
           mod_opts[module][key] = value
         elif any(k in EXERCISE_FIELDS for k in value):
@@ -884,7 +884,7 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
     del full_config['glob_extr_options']
 
   mod_files = get_chapter_module_files(conf_data)
-  for chapter, files in mod_files.iteritems():
+  for chapter, files in mod_files.items():
     full_config['chapters'][chapter] = OrderedDict()
     for x in files:
       rst_dir_name = x.split(os.sep)[-2]
@@ -897,7 +897,7 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
 
       current_module = mod_path
       if verbose:
-        print("Processing module " + mod_path)
+        print(("Processing module " + mod_path))
       current_module_base = os.path.basename(mod_path)
 
       if not os.path.isfile(x):
@@ -921,10 +921,10 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
       full_config['chapters'][chapter][mod_path] = mod_config
 
   if not slides:
-    for mod_name, exercises in ex_options.iteritems():
+    for mod_name, exercises in ex_options.items():
       for exer in exercises:
         print_err('WARNING: the exercise "{0}" does not exist in module "{1}"'.format(exer, mod_name))
-    for mod_name, sections in sect_options.iteritems():
+    for mod_name, sections in sect_options.items():
       for sect in sections:
         print_err('WARNING: the section "{0}" does not exist in module "{1}"'.format(sect, mod_name))
   return full_config

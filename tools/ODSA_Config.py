@@ -21,7 +21,7 @@ import json
 import collections
 import codecs
 from collections import Iterable
-from urlparse import urlparse
+from urllib.parse import urlparse
 
 error_count = 0
 
@@ -179,16 +179,16 @@ def validate_module(mod_name, module, conf_data):
 
     if 'codeinclude' in module:
         # Check whether every language specified for a codeinclude is supported in code_lang
-        for lang in module['codeinclude'].values():
+        for lang in list(module['codeinclude'].values()):
             if lang not in conf_data['code_lang']:
-                print('ERROR: Unsupported language, %s, referenced in codeinclude' % lang)
+                print(('ERROR: Unsupported language, %s, referenced in codeinclude' % lang))
                 error_count += 1
 
             lang_dir = conf_data['code_dir'] + lang
 
             # Ensure the source code directory exists for the specified language
             if not os.path.isdir(lang_dir):
-                print('ERROR: Language directory %s does not exist' % lang_dir)
+                print(('ERROR: Language directory %s does not exist' % lang_dir))
                 error_count += 1
 
     sections = module.get('sections')
@@ -223,7 +223,7 @@ def validate_config_file(config_file_path, conf_data):
     """Open the specified config file, parse it as JSON and validate the overall settings"""
     global error_count
 
-    print "\nValidating " + config_file_path + '\n'
+    print("\nValidating " + config_file_path + '\n')
 
     # Ensure all required fields are present
     for field in required_fields:
@@ -242,12 +242,12 @@ def validate_config_file(config_file_path, conf_data):
         conf_data['glob_exer_options']['JOP-lang'] = conf_data['lang']
 
     # Use first language provided in code_lang to set the code language attribute for JSAV_EXERCISE_OPTIONS (if code lang is not explicitly specified)
-    if len(conf_data['code_lang'].keys()) > 0:
+    if len(list(conf_data['code_lang'].keys())) > 0:
         if 'JXOP-code' not in mod_opts and 'JOP-code' not in mod_opts:
-            conf_data['glob_mod_options']['JXOP-code'] = conf_data['code_lang'].keys()[0].lower()
+            conf_data['glob_mod_options']['JXOP-code'] = list(conf_data['code_lang'].keys())[0].lower()
 
         if 'JXOP-code' not in exer_opts and 'JOP-code' not in exer_opts:
-            conf_data['glob_exer_options']['JXOP-code'] = conf_data['code_lang'].keys()[0].lower()
+            conf_data['glob_exer_options']['JXOP-code'] = list(conf_data['code_lang'].keys())[0].lower()
 
     # Ensure the config file doesn't have any unknown fields (catches mis-spelled fields when config file is manually edited)
     for field in conf_data:
@@ -376,7 +376,7 @@ def group_exercises(conf_data, no_lms):
                           if isinstance(section_obj[attr], dict):
                               exercise_obj = section_obj[attr]
                               conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
-                    if 'learning_tool' in section_obj.keys():
+                    if 'learning_tool' in list(section_obj.keys()):
                         exercise_obj = {}
                         exercise_obj['long_name'] = section
                         exercise_obj['learning_tool'] = section_obj['learning_tool']
@@ -405,7 +405,7 @@ def get_translated_text(lang_):
                 print_err('WARNING: Translation for "' + lang_ + '" not found, the language has been switched to english')
                 lang_text = lang_text_json["en"]["jinja"]
                 final_lang = "en"
-    except ValueError, err:
+    except ValueError as err:
         # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
         msg = err.message
         print_err(msg)
@@ -415,7 +415,7 @@ def get_translated_text(lang_):
         else:
             err = parse_error(msg).groupdict()
             # cast int captures to int
-            for k, v in err.items():
+            for k, v in list(err.items()):
                 if v and v.isdigit():
                     err[k] = int(v)
 
@@ -449,7 +449,7 @@ def read_conf_file(config_file_path):
         with open(config_file_path) as config:
             # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
             conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
-    except ValueError, err:
+    except ValueError as err:
         # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
         msg = err.message
         print_err(msg)
@@ -459,7 +459,7 @@ def read_conf_file(config_file_path):
         else:
             err = parse_error(msg).groupdict()
             # cast int captures to int
-            for k, v in err.items():
+            for k, v in list(err.items()):
                 if v and v.isdigit():
                     err[k] = int(v)
 

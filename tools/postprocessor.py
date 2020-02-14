@@ -17,7 +17,7 @@ from bs4.element import NavigableString
 from collections import defaultdict
 import tarfile
 import shutil
-import urlparse
+import urllib.parse
 
 __author__ = 'breakid'
 
@@ -41,7 +41,7 @@ def parse_index_rst(source_dir):
       sectnum = int(re.split('start:', line, re.IGNORECASE)[1]) - 1
 
   if not directive:
-    print 'Error: No .. sectnum:: or .. chapnum:: directive in index.rst. Please include the directive and try again.'
+    print('Error: No .. sectnum:: or .. chapnum:: directive in index.rst. Please include the directive and try again.')
     sys.exit(1)
 
   return (sectnum, prefix)
@@ -206,7 +206,7 @@ def break_up_sections(path, module_data, config, standalone_modules):
     with codecs.open(path, 'r', 'utf-8') as html_file:
       html = html_file.read()
   except IOError:
-    print "Error: Could not find HTML file for", path
+    print("Error: Could not find HTML file for", path)
     return {}
 
   # Get the module name and create its subfolder
@@ -219,7 +219,7 @@ def break_up_sections(path, module_data, config, standalone_modules):
   verbose = False
 
   if verbose:
-    print "Found HTML file:", mod_name
+    print("Found HTML file:", mod_name)
 
   TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href'), ('iframe', 'src') ]
 
@@ -318,7 +318,7 @@ def break_up_sections(path, module_data, config, standalone_modules):
   filename = mod_name + '.html'
   single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
   with codecs.open(single_file_path, 'w', 'utf-8') as o:
-    o.write(unicode(soup))
+    o.write(str(soup))
   return None
 
 def pretty_print_xml(data, file_path):
@@ -343,8 +343,8 @@ def make_lti(config, no_lms = False, standalone_modules = False):
   shutil.rmtree(lti_folder, ignore_errors=True)
   os.makedirs(lti_folder)
 
-  for chapter_name, chapter_data in config.chapters.items():
-    for module_name, module_data in chapter_data.items():
+  for chapter_name, chapter_data in list(config.chapters.items()):
+    for module_name, module_data in list(chapter_data.items()):
       if isinstance(module_data, dict):
         name = module_name.split('/')[1] if '/' in module_name else module_name
         path = os.path.join(dest_dir, name+".html")
@@ -383,7 +383,7 @@ def get_module_map(config):
 
 def main(argv):
   if len(argv) != 3:
-    print "ERROR. Usage: %s <source directory> <destination directory>\n" % argv[0]
+    print("ERROR. Usage: %s <source directory> <destination directory>\n" % argv[0])
     sys.exit(1)
 
   update_TOC(argv[1], argv[2])
