@@ -84,8 +84,8 @@ To illustrate this, let us consider another problem.
 
 .. inlineav:: pairToSortCON ss
    :long_name: Pair to Sorting Reduction Slideshow
-   :links: AV/NP/pairToSortCON.css
-   :scripts: AV/NP/pairToSortCON.js
+   :links: AV/WuChen/pairToSortCON.css
+   :scripts: AV/WuChen/pairToSortCON.js
    :output: show
 
 Figure :num:`Figure #Pair` illustrates PAIRING.
