@@ -200,6 +200,13 @@ this a good implementation for disk-based inverted files.
    :capalign: justify
    :figwidth: 90%
    :alt: Inverted list: sorted array of secondary keys and combined lists of primary keys
+   
+.. _InvListNew:
+
+.. inlineav:: InvListCON dgm
+   :links: AV/Xiaolin/InvListCON.css
+   :scripts: AV/Xiaolin/InvListCON.js
+   :align: center
 
    An inverted list implemented as an array of secondary keys and
    combined lists of primary keys.
@@ -207,3 +214,4 @@ this a good implementation for disk-based inverted files.
    in the primary key array.
    The ``next`` field of the primary key array indicates the next
    record with that secondary key value.
+
