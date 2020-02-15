@@ -1,5 +1,6 @@
 
 // Written by Aditya Tikhe
+// Modified by Xiaolin Zhou
 // inverted list
 $(document).ready(function() {
   "use strict";
@@ -18,7 +19,7 @@ $(document).ready(function() {
 
   //label on top for primary & seconday
   av.label("Secondary ", {left: xPos + 10, top: yPos - 5});
-  av.label("Primary ", {left: xPos + 325, top: yPos - 5});
+  av.label("Primary ", {left: xPos + 320, top: yPos - 5});
 
   //height and width variables for left table first column
   var leftBoxWidth = 100;
@@ -35,7 +36,7 @@ $(document).ready(function() {
   var boxHeightAndWidth = 30;
 
   //left box second column
-  av.label("Index", {left: xPos + leftBoxWidth, top: yPos + 15});
+  av.label("Index", {left: xPos + leftBoxWidth - 5, top: yPos + 15});
   av.g.rect(xPos + leftBoxWidth, yPos + 50, boxHeightAndWidth, boxHeightAndWidth);//.css({fill: "white"});
   av.g.rect(xPos + leftBoxWidth, yPos + 50 + leftBoxHeight, boxHeightAndWidth, boxHeightAndWidth);//.css({fill: "white"});
   av.g.rect(xPos + leftBoxWidth, yPos + 50 + leftBoxHeight * 2, boxHeightAndWidth, boxHeightAndWidth);//.css({fill: "white"});
@@ -56,21 +57,66 @@ $(document).ready(function() {
   av.g.rect(xPos + 300, yPos + 50 + rightBoxHeight * 6, rightBoxWidth, rightBoxHeight);//.css({fill: "white"});
   av.g.rect(xPos + 300, yPos + 50 + rightBoxHeight * 7, rightBoxWidth, rightBoxHeight);//.css({fill: "white"});
 
+  //right box second column
+  av.label("Next", {left: xPos + 295 + rightBoxWidth, top: yPos + 15});
+  av.g.rect(xPos + 300 + rightBoxWidth, yPos + 50, boxHeightAndWidth, boxHeightAndWidth);//.css({fill: "white"});
+  av.g.rect(xPos + 300 + rightBoxWidth, yPos + 50 + rightBoxHeight, boxHeightAndWidth, boxHeightAndWidth);//.css({fill: "white"});
+  av.g.rect(xPos + 300 + rightBoxWidth, yPos + 50 + rightBoxHeight * 2, boxHeightAndWidth, boxHeightAndWidth);//.css({fill: "white"});
+  av.g.rect(xPos + 300 + rightBoxWidth, yPos + 50 + rightBoxHeight * 3, boxHeightAndWidth, boxHeightAndWidth);//.css({fill: "white"});
+  av.g.rect(xPos + 300 + rightBoxWidth, yPos + 50 + rightBoxHeight * 4, boxHeightAndWidth, boxHeightAndWidth);//.css({fill: "white"});
+  av.g.rect(xPos + 300 + rightBoxWidth, yPos + 50 + rightBoxHeight * 5, boxHeightAndWidth, boxHeightAndWidth);//.css({fill: "white"});
+  av.g.rect(xPos + 300 + rightBoxWidth, yPos + 50 + rightBoxHeight * 6, boxHeightAndWidth, boxHeightAndWidth);//.css({fill: "white"});
+  av.g.rect(xPos + 300 + rightBoxWidth, yPos + 50 + rightBoxHeight * 7, boxHeightAndWidth, boxHeightAndWidth);//.css({fill: "white"});
 
   //arrows
   //first arrow
-  av.g.line(305,  80, 455, 80,
-            {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.g.line(305,  90, 450, 90,
+            {"arrow-end": "classic-wide-long", "stroke-width": 1});
   //second arrow
-  av.g.line(305,  115, 459, 115,
-            {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.g.line(305,  120, 450, 120,
+            {"arrow-end": "classic-wide-long", "stroke-width": 1});
   //third arrow
   av.g.line(305,  150, 350, 150,
-            {"stroke-width": 2});
-  av.g.line(350, 150, 350, 185,
-            {"stroke-width": 2});
-  av.g.line(350, 185, 460, 185,
-            {"arrow-end": "classic-wide-long", "stroke-width": 2});
+            {"stroke-width": 1});
+  av.g.line(350, 150, 350, 180,
+            {"stroke-width": 1});
+  av.g.line(350, 180, 450, 180,
+            {"arrow-end": "classic-wide-long", "stroke-width": 1});
+
+  //arrows at right box
+  //connect 0 and 4
+  av.g.line(xPos + 325 + rightBoxWidth, 85, xPos + 345 + rightBoxWidth, 85, {"stroke-width": 1});
+  av.g.line(xPos + 345 + rightBoxWidth, 85, xPos + 345 + rightBoxWidth, 200, {"stroke-width": 1});
+  av.g.line(xPos + 345 + rightBoxWidth, 200, xPos + 330 + rightBoxWidth, 200,
+            {"arrow-end": "classic-wide-long", "stroke-width": 1});
+
+  //connect 1 and 6
+  av.g.line(xPos + 325 + rightBoxWidth, 115, xPos + 355 + rightBoxWidth, 115,
+            {"stroke-width": 1, "stroke-dasharray": "- "});
+  av.g.line(xPos + 355 + rightBoxWidth, 115, xPos + 355 + rightBoxWidth, 260,
+            {"stroke-width": 1, "stroke-dasharray": "- "});
+  av.g.line(xPos + 355 + rightBoxWidth, 260, xPos + 330 + rightBoxWidth, 260,
+            {"arrow-end": "classic-wide-long", "stroke-width": 1, "stroke-dasharray": "- "});
+
+  //connect 4 and 5
+  av.g.line(xPos + 325 + rightBoxWidth, 210, xPos + 345 + rightBoxWidth, 210, {"stroke-width": 1});
+  av.g.line(xPos + 345 + rightBoxWidth, 210, xPos + 345 + rightBoxWidth, 230, {"stroke-width": 1});
+  av.g.line(xPos + 345 + rightBoxWidth, 230, xPos + 330 + rightBoxWidth, 230,
+            {"arrow-end": "classic-wide-long", "stroke-width": 1});
+
+  //connect 5 and 7
+  av.g.line(xPos + 325 + rightBoxWidth, 240, xPos + 345 + rightBoxWidth, 240, {"stroke-width": 1});
+  av.g.line(xPos + 345 + rightBoxWidth, 240, xPos + 345 + rightBoxWidth, 300, {"stroke-width": 1});
+  av.g.line(xPos + 345 + rightBoxWidth, 300, xPos + 330 + rightBoxWidth, 300,
+            {"arrow-end": "classic-wide-long", "stroke-width": 1});
+
+  //connect 6 and 2
+  av.g.line(xPos + 325 + rightBoxWidth, 270, xPos + 365 + rightBoxWidth, 270,
+            {"stroke-width": 1, "stroke-dasharray": "- "});
+  av.g.line(xPos + 365 + rightBoxWidth, 270, xPos + 365 + rightBoxWidth, 145,
+            {"stroke-width": 1, "stroke-dasharray": "- "});
+  av.g.line(xPos + 365 + rightBoxWidth, 145, xPos + 330 + rightBoxWidth, 145,
+            {"arrow-end": "classic-wide-long", "stroke-width": 1, "stroke-dasharray": "- "});
 
 
   //text in left boxes
@@ -83,16 +129,40 @@ $(document).ready(function() {
   av.label("1", {left: xPos + leftBoxWidth + 10, top: yPos + 45 + leftBoxHeight});
   av.label("3", {left: xPos + leftBoxWidth + 10, top: yPos + 45 + leftBoxHeight * 2});
 
-  //text in right boxes
-  av.label("AA10", {left: xPos + 325, top: yPos + 45});
-  av.label("AB12", {left: xPos + 325, top: yPos + 45 + rightBoxHeight});
-  av.label("AB39", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 2});
-  av.label("FF37", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 3});
-  av.label("AX33", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 4});
-  av.label("AX35", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 5});
-  av.label("ZX45", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 6});
-  av.label("ZQ99", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 7});
+  //test next to the right boxes
+  av.label("0", {left: xPos + 280, top: yPos + 45});
+  av.label("1", {left: xPos + 280, top: yPos + 45 + rightBoxHeight});
+  av.label("2", {left: xPos + 280, top: yPos + 45 + rightBoxHeight * 2});
+  av.label("3", {left: xPos + 280, top: yPos + 45 + rightBoxHeight * 3});
+  av.label("4", {left: xPos + 280, top: yPos + 45 + rightBoxHeight * 4});
+  av.label("5", {left: xPos + 280, top: yPos + 45 + rightBoxHeight * 5});
+  av.label("6", {left: xPos + 280, top: yPos + 45 + rightBoxHeight * 6});
+  av.label("7", {left: xPos + 280, top: yPos + 45 + rightBoxHeight * 7});
 
+
+  //text\slash in right boxes
+  av.label("AA10", {left: xPos + 325, top: yPos + 45});
+  av.label("AX33", {left: xPos + 325, top: yPos + 45 + rightBoxHeight});
+  av.label("ZX45", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 2});
+  av.label("ZQ99", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 3});
+  av.label("AB12", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 4});
+  av.label("AB39", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 5});
+  av.label("AX35", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 6});
+  av.label("FF37", {left: xPos + 325, top: yPos + 45 + rightBoxHeight * 7});
+
+  //text in right boxes right column
+  av.label("4", {left: xPos + 300 + leftBoxWidth, top: yPos + 45});
+  av.label("6", {left: xPos + 300 + leftBoxWidth, top: yPos + 45 + leftBoxHeight});
+  av.g.line(xPos + 300 + rightBoxWidth, yPos + 140, xPos + 330 + rightBoxWidth, yPos + 110,
+            {"stroke-width": 1});
+  av.g.line(xPos + 300 + rightBoxWidth, yPos + 170, xPos + 330 + rightBoxWidth, yPos + 140,
+            {"stroke-width": 1});
+  av.label("5", {left: xPos + 300 + leftBoxWidth, top: yPos + 45 + leftBoxHeight * 4});
+  av.label("7", {left: xPos + 300 + leftBoxWidth, top: yPos + 45 + leftBoxHeight * 5});
+  av.label("2", {left: xPos + 300 + leftBoxWidth, top: yPos + 45 + leftBoxHeight * 6});
+  av.g.line(xPos + 300 + rightBoxWidth, yPos + 290, xPos + 330 + rightBoxWidth, yPos + 260,
+            {"stroke-width": 1});
   av.displayInit();
   av.recorded();
 });
+
