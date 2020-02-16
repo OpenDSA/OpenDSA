@@ -409,12 +409,7 @@
           "points": 1.0
         }
       }, 
-      "BTRecurTutor/BinaryTreeInfFlw": {
-        "BinaryTreeMistakesCON": {
-          "points": 1.0, 
-          "threshold": 0.9
-        }
-      }, 
+      "BTRecurTutor/BinaryTreeInfFlw": {},
       "Binary/BinaryTreeImpl": {}, 
       "Binary/Composite": {}, 
       "Binary/BinaryTreeNodeSpace": {
@@ -451,12 +446,7 @@
         }
       }, 
       "Binary/BSTDict": {}, 
-      "BTRecurTutor/BinaryTreeGuidedInfFlw": {
-        "IneffBinaryTreeRangeCON": {
-          "points": 1.0, 
-          "threshold": 0.9
-        }
-      }, 
+      "BTRecurTutor/BinaryTreeGuidedInfFlw": {},
       "BTRecurTutor/MultipleBinaryTrees": {}, 
       "BTRecurTutor/BSTCheck": {}, 
       "Binary/CompleteTree": {}, 
