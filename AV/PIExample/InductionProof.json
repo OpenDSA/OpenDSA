@@ -2,12 +2,126 @@
     "translations": {
         "en": {
             "q0": {
-                "type": "select",
-                "question":"Select parts that are necessary in constituting a good proof",
+                "type": "multiple",
+                "question":"What is first step to use induction?",
                 "description": "First, we need a way to describe the $n^th$ odd number, which is simply $2n−1$. This also allows us to cast the theorem as a summation. Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
-                "answer": ["Investigation", "Argument"],
-                "choices": ["Investigation", "Argument"]
+                "answer": "proof the base case at n $=$ 1",
+                "choices": ["proof the base case at n $=$ 1", "proof the base case at n $=$ 0", "proof the base case at n $geq$ 1"]
+            },
+            "q1": {
+                "type": "multiple",
+                "question":"What is the result of substituting n to 1?",
+                "description": "First, we need a way to describe the $n^th$ odd number, which is simply $2n−1$. This also allows us to cast the theorem as a summation. Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
+                "answer": "1",
+                "choices": ["1", "4", "9", "16", "25"]
+            },
+            "q2": {
+                "type": "multiple",
+                "question": "Does the theory valid at the base case?",
+                "description": "First, we need a way to describe the $n^th$ odd number, which is simply $2n−1$. This also allows us to cast the theorem as a summation. Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
+                "answer": "Yes",
+                "choices": ["Yes", "No"]
+            },
+            "q3": {
+                "type": "multiple",
+                "question": "Since we proved the base case, Which of the following is a correct induction Hypothesis?",
+                "description": "Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
+                "answer": "$\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$",
+                "choices": ["$\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$","$\\Sigma^{n+1}_{i=1}$($2i−1$)=$(n+1)^2$", "$\\Sigma^n_{i=1}$($2i−1$)=$n^2$" ]
+            },
+            "q4": {
+                "type": "multiple",
+                "question": "[T/F] The sum of the first n odd numbers is simply the sum of the first $n−1$ odd numbers plus the $n'th$ odd number.",
+                "description": "$\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$ <br> We now use the induction hypothesis to show that the theorem holds true for $n$",
+                "answer": "True",
+                "choices": ["True", "False"]
+            },
+            "q5": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
+            },
+            "q6": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
+            },
+            "q7": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
+            },
+            "q8": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
+            },
+            "q9": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
+            },
+            "q10": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
+            },
+            "q11": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
+            },
+            "q12": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
+            },
+            "q13": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
+            },
+            "q14": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
+            },
+            "q15": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
+            },
+            "q16": {
+                "type": "multiple",
+                "question": "",
+                "description": "",
+                "answer": "",
+                "choices": []
             }
+
+
         }
     }
 }
