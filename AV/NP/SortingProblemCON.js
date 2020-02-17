@@ -27,7 +27,7 @@ $(document).ready(function () {
     arr_values.push("K" + (i + 1));
   }
   arr = av.ds.array(arr_values, {left: leftAlign, top: topAlign, indexed: true});
-  var line1 = av.g.line(leftAlign + 290, topAlign + 30, leftAlign + 350, topAlign + 30);
+  var line1 = av.g.line(leftAlign + 276, topAlign + 30, leftAlign + 350, topAlign + 30);
   var inputLabel = av.label(interpret("lab2"),
                             {top: topAlign -20, left: leftAlign + 300});
   av.displayInit();
@@ -40,7 +40,7 @@ $(document).ready(function () {
     arr_values_out.push("Ks" + (i + 1));
   }
   var arr2 = av.ds.array(arr_values_out, {left: leftAlign + 420 + rectWidth, top: topAlign, indexed: true});
-  var lineOutput1 = av.g.line(leftAlign + 350 + rectWidth, topAlign+30, leftAlign + 410 + rectWidth, topAlign + 30);
+  var lineOutput1 = av.g.line(leftAlign + 350 + rectWidth, topAlign+30, leftAlign + 422 + rectWidth, topAlign + 30);
   var outputLabel = av.label(interpret("lab3"),
                              {top: topAlign -20, left: leftAlign + rectWidth+ 360});
   av.step();
