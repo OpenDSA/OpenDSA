@@ -59,6 +59,49 @@ $(document).ready(function() {
     //frame 5
     av.umsg(Frames.addQuestion("q2"));
     av.step();
+
+    //frame 6
+    av.umsg(Frames.addQuestion("q3"));
+    av.step();
+
+    //frame 7
+    av.umsg(Frames.addQuestion("q4"));
+    av.step();
+
+    //frame 8 need editing
+    av.umsg(Frames.addQuestion("q5"));
+    av.step();
+
+    //frame 9
+    
+
+    //frame 9 
+    av.umsg("This example shows how we can use induction to prove that a proposed closed-form solution for a recurrence relation is correct.");
+    av.step();
+
+    //frame 10
+    av.umsg(Frames.addQuestion("q6"));
+    av.step();
+
+    //frame 11
+    av.umsg(Frames.addQuestion("q7"));
+    av.step();
+    
+    //frame 12
+    av.umsg(Frames.addQuestion("q8"));
+    av.step();
+
+    //frame 13
+    av.umsg(Frames.addQuestion("q9"));
+    av.step();
+
+    //frame 14
+    av.umsg(Frames.addQuestion("q10"));
+    av.step();
+
+    //frame 15
+    av.umsg("Thus, we have proved the theorem correct by mathematical induction.");
+    
     
     av.recorded();
 });

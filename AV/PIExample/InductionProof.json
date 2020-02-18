@@ -6,7 +6,7 @@
                 "question":"What is first step to use induction?",
                 "description": "First, we need a way to describe the $n^th$ odd number, which is simply $2n−1$. This also allows us to cast the theorem as a summation. Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
                 "answer": "proof the base case at n $=$ 1",
-                "choices": ["proof the base case at n $=$ 1", "proof the base case at n $=$ 0", "proof the base case at n $geq$ 1"]
+                "choices": ["proof the base case at n $=$ 1", "proof the base case at n $=$ 0", "proof the base case at n $\\geq$ 1"]
             },
             "q1": {
                 "type": "multiple",
@@ -45,82 +45,39 @@
             },
             "q6": {
                 "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": []
+                "question": "What do you conclude from the last step?",
+                "description": "$\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$ <br>",
+                "answer": "We proved that $\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$",
+                "choices": ["We proved that $\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$", "We need more steps to prove the theorem"]
             },
             "q7": {
                 "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": []
+                "question": "What is the base case?",
+                "description": "Theorem: The recurrence relation $T(n) = T(n−1) + 1$;$T(1) = 0$ has closed-form solution $T(n)=n−1$.",
+                "answer": "$T(2)$ $=$ $1$",
+                "choices": ["$T(2)$ $=$ $1$", "$T(1)$ $=$ $0$"]
             },
             "q8": {
                 "type": "multiple",
                 "question": "",
                 "description": "",
                 "answer": "",
-                "choices": []
+                "choices": ["", ""]
             },
             "q9": {
                 "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": []
+                "question": "In the induction hypothesis. What is the value of $T(n-1)$",
+                "description": "Theorem: The recurrence relation $T(n) = T(n−1) + 1$;$T(1) = 0$ has closed-form solution $T(n)=n−1$.",
+                "answer": "$n$ $-$ $2$",
+                "choices": ["$n$ $-$ $2$", "$n$ $-$ $1$" , "$n$", "$n$ $+$ $1$", "$n$ $+$ $2$"]
             },
             "q10": {
-                "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": []
-            },
-            "q11": {
-                "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": []
-            },
-            "q12": {
-                "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": []
-            },
-            "q13": {
-                "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": []
-            },
-            "q14": {
-                "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": []
-            },
-            "q15": {
-                "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": []
-            },
-            "q16": {
-                "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": []
+                "type": "select",
+                "question": "Based on the induction hypothesis, What is the value for $T(n)$?",
+                "description": "Theorem: The recurrence relation $T(n) = T(n−1) + 1$;$T(1) = 0$ has closed-form solution $T(n)=n−1$.",
+                "answer": "$T(n)$ = $T(n-1) + 1$",
+                "choices": ["$T(n)$ = $T(n-1) + 1$", "$T(1) = 0$"]
             }
-
 
         }
     }
