@@ -62,30 +62,31 @@
     "required": true
   }, 
   "chapters": {
-    "Formal Languages": {
-      "PIExample/Echo_frame1": {}
-    },
-    "Grammars": {
+    "Introduction": {
+      "PIExample/Echo_frame1": {},
       "PIExample/grammar": {}
     },
-    "Set Relations": {
+    "Mathematical Background": {
       "PIExample/mathematical": {},
-      "PIExample/setRelations": {}
-    },
-    "NFA to DFA": {
-      "PIExample/NFAtoDFAExample":{}
-    },
-    "Mathematical Proof Technique ": {
+      "PIExample/setRelations": {},
       "PIExample/proof":{},
-      "PIExample/continuedMathProof":{}
+      "PIExample/continuedMathProof":{},
+      "PIExample/inductionProof": {}
+    },
+    "Finite Acceptors": {
+      "PIExample/NFAtoDFAExample":{}
     },
     "Regular Languages": {
       "PIExample/regularExpression":{},
       "PIExample/grammarRegularExpression": {},
       "PIExample/expressionRegular": {}
     },
-    "Mathematical Induction": {
-      "PIExample/inductionProof": {}
-    }
+    "Identifying Non-regular Languages":{},
+    "Context-Free Grammars and Languages":{},
+    "Pushdown Automata":{},
+    "Properties of Context-free Languages":{},
+    "Models of Computation":{},
+    "Parsing":{},
+    "Limits to Computing":{}
   }
 }
