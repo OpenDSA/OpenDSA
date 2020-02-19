@@ -1,0 +1,23 @@
+{
+  "translations" :{
+    "en": {
+      "sc1": "Consider the base case of a single infinite line in the plane. This line splits the plane into two regions.",
+      "sc2": "<br/>One region can be colored black and the other white to get a valid two-coloring.",
+      "sc3": "The induction hypothesis is that the set of regions formed by $n-1$ infinite lines can be two-colored.",
+      "sc4": "<br/>To prove the theorem for n, consider the set of regions formed by the $n-1$ lines remaining when any one of the $n$ lines is removed. For our example, assume that $n = 4$.",
+      "sc5": "So after we remove one, we now have 3 infinite lines.",
+      "sc6": "By the induction hypothesis, this set of regions can be two-colored.",
+      "sc7": "Now, put the $n^{th}$ line back.",
+      "sc8": "<br/>This splits the plane into two half-planes, each of which (independently) has a valid two-coloring inherited from the two-coloring of the plane with $n-1$ lines.",
+      "sc9": "Unfortunately, the regions newly split by the $n^{th}$ line violate the rule for a two-coloring.",
+      "sc10": "Let's take all regions on one side of the $n^{th}$ line (say half plane 2) and reverse their coloring. After doing so, this half-plane is still two-colored.",
+      "sc11": "<br/>Those regions split by the $n^{th}$ line are now properly two-colored, because the part of the region to one side of the line is now black and the region to the other side is now white.",
+      "sc12": "Thus, by mathematical induction, the entire plane is two-colored.",
+      "lab1": "Region1",
+      "lab2": "Region2",
+      "lab3": "$n^{th}$ line",
+      "lab4": "Half Plane 1",
+      "lab5": "Half Plane 2"
+    }
+  }
+}

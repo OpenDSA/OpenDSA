@@ -71,7 +71,9 @@
       "PIExample/setRelations": {},
       "PIExample/proof":{},
       "PIExample/continuedMathProof":{},
-      "PIExample/inductionProof": {}
+      "PIExample/inductionProof": {},
+      "PIExample/prid": {}
+
     },
     "Finite Acceptors": {
       "PIExample/NFAtoDFAExample":{}
