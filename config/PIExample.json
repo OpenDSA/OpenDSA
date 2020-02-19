@@ -72,7 +72,8 @@
       "PIExample/proof":{},
       "PIExample/continuedMathProof":{},
       "PIExample/inductionProof": {},
-      "PIExample/prid": {}
+      "PIExample/proofInduction": {},
+      "PIExample/lastInductionProof": {}
 
     },
     "Finite Acceptors": {

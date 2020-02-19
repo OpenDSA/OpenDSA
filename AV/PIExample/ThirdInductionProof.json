@@ -1,0 +1,65 @@
+{
+    "translations": {
+        "en": {
+            "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+        
+            "q0": {
+                "type": "multiple",
+                "description": "We would like to prove that function $\\textit{fact}$ does indeed compute the factorial function. ",
+                "question": "What is the result of $fact(4)$",
+                "answer": "24",
+                "choices": ["4", "10", "14", "24"]
+            },
+            "q1": {
+                "type": "multiple",
+                "description": "$\\textbf {Theorem}$: Function $\\textit{fact}$ will terminate for any value of n.",
+                "question": "What is the base case?",
+                "answer": "fact will terminate for $n$ $\\leq$ $0$",
+                "choices": ["$fact(0) = 0$", "$fact(n) = n^*fact(n-1)$", "fact will terminate for $n$ $\\leq$ $0$"]
+            },
+            "q2": {
+                "type": "multiple",
+                "description": "For $fact(n)$, $fact$ will make a recursive call for $fact(n-1)$.",
+                "question": "Will $fact(n)$ terminate?",
+                "answer": "Yes",
+                "choices": ["Yes", "No"]
+            },
+            "q3": {
+                "type": "multiple",
+                "description": "For $fact(n)$, $fact$ will make a recursive call for $fact(n-1)$.",
+                "question": "Why will $fact(n)$ make a recursive call for $fact(n-1)$",
+                "answer": "Using the induction hypothesis $fact(n-1)$ will terminate",
+                "choices": ["Using the induction hypothesis $fact(n-1)$ will terminate", "since n is decremented, it will reach zero"]
+            },
+            "q4": {
+                "type": "multiple",
+                "description": "As it was mentioned before, we would like to prove that function fact does indeed compute the factorial function.<br> There are two distinct steps to such proof. The first is to prove that the function always terminates. The second is to prove that the function returns the correct value.",
+                "question": "What is the next step?",
+                "answer": "We only proved the first part (termination) now we need to prove that fact returns the correct value.",
+                "choices": ["We are done the proof, so fact indeed calculate the factorial", "We only proved the first part (termination) now we need to prove that fact returns the correct value."]
+            },
+            "q5": {
+                "type": "multiple",
+                "description": "$\\textbf {Theorem}$: Function fact does compute the factorial function for any value $n \\geq 0$",
+                "question": "Can fact calculate factorial $n \\geq 12$?",
+                "answer": "Yes",
+                "choices": ["Yes", "No"]
+            },
+            "q6": {
+                "type": "multiple",
+                "description": "First, we need to prove the base case.",
+                "question": "Which of the following is the correct base case?",
+                "answer": "All of the above",
+                "choices": ["at $n = 0$, $fact(0) = 1$", "at $n = 1$, $fact(1) = 1$", "All of the above"]
+            },
+            "q7": {
+                "type": "select",
+                "description": "How the induction hypothesis helps to prove that fact(n) provides the n!?",
+                "question": "How the induction hypothesis helps to prove that fact(n) provides the n!?",
+                "answer": ["$fact(n) = n * fact(n-1)$", "$fact(n-1) = (n-1)!$", "$fact(n) = n * (n-1)! = n!$"],
+                "choices": ["$fact(n) = n * fact(n-1)$", "$fact(n-1) = (n-1)!$", "$fact(n) = n * (n-1)! = n!$"]
+            }
+        }
+    }
+}
+  

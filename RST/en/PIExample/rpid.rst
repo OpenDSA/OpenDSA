@@ -15,4 +15,6 @@ Induction proof testing
 -----------------------------
 .. inlineav:: TwoColoringProofCON ss
     :links: AV/PIExample/TwoColoringProofCON.css
-    
+    :scripts: AV/PIExample/TwoColoringProofCON.js
+    :output: show
+

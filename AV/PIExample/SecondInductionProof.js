@@ -25,12 +25,18 @@ $(document).ready(function () {
     var p7 = av.g.polyline([[leftAlign + 195, topAlign + 165], [leftAlign + 275, topAlign + 165], [leftAlign + 240, topAlign + 210]]).addClass("highlight");
     p7.hide();
 
+    //frame exampel
+    // av.umsg("In the previous examples, we took a collection of stamps of size n−1 (which, by the induction hypothesis, must have the desired property) and from that 'built' a collection of size n that has the desired property. We, therefore, proved the existence of some collection of stamps of size $n$ with the desired property.");
+    // av.step();
+    
     // frame 1
     av.umsg(interpret("sc1"));
     var baseCaseLine = av.g.line(leftAlign, topAlign + 50, leftAlign + 350, topAlign + 50).addClass("thickLine");
     var baseCaseLabel1 = av.label(interpret("lab1"),  {top: topAlign - 25, left: leftAlign + 400}).addClass("largeLabel");
     var baseCaseLabel2 =  av.label(interpret("lab2"),  {top: topAlign + 75, left: leftAlign + 400}).addClass("largeLabel");
     av.displayInit();
+    
+
     //frame 2
     av.umsg(interpret("sc2"), {preserve: true});
     var baseCaseRect = av.g.rect(leftAlign, topAlign + 50, 350, 50).addClass("highlight");
