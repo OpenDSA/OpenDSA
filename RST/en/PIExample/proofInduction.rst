@@ -9,10 +9,10 @@
    :topic: Finite Automata
 
 
-Testing
+Mathematical Induction Proof Continued
 =======
 
-Second Induction Proof
+Visualization of induction proof
 ----------------------
 
 .. inlineav:: SecondInductionProof ff
