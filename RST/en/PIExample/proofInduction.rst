@@ -10,12 +10,13 @@
 
 
 Testing
-================================
+=======
 
-SecondInductionProof
--------------------------------
-.. inlineav:: SecondInductionProof ss
-    :long_name: lll
-    :links: AV/PIExample/SecondInductionProof.css
-    :scripts: AV/PIExample/SecondInductionProof.js DataStructures/PIFrames.js 
-    :output: show
+Second Induction Proof
+----------------------
+
+.. inlineav:: SecondInductionProof ff
+   :long_name: SecondInductionProof
+   :links: AV/PIExample/SecondInductionProof.css
+   :scripts: AV/PIExample/SecondInductionProof.js DataStructures/PIFrames.js
+   :output: show
