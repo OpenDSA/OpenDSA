@@ -25,25 +25,55 @@ $(document).ready(function () {
     var p7 = av.g.polyline([[leftAlign + 195, topAlign + 165], [leftAlign + 275, topAlign + 165], [leftAlign + 240, topAlign + 210]]).addClass("highlight");
     p7.hide();
 
-    //frame exampel
-    // av.umsg("In the previous examples, we took a collection of stamps of size n−1 (which, by the induction hypothesis, must have the desired property) and from that 'built' a collection of size n that has the desired property. We, therefore, proved the existence of some collection of stamps of size $n$ with the desired property.");
-    // av.step();
+    //frame 1
+    av.umsg(interpret("quo1"));
+    av.step();
+    av.displayInit();
     
-    // frame 1
+    
+    // frame 2
+    av.umsg(interpret("quo2"));
+    av.step();
+    
+    //frame 3
+    av.umsg(interpret("quo3"));
+    av.step();
+    
+    //frame 4
+    av.umsg(interpret("quo4"));
+    var left = 250;
+    var f1 = av.g.polyline([[left +  60,  20], [left + 110,  70], [left +  30,  70]], {fill: "gray"});
+    var f2 = av.g.polyline([[left + 110,  70], [left + 240,  70], [left + 175, 135]], {fill: "gray"});
+    var f3 = av.g.polyline([[left + 240,  70], [left + 330,  70], [left + 290,  20]], {fill: "gray"});
+    var f4 = av.g.polyline([[left + 175, 135], [left + 230, 190], [left + 120, 190]], {fill: "gray"});
+    av.step();
+
+    //frame 5
+    av.umsg(interpret("quo5"));
+    f1.hide();
+    f2.hide();
+    f3.hide();
+    f4.hide();
+    av.step();
+
+    //frame 6
+    av.umsg(interpret("quo6"));
+    av.step();
+    
+
+    // Slide 7
     av.umsg(interpret("sc1"));
     var baseCaseLine = av.g.line(leftAlign, topAlign + 50, leftAlign + 350, topAlign + 50).addClass("thickLine");
     var baseCaseLabel1 = av.label(interpret("lab1"),  {top: topAlign - 25, left: leftAlign + 400}).addClass("largeLabel");
     var baseCaseLabel2 =  av.label(interpret("lab2"),  {top: topAlign + 75, left: leftAlign + 400}).addClass("largeLabel");
-    av.displayInit();
-    
+    av.step();
 
-    //frame 2
+    // Slide 8
     av.umsg(interpret("sc2"), {preserve: true});
     var baseCaseRect = av.g.rect(leftAlign, topAlign + 50, 350, 50).addClass("highlight");
     av.step();
 
-
-    //frame 3
+    // Slide 9
     av.umsg(interpret("sc3"));
     baseCaseRect.hide();
     baseCaseLine.hide();
@@ -51,7 +81,7 @@ $(document).ready(function () {
     baseCaseLabel2.hide();
     av.step();
 
-    //frame 4
+    // Slide 10
     av.umsg(interpret("sc4"), {preserve: true});
     av.g.line(leftAlign + 50, topAlign + 20, leftAlign + 250, topAlign + 220).addClass("thickLine");
     av.g.line(leftAlign + 0, topAlign + 80, leftAlign + 350, topAlign + 80).addClass("thickLine");
@@ -59,10 +89,63 @@ $(document).ready(function () {
     var l4 = av.g.line(leftAlign + 0, topAlign + 165, leftAlign + 350, topAlign + 165).addClass("thickLine");
     av.step();
 
-    //frame 5
+    // Slide 11
     av.umsg(interpret("sc5"), {preserve: true});
     l4.hide();
     av.step();
+
+    // Slide 12
+    av.umsg(interpret("sc6"));
+    p1.show();
+    p2.show();
+    p3.show();
+    p4.show();
+    av.step();
+
+    // Slide 13
+    av.umsg(interpret("sc7"));
+    var nLine = av.label(interpret("lab3"),  {top: topAlign + 135, left: leftAlign + 400}).css({"font-size": "16px", "text-align": "center"});
+    l4.show();
+    av.step();
+
+    // Slide 14
+    av.umsg(interpret("sc8"), {preserve: true});
+    var plane1 = av.label(interpret("lab4"),  {top: topAlign + 75, left: leftAlign + 400}).addClass("largeLabel");
+    var plane2 = av.label(interpret("lab5"),  {top: topAlign + 175, left: leftAlign + 400}).addClass("largeLabel");
+    var planeRect1 = av.g.rect(leftAlign + 0, topAlign + 165, 350, 55).css({fill: "green", opacity: 0.1});
+    var planeRect2 = av.g.rect(leftAlign + 0, topAlign + 20, 350, 145).css({fill: "blue", opacity: 0.1});
+    av.step();
+
+    // Slide 15
+    av.umsg(interpret("sc9"));
+    planeRect1.hide();
+    planeRect2.hide();
+    plane1.hide();
+    plane2.hide();
+    av.step();
+
+    // Slide 16
+    av.umsg(interpret("sc10"));
+    plane1.show();
+    plane2.show();
+    planeRect1.show();
+    planeRect1.css({fill: "green", opacity: 0.1});
+    av.step();
+
+    // Slide 17
+    av.umsg(interpret("sc11"), {preserve: true});
+    p4.hide();
+    p5.show();
+    p6.show();
+    p7.show();
+    av.step();
+
+    // Slide 18
+    av.umsg(interpret("sc12"));
+    plane1.hide();
+    plane2.hide();
+    nLine.hide();
+    planeRect1.hide();
 
 
     av.recorded();

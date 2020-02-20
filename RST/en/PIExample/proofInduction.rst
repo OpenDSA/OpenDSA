@@ -9,13 +9,14 @@
    :topic: Finite Automata
 
 
-Testing
-================================
+Mathematical Induction Proof Continued
+=======
 
-SecondInductionProof
--------------------------------
-.. inlineav:: SecondInductionProof ss
-    :long_name: lll
-    :links: AV/PIExample/SecondInductionProof.css
-    :scripts: AV/PIExample/SecondInductionProof.js DataStructures/PIFrames.js 
-    :output: show
+Visualization of induction proof
+----------------------
+
+.. inlineav:: SecondInductionProof ff
+   :long_name: SecondInductionProof
+   :links: AV/PIExample/SecondInductionProof.css
+   :scripts: AV/PIExample/SecondInductionProof.js DataStructures/PIFrames.js
+   :output: show
