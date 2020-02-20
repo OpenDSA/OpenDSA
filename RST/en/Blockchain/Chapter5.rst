@@ -1,5 +1,5 @@
 .. This is the beginning file for Jesse and Bailey's 
-.. undergraduate research to create the Blockchain tutorial
+.. undergraduate research to create the Blockchain tutorial Exercises/List/AstackPopPRO.html ka
 
 .. avmetadata::
     :author: Bailey Spell and Jesse Terrazas
@@ -61,6 +61,9 @@ their advantage. A 51% attack would cost an immense amount of money to obtain a 
 compute power. As of the end of 2019, it would take about 120 terrahashes per second to be computed inorder 
 to mine one Bitcoin. 
 
+.. avembed:: AV/Blockchain/TextFieldHashingGame.html ss
+   :long_name: Text-Field Hashing Game
+
 
 Who is a Miner?
 ~~~~~~~~~~~~~~~
@@ -69,4 +72,4 @@ During the infancy of cryptocurrencies, miners would be enthusiasts who would ut
 compute power on their laptop or desktop to mine coins. As the popularity of these coins have become 
 and their prices rising, many individuals have bought more computers and even warehouses to harness 
 as much compute power inorder to mine as many as possible. As the major cost of mining comes from the 
-electricity to power these computers, many miners try to exploit areas of low electricity costs. 
+electricity to power these computers, many miners try to exploit areas of low electricity costs.
