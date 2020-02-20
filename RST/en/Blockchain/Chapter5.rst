@@ -27,6 +27,10 @@ require that a hash have some arbitrary amount of preceeding zeros in front in
 order for the block to be accepted into the chain, which is where mining becomes important.
 
 
+.. avembed:: AV/Blockchain/TextFieldHashingGame.html ss
+   :long_name: Text-Field Hashing Game
+
+
 How Mining Works
 ~~~~~~~~~~~~~~~~
 
@@ -60,9 +64,6 @@ a fear that a malicious group may gain 51% control of the blockchain and utilize
 their advantage. A 51% attack would cost an immense amount of money to obtain a profound amount of 
 compute power. As of the end of 2019, it would take about 120 terrahashes per second to be computed inorder 
 to mine one Bitcoin. 
-
-.. avembed:: AV/Blockchain/TextFieldHashingGame.html ss
-   :long_name: Text-Field Hashing Game
 
 
 Who is a Miner?
