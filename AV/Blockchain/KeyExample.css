@@ -1,6 +1,6 @@
 #container {
     width: 525px;
-    height: 250px;
+    height: 300px;
     position: relative;
 }
 
@@ -29,25 +29,26 @@
     width: 520px;
     margin: auto 0;
     display: block;
+    resize: none;
 }
 
-.decryptLabel {
+.publicKeyLabel {
     position: absolute;
-    top: 145px;
+    top: 185px;
 }
 
-.decryptMsg {
+.publicKey {
     position: absolute;
-    top: 180px;
+    top: 220px;
     width: 520px;
     margin: auto 0;
     display: block;
 }
 
-.encrypt {
+.copyKey {
     position: absolute;
     top: 75px;
-    left: 30%;
+    left: 25%;
     text-align: center;
 }
 
@@ -58,14 +59,14 @@
     text-align: center;
 }
 
-.msgLabel {
+.decryptLabel {
     position: absolute;
-    top: 195px;
+    top: 240px;
 }
 
-.msgReadable {
+.decryptMsg {
     position: absolute;
-    top: 230px;
+    top: 275px;
     width: 520px;
     margin: auto 0;
     display: block;
