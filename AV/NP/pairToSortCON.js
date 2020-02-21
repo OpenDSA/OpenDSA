@@ -20,7 +20,7 @@ $(document).ready(function() {
   jsav.umsg("Pairing of two arrays by reduction to sorting");
   input1 = new Array(23,42,17,93,88,12,57,90);
   input2 = new Array(48,59,11,89,12,91,64,34);
-  var r1 = jsav.g.rect(95,10 + yoffset,560,60);
+  var r1 = jsav.g.rect(95,10 + yoffset,600,60);
   r1.show();
   iparr1 = jsav.ds.array(input1,  {left: 100, top: 8 + yoffset});
   for(var i=0;i<input1.length;i++)
@@ -34,7 +34,7 @@ $(document).ready(function() {
 
   // Slide 2
   jsav.umsg("The arrays are fed as input to the sorting problem directly");
-  var r12 = jsav.g.rect(95,110 + yoffset,560,60);
+  var r12 = jsav.g.rect(95,110 + yoffset,600,60);
   r12.show();
   iparr1 = jsav.ds.array(input1,  {left: 100, top: 107 + yoffset});
   for(var i=0;i<input1.length;i++)
@@ -68,17 +68,17 @@ $(document).ready(function() {
   l4.show();
   sort1 = new Array(12,17,23,42,57,88,90,93);
   sort2 = new Array(11,12,34,48,59,64,89,91);
-  var r4 = jsav.g.rect(95,240 + yoffset,560,60);
+  var r4 = jsav.g.rect(95,240 + yoffset,600,60);
   r4.show();
   sortarr1 = jsav.ds.array(sort1, {left: 100, top: 237 + yoffset});
   jsav.label("Sorted array",{left:10,top:240 + yoffset});
   sortarr2 = jsav.ds.array(sort2, {left: 400, top: 237 + yoffset});
-  jsav.label("Sorted array",{left:660,top:240 + yoffset});
+  jsav.label("Sorted array",{left:700,top:240 + yoffset});
   jsav.step();
 
   // Slide 5
   jsav.umsg("The sorted arrays are reverse transformed.");
-  var r4 = jsav.g.rect(95,330 + yoffset,560,60);
+  var r4 = jsav.g.rect(95,330 + yoffset,600,60);
   r4.show();
   var l12 = jsav.g.line(369,300 + yoffset,369,330 + yoffset);
   l12.show();
@@ -90,13 +90,12 @@ $(document).ready(function() {
   oparr= jsav.ds.array([" "," "," "," "," "," "," "," "],  {left: 180, top: 327 + yoffset});
   jsav.step();
 
+  
+
   // Slides 7-14
   oparr.show();
   for(var i=0;i<8;i++){
-    oparr.css(i, {"min-width": "100px !important"});
-    oparr.css(i, {"max-width": "100px !important"});
-    oparr.css(i, {"width": "90px !important"});
-//    oparr.css(i, {"background-color": "red"});
+    
     if(i>0){
       sortarr1.unhighlight(i-1);
       sortarr2.unhighlight(i-1);
@@ -120,7 +119,7 @@ $(document).ready(function() {
 
   // Slide 16
   jsav.umsg("Cost of pairing = O(n) + Cost of sorting");
-  var l13 = jsav.g.line(369,390 + yoffset,369,415 + yoffset);
+  var l13 = jsav.g.line(368,390 + yoffset,368,415 + yoffset);
   l13.show();
   var oparr2= jsav.ds.array([" "," "," "," "," "," "," "," "],  {left: 180, top: 397 + yoffset});
   for(var i=0;i<8;i++)

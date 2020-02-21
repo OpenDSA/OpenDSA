@@ -1,0 +1,73 @@
+#container {
+    width: 525px;
+    height: 300px;
+    position: relative;
+}
+
+.instructions {
+    border: 0;
+    margin: auto 0;
+    top: 15px;
+    text-align: center;
+}
+
+.msg {
+    position: absolute;
+    top: 45px;
+    left: 20%;
+    width: 325px;
+}
+
+.encryptLabel {
+    position: absolute;
+    top: 95px;
+}
+
+.encryptMsg {
+    position: absolute;
+    top: 130px;
+    width: 520px;
+    margin: auto 0;
+    display: block;
+    resize: none;
+}
+
+.publicKeyLabel {
+    position: absolute;
+    top: 185px;
+}
+
+.publicKey {
+    position: absolute;
+    top: 220px;
+    width: 520px;
+    margin: auto 0;
+    display: block;
+}
+
+.copyKey {
+    position: absolute;
+    top: 75px;
+    left: 25%;
+    text-align: center;
+}
+
+.decrypt {
+    position: absolute;
+    top: 75px;
+    left: 60%;
+    text-align: center;
+}
+
+.decryptLabel {
+    position: absolute;
+    top: 240px;
+}
+
+.decryptMsg {
+    position: absolute;
+    top: 275px;
+    width: 520px;
+    margin: auto 0;
+    display: block;
+}

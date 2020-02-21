@@ -99,6 +99,8 @@ class EquationBank{
             else
                 this.equation_page_number--;
             this.showPage();
+            this.globalSectionObj.logEvent({type: "switching equation page", id: this.equation_page_titles[this.equation_page_number]});
+            console.log(this.equation_page_titles[this.equation_page_number]);
         });
         this.globalSectionObj.label(
             ">",
@@ -114,6 +116,8 @@ class EquationBank{
             else
                 this.equation_page_number++;
             this.showPage();
+            this.globalSectionObj.logEvent({type: "switching equation page", id: this.equation_page_titles[this.equation_page_number]});
+            console.log(this.equation_page_titles[this.equation_page_number]);
         });
         
         // Creating the page objects (JSAV objects)
@@ -250,7 +254,6 @@ class EquationBank{
     {
         // This function handles the onchange() event for the selection
         var pageName = this.equation_page_titles[this.equation_page_number];
-
         // Turn everything off first, then show only the page_number indexed page
         for(var group in this.equation_pages)
         {

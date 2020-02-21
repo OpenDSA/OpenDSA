@@ -185,7 +185,7 @@ non-deterministic computer.
 The problem is that, given a candidate cycle, while we can quickly
 check that the answer is indeed a cycle of the appropriate form,
 and while we can quickly calculate the length of the cycle,
-we have no easy way of knowing if it is in fact the <em>shortest</em>
+we have no easy way of knowing if it is in fact the **shortest**
 such cycle.
 However, we can solve a variant of this problem cast in the form
 of a :term:`decision problem`.

@@ -1,0 +1,104 @@
+{
+"translations": {
+    "en": {
+    "q0": {
+        "type": "multiple",
+        "question":"What can you change the $\\lambda$ connection to?",
+        "description": "The DFA does not accept $\\lambda$ expression",
+        "answer": "b",
+        "choices": ["a", "b", "c"]
+    },
+    "q1": {
+        "type": "multiple",
+        "question":"What is the transition from state $\\{q3, q4\\}$ with the alphabet b. Select the appropriate state:",
+        "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to",
+        "answer": "q1, q5, q6",
+        "choices": ["q0, q1, q2", "q1, q2, q3","q1, q5, q6" ,"q4"]
+    },
+    "q2": {
+        "type": "multiple",
+        "question":"What is transition from state $\\{q1, q5, q6\\}$ with the alphabet a. Select the appropriate state:",
+        "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to",
+        "answer": "q3",
+        "choices": ["q0, q1, q2", "q1, q2, q3","q3, q4, q5" ,"q3"]
+    },
+    "q3": {
+        "type": "multiple",
+        "question":"What is the transition from state $\\{q1, q5, q6\\}$ with the alphabet b. Select the appropriate state:",
+        "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to",
+        "answer": "No Transition",
+        "choices": ["q0, q1, q2", "q1, q2, q3","q1, q5, q6" ,"No Transition"]
+    },
+    "q4": {
+        "type": "multiple",
+        "question":"What is the transition from state $\\{q3\\}$ with the alphabet a?",
+        "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to",
+        "answer": "No Transition",
+        "choices": ["q4", "q1, q2, q3","q1, q5" ,"No Transition"]
+    },
+    "q5": {
+        "type": "multiple",
+        "question":"What is the trnsition from state $\\{q3\\}$ with the alphabet b?",
+        "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to",
+        "answer": "q5, q1",
+        "choices": ["q6","q5, q1", "q1, q5, q6","No transition"]
+    },
+    "q6": {
+        "type": "multiple",
+        "question":"What is the transition from state $\\{q4\\}$ with the alphabet a?",
+        "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to",
+        "answer": "q6",
+        "choices": ["q6", "q1, q2, q3","q5, q1" ,"No Transition"]
+    },
+    "q7": {
+        "type": "multiple",
+        "question":"What is the trnsition from state $\\{q4\\}$ with the alphabet b?",
+        "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to to",
+        "answer": "No transition",
+        "choices": ["q6","q5, q1", "q1, q5, q6","No transition"]
+    },
+    "q8": {
+        "type": "multiple",
+        "question":"What is the transition from state $\\{q5, q1\\}$ with the alphabet a?",
+        "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to to to",
+        "answer": "q3",
+        "choices": ["q3", "q1, q2, q3","q5, q1" ,"No transition"]
+    },
+    "q9": {
+        "type": "multiple",
+        "question":"What is the trnsition from state $\\{q5, q1\\}$ with the alphabet b?",
+        "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to to to",
+        "answer": "No transition",
+        "choices": ["q3","q5, q1", "q1, q5, q6","No transition"]
+    },
+    "q10": {
+        "type": "multiple",
+        "question":"What is the transition from state $\\{q6\\}$ with the alphabet a?",
+        "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to to to",
+        "answer": "No transition",
+        "choices": ["q6", "q1, q2, q3","q5, q1" ,"No transition"]
+    },
+    "q11": {
+        "type": "multiple",
+        "question":"What is the transition from state $\\{q6\\}$ with the alphabet b?",
+        "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to to to",
+        "answer": "No transition",
+        "choices": ["q3","q5, q1", "q1, q5, q6","No transition"]
+    },
+    "q12notUSed": {
+        "type": "multiple",
+        "src": "../../../AV/FLA/billyu/ui/FAFixer.html",
+        "question":"What is the final state?",
+        "answer": "q1, q2, q3",
+        "choices": ["q0, q1, q2", "q1, q5, q6","q4" ]
+    },
+    "q13": {
+        "type": "select",
+        "question":"What are the final state? Note that, any state that include states $q5$ or $q6$ should be a final state",
+        "answer": ["q5, q1", "q1, q5, q6", "q6"],
+        "choices": ["q0, q1, q2", "q3, q4","q4", "q1, q5, q6", "q3", "q6", "q5, q1"]
+    }
+    }
+}
+}
+  

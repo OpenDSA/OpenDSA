@@ -7,37 +7,41 @@ class ActiveEquation{
         this.jsavequation = null;
         this.variables = {};
         this.globalPointerReference = globalPointerReference;
+
+        this.visualComponents = {};
         this.createVisualEquation(position_obj, jsavObject);
     }
     createVisualEquation(position_obj, jsavObject){
         // Adding a tickmark object that indicates which equation is selected
-        var tickmark = jsavObject.label(
+        this.visualComponents["tickmark"] = jsavObject.label(
             "OK",
             {
                 left: position_obj["POSITION_X"],
                 top: position_obj["POSITION_Y"]
             }
         ).addClass("tickunselected");
-        tickmark.element[0].addEventListener("click", e => {
+        this.visualComponents["tickmark"].element[0].addEventListener("click", e => {
             e.stopPropagation();
             if(this.selected==true){
                 this.selected = false;
-                tickmark.addClass("tickunselected");
-                tickmark.removeClass("tickselected");
+                this.visualComponents["tickmark"].addClass("tickunselected");
+                this.visualComponents["tickmark"].removeClass("tickselected");
+                jsavObject.logEvent({type: "tick unselected", id: this.name});
             }
             else{
                 this.selected = true;
-                tickmark.addClass("tickselected");
-                tickmark.removeClass("tickunselected");
+                this.visualComponents["tickmark"].addClass("tickselected");
+                this.visualComponents["tickmark"].removeClass("tickunselected");
+                jsavObject.logEvent({type: "tick selected", id: this.name});
             }
         });
 
         // Creating the visual elements.
-        var text = jsavObject.label(
+        this.visualComponents["text"] = jsavObject.label(
             katex.renderToString(this.equationObjectReference["latex"]),
             {
                 left: position_obj["POSITION_X"]+
-                tickmark.element[0].offsetWidth+15,
+                this.visualComponents["tickmark"].element[0].offsetWidth+15,
                 top: position_obj["POSITION_Y"]+3
             }
         ).addClass("selectableEquation");
@@ -52,8 +56,8 @@ class ActiveEquation{
             katex.renderToString(this.equationObjectReference["latex_boxes"]),
             {
                 left: position_obj["POSITION_X"]+
-                tickmark.element[0].offsetWidth+15+
-                text.element[0].offsetWidth+15,
+                this.visualComponents["tickmark"].element[0].offsetWidth+15+
+                this.visualComponents["text"].element[0].offsetWidth+15,
                 top: position_obj["POSITION_Y"]
             }
         ).addClass("boxedEquation");
@@ -90,12 +94,13 @@ class ActiveEquation{
         //console.log(boxList);
         for(var boxIndex=0; boxIndex<boxList.length; boxIndex++)
         {
+            var name = Window.getVarName();
             var currentBox = boxList[boxIndex];
             this.variables[this.equationObjectReference.params[boxIndex]] = new Variable(
-                "1", 
+                name, // "1", Update this to a unique variable name chosen from 26x26 choices.
                 this.equationObjectReference.params[boxIndex],
-                //this.equationObjectReference.variables[this.equationObjectReference.params[boxIndex]],
-                "x",
+                this.equationObjectReference.variables[this.equationObjectReference.params[boxIndex]],
+                this.equationObjectReference.domains[this.equationObjectReference.params[boxIndex]],
                 currentBox,
                 this.globalPointerReference,
             )
@@ -111,7 +116,23 @@ class ActiveEquation{
                 if(this.variables[splitString[x]].value!=null)
                     splitString[x] = this.variables[splitString[x]].value;
                 else
-                    splitString[x] = this.variables[splitString[x]].symbol;
+                {
+                    // If this is called, there will be more than one unknown in the system.
+                    // So, we need the current symbol, which would in turn be assigned by the
+                    // corresponding Association object.
+                    //splitString[x] = this.variables[splitString[x]].currentSymbol;
+                    if(this.variables[splitString[x]].value == null){
+                        // Then this is probably a single equation solving scenario, use id.
+                        splitString[x] = this.variables[splitString[x]].id;
+                    }
+                    else if(this.variables[splitString[x]].valueType == "number"){
+                        splitString[x] = this.variables[splitString[x]].value;
+                    }
+                    else {
+                        // it's an association, look up appropriate field.
+                        //splitString[x] = this.variables[splitString[x]].value.varID;
+                    }
+                }
             }
         }
         return splitString.join(" ");
@@ -119,10 +140,11 @@ class ActiveEquation{
     solve()
     {
         // Insert checking mechanism first, this is a complete functionality.
-
+        
         //Then, solve it.
         var splitString = this.equationObjectReference.template.split(" ");
         var subject = null;
+        var subjectID = null;
 
         for(var x=0; x<splitString.length; x++)
         {
@@ -132,20 +154,23 @@ class ActiveEquation{
                     splitString[x] = this.variables[splitString[x]].value;
                 else
                 {
-                    subject = this.variables[splitString[x]].symbol;
-                    splitString[x] = this.variables[splitString[x]].symbol;
+                    subject = this.variables[splitString[x]].parentSymbol;
+                    subjectID = this.variables[splitString[x]].id;
+                    splitString[x] = this.variables[splitString[x]].id;
                 }
             }
         }
         var solutions = nerdamer.solveEquations(
             [splitString.join(" "),
-            subject+" = r_n + 1"]
+            subjectID+" = r_n + 1"]
             );
         
         for(var i in solutions)
         {
-            if(solutions[i][0] == subject)
-                return solutions[i];
+            if(solutions[i][0] == subjectID)
+            {
+                return [solutions[i]];
+            }
         }
         //Substitute the random symbol name with the proper qualified variable name
 

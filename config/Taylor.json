@@ -65,7 +65,8 @@
   },
   "chapters": {
     "Stuff": {
-      "PIExample/Echo_frame1": {}
+      "PIExample/Echo_frame1": {}, 
+      "PIExample/Echo_frame2": {}
     },
     "Appendix": {
       "Glossary": {},

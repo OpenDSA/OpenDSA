@@ -17,21 +17,31 @@
         //var solutions = eq.solveFor('x').toString();
         //console.log(solutions);
 
+        // var soln = nerdamer.solveEquations(
+        //             [
+        //                 "alpha_s=0.5",
+        //                 "alpha_a=0.3",
+        //                 "T_0=25",
+        //                 "T=29",
+        //                 "L_s=8",
+        //                 "L_a=5",
+        //                 "delta_s=(-T_0+T)*L_s*alpha_s",
+        //                 "delta_a=(-T_0+T)*L_a*alpha_a",
+        //                 "delta=delta_a+delta_s"
+        //             ]
+        //         )
         var soln = nerdamer.solveEquations(
                     [
-                        "alpha_s=0.5",
-                        "alpha_a=0.3",
-                        "T_0=25",
-                        "T=29",
-                        "L_s=8",
-                        "L_a=5",
-                        "delta_s=(-T_0+T)*L_s*alpha_s",
-                        "delta_a=(-T_0+T)*L_a*alpha_a",
-                        "delta=delta_a+delta_s"
+                        "a_x=0.5",
+                        "a_y=0.3",
+                        "l_s=8",
+                        "l_a=5",
+                        "d_s=(-25+29)*l_s*a_x",
+                        "d_a=(-25+29)*l_a*a_y",
+                        "d=d_a+d_s"
                     ]
                 )
-        //document.write(soln.toString())
-
+        
         //Unknowns: \delta, \sigma, \delta_T
         //NOTE: All the constants have been substituted. Please follow patterns accordingly later on.
         /*var soln = nerdamer.solveEquations(
@@ -48,7 +58,15 @@
                     ]
         ) */
         
-        var soln = nerdamer.solveEquations(["0.001 = 0.000023 * x * 0.8","x = y + 0"]);
+        var soln = nerdamer.solveEquations(
+                [
+                    "a_a=0.001",
+                    "a_b=0.000023",
+                    "a_d=0.8",
+                    "a_a = a_b * a_c * a_d",
+                ]
+            );
+        
         /*
         var subs = [
              nerdamer("d_T=a*(T-T_0)*L"),

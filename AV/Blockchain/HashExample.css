@@ -30,8 +30,9 @@
 .output {
     position: absolute;
     top: 130px;
-    text-align: center;
+    text-align: left;
     width: 520px;
     margin: auto 0;
     display: block;
+    font-size: 11pt;
 }

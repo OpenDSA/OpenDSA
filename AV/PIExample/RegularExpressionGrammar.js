@@ -52,7 +52,7 @@ $(document).ready(function() {
     av.step();
 
     //frame 7
-    av.umsg("let's convert an NFA with multiple final states to one with a single final state");
+    av.umsg("Let's convert an NFA with multiple final states to one with a single final state");
     av.step();
 
     //frame 8
