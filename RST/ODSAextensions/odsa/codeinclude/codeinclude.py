@@ -224,7 +224,7 @@ class codeinclude(Directive):
     if linespec is not None:
       try:
         linelist = parselinenos(linespec, len(lines))
-      except ValueError, err:
+      except ValueError as err:
         return [document.reporter.warning(str(err), line=self.lineno)]
 
       # just ignore nonexisting lines
@@ -240,7 +240,7 @@ class codeinclude(Directive):
     if linespec:
       try:
         hl_lines = [x+1 for x in parselinenos(linespec, len(lines))]
-      except ValueError, err:
+      except ValueError as err:
         return [document.reporter.warning(str(err), line=self.lineno)]
     else:
       hl_lines = None
@@ -344,4 +344,4 @@ if __name__ == '__main__':
       'initial_header_level': 2},
       writer_name="html")
 
-  print doc_parts['html_body']
+  print(doc_parts['html_body'])

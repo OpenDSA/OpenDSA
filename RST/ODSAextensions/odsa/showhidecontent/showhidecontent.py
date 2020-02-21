@@ -12,11 +12,11 @@ def loadTable():
       data = json.load(table)
       table.close()
       if conf.language in data:
-         return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
+         return dict(list(data[conf.language]['jinja'].items()) + list(data[conf.language]['js'].items()))
       else:
-         return dict(data['en']['jinja'].items() + data['en']['js'].items())
+         return dict(list(data['en']['jinja'].items()) + list(data['en']['js'].items()))
    except IOError:
-      print 'ERROR: No table.json file.'
+      print('ERROR: No table.json file.')
 
 def setup(app):
   app.add_directive('showhidecontent', showhidecontent)

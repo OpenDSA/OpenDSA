@@ -22,7 +22,7 @@ def loadTable():
       table.close()
       return data
    except IOError:
-      print 'ERROR: No table.json file.'
+      print('ERROR: No table.json file.')
 
 
 # Visit/depart functions
@@ -57,7 +57,7 @@ def html_visit_num_ref(self, node):
         chapter = ''
         if target in json_data:
             chapter = json_data[target].rsplit('.',1)[0]  
-            for name_l, idx in json_data.iteritems():
+            for name_l, idx in json_data.items():
                 if idx == chapter:    
                     target_file = name_l   
             if node['refdoc']==target_file:   #target file and curent file are the same  
@@ -67,7 +67,7 @@ def html_visit_num_ref(self, node):
             html = '<a href="%s">%s</a>' %(link,  json_data[target][:-1])  
             self.body.append(html)
         else:
-            print 'WARNING: Missing object reference %s' %target
+            print('WARNING: Missing object reference %s' %target)
     else:
         self.body.append('<a href="%s.html">%s</a>' % (node['refdoc'], fields[0]))
 

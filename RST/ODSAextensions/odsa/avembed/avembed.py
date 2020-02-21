@@ -24,7 +24,7 @@ sys.path.append(os.path.abspath('./source'))
 import conf
 import xml.etree.ElementTree as ET
 from xml.dom.minidom import parse, parseString # Can be removed when embedlocal is gone
-import urllib, urlparse
+import urllib.request, urllib.parse, urllib.error, urllib.parse
 import json
 
 def setup(app):
@@ -94,7 +94,7 @@ def getDimensions(exer_path):
       try:
         body = ET.fromstring(line + '</body>')
         attribs = body.attrib
-      except Exception, err:
+      except Exception as err:
         return {'err': err}
 
       if 'data-height' not in attribs or 'data-width' not in attribs:
@@ -115,11 +115,11 @@ def loadTable():
     data = json.load(table)
     table.close()
     if conf.language in data:
-      return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
+      return dict(list(data[conf.language]['jinja'].items()) + list(data[conf.language]['js'].items()))
     else:
-      return dict(data['en']['jinja'].items() + data['en']['js'].items())
+      return dict(list(data['en']['jinja'].items()) + list(data['en']['js'].items()))
   except IOError:
-    print 'ERROR: No table.json file.'
+    print('ERROR: No table.json file.')
 
 
 def embedlocal(av_path):
@@ -154,7 +154,7 @@ def embedlocal(av_path):
     return embed
 
   except IOError:
-    print 'ERROR: No description file when embedding: ' + xmlfile
+    print('ERROR: No description file when embedding: ' + xmlfile)
     sys.exit()
 
 
@@ -192,7 +192,7 @@ class avembed(Directive):
     url_params['selfLoggingEnabled'] = 'false'
 
     if 'url_params' in self.options:
-      url_params.update(urlparse.parse_qs(self.options['url_params']))
+      url_params.update(urllib.parse.parse_qs(self.options['url_params']))
 
     self.options['content'] = ''
     self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
@@ -232,7 +232,7 @@ class avembed(Directive):
     else:
       self.options['av_address'] += '?'
 
-    self.options['av_address'] += urllib.urlencode(url_params, True).replace('&', '&amp;')
+    self.options['av_address'] += urllib.parse.urlencode(url_params, True).replace('&', '&amp;')
 
     # Load translation
     langDict = loadTable()
@@ -298,4 +298,4 @@ if __name__ == '__main__':
           'initial_header_level': 2},
           writer_name="html")
 
-  print doc_parts['html_body']
+  print(doc_parts['html_body'])

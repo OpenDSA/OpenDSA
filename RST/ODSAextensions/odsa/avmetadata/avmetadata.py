@@ -85,7 +85,7 @@ if __name__ == '__main__':
             'initial_header_level': 2},
             writer_name="html")
 
-    print doc_parts['html_body']
+    print(doc_parts['html_body'])
 
 
 

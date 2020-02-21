@@ -19,7 +19,7 @@ from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
 import random
 import os, sys
-import urllib
+import urllib.request, urllib.parse, urllib.error
 
 # dictionary of all available external learning tools
 
@@ -97,11 +97,11 @@ class extrtoolembed(Directive):
   def run(self):
     """ Restructured text extension for inserting embedded external learning tools """
     if 'long_name' not in self.options or self.options['long_name'] == '' :
-        print 'ERROR: External learning tool is not properly configured -- missing long_name option'
+        print('ERROR: External learning tool is not properly configured -- missing long_name option')
         sys.exit()
 
     if 'learning_tool' not in self.options or self.options['learning_tool'] =='' :
-        print 'ERROR: External learning tool is not properly configured missing learning_tool option'
+        print('ERROR: External learning tool is not properly configured missing learning_tool option')
         sys.exit()
 
     self.options['type'] = 'external_tool'
@@ -120,7 +120,7 @@ class extrtoolembed(Directive):
       url_params['resource_name'] = self.options['long_name']
       self.options['tool_address'] = external_tool['url']
       self.options['tool_address'] += '?'
-      self.options['tool_address'] += urllib.urlencode(url_params).replace('&', '&amp;')
+      self.options['tool_address'] += urllib.parse.urlencode(url_params).replace('&', '&amp;')
 
     if 'id' not in self.options:
       self.options['id'] = ''
@@ -149,4 +149,4 @@ if __name__ == '__main__':
           'initial_header_level': 2},
           writer_name="html")
 
-  print doc_parts['html_body']
+  print(doc_parts['html_body'])

@@ -42,7 +42,7 @@ def loadTable():
       table.close()
       return data
    except IOError:
-      print 'ERROR: No table.json file.'
+      print('ERROR: No table.json file.')
 
 
 def numref_role(typ, rawtext, etext, lineno, inliner,
@@ -88,7 +88,7 @@ def numref_role(typ, rawtext, etext, lineno, inliner,
                    v = xrefs.split('.')
                    if len(v) > 2:
                       pr = '%s.%s' %(v[0],v[1])
-                      for obj, val in json_data.items():
+                      for obj, val in list(json_data.items()):
                          if val == pr:
                             parent = obj
 

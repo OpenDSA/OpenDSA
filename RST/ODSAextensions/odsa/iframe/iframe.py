@@ -3,7 +3,7 @@ from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
 import random
 import os, sys
-import urllib
+import urllib.request, urllib.parse, urllib.error
 sys.path.append(os.path.abspath('./source'))
 import conf
 
@@ -65,4 +65,4 @@ if __name__ == '__main__':
           'initial_header_level': 2},
           writer_name="html")
 
-  print doc_parts['html_body']
+  print(doc_parts['html_body'])

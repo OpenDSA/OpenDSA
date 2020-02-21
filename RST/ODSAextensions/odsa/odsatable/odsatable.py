@@ -15,7 +15,7 @@ def loadTable():
       table.close()
       return data
    except IOError:
-      print 'ERROR: No table.json file.'
+      print('ERROR: No table.json file.')
 
 def setup(app):
     app.connect('doctree-read', doctree_read)

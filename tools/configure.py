@@ -526,11 +526,13 @@ def configure(config_file_path, options):
     if slides:
         proc = subprocess.Popen(
             ['make', '-C', config.book_dir, 'slides'], stdout=subprocess.PIPE)
+        print("HERE?-----------------------------------------------------------------\n")
     else:
         proc = subprocess.Popen(
             ['make', '-C', config.book_dir], stdout=subprocess.PIPE)
+        print("THERE-----------------------------------------------------------------\n")
     for line in iter(proc.stdout.readline, ''):
-        print((line.rstrip()))
+        print(line.rstrip())
 
     # Calls the postprocessor to update chapter, section, and module numbers,
     # and glossary terms definition

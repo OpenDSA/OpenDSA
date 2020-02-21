@@ -113,7 +113,7 @@ def loadTable():
     table.close()
     return data
   except IOError:
-    print 'ERROR: No table.json file.'
+    print('ERROR: No table.json file.')
 
 # div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
 SLIDESHOW = '''\
@@ -261,4 +261,4 @@ if __name__ == '__main__':
           'initial_header_level': 2},
           writer_name="html")
 
-  print doc_parts['html_body']
+  print(doc_parts['html_body'])

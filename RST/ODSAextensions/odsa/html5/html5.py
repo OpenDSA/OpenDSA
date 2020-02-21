@@ -22,7 +22,7 @@ def loadTable():
       table.close()
       return data
    except IOError:
-      print 'ERROR: No table.json file.'
+      print('ERROR: No table.json file.')
 
 
 class HTMLTranslator(SphinxHTMLTranslator):
@@ -41,7 +41,7 @@ class HTMLTranslator(SphinxHTMLTranslator):
         self.body.append('</code>')
 
     def visit_emphasis(self, node):
-        if u'std-term' in node['classes']:
+        if 'std-term' in node['classes']:
           node['classes'].append('ODSAterm')
         self.body.append(self.starttag(node, 'em', '', CLASS=' '.join(node['classes'])))
 
