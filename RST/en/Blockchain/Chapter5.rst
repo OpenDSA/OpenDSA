@@ -16,3 +16,6 @@ b) How this relates to mining
 
 .. avembed:: AV/Blockchain/TextFieldHashingGame.html ss
    :long_name: Text-Field Hashing Game
+
+.. avembed:: AV/Blockchain/NonceHashingGame.html ss
+   :long_name: Nonce Hashing Game
