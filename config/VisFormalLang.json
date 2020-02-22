@@ -213,6 +213,40 @@
         }
       }
     },
+    "Practice":{
+      "VisFormalLang/Sheet5Practice":{
+        "sheet5Practice1":{
+          "points": 0.0
+        },
+        "sheet5Practice2":{
+          "points": 0.0
+        }
+      },
+      "VisFormalLang/Sheet1Practice":{
+        "sheet1exercise1":{
+          "points": 5.0
+        },
+        "sheet1exercise2":{
+          "points": 5.0
+        },
+        "sheet1exercise3":{
+          "points": 5.0
+        },
+        "sheet1exercise4":{
+          "points": 5.0
+        },
+        "sheet1exercise5":{
+          "points": 2.0
+        },
+        "sheet1exercise6":{
+          "points": 2.0
+        },
+        "sheet1exercise7":{
+          "points": 2.0
+        }
+
+      }
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}
