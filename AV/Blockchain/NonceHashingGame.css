@@ -1,0 +1,31 @@
+#container {
+    width: 525px;
+    height: 200px !important;
+    align-content: center !important;
+    justify-content: center !important;
+    
+  }
+  
+  .instructions {
+    text-align: center;
+    border: 0;
+  }
+  
+  #inputArea {
+    width: 90%;
+  }
+  
+  .check {
+    display: block;
+  }
+  
+  .label {
+    margin: auto;
+  }
+  
+  .output {
+    text-align: left;
+    width: 90%;
+    font-size: 11pt;
+  }
+  
