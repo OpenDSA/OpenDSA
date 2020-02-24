@@ -51,7 +51,7 @@ static void ineff_BTinc(BinNode root) {
 static int bad_count(BinNode root) {
   if (root == null) return 0;  // Nothing to count
   bad_count(root.left());
-  return 1 + bad_count(root.left()) + bad_count(root.right());
+  1 + bad_count(root.left()) + bad_count(root.right());
 }
 /* *** ODSAendTag: bad_count *** */
 
