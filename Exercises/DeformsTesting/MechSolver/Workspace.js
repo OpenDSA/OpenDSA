@@ -285,11 +285,7 @@ class Workspace
         }
         //console.log(this.equationHashMap);
     }
-    addAssociations()
-    {
-
-    }
-    solveEquations()
+    OldSolveEquations()
     {
         // Step 1: See which equations are selected
         var equationSet = [];
@@ -343,6 +339,72 @@ class Workspace
                         "valueDisplay": String(Number(Math.round(soln[i][1]+'e3')+'e-3')),
                         "unitDisplay": "",
                         "variableDisplay": variableSet[soln[i][0]],
+                        "domain": ""
+                    }
+                },
+                this.globalSectionObj,
+                this.globalPointerReference
+            )
+
+            this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
+            this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+        }
+
+        // De-select selected equations, the list of selections will get cleared anyway.
+        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        {
+            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+            if(currentEqn.selected == true)
+            {
+                currentEqn.visualComponents.tickmark.addClass("tickunselected");
+                currentEqn.visualComponents.tickmark.removeClass("tickselected");
+                currentEqn.selected = false;
+            }
+        }
+    }
+    solveEquations()
+    {
+        // Step 1: See which equations are selected
+        var equationSet = [];
+        var equationObjectSet = [];
+        var variableSet = {}
+        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        {
+            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+            if(currentEqn.selected == true)
+            {
+                equationObjectSet.push(currentEqn);
+                var solvableRepr = currentEqn.createSolvableRepresentation();
+                // Add the equation representations
+                for(var x=0; x<solvableRepr["equations"].length; x++)
+                    equationSet.push(solvableRepr["equations"][x]);
+                // Find out the unknown varDisplay-varName mapping pairs
+                for(var vname in solvableRepr["unknowns"])
+                    variableSet[vname] = solvableRepr["unknowns"][vname];
+            }
+        }
+        console.log(variableSet);
+        console.log(equationSet);
+        
+        var soln = {};
+        var listOfSolutions = nerdamer.solveEquations(equationSet);
+        for(var i=0; i<listOfSolutions.length; i++)
+            soln[listOfSolutions[i][0]] = listOfSolutions[i][1];
+        console.log(soln);
+        
+        for(var unknownName in variableSet)
+        {
+            new ValueBox(
+                false,
+                {
+                    "visuals": this.DIMENSIONS.ELEMENTS,
+                    "dataset": {
+                        "value": soln[unknownName],
+                        "unit": "",
+                        "variable": unknownName,
+                        "valueDisplay": String(Number(Math.round(soln[unknownName]+'e3')+'e-3')),
+                        "unitDisplay": "",
+                        "variableDisplay": variableSet[unknownName],
                         "domain": ""
                     }
                 },

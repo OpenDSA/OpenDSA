@@ -65,6 +65,7 @@
         
         checkAnswer: function()
         {
+            var feedBackText = "";
             var equationDetails = {};
             for (var wk in wkspacelist.workspace_list)
             {
@@ -89,9 +90,11 @@
 
             for(var solnIndex=0; solnIndex<Object.keys(solution).length; solnIndex++)
             {
+                feedBackText += "<h3>Question "+(solnIndex+1)+"</h3>";
                 var solnResults = { decision:true, description:{} };
             
                 // 1. Check if all the equations are present
+                feedBackText += "<h4>Equations:</h4> <ul>";
                 solnResults.description.allEqn = true;
                 for(var e in solution[solnIndex].equations)
                 {
@@ -99,11 +102,15 @@
                     {
                         solnResults.description.allEqn = false;
                         solnResults.decision = false;
-                        console.log(solution[solnIndex].equations[e]+" is a required equation that was not used.")
+                        //console.log(solution[solnIndex].equations[e]+" is a required equation that was not used.")
+                        feedBackText += "<li>"+solution[solnIndex].equations[e]+" is a required equation that was not used.</li>";
                     }
                 }
+                feedBackText += "</ul>";
+                feedBackText += solnResults.decision? "<h4>All equations were chosen</h4>":"";
 
                 // 2. Check if all the variables are assigned properly with values
+                feedBackText += "<h4>Variable assignments:</h4> <ul>";
                 var varList = Object.keys(solution[solnIndex].variables);
                 solnResults.description.allVars = true;
                 for(var e in equationDetails)
@@ -114,28 +121,37 @@
                         {
                             varList.splice(varList.indexOf(v), 1);
                             if(solution[solnIndex].variables[v] == equationDetails[e][v])
-                                console.log(v+" value matches");
+                            {
+                                //console.log(v+" value matches");
+                                feedBackText += "<li>"+v+" value matches.</li>";
+                            }
                             else
                             {
-                                console.log(v+" value does not match");
+                                //console.log(v+" value does not match");
+                                feedBackText += "<li>"+v+" value does not match.</li>";
                                 solnResults.description.allVars = false;
                             }
                        }
                     }
                 }
+                feedBackText += "</ul>";
                 if(varList.length==0)
                 {
-                    console.log("All variables were correctly assigned.");
+                    //console.log("All variables were correctly assigned.");
+                    feedBackText += "<h4>All variables were correctly assigned.</h4>";
                 }
                 else
                 {
-                    console.log("Not all variables were correctly assigned; the following were not used",varList);
+                    //console.log("Not all variables were correctly assigned; the following were not used",varList);
+                    feedBackText += "<h4>Not all variables were correctly assigned; the following were not used: "+varList+"</h4>";
                 }
 
                 // 3. Check if the answer is correct
                 solnResults.decision = (solution[solnIndex].solution == globalSolutionBoxes[solnIndex]["solution"]);
-                console.log(solnResults.decision? "Final answer is correct": "Final answer is incorrect");
-                truthResults.push[solnResults];
+                //console.log(solnResults.decision? "Final answer is correct": "Final answer is incorrect");
+                console.log(solnResults);
+                feedBackText += solnResults.decision? "<h2>Final answer is correct</h2>": "<h2>Final answer is incorrect</h2>";
+                truthResults.push(solnResults);
             }
 
             // TODO: Weird exception error; not sure how.
@@ -143,10 +159,18 @@
             truthResults.push({decision:true, description:{}});
             
             var dec = true;
+            console.log(truthResults);
             for(var i=0; i<truthResults.length; i++)
             {
                 dec = dec && truthResults[i].decision;
             }
+            console.log(dec);
+
+            JSAV.utils.dialog(
+                feedBackText,
+                {closeText: "OK"}
+            )
+
             return dec;
         }
     };
@@ -160,6 +184,7 @@
         // av = new JSAV("DeformsProblemPRO", { logEvent: function(eventData) {
         //     console.log(eventData);
         // }});
+        Window.jsavObject = av;
         eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
             eqbank, globalPointerReference)
