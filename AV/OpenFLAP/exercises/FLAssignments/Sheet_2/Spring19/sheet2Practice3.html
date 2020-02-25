@@ -4,7 +4,7 @@
   <head>
     <title>FA Tester</title>
     <script>
-      getExerciseLocation = function(){ return "./sheet1exercise4.json"};
+      getExerciseLocation = function(){ return "./sheet2exercise3.json"};
     </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,61 +66,6 @@
             <button id="redoButton" class="icon_btn"><i class="fa fa-undo fa-rotate-180 fa-flip-horizontal"></i></button>
           </div>
         </div>
-        <div style="float: left;">
-          <table class="headerTable" style="font-size: 12px; border-style: hidden;">
-            <tr>
-              <td style="display: -webkit-box;border:  hidden;margin-top: 5px;">
-                <div class="dropdown" style="height: 20px !important;">
-                  <button type="button" data-toggle="dropdown">File
-                    <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#" class="functionality" id="saveButton">Save Machine</a></li>
-                    <li><a href="#" class="functionality" id="savePDF">Save as Jpeg</a></li>
-                    <li><a href="#" id="new">
-                        <label id="getFileLabel" for="loadFile" style="display: inline-block;height: 50%; width: 100%">Load File</label>
-                        <input type="file" id="loadFile" style=" display: none;" /></a></li>
-                  </ul>
-
-                </div>
-                <button class="functionality" id="begin">Input</button>
-
-                <div class="dropdown" style="height: 20px !important;">
-                  <button type="button" data-toggle="dropdown">Test
-                    <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#" class="functionality" id="ndButton">Highlight Nondeterminism</a></li>
-                    <li><a href="#" class="functionality" id="lambdaButton">Highlight &lambda;-Transitions</a></li>
-                  </ul>
-
-                </div>
-                <div class="dropdown" style="height: 20px !important;">
-                  <button type="button" data-toggle="dropdown">View
-                    <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#" class="functionality" id="layoutButton">Layout</a></li>
-                  </ul>
-
-                </div>
-                <div class="dropdown" style="height: 20px !important; width: 73px;">
-                  <button type="button" data-toggle="dropdown">Convert<span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-
-                    <li><a href="#" class="functionality" id="toDFAButton">Convert to DFA</a></li>
-                    
-                    <li><a href="#" class="functionality" id="minimizeButton">Minimize DFA</a></li>
-                    
-                    <li><a href="#" class="functionality" id="toGrammarButton" title="convert to Right Linear Grammar">Convert to RLG</a></li>
-                    
-                    <li><a href="#" class="functionality" id="toREButton" title="convert to Regular Expression">Convert To RE</a></li>
-                    
-                  </ul>
-                  
-                </div> 
-                <button class="createExercise" id="finish">Finish</button>
-              </td>
-            </tr>
-          </table>
-      </div>
         <p class="jsavscore"></p>
         <p class="jsavoutput jsavline"></p>
       </div>
