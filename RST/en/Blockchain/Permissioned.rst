@@ -35,13 +35,14 @@ Hyperledger Design Philosophy
 
 The design philosophy of all hyperledger frameworks is characterized by modularity, interoperability, 
 high security, being cryptocurrency-agnostic, and accessible through APIs.
-Modularity allows developers to use the combination of different modular components to best 
-satisfy unique problem requirements. Interoperability refers to the end-goal of sharing data 
-between networks to facilitate communication and promote use. High security is necessary to establish 
-trust between business and client. Hyperledger is cryptocurrency-agnostic because 
-Hyperledger exists to create blockchain software for enterprises, not to administer any cryptocurrency. 
-However,  the design philosophy includes the capability to create a token used to manage digital objects.
-APIs ease communication between networks as well as simplify access to distributed ledgers.
+
+* Modularity allows developers to use the combination of different modular components to best satisfy unique problem requirements. 
+
+* Interoperability refers to the end-goal of sharing data between networks to facilitate communication and promote use. 
+
+* High security is necessary to establish trust between business and client. 
+
+* Hyperledger is cryptocurrency-agnostic because Hyperledger exists to create blockchain software for enterprises, not to administer any cryptocurrency. However,  the design philosophy includes the capability to create a token used to manage digital objects. APIs ease communication between networks as well as simplify access to distributed ledgers.
 
 The Importance of Hyperledger
 -----------------------------
