@@ -12,16 +12,21 @@
 Permissioned Consensus Algorithms
 ===================================
 
-Permissioned blockchains provide an additional level of security over typical blockchain systems like Bitcoin, as they require an access control layer.These blockchains are favored by individuals who require security, identity, and role definition within the blockchain.
-This is different than unpermissioned blockchains where any user has the ability to access the blockchain and affect the blockchain. Consensus algorithms prevent malicious actions from taking hold and promote its growth with things such as stake.
-Hyperledger, a permissioned blockchain design, focuses on permissioned blockchains because internal business use would find access restriction favorable in sharing sensitive data.
+Permissioned blockchains provide an additional level of security over typical blockchain systems like Bitcoin, 
+as they require an access control layer. These blockchains are favored by individuals who require security, identity, 
+and role definition within the blockchain. This is different than unpermissioned blockchains where any user has the ability to access the blockchain 
+and affect the blockchain. 
+Consensus algorithms prevent malicious actions from taking hold and promote its growth 
+with things such as stake.
+Hyperledger, a permissioned blockchain design, focuses on permissioned blockchains because internal business use 
+would find access restriction favorable in sharing sensitive data.
 
 What is Hyperledger?
 --------------------
 
 Hyperledger is a permissioned blockchain development hub. 
 The project is an umbrella project of open source blockchains founded in December 2015 by The Linux Foundation.
-The goal is to promote global colloboration and cross-industry blockchain technologies. 
+The goal is to promote global collaboration and cross-industry blockchain technologies. 
 Think of it as an operating system for marketplaces, data-sharing networks, micro-currencies, and decentralized digital communities.  
 It has the potential to vastly reduce the cost and complexity of getting things done in the real world.
 
@@ -36,7 +41,7 @@ between networks to facilitate communication and promote use. High security is n
 trust between business and client. Hyperledger is cryptocurrency-agnostic because 
 Hyperledger exists to create blockchain software for enterprises, not to administer any cryptocurrency. 
 However,  the design philosophy includes the capability to create a token used to manage digital objects.
-Adding to interoperability, APIs ease communication between networks as well as simplify access to distributed ledgers.
+APIs ease communication between networks as well as simplify access to distributed ledgers.
 
 The Importance of Hyperledger
 -----------------------------
