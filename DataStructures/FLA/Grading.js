@@ -198,6 +198,13 @@
       msg += "\n" + this.jsav._translate("fixedSteps") + " " + grade.fix;
     }
     window.alert(msg);
+
+    //grading with PIFrames
+    if(window.parent.obj != undefined && (grade.correct / grade.total) == 1)
+    {
+      window.parent.obj.enableForwardButton();
+    }
+    
   };
 
   exerproto.modelanswer = function(returnToStep) {
