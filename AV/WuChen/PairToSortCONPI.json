@@ -35,6 +35,20 @@
         "question":"Is it true that SORTING is the only way to solve PAIRING?",
         "answer": "No",
         "choices": ["Yes", "No"]
+      },
+      "q4": {
+        "type": "multiple",
+        "description":"Answer the following question base on the previous slides.",
+        "question":"Base on the three-step reduction for PAIRING to SORTING, What is the next step for the graph on the left",
+        "answer": "apply SORTING to each array",
+        "choices": ["convert an instance of PAIRING into two instances of SORTING", "apply SORTING to each array", "convert the output of SORTING to the output for PAIRING"]
+      },
+      "q5": {
+        "type": "multiple",
+        "description":"Answer the following question base on the graph.",
+        "question":"What is the 4th result of pairing",
+        "answer": "42,48",
+        "choices": ["42,48", "42,59", "48,42", "59,42"]
       }
     }
   }

@@ -65,7 +65,8 @@ av.umsg(Frames.addQuestion("q33"));
 av.step();
 
 //frame 11
-av.umsg("PARING to SORTING Demonstration");
+//graph rectangle 1
+av.umsg("Pairing of two arrays by reduction to sorting");
 input1 = new Array(23,42,17,93,88,12,57,90);
 input2 = new Array(48,59,11,89,12,91,64,34);
 var r1 = av.g.rect(15, yoffset,550,40);
@@ -76,7 +77,10 @@ iparr2 = av.ds.array(input2,  {left: 317, top: yoffset - 10});
 for(var i=0;i<input2.length;i++)
     iparr2.css(i,{"background-color":"AntiqueWhite"});
 av.label("<b>Arrays to be paired</b>",{left: 200, top: yoffset - 32});
-//retangle 2
+av.step();
+
+//frame 12
+av.umsg("The arrays are fed as input to the sorting problem directly");
 var r12 = av.g.rect(15,80 + yoffset,550,40);
 iparr1 = av.ds.array(input1,  {left: 17, top: 70+ yoffset});
 for(var i=0;i<input1.length;i++)
@@ -86,7 +90,14 @@ iparr2 = av.ds.array(input2,  {left: 317, top: 70 + yoffset});
 iparr2.css(i,{"background-color":"AntiqueWhite"});
 var l11 = av.g.line(300, yoffset + 40,300,80+ yoffset);
 av.label("<b>Transformation - Identity function Cost= O(n)</b>",{left: 310, top: 27 + yoffset});
-//sort 
+av.step();
+
+//frame13
+av.umsg(Frames.addQuestion("q4"));
+av.step();
+
+//frame 14
+av.umsg(""); //get rid the problem which is diplayed
 var l1= av.g.line(120,120 + yoffset,120,140 + yoffset);
 var l2= av.g.line(420,120 + yoffset,420,140 + yoffset);
 var r2 = av.g.rect(90,140 + yoffset,60,30);
@@ -101,28 +112,56 @@ var r4 = av.g.rect(15,190 + yoffset,550,40);
 sortarr1 = av.ds.array(sort1, {left: 17, top: 180 + yoffset});
 av.label("Sorted arrays",{left:250,top:150 + yoffset});
 sortarr2 = av.ds.array(sort2, {left: 317, top: 180 + yoffset});
+av.step()
+
+//frame 15
 //pair
 var r4 = av.g.rect(15,260 + yoffset,550,40);
 var l12 = av.g.line(300,230 + yoffset,300,260 + yoffset);
 av.label("<b>Reverse Transformation Cost= O(n)</b>",{left: 310, top: 220 + yoffset});
 oparr= av.ds.array([" "," "," "," "," "," "," "," "],  {left: 140, top: 250 + yoffset});
 av.step();
+
+//frame 16-25
 //show pair step by step
 for(var i=0;i<8;i++){
     if(i>0){
         sortarr1.unhighlight(i-1);
         sortarr2.unhighlight(i-1);
         oparr.unhighlight(i-1);
-      }
-      var str="&nbsp"+sortarr1.value(i)+","+sortarr2.value(i)+"&nbsp";
-      oparr.value(i,str);
-      sortarr1.highlight(i);
-      sortarr2.highlight(i);
-      oparr.highlight(i);
-      av.umsg("Pairing "+sortarr1.value(i)+" with "+sortarr2.value(i));
-      av.step()
+    }
+    var str="&nbsp"+sortarr1.value(i)+","+sortarr2.value(i)+"&nbsp";
+    oparr.value(i,str);
+    sortarr1.highlight(i);
+    sortarr2.highlight(i);
+    oparr.highlight(i);
+    av.umsg("Pairing "+sortarr1.value(i)+" with "+sortarr2.value(i));
+    if (i == 2){
+        //frame 18
+        av.umsg(Frames.addQuestion("q5"));
+        av.step();
+        //frame 19
+        av.umsg("");
+    }
+    av.step()
 }
-
+//frame 26
+//result
+av.umsg("The output array gives the pairing" );
+sortarr1.unhighlight(i-1);
+sortarr2.unhighlight(i-1);
+oparr.unhighlight(i-1);
+av.step();
+av.umsg("Cost of pairing = O(n) + Cost of sorting");
+var l13 = av.g.line(300,300 + yoffset,300,330 + yoffset);
+l13.show();
+var oparr2= av.ds.array([" "," "," "," "," "," "," "," "],  {left: 140, top: 315 + yoffset});
+for(var i=0;i<8;i++)
+    oparr2.value(i,oparr.value(i));
+for(var i=0;i<8;i++)
+    oparr2.css(i,{"background-color":"#CCFF99"});
+av.label("<b>Paired array</b>",{left:510,top:310 + yoffset});
+av.step();
 
 av.recorded();
 });
