@@ -1,6 +1,7 @@
 #container { 
     width: 1250px;
     height: 400px;
+    position: relative;
   }
   
   .avcontainer{
@@ -88,4 +89,8 @@ p {
 
 #arrow2 {
     display: none;
+}
+
+textarea {
+    resize: none;
 }
