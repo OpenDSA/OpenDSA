@@ -9,6 +9,7 @@ $(document).ready(function() {
         interpret = config.interpreter, // get the interpreter
         code = config.code;             // get the code object
     var FA = new av.ds.FA({width: 700, height: 300,left: 10, top:0});
+    var newFA = new av.ds.FA({width: 700, height: 300,left: 10, top:0});
     //var DFA = new av.ds.FA({width: 350, height: 300, left: 10, top:250});
     //var separator =  av.g.path(["M", 350, 0, "v", 500].join(","));
     //separator.show();
@@ -40,10 +41,10 @@ $(document).ready(function() {
 
     //frame 3
     av.umsg("testing");
-    var q4 = FA.addNode({left: 510, top: 120});
-    var q5 = FA.addNode({left: 660, top: 70});
-    toggleInitial(FA, q4);
-    toggleFinal(FA, q5);
+    var q4 = newFA.addNode({left: 510, top: 120});
+    var q5 = newFA.addNode({left: 660, top: 70});
+    toggleInitial(newFA, q4);
+    toggleFinal(newFA, q5);
 
     av.step();
 
