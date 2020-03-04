@@ -771,7 +771,14 @@ var interactableUnitTransform = function (jsav, grammar, noUnit) {
   $('.jsavcontrols').hide();
   var v = grammar.getGrammarVariables();
   //$(grammar.element).css("margin-left", "auto");
+  var OStype = window.navigator.platform.toLowerCase();
+  
   var modelDFA = jsav.ds.graph({position: "relative", layout: "layered", directed: true});    //VDG
+  if(OStype.indexOf('mac') > 0){
+    modelDFA.getSvg().canvas.style.position = "relative";
+  }
+  else
+  modelDFA.getSvg().canvas.style.position = "absolute";
   for (var i = 0; i < v.length; i++) {
     modelDFA.addNode(v[i]);
   }
@@ -1506,6 +1513,6 @@ var addProductionsToGrammar = function(lhs, rhs, grammar, compareToGrammar){
     }
     grammar.addNewProductionRule([lhs, arrow, rhs]);
     exerciseLog.numberOfSteps++;
-    this.layout();
+    //this.layout();
   }
 }
