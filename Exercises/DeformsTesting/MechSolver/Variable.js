@@ -340,7 +340,7 @@ class Variable{
                 "click", e=> {
                     e.stopPropagation();
                     console.log(x);
-                    // this.value = math.evaluate("number("+this.value+" to "+x.dataset.unit+")")
+                    this.value = math.evaluate("number("+this.value+" to "+x.dataset.unit+")")
                     // this.currentUnit = ""
                 }
             )
