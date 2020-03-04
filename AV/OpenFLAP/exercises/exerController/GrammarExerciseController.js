@@ -774,7 +774,7 @@ var interactableUnitTransform = function (jsav, grammar, noUnit) {
   var OStype = window.navigator.platform.toLowerCase();
   
   var modelDFA = jsav.ds.graph({position: "relative", layout: "layered", directed: true});    //VDG
-  if(OStype.indexOf('mac') > 0){
+  if(OStype.indexOf('mac') > -1){
     modelDFA.getSvg().canvas.style.position = "relative";
   }
   else
