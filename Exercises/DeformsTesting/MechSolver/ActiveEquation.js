@@ -14,24 +14,29 @@ class ActiveEquation{
     createVisualEquation(position_obj, jsavObject){
         // Adding a tickmark object that indicates which equation is selected
         this.visualComponents["tickmark"] = jsavObject.label(
-            "OK",
+            //"OK",
+            "&#x2610",
             {
                 left: position_obj["POSITION_X"],
                 top: position_obj["POSITION_Y"]
             }
-        ).addClass("tickunselected");
+        ).addClass("tickselected");
         this.visualComponents["tickmark"].element[0].addEventListener("click", e => {
             e.stopPropagation();
             if(this.selected==true){
                 this.selected = false;
+                this.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
                 this.visualComponents["tickmark"].addClass("tickunselected");
-                this.visualComponents["tickmark"].removeClass("tickselected");
+                // this.visualComponents["tickmark"].removeClass("tickselected");
+                ;
                 jsavObject.logEvent({type: "tick unselected", id: this.name});
             }
             else{
                 this.selected = true;
+                this.visualComponents["tickmark"].element[0].innerHTML = "&#x2611";
                 this.visualComponents["tickmark"].addClass("tickselected");
-                this.visualComponents["tickmark"].removeClass("tickunselected");
+                // this.visualComponents["tickmark"].removeClass("tickunselected");
+                ;
                 jsavObject.logEvent({type: "tick selected", id: this.name});
             }
         });

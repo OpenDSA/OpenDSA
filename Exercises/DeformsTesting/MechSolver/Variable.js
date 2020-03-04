@@ -235,27 +235,70 @@ class Variable{
          * grouped by domain
          * UNIT_DB = {};
          */
+        // Creating other units, to delegate this to a Singleton global object
+        // math.createUnit('ksi','1000 psi');
+        // math.createUnit('msi','1000 ksi');
+        // math.createUnit('mip','1000 kip');
+        // math.createUnit('lbftpers', 1/550+" hp");
+        
         var UNIT_DB = {
             'length': {
-                'm': 1,
-                'mm': 1000,
-                'cm': 100,
-                'km': 0.001,
-                'inch': 39.3701,
-                'feet': 3.280841666667,
+                //cm m mm km inch feet
+                'metre': {'unit':'m', 'unitDisp':'m'},
+                'millimetre': {'unit':'mm', 'unitDisp':'mm'},
+                'centimetre': {'unit':'cm', 'unitDisp':'cm'},
+                'kilometre': {'unit':'km', 'unitDisp':'km'},
+                'inch': {'unit':'in', 'unitDisp':'in'},
+                'feet': {'unit':'ft', 'unitDisp':'ft'},
             },
             'temperature': {
-                'C':'',
-                'F':'',
-                'K':'',
-                'R':''
+                'degree C': {'unit':'degC', 'unitDisp':'C'},
+                'degree F': {'unit':'degF', 'unitDisp':'F'},
+                'degree R': {'unit':'degR', 'unitDisp':'R'},
+                'degree K': {'unit':'K', 'unitDisp':'K'}
             },
             'temperature-1': {
-                'C-1':'',
-                'F-1':'',
-                'K-1':'',
-                'R-1':''
+                'inv degree C': {'unit':'degC^-1', 'unitDisp':'/C'},
+                'inv degree F': {'unit':'degF^-1', 'unitDisp':'/F'},
+                'inv degree R': {'unit':'degR^-1', 'unitDisp':'/R'},
+                'inv degree K': {'unit':'K^-1', 'unitDisp':'/K'}
             },
+            'pressure': {
+                // Pa, kPA, MPa, GPa, ksi, msi, psi
+                'pascal': {'unit':'Pa', 'unitDisp':'Pa'},
+                'kilopascal': {'unit':'kPa', 'unitDisp':'kPa'},
+                'megapascal': {'unit':'MPa', 'unitDisp':'MPa'},
+                'gigapascal': {'unit':'GPa', 'unitDisp':'GPa'},
+                'psi': {'unit':'psi', 'unitDisp':'psi'},
+                'ksi': {'unit':'ksi', 'unitDisp':'ksi'},
+                'msi': {'unit':'msi', 'unitDisp':'msi'}
+            },
+            'force': {
+                // kips lbs mips N kN MN 
+                'newton': {'unit':'N', 'unitDisp':'N'},
+                'kilonewton': {'unit':'kN', 'unitDisp':'kN'},
+                'meganewton': {'unit':'MN', 'unitDisp':'MN'},
+                'poundforce': {'unit': 'lbf', 'unitDisp':'lbf'},
+                'kip-force': {'unit': 'kip', 'unitDisp':'kip'},
+                'mip-force': {'unit': 'mip', 'unitDisp':'mip'},
+            },
+            'power': {
+                // W kW MW 'ft lb/s' hp
+                'watt': {'unit':'W', 'unitDisp':'W'},
+                'kilowatt': {'unit':'kW', 'unitDisp':'kW'},
+                'megawatt': {'unit':'MW', 'unitDisp':'MW'},
+                'horsepower': {'unit':'hp', 'unitDisp':'hp'},
+                'pound-foot/s': {'unit':'lbftpers', 'unitDisp':'lb ft/s'}
+            },
+            'angularvelocity': {
+                // To be added after discussion
+
+            },
+            'angles': {
+                "radian": {'unit':'rad', 'unitDisp':'radian'},
+                "degree": {'unit':'deg', 'unitDisp':'deg'},
+                "gradient": {'unit':'grad', 'unitDisp':'grad'}
+            }
         };
         
         event.stopPropagation();
@@ -267,11 +310,19 @@ class Variable{
          * to match with.
          */
         //var text = "<ul><li>Type 1</li><li>Type 2</li><li>Type 3</li></ul>";
+
+        // loading javascript files dynamically
+        // var FB_JQ = document.createElement('script');
+        // FB_JQ.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.6.0/math.js';
+        // FB_JQ.type = 'text/javascript';
+        // document.getElementsByTagName('head')[0].appendChild(FB_JQ);
+        
         var text = "<ul>";
         console.log(UNIT_DB[event.target.parentNode.parentNode.dataset.domain]);
         for(var x in UNIT_DB[event.target.parentNode.parentNode.dataset.domain])
         {
-            text+='<li data-unit="'+UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x]+'">'+x+'</li>';
+            text+='<li data-unit="'+UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x]['unit']+'">'+x+' ('+
+            UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x]['unitDisp']+')</li>';
         }
         text+="</ul>";
 
@@ -289,6 +340,8 @@ class Variable{
                 "click", e=> {
                     e.stopPropagation();
                     console.log(x);
+                    // this.value = math.evaluate("number("+this.value+" to "+x.dataset.unit+")")
+                    // this.currentUnit = ""
                 }
             )
         });

@@ -422,8 +422,9 @@ class Workspace
             var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
             if(currentEqn.selected == true)
             {
-                currentEqn.visualComponents.tickmark.addClass("tickunselected");
-                currentEqn.visualComponents.tickmark.removeClass("tickselected");
+                // currentEqn.visualComponents.tickmark.addClass("tickunselected");
+                // currentEqn.visualComponents.tickmark.removeClass("tickselected");
+                currentEqn.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
                 currentEqn.selected = false;
             }
         }
