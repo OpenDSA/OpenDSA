@@ -526,13 +526,16 @@ def configure(config_file_path, options):
     if slides:
         proc = subprocess.Popen(
             ['make', '-C', config.book_dir, 'slides'], stdout=subprocess.PIPE)
-        print("HERE?-----------------------------------------------------------------\n")
     else:
         proc = subprocess.Popen(
             ['make', '-C', config.book_dir], stdout=subprocess.PIPE)
-        print("THERE-----------------------------------------------------------------\n")
     for line in iter(proc.stdout.readline, ''):
-        print(line.rstrip())
+        print(str(line, encoding='utf-8').rstrip())
+        ''' TODO: start finding encoding errors.
+        These are because python 2.7 implicitly converted string encodings.  
+        Py3 _needs_ explicit encoding to be defined. 
+        TODO: look into the python3 -bb command option to catch some encoding errors. 
+        '''
 
     # Calls the postprocessor to update chapter, section, and module numbers,
     # and glossary terms definition

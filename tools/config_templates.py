@@ -50,7 +50,7 @@ makefile_template = '''\
 # Makefile for Sphinx documentation
 #
 # You can set these variables from the command line.
-SPHINXBUILD   = sphinx-build
+SPHINXBUILD   = python3 -msphinx
 HTMLDIR       = %(rel_book_output_path)s
 MINIMIZE      = java -jar "%(odsa_dir)stools/yuicompressor-2.4.7.jar"
 TAGS = %(tag)s

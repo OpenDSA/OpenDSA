@@ -92,220 +92,220 @@ min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
 PittACOS: min
-	python $(CONFIG_SCRIPT) config/PittACOS.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/PittACOS.json --no-lms
 
 OpenFLAP: min
-	python $(CONFIG_SCRIPT) config/OpenFLAP.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/OpenFLAP.json --no-lms
 
 Obsolete: min
-	python $(CONFIG_SCRIPT) config/Obsolete.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Obsolete.json --no-lms
 
 Test: min
 	python3 $(CONFIG_SCRIPT) config/Test.json --no-lms
 
 DanaG: min
-	python $(CONFIG_SCRIPT) config/DanaG.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/DanaG.json --no-lms
 
 TJeffrey: min
-	python $(CONFIG_SCRIPT) config/TJeffrey.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/TJeffrey.json --no-lms
 
 Michael: min
-	python $(CONFIG_SCRIPT) config/Michael.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Michael.json --no-lms
 
 Tikhe: min
-	python $(CONFIG_SCRIPT) config/Tikhe.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Tikhe.json --no-lms
 
 cschandr: min
-	python $(CONFIG_SCRIPT) config/cschandr.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/cschandr.json --no-lms
 
 Taylor: min
-	python $(CONFIG_SCRIPT) config/Taylor.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Taylor.json --no-lms
 
 Raghu: min
-	python $(CONFIG_SCRIPT) config/Raghu.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Raghu.json --no-lms
 
 Weihao: min
-	python $(CONFIG_SCRIPT) config/Weihao.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Weihao.json --no-lms
 
 SimpleDemo: min
-	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
 
 CT: min
-	python $(CONFIG_SCRIPT) config/CT.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CT.json --no-lms
 
 CTEX: min
-	python $(CONFIG_SCRIPT) config/CTEX.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CTEX.json --no-lms
 
 Sam: min
-	python $(CONFIG_SCRIPT) config/Sam.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Sam.json --no-lms
 
 Yinwen: min
-	python $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
 
 Xiaolin: min
-	python $(CONFIG_SCRIPT) config/Xiaolin.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Xiaolin.json --no-lms
 
 Ning: min
-	python $(CONFIG_SCRIPT) config/Ning.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Ning.json --no-lms
 
 NP: min
-	python $(CONFIG_SCRIPT) config/NP.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/NP.json --no-lms
 
 NP4114: min
-	python $(CONFIG_SCRIPT) config/NP4114.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/NP4114.json --no-lms
 
 JFLAP: min
-	python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
 
 FormalLang: min
-	python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
 
 VisFormalLang: min
-	python $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
 
 FL2019: min
-	python $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
 
 PIExample: min
-	python $(CONFIG_SCRIPT) config/PIExample.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/PIExample.json --no-lms
 
 DeformsTesting: min
-	python $(CONFIG_SCRIPT) config/DeformsTesting.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/DeformsTesting.json --no-lms
 
 OpenPOPExercises: min
-	python $(CONFIG_SCRIPT) config/OpenPOPExercises.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/OpenPOPExercises.json --no-lms
 
 FLslides: min
-	python $(CONFIG_SCRIPT) -s config/FLslides.json --no-lms
+	python3 $(CONFIG_SCRIPT) -s config/FLslides.json --no-lms
 
 CS4114: min
-	python $(CONFIG_SCRIPT) config/CS4114.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS4114.json --no-lms
 
 CS4114slides: min
-	python $(CONFIG_SCRIPT) -s config/CS4114slides.json --no-lms
+	python3 $(CONFIG_SCRIPT) -s config/CS4114slides.json --no-lms
 
 Spatial: min
-	python $(CONFIG_SCRIPT) config/Spatial.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Spatial.json --no-lms
 
 PointersJavaSummer: min
-	python $(CONFIG_SCRIPT) config/PointersJavaSummer.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/PointersJavaSummer.json --no-lms
 
 PointersJava: min
-	python $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
 
 PointersCPP: min
-	python $(CONFIG_SCRIPT) config/PointersCPP.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/PointersCPP.json --no-lms
 
 PL: min
-	python $(CONFIG_SCRIPT) config/PL.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/PL.json --no-lms
 
 Graphics: min
-	python $(CONFIG_SCRIPT) config/Graphics.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Graphics.json --no-lms
 
 PLdev: min
-	python $(CONFIG_SCRIPT) config/PLdev.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/PLdev.json --no-lms
 
 Everything: min
-	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Everything.json --no-lms
 
 CS3notes: min
-	python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
 
 CS3slides: min
-	python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
+	python3 $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
 
 CS3114slides: min
-	python $(CONFIG_SCRIPT) -s config/CS3114slides.json --no-lms
+	python3 $(CONFIG_SCRIPT) -s config/CS3114slides.json --no-lms
 
 CS3F18slides: min
-	python $(CONFIG_SCRIPT) -s config/CS3F18slides.json --no-lms
+	python3 $(CONFIG_SCRIPT) -s config/CS3F18slides.json --no-lms
 
 CS3F18notes: min
-	python $(CONFIG_SCRIPT) config/CS3F18slides.json --no-lms -b CS3F18notes --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS3F18slides.json --no-lms -b CS3F18notes --no-lms
 
 CS4104: min
-	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS4104.json --no-lms
 
 CS2: min
-	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
 CS2114: min
-	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS2114.json --no-lms
 
 CS5040: min
-	python $(CONFIG_SCRIPT) config/CS5040.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS5040.json --no-lms
 
 CS5040notes: min
-	python $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
 
 CS5040slides: min
-	python $(CONFIG_SCRIPT) -s config/CS5040slides.json --no-lms
+	python3 $(CONFIG_SCRIPT) -s config/CS5040slides.json --no-lms
 
 CS5040MasterN: min
-	python $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
 
 CS5040Master: min
-	python $(CONFIG_SCRIPT) -s config/CS5040Master.json --no-lms
+	python3 $(CONFIG_SCRIPT) -s config/CS5040Master.json --no-lms
 
 Codio: min
-	python $(CONFIG_SCRIPT) config/Codio.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Codio.json --no-lms
 
 CS3: min
-	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
 CS3C: min
-	python $(CONFIG_SCRIPT) config/CS3C.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS3C.json --no-lms
 
 CSCI204: min
-	python $(CONFIG_SCRIPT) config/CSCI204.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CSCI204.json --no-lms
 
 CSCI271: min
-	python $(CONFIG_SCRIPT) config/CSCI271.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CSCI271.json --no-lms
 
 CS415: min
-	python $(CONFIG_SCRIPT) config/CS415.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS415.json --no-lms
 
 CSCD320: min
-	python $(CONFIG_SCRIPT) config/CSCD320.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CSCD320.json --no-lms
 
 CSC215: min
-	python $(CONFIG_SCRIPT) config/CSC215.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CSC215.json --no-lms
 
 CS240: min
-	python $(CONFIG_SCRIPT) config/CS240.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS240.json --no-lms
 
 CSCI2101: min
-	python $(CONFIG_SCRIPT) config/CSCI2101.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/CSCI2101.json --no-lms
 
 Yuhui: min
-	python $(CONFIG_SCRIPT) config/Yuhui.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Yuhui.json --no-lms
 
 CS3SS18slides: min
-	python $(CONFIG_SCRIPT) -s config/CS3SS18slides.json --no-lms
+	python3 $(CONFIG_SCRIPT) -s config/CS3SS18slides.json --no-lms
 
 CS3SS18notes: min
-	python $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
+	python3 $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
 
 COMP271: min
-	python $(CONFIG_SCRIPT) config/COMP271.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/COMP271.json --no-lms
 
 COMPSCI186: min
-	python $(CONFIG_SCRIPT) config/COMPSCI186.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/COMPSCI186.json --no-lms
 
 testcmap: min
-	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/testcmap.json --no-lms
 
 WuChen: min
-	python $(CONFIG_SCRIPT) config/WuChen.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/WuChen.json --no-lms
 
 Echo: min
-	python $(CONFIG_SCRIPT) config/Echo.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Echo.json --no-lms
 
 Ming: min
-	python $(CONFIG_SCRIPT) config/Ming.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Ming.json --no-lms
 
 Blockchain: min
-	python $(CONFIG_SCRIPT) config/Blockchain.json --no-lms
+	python3 $(CONFIG_SCRIPT) config/Blockchain.json --no-lms
 
 nomin:
 	@cp lib/JSAV.js lib/JSAV-min.js
@@ -323,7 +323,7 @@ nomin:
 	@cp lib/gradebook.css lib/gradebook-min.css
 
 rst2json:
-	python tools/rst2json.py
+	python3 tools/rst2json.py
 
 pull:
 	git pull
