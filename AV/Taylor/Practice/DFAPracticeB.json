@@ -1,0 +1,105 @@
+{
+    "translations": {
+        "en": {
+            "q1": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "Which of the following represents $Q$?",
+                "answer": [
+                    "{q0,q1}"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q2": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "Which of the following represents $F$?",
+                "answer": [
+                    "{q1}"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q3": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "Which of the following represents the alphabet set $\\Sigma$?",
+                "answer": [
+                    "{0,1}"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q4": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "Which of the following represents the start state $Q_0$?",
+                "answer": [
+                    "q0"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q5": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "What is $\\delta$(q0,0)?",
+                "answer": [
+                    "q1"
+                ],
+                "choices": [
+                    "q0",
+                    "q1"
+                ]
+            },
+            "q6": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "What is  $\\delta$(q0,1)?",
+                "answer": [
+                    "q0"
+                ],
+                "choices": [
+                    "q0",
+                    "q1"
+                ]
+            },
+            "q7": {
+                "type": "select",
+                "description": "Consider this DFA:",
+                "question": "Which of the following strings will be accepted?",
+                "answer": [
+                    "101010",
+                    "111110",
+                    "0000",
+                    "01010"
+                ],
+                "choices": [
+                    "111",
+                    "101010",
+                    "111110",
+                    "0000",
+                    "01010",
+                    "0101001"
+                ]
+            }
+        }
+    }
+}
