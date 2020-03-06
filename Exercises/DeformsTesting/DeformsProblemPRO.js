@@ -38,8 +38,8 @@
 
     // generate the set of variable names that can be used throughout.
     var VARIABLE_ID_USED = [];
-    var VARIABLE_ID_UNUSED = []
-        
+    var VARIABLE_ID_UNUSED = [];
+
     Window.getVarName = function() {
         var name=null;
         // do{
@@ -53,7 +53,8 @@
         VARIABLE_ID_USED.push(name);
         return name;
     }
-    
+
+    Window.WindowManager;
     var deformsProblemPRO = {
 
         //initializer, creates all the necessary object instances
@@ -163,6 +164,7 @@
         eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
             eqbank, globalPointerReference)
+        Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, wkspacelist);
 
         // Setting up clickhandlers for the equations in the EquationBank
         // OBSOLETE: MAY TRY TO FIX LATER, MOVING TO DISTRIBUTED APPROACH INSTEAD

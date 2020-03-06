@@ -11,6 +11,7 @@ class ValueBox{
             this.unitDisplay = element.dataset.unitDisplay;
             this.domain = element.dataset.domain;
             this.globalPointerReference = globalPointerReference;
+            this.element = null;
         }
         else
         {
@@ -21,6 +22,7 @@ class ValueBox{
             this.unitDisplay = element.dataset.unitDisplay;
             this.domain = element.dataset.domain;
             this.globalPointerReference = globalPointerReference;
+            this.element = null;
             this.createSolutionBox(element, globalJSAV);
         }
     }
@@ -29,7 +31,7 @@ class ValueBox{
         // Create the JSAV label object with variable = value notation
         // element contains the location for the JSAV label
         // AND the value, unit, etc. things
-        var text = globalJSAV.label(
+        this.element = globalJSAV.label(
             katex.renderToString(
                 element.dataset.variableDisplay+"="+element.dataset.valueDisplay+element.dataset.unitDisplay),
             {
@@ -37,7 +39,7 @@ class ValueBox{
                 top: element.visuals["POSITION_Y"]
             }
         ).addClass("selectableEquation");
-        text.element[0].addEventListener(
+        this.element.element[0].addEventListener(
             "click",
             e => {
                 e.stopPropagation();

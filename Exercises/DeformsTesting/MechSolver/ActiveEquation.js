@@ -7,6 +7,7 @@ class ActiveEquation{
         this.jsavequation = null;
         this.variables = {};
         this.globalPointerReference = globalPointerReference;
+        this.positionObj = position_obj;
 
         this.visualComponents = {};
         this.createVisualEquation(position_obj, jsavObject);
