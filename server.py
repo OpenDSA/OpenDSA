@@ -1,10 +1,10 @@
 import sys
-from SimpleHTTPServer import SimpleHTTPRequestHandler
-import BaseHTTPServer
+from http.server import SimpleHTTPRequestHandler
+import http.server
 
 
 def test(HandlerClass=SimpleHTTPRequestHandler,
-         ServerClass=BaseHTTPServer.HTTPServer):
+         ServerClass=http.server.HTTPServer):
 
     protocol = "HTTP/1.0"
     host = 'lti.cs.vt.edu'
@@ -26,7 +26,7 @@ def test(HandlerClass=SimpleHTTPRequestHandler,
     httpd = ServerClass(server_address, HandlerClass)
 
     sa = httpd.socket.getsockname()
-    print "Serving HTTP on", sa[0], "port", sa[1], "..."
+    print(("Serving HTTP on", sa[0], "port", sa[1], "..."))
     httpd.serve_forever()
 
 

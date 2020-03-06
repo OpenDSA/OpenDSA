@@ -50,7 +50,7 @@ def parse_index_rst(source_dir):
 # Updates the index.html page
 def update_index_html(dest_dir, sectnum):
   # Process index.html separately from the modules files
-  with open(dest_dir + 'index.html', 'r') as index_html_file:
+  with open(dest_dir + 'index.html', 'rt') as index_html_file:
     index_html = index_html_file.readlines()
 
   for line_num, line in enumerate(index_html):
@@ -72,7 +72,7 @@ def update_index_html(dest_dir, sectnum):
       index_html[line_num] = line.replace(title, new_title)
 
   # Write the modified contents back to index.html
-  with open(dest_dir + 'index.html', 'wb') as index_html_file:
+  with open(dest_dir + 'index.html', 'wt') as index_html_file:
     index_html_file.writelines(index_html)
 
 
@@ -144,7 +144,7 @@ def update_mod_html(file_path, data, prefix, standalone_modules):
         html[line_num] = line.replace(section_title, new_section_title)
 
   # Replace original HTML file with modified contents
-  with open(file_path, 'wb') as html_file:
+  with open(file_path, 'wt') as html_file:
     html_file.writelines(html)
 
 

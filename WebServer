@@ -8,10 +8,10 @@
 # python -m SimpleHTTPServer
 unameOut="$(uname -s)"
 case "${unameOut}" in
-    MINGW*)  python server.py 0.0.0.0:8080;;
-    CYGWIN*) python server.py 0.0.0.0:8080;;
-    Linux*)  sudo python server.py 0.0.0.0:8080;;
-    Darwin*) sudo python server.py 0.0.0.0:8080;;
-    *)       python server.py 0.0.0.0:8080
+    MINGW*)  python3 server.py 0.0.0.0:8080;;
+    CYGWIN*) python3 server.py 0.0.0.0:8080;;
+    Linux*)  sudo python3 server.py 0.0.0.0:8080;;
+    Darwin*) sudo python3 server.py 0.0.0.0:8080;;
+    *)       python3 server.py 0.0.0.0:8080
 
 esac

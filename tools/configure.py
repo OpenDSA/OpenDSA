@@ -529,7 +529,7 @@ def configure(config_file_path, options):
     else:
         proc = subprocess.Popen(
             ['make', '-C', config.book_dir], stdout=subprocess.PIPE)
-    for line in iter(proc.stdout.readline, ''):
+    for line in iter(proc.stdout.readline, b''):
         print(str(line, encoding='utf-8').rstrip())
         ''' TODO: start finding encoding errors.
         These are because python 2.7 implicitly converted string encodings.  
