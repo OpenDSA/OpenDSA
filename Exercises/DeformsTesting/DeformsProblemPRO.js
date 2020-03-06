@@ -38,7 +38,7 @@
 
     // generate the set of variable names that can be used throughout.
     var VARIABLE_ID_USED = [];
-    var VARIABLE_ID_UNUSED = []
+    var VARIABLE_ID_UNUSED = [];
         
     Window.getVarName = function() {
         var name=null;
