@@ -64,9 +64,12 @@
     "required": true
   },
   "chapters": {
-    "Stuff": {
-      "PIExample/Echo_frame1": {}, 
-      "PIExample/Echo_frame2": {}
+    "Finite Acceptors - Review": {
+      "Taylor/DFAReview":{},
+      "Taylor/NFAReview":{}
+    },
+    "Finite Acceptors - Practice": {
+      "Taylor/DFAPractice":{}
     },
     "Appendix": {
       "Glossary": {},

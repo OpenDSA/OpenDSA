@@ -19,7 +19,8 @@ const equations = [
             'const':'temperature-1',
             'tempchange':'temperature',
             'len':'length'
-        }
+        },
+        height: 30
     },
     {
         group: 'Basic definitions',
@@ -39,7 +40,8 @@ const equations = [
             'avgdeform': 'length',
             'force': 'force',
             'area': 'length2'
-        }
+        },
+        height: 30
     },
     {
         group: 'Basic definitions',
@@ -59,7 +61,8 @@ const equations = [
             'avgstress': 'pressure',
             'volume': 'length3',
             'areaV': 'length2'
-        }
+        },
+        height: 30
     },
     {
         group: 'Axial',
@@ -81,7 +84,8 @@ const equations = [
             'epsX': 'coefficient',
             'epsY': 'coefficient',
             'shear': 'coefficient',
-        }
+        },
+        height: 50
     },
     {
         group: 'Axial',
@@ -103,7 +107,8 @@ const equations = [
             'stress': 'pressure',
             'pressE': 'pressure',
             'length': 'length'
-        }
+        },
+        height: 30
     },
     // {
     //     group: 'Axial',
@@ -220,7 +225,8 @@ const equations = [
             'cterm': 'dimensionless',
             'bterm': 'dimensionless',
             'aterm': 'dimensionless'
-        }
+        },
+        height: 30
     },
     {
         group: 'Arithmetic',
@@ -242,7 +248,8 @@ const equations = [
             'xterm': 'dimensionless',
             'yterm': 'dimensionless',
             'zterm': 'dimensionless'
-        }
+        },
+        height: 30
     },
     {
         group: 'Arithmetic',
@@ -262,7 +269,8 @@ const equations = [
             'cterm': 'dimensionless',
             'bterm': 'dimensionless',
             'aterm': 'dimensionless'
-        }
+        },
+        height: 30
     },
     {
         group: 'Arithmetic',
@@ -282,7 +290,8 @@ const equations = [
             'cterm': 'dimensionless',
             'bterm': 'dimensionless',
             'aterm': 'dimensionless'
-        }
+        },
+        height: 30
     },
     {
         group: 'Arithmetic',
@@ -302,6 +311,7 @@ const equations = [
             'cterm': 'dimensionless',
             'bterm': 'dimensionless',
             'aterm': 'dimensionless'
-        }
+        },
+        height: 30
     },
 ]

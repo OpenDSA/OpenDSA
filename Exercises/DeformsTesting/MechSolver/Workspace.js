@@ -26,6 +26,12 @@ class Workspace
         this.equationHashMap = {};  // This is used to keep track of an enumerate
                                     // multiple instances of the same equation.
 
+        this.LIST_OF_SOLUTIONS_IN_WORKSPACE = {};
+        this.solutionCounter = 0;
+        
+        this.lastSolution = null;
+        this.lastEquation = null;
+
         // Actually create the region for the new workspace
         this.DIMENSIONS = {
             "POSITION_X": dim_obj["CORNER_X"],
@@ -142,6 +148,8 @@ class Workspace
         this.elements[4]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation deletion here.
+            this.globalSectionObj.logEvent({type: "Deleting equation"});
+            this.deleteEquations();
         });
 
         this.elements[5] = {
@@ -171,6 +179,7 @@ class Workspace
     destroyBox()
     {
         // Triggered by the clickhandler
+        Window.windowManager.deleteWkspace(this.id);
         this.elements.forEach(x => x['jsav'].clear())
         //This is fine, since the parent knows to remove this from their tracking.
         return this.id;
@@ -256,10 +265,10 @@ class Workspace
         )
         
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
-        this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+        newActiveEquation.equationObjectReference.height+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
 
         // Handling the internal initial bookkeeping
-        this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation
+        this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation;
         //        |_>  To be elaborated for additional operations.
         
         if(equationListEntity.name in this.equationHashMap)
@@ -283,6 +292,9 @@ class Workspace
                 }
             ];
         }
+        // console.log(newActiveEquation);
+        Window.windowManager.shiftDown(newActiveEquation);
+        this.lastEquation = newActiveEquation;
         //console.log(this.equationHashMap);
     }
     OldSolveEquations()
@@ -328,7 +340,7 @@ class Workspace
         // Step 3: Create the solution boxes, new boxes inside the workspace.
         for(var i=0; i<soln.length; i++)
         {
-            new ValueBox(
+            var currSolution = new ValueBox(
                 false,
                 {
                     "visuals": this.DIMENSIONS.ELEMENTS,
@@ -345,9 +357,16 @@ class Workspace
                 this.globalSectionObj,
                 this.globalPointerReference
             )
+            // Create a {} object and add the ValueBox object
+            //FUTURE: Add .element field to all the objects, and access to move them around
+            this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
+            this.solutionCounter++;
 
             this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
             this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+            Window.windowManager.shiftDown();
+            this.lastSolution = currSolution;
+
         }
 
         // De-select selected equations, the list of selections will get cleared anyway.
@@ -362,6 +381,12 @@ class Workspace
             }
         }
     }
+
+    deleteEquations()
+    {
+        Window.windowManager.shiftUp();
+    }
+
     solveEquations()
     {
         // Step 1: See which equations are selected
@@ -394,7 +419,7 @@ class Workspace
         
         for(var unknownName in variableSet)
         {
-            new ValueBox(
+            var currSolution = new ValueBox(
                 false,
                 {
                     "visuals": this.DIMENSIONS.ELEMENTS,
@@ -412,8 +437,14 @@ class Workspace
                 this.globalPointerReference
             )
 
+            this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
+            this.solutionCounter++;
+
             this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
             this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+
+            this.lastSolution = currSolution;
+            Window.windowManager.shiftDown(null, this.lastSolution);
         }
 
         // De-select selected equations, the list of selections will get cleared anyway.
@@ -428,6 +459,7 @@ class Workspace
                 currentEqn.selected = false;
             }
         }
+
     }
 }
 

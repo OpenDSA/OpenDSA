@@ -1,0 +1,229 @@
+{
+    "translations": {
+        "en": {
+            "q1": {
+                "type": "multiple",
+                "question": "A DFA can proccess inputs from left to right OR right to left.",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q2": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "What state is the given DFA in?",
+                "answer": [
+                    "1"
+                ],
+                "choices": [
+                    "0",
+                    "1"
+                ]
+            },
+            "q3": {
+                "type": "multiple",
+                "question": "DFAs can be used to add more letters to the given input.",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q4": {
+                "type": "multiple",
+                "question": "A DFA can end in different states given the same string as the input. ",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q5": {
+                "type": "multiple",
+                "question": "A DFA machine may be a non-deterministic machine.",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q6": {
+                "type": "multiple",
+                "question": "Suppose we have a DFA that tests to see if a string is a valid integer. What will be the result of giving it this input: 23213",
+                "answer": [
+                    "Accept/Yes"
+                ],
+                "choices": [
+                    "Accept/Yes",
+                    "Reject/No"
+                ]
+            },
+            "q7": {
+                "type": "select",
+                "question": "Suppose we have a DFA that tests to see if a string is a valid Java identifier. Which of the following will be REJECTED by this proposed DFA?",
+                "answer": [
+                    "I Love Java",
+                    "123",
+                    "#variable"
+                ],
+                "choices": [
+                    "_hello",
+                    "I Love Java",
+                    "123",
+                    "Not_an_identifier",
+                    "#variable"
+                ]
+            },
+            "q8": {
+                "type": "multiple",
+                "description": "$Q$ is a set of all the states of a DFA. Graphically it is all the states/circles.",
+                "question": "Which of the following represents $Q$?",
+                "answer": [
+                    "{q0,q1}"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q9": {
+                "type": "multiple",
+                "description": "$F$ is a SET of all the final states. Graphically depicated as states with an extra circle around them.",
+                "question": "Which of the following represents $F$?",
+                "answer": [
+                    "{q1}"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q10": {
+                "type": "multiple",
+                "description": "$\\Sigma$ is the set of the input alphabet used for the DFA. Graphically depicated as all the symbols on the transitions lines.",
+                "question": "Which of the following represents the alphabet set $\\Sigma$?",
+                "answer": [
+                    "{0,1}"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q11": {
+                "type": "multiple",
+                "description": "$Q_0$ is the start state of a DFA. Graphiccally an arrow/ triangle points to this state.",
+                "question": "Which of the following represents the start state $Q_0$?",
+                "answer": [
+                    "q0"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q12": {
+                "type": "multiple",
+                "description": "$\\delta$ is the transtions between the states. Example of a move: $\\delta(q0, 1) = q0$",
+                "question": "What is $\\delta$(q0,0)?",
+                "answer": [
+                    "q1"
+                ],
+                "choices": [
+                    "q0",
+                    "q1"
+                ]
+            },
+            "q13": {
+                "type": "multiple",
+                "description": "$\\delta$ is the transtions between the states. Example of a move: $\\delta(q0, 1) = q0$",
+                "question": "What is  $\\delta$(q1,1)?",
+                "answer": [
+                    "q0"
+                ],
+                "choices": [
+                    "q0",
+                    "q1"
+                ]
+            },
+            "q14": {
+                "type": "multiple",
+                "description": "$\\delta$ is sometimes expressed in tabular format. $\\begin{array}{r|cc}\n      & 0  & 1 \\\\\n      \\hline\n      q0 &  &  \\\\\n      q1 &  &  \\\\\n      \\end{array}$",
+                "question": "Which of these is the $\\delta$ for the DFA graph? ",
+                "answer": [
+                    "\\begin{array}{r|cc} & 0 & 1\n \\\\ \\hline q0 & q1 & q0 \\\\ q1 & q1 & q0 \\\\ \\end{array}"
+                ],
+                "choices": [
+                    "\\begin{array}{r|cc} & 0 & 1 \\\\ \\hline q0 & q0 & q0 \\\\ \nq1 & q1 & q1 \\\\ \\end{array}",
+                    "\\begin{array}{r|cc} & 0 & 1\n \\\\ \\hline q0 & q1 & q0 \\\\ q1 & q1 & q0 \\\\ \\end{array}",
+                    " \n\\begin{array}{r|cc} & 0 & 1 \\\\ \\hline q0 & q0 & q1 \\\\ q1\n & q0 & q1 \\\\ \\end{array}"
+                ]
+            },
+            "q15": {
+                "type": "select",
+                "description": "Consider these inputs into the DFA below:",
+                "question": "Which of the following strings will be accepted?",
+                "answer": [
+                    "101010",
+                    "111110",
+                    "0000",
+                    "01010"
+                ],
+                "choices": [
+                    "111",
+                    "101010",
+                    "111110",
+                    "0000",
+                    "01010",
+                    "0101001"
+                ]
+            },
+            "q16": {
+                "type": "select",
+                "description": "When making a transition not shown in the diagram, then the string is not accepted. ",
+                "question": "Which of the following strings will be accepted?",
+                "answer": [
+                    "ba",
+                    "bba"
+                ],
+                "choices": [
+                    "a",
+                    "b",
+                    "ab",
+                    "ba",
+                    "bba"
+                ]
+            },
+            "q17": {
+                "type": "multiple",
+                "description": "A complete DFA has a transition for every alphabet in $\\Sigma$ for all states.",
+                "question": "An incomplete DFA can be made complete by adding a trap state?",
+                "answer": [
+                    "True"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            }
+        }
+    }
+}
