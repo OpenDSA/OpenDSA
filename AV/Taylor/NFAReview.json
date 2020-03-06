@@ -1,0 +1,172 @@
+{
+    "translations": {
+        "en": {
+            "q1": {
+                "type": "multiple",
+                "description": "Non-Deterministic Finite Acceptors (NFA) are able to transition to multiple states on the same transition.",
+                "question": "What part of the NFA is different from a DFA?\n",
+                "answer": [
+                    "$\\delta$"
+                ],
+                "choices": [
+                    "$Q$",
+                    "$\\Sigma$",
+                    "$F$",
+                    "$\\delta$",
+                    "nothing"
+                ]
+            },
+            "q2": {
+                "type": "multiple",
+                "description": "While the result of $\\delta$ for the DFA is some state $q \\in Q$, the result of $\\delta$ for the NFA is any subset of Q",
+                "question": "In a NFA, a state can have 2 transitions for the same alphabet?",
+                "answer": [
+                    "True"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q3": {
+                "type": "multiple",
+                "description": "While the result of $\\delta$ for the DFA is some state $q \\in Q$, the result of $\\delta$ for the NFA is any subset of Q",
+                "question": "NFAs can not have 3 or more transitions from a state using the same alphabet?",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q4": {
+                "type": "select",
+                "question": "What is  $\\delta$(q0,a)?",
+                "answer": [
+                    "q1",
+                    "q2"
+                ],
+                "choices": [
+                    "q0",
+                    "q1",
+                    "q2",
+                    "q3"
+                ]
+            },
+            "q5": {
+                "type": "multiple",
+                "description": "A $\\lambda$ transition is a 'free ride' to another state.",
+                "question": "A $\\lambda$ transition does not require a symbol to transition to that state.",
+                "answer": [
+                    "True"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q6": {
+                "type": "multiple",
+                "description": "A $\\lambda$ transition is a 'free ride' to another state.",
+                "question": "A $\\lambda$ transition cannot $\\lambda$ transition again to another state.",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q7": {
+                "type": "select",
+                "question": "Which state(s) is the NFA in when the machine starts?",
+                "answer": [
+                    "q0",
+                    "q1",
+                    "q2"
+                ],
+                "choices": [
+                    "q0",
+                    "q1",
+                    "q2",
+                    "q3",
+                    "q4",
+                    "q5",
+                    "q6"
+                ]
+            },
+            "q8": {
+                "type": "select",
+                "question": "Which state(s) can the NFA go to from the start state?",
+                "answer": [
+                    "q3",
+                    "q4"
+                ],
+                "choices": [
+                    "q0",
+                    "q1",
+                    "q2",
+                    "q3",
+                    "q4",
+                    "q5",
+                    "q6"
+                ]
+            },
+            "q9": {
+                "type": "select",
+                "description": "$q_j \\in \\delta^*(q_i, w)$ if and only if there exists some walk from $q_i$ to $q_j$",
+                "question": "What is in $\\delta^*(q_0, ab)$ = ?",
+                "answer": [
+                    "q5",
+                    "q6",
+                    "q1"
+                ],
+                "choices": [
+                    "q0",
+                    "q1",
+                    "q2",
+                    "q3",
+                    "q4",
+                    "q5",
+                    "q6"
+                ]
+            },
+            "q10": {
+                "type": "multiple",
+                "description": "DFAs cannot have $\\lambda$ transitions and multiple transitions using same alphabet.",
+                "question": "A NFA is able to do things a DFA can not.",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q11": {
+                "type": "multiple",
+                "question": "NFA can make it easier to comprehend when looking at the FA. ",
+                "answer": [
+                    "True"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q12": {
+                "type": "multiple",
+                "description": "There is an algorithm to convert a NFA into a DFA.",
+                "question": "A NFA with one or more $\\lambda$ transitions, can not be converted to a DFA.",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            }
+        }
+    }
+}

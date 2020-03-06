@@ -702,6 +702,7 @@ var exerciseLocation;
     		// Use to parse html 
     		var text = event.target.result;
         	parseFile(text);
+			exerController.fa = g;
 
 
     	}
@@ -714,9 +715,8 @@ var exerciseLocation;
     	var file = loaded.files[0],
         	reader = new FileReader();
     	waitForReading(reader);
-    	reader.readAsText(file);
-  	};
-
+		reader.readAsText(file);
+	  }
 	// Function to convert an FA to a Right-Linear Grammar.
 	// Triggered by clicking the "Convert to Right-Linear Grammar" button.
 	// Currently only works in certain browsers (not Safari).

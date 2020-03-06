@@ -42,7 +42,7 @@ $(document).ready(function() {
     av.step();
 
     //frame 5
-    av.umsg("But what about the 'more interesting' regular expressions that are built from AND, OR, and concatenation? Do these all have maching NFAs? If we could find a way to 'simulate' each of these operations with an NFA, then we know that we can construct a machine for any R.E. This idea of 'simulation' is a standard approach to proving such things!");
+    av.umsg("But what about the 'more interesting' regular expressions that are built from AND, OR, and concatenation? Do these all have matching NFAs? If we could find a way to 'simulate' each of these operations with an NFA, then we know that we can construct a machine for any R.E. This idea of 'simulation' is a standard approach to proving such things!");
     FA.removeNode(q0);
     FA.removeNode(q1);
     av.step();

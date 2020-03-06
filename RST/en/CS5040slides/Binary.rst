@@ -98,10 +98,10 @@ Binary Trees Part 1
       :tag: preorder2
 
    | Problems:
-   |    This has a major bug
-   |    It puts the focus in the wrong place: Should focus on the
-        current node, not the children. This version is therefore more
-        complicated. 
+   |    1. This has a major bug
+   |    2. It puts the focus in the wrong place: Should focus on the
+           current node, not the children. This version is therefore more
+           complicated. 
 
 .. slide:: Recursion Examples
 

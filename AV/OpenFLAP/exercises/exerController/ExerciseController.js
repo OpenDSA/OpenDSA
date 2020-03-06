@@ -58,7 +58,7 @@ controllerProto.startTesting = function() {
 	var exercise = this.tests[this.currentExercise];
 	var type = exercise["type"];
 	var numberOfTestCases = this.testCases.length;
-	if(type == "describtion" || type == "both"){
+	if(type == "description" || type == "both"){
 		var t = $("#description").text();
 		if(t.indexOf("DFA") > 0 && t.indexOf("NFA") < 0){
 			numberOfTestCases++;
@@ -71,6 +71,7 @@ controllerProto.startTesting = function() {
 			else{
 				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='wrong'>" + (inputResult ? "Yes": "No") + "</td></tr>");
 				testRes.push('Test' + testNum +':' + 'Wrong');
+				return 0;
 			}
 		}
 	}

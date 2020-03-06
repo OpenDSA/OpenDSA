@@ -3,15 +3,15 @@
       "en": {
         "q0": {
           "type": "multiple",
-          "question":"What language can following equation be? $(a+b)^∗ \\cdot a \\cdot (a+b)^∗$ = $(a+b)^∗a(a+b)^∗$",
-          "description": "There are three operators that can be used: $+$ union (OR), $\\cdot$ concatenation (AND), $\\ast$ star-closure (repeat 0 or more times). We often omit showing the $\\cdot$ for concatenation.",
+          "question":"What language can theafollowing equation be? $(a+b)^∗ \\cdot a \\cdot (a+b)^∗$ = $(a+b)^∗a(a+b)^∗$",
+          "description": "There are three operators that can be used:<br> $+$ union (OR),<br> $\\cdot$ concatenation (AND),<br> $\\ast$ star-closure (repeat 0 or more times).<br> We often omit showing the $\\cdot$ for concatenation.",
           "answer": "All strings from $\\{a,b\\}^∗$ that contain at least one $a$",
           "choices": ["Any string from $\\{a,b\\}^∗$", "All strings from $\\{a,b\\}^∗$", "All strings from $\\{a,b\\}^∗$ that contain at least one $a$"]
         },
         "q1":{
           "type": "multiple",
           "question":"What language can following equation be? $(aa)^∗$ (Becareful with alphabet)",
-          "description": "There are three operators that can be used: $+$ union (OR), $\\cdot$ concatenation (AND), $\\ast$ star-closure (repeat 0 or more times). We often omit showing the $\\cdot$ for concatenation.",
+          "description": "There are three operators that can be used:<br> $+$ union (OR),<br> $\\cdot$ concatenation (AND),<br> $\\ast$ star-closure (repeat 0 or more times).<br> We often omit showing the $\\cdot$ for concatenation.",
           "answer": "Strings of $a$s with even number of $a$s",
           "choices": ["Any string of $a$s with an even number of $a$s", "Strings of $a$s with even number of $a$s", "Strings of multiple $a$s and with an odd number of $a$s"]
         },

@@ -16,17 +16,19 @@
 <body>
   <div id="container">
     <p class="instructions">
-      Enter your name or alias to receive your personal public and private keys.<br/>
+      Take this private key and decrypt your secret message.<br/>
+      Also, never use this private key and never show anyone<br/>
+      your private key in the future. 
     </p>
-    <input id="msg" placeholder="Enter a message here" />
-    <button class="encrypt">Encrypt</button>
+
+    <button class="copyKey">Copy Private Key</button>
     <button class="decrypt">Decrypt</button>
-    <p class="encryptLabel">Encrypted Message</p>
-    <input class="encryptMsg" disabled />
-    <p class="decryptLabel">Decrypted Message</p>
+    <p class="encryptLabel">Encrypted Message:</p>
+    <textarea class="encryptMsg" rows=3 disabled></textarea>
+    <p class="publicKeyLabel">Provide a Public Key Here:</p>
+    <input class="publicKey" />
+    <p class="decryptLabel">Decrypted Message:</p>
     <input class="decryptMsg" disabled />
-    <p class="msgLabel">Here is your message signed with your private key:</p>
-    <input class="msg" disabled />
   </div>
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -34,6 +36,8 @@
   <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <script src="../../lib/odsaUtils-min.js"></script>
   <script src="../../lib/odsaAV-min.js"></script>
+  <!-- <script src="https://rawgit.com/wwwtyro/cryptico/master/cryptico.js"></script> -->
+  <script src="jsencrypt.min.js"></script>
   <script src="KeyExample.js"></script>
 </body>
 </html>

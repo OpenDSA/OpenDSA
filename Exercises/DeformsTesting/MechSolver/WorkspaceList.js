@@ -104,8 +104,8 @@ class WorkspaceList
         this.DIMENSIONS["NEW_WKSPACE"]["CORNER_X"] = this.DIMENSIONS["BASE_NWK_UPPER_CORNER_X"];
         this.DIMENSIONS["NEW_WKSPACE"]["CORNER_Y"] = this.DIMENSIONS["BASE_NWK_UPPER_CORNER_Y"];
         // Window.windowManager.extendCanvas();
-        var jsavcan = document.querySelectorAll("#DeformsProblemPRO.jsavcanvas");
-        console.log(jsavcan);
+        // var jsavcan = document.querySelectorAll("#DeformsProblemPRO.jsavcanvas");
+        // console.log(jsavcan);
 
         // Updating the height of the workspace list to include all the workspaces
         for(var wk in this.workspace_list) {

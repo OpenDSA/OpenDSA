@@ -1,0 +1,188 @@
+{
+    "translations": {
+        "en": {
+            "q1": {
+                "type": "multiple",
+                "question": "A DFA can proccess inputs from left to right OR right to left.",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q2": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "What state is the given DFA in?",
+                "answer": [
+                    "1"
+                ],
+                "choices": [
+                    "0",
+                    "1"
+                ]
+            },
+            "q3": {
+                "type": "multiple",
+                "question": "DFAs can be used to add more letters to the given input.",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q4": {
+                "type": "multiple",
+                "question": "A DFA can end in different states given the same string as the input. ",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q5": {
+                "type": "multiple",
+                "question": "A DFA machine may be a non-deterministic machine.",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q6": {
+                "type": "multiple",
+                "question": "Suppose we have a DFA that tests to see if a string is a valid integer. What will be the result of giving it this input: 23213",
+                "answer": [
+                    "Accept/Yes"
+                ],
+                "choices": [
+                    "Accept/Yes",
+                    "Reject/No"
+                ]
+            },
+            "q7": {
+                "type": "select",
+                "question": "Suppose we have a DFA that tests to see if a string is a valid Java identifier. Which of the following will be REJECTED by this proposed DFA?",
+                "answer": [
+                    "I Love Java",
+                    "123",
+                    "#variable"
+                ],
+                "choices": [
+                    "_hello",
+                    "I Love Java",
+                    "123",
+                    "Not_an_identifier",
+                    "#variable"
+                ]
+            },
+            "q8": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "Which of the following represents $Q$?",
+                "answer": [
+                    "{q0,q1}"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q9": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "Which of the following represents $F$?",
+                "answer": [
+                    "{q1}"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q10": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "Which of the following represents the alphabet set $\\Sigma$?",
+                "answer": [
+                    "{0,1}"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q11": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "Which of the following represents the start state $Q_0$?",
+                "answer": [
+                    "q0"
+                ],
+                "choices": [
+                    "{q0,q1}",
+                    "{q1}",
+                    "{0,1}",
+                    "q0"
+                ]
+            },
+            "q12": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "What is &\\delta&(q0,0)?",
+                "answer": [
+                    "q1"
+                ],
+                "choices": [
+                    "q0",
+                    "q1"
+                ]
+            },
+            "q13": {
+                "type": "multiple",
+                "description": "Given the DFA below:",
+                "question": "What is  &\\delta&(q0,1)?",
+                "answer": [
+                    "q0"
+                ],
+                "choices": [
+                    "q0",
+                    "q1"
+                ]
+            },
+            "q14": {
+                "type": "select",
+                "description": "Consider this DFA:",
+                "question": "Which of the following strings will be accepted?",
+                "answer": [
+                    "101010",
+                    "111110",
+                    "0000",
+                    "01010"
+                ],
+                "choices": [
+                    "111",
+                    "101010",
+                    "111110",
+                    "0000",
+                    "01010",
+                    "0101001"
+                ]
+            }
+        }
+    }
+}

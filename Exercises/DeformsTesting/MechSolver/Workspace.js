@@ -292,16 +292,12 @@ class Workspace
                 }
             ];
         }
-        console.log(newActiveEquation);
+        // console.log(newActiveEquation);
         Window.windowManager.shiftDown(newActiveEquation);
         this.lastEquation = newActiveEquation;
         //console.log(this.equationHashMap);
     }
-    addAssociations()
-    {
-
-    }
-    solveEquations()
+    OldSolveEquations()
     {
         // Step 1: See which equations are selected
         var equationSet = [];
@@ -389,6 +385,81 @@ class Workspace
     deleteEquations()
     {
         Window.windowManager.shiftUp();
+    }
+
+    solveEquations()
+    {
+        // Step 1: See which equations are selected
+        var equationSet = [];
+        var equationObjectSet = [];
+        var variableSet = {}
+        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        {
+            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+            if(currentEqn.selected == true)
+            {
+                equationObjectSet.push(currentEqn);
+                var solvableRepr = currentEqn.createSolvableRepresentation();
+                // Add the equation representations
+                for(var x=0; x<solvableRepr["equations"].length; x++)
+                    equationSet.push(solvableRepr["equations"][x]);
+                // Find out the unknown varDisplay-varName mapping pairs
+                for(var vname in solvableRepr["unknowns"])
+                    variableSet[vname] = solvableRepr["unknowns"][vname];
+            }
+        }
+        console.log(variableSet);
+        console.log(equationSet);
+        
+        var soln = {};
+        var listOfSolutions = nerdamer.solveEquations(equationSet);
+        for(var i=0; i<listOfSolutions.length; i++)
+            soln[listOfSolutions[i][0]] = listOfSolutions[i][1];
+        console.log(soln);
+        
+        for(var unknownName in variableSet)
+        {
+            var currSolution = new ValueBox(
+                false,
+                {
+                    "visuals": this.DIMENSIONS.ELEMENTS,
+                    "dataset": {
+                        "value": soln[unknownName],
+                        "unit": "",
+                        "variable": unknownName,
+                        "valueDisplay": String(Number(Math.round(soln[unknownName]+'e3')+'e-3')),
+                        "unitDisplay": "",
+                        "variableDisplay": variableSet[unknownName],
+                        "domain": ""
+                    }
+                },
+                this.globalSectionObj,
+                this.globalPointerReference
+            )
+
+            this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
+            this.solutionCounter++;
+
+            this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
+            this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+
+            this.lastSolution = currSolution;
+            Window.windowManager.shiftDown(null, this.lastSolution);
+        }
+
+        // De-select selected equations, the list of selections will get cleared anyway.
+        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        {
+            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+            if(currentEqn.selected == true)
+            {
+                // currentEqn.visualComponents.tickmark.addClass("tickunselected");
+                // currentEqn.visualComponents.tickmark.removeClass("tickselected");
+                currentEqn.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
+                currentEqn.selected = false;
+            }
+        }
+
     }
 }
 

@@ -3,10 +3,10 @@
     "en": {
     "q0": {
         "type": "multiple",
-        "question":"The NFA should start from $s$ and go to what stage until it reaches final stage?",
-        "description": "To accept any regular expression $r$.",
-        "answer": "intermediate",
-        "choices": ["intermediate", "start", "final"]
+        "question":"What can you change the $\\lambda$ connection to?",
+        "description": "The DFA does not accept $\\lambda$ expression",
+        "answer": "b",
+        "choices": ["a", "b", "c"]
     },
     "q1": {
         "type": "multiple",

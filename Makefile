@@ -143,6 +143,9 @@ Sam: min
 Yinwen: min
 	python $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
 
+Xiaolin: min
+	python $(CONFIG_SCRIPT) config/Xiaolin.json --no-lms
+
 Ning: min
 	python $(CONFIG_SCRIPT) config/Ning.json --no-lms
 

@@ -15,24 +15,29 @@ class ActiveEquation{
     createVisualEquation(position_obj, jsavObject){
         // Adding a tickmark object that indicates which equation is selected
         this.visualComponents["tickmark"] = jsavObject.label(
-            "OK",
+            //"OK",
+            "&#x2610",
             {
                 left: position_obj["POSITION_X"],
                 top: position_obj["POSITION_Y"]
             }
-        ).addClass("tickunselected");
+        ).addClass("tickselected");
         this.visualComponents["tickmark"].element[0].addEventListener("click", e => {
             e.stopPropagation();
             if(this.selected==true){
                 this.selected = false;
+                this.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
                 this.visualComponents["tickmark"].addClass("tickunselected");
-                this.visualComponents["tickmark"].removeClass("tickselected");
+                // this.visualComponents["tickmark"].removeClass("tickselected");
+                ;
                 jsavObject.logEvent({type: "tick unselected", id: this.name});
             }
             else{
                 this.selected = true;
+                this.visualComponents["tickmark"].element[0].innerHTML = "&#x2611";
                 this.visualComponents["tickmark"].addClass("tickselected");
-                this.visualComponents["tickmark"].removeClass("tickunselected");
+                // this.visualComponents["tickmark"].removeClass("tickunselected");
+                ;
                 jsavObject.logEvent({type: "tick selected", id: this.name});
             }
         });
@@ -80,7 +85,9 @@ class ActiveEquation{
             //var containerSpan = document.createElement("span");
             boxList[i].className = "boxparam";
             boxList[i].setAttribute("data-domain", "empty");
-            boxList[i].innerHTML = '<span class="mord amsrm">&#9634;</span>';
+            //boxList[i].innerHTML = '<span class="mord amsrm">&#9634;</span>';
+            boxList[i].innerHTML = 
+            '<span class="mord value"></span><span class="mord unit"></span>';
         }
 
         // Immediately create the variable boxes
@@ -98,8 +105,9 @@ class ActiveEquation{
             var name = Window.getVarName();
             var currentBox = boxList[boxIndex];
             this.variables[this.equationObjectReference.params[boxIndex]] = new Variable(
-                name, // "1", Update this to a unique variable name chosen from 26x26 choices.
+                this.name+this.equationObjectReference.params[boxIndex], // name unique to workspace, equation, and parameter
                 this.equationObjectReference.params[boxIndex],
+                name, // actual variable name to be used everywhere else.
                 this.equationObjectReference.variables[this.equationObjectReference.params[boxIndex]],
                 this.equationObjectReference.domains[this.equationObjectReference.params[boxIndex]],
                 currentBox,
@@ -107,7 +115,9 @@ class ActiveEquation{
             )
         }
     }
-    createSolvableRepresentation(){
+    oldCreateSolvableRepresentation(){
+        // DEPRECATED: Features of Nerdamer+peculiarities required us to do things differently.
+        // Plus, this function is really messily written.
         // TO WORK SPECIFICALLY ON THIS PART, TO CREATE THE SOLVABLE REPRESENTATION AND FINALLY, SOLUTION BOX
         var splitString = this.equationObjectReference.template.split(" ");
         for(var x=0; x<splitString.length; x++)
@@ -124,7 +134,7 @@ class ActiveEquation{
                     //splitString[x] = this.variables[splitString[x]].currentSymbol;
                     if(this.variables[splitString[x]].value == null){
                         // Then this is probably a single equation solving scenario, use id.
-                        splitString[x] = this.variables[splitString[x]].id;
+                        splitString[x] = this.variables[splitString[x]].currentSymbol;
                     }
                     else if(this.variables[splitString[x]].valueType == "number"){
                         splitString[x] = this.variables[splitString[x]].value;
@@ -137,6 +147,53 @@ class ActiveEquation{
             }
         }
         return splitString.join(" ");
+    }
+    createSolvableRepresentation(){
+        var unitEquationSet = [];
+        var unknowns = {};
+        var splitString = this.equationObjectReference.template.split(" ");
+        for(var x=0; x<splitString.length; x++)
+        {
+            console.log(splitString[x]);
+            // if(splitString[x], splitString[x] in this.variables)
+            if(splitString[x] in this.variables)
+            {
+                if(this.variables[splitString[x]].valueType=="number")
+                {
+                    // Add the variable=value assignment separately, putting only
+                    // variables in the equation representation.
+                    unitEquationSet.push(
+                        this.variables[splitString[x]].currentSymbol+
+                        "="+this.variables[splitString[x]].value
+                        );
+                    splitString[x] = this.variables[splitString[x]].currentSymbol;
+                }
+                else
+                {
+                    // This just means that there is an association -> valueType="association"
+                    // Unlike the previous version, in our case, we will always have >1 equation.
+                    // So, we simply check for the term, and call on its representation variable.
+                    if(this.variables[splitString[x]].valueType=="association")
+                    {
+                        var ps = this.variables[splitString[x]].value.varDisplay;
+                        splitString[x] = this.variables[splitString[x]].value.var;
+                        unknowns[splitString[x]] = ps;
+                    }
+                    else
+                    {
+                        // OR it's a single unmarked, unconnected unknown
+                        var ps = this.variables[splitString[x]].parentSymbol;
+                        splitString[x] = this.variables[splitString[x]].currentSymbol;
+                        unknowns[splitString[x]] = ps;
+                    }
+                }
+            }
+        }
+        unitEquationSet.push(splitString.join(" "));
+        return {
+            "equations": unitEquationSet,
+            "unknowns": unknowns
+        };
     }
     solve()
     {

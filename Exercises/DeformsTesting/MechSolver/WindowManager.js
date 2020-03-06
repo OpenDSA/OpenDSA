@@ -30,30 +30,37 @@ class WindowManager{
 	}
 
 
-	extendCanvas() {
-		var jsavcanvas = document.getElementsByClassName("jsavcanvas");
-		console.log(jsavcanvas);
+	extendCanvas(activeEq) {
+		var jsavcanvas = document.getElementById("DeformsProblemPRO");
+		console.log(jsavcanvas, activeEq.equationObjectReference.height);
 	}
 
     /*
     Check iteratively for the workspaces and if each of their respective 
     equations can fit in a workspace. If not, shift... Then check other workspaces
      */
-    shiftDown(activeEq)
+    shiftDown(activeEq, activeSoln)
     {
         for(const wkspace in this.workspace_list.workspace_list) {
             var currWorkspace = this.workspace_list.workspace_list[wkspace];
-
+			console.log(currWorkspace);
             if(currWorkspace.lastSolution == null && currWorkspace.lastEquation == null) {
                 continue;
             }
             else if(currWorkspace.lastEquation == null) { 
                 //case where no equation. Only checks last solution in workspace
-                
+				console.log("hello no Eq");
+
                 var currSoln = parseInt(currWorkspace.lastSolution.element.element[0].style.top, 10);
 
                 if(currSoln > currWorkspace.DIMENSIONS["POSITION_Y"] + currWorkspace.DIMENSIONS["HEIGHT"]) {
-                    var currWkspaceElementHeight = activeEq.equationObjectReference.height;
+					var currWkspaceElementHeight;
+					if(activeEq == null) {
+						currWkspaceElementHeight = currWorkspace.DIMENSIONS.ELEMENTS["HEIGHT"];
+					}
+					else {
+						currWkspaceElementHeight = activeEq.equationObjectReference.height;
+					}
                     var currWkspaceElementHeightPad = currWorkspace.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
                     currWorkspace.DIMENSIONS["HEIGHT"] += currWkspaceElementHeight + currWkspaceElementHeightPad;
                     currWorkspace.elements[0]["jsav"].height(currWorkspace.DIMENSIONS["HEIGHT"]);
@@ -97,7 +104,12 @@ class WindowManager{
                         }
                     }
                     this.workspace_list.updateShape();
-                    break;
+					
+					/**
+					 * Add a line for call to extendCanvas()
+					 */
+					this.extendCanvas(activeEq);
+					break;	// TODO: See how top avoid doing this.
                 }
             }
             else if(currWorkspace.lastSolution == null) { 
@@ -106,15 +118,23 @@ class WindowManager{
                 // abc[1].style.height = parseInt(abc[1].style.height, 10) + 100 + "px";
                 // console.log(abc);
                 var currEquation = currWorkspace.lastEquation;
+				console.log("hello No sol");
 
                 if(currEquation.positionObj["POSITION_Y"] > 
                     currWorkspace.DIMENSIONS["POSITION_Y"] + currWorkspace.DIMENSIONS["HEIGHT"]) {
-						console.log(activeEq.equationObjectReference.height);
+						// console.log(activeEq.equationObjectReference.height);
 
 					// var currWkspaceElementHeight = currWorkspace.DIMENSIONS.ELEMENTS["HEIGHT"];
-					var currWkspaceElementHeight = activeEq.equationObjectReference.height;
-                    var currWkspaceElementHeightPad = currWorkspace.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
-                    
+					var currWkspaceElementHeight;
+					if(activeEq == null) {
+						currWkspaceElementHeight = currWorkspace.DIMENSIONS.ELEMENTS["HEIGHT"];
+					}
+					else {
+						currWkspaceElementHeight = activeEq.equationObjectReference.height;
+					}
+					
+					var currWkspaceElementHeightPad = currWorkspace.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+                
                     currWorkspace.DIMENSIONS["HEIGHT"] += currWkspaceElementHeight + currWkspaceElementHeightPad;
                     currWorkspace.elements[0]["jsav"].height(currWorkspace.DIMENSIONS["HEIGHT"]);
 
@@ -158,7 +178,12 @@ class WindowManager{
                         }
                     }
                     this.workspace_list.updateShape();
-                    break;
+					
+					/**
+					 * Add a line for call to extendCanvas()
+					 */
+					this.extendCanvas(activeEq);
+					break;
                 }
             }
             else { 
@@ -166,13 +191,20 @@ class WindowManager{
                 var currEquation = currWorkspace.lastEquation;
                 var currSoln = currWorkspace.lastSolution;
 
+				console.log("hello");
 
                 if((currEquation.positionObj["POSITION_Y"] > 
                   currWorkspace.DIMENSIONS["POSITION_Y"] + currWorkspace.DIMENSIONS["HEIGHT"]) || 
                   parseInt(currSoln.element.element[0].style.top, 10)  > 
                   currWorkspace.DIMENSIONS["POSITION_Y"] + currWorkspace.DIMENSIONS["HEIGHT"]) {
 
-                    var currWkspaceElementHeight = activeEq.equationObjectReference.height;
+					var currWkspaceElementHeight;
+					if(activeEq == null) {
+						currWkspaceElementHeight = currWorkspace.DIMENSIONS.ELEMENTS["HEIGHT"];
+					}
+					else {
+						currWkspaceElementHeight = activeEq.equationObjectReference.height;
+					}
                     var currWkspaceElementHeightPad = currWorkspace.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
 
                     currWorkspace.DIMENSIONS["HEIGHT"] += currWkspaceElementHeight+currWkspaceElementHeightPad;
@@ -206,10 +238,16 @@ class WindowManager{
                                 equations[eq].jsavequation["element"][0].style.top = amountShift;
                             }
 
-                            //moves all solutions down
+							//moves all solutions down
+							// if(this.workspace_list.workspace_list[wkspace2].LIST_OF_SOLUTIONS_IN_WORKSPACE) {
+							// 	continue;
+							// }
+							console.log(this.workspace_list.workspace_list[wkspace2].LIST_OF_SOLUTIONS_IN_WORKSPACE);
+							// break;
                             for(const soln in this.workspace_list.workspace_list[wkspace2].LIST_OF_SOLUTIONS_IN_WORKSPACE) {
-                                var currSoln = this.workspace_list.workspace_list[wkspace2].LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
-                                currSoln[soln]["element"]["element"][0].style.top = parseInt(currSoln["element"]["element"][0].style.top,10) + 
+								var currSoln = this.workspace_list.workspace_list[wkspace2].LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
+								console.log(currSoln);
+                                currSoln["element"]["element"][0].style.top = parseInt(currSoln["element"]["element"][0].style.top,10) + 
                                   this.workspace_list.workspace_list[wkspace].DIMENSIONS.ELEMENTS["HEIGHT"] + 
                                   this.workspace_list.workspace_list[wkspace].DIMENSIONS.ELEMENTS["HEIGHT_PAD"] + "px";
 
@@ -217,7 +255,12 @@ class WindowManager{
                         }
                     }
                     this.workspace_list.updateShape();
-                    break;
+					
+					/**
+					 * Add a line for call to extendCanvas()
+					 */
+					this.extendCanvas(activeEq);
+					break;
                 }
 
             }
@@ -233,7 +276,8 @@ class WindowManager{
             for(const eq in equations) {
                 var currEquation = equations[eq];
                 if(currEquation.selected == true) {
-					wkspace.DIMENSIONS.ELEMENTS["POSITION_Y"] = 
+					// console.log(currWkspace);
+					currWkspace.DIMENSIONS.ELEMENTS["POSITION_Y"] = 
 						currWkspace.DIMENSIONS.ELEMENTS["POSITION_Y"] - 
 						currWkspace.DIMENSIONS.ELEMENTS["HEIGHT"] - 
 						currWkspace.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
@@ -291,9 +335,12 @@ class WindowManager{
                     if(currWkspace.lastEquation != null && currWkspace.lastSolution != null) {
 
                         var currEq = currWkspace.lastEquation;
-                        var currSol = currWkspace.lastSolution;
+						var currSol = currWkspace.lastSolution;
+						console.log(currEq);
+						console.log(currSol);
+						console.log(currWkspace);
         
-                        if((currEq.positionObj["POSITION_Y"] < currWkspace[wkspace].DIMENSIONS["POSITION_Y"] + currWkspace.DIMENSIONS["HEIGHT"]) 
+                        if((currEq.positionObj["POSITION_Y"] < currWkspace.DIMENSIONS["POSITION_Y"] + currWkspace.DIMENSIONS["HEIGHT"]) 
                             || parseInt(currSol.element.element[0].style.top, 10)  < currWkspace.DIMENSIONS["POSITION_Y"] + currWkspace.DIMENSIONS["HEIGHT"]) {
 
 							currWkspace.DIMENSIONS["HEIGHT"] = 

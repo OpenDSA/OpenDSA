@@ -15,6 +15,10 @@
     padding: 2% 7% 2% 7% !important;
 }
 
+.jsavdialog.ui-draggable > ul > li:hover {
+    background-color: orange !important;
+}
+
 /* #equationbox {
     grid-area: equations;
     height: 0px;
@@ -56,10 +60,22 @@
 } */
 
 .boxparam {
+    border: 0.05em solid black;
+    border-radius: .2em;
     padding: 0px 0px;
 }
 
-.boxparam:hover {
+.value[data-status='empty']{
+    opacity: 0.3;
+}
+
+.unit:hover[data-status='filled'] {
+    cursor: pointer !important;
+    opacity: 0.5;
+    background-color: green;
+}
+
+.value:hover {
     cursor: grab !important;
     opacity: 0.5;
     background-color: orange !important;
@@ -69,13 +85,13 @@
     background-color: orange;
 } */
 
-.boxparam[data-domain='filled'] {
+/* .boxparam[data-domain='filled'] {
     padding: 1px 2px;
     border-radius: 4px;
     border-style: solid;
     border-width: 1px;
     border-color: black;
-}
+} */
 
 /* .boxparam[data-domain="length"] {
     background-color: rgb(126, 255, 126);

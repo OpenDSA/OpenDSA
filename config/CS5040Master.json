@@ -86,14 +86,16 @@
       "CS5040slides/Binary": {}
     },
     "Week 4, Day 2": {
-      "CS5040slides/P2": {},
       "CS5040slides/BST": {}
     },
     "Week 5, Day 1": {
-      "CS5040slides/Heaps": {}
+      "CS5040slides/P2": {},
+      "CS5040slides/Binary3": {}
     },
     "Week 5, Day 2": {
-      "CS5040slides/Binary3": {}
+      "CS5040slides/Mid1": {},
+      "CS5040slides/Heaps": {},
+      "CS5040slides/Comparison": {}
     },
     "Week 6, Day 1": {
       "CS5040slides/Midterm1": {}
