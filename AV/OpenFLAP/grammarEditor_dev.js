@@ -1,5 +1,6 @@
 var latexit = "http://latex.codecogs.com/svg.latex?";
 var arr;
+var GarammarVariables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 $(document).ready(function () {
   "use strict";
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
