@@ -4,8 +4,9 @@ class Variable{
         console.log(this.id)
         this.name = name;
 
+        this.parentSymbolTemplate = symbol;
         this.parentSymbol = symbol;
-        this.currentSymbol = varName ;
+        this.currentSymbol = varName;
 
         this.expectedDomain = domain;
         this.currentDomain = null;
@@ -236,7 +237,7 @@ class Variable{
          * UNIT_DB = {};
          */
         // Creating other units, to delegate this to a Singleton global object
-        mathjs.createUnit('ksi','1000 psi');
+        // mathjs.createUnit('ksi','1000 psi');
         // math.createUnit('msi','1000 ksi');
         // math.createUnit('mip','1000 kip');
         
@@ -339,8 +340,13 @@ class Variable{
                 "click", e=> {
                     e.stopPropagation();
                     console.log(x);
-                    this.value = mathjs.evaluate("number("+this.value+" to "+x.dataset.unit+")")
+<<<<<<< HEAD
+                    // this.value = mathjs.evaluate("number("+this.value+" to "+x.dataset.unit+")")
+=======
+                    // this.value = math.evaluate("number("+this.value+" to "+x.dataset.unit+")")
+>>>>>>> master
                     // this.currentUnit = ""
+                    element.close();
                 }
             )
         });

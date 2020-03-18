@@ -10,7 +10,15 @@ class Association{
         
         this.var = sourceObject.currentSymbol;
         this.varDisplay = sourceObject.parentSymbol;
+        this.varDisplayTemplate = sourceObject.parentSymbolTemplate;
 
+        this.updateVarDisplay();        
+    }
+    updateVarDisplay()
+    {
+        console.log(this.varDisplay);
+        // option (dialog boxes, inputs, etc.) to change the variable name
+        // throughout for all of the vars in the associations throughout.
         for(var variable in this.variableObjects)
         {
             console.log(variable);
@@ -20,12 +28,6 @@ class Association{
             tempElement.clear();
             this.variableObjects[variable].valueDisplay.dataset.status = "filled";   
         }
-        
-    }
-    changeVarDisplay()
-    {
-        // option (dialog boxes, inputs, etc.) to change the variable name
-        // throughout for all of the vars in the associations throughout.
     }
     addVariable(newVar)
     {

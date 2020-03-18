@@ -39,7 +39,6 @@
     // generate the set of variable names that can be used throughout.
     var VARIABLE_ID_USED = [];
     var VARIABLE_ID_UNUSED = [];
-        
     Window.getVarName = function() {
         var name=null;
         // do{
@@ -53,14 +52,19 @@
         VARIABLE_ID_USED.push(name);
         return name;
     }
-    
+
+<<<<<<< HEAD:Exercises/DeformsTesting/MechSolverCommon.js
+    var mechSolverCommon = {
+=======
+    Window.WindowManager;
     var deformsProblemPRO = {
+>>>>>>> master:Exercises/DeformsTesting/DeformsProblemPRO.js
 
         //initializer, creates all the necessary object instances
-        initJSAV: function(){
+        initJSAV: function(exerciseId){
             // Creating one rectangle in the middle that allows scrolling through
             // the list of equations.
-            reset();
+            reset(exerciseId);
         },
         
         checkAnswer: function()
@@ -174,13 +178,15 @@
             return dec;
         }
     };
-
-    function reset(){
+    
+    function reset(exerciseId){
         // Clear the old JSAV canvas
-        if ($("#DeformsProblemPRO")) { $("#DeformsProblemPRO").empty(); }
+        // if ($("#DeformsProblemPPRO")) { $("#DeformsProblemPPRO").empty(); }
+        if ($("#"+exerciseId)) { $("#"+exerciseId).empty(); }
     
         //Setup the new display
-        av = new JSAV("DeformsProblemPRO");
+        // av = new JSAV("DeformsProblemPPRO");
+        av = new JSAV(exerciseId);
         // av = new JSAV("DeformsProblemPRO", { logEvent: function(eventData) {
         //     console.log(eventData);
         // }});
@@ -188,6 +194,7 @@
         eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
             eqbank, globalPointerReference)
+        Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, wkspacelist);
 
         // Setting up clickhandlers for the equations in the EquationBank
         // OBSOLETE: MAY TRY TO FIX LATER, MOVING TO DISTRIBUTED APPROACH INSTEAD
@@ -204,7 +211,7 @@
         // Initialize other variables
         av.displayInit();
         av.recorded();
-        deformsProblemPRO.userInput = false;
+        mechSolverCommon.userInput = false;
 
         // $("body").on("jsav-log-event", function(event, eventData) {
         //     console.log(eventData);
@@ -268,5 +275,5 @@
         }
     }
 
-    window.deformsProblemPRO = window.deformsProblemPRO || deformsProblemPRO;
+    window.mechSolverCommon = window.mechSolverCommon || mechSolverCommon;
 }());
