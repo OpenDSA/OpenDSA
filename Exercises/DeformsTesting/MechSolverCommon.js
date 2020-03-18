@@ -53,12 +53,7 @@
         return name;
     }
 
-<<<<<<< HEAD:Exercises/DeformsTesting/MechSolverCommon.js
     var mechSolverCommon = {
-=======
-    Window.WindowManager;
-    var deformsProblemPRO = {
->>>>>>> master:Exercises/DeformsTesting/DeformsProblemPRO.js
 
         //initializer, creates all the necessary object instances
         initJSAV: function(exerciseId){

@@ -1,31 +1,5 @@
 const equations = [
     {
-<<<<<<< HEAD
-=======
-        group: 'Axial',
-        id: "axialStress",
-        name: 'Stress in an axial',
-        latex: '\\delta_t = \\alpha \\cdot \\Delta T \\cdot L',
-        latex_boxes: '\\Box=\\Box\\times\\Box\\times\\Box',
-        params_latex: ['\\delta_t', '\\alpha', '\\Delta T', 'L'],
-        template: 'deform = const * tempchange * len',
-        params: ['deform', 'const', 'tempchange', 'len'],
-        variables: {
-            'deform':'\\delta_t',
-            'const':'\\alpha',
-            'tempchange':'\\Delta T',
-            'len':'L'
-        },
-        domains: {
-            'deform':'length',
-            'const':'temperature-1',
-            'tempchange':'temperature',
-            'len':'length'
-        },
-        height: 30
-    },
-    {
->>>>>>> master
         group: 'Basic definitions',
         id: "axialMemberAvgNormalStress",
         name: 'Average normal stress in an axial member',
@@ -354,7 +328,6 @@ const equations = [
         },
         height: 30
     },
-<<<<<<< HEAD
     // {
     //     group: 'Arithmetic',
     //     id: "add3",
@@ -377,31 +350,6 @@ const equations = [
     //         'zterm': 'dimensionless'
     //     }
     // },
-=======
-    {
-        group: 'Arithmetic',
-        id: "add3",
-        name: 'Addition of 3 terms',
-        latex: 'c=x+y+z',
-        latex_boxes: '\\Box=\\Box+\\Box+\\Box',
-        params_latex: ['c', 'x', 'y', 'z'],
-        template: 'cterm = xterm + yterm + zterm',
-        params: ['cterm', 'xterm', 'yterm', 'zterm'],
-        variables: {
-            'cterm': 'c',
-            'xterm': 'x',
-            'yterm': 'y',
-            'zterm': 'z'
-        },
-        domains: {
-            'cterm': 'dimensionless',
-            'xterm': 'dimensionless',
-            'yterm': 'dimensionless',
-            'zterm': 'dimensionless'
-        },
-        height: 30
-    },
->>>>>>> master
     {
         group: 'Arithmetic',
         id: "sub",
