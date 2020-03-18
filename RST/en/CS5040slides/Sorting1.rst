@@ -148,8 +148,9 @@ Quadratic Sorts
       * Selection Sort viewed as an optimization of Bubble Sort: Works
       * Selection Sort avoid self-swaps: Does not work
       * Bubble Sort "i" vs "1": Works
-      * Bubble Sort avoid/count comparisions: Does not work
-      * Bubble Sort O(1) lower bound claim: Bogus
+      * Bubble Sort count comparisions/avoid unnecessary iterations:
+        Does not work
+      * Bubble Sort O(n) best case claim: Bogus
 
 .. slide:: Exchange Sorting
 
