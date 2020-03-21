@@ -7,11 +7,12 @@
 # http://127.0.0.1:8080/
 # python -m SimpleHTTPServer
 unameOut="$(uname -s)"
+echo System is: "${unameOut}"
 case "${unameOut}" in
-    MINGW*)  python3 server.py 0.0.0.0:8080;;
-    CYGWIN*) python3 server.py 0.0.0.0:8080;;
-    Linux*)  sudo python3 server.py 0.0.0.0:8080;;
-    Darwin*) sudo python3 server.py 0.0.0.0:8080;;
-    *)       python3 server.py 0.0.0.0:8080
+    MINGW*)  python3 server.py;;
+    CYGWIN*) python3 server.py;;
+    Linux*)  python3 server.py;;
+    Darwin*) python3 server.py;;
+    *)       python3 server.py
 
 esac
