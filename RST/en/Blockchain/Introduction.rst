@@ -27,6 +27,15 @@ with three lines.
 .. avembed:: AV/Blockchain/HashExample.html ss
    :long_name: Blockchain Hash Example
 
+
+We will use the SHA-256 hash method throughout this tutorial, but showing 64 characters in the visualizations is unwieldy. 
+So, we will only show the last 16 characters, like is shown here: 
+
+.. _SmallerHashExample:
+
+.. avembed:: AV/Blockchain/SmallerHashExample.html ss
+   :long_name: Smaller Blockchain Hash Example 
+
 As we dive deeping into the building blocks of blockchain, we will look at a simple example of a block. In the figure below, we can see that 
 our block has a corresponding number and then some data corresponding to it. What we do here is concatenate the block number to the data that 
 is given to create a new hash.

@@ -3,11 +3,6 @@
 $(document).ready(function() {
     "use strict";
     // Declare and initialize state variables
-    var tsize = Number($("#tablesize").val()), // Table size
-        recs = Number($("#numrecs").val()), // Number of records
-        birthCredit = false,    // Credit flag for question 1
-        thousandCredit = false, // Credit flag for question 2
-        noCredit = true;        // Have not yet given credit
     var config = ODSA.UTILS.loadConfig(),
         interpret = config.interpreter;       // get the interpreter
   
@@ -16,9 +11,9 @@ $(document).ready(function() {
       $(".output").val(msg);
     }
   
-    async function sha256(blockNum, data) {
+    async function sha256(input) {
       // encode as UTF-8
-      const msgBuffer = new TextEncoder('utf-8').encode(blockNum + data);                    
+      const msgBuffer = new TextEncoder('utf-8').encode(input);                    
   
       // hash the message
       const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
@@ -27,7 +22,7 @@ $(document).ready(function() {
       const hashArray = Array.from(new Uint8Array(hashBuffer));
   
       // convert bytes to hex string                  
-      var hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+      const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
       
       return "0000" + hashHex.substring(0, 12);
   }
@@ -36,15 +31,13 @@ $(document).ready(function() {
     // Most of this behavior relates to checking against the expected
     // answer for giving credit to the obsolete exercise.
     function CreateHash() {
-      var data = $("#tablesize").val();
-      var blockNum = $("#blockNum").val();
-      sha256(blockNum, data).then(res => {
+      var input = $("#inputArea").val();
+      sha256(input).then(res => {
           tell(res);
       });
     }
   
     // Action callbacks for form entities
-    $("#tablesize").keyup(CreateHash);
-    $("#blockNum").keyup(CreateHash);
+    $("#inputArea").keyup(CreateHash);
   });
   
