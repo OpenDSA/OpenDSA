@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="jsav math DeformsProblemPRO">
+<html data-require="jsav math MechSolverCommon">
 <head>
   <title>Deforms Basic Problem</title>
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -11,11 +11,11 @@
 <body data-height="860" data-width="950">
   <div class="exercise">
     <div class="vars">
-      <var id="JSAV">deformsProblemPRO.initJSAV()</var>
+      <var id="JSAV">mechSolverCommon.initJSAV("DeformsSimpleProblemPPRO")</var>
     </div>
 
     <div class="problems">
-      <div id="DeformsProblemPROp">
+      <div id="DeformsSimpleProblemPPROp">
         <p class="problem">
             A solid square bar of cross-sectional dimensions 
             <span 
@@ -89,14 +89,14 @@
           <br>
         </div>
         
-        <div id="DeformsProblemPRO" class="jsavcanvas"></div>
+        <div id="DeformsSimpleProblemPPRO" class="jsavcanvas"></div>
         
         <div class="solution" data-type="custom">
           <div class="guess"> 
-            [ deformsProblemPRO.globalSolutionBoxes ]
+            [ mechSolverCommon.globalSolutionBoxes ]
           </div>
           <div class="validator-function">
-            var answer = deformsProblemPRO.checkAnswer();
+            var answer = mechSolverCommon.checkAnswer();
             if (!guess[0] && !answer) {
               return ""; // User did not click, and correct answer is not
                          // initial array state

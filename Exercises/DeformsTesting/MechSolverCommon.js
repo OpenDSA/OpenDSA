@@ -54,14 +54,14 @@
         return name;
     }
 
-    Window.WindowManager;
-    var deformsProblemPRO = {
+    // Window.WindowManager;
+    var mechSolverCommon = {
 
         //initializer, creates all the necessary object instances
-        initJSAV: function(){
+        initJSAV: function(exerciseId){
             // Creating one rectangle in the middle that allows scrolling through
             // the list of equations.
-            reset();
+            reset(exerciseId);
         },
         
         checkAnswer: function()
@@ -176,21 +176,22 @@
         }
     };
 
-    function reset(){
+    function reset(exerciseId){
         // Clear the old JSAV canvas
-        if ($("#DeformsProblemPRO")) { $("#DeformsProblemPRO").empty(); }
+        if ($("#"+exerciseId)) { $("#"+exerciseId).empty(); }
     
         //Setup the new display
-        av = new JSAV("DeformsProblemPRO");
+        av = new JSAV(exerciseId);
         // av = new JSAV("DeformsProblemPRO", { logEvent: function(eventData) {
         //     console.log(eventData);
         // }});
         Window.jsavObject = av;
         eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
+        
         wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
-            eqbank, globalPointerReference)
+            eqbank, globalPointerReference);
         Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, wkspacelist);
-
+        Window.exerciseId = exerciseId;
         // Setting up clickhandlers for the equations in the EquationBank
         // OBSOLETE: MAY TRY TO FIX LATER, MOVING TO DISTRIBUTED APPROACH INSTEAD
         // for(var page in eqbank.equation_pages){
@@ -206,7 +207,7 @@
         // Initialize other variables
         av.displayInit();
         av.recorded();
-        deformsProblemPRO.userInput = false;
+        mechSolverCommon.userInput = false;
 
         // $("body").on("jsav-log-event", function(event, eventData) {
         //     console.log(eventData);
@@ -270,5 +271,5 @@
         }
     }
 
-    window.deformsProblemPRO = window.deformsProblemPRO || deformsProblemPRO;
+    window.mechSolverCommon = window.mechSolverCommon || mechSolverCommon;
 }());
