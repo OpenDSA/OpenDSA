@@ -1,6 +1,6 @@
 #container {
     width: 525px;
-    height: 165px;
+    height: 225px;
     position: relative;
 }
 
@@ -13,40 +13,44 @@
 
 .bsize {
     position: absolute;
-    left: 55px;
+    left: 10px;
     top: 42px;
 }
 
 #blockNum {
     position: absolute;
-    left: 200px;
+    left: 175px;
     top: 55px;
-    width: 100px;
+    width: 50px;
 }
 
 .tsize {
     position: absolute;
-    left: 55px;
+    left: 10px;
     top: 70px;
 }
 
 #tablesize {
     position: absolute;
-    left: 200px;
-    top: 85px;
-    width: 100px;
+    left: 10px;
+    top: 110px;
+    right: 10px;
+    height: 50px;
+    resize: none;
 }
 
 .label {
     position: absolute;
-    top: 115px;
+    bottom: 20px;
+    left: 10px;
 }
 
 .output {
+    left: 10px;
     position: absolute;
-    top: 150px;
+    bottom: 10px;
     text-align:center;
-    width: 520px;
+    right: 10px;
     margin: auto 0;
     display: block;
     font-size: 10pt;
