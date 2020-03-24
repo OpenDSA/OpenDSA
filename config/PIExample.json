@@ -84,11 +84,15 @@
       "PIExample/grammarRegularExpression": {},
       "PIExample/expressionRegular": {}
     },
-    "Identifying Non-regular Languages":{},
+    "Identifying Non-regular Languages":{
+      "PIEXample/INRL":{}
+    },
     "Context-Free Grammars and Languages":{},
     "Pushdown Automata":{},
     "Properties of Context-free Languages":{},
-    "Models of Computation":{},
+    "Models of Computation":{
+      "PIExample/TMGeneralModel":{}
+    },
     "Parsing":{},
     "Limits to Computing":{}
   }

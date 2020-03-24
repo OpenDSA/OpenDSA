@@ -267,9 +267,10 @@ class Workspace
             this.globalPointerReference
         )
         
+        console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
         newActiveEquation.equationObjectReference.height+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
-
+        console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         // Handling the internal initial bookkeeping
         this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation;
         //        |_>  To be elaborated for additional operations.

@@ -39,7 +39,6 @@
     // generate the set of variable names that can be used throughout.
     var VARIABLE_ID_USED = [];
     var VARIABLE_ID_UNUSED = [];
-
     Window.getVarName = function() {
         var name=null;
         // do{
@@ -54,7 +53,6 @@
         return name;
     }
 
-    // Window.WindowManager;
     var mechSolverCommon = {
 
         //initializer, creates all the necessary object instances
@@ -175,12 +173,14 @@
             return dec;
         }
     };
-
+    
     function reset(exerciseId){
         // Clear the old JSAV canvas
+        // if ($("#DeformsProblemPPRO")) { $("#DeformsProblemPPRO").empty(); }
         if ($("#"+exerciseId)) { $("#"+exerciseId).empty(); }
     
         //Setup the new display
+        // av = new JSAV("DeformsProblemPPRO");
         av = new JSAV(exerciseId);
         // av = new JSAV("DeformsProblemPRO", { logEvent: function(eventData) {
         //     console.log(eventData);

@@ -10,7 +10,7 @@
 
 Regular Expression Continued_third
 =================
-Converting NFA to DFA and minimizing the DFA
+Regular Expression VS Regular Language continuded
 ---------------------------------------
 
 .. inlineav:: RegularExpressionThird ff

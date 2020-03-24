@@ -7,6 +7,7 @@ class ActiveEquation{
         this.jsavequation = null;
         this.variables = {};
         this.globalPointerReference = globalPointerReference;
+        this.jsavObject = jsavObject;
         this.positionObj = position_obj;
 
         this.visualComponents = {};
@@ -47,11 +48,15 @@ class ActiveEquation{
             katex.renderToString(this.equationObjectReference["latex"]),
             {
                 left: position_obj["POSITION_X"]+
-                this.visualComponents["tickmark"].element[0].offsetWidth+15,
+                this.visualComponents["tickmark"].element[0].offsetWidth+5,
                 top: position_obj["POSITION_Y"]+3
             }
         ).addClass("selectableEquation");
-        
+        this.visualComponents["text"].element[0].addEventListener("click", e=> {
+            Window.parentObject = this;
+            this.subscriptizeEquationComponents();
+        });
+
         /**
          * Add code her to add an additional span class to every single box,
          * and associate a click handler with that span class container, so that
@@ -62,8 +67,8 @@ class ActiveEquation{
             katex.renderToString(this.equationObjectReference["latex_boxes"]),
             {
                 left: position_obj["POSITION_X"]+
-                this.visualComponents["tickmark"].element[0].offsetWidth+15+
-                this.visualComponents["text"].element[0].offsetWidth+15,
+                this.visualComponents["tickmark"].element[0].offsetWidth+5+
+                this.visualComponents["text"].element[0].offsetWidth+30,
                 top: position_obj["POSITION_Y"]
             }
         ).addClass("boxedEquation");
@@ -234,6 +239,68 @@ class ActiveEquation{
 
         // DEFAULT
         // return ["r_n",0]
+    }
+    subscriptizeEquationComponents(){
+        // Steps:
+        // 1. Add subscripts to all the elements in the equation in the represented version
+        // 2. Add subscripts to all the grayed out boxes in the boxed equation
+        // 3. For all filled boxes with Association type objects, add subscripts
+        // 4. For ALL of these cases, add subscripts to both the text representation as well as the visual representation.
+
+        // console.log(this);
+        var inputPromptHTML = 
+        '<h4>Enter a subscript name here.</h4>'+
+        '<input type="text" id="subscriptname" name="subscriptname" size="8" />'+
+        '<input type="button" id="submit" value="Set subscript"/>';
+
+        var inputBox = JSAV.utils.dialog(inputPromptHTML, {width: 150});
+        inputBox[0].style.top = event.pageY+5+"px";
+        inputBox[0].style.left = event.pageX+10+"px";
+        Window.box = inputBox;
+        inputBox[0].querySelector("#submit").addEventListener("click", Window.parentObject.setSubscript);
+    }
+    setSubscript(event)
+    {
+        var subscriptText = Window.box[0].querySelector("#subscriptname").value;
+        event.stopPropagation();
+        if(subscriptText == "") subscriptText = " ";
+        
+        // Step 1.
+        Window.parentObject.visualComponents["text"].text(
+            katex.renderToString(
+                Window.parentObject.equationObjectReference.latex.replace(new RegExp('\{ \}', 'g'),"{"+subscriptText+"}")
+                )
+            );
+        
+        var assocVariables = [];
+        for(var variable in Window.parentObject.variables)
+        {
+            // Update the variable internal symbols for later associations and solving
+            // This can be referenced from the current equation's equationRefObj and the variable's semantic name.
+
+            // Update the current displayed boxes
+            // Step 2.
+            if(Window.parentObject.variables[variable].valueType == null)
+            {
+                // .replace(new RegExp('\{ \}', 'g'),"{"+subscriptText+"}")
+                Window.parentObject.variables[variable].parentSymbol = 
+                Window.parentObject.variables[variable].parentSymbolTemplate.replace(
+                    new RegExp('\{ \}', 'g'),"{"+subscriptText+"}");
+                Window.parentObject.variables[variable].grayOut();
+            }
+            // Step 3.
+            else if(Window.parentObject.variables[variable].valueType == "association")
+            {
+                Window.parentObject.variables[variable].value.varDisplay = 
+                    Window.parentObject.variables[variable].value.varDisplayTemplate.replace(
+                        new RegExp('\{ \}', 'g'),"{"+subscriptText+"}");
+                Window.parentObject.variables[variable].value.updateVarDisplay();
+            }
+        }
+
+        Window.box.close();
+        delete Window.box;
+        delete Window.parentObject;
     }
 }
 window.ActiveEquation = window.ActiveEquation || ActiveEquation

@@ -4,8 +4,9 @@ class Variable{
         console.log(this.id)
         this.name = name;
 
+        this.parentSymbolTemplate = symbol;
         this.parentSymbol = symbol;
-        this.currentSymbol = varName ;
+        this.currentSymbol = varName;
 
         this.expectedDomain = domain;
         this.currentDomain = null;
@@ -236,10 +237,9 @@ class Variable{
          * UNIT_DB = {};
          */
         // Creating other units, to delegate this to a Singleton global object
-        // math.createUnit('ksi','1000 psi');
+        // mathjs.createUnit('ksi','1000 psi');
         // math.createUnit('msi','1000 ksi');
         // math.createUnit('mip','1000 kip');
-        // math.createUnit('lbftpers', 1/550+" hp");
         
         var UNIT_DB = {
             'length': {
@@ -288,7 +288,7 @@ class Variable{
                 'kilowatt': {'unit':'kW', 'unitDisp':'kW'},
                 'megawatt': {'unit':'MW', 'unitDisp':'MW'},
                 'horsepower': {'unit':'hp', 'unitDisp':'hp'},
-                'pound-foot/s': {'unit':'lbftpers', 'unitDisp':'lb ft/s'}
+                'pound-feet/s': {'unit':'lbf ft/s', 'unitDisp':'lb-force ft/s'}
             },
             'angularvelocity': {
                 // To be added after discussion
@@ -340,8 +340,10 @@ class Variable{
                 "click", e=> {
                     e.stopPropagation();
                     console.log(x);
+                    // this.value = mathjs.evaluate("number("+this.value+" to "+x.dataset.unit+")")
                     // this.value = math.evaluate("number("+this.value+" to "+x.dataset.unit+")")
                     // this.currentUnit = ""
+                    element.close();
                 }
             )
         });
