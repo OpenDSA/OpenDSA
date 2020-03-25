@@ -24,8 +24,17 @@ with three lines.
 
 .. _HashExample:
 
-.. avembed:: AV/Blockchain/HashExample.html ss
+.. avembed:: AV/Blockchain/HashExample.html pe
    :long_name: Blockchain Hash Example
+
+
+We will use the SHA-256 hash method throughout this tutorial, but showing 64 characters in the visualizations is unwieldy. 
+So, we will only show the last 16 characters, like is shown here: 
+
+.. _SmallerHashExample:
+
+.. avembed:: AV/Blockchain/SmallerHashExample.html pe
+   :long_name: Smaller Blockchain Hash Example 
 
 As we dive deeping into the building blocks of blockchain, we will look at a simple example of a block. In the figure below, we can see that 
 our block has a corresponding number and then some data corresponding to it. What we do here is concatenate the block number to the data that 
@@ -33,7 +42,7 @@ is given to create a new hash.
 
 .. _BlockExample:
 
-.. avembed:: AV/Blockchain/BlockExample.html ss
+.. avembed:: AV/Blockchain/BlockExample.html pe
    :long_name: Block Example
 
 Blockchains are blocks that utilize the previous block's hash to "chain" together and create the blockchain. It is a linked list where 
@@ -44,14 +53,14 @@ As of now, our hashs are created by concatenating the block number, data, and th
 
 .. _BlockchainExample:
 
-.. avembed:: AV/Blockchain/BlockchainExample.html ss
+.. avembed:: AV/Blockchain/BlockchainExample.html pe
    :long_name: Blockchain Example
 
 This example shows a Bitcoin example of a blockchain. This conveys the idea of a nonce and how it effects the mining process.
 
 .. _BlockchainNonceExample:
 
-.. avembed:: AV/Blockchain/BlockchainNonceExample.html ss
+.. avembed:: AV/Blockchain/BlockchainNonceExample.html pe
    :long_name: Blockchain Nonce Example
 
 Below is a slideshow demonstrating these importance of each of these concepts as a blockchain would grow.

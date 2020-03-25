@@ -10,10 +10,29 @@ Chapter 11
 Other Applications of Blockchain
 --------------------------------
 
+Blockchain is not only a distributed ledger that only holds value with 
+finacial transactions, but to distribute trust among anything that people
+put value in. In this chapter, we will explore other uses cases of blockchain
+and companies that are utilizing this technology to transform how 
+the world runs on trust. 
 
-Blockone?
----------
+Blockone
+--------
 
+Block.one is a private company that creates open source blockchain solutions.
+Their main project is EOSIO with that allows of creating a real-world blockchain
+platform. EOSIO allows engineers to develop decentralized products at scale whether
+it be on a mobile platform, within the browser, or any other experiences. It includes 
+a high porformance database (nodeos), multithreaded smart contracts, and inter-blockchain
+communication (IBC) to provide limitless transaction throughput rates. 
+
+They are also working on a blockchain backed social media platform called 
+Voice. The goal of the platform is a rewards based social network to 
+allow users to create, distribute, and discover new content. In 
+many social platforms today, they contain many bots and fake accounts. With Voice, 
+the EOSIO protocol is utilized to inherit blockchain characteristics such as 
+auditability and security allowing for no fake content and attribute any content 
+back to the original source.
 
 Git
 ---
@@ -39,7 +58,7 @@ still stored on the repository.
 who made a transaction.
 
 Even though there are some similarities, there are differences that make Git not
-exactly like a blockchain system.
+exactly like a blockchain system:
 
 * Forking a git repository is something that developers will often do. They will
 take the existing repository and add their own changes without affecting the original

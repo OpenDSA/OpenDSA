@@ -10,17 +10,15 @@
   <title>SHA-256 Calculator</title>
   <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
-  <link rel="stylesheet" href="HashExample.css" type="text/css" />
+  <link rel="stylesheet" href="Passphrase.css" type="text/css" />
 </head>
 
 <body>
   <div id="container">
     <p class="instructions">
-        Type in any string to discover what its SHA-256 value is.<br/>
+        Type in your passphrase that we will use to generate your keys.<br/>
     </p>
-    <textarea id="inputArea" rows="3" cols="63" placeholder="Enter anything to be hashed"></textarea>
-    <p class="label">Hash:</p>
-    <textarea class="output" rows="2" cols="32" disabled></textarea>
+    <textarea id="inputArea" rows="3" cols="63" placeholder="Enter your passphrase"></textarea>
   </div>
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -28,6 +26,6 @@
   <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <script src="../../lib/odsaUtils-min.js"></script>
   <script src="../../lib/odsaAV-min.js"></script>
-  <script src="HashExample.js"></script>
+  <script src="Passphrase.js"></script>
 </body>
 </html>

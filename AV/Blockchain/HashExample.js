@@ -23,7 +23,8 @@ $(document).ready(function() {
 
     // convert bytes to hex string                  
     const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
-    return hashHex;
+    
+    return "0000" + hashHex.substring(4, hashHex.length);
 }
 
   // Main action: Result of clicking "Calculate" button
