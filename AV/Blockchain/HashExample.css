@@ -31,8 +31,13 @@
     position: absolute;
     top: 130px;
     text-align: left;
-    width: 520px;
+    width: 260px;
     margin: auto 0;
     display: block;
-    font-size: 11pt;
+    font-size: 10pt;
+    font-family: Courier;
+}
+
+textarea {
+    resize: none;
 }

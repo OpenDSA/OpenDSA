@@ -36,7 +36,7 @@ class ValueBox{
                 element.dataset.variableDisplay+"="+element.dataset.valueDisplay+element.dataset.unitDisplay),
             {
                 left: element.visuals["POSITION_X"],
-                top: element.visuals["POSITION_Y"]
+                top: element.visuals["POSITION_Y"]+3 //added three for visual padding balance between solutions and equations
             }
         ).addClass("selectableEquation");
         this.element.element[0].addEventListener(

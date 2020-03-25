@@ -1,0 +1,54 @@
+#container {
+    width: 525px;
+    height: 165px;
+    position: relative;
+}
+
+.instructions {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.bsize {
+    position: absolute;
+    left: 55px;
+    top: 42px;
+}
+
+#blockNum {
+    position: absolute;
+    left: 200px;
+    top: 55px;
+    width: 100px;
+}
+
+.tsize {
+    position: absolute;
+    left: 55px;
+    top: 70px;
+}
+
+#tablesize {
+    position: absolute;
+    left: 200px;
+    top: 85px;
+    width: 100px;
+}
+
+.label {
+    position: absolute;
+    top: 115px;
+}
+
+.output {
+    position: absolute;
+    top: 150px;
+    text-align:center;
+    width: 520px;
+    margin: auto 0;
+    display: block;
+    font-size: 10pt;
+    font-family: Courier;
+}

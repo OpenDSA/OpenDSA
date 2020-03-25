@@ -16,11 +16,6 @@ $(document).ready(function() {
       $(".output").val(msg);
     }
   
-    // Process About button: Pop up a message with an Alert
-    function about() {
-      alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
-    }
-  
     async function sha256(blockNum, data) {
       // encode as UTF-8
       const msgBuffer = new TextEncoder('utf-8').encode(blockNum + data);                    
@@ -32,8 +27,9 @@ $(document).ready(function() {
       const hashArray = Array.from(new Uint8Array(hashBuffer));
   
       // convert bytes to hex string                  
-      const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
-      return hashHex;
+      var hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+      
+      return "0000" + hashHex.substring(0, 12);
   }
   
     // Main action: Result of clicking "Calculate" button
@@ -48,7 +44,7 @@ $(document).ready(function() {
     }
   
     // Action callbacks for form entities
-    $("#about").click(about);
-    $("#calculate").click(CreateHash);
+    $("#tablesize").keyup(CreateHash);
+    $("#blockNum").keyup(CreateHash);
   });
   

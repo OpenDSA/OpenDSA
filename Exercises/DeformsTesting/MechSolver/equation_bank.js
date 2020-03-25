@@ -59,7 +59,32 @@ const equations = [
             'normalstress': 'pressure',
             'normalforce': 'force',
             'area': 'length2'
+<<<<<<< HEAD
         },
+=======
+        },
+        height: 30
+    },
+    {
+        group: 'Basic definitions',
+        id: "axialMemberNormalStrainAvgLongL",
+        name: 'Average normal strain on an axial member',
+        latex: '\\epsilon_{long_{ }}=\\frac {\\Delta L_{ }} {L_{ }}',
+        latex_boxes: '\\Box=\\frac \\Box \\Box',
+        params_latex: ['\\epsilon_{long_{ }}', '\\Delta L_{ }', 'L_{ }'],
+        template: 'strain = changeL / length',
+        params: ['strain', 'length', 'changeL'],
+        variables: {
+            'strain': '\\epsilon_{long_{ }}',
+            'changeL': '\\Delta L_{ }',
+            'length': 'L_{ }'
+        },
+        domains: {
+            'strain': 'ratio',
+            'changeL': 'length',
+            'length': 'length'
+        },
+>>>>>>> a45fa7b272b86a760f61ec87a0a72a61bdbfe9ec
         height: 30
     },
     {
@@ -99,8 +124,13 @@ const equations = [
         },
         domains: {
             'strain': 'ratio',
+<<<<<<< HEAD
             'changeLength': 'length',
             'length': 'length'
+=======
+            'changeDiam': 'length',
+            'diameter': 'length'
+>>>>>>> a45fa7b272b86a760f61ec87a0a72a61bdbfe9ec
         },
         height: 30
     },
@@ -120,6 +150,7 @@ const equations = [
         },
         domains: {
             'strain': 'ratio',
+<<<<<<< HEAD
             'themalcoeff': 'temperature-1',
             'tempchange': 'temperature'
         },
@@ -290,6 +321,10 @@ const equations = [
             'stressactual': 'pressure',
             'stressfailure': 'pressure',
             'FS': 'safetyfactor'
+=======
+            'changeDiam': 'length',
+            'diameter': 'length'
+>>>>>>> a45fa7b272b86a760f61ec87a0a72a61bdbfe9ec
         },
         height: 30
     },

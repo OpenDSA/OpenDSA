@@ -53,6 +53,7 @@ class Workspace
         this.removebutton = null;
 
         this.createBox();
+        console.log(this);
     }
     createBox()
     {
@@ -179,7 +180,9 @@ class Workspace
     destroyBox()
     {
         // Triggered by the clickhandler
-        // Window.windowManager.deleteWkspace(this.id);
+        Window.windowManager.deleteWkspace(this.id);
+
+        // TODO: check delete equation objects
         this.elements.forEach(x => x['jsav'].clear())
         //This is fine, since the parent knows to remove this from their tracking.
         return this.id;
@@ -264,9 +267,10 @@ class Workspace
             this.globalPointerReference
         )
         
+        console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
         newActiveEquation.equationObjectReference.height+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
-
+        console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         // Handling the internal initial bookkeeping
         this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation;
         //        |_>  To be elaborated for additional operations.
@@ -293,8 +297,8 @@ class Workspace
             ];
         }
         // console.log(newActiveEquation);
-        // Window.windowManager.shiftDown(newActiveEquation);
-        // this.lastEquation = newActiveEquation;
+        this.lastEquation = newActiveEquation;
+        Window.windowManager.shiftDown(this.lastEquation, this.id);
         //console.log(this.equationHashMap);
         // console.log(this.DIMENSIONS);
     }
@@ -365,8 +369,8 @@ class Workspace
 
     //         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
     //         this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
-    //         // Window.windowManager.shiftDown();
-    //         // this.lastSolution = currSolution;
+    //         this.lastSolution = currSolution;
+    //         Window.windowManager.shiftDown(null, null, this.id);
 
     //     }
 
@@ -385,7 +389,7 @@ class Workspace
 
     deleteEquations()
     {
-        // Window.windowManager.shiftUp();
+        Window.windowManager.shiftUp(this.id);
     }
 
     solveEquations()
@@ -450,8 +454,8 @@ class Workspace
             this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
 
             this.lastSolution = currSolution;
-            // Window.windowManager.shiftDown(null, this.lastSolution);
-            // console.log("Before printing solutions", this.DIMENSIONS);
+
+            Window.windowManager.shiftDown(null, this.id);
         }
 
         // De-select selected equations, the list of selections will get cleared anyway.

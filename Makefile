@@ -104,6 +104,10 @@ Test: min
 	python --version
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
+Milen: min
+	python --version
+	python $(CONFIG_SCRIPT) config/Milen.json --no-lms
+
 DanaG: min
 	python $(CONFIG_SCRIPT) config/DanaG.json --no-lms
 
@@ -139,6 +143,9 @@ CTEX: min
 
 Sam: min
 	python $(CONFIG_SCRIPT) config/Sam.json --no-lms
+
+Lin: min
+	python $(CONFIG_SCRIPT) config/Lin.json --no-lms
 
 Yinwen: min
 	python $(CONFIG_SCRIPT) config/Yinwen.json --no-lms

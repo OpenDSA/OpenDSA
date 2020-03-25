@@ -40,13 +40,68 @@ anyone without the private key to sign a message and pass it off as
 signed by the participant.
 This is essential in blockchains to verify who originated a message.
 
-.. _PublicKeyExample:
+Now we are going to demonstrate how RSA encryption is used. First in
+the example below, please provide some phrase that you would like to be
+encrypted and then decrypted. 
 
-.. avembed:: AV/Blockchain/KeyExample.html ss
-   :long_name: Public Key Example
+.. maybe take this out and just let them input it in the third step 
+
+.. _InputMessage:
+
+.. avembed:: AV/Blockchain/InputMessage.html pe
+   :long_name: Inputting a Message to get Decrypted
+
+We need a passphrase that will allow us to encrypt your message that you
+have just typed and will allow us to generate the public and private keys.
+
+.. _Passphrase:
+
+.. avembed:: AV/Blockchain/Passphrase.html pe
+   :long_name: Inputting a Passphrase for the encryption keys
+
+Now we can generate you a public and private key. You will use these to sign
+messages and decrypt your message you inputed above.
+In the future, you will never want someone to find your private key.
+
+.. _Keys:
+
+.. avembed:: AV/Blockchain/Keys.html pe
+   :long_name: Public and Private Keys
+
+In applications outside of this textbook, you would give your public key to anyone
+who might send you a message in the future. For this example, you will use your 
+own public key to sign your message that you typed above. By clicking the button 
+below, you will see what your message looks like encrypted and signed by the key.
+
+.. maybe change this and just have them input the message here
+.. signed message with the public key. this should also show what their message is
+
+.. _Encrypt:
+
+.. avembed:: AV/Blockchain/Encrypt.html pe
+   :long_name: Encrypt with Public Key
+
+We will now use your private key to decrypt your message. When someone sends you a
+message signed with your private key, you will be able to decrypt it by using your 
+private key. This is why RSA encryption is an asymmetric algorithm because you can 
+only encrypt messages with a public key and decrypt them with your own private key.
+Be careful, you never want anyone to obtain your private key or they have the ability
+to intercept and read any messages that have been sent to you.
+
+.. decrypting with the private key 
+
+.. Decrypt:
+
+.. avembed:: AV/Blockchain/Decrypt.html pe
+   :long_name: Decrypt with Private Key
+
+.. .. _PublicKeyExample:
+
+.. .. avembed:: AV/Blockchain/KeyExample.html pe
+..    :long_name: Public Key Example
           
-   Give an inline demo of public-key cryptography, such as RSA, 
-   here.
+.. Give an inline demo of public-key cryptography, such as RSA, 
+.. here.
 
 Hashing
 ~~~~~~~
