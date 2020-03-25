@@ -53,6 +53,7 @@ class Workspace
         this.removebutton = null;
 
         this.createBox();
+        console.log(this);
     }
     createBox()
     {
@@ -180,6 +181,8 @@ class Workspace
     {
         // Triggered by the clickhandler
         Window.windowManager.deleteWkspace(this.id);
+
+        // TODO: check delete equation objects
         this.elements.forEach(x => x['jsav'].clear())
         //This is fine, since the parent knows to remove this from their tracking.
         return this.id;
@@ -264,9 +267,10 @@ class Workspace
             this.globalPointerReference
         )
         
+        console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
         newActiveEquation.equationObjectReference.height+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
-
+        console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         // Handling the internal initial bookkeeping
         this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation;
         //        |_>  To be elaborated for additional operations.
@@ -293,104 +297,105 @@ class Workspace
             ];
         }
         // console.log(newActiveEquation);
-        Window.windowManager.shiftDown(newActiveEquation);
         this.lastEquation = newActiveEquation;
+        Window.windowManager.shiftDown(this.lastEquation, this.id);
         //console.log(this.equationHashMap);
+        // console.log(this.DIMENSIONS);
     }
-    OldSolveEquations()
-    {
-        // Step 1: See which equations are selected
-        var equationSet = [];
-        var equationObjectSet = [];
-        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
-        {
-            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
-            if(currentEqn.selected == true)
-            {
-                // console.log(currentEqn.name);
-                // for(var varIndex in currentEqn.variables)
-                // {
-                //     console.log(currentEqn.variables[varIndex]);
-                // }
-                equationObjectSet.push(currentEqn);
-                equationSet.push(currentEqn.createSolvableRepresentation());
-            }
-        }
-        //console.log(equationSet);
-        var variableSet = {};
-        // Find all the variables in the chosen equationObjectSet
-        for(var i=0; i<equationObjectSet.length; i++)
-        {
-            for(var v in equationObjectSet[i].variables)
-            {
-                variableSet[equationObjectSet[i].variables[v].id] = 
-                equationObjectSet[i].variables[v].parentSymbol;
-            }
-        }
+    // OldSolveEquations()
+    // {
+    //     // Step 1: See which equations are selected
+    //     var equationSet = [];
+    //     var equationObjectSet = [];
+    //     for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+    //     {
+    //         var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+    //         if(currentEqn.selected == true)
+    //         {
+    //             // console.log(currentEqn.name);
+    //             // for(var varIndex in currentEqn.variables)
+    //             // {
+    //             //     console.log(currentEqn.variables[varIndex]);
+    //             // }
+    //             equationObjectSet.push(currentEqn);
+    //             equationSet.push(currentEqn.createSolvableRepresentation());
+    //         }
+    //     }
+    //     //console.log(equationSet);
+    //     var variableSet = {};
+    //     // Find all the variables in the chosen equationObjectSet
+    //     for(var i=0; i<equationObjectSet.length; i++)
+    //     {
+    //         for(var v in equationObjectSet[i].variables)
+    //         {
+    //             variableSet[equationObjectSet[i].variables[v].id] = 
+    //             equationObjectSet[i].variables[v].parentSymbol;
+    //         }
+    //     }
 
-        // Step 2: Feed the list to nerdamer, see the output.
-        var soln = null;
-        if(equationSet.length > 1)
-            soln = nerdamer.solveEquations(equationSet);
-        else
-            //soln = equationObjectSet[0].solve();
-            soln = equationObjectSet[0].solve();
-        //console.log(soln);
+    //     // Step 2: Feed the list to nerdamer, see the output.
+    //     var soln = null;
+    //     if(equationSet.length > 1)
+    //         soln = nerdamer.solveEquations(equationSet);
+    //     else
+    //         //soln = equationObjectSet[0].solve();
+    //         soln = equationObjectSet[0].solve();
+    //     //console.log(soln);
 
-        // Step 3: Create the solution boxes, new boxes inside the workspace.
-        for(var i=0; i<soln.length; i++)
-        {
-            var currSolution = new ValueBox(
-                false,
-                {
-                    "visuals": this.DIMENSIONS.ELEMENTS,
-                    "dataset": {
-                        "value": soln[i][1],
-                        "unit": "",
-                        "variable": soln[i][0],
-                        "valueDisplay": String(Number(Math.round(soln[i][1]+'e3')+'e-3')),
-                        "unitDisplay": "",
-                        "variableDisplay": variableSet[soln[i][0]],
-                        "domain": ""
-                    }
-                },
-                this.globalSectionObj,
-                this.globalPointerReference
-            )
-            // Create a {} object and add the ValueBox object
-            //FUTURE: Add .element field to all the objects, and access to move them around
-            this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
-            this.solutionCounter++;
+    //     // Step 3: Create the solution boxes, new boxes inside the workspace.
+    //     for(var i=0; i<soln.length; i++)
+    //     {
+    //         var currSolution = new ValueBox(
+    //             false,
+    //             {
+    //                 "visuals": this.DIMENSIONS.ELEMENTS,
+    //                 "dataset": {
+    //                     "value": soln[i][1],
+    //                     "unit": "",
+    //                     "variable": soln[i][0],
+    //                     "valueDisplay": String(Number(Math.round(soln[i][1]+'e3')+'e-3')),
+    //                     "unitDisplay": "",
+    //                     "variableDisplay": variableSet[soln[i][0]],
+    //                     "domain": ""
+    //                 }
+    //             },
+    //             this.globalSectionObj,
+    //             this.globalPointerReference
+    //         )
+    //         // Create a {} object and add the ValueBox object
+    //         //FUTURE: Add .element field to all the objects, and access to move them around
+    //         this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
+    //         this.solutionCounter++;
 
-            this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
-            this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
-            Window.windowManager.shiftDown();
-            this.lastSolution = currSolution;
+    //         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
+    //         this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+    //         this.lastSolution = currSolution;
+    //         Window.windowManager.shiftDown(null, null, this.id);
 
-        }
+    //     }
 
-        // De-select selected equations, the list of selections will get cleared anyway.
-        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
-        {
-            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
-            if(currentEqn.selected == true)
-            {
-                currentEqn.visualComponents.tickmark.addClass("tickunselected");
-                currentEqn.visualComponents.tickmark.removeClass("tickselected");
-                currentEqn.selected = false;
-            }
-        }
-    }
+    //     // De-select selected equations, the list of selections will get cleared anyway.
+    //     for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+    //     {
+    //         var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+    //         if(currentEqn.selected == true)
+    //         {
+    //             currentEqn.visualComponents.tickmark.addClass("tickunselected");
+    //             currentEqn.visualComponents.tickmark.removeClass("tickselected");
+    //             currentEqn.selected = false;
+    //         }
+    //     }
+    // }
 
     deleteEquations()
     {
-        Window.windowManager.shiftUp();
+        Window.windowManager.shiftUp(this.id);
     }
 
     solveEquations()
     {
         // Step 1: See which equations are selected
-        var equationSet = [];
+        var equationSet = []; // which stores the solvable representations in all cases.
         var equationObjectSet = [];
         var variableSet = {}
         for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
@@ -412,11 +417,16 @@ class Workspace
         console.log(equationSet);
         
         var soln = {};
-        var listOfSolutions = nerdamer.solveEquations(equationSet);
+        var listOfSolutions = null;
+        if(equationObjectSet.length > 1)
+            listOfSolutions = nerdamer.solveEquations(equationSet);
+        else
+            listOfSolutions = equationObjectSet[0].solve(); // Yeah turns out the combined logic does not work for single solvers; gives erroneous results.
         for(var i=0; i<listOfSolutions.length; i++)
             soln[listOfSolutions[i][0]] = listOfSolutions[i][1];
         console.log(soln);
         
+        // console.log("Before printing solutions", this.DIMENSIONS);
         for(var unknownName in variableSet)
         {
             var currSolution = new ValueBox(
@@ -444,7 +454,8 @@ class Workspace
             this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
 
             this.lastSolution = currSolution;
-            Window.windowManager.shiftDown(null, this.lastSolution);
+
+            Window.windowManager.shiftDown(null, this.id);
         }
 
         // De-select selected equations, the list of selections will get cleared anyway.

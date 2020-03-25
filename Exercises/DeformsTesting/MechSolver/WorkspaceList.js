@@ -26,6 +26,7 @@ class WorkspaceList
             "UPPER_CORNER_Y": dim_obj["WORKSPACE_LIST"]["Y"],
             "HEIGHT": dim_obj["WORKSPACE_LIST"]["HEIGHT"],
             "PADDING": 20,
+            "WK_PADDING": 5,
             "WIDTH": dim_obj["WORKSPACE_LIST"]["WIDTH"],
 
             "NEW_WKSPACE": {
@@ -93,6 +94,9 @@ class WorkspaceList
             this.globalJSAVobject.logEvent({type: "deleting workspace", "id": delete_ID});
             this.updateShape();
         });
+        // Window.windowManager.extendCanvas(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"]);
+        // console.log(document.styleSheets[2].rules[0].style.height);
+        document.styleSheets[2].rules[0].style.height = Math.max(800, (this.DIMENSIONS["HEIGHT"] + this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"] + this.DIMENSIONS["WK_PADDING"])) + "px";
 
     }
     updateShape()
@@ -109,17 +113,17 @@ class WorkspaceList
 
         // Updating the height of the workspace list to include all the workspaces
         for(var wk in this.workspace_list) {
-            this.DIMENSIONS["HEIGHT"]+=this.workspace_list[wk].DIMENSIONS["HEIGHT"];
+            this.DIMENSIONS["HEIGHT"]+=this.workspace_list[wk].DIMENSIONS["HEIGHT"]+this.DIMENSIONS["WK_PADDING"];
             // This shifts the reference points of all the existing workspace
             // boxes and the equations contained in them.
             this.workspace_list[wk].DIMENSIONS["POSITION_Y"] = 
                     this.DIMENSIONS["NEW_WKSPACE"]["CORNER_Y"];
-            this.workspace_list[wk].updateShape();
+            // this.workspace_list[wk].updateShape();
 
             // Set the corner parameters for the next workspace to be added
             this.DIMENSIONS["NEW_WKSPACE"]["CORNER_Y"] = 
                     this.DIMENSIONS["NEW_WKSPACE"]["CORNER_Y"]+
-                    this.workspace_list[wk].DIMENSIONS["HEIGHT"]+5;
+                    this.workspace_list[wk].DIMENSIONS["HEIGHT"]+this.DIMENSIONS["WK_PADDING"];
         }
         
         this.workspaceListBox.height(this.DIMENSIONS["HEIGHT"]+this.DIMENSIONS["PADDING"]);

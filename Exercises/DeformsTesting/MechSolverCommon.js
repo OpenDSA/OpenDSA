@@ -1,4 +1,6 @@
 /*global window*/
+requirejs(["./mathjs.js"], function(){});
+
 (function() {
     "use strict";
     //var definitions
@@ -19,6 +21,11 @@
         currentClickedObjectDescription: null,
     }
 
+    // Creating non-supported units
+    mathjs.createUnit('ksi','1000 psi');
+    mathjs.createUnit('msi','1000 ksi');
+    mathjs.createUnit('mip','1000 kip');
+        
     const CANVAS_DIMENSIONS = {
         "TOTAL_WIDTH": 767,
         "TOTAL_HEIGHT": 1500,
@@ -51,6 +58,10 @@
         name = VARIABLE_ID_UNUSED.shift();
         VARIABLE_ID_USED.push(name);
         return name;
+    }
+
+    Window.valueTruncate = function(numericValue) {
+        return String(Number(Math.round(numericValue+'e3')+'e-3'))
     }
 
     var mechSolverCommon = {
@@ -187,10 +198,11 @@
         // }});
         Window.jsavObject = av;
         eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
+        
         wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
-            eqbank, globalPointerReference)
+            eqbank, globalPointerReference);
         Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, wkspacelist);
-
+        Window.exerciseId = exerciseId;
         // Setting up clickhandlers for the equations in the EquationBank
         // OBSOLETE: MAY TRY TO FIX LATER, MOVING TO DISTRIBUTED APPROACH INSTEAD
         // for(var page in eqbank.equation_pages){

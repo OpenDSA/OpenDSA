@@ -1,0 +1,58 @@
+#container {
+    width: 525px;
+    height: 255px;
+    position: relative;
+}
+
+.instructions {
+    position: relative;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    top: 5px;
+    text-align: center;
+}
+
+.seretMsgLabel {
+    position: relative;
+    top: 25px;
+}
+
+.secretMsg {
+    position: fixed;
+    top: 60px;
+}
+
+.publicKeyLabel {
+    position: relative;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    top: 45px;
+}
+
+.publicKey {
+    position: relative;
+    top: 50px;
+}
+
+.encrypt {
+    position: relative;
+    top: 50px;
+    right: -1px;
+    float: right;
+}
+
+.encryptMsgLabel {
+    position: relative;
+    top: 55px;
+}
+
+.encryptMsg {
+    position: relative;
+    top: 45px;
+}
+
+textarea {
+    resize: none;
+}

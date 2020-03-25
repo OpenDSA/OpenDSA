@@ -144,6 +144,9 @@ CTEX: min
 Sam: min
 	python $(CONFIG_SCRIPT) config/Sam.json --no-lms
 
+Lin: min
+	python $(CONFIG_SCRIPT) config/Lin.json --no-lms
+
 Yinwen: min
 	python $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
 
