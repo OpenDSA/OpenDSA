@@ -59,9 +59,6 @@ const equations = [
             'normalstress': 'pressure',
             'normalforce': 'force',
             'area': 'length2'
-<<<<<<< HEAD
-        },
-=======
         },
         height: 30
     },
@@ -84,7 +81,6 @@ const equations = [
             'changeL': 'length',
             'length': 'length'
         },
->>>>>>> a45fa7b272b86a760f61ec87a0a72a61bdbfe9ec
         height: 30
     },
     {
@@ -124,13 +120,8 @@ const equations = [
         },
         domains: {
             'strain': 'ratio',
-<<<<<<< HEAD
             'changeLength': 'length',
             'length': 'length'
-=======
-            'changeDiam': 'length',
-            'diameter': 'length'
->>>>>>> a45fa7b272b86a760f61ec87a0a72a61bdbfe9ec
         },
         height: 30
     },
@@ -150,7 +141,6 @@ const equations = [
         },
         domains: {
             'strain': 'ratio',
-<<<<<<< HEAD
             'themalcoeff': 'temperature-1',
             'tempchange': 'temperature'
         },
@@ -321,10 +311,6 @@ const equations = [
             'stressactual': 'pressure',
             'stressfailure': 'pressure',
             'FS': 'safetyfactor'
-=======
-            'changeDiam': 'length',
-            'diameter': 'length'
->>>>>>> a45fa7b272b86a760f61ec87a0a72a61bdbfe9ec
         },
         height: 30
     },

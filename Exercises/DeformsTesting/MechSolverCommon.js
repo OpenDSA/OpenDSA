@@ -200,15 +200,9 @@ requirejs(["./mathjs.js"], function(){});
         eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         
         wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
-<<<<<<< HEAD
-            eqbank, globalPointerReference)
-        // Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, wkspacelist);
-
-=======
             eqbank, globalPointerReference);
         Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, wkspacelist);
         Window.exerciseId = exerciseId;
->>>>>>> a45fa7b272b86a760f61ec87a0a72a61bdbfe9ec
         // Setting up clickhandlers for the equations in the EquationBank
         // OBSOLETE: MAY TRY TO FIX LATER, MOVING TO DISTRIBUTED APPROACH INSTEAD
         // for(var page in eqbank.equation_pages){
