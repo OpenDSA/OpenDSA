@@ -32,7 +32,7 @@ class WorkspaceList
                 "CORNER_X": dim_obj["WORKSPACE_LIST"]["X"]+3,
                 "CORNER_Y": dim_obj["WORKSPACE_LIST"]["Y"]+35,
                 "WIDTH": dim_obj["WORKSPACE_LIST"]["WIDTH"]-6,
-                "HEIGHT": 250
+                "HEIGHT": 400 //250
             }
         }
 

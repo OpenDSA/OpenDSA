@@ -159,7 +159,9 @@ class ActiveEquation{
         var splitString = this.equationObjectReference.template.split(" ");
         for(var x=0; x<splitString.length; x++)
         {
-            console.log(splitString[x]);
+            // DEBUG:
+            // console.log(splitString[x]);
+            
             // if(splitString[x], splitString[x] in this.variables)
             if(splitString[x] in this.variables)
             {
@@ -207,30 +209,43 @@ class ActiveEquation{
         //Then, solve it.
         var splitString = this.equationObjectReference.template.split(" ");
         var subject = null;
-        var subjectID = null;
-
+        
         for(var x=0; x<splitString.length; x++)
         {
-            if(splitString[x], splitString[x] in this.variables)
+            if(splitString[x] in this.variables)
             {
-                if(this.variables[splitString[x]].value!=null)
+                if(this.variables[splitString[x]].valueType=="number")
                     splitString[x] = this.variables[splitString[x]].value;
                 else
                 {
-                    subject = this.variables[splitString[x]].parentSymbol;
-                    subjectID = this.variables[splitString[x]].id;
-                    splitString[x] = this.variables[splitString[x]].id;
+                    // This just means that there is an association -> valueType="association"
+                    // Unlike the previous version, in our case, we will always have >1 equation.
+                    // So, we simply check for the term, and call on its representation variable.
+                    if(this.variables[splitString[x]].valueType=="association")
+                    {
+                        // var ps = this.variables[splitString[x]].value.varDisplay;
+                        splitString[x] = this.variables[splitString[x]].value.var;
+                        subject = splitString[x];
+                    }
+                    else
+                    {
+                        // OR it's a single unmarked, unconnected unknown
+                        // var ps = this.variables[splitString[x]].parentSymbol;
+                        splitString[x] = this.variables[splitString[x]].currentSymbol;
+                        subject = splitString[x];
+                    }
                 }
             }
         }
+        console.log(splitString.join(" "));
         var solutions = nerdamer.solveEquations(
             [splitString.join(" "),
-            subjectID+" = r_n + 1"]
+            subject+" = x + 1"]
             );
         
         for(var i in solutions)
         {
-            if(solutions[i][0] == subjectID)
+            if(solutions[i][0] == subject)
             {
                 return [solutions[i]];
             }

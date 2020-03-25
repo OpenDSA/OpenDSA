@@ -100,7 +100,7 @@ class EquationBank{
                 this.equation_page_number--;
             this.showPage();
             this.globalSectionObj.logEvent({type: "switching equation page", id: this.equation_page_titles[this.equation_page_number]});
-            console.log(this.equation_page_titles[this.equation_page_number]);
+            // console.log(this.equation_page_titles[this.equation_page_number]);
         });
         this.globalSectionObj.label(
             ">",
@@ -117,7 +117,7 @@ class EquationBank{
                 this.equation_page_number++;
             this.showPage();
             this.globalSectionObj.logEvent({type: "switching equation page", id: this.equation_page_titles[this.equation_page_number]});
-            console.log(this.equation_page_titles[this.equation_page_number]);
+            // console.log(this.equation_page_titles[this.equation_page_number]);
         });
         
         // Creating the page objects (JSAV objects)

@@ -17,6 +17,7 @@ class Variable{
         // or just be used as a variable name if empty, or an Association object.
         // which can then be used
         this.value = null;
+        this.valueRepr = null;
         this.valueType = null;
         
         this.element = element;
@@ -165,8 +166,10 @@ class Variable{
             // console.log(this.globalPointerReference)
             // add the value
             this.value = String(this.globalPointerReference.currentClickedObject.value).slice();
-            this.element.setAttribute("data-domain",
-            this.globalPointerReference.currentClickedObject.domain);
+            this.valueRepr = Window.valueTruncate(this.value);
+            this.currentDomain = this.globalPointerReference.currentClickedObject.domain;
+            this.element.setAttribute("data-domain", this.currentDomain);
+            this.currentUnit = this.globalPointerReference.currentClickedObject.unit;
             this.valueType = "number";
             // this.globalJSAVobject.logEvent({type: "adding new value", id: this.id });
 
@@ -176,26 +179,10 @@ class Variable{
             a div, with two separate elements in it.
             */
             
-           this.valueDisplay.innerHTML = "";
-           this.unitDisplay.innerHTML = "";
-           this.valueDisplay.dataset.status = "filled";
-           this.unitDisplay.dataset.status = "filled";
-
-            for(var digitindex=0;
-                digitindex<this.globalPointerReference.currentClickedObject.valueDisplay.split("").length;
-                digitindex++
-                )
-            {
-                this.valueDisplay.innerHTML+='<span class="mord">'+
-                this.globalPointerReference.currentClickedObject.valueDisplay.split("")[digitindex]
-                +'</span>';
-            }
-            for(var u=0; u<this.globalPointerReference.currentClickedObject.unitDisplay.split("").length; u++)
-            {
-                this.unitDisplay.innerHTML+='<span class="mord mathit">'+
-                this.globalPointerReference.currentClickedObject.unitDisplay.split("")[u]
-                +'</span>';
-            }
+            this.setValueUnit(
+               this.globalPointerReference.currentClickedObject.valueDisplay,
+               this.globalPointerReference.currentClickedObject.unitDisplay
+            )
             // Clear up the clicked context; the values and everything
             this.globalPointerReference.currentClickedObject = null;
             this.globalPointerReference.currentClickedObjectType = null;
@@ -203,7 +190,26 @@ class Variable{
             //console.log(this.globalPointerReference);
 
             // clickHandler for unit changes()
-            this.unitDisplay.addEventListener("click", this.changeUnits)
+            this.unitDisplay.addEventListener("click", e=>{
+                e.stopPropagation();
+                this.changeUnits(e);
+            });
+        }
+    }
+    setValueUnit(value, unit)
+    {
+        this.valueDisplay.innerHTML = "";
+        this.unitDisplay.innerHTML = "";
+        this.valueDisplay.dataset.status = "filled";
+        this.unitDisplay.dataset.status = "filled";
+
+        for(var digitindex=0;digitindex<value.split("").length;digitindex++)
+        {
+            this.valueDisplay.innerHTML+='<span class="mord">'+value.split("")[digitindex]+'</span>';
+        }
+        for(var u=0; u<unit.split("").length; u++)
+        {
+            this.unitDisplay.innerHTML+='<span class="mord mathit">'+unit.split("")[u]+'</span>';
         }
     }
     removeValue()
@@ -237,10 +243,6 @@ class Variable{
          * UNIT_DB = {};
          */
         // Creating other units, to delegate this to a Singleton global object
-        // mathjs.createUnit('ksi','1000 psi');
-        // math.createUnit('msi','1000 ksi');
-        // math.createUnit('mip','1000 kip');
-        
         var UNIT_DB = {
             'length': {
                 //cm m mm km inch feet
@@ -301,24 +303,14 @@ class Variable{
             }
         };
         
-        event.stopPropagation();
-        console.log(event);
-
         /**
          * Populate var text with the list of units for this domain.
          * Click handlers are associated with each element, create data-unit domains for them
          * to match with.
          */
-        //var text = "<ul><li>Type 1</li><li>Type 2</li><li>Type 3</li></ul>";
-
-        // loading javascript files dynamically
-        // var FB_JQ = document.createElement('script');
-        // FB_JQ.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.6.0/math.js';
-        // FB_JQ.type = 'text/javascript';
-        // document.getElementsByTagName('head')[0].appendChild(FB_JQ);
         
         var text = "<ul>";
-        console.log(UNIT_DB[event.target.parentNode.parentNode.dataset.domain]);
+        // console.log(UNIT_DB[event.target.parentNode.parentNode.dataset.domain]);
         for(var x in UNIT_DB[event.target.parentNode.parentNode.dataset.domain])
         {
             text+='<li data-unit="'+UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x]['unit']+'">'+x+' ('+
@@ -339,18 +331,18 @@ class Variable{
             x.addEventListener(
                 "click", e=> {
                     e.stopPropagation();
-                    console.log(x);
-                    // this.value = mathjs.evaluate("number("+this.value+" to "+x.dataset.unit+")")
-                    // this.value = math.evaluate("number("+this.value+" to "+x.dataset.unit+")")
-                    // this.currentUnit = ""
+                    
+                    // Change internals
+                    this.value = mathjs.evaluate("number("+this.value+" "+this.currentUnit+", "+x.dataset.unit+")")
+                    this.valueRepr = Window.valueTruncate(this.value)
+                    this.currentUnit = x.dataset.unit;
+
+                    // Change external views
+                    this.setValueUnit(String(this.valueRepr), this.currentUnit);
                     element.close();
                 }
             )
         });
-
-        /**
-         * Write conversion functionality in here, get it running.
-         */
     }
 }
 window.Variable = window.Variable || Variable
