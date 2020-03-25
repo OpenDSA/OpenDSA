@@ -76,11 +76,11 @@ class WindowManager{
                     //moves all equations down
                     for(const eq in equations) {
                         var amountShift = parseInt(equations[eq].visualComponents["tickmark"]["element"][0].style.top, 10) 
-                            + currWkspaceElementHeight + currWkspaceElementHeightPad + "px";
+                            + currWkspaceElementHeight + currWkspaceElementHeightPad;
 
-                        equations[eq].visualComponents["tickmark"]["element"][0].style.top = amountShift;
-                        equations[eq].visualComponents["text"]["element"][0].style.top = amountShift;
-                        equations[eq].jsavequation["element"][0].style.top = amountShift;
+                        equations[eq].visualComponents["tickmark"]["element"][0].style.top = amountShift + "px";
+                        equations[eq].visualComponents["text"]["element"][0].style.top = amountShift + 3 + "px";
+                        equations[eq].jsavequation["element"][0].style.top = amountShift + "px";
                     }
 
                     //moves all solutions down
@@ -179,8 +179,8 @@ class WindowManager{
                 if(currWkspace.lastSolution != null) {
                     lastSolnPos = parseInt(currWkspace.lastSolution.element.element[0].style.top, 10);
                 }
-                console.log(lastEqPos);
-                console.log(lastSolnPos);
+                // console.log(lastEqPos);
+                // console.log(lastSolnPos);
 
                 if(lastEqPos > lastSolnPos) {
                     var currEq = currWkspace.lastEquation;
@@ -238,7 +238,7 @@ class WindowManager{
             }
         }
         // }
-        console.log(totalShift);
+        // console.log(totalShift);
         for(var wkspace in this.workspace_list.workspace_list) {
             if(parseInt(wkspaceID) < parseInt(wkspace)) {
                 var currWkspace = this.workspace_list.workspace_list[wkspace];

@@ -297,8 +297,8 @@ class Workspace
             ];
         }
         // console.log(newActiveEquation);
-        Window.windowManager.shiftDown(this.lastEquation, this.id);
         this.lastEquation = newActiveEquation;
+        Window.windowManager.shiftDown(this.lastEquation, this.id);
         //console.log(this.equationHashMap);
     }
     // OldSolveEquations()
