@@ -6,30 +6,30 @@
 .. avmetadata::
    :author: Susan Rodger and Cliff Shaffer
    :requires: Pushdown Automata
-   :satisfies: PDA/CFL Equivalence
+   :satisfies: PDA/CFG Equivalence
    :topic: PDA
 
 .. slideconf::
    :autoslides: False
 
 
-Equivalence of NPDA and CFL
+Equivalence of NPDA and CFG
 ===========================
 
-.. slide:: Equivalence of NPDA and CFL
+.. slide:: Equivalence of NPDA and CFG
 
    | Now we want to show that NPDA's and CFG both represent CFL's. 
    | We will show that we can take any CFG and construct a NPDA, and
      vice versa.
 
  
-.. slide:: Any CFL has a NPDA
+.. slide:: Any CFG has a NPDA
 
-   **Theorem:** For any CFL :math:`L` not containing :math:`\lambda`,
+   **Theorem:** For any CFG :math:`L` not containing :math:`\lambda`,
    :math:`\exists` a NPDA :math:`M` such that :math:`L = L(M)`.
 
    | **Proof** (sketch)
-   |   Assume (to simplify) that the CFL is in Griebach Normal Form
+   |   Assume (to simplify) that the CFG is in Griebach Normal Form
    |     Grammar :math:`G' = (V,T,S,P)` is in GNF if all productions in
          :math:`P` are of the form: 
    |       :math:`A \rightarrow ax`
@@ -73,14 +73,15 @@ Equivalence of NPDA and CFL
    |      put :math:`(q_1, X_1 X_2 \ldots X_n)` in :math:`\delta(q_1, a, A)`
    |      (Pop :math:`A` from the stack, read "a" from tape,
           and push :math:`X_1 X_2 \ldots X_n` onto the stack) 
+   |   3. Accept if :math:`S \stackrel{*}{\Rightarrow} w \in \Sigma^*`
+          (all variables on the stack are replaced by terminals or
+          :math:`\lambda`)
 
 .. slide:: Proof Example (3)
 
-   << Draw a picture of this >>
-
-   |   3. Accept if :math:`S \stackrel{*}{\Rightarrow} w \in \Sigma^*`
-          (all variables on the stack are replaced by terminals or
-          :math:`\lambda`) 
+   * :math:`S \rightarrow aSA \mid a`
+   * :math:`A \rightarrow bB`
+   * :math:`B \rightarrow b` 
 
 
 .. slide:: Another Example
@@ -90,7 +91,7 @@ Equivalence of NPDA and CFL
    |   :math:`A \rightarrow bBBB`
    |   :math:`B \rightarrow b`
 
-   QUESTION: Is this grammar in GNF? Yes.
+   QUESTION: Is this grammar in GNF?
 
    .. odsafig:: Images/lt7pf3.png
       :width: 400
@@ -104,7 +105,7 @@ Equivalence of NPDA and CFL
 
 .. slide:: Any NPDA has a CFG (1)
 
-   | Want to show that each NPDA represents a CFL, so we 
+   | Want to show that each NPDA represents a CFG, so we 
      will take a NPDA :math:`M` and convert it to a CFG. 
    | It will be an easier construction if we take the NPDA and put all the 
      transitions in a simpler form. 
@@ -140,7 +141,7 @@ Equivalence of NPDA and CFL
 .. slide:: Any NPDA has a CFG (2)
 
    **Theorem:** If :math:`L = L(M)` for some NPDA :math:`M`,
-   then :math:`L` is a CFL.
+   then :math:`L` is a CFG.
 
    | **Proof Sketch:**
    | Given NPDA :math:`M`, first, construct an equivalent NPDA
