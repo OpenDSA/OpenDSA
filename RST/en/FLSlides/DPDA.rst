@@ -36,16 +36,16 @@ Deterministic Pushdown Automata
 
 .. slide:: Deterministic Example (1)
 
-   The language :math:`L = \{a^nb^n | n \ge 0\}` is a deterministic CFL.
+   The language :math:`L = \{a^nb^n | n \ge 1\}` is a deterministic CFL.
 
    | **Proof**: The PDA
-     :math:`M = (\{q_0, q_1, q_2\}, \{a, b\}, \{0, 1\}, \delta, q_0, 0, \{q_0\})`
+     :math:`M = (\{q_0, q_1, q_2, q_3\}, \{a, b\}, \{0, 1\}, \delta, q_0, Z, \{q_3\})`
      with
-   |    :math:`\delta(q_0, a, 0) = \{(q_1, 10)\}`,
+   |    :math:`\delta(q_0, a, Z) = \{(q_1, 1Z)\}`,
    |    :math:`\delta(q_1, a, 1) = \{(q_1, 11)\}`,
    |    :math:`\delta(q_1, b, 1) = \{(q_2, \lambda)\}`,
    |    :math:`\delta(q_2, b, 1) = \{(q_2, \lambda)\}`,
-   |    :math:`\delta(q_2, \lambda, 0) = \{(q_0, \lambda)\}`
+   |    :math:`\delta(q_2, \lambda, Z) = \{(q_3, \lambda)\}`
    | accepts the given language.
    | It satisfies the conditions for being deterministic.
 
