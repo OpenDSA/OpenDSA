@@ -24,12 +24,14 @@
 
 .label {
     position: absolute;
-    top: 95px;
+    top: 105px;
+    left: 75px;
 }
 
 .output {
     position: absolute;
-    top: 130px;
+    top: 110px;
+    left: 25%;
     text-align: left;
     width: 260px;
     margin: auto 0;

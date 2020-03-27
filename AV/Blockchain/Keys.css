@@ -1,6 +1,6 @@
 #container {
     width: 525px;
-    height: 190px;
+    height: 245px;
     position: relative;
 }
 
@@ -56,4 +56,10 @@ button {
     width: 55px;
     height: 40px;
     left: -5px;
+}
+
+.getKeys {
+    width: 75px;
+    float: right;
+    top: 40px;
 }

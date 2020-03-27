@@ -63,7 +63,21 @@ $(document).ready(function() {
     console.log(data)
   }
 
+  function displayKeys() {
+    if (secretMsg !== "") {
+      $(".publicKey").val(keys.publicKey);
+      $(".privateKey").val(keys.privateKey);
+      console.log("if");
+    } else {
+      alert("You need to write a secret message first!!");
+    }
+    console.log("secret message: ");
+    console.log(secretMsg);
+    console.log($("#inputSecretMsg").val())
+  }
+
   $("#inputSecretMsg").keyup(setMessage);
   $(".encrypt").click(encryptMessage);
   $(".decrypt").click(decryptMessage);
+  $(".getKeys").click(displayKeys);
 });
