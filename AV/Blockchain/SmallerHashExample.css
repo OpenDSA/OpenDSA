@@ -17,11 +17,9 @@
     top: 42px;
 }
 
-#blockNum {
+#inputArea {
     position: absolute;
-    left: 200px;
-    top: 55px;
-    width: 100px;
+    top: 45px;
 }
 
 .tsize {
@@ -39,16 +37,21 @@
 
 .label {
     position: absolute;
-    top: 115px;
+    top: 102px;
+    left: 135px;
 }
 
 .output {
     position: absolute;
-    top: 150px;
+    top: 115px;
+    left: 35%;
     text-align:center;
-    width: 520px;
     margin: auto 0;
     display: block;
     font-size: 10pt;
     font-family: Courier;
+}
+
+textarea {
+    resize: none;
 }

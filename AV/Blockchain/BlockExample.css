@@ -1,7 +1,12 @@
+#outer {
+    width: 100%;
+}
+
 #container {
-    width: 525px;
+    width: 269px;
     height: 225px;
     position: relative;
+    display: table;
 }
 
 .instructions {
@@ -36,23 +41,23 @@
     top: 110px;
     right: 10px;
     height: 50px;
+    width: 250px;
     resize: none;
 }
 
-.label {
+.outputLabel {
     position: absolute;
-    bottom: 20px;
+    top: 160px;
     left: 10px;
-}
+    display: inline-block;
+} 
 
 .output {
-    left: 10px;
     position: absolute;
-    bottom: 10px;
+    left: 60px;
+    top: 174px;
     text-align:center;
-    right: 10px;
-    margin: auto 0;
-    display: block;
     font-size: 10pt;
     font-family: Courier;
+    display: inline-block;
 }
