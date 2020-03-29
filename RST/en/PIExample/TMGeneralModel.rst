@@ -18,5 +18,5 @@ In this chapter you will learn about Turing Machine. After this chapter you will
 
 .. inlineav:: TMGeneralModel ff
    :links: AV/PIExample/TMGeneralModel.css
-   :scripts: AV/PIExample/TMGeneralModel.js DataStructures/PIFrames.js 
+   :scripts:  lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/PIExample/TMGeneralModel.js DataStructures/PIFrames.js 
    :output: show

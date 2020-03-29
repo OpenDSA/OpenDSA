@@ -1,5 +1,5 @@
 /*global ODSA */
-// Written by Jun Yang and Cliff Shaffer
+// Written by Jun Yang, Cliff Shaffer, Aditya Tikhe
 // Show off the data members
 $(document).ready(function() {
   "use strict";

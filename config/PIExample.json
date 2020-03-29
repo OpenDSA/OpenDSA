@@ -63,8 +63,7 @@
   }, 
   "chapters": {
     "Introduction": {
-      "PIExample/Echo_frame1": {},
-      "PIExample/grammar": {}
+      "PIExample/Echo_frame1": {}
     },
     "Mathematical Background": {
       "PIExample/mathematical": {},
@@ -73,7 +72,8 @@
       "PIExample/continuedMathProof":{},
       "PIExample/inductionProof": {},
       "PIExample/proofInduction": {},
-      "PIExample/lastInductionProof": {}
+      "PIExample/lastInductionProof": {},
+      "PIExample/grammar": {}
 
     },
     "Finite Acceptors": {
@@ -82,7 +82,9 @@
     "Regular Languages": {
       "PIExample/regularExpression":{},
       "PIExample/grammarRegularExpression": {},
-      "PIExample/expressionRegular": {}
+      "PIExample/expressionRegular": {},
+      "PIExample/regularGrammar": {},
+      "PIExample/NFAToRE": {}
     },
     "Identifying Non-regular Languages":{
       "PIEXample/INRL":{}

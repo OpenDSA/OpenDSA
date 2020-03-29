@@ -1,6 +1,5 @@
 var latexit = "http://latex.codecogs.com/svg.latex?";
 var arr;
-var GarammarVariables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 $(document).ready(function () {
   "use strict";
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -1583,6 +1582,10 @@ $(document).ready(function () {
     var v = {};
     // find all the variables in the grammar
     var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+    var GrammarVariables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";  // initialize avaliable grammar variables
+    for (var j = 0; j < productions.length; j++) {
+      GrammarVariables = GrammarVariables.replace(productions[j][0], '');
+    } // remove all LHS variables
     for (var i = 0; i < productions.length; i++) {
       var x = productions[i];
       // change RHS to an array
@@ -1606,12 +1609,17 @@ $(document).ready(function () {
         var r = productions[i][2];
         for (var j = 0; j < r.length; j++) {
           if (r[j].length === 1 && variables.indexOf(r[j]) === -1) {
-            var temp = "B(" + r[j] + ")";
-            if (!_.find(productions, function(x) { return x[0] === temp;})) {
-              productions.push([temp, arrow, [r[j]]]);
-              tempVars.push(temp);
-            }
-            r[j] = temp;
+            var firstTemp = GrammarVariables.charAt(0);
+            var present = _.find(productions, function(x) { return x[0].length === 1 && x[2].join('') === r[j];});
+            if (present) {
+              r[j] = present[0];
+            } // existing terminal found, terminal updated
+            else {
+              productions.push([firstTemp, arrow, [r[j]]]);
+              tempVars.push(firstTemp);
+              GrammarVariables = GrammarVariables.replace(firstTemp, '');
+              r[j] = firstTemp;
+            } // no existing terminal found, replace termianl
           }
         }
       }
@@ -1623,14 +1631,15 @@ $(document).ready(function () {
         if (r.length === 1 && variables.indexOf(r[0]) === -1) {
           continue;
         } else if (r.length > 2) {
-          var temp = "D(" + varCounter + ")";
-          var temp2 = r.splice(1, r.length - 1, temp);
+          var secondTemp = GrammarVariables.charAt(0);
+          GrammarVariables = GrammarVariables.replace(secondTemp, '');
+          var temp2 = r.splice(1, r.length - 1, secondTemp);
           var present = _.find(productions, function(x) { return x[0].length > 1 && x[2].join('') === temp2.join('');});
           if (present) {
             r[1] = present[0];
           } else {
-            productions.push([temp, arrow, temp2]);
-            tempVars.push(temp);
+            productions.push([secondTemp, arrow, temp2]);
+            tempVars.push(secondTemp);
             varCounter++;
           }
           return true;
@@ -2183,6 +2192,10 @@ $(document).ready(function () {
         this.unhighlight(i);
       }
       this.highlight(index);
+      var GrammarVariables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";  // initialize avaliable grammar variables
+      for (var j = 0; j < tArr.length; j++) {
+        GrammarVariables = GrammarVariables.replace(tArr[j][0], '');
+      } // remove all LHS variables
       var r = tArr[index][2];
       if (r.length === 1 && variables.indexOf(r[0]) === -1) {
         jsav.umsg('Conversion unneeded.');
@@ -2193,14 +2206,21 @@ $(document).ready(function () {
         return;
       }
       var sliceIn = [];
+      var terminalUpdated = false;
       // replace terminals
       for (var i = 0; i < r.length; i++) {
         if (r[i].length === 1 && variables.indexOf(r[i]) === -1) {
-          var tempB = "B(" + r[i] + ")";
-          if (!_.find(tArr.concat(sliceIn), function(x) {return x[0] === tempB;})) {
-            sliceIn.push([tempB, arrow, [r[i]]]);
-          }
-          r[i] = tempB;
+          var firstTemp = GrammarVariables.charAt(0);
+          var present = _.find(tArr.concat(sliceIn), function(x) { return x[0].length === 1 && x[2].join('') === r[i];});
+          if (present) {
+            r[i] = present[0];
+            terminalUpdated = true;
+          } // existing terminal found, terminal updated
+          else {
+            sliceIn.push([firstTemp, arrow, [r[i]]]);
+            GrammarVariables = GrammarVariables.replace(firstTemp, '');
+            r[i] = firstTemp;
+          } // no existing terminal found, replace termianl
         }
       }
       if (sliceIn.length > 0) {
@@ -2214,15 +2234,25 @@ $(document).ready(function () {
         for (var i = 0; i < sliceIn.length + 1; i++) {
           tGrammar.highlight(index + i);
         }
-      } else {
+      } // terminal replaced, refresh table, new row added
+      else if (terminalUpdated) {
+        var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
+        tGrammar.clear();
+        tGrammar = tempG;
+        layoutTable(tGrammar, 2);
+        tGrammar.click(chomskyHandler);
+        tGrammar.highlight(index);
+      } // terminal updated, refresh table, no new row added
+      else {
         // replace variables
-        var tempD = "D(" + varCounter + ")";
-        var temp2 = r.splice(1, r.length - 1, tempD);
+        var secondTemp = GrammarVariables.charAt(0);
+        GrammarVariables = GrammarVariables.replace(secondTemp, '');
+        var temp2 = r.splice(1, r.length - 1, secondTemp);
         var present = _.find(tArr, function(x) { return x[0].length > 1 && x[2].join('') === temp2.join('');});
         if (present) {
           r[1] = present[0];
         } else {
-          tArr.splice(index + 1, 0, [tempD, arrow, temp2]);
+          tArr.splice(index + 1, 0, [secondTemp, arrow, temp2]);
           varCounter++;
           var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
           tGrammar.clear();
@@ -2235,8 +2265,7 @@ $(document).ready(function () {
         }
       }
       jsav.umsg('Converted.');
-//       if (tArr.length === fullChomsky.length) {
-        if (checkFullChomskyConversion(tArr, fullChomsky)) {
+      if (checkFullChomskyConversion(tArr, fullChomsky)) {
         jsav.umsg('All productions completed.');
         tGrammar.element.off();
         var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
@@ -2259,9 +2288,8 @@ $(document).ready(function () {
             }
           }
           return true; // all rows compared, conversion completed
-        }
-        else {
-          return false;  // not complete
+        } else {
+          return false;  // conversion not complete
         }
       }
 
@@ -2294,7 +2322,8 @@ $(document).ready(function () {
         }
       }
       localStorage['grammar'] = _.map(tArr, function(x) {return x.join('');});
-      window.open('grammarTest.html', '');
+//       window.open('grammarTest.html', '');
+      window.open('grammarEditor_dev.html', '');
     };
 
     tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
@@ -3189,7 +3218,8 @@ $(document).ready(function () {
     }
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     localStorage['grammars'] = JSON.stringify(productions);
-    window.open("./CYKParser.html");
+//     window.open("./CYKParser.html");
+    window.open("../Ming/CYKParser/CYKParser.html");
   }
 
   //=================================

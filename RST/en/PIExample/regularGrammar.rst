@@ -9,13 +9,11 @@
    :topic: Finite Automata
 
 
-Regular Expression
+Regular Grammars
 ================================
-
-Introduction to regular expressionsssss
+Introduction to regular grammar
 -------------------------------
-
-.. inlineav:: RegularExpressions ff
-   :links: AV/PIExample/RegularLanguages/RegularExpressions.css
-   :scripts: AV/PIExample/RegularLanguages/RegularExpressions.js DataStructures/PIFrames.js 
+.. inlineav:: RegularGrammar ff
+   :links: AV/PIExample/RegularGrammars/RegularGrammar.css
+   :scripts: AV/PIExample/RegularGrammars/RegularGrammar.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
    :output: show
