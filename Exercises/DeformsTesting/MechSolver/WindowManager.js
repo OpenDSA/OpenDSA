@@ -8,13 +8,13 @@ class WindowManager{
         this.canvasDims = dim_obj;
         this.workspace_list = wkspaceList;
         
-
+        document.styleSheets[2].rules[0].style.height = 1000+"px";
 	}
 
 
 	extendCanvas(shiftAmount) {
-        var minHeight = 800;
-        console.log(document.styleSheets[2].rules[0].style.height);
+        var minHeight = 1000;
+        // console.log(document.styleSheets[2].rules[0].style.height);
         document.styleSheets[2].rules[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
 	}
 
@@ -87,7 +87,8 @@ class WindowManager{
                     var solnList = this.workspace_list.workspace_list[wkspace2].LIST_OF_SOLUTIONS_IN_WORKSPACE;
                     for(const soln in solnList) {
                         var currSoln = solnList[soln];
-                        currSoln["element"]["element"][0].style.top = parseInt(currSoln["element"]["element"][0].style.top,10)
+                        currSoln["element"]["visualComponent"]["element"][0].style.top = 
+                            parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10)
                             + currWkspaceElementHeight + currWkspaceElementHeightPad + "px";
                     }
                 }
@@ -138,9 +139,10 @@ class WindowManager{
                 for(const soln in currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE) {
                     var currSoln = currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
                     if(parseInt(currEquation.visualComponents["tickmark"]["element"][0].style.top, 10) < 
-                        parseInt(currSoln["element"]["element"][0].style.top,10)) {
+                        parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10)) {
 
-                        currSoln["element"]["element"][0].style.top = parseInt(currSoln["element"]["element"][0].style.top,10) - 
+                        currSoln["element"]["visualComponent"]["element"][0].style.top = 
+                            parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) - 
                             currWkspaceElementHeight - currWkspaceElementHeightPad + "px";
                     }
                 }
@@ -177,7 +179,7 @@ class WindowManager{
                 }
                 var lastSolnPos = 0;
                 if(currWkspace.lastSolution != null) {
-                    lastSolnPos = parseInt(currWkspace.lastSolution.element.element[0].style.top, 10);
+                    lastSolnPos = parseInt(currWkspace.lastSolution.element["visualComponent"].element[0].style.top, 10);
                 }
                 // console.log(lastEqPos);
                 // console.log(lastSolnPos);
@@ -213,7 +215,7 @@ class WindowManager{
                 else if(lastSolnPos > lastEqPos) {
                     var currSol = currWkspace.lastSolution;
                     if((currWkspace.DIMENSIONS["HEIGHT"] != this.workspace_list.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"]) &&
-                        parseInt(currSol.element.element[0].style.top, 10)  < 
+                        parseInt(currSol.element["visualComponent"].element[0].style.top, 10)  < 
                         currWkspace.DIMENSIONS["POSITION_Y"] + currWkspace.DIMENSIONS["HEIGHT"]) {
 
                         var origHeight = currWkspace.DIMENSIONS["HEIGHT"];
@@ -265,7 +267,8 @@ class WindowManager{
 
                 for(const soln in currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE) {
                     var currSoln = currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
-                    currSoln["element"]["element"][0].style.top = parseInt(currSoln["element"]["element"][0].style.top,10) - totalShift + "px";
+                    currSoln["element"]["visualComponent"]["element"][0].style.top = 
+                    parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) - totalShift + "px";
 
                 }
             }
@@ -305,7 +308,8 @@ class WindowManager{
                 }
                 for(const soln in currWorkspace2.LIST_OF_SOLUTIONS_IN_WORKSPACE) {
                     var currSoln = currWorkspace2.LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
-                    currSoln["element"]["element"][0].style.top = parseInt(currSoln["element"]["element"][0].style.top,10) - 
+                    currSoln["element"]["visualComponent"]["element"][0].style.top = 
+                        parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) - 
                         currWkspace.DIMENSIONS["HEIGHT"] + "px";
                 }
             }
@@ -322,7 +326,7 @@ class WindowManager{
         //deletes all solutions associated with workspace
         for(const soln in currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE) {
             var deleteSoln = currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
-            deleteSoln.element.clear();
+            deleteSoln.element.visualComponent.clear();
         }
 
         this.extendCanvas(heightShift * -1);

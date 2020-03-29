@@ -397,7 +397,7 @@ class Workspace
         // Step 1: See which equations are selected
         var equationSet = []; // which stores the solvable representations in all cases.
         var equationObjectSet = [];
-        var variableSet = {}
+        var variableSet = {};
         for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
         {
             var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
@@ -405,26 +405,61 @@ class Workspace
             {
                 equationObjectSet.push(currentEqn);
                 var solvableRepr = currentEqn.createSolvableRepresentation();
+                console.log(solvableRepr);
                 // Add the equation representations
                 for(var x=0; x<solvableRepr["equations"].length; x++)
                     equationSet.push(solvableRepr["equations"][x]);
                 // Find out the unknown varDisplay-varName mapping pairs
-                for(var vname in solvableRepr["unknowns"])
-                    variableSet[vname] = solvableRepr["unknowns"][vname];
+                for(var vname in solvableRepr["unknowns"])  // vname is the internal symbol
+                {
+                    var unitDesc = currentEqn.getUnitOfVariable(vname);
+                    // Find the unit of the variable from its corresponding equation
+                    // variableSet[vname] = {
+                    //     "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
+                    //     "unit": null,
+                    //     "domain": null,
+                    //     "unitDisp": null,
+                    // };
+                    if(vname in variableSet) continue;
+                    variableSet[vname] = {
+                        "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
+                        "unit": unitDesc[1],
+                        "domain": unitDesc[2][0],
+                        "unitDisp": unitDesc[2][1],
+                    };
+                }
             }
         }
-        console.log(variableSet);
-        console.log(equationSet);
+        // console.log(variableSet);
+        // console.log(equationSet);
         
+        // Computing solutions
         var soln = {};
         var listOfSolutions = null;
         if(equationObjectSet.length > 1)
+        {
             listOfSolutions = nerdamer.solveEquations(equationSet);
+            //DEBUG: Primary checking for solutions in terms of knowns;
+            // Maybe useful for unit inference in system setting.
+            // listOfSolutions only provides the numbers; someway to 
+            // find the variables? Unknowns in terms of knowns? Ans: Nope, not useful
+            console.log(equationSet);
+        }
         else
-            listOfSolutions = equationObjectSet[0].solve(); // Yeah turns out the combined logic does not work for single solvers; gives erroneous results.
+        {
+            // Confirmed there is only one unknown in the system.
+            listOfSolutions = equationObjectSet[0].solve(); 
+            console.log(listOfSolutions);
+            console.log(variableSet);
+            // Yeah turns out the combined logic does not work for single solvers; gives erroneous results.
+            // var unitDesc = equationObjectSet[0].getUnitOfVariable();
+            // variableSet[unitDesc[0]]["unit"] = unitDesc[1];
+            // variableSet[unitDesc[0]]["domain"] = unitDesc[2][0];
+            // variableSet[unitDesc[0]]["unitDisp"] = unitDesc[2][1];
+        }
         for(var i=0; i<listOfSolutions.length; i++)
             soln[listOfSolutions[i][0]] = listOfSolutions[i][1];
-        console.log(soln);
+        // console.log(soln);
         
         // console.log("Before printing solutions", this.DIMENSIONS);
         for(var unknownName in variableSet)
@@ -435,17 +470,18 @@ class Workspace
                     "visuals": this.DIMENSIONS.ELEMENTS,
                     "dataset": {
                         "value": soln[unknownName],
-                        "unit": "",
-                        "variable": unknownName,
+                        "unit": variableSet[unknownName]["unit"],
+                        "variable": unknownName,    // The internal variable name eg: x_y
                         "valueDisplay": String(Number(Math.round(soln[unknownName]+'e3')+'e-3')),
-                        "unitDisplay": "",
-                        "variableDisplay": variableSet[unknownName],
-                        "domain": ""
+                        "unitDisplay": variableSet[unknownName]["unitDisp"],
+                        "variableDisplay": variableSet[unknownName]["name"], // The greek/external symbol
+                        "domain": variableSet[unknownName]["domain"]
                     }
                 },
                 this.globalSectionObj,
                 this.globalPointerReference
             )
+            // console.log(currSolution);
 
             this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
             this.solutionCounter++;

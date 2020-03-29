@@ -7,7 +7,8 @@ const solution = {
             'len':"0.8",
             //'term':"25",
         },
-        solution : 79.348 
+        solution : 79.348,
+        unit: "degC",
     }
 }
 // Find a way to specify sets of equations being solved at any stage,

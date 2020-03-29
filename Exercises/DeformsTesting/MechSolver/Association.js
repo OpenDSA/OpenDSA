@@ -9,8 +9,26 @@ class Association{
         this.variableObjects[targetObject.id] = targetObject;
         
         this.var = sourceObject.currentSymbol;
+        console.log(this.var);
         this.varDisplay = sourceObject.parentSymbol;
         this.varDisplayTemplate = sourceObject.parentSymbolTemplate;
+        this.domain = null;
+
+        if(sourceObject.expectedDomain == targetObject.expectedDomain)
+            this.domain = sourceObject.expectedDomain;
+        else {
+            // Show the error, the student has to remove them though
+            // Subject this response to error levels TO BE DEFINED LATER AS PER FEEDBACK SPECIFICATIONS.
+            if (targetObject.expectedDomain == 'free')
+                this.domain = sourceObject.expectedDomain;
+            else if (sourceObject.expectedDomain == 'free')
+                this.domain = targetObject.expectedDomain;
+            else {
+                console.log("attempted to associate domain mismatched quantities, please correct");
+                // Insert jsav dialog text here.
+                this.domain = sourceObject.expectedDomain;
+            }
+        }
 
         this.updateVarDisplay();        
     }
@@ -39,6 +57,19 @@ class Association{
         tempElement.element[0].childNodes[0].childNodes[1].childNodes[2].innerHTML;
         tempElement.clear();
         this.variableObjects[newVar.id].valueDisplay.dataset.status = "filled";
+
+        if(this.domain != newVar.expectedDomain) {
+            // Show the error, the student has to remove them though
+            // Subject this response to error levels TO BE DEFINED LATER AS PER FEEDBACK SPECIFICATIONS.
+            if (newVar.expectedDomain == 'free') {
+                // Nothing needs to be done, the expectedDomain takes the same value
+            }
+            else {
+                console.log("attempted to associate domain mismatched quantities, please correct");
+                // Insert jsav dialog text here.
+                this.domain = newVar.expectedDomain;
+            }
+        }
     }
     removeAssociation(obj)
     {

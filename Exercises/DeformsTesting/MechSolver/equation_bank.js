@@ -77,7 +77,7 @@ const equations = [
             'length': 'L_{ }'
         },
         domains: {
-            'strain': 'ratio',
+            'strain': 'strain',
             'changeL': 'length',
             'length': 'length'
         },
@@ -98,7 +98,7 @@ const equations = [
             'length': 'L_{ }'
         },
         domains: {
-            'strain': 'ratio',
+            'strain': 'strain',
             'deform': 'length',
             'length': 'length'
         },
@@ -321,18 +321,18 @@ const equations = [
         name: 'Stress in an axial',
         latex: '\\delta_{T_{ }} = \\alpha_{ } \\cdot \\Delta T_{ } \\cdot L_{ }',
         latex_boxes: '\\Box=\\Box\\times\\Box\\times\\Box',
-        params_latex: ['\\delta', '\\alpha', '\\Delta T', 'L'],
-        template: 'deform = const * tempchange * len',
-        params: ['deform', 'const', 'tempchange', 'len'],
+        params_latex: ['\\delta_{ }', '\\alpha_{ }', '\\Delta T_{ }', 'L_{ }'],
+        template: 'deform = thermalcoeff * tempchange * len',
+        params: ['deform', 'thermalcoeff', 'tempchange', 'len'],
         variables: {
             'deform':'\\delta_{T_{ }}',
-            'const':'\\alpha_{ }',
+            'thermalcoeff':'\\alpha_{ }',
             'tempchange':'\\Delta T_{ }',
             'len':'L_{ }'
         },
         domains: {
             'deform':'length',
-            'const':'temperature-1',
+            'thermalcoeff':'temperature-1',
             'tempchange':'temperature',
             'len':'length'
         },
@@ -340,26 +340,28 @@ const equations = [
     },
     {
         group: 'Axial',
-        id: "shearStrainMaxInPlane1",
-        name: 'Maximum in-plane shear strain',
-        latex: '\\gamma_{max_{ }} = \\pm2 \\sqrt{\\left(\\frac{ \\varepsilon_{x_{ }} - \\varepsilon_{y_{ }} }{2}\\right)^2+\\left(\\frac{ \\gamma_{xy_{ }} }{2}\\right)^2}',
-        latex_boxes: '\\Box=\\pm2\\sqrt{\\left(\\frac{\\Box - \\Box}{2}\\right)^2+\\left(\\frac{\\Box}{2}\\right)^2}',
-        params_latex: ['\\gamma_{max_{ }}', '\\varepsilon_{x_{ }}', '\\varepsilon_{y_{ }}', '\\gamma_{xy_{ }}'],
-        template: 'maxshear=2*sqrt( (epsX - epsY/2)^2 + (shear/2)^2 )',
-        params: ['maxshear', 'epsX', 'epsY', 'shear'],
+        id: "deformationAxialMember",
+        name: 'Deformation in Axial Member with F L A E',
+        latex: '\\delta_{ } = \\frac {F_{ } \\cdot L_{ }} {A_{ } \\cdot E_{ }}',
+        latex_boxes: '\\Box= \\frac {\\Box \\cdot \\Box} {\\Box \\cdot \\Box}',
+        params_latex: ['\\delta_{ }','F_{ }', 'L_{ }', 'A_{ }', 'E_{ }'],
+        template: 'deform = ( force * length ) / ( area * pressE )',
+        params: ['deform', 'area', 'pressE', 'force', 'length'],
         variables: {
-            'maxshear': '\\gamma_{max_{ }}',
-            'epsX': '\\varepsilon_{x_{ }}',
-            'epsY': '\\varepsilon_{y_{ }}',
-            'shear': '\\gamma_{xy_{ }}',
+            'deform': '\\delta_{ }',
+            'force': 'F_{ }',
+            'area': 'A_{ }',
+            'pressE': 'E_{ }',
+            'length': 'L_{ }',
         },
         domains: {
-            'maxshear': 'coefficient',
-            'epsX': 'coefficient',
-            'epsY': 'coefficient',
-            'shear': 'coefficient',
+            'deform': 'length',
+            'force': 'force',
+            'area': 'area',
+            'pressE': 'pressure',
+            'length': 'length'
         },
-        height: 50
+        height: 30
     },
     {
         group: 'Axial',
@@ -384,48 +386,117 @@ const equations = [
         },
         height: 30
     },
+    {
+        group: 'Axial',
+        id: "combinedDeformEquation",
+        name: 'Force temperature deformation relationship',
+        latex: '\\delta_{ } = \\frac {F_{ } \\cdot L_{ }} {A_{ } \\cdot E_{ }}'+
+            '+ \\alpha_{ } \\cdot \\Delta T_{ } \\cdot L_{ }',
+        latex_boxes: '\\Box=\\frac {\\Box \\cdot \\Box} {\\Box \\cdot \\Box}'+
+            '+ \\Box \\cdot \\Box \\cdot \\Box',
+        params_latex: ['\\delta_{ }','F_{ }', 'L_{ }', 'A_{ }', 'E_{ }',
+            '\\alpha_{ }', '\\Delta T_{ }', 'L_{ }'],
+        template: 'deform = ( force * length ) / ( area * pressE ) + '+
+            'thermalcoeff * tempchange * length2',
+        params: ['deform', 'area', 'pressE', 'force', 'length1', 
+            'thermalcoeff', 'tempchange', 'length2'],
+        variables: {
+            'deform': '\\delta_{ }',
+            'pressE': 'E_{ }',
+            'length1': 'L_{ }',
+            'force': 'F_{ }',
+            'area': 'A_{ }',
+            'thermalcoeff':'\\alpha_{ }',
+            'tempchange':'\\Delta T_{ }',
+            'length2':'L_{ }'
+        },
+        domains: {
+            'deform': 'length',
+            'force': 'force',
+            'area': 'area',
+            'pressE': 'pressure',
+            'stress': 'pressure',
+            'pressE': 'pressure',
+            'length': 'length'
+        },
+        height: 30
+    },
+    {
+        group: 'Torsion',
+        id: "circShaftMaxTorsionShearStress",
+        name: 'Maximum torsion shear stress in a circular shaft',
+        latex: '\\tau_{max_{ }}=\\frac{T_{c_{ }}}{J_{}}',
+        latex_boxes: '\\Box=\\frac {\\Box} {\\Box}',
+        params: []
+    },
+    {
+        group: 'Torsion',
+        id: "circShaftMaxTorsionShearStress-J",
+        name: 'J in Maximum torsion shear stress in a circular shaft',
+        latex: 'J=\\frac\\pi 2 [{R}^4-{r}^4]',
+        latex_boxes: '\\Box=\\frac\\pi 2 [{\\Box}^4-{\\Box}^4]',
+        params: ['J', 'R', 'r']
+    },
     // {
-    //     group: 'Axial deformation',
-    //     id: "RelnForceTempDef",
-    //     name: 'Force-temperature-deformation relationship',
-    //     latex: '\\delta=\\frac{F\\cdot L}{A\\cdot E} + \\alpha \\cdot \\Delta T\\cdot L',
-    //     latex_boxes: '\\Box=\\frac{\\Box\\times\\Box}{\\Box\\times\\Box} + \\Box \\times \\Box\\times \\Box',
-    //     params: ['\\delta', 'F', 'L', 'A', 'E', 'alpha', '\\Delta T', 'L']
+    //     group: 'Axial',
+    //     id: "shearStrainMaxInPlane1",
+    //     name: 'Maximum in-plane shear strain',
+    //     latex: '\\gamma_{max_{ }} = \\pm2 \\sqrt{\\left(\\frac{ \\varepsilon_{x_{ }} - \\varepsilon_{y_{ }} }{2}\\right)^2+\\left(\\frac{ \\gamma_{xy_{ }} }{2}\\right)^2}',
+    //     latex_boxes: '\\Box=\\pm2\\sqrt{\\left(\\frac{\\Box - \\Box}{2}\\right)^2+\\left(\\frac{\\Box}{2}\\right)^2}',
+    //     params_latex: ['\\gamma_{max_{ }}', '\\varepsilon_{x_{ }}', '\\varepsilon_{y_{ }}', '\\gamma_{xy_{ }}'],
+    //     template: 'maxshear=2*sqrt( (epsX - epsY/2)^2 + (shear/2)^2 )',
+    //     params: ['maxshear', 'epsX', 'epsY', 'shear'],
+    //     variables: {
+    //         'maxshear': '\\gamma_{max_{ }}',
+    //         'epsX': '\\varepsilon_{x_{ }}',
+    //         'epsY': '\\varepsilon_{y_{ }}',
+    //         'shear': '\\gamma_{xy_{ }}',
+    //     },
+    //     domains: {
+    //         'maxshear': 'coefficient',
+    //         'epsX': 'coefficient',
+    //         'epsY': 'coefficient',
+    //         'shear': 'coefficient',
+    //     },
+    //     height: 50
     // },
-    // {
-    //     group: 'Torsion',
-    //     id: "circShaftMaxTorsionShearStress",
-    //     name: 'Maximum torsion shear stress in a circular shaft',
-    //     latex: '\\tau_{max}=\\frac{T_c}J',
-    //     latex_boxes: '\\Box=\\frac \\Box \\Box',
-    //     params: []
-    // },
-    // {
-    //     group: 'Torsion',
-    //     id: "circShaftMaxTorsionShearStress-J",
-    //     name: 'J in Maximum torsion shear stress in a circular shaft',
-    //     latex: 'J=\\frac\\pi 2 [R^4-r^4]',
-    //     latex_boxes: '\\Box=\\frac\\pi 2 [\\Box^4-\\Box^4]',
-    //     params: ['J', 'R', 'r']
-    // },
+    {
+        group: 'Arithmetic',
+        id: "equal",
+        name: 'Equality',
+        latex: 'a_{ }=b_{ }',
+        latex_boxes: '\\Box=\\Box',
+        params_latex: ['a_{ }', 'b_{ }'],
+        template: 'aterm = bterm',
+        params: ['aterm', 'bterm',],
+        variables: {
+            'bterm': 'b_{ }',
+            'aterm': 'a_{ }'
+        },
+        domains: {
+            'bterm': 'free',
+            'aterm': 'free'
+        },
+        height: 30
+    },
     {
         group: 'Arithmetic',
         id: "add2",
         name: 'Addition of 2 terms',
         latex: 's_{ }=a_{ }+b_{ }',
         latex_boxes: '\\Box=\\Box+\\Box',
-        params_latex: ['s_{ }','b_{ }', 'a_{ }'],
-        template: 'cterm = aterm + bterm',
-        params: ['cterm', 'bterm', 'aterm'],
+        params_latex: ['s_{ }','a_{ }', 'b_{ }'],
+        template: 'sterm = aterm + bterm',
+        params: ['sterm', 'aterm', 'bterm'],
         variables: {
-            'cterm': 's_{ }',
+            'sterm': 's_{ }',
             'bterm': 'b_{ }',
             'aterm': 'a_{ }'
         },
         domains: {
-            'cterm': 'dimensionless',
-            'bterm': 'dimensionless',
-            'aterm': 'dimensionless'
+            'sterm': 'free',
+            'bterm': 'free',
+            'aterm': 'free'
         },
         height: 30
     },
@@ -455,20 +526,20 @@ const equations = [
         group: 'Arithmetic',
         id: "sub",
         name: 'Subtraction',
-        latex: 'c=a-b',
+        latex: 'c_{ }=a_{ }-b_{ }',
         latex_boxes: '\\Box=\\Box-\\Box',
-        params_latex: ['c','b', 'a'],
-        template: 'cterm = bterm - aterm',
-        params: ['cterm', 'bterm', 'aterm'],
+        params_latex: ['c_{ }','b_{ }', 'a_{ }'],
+        template: 'cterm = aterm - bterm',
+        params: ['cterm', 'aterm', 'bterm'],
         variables: {
-            'cterm': 'c',
-            'bterm': 'b',
-            'aterm': 'a'
+            'cterm': 'c_{ }',
+            'bterm': 'b_{ }',
+            'aterm': 'a_{ }'
         },
         domains: {
-            'cterm': 'dimensionless',
-            'bterm': 'dimensionless',
-            'aterm': 'dimensionless'
+            'cterm': 'free',
+            'bterm': 'free',
+            'aterm': 'free'
         },
         height: 30
     },
@@ -476,20 +547,20 @@ const equations = [
         group: 'Arithmetic',
         id: "div",
         name: 'Division',
-        latex: 'c=\\frac{a}{b}',
+        latex: 'c_{ }=\\frac{a_{ }}{b_{ }}',
         latex_boxes: '\\Box=\\frac{\\Box}{\\Box}',
-        params_latex: ['c','b', 'a'],
+        params_latex: ['c_{ }','b_{ }', 'a_{ }'],
         template: 'cterm = aterm  bterm',
         params: ['cterm', 'bterm', 'aterm'],
         variables: {
-            'cterm': 'c',
-            'bterm': 'b',
-            'aterm': 'a'
+            'cterm': 'c_{ }',
+            'bterm': 'b_{ }',
+            'aterm': 'a_{ }'
         },
         domains: {
-            'cterm': 'dimensionless',
-            'bterm': 'dimensionless',
-            'aterm': 'dimensionless'
+            'cterm': 'free',
+            'bterm': 'free',
+            'aterm': 'free'
         },
         height: 30
     },
@@ -497,20 +568,20 @@ const equations = [
         group: 'Arithmetic',
         id: "mult",
         name: 'Multiplication',
-        latex: 'c=a \\times b',
+        latex: 'c_{ }=a_{ } \\times b_{ }',
         latex_boxes: '\\Box=\\Box\\times\\Box',
-        params_latex: ['c','b', 'a'],
+        params_latex: ['c_{ }','b_{ }', 'a_{ }'],
         template: 'cterm = aterm * bterm',
         params: ['cterm', 'aterm', 'bterm'],
         variables: {
-            'cterm': 'c',
-            'bterm': 'b',
-            'aterm': 'a'
+            'cterm': 'c_{ }',
+            'bterm': 'b_{ }',
+            'aterm': 'a_{ }'
         },
         domains: {
-            'cterm': 'dimensionless',
-            'bterm': 'dimensionless',
-            'aterm': 'dimensionless'
+            'cterm': 'free',
+            'bterm': 'free',
+            'aterm': 'free'
         },
         height: 30
     },
@@ -518,20 +589,20 @@ const equations = [
         group: 'Arithmetic',
         id: "power",
         name: 'Power',
-        latex: 'c_{} = a_{} ^ {b_{}}',
+        latex: 'c_{ } = a_{ } ^ {b_{ }}',
         latex_boxes: '\\Box=\\Box^{\\Box}',
-        params_latex: ['c','b', 'a'],
+        params_latex: ['c_{ }','b_{ }', 'a_{ }'],
         template: 'cterm = aterm ^ bterm',
         params: ['cterm', 'aterm', 'bterm'],
         variables: {
-            'cterm': 'c',
-            'bterm': 'b',
-            'aterm': 'a'
+            'cterm': 'c_{ }',
+            'bterm': 'b_{ }',
+            'aterm': 'a_{ }'
         },
         domains: {
-            'cterm': 'dimensionless',
-            'bterm': 'dimensionless',
-            'aterm': 'dimensionless'
+            'cterm': 'free',
+            'bterm': 'free',
+            'aterm': 'free'
         },
         height: 30
     },
@@ -539,9 +610,9 @@ const equations = [
         group: 'Arithmetic',
         id: "root",
         name: 'Root',
-        latex: 'c_{} = a_{} ^ {1/ b_{}}',
+        latex: 'c_{ } = a_{ } ^ {1/ b_{ }}',
         latex_boxes: '\\Box=\\Box^{1/\\Box}',
-        params_latex: ['c','b', 'a'],
+        params_latex: ['c_{ }','b_{ }', 'a_{ }'],
         template: 'cterm = aterm ^ (1/bterm)',
         params: ['cterm', 'aterm', 'bterm'],
         variables: {
@@ -550,9 +621,9 @@ const equations = [
             'aterm': 'a'
         },
         domains: {
-            'cterm': 'dimensionless',
-            'bterm': 'dimensionless',
-            'aterm': 'dimensionless'
+            'cterm': 'free',
+            'bterm': 'free',
+            'aterm': 'free'
         },
         height: 30
     }

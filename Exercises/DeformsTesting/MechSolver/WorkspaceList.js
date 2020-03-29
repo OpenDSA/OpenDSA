@@ -96,7 +96,8 @@ class WorkspaceList
         });
         // Window.windowManager.extendCanvas(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"]);
         // console.log(document.styleSheets[2].rules[0].style.height);
-        document.styleSheets[2].rules[0].style.height = Math.max(800, (this.DIMENSIONS["HEIGHT"] + this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"] + this.DIMENSIONS["WK_PADDING"])) + "px";
+        document.styleSheets[2].rules[0].style.height = 
+        Math.max(1000, (this.DIMENSIONS["HEIGHT"] + this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"] + this.DIMENSIONS["WK_PADDING"])) + "px";
 
     }
     updateShape()

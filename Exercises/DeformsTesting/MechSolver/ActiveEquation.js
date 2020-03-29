@@ -88,7 +88,7 @@ class ActiveEquation{
         for(var i=0; i<boxList.length; i++)
         {
             //var containerSpan = document.createElement("span");
-            boxList[i].className = "boxparam";
+            boxList[i].className = " boxparam";
             boxList[i].setAttribute("data-domain", "empty");
             //boxList[i].innerHTML = '<span class="mord amsrm">&#9634;</span>';
             boxList[i].innerHTML = 
@@ -183,15 +183,25 @@ class ActiveEquation{
                     if(this.variables[splitString[x]].valueType=="association")
                     {
                         var ps = this.variables[splitString[x]].value.varDisplay;
-                        splitString[x] = this.variables[splitString[x]].value.var;
-                        unknowns[splitString[x]] = ps;
+                        // splitString[x] = this.variables[splitString[x]].value.var;
+                        // unknowns[this.variables[splitString[x]].value.var] = ps;
+                        var subject = this.variables[splitString[x]].value.var;
+                        if(this.variables[splitString[x]].valueNegated)
+                            splitString[x] = "(-"+subject+")";
+                        else splitString[x] = subject;
+                        unknowns[subject] = ps;
                     }
                     else
                     {
                         // OR it's a single unmarked, unconnected unknown
                         var ps = this.variables[splitString[x]].parentSymbol;
-                        splitString[x] = this.variables[splitString[x]].currentSymbol;
-                        unknowns[splitString[x]] = ps;
+                        // splitString[x] = this.variables[splitString[x]].currentSymbol;
+                        // unknowns[splitString[x]] = ps;
+                        var subject = this.variables[splitString[x]].currentSymbol;
+                        if(this.variables[splitString[x]].valueNegated)
+                            splitString[x] = "(-"+subject+")";
+                        else splitString[x] = subject;
+                        unknowns[subject] = ps;
                     }
                 }
             }
@@ -225,24 +235,27 @@ class ActiveEquation{
                     {
                         // var ps = this.variables[splitString[x]].value.varDisplay;
                         splitString[x] = this.variables[splitString[x]].value.var;
-                        subject = splitString[x];
+                        if(this.variables[splitString[x]].valueNegated)
+                            splitString[x] = "(-"+subject+")";
+                        else splitString[x] = subject;
                     }
                     else
                     {
                         // OR it's a single unmarked, unconnected unknown
                         // var ps = this.variables[splitString[x]].parentSymbol;
-                        splitString[x] = this.variables[splitString[x]].currentSymbol;
-                        subject = splitString[x];
+                        subject = this.variables[splitString[x]].currentSymbol;
+                        if(this.variables[splitString[x]].valueNegated)
+                            splitString[x] = "(-"+subject+")";
+                        else splitString[x] = subject;
                     }
                 }
             }
         }
-        console.log(splitString.join(" "));
         var solutions = nerdamer.solveEquations(
             [splitString.join(" "),
             subject+" = x + 1"]
             );
-        
+        console.log(solutions);
         for(var i in solutions)
         {
             if(solutions[i][0] == subject)
@@ -251,9 +264,6 @@ class ActiveEquation{
             }
         }
         //Substitute the random symbol name with the proper qualified variable name
-
-        // DEFAULT
-        // return ["r_n",0]
     }
     subscriptizeEquationComponents(){
         // Steps:
@@ -316,6 +326,113 @@ class ActiveEquation{
         Window.box.close();
         delete Window.box;
         delete Window.parentObject;
+    }
+    getUnitOfVariable(varName)
+    {
+        // Find the unknown variable - which can be an option later, if no parameter is passed.
+        // var varName = null;
+        console.log("in getUnitOfVariable for"+varName);
+        // NOTES: In our observation, we can either have an unknown that has an association, or that does not (i.e. is null).
+        // If an unknown is associated, then it maybe difficult to compute its domain from inside 
+        // especially if this equation contains atleast one unknown with a weird datatype.
+        // PLACEHOLDER FOR POTENTIAL HACK
+
+        // If an unknown is null (not associated), then we want to spend sometime computing its domain.
+        var splitString = this.equationObjectReference.template.split(" ");
+        for(var x=0; x<splitString.length; x++)
+        {
+            if(splitString[x] in this.variables)
+            {
+                if(this.variables[splitString[x]].value == null || this.variables[splitString[x]].valueType == "number")
+                {
+                    // Single solver; one unknown, with
+                    splitString[x] = this.variables[splitString[x]].currentSymbol;
+                }
+                else if(this.variables[splitString[x]].valueType == 'association')
+                {
+                    // if there is an association, adds that automatically.
+                    splitString[x] = this.variables[splitString[x]].value.var;
+                }
+                // No need for the numbers, we only need the variable symbols.
+            }
+        }
+        var equation = nerdamer(splitString.join(" "));
+        var substituted = equation.solveFor(varName).toString() // Only reference of varName, used when the 
+        var values = {};
+        var flagIndeterminate = false;
+        for(var v in this.variables)
+        {
+            // This assumes that this is for a single variable solving scenario.
+            if(this.variables[v].valueType == "number")
+            {
+                values[this.variables[v].currentSymbol] = '1 '+this.variables[v].currentUnit;
+            }
+            else if(this.variables[v].valueType == "association")
+            {
+                // The domain is this case would obviously be unknown.
+                // For now, use the expected domain attribute of the variable to find the corresponding base unit
+                // console.log(
+                //     "Can we find the right unit?",
+                //     this.variables[v].value.domain,
+                //     Window.defaultDomains[this.variables[v].value.domain],
+                //     Window.defaultDomains[this.variables[v].value.domain][Window.unitFamily],
+                //     )
+                var unitName = Window.defaultDomains[this.variables[v].value.domain][Window.unitFamily];
+                // values[this.variables[v].currentSymbol] = '1 '+
+                values[this.variables[v].value.var] = '1 '+
+                    Window.UNIT_DB[this.variables[v].value.domain][unitName]['unit'];
+                // console.log("Did we find the right unit?",values[this.variables[v].currentSymbol]);
+            }
+            else if(this.variables[v].valueType == null)
+            {
+                // Probably the unknown we would calculate things for anyway; it hasn't been associated yet.
+                // Don't worry about it; this will certainly be the one we will be calculating the unit for.
+                // However, if we need the unit for this thing to infer the unit of something else, then enable this.
+                if (this.equationObjectReference.group == 'Arithmetic') {
+                    // Special case, this is needed because everything else (mult, div, etc.) can fix itself (UPDATE: Maybe not)
+                    // values[this.variables[v].currentSymbol] = ''; // Just leave it blank, let the rest of the units determine the rest.
+
+                    // When it comes here, either this.variables[v] is the varName whose unit is requested,
+                    // or this is the varName whose unit will be used for inference.
+                    // For the first case, we can leave it blank.
+                    if (varName == this.variables[v].currentSymbol) // It's not an assoc, otherwise it wouldn't be null
+                        values[this.variables[v].currentSymbol] = '';
+                    // Else, we abort and directly return the expectedDomain and corresponding unit for the requested variable.
+                    // We already have some info to go off of, we don't need to waste anymore time.
+                    else {
+                        flagIndeterminate = true;
+                    }
+                }
+                else {
+                    var unitName = Window.defaultDomains[this.variables[v].expectedDomain][Window.unitFamily];
+                    values[this.variables[v].currentSymbol] = '1 '+ Window.UNIT_DB[this.variables[v].expectedDomain][unitName]['unit'];
+                }
+                // Alternatively; try to find out what the unit for this thing should be, then use it for this one.
+                // values[this.variables[v].currentSymbol] = '1 '+ this.getUnitOfVariable(this.variables[v].currentSymbol)[1];
+            }
+        }
+        // By this point, things have been calculated, and can be indexed by the proper variable name.
+        if(flagIndeterminate) {
+            var resultUnit = values[varName].split(" ")[1];
+            if(resultUnit in Window.unitDomainMap)
+                var domain = Window.unitDomainMap[resultUnit];
+            else
+                var domain = "unknown"; // temporary fix
+            return [varName, resultUnit, domain];
+        }
+        // console.log(substituted);
+        // console.log(values);
+        for(var v in values)
+        {
+            substituted = substituted.replace(v,"("+values[v]+")");
+        }
+        console.log(substituted);
+        var resultUnit = mathjs.evaluate(substituted).toString().split(" ")[1];
+        if(resultUnit in Window.unitDomainMap)
+            var domain = Window.unitDomainMap[resultUnit];
+        else
+            var domain = "unknown"; // temporary fix
+        return [varName, resultUnit, domain];
     }
 }
 window.ActiveEquation = window.ActiveEquation || ActiveEquation

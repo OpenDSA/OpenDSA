@@ -12,7 +12,7 @@
 <body data-height="860" data-width="950">
   <div class="exercise">
     <div class="vars">
-      <var id="JSAV">mechSolverCommon.initJSAV("DeformsSimpleProblemPPRO")</var>
+      <var id="JSAV">mechSolverCommon.initJSAV("DeformsSimpleProblemPPRO", "SI")</var>
     </div>
 
     <div class="problems">
@@ -39,7 +39,7 @@
             from the rigid wall at point B at 
 
             <span class="param" id="param4" 
-            data-value="25" data-unit="degree C" 
+            data-value="25" data-unit="degC" 
             data-value-display="25"
             data-unit-display="C" data-domain="temperature">25
             <code><var>"^{\\circ}C"</var></code>
@@ -55,7 +55,7 @@
               </span>,
               <code><var>"{\\alpha}"</var></code>=
               <span class="param" id="param6"
-              data-value="0.000023" data-unit="degC^-1"
+              data-value="0.000023" data-unit="degC^(-1)"
               data-value-display="23e-6"
               data-unit-display="/C" data-domain="temperature-1">
               <code>
@@ -73,7 +73,7 @@
           <p class="question">
             2. What stress exists in the bar at a temperature of
             <span class="param" id="param7"
-            data-value="100" data-unit="degree C"
+            data-value="100" data-unit="degC"
             data-value-display="100"
             data-unit-display="C" data-domain="temperature">100
             <code><var>"^{\\circ}C"</var></code></span>?
@@ -140,9 +140,10 @@
   <script src="MechSolver/Workspace.js"></script>
   <script src="MechSolver/WorkspaceList.js"></script>
   <script src="MechSolver/WindowManager.js"></script>
+  <script src="MechSolver/Maps.js"></script>
 
   <!-- Additional script files containing settings and solution files -->
-  <script src="DeformsProblemPROsolution.js"></script>
+  <script src="DeformsSimpleProblemPPROsolution.js"></script>
 
 </body>
 

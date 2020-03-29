@@ -28,7 +28,7 @@ requirejs(["./mathjs.js"], function(){});
         
     const CANVAS_DIMENSIONS = {
         "TOTAL_WIDTH": 767,
-        "TOTAL_HEIGHT": 1500,
+        "TOTAL_HEIGHT": 1000,
         "WORKSPACE_LIST": {
             "X": 1,
             "Y": 1,
@@ -67,9 +67,10 @@ requirejs(["./mathjs.js"], function(){});
     var mechSolverCommon = {
 
         //initializer, creates all the necessary object instances
-        initJSAV: function(exerciseId){
+        initJSAV: function(exerciseId, unitFamily){
             // Creating one rectangle in the middle that allows scrolling through
             // the list of equations.
+            Window.unitFamily = unitFamily; // Setting this here since resetting is not going to change this.
             reset(exerciseId);
         },
         
@@ -100,64 +101,66 @@ requirejs(["./mathjs.js"], function(){});
 
             for(var solnIndex=0; solnIndex<Object.keys(solution).length; solnIndex++)
             {
-                feedBackText += "<h3>Question "+(solnIndex+1)+"</h3>";
+                // feedBackText += "<h3>Question "+(solnIndex+1)+"</h3>";
                 var solnResults = { decision:true, description:{} };
             
-                // 1. Check if all the equations are present
-                feedBackText += "<h4>Equations:</h4> <ul>";
-                solnResults.description.allEqn = true;
-                for(var e in solution[solnIndex].equations)
-                {
-                    if(!(solution[solnIndex].equations[e] in equationDetails))
-                    {
-                        solnResults.description.allEqn = false;
-                        solnResults.decision = false;
-                        //console.log(solution[solnIndex].equations[e]+" is a required equation that was not used.")
-                        feedBackText += "<li>"+solution[solnIndex].equations[e]+" is a required equation that was not used.</li>";
-                    }
-                }
-                feedBackText += "</ul>";
-                feedBackText += solnResults.decision? "<h4>All equations were chosen</h4>":"";
+                // // 1. Check if all the equations are present
+                // feedBackText += "<h4>Equations:</h4> <ul>";
+                // solnResults.description.allEqn = true;
+                // for(var e in solution[solnIndex].equations)
+                // {
+                //     if(!(solution[solnIndex].equations[e] in equationDetails))
+                //     {
+                //         solnResults.description.allEqn = false;
+                //         solnResults.decision = false;
+                //         //console.log(solution[solnIndex].equations[e]+" is a required equation that was not used.")
+                //         feedBackText += "<li>"+solution[solnIndex].equations[e]+" is a required equation that was not used.</li>";
+                //     }
+                // }
+                // feedBackText += "</ul>";
+                // feedBackText += solnResults.decision? "<h4>All equations were chosen</h4>":"";
 
-                // 2. Check if all the variables are assigned properly with values
-                feedBackText += "<h4>Variable assignments:</h4> <ul>";
-                var varList = Object.keys(solution[solnIndex].variables);
-                solnResults.description.allVars = true;
-                for(var e in equationDetails)
-                {
-                    for(var v in equationDetails[e])
-                    {
-                        if(varList.indexOf(v)>=0)
-                        {
-                            varList.splice(varList.indexOf(v), 1);
-                            if(solution[solnIndex].variables[v] == equationDetails[e][v])
-                            {
-                                //console.log(v+" value matches");
-                                feedBackText += "<li>"+v+" value matches.</li>";
-                            }
-                            else
-                            {
-                                //console.log(v+" value does not match");
-                                feedBackText += "<li>"+v+" value does not match.</li>";
-                                solnResults.description.allVars = false;
-                            }
-                       }
-                    }
-                }
-                feedBackText += "</ul>";
-                if(varList.length==0)
-                {
-                    //console.log("All variables were correctly assigned.");
-                    feedBackText += "<h4>All variables were correctly assigned.</h4>";
-                }
-                else
-                {
-                    //console.log("Not all variables were correctly assigned; the following were not used",varList);
-                    feedBackText += "<h4>Not all variables were correctly assigned; the following were not used: "+varList+"</h4>";
-                }
+                // // 2. Check if all the variables are assigned properly with values
+                // feedBackText += "<h4>Variable assignments:</h4> <ul>";
+                // var varList = Object.keys(solution[solnIndex].variables);
+                // solnResults.description.allVars = true;
+                // for(var e in equationDetails)
+                // {
+                //     for(var v in equationDetails[e])
+                //     {
+                //         if(varList.indexOf(v)>=0)
+                //         {
+                //             varList.splice(varList.indexOf(v), 1);
+                //             if(solution[solnIndex].variables[v] == equationDetails[e][v])
+                //             {
+                //                 //console.log(v+" value matches");
+                //                 feedBackText += "<li>"+v+" value matches.</li>";
+                //             }
+                //             else
+                //             {
+                //                 //console.log(v+" value does not match");
+                //                 feedBackText += "<li>"+v+" value does not match.</li>";
+                //                 solnResults.description.allVars = false;
+                //             }
+                //        }
+                //     }
+                // }
+                // feedBackText += "</ul>";
+                // if(varList.length==0)
+                // {
+                //     //console.log("All variables were correctly assigned.");
+                //     feedBackText += "<h4>All variables were correctly assigned.</h4>";
+                // }
+                // else
+                // {
+                //     //console.log("Not all variables were correctly assigned; the following were not used",varList);
+                //     feedBackText += "<h4>Not all variables were correctly assigned; the following were not used: "+varList+"</h4>";
+                // }
 
-                // 3. Check if the answer is correct
-                solnResults.decision = (solution[solnIndex].solution == globalSolutionBoxes[solnIndex]["solution"]);
+                // 3. Check if the answer is correct, enable this only for the time being.
+                solnResults.decision = 
+                (solution[solnIndex].solution == globalSolutionBoxes[solnIndex]["solution"]) && 
+                (solution[solnIndex].unit == globalSolutionBoxes[solnIndex]["unit"]);
                 //console.log(solnResults.decision? "Final answer is correct": "Final answer is incorrect");
                 console.log(solnResults);
                 feedBackText += solnResults.decision? "<h2>Final answer is correct</h2>": "<h2>Final answer is incorrect</h2>";
@@ -262,10 +265,13 @@ requirejs(["./mathjs.js"], function(){});
                         this.innerHTML =
                         Number(Math.round(
                             globalPointerReference.currentClickedObject.value
-                            +'e3')+'e-3'); 
+                            +'e3')+'e-3')+" "+
+                            globalPointerReference.currentClickedObject.unitDisplay; 
                         globalSolutionBoxes[this.dataset.index] = {
                             "solution": 
-                            Number(Math.round(globalPointerReference.currentClickedObject.value+'e3')+'e-3')
+                            Number(Math.round(globalPointerReference.currentClickedObject.value+'e3')+'e-3'),
+                            "unit":
+                            globalPointerReference.currentClickedObject.unit
                         };
                     }
                 }
