@@ -47,24 +47,47 @@ var S = FA.addNode({left: 610, top: 170});
 
 FA.disableDragging();
 toggleInitial(FA, S);
-toggleFinal(FA, B);
-
+toggleFinal(FA, F);
+// q0.highlight();
+// q1.highlight();
 av.step();
 
 //frame 3 
 av.umsg("For each production, we need to draw the appropriate transition.");
 FA.addEdge(S, B, {weight: "a"});
+av.step();
 
+//frame 4
+av.umsg("For each production, we need to draw the appropriate transition.");
 FA.addEdge(S, A, {weight: "a"});
+av.step();
 
+//frame 5
+av.umsg("For each production, we need to draw the appropriate transition.");
 FA.addEdge(A, A, {weight: "a"});
+av.step();
+
+//frame 6
+av.umsg("For each production, we need to draw the appropriate transition.");
 FA.addEdge(A, S, {weight: "b"});
+av.step();
+
+//frame 7
+av.umsg("For each production, we need to draw the appropriate transition.");
 FA.addEdge(A, B, {weight: "b"});
+av.step();
+
+//frame 8
+av.umsg("For each production, we need to draw the appropriate transition.");
 FA.addEdge(B, S, {weight: "b"});
 FA.addEdge(B, F, {weight: "$\\lambda$"});
+av.step();
 
 //frame 4
 av.umsg("This is the equivalent NFA for this Regular Grammar");
+
+
+
 
 av.recorded();
 });
