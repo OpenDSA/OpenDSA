@@ -46,9 +46,9 @@ Figure :num:`Figure #FloydExamp` illustrates the concept of
 :math:`k`-paths.
 
 .. _FloydExamp:
-.. inlineav:: FloydExampdgm dgm
-   :links: AV/Lin/FloydExampdgm.css
-   :scripts: AV/Lin/FloydExampdgm.js
+.. inlineav:: FloydCON dgm
+   :links: AV/Lin/FloydCON.css
+   :scripts: AV/Lin/FloydCON.js
    :align: center
 
    An example of :math:`k`-paths in Floyd's algorithm.
