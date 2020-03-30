@@ -1,0 +1,21 @@
+{
+    "translations": {
+      "en": {
+        "q1": {
+          "type": "select",
+          "description": "Q = {${q_0, q_1, q_2, q_3}$} for any such q &Gamma; (q, &Gamma;, {L, R, S}) these: <br> - Read <br> - Write <br> - Compute",
+          "question":"Please select all the capabilities of a States Machine",
+          "answer": ["Compute", "Write", "Read"],
+          "choices": ["Compute", "Write", "Rotate", "Read"]
+        },
+        "q5": {
+            "type":"multiple",
+            "description":"",
+            "question":"",
+            "answer":"",
+            "choices": []
+        }
+      }
+    }
+  }
+    

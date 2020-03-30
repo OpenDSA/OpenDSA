@@ -93,7 +93,8 @@
     "Pushdown Automata":{},
     "Properties of Context-free Languages":{},
     "Models of Computation":{
-      "PIExample/TMGeneralModel":{}
+      "PIExample/TMGeneralModel":{},
+      "PIExample/TMInterpreting":{}
     },
     "Parsing":{},
     "Limits to Computing":{}
