@@ -28,68 +28,68 @@ $(document).ready(function() {
              arrowXPosition + 101, arrowYPosition - 87].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //Node 1 to Node 0
-  av.g.path(["M", arrowXPosition + 102, arrowYPosition - 82,
-             "A", xradian, yradian,
+  av.g.path(['M', arrowXPosition + 102, arrowYPosition - 82,
+             'A', xradian, yradian,
              RotationFlag, largeArcFlag, curveFlag,
              arrowXPosition + 3, arrowYPosition + 3].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //Node 0 to Node 2
-  av.g.path(["M", arrowXPosition + 7, arrowYPosition + 21,
-             "A", xradian, yradian,
+  av.g.path(['M', arrowXPosition + 7, arrowYPosition + 21,
+             'A', xradian, yradian,
              RotationFlag, largeArcFlag, curveFlag,
              arrowXPosition + 102, arrowYPosition + 60].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //Node 2 to Node 0
-  av.g.path(["M", arrowXPosition + 100, arrowYPosition + 63,
-             "A", xradian, yradian,
+  av.g.path(['M', arrowXPosition + 100, arrowYPosition + 63,
+             'A', xradian, yradian,
              RotationFlag, largeArcFlag, curveFlag,
              arrowXPosition + 2, arrowYPosition + 26].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //Node 1 to Node 2
-  av.g.path(["M", arrowXPosition + 122, arrowYPosition - 69,
-             "A", xradian + 30, yradian + 30,
+  av.g.path(['M', arrowXPosition + 122, arrowYPosition - 69,
+             'A', xradian + 30, yradian + 30,
              RotationFlag, largeArcFlag, curveFlag,
              arrowXPosition + 125, arrowYPosition + 50].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //Node 2 to Node 1
-  av.g.path(["M", arrowXPosition + 110, arrowYPosition + 48,
-             "A", xradian + 30, yradian + 30,
+  av.g.path(['M', arrowXPosition + 110, arrowYPosition + 48,
+             'A', xradian + 30, yradian + 30,
              RotationFlag, largeArcFlag, curveFlag,
              arrowXPosition + 110, arrowYPosition - 71].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //Node 1 to Node 3
-  av.g.path(["M", arrowXPosition + 133, arrowYPosition - 87,
-             "A", xradian, yradian,
+  av.g.path(['M', arrowXPosition + 133, arrowYPosition - 87,
+             'A', xradian, yradian,
              RotationFlag, largeArcFlag, curveFlag,
              arrowXPosition + 232, arrowYPosition + 3].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //Node 3 to Node 1
-  av.g.path(["M", arrowXPosition + 227, arrowYPosition + 10,
-             "A", xradian, yradian,
+  av.g.path(['M', arrowXPosition + 227, arrowYPosition + 10,
+             'A', xradian, yradian,
              RotationFlag, largeArcFlag, curveFlag,
              arrowXPosition + 128, arrowYPosition - 77].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //Node 2 to Node 3
-  av.g.path(["M", arrowXPosition + 133, arrowYPosition + 60,
-             "A", xradian, yradian,
+  av.g.path(['M', arrowXPosition + 133, arrowYPosition + 60,
+             'A', xradian, yradian,
              RotationFlag, largeArcFlag, curveFlag,
              arrowXPosition + 228, arrowYPosition + 20].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //Node 3 to Node 2
-  av.g.path(["M", arrowXPosition + 230, arrowYPosition + 26,
-             "A", xradian, yradian,
+  av.g.path(['M', arrowXPosition + 230, arrowYPosition + 26,
+             'A', xradian, yradian,
              RotationFlag, largeArcFlag, curveFlag,
              arrowXPosition + 131, arrowYPosition + 64].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //Node 0 to Node 3
-  av.g.path(["M", arrowXPosition - 2, arrowYPosition + 30,
-             "A", xradian, yradian,
+  av.g.path(['M', arrowXPosition - 2, arrowYPosition + 30,
+             'A', xradian, yradian,
              RotationFlag, largeArcFlag, curveFlag2,
              arrowXPosition + 237, arrowYPosition + 28].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //Node 3 to Node 0
-  av.g.path(["M", arrowXPosition + 242, arrowYPosition + 30,
-             "A", xradian - 10, yradian - 10,
+  av.g.path(['M', arrowXPosition + 242, arrowYPosition + 30,
+             'A', xradian - 10, yradian - 10,
              RotationFlag, largeArcFlag, curveFlag,
              arrowXPosition - 10, arrowYPosition + 28].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
