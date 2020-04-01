@@ -35,10 +35,14 @@ Why Is It Useful?
 Merkle Trees are useful in that they provide a way to not only create another level of cryptographic security, 
 but also are efficiently verifiable. Transactions are what a malicious actor would change to effectively alter 
 the blockchain and challenge the immutability. To this end, it's important to note that the branches of a 
-Merkle Tree are inherently modular: provided we have the hash of some internal node, all transactions 
-related to that hash are verifiable up to that internal node. In other words, the entire tree does not need 
-to be verified to verify a single transaction. For a specific transaction, the computational steps 
-to verify a transaction as unaltered relates to height of the tree logarithmically.
+Merkle Tree are inherently modular. The verification of a single transaction does not require the verification of 
+every other transaction.
+
+.. inlineav:: MerkleTreeVerification ss
+   :long_name: Merkle Tree Verification Slideshow
+   :links: AV/Blockchain/MerkleTree.css
+   :scripts: AV/Blockchain/MerkleTreeVerification.js
+   :output: show
 
 In addition to the verifiability, the hashing of each transaction creates a new level of complexity and security. 
 In addition to mining for a new nonce that agrees with the hash pointer of a block, altering a transaction and 
