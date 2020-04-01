@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 ifeq ($(OS),Windows_NT)
 	SHELL=C:/Windows/System32/cmd.exe
 endif
@@ -8,13 +9,38 @@ LINT = eslint --no-color
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE = uglifyjs
+PY_VENV_ACTIVATE = source pyVenv/bin/activate
+ifeq ($(OS),Windows_NT)
+	PY_VENV_ACTIVATE = pyVenv/Scripts/activate.bat
+endif
 
-.PHONY: all clean alllint csslint lint lintExe jsonlint min testLTI test TestLMS
+# These are used by Makefile.venv for using python's venv in make
+# Targets from Makefile.venv: venv, show-venv, clean-venv, python ...
+PY=python3.8
+WORKDIR=.
+VENVDIR=.pyVenv
+REQUIREMENTS_TXT=requirements.txt
 
 all: alllint
+.PHONY: clean min pull Webserver pyVenvCheck pipList
+.PHONY: all alllint csslint lint lintExe jsonlint
 
+# Can switch this to $(VENV)/python server.py
+Webserver: pyVenvCheck
+	./Webserver
 
-allbooks: Everything test CS2 CS3 RecurTutor PL
+.pyVenv: venv
+pyVenv: venv
+pyVenvCheck: venv
+	@python -c "import sys; assert (hasattr(sys, 'real_prefix') or (hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix)), '.pyVenv must be activated!'"
+	@echo '.pyVenv is active'
+pipList: venv
+	$(VENV)/pip list
+pyReqs: pyVenvCheck requirements.txt
+	$(VENV)/python -m pip install -U pip setuptools
+	$(VENV)/pip install -r requirements.txt 
+
+allbooks: Everything CS2 CS3 RecurTutor PL
 
 clean:
 	- $(RM) *~
@@ -91,221 +117,221 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-PittACOS: min
-	python3 $(CONFIG_SCRIPT) config/PittACOS.json --no-lms
+PittACOS: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/PittACOS.json --no-lms
 
-OpenFLAP: min
-	python3 $(CONFIG_SCRIPT) config/OpenFLAP.json --no-lms
+OpenFLAP: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/OpenFLAP.json --no-lms
 
-Obsolete: min
-	python3 $(CONFIG_SCRIPT) config/Obsolete.json --no-lms
+Obsolete: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Obsolete.json --no-lms
 
-Test: min
-	python3 $(CONFIG_SCRIPT) config/Test.json --no-lms
+Test: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
-DanaG: min
-	python3 $(CONFIG_SCRIPT) config/DanaG.json --no-lms
+DanaG: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/DanaG.json --no-lms
 
-TJeffrey: min
-	python3 $(CONFIG_SCRIPT) config/TJeffrey.json --no-lms
+TJeffrey: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/TJeffrey.json --no-lms
 
-Michael: min
-	python3 $(CONFIG_SCRIPT) config/Michael.json --no-lms
+Michael: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Michael.json --no-lms
 
-Tikhe: min
-	python3 $(CONFIG_SCRIPT) config/Tikhe.json --no-lms
+Tikhe: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Tikhe.json --no-lms
 
-cschandr: min
-	python3 $(CONFIG_SCRIPT) config/cschandr.json --no-lms
+cschandr: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/cschandr.json --no-lms
 
-Taylor: min
-	python3 $(CONFIG_SCRIPT) config/Taylor.json --no-lms
+Taylor: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Taylor.json --no-lms
 
-Raghu: min
-	python3 $(CONFIG_SCRIPT) config/Raghu.json --no-lms
+Raghu: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Raghu.json --no-lms
 
-Weihao: min
-	python3 $(CONFIG_SCRIPT) config/Weihao.json --no-lms
+Weihao: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Weihao.json --no-lms
 
-SimpleDemo: min
-	python3 $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
+SimpleDemo: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
 
-CT: min
-	python3 $(CONFIG_SCRIPT) config/CT.json --no-lms
+CT: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CT.json --no-lms
 
-CTEX: min
-	python3 $(CONFIG_SCRIPT) config/CTEX.json --no-lms
+CTEX: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CTEX.json --no-lms
 
-Sam: min
-	python3 $(CONFIG_SCRIPT) config/Sam.json --no-lms
+Sam: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Sam.json --no-lms
 
-Yinwen: min
-	python3 $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
+Yinwen: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
 
-Xiaolin: min
-	python3 $(CONFIG_SCRIPT) config/Xiaolin.json --no-lms
+Xiaolin: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Xiaolin.json --no-lms
 
-Ning: min
-	python3 $(CONFIG_SCRIPT) config/Ning.json --no-lms
+Ning: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Ning.json --no-lms
 
-NP: min
-	python3 $(CONFIG_SCRIPT) config/NP.json --no-lms
+NP: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/NP.json --no-lms
 
-NP4114: min
-	python3 $(CONFIG_SCRIPT) config/NP4114.json --no-lms
+NP4114: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/NP4114.json --no-lms
 
-JFLAP: min
-	python3 $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
+JFLAP: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
 
-FormalLang: min
-	python3 $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
+FormalLang: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/FormalLang.json --no-lms
 
-VisFormalLang: min
-	python3 $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
+VisFormalLang: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
 
-FL2019: min
-	python3 $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
+FL2019: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
 
-PIExample: min
-	python3 $(CONFIG_SCRIPT) config/PIExample.json --no-lms
+PIExample: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/PIExample.json --no-lms
 
-DeformsTesting: min
-	python3 $(CONFIG_SCRIPT) config/DeformsTesting.json --no-lms
+DeformsTesting: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/DeformsTesting.json --no-lms
 
-OpenPOPExercises: min
-	python3 $(CONFIG_SCRIPT) config/OpenPOPExercises.json --no-lms
+OpenPOPExercises: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/OpenPOPExercises.json --no-lms
 
-FLslides: min
-	python3 $(CONFIG_SCRIPT) -s config/FLslides.json --no-lms
+FLslides: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) -s config/FLslides.json --no-lms
 
-CS4114: min
-	python3 $(CONFIG_SCRIPT) config/CS4114.json --no-lms
+CS4114: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS4114.json --no-lms
 
-CS4114slides: min
-	python3 $(CONFIG_SCRIPT) -s config/CS4114slides.json --no-lms
+CS4114slides: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS4114slides.json --no-lms
 
-Spatial: min
-	python3 $(CONFIG_SCRIPT) config/Spatial.json --no-lms
+Spatial: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Spatial.json --no-lms
 
-PointersJavaSummer: min
-	python3 $(CONFIG_SCRIPT) config/PointersJavaSummer.json --no-lms
+PointersJavaSummer: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/PointersJavaSummer.json --no-lms
 
-PointersJava: min
-	python3 $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
+PointersJava: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/PointersJava.json --no-lms
 
-PointersCPP: min
-	python3 $(CONFIG_SCRIPT) config/PointersCPP.json --no-lms
+PointersCPP: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/PointersCPP.json --no-lms
 
-PL: min
-	python3 $(CONFIG_SCRIPT) config/PL.json --no-lms
+PL: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
-Graphics: min
-	python3 $(CONFIG_SCRIPT) config/Graphics.json --no-lms
+Graphics: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Graphics.json --no-lms
 
-PLdev: min
-	python3 $(CONFIG_SCRIPT) config/PLdev.json --no-lms
+PLdev: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/PLdev.json --no-lms
 
-Everything: min
-	python3 $(CONFIG_SCRIPT) config/Everything.json --no-lms
+Everything: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Everything.json --no-lms
 
-CS3notes: min
-	python3 $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
+CS3notes: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
 
-CS3slides: min
-	python3 $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
+CS3slides: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
 
-CS3114slides: min
-	python3 $(CONFIG_SCRIPT) -s config/CS3114slides.json --no-lms
+CS3114slides: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS3114slides.json --no-lms
 
-CS3F18slides: min
-	python3 $(CONFIG_SCRIPT) -s config/CS3F18slides.json --no-lms
+CS3F18slides: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS3F18slides.json --no-lms
 
-CS3F18notes: min
-	python3 $(CONFIG_SCRIPT) config/CS3F18slides.json --no-lms -b CS3F18notes --no-lms
+CS3F18notes: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS3F18slides.json --no-lms -b CS3F18notes --no-lms
 
-CS4104: min
-	python3 $(CONFIG_SCRIPT) config/CS4104.json --no-lms
+CS4104: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
 
-CS2: min
-	python3 $(CONFIG_SCRIPT) config/CS2.json --no-lms
+CS2: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
-CS2114: min
-	python3 $(CONFIG_SCRIPT) config/CS2114.json --no-lms
+CS2114: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
 
-CS5040: min
-	python3 $(CONFIG_SCRIPT) config/CS5040.json --no-lms
+CS5040: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS5040.json --no-lms
 
-CS5040notes: min
-	python3 $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
+CS5040notes: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
 
-CS5040slides: min
-	python3 $(CONFIG_SCRIPT) -s config/CS5040slides.json --no-lms
+CS5040slides: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS5040slides.json --no-lms
 
-CS5040MasterN: min
-	python3 $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
+CS5040MasterN: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
 
-CS5040Master: min
-	python3 $(CONFIG_SCRIPT) -s config/CS5040Master.json --no-lms
+CS5040Master: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS5040Master.json --no-lms
 
-Codio: min
-	python3 $(CONFIG_SCRIPT) config/Codio.json --no-lms
+Codio: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Codio.json --no-lms
 
-CS3: min
-	python3 $(CONFIG_SCRIPT) config/CS3.json --no-lms
+CS3: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
-CS3C: min
-	python3 $(CONFIG_SCRIPT) config/CS3C.json --no-lms
+CS3C: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS3C.json --no-lms
 
-CSCI204: min
-	python3 $(CONFIG_SCRIPT) config/CSCI204.json --no-lms
+CSCI204: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CSCI204.json --no-lms
 
-CSCI271: min
-	python3 $(CONFIG_SCRIPT) config/CSCI271.json --no-lms
+CSCI271: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CSCI271.json --no-lms
 
-CS415: min
-	python3 $(CONFIG_SCRIPT) config/CS415.json --no-lms
+CS415: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS415.json --no-lms
 
-CSCD320: min
-	python3 $(CONFIG_SCRIPT) config/CSCD320.json --no-lms
+CSCD320: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CSCD320.json --no-lms
 
-CSC215: min
-	python3 $(CONFIG_SCRIPT) config/CSC215.json --no-lms
+CSC215: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CSC215.json --no-lms
 
-CS240: min
-	python3 $(CONFIG_SCRIPT) config/CS240.json --no-lms
+CS240: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS240.json --no-lms
 
-CSCI2101: min
-	python3 $(CONFIG_SCRIPT) config/CSCI2101.json --no-lms
+CSCI2101: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CSCI2101.json --no-lms
 
-Yuhui: min
-	python3 $(CONFIG_SCRIPT) config/Yuhui.json --no-lms
+Yuhui: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Yuhui.json --no-lms
 
-CS3SS18slides: min
-	python3 $(CONFIG_SCRIPT) -s config/CS3SS18slides.json --no-lms
+CS3SS18slides: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS3SS18slides.json --no-lms
 
-CS3SS18notes: min
-	python3 $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
+CS3SS18notes: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
 
-COMP271: min
-	python3 $(CONFIG_SCRIPT) config/COMP271.json --no-lms
+COMP271: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/COMP271.json --no-lms
 
-COMPSCI186: min
-	python3 $(CONFIG_SCRIPT) config/COMPSCI186.json --no-lms
+COMPSCI186: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/COMPSCI186.json --no-lms
 
-testcmap: min
-	python3 $(CONFIG_SCRIPT) config/testcmap.json --no-lms
+testcmap: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
 
-WuChen: min
-	python3 $(CONFIG_SCRIPT) config/WuChen.json --no-lms
+WuChen: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/WuChen.json --no-lms
 
-Echo: min
-	python3 $(CONFIG_SCRIPT) config/Echo.json --no-lms
+Echo: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Echo.json --no-lms
 
-Ming: min
-	python3 $(CONFIG_SCRIPT) config/Ming.json --no-lms
+Ming: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Ming.json --no-lms
 
-Blockchain: min
-	python3 $(CONFIG_SCRIPT) config/Blockchain.json --no-lms
+Blockchain: min pyVenvCheck
+	$(VENV)/python $(CONFIG_SCRIPT) config/Blockchain.json --no-lms
 
 nomin:
 	@cp lib/JSAV.js lib/JSAV-min.js
@@ -322,8 +348,8 @@ nomin:
 	@cp lib/odsaKA.css lib/odsaKA-min.css
 	@cp lib/gradebook.css lib/gradebook-min.css
 
-rst2json:
-	python3 tools/rst2json.py
+rst2json: pyVenvCheck
+	$(VENV)/python tools/rst2json.py
 
 pull:
 	git pull
@@ -378,3 +404,5 @@ lib/registerbook-min.js: lib/registerbook.js
 lib/createcourse-min.js: lib/createcourse.js
 	@echo 'Minimizing lib/createcourse.js'
 	@$(MINIMIZE) lib/createcourse.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/createcourse-min.js
+
+include Makefile.venv

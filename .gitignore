@@ -90,3 +90,6 @@ SourceCode/Java/Lists/ErrorRec.java
 # created when testing in IDE
 success
 ListTest_error.log
+
+# Ignore the python virtual environment
+.pyVenv/
