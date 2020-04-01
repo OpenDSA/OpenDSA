@@ -69,7 +69,7 @@ config/*_generated.json
 sftp-config.json
 
 # python virtual environment
-env
+.pyVenv/
 
 # todo files
 tasks.todo
@@ -90,6 +90,3 @@ SourceCode/Java/Lists/ErrorRec.java
 # created when testing in IDE
 success
 ListTest_error.log
-
-# Ignore the python virtual environment
-.pyVenv/
