@@ -10,10 +10,10 @@
    :topic: Indexing
 
 Testing-B-Tree
-=======
+==============
 
 Testing-B-Tree
--------
+--------------
 
 This module presents the B-tree.
 B-trees are usually attributed to R. Bayer and E. McCreight
