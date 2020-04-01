@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # You cannot see the Khan Academy exercises or JSAV code objects
 # in a browser directed to a local file unless you run a web
 # server. In case you are on a machine (such as your own PC) without a
