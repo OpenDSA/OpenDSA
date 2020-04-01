@@ -312,6 +312,9 @@ Ming: min
 Blockchain: min
 	python $(CONFIG_SCRIPT) config/Blockchain.json --no-lms
 
+Peixuan: min
+	python $(CONFIG_SCRIPT) config/Peixuan.json --no-lms
+	
 nomin:
 	@cp lib/JSAV.js lib/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js
