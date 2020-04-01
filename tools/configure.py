@@ -405,6 +405,9 @@ def initialize_conf_py_options(config, slides):
     options['slides_lib'] = 'hieroglyph' if slides else ''
     options['local_mode'] = str(config.local_mode).title()
 
+    # makes sure the ebook uses the same python exec as this script 
+    options['python_executable'] = sys.executable
+
     return options
 
 
