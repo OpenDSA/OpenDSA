@@ -453,7 +453,8 @@ def configure(config_file_path, options):
     html_dir = config.book_dir + config.rel_book_output_path
     if os.path.isdir(html_dir):
         print ("Clearing HTML directory")
-        shutil.rmtree(html_dir)
+        shutil.rmtree(html_dir, ignore_errors=True)
+        # ignore_errors needed to delete files marked readonly or busy 
 
     # Add the list of topics the book assumes students know to the list of
     # fulfilled prereqs
