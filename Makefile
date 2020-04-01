@@ -9,10 +9,6 @@ LINT = eslint --no-color
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE = uglifyjs
-PY_VENV_ACTIVATE = source pyVenv/bin/activate
-ifeq ($(OS),Windows_NT)
-	PY_VENV_ACTIVATE = pyVenv/Scripts/activate.bat
-endif
 
 # These are used by Makefile.venv for using python's venv in make
 # Targets from Makefile.venv: venv, show-venv, clean-venv, python ...
@@ -25,23 +21,28 @@ all: alllint
 .PHONY: clean min pull Webserver pyVenvCheck pipList
 .PHONY: all alllint csslint lint lintExe jsonlint
 
-# Can switch this to $(VENV)/python server.py
+# Can likely switch this to $(VENV)/python server.py
 Webserver: pyVenvCheck
 	./Webserver
 
-.pyVenv: venv
-pyVenv: venv
+.pyVenv pyVenv: venv
 pyVenvCheck: venv
 	@python -c "import sys; assert (hasattr(sys, 'real_prefix') or (hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix)), '.pyVenv must be activated!'"
 	@echo '.pyVenv is active'
 pipList: venv
 	$(VENV)/pip list
-pyReqs: pyVenvCheck requirements.txt
+pyReqs: venv requirements.txt
 	$(VENV)/python -m pip install -U pip setuptools
-	$(VENV)/pip install -r requirements.txt 
+	$(VENV)/pip install -r requirements.txt
 
 allbooks: Everything CS2 CS3 RecurTutor PL
 
+pull:
+	git pull
+	git submodule init
+	git submodule update
+	make --silent min
+	
 clean:
 	- $(RM) *~
 	- $(RM) Books
@@ -114,8 +115,45 @@ jsonlint:
 	@jsonlint -q config/*.json
 	@jsonlint -q config/Old/*.json
 
-min: nomin
-#lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
+rst2json: pyVenvCheck
+	$(VENV)/python tools/rst2json.py
+
+
+JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook
+JS_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname).js)
+JS_MIN_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname)-min.js)
+
+CSS_FNAMES = site odsaAV odsaKA odsaMOD gradebook normalize
+CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
+CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
+
+
+nomin:
+	@echo 'Doing fake-minify for all (just copying)...'
+	@cp lib/JSAV.js lib/JSAV-min.js
+	@cp lib/odsaUtils.js lib/odsaUtils-min.js
+	@cp lib/odsaMOD.js lib/odsaMOD-min.js
+	@cp lib/odsaAV.js lib/odsaAV-min.js
+	@cp lib/odsaKA.js lib/odsaKA-min.js
+	@cp lib/gradebook.js lib/gradebook-min.js
+	@cp lib/registerbook.js lib/registerbook-min.js
+	@cp lib/site.css lib/site-min.css
+	@cat lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
+	@cp lib/odsaMOD.css lib/odsaMOD-min.css
+	@cp lib/odsaStyle.css lib/odsaStyle-min.css
+	@cp lib/odsaKA.css lib/odsaKA-min.css
+	@cp lib/gradebook.css lib/gradebook-min.css
+
+min: nomin # This is a fake-minify!
+# min: $(JS_MIN_FILES) $(CSS_MIN_FILES) # This is the real minify!
+
+lib/%-min.js: lib/%.js
+	@echo 'Minimizing $^'
+	@$(MINIMIZE) $^ --comments '/^!|@preserve|@license|@cc_on/i' > $@
+
+lib/%-min.css: lib/%.css
+	@echo 'Minimizing $^'
+	@cleancss $^ -o $@
 
 PittACOS: min pyVenvCheck
 	$(VENV)/python $(CONFIG_SCRIPT) config/PittACOS.json --no-lms
@@ -332,77 +370,5 @@ Ming: min pyVenvCheck
 
 Blockchain: min pyVenvCheck
 	$(VENV)/python $(CONFIG_SCRIPT) config/Blockchain.json --no-lms
-
-nomin:
-	@cp lib/JSAV.js lib/JSAV-min.js
-	@cp lib/odsaUtils.js lib/odsaUtils-min.js
-	@cp lib/odsaMOD.js lib/odsaMOD-min.js
-	@cp lib/odsaAV.js lib/odsaAV-min.js
-	@cp lib/odsaKA.js lib/odsaKA-min.js
-	@cp lib/gradebook.js lib/gradebook-min.js
-	@cp lib/registerbook.js lib/registerbook-min.js
-	@cp lib/site.css lib/site-min.css
-	@cat lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
-	@cp lib/odsaMOD.css lib/odsaMOD-min.css
-	@cp lib/odsaStyle.css lib/odsaStyle-min.css
-	@cp lib/odsaKA.css lib/odsaKA-min.css
-	@cp lib/gradebook.css lib/gradebook-min.css
-
-rst2json: pyVenvCheck
-	$(VENV)/python tools/rst2json.py
-
-pull:
-	git pull
-	git submodule init
-	git submodule update
-	make -s min
-
-lib/odsaUtils-min.js: lib/odsaUtils.js
-	@echo 'Minimizing lib/odsaUtils.js'
-	@$(MINIMIZE) lib/odsaUtils.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaUtils-min.js
-
-lib/site-min.css: lib/site.css
-	@echo 'Minimizing lib/site.css'
-	-@$(MINIMIZE) lib/site.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/site-min.css
-
-lib/odsaAV-min.js: lib/odsaAV.js
-	@echo 'Minimizing lib/odsaAV.js'
-	@$(MINIMIZE) lib/odsaAV.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.js
-
-lib/odsaKA-min.js: lib/odsaKA.js
-	@echo 'Minimizing lib/odsaKA.js'
-	@$(MINIMIZE) lib/odsaKA.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaKA-min.js
-
-lib/odsaAV-min.css: lib/odsaAV.css
-	@echo 'Minimizing lib/odsaAV.css'
-	@$(MINIMIZE) lib/odsaAV.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.css
-
-lib/odsaKA-min.css: lib/odsaKA.css
-	@echo 'Minimizing lib/odsaKA.css'
-	@$(MINIMIZE) lib/odsaKA.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaKA-min.css
-
-lib/odsaMOD-min.js: lib/odsaMOD.js
-	@echo 'Minimizing lib/odsaMOD.js'
-	@$(MINIMIZE) lib/odsaMOD.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaMOD-min.js
-
-lib/odsaMOD-min.css: lib/odsaMOD.css
-	@echo 'Minimizing lib/odsaMOD.css'
-	@$(MINIMIZE) lib/odsaMOD.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaMOD-min.css
-
-lib/gradebook-min.js: lib/gradebook.js
-	@echo 'Minimizing lib/gradebook.js'
-	@$(MINIMIZE) lib/gradebook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/gradebook-min.js
-
-lib/gradebook-min.css: lib/gradebook.css
-	@echo 'Minimizing lib/gradebook.css'
-	@$(MINIMIZE) lib/gradebook.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/gradebook-min.css
-
-lib/registerbook-min.js: lib/registerbook.js
-	@echo 'Minimizing lib/registerbook.js'
-	@$(MINIMIZE) lib/registerbook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/registerbook-min.js
-
-lib/createcourse-min.js: lib/createcourse.js
-	@echo 'Minimizing lib/createcourse.js'
-	@$(MINIMIZE) lib/createcourse.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/createcourse-min.js
 
 include Makefile.venv
