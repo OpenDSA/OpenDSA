@@ -360,7 +360,7 @@ def extract_mod_config(mod_json):
   one_sec_only = False
   one_sec_name = None
 
-  for k, v in mod_json['document'].iteritems():
+  for k, v in mod_json['document'].items():
     if k == '@title':
       mod_config['long_name'] = v.replace('\\','')
 
@@ -380,20 +380,20 @@ def extract_mod_config(mod_json):
       # mod_config['sections'][one_sec_name] = extract_exs_config(v)
       if isinstance(v, list):
         for sub_sec_v in v:
-          if 'raw' in sub_sec_v.keys():
+          if 'raw' in list(sub_sec_v.keys()):
             mod_config['sections'][one_sec_name].update(extract_exs_config(sub_sec_v['raw']))
 
           # Sometimes exercises are defined under a topic directive
-          if 'topic' in sub_sec_v.keys() and isinstance(sub_sec_v['topic'], list):
+          if 'topic' in list(sub_sec_v.keys()) and isinstance(sub_sec_v['topic'], list):
             for topic in sub_sec_v['topic']:
-              if 'raw' in topic.keys():
+              if 'raw' in list(topic.keys()):
                 mod_config['sections'][one_sec_name].update(extract_exs_config(topic['raw']))
-          elif 'topic' in sub_sec_v.keys() and isinstance(sub_sec_v['topic'], dict):
-              if 'raw' in sub_sec_v['topic'].keys():
+          elif 'topic' in list(sub_sec_v.keys()) and isinstance(sub_sec_v['topic'], dict):
+              if 'raw' in list(sub_sec_v['topic'].keys()):
                 mod_config['sections'][one_sec_name].update(extract_exs_config(sub_sec_v['topic']['raw']))
 
       elif isinstance(v, dict):
-        if 'raw' in v.keys():
+        if 'raw' in list(v.keys()):
           mod_config['sections'][one_sec_name].update(extract_exs_config(v['raw']))
 
     if k == 'section' and one_sec_only == False:
@@ -411,7 +411,7 @@ def extract_sec_config(sec_json):
     if not type(x) is OrderedDict:
       continue
     sec_title = None
-    for k, v in x.iteritems():
+    for k, v in x.items():
       if k == 'title':
         sec_title = v
         sections_config[sec_title] = OrderedDict()
@@ -422,12 +422,12 @@ def extract_sec_config(sec_json):
       if k == 'section':
         if isinstance(v, list):
           for sub_sec_v in v:
-            if 'raw' in sub_sec_v.keys():
+            if 'raw' in list(sub_sec_v.keys()):
               sections_config[sec_title].update(extract_exs_config(sub_sec_v['raw']))
         elif isinstance(v, dict):
-          if 'raw' in v.keys():
+          if 'raw' in list(v.keys()):
             sections_config[sec_title].update(extract_exs_config(v['raw']))
-    if 'extertool' in sections_config[sec_title].keys():
+    if 'extertool' in list(sections_config[sec_title].keys()):
       sections_config[sec_title] = sections_config[sec_title]['extertool']
 
   return sections_config
@@ -439,7 +439,7 @@ def extract_exs_config(exs_json):
   exs_config = OrderedDict()
   if isinstance(exs_json, list):
     for x in exs_json:
-      if isinstance(x, dict) and 'avembed' in x.keys():
+      if isinstance(x, dict) and 'avembed' in list(x.keys()):
         ex_obj = x['avembed']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
@@ -449,7 +449,7 @@ def extract_exs_config(exs_json):
         threshold = float(ex_obj['@threshold'])
         exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
 
-      if isinstance(x, dict) and 'extertool' in x.keys():
+      if isinstance(x, dict) and 'extertool' in list(x.keys()):
         ex_obj = x['extertool']
         exs_config['extertool'] = OrderedDict()
         exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
@@ -457,7 +457,7 @@ def extract_exs_config(exs_json):
         exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
         exs_config['extertool']['points'] = float(ex_obj['@points'])
 
-      if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ss":
+      if isinstance(x, dict) and 'inlineav' in list(x.keys()) and x['inlineav']['@type'] == "ss":
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
@@ -466,7 +466,7 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
         exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
 
-      if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "ff":
+      if isinstance(x, dict) and 'inlineav' in list(x.keys()) and x['inlineav']['@type'] == "ff":
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
@@ -475,12 +475,12 @@ def extract_exs_config(exs_json):
         exs_config[exer_name]['points'] = float(ex_obj['@points'])
         exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
 
-      if isinstance(x, dict) and 'inlineav' in x.keys() and x['inlineav']['@type'] == "dgm":
+      if isinstance(x, dict) and 'inlineav' in list(x.keys()) and x['inlineav']['@type'] == "dgm":
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
         exs_config[exer_name] = OrderedDict()
   elif isinstance(exs_json, dict):
-    if 'avembed' in exs_json.keys():
+    if 'avembed' in list(exs_json.keys()):
       ex_obj = exs_json['avembed']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
@@ -490,7 +490,7 @@ def extract_exs_config(exs_json):
       threshold = float(ex_obj['@threshold'])
       exs_config[exer_name]['threshold'] = threshold if ex_obj['@type'] == 'pe' else int(threshold)
 
-    if 'extertool' in exs_json.keys():
+    if 'extertool' in list(exs_json.keys()):
       ex_obj = exs_json['extertool']
       exs_config['extertool'] = OrderedDict()
       exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
@@ -498,7 +498,7 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
       exs_config['extertool']['points'] = float(ex_obj['@points'])
 
-    if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ss":
+    if 'inlineav' in list(exs_json.keys()) and exs_json['inlineav']['@type'] == "ss":
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
@@ -507,7 +507,7 @@ def extract_exs_config(exs_json):
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
       exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
 
-    if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "ff":
+    if 'inlineav' in list(exs_json.keys()) and exs_json['inlineav']['@type'] == "ff":
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
@@ -516,7 +516,7 @@ def extract_exs_config(exs_json):
       exs_config[exer_name]['points'] = float(ex_obj['@points'])
       exs_config[exer_name]['threshold'] = float(ex_obj['@threshold'])
 
-    if 'inlineav' in exs_json.keys() and exs_json['inlineav']['@type'] == "dgm":
+    if 'inlineav' in list(exs_json.keys()) and exs_json['inlineav']['@type'] == "dgm":
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
       exs_config[exer_name] = OrderedDict()
@@ -614,7 +614,7 @@ def sort_by_keys(dct,):
   the generated file with the original file
   '''
   new_dct = OrderedDict({})
-  for key, val in sorted(dct.items(), key=lambda (key, val): key):
+  for key, val in sorted(list(dct.items()), key=lambda key_val: key_val[0]):
       if isinstance(val, dict):
           new_dct[key] = sort_by_keys(val)
       else:
@@ -687,7 +687,7 @@ def save_generated_config(everything_config, simple_configs):
       else:
         out_fname = os.path.abspath('config/' + config_fname.partition('_')[0] + '_generated.json')
 
-      for ch_k, ch_obj in ref_config['chapters'].iteritems():
+      for ch_k, ch_obj in ref_config['chapters'].items():
         chapter_obj = OrderedDict()
         if isinstance(ch_obj, list):
           chapter_obj = collect_mods(everything_config, ch_obj)
@@ -702,8 +702,8 @@ def collect_mods(everything_config, mod_list):
   '''
   ch_config = OrderedDict()
   for mod in mod_list:
-    for ch_k, ch_obj in everything_config['chapters'].iteritems():
-      if mod in ch_obj.keys():
+    for ch_k, ch_obj in everything_config['chapters'].items():
+      if mod in list(ch_obj.keys()):
         ch_config[mod] = ch_obj[mod]
 
   return ch_config
@@ -753,7 +753,7 @@ if __name__ == '__main__':
 
     rst_dir_name = x.split(os.sep)[-2]
 
-    if rst_dir_name not in folder_names.keys():
+    if rst_dir_name not in list(folder_names.keys()):
       continue
 
     if not current_dir == rst_dir_name:
@@ -768,7 +768,7 @@ if __name__ == '__main__':
     mod_json = xmltodict.parse(rst_parts['whole'])
     mod_config = extract_mod_config(mod_json)
 
-    if folder_names[rst_dir_name] not in everything_config['chapters'].keys():
+    if folder_names[rst_dir_name] not in list(everything_config['chapters'].keys()):
       everything_config['chapters'][folder_names[rst_dir_name]] = OrderedDict()
     everything_config['chapters'][folder_names[rst_dir_name]][rst_dir_name+'/'+rst_fname] = mod_config
 
