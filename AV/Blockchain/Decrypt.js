@@ -9,7 +9,12 @@ $(document).ready(function() {
     });
   
     async function decryptMessage() {
-        var decrypted = await crypto.subtle.decrypt(
+      if($(".privateKey").val() === "") {
+        alert("Please insert a private key to encrypt");
+        return;
+      }
+        
+      var decrypted = await crypto.subtle.decrypt(
             {
               name: "RSA-OAEP"
             },

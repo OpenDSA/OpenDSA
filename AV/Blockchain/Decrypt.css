@@ -15,6 +15,7 @@
 
 .encryptedMsgLabel {
     position: relative;
+    top: 0px;
 }
 
 .encryptedMsg {
@@ -24,7 +25,10 @@
 
 .privateKeyLabel {
     position: relative;
-    top: 35px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    top: 45px;
 }
 
 .privateKey {
@@ -34,14 +38,14 @@
 
 .decrypt {
     position: relative;
-    top: 35px;
+    top: 50px;
     right: -1px;
     float: right;
 }
 
 .decryptMsgLabel {
     position: relative;
-    top: 30px;
+    top: 50px;
 }
 
 .decryptMsg {
