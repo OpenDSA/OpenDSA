@@ -3,6 +3,12 @@
 $(document).ready(function() {
     "use strict";
 
+    // this is used to clear the localStorage object
+    // when the page refreshs
+    $(() => {
+        localStorage.clear();
+    });
+
     function readableKey(keydata){
         var keydataS = arrayBufferToString(keydata);
         var keydataB64 = window.btoa(keydataS);
