@@ -53,8 +53,9 @@ var config = ODSA.UTILS.loadConfig(),
   }
 
   async function encryptMessage() {
-    if($(".publicKey").val() === "") {
-      alert("Please insert a public key to encrypt");
+    // if the public key is not correct
+    if (localStorage.publicKeyReadable !== $(".publicKey").val()) {
+      alert("Enter the correct public key from above.");
       return;
     }
 

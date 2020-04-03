@@ -30,9 +30,11 @@ $(document).ready(function() {
 
         if (selector === ".publicKey") {
             localStorage.publicKey = buffer
+            localStorage.publicKeyReadable = readable;
         }
         else if (selector === ".privateKey") {
             localStorage.privateKey = buffer;
+            localStorage.privateKeyReadable = readable;
         }
         $(selector).val(readable);
     }

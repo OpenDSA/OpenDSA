@@ -37,10 +37,11 @@ $(document).ready(function() {
     }
   
     async function decryptMessage() {
-      if($(".publicKey").val() === "") {
-        alert("Please insert a public key to encrypt");
-        return;
-      }
+      // if the private key is not correct
+    if (localStorage.privateKeyReadable !== $(".privateKey").val()) {
+      alert("Enter the correct private key from above.");
+      return;
+    }
 
       var privateKey = await getPrivateKey();
       var encryptedBuffer = stringToBuffer(localStorage.encryptedText);
