@@ -7,21 +7,35 @@ $(document).ready(function() {
 var config = ODSA.UTILS.loadConfig(),
   interpret = config.interpreter;  
 
+  function readableKey(keydata){
+    var keydataS = arrayBufferToString(keydata);
+    var keydataB64 = window.btoa(keydataS);
+    return keydataB64;
+  }
+
+  function arrayBufferToString( buffer ) {
+    var binary = '';
+    var bytes = new Uint8Array( buffer );
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
+    }
+    return binary;
+  }
+
   function getMessageEncoding() {
     return new TextEncoder().encode(localStorage.secretMsg);
   }
 
   $(function() {
-    $(window).bind("storage", (e) => {
+    $(window).bind("storage", () => {
       $(".secretMsg").val(localStorage.secretMsg);
     });
   });
 
   function getMessageEncoding() {
-    console.log("message: " + localStorage.secretMsg)
     let enc = new TextEncoder();
-    let msg = localStorage.secretMsg;
-    return enc.encode(msg.value);
+    return enc.encode(localStorage.secretMsg);
   }
 
   function getPublicKey() {
@@ -39,25 +53,25 @@ var config = ODSA.UTILS.loadConfig(),
   }
 
   async function encryptMessage() {
-    // if($(".publicKey").val() === "") {
-    //   alert("Please insert a public key to encrypt");
-    //   return;
-    // }
+    if($(".publicKey").val() === "") {
+      alert("Please insert a public key to encrypt");
+      return;
+    }
 
     let encoded = getMessageEncoding();
     var publicKey = await getPublicKey();
-    // console.log("encrypted: " + encoded)
-    console.log(publicKey)
-    var encryptedMsg = await crypto.subtle.encrypt(
+    
+    var encrypted = await crypto.subtle.encrypt(
         {
           name: "RSA-OAEP"
         },
         publicKey,
         encoded
-    ).catch(err => console.log(err.name));
-    // localStorage.cipherText = encryptedMsg;
-    console.log(new Uint8Array(encryptedMsg));
-    // $(".encryptMsg").val(localStorage.cipherText);
+    );
+    
+    var buffer = new Uint8Array(encrypted).toString();
+    localStorage.encryptedText = buffer;
+    $(".encryptMsg").val(new TextDecoder().decode(new Uint8Array(encrypted)));
   }
 
   $(".encrypt").click(encryptMessage);
