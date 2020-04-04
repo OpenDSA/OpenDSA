@@ -2,29 +2,33 @@
 // Written by Sushma Mandava and Aditya Tikhe
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("badPointerPowCON", {animationMode: "none"});
-  var xPosition = 570;
-  var yPositionR1 = 55;
-  var length1 = 100;
-  var width = 30;
 
-  //right hand side
+  var av_name = "badPointerPowCON";
+  var av = new JSAV(av_name);
+
+  var xPosition = 550;
+  var yPositionR1 = 10;
+  var yPositionR2 = 75;
+  var yPositionR3 = 120;
+  var length1 = 100;
+  var width = 35;
+  var label1 = av.label('<tt>Employee badPointer;</tt>', 
+                        {top: 0, left: 20}).hide();
+  var label2 = av.label('<tt>System.out.println(badPointer.getName());</tt>', 
+                        {top: 20, left: 20}).hide();
+
+  var pointerArrow = av.g.line(xPosition + 110, yPositionR1 + 17, xPosition + 150, yPositionR1 + 17, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+  pointerArrow.hide();
+
+  // Slide 1
+  av.umsg("We can allocate the reference to a variable.");
+  label1.show();
+
+  //badPointer + rectangle
   av.label("badPointer",  {top: yPositionR1 - 10, left: xPosition - 80});
   av.g.rect(xPosition, yPositionR1, length1, width);
 
-  //left hand side 
-  av.label("badPointer",  {top: yPositionR1 - 10, left: xPosition - 530});
-  av.g.rect(xPosition - 450, yPositionR1, length1, width);
-
-  //code
-  av.label("System.out.println(badPointer.getName());",  {top: yPositionR1 - 62, left: xPosition - 70});
-  av.label("Employee badPointer;",  {top: yPositionR1 - 62, left: xPosition - 460});
-
-  //null pointer exception
-  av.label("NullPointerException!",  {top: yPositionR1, left: xPosition + 141});
-  av.g.line(xPosition + 140, yPositionR1 + 33, xPosition + 275, yPositionR1 + 33, {"stroke-width": 2, stroke: "red"});
-
-  //create the x's right hand side
+  //xs 
   av.g.line(xPosition + 10, yPositionR1 + 25, xPosition + 30, yPositionR1 + 3, {"stroke-width": 2});
   av.g.line(xPosition + 10, yPositionR1 + 3, xPosition + 30, yPositionR1 + 25, {"stroke-width": 2});
   av.g.line(xPosition + 40, yPositionR1 + 25, xPosition + 60, yPositionR1 + 3, {"stroke-width": 2});
@@ -32,23 +36,20 @@ $(document).ready(function() {
   av.g.line(xPosition + 70, yPositionR1 + 25, xPosition + 90, yPositionR1 + 3, {"stroke-width": 2});
   av.g.line(xPosition + 70, yPositionR1 + 3, xPosition + 90, yPositionR1 + 25, {"stroke-width": 2});
 
-  //create x's on left hand side
-  av.g.line(xPosition + 10 - 450, yPositionR1 + 25, xPosition + 30 - 450, yPositionR1 + 3, {"stroke-width": 2});
-  av.g.line(xPosition + 10 - 450, yPositionR1 + 3, xPosition + 30 - 450, yPositionR1 + 25, {"stroke-width": 2});
-  av.g.line(xPosition + 40 - 450, yPositionR1 + 25, xPosition + 60 - 450, yPositionR1 + 3, {"stroke-width": 2});
-  av.g.line(xPosition + 40 - 450, yPositionR1 + 3, xPosition + 60 - 450, yPositionR1 + 25, {"stroke-width": 2});
-  av.g.line(xPosition + 70 - 450, yPositionR1 + 25, xPosition + 90 - 450, yPositionR1 + 3, {"stroke-width": 2});
-  av.g.line(xPosition + 70 - 450, yPositionR1 + 3, xPosition + 90 - 450, yPositionR1 + 25, {"stroke-width": 2});
-
-
-  //divider down the middle
-  av.g.line(425, 5, 425, 140, {"stroke-width": 3});
-
-  //note
-  av.label("** no pointee **",  {top: yPositionR1 + 20, left: xPosition + 90 - 410});
-  av.label("// badPointer = new Employee(\"Sam\", 1000);",  {top: yPositionR1 + 35, left: xPosition - 470}); 
-  av.g.line(xPosition - 470, yPositionR1 + 68, xPosition - 470 + 280, yPositionR1 + 68, {"stroke-width": 2, stroke: "green"});
-
   av.displayInit();
+  av.step();
+
+  // Slide 2
+  av.umsg("We ignore the pointee, thus badPointer doesn't point to anything!");
+  pointerArrow.show();
+  av.step();
+
+
+  // Slide 3
+  av.umsg(" If we try to run this piece of code:");
+  pointerArrow.hide();
+  av.label("NullPointerException!",  {top: yPositionR1, left: xPosition + 141});
+  av.g.line(xPosition + 145, yPositionR1 + 33, xPosition + 275, yPositionR1 + 33, {"stroke-width": 2, stroke: "red"});
+  label2.show();
   av.recorded();
 });

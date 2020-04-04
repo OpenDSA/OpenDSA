@@ -210,10 +210,10 @@ drawing of how memory would react if this code were executed.
 .. codeinclude:: Pointers/badPointers
    :tag: badPointers
 
-.. inlineav:: badPointerPowCON dgm
+.. inlineav:: badPointerPowCON ss 
    :links: AV/Pointers/badPointerPowCON.css
    :scripts: AV/Aditya/badPointerPowCON.js
-   :align: center
+   :output: show
 
 Why Are Bad Reference Bugs So Common?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
