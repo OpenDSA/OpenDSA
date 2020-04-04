@@ -1,21 +1,41 @@
 {
-    "translations": {
-      "en": {
-        "q1": {
-          "type": "select",
-          "description": "Q = {${q_0, q_1, q_2, q_3}$} for any such q &Gamma; (q, &Gamma;, {L, R, S}) these: <br> - Read <br> - Write <br> - Compute",
-          "question":"Please select all the capabilities of a States Machine",
-          "answer": ["Compute", "Write", "Read"],
-          "choices": ["Compute", "Write", "Rotate", "Read"]
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "multiple",
+        "description": "Recall the TM example that erases all a's from the tape. <br>Here are the configurations for the input \"aaaa\". <br><br> <i>($q_0$,<u>a</u> a a a) ⊢M ($q_0$,<u>#</u> a a a) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_0$,# <u>#</u> a a) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_0$,# # <u>#</u> a) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_0$,# # # <u>#</u>) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_1$,# # # # <u>#</u>) </i> <br><br> <b>Notation</b>: Given a string w, the notation <u>w</u> for a configuration means that the read/write head is scanning the leftmost character in w. <br><br> M is said to <b>halt</b> on input w iff (s,<u>w</u>) yields some halted configuration. <br> <br> M is said to <b>hang</b> on input w if (s,<u>w</u>) yields some hanging configuration.",
+        "question":"which of the description below about the underline <br> for \"a\" in \"$q_0$,<u>a</u> a a a\" is definitely correct?",
+        "answer": "the machine is scanning \"a\" now",
+        "choices": ["the machine is scanning \"a\" now", "the machine halt on input \"a\"", "the machine hang on input \"a\""]
+      },
+      "q2": {
+        "type": "multiple",
+        "description": "",
+        "question": "",
+        "answer": "",
+        "choices": []
+      },
+      "q3": {
+          "type":"multiple",
+          "description":"",
+          "question":"",
+          "answer":"",
+          "choices": []
         },
-        "q5": {
-            "type":"multiple",
-            "description":"",
-            "question":"",
-            "answer":"",
-            "choices": []
-        }
+      "q4": {
+          "type":"multiple",
+          "description":"",
+          "question":"",
+          "answer":"",
+          "choices": []
+      },
+      "q5": {
+          "type":"multiple",
+          "description":"",
+          "question":"",
+          "answer":"",
+          "choices": []
       }
     }
   }
-    
+}

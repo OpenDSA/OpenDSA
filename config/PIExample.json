@@ -95,7 +95,8 @@
     "Properties of Context-free Languages":{},
     "Models of Computation":{
       "PIExample/TMGeneralModel":{},
-      "PIExample/TMInterpreting":{}
+      "PIExample/TMInterpreting":{},
+      "PIExample/TMDecidableVSAcceptable":{}
     },
     "Parsing":{},
     "Limits to Computing":{}
