@@ -8,7 +8,6 @@ TARGET = build
 LINT = eslint --no-color
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
-MINIMIZE = uglifyjs
 
 # These are used by Makefile.venv for using python's venv in make
 # Targets from Makefile.venv: venv, show-venv, clean-venv, python ...
@@ -149,7 +148,7 @@ min: nomin # This is a fake-minify!
 
 lib/%-min.js: lib/%.js
 	@echo 'Minimizing $^'
-	@$(MINIMIZE) $^ --comments '/^!|@preserve|@license|@cc_on/i' > $@
+	@uglifyjs $^ --comments '/^!|@preserve|@license|@cc_on/i' > $@
 
 lib/%-min.css: lib/%.css
 	@echo 'Minimizing $^'
