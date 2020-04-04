@@ -1,5 +1,5 @@
 beautifulsoup4==4.8.2
 xmltodict==0.12.0
 docutils==0.16
-sphinx==1.8.5
+sphinx==2.4.4
 hieroglyph==1.0.0

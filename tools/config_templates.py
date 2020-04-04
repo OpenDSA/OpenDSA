@@ -52,7 +52,7 @@ makefile_template = '''\
 # 
 # You can set these variables from the command line.
 PYTHON = %(python_executable)s  # should match the exec of the rest of OpenDSA (a pyVenv) 
-SPHINXBUILD   = $(PYTHON) -msphinx
+SPHINXBUILD   = sphinx-build
 HTMLDIR       = %(rel_book_output_path)s
 MINIMIZE      = java -jar "%(odsa_dir)stools/yuicompressor-2.4.7.jar"
 TAGS = %(tag)s
@@ -82,7 +82,7 @@ min-searchtools:
 
 html:
 	$(SPHINXBUILD) $(TAGS) -b html source $(HTMLDIR)
-	rm html/_static/jquery.js html/_static/websupport.js
+	rm html/_static/jquery.js
 	cp "%(odsa_dir)slib/conceptMap.html" $(HTMLDIR)
 	rm *.json
 	@echo
@@ -92,7 +92,7 @@ html:
 slides:
 	@SLIDES=yes \
 	$(SPHINXBUILD) -b slides source $(HTMLDIR)
-	rm html/_static/jquery.js html/_static/websupport.js
+	rm html/_static/jquery.js
 	rm html/_static/styles.css
 	cp "%(odsa_dir)slib/styles.css" html/_static/
 	rm *.json
