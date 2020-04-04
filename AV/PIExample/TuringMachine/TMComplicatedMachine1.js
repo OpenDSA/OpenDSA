@@ -1,7 +1,7 @@
 $(document).ready(function () {
     "use strict";
 
-    var av_name = "TMInterpreting";
+    var av_name = "TMComplicatedMachine1";
     var av = new JSAV(av_name);
     var Frames = PIFRAMES.init(av_name);
     // Load the config object with interpreter and code created by odsaUtils.js
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     //frame 2
     av.umsg("Here is the graphical view of the machine.");
-    var url = "../../../AV/VisFormalLang/TM/Machines/TMabc.jff";
+    var url = "../../../../AV/VisFormalLang/TM/Machines/TMabc.jff";
     var graph1 = av.ds.TM({width: 600, height: 325, url: url});
     av.step();
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
 
     //frame 6
     av.umsg("What is a \"hanging\" configuration? The machine hangs when it goes into an infinite loop. Anytime you provide the mechanism to create loops that only end on a condition, you have also created the conditions that might allow an infinite loop to happen. <br><br><br><br<br><br><br><br><br><br>Consider the above machine on strings of a's and b's that scans right until it sees a 'b'. If it never sees a 'b', then it will never halt. This means that it goes into an infinite loop (or hangs) anytime the input string does not contain a 'b'.");
-    var url2 = "../../../AV/VisFormalLang/TM/Machines/TMab.jff";
+    var url2 = "../../../../AV/VisFormalLang/TM/Machines/TMab.jff";
     var graph2 = av.ds.TM({width: 600, height: 325, url: url2});
     av.step();
 
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
     //frame 10
     av.umsg("Here is the graph form for the machine and the intial state of the input tape and the head when beginning to process input string 'II'.");
-    var url3 = "../../../AV/VisFormalLang/TM/Machines/TMPlusone.jff";
+    var url3 = "../../../../AV/VisFormalLang/TM/Machines/TMPlusone.jff";
     var tm = new av.ds.TM({width: 600, height: 200, left: 50, url: url3});
     var tape = av.ds.tape(["#", "I", "I", "#", "#"], 470, 50, "both");
     var rect = av.g.rect(350 + xStart, 150 + yStart, 110, 110);

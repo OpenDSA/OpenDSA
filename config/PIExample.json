@@ -96,7 +96,8 @@
     "Models of Computation":{
       "PIExample/TMGeneralModel":{},
       "PIExample/TMInterpreting":{},
-      "PIExample/TMDecidableVSAcceptable":{}
+      "PIExample/TMDecidableVSAcceptable":{},
+      "PIExample/TMComplicatedMachine1":{}
     },
     "Parsing":{},
     "Limits to Computing":{}
