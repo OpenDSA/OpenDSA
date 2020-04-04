@@ -32,8 +32,8 @@ pyVenvCheck: venv
 pipList: venv
 	$(VENV)/pip list
 pyReqs: venv requirements.txt
-	$(VENV)/python -m pip install -U pip setuptools
-	$(VENV)/pip install -r requirements.txt
+	$(VENV)/python -m pip install --upgrade pip setuptools
+	$(VENV)/pip install --requirement requirements.txt
 
 allbooks: Everything CS2 CS3 RecurTutor PL
 
@@ -153,7 +153,7 @@ lib/%-min.js: lib/%.js
 
 lib/%-min.css: lib/%.css
 	@echo 'Minimizing $^'
-	@cleancss $^ -o $@
+	@cleancss $^ --output $@
 
 PittACOS: min pyVenvCheck
 	$(VENV)/python $(CONFIG_SCRIPT) config/PittACOS.json --no-lms
