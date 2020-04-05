@@ -863,7 +863,7 @@ Glossary
       For a given integer value :math:`n`, the sequence of numbers
       that derives from performing the following computatin on :math:`n`
 
-      .. code-block:: none
+      .. code-block:: cpp
 
         while (n > 1)
           if (ODD(n))
