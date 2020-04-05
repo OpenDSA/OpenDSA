@@ -2,7 +2,7 @@ SHELL := /bin/bash
 ifeq ($(OS),Windows_NT)
 	SHELL=C:/Windows/System32/cmd.exe
 endif
-RM = rm -rf
+RM = rm --recursive --force
 CONFIG_SCRIPT = tools/configure.py
 TARGET = build
 LINT = eslint --no-color
@@ -109,10 +109,10 @@ TODO$(LINT)lib:
 	-@$(LINT) lib/conceptMap.js
 
 jsonlint:
-	@jsonlint -q AV/Background/*.json
-	@jsonlint -q AV/Design/*.json
-	@jsonlint -q config/*.json
-	@jsonlint -q config/Old/*.json
+	@jsonlint --quiet AV/Background/*.json
+	@jsonlint --quiet AV/Design/*.json
+	@jsonlint --quiet config/*.json
+	@jsonlint --quiet config/Old/*.json
 
 rst2json: pyVenvCheck
 	$(VENV)/python tools/rst2json.py
