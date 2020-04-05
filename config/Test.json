@@ -108,6 +108,7 @@
       "NP/clique_to_independentSet": {},
       "NP/hamiltonianCycle_to_TSP": {},
       "NP/NPCoping": {},
+      "NP/LimComp": {},
       "SeniorAlgAnal/Impossible": {},
       "SeniorAlgAnal/Turing": {}
     },
