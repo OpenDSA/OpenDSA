@@ -1,16 +1,17 @@
 #container { 
-    width: 1250px;
-    height: 400px;
-  }
-  
-  .avcontainer{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.avcontainer{
     overflow: visible;
     width:1000px;
-  }
-  
-  .jsavline{
+}
+
+.jsavline{
     height: 50px;
-  }
+}
 
 table {
     position: relative;
@@ -45,8 +46,8 @@ div {
 }
 
 .cell {
-    width:750px;
-    margin:auto;
+    width: 750px;
+    margin: auto;
     border: 1px solid #B6C0B2;
     background-color: #E2EEDD;
 }
@@ -104,4 +105,8 @@ p {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+textarea {
+    resize: none;
 }

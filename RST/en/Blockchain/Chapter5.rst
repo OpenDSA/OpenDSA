@@ -30,10 +30,8 @@ order for the block to be accepted into the chain, which is where mining becomes
 .. avembed:: AV/Blockchain/TextFieldHashingGame.html ss
    :long_name: Text-Field Hashing Game
 
-<<<<<<< HEAD
 .. avembed:: AV/Blockchain/NonceHashingGame.html ss
    :long_name: Nonce Hashing Game
-=======
 
 How Mining Works
 ~~~~~~~~~~~~~~~~
@@ -78,4 +76,3 @@ compute power on their laptop or desktop to mine coins. As the popularity of the
 and their prices rising, many individuals have bought more computers and even warehouses to harness 
 as much compute power inorder to mine as many as possible. As the major cost of mining comes from the 
 electricity to power these computers, many miners try to exploit areas of low electricity costs.
->>>>>>> 0485ea57ff6a2b5cf35a3825a154c3dcd1667f78

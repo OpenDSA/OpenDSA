@@ -1,0 +1,65 @@
+#container {
+    width: 525px;
+    height: 245px;
+    position: relative;
+}
+
+.instructions {
+    position: relative;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    top: 5px;
+    text-align: center;
+}
+
+.publicKeyLabel {
+    position: relative;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    top: 25px;
+}
+
+.publicKey {
+    position: relative;
+    top: 30px;
+}
+
+#copyPublicKey {
+    top: 15px;
+}
+
+.privateKeyLabel {
+    position: relative;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    top: 40px;
+}
+
+.privateKey {
+    position: relative;
+    top: 45px;
+}
+
+#copyPrivateKey {
+    top: 30px;
+}
+
+textarea {
+    resize: none;
+}
+
+button {
+    position: relative;
+    width: 55px;
+    height: 40px;
+    left: -5px;
+}
+
+.getKeys {
+    width: 75px;
+    float: right;
+    top: 40px;
+}

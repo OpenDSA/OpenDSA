@@ -117,7 +117,6 @@ jsonlint:
 rst2json: pyVenvCheck
 	$(VENV)/python tools/rst2json.py
 
-
 JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook
 JS_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname).js)
 JS_MIN_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname)-min.js)
@@ -125,8 +124,7 @@ JS_MIN_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname)-min.js)
 CSS_FNAMES = site odsaAV odsaKA odsaMOD gradebook normalize
 CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
-
-
+	
 nomin:
 	@echo 'Doing fake-minify for all (just copying)...'
 	@cp lib/JSAV.js lib/JSAV-min.js
@@ -154,13 +152,28 @@ lib/%-min.css:: lib/%.css
 	@echo 'Minimizing $^'
 	@cleancss $^ --output $@
 
+
+# DOUBLE CHECK:::
+# Test SimpleDemo Obsolete PIExample DeformsTesting
+# PittACOS OpenFLAP OpenPOPExercises
+# CT CTEX NP PL JFLAP FormalLang VisFormalLang
+# Spatial PointersJavaSummer PointersJava PointersCPP 
+# CS4114 NP4114 
+# Milen DanaG TJeffrey Michael Aditya cschandr Raghu Weihao Sam Lin Yinwen Xiaolin Ning
+# FL2019:
+# 	python $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
+# FLslides:
+# 	python $(CONFIG_SCRIPT) -s config/FLslides.json --no-lms
+# CS4114slides:
+# 	python $(CONFIG_SCRIPT) -s config/CS4114slides.json --no-lms
+
 # Valid Targets using Static-Pattern rule for eBooks:
 BOOKS = Test Obsolete SimpleDemo Everything DeformsTesting OpenPOPExercises testcmap
 BOOKS += CS4114 CS3 CS3C CSCI204 CSCI271 CS415 CSCD320 CSC215 CS240 CSCI2101 CS4104 CS2 CS2114 CS5040
 BOOKS += NP NP4114 COMP271 COMPSCI186 CT CTEX PL PLdev
 BOOKS += Blockchain Spatial PointersJavaSummer PointersJava PointersCPP Graphics
 BOOKS += PittACOS OpenFLAP JFLAP FormalLang VisFormalLang FL2019 PIExample
-BOOKS += DanaG TJeffrey Michael Tikhe cschandr Taylor Raghu Weihao Sam Yinwen Xiaolin Ning Yuhui Codio WuChen Echo Ming
+BOOKS += DanaG TJeffrey Michael cschandr Raghu Weihao Sam Yinwen Xiaolin Ning Yuhui Codio WuChen Echo Ming Aditya Milen Peixuan
 
 # A Static-Pattern Rule for making Books
 $(BOOKS): % : Books/%

@@ -18,4 +18,11 @@ Midterm 1
 
 .. slide:: Midterm 1
 
-   | This is a placeholder: Today will be the Midterm
+   | Scores:
+   |    100
+   |    90
+   |    88
+   |    85
+   |    84
+   |    53
+   |    49

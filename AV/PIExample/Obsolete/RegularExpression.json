@@ -1,0 +1,104 @@
+{
+    "translations": {
+      "en": {
+        "q0": {
+          "type": "multiple",
+          "question":"What language can theafollowing equation be? $(a+b)^∗ \\cdot a \\cdot (a+b)^∗$ = $(a+b)^∗a(a+b)^∗$",
+          "description": "There are three operators that can be used:<br> $+$ union (OR),<br> $\\cdot$ concatenation (AND),<br> $\\ast$ star-closure (repeat 0 or more times).<br> We often omit showing the $\\cdot$ for concatenation.",
+          "answer": "All strings from $\\{a,b\\}^∗$ that contain at least one $a$",
+          "choices": ["Any string from $\\{a,b\\}^∗$", "All strings from $\\{a,b\\}^∗$", "All strings from $\\{a,b\\}^∗$ that contain at least one $a$"]
+        },
+        "q1":{
+          "type": "multiple",
+          "question":"What language can following equation be? $(aa)^∗$ (Becareful with alphabet)",
+          "description": "There are three operators that can be used:<br> $+$ union (OR),<br> $\\cdot$ concatenation (AND),<br> $\\ast$ star-closure (repeat 0 or more times).<br> We often omit showing the $\\cdot$ for concatenation.",
+          "answer": "Strings of $a$s with even number of $a$s",
+          "choices": ["Any string of $a$s with an even number of $a$s", "Strings of $a$s with even number of $a$s", "Strings of multiple $a$s and with an odd number of $a$s"]
+        },
+        "q2": {
+          "type": "multiple",
+          "question":"[T/F] $r$ is regular expression and $s$ is not, $r$ $+$ $s$ is R.E.",
+          "description": "Definition: <br> $\\textbf {1.}$ Given $\\Sigma$, $\\emptyset$, $\\lambda$, and $a$ $\\in$ $\\Sigma$ are R.E.<br> $\\textbf {2.}$ If r and s are regular expressions, then $r$ $+$ $s$, $rs$, $r^∗$ are R.E.<br> $\\textbf {3.}$ r is a R.E if and only if it can be derived from (1) with a finite number of applications of (2)",
+          "answer": "False",
+          "choices": ["True", "False"]
+        },
+        "q3": {
+          "type": "multiple",
+          "question":"[T/F] Every regular language include the empty string",
+          "description": "Definition: $L(r)$ is the language denoted by regular expression $r$. <br> $\\textbf{1.}$ $\\emptyset$, {$\\lambda$}, and $\\{a\\in \\Sigma\\}$ are each languages denoted by some R.E. <br> Note that $\\emptyset$ $=$ $\\{\\}$ (the empty set), while $\\lambda$ $=$ $\\{\\lambda\\}$, meaning the set containing just the empty string.",
+          "answer": "False",
+          "choices": ["True", "False"]
+        },
+        "q4": {
+          "type": "select",
+          "question":"Select those who are same as $L(rs)$",
+          "description": "Definition: $L(r)$ is the language denoted by regular expression $r$. <br> $\\textbf{1.}$ $\\emptyset$, {$\\lambda$}, and $\\{a\\in \\Sigma\\}$ are each languages denoted by some R.E. <br> Note that $\\emptyset$ $=$ $\\{\\}$ (the empty set), while $\\lambda$ $=$ $\\{\\lambda\\}$, meaning the set containing just the empty string. <br> $\\textbf{2.}$ If $r$ and $s$ are R.E. then <br> $L(r+s)$ $=$ $L(r)$$\\cup$$L(s)$ <br> $L(rs)$ $=$ $L(r)$$\\cdot$$L(s)$ <br> $L((r))$ $=$ $L(r)$ <br> $L((r)^∗)$ $=$ $(L(r)^∗)$",
+          "answer": ["$L(r)$$\\cdot$$L(s)$", "$L(sr)$", "$(L(r)$$\\cdot$$L(s))$"],
+          "choices": ["$L(r)$$\\cdot$$L(s)$", "$L(sr)$", "$L(r)$$\\cup$$L(s)$", "$L(r)+(s)$", "$(L(r)$$\\cdot$$L(s))$"]
+        },
+        "q5": {
+          "type": "multiple",
+          "question":"What can be a substitute of $a(b^∗)+c$",
+          "description": "Precedence Rule: <br> $∗$ : highest <br> $\\cdot$  <br> $+$ : lowest",
+          "answer": "$(a(b)^∗)+c$",
+          "choices": ["$(ab)^*+c$", "$a^*b+c$","$(a(b)^∗)+c$", "$ab^*+c$"]
+        },
+        "q6": {
+          "type": "multiple",
+          "question":"What is the transition from state $\\{q4\\}$ with the alphabet a?",
+          "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to",
+          "answer": "q6",
+          "choices": ["q6", "q1, q2, q3","q5, q1" ,"No Transition"]
+        },
+        "q7": {
+          "type": "multiple",
+          "question":"What is the trnsition from state $\\{q4\\}$ with the alphabet b?",
+          "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to to",
+          "answer": "No transition",
+          "choices": ["q6","q5, q1", "q1, q5, q6","No transition"]
+        },
+        "q8": {
+          "type": "multiple",
+          "question":"What is the transition from state $\\{q5, q1\\}$ with the alphabet a?",
+          "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to to to",
+          "answer": "q3",
+          "choices": ["q3", "q1, q2, q3","q5, q1" ,"No transition"]
+        },
+        "q9": {
+          "type": "multiple",
+          "question":"What is the trnsition from state $\\{q5, q1\\}$ with the alphabet b?",
+          "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to to to",
+          "answer": "No transition",
+          "choices": ["q3","q5, q1", "q1, q5, q6","No transition"]
+        },
+        "q10": {
+          "type": "multiple",
+          "question":"What is the transition from state $\\{q6\\}$ with the alphabet a?",
+          "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to to to",
+          "answer": "No transition",
+          "choices": ["q6", "q1, q2, q3","q5, q1" ,"No transition"]
+        },
+        "q11": {
+          "type": "multiple",
+          "question":"What is the transition from state $\\{q6\\}$ with the alphabet b?",
+          "description": "Transition state nodes are highlighted nodes, becareful with what alphabet you are transitioning to to to",
+          "answer": "No transition",
+          "choices": ["q3","q5, q1", "q1, q5, q6","No transition"]
+        },
+        "q12notUSed": {
+          "type": "multiple",
+          "src": "../../../AV/FLA/billyu/ui/FAFixer.html",
+          "question":"What is the final state?",
+          "answer": "q1, q2, q3",
+          "choices": ["q0, q1, q2", "q1, q5, q6","q4" ]
+        },
+        "q13": {
+          "type": "select",
+          "question":"What are the final state? Note that, any state that include states $q5$ or $q6$ should be a final state",
+          "answer": ["q5, q1", "q1, q5, q6", "q6"],
+          "choices": ["q0, q1, q2", "q3, q4","q4", "q1, q5, q6", "q3", "q6", "q5, q1"]
+        }
+      }
+    }
+  }
+  

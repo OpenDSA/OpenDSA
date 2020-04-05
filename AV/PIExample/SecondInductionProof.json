@@ -8,6 +8,14 @@
         "quo5": "$\\textbf {Theorem}$: The set of regions formed by n infinite lines in the plane can be two-colored.",
         "quo6": "In the previous example, we would have great difficulty justifying that all possible collections of n lines are covered by our building process. But, by reducing from an arbitrary collection of n lines to something less, we avoid this problem. ",
 
+        "q1":{
+          "type": "select",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "description": "A $relation$ $R$ over set $S$ means a set of ordered pairs from $set$ $S$.",
+          "question": "if $S$ = $\\{a,b,c\\}$, then which of the following is a relation in $S$",
+          "answer": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"],
+          "choices": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"]
+        },
         "sc1": "Consider the base case of a single infinite line in the plane. This line splits the plane into two regions.",
         "sc2": "<br/>One region can be colored black and the other white to get a valid two-coloring.",
         "sc3": "The induction hypothesis is that the set of regions formed by $n-1$ infinite lines can be two-colored.",

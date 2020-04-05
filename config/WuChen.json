@@ -64,7 +64,8 @@
   },
   "chapters": {
       "Stuff": {
-         "WuChen/Reduction": {}
+         "WuChen/PairToSortCONPI": {},
+         "WuChen/LowerBound": {}
       },
       "Appendix": {
           "Glossary": {},

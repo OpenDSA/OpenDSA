@@ -2,9 +2,90 @@ class Association{
     /**
      * Purely a bookkeeping object, only used in substituting variables when 
      */
-    constructor(varId, varDispID, )
+    constructor(sourceObject, targetObject)
     {
-        ;
+        this.variableObjects = {};
+        this.variableObjects[sourceObject.id] = sourceObject; 
+        this.variableObjects[targetObject.id] = targetObject;
+        
+        this.var = sourceObject.currentSymbol;
+        console.log(this.var);
+        this.varDisplay = sourceObject.parentSymbol;
+        this.varDisplayTemplate = sourceObject.parentSymbolTemplate;
+        this.domain = null;
+
+        if(sourceObject.expectedDomain == targetObject.expectedDomain)
+            this.domain = sourceObject.expectedDomain;
+        else {
+            // Show the error, the student has to remove them though
+            // Subject this response to error levels TO BE DEFINED LATER AS PER FEEDBACK SPECIFICATIONS.
+            if (targetObject.expectedDomain == 'free')
+                this.domain = sourceObject.expectedDomain;
+            else if (sourceObject.expectedDomain == 'free')
+                this.domain = targetObject.expectedDomain;
+            else {
+                console.log("attempted to associate domain mismatched quantities, please correct");
+                // Insert jsav dialog text here.
+                this.domain = sourceObject.expectedDomain;
+            }
+        }
+
+        this.updateVarDisplay();        
+    }
+    updateVarDisplay()
+    {
+        console.log(this.varDisplay);
+        // option (dialog boxes, inputs, etc.) to change the variable name
+        // throughout for all of the vars in the associations throughout.
+        for(var variable in this.variableObjects)
+        {
+            console.log(variable);
+            var tempElement = Window.jsavObject.label(katex.renderToString(this.varDisplay)).hide();
+            this.variableObjects[variable].valueDisplay.innerHTML = 
+            tempElement.element[0].childNodes[0].childNodes[1].childNodes[2].innerHTML;
+            tempElement.clear();
+            this.variableObjects[variable].valueDisplay.dataset.status = "filled";   
+        }
+    }
+    addVariable(newVar)
+    {
+        // Add another variable to the association if it is used in >2 equations.
+        this.variableObjects[newVar.id] = newVar;
+        console.log(newVar);
+        var tempElement = Window.jsavObject.label(katex.renderToString(this.varDisplay)).hide();
+        this.variableObjects[newVar.id].valueDisplay.innerHTML = 
+        tempElement.element[0].childNodes[0].childNodes[1].childNodes[2].innerHTML;
+        tempElement.clear();
+        this.variableObjects[newVar.id].valueDisplay.dataset.status = "filled";
+
+        if(this.domain != newVar.expectedDomain) {
+            // Show the error, the student has to remove them though
+            // Subject this response to error levels TO BE DEFINED LATER AS PER FEEDBACK SPECIFICATIONS.
+            if (newVar.expectedDomain == 'free') {
+                // Nothing needs to be done, the expectedDomain takes the same value
+            }
+            else {
+                console.log("attempted to associate domain mismatched quantities, please correct");
+                // Insert jsav dialog text here.
+                this.domain = newVar.expectedDomain;
+            }
+        }
+    }
+    removeAssociation(obj)
+    {
+        // Clicking on the variable to remove this triggers this function first, 
+        // then deletes the entire association
+        if(Object.keys(this.variableObjects).length > 2)
+        {
+            console.log(this.variableObjects[obj.id]);
+            this.variableObjects[obj.id].removeValue();
+            delete this.variableObjects[obj.id];
+            return;
+        }
+        for(var variable in this.variableObjects)
+        {
+            this.variableObjects[variable].removeValue();
+        }
     }
 }
 window.Association = window.Association || Association

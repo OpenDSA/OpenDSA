@@ -14,19 +14,19 @@
 </head>
 
 <body>
-  <div id="container">
-    <input type="button" id="about" name="about" />
-    <p class="instructions">
-        Type in any string to discover what its hash value is.<br/>
-        Click the hash button for the has to show. <br/>
-    </p>
-    <p class="bsize"><label id="blockNumLabel" for="blockNum"></label></p> 
-    <input id="blockNum" name="blockNum" type = "number" />
-    <p class="tsize"><label id="tableSizeLabel" for="tablesize"></label></p> 
-    <input id="tablesize" name="tablesize" type = "text" />
-    <input type="button" id="calculate" name="calculate" />
-    <p class="label">Hash:</p>
-    <input class="output" disabled />
+  <div id="outer">
+    <div id="container">
+      <p class="instructions">
+          Type in the block number and  <br/>
+          data you want to see hashed together.<br/>
+      </p>
+      <p class="bsize"><label id="blockNumLabel" for="blockNum"></label></p> 
+      <input id="blockNum" name="blockNum" type = "number" />
+      <p class="tsize"><label id="tableSizeLabel" for="tablesize"></label></p> 
+      <textarea id="tablesize" name="tablesize" type = "text"></textarea>
+      <p class="outputLabel"><label for="output">Hash:</label></p>
+      <input class="output" name="output" disabled />
+    </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

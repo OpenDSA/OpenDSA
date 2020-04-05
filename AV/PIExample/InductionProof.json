@@ -4,7 +4,7 @@
             "q0": {
                 "type": "multiple",
                 "question":"What is first step to use induction?",
-                "description": "First, we need a way to describe the $n^th$ odd number, which is simply $2n−1$. This also allows us to cast the theorem as a summation. Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
+                "description": "First, we need a way to describe the $n^{th}$ odd number, which is simply $2n−1$. This also allows us to cast the theorem as a summation. Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
                 "answer": "proof the base case at n $=$ 1",
                 "choices": ["proof the base case at n $=$ 1", "proof the base case at n $=$ 0", "proof the base case at n $\\geq$ 1"]
             },

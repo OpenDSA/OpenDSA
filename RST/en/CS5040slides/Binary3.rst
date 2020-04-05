@@ -109,7 +109,7 @@ Binary Trees Part 3
    This is 1/2 if :math:`p = d`.
 
    :math:`(2p)/(2p + d)` if data only at leaves :math:`\Rightarrow`
-   2/3 overhead.
+   2/3 (of a smaller amount!) overhead.
 
-   Note that some method is needed to distinguish leaves from internal
+   Note that some space is needed to distinguish leaves from internal
    nodes.

@@ -19,7 +19,7 @@ Project 2 Design
 .. slide:: Project 2 Design (1)
 
    | Conceptually simpler than Project 1
-   |    All you need to do is implement the quadtree.
+   |    "All" that you need to do is implement the quadtree.
    |    The only other data structure is the list of rectangles stored
         in a leaf node.
    |    Probably a bit harder to implement than Project 1 (delete is
@@ -32,17 +32,18 @@ Project 2 Design
    |    Project main
    |    Syntactic parser
    |    Semantic command processing
-   |    Quadtree (this is a class hierarch)
+   |    Quadtree (this is a class hierarchy)
    |    Rectangle
    |    Rectangle list
-
+   |    (I have 10 class files plus JUnit test files)
+           
 
 .. slide:: Spatial Data Structures
 
    | Fundamental idea: Need to treat X and Y dimensions as co-equal.
    |    This requires different thinking from 1-dimensional key
         structures like BST or Hash Table
-   | Supporst spatial queries: Regionsearch, intersections
+   | Support spatial queries: Regionsearch, intersections
 
 
 .. slide:: Rectangle Quadtree
@@ -55,7 +56,7 @@ Project 2 Design
    | Decomposition rule: The rule that decides when to split the
      tree
    |    Our rule: Up to 3 rectangles
-   |    BUT: Can't ever split the rectangles if they all overlap
+   |    BUT: Splitting is useless if the rectangles all overlap
    |    So we don't split when they all overlap
 
 .. slide:: Implementation
@@ -92,4 +93,5 @@ Project 2 Design
     implemented recursively.
   | NO use of parent pointers!
 
-  
+  | Composite design is natural here
+           

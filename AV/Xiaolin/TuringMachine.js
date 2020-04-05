@@ -363,6 +363,7 @@ tmTrans.getWeight = function() {
 	 as well as the beginning of the string.
  */
 //TODO: This tape limits the output to 7 characters, WE NEED TO OVERCOME THIS LIMIT
+//TODO above is fixed by Xiaolin Zhou
 var Tape = function (str) {
 	// if the tape is initialized using a string, writes the string to the new tape
 	if (typeof str === 'string') {
@@ -467,6 +468,7 @@ var TapeNode = function (left, right, val) {
 var makeTape = function (str) {
 	var prev = new TapeNode(null, null);
 	var head = prev;
+	this.tapeLength = str.length;
 	for (var i = 0; i < str.length; i++) {
 		var temp = new TapeNode(prev, null, str.charAt(i));
 		prev._right = temp;
@@ -571,11 +573,11 @@ tm.getTapeAlphabet = function () {
  */
 var viewTape = function (t) {
 	var square = String.fromCharCode(35);
-	var arr = new Array(15);    // arbitrary size
+	var arr = new Array(this.tapeLength * 2 + 1);    // arbitrary size
 	for (var i = 0; i < 15; i++) {
 		arr[i] = square;
 	}
-	i = 7;
+	i = this.tapeLength;
 	var temp = t.current;
 	while (temp) {
 		if (i < 0) {break;}
@@ -583,7 +585,7 @@ var viewTape = function (t) {
 		i--;
 		temp = temp._left;
 	}
-	i = 7;
+	i = this.tapeLength;
 	temp = t.current;
 	while (temp) {
 		if (i >= arr.length) {break;}
@@ -593,7 +595,7 @@ var viewTape = function (t) {
 	}
 	var view = "|";
 	for (var i = 0; i < arr.length; i++) {
-		if (i === 7) {
+		if (i === this.tapeLength) {
 			view+="<mark>" + arr[i] + "</mark>";
 		} else {
 			view+=arr[i];

@@ -26,13 +26,14 @@ class WorkspaceList
             "UPPER_CORNER_Y": dim_obj["WORKSPACE_LIST"]["Y"],
             "HEIGHT": dim_obj["WORKSPACE_LIST"]["HEIGHT"],
             "PADDING": 20,
+            "WK_PADDING": 5,
             "WIDTH": dim_obj["WORKSPACE_LIST"]["WIDTH"],
 
             "NEW_WKSPACE": {
                 "CORNER_X": dim_obj["WORKSPACE_LIST"]["X"]+3,
                 "CORNER_Y": dim_obj["WORKSPACE_LIST"]["Y"]+35,
                 "WIDTH": dim_obj["WORKSPACE_LIST"]["WIDTH"]-6,
-                "HEIGHT": 400
+                "HEIGHT": 250
             }
         }
 
@@ -62,7 +63,7 @@ class WorkspaceList
             e.stopPropagation();
             this.addNewWorkspace();
             this.globalJSAVobject.logEvent({type: "adding new workspace", "id": this.workspaceCounter-1});
-            console.log(this.globalJSAVobject);
+            // console.log(this.globalJSAVobject);
         });
         
         // Automatically add a new workspace, by default
@@ -76,8 +77,9 @@ class WorkspaceList
             this.DIMENSIONS["NEW_WKSPACE"],
             this.workspaceCounter,
             this.globalEquationBank,
-            this.globalPointerReference
-            );
+            this.globalPointerReference,
+            this.workspace_list
+            );        
         this.workspace_list[this.workspaceCounter] = newWkspace;
         this.workspaceCounter++;
         
@@ -92,6 +94,11 @@ class WorkspaceList
             this.globalJSAVobject.logEvent({type: "deleting workspace", "id": delete_ID});
             this.updateShape();
         });
+        // Window.windowManager.extendCanvas(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"]);
+        // console.log(document.styleSheets[2].rules[0].style.height);
+        document.styleSheets[2].rules[0].style.height = 
+        Math.max(1000, (this.DIMENSIONS["HEIGHT"] + this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"] + this.DIMENSIONS["WK_PADDING"])) + "px";
+
     }
     updateShape()
     {
@@ -101,21 +108,23 @@ class WorkspaceList
         this.DIMENSIONS["HEIGHT"] = this.DIMENSIONS["BASE_HEIGHT"];
         this.DIMENSIONS["NEW_WKSPACE"]["CORNER_X"] = this.DIMENSIONS["BASE_NWK_UPPER_CORNER_X"];
         this.DIMENSIONS["NEW_WKSPACE"]["CORNER_Y"] = this.DIMENSIONS["BASE_NWK_UPPER_CORNER_Y"];
+        // Window.windowManager.extendCanvas();
+        // var jsavcan = document.querySelectorAll("#DeformsProblemPRO.jsavcanvas");
+        // console.log(jsavcan);
 
         // Updating the height of the workspace list to include all the workspaces
         for(var wk in this.workspace_list) {
-            this.DIMENSIONS["HEIGHT"]+=this.workspace_list[wk].DIMENSIONS["HEIGHT"];
-            
+            this.DIMENSIONS["HEIGHT"]+=this.workspace_list[wk].DIMENSIONS["HEIGHT"]+this.DIMENSIONS["WK_PADDING"];
             // This shifts the reference points of all the existing workspace
             // boxes and the equations contained in them.
             this.workspace_list[wk].DIMENSIONS["POSITION_Y"] = 
                     this.DIMENSIONS["NEW_WKSPACE"]["CORNER_Y"];
-            this.workspace_list[wk].updateShape();
+            // this.workspace_list[wk].updateShape();
 
             // Set the corner parameters for the next workspace to be added
             this.DIMENSIONS["NEW_WKSPACE"]["CORNER_Y"] = 
                     this.DIMENSIONS["NEW_WKSPACE"]["CORNER_Y"]+
-                    this.workspace_list[wk].DIMENSIONS["HEIGHT"]+5;
+                    this.workspace_list[wk].DIMENSIONS["HEIGHT"]+this.DIMENSIONS["WK_PADDING"];
         }
         
         this.workspaceListBox.height(this.DIMENSIONS["HEIGHT"]+this.DIMENSIONS["PADDING"]);

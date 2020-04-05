@@ -63,8 +63,7 @@
   }, 
   "chapters": {
     "Introduction": {
-      "PIExample/Echo_frame1": {},
-      "PIExample/grammar": {}
+      "PIExample/Echo_frame1": {}
     },
     "Mathematical Background": {
       "PIExample/mathematical": {},
@@ -73,22 +72,33 @@
       "PIExample/continuedMathProof":{},
       "PIExample/inductionProof": {},
       "PIExample/proofInduction": {},
-      "PIExample/lastInductionProof": {}
+      "PIExample/lastInductionProof": {},
+      "PIExample/grammar": {}
 
     },
     "Finite Acceptors": {
+      "PIExample/DFA":{},
       "PIExample/NFAtoDFAExample":{}
     },
     "Regular Languages": {
       "PIExample/regularExpression":{},
       "PIExample/grammarRegularExpression": {},
-      "PIExample/expressionRegular": {}
+      "PIExample/expressionRegular": {},
+      "PIExample/regularGrammar": {},
+      "PIExample/NFAToRE": {}
     },
-    "Identifying Non-regular Languages":{},
+    "Identifying Non-regular Languages":{
+      "PIExample/INRL":{}
+    },
     "Context-Free Grammars and Languages":{},
     "Pushdown Automata":{},
     "Properties of Context-free Languages":{},
-    "Models of Computation":{},
+    "Models of Computation":{
+      "PIExample/TMGeneralModel":{},
+      "PIExample/TMInterpreting":{},
+      "PIExample/TMDecidableVSAcceptable":{},
+      "PIExample/TMComplicatedMachine1":{}
+    },
     "Parsing":{},
     "Limits to Computing":{}
   }

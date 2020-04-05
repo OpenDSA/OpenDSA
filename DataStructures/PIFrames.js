@@ -40,40 +40,6 @@
       });
   });
 
-  //KA Update Change
-  // $(document).ready(function (){
-    
-  //   var observer = new MutationObserver(function (mutations) {
-  //     mutations.forEach(function (mutation) {
-  //       if (mutation.attributeName === 'style') {
-  //         alert("correct answer")
-  //       }
-  //     })
-  //   })
-
-  //   var target = document.getElementById('positive-reinforcement');
-  //   var config = {attributes: true};
-
-  //   observer.observe(target, config);
-
-  // });
-
-  // $(function iframeUpdate(){
-  //         var observer = new MutationObserver(function(mutations) {
-  //           alert('Attributes changed!');
-  //         });
-  //         var target = document.querySelector('positive-reinforcement');
-  //         if(!target)
-  //         {
-  //           //alert('couldnt find target');
-  //           window.setTimeout(iframeUpdate, 5000);
-  //           return;
-  //         }
-  //         observer.observe(target, {
-  //           attributes: true
-  //         });
-  // });
-
   var PIFrames = {
     questionType: "",
     submit: `<br><input type="submit" value="Submit"> </br>`,
@@ -225,8 +191,8 @@
               height: "none",
               left: 5,
               position: "relative",
-              top:10
-            });//Mostafa added position:re;ative to fix the problem related to miss positioning the question in some frames(Mathmatical.js)
+              top: 10
+            }); //Mostafa added position:re;ative to fix the problem related to miss positioning the question in some frames(Mathmatical.js)
             //So the width changed fromm 34 to 100, left from 690 to 5 and added the top.
           }
         },
@@ -315,12 +281,11 @@
           var question = this.getQuestion(this.queue.elements[current]);
           this.queue.descriptionCounter++;
 
-          if(question.description != undefined)
-          {
+          if (question.description != undefined) {
             var message = `<p class="REVEAL">${question.description}</p>`;
             return message;
           }
-    
+
           return this.alertMessage();
         },
 
@@ -430,7 +395,7 @@
         buildiFrames: function(question) {
           var src = question.src;
           var iframe = $(
-            `<iframe width="91%" height="600px" src=${src}></iframe>`
+            `<iframe id = "iframe" width="91%" height="600px" src=${src}></iframe>`
           );
 
           return iframe;
@@ -510,8 +475,7 @@
         studentHasAnsweredQuestionCorrectly: function(id) {
           var question = this.getQuestion(id);
 
-          if(this.ParseTree != null)
-          {
+          if (this.ParseTree != null) {
             return this.ParseTree(question.studentAnswer);
           }
 
@@ -665,6 +629,7 @@
           }
         }
       };
+      window.obj = obj;
       return obj;
     },
 
@@ -737,9 +702,9 @@
 
       $(".jsavcanvas,.picanvas").wrapAll('<div class="canvaswrapper"></div>');
       $(".canvaswrapper").css({
-        "display": "flex"
+        display: "flex"
       });
-      
+
       return this.getQuestions(av_name);
     },
 

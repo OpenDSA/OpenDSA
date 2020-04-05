@@ -65,7 +65,6 @@ $(document).ready(function () {
     function Check() {
 
         var output = $(".output").val();
-
         if (output.charAt(0) == '0') {
             leadingZeroCredit = true;
         }

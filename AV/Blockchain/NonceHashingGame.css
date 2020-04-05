@@ -1,18 +1,18 @@
 #container {
     width: 525px;
-    height: 165px;
+    height: 200px !important;
+    align-content: center !important;
+    justify-content: center !important;
     
   }
   
   .instructions {
     text-align: center;
     border: 0;
-    margin: auto;
   }
   
   #inputArea {
     width: 90%;
-    margin: auto;
   }
   
   .check {
@@ -27,6 +27,5 @@
     text-align: left;
     width: 90%;
     font-size: 11pt;
-    margin: auto;
   }
   

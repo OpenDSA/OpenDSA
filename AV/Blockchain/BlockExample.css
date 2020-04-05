@@ -1,7 +1,12 @@
+#outer {
+    width: 100%;
+}
+
 #container {
-    width: 525px;
-    height: 165px;
+    width: 269px;
+    height: 225px;
     position: relative;
+    display: table;
 }
 
 .instructions {
@@ -13,46 +18,46 @@
 
 .bsize {
     position: absolute;
-    left: 55px;
+    left: 10px;
     top: 42px;
 }
 
 #blockNum {
     position: absolute;
-    left: 200px;
+    left: 175px;
     top: 55px;
-    width: 100px;
+    width: 50px;
 }
 
 .tsize {
     position: absolute;
-    left: 55px;
+    left: 10px;
     top: 70px;
 }
 
 #tablesize {
     position: absolute;
-    left: 200px;
-    top: 85px;
-    width: 100px;
+    left: 10px;
+    top: 110px;
+    right: 10px;
+    height: 50px;
+    width: 250px;
+    resize: none;
 }
 
-#calculate {
+.outputLabel {
     position: absolute;
-    right: 5px;
-    top: 95px;
-}
-
-.label {
-    position: absolute;
-    top: 115px;
-}
+    top: 160px;
+    left: 10px;
+    display: inline-block;
+} 
 
 .output {
     position: absolute;
-    top: 150px;
+    left: 60px;
+    top: 174px;
     text-align:center;
-    width: 520px;
-    margin: auto 0;
-    display: block;
+    font-size: 10pt;
+    font-family: Courier;
+    display: inline-block;
 }

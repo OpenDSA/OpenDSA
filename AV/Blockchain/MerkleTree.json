@@ -1,0 +1,12 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Consider the nodes 1 through 4 as transactions needed to be logged within a block.",
+        "sc2": "These transactions are then hashed. Using the hashes, we are able to then combine hashes to create a binary tree where the root is a hash of all transactions taken into account.",
+        "sc3": "This begins by combining the hash of transactions 1 and 2 and hashing the combination to create H(H(1) + H(2))",
+        "sc4": "In the same way, we can combine hashes 3 and 4.",
+        "sc5": "Finally, we can combine H12 and H34 to create one hash that is representative of each transaction. This is the message portion of a block!"
+      }
+    }
+  }
+  
