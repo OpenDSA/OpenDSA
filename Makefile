@@ -164,14 +164,15 @@ BOOKS += DanaG TJeffrey Michael Tikhe cschandr Taylor Raghu Weihao Sam Yinwen Xi
 
 # A Static-Pattern Rule for making Books
 $(BOOKS): % : Books/%
-	@echo "Created an eBook: $@"
+	@echo "Created an eBook: $<"
 
+# TODO: can remove -bb option once all py3 str encoding in odsa is debugged 
 Books/%: config/%.json min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) $< --no-lms
+	$(VENV)/python -bb $(CONFIG_SCRIPT) $< --no-lms
 
-# The default target for making Ebooks
+# The default implicit target for making Ebooks
 %:: config/%.json min pyVenvCheck
-	@echo "No explicit targets; trying: make Books/$@"
+	@echo "No explicit targets; instead trying: $(MAKE) Books/$@"
 	$(MAKE) Books/$@
 
 # Targets with unique recipies below:::
