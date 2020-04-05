@@ -298,7 +298,7 @@ encapsulated into some fictitious function named ``PROGRAM_HALTS``).
 Function ``halt`` then returns TRUE if the input program or
 function does halt on the given input, and FALSE otherwise.
 
-::
+.. code-block:: none
 
    bool halt(String prog, String input) {
      if (PROGRAM_HALTS(prog, input))
@@ -310,7 +310,7 @@ function does halt on the given input, and FALSE otherwise.
 We now will examine two simple functions that clearly can exist
 because the complete code for them is presented here.
 
-::
+.. code-block:: none
 
    // Return true if "prog" halts when given itself as input
    bool selfhalt(String prog) {
