@@ -152,28 +152,13 @@ lib/%-min.css:: lib/%.css
 	@echo 'Minimizing $^'
 	@cleancss $^ --output $@
 
-
-# DOUBLE CHECK:::
-# Test SimpleDemo Obsolete PIExample DeformsTesting
-# PittACOS OpenFLAP OpenPOPExercises
-# CT CTEX NP PL JFLAP FormalLang VisFormalLang
-# Spatial PointersJavaSummer PointersJava PointersCPP 
-# CS4114 NP4114 
-# Milen DanaG TJeffrey Michael Aditya cschandr Raghu Weihao Sam Lin Yinwen Xiaolin Ning
-# FL2019:
-# 	python $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
-# FLslides:
-# 	python $(CONFIG_SCRIPT) -s config/FLslides.json --no-lms
-# CS4114slides:
-# 	python $(CONFIG_SCRIPT) -s config/CS4114slides.json --no-lms
-
 # Valid Targets using Static-Pattern rule for eBooks:
 BOOKS = Test Obsolete SimpleDemo Everything DeformsTesting OpenPOPExercises testcmap
-BOOKS += CS4114 CS3 CS3C CSCI204 CSCI271 CS415 CSCD320 CSC215 CS240 CSCI2101 CS4104 CS2 CS2114 CS5040
+BOOKS += CS2 CS2114 CS240 CS3 CS3C CS4104 CS4114 CS415 CS5040 CSC215 CSCD320 CSCI204 CSCI2101 CSCI271
 BOOKS += NP NP4114 COMP271 COMPSCI186 CT CTEX PL PLdev
 BOOKS += Blockchain Spatial PointersJavaSummer PointersJava PointersCPP Graphics
 BOOKS += PittACOS OpenFLAP JFLAP FormalLang VisFormalLang FL2019 PIExample
-BOOKS += DanaG TJeffrey Michael cschandr Raghu Weihao Sam Yinwen Xiaolin Ning Yuhui Codio WuChen Echo Ming Aditya Milen Peixuan
+BOOKS += DanaG TJeffrey Michael cschandr Raghu Weihao Sam Yinwen Xiaolin Ning Yuhui Codio WuChen Echo Ming Aditya Milen Peixuan Lin
 
 # A Static-Pattern Rule for making Books
 $(BOOKS): % : Books/%
@@ -183,36 +168,17 @@ $(BOOKS): % : Books/%
 Books/%: config/%.json min pyVenvCheck
 	$(VENV)/python -bb $(CONFIG_SCRIPT) $< --no-lms
 
-# The default implicit target for making Ebooks
-%:: config/%.json min pyVenvCheck
+# The default implicit target for making any eBook (if config exists)
+%:: config/%.json
 	@echo "No explicit targets; instead trying: $(MAKE) Books/$@"
 	$(MAKE) Books/$@
 
-# Targets with unique recipies below:::
-FLslides: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) -s config/FLslides.json --no-lms
+SILENT_BOOKS = FLslides CS4114slides CS5040slides CS3slides CS3114slides CS3F18slides CS5040Master CS3SS18slides
 
-CS4114slides: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS4114slides.json --no-lms
+$(SILENT_BOOKS) : % : config/%.json min pyVenvCheck
+	$(VENV)/python -s $(CONFIG_SCRIPT) $< --no-lms
 
-CS5040slides: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS5040slides.json --no-lms
-
-CS3slides: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
-
-CS3114slides: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS3114slides.json --no-lms
-
-CS3F18slides: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS3F18slides.json --no-lms
-
-CS5040Master: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS5040Master.json --no-lms
-
-CS3SS18slides: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) -s config/CS3SS18slides.json --no-lms
-
+# Target eBooks with unique recipies below:::
 CS3notes: min pyVenvCheck
 	$(VENV)/python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
 
