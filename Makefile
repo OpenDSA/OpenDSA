@@ -146,11 +146,11 @@ nomin:
 min: nomin # This is a fake-minify!
 # min: $(JS_MIN_FILES) $(CSS_MIN_FILES) # This is the real minify!
 
-lib/%-min.js: lib/%.js
+lib/%-min.js:: lib/%.js
 	@echo 'Minimizing $^'
 	@uglifyjs $^ --comments '/^!|@preserve|@license|@cc_on/i' > $@
 
-lib/%-min.css: lib/%.css
+lib/%-min.css:: lib/%.css
 	@echo 'Minimizing $^'
 	@cleancss $^ --output $@
 
@@ -169,6 +169,10 @@ $(BOOKS): % : Books/%
 Books/%: config/%.json min pyVenvCheck
 	$(VENV)/python $(CONFIG_SCRIPT) $< --no-lms
 
+# The default target for making Ebooks
+%:: config/%.json min pyVenvCheck
+	@echo "No explicit targets; trying: make Books/$@"
+	$(MAKE) Books/$@
 
 # Targets with unique recipies below:::
 FLslides: min pyVenvCheck
