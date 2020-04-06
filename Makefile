@@ -153,7 +153,7 @@ lib/%-min.css:: lib/%.css
 	@cleancss $^ --output $@
 
 # Valid Targets using Static-Pattern rule for eBooks:
-# BOOKS += Test Obsolete SimpleDemo Everything DeformsTesting OpenPOPExercises testcmap
+BOOKS += Test Obsolete SimpleDemo Everything DeformsTesting OpenPOPExercises testcmap
 BOOKS += CS2 CS2114 CS240 CS3 CS3C CS4104 CS4114 CS415 CS5040 CSC215 CSCD320 CSCI204 CSCI2101 CSCI271
 BOOKS += NP NP4114 COMP271 COMPSCI186 CT CTEX PL PLdev
 BOOKS += Blockchain Spatial PointersJavaSummer PointersJava PointersCPP Graphics
