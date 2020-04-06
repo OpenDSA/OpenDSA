@@ -2,64 +2,16 @@
 // Written by Bailey Spell and Jesse Terrazas
 $(document).ready(function() {
     "use strict";
-
     // this is used to clear the localStorage object
     // when the page refreshs
+    var publicKey = "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALcBngkl9Jb2BbA7HnYx2+gyCawIAjMbuKcR9U6V0JIz0blUFPtwEA5/35kE4ueMRYXeQ0KYJdpN1bUn+9zA0lUCAwEAAQ==";
+    var privateKey = "MIIBOwIBAAJBALcBngkl9Jb2BbA7HnYx2+gyCawIAjMbuKcR9U6V0JIz0blUFPtwEA5/35kE4ueMRYXeQ0KYJdpN1bUn+9zA0lUCAwEAAQJABGR4i5WqojjzeABjQcj+kzsoOkXS77EZpIDs118HK4siVdTkhvnZ8wJ8qSNlXGatP5Ep/ItxdRykDOQaP1tYAQIhAP5gcSiKE330JFS0Kx0ue3gXsWefcjKxXAu7YuwAlXRVAiEAuCyVEov9ifz+BF0casfekiapmCUc1fAhSNTNLT4L5gECIQCcD3D9DRD+Uh1D9jEJOy42tFp7l1/JZ/RvoiwDXCxU7QIgG1irTdSxccK56OX2aTiCKMtK1Ud1b6K3HnxSdsxGsgECIQDsPdr3FFsYchbsb+rIoaIkQoC6h8H7eRF4YOCQE67hHQ==";
+    
     $(() => {
         localStorage.clear();
+        $(".publicKey").val(publicKey);
+        $(".privateKey").val(privateKey);
     });
-
-    function readableKey(keydata){
-        var keydataS = arrayBufferToString(keydata);
-        var keydataB64 = window.btoa(keydataS);
-        return keydataB64;
-    }
-
-    function arrayBufferToString( buffer ) {
-        var binary = '';
-        var bytes = new Uint8Array( buffer );
-        var len = bytes.byteLength;
-        for (var i = 0; i < len; i++) {
-            binary += String.fromCharCode( bytes[ i ] );
-        }
-        return binary;
-    }
-
-    async function exportKey(key, selector, format) {
-        const exported = await window.crypto.subtle.exportKey(
-            format,
-            key
-        );
-        
-        var buffer = new Uint8Array(exported).toString();
-        var readable = readableKey(exported);
-
-        if (selector === ".publicKey") {
-            localStorage.publicKey = buffer
-            localStorage.publicKeyReadable = readable;
-        }
-        else if (selector === ".privateKey") {
-            localStorage.privateKey = buffer;
-            localStorage.privateKeyReadable = readable;
-        }
-        $(selector).val(readable);
-    }
- 
-    function generateKeys() {
-        crypto.subtle.generateKey(
-            {
-                name: "RSA-OAEP",
-                modulusLength: 2048,
-                publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
-                hash: {name: "SHA-256"},
-            },
-            true,
-            ["encrypt", "decrypt"]
-        ).then(keys => {
-            exportKey(keys.publicKey, ".publicKey", "spki");
-            exportKey(keys.privateKey, ".privateKey", "pkcs8");
-        });
-    }
 
     function copyKey() {
         var dummy = document.createElement("textarea");
@@ -77,7 +29,6 @@ $(document).ready(function() {
         dummy.remove();
     }
 
-    $(".getKeys").click(generateKeys);
     $("#copyPublicKey").click(copyKey);
     $("#copyPrivateKey").click(copyKey);
 });
