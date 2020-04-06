@@ -153,7 +153,7 @@ lib/%-min.css:: lib/%.css
 	@cleancss $^ --output $@
 
 # Valid Targets using Static-Pattern rule for eBooks:
-BOOKS = Test Obsolete SimpleDemo Everything DeformsTesting OpenPOPExercises testcmap
+# BOOKS += Test Obsolete SimpleDemo Everything DeformsTesting OpenPOPExercises testcmap
 BOOKS += CS2 CS2114 CS240 CS3 CS3C CS4104 CS4114 CS415 CS5040 CSC215 CSCD320 CSCI204 CSCI2101 CSCI271
 BOOKS += NP NP4114 COMP271 COMPSCI186 CT CTEX PL PLdev
 BOOKS += Blockchain Spatial PointersJavaSummer PointersJava PointersCPP Graphics
@@ -173,10 +173,11 @@ Books/%: config/%.json min pyVenvCheck
 	@echo "No explicit targets; instead trying: $(MAKE) Books/$@"
 	$(MAKE) Books/$@
 
-SILENT_BOOKS = FLslides CS4114slides CS5040slides CS3slides CS3114slides CS3F18slides CS5040Master CS3SS18slides
+BOOK_SLIDES = FLslides CS4114slides CS5040slides CS3slides CS3114slides CS3F18slides CS5040Master CS3SS18slides
 
-$(SILENT_BOOKS) : % : config/%.json min pyVenvCheck
-	$(VENV)/python -s $(CONFIG_SCRIPT) $< --no-lms
+# TODO: can remove -bb option once all py3 str encoding in odsa is debugged 
+$(BOOK_SLIDES) : % : config/%.json min pyVenvCheck
+	$(VENV)/python -bb $(CONFIG_SCRIPT) --slides $< --no-lms
 
 # Target eBooks with unique recipies below:::
 CS3notes: min pyVenvCheck
