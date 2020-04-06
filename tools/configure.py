@@ -558,7 +558,7 @@ def configure(config_file_path, options):
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
     parser = ArgumentParser(description="Generate an eBook using a config file.")
-    parser.add_argument("config-filepath", help="A JSON file that selects the content and layout of the eBook")
+    parser.add_argument("config_file_path", help="A JSON file that selects the content and layout of the eBook")
     parser.add_argument("-s", "--slides", help="Causes configure.py to create slides", action="store_true", default=False)
     parser.add_argument("--dry-run", help="Causes configure.py to configure the book but stop before compiling it", action="store_true", default=False)
     parser.add_argument("-b", "--output-directory", help="Accepts a custom directory name instead of using the config file's name.", default=None)
