@@ -44,7 +44,7 @@ import urllib.request, urllib.parse, urllib.error
 import simple2full
 
 from collections import Iterable
-from optparse import OptionParser
+from argparse import ArgumentParser
 from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config, parse_error
@@ -557,24 +557,19 @@ def configure(config_file_path, options):
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
-    parser = OptionParser()
-    parser.add_option("-s", "--slides", help="Causes configure.py to create slides",dest="slides", action="store_true", default=False)
-    parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it", dest="dry_run", action="store_true", default=False)
-    parser.add_option("-b", help="Accepts a custom directory name instead of using the config file's name.",dest="output_directory", default=None)
-    parser.add_option("--local", help="Causes the compiled book to work in local mode, which means no communication with the server",dest="local", action="store_true", default=True)
-    parser.add_option("--no-lms", help="Compile book without changing internal links required by LMS",dest="no_lms", action="store_true", default=False)
-    parser.add_option("--standalone-modules", help="Compile all modules such that each module has no links to other modules.",dest="standalone_modules",action="store_true",default=False)
-    (options, args) = parser.parse_args()
+    parser = ArgumentParser(description="Generate an eBook using a config file.")
+    parser.add_argument("config-filepath", help="A JSON file that selects the content and layout of the eBook")
+    parser.add_argument("-s", "--slides", help="Causes configure.py to create slides", action="store_true", default=False)
+    parser.add_argument("--dry-run", help="Causes configure.py to configure the book but stop before compiling it", action="store_true", default=False)
+    parser.add_argument("-b", "--output-directory", help="Accepts a custom directory name instead of using the config file's name.", default=None)
+    parser.add_argument("--local", help="Causes the compiled book to work in local mode, which means no communication with the server", action="store_true", default=True)
+    parser.add_argument("--no-lms", help="Compile book without changing internal links required by LMS", action="store_true", default=False)
+    parser.add_argument("--standalone-modules", help="Compile all modules such that each module has no links to other modules.",action="store_true", default=False)
+    args = parser.parse_args()
 
-    if options.slides:
+    if args.slides:
         os.environ['SLIDES'] = 'yes'
     else:
         os.environ['SLIDES'] = 'no'
 
-    # Process script arguments
-    if len(args) != 1:
-        print_err(
-            "Usage: " + sys.argv[0] + " [-s] [--dry-run] [--no-lms] config_file_path [-c]")
-        sys.exit(1)
-
-    configure(args[0], options)
+    configure(args.config_file_path, args)
