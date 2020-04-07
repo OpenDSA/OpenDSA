@@ -120,6 +120,9 @@ Michael: min
 Aditya: min
 	python $(CONFIG_SCRIPT) config/Aditya.json --no-lms
 
+Milen: min
+	python $(CONFIG_SCRIPT) config/Milen.json --no-lms
+
 cschandr: min
 	python $(CONFIG_SCRIPT) config/cschandr.json --no-lms
 
