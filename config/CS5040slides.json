@@ -120,8 +120,13 @@
     "Week 9, Day 1": {
       "CS5040slides/Buffering": {}
     },
-    "Week 9.2, Week 10": {
+    "Week 9.2, Week 10.1": {
       "CS5040slides/Hashing": {}
+    },
+    "Week 10.2, Week 11.1": {
+      "CS5040slides/Indexing": {},
+      "CS5040slides/TTTree": {},
+      "CS5040slides/BTree": {}
     }
   }
 }

@@ -77,6 +77,7 @@
 
     },
     "Finite Acceptors": {
+      "PIExample/DFA":{},
       "PIExample/NFAtoDFAExample":{}
     },
     "Regular Languages": {
@@ -87,14 +88,16 @@
       "PIExample/NFAToRE": {}
     },
     "Identifying Non-regular Languages":{
-      "PIEXample/INRL":{}
+      "PIExample/INRL":{}
     },
     "Context-Free Grammars and Languages":{},
     "Pushdown Automata":{},
     "Properties of Context-free Languages":{},
     "Models of Computation":{
       "PIExample/TMGeneralModel":{},
-      "PIExample/TMInterpreting":{}
+      "PIExample/TMInterpreting":{},
+      "PIExample/TMDecidableVSAcceptable":{},
+      "PIExample/TMComplicatedMachine1":{}
     },
     "Parsing":{},
     "Limits to Computing":{}

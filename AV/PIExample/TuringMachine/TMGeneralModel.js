@@ -34,7 +34,7 @@ $(document).ready(function () {
     
     //frame 6
     av.umsg("Here we see a Turing Machine's states and transitions presented in the form of a graph. We also see the tape and the head when beginning to process input string 'aaaa'.");
-    var url = "../../../AV/VisFormalLang/TM/Machines/TMexample1.jff";
+    var url = "../../../../AV/VisFormalLang/TM/Machines/TMexample1.jff";
     var tm = new av.ds.TM({width: 600, height: 200, left: 50, url: url});
     av.ds.tape(["#", "a", "a", "a", "a", "#", "#", "#"], 470, 50, "both");
     var rect = av.g.rect(350 + xStart, 150 + yStart, 110, 80);

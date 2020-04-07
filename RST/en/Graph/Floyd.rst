@@ -46,13 +46,10 @@ Figure :num:`Figure #FloydExamp` illustrates the concept of
 :math:`k`-paths.
 
 .. _FloydExamp:
-
-.. odsafig:: Images/Floyd.png
-   :width: 400
+.. inlineav:: FloydCON dgm
+   :links: AV/Graph/FloydCON.css
+   :scripts: AV/Graph/FloydCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: An example of :math:`k`-paths in Floyd's algorithm
 
    An example of :math:`k`-paths in Floyd's algorithm.
    Path 1, 3 is a 0-path by definition.

@@ -4,15 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Eunoh Cho
+   :author: YIJING WU
    :satisfies: Frame example
-   :topic: Finite Automata
+   :topic: Part 1 of reduction chapter in NP4114
 
 
-Reductions 
+Reductions Part 1
 ================================
-The Pairing Problem
--------------------------------
+
+Reduction Introduction and The Pairing Problem
+------------------------
 .. inlineav:: PairToSortCONPI ff
    :links: AV/WuChen/PairToSortCONPI.css
    :scripts: AV/WuChen/PairToSortCONPI.js DataStructures/PIFrames.js  

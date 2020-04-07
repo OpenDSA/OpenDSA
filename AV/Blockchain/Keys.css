@@ -26,7 +26,7 @@
     top: 30px;
 }
 
-.copyPublicKey {
+#copyPublicKey {
     top: 15px;
 }
 
@@ -43,7 +43,7 @@
     top: 45px;
 }
 
-.copyPrivateKey {
+#copyPrivateKey {
     top: 30px;
 }
 

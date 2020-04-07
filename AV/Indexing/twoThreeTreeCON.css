@@ -5,10 +5,6 @@
   min-height: 30px;
 }
 
-.jsavoutput.jsavline {
-  height: 30px;
-}
-
 /* Change the size of each array box */
 .jsavarray .jsavindex {
   min-width: 33px;
@@ -46,11 +42,19 @@
   height: 230px;
 }
 
+#simpleInsertCON .jsavoutput.jsavline {
+  height: 60px;
+}
+
 /* Sytling for the promoteCON slide show ********************************/
 
 /* Set width and height for the JSAV canvas */
 #promoteCON .jsavcanvas {
   height: 230px;
+}
+
+#promoteCON .jsavoutput.jsavline {
+  height: 60px;
 }
 
 /* Sytling for the splitCON slide show ********************************/
@@ -59,4 +63,8 @@
 /* Set width and height for the JSAV canvas */
 #splitCON .jsavcanvas {
   height: 300px;
+}
+
+#splitCON .jsavoutput.jsavline {
+  height: 60px;
 }
