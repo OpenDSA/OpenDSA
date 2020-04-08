@@ -86,7 +86,9 @@
       "PIExample/expressionRegular": {},
       "PIExample/regularGrammar": {},
       "PIExample/NFAToRE": {},
-      "PIExample/RightLinearRG": {}
+      "PIExample/RightLinearRG": {},
+      "PIExample/STA": {},
+      "PIExample/ClosureConcept": {}
     },
     "Identifying Non-regular Languages":{
       "PIExample/INRL":{}

@@ -1,6 +1,6 @@
 $(document).ready(function () {
     "use strict";
-    var av_name = "INRL";
+    var av_name = "ClosureConcept";
     var av = new JSAV(av_name);
     var Frames = PIFRAMES.init(av_name);
     // Load the config object with interpreter and code created by odsaUtils.js
@@ -10,12 +10,11 @@ $(document).ready(function () {
     var goNext = false;
 
     //frame 1
-    av.umsg("How do we prove that a language is regular? We have a number of approaches in our toolbox. <br> 1. Build a DFA. <br> 2. Build a NFA. <br> 3. Write a regular expression.<br> 4. Write a regular grammar.<br> 5. Start with known regular languages and apply operations known to be closed for regular languages.");
+    av.umsg("$\\textbf {Definition}$: A set is $\\textbf {closed}$ over a (binary) operation if, whenever that operation is applied to any two members of the set, the result is a member of the set.");
     av.displayInit();
 
-    
     //frame 2
-    av.umsg("hello");
+    av.umsg(Frames.addQuestion("q1"));
     av.step();
 
     av.recorded();
