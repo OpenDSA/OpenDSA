@@ -3,13 +3,13 @@ const equations = [
         group: 'Basic definitions',
         id: "axialMemberAvgNormalStress",
         name: 'Average normal stress in an axial member',
-        latex: '\\sigma_{avg_{ }} = \\frac {F_{ }} {A_{ }}',
+        latex: '\\sigma_{ } = \\frac {F_{ }} {A_{ }}',
         latex_boxes: '\\Box = \\frac \\Box \\Box',
-        params_latex: ['\\sigma_{avg_{ }}', 'A_{ }', 'F_{ }'],
+        params_latex: ['\\sigma_{ }', 'A_{ }', 'F_{ }'],
         template: 'normalstress = normalforce / area',
         params: ['normalstress', 'area', 'normalforce'],
         variables: {
-            'normalstress': '\\sigma_{avg_{ }}',
+            'normalstress': '\\sigma_{ }',
             'normalforce': 'F_{ }',
             'area': 'A_{ }'
         },
@@ -24,15 +24,15 @@ const equations = [
         group: 'Basic definitions',
         id: "dirShearStressAvg",
         name: 'Average direct shear stress',
-        latex: '\\tau_{avg_{ }} = \\frac {V_{ }} {A_{v_{ }}}',
+        latex: '\\tau_{ } = \\frac {V_{ }} {A_{ }}',
         latex_boxes: '\\Box = \\frac \\Box \\Box',
-        params_latex: ['\\tau_{avg_{ }}', 'V_{ }', 'A_{v_{ }}'],
+        params_latex: ['\\tau_{ }', 'V_{ }', 'A_{ }'],
         template: 'shearstress = shearforce / area',
         params: ['shearstress', 'area', 'shearforce'],
         variables: {
-            'shearstress': '\\tau_{avg_{ }}',
+            'shearstress': '\\tau_{ }',
             'shearforce': 'V_{ }',
-            'area': 'A_{v_{ }}'
+            'area': 'A_{ }'
         },
         domains: {
             'shearstress': 'pressure',
@@ -41,48 +41,48 @@ const equations = [
         },
         height: 30
     },
-    {
-        group: 'Basic definitions',
-        id: "bearingStressAvg",
-        name: 'Average bearing stress',
-        latex: '\\sigma_{b_{ }} = \\frac {F_{ }} {A_{b_{ }}}',
-        latex_boxes: '\\Box = \\frac \\Box \\Box',
-        params_latex: ['\\sigma_{b_{ }}', 'F_{ }', 'A_{b_{ }}'],
-        template: 'normalstress = normalforce / area',
-        params: ['normalstress', 'area', 'normalforce'],
-        variables: {
-            'normalstress': '\\sigma_{b_{ }}',
-            'normalforce': 'F_{ }',
-            'area': 'A_{b_{ }}'
-        },
-        domains: {
-            'normalstress': 'pressure',
-            'normalforce': 'force',
-            'area': 'length2'
-        },
-        height: 30
-    },
-    {
-        group: 'Basic definitions',
-        id: "axialMemberNormalStrainAvgLongL",
-        name: 'Average normal strain on an axial member',
-        latex: '\\epsilon_{long_{ }}=\\frac {\\Delta L_{ }} {L_{ }}',
-        latex_boxes: '\\Box=\\frac \\Box \\Box',
-        params_latex: ['\\epsilon_{long_{ }}', '\\Delta L_{ }', 'L_{ }'],
-        template: 'strain = changeL / length',
-        params: ['strain', 'length', 'changeL'],
-        variables: {
-            'strain': '\\epsilon_{long_{ }}',
-            'changeL': '\\Delta L_{ }',
-            'length': 'L_{ }'
-        },
-        domains: {
-            'strain': 'strain',
-            'changeL': 'length',
-            'length': 'length'
-        },
-        height: 30
-    },
+    // {
+    //     group: 'Basic definitions',
+    //     id: "bearingStressAvg",
+    //     name: 'Average bearing stress',
+    //     latex: '\\sigma_{ } = \\frac {F_{ }} {A_{ }}',
+    //     latex_boxes: '\\Box = \\frac \\Box \\Box',
+    //     params_latex: ['\\sigma_{ }', 'F_{ }', 'A_{ }'],
+    //     template: 'normalstress = normalforce / area',
+    //     params: ['normalstress', 'area', 'normalforce'],
+    //     variables: {
+    //         'normalstress': '\\sigma_{ }',
+    //         'normalforce': 'F_{ }',
+    //         'area': 'A_{ }'
+    //     },
+    //     domains: {
+    //         'normalstress': 'pressure',
+    //         'normalforce': 'force',
+    //         'area': 'length2'
+    //     },
+    //     height: 30
+    // },
+    // {
+    //     group: 'Basic definitions',
+    //     id: "axialMemberNormalStrainAvgLongL",
+    //     name: 'Average normal strain on an axial member',
+    //     latex: '\\epsilon_{long_{ }}=\\frac {\\Delta L_{ }} {L_{ }}',
+    //     latex_boxes: '\\Box=\\frac \\Box \\Box',
+    //     params_latex: ['\\epsilon_{long_{ }}', '\\Delta L_{ }', 'L_{ }'],
+    //     template: 'strain = changeL / length',
+    //     params: ['strain', 'length', 'changeL'],
+    //     variables: {
+    //         'strain': '\\epsilon_{long_{ }}',
+    //         'changeL': '\\Delta L_{ }',
+    //         'length': 'L_{ }'
+    //     },
+    //     domains: {
+    //         'strain': 'strain',
+    //         'changeL': 'length',
+    //         'length': 'length'
+    //     },
+    //     height: 30
+    // },
     {
         group: 'Basic definitions',
         id: "axialMemberNormalStrainAvgLongdelta",
@@ -90,15 +90,15 @@ const equations = [
         latex: '\\epsilon_{long_{ }} = \\frac {\\delta_{ }} {L_{ }}',
         latex_boxes: '\\Box = \\frac \\Box \\Box',
         params_latex: ['\\epsilon_{long_{ }}', '\\delta_{ }', 'L_{ }'],
-        template: 'strain = deform / length',
-        params: ['strain', 'length', 'deform'],
+        template: 'normallongstrain = deform / length',
+        params: ['normallongstrain', 'length', 'deform'],
         variables: {
-            'strain': '\\epsilon_{long_{ }}',
+            'normallongstrain': '\\epsilon_{long_{ }}',
             'deform': '\\delta_{ }',
             'length': 'L_{ }'
         },
         domains: {
-            'strain': 'strain',
+            'normallongstrain': 'strain',
             'deform': 'length',
             'length': 'length'
         },
@@ -111,15 +111,15 @@ const equations = [
         latex: '\\epsilon_{lat_{ }} = \\frac {\\Delta l_{ }} {l_{ }}',
         latex_boxes: '\\Box = \\frac \\Box \\Box',
         params_latex: ['\\epsilon_{lat_{ }}', '\\Delta l_{ }', 'l_{ }'],
-        template: 'strain = changeLength / length',
-        params: ['strain', 'length', 'changeLength'],
+        template: 'normallatstrain = changeLength / length',
+        params: ['normallatstrain', 'length', 'changeLength'],
         variables: {
-            'strain': '\\epsilon_{lat_{ }}',
+            'normallatstrain': '\\epsilon_{lat_{ }}',
             'changeLength': '\\Delta l_{ }',
             'length': 'l_{ }'
         },
         domains: {
-            'strain': 'ratio',
+            'normallatstrain': 'strain',
             'changeLength': 'length',
             'length': 'length'
         },
@@ -132,16 +132,16 @@ const equations = [
         latex: '\\epsilon_{T_{ }} = \\alpha_{ } \\cdot \\Delta T_{ }',
         latex_boxes: '\\Box = \\Box \\cdot \\Box',
         params_latex: ['\\epsilon_{T_{ }}', '\\alpha_{ }', '\\Delta T_{ }'],
-        template: 'strain = themalcoeff * tempchange',
-        params: ['strain', 'themalcoeff', 'tempchange'],
+        template: 'normalstrain = thermalcoeff * tempchange',
+        params: ['normalstrain', 'thermalcoeff', 'tempchange'],
         variables: {
-            'strain': '\\epsilon_{T_{ }}',
-            'themalcoeff': '\\Delta t_{ }',
-            'tempchange': 't_{ }'
+            'normalstrain': '\\epsilon_{T_{ }}',
+            'thermalcoeff': '\\alpha_{ }',
+            'tempchange': '\\Delta T_{ }'
         },
         domains: {
-            'strain': 'ratio',
-            'themalcoeff': 'temperature-1',
+            'normalstrain': 'strain',
+            'thermalcoeff': 'temperature-1',
             'tempchange': 'temperature'
         },
         height: 30
@@ -153,17 +153,17 @@ const equations = [
         latex: '\\sigma{ } = E_{ } \\cdot \\epsilon_{ }',
         latex_boxes: '\\Box = \\Box \\cdot \\Box',
         params_latex: ['\\sigma_{ }', 'E_{ }', '\\epsilon_{ }'],
-        template: 'stress = stresscoeff * strain',
-        params: ['stress', 'stresscoeff', 'strain'],
+        template: 'normalstress = normalstresscoeff * normalstrain',
+        params: ['normalstress', 'normalstresscoeff', 'normalstrain'],
         variables: {
-            'stress': '\\sigma_{ }',
-            'stresscoeff': 'E_{ }',
-            'strain': '\\epsilon_{ }'
+            'normalstress': '\\sigma_{ }',
+            'normalstresscoeff': 'E_{ }',
+            'normalstrain': '\\epsilon_{ }'
         },
         domains: {
-            'stress': 'pressure',
-            'stresscoeff': 'pressure',
-            'strain': 'ratio'
+            'normalstress': 'pressure',
+            'normalstresscoeff': 'pressure',
+            'normalstrain': 'strain'
         },
         height: 30
     },
@@ -174,17 +174,17 @@ const equations = [
         latex: '\\tau{ } = G_{ } \\cdot \\gamma_{ }',
         latex_boxes: '\\Box = \\Box \\cdot \\Box',
         params_latex: ['\\tau_{ }', 'G_{ }', '\\gamma_{ }'],
-        template: 'stress = stresscoeff * strain',
-        params: ['stress', 'stresscoeff', 'strain'],
+        template: 'shearstress = shearstresscoeff * shearstrain',
+        params: ['shearstress', 'shearstresscoeff', 'shearstrain'],
         variables: {
-            'stress': '\\tau_{ }',
-            'stresscoeff': 'G_{ }',
-            'strain': '\\gamma_{ }'
+            'shearstress': '\\tau_{ }',
+            'shearstresscoeff': 'G_{ }',
+            'shearstrain': '\\gamma_{ }'
         },
         domains: {
-            'stress': 'pressure',
-            'stresscoeff': 'pressure',
-            'strain': 'ratio'
+            'shearstress': 'pressure',
+            'shearstresscoeff': 'pressure',
+            'shearstrain': 'strain'
         },
         height: 30
     },
@@ -203,9 +203,9 @@ const equations = [
             'longstrain': '\\epsilon_{long_{ }}'
         },
         domains: {
-            'poissonratio': 'ratio',
-            'latstrain': 'ratio',
-            'longstrain': 'ratio'
+            'poissonratio': 'dimensionless',
+            'latstrain': 'strain',
+            'longstrain': 'strain'
         },
         height: 30
     },
@@ -216,17 +216,17 @@ const equations = [
         latex: 'G_{ } = \\frac {E_{ }} {2\\cdot(1+\\nu_{ })}',
         latex_boxes: '\\Box = \\frac {\\Box} {2\\cdot(1+\\Box)}',
         params_latex: ['G_{ }', 'E_{ }', '\\nu_{ }'],
-        template: 'Gcoeff = Ecoeff / (2*(1+ poissonratio ))',
-        params: ['Gcoeff', 'poissonratio', 'Ecoeff'],
+        template: 'shearstresscoeff = normalstresscoeff / (2*(1+ poissonratio ))',
+        params: ['shearstresscoeff', 'poissonratio', 'normalstresscoeff'],
         variables: {
-            'Gcoeff': 'G_{ }',
-            'Ecoeff': 'E_{ }',
+            'shearstresscoeff': 'G_{ }',
+            'normalstresscoeff': 'E_{ }',
             'poissonratio': '\\nu_{ }'
         },
         domains: {
-            'Gcoeff': 'temperature-1',
-            'Ecoeff': 'temperature-1',
-            'poissonratio': 'ratio'
+            'shearstresscoeff': 'pressure',
+            'normalstresscoeff': 'pressure',
+            'poissonratio': 'dimensionless'
         },
         height: 30
     },
@@ -237,17 +237,17 @@ const equations = [
         latex: '\\sigma_{allow_{ }} = \\frac {\\sigma_{failure_{ }}} {FS_{ }}',
         latex_boxes: '\\Box = \\frac {\\Box} {\\Box}',
         params_latex: ['\\sigma_{allow_{ }}', '\\sigma_{failure_{ }}', 'FS_{ }'],
-        template: 'stressallowed = stressfailure / FS',
-        params: ['stressallowed', 'FS', 'stressfailure'],
+        template: 'normalstressallowed = normalstressfailure / FS',
+        params: ['normalstressallowed', 'FS', 'normalstressfailure'],
         variables: {
-            'stressallowed': '\\sigma_{allow_{ }}',
-            'stressfailure': '\\sigma_{failure_{ }',
+            'normalstressallowed': '\\sigma_{allow_{ }}',
+            'normalstressfailure': '\\sigma_{failure_{ }',
             'FS': 'FS_{ }'
         },
         domains: {
-            'stressallowed': 'pressure',
-            'stressfailure': 'pressure',
-            'FS': 'safetyfactor'
+            'normalstressallowed': 'pressure',
+            'normalstressfailure': 'pressure',
+            'FS': 'dimensionless'
         },
         height: 30
     },
@@ -258,62 +258,62 @@ const equations = [
         latex: '\\tau_{allow_{ }} = \\frac {\\tau_{failure_{ }}} {FS_{ }}',
         latex_boxes: '\\Box = \\frac {\\Box} {\\Box}',
         params_latex: ['\\tau_{allow_{ }}', '\\tau_{failure_{ }}', 'FS_{ }'],
-        template: 'stressallowed = stressfailure / FS',
-        params: ['stressallowed', 'FS', 'stressfailure'],
+        template: 'shearstressallowed = shearstressfailure / FS',
+        params: ['shearstressallowed', 'FS', 'shearstressfailure'],
         variables: {
-            'stressallowed': '\\tau_{allow_{ }}',
-            'stressfailure': '\\tau_{failure_{ }',
+            'shearstressallowed': '\\tau_{allow_{ }}',
+            'shearstressfailure': '\\tau_{failure_{ }',
             'FS': 'FS_{ }'
         },
         domains: {
-            'stressallowed': 'pressure',
-            'stressfailure': 'pressure',
-            'FS': 'safetyfactor'
+            'shearstressallowed': 'pressure',
+            'shearstressfailure': 'pressure',
+            'FS': 'dimensionless'
         },
         height: 30
     },
-    {
-        group: 'Basic definitions',
-        id: "FactorOfSafety1sigma",
-        name: 'Definition of allowable stress',
-        latex: 'FS_{ } = \\frac {\\sigma_{failure_{ }}} {\\sigma_{actual_{ }}}',
-        latex_boxes: '\\Box = \\frac {\\Box} {\\Box}',
-        params_latex: ['FS', '\\sigma_{failure_{ }}', '\\sigma_{actual_{ }}'],
-        template: 'FS = stressfailure / stressactual',
-        params: ['FS', 'stressactual', 'stressfailure'],
-        variables: {
-            'stressactual': '\\sigma_{actual_{ }}',
-            'stressfailure': '\\sigma_{failure_{ }',
-            'FS': 'FS_{ }'
-        },
-        domains: {
-            'stressactual': 'pressure',
-            'stressfailure': 'pressure',
-            'FS': 'safetyfactor'
-        },
-        height: 30
-    },
-    {
-        group: 'Basic definitions',
-        id: "FactorOfSafety1tau",
-        name: 'Definition of allowable stress',
-        latex: 'FS_{ } = \\frac {\\tau_{failure_{ }}} {\\tau_{actual_{ }}}',
-        latex_boxes: '\\Box = \\frac {\\Box} {\\Box}',
-        params_latex: ['FS', '\\tau_{failure_{ }}', '\\tau_{actual_{ }}'],
-        template: 'FS = stressfailure / stressactual',
-        params: ['FS', 'stressactual', 'stressfailure'],
-        variables: {
-            'stressactual': '\\tau_{actual_{ }}',
-            'stressfailure': '\\tau_{failure_{ }',
-            'FS': 'FS_{ }'
-        },
-        domains: {
-            'stressactual': 'pressure',
-            'stressfailure': 'pressure',
-            'FS': 'safetyfactor'
-        },
-        height: 30
-    },
+    // {
+    //     group: 'Basic definitions',
+    //     id: "FactorOfSafety1sigma",
+    //     name: 'Definition of allowable stress',
+    //     latex: 'FS_{ } = \\frac {\\sigma_{failure_{ }}} {\\sigma_{actual_{ }}}',
+    //     latex_boxes: '\\Box = \\frac {\\Box} {\\Box}',
+    //     params_latex: ['FS', '\\sigma_{failure_{ }}', '\\sigma_{actual_{ }}'],
+    //     template: 'FS = stressfailure / stressactual',
+    //     params: ['FS', 'stressactual', 'stressfailure'],
+    //     variables: {
+    //         'stressactual': '\\sigma_{actual_{ }}',
+    //         'stressfailure': '\\sigma_{failure_{ }',
+    //         'FS': 'FS_{ }'
+    //     },
+    //     domains: {
+    //         'stressactual': 'pressure',
+    //         'stressfailure': 'pressure',
+    //         'FS': 'safetyfactor'
+    //     },
+    //     height: 30
+    // },
+    // {
+    //     group: 'Basic definitions',
+    //     id: "FactorOfSafety1tau",
+    //     name: 'Definition of allowable stress',
+    //     latex: 'FS_{ } = \\frac {\\tau_{failure_{ }}} {\\tau_{actual_{ }}}',
+    //     latex_boxes: '\\Box = \\frac {\\Box} {\\Box}',
+    //     params_latex: ['FS', '\\tau_{failure_{ }}', '\\tau_{actual_{ }}'],
+    //     template: 'FS = stressfailure / stressactual',
+    //     params: ['FS', 'stressactual', 'stressfailure'],
+    //     variables: {
+    //         'stressactual': '\\tau_{actual_{ }}',
+    //         'stressfailure': '\\tau_{failure_{ }',
+    //         'FS': 'FS_{ }'
+    //     },
+    //     domains: {
+    //         'stressactual': 'pressure',
+    //         'stressfailure': 'pressure',
+    //         'FS': 'safetyfactor'
+    //     },
+    //     height: 30
+    // },
 
     {
         group: 'Axial',
@@ -322,19 +322,19 @@ const equations = [
         latex: '\\delta_{T_{ }} = \\alpha_{ } \\cdot \\Delta T_{ } \\cdot L_{ }',
         latex_boxes: '\\Box=\\Box\\times\\Box\\times\\Box',
         params_latex: ['\\delta_{ }', '\\alpha_{ }', '\\Delta T_{ }', 'L_{ }'],
-        template: 'deform = thermalcoeff * tempchange * len',
-        params: ['deform', 'thermalcoeff', 'tempchange', 'len'],
+        template: 'deform = thermalcoeff * tempchange * length',
+        params: ['deform', 'thermalcoeff', 'tempchange', 'length'],
         variables: {
             'deform':'\\delta_{T_{ }}',
             'thermalcoeff':'\\alpha_{ }',
             'tempchange':'\\Delta T_{ }',
-            'len':'L_{ }'
+            'length':'L_{ }'
         },
         domains: {
             'deform':'length',
             'thermalcoeff':'temperature-1',
             'tempchange':'temperature',
-            'len':'length'
+            'length':'length'
         },
         height: 30
     },
@@ -345,20 +345,20 @@ const equations = [
         latex: '\\delta_{ } = \\frac {F_{ } \\cdot L_{ }} {A_{ } \\cdot E_{ }}',
         latex_boxes: '\\Box= \\frac {\\Box \\cdot \\Box} {\\Box \\cdot \\Box}',
         params_latex: ['\\delta_{ }','F_{ }', 'L_{ }', 'A_{ }', 'E_{ }'],
-        template: 'deform = ( force * length ) / ( area * pressE )',
-        params: ['deform', 'area', 'pressE', 'force', 'length'],
+        template: 'deform = ( force * length ) / ( area * normalstresscoeff )',
+        params: ['deform', 'area', 'normalstresscoeff', 'force', 'length'],
         variables: {
             'deform': '\\delta_{ }',
             'force': 'F_{ }',
             'area': 'A_{ }',
-            'pressE': 'E_{ }',
+            'normalstresscoeff': 'E_{ }',
             'length': 'L_{ }',
         },
         domains: {
             'deform': 'length',
             'force': 'force',
             'area': 'area',
-            'pressE': 'pressure',
+            'normalstresscoeff': 'pressure',
             'length': 'length'
         },
         height: 30
@@ -370,18 +370,18 @@ const equations = [
         latex: '\\delta_{ } = \\sigma_{ } \\frac {L_{ }} {E_{ }}',
         latex_boxes: '\\Box=\\Box \\frac \\Box \\Box',
         params_latex: ['\\delta_{ }','\\sigma_{ }', 'L_{ }', 'E_{ }'],
-        template: 'deform = stress * length / pressE',
-        params: ['deform', 'stress', 'pressE', 'length'],
+        template: 'deform = normalstress * length / normalstresscoeff',
+        params: ['deform', 'normalstress', 'normalstresscoeff', 'length'],
         variables: {
             'deform': '\\delta_{ }',
-            'stress': '\\sigma_{ }',
-            'pressE': 'E_{ }',
+            'normalstress': '\\sigma_{ }',
+            'normalstresscoeff': 'E_{ }',
             'length': 'L_{ }'
         },
         domains: {
             'deform': 'length',
-            'stress': 'pressure',
-            'pressE': 'pressure',
+            'normalstress': 'pressure',
+            'normalstresscoeff': 'pressure',
             'length': 'length'
         },
         height: 30
@@ -396,13 +396,13 @@ const equations = [
             '+ \\Box \\cdot \\Box \\cdot \\Box',
         params_latex: ['\\delta_{ }','F_{ }', 'L_{ }', 'A_{ }', 'E_{ }',
             '\\alpha_{ }', '\\Delta T_{ }', 'L_{ }'],
-        template: 'deform = ( force * length ) / ( area * pressE ) + '+
+        template: 'deform = ( force * length1 ) / ( area * normalstresscoeff ) + '+
             'thermalcoeff * tempchange * length2',
-        params: ['deform', 'area', 'pressE', 'force', 'length1', 
+        params: ['deform', 'area', 'normalstresscoeff', 'force', 'length1', 
             'thermalcoeff', 'tempchange', 'length2'],
         variables: {
             'deform': '\\delta_{ }',
-            'pressE': 'E_{ }',
+            'normalstresscoeff': 'E_{ }',
             'length1': 'L_{ }',
             'force': 'F_{ }',
             'area': 'A_{ }',
@@ -414,29 +414,145 @@ const equations = [
             'deform': 'length',
             'force': 'force',
             'area': 'area',
-            'pressE': 'pressure',
-            'stress': 'pressure',
-            'pressE': 'pressure',
+            'normalstresscoeff': 'pressure',
+            'length1': 'length',
+            'length2': 'length',
+            'tempchange': 'temperature',
+            'thermalcoeff': 'temperature-1'
+        },
+        height: 30
+    },
+
+    {
+        group: 'Torsion',
+        id: 'shearMaxTorque1',
+        name: 'shearMaxTorque1',
+        latex: '\\tau_{ } = \\frac {T_{ } \\cdot c_{ }} {J_{ }}',
+        latex_boxes: '\\Box = \\frac {\\Box \\cdot \\Box} {\\Box}',
+        template: 'shearstress = ( torque * length ) / mominertia',
+        params: ['shearstress', 'mominertia', 'torque', 'length'],
+        variables: {
+            'shearstress': '\\tau_{ }',
+            'torque': 'T_{ }',
+            'length': 'c_{ }',
+            'mominertia': 'J_{ }'
+        },
+        domains: {
+            'shearstress': 'pressure',
+            'torque': 'torque',
+            'length': 'length',
+            'mominertia': 'length4'
+        },
+        height: 30
+    },
+    {
+        group: 'Torsion',
+        id: 'momInertiaRadius',
+        name: 'momInertiaRadius',
+        latex: 'J_{ } = \\pi/2 * ( r_{ } )^4',
+        latex_boxes: '\\Box = \\pi/2 \\cdot ( \\Box )^4',
+        template: 'mominertia = 3.1419/2 * ( radius )^4',
+        params: ['mominertia', 'radius'],
+        variables: {
+            'mominertia': 'J_{ }',
+            'radius': 'r_{ }'
+        },
+        domains: {
+            'mominertia': 'length4',
+            'radius': 'length'
+        },
+        height: 30
+    },
+    {
+        group: 'Torsion',
+        id: 'momInertiaDiameter',
+        name: 'momInertiaDiameter',
+        latex: 'J_{ } = \\pi/32 * ( d_{ } )^4',
+        latex_boxes: '\\Box = \\pi/32 \\cdot ( \\Box )^4',
+        template: 'mominertia = 3.1419/32 * ( diameter )^4',
+        params: ['mominertia', 'diameter'],
+        variables: {
+            'mominertia': 'J_{ }',
+            'diameter': 'd_{ }'
+        },
+        domains: {
+            'mominertia': 'length4',
+            'diameter': 'length'
+        },
+        height: 30
+    },
+    // {
+    //     group: 'Torsion',
+    // },
+    // {
+    //     group: 'Torsion',
+    // },
+    // {
+    //     group: 'Torsion',
+    // },
+    // {
+    //     group: 'Torsion',
+    // },
+    {
+        group: 'Torsion',
+        id: 'angletwist',
+        name: 'angletwist',
+        latex: '\\phi_{ } = \\frac {T_{ } L_{ }} {J_{ } G_{ }}',
+        latex_boxes: '\\Box = \\frac {\\Box \\Box} {\\Box \\Box}',
+        template: 'angletwist = ( torque * length ) / ( momintertia * shearstresscoeff )',
+        params: ['angletwist', 'momintertia', 'shearstresscoeff', 'torque', 'length'],
+        variables: {
+            'angletwist': '\\phi_{ }',
+            'mominertia': 'J_{ }',
+            'shearstresscoeff': 'G_{ }',
+            'torque': 'T_{ }',
+            'length': 'L_{ }'
+        },
+        variables: {
+            'angletwist': 'angle',
+            'mominertia': 'length4',
+            'shearstresscoeff': 'pressure',
+            'torque': 'torque',
             'length': 'length'
         },
         height: 30
     },
     {
         group: 'Torsion',
-        id: "circShaftMaxTorsionShearStress",
-        name: 'Maximum torsion shear stress in a circular shaft',
-        latex: '\\tau_{max_{ }}=\\frac{T_{c_{ }}}{J_{}}',
-        latex_boxes: '\\Box=\\frac {\\Box} {\\Box}',
-        params: []
+        id: "power",
+        name: 'power',
+        latex: 'P_{ } = T_{ } \\cdot \\omega_{ }',
+        latex_boxes: '\\Box = \\Box \\cdot \\Box',
+        template: 'power = torque * angularvelocity',
+        params: ['power', 'torque', 'angularvelocity'],
+        variables: {
+            'power': 'P_{ }',
+            'torque': 'T_{ }',
+            'angularvelocity': '\\omega_{ }'
+        },
+        domains: {
+            'power': 'power',
+            'torque': 'torque',
+            'angularvelocity': 'angularvelocity'
+        },
+        height: 30
     },
-    {
-        group: 'Torsion',
-        id: "circShaftMaxTorsionShearStress-J",
-        name: 'J in Maximum torsion shear stress in a circular shaft',
-        latex: 'J=\\frac\\pi 2 [{R}^4-{r}^4]',
-        latex_boxes: '\\Box=\\frac\\pi 2 [{\\Box}^4-{\\Box}^4]',
-        params: ['J', 'R', 'r']
-    },
+    // {
+    //     group: 'Torsion',
+    //     id: "circShaftMaxTorsionShearStress",
+    //     name: 'Maximum torsion shear stress in a circular shaft',
+    //     latex: '\\tau_{max_{ }}=\\frac{T_{c_{ }}}{J_{}}',
+    //     latex_boxes: '\\Box=\\frac {\\Box} {\\Box}',
+    //     params: []
+    // },
+    // {
+    //     group: 'Torsion',
+    //     id: "circShaftMaxTorsionShearStress-J",
+    //     name: 'J in Maximum torsion shear stress in a circular shaft',
+    //     latex: 'J=\\frac\\pi 2 [{R}^4-{r}^4]',
+    //     latex_boxes: '\\Box=\\frac\\pi 2 [{\\Box}^4-{\\Box}^4]',
+    //     params: ['J', 'R', 'r']
+    // },
     // {
     //     group: 'Axial',
     //     id: "shearStrainMaxInPlane1",

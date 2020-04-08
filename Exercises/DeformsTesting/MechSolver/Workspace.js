@@ -427,6 +427,8 @@ class Workspace
                         "domain": unitDesc[2][0],
                         "unitDisp": unitDesc[2][1],
                     };
+                    if(unitDesc.length == 4)
+                        variableSet[vname]["correction"] = unitDesc[3]; // multiply the result with this to correct.
                 }
             }
         }
@@ -464,12 +466,17 @@ class Workspace
         // console.log("Before printing solutions", this.DIMENSIONS);
         for(var unknownName in variableSet)
         {
+            var value = null;
+            if(variableSet[unknownName].length == 4)
+                value = soln[unknownName]*variableSet[unknownName]["correction"];
+            else
+                value = soln[unknownName];
             var currSolution = new ValueBox(
                 false,
                 {
                     "visuals": this.DIMENSIONS.ELEMENTS,
                     "dataset": {
-                        "value": soln[unknownName],
+                        "value": value,
                         "unit": variableSet[unknownName]["unit"],
                         "variable": unknownName,    // The internal variable name eg: x_y
                         "valueDisplay": String(Number(Math.round(soln[unknownName]+'e3')+'e-3')),

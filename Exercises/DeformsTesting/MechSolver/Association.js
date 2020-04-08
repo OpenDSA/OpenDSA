@@ -1,6 +1,6 @@
 class Association{
     /**
-     * Purely a bookkeeping object, only used in substituting variables when 
+     * ADD Docs
      */
     constructor(sourceObject, targetObject)
     {

@@ -43,6 +43,7 @@ class ActiveEquation{
             }
         });
 
+        console.log(this.equationObjectReference)
         // Creating the visual elements.
         this.visualComponents["text"] = jsavObject.label(
             katex.renderToString(this.equationObjectReference["latex"]),
@@ -51,7 +52,7 @@ class ActiveEquation{
                 this.visualComponents["tickmark"].element[0].offsetWidth+5,
                 top: position_obj["POSITION_Y"]+3
             }
-        ).addClass("selectableEquation");
+        ).addClass("workspaceEquation");
         this.visualComponents["text"].element[0].addEventListener("click", e=> {
             Window.parentObject = this;
             this.subscriptizeEquationComponents();
@@ -107,6 +108,7 @@ class ActiveEquation{
         //console.log(boxList);
         for(var boxIndex=0; boxIndex<boxList.length; boxIndex++)
         {
+            // add a line for a hidden non nodifiable variable for fixed constants
             var name = Window.getVarName();
             var currentBox = boxList[boxIndex];
             this.variables[this.equationObjectReference.params[boxIndex]] = new Variable(
@@ -120,39 +122,39 @@ class ActiveEquation{
             )
         }
     }
-    oldCreateSolvableRepresentation(){
-        // DEPRECATED: Features of Nerdamer+peculiarities required us to do things differently.
-        // Plus, this function is really messily written.
-        // TO WORK SPECIFICALLY ON THIS PART, TO CREATE THE SOLVABLE REPRESENTATION AND FINALLY, SOLUTION BOX
-        var splitString = this.equationObjectReference.template.split(" ");
-        for(var x=0; x<splitString.length; x++)
-        {
-            if(splitString[x], splitString[x] in this.variables)
-            {
-                if(this.variables[splitString[x]].value!=null)
-                    splitString[x] = this.variables[splitString[x]].value;
-                else
-                {
-                    // If this is called, there will be more than one unknown in the system.
-                    // So, we need the current symbol, which would in turn be assigned by the
-                    // corresponding Association object.
-                    //splitString[x] = this.variables[splitString[x]].currentSymbol;
-                    if(this.variables[splitString[x]].value == null){
-                        // Then this is probably a single equation solving scenario, use id.
-                        splitString[x] = this.variables[splitString[x]].currentSymbol;
-                    }
-                    else if(this.variables[splitString[x]].valueType == "number"){
-                        splitString[x] = this.variables[splitString[x]].value;
-                    }
-                    else {
-                        // it's an association, look up appropriate field.
-                        //splitString[x] = this.variables[splitString[x]].value.varID;
-                    }
-                }
-            }
-        }
-        return splitString.join(" ");
-    }
+    // oldCreateSolvableRepresentation(){
+    //     // DEPRECATED: Features of Nerdamer+peculiarities required us to do things differently.
+    //     // Plus, this function is really messily written.
+    //     // TO WORK SPECIFICALLY ON THIS PART, TO CREATE THE SOLVABLE REPRESENTATION AND FINALLY, SOLUTION BOX
+    //     var splitString = this.equationObjectReference.template.split(" ");
+    //     for(var x=0; x<splitString.length; x++)
+    //     {
+    //         if(splitString[x], splitString[x] in this.variables)
+    //         {
+    //             if(this.variables[splitString[x]].value!=null)
+    //                 splitString[x] = this.variables[splitString[x]].value;
+    //             else
+    //             {
+    //                 // If this is called, there will be more than one unknown in the system.
+    //                 // So, we need the current symbol, which would in turn be assigned by the
+    //                 // corresponding Association object.
+    //                 //splitString[x] = this.variables[splitString[x]].currentSymbol;
+    //                 if(this.variables[splitString[x]].value == null){
+    //                     // Then this is probably a single equation solving scenario, use id.
+    //                     splitString[x] = this.variables[splitString[x]].currentSymbol;
+    //                 }
+    //                 else if(this.variables[splitString[x]].valueType == "number"){
+    //                     splitString[x] = this.variables[splitString[x]].value;
+    //                 }
+    //                 else {
+    //                     // it's an association, look up appropriate field.
+    //                     //splitString[x] = this.variables[splitString[x]].value.varID;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return splitString.join(" ");
+    // }
     createSolvableRepresentation(){
         var unitEquationSet = [];
         var unknowns = {};
@@ -327,7 +329,7 @@ class ActiveEquation{
         delete Window.box;
         delete Window.parentObject;
     }
-    getUnitOfVariable(varName)
+    OldgetUnitOfVariable(varName)
     {
         // Find the unknown variable - which can be an option later, if no parameter is passed.
         // var varName = null;
@@ -433,6 +435,142 @@ class ActiveEquation{
         else
             var domain = "unknown"; // temporary fix
         return [varName, resultUnit, domain];
+    }
+    getUnitOfVariable(varName)
+    {
+        console.log("in getUnitOfVariable for"+varName);
+        // Create the representable version of the equation with only variable names.
+        // This will be placeholders for manipulation later.
+        var splitString = this.equationObjectReference.template.split(" ");
+        for(var x=0; x<splitString.length; x++)
+        {
+            if(splitString[x] in this.variables)
+            {
+                if(this.variables[splitString[x]].value == null || 
+                    this.variables[splitString[x]].valueType == "number")
+                {
+                    splitString[x] = this.variables[splitString[x]].currentSymbol;
+                }
+                else if(this.variables[splitString[x]].valueType == 'association')
+                {
+                    splitString[x] = this.variables[splitString[x]].value.var;
+                }
+            }
+        }
+        
+        var equation = nerdamer(splitString.join(" "));
+        var substituted = equation.solveFor(varName).toString() // Only reference of varName, used when the 
+
+        // Now, assign the units to the variables
+        var values = {};
+        var domains = {};
+        var flagIndeterminate = false;
+        for(var v in this.variables)
+        {
+            if(this.variables[v].valueType == "number")
+            {
+                values[this.variables[v].currentSymbol] = '1 '+this.variables[v].currentUnit;
+                domains[this.variables[v].currentSymbol] = this.variables[v].currentDomain;
+            }
+            else if(this.variables[v].valueType == "association")
+            {
+                var unitName = Window.defaultDomains[this.variables[v].value.domain][Window.unitFamily];
+                values[this.variables[v].value.var] = '1 '+
+                    Window.UNIT_DB[this.variables[v].value.domain][unitName]['unit'];
+                domains[this.variables[v].value.var] = this.variables[v].value.domain;
+                // console.log("Did we find the right unit?",values[this.variables[v].currentSymbol]);
+            }
+            else if(this.variables[v].valueType == null)
+            {
+                if(this.variables[v].expectedDomain != "free")
+                {
+                    // Not a free domain, which means we know exactly what is supposed to be here.
+                    console.log(this.variables[v]);
+                    var unitName = Window.defaultDomains[this.variables[v].expectedDomain][Window.unitFamily];
+                    values[this.variables[v].currentSymbol] = 
+                    '1 '+ Window.UNIT_DB[this.variables[v].expectedDomain][unitName]['unit'];
+                    domains[this.variables[v].currentSymbol] = this.variables[v].expectedDomain;
+                }
+                else
+                {
+                    // It is a free domain variable, but is it the subject of this call to getUnitOfVariable() ?
+                    if (varName == this.variables[v].currentSymbol)
+                        values[this.variables[v].currentSymbol] = ''; // We set it to nothing, since it doesn't matter; it won't be used. Alt: just "continue"
+                    else {
+                        flagIndeterminate = true; continue;
+                        // We don't know what this unit is going to be. But we need it to guess the units of the other variables.
+                        // The best we can do is guess it from the other units in this equation.
+                        // TODO: Replace this with proper inference rules from other equations, since for each it would be specific.
+                        // TODO: (contd.) It may even be coded in and accessed, if we don't want to write a whole function
+                        // But, eg: c = a + b; the call to this wants the domain of a; given domain of b is known and c is null, unassoc.
+                        // Since a is requested, it has to be an unknown; so it must be an assoc. So, we return the
+                        // expected domain of the requested variable, and call it a day.
+                        var resultUnit = Window.defaultDomains[this.variables[varName].expectedDomain][Window.unitFamily];
+                        if(resultUnit in Window.unitDomainMap)
+                            return [varName, resultUnit, Window.unitDomainMap[resultUnit]];
+                        else
+                            return [varName, "unit", "unknown"];
+                    }
+                }
+            }
+        }
+        if(flagIndeterminate) {
+            var resultUnit = values[varName].split(" ")[1];;
+            // if(resultUnit in Window.unitDomainMap)
+            if(resultUnit in Window.unitDomainMap)
+                return [varName, resultUnit, Window.unitDomainMap[resultUnit]];
+            // if (domains[varName] in Window.UNIT_DB)
+            //     return [varName, resultUnit, domains[varName]];
+            else
+                return [varName, "", ["unknown", ""]];
+        }
+
+        for(var v in values) substituted = substituted.replace(v,"("+values[v]+")");
+        console.log(substituted);
+
+        // Now, evaluate the expression to find the units
+        // var resultUnit = mathjs.evaluate(substituted).toString().split(" ")[1];
+        var result = mathjs.evaluate(substituted).toString().split(" ");
+
+        // Now, the main logic: is this unit legit, not, or just dimensionless?
+        if(result.length == 1)
+        {
+            // The quantity is dimensionless, in which case, we need to evaluate what 
+            // the dimensions were to begin with. Just find the baseUnit for that variable,
+            // and send that over. Let the others handle this conversion.
+            
+            // Go through the variables to find the correct variable name, and find its expectedDomain.
+            var expDom = domains[varName];
+            var unitName = Window.defaultDomains[expDom][Window.unitFamily];
+            return [ 
+                varName,
+                Window.UNIT_DB[expDom][unitName]['unit'],
+                [expDom, Window.UNIT_DB[expDom][unitName]['unitDisp']] 
+            ];
+        }
+        else {
+            // It's not dimensionless, we just need to verify this thing is correct.
+            var resultUnit = result[1];
+            var resultDomain = Window.unitDomainMap[resultUnit];
+
+            if(resultDomain != null) {
+                return [ varName, resultUnit, resultDomain ];
+            }
+            else {
+                resultDomain = domains[varName];
+                var parentUnit = Window.defaultDomains[resultDomain][Window.unitFamily];
+                try{
+                    // If this throws an error, then we have an actual type mismatch
+                    // Otherwise, it just means the units simplified to something else: eg: N.m and J
+                    var number = mathjs.evaluate("number(1 "+resultUnit+", "+parentUnit+")");
+                    return [varName, parentUnit, Window.unitDomainMap[parentUnit], number];
+                }
+                catch(err)
+                {
+                    return [varName, resultUnit, ["unknown", resultUnit]]
+                }
+            }
+        }
     }
 }
 window.ActiveEquation = window.ActiveEquation || ActiveEquation
