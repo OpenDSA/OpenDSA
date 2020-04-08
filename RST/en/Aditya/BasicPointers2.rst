@@ -76,7 +76,7 @@ their own.
 .. inlineav:: shallowdeepExampleCON ss
    :long_name: Shallow Deep Copy Slideshow
    :links: AV/Pointers/shallowdeepExampleCON.css
-   :scripts: AV/Aditya/shallowdeepExampleCON.js
+   :scripts: AV/Pointers/shallowdeepExampleCON.js
    :output: show
 
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
@@ -210,10 +210,10 @@ drawing of how memory would react if this code were executed.
 .. codeinclude:: Pointers/badPointers
    :tag: badPointers
 
-.. inlineav:: badPointerPowCON dgm
+.. inlineav:: badPointerPowCON ss 
    :links: AV/Pointers/badPointerPowCON.css
-   :scripts: AV/Pointers/badPointerPowCON.js
-   :align: center
+   :scripts: AV/Aditya/badPointerPowCON.js
+   :output: show
 
 Why Are Bad Reference Bugs So Common?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

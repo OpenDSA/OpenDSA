@@ -24,7 +24,7 @@ $(document).ready(function() {
   thePath.hide();
 
   // Slide 1
-  av.umsg("WWe assign a pointee to a reference variable with a simple assignment statement..");
+  av.umsg("We can assign a pointee to a reference variable with a simple assignment statement.");
   av.displayInit();
   av.step();
 
@@ -47,11 +47,11 @@ $(document).ready(function() {
   av.step();
 
   // Slide 4
-  av.umsg("Of course, this begs the question of how the reference <tt>johnRef</tt> got its value (its pointee) in the first place.");
+  av.umsg("We create an Employee object with the new operator, as follows:");
+  label2.show();
   av.step();
 
   // Slide 5
-  av.umsg("We create an Employee object with the new operator, as follows:");
-  label2.show();
+  av.umsg("Of course, this begs the question of how the reference <tt>johnRef</tt> got its value (its pointee) in the first place.");
   av.recorded();
 });

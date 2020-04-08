@@ -1,0 +1,42 @@
+{
+    "translations": {
+      "en": {
+        "q1": {
+          "type": "select",
+          "description": "The necessary capabilities for any such \"machine\" are these: <br> - Read <br> - Write <br> - Compute",
+          "question":"Please select all the capabilities of a States Machine",
+          "answer": ["Compute", "Write", "Read"],
+          "choices": ["Compute", "Write", "Rotate", "Read"]
+        },
+        "q2": {
+          "type": "multiple",
+          "description": "A Turing machine is defined as follows. It has a one-dimensional tape, divided into squares. This tape extends infinitely to the left and to the right. Each square can store one character. The machine has a single I/O head that at any instant in time is \"on\" one of the squares. The control unit of the machine is defined by a set of abstract $states$. At any given instant, the machine is said to be \"in\" one of the states, and has a set of actions that can be performed when in that state. From the current state, the machine will read the symbol on the current square, and will then do the following (depending on the value of the symbol that it sees): <br> 1. Overwrite that symbol with a new symbol, <br> 2. Move the tape head either left (L), right (R), or stay (S)",
+          "question": "Which of the following action can't a Turing Machine do?",
+          "answer": "Pop",
+          "choices": ["Go left", "Stay", "Pop", "Write"]
+        },
+        "q3": {
+            "type":"multiple",
+            "description":"The letters that can appear on the tape are an important part of the definition for a given Turing machine. The alphabet of the machine is these letters that may appear in the input. In addition to the letters of the alphabet that can define an input string, there is also the blank character. When talking about strings, since a blank is hard to see, we will use the # character to represent a blank character. Note that including # in the alphabet is for convenience only. We want to be able to read our specifications without being confused.",
+            "question":"Which of the following definition about \"#\" in Turing Machine's $\\textbf{string}$ is correct?",
+            "answer":"A blank character",
+            "choices": ["Stay at current state", "Pop the letter in current state", "Overwrite letter in current state with \"#\"", "A blank character"]
+        },
+        "q4": {
+            "type":"multiple",
+            "description":"",
+            "question":"",
+            "answer":"",
+            "choices": []
+        },
+        "q5": {
+            "type":"multiple",
+            "description":"",
+            "question":"",
+            "answer":"",
+            "choices": []
+        }
+      }
+    }
+  }
+    

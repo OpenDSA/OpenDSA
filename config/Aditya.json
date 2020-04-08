@@ -1,6 +1,6 @@
 
 {
-  "title": "Tikhe Test",
+  "title": "Aditya Test",
   "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
@@ -65,8 +65,8 @@
   },
   "chapters": {
     "Stuff": {
-      "Aditya/BasicPointers2": {},
-      "Aditya/Syntax": {}
+      "Aditya/Syntax": {},
+      "Aditya/BasicPointers2": {}
     },
     "Appendix": {
       "Glossary": {},
