@@ -1,7 +1,7 @@
 $(document).ready(function() {
     "use strict";
 
-    var av_name = "TMComplicatedMachine1";
+    var av_name = "TMComplicatedMachine2";
     var av = new JSAV(av_name);
     var Frames = PIFRAMES.init(av_name);
     // Load the config object with interpreter and code created by odsaUtils.js
@@ -219,19 +219,7 @@ $(document).ready(function() {
               jsav.umsg("Step " + counter + ": " + phraseChanged + currState);
 
 
-                // add all the questions from here
-              if(counter === 3){
-                jsav.umsg(Frames.addQuestion("q1"));
-              }
-              if(counter === 5){
-                jsav.umsg(Frames.addQuestion("q2"));
-              }
-              if(counter === 20){
-                jsav.umsg(Frames.addQuestion("q3"))
-              }
-              if(counter === 23){
-                jsav.umsg(Frames.addQuestion("q4"));
-              }
+                // add all the questions from here by check if count === page step number
 
 
 
@@ -279,6 +267,6 @@ $(document).ready(function() {
     var tm = new av.ds.TM({width: 610, height: 375, left: 50, url: url});
     var trav = new Traversor(tm, av);
     av.displayInit();
-    trav.onClickTraverse(["aabbcc"]);
+    trav.onClickTraverse(["c", "aaabbcc"]);
     av.recorded();
 });
