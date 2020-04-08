@@ -17,5 +17,18 @@ $(document).ready(function () {
     av.umsg(Frames.addQuestion("q1"));
     av.step();
 
+    //frame 3
+    av.umsg(Frames.addQuestion("q2"));
+    av.step();
+    
+    //frame 4
+    av.umsg(Frames.addQuestion("q3"));
+    av.step();
+
+    //frame 5
+    av.umsg(Frames.addQuestion("q4"));
+    av.step();
+
+
     av.recorded();
 });
