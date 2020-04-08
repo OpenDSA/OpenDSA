@@ -48,7 +48,8 @@ var S = FA.addNode({left: 610, top: 170});
 FA.disableDragging();
 toggleInitial(FA, S);
 toggleFinal(FA, F);
-// q0.highlight();
+//some how the f is not coming up as a final node
+//F.highlight();
 // q1.highlight();
 av.step();
 

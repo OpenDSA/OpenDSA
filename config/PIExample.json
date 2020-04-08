@@ -84,7 +84,8 @@
       "PIExample/grammarRegularExpression": {},
       "PIExample/expressionRegular": {},
       "PIExample/regularGrammar": {},
-      "PIExample/NFAToRE": {}
+      "PIExample/NFAToRE": {},
+      "PIExample/RightLinearRG": {}
     },
     "Identifying Non-regular Languages":{
       "PIEXample/INRL":{}
