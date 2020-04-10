@@ -127,6 +127,10 @@
       "CS5040slides/Indexing": {},
       "CS5040slides/TTTree": {},
       "CS5040slides/BTree": {}
+    },
+    "Week 11.2": {
+      "CS5040slides/Mid2": {},
+      "CS5040slides/SkipList": {}
     }
   }
 }

@@ -23,6 +23,8 @@ B-Trees
 
    * The B-Tree is now the standard file organization for applications
      requiring insertion, deletion, and key range searches.
+      * Databases
+      * File Systems
 
 
 .. slide:: B-Trees (2)
