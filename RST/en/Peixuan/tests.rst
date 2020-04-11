@@ -11,22 +11,28 @@ Test
 
 Introduction
 ------------
-.. inlineav:: figure3_1 dgm
-   :links:
-   :scripts: AV/Peixuan/figures/figure3_1.js
+.. inlineav:: SalesCON dgm
+   :links: AV/Peixuan/figures/SalesCON.css
+   :scripts: AV/Peixuan/figures/SalesCON.js
    :align: center
 
-.. inlineav:: figure3_2 dgm
-  :links: AV/Peixuan/figures/figure3_2.css
-  :scripts: AV/Peixuan/figures/figure3_2.js
+|
+           
+.. inlineav:: ComplexCON dgm
+  :links: AV/Peixuan/figures/ComplexCON.css
+  :scripts: AV/Peixuan/figures/ComplexCON.js
   :align: center
 
-.. inlineav:: figure13_1 dgm
-   :links: AV/Peixuan/figures/figure13_1.css
-   :scripts: AV/Peixuan/figures/figure13_1.js
+|
+
+.. inlineav:: FuncBinCON dgm
+   :links: AV/Peixuan/figures/FuncBinCON.css
+   :scripts: AV/Peixuan/figures/FuncBinCON.js
    :align: center
 
-.. inlineav:: figure13_2 dgm
-  :links: AV/Peixuan/figures/figure13_2.css
-  :scripts: AV/Peixuan/figures/figure13_2.js
-  :align: center
+|
+
+.. inlineav:: FuncDiagCON dgm
+   :links: AV/Peixuan/figures/FuncDiagCON.css
+   :scripts: AV/Peixuan/figures/FuncDiagCON.js
+   :align: center
