@@ -3,7 +3,7 @@
 $(document).ready(function() {
   "use strict";
   var left = 90;
-  var topSpace = -20;
+  var topSpace = -15;
   var av = new JSAV("FuncDiagCON", {animationMode: "none"});
   var i, j;
 

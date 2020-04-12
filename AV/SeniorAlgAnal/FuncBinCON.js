@@ -3,7 +3,7 @@
 $(document).ready(function() {
   "use strict";
   var left = 200;
-  var topSpace = -20;
+  var topSpace = -10;
   var av = new JSAV("FuncBinCON", {animationMode: "none"});
   var i, j;
 

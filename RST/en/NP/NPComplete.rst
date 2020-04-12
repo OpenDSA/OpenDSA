@@ -168,11 +168,9 @@ The best route for this particular graph would be ABEDCA, with cost 9.
 
 .. _Sales:
 
-.. odsafig:: Images/Sales.png
-   :width: 175
-   :alt: Illustration of the TRAVELING SALESMAN problem
-   :capalign: justify
-   :figwidth: 90%
+.. inlineav:: SalesCON dgm
+   :links: AV/NP/SalesCON.css
+   :scripts: AV/NP/SalesCON.js
    :align: center
 
    An illustration of the TRAVELING SALESMAN problem.
@@ -322,11 +320,9 @@ terms of Figure :num:`Figure #Complex`.
 
 .. _Complex:
 
-.. odsafig:: Images/Complex.png
-   :width: 400
-   :alt: The world of exponential time problems
-   :capalign: justify
-   :figwidth: 90%
+.. inlineav:: ComplexCON dgm
+   :links: AV/NP/ComplexCON.css
+   :scripts: AV/NP/ComplexCON.js
    :align: center
 
    Our knowledge regarding the world of problems requiring exponential
