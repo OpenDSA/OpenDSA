@@ -65,7 +65,9 @@
   "chapters": {
       "Stuff": {
          "WuChen/PairToSortCONPI": {},
-         "WuChen/LowerBound": {}
+         "WuChen/LowerBound": {},
+         "WuChen/TwoMulExample": {},
+         "WuChen/TravelSalesman": {}
       },
       "Appendix": {
           "Glossary": {},

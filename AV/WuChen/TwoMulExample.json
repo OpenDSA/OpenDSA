@@ -1,0 +1,106 @@
+{
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "multiple",
+        "description":"As an example of reduction, consider the simple problem of multiplying two n-digit numbers. <br>The standard long-hand method for multiplication is to multiply the last digit of the first number by the second number (taking Θ(n) time), multiply the second digit of the first number by the second number (again taking Θ(n) time), and so on for each of the n digits of the first number. Finally, the intermediate results are added together.",
+        "question":"each digit of the first number is multiplied against each digit of the second, this algorithm requires",
+        "answer": "Θ(n<sup>2</sup>)",
+        "choices": ["Θ(n<sup>2</sup>)", "Θ(n)", "Θ(2<sup>n</sup>)"]
+      },
+      "q2": {
+        "type": "multiple",
+        "description":"Note that adding two numbers of length M and N can easily be done in Θ(M+N) time. Because each digit of the first number is multiplied against each digit of the second, this algorithm requires Θ(n<sup>2</sup>) time. Asymptotically faster (but more complicated) algorithms are known, but none is so fast as to be in O(n).",
+        "question":"Adding two numbers of length M and N can be done in Θ(M+N) time",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "q3": {
+        "type": "multiple",
+        "description":"Next we ask the question: Is squaring an n-digit number as difficult as multiplying two n-digit numbers? We might hope that something about this special case will allow for a faster algorithm than is required by the more general multiplication problem. However, a simple reduction proof serves to show that squaring is as hard as multiplying.",
+        "question":"Is squaring an n-digit number as difficult as multiplying two n-digit numbers?",
+        "answer":  "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q4": {
+        "type": "multiple",
+        "description":"This is because:",
+        "question":"A linear time algorithm can be constructed if there exists a linear time algorithm for squaring.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q5": {
+        "type": "multiple",
+        "description":"The standard algorithm for multiplying two matrices is to multiply each element of the first matrix's first row by the corresponding element of the second matrix's first column, then adding the numbers. This takes Θ(n) time. Each of the n<sup>2</sup> elements of the solution are computed in similar fashion, requiring a total of Θ(n<sup>3</sup>) time. Faster algorithms are known (see Strassen's algorithm), but none are so fast as to be in O(n<sup>2</sup>).",
+        "question":"standard algorithm multiplying two matrices requires total of Θ(n<sup>3</sup>) time",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q6": {
+        "type": "multiple",
+        "description":"The standard algorithm for multiplying two matrices is to multiply each element of the first matrix's first row by the corresponding element of the second matrix's first column, then adding the numbers. This takes Θ(n) time. Each of the n<sup>2</sup> elements of the solution are computed in similar fashion, requiring a total of Θ(n<sup>3</sup>) time. Faster algorithms are known (see Strassen's algorithm), but none are so fast as to be in O(n<sup>2</sup>).",
+        "question":"The faster algorithms for multiplying two matrices can be in O(n<sup>2</sup>)",
+        "answer": "False",
+        "choices": ["True", "False"]
+      },
+
+      "q7": {
+        "type": "multiple",
+        "description":"Is there something about this restricted case that allows us to multiply two symmetric matrices faster than in the general case? The answer is no, as can be seen by the following reduction.",
+        "question":"There is something about this resctriced case that allows people to multiply two symmetric matrices faster than in the general case.",
+        "answer": "False",
+        "choices": ["True", "False"]
+      },
+
+      "q8": {
+        "type": "multiple",
+        "description":"We can convert matrix B to a symmetric matrix in a similar manner. If symmetric matrices could be multiplied quickly (in particular, if they could be multiplied together in Θ(n<sup>2</sup>) time), then we could find the result of multiplying two arbitrary n×n matrices in Θ(n<sup>2</sup>) time by taking advantage of the following observation:",
+        "question":"The result of multiplying two arbitrary n×n matrices can be find in Θ(n<sup>2</sup>) time if symmetric matrices could be multiplied together in Θ(n<sup>2</sup>)",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q9": {
+        "type": "multiple",
+        "description":"Each of the two matrices are transformed into corresponding symmeric matrices by using its transpose as shown.",
+        "question":"The cost to transform each matrices into corresponding symmetric matrices is O(mn)",
+        "answer": "True",
+        "choices": ["True", "False"]
+      }, 
+
+      "q10": {
+        "type": "multiple",
+        "description":"Lower Bounds Theorem: If P<sub>1</sub> ≤<sub>O(g(n))</sub>, then there is a lower bound of Ω(h(n)) on the time complexity of P1, and g(n)=o(h(n)), then there is a lower bound of Ω(h(n)) on P2. (Notice little-oh, not big-Oh.) <br><br>Example: SORTING ≤<sub>O(n)</sub> PAIRING, because g(n)=n, h(n)=nlogn, and g(n)=o(h(n)). The Lower Bound Theorem gives us an Ω(nlogn) lower bound on PAIRING. <br><br>This also goes the other way.",
+        "question":"the time complexity of P1 is Ω(h(n)) if P<sub>1</sub> ≤<sub>O(g(n))</sub>",
+        "answer": "True",
+        "choices": ["True", "False"]
+      }, 
+
+      "q11": {
+        "type": "multiple",
+        "description":"Lower Bounds Theorem: If P<sub>1</sub> ≤<sub>O(g(n))</sub>, then there is a lower bound of Ω(h(n)) on the time complexity of P1, and g(n)=o(h(n)), then there is a lower bound of Ω(h(n)) on P2. (Notice little-oh, not big-Oh.) <br><br>Example: SORTING ≤<sub>O(n)</sub> PAIRING, because g(n)=n, h(n)=nlogn, and g(n)=o(h(n)). The Lower Bound Theorem gives us an Ω(nlogn) lower bound on PAIRING. <br><br>This also goes the other way.",
+        "question":"the time complexity of P2 is Ω(h(n)) if P<sub>1</sub> ≤<sub>O(g(n))</sub>",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q12": {
+        "type": "multiple",
+        "description":"Upper Bounds Theorem:  If P2 has time complexity O(h(n)) and P1 ≤<sub>O(g(n))</sub> P2, then P1 has time complexity O(g(n)+h(n)). <br><br>So, given good transformations, both problems take at least Ω(P1) and at most O(P2).",
+        "question":"P1 has time complexity O(g(n)+h(n)) if P2 has time complexity O(h(n)) and P1 ≤<sub>O(g(n))</sub> P2",
+        "answer": "True",
+        "choices": ["True", "False"]
+      }
+
+
+
+
+
+      
+
+    }
+  }
+}
+

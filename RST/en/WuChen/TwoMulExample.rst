@@ -9,12 +9,12 @@
    :topic: Part 1 of reduction chapter in NP4114
 
 
-Reductions Part 1
+Reductions Part 3
 ================================
 
-Reduction Introduction and The Pairing Problem
----------------------------------------------------
-.. inlineav:: PairToSortCONPI ff
-   :links: AV/WuChen/PairToSortCONPI.css
-   :scripts: AV/WuChen/PairToSortCONPI.js DataStructures/PIFrames.js  
+Two Multiplication Examples
+-----------------------------
+.. inlineav:: TwoMulExample ff
+   :links: AV/WuChen/TwoMulExample.css
+   :scripts: AV/WuChen/TwoMulExample.js DataStructures/PIFrames.js  
    :output: show

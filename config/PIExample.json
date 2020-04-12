@@ -105,6 +105,12 @@
       "PIExample/TMComplicatedMachine2":{}
     },
     "Parsing":{},
-    "Limits to Computing":{}
+    "Limits to Computing":{},
+    "NP-Completeness": {
+      "WuChen/PairToSortCONPI": {},
+      "WuChen/LowerBound": {},
+      "WuChen/TwoMulExample": {},
+      "WuChen/TravelSalesman": {}
+   }
   }
 }

@@ -9,12 +9,12 @@
    :topic: Part 1 of reduction chapter in NP4114
 
 
-Reductions Part 1
+NP-Completeness Part 1
 ================================
 
-Reduction Introduction and The Pairing Problem
----------------------------------------------------
-.. inlineav:: PairToSortCONPI ff
-   :links: AV/WuChen/PairToSortCONPI.css
-   :scripts: AV/WuChen/PairToSortCONPI.js DataStructures/PIFrames.js  
+Hard Problems and Theory of NP-Completeness
+------------------------------------------------
+.. inlineav:: TravelSalesman ff
+   :links: AV/WuChen/TravelSalesman.css
+   :scripts: AV/WuChen/TravelSalesman.js DataStructures/PIFrames.js  
    :output: show
