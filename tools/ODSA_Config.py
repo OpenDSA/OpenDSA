@@ -1,4 +1,4 @@
-﻿#! /usr/bin/python
+﻿#!/usr/bin/env python3
 #
 # Given an OpenDSA config file as a parameter, this script ensures all required fields are present and no invalid options are present
 #   - Reads the configuration information from the specified JSON config file

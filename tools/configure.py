@@ -1,4 +1,4 @@
-#! /usr/local/bin/python3
+#!/usr/bin/env python3
 #
 # This script builds an OpenDSA textbook according to a specified configuration file
 #   - Creates an ODSA_Config object from the specified configuration file

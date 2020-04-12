@@ -1,4 +1,4 @@
-#! /usr/local/bin/python2
+#!/usr/bin/env python3
 #
 # Defines an object which represents an OpenDSA modules
 #   - Checks to see if the RST module file exists

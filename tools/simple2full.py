@@ -1,4 +1,4 @@
-#! /usr/local/bin/python2
+#!/usr/bin/env python3
 ''' Converts a simplified configuration file to a full configuration file
 ''' 
 
