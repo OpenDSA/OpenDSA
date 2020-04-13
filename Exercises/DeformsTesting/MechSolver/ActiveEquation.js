@@ -43,7 +43,7 @@ class ActiveEquation{
             }
         });
 
-        console.log(this.equationObjectReference)
+        // console.log(this.equationObjectReference)
         // Creating the visual elements.
         this.visualComponents["text"] = jsavObject.label(
             katex.renderToString(this.equationObjectReference["latex"]),
@@ -469,12 +469,20 @@ class ActiveEquation{
         {
             if(this.variables[v].valueType == "number")
             {
+                console.log("Inside number", this.variables[v]);
                 values[this.variables[v].currentSymbol] = '1 '+this.variables[v].currentUnit;
                 domains[this.variables[v].currentSymbol] = this.variables[v].currentDomain;
             }
             else if(this.variables[v].valueType == "association")
             {
                 var unitName = Window.defaultDomains[this.variables[v].value.domain][Window.unitFamily];
+                // console.log("Domain of the current variable box",
+                //     this.variables[v].value.domain,
+                //     Window.UNIT_DB[this.variables[v].value.domain],
+                //     Window.UNIT_DB[this.variables[v].value.domain][unitName],
+                //     Window.UNIT_DB[this.variables[v].value.domain][unitName]['unit']
+                // )
+                
                 values[this.variables[v].value.var] = '1 '+
                     Window.UNIT_DB[this.variables[v].value.domain][unitName]['unit'];
                 domains[this.variables[v].value.var] = this.variables[v].value.domain;
@@ -485,7 +493,7 @@ class ActiveEquation{
                 if(this.variables[v].expectedDomain != "free")
                 {
                     // Not a free domain, which means we know exactly what is supposed to be here.
-                    console.log(this.variables[v]);
+                    console.log("Inside non free variale domain unknown non assoc", this.variables[v]);
                     var unitName = Window.defaultDomains[this.variables[v].expectedDomain][Window.unitFamily];
                     values[this.variables[v].currentSymbol] = 
                     '1 '+ Window.UNIT_DB[this.variables[v].expectedDomain][unitName]['unit'];
@@ -525,7 +533,8 @@ class ActiveEquation{
                 return [varName, "", ["unknown", ""]];
         }
 
-        for(var v in values) substituted = substituted.replace(v,"("+values[v]+")");
+        console.log(values);
+        for(var v in values) substituted = substituted.replace(new RegExp(v, 'g'),"("+values[v]+")");
         console.log(substituted);
 
         // Now, evaluate the expression to find the units
@@ -550,19 +559,26 @@ class ActiveEquation{
         }
         else {
             // It's not dimensionless, we just need to verify this thing is correct.
-            var resultUnit = result[1];
+            var resultUnit = (result.slice(1)).join(" ");
+            console.log(result);
             var resultDomain = Window.unitDomainMap[resultUnit];
 
             if(resultDomain != null) {
                 return [ varName, resultUnit, resultDomain ];
             }
             else {
+                console.log("Can't figure out the usual domain")
                 resultDomain = domains[varName];
-                var parentUnit = Window.defaultDomains[resultDomain][Window.unitFamily];
                 try{
+                    console.log(resultDomain);
+                    console.log(Window.defaultDomains[resultDomain]);
+                    var parentUnitName = Window.defaultDomains[resultDomain][Window.unitFamily];
+                    var parentUnit = Window.UNIT_DB[resultDomain][parentUnitName]['unit'];
+                    console.log(parentUnit);
                     // If this throws an error, then we have an actual type mismatch
                     // Otherwise, it just means the units simplified to something else: eg: N.m and J
                     var number = mathjs.evaluate("number(1 "+resultUnit+", "+parentUnit+")");
+                    console.log(Window.unitDomainMap[parentUnit]);
                     return [varName, parentUnit, Window.unitDomainMap[parentUnit], number];
                 }
                 catch(err)

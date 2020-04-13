@@ -154,13 +154,13 @@ Window.UNIT_DB = {
         "rpm": {'unit':'rev/mins', 'unitDisp':'rpm'},
         "radpersec": {'unit':'Radian/s', 'unitDisp':'rad/s'},
     },
-    'angles': {
+    'angle': {
         "rev": {'unit':'rev', 'unitDisp':'rev'},
         "radian": {'unit':'Radian', 'unitDisp':'rad'},
         "microradian": {'unit':'microRadian', 'unitDisp':'urad'},
         "degree": {'unit':'Degree', 'unitDisp':'deg'},
     },
-    'angles-1': {
+    'angle-1': {
         "radian-1": {'unit':'Radian^-1', 'unitDisp':'/rad'},
         "microradian-1": {'unit':'microRadian^-1', 'unitDisp':'/urad'},
         "degree-1": {'unit':'Degree^-1', 'unitDisp':'/deg'},
@@ -257,20 +257,20 @@ Window.defaultDomains = {
         'imperial': 'horsepower'
     },
     'torque': {
-        'SI': 'N m',
-        'imperial': 'footpount'
+        'SI': 'newtonmetre',
+        'imperial': 'footpound'
     },
-    'angles': {
-        'SI': 'Radian',
-        'imperial': 'Degree'
+    'angle': {
+        'SI': 'radian',
+        'imperial': 'degree'
     },
-    'angles-1': {
-        'SI': 'Radian-1',
-        'imperial': 'Degree-1'
+    'angle-1': {
+        'SI': 'radian-1',
+        'imperial': 'degree-1'
     },
     'angularvelocity': {
-        'SI': 'Hz',
-        'imperial': 'Hz'
+        'SI': 'hertz',
+        'imperial': 'hertz'
     },
     'strain': {
         'SI': 'strain',
