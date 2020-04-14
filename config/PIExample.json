@@ -89,7 +89,8 @@
       "PIExample/RightLinearRG": {},
       "PIExample/STA": {},
       "PIExample/ClosureConcept": {},
-      "PIExample/ClosureRegularLang": {}
+      "PIExample/ClosureRegularLang": {},
+      "PIExample/RegularLangClosedUnder": {}
     },
     "Identifying Non-regular Languages":{
       "PIExample/INRL":{}

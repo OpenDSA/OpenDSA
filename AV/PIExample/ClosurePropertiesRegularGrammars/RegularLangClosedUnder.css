@@ -1,0 +1,10 @@
+#RegularLangClosedUnder{
+    height: 600px;
+}
+.jsavcontrols{
+    display: unset !important;
+}
+.jsavhorizontalarray .jsavnode {
+    min-width: 160px !important;
+  }
+  
