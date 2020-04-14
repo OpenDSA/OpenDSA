@@ -519,6 +519,8 @@ class ODSA_RST_Module:
             while (i < len(mod_data) and (mod_data[i].startswith('   ') or mod_data[i].rstrip() == '')):
               if ':type:' in mod_data[i]:
                 todo_type = mod_data[i].split(': ')[1].strip()
+                # This must be modified because the :type: option doesn't exist for the todo directive
+                mod_data[i] = '  type: ' + todo_type
 
               todo_directive.append(mod_data[i].rstrip())
 
