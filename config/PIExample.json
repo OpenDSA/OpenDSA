@@ -95,7 +95,9 @@
     "Identifying Non-regular Languages":{
       "PIExample/INRL":{}
     },
-    "Context-Free Grammars and Languages":{},
+    "Context-Free Grammars and Languages":{
+      "PIExample/CflAmbiguity": {}
+    },
     "Pushdown Automata":{},
     "Properties of Context-free Languages":{},
     "Models of Computation":{
