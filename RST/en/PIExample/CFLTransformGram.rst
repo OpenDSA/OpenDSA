@@ -9,14 +9,11 @@
    :topic: Finite Automata
 
 
-CFL
-=================================
-CFL
---------------------------------------
-
+Context-Free Grammars and Language
+================================
+Transforming Grammars
+-------------------------------
 .. inlineav:: Ambiguity ff
-      :links: AV/PIExample/CFL/Ambiguity.css
-   :scripts: AV/PIExample/CFL/Ambiguity.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+   :links: AV/PIExample/CFL/TransformGram.css
+   :scripts: AV/PIExample/CFL/TransformGram.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
    :output: show
-
-

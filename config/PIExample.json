@@ -96,7 +96,7 @@
       "PIExample/INRL":{}
     },
     "Context-Free Grammars and Languages":{
-      "PIExample/CflAmbiguity": {}
+      "PIExample/CFLAmb": {}
     },
     "Pushdown Automata":{},
     "Properties of Context-free Languages":{},
