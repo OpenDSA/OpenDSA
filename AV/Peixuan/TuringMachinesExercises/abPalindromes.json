@@ -1,15 +1,18 @@
-[{"expression":"",
-  "description":"Write a (Turing decidable) program for a Turing machine to recognize the languageof all palindromes over a, b.",
-  "type":"description",
-  "testCases":[
-    {"aaa":"Y"},
-    {"aba":"Y"},
-    {"aaab":"N"},
-    {"aababaa":"Y"},
-    {"bbabb":"Y"}
+[
+  {
+    expression: "",
+    description: "Write a (Turing decidable) program for a Turing machine to recognize the languageof all palindromes over a, b.",
+    type: "description",
+    testCases: [
+      {aaa: "Y"},
+      {aba: "Y"},
+      {aaab: "N"},
+      {aababaa: "Y"},
+      {bbabb: "Y"}
     ],
-  "graph":{
-    "nodes":[],
-    "edges":[]}
+    graph: {
+      nodes: [],
+      edges: []
     }
-  ]
+  }
+];

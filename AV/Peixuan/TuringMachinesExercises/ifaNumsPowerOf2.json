@@ -1,16 +1,19 @@
-[{"expression":"$L = \\{a^{2^n}\\mid n>0\\}$,  $\\Sigma = \\{a\\}$",
-  "description":"Give a Turing Machine that decides if all strings that has a number of a’s that is a power of two or not.___. In other words, it implements the language in Turing Decidable form.",
-  "type":"description",
-  "testCases":[
-    {"λ":"N"},
-    {"a":"N"},
-    {"aa":"Y"},
-    {"aaa":"N"},
-    {"aaaa":"Y"},
-    {"aaaaaaaa":"Y"}
+[
+  {
+    expression: "$L = \\{a^{2^n}\\mid n>0\\}$,  $\\Sigma = \\{a\\}$",
+    description: "Give a Turing Machine that decides if all strings that has a number of a’s that is a power of two or not.___. In other words, it implements the language in Turing Decidable form.",
+    type: "description",
+    testCases: [
+      {λ: "N"},
+      {a: "N"},
+      {aa: "Y"},
+      {aaa: "N"},
+      {aaaa: "Y"},
+      {aaaaaaaa: "Y"}
     ],
-  "graph":{
-    "nodes":[],
-    "edges":[]}
+    graph: {
+      nodes: [],
+      edges: []
     }
-  ]
+  }
+];
