@@ -16,14 +16,15 @@ Turing Machines
 A General Model of Computation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/addOnea.html pe
-   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
-
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/eraseABC.html pe
-   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
-
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/keepABC.html pe
-   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
-
 .. avembed:: AV/Peixuan/TuringMachinesExercises/aNumsPowerOf2.html pe
+   :long_name: Turing Machines Exercise
+.. avembed:: AV/Peixuan/TuringMachinesExercises/ifaNumsPowerOf2.html pe
+   :long_name: Turing Machines Exercise
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abcWInWWROut.html pe
+   :long_name: Turing Machines Exercise
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abcNawlargerthanNbw.html pe
+   :long_name: Turing Machines Exercise
+.. avembed:: AV/Peixuan/TuringMachinesExercises/replaceABAbyACA.html pe
+   :long_name: Turing Machines Exercise
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html pe
    :long_name: Turing Machines Exercise
