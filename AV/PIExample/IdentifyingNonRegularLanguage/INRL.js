@@ -14,8 +14,8 @@ $(document).ready(function () {
     av.displayInit();
 
     
-    //frame 32
-    av.umsg("hell");
+    //frame 2
+    av.umsg("hello");
     av.step();
 
     av.recorded();

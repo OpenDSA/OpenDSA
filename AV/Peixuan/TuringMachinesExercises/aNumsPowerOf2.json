@@ -1,0 +1,19 @@
+[
+	{
+		"expression":"",
+		"description":"Give a Turing Machine that accepts all strings that has a number of a’s that is a power of two. $L = \\{a^{2^n}\\mid n>0\\}$,  $\\Sigma = \\{a\\}$. In other words, it implements the language in Turing Acceptable form.",
+		"type":"description",
+		"testCases":[
+			{"$\\lambda$":false},
+			{"a":false},
+			{"aa":true},
+			{"aaa":false},
+			{"aaaa":true},
+			{"aaaaaaaa":true}
+			],
+		"graph":{
+			"nodes":[],
+			"edges":[]
+			}
+	}
+]

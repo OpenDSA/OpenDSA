@@ -20,11 +20,6 @@ requirejs(["./mathjs.js"], function(){});
         currentClickedObjectType: null,
         currentClickedObjectDescription: null,
     }
-
-    // Creating non-supported units
-    mathjs.createUnit('ksi','1000 psi');
-    mathjs.createUnit('msi','1000 ksi');
-    mathjs.createUnit('mip','1000 kip');
         
     const CANVAS_DIMENSIONS = {
         "TOTAL_WIDTH": 767,
@@ -43,27 +38,6 @@ requirejs(["./mathjs.js"], function(){});
         },
     };
 
-    // generate the set of variable names that can be used throughout.
-    var VARIABLE_ID_USED = [];
-    var VARIABLE_ID_UNUSED = [];
-    Window.getVarName = function() {
-        var name=null;
-        // do{
-        //     name = String.fromCharCode(97+Math.floor(Math.random()*26))+"_"
-        //     +String.fromCharCode(97+Math.floor(Math.random()*26));
-        // } while(!VARIABLE_ID.includes(name));
-        // VARIABLE_ID.push(name);
-        // return name;
-
-        name = VARIABLE_ID_UNUSED.shift();
-        VARIABLE_ID_USED.push(name);
-        return name;
-    }
-
-    Window.valueTruncate = function(numericValue) {
-        return String(Number(Math.round(numericValue+'e3')+'e-3'))
-    }
-
     var mechSolverCommon = {
 
         //initializer, creates all the necessary object instances
@@ -77,25 +51,25 @@ requirejs(["./mathjs.js"], function(){});
         checkAnswer: function()
         {
             var feedBackText = "";
-            var equationDetails = {};
-            for (var wk in wkspacelist.workspace_list)
-            {
-                for(var eq in wkspacelist.workspace_list[wk].LIST_OF_EQUATIONS_IN_WORKSPACE)
-                {
-                    // creating entry for the equation
-                    var eqDetails = {};
-                    for(var v in wkspacelist.workspace_list[wk].LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables)
-                    {
-                        eqDetails[
-                            wkspacelist.workspace_list[wk].LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables[v].name
-                        ] = wkspacelist.workspace_list[wk].LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables[v].value;
-                    }
+            // var equationDetails = {};
+            // for (var wk in wkspacelist.workspace_list)
+            // {
+            //     for(var eq in wkspacelist.workspace_list[wk].LIST_OF_EQUATIONS_IN_WORKSPACE)
+            //     {
+            //         // creating entry for the equation
+            //         var eqDetails = {};
+            //         for(var v in wkspacelist.workspace_list[wk].LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables)
+            //         {
+            //             eqDetails[
+            //                 wkspacelist.workspace_list[wk].LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables[v].name
+            //             ] = wkspacelist.workspace_list[wk].LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables[v].value;
+            //         }
                     
-                    equationDetails[
-                        wkspacelist.workspace_list[wk].LIST_OF_EQUATIONS_IN_WORKSPACE[eq].equationObjectReference.id
-                    ] = eqDetails;
-                }
-            }
+            //         equationDetails[
+            //             wkspacelist.workspace_list[wk].LIST_OF_EQUATIONS_IN_WORKSPACE[eq].equationObjectReference.id
+            //         ] = eqDetails;
+            //     }
+            // }
             //console.log(equationDetails);
             var truthResults = [];
 
@@ -163,7 +137,7 @@ requirejs(["./mathjs.js"], function(){});
                 (solution[solnIndex].unit == globalSolutionBoxes[solnIndex]["unit"]);
                 //console.log(solnResults.decision? "Final answer is correct": "Final answer is incorrect");
                 console.log(solnResults);
-                feedBackText += solnResults.decision? "<h2>Final answer is correct</h2>": "<h2>Final answer is incorrect</h2>";
+                feedBackText += solnResults.decision? "<h2>"+(solnIndex+1)+"Final answer is correct</h2>": "<h2>Final answer is incorrect</h2>";
                 truthResults.push(solnResults);
             }
 
@@ -200,12 +174,12 @@ requirejs(["./mathjs.js"], function(){});
         //     console.log(eventData);
         // }});
         Window.jsavObject = av;
-        eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
-        
-        wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
-            eqbank, globalPointerReference);
-        Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, wkspacelist);
+        Window.eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
+        Window.wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
+            Window.eqbank, globalPointerReference);
+        Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, Window.wkspacelist);
         Window.exerciseId = exerciseId;
+        Window.globalPointerReference = globalPointerReference;
         // Setting up clickhandlers for the equations in the EquationBank
         // OBSOLETE: MAY TRY TO FIX LATER, MOVING TO DISTRIBUTED APPROACH INSTEAD
         // for(var page in eqbank.equation_pages){

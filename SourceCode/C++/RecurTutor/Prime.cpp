@@ -1,5 +1,5 @@
 boolean prime(int x, int y) {
-  if (x == 1)
+  if (y == 1)
     return true;
   else if (x % y == 0)
     return false;	

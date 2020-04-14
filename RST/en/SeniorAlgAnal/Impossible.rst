@@ -207,12 +207,10 @@ Figure :num:`Figure #FuncAssign`.
 
 .. _FuncAssign:
 
-.. odsafig:: Images/FuncBin.png
-   :width: 300
+.. inlineav:: FuncBinCON dgm
+   :links: AV/SeniorAlgAnal/FuncBinCON.css
+   :scripts: AV/SeniorAlgAnal/FuncBinCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: An illustration of assigning functions to bins
 
    An illustration of assigning functions to bins.
 
@@ -253,12 +251,10 @@ Figure :num:`Figure #Diag` illustrates this argument.
 
 .. _Diag:
 
-.. odsafig:: Images/FuncDiag.png
-   :width: 300
+.. inlineav:: FuncDiagCON dgm
+   :links: AV/SeniorAlgAnal/FuncDiagCON.css
+   :scripts: AV/SeniorAlgAnal/FuncDiagCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Illustration for function uncountability
 
    Illustration for the argument that the number of integer functions
    is uncountable.

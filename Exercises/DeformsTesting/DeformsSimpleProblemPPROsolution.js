@@ -9,6 +9,14 @@ const solution = {
         },
         solution : 79.348,
         unit: "degC",
+    },
+    1 : {
+        equations : [],
+        variables : {
+            '':"",
+        },
+        solution : -33.25,
+        unit: "MPa",
     }
 }
 // Find a way to specify sets of equations being solved at any stage,

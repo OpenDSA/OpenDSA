@@ -13,7 +13,7 @@ Reductions Part 1
 ================================
 
 Reduction Introduction and The Pairing Problem
-------------------------
+---------------------------------------------------
 .. inlineav:: PairToSortCONPI ff
    :links: AV/WuChen/PairToSortCONPI.css
    :scripts: AV/WuChen/PairToSortCONPI.js DataStructures/PIFrames.js  

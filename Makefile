@@ -124,7 +124,7 @@ JS_MIN_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname)-min.js)
 CSS_FNAMES = site odsaAV odsaKA odsaMOD gradebook normalize
 CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
-	
+
 nomin:
 	@echo 'Doing fake-minify for all (just copying)...'
 	@cp lib/JSAV.js lib/JSAV-min.js
@@ -151,6 +151,7 @@ lib/%-min.js:: lib/%.js
 lib/%-min.css:: lib/%.css
 	@echo 'Minimizing $^'
 	@cleancss $^ --output $@
+	
 
 # Valid Targets using Static-Pattern rule for eBooks:
 BOOKS += Test Obsolete SimpleDemo Everything DeformsTesting OpenPOPExercises testcmap

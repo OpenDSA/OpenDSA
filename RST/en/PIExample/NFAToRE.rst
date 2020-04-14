@@ -11,7 +11,7 @@
 
 Regular Grammar 
 ================================
-NFA to Regular Grammar
+NFA from Regular Grammar
 -------------------------------
 .. inlineav:: NFAToRE ff
    :links: AV/PIExample/RegularGrammars/NFAToRE.css

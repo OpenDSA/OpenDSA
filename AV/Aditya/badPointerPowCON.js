@@ -48,8 +48,28 @@ $(document).ready(function() {
   // Slide 3
   av.umsg(" If we try to run this piece of code:");
   pointerArrow.hide();
-  av.label("NullPointerException!",  {top: yPositionR1, left: xPosition + 141});
-  av.g.line(xPosition + 145, yPositionR1 + 33, xPosition + 275, yPositionR1 + 33, {"stroke-width": 2, stroke: "red"});
+  av.label("NullPointer!",  {top: yPositionR1, left: xPosition + 141});
+  // Explosion
+  var xPositionBAD = 700;
+  var yPositionBAD = 18;
+  av.g.polyline([[xPositionBAD, yPositionBAD],
+                 [xPositionBAD + 5, yPositionBAD - 10],
+                 [xPositionBAD + 10, yPositionBAD + 10],
+                 [xPositionBAD + 15, yPositionBAD - 20],
+                 [xPositionBAD + 30, yPositionBAD + 10],
+                 [xPositionBAD + 50, yPositionBAD + 0],
+                 [xPositionBAD + 75, yPositionBAD + 5],
+                 [xPositionBAD + 100, yPositionBAD + 15],
+                 [xPositionBAD + 60, yPositionBAD + 25],
+                 [xPositionBAD + 80, yPositionBAD + 30],
+                 [xPositionBAD + 50, yPositionBAD + 40],
+                 [xPositionBAD + 40, yPositionBAD + 70],
+                 [xPositionBAD + 35, yPositionBAD + 40],
+                 [xPositionBAD + 15, yPositionBAD + 50],
+                 [xPositionBAD + 0, yPositionBAD + 30],
+                 [xPositionBAD - 20, yPositionBAD + 25],
+                 [xPositionBAD, yPositionBAD]],
+                {"stroke-width": 3, stroke: "red"});
   label2.show();
   av.recorded();
 });

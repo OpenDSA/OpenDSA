@@ -42,7 +42,7 @@ signed by the participant.
 This is essential in blockchains to verify who originated a message.
 
 Now we are going to demonstrate how RSA encryption is used. First in
-the example below, please provide some phrase that you would like to be
+the example below, please provide some message that you would like to be
 encrypted and then decrypted. 
 
 .. maybe take this out and just let them input it in the third step 

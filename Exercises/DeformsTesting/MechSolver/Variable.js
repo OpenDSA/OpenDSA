@@ -1,7 +1,7 @@
 class Variable{
     constructor(id, name, varName, symbol, domain, element, globalPointerReference){
         this.id = id;   // Fully qualified id that has variable name, equation, and workspace id
-        console.log(this.id)
+        // console.log(this.id)
         this.name = name;   // Only contains the context name for the quantity; eg: deform, thermalcoeff
 
         this.parentSymbolTemplate = symbol; // Stores the original symbol LaTeX for restoration from subscripting
@@ -28,7 +28,7 @@ class Variable{
         this.unitDisplay = element.childNodes[1];
         this.valueDisplay.dataset.status = "empty";
         this.unitDisplay.dataset.status = "empty";
-        console.log(this.name, element);
+        // console.log(this.name, element);
         
         // Creating the grayed out symbol representation
         this.grayOut();
@@ -154,7 +154,8 @@ class Variable{
                                 e2.stopPropagation();
                                 this.valueNegated = !this.valueNegated;
                                 this.value = -1 * this.value;
-                                this.valueRepr = Window.valueTruncate(this.value);
+                                // this.valueRepr = Window.valueTruncate(this.value);
+                                this.valueRepr = Window.valueStringRepr(this.value);
                                 this.setValueUnit(String(this.valueRepr), Window.unitDomainMap[this.currentUnit][1]);
 
                                 this.globalPointerReference.currentClickedObject = null;
@@ -361,13 +362,15 @@ class Variable{
             this.currentDomain = this.globalPointerReference.currentClickedObject.currentDomain;
             this.currentUnit = this.globalPointerReference.currentClickedObject.currentUnit;
         }
-        this.valueRepr = Window.valueTruncate(this.value);
+        // this.valueRepr = Window.valueTruncate(this.value);
+        this.valueRepr = Window.valueStringRepr(this.value);
         this.element.setAttribute("data-domain", this.currentDomain);
         this.valueType = "number";
         
         if(this.globalPointerReference.currentClickedObjectType == "value-box") {
             this.setValueUnit(
-                this.globalPointerReference.currentClickedObject.valueDisplay,
+                // this.globalPointerReference.currentClickedObject.valueDisplay,
+                this.valueRepr,
                 this.globalPointerReference.currentClickedObject.unitDisplay
             )
         }
@@ -472,7 +475,8 @@ class Variable{
                     var oldUnit = this.currentUnit;
                     this.currentUnit = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unit'];
                     this.value = mathjs.evaluate("number("+this.value+" "+oldUnit+", "+this.currentUnit+")")
-                    this.valueRepr = Window.valueTruncate(this.value);
+                    // this.valueRepr = Window.valueTruncate(this.value);
+                    this.valueRepr = Window.valueStringRepr(this.value);
 
                     // Change external views
                     this.setValueUnit(String(this.valueRepr),

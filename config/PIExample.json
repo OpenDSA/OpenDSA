@@ -85,7 +85,12 @@
       "PIExample/grammarRegularExpression": {},
       "PIExample/expressionRegular": {},
       "PIExample/regularGrammar": {},
-      "PIExample/NFAToRE": {}
+      "PIExample/NFAToRE": {},
+      "PIExample/RightLinearRG": {},
+      "PIExample/STA": {},
+      "PIExample/ClosureConcept": {},
+      "PIExample/ClosureRegularLang": {},
+      "PIExample/RegularLangClosedUnder": {}
     },
     "Identifying Non-regular Languages":{
       "PIExample/INRL":{}
@@ -97,9 +102,16 @@
       "PIExample/TMGeneralModel":{},
       "PIExample/TMInterpreting":{},
       "PIExample/TMDecidableVSAcceptable":{},
-      "PIExample/TMComplicatedMachine1":{}
+      "PIExample/TMComplicatedMachine1":{},
+      "PIExample/TMComplicatedMachine2":{}
     },
     "Parsing":{},
-    "Limits to Computing":{}
+    "Limits to Computing":{},
+    "NP-Completeness": {
+      "WuChen/PairToSortCONPI": {},
+      "WuChen/LowerBound": {},
+      "WuChen/TwoMulExample": {},
+      "WuChen/TravelSalesman": {}
+   }
   }
 }

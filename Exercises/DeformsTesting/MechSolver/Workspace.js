@@ -267,10 +267,10 @@ class Workspace
             this.globalPointerReference
         )
         
-        console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
+        // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
         newActiveEquation.equationObjectReference.height+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
-        console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
+        // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         // Handling the internal initial bookkeeping
         this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation;
         //        |_>  To be elaborated for additional operations.
@@ -427,6 +427,8 @@ class Workspace
                         "domain": unitDesc[2][0],
                         "unitDisp": unitDesc[2][1],
                     };
+                    if(unitDesc.length == 4)
+                        variableSet[vname]["correction"] = unitDesc[3]; // multiply the result with this to correct.
                 }
             }
         }
@@ -464,15 +466,21 @@ class Workspace
         // console.log("Before printing solutions", this.DIMENSIONS);
         for(var unknownName in variableSet)
         {
+            var value = null;
+            if(variableSet[unknownName].length == 4)
+                value = soln[unknownName]*variableSet[unknownName]["correction"];
+            else
+                value = soln[unknownName];
             var currSolution = new ValueBox(
                 false,
                 {
                     "visuals": this.DIMENSIONS.ELEMENTS,
                     "dataset": {
-                        "value": soln[unknownName],
+                        "value": value,
                         "unit": variableSet[unknownName]["unit"],
                         "variable": unknownName,    // The internal variable name eg: x_y
-                        "valueDisplay": String(Number(Math.round(soln[unknownName]+'e3')+'e-3')),
+                        // "valueDisplay": String(Number(Math.round(+'e3')+'e-3')),
+                        "valueDisplay": Window.valueStringRepr(soln[unknownName]),
                         "unitDisplay": variableSet[unknownName]["unitDisp"],
                         "variableDisplay": variableSet[unknownName]["name"], // The greek/external symbol
                         "domain": variableSet[unknownName]["domain"]

@@ -3,31 +3,31 @@
     "en": {
       "q1": {
         "type": "multiple",
-        "description": "Recall the TM example that erases all a's from the tape. <br>Here are the configurations for the input \"aaaa\". <br><br> <i>($q_0$,<u>a</u> a a a) ⊢M ($q_0$,<u>#</u> a a a) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_0$,# <u>#</u> a a) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_0$,# # <u>#</u> a) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_0$,# # # <u>#</u>) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_1$,# # # # <u>#</u>) </i> <br><br> <b>Notation</b>: Given a string w, the notation <u>w</u> for a configuration means that the read/write head is scanning the leftmost character in w. <br><br> M is said to <b>halt</b> on input w iff (s,<u>w</u>) yields some halted configuration. <br> <br> M is said to <b>hang</b> on input w if (s,<u>w</u>) yields some hanging configuration.",
-        "question":"which of the description below about the underline <br> for \"a\" in \"$q_0$,<u>a</u> a a a\" is definitely correct?",
-        "answer": "the machine is scanning \"a\" now",
-        "choices": ["the machine is scanning \"a\" now", "the machine halt on input \"a\"", "the machine hang on input \"a\""]
+        "description":"Step 3: The current cell value remains the same and the tape head shifts right one cell, scanning a.",
+        "question":"What is the current state?",
+        "answer": "q1",
+        "choices": ["q0", "q1", "q2"]
       },
       "q2": {
-        "type": "multiple",
-        "description": "",
-        "question": "",
-        "answer": "",
-        "choices": []
+        "type": "select",
+        "description": "Step 5: The current cell value remains the same and the tape head shifts right one cell, scanning c. The current state is q2.",
+        "question": "After the machine finish reading the entry c, what will happen? Please select all that apply.",
+        "answer": ["Tape will move to q3<br>", "Cell value will become C", "Tape head will shift right"],
+        "choices": ["Tape will move to q1", "Tape will stay at q2", "Tape will move to q3<br>", "Cell value will become b", "Cell value will become C", "Cell value will become B<br>", "Tape head will shift left", "Tape head will shift right", "Tape head won't move"]
       },
       "q3": {
-          "type":"multiple",
-          "description":"",
-          "question":"",
-          "answer":"",
-          "choices": []
-        },
+          "type":"select",
+          "description":"Step 20: the machine is finished scanning A, it is scanning B now, what will happen?",
+          "question": "After the machine finish scanning B, what will happen? Please select all that apply.",
+          "answer": ["Tape will move to q4", "Cell value will not change", "Tape head will shift left"],
+          "choices": ["Tape will move to q4", "Tape will move to q1", "Tape will stay at q0<br>", "Cell value will become b", "Cell value will not change", "Cell value will become A<br>", "Tape head will shift left", "Tape head will shift right", "Tape head will not move"]
+      },
       "q4": {
           "type":"multiple",
-          "description":"",
-          "question":"",
-          "answer":"",
-          "choices": []
+          "description":"Step 24: The current cell value remains the same and the tape head shifts right one cell, scanning #.",
+          "question":"After the machine finish reading the entry #, what will be the current state?",
+          "answer":"q5",
+          "choices": ["q4", "q6", "q5"]
       },
       "q5": {
           "type":"multiple",
