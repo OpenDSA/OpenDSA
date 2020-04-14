@@ -31,7 +31,7 @@
   "lang": "en",
   "build_JSAV": false,
   "build_cmap": false,
-  "suppress_todo": true,
+  "suppress_todo": false,
   "dispModComp": true,
   "tag": "CPP;CS2",
   "glob_exer_options": {
