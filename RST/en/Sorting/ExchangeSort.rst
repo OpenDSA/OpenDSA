@@ -19,7 +19,7 @@ The Cost of Exchange Sorting
 ----------------------------
 
 .. TODO::
-   :tag: Revision
+   :type: Revision
 
    Rewrite along these lines: Here are two measures of "out of order":
    inversions and min-swaps. Selection sort (especially w/

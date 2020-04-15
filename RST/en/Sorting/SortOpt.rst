@@ -16,7 +16,7 @@ Code Tuning for Simple Sorting Algorithms
 -----------------------------------------
 
 .. TODO::
-   :tag: Revision
+   :type: Revision
 
    Rewrite along these lines: A classic form of code tuning is "test
    to save work". For each of our three sorting algorithms, we have a

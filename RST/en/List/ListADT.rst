@@ -191,7 +191,7 @@ List ADT Programming Exercise
 .. extrtoolembed:: 'List ADT Programming Exercise'
 
 .. TODO::
-   :tag: Exercise
+   :type: Exercise
 
    This exercise ought to get expanded to a much richer set of
    variations on the question.
