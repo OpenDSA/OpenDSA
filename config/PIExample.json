@@ -89,12 +89,15 @@
       "PIExample/RightLinearRG": {},
       "PIExample/STA": {},
       "PIExample/ClosureConcept": {},
-      "PIExample/ClosureRegularLang": {}
+      "PIExample/ClosureRegularLang": {},
+      "PIExample/RegularLangClosedUnder": {}
     },
     "Identifying Non-regular Languages":{
       "PIExample/INRL":{}
     },
-    "Context-Free Grammars and Languages":{},
+    "Context-Free Grammars and Languages":{
+      "PIExample/CFLAmb": {}
+    },
     "Pushdown Automata":{},
     "Properties of Context-free Languages":{},
     "Models of Computation":{

@@ -25,11 +25,19 @@ $(document).ready(function () {
     av.step();
     
     //frame 4
-    av.umsg("$\\textbf {Theorem}$:");
+    av.umsg(Frames.addQuestion("q1"));
     av.step();
 
     //frame 5
-    av.umsg("$\\textbf {Theorem}$:");
+    av.umsg("$\\textbf {Theorem}$: Regular languages are closed under intersection.<br> $\\textbf{Proof}$: <br> One simple way to prove this is using DeMorgan's Law: <br> $L_1 \\cap L_2 =\\overline{\\overline{L_1} \\cup \\overline{L_2}}$");
+    av.step();
+
+    //frame 5 sub
+    av.umsg(Frames.addQuestion("q2"));
+    av.step();
+
+    //frame 6 sub
+    av.umsg("Now, construct $M′=(Q′,\\sum′,\\delta′,p_0,F_0)$<br> $Q′=(Q×P)$<br> $\\delta$′:<br> $\\delta′((q_i,p_j),a)=(q_k,p_l)$ if <br> $\\delta_1((q_i,a)=qk)\\in M_1$ and $\\delta_2((p_j,a)=pl)\\in M_1$.<br> $F′=\\{(q_i,p_j)\\in Q′ | q_i \\in F_1 and p_j\\in F_2\\}$<br> $w\\in L(M′)\\Leftrightarrow w \\in L_1 \\cap L_2 \\rightarrow$ is closed under intersection");
     av.step();
 
     //frame 6
