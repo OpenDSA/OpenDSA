@@ -7,12 +7,17 @@ class Association{
         this.variableObjects = {};
         this.variableObjects[sourceObject.id] = sourceObject; 
         this.variableObjects[targetObject.id] = targetObject;
+
+        this.startingAssocSubscriptEquationId = sourceObject.getParentEquationId();
         
         this.var = sourceObject.currentSymbol;
-        console.log(this.var);
+        // console.log(this.var);
         this.varDisplay = sourceObject.parentSymbol;
         this.varDisplayTemplate = sourceObject.parentSymbolTemplate;
         this.domain = null;
+
+        sourceObject.valueNegated = false; // reset to false to avoid complications.
+        targetObject.valueNegated = false; // reset to false to avoid complications.
 
         if(sourceObject.expectedDomain == targetObject.expectedDomain)
             this.domain = sourceObject.expectedDomain;
@@ -34,13 +39,17 @@ class Association{
     }
     updateVarDisplay()
     {
-        console.log(this.varDisplay);
+        // This updates the variable display text across all connected variables in that association.
+        // For individual changes, using grayOut() for that variable is advised.
+        // console.log(this.varDisplay, this.startingAssocSubscriptEquationId);
         // option (dialog boxes, inputs, etc.) to change the variable name
         // throughout for all of the vars in the associations throughout.
         for(var variable in this.variableObjects)
         {
-            console.log(variable);
-            var tempElement = Window.jsavObject.label(katex.renderToString(this.varDisplay)).hide();
+            // console.log(variable);
+            if(this.variableObjects[variable].valueNegated)
+                var tempElement = Window.jsavObject.label(katex.renderToString("-"+this.varDisplay)).hide();
+            else var tempElement = Window.jsavObject.label(katex.renderToString(this.varDisplay)).hide();
             this.variableObjects[variable].valueDisplay.innerHTML = 
             tempElement.element[0].childNodes[0].childNodes[1].childNodes[2].innerHTML;
             tempElement.clear();
@@ -51,12 +60,15 @@ class Association{
     {
         // Add another variable to the association if it is used in >2 equations.
         this.variableObjects[newVar.id] = newVar;
-        console.log(newVar);
+        newVar.valueNegated = false; // reset to false to avoid complications.
+
+        // console.log(newVar);
         var tempElement = Window.jsavObject.label(katex.renderToString(this.varDisplay)).hide();
         this.variableObjects[newVar.id].valueDisplay.innerHTML = 
         tempElement.element[0].childNodes[0].childNodes[1].childNodes[2].innerHTML;
         tempElement.clear();
         this.variableObjects[newVar.id].valueDisplay.dataset.status = "filled";
+        this.valueNegated = false; // reset to false to avoid complications.
 
         if(this.domain != newVar.expectedDomain) {
             // Show the error, the student has to remove them though
@@ -75,16 +87,19 @@ class Association{
     {
         // Clicking on the variable to remove this triggers this function first, 
         // then deletes the entire association
+        if (obj.getParentEquationId() == this.startingAssocSubscriptEquationId) this.startingAssocSubscriptEquationId = null;
         if(Object.keys(this.variableObjects).length > 2)
         {
-            console.log(this.variableObjects[obj.id]);
+            // console.log(this.variableObjects[obj.id]);
             this.variableObjects[obj.id].removeValue();
+            this.variableObjects[obj.id].valueNegated = false; // resets the negation to none to avoid confusion.
             delete this.variableObjects[obj.id];
             return;
         }
         for(var variable in this.variableObjects)
         {
             this.variableObjects[variable].removeValue();
+            this.variableObjects[variable].valueNegated = false; // resets the negation to none to avoid confusion.
         }
     }
 }
