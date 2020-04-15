@@ -43,9 +43,7 @@ $(document).ready(function () {
     function CreateHash() {
         var input = $("#inputArea").val().concat($("#nonce").val());
 
-        sha256(input).then(res => {
-            tell(res);
-        });
+        tell(sha256(input));
     }
 
 
