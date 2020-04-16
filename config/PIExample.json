@@ -81,16 +81,18 @@
       "PIExample/NFAtoDFAExample":{}
     },
     "Regular Languages": {
-      "PIExample/regularExpression":{},
-      "PIExample/grammarRegularExpression": {},
-      "PIExample/expressionRegular": {},
-      "PIExample/regularGrammar": {},
-      "PIExample/NFAToRE": {},
-      "PIExample/RightLinearRG": {},
-      "PIExample/STA": {},
-      "PIExample/ClosureConcept": {},
-      "PIExample/ClosureRegularLang": {},
-      "PIExample/RegularLangClosedUnder": {}
+      "PIExample/RLRegularExpression":{},
+      "PIExample/RLRegularGrammarExpression": {},
+      "PIExample/RLExpressionRegular": {},
+      "PIExample/RLConvertRLRE": {},
+      "PIExample/RLNFAtoRECON":{},
+      "PIExample/RLregularGrammar": {},
+      "PIExample/RLNFAToRE": {},
+      "PIExample/RLRightLinearRG": {},
+      "PIExample/RLSTA": {},
+      "PIExample/RLClosureConcept": {},
+      "PIExample/RLClosureRegularLang": {},
+      "PIExample/RLClosedUnder": {}
     },
     "Identifying Non-regular Languages":{
       "PIExample/INRL":{}
