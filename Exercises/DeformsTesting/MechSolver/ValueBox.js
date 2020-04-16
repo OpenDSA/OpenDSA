@@ -136,7 +136,8 @@ class ValueBox{
                     var oldUnit = this.unit;
                     this.unit = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unit'];
                     this.value = mathjs.evaluate("number("+this.value+" "+oldUnit+", "+this.unit+")")
-                    this.valueDisplay = Window.valueTruncate(this.value);
+                    // this.valueDisplay = Window.valueTruncate(this.value);
+                    this.valueDisplay = Window.valueStringRepr(this.value);
 
                     // Change external views
                     this.setValueUnit(String(this.valueDisplay),

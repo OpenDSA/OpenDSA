@@ -1,7 +1,7 @@
 // Creating non-supported units
-mathjs.createUnit('ksi','1000 psi');
-mathjs.createUnit('msi','1000 ksi');
-mathjs.createUnit('mip','1000 kip');
+// mathjs.createUnit('ksi','1000 psi');
+// mathjs.createUnit('msi','1000 ksi');
+// mathjs.createUnit('mip','1000 kip');
 
 mathjs.createUnit("strain", {definition: "1"});
 mathjs.createUnit("microstrain", "1e-6 strain");
@@ -100,8 +100,8 @@ Window.UNIT_DB = {
         'megapascal': {'unit':'MPa', 'unitDisp':'MPa'},
         'gigapascal': {'unit':'GPa', 'unitDisp':'GPa'},
         'psi': {'unit':'psi', 'unitDisp':'psi'},
-        'ksi': {'unit':'ksi', 'unitDisp':'ksi'},
-        'msi': {'unit':'msi', 'unitDisp':'msi'}
+        // 'ksi': {'unit':'ksi', 'unitDisp':'ksi'}, // Disabled until further notice
+        // 'msi': {'unit':'msi', 'unitDisp':'msi'} // Disabled until further notice
     },
     'pressure-1': {
         // Pa, kPA, MPa, GPa, ksi, msi, psi
@@ -110,8 +110,8 @@ Window.UNIT_DB = {
         'megapascal-1': {'unit':'MPa^-1', 'unitDisp':'/MPa'},
         'gigapascal-1': {'unit':'GPa^-1', 'unitDisp':'/GPa'},
         'psi-1': {'unit':'psi^-1', 'unitDisp':'/psi'},
-        'ksi-1': {'unit':'ksi^-1', 'unitDisp':'/ksi'},
-        'msi-1': {'unit':'msi^-1', 'unitDisp':'/msi'}
+        // 'ksi-1': {'unit':'ksi^-1', 'unitDisp':'/ksi'}, // Disabled until further notice
+        // 'msi-1': {'unit':'msi^-1', 'unitDisp':'/msi'} // Disabled until further notice
     },
     'force': {
         // kips lbs mips N kN MN 
@@ -120,7 +120,7 @@ Window.UNIT_DB = {
         'meganewton': {'unit':'MN', 'unitDisp':'MN'},
         'poundforce': {'unit': 'lbf', 'unitDisp':'lbf'},
         'kip-force': {'unit': 'kip', 'unitDisp':'kip'},
-        'mip-force': {'unit': 'mip', 'unitDisp':'mip'},
+        // 'mip-force': {'unit': 'mip', 'unitDisp':'mip'}, // Disabled until further notice
     },
     'force-1': {
         // kips lbs mips N kN MN 
@@ -129,7 +129,7 @@ Window.UNIT_DB = {
         'meganewton-1': {'unit':'MN^-1', 'unitDisp':'/MN'},
         'poundforce-1': {'unit': 'lbf^-1', 'unitDisp':'/lbf'},
         'kip-force-1': {'unit': 'kip^-1', 'unitDisp':'/kip'},
-        'mip-force-1': {'unit': 'mip^-1', 'unitDisp':'/mip'},
+        // 'mip-force-1': {'unit': 'mip^-1', 'unitDisp':'/mip'}, // Disabled until further notice
     },
     'power': {
         // W kW MW 'ft lb/s' hp
@@ -146,7 +146,7 @@ Window.UNIT_DB = {
         'kilonewtonmillimetre': {'unit': 'kN mm', 'unitDisp': 'kNmm'},
         'footpound': {'unit': 'lbf ft', 'unitDisp':'ft-lb'},
         'footmip': {'unit': 'kip ft', 'unitDisp':'ft-kip'},
-        'footkip': {'unit': 'mip ft', 'unitDisp':'ft-mip'},
+        // 'footkip': {'unit': 'mip ft', 'unitDisp':'ft-mip'}, // Disabled until further notice
     },
     'angularvelocity': {
         "hertz": {'unit':'Hz', 'unitDisp':'Hz'},
@@ -154,13 +154,13 @@ Window.UNIT_DB = {
         "rpm": {'unit':'rev/mins', 'unitDisp':'rpm'},
         "radpersec": {'unit':'Radian/s', 'unitDisp':'rad/s'},
     },
-    'angles': {
+    'angle': {
         "rev": {'unit':'rev', 'unitDisp':'rev'},
         "radian": {'unit':'Radian', 'unitDisp':'rad'},
         "microradian": {'unit':'microRadian', 'unitDisp':'urad'},
         "degree": {'unit':'Degree', 'unitDisp':'deg'},
     },
-    'angles-1': {
+    'angle-1': {
         "radian-1": {'unit':'Radian^-1', 'unitDisp':'/rad'},
         "microradian-1": {'unit':'microRadian^-1', 'unitDisp':'/urad'},
         "degree-1": {'unit':'Degree^-1', 'unitDisp':'/deg'},
@@ -257,20 +257,20 @@ Window.defaultDomains = {
         'imperial': 'horsepower'
     },
     'torque': {
-        'SI': 'N m',
-        'imperial': 'footpount'
+        'SI': 'newtonmetre',
+        'imperial': 'footpound'
     },
-    'angles': {
-        'SI': 'Radian',
-        'imperial': 'Degree'
+    'angle': {
+        'SI': 'radian',
+        'imperial': 'degree'
     },
-    'angles-1': {
-        'SI': 'Radian-1',
-        'imperial': 'Degree-1'
+    'angle-1': {
+        'SI': 'radian-1',
+        'imperial': 'degree-1'
     },
     'angularvelocity': {
-        'SI': 'Hz',
-        'imperial': 'Hz'
+        'SI': 'hertz',
+        'imperial': 'hertz'
     },
     'strain': {
         'SI': 'strain',

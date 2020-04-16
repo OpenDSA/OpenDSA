@@ -267,10 +267,10 @@ class Workspace
             this.globalPointerReference
         )
         
-        console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
+        // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
         newActiveEquation.equationObjectReference.height+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
-        console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
+        // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         // Handling the internal initial bookkeeping
         this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation;
         //        |_>  To be elaborated for additional operations.
@@ -389,6 +389,17 @@ class Workspace
 
     deleteEquations()
     {
+        // But first, remove all the associations as well.
+        for(var eq in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        {
+            if (!this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].selected) continue;
+            for(var v in this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables)
+            {
+                var variable = this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables[v];
+                if(variable.valueType == "association")
+                    variable.value.removeAssociation(variable);
+            }
+        }
         Window.windowManager.shiftUp(this.id);
     }
 
@@ -479,7 +490,8 @@ class Workspace
                         "value": value,
                         "unit": variableSet[unknownName]["unit"],
                         "variable": unknownName,    // The internal variable name eg: x_y
-                        "valueDisplay": String(Number(Math.round(soln[unknownName]+'e3')+'e-3')),
+                        // "valueDisplay": String(Number(Math.round(+'e3')+'e-3')),
+                        "valueDisplay": Window.valueStringRepr(soln[unknownName]),
                         "unitDisplay": variableSet[unknownName]["unitDisp"],
                         "variableDisplay": variableSet[unknownName]["name"], // The greek/external symbol
                         "domain": variableSet[unknownName]["domain"]
@@ -488,7 +500,7 @@ class Workspace
                 this.globalSectionObj,
                 this.globalPointerReference
             )
-            // console.log(currSolution);
+            console.log(currSolution);
 
             this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
             this.solutionCounter++;

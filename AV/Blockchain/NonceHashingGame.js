@@ -27,19 +27,9 @@ $(document).ready(function () {
         }
     }
 
-    async function sha256(input) {
-        // encode as UTF-8
-        const msgBuffer = new TextEncoder('utf-8').encode(input);
-
-        // hash the message
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-
-        // convert ArrayBuffer to Array
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-
-        // convert bytes to hex string                  
-        const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
-        return hashHex;
+    function sha256(input) {
+        // return Hash
+        return CryptoJS.SHA256(input);
     }
 
     // Convenience function for writing output messages
@@ -53,9 +43,7 @@ $(document).ready(function () {
     function CreateHash() {
         var input = $("#inputArea").val().concat($("#nonce").val());
 
-        sha256(input).then(res => {
-            tell(res);
-        });
+        tell(sha256(input));
     }
 
 

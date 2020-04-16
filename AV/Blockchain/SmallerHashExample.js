@@ -8,7 +8,7 @@ $(document).ready(function() {
 
   function sha256(input) {
     var hash = CryptoJS.SHA256(input);
-    return "0000" + hash.toString().substring(4, 12);
+    return /*"0000" + */hash.toString().substring(0, 16);
 }
 
   // Main action: Result of clicking "Calculate" button

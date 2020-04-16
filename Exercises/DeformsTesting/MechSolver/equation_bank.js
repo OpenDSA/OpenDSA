@@ -413,7 +413,7 @@ const equations = [
         domains: {
             'deform': 'length',
             'force': 'force',
-            'area': 'area',
+            'area': 'length2',
             'normalstresscoeff': 'pressure',
             'length1': 'length',
             'length2': 'length',
@@ -427,20 +427,42 @@ const equations = [
         group: 'Torsion',
         id: 'shearMaxTorque1',
         name: 'shearMaxTorque1',
-        latex: '\\tau_{ } = \\frac {T_{ } \\cdot c_{ }} {J_{ }}',
-        latex_boxes: '\\Box = \\frac {\\Box \\cdot \\Box} {\\Box}',
-        template: 'shearstress = ( torque * length ) / mominertia',
-        params: ['shearstress', 'mominertia', 'torque', 'length'],
+        latex: '\\tau_{ } = \\frac {T_{ } \\cdot d_{ }} {2 \\cdot J_{ }}',
+        latex_boxes: '\\Box = \\frac {\\Box \\cdot \\Box} {2 \\cdot \\Box}',
+        template: 'shearstress = ( torque * diameter ) / (2* mominertia )',
+        params: ['shearstress', 'mominertia', 'torque', 'diameter'],
         variables: {
             'shearstress': '\\tau_{ }',
             'torque': 'T_{ }',
-            'length': 'c_{ }',
+            'diameter': 'd_{ }',
             'mominertia': 'J_{ }'
         },
         domains: {
             'shearstress': 'pressure',
             'torque': 'torque',
-            'length': 'length',
+            'diameter': 'length',
+            'mominertia': 'length4'
+        },
+        height: 30
+    },
+    {
+        group: 'Torsion',
+        id: 'shearMaxTorque2',
+        name: 'shearMaxTorque2',
+        latex: '\\tau_{ } = \\frac {T_{ } \\cdot c_{ }} {J_{ }}',
+        latex_boxes: '\\Box = \\frac {\\Box \\cdot \\Box} {\\Box}',
+        template: 'shearstress = ( torque * radius ) / ( mominertia )',
+        params: ['shearstress', 'mominertia', 'torque', 'radius'],
+        variables: {
+            'shearstress': '\\tau_{ }',
+            'torque': 'T_{ }',
+            'radius': 'c_{ }',
+            'mominertia': 'J_{ }'
+        },
+        domains: {
+            'shearstress': 'pressure',
+            'torque': 'torque',
+            'radius': 'length',
             'mominertia': 'length4'
         },
         height: 30
@@ -497,10 +519,10 @@ const equations = [
         group: 'Torsion',
         id: 'angletwist',
         name: 'angletwist',
-        latex: '\\phi_{ } = \\frac {T_{ } L_{ }} {J_{ } G_{ }}',
-        latex_boxes: '\\Box = \\frac {\\Box \\Box} {\\Box \\Box}',
-        template: 'angletwist = ( torque * length ) / ( momintertia * shearstresscoeff )',
-        params: ['angletwist', 'momintertia', 'shearstresscoeff', 'torque', 'length'],
+        latex: '\\phi_{ } = \\frac { T_{ } L_{ } } { J_{ } G_{ } }',
+        latex_boxes: '\\Box = \\frac { \\Box \\Box } { \\Box \\Box }',
+        template: 'angletwist = ( torque * length ) / ( mominertia * shearstresscoeff )',
+        params: ['angletwist', 'mominertia', 'shearstresscoeff', 'torque', 'length'],
         variables: {
             'angletwist': '\\phi_{ }',
             'mominertia': 'J_{ }',
@@ -508,7 +530,7 @@ const equations = [
             'torque': 'T_{ }',
             'length': 'L_{ }'
         },
-        variables: {
+        domains: {
             'angletwist': 'angle',
             'mominertia': 'length4',
             'shearstresscoeff': 'pressure',
@@ -576,6 +598,82 @@ const equations = [
     //     },
     //     height: 50
     // },
+
+    {
+        group: 'Geometry',
+        id: 'areaCircleRadius',
+        name: 'areaCircleRadius',
+        latex: 'A_{ } = \\pi { r_{ } }^2',
+        latex_boxes: '\\Box = \\pi { \\Box }^2',
+        template: 'area = 3.1419 * ( radius )^2',
+        params: ['area', 'radius'],
+        variables: {
+            'area': 'A_{ }',
+            'radius': 'r_{ }'
+        },
+        domains: {
+            'area': 'length2',
+            'radius': 'length'
+        },
+        height: 30
+    },
+    {
+        group: 'Geometry',
+        id: 'areaCircleDiameter',
+        name: 'areaCircleDiameter',
+        latex: 'A_{ } = \\frac {\\pi { d_{ } }^2 } {4}',
+        latex_boxes: '\\Box = \\frac {\\pi { \\Box }^2 } {4}',
+        template: 'area = 3.1419/4 * ( diameter )^2',
+        params: ['area', 'diameter'],
+        variables: {
+            'area': 'A_{ }',
+            'diameter': 'd_{ }'
+        },
+        domains: {
+            'area': 'length2',
+            'diameter': 'length'
+        },
+        height: 30
+    },
+    {
+        group: 'Geometry',
+        id: 'areaTriangle',
+        name: 'areaTriangle',
+        latex: 'A_{ } = \\frac {1}{2} b_{ } h_{ }',
+        latex_boxes: '\\Box = \\frac {1}{2} \\Box_{ } \\Box_{ }',
+        template: 'area = 0.5 * base * height',
+        params: ['area', 'base', 'height'],
+        variables: {
+            'area': 'A_{ }',
+            'height': 'h_{ }',
+            'base': 'b_{ }'
+        },
+        domains: {
+            'area': 'length2',
+            'base': 'length',
+            'height': 'length'
+        },
+        height: 30
+    },
+    {
+        group: 'Geometry',
+        id: 'radiusDiamReln',
+        name: 'radiusDiamReln',
+        latex: 'd_{ } = \\frac { r_{ } }{2}',
+        latex_boxes: '\\Box = \\frac { \\Box }{2}',
+        template: 'diameter = 0.5 * radius',
+        params: ['diameter', 'radius'],
+        variables: {
+            'diameter': 'd_{ }',
+            'radius': 'r_{ }',
+        },
+        domains: {
+            'diameter': 'length',
+            'radius': 'length',
+        },
+        height: 30
+    },
+
     {
         group: 'Arithmetic',
         id: "equal",
@@ -666,7 +764,7 @@ const equations = [
         latex: 'c_{ }=\\frac{a_{ }}{b_{ }}',
         latex_boxes: '\\Box=\\frac{\\Box}{\\Box}',
         params_latex: ['c_{ }','b_{ }', 'a_{ }'],
-        template: 'cterm = aterm  bterm',
+        template: 'cterm = aterm / bterm',
         params: ['cterm', 'bterm', 'aterm'],
         variables: {
             'cterm': 'c_{ }',

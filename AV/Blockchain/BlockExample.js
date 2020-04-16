@@ -16,20 +16,11 @@ $(document).ready(function() {
       $(".output").val(msg);
     }
   
-    async function sha256(blockNum, data) {
-      // encode as UTF-8
-      const msgBuffer = new TextEncoder('utf-8').encode(blockNum + data);                    
-  
-      // hash the message
-      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-  
-      // convert ArrayBuffer to Array
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-  
-      // convert bytes to hex string                  
-      var hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+    function sha256(blockNum, data) {
+      // create hash
+      let hash = CryptoJS.SHA256(blockNum + data);
       
-      return "0000" + hashHex.substring(0, 12);
+      return "0000" + hash.toString().substring(0, 12);
   }
   
     // Main action: Result of clicking "Calculate" button
@@ -38,9 +29,7 @@ $(document).ready(function() {
     function CreateHash() {
       var data = $("#tablesize").val();
       var blockNum = $("#blockNum").val();
-      sha256(blockNum, data).then(res => {
-          tell(res);
-      });
+      tell(sha256(blockNum, data));
     }
   
     // Action callbacks for form entities
