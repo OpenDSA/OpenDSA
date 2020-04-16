@@ -78,6 +78,7 @@
     },
     "Finite Acceptors": {
       "PIExample/DFA":{},
+      "PIExample/NFA":{},
       "PIExample/NFAtoDFAExample":{}
     },
     "Regular Languages": {
@@ -98,7 +99,9 @@
     "Context-Free Grammars and Languages":{
       "PIExample/CFLAmb": {}
     },
-    "Pushdown Automata":{},
+    "Pushdown Automata":{
+      "PIExample/PDA": {}
+    },
     "Properties of Context-free Languages":{},
     "Models of Computation":{
       "PIExample/TMGeneralModel":{},

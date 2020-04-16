@@ -9,14 +9,14 @@
    :topic: Finite Automata
 
 
-DFA: Deterministic Finite Acceptor
-=================================
-Deterministic Finite Machines
---------------------------------------
+NFA: Non-Deterministic Finite Automata
+======================================
+Non-Deterministic Finite Automata
+---------------------------------
 
-.. inlineav:: DFA ff
-   :links: AV/PIExample/DFA.css DataStructures/FLA/FLA.css
-   :scripts: DataStructures/FLA/FA.js AV/PIExample/DFA.js DataStructures/PIFrames.js
+.. inlineav:: NFA ff
+   :links: AV/PIExample/NFA.css DataStructures/FLA/FLA.css
+   :scripts: DataStructures/FLA/FA.js AV/PIExample/NFA.js DataStructures/PIFrames.js
    :output: show
 
 
