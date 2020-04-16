@@ -1,0 +1,123 @@
+{
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "multiple",
+        "description":"None of these is what is commonly meant when a computer theoretician uses the word hard. Throughout this section, hard means that the best-known algorithm for the problem is expensive in its running time.",
+        "question":"the best-known algorithm for the hard problem is expensive in its running time",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "q2": {
+        "type": "select",
+        "description":"The Towers of Hanoi problem takes exponential time, that is, its running time is Θ(2<sup>n</sup>). This is radically different from an algorithm that takes Θ(nlogn) time or Θ(n<sup>2</sup>) time. It is even radically different from a problem that takes Θ(n<sup>4</sup>) time. These are all examples of polynomial running time, because the exponents for all terms of these equations are constants.",
+        "question":"Which of the following are true about Towers of Hanoi",
+        "answer": ["The Towers of Hanoi problem takes exponential time", "It is easy to write a program to solve this problem", "its running time is Θ(2<sup>n</sup>)"],
+        "choices": ["The Towers of Hanoi problem takes exponential time", "It is easy to write a program to solve this problem", "it is the same as a problem that takes Θ(n<sup>4</sup>) ", "its running time is Θ(2<sup>n</sup>)"]
+
+      },
+      "q3": {
+        "type": "multiple",
+        "description":"If we buy a new computer that runs twice as fast, the size of problem with complexity Θ(n<sup>4</sup>) that we can solve in a certain amount of time is increased by the fourth root of two. In other words, there is a multiplicative factor increase, even if it is a rather small one. This is true for any algorithm whose running time can be represented by a polynomial.",
+        "question":"There is no multiplicative factor for polynomial.",
+        "answer":  "False",
+        "choices": ["True", "False"]
+      },
+      "q4": {
+        "type": "multiple",
+        "description":"Consider what happens if you buy a computer that is twice as fast and try to solve a bigger Towers of Hanoi problem in a given amount of time. <br><br>Because its complexity is Θ(2<sup>n</sup>), we can solve a problem only one disk bigger! There is no multiplicative factor, and this is true for any exponential algorithm: A constant factor increase in processing power results in only a fixed addition in problem-solving power.",
+        "question":"There is multiplicative factor for exponential",
+        "answer": "False",
+        "choices": ["True", "False"]
+      },
+
+
+      "q5": {
+        "type": "select",
+        "description":"There is a practical reason for recognizing a distinction. In practice, most polynomial time algorithms are feasible in that they can run reasonably large inputs in reasonable time. In contrast, most algorithms requiring exponential time are not practical to run even for fairly modest sizes of input.",
+        "question":"Which of the following are true about polynomial",
+        "answer": ["all computer known are polynomially related", "polynomials are closed under composition and addition", "one program with polynomial running time call another a polynomial number of times yields polynomial time", "most polynomial time algorithms can run reasonably large inputs in reasonable time"],
+        "choices": ["all computer known are polynomially related", "polynomials are closed under composition and addition", "one program with polynomial running time call another a polynomial number of times yields polynomial time", "most polynomial time algorithms can run reasonably large inputs in reasonable time"]
+      },
+
+      "q6": {
+        "type": "multiple",
+        "description":"There is a practical reason for recognizing a distinction. In practice, most polynomial time algorithms are feasible in that they can run reasonably large inputs in reasonable time. In contrast, most algorithms requiring exponential time are not practical to run even for fairly modest sizes of input.",
+        "question":"exponential time algorithm are not practical to run even for fairly modest sizes of input",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q7": {
+        "type": "multiple",
+        "description":"One could argue that a program with high polynomial degree (such as n<sup>100</sup>) is not practical, while an exponential-time program with cost 1.001<sup>n</sup> is practical. <br><br>But the reality is that we know of almost no problems where the best polynomial-time algorithm has high degree (they nearly all have degree four or less), while almost no exponential-time algorithms (whose cost is (O(c<sup>n</sup>)) have their constant c close to one. So there is not much gray area between polynomial and exponential time algorithms in practice.",
+        "question":"There is not much gray area between polynomial and exponential time algorithms in practice",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q8": {
+        "type": "multiple",
+        "description":"The idea of guessing the right answer to a problem—or checking all possible solutions in parallel to determine which is correct—is a called a non-deterministic choice. <br><br>An algorithm that works in this manner is called a non-deterministic algorithm, and any problem with an algorithm that runs on a non-deterministic machine in polynomial time is given a special name: It is said to be a problem in NP. Thus, problems in NP are those problems that can be solved in polynomial time on a non-deterministic machine.",
+        "question":"non-deterministic algorithm is algorithm that checks possible solutions in parallel to determine which is correct",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q9": {
+        "type": "multiple",
+        "description":"The idea of guessing the right answer to a problem—or checking all possible solutions in parallel to determine which is correct—is a called a non-deterministic choice. <br><br>An algorithm that works in this manner is called a non-deterministic algorithm, and any problem with an algorithm that runs on a non-deterministic machine in polynomial time is given a special name: It is said to be a problem in NP. Thus, problems in NP are those problems that can be solved in polynomial time on a non-deterministic machine.",
+        "question":"NP can be solved in polynomial time on a non-deterministic machine",
+        "answer": "True",
+        "choices": ["True", "False"]
+      }, 
+
+
+      "q10": {
+        "type": "multiple",
+        "description":"Not all problems requiring exponential time on a regular computer are in NP. For example, Towers of Hanoi is not in NP, because it must print out O(2<sup>n</sup>) moves for n disks. A non-deterministic machine cannot guess and print the correct answer in less time.",
+        "question":"All problems requiring exponential time on a regular computer are in NP",
+        "answer": "False",
+        "choices": ["True", "False"]
+      }, 
+
+      "q11": {
+        "type": "multiple",
+        "description":"We cannot solve this problem in polynomial time with a guess-and-test non-deterministic computer. The problem is that, given a candidate cycle, while we can quickly check that the answer is indeed a cycle of the appropriate form, and while we can quickly calculate the length of the cycle, we have no easy way of knowing if it is in fact the shortest such cycle. <br><br>However, we can solve a variant of this problem cast in the form of a decision problem. A decision problem is simply one whose answer is either YES or NO. The decision problem form of TRAVELING SALESMAN is as follows.",
+        "question":"TRAVELING SALESMAN (1) can be solved in polynomial time with a guess-and-test non-deterministic computer",
+        "answer": "False",
+        "choices": ["True", "False"]
+      },
+
+
+      "q12": {
+        "type": "multiple",
+        "description":"Unfortunately, there are 2<sup>|E|</sup> subsets to check, so this algorithm cannot be converted to a polynomial time algorithm on a regular computer. Nor does anybody in the world know of any other polynomial time algorithm to solve TRAVELING SALESMAN on a regular computer, despite the fact that the problem has been studied extensively by many computer scientists for many years.",
+        "question":"TRAVELING SALESMAN (2) can be converted to a polynomial time algorithm on a regular computer",
+        "answer": "False",
+        "choices": ["True", "False"]
+      },
+
+
+      "q13": {
+        "type": "select",
+        "description":"It turns out that there is a large collection of problems with this property: We know efficient non-deterministic algorithms, but we do not know if there are efficient deterministic algorithms. At the same time, we have not been able to prove that any of these problems do not have efficient deterministic algorithms. This class of problems is called NP-complete.",
+        "question":"Which of the following are the property of NP-complete",
+        "answer":  ["know efficient non-deterministic algorithms", "do not know if there are efficient deterministic algorithms", "not able to prove that any of these problems do not have efficient deterministic algorithms"],
+        "choices":  ["know efficient non-deterministic algorithms", "do not know if there are efficient deterministic algorithms", "not able to prove that any of these problems do not have efficient deterministic algorithms"]
+      },
+
+
+      "q14": {
+        "type": "select",
+        "description":"Define a problem to be NP-hard if any problem in NP can be reduced to X in polynomial time. Thus, X is as hard as any problem in NP. A problem X is defined to be NP-complete if <br><br>1. X is in NP, and <br><br>2. X is NP-hard",
+        "question":"A problem X is defined to be NP-complete if",
+        "answer": ["X is in NP", "X is NP-hard"],
+        "choices": ["X is in NP", "X is NP-hard"]
+      }
+
+
+    }
+  }
+}
+

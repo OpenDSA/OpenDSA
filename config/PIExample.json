@@ -107,10 +107,10 @@
     "Parsing":{},
     "Limits to Computing":{},
     "NP-Completeness": {
-      "WuChen/PairToSortCONPI": {},
-      "WuChen/LowerBound": {},
-      "WuChen/TwoMulExample": {},
-      "WuChen/TravelSalesman": {}
+      "PIExample/PairToSortCONPI": {},
+      "PIExample/LowerBound": {},
+      "PIExample/TwoMulExample": {},
+      "PIExample/TravelSalesman": {}
    }
   }
 }

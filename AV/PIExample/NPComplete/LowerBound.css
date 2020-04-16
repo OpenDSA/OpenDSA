@@ -1,0 +1,13 @@
+#LowerBound {
+    height: 600px;
+  }
+  
+  #LowerBound .jsavoutput.jsavline {
+    height: 35px;
+  }
+  
+  #LowerBound .jsavhorizontalarray .jsavnode {
+    min-width: 30px !important;
+    max-width: 200px !important;
+  }
+  

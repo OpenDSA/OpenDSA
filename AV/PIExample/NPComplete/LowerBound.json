@@ -1,0 +1,44 @@
+{
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "multiple",
+        "description":"<b>Reduction and Finding Lower Bound</b><br><br>There is another use of reductions aside from applying an old algorithm to solve a new problem (and thereby establishing an upper bound for the new problem). That is to prove a lower bound on the cost of a new problem by showing that it could be used as a solution for an old problem with a known lower bound.",
+        "question":"Is it true that we can prove a lower bound on the cost of a new problem by showing that it could be used as a solution for an old problem with a known lower bound?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q2": {
+        "type": "multiple",
+        "description":"Assume we can go the other way and convert SORTING to PAIRING fast enough. What does this say about the minimum cost of PAIRING? We know that the lower bound for SORTING in the worst and average cases is in Ω(nlogn). In other words, the best possible algorithm for sorting requires at least nlogn time.",
+        "question":"The lower bound for SORTING in the worst and average cases is in Ω(nlogn). If we convert SORTING to PAIRING fast enough, is it true that PAIRING have a lower bound in Ω(nlogn)?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q31": {
+        "type": "select",
+        "description":"<b>The Reduction Template</b><br>Consider any two problems for which a suitable reduction from one to the other can be found. The first problem takes an arbitrary instance of its input, which we will call I, and transforms I to a solution, which we will call SLN. The second problem takes an arbitrary instance of its input, which we will call I', and transforms I' to a solution, which we will call SLN'. We can define reduction more formally as a three-step process:",
+        "question":"which of the follwing is true",
+        "answer":  ["SLN is the solution of I", "SLN must be the correct solution for I for the reduction to be acceptable"],
+        "choices": ["the transformation from any instance I of the first problem to an instance I' of the second problem is not necessary", "SLN is the solution of I", "SLN must be the correct solution for I for the reduction to be acceptable", "SLN' is not the solution of I'"]
+      },
+      "q32": {
+        "type": "multiple",
+        "description":"It is important to note that the reduction process does not give us an algorithm for solving either problem by itself. It merely gives us a method for solving the first problem given that we already have a solution to the second. More importantly for the topics to be discussed in the remainder of this chapter, reduction gives us a way to understand the bounds of one problem in terms of another. Specifically, given efficient transformations, the upper bound of the first problem is at most the upper bound of the second. Conversely, the lower bound of the second problem is at least the lower bound of the first.",
+        "question":"Is it true that the reduction process give us an algorithm for solving either problem by itself?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+
+      "q33": {
+        "type": "select",
+        "description":"It is important to note that the reduction process does not give us an algorithm for solving either problem by itself. It merely gives us a method for solving the first problem given that we already have a solution to the second. More importantly for the topics to be discussed in the remainder of this chapter, reduction gives us a way to understand the bounds of one problem in terms of another. Specifically, given efficient transformations, the upper bound of the first problem is at most the upper bound of the second. Conversely, the lower bound of the second problem is at least the lower bound of the first.",
+        "question":"which of the follwing is true",
+        "answer":  ["the upper bound of the first problem is at most the upper bound of the second", "the lower bound of the second problem is at least the lower bound of the first", "reduction gives us a way to understand the bounds of one problem in terms of another"],
+        "choices": ["the upper bound of the first problem is at most the upper bound of the second", "the lower bound of the second problem is at least the lower bound of the first", "reduction gives us a way to understand the bounds of one problem in terms of another"]
+      }
+
+    }
+  }
+}
+
