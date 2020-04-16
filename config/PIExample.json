@@ -108,7 +108,9 @@
       "PIExample/TMInterpreting":{},
       "PIExample/TMDecidableVSAcceptable":{},
       "PIExample/TMComplicatedMachine1":{},
-      "PIExample/TMComplicatedMachine2":{}
+      "PIExample/TMComplicatedMachine2":{},
+      "PIExample/TMComplicatedMachine3":{}
+
     },
     "Parsing":{},
     "Limits to Computing":{},

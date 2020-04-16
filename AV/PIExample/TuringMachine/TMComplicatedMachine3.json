@@ -1,0 +1,41 @@
+{
+  "translations": {
+    "en": {
+      "q1": {
+        "type":"multiple",
+        "description":"",
+        "question":"",
+        "answer":"",
+        "choices": []
+    },
+      "q2": {
+        "type":"multiple",
+        "description":"",
+        "question":"",
+        "answer":"",
+        "choices": []
+    },
+      "q3": {
+        "type":"multiple",
+        "description":"",
+        "question":"",
+        "answer":"",
+        "choices": []
+    },
+      "q4": {
+        "type":"multiple",
+        "description":"",
+        "question":"",
+        "answer":"",
+        "choices": []
+    },
+      "q5": {
+          "type":"multiple",
+          "description":"",
+          "question":"",
+          "answer":"",
+          "choices": []
+      }
+    }
+  }
+}

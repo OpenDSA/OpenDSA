@@ -1341,9 +1341,10 @@ var BigInteger = /** @class */ (function () {
     // BigInteger.prototype.modPow = bnModPow;
     // (public) this^e % m (HAC 14.85)
     BigInteger.prototype.modPow = function (e, m) {
+        var r = nbv(1);
+        if (e === null) return r;
         var i = e.bitLength();
         var k;
-        var r = nbv(1);
         var z;
         if (i <= 0) {
             return r;
@@ -3023,6 +3024,7 @@ var RSAKey = /** @class */ (function () {
         if (m == null) {
             return null;
         }
+        
         return pkcs1unpad2(m, (this.n.bitLength() + 7) >> 3);
     };
     // Generate a new random private key B bits long, using public expt E
@@ -5240,7 +5242,9 @@ var JSEncrypt = /** @class */ (function () {
             return this.getKey().decrypt(b64tohex(str));
         }
         catch (ex) {
-            return false;
+            // changed this to display random text for OpenDSA
+            return b64tohex(str);
+            // return false;
         }
     };
     /**

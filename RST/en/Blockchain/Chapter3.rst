@@ -36,6 +36,9 @@ subtracting from their money balance, verify the participants using
 public and private keys, and keep identities secure if necessary.
 At all times, all debts are publicly known, verifiable, and immutable.
 
+.. avembed:: AV/Blockchain/splitwise.html pe
+   :long_name: Splitwise Example Diagram
+
 Distributed Public Ledgers
 --------------------------
 

@@ -15,28 +15,35 @@ data block. All internal nodes combine the hashes of their left and right child 
 of both values. This means that the root node of the tree contains a hash that is the result of all leaves 
 that were continually paired and hashed. Merkle Trees are essential in providing data integrity in the blockchain.
 
-How Is It Used?
----------------
-
-Merkle Trees are important when we give blocks in a blockchain more complexity. Instead of a singular message 
-as shown in our demo, blocks hold several transactions that are recorded in the ledger. Merkle Trees are the 
-solution to how we can derive the block hash (in part) where each of these transactions make a merkle tree, and 
-the resulting root hash of the tree is used in creating a block hash.
-
 .. inlineav:: MerkleTree ss
    :long_name: Merkle Tree Slideshow
    :links: AV/Blockchain/MerkleTree.css
    :scripts: AV/Blockchain/MerkleTree.js
    :output: show
 
+How Is It Used?
+---------------
+
+Merkle Trees act as the message hash of a single block. So far in this module, the requirement of a message has been 
+to represent it as a hash so that we may derive a hash pointer. The Merkle Tree satisifies this with the root 
+hash value. The root is representative of all data leaves of the tree and can act as the message hash.
+
 Why Is It Useful?
 ---------------
 
-Merkle Trees are useful in that they provide a way to not only create another level of cryptographic security, 
-but also are efficiently verifiable. Transactions are what a malicious actor would change to effectively alter 
-the blockchain and challenge the immutability. To this end, it's important to note that the branches of a 
-Merkle Tree are inherently modular. The verification of a single transaction does not require the verification of 
-every other transaction.
+Merkle Trees are useful in providing for less overhead per piece of data. To need a block for a single piece of data 
+would mean a quickly growing chain where the verification work largely exceeds the information kept. Merkle Trees allow 
+for an incredible amount of different data to be stored into a singular hash. These are called the transactions of a block. 
+
+They also provide a way to not only create another level of cryptographic security. With each tree level, there exists more 
+hashes that act as a level of security. In addition to finding a nonce that agrees with the previous hash pointer
+and the message, the message itself contains a hurdle: an entire half of the tree must be made to agree with the Merkle root when one 
+transaction is changed. In the same way that a malicious actor would change the message of a block and reproduce 
+a new hash pointer, the same actor would change a transaction. However, this change must agree with verification of the tree.
+
+This fact leads us to the fact that Merkle Trees also allow these transactions to be efficiently verifiable. 
+To this end, it's important to note that the branches of a Merkle Tree are inherently modular. 
+The verification of a single transaction does not require the verification of every other transaction as shown below.
 
 .. inlineav:: MerkleTreeVerification ss
    :long_name: Merkle Tree Verification Slideshow
@@ -44,8 +51,5 @@ every other transaction.
    :scripts: AV/Blockchain/MerkleTreeVerification.js
    :output: show
 
-In addition to the verifiability, the hashing of each transaction creates a new level of complexity and security. 
-In addition to mining for a new nonce that agrees with the hash pointer of a block, altering a transaction and 
-therefore the Merkle Tree adds the work of making a verifiable Merkle Tree. 
 
 
