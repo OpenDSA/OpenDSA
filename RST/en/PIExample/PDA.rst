@@ -6,17 +6,17 @@
 .. avmetadata::
    :author:John Taylor
    :satisfies: DFA Module
-   :topic: Finite Automata
+   :topic: Pushdown Automaton
 
 
-DFA: Deterministic Finite Acceptor
+Pushdown automaton
 =================================
-Deterministic Finite Machines
+PDA: Pushdown Automata
 --------------------------------------
 
-.. inlineav:: DFA ff
-   :links: AV/PIExample/DFA.css DataStructures/FLA/FLA.css
-   :scripts: DataStructures/FLA/FA.js AV/PIExample/DFA.js DataStructures/PIFrames.js
+.. inlineav:: PDA ff
+   :links: AV/PIExample/PDA.css DataStructures/FLA/FLA.css
+   :scripts: DataStructures/FLA/FA.js AV/PIExample/PDA.js DataStructures/PIFrames.js
    :output: show
 
 
