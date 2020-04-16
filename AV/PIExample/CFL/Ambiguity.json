@@ -7,8 +7,8 @@
           "src": "../../../AV/Development/formal_language/FAEditor.html",
           "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSb | ab$ <br> Derivation of $aaabbb$:<br> $S \\Rightarrow aSb \\Rightarrow aaSbb \\Rightarrow aaabbb$",
           "question": "What would the language $L(G)$ be?",
-          "answer": "$a^*b^*$",
-          "choices": ["$a^*b^*$", "$ab^*$","$a^*b$", "$ab$"]
+          "answer": "$a^nb^n$",
+          "choices": ["$a^nb^n$", "$ab^n$","$a^nb$", "$ab$"]
         },
         "q2": {
             "type": "multiple",

@@ -1,7 +1,7 @@
 $(document).ready(function () {
     "use strict";
     var av_name = "Ambiguity";
-    var av = new JSAV(av_name);
+    var av = new JSAV(av_name,);
     var Frames = PIFRAMES.init(av_name);
     // Load the config object with interpreter and code created by odsaUtils.js
     var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
@@ -42,7 +42,7 @@ $(document).ready(function () {
     av.step();
 
     //frame 9
-    av.umsg("Definition: A linear grammar has at most one variable on the right hand side of any production. Thus, right linear and left linear grammars are also linear grammars.");
+    av.umsg("$\\textbf {Definition}$: A linear grammar has at most one variable on the right hand side of any production. Thus, right linear and left linear grammars are also linear grammars.");
     av.step();
 
     //frame 10
@@ -50,7 +50,7 @@ $(document).ready(function () {
     av.step();
 
     //frame 11
-    av.umsg("Definition: String derivation is to start at the starting point of the grammar and do replacements until you can do no more replacements. A variable in the grammar can be replaced by the right hand side of its rule");
+    av.umsg("$\\textbf {Definition}$: String derivation is to start at the starting point of the grammar and do replacements until you can do no more replacements. A variable in the grammar can be replaced by the right hand side of its rule");
     av.step();
 
     //i don't know if i should put this as a question or not
@@ -70,22 +70,49 @@ $(document).ready(function () {
     
 
     //frame 6
-    av.umsg("tree node?");
+    av.umsg("$\\textbf {Definition}$: Leftmost derivation: in each step of a derivation, replace the leftmost variable. <br> $\\textbf {Definition}$: Rightmost derivation: in each step of a derivation, replace the rightmost variable. <br> $\\textbf {Derivation Trees}$ (also known as 'parse trees'): A derivation tree represents a derivation, but does not show the order in which productions were applied.");
+    av.step();
+
+    //frame 6
+    av.umsg("A derivation tree for $G=(V,T,S,P)$:<br>root is labeled $S$ <br>leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$ <br> nonleaf vertices labeled $A$,$A\\in V$<br> For rule $A\\rightarrow a_1a_2a_3…a_n$, where $A\\in V$,$a_i\\in(T\\cup V\\cup \\{\\lambda \\}$)");
+    av.label("...", {left: 450, top: 93});
+    av.label("A", {left: 405, top: 4});
+    av.label("a\u2081", {left: 280, top: 93});
+    av.label("a\u2082", {left: 345, top: 93});
+    av.label("a\u2083", {left: 410, top: 93});
+    av.label("a\u2099", {left: 490, top: 93});
+    av.g.circle(410, 28, 17);
+    av.g.circle(285, 120, 17);
+    av.g.circle(350, 120, 17);
+    av.g.circle(415, 120, 17);
+    av.g.circle(495, 120, 17);
+    av.g.line(410, 45, 285, 103);
+    av.g.line(410, 45, 350, 103);
+    av.g.line(410, 45, 415, 103);
+    av.g.line(410, 45, 495, 103);
+    av.step();
+
+    //frame 6
+    av.umsg();
     var bt = av.ds.tree({nodegap: 15});
-    bt.root("S");
-    var rt = bt.root();
-    var lt = bt.newNode("A");
-    rt.addChild(lt);
-    bt.layout();
-
-    av.step();
-
-    //frame 6
-    av.umsg();
-    av.step();
-
-    //frame 6
-    av.umsg();
+  bt.root("S");
+  var rt = bt.root();
+  var lt = bt.newNode("A");
+  var lt2 = bt.newNode("A");
+  var lt3 = bt.newNode("B");
+  var lt4 = bt.newNode("B");
+  rt.addChild(lt);
+  rt.addChild("c");
+  rt.addChild(lt3);
+  lt.addChild("a");
+  lt.addChild(lt2);
+  lt.addChild("a");
+  lt2.addChild("λ");
+  lt3.addChild(lt4);
+  lt3.addChild("b");
+  lt3.addChild("b");
+  lt4.addChild("λ");
+  bt.layout();
     av.step();
 
     //frame 6
