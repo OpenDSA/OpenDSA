@@ -50,6 +50,9 @@ overwrite their chains with the new and current copy of the blockchain. This eli
 central authority of the blockchain and adds a level of consensus that preserves the 
 immutability of the ledger.
 
+.. avembed:: AV/Blockchain/distributedLedger.html pe
+   :long_name: Distributed Ledger Diagram
+
 What's The Point?
 -----------------
 
