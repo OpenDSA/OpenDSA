@@ -148,7 +148,7 @@
       var successors = currentStates[i].state.neighbors();
       var letter = emptystring;
       var inputString = currentStates[i].inputString
-      if(inputString.length === 0 || endflag == 2) {
+      if(inputString.length === 0 || endflag > 3) {
         if(currentStates[i].state.hasClass('final')) {
           currentStates[i].state.addClass('accepted')
         }
