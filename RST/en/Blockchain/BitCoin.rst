@@ -4,10 +4,10 @@
 .. avmetadata::
     :author: Bailey Spell and Jesse Terrazas
 
-Chapter 7
-=============================================
+Bitcoin
+=======
 
 Bitcoin
 -------
 
-a) Stuff about Bitcoin here
+Stuff about Bitcoin goes here.
