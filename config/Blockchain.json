@@ -37,40 +37,34 @@
       "required": true
     }, 
     "chapters": {
-      "Blockchain Tutorial": {
-        "Blockchain/Intro": {}
-      },
       "Introduction": {
+        "Blockchain/Intro": {},
         "Blockchain/Introduction": {}
       },
       "Cryptography": {
         "Blockchain/Cryptography": {}
       },
-      "Chapter 3": {
-        "Blockchain/Chapter3": {}
+      "Blockchain Basics": {
+        "Blockchain/BlockchainBasics": {}
       },
-      "Chapter 4": {
-        "Blockchain/Chapter4": {}
+      "Merkle Trees": {
+        "Blockchain/MerkleTrees": {}
       },
-      "Chapter 5": {
-        "Blockchain/Chapter5": {}
+      "Mining": {
+        "Blockchain/Mining": {}
       },
       "Consensus Algorithms": {
         "Blockchain/Consensus": {},
         "Blockchain/Permissionless": {},
         "Blockchain/Permissioned": {}
       },
-      "Chapter 7": {
-        "Blockchain/Chapter7": {}
+      "CryptoCurrencies": {
+        "Blockchain/BitCoin": {},
+        "Blockchain/OtherCrypto": {}
       },
-      "Chapter 8": {
-        "Blockchain/Chapter8": {}
-      },
-      "Chapter 9": {
-        "Blockchain/Chapter9": {}
-      },
-      "Chapter 11": {
-        "Blockchain/Chapter11": {}
+      "Applications of Blockchain": {
+        "Blockchain/SmartContracts": {},
+        "Blockchain/OtherApplications": {}
       }
     }
   }

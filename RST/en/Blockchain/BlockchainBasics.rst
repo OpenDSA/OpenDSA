@@ -4,11 +4,11 @@
 .. avmetadata::
     :author: Bailey Spell and Jesse Terrazas
 
-Chapter 3
-=============================================
+Blockchain Basics
+=================
 
-Basic Blockchain
-----------------
+What is a Blockchain?
+---------------------
 
 At the very core of the concept, Blockchain is a linked list! 
 That is, data is contained in nodes and these nodes point to a successor.

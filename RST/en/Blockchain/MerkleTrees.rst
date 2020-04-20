@@ -4,8 +4,8 @@
 .. avmetadata::
     :author: Bailey Spell and Jesse Terrazas
 
-Chapter 4
-=============================================
+Merkle Trees
+============
 
 Merkle Trees
 ------------
@@ -29,7 +29,7 @@ to represent it as a hash so that we may derive a hash pointer. The Merkle Tree 
 hash value. The root is representative of all data leaves of the tree and can act as the message hash.
 
 Why Is It Useful?
----------------
+-----------------
 
 Merkle Trees are useful in providing for less overhead per piece of data. To need a block for a single piece of data 
 would mean a quickly growing chain where the verification work largely exceeds the information kept. Merkle Trees allow 

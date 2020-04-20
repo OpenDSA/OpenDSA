@@ -5,7 +5,7 @@
     :author: Bailey Spell and Jesse Terrazas
 
 Mining in a Blockchain System
-=============================================
+=============================
 
 What is Mining?
 ---------------

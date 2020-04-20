@@ -7,7 +7,8 @@
 An Introduction to Blockchain and Its Applications
 ==================================================
 
-Intro
-------------
+This Tutorial
+-------------
 
-Welcome to the Intro Page! Magic will be happening this semester!! 😎 <--- supposed to be an emoji
+Welcome to the Intro Page!
+Magic will be happening this semester!! 😎 <--- supposed to be an emoji
