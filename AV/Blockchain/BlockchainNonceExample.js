@@ -4,11 +4,11 @@ $(document).ready(function() {
 
     ODSA.UTILS.loadConfig();
 
-    const defaultHash = "0000000000000000000000000000000000000000000000000000000000000000";
+    const defaultHash = "0000000000000000";
 
     // Creates the hash
     function sha256(blockNum, data, nonce, prevHash = defaultHash) {   
-        return CryptoJS.SHA256(blockNum + nonce + data + prevHash);
+        return CryptoJS.SHA256(blockNum + nonce + data + prevHash).toString().substring(0,16);
     }
 
     function checkHash() {
