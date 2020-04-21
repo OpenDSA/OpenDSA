@@ -115,8 +115,7 @@
 
     },
     "Parsing":{},
-    "Limits to Computing":{},
-    "NP-Completeness": {
+    "Limits to Computing": {
       "PIExample/PairToSortCONPI": {},
       "PIExample/LowerBound": {},
       "PIExample/TwoMulExample": {},
