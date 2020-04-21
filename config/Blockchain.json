@@ -37,15 +37,14 @@
       "required": true
     }, 
     "chapters": {
-      "Introduction": {
-        "Blockchain/Intro": {},
+      "Overview": {
         "Blockchain/Introduction": {}
       },
       "Cryptography": {
         "Blockchain/Cryptography": {}
       },
-      "Blockchain Basics": {
-        "Blockchain/BlockchainBasics": {}
+      "Ledgers": {
+        "Blockchain/Ledgers": {}
       },
       "Merkle Trees": {
         "Blockchain/MerkleTrees": {}
