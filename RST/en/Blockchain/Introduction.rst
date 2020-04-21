@@ -101,10 +101,18 @@ into the hash widget above, and see if you get the same result.)
 A blockchain is nothing more than a chain of blocks in a linked list,
 where each block incorporates into its data the hash of the block that
 comes before it.
-The figure below demonstrates that when we change the the data of one
-block, we are altering its hash, and therefore we are altering the
+When we combine a pointer with a hash of the data that the pointer
+points to, we get a hash pointer (surprise!).
+In the figure below, the blocks are arranged from left to right with
+the oldest block to the left, and the most recent block to the right.
+As new blocks are added on the right side, they incorporate the hash to
+their left, to form a chain.
+Change data in any block, and you see that we are also
+altering its hash, and therefore we are altering the
 resulting hash of every block that comes to its right.
-Try changing some of the data fields to see how this works.
+Try adding data into the data fields below.
+Then change some data fields, and observe which hash values change as
+well.
 
 .. _BlockchainExample:
 
@@ -116,15 +124,21 @@ We cannot change the data in an earlier block in the chain without
 causing an inconsistency in the values of the blocks that come after.
 
 This next example shows a simple version of how a block might look in
-Bitcoin.
-The key difference here is the box labled "Nonce".
+a cryptocurrency like Bitcoin.
+The key idea added here is the box labled "Nonce".
 The purpose of the nonce is to work with the data in the rest of the
 block to cause the hash value to have some property, typically that it
 be less than some threshold.
 For our example, the nonce has been picked so that the first 4 digits
 of the hash are all zero.
-The idea of "mining" is to keep trying different values for the nonce
+The idea of "mining" is simply to try different values for the nonce
 until some hash value with 4 zeros at the front is stumbled upon.
+What you should do is add data to each block, and then click the
+"Mine" button.
+This will discover nonces that cause the proper number of zeros to
+appear in each hash value.
+Then try modifying the data in a block, to see which other blocks are
+affected.
 
 .. _BlockchainNonceExample:
 
@@ -142,11 +156,24 @@ concepts as a blockchain would grow.
 
 You know have a rough overview of many basic concepts related to
 Blockchain.
-The main things that we have not discussed yet are the idea that a
-blockchain can be distributed among many users, how that distributed
-blockchain gets updated in a consistent way (called a Consensus
-Algorithm), the idea of a smart contract (something that gets executed
-when a transaction is added to the blockchain), and how all the pieces
-fit together to implement an application like a cryptocurrency.
-All of this will be presented in some detail in later sections of this
-tutoral.
+In the rest of this tutorial, we will cover:
+
+* Cryptographic services associated with blockchain applications,
+  including authentication of users.
+
+* Data structures used by Blockchain implementations (Merkle Trees).
+
+* More details on mining.
+
+* How a blockchain can be distributed among users (called a
+  "distributed ledger") so that no one user is the all-powerful
+  "owner".
+
+* How a distributed ledger can be updated in a way that makes it
+  consistent for all users (done using a "consensus algorithm").
+
+* How Bitcoin and other cryptocurrencies work.
+
+* The idea of a smart contract.
+
+* Some other applications for Blockchain.
