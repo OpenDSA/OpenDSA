@@ -38,7 +38,7 @@ $(document).ready(function() {
         }
     }
 
-    async function testKeyUp(e) {
+    function testKeyUp(e) {
         var one = 1, two = 2, three = 3;
         var block1Data = $("#data1").val();
         var block2Data = $("#data2").val();
@@ -53,15 +53,15 @@ $(document).ready(function() {
         block2Hash = sha256(two, block2Data, block2Nonce, block1Hash);
 
         block3Hash = sha256(three, block3Data, block3Nonce, block2Hash);
-
-        if (e.target.id === "data1") {
+        
+        if (e.target.id === "data1" || e.target.id === "nonce1") {
             $("#block1PrevHash").val(defaultHash);
             $("#block1Hash").val(block1Hash);
             $("#block2PrevHash").val(block1Hash);
             $("#block2Hash").val(block2Hash);
             $("#block3PrevHash").val(block2Hash);
         }
-        else if (e.target.id === "data2") {
+        else if (e.target.id === "data2" || e.target.id === "nonce2") {
             $("#block2Hash").val(block2Hash);
             $("#block3PrevHash").val(block2Hash);
         }
