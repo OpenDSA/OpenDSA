@@ -74,6 +74,9 @@ class ActiveEquation{
             }
         ).addClass("boxedEquation");
 
+        // To be useful later.
+        this.visualComponents["height"] = this.equationObjectReference.height;
+
         var boxList = 
         this.jsavequation.element[0].childNodes[0].childNodes[1].childNodes[2]
         .querySelectorAll("span.mord.amsrm")
@@ -112,7 +115,7 @@ class ActiveEquation{
             var name = Window.getVarName();
             var currentBox = boxList[boxIndex];
             this.variables[this.equationObjectReference.params[boxIndex]] = new Variable(
-                this.name+this.equationObjectReference.params[boxIndex], // name unique to workspace, equation, and parameter
+                this.name+"_"+this.equationObjectReference.params[boxIndex], // name unique to workspace, equation, and parameter
                 this.equationObjectReference.params[boxIndex],
                 name, // actual variable name to be used everywhere else.
                 this.equationObjectReference.variables[this.equationObjectReference.params[boxIndex]],
@@ -307,21 +310,30 @@ class ActiveEquation{
 
             // Update the current displayed boxes
             // Step 2.
-            if(Window.parentObject.variables[variable].valueType == null)
+            Window.parentObject.variables[variable].parentSymbol = 
+            Window.parentObject.variables[variable].parentSymbolTemplate.replace(
+                new RegExp('\{ \}', 'g'),"{"+subscriptText+"}");
+            
+            if(Window.parentObject.variables[variable].valueType != "number")
             {
                 // .replace(new RegExp('\{ \}', 'g'),"{"+subscriptText+"}")
-                Window.parentObject.variables[variable].parentSymbol = 
-                Window.parentObject.variables[variable].parentSymbolTemplate.replace(
-                    new RegExp('\{ \}', 'g'),"{"+subscriptText+"}");
-                Window.parentObject.variables[variable].grayOut();
-            }
-            // Step 3.
-            else if(Window.parentObject.variables[variable].valueType == "association")
-            {
-                Window.parentObject.variables[variable].value.varDisplay = 
-                    Window.parentObject.variables[variable].value.varDisplayTemplate.replace(
-                        new RegExp('\{ \}', 'g'),"{"+subscriptText+"}");
-                Window.parentObject.variables[variable].value.updateVarDisplay();
+                // Step 3.
+                // else if(Window.parentObject.variables[variable].valueType == "association")
+                if(Window.parentObject.variables[variable].valueType == "association")
+                {
+                    if(
+                        Window.parentObject.variables[variable].value.startingAssocSubscriptEquationId 
+                        == Window.parentObject.name) // This part is debatable
+                    {
+                        console.log(Window.parentObject.variables[variable].value.startingAssocSubscriptEquationId);
+                        console.log(Window.parentObject.name);
+                        Window.parentObject.variables[variable].value.varDisplay = 
+                            Window.parentObject.variables[variable].value.varDisplayTemplate.replace(
+                                new RegExp('\{ \}', 'g'),"{"+subscriptText+"}");
+                        Window.parentObject.variables[variable].value.updateVarDisplay();
+                    }
+                }
+                else Window.parentObject.variables[variable].grayOut();
             }
         }
 
@@ -475,14 +487,15 @@ class ActiveEquation{
             }
             else if(this.variables[v].valueType == "association")
             {
-                var unitName = Window.defaultDomains[this.variables[v].value.domain][Window.unitFamily];
                 // console.log("Domain of the current variable box",
                 //     this.variables[v].value.domain,
                 //     Window.UNIT_DB[this.variables[v].value.domain],
-                //     Window.UNIT_DB[this.variables[v].value.domain][unitName],
-                //     Window.UNIT_DB[this.variables[v].value.domain][unitName]['unit']
                 // )
+                var unitName = Window.defaultDomains[this.variables[v].value.domain][Window.unitFamily];
                 
+                // console.log(Window.UNIT_DB[this.variables[v].value.domain][unitName]);
+                // console.log(Window.UNIT_DB[this.variables[v].value.domain][unitName]['unit']);
+
                 values[this.variables[v].value.var] = '1 '+
                     Window.UNIT_DB[this.variables[v].value.domain][unitName]['unit'];
                 domains[this.variables[v].value.var] = this.variables[v].value.domain;

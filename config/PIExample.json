@@ -78,40 +78,49 @@
     },
     "Finite Acceptors": {
       "PIExample/DFA":{},
+      "PIExample/NFA":{},
       "PIExample/NFAtoDFAExample":{}
     },
     "Regular Languages": {
-      "PIExample/regularExpression":{},
-      "PIExample/grammarRegularExpression": {},
-      "PIExample/expressionRegular": {},
-      "PIExample/regularGrammar": {},
-      "PIExample/NFAToRE": {},
-      "PIExample/RightLinearRG": {},
-      "PIExample/STA": {},
-      "PIExample/ClosureConcept": {},
-      "PIExample/ClosureRegularLang": {},
-      "PIExample/RegularLangClosedUnder": {}
+      "PIExample/RLRegularExpression":{},
+      "PIExample/RLRegularGrammarExpression": {},
+      "PIExample/RLExpressionRegular": {},
+      "PIExample/RLConvertRLRE": {},
+      "PIExample/RLNFAtoRECON":{},
+      "PIExample/RLregularGrammar": {},
+      "PIExample/RLNFAToRE": {},
+      "PIExample/RLRightLinearRG": {},
+      "PIExample/RLSTA": {},
+      "PIExample/RLClosureConcept": {},
+      "PIExample/RLClosureRegularLang": {},
+      "PIExample/RLClosedUnder": {}
     },
     "Identifying Non-regular Languages":{
       "PIExample/INRL":{}
     },
-    "Context-Free Grammars and Languages":{},
-    "Pushdown Automata":{},
+    "Context-Free Grammars and Languages":{
+      "PIExample/CFLAmb": {}
+    },
+    "Pushdown Automata":{
+      "PIExample/PDA": {}
+    },
     "Properties of Context-free Languages":{},
     "Models of Computation":{
       "PIExample/TMGeneralModel":{},
       "PIExample/TMInterpreting":{},
       "PIExample/TMDecidableVSAcceptable":{},
       "PIExample/TMComplicatedMachine1":{},
-      "PIExample/TMComplicatedMachine2":{}
+      "PIExample/TMComplicatedMachine2":{},
+      "PIExample/TMComplicatedMachine3":{}
+
     },
     "Parsing":{},
     "Limits to Computing":{},
     "NP-Completeness": {
-      "WuChen/PairToSortCONPI": {},
-      "WuChen/LowerBound": {},
-      "WuChen/TwoMulExample": {},
-      "WuChen/TravelSalesman": {}
+      "PIExample/PairToSortCONPI": {},
+      "PIExample/LowerBound": {},
+      "PIExample/TwoMulExample": {},
+      "PIExample/TravelSalesman": {}
    }
   }
 }

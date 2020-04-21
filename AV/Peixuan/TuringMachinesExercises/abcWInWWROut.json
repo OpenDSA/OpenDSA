@@ -1,0 +1,19 @@
+[
+  {
+    "expression":"ww^R",
+    "description":"Write a Turing machine on input alphabet Σ = {a,b,c} that takes input w and outputs___",
+    "type":"description",
+    "testCases":[
+      {"a":"aa"},
+      {"ab":"abba"},
+      {"ac":"acca"},
+      {"bc":"bccb"},
+      {"abc":"abccba"},
+      {"aabca":"aabcaacbaa"}
+    ],
+    "graph":{
+      "nodes":[],
+      "edges":[]
+    }
+  }
+]

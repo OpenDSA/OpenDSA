@@ -9,7 +9,7 @@
    :topic: Finite Automata
 
 
-Deterministic Finite Machines
+DFA: Deterministic Finite Acceptor
 =================================
 Deterministic Finite Machines
 --------------------------------------

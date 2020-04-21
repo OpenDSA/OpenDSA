@@ -4,11 +4,11 @@
 .. avmetadata::
     :author: Bailey Spell and Jesse Terrazas
 
-Chapter 3
-=============================================
+Blockchain Basics
+=================
 
-Basic Blockchain
-----------------
+What is a Blockchain?
+---------------------
 
 At the very core of the concept, Blockchain is a linked list! 
 That is, data is contained in nodes and these nodes point to a successor.
@@ -36,6 +36,9 @@ subtracting from their money balance, verify the participants using
 public and private keys, and keep identities secure if necessary.
 At all times, all debts are publicly known, verifiable, and immutable.
 
+.. avembed:: AV/Blockchain/splitwise.html pe
+   :long_name: Splitwise Example Diagram
+
 Distributed Public Ledgers
 --------------------------
 
@@ -46,6 +49,9 @@ nodes, one is chosen to become the next block of the main chain, and all nodes t
 overwrite their chains with the new and current copy of the blockchain. This eliminates 
 central authority of the blockchain and adds a level of consensus that preserves the 
 immutability of the ledger.
+
+.. avembed:: AV/Blockchain/distributedLedger.html pe
+   :long_name: Distributed Ledger Diagram
 
 What's The Point?
 -----------------

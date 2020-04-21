@@ -413,7 +413,7 @@ const equations = [
         domains: {
             'deform': 'length',
             'force': 'force',
-            'area': 'area',
+            'area': 'length2',
             'normalstresscoeff': 'pressure',
             'length1': 'length',
             'length2': 'length',

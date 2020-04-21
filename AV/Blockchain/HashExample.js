@@ -7,8 +7,8 @@ $(document).ready(function() {
       interpret = config.interpreter;       // get the interpreter
 
   function sha256(input) {
-    var hash = CryptoJS.SHA256(input);
-    return "0000" + hash.toString().substring(4, hash.length);
+    return CryptoJS.SHA256(input);
+    // return "0000" + hash.toString().substring(4, hash.length);
 }
 
   // Main action: Result of clicking "Calculate" button

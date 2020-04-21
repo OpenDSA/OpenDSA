@@ -389,6 +389,17 @@ class Workspace
 
     deleteEquations()
     {
+        // But first, remove all the associations as well.
+        for(var eq in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        {
+            if (!this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].selected) continue;
+            for(var v in this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables)
+            {
+                var variable = this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables[v];
+                if(variable.valueType == "association")
+                    variable.value.removeAssociation(variable);
+            }
+        }
         Window.windowManager.shiftUp(this.id);
     }
 
@@ -489,7 +500,7 @@ class Workspace
                 this.globalSectionObj,
                 this.globalPointerReference
             )
-            // console.log(currSolution);
+            console.log(currSolution);
 
             this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
             this.solutionCounter++;
