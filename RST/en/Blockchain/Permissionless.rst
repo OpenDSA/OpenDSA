@@ -117,11 +117,35 @@ value within a finite number of communication rounds.
 Within this context, a number of correct consensus algorithms exist,
 all using cryptographic techniques as key components.
 
-Things to discuss:
+Proof of Stake
+~~~~~~~~~~~~~~
 
-* How the algorithm works.
-* Why create a new algorithm? Why not stick with proof of work?
-* How did Etherium manage the process of changing its algorithm?
+:term:`Proof of Stake` was developed to ensure distributed consensus throughout a
+blockchain without relying on the immense computational power and energy 
+consumption required with :term:`Proof of Work`. 
+
+:term:`Proof of Stake` relies on transaction validators, validators, opposed to
+miners in a :term:`Proof of Work` system. Validators will provide a stake of their 
+as collateral, as explained above, in exchange for the right to verify transactions.
+Depending on the currency, the amount of currency that needs to be staked and the
+duration of the currency has been staked determine the eligibility of a validator to 
+be granted the right to verify a new block. To ensure that there is no foul play, the 
+staked coins are lost if a validator verifies incorrect transactions; however, if they
+validate honestly, they are rewarded with transaction fees. 
+
+:term:`Ethereum` an implementation of :term:`Proof of Stake` called :term:`Casper`
+that transitions :term:`Ethereum` from :term:`Proof of Work` to :term:`Proof of Stake`.
+The transition from :term:`Ethereum` 1.0 to 2.0 was termed the Serenity upgrade and has been taking 
+place in 3 separate phases. Each subsequent phase relies on the previous. 
+
+Phase 0 launches the Beacon Chain which manages the :term:`Casper` :term:`Proof of Stake`
+protocol. Phase 1 introduces Shard Chains as a key to future scalability. There will be
+64 of these chains introduce during this phase and they allow parallel transaction throughput.
+This phase is primarily concerned about the shard chains construction, consensus, and validity 
+on the data. Phase 2 brings all the functionality together. Shard chains will become structured
+chain states opposed to simplistic data containers while :term:`Smart Contracts` will finally be 
+introduced. Phase 0 is expected to launch in late July 2020, while phase 1 and 2 are later in 2020
+and 2021.
 
 
 Algorand
