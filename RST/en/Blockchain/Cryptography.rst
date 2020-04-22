@@ -176,13 +176,6 @@ As of now, our hashs are created by concatenating the block number, data, and th
 .. avembed:: AV/Blockchain/BlockchainExample.html pe
    :long_name: Blockchain Example
 
-This example shows a Bitcoin example of a blockchain. This conveys the idea of a nonce and how it effects the mining process.
-
-.. _BlockchainNonceExample:
-
-.. avembed:: AV/Blockchain/BlockchainNonceExample.html pe
-   :long_name: Blockchain Nonce Example
-
 Below is a slideshow demonstrating these importance of each of these concepts as a blockchain would grow.
 
 .. inlineav:: llistBlockchain ss
