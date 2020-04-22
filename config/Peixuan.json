@@ -64,6 +64,9 @@
   "chapters": {
     "Turing Machines Exercise Test": {
       "Peixuan/TuringExTest": {}
+    },
+	"Question adding test": {
+      "Peixuan/QuestionAddingTest": {}
     }
   }
 }
