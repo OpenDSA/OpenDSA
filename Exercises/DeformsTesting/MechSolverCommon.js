@@ -153,8 +153,8 @@ requirejs(["./mathjs.js"], function(){});
                 // console.log(solnResults.decision? "Final answer is correct": "Final answer is incorrect");
                 console.log(solnResults);
                 feedBackText += solnResults.decision? 
-                "<h2>"+(solnIndex+1)+" Final answer is correct</h2>":
-                "<h2>"+(solnIndex+1)+" Final answer is incorrect</h2>";
+                "<h2>Q"+(solnIndex+1)+". Final answer is correct</h2>":
+                "<h2>Q"+(solnIndex+1)+". Final answer is incorrect</h2>";
                 truthResults.push(solnResults);
             }
 
