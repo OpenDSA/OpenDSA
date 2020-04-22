@@ -151,4 +151,25 @@ and 2021.
 Algorand
 --------
 
-Needs to be done.
+Algorand is another popular Blockchain platform that utilizes a unique Proof of Stake 
+consensus algoriithm. Algorand uses what they call Pure Proof of Stake (PPoS). This 
+differs in that there are no staked coins to promote honesty. The reason is that in the worst case, 
+the staked coins are negligible in comparison to the malicious gain one could make for 
+themself in a large system. Algorand places its security in the honesty of the majority of the economy.
+
+Using PPos, owners of the majority of money are able to prevent other users from making transactions. 
+However, that would negatively affect the credibility built on the system, the credibilty of the 
+currency, and therefore would devalue the stake that the majority has in the economy. However, this 
+power allows for the honest to promote the security and reliability by stopping attackers in the 
+minority.
+
+Block generation is unique as well. Algorand uses a two-phase process. The first phase randomly 
+selects a user to produce the next block. The second phase chooses 1000 more 
+users that act as the committee and verify whether the block is correct. The addition of a committee 
+is so that if a bad actor were to be chosen to produce a block, the committee would be able 
+to successfully catch the attempt. No minority of bad actors would be able to successfully overturn 
+the flagging of a malicious block. 
+
+Lastly, everyone involved is chosen by themselves! The power given to affect the blockchain is 
+decentralized by requiring everyone to run a cryptographically fair lottery. Tokens deemed as 
+winners by the lottery represent a committee member.
