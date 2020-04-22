@@ -174,7 +174,7 @@ Books/%: config/%.json min pyVenvCheck
 	@echo "No explicit targets; instead trying: $(MAKE) Books/$@"
 	$(MAKE) Books/$@
 
-BOOK_SLIDES = FLslides CS4114slides CS5040slides CS3slides CS3114slides CS3F18slides CS5040Master CS3SS18slides
+BOOK_SLIDES = FLslides CS4114slides CS5040slides CS3slides CS3114slides CS3F18slides CS5040Master CS3SS18slides TestSlides
 
 # TODO: can remove -bb option once all py3 str encoding in odsa is debugged 
 $(BOOK_SLIDES) : % : config/%.json min pyVenvCheck
