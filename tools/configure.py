@@ -526,24 +526,28 @@ def configure(config_file_path, options):
     # Run make on the output directory
     print ('\nBuilding textbook...')
 
+    job = ['make', '-C', config.book_dir]
     if slides:
-        proc = subprocess.Popen(
-            ['make', '-C', config.book_dir, 'slides'], stdout=subprocess.PIPE)
+        job.append('slides')
     else:
-        proc = subprocess.Popen(
-            ['make', '-C', config.book_dir], stdout=subprocess.PIPE)
-    for line in iter(proc.stdout.readline, b''):
-        print(str(line, encoding='utf-8').rstrip())
-        ''' TODO: start finding encoding errors.
-        These are because python 2.7 implicitly converted string encodings.  
-        Py3 _needs_ explicit encoding to be defined. 
-        TODO: look into the python3 -bb command option to catch some encoding errors. 
-        '''
+        job.append("html")
+        job.append("min")
+
+    print("$$$ Subprocess Started: " + " ".join(job))
+    proc = subprocess.run(job)
+    print("$$$ Subprocess Ended: " + " ".join(job))
+    proc.check_returncode()
+    
+    ''' TODO: Keep looking for encoding errors.
+    These are because python 2.7 implicitly converted string encodings.  
+    python2.7 encodes strings IMplicitly, python3 does this EXplicitly instead. 
+    ''' 
 
     # Calls the postprocessor to update chapter, section, and module numbers,
     # and glossary terms definition
-    update_TOC(config.book_src_dir, config.book_dir +
-               config.rel_book_output_path, module_chap_map, standalone_modules)
+
+    book_dest_dir = config.book_dir + config.rel_book_output_path
+    update_TOC(config.book_src_dir, book_dest_dir, module_chap_map, standalone_modules)
     if 'Glossary' in processed_modules:
         update_TermDef(
             config.book_dir + config.rel_book_output_path + 'Glossary.html', cmap_map['concepts'])
