@@ -287,59 +287,66 @@ class ActiveEquation{
         inputBox[0].style.top = event.pageY+5+"px";
         inputBox[0].style.left = event.pageX+10+"px";
         Window.box = inputBox;
-        inputBox[0].querySelector("#submit").addEventListener("click", Window.parentObject.setSubscript);
+        inputBox[0].querySelector("#submit").addEventListener("click", 
+            e=> { 
+                e.stopPropagation();
+                Window.parentObject.setSubscript(
+                    e,
+                    Window.box[0].querySelector("#subscriptname").value,
+                    Window.parentObject);
+                Window.box.close();
+                delete Window.box;
+                delete Window.parentObject;
+            } 
+        );
     }
-    setSubscript(event)
+    setSubscript(event, subscriptText, equationObject)
     {
-        var subscriptText = Window.box[0].querySelector("#subscriptname").value;
-        event.stopPropagation();
+        // var subscriptText = Window.box[0].querySelector("#subscriptname").value;
+        // event.stopPropagation();
         if(subscriptText == "") subscriptText = " ";
         
         // Step 1.
-        Window.parentObject.visualComponents["text"].text(
+        equationObject.visualComponents["text"].text(
             katex.renderToString(
-                Window.parentObject.equationObjectReference.latex.replace(new RegExp('\{ \}', 'g'),"{"+subscriptText+"}")
+                equationObject.equationObjectReference.latex.replace(new RegExp('\{ \}', 'g'),"{"+subscriptText+"}")
                 )
             );
         
         var assocVariables = [];
-        for(var variable in Window.parentObject.variables)
+        for(var variable in equationObject.variables)
         {
             // Update the variable internal symbols for later associations and solving
             // This can be referenced from the current equation's equationRefObj and the variable's semantic name.
 
             // Update the current displayed boxes
             // Step 2.
-            Window.parentObject.variables[variable].parentSymbol = 
-            Window.parentObject.variables[variable].parentSymbolTemplate.replace(
+            equationObject.variables[variable].parentSymbol = 
+            equationObject.variables[variable].parentSymbolTemplate.replace(
                 new RegExp('\{ \}', 'g'),"{"+subscriptText+"}");
             
-            if(Window.parentObject.variables[variable].valueType != "number")
+            if(equationObject.variables[variable].valueType != "number")
             {
                 // .replace(new RegExp('\{ \}', 'g'),"{"+subscriptText+"}")
                 // Step 3.
                 // else if(Window.parentObject.variables[variable].valueType == "association")
-                if(Window.parentObject.variables[variable].valueType == "association")
+                if(equationObject.variables[variable].valueType == "association")
                 {
                     if(
-                        Window.parentObject.variables[variable].value.startingAssocSubscriptEquationId 
-                        == Window.parentObject.name) // This part is debatable
+                        equationObject.variables[variable].value.startingAssocSubscriptEquationId 
+                        == equationObject.name) // This part is debatable
                     {
-                        console.log(Window.parentObject.variables[variable].value.startingAssocSubscriptEquationId);
-                        console.log(Window.parentObject.name);
-                        Window.parentObject.variables[variable].value.varDisplay = 
-                            Window.parentObject.variables[variable].value.varDisplayTemplate.replace(
+                        console.log(equationObject.variables[variable].value.startingAssocSubscriptEquationId);
+                        console.log(equationObject.name);
+                        equationObject.variables[variable].value.varDisplay = 
+                        equationObject.variables[variable].value.varDisplayTemplate.replace(
                                 new RegExp('\{ \}', 'g'),"{"+subscriptText+"}");
-                        Window.parentObject.variables[variable].value.updateVarDisplay();
+                                equationObject.variables[variable].value.updateVarDisplay();
                     }
                 }
-                else Window.parentObject.variables[variable].grayOut();
+                else equationObject.variables[variable].grayOut();
             }
         }
-
-        Window.box.close();
-        delete Window.box;
-        delete Window.parentObject;
     }
     OldgetUnitOfVariable(varName)
     {

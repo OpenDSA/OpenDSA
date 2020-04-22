@@ -294,7 +294,6 @@ class EquationBank{
     {
         // We have access to the equations dictionary in equation_bank.js, we process it directly.
         // var eqDict = {};
-
         for(var objectIndex in equations)
         {
             var currentObj = equations[objectIndex];
@@ -322,6 +321,67 @@ class EquationBank{
                 // eqDict[currentObj["group"]]++;
             }
         }
+        this.equation_pages["Favourites"] = {
+            "pagetitlejsav": null,  // JSAV label for pagename
+            "pagejsav": {},       // JSAV for the list; currently av.ds.array type
+            "equations": {},          // actual list of equations
+                 // Effectively a number and the object reference.
+                // The index itself draws from the index on the array for that page.
+                // Getting the eqobject includes using the page title name and the index in the array
+                // that was clicked and passed to the handler.
+            "visualComponents": {
+                "POSITION_X": this.DIMENSIONS["PAGE"]["POSITION_X"],
+                "POSITION_Y": this.DIMENSIONS["PAGE"]["POSITION_Y"]+15,
+            }
+        };
+    }
+    addToFavourites(currentEqnObject)
+    {
+        // console.log("Adding to favourites", eqobject.group, eqobject.id);
+        var jsavEq = Window.jsavObject.label(
+            katex.renderToString(currentEqnObject["latex"]),
+            {
+                left: this.equation_pages["Favourites"]["visualComponents"]["POSITION_X"],
+                top: this.equation_pages["Favourites"]["visualComponents"]["POSITION_Y"],
+                visible: false
+            }
+        ).addClass("selectableEquation");
+        this.equation_pages["Favourites"]["equations"][currentEqnObject["id"]] = currentEqnObject;
+        this.equation_pages["Favourites"]["pagejsav"][currentEqnObject["id"]] = jsavEq;
+        this.equation_pages["Favourites"]["visualComponents"]["POSITION_Y"] += 15 + currentEqnObject["height"];
+        
+        jsavEq.hide();
+        jsavEq.element[0].dataset.id = currentEqnObject["id"];
+        jsavEq.element[0].dataset.status = 'no'; // Becomes yes when selected.
+        jsavEq.element[0].addEventListener(
+            "click", e=> {
+                e.stopPropagation();
+                
+                // De-select the previous one
+                if(this.currentSelectedEquationObject != null)
+                {
+                    this.currentSelectedEquationObject.element.dataset.status='no';
+                    if(this.currentSelectedEquationObject.element.dataset.id != e.target.dataset.id) {
+                        e.target.dataset.status = 'yes';
+                        this.currentSelectedEquationObject = {
+                            element: 
+                            this.equation_pages[this.lastPageShown]["pagejsav"][e.target.dataset.id].element[0],
+                            eqobject: this.equation_pages[this.lastPageShown]["equations"][e.target.dataset.id]
+                        }
+                    }
+                    else this.currentSelectedEquationObject = null;
+                }
+                else {
+                    console.log("Initial click on empty"); 
+                    e.target.dataset.status = 'yes';
+                    this.currentSelectedEquationObject = {
+                        element: 
+                        this.equation_pages[this.lastPageShown]["pagejsav"][e.target.dataset.id].element[0],
+                        eqobject: this.equation_pages[this.lastPageShown]["equations"][e.target.dataset.id]
+                    }
+                }
+            }
+        )
     }
     showPage(pageName)
     {

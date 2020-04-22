@@ -58,7 +58,7 @@ class ValueBox{
                 e.stopPropagation();
                 if(this.globalPointerReference.currentClickedObject == this){
                     this.value = -1 * this.value;
-                    this.valueDisplay = String(-1 * this.valueDisplay);
+                    this.valueDisplay = Window.valueStringRepr(this.value);
                     this.setValueUnit(this.valueDisplay,this.unitDisplay);
 
                     this.globalPointerReference.currentClickedObject = null;
@@ -135,13 +135,14 @@ class ValueBox{
                     // Change internals
                     var oldUnit = this.unit;
                     this.unit = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unit'];
+                    console.log(this.unit);
                     this.value = mathjs.evaluate("number("+this.value+" "+oldUnit+", "+this.unit+")")
                     // this.valueDisplay = Window.valueTruncate(this.value);
                     this.valueDisplay = Window.valueStringRepr(this.value);
+                    this.unitDisplay = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unitDisp'];
 
                     // Change external views
-                    this.setValueUnit(String(this.valueDisplay),
-                    Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unitDisp']);
+                    this.setValueUnit(String(this.valueDisplay), this.unitDisplay);
                     element.close();
                 }
             )

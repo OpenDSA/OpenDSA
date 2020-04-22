@@ -241,7 +241,7 @@ const equations = [
         params: ['normalstressallowed', 'FS', 'normalstressfailure'],
         variables: {
             'normalstressallowed': '\\sigma_{allow_{ }}',
-            'normalstressfailure': '\\sigma_{failure_{ }',
+            'normalstressfailure': '\\sigma_{failure_{ }}',
             'FS': 'FS_{ }'
         },
         domains: {
@@ -262,7 +262,7 @@ const equations = [
         params: ['shearstressallowed', 'FS', 'shearstressfailure'],
         variables: {
             'shearstressallowed': '\\tau_{allow_{ }}',
-            'shearstressfailure': '\\tau_{failure_{ }',
+            'shearstressfailure': '\\tau_{failure_{ }}',
             'FS': 'FS_{ }'
         },
         domains: {
