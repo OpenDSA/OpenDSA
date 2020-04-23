@@ -120,6 +120,9 @@
       "PIExample/LowerBound": {},
       "PIExample/TwoMulExample": {},
       "PIExample/TravelSalesman": {},
+      "PIExample/KClique": {},
+      "PIExample/SATProof": {},
+      "PIExample/NPCCoping": {},
       "PIExample/UnsolveableProblems1": {}
    }
   }
