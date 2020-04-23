@@ -99,7 +99,9 @@
       "PIExample/INRL":{}
     },
     "Context-Free Grammars and Languages":{
-      "PIExample/CFLAmb": {}
+      "PIExample/CFLAmb": {},
+      "PIExample/CFLAmEx": {},
+      "PIExample/CFLAmEx2": {}
     },
     "Pushdown Automata":{
       "PIExample/PDA": {}
