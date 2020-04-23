@@ -1,0 +1,17 @@
+#NFAtoRECON {
+  height: 400px;
+}
+
+#NFAtoRECON .jsavmatrix {
+  margin-left: 0;
+}
+
+#NFAtoRECON .jsavhorizontalarray .jsavnode {
+  min-width: 50px !important;
+  max-width: 50px !important;
+}
+
+#NFAtoRECON .jsavhorizontalarray .jsavnode:nth-child(3) {
+  min-width: 100px !important;
+  max-width: 100px !important;
+}

@@ -1,0 +1,16 @@
+#Minimization1CON {
+  height: 680px;
+}
+
+#Minimization1CON .jsavoutput.jsavline {
+  height: 30px;
+}
+
+#Minimization1CON .jsavnode.jsavtreenode {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  max-width: 500px;
+  min-height: 0;
+  max-height: 500px;
+}
