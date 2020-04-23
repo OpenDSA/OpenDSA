@@ -14,7 +14,7 @@ $(document).ready(function () {
     av.displayInit();
 
     //frame 2
-    av.umsg("$\\textbf {Examples of regular languages}$:<br> keywords in a programming language<br> names of identifiers<br> integers<br> a finite list of miscillaneous symbols: = ;");
+    av.umsg("$\\textbf {Examples of regular languages}$:<br> $-$ keywords in a programming language<br> $-$ names of identifiers<br> $-$ integers<br> $-$ a finite list of miscillaneous symbols: = ;");
     av.step();
 
     //frame 3
@@ -22,7 +22,7 @@ $(document).ready(function () {
     av.step();
 
     //frame 4
-    av.umsg("$\\textbf {Examples for Not Regular languages}$:<br> expressions: $((a+b)−c)$<br>block structures ($\\{\\}$ in Java/C++ and begin ... end in Pascal)")
+    av.umsg("$\\textbf {Examples for Not Regular languages}$:<br> $-$ expressions: $((a+b)−c)$<br> $-$ block structures ($\\{\\}$ in Java/C++ and begin ... end in Pascal)")
     av.step();
 
     //frame 5
@@ -92,56 +92,24 @@ $(document).ready(function () {
     av.g.line(410, 45, 495, 103);
     av.step();
 
-    //frame 6
-    av.umsg();
-    var bt = av.ds.tree({nodegap: 15});
-  bt.root("S");
-  var rt = bt.root();
-  var lt = bt.newNode("A");
-  var lt2 = bt.newNode("A");
-  var lt3 = bt.newNode("B");
-  var lt4 = bt.newNode("B");
-  rt.addChild(lt);
-  rt.addChild("c");
-  rt.addChild(lt3);
-  lt.addChild("a");
-  lt.addChild(lt2);
-  lt.addChild("a");
-  lt2.addChild("λ");
-  lt3.addChild(lt4);
-  lt3.addChild("b");
-  lt3.addChild("b");
-  lt4.addChild("λ");
-  bt.layout();
-    av.step();
-
-    //frame 6
-    av.umsg();
-    av.step();
-
-    //frame 6
-    av.umsg();
-    av.step();
-
-    //frame 6
-    av.umsg();
-    av.step();
-
-    //frame 6
-    av.umsg();
-    av.step();
-
-    //frame 6
-    av.umsg();
-    av.step();
-
-    //frame 6
-    av.umsg();
-    av.step();
-
-
-
-
+    av.umsg("temp");
+  var tr = av.ds.tree({nodegap: 15});
+  var root_s_1 = tr.root("s");
+  var A_1 = tr.newNode("A");
+  var A_2 = tr.newNode("A");
+  var a_1 = tr.newNode("a");
+  var a_2 = tr.newNode("a");
+  var B_1 = tr.newNode("B");
+  var c_1 = tr.newNode("c");
+  root_s_1.addChild(A_1);
+  root_s_1.addChild(c_1);
+  root_s_1.addChild(B_1);
+  A_1.addChild(a_1);
+  A_1.addChild(A_2);
+  A_1.addChild(a_2);
+  
+  tr.layout();
+  av.step();
 
     av.recorded();
 });
