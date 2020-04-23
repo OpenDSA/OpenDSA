@@ -1,7 +1,7 @@
 .jsavcanvas {
     display: grid;
     width: 767px;
-    height: 800px;
+    height: 1400px;
     grid-template-columns: 500px 110px;
     grid-template-areas: "workspace equations";
 }
@@ -13,6 +13,10 @@
     min-height: 25px !important;
     max-height: 60px !important;
     padding: 2% 7% 2% 7% !important;
+}
+
+.jsavdialog.ui-draggable > ul > li:hover {
+    background-color: orange !important;
 }
 
 /* #equationbox {
@@ -56,10 +60,22 @@
 } */
 
 .boxparam {
+    border: 0.05em solid black;
+    border-radius: .2em;
     padding: 0px 0px;
 }
 
-.boxparam:hover {
+.value[data-status='empty']{
+    opacity: 0.3;
+}
+
+.unit:hover[data-status='filled'] {
+    cursor: pointer !important;
+    opacity: 0.5;
+    background-color: green;
+}
+
+.value:hover {
     cursor: grab !important;
     opacity: 0.5;
     background-color: orange !important;
@@ -69,13 +85,13 @@
     background-color: orange;
 } */
 
-.boxparam[data-domain='filled'] {
+/* .boxparam[data-domain='filled'] {
     padding: 1px 2px;
     border-radius: 4px;
     border-style: solid;
     border-width: 1px;
     border-color: black;
-}
+} */
 
 /* .boxparam[data-domain="length"] {
     background-color: rgb(126, 255, 126);
@@ -126,7 +142,7 @@
 
 .workspacelabel {
     color: black;
-    font-size: 100%;
+    font-size: 120%;
     font-weight: 400;
     z-index: 1000;
    }
@@ -139,11 +155,15 @@
     cursor: pointer;
    }
 
-.boldface {
+.equationPageTitle {
     color: black;
-    font-size: 120%;
+    font-size: 150%;
     font-weight: 600;
     z-index: 500;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
    }
 
 .addequation {
@@ -182,12 +202,46 @@
     cursor: pointer;
 }
 
-.selectableEquation {
+.workspaceEquation {
     border: thin dashed black;
     padding: 2px;
     color: black;
     font-size: 100%;
     z-index: 500;
+}
+
+.solutionBox {
+    border: thin dashed black;
+    padding: 2px;
+    color: black;
+    font-size: 100%;
+    z-index: 500;
+}
+
+.selectableEquation[data-status="no"] {
+    border: thin dashed black;
+    padding: 2px;
+    color: black;
+    font-size: 130%;
+    z-index: 500;
+}
+
+.selectableEquation > * {
+    pointer-events: none;
+}
+
+.selectableEquation[data-status="yes"] {
+    background-color: yellow;
+    padding: 2px;
+    color: black;
+    font-size: 130%;
+    z-index: 500;
+}
+
+.selectableEquation:hover {
+    cursor: grab !important;
+    opacity: 0.5;
+    background-color: orange !important;
 }
 
 .boxedEquation {
@@ -372,6 +426,15 @@ mjx-container:focus {
     line-height: .5em;
     box-sizing: border-box;
     cursor: pointer;
+}
+
+.helpPage {
+    width: 500px;
+    padding: 20px;
+}
+
+.helpPage > ol {
+    list-style-type: circle;
 }
 
 @keyframes flashingBg {

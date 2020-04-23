@@ -1,3 +1,7 @@
 #SkipListIntroCON {
   height: 400px;
 }
+
+#SkipListIntroCON .jsavoutput.jsavline {
+  height: 60px;
+}

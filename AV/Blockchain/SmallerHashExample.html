@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- Simple activity that shows students an example of 
+     hashing that blockchains utilize
+     Written by Bailey Spell and Jesse Terrazas 
+-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SHA-256 Calculator with 16 Characters</title>
+  <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="SmallerHashExample.css" type="text/css" />
+</head>
+
+<body>
+  <div id="container">
+    <p class="instructions">
+        Type in any string to see the first 16 hexidecimal digits of
+        the hash. <br/>
+    </p>
+    <textarea id="inputArea" rows="3" cols="63" placeholder="Enter anything to be hashed"></textarea>
+    <p class="label">Hash:</p>
+    <textarea class="output" rows="1" cols="16" disabled></textarea>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="../../lib/JSAV-min.js"></script>
+  <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+  <script src="SmallerHashExample.js"></script>
+</body>
+</html>

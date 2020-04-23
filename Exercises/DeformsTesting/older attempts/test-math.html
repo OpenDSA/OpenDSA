@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-    <title>Deforms Basic Problem</title>
+    <title>Testing mathjs</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.1/math.min.js"></script>
     <script src=".././jiggzson-nerdamer-432dd54/nerdamer.core.js"></script>
     <script src=".././jiggzson-nerdamer-432dd54/Algebra.js"></script>
@@ -30,27 +30,29 @@
         //                 "delta=delta_a+delta_s"
         //             ]
         //         )
-        var soln = nerdamer.solveEquations(
-                    [
-                        "a_x=0.5",
-                        "a_y=0.3",
-                        "l_s=8",
-                        "l_a=5",
-                        "d_s=(-25+29)*l_s*a_x",
-                        "d_a=(-25+29)*l_a*a_y",
-                        "d=d_a+d_s"
-                    ]
-                )
+        
+        // var soln = nerdamer.solveEquations(
+        //             [
+        //                 "a_x=0.5",
+        //                 "a_y=0.3",
+        //                 "l_s=8",
+        //                 "l_a=5",
+        //                 "d_s=(-25+29)*l_s*a_x",
+        //                 "d_a=(-25+29)*l_a*a_y",
+        //                 "d=d_a+d_s"
+        //             ]
+        //         )
         
         //Unknowns: \delta, \sigma, \delta_T
         //NOTE: All the constants have been substituted. Please follow patterns accordingly later on.
-        /*var soln = nerdamer.solveEquations(
-                    [
-                        "d=sigma*sqrt(0.8/70000000000)",
-                        "d_T=0.000023*(100-25)*0.8",
-                        "d+d_T=0.001"
-                    ]
-        )*/
+        
+        // var soln = nerdamer.solveEquations(
+        //             [
+        //                 "d=sigma*sqrt(0.8/70000000000)",
+        //                 "d_T=0.000023*(100-25)*0.8",
+        //                 "d+d_T=0.001"
+        //             ]
+        // )
         
         /* var soln = nerdamer.solveEquations(
                     [
@@ -59,14 +61,40 @@
         ) */
         
         var soln = nerdamer.solveEquations(
-                [
-                    "a_a=0.001",
-                    "a_b=0.000023",
-                    "a_d=0.8",
-                    "a_a = a_b * a_c * a_d",
-                ]
-            );
+            [
+                "a_a=0.001",
+                "a_b=0.000023",
+                "a_d=0.8",
+                "a_a = a_b * a_c * a_d",
+                "b_a = a_a",
+                "b_a = 0.001 * b_b * 0.8"
+            ]
+        );
+        console.log(soln);
+
+        var solnDict = {}
+        for(var i=0; i<soln.length; i++)
+            solnDict[soln[i][0]] = soln[i][1];
         
+        console.log(solnDict);
+
+        var soln = nerdamer.solveEquations(
+            [
+                "b_x=25",
+                "a_c="+solnDict['a_c'],
+                "b_z=b_x+a_c"
+            ]
+        )
+        console.log(soln);
+
+        var soln = nerdamer.solveEquations(
+            [
+                "b_z="+solnDict['a_c']+"+25",
+                "x=0+-b_z"
+            ]
+        )
+        console.log(soln);
+
         /*
         var subs = [
              nerdamer("d_T=a*(T-T_0)*L"),

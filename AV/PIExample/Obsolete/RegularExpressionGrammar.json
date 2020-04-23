@@ -1,0 +1,14 @@
+{
+  "translations": {
+    "en": {
+      "q0": {
+        "type": "multiple",
+        "question":"The NFA should start from $s$ and go to what stage until it reaches the final stage?",
+        "description": "To accept any regular expression $r$.",
+        "answer": "intermediate",
+        "choices": ["start", "intermediate", "final"]
+      }
+    }
+  }
+}
+  

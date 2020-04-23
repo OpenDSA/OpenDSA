@@ -26,6 +26,12 @@ class Workspace
         this.equationHashMap = {};  // This is used to keep track of an enumerate
                                     // multiple instances of the same equation.
 
+        this.LIST_OF_SOLUTIONS_IN_WORKSPACE = {};
+        this.solutionCounter = 0;
+        
+        this.lastSolution = null;
+        this.lastEquation = null;
+
         // Actually create the region for the new workspace
         this.DIMENSIONS = {
             "POSITION_X": dim_obj["CORNER_X"],
@@ -47,6 +53,7 @@ class Workspace
         this.removebutton = null;
 
         this.createBox();
+        console.log(this);
     }
     createBox()
     {
@@ -117,8 +124,9 @@ class Workspace
         document.getElementById(this.name+"addeq").addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation addition here.
-            this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
-            this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
+            console.log(this.globalEquationBank.currentSelectedEquationObject.eqobject);
+            // this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
+            // this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
             this.addNewEquation();
         });
 
@@ -142,6 +150,8 @@ class Workspace
         this.elements[4]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation deletion here.
+            this.globalSectionObj.logEvent({type: "Deleting equation"});
+            this.deleteEquations();
         });
 
         this.elements[5] = {
@@ -171,6 +181,9 @@ class Workspace
     destroyBox()
     {
         // Triggered by the clickhandler
+        Window.windowManager.deleteWkspace(this.id);
+
+        // TODO: check delete equation objects
         this.elements.forEach(x => x['jsav'].clear())
         //This is fine, since the parent knows to remove this from their tracking.
         return this.id;
@@ -236,13 +249,15 @@ class Workspace
     {
         // equationListEntity is of type equation (which we will define later) and not 
         // necessarily everything in equation.js
-        var equationListEntity = this.globalEquationBank.currentSelectedEquationObject.eqobject;
+        var equationListEntity = Window.eqbank.currentSelectedEquationObject.eqobject;
         var lastHashMapID = 0;
         if(equationListEntity.name in this.equationHashMap)
             lastHashMapID = (list => list[list.length-1])
             (this.equationHashMap[equationListEntity.name]).counter+1;
-        else
+        else {
             lastHashMapID = 1;
+            Window.eqbank.addToFavourites(Window.eqbank.currentSelectedEquationObject.eqobject);
+        }
 
         // Creating the new active equation object, that handles the display
         var newActiveEquation = new ActiveEquation(
@@ -254,14 +269,21 @@ class Workspace
             this.globalSectionObj,
             this.globalPointerReference
         )
+        // If the equation already exists or was brought in once, preemptively
+        // add a subscript to this equation.
+        // This can be made more complex to update the subscripts for all of them
+        if(lastHashMapID > 1) newActiveEquation.setSubscript(null, String(lastHashMapID), newActiveEquation);
         
+        // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
-        this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
-
+        newActiveEquation.equationObjectReference.height+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+        // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         // Handling the internal initial bookkeeping
-        this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation
+        this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation;
         //        |_>  To be elaborated for additional operations.
         
+        // TODO: This needs to be included into deletion of equations, where this also gets updated
+        // To possibly reset the counter to 0 if required.
         if(equationListEntity.name in this.equationHashMap)
         {
             this.equationHashMap[equationListEntity.name]
@@ -283,75 +305,245 @@ class Workspace
                 }
             ];
         }
+        // console.log(newActiveEquation);
+        this.lastEquation = newActiveEquation;
+        Window.windowManager.shiftDown(this.lastEquation, this.id);
         //console.log(this.equationHashMap);
+        // console.log(this.DIMENSIONS);
     }
-    addAssociations()
-    {
+    // OldSolveEquations()
+    // {
+    //     // Step 1: See which equations are selected
+    //     var equationSet = [];
+    //     var equationObjectSet = [];
+    //     for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+    //     {
+    //         var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+    //         if(currentEqn.selected == true)
+    //         {
+    //             // console.log(currentEqn.name);
+    //             // for(var varIndex in currentEqn.variables)
+    //             // {
+    //             //     console.log(currentEqn.variables[varIndex]);
+    //             // }
+    //             equationObjectSet.push(currentEqn);
+    //             equationSet.push(currentEqn.createSolvableRepresentation());
+    //         }
+    //     }
+    //     //console.log(equationSet);
+    //     var variableSet = {};
+    //     // Find all the variables in the chosen equationObjectSet
+    //     for(var i=0; i<equationObjectSet.length; i++)
+    //     {
+    //         for(var v in equationObjectSet[i].variables)
+    //         {
+    //             variableSet[equationObjectSet[i].variables[v].id] = 
+    //             equationObjectSet[i].variables[v].parentSymbol;
+    //         }
+    //     }
 
+    //     // Step 2: Feed the list to nerdamer, see the output.
+    //     var soln = null;
+    //     if(equationSet.length > 1)
+    //         soln = nerdamer.solveEquations(equationSet);
+    //     else
+    //         //soln = equationObjectSet[0].solve();
+    //         soln = equationObjectSet[0].solve();
+    //     //console.log(soln);
+
+    //     // Step 3: Create the solution boxes, new boxes inside the workspace.
+    //     for(var i=0; i<soln.length; i++)
+    //     {
+    //         var currSolution = new ValueBox(
+    //             false,
+    //             {
+    //                 "visuals": this.DIMENSIONS.ELEMENTS,
+    //                 "dataset": {
+    //                     "value": soln[i][1],
+    //                     "unit": "",
+    //                     "variable": soln[i][0],
+    //                     "valueDisplay": String(Number(Math.round(soln[i][1]+'e3')+'e-3')),
+    //                     "unitDisplay": "",
+    //                     "variableDisplay": variableSet[soln[i][0]],
+    //                     "domain": ""
+    //                 }
+    //             },
+    //             this.globalSectionObj,
+    //             this.globalPointerReference
+    //         )
+    //         // Create a {} object and add the ValueBox object
+    //         //FUTURE: Add .element field to all the objects, and access to move them around
+    //         this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
+    //         this.solutionCounter++;
+
+    //         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
+    //         this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+    //         this.lastSolution = currSolution;
+    //         Window.windowManager.shiftDown(null, null, this.id);
+
+    //     }
+
+    //     // De-select selected equations, the list of selections will get cleared anyway.
+    //     for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+    //     {
+    //         var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+    //         if(currentEqn.selected == true)
+    //         {
+    //             currentEqn.visualComponents.tickmark.addClass("tickunselected");
+    //             currentEqn.visualComponents.tickmark.removeClass("tickselected");
+    //             currentEqn.selected = false;
+    //         }
+    //     }
+    // }
+
+    deleteEquations()
+    {
+        // But first, remove all the associations as well.
+        for(var eq in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        {
+            if (!this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].selected) continue;
+            for(var v in this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables)
+            {
+                var variable = this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].variables[v];
+                if(variable.valueType == "association")
+                    variable.value.removeAssociation(variable);
+            }
+        }
+        Window.windowManager.shiftUp(this.id);
     }
+
     solveEquations()
     {
         // Step 1: See which equations are selected
-        var equationSet = [];
+        var equationSet = []; // which stores the solvable representations in all cases.
         var equationObjectSet = [];
-        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
-        {
-            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
-            if(currentEqn.selected == true)
-            {
-                // console.log(currentEqn.name);
-                // for(var varIndex in currentEqn.variables)
-                // {
-                //     console.log(currentEqn.variables[varIndex]);
-                // }
-                equationObjectSet.push(currentEqn);
-                equationSet.push(currentEqn.createSolvableRepresentation());
-            }
-        }
-        //console.log(equationSet);
         var variableSet = {};
-        // Find all the variables in the chosen equationObjectSet
-        for(var i=0; i<equationObjectSet.length; i++)
-        {
-            for(var v in equationObjectSet[i].variables)
+        try {
+            for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
             {
-                variableSet[equationObjectSet[i].variables[v].id] = 
-                equationObjectSet[i].variables[v].parentSymbol;
+                var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+                if(currentEqn.selected == true)
+                {
+                    equationObjectSet.push(currentEqn);
+                    var solvableRepr = currentEqn.createSolvableRepresentation();
+                    console.log(solvableRepr);
+                    // Add the equation representations
+                    for(var x=0; x<solvableRepr["equations"].length; x++)
+                        equationSet.push(solvableRepr["equations"][x]);
+                    // Find out the unknown varDisplay-varName mapping pairs
+                    for(var vname in solvableRepr["unknowns"])  // vname is the internal symbol
+                    {
+                        var unitDesc = currentEqn.getUnitOfVariable(vname);
+                        // Find the unit of the variable from its corresponding equation
+                        // variableSet[vname] = {
+                        //     "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
+                        //     "unit": null,
+                        //     "domain": null,
+                        //     "unitDisp": null,
+                        // };
+                        if(vname in variableSet) continue;
+                        variableSet[vname] = {
+                            "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
+                            "unit": unitDesc[1],
+                            "domain": unitDesc[2][0],
+                            "unitDisp": unitDesc[2][1],
+                        };
+                        if(unitDesc.length == 4)
+                            variableSet[vname]["correction"] = unitDesc[3]; // multiply the result with this to correct.
+                    }
+                }
             }
         }
-
-        // Step 2: Feed the list to nerdamer, see the output.
-        var soln = null;
-        if(equationSet.length > 1)
-            soln = nerdamer.solveEquations(equationSet);
-        else
-            //soln = equationObjectSet[0].solve();
-            soln = equationObjectSet[0].solve();
-        //console.log(soln);
-
-        // Step 3: Create the solution boxes, new boxes inside the workspace.
-        for(var i=0; i<soln.length; i++)
+        catch (exception) {
+            JSAV.utils.dialog(
+                `<h4>Error</h4>
+                There was likely a problem with the units of the values. Perhaps an unrecognized
+                unit was used, or the unit of a quantity could not be discerned. Please review your work and
+                try again.`, 
+            {width: 200, closeText: "OK"});
+            return;
+        }
+        // console.log(variableSet);
+        // console.log(equationSet);
+        
+        // Computing solutions
+        var soln = {};
+        var listOfSolutions = null;
+        try {
+            if(equationObjectSet.length > 1)
+            {
+                listOfSolutions = nerdamer.solveEquations(equationSet);
+                //DEBUG: Primary checking for solutions in terms of knowns;
+                // Maybe useful for unit inference in system setting.
+                // listOfSolutions only provides the numbers; someway to 
+                // find the variables? Unknowns in terms of knowns? Ans: Nope, not useful
+                console.log(equationSet);
+            }
+            else
+            {
+                // Confirmed there is only one unknown in the system.
+                listOfSolutions = equationObjectSet[0].solve(); 
+                console.log(listOfSolutions);
+                console.log(variableSet);
+                // Yeah turns out the combined logic does not work for single solvers; gives erroneous results.
+                // var unitDesc = equationObjectSet[0].getUnitOfVariable();
+                // variableSet[unitDesc[0]]["unit"] = unitDesc[1];
+                // variableSet[unitDesc[0]]["domain"] = unitDesc[2][0];
+                // variableSet[unitDesc[0]]["unitDisp"] = unitDesc[2][1];
+            }
+        }
+        catch (exception) {
+            JSAV.utils.dialog(
+                `<h4>Error: Inconsistent system</h4>
+                There was an error in defining the system of equations. Namely, #unknowns =/= #equations.<br>
+                Please review the unknowns (associated variables) in the equations, as well as grayed out boxes
+                which by default are treated as unknowns.<br>Please also check that the remaining equation boxes are filled
+                with values.<br>Finally, please make sure to check all the boxes for the equations that are to be
+                included in the system to be solved.<br>`, 
+            {width: 200, closeText: "OK"});
+            return;
+        }
+        for(var i=0; i<listOfSolutions.length; i++)
+            soln[listOfSolutions[i][0]] = listOfSolutions[i][1];
+        // console.log(soln);
+        
+        // console.log("Before printing solutions", this.DIMENSIONS);
+        for(var unknownName in variableSet)
         {
-            new ValueBox(
+            var value = null;
+            if(variableSet[unknownName].length == 4)
+                value = soln[unknownName]*variableSet[unknownName]["correction"];
+            else
+                value = soln[unknownName];
+            var currSolution = new ValueBox(
                 false,
                 {
                     "visuals": this.DIMENSIONS.ELEMENTS,
                     "dataset": {
-                        "value": soln[i][1],
-                        "unit": "",
-                        "variable": soln[i][0],
-                        "valueDisplay": String(Number(Math.round(soln[i][1]+'e3')+'e-3')),
-                        "unitDisplay": "",
-                        "variableDisplay": variableSet[soln[i][0]],
-                        "domain": ""
+                        "value": value,
+                        "unit": variableSet[unknownName]["unit"],
+                        "variable": unknownName,    // The internal variable name eg: x_y
+                        // "valueDisplay": String(Number(Math.round(+'e3')+'e-3')),
+                        "valueDisplay": Window.valueStringRepr(value),
+                        "unitDisplay": variableSet[unknownName]["unitDisp"],
+                        "variableDisplay": variableSet[unknownName]["name"], // The greek/external symbol
+                        "domain": variableSet[unknownName]["domain"]
                     }
                 },
                 this.globalSectionObj,
                 this.globalPointerReference
             )
+            console.log(currSolution);
+
+            this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
+            this.solutionCounter++;
 
             this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
             this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+
+            this.lastSolution = currSolution;
+
+            Window.windowManager.shiftDown(null, this.id);
         }
 
         // De-select selected equations, the list of selections will get cleared anyway.
@@ -360,11 +552,13 @@ class Workspace
             var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
             if(currentEqn.selected == true)
             {
-                currentEqn.visualComponents.tickmark.addClass("tickunselected");
-                currentEqn.visualComponents.tickmark.removeClass("tickselected");
+                // currentEqn.visualComponents.tickmark.addClass("tickunselected");
+                // currentEqn.visualComponents.tickmark.removeClass("tickselected");
+                currentEqn.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
                 currentEqn.selected = false;
             }
         }
+
     }
 }
 

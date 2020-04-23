@@ -5,3 +5,9 @@
 #pairToSortCON .jsavoutput.jsavline {
   height: 35px;
 }
+
+#pairToSortCON .jsavhorizontalarray .jsavnode {
+  min-width: 35px !important;
+  max-width: 200px !important;
+
+}

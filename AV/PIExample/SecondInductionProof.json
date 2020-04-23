@@ -1,0 +1,39 @@
+{
+    "translations" :{
+      "en": {
+        "quo1": "In the previous examples, we took a collection of stamps of size n−1 (which, by the induction hypothesis, must have the desired property) and from that 'built' a collection of size n that has the desired property. We, therefore, proved the existence of some collection of stamps of size n with the desired property.",
+        "quo2": "Some times, reducing the solution from size of n to n-1 makes prove a theorem more easily. Another advantage to thinking in terms of 'reducing from n' rather than 'building up from n−1' is that reducing is more like what we do when we write a recursive function. In recursion, we would naturally compute some function of n by calling the function (recursively) on n−1 and then using the result to compute the value for n.",
+        "quo3": "Our next example of mathematical induction proves a theorem from geometry. It also illustrates a standard technique of induction proof where we take n objects and remove some object to use the induction hypothesis.",
+        "quo4": "Define a two-coloring for a set of regions as a way of assigning one of two colors to each region such that no two regions sharing a side have the same color. For example, a chessboard is two-colored. The following Figure shows a two-coloring for the plane with three lines. We will assume that the two colors to be used are black and white.",
+        "quo5": "$\\textbf {Theorem}$: The set of regions formed by n infinite lines in the plane can be two-colored.",
+        "quo6": "In the previous example, we would have great difficulty justifying that all possible collections of n lines are covered by our building process. But, by reducing from an arbitrary collection of n lines to something less, we avoid this problem. ",
+
+        "q1":{
+          "type": "select",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "description": "A $relation$ $R$ over set $S$ means a set of ordered pairs from $set$ $S$.",
+          "question": "if $S$ = $\\{a,b,c\\}$, then which of the following is a relation in $S$",
+          "answer": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"],
+          "choices": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"]
+        },
+        "sc1": "Consider the base case of a single infinite line in the plane. This line splits the plane into two regions.",
+        "sc2": "<br/>One region can be colored black and the other white to get a valid two-coloring.",
+        "sc3": "The induction hypothesis is that the set of regions formed by $n-1$ infinite lines can be two-colored.",
+        "sc4": "<br/>To prove the theorem for n, consider the set of regions formed by the $n-1$ lines remaining when any one of the $n$ lines is removed. For our example, assume that $n = 4$.",
+        "sc5": "So after we remove one, we now have 3 infinite lines.",
+        "sc6": "By the induction hypothesis, this set of regions can be two-colored.",
+        "sc7": "Now, put the $n^{th}$ line back.",
+        "sc8": "<br/>This splits the plane into two half-planes, each of which (independently) has a valid two-coloring inherited from the two-coloring of the plane with $n-1$ lines.",
+        "sc9": "Unfortunately, the regions newly split by the $n^{th}$ line violate the rule for a two-coloring.",
+        "sc10": "Let's take all regions on one side of the $n^{th}$ line (say half plane 2) and reverse their coloring. After doing so, this half-plane is still two-colored.",
+        "sc11": "<br/>Those regions split by the $n^{th}$ line are now properly two-colored, because the part of the region to one side of the line is now black and the region to the other side is now white.",
+        "sc12": "Thus, by mathematical induction, the entire plane is two-colored.",
+        "lab1": "Region1",
+        "lab2": "Region2",
+        "lab3": "$n^{th}$ line",
+        "lab4": "Half Plane 1",
+        "lab5": "Half Plane 2"
+      }
+    }
+  }
+  

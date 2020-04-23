@@ -1,0 +1,32 @@
+{
+    "translations": {
+      "en": {
+        "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+        "q1": {
+          "type": "multiple",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSb | ab$ <br> Derivation of $aaabbb$:<br> $S \\Rightarrow aSb \\Rightarrow aaSbb \\Rightarrow aaabbb$",
+          "question": "What would the language $L(G)$ be?",
+          "answer": "$a^nb^n$",
+          "choices": ["$a^nb^n$", "$ab^n$","$a^nb$", "$ab$"]
+        },
+        "q2": {
+            "type": "multiple",
+            "src": "../../../AV/Development/formal_language/FAEditor.html",
+            "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSb | ab$ <br> Derivation of $aaabbb$:<br> $S \\Rightarrow aSb \\Rightarrow aaSbb \\Rightarrow aaabbb$",
+            "question": "Is the language $L(G)$ regular?",
+            "answer": "No",
+            "choices": ["Yes", "No"]
+        },
+          "q3":{
+            "type": "multiple",
+            "src": "../../../AV/Development/formal_language/FAEditor.html",
+            "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br>Derivatino of $ababa$ $S \\Rightarrow aSA \\Rightarrow abSba \\Rightarrow ababa$ <br> $\\sum = \\{a,b\\}$",
+            "question": "What would the langauge $L(G)$ be?",
+            "answer": "$w = w^R$",
+            "choices": ["$w$", "$w = w^R$", "$w = ww^R$", "$w = ww$"]
+          }
+      }
+    }
+  }
+  

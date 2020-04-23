@@ -1,0 +1,14 @@
+#PairToSortCONPI {
+  height: 700px;
+  width: 1100px
+  }
+  
+  #PairToSortCONPI .jsavoutput.jsavline {
+    height: 35px;
+  }
+  
+  #PairToSortCONPI .jsavhorizontalarray .jsavnode {
+    min-width: 30px !important;
+    max-width: 200px !important;
+  }
+  

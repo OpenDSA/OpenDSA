@@ -1,0 +1,30 @@
+{
+    "translations": {
+      "en": {
+        "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+        "q1": {
+          "type": "multiple",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "description": "$L_1 = \\{a^*b^* \\cup b^*a^*\\}$ <br> $L_2 = \\{b^n | n is even, n > 0\\}$",
+          "question": "What is $\\dfrac{L_1}{L_2}?$",
+          "answer": "$a^*b^*$",
+          "choices": ["$a^*b^*$", "$ab^*$", "$a^*b$", "$a*b^*$"]
+        },
+        "q2": {
+            "type": "multiple",
+            "description": "$\\sum = \\{a, b, c\\}$, $Γ=\\{0,1\\}$",
+            "question": "What is $h(bc)$?",
+            "answer": "000",
+            "choices": ["000", "00", "0", "11"]
+        },
+        "q3": {
+            "type": "multiple",
+            "description": "$\\sum = \\{a, b, c\\}$, $Γ=\\{0,1\\}$",
+            "question": "What is $h(ab^*)$",
+            "answer": "$11(00)^*$",
+            "choices": ["1100", "11", "00", "$11(00)^*$", "$1100^*$"]
+          }
+      }
+    }
+  }
+  

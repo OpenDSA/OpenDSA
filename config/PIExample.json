@@ -62,30 +62,70 @@
     "required": true
   }, 
   "chapters": {
-    "Formal Languages": {
+    "Introduction": {
       "PIExample/Echo_frame1": {}
     },
-    "Grammars": {
-      "PIExample/grammar": {}
-    },
-    "Set Relations": {
+    "Mathematical Background": {
       "PIExample/mathematical": {},
-      "PIExample/setRelations": {}
+      "PIExample/setRelations": {},
+      "PIExample/proof":{},
+      "PIExample/continuedMathProof":{},
+      "PIExample/inductionProof": {},
+      "PIExample/proofInduction": {},
+      "PIExample/lastInductionProof": {},
+      "PIExample/grammar": {}
+
     },
-    "NFA to DFA": {
+    "Finite Acceptors": {
+      "PIExample/DFA":{},
+      "PIExample/NFA":{},
       "PIExample/NFAtoDFAExample":{}
     },
-    "Mathematical Proof Technique ": {
-      "PIExample/proof":{},
-      "PIExample/continuedMathProof":{}
-    },
     "Regular Languages": {
-      "PIExample/regularExpression":{},
-      "PIExample/grammarRegularExpression": {},
-      "PIExample/expressionRegular": {}
+      "PIExample/RLRegularExpression":{},
+      "PIExample/RLRegularGrammarExpression": {},
+      "PIExample/RLExpressionRegular": {},
+      "PIExample/RLConvertRLRE": {},
+      "PIExample/RLNFAtoRECON":{},
+      "PIExample/RLregularGrammar": {},
+      "PIExample/RLNFAToRE": {},
+      "PIExample/RLRightLinearRG": {},
+      "PIExample/RLSTA": {},
+      "PIExample/RLClosureConcept": {},
+      "PIExample/RLClosureRegularLang": {},
+      "PIExample/RLClosedUnder": {}
     },
-    "Mathematical Induction": {
-      "PIExample/inductionProof": {}
-    }
+    "Identifying Non-regular Languages":{
+      "PIExample/INRL":{}
+    },
+    "Context-Free Grammars and Languages":{
+      "PIExample/CFLAmb": {},
+      "PIExample/CFLAmEx": {},
+      "PIExample/CFLAmEx2": {}
+    },
+    "Pushdown Automata":{
+      "PIExample/PDA": {}
+    },
+    "Properties of Context-free Languages":{},
+    "Models of Computation":{
+      "PIExample/TMGeneralModel":{},
+      "PIExample/TMInterpreting":{},
+      "PIExample/TMDecidableVSAcceptable":{},
+      "PIExample/TMComplicatedMachine1":{},
+      "PIExample/TMComplicatedMachine2":{},
+      "PIExample/TMComplicatedMachine3":{}
+
+    },
+    "Parsing":{},
+    "Limits to Computing": {
+      "PIExample/PairToSortCONPI": {},
+      "PIExample/LowerBound": {},
+      "PIExample/TwoMulExample": {},
+      "PIExample/TravelSalesman": {},
+      "PIExample/KClique": {},
+      "PIExample/SATProof": {},
+      "PIExample/NPCCoping": {},
+      "PIExample/UnsolveableProblems1": {}
+   }
   }
 }

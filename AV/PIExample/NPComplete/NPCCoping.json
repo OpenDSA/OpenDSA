@@ -1,0 +1,71 @@
+{
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "select",
+        "description":"If in a graph G, there exists a complete subgraph of K nodes, G is said to contain a K-Clique.",
+        "question":"The following graph contains",
+        "answer":  ["2-clique", "3-clique", "4-clique", "5-clique", "6-clique"],
+        "choices": ["2-clique", "3-clique", "4-clique", "5-clique", "6-clique"]
+      },
+      "q2": {
+        "type": "multiple",
+        "description":"The clique with largest number of vertices in a graph G is called Maximum Clique in G.",
+        "question":"Which of the following is the Maximum Clique of the graph",
+        "answer": "6-clique",
+        "choices": ["4-clique", "5-clique", "6-clique", "7-clique"]
+
+      },
+      "q3": {
+        "type": "multiple",
+        "description":"Nobody knows whether there is a polynomial time solution for K-CLIQUE, but if such an algorithm is found for K-CLIQUE or for TRAVELING SALESMAN, then that solution can be modified to solve the other, or any other problem in NP, in polynomial time.",
+        "question":"A solution to slove any problem in NP in polynomial time can be found if a polynomial time solution for K-Clique / TRAVELING SALESMAN is found",
+        "answer":  "True",
+        "choices": ["True", "False"]
+      },
+      "q4": {
+        "type": "multiple",
+        "description":"The primary theoretical advantage of knowing that a problem P1 is NP-complete is that it can be used to show that another problem P2 is NP-complete. This is done by finding a polynomial time reduction of P1 to P2.",
+        "question":"A problem can be proved to be NP-Complete by finding a reduction of another NP-Complete problem to this one. ",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+
+      "q5": {
+        "type": "multiple",
+        "description":"There is a practical advantage to knowing that a problem is NP-complete. It relates to knowing that if a polynomial time solution can be found for any problem that is NP-complete, then a polynomial solution can be found for all such problems. The implication is that, <br><br>1.Because no one has yet found such a solution, it must be difficult or impossible to do; and<br>2.Effort to find a polynomial time solution for one NP-complete problem can be considered to have been expended for all NP-complete problems.",
+        "question":" if a polynomial time solution can be found for any problem that is NP-complete, then a polynomial solution can be found for all such problems.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q6": {
+        "type": "multiple",
+        "description":"Problems that are solvable in polynomial time on a regular computer are said to be in class P. Clearly, all problems in P are solvable in polynomial time on a non-deterministic computer simply by neglecting to use the non-deterministic capability. Some problems in NP are NP-complete.",
+        "question":"Not all problems in P are solvable in polynomial time on a non-deterministic computer simply by neglecting to use the non-deterministic capability",
+        "answer": "False",
+        "choices": ["True", "False"]
+      },
+
+      "q7": {
+        "type": "multiple",
+        "description":"We can consider all problems solvable in exponential time or better as an even bigger class of problems because all problems solvable in polynomial time are solvable in exponential time. Thus, we can view the world of exponential-time-or-better problems in terms of Figure 0.3.2.",
+        "question":"All problems in P are solvable in polynomial time on a non-deterministic computer simply by neglecting to use the non-deterministic capability",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q8": {
+        "type": "multiple",
+        "description":"The most important unanswered question in theoretical computer science is whether P = NP. If they are equal, then there is a polynomial time algorithm for TRAVELING SALESMAN and all related problems.",
+        "question":"There is a polynomial time algorithm for all NP-Complete problems if P = NP",
+        "answer": "True",
+        "choices": ["True", "False"]
+      }
+
+
+    }
+  }
+}
+

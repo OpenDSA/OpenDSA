@@ -104,6 +104,10 @@ Test: min
 	python --version
 	python $(CONFIG_SCRIPT) config/Test.json --no-lms
 
+Milen: min
+	python --version
+	python $(CONFIG_SCRIPT) config/Milen.json --no-lms
+
 DanaG: min
 	python $(CONFIG_SCRIPT) config/DanaG.json --no-lms
 
@@ -113,14 +117,11 @@ TJeffrey: min
 Michael: min
 	python $(CONFIG_SCRIPT) config/Michael.json --no-lms
 
-Tikhe: min
-	python $(CONFIG_SCRIPT) config/Tikhe.json --no-lms
+Aditya: min
+	python $(CONFIG_SCRIPT) config/Aditya.json --no-lms
 
 cschandr: min
 	python $(CONFIG_SCRIPT) config/cschandr.json --no-lms
-
-Taylor: min
-	python $(CONFIG_SCRIPT) config/Taylor.json --no-lms
 
 Raghu: min
 	python $(CONFIG_SCRIPT) config/Raghu.json --no-lms
@@ -139,6 +140,9 @@ CTEX: min
 
 Sam: min
 	python $(CONFIG_SCRIPT) config/Sam.json --no-lms
+
+Lin: min
+	python $(CONFIG_SCRIPT) config/Lin.json --no-lms
 
 Yinwen: min
 	python $(CONFIG_SCRIPT) config/Yinwen.json --no-lms
@@ -307,6 +311,9 @@ Ming: min
 
 Blockchain: min
 	python $(CONFIG_SCRIPT) config/Blockchain.json --no-lms
+
+Peixuan: min
+	python $(CONFIG_SCRIPT) config/Peixuan.json --no-lms
 
 nomin:
 	@cp lib/JSAV.js lib/JSAV-min.js

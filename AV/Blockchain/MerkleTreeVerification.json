@@ -1,0 +1,15 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Here we have the same tree that we explained above.",
+        "sc2": "Consider the case where we would want to verify transaction 2.",
+        "sc3": "To verify 2, all that is needed is the merkle root, H(1), and H(H3 + H4).",
+        "sc4": "H(2) can be derived via hashing the transaction we are verifying.",
+        "sc5": "H(H(1) + H(2)) can be derived via the hashing of H(1) and H(2).",
+        "sc6": "Finally, we can hash what's left to create a value that should match the merkle root provided transaction 2 was correct.",
+        "sc7": "Using only 3 different values, we are able to verify transaction 2. We ignore half of the tree and even the first transaction. As the tree grows, the work done increases logarithmically."
+
+      }
+    }
+  }
+  

@@ -15,8 +15,6 @@ Deforms
 Deforms exercise
 --------------------------------------
 
-.. avembed:: Exercises/DeformsTesting/EqnSolverPRO.html ka
-   :long_name: First example of tracking user clicks from inside a KA style exercise, using JSAV objects
+.. avembed:: Exercises/DeformsTesting/DeformsSimpleProblemPPRO.html ka
+   :long_name: Simple Deforms Problem example.
 
-.. avembed:: Exercises/DeformsTesting/DeformsProblemPRO.html ka
-   :long_name: First Deforms exercise, testing ground to see if everything works fine.

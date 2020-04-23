@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+    <title>Testing unit conversions for variables and determining from whole equations</title>
+    <script src="../mathjs.js"></script>
+    <script src=".././jiggzson-nerdamer-432dd54/nerdamer.core.js"></script>
+    <script src=".././jiggzson-nerdamer-432dd54/Algebra.js"></script>
+    <script src=".././jiggzson-nerdamer-432dd54/Calculus.js"></script>
+    <script src=".././jiggzson-nerdamer-432dd54/Solve.js"></script>
+    <script src=".././jiggzson-nerdamer-432dd54/Extra.js"></script>
+</head>
+
+<body>
+    <script>
+        // How to convert from one type of unit to another
+        // 1. Length
+        // 1.1 Within SI - power up and down
+        // 1.2 SI to imperial etc.
+        // 2. Pressure
+        // 3. Temperature
+        // 4. From an expression, determine the unit
+        // console.log(math.evaluate("number(1000 poundforce, kip)"))
+        // console.log(math.evaluate('number(90 km/h, m/s)'))
+        // console.log(math.evaluate('number(5 cm, mm)'))
+        // console.log(math.evaluate('number(1 degC, degF)'))
+        // console.log(math.evaluate('number(1 degC^-1, degF^-1)'))
+        // console.log(math.evaluate('1 ft * 1 lb/s').toSI().toString())
+        // console.log(math.evaluate('1 m * (1 degC^-1 * 1 m)^-1').toString())
+        // math.createUnit('ksi','1000 psi');
+        // math.createUnit('msi','1000 ksi');
+        // console.log(math.evaluate('number(1 Pa, kPa)'))
+        // console.log(math.evaluate('number(1 Pa, MPa)'))
+        // console.log(math.evaluate('number(1 Pa, GPa)'))
+        // console.log(math.evaluate('number(1 Pa, psi)'))
+        // console.log(math.evaluate('number(1 Pa, ksi)'))
+        // console.log(math.evaluate('number(1 Pa, msi)'))
+        // console.log(math.evaluate('number(1 N, kip)'))
+        // console.log(math.evaluate('number(1 N, lbf)'))
+        // console.log(mathjs.evaluate('number(1 hp, lbf ft/s)'));
+        // mathjs.createUnit({
+        //     'lbftpers':
+        //     {
+        //         'definition': 1/550+"lb*ft/s"
+        //     }
+        // });
+        // console.log(mathjs.evaluate('number(1 N m, kg m^2 / s^2)'));
+        // document.write(mathjs.evaluate('(1 N m * 1 m)/ (1 GPa * 1 mm^4)'));
+        // document.write(mathjs.evaluate('2 kN m * 2'));
+        // // console.log(math.evaluate('1 lbftpers').to('W').toString());
+        document.write(mathjs.evaluate('1 kN / 1 GPa'));
+        
+        // console.log(math.unit('100 m^3 Pa / mol / K').to('m^3 kPa / mol / K').toString())
+
+        // SO far, each variable's units can be converted, back and forth, no issues (except more complicated ones)
+        
+        // Now, to find the units of other quantities inside equations.
+        // Main question: how are the units determined for cases where >2 unknowns are there in equations?
+        // These units are tied in together - custom functionality isn't present.
+
+        // We substitute the equation in terms of the quantity in question.
+        // Then, replace the variables with 1 unit of the corresponding quantity.
+        /**
+         * Here's how:
+         * 1. For each equation selected, we go over the variable boxes in it.
+         * 2. Each variable box is associated with an internal symbol name appearing in the equation
+         * 3. Each box has the current unit in question, in the proper format.
+         * 4. Use this to construct the unit value, which is substituted into the equation as required. 
+         * 5. 
+         */
+         // The, we see what the final unit comes out to. 
+        // var equation = nerdamer("a_a = a_b * a_c * a_d");
+        // var substituted = equation.solveFor('a_a').toString()
+        // document.write();
+        // var values = {
+        //     // 'a_a': '1 mm',
+        //     'a_b': '1 degC^(-1)',
+        //     'a_c': '1 degC',
+        //     'a_d': '1 m'
+        // }
+        // for(var v in values)
+        // {
+        //     console.log(v)
+        //     console.log(values[v])
+        //     substituted = substituted.replace(v,"("+values[v]+")");
+        // }
+        // document.write(mathjs.evaluate(substituted));
+    </script>
+</body>

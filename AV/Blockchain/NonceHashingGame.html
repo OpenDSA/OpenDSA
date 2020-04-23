@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="NonceHashingGame.css" type="text/css" />
+</head>
+
+<body>
+
+    <div id="container">
+        <p class="instructions">
+            Change the nonce so that the hash has a leading zero.<br />
+        </p>
+        <textarea id="inputArea" rows="3" cols="63" placeholder="Enter anything to be hashed" disabled>This is the message!</textarea>
+        <p class="label">Nonce:</p>
+        <input class="nonce" id="nonce" name="nonce" min="1"/>
+        <input class="check" type="button" id="check" name="check"/>
+        <p class="label">Hash:</p>
+        <input class="output" disabled />
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../../lib/JSAV-min.js"></script>
+    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../../lib/odsaUtils-min.js"></script>
+    <script src="../../lib/odsaAV-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="NonceHashingGame.js"></script>
+</body>
+
+</html>

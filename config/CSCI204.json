@@ -358,17 +358,8 @@
           "threshold": 3
         }
       }, 
-      "Binary/WritingTraversals": {
-        "Binary Tree Increment By One Exercise": {
-          "points": 1.0
-        }
-      }, 
-      "BTRecurTutor/BinaryTreeInfFlw": {
-        "BinaryTreeMistakesCON": {
-          "points": 1.0, 
-          "threshold": 0.9
-        }
-      }, 
+      "Binary/WritingTraversals": {}, 
+      "BTRecurTutor/BinaryTreeInfFlw": {}, 
       "Binary/BinaryTreeImpl": {}, 
       "Binary/Composite": {}, 
       "Binary/BinaryTreeNodeSpace": {

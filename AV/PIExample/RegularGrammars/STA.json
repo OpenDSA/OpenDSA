@@ -1,0 +1,16 @@
+{
+    "translations": {
+      "en": {
+        "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+        "q1": {
+          "type": "multiple",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "description": "Can you draw a DFA, regular expression or regular grammar for this language?",
+          "question": "Is the language $L$ regular? $L = \\{a^nb^n | n > 0\\}$",
+          "answer": "No",
+          "choices": ["Yes", "No"]
+        }
+      }
+    }
+  }
+  
