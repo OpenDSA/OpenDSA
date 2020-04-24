@@ -20,7 +20,7 @@ $(document).ready(function() {
   //arrow variables
   var shallowCopyEmployeeArrow = av.g.line(125, 175, xPosRect + 60, yPosRect + 48,
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
-  var secondEmployeeArrow = av.g.line(xPosRect + 670, yPosRect + 45, xPosRect + 692, yPosRect,
+Jsav  var secondEmployeeArrow = av.g.line(xPosRect + 670, yPosRect + 45, xPosRect + 692, yPosRect,
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   var deepCopyEmployee = av.g.line(xPosRect + 670, yPosRect + 45 + 107, xPosRect + 692, yPosRect + 107,
            {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});

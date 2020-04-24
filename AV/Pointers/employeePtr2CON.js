@@ -24,7 +24,7 @@ $(document).ready(function() {
   thePath.hide();
 
   // Slide 1
-  av.umsg("We assign a pointee to a reference variable with a simple assignment statement.");
+  
   av.displayInit();
   av.step();
 

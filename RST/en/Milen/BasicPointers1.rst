@@ -95,10 +95,10 @@ Its value is only a reference to an ``Employee`` object.
 pointee |---| pointee is just the word that we used in these
 explanations.)
 
-.. inlineav:: employeeEmpRefCON dgm
+.. inlineav:: employeeEmpRefCON ss
    :links: AV/Pointers/employeeEmpRefCON.css
-   :scripts: AV/Pointers/employeeEmpRefCON.js
-   :align: center
+   :scripts: AV/Milen/employeeEmpRefCON.js
+   :output: show
 
 Going back to simple things like ``int`` and ``float`` variables that
 just store a value in a box:
