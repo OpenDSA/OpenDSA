@@ -1,0 +1,81 @@
+{
+  "translations": {
+    "en": {
+
+      "q0": {
+        "type": "multiple",
+        "description":"This module introduces an important concept for understanding the relationships between problems, called reduction. Reduction allows us to solve one problem in terms of another. Equally importantly, when we wish to understand the difficulty of a problem, reduction allows us to make relative statements about upper and lower bounds on the cost of a problem (as opposed to an algorithm or program).",
+        "question":"Is it true that Reduction allows us to solve one problem in terms of another?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+
+      "q01": {
+        "type": "multiple",
+        "description":"Here we see an example of a Sorting problem instance in which we have initialized an unsorted array and we obtained the sorted array as a result.",
+        "question":"Based on the example given on the left, if the input the Sorting Problem is 87, 34, 65, 98, 23, which of the following is the correct output?",
+        "answer": "23, 34, 65, 87, 98",
+        "choices": ["98, 87, 65, 34, 23", "87, 34, 65, 98, 23", "23, 34, 65, 87, 98"]
+      },
+
+      "q02": {
+        "type": "multiple",
+        "description":"When you buy or write a program to solve one problem, such as sorting, you might be able to use it to help solve a different problem. This is known in software engineering as software reuse. To illustrate this, let us consider another problem.",
+        "question":"Is it true that Software Reuse means the ability of a program to be able to solve a different problem other than what it is created for? ",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+
+      "q1": {
+        "type": "multiple",
+        "description":"One way to solve PAIRING is to use an existing sorting program to sort each of the two sequences, and then pair off items based on their position in sorted order. Technically we say that in this solution, PAIRING is reduced to SORTING, because SORTING is used to solve PAIRING.",
+        "question":"Is it true that PAIRING is reduced to SORTING means SORTING is used to solve PAIRING?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q2": {
+        "type": "select",
+        "description": "Reduction is a three-step process. The first step is to convert an instance of PAIRING into two instances of SORTING. The conversion step in this example is not very interesting; it simply takes each sequence and assigns it to an array to be passed to SORTING. The second step is to sort the two arrays (i.e., apply SORTING to each array). The third step is to convert the output of SORTING to the output for PAIRING. This is done by pairing the first elements in the sorted arrays, the second elements, and so on.",
+        "question": "Which of these belongs to the three steps for the recuction of Pairing?",
+        "answer": ["convert the output of SORTING to the output for PAIRING", "convert an instance of PAIRING into two instances of SORTING", "apply SORTING to each array"],
+        "choices": ["convert an instance of PAIRING into one instance of SORTING", "convert the output of SORTING to the output for PAIRING", "convert an instance of PAIRING into two instances of SORTING", "apply SORTING to each array", "convert the output of PAIRING to the output for Sorting"]
+      },
+      "q31": {
+        "type": "select",
+        "description":"A reduction of PAIRING to SORTING helps to establish an upper bound on the cost of PAIRING.",
+        "question":"If there is one method which can convert the inputs to PAIRING into inputs to SORTING fast enough and another method to convert the result of SORTING back to the correct result for PAIRING fast enough,",
+        "answer": ["the dominant cost of this solution is performing the sort operation", "the asymptotic cost of PAIRING cannot be more than the cost of SORTING", "the upper bound for PAIRING is in O(nlogn) if SORTING is used to solve PAIRING"],
+        "choices": ["the dominant cost of this solution is performing the sort operation", "the asymptotic cost of PAIRING cannot be more than the cost of SORTING", "the upper bound for PAIRING is in O(nlogn) if SORTING is used to solve PAIRING"]
+      },
+      "q32": {
+        "type": "multiple",
+        "description":"A reduction of PAIRING to SORTING helps to establish an upper bound on the cost of PAIRING.",
+        "question":"Is it true that pairing problem requires the elements of the two sequences be sorted?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q33": {
+        "type": "multiple",
+        "description":"A reduction of PAIRING to SORTING helps to establish an upper bound on the cost of PAIRING.",
+        "question":"Is it true that SORTING is the only way to solve PAIRING?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q4": {
+        "type": "multiple",
+        "description":"",
+        "question":"Base on the three-step reduction for PAIRING to SORTING, What is the next step for the graph on the left",
+        "answer": "apply SORTING to each array",
+        "choices": ["convert an instance of PAIRING into two instances of SORTING", "apply SORTING to each array", "convert the output of SORTING to the output for PAIRING"]
+      },
+      "q5": {
+        "type": "multiple",
+        "description":"Answer the following question base on the graph.",
+        "question":"What is the 4th result of pairing",
+        "answer": "42,48",
+        "choices": ["42,48", "42,59", "48,42", "59,42"]
+      }
+    }
+  }
+}
+

@@ -1,7 +1,7 @@
 class Variable{
     constructor(id, name, varName, symbol, domain, element, globalPointerReference){
         this.id = id;   // Fully qualified id that has variable name, equation, and workspace id
-        console.log(this.id)
+        // console.log(this.id)
         this.name = name;   // Only contains the context name for the quantity; eg: deform, thermalcoeff
 
         this.parentSymbolTemplate = symbol; // Stores the original symbol LaTeX for restoration from subscripting
@@ -28,7 +28,7 @@ class Variable{
         this.unitDisplay = element.childNodes[1];
         this.valueDisplay.dataset.status = "empty";
         this.unitDisplay.dataset.status = "empty";
-        console.log(this.name, element);
+        // console.log(this.name, element);
         
         // Creating the grayed out symbol representation
         this.grayOut();
@@ -154,7 +154,8 @@ class Variable{
                                 e2.stopPropagation();
                                 this.valueNegated = !this.valueNegated;
                                 this.value = -1 * this.value;
-                                this.valueRepr = Window.valueTruncate(this.value);
+                                // this.valueRepr = Window.valueTruncate(this.value);
+                                this.valueRepr = Window.valueStringRepr(this.value);
                                 this.setValueUnit(String(this.valueRepr), Window.unitDomainMap[this.currentUnit][1]);
 
                                 this.globalPointerReference.currentClickedObject = null;
@@ -235,7 +236,7 @@ class Variable{
                     if (this.globalPointerReference.currentClickedObject == null)
                     {
                         var element = JSAV.utils.dialog(
-                            "<ul><li>multiply by -1</li><li>add new to association</li><li>clear</li></ul>",
+                            "<ul><li>multiply by -1</li><li>add new to association</li><li>Rename association</li><li>clear</li></ul>",
                             {width: 120}
                         );
                         element[0].style.top = e.pageY+5+"px"; element[0].style.left = e.pageX+10+"px";
@@ -246,18 +247,46 @@ class Variable{
                                 this.valueNegated = !this.valueNegated;
                                 if(this.valueNegated) {
                                     // Then add the '-' to the beginning of the current symbol text
-                                    this.parentSymbol = '-'+this.parentSymbol;
-                                    // Render the new symbol.
-                                    this.grayOut();
+                                    // BUT since this is an association, and we're only doing it for
+                                    // this example, we only change the variable's display text.
+                                    var tempElement = Window.jsavObject.label(
+                                        katex.renderToString('-'+this.value.varDisplay)).hide();
+                                    this.valueDisplay.innerHTML = 
+                                    tempElement.element[0].childNodes[0].childNodes[1].childNodes[2].innerHTML;
+                                    tempElement.clear();
+                                    // vvv: this line might be too risky by itself; so we manually updated it.
+                                    // This is mainly because we didn't want to disturb the parentSymbol
+                                    // attribute by itself; we preserved what it originally looked like.
+                                    // We don't know if this messes up anything elsewhere; this is just being
+                                    // extra careful.
+                                    
+                                    // This vv-- logic on the other hand, may work; just leave it be though.
+                                    // this.parentSymbol = '-'+this.value.varDisplay;
+                                    // NOTE: grayOut() and line 48 in Association.updateVarDisplay()
+                                    // Are the same in that this.varDisplay and this.parentSymbol
+                                    // are the Assoc and non-assoc versions of the symbols, and
+                                    // the code modifies the same HTML element.
+                                    // updateVarDisplay() changes for all variables in an assoc,
+                                    // while changing parentSymbol only does it for this one.
+                                    // this.grayOut();
                                     // Revert it back, since we don't want it to actually show up later.
-                                    this.parentSymbol = this.parentSymbol.slice(1);
+                                    // This saves effort for negging a negation, which must revert to
+                                    // the original symbol used for the association
+                                    // (the version with subscripts)
+                                    // this.parentSymbol = this.value.varDisplay;
                                 }
                                 else {
+                                    var tempElement = Window.jsavObject.label(
+                                        katex.renderToString(this.value.varDisplay)).hide();
+                                    this.valueDisplay.innerHTML = 
+                                    tempElement.element[0].childNodes[0].childNodes[1].childNodes[2].innerHTML;
+                                    tempElement.clear();
+                                    // Leave it be, is counterpart to commented part above.
                                     // Don't worry about it
                                     // Else, remove the first symbol only (which is the '-' symbol)
                                     // this.parentSymbol = this.parentSymbol.slice(1);
                                     // Render the new symbol.
-                                    this.grayOut();
+                                    // this.grayOut();
                                 }
 
                                 this.globalPointerReference.currentClickedObject = null;
@@ -279,6 +308,33 @@ class Variable{
                             }
                         );
                         element[0].childNodes[0].childNodes[2].addEventListener(
+                            "click", e2=> {
+                                e2.stopPropagation();
+                                console.log("started renaming variable association");
+                                element.close();
+
+                                var inputPromptHTML = 
+                                '<h4>Enter a variable name here.</h4>'+
+                                '<input type="text" id="varname" name="varname" size="8" />'+
+                                '<h4>Enter a subscript here.</h4>'+
+                                '<input type="text" id="subscriptname" name="subscriptname" size="8" />'+
+                                '<input type="button" id="submit" value="Set association name"/>';
+                                var inputBox = JSAV.utils.dialog(inputPromptHTML, {width: 150});
+                                Window.box = inputBox;
+                                inputBox[0].querySelector("#submit").addEventListener("click", 
+                                    e=> { 
+                                        e.stopPropagation();
+                                        this.value.setAssocVarDisplay(
+                                            Window.box[0].querySelector("#varname").value,
+                                            Window.box[0].querySelector("#subscriptname").value
+                                        );
+                                        Window.box.close();
+                                        delete Window.box;
+                                    } 
+                                );
+                            }
+                        );
+                        element[0].childNodes[0].childNodes[3].addEventListener(
                             "click", e2=> {
                                 e2.stopPropagation();
                                 this.value.removeAssociation(this);
@@ -361,13 +417,16 @@ class Variable{
             this.currentDomain = this.globalPointerReference.currentClickedObject.currentDomain;
             this.currentUnit = this.globalPointerReference.currentClickedObject.currentUnit;
         }
-        this.valueRepr = Window.valueTruncate(this.value);
+        // this.valueRepr = Window.valueTruncate(this.value);
+        this.valueRepr = Window.valueStringRepr(this.value);
         this.element.setAttribute("data-domain", this.currentDomain);
         this.valueType = "number";
+        this.valueNegated = false;
         
         if(this.globalPointerReference.currentClickedObjectType == "value-box") {
             this.setValueUnit(
-                this.globalPointerReference.currentClickedObject.valueDisplay,
+                // this.globalPointerReference.currentClickedObject.valueDisplay,
+                this.valueRepr,
                 this.globalPointerReference.currentClickedObject.unitDisplay
             )
         }
@@ -418,6 +477,7 @@ class Variable{
         this.currentDomain = null;
         this.value = null;
         this.valueType = null;
+        this.valueNegated = false;
 
         this.unitDisplay.removeEventListener("click", this.changeUnits);
         this.valueDisplay.dataset.status = "empty";
@@ -430,6 +490,10 @@ class Variable{
         var tempElement = Window.jsavObject.label(katex.renderToString(this.parentSymbol)).hide();
         this.valueDisplay.innerHTML = tempElement.element[0].childNodes[0].childNodes[1].childNodes[2].innerHTML;
         tempElement.clear();
+    }
+    getParentEquationId()
+    {
+        return (x => x.slice(0,x.lastIndexOf("_")))(this.id);
     }
     changeUnits(event){
         /**
@@ -472,7 +536,8 @@ class Variable{
                     var oldUnit = this.currentUnit;
                     this.currentUnit = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unit'];
                     this.value = mathjs.evaluate("number("+this.value+" "+oldUnit+", "+this.currentUnit+")")
-                    this.valueRepr = Window.valueTruncate(this.value);
+                    // this.valueRepr = Window.valueTruncate(this.value);
+                    this.valueRepr = Window.valueStringRepr(this.value);
 
                     // Change external views
                     this.setValueUnit(String(this.valueRepr),

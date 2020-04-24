@@ -1,0 +1,64 @@
+{
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "multiple",
+        "description":"If we reduce candidate problem X to known hard problem H, this means that we use H as a step to solving X. All that means is that we have found a (known) hard way to solve X. <br><br>However, when we reduce known hard problem H to candidate problem X, that means we are using X as a step to solve H. And if we know that H is hard, that means X must also be hard (because if X were not hard, then neither would H be hard).",
+        "question":"Reduce problem A to B means that we use A as a step to solve B",
+        "answer":  "False",
+        "choices": ["True", "False"]
+      },
+      "q2": {
+        "type": "multiple",
+        "description":"If we reduce candidate problem X to known hard problem H, this means that we use H as a step to solving X. All that means is that we have found a (known) hard way to solve X. <br><br>However, when we reduce known hard problem H to candidate problem X, that means we are using X as a step to solve H. And if we know that H is hard, that means X must also be hard (because if X were not hard, then neither would H be hard).",
+        "question":"Reduce A to B means that we have found a known hard way to solve A",
+        "answer": "True",
+        "choices": ["True", "False"]
+
+      },
+      "q3": {
+        "type": "select",
+        "description":"If we reduce candidate problem X to known hard problem H, this means that we use H as a step to solving X. All that means is that we have found a (known) hard way to solve X. <br><br>However, when we reduce known hard problem H to candidate problem X, that means we are using X as a step to solve H. And if we know that H is hard, that means X must also be hard (because if X were not hard, then neither would H be hard).",
+        "question":"If we reduce A to B, which of the following statements are true?",
+        "answer":  ["if A is hard, then B must be hard", "if B is not hard, then B must not be hard"],
+        "choices": ["if A is hard, then B must be hard", "if B is not hard, then B must not be hard", "None of the above"]
+      },
+
+      "q4": {
+        "type": "multiple",
+        "description":"Cook proved that SAT is NP-hard. Explaining Cook's proof is beyond the scope of this course. But we can briefly summarize it as follows. Any decision problem F can be recast as some language acceptance problem L: <br><br><b>F(I) = YES ⇔ L(I') = ACCEPT.<br><br>That is, if a decision problem F yields YES on input I, then there is a language L containing string I′ where I′ is some suitable transformation of input I. Conversely, if F would give answer NO for input I, then I's transformed version I′ is not in the language L.",
+        "question":"There is a language L containing string I' if a decision problem F yields YES on input I",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+
+      "q5": {
+        "type": "multiple",
+        "description":"Cook proved that SAT is NP-hard. Explaining Cook's proof is beyond the scope of this course. But we can briefly summarize it as follows. Any decision problem F can be recast as some language acceptance problem L: <br><br><b>F(I) = YES ⇔ L(I') = ACCEPT.<br><br>That is, if a decision problem F yields YES on input I, then there is a language L containing string I′ where I′ is some suitable transformation of input I. Conversely, if F would give answer NO for input I, then I's transformed version I′ is not in the language L.",
+        "question":"I' is in the language L if the decision problem F yields NO for input I.",
+        "answer": "False",
+        "choices": ["True", "False"]
+      },
+
+      "q6": {
+        "type": "select",
+        "description":"Turing machines are a simple model of computation for writing programs that are language acceptors. There is a <q>universal</q> Turing machine that can take input as a description for a Turing machine, and an input string, and return the execution of that machine on that string. <br><br>This Turing machine in turn can be cast as a Boolean expression such that the expression is satisfiable if and only if the Turing machine yields ACCEPT for that string.",
+        "question":"which of the following statements are true?",
+        "answer": ["Turing machines are a simple model of computation for writing programs that are language acceptors<br>", "<q>universal</q> Turing machine can take input as a description for a Turing machine and an input string, and return the execution of that machine on that string.<br>", "Turing machine can be cast as a Boolean expression such that the expression is satisfiable if and only if the Turing machine yields ACCEPT for that string."],
+        "choices": ["Turing machines are a simple model of computation for writing programs that are language acceptors<br>", "<q>universal</q> Turing machine can take input as a description for a Turing machine and an input string, and return the execution of that machine on that string.<br>", "Turing machine can be cast as a Boolean expression such that the expression is satisfiable if and only if the Turing machine yields ACCEPT for that string."]
+      },
+
+      "q7": {
+        "type": "multiple",
+        "description":"To show that a decision problem X is NP-complete, we prove that X is in NP (normally easy, and normally done by giving a suitable polynomial-time, non-deterministic algorithm) and then prove that X is NP-hard. To prove that X is NP-hard, we choose a known NP-complete problem, say A. We describe a polynomial-time transformation that takes an arbitrary instance I of A to an instance I′ of X. We then describe a polynomial-time transformation from SLN′ to SLN such that SLN is the solution for I.",
+        "question":"To show a decision problem A is NP-complete, we need to prove A is in NP and then A is in NP-hard",
+        "answer": "True",
+        "choices": ["True", "False"]
+      }
+
+
+    }
+  }
+}
+

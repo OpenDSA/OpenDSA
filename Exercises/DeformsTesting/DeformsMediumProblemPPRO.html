@@ -2,6 +2,7 @@
 <html data-require="jsav math MechSolverCommon">
 <head>
   <title>Deforms Medium Problem</title>
+  <script src="./mathjs.js" type="text/javascript"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
   <script src="../../khan-exercises/local-only/main.js"></script>
   <link rel = "stylesheet" type = "text/css" href = "./styles.css" />
@@ -11,7 +12,7 @@
 <body data-height="860" data-width="950">
   <div class="exercise">
     <div class="vars">
-      <var id="JSAV">mechSolverCommon.initJSAV("DeformsMediumProblemPPRO")</var>
+      <var id="JSAV">mechSolverCommon.initJSAV("DeformsMediumProblemPPRO", "SI")</var>
     </div>
 
     <div class="problems">
@@ -20,14 +21,14 @@
             A 
 
             <span class="param" id="param1" 
-            data-value="0.02" data-unit="m" 
+            data-value="20" data-unit="mm" 
             data-value-display="20"
             data-unit-display="mm" data-domain="length">20 mm</span> 
             
             diameter brass rod and a 
             
             <span class="param" id="param2" 
-            data-value="0.025" data-unit="m" 
+            data-value="25" data-unit="mm" 
             data-value-display="25"
             data-unit-display="mm" data-domain="length">25 mm</span> 
 
@@ -46,13 +47,13 @@
             ( 
               Brass: G =
               <span class="param" id="param5" 
-              data-value="40e9" data-unit="Pa" 
+              data-value="40" data-unit="GPa" 
               data-value-display="40"
               data-unit-display="GPa" data-domain="pressure">40 GPa
               </span>,
               Aluminium: G =
               <span class="param" id="param5" 
-              data-value="25e9" data-unit="Pa" 
+              data-value="25" data-unit="GPa" 
               data-value-display="25"
               data-unit-display="GPa" data-domain="pressure">25 GPa
               </span>
@@ -134,9 +135,12 @@
   <script src="MechSolver/equation_bank.js"></script>
   <script src="MechSolver/Workspace.js"></script>
   <script src="MechSolver/WorkspaceList.js"></script>
+  <script src="MechSolver/WindowManager.js"></script>
+  <script src="MechSolver/Maps.js"></script>
+  <script src="MechSolver/utils.js"></script>
 
   <!-- Additional script files containing settings and solution files -->
-  <script src="DeformsProblemPROsolution.js"></script>
+  <script src="DeformsMediumProblemPPROsolution.js"></script>
 
 </body>
 

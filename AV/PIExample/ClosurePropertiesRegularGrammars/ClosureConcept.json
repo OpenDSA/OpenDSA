@@ -1,0 +1,40 @@
+{
+    "translations": {
+      "en": {
+        "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+        "q1": {
+          "type": "multiple",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "description": "$L = \\{x \\ | \\ x \\ is \\ a \\ positive \\ even \\ integer\\}$",
+          "question": "Is $L$ closed under addition?",
+          "answer": "Yes",
+          "choices": ["Yes", "No"]
+        },
+        "q2": {
+            "type": "multiple",
+            "src": "../../../AV/Development/formal_language/FAEditor.html",
+            "description": "$L = \\{x \\ | \\ x \\ is \\ a \\ positive \\ even \\ integer\\}$",
+            "question": "Is $L$ closed under multiplication?",
+            "answer": "Yes",
+            "choices": ["Yes", "No"]
+        },
+        "q3": {
+            "type": "multiple",
+            "src": "../../../AV/Development/formal_language/FAEditor.html",
+            "description": "$L = \\{x \\ | \\ x \\ is \\ a \\ positive \\ even \\ integer\\}$. Think about 4 - 10",
+            "question": "Is $L$ closed under subtraction?",
+            "answer": "No",
+            "choices": ["Yes", "No"]
+          },
+          "q4": {
+            "type": "multiple",
+            "src": "../../../AV/Development/formal_language/FAEditor.html",
+            "description": "$L = \\{x \\ | \\ x \\ is \\ a \\ positive \\ even \\ integer\\}$",
+            "question": "Is $L$ closed under division?",
+            "answer": "No",
+            "choices": ["Yes", "No"]
+          }
+      }
+    }
+  }
+  

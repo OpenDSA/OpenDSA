@@ -2,11 +2,11 @@
 <head>
     <title>Testing unit conversions for variables and determining from whole equations</title>
     <script src="../mathjs.js"></script>
-    <!-- <script src=".././jiggzson-nerdamer-432dd54/nerdamer.core.js"></script>
+    <script src=".././jiggzson-nerdamer-432dd54/nerdamer.core.js"></script>
     <script src=".././jiggzson-nerdamer-432dd54/Algebra.js"></script>
     <script src=".././jiggzson-nerdamer-432dd54/Calculus.js"></script>
     <script src=".././jiggzson-nerdamer-432dd54/Solve.js"></script>
-    <script src=".././jiggzson-nerdamer-432dd54/Extra.js"></script> -->
+    <script src=".././jiggzson-nerdamer-432dd54/Extra.js"></script>
 </head>
 
 <body>
@@ -35,17 +35,18 @@
         // console.log(math.evaluate('number(1 Pa, msi)'))
         // console.log(math.evaluate('number(1 N, kip)'))
         // console.log(math.evaluate('number(1 N, lbf)'))
-        console.log(mathjs.evaluate('number(1 hp, lbf ft/s)'));
-        mathjs.createUnit({
-            'lbftpers':
-            {
-                'definition': 1/550+"lb*ft/s"
-            }
-        });
-        console.log(mathjs.evaluate('number(1 N m, kg m^2 / s^2)'));
-        document.write(mathjs.evaluate('(1 N m * 1 m)/ (1 GPa * 1 mm^4)'));
-        // console.log(math.evaluate('1 lbftpers').to('W').toString());
-
+        // console.log(mathjs.evaluate('number(1 hp, lbf ft/s)'));
+        // mathjs.createUnit({
+        //     'lbftpers':
+        //     {
+        //         'definition': 1/550+"lb*ft/s"
+        //     }
+        // });
+        // console.log(mathjs.evaluate('number(1 N m, kg m^2 / s^2)'));
+        // document.write(mathjs.evaluate('(1 N m * 1 m)/ (1 GPa * 1 mm^4)'));
+        // document.write(mathjs.evaluate('2 kN m * 2'));
+        // // console.log(math.evaluate('1 lbftpers').to('W').toString());
+        document.write(mathjs.evaluate('1 kN / 1 GPa'));
         
         // console.log(math.unit('100 m^3 Pa / mol / K').to('m^3 kPa / mol / K').toString())
 
@@ -67,19 +68,20 @@
          */
          // The, we see what the final unit comes out to. 
         // var equation = nerdamer("a_a = a_b * a_c * a_d");
-        // var substituted = equation.solveFor('a_c').toString()
+        // var substituted = equation.solveFor('a_a').toString()
         // document.write();
         // var values = {
-        //     'a_a': '1 W',
+        //     // 'a_a': '1 mm',
         //     'a_b': '1 degC^(-1)',
+        //     'a_c': '1 degC',
         //     'a_d': '1 m'
         // }
         // for(var v in values)
         // {
         //     console.log(v)
         //     console.log(values[v])
-        //     substituted = substituted.replace(v,values[v]);
+        //     substituted = substituted.replace(v,"("+values[v]+")");
         // }
-        // document.write(math.evaluate(substituted));
+        // document.write(mathjs.evaluate(substituted));
     </script>
 </body>

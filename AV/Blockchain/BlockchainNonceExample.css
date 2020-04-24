@@ -16,16 +16,18 @@
 table {
     position: relative;
     width:800px;
-    height:325px;
+    height: 276px;
     margin-left: auto;
     margin-right: auto;
     display: block;
-
 }
 
 input {
-    width: 95%;
-    margin: 0 auto;
+    width: 60%;
+    /* margin: 0 auto; */
+    text-align:center;
+    font-size: 10pt;
+    font-family: Courier;
 }
 
 p {
@@ -88,7 +90,7 @@ p {
 
 #mine {
     float: right;
-    margin-right: 225px;
+    margin-right: 70px;
 }
 
 .loader {

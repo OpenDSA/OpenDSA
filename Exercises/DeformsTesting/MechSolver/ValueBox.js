@@ -42,7 +42,7 @@ class ValueBox{
                 left: element.visuals["POSITION_X"],
                 top: element.visuals["POSITION_Y"]+3 //added three for visual padding balance between solutions and equations
             }
-        ).addClass("selectableEquation");
+        ).addClass("solutionBox");
         var boxList = this.element.visualComponent.element[0].childNodes[0].childNodes[1].childNodes[2].querySelectorAll("span.mord.amsrm")
         boxList[0].setAttribute("data-domain", this.domain);
         boxList[0].innerHTML = '<span class="mord value"></span><span class="mord unit"></span>';
@@ -58,7 +58,7 @@ class ValueBox{
                 e.stopPropagation();
                 if(this.globalPointerReference.currentClickedObject == this){
                     this.value = -1 * this.value;
-                    this.valueDisplay = String(-1 * this.valueDisplay);
+                    this.valueDisplay = Window.valueStringRepr(this.value);
                     this.setValueUnit(this.valueDisplay,this.unitDisplay);
 
                     this.globalPointerReference.currentClickedObject = null;
@@ -135,12 +135,14 @@ class ValueBox{
                     // Change internals
                     var oldUnit = this.unit;
                     this.unit = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unit'];
+                    console.log(this.unit);
                     this.value = mathjs.evaluate("number("+this.value+" "+oldUnit+", "+this.unit+")")
-                    this.valueDisplay = Window.valueTruncate(this.value);
+                    // this.valueDisplay = Window.valueTruncate(this.value);
+                    this.valueDisplay = Window.valueStringRepr(this.value);
+                    this.unitDisplay = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unitDisp'];
 
                     // Change external views
-                    this.setValueUnit(String(this.valueDisplay),
-                    Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unitDisp']);
+                    this.setValueUnit(String(this.valueDisplay), this.unitDisplay);
                     element.close();
                 }
             )

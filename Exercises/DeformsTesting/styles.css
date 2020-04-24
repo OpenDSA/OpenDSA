@@ -142,7 +142,7 @@
 
 .workspacelabel {
     color: black;
-    font-size: 100%;
+    font-size: 120%;
     font-weight: 400;
     z-index: 1000;
    }
@@ -155,11 +155,15 @@
     cursor: pointer;
    }
 
-.boldface {
+.equationPageTitle {
     color: black;
-    font-size: 120%;
+    font-size: 150%;
     font-weight: 600;
     z-index: 500;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
    }
 
 .addequation {
@@ -198,12 +202,46 @@
     cursor: pointer;
 }
 
-.selectableEquation {
+.workspaceEquation {
     border: thin dashed black;
     padding: 2px;
     color: black;
     font-size: 100%;
     z-index: 500;
+}
+
+.solutionBox {
+    border: thin dashed black;
+    padding: 2px;
+    color: black;
+    font-size: 100%;
+    z-index: 500;
+}
+
+.selectableEquation[data-status="no"] {
+    border: thin dashed black;
+    padding: 2px;
+    color: black;
+    font-size: 130%;
+    z-index: 500;
+}
+
+.selectableEquation > * {
+    pointer-events: none;
+}
+
+.selectableEquation[data-status="yes"] {
+    background-color: yellow;
+    padding: 2px;
+    color: black;
+    font-size: 130%;
+    z-index: 500;
+}
+
+.selectableEquation:hover {
+    cursor: grab !important;
+    opacity: 0.5;
+    background-color: orange !important;
 }
 
 .boxedEquation {
@@ -388,6 +426,15 @@ mjx-container:focus {
     line-height: .5em;
     box-sizing: border-box;
     cursor: pointer;
+}
+
+.helpPage {
+    width: 500px;
+    padding: 20px;
+}
+
+.helpPage > ol {
+    list-style-type: circle;
 }
 
 @keyframes flashingBg {

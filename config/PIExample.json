@@ -78,28 +78,54 @@
     },
     "Finite Acceptors": {
       "PIExample/DFA":{},
+      "PIExample/NFA":{},
       "PIExample/NFAtoDFAExample":{}
     },
     "Regular Languages": {
-      "PIExample/regularExpression":{},
-      "PIExample/grammarRegularExpression": {},
-      "PIExample/expressionRegular": {},
-      "PIExample/regularGrammar": {},
-      "PIExample/NFAToRE": {}
+      "PIExample/RLRegularExpression":{},
+      "PIExample/RLRegularGrammarExpression": {},
+      "PIExample/RLExpressionRegular": {},
+      "PIExample/RLConvertRLRE": {},
+      "PIExample/RLNFAtoRECON":{},
+      "PIExample/RLregularGrammar": {},
+      "PIExample/RLNFAToRE": {},
+      "PIExample/RLRightLinearRG": {},
+      "PIExample/RLSTA": {},
+      "PIExample/RLClosureConcept": {},
+      "PIExample/RLClosureRegularLang": {},
+      "PIExample/RLClosedUnder": {}
     },
     "Identifying Non-regular Languages":{
       "PIExample/INRL":{}
     },
-    "Context-Free Grammars and Languages":{},
-    "Pushdown Automata":{},
+    "Context-Free Grammars and Languages":{
+      "PIExample/CFLAmb": {},
+      "PIExample/CFLAmEx": {},
+      "PIExample/CFLAmEx2": {}
+    },
+    "Pushdown Automata":{
+      "PIExample/PDA": {}
+    },
     "Properties of Context-free Languages":{},
     "Models of Computation":{
       "PIExample/TMGeneralModel":{},
       "PIExample/TMInterpreting":{},
       "PIExample/TMDecidableVSAcceptable":{},
-      "PIExample/TMComplicatedMachine1":{}
+      "PIExample/TMComplicatedMachine1":{},
+      "PIExample/TMComplicatedMachine2":{},
+      "PIExample/TMComplicatedMachine3":{}
+
     },
     "Parsing":{},
-    "Limits to Computing":{}
+    "Limits to Computing": {
+      "PIExample/PairToSortCONPI": {},
+      "PIExample/LowerBound": {},
+      "PIExample/TwoMulExample": {},
+      "PIExample/TravelSalesman": {},
+      "PIExample/KClique": {},
+      "PIExample/SATProof": {},
+      "PIExample/NPCCoping": {},
+      "PIExample/UnsolveableProblems1": {}
+   }
   }
 }

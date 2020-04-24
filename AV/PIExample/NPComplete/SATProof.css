@@ -1,0 +1,19 @@
+#SATProof {
+    height: 700px;
+    width: 1000px
+  }
+  
+  #SATProof .jsavoutput.jsavline {
+    height: 60px;
+  }
+  
+  #SATProof .jsavhorizontalarray .jsavnode {
+    min-width: 30px !important;
+    max-width: 300px !important;
+  }
+
+  .over {
+    text-decoration: overline;
+  }
+
+  

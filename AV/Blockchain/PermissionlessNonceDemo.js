@@ -4,23 +4,11 @@ $(document).ready(function() {
 
     ODSA.UTILS.loadConfig();
 
-    const defaultHash = "0000000000000000000000000000000000000000000000000000000000000000";
+    const defaultHash = "0000000000000000";
 
     // Creates the hash
-    async function sha256(blockNum, data, nonce, prevHash = defaultHash) {
-        // encode as UTF-8
-        const msgBuffer = new TextEncoder('utf-8').encode(blockNum + nonce + data + prevHash);
-
-        // hash the message
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-
-        // convert ArrayBuffer to Array
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-
-        // convert bytes to hex string                  
-        const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
-        
-        return hashHex;
+    function sha256(blockNum, data, nonce, prevHash = defaultHash) {   
+        return CryptoJS.SHA256(blockNum + nonce + data + prevHash).toString().substring(0,16);
     }
 
     function checkHash() {
@@ -50,7 +38,7 @@ $(document).ready(function() {
         }
     }
 
-    async function testKeyUp(e) {
+    function testKeyUp(e) {
         var one = 1, two = 2, three = 3;
         var block1Data = $("#data1").val();
         var block2Data = $("#data2").val();
@@ -60,26 +48,20 @@ $(document).ready(function() {
         var block3Nonce = $("#nonce3").val();
         var block1Hash, block2Hash, block3Hash;
 
-        await sha256(one, block1Data, block1Nonce).then(res => {
-            block1Hash = res;
-        });
+        block1Hash = sha256(one, block1Data, block1Nonce);
 
-        await sha256(two, block2Data, block2Nonce, block1Hash).then(res => {
-            block2Hash = res;
-        });
+        block2Hash = sha256(two, block2Data, block2Nonce, block1Hash);
 
-        await sha256(three, block3Data, block3Nonce, block2Hash).then(res => {
-            block3Hash = res;
-        });
-
-        if (e.target.id === "data1") {
+        block3Hash = sha256(three, block3Data, block3Nonce, block2Hash);
+        
+        if (e.target.id === "data1" || e.target.id === "nonce1") {
             $("#block1PrevHash").val(defaultHash);
             $("#block1Hash").val(block1Hash);
             $("#block2PrevHash").val(block1Hash);
             $("#block2Hash").val(block2Hash);
             $("#block3PrevHash").val(block2Hash);
         }
-        else if (e.target.id === "data2") {
+        else if (e.target.id === "data2" || e.target.id === "nonce2") {
             $("#block2Hash").val(block2Hash);
             $("#block3PrevHash").val(block2Hash);
         }
@@ -89,7 +71,7 @@ $(document).ready(function() {
         checkHash();
     }
 
-    async function mine() {
+    function mine() {
         // hide button and show spinner
         $("button").css("visibility", "hidden");
         $("div:last").addClass("loader");
@@ -104,14 +86,9 @@ $(document).ready(function() {
         
         // mine the first block
         for (var i = 0; i < maxNonce; i++) {
-            await sha256(one, block1Data, i).then(res => {
-                block1Hash = res;
-            });
-            if (i % 10 == 0) {
-                $("#nonce1").val(i);
-                $("#block1Hash").val(block1Hash);
-            }
-            if (block1Hash.substring(0,4) === "0000") {
+            block1Hash = sha256(one, block1Data, i);
+            
+            if (block1Hash.toString().substring(0,4) === "0000") {
                 $("#block1Hash").val(block1Hash);
                 $("#block2PrevHash").val(block1Hash);
                 $("#nonce1").val(i);
@@ -122,16 +99,9 @@ $(document).ready(function() {
 
         // mine the second block
         for (var i = 0; i < maxNonce; i++) {
-            await sha256(two, block2Data, i).then(res => {
-                block2Hash = res;
-            });
+            block2Hash = sha256(two, block2Data, i);
 
-            if (i % 10 == 0) {
-                $("#nonce2").val(i);
-                $("#block2Hash").val(block2Hash);
-            }
-            
-            if (block2Hash.substring(0,4) === "0000") {
+            if (block2Hash.toString().substring(0,4) === "0000") {
                 $("#block2Hash").val(block2Hash);
                 $("#block3PrevHash").val(block2Hash);
                 $("#nonce2").val(i);
@@ -142,17 +112,11 @@ $(document).ready(function() {
 
         // mine the third block
         for (var i = 0; i < maxNonce; i++) {
-            await sha256(three, block3Data, i).then(res => {
-                block3Hash = res;
-            });
+            block3Hash = sha256(three, block3Data, i);
 
             // once all the blocks have been mined, we should stop the spinner
             // and redisplay the mine button.
-            if (i % 10 == 0) {
-                $("#nonce3").val(i);
-                $("#block3Hash").val(block3Hash);
-            }
-            if (block3Hash.substring(0,4) === "0000") {
+            if (block3Hash.toString().substring(0,4) === "0000") {
                 $("#block3Hash").val(block3Hash);
                 $("#nonce3").val(i);
                 $("div:last").removeClass("loader");
