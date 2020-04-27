@@ -392,6 +392,7 @@
           return form.append(html.join(""));
         },
 
+        
         buildiFrames: function(question) {
           var src = question.src;
           var iframe = $(
@@ -402,9 +403,36 @@
         },
 
         saveAndCheckStudentAnswer(answer) {
+
+    
+
           var current = this.queue.current;
           this.setStudentAnswer(this.queue.elements[current], answer);
           var question = this.getQuestion(this.queue.elements[current]);
+
+          const correct = this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current]);
+          let data = {
+            "frameName": av_name,
+            "questionId":  this.queue.current,
+            "isCorrect":   correct
+          };
+          console.log("Sending attempt to backend: ", data);
+          $.ajax({
+            url: "/pi_attempts",
+            type: "POST",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            xhrFields: {
+              withCredentials: true
+            },
+            success: function(data) {
+              console.log(data)
+            },
+            error: function(err) {
+              console.log(err)
+            }
+          });
 
           if (question.type == "textBoxAny") {
             //case where we accept any string as an answer
@@ -428,7 +456,8 @@
             )
           ) {
             this.enableForwardButton();
-
+            
+  
             if ($("input[type=submit]").is(":visible")) {
               $("input[type=submit]").hide();
               var timeFlag = 1;
@@ -650,12 +679,12 @@
 
       var injector = this.Injector(json_data, av_name);
       PIFRAMES.table[av_name] = injector;
-
       return injector;
     },
 
     //add div to the av_name's picanvas, so that dynamic questions have a hooking point
     init(av_name, av) {
+      console.log(av_name + " init")
       var container = $(`#${av_name}`);
 
       var qButton = $("<div />", {
@@ -692,13 +721,20 @@
         "min-height": "500px"
       });
 
+   
+ 
       // $(".jsavcanvas").append(qButton);
       // $(".jsavcanvas").append(question);
+
       $(container).append(qButton);
       $(container).append(question);
 
+
+
       $(".SHOWQUESTION,.PIFRAMES").wrapAll('<div class="picanvas"></div>');
       $(".picanvas").insertAfter($(".jsavcanvas"));
+
+    
 
       $(".jsavcanvas,.picanvas").wrapAll('<div class="canvaswrapper"></div>');
       $(".canvaswrapper").css({
@@ -731,7 +767,7 @@
       } else if (questionType === "multiple") {
         checked = form.children(`input[name=${av_name}]:checked`).val();
       }
-      console.log(checked);
+      // console.log(checked);
       this.table[av_name].saveAndCheckStudentAnswer(checked);
 
       //prevents form from making crud call
