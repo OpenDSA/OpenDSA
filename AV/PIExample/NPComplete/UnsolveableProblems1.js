@@ -3,7 +3,7 @@ $(document).ready(function(){
 //initialize 
   var clearlist1 = new Array();
   var left = 10;
-  var topSpace = 55;
+  var topSpace = 70;
   var i, j;
   var input;
   var iparr;

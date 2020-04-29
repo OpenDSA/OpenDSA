@@ -126,7 +126,8 @@
       "PIExample/KClique": {},
       "PIExample/SATProof": {},
       "PIExample/NPCCoping": {},
-      "PIExample/UnsolveableProblems1": {}
+      "PIExample/UnsolveableProblems1": {},
+      "PIExample/UnsolveableProblems2": {}
    }
   }
 }
