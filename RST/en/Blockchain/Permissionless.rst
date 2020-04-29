@@ -79,6 +79,12 @@ Another is the fact that the entire mining process consumes
 significant real-world resources to no actual useful purpose aside
 from driving the consensus process of the Bitcoin blockchain.
 
+.. inlineav:: PoW ss
+   :long_name: PoW Slideshow
+   :links: AV/Blockchain/MerkleTree.css
+   :scripts: AV/Blockchain/ProofofWork.js
+   :output: show
+
 How is a transact propagated through network? Good question. 
 When a node receives a transaction, it adds the transaction to a 
 list that it maintains for the other nodes. Each node has its own list
