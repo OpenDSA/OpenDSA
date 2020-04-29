@@ -67,6 +67,9 @@
     },
 	"Question adding test": {
       "Peixuan/QuestionAddingTest": {}
+    },
+    "Question adding for Minimization": {
+      "Peixuan/QuestionAddingMinimization": {}
     }
   }
 }
