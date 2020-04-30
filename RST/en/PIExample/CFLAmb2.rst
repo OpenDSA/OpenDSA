@@ -11,9 +11,9 @@
 
 Context-Free Grammars and Language
 ================================
-Context-Free Languages 
+Ambiguity
 -------------------------------
-.. inlineav:: Ambiguity ff
-   :links: AV/PIExample/CFL/Ambiguity.css
-   :scripts: AV/PIExample/CFL/Ambiguity.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+.. inlineav:: AmbiguitySecond ff
+   :links: AV/PIExample/CFL/AmbiguitySecond.css
+   :scripts: AV/PIExample/CFL/AmbiguitySecond.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
    :output: show

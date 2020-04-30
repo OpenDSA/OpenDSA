@@ -101,6 +101,7 @@
     "Context-Free Grammars and Languages":{
       "PIExample/CFLAmb": {},
       "PIExample/CFLAmEx": {},
+      "PIExample/CFLAmb2": {},
       "PIExample/CFLAmEx2": {}
     },
     "Pushdown Automata":{
@@ -125,7 +126,8 @@
       "PIExample/KClique": {},
       "PIExample/SATProof": {},
       "PIExample/NPCCoping": {},
-      "PIExample/UnsolveableProblems1": {}
+      "PIExample/UnsolveableProblems1": {},
+      "PIExample/UnsolveableProblems2": {}
    }
   }
 }

@@ -11,7 +11,7 @@
 
 Context-Free Grammars and Language
 ================================
-Context-Free Languages Ambiguity Example
+Context-Free Languages Example
 -------------------------------
 .. inlineav:: AmbiguityExample ff
    :links: AV/PIExample/CFL/AmbiguityExample.css

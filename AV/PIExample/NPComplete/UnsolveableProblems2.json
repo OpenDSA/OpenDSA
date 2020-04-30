@@ -1,0 +1,45 @@
+{
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "multiple",
+        "description":"That alone doesn't have to mean that there is a <b>useful</b> function that cannot be computed. After all, the universe should not be this perverse, should it? Perhaps the very fact that we can easily specify the function that we want to compute implies that there must be an algorithm to compute it.<br><br>Unfortunately, not so. Now we will prove that the Halting Problem cannot be computed by any computer program. The proof is by contradiction.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Figure 0.13.1: An illustration of assigning functions to bins.",
+        "question":"Halting problem cannot be computed by any computer can be proved by contradiction",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "q2": {
+        "type": "multiple",
+        "description":"Now that we have proved that the Halting Problem is unsolvable, we can use reduction arguments to prove that other problems are also unsolvable. The strategy is to assume the existence of a computer program that solves the problem in question and use that program to solve another problem that is already known to be unsolvable.",
+        "question":"Other problems can be proved to be unsolvable by using reduction arguments once the halting problem is known to be unsolvable.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q3": {
+        "type": "multiple",
+        "description":"Now that we have proved that the Halting Problem is unsolvable, we can use reduction arguments to prove that other problems are also unsolvable. The strategy is to assume the existence of a computer program that solves the problem in question and use that program to solve another problem that is already known to be unsolvable.",
+        "question":"A problem can be proved to be unsolvable by assuming the existence of a computer program that solves the program in question and use that program to solve another problem that is known to be unsolvable.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q4": {
+        "type": "multiple",
+        "description":"<br>This does not mean that a computer program cannot be written that works on special cases, possibly even on most programs that we would be interested in checking. For example, some C compilers will check if the control expression for a while loop is a constant expression that evaluates to <i>FALSE</i>. If it is, the compiler will issue a warning that the while loop code will never be executed. ",
+        "question":"The halting problem is unsolvable causes a computer program cannot be written that works on special cases. ",
+        "answer":  "False",
+        "choices": ["True", "False"]
+      },
+      "q5": {
+        "type": "multiple",
+        "description":"Programmers find this special case useful enough to make it worth including in the compiler. However, it is not possible to write a computer program that can check for all input programs whether a specified line of code will be executed when the program is given some specified input.",
+        "question":"Is it possible to write a computer program to check for all input programs whether a specified line of code will be executed when a program is given some specified input?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      }
+
+    }
+  }
+}
+

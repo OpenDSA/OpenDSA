@@ -2,66 +2,66 @@
   "translations": {
     "en": {
       "q1": {
-        "type": "select",
-        "description":"If in a graph G, there exists a complete subgraph of K nodes, G is said to contain a K-Clique.",
-        "question":"The following graph contains",
-        "answer":  ["2-clique", "3-clique", "4-clique", "5-clique", "6-clique"],
-        "choices": ["2-clique", "3-clique", "4-clique", "5-clique", "6-clique"]
-      },
-      "q2": {
         "type": "multiple",
-        "description":"The clique with largest number of vertices in a graph G is called Maximum Clique in G.",
-        "question":"Which of the following is the Maximum Clique of the graph",
-        "answer": "6-clique",
-        "choices": ["4-clique", "5-clique", "6-clique", "7-clique"]
-
-      },
-      "q3": {
-        "type": "multiple",
-        "description":"Nobody knows whether there is a polynomial time solution for K-CLIQUE, but if such an algorithm is found for K-CLIQUE or for TRAVELING SALESMAN, then that solution can be modified to solve the other, or any other problem in NP, in polynomial time.",
-        "question":"A solution to slove any problem in NP in polynomial time can be found if a polynomial time solution for K-Clique / TRAVELING SALESMAN is found",
+        "description":"For example, TRAVELING SALESMAN grows so quickly that it cannot be run on modern computers for problem sizes much over 30 cities, which is not an unreasonable problem size for real-life situations. <br><br>However, some other problems in NP, while requiring exponential time, still grow slowly enough that they allow solutions for problems of a useful size.",
+        "question":"Some NP-complete problems cannot be solved by using the approach: run only a small instance of the problem because they grow too quickly for a modern computer to run.",
         "answer":  "True",
         "choices": ["True", "False"]
       },
+      "q2": {
+        "type": "multiple",
+        "description":"This dynamic programming algorithm is tractable if the numbers are <q>reasonable</q>. That is, we can successfully find solutions to the problem when <b>nK</b> is in the thousands.<br><br>Such an algorithm is called a pseudo-polynomial time algorithm. This is different from TRAVELING SALESMAN which cannot possibly be solved when <b>n=100</b> given current algorithms.",
+        "question":"pseudo-polynomial time algorithm is the dynamic algorithm that can successfully find solution when nK is in the thousands",
+        "answer":  "True",
+        "choices": ["True", "False"]
+
+      },
+      "q3": {
+        "type": "select",
+        "description":"A second approach to handling NP-complete problems is to solve a special instance of the problem that is not so hard. For example, many problems on graphs are NP-complete, but the same problem on certain restricted types of graphs is not as difficult.",
+        "question":"Which of the following are the correct approaches to find a reasonable solution for an NP-complete problem?",
+        "answer":  ["run only small instances of the problem", "solve a special instance of the problem that is not so hard"],
+        "choices": ["run only small instances of the problem", "solve a special instance of the problem that is not so hard", "wait for others to prove P=NP"]
+      },
       "q4": {
         "type": "multiple",
-        "description":"The primary theoretical advantage of knowing that a problem P1 is NP-complete is that it can be used to show that another problem P2 is NP-complete. This is done by finding a polynomial time reduction of P1 to P2.",
-        "question":"A problem can be proved to be NP-Complete by finding a reduction of another NP-Complete problem to this one. ",
-        "answer": "True",
+        "description":"In general, if we want to guarantee that we get the correct answer for an NP-complete problem, we potentially need to examine all of the (exponential number of) possible solutions. <br><br>However, with some organization, we might be able to either examine them quickly, or avoid examining a great many of the possible answers in some cases. <br><br>For example, <i>dynamic programming</i> attempts to organize the processing of all the subproblems to a problem so that the work is done efficiently.",
+        "question":"Examine all possible solutions is not the only way to guarantee that we get the correct answer for an NP-complete problem.",
+        "answer": "False",
         "choices": ["True", "False"]
       },
 
 
       "q5": {
         "type": "multiple",
-        "description":"There is a practical advantage to knowing that a problem is NP-complete. It relates to knowing that if a polynomial time solution can be found for any problem that is NP-complete, then a polynomial solution can be found for all such problems. The implication is that, <br><br>1.Because no one has yet found such a solution, it must be difficult or impossible to do; and<br>2.Effort to find a polynomial time solution for one NP-complete problem can be considered to have been expended for all NP-complete problems.",
-        "question":" if a polynomial time solution can be found for any problem that is NP-complete, then a polynomial solution can be found for all such problems.",
+        "description":"If we need to do a brute-force search of the entire <i>solution space</i>, we can use <i>backtracking</i> to visit all of the possible solutions organized in a <i>solution tree</i>. <br><br>For example, SATISFIABILITY has 2<sup>n</sup> possible ways to assign truth values to the n variables contained in the Boolean expression being satisfied.",
+        "question":"Backtracking can be used to do a brute-force search of the entire solution space since it can visit all of the possible solutions organized in a solution tree.",
         "answer": "True",
         "choices": ["True", "False"]
       },
 
       "q6": {
         "type": "multiple",
-        "description":"Problems that are solvable in polynomial time on a regular computer are said to be in class P. Clearly, all problems in P are solvable in polynomial time on a non-deterministic computer simply by neglecting to use the non-deterministic capability. Some problems in NP are NP-complete.",
-        "question":"Not all problems in P are solvable in polynomial time on a non-deterministic computer simply by neglecting to use the non-deterministic capability",
+        "description":"<i>Banch-and-Bounds</i> is an extension of backtracking that applies to <i>optimization problems</i> such as TRAVELING SALESMAN where we are trying to find the shortest tour through the cities. We traverse the solution tree as with backtracking. .",
+        "question":"Banch-and-Bounds is not an extension of backtracking",
         "answer": "False",
         "choices": ["True", "False"]
       },
 
       "q7": {
-        "type": "multiple",
-        "description":"We can consider all problems solvable in exponential time or better as an even bigger class of problems because all problems solvable in polynomial time are solvable in exponential time. Thus, we can view the world of exponential-time-or-better problems in terms of Figure 0.3.2.",
-        "question":"All problems in P are solvable in polynomial time on a non-deterministic computer simply by neglecting to use the non-deterministic capability",
-        "answer": "True",
-        "choices": ["True", "False"]
+        "type": "select",
+        "description":"Some approximation algorithms have guaranteed performance, such that the answer will be within a certain percentage of the best possible answer. ",
+        "question":"Which of the following is correct about approximation algorithms",
+        "answer": ["some approximation algorithms have guaranteed performance ","approximation algorithm is a coping strategy that finds an approximate solution to the problem", "heuristic is a approximation algorithm"],
+        "choices": ["approximation algorithm is a coping strategy that finds a guaranteed correct solution to the problem", "some approximation algorithms have guaranteed performance ","approximation algorithm is a coping strategy that finds an approximate solution to the problem", "heuristic is a approximation algorithm"]
       },
 
       "q8": {
-        "type": "multiple",
-        "description":"The most important unanswered question in theoretical computer science is whether P = NP. If they are equal, then there is a polynomial time algorithm for TRAVELING SALESMAN and all related problems.",
-        "question":"There is a polynomial time algorithm for all NP-Complete problems if P = NP",
-        "answer": "True",
-        "choices": ["True", "False"]
+        "type": "select",
+        "description":"This is similar to the best fit heuristic for memory management. The significant thing about this heuristic is not just that it tends to give better performance than simple first fit. <br><br>This decreasing first fit heuristic can be proven to require no more than 11/9 the optimal number of bins. Thus, we have a guarantee on how much inefficiency can result when using the heuristic.",
+        "question":"Which of the following is correct about heuristic",
+        "answer": ["heuristic does not always give the best answer", "the decreasing first fit heuristic tends to give better performance than simple first fit", "first fit is one of the heuristic approaches"],
+        "choices": ["heuristic does not always give the best answer", "the decreasing first fit heuristic tends to give better performance than simple first fit", "first fit is one of the heuristic approaches"]
       }
 
 

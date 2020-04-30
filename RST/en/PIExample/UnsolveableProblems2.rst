@@ -6,14 +6,14 @@
 .. avmetadata::
    :author: Xiaolin Zhou, Yijing Wu
    :satisfies: Frame example
-   :topic: Part 1 of Unsolveable Problems chapter in NP4114
+   :topic: Part 2 of Unsolveable Problems chapter in NP4114
 
-Unsolveable Problems Part 1
+Unsolveable Problems Part 2
 ================================
 
-Introduction to Unsolveable Problems & Uncountability
+The Halting Problem Is Unsolvable
 ------------------------------------
-.. inlineav:: UnsolveableProblems1 ff
-   :links: AV/PIExample/NPComplete/UnsolveableProblems1.css
-   :scripts: AV/PIExample/NPComplete/UnsolveableProblems1.js DataStructures/PIFrames.js
+.. inlineav:: UnsolveableProblems2 ff
+   :links: AV/PIExample/NPComplete/UnsolveableProblems2.css
+   :scripts: AV/PIExample/NPComplete/UnsolveableProblems2.js DataStructures/PIFrames.js
    :output: show
