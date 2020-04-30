@@ -2,14 +2,17 @@
 // Inseh1234 slideshow
 $(document).ready(function() {
     "use strict";
-    var av_name = "ProofofWork";
+    var av_name = "ProofOfWork";
     var config = ODSA.UTILS.loadConfig({av_name: av_name}),
         interpret = config.interpreter;                   // get the code object
     var av = new JSAV(av_name);
-  
-    var graph = av.ds.graph({visible: true, nodegap: 15});
-    graph.css({"font-size": "12px"});
+    
+    
+    var graph = av.ds.graph();
 
+    // this code is the starting state of the graph
+    graph.css({"font-size": "12px"});
+    graph.addNode('hello');
     graph.layout();
   
     // Slide 1

@@ -1,0 +1,28 @@
+
+  .thinredline {
+    stroke: red;
+  }
+  
+  .rededge { /* Make a tree edge to be red */
+    stroke: red;
+    stroke-width: 3;
+  }
+  
+  .rednode { /* Make a node red */
+    background-color: white;
+    color: red;
+    border-color: red;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+  
+  .greenedge { /* Make a tree edge to be green */
+    stroke: green;
+    stroke-width: 3;
+  }
+  
+  .greennode { /* Make a node green */
+    background-color: green;
+    color: white;
+    border-color: green;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
