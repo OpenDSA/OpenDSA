@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Xiaolin Zhou
+   :author: Xiaolin Zhou, Yijing Wu
    :satisfies: Frame example
    :topic: Part 2 of Unsolveable Problems chapter in NP4114
 
