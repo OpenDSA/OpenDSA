@@ -79,10 +79,10 @@ Another is the fact that the entire mining process consumes
 significant real-world resources to no actual useful purpose aside
 from driving the consensus process of the Bitcoin blockchain.
 
-.. inlineav:: PoW ss
-   :long_name: PoW Slideshow
-   :links: AV/Blockchain/MerkleTree.css
-   :scripts: AV/Blockchain/ProofofWork.js
+.. inlineav:: ProofOfWork ss
+   :long_name: ProofOfWork Slideshow
+   :links: AV/Blockchain/ProofOfWork.css
+   :scripts: AV/Blockchain/ProofOfWork.js
    :output: show
 
 How is a transact propagated through network? Good question. 
