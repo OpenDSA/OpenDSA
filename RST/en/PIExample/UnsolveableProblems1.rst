@@ -8,11 +8,11 @@
    :satisfies: Frame example
    :topic: Part 1 of Unsolveable Problems chapter in NP4114
 
-Unsolveable Problems Part 1
+Unsolvable Problems Part 1
 ================================
 
-Introduction to Unsolveable Problems & Uncountability
-------------------------------------
+Introduction to Unsolvable Problems & Uncountability
+--------------------------------------------------------
 .. inlineav:: UnsolveableProblems1 ff
    :links: AV/PIExample/NPComplete/UnsolveableProblems1.css
    :scripts: AV/PIExample/NPComplete/UnsolveableProblems1.js DataStructures/PIFrames.js

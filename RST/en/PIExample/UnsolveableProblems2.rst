@@ -6,9 +6,9 @@
 .. avmetadata::
    :author: Xiaolin Zhou, Yijing Wu
    :satisfies: Frame example
-   :topic: Part 2 of Unsolveable Problems chapter in NP4114
+   :topic: Part 2 of Unsolvable Problems chapter in NP4114
 
-Unsolveable Problems Part 2
+Unsolvable Problems Part 2
 ================================
 
 The Halting Problem Is Unsolvable
