@@ -7,15 +7,24 @@ $(document).ready(function() {
         interpret = config.interpreter;                   // get the code object
     var av = new JSAV(av_name);
     
-    
-    var graph = av.ds.graph();
     var topMargin = 50;
     var leftMargin = 235;
     var blockchain = av.ds.list({top: topMargin, left: leftMargin});
+    var graph = av.ds.graph({visible: true});
 
     // this code is the starting state of the graph
     graph.css({"font-size": "12px"});
-    graph.addNode('hello');
+    const a = graph.addNode('1', { "left": "10%", "bottom":"90%"});
+    const b = graph.addNode('2', {"right": "90%", "left":"10%", "top":"90%"});
+    const c = graph.addNode('3', {"left": "90%", "bottom":"90%"});
+    const d = graph.addNode('4', {"right": "10%", "bottom":"10%", "top":"90%", "left":"90%"});
+    graph.addEdge(a,b);
+    graph.addEdge(a,c);
+    graph.addEdge(a,d);
+    graph.addEdge(b,c);
+    graph.addEdge(b,d);
+    graph.addEdge(c,d);
+
     graph.layout();
   
     // Slide 1
@@ -28,19 +37,42 @@ $(document).ready(function() {
     // Slide 2
     av.umsg(interpret("sc2"));
     
+    graph.removeEdge(a,b);
+    graph.removeEdge(a,c);
+    graph.removeEdge(a,d);
+    graph.removeEdge(b,c);
+    graph.removeEdge(b,d);
+    graph.removeEdge(c,d);
+    graph.layout();
+
+    const aBlock = graph.addNode("Block", {"left":"40%", "top":"40%"});
+    const aEdge = graph.addEdge(a,aBlock);
+    graph.layout();
 
     av.step();
 
     // Slide 3
     av.umsg(interpret("sc3"));
    
+    const dBlock = graph.addNode("Block", {"left":"60%", "right":"60%", "bottom":"40%", "top":"60%"});
+    const dEdge = graph.addEdge(d,dBlock);
+    graph.layout();
 
     av.step();
-    graph.hide();
 
     // Slide 4
     av.umsg(interpret("sc4"));
-    
+    // hide previous graph
+    a.hide();
+    b.hide();
+    c.hide();
+    d.hide();
+    aBlock.hide();
+    dBlock.hide();
+    aEdge.hide();
+    dEdge.hide();
+
+    // start blockchain
     blockchain.addFirst("Blk 2").addFirst("Blk 1");
     let node1Block = blockchain.newNode("Node 1");
     let node4Block = blockchain.newNode("Node 4");
@@ -57,7 +89,8 @@ $(document).ready(function() {
     blockchain.get(1).next(node4Block);
     // node4Block.next(node1);
     node1Arrow.show();
-    blockchain.layout({updateTop: false})
+    blockchain.layout({updateTop: false});
+
     av.step();
     
     // Slide 4
