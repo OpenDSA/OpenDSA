@@ -1,11 +1,13 @@
 {
-	"translations": {
-		"en": {
-			"sc1": "Cugh 4 as transactions needed to be logged within a block.",
-			"sc2": "These transactions are then hashed. Using the hashes, we are able to then combine hashes to create a binary tree where the root is a hash of all transactions taken into account.",
-			"sc3": "This begins by combining the hash of transactions 1 and 2 and hashing the combination to create H(H(1) + H(2))",
-			"sc4": "In the same way, we can combine hashes 3 and 4.",
-			"sc5": "Finally, we can combine H12 and H34 to create one hash that is representative of each transaction. This is the message portion of a block!"
-		}
-	}
-}
+    "translations": {
+      "en": {
+        "sc1": "Consider a blockchain network were we have four nodes, 1-4.",
+        "sc2": "Suppose that node 1 proposes a block to be added.",
+        "sc3": "However, node 4 also proposes a block at the same time.",
+        "sc4": "A fork appears in the blockchain and other nodes begin adding to both branches.",
+        "sc5": "As the network grows off these branches, one branch continues to grow longer than the other.",
+        "sc6": "Since node 4's branch becomes longer, its sub-blockchain continues to be apart of the actual chain and node 1's branch is discarded."
+      }
+    }
+  }
+  
