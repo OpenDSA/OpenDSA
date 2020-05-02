@@ -8,8 +8,8 @@ $(document).ready(function() {
     var av = new JSAV(av_name);
     
     var topMargin = 50;
-    var leftMargin = 155;
-    var blockchain = av.ds.list({top: topMargin, left: leftMargin});
+    var leftMargin = 450;
+    var blockchain = av.ds.list({top: topMargin, left: leftMargin, nodegap: 10});
     var graph = av.ds.graph({visible: true});
 
     // this code is the starting state of the graph
@@ -31,6 +31,22 @@ $(document).ready(function() {
     av.umsg(interpret("sc1"));
 
     //enter  code here
+
+
+
+
+
+    blockchain.addFirst("Blk 2").addFirst("Blk 1");
+    let node1Block = blockchain.newNode("Node 1");
+    let node4Block = blockchain.newNode("Node 4");
+
+    let forkMargin = 168; //the distance we want in the fork
+    node1Block.css({top: topMargin-100, left: forkMargin});
+    node4Block.css({top: topMargin, left: forkMargin});
+
+    blockchain.get(1).next(node4Block);
+    node1Arrow.show();
+    blockchain.layout({updateTop: false});
 
     av.displayInit();
   
@@ -75,8 +91,8 @@ $(document).ready(function() {
 
     // start blockchain
     blockchain.addFirst("Blk 2").addFirst("Blk 1");
-    let node1Block = blockchain.newNode("Node 1");
-    let node4Block = blockchain.newNode("Node 4");
+    // let node1Block = blockchain.newNode("Node 1");
+    // let node4Block = blockchain.newNode("Node 4");
 
     let node1Arrow = av.g.line(leftMargin + 122, topMargin + 31,
                                 leftMargin + 168, topMargin - 5,
@@ -93,13 +109,11 @@ $(document).ready(function() {
                                     {"arrow-end": "classic-wide-long",
                                     opacity: 0, "stroke-width": 2});
 
-    let forkMargin = 168;
+    // let forkMargin = 168;
     node1Block.css({top: topMargin-100, left: forkMargin});
     node4Block.css({top: topMargin, left: forkMargin});
 
-    // let node1 = blockchain.get(1).next();
     blockchain.get(1).next(node4Block);
-    // node4Block.next(node1);
     node1Arrow.show();
     blockchain.layout({updateTop: false});
 
