@@ -10,14 +10,14 @@ $(document).ready(function() {
     var topMargin = 50;
     var leftMargin = 155;
     var blockchain = av.ds.list({top: topMargin, left: leftMargin});
-    var graph = av.ds.graph({visible: true});
+    var graph = av.ds.graph({visible: true, left: -40});
 
     // this code is the starting state of the graph
     graph.css({"font-size": "12px"});
     const a = graph.addNode('1', { "left": "10%", "bottom":"90%"});
     const b = graph.addNode('2', {"right": "90%", "left":"10%", "top":"90%"});
-    const c = graph.addNode('3', {"left": "90%", "bottom":"90%"});
-    const d = graph.addNode('4', {"right": "10%", "bottom":"10%", "top":"90%", "left":"90%"});
+    const c = graph.addNode('3', {"left": "55%", "bottom":"90%"});
+    const d = graph.addNode('4', {"bottom":"10%", "top":"90%", "left":"55%"});
     graph.addEdge(a,b);
     graph.addEdge(a,c);
     graph.addEdge(a,d);
@@ -63,15 +63,15 @@ $(document).ready(function() {
     // Slide 4
     av.umsg(interpret("sc4"));
     // hide previous graph
-    a.hide();
-    b.hide();
-    c.hide();
-    d.hide();
-    aBlock.hide();
-    dBlock.hide();
-    aEdge.hide();
-    dEdge.hide();
-    graph.hide();
+    // a.hide();
+    // b.hide();
+    // c.hide();
+    // d.hide();
+    // aBlock.hide();
+    // dBlock.hide();
+    // aEdge.hide();
+    // dEdge.hide();
+    // graph.hide();
 
     // start blockchain
     blockchain.addFirst("Blk 2").addFirst("Blk 1");
