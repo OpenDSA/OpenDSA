@@ -24,6 +24,7 @@ $(document).ready(function() {
     graph.addEdge(b,c);
     graph.addEdge(b,d);
     graph.addEdge(c,d);
+    av.g.line(300, 10, 300, 220);
 
     graph.layout();
   
