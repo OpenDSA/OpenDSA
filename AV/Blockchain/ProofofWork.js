@@ -50,6 +50,7 @@ $(document).ready(function() {
     const aEdge = graph.addEdge(a,aBlock);
     aBlock.addClass('greennode');
     aEdge.addClass('greenedge');
+    a.addClass('greennode');
     graph.layout();
 
     av.step();
@@ -62,6 +63,7 @@ $(document).ready(function() {
     const dBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
     const dEdge = graph.addEdge(d,dBlock);
 
+    d.addClass('rednode');
     dBlock.addClass('rednode');
     dEdge.addClass('rededge');
 
