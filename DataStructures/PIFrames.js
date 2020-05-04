@@ -402,6 +402,73 @@
           return iframe;
         },
 
+        getAttempts: function() {
+          let data = {
+            "frame_name": av_name,
+            "question":  this.queue.current,
+          };
+          $.ajax({
+            url: "/pi_attempts/get_attempts",
+            type: "GET",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            xhrFields: {
+              withCredentials: true
+            },
+            success: function(data) {
+              console.log("Attempts: ", data)
+            },
+            error: function(err) {
+              console.log(err)
+            }
+          });
+        },
+
+        getCheckpoint: function() {
+          let data = {
+            "frame_name": av_name,
+          };
+          $.ajax({
+            url: "/pi_attempts/get_checkpoint",
+            type: "GET",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            xhrFields: {
+              withCredentials: true
+            },
+            success: function(data) {
+              console.log("Checkpoint: ", data)
+            },
+            error: function(err) {
+              console.log(err)
+            }
+          });
+        },
+
+        getProgress: function() {
+          let data = {
+            "frame_name": av_name,
+          };
+          $.ajax({
+            url: "/pi_attempts/get_progress",
+            type: "GET",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            xhrFields: {
+              withCredentials: true
+            },
+            success: function(data) {
+              console.log("Progress: ", data)
+            },
+            error: function(err) {
+              console.log(err)
+            }
+          });
+        },
+
         saveAndCheckStudentAnswer(answer) {
 
     
@@ -427,7 +494,10 @@
               withCredentials: true
             },
             success: function(data) {
-              console.log(data)
+              console.log(data);
+              this.getAttempts();
+              this.getCheckpoint();
+              this.getProgress();
             },
             error: function(err) {
               console.log(err)
