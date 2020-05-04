@@ -12,5 +12,5 @@ PI frame
 
 .. inlineav:: AddQuestionTest ff
    :links: DataStructures/FLA/FLA.css AV/Peixuan/AddQuestionTest/AddQuestionTest.css
-   :scripts: AV/Peixuan/AddQuestionTest/AddQuestionTest.js AV/Peixuan/AddQuestionTest/ConvertToDFAWithQuestions.js lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js
+   :scripts: AV/Peixuan/AddQuestionTest/AddQuestionTest.js AV/Peixuan/AddQuestionTest/AddQuestions.js lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js
    :output: show

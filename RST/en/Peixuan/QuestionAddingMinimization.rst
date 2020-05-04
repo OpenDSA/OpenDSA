@@ -12,5 +12,5 @@ Minimization
 
 .. inlineav:: MinimizationWithQuestionsCON ff
    :links: DataStructures/FLA/FLA.css AV/Peixuan/AddQuestionTest/MinimizationWithQuestionsCON.css
-   :scripts: AV/Peixuan/AddQuestionTest/AddQuestionTest.js lib/underscore.js DataStructures/FLA/FA.js AV/Peixuan/AddQuestionTest/MinimizationWithQuestionsCON.js
+   :scripts: AV/Peixuan/AddQuestionTest/MinimizationWithQuestionsCON.js AV/Peixuan/AddQuestionTest/AddQuestions.js lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js
    :output: show
