@@ -62,8 +62,10 @@ $(document).ready(function() {
     graph.removeEdge(c,d);
     graph.layout();
 
-    const aBlock = graph.addNode("Block", {"left":"40%", "top":"40%"});
+    const aBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
     const aEdge = graph.addEdge(a,aBlock);
+    aBlock.addClass('greennode');
+    aEdge.addClass('greenedge');
     graph.layout();
 
     av.step();
@@ -71,8 +73,8 @@ $(document).ready(function() {
     // Slide 3
     av.umsg(interpret("sc3"));
    
-    const dBlock = graph.addNode("Block", {"left":"60%", "right":"60%", "bottom":"40%", "top":"60%"});
-    const dEdge = graph.addEdge(d,dBlock);
+    // const dBlock = graph.addNode("Block", {"left":"60%", "right":"60%", "bottom":"40%", "top":"60%"});
+    // const dEdge = graph.addEdge(d,dBlock);
     graph.layout();
 
     av.step();

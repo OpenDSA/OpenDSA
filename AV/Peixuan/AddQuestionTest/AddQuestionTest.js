@@ -9,6 +9,7 @@ $(document).ready(function() {
   av.umsg("Let's see a step-by-step conversion of an NFA to a DFA.");
   av.displayInit();
   //FiniteAutomaton.convertNFAtoDFA(av, fa, {left: 10, top: 300, width: 500, height: 350}, true);
-  convertToDFAWithQuestions(av, fa, av_name, {left: 10, top: 300, width: 500, height: 350}, true);
+  var pIFramesDimensions = {top: 69, left: 590};
+  convertToDFAWithQuestions(av, fa, av_name, {left: 10, top: 300, width: 500, height: 350}, true, pIFramesDimensions);
   av.recorded();
 });
