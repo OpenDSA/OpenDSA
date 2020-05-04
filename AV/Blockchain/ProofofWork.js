@@ -39,13 +39,13 @@ $(document).ready(function() {
 
     blockchain.addFirst("Blk 2").addFirst("Blk 1");
     let node1Block = blockchain.newNode("Node 1");
-    let node4Block = blockchain.newNode("Node 4");
+    // let node4Block = blockchain.newNode("Node 4");
 
     let forkMargin = 168; //the distance we want in the fork
-    node1Block.css({top: topMargin-100, left: forkMargin});
-    node4Block.css({top: topMargin, left: forkMargin});
+    // node1Block.css({top: topMargin-100, left: forkMargin});
+    // node4Block.css({top: topMargin, left: forkMargin});
 
-    blockchain.get(1).next(node4Block);
+    // blockchain.get(1).next(node4Block);
     // node1Arrow.show();
     blockchain.layout({updateTop: false});
 
