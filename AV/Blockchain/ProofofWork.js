@@ -10,7 +10,7 @@ $(document).ready(function() {
     var topMargin = 50;
     var leftMargin = 155;
     var blockchain = av.ds.list({top: topMargin, left: leftMargin});
-    var graph = av.ds.graph({visible: true, left: -40});
+    var graph = av.ds.graph({visible: true, left: -10, bottom: 5});
 
     // this code is the starting state of the graph
     graph.css({"font-size": "12px"});
@@ -73,6 +73,9 @@ $(document).ready(function() {
 
     // Slide 4
     av.umsg(interpret("sc4"));
+
+    graph.removeNode(dBlock);
+    graph.removeEdge(dEdge);
 
     // start blockchain
     blockchain.addFirst("Blk 2").addFirst("Blk 1");
