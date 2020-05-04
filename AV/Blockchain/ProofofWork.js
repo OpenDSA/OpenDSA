@@ -56,25 +56,21 @@ $(document).ready(function() {
 
     // Slide 3
     av.umsg(interpret("sc3"));
-   
-    // const dBlock = graph.addNode("Block", {"left":"60%", "right":"60%", "bottom":"40%", "top":"60%"});
-    // const dEdge = graph.addEdge(d,dBlock);
+
+    graph.removeNode(aBlock);
+    graph.removeEdge(aEdge);
+    const dBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
+    const dEdge = graph.addEdge(d,dBlock);
+
+    dBlock.addClass('rednode');
+    dEdge.addClass('rededge');
+
     graph.layout();
 
     av.step();
 
     // Slide 4
     av.umsg(interpret("sc4"));
-    // hide previous graph
-    // a.hide();
-    // b.hide();
-    // c.hide();
-    // d.hide();
-    // aBlock.hide();
-    // dBlock.hide();
-    // aEdge.hide();
-    // dEdge.hide();
-    // graph.hide();
 
     // start blockchain
     blockchain.addFirst("Blk 2").addFirst("Blk 1");

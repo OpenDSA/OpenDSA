@@ -9,8 +9,8 @@
   }
   
   .rednode { /* Make a node red */
-    background-color: white;
-    color: red;
+    background-color: red;
+    color: white;
     border-color: red;
     box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
   }
