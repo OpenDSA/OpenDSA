@@ -412,9 +412,9 @@
 
           const correct = this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current]);
           let data = {
-            "frameName": av_name,
-            "questionId":  this.queue.current,
-            "isCorrect":   correct
+            "frame_name": av_name,
+            "question":  this.queue.current,
+            "correct":   correct
           };
           console.log("Sending attempt to backend: ", data);
           $.ajax({
