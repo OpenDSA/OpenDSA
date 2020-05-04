@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 
     blockchain.addFirst("Blk 2").addFirst("Blk 1");
-    let node1Block = blockchain.newNode("Node 1");
+    
     // let node4Block = blockchain.newNode("Node 4");
 
     let forkMargin = 168; //the distance we want in the fork
@@ -66,6 +66,14 @@ $(document).ready(function() {
     const aEdge = graph.addEdge(a,aBlock);
     aBlock.addClass('greennode');
     aEdge.addClass('greenedge');
+
+    let node1Block = blockchain.newNode("Node 1");
+    let leftAdding = 54;
+    node1Block.css({top: 0, left: leftAdding * 2});
+    node1Block.addClass('greenBlock');
+    blockchain.get(1).next(node1Block);
+    blockchain.get(1).edgeToNext().hide();
+
     graph.layout();
 
     av.step();
