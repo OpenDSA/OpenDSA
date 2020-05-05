@@ -1,14 +1,14 @@
 {
     "translations": {
       "en": {
-        "sc1": "Consider a blockchain network were we have four nodes, 1-4.",
-        "sc2": "Suppose that node 1 proposes a block to be added. Note that this proposed block is reflected on the chain.",
-        "sc3": "However, node 4 also proposes a block at the same time.",
-        "sc4": "Due to the timing, a fork appears in the blockchain. This equates to an orphaned block because the first block propagated is determined to be the head of the main chain.",
-        "sc5": "Since the block that was propagated first was the green node, offered blocks will tend to build upon the green. This offered blue block will likely build on the green branch.",
-        "sc6": "However, users may offer blocks specifically to an orphan! This is in an attempt to create a longer fork than the main chain and allows a fork to take main chain status. In this case, node 4 would benefit from continuing the branch as such. However, node 3, like any normal actor, proposes a block to the main chain.",
-        "sc7": "This renders the red fork wasted work. Similar to node 3, nodes 1 & 2 have the best chance to benefit if appending to the main blockchain. This effectively pits a fork against the rest of the network and deincentivizes proposals on old blocks and forks that aren't the current main chain.",
-        "sc8": "Since node 1's branch becomes longer, its sub-blockchain continues to be apart of the actual chain and node 1's branch is discarded."
+        "sc1": "Consider a blockchain network where we have four nodes, 1-4.",
+        "sc2": "Suppose that the green node proposes a block to be added. Note that this proposed block is reflected on the chain.",
+        "sc3": "However, the red node also proposes a block at the same time.",
+        "sc4": "Due to the timing, a fork appears in the blockchain. The red block is now an orphaned block because the first block propagated or seen is determined to be the head of the main chain.",
+        "sc5": "Since the green block is the head, offered blocks like the newly offered blue block will tend to build upon the green branch.",
+        "sc6": "However, users may offer blocks specifically to an orphan! This is in an attempt to create a longer fork than the main chain and allows a fork to take main chain status. In this case, the red node would benefit from continuing its own block. However, the orange node, like any normal actor, proposes a block to the main chain.",
+        "sc7": "Similar to the orange node, the non-red nodes have the best chance to benefit if they append to the main blockchain. This effectively pits a fork against the rest of the network and deincentivizes proposals on old blocks and forks that aren't the current main chain.",
+        "sc8": "Since the green node's branch becomes longer, its sub-blockchain continues to be apart of the actual chain and the red branch is discarded."
       }
     }
   }
