@@ -100,7 +100,26 @@ $(document).ready(function() {
 
     graph.removeNode(dBlock);
     graph.removeEdge(dEdge);
+    const bBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
+    const bEdge = graph.addEdge(b,bBlock);
 
+    b.addClass('bluenode');
+    bBlock.addClass('bluenode');
+    bEdge.addClass('blueedge');
+    graph.layout();
+
+
+
+    graph.removeNode(bBlock);
+    graph.removeEdge(bEdge);
+
+    const cBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
+    const cEdge = graph.addEdge(c,cBlock);
+
+    c.addClass('orangenode');
+    cBlock.addClass('orangenode');
+    cEdge.addClass('orangeedge');
+    graph.layout();
     // start blockchain
     // blockchain.addFirst("Blk 2").addFirst("Blk 1");
     // // let node1Block = blockchain.newNode("Node 1");

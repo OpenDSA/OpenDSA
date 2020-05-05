@@ -32,3 +32,28 @@
     border-color: green;
     box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
   }
+
+  .bluenode { /* Make a node green */
+    background-color: blue;
+    color: white;
+    border-color: blue;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+
+  .blueedge { /* Make a tree edge to be green */
+    stroke: blue;
+    stroke-width: 3;
+  }
+
+  .orangenode { /* Make a node green */
+    background-color: orange;
+    color: white;
+    border-color: orange;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+
+  .orangeedge { /* Make a tree edge to be green */
+    stroke: orange;
+    stroke-width: 3;
+  }
+
