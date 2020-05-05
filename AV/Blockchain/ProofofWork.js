@@ -190,12 +190,18 @@ $(document).ready(function() {
     graph.removeNode(bBlock);
     graph.removeEdge(bEdge);
 
-    const cBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
+    const cBlock = graph.addNode("Block", {"left":"33%", "top":"30%"});
     const cEdge = graph.addEdge(c,cBlock);
 
     c.addClass('orangenode');
     cBlock.addClass('orangenode');
     cEdge.addClass('orangeedge');
+
+    const red2 = graph.addNode("Block", {"left":"33%", "top":"50%"});
+    const red2edge = graph.addEdge(d,red2);
+
+    red2.addClass('rednode');
+    red2edge.addClass('rededge');
     graph.layout();
 
     // node1NextNextArrow.show();
@@ -214,6 +220,9 @@ $(document).ready(function() {
 
     graph.removeNode(cBlock);
     graph.removeEdge(cEdge);
+
+    graph.removeNode(red2);
+    graph.removeEdge(red2edge);
 
     const eBlock = graph.addNode("Block", {"left":"33%", "top":"30%"});
     const eEdge = graph.addEdge(a,eBlock);
