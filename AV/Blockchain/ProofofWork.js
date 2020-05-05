@@ -207,9 +207,13 @@ $(document).ready(function() {
         opacity: 0, "stroke-width": 2});
     
     let node3Block = blockchain.newNode("Node 3");
-    node3Block.css({top: topMargin-100, left: forkMargin});
+    let node4aBlock = blockchain.newNode("Node 4\'");
+
+    node4aBlock.css({top: topMargin-100, left: forkMargin});
+    node3Block.css({top: topMargin})
+    node4aBlock.addClass('redBlock')
     node3Block.addClass('orangeBlock');
-    node4Block.next(node3Block);
+    node2Block.next(node3Block);
     node4Arrow.show();
     blockchain.layout({updateTop: false});
 
@@ -243,20 +247,26 @@ $(document).ready(function() {
     fEdge.addClass('blueedge');
 
     graph.layout();
-    // let node4cBlock = blockchain.newNode("Node 4\"\'");
-    // node4cBlock.css({top: topMargin, left: forkMargin + 84 * 3});
-    // node4bBlock.next(node4cBlock);
-    // node1bBlock.next(null);
-    // blockchain.layout({updateTop: false});
 
-    // av.step();
+    let node2aBlock = blockchain.newNode("Node 2\'");
+    let node1aBlock = blockchain.newNode("Node 1\'");
+    
+    node2aBlock.css({top: topMargin});
+    node1aBlock.css({top: topMargin});
+    node2aBlock.addClass('blueBlock');
+    node1aBlock.addClass('greenBlock');
+    node3Block.next(node2aBlock);
+    node2aBlock.next(node1aBlock);
+    blockchain.layout({updateTop: false});
 
-    // av.umsg(interpret("sc8"));
-    // node1Arrow.hide();
-    // node1NextArrow.hide();
-    // node1NextNextArrow.hide();
-    // node1Block.hide();
-    // node1aBlock.hide();
+    av.step();
+
+    av.umsg(interpret("sc8"));
+
+    node1Arrow.hide();
+    node4Arrow.hide();
+    node4Block.hide();
+    node4aBlock.hide();
     // node1bBlock.hide();
     // node4Block./*hide()*/css({top: topMargin});
     // node4aBlock./*hide()*/css({top: topMargin});
@@ -271,8 +281,7 @@ $(document).ready(function() {
     // // block3.next(block4);
     // // block4.next(block5);
     // // block5.next(block6);
-    // blockchain.layout();
-    // av.step();
+    blockchain.layout();
 
     av.recorded();
   });
