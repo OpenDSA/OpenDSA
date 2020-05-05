@@ -159,7 +159,7 @@ var generateQuestions = function (steps, graph, configure) {
   }
 
   //must delete minimizer part when use otherwise student can see the answer
-  console.log(questions);
+  console.log(questions["translations"]["en"]);
 
   return questions;
 }
@@ -172,29 +172,42 @@ var toStrChoice = function (array){
   return res.trim();
 }
 
-//generate a question
-/*var generateSingleQuestion = function (type, question, description, answer, pattern) {
-  return {
-    "type": type,
-    "question":question,
-    "description": description,
-    "answer": answer, //String if type is multiple, array of string if select
-    "choices": generateChoices(type, answer)
-  };
+var containsChoice = function(choice, set){
+  var choiceCopy = choice.concat();
+  var setCopy = JSON.parse(JSON.stringify(set));
+
+  var sortedChoice = [];
+  choiceCopy.forEach(item => {
+    sortedChoice.push(item.split(",").sort());
+  });
+  sortedChoice.sort();
+
+  for(var i = 0 ; i < setCopy.length ; i++){
+    var item = setCopy[i];
+    var temp = []
+    item.forEach(choiceObj => {
+      temp.push(choiceObj.split(",").sort());
+    });
+    temp.sort();
+    //console.log(sortedChoice, temp);
+
+    var innerCompare = true;
+    if(temp.length === sortedChoice.length){
+      temp.forEach((tempItem, i) => {
+        if(tempItem.toString() !== sortedChoice[i].toString()){
+          innerCompare = false;
+        }
+      });
+    }
+
+    if(innerCompare){
+      //console.log("true");
+      return true;
+    }
+  }
+  return false;
 }
 
-//generate choices by type
-//can add more later
-var generateChoices = function(type, answer){
-  switch(type) {
-    case "select":
-      return allNodes;
-    case "multiple":
-      return allNodes;
-    default:
-      return allNodes;
-  }
-}*/
 var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph, tree, newGraphDimensions) {
   var steps = getAllStepsForMinimizeDFA(minimizer, jsav, referenceGraph, tree);
 
@@ -212,7 +225,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
     }
 
     var allChoices = shuffle(state.node.split(','));
-    var maxChoices = allChoices.length;
+    var maxChoices = allChoices.length - 1;
     var divider = state.relatedTo.length - 1;
     if (maxChoices <= 1 || divider < 1){
       console.error("can't generate choices for a node that can't be divided");
@@ -224,7 +237,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
     state.relatedTo.forEach(item => {
       answer.push(item.split(','));
     });
-    var res = [answer];
+    var res = [state.relatedTo];
 
     var choicesNum = Math.min(maxChoices, 4);
 
@@ -232,7 +245,10 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
     for (i = 0 ; i < choicesNum; i++){
       var choicesDup = true;
       var aChoice = [];
+
       while(choicesDup){
+        aChoice = [];
+
         var dividerLocations = [];
 
         //find a random place to put dividers
@@ -251,43 +267,30 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
         var startIndex = 0;
         //arrange answers
         dividerLocations.forEach(loc => {
-          var choicePart = allChoices.slice(startIndex, loc);
+          var choicePart = allChoices.slice(startIndex, loc).toString();
           startIndex = loc;
           aChoice.push(choicePart);
         });
-        aChoice.push(allChoices.slice(startIndex));
+        aChoice.push(allChoices.slice(startIndex).toString());
 
-        var sortedRes = [];
-        res.forEach(item => {
-          var sortedObjs = [];
-          item.forEach(obj => {
-            sortedObjs.push(obj.concat().sort());
-          });
-          sortedRes.push(sortedObjs.sort());
-        });
+        allChoices = shuffle(allChoices);
+        choicesDup = containsChoice(aChoice, res);
 
-        var sortedChoice = [];
-        aChoice.forEach(item => {
-          sortedChoice.push(item.concat().sort());
-        });
-        sortedChoice.sort();
-        choicesDup = sortedRes.includes(sortedChoice);
+        /*if(choicesDup){
+          console.log("dup generated choice ->", aChoice);
+          //break;
+        }*/
       }
-
-      allChoices = shuffle(allChoices);
       res.push(aChoice);
     }
 
     res = shuffle(res);
     var strRes = [];
     res.forEach(choice => {
-      var temp = [];
-      for(var num = 0 ; num < choice.length ; num++){
-        temp.push(choice[num].toString());
-      }
-      strRes.push(toStrChoice(temp));
+      strRes.push(toStrChoice(choice));
     });
     return strRes;
+    return res;
   }
 
   var generateMinimizeDFAQuestions = function (state) {
@@ -330,7 +333,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
          "choices": allNodes
         },
         {
-          "type": "multiple",
+          "type": steps[1][0]["node"].split(',').length != 1 ? "select" : "multiple",
           "question": "Select final states to continue",
           "description": "These are the nonfinal states.",
           "answer":  steps[1][0]["node"].split(','),//String if type is multiple, array of string if select
@@ -414,7 +417,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
         //minimizer.selectedNode = null;
         //minimizer.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will not be divided.");
         if(questionsIndex < Object.keys(questions["translations"]["en"]).length){
-          console.log(questions["translations"]["en"][String("q" + questionsIndex)]);
+          //console.log(questions["translations"]["en"][String("q" + questionsIndex)]);
           jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
           questionsIndex++;
           jsav.step();
@@ -424,11 +427,11 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
         return false;
       }
     }
-    console.log(questions["translations"]["en"][String("q" + questionsIndex)]);
+    //console.log(questions["translations"]["en"][String("q" + questionsIndex)]);
     jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
     jsav.step();
     questionsIndex++;
-    console.log(questions["translations"]["en"][String("q" + questionsIndex)]);
+    //console.log(questions["translations"]["en"][String("q" + questionsIndex)]);
     jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
     jsav.step();
     questionsIndex++;
