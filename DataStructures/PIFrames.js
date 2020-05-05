@@ -417,7 +417,7 @@
               withCredentials: true
             },
             success: function(data) {
-              console.log("Attempts: ", data)
+              console.log("Attempts: ", data.result)
             },
             error: function(err) {
               console.log(err)
@@ -439,7 +439,7 @@
               withCredentials: true
             },
             success: function(data) {
-              console.log("Checkpoint: ", data)
+              console.log("Checkpoint: ", data.result)
             },
             error: function(err) {
               console.log(err)
@@ -461,7 +461,7 @@
               withCredentials: true
             },
             success: function(data) {
-              console.log("Progress: ", data)
+              console.log("Progress: ", data.result)
             },
             error: function(err) {
               console.log(err)
