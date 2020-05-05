@@ -226,6 +226,23 @@ $(document).ready(function() {
     av.step();
     // // Slide 7
     // av.umsg(interpret("sc7"));
+
+    graph.removeNode(cBlock);
+    graph.removeEdge(cEdge);
+
+    const eBlock = graph.addNode("Block", {"left":"33%", "top":"30%"});
+    const eEdge = graph.addEdge(a,eBlock);
+
+    eBlock.addClass('greennode');
+    eEdge.addClass('greenedge');
+
+    const fBlock = graph.addNode("Block", {"left":"33%", "top":"50%"});
+    const fEdge = graph.addEdge(b,fBlock);
+
+    fBlock.addClass('bluenode');
+    fEdge.addClass('blueedge');
+
+    graph.layout();
     // let node4cBlock = blockchain.newNode("Node 4\"\'");
     // node4cBlock.css({top: topMargin, left: forkMargin + 84 * 3});
     // node4bBlock.next(node4cBlock);
