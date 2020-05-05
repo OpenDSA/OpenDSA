@@ -75,6 +75,7 @@ $(document).ready(function() {
 
     a.addClass('greennode');
     graph.layout({updateTop: false});
+    blockchain.layout();
 
     av.step();
 
@@ -90,7 +91,7 @@ $(document).ready(function() {
     dBlock.addClass('rednode');
     dEdge.addClass('rededge');
 
-    // let node4Block = blockchain.newNode("Node 4");
+    let node4Block = blockchain.newNode("Node 4");
     
     // node 4 arrow
     // subtracting 15 because the start of the auto-gen arrows are about 15 pixels    
@@ -100,15 +101,14 @@ $(document).ready(function() {
         opacity: 0, "stroke-width": 2});
 
     // move node 1 block up
-    // node1Block.css({top: topMargin-100, left: leftAdding * 2});
+    node1Block.css({top: topMargin-100, left: leftAdding * 2});
 
     // add node 4 block and move it down
-    // node4Block.css({top: topMargin, left: leftAdding * 2});
-    // node4Block.addClass('redBlock');
+    node4Block.css({top: topMargin, left: leftAdding * 2});
+    node4Block.addClass('redBlock');
     
-    blockchain.get(1).next(node1Block);
-    // node1Arrow.show();
     graph.layout({updateTop: false, updateLeft: false});
+    blockchain.layout({updateTop: false});
 
     av.step();
 
@@ -117,27 +117,15 @@ $(document).ready(function() {
 
     graph.removeNode(dBlock);
     graph.removeEdge(dEdge);
-    const bBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
-    const bEdge = graph.addEdge(b,bBlock);
-
-    b.addClass('bluenode');
-    bBlock.addClass('bluenode');
-    bEdge.addClass('blueedge');
+    
     graph.layout();
 
-
-
-    graph.removeNode(bBlock);
-    graph.removeEdge(bEdge);
-
-    const cBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
-    const cEdge = graph.addEdge(c,cBlock);
-
-    c.addClass('orangenode');
-    cBlock.addClass('orangenode');
-    cEdge.addClass('orangeedge');
-    graph.layout();
     // start blockchain
+    
+    blockchain.get(1).next(node4Block);
+    node1Arrow.show();
+    blockchain.layout({updateTop: false});
+
     // blockchain.addFirst("Blk 2").addFirst("Blk 1");
     // // let node1Block = blockchain.newNode("Node 1");
     // // let node4Block = blockchain.newNode("Node 4");
@@ -165,10 +153,25 @@ $(document).ready(function() {
     // node1Arrow.show();
     // blockchain.layout({updateTop: false});
 
-    // av.step();
+    av.step();
     
-    // // Slide 5
-    // av.umsg(interpret("sc5"));
+    // Slide 5
+    av.umsg(interpret("sc5"));
+
+    // graph
+    const bBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
+    const bEdge = graph.addEdge(b,bBlock);
+
+    b.addClass('bluenode');
+    bBlock.addClass('bluenode');
+    bEdge.addClass('blueedge');
+    graph.layout();
+
+    // blockchain
+
+
+
+
     // node1NextArrow.show();
     // let node4aBlock = blockchain.newNode("Node 4\'");
     // let node1aBlock = blockchain.newNode("Node 1\'");
@@ -178,9 +181,23 @@ $(document).ready(function() {
     // node1Block.next(node1aBlock);
     // blockchain.layout({updateTop: false});
 
-    // av.step();
-    // // Slide 6
-    // av.umsg(interpret("sc6"));
+    av.step();
+    // Slide 6
+    av.umsg(interpret("sc6"));
+    // graph
+
+
+    graph.removeNode(bBlock);
+    graph.removeEdge(bEdge);
+
+    const cBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
+    const cEdge = graph.addEdge(c,cBlock);
+
+    c.addClass('orangenode');
+    cBlock.addClass('orangenode');
+    cEdge.addClass('orangeedge');
+    graph.layout();
+
     // node1NextNextArrow.show();
     // let node4bBlock = blockchain.newNode("Node 4\"");
     // let node1bBlock = blockchain.newNode("Node 1\"");
@@ -191,7 +208,7 @@ $(document).ready(function() {
     // blockchain.layout({updateTop: false});
     
 
-    // av.step();
+    av.step();
     // // Slide 7
     // av.umsg(interpret("sc7"));
     // let node4cBlock = blockchain.newNode("Node 4\"\'");
