@@ -42,7 +42,7 @@ $(document).ready(function() {
     
     // let node4Block = blockchain.newNode("Node 4");
 
-    let forkMargin = 168; //the distance we want in the fork
+    let forkMargin = 163; //the distance we want in the fork
     // node1Block.css({top: topMargin-100, left: forkMargin});
     // node4Block.css({top: topMargin, left: forkMargin});
 
@@ -96,15 +96,15 @@ $(document).ready(function() {
     // node 4 arrow
     // subtracting 15 because the start of the auto-gen arrows are about 15 pixels    
     let node1Arrow = av.g.line(leftMargin + leftAdding*2 - 15, topMargin + 31,
-        leftMargin + leftAdding*2, topMargin ,
+        leftMargin + leftAdding*2 + 10, topMargin ,
         {"arrow-end": "classic-wide-long",
         opacity: 0, "stroke-width": 2});
 
     // move node 1 block up
-    node1Block.css({top: topMargin-100, left: leftAdding * 2});
+    node1Block.css({top: topMargin, left: leftAdding * 2});
 
     // add node 4 block and move it down
-    node4Block.css({top: topMargin, left: leftAdding * 2});
+    node4Block.css({top: topMargin-100, left: leftAdding * 2});
     node4Block.addClass('redBlock');
     
     graph.layout({updateTop: false, updateLeft: false});
@@ -122,7 +122,7 @@ $(document).ready(function() {
 
     // start blockchain
     
-    blockchain.get(1).next(node4Block);
+    blockchain.get(1).next(node1Block);
     node1Arrow.show();
     blockchain.layout({updateTop: false});
 
@@ -168,8 +168,11 @@ $(document).ready(function() {
     graph.layout();
 
     // blockchain
-
-
+    let node2Block = blockchain.newNode("Node 2");
+    node2Block.css({top: topMargin});
+    node2Block.addClass('blueBlock');
+    blockchain.get(2).next(node2Block);
+    blockchain.layout({updateTop: false});
 
 
     // node1NextArrow.show();
@@ -197,6 +200,18 @@ $(document).ready(function() {
     cBlock.addClass('orangenode');
     cEdge.addClass('orangeedge');
     graph.layout();
+
+    let node4Arrow = av.g.line(leftMargin + leftAdding*3 - 12, topMargin - 17,
+        leftMargin + leftAdding*3 + 2, topMargin - 17,
+        {"arrow-end": "classic-wide-long",
+        opacity: 0, "stroke-width": 2});
+    
+    let node3Block = blockchain.newNode("Node 3");
+    node3Block.css({top: topMargin-100, left: forkMargin});
+    node3Block.addClass('orangeBlock');
+    node4Block.next(node3Block);
+    node4Arrow.show();
+    blockchain.layout({updateTop: false});
 
     // node1NextNextArrow.show();
     // let node4bBlock = blockchain.newNode("Node 4\"");
