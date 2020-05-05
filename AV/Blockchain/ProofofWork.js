@@ -8,7 +8,8 @@ $(document).ready(function() {
     var av = new JSAV(av_name);
     
     var topMargin = 50;
-    var leftMargin = 360;
+    var leftMargin = 390;
+    let leftAdding = 54;
     var blockchain = av.ds.list({top: topMargin, left: leftMargin, nodegap: 10});
     var graph = av.ds.graph({visible: true, left: -10, bottom: 5});
 
@@ -68,14 +69,12 @@ $(document).ready(function() {
     aEdge.addClass('greenedge');
 
     let node1Block = blockchain.newNode("Node 1");
-    let leftAdding = 54;
+    
     node1Block.css({top: 0, left: leftAdding * 2});
     node1Block.addClass('greenBlock');
-    blockchain.get(1).next(node1Block);
-    blockchain.get(1).edgeToNext().hide();
 
     a.addClass('greennode');
-    graph.layout();
+    graph.layout({updateTop: false});
 
     av.step();
 
@@ -91,7 +90,25 @@ $(document).ready(function() {
     dBlock.addClass('rednode');
     dEdge.addClass('rededge');
 
-    graph.layout();
+    // let node4Block = blockchain.newNode("Node 4");
+    
+    // node 4 arrow
+    // subtracting 15 because the start of the auto-gen arrows are about 15 pixels    
+    let node1Arrow = av.g.line(leftMargin + leftAdding*2 - 15, topMargin + 31,
+        leftMargin + leftAdding*2, topMargin ,
+        {"arrow-end": "classic-wide-long",
+        opacity: 0, "stroke-width": 2});
+
+    // move node 1 block up
+    // node1Block.css({top: topMargin-100, left: leftAdding * 2});
+
+    // add node 4 block and move it down
+    // node4Block.css({top: topMargin, left: leftAdding * 2});
+    // node4Block.addClass('redBlock');
+    
+    blockchain.get(1).next(node1Block);
+    // node1Arrow.show();
+    graph.layout({updateTop: false, updateLeft: false});
 
     av.step();
 
