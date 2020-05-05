@@ -32,22 +32,12 @@ $(document).ready(function() {
     // Slide 1
     av.umsg(interpret("sc1"));
 
-    //enter  code here
-
-
-
-
-
     blockchain.addFirst("Blk 2").addFirst("Blk 1");
     
     // let node4Block = blockchain.newNode("Node 4");
 
     let forkMargin = 163; //the distance we want in the fork
-    // node1Block.css({top: topMargin-100, left: forkMargin});
-    // node4Block.css({top: topMargin, left: forkMargin});
 
-    // blockchain.get(1).next(node4Block);
-    // node1Arrow.show();
     blockchain.layout({updateTop: false});
 
     av.displayInit();
@@ -126,33 +116,6 @@ $(document).ready(function() {
     node1Arrow.show();
     blockchain.layout({updateTop: false});
 
-    // blockchain.addFirst("Blk 2").addFirst("Blk 1");
-    // // let node1Block = blockchain.newNode("Node 1");
-    // // let node4Block = blockchain.newNode("Node 4");
-
-    // let node1Arrow = av.g.line(leftMargin + 122, topMargin + 31,
-    //                             leftMargin + 168, topMargin - 5,
-    //                             {"arrow-end": "classic-wide-long",
-    //                             opacity: 0, "stroke-width": 2});
-    
-    // let node1NextArrow = av.g.line(leftMargin + 122 + 84, topMargin - 17,
-    //                             leftMargin + 168 + 84, topMargin - 17,
-    //                             {"arrow-end": "classic-wide-long",
-    //                             opacity: 0, "stroke-width": 2});
-
-    // let node1NextNextArrow = av.g.line(leftMargin + 122 + 84*2, topMargin - 17,
-    //                                 leftMargin + 168 + 84*2, topMargin - 17,
-    //                                 {"arrow-end": "classic-wide-long",
-    //                                 opacity: 0, "stroke-width": 2});
-
-    // // let forkMargin = 168;
-    // node1Block.css({top: topMargin-100, left: forkMargin});
-    // node4Block.css({top: topMargin, left: forkMargin});
-
-    // blockchain.get(1).next(node4Block);
-    // node1Arrow.show();
-    // blockchain.layout({updateTop: false});
-
     av.step();
     
     // Slide 5
@@ -173,16 +136,6 @@ $(document).ready(function() {
     node2Block.addClass('blueBlock');
     blockchain.get(2).next(node2Block);
     blockchain.layout({updateTop: false});
-
-
-    // node1NextArrow.show();
-    // let node4aBlock = blockchain.newNode("Node 4\'");
-    // let node1aBlock = blockchain.newNode("Node 1\'");
-    // node4aBlock.css({top: topMargin, left: forkMargin + 84});
-    // node1aBlock.css({top: topMargin-100, left: forkMargin + 84});
-    // node4Block.next(node4aBlock);
-    // node1Block.next(node1aBlock);
-    // blockchain.layout({updateTop: false});
 
     av.step();
     // Slide 6
@@ -213,25 +166,21 @@ $(document).ready(function() {
         opacity: 0, "stroke-width": 2});
     
     let node3Block = blockchain.newNode("Node 3");
-    node3Block.css({top: topMargin-100, left: forkMargin});
+    let node4aBlock = blockchain.newNode("Node 4\'");
+
+    node4aBlock.css({top: topMargin-100, left: forkMargin});
+    node3Block.css({top: topMargin})
+    node4aBlock.addClass('redBlock')
     node3Block.addClass('orangeBlock');
-    node4Block.next(node3Block);
+    node2Block.next(node3Block);
+    node4Block.next(node4aBlock);
     node4Arrow.show();
     blockchain.layout({updateTop: false});
-
-    // node1NextNextArrow.show();
-    // let node4bBlock = blockchain.newNode("Node 4\"");
-    // let node1bBlock = blockchain.newNode("Node 1\"");
-    // node4bBlock.css({top: topMargin, left: forkMargin + 84 * 2});
-    // node1bBlock.css({top: topMargin-100, left: forkMargin + 84 * 2});
-    // node4aBlock.next(node4bBlock);
-    // node1aBlock.next(node1bBlock);
-    // blockchain.layout({updateTop: false});
     
 
     av.step();
     // // Slide 7
-    // av.umsg(interpret("sc7"));
+    av.umsg(interpret("sc7"));
 
     graph.removeNode(cBlock);
     graph.removeEdge(cEdge);
@@ -252,36 +201,27 @@ $(document).ready(function() {
     fEdge.addClass('blueedge');
 
     graph.layout();
-    // let node4cBlock = blockchain.newNode("Node 4\"\'");
-    // node4cBlock.css({top: topMargin, left: forkMargin + 84 * 3});
-    // node4bBlock.next(node4cBlock);
-    // node1bBlock.next(null);
-    // blockchain.layout({updateTop: false});
 
-    // av.step();
+    let node2aBlock = blockchain.newNode("Node 2\'");
+    let node1aBlock = blockchain.newNode("Node 1\'");
+    
+    node2aBlock.css({top: topMargin});
+    node1aBlock.css({top: topMargin});
+    node2aBlock.addClass('blueBlock');
+    node1aBlock.addClass('greenBlock');
+    node3Block.next(node2aBlock);
+    node2aBlock.next(node1aBlock);
+    blockchain.layout({updateTop: false});
 
-    // av.umsg(interpret("sc8"));
-    // node1Arrow.hide();
-    // node1NextArrow.hide();
-    // node1NextNextArrow.hide();
-    // node1Block.hide();
-    // node1aBlock.hide();
-    // node1bBlock.hide();
-    // node4Block./*hide()*/css({top: topMargin});
-    // node4aBlock./*hide()*/css({top: topMargin});
-    // node4bBlock./*hide()*/css({top: topMargin});
-    // node4cBlock./*hide()*/css({top: topMargin});
-    // // create final nodes
-    // // let block3 = blockchain.newNode("Blk 3");
-    // // let block4 = blockchain.newNode("Blk 4");
-    // // let block5 = blockchain.newNode("Blk 5");
-    // // let block6 = blockchain.newNode("Blk 6");
-    // // blockchain.get(1).next(block3);
-    // // block3.next(block4);
-    // // block4.next(block5);
-    // // block5.next(block6);
-    // blockchain.layout();
-    // av.step();
+    av.step();
+
+    av.umsg(interpret("sc8"));
+
+    node1Arrow.hide();
+    node4Arrow.hide();
+    node4Block.hide();
+    node4aBlock.hide();
+    blockchain.layout();
 
     av.recorded();
   });
