@@ -417,7 +417,7 @@
               withCredentials: true
             },
             success: function(data) {
-              console.log("Attempts: ", data)
+              console.log("Attempts: ", data.result)
             },
             error: function(err) {
               console.log(err)
@@ -439,7 +439,7 @@
               withCredentials: true
             },
             success: function(data) {
-              console.log("Checkpoint: ", data)
+              console.log("Checkpoint: ", data.result)
             },
             error: function(err) {
               console.log(err)
@@ -461,7 +461,7 @@
               withCredentials: true
             },
             success: function(data) {
-              console.log("Progress: ", data)
+              console.log("Progress: ", data.result)
             },
             error: function(err) {
               console.log(err)
@@ -484,6 +484,9 @@
             "correct":   correct
           };
           console.log("Sending attempt to backend: ", data);
+          this.getAttempts();
+          this.getCheckpoint();
+          this.getProgress();
           $.ajax({
             url: "/pi_attempts",
             type: "POST",
@@ -494,10 +497,7 @@
               withCredentials: true
             },
             success: function(data) {
-              console.log(data);
-              this.getAttempts();
-              this.getCheckpoint();
-              this.getProgress();
+              console.log(data)
             },
             error: function(err) {
               console.log(err)
