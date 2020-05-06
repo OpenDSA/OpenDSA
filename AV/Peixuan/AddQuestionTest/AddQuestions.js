@@ -158,7 +158,7 @@ var generateQuestions = function (steps, graph, configure) {
     }
   }
 
-  //must delete minimizer part when use otherwise student can see the answer
+  //must delete this part when use otherwise student can see the answer
   console.log(questions["translations"]["en"]);
 
   return questions;
@@ -167,7 +167,7 @@ var generateQuestions = function (steps, graph, configure) {
 var toStrChoice = function (array){
   var res = "";
   array.forEach((item, i) => {
-    res+=("Node " + item + "  ");
+    res+=("Node (" + item + ") ");
   });
   return res.trim();
 }
@@ -290,7 +290,6 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
       strRes.push(toStrChoice(choice));
     });
     return strRes;
-    return res;
   }
 
   var generateMinimizeDFAQuestions = function (state) {
@@ -326,18 +325,18 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
     "specialQuestionInedx" : [0, 1],
     "specialQuestion" : [
         {
-         "type": "select",
+         "type": "multiple",
          "question": "Select nonfinal states to continue",
          "description": "Initially, the tree will consist of 2 nodes. A node for nonfinal states, and another state for final states.",
          "answer": steps[0][0]["node"].split(','), //String if type is multiple, array of string if select
-         "choices": allNodes
+         "choices": [steps[0][0]["node"].split(','), steps[1][0]["node"].split(',')]
         },
         {
-          "type": steps[1][0]["node"].split(',').length != 1 ? "select" : "multiple",
+          "type": "multiple",
           "question": "Select final states to continue",
           "description": "These are the nonfinal states.",
           "answer":  steps[1][0]["node"].split(','),//String if type is multiple, array of string if select
-          "choices": allNodes
+          "choices": [steps[0][0]["node"].split(','), steps[1][0]["node"].split(',')]
         }
       ],
     "questionPattern" : generateMinimizeDFAQuestions
