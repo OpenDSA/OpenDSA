@@ -9,7 +9,8 @@ $(document).ready(function() {
   var minm = new Minimizer();
   av.displayInit();
   var newGraphDimensions = {top: 460, left: 310, width: 360, height: 250};
+  var piframesLocations = {top: 10, left: -100};
   //minm.minimizeDFA(av, dfa, mytree, newGraphDimensions);
-  minimizeDFAWithQuestions(minm, av_name, av, dfa, mytree, newGraphDimensions);
+  minimizeDFAWithQuestions(minm, av_name, av, dfa, mytree, newGraphDimensions, piframesLocations);
   av.recorded();
 });
