@@ -68,5 +68,5 @@ $(document).ready(function () {
     $("#inputArea").keyup(CreateHash);
     $("#nonce").keyup(CreateHash);
     $("#nonce").focusout(CheckNonce);
-    $("#check").click(Check);
+    $("#nonce").keyup(Check);
 });
