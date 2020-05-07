@@ -26,8 +26,9 @@ $(document).ready(function() {
     var blockProposal4To2 = av.ds.list({top: "77%", left: "24.5%"});
     var blockProposal2To1 = av.ds.list({top: "77%", left: "3.5%"});
     var blockProposal2To4 = av.ds.list({top: "77%", left: "3.5%"});
-    var blockProposal3To1 = av.ds.list({top: "77%", left: "3.5%"});
-    var blockProposal3To4 = av.ds.list({top: "77%", left: "3.5%"});
+    var blockProposal3To1 = av.ds.list({top: "-5%", left: "24.5%"});
+    var blockProposal3To4 = av.ds.list({top: "-5%", left: "24.5%"});
+    var blockProposal4 = av.ds.list({top: "77%", left: "24.5%"});
 
     // this code is the starting state of the graph
     graph.css({"font-size": "12px"});
@@ -200,6 +201,14 @@ $(document).ready(function() {
     let blkETo2 = blockProposal3To4.addFirst("Blk E").get(0);
     blkETo1.addClass("orangeBlock");
     blkETo2.addClass("orangeBlock");
+
+    blockProposal3To1.css({left: "8.5%"});
+    blockProposal3To4.css({top: "58%"});
+
+    let blkD = blockProposal4.addFirst("Blk D").get(0);
+    blkD.addClass("redBlock");
+    blockProposal4.css({top: topCenterGraph, left: leftCenterGraph});
+
     // graph.removeNode(bBlock);
     // graph.removeEdge(bEdge);
     
@@ -212,11 +221,11 @@ $(document).ready(function() {
     // cBlock.addClass('orangenode');
     // cEdge.addClass('orangeedge');
 
-    const red2 = graph.addNode("Block", {"left":"33%", "top":"50%"});
-    const red2edge = graph.addEdge(d,red2);
+    // const red2 = graph.addNode("Block", {"left":"33%", "top":"50%"});
+    // const red2edge = graph.addEdge(d,red2);
 
-    red2.addClass('rednode');
-    red2edge.addClass('rededge');
+    // red2.addClass('rednode');
+    // red2edge.addClass('rededge');
     graph.layout();
 
     let node4Arrow = av.g.line(leftMargin + leftAdding*3 - 12, topMargin - 17,
@@ -224,22 +233,27 @@ $(document).ready(function() {
         {"arrow-end": "classic-wide-long",
         opacity: 0, "stroke-width": 2});
     
-    let node3Block = blockchain.newNode("Blk D");
-    let node4aBlock = blockchain.newNode("Blk E");
+    let node3Block = blockchain1Copy.newNode("Blk E");
+    let node4aBlock = blockchain4Copy.newNode("Blk D");
 
-    node4aBlock.css({top: topMargin-100, left: forkMargin});
-    node3Block.css({top: topMargin})
+    // node4aBlock.css({top: topMargin-100, left: forkMargin});
+    // node3Block.css({top: topMargin})
     node4aBlock.addClass('redBlock')
     node3Block.addClass('orangeBlock');
-    node2Block.next(node3Block);
-    node4Block.next(node4aBlock);
-    node4Arrow.show();
-    blockchain.layout({updateTop: false});
+    blockchain1Copy.get(3).next(node3Block);
+    blockchain4Copy.get(2).next(node4aBlock);
+    // node4Arrow.show();
+    blockchain1Copy.layout({updateTop: false});
+    blockchain4Copy.layout({updateTop: false});
     
 
     av.step();
     // // Slide 7
     av.umsg(interpret("sc7"));
+
+    blockProposal3To1.removeFirst();
+    blockProposal3To4.removeFirst();
+    blockProposal4.removeFirst();
 
     // graph.removeNode(cBlock);
     // graph.removeEdge(cEdge);
@@ -247,17 +261,17 @@ $(document).ready(function() {
     // graph.removeNode(red2);
     // graph.removeEdge(red2edge);
 
-    const eBlock = graph.addNode("Block", {"left":"33%", "top":"30%"});
-    const eEdge = graph.addEdge(a,eBlock);
+    // const eBlock = graph.addNode("Block", {"left":"33%", "top":"30%"});
+    // const eEdge = graph.addEdge(a,eBlock);
 
-    eBlock.addClass('greennode');
-    eEdge.addClass('greenedge');
+    // eBlock.addClass('greennode');
+    // eEdge.addClass('greenedge');
 
-    const fBlock = graph.addNode("Block", {"left":"33%", "top":"50%"});
-    const fEdge = graph.addEdge(b,fBlock);
+    // const fBlock = graph.addNode("Block", {"left":"33%", "top":"50%"});
+    // const fEdge = graph.addEdge(b,fBlock);
 
-    fBlock.addClass('bluenode');
-    fEdge.addClass('blueedge');
+    // fBlock.addClass('bluenode');
+    // fEdge.addClass('blueedge');
 
     graph.layout();
 
