@@ -10,15 +10,25 @@ $(document).ready(function() {
     var topMargin = 50;
     var leftMargin = 390;
     let leftAdding = 54;
+    var topProposal = "-5%";
+    var leftProposal = "3.5%";
+    let topCenterGraph = "35%";
+    let leftCenterGraph = "14%";
+    let node4ALeft = "55%";
+    let node4ATop = "90%"
+
+
     var blockchain = av.ds.list({top: topMargin, left: leftMargin, nodegap: 10});
     var graph = av.ds.graph({visible: true, left: -10, bottom: 5});
+    var blockProposal1 = av.ds.list({top: topProposal, left: leftProposal});
 
     // this code is the starting state of the graph
+    ;
     graph.css({"font-size": "12px"});
     const a = graph.addNode('1', { "left": "10%", "bottom":"90%"});
     const b = graph.addNode('2', {"right": "90%", "left":"10%", "top":"90%"});
     const c = graph.addNode('3', {"left": "55%", "bottom":"90%"});
-    const d = graph.addNode('4', {"bottom":"10%", "top":"90%", "left":"55%"});
+    const d = graph.addNode('4', {"bottom":"10%", "top":node4ATop, "left":node4ALeft});
     graph.addEdge(a,b);
     graph.addEdge(a,c);
     graph.addEdge(a,d);
@@ -27,14 +37,13 @@ $(document).ready(function() {
     graph.addEdge(c,d);
     av.g.line(300, 10, 300, 220);
 
+    graph.addClass('backward'); //move the graph behind the new proposed blocks
     graph.layout();
   
     // Slide 1
     av.umsg(interpret("sc1"));
 
     blockchain.addFirst("Blk 2").addFirst("Blk 1");
-    
-    // let node4Block = blockchain.newNode("Node 4");
 
     let forkMargin = 163; //the distance we want in the fork
 
@@ -45,20 +54,12 @@ $(document).ready(function() {
     // Slide 2
     av.umsg(interpret("sc2"));
     
-    graph.removeEdge(a,b);
-    graph.removeEdge(a,c);
-    graph.removeEdge(a,d);
-    graph.removeEdge(b,c);
-    graph.removeEdge(b,d);
-    graph.removeEdge(c,d);
-    graph.layout();
+    let blkA = blockProposal1.addFirst("Blk A").get(0);
+    blkA.addClass("greenBlock");
+    blockProposal1.css({top: topCenterGraph, left: leftCenterGraph});
+    graph.layout({updateLeft: false, updateTop: false});
 
-    const aBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
-    const aEdge = graph.addEdge(a,aBlock);
-    aBlock.addClass('greennode');
-    aEdge.addClass('greenedge');
-
-    let node1Block = blockchain.newNode("Node 1");
+    let node1Block = blockchain.newNode("Blk A");
     
     node1Block.css({top: 0, left: leftAdding * 2});
     node1Block.addClass('greenBlock');
@@ -72,16 +73,27 @@ $(document).ready(function() {
     // Slide 3
     av.umsg(interpret("sc3"));
 
-    graph.removeNode(aBlock);
-    graph.removeEdge(aEdge);
-    const dBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
-    const dEdge = graph.addEdge(d,dBlock);
+    blockProposal1.removeFirst();
+
+    // blockProposal1.css({top: node4ATop, left: node4ALeft});
+    let blockProposal4 = av.ds.list({top: "76%", left: "24.6%"});
+    let blkB = blockProposal4.addFirst("Blk B").get(0);
+    blkB.addClass("redBlock");
+    blockProposal4.css({top: topCenterGraph, left: leftCenterGraph});
+    // const dBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
+    // const dEdge = graph.addEdge(d,dBlock);
+    // blockProposal.css({top: node4ATop, left: node4ALeft});
+    // let blkB = blockProposal.addFirst("Blk B").get(0);
+    // blkA.addClass("redBlock");
+    
+    
+    // blockProposal.css({top: topCenterGraph, left: leftCenterGraph});
+    
+    graph.layout({updateLeft: false, updateTop: false});
 
     d.addClass('rednode');
-    dBlock.addClass('rednode');
-    dEdge.addClass('rededge');
 
-    let node4Block = blockchain.newNode("Node 4");
+    let node4Block = blockchain.newNode("Blk B");
     
     // node 4 arrow
     // subtracting 15 because the start of the auto-gen arrows are about 15 pixels    
@@ -105,8 +117,9 @@ $(document).ready(function() {
     // Slide 4
     av.umsg(interpret("sc4"));
 
-    graph.removeNode(dBlock);
-    graph.removeEdge(dEdge);
+    // graph.removeNode(dBlock);
+    // graph.removeEdge(dEdge);
+    blockProposal4.removeFirst();
     
     graph.layout();
 
@@ -122,16 +135,22 @@ $(document).ready(function() {
     av.umsg(interpret("sc5"));
 
     // graph
-    const bBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
-    const bEdge = graph.addEdge(b,bBlock);
+    // const bBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
+    // const bEdge = graph.addEdge(b,bBlock);
 
     b.addClass('bluenode');
-    bBlock.addClass('bluenode');
-    bEdge.addClass('blueedge');
+    // bBlock.addClass('bluenode');
+    // bEdge.addClass('blueedge');
+
+    let blockProposal2 = av.ds.list({top: "76%", left: "3.6%"});
+    let blkC = blockProposal2.addFirst("Blk C").get(0);
+    blkC.addClass("blueBlock");
+    blockProposal2.css({top: topCenterGraph, left: leftCenterGraph});
+
     graph.layout();
 
     // blockchain
-    let node2Block = blockchain.newNode("Node 2");
+    let node2Block = blockchain.newNode("Blk C");
     node2Block.css({top: topMargin});
     node2Block.addClass('blueBlock');
     blockchain.get(2).next(node2Block);
@@ -143,8 +162,10 @@ $(document).ready(function() {
     // graph
 
 
-    graph.removeNode(bBlock);
-    graph.removeEdge(bEdge);
+    // graph.removeNode(bBlock);
+    // graph.removeEdge(bEdge);
+    
+    blockProposal2.removeFirst();
 
     const cBlock = graph.addNode("Block", {"left":"33%", "top":"30%"});
     const cEdge = graph.addEdge(c,cBlock);
@@ -165,8 +186,8 @@ $(document).ready(function() {
         {"arrow-end": "classic-wide-long",
         opacity: 0, "stroke-width": 2});
     
-    let node3Block = blockchain.newNode("Node 3");
-    let node4aBlock = blockchain.newNode("Node 4\'");
+    let node3Block = blockchain.newNode("Blk D");
+    let node4aBlock = blockchain.newNode("Blk E");
 
     node4aBlock.css({top: topMargin-100, left: forkMargin});
     node3Block.css({top: topMargin})
@@ -202,8 +223,8 @@ $(document).ready(function() {
 
     graph.layout();
 
-    let node2aBlock = blockchain.newNode("Node 2\'");
-    let node1aBlock = blockchain.newNode("Node 1\'");
+    let node2aBlock = blockchain.newNode("Blk F");
+    let node1aBlock = blockchain.newNode("Blk G");
     
     node2aBlock.css({top: topMargin});
     node1aBlock.css({top: topMargin});
