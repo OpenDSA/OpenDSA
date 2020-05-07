@@ -133,7 +133,7 @@ $(document).ready(function() {
     blockchain.removeFirst();
     
     let blockchain1Copy = av.ds.list({top: "0%", left: "45%", nodegap: 10});
-    let blockchain4Copy = av.ds.list({top: "46%", left: "45%", nodegap: 10});
+    let blockchain4Copy = av.ds.list({top: "65%", left: "45%", nodegap: 10});
     blockchain1Copy.addFirst("Blk 2").addFirst("Blk 1");
     // let blk2For1 = blockchain1Copy.newNode("Blk 2");
     // blockchain1Copy.get(0).next(blk2For1);
@@ -273,22 +273,48 @@ $(document).ready(function() {
     // fBlock.addClass('bluenode');
     // fEdge.addClass('blueedge');
 
-    graph.layout();
-
-    let node2aBlock = blockchain.newNode("Blk F");
-    let node1aBlock = blockchain.newNode("Blk G");
+    blockchain4Copy.remove(3);
+    blockchain4Copy.remove(2);
     
-    node2aBlock.css({top: topMargin});
-    node1aBlock.css({top: topMargin});
-    node2aBlock.addClass('blueBlock');
-    node1aBlock.addClass('greenBlock');
-    node3Block.next(node2aBlock);
-    node2aBlock.next(node1aBlock);
-    blockchain.layout({updateTop: false});
+    let blkAfor4 = blockchain4Copy.newNode("Blk A");
+    blkAfor4.addClass("greenBlock");
+    let blkCfor4 = blockchain4Copy.newNode("Blk C");
+    blkCfor4.addClass("blueBlock");
+    let blkEfor4 = blockchain4Copy.newNode("Blk E");
+    blkEfor4.addClass("orangeBlock");
+    
+    blockchain4Copy.get(1).next(blkAfor4);
+    blockchain4Copy.get(2).next(blkCfor4);
+    blockchain4Copy.get(3).next(blkEfor4);
+    blockchain4Copy.layout({updateTop: false});
+    
+    // graph.layout();
+
+    // let node2aBlock = blockchain.newNode("Blk F");
+    // let node1aBlock = blockchain.newNode("Blk G");
+    
+    // node2aBlock.css({top: topMargin});
+    // node1aBlock.css({top: topMargin});
+    // node2aBlock.addClass('blueBlock');
+    // node1aBlock.addClass('greenBlock');
+    // node3Block.next(node2aBlock);
+    // node2aBlock.next(node1aBlock);
+    // blockchain.layout({updateTop: false});
 
     av.step();
 
     av.umsg(interpret("sc8"));
+
+    blockchain4Copy.removeLast();
+    blockchain4Copy.removeLast();
+    blockchain4Copy.removeLast();
+    blockchain4Copy.removeLast();
+    blockchain4Copy.removeLast();
+    blockchain1Copy.get(2).removeClass("greenBlock");
+    blockchain1Copy.get(3).removeClass("blueBlock");
+    blockchain1Copy.get(4).removeClass("orangeBlock");
+    blockchain1Copy.css({top: "35%"});
+    blockchain1Copy.layout({updateLeft: false});
 
     node1Arrow.hide();
     node4Arrow.hide();
