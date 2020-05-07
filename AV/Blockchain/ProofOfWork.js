@@ -24,6 +24,8 @@ $(document).ready(function() {
     var blockProposal1To2 = av.ds.list({top: topProposal, left: leftProposal});
     var blockProposal4To3 = av.ds.list({top: "77%", left: "24.5%"});
     var blockProposal4To2 = av.ds.list({top: "77%", left: "24.5%"});
+    var blockProposal2To1 = av.ds.list({top: "77%", left: "3.5%"});
+    var blockProposal2To4 = av.ds.list({top: "77%", left: "3.5%"});
 
     // this code is the starting state of the graph
     graph.css({"font-size": "12px"});
@@ -127,17 +129,25 @@ $(document).ready(function() {
     blockchain.removeFirst();
     blockchain.removeFirst();
     
-    let blockchain1Copy = av.ds.list({top: "46%", left: "45%", nodegap: 10});
-    let blockchain4Copy = av.ds.list({top: "0%", left: "45%", nodegap: 10});
+    let blockchain1Copy = av.ds.list({top: "0%", left: "45%", nodegap: 10});
+    let blockchain4Copy = av.ds.list({top: "46%", left: "45%", nodegap: 10});
     blockchain1Copy.addFirst("Blk 2").addFirst("Blk 1");
     // let blk2For1 = blockchain1Copy.newNode("Blk 2");
     // blockchain1Copy.get(0).next(blk2For1);
     blockchain4Copy.addFirst("Blk 2").addFirst("Blk 1");
     // let blk2For4 = blockchain4Copy.newNode("Blk 2");
     // blockchain4Copy.get(0).next(blk2For4);
+
+    node1Block.hide();
+    node4Block.hide();
+
+    let newNode1Block = blockchain1Copy.newNode("Blk B");
+    newNode1Block.addClass('redBlock');
+    let newNode4Block = blockchain4Copy.newNode("Blk A");
+    newNode4Block.addClass('greenBlock');
     
-    blockchain1Copy.get(1).next(node1Block);
-    blockchain4Copy.get(1).next(node4Block);
+    blockchain1Copy.get(1).next(newNode1Block);
+    blockchain4Copy.get(1).next(newNode4Block);
 
     blockchain1Copy.layout({updateTop: false});
     blockchain4Copy.layout({updateTop: false});
@@ -154,8 +164,10 @@ $(document).ready(function() {
     // bEdge.addClass('blueedge');
 
     let blockProposal2 = av.ds.list({top: "76%", left: "3.6%"});
-    let blkC = blockProposal2.addFirst("Blk C").get(0);
-    blkC.addClass("blueBlock");
+    
+
+    let blkCTo4 = blockProposal2To4.addFirst("Blk C").get(0);
+    blkCTo4.addClass("blueBlock");
     blockProposal2.css({top: topCenterGraph, left: leftCenterGraph});
 
     graph.layout();
