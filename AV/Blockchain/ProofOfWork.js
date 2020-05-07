@@ -20,10 +20,12 @@ $(document).ready(function() {
 
     var blockchain = av.ds.list({top: topMargin, left: leftMargin, nodegap: 10});
     var graph = av.ds.graph({visible: true, left: -10, bottom: 5});
-    var blockProposal1 = av.ds.list({top: topProposal, left: leftProposal});
+    var blockProposal1To3 = av.ds.list({top: topProposal, left: leftProposal});
+    var blockProposal1To2 = av.ds.list({top: topProposal, left: leftProposal});
+    var blockProposal4To3 = av.ds.list({top: "77%", left: "24.5%"});
+    var blockProposal4To2 = av.ds.list({top: "77%", left: "24.5%"});
 
     // this code is the starting state of the graph
-    ;
     graph.css({"font-size": "12px"});
     const a = graph.addNode('1', { "left": "10%", "bottom":"90%"});
     const b = graph.addNode('2', {"right": "90%", "left":"10%", "top":"90%"});
@@ -31,8 +33,8 @@ $(document).ready(function() {
     const d = graph.addNode('4', {"bottom":"10%", "top":node4ATop, "left":node4ALeft});
     graph.addEdge(a,b);
     graph.addEdge(a,c);
-    graph.addEdge(a,d);
-    graph.addEdge(b,c);
+    // graph.addEdge(a,d);
+    // graph.addEdge(b,c);
     graph.addEdge(b,d);
     graph.addEdge(c,d);
     av.g.line(300, 10, 300, 220);
@@ -54,9 +56,13 @@ $(document).ready(function() {
     // Slide 2
     av.umsg(interpret("sc2"));
     
-    let blkA = blockProposal1.addFirst("Blk A").get(0);
-    blkA.addClass("greenBlock");
-    blockProposal1.css({top: topCenterGraph, left: leftCenterGraph});
+    let blkATo3 = blockProposal1To3.addFirst("Blk A").get(0);
+    let blkATo2 = blockProposal1To2.addFirst("Blk A").get(0);
+    blkATo3.addClass("greenBlock");
+    blkATo2.addClass("greenBlock");
+
+    blockProposal1To3.css({top: "58%", left: "3.5%"});
+    blockProposal1To2.css({top: "-5%", left: "20%"});
     graph.layout({updateLeft: false, updateTop: false});
 
     let node1Block = blockchain.newNode("Blk A");
@@ -73,21 +79,16 @@ $(document).ready(function() {
     // Slide 3
     av.umsg(interpret("sc3"));
 
-    blockProposal1.removeFirst();
+    blockProposal1To3.removeFirst();
+    blockProposal1To2.removeFirst();
 
-    // blockProposal1.css({top: node4ATop, left: node4ALeft});
-    let blockProposal4 = av.ds.list({top: "76%", left: "24.6%"});
-    let blkB = blockProposal4.addFirst("Blk B").get(0);
-    blkB.addClass("redBlock");
-    blockProposal4.css({top: topCenterGraph, left: leftCenterGraph});
-    // const dBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
-    // const dEdge = graph.addEdge(d,dBlock);
-    // blockProposal.css({top: node4ATop, left: node4ALeft});
-    // let blkB = blockProposal.addFirst("Blk B").get(0);
-    // blkA.addClass("redBlock");
-    
-    
-    // blockProposal.css({top: topCenterGraph, left: leftCenterGraph});
+    let blkBTo3 = blockProposal4To3.addFirst("Blk B").get(0);
+    let blkBTo2 = blockProposal4To2.addFirst("Blk B").get(0);
+    blkBTo3.addClass("redBlock");
+    blkBTo2.addClass("redBlock");
+
+    blockProposal4To3.css({top: "77%", left: "8.5%"});
+    blockProposal4To2.css({top: "15%", left: "24.5%"});
     
     graph.layout({updateLeft: false, updateTop: false});
 
@@ -117,17 +118,29 @@ $(document).ready(function() {
     // Slide 4
     av.umsg(interpret("sc4"));
 
-    // graph.removeNode(dBlock);
-    // graph.removeEdge(dEdge);
-    blockProposal4.removeFirst();
+    blockProposal4To3.removeFirst();
+    blockProposal4To2.removeFirst();
     
     graph.layout();
 
     // start blockchain
+    blockchain.removeFirst();
+    blockchain.removeFirst();
     
-    blockchain.get(1).next(node1Block);
-    node1Arrow.show();
-    blockchain.layout({updateTop: false});
+    let blockchain1Copy = av.ds.list({top: "46%", left: "45%", nodegap: 10});
+    let blockchain4Copy = av.ds.list({top: "0%", left: "45%", nodegap: 10});
+    blockchain1Copy.addFirst("Blk 2").addFirst("Blk 1");
+    // let blk2For1 = blockchain1Copy.newNode("Blk 2");
+    // blockchain1Copy.get(0).next(blk2For1);
+    blockchain4Copy.addFirst("Blk 2").addFirst("Blk 1");
+    // let blk2For4 = blockchain4Copy.newNode("Blk 2");
+    // blockchain4Copy.get(0).next(blk2For4);
+    
+    blockchain1Copy.get(1).next(node1Block);
+    blockchain4Copy.get(1).next(node4Block);
+
+    blockchain1Copy.layout({updateTop: false});
+    blockchain4Copy.layout({updateTop: false});
 
     av.step();
     
@@ -135,8 +148,6 @@ $(document).ready(function() {
     av.umsg(interpret("sc5"));
 
     // graph
-    // const bBlock = graph.addNode("Block", {"left":"33%", "top":"40%"});
-    // const bEdge = graph.addEdge(b,bBlock);
 
     b.addClass('bluenode');
     // bBlock.addClass('bluenode');
@@ -153,7 +164,7 @@ $(document).ready(function() {
     let node2Block = blockchain.newNode("Blk C");
     node2Block.css({top: topMargin});
     node2Block.addClass('blueBlock');
-    blockchain.get(2).next(node2Block);
+    // blockchain.get(2).next(node2Block);
     blockchain.layout({updateTop: false});
 
     av.step();

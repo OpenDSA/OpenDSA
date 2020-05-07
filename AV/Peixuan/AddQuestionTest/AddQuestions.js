@@ -1,5 +1,5 @@
 //initialize PI frame with generated questions
-var piInit = function(av_name, questions) {
+var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}) {
   var container = $(`#${av_name}`);
 
   var qButton = $("<div />", {
@@ -52,18 +52,50 @@ var piInit = function(av_name, questions) {
   // point the injector to generated questions
   var injector = PIFRAMES.Injector(questions, av_name);
   PIFRAMES.table[av_name] = injector;
+
+  injector.updateCanvas = function(theHtml) {
+    if ($(`.${this.class}`).children().length > 0) {
+      $(`.${this.class}`).empty();
+      $(`.${this.class}`).append(theHtml);
+    } else {
+      $(`.${this.class}`).append(theHtml);
+    }
+
+    if ($(".PIFRAMES").find("iframe").length > 0) {
+      $(".jsavoutput.jsavline").css("width", "0%");
+      $(".jsavoutput.jsavline").css("display", "none");
+      $(".picanvas").css({
+        width: "900px",
+        height: "600px"
+      });
+      $(".PIFRAMES").css({
+        width: "100%",
+        height: "100%",
+        left: 50
+      });
+    } else {
+      $(".jsavoutput.jsavline").css({
+        display: "inline-block",
+        width: "60%",
+        "vertical-align": "top"
+      });
+      $(".picanvas").css({
+        width: "0%",
+        height: "100%"
+      });
+      $(".PIFRAMES").css({
+        width: "100%",
+        height: "none",
+        left: piframesLocations.left,
+        position: "relative",
+        top: piframesLocations.top
+      });
+    }
+  }
+
   return injector;
 }
 
-var rePositionPIFrame = function() {
-    $(".PIFRAMES").css({
-      width: "100%",
-      height: "none",
-      left: -200,
-      position: "relative",
-      top: 10
-    });
-}
 //helper functions
 // *copied from FA.js
 var highlightAllNodes = function (listOfNodes, graph) {
@@ -208,7 +240,7 @@ var containsChoice = function(choice, set){
   return false;
 }
 
-var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph, tree, newGraphDimensions) {
+var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph, tree, newGraphDimensions, piframesLocations) {
   var steps = getAllStepsForMinimizeDFA(minimizer, jsav, referenceGraph, tree);
 
   var generateRandomChoicesForMinimize = function (state) {
@@ -344,7 +376,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
 
   var questions = generateQuestions(steps, referenceGraph, configureForMinimizeDFA);
   // initialize PI frame
-  var Frames = piInit(av_name, questions);
+  var Frames = piInit(av_name, questions, piframesLocations);
 
 
   //change old functions to add questions
@@ -614,7 +646,7 @@ var getAllStepsForMinimizeDFA = function(minimizer, jsav, referenceGraph, tree) 
 
   //minimizer.done(newGraphDimensions);
 
-  //must delete minimizer part when use otherwise student can see the answer
+  //must delete this part when use otherwise student can see the answer
   console.log(res);
   return res;
 };
@@ -806,8 +838,6 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
     }
     var nodes = g.nodes();
       for (var next = nodes.next(); next; next = nodes.next()) {
-        //Warning!!!
-        //I don't know why minimizer made the view different than the original function
         //next.stateLabel(next.value());
         next.stateLabelPositionUpdate();
       }
