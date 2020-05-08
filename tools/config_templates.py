@@ -93,8 +93,7 @@ slides:
 	@SLIDES=yes \
 	$(SPHINXBUILD) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js
-	rm html/_static/styles.css
-	cp "%(odsa_dir)slib/styles.css" html/_static/
+	cp "%(odsa_dir)slib/styles.css" html/_static/ # Overwrites
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
@@ -225,7 +224,11 @@ pygments_style = 'borland' #'sphinx'
 # -- Options for HTML Slide output ---------------------------------------------------
 sys.path.append('%(theme_dir)s')
 slide_theme_path = ['%(theme_dir)s']
-slide_theme = 'slidess' #'single-level'
+# slide_theme = 'slidess' # BAD, old default theme
+# slide_theme = 'haiku' # BAD, old theme
+# slide_theme = 'single-level' # good, basic theme
+# slide_theme = 'slides2' # good, animated theme
+slide_theme = 'slides' # good, default theme
 #slide_theme_options = {'custom_css':'custom.css'}
 
 slide_link_html_to_slides = not on_slides
