@@ -381,12 +381,12 @@ def initialize_conf_py_options(config, slides):
 
     #Adding multiple tags support
     if config.tag:
-      tags_string = ""
-      tags_array = []
-      tags_array += [a.strip() for a in config.tag.split(';')]
-      for tag in tags_array:
-        tags_string += " -t "+tag
-      options["tag"] = tags_string
+        tags_string = ""
+        tags_array = []
+        tags_array += [a.strip() for a in config.tag.split(';')]
+        for tag in tags_array:
+            tags_string += " -t "+tag
+            options["tag"] = tags_string
     else:
       options["tag"] = ""
 
