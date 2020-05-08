@@ -132,24 +132,18 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/avembed'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/extrtoolembed'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/avmetadata'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/codeinclude'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/numref'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/chapnum'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/odsalink'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/odsascript'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/sphinx-numfig'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/inlineav'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/html5'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/odsafig'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/odsatable'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/chapref'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/odsatoctree'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/showhidecontent'))
-sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/iframe'))
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'numfig', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree','showhidecontent', 'iframe']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig']
+
+ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe']
+
+customsDir = '%(odsa_dir)sRST/ODSAextensions/odsa/'
+for c in ourCustoms:
+	sys.path.append(os.path.abspath(customsDir + c))
+	extensions.append(c)
+
+# One custom extension that breaks the naming convention:
+sys.path.append(os.path.abspath(customsDir + 'sphinx-numfig'))
+extensions.append('numfig')
 
 slides_lib = '%(slides_lib)s'
 
