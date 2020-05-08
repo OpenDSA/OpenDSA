@@ -59,8 +59,13 @@
     "required": true
   }, 
   "chapters": {
-    "Week 1": {
-      "Patrick/TestSlide": {}
+    "Easy Test Chap": {
+      "Patrick/TestSlide": {},
+      "Patrick/TestSlideSeveral": {}
+    },
+    "Hard Test Chap": {
+      "Patrick/TestMathCodeAndFigs": {}, 
+      "Patrick/TestAV": {}
     }
   }
 }

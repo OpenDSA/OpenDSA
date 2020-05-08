@@ -9,13 +9,14 @@
 .. slideconf::
    :autoslides: False
 
-================
-Test Slide Title
-================
 
-Test Slide section 1
---------------------
+TestSlide
+=========
 
-.. slide:: Tiny Test Slide
+.. slide:: 
+	:level: 1
 
-   Just a tiny test of a single slide
+	Lets try a test slide with no title.  
+
+	It is at Level 1
+
