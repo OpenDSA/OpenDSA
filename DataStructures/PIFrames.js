@@ -409,7 +409,7 @@
           };
           $.ajax({
             url: "/pi_attempts/get_attempts",
-            type: "GET",
+            type: "POST",
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             datatype: "json",
@@ -417,7 +417,7 @@
               withCredentials: true
             },
             success: function(data) {
-              console.log("Attempts: ", data.result)
+              console.log(data)
             },
             error: function(err) {
               console.log(err)
@@ -431,7 +431,7 @@
           };
           $.ajax({
             url: "/pi_attempts/get_checkpoint",
-            type: "GET",
+            type: "POST",
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             datatype: "json",
@@ -439,7 +439,7 @@
               withCredentials: true
             },
             success: function(data) {
-              console.log("Checkpoint: ", data.result)
+              console.log(data)
             },
             error: function(err) {
               console.log(err)
@@ -453,7 +453,7 @@
           };
           $.ajax({
             url: "/pi_attempts/get_progress",
-            type: "GET",
+            type: "POST",
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             datatype: "json",
@@ -461,7 +461,7 @@
               withCredentials: true
             },
             success: function(data) {
-              console.log("Progress: ", data.result)
+              console.log(data)
             },
             error: function(err) {
               console.log(err)
@@ -484,9 +484,6 @@
             "correct":   correct
           };
           console.log("Sending attempt to backend: ", data);
-          this.getAttempts();
-          this.getCheckpoint();
-          this.getProgress();
           $.ajax({
             url: "/pi_attempts",
             type: "POST",
@@ -503,7 +500,9 @@
               console.log(err)
             }
           });
-
+          this.getAttempts();
+          this.getCheckpoint();
+          this.getProgress();
           if (question.type == "textBoxAny") {
             //case where we accept any string as an answer
             this.setStudentAnswer(
