@@ -45,7 +45,7 @@
     submit: `<br><input type="submit" value="Submit"> </br>`,
     feedback: `<p hidden id="feedback">Incorrect!</p>`,
     ParseTree: null,
-    Injector(data, av_name) {
+    Injector(data, av_name, skip_to) {
       var obj = {
         myData: data,
 
@@ -66,6 +66,9 @@
           descriptionCounter: 0,
           lastEncounteredQuestionSlide: 1000
         },
+
+        // user progress
+        skip_to: skip_to,
 
         //used for dynamic resizing
         originalAVHeight: 0,
@@ -426,29 +429,6 @@
           });
         },
 
-        getCheckpoint: function() {
-          let data = {
-            "frame_name": av_name,
-          };
-          $.ajax({
-            url: "/pi_attempts/get_checkpoint",
-            type: "POST",
-            async: false,
-            data: JSON.stringify(data),
-            contentType: "application/json; charset=utf-8",
-            datatype: "json",
-            xhrFields: {
-              withCredentials: true
-            },
-            success: function(data) {
-              console.log(data)
-            },
-            error: function(err) {
-              console.log(err)
-            }
-          });
-        },
-
         getProgress: function() {
           let data = {
             "frame_name": av_name,
@@ -483,7 +463,6 @@
             "question":  this.queue.current,
             "correct":   correct
           };
-          console.log("Sending attempt to backend: ", data);
           $.ajax({
             url: "/pi_attempts",
             type: "POST",
@@ -500,9 +479,7 @@
               console.log(err)
             }
           });
-          this.getAttempts();
-          this.getCheckpoint();
-          this.getProgress();
+
           if (question.type == "textBoxAny") {
             //case where we accept any string as an answer
             this.setStudentAnswer(
@@ -746,7 +723,31 @@
         }
       });
 
-      var injector = this.Injector(json_data, av_name);
+      let data = {
+        "frame_name": av_name,
+      };
+
+      var skip_to;
+      // get user checkout
+      $.ajax({
+        url: "/pi_attempts/get_checkpoint",
+        type: "POST",
+        async: false,
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        datatype: "json",
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function(data) {
+          skip_to = parseInt(data.result)
+        },
+        error: function(err) {
+          skip_to = 0
+        }
+      });
+
+      var injector = this.Injector(json_data, av_name, skip_to);
       PIFRAMES.table[av_name] = injector;
       return injector;
     },
