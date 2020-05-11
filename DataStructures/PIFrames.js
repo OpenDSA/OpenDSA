@@ -410,6 +410,7 @@
           $.ajax({
             url: "/pi_attempts/get_attempts",
             type: "POST",
+            async: false,
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             datatype: "json",
@@ -432,6 +433,7 @@
           $.ajax({
             url: "/pi_attempts/get_checkpoint",
             type: "POST",
+            async: false,
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             datatype: "json",
@@ -454,6 +456,7 @@
           $.ajax({
             url: "/pi_attempts/get_progress",
             type: "POST",
+            async: false,
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             datatype: "json",
@@ -470,9 +473,6 @@
         },
 
         saveAndCheckStudentAnswer(answer) {
-
-    
-
           var current = this.queue.current;
           this.setStudentAnswer(this.queue.elements[current], answer);
           var question = this.getQuestion(this.queue.elements[current]);
