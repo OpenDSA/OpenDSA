@@ -691,9 +691,7 @@
           }
           var current = this.queue.current;
           if (
-            this.studentHasAnsweredQuestionCorrectly(
-              this.queue.elements[current]
-            )
+             current < this.skip_to || this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])
           ) {
             this.enableForwardButton();
             // if (($(`#${this.av_name}`).find('.REVEAL').length)) {
