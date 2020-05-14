@@ -1,4 +1,3 @@
-
 {
   "title": "Milen",
   "desc": "Milen",
@@ -64,11 +63,7 @@
     "required": true
   },
   "chapters": {
-    "Stuff": {
-      "Milen/BTree": {}
-    },
-"Introduction to Pointers in Java": {
-      "Milen/PointerIntro": {},
+    "Introduction to Pointers in Java": {
       "Milen/BasicPointers1": {},
       "Milen/BasicPointers2": {
         "PointerEX1PRO": {
@@ -77,24 +72,8 @@
         "PointerEX2PRO": {
           "threshold": 1
         }
-      }, 
-      "Milen/Syntax": {},
-      "Milen/LocalMem": {}, 
-      "Milen/HeapMem": {}, 
-      "Milen/Links1": {
-        "PointerEX3PRO": {
-          "threshold": 1
-        }
-      },
-      "Milen/Links2": {},
-      "Milen/PointersCM": {
-        "CMpointersSumm": {
-          "threshold": 5
-        }
-      },
-      "Milen/Exercises": {}
+      }
     }, 
-
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}
