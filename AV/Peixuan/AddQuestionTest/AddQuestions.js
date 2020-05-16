@@ -1,5 +1,6 @@
 //initialize PI frame with generated questions
 var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}) {
+  console.log(av_name + " init")
   var container = $(`#${av_name}`);
 
   var qButton = $("<div />", {
@@ -12,7 +13,7 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
 
   $(".picanvas").css({
     width: "0px",
-    overflow: "hidden"
+    //overflow: "hidden"
   });
 
   $(question).css({
@@ -29,24 +30,67 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
   });
 
   $(".jsavcanvas").css({
-    "min-width": "0px",
+    //"min-width": "0px",
     width: "60%",
     overflow: "hidden",
     "margin-left": 0,
     "min-height": "500px"
   });
 
+
   // $(".jsavcanvas").append(qButton);
   // $(".jsavcanvas").append(question);
+
   $(container).append(qButton);
   $(container).append(question);
 
-  $(".SHOWQUESTION,.PIFRAMES").wrapAll('<div class="picanvas"></div>');
-  $(".picanvas").insertAfter($(".jsavcanvas"));
+  $("#" + av_name + " > .SHOWQUESTION, #" + av_name + " > .PIFRAMES").wrapAll('<div class="picanvas"></div>');
+  //$(".SHOWQUESTION,.PIFRAMES").wrapAll('<div class="picanvas"></div>');
+  $("#" + av_name + " > .picanvas").insertAfter($("#" + av_name + " > .jsavcanvas"));
+  //$(".picanvas").insertAfter($(".jsavcanvas"));
 
-  $(".jsavcanvas,.picanvas").wrapAll('<div class="canvaswrapper"></div>');
-  $(".canvaswrapper").css({
+  $("#" + av_name + " > .jsavcanvas, #" + av_name + " > .picanvas").wrapAll('<div class="canvaswrapper"></div>');
+  //$(".jsavcanvas,.picanvas").wrapAll('<div class="canvaswrapper"></div>');
+  $("#" + av_name + " > .canvaswrapper").css({
     display: "flex"
+  });
+
+  //disable jsavend, as it allows student to jump to last slide
+  //automatically enabled by injector once all questions for slideshow have been answered
+  // $(".jsavend").css("pointer-events", "none");
+  $("#" + av_name + " > .jsavcontrols > .jsavend").css("visibility", "hidden");
+
+  //edge case: what if first slide has question?
+  //1 signifies a forward click; used by injector to increment queue if necessary
+  $("#" + av_name + " > .jsavcontrols > .jsavforward").click(function() {
+    var buttonGroup = $(this).parent();
+    var parentAV = $(buttonGroup)
+      .parent()
+      .attr("id");
+    //console.log(parentAV);
+    PIFRAMES.callInjector(parentAV, 1);
+  }),
+    //0 signifies a backward click; used by injector to decrement queue if necessary
+  $("#" + av_name + " > .jsavcontrols > .jsavbackward").click(function() {
+      var buttonGroup = $(this).parent();
+      var parentAV = $(buttonGroup)
+        .parent()
+        .attr("id");
+      PIFRAMES.callInjector(parentAV, 0);
+    }),
+  $("#" + av_name + " > .jsavcontrols > .jsavbegin").click(function() {
+      var buttonGroup = $(this).parent();
+      var parentAV = $(buttonGroup)
+        .parent()
+        .attr("id");
+      PIFRAMES.callInjector(parentAV, -1);
+    }),
+  $("#" + av_name + " > .jsavcontrols > .jsavend").click(function() {
+      var buttonGroup = $(this).parent();
+      var parentAV = $(buttonGroup)
+        .parent()
+        .attr("id");
+      PIFRAMES.callInjector(parentAV);
   });
 
   // point the injector to generated questions
@@ -54,48 +98,54 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
   PIFRAMES.table[av_name] = injector;
 
   injector.updateCanvas = function(theHtml) {
+    if ($("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").children().length > 0) {
+      $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").empty();
+      $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(theHtml);
+    } else {
+      $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(theHtml);
+    }
+    /*
     if ($(`.${this.class}`).children().length > 0) {
       $(`.${this.class}`).empty();
       $(`.${this.class}`).append(theHtml);
     } else {
       $(`.${this.class}`).append(theHtml);
-    }
+    }*/
 
-    if ($(".PIFRAMES").find("iframe").length > 0) {
-      $(".jsavoutput.jsavline").css("width", "0%");
-      $(".jsavoutput.jsavline").css("display", "none");
-      $(".picanvas").css({
+    if ($("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").find("iframe").length > 0) {
+      $("#" + av_name + " > .jsavoutput.jsavline").css("width", "0%");
+      $("#" + av_name + " > .jsavoutput.jsavline").css("display", "none");
+      $("#" + av_name + " > .canvaswrapper > .picanvas").css({
         width: "900px",
         height: "600px"
       });
-      $(".PIFRAMES").css({
+      $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").css({
         width: "100%",
         height: "100%",
         left: 50
       });
     } else {
-      $(".jsavoutput.jsavline").css({
+      $("#" + av_name + " > .jsavoutput.jsavline").css({
         display: "inline-block",
         width: "60%",
         "vertical-align": "top"
       });
-      $(".picanvas").css({
+      $("#" + av_name + " > .canvaswrapper > .picanvas").css({
         width: "0%",
         height: "100%"
       });
-      $(".PIFRAMES").css({
+      $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").css({
         width: "100%",
         height: "none",
-        left: piframesLocations.left,
+        left: 5,
         position: "relative",
-        top: piframesLocations.top
+        top: 10
       });
     }
   }
 
   return injector;
 }
-
 //helper functions
 // *copied from FA.js
 var highlightAllNodes = function (listOfNodes, graph) {
