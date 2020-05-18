@@ -22,6 +22,13 @@
 		</state>
 		<!--The list of transitions.-->
 		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>a</read>
+			<pop>Z</pop>
+			<push>aZ</push>
+		</transition>
+		<transition>
 			<from>1</from>
 			<to>1</to>
 			<read>a</read>
@@ -29,18 +36,18 @@
 			<push>aa</push>
 		</transition>
 		<transition>
-			<from>2</from>
-			<to>3</to>
-			<read></read>
-			<pop>Z</pop>
-			<push></push>
+			<from>1</from>
+			<to>2</to>
+			<read>b</read>
+			<pop>a</pop>
+			<push/>
 		</transition>
 		<transition>
-			<from>0</from>
-			<to>1</to>
-			<read>a</read>
+			<from>2</from>
+			<to>3</to>
+			<read/>
 			<pop>Z</pop>
-			<push>aZ</push>
+			<push/>
 		</transition>
 		<transition>
 			<from>2</from>
@@ -50,10 +57,10 @@
 			<push/>
 		</transition>
 		<transition>
-			<from>1</from>
+			<from>2</from>
 			<to>2</to>
 			<read>b</read>
-			<pop>a</pop>
+			<pop/>
 			<push/>
 		</transition>
 	</automaton>
