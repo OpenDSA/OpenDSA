@@ -3,6 +3,8 @@
 $(document).ready(function() {
   "use strict";
   var av_name = "badPointerPowCON";
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+      interpret = config.interpreter;
   var av = new JSAV(av_name);
   var xPosition = 550;
   var yPositionR1 = 10;
@@ -31,45 +33,60 @@ $(document).ready(function() {
     [xPositionBAD, yPositionBAD]],
    {"stroke-width": 3, stroke: "red"}); */
   var label1 = av.label('<tt>Employee badPointer;</tt>', 
-                        {top: 0, left: 225}).hide();
+                        {top: 0, left: 150}).hide();
   var label2 = av.label('<tt>System.out.println(badPointer.getName());</tt>', 
                         {top: 0, left: 50}).hide();
-  var label3 = av.label("NullPointerException",  {top: 0, left: 620}).hide();
+  var label3 = av.label("NullPointerException",  {top: 0, left: 580}).hide();
   var pointerArrow = av.g.line(xPosition + 10, yPositionR1 + 17, xPosition + 60, yPositionR1 + 17, 
     {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   pointerArrow.hide();
 
   // Slide 1
-  av.umsg("We first allocate the reference to a variable.");
+  av.umsg(interpret("sc1"));
   label1.show();
   //polygon.hide();
   //badPointer + rectangle
   var pointerLabel = av.label("badPointer",  {top: yPositionR1 - 10, left: xPosition - 80}).hide();
-  av.g.rect(xPosition -100, yPositionR1, length1, width);
+  var rect1= av.g.rect(xPosition -100, yPositionR1, length1, width);
 
   //xs 
-  av.g.line(xPosition + -90, yPositionR1 + 25, xPosition + -70, yPositionR1 + 3, {"stroke-width": 2});
-  av.g.line(xPosition + -90, yPositionR1 + 3, xPosition + -70, yPositionR1 + 25, {"stroke-width": 2});
-  av.g.line(xPosition + -60, yPositionR1 + 25, xPosition + -40, yPositionR1 + 3, {"stroke-width": 2});
-  av.g.line(xPosition + -60, yPositionR1 + 3, xPosition + -40, yPositionR1 + 25, {"stroke-width": 2});
-  av.g.line(xPosition + -30, yPositionR1 + 25, xPosition + -10, yPositionR1 + 3, {"stroke-width": 2});
-  av.g.line(xPosition + -30, yPositionR1 + 3, xPosition + -10, yPositionR1 + 25, {"stroke-width": 2});
-  av.step();
+  var line1 = av.g.line(xPosition + -90, yPositionR1 + 25, xPosition + -70, yPositionR1 + 3, {"stroke-width": 2});
+  var line2 = av.g.line(xPosition + -90, yPositionR1 + 3, xPosition + -70, yPositionR1 + 25, {"stroke-width": 2});
+  var line3= av.g.line(xPosition + -60, yPositionR1 + 25, xPosition + -40, yPositionR1 + 3, {"stroke-width": 2});
+  var line4 = av.g.line(xPosition + -60, yPositionR1 + 3, xPosition + -40, yPositionR1 + 25, {"stroke-width": 2});
+  var line5= av.g.line(xPosition + -30, yPositionR1 + 25, xPosition + -10, yPositionR1 + 3, {"stroke-width": 2});
+  var line6 = av.g.line(xPosition + -30, yPositionR1 + 3, xPosition + -10, yPositionR1 + 25, {"stroke-width": 2});
+  var arr = av.ds.array([]);
+  var list = av.ds.list({top:10, left:440});
+  var pointer1 = av.pointer("badpointer", list, {top: 10, left: -100});
+  pointer1.show();
   av.displayInit();
   
 
   // Slide 2
-  av.umsg("The badPointer doesn't point to anything!");
-  pointerArrow.show();
-  av.step();
+  av.umsg("");
+  //pointerArrow.show();
+  rect1.hide();
+  line1.hide();
+  line2.hide();
+  line3.hide();
+  line4.hide();
+  line5.hide();
+  line6.hide();
+  
 
   // Slide 3
   // Explosion
-  av.umsg("In the end, if we run this code we end up with a NullPointerException.");
+  av.umsg(interpret("sc2"));
+  pointer1.hide();
   label1.hide();
   label2.show();
   label3.show();
-  av.g.ellipse(690, 25, 78, 23, {stroke: "red", "stroke-width": 3}); 
+  var arr = av.ds.array([]);
+  var list = av.ds.list({top:10, left:555});
+  var pointer1 = av.pointer("badpointer", list, {top: 10, left: -135});
+  pointer1.show();
+  av.g.ellipse(650, 25, 78, 23, {stroke: "red", "stroke-width": 3}); 
   //av.displayInit();
   av.recorded();
 });

@@ -6,7 +6,7 @@ $(document).ready(function() {
   var av_name = "empPtrxxxCON";
   var av = new JSAV(av_name);
   var label1 = av.label('<tt>Employee ref;</tt>', {top: 0, left: 200}).hide(); 
-  var label2 = av.label('<tt>Employee ref = new Employee("Sam, 1000);</tt>', {top: 0, left: 125}).hide(); 
+  var label2 = av.label('<tt>Employee ref = new Employee("Sam, 1000);</tt>', {top: 0, left: 100}).hide(); 
   var label3 = av.label('<tt>Sam</tt>', {top: -10, left: 600}).hide(); 
   var label4 = av.label('<tt>1000</tt>', {top: 10, left: 600}).hide(); 
   var label5 = av.label('<tt>ref</tt>', {top: 0, left: 450}).hide();
@@ -18,9 +18,11 @@ $(document).ready(function() {
     {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   var newArrow = av.g.line(xPosition +90, yPositionR1 + 17, xPosition +165, yPositionR1 + 17, 
       {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
-  //Slide 1 
+
   
-  av.umsg("At first, the references are uninitialized or null which can cause serious errors.");
+
+  //Slide 2
+  av.umsg("At first, the references are uninitialized or null which can cause serious errors. The unreferenced object is known as the bad reference.");
   badArrow.hide();
   newArrow.hide();
   var rect = av.g.rect(xPosition, yPositionR1, length1, width);
@@ -33,20 +35,18 @@ $(document).ready(function() {
 
   var line5 = av.g.line(xPosition + 70, yPositionR1 + 25, xPosition + 90, yPositionR1 + 3, {"stroke-width": 2});
   var line6 = av.g.line(xPosition + 70, yPositionR1 + 3, xPosition + 90, yPositionR1 + 25, {"stroke-width": 2});
- 
+  label1.show();
+  var arr = av.ds.array([]);
+  var list = av.ds.list({top:8, left:395});
+  var pointer1 = av.pointer("ref", list, {top: 10, left: -75});
+  pointer1.show();
   
-  av.step();
   av.displayInit();
   
 
-  //Slide 2
-  av.umsg("The unreferenced object is known as the bad reference.");
-  label1.show();
-  badArrow.show();
-  av.step()
-
   //Slide 3
-  av.umsg("We don't want bad references so assigning it a pointee is the key")
+  av.umsg("We don't want bad references so assigning it a pointee is the key. In the end the reference is pointing to the object.")
+  pointer1.hide();
   line1.hide();
   line2.hide();
   line3.hide();
@@ -55,18 +55,21 @@ $(document).ready(function() {
   line6.hide();
   rect.hide();
   badArrow.hide();
-  newArrow.show();
+  //newArrow.show();
   var rect2 = av.g.rect(xPosition+175, yPositionR1 -10 , length1, width+20);
   rect2.show();
+  var arr = av.ds.array([]);
+  var list = av.ds.list({top:10, left:570});
+  var pointer1 = av.pointer("ref", list, {top: 10, left: -100});
+  pointer1.show();
   label2.show();
   label3.show();
   label4.show();
-  av.step()
-  
-  //Slide 4
-  av.umsg("So in the end the reference is pointing to the object.");
-  label2.hide();
-  label1.hide()
-  label5.show();
   av.recorded();
+  //Slide 4
+  //label2.hide();
+  //label1.hide()
+  //newArrow.hide();
+  
+  
 });

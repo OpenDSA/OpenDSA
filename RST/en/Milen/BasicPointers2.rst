@@ -76,7 +76,7 @@ their own.
 .. inlineav:: shallowdeepExampleCON ss
    :long_name: Shallow Deep Copy Slideshow
    :links: AV/Pointers/shallowdeepExampleCON.css
-   :scripts: AV/Pointers/shallowdeepExampleCON.js
+   :scripts: AV/Milen/shallowdeepExampleCON.js
    :output: show
 
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
@@ -149,7 +149,7 @@ value.
 .. _numptrxxxFig:
 
 .. inlineav:: empPtrxxxCON ss
-   :links: AV/Pointers/empPtrxxxCON.css
+   :links: AV/Milen/empPtrxxxCON.css
    :scripts: AV/Milen/empPtrxxxCON.js
    :output: show
 
