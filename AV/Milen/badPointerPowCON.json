@@ -1,0 +1,8 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "At first the bad pointer reference points to nothing because it is uninitialized.",
+        "sc2": "In the end, because the reference doesn't point to anything we end up with a null pointer exception."
+        }
+    }
+}
