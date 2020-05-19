@@ -34,19 +34,27 @@ $(document).ready(function() {
   av.umsg("We could assign our reference variable to the same value as another reference variable, as in this picture.");
 
   av.g.rect(xPosition, yPositionR1, length1, width + 20);
-  av.g.rect(xPosition, yPositionR2, length1, width);
+  //av.g.rect(xPosition, yPositionR2, length1, width);
 
   //gv.g.line(230, 150, 100, 400, {"stroke-width": 3});
   av.label("John", {top: yPositionR1 - 8, left: xPosition + 30});
   av.label("1000", {top: yPositionR1 + 12, left: xPosition + 30});
-  av.label("<tt>empPtr</tt>",  {top: yPositionR2 - 5, left: xPosition - 55});
-  thePath.show();
+  //av.label("<tt>empPtr</tt>",  {top: yPositionR2 - 5, left: xPosition - 55});
+  //thePath.show();
+  var arr = av.ds.array([]);
+  var list = av.ds.list({top:20, left:545});
+  var pointer1 = av.pointer("ref", list, {top: 10, left: -75});
+  pointer1.show();
   label1.show();
   av.step();
 
   // Slide 3
   av.umsg("We create an Employee object with the new operator, as follows:");
   label2.show();
+  var arr = av.ds.array([]);
+  var lis2 = av.ds.list({top:20, left:655});
+  var pointer2 = av.pointer("johnRef", lis2, {top: 10, left: 45});
+  pointer2.show();
   av.step();
 
   // Slide 4
