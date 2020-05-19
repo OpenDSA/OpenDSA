@@ -1,0 +1,8 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "At first, the references are uninitialized or null which can cause serious errors. The unreferenced object is known as the bad reference.",
+        "sc2": "We don't want bad references so assigning it a pointee is the key. In the end the reference is pointing to the object."
+        }
+    }
+}

@@ -4,6 +4,8 @@
 $(document).ready(function() {
   "use strict";
   var av_name = "empPtrxxxCON";
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+      interpret = config.interpreter;
   var av = new JSAV(av_name);
   var label1 = av.label('<tt>Employee ref;</tt>', {top: 0, left: 200}).hide(); 
   var label2 = av.label('<tt>Employee ref = new Employee("Sam, 1000);</tt>', {top: 0, left: 100}).hide(); 
@@ -21,8 +23,8 @@ $(document).ready(function() {
 
   
 
-  //Slide 2
-  av.umsg("At first, the references are uninitialized or null which can cause serious errors. The unreferenced object is known as the bad reference.");
+  //Slide 1
+  av.umsg(interpret("sc1"));
   badArrow.hide();
   newArrow.hide();
   var rect = av.g.rect(xPosition, yPositionR1, length1, width);
@@ -44,8 +46,8 @@ $(document).ready(function() {
   av.displayInit();
   
 
-  //Slide 3
-  av.umsg("We don't want bad references so assigning it a pointee is the key. In the end the reference is pointing to the object.")
+  //Slide 2
+  av.umsg(interpret("sc2"))
   pointer1.hide();
   line1.hide();
   line2.hide();
