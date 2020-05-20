@@ -34,7 +34,7 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
     width: "60%",
     overflow: "hidden",
     "margin-left": 0,
-    "min-height": "500px"
+    //"min-height": "500px"
   });
 
 
@@ -93,10 +93,34 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
       PIFRAMES.callInjector(parentAV);
   });
 
-  // point the injector to generated questions
-  var injector = PIFRAMES.Injector(questions, av_name);
-  PIFRAMES.table[av_name] = injector;
+  let data = {
+    "frame_name": av_name,
+  };
 
+  var skip_to;
+  // get user checkout
+  $.ajax({
+    url: "/pi_attempts/get_checkpoint",
+    type: "POST",
+    async: false,
+    data: JSON.stringify(data),
+    contentType: "application/json; charset=utf-8",
+    datatype: "json",
+    xhrFields: {
+      withCredentials: true
+    },
+    success: function(data) {
+      skip_to = parseInt(data.result)
+    },
+    error: function(err) {
+      skip_to = 0
+    }
+  });
+
+  // point the injector to generated questions
+  var injector = PIFRAMES.Injector(questions, av_name, skip_to, piframesLocations);
+  PIFRAMES.table[av_name] = injector;
+  /*
   injector.updateCanvas = function(theHtml) {
     if ($("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").children().length > 0) {
       $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").empty();
@@ -104,13 +128,6 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
     } else {
       $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(theHtml);
     }
-    /*
-    if ($(`.${this.class}`).children().length > 0) {
-      $(`.${this.class}`).empty();
-      $(`.${this.class}`).append(theHtml);
-    } else {
-      $(`.${this.class}`).append(theHtml);
-    }*/
 
     if ($("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").find("iframe").length > 0) {
       $("#" + av_name + " > .jsavoutput.jsavline").css("width", "0%");
@@ -137,12 +154,12 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
       $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").css({
         width: "100%",
         height: "none",
-        left: 5,
+        left: piframesLocations.left,
         position: "relative",
-        top: 10
+        top: piframesLocations.top
       });
     }
-  }
+  }*/
 
   return injector;
 }

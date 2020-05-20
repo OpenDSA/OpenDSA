@@ -5,7 +5,7 @@
     submit: `<br><input type="submit" value="Submit"> </br>`,
     feedback: `<p hidden id="feedback">Incorrect!</p>`,
     ParseTree: null,
-    Injector(data, av_name, skip_to) {
+    Injector(data, av_name, skip_to, locations = {top: 10, left: 5}) {
       var obj = {
         myData: data,
 
@@ -159,9 +159,11 @@
             $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").css({
               width: "100%",
               height: "none",
-              left: 5,
+              //left: 5,
+              left: locations.left,
               position: "relative",
-              top: 10
+              //top: 10
+              top: locations.top
             }); //Mostafa added position:re;ative to fix the problem related to miss positioning the question in some frames(Mathmatical.js)
             //So the width changed fromm 34 to 100, left from 690 to 5 and added the top.
           }
@@ -679,7 +681,7 @@
     callInjector(av_name, jsavControl) {
       this.table[av_name].checkIfSlideHasQuestion(jsavControl);
     },
-    getQuestions(av_name) {
+    getQuestions(av_name, locations = {top: 10, left: 5}) {
       var json_url = $('script[src*="/' + av_name + '.js"]')[0].src + "on";
       var json_data;
       $.ajax({
@@ -715,13 +717,13 @@
         }
       });
 
-      var injector = this.Injector(json_data, av_name, skip_to);
+      var injector = this.Injector(json_data, av_name, skip_to, locations);
       PIFRAMES.table[av_name] = injector;
       return injector;
     },
 
     //add div to the av_name's picanvas, so that dynamic questions have a hooking point
-    init(av_name, av) {
+    init(av_name, av, locations = {top: 10, left: 5}) {
       console.log(av_name + " init")
       var container = $(`#${av_name}`);
 
@@ -815,7 +817,7 @@
           PIFRAMES.callInjector(parentAV);
         });
 
-      return this.getQuestions(av_name);
+      return this.getQuestions(av_name, locations);
     },
 
     revealQuestion: function(av_name) {

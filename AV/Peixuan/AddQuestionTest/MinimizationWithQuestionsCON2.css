@@ -34,11 +34,6 @@
 .rejected {
   background-color: red;
 }
-
-.jsavlabel {
-  font-size: 2em;
-  text-align: center;
-}
 .jsavstatelabel {
   font-size: 1em;
   z-index: 700;
