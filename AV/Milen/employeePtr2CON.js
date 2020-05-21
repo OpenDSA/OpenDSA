@@ -26,12 +26,12 @@ $(document).ready(function() {
   thePath.hide();
 
   // Slide 1
-  av.umsg("We can assign a pointee to a reference variable with a simple assignment statement.");
+  av.umsg(interpret("sc1"));
   av.displayInit();
   av.step();
 
   // Slide 2
-  av.umsg("We could assign our reference variable to the same value as another reference variable, as in this picture.");
+  av.umsg(interpret("sc2"));
 
   av.g.rect(xPosition, yPositionR1, length1, width + 20);
   //av.g.rect(xPosition, yPositionR2, length1, width);
@@ -43,13 +43,13 @@ $(document).ready(function() {
   //thePath.show();
   var arr = av.ds.array([]);
   var list = av.ds.list({top:20, left:545});
-  var pointer1 = av.pointer("ref", list, {top: 10, left: -75});
+  var pointer1 = av.pointer("empPtr", list, {top: 10, left: -75});
   pointer1.show();
   label1.show();
   av.step();
 
   // Slide 3
-  av.umsg("We create an Employee object with the new operator, as follows:");
+  av.umsg(interpret("sc3"));
   label2.show();
   var arr = av.ds.array([]);
   var lis2 = av.ds.list({top:20, left:655});
@@ -58,6 +58,6 @@ $(document).ready(function() {
   av.step();
 
   // Slide 4
-  av.umsg("Of course, this begs the question of how the reference <tt>johnRef</tt> got its value (pointee) in the first place.");
+  av.umsg(interpret("sc4"));
   av.recorded();
 });
