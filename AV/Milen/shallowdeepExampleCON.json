@@ -3,7 +3,7 @@
     "en": {
       "sc1": "Let's look at an example to see the difference between shallow and deep copying.",
       "sc2": "First let's create an Employee named Sam which is referenced by firstEmployee.",
-      "sc3": "Then create an shallowCopy Employee object which refers to the firstEmployee object.",
+      "sc3": "Then create a shallowCopy Employee object which refers to the firstEmployee object.",
       "sc4": "Now, using setName(), update the Employee object's name as \"John\", which shallowCopyEmployee is pointing to.",
       "sc5": "If you print out the name of firstEmployee, you will see that the name of the Employee is now \"John,\" not \"Sam.\".",
       "sc6": "Now, we create an Employee object, secondEmployee. Set the name of secondEmployee as \"Patrice.\"",
