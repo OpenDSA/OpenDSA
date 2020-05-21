@@ -7,8 +7,8 @@ $(document).ready(function() {
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;
   var av = new JSAV(av_name);
-  var label1 = av.label('<tt>Employee ref;</tt>', {top: 0, left: 200}).hide(); 
-  var label2 = av.label('<tt>Employee ref = new Employee("Sam, 1000);</tt>', {top: 0, left: 100}).hide(); 
+  var label1 = av.label('<tt>Employee ref;</tt>', {top: 0, left: 150}).hide(); 
+  var label2 = av.label('<tt>Employee ref = new Employee("Sam, 1000);</tt>', {top: 0, left: 80}).hide(); 
   var label3 = av.label('<tt>Sam</tt>', {top: -10, left: 600}).hide(); 
   var label4 = av.label('<tt>1000</tt>', {top: 10, left: 600}).hide(); 
   var label5 = av.label('<tt>ref</tt>', {top: 0, left: 450}).hide();

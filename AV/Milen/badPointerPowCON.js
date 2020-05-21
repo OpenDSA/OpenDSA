@@ -33,7 +33,7 @@ $(document).ready(function() {
     [xPositionBAD, yPositionBAD]],
    {"stroke-width": 3, stroke: "red"}); */
   var label1 = av.label('<tt>Employee badPointer;</tt>', 
-                        {top: 0, left: 150}).hide();
+                        {top: 0, left: 145}).hide();
   var label2 = av.label('<tt>System.out.println(badPointer.getName());</tt>', 
                         {top: 0, left: 50}).hide();
   var label3 = av.label("NullPointerException",  {top: 0, left: 580}).hide();
