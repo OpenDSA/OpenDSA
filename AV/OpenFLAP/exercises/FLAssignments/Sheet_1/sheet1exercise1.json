@@ -29,7 +29,25 @@
                 "aaabbbb": true
             },
             {
-                "bbbaaa": true
+                "bbbbaaa": true
+            },
+            {
+                "aaaa": false
+            },
+            {
+                "aba": false
+            },
+            {
+                "abbbbbba": false
+            },
+            {
+                "abbbbbaaabbbbba": true
+            },
+            {
+                "bab": true
+            },
+            {
+                "baba": false
             },
             {
                 "": false

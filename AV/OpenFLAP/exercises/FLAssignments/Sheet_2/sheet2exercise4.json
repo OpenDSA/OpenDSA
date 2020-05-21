@@ -17,13 +17,13 @@
                 "ababababab": true
             },
             {
-                "ababb": true
+                "abba": true
             },
             {
                 "abbaaaaaaa": true
             },
             {
-                "ab": true
+                "abb": true
             },
             {
                 "abababababab": true
@@ -38,7 +38,13 @@
                 "baa": false
             },
             {
+                "ababb": true
+            },
+            {
                 "aab": false
+            },
+            {
+                "bab": true
             },
             {
                 "bbbbb": true
