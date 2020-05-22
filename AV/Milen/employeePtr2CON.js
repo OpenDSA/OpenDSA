@@ -15,9 +15,9 @@ $(document).ready(function() {
   var length1 = 100;
   var width = 35;
   var label1 = av.label('<tt>Employee empPtr = johnRef;</tt>', 
-                        {top: 20, left: 20}).hide();
-  var label2 = av.label('<tt>Employee johnRef = new Employee("John", 1000);</tt>', 
                         {top: 40, left: 20}).hide();
+  var label2 = av.label('<tt>Employee johnRef = new Employee("John", 1000);</tt>', 
+                        {top: 20, left: 20}).hide();
   var thePath = av.g.path(["M", xPosition + length1 - 10, yPositionR2 + (width / 2),
                            "C", xPosition + length1 + 40, yPositionR2 + (width / 2) + 5,
                            xPosition + length1 + 35, yPositionR2 - 10,
@@ -43,17 +43,17 @@ $(document).ready(function() {
   //thePath.show();
   var arr = av.ds.array([]);
   var list = av.ds.list({top:20, left:545});
-  var pointer1 = av.pointer("empPtr", list, {top: 10, left: -75});
+  var pointer1 = av.pointer("johnRef", list, {top: 10, left: -75});
   pointer1.show();
-  label1.show();
+  label2.show();
   av.step();
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  label2.show();
+  label1.show();
   var arr = av.ds.array([]);
   var lis2 = av.ds.list({top:20, left:655});
-  var pointer2 = av.pointer("johnRef", lis2, {top: 10, left: 45});
+  var pointer2 = av.pointer("empPtr", lis2, {top: 10, left: 45});
   pointer2.show();
   av.step();
 
