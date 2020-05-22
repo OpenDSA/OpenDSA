@@ -82,7 +82,7 @@
       "q9":{
         "type": "multiple",
         "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz &lt;verb&gt;&lt;d.o&gt; $\\rightarrow$ Fritz hit &lt;d.o&gt;",
-        "question":"What is the substitute for &lt;d.o.&gt;? to derive sentence ‘Frits hit the ball’",
+        "question":"What is the substitute for &lt;d.o.&gt;? to continue deriving the sentence ‘Frits hit the ball’",
         "answer":  "<article><noun>",
         "choices": ["&lt;noun&gt;", "&lt;article&gt;&lt;noun&gt;", "&lt;sentence&gt;", "&lt;verb&gt;", "&lt;article&gt;"]
       },
@@ -129,6 +129,76 @@
         "question":"What does y represent?",
         "answer":["Variables", "Terminals"],
         "choices": ["Variables", "Terminals"]
+      },
+      "q16":{
+        "type": "select",
+        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
+        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is S?",
+        "answer":["Start Variable"],
+        "choices": ["Variables", "Terminals", "Start Variable", "Grammar Production Rules", "Alphabet Set"]
+      },
+      "q17":{
+        "type": "select",
+        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
+        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is T?",
+        "answer":["Terminals"],
+        "choices": ["Variables", "Terminals", "Start Variable", "Grammar Production Rules", "Alphabet Set"]
+      },
+      "q18":{
+        "type": "select",
+        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
+        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is V?",
+        "answer":["Variables"],
+        "choices": ["Variables", "Terminals", "Start Variable", "Grammar Production Rules", "Alphabet Set"]
+      },
+      "q19":{
+        "type": "select",
+        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
+        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is {a, b}?",
+        "answer":["Alphabet Set"],
+        "choices": ["Variables", "Terminals", "Start Variable", "Grammar Production Rules", "Alphabet Set"]
+      },
+      "q20":{
+        "type": "select",
+        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
+        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is L(G) means?",
+        "answer":["Language represented by the grammar"],
+        "choices": ["Language represented by the grammar", "The Grammar"]
+      },
+      "q21":{
+        "type": "select",
+        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
+        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is G?",
+        "answer":["The Grammar"],
+        "choices": ["Language represented by the grammar", "The Grammar"]
+    },
+      "q22":{
+        "type": "select",
+        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
+        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is L(G)?",
+        "answer":["$\\{b, aab, aaaab, ... \\} = \\{(aa)^nb | n \\ge 0\\}$"],
+        "choices": ["$\\{b, aab, aaaab, ... \\} = \\{(aa)^nb | n \\ge 0\\}$", "$\\{ab, aaab, aaaaab, ... \\} = \\{a(aa)^nb | n \\ge 0\\}$", "$\\{bb, aabb, aaaabb, ... \\} = \\{(aa)^nbb | n \\ge 0\\}$"]
+      },
+      "q23":{
+        "type": "select",
+        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
+        "question":"Suppose the following language: $L(G) = \\{a^nccb^n | n > 0\\}$, which of the following productions rules belong to the grammar for L(G)?",
+        "answer":["$P=\\{S \\rightarrow aSb | aAb, A \\rightarrow cc\\}$", "$P=\\{S \\rightarrow aSb | accb\\}$", "$P=\\{S \\rightarrow aSb | B, B \\rightarrow aAb, A \\rightarrow cc\\}$"],
+        "choices": ["$P=\\{S \\rightarrow aSb | aAb, A \\rightarrow cc\\}$", "$P=\\{S \\rightarrow aSb | accb\\}$", "$P=\\{S \\rightarrow aSb | B, B \\rightarrow aAb, A \\rightarrow cc\\}$"]
+      },
+      "q24":{
+        "type": "select",
+        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
+        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P = \\{S \\rightarrow aSb, S \\rightarrow SS, S \\rightarrow ab\\}$. Whcih of the following strings are in L(G)?",
+        "answer":["aabb", "abba"],
+        "choices": ["aabb", "abab", "abba", "babab"]
+      },
+      "q25":{
+        "type": "select",
+        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
+        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P = \\{S \\rightarrow aSb, S \\rightarrow SS, S \\rightarrow ab\\}$. [T/F] This grammar represents the language of matching parenthesis where a is left paren, and b is right paren. ",
+        "answer":["True"],
+        "choices": ["True", "False"]
       }
     }
   }

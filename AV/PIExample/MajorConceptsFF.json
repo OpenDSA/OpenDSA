@@ -19,29 +19,29 @@
       "q2": {
         "type": "select",
         "src": "../../../AV/Development/formal_language/FAEditor.html",
-        "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?",
+        "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = \\{a, b\\}$, which of the following are valid strings?",
         "question": "Suppose we have $\\Sigma$ = $\\{a, b\\}$, which of the following are valid strings?",
         "answer": ["$babababbaba$", "$a$"],
         "choices": ["$babababbaba$", "$a$", "$\\{aaa, bbb\\}$", "$bacbabcba$"]
       },
       "q2_2": {
         "type": "multiple",
-        "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?",
-        "question": "[T/F] Choice $\\{aaa, bbb\\}$ is not the answer because it is a set",
-        "answer": "True",
-        "choices": ["True", "False"]
+        "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = \\{a, b\\}$",
+        "question": "Does $\\{aaa, bbb\\}$ a valid string?",
+        "answer": "No, because $\\{aaa, bbb\\}$ is a set",
+        "choices": ["Yes, it is a valid string", "No, because $\\{aaa, bbb\\}$ is a set"]
       },
       "q2_3": {
         "type": "multiple",
-        "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = {a, b}$, which of the following are valid strings?",
-        "question": "[T/F] Choice $bacbabcba$ is not the answer because it uses symbols in $\\Sigma$",
-        "answer": "False",
-        "choices": ["True", "False"]
+        "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = \\{a, b\\}$",
+        "question": "[T/F] The choice $bacbabcba$ is not a vaild string in $\\Sigma$",
+        "answer": "It is not a valid string as it includes letter not in $\\Sigma$",
+        "choices": ["It is a valid sting", "It is not a valid string as it includes letter not in $\\Sigma$"]
       },
       "q3": {
         "type": "select",
-        "description": "A language is simply a collection of strings defined over $\\Sigma$.",
-        "question": "What states can be combined?",
+        "description": "A $\\textit{language}$ is simply a collection of strings defined over $\\Sigma$.",
+        "question": "Which of the following are correct languages over their $\\Sigma$?",
         "answer": [
           "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,...\\}$",
           "$\\Sigma$={$a,b,c\\}$ $L=\\{ab,ac,cabb\\}$",
@@ -56,7 +56,7 @@
       "q3_2": {
         "type": "multiple",
         "description": "A language is simply a collection of strings defined over $\\Sigma$.",
-        "question": "Can $\\Sigma$=${a,b,c}$ $L = ab$ be a language?",
+        "question": "Can $\\Sigma$=$\\{a,b,c\\}$ $L = ab$ be a language?",
         "answer": "No",
         "choices": ["Yes", "No"]
       },
@@ -125,7 +125,7 @@
       },
       "q8": {
         "type": "select",
-        "description": "Another form of string concatenation is to concatenate a string with itself. Suppose we have a string $v$.  The notation $v3$ means concatenate $v$ with itself 3 times. Concatenating a string with itself zero times yields the empty string $\\lambda$",
+        "description": "Another form of string concatenation is to concatenate a string with itself. Suppose we have a string $v$.  The notation $v^3$ means concatenate $v$ with itself 3 times. Concatenating a string with itself zero times yields the empty string $\\lambda$",
         "question": "let $v = ab$, what is $v^3$ ?",
         "answer": ["$vvv$", "$v∘v∘v$", "$ababab$"],
         "choices": ["$vvv$", "$v∘v∘v$", "$ababab$"]
@@ -134,8 +134,8 @@
         "type": "multiple",
         "description": "Recall, since a language is just a subset of all possible strings, that the empty set of strings is a language: $L$ = {} = &lt;empty set symbol&gt;.",
         "question": "Is this a language? $\\{\\lambda\\}$",
-        "answer": "yes",
-        "choices": ["yes", "no"]
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
       },
       "q9": {
         "type": "multiple",
@@ -147,12 +147,13 @@
       "q10": {
         "type": "multiple",
         "description": "Another useful operation is to reverse a string: Reversing a string means to flip it, in other words, write its symbols in reverse order.",
-        "question": "Let $w = abbc$, what is $w^R$?",
+        "question": "Let $w = abbc$, what is $w^R$? Note: R here means reverse",
         "answer": "$cbba$",
         "choices": ["$abbc$", "$bcab$", "$abcb$", "$cbab$","$cbba$"]
       },
       "q11": {
         "type": "multiple",
+        "description": "Another useful operation is to reverse a string: Reversing a string means to flip it, in other words, write its symbols in reverse order.",
         "question": "let $w=abbc$, and $v=ab$. What is $|vv^Rw|$",
         "answer": "$8$",
         "choices": ["$8$", "$16$", "$24$", "$32$", "$40$"]
@@ -168,13 +169,13 @@
         "type": "select",
         "description": "One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\Sigma$ = {a,b}, $\\Sigma$* means the set of strings obtained by concatenating 0 or more symbols from $\\Sigma$. ",
         "question": "Which are examples of $w^*$ where $w = abc$?",
-        "answer": ["$Λ$", "$abc$", "$abcabc$"],
-        "choices": ["$Λ$", "$aabbcc$", "$abc$", "$abcabc$"]
+        "answer": ["$\\lambda$", "$abc$", "$abcabc$"],
+        "choices": ["$\\lambda$", "$aabbcc$", "$abc$", "$abcabc$"]
       },
       "q13": {
         "type": "select",
         "description": "Slightly different from the * operator, sometimes we want to have at least one copy of the thing that we are concatenating. Then we use +. One way of thinking of this: $\\Sigma$+=$\\Sigma$∗−{$\\lambda$}",
-        "question": "Let  $\\lambda$ = {$a,b$}, Which of the following are strings in ?",
+        "question": "Let  $\\Sigma = \\{a,b\\}$, Which of the following are strings in ?",
         "answer": ["$a$", "$b$", "$aa$", "$abbabb$"],
         "choices": [
           "$\\lambda$",
@@ -188,49 +189,49 @@
       "q14": {
         "type": "select",
         "description": "Sets. As we see, Languages are sets, so all sets of operations can be applied to them.",
-        "question": " Let $\\sigma$={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, which element is included in $L1∪L2$ ?",
+        "question": " Let $\\sigma$={$a$,$b$,$c$}, $L_1$={$ab$,$bc$,$aba$}, $L_2$={$c$,$bc$,$bcc$}, which element is included in $L_1∪L_2$ ?",
         "answer": ["ab" ,"bc","aba","c","bcc"],
         "choices": ["ab", "bc","a", "bca", "aba","c", "bcc","cb"]
       },
       "q15": {
         "type": "multiple",
         "description": "Sets. As we see, Languages are sets, so all sets of operations can be applied to them.",
-        "question": "Let $\\Sigma$={$a$,$b$,$c$}, $L1$={$ab$,$bc$,$aba$}, $L2$={$c$,$bc$,$bcc$}, What is $L1∩L2$ ?",
+        "question": "Let $\\Sigma=\\{a,b,c\\}$, $L_1=\\{ab,bc,aba\\}$, $L_2=\\{c,bc,bcc\\}$, what is $L_1∩L_2$ ?",
         "answer": "$bc$",
         "choices": ["$aba$", "$ab$", "$c$","$bc$", "$bcc$"]
       },
       "q16": {
         "type": "multiple",
-        "description": "In languages, $\\Sigma^*$  represents the Universe set $U4$. Forexample, the complement of $L1$ will be the set of all strings in $\\Sigma$  except the strings in $L$. In other words, $\\bar{L1}$ = $\\Sigma$^* - $L$",
-        "question": "What is $\\overline{L1∩L2}$?",
-        "answer": ["$\\Sigma^*$ - &lt;bc&gt;"],
-        "choices": [" $\\Sigma$ - &lt;bc&gt;", " $\\Sigma^*$ - &lt;bc&gt;", " $\\Sigma^*$+ &lt;bc&gt;", "$\\Sigma$ - bc", " $\\Sigma^*$ - bc" ]
+        "description": "In languages, $\\Sigma^*$  represents the Universe set $U$. For example, the complement of $L$ will be the set of all strings in $\\Sigma$ except the strings in $L$. In other words, $\\bar{L}$ = $\\Sigma^* - L$",
+        "question": "Let $\\Sigma=\\{a,b,c\\}$, $L_1=\\{ab,bc,aba\\}$, $L_2=\\{c,bc,bcc\\}$, what is $\\overline{L_1∩L_2}$?",
+        "answer": ["$\\Sigma^*$ - {bc}"],
+        "choices": [" $\\Sigma$ - {bc}", "$\\Sigma^*$ - {bc}", " $\\Sigma^*$+ {bc};", "$\\Sigma$ - {bc}", " $\\Sigma^*$ - {bc}" ]
       },
       "q17": {
         "type": "multiple",
         "description": "Sets concatenation. Concatenating two sets $L1$, and $L2$ means concatenating every string in $L1$ with each string in $L2$.",
-        "question": "What states can be combined?",
+        "question": "Let $\\Sigma=\\{a,b,c\\}$, $L_1=\\{ab,bc,aba\\}$, $L_2=\\{c,bc,bcc\\}$, whcih of the following is $L_1L_2$?",
         "answer": "$\\{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc\\}$",
         "choices": [ "$\\{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,abab\\}$","$\\{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc\\}$", "$\\{abc,abbc,abbcc,bcc,bbcc,bcbcc,abac,abab,ababcc\\}$"]
       },
       "q18": {
         "type": "multiple",
         "description": "Sets concatenation. Concatenating a set zero times will give the set of the empty string $\\lambda$.",
-        "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L0$?",
+        "question": "Let $\\Sigma$={$a$,$b$}, $L$={$ab$,$aba$}, What is $L^0$?",
         "answer": ["$\\{\\lambda\\}$"],
         "choices": ["$\\{\\lambda\\}$", "$\\{\\}$&lt;Empty set&gt;", "$\\lambda$"]
       },
       "q19": {
         "type": "multiple",
         "description": "Sets concatenation. Concatenating a set n times means concatenating every string in L with each string in $L$ n times",
-        "question": "Let $\\Sigma$={$a$,$b$}, $L1$={$ab$,$aba$}, What is $L2$? ",
+        "question": "Let $\\Sigma$={$a$,$b$}, $L$={$ab$,$aba$}, What is $L^2$? ",
         "answer": "$\\{abab, ababa, abaab, abaaba\\}$",
         "choices": ["$\\{abab, ababa, abaab, abaaba\\}$", "$\\{ab, ababa, abaa, abaa\\}$", "$\\{ab, aba, abaab, abaaba\\}$", "$\\{a, b, abaab, abaaba\\}$", "$\\{a, ab, aba, abaaba\\}$"]
       },
       "q19_1": {
         "type": "multiple",
         "description": "Sets concatenation. Concatenating a set n times means concatenating every string in L with each string in $L$ n times",
-        "question": "Let $\\Sigma$=$\\{a,b\\}$, $L1$=$\\{ab,aba\\}$, What is $L3$?",
+        "question": "Let $\\Sigma$=$\\{a,b\\}$, $L$=$\\{ab,aba\\}$, What is $L^3$?",
         "answer": "$\\{ababab, abaabaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba\\}$",
         "choices": ["$\\{ababab, abaabaab, abaabab, abaabaab, abababa, ababaaba, abaababa, abaabaaba\\}$","$\\{ab, ababaab, abaabab, abaabaab, abababa, abaaba, abaababa, abaabaaba\\}$","$\\{ababab, baab, abaabab, abaaba, abab, ababaaba, abaababa, abaabaaba\\}$","$\\{ababab, ababa, abaabab, abaab, ababa, ababaaba, abaababa, abaabaaba\\}$","$\\{ababab, ababaab, abaabab, abaabaab, baba, ababaaba, abaaba, abaaba\\}$"]
       }

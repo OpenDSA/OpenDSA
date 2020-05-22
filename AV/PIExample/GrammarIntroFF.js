@@ -1,6 +1,6 @@
 $(document).ready(function(){
     "use strict";
-    var av_name = "ChomskyCON";
+    var av_name = "GrammarIntroFF";
     var av = new JSAV(av_name);
     var arrow = String.fromCharCode(8594);
     var grammar =  "[\
@@ -108,15 +108,52 @@ av.umsg(Frames.addQuestion("q15"));
 av.step();
 
 //frame 18
-av.umsg("W⇒z means that W derives string z, W⇒∗z means that W derives string z in 0 or more steps, W⇒+z means that W derives string z in 1 or more steps ");
+av.umsg("$W⇒z$ means that W derives string z, $W⇒^∗z$ means that W derives string z in 0 or more steps, $W⇒^+z$ means that W derives string z in 1 or more steps ");
 av.step();
 
 //frame 19
+grammerMatrix.hide();
 av.umsg("Given grammar: G=(V,T,S,P) where V is a finite set of variables (nonterminals) T is a finite set of terminals (generally, these are strings). S is the start variable (S∈V) P is a set of productions (rules) in the form x→y means to replace x by y");
 av.step();
 
 //frame 20
-av.umsg(Frames.addQuestion("q15"));
+av.umsg("The symbol L(G) represents the languages described by the Grammar. The formal definition for L(G) is $L(G)= \\{w \\in T{}^{*} \\mid S \\stackrel{*}{\\Rightarrow} w\\}$");
+av.step();
+//frame 21
+av.umsg("Now, try to describe in words: What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.");
+av.step();
+//frame 22
+av.umsg(Frames.addQuestion("q16"));
+av.step();
+//frame 23
+av.umsg(Frames.addQuestion("q17"));
+av.step();
+//frame 24
+av.umsg(Frames.addQuestion("q18"));
+av.step();
+//frame 25
+av.umsg(Frames.addQuestion("q19"));
+av.step();
+//frame 26
+av.umsg(Frames.addQuestion("q20"));
+av.step();
+//frame 27
+av.umsg(Frames.addQuestion("q21"));
+av.step();
+//frame 28
+av.umsg(Frames.addQuestion("q22"));
+av.step();
+//frame 29
+av.umsg(Frames.addQuestion("q23"));
+av.step();
+//frame 30
+av.umsg(Frames.addQuestion("q24"));
+av.step();
+//frame 31
+av.umsg(Frames.addQuestion("q25"));
+av.step();
+//frame 31
+av.umsg("Completed.");
 av.step();
 
 av.recorded();

@@ -63,7 +63,7 @@
   }, 
   "chapters": {
     "Introduction": {
-      "PIExample/Echo_frame1": {}
+      "PIExample/MajorConcepts": {}
     },
     "Mathematical Background": {
       "PIExample/mathematical": {},
@@ -72,8 +72,7 @@
       "PIExample/continuedMathProof":{},
       "PIExample/inductionProof": {},
       "PIExample/proofInduction": {},
-      "PIExample/lastInductionProof": {},
-      "PIExample/grammar": {}
+      "PIExample/lastInductionProof": {}
 
     },
     "Finite Acceptors": {
