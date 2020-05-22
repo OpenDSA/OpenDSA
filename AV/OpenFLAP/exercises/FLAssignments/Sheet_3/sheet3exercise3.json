@@ -26,6 +26,12 @@
                 "bbbabb": true
             },
             {
+                "ababbbbabb": false
+            },
+            {
+                "abbabbbabb": true
+            },
+            {
                 "aaaaabbbaaaaa": true
             },
             {
