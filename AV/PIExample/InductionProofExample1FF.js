@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
     "use strict";
-    var av_name = "InductionProof";
+    var av_name = "InductionProofExample1FF";
     var av = new JSAV(av_name);
     av.container.on('jsav-updatecounter', () => MathJax.Hub.Queue(["Typeset",MathJax.Hub]));
     var Frames = PIFRAMES.init(av_name);
@@ -43,36 +43,41 @@ $(document).ready(function() {
     av.umsg(Frames.addQuestion("q5"));
     av.step();
 
-    //frame 9
-
-
     //frame 9 
-    av.umsg("This example shows how we can use induction to prove that a proposed closed-form solution for a recurrence relation is correct.");
-    av.step();
-
-    //frame 10
     av.umsg(Frames.addQuestion("q6"));
     av.step();
+    
 
+    //frame 10
+    av.umsg("This example shows how we can use induction to prove that a proposed closed-form solution for a recurrence relation is correct.");
+    av.step();
+    
     //frame 11
+    av.umsg("We need to prove that the recurrence relation $T(n) = T(n−1) + 1$;$T(1) = 0$ has closed-form solution $T(n)=n−1$.");
+    av.step();
+
+    //frame 12
     av.umsg(Frames.addQuestion("q7"));
     av.step();
     
-    //frame 12
+    //frame 13
     av.umsg(Frames.addQuestion("q8"));
     av.step();
 
-    //frame 13
+    //frame 14
     av.umsg(Frames.addQuestion("q9"));
     av.step();
 
-    //frame 14
+    //frame 15
     av.umsg(Frames.addQuestion("q10"));
     av.step();
 
-    //frame 15
+    //frame 16
     av.umsg("Thus, we have proved the theorem correct by mathematical induction.");
-    
+    av.step();
+
+    av.umsg("Completed.");
+    av.step();
     
     av.recorded();
 });

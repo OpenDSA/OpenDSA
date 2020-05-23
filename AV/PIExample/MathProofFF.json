@@ -31,7 +31,7 @@
         },
         "q4": {
           "type": "select",
-          "question":"Being conversant with standard proof techniques, leads toChoices:",
+          "question":"Being conversant with standard proof techniques, leads to:",
           "description": "Being conversant with standard proof techniques make less complexity for your reader to understand your proof, because the reader does not need to decode the structure of your argument from scratch.",
           "answer": ["Clear proof process", "Makes the proof easier to understand"],
           "choices": ["Clear proof process", "Increase the time the reader sped to understand your proof", "Makes the proof easier to understand"]

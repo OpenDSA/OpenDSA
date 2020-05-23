@@ -1,6 +1,6 @@
 $(document).ready(function () {
     "use strict";
-    var av_name = "MathProof";
+    var av_name = "MathProofFF";
     var av = new JSAV(av_name);
     var Frames = PIFRAMES.init(av_name);
     // Load the config object with interpreter and code created by odsaUtils.js
@@ -60,18 +60,20 @@ $(document).ready(function () {
     //frame 13
     av.umsg(Frames.addQuestion("q10"));
     av.step();
-
+    
     //frame 14
-    av.umsg("In some domains, proofs are essentially a series of state changes from a start state to an end state. Formal predicate logic can be viewed in this way, with the various 'rules of logic' being used to make the changes from one formula or combining a couple of formulas to make a new formula on the route to the destination. Symbolic manipulations to solve integration problems in introductory calculus classes are similar in spirit, as are high school geometry proofs.");
+    av.umsg("As we see, following the previous steps proved that $\\Sigma_{ni=1}$ $i$ = $(n+1)n/2$");
     av.step();
 
     //frame 15
-    av.umsg(Frames.addQuestion("q11"));
+    av.umsg("In some domains, proofs are essentially a series of state changes from a start state to an end state. Formal predicate logic can be viewed in this way, with the various 'rules of logic' being used to make the changes from one formula or combining a couple of formulas to make a new formula on the route to the destination. Symbolic manipulations to solve integration problems in introductory calculus classes are similar in spirit, as are high school geometry proofs.");
     av.step();
+
 
     //frame 16
     av.umsg(Frames.addQuestion("q13"));
     av.step();
+
     //frame 17
     av.umsg(Frames.addQuestion("q14"));
     av.step();
@@ -88,12 +90,16 @@ $(document).ready(function () {
     av.umsg("A related proof technique is $proving$ $the$ $contrapositive$. We can prove that P$\\Rightarrow$Q by proving (not Q)$\\Rightarrow$(not P). This technique works because the truth table for the two logical statements are the same.");
     av.step();
 
-    // //frame 21
+    // //frame 22
     // av.umsg(Frames.addQuestion("q17"));
     // av.step();
 
     //frame 21
     av.umsg(Frames.addQuestion("q18"));
+    av.step();
+
+    //frame 22
+    av.umsg("Completed.");
     av.step();
  
     av.recorded();

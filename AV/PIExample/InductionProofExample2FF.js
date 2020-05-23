@@ -1,6 +1,6 @@
 $(document).ready(function () {
     "use strict";
-    var av_name = "ThirdInductionProof";
+    var av_name = "InductionProofExample2FF";
     var av = new JSAV(av_name);
     var Frames = PIFRAMES.init(av_name);
     // Load the config object with interpreter and code created by odsaUtils.js
@@ -60,7 +60,9 @@ $(document).ready(function () {
 
     //frame 13
     av.umsg(" We can use a similar process to prove many recursive programs correct. The general form is to show that the base cases perform correctly, and then to use the induction hypothesis to show that the recursive step also produces the correct result. Prior to this, we must prove that the function always terminates, which might also be done using an induction proof.");
-    
+    av.step();
+    av.umsg("Completed.");
+    av.step();
 
     av.recorded();
 });

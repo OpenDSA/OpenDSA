@@ -38,10 +38,10 @@
             },
             "q5": {
                 "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": []
+                "question": "What is the result of this equation?",
+                "description": "We will use the induction hypothesis to replace the partial summation with its closed-form solution. $\\sum_{i=1}^{n} (2i - 1) = [\\sum_{i=1}^{n-1}(2i - 1)] + 2n - 1 =\\\\ [(n-1)^2] + 2n - 1 = n^2 - 2n + 1 + 2n - 1$",
+                "answer": "$n^2$",
+                "choices": ["$n^2$", "$(n-1)^2$", "$(n+1)^2$"]
             },
             "q6": {
                 "type": "multiple",
@@ -59,14 +59,14 @@
             },
             "q8": {
                 "type": "multiple",
-                "question": "",
-                "description": "",
-                "answer": "",
-                "choices": ["", ""]
+                "question": "Is the base case valid or not?",
+                "description": "Theorem: The recurrence relation $T(n) = T(n−1) + 1$;$T(1) = 0$ has closed-form solution $T(n)=n−1$.",
+                "answer": "Yes $T(2) = 2 - 1 = 1$",
+                "choices": ["Yes $T(2) = 2 - 1 = 1$", "No"]
             },
             "q9": {
                 "type": "multiple",
-                "question": "In the induction hypothesis. What is the value of $T(n-1)$",
+                "question": "In the induction hypothesis. What will be the value of $T(n-1)$",
                 "description": "Theorem: The recurrence relation $T(n) = T(n−1) + 1$;$T(1) = 0$ has closed-form solution $T(n)=n−1$.",
                 "answer": "$n$ $-$ $2$",
                 "choices": ["$n$ $-$ $2$", "$n$ $-$ $1$" , "$n$", "$n$ $+$ $1$", "$n$ $+$ $2$"]
@@ -75,8 +75,8 @@
                 "type": "select",
                 "question": "Based on the induction hypothesis, What is the value for $T(n)$?",
                 "description": "Theorem: The recurrence relation $T(n) = T(n−1) + 1$;$T(1) = 0$ has closed-form solution $T(n)=n−1$.",
-                "answer": "$T(n)$ = $T(n-1) + 1$",
-                "choices": ["$T(n)$ = $T(n-1) + 1$", "$T(1) = 0$"]
+                "answer": ["$T(n) = T(n-1) + 1$", "$T(n) = n - 2 + 1$", "$T(n) = n - 1$"],
+                "choices": ["$T(n) = T(n-1) + 1$", "$T(n) = n - 2 + 1$", "$T(n) = n - 1$"]
             }
 
         }

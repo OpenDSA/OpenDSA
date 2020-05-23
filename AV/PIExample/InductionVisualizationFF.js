@@ -1,6 +1,6 @@
 $(document).ready(function () {
     "use strict";
-    var av_name = "SecondInductionProof";
+    var av_name = "InductionVisualizationFF";
     var av = new JSAV(av_name);
     var Frames = PIFRAMES.init(av_name);
     // Load the config object with interpreter and code created by odsaUtils.js
@@ -27,7 +27,8 @@ $(document).ready(function () {
     p7.hide();
 
     //frame 1
-    av.umsg(interpret("quo1"));
+    //To retrieve the first sentence "quo1" we need to add the examples the are before this visualization in the book VisFormalLang
+    av.umsg(interpret("quo2"));
     av.step();
     av.displayInit();
     // av.umsg(Frames.addQuestion("q1"));
@@ -35,8 +36,8 @@ $(document).ready(function () {
     
     
     // frame 2
-    av.umsg(interpret("quo2"));
-    av.step();
+    //av.umsg(interpret("quo2"));
+    //av.step();
     
     //frame 3
     av.umsg(interpret("quo3"));
@@ -44,7 +45,7 @@ $(document).ready(function () {
     
     //frame 4
     av.umsg(interpret("quo4"));
-    var left = 250;
+    var left = 180;
     var f1 = av.g.polyline([[left +  60,  20], [left + 110,  70], [left +  30,  70]], {fill: "gray"});
     var f2 = av.g.polyline([[left + 110,  70], [left + 240,  70], [left + 175, 135]], {fill: "gray"});
     var f3 = av.g.polyline([[left + 240,  70], [left + 330,  70], [left + 290,  20]], {fill: "gray"});
@@ -149,7 +150,13 @@ $(document).ready(function () {
     plane2.hide();
     nLine.hide();
     planeRect1.hide();
+    av.step();
 
-
+    av.umsg("In the last example, we must prove that any collection of n lines has the desired property. Thus, our strategy is to take an arbitrary collection of n lines, and “reduce” it so that we have a set of lines that must have the desired property because it matches the induction hypothesis. From there, we merely need to show that reversing the original reduction process preserves the desired property.");
+    av.step();
+    av.umsg("In contrast, consider what is required if we attempt to “build” from a set of lines of size n−1 to one of size n. We would have great difficulty justifying that all possible collections of n lines are covered by our building process. By reducing from an arbitrary collection of n lines to something less, we avoid this problem.");
+    av.step();
+    av.umsg("Another advantage to thinking in terms of \\textit{reducing from n} rather than \\textit{building up from n−1} is that reducing is more like what we do when we write a recursive function. In recursion, we would naturally compute some function of n by calling the function (recursively) on n−1 and then using the result to compute the value for n.")
+    av.step();
     av.recorded();
 });

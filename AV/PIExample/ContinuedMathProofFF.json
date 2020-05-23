@@ -40,8 +40,8 @@
           "type": "multiple",
           "question":"If $\\textbf {Thrm}$ is valid for n=1, using the induction, $\\textbf {Thrm}$ is proved that it is valid for n $=$ 2. What that says for $\\textbf {Thrm}$ and n $=$ 3.",
           "description": "Proving either variant of the induction step (in conjunction with verifying the base case) yields a satisfactory proof by mathematical induction.",
-          "answer": "Thrm is caid for any value n > 2",
-          "choices": ["Thrm is valid for n $=$ 3 only", "Thrm is caid for any value n > 2", "Thrm is only proved for n $=$ 1 and n $=$ 2"]
+          "answer": "Thrm is valid for any value n > 2",
+          "choices": ["Thrm is valid for n $=$ 3 only", "Thrm is valid for any value n > 2", "Thrm is only proved for n $=$ 1 and n $=$ 2"]
         },
         "q6": {
             "type": "multiple",
@@ -60,18 +60,46 @@
         "q8": {
             "type": "multiple",
             "question":"What is the first step in the induction proof?",
-            "description": "We need to prove that the sum of the first n positive integers $\\textbf {S}$(n) $=$ n(n+1)/2.",
+            "description": "We need to prove that the sum of the first n positive integers $\\textbf {S}$(n) $=$ n(n+1)/2. We proved that already by using Direct prrof. Now we need to prove it by using Mathematical Induction",
             "answer": "Check the base case",
             "choices": ["Check the base case", "State the hypothesis"]
         },
         "q9": {
             "type": "multiple",
-            "question":"What is the total sum of the n/2 pairs?",
-            "description": "Direct Proof example: We need to use direct proof to prove that $\\Sigma_{ni=1}$ $i$ = $(n+1)n/2$",
-            "answer": "$(n+1)n/2$",
-            "choices": ["$n$","$n+1$", "$(n+1)n/2$", "$(n+1)n$", "$(n+1)/2$"]
+            "description": "We need to prove that the sum of the first n positive integers $\\textbf {S}$(n) $=$ n(n+1)/2.",
+            "question":"What is the base case in this proof?",
+            "answer": "check for n = 1",
+            "choices": ["check for n = 0", "check for n = 1", "check all values between 1 and n"]
+        },
+        "q10": {
+          "type": "multiple",
+          "description": "We need to prove that the sum of the first n positive integers $\\textbf {S}$(n) $=$ n(n+1)/2.",
+          "question":"Using $\\textbf {S}$(n) $=$ n(n+1)/2, what is S(1)?",
+          "answer": "1",
+          "choices": ["0", "1", "2"]
+        },
+        
+        "q12": {
+          "type": "multiple",
+          "description": "We need to prove that the sum of the first n positive integers $\\textbf {S}$(n) $=$ n(n+1)/2.",
+          "question":"What next?",
+          "answer": "We need to state the induction Hypothesis",
+          "choices": ["We finished the poof.","We need to state the induction Hypothesis"]
+        },
+        "q13": {
+          "type": "multiple",
+          "description": "We need to prove that the sum of the first n positive integers $\\textbf {S}$(n) $=$ n(n+1)/2. The induction Hypothesis is $S(n-1) =  \\sum_{i=1}^{n-1}i = \\frac{(n-1)((n-1)+1)}{2} = \\frac{(n-1)(n)}{2}$",
+          "question":"What is the next step?",
+          "answer": "Use the assumption from the induction hypothesis for $n−1$ to show that the result is true for n.",
+          "choices": ["No more steps. We are done.","Use the assumption from the induction hypothesis for $n−1$ to show that the result is true for n."]
+        },
+        "q14": {
+          "type": "multiple",
+          "description": "Use the assumption from the induction hypothesis for an $n−1$ to show that the result is true for n. The induction hypothesis states that $S(n−1)=\\frac{(n-1)(n)}{2}$, and because of $S(n)=S(n−1)+n$, we can substitute for S(n−1) to get $\\sum_{i=1}^{n} = (\\sum_{i=1}^{n-1} i) + n = \\frac{(n-1)(n)}{2} + n = \\frac{n^2 - n + 2n}{2} = \\frac{n(n+1)}{2}$",
+          "question":"Are we finished?",
+          "answer": "Yes",
+          "choices": ["No","Yes"]
         }
-
       }
     }
   }

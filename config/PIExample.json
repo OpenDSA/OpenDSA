@@ -68,12 +68,7 @@
     "Mathematical Background": {
       "PIExample/SetDefinitions": {},
       "PIExample/Relations": {},
-      "PIExample/proof":{},
-      "PIExample/continuedMathProof":{},
-      "PIExample/inductionProof": {},
-      "PIExample/proofInduction": {},
-      "PIExample/lastInductionProof": {}
-
+      "PIExample/MathProof":{}
     },
     "Finite Acceptors": {
       "PIExample/DFA":{},

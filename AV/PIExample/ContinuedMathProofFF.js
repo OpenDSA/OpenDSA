@@ -1,6 +1,6 @@
 $(document).ready(function () {
     "use strict";
-    var av_name = "ContinuedMathProof";
+    var av_name = "ContinuedMathProofFF";
     var av = new JSAV(av_name);
     var Frames = PIFRAMES.init(av_name);
     // Load the config object with interpreter and code created by odsaUtils.js
@@ -76,6 +76,34 @@ $(document).ready(function () {
     av.umsg(Frames.addQuestion("q9"));
     av.step();
     
+    //frame 13
+    av.umsg(Frames.addQuestion("q10"));
+    av.step();
+    
+    //frame 14
+    av.umsg("Since $S(1) = (1 + 1)*\\frac{1}{2} = 1$ then the base case is verified.");
+    av.step();
+
+    //frame 15
+    av.umsg(Frames.addQuestion("q12"));
+    av.step();
+
+    //frame 16
+    av.umsg(Frames.addQuestion("q13"));
+    av.step();
+
+    //frame 17
+    av.umsg(Frames.addQuestion("q14"));
+    av.step();
+
+    //frame 18
+    av.umsg("Thus, by mathematical induction S(n) = \\sum_{i=1}^{n} i = \\frac{(n+1)n}{2}.");
+    av.step();
+
+    //frame 19
+    av.umsg("Completed.");
+    av.step();
+
     av.recorded();
 });
 

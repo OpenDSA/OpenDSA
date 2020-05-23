@@ -4,9 +4,8 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Eunoh Cho
-   :satisfies: Frame example
-   :topic: Finite Automata
+   :author: Eunoh Cho, Mostafa Mohammed
+   :topic: Sets Relations
 
 
 Set and Relations
