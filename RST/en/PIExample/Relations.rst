@@ -17,7 +17,16 @@ Relations
 
 In this chapter you will learn about set and relations. After this chapter you will have full understanding of set and relations.
 
-.. inlineav:: SetRelations ff
-   :links: AV/PIExample/SetRelations.css
-   :scripts: AV/PIExample/SetRelations.js DataStructures/PIFrames.js 
+.. inlineav:: RelationsFF ff
+   :links: AV/PIExample/RelationsFF.css
+   :scripts: AV/PIExample/RelationsFF.js DataStructures/PIFrames.js 
    :output: show
+
+Relations practice exercises
+----------------------------
+
+.. avembed:: Exercises/Background/SetTFequivrel.html ka
+   :long_name: Equivalence Exercise
+
+.. avembed:: Exercises/Background/SetTFpartialorder.html ka
+   :long_name: PartialOrder Exercise

@@ -29,7 +29,7 @@
             "q4": {
                 "type": "multiple",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "description": "Define the properties of relations as follows, $R$ is a binary relation over set $S$.\n\r 1- $R$ is $reflexive$ if $aRa$ for all $a$ ∈ $S$.",
+                "description": "$R$ is $reflexive$ if $aRa$ for all $a$ ∈ $S$.",
                 "question": "Is the relation less than or equal to reflexive?",
                 "answer": ["True"],
                 "choices": ["True", "False"]
@@ -37,7 +37,7 @@
             "q5": {
                 "type": "multiple",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "description": "Define the properties of relations as follows, $R$ is a binary relation over set $S$.\n\n 2- $R$ is $irreflexive$ if $aRa$ is not true for all $a$ ∈ $S$.",
+                "description": "$R$ is $irreflexive$ if $aRa$ is not true for all $a$ ∈ $S$.",
                 "question": "Is the relation less than or equal to $irreflexive$?",
                 "answer": ["False"],
                 "choices": ["True", "False"]
@@ -45,7 +45,7 @@
             "q6": {
                 "type": "multiple",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "description": "Define the properties of relations as follows, $R$ is a binary relation over set $S$.\n\n 3- $R$ is $symmetric$ if whenever $aRb$, then $bRa$, for all $a$,$b$ ∈ $S$.",
+                "description": "$R$ is $symmetric$ if whenever $aRb$, then $bRa$, for all $a$,$b$ ∈ $S$.",
                 "question": "Which of the following is a $symmetric$ relation?",
                 "answer": ["="],
                 "choices": ["$<$", "$>$", "="]
@@ -53,7 +53,7 @@
             "q7": {
                 "type": "multiple",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "description": "Define the properties of relations as follows, $R$ is a binary relation over set S.\n\n 4- $R$ is $antisymmetric$ if whenever $aRb$ and $bRa$, then $a$ $=$ $b$, for all $a,b$ ∈ $S$",
+                "description": "$R$ is $antisymmetric$ if whenever $aRb$ and $bRa$, then $a$ $=$ $b$, for all $a,b$ ∈ $S$",
                 "question": "Which of the following relation is $antisymmetric$?",
                 "answer": ["$>$"],
                 "choices": ["$>$", "=", "$\\leq$"]
@@ -61,7 +61,7 @@
             "q8": {
                 "type": "select",
                 "src": "../../../AV/Development/formal_language/FAEditor.html",
-                "description": "Define the properties of relations as follows, $R$ is a binary relation over set S. 5- $R$ is $transitive$ if whenever $aRb$ and $bRc$, then $aRc$, for all $a,b,c$ ∈ $S$.",
+                "description": "$R$ is $transitive$ if whenever $aRb$ and $bRc$, then $aRc$, for all $a,b,c$ ∈ $S$.",
                 "question": "Which of the followings are $transitive$ relations?",
                 "answer": ["$<$", ">", "="],
                 "choices": ["$<$", ">", "="]
