@@ -17,6 +17,18 @@
                 "aaaa": true
             },
             {
+                "abbbabbaba": true
+            },
+            {
+                "ababababababa": true
+            },
+            {
+                "ababababa": false
+            },
+            {
+                "aababbbbba": false
+            },
+            {
                 "baababa": false
             }
         ],
