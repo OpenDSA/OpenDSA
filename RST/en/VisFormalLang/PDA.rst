@@ -41,7 +41,7 @@ retrieve data from the stack.
       :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/PDA/PDAExampleCON.js
       :align: center
 
-   Example of DFA
+   Example of PDA
 
 The old limitations still apply: The tape is read only, the head moves
 only to the right.

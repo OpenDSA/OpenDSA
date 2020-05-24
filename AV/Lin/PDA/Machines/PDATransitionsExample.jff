@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 7.1.--><structure>
 	<type>pda</type>
 	<automaton>
-		<state id="0" name="q0">
+		<state id="1" name="q1">
 			<x>168.0</x>
 			<y>80</y>
 		</state>
-		<state id="1" name="q1">
+		<state id="2" name="q2">
 			<x>333.0</x>
 			<y>20</y>
 		</state>
-		<state id="2" name="q2">
+		<state id="4" name="q4">
 			<x>333.0</x>
 			<y>80</y>
 		</state>
-		<state id="3" name="q3">
+		<state id="6" name="q6">
 			<x>333.0</x>
 			<y>140</y>
 		</state>
 		<transition>
-			<from>0</from>
-			<to>1</to>
+			<from>1</from>
+			<to>2</to>
 			<read>a</read>
 			<pop>b</pop>
 			<push>b</push>
 		</transition>
 		<transition>
-			<from>0</from>
-			<to>2</to>
+			<from>1</from>
+			<to>4</to>
 			<read>a</read>
 			<pop>b</pop>
 			<push>ab</push>
 		</transition>
 		<transition>
-			<from>0</from>
-			<to>3</to>
+			<from>1</from>
+			<to>6</to>
 			<read>a</read>
 			<pop>b</pop>
 			<push/>
