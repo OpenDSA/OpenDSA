@@ -26,19 +26,19 @@
                 "bbabbbbbbb": true
             },
             {
-                "aabaaaaabb": true
+                "aabaaaaabb": false
             },
             {
-                "abbb": true
+                "abbb": false
             },
             {
-                "aaabbb": true
+                "aaabbbb": true
             },
             {
                 "ababababababa": true
             },
             {
-                "ababab": true
+                "ababab": false
             }
 
         ],
