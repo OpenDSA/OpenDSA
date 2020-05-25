@@ -4,16 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Eunoh Cho
-   :satisfies: Frame example
-   :topic: Finite Automata
+   :author: Mostafa Mohammed
+   :satisfies:
+   :topic: Context-Free Grammars Transformation
 
 
-Context-Free Grammars and Language
-================================
 Transforming Grammars
--------------------------------
-.. inlineav:: Ambiguity ff
+=====================
+
+Transforming Grammars
+---------------------
+.. inlineav:: TransformGram ff
    :links: AV/PIExample/CFL/TransformGram.css
    :scripts: AV/PIExample/CFL/TransformGram.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
    :output: show
