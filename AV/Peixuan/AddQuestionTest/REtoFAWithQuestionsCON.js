@@ -12,7 +12,7 @@ $(document).ready(function() {
     var GToFAConverter = new GrammarToFAConverter(av,grammer,matrixOptions);
     av.umsg("Suppose we need to convert this Regular Grammar to an NFA");
     var NFAoptions = {
-        top: 300,
+        top: 310,
         left: 70,
         width: 500,
         height: 250

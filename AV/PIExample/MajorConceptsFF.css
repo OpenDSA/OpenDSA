@@ -22,7 +22,8 @@
 .rejected {
     background-color: red;
 }
-
+/*Peixuan updated this css to prevent overrding error
+if multiple frames on the same page*/
 #MajorConceptsFF .jsavlabel {
     font-size: 2em;
     text-align: center;
