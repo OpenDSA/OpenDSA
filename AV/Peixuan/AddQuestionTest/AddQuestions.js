@@ -13,7 +13,7 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
 
   $(".picanvas").css({
     width: "0px",
-    //overflow: "hidden"
+    overflow: "inherit"
   });
 
   $(question).css({
@@ -120,47 +120,6 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
   // point the injector to generated questions
   var injector = PIFRAMES.Injector(questions, av_name, skip_to, piframesLocations);
   PIFRAMES.table[av_name] = injector;
-  /*
-  injector.updateCanvas = function(theHtml) {
-    if ($("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").children().length > 0) {
-      $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").empty();
-      $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(theHtml);
-    } else {
-      $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(theHtml);
-    }
-
-    if ($("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").find("iframe").length > 0) {
-      $("#" + av_name + " > .jsavoutput.jsavline").css("width", "0%");
-      $("#" + av_name + " > .jsavoutput.jsavline").css("display", "none");
-      $("#" + av_name + " > .canvaswrapper > .picanvas").css({
-        width: "900px",
-        height: "600px"
-      });
-      $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").css({
-        width: "100%",
-        height: "100%",
-        left: 50
-      });
-    } else {
-      $("#" + av_name + " > .jsavoutput.jsavline").css({
-        display: "inline-block",
-        width: "60%",
-        "vertical-align": "top"
-      });
-      $("#" + av_name + " > .canvaswrapper > .picanvas").css({
-        width: "0%",
-        height: "100%"
-      });
-      $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").css({
-        width: "100%",
-        height: "none",
-        left: piframesLocations.left,
-        position: "relative",
-        top: piframesLocations.top
-      });
-    }
-  }*/
-
   return injector;
 }
 //helper functions
@@ -196,9 +155,23 @@ var addFinals = function (g1, g2) {
 
 //store all the nodes of original graph for question generation
 var allNodes = [];
+
+//shuffle array
+var shuffle = function (array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+}
+
 //generate questions in json format by the graph
 //so it can be used by PI frame
-var generateQuestions = function (steps, graph, configure) {
+var generateQuestions = function (steps, graph = null, configure) {
   //Example:
   /*{
     "translations": {
@@ -227,9 +200,11 @@ var generateQuestions = function (steps, graph, configure) {
   }
 
   //get the nodes of original graph
-  graph.nodes().forEach(node => {
-    allNodes.push(node.options["value"]);
-  });
+  if(graph != null){
+    graph.nodes().forEach(node => {
+      allNodes.push(node.options["value"]);
+    });
+  }
 
   var questionsIndex = 0;
   var specialQuestionInedx = 0;
@@ -311,17 +286,6 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
   var steps = getAllStepsForMinimizeDFA(minimizer, jsav, referenceGraph, tree);
 
   var generateRandomChoicesForMinimize = function (state) {
-    function shuffle(array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
-        while (0 !== currentIndex) {
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
-        }
-        return array;
-    }
 
     var allChoices = shuffle(state.node.split(','));
     var maxChoices = allChoices.length - 1;
@@ -714,7 +678,7 @@ var getAllStepsForMinimizeDFA = function(minimizer, jsav, referenceGraph, tree) 
   //minimizer.done(newGraphDimensions);
 
   //must delete this part when use otherwise student can see the answer
-  console.log(res);
+  //console.log(res);
   return res;
 };
 
@@ -884,15 +848,6 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
         }
       }
     }
-      //minimizer part can let questions correspond to each step
-      /*if (visualizable) {
-          if (temp.length > 0) {
-            jsav.umsg(Frames.addQuestion(String("q" + count)));
-            jsav.step();
-            g.layout();
-            //jsav.umsg("Repeat the process for each new node we find");
-          }
-        }*/
     }
     // add the final markers
     if (visualizable)
@@ -984,7 +939,146 @@ var getAllStepsForConvertToDFA = function (startState, graph) {
     }
   }
 
-  //must delete minimizer part when use otherwise student can see the answer
+  //must delete this part when use otherwise student can see the answer
+  //console.log(res);
+  return res;
+}
+
+var gToFAConverterWithQuestion = function (av_name, converter, nFAoptions, piframesLocations){
+  var weights = [];
+  for (var i = 0; i < converter.grammerArray.length - 1; i++) {
+    var r = converter.grammerMatrix.value(i, 2);
+    if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(r[r.length - 1]) === -1) {
+      weights.push(r);
+    }
+    else{
+      weights.push(r.substring(0, r.length - 1));
+    }
+  }
+  weights = _.uniq(weights);
+
+  var steps = getStepsForGToFAConverterWithQuestion(converter, nFAoptions);
+  var generatingFunction = function (state) {
+    if (state["weight"] === "λ") {
+      return [{
+        "type": "multiple",
+        "question": "What is the appropriate transition for production of " + state["node"] + " and the final state?",
+        "description": "For each production, we need to draw the appropriate transition.",
+        "answer": state["weight"], //String if type is multiple, array of string if select
+        "choices": weights
+      }]
+    } else {
+      return [{
+        "type": "multiple",
+        "question": "What is the appropriate transition for production of " + state["node"] + " and " + state["relatedTo"] + "?",
+        "description": "For each production, we need to draw the appropriate transition.",
+        "answer": state["weight"], //String if type is multiple, array of string if select
+        "choices": weights
+      }]
+    }
+  }
+  var configure = {
+    "specialQuestionInedx" : [0],
+    "specialQuestion" : [
+        {
+         "type": "select",
+         "question": "What are states for variables?",
+         "description": "We need a state for each Variable and a final state.",
+         "answer": steps[0][0]["node"], //String if type is multiple, array of string if select
+         "choices": shuffle(steps[0][0]["node"].concat(["λ"]))
+        }
+      ],
+    "questionPattern" : generatingFunction
+  };
+
+  var questions = generateQuestions(steps, null, configure);
+  // initialize PI frame
+  var Frames = piInit(av_name, questions, piframesLocations);
+  var questionsIndex = 0;
+
+
+  var productions = _.filter(converter.grammerArray, function (x) { return x[0]; });
+
+  // keep a map of variables to FA states
+  converter.nodeMap = {};
+  converter.builtDFA = converter.jsav.ds.FA({ width: nFAoptions.width, height: nFAoptions.height, left: nFAoptions.left, top: nFAoptions.top, layout: "automatic" });
+  converter.builtDFA.disableDragging();
+  var newStates = []; // variables
+  for (var i = 0; i < productions.length; i++) {
+    newStates.push(productions[i][0]);
+    newStates = newStates.concat(_.filter(productions[i][2], function (x) { return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(x) !== -1; }));
+  }
+  newStates = _.uniq(newStates);
+
+  converter.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+  questionsIndex++;
+  converter.jsav.step();
+
+  // create FA states
+  for (var i = 0; i < newStates.length; i++) {
+    var n = converter.builtDFA.addNode({ value: newStates[i] });
+    converter.nodeMap[newStates[i]] = n;
+    if (i === 0) {
+      converter.builtDFA.makeInitial(n);
+    }
+  }
+  // add final state
+  converter.finalNode = converter.builtDFA.addNode({ value: "F" });
+  converter.finalNode.addClass("final");
+  converter.builtDFA.layout();
+  selectedNode = null;
+
+  //converter.loopOverEachRow();
+  for (var i = 0; i < converter.grammerArray.length - 1; i++) {
+    converter.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+    questionsIndex++;
+    converter.jsav.step();
+    converter.convertGrammarHandler(i);
+
+  }
+  converter.jsav.umsg("This is the equivalent NFA for this Regular Grammer.");
+  converter.jsav.step();
+}
+
+var getStepsForGToFAConverterWithQuestion = function (converter, nFAoptions){
+  var res= [];
+
+  var productions = _.filter(converter.grammerArray, function (x) { return x[0]; });
+  // keep a map of variables to FA states
+  converter.nodeMap = {};
+  var newStates = []; // variables
+  for (var i = 0; i < productions.length; i++) {
+    newStates.push(productions[i][0]);
+    newStates = newStates.concat(_.filter(productions[i][2], function (x) { return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(x) !== -1; }));
+  }
+  newStates = _.uniq(newStates);
+
+  res.push([{
+    "node" : newStates,
+    "relatedTo" : "",
+    "type" : "newStates",
+    "weight" : ""
+  }]);
+
+  for (var i = 0; i < converter.grammerArray.length - 1; i++) {
+    var l = converter.grammerMatrix.value(i, 0);
+    var r = converter.grammerMatrix.value(i, 2);
+    if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(r[r.length - 1]) === -1) {
+      res.push([{
+        "node" : l,
+        "relatedTo" : r,
+        "type" : "regularGrammar",
+        "weight" : r
+      }]);
+    } else {
+      res.push([{
+        "node" : l,
+        "relatedTo" : r[r.length - 1],
+        "type" : "regularGrammar",
+        "weight" : r.substring(0, r.length - 1)
+      }]);
+    }
+  }
   console.log(res);
   return res;
 }

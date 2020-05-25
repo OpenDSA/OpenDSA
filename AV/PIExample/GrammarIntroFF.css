@@ -4,7 +4,6 @@
 .jsavcontrols{
     display: unset !important;
 }
-.jsavhorizontalarray .jsavnode {
+#GrammarIntroFF .jsavhorizontalarray .jsavnode {
     min-width: 160px !important;
-  }
-  
+}
