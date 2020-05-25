@@ -7,3 +7,13 @@
    :author: Mostafa Mohammed
    :satisfies: 
    :topic: DFA Minimization
+
+Minimizing the Number of States in a DFA
+========================================
+
+Minimizing the Number of States in a DFA
+----------------------------------------
+.. inlineav:: DFAMinimizationFF ff
+   :links: AV/PIExample/DFAMinimizationFF.css DataStructures/FLA/FLA.css
+   :scripts: DataStructures/FLA/FA.js AV/PIExample/DFAMinimizationFF.js DataStructures/PIFrames.js
+   :output: show
