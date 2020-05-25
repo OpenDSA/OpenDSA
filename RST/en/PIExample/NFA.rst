@@ -20,6 +20,17 @@ Non-Deterministic Finite Automata
    :output: show
 
 
-   
+NFA to DFA Conversion Example 1
+-------------------------------
 
+.. inlineav:: NFA2DFAFrames ff
+   :links: AV/PIExample/NFA2DFAFrames.css
+   :scripts:AV/PIExample/NFA2DFAFrames.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
+   :output: show
 
+NFA to DFA Conversion Example 2
+-------------------------------
+.. inlineav:: NFAtoDFAFF ff
+   :links: DataStructures/FLA/FLA.css AV/PIExample/NFAtoDFAFF.css
+   :scripts: AV/PIExample/NFAtoDFAFF.js AV/Peixuan/AddQuestionTest/AddQuestions.js lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js
+   :output: show

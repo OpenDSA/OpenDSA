@@ -2282,7 +2282,7 @@ var lambda = String.fromCharCode(955),
       // If the input string was rejected, color every character in the JSAV array red.
       for (var l = 0; l < inputString.length; l++) {
         //arr.css(l, {"background-color": "red"});
-        this.matrix.css(matrixRow, i, { "background-color": "red" });
+        this.matrix.css(matrixRow, l, { "background-color": "red" });
       }
       this.jsav.umsg("We are at the end of the string, but we are not in a final state. So the string is REJECTED.");
     } else {
@@ -2848,6 +2848,8 @@ function getRandomInt(max) {
     this.options = options;
     this.current = (index == undefined)? 1: index;//the location to highlight
     this.arr = null;
+    this.leftPoly = null;
+    this.rightPoly = null;
 
     if ($.isArray(element)) {
       // x & y control
@@ -2892,11 +2894,11 @@ function getRandomInt(max) {
       var highlightLeft = (this.current === -1);
       var highlightRight = (this.current >= this.arr.size());
 
-      if (direction === "right") { plot_right(jsav, right, y_coord, points, highlightRight); }
-      if (direction === "left") { plot_left(jsav, x_coord, y_coord, points_l, highlightLeft); }
+      if (direction === "right") { this.plot_right(jsav, right, y_coord, points, highlightRight); }
+      if (direction === "left") { this.plot_left(jsav, x_coord, y_coord, points_l, highlightLeft); }
       if (direction === "both") {
-        plot_right(jsav, right, y_coord, points, highlightRight);
-        plot_left(jsav, x_coord, y_coord, points_l, highlightLeft);
+        this.plot_right(jsav, right, y_coord, points, highlightRight);
+        this.plot_left(jsav, x_coord, y_coord, points_l, highlightLeft);
       }
 
       // change the style (shape) of the JSAV array class
@@ -2906,9 +2908,9 @@ function getRandomInt(max) {
 
   // extend JSAV array class
   JSAV.utils.extend(Tape, JSAV._types.ds.AVArray);
-
+  var proto = Tape.prototype;
   // function to draw right "infinite" tape sign
-  function plot_right(jsav, right, y_coord, points, highlightRight) {
+  proto.plot_right = function(jsav, right, y_coord, points, highlightRight) {
     for (var i = 0; i < points.length; i++) {
       points[i][0] += right;
       points[i][1] += y_coord;
@@ -2919,11 +2921,12 @@ function getRandomInt(max) {
     } else {
       poly = jsav.g.polyline(points, { "stroke-width": 2 });
     }
+    this.rightPoly = poly;
     poly.show();
   }
 
   // function to draw left "infinite" tape sign
-  function plot_left(jsav, x_coord, y_coord, points_l, highlightLeft) {
+  proto.plot_left = function(jsav, x_coord, y_coord, points_l, highlightLeft) {
     for (var i = 0; i < points_l.length; i++) {
       points_l[i][0] = x_coord - points_l[i][0];
       points_l[i][1] = y_coord + points_l[i][1];
@@ -2934,10 +2937,9 @@ function getRandomInt(max) {
     } else {
       poly_l = jsav.g.polyline(points_l, { "stroke-width": 2 });
     }
-
+    this.leftPoly = poly_l;
     poly_l.show();
   }
-  var proto = Tape.prototype;
 
   //attempt to highlight a particular position, but need access to the tape arr object
   //not necessary, but kept here for the future; this method can be used if the
@@ -3020,6 +3022,15 @@ function getRandomInt(max) {
     }
     this.current = startIndex;
     this.highlightCurrent();
+  }
+  proto.hide = function(){
+    this.arr.hide();
+    if(this.rightPoly != null){
+      this.rightPoly.hide();
+    }
+    if(this.leftPoly != null){
+      this.leftPoly.hide();
+    }
   }
 
   // Add the Tape constructor to the public facing JSAV interface.

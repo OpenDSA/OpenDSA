@@ -4,9 +4,9 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Eunoh Cho
-   :satisfies: Frame example
-   :topic: Finite Automata
+   :author: Eunoh Cho, Mostafa Mohammed
+   :satisfies: 
+   :topic: Formal Languages Major Concepts
 
 
 Introduction to Formal Languages
@@ -29,8 +29,8 @@ Introduction to Grammars
    :scripts: AV/PIExample/GrammarIntroFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
    :output: show
 
-Exercises about Grammars
-------------------------
+Practicing Grammars
+-------------------
 
 .. avembed:: Exercises/FLA/CharacterizeLang1.html ka
    :long_name: Characterizing a Language, Problem 1

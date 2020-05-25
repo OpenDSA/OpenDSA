@@ -127,7 +127,7 @@
             },
             "q8": {
                 "type": "select",
-                "question": "Which state(s) can the NFA go to from the start state?",
+                "question": "Which state(s) can the NFA go to from the start state when read letter $a$?",
                 "answer": [
                     "q3",
                     "q4"
@@ -163,7 +163,7 @@
             },
             "q23": {
                 "type": "multiple",
-                "description": "For an NFA $L(M)= \\{w \\in {\\Sigma}^{*} \\mid \\delta^{*}(q_0,w) \\cap F \\neq \\emptyset \\}$ <br /> This means that the machine accepts all strings $w$ from the set of all possible strings (generated from the alphabet $\\Sigma$) such that the states reachable on $w$ from the start state ($Q_0$) is in the final state set.",
+                "description": "For an NFA $L(M)= \\{w \\in {\\Sigma}^{*} \\mid \\delta^{*}(q_0,w) \\cap F \\neq \\emptyset \\}$ <br /> This means that the machine accepts all strings $w$ from the set of all possible strings (generated from the alphabet $\\Sigma$) such that the states reachable on $w$ from the start state ($q_0$) is in the final state set.",
                 "question": "For this NFA and $w$=ab how many paths exist?",
                 "answer": [
                     "2"
@@ -213,7 +213,7 @@
             },
             "q111": {
                 "type": "multiple",
-                "description": "Correct! While NFA allow $\\lambda$ and multiple transitions they can not solve any new problems that can not be done with a DFA.",
+                "description": "Correct! While NFA allow $\\lambda$ and multiple transitions they can not solve any new problems that can not be done with a DFA. Also, since we have an ALGORITHM that converts any NFA to DFA then both of them are equivalent.",
                 "question": "The concept of NFA can make it easier to comprehend, read, and simplify adding multiple languanges together. ",
                 "answer": [
                     "True"

@@ -76,7 +76,9 @@ av.step();
 av.umsg(Frames.addQuestion("q111"));
 av.step();
 //Frame 21
-av.umsg("Complete.");
+av.umsg("Exactly, that is why we have NFAs. They are easier to solve any problem by finding an NFA than trying a DFA.");
+av.step();
+av.umsg("Completed.");
 av.step();
 
 av.recorded();

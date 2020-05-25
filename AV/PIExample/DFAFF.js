@@ -1,6 +1,6 @@
 $(document).ready(function() {
 "use strict";
-var av_name = "DFA";
+var av_name = "DFAFF";
 var av = new JSAV(av_name);
 var Frames = PIFRAMES.init(av_name);
 var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
@@ -18,7 +18,7 @@ var goNext = false;
           var tape = av.ds.tape(strings, xStart, yStart, "right");
            //av.ds.array(strings, {left: xStart, top: yStart});
           //var arr = av.ds.array(strings, {left: xStart, top: yStart-10});
-
+          tape.highlightPosition(2);
           var line1 = av.g.line(xStart + 80, yStart + 95, xStart + 80, yStart + 35,
                     {"arrow-end": "classic-wide-long"});
           var label2 = av.label("tape head", {left: xStart + 5, top: yStart + 25});
@@ -66,8 +66,7 @@ av.step();
 av.umsg(Frames.addQuestion("q7"));
 av.step();
 //Hide tape
-//tape.hide();
-//Remove DFA from the screen
+tape.hide();
 dfaComponents.forEach(obj => obj.hide());
 //Frame 10
 av.umsg(Frames.addQuestion("text"));

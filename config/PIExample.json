@@ -63,7 +63,18 @@
   }, 
   "chapters": {
     "Introduction": {
-      "PIExample/MajorConcepts": {}
+      "PIExample/MajorConcepts": {},
+      "PIExample/IntroductoryGrammarExercises":{
+        "sheet1exercise5":{
+          "points": 2.0
+        },
+        "sheet1exercise6":{
+          "points": 2.0
+        },
+        "sheet1exercise7":{
+          "points": 2.0
+        }
+      }
     },
     "Mathematical Background": {
       "PIExample/SetDefinitions": {},
@@ -72,8 +83,30 @@
     },
     "Finite Acceptors": {
       "PIExample/DFA":{},
+      "PIExample/DFAExercises":{
+        "sheet1exercise1":{
+          "points": 5.0
+        },
+        "sheet1exercise2":{
+          "points": 5.0
+        },
+        "sheet1exercise3":{
+          "points": 5.0
+        },
+        "sheet1exercise4":{
+          "points": 5.0
+        }
+      },
       "PIExample/NFA":{},
-      "PIExample/NFAtoDFAExample":{}
+      "PIExample/NFAExercises":{
+        "NFAtoDFAExerciseEditor":{
+          "points": 10.0
+        },
+        "sheet2exercise4":{
+          "points": 10.0
+        }
+      },
+      "PIExample/DFAMinimization":{}
     },
     "Regular Languages": {
       "PIExample/RLRegularExpression":{},
