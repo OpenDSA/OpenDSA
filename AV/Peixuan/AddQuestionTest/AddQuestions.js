@@ -1,6 +1,6 @@
 //initialize PI frame with generated questions
 var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}) {
-  console.log(av_name + " init")
+  console.log(av_name + " init with questions")
   var container = $(`#${av_name}`);
 
   var qButton = $("<div />", {
@@ -11,7 +11,7 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
     class: "PIFRAMES"
   });
 
-  $(".picanvas").css({
+  $("#" + av_name + " .picanvas").css({
     width: "0px",
     overflow: "inherit"
   });
@@ -24,12 +24,12 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
     overflow: "hidden"
   });
 
-  $(".jsavoutput.jsavline").css({
+  $("#" + av_name + " .jsavoutput.jsavline").css({
     display: "inline-block",
     width: "60%"
   });
 
-  $(".jsavcanvas").css({
+  $("#" + av_name + " .jsavcanvas").css({
     //"min-width": "0px",
     width: "60%",
     overflow: "hidden",
@@ -233,7 +233,7 @@ var generateQuestions = function (steps, graph = null, configure) {
   }
 
   //must delete this part when use otherwise student can see the answer
-  console.log(questions["translations"]["en"]);
+  //console.log(questions["translations"]["en"]);
 
   return questions;
 }
@@ -241,7 +241,7 @@ var generateQuestions = function (steps, graph = null, configure) {
 var toStrChoice = function (array){
   var res = "";
   array.forEach((item, i) => {
-    res+=("Node (" + item + ") ");
+    res+=("State (" + item + ") ");
   });
   return res.trim();
 }
@@ -361,14 +361,14 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
             {
                "type": "multiple",
                "question": "",
-               "description": "Can Node "+state.node+" be divided?",
+               "description": "Will state " +state.node+ " can be divided by reading the letter \"" + state.weight + "\" ?",
                "answer": "yes", //String if type is multiple, array of string if select
                "choices": ["yes", "no"]
             },
             {
                "type": "multiple",
                "question": "",
-               "description": "Node "+state.node+" will be divided into which groups?",
+               "description": "State "+state.node+" will be divided into which groups?",
                "answer": toStrChoice(state.relatedTo),
                "choices": generateRandomChoicesForMinimize(state)
             }];
@@ -377,7 +377,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
         return [{
            "type": "multiple",
            "question": "",
-           "description": "Can Node "+state.node+" be divided?",
+           "description": "Will state " +state.node+ " can be divided by reading the letter \"" + state.weight + "\" ?",
            "answer": "no", //String if type is multiple, array of string if select
            "choices": ["yes", "no"]
         }]
@@ -626,7 +626,7 @@ var getAllStepsForMinimizeDFA = function(minimizer, jsav, referenceGraph, tree) 
           "node" : treeNode,
           "relatedTo" : "",
           "type" : "notBeDivided",
-          "weight" : ""
+          "weight" : letter
         }]);
         return false;
       }
@@ -738,10 +738,10 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
     "specialQuestionInedx" : [0],
     "specialQuestion" : [
         {
-          "type": "select",
+          "type": steps[0][0]["node"].split(',').length == 1 ? "multiple" : "select",
           "question": "Select the initial lambda closure to continue",
           "description": "The first step is to find the lambda closure for the NFA start state. From the NFA's start state, find every other state that can be reached by a lambda transition.",
-          "answer": steps[0][0]["node"].split(','), //String if type is multiple, array of string if select
+          "answer": steps[0][0]["node"].split(',').length == 1 ?  steps[0][0]["node"] : steps[0][0]["node"].split(','), //String if type is multiple, array of string if select
           "choices": allNodes
         }
       ],
@@ -839,7 +839,7 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
 
         //put it here to let questions correspond to each state
         if (visualizable) {
-          if (temp.length > 0) {
+          if (count < Object.keys(questions["translations"]["en"]).length) {
             jsav.umsg(Frames.addQuestion(String("q" + count)));
             g.layout();
             jsav.step();
@@ -1079,6 +1079,6 @@ var getStepsForGToFAConverterWithQuestion = function (converter, nFAoptions){
       }]);
     }
   }
-  console.log(res);
+  //console.log(res);
   return res;
 }

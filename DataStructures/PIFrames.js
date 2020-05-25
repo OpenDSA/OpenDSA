@@ -861,12 +861,13 @@
         class: "PIFRAMES"
       });
 
-      $(".picanvas").css({
+      //Peixuan updated selectors
+      $("#" + av_name + " .picanvas").css({
         width: "0px",
-        overflow: "inherit"
+        //overflow: "inherit"
         //Peixuan changed this style so it will display submit button correctly
         //if multiple frames on the same page
-        //overflow: "hidden"
+        overflow: "hidden"
       });
 
       $(question).css({
@@ -877,12 +878,12 @@
         overflow: "hidden"
       });
 
-      $(".jsavoutput.jsavline").css({
+      $("#" + av_name + " .jsavoutput.jsavline").css({
         display: "inline-block",
         width: "60%"
       });
 
-      $(".jsavcanvas").css({
+      $("#" + av_name + " .jsavcanvas").css({
         "min-width": "0px",
         width: "60%",
         overflow: "hidden",
