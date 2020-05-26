@@ -8,6 +8,10 @@
    :satisfies: 
    :topic: DFA Minimization
 
+
+DFA Minimization Exercises
+==========================
+
 Exercise 1
 ----------
 
