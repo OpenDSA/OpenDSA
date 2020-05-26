@@ -8,11 +8,11 @@
    :topic: Sets Relations
 
 
-Set and Relations
-================================
+Sets and Relations
+==================
 
 Relations
--------------------------------
+---------
 
 In this chapter you will learn about set and relations. After this chapter you will have full understanding of set and relations.
 
