@@ -177,6 +177,9 @@ FL2019: min
 PIExample: min
 	python $(CONFIG_SCRIPT) config/PIExample.json --no-lms
 
+PIFormalLang: min
+	python $(CONFIG_SCRIPT) config/PIFormalLang.json --no-lms
+
 DeformsTesting: min
 	python $(CONFIG_SCRIPT) config/DeformsTesting.json --no-lms
 
