@@ -25,7 +25,7 @@ Exercise 2
    :long_name: Sheet 1 Exercise 2 DFA minimization Practice
 
 Exercise 3
------------
+----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_2/sheet2exercise3.html pe
    :long_name: Sheet 2 Exercise 3 Construct DFA that accepts a language

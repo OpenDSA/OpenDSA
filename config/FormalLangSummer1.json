@@ -111,14 +111,14 @@
         },
         "PIExample/DFAMinimization":{},
         "PIExample/MinimizationExercises":{
-          "DFAminimizationExerciseEditor":{
+            "DFAminimizationExerciseEditor":{
             "points": 10.0
-          },"DFAminimizationExerciseEditor2":{
+            },"DFAminimizationExerciseEditor2":{
             "points": 10.0
-          },
-          "sheet2exercise3":{
+            },
+            "sheet2exercise3":{
             "points": 7.0
-          }
+            }
         }
       }
     }
