@@ -168,6 +168,9 @@ FormalLang: min
 VisFormalLang: min
 	python $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
 
+FormalLangSummer1: min
+	python $(CONFIG_SCRIPT) config/FormalLangSummer1.json --no-lms
+
 FL2019: min
 	python $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
 
