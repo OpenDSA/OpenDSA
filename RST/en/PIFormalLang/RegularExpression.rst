@@ -23,13 +23,13 @@ Introduction to regular expressions
 Regular Expression VS Regular Languages
 ---------------------------------------
 
-.. inlineav:: REVSRL ff
-   :links: AV/PIExample/RegularLanguages/REVSRL.css
-   :scripts:AV/PIExample/RegularLanguages/REVSRL.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
+.. inlineav:: RegEXandRegLangFF ff
+   :links: AV/PIExample/RegularLanguages/RegEXandRegLangFF.css
+   :scripts:AV/PIExample/RegularLanguages/RegEXandRegLangFF.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
    :output: show
 
- Regular Expression VS Regular Language part 2
- ---------------------------------------------
+Regular Expression VS Regular Language part 2
+---------------------------------------------
 
 .. inlineav:: RegularExpressionThird ff
    :links: AV/PIExample/RegularExpressionThird.css
