@@ -263,7 +263,6 @@ var containsChoice = function(choice, set){
       temp.push(choiceObj.split(",").sort());
     });
     temp.sort();
-    //console.log(sortedChoice, temp);
 
     var innerCompare = true;
     if(temp.length === sortedChoice.length){
@@ -275,7 +274,6 @@ var containsChoice = function(choice, set){
     }
 
     if(innerCompare){
-      //console.log("true");
       return true;
     }
   }
@@ -339,10 +337,6 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
         allChoices = shuffle(allChoices);
         choicesDup = containsChoice(aChoice, res);
 
-        /*if(choicesDup){
-          console.log("dup generated choice ->", aChoice);
-          //break;
-        }*/
       }
       res.push(aChoice);
     }
@@ -513,21 +507,13 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
     var sArr = Object.keys(sets);
     var node = getTreeNode(treeNode, minimizer.tree.root())
 
-    //var nodeListAsString = "";
     for (var i = 0; i < sArr.length; i++) {
       var nVal = sets[sArr[i]].sort().join();
       if (nVal) {
-        //if (nodeListAsString !== "")
-          //nodeListAsString += "-";
         node.addChild(nVal, { edgeLabel: letter });
-        //nodeListAsString += "Node " + nVal;
       }
     }
-    //nodeListAsString = listOFNodesToString(nodeListAsString);
-    //nodeListAsString += " by using the transition label " + letter;
-    //minimizer.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will be divided into " + nodeListAsString + ".");
     highlightAllNodes(treeNode.split(','), minimizer.referenceGraph);
-    //minimizer.unhighlightAll(minimizer.referenceGraph);
     minimizer.tree.layout();
 
     return true;
@@ -675,7 +661,6 @@ var getAllStepsForMinimizeDFA = function(minimizer, jsav, referenceGraph, tree) 
     listOfLeaves = _.difference(minimizer.getLeaves(minimizer.tree.root()), listOfVisitedLeaves);
   }
 
-  //minimizer.done(newGraphDimensions);
 
   //must delete this part when use otherwise student can see the answer
   //console.log(res);
@@ -957,7 +942,7 @@ var gToFAConverterWithQuestion = function (av_name, converter, nFAoptions, pifra
   }
   weights = _.uniq(weights);
 
-  var steps = getStepsForGToFAConverterWithQuestion(converter, nFAoptions);
+  var steps = getStepsForGToFAConverter(converter, nFAoptions);
   var generatingFunction = function (state) {
     if (state["weight"] === "λ") {
       return [{
@@ -985,7 +970,7 @@ var gToFAConverterWithQuestion = function (av_name, converter, nFAoptions, pifra
          "question": "What are states for variables?",
          "description": "We need a state for each Variable and a final state.",
          "answer": steps[0][0]["node"], //String if type is multiple, array of string if select
-         "choices": shuffle(steps[0][0]["node"].concat(["λ"]))
+         "choices": steps[0][0]["node"].concat(["λ"])
         }
       ],
     "questionPattern" : generatingFunction
@@ -1034,13 +1019,13 @@ var gToFAConverterWithQuestion = function (av_name, converter, nFAoptions, pifra
     questionsIndex++;
     converter.jsav.step();
     converter.convertGrammarHandler(i);
-
   }
+
   converter.jsav.umsg("This is the equivalent NFA for this Regular Grammer.");
-  converter.jsav.step();
+
 }
 
-var getStepsForGToFAConverterWithQuestion = function (converter, nFAoptions){
+var getStepsForGToFAConverter = function (converter, nFAoptions){
   var res= [];
 
   var productions = _.filter(converter.grammerArray, function (x) { return x[0]; });
@@ -1067,18 +1052,231 @@ var getStepsForGToFAConverterWithQuestion = function (converter, nFAoptions){
       res.push([{
         "node" : l,
         "relatedTo" : r,
-        "type" : "regularGrammar",
+        "type" : "regularGrammarToNFA",
         "weight" : r
       }]);
     } else {
       res.push([{
         "node" : l,
         "relatedTo" : r[r.length - 1],
-        "type" : "regularGrammar",
+        "type" : "regularGrammarToNFA",
         "weight" : r.substring(0, r.length - 1)
       }]);
     }
   }
   //console.log(res);
   return res;
+}
+
+var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarMatrix, piframesLocations) {
+  // by default sets S to be the start variable
+  var variables = "SABCDEFGHIJKLMNOPQRTUVWXYZ";
+  var s = FAtoGrammar.FA.initial;
+  var newVariables = [s];
+  var nodes = FAtoGrammar.FA.nodes();
+  var arrow = String.fromCharCode(8594);
+  var converted = [];
+  var matrixIndex = 0;
+
+  for (var next = nodes.next(); next; next = nodes.next()) {
+    if (!next.equals(s)) {
+      newVariables.push(next);
+    }
+  }
+  var finals = [];
+
+  var states = [];
+  for(var i = 0 ; i < newVariables.length ; i++){
+    states.push(variables[i]);
+  }
+  var steps = getStepsForConvertToGrammar(FAtoGrammar, grammarMatrix);
+  //console.log(steps);
+
+  var weights = [];
+  for (var i = 0; i < steps.length; i++) {
+    for (var j = 0; j < steps[i].length; j++){
+      if(steps[i][j].weight !== ""){
+        weights.push(steps[i][j].weight);
+      }
+    }
+  }
+  weights = _.uniq(weights);
+
+  var generatingFunction = function (state) {
+    if (state["weight"] === "λ") {
+      return [{
+        "type": "multiple",
+        "question": "Which one is the final state?",
+        "description": "We need to add a new transition with " + emptystring + ".",
+        "answer": state["node"], //String if type is multiple, array of string if select
+        "choices": states
+      }]
+    } else if(state["type"] === "first"){
+      return [{
+        "type": "textBoxStrict",
+        "question": "",
+        "description": "There is(are) how many transition(s) for state: " + state["node"] + " ?",
+        "answer": state["relatedTo"], //String if type is multiple, array of string if select
+        "choices": ""
+      }]
+    } else {
+      return [
+        {
+          "type": "multiple",
+          "question": "",
+          "description": "What is the appropriate transition? Suppose the production is about " + state["node"] + " and " + state.relatedTo[state.relatedTo.length - 1] + ".",
+          "answer": state["weight"], //String if type is multiple, array of string if select
+          "choices": weights
+        }
+      ]
+    }
+  }
+  var configure = {
+    "specialQuestionInedx" : [],
+    "specialQuestion" : [],
+    "questionPattern" : generatingFunction
+  };
+
+  var questions = generateQuestions(steps, null, configure);
+  // initialize PI frame
+  var Frames = piInit(av_name, questions, piframesLocations);
+  var questionsIndex = 0;
+
+  FAtoGrammar.jsav.umsg("Now we need to check every state and transition to determine grammar productions.");
+  FAtoGrammar.jsav.step();
+
+  for (var i = 0; i < newVariables.length; i++) {
+    var edges = newVariables[i].getOutgoing();
+    FAtoGrammar.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+    questionsIndex++;
+    FAtoGrammar.jsav.step();
+
+    if (i > 0) {
+      newVariables[i - 1].unhighlight();
+      newVariables[i - 1].getOutgoing().map(function (edge) {
+        edge.removeClass("testingLambda");
+        edge._label.removeClass("testingLambda");
+      });
+    }
+
+    newVariables[i].highlight();
+    newVariables[i].getOutgoing().map(function (edge) {
+      edge.addClass("testingLambda");
+      edge._label.addClass("testingLambda");
+    });
+    FAtoGrammar.jsav.umsg("For state: " + newVariables[i].value() + ", there " + ((edges.length > 1) ? "are " : "is ") + edges.length + " transition" + ((edges.length > 1) ? "s" : ""));
+    FAtoGrammar.jsav.step();
+
+    for (var j = 0; j < edges.length; j++) {
+      var toVar = variables[newVariables.indexOf(edges[j].end())];
+      var weight = edges[j].weight().split("<br>");
+
+      for (var k = 0; k < weight.length; k++) {
+        FAtoGrammar.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+        questionsIndex++;
+        FAtoGrammar.jsav.step();
+        var terminal = weight[k];
+        if (weight[k] === emptystring) {
+          terminal = "";
+        }
+        converted.push([variables[i], arrow, terminal + toVar]);
+        grammarMatrix.value(matrixIndex, 0, variables[i]);
+        grammarMatrix.value(matrixIndex, 2, terminal + toVar);
+        grammarMatrix._arrays[matrixIndex++].show();
+      }
+    }
+
+    if (newVariables[i].hasClass('final')) {
+      FAtoGrammar.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+      questionsIndex++;
+      FAtoGrammar.jsav.step();
+      finals.push([variables[i], arrow, emptystring]);
+      grammarMatrix.value(matrixIndex, 0, variables[i]);
+      grammarMatrix.value(matrixIndex, 2, emptystring);
+      FAtoGrammar.jsav.umsg("Since " + variables[i] + " is the final state, we need to add a new transition with " + emptystring + ".");
+      FAtoGrammar.jsav.step();
+      grammarMatrix._arrays[matrixIndex].show();
+    }
+  }
+  newVariables[newVariables.length - 1].unhighlight();
+  newVariables[newVariables.length - 1].getOutgoing().map(function (edge) {
+    edge.removeClass("testingLambda");
+    edge._label.removeClass("testingLambda");
+  });
+  converted = converted.concat(finals);
+  // save resulting grammar as an array of arrays of strings
+  // (same format as how the grammarEditor reads grammars)
+
+  return JSON.stringify(converted);
+};
+
+var getStepsForConvertToGrammar = function(FAtoGrammar, grammarMatrix) {
+  // by default sets S to be the start variable
+  var variables = "SABCDEFGHIJKLMNOPQRTUVWXYZ";
+  var s = FAtoGrammar.FA.initial;
+  var newVariables = [s];
+  var nodes = FAtoGrammar.FA.nodes();
+  var arrow = String.fromCharCode(8594);
+  var converted = [];
+  var matrixIndex = 0;
+
+  for (var next = nodes.next(); next; next = nodes.next()) {
+    if (!next.equals(s)) {
+      newVariables.push(next);
+    }
+  }
+  var finals = [];
+  for (var i = 0; i < newVariables.length; i++) {
+    var edges = newVariables[i].getOutgoing();
+    if (i > 0) {
+      newVariables[i - 1].getOutgoing().map(function (edge) {
+        edge.removeClass("testingLambda");
+        edge._label.removeClass("testingLambda");
+      });
+    }
+    converted.push([{
+      "node" : newVariables[i].value(),
+      "relatedTo" : edges.length,
+      "type" : "first",
+      "weight" : ""
+    }]);
+
+    var temp = [];
+    for (var j = 0; j < edges.length; j++) {
+      var toVar = variables[newVariables.indexOf(edges[j].end())];
+      var weight = edges[j].weight().split("<br>");
+      newVariables[i].getOutgoing().map(function (edge) {
+        edge.addClass("testingLambda");
+        edge._label.addClass("testingLambda");
+      });
+      for (var k = 0; k < weight.length; k++) {
+        var terminal = weight[k];
+        if (weight[k] === emptystring) {
+          terminal = "";
+        }
+        temp.push({
+          "node" : variables[i],
+          "relatedTo" : terminal + toVar,
+          "type" : "otherState",
+          "weight" : terminal
+        });
+      }
+    }
+    converted.push(temp);
+
+    if (newVariables[i].hasClass('final')) {
+      finals.push([{
+        "node" : variables[i],
+        "relatedTo" : emptystring,
+        "type" : "NFAtoRegularGrammar",
+        "weight" : "λ"
+      }]);
+    }
+  }
+  newVariables[newVariables.length - 1].getOutgoing().map(function (edge) {
+    edge.removeClass("testingLambda");
+    edge._label.removeClass("testingLambda");
+  });
+  converted = converted.concat(finals);
+  return converted;
 }

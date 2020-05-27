@@ -3,7 +3,7 @@
 $(document).ready(function() {
     "use strict";
     var arrow = String.fromCharCode(8594);
-    var av_name = "FAtoRegGrammmarCON";
+    var av_name = "FAtoRegGrammmarWithQCON";
     var av = new JSAV(av_name);
     var url = "../../../AV/VisFormalLang/Regular/Machines/FA1.jff"
 
@@ -22,8 +22,9 @@ $(document).ready(function() {
     var FAtoGrammar = new FAtoGrammarConverter(av, FA);
     av.displayInit();
 
-    FAtoGrammar.convertToGrammar(grammarMatrix);
-    av.step();
+    //FAtoGrammar.convertToGrammar(grammarMatrix);
+    convertToGrammarWithQuestions(av_name, av, FAtoGrammar, grammarMatrix, {top: -10, left: -20});
+    //av.step();
     av.umsg("The resulting Grammar is: ");
 
     av.recorded();
