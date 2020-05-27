@@ -15,9 +15,9 @@ Regular Expression
 Introduction to regular expressions
 -----------------------------------
 
-.. inlineav:: RegularExpressions ff
-   :links: AV/PIExample/RegularLanguages/RegularExpressions.css
-   :scripts: AV/PIExample/RegularLanguages/RegularExpressions.js DataStructures/PIFrames.js 
+.. inlineav:: RegularExpressionsFF ff
+   :links: AV/PIExample/RegularLanguages/RegularExpressionsFF.css
+   :scripts: AV/PIExample/RegularLanguages/RegularExpressionsFF.js DataStructures/PIFrames.js 
    :output: show
 
 Regular Expression VS Regular Languages
