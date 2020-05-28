@@ -97,7 +97,7 @@ explanations.)
 
 .. inlineav:: employeeEmpRefCON ss
    :links: AV/Pointers/employeeEmpRefCON.css
-   :scripts: AV/Milen/employeeEmpRefCON.js
+   :scripts: AV/Development/Milen/employeeEmpRefCON.js
    :output: show
 
 Going back to simple things like ``int`` and ``float`` variables that

@@ -46,9 +46,8 @@ Assigning a pointee to a reference
 
 .. inlineav:: employeePtr2CON ss
    :links: AV/Pointers/employeePtr2CON.css
-   :scripts: AV/Milen/employeePtr2CON.js
+   :scripts: AV/Development/Milen/employeePtr2CON.js
    :output: show
-
 
 Dereference the reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -76,7 +76,7 @@ their own.
 .. inlineav:: shallowdeepExampleCON ss
    :long_name: Shallow Deep Copy Slideshow
    :links: AV/Pointers/shallowdeepExampleCON.css
-   :scripts: AV/Milen/shallowdeepExampleCON.js
+   :scripts: AV/Development/Milen/shallowdeepExampleCON.js
    :output: show
 
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
@@ -149,8 +149,8 @@ value.
 .. _numptrxxxFig:
 
 .. inlineav:: empPtrxxxCON ss
-   :links: AV/Milen/empPtrxxxCON.css
-   :scripts: AV/Milen/empPtrxxxCON.js
+   :links: AV/Development/Milen/empPtrxxxCON.css
+   :scripts: AV/Development/Milen/empPtrxxxCON.js
    :output: show
 
 Bad references are common.
@@ -212,7 +212,7 @@ drawing of how memory would react if this code were executed.
 
 .. inlineav:: badPointerPowCON ss
    :links: AV/Pointers/badPointerPowCON.css
-   :scripts: AV/Milen/badPointerPowCON.js
+   :scripts: AV/Development/Milen/badPointerPowCON.js
    :output: show
 
 Why Are Bad Reference Bugs So Common?
