@@ -127,7 +127,7 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 # -- General configuration -----------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-#needs_sphinx = '1.0'
+# needs_sphinx = '2.4'
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
@@ -218,11 +218,16 @@ pygments_style = 'borland' #'sphinx'
 # -- Options for HTML Slide output ---------------------------------------------------
 sys.path.append('%(theme_dir)s')
 slide_theme_path = ['%(theme_dir)s']
-# slide_theme = 'slidess' # BAD, old default theme
-# slide_theme = 'haiku' # BAD, old theme
-# slide_theme = 'single-level' # good, basic theme
-# slide_theme = 'slides2' # good, animated theme
-slide_theme = 'slides' # good, default theme
+
+# Themes that are defined by hieroglyph; using them breaks some custom ODSA content
+# slide_theme = 'single-level' # basic theme
+# slide_theme = 'slides' # default theme
+# slide_theme = 'slides2' # animated theme 
+
+# Custom themes, made for ODSA content:
+slide_theme = 'slidess' # working, default theme for all slides
+# The 'haiku' theme is not for slides
+
 #slide_theme_options = {'custom_css':'custom.css'}
 
 slide_link_html_to_slides = not on_slides

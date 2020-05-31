@@ -12,7 +12,7 @@
 #
 #
 
-__author__ = 'breakid, efouh'
+__author__ = 'breakid, efouh, sublime09'
 
 from docutils import nodes
 from docutils.nodes import General, Element, caption, Text, figure
@@ -99,10 +99,14 @@ def doctree_read(app, doctree):
 
 def setup(app):
   app.connect('doctree-read', doctree_read)
-  app.add_node(av_dgm,html=(visit_av_dgm_html, depart_av_dgm_html))
-  app.add_node(av_anchor,html=(visit_av_anchor_html, depart_av_anchor_html))
-  app.add_node(av_ss,html=(visit_av_ss_html, depart_av_ss_html))
-  app.add_node(av_ff,html=(visit_av_ff_html, depart_av_ff_html))
+  app.add_node(av_dgm,html=(visit_av_dgm_html, depart_av_dgm_html), 
+      slides=(visit_av_dgm_html, depart_av_dgm_html))
+  app.add_node(av_anchor,html=(visit_av_anchor_html, depart_av_anchor_html), 
+      slides=(visit_av_anchor_html, depart_av_anchor_html))
+  app.add_node(av_ss,html=(visit_av_ss_html, depart_av_ss_html), 
+      slides=(visit_av_ss_html, depart_av_ss_html))
+  app.add_node(av_ff,html=(visit_av_ff_html, depart_av_ff_html), 
+      slides=(visit_av_ff_html, depart_av_ff_html))
 
   app.add_directive('inlineav',inlineav)
 
