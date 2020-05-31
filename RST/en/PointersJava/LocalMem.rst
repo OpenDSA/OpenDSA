@@ -93,7 +93,7 @@ Here is a more detailed version of the rules of local storage:
 
 #. Finally, when the function finishes and exits, its locals are
    deallocated.
-   This should make sense to you.
+   Does this make sense?
    Suppose the locals were somehow to continue to exist |---| how
    could the code even refer to them?
    The names like ``num`` and ``result`` only make sense within
