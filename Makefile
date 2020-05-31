@@ -320,6 +320,9 @@ Blockchain: min
 
 Peixuan: min
 	python $(CONFIG_SCRIPT) config/Peixuan.json --no-lms
+	
+Zinan: min
+	python $(CONFIG_SCRIPT) config/Zinan.json --no-lms
 
 nomin:
 	@cp lib/JSAV.js lib/JSAV-min.js
