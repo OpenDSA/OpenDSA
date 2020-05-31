@@ -58,7 +58,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 3
-  av.umsg("Local variable <tt>i</tt>> is added to the locals after its declaration.");
+  av.umsg("Local variable <tt>i</tt> is added to the locals after its declaration.");
   pseudo.setCurrentLine(4);
   rectY.hide();
   var rectY2 = av.g.rect(xPositionBigRectangles,
@@ -74,7 +74,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 5
-  av.umsg("Once the program returns from <tt>Bar</tt>, we reach the end of the <<tt>for</tt> loop. Since the lifetime of <tt>i</tt> is finished, <tt>i</tt> is removed from locals");
+  av.umsg("Once the program returns from <tt>Bar</tt>, we reach the end of the <tt>for</tt> loop. Since the lifetime of <tt>i</tt> is finished, <tt>i</tt> is removed from locals");
   pseudo.setCurrentLine(6);
   rectY2.hide();
   rectY.show();
@@ -83,9 +83,15 @@ $(document).ready(function() {
   rectM.hide();  
   av.step();
 
+  // Slide 5
+  av.umsg("scores now are incremented outside of the loop.");
+  pseudo.setCurrentLine(7);
+  label1.text("1.0F");
+  av.step();
+
   // Slide 6
   av.umsg("The locals for <tt>Foo</tt> are deallocated when the <tt>Foo</tt> exits");
-  pseudo.setCurrentLine(7);
+  pseudo.setCurrentLine(8);
   rectY.hide();
   rectP.hide();
   rectQ.hide();
