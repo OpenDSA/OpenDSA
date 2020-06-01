@@ -66,7 +66,7 @@
                 "question": "Let $P = \\{x|x\\ is\\ a\\ positive\\ integer\\}$. Which of the following is a subset of $P$?",
                 "answer": [
                     "$\\{1, 2, 3\\}$",
-                    "$\\{x|x\\ is\\ an\\ even\\ number\\}$",
+                    "$\\{x|x\\ is\\ a\\ positive\\ even\\ number\\}$",
                     "$\\{x|x\\ is\\ a\\ prime\\ number\\}$"
                 ],
                 "choices": [

@@ -1,0 +1,13 @@
+{
+  "translations": {
+    "en": {
+      "q3": {
+        "type": "select",
+        "description": "So why yet another representation? A good answer is that the other two representations are deficient (in different ways) that the regular expression overcomes.",
+        "question":"What do we mean by the other two?",
+        "answer": ["NFA", "DFA"],
+        "choices": ["NFA", "DFA", "English Description"]
+      }
+    }
+  }
+}

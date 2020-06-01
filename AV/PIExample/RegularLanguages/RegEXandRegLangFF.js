@@ -116,6 +116,6 @@ $(document).ready(function() {
   fa.css({outline: "1px black solid", border: "10px transparent solid;"});
   av.label("NFA that accepts $r$", {left: leftMargin + 40, top: 200});
   //frame 23
-  av.umsg("Completed part 1.")
+  av.umsg("Completed part 1. Now we have an NFA model that accepts a regular expression $r$.")
   av.recorded();
   });
