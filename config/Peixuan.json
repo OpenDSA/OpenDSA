@@ -64,6 +64,18 @@
   "chapters": {
     "Turing Machines Exercise Test": {
       "Peixuan/TuringExTest": {}
+    },
+	"Question adding test": {
+      "Peixuan/QuestionAddingTest": {}
+    },
+    "Question adding for Minimization": {
+      "Peixuan/QuestionAddingMinimization": {}
+    },
+	"Question adding for Minimization2": {
+      "Peixuan/QuestionAddingMinimization2": {}
+    },
+	"Question adding for Regular Grammar": {
+      "Peixuan/RegGrammarWithQuestions": {}
     }
   }
 }

@@ -428,6 +428,15 @@ mjx-container:focus {
     cursor: pointer;
 }
 
+.helpPage {
+    width: 500px;
+    padding: 20px;
+}
+
+.helpPage > ol {
+    list-style-type: circle;
+}
+
 @keyframes flashingBg {
     0% {
         background: #f9f98433;

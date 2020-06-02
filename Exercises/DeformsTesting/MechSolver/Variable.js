@@ -236,7 +236,7 @@ class Variable{
                     if (this.globalPointerReference.currentClickedObject == null)
                     {
                         var element = JSAV.utils.dialog(
-                            "<ul><li>multiply by -1</li><li>add new to association</li><li>clear</li></ul>",
+                            "<ul><li>multiply by -1</li><li>add new to association</li><li>Rename association</li><li>clear</li></ul>",
                             {width: 120}
                         );
                         element[0].style.top = e.pageY+5+"px"; element[0].style.left = e.pageX+10+"px";
@@ -308,6 +308,33 @@ class Variable{
                             }
                         );
                         element[0].childNodes[0].childNodes[2].addEventListener(
+                            "click", e2=> {
+                                e2.stopPropagation();
+                                console.log("started renaming variable association");
+                                element.close();
+
+                                var inputPromptHTML = 
+                                '<h4>Enter a variable name here.</h4>'+
+                                '<input type="text" id="varname" name="varname" size="8" />'+
+                                '<h4>Enter a subscript here.</h4>'+
+                                '<input type="text" id="subscriptname" name="subscriptname" size="8" />'+
+                                '<input type="button" id="submit" value="Set association name"/>';
+                                var inputBox = JSAV.utils.dialog(inputPromptHTML, {width: 150});
+                                Window.box = inputBox;
+                                inputBox[0].querySelector("#submit").addEventListener("click", 
+                                    e=> { 
+                                        e.stopPropagation();
+                                        this.value.setAssocVarDisplay(
+                                            Window.box[0].querySelector("#varname").value,
+                                            Window.box[0].querySelector("#subscriptname").value
+                                        );
+                                        Window.box.close();
+                                        delete Window.box;
+                                    } 
+                                );
+                            }
+                        );
+                        element[0].childNodes[0].childNodes[3].addEventListener(
                             "click", e2=> {
                                 e2.stopPropagation();
                                 this.value.removeAssociation(this);

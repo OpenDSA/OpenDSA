@@ -14,7 +14,7 @@
   "code": {
     "java": [{
       "url": "../../../SourceCode/Java/Pointers/shallowCopyExample.java",
-      "lineNumbers": false,
+      "lineNumbers": true,
       "startAfter": "/* *** ODSATag: shallow *** */",
       "endBefore": "/* *** ODSAendTag: shallow *** */",
       "tags": {

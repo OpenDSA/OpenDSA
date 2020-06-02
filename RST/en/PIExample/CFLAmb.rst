@@ -11,7 +11,7 @@
 
 Context-Free Grammars and Language
 ================================
-Context-Free Languages Ambiguity
+Context-Free Languages 
 -------------------------------
 .. inlineav:: Ambiguity ff
    :links: AV/PIExample/CFL/Ambiguity.css

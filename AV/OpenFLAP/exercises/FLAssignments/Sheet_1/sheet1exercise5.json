@@ -1,6 +1,6 @@
 [
     {
-        "expression": "$\\Sigma = \\{a, b\\}, \\quad L = \\{b, ab, bab\\}$",
+        "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{b, ab, bab\\}",
         "description": "",
         "type": "expression",
         "testCases": [
@@ -18,6 +18,9 @@
             },
             {
                 "bb": false
+            },
+            {
+                "": false
             }
         ],
         "graph": {

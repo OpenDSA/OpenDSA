@@ -128,13 +128,15 @@
       "CS5040slides/TTTree": {},
       "CS5040slides/BTree": {}
     },
+    "Week 11.2": {
+      "CS5040slides/Mid2": {},
+      "CS5040slides/SkipList": {}
+    }
     "Week 13": {
-      "CS5040slides/Union-Find": {}
-    },
-    "Week 14": {
       "CS5040slides/Graphs": {}
     },
-    "Week 15": {
+    "Week 14": {
+      "CS5040slides/Union-Find": {},
       "CS5040slides/General": {}
     }
   }

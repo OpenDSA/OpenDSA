@@ -1,0 +1,63 @@
+{
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "multiple",
+        "description":"<br>Unfortunately, the Halting Problem, as this is called, cannot be solved. There will never be a computer program that can positively determine, for an arbitrary program <i>P</i>, if P will halt for all input. Nor will there even be a computer program that can positively determine if arbitrary program <i>P</i> will halt for a specified input <i>I</i>. ",
+        "question":"Computer can determine, for an arbitrary program P, if P will halt for a specified input I",
+        "answer": "False",
+        "choices": ["True", "False"]
+      },
+      "q2": {
+        "type": "multiple",
+        "description":"Personally, I have faith that someday some smart person will completely analyze the Collatz function, proving once and for all that the code fragment halts for all values of <i>n</i>. Doing so may well give us techniques that advance our ability to do algorithm analysis in general.<br><br> Unfortunately, proofs from <i>computability</i> —— the branch of computer science that studies what is impossible to do with a computer; compel us to believe that there will always be another bit of program code that we cannot analyze. This comes as a result of the fact that the Halting Problem is unsolvable.",
+        "question":"Collatz function is unsolvable because there will always be another bit of program code that we cannot analyze",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q3": {
+        "type": "multiple",
+        "description":"Personally, I have faith that someday some smart person will completely analyze the Collatz function, proving once and for all that the code fragment halts for all values of <i>n</i>. Doing so may well give us techniques that advance our ability to do algorithm analysis in general.<br><br> Unfortunately, proofs from <i>computability</i> —— the branch of computer science that studies what is impossible to do with a computer; compel us to believe that there will always be another bit of program code that we cannot analyze. This comes as a result of the fact that the Halting Problem is unsolvable.",
+        "question":"Halting problem is unsolvable",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q4": {
+        "type": "multiple",
+        "description":"A set is said to be <i>countable</i> (or <i>countably</i> infinite if it is a set with an infinite number of members) if every member of the set can be uniquely assigned to a positive integer. A set is said to be <i>uncountable</i> (or <i>uncountably infinite<i>) if it is not possible to assign every member of the set to its own positive integer.",
+        "question":"A set is said to be countable if every member of the set can be uniquely assigned to a positive integer.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+
+      "q5": {
+        "type": "multiple",
+        "description":"A set is said to be <i>countable</i> (or <i>countably</i> infinite if it is a set with an infinite number of members) if every member of the set can be uniquely assigned to a positive integer. A set is said to be <i>uncountable</i> (or <i>uncountably infinite<i>) if it is not possible to assign every member of the set to its own positive integer.",
+        "question":"A set is said to be uncountable if it is not possible to assign every member of the set to its own positive integer.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q6": {
+        "type": "multiple",
+        "description":"<br>By this process, any string of finite length is assigned to some bin. So any program, which is merely a string of finite length, is assigned to some bin. <br><br>Because all programs are assigned to some bin, the set of all programs is countable. Naturally most of the strings in the bins are not legal programs, but this is irrelevant. All that matters is that the strings that do, correspond to programs are also in the bins.",
+        "question":"Are the number of programs countable or uncountable if it is viewed as a string of characters?",
+        "answer": "countable",
+        "choices": ["countable", "uncountable"]
+      },
+
+      "q7": {
+        "type": "multiple",
+        "description":"Can we assign every function to a bin? The answer is no, because there is always a way to create a new function that is not in any of the bins. Suppose that somebody presents a way of assigning functions to bins that they claim includes all of the functions. We can build a new function that has not been assigned to any bin, as the next page shown.",
+        "question":"The number of integer function is uncountable because there is always a way to create a new function that is not in any of the bins.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      }
+
+    }
+  }
+}
+

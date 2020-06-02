@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure>
+  <type>fa</type>
+  <automaton>
+    <state id="0" name="q0">
+      <x>84.203125</x>
+      <y>88.203125</y>
+      <initial/>
+    </state>
+    <state id="1" name="q1">
+      <x>225.203125</x>
+      <y>89.203125</y>
+      <final/>
+    </state>
+    <transition>
+      <from>0</from>
+      <to>1</to>
+      <read>a</read>
+    </transition>
+    <transition>
+      <from>1</from>
+      <to>0</to>
+      <read>a</read>
+    </transition>
+    <transition>
+      <from>1</from>
+      <to>1</to>
+      <read>b</read>
+    </transition>
+  </automaton>
+</structure>

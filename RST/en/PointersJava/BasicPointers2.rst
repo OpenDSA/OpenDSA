@@ -39,10 +39,10 @@ What does it mean to copy?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An important use of sharing is to enable communication between two
-functions.
-One function passes a reference to the object of interest to another
-function.
-Both functions can access the object of interest, but the object of
+methods.
+One method passes a reference to the object of interest to another
+method.
+Both methods can access the object of interest, but the object of
 interest itself is not copied.
 This communication is called :term:`shallow copy` since, instead of
 making and sending a (large) copy of the object of interest, a (small)
@@ -52,16 +52,16 @@ so that they know not to change or delete it accidentally,
 since it is shared.
 The alternative |---| where a complete copy is made and sent |---| is
 known as a :term:`deep copy`.
-Deep copies are simpler in a way, since each function can change their
+Deep copies are simpler in a way, since each method can change their
 copy without interfering with the other copy.
 But deep copies run slower because of all the copying.
-And if the second function was **meant** to modify the copy for every
+And if the second method was **meant** to modify the copy for every
 user of the object, then deep copy won't let this happen.
-The drawing below shows shallow and deep copying between two functions,
+The drawing below shows shallow and deep copying between two methods,
 ``A()`` and ``B()``.
 In the shallow case, the smiley face is shared by passing a reference
 between the two.
-In the deep case, the smiley face is copied, and each function gets
+In the deep case, the smiley face is copied, and each method gets
 their own.
 
 .. _shallowdeepFig:
@@ -76,7 +76,7 @@ their own.
 .. inlineav:: shallowdeepExampleCON ss
    :long_name: Shallow Deep Copy Slideshow
    :links: AV/Pointers/shallowdeepExampleCON.css
-   :scripts: AV/Pointers/shallowdeepExampleCON.js
+   :scripts: AV/Development/Milen/shallowdeepExampleCON.js
    :output: show
 
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
@@ -114,7 +114,7 @@ then in most languages we do **not** simply compare the two reference
 variables for equality.
 Instead, we need to do a "deep comparison" where we are looking at the
 characters in the strings themselves.
-Most languages have functions to do this for you.
+Most languages have methods to do this for you.
 In Java, we can see if two strings are the same with the ``.equals()``
 method of the ``String`` class, like this::
 
@@ -148,10 +148,10 @@ value.
 
 .. _numptrxxxFig:
 
-.. inlineav:: empPtrxxxCON dgm
-   :links: AV/Pointers/empPtrxxxCON.css
-   :scripts: AV/Pointers/empPtrxxxCON.js
-   :align: center
+.. inlineav:: empPtrxxxCON ss
+   :links: AV/Development/Milen/empPtrxxxCON.css
+   :scripts: AV/Development/Milen/empPtrxxxCON.js
+   :output: show
 
 Bad references are common.
 In fact,  **every reference starts out with a bad value**.
@@ -210,10 +210,10 @@ drawing of how memory would react if this code were executed.
 .. codeinclude:: Pointers/badPointers
    :tag: badPointers
 
-.. inlineav:: badPointerPowCON dgm
+.. inlineav:: badPointerPowCON ss
    :links: AV/Pointers/badPointerPowCON.css
-   :scripts: AV/Pointers/badPointerPowCON.js
-   :align: center
+   :scripts: AV/Development/Milen/badPointerPowCON.js
+   :output: show
 
 Why Are Bad Reference Bugs So Common?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

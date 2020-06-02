@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda, Mostafa Mohammed, and Sushma Mandava
+   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda, Mostafa Mohammed, and Sushma Mandava and Milen John
    :requires: Pointer intro
    :satisfies: Pointer Syntax
    :topic: Pointers
@@ -46,9 +46,8 @@ Assigning a pointee to a reference
 
 .. inlineav:: employeePtr2CON ss
    :links: AV/Pointers/employeePtr2CON.css
-   :scripts: AV/Pointers/employeePtr2CON.js
+   :scripts: AV/Development/Milen/employeePtr2CON.js
    :output: show
-
 
 Dereference the reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~

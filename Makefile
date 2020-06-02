@@ -126,8 +126,8 @@ cschandr: min
 Raghu: min
 	python $(CONFIG_SCRIPT) config/Raghu.json --no-lms
 
-Weihao: min
-	python $(CONFIG_SCRIPT) config/Weihao.json --no-lms
+WeihaoVisFormalLang: min
+	python $(CONFIG_SCRIPT) config/WeihaoVisFormalLang.json --no-lms
 
 SimpleDemo: min
 	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
@@ -168,11 +168,17 @@ FormalLang: min
 VisFormalLang: min
 	python $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
 
+FormalLangSummer1: min
+	python $(CONFIG_SCRIPT) config/FormalLangSummer1.json --no-lms
+
 FL2019: min
 	python $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
 
 PIExample: min
 	python $(CONFIG_SCRIPT) config/PIExample.json --no-lms
+
+PIFormalLang: min
+	python $(CONFIG_SCRIPT) config/PIFormalLang.json --no-lms
 
 DeformsTesting: min
 	python $(CONFIG_SCRIPT) config/DeformsTesting.json --no-lms
@@ -314,6 +320,9 @@ Blockchain: min
 
 Peixuan: min
 	python $(CONFIG_SCRIPT) config/Peixuan.json --no-lms
+	
+Zinan: min
+	python $(CONFIG_SCRIPT) config/Zinan.json --no-lms
 
 nomin:
 	@cp lib/JSAV.js lib/JSAV-min.js

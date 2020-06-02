@@ -26,6 +26,15 @@
                 "aaaaaaa": false
             },
             {
+                "abbcabb": false
+            },
+            {
+                "bbaacaabb": false
+            },
+            {
+                "ababacababa": true
+            },
+            {
                 "bbbbbb": false
             }
         ],

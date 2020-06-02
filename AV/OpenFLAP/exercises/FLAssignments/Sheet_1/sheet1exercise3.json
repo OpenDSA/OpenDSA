@@ -11,6 +11,15 @@
                 "bbab": true
             },
             {
+                "a": true
+            },
+            {
+                "bab": true
+            },
+            {
+                "baba": false
+            },
+            {
                 "babb": true
             },
             {
@@ -20,7 +29,13 @@
                 "aaabbb": true
             },
             {
+                "baabaaba": true
+            },
+            {
                 "aabbbaab": false
+            },
+            {
+                "aaaaaaaaab": true
             },
             {
                 "aaaaaaaaabbbb": false

@@ -124,8 +124,9 @@ class Workspace
         document.getElementById(this.name+"addeq").addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation addition here.
-            this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
-            this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
+            console.log(this.globalEquationBank.currentSelectedEquationObject.eqobject);
+            // this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
+            // this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
             this.addNewEquation();
         });
 
@@ -248,13 +249,15 @@ class Workspace
     {
         // equationListEntity is of type equation (which we will define later) and not 
         // necessarily everything in equation.js
-        var equationListEntity = this.globalEquationBank.currentSelectedEquationObject.eqobject;
+        var equationListEntity = Window.eqbank.currentSelectedEquationObject.eqobject;
         var lastHashMapID = 0;
         if(equationListEntity.name in this.equationHashMap)
             lastHashMapID = (list => list[list.length-1])
             (this.equationHashMap[equationListEntity.name]).counter+1;
-        else
+        else {
             lastHashMapID = 1;
+            Window.eqbank.addToFavourites(Window.eqbank.currentSelectedEquationObject.eqobject);
+        }
 
         // Creating the new active equation object, that handles the display
         var newActiveEquation = new ActiveEquation(
@@ -266,6 +269,10 @@ class Workspace
             this.globalSectionObj,
             this.globalPointerReference
         )
+        // If the equation already exists or was brought in once, preemptively
+        // add a subscript to this equation.
+        // This can be made more complex to update the subscripts for all of them
+        if(lastHashMapID > 1) newActiveEquation.setSubscript(null, String(lastHashMapID), newActiveEquation);
         
         // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
@@ -275,6 +282,8 @@ class Workspace
         this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation;
         //        |_>  To be elaborated for additional operations.
         
+        // TODO: This needs to be included into deletion of equations, where this also gets updated
+        // To possibly reset the counter to 0 if required.
         if(equationListEntity.name in this.equationHashMap)
         {
             this.equationHashMap[equationListEntity.name]
@@ -409,39 +418,50 @@ class Workspace
         var equationSet = []; // which stores the solvable representations in all cases.
         var equationObjectSet = [];
         var variableSet = {};
-        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
-        {
-            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
-            if(currentEqn.selected == true)
+        try {
+            for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
             {
-                equationObjectSet.push(currentEqn);
-                var solvableRepr = currentEqn.createSolvableRepresentation();
-                console.log(solvableRepr);
-                // Add the equation representations
-                for(var x=0; x<solvableRepr["equations"].length; x++)
-                    equationSet.push(solvableRepr["equations"][x]);
-                // Find out the unknown varDisplay-varName mapping pairs
-                for(var vname in solvableRepr["unknowns"])  // vname is the internal symbol
+                var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+                if(currentEqn.selected == true)
                 {
-                    var unitDesc = currentEqn.getUnitOfVariable(vname);
-                    // Find the unit of the variable from its corresponding equation
-                    // variableSet[vname] = {
-                    //     "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
-                    //     "unit": null,
-                    //     "domain": null,
-                    //     "unitDisp": null,
-                    // };
-                    if(vname in variableSet) continue;
-                    variableSet[vname] = {
-                        "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
-                        "unit": unitDesc[1],
-                        "domain": unitDesc[2][0],
-                        "unitDisp": unitDesc[2][1],
-                    };
-                    if(unitDesc.length == 4)
-                        variableSet[vname]["correction"] = unitDesc[3]; // multiply the result with this to correct.
+                    equationObjectSet.push(currentEqn);
+                    var solvableRepr = currentEqn.createSolvableRepresentation();
+                    console.log(solvableRepr);
+                    // Add the equation representations
+                    for(var x=0; x<solvableRepr["equations"].length; x++)
+                        equationSet.push(solvableRepr["equations"][x]);
+                    // Find out the unknown varDisplay-varName mapping pairs
+                    for(var vname in solvableRepr["unknowns"])  // vname is the internal symbol
+                    {
+                        var unitDesc = currentEqn.getUnitOfVariable(vname);
+                        // Find the unit of the variable from its corresponding equation
+                        // variableSet[vname] = {
+                        //     "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
+                        //     "unit": null,
+                        //     "domain": null,
+                        //     "unitDisp": null,
+                        // };
+                        if(vname in variableSet) continue;
+                        variableSet[vname] = {
+                            "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
+                            "unit": unitDesc[1],
+                            "domain": unitDesc[2][0],
+                            "unitDisp": unitDesc[2][1],
+                        };
+                        if(unitDesc.length == 4)
+                            variableSet[vname]["correction"] = unitDesc[3]; // multiply the result with this to correct.
+                    }
                 }
             }
+        }
+        catch (exception) {
+            JSAV.utils.dialog(
+                `<h4>Error</h4>
+                There was likely a problem with the units of the values. Perhaps an unrecognized
+                unit was used, or the unit of a quantity could not be discerned. Please review your work and
+                try again.`, 
+            {width: 200, closeText: "OK"});
+            return;
         }
         // console.log(variableSet);
         // console.log(equationSet);
@@ -449,26 +469,39 @@ class Workspace
         // Computing solutions
         var soln = {};
         var listOfSolutions = null;
-        if(equationObjectSet.length > 1)
-        {
-            listOfSolutions = nerdamer.solveEquations(equationSet);
-            //DEBUG: Primary checking for solutions in terms of knowns;
-            // Maybe useful for unit inference in system setting.
-            // listOfSolutions only provides the numbers; someway to 
-            // find the variables? Unknowns in terms of knowns? Ans: Nope, not useful
-            console.log(equationSet);
+        try {
+            if(equationObjectSet.length > 1)
+            {
+                listOfSolutions = nerdamer.solveEquations(equationSet);
+                //DEBUG: Primary checking for solutions in terms of knowns;
+                // Maybe useful for unit inference in system setting.
+                // listOfSolutions only provides the numbers; someway to 
+                // find the variables? Unknowns in terms of knowns? Ans: Nope, not useful
+                console.log(equationSet);
+            }
+            else
+            {
+                // Confirmed there is only one unknown in the system.
+                listOfSolutions = equationObjectSet[0].solve(); 
+                console.log(listOfSolutions);
+                console.log(variableSet);
+                // Yeah turns out the combined logic does not work for single solvers; gives erroneous results.
+                // var unitDesc = equationObjectSet[0].getUnitOfVariable();
+                // variableSet[unitDesc[0]]["unit"] = unitDesc[1];
+                // variableSet[unitDesc[0]]["domain"] = unitDesc[2][0];
+                // variableSet[unitDesc[0]]["unitDisp"] = unitDesc[2][1];
+            }
         }
-        else
-        {
-            // Confirmed there is only one unknown in the system.
-            listOfSolutions = equationObjectSet[0].solve(); 
-            console.log(listOfSolutions);
-            console.log(variableSet);
-            // Yeah turns out the combined logic does not work for single solvers; gives erroneous results.
-            // var unitDesc = equationObjectSet[0].getUnitOfVariable();
-            // variableSet[unitDesc[0]]["unit"] = unitDesc[1];
-            // variableSet[unitDesc[0]]["domain"] = unitDesc[2][0];
-            // variableSet[unitDesc[0]]["unitDisp"] = unitDesc[2][1];
+        catch (exception) {
+            JSAV.utils.dialog(
+                `<h4>Error: Inconsistent system</h4>
+                There was an error in defining the system of equations. Namely, #unknowns =/= #equations.<br>
+                Please review the unknowns (associated variables) in the equations, as well as grayed out boxes
+                which by default are treated as unknowns.<br>Please also check that the remaining equation boxes are filled
+                with values.<br>Finally, please make sure to check all the boxes for the equations that are to be
+                included in the system to be solved.<br>`, 
+            {width: 200, closeText: "OK"});
+            return;
         }
         for(var i=0; i<listOfSolutions.length; i++)
             soln[listOfSolutions[i][0]] = listOfSolutions[i][1];
@@ -491,7 +524,7 @@ class Workspace
                         "unit": variableSet[unknownName]["unit"],
                         "variable": unknownName,    // The internal variable name eg: x_y
                         // "valueDisplay": String(Number(Math.round(+'e3')+'e-3')),
-                        "valueDisplay": Window.valueStringRepr(soln[unknownName]),
+                        "valueDisplay": Window.valueStringRepr(value),
                         "unitDisplay": variableSet[unknownName]["unitDisp"],
                         "variableDisplay": variableSet[unknownName]["name"], // The greek/external symbol
                         "domain": variableSet[unknownName]["domain"]

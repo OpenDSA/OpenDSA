@@ -181,13 +181,13 @@ var mat2data;
 x = 0; y = 0;
 mat1data=[[2,3],[6,7],[4,9]];
 mat2data=[[1,10,5],[12,8,11]];
-mat1 = av.ds.matrix(mat1data,{style:"matrix",left:x+30,top:y+0});
+mat1 = av.ds.matrix(mat1data,{style:"matrix",left:x+80,top:y+0});
 for(var i=0;i<3;i++)
     for(var j=0;j<2;j++)
         mat1.css(i,j,{"background-color":"Wheat"});
 mat1.show();
-var a11= av.label("X",{left:x+190,top:y+10});
-mat2 = av.ds.matrix(mat2data,{style:"matrix",left:x+280,top:y+0});
+var a11= av.label("X",{left:x+240,top:y+10});
+mat2 = av.ds.matrix(mat2data,{style:"matrix",left:x+330,top:y+0});
 for(var i=0;i<2;i++)
     for(var j=0;j<3;j++)
       mat2.css(i,j,{"background-color":"PowderBlue"});
@@ -198,24 +198,24 @@ av.step();
 
 //frame 21
 av.umsg ("Each of the two matrices are transformed into corresponding symmeric matrices by using its transpose as shown.");
-var r21 = av.g.rect(0,200,435,200);
+var r21 = av.g.rect(50,200,435,200);
 r21.show();
-var l11 = av.g.line(70,130,70,150, {"stroke-width": 3});
+var l11 = av.g.line(70+50,130,70+50,150, {"stroke-width": 3});
 l11.show();
-var l12 = av.g.line(70,170,70,200, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
+var l12 = av.g.line(70+50,170,70+50,200, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
 l12.show();
-var l21 = av.g.line(350,110,350,150, {"stroke-width": 3});
+var l21 = av.g.line(350+50,110,350+50,150, {"stroke-width": 3});
 l21.show();
-var l22 = av.g.line(350,170,350,200, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
+var l22 = av.g.line(350+50,170,350+50,200, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
 l22.show();
-var r2 = av.g.rect(0,150,200,20);
-var a12 = av.label("Transformation (Cost:O(mn))",{left:5,top:135});
+var r2 = av.g.rect(50,150,200,20);
+var a12 = av.label("Transformation (Cost:O(mn))",{left:55,top:135});
 r2.show();
 var r3 = av.g.rect(250,150,200,20);
 var b0 =av.label("Transformation (Cost:O(mn))",{left:255,top:135});
 r3.show();
 var mat1Transformed = transform(mat1data,3,2,0); 
-var mat1TransDisp = av.ds.matrix(mat1Transformed,{style:"matrix",left:x+10,top:y+200});
+var mat1TransDisp = av.ds.matrix(mat1Transformed,{style:"matrix",left:x+60,top:y+200});
 for(var i=0;i<3;i++)
     for(var j=3;j<5;j++)
       mat1TransDisp.css(i,j,{"background-color":"Wheat"});
@@ -223,9 +223,9 @@ for(var i=3;i<5;i++)
     for(var j=0;j<3;j++)
       mat1TransDisp.css(i,j,{"background-color":"Khaki"});
 mat1TransDisp.show();
-var a13 =av.label("X",{left:x+210,top:y+270});
+var a13 =av.label("X",{left:x+260,top:y+270});
 var mat2Transformed = transform(mat2data,2,3,1); 
-var mat2TransDisp = av.ds.matrix(mat2Transformed,{style:"matrix",left:x+250,top:y+200});
+var mat2TransDisp = av.ds.matrix(mat2Transformed,{style:"matrix",left:x+300,top:y+200});
 for(var i=0;i<3;i++)
     for(var j=3;j<5;j++)
       mat2TransDisp.css(i,j,{"background-color":"LightSteelBlue"});
@@ -241,12 +241,12 @@ av.step();
 
 //frame 23
 av.umsg("Then the two symmetric matrices are multiplied.");
-var r31 = av.g.rect(535,200,200,220);
+var r31 = av.g.rect(535+50,200,200,220);
 r31.show();
-var b2 = av.g.line(450,300,520,300, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
-var b1 =av.label("Multiply",{left:450,top:300}); 
+var b2 = av.g.line(500,300,520+50,300, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
+var b1 =av.label("Multiply",{left:500,top:300}); 
 var product = multiply(mat1Transformed,mat2Transformed,5,5,5); 
-var productDisp = av.ds.matrix(product,{style:"matrix",left:x+550,top:y+200});
+var productDisp = av.ds.matrix(product,{style:"matrix",left:x+600,top:y+200});
 productDisp.show();
 av.step();
 
@@ -255,26 +255,26 @@ av.umsg("The 3*3 matrix in the upper left corner gives the output array.");
 for(var i=0;i<3;i++)
     for(var j=0;j<3;j++)
       productDisp.css(i,j,{"background-color":"#CCFF99"});
-var r32 = av.g.rect(560,220,95,100);
+var r32 = av.g.rect(560+50,220,95,100);
 r31.show();
-var r4 = av.g.rect(550,150,200,20);
-var a14= av.label("Reverse Transform (O(mn))",{left:555,top:135});
+var r4 = av.g.rect(600,150,200,20);
+var a14= av.label("Reverse Transform (O(mn))",{left:555+50,top:135});
 r4.show();
-var b3 = av.g.line(640,150,640,120, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
+var b3 = av.g.line(640+50,150,640+50,120, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
 b3.show();
-var l32 = av.g.line(640,170,640,200, {"stroke-width": 3});
+var l32 = av.g.line(640+50,170,640+50,200, {"stroke-width": 3});
 l32.show();
 av.step();
 
 //frame 25
 av.umsg("Total cost = O(mn) + cost of symmetric multiply.");
 var verifyprod = multiply(mat1data,mat2data,3,3,2); 
-var verifyprodDisp = av.ds.matrix(verifyprod,{style:"matrix",left:x+600,top:y+0});
+var verifyprodDisp = av.ds.matrix(verifyprod,{style:"matrix",left:x+650,top:y+0});
 for(var i=0;i<3;i++)
     for(var j=0;j<3;j++)
       verifyprodDisp.css(i,j,{"background-color":"#CCFF99"});
 verifyprodDisp.show();
-var a15 = av.label("Output Array", {left: 610, top: -15});
+var a15 = av.label("Output Array", {left: 660, top: -15});
 av.step();
 
 //frame 26

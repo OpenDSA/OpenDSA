@@ -1,0 +1,222 @@
+{
+    "title": "Weihao - Formal Languages With Visualizations",
+    "desc": "For testing purposes only",
+    "build_dir": "Books",
+    "code_dir": "SourceCode/",
+    "code_lang": {
+      "Java": {
+        "ext": [
+          "java"
+        ],
+        "label": "Java",
+        "lang": "java"
+      },
+      "Java_Generic": {
+        "ext": [
+          "java"
+        ],
+        "label": "Java (Generic)",
+        "lang": "java"
+      },
+      "C++": {
+        "ext": [
+          "cpp",
+          "h"
+        ],
+        "label": "C++",
+        "lang": "C++"
+      }
+    },
+    "lang": "en",
+    "build_JSAV": false,
+    "suppress_todo": false,
+    "assumes": "recursion",
+    "dispModComp": true,
+    "glob_exer_options": {
+      "JXOP-debug": "true"
+    },
+    "glob_ss_options": {
+      "threshold": 1.0, 
+      "points": 0.0, 
+      "required": false
+    },
+    "glob_ff_options": {
+      "threshold": 1.0, 
+      "points": 0.0, 
+      "required": false
+    },
+    "glob_ka_options": {
+      "threshold": 5, 
+      "points": 1.0, 
+      "required": true
+    }, 
+    "glob_extr_options": {
+      "code-workout": {
+        "points": 2.0
+      }, 
+      "points": 1.0
+    }, 
+    "glob_pe_options": {
+      "threshold": 1.0, 
+      "points": 10.0, 
+      "required": true
+    }, 
+    "chapters": {
+      "Preface": {
+        "Intro": {}
+      },
+      "Introduction": {
+        "WeihaoVisFormalLang/FLIntro": {},
+        "WeihaoVisFormalLang/FLOverview": {},
+        "WeihaoVisFormalLang/FLConcepts": {}
+      },
+      "Mathematical Background": {
+        "Background/SetDef": {},
+        "Background/Proofs": {}
+      },
+      "Finite Acceptors": {
+        "WeihaoVisFormalLang/DFA": {},
+        "WeihaoVisFormalLang/NFA": {},
+        "WeihaoVisFormalLang/Minimization": {}
+      },
+      "Regular Languages": {
+        "WeihaoVisFormalLang/RegEx": {},
+        "WeihaoVisFormalLang/RegGrammar": {},
+        "WeihaoVisFormalLang/RegClosure": {}
+      },
+      "Identifying Non-regular Languages": {
+        "WeihaoVisFormalLang/NonRegular": {},
+        "WeihaoVisFormalLang/DFAproperties": {}
+      },
+      "Context-Free Grammars and Languages": {
+        "WeihaoVisFormalLang/CFL": {},
+        "WeihaoVisFormalLang/CFLSimp": {}
+      },
+      "Pushdown Automata": {
+        "WeihaoVisFormalLang/PDA": {},
+        "WeihaoVisFormalLang/PDACFL": {},
+        "WeihaoVisFormalLang/DPDA": {}
+      },
+      "Properties of Context-free Languages": {
+        "WeihaoVisFormalLang/CFLProp": {}
+      },
+      "Models of Computation": {
+        "WeihaoVisFormalLang/TuringIntro": {},
+        "WeihaoVisFormalLang/Turing": {}
+      },
+      "Parsing": {
+        "WeihaoVisFormalLang/ParseIntro": {},
+        "WeihaoVisFormalLang/LLParsing": {},
+        "WeihaoVisFormalLang/LRParsing": {},
+        "WeihaoVisFormalLang/CYKParsing": {},
+        "WeihaoVisFormalLang/Compiler": {}
+      },
+      "Limits to Computing": {
+        "NP/Reduction": {},
+        "WeihaoVisFormalLang/RecEnum": {},
+        "SeniorAlgAnal/Impossible": {}
+      },
+      "Assignments": {
+        "WeihaoVisFormalLang/Sheet1":{
+          "sheet1exercise1":{
+            "points": 5.0
+          },
+          "sheet1exercise2":{
+            "points": 5.0
+          },
+          "sheet1exercise3":{
+            "points": 5.0
+          },
+          "sheet1exercise4":{
+            "points": 5.0
+          },
+          "sheet1exercise5":{
+            "points": 2.0
+          },
+          "sheet1exercise6":{
+            "points": 2.0
+          },
+          "sheet1exercise7":{
+            "points": 2.0
+          }
+  
+        },
+        "WeihaoVisFormalLang/Sheet2":{
+          "NFAtoDFAExerciseEditor":{
+            "points": 10.0
+          },
+          "DFAminimizationExerciseEditor":{
+            "points": 10.0
+          },
+          "sheet2exercise3":{
+            "points": 7.0
+          },
+          "sheet2exercise4":{
+            "points": 10.0
+          }
+        },
+        "WeihaoVisFormalLang/Sheet3":{
+          "sheet3exercise1":{
+            "points": 5.0
+          },
+          "sheet3exercise2":{
+            "points": 5.0
+          },
+          "sheet3exercise3":{
+            "points": 5.0
+          },
+          "sheet3exercise4":{
+            "points": 5.0
+          },
+          "sheet3exercise5":{
+            "points": 5.0
+          },
+          "sheet3exercise6":{
+            "points": 5.0
+          }
+        },
+        "WeihaoVisFormalLang/Sheet5":{
+          "sheet5exercise1":{
+            "points": 5.0
+          },
+          "sheet5exercise2":{
+            "points": 5.0
+          }
+        },
+        "WeihaoVisFormalLang/Sheet6":{
+          "sheet6exercise1":{
+            "points": 10.0
+          },
+          "sheet6exercise2":{
+            "points": 10.0
+          },
+          "sheet6exercise3":{
+            "points": 10.0
+          },
+          "sheet6exercise4":{
+            "points": 10.0,
+            "threshold": 0.9
+          }
+        }, 
+        "WeihaoVisFormalLang/Sheet7":{
+          "sheet7exercise1":{
+            "points": 5.0
+          },
+          "sheet7exercise2":{
+            "points": 5.0
+          },
+          "sheet7exercise3":{
+            "points": 5.0
+          },
+          "sheet7exercise4":{
+            "points": 5.0
+          }
+        }
+      },
+      "Appendix": {
+        "Glossary": {},
+        "Bibliography": {}
+      }
+    }
+  }
+  
