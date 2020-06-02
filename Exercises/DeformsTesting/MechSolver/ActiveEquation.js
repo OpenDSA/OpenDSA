@@ -30,7 +30,7 @@ class ActiveEquation{
                 this.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
                 this.visualComponents["tickmark"].addClass("tickunselected");
                 // this.visualComponents["tickmark"].removeClass("tickselected");
-                ;
+                
                 jsavObject.logEvent({type: "tick unselected", id: this.name});
             }
             else{
@@ -38,7 +38,7 @@ class ActiveEquation{
                 this.visualComponents["tickmark"].element[0].innerHTML = "&#x2611";
                 this.visualComponents["tickmark"].addClass("tickselected");
                 // this.visualComponents["tickmark"].removeClass("tickunselected");
-                ;
+                
                 jsavObject.logEvent({type: "tick selected", id: this.name});
             }
         });
@@ -54,6 +54,7 @@ class ActiveEquation{
             }
         ).addClass("workspaceEquation");
         this.visualComponents["text"].element[0].addEventListener("click", e=> {
+
             Window.parentObject = this;
             this.subscriptizeEquationComponents();
         });
@@ -348,16 +349,23 @@ class ActiveEquation{
             }
         }
         var shiftChain = Window.windowManager.shiftRight();
+        console.log(shiftChain);
         if(shiftChain == "shiftActiveEqDown") {
             // console.log(Window.parentObject);
-            Window.windowManager.shiftActiveEqDown(Window.parentObject.name);
+            var extend = Window.windowManager.shiftActiveEqDown(Window.parentObject.name);
+            if(extend != null) {
+                var split = Window.parentObject.name.split("_");
+                var wkspaceNum = split[0].substring(2, split[0].length);
+                Window.windowManager.shiftDown(extend, wkspaceNum);
+            }
+            
         }
         else if(shiftChain == "shiftActiveEqUp") {
             Window.windowManager.shiftActiveEqUp(Window.parentObject.name);
         }
-        Window.box.close();
-        delete Window.box;
-        delete Window.parentObject;
+        // Window.box.close();
+        // delete Window.box;
+        // delete Window.parentObject;
     }
     OldgetUnitOfVariable(varName)
     {

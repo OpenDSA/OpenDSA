@@ -568,6 +568,9 @@ class WindowManager{
 
     shiftRight() 
     {
+        if(Window.parentObject == null) {
+            return "";
+        }
         var eqWidth = Window.parentObject.visualComponents["text"]["element"][0].offsetWidth;
         var eqLeft = parseInt(Window.parentObject.visualComponents["text"]["element"][0].style.left, 10);
         var activeEqLeft = parseInt(Window.parentObject.jsavequation["element"][0].style.left, 10);
