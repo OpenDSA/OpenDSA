@@ -359,6 +359,15 @@ class Variable{
                         this.globalPointerReference.currentClickedObjectDescription = null;
                     }
                 }
+                var activeEq = Window.windowManager.shiftActiveEqDown(this.id);
+                console.log(id);
+                if(activeEq != null) {
+                    var split = id.split("_");
+        
+                    var wkspaceNum = split[0].substring(2, split[0].length);
+                    Window.windowManager.shiftDown(activeEq, wkspaceNum);
+                }
+
             }
         )
     }
@@ -455,6 +464,9 @@ class Variable{
         this.unitDisplay.removeEventListener("click", this.changeUnits);
         this.valueDisplay.dataset.status = "empty";
         this.grayOut();
+
+        Window.windowManager.shiftActiveEqUp(this.id);
+
     }
     grayOut()
     {

@@ -49,7 +49,7 @@ class ActiveEquation{
             katex.renderToString(this.equationObjectReference["latex"]),
             {
                 left: position_obj["POSITION_X"]+
-                this.visualComponents["tickmark"].element[0].offsetWidth+5,
+                this.visualComponents["tickmark"].element[0].offsetWidth+13,
                 top: position_obj["POSITION_Y"]+3
             }
         ).addClass("workspaceEquation");
@@ -68,8 +68,8 @@ class ActiveEquation{
             katex.renderToString(this.equationObjectReference["latex_boxes"]),
             {
                 left: position_obj["POSITION_X"]+
-                this.visualComponents["tickmark"].element[0].offsetWidth+5+
-                this.visualComponents["text"].element[0].offsetWidth+30,
+                this.visualComponents["tickmark"].element[0].offsetWidth+13+
+                this.visualComponents["text"].element[0].offsetWidth+22,
                 top: position_obj["POSITION_Y"]
             }
         ).addClass("boxedEquation");
@@ -287,6 +287,7 @@ class ActiveEquation{
         inputBox[0].style.top = event.pageY+5+"px";
         inputBox[0].style.left = event.pageX+10+"px";
         Window.box = inputBox;
+        console.log(Window.parentObject);
         inputBox[0].querySelector("#submit").addEventListener("click", Window.parentObject.setSubscript);
     }
     setSubscript(event)
@@ -294,7 +295,7 @@ class ActiveEquation{
         var subscriptText = Window.box[0].querySelector("#subscriptname").value;
         event.stopPropagation();
         if(subscriptText == "") subscriptText = " ";
-        
+
         // Step 1.
         Window.parentObject.visualComponents["text"].text(
             katex.renderToString(
@@ -336,7 +337,14 @@ class ActiveEquation{
                 else Window.parentObject.variables[variable].grayOut();
             }
         }
-
+        var shiftChain = Window.windowManager.shiftRight();
+        if(shiftChain == "shiftActiveEqDown") {
+            // console.log(Window.parentObject);
+            Window.windowManager.shiftActiveEqDown(Window.parentObject.name);
+        }
+        else if(shiftChain == "shiftActiveEqUp") {
+            Window.windowManager.shiftActiveEqUp(Window.parentObject.name);
+        }
         Window.box.close();
         delete Window.box;
         delete Window.parentObject;
