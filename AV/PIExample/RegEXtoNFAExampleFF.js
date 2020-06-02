@@ -8,66 +8,75 @@ $(document).ready(function() {
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter, // get the interpreter
       code = config.code;             // get the code object
-  var FA = new av.ds.FA({width: 700, height: 300,left: 10, top:0});
-  var newFA = new av.ds.FA({width: 900, height: 300,left: 10, top:0});
-  var anotherFA = new av.ds.FA({width: 900, height: 500,left: 10, top:0});
   var fourthFA = new av.ds.FA({width: 900, height: 600,left: 10, top:0});
   var fFA = new av.ds.FA({width: 900, height: 600,left: 10, top:0});
   //var DFA = new av.ds.FA({width: 350, height: 300, left: 10, top:250});
   //var separator =  av.g.path(["M", 350, 0, "v", 500].join(","));
   //separator.show();
   
-  // Slide 1
+  // frame 1
   av.umsg("In this slide, we will convert the NFA that accepts $ab^*\+\c$ to a minimized DFA");
   av.displayInit();
+  // frame 2
   av.umsg("But before we follow the steps of converting the RegEx to a NFA, let us think about drawing the NFA directly.");
   av.step();
+  // frame 3
   av.umsg("A possible NFA for $ab^*\+\c$ will be:")
   var url1 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrC.jff";
   var nfa = new av.ds.FA({left: 0, top: 0, width: 300, url: url1});
   av.step();
+  // frame 4
   av.umsg(Frames.addQuestion("q4"));
   var url2 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrCDFA.jff";
   var dfa = new av.ds.FA({left: 250, top: 0, width: 300, height: 350, url: url2});
   av.step();
-  av.umsg("Finally, the minimized DFA will be");
+  // frame 5
+  av.umsg(Frames.addQuestion("q5"));
+  av.step();
+  // frame 6
+  av.umsg("Correct, the minimized DFA will be");
   var url3 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrCMinDFA.jff";
   var minDfa = new av.ds.FA({left: 0, top: 200, url: url3});
   av.step();
+// frame 7
   av.umsg("Finding the NFA for a RegEx is not trivial especially for complicated RegEXs. That is why we have tools like OpenFLAP that applies RegEx to NFA algorithm to give the NFA / DFA for any RegEx.");
   nfa.hide();
   dfa.hide();
   minDfa.hide();
   av.step();
-  //frame 4
-  av.umsg("You should notice that when OpenFLAP automatically converts the R.E. to a NFA, the resulting NFA does not look like the 'intuitive' version in the diagram above. This is because the automatic process is a little more complicated. To understand how an algorithm can automatically convert an R.E. to a NFA, a lot of the steps are simply building the machine with the transformations in the diagrams shown earlier in this module—such as combining two machines to OR them or to AND them, etc.");
+  //frame 8
+  av.umsg("You should notice that when OpenFLAP automatically converts the R.E. to a NFA, the resulting NFA does not look like the 'intuitive' version in the diagram above. This is because the automatic process is a little more complicated.");
   av.step();
-
-  //frame 5
+  // frame 9
+  av.umsg("To understand how an algorithm can automatically convert an R.E. to a NFA, a lot of the steps are simply building the machine with the transformations in the diagrams shown earlier in this module—such as combining two machines to OR them or to AND them, etc.")
+  av.step();
+  //frame 10
   av.umsg("$\\textbf{Definition}$: A Generalized Transition Graph (GTG) is a transition graph whose edges can be labeled with any regular expression. Thus, it 'generalizes' the standard transition graph.");
   var fourthFA = new av.ds.FA({width: 900, height: 600,left: 10, top:0});
+  var factor = 0.6;
   var q11 = fourthFA.addNode({left: 10, top: 100});
-  var q12 = fourthFA.addNode({left: 310, top: 100});
+  var q12 = fourthFA.addNode({left: 310*factor, top: 100});
   toggleInitial(fourthFA, q11);
   toggleFinal(fourthFA, q12);
   fourthFA.addEdge(q11,q12, {weight: "$ab^* + c$"});
   av.step();
-  //frame 6
+  //frame 11
   av.umsg("We will convert the this GTG to an NFA");
   av.step();
 
-  //frame 7
-  av.umsg("In the beginning, we have the regular expression $ab^* + c$ on a transition between a start state and a final state");
+  //frame 12
+  av.umsg(Frames.addQuestion("q12"));
   av.step();
 
-  //frame 8
-  av.umsg("De-oring the expression $ab^* + c$ into 2 transitions $ab^*$, and c");
-  
-  var q17 = fourthFA.addNode({left: 810, top: 480});
-  var q13 = fourthFA.addNode({left: 310, top: 100});
-  var q14 = fourthFA.addNode({left: 610, top: 100});
-  var q15 = fourthFA.addNode({left: 310, top: 360});
-  var q16 = fourthFA.addNode({left: 610, top: 360});
+  //frame 13
+  av.umsg(Frames.addQuestion("q13"));
+  av.step();
+  av.umsg(Frames.addQuestion("q14"));
+  var q17 = fourthFA.addNode({left: 810*factor, top: 480});
+  var q13 = fourthFA.addNode({left: 310*factor, top: 100});
+  var q14 = fourthFA.addNode({left: 610*factor, top: 100});
+  var q15 = fourthFA.addNode({left: 310*factor, top: 360});
+  var q16 = fourthFA.addNode({left: 610*factor, top: 360});
   fourthFA.removeNode(q12);
   toggleFinal(fourthFA,q17);
   fourthFA.addEdge(q11,q15, {weight: "$\\lambda$"});//q4
@@ -76,26 +85,32 @@ $(document).ready(function() {
   fourthFA.addEdge(q15,q16, {weight: "c"});
   fourthFA.addEdge(q16,q17, {weight: "$\\lambda$"});
   fourthFA.addEdge(q14,q17, {weight: "$\\lambda$"});
+  
+  
+  
+  
   av.step();
-
+  av.umsg(Frames.addQuestion("q15"));
+  av.step();
   //frame 9
-  av.umsg("De-concatenating the expression $ab^*$ into 2 transitions a and b");
+  av.umsg(Frames.addQuestion("q16"));
   fourthFA.removeEdge(q13,q14, {weight: "$ab^*$"});
-  var q18 = fourthFA.addNode({left: 430, top: 100});
-  var q19 = fourthFA.addNode({left: 550, top: 100});
-  var q20 = fourthFA.addNode({left: 230, top: 260});
-  var q21 = fourthFA.addNode({left: 550, top: 260});
+  var q18 = fourthFA.addNode({left: 430*factor, top: 100});
+  var q19 = fourthFA.addNode({left: 550*factor, top: 100});
+  var q20 = fourthFA.addNode({left: 230*factor, top: 260});
+  var q21 = fourthFA.addNode({left: 550*factor, top: 260});
   fourthFA.addEdge(q13,q18, {weight: "$\\lambda$"});
   fourthFA.addEdge(q18,q19, {weight: "a"});
   fourthFA.addEdge(q19,q20, {weight: "$\\lambda$"});
   fourthFA.addEdge(q20,q21, {weight: "$b^*$"});
   fourthFA.addEdge(q21,q14, {weight: "$\\lambda$"});
   av.step();
-
+  av.umsg(Frames.addQuestion("q17"));
+  av.step();
   //frame 10
-  av.umsg("De-staring the expression $b^*$");
-  var q22 = fourthFA.addNode({left: 350, top: 260});
-  var q23 = fourthFA.addNode({left: 450, top: 260});
+  av.umsg(Frames.addQuestion("q18"));
+  var q22 = fourthFA.addNode({left: 350*factor, top: 260});
+  var q23 = fourthFA.addNode({left: 450*factor, top: 260});
   fourthFA.removeEdge(q20,q21, {weight: "$b^*$"});
   fourthFA.addEdge(q20, q22, {weight: "$\\lambda$"});
   fourthFA.addEdge(q22, q23, {weight: "b"});
@@ -121,18 +136,18 @@ $(document).ready(function() {
   fourthFA.removeNode(q22);
   fourthFA.removeNode(q23);
 
-  var q24 = fFA.addNode({left: 600, top: 400});//0
-  var q25 = fFA.addNode({left: 630, top: 50});//1
-  var q26 = fFA.addNode({left: 400, top: 400});//2
-  var q27 = fFA.addNode({left: 480, top: 50});//3
-  var q28 = fFA.addNode({left: 750, top: 250});//4
-  var q29 = fFA.addNode({left: 750, top: 130});//5
-  var q30 = fFA.addNode({left: 250, top: 350});//6
-  var q31 = fFA.addNode({left: 150, top: 300});//7
-  var q32 = fFA.addNode({left: 180, top: 100});//8
-  var q33 = fFA.addNode({left: 300, top: 50});//9
-  var q34 = fFA.addNode({left: 50, top: 0});//10
-  var q35 = fFA.addNode({left: 180, top: 0});//11
+  var q24 = fFA.addNode({left: 600*factor, top: 400});//0
+  var q25 = fFA.addNode({left: 630*factor, top: 50});//1
+  var q26 = fFA.addNode({left: 400*factor, top: 400});//2
+  var q27 = fFA.addNode({left: 480*factor, top: 50});//3
+  var q28 = fFA.addNode({left: 750*factor, top: 250});//4
+  var q29 = fFA.addNode({left: 750*factor, top: 130});//5
+  var q30 = fFA.addNode({left: 250*factor, top: 350});//6
+  var q31 = fFA.addNode({left: 150*factor, top: 300});//7
+  var q32 = fFA.addNode({left: 180*factor, top: 100});//8
+  var q33 = fFA.addNode({left: 300*factor, top: 50});//9
+  var q34 = fFA.addNode({left: 50*factor, top: 0});//10
+  var q35 = fFA.addNode({left: 180*factor, top: 0});//11
   
   toggleInitial(fFA, q24);
   toggleFinal(fFA, q25);

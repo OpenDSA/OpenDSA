@@ -3,105 +3,117 @@ $(document).ready(function() {
   var av_name = "ConvertRLREFF";
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
-  
+
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
-      interpret = config.interpreter, // get the interpreter
-      code = config.code;             // get the code object
-  var FA = new av.ds.FA({width: 600, height: 900,left: 10, top:0});
-  var DFA = new av.ds.FA({width: 600, height: 900, left: 10, top:0});
+  interpret = config.interpreter, // get the interpreter
+  code = config.code;             // get the code object
+
   //var separator =  av.g.path(["M", 350, 0, "v", 500].join(","));
   //separator.show();
-  
+  // Slide 1
   av.umsg("Since every regular expression has an NFA that implements it, this means that the regular expressions are a subset of the regular languages. The next question is: Does every regular language have a regular expression?");
   av.displayInit();
-  // Slide 1
+  // Slide 2
   av.umsg("$\\textbf {Theorem}$: Let L be regular. Then there exists an R.E. such that L=L(r).");
   av.step();
+  // Slide 3
   av.umsg("Perhaps you thought it fairly intuitive to see that any regular expression can be implemented as a NFA, as described above. But for most of us, its not obvious that any NFA can be converted to a regular expression. This proof is rather difficult, and we are just going to give a sketch.")  
   av.step();
-  //frame 2
+  // Slide 4
   av.umsg("$\\textbf {Proof Idea}$:<br> Use a process that removes states sucessively, generating equivalent generalized transition graphs (GTG) until only two states are left (the initial state and one final state), with the resulting regular expression as the transition. <br>This regular expression left as the sole transition is equivalent to the original NFA.");
   av.step();
 
-  //frame 3
-  av.umsg("$\\textbf {Definition}$: A complete GTG is a complete graph, meaning that every state has a transition to every other state. Any GTG can be converted to a complete GTG by adding edges labeled $\\emptyset$ as needed.");
-  // FA.addEdge(q0, q1, {weight: "$\\lambda$"});
-  av.step();
-
-  //frame 4
-  av.umsg("$\\textbf {Proof}$:<br> $L$ is regular $\\Rightarrow \\exists$ NFA $M$ such that $L=L(M)$.<br> $\\textbf {1}$ Assume $M$ has one final state, and $q_0 \\not\\in F$.<br>  $\\textbf {2}$ Convert $M$ to a complete GTG.<br> Let $r_{ij}$ stand for the label of the edge from $q_i$ to $q_j$.<br>$\\textbf {3}$ If the GTG has only two states, then it has this form:")
-  var q0 = FA.addNode({left: 20, top: 190});
-  var q1 = FA.addNode({left: 220, top: 190});
-  
-  FA.disableDragging();
-  toggleInitial(FA, q0);
-  toggleFinal(FA, q1);
-  FA.addEdge(q0, q0, {weight: "$r_{ii}$"});
-  FA.addEdge(q0, q1, {weight: "$r_{ji}$"});
-  FA.addEdge(q1, q0, {weight: "$r_{ij}$"});
-  FA.addEdge(q1, q1, {weight: "$r_{jj}$"});
-  av.step();
-
   //frame 5
-  av.umsg("Add an arrow to the start state. Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$");
-  av.step();
-  av.umsg("Of course, we might have a machine with its start state also a final state. There are two ways to deal with this. One is to come up with a rule in this case. (Hint: Its the same rule, with an extra “OR” added for the case where we stay in the start state.) The other is to first convert our NFA to one with a single final state (separate from the start state). This is really easy to do, and is probably a homework problem for the class.");
+  av.umsg(Frames.addQuestion("q5"));
   av.step();
   //frame 6
-  av.umsg("$\\textbf 4$ If the GTG has three states, then it must have the following form:");
-  var q2 = FA.addNode({left: 120, top: 350});
-  FA.addEdge(q0, q2, {weight: "$r_{ik}$"});
-  FA.addEdge(q2, q0, {weight: "$r_{ki}$"});
-  FA.addEdge(q2, q2, {weight: "$r_{kk}$"});
-  FA.addEdge(q1, q2, {weight: "$r_{jk}$"});
-  FA.addEdge(q2, q1, {weight: "$r_{kj}$"});
+  av.umsg(Frames.addQuestion("q6"));
   av.step();
-
 
   //frame 7
-  av.umsg("In this case, make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$<br> $r_{jj} \\Rightarrow r_{jj}+r_{jk}r_{kk}^*r_{kj}$<br> $r_{ij} \\Rightarrow r_{ij}+r_{ik}r_{kk}^*k_{kj}$<br> $r_{ji} \\Rightarrow r_{ji}+r_{jk}r_{kk}^*r_{ki}$ <br> After these replacements, remove state $q_k$ and its edges.");
-  //FA.removeNode(q0);
-  // FA.removeEdge(q0, q2, {weight: "$r_{ik}$"})
+  av.umsg(Frames.addQuestion("q7"));
+  av.step();
+  //frame 8
+  av.umsg(Frames.addQuestion("q8"));
+  av.step();
+  //frame 9
+  av.umsg(Frames.addQuestion("q9"));
+  av.step();
+  //frame 10
+  av.umsg("$\\textbf {Proof}$:<br> $L$ is regular $\\Rightarrow \\exists$ NFA $M$ such that $L=L(M)$.<br> $\\textbf {1}$ Assume $M$ has one final state, and $q_0 \\not\\in F$.<br>  $\\textbf {2}$ Convert $M$ to a complete GTG.<br> Let $r_{ij}$ stand for the label of the edge from $q_i$ to $q_j$.<br>$\\textbf {3}$ If the GTG has only two states, then it has this form:");
+  var url = "../../../AV/VisFormalLang/Regular/Machines/RegExGTG.jff";
+  var gtg = new av.ds.FA({top: 100, url: url});
+  av.step();
+  //frame 11
+  av.umsg(Frames.addQuestion("q11"));
+  av.step();
+  //frame 12
+  av.umsg(Frames.addQuestion("q12"));
+  av.step();
+  //frame 13
+  av.umsg(Frames.addQuestion("q13"));
+  av.step();
+  //frame 14
+  av.umsg(Frames.addQuestion("q14"));
+  av.step();
+  //frame 15
+  av.umsg(Frames.addQuestion("q15"));
+  av.step();
+  //frame 16
+  av.umsg("Exactly. Once this big loop ends, the machine may loop again on $qj$ to read zero or more $r_{ii}$, then go to $qj$ to read $r_{ij}$ ending at $qj$ with optional zero or more loop to read $r_{jj}$");
+  av.step();
+  //frame 17
+  av.umsg("You can think of this GTG as the base case GTG. In other words, if we have a GTG with any number of states, we need to reduce it to be in this base shape. Then we know the RegEx for it");
+  av.step();
+  //frame 18
+  av.umsg(Frames.addQuestion("q18"));
+  av.step();
+  //frame 19
+  av.umsg("What happens if the GTG has three states? then it must have the following form:");
+  gtg.hide();
+  var url = "../../../AV/VisFormalLang/Regular/Machines/RegExGTG3s.jff";
+  var gtg3 = new av.ds.FA({url: url});
+  av.step();
+  //frame 20
+  av.umsg("We need to remove the state $q_k$ and its edges. But before that, we need to make some replacemetns to gurantee that the removal process will not affect our GTG");
   av.step();
 
-  //frame 8
-  av.umsg("$\\textbf 5$ If the GTG has four or more states, pick any state $q_k$ that is not the start or the final state. It will be removed. For all $o\\neq k$,$p\\neq k$, replace $r_{op}$ with $r_{op}+r_{ok}r_{kk}^*r_{kp}$. When done, remove $q_k$ and all its edges. Continue eliminating states until only two states are left. Finish with step (3).")
+  //frame 21
+  av.umsg(Frames.addQuestion("q21"));
+  av.step();
+  //frame 22
+  av.umsg(Frames.addQuestion("q22"));
+  av.step();
+  //frame 23
+  av.umsg(Frames.addQuestion("q23"));
+  av.step();
+  //frame 24
+  av.umsg(Frames.addQuestion("q24"));
+  av.step();
+  av.umsg("As we saw, after making these replacements, we can remove $qk$ without affecting the GTG.");
+  av.step();
+  //frame 25
+  av.umsg("If the GTG has four or more states, pick any state $q_k$ that is not the start or the final state. It will be removed. For all $o\\neq k$,$p\\neq k$, replace $r_{op}$ with $r_{op}+r_{ok}r_{kk}^*r_{kp}$. When done, remove $q_k$ and all its edges. Continue eliminating states until only two states are left. Finish with step (3).")
   av.step();
 
   //frame 9
-  av.umsg("In each step, we can simplify regular expressions r and s with any of these rules that apply:<br> $r+r=r$ (OR a subset with itself is the same subset)<br> $s+r^∗s=r^∗s$ (OR a subset with a bigger subset is just the bigger subset)<br> $r+\\emptyset =r$ (OR a subset with the empty set is just the subset)<br> $r\\emptyset =\\emptyset$ (Intersect a subset with the empty set yields the empty set)<br> $\\emptyset^∗=\\{\\lambda \\}$ (Special case)<br> $r\\lambda =r$ (Traversing a R.E. and then doing a free transition is just the same R.E.) <br> $(\\lambda +r)^∗=r^∗$ (Taking a free transition adds nothing.)<br> $(\\lambda +r)r^∗=r^∗$ (Being able to do an option extra r adds nothing)");
-  FA.removeEdge(q0, q0, {weight: "$r_{ii}$"})
-  FA.removeEdge(q0, q1, {weight: "$r_{ji}$"})
-  FA.removeEdge(q1, q0, {weight: "$r_{ij}$"})
-  FA.removeEdge(q1, q1, {weight: "$r_{jj}$"})
-  FA.removeEdge(q0, q2, {weight: "$r_{ik}$"})
-  FA.removeEdge(q2, q0, {weight: "$r_{ki}$"})
-  FA.removeEdge(q2, q2, {weight: "$r_{kk}$"})
-  FA.removeEdge(q1, q2, {weight: "$r_{jk}$"})
-  FA.removeEdge(q2, q1, {weight: "$r_{kj}$"})
-  FA.addEdge(q0, q2, {weight: "a"});
-  FA.addEdge(q2, q0, {weight: "b"});
-  FA.addEdge(q2, q2, {weight: "a"});
-  FA.addEdge(q2, q1, {weight: "b"});
-  FA.addEdge(q0, q1, {weight: "a"});
-  FA.addEdge(q1, q0, {weight: "b"});
-
-  var q0 = DFA.addNode({left: 350, top: 190});
-  var q1 = DFA.addNode({left: 500, top: 190});
-  DFA.disableDragging();
-  toggleInitial(DFA, q0);
-  toggleFinal(DFA, q1);
-  DFA.addEdge(q0, q0, {weight: "$aa^*b$"});
-  DFA.addEdge(q1, q0, {weight: "b"});
-  DFA.addEdge(q0, q1, {weight: "$a+aa^*b$"});
+  av.umsg("[OPTIONAL] In each step, we can simplify regular expressions r and s with any of these rules that apply:<br> $r+r=r$ (OR a subset with itself is the same subset)<br> $s+r^∗s=r^∗s$ (OR a subset with a bigger subset is just the bigger subset)<br> $r+\\emptyset =r$ (OR a subset with the empty set is just the subset)<br> $r\\emptyset =\\emptyset$ (Intersect a subset with the empty set yields the empty set)<br> $\\emptyset^∗=\\{\\lambda \\}$ (Special case)<br> $r\\lambda =r$ (Traversing a R.E. and then doing a free transition is just the same R.E.) <br> $(\\lambda +r)^∗=r^∗$ (Taking a free transition adds nothing.)<br> $(\\lambda +r)r^∗=r^∗$ (Being able to do an option extra r adds nothing)");
+  gtg3.hide();
   av.step();
-  av.umsg("You should convince yourself that, in this image, the right side is a proper re-creation of the left side. In other words, the R.E labeling the self-loop for the left state in the right machine is correctly characterizing all the ways that one can remain in state q0 of the left machine. Likewise, the R.E. labeling the edge from the left state to the right state in the machine on the right is correctly characterizing all the ways that one can go from q0 to q2 in the machine on the right.");
+  av.umsg("Let us see an example for an NFA with 3 states and the corresponding GTG with 2 states after removing the third state.")
+  var url1 = "../../../AV/VisFormalLang/Regular/Machines/RegExCon1.jff";
+  var url2 = "../../../AV/VisFormalLang/Regular/Machines/RegExCon2.jff";
+  var x = new av.ds.FA({left: 0, top:50, url: url1});
+  var y = new av.ds.FA({left: 0, top: 250, url: url2});
+  av.step();
+  
+  av.umsg("You should convince yourself that, in this image, the lower GTG is a proper re-creation of the upper NFA. In other words, the R.E labeling the self-loop for the left state in the right machine is correctly characterizing all the ways that one can remain in state q0 of the left machine. Likewise, the R.E. labeling the edge from the left state to the right state in the machine on the right is correctly characterizing all the ways that one can go from q0 to q2 in the machine on the right.");
   av.step();
   av.umsg("We have now demonstrated that regular expressions are equivalent to DFAs. Meaning that given any regular expression, we have an algorithm to convert it to some DFA. And vice versa.");
-  FA.hide();
-  DFA.hide();
+  x.hide();
+  y.hide();
   //frame 10
-      
+
   av.recorded();
 });
