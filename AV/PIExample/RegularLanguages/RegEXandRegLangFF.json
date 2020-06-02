@@ -17,10 +17,24 @@
         },
         "q6": {
           "type": "select",
-          "description": "In contrast, we can type out a regular expression within a system like JFLAP and OpenFLAP. In that case, it is both fast to type and operationalizeable (in the sense that we can then convert the RegEx to a DFA, which implements the acceptor for the regular expression).",
+          "description": "In contrast, we can type out a regular expression within systems like JFLAP and OpenFLAP. In that case, it is both fast to type and operationalizeable (in the sense that we can then convert the RegEx to a DFA, which implements the acceptor for the regular expression).",
           "question":"Why RegEx is the best solution to represent a Language?",
           "answer": ["Fast to type", "There are tools to convert RegEx to DFA and NFA"],
           "choices": ["Fast to type", "There are tools to convert RegEx to DFA and NFA", "RegEx can represent more languages"]
+        },
+        "q8": {
+          "type": "select",
+          "description": "Recall that we $\\textbf {define}$ the term $\\textbf {regular language}$ to mean the languages that are recognized by a DFA. (Which we know is the same as the languages recognized by an NFA, because we know that every NFA can be converted to a DFA).",
+          "question":"Regular Languages are languages that can be",
+          "answer": ["Accepted by DFA", "Accepted by NFA"],
+          "choices": ["Accepted by DFA", "Accepted by NFA"]
+        },
+        "q9": {
+          "type": "multiple",
+          "description": "How do regular expressions relate to DFA and NFA? <br/>Are they the same languages? <br/>Is one a subset of the other? <br/>Or are they just different collections of languages?",
+          "question":"What do you think?",
+          "answer": "RegEx, DFA, and NFA represent the languages",
+          "choices": ["RegEx, DFA, and NFA represent the languages", "One of them is a subset of the others","RegEx, NFA, and DFA are just different collections of languages"]
         },
         "q11": {
           "type": "multiple",

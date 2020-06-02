@@ -37,12 +37,12 @@ $(document).ready(function() {
 
   av.umsg("The last operator is the Kleene star ($*$) operator. As we know this operator means that we need to concatenate the language with itself for Zero or more times.");
   av.displayInit();
-  av.umsg("Lets suppose that we have a reqular expression $r^*$");
+  av.umsg(Frames.addQuestion("q2"));
   av.step();
-  av.umsg("First, suppose that this NFA accepts $r$.");
+  av.umsg(Frames.addQuestion("q3"));
   var rFA = drawScheme(av, "r", 150,150);
   av.step();
-  av.umsg("First we need to create a new start state");
+  av.umsg(Frames.addQuestion("q4"));
   var fa = new av.ds.FA({left: 50, top: 0, width: 50, height: 600});
   var newS = fa.addNode({value:"s", left: 10, top: 200});
   toggleInitial(fa, newS);
@@ -53,7 +53,7 @@ $(document).ready(function() {
   av.g.line(90, 230, 200, 230, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left:130, top:195});
   av.step();
-  av.umsg("Create a new Final state.");
+  av.umsg(Frames.addQuestion("q8"));
   var fa2 = new av.ds.FA({left: 550, top: 0, width: 20, height: 600});
   var newF = fa2.addNode({value:"f", left: -20, top: 200});
   toggleFinal(fa2, newF);
@@ -63,19 +63,21 @@ $(document).ready(function() {
   av.g.line(435, 230, 530, 230, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left:480, top:195});
   av.step();
-  av.umsg("$r^*$ means that you can repeat the same regular expression zero or more times.");
+  av.umsg(Frames.addQuestion("q9"));
   av.step();
-  av.umsg("Repeating $r$ zero times means that you can go from the start state to the final state using a " + lambda + " transition");
+  av.umsg(Frames.addQuestion("q10"));
   av.g.path('M '+ 90 + ',' + 230 + ' Q' + 320 + ',' 
         + 600 + ' ' + 530 + ',' + 235, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left:320, top:375});
   av.step();
-  av.umsg("Repeating $r$ zero times also means that you can go from the final state to the start state using a " + lambda + " transition");
+  av.umsg(Frames.addQuestion("q12"));
   av.g.path('M '+ 530 + ',' + 225 + ' Q' + 320 + ',' 
         + 0 + ' ' + 90 + ',' + 225, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left:320, top:50});
   fa.disableDragging();
   fa2.disableDragging();
+  av.step();
+  av.umsg("Done. This is the NFA that accepts $r^*$")
   av.recorded();
   
 });  

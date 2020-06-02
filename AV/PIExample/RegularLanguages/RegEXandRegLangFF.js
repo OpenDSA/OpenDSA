@@ -33,10 +33,10 @@ $(document).ready(function() {
   av.umsg("Of course, while a program (or machine) can be shorter or longer, it might be hard for us to come up with the program. In the same way, we might have to struggle to come up with the regular expression. But its probably short to type once we have it.");
   av.step();
   //frame 8
-  av.umsg("Recall that we $\\textbf {define}$ the term $\\textbf {regular language}$ to mean the languages that are recognized by a DFA. (Which we know is the same as the languages recognized by an NFA, because we know that every NFA can be converted to a DFA).");
+  av.umsg(Frames.addQuestion("q8"));
   av.step();
   //frame 9
-  av.umsg("How do regular expressions relate to DFA and NFA? <br/>Are they the same languages? <br/>Is one a subset of the other? <br/>Or are they just different collections of languages?");
+  av.umsg(Frames.addQuestion("q9"));
   av.step();
   //frame 10
   av.umsg("In the next slides we will see the relation between RegEx and DFA (and NFAs of course)");

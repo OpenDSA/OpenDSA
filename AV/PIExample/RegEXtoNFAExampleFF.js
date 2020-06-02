@@ -24,15 +24,15 @@ $(document).ready(function() {
   av.step();
   av.umsg("A possible NFA for $ab^*\+\c$ will be:")
   var url1 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrC.jff";
-  var nfa = new av.ds.FA({left: 10, top: 0, width: 300, url: url1});
+  var nfa = new av.ds.FA({left: 0, top: 0, width: 300, url: url1});
   av.step();
-  av.umsg("After applying the NFA to DFA algorithm covered in the last chapter, the resulting DFA will be:");
+  av.umsg(Frames.addQuestion("q4"));
   var url2 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrCDFA.jff";
-  var dfa = new av.ds.FA({left: 400, top: 0, width: 300, height: 350, url: url2});
+  var dfa = new av.ds.FA({left: 250, top: 0, width: 300, height: 350, url: url2});
   av.step();
   av.umsg("Finally, the minimized DFA will be");
   var url3 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrCMinDFA.jff";
-  var minDfa = new av.ds.FA({left: 300, top: 200, url: url3});
+  var minDfa = new av.ds.FA({left: 0, top: 200, url: url3});
   av.step();
   av.umsg("Finding the NFA for a RegEx is not trivial especially for complicated RegEXs. That is why we have tools like OpenFLAP that applies RegEx to NFA algorithm to give the NFA / DFA for any RegEx.");
   nfa.hide();

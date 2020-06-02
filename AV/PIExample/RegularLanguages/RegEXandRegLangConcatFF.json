@@ -1,13 +1,70 @@
 {
-    "translations": {
-      "en": {
-        "q3": {
-          "type": "select",
-          "description": "So why yet another representation? A good answer is that the other two representations are deficient (in different ways) that the regular expression overcomes.",
-          "question":"What do we mean by the other two?",
-          "answer": ["NFA", "DFA"],
-          "choices": ["NFA", "DFA", "English Description"]
-        }
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "select",
+        "description": "Now, we need to find the NFA that can accept the RegEx $r \\cdot s$",
+        "question":"What is the $L(r \\cdot s)$?",
+        "answer": ["Language of all string that the dirst part of it is astring in the Language represented by the RegEx $r$ Followed by another substring in the Language represented by the RegEx $s$", "$\\{w \\mid w \\in L(r) \\cdot L(s)\\}$"],
+        "choices": ["Language of all string that the dirst part of it is astring in the Language represented by the RegEx $r$ Followed by another substring in the Language represented by the RegEx $s$", "$\\{w \\mid w \\in L(r) \\cdot L(s)\\}$"]
+      },
+      "q2": {
+        "type": "multiple",
+        "description": "Now, we need to find the NFA that can accept the RegEx $r \\cdot s$",
+        "question":"How many NFA schemes do we need?",
+        "answer": "We need 2 NFAs, one for $r$ and the other for $s$",
+        "choices": ["Only one", "We need 2 NFAs, one for $r$ and the other for $s$"]
+      },"q3": {
+        "type": "multiple",
+        "description": "Now we need to connect these 2 NFAs into one NFA that represents the RegEx $r \\cdot s$",
+        "question":"What should we do first?",
+        "answer": "create a new start state",
+        "choices": ["create a new start state", "create a new final state", "conncet the new start state with old stat state(s)", "connect the new final state with old final state(s)"]
+      },
+      "q4": {
+        "type": "multiple",
+        "description": "The first step now is to create a new start state",
+        "question":"To which state we need to connect the new start state with?",
+        "answer": "the start state for $r$",
+        "choices": ["the start state for $s$", "the start state for $r$", "the start states for $s$ and $r$"]
+      },
+      "q5": {
+        "type": "select",
+        "description": "Conncet the new start state with the start state for NFA that represents $r$ using a labmda transition.",
+        "question":"Why do we used $\\lambda$ transitions?",
+        "answer": ["We need a free transition to the old start state", "This allows the resulting NFA from accepting the first part of the string in the NFA for $r$"],
+        "choices": ["We need a free transition to the old start state", "This allows the resulting NFA from accepting the first part of the string in the NFA for $r$"]
+      },
+      "q7": {
+        "type": "multiple",
+        "description": "Now, connect the final state for the NFA that represents $r$ with the start state of the NFA that represents $s$ with a $\\lambda$ transition. The reason is that, since the first part already accepted ny the NFA for $r$, the remaining part of the string must be accepted in the NFA for $s$",
+        "question":"What is next?",
+        "answer": "create a new final state",
+        "choices": ["create a new start state", "create a new final state", "conncet the new start state with old stat state(s)", "connect the new final state with old final state(s)"]
+      },
+      "q8": {
+        "type": "multiple",
+        "description": "Then create a new final state",
+        "question":"Which state should be connected to the new final state?",
+        "answer": "The final state for NFA $s$",
+        "choices": ["The final state for NFA $s$", "The final state for NFA $r$", "The final state for the NFA $s$ and the NFA $r$"]
+      },
+      "q9": {
+        "type": "multiple",
+        "description": "Correct. Once the string is accepted by NFA for $s$ this means that this string belongs to the language $L(r \\cdot s)$.",
+        "question":"What is the transitiong letter?",
+        "answer": "$\\lambda$ transition",
+        "choices": ["$\\lambda$ transition", "Something else"]
       }
+      ,
+      "q10": {
+        "type": "multiple",
+        "description": "Correct. Similar to what we did with the start states. We need free transitons to the new final state.",
+        "question":"What next?",
+        "answer": "We are done",
+        "choices": ["We are done", "We need more steps to finish the NFA for $L(r+s)$"]
+      }
+      
     }
   }
+}

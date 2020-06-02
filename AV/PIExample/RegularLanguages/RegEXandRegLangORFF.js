@@ -34,26 +34,37 @@ $(document).ready(function() {
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
     interpret = config.interpreter, // get the interpreter
     code = config.code;             // get the code object
-
+  //frame 1
   av.umsg("In last section, we covered some NFAs that accept basic Regular Expressions like $\\emptyset$, $\\lambda$, and any alphabe letter in $\\Sigma$.")
   av.displayInit();
+  //frame 2
   av.umsg("Also, we coverd how to convert an NFA with multiple final states into an NFA with a single NFA");
   av.step();
-  av.umsg("In this part, we will see how to convert more complex RegExs that includes $\\textbf{OR}$, concatenation, and Closure operations.");
+  //frame 3
+  av.umsg("In this part, we will see how to convert more complex RegExs that includes $\\textbf{OR}$ operation.");
   av.step();
-  av.umsg("Let us remember the NFA scheme that represent an NFA that accept a RegEx, say, $r$");
+  //frame 4
+  av.umsg(Frames.addQuestion("q4"));
   var rFA = drawScheme(av, "r", 110,0);
   av.step();
-  av.umsg("We look at this NFA as a blackbox that accepts a RegEx. In some books it is names as NFA Scheme");
+  //frame 5
+  av.umsg("We look at this NFA as a blackbox that accepts a RegEx. In some books it is named as NFA Scheme");
   av.step();
-  av.umsg("Noe, we need to find the NFA that can accept the RegEx $r + s$");
+  //frame 6
+  av.umsg(Frames.addQuestion("q6"));
   av.step();
-  av.umsg("We need 2 NFA schemes. One represents the RegEx $r$ and the other NFA represents $s$.");
+  //frame 7
+  av.umsg(Frames.addQuestion("q7"));
+  av.step();
+  //frame 8
+  av.umsg("Correct. We need 2 NFA schemes. One represents the RegEx $r$ and the other NFA represents $s$.");
   var sFA = drawScheme(av, "s", 110,250);
   av.step();
+  //frame 9
   av.umsg("Now we need to connect these 2 NFAs into one NFA that represents the RegEx $r+s$");
   av.step();
-  av.umsg("The first step now is to create a new start state");
+  //frame 10
+  av.umsg(Frames.addQuestion("q10"));
   var fa = new av.ds.FA({left: 0, top: 0, width: 50, height: 600});
   var newS = fa.addNode({value:"s", left: 10, top: 190});
   toggleInitial(fa, newS);
@@ -62,26 +73,36 @@ $(document).ready(function() {
   rFA.initial._initialMarker.hide();
   rFA.initial.css({"font-weight": "normal"});
   av.step();
-  av.umsg("Conncet the new start state with the start state for each NFA using labmda transitions");
+  //frame 11
+  av.umsg(Frames.addQuestion("q11"));
   av.g.line(40, 230, 165,320, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left:100, top: 240});
   av.g.line(40, 215, 165,85, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left:100, top: 80});
   av.step();
-  av.umsg("Then creat a new final state");
+  //frame 12
+  av.umsg(Frames.addQuestion("q12"));
+  av.step();
+  //frame 13
+  av.umsg(Frames.addQuestion("q13"));
   var fa2 = new av.ds.FA({left: 540, top: 0, width: 20, height: 600});
   var newF = fa2.addNode({value:"f", left: -20, top: 190});
   toggleFinal(fa2, newF);
   rFA.getFinals()[0].css({"border-style": "dotted"});
   sFA.getFinals()[0].css({"border-style": "dotted"});
   av.step();
-  av.umsg("Conncet the old final states to the new final state with lambda transitions");
+  //frame 14
+  av.umsg(Frames.addQuestion("q14"));
   av.g.line(390, 320, 520,220, {"arrow-end": "classic-wide-long", "stroke-width": 2});
-  av.label(lambda, {left:450, top: 80});
   av.g.line(395, 85, 520,220, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.step();
+  //frame 15
+  av.umsg(Frames.addQuestion("q15"));
+  av.label(lambda, {left:450, top: 80});
   av.label(lambda, {left:450, top: 240});
   av.step();
-  av.umsg("The resulting NFA accepts $r + s$");
+  //frame 16
+  av.umsg("Done. The resulting NFA accepts $r + s$");
   fa.disableDragging();
   fa2.disableDragging();
   av.recorded();
