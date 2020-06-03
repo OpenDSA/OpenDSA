@@ -14,18 +14,18 @@ Regular Grammars
 
 Introduction to regular grammar
 -------------------------------
-.. inlineav:: RegularGrammar ff
-   :links: AV/PIExample/RegularGrammars/RegularGrammar.css
-   :scripts: AV/PIExample/RegularGrammars/RegularGrammar.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+.. inlineav:: RegularGrammarFF ff
+   :links: AV/PIExample/RegularGrammars/RegularGrammarFF.css
+   :scripts: AV/PIExample/RegularGrammars/RegularGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
    :output: show
 
 
 NFA from Regular Grammar
 ------------------------
 
-.. inlineav:: NFAToRE ff
-   :links: AV/PIExample/RegularGrammars/NFAToRE.css
-   :scripts: AV/PIExample/RegularGrammars/NFAToRE.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+.. inlineav:: NFAToREFF ff
+   :links: AV/PIExample/RegularGrammars/NFAToREFF.css
+   :scripts: AV/PIExample/RegularGrammars/NFAToREFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js AV/Obsolete/FL_resources/ParseTree.js 
    :output: show
 
 Right-linear Regular Grammar from DFA

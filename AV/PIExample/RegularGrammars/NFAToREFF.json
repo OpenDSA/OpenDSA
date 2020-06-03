@@ -1,0 +1,99 @@
+{
+    "translations": {
+      "en": {
+        "q2": {
+          "type": "select",
+          "description": "$\\textbf {Theorem}$: $L$ is a regular language if and only if there exists a regular grammar $G$ such that $L=L(G)$.",
+          "question":"What are Regular Languages?",
+          "answer": ["Languages accepted by DFAs", "Languages accepted by NFAs", "Languages represented by Regular Expressions", "Languages described by Regular Grammars"],
+          "choices": ["Languages accepted by DFAs", "Languages accepted by NFAs", "Languages represented by Regular Expressions", "Languages described by Regular Grammars"]
+        },
+        "q3": {
+          "type": "select",
+          "description": "$\\textbf {Theorem}$: $L$ is a regular language if and only if there exists a regular grammar $G$ such that $L=L(G)$.",
+          "question":"What are Regular Grammars?",
+          "answer": ["Left Linear Grammars", "Right Linear Grammars"],
+          "choices": ["Left Linear Grammars", "Right Linear Grammars", "Linear Grammars"]
+        },
+        "q7": {
+          "type": "multiple",
+          "description": "Let us start with: <br>Given a regular grammar $G$, construct NFA $M$ such that $L(G) = L(M)$",
+          "question":"[T|F] This grammar is a right linear grammar",
+          "answer": "True",
+          "choices": ["True", "False"]
+        },
+        "q8": {
+          "type": "multiple",
+          "description": "The process is: <br>Make a state for each non-terminal.",
+          "question":"How many sates we need in for this grammar?",
+          "answer": "at least 3",
+          "choices": ["at least 2", "at least 3", "at least 4"]
+        },
+        "q9": {
+          "type": "multiple",
+          "description": "The process is: <br>Make a state for each non-terminal.",
+          "question":"Which state will be the start state?",
+          "answer": "S, because it is the start variable",
+          "choices": ["S, because it is the start variable", "A", "B"]
+        },
+        "q10": {
+          "type": "multiple",
+          "description": "The process is: <br>Make a state for each non-terminal. <br> Make a transition on each terminal in that production rule.",
+          "question":"What is the transition for this rule",
+          "answer": "$\\delta(S, a) = B$",
+          "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"]
+        },
+        "q11": {
+          "type": "multiple",
+          "description": "The process is: <br>Make a state for each non-terminal. <br> Make a transition on each terminal in that production rule.",
+          "question":"What is the transition for this rule",
+          "answer": "$\\delta(S, a) = A$",
+          "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"]
+        },
+        "q12": {
+          "type": "multiple",
+          "description": "The process is: <br>Make a state for each non-terminal. <br> Make a transition on each terminal in that production rule.",
+          "question":"What is the transition for this rule",
+          "answer": "$\\delta(A, a) = A$",
+          "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"]
+        },
+        "q13": {
+          "type": "multiple",
+          "description": "The process is: <br>Make a state for each non-terminal. <br> Make a transition on each terminal in that production rule.",
+          "question":"What is the transition for this rule",
+          "answer": "$\\delta(A, b) = S$",
+          "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"]
+        },
+        "q14": {
+          "type": "multiple",
+          "description": "The process is: <br>Make a state for each non-terminal. <br> Make a transition on each terminal in that production rule.",
+          "question":"What is the transition for this rule",
+          "answer": "$\\delta(A, b) = B$",
+          "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"]
+        },
+        "q15": {
+          "type": "multiple",
+          "description": "The process is: <br>Make a state for each non-terminal. <br> Make a transition on each terminal in that production rule.",
+          "question":"What is the transition for this rule",
+          "answer": "$\\delta(B, b) = S$",
+          "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"]
+        },
+        "q16": {
+          "type": "multiple",
+          "description": "The process is: <br>Make a state for each non-terminal. <br> Make a transition on each terminal in that production rule. <br>Make a state final if there is a production without non-terminals.",
+          "question":"What does this transition mean?",
+          "answer": "B will be the final state because it has a $\\lambda$ transition to no Variable",
+          "choices": ["$\\delta(B, \\lambda) = S$", "B will be the final state because it has a $\\lambda$ transition to no Variable"]
+        },
+        "q17": {
+          "type": "multiple",
+          "description": "The process is: <br>Make a state for each non-terminal. <br> Make a transition on each terminal in that production rule. <br> Make a state final if there is a production without non-terminals. <br> For rules with multiple terminals, need intermediate state",
+          "question":"Suppose this production is changed to $S \\rightarrow abB$, what should we do in  the NFA?",
+          "answer": "Add new (DUMMY) state and make these transitions: $\\delta(S,a)=D$, and $\\delta(D, b) = B$",
+          "choices": ["Add new (DUMMY) state and make these transitions: $\\delta(S,a)=D$, and $\\delta(D, b) = B$", "Invalid transition", "The grammar is not Right Linear any more"]
+        }
+      }
+    }
+  }
+  
+  
