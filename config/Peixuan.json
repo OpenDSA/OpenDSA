@@ -76,6 +76,9 @@
     },
 	"Question adding for Regular Grammar": {
       "Peixuan/RegGrammarWithQuestions": {}
+    },
+	"Test for fixing go back": {
+      "Peixuan/fixForGoBackButton": {}
     }
   }
 }

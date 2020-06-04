@@ -1087,7 +1087,7 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
 
   var states = [];
   for(var i = 0 ; i < newVariables.length ; i++){
-    states.push(variables[i]);
+    states.push(newVariables[i].value());
   }
   var steps = getStepsForConvertToGrammar(FAtoGrammar, grammarMatrix);
   //console.log(steps);
@@ -1106,7 +1106,7 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
     if (state["weight"] === "λ") {
       return [{
         "type": "multiple",
-        "question": "Which one is the final state?",
+        "question": "Which one represents the final state?",
         "description": "We need to add a new transition with " + emptystring + ".",
         "answer": state["node"], //String if type is multiple, array of string if select
         "choices": states
@@ -1124,7 +1124,7 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
         {
           "type": "multiple",
           "question": "",
-          "description": "What is the appropriate transition? Suppose the production is about " + state["node"] + " and " + state.relatedTo[state.relatedTo.length - 1] + ".",
+          "description": "What is the appropriate transition? Suppose the production is about " + state["node"] + " and " + state.relatedTo + ".",
           "answer": state["weight"], //String if type is multiple, array of string if select
           "choices": weights
         }
@@ -1243,7 +1243,7 @@ var getStepsForConvertToGrammar = function(FAtoGrammar, grammarMatrix) {
 
     var temp = [];
     for (var j = 0; j < edges.length; j++) {
-      var toVar = variables[newVariables.indexOf(edges[j].end())];
+      var toVar = edges[j].end().value();
       var weight = edges[j].weight().split("<br>");
       newVariables[i].getOutgoing().map(function (edge) {
         edge.addClass("testingLambda");
@@ -1255,8 +1255,8 @@ var getStepsForConvertToGrammar = function(FAtoGrammar, grammarMatrix) {
           terminal = "";
         }
         temp.push({
-          "node" : variables[i],
-          "relatedTo" : terminal + toVar,
+          "node" : newVariables[i].value(),
+          "relatedTo" : toVar,
           "type" : "otherState",
           "weight" : terminal
         });
@@ -1265,10 +1265,10 @@ var getStepsForConvertToGrammar = function(FAtoGrammar, grammarMatrix) {
     converted.push(temp);
 
     if (newVariables[i].hasClass('final')) {
-      finals.push([{
-        "node" : variables[i],
+      converted.push([{
+        "node" : newVariables[i].value(),
         "relatedTo" : emptystring,
-        "type" : "NFAtoRegularGrammar",
+        "type" : "final",
         "weight" : "λ"
       }]);
     }
@@ -1277,6 +1277,5 @@ var getStepsForConvertToGrammar = function(FAtoGrammar, grammarMatrix) {
     edge.removeClass("testingLambda");
     edge._label.removeClass("testingLambda");
   });
-  converted = converted.concat(finals);
   return converted;
 }
