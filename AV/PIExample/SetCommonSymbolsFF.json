@@ -71,7 +71,7 @@
                 ],
                 "choices": [
                     "$\\{1, 2, 3\\}$",
-                    "$\\{x|x\\ is\\ an\\ even\\ number\\}$",
+                    "$\\{x|x\\ is\\ a\\ positive\\ even\\ number\\}$",
                     "$\\{x|x\\ is\\ a\\ real\\ number\\}$",
                     "$\\{x|x\\ is\\ a\\ prime\\ number\\}$"
                 ]
