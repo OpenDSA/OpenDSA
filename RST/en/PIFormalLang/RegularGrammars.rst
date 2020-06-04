@@ -28,12 +28,27 @@ NFA from Regular Grammar
    :scripts: AV/PIExample/RegularGrammars/NFAToREFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js AV/Obsolete/FL_resources/ParseTree.js 
    :output: show
 
-Right-linear Regular Grammar from DFA
+Regular Grammar to NFA Example
+------------------------------
+.. inlineav:: REtoFAExampleFF ff
+   :links: AV/PIExample/RegularGrammars/REtoFAExampleFF.css
+   :scripts: AV/PIExample/RegularGrammars/REtoFAExampleFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js AV/Obsolete/FL_resources/ParseTree.js 
+   :output: show
+
+Right-linear Regular Grammar from NFA
 -------------------------------------
 
-.. inlineav:: RightLinearRG ff
-   :links: AV/PIExample/RegularGrammars/RightLinearRG.css
-   :scripts: AV/PIExample/RegularGrammars/RightLinearRG.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+.. inlineav:: RightLinearRGFF ff
+   :links: AV/PIExample/RegularGrammars/RightLinearRGFF.css
+   :scripts: AV/PIExample/RegularGrammars/RightLinearRGFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js 
+   :output: show
+
+Regular Grammar from NFA Example
+--------------------------------
+
+.. inlineav:: NFAToReExampleFF ff
+   :links: AV/PIExample/RegularGrammars/NFAToReExampleFF.css
+   :scripts: AV/PIExample/RegularGrammars/NFAToReExampleFF.js AV/Peixuan/AddQuestionTest/AddQuestions.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js AV/Obsolete/FL_resources/ParseTree.js lib/underscore.js
    :output: show
 
 Left-linear Regular Grammar from DFA

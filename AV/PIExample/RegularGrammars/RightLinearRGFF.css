@@ -1,6 +1,10 @@
-#RightLinearRG {
+#RightLinearRGFF {
     height: 700px;
     width: 900px;
+}
+.jsavcanvas{
+    min-width: 540px;
+    min-height: 600px !important;
 }
 .start {
     font-style: italic;
