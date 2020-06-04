@@ -51,6 +51,22 @@ Regular Grammar from NFA Example
    :scripts: AV/PIExample/RegularGrammars/NFAToReExampleFF.js AV/Peixuan/AddQuestionTest/AddQuestions.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js AV/Obsolete/FL_resources/ParseTree.js lib/underscore.js
    :output: show
 
+Left Regular Grammars
+---------------------
+.. inlineav:: LeftLinearGrammarFF ff
+   :links: AV/PIExample/RegularGrammars/LeftLinearGrammarFF.css
+   :scripts: AV/PIExample/RegularGrammars/LeftLinearGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js 
+   :output: show
+
+
+RegEx to Regular Grammar
+------------------------
+.. inlineav:: RegEXtoRegGrammarFF ff
+   :links: AV/PIExample/RegularGrammars/RegEXtoRegGrammarFF.css
+   :scripts: AV/PIExample/RegularGrammars/RegEXtoRegGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js 
+   :output: show
+
+
 Something to Think About
 ------------------------
 

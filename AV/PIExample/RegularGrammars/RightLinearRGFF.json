@@ -69,7 +69,7 @@
           "description": "Let us convert the NFA to RRG.",
           "question":"What should we do to after we knew that $q_1$ is the final state?",
           "answer": "Add rule: $Q_1 \\rightarrow \\lambda$",
-          "choices": ["Add rule: $Q1 \\rightarrow \\lambda$", "Something else"]
+          "choices": ["Add rule: $Q_1 \\rightarrow \\lambda$", "Something else"]
         },
         "q16": {
           "type": "multiple",
