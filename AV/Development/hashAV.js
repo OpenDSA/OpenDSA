@@ -259,7 +259,7 @@
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    alert("Shellsort Algorithm Visualization\nWritten by Nayef Copty, Mauricio De la Barra, Daniel Breakiron, and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+    alert("Shellsort Algorithm Visualization\nWritten by Nayef Copty, Mauricio De la Barra, Daniel Breakiron, and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
 
   /**
