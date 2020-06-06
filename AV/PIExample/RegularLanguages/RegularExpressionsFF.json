@@ -73,21 +73,21 @@
 
         "q13": {
           "type": "select",
-          "question":"Suppose $\\Sigma = {a, b, c}$, which of the following are valid regular expressions?",
+          "question":"Suppose $\\Sigma = \\{a, b, c\\}$, which of the following are valid regular expressions?",
           "description": "Definition: Given $\\Sigma$<br>$\\textbf {1.}$ $\\emptyset$, $\\lambda$, and $a$ $\\in$ $\\Sigma$ are R.E.",
           "answer": ["$\\emptyset$", "$\\lambda$", "$a$", "$b$", "$c$"],
           "choices": ["$\\emptyset$", "$\\lambda$", "$a$", "$b$", "$c$"]
         },
         "q14": {
           "type": "select",
-          "question":"Suppose $\\Sigma = {a, b, c}$, which of the following are valid regular expressions?",
+          "question":"Suppose $\\Sigma = \\{a, b, c\\}$, which of the following are valid regular expressions?",
           "description": "Definition: Given $\\Sigma$<br>$\\textbf {1.}$ $\\emptyset$, $\\lambda$, and $a$ $\\in$ $\\Sigma$ are R.E.<br> $\\textbf {2.}$ If r and s are regular expressions, then $r$ $+$ $s$, $rs$, $r^∗$ are R.E.",
           "answer": ["$a+\\lambda$", "$a + b$", "$b+c$", "$a+b+c$", "$abc$", "$ac$", "$(a)$", "$b^*$"],
           "choices": ["$a+\\lambda$", "$a + b$", "$b+c$", "$a+b+c$", "$abc$", "$ac$", "$(a)$", "$b^*$"]
         },
         "q15": {
           "type": "select",
-          "question":"Suppose $\\Sigma = {a, b, c}$, which of the following are valid regular expressions?",
+          "question":"Suppose $\\Sigma = \\{a, b, c\\}$, which of the following are valid regular expressions?",
           "description": "Definition: Given $\\Sigma$<br>$\\textbf {1.}$ $\\emptyset$, $\\lambda$, and $a$ $\\in$ $\\Sigma$ are R.E.<br> $\\textbf {2.}$ If r and s are regular expressions, then $r$ $+$ $s$, $rs$, $r^∗$ are R.E.<br> $\\textbf {3.}$ r is a R.E if and only if it can be derived from (1) with a finite number of applications of (2)",
           "answer": ["$(\\lambda + a)^*bb(c)$", "$ab^*c$", "$b(ba)c^*$"],
           "choices": ["$(\\lambda + a)^*bb(c)$", "$ab^*c$", "$b(ba)c^*$"]
@@ -129,7 +129,7 @@
         },
         "q21": {
           "type": "select",
-          "question":"What is the RegEx $L = \\{w \\in {\\Sigma}^{*} \\mid w$ has an odd number of $a$‘s followed by an even number of $b$‘s}, where $\\Sigma = \\{a,b\\}$?",
+          "question":"What is the RegEx $L = \\{w \\in {\\Sigma}^{*} \\mid w$ has no more than three $a$s and must end in $ab$}, where $\\Sigma = \\{a,b\\}$?",
           "description": "Examples",
           "answer": ["$b^{*}(ab^{*} + ab^{*}ab^{*} + \\lambda)ab$", "$(b^{*}ab^{*} + b^{*}ab^{*}ab^{*} + b^{*})ab$", "$b^{*}ab^{*}ab + b^{*}ab^{*}ab^{*}ab + b^{*}ab$"],
           "choices": ["$(a+aa+\\lambda)ab$","$(a+aa+aaa+\\lambda)ab$","$b^{*}(ab^{*} + ab^{*}ab^{*} + \\lambda)ab$", "$b^{*}(ab^{*} + ab^{*}ab^{*}+ ab^{*}ab^{*}ab^{*} + \\lambda)ab$", "$(b^{*}ab^{*} + b^{*}ab^{*}ab^{*} + b^{*})ab$", "$b^{*}ab^{*}ab + b^{*}ab^{*}ab^{*}ab + b^{*}ab$"]
