@@ -65,7 +65,9 @@
   },
   "chapters": {
     "Stuff": {
-	  "Lin/PDA":{}
+    "Lin/DFA":{},
+    "Lin/PDA":{}
+
     },
     "Appendix": {
       "Glossary": {},
