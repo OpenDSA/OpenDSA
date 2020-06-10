@@ -15,7 +15,7 @@ Transforming Grammars Exercises
 Exercise 1
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_6/sheet6exercise1.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_6/sheet6exercise1.html ae
    :long_name: Sheet 6 Exercise 1 Draw a DFA for a language
 
 Exercise 2
