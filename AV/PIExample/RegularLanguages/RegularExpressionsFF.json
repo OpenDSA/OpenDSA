@@ -103,8 +103,8 @@
           "type": "select",
           "question":"Which of the following equals $L(a+b+c^*)$",
           "description": "Definition: $L(r)$ is the language denoted by regular expression $r$. <br> $\\textbf{1.}$ $\\emptyset$, {$\\lambda$}, and $\\{a\\in \\Sigma\\}$ are each languages denoted by some R.E. <br> Note that $\\emptyset$ $=$ $\\{\\}$ (the empty set), while $\\lambda$ $=$ $\\{\\lambda\\}$, meaning the set containing just the empty string.",
-          "answer": ["$L(a+b)\\cup L(c^*)$", "$L(a)\\cup L(b)\\cup L(c^*)$", "$\\{a\\}\\cup L(b)\\cup L(c^*)$", "$\\{a\\}\\cup\\{b\\}\\cup L(c^*)$", "$\\{a\\, b\\}\\cup L(c^*)$", "$\\{a\\, b\\}\\cup\\{\\lambda, c, cc, ccc, ...)$", "$\\{\\lambda, a, b, c, cc, ccc, ...)$"],
-          "choices": ["$L(a+b)\\cup L(c^*)$", "$L(a)\\cup L(b)\\cup L(c^*)$", "$\\{a\\}\\cup L(b)\\cup L(c^*)$", "$\\{a\\}\\cup\\{b\\}\\cup L(c^*)$", "$\\{a\\, b\\}\\cup L(c^*)$", "$\\{a\\, b\\}\\cup\\{\\lambda, c, cc, ccc, ...)$", "$\\{\\lambda, a, b, c, cc, ccc, ...)$"]
+          "answer": ["$L(a+b)\\cup L(c^*)$", "$L(a)\\cup L(b)\\cup L(c^*)$", "$\\{a\\}\\cup L(b)\\cup L(c^*)$", "$\\{a\\}\\cup\\{b\\}\\cup L(c^*)$", "$\\{a,b\\}\\cup L(c^*)$", "$\\{a,b\\}\\cup\\{\\lambda, c, cc, ccc, ...)$", "$\\{\\lambda, a, b, c, cc, ccc, ...)$"],
+          "choices": ["$L(a+b)\\cup L(c^*)$", "$L(a)\\cup L(b)\\cup L(c^*)$", "$\\{a\\}\\cup L(b)\\cup L(c^*)$", "$\\{a\\}\\cup\\{b\\}\\cup L(c^*)$", "$\\{a,b\\}\\cup L(c^*)$", "$\\{a,b\\}\\cup\\{\\lambda, c, cc, ccc, ...)$", "$\\{\\lambda, a, b, c, cc, ccc, ...)$"]
         },
         "q18": {
           "type": "multiple",
