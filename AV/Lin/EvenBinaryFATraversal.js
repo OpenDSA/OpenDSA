@@ -8,12 +8,6 @@
 
 	// Initializes a new graph and runs a traversal input. Called whenever the page is loaded.
 	var initialize = function() {
-		g = localStorage['graph']; // The graph was saved to local storage by the FAEditor.
-		if (!g) {
-			jsav.umsg("Error!");
-			return;
-		}
-
         var url = window.location.search;
         var Request = new Object();
         if (url.indexOf('?') != -1) {
@@ -39,7 +33,6 @@
 	
 	// Function to create a graph out of a serialized representation.
 	var initGraph = function(opts) {
-		var gg = jQuery.parseJSON(g);
 		var graph = jsav.ds.FA($.extend({width: '90%', height: 180}, opts));
 		// For each node in the JSON, initialize it on the graph.
 	    var node = graph.addNode('q0'),
