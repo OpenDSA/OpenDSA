@@ -1,50 +1,66 @@
 /*global JSAV, document */
-// Written by Sushma Mandava
+// Written by Cliff Shaffer
+// Based on earlier versions by Sushma Mandava and Aditya Tikhe and Milen John
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("badPointerPowCON", {animationMode: "none"});
-  var xPosition = 275;
+  var av_name = "badPointerPowCON";
+  var av = new JSAV(av_name);
+
+  var xPosition = 550;
   var yPositionR1 = 10;
+  var yPositionR2 = 75;
+  var yPositionR3 = 120;
   var length1 = 100;
-  var width = 30;
+  var width = 35;
+  var ptrline = av.g.line(xPosition - 130, yPositionR1 + 50 + width/2,
+            xPosition - 30, yPositionR1 + 50 + width/2,
+            {"arrow-end": "classic-wide-long",
+             opacity: 100, "stroke-width": 2});
+  ptrline.hide();
 
-  av.label("badPointer",  {top: yPositionR1 - 10, left: xPosition - 80});
-  av.g.rect(xPosition, yPositionR1, length1, width);
-  av.label("POW!!!",  {top: yPositionR1 + 60, left: xPosition + 170});
-
-  //create the x's
-  av.g.line(xPosition + 10, yPositionR1 + 25, xPosition + 30, yPositionR1 + 3, {"stroke-width": 2});
-  av.g.line(xPosition + 10, yPositionR1 + 3, xPosition + 30, yPositionR1 + 25, {"stroke-width": 2});
-  av.g.line(xPosition + 40, yPositionR1 + 25, xPosition + 60, yPositionR1 + 3, {"stroke-width": 2});
-  av.g.line(xPosition + 40, yPositionR1 + 3, xPosition + 60, yPositionR1 + 25, {"stroke-width": 2});
-  av.g.line(xPosition + 70, yPositionR1 + 25, xPosition + 90, yPositionR1 + 3, {"stroke-width": 2});
-  av.g.line(xPosition + 70, yPositionR1 + 3, xPosition + 90, yPositionR1 + 25, {"stroke-width": 2});
-
-  av.g.line(xPosition + length1 - 5, yPositionR1 + width - 3, xPosition + length1 + 60, yPositionR1 + width + 40, {"stroke-width": 3});
-  av.g.polyline([[xPosition + length1 + 50, yPositionR1 + width + 43], [xPosition + length1 + 65, yPositionR1 + width + 45],
-    [xPosition + length1 + 69, yPositionR1 + width + 35]], {fill: "black"});
-
-  // Explosion
-  var xPositionBAD = 450;
-  var yPositionBAD = 75;
-  av.g.polyline([[xPositionBAD, yPositionBAD],
-                 [xPositionBAD + 5, yPositionBAD - 10],
-                 [xPositionBAD + 10, yPositionBAD + 10],
-                 [xPositionBAD + 15, yPositionBAD - 20],
-                 [xPositionBAD + 30, yPositionBAD + 10],
-                 [xPositionBAD + 50, yPositionBAD + 0],
-                 [xPositionBAD + 75, yPositionBAD + 5],
-                 [xPositionBAD + 100, yPositionBAD + 15],
-                 [xPositionBAD + 60, yPositionBAD + 25],
-                 [xPositionBAD + 80, yPositionBAD + 30],
-                 [xPositionBAD + 50, yPositionBAD + 40],
-                 [xPositionBAD + 40, yPositionBAD + 70],
-                 [xPositionBAD + 35, yPositionBAD + 40],
-                 [xPositionBAD + 15, yPositionBAD + 50],
-                 [xPositionBAD + 0, yPositionBAD + 30],
-                 [xPositionBAD - 20, yPositionBAD + 25],
-                 [xPositionBAD, yPositionBAD]],
-                {"stroke-width": 3, stroke: "red"});
+  var xPositionBAD = 540;
+  var yPositionBAD = 55;
+  var polygon = av.g.polyline([[xPositionBAD, yPositionBAD],
+    [xPositionBAD + 5, yPositionBAD - 10],
+    [xPositionBAD + 10, yPositionBAD + 10],
+    [xPositionBAD + 15, yPositionBAD - 20],
+    [xPositionBAD + 30, yPositionBAD + 10],
+    [xPositionBAD + 50, yPositionBAD + 0],
+    [xPositionBAD + 75, yPositionBAD + 5],
+    [xPositionBAD + 200, yPositionBAD + 15],
+    [xPositionBAD + 160, yPositionBAD + 25],
+    [xPositionBAD + 180, yPositionBAD + 30],
+    [xPositionBAD + 50, yPositionBAD + 40],
+    [xPositionBAD + 40, yPositionBAD + 70],
+    [xPositionBAD + 35, yPositionBAD + 40],
+    [xPositionBAD + 15, yPositionBAD + 50],
+    [xPositionBAD + 10, yPositionBAD + 35],
+    [xPositionBAD - 20, yPositionBAD + 25],
+    [xPositionBAD, yPositionBAD]],
+   {"stroke-width": 3, stroke: "red"});
+  polygon.hide();
+  
+  // Slide 1
+  av.umsg("At first, <tt>badPointer</tt> points to nothing because it is uninitialized.");
+  var code1 = av.label('<tt>Employee badPointer;</tt>', 
+                       {top: -10, left: 145});
+  av.label("badPointer", {top: yPositionR1 + 40,
+                          left: xPosition - 280});
+  var rect1 = av.g.rect(xPosition - 180, yPositionR1 + 50, length1, width);
+  var nullslash = av.g.line(xPosition - 180, yPositionR1 + 50,
+                            xPosition - 80, yPositionR1 + width + 50);
   av.displayInit();
+
+  // Slide 2
+  // Explosion
+  av.umsg("Because the reference doesn't point to anything, trying to follow it gives us a null pointer exception");
+  nullslash.hide();
+  code1.hide
+  av.label('<tt>System.out.println(badPointer.getName());</tt>', 
+           {top: 10, left: 145});
+  ptrline.show();
+  av.label("NullPointerException",  {top: 50, left: 550});
+//  av.g.ellipse(680, 27, 78, 25, {stroke: "red", "stroke-width": 3}); 
+  polygon.show();
   av.recorded();
 });

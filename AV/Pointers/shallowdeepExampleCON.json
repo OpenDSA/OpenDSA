@@ -2,19 +2,21 @@
   "translations": {
     "en": {
       "sc1": "Let's look at an example to see the difference between shallow and deep copying.",
-      "sc2": "First, create a Employee, Sam, and shallow copy firstEmployee to shallowCopyEmployee, which is a new Employee reference.",
-      "sc3": "Now, using setName(), update the Employee object's name as \"John\", which shallowCopyEmployee is pointing to.",
-      "sc4": "If you print out the name of firstEmployee, you will see that the name of the Employee is now \"John,\" not \"Sam.\".",
-      "sc5": "Now, we create 2 Employee objects secondEmployee and deepCopyEmployee. Set the name of secondEmployee as \"Patrice.\"",
-      "sc6": "After that, copy the name of seconEmployee and set the name as deepCopyEmployee's name. So you deep-copied secondEmployee.",
-      "sc7": "Set deepCopyEmployee's name as \"John.\"",
-      "sc8": "Finally, if you print the name of secondEmployee, it is stil \"Patrice\" and changing deepCopyEmployee's name did not effect any of secondEmployee's values."
+      "sc2": "First let's create an <tt>Employee</tt> object with name field 'Sam'. This is referenced by <tt>firstEmployee</tt>.",
+      "sc3": "Then let's 'shallow copy' by creating a new reference named <tt>shallowCopyEmployee</tt>, and making it also reference the same <tt>Employee</tt> object that <tt>firstEmployee</tt> references.",
+      "sc4": "Now, using setName(), update the Employee object's name as \"John\", which shallowCopyEmployee is pointing to.",
+      "sc5": "If you print out the name of firstEmployee, you will see that the name of the Employee is now \"John,\" not \"Sam.\".",
+      "sc6": "Now, let's create another <tt>Employee</tt> object, referneced by <tt>secondEmployee</tt>. Set the name of this employee to be 'Patrice'.",
+      "sc7": "Then we create a third <tt>Employee</tt> object, referenced by <tt>deepCopyEmployee</tt>.",
+      "sc8": "After that, copy the name of the object referenced by <tt>secondEmployee</tt> and set that name into the object referenced by <tt>deepCopyEmployee</tt>. So you deep-copied the contents of <tt>secondEmployee</tt>'s object.",
+      "sc9": "Now, let's set the name of the object referenced by <tt>deepCopyEmployee</tt> to 'John'.",
+      "sc10": "Finally, if you print the name of <tt>secondEmployee</tt>, it is still 'Patrice'. Changing <tt>deepCopyEmployee</tt>'s name did not affect <tt>secondEmployee</tt>'s name."
     }
   },
   "code": {
     "java": [{
       "url": "../../../SourceCode/Java/Pointers/shallowCopyExample.java",
-      "lineNumbers": true,
+      "lineNumbers": false,
       "startAfter": "/* *** ODSATag: shallow *** */",
       "endBefore": "/* *** ODSAendTag: shallow *** */",
       "tags": {

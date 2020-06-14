@@ -76,7 +76,7 @@ their own.
 .. inlineav:: shallowdeepExampleCON ss
    :long_name: Shallow Deep Copy Slideshow
    :links: AV/Pointers/shallowdeepExampleCON.css
-   :scripts: AV/Development/Milen/shallowdeepExampleCON.js
+   :scripts: AV/Pointers/shallowdeepExampleCON.js
    :output: show
 
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
@@ -143,15 +143,15 @@ The dereference operation will crash or halt immediately.
 Each reference must be assigned a pointee before it can support
 dereference operations.
 Before that, the reference is bad and must not be used.
-In our memory drawings, the bad reference value is shown with an XXX
-value.
+In our memory drawings, the bad reference value is drawn as a diagonal
+line between the corners of the reference variable's box.
 
 .. _numptrxxxFig:
 
-.. inlineav:: empPtrxxxCON ss
-   :links: AV/Development/Milen/empPtrxxxCON.css
-   :scripts: AV/Development/Milen/empPtrxxxCON.js
-   :output: show
+.. inlineav:: empRefnullCON dgm
+   :links: AV/Pointers/empRefnullCON.css
+   :scripts: AV/Pointers/empRefnullCON.js
+   :align: center
 
 Bad references are common.
 In fact,  **every reference starts out with a bad value**.
@@ -205,11 +205,13 @@ will crash.
 It is up to you to ensure that each reference is assigned a pointee
 before it is used.
 Here is a simple example of bad code, and a
-drawing of how memory would react if this code were executed.
+visualization of how memory would react if this code were executed.
 
 .. codeinclude:: Pointers/badPointers
    :tag: badPointers
 
+|
+         
 .. inlineav:: badPointerPowCON ss
    :links: AV/Pointers/badPointerPowCON.css
    :scripts: AV/Development/Milen/badPointerPowCON.js
