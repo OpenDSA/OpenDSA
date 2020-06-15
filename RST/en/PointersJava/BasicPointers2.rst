@@ -214,7 +214,7 @@ visualization of how memory would react if this code were executed.
          
 .. inlineav:: badPointerPowCON ss
    :links: AV/Pointers/badPointerPowCON.css
-   :scripts: AV/Development/Milen/badPointerPowCON.js
+   :scripts: AV/Pointers/badPointerPowCON.js
    :output: show
 
 Why Are Bad Reference Bugs So Common?
