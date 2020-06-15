@@ -16,12 +16,14 @@ $(document).ready(function () {
   var label1, label2 , label3, label4, label5, label6, label7, label8, label9,
       label10, label11, label12,nl1,nl2,nl3,n4;
 
-  av.umsg("<br><b>Reduction of SAT to 3SAT </b>");
+  // Slide 1
+  av.umsg("<br><b>Reduction of SAT to 3-SAT </b>");
   nl1=av.label(" This slideshow presents how to reduce a Formula Satisfiability "+
                "problem to an 3 CNF Satisfiability problem in polynomial time",{top:0});
   av.displayInit();
   av.step();
 
+  // Slide 2
   nl1.hide();
   av.umsg("<br><b>Reduction of SAT to 3-SAT</b>");
 
@@ -36,41 +38,40 @@ $(document).ready(function () {
                +"three literals. &nbsp;&nbsp;&nbsp; For example : ($x_1 + \\overline{x_2} + x_3$ "+
                "+ $\\cdots$ +$x_k$) where $k > 3$"
                ,{top:-10});
-
-
   av.step();
+
+  // Slide 3
   nl2=av.label("Any of the above type of clause (C) can be replaced by"
                +" a conjunction of clauses (Z) such that <br><br>1. All clauses in "+
                "Z contain  exactly 3 literals. <br><br>2. C is satisfiable if and only if"+
                " Z is satisfiable. that is $C \\iff Z$"
                ,{top:280});
-
   av.step();
 
+  // Slide 4
   av.umsg("<br><b>Case 2: Reduction of clauses containing one literal</b>");
   nl1.hide();
   nl2.hide();
   nl1=av.label("Let $C_i$ &nbsp;&nbsp; = &nbsp; $l_i$ where $l_i$ is a "+
                "literal.",{top:-10});
-
   av.step();
 
+  // Slide 5
   nl2=av.label("Introduce 2 new variables $y_{i,1}$ and "+
                "$y_{i,2}$.",{top:20});
-
   av.step();
 
+  // Slide 6
   nl3=av.label("Replace $C_i$ by conjunction of clauses "
                +"$Z_i$ where",{top:45});
-
   var nl4= av.label("$Z_i = $",{top:70,left:0});
   label1 = av.label("$(l_i + y_{i,1} + y_{i,2}) \\cdot$ ",{left:30,top:70});
   label2 = av.label("$(l_i + \\overline{y_{i,1}} + y_{i,2}) \\cdot$ ",{left:145,top:70});
   label3 = av.label("$(l_i + y_{i,1} + \\overline{y_{i,2}}) \\cdot$ ",{left:255,top:70});
   label4 = av.label("$(l_i + \\overline{y_{i,1}} + \\overline{y_{i,2}})$",{left:365,top:70});
-
   av.step();
 
+  // Slide 7
   label1.addClass("falsecolor");
   label2.addClass("truecolor");
   label3.addClass("color1");
@@ -80,8 +81,9 @@ $(document).ready(function () {
   label6 = av.label("II",{left:190,top:90}).addClass("truecolor");;
   label7 = av.label("III",{left:305,top:90}).addClass("color1");
   label8 = av.label("IV",{left:430,top:90}).addClass("color2");
-
   av.step();
+
+  // Slide 8
   label9 = av.label("<b>Truth Table :</b>",{left:20,top:110});
 
   var mat1 =[["$l_i$","$y_{i,1}$","$y_{i,2}$",
@@ -91,30 +93,28 @@ $(document).ready(function () {
              ["T","F","T","T","T","T","T","T"],
              ["T","F","F","T","T","T","T","T"],
              ["F","T","T","T","T","T","F","F"],
-             ["F","T","F","T","T","F","T","F"],
-             ["F","F","T","T","F","T","T","F"],
+             ["F","T","F","T","F","T","T","F"],
+             ["F","F","T","T","T","F","T","F"],
              ["F","F","F","F","T","T","T","F"]
             ];
 
   var table1 = new av.ds.matrix(mat1,{style:"table",left:10,top:130,});
-
   for(var i=0;i<9;i++)
     for(var j=3;j<8;j++)
       table1.addClass(i,j,"invisible");
-
   av.step();
 
+  // Slide 9
   label1.addClass("fontbold");
   for(var i=0;i<9;i++)
     table1.removeClass(i,3,"invisible");
-
   av.step();
 
+  // Slide 10
   label1.removeClass("fontbold");
   label2.addClass("fontbold");
   for(var i=0;i<9;i++)
     table1.removeClass(i,4,"invisible");
-
   av.step();
 
   label2.removeClass("fontbold");
