@@ -180,6 +180,9 @@ PIExample: min
 PIFormalLang: min
 	python $(CONFIG_SCRIPT) config/PIFormalLang.json --no-lms
 
+PIExercises: min
+	python $(CONFIG_SCRIPT) config/PIExercises.json --no-lms
+
 DeformsTesting: min
 	python $(CONFIG_SCRIPT) config/DeformsTesting.json --no-lms
 
