@@ -263,22 +263,22 @@
            "points": 5.0
           },
           "aNumsPowerOf2":{ 
-           "points": 5.0
+           "points": 0.0
           },
           "ifaNumsPowerOf2":{ 
-           "points": 5.0
+           "points": 0.0
           },
           "abcWInWWROut":{ 
-           "points": 5.0
+           "points": 0.0
           },
           "abcNawlargerthanNbw":{ 
-           "points": 5.0
+           "points": 0.0
           },
           "replaceABAbyACA":{ 
-            "points": 5.0
+            "points": 0.0
           },
           "abPalindromes":{ 
-            "points": 5.0
+            "points": 0.0
           }
         }
       },
