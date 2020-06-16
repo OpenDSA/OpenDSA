@@ -237,6 +237,9 @@ CS3F18notes: min
 CS4104: min
 	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
 
+C2GEN: min
+	python $(CONFIG_SCRIPT) config/C2GEN.json --no-lms
+
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
@@ -320,7 +323,7 @@ Blockchain: min
 
 Peixuan: min
 	python $(CONFIG_SCRIPT) config/Peixuan.json --no-lms
-	
+
 Zinan: min
 	python $(CONFIG_SCRIPT) config/Zinan.json --no-lms
 
