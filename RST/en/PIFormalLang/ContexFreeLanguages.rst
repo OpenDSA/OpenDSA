@@ -15,21 +15,21 @@ Context-Free Languages
 ----------------------
 .. inlineav:: ContextFreeLanguagesFF ff
    :links: AV/PIExample/CFL/ContextFreeLanguagesFF.css
-   :scripts: AV/PIExample/CFL/ContextFreeLanguagesFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+   :scripts: AV/PIExample/CFL/ContextFreeLanguagesFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
 String Derivation
 -----------------
 .. inlineav:: CFGDerivationsFF ff
    :links: AV/PIExample/CFL/CFGDerivationsFF.css
-   :scripts: AV/PIExample/CFL/CFGDerivationsFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+   :scripts: AV/PIExample/CFL/CFGDerivationsFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
 Derivation Trees
 ----------------
 .. inlineav:: DerivationTreesFF ff
    :links: AV/PIExample/CFL/DerivationTreesFF.css
-   :scripts: AV/PIExample/CFL/DerivationTreesFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+   :scripts: AV/PIExample/CFL/DerivationTreesFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
 
@@ -44,7 +44,7 @@ Ambiguity
 ---------
 .. inlineav:: AmbiguitySecond ff
    :links: AV/PIExample/CFL/AmbiguitySecond.css
-   :scripts: AV/PIExample/CFL/AmbiguitySecond.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+   :scripts: AV/PIExample/CFL/AmbiguitySecond.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
 Ambiguity Exmaple
