@@ -47,10 +47,3 @@ Ambiguity
    :scripts: AV/PIExample/CFL/AmbiguitySecond.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
-Ambiguity Exmaple
------------------
-.. inlineav:: AmbiguityExample2 ff
-   :links: AV/PIExample/CFL/AmbiguityExample2.css
-   :scripts: AV/PIExample/CFL/AmbiguityExample2.js lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
-   :output: show
-
