@@ -170,7 +170,7 @@ Now let's see how this machine accepts / rejects some strings.
     :name: DFAEvenBinaryCustomizeInput
     :width: 820
     :height: 500
-
+    
 Definitions
 ~~~~~~~~~~~
 
