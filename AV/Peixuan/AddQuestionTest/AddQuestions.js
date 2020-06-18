@@ -153,9 +153,6 @@ var addFinals = function (g1, g2) {
   }
 };
 
-//store all the nodes of original graph for question generation
-var allNodes = [];
-
 //shuffle array
 var shuffle = function (array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -197,13 +194,6 @@ var generateQuestions = function (steps, graph = null, configure) {
     "translations": {
       "en": {}
     }
-  }
-
-  //get the nodes of original graph
-  if(graph != null){
-    graph.nodes().forEach(node => {
-      allNodes.push(node.options["value"]);
-    });
   }
 
   var questionsIndex = 0;
@@ -290,7 +280,6 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
     var divider = state.relatedTo.length - 1;
     if (maxChoices <= 1 || divider < 1){
       console.error("can't generate choices for a node that can't be divided");
-      return allNodes;
     }
 
 
@@ -698,7 +687,12 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
   //it can be reused by other visualization functions
   //may need to change parameters of those functions to let them work for other slides
   var steps = getAllStepsForConvertToDFA(startState, graph);
-
+  //store all the nodes of original graph for question generation
+  var allNodes = [];
+  //get the nodes of original graph
+  graph.nodes().forEach(node => {
+    allNodes.push(node.options["value"]);
+  });
   var generateDFAQuestionsForAState = function (state) {
       var answer = state["node"].split(',');
       if(answer.length == 1){
