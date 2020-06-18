@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
-.. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -77,12 +77,10 @@ internal nodes have up to four children.
 
 .. _BTexamp:
 
-.. odsafig:: Images/BTexamp.png
-   :width: 400
+.. inlineav:: BTreedgmCON dgm
+   :links: AV/Indexing/BTreeCON.css
+   :scripts: AV/Indexing/BTreeCON.js AV/Indexing/BTreedgmCON.js
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: A B-tree of order four
 
    A B-tree of order four.
 

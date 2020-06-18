@@ -1,16 +1,16 @@
 /* Removes top margin from array objects to make the diagram a litle more compact */
-.jsavarray {
+#BTreedgmCON .jsavarray {
   margin-top: 0;
   margin-bottom: 0;
   min-height: 30px;
 }
 
-.jsavoutput.jsavline {
+#BTreedgmCON .jsavoutput.jsavline {
   height: 30px;
 }
 
 /* Change the size of each array box */
-.jsavarray .jsavindex {
+#BTreedgmCON .jsavarray .jsavindex {
   min-width: 33px;
   max-width: 33px;
   min-height: 30px;
@@ -18,7 +18,7 @@
 }
 
 /* Center text inside of array cell by making height equal to the container height */
-.jsavnode .jsavvalue {
+#BTreedgmCON .jsavnode .jsavvalue {
   height: 20px;
 }
 
@@ -27,36 +27,13 @@
   font-size: .9em;
 }
 
-/* Make corners of arrays square */
-.jsavarray .jsavnode.jsavindex {
+/* Set width and height for the JSAV canvas */
+#BTreedgmCON .jsavarray .jsavnode.jsavindex {
   border-radius: 0;
 }
 
 /* Styling for the BTreeCON diagram ***********************************/
 
-#BTreedgmCON .jsavcanvas{
+#BTreedgmCON .jsavcanvas {
   height: 200px;
-}
-
-/* Sytling for the simpleInsertCON slide show ********************************/
-
-
-/* Set width and height for the JSAV canvas */
-#simpleInsertCON .jsavcanvas {
-  height: 230px;
-}
-
-/* Sytling for the promoteCON slide show ********************************/
-
-/* Set width and height for the JSAV canvas */
-#promoteCON .jsavcanvas {
-  height: 230px;
-}
-
-/* Sytling for the splitCON slide show ********************************/
-
-
-/* Set width and height for the JSAV canvas */
-#splitCON .jsavcanvas {
-  height: 300px;
 }
