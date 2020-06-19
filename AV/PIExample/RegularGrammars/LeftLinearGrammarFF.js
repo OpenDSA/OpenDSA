@@ -2,8 +2,8 @@ $(document).ready(function() {
   "use strict";
   var av_name = "LeftLinearGrammarFF";
   var av = new JSAV(av_name);
-  
-  var Frames = PIFRAMES.init(av_name);
+
+  //var Frames = PIFRAMES.init(av_name);
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
       interpret = config.interpreter, // get the interpreter
@@ -37,6 +37,7 @@ $(document).ready(function() {
     width: 500,
     height: 250
   };
+  av.step();
   var NFA = gToFAConverterWithQuestion(av_name, GToFAConverter, NFAoptions, {top: 10, left: -50});
   av.step();
   av.umsg("Then resulting NFA (call it $NFA_{rev}$) will represent the reverse of the original Language, $L^R$.");
@@ -45,5 +46,5 @@ $(document).ready(function() {
   av.step();
   av.umsg("By reversing each production in the resulting Right Linear grammar, we will get the the Left Linear grammar for the reverse of $L^R$. So, we have the Left Linear grammar for $(L^R)^R = L$.");
   av.recorded();
-  
+
 });
