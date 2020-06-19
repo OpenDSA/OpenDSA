@@ -16,7 +16,7 @@ Introduction to regular grammar
 -------------------------------
 .. inlineav:: RegularGrammarFF ff
    :links: AV/PIExample/RegularGrammars/RegularGrammarFF.css
-   :scripts: AV/PIExample/RegularGrammars/RegularGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+   :scripts: AV/PIExample/RegularGrammars/RegularGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
 
@@ -25,14 +25,14 @@ NFA from Regular Grammar
 
 .. inlineav:: NFAToREFF ff
    :links: AV/PIExample/RegularGrammars/NFAToREFF.css
-   :scripts: AV/PIExample/RegularGrammars/NFAToREFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js AV/Obsolete/FL_resources/ParseTree.js 
+   :scripts: AV/PIExample/RegularGrammars/NFAToREFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js
    :output: show
 
 Regular Grammar to NFA Example
 ------------------------------
 .. inlineav:: REtoFAExampleFF ff
    :links: AV/PIExample/RegularGrammars/REtoFAExampleFF.css
-   :scripts: AV/PIExample/RegularGrammars/REtoFAExampleFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js AV/Obsolete/FL_resources/ParseTree.js 
+   :scripts: AV/PIExample/RegularGrammars/REtoFAExampleFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js
    :output: show
 
 Right-linear Regular Grammar from NFA
@@ -48,7 +48,7 @@ Regular Grammar from NFA Example
 
 .. inlineav:: NFAToReExampleFF ff
    :links: AV/PIExample/RegularGrammars/NFAToReExampleFF.css
-   :scripts: AV/PIExample/RegularGrammars/NFAToReExampleFF.js AV/Peixuan/AddQuestionTest/AddQuestions.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js AV/Obsolete/FL_resources/ParseTree.js lib/underscore.js
+   :scripts: AV/PIExample/RegularGrammars/NFAToReExampleFF.js AV/Peixuan/AddQuestionTest/AddQuestions.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js lib/underscore.js
    :output: show
 
 Left Regular Grammars
@@ -72,5 +72,5 @@ Something to Think About
 
 .. inlineav:: STA ff
    :links: AV/PIExample/RegularGrammars/STA.css
-   :scripts: AV/PIExample/RegularGrammars/STA.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+   :scripts: AV/PIExample/RegularGrammars/STA.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show

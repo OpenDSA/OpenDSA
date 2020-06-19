@@ -2,6 +2,7 @@
 $(document).ready(function() {
     "use strict";
     var av_name = "NFAToReExampleFF";
+    var arrow = String.fromCharCode(8594);
     var av = new JSAV(av_name);
     var url = "../../../AV/VisFormalLang/FA/Machines/NFAtoRE.jff";
     var arr = new Array(7);    // arbitrary array size

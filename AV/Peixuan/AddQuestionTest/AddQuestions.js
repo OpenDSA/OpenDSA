@@ -1016,7 +1016,7 @@ var gToFAConverterWithQuestion = function (av_name, converter, nFAoptions, pifra
   }
 
   converter.jsav.umsg("This is the equivalent NFA for this Regular Grammer.");
-
+  return converter;
 }
 
 var getStepsForGToFAConverter = function (converter, nFAoptions){
