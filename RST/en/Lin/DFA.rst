@@ -166,7 +166,7 @@ Now let's see how this machine accepts / rejects some strings.
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/TraceEvenBinaryDFACON.js
    :output: show
 
-.. iframe:: AV/Lin/DFAEvenBinaryCustomizeInput.html
+.. iframe:: AV/Lin/EvenBinaryFATraversal.html
     :name: DFAEvenBinaryCustomizeInput
     :width: 820
     :height: 500

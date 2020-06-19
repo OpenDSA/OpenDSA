@@ -26,7 +26,9 @@
       }
     }
 
-    var runFunction = initGraph({ layout: 'automatic' }) // Run function may or may not have shorthand enabled.
+    var runFunction = initGraph({
+      layout: 'automatic',
+    }) // Run function may or may not have shorthand enabled.
     $('.jsavcontrols').show()
     runFunction()
   }
@@ -34,18 +36,31 @@
   // Function to create a graph out of a serialized representation.
   var initGraph = function (opts) {
     var graph = jsav.ds.FA(
-      $.extend({ left: 20, width: '40%', height: 220 }, opts)
+      $.extend(
+        {
+          left: 20,
+          width: '40%',
+          height: 150,
+        },
+        opts
+      )
     )
     // For each node in the JSON, initialize it on the graph.
     var node = graph.addNode('q0'),
       offset = $('.jsavgraph').offset(),
       offset2 = parseInt($('.jsavgraph').css('border-width'), 10)
-    $(node.element).offset({ top: 190, left: 110 })
+    $(node.element).offset({
+      top: 225,
+      left: 110,
+    })
     graph.makeInitial(node)
     var node = graph.addNode('q1'),
       offset = $('.jsavgraph').offset(),
       offset2 = parseInt($('.jsavgraph').css('border-width'), 10)
-    $(node.element).offset({ top: 190, left: 270 })
+    $(node.element).offset({
+      top: 225,
+      left: 270,
+    })
     node.addClass('final')
 
     //add edge to graph
@@ -156,7 +171,9 @@
           nextStates = traverse(g, currentStates, currentInputString[i])
           currentStates = nextStates
         }
-        matrix.css(c, i, { 'background-color': 'yellow' })
+        matrix.css(c, i, {
+          'background-color': 'yellow',
+        })
         jsav.step()
       }
 
@@ -172,13 +189,17 @@
 
       if (rejected) {
         for (var l = 0; l < currentInputString.length; l++) {
-          matrix.css(c, l, { 'background-color': 'red' })
+          matrix.css(c, l, {
+            'background-color': 'red',
+          })
         }
 
         jsav.umsg('Rejected')
       } else {
         for (var l = 0; l < currentInputString.length; l++) {
-          matrix.css(c, l, { 'background-color': 'green' })
+          matrix.css(c, l, {
+            'background-color': 'green',
+          })
         }
         jsav.umsg('Accepted')
       }
@@ -237,7 +258,9 @@
       textArray.push(inputString[i])
     }
     // Use this array to initialize the JSAV array.
-    arr = jsav.ds.array(textArray, { element: $('.arrayPlace') })
+    arr = jsav.ds.array(textArray, {
+      element: $('.arrayPlace'),
+    })
     jsav.displayInit()
 
     // Iterate over each character in the input string.
@@ -262,7 +285,9 @@
         for (var k = 0; k < currentStates.length; k++) {
           currentStates[k].addClass('rejected')
         }
-        arr.css(i, { 'background-color': 'red' })
+        arr.css(i, {
+          'background-color': 'red',
+        })
         // Add a step to the slideshow and break out of the loop.
         jsav.step()
         break
@@ -272,7 +297,9 @@
       currentEdges = nextEdges
       edgeWeight = traverseStep[2]
       edgeProgress = traverseStep[3]
-      arr.css(i, { 'background-color': 'yellow' })
+      arr.css(i, {
+        'background-color': 'yellow',
+      })
       jsav.step()
     }
 
@@ -289,13 +316,17 @@
     if (rejected) {
       // If the input string was rejected, color every character in the JSAV array red.
       for (var l = 0; l < inputString.length; l++) {
-        arr.css(l, { 'background-color': 'red' })
+        arr.css(l, {
+          'background-color': 'red',
+        })
       }
       jsav.umsg('Rejected')
     } else {
       // If the input string was accepted, color every character in the JSAV array green.
       for (var l = 0; l < inputString.length; l++) {
-        arr.css(l, { 'background-color': 'green' })
+        arr.css(l, {
+          'background-color': 'green',
+        })
       }
       jsav.umsg('Accepted')
     }
