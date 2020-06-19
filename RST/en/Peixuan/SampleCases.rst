@@ -58,3 +58,11 @@ Auto Generating Questions for Regular Grammar
    :links:   DataStructures/FLA/FLA.css AV/Peixuan/AddQuestionTest/FAtoRegGrammmarWithQCON.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Peixuan/AddQuestionTest/AddQuestions.js DataStructures/PIFrames.js AV/Peixuan/AddQuestionTest/FAtoRegGrammmarWithQCON.js
    :output: show
+
+Auto Generating Questions for DFATrace
+--------------------------------------
+
+.. inlineav:: TraceEvenBinaryDFACON ss
+   :links: DataStructures/FLA/FLA.css AV/Peixuan/AddQuestionTest/TraceEvenBinaryDFAWithQCON.css
+   :scripts: DataStructures/FLA/FA.js AV/Peixuan/AddQuestionTest/TraceEvenBinaryDFAWithQCON.js
+   :output: show

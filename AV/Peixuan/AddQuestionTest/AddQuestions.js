@@ -938,7 +938,7 @@ var gToFAConverterWithQuestion = function (av_name, converter, nFAoptions, pifra
 
   var steps = getStepsForGToFAConverter(converter, nFAoptions);
   var generatingFunction = function (state) {
-    if (state["weight"] === "λ") {
+    if (state["type"] === "final") {
       return [{
         "type": "multiple",
         "question": "What is the appropriate transition for production of " + state["node"] + " and the final state?",
@@ -1046,7 +1046,7 @@ var getStepsForGToFAConverter = function (converter, nFAoptions){
       res.push([{
         "node" : l,
         "relatedTo" : r,
-        "type" : "regularGrammarToNFA",
+        "type" : "final",
         "weight" : r
       }]);
     } else {
@@ -1097,7 +1097,7 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
   weights = _.uniq(weights);
 
   var generatingFunction = function (state) {
-    if (state["weight"] === "λ") {
+    if (state["type"] === "final") {
       return [{
         "type": "multiple",
         "question": "Which one represents the final state?",
