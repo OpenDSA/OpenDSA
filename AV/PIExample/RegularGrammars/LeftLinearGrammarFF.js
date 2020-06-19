@@ -26,7 +26,7 @@ $(document).ready(function() {
     [\"S\",\"→\",\"cA\"],\
     [\"A\",\"→\",\"bA\"],\
     [\"A\",\"→\",\"bF\"],\
-    [\"F\",\"→\",\"$\\lambda$\"]\
+    [\"F\",\"→\",\"λ\"]\
   ]";
   var GToFAConverter = new GrammarToFAConverter(av,grammer,matrixOptions);
   av.step();
