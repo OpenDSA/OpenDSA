@@ -21,7 +21,7 @@ class EquationBank{
             "HEIGHT": dim_obj["EQBANK"]["HEIGHT"],
             "PAGE": {
                 "POSITION_X": dim_obj["EQBANK"]["CORNER_X"]+5,
-                "POSITION_Y": dim_obj["EQBANK"]["CORNER_Y"]+40,
+                "POSITION_Y": dim_obj["EQBANK"]["CORNER_Y"]+20,
                 "WIDTH": 30,
                 "HEIGHT_PAD": 5,
                 "HEIGHT": 50
@@ -84,9 +84,9 @@ class EquationBank{
         // this.equationBankDiv = (list => list[list.length-1])
         // (document.getElementsByTagName("rect"))
 
-        this.globalSectionObj.label("Equation Bank", 
+        var eqbankddlpos = this.globalSectionObj.label("Select:",//"Equation Bank", 
             {
-                left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 46, 
+                left: this.DIMENSIONS["POSITION_X"], 
                 top: this.DIMENSIONS["POSITION_Y"]-12,
             })
             .addClass("workspacelabel")
@@ -131,39 +131,48 @@ class EquationBank{
         // });
         
         // Creating the page objects (JSAV objects)
+        var eqbank_ddl = document.createElement("select");
+        eqbank_ddl.classList.add("equationPageTitle");
+
         for(var pagename in this.equation_pages)
         {
+            var option = document.createElement("option");
+            option.value = pagename;
+            option.innerText = pagename;
+            eqbank_ddl.options.add(option);
+            option.addEventListener("mouseover", e=> {console.log(e.target.value)});
+
             this.equation_page_titles.push(pagename);
 
             // Create the JSAV changeable title
-            this.equation_pages[pagename]["pagetitlejsav"] = 
-                this.globalSectionObj.label(
-                    pagename,
-                    {
-                        left: this.DIMENSIONS["POSITION_X"]+15,
-                        top: this.DIMENSIONS["POSITION_Y"]+15
-                    }
-                ).addClass("equationPageTitle");
+            // this.equation_pages[pagename]["pagetitlejsav"] = 
+            //     this.globalSectionObj.label(
+            //         pagename,
+            //         {
+            //             left: this.DIMENSIONS["POSITION_X"]+15,
+            //             top: this.DIMENSIONS["POSITION_Y"]+15
+            //         }
+            //     ).addClass("equationPageTitle");
 
-            this.equation_pages[pagename]["pagetitlejsav"].element[0]
-            .addEventListener("click", event=> {
-                    event.stopPropagation();
-                    var eqMenu = JSAV.utils.dialog(
-                        this.dialogMenuText, {width: 100}
-                    );
-                    eqMenu[0].style.top = event.pageY+5+"px";
-                    eqMenu[0].style.left = event.pageX+10+"px";
-                    eqMenu[0].childNodes[0].childNodes.forEach(x => {
-                        x.addEventListener(
-                            "click", x=> {
-                                x.stopPropagation();
-                                // console.log(x.target.dataset.pagename);
-                                this.showPage(x.target.dataset.pagename);
-                                eqMenu.close();
-                        });
-                    });
-                });
-            this.equation_pages[pagename]["pagetitlejsav"].hide();
+            // this.equation_pages[pagename]["pagetitlejsav"].element[0]
+            // .addEventListener("click", event=> {
+            //         event.stopPropagation();
+            //         var eqMenu = JSAV.utils.dialog(
+            //             this.dialogMenuText, {width: 100}
+            //         );
+            //         eqMenu[0].style.top = event.pageY+5+"px";
+            //         eqMenu[0].style.left = event.pageX+10+"px";
+            //         eqMenu[0].childNodes[0].childNodes.forEach(x => {
+            //             x.addEventListener(
+            //                 "click", x=> {
+            //                     x.stopPropagation();
+            //                     // console.log(x.target.dataset.pagename);
+            //                     this.showPage(x.target.dataset.pagename);
+            //                     eqMenu.close();
+            //             });
+            //         });
+            //     });
+            // this.equation_pages[pagename]["pagetitlejsav"].hide();
             // Create the equation label texts, and possibly the selectable objects
             
             // OBSOLETE: MAY TRY TO FIX LATER, MOVING TO AV.DS.ARRAY instead
@@ -223,9 +232,11 @@ class EquationBank{
                 jsavEq.hide();
                 jsavEq.element[0].dataset.id = currentEqnObject["id"];
                 jsavEq.element[0].dataset.status = 'no'; // Becomes yes when selected.
+                jsavEq.element[0].setAttribute("title", "Click on the equation to select it, and click here inside workspace or Add add it");
                 jsavEq.element[0].addEventListener(
                     "click", e=> {
                         e.stopPropagation();
+                        Window.clearGlobalPointerReference();
                         
                         // De-select the previous one
                         if(this.currentSelectedEquationObject != null)
@@ -282,6 +293,14 @@ class EquationBank{
 
         // Create the page title labels, just hide them in plain sight
         // this.equation_page_number = 0;
+        eqbankddlpos.element[0].appendChild(eqbank_ddl);
+        eqbankddlpos.element[0].setAttribute("title", "Click to select the palette of equations desired");
+        eqbank_ddl.value = this.equation_page_titles[0];
+        eqbank_ddl.addEventListener(
+            "change", e=> {e.stopPropagation();
+            this.showPage(event.target.value);
+            });
+
         this.showPage(this.equation_page_titles[0]);
         
         // Add clickhandlers to the equations in the equation pages here, that pass the
@@ -329,6 +348,7 @@ class EquationBank{
                 // The index itself draws from the index on the array for that page.
                 // Getting the eqobject includes using the page title name and the index in the array
                 // that was clicked and passed to the handler.
+            "equationsID": {},
             "visualComponents": {
                 "POSITION_X": this.DIMENSIONS["PAGE"]["POSITION_X"],
                 "POSITION_Y": this.DIMENSIONS["PAGE"]["POSITION_Y"]+15,
@@ -338,6 +358,7 @@ class EquationBank{
     addToFavourites(currentEqnObject)
     {
         // console.log("Adding to favourites", eqobject.group, eqobject.id);
+        if(currentEqnObject.id in this.equation_pages["Favourites"]["equationsID"]) return; // Do nothing; equation is already there.
         var jsavEq = Window.jsavObject.label(
             katex.renderToString(currentEqnObject["latex"]),
             {
@@ -349,13 +370,16 @@ class EquationBank{
         this.equation_pages["Favourites"]["equations"][currentEqnObject["id"]] = currentEqnObject;
         this.equation_pages["Favourites"]["pagejsav"][currentEqnObject["id"]] = jsavEq;
         this.equation_pages["Favourites"]["visualComponents"]["POSITION_Y"] += 15 + currentEqnObject["height"];
+        this.equation_pages["Favourites"]["equationsID"][currentEqnObject.id] = "";
         
         jsavEq.hide();
         jsavEq.element[0].dataset.id = currentEqnObject["id"];
         jsavEq.element[0].dataset.status = 'no'; // Becomes yes when selected.
+        jsavEq.element[0].setAttribute("title", "Click on the equation to select it, and click here inside workspace or Add add it");
         jsavEq.element[0].addEventListener(
             "click", e=> {
                 e.stopPropagation();
+                Window.clearGlobalPointerReference();
                 
                 // De-select the previous one
                 if(this.currentSelectedEquationObject != null)
@@ -402,7 +426,7 @@ class EquationBank{
         if(this.lastPageShown == pageName) return;
 
         if(this.lastPageShown !=  null) {
-            this.equation_pages[this.lastPageShown]["pagetitlejsav"].hide();
+            // this.equation_pages[this.lastPageShown]["pagetitlejsav"].hide();
             for(var x in this.equation_pages[this.lastPageShown]["pagejsav"])
             {
                 this.equation_pages[this.lastPageShown]["pagejsav"][x].hide();
@@ -411,7 +435,7 @@ class EquationBank{
         }
         
         // Show the current page
-        this.equation_pages[pageName]["pagetitlejsav"].show();
+        // this.equation_pages[pageName]["pagetitlejsav"].show();
         for(var x in this.equation_pages[pageName]["pagejsav"])
         {
             this.equation_pages[pageName]["pagejsav"][x].show();

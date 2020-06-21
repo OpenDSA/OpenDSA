@@ -198,12 +198,13 @@ requirejs(["./mathjs.js"], function(){});
         av.displayInit();
         av.recorded();
         mechSolverCommon.userInput = false;
+        globalPointerReference.currentClickedObject = null;
+        globalPointerReference.currentClickedObjectType = null;
+        globalPointerReference.currentClickedObjectDescription = null;
 
-        // $("body").on("jsav-log-event", function(event, eventData) {
-        //     console.log(eventData);
-        //     jsav.logEvent({type: "jsav-heap-decrement",
-        //        newSize: bh.heapsize()});
-        //   });
+        $("body").on("jsav-log-event", function(event, eventData) {
+            console.log(eventData);
+          });
         
         // Setting up value boxes for those inside the question body
         var selectableParameters = document.getElementsByClassName("param");
@@ -211,6 +212,9 @@ requirejs(["./mathjs.js"], function(){});
         {
             selectableParameters[index].addEventListener(
                 "click", function() {
+                    event.stopPropagation();
+                    Window.clearGlobalPointerReference();
+
                     globalPointerReference.currentClickedObject = 
                     new ValueBox(
                         true,this,null,globalPointerReference
@@ -221,8 +225,17 @@ requirejs(["./mathjs.js"], function(){});
                     // console.log(
                     //     globalPointerReference.currentClickedObject.valueDisplay,
                     //     globalPointerReference.currentClickedObject.unitDisplay);
+                    globalPointerReference.currentClickedObject.element.classList.add("selectedvalue");
+                    av.logEvent({
+                        type: "jsav-something",
+                        av: "SimpleProblemPPRO",
+                        desc: "example event log",
+                    });
                 }
             )
+
+            // Setting up tooltip for guidance
+            selectableParameters[index].setAttribute("title", "Click to select value");
         }
 
         // Setting up solution boxes clickhandlers 
@@ -232,10 +245,11 @@ requirejs(["./mathjs.js"], function(){});
             globalSolutionBoxes[index] = {"solution":null};
             solutionSubmissionBoxes[index].dataset.index = index;
             solutionSubmissionBoxes[index].addEventListener(
-                "click", function() {
+                "click", e=> {
                     // console.log(
                     //     globalPointerReference.currentClickedObject.valueDisplay,
                     //     globalPointerReference.currentClickedObject.unitDisplay);
+                    e.stopPropagation();
                     if(globalPointerReference.currentClickedObjectType == "value-box")
                     {
                         this.innerHTML =
@@ -249,12 +263,20 @@ requirejs(["./mathjs.js"], function(){});
                             };
                         //console.log(this.globalPointerReference);
                     }
-                    globalPointerReference.currentClickedObject = null;
-                    globalPointerReference.currentClickedObjectType = null;
-                    globalPointerReference.currentClickedObjectDescription = null;
+                    Window.clearGlobalPointerReference();
+                    // globalPointerReference.currentClickedObject = null;
+                    // globalPointerReference.currentClickedObjectType = null;
+                    // globalPointerReference.currentClickedObjectDescription = null
                 }
             )
         }
+
+        // Creating clickhandlers associated with the body to clear the globalPointerReference
+        document.body.addEventListener("click", e=> {
+            e.stopPropagation();
+            // console.log("Inside the body snatcher");
+            Window.clearGlobalPointerReference();
+        });
 
         // Creating list of usable variables
         for(var i=0; i<26; i++)
@@ -267,14 +289,14 @@ requirejs(["./mathjs.js"], function(){});
 
         // Once everything is done, popup the help text once, and the next couple of times it can be
         // loaded from the (?) button probably located on the side
-        var questionSign = Window.jsavObject.label("?",
-            {
-                top: 1,
-                right: 20
-            }
-        ).addClass("equationPageTitle");
-        questionSign.element[0].addEventListener("click", Window.showHelp);
-        Window.showHelp();
+        // var questionSign = Window.jsavObject.label("?",
+        //     {
+        //         top: 1,
+        //         right: 20
+        //     }
+        // ).addClass("equationPageTitle");
+        // questionSign.element[0].addEventListener("click", e => { e.stopPropagation(); Window.showHelp("general") } );
+        Window.showHelp("general");
     }
 
     window.mechSolverCommon = window.mechSolverCommon || mechSolverCommon;

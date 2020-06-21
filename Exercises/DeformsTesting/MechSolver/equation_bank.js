@@ -150,7 +150,7 @@ const equations = [
         group: 'Basic definitions',
         id: "HookesLaw1Dsigma",
         name: 'Hookes Law, one dimensional for stress',
-        latex: '\\sigma{ } = E_{ } \\cdot \\epsilon_{ }',
+        latex: '\\sigma_{ } = E_{ } \\cdot \\epsilon_{ }',
         latex_boxes: '\\Box = \\Box \\cdot \\Box',
         params_latex: ['\\sigma_{ }', 'E_{ }', '\\epsilon_{ }'],
         template: 'normalstress = normalstresscoeff * normalstrain',

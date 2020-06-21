@@ -71,6 +71,7 @@ class WindowManager{
                     currWorkspace2.elements[3]["div"].style.top = currWkspace2PosY-15+"px";
                     currWorkspace2.elements[4]["div"].style.top = currWkspace2PosY-15+"px";
                     currWorkspace2.elements[5]["div"].style.top = currWkspace2PosY-15+"px";
+                    currWorkspace2.elements[6]["div"].style.top = currWkspace2PosY-15+"px";
                     var equations = currWorkspace2.LIST_OF_EQUATIONS_IN_WORKSPACE;
 
                     //moves all equations down
@@ -80,6 +81,8 @@ class WindowManager{
 
                         equations[eq].visualComponents["tickmark"]["element"][0].style.top = amountShift + "px";
                         equations[eq].visualComponents["text"]["element"][0].style.top = amountShift + 3 + "px";
+                        equations[eq].visualComponents["delete"]["element"][0].style.top = amountShift + "px";
+                        equations[eq].visualComponents["help"]["element"][0].style.top = amountShift + "px";
                         equations[eq].jsavequation["element"][0].style.top = amountShift + "px";
                     }
 
@@ -89,6 +92,9 @@ class WindowManager{
                         var currSoln = solnList[soln];
                         currSoln["element"]["visualComponent"]["element"][0].style.top = 
                             parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10)
+                            + currWkspaceElementHeight + currWkspaceElementHeightPad + "px";
+                        currSoln["element"]["deleteButton"]["element"][0].style.top = 
+                            parseInt(currSoln["element"]["deleteButton"]["element"][0].style.top,10)
                             + currWkspaceElementHeight + currWkspaceElementHeightPad + "px";
                     }
                 }
@@ -131,6 +137,8 @@ class WindowManager{
 
                         equations[eq2].visualComponents["tickmark"]["element"][0].style.top = amountShift + "px";
                         equations[eq2].visualComponents["text"]["element"][0].style.top = amountShift + 3 + "px";
+                        equations[eq2].visualComponents["delete"]["element"][0].style.top = amountShift + "px";
+                        equations[eq2].visualComponents["help"]["element"][0].style.top = amountShift + "px";
                         equations[eq2].jsavequation["element"][0].style.top = amountShift + "px";
                     }
                 }
@@ -144,6 +152,9 @@ class WindowManager{
                         currSoln["element"]["visualComponent"]["element"][0].style.top = 
                             parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) - 
                             currWkspaceElementHeight - currWkspaceElementHeightPad + "px";
+                        currSoln["element"]["deleteButton"]["element"][0].style.top = 
+                            parseInt(currSoln["element"]["deleteButton"]["element"][0].style.top,10) - 
+                            currWkspaceElementHeight - currWkspaceElementHeightPad + "px";
                     }
                 }
 
@@ -154,6 +165,7 @@ class WindowManager{
 
                 currEquation.jsavequation.clear();
                 currEquation.visualComponents["text"].clear();
+                currEquation.visualComponents["delete"].clear();
                 currEquation.visualComponents["tickmark"].clear();
                 delete currWkspace.LIST_OF_EQUATIONS_IN_WORKSPACE[eq];
 
@@ -254,12 +266,16 @@ class WindowManager{
                 currWkspace.elements[3].div.style.top = parseInt(currWkspace.elements[3].div.style.top, 10) - totalShift + "px";
                 currWkspace.elements[4].div.style.top = parseInt(currWkspace.elements[4].div.style.top, 10) - totalShift + "px";
                 currWkspace.elements[5].div.style.top = parseInt(currWkspace.elements[5].div.style.top, 10) - totalShift + "px";
-
+                currWkspace.elements[6].div.style.top = parseInt(currWkspace.elements[6].div.style.top, 10) - totalShift + "px";
+                
                 var equations = currWkspace.LIST_OF_EQUATIONS_IN_WORKSPACE;
                 for(const eq in equations) {
                     var origHeight = parseInt(equations[eq].visualComponents["tickmark"]["element"][0].style.top, 10) - totalShift;
 
                     equations[eq].visualComponents["tickmark"]["element"][0].style.top = origHeight + "px";
+                    equations[eq].visualComponents["delete"]["element"][0].style.top = origHeight + "px";
+                    equations[eq].visualComponents["help"]["element"][0].style.top = origHeight + "px";
+                    
                     equations[eq].visualComponents["text"]["element"][0].style.top = origHeight + 3 + "px";
                     equations[eq].jsavequation["element"][0].style.top = origHeight + "px";
                 }
@@ -269,7 +285,8 @@ class WindowManager{
                     var currSoln = currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
                     currSoln["element"]["visualComponent"]["element"][0].style.top = 
                     parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) - totalShift + "px";
-
+                    currSoln["element"]["deleteButton"]["element"][0].style.top = 
+                    parseInt(currSoln["element"]["deleteButton"]["element"][0].style.top,10) - totalShift + "px";
                 }
             }
         }
@@ -296,6 +313,8 @@ class WindowManager{
                 currWorkspace2.elements[3].div.style.top = parseInt(currWorkspace2.elements[3].div.style.top, 10) - heightShift + "px";
                 currWorkspace2.elements[4].div.style.top = parseInt(currWorkspace2.elements[4].div.style.top, 10) - heightShift + "px";
                 currWorkspace2.elements[5].div.style.top = parseInt(currWorkspace2.elements[5].div.style.top, 10) - heightShift + "px";
+                currWorkspace2.elements[6].div.style.top = parseInt(currWorkspace2.elements[6].div.style.top, 10) - heightShift + "px";
+                
                 currWorkspace2.DIMENSIONS["POSITION_Y"] -= currWkspace.DIMENSIONS["HEIGHT"];
                 currWorkspace2.DIMENSIONS.ELEMENTS["POSITION_Y"] -= currWkspace.DIMENSIONS["HEIGHT"];
                 for(const eq2 in equations) {
@@ -303,12 +322,18 @@ class WindowManager{
                         heightShift;
 
                     equations[eq2].visualComponents["tickmark"]["element"][0].style.top = amountShift + "px";
+                    equations[eq2].visualComponents["delete"]["element"][0].style.top = amountShift + "px";
+                    equations[eq2].visualComponents["help"]["element"][0].style.top = amountShift + "px";
+
                     equations[eq2].visualComponents["text"]["element"][0].style.top = amountShift + 3 + "px";
                     equations[eq2].jsavequation["element"][0].style.top = amountShift + "px";
                 }
                 for(const soln in currWorkspace2.LIST_OF_SOLUTIONS_IN_WORKSPACE) {
                     var currSoln = currWorkspace2.LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
                     currSoln["element"]["visualComponent"]["element"][0].style.top = 
+                        parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) - 
+                        currWkspace.DIMENSIONS["HEIGHT"] + "px";
+                    currSoln["element"]["help"]["element"][0].style.top = 
                         parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) - 
                         currWkspace.DIMENSIONS["HEIGHT"] + "px";
                 }
@@ -320,13 +345,16 @@ class WindowManager{
             var deleteEq = currWkspace.LIST_OF_EQUATIONS_IN_WORKSPACE[eq];
             deleteEq.jsavequation.clear();
             deleteEq.visualComponents["text"].clear();
+            deleteEq.visualComponents["delete"].clear();
             deleteEq.visualComponents["tickmark"].clear();
+            deleteEq.visualComponents["help"].clear();
         }
 
         //deletes all solutions associated with workspace
         for(const soln in currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE) {
             var deleteSoln = currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
             deleteSoln.element.visualComponent.clear();
+            deleteSoln.element.deleteButton.clear();
         }
 
         this.extendCanvas(heightShift * -1);

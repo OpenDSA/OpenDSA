@@ -10,8 +10,8 @@ class ValueBox{
             this.valueDisplay = element.dataset.valueDisplay;
             this.unitDisplay = element.dataset.unitDisplay;
             this.domain = element.dataset.domain;
-            this.globalPointerReference = globalPointerReference;
-            this.element = null;
+            this.globalPointerReference = Window.globalPointerReference;
+            this.element = element;
         }
         else
         {
@@ -21,9 +21,9 @@ class ValueBox{
             this.valueDisplay = element.dataset.valueDisplay;
             this.unitDisplay = element.dataset.unitDisplay;
             this.domain = element.dataset.domain;
-            this.globalPointerReference = globalPointerReference;
+            this.globalPointerReference = Window.globalPointerReference;
             this.element = null;
-            this.createSolutionBox(element, globalJSAV);
+            this.createSolutionBox(element, Window.jsavObject);
         }
     }
     createSolutionBox(element, globalJSAV)
@@ -33,16 +33,33 @@ class ValueBox{
         // AND the value, unit, etc. things
         this.element = {};
 
+        this.element.deleteButton = globalJSAV.label(
+            "&#x2702",
+            {
+                left: element.visuals["POSITION_X"],
+                top: element.visuals["POSITION_Y"] //added three for visual padding balance between solutions and equations
+            }
+        ).addClass("tickselected");
+        this.element.deleteButton.element[0].addEventListener(
+            "click", e=> {
+                e.stopPropagation();
+                console.log("Clicked on box, Want to delete?");
+                // Insert function call deleting visual component here, together with calls to shiftup/down, etc.
+                // see how you can connect this to deleting the object from the workspace
+            }
+        )
+
         // First, create a box, that can be replaced by a value and a unit element (same as variable boxes)
         this.element.visualComponent = globalJSAV.label(
             katex.renderToString(
                 // element.dataset.variableDisplay+"="+element.dataset.valueDisplay+element.dataset.unitDisplay),
                 element.dataset.variableDisplay+"= \\Box"),
             {
-                left: element.visuals["POSITION_X"],
+                left: element.visuals["POSITION_X"]+this.element.deleteButton.element[0].offsetWidth+5,
                 top: element.visuals["POSITION_Y"]+3 //added three for visual padding balance between solutions and equations
             }
         ).addClass("solutionBox");
+
         var boxList = this.element.visualComponent.element[0].childNodes[0].childNodes[1].childNodes[2].querySelectorAll("span.mord.amsrm")
         boxList[0].setAttribute("data-domain", this.domain);
         boxList[0].innerHTML = '<span class="mord value"></span><span class="mord unit"></span>';
@@ -111,7 +128,9 @@ class ValueBox{
         
         var text = "<ul>";
         // console.log(UNIT_DB[event.target.parentNode.parentNode.dataset.domain]);
-        for(var x in Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain])
+        if(Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain] == null)
+            text += "<li>No options available</li>"
+        else for(var x in Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain])
         {
             text+='<li data-unitname="'+x+'">'+x+' ('+
             Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x]['unitDisp']+')</li>';

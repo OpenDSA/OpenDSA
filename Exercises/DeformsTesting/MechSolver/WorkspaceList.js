@@ -50,19 +50,46 @@ class WorkspaceList
             });
         
         // Add the buttons for adding workspace
-        this.globalJSAVobject.label("Add Workspace", 
+        
+        // this.addbutton = this.globalJSAVobject.label("Add Workspace", 
+        var addbuttonText = this.globalJSAVobject.label("", 
         {left: this.DIMENSIONS["UPPER_CORNER_X"]+4, top: this.DIMENSIONS["UPPER_CORNER_Y"]-12})
         .addClass("addworkspace");
-
-        this.addbutton = 
-        (list => 
-            list[list.length-1]
-            )(document.getElementsByClassName("addworkspace"));
         
-        this.addbutton.addEventListener('click', e => {
-            e.stopPropagation();
+        this.addbutton = document.createElement("input");
+        this.addbutton.setAttribute("type", "button");
+        this.addbutton.setAttribute("value", "Add Workspace");
+        addbuttonText.element[0].appendChild(this.addbutton);
+        addbuttonText.element[0].setAttribute("title", "Add a new workspace area to segregate subparts or separate attempts.");
+        
+        // this.addbutton.element[0].addEventListener('click', e => {
+        this.addbutton.addEventListener("click", e=> {
+            // e.stopPropagation();
+            e.stopImmediatePropagation();
             this.addNewWorkspace();
             this.globalJSAVobject.logEvent({type: "adding new workspace", "id": this.workspaceCounter-1});
+            // console.log(this.globalJSAVobject);
+        });
+
+        var helpButtonText = this.globalJSAVobject.label("", 
+        {
+            left: this.DIMENSIONS["UPPER_CORNER_X"]+this.DIMENSIONS["WIDTH"]-50,
+            top: this.DIMENSIONS["UPPER_CORNER_Y"]-12
+        })
+        .addClass("addworkspace");
+        
+        var helpButton = document.createElement("input");
+        helpButton.setAttribute("type", "button");
+        helpButton.setAttribute("value", "Help");
+        helpButtonText.element[0].appendChild(helpButton);
+        helpButtonText.element[0].setAttribute("title", "Click to open the help text");
+        
+        // this.addbutton.element[0].addEventListener('click', e => {
+        helpButtonText.element[0].addEventListener("click", e=> {
+            // e.stopPropagation();
+            e.stopImmediatePropagation();
+            Window.showHelp("general");
+            this.globalJSAVobject.logEvent({type: "getting help from the workspace", "id": this.workspaceCounter-1});
             // console.log(this.globalJSAVobject);
         });
         

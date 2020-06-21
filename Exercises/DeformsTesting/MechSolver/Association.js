@@ -44,12 +44,11 @@ class Association{
         // Text must be in A_{b} or A_{ } format
         
         if(varname == "" && subscript == "")
-            this.varDisplay = this.varDisplayTemplate;
+            this.varDisplay = this.varDisplayTemplate;  // Reset to template ONLY IF nothing is input at all
         else if(varname == ""){
             // not very obvious, just means only the subscript will be updated, main text remains the same.
-            // NOTE: This isn't working now, but is only a minor feature, we can look at it later.
-            // this.varDisplay.replace(new RegExp('\{ \}', 'g'),`{${subscript}}`);
-            this.varDisplay = this.varDisplayTemplate;
+            // this.varDisplay = this.varDisplayTemplate;
+            this.varDisplay = this.varDisplay.replace(new RegExp('_\{[A-Za-z0-9 ]+\}', 'g'),"_{"+subscript+"}");
         }
         else this.varDisplay = varname+"_{"+subscript+"}";
         this.updateVarDisplay();

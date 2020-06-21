@@ -74,6 +74,7 @@ class Workspace
                 )(document.getElementsByTagName("rect"))
         };
         this.elements[0]["div"].setAttribute("id",this.name+"box");
+        // "Select an equation from the Equation Bank, and click here to add it"
 
         // Adding the name of the workspace
         this.elements[1] = {};
@@ -93,7 +94,7 @@ class Workspace
         // Adding the close X button/text
         this.elements[2] = {
             "jsav":
-                this.globalSectionObj.label("X", 
+                this.globalSectionObj.label("&#x2702", 
                 {
                     left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]-20, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
@@ -104,7 +105,9 @@ class Workspace
                 )(document.getElementsByClassName("jsavlabel")),
         };
         this.elements[2]["div"].setAttribute("id",this.name+"close");
+        this.elements[2]["div"].setAttribute("title", "Click to remove the workspace, with all of its contents.");
         this.removebutton = document.getElementById(this.name+"close");
+        
         
 
         // Adding the Add, Remove, Solve Buttons to add, remove, and solve equations
@@ -129,6 +132,8 @@ class Workspace
             // this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
             this.addNewEquation();
         });
+        this.elements[3]["jsav"].element[0]
+        .setAttribute("title", "Add selected (highlighted) equation from the palette to this workspace.");
 
         this.elements[4] = {
             "jsav":
@@ -153,6 +158,7 @@ class Workspace
             this.globalSectionObj.logEvent({type: "Deleting equation"});
             this.deleteEquations();
         });
+        this.elements[4]["jsav"].element[0].setAttribute("title", "Remove selected (ticked) equations from this workspace.");
 
         this.elements[5] = {
             "jsav":
@@ -177,6 +183,28 @@ class Workspace
            this.solveEquations();
            this.globalSectionObj.logEvent({type: "Solution"});
         });
+        this.elements[5]["jsav"].element[0].setAttribute("title", "Click to solve the system of equations.");
+
+        // Adding the close X button/text
+        this.elements[6] = {
+            "jsav":
+                this.globalSectionObj.label("&#xFFFD", 
+                {
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]-40, 
+                    top: this.DIMENSIONS["POSITION_Y"]-15
+                })
+                .addClass("close_x"),
+            "div": (list => 
+                list[list.length-1]
+                )(document.getElementsByClassName("jsavlabel")),
+        };
+        this.elements[6]["div"].setAttribute("id",this.name+"help");
+        this.elements[6]["div"].setAttribute("title", "Click to get help.");
+        
+        this.elements[6].jsav.element[0].addEventListener("click", e=> {
+            e.stopPropagation();
+            Window.showHelp("workspace");
+        })
     }
     destroyBox()
     {
@@ -198,6 +226,7 @@ class Workspace
         this.elements[3]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
         this.elements[4]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
         this.elements[5]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
+        this.elements[6]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
     }
     selectWorkspaceColor()
     {
@@ -272,7 +301,19 @@ class Workspace
         // If the equation already exists or was brought in once, preemptively
         // add a subscript to this equation.
         // This can be made more complex to update the subscripts for all of them
-        if(lastHashMapID > 1) newActiveEquation.setSubscript(null, String(lastHashMapID), newActiveEquation);
+        if(lastHashMapID > 1)
+        {
+            newActiveEquation.setSubscript(null, String(lastHashMapID), newActiveEquation);
+            // TODO: To replace this part with the appropriate calls to each variable's
+            // changeVarName method that will change their parentSymbolTemplate, no the TemplateZero,
+            // so that any subsequent calls to setSubscript will be able to reset to the subscripted
+            // variable names as templates in grayed out boxes as well as in associations (where the
+            // original template is available as this.varDisplayTemplate).
+            for(var vIndex in newActiveEquation.variables)
+            {
+                newActiveEquation.variables[vIndex].changeVarName("", String(lastHashMapID));
+            }
+        }
         
         // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
@@ -305,14 +346,23 @@ class Workspace
                 }
             ];
         }
+
+        // Add the event handler for deleting equations in here.
+        newActiveEquation.visualComponents["delete"].element[0].addEventListener("click", e => {
+            e.stopPropagation();
+            this.LIST_OF_EQUATIONS_IN_WORKSPACE[e.target.dataset.id].selected = true;
+            this.deleteEquations();
+        });
+
         // console.log(newActiveEquation);
         this.lastEquation = newActiveEquation;
         Window.windowManager.shiftDown(this.lastEquation, this.id);
+        Window.clearGlobalPointerReference();
         //console.log(this.equationHashMap);
         // console.log(this.DIMENSIONS);
     }
-    // OldSolveEquations()
-    // {
+    OldSolveEquations()
+    {
     //     // Step 1: See which equations are selected
     //     var equationSet = [];
     //     var equationObjectSet = [];
@@ -394,7 +444,7 @@ class Workspace
     //             currentEqn.selected = false;
     //         }
     //     }
-    // }
+    }
 
     deleteEquations()
     {
