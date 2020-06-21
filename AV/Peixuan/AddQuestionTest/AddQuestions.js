@@ -1273,3 +1273,220 @@ var getStepsForConvertToGrammar = function(FAtoGrammar, grammarMatrix) {
   });
   return converted;
 }
+
+var acceptorVisualizeWithQuestions = function (av_name, av, acceptor, listOfStrings, arrayOptions, piframesLocations) {
+  var special = ['zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth'];
+  acceptor.matrix = acceptor.jsav.ds.matrix(listOfStrings, { style: "table", top: arrayOptions.top, left: arrayOptions.left });
+
+  var steps = getStepsForAcceptorVisualize(acceptor, listOfStrings, arrayOptions);
+  var generatingFunction = function (state) {
+      if(state["type"] === "ACCEPTED"){
+        return [{
+          "type": "multiple",
+          "question": "Are we in a final state?",
+          "description": "We are at the end of the string.",
+          "answer": "Yes", //String if type is multiple, array of string if select
+          "choices": ["Yes", "No"]
+        },{
+          "type": "multiple",
+          "question": "Should this string be ACCEPTED or REJECTED?",
+          "description": "",
+          "answer": "ACCEPTED", //String if type is multiple, array of string if select
+          "choices": ["ACCEPTED", "REJECTED"]
+        }]
+      }
+      else{//"REJECTED"
+        return [{
+          "type": "multiple",
+          "question": "Are we in a final state?",
+          "description": "We are at the end of the string.",
+          "answer": "No", //String if type is multiple, array of string if select
+          "choices": ["Yes", "No"]
+        },{
+          "type": "multiple",
+          "question": "Should this string be ACCEPTED or REJECTED?",
+          "description": "",
+          "answer": "REJECTED", //String if type is multiple, array of string if select
+          "choices": ["ACCEPTED", "REJECTED"]
+        }]
+      }
+  }
+  var configure = {
+    "specialQuestionInedx" : [],
+    "specialQuestion" : [],
+    "questionPattern" : generatingFunction
+  };
+
+  var questions = generateQuestions(steps, av, configure);
+  // initialize PI frame
+  var Frames = piInit(av_name, questions, piframesLocations);
+  var questionsIndex = 0;
+
+  var run = function (acceptor, inputString, matrixRow) {
+    // Start with the closure of the initial state.
+    acceptor.FA.initial.addClass('current');
+    var currentStates = [acceptor.FA.initial];
+    currentStates = window.FiniteAutomaton.addLambdaClosure(acceptor.FA, currentStates);
+    var nextStates = currentStates;
+
+    // Create an array of characters in the input string.
+    var textArray = [];
+    for (var i = 0; i < inputString.length; i++) {
+      textArray.push(inputString[i]);
+    }
+    // Use acceptor array to initialize the JSAV array.
+    // Iterate over each character in the input string.
+    for (var i = 0; i < inputString.length; i++) {
+      // "Current" is used to mark states as visited, so start by removing "Current" from every node.
+      for (var j = 0; j < currentStates.length; j++) {
+        currentStates[j].removeClass('current');
+      }
+      // Run traversal step to find next states.
+      nextStates = window.FiniteAutomaton.traverse(acceptor.FA, currentStates, inputString[i]);
+      if (nextStates.length == 0) {
+        // If there are no next states, the input string was rejected. Update CSS of JSAV graph and array.
+        for (var k = 0; k < currentStates.length; k++) {
+          currentStates[k].addClass('rejected');
+        }
+        acceptor.matrix.css(matrixRow, i, { "background-color": "red" });
+        // Add a step to the slideshow and break out of the loop.
+        acceptor.jsav.step();
+        break;
+      }
+      // Prepare for the next iteration of the loop. Update the current character in the JSAV array and add a step to the slideshow.
+      currentStates = nextStates;
+      acceptor.jsav.umsg("Read a lettter and follow its transition out of the current state.");
+      acceptor.matrix.css(matrixRow, i, { "background-color": "yellow" });
+      acceptor.jsav.step();
+    }
+
+    var rejected = true;
+    acceptor.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+    questionsIndex++;
+    acceptor.jsav.step();
+    acceptor.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+    questionsIndex++;
+    acceptor.jsav.step();
+
+    for (var k = 0; k < currentStates.length; k++) {
+      // If we finished on a final state, the input string was accepted (unless we didn't make it to the end of the input string).
+      if (currentStates[k].hasClass('final') && nextStates.length > 0) {
+        // If there are no next states, it means the break statement in line 128 was triggered. Otherwise, we know we made it to the end of the input string.
+        currentStates[k].addClass('accepted');
+        rejected = false;
+      }
+    }
+
+    if (rejected) {
+      // If the input string was rejected, color every character in the JSAV array red.
+      for (var l = 0; l < inputString.length; l++) {
+        //arr.css(l, {"background-color": "red"});
+        acceptor.matrix.css(matrixRow, l, { "background-color": "red" });
+      }
+      acceptor.jsav.umsg("We are at the end of the string, but we are not in a final state. So the string is REJECTED.");
+
+    } else {
+      // If the input string was accepted, color every character in the JSAV array green.
+      for (var l = 0; l < inputString.length; l++) {
+        //arr.css(l, {"background-color": "green"});
+        acceptor.matrix.css(matrixRow, l, { "background-color": "green" });
+      }
+      acceptor.jsav.umsg("We are at the end of the string, and we are in a final state. So the string is ACCEPTED.");
+    }
+
+    // If the input string was rejected, label every current node as rejected.
+    var nodes = acceptor.FA.nodes();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      if (next.hasClass('current') && rejected) {
+        next.addClass('rejected');
+      }
+      next.removeClass('current');
+    }
+
+    // Add the last step to the slideshow, stop recording the slideshow, and add the click handler to the JSAV array.
+    acceptor.jsav.step();
+  };
+  acceptor.resetFA();
+  for (var i = 0; i < listOfStrings.length; i++) {
+    acceptor.jsav.umsg("The " + special[i + 1] + " string is " + listOfStrings[i].join(''));
+    acceptor.jsav.step();
+    acceptor.resetFA();
+    run(acceptor, listOfStrings[i], i);
+  }
+}
+
+var getStepsForAcceptorVisualize = function (acceptor, listOfStrings, arrayOptions) {
+  var res = [];
+  var run = function (acceptor, inputString, matrixRow) {
+    // Start with the closure of the initial state.
+    acceptor.FA.initial.addClass('current');
+    var currentStates = [acceptor.FA.initial];
+    currentStates = window.FiniteAutomaton.addLambdaClosure(acceptor.FA, currentStates);
+    var nextStates = currentStates;
+
+    // Create an array of characters in the input string.
+    var textArray = [];
+    for (var i = 0; i < inputString.length; i++) {
+      textArray.push(inputString[i]);
+    }
+    // Iterate over each character in the input string.
+    for (var i = 0; i < inputString.length; i++) {
+      // "Current" is used to mark states as visited, so start by removing "Current" from every node.
+      for (var j = 0; j < currentStates.length; j++) {
+        currentStates[j].removeClass('current');
+      }
+      // Run traversal step to find next states.
+      nextStates = window.FiniteAutomaton.traverse(acceptor.FA, currentStates, inputString[i]);
+      if (nextStates.length == 0) {
+        // If there are no next states, the input string was rejected. Update CSS of JSAV graph and array.
+        for (var k = 0; k < currentStates.length; k++) {
+          currentStates[k].addClass('rejected');
+        }
+        break;
+      }
+      // Prepare for the next iteration of the loop. Update the current character in the JSAV array and add a step to the slideshow.
+      currentStates = nextStates;
+    }
+
+    var rejected = true;
+    for (var k = 0; k < currentStates.length; k++) {
+      // If we finished on a final state, the input string was accepted (unless we didn't make it to the end of the input string).
+      if (currentStates[k].hasClass('final') && nextStates.length > 0) {
+        // If there are no next states, it means the break statement in line 128 was triggered. Otherwise, we know we made it to the end of the input string.
+        currentStates[k].addClass('accepted');
+        rejected = false;
+      }
+    }
+
+    if (rejected) {
+      res.push([{
+        "node" : "",
+        "relatedTo" : "",
+        "type" : "REJECTED",
+        "weight" : ""
+      }]);
+    } else {
+      res.push([{
+        "node" : "",
+        "relatedTo" : "",
+        "type" : "ACCEPTED",
+        "weight" : ""
+      }]);
+    }
+
+    // If the input string was rejected, label every current node as rejected.
+    var nodes = acceptor.FA.nodes();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      if (next.hasClass('current') && rejected) {
+        next.addClass('rejected');
+      }
+      next.removeClass('current');
+    }
+
+  };
+  for (var i = 0; i < listOfStrings.length; i++) {
+    acceptor.resetFA();
+    run(acceptor, listOfStrings[i], i);
+  }
+  return res;
+};
