@@ -159,7 +159,7 @@ BOOKS += CS2 CS2114 CS240 CS3 CS3C CS4104 CS4114 CS415 CS5040 CSC215 CSCD320 CSC
 BOOKS += NP NP4114 COMP271 COMPSCI186 CT CTEX PL PLdev PIFormalLang
 BOOKS += Blockchain Spatial PointersJavaSummer PointersJava PointersCPP Graphics FormalLangSummer1 WeihaoVisFormalLang
 BOOKS += PittACOS OpenFLAP JFLAP FormalLang VisFormalLang FL2019 PIExample C2GEN PIExercises 
-BOOKS += DanaG TJeffrey Michael cschandr Raghu Sam Yinwen Xiaolin Ning Yuhui Codio WuChen Echo Ming Aditya Milen Peixuan Lin Zinan
+BOOKS += DanaG TJeffrey Michael cschandr Raghu Sam Yinwen Xiaolin Ning Yuhui Codio WuChen Echo Ming Aditya Milen Peixuan Lin Patrick Zinan
 
 # A Static-Pattern Rule for making Books
 $(BOOKS): % : Books/%

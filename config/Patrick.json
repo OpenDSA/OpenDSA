@@ -64,11 +64,24 @@
     "required": true
   },
   "chapters": {
-    "Stuff": {
+    "Main Tests": {
       "NP/NPComplete": {},
+      "Patrick/testInlineAV": {},
+      "Patrick/testInlineAVff": {},
       "SeniorAlgAnal/Impossible": {}
+    },
+    "Design I": {
+      "Design/ADT": {
+        "IntroADTSumm": {
+          "threshold": 4
+        }
+      }, 
+      "Design/IntroOO": {}, 
+      "Design/IntroUML": {}, 
+      "Design/IntroProcess": {}
     }, 
     "Appendix": {
+      "Patrick/CitationTest" : {},
       "Glossary": {},
       "Bibliography": {}
     }
