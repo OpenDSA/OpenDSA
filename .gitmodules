@@ -5,7 +5,7 @@
 	path = khan-exercises
 	url = https://github.com/OpenDSA/khan-exercises.git
 	branch = master
-[submodule "hieroglyph"]
+[submodule "lib/hieroglyph"]
 	path = lib/hieroglyph
 	url = https://github.com/sublime09/hieroglyph.git
 	branch = master
