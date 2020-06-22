@@ -533,10 +533,13 @@ def configure(config_file_path, options):
         job.append("html")
         job.append("min")
 
-    print("$$$ Subprocess Started: " + " ".join(job))
-    proc = subprocess.run(job)
-    print("$$$ Subprocess Ended: " + " ".join(job))
-    proc.check_returncode()
+    try:
+        print("$$$ Subprocess Started: " + " ".join(job))
+        proc = subprocess.run(job, check=True)
+        print("$$$ Subprocess Complete: " + " ".join(job))
+    except subprocess.CalledProcessError as e:
+        print_err("make of eBook failed.  See above error")
+        exit(1)
     
     ''' TODO: Keep looking for encoding errors.
     These are because python 2.7 implicitly converted string encodings.  
