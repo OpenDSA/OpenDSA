@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
-.. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -39,10 +39,10 @@ What does it mean to copy?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An important use of sharing is to enable communication between two
-functions.
-One function passes a reference to the object of interest to another
-function.
-Both functions can access the object of interest, but the object of
+methods.
+One method passes a reference to the object of interest to another
+method.
+Both methods can access the object of interest, but the object of
 interest itself is not copied.
 This communication is called :term:`shallow copy` since, instead of
 making and sending a (large) copy of the object of interest, a (small)
@@ -52,16 +52,16 @@ so that they know not to change or delete it accidentally,
 since it is shared.
 The alternative |---| where a complete copy is made and sent |---| is
 known as a :term:`deep copy`.
-Deep copies are simpler in a way, since each function can change their
+Deep copies are simpler in a way, since each method can change their
 copy without interfering with the other copy.
 But deep copies run slower because of all the copying.
-And if the second function was **meant** to modify the copy for every
+And if the second method was **meant** to modify the copy for every
 user of the object, then deep copy won't let this happen.
-The drawing below shows shallow and deep copying between two functions,
+The drawing below shows shallow and deep copying between two methods,
 ``A()`` and ``B()``.
 In the shallow case, the smiley face is shared by passing a reference
 between the two.
-In the deep case, the smiley face is copied, and each function gets
+In the deep case, the smiley face is copied, and each method gets
 their own.
 
 .. _shallowdeepFig:
@@ -114,7 +114,7 @@ then in most languages we do **not** simply compare the two reference
 variables for equality.
 Instead, we need to do a "deep comparison" where we are looking at the
 characters in the strings themselves.
-Most languages have functions to do this for you.
+Most languages have methods to do this for you.
 In Java, we can see if two strings are the same with the ``.equals()``
 method of the ``String`` class, like this::
 
@@ -143,14 +143,14 @@ The dereference operation will crash or halt immediately.
 Each reference must be assigned a pointee before it can support
 dereference operations.
 Before that, the reference is bad and must not be used.
-In our memory drawings, the bad reference value is shown with an XXX
-value.
+In our memory drawings, the bad reference value is drawn as a diagonal
+line between the corners of the reference variable's box.
 
 .. _numptrxxxFig:
 
-.. inlineav:: empPtrxxxCON dgm
-   :links: AV/Pointers/empPtrxxxCON.css
-   :scripts: AV/Pointers/empPtrxxxCON.js
+.. inlineav:: empRefnullCON dgm
+   :links: AV/Pointers/empRefnullCON.css
+   :scripts: AV/Pointers/empRefnullCON.js
    :align: center
 
 Bad references are common.
@@ -205,15 +205,17 @@ will crash.
 It is up to you to ensure that each reference is assigned a pointee
 before it is used.
 Here is a simple example of bad code, and a
-drawing of how memory would react if this code were executed.
+visualization of how memory would react if this code were executed.
 
 .. codeinclude:: Pointers/badPointers
    :tag: badPointers
 
-.. inlineav:: badPointerPowCON dgm
+|
+         
+.. inlineav:: badPointerPowCON ss
    :links: AV/Pointers/badPointerPowCON.css
    :scripts: AV/Pointers/badPointerPowCON.js
-   :align: center
+   :output: show
 
 Why Are Bad Reference Bugs So Common?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -156,10 +156,10 @@ lib/%-min.css:: lib/%.css
 # Valid Targets using Static-Pattern rule for eBooks:
 BOOKS += Test Obsolete SimpleDemo Everything DeformsTesting OpenPOPExercises testcmap
 BOOKS += CS2 CS2114 CS240 CS3 CS3C CS4104 CS4114 CS415 CS5040 CSC215 CSCD320 CSCI204 CSCI2101 CSCI271
-BOOKS += NP NP4114 COMP271 COMPSCI186 CT CTEX PL PLdev
-BOOKS += Blockchain Spatial PointersJavaSummer PointersJava PointersCPP Graphics
-BOOKS += PittACOS OpenFLAP JFLAP FormalLang VisFormalLang FL2019 PIExample
-BOOKS += DanaG TJeffrey Michael cschandr Raghu Weihao Sam Yinwen Xiaolin Ning Yuhui Codio WuChen Echo Ming Aditya Milen Peixuan Lin
+BOOKS += NP NP4114 COMP271 COMPSCI186 CT CTEX PL PLdev PIFormalLang
+BOOKS += Blockchain Spatial PointersJavaSummer PointersJava PointersCPP Graphics FormalLangSummer1 WeihaoVisFormalLang
+BOOKS += PittACOS OpenFLAP JFLAP FormalLang VisFormalLang FL2019 PIExample C2GEN PIExercises 
+BOOKS += DanaG TJeffrey Michael cschandr Raghu Sam Yinwen Xiaolin Ning Yuhui Codio WuChen Echo Ming Aditya Milen Peixuan Lin Zinan
 
 # A Static-Pattern Rule for making Books
 $(BOOKS): % : Books/%

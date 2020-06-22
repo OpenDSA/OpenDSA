@@ -1,3 +1,7 @@
 #badPointerPowCON .jsavcanvas {
-  height: 100px;
+  height: 120px;
+}
+
+#badPointerPowCON .jsavoutput.jsavline {
+  height: 20px;
 }

@@ -1,0 +1,11 @@
+#ChomskyCON {
+    height: 600px;
+  }
+  .jsavcontrols {
+      display: unset !important;
+  }
+  .jsavhorizontalarray .jsavnode {
+    min-width: 60px;
+    max-width: 1000px;
+  }
+  

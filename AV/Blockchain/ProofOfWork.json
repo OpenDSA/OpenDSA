@@ -1,0 +1,16 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Consider a blockchain network where we have four nodes, 1-4. The network is a peer-to-peer network where all nodes have their own versions of the current blockchain. They then propose and propagate blocks to adjacent nodes that then accept a new head or resolve a conflict caused by the decentralization of the network.",
+        "sc2": "Suppose that green node 1 proposes green block A to be added to the chain. This is propagated throughout the network starting with adjacent nodes.",
+        "sc3": "However, red node 4 also proposes red block B soon after.",
+        "sc4": "Due to the timing, a theoretical fork appears in the blockchain. Some nodes have accepted green block A as the head of their blockchain while others will have accepted red block B. The two existing versions of the blockchain are shown on the right. Note that they both append to the prir consensus of the chain.",
+        "sc5": "Blue node 2 now proposes a block that continues the chain it has. This is where consensus begins. Since green block A was accepted as the head of blue node 2, the proposed block is in reference to green block A's hash pointer. When the block propagates, all nodes that have red block B as the head cannot accept the block. This equates to a disparity of work done on chains containing green block A and red block B.",
+        "sc6": "As blocks are proposed, the disparity becomes increasingly significant. Nodes will recognize that because one version has had more work done in the form of subsequent blocks, it is best to build off of that same version due a simple majority. More work done correlates with more nodes accepting that origin and rejecting blocks of any other origin. Work on red block B will have no incentive.",
+        "sc7": "Even though red node 4 may choose to continue the version of the blockchain in an effort to have it be the majority, probability incentivizes red node 4 to discard the differing work, copy the majority of network and continue building. This prevents any centralized control of the blockchain and any mutation attempted.",
+        "sc8": "Since the majority of nodes have made a consensus on green block A, red node 4 has updated and is ready to continue."
+        
+      }
+    }
+  }
+  

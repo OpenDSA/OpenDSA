@@ -1,0 +1,145 @@
+{
+    "translations": {
+        "en": {
+            "q1": {
+                "type": "multiple",
+                "description": "$\\delta(qi,a)\\rightarrow qj$ meaning that when in state $qi$, if you see letter $a$, consume it and go to state $qj$.",
+                "question": "What is $\\delta(q0, 1)$?",
+                "answer": [
+                    "q2"
+                ],
+                "choices": [
+                    "q0",
+                    "q1",
+                    "q2",
+                    "q3"
+                ]
+            },
+            "q2": {
+                "type": "multiple",
+                "description": "Good, now you remember it. What about if we want to know whcich state I will stop at if the machine starts at state $q0$ with a string of letters.",
+                "question": "Do you know in which state the machine will go if it was in state $q1$ and it consumes the string $101$?",
+                "answer": [
+                    "q3"
+                ],
+                "choices": [
+                    "q0",
+                    "q1",
+                    "q2",
+                    "q3"
+                ]
+            },
+            "q3": {
+                "type": "multiple",
+                "description": "$\\delta^*$ means: apply the delta function ZERO or MORE times by keep consuming the letters of the given string untill the machine consumes all letters.",
+                "question": "What is $\\delta^*(q0, 11001)$",
+                "answer": [
+                    "q2"
+                ],
+                "choices": [
+                    "q0",
+                    "q1",
+                    "q2",
+                    "q3"
+                ]
+            },
+            "q4": {
+                "type": "multiple",
+                "description": "Excellent. One more question",
+                "question": "What is $\\delta^*(q1, 01011)$",
+                "answer": [
+                    "q2"
+                ],
+                "choices": [
+                    "q0",
+                    "q1",
+                    "q2",
+                    "q3"
+                ]
+            },
+            "q5": {
+                "type": "multiple",
+                "description": "Remember that $\\lambda$ means empty string. In other words, no letters to read. The machine do not go anywhere, just stay in the same state",
+                "question": "What about $\\delta^*(q3, \\lambda)$",
+                "answer": [
+                    "q3"
+                ],
+                "choices": [
+                    "q0",
+                    "q1",
+                    "q2",
+                    "q3"
+                ]
+            },
+            "q6": {
+                "type": "select",
+                "description": "Let us try some examples",
+                "question": "What about $\\delta^*(q3, 1101)$",
+                "answer": [
+                    "$\\delta^*(q2, 101)$",
+                    "$\\delta^*(q3, 01)$",
+                    "$\\delta^*(q1, 1)$",
+                    "$\\delta^*(q2, \\lambda)$",
+                    "q2"
+                ],
+                "choices": [
+                    "$\\delta^*(q2, 101)$",
+                    "$\\delta^*(q3, 01)$",
+                    "$\\delta^*(q1, 1)$",
+                    "$\\delta^*(q2, \\lambda)$",
+                    "q2"
+                ]
+            },
+            "q7": {
+                "type": "multiple",
+                "description": "Power of DFA: A given DFA can accept a set of strings (which is all that a language is). All of the possible DFAs form a class of machines.",
+                "question": "[T|F] DFAs constitute a class of machines",
+                "answer": [
+                    "T"
+                ],
+                "choices": [
+                    "T",
+                    "F"
+                ]
+            },
+            "q8": {
+                "type": "multiple",
+                "description": "A language is regular if and only iff there exists a DFA M such that L=L(M). In other words, if it is accepted by a DFA.",
+                "question": "All Languages accepted by DFAs constitute a family named ...",
+                "answer": [
+                    "regular"
+                ],
+                "choices": [
+                    "regular",
+                    "language class",
+                    "languages family"
+                ]
+            },
+            "q9": {
+                "type": "multiple",
+                "description": "Remember this DFA.",
+                "question": "[T|F] This language represented on the left is regular.",
+                "answer": [
+                    "T"
+                ],
+                "choices": [
+                    "T",
+                    "F"
+                ]
+            },
+            "q10": {
+                "type": "multiple",
+                "description": "Remember this DFA.",
+                "question": "Why is it regular",
+                "answer": [
+                    "accepted by a DFA"
+                ],
+                "choices": [
+                    "accepted by a DFA",
+                    "Easy to understand",
+                    "Hard to solve"
+                ]
+            }
+        }
+    }
+}

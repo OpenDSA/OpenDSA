@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
-.. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -101,7 +101,7 @@ has one special advantage over the other sorts studied so far.
 Building the heap is relatively cheap, requiring
 :math:`\Theta(n)` time.
 Removing the maximum-valued record from the heap requires
-:math:`\Theta(\log n)` time.
+:math:`\Theta(\log n)` time in the worst case.
 Thus, if we wish to find the :math:`k` records with the largest
 key values in an array, we can do so in time
 :math:`\Theta(n + k \log n)`.
@@ -117,6 +117,13 @@ That algorithm requires that edges be visited in ascending
 order (so, use a min-heap), but this process stops as soon as the MST
 is complete.
 Thus, only a relatively small fraction of the edges need be sorted.
+
+Another special case arises when all of the records being sorted have
+the same key value.
+This represents the best case for Heapsort.
+This is because removing the smallest value requires only constant
+time, since the value swapped to the top is never pushed down the
+heap.
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
    :long_name: Heapsort Summary Exercise

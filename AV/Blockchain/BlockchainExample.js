@@ -7,7 +7,7 @@ $(document).ready(function() {
     // Creates the hash
     function sha256(blockNum, data, prevHash = "") {
         // encode as UTF-8
-        return "0000" + CryptoJS.SHA256(prevHash + blockNum + data).toString().substring(4,16);
+        return CryptoJS.SHA256(prevHash + blockNum + data).toString().substring(0,16);
     }
 
     function testKeyDown(e) {

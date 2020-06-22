@@ -1,11 +1,14 @@
 [
     {
-        "expression": "$\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq n\\}$",
+        "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq n\\}",
         "description": "",
         "type": "expression",
         "testCases": [
             {
                 "": false
+            },
+            {
+                "ab": true
             },
             {
                 "aaabbb": true

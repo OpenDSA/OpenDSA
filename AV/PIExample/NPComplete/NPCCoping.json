@@ -1,0 +1,71 @@
+{
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "multiple",
+        "description":"For example, TRAVELING SALESMAN grows so quickly that it cannot be run on modern computers for problem sizes much over 30 cities, which is not an unreasonable problem size for real-life situations. <br><br>However, some other problems in NP, while requiring exponential time, still grow slowly enough that they allow solutions for problems of a useful size.",
+        "question":"Some NP-complete problems cannot be solved by using the approach: run only a small instance of the problem because they grow too quickly for a modern computer to run.",
+        "answer":  "True",
+        "choices": ["True", "False"]
+      },
+      "q2": {
+        "type": "multiple",
+        "description":"This dynamic programming algorithm is tractable if the numbers are <q>reasonable</q>. That is, we can successfully find solutions to the problem when <b>nK</b> is in the thousands.<br><br>Such an algorithm is called a pseudo-polynomial time algorithm. This is different from TRAVELING SALESMAN which cannot possibly be solved when <b>n=100</b> given current algorithms.",
+        "question":"pseudo-polynomial time algorithm is the dynamic algorithm that can successfully find solution when nK is in the thousands",
+        "answer":  "True",
+        "choices": ["True", "False"]
+
+      },
+      "q3": {
+        "type": "select",
+        "description":"A second approach to handling NP-complete problems is to solve a special instance of the problem that is not so hard. For example, many problems on graphs are NP-complete, but the same problem on certain restricted types of graphs is not as difficult.",
+        "question":"Which of the following are the correct approaches to find a reasonable solution for an NP-complete problem?",
+        "answer":  ["run only small instances of the problem", "solve a special instance of the problem that is not so hard"],
+        "choices": ["run only small instances of the problem", "solve a special instance of the problem that is not so hard", "wait for others to prove P=NP"]
+      },
+      "q4": {
+        "type": "multiple",
+        "description":"In general, if we want to guarantee that we get the correct answer for an NP-complete problem, we potentially need to examine all of the (exponential number of) possible solutions. <br><br>However, with some organization, we might be able to either examine them quickly, or avoid examining a great many of the possible answers in some cases. <br><br>For example, <i>dynamic programming</i> attempts to organize the processing of all the subproblems to a problem so that the work is done efficiently.",
+        "question":"Examine all possible solutions is not the only way to guarantee that we get the correct answer for an NP-complete problem.",
+        "answer": "False",
+        "choices": ["True", "False"]
+      },
+
+
+      "q5": {
+        "type": "multiple",
+        "description":"If we need to do a brute-force search of the entire <i>solution space</i>, we can use <i>backtracking</i> to visit all of the possible solutions organized in a <i>solution tree</i>. <br><br>For example, SATISFIABILITY has 2<sup>n</sup> possible ways to assign truth values to the n variables contained in the Boolean expression being satisfied.",
+        "question":"Backtracking can be used to do a brute-force search of the entire solution space since it can visit all of the possible solutions organized in a solution tree.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+
+      "q6": {
+        "type": "multiple",
+        "description":"<i>Banch-and-Bounds</i> is an extension of backtracking that applies to <i>optimization problems</i> such as TRAVELING SALESMAN where we are trying to find the shortest tour through the cities. We traverse the solution tree as with backtracking. .",
+        "question":"Banch-and-Bounds is not an extension of backtracking",
+        "answer": "False",
+        "choices": ["True", "False"]
+      },
+
+      "q7": {
+        "type": "select",
+        "description":"Some approximation algorithms have guaranteed performance, such that the answer will be within a certain percentage of the best possible answer. ",
+        "question":"Which of the following is correct about approximation algorithms",
+        "answer": ["some approximation algorithms have guaranteed performance ","approximation algorithm is a coping strategy that finds an approximate solution to the problem", "heuristic is a approximation algorithm"],
+        "choices": ["approximation algorithm is a coping strategy that finds a guaranteed correct solution to the problem", "some approximation algorithms have guaranteed performance ","approximation algorithm is a coping strategy that finds an approximate solution to the problem", "heuristic is a approximation algorithm"]
+      },
+
+      "q8": {
+        "type": "select",
+        "description":"This is similar to the best fit heuristic for memory management. The significant thing about this heuristic is not just that it tends to give better performance than simple first fit. <br><br>This decreasing first fit heuristic can be proven to require no more than 11/9 the optimal number of bins. Thus, we have a guarantee on how much inefficiency can result when using the heuristic.",
+        "question":"Which of the following is correct about heuristic",
+        "answer": ["heuristic does not always give the best answer", "the decreasing first fit heuristic tends to give better performance than simple first fit", "first fit is one of the heuristic approaches"],
+        "choices": ["heuristic does not always give the best answer", "the decreasing first fit heuristic tends to give better performance than simple first fit", "first fit is one of the heuristic approaches"]
+      }
+
+
+    }
+  }
+}
+

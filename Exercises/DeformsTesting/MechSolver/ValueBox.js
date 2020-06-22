@@ -33,13 +33,32 @@ class ValueBox{
         // AND the value, unit, etc. things
         this.element = {};
 
+        this.element.deleteButton = globalJSAV.label(
+            "&#x2702",
+            {
+                left: element.visuals["POSITION_X"],
+                top: element.visuals["POSITION_Y"] //added three for visual padding balance between solutions and equations
+            }
+        ).addClass("tickselected");
+        this.element.deleteButton.element[0].addEventListener(
+            "click", e=> {
+                e.stopPropagation();
+                console.log("Clicked on box, Want to delete?");
+                // Insert function call deleting visual component here, together with calls to shiftup/down, etc.
+                // see how you can connect this to deleting the object from the workspace
+                Window.windowManager.shiftUp(null, this);
+
+            }
+        ); 
+
+
         // First, create a box, that can be replaced by a value and a unit element (same as variable boxes)
         this.element.visualComponent = globalJSAV.label(
             katex.renderToString(
                 // element.dataset.variableDisplay+"="+element.dataset.valueDisplay+element.dataset.unitDisplay),
                 element.dataset.variableDisplay+"= \\Box"),
             {
-                left: element.visuals["POSITION_X"],
+                left: element.visuals["POSITION_X"]+this.element.deleteButton.element[0].offsetWidth+13,
                 top: element.visuals["POSITION_Y"]+3 //added three for visual padding balance between solutions and equations
             }
         ).addClass("solutionBox");
@@ -58,7 +77,7 @@ class ValueBox{
                 e.stopPropagation();
                 if(this.globalPointerReference.currentClickedObject == this){
                     this.value = -1 * this.value;
-                    this.valueDisplay = String(-1 * this.valueDisplay);
+                    this.valueDisplay = Window.valueStringRepr(this.value);
                     this.setValueUnit(this.valueDisplay,this.unitDisplay);
 
                     this.globalPointerReference.currentClickedObject = null;
@@ -135,13 +154,14 @@ class ValueBox{
                     // Change internals
                     var oldUnit = this.unit;
                     this.unit = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unit'];
+                    console.log(this.unit);
                     this.value = mathjs.evaluate("number("+this.value+" "+oldUnit+", "+this.unit+")")
                     // this.valueDisplay = Window.valueTruncate(this.value);
                     this.valueDisplay = Window.valueStringRepr(this.value);
+                    this.unitDisplay = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unitDisp'];
 
                     // Change external views
-                    this.setValueUnit(String(this.valueDisplay),
-                    Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unitDisp']);
+                    this.setValueUnit(String(this.valueDisplay), this.unitDisplay);
                     element.close();
                 }
             )

@@ -30,7 +30,7 @@ class ActiveEquation{
                 this.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
                 this.visualComponents["tickmark"].addClass("tickunselected");
                 // this.visualComponents["tickmark"].removeClass("tickselected");
-                ;
+                
                 jsavObject.logEvent({type: "tick unselected", id: this.name});
             }
             else{
@@ -38,7 +38,7 @@ class ActiveEquation{
                 this.visualComponents["tickmark"].element[0].innerHTML = "&#x2611";
                 this.visualComponents["tickmark"].addClass("tickselected");
                 // this.visualComponents["tickmark"].removeClass("tickunselected");
-                ;
+                
                 jsavObject.logEvent({type: "tick selected", id: this.name});
             }
         });
@@ -49,11 +49,12 @@ class ActiveEquation{
             katex.renderToString(this.equationObjectReference["latex"]),
             {
                 left: position_obj["POSITION_X"]+
-                this.visualComponents["tickmark"].element[0].offsetWidth+5,
+                this.visualComponents["tickmark"].element[0].offsetWidth+13,
                 top: position_obj["POSITION_Y"]+3
             }
         ).addClass("workspaceEquation");
         this.visualComponents["text"].element[0].addEventListener("click", e=> {
+
             Window.parentObject = this;
             this.subscriptizeEquationComponents();
         });
@@ -68,8 +69,8 @@ class ActiveEquation{
             katex.renderToString(this.equationObjectReference["latex_boxes"]),
             {
                 left: position_obj["POSITION_X"]+
-                this.visualComponents["tickmark"].element[0].offsetWidth+5+
-                this.visualComponents["text"].element[0].offsetWidth+30,
+                this.visualComponents["tickmark"].element[0].offsetWidth+13+
+                this.visualComponents["text"].element[0].offsetWidth+22,
                 top: position_obj["POSITION_Y"]
             }
         ).addClass("boxedEquation");
@@ -287,59 +288,84 @@ class ActiveEquation{
         inputBox[0].style.top = event.pageY+5+"px";
         inputBox[0].style.left = event.pageX+10+"px";
         Window.box = inputBox;
-        inputBox[0].querySelector("#submit").addEventListener("click", Window.parentObject.setSubscript);
+        inputBox[0].querySelector("#submit").addEventListener("click", 
+            e=> { 
+                e.stopPropagation();
+                Window.parentObject.setSubscript(
+                    e,
+                    Window.box[0].querySelector("#subscriptname").value,
+                    Window.parentObject);
+                Window.box.close();
+                delete Window.box;
+                delete Window.parentObject;
+            } 
+        );
     }
-    setSubscript(event)
+    setSubscript(event, subscriptText, equationObject)
     {
-        var subscriptText = Window.box[0].querySelector("#subscriptname").value;
-        event.stopPropagation();
+        // var subscriptText = Window.box[0].querySelector("#subscriptname").value;
+        // event.stopPropagation();
         if(subscriptText == "") subscriptText = " ";
-        
+
         // Step 1.
-        Window.parentObject.visualComponents["text"].text(
+        equationObject.visualComponents["text"].text(
             katex.renderToString(
-                Window.parentObject.equationObjectReference.latex.replace(new RegExp('\{ \}', 'g'),"{"+subscriptText+"}")
+                equationObject.equationObjectReference.latex.replace(new RegExp('\{ \}', 'g'),"{"+subscriptText+"}")
                 )
             );
         
         var assocVariables = [];
-        for(var variable in Window.parentObject.variables)
+        for(var variable in equationObject.variables)
         {
             // Update the variable internal symbols for later associations and solving
             // This can be referenced from the current equation's equationRefObj and the variable's semantic name.
 
             // Update the current displayed boxes
             // Step 2.
-            Window.parentObject.variables[variable].parentSymbol = 
-            Window.parentObject.variables[variable].parentSymbolTemplate.replace(
+            equationObject.variables[variable].parentSymbol = 
+            equationObject.variables[variable].parentSymbolTemplate.replace(
                 new RegExp('\{ \}', 'g'),"{"+subscriptText+"}");
             
-            if(Window.parentObject.variables[variable].valueType != "number")
+            if(equationObject.variables[variable].valueType != "number")
             {
                 // .replace(new RegExp('\{ \}', 'g'),"{"+subscriptText+"}")
                 // Step 3.
                 // else if(Window.parentObject.variables[variable].valueType == "association")
-                if(Window.parentObject.variables[variable].valueType == "association")
+                if(equationObject.variables[variable].valueType == "association")
                 {
                     if(
-                        Window.parentObject.variables[variable].value.startingAssocSubscriptEquationId 
-                        == Window.parentObject.name) // This part is debatable
+                        equationObject.variables[variable].value.startingAssocSubscriptEquationId 
+                        == equationObject.name) // This part is debatable
                     {
-                        console.log(Window.parentObject.variables[variable].value.startingAssocSubscriptEquationId);
-                        console.log(Window.parentObject.name);
-                        Window.parentObject.variables[variable].value.varDisplay = 
-                            Window.parentObject.variables[variable].value.varDisplayTemplate.replace(
+                        console.log(equationObject.variables[variable].value.startingAssocSubscriptEquationId);
+                        console.log(equationObject.name);
+                        equationObject.variables[variable].value.varDisplay = 
+                        equationObject.variables[variable].value.varDisplayTemplate.replace(
                                 new RegExp('\{ \}', 'g'),"{"+subscriptText+"}");
-                        Window.parentObject.variables[variable].value.updateVarDisplay();
+                                equationObject.variables[variable].value.updateVarDisplay();
                     }
                 }
-                else Window.parentObject.variables[variable].grayOut();
+                else equationObject.variables[variable].grayOut();
             }
         }
-
-        Window.box.close();
-        delete Window.box;
-        delete Window.parentObject;
+        var shiftChain = Window.windowManager.shiftRight();
+        console.log(shiftChain);
+        if(shiftChain == "shiftActiveEqDown") {
+            // console.log(Window.parentObject);
+            var extend = Window.windowManager.shiftActiveEqDown(Window.parentObject.name);
+            if(extend != null) {
+                var split = Window.parentObject.name.split("_");
+                var wkspaceNum = split[0].substring(2, split[0].length);
+                Window.windowManager.shiftDown(extend, wkspaceNum);
+            }
+            
+        }
+        else if(shiftChain == "shiftActiveEqUp") {
+            Window.windowManager.shiftActiveEqUp(Window.parentObject.name);
+        }
+        // Window.box.close();
+        // delete Window.box;
+        // delete Window.parentObject;
     }
     OldgetUnitOfVariable(varName)
     {

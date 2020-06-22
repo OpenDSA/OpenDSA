@@ -1,0 +1,101 @@
+{
+  "translations": {
+    "en": {
+      "q4": {
+       "type": "multiple",
+        "description":"After applying the NFA to DFA algorithm covered in the last chapter, the resulting DFA will be:",
+        "question": "Is this DFA minimized?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q5": {
+        "type": "select",
+         "description":"After applying the NFA to DFA algorithm covered in the last chapter, the resulting DFA will be:",
+         "question": "Which states should be grouped to gether to minimize the DFA?",
+         "answer": ["$q1$", "$q3$"],
+         "choices": ["$q0$", "$q1$", "$q2$", "$q3$"]
+       },
+       "q12": {
+        "type": "multiple",
+         "description":"In the beginning, we have the regular expression $ab^* + c$ on a transition between a start state and a final state",
+         "question": "Which operator should we start with?",
+         "answer": "the OR operator (the lowest precedence)",
+         "choices": ["the closure operator (the highest precedence)", "the concatenation", "the OR operator (the lowest precedence)"]
+       },
+       "q13": {
+        "type": "select",
+         "description":"In the beginning, we have the regular expression $ab^* + c$ on a transition between a start state and a final state",
+         "question": "How to De-oring the expression $ab^ + c$?",
+         "answer": [
+          "First, we need 2 NFAs, one for $ab^*$ and the other for $c$",
+          "create a new start state and new final state",
+          "connect the new stat state with both NFAs start states with $\\lambda$ transitions",
+          "connect the NFAs final states with the new final state using $\\lambda$ transitions"],
+         "choices": [
+           "First, we need 2 NFAs, one for $ab^*$ and the other for $c$",
+           "create a new start state and new final state",
+           "connect the new stat state with both NFAs start states with $\\lambda$ transitions",
+           "connect the NFAs final states with the new final state using $\\lambda$ transitions"]
+       },
+       "q14": {
+        "type": "multiple",
+         "description":"De-oring the expression $ab^* + c$ into 2 transitions $ab^*$, and c",
+         "question": "Which operator should we do next?",
+         "answer": "the concatenation",
+         "choices": ["the closure operator (the highest precedence)", "the concatenation"]
+       },
+       "q15": {
+        "type": "select",
+         "description":"Correct. We need to De-concatenating the $a\\cdot b^*$.",
+         "question": "How?",
+         "answer": [
+          "First, we need 2 NFAs, one for $a$ and the other for $b^*$",
+          "create a new start state and new final state",
+          "connect the new stat state with the $a$ NFA start state with $\\lambda$ transition",
+          "connect the final state for $a$ NFA with the start state for the $b^*$ NFA using $\\lambda$ transition",
+          "connect the $b^*$ NFA final state with the new final state using $\\lambda$ transition"],
+         "choices": [
+          "First, we need 2 NFAs, one for $a$ and the other for $b^*$",
+          "create a new start state and new final state",
+          "connect the new stat state with the $a$ NFA start state with $\\lambda$ transition",
+          "connect the final state for $a$ NFA with the start state for the $b^*$ NFA using $\\lambda$ transition",
+          "connect the $b^*$ NFA final state with the new final state using $\\lambda$ transition"]
+       },
+       "q16": {
+        "type": "multiple",
+         "description":"De-concatenating the expression $ab^*$ into 2 transitions a and b",
+         "question": "Which operator should we do next?",
+         "answer": "the closure operator (the highest precedence)",
+         "choices": ["the closure operator (the highest precedence)", "we are done"]
+       },
+       "q17": {
+        "type": "select",
+         "description":"Correct. We need to De-staring the $b^*$.",
+         "question": "How?",
+         "answer": [
+          "First, we need one NFA, for $b$",
+          "create a new start state and new final state",
+          "connect the new stat state with the $b$ NFA start state with $\\lambda$ transition",
+          "connect the final state for $b$ NFA with the new final state using $\\lambda$ transition",
+          "conncet the new start state with the new final state using $\\lambda$ transition",
+          "conncet the new final state with the new start state using $\\lambda$ transition"],
+         "choices": [
+          "First, we need one NFA, for $b$",
+          "create a new start state and new final state",
+          "connect the new stat state with the $b$ NFA start state with $\\lambda$ transition",
+          "connect the final state for $b$ NFA with the new final state using $\\lambda$ transition",
+          "conncet the new start state with the new final state using $\\lambda$ transition",
+          "conncet the new final state with the new start state using $\\lambda$ transition"]
+       },
+       "q18": {
+        "type": "multiple",
+         "description":"De-staring the expression $b^*$",
+         "question": "What next?",
+         "answer": "we are done",
+         "choices": ["Not finished yet", "we are done"]
+       }
+
+    }
+  }
+}
+      

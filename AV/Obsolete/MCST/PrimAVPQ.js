@@ -228,7 +228,7 @@
 
 
   function about() {
-    var mystring = "Prim's Algorithm (The Priority Queue Version) Visualization\nWritten by Mohammed Fawzi and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Fall, 2013\nLast update: March, 2013\nJSAV library version " + JSAV.version();
+    var mystring = "Prim's Algorithm (The Priority Queue Version) Visualization\nWritten by Mohammed Fawzi and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://opendsa.org.\nWritten during Fall, 2013\nLast update: March, 2013\nJSAV library version " + JSAV.version();
     alert(mystring);
   }
 

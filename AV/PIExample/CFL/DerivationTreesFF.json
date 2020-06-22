@@ -1,0 +1,21 @@
+
+     {
+        "translations": {
+          "en": {
+     "q5":{
+        "type": "multiple",
+        "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$",
+        "question": "What should $S \\rightarrow$ be if we want the same number of a's and b's?",
+        "answer": "$c | aaSbb$",
+        "choices": ["$aaSbb$", "$c | aaSbb$", "$c$", "$c | aaSb$", "$aaSb$"] 
+      },
+      "q6":{
+        "type": "multiple",
+        "description": " $G=(\\{S\\},\\{a,b\\},S,P)$,P=<br> $S\\rightarrow SS$ | aSa | b | $\\lambda$<br> $L1=L(G)=\\{w\\in \\Sigma^∗| strings \\ with \\ an \\ even \\ number \\ of \\ a's\\}$",
+        "question": "Is $abbab \\in L(G)$",
+        "answer": "Yes",
+        "choices": ["Yes", "No"] 
+      }
+    }
+  }
+}

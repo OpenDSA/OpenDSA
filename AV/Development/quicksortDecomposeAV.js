@@ -11,7 +11,7 @@
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    var mystring = "Quicksort Algorithm Visualization\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during Summer, 2012\nLast update: July, 2012\nJSAV library version " + JSAV.version();
+    var mystring = "Quicksort Algorithm Visualization\nWritten by Daniel Breakiron\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://opendsa.org.\nWritten during Summer, 2012\nLast update: July, 2012\nJSAV library version " + JSAV.version();
     alert(mystring);
   }
 

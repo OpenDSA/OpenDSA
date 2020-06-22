@@ -37,34 +37,11 @@ $(document).ready(function() {
   var empptr2 = av.g.rect(xPosition2, yPositionR2, length1, width);
   var empptr2label = av.label("<tt>empPtr2</tt>", {top: yPositionR2 - (width / 2) + 5, left: xPosition2 + length1 + 15});
 
-  // x's for empPtr1
-  var x1 = av.g.line(xPosition2 + 10, yPositionR1 + 25,
-                     xPosition2 + 30, yPositionR1 + 3, {"stroke-width": 3});
-  var x2 = av.g.line(xPosition2 + 10, yPositionR1 + 3,
-                     xPosition2 + 30, yPositionR1 + 25, {"stroke-width": 3});
-  var x3 = av.g.line(xPosition2 + 40, yPositionR1 + 25,
-                     xPosition2 + 60, yPositionR1 + 3, {"stroke-width": 3});
-  var x4 = av.g.line(xPosition2 + 40, yPositionR1 + 3,
-                     xPosition2 + 60, yPositionR1 + 25, {"stroke-width": 3});
-  var x5 = av.g.line(xPosition2 + 70, yPositionR1 + 25,
-                     xPosition2 + 90, yPositionR1 + 3, {"stroke-width": 3});
-  var x6 = av.g.line(xPosition2 + 70, yPositionR1 + 3,
-                     xPosition2 + 90, yPositionR1 + 25, {"stroke-width": 3});
+  var slashptr1 = av.g.line(xPosition2, yPositionR2,
+                            xPosition2 + 100, yPositionR2 + 30,
+                            {"stroke-width": 2});
+  var qmark = av.label("?", {top: yPositionR1 - 28, left: xPosition2 + 45}).css({"font-size": "24px"});
 
-  // x's for empPtr2
-  var x7 = av.g.line(xPosition2 + 10, yPositionR2 + 25,
-                     xPosition2 + 30, yPositionR2 + 3, {"stroke-width": 3});
-  var x8 = av.g.line(xPosition2 + 10, yPositionR2 + 3,
-                     xPosition2 + 30, yPositionR2 + 25, {"stroke-width": 3});
-
-  var x9 = av.g.line(xPosition2 + 40, yPositionR2 + 25,
-                     xPosition2 + 60, yPositionR2 + 3, {"stroke-width": 3});
-  var x10 = av.g.line(xPosition2 + 40, yPositionR2 + 3,
-                      xPosition2 + 60, yPositionR2 + 25, {"stroke-width": 3});
-  var x11 = av.g.line(xPosition2 + 70, yPositionR2 + 25,
-                      xPosition2 + 90, yPositionR2 + 3, {"stroke-width": 3});
-  var x12 = av.g.line(xPosition2 + 70, yPositionR2 + 3,
-                      xPosition2 + 90, yPositionR2 + 25, {"stroke-width": 3});
   av.step();
 
   // Slide 3
@@ -73,18 +50,8 @@ $(document).ready(function() {
   pseudo.unhighlight("empPtr2");
   pseudo.highlight("newEmployee1");
   pseudo.highlight("newEmployee2");
-  x1.hide();
-  x2.hide();
-  x3.hide();
-  x4.hide();
-  x5.hide();
-  x6.hide();
-  x7.hide();
-  x8.hide();
-  x9.hide();
-  x10.hide();
-  x11.hide();
-  x12.hide();
+  slashptr1.hide();
+  qmark.hide();
   var emp1 = av.g.rect(xPosition, yPositionR1, length1, width + 20);
   var emp2 = av.g.rect(xPosition, yPositionR2, length1, width + 20);
   var labelJohn = av.label("John", {top: yPositionR1 - (width / 2) + 3, left: xPosition + 28});

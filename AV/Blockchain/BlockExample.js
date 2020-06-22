@@ -20,7 +20,7 @@ $(document).ready(function() {
       // create hash
       let hash = CryptoJS.SHA256(blockNum + data);
       
-      return hash.toString().substring(0, 15);
+      return hash.toString().substring(0, 16);
   }
   
     // Main action: Result of clicking "Calculate" button

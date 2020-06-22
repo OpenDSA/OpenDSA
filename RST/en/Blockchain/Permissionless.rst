@@ -79,6 +79,22 @@ Another is the fact that the entire mining process consumes
 significant real-world resources to no actual useful purpose aside
 from driving the consensus process of the Bitcoin blockchain.
 
+.. inlineav:: ProofOfWork ss
+   :long_name: ProofOfWork Slideshow
+   :links: AV/Blockchain/ProofOfWork.css
+   :scripts: AV/Blockchain/ProofOfWork.js
+   :output: show
+
+How is a transact propagated through network? Good question. 
+When a node receives a transaction, it adds the transaction to a 
+list that it maintains for the other nodes. Each node has its own list
+contain all of the transactions it has received, via itself or other nodes 
+as well as transactions that it might not have shared yet. After a random delay,
+the node will send a message to all the other nodes including its own transaction 
+list. Not every transaction is sent. The node sorts the list by the number of ancestor
+transactions and fee rates, so the parent transactions can be sent before the child ones.
+Transactions selected from this sorted list are sent until there are not any left or
+a limit has been reached, which rarely occurs. 
 
 Ethereum
 --------
@@ -117,14 +133,59 @@ value within a finite number of communication rounds.
 Within this context, a number of correct consensus algorithms exist,
 all using cryptographic techniques as key components.
 
-Things to discuss:
+Proof of Stake
+~~~~~~~~~~~~~~
 
-* How the algorithm works.
-* Why create a new algorithm? Why not stick with proof of work?
-* How did Etherium manage the process of changing its algorithm?
+:term:`Proof of Stake` was developed to ensure distributed consensus throughout a
+blockchain without relying on the immense computational power and energy 
+consumption required with :term:`Proof of Work`. 
+
+:term:`Proof of Stake` relies on transaction validators, validators, opposed to
+miners in a :term:`Proof of Work` system. Validators will provide a stake of their 
+as collateral, as explained above, in exchange for the right to verify transactions.
+Depending on the currency, the amount of currency that needs to be staked and the
+duration of the currency has been staked determine the eligibility of a validator to 
+be granted the right to verify a new block. To ensure that there is no foul play, the 
+staked coins are lost if a validator verifies incorrect transactions; however, if they
+validate honestly, they are rewarded with transaction fees. 
+
+:term:`Ethereum` an implementation of :term:`Proof of Stake` called :term:`Casper`
+that transitions :term:`Ethereum` from :term:`Proof of Work` to :term:`Proof of Stake`.
+The transition from :term:`Ethereum` 1.0 to 2.0 was termed the Serenity upgrade and has been taking 
+place in 3 separate phases. Each subsequent phase relies on the previous. 
+
+Phase 0 launches the Beacon Chain which manages the :term:`Casper` :term:`Proof of Stake`
+protocol. Phase 1 introduces Shard Chains as a key to future scalability. There will be
+64 of these chains introduce during this phase and they allow parallel transaction throughput.
+This phase is primarily concerned about the shard chains construction, consensus, and validity 
+on the data. Phase 2 brings all the functionality together. Shard chains will become structured
+chain states opposed to simplistic data containers while :term:`Smart Contracts` will finally be 
+introduced. Phase 0 is expected to launch in late July 2020, while phase 1 and 2 are later in 2020
+and 2021.
 
 
 Algorand
 --------
 
-Needs to be done.
+Algorand is another popular Blockchain platform that utilizes a unique Proof of Stake 
+consensus algoriithm. Algorand uses what they call Pure Proof of Stake (PPoS). This 
+differs in that there are no staked coins to promote honesty. The reason is that in the worst case, 
+the staked coins are negligible in comparison to the malicious gain one could make for 
+themself in a large system. Algorand places its security in the honesty of the majority of the economy.
+
+Using PPos, owners of the majority of money are able to prevent other users from making transactions. 
+However, that would negatively affect the credibility built on the system, the credibilty of the 
+currency, and therefore would devalue the stake that the majority has in the economy. However, this 
+power allows for the honest to promote the security and reliability by stopping attackers in the 
+minority.
+
+Block generation is unique as well. Algorand uses a two-phase process. The first phase randomly 
+selects a user to produce the next block. The second phase chooses 1000 more 
+users that act as the committee and verify whether the block is correct. The addition of a committee 
+is so that if a bad actor were to be chosen to produce a block, the committee would be able 
+to successfully catch the attempt. No minority of bad actors would be able to successfully overturn 
+the flagging of a malicious block. 
+
+Lastly, everyone involved is chosen by themselves! The power given to affect the blockchain is 
+decentralized by requiring everyone to run a cryptographically fair lottery. Tokens deemed as 
+winners by the lottery represent a committee member.

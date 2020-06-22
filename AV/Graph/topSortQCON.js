@@ -18,7 +18,7 @@ $(document).ready(function() {
   g = jsav.ds.graph({width: 500, height: 500, left: 55, top: 20, layout: "manual", directed: true});
 
   queue = jsav.ds.array(["<b>Queue</b>","","","","","","","",""],  {left: arrleft, top: 200}).css({"font-size": "10px", "width": "100px"}); //"min-width": "80px" doesnt work, .autoresize doesnt work, "width: "80" doesnt work
-  var data = ["<b>&nbsp;Nodes&nbsp;</b>", "&nbsp;2505&nbsp;","&nbsp;2114&nbsp;","&nbsp;3604&nbsp;","&nbsp;3304&nbsp;","&nbsp;1114&nbsp;","&nbsp;2506&nbsp;","&nbsp;3114&nbsp;","&nbsp;3214&nbsp;"];
+  var data = ["<b>&nbsp;Nodes&nbsp;</b>", "&nbsp;1114&nbsp;","&nbsp;2114&nbsp;","&nbsp;2505&nbsp;","&nbsp;2506&nbsp;","&nbsp;3604&nbsp;","&nbsp;3114&nbsp;","&nbsp;3304&nbsp;","&nbsp;3214&nbsp;"];
   queue.css(0,{"background-color":"#CC6633"});
 
   Courses = new jsav.ds.array(data,{left: arrleft, top: 90}).css({"font-size" : "10px"});

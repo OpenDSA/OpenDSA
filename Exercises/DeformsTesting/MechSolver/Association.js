@@ -37,6 +37,23 @@ class Association{
 
         this.updateVarDisplay();        
     }
+    setAssocVarDisplay(varname, subscript)
+    {
+        // This function gets called with a new text that basically updates the varDisplay
+        // attribute and changes it for all the variables throughout.
+        // Text must be in A_{b} or A_{ } format
+        
+        if(varname == "" && subscript == "")
+            this.varDisplay = this.varDisplayTemplate;
+        else if(varname == ""){
+            // not very obvious, just means only the subscript will be updated, main text remains the same.
+            // NOTE: This isn't working now, but is only a minor feature, we can look at it later.
+            // this.varDisplay.replace(new RegExp('\{ \}', 'g'),`{${subscript}}`);
+            this.varDisplay = this.varDisplayTemplate;
+        }
+        else this.varDisplay = varname+"_{"+subscript+"}";
+        this.updateVarDisplay();
+    }
     updateVarDisplay()
     {
         // This updates the variable display text across all connected variables in that association.

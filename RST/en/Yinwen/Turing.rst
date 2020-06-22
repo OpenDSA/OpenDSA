@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
-.. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -145,12 +145,13 @@ states in :math:`Q` and with edges corresponding to the transitions in
 Further, we can visualize the processing of the machine as the
 movement of a head across the tape.
 
-.. inlineav:: RClearCON ss
-   :long_name: Turing Machine RClear
-   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/RClearCON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
+   
+.. inlineav:: RClearCONt ss
+   :links: DataStructures/FLA/FLA.css AV/Yinwen/RClearCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Yinwen/TuringMachine.js AV/Yinwen/RClearCON.js
    :align: center
    :output: show
+   
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/addOnea.html pe
    :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
@@ -478,9 +479,11 @@ free!
 Which means that this simple Turing Machine is doing something that no
 DFA, NFA, or PDA can do!
 
-.. inlineav:: TManbncnCON ss
-   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TManbncnCON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TManbncnCON.js
+
+   
+.. inlineav:: TMabct ss
+   :links: DataStructures/FLA/FLA.css AV/Yinwen/TMabcCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Yinwen/TuringMachine.js AV/Yinwen/TMabcCON.js
    :align: center
    :output: show
 

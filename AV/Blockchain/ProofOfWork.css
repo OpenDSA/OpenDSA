@@ -1,0 +1,98 @@
+
+.jsavlistnode {
+  height: 30px;
+  max-width: 40px !important;
+  width: 40px;
+  max-height: 40px !important;
+  font-size: 10px !important;
+  line-height: 10px !important;
+}
+
+  .thinredline {
+    stroke: red;
+  }
+  
+  .rededge { /* Make a tree edge to be red */
+    stroke: red;
+    stroke-width: 3;
+  }
+  
+  .rednode { /* Make a node red */
+    background-color: red;
+    color: white;
+    border-color: red;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+  
+  .greenedge { /* Make a tree edge to be green */
+    stroke: green;
+    stroke-width: 3;
+  }
+  
+  .greennode { /* Make a node green */
+    background-color: green;
+    color: white;
+    border-color: green;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+
+  .backward {
+    z-index: 0;
+  }
+
+  .forward {
+    z-index: 1;
+  }
+
+  .greenBlock {
+    background-color: green;
+    border-color: green;
+    color: white;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+
+  .redBlock {
+    background-color: red;
+    border-color: red;
+    color: white;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+
+  .bluenode { /* Make a node green */
+    background-color: blue;
+    color: white;
+    border-color: blue;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+
+  .blueedge { /* Make a tree edge to be green */
+    stroke: blue;
+    stroke-width: 3;
+  }
+
+  .blueBlock {
+    background-color: blue;
+    border-color: blue;
+    color: white;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+
+  .orangenode { /* Make a node green */
+    background-color: orange;
+    color: white;
+    border-color: orange;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+
+  .orangeedge { /* Make a tree edge to be green */
+    stroke: orange;
+    stroke-width: 3;
+  }
+
+  .orangeBlock {
+    background-color: orange;
+    border-color: orange;
+    color: white;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+

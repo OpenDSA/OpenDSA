@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
-.. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -158,8 +158,8 @@ Actually, it happens a lot.
 .. avembed:: Exercises/Sorting/InssortSumm.html ka
    :long_name: Insertion Sort Summary Exercise
 
-See |external_link| for a discussion on how the relative costs of search and insert can
-affect what is the best sort algorithm to use.
+See |external_link| for a discussion on how the relative costs of
+search and insert can affect what is the best sort algorithm to use.
 
 .. |external_link| raw:: html
 

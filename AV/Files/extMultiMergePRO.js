@@ -293,7 +293,7 @@ var firstSelection, secondSelection;
 
     // Process About button: Pop up a message with an Alert
     function about() {
-      alert("Multiway Merge Proficiency Exercise\nWritten by Josh Horn\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+      alert("Multiway Merge Proficiency Exercise\nWritten by Josh Horn\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
 
     exercise = jsav.exercise(model, init,

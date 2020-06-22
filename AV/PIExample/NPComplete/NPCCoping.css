@@ -1,0 +1,16 @@
+#NPCCoping {
+    height: 700px;
+    width: 1000px
+  }
+  
+  #NPCCoping .jsavoutput.jsavline {
+    height: 60px;
+  }
+  
+  #NPCCoping .jsavhorizontalarray .jsavnode {
+    min-width: 30px !important;
+    max-width: 300px !important;
+  }
+
+
+  

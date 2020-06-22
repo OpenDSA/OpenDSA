@@ -1,0 +1,141 @@
+{
+    "translations": {
+      "en": {
+        "q0": {
+          "type": "select",
+          "question":"Select parts that are necessary in constituting a good proof",
+          "description": "Solving any problem has two distinct parts: the investigation and the argument. Usually, we used to see only the argument in textbooks and lectures. But to be successful in school (and in life after school), one needs to be good at both and to understand the differences between these two phases of the process.",
+          "answer": ["Investigation", "Argument"],
+          "choices": ["Investigation", "Argument"]
+        },
+        "q1": {
+          "type": "multiple",
+          "question":"The phrase “engaging the problem, and working through until you find a solution” is equivalent to?",
+          "description": "To solve the problem, you must investigate successfully. That means engaging the problem, and working through until you find a solution.",
+          "answer": "To make a successful investigation",
+          "choices": ["To make a good argument", "To make a successful investigation"]
+        },
+        "q2": {
+          "type": "multiple",
+          "question":"What helps you to provide a good solution?",
+          "description": "After giving the answer, you need to be able to make the argument in a way that gets the solution across clearly and succinctly. The argument phase involves good technical writing skills—the ability to make a clear, logical argument.",
+          "answer": "Write a good argument",
+          "choices": ["Write a good argument", "Make a good investigation"]
+        },
+        "q3": {
+          "type": "multiple",
+          "question":"[T/F] Different proof techniques have different structures",
+          "description": "Being conversant with standard proof techniques can help you in this process. Knowing how to write good proof helps in many ways. First, it clarifies your thought process, which in turn clarifies your explanations. Second, if you use one of the standard proof structures such as proof by contradiction or an induction proof, then both you and your reader are working from a shared understanding of that structure.",
+          "answer": "True",
+          "choices": ["True", "False"]
+        },
+        "q4": {
+          "type": "select",
+          "question":"Being conversant with standard proof techniques, leads to:",
+          "description": "Being conversant with standard proof techniques make less complexity for your reader to understand your proof, because the reader does not need to decode the structure of your argument from scratch.",
+          "answer": ["Clear proof process", "Makes the proof easier to understand"],
+          "choices": ["Clear proof process", "Increase the time the reader sped to understand your proof", "Makes the proof easier to understand"]
+        },
+        "q5": {
+          "type": "multiple",
+          "question":"[T/F] In Direct proof, there is no specific structure for the proof.",
+          "description": "Direct Proof (or logical explanation). A direct proof is sometimes referred to as an argument by deduction. This is simply an argument in terms of logic.",
+          "answer": "True",
+          "choices": ["True", "False"]
+        },
+        "q6": {
+          "type": "multiple",
+          "question":"What are the first and last terms in the series?",
+          "description": "Direct Proof example: We need to use direct proof to prove that $\\Sigma_{ni=1}$ $i$ = $(n+1)n/2$",
+          "answer": "The first term is 1, the last term is $n$",
+          "choices": ["The first term is 1, the last term is $n$", "The first term is 1, the last term is $n+1$", "The first term is 1, the last term is $n-1$"]
+        },
+        "q7": {
+          "type": "multiple",
+          "question":"What is the sum of the second and next-to-last terms in this series?",
+          "description": "Direct Proof example: We need to use direct proof to prove that $\\Sigma_{ni=1}$ $i$ = $(n+1)n/2$",
+          "answer": "$n+1$",
+          "choices": ["$n$","$n+1$", "$n-1$", "$n+2$", "$n-2$"]
+        },
+        "q8": {
+            "type": "multiple",
+            "question":"How many pair can sum to n + 1?",
+            "description": "Direct Proof example: We need to use direct proof to prove that $\\Sigma_{ni=1}$ $i$ = $(n+1)n/2$",
+            "answer": "$n/2$",
+            "choices": ["$n$","$n/2$", "$2n$", "$n+2$", "$n-2$"]
+        },
+        "q9": {
+            "type": "multiple",
+            "question":"What is the total sum of the n/2 pairs?",
+            "description": "Direct Proof example: We need to use direct proof to prove that $\\Sigma_{ni=1}$ $i$ = $(n+1)n/2$",
+            "answer": "$(n+1)n/2$",
+            "choices": ["$n$","$n+1$", "$(n+1)n/2$", "$(n+1)n$", "$(n+1)/2$"]
+        },
+        "q10": {
+          "type": "select",
+          "question":"What should we do to prove that P and Q are equivalent?",
+          "description": "Many direct proofs are written in English with words such as 'if ... then'. In this case, logic notation such as P$\\Rightarrow$Q can often help express the proof. Even if we don't wish to use symbolic logic notation, we can still take advantage of the fundamental theorems of logic to structure our arguments.",
+          "answer": ["prove that P$\\Rightarrow$Q", "prove that Q$\\Rightarrow$P"],
+          "choices": ["prove that P$\\Rightarrow$Q", "prove that Q$\\Rightarrow$P", "prove that Q$\\Rightarrow$Q", "prove that P$\\Rightarrow$P"]
+        },
+        "q11": {
+          "type": "multiple",
+          "question":"[T/F] We can prove a theorem by providing some correct examples.",
+          "description": "Proof by Contradiction: The simplest way to disprove a theorem or statement is to find a counterexample to the theorem. Unfortunately, no number of examples supporting a theorem is sufficient to prove that the theorem is correct.",
+          "answer": "False",
+          "choices": ["True", "False"]
+        },
+        "q12notUSed": {
+          "type": "multiple",
+          "src": "../../../AV/FLA/billyu/ui/FAFixer.html",
+          "question":"What is the final state?",
+          "answer": "q1, q2, q3",
+          "choices": ["q0, q1, q2", "q1, q5, q6","q4" ]
+        },
+        "q13": {
+          "type": "select",
+          "question":"What assumption can help us to conclude that the assumption is incorrect?",
+          "description": "To prove a theorem by contradiction, we first assume that the theorem is false. We then find a logical contradiction stemming from this assumption. If the logic used to find the contradiction is correct, then the only way to resolve the contradiction is to recognize that the assumption that the theorem is false must be incorrect. ",
+          "answer": ["Use of correct logic", "Find a contradiction between the assumption and the results."],
+          "choices": ["Use of correct logic", "Find a contradiction between the assumption and the results."]
+        },
+        "q14": {
+            "type": "multiple",
+            "question":"What is the first step?",
+            "description": "Example of Proof by contradiction. We need to prove that “There is no largest integer.”",
+            "answer": "Find a contrary assumption",
+            "choices": ["Find a contrary assumption", "Find a counterexample"]
+          },
+          "q15": {
+            "type": "multiple",
+            "question":"if C = B + 1, this means?",
+            "description": "Example of Proof by contradiction. We need to prove that “There is no largest integer.” $\\textbf{Step 1}$. $\\textbf{Contrary assumption}$: Assume that there is the largest integer. Call it B (for 'biggest').",
+            "answer": "C is bigger than B",
+            "choices": ["C is bigger than B", "C does not exist as B is the biggest number"]
+          },
+          "q16": {
+            "type": "multiple",
+            "question":"What can we conclude in $\\textbf{Step 2}$?",
+            "description": "Example of Proof by contradiction. We need to prove that “There is no largest integer.” $\\textbf{Step 2}$. $\\textbf{Show this assumption leads to a contradiction}$: Consider C$=$B$+$1 C is an integer because it is the sum of two integers. Also, C$>$B, which means that B is not the largest integer after all.",
+            "answer": "That there is a no Bigger number",
+            "choices": ["That there is a no Bigger number", "That there is a Bigger number"]
+          },
+          "q17": {
+            "type": "select",
+            "question":"What assumption can help us to conclude that the assumption is incorrect?",
+            "description": "Example of Proof by contradiction. Thus, we have reached a contradiction. ",
+            "answer": ["Use of correct logic", "Find a contradiction between the assumption and the results."],
+            "choices": ["Use of correct logic", "Find a contradiction between the assumption and the results."]
+          },
+          "q18": {
+            "type": "select",
+            "question":"What is the remaining proof technique?",
+            "description": "The next module will cover the third type of proof techniques.",
+            "answer": "Proof by mathematical induction",
+            "choices": ["Deduction, or direct proof", "Proof by contradiction", "Proof by mathematical induction"]
+          }
+
+      }
+    }
+  }
+  

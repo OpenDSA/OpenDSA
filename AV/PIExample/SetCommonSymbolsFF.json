@@ -1,0 +1,234 @@
+{
+  "translations": {
+      "en": {
+          "q5": {
+                "type": "multiple",
+                "description": "$\\{\\}$: braces that surround the $set$ elements.",
+                "question": "Which of the following is a valid $set$?",
+                "answer": "$\\{a, 2, 3\\}$",
+                "choices": [
+                    "$1$, $2$, $3$",
+                    "$\\{a, 2, 3\\}$"
+                ]
+            },
+            "q6": {
+                "type": "multiple",
+                "description": "$\\{x|x\\ is\\ a\\ positive\\ integer\\}$: A $set$ definition using a $set$ format",
+                "question": "Choose what best explain previous $set$.",
+                "answer": "positive integers",
+                "choices": [
+                    "integers",
+                    "negative integers",
+                    "positive integers"
+                ]
+            },
+            "q7": {
+                "type": "select",
+                "description": "$x∈P$: $x$ is a member of $set$ $P$ d) $x∉P$: $x$ is not a member of $set$ $P$",
+                "question": "Let $P = \\{a, b, c\\}$, which of the following is $∉P$?",
+                "answer": [
+                    "$\\{a\\}$",
+                    "$\\{a, b, c\\}$"
+                ],
+                "choices": [
+                    "$a$",
+                    "$\\{a\\}$",
+                    "$b$",
+                    "$\\{a, b, c\\}$"
+                ]
+            },
+            "q8": {
+                "type": "multiple",
+                "description": "$\\Phi$: The null or empty $set$",
+                "question": "Which of the following is $∈\\Phi$?",
+                "answer": "$\\Phi\\; has\\; no\\; elements\\; because\\; it\\; is\\; the\\; null$ set.",
+                "choices": [
+                    "$a$",
+                    "$1$",
+                    "$\\{a,b\\}$",
+                    "$\\Phi\\; has\\; no\\; elements\\; because\\; it\\; is\\; the\\; null$ set."
+                ]
+            },
+            "q9": {
+                "type": "multiple",
+                "description": "$|P|$: Cardinality: the size of $set$ $P$ or number of members for $set$ $P$",
+                "question": "What does it mean to say that $|P|$ = $3$?",
+                "answer": "P has 3 elements",
+                "choices": [
+                    "P has 3 elements",
+                    "P is 3",
+                    "P has an element eith value 3"
+                ]
+            },
+            "q10": {
+                "type": "select",
+                "description": "$P⊆Q$, $Q⊇P$: Set $P$ is included in $set$ $Q$, $set$ $P$ is a subset of $set$ $Q$, or $set$ $Q$ is a superset of the $set$ $P$",
+                "question": "Let $P = \\{x|x\\ is\\ a\\ positive\\ integer\\}$. Which of the following is a subset of $P$?",
+                "answer": [
+                    "$\\{1, 2, 3\\}$",
+                    "$\\{x|x\\ is\\ a\\ positive\\ even\\ number\\}$",
+                    "$\\{x|x\\ is\\ a\\ prime\\ number\\}$"
+                ],
+                "choices": [
+                    "$\\{1, 2, 3\\}$",
+                    "$\\{x|x\\ is\\ a\\ positive\\ even\\ number\\}$",
+                    "$\\{x|x\\ is\\ a\\ real\\ number\\}$",
+                    "$\\{x|x\\ is\\ a\\ prime\\ number\\}$"
+                ]
+            },
+            "q11": {
+                "type": "multiple",
+                "description": "$P∪Q$:  Union: all elements appearing in $P$ OR $Q$",
+                "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4, 5, 6\\}$ What is $P∪Q$?",
+                "answer": "$\\{1,2,3,4,5,6\\}$",
+                "choices": [
+                    "$\\{1,2,3,4,5,6\\}$",
+                    "$\\{1,3,5\\}$",
+                    "$\\{2,4,5,6\\}$",
+                    "$\\{5\\}$"
+                ]
+            },
+            "q12": {
+                "type": "multiple",
+                "description": "$P∪Q$:  Union: all elements appearing in $P$ OR $Q$",
+                "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4, 5, 6\\}$ What is $Q∪P$?",
+                "answer": "$\\{1,2,3,4,5,6\\}$",
+                "choices": [
+                    "$\\{\\}$",
+                    "$\\{1,2,3,4,5,6\\}$",
+                    "$\\{1,2,3,4,5,5,6\\}$"
+                ]
+            },
+            "q13": {
+                "type": "multiple",
+                "description": "$P∪Q$:  Union: all elements appearing in $P$ OR $Q$",
+                "question": "Select the correct fact about $set$ union",
+                "answer": "$P∪Q$ = $Q∪P$",
+                "choices": [
+                    "$P∪Q$ = $Q∪P$",
+                    "$P∪Q$ ≠ $Q∪P$"
+                ]
+            },
+            "q14": {
+                "type": "multiple",
+                "description": "$P∩Q$: Intersection: all elements appearing in $P$ AND $Q$",
+                "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4, 5, 6\\}$ What is $P∩Q$?",
+                "answer": "$\\{5\\}$",
+                "choices": [
+                    "$\\{1,2,3,4,5,6\\}$",
+                    "$\\{1,3,5\\}$",
+                    "$\\{2,4,5,6\\}$",
+                    "$\\{5\\}$",
+                    "$5$"
+                ]
+            },
+            "q15": {
+                "type": "multiple",
+                "description": "$P∩Q$: Intersection: all elements appearing in $P$ AND $Q$",
+                "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4, 6\\}$. What is $P∩Q$",
+                "answer": "$\\{\\}$",
+                "choices": [
+                    "$\\{1,2,3,4,5,6\\}$",
+                    "$\\{1,3,5\\}$",
+                    "$\\{2,4,5,6\\}$",
+                    "$\\{\\}$"
+                ]
+            },
+            "q16": {
+                "type": "multiple",
+                "description": "$P∩Q$:  Intersection: all elements appearing in $P$ AND $Q$",
+                "question": "Select the correct fact about $set$ union",
+                "answer": "$P∩Q$ = $Q∩P$",
+                "choices": [
+                    "$P∩Q$ = $Q∩P$",
+                    "$P∩Q$ ≠ $Q∩P$"
+                ]
+            },
+            "q17": {
+                "type": "multiple",
+                "description": "$P\\; -\\; $Q$: difference: all elements of $set$ $P$ NOT in $set$ $Q$",
+                "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4, 5, 6\\}$ What is $P-Q$?",
+                "answer": "$\\{1,3\\}$",
+                "choices": [
+                    "$\\{1,3\\}$",
+                    "$\\{1,3,5\\}$",
+                    "$\\{2,3,5,6\\}$",
+                    "$\\{2,4,6\\}$",
+                    "$\\{1,2,3,4,6\\}$"
+                ]
+            },
+            "q18": {
+                "type": "multiple",
+                "description": "$P\\; -\\; $Q$: difference: all elements of $set$ $P$ NOT in $set$ $Q$",
+                "question": "Let $P$ = $\\{1, 3, 5\\}$, and $Q = \\{2, 4, 5, 6\\}$ What is $Q-P?$",
+                "answer": "$\\{2,4,6\\}$",
+                "choices": [
+                  "$\\{1,3\\}$",
+                  "$\\{1,3,5\\}$",
+                  "$\\{2,3,5,6\\}$",
+                  "$\\{2,4,6\\}$",
+                  "$\\{1,2,3,4,6\\}$"
+              ]
+            },
+            "q19": {
+                "type": "multiple",
+                "description": "$P\\; -\\; $Q$: difference: all elements of $set$ $P$ NOT in $set$ $Q$",
+                "question": " Select the correct fact about the $set$ difference:",
+                "answer": "$P-Q$ ≠ $Q - P$",
+                "choices": [
+                    "$P-Q$ = $Q - P$",
+                    "$P-Q$ ≠ $Q - P$"
+                ]
+            },
+            "q20": {
+                "type": "multiple",
+                "description": "$P$ $x$ $Q$: Set (Cartesian) Product: yields a $set$ of ordered pairs",
+                "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4\\}$ What is $PxQ$?",
+                "answer": "$\\{(1,2),(1,4),(3,2),(3,4),(5,2),(5,4)\\}$",
+                "choices": [
+                    "$\\{(1,2),(1,4)\\}$",
+                    "$\\{(1,2),(1,4),(3,2)\\}$",
+                    "$\\{(1,4),(3,2),(5,2),(5,4)\\}$",
+                    "$\\{(1,2),(1,4),(3,2),(3,4),(5,2),(5,4)\\}$"
+                ]
+            },
+            "q21": {
+                "type": "multiple",
+                "description": "$P$ $x$ $Q$: Set (Cartesian) Product: yields a $set$ of ordered pairs",
+                "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4\\}$ What is $|PxQ|$?",
+                "answer": "6",
+                "choices": [
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7"
+                ]
+            },
+            "q22": {
+                "type": "multiple",
+                "description": "The powerset of a $set$ $S$ (denoted $2^S$ ) is the $set$ of all possible subsets for $S$",
+                "question": " Consider the $set$ $S = \\{a,b,c\\}$. What is $2^S$?",
+                "answer": "$\\{∅, \\{a\\}, \\{b\\}, \\{c\\}, \\{a,b\\}, \\{a,c\\}, \\{b,c\\}, \\{a,b,c\\}\\}$",
+                "choices": [
+                    "$\\{∅\\}$",
+                    "$\\{∅, \\{a\\}, \\{b\\}, \\{c\\}, \\{a,b\\}, \\{a,c\\}, \\{b,c\\}, \\{a,b,c\\}\\}$",
+                    "$\\{∅, \\{a\\}, \\{b\\}, \\{c\\}\\}$",
+                    "$\\{∅, \\{a\\}, \\{b\\}, \\{c\\}, \\{a,b\\}, \\{a,c\\}\\}$"
+                ]
+            },
+            "q23": {
+              "type": "multiple",
+              "description": "The powerset of a $set$ $S$ (denoted $2^S$ ) is the $set$ of all possible subsets for $S$",
+              "question": " Consider the $set$ $S = \\{a,b,c\\}$. What is $|2^S|$?",
+              "answer": "8",
+              "choices": [
+                  "3",
+                  "9",
+                  "8",
+                  "10"
+              ]
+          }
+        }
+    }
+    }

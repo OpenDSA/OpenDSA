@@ -21,7 +21,7 @@ rst_header_unicode = '''\
 # Used to generate the index.rst file
 index_header = '''\
 .. This file is part of the OpenDSA eTextbook project. See
-.. http://algoviz.org/OpenDSA for more details.
+.. http://opendsa.org for more details.
 .. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
