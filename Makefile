@@ -9,6 +9,12 @@ LINT = eslint --no-color
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 
+JS_MINIFY = cat 
+CSS_MINIFY = cat
+# Uncomment the lines below to do a real-minify:
+# JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' -- 
+# CSS_MINIFY = cleancss
+
 # These are used by Makefile.venv for using python's venv in make
 # Targets from Makefile.venv: venv, show-venv, clean-venv, python ...
 PY=python3.8
@@ -125,33 +131,19 @@ CSS_FNAMES = site odsaAV odsaKA odsaMOD gradebook normalize
 CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
 
-nomin:
-	@echo 'Doing fake-minify for all (just copying)...'
-	@cp lib/JSAV.js lib/JSAV-min.js
-	@cp lib/odsaUtils.js lib/odsaUtils-min.js
-	@cp lib/odsaMOD.js lib/odsaMOD-min.js
-	@cp lib/odsaAV.js lib/odsaAV-min.js
-	@cp lib/odsaKA.js lib/odsaKA-min.js
-	@cp lib/gradebook.js lib/gradebook-min.js
-	@cp lib/registerbook.js lib/registerbook-min.js
-	@cp lib/site.css lib/site-min.css
-	@cat lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
-	@cp lib/odsaMOD.css lib/odsaMOD-min.css
-	@cp lib/odsaStyle.css lib/odsaStyle-min.css
-	@cp lib/odsaKA.css lib/odsaKA-min.css
-	@cp lib/gradebook.css lib/gradebook-min.css
-
-min: nomin # This is a fake-minify!
-# min: $(JS_MIN_FILES) $(CSS_MIN_FILES) # This is the real minify!
+min: $(JS_MIN_FILES) $(CSS_MIN_FILES) 
+	@echo 'Completed: Minify of all files (or fake-minify)'
 
 lib/%-min.js:: lib/%.js
-	@echo 'Minimizing $^'
-	@uglifyjs $^ --comments '/^!|@preserve|@license|@cc_on/i' > $@
+	@$(JS_MINIFY) $^ > $@
 
 lib/%-min.css:: lib/%.css
-	@echo 'Minimizing $^'
-	@cleancss $^ --output $@
+	@$(CSS_MINIFY) $^ > $@
 	
+# one file has a special minify process:
+lib/odsaAV-min.css: lib/normalize.css lib/odsaAV.css
+	@$(CSS_MINIFY) lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
+
 
 # Valid Targets using Static-Pattern rule for eBooks:
 BOOKS += Test Obsolete SimpleDemo Everything DeformsTesting OpenPOPExercises testcmap
