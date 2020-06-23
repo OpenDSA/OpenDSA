@@ -26,9 +26,9 @@ all: alllint
 .PHONY: clean min pull Webserver pyVenvCheck pipList
 .PHONY: all alllint csslint lint lintExe jsonlint
 
-# Can likely switch this to $(VENV)/python server.py
-Webserver: pyVenvCheck
-	./Webserver
+Webserver:
+	@-echo -n "System is: " & uname -s
+	python3 server.py
 
 .pyVenv pyVenv: venv
 pyVenvCheck: venv

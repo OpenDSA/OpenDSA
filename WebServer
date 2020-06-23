@@ -8,6 +8,11 @@
 # After invoking this script from ~OpenDSA, point your web browser to:
 # http://127.0.0.1:8080/
 # python -m SimpleHTTPServer
+
+echo "This script is not needed anymore."
+echo "Use 'make Webserver' or 'python3 server.py' instead"
+exit
+
 unameOut="$(uname -s)"
 echo System is: "${unameOut}"
 case "${unameOut}" in
