@@ -14,7 +14,7 @@ MINIMIZE = uglifyjs
 all: alllint
 
 
-allbooks: Everything test CS2 CS3 RecurTutor PL
+allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormaLang
 
 clean:
 	- $(RM) *~
