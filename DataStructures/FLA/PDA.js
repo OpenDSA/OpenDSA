@@ -204,7 +204,7 @@ pda.traverse = function(currentStates) {
               var nextConfig = new Configuration(this.configurations, next, curStack, s, nextIndex);
               if (t[2] !== emptystring){
                 for (var h = t[2].length - 1; h >= 0; h--) {
-                  if(t[2].charAt(t[2].length - 1) == "Z" || t[2].charAt(t[2].length - 1) == "z"){
+                  if(t[2].charAt(t[2].length - 1) != "" ){
                     endSymbol = t[2].charAt(t[2].length - 1)
                   }
                   nextConfig.stack.push(t[2].charAt(h));
