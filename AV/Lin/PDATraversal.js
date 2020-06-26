@@ -168,8 +168,7 @@
       var successors = currentStates[i].state.neighbors();
       var letter = emptystring;
       var inputString = currentStates[i].inputString
-      
-      if ((inputString.length === 0 || endflag > 3) && endflag != 1) {
+      if (inputString.length === 0 && endflag == 1) {
          var last = currentStates[i].stack[currentStates[i].stack.length - 1];
 
           if (currentStates[i].state.hasClass('final')) {
@@ -224,16 +223,16 @@
                 newStack = newStack + pushOnTo[k]
               }
             }
-            if(expectedInput != emptystring || endflag == 1){
+            if(expectedInput != emptystring ){
               var reducedInput = inputString.substring(1)
             }
             else{
                var reducedInput = inputString
                }
-            if (reducedInput == "") {
-//               reducedInput = curStack
-              endflag++
-            }
+//             if (reducedInput == "") {
+// //               reducedInput = curStack
+//               endflag++
+//             }
             var nextConfig = new Configuration(this.configurations, next, newStack, reducedInput, 0);
             nextStates.push(nextConfig);
           }
@@ -241,7 +240,9 @@
 
       }
     }
-
+    if(inputString.length === 0){
+        endflag++
+      }
     if (stepBy == 'closure') {
       nextStates = g.addLambdaClosure(nextStates)
     }
