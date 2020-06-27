@@ -144,33 +144,23 @@ lib/%-min.css:: lib/%.css
 lib/odsaAV-min.css: lib/normalize.css lib/odsaAV.css
 	@$(CSS_MINIFY) lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
 
+CONFIGS := $(wildcard config/*.json)
+ALL_BOOKS := $(patsubst config/%.json,%,$(CONFIGS))
 
-# Valid Targets using Static-Pattern rule for eBooks:
-BOOKS += Test Obsolete SimpleDemo Everything DeformsTesting OpenPOPExercises testcmap
-BOOKS += CS2 CS2114 CS240 CS3 CS3C CS4104 CS4114 CS415 CS5040 CSC215 CSCD320 CSCI204 CSCI2101 CSCI271
-BOOKS += NP NP4114 COMP271 COMPSCI186 CT CTEX PL PLdev PIFormalLang
-BOOKS += Blockchain Spatial PointersJavaSummer PointersJava PointersCPP Graphics FormalLangSummer1 WeihaoVisFormalLang
-BOOKS += PittACOS OpenFLAP JFLAP FormalLang VisFormalLang FL2019 PIExample C2GEN PIExercises 
-BOOKS += DanaG TJeffrey Michael cschandr Raghu Sam Yinwen Xiaolin Ning Yuhui Codio WuChen Echo Ming Aditya Milen Peixuan Lin Patrick Zinan
+SLIDE_BOOKS = $(filter %slides %Slides,$(ALL_BOOKS))
+SLIDE_BOOKS += CS5040Master
+BOOKS = $(filter-out $(SLIDE_BOOKS),$(ALL_BOOKS))
+.PHONY: $(BOOKS) $(SLIDE_BOOKS)
 
 # A Static-Pattern Rule for making Books
-$(BOOKS): % : Books/%
-	@echo "Created an eBook: $<"
-
 # TODO: can remove -bb option once all py3 str encoding in odsa is debugged 
-Books/%: config/%.json min pyVenvCheck
+$(BOOKS): % : config/%.json min pyVenvCheck
 	$(VENV)/python -bb $(CONFIG_SCRIPT) $< --no-lms
-
-# The default implicit target for making any eBook (if config exists)
-%:: config/%.json
-	@echo "No explicit targets; instead trying: $(MAKE) Books/$@"
-	$(MAKE) Books/$@
-
-BOOK_SLIDES = FLslides CS4114slides CS5040slides CS3slides CS3114slides CS3F18slides CS5040Master CS3SS18slides TestSlides
-
-# TODO: can remove -bb option once all py3 str encoding in odsa is debugged 
-$(BOOK_SLIDES) : % : config/%.json min pyVenvCheck
+	@echo "Created an eBook in Books/: $@"
+	
+$(SLIDE_BOOKS) : % : config/%.json min pyVenvCheck
 	$(VENV)/python -bb $(CONFIG_SCRIPT) --slides $< --no-lms
+	@echo "Created an Slide-eBook in Books/: $@"
 
 # Target eBooks with unique recipies below:::
 CS3notes: min pyVenvCheck
