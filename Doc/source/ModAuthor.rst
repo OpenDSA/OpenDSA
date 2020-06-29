@@ -13,8 +13,9 @@ To create a "book", you must invoke ``OpenDSA/tools/configure.py``,
 being sure to specify a configuration file (sample of which can be 
 found in ``OpenDSA/config``.
 Sample books can be compiled using ``OpenDSA/Makefile``.
-A sample command (run from the OpenDSA toplevel directory)
-looks like: ``python tools/configure.py config/OpenDSA.json``.
+If the python virtual environment is already active, a sample 
+command (run from the OpenDSA toplevel directory) looks like: 
+``python tools/configure.py config/OpenDSA.json``.
 
 A number of special directives have been created, which are documented
 in :ref:`OpenDSA ReST Extensions <ODSAExtensions>`.
@@ -143,8 +144,12 @@ for that language.
 Creating Classroom Presentation Slides
 --------------------------------------
 
-OpenDSA uses `hieroglyph <https://github.com/nyergler/hieroglyph/>`_ a Sphinx 
-extension to build an HTML-based slideshow.
+At the moment, OpenDSA uses a 
+`custom hieroglyph <https://github.com/sublime09/hieroglyph/>`_ 
+extention of Sphinx to build HTML-based slideshows.  
+It is forked off of the main 
+`hieroglyph <https://github.com/nyergler/hieroglyph/>`_ repository at version
+still has issues with Sphinx versions 1.8 and above.  
 
 The course notes infrastructures is similar to eTextBook creation, and uses
 ``OpenDSA/Makefile``. The only difference is the ``-s`` option for slides

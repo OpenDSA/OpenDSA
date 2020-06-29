@@ -27,9 +27,11 @@ Configuration files are JSON files, normally stored in OpenDSA/config.
 From the top level of an OpenDSA repository
 (from within the |devstack_link|), you can compile a book
 instance (given the existance of a configuration file named
-``config/foo.json``) by issuing this command:
+``config/foo.json``) by issuing these commands::
 
-``python tools/configure.py config/foo.json --no-lms``
+  source .pyVenv/bin/activate  # to activate python venv
+  python tools/configure.py config/foo.json --no-lms
+  deactivate   # to exit python venv
 
 .. |devstack_link| raw:: html
 

@@ -28,10 +28,11 @@ You need to create a configuration file in the ``OpenDSA/config``
 directory.
 You will probably start by copying an existing one (``Test.json`` is a
 good place to start).
-You will then need to add a target to ``OpenDSA/Makefile`` to compile
-this configuration file.
-Just copy an existing one (like for ``Test``) and modify the name for
-your config file.
+With that file in place, the main Makefile for OpenDSA 
+(``OpenDSA/Makefile``) will recognize it as a valid target to compile. 
+If you want a specialized build process, append a rule to the Makefile 
+that overrides the target, and put in the steps for the new build 
+process.  
 Once your config file is set up, then you will execute your Makefile
 target (a command like ``make Test`` called from a commandline window
 from the OpenDSA repository top level will do this).
@@ -353,19 +354,17 @@ Now, open a Git Bash window and do::
    npm install -g uglify-js
    npm install -g cleancss
 
-Next, install Python 2.7.
+Next, install Python 3.8 from https://www.python.org/.  
 Be sure to add it to your PATH variable.
 For example, if you choose to put it at the top level of your C:
-drive, then add C:/Python27 and C:/Python27/Scripts to your PATH.
-Note: If you already have Python 2.7 installed, but it does not have
-pip, then it is so obsolete that it needs to be thrown away and
-replaced.
-By the way, if you think that you have Python installed already, you
-need to make sure that its not Python 3 (which won't work with our
-infrastructure).
-You can check by doing::
+drive, then add C:/Python38 and C:/Python38/Scripts to your PATH.
+Note: We will create a python virtual environment specific for 
+OpenDSA to ensure that the python installations for your system or 
+other projects is not corrupted or in conflict.  
 
-  python --version
+To check and see if you have the correct version of python installed, 
+use the command ``python3.8 --version``.  It is very likely that other
+versions of python will **not** work.  
 
 Finally pop open a **new** Git Bash window, and you are ready to get
 started.
@@ -379,8 +378,8 @@ Once the repository is cloned (we assume here into a directory named
 ``OpenDSA``) then do the following::
 
    cd OpenDSA
-   pip install -r requirements.txt
-   make pull [This could take awhile]
+   make venv #Takes less than 1 minute#
+   make pull #This could take awhile#
 
 At this point, you should be all set up. To test things, you can try
 doing::
