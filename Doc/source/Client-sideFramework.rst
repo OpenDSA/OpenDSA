@@ -38,7 +38,10 @@ So if you edit one of the library files, be sure to run::
 
    make min
 
-from the OpenDSA toplevel before you check to see the effect.
+from the OpenDSA toplevel before you check to see the effect.  Note that 
+the minify process can be a *fake* minify (only copying the files) depending
+on the Makefile variables.  See the beginning lines of ``OpenDSA/Makefile`` to 
+update this to your preference.
 
 In order to allow AVs to be reused outside of OpenDSA (without including
 OpenDSA infrastructure), ``odsaAV.js`` checks for all dependencies provided
