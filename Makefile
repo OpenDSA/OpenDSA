@@ -40,7 +40,7 @@ pyReqs: venv requirements.txt
 	$(VENV)/python -m pip install --upgrade pip setuptools
 	$(VENV)/pip install --requirement requirements.txt
 
-allbooks: Everything CS2 CS3 RecurTutor PL
+allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormalLang
 
 pull:
 	git pull
