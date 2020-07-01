@@ -125,7 +125,7 @@ jsonlint:
 rst2json: pyVenvCheck
 	$(VENV)/python tools/rst2json.py
 
-JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook
+JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook JSAV
 JS_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname).js)
 JS_MIN_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname)-min.js)
 
