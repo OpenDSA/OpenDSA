@@ -352,7 +352,7 @@ Now, open a Git Bash window and do::
    npm install -g csslint
    npm install -g jsonlint
    npm install -g uglify-js
-   npm install -g cleancss
+   npm install -g clean-css-cli
 
 Next, install Python 3.8 from https://www.python.org/.  
 Be sure to add it to your PATH variable.

@@ -9,11 +9,13 @@ LINT = eslint --no-color
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 
-JS_MINIFY = cat 
-CSS_MINIFY = cat
-# Uncomment the lines below to do a real-minify:
-# JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' -- 
-# CSS_MINIFY = cleancss
+JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' -- 
+CSS_MINIFY = cleancss
+ifeq ($(ODSA_ENV),DEV)
+	# fake-minify for easier debugging in DEV setups...
+	JS_MINIFY = cat 
+	CSS_MINIFY = cat
+endif
 
 # These are used by Makefile.venv for using python's venv in make
 # Targets from Makefile.venv: venv, show-venv, clean-venv, python ...
@@ -132,7 +134,11 @@ CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
 
 min: $(JS_MIN_FILES) $(CSS_MIN_FILES) 
-	@echo 'Completed: Minify of all files (or fake-minify)'
+ifeq ($(ODSA_ENV),DEV)
+	@echo 'Completed: FAKE-Minify of many .js and .css files (just copied)'
+else
+	@echo 'Completed: Minify of many .js and .css files'
+endif
 
 lib/%-min.js:: lib/%.js
 	@$(JS_MINIFY) $^ > $@
