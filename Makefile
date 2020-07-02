@@ -129,7 +129,7 @@ JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook JSAV
 JS_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname).js)
 JS_MIN_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname)-min.js)
 
-CSS_FNAMES = site odsaAV odsaKA odsaMOD gradebook normalize
+CSS_FNAMES = site odsaMOD odsaStyle odsaAV odsaKA gradebook  
 CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
 
