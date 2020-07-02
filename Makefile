@@ -8,6 +8,10 @@ TARGET = build
 LINT = eslint --no-color
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
+ODSA_ENV ?= DEV # Can be overridden by env varis, such as ODSA_ENV='PROD' 
+VENVDIR = .pyVenv
+ACTIVATE = source $(VENVDIR)/bin/activate 
+PYTHON ?= python #  Can be overridden by env varis, such as PYTHON="python3.8"
 
 JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' -- 
 CSS_MINIFY = cleancss
@@ -17,32 +21,31 @@ ifeq ($(ODSA_ENV),DEV)
 	CSS_MINIFY = cat
 endif
 
-# These are used by Makefile.venv for using python's venv in make
-# Targets from Makefile.venv: venv, show-venv, clean-venv, python ...
-PY=python3.8
-WORKDIR=.
-VENVDIR=.pyVenv
-REQUIREMENTS_TXT=requirements.txt
-
 all: alllint
-.PHONY: clean min pull Webserver pyVenvCheck pipList
+.PHONY: clean min pull Webserver 
 .PHONY: all alllint csslint lint lintExe jsonlint
+
+.PHONY: venv clean-venv shell # for the python virtual environment
+venv: $(VENVDIR)/.pipMarker
+$(VENVDIR)/.pipMarker: $(VENVDIR)/.venvMarker requirements.txt
+	$(ACTIVATE) && pip install --requirement requirements.txt
+	touch $@
+$(VENVDIR)/.venvMarker: 
+	@echo "Using env variable: PYTHON=$(PYTHON)"
+	@echo -n 'Making new $(VENVDIR) using: ' && $(PYTHON) --version
+	$(PYTHON) -m venv $(VENVDIR)
+	$(ACTIVATE) && python -m pip install --upgrade setuptools pip
+	touch $@
+clean-venv:
+	- $(RM) $(VENVDIR)
+	@ echo "Note: Use 'deactivate' if $(VENVDIR) is still activated"
+shell: $(VENVDIR)/.venvMarker
+	$(ACTIVATE) && exec $(notdir $(SHELL))
 
 Webserver:
 	@-echo -n "System is: " & uname -s
-	python3 server.py
-
-.pyVenv pyVenv: venv
-pyVenvCheck: venv
-	@python -c "import sys; assert (hasattr(sys, 'real_prefix') or (hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix)), '.pyVenv must be activated!'"
-	@echo '.pyVenv is active'
-pipList: venv
-	$(VENV)/pip list
-pyReqs: venv requirements.txt
-	$(VENV)/python -m pip install --upgrade pip setuptools
-	$(VENV)/pip install --requirement requirements.txt
-
-allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormalLang
+	@echo "Using env variable: PYTHON=$(PYTHON)"
+	exec $(PYTHON) server.py
 
 pull:
 	git pull
@@ -122,8 +125,8 @@ jsonlint:
 	@jsonlint --quiet config/*.json
 	@jsonlint --quiet config/Old/*.json
 
-rst2json: pyVenvCheck
-	$(VENV)/python tools/rst2json.py
+rst2json: venv
+	$(ACTIVATE) && python tools/rst2json.py
 
 JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook JSAV
 JS_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname).js)
@@ -158,30 +161,30 @@ SLIDE_BOOKS += CS5040Master
 BOOKS = $(filter-out $(SLIDE_BOOKS),$(ALL_BOOKS))
 .PHONY: $(BOOKS) $(SLIDE_BOOKS)
 
+allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormalLang
+
 # A Static-Pattern Rule for making Books
 # TODO: can remove -bb option once all py3 str encoding in odsa is debugged 
-$(BOOKS): % : config/%.json min pyVenvCheck
-	$(VENV)/python -bb $(CONFIG_SCRIPT) $< --no-lms
+$(BOOKS): % : config/%.json min venv
+	$(ACTIVATE) && python -bb $(CONFIG_SCRIPT) $< --no-lms
 	@echo "Created an eBook in Books/: $@"
 	
-$(SLIDE_BOOKS) : % : config/%.json min pyVenvCheck
-	$(VENV)/python -bb $(CONFIG_SCRIPT) --slides $< --no-lms
+$(SLIDE_BOOKS) : % : config/%.json min venv
+	$(ACTIVATE) && python -bb $(CONFIG_SCRIPT) --slides $< --no-lms
 	@echo "Created an Slide-eBook in Books/: $@"
 
 # Target eBooks with unique recipies below:::
-CS3notes: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
+CS3notes: min venv
+	$(ACTIVATE) && python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
 
-CS3F18notes: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) config/CS3F18slides.json --no-lms -b CS3F18notes --no-lms
+CS3F18notes: min venv
+	$(ACTIVATE) && python $(CONFIG_SCRIPT) config/CS3F18slides.json --no-lms -b CS3F18notes --no-lms
 
-CS5040notes: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
+CS5040notes: min venv
+	$(ACTIVATE) && python $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
 
-CS5040MasterN: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
+CS5040MasterN: min venv
+	$(ACTIVATE) && python $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
 
-CS3SS18notes: min pyVenvCheck
-	$(VENV)/python $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
-
-include Makefile.venv
+CS3SS18notes: min venv
+	$(ACTIVATE) && python $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
