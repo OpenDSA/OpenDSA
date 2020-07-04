@@ -64,6 +64,9 @@
   "chapters": {
 	"Sample exercises": {
       "Peixuan/SampleCases": {}
+    },
+	"PIFrames Test": {
+      "Peixuan/PIFramesTest": {}
     }
   }
 }
