@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+</head>
+
+<body>
+  <form action="./EvenBinaryFATraversal.html" name="myform" method="get" id="StringForm">
+    <style type="text/css">
+      input {
+        margin: 0.4rem;
+      }
+    </style>
+    <a><strong>Enter test strings for the above machine ( Keep empty for λ ).
+      </strong></a><a href="#" class="removeclass"><input type="button" id="AddMoreFileBox" value=" Add " /></a>
+    <input type="submit" value="Submit" id="submit" />
+    <div id="InputsWrapper">
+      <div>
+        <input type="text" name="mytext1" id="field_1" placeholder="Custom testing string!" /><a href="#"
+          class="removeclass"><input type="button" value="Delete" /></a>
+      </div>
+    </div>
+  </form>
+</body>
+
+<script>
+  $(document).ready(function () {
+    var MaxInputs = 4
+    var InputsWrapper = $('#InputsWrapper')
+    var AddButton = $('#AddMoreFileBox')
+    var x = InputsWrapper.length
+    var FieldCount = 1
+    $(AddButton).click(function (e) {
+      if (x <= MaxInputs) {
+        FieldCount++
+        $(InputsWrapper).append(
+          '<div><input type="text" name="mytext' +
+          FieldCount +
+          '" id="field_' +
+          FieldCount +
+          '" placeholder="Custom testing String!"/><a href="#" class="removeclass"><input type="button" value="Delete"></a></div>'
+        )
+        x++
+      }
+      return false
+    })
+    $('body').on('click', '.removeclass', function (e) {
+      //user click on remove text
+      if (x > 1) {
+        $(this).parent('div').remove() //remove text box
+        x-- //decrement textbox
+      }
+      return false
+    })
+
+    //cancel radio clock
+    $('input:radio').click(function () {
+      var domName = $(this).attr('name')
+      var $radio = $(this)
+      if ($radio.data('waschecked') == true) {
+        $radio.prop('checked', false)
+        $("input:radio[name='" + domName + "']").data('waschecked', false)
+      } else {
+        $radio.prop('checked', true)
+        $("input:radio[name='" + domName + "']").data('waschecked', false)
+        $radio.data('waschecked', true)
+      }
+    })
+  })
+</script>
+
+</html>

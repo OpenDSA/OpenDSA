@@ -22,51 +22,58 @@ class ActiveEquation{
                 left: position_obj["POSITION_X"],
                 top: position_obj["POSITION_Y"]
             }
-        ).addClass("tickselected");
+        ).addClass("activeEqMenu");
+        this.visualComponents["tickmark"].element[0].dataset.selected="unselected";
         this.visualComponents["tickmark"].element[0].addEventListener("click", e => {
             e.stopPropagation();
             if(this.selected==true){
                 this.selected = false;
                 this.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
-                this.visualComponents["tickmark"].addClass("tickunselected");
+                this.visualComponents["tickmark"].element[0].dataset.selected="unselected";
                 // this.visualComponents["tickmark"].removeClass("tickselected");
-                ;
+                
                 jsavObject.logEvent({type: "tick unselected", id: this.name});
             }
             else{
                 this.selected = true;
                 this.visualComponents["tickmark"].element[0].innerHTML = "&#x2611";
-                this.visualComponents["tickmark"].addClass("tickselected");
+                this.visualComponents["tickmark"].element[0].dataset.selected="selected";
                 // this.visualComponents["tickmark"].removeClass("tickunselected");
-                ;
+                
                 jsavObject.logEvent({type: "tick selected", id: this.name});
             }
         });
         this.visualComponents["tickmark"].element[0]
         .setAttribute("title", "Click to select this equation and others to create a system, followed by clicking on Solve to solve the system.");
 
+        // Delete button is added to remove the individual equation
         this.visualComponents["delete"] = jsavObject.label(
-            //"OK",
             "&#x2702",
             {
                 left: position_obj["POSITION_X"]+
-                this.visualComponents["tickmark"].element[0].offsetWidth+5,
-                top: position_obj["POSITION_Y"]
+                this.visualComponents["tickmark"].element[0].offsetWidth+10,
+                top: position_obj["POSITION_Y"],
+                // left: 5,
+                // top: 0,
+                // relativeTo: this.visualComponents["tickmark"].element[0],
+                // anchor: "right top",
+                // myAnchor: "left top"
             }
-        ).addClass("tickselected");
+        ).addClass("activeEqMenu");
         this.visualComponents["delete"].element[0].dataset.id = this.name.split("_")[2]-1;
         this.visualComponents["delete"].element[0].dataset.wkid = this.name.split("_")[0].slice(2,);
         this.visualComponents["delete"].element[0].setAttribute("title", "Click to remove the equation, with values and associations.");
         
+        // Adding a help button to provide instructions about the usage of how to use the equations.
         this.visualComponents["help"] = jsavObject.label(
             "&#xFFFD",
             {
                 left: position_obj["POSITION_X"]+
-                this.visualComponents["tickmark"].element[0].offsetWidth+5+
-                this.visualComponents["delete"].element[0].offsetWidth+5,
+                this.visualComponents["tickmark"].element[0].offsetWidth+10+
+                this.visualComponents["delete"].element[0].offsetWidth+10,
                 top: position_obj["POSITION_Y"]
             }
-        ).addClass("tickselected");
+        ).addClass("activeEqMenu");
         this.visualComponents["help"].element[0].dataset.id = this.name.split("_")[2]-1;
         this.visualComponents["help"].element[0].dataset.wkid = this.name.split("_")[0].slice(2,);
         this.visualComponents["help"].element[0].setAttribute("title", "Click here for help about the equations.");
@@ -75,21 +82,23 @@ class ActiveEquation{
             Window.showHelp("boxedEquation")
         });
 
+        // Adding a template text for the equation that was added, that shows the equation's subscripts
         // console.log(this.equationObjectReference)
         // Creating the visual elements.
         this.visualComponents["text"] = jsavObject.label(
             katex.renderToString(this.equationObjectReference["latex"]),
             {
                 left: position_obj["POSITION_X"]+
-                this.visualComponents["tickmark"].element[0].offsetWidth+5+
-                this.visualComponents["delete"].element[0].offsetWidth+5+
-                this.visualComponents["help"].element[0].offsetWidth+5,
+                this.visualComponents["tickmark"].element[0].offsetWidth+10+ // Test if +5 or +13 works
+                this.visualComponents["delete"].element[0].offsetWidth+10+
+                this.visualComponents["help"].element[0].offsetWidth+10,
                 top: position_obj["POSITION_Y"]+3
             }
         ).addClass("workspaceEquation");
         this.visualComponents["text"].element[0].addEventListener("click", e=> {
-            Window.parentObject = this;
-            this.subscriptizeEquationComponents();
+            // Window.parentObject = this;
+            e.stopPropagation();
+            this.subscriptizeEquationComponents(this);
         });
 
         /**
@@ -102,14 +111,14 @@ class ActiveEquation{
             katex.renderToString(this.equationObjectReference["latex_boxes"]),
             {
                 left: position_obj["POSITION_X"]+
-                this.visualComponents["tickmark"].element[0].offsetWidth+5+
-                this.visualComponents["delete"].element[0].offsetWidth+5+
-                this.visualComponents["help"].element[0].offsetWidth+5+
-                this.visualComponents["text"].element[0].offsetWidth+30,
+                this.visualComponents["tickmark"].element[0].offsetWidth+10+ // test if +5 or +13 helps
+                this.visualComponents["delete"].element[0].offsetWidth+10+
+                this.visualComponents["help"].element[0].offsetWidth+10+
+                this.visualComponents["text"].element[0].offsetWidth+20,    // test if +30 or +22 helps
                 top: position_obj["POSITION_Y"]
             }
         ).addClass("boxedEquation");
-
+        
         // To be useful later.
         this.visualComponents["height"] = this.equationObjectReference.height;
 
@@ -306,7 +315,7 @@ class ActiveEquation{
         }
         //Substitute the random symbol name with the proper qualified variable name
     }
-    subscriptizeEquationComponents(){
+    subscriptizeEquationComponents(activeEqObject){
         // Steps:
         // 1. Add subscripts to all the elements in the equation in the represented version
         // 2. Add subscripts to all the grayed out boxes in the boxed equation
@@ -323,14 +332,25 @@ class ActiveEquation{
         inputBox[0].style.top = event.pageY+5+"px";
         inputBox[0].style.left = event.pageX+10+"px";
         Window.box = inputBox;
+        Window.showBlankPrompt = false;
+        
+        inputBox[0].addEventListener("click", 
+            e=> { 
+                e.stopPropagation();
+            })
+
         inputBox[0].querySelector("#submit").addEventListener("click", 
             e=> { 
                 e.stopPropagation();
-                Window.parentObject.setSubscript(
+                // Window.parentObject.setSubscript(
+                activeEqObject.setSubscript(
                     e,
                     Window.box[0].querySelector("#subscriptname").value,
-                    Window.parentObject);
+                    // Window.parentObject);
+                    activeEqObject);
                 Window.box.close();
+
+                // Cleaning up
                 delete Window.box;
                 delete Window.parentObject;
             } 
@@ -341,7 +361,7 @@ class ActiveEquation{
         // var subscriptText = Window.box[0].querySelector("#subscriptname").value;
         // event.stopPropagation();
         if(subscriptText == "") subscriptText = " ";
-        
+
         // Step 1.
         equationObject.visualComponents["text"].text(
             katex.renderToString(
@@ -394,6 +414,27 @@ class ActiveEquation{
                 else equationObject.variables[variable].grayOut();
             }
         }
+
+        // TODO: Can be shortened to make the calls from inside one another; makes the segment less complicated.
+        // Adjusting the visuals of the equation
+        var shiftChain = Window.windowManager.shiftRight(equationObject);
+        console.log(shiftChain);
+        if(shiftChain == "shiftActiveEqDown") {
+            // console.log(Window.parentObject);
+            var extend = Window.windowManager.shiftActiveEqDown(equationObject.name);
+            if(extend != null) {
+                var split = equationObject.name.split("_");
+                var wkspaceNum = split[0].substring(2, split[0].length);
+                Window.windowManager.shiftDown(extend, wkspaceNum);
+            }
+            
+        }
+        else if(shiftChain == "shiftActiveEqUp") {
+            Window.windowManager.shiftActiveEqUp(equationObject.name);
+        }
+        // Window.box.close();
+        // delete Window.box;
+        // delete Window.parentObject;
     }
     OldgetUnitOfVariable(varName)
     {

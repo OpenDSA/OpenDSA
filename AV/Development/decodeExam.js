@@ -914,7 +914,7 @@ var dashline = dashObject.setMargin(margin5);
   }
 
   function about() {
-    var mystring = "Build heap running time visual proof\nWritten by Mohammed Fawzy and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during February, 2014\nJSAV library version " + JSAV.version();
+    var mystring = "Build heap running time visual proof\nWritten by Mohammed Fawzy and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://opendsa.org.\nWritten during February, 2014\nJSAV library version " + JSAV.version();
     alert(mystring);
   }
 

@@ -8,7 +8,7 @@
     currentStates,
     stepBy;
   var statesViz = [];
-
+  var endflag = 0
   // Initializes a new graph and runs a traversal input. Called whenever the page is loaded.
   var initialize = function() {
     g = localStorage['graph']; // The graph was saved to local storage by the FAEditor.
@@ -149,7 +149,7 @@
       var successors = currentStates[i].state.neighbors();
       var letter = emptystring;
       var inputString = currentStates[i].inputString
-      if(inputString.length === 0) {
+      if(inputString.length === 0 || endflag > 3) {
         if(currentStates[i].state.hasClass('final')) {
           currentStates[i].state.addClass('accepted')
         }
@@ -186,8 +186,9 @@
               }
             }
             var reducedInput = inputString.substring(1)
-            if(expectedInput == emptystring) {
-              reducedInput = inputString
+            if(reducedInput == "") {
+              reducedInput = curStack
+              endflag++
             }
             var nextConfig = new Configuration(this.configurations, next, newStack, reducedInput, 0);
             nextStates.push(nextConfig);

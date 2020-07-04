@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   var av = new JSAV(av_name, {animationMode: "none"});
   // Setup the init location of tree
-  var btTop = -5 + 30;
+  var btTop = 0;
   var btLeft = 180 + 150;
   var cirOpt = {fill: "white"};
 
@@ -18,8 +18,8 @@ $(document).ready(function() {
   rt.right().left().left(""); // the covered leaf node
 
   //adding the leaf node "20 to 40"
-  av.label("20 to 40", {visible: true, left: 325, top: 170});
-  av.g.ellipse(350, 197, 35, 16, cirOpt);
+  av.label("20 to 40", {visible: true, left: 325, top: 147});
+  av.g.ellipse(350, 173, 35, 16, cirOpt);
 
   bt.layout();
   av.displayInit();

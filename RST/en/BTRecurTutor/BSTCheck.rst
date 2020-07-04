@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
-.. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -27,12 +27,10 @@ children.
 
 .. _BSTCheckFig:
 
-.. odsafig:: Images/BSTCheckFig.png
-   :width: 100
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Binary tree checking
+.. inlineav:: BSTCheckCON dgm
+   :links: AV/BTRecurTutor/BSTCheckCON.css
+   :scripts: AV/BTRecurTutor/BSTCheckCON.js
+   :align: justify
 
    To be a binary search tree, the left child of the node with value
    40 must have a value between 20 and 40.

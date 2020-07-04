@@ -40,7 +40,7 @@ Window.clearGlobalPointerReference = function() {
         Window.eqbank.currentSelectedEquationObject != null
     )
     {
-        console.log(Window.eqbank.currentSelectedEquationObject);
+        // console.log(Window.eqbank.currentSelectedEquationObject);
         Window.eqbank.currentSelectedEquationObject.element.dataset.status='no';
         Window.eqbank.currentSelectedEquationObject = null;
     }
@@ -49,9 +49,31 @@ Window.clearGlobalPointerReference = function() {
     Window.globalPointerReference.currentClickedObject = null;
     Window.globalPointerReference.currentClickedObjectType = null;
     Window.globalPointerReference.currentClickedObjectDescription = null;
+    Window.showBlankPrompt = true;
+    console.log("Came here");
+    console.trace();
+}
+
+Window.isThereContext = function() {
+    if(Window.globalPointerReference.currentClickedObject == null &&
+    Window.globalPointerReference.currentClickedObjectType == null &&
+    Window.globalPointerReference.currentClickedObjectDescription == null)
+        return false;
+    else return true;
 }
 
 Window.showHelp = function(keyword) {
     var helpText = Window.helpTexts[keyword];
-    JSAV.utils.dialog(helpText, {width: 600, closeText: "OK", dialogClass: "helpPage"});
+    var helpDialog = JSAV.utils.dialog(
+        helpText+`<button type="button" id="closeButton" class="jsavrow">OK</button>`, 
+        {width: 600, dialogClass: "helpPage"}
+        );
+    Window.globalPointerReference.currentClickedObjectType = "help";
+    Window.globalPointerReference.currentClickedObjectDescription = "main";
+    Window.showBlankPrompt = false;
+    helpDialog[0].querySelector("#closeButton").addEventListener("click", e=> {
+        e.stopPropagation();
+        helpDialog.close();
+        Window.clearGlobalPointerReference();
+    })
 }

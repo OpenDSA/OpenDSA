@@ -68,6 +68,8 @@
     border: 0.05em solid black;
     border-radius: .2em;
     padding: 0px 0px;
+    color: black;
+    font-weight: normal;
 }
 
 .value[data-status='empty']{
@@ -252,25 +254,27 @@
 .boxedEquation {
     border: thin dashed black;
     padding: 2px;
-    color: black;
+    color: rgb(138, 100, 100);
     font-size: 120%;
     z-index: 500;
 }
 
-.tickunselected {
+.activeEqMenu {
     border: thin dashed black;
     padding: 2px;
     font-size: 120%;
-    z-index: 500;
-    color: lightgrey;
-}
-
-.tickselected {
-    border: thin dashed black;
-    padding: 2px;
-    font-size: 120%;
+    font-weight: normal;
     z-index: 500;
     color: black;
+}
+
+.activeEqMenu[data-selected="selected"] {
+    font-weight: bold;
+}
+
+.activeEqMenu[data-selected="unselected"] {
+    font-weight: normal;
+    color: grey;
 }
 
 #float {

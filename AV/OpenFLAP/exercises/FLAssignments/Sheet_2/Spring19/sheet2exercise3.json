@@ -11,6 +11,9 @@
                 "aabb": false
             },
             {
+                "bbaa": true
+            },
+            {
                 "aabbaabb": false
             },
             {

@@ -1,5 +1,4 @@
 #MinimizationWithQuestionsCON {
-  height: 900px;
   width: 900px;
 }
 
@@ -36,10 +35,6 @@
   background-color: red;
 }
 
-.jsavlabel {
-  font-size: 2em;
-  text-align: center;
-}
 .jsavstatelabel {
   font-size: 1em;
   z-index: 700;

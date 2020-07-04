@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
-.. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -165,29 +165,27 @@ Graphs
      constraints, output the jobs in an order that does not violate
      any of the prerequisites.
 
-   .. inlineav:: topsortCON dgm
-      :links: 
-      :scripts: AV/Graph/topSortCON.js
-      :align: center
-
 
 .. slide:: Depth-First Topological Sort (1)
 
    .. codeinclude:: Graphs/TopsortDFS
       :tag: TopsortDFS
 
+.. slide:: Depth-First Topological Sort (2)
 
-.. slide:: Depth-First Topological Sort (1)
-
-   .. inlineav:: topSortCON ss
-      :scripts: AV/Graph/topSortCON.js
+   .. inlineav:: topSortDFSCON ss
+      :long_name: TopSort Slideshow
+      :links: AV/Graph/topSortDFSCON.css
+      :scripts: AV/Graph/topSortDFSCON.js
       :output: show
+
+
 
 .. slide:: .
 
    .
-
-
+               
+               
 .. slide:: Queue-Based Topsort (1)
 
    .. codeinclude:: Graphs/TopsortBFS

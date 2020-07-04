@@ -1,0 +1,11 @@
+#GrammarIntroFF{
+    height: 600px;
+}
+.jsavcontrols{
+    display: unset !important;
+}
+/*Peixuan updated this css to prevent overrding error
+if multiple frames on the same page*/
+#GrammarIntroFF .jsavhorizontalarray .jsavnode {
+    min-width: 160px !important;
+}

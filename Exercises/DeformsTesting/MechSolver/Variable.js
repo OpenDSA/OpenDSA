@@ -52,6 +52,7 @@ class Variable{
         this.element.addEventListener(
             "click", e => {
                 e.stopPropagation();
+                Window.showBlankPrompt = false;
                 //console.log(this.id)
                 //MAJOR TODO: Clean up all the conditionals
                 /**
@@ -153,7 +154,7 @@ class Variable{
                             "click", e2=> {
                                 e2.stopPropagation();
                                 element.close();
-                                var listOfDomains = "";
+                                var listOfDomains = "--select a domain--";
                                 for (var d in Window.UNIT_DB)
                                     listOfDomains+=
                                     '<option value="'+d+'">'+d+'</option>';
@@ -172,6 +173,7 @@ class Variable{
                                 inputBox[0].querySelector("#domain").addEventListener("change", 
                                     e=> { 
                                         e.stopPropagation();
+                                        console.log(this, Window.box[0])
                                         var unitlist = Window.box[0].querySelector("#unit");
                                         unitlist.innerHTML = "";
                                         for(var unit in Window.UNIT_DB[event.target.value])
@@ -539,6 +541,15 @@ class Variable{
                         // this.globalPointerReference.currentClickedObjectDescription = null;
                     }
                 }
+                var activeEq = Window.windowManager.shiftActiveEqDown(this.id);
+                console.log(id);
+                if(activeEq != null) {
+                    var split = id.split("_");
+        
+                    var wkspaceNum = split[0].substring(2, split[0].length);
+                    Window.windowManager.shiftDown(activeEq, wkspaceNum);
+                }
+
             }
         )
     }
@@ -637,6 +648,9 @@ class Variable{
         this.unitDisplay.removeEventListener("click", this.changeUnits);
         this.valueDisplay.dataset.status = "empty";
         this.grayOut();
+
+        Window.windowManager.shiftActiveEqUp(this.id);
+
     }
     grayOut()
     {
@@ -704,12 +718,13 @@ class Variable{
         text+="</ul>";
 
         var element = JSAV.utils.dialog(
-             text,
+            text,
             {
                 width: 100
             }
         );
         Window.obj = event.target;
+        Window.showBlankPrompt = false; // TODO: Replace with explicit calls to createContext with details
         element[0].style.top = event.pageY+5+"px";
         element[0].style.left = event.pageX+10+"px";
         element[0].childNodes[0].childNodes.forEach(x => {
@@ -728,6 +743,7 @@ class Variable{
                     this.setValueUnit(String(this.valueRepr),
                     Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unitDisp']);
                     element.close();
+                    Window.clearGlobalPointerReference();
                 }
             )
         });

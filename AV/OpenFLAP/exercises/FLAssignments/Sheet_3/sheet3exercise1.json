@@ -32,6 +32,15 @@
                 "bbaaaaa": true
             },
             {
+                "aaabbaaa": false
+            },
+            {
+                "bbbbabbab": true
+            },
+            {
+                "aaaabbabbbb": true
+            },
+            {
                 "abbabba": true
             }
         ],

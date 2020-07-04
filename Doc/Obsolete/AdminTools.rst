@@ -48,7 +48,7 @@ is necessary to register the book instance.
 The registration can be done on the ``RegisterBook`` page at
 ``Book_Base_URL/html/RegisterBook.html``.
 For example,
-``http://algoviz.org/OpenDSA/Books/OpenDSA/html/RegisterBook.html``.
+``http://opendsa.org/Books/OpenDSA/html/RegisterBook.html``.
 This presumes that the book instance has already been configured by a
 Django administrator.
 

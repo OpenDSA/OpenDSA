@@ -1,0 +1,85 @@
+{
+    "translations": {
+        "en": {
+            "q0": {
+                "type": "multiple",
+                "question":"What is first step to use induction?",
+                "description": "First, we need a way to describe the $n^{th}$ odd number, which is simply $2n−1$. This also allows us to cast the theorem as a summation. Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
+                "answer": "proof the base case at n $=$ 1",
+                "choices": ["proof the base case at n $=$ 1", "proof the base case at n $=$ 0", "proof the base case at n $\\geq$ 1"]
+            },
+            "q1": {
+                "type": "multiple",
+                "question":"What is the result of substituting n to 1?",
+                "description": "First, we need a way to describe the $n^th$ odd number, which is simply $2n−1$. This also allows us to cast the theorem as a summation. Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
+                "answer": "1",
+                "choices": ["1", "4", "9", "16", "25"]
+            },
+            "q2": {
+                "type": "multiple",
+                "question": "Does the theory valid at the base case?",
+                "description": "First, we need a way to describe the $n^th$ odd number, which is simply $2n−1$. This also allows us to cast the theorem as a summation. Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
+                "answer": "Yes",
+                "choices": ["Yes", "No"]
+            },
+            "q3": {
+                "type": "multiple",
+                "question": "Since we proved the base case, Which of the following is a correct induction Hypothesis?",
+                "description": "Theorem: $\\Sigma^n_{i=1}$($2i−1$)=$n^2$",
+                "answer": "$\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$",
+                "choices": ["$\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$","$\\Sigma^{n+1}_{i=1}$($2i−1$)=$(n+1)^2$", "$\\Sigma^n_{i=1}$($2i−1$)=$n^2$" ]
+            },
+            "q4": {
+                "type": "multiple",
+                "question": "[T/F] The sum of the first n odd numbers is simply the sum of the first $n−1$ odd numbers plus the $n'th$ odd number.",
+                "description": "$\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$ <br> We now use the induction hypothesis to show that the theorem holds true for $n$",
+                "answer": "True",
+                "choices": ["True", "False"]
+            },
+            "q5": {
+                "type": "multiple",
+                "question": "What is the result of this equation?",
+                "description": "We will use the induction hypothesis to replace the partial summation with its closed-form solution. $\\sum_{i=1}^{n} (2i - 1) = [\\sum_{i=1}^{n-1}(2i - 1)] + 2n - 1 =\\\\ [(n-1)^2] + 2n - 1 = n^2 - 2n + 1 + 2n - 1$",
+                "answer": "$n^2$",
+                "choices": ["$n^2$", "$(n-1)^2$", "$(n+1)^2$"]
+            },
+            "q6": {
+                "type": "multiple",
+                "question": "What do you conclude from the last step?",
+                "description": "$\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$ <br>",
+                "answer": "We proved that $\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$",
+                "choices": ["We proved that $\\Sigma^{n-1}_{i=1}$($2i−1$)=$(n-1)^2$", "We need more steps to prove the theorem"]
+            },
+            "q7": {
+                "type": "multiple",
+                "question": "What is the base case?",
+                "description": "Theorem: The recurrence relation $T(n) = T(n−1) + 1$;$T(1) = 0$ has closed-form solution $T(n)=n−1$.",
+                "answer": "$T(2)$ $=$ $1$",
+                "choices": ["$T(2)$ $=$ $1$", "$T(1)$ $=$ $0$"]
+            },
+            "q8": {
+                "type": "multiple",
+                "question": "Is the base case valid or not?",
+                "description": "Theorem: The recurrence relation $T(n) = T(n−1) + 1$;$T(1) = 0$ has closed-form solution $T(n)=n−1$.",
+                "answer": "Yes $T(2) = 2 - 1 = 1$",
+                "choices": ["Yes $T(2) = 2 - 1 = 1$", "No"]
+            },
+            "q9": {
+                "type": "multiple",
+                "question": "In the induction hypothesis. What will be the value of $T(n-1)$",
+                "description": "Theorem: The recurrence relation $T(n) = T(n−1) + 1$;$T(1) = 0$ has closed-form solution $T(n)=n−1$.",
+                "answer": "$n$ $-$ $2$",
+                "choices": ["$n$ $-$ $2$", "$n$ $-$ $1$" , "$n$", "$n$ $+$ $1$", "$n$ $+$ $2$"]
+            },
+            "q10": {
+                "type": "select",
+                "question": "Based on the induction hypothesis, What is the value for $T(n)$?",
+                "description": "Theorem: The recurrence relation $T(n) = T(n−1) + 1$;$T(1) = 0$ has closed-form solution $T(n)=n−1$.",
+                "answer": ["$T(n) = T(n-1) + 1$", "$T(n) = n - 2 + 1$", "$T(n) = n - 1$"],
+                "choices": ["$T(n) = T(n-1) + 1$", "$T(n) = n - 2 + 1$", "$T(n) = n - 1$"]
+            }
+
+        }
+    }
+}
+  

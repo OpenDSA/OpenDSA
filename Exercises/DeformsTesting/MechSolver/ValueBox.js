@@ -39,15 +39,18 @@ class ValueBox{
                 left: element.visuals["POSITION_X"],
                 top: element.visuals["POSITION_Y"] //added three for visual padding balance between solutions and equations
             }
-        ).addClass("tickselected");
+        ).addClass("activeEqMenu");
+        this.element.deleteButton.element[0].dataset.selected="none";
         this.element.deleteButton.element[0].addEventListener(
             "click", e=> {
                 e.stopPropagation();
                 console.log("Clicked on box, Want to delete?");
                 // Insert function call deleting visual component here, together with calls to shiftup/down, etc.
                 // see how you can connect this to deleting the object from the workspace
+                Window.windowManager.shiftUp(null, this);
             }
-        )
+        ); 
+
 
         // First, create a box, that can be replaced by a value and a unit element (same as variable boxes)
         this.element.visualComponent = globalJSAV.label(
@@ -55,7 +58,7 @@ class ValueBox{
                 // element.dataset.variableDisplay+"="+element.dataset.valueDisplay+element.dataset.unitDisplay),
                 element.dataset.variableDisplay+"= \\Box"),
             {
-                left: element.visuals["POSITION_X"]+this.element.deleteButton.element[0].offsetWidth+5,
+                left: element.visuals["POSITION_X"]+this.element.deleteButton.element[0].offsetWidth+13, // verify if +5 or +13 works on testing
                 top: element.visuals["POSITION_Y"]+3 //added three for visual padding balance between solutions and equations
             }
         ).addClass("solutionBox");
@@ -144,6 +147,7 @@ class ValueBox{
             }
         );
         Window.obj = event.target;
+        Window.showBlankPrompt = false; // TODO: Replace with explicit calls to createContext with details
         element[0].style.top = event.pageY+5+"px";
         element[0].style.left = event.pageX+10+"px";
         element[0].childNodes[0].childNodes.forEach(x => {
@@ -163,6 +167,7 @@ class ValueBox{
                     // Change external views
                     this.setValueUnit(String(this.valueDisplay), this.unitDisplay);
                     element.close();
+                    Window.clearGlobalPointerReference();
                 }
             )
         });

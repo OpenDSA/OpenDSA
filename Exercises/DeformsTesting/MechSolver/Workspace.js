@@ -127,7 +127,8 @@ class Workspace
         document.getElementById(this.name+"addeq").addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation addition here.
-            console.log(this.globalEquationBank.currentSelectedEquationObject.eqobject);
+            // console.log(this.globalEquationBank.currentSelectedEquationObject.eqobject);
+            
             // this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
             // this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
             this.addNewEquation();
@@ -298,6 +299,14 @@ class Workspace
             this.globalSectionObj,
             this.globalPointerReference
         )
+        // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
+        this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
+        newActiveEquation.equationObjectReference.height+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+        // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
+        // Handling the internal initial bookkeeping
+        this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation;
+        //        |_>  To be elaborated for additional operations.
+        
         // If the equation already exists or was brought in once, preemptively
         // add a subscript to this equation.
         // This can be made more complex to update the subscripts for all of them
@@ -314,14 +323,6 @@ class Workspace
                 newActiveEquation.variables[vIndex].changeVarName("", String(lastHashMapID));
             }
         }
-        
-        // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
-        this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
-        newActiveEquation.equationObjectReference.height+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
-        // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
-        // Handling the internal initial bookkeeping
-        this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation;
-        //        |_>  To be elaborated for additional operations.
         
         // TODO: This needs to be included into deletion of equations, where this also gets updated
         // To possibly reset the counter to 0 if required.
@@ -353,7 +354,7 @@ class Workspace
             this.LIST_OF_EQUATIONS_IN_WORKSPACE[e.target.dataset.id].selected = true;
             this.deleteEquations();
         });
-
+        
         // console.log(newActiveEquation);
         this.lastEquation = newActiveEquation;
         Window.windowManager.shiftDown(this.lastEquation, this.id);
@@ -460,6 +461,7 @@ class Workspace
             }
         }
         Window.windowManager.shiftUp(this.id);
+        Window.clearGlobalPointerReference();
     }
 
     solveEquations()
@@ -604,6 +606,7 @@ class Workspace
             {
                 // currentEqn.visualComponents.tickmark.addClass("tickunselected");
                 // currentEqn.visualComponents.tickmark.removeClass("tickselected");
+                currentEqn.visualComponents["tickmark"].element[0].dataset.selected="unselected";
                 currentEqn.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
                 currentEqn.selected = false;
             }

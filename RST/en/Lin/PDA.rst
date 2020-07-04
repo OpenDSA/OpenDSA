@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
-.. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -37,11 +37,11 @@ This adds a form of additional memory, letting the machine store and
 retrieve data from the stack.
 
    .. inlineav:: PDAExampleCON dgm
-      :links: AV/Lin/PDA/PDAExampleCON.css
-      :scripts: DataStructures/FLA/FA.js AV/Lin/PDA/PDAExampleCON.js
+      :links: AV/VisFormalLang/PDA/PDAExampleCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/PDA/PDAExampleCON.js
       :align: center
 
-   Example of DFA
+   Example of PDA
 
 The old limitations still apply: The tape is read only, the head moves
 only to the right.

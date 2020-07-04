@@ -21,7 +21,7 @@
       ".instructLabel": "Ohjeet:",
       ".instructions": "Hakuavain on sinisessä ruudussa. Taulukon arvot ovat nousevassa järjestyksessä, mutta ne ovat aluksi piilossa. Löydä etsittävä arvo klikkaamalla mid-muuttujan arvoa vastaavia indeksejä puolitushakualgoritmissa. Taulukon arvot tulevat näkyviin, joka kerta kun taulukon indeksejä klikataan. Muista että kokonaislukumuuttujilla osamäärät pyöristetään alaspäin.",
       "#about": "Lisätietoa",
-      "aboutString": "Harjoitustehtävä: Lomitusjärjestäminen\nTekijä: Kasper Hellström\nLuotu osaksi OpenDSA-oppikirjaprojektia.\nLisätietoa osoitteesta http://algoviz.org/OpenDSA\nLähde ja kehityshistoria löytyy osoitteesta https://github.com/OpenDSA/OpenDSA\nJSAV versio: ",
+      "aboutString": "Harjoitustehtävä: Lomitusjärjestäminen\nTekijä: Kasper Hellström\nLuotu osaksi OpenDSA-oppikirjaprojektia.\nLisätietoa osoitteesta http://opendsa.org.\nLähde ja kehityshistoria löytyy osoitteesta https://github.com/OpenDSA/OpenDSA\nJSAV versio: ",
       "av_find_label": "Etsi",
       "av_ms_comment1": "Low = {low} ja high = {high}, joten mid = ( {low} + {high} ) / 2 = <strong>{mid}</strong> (osamäärä pyöristetään alaspäin!)",
       "av_ms_comment2": "<br/>Koska {arr_at_mid} on pienempi kuin {key}, low:n uudeksi arvoksi tulee <strong>{mid_plus_1}</strong>.",

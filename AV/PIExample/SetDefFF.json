@@ -1,0 +1,36 @@
+{
+    "translations": {
+      "en": {
+        "q1": {
+          "type": "multiple",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "description": "A $set$ is a collection of distinguishable members or elements. There is no concept of duplication in a $set$.",
+          "question": "[T/F]Sets may contain duplicate elements.",
+          "answer": ["False"],
+          "choices": ["True", "False"]
+        },
+        "q2": {
+          "type": "multiple",
+          "src": "../../../AV/Development/formal_language/FAEditor.html",
+          "description": "A $set$ is a collection of distinguishable members or elements. There is no concept of duplication in a $set$.",
+          "question": "Let $P = \\{7,11,42\\}$, Which of the following is correct?",
+          "answer": ["$P = \\{11, 42, 7\\}$"],
+          "choices": ["$P = \\{11, 42, 7\\}$", "$P  ≠ \\{11, 42, 7\\}$"]
+        },
+        "q3": {
+          "type": "multiple",
+          "description": "Set members are typically drawn from some larger population known as the base type",
+          "question": "Let $P = \\{7, 11, 42\\}$, what is the base type of $P$ elements?",
+          "answer": ["$Integers$"],
+          "choices": ["$Integers$", "$Real$ $numbers$"]
+        },
+        "q4": {
+          "type": "select",
+          "description": "Each member of a $set$ is either a primitive element of the base type or is a $set$ itself.",
+          "question": "Let $P = \\{a, b, c, \\{d, e\\}, \\{f\\}\\}$. Which of the followings are an element in the $set$.",
+          "answer": ["$a$","$b$","$c$","$\\{d, e\\}$","$\\{f\\}$"],
+          "choices": ["$a$","$b$", "$c$", "$d$", "$e$","$\\{d\\}$","$\\{d, e\\}$","$f$","$\\{f\\}$"]
+        }
+      }
+    }
+  }

@@ -8,6 +8,15 @@
                 "": true
             },
             {
+                "bb": true
+            },
+            {
+                "bbb": false
+            },
+            {
+                "a": false
+            },
+            {
                 "aabb": true
             },
             {

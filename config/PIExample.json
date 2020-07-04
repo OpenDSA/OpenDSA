@@ -62,62 +62,233 @@
     "required": true
   }, 
   "chapters": {
+    "Preface": {
+      "Intro": {}
+    },
     "Introduction": {
-      "PIExample/Echo_frame1": {}
+      "PIExample/MajorConcepts": {},
+      "PIExample/IntroductoryGrammarExercises":{
+        "sheet1exercise5":{
+          "points": 2.0
+        },
+        "sheet1exercise6":{
+          "points": 2.0
+        },
+        "sheet1exercise7":{
+          "points": 2.0
+        },
+        "sheet1practice5":{
+          "points": 2.0
+        },
+        "sheet1practice6":{
+          "points": 2.0
+        },
+        "sheet1practice7":{
+          "points": 2.0
+        }
+      }
     },
     "Mathematical Background": {
-      "PIExample/mathematical": {},
-      "PIExample/setRelations": {},
-      "PIExample/proof":{},
-      "PIExample/continuedMathProof":{},
-      "PIExample/inductionProof": {},
-      "PIExample/proofInduction": {},
-      "PIExample/lastInductionProof": {},
-      "PIExample/grammar": {}
-
+      "PIExample/SetDefinitions": {},
+      "PIExample/Relations": {},
+      "PIExample/MathProof":{}
     },
     "Finite Acceptors": {
       "PIExample/DFA":{},
+      "PIExample/DFAExercises":{
+        "sheet1exercise1":{
+          "points": 5.0
+        },
+        "sheet1exercise2":{
+          "points": 5.0
+        },
+        "sheet1exercise3":{
+          "points": 5.0
+        },
+        "sheet1exercise4":{
+          "points": 5.0
+        },
+        "sheet1practice1":{
+          "points": 5.0
+        },
+        "sheet1practice2":{
+          "points": 5.0
+        },
+        "sheet1practice3":{
+          "points": 5.0
+        },
+        "sheet1practice4":{
+          "points": 5.0
+        }
+      },
       "PIExample/NFA":{},
-      "PIExample/NFAtoDFAExample":{}
+      "PIExample/NFAExercises":{
+        "NFAtoDFAExerciseEditor":{
+          "points": 10.0
+        },
+        "sheet2exercise4":{
+          "points": 10.0
+        },
+        "NFAtoDFAPracticeEditor":{
+          "points": 10.0
+        },
+        "sheet2practice4":{
+          "points": 10.0
+        }
+      },
+      "PIExample/DFAMinimization":{},
+      "PIExample/MinimizationExercises":{
+        "DFAminimizationExerciseEditor":{
+          "points": 10.0
+        },"DFAminimizationExerciseEditor2":{
+          "points": 10.0
+        },
+        "sheet2exercise3":{
+          "points": 7.0
+        }
+      }
     },
     "Regular Languages": {
-      "PIExample/RLRegularExpression":{},
-      "PIExample/RLRegularGrammarExpression": {},
-      "PIExample/RLExpressionRegular": {},
-      "PIExample/RLConvertRLRE": {},
-      "PIExample/RLNFAtoRECON":{},
-      "PIExample/RLregularGrammar": {},
-      "PIExample/RLNFAToRE": {},
-      "PIExample/RLRightLinearRG": {},
-      "PIExample/RLSTA": {},
-      "PIExample/RLClosureConcept": {},
-      "PIExample/RLClosureRegularLang": {},
-      "PIExample/RLClosedUnder": {}
+      "PIExample/RegularExpression":{},
+      "PIExample/RegExExercises":{
+        "sheet3exercise1":{
+          "points": 5.0
+        },
+        "sheet3exercise2":{
+          "points": 5.0
+        },
+        "sheet3exercise3":{
+          "points": 5.0
+        },
+        "sheet3practice1":{
+          "points": 5.0
+        },
+        "sheet3practice2":{
+          "points": 5.0
+        },
+        "sheet3practice3":{
+          "points": 5.0
+        }
+      },
+      "PIExample/RegularGrammars": {},
+      "PIExample/RegularGrammarsExercises":{
+        "sheet3exercise4":{
+          "points": 5.0
+        },
+        "sheet3exercise5":{
+          "points": 5.0
+        },
+        "sheet3exercise6":{
+          "points": 5.0
+        },
+        "sheet3practice4":{
+          "points": 5.0
+        },
+        "sheet3practice5":{
+          "points": 5.0
+        },
+        "sheet3practice6":{
+          "points": 5.0
+        }
+      },
+      "PIExample/ClosurePropertiesOfRegularLanguages": {}
     },
     "Identifying Non-regular Languages":{
-      "PIExample/INRL":{}
+      "VisFormalLang/NonRegular":{}
     },
     "Context-Free Grammars and Languages":{
-      "PIExample/CFLAmb": {},
-      "PIExample/CFLAmEx": {},
-      "PIExample/CFLAmb2": {},
-      "PIExample/CFLAmEx2": {}
+      "PIExample/ContexFreeLanguages": {},
+      "PIExample/CFLExercises": {
+        "sheet5exercise1":{
+          "points": 5.0
+        },
+        "sheet5exercise2":{
+          "points": 5.0
+        },
+        "sheet5Practice1":{
+          "points": 5.0
+        },
+        "sheet5Practice2":{
+          "points": 5.0
+        }
+      },
+      "PIExample/CFGTransormations":{},
+      "PIExample/CFGTransformationsExercies":{
+        "sheet6exercise1":{
+          "points": 10.0
+        },
+        "sheet6exercise2":{
+          "points": 10.0
+        },
+        "sheet6exercise3":{
+          "points": 10.0
+        },
+        "sheet6exercise4":{
+          "points": 10.0,
+          "threshold": 0.9
+        }
+      }
     },
     "Pushdown Automata":{
-      "PIExample/PDA": {}
+      "PIExample/PDA": {},
+      "PIExample/PDAExercises":{
+        "sheet7exercise1":{
+          "points": 5.0
+        },
+        "sheet7exercise2":{
+          "points": 5.0
+        },
+        "sheet7exercise3":{
+          "points": 5.0
+        },
+        "sheet7exercise4":{
+          "points": 5.0
+        }
+      }
     },
-    "Properties of Context-free Languages":{},
+    "Properties of Context-free Languages":{
+      "VisFormalLang/CFLProp":{}
+    },
     "Models of Computation":{
-      "PIExample/TMGeneralModel":{},
-      "PIExample/TMInterpreting":{},
-      "PIExample/TMDecidableVSAcceptable":{},
-      "PIExample/TMComplicatedMachine1":{},
-      "PIExample/TMComplicatedMachine2":{},
-      "PIExample/TMComplicatedMachine3":{}
-
+      "VisFormalLang/TuringIntro":{},
+      "PIExample/TuringMachines":{},
+      "PIExample/TMExercises":{
+        "addOnea":{ 
+          "points": 5.0
+        },
+        "eraseABC":{ 
+         "points": 5.0
+        },
+        "keepABC":{ 
+         "points": 5.0
+        },
+        "aNumsPowerOf2":{ 
+         "points": 5.0
+        },
+        "ifaNumsPowerOf2":{ 
+         "points": 5.0
+        },
+        "abcWInWWROut":{ 
+         "points": 5.0
+        },
+        "abcNawlargerthanNbw":{ 
+         "points": 5.0
+        },
+        "replaceABAbyACA":{ 
+          "points": 5.0
+        },
+        "abPalindromes":{ 
+          "points": 5.0
+        }
+      }
     },
-    "Parsing":{},
+    "Parsing":{
+      "VisFormalLang/ParseIntro":{},
+      "VisFormalLang/LLParsing":{},
+      "VisFormalLang/LRParsing":{},
+      "VisFormalLang/CYKParsing":{},
+      "VisFormalLang/Compiler":{}
+    },
     "Limits to Computing": {
       "PIExample/PairToSortCONPI": {},
       "PIExample/LowerBound": {},

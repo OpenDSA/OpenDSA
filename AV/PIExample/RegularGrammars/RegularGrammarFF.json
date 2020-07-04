@@ -1,0 +1,105 @@
+{
+    "translations": {
+      "en": {
+        "q1": {
+          "type": "select",
+          "description": "$\\textbf {Regular Grammars}$ are another way to describe regular languages.",
+          "question":"What are Regular Languages?",
+          "answer": ["Languages accepted by DFAs", "Languages accepted by NFAs", "Languages represented by Regular Expressions"],
+          "choices": ["Languages accepted by DFAs", "Languages accepted by NFAs", "Languages represented by Regular Expressions", "Natural Languages"]
+        },
+        "q2": {
+          "type": "select",
+          "description": "$\\textbf {Regular Grammar}$ is a special type of grammars",
+          "question": "What are grammars?",
+          "answer": ["Used to describe languages", "$G$ = $(V,T,S,P)$"],
+          "choices": ["Used to describe languages", "Used to accept Languages", "$G$ = $(V,T,S,P)$"]
+        },
+        "q3": {
+          "type": "select",
+          "description": "Suppose we have the following Grammar $G$ = $(V,T,S,P)$",
+          "question": "What is V?",
+          "answer": ["Variables", "Non-Terminals"],
+          "choices": ["Variables", "Terminals", "Start Variable", "Production set", "Non-Terminals"]
+        },
+        "q4": {
+          "type": "select",
+          "description": "Suppose we have the following Grammar $G$ = $(V,T,S,P)$ where, <br> $V$ =  variables(nonterminals) = $A, B, \\ldots Z$",
+          "question": "What is T?",
+          "answer": ["Terminals"],
+          "choices": ["Variables", "Terminals", "Start Variable", "Production set", "Non-Terminals"]
+        },
+        "q5": {
+          "type": "select",
+          "description": "Suppose we have the following Grammar $G$ = $(V,T,S,P)$ where, <br/> $V$ =  variables(nonterminals) = $A, B, \\ldots Z$ <br>$T$ = terminals = $a,b,\\ldots ,z,0,1,\\ldots 9$",
+          "question": "What is P?",
+          "answer": ["Production set"],
+          "choices": ["Variables", "Terminals", "Start Variable", "Production set", "Non-Terminals"]
+        },
+        "q6": {
+          "type": "select",
+          "description": "Suppose we have the following Grammar $G$ = $(V,T,S,P)$ where, <br> $V$ =  variables(nonterminals) = $A, B, \\ldots Z$ <br>$T$ = terminals = $a,b,\\ldots ,z,0,1,\\ldots 9$ <br>$P$ = productions(rules)",
+          "question": "What is S?",
+          "answer": ["Start Variable"],
+          "choices": ["Variables", "Terminals", "Start Variable", "Production set", "Non-Terminals"]
+        },
+        "q7": {
+          "type": "select",
+          "description": "Suppose we have the following Grammar $G$ = $(V,T,S,P)$ where, <br> $V$ =  variables(nonterminals) = $A, B, \\ldots Z$ <br>$T$ = terminals = $a,b,\\ldots ,z,0,1,\\ldots 9$ <br>$P$ = productions(rules)<br>$S$ = $start \\ symbol$ ",
+          "question": "Select all sets",
+          "answer": ["$V$", "$T$", "$P$"],
+          "choices": ["$V$", "$T$", "$S$", "$P$"]
+        },
+        "q10": {
+          "type": "select",
+          "description": "$Linear \\ grammar$: A grammar that is linear if has a single variable in the RHS of every production rule. <br> $All \\ productions \\ are \\ of \\ the \\ form$ <br> $A$ $\\rightarrow$ $xB$ <br> $A \\ \\rightarrow Cx$ <br> $A \\ \\rightarrow x$ <br> $where \\ A,B,C \\in V, \\ x \\in \\ T^*$ <br> In this grammar,",
+          "question": "Why the grammar on the left is Linear?",
+          "answer": ["each production rule has at most one variable on the RHS"],
+          "choices": ["each production rule has at most one variable on the RHS", "each production rule has at most one variable on the LHS"]
+        },
+        "q12": {
+          "type": "select",
+          "description": "$Right-linear \\ grammar$ is a special case of linear grammar. If a grammar is linear and any variable, if it exists, always occurs at the right end of the RHS, then the grammar is called a Right-linear grammar. For example, the grammar: <br> $A \\ \\rightarrow xB$ <br> $A \\ \\rightarrow xC$<br> $A \\ \\rightarrow y$<br> $where \\ A,B,C \\in V \\ and \\ x,y \\in T^*$",
+          "question": "Why the grammar on the left is $\\textbf{Right}$ Linear?",
+          "answer": ["each production rule has at most one variable, and if that variable exist, it is located at the END of the RHS"],
+          "choices": ["each production rule has at most one variable on the RHS", "each production rule has at most one variable on the LHS", "each production rule has at most one variable, and if that variable exist, it is located at the END of the RHS", "each production rule has at most one variable, and if that variable exist, it is located at the Begining of the RHS"]
+        },
+        "q13": {
+          "type": "select",
+          "description": "$Left-linear \\ grammar$ is the same as $Right-linear \\ grammar$, but the occurance of any variable, if it exists, is at the begining of each production RHS. For example, <br> $A \\ \\rightarrow Bx$ <br> $A \\ \\rightarrow Cy$ <br> $A \\ \\rightarrow x$ <br> $where \\ A,B,C \\in V \\ x,y \\in T^*$",
+          "question": "Why the grammar on the left is $\\textbf{Left}$ Linear?",
+          "answer": ["each production rule has at most one variable, and if that variable exist, it is located at the Begining of the RHS"],
+          "choices": ["each production rule has at most one variable on the RHS", "each production rule has at most one variable on the LHS", "each production rule has at most one variable, and if that variable exist, it is located at the END of the RHS", "each production rule has at most one variable, and if that variable exist, it is located at the Begining of the RHS"]
+        },
+        "q14": {
+          "type": "select",
+          "question":"What is the type of the following grammar?<br> G = ($\\{S\\}, \\{a,b\\}$,S,P),<br> P = <br> $S \\ \\rightarrow abS$<br> $S \\ \\rightarrow \\ \\lambda$<br> $S \\ \\rightarrow Sab$",
+          "description": "A regular grammar is a right-linear or left-linear grammar",
+          "answer": ["Linear Grammar"],
+          "choices": ["Left Linear Grammar", "Right Linear Grammar", "Linear Grammar", "Regular Grammar"]
+        },
+        "q15": {
+          "type": "select",
+          "question":"What is the type of the following grammar?<br> G = ($\\{S\\}, \\{a,b\\}$,S,P),<br> P = <br> $S \\ \\rightarrow abS$<br> $S \\ \\rightarrow \\ \\lambda$<br> $S \\ \\rightarrow aS$",
+          "description": "A regular grammar is a right-linear or left-linear grammar",
+          "answer": ["Right Linear Grammar", "Regular Grammar"],
+          "choices": ["Left Linear Grammar", "Right Linear Grammar", "Linear Grammar", "Regular Grammar"]
+      },
+        "q16": {
+          "type": "select",
+          "question":"What is the type of the following grammar?<br> G = ($\\{S\\}, \\{a,b\\}$,S,P),<br> P = <br> $S \\ \\rightarrow Sab$<br> $S \\ \\rightarrow \\ \\lambda$<br> $S \\ \\rightarrow Sa$",
+          "description": "A regular grammar is a right-linear or left-linear grammar",
+          "answer": ["Left Linear Grammar", "Regular Grammar"],
+          "choices": ["Left Linear Grammar", "Right Linear Grammar", "Linear Grammar", "Regular Grammar"]
+      },
+      "q17": {
+        "type": "select",
+        "question":"What is the type of the following grammar?<br> G = ($\\{S\\}, \\{a,b\\}$,S,P),<br> P = $S \\ \\rightarrow abS\\mid \\lambda \\mid aS$",
+        "description": "A regular grammar is a right-linear or left-linear grammar",
+        "answer": ["Right Linear Grammar", "Regular Grammar"],
+        "choices": ["Left Linear Grammar", "Right Linear Grammar", "Linear Grammar", "Regular Grammar"]
+     }
+    }
+  }
+}
+    

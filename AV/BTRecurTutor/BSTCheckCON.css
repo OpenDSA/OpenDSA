@@ -1,7 +1,7 @@
 #BSTCheckCON {
-    height: 250px;
-  }
-  .jsavlabel{
-    z-index:1000;
-  }
-  
+  height: 200px;
+}
+
+.jsavlabel{
+  z-index:1000;
+}

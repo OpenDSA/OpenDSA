@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
-.. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -50,10 +50,11 @@ used in discussions that are not specific to any particular language
 or implementation.
 The word "pointers" connotes the common C/C++ implementation of
 pointers as :term:`addresses <address>` or locations in memory.
-Programmers have more limited access with a reference.
-This limits what they can do, but the Java philosophy is that this is
+A reference only "points to" an object.
+This means that programmers are given more limited access with a reference.
+While this limits what they can do, the Java philosophy is that this is
 more than made up for by a greater chance of the code working correctly.
-Essentially, Java programmers may only assign to a reference and
+Java programmers may only assign to a reference and
 compare two references for equality.
 Other uses of a reference are done implicitly with no control from the
 programmer.
@@ -63,42 +64,14 @@ These restrictions reduce the chance for bugs.
 Data Types in Java
 ------------------
 
-Simple ``int`` and ``float`` variables operate pretty intuitively.
-An ``int`` variable is like a box that can store a single ``int``
-value such as 42.
-Visually, a simple variable can be viewed as a box with its current
-value shown inside.
+.. inlineav:: primativeVsRefCON ss
+   :links: AV/Pointers/primativeVsRefCON.css
+   :scripts: AV/Pointers/primativeVsRefCON.js
+   :output: show
 
-.. _num42Fig:
-
-.. inlineav:: num42CON dgm
-   :links: AV/Pointers/num42CON.css
-   :scripts: AV/Pointers/num42CON.js
-   :align: center
-
-A reference variable works a little differently.
-It does not store a simple value directly.
-Instead, a reference variable stores a :term:`reference` to some
-:term:`object`.
-The object that the reference refers to is sometimes known as its
-:term:`pointee`.
-In the next figure, the reference variable (called ``empRef``) is
-shown as a box that contains the beginning of a directed line, which
-leads to its pointee (an ``Employee`` object, shown as the box storing
-two fields: the string value "John" and the integer value "1000").
-So ``empRef`` is the reference and the ``Employee`` object is its
-pointee.
-What is stored inside of ``empRef``?
-Its value is **not** an ``Employee`` object.
-Its value is only a reference to an ``Employee`` object.
 (By the way, there is no commonly used word for the concept of a
 pointee |---| pointee is just the word that we used in these
 explanations.)
-
-.. inlineav:: employeeEmpRefCON dgm
-   :links: AV/Pointers/employeeEmpRefCON.css
-   :scripts: AV/Pointers/employeeEmpRefCON.js
-   :align: center
 
 Going back to simple things like ``int`` and ``float`` variables that
 just store a value in a box:
@@ -149,7 +122,7 @@ It turns out to be convenient to have a well-defined reference value
 to represent the idea that a reference does not have a pointee.
 It is a runtime error to try to get the pointee of a ``null``
 reference.
-In drawings, the value ``null`` is often drawn as X's or as a diagonal
+In drawings, the value ``null`` is often drawn as a diagonal
 line between the corners of the reference variable's box.
 
 .. _numptrnullFig:

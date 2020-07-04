@@ -38,6 +38,8 @@ requirejs(["./mathjs.js"], function(){});
         },
     };
 
+    Window.showBlankPrompt = true;
+
     var mechSolverCommon = {
 
         //initializer, creates all the necessary object instances
@@ -133,15 +135,30 @@ requirejs(["./mathjs.js"], function(){});
 
                 // 3. Check if the answer is correct, enable this only for the time being.
                 try {
-                    if(Math.abs(mathjs.evaluate(
-                        solution[solnIndex].solution+" "+solution[solnIndex].unit+" - "+
-                        globalSolutionBoxes[solnIndex]["solution"]+" "+globalSolutionBoxes[solnIndex]["unit"]
-                    ).value) < 0.001)
+                    if (solution[solnIndex].type == "string")
                     {
-                        solnResults.decision = true;
+                        // Just compare strings
+                        if(globalSolutionBoxes[solnIndex].solution == solution[solnIndex].solution)
+                            solnResults.decision = true;
+                        else
+                            solnResults.decision = false;
                     }
-                    else solnResults.decision = false;
-                    console.log(solnResults.decision);
+                    else if(solution[solnIndex].type == "number")
+                    {
+                        var solutionComparableValue = mathjs.evaluate(
+                            `number(
+                                ${globalSolutionBoxes[solnIndex].solution} ${globalSolutionBoxes[solnIndex].unit},
+                                ${solution[solnIndex].unit})`
+                            )
+                        console.log(solutionComparableValue, solution[solnIndex].solution);
+                        console.log(Math.abs(solutionComparableValue - solution[solnIndex].solution), 0.005 * solution[solnIndex].solution)
+                        if(Math.abs((solutionComparableValue - solution[solnIndex].solution) / solution[solnIndex].solution) <= 0.005)
+                        {
+                            solnResults.decision = true;
+                        }
+                        else solnResults.decision = false;
+                        console.log(solnResults.decision);
+                    }
                 }
                 catch (exception) {
                     solnResults.decision = false;
@@ -170,7 +187,12 @@ requirejs(["./mathjs.js"], function(){});
             }
             console.log(dec);
 
-            JSAV.utils.dialog( feedBackText, {closeText: "OK"});
+            Window.showBlankPrompt = false;
+            JSAV.utils.dialog( feedBackText, {closeText: "OK"} 
+                )[0].querySelector("button").addEventListener("click", e=>{
+                    e.stopPropagation();
+                    Window.clearGlobalPointerReference();
+                });
             return dec;
         }
     };
@@ -202,9 +224,9 @@ requirejs(["./mathjs.js"], function(){});
         globalPointerReference.currentClickedObjectType = null;
         globalPointerReference.currentClickedObjectDescription = null;
 
-        $("body").on("jsav-log-event", function(event, eventData) {
-            console.log(eventData);
-          });
+        // $("body").on("jsav-log-event", function(event, eventData) {
+        //     console.log(eventData);
+        //   });
         
         // Setting up value boxes for those inside the question body
         var selectableParameters = document.getElementsByClassName("param");
@@ -214,7 +236,8 @@ requirejs(["./mathjs.js"], function(){});
                 "click", function() {
                     event.stopPropagation();
                     Window.clearGlobalPointerReference();
-
+                    Window.showBlankPrompt = false;
+                    
                     globalPointerReference.currentClickedObject = 
                     new ValueBox(
                         true,this,null,globalPointerReference
@@ -244,38 +267,67 @@ requirejs(["./mathjs.js"], function(){});
         {
             globalSolutionBoxes[index] = {"solution":null};
             solutionSubmissionBoxes[index].dataset.index = index;
-            solutionSubmissionBoxes[index].addEventListener(
-                "click", e=> {
-                    // console.log(
-                    //     globalPointerReference.currentClickedObject.valueDisplay,
-                    //     globalPointerReference.currentClickedObject.unitDisplay);
-                    e.stopPropagation();
-                    if(globalPointerReference.currentClickedObjectType == "value-box")
-                    {
-                        this.innerHTML =
-                        Window.valueStringRepr(globalPointerReference.currentClickedObject.value)+" "+
-                            globalPointerReference.currentClickedObject.unitDisplay; 
+            console.log(solutionSubmissionBoxes[index]);
+
+            if(solutionSubmissionBoxes[index].dataset.inputtype="number") {
+                solutionSubmissionBoxes[index].addEventListener(
+                    // "click", e=> {
+                    "click", function() {
+                            // console.log(
+                        //     globalPointerReference.currentClickedObject.valueDisplay,
+                        //     globalPointerReference.currentClickedObject.unitDisplay);
+                        // e.stopPropagation();
+                        event.stopPropagation();
+                        console.log(this);
+                        if(globalPointerReference.currentClickedObjectType == "value-box")
+                        {
+                            this.innerHTML =
+                            Window.valueStringRepr(globalPointerReference.currentClickedObject.value)+" "+
+                                globalPointerReference.currentClickedObject.unitDisplay; 
                             globalSolutionBoxes[this.dataset.index] = {
                                 "solution": 
                                 Window.valueStringRepr(globalPointerReference.currentClickedObject.value),
                                 "unit":
                                 globalPointerReference.currentClickedObject.unit
                             };
-                        //console.log(this.globalPointerReference);
-                    }
-                    Window.clearGlobalPointerReference();
-                    // globalPointerReference.currentClickedObject = null;
-                    // globalPointerReference.currentClickedObjectType = null;
-                    // globalPointerReference.currentClickedObjectDescription = null
-                }
-            )
+                            //console.log(this.globalPointerReference);
+                        }
+                        Window.clearGlobalPointerReference();
+                        // globalPointerReference.currentClickedObject = null;
+                        // globalPointerReference.currentClickedObjectType = null;
+                        // globalPointerReference.currentClickedObjectDescription = null
+                    }, false
+                )
+            }
+            else if(solutionSubmissionBoxes[index].dataset.inputtype="text") {
+                solutionSubmissionBoxes[index].addEventListener(
+                    // "click", e=> {
+                    "click", function() {
+                        event.stopPropagation();
+                        console.log(this);
+                        Window.clearGlobalPointerReference();
+
+                        // Add functionality to type in value, compare as a string
+                        // additional functionality
+                        // Alternatively, drop-down list of options
+                    }, false
+                )
+            }
         }
 
         // Creating clickhandlers associated with the body to clear the globalPointerReference
         document.body.addEventListener("click", e=> {
             e.stopPropagation();
             // console.log("Inside the body snatcher");
-            Window.clearGlobalPointerReference();
+            if(Window.showBlankPrompt) {
+                var messageBox = JSAV.utils.dialog("Add an equation from the bank to begin.", {modal: false, width: 100})
+                messageBox[0].style.top = e.pageY+5+"px";
+                messageBox[0].style.left = e.pageX+10+"px";
+                setTimeout(messageBox.close, 900)
+            }
+            else {
+                Window.clearGlobalPointerReference();
+            }
         });
 
         // Creating list of usable variables

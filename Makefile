@@ -168,11 +168,20 @@ FormalLang: min
 VisFormalLang: min
 	python $(CONFIG_SCRIPT) config/VisFormalLang.json --no-lms
 
+FormalLangSummer1: min
+	python $(CONFIG_SCRIPT) config/FormalLangSummer1.json --no-lms
+
 FL2019: min
 	python $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
 
 PIExample: min
 	python $(CONFIG_SCRIPT) config/PIExample.json --no-lms
+
+PIFormalLang: min
+	python $(CONFIG_SCRIPT) config/PIFormalLang.json --no-lms
+
+PIExercises: min
+	python $(CONFIG_SCRIPT) config/PIExercises.json --no-lms
 
 DeformsTesting: min
 	python $(CONFIG_SCRIPT) config/DeformsTesting.json --no-lms
@@ -230,6 +239,9 @@ CS3F18notes: min
 
 CS4104: min
 	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
+
+C2GEN: min
+	python $(CONFIG_SCRIPT) config/C2GEN.json --no-lms
 
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
@@ -314,6 +326,9 @@ Blockchain: min
 
 Peixuan: min
 	python $(CONFIG_SCRIPT) config/Peixuan.json --no-lms
+
+Zinan: min
+	python $(CONFIG_SCRIPT) config/Zinan.json --no-lms
 
 nomin:
 	@cp lib/JSAV.js lib/JSAV-min.js

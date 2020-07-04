@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FA Traversal</title>
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-1.10.0.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="../../lib/JSAV.css"
+      type="text/css"
+      media="screen"
+      title="no title"
+      charset="utf-8"
+    />
+    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="EvenBinaryFATraversal.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="../OpenFLAP/css/customPrompt.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../OpenFLAP/css/FA.css" type="text/css" />
+    <link rel="stylesheet" href="../OpenFLAP/css/tester.css" type="text/css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <form name="myform" method="get" id="StringForm">
+        <a
+          ><strong
+            >Enter test strings for the above machine ( Keep empty for λ
+            ).</strong
+          ></a
+        >
+        <a href="#" class="removeclass"
+          ><input type="button" class="add" id="AddMoreFileBox" value=" Add "
+        /></a>
+        <input type="submit" class="submit_button" value="Submit" id="submit" />
+
+        <div id="InputsWrapper">
+          <div>
+            <input
+              type="text"
+              name="mytext1"
+              class="inputbox"
+              id="field_1"
+              placeholder="Custom testing string!"
+            />
+            <a href="#" class="removeclass"
+              ><input type="button" class="del" value=" Delete "
+            /></a>
+          </div>
+        </div>
+      </form>
+      <div id="av" style="border: none;">
+        <span class="jsavcounter"></span>
+        <div class="jsavcontrols">
+          <a class="jsavsettings" href="#">Settings</a>
+        </div>
+        <p class="jsavoutput jsavline"></p>
+        <p align="center" class="arrayPlace"></p>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="../../lib/jquery.transit.js"></script>
+    <script src="../../lib/raphael.js"></script>
+    <script src="../../lib/dagre.min.js"></script>
+    <script src="../../lib/JSAV.js"></script>
+    <script src="../../lib/odsaUtils-min.js"></script>
+    <script src="../../lib/odsaAV-min.js"></script>
+    <script src="../../lib/JSAV-min.js"></script>
+
+    <script src="../../lib/underscore.js"></script>
+    <script src="../../DataStructures/FLA/serializableGraph.js"></script>
+    <script src="../../DataStructures/FLA/Commands.js"></script>
+    <script src="../../DataStructures/FLA/FA.js"></script>
+    <script src="../OpenFLAP/CustomPrompt.js"></script>
+    <script src="./EvenBinaryFATraversal.js"></script>
+  </body>
+  <script>
+    $(document).ready(function () {
+      var MaxInputs = 3
+      var InputsWrapper = $('#InputsWrapper')
+      var AddButton = $('#AddMoreFileBox')
+      var x = InputsWrapper.length
+      var FieldCount = 1
+      $(AddButton).click(function (e) {
+        if (x <= MaxInputs) {
+          FieldCount++
+          $(InputsWrapper).append(
+            '<div><input type="text" name="mytext' +
+              FieldCount +
+              '" id="field_' +
+              FieldCount +
+              '" class="inputbox" placeholder="Custom testing string!"/><a href="#" class="removeclass"><input type="button" class="del" value=" Delete "></a></div>'
+          )
+          x++
+        }
+        return false
+      })
+      $('body').on('click', '.removeclass', function (e) {
+        //user click on remove text
+        if (x > 1) {
+          $(this).parent('div').remove() //remove text box
+          x-- //decrement textbox
+        }
+        return false
+      })
+
+      //cancel radio clock
+      $('input:radio').click(function () {
+        var domName = $(this).attr('name')
+        var $radio = $(this)
+        if ($radio.data('waschecked') == true) {
+          $radio.prop('checked', false)
+          $("input:radio[name='" + domName + "']").data('waschecked', false)
+        } else {
+          $radio.prop('checked', true)
+          $("input:radio[name='" + domName + "']").data('waschecked', false)
+          $radio.data('waschecked', true)
+        }
+      })
+    })
+  </script>
+</html>

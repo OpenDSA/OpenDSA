@@ -4,7 +4,7 @@ const equations = [
         id: "axialMemberAvgNormalStress",
         name: 'Average normal stress in an axial member',
         latex: '\\sigma_{ } = \\frac {F_{ }} {A_{ }}',
-        latex_boxes: '\\Box = \\frac \\Box \\Box',
+        latex_boxes: '\\Box = \\frac \\Box \\Box',  //dfrac for mathematics, frac with font change for the representation possibly. Change height padding and widths etc. accordingly throughout.
         params_latex: ['\\sigma_{ }', 'A_{ }', 'F_{ }'],
         template: 'normalstress = normalforce / area',
         params: ['normalstress', 'area', 'normalforce'],
@@ -214,7 +214,7 @@ const equations = [
         id: "EGnuRelation",
         name: 'Relation between E, G, and nu',
         latex: 'G_{ } = \\frac {E_{ }} {2\\cdot(1+\\nu_{ })}',
-        latex_boxes: '\\Box = \\frac {\\Box} {2\\cdot(1+\\Box)}',
+        latex_boxes: '\\Box = \\dfrac {\\Box} {2\\cdot(1+\\Box)}',
         params_latex: ['G_{ }', 'E_{ }', '\\nu_{ }'],
         template: 'shearstresscoeff = normalstresscoeff / (2*(1+ poissonratio ))',
         params: ['shearstresscoeff', 'poissonratio', 'normalstresscoeff'],
@@ -799,46 +799,46 @@ const equations = [
         },
         height: 30
     },
-    {
-        group: 'Arithmetic',
-        id: "power",
-        name: 'Power',
-        latex: 'c_{ } = a_{ } ^ {b_{ }}',
-        latex_boxes: '\\Box=\\Box^{\\Box}',
-        params_latex: ['c_{ }','b_{ }', 'a_{ }'],
-        template: 'cterm = aterm ^ bterm',
-        params: ['cterm', 'aterm', 'bterm'],
-        variables: {
-            'cterm': 'c_{ }',
-            'bterm': 'b_{ }',
-            'aterm': 'a_{ }'
-        },
-        domains: {
-            'cterm': 'free',
-            'bterm': 'free',
-            'aterm': 'free'
-        },
-        height: 30
-    },
-    {
-        group: 'Arithmetic',
-        id: "root",
-        name: 'Root',
-        latex: 'c_{ } = a_{ } ^ {1/ b_{ }}',
-        latex_boxes: '\\Box=\\Box^{1/\\Box}',
-        params_latex: ['c_{ }','b_{ }', 'a_{ }'],
-        template: 'cterm = aterm ^ (1/bterm)',
-        params: ['cterm', 'aterm', 'bterm'],
-        variables: {
-            'cterm': 'c',
-            'bterm': 'b',
-            'aterm': 'a'
-        },
-        domains: {
-            'cterm': 'free',
-            'bterm': 'free',
-            'aterm': 'free'
-        },
-        height: 30
-    }
+    // {
+    //     group: 'Arithmetic',
+    //     id: "power",
+    //     name: 'Power',
+    //     latex: 'c_{ } = a_{ } ^ {b_{ }}',
+    //     latex_boxes: '\\Box=\\Box^{\\Box}',
+    //     params_latex: ['c_{ }','b_{ }', 'a_{ }'],
+    //     template: 'cterm = aterm ^ bterm',
+    //     params: ['cterm', 'aterm', 'bterm'],
+    //     variables: {
+    //         'cterm': 'c_{ }',
+    //         'bterm': 'b_{ }',
+    //         'aterm': 'a_{ }'
+    //     },
+    //     domains: {
+    //         'cterm': 'free',
+    //         'bterm': 'free',
+    //         'aterm': 'free'
+    //     },
+    //     height: 30
+    // },
+    // {
+    //     group: 'Arithmetic',
+    //     id: "root",
+    //     name: 'Root',
+    //     latex: 'c_{ } = a_{ } ^ {1/ b_{ }}',
+    //     latex_boxes: '\\Box=\\Box^{1/\\Box}',
+    //     params_latex: ['c_{ }','b_{ }', 'a_{ }'],
+    //     template: 'cterm = aterm ^ (1/bterm)',
+    //     params: ['cterm', 'aterm', 'bterm'],
+    //     variables: {
+    //         'cterm': 'c',
+    //         'bterm': 'b',
+    //         'aterm': 'a'
+    //     },
+    //     domains: {
+    //         'cterm': 'free',
+    //         'bterm': 'free',
+    //         'aterm': 'free'
+    //     },
+    //     height: 30
+    // }
 ]

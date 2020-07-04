@@ -107,7 +107,7 @@ var lambda = String.fromCharCode(955),
     $('#multiModal').hide();
   });
   /**
-   * Add event listener To the remove button of the top row 
+   * Add event listener To the remove button of the top row
    */
   $(document).on("click", '#removeTopButton', function () {
     var tbody = $('#multiInputTable > table > tbody');
@@ -129,7 +129,7 @@ var lambda = String.fromCharCode(955),
   });
 
   /**
-   * Add event listener To the add row button 
+   * Add event listener To the add row button
    */
   $(document).on("click", '#addRowButton', function () {
     var $TABLE = $('#multiInputTable');
@@ -706,7 +706,7 @@ var lambda = String.fromCharCode(955),
   }
 
   /*
-     Function to lay out the FA. 
+     Function to lay out the FA.
      Uses JFLAP's graph layout algorithms; an FA layout algorithm needs to be written.
    */
   automatonproto.layout = function (options) {
@@ -934,7 +934,7 @@ var lambda = String.fromCharCode(955),
   };
 
   /*
-     Function to update the position of the state label. 
+     Function to update the position of the state label.
      Must be run whenever nodes are moved.
    */
   stateproto.stateLabelPositionUpdate = function (options) {
@@ -978,19 +978,143 @@ var lambda = String.fromCharCode(955),
   };
 
   // draggable functions
+  // edited by Peixuan Ge (6/14/2020) to solve the problem
+  // that a FiniteAutomaton graph would mess up if any node is dragged
+  var animStacks = [];
+
+  /*
+  * Function to back up all the animation of a jsav to the parameter above.
+  * This is used to solve problem that dragging node may mess up the graph.
+  */
+  function backupAnimStacks(av) {
+    // if the animation stacks are already backuped, return this function.
+    for(i = 0 ; i < animStacks.length ; i++){
+      if(animStacks[i].jsav == av){
+        return;
+      }
+    }
+    // else push a deep copy of the animations stacks to the parameter above.
+    var anAnimStack = [];
+    var i, temp;
+    for(i = 0 ; i < av._undo.length ; i++){
+      temp = [];
+      av._undo[i].operations.forEach((item) => {
+        temp.push(item);
+      });
+      anAnimStack.push(temp);
+    }
+    for(i = 0 ; i < av._redo.length ; i++){
+      temp = [];
+      av._redo[i].operations.forEach((item) => {
+        temp.push(item);
+      });
+      anAnimStack.push(temp);
+    }
+    animStacks.push({
+      "animStack" : anAnimStack,
+      "jsav" : av
+    });
+  }
+
+  /*
+  * Function to restore all the animation of a jsav.
+  * This is used to solve problem that dragging node may mess up the graph.
+  * Dragging node would mess up the animation stacks,
+  * this function can restore them and
+  * should always run after the backup is called.
+  */
+  function restoreAnimStacks(av) {
+    var i, j;
+    // check if a jsav is backuped
+    for(i = 0 ; i < animStacks.length ; i++){
+      if(animStacks[i].jsav == av){
+        var animStack = animStacks[i].animStack;
+        //if an extra unnecessary animation is inserted to the stack, remove it
+        if(av._undo.length + av._redo.length !== animStack.length){
+          av._undo.shift();
+          for(j = 0 ; j < av._redo.length ; j++){
+            //must create new object here
+            av._redo[j].operations = [];
+            animStack[j].forEach((item) => {
+              av._redo[j].operations.push(item)
+            });
+          }
+        }
+        else{
+          //restore the animation stacks
+          var stackIndex = 0;
+          for(j = 0 ; j < av._undo.length ; j++){
+            av._undo[j].operations = [];
+            animStack[stackIndex].forEach((item) => {
+              av._undo[j].operations.push(item)
+            });
+            stackIndex++;
+          }
+          for(j = 0 ; j < av._redo.length ; j++){
+            av._redo[j].operations = [];
+            animStack[stackIndex].forEach((item) => {
+              av._redo[j].operations.push(item)
+            });
+            stackIndex++
+          }
+        }
+        return;
+      }
+    }
+    console.error("restoreAnimFailed");
+  }
+
+  //variable to store FAs that have any node changed
+  var nodeChangedAutomaton = [];
+  /*
+  * Function to add event listeners to all the jsav control buttons.
+  * Give them extra tasks to layout the graph
+  * and restore the animation animStacks.
+  * (This is an alternative approach to fix the problem, and not the best way.
+  * Hopefully someone can finish this in the future.)
+  */
+  function addLayoutListeners(av, node) {
+    //check if a FiniteAutomaton is already patched
+    //if not add listeners to jsav control buttons and record that FA
+    if(!nodeChangedAutomaton.includes(node.automaton)){
+      nodeChangedAutomaton.push(node.automaton);
+      $("#" + av.container[0].id + " .jsavbegin").click(function() {
+          node.automaton.layout();
+          restoreAnimStacks(av);
+      })
+      $("#" + av.container[0].id + " .jsavbackward").click(function() {
+          node.automaton.layout();
+          restoreAnimStacks(av);
+      })
+      $("#" + av.container[0].id + " .jsavforward").click(function() {
+          node.automaton.layout();
+          restoreAnimStacks(av);
+      })
+      $("#" + av.container[0].id + " .jsavend").click(function() {
+          node.automaton.layout();
+          restoreAnimStacks(av);
+      })
+    }
+  }
+
+  //Peixuan added backupAnimStacks function
   function dragStart(event, node) {
+    backupAnimStacks(node.helper.data("node").automaton.jsav);
     $(document).trigger("jsav-speed-change", 50);
     var dragNode = node.helper.data("node");
     dragNode.wasHighlighted = dragNode.hasClass("jsavhighlight");
     dragNode.highlight();
   };
 
+  //Peixuan added restoreAnimStacks and addLayoutListeners functions
   function dragStop(event, node) {
     var dragNode = node.helper.data("node");
     if (!dragNode.wasHighlighted) {
       dragNode.unhighlight();
     }
     $(document).trigger("jsav-speed-change", JSAV.ext.SPEED);
+    restoreAnimStacks(dragNode.automaton.jsav);
+    addLayoutListeners(dragNode.automaton.jsav, dragNode);
   };
 
   function dragging(event, node) {
@@ -1146,9 +1270,9 @@ var lambda = String.fromCharCode(955),
       var adjust = Math.sqrt(2) / 2.0;
       fromX = Math.round(fromX - adjust * sWidth);
       var loopR = Math.round(0.8 * sWidth);
-      //this.g.path("M" + fromX + ',' + fromY + ' a' + loopR + ',' + loopR + ' -45 1,1 ' 
+      //this.g.path("M" + fromX + ',' + fromY + ' a' + loopR + ',' + loopR + ' -45 1,1 '
       //    + (Math.round(2 * sWidth * adjust) + 2) + ',' + 0, options);
-      /************************This code is added to determine the arc direction for the loop arrow. if the state is in the second half of the 
+      /************************This code is added to determine the arc direction for the loop arrow. if the state is in the second half of the
       FA, then the acr will be in the button. */
       var FAnodes = this.container._nodes;
       var minToplocation = FAnodes[0].position().top,
@@ -1247,7 +1371,7 @@ var lambda = String.fromCharCode(955),
         bbleft = Math.min(fromPoint[0], toPoint[0]),
         bbwidth = Math.abs(fromPoint[0] - toPoint[0]),
         bbheight = Math.abs(fromPoint[1] - toPoint[1]);
-      if (this.start().equals(this.end())) { //in case of loop arrow we need to do the same as we did for the arrow direction. 
+      if (this.start().equals(this.end())) { //in case of loop arrow we need to do the same as we did for the arrow direction.
         var FAnodes = this.container._nodes;
         var minToplocation = FAnodes[0].position().top,
           maxTopLocation = FAnodes[0].position().top;
@@ -1539,7 +1663,7 @@ var lambda = String.fromCharCode(955),
     Automaton.apply(this, arguments);
     this.configurations = $("<ul>"); // configurations jQuery object used to setup view at a step
     this.configViews = []; // configurations view for a step
-    this.step = 0; // current step the user is at, used for changing configuration display    
+    this.step = 0; // current step the user is at, used for changing configuration display
     if (options.url) { //load the machine from the file
       this.loadFAFromJFLAPFile(options.url);
       //this.disableDragging();
@@ -2282,7 +2406,7 @@ var lambda = String.fromCharCode(955),
       // If the input string was rejected, color every character in the JSAV array red.
       for (var l = 0; l < inputString.length; l++) {
         //arr.css(l, {"background-color": "red"});
-        this.matrix.css(matrixRow, i, { "background-color": "red" });
+        this.matrix.css(matrixRow, l, { "background-color": "red" });
       }
       this.jsav.umsg("We are at the end of the string, but we are not in a final state. So the string is REJECTED.");
     } else {
@@ -2848,6 +2972,8 @@ function getRandomInt(max) {
     this.options = options;
     this.current = (index == undefined)? 1: index;//the location to highlight
     this.arr = null;
+    this.leftPoly = null;
+    this.rightPoly = null;
 
     if ($.isArray(element)) {
       // x & y control
@@ -2892,11 +3018,11 @@ function getRandomInt(max) {
       var highlightLeft = (this.current === -1);
       var highlightRight = (this.current >= this.arr.size());
 
-      if (direction === "right") { plot_right(jsav, right, y_coord, points, highlightRight); }
-      if (direction === "left") { plot_left(jsav, x_coord, y_coord, points_l, highlightLeft); }
+      if (direction === "right") { this.plot_right(jsav, right, y_coord, points, highlightRight); }
+      if (direction === "left") { this.plot_left(jsav, x_coord, y_coord, points_l, highlightLeft); }
       if (direction === "both") {
-        plot_right(jsav, right, y_coord, points, highlightRight);
-        plot_left(jsav, x_coord, y_coord, points_l, highlightLeft);
+        this.plot_right(jsav, right, y_coord, points, highlightRight);
+        this.plot_left(jsav, x_coord, y_coord, points_l, highlightLeft);
       }
 
       // change the style (shape) of the JSAV array class
@@ -2906,9 +3032,9 @@ function getRandomInt(max) {
 
   // extend JSAV array class
   JSAV.utils.extend(Tape, JSAV._types.ds.AVArray);
-
+  var proto = Tape.prototype;
   // function to draw right "infinite" tape sign
-  function plot_right(jsav, right, y_coord, points, highlightRight) {
+  proto.plot_right = function(jsav, right, y_coord, points, highlightRight) {
     for (var i = 0; i < points.length; i++) {
       points[i][0] += right;
       points[i][1] += y_coord;
@@ -2919,11 +3045,12 @@ function getRandomInt(max) {
     } else {
       poly = jsav.g.polyline(points, { "stroke-width": 2 });
     }
+    this.rightPoly = poly;
     poly.show();
   }
 
   // function to draw left "infinite" tape sign
-  function plot_left(jsav, x_coord, y_coord, points_l, highlightLeft) {
+  proto.plot_left = function(jsav, x_coord, y_coord, points_l, highlightLeft) {
     for (var i = 0; i < points_l.length; i++) {
       points_l[i][0] = x_coord - points_l[i][0];
       points_l[i][1] = y_coord + points_l[i][1];
@@ -2934,10 +3061,9 @@ function getRandomInt(max) {
     } else {
       poly_l = jsav.g.polyline(points_l, { "stroke-width": 2 });
     }
-
+    this.leftPoly = poly_l;
     poly_l.show();
   }
-  var proto = Tape.prototype;
 
   //attempt to highlight a particular position, but need access to the tape arr object
   //not necessary, but kept here for the future; this method can be used if the
@@ -3020,6 +3146,15 @@ function getRandomInt(max) {
     }
     this.current = startIndex;
     this.highlightCurrent();
+  }
+  proto.hide = function(){
+    this.arr.hide();
+    if(this.rightPoly != null){
+      this.rightPoly.hide();
+    }
+    if(this.leftPoly != null){
+      this.leftPoly.hide();
+    }
   }
 
   // Add the Tape constructor to the public facing JSAV interface.

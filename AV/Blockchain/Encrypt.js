@@ -17,6 +17,7 @@ var config = ODSA.UTILS.loadConfig(),
     var crypt = new JSEncrypt();
     var publicKey = $(".publicKey").val();
     crypt.setPublicKey(publicKey);
+    localStorage.publicKey = publicKey;
     var secretMsg = $(".secretMsg").val();
     var cipherText = crypt.encrypt(secretMsg);
     localStorage.encryptedText = cipherText;

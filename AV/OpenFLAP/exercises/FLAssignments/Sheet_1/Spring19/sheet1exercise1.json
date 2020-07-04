@@ -1,20 +1,20 @@
 [
     {
         "expression": "",
-        "description": "Give a DFA that accepts the language over Σ ={a} of any odd number of a’s.",
+        "description": "Give a DFA that accepts the language over Σ ={a} of any even number of a’s.",
         "type": "description",
         "testCases": [
             {
-                "a": true
+                "": true
             },
             {
-                "aa": false
+                "a": false
             },
             {
-                "aaa": true
+                "aa": true
             },
             {
-                "": false
+                "aaa": false
             }
         ],
         "graph": {

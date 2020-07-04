@@ -232,11 +232,12 @@ class EquationBank{
                 jsavEq.hide();
                 jsavEq.element[0].dataset.id = currentEqnObject["id"];
                 jsavEq.element[0].dataset.status = 'no'; // Becomes yes when selected.
-                jsavEq.element[0].setAttribute("title", "Click on the equation to select it, and click here inside workspace or Add add it");
+                jsavEq.element[0].setAttribute("title", "Click on the equation to select it, and click on Add inside the workspace to add it");
                 jsavEq.element[0].addEventListener(
                     "click", e=> {
                         e.stopPropagation();
                         Window.clearGlobalPointerReference();
+                        Window.showBlankPrompt = false;
                         
                         // De-select the previous one
                         if(this.currentSelectedEquationObject != null)
@@ -297,8 +298,13 @@ class EquationBank{
         eqbankddlpos.element[0].setAttribute("title", "Click to select the palette of equations desired");
         eqbank_ddl.value = this.equation_page_titles[0];
         eqbank_ddl.addEventListener(
+            "click", e=> {e.stopPropagation();
+            Window.showBlankPrompt = false;
+            });
+        eqbank_ddl.addEventListener(
             "change", e=> {e.stopPropagation();
             this.showPage(event.target.value);
+            Window.clearGlobalPointerReference();
             });
 
         this.showPage(this.equation_page_titles[0]);

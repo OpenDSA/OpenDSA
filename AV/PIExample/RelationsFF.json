@@ -1,0 +1,104 @@
+{
+    "translations": {
+        "en": {
+            "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
+        
+            "q1": {
+                "type": "select",
+                "src": "../../../AV/Development/formal_language/FAEditor.html",
+                "description": "A $relation$ $R$ over set $S$ means a set of ordered pairs from $set$ $S$.",
+                "question": "if $S$ = $\\{a,b,c\\}$, then which of the following is a relation in $S$",
+                "answer": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"],
+                "choices": ["$(a,c)$", "$(b,c)$", "$(c,b)$", "$(a,a)$", "$(b,b)$", "$(c,c)$"]
+            },
+            "q2": {
+                "type": "select",
+                "src": "../../../AV/Development/formal_language/FAEditor.html",
+                "description": "If tuple (x,y) is in relation $R$, we may use the infix notation $xRy$. We often use relations such as the less than operator ($<$) on the natural numbers",
+                "question": "The less than operator ($<$) includes which of the following pairs are ordered pairs",
+                "answer": ["$(1,3)$", "$(2,23)$"],
+                "choices": ["$(1,3)$", "$(2,23)$", "$(3,2)$", "$(2,2)$"]
+            },
+            "q3":{
+                "type": "multiple",
+                "description": "Rather than writing the relationship in terms of ordered pairs, we typically use infix notation for such relations",
+                "question": "What is the infix notation for the pair $(4, 5)$ in the relation of $<$?",
+                "answer": "4 $<$ 5",
+                "choices": ["4 $<$ 5", "5 $<$ 4", "4 $=$ 5", "4 $\\le$ 5", "4 $\\ge$ 5"]
+            },
+            "q4": {
+                "type": "multiple",
+                "src": "../../../AV/Development/formal_language/FAEditor.html",
+                "description": "$R$ is $reflexive$ if $aRa$ for all $a$ ∈ $S$.",
+                "question": "Is the relation less than or equal to reflexive?",
+                "answer": ["True"],
+                "choices": ["True", "False"]
+            },
+            "q5": {
+                "type": "multiple",
+                "src": "../../../AV/Development/formal_language/FAEditor.html",
+                "description": "$R$ is $irreflexive$ if $aRa$ is not true for all $a$ ∈ $S$.",
+                "question": "Is the relation less than or equal to $irreflexive$?",
+                "answer": ["False"],
+                "choices": ["True", "False"]
+            },
+            "q6": {
+                "type": "multiple",
+                "src": "../../../AV/Development/formal_language/FAEditor.html",
+                "description": "$R$ is $symmetric$ if whenever $aRb$, then $bRa$, for all $a$,$b$ ∈ $S$.",
+                "question": "Which of the following is a $symmetric$ relation?",
+                "answer": ["="],
+                "choices": ["$<$", "$>$", "="]
+            },
+            "q7": {
+                "type": "multiple",
+                "src": "../../../AV/Development/formal_language/FAEditor.html",
+                "description": "$R$ is $antisymmetric$ if whenever $aRb$ and $bRa$, then $a$ $=$ $b$, for all $a,b$ ∈ $S$",
+                "question": "Which of the following relation is $antisymmetric$?",
+                "answer": ["$>$"],
+                "choices": ["$>$", "=", "$\\leq$"]
+            },
+            "q8": {
+                "type": "select",
+                "src": "../../../AV/Development/formal_language/FAEditor.html",
+                "description": "$R$ is $transitive$ if whenever $aRb$ and $bRc$, then $aRc$, for all $a,b,c$ ∈ $S$.",
+                "question": "Which of the followings are $transitive$ relations?",
+                "answer": ["$<$", ">", "="],
+                "choices": ["$<$", ">", "="]
+            },
+            "q9": {
+                "type": "multiple",
+                "src": "../../../AV/Development/formal_language/FAEditor.html",
+                "description": "$R$ is an $equivalence$ $relation$ on set $S$ if it is reflexive, symmetric, and transitive.",
+                "question": "Which of the following is an $equivalence$ $relation$?",
+                "answer": ["="],
+                "choices": ["=", "$<$", "$>$"]
+            },
+            "q10": {
+                "type": "select",
+                "src": "../../../AV/Development/formal_language/FAEditor.html",
+                "description": "An equivalence relation can be used to partition a set into $equivalence$ $classes$. If two elements $a$ and $b$ are equivalent to each other, we write $a$ ≡ $b$.",
+                "question": "What are the reasons for $=$ relation to be an $equivalence$ relation?",
+                "answer": ["because it is reflective", "because it is symmetric", "because it is transitive"],
+                "choices": ["because it is reflective", "because it is symmetric", "because it is transitive"]
+            },
+            "q11": {
+                "type": "multiple",
+                "description": "For the set of integers, use the modulus function to define a binary relation such that two numbers $x$ and $y$ are in the relation if and only if $x$ mod $m$ = $y$ mod $m$",
+                "question": "For $m$ = $4$, What makes the pair $(1, 5)$ belong to the modulus relation?",
+                "answer": "$1$ mod $4$ $=$ $5$ mod $4$",
+                "choices": ["$4$ mod $1$ $=$ $4$ mod $5$","$1$ mod $5$ $=$ $4$ mod $5$","$1$ mod $4$ $=$ $5$ mod $4$", "$1$ mod $4$ $=$ $4$ mod $5$"]
+            },
+            "q12": {
+                "type": "select",
+                "src": "../../../AV/Development/formal_language/FAEditor.html",
+                "description": "A binary relation is called a partial order if it is antisymmetric and transitive.",
+                "question": "Which of the following relations are partial order relations?",
+                "answer": ["<", "$\\leq$"],
+                "choices": ["<", "$\\leq$", "="]
+            }
+
+        }
+    }
+}
+  

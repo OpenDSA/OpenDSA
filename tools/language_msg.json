@@ -31,7 +31,7 @@
       "bug_desc": "***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."
     },
     "js": {
-      "project_msg": " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nJSAV library version ",
+      "project_msg": " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://opendsa.org.\nJSAV library version ",
       "session_expired": "Your current session has expired.",
       "session_invalid": "Your account has been logged in on another computer and the\n current session is no longer valid. Please login again to continue.",
       "account_disabled": "This account has been disabled",
@@ -85,7 +85,7 @@
       "bug_desc": "***BUG** Veuillez fournir : (1) une description du probleme. (2) comment reproduire le probleme. (3) les details du navigateur et systeme d'exploitation."
     },
     "js": {
-      "project_msg": " \nProjet OpenDSA hypertextbook.\nPour plus d information visitez http://algoviz.org/OpenDSA\nLibrairie JSAV version ",
+      "project_msg": " \nProjet OpenDSA hypertextbook.\nPour plus d information visitez http://opendsa.org.\nLibrairie JSAV version ",
       "session_expired": "Votre session est expirée.",
       "session_invalid": "Vous etes connecté sur un autre ordinateur,\n votre connection sur ce terminal a ete terminée.\n Veuillez vous identifier a nouveau pour continuer.",
       "account_disabled": "L'identifiant saisi est inactif",
@@ -139,7 +139,7 @@
       "bug_desc": "***BUGI** Anna seuraavat tiedot: (1) lyhyt kuvaus ongelmasta. (2) askeleet, joilla ongelma saadan toistettua. (3) versiotiedot käyttämästäsi selaimesta ja käyttöjärjestelmästä."
     },
     "js": {
-      "project_msg": " \nLuotu osaksi OpenDSA-oppikirjaprojektia.\nLisätietoa osoitteesta http://algoviz.org/OpenDSA\nJSAV versio: ",
+      "project_msg": " \nLuotu osaksi OpenDSA-oppikirjaprojektia.\nLisätietoa osoitteesta http://opendsa.org.\nJSAV versio: ",
       "session_expired": "Nykyinen istuntosi on päättynyt.",
       "session_invalid": "Käyttäjätunnuksillasi on kirjauduttu sisään toisesta tietokoneesta,\n joten nykyinen istuntosi ei enää ole voimassa. Kirjaudu sisään jatkaaksesi.",
       "account_disabled": "Käyttäjätunnus on poistettu",
@@ -193,7 +193,7 @@
       "bug_desc": "***BUGG** Fyll i: (1) en kort beskrivning av problemet. (2) steg för att återskapa buggen. (3) webbläsarversion och operativsystem."
     },
     "js": {
-      "project_msg": " \nSkapad som del av OpenDSA-projektet.\nFör mer information se http://algoviz.org/OpenDSA\nJSAV version ",
+      "project_msg": " \nSkapad som del av OpenDSA-projektet.\nFör mer information se http://opendsa.org.\nJSAV version ",
       "session_expired": "Din nuvarande session har upphört.",
       "session_invalid": "Ditt konto har loggat in på en annan dator och\n den nuvarande sessionen är ej längre giltig. Vänligen logga in igen för att fortsätta.",
       "account_disabled": "Detta konto har avaktiverats",
@@ -247,7 +247,7 @@
       "bug_desc": "***BUG** Por favor informe: (1) Uma descrição concisa do problema. (2) Passos para reproduzir o erro. (3) A versão do seu navegador e sistema operacional."
     },
     "js": {
-      "project_msg": " \nCriado como parte do projeto OpenDSA hypertextbook.\nPara maiores informações, veja. http://algoviz.org/OpenDSA\nJSAV library version ",
+      "project_msg": " \nCriado como parte do projeto OpenDSA hypertextbook.\nPara maiores informações, veja. http://opendsa.org.\nJSAV library version ",
       "session_expired": "Sua sessão expirou.",
       "session_invalid": "Sua conta está logada em outro computador \ne essa sessão não é mais válida. Por favor, faça outro login para continuar.",
       "account_disabled": "Essa conta foi desabilitada.",
