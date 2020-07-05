@@ -356,13 +356,22 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
                "choices": generateRandomChoicesForMinimize(state)
             }];
       }
-      else{ //notBeDivided
+      else if (state.type === "notBeDivided"){ //notBeDivided
         return [{
            "type": "multiple",
            "question": "",
            "description": "Will state " +state.node+ " can be divided by reading the letter \"" + state.weight + "\" ?",
            "answer": "no", //String if type is multiple, array of string if select
            "choices": ["yes", "no"]
+        }]
+      }
+      else{//edge
+        return [{
+           "type": "multiple",
+           "question": "",
+           "description": "Which state should we use to represent the transition from node " +state.node+ " to node " + state.relatedTo + "?",
+           "answer": state.weight, //String if type is multiple, array of string if select
+           "choices": ["a", "b"]
         }]
       }
   }
@@ -525,8 +534,109 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
   minimizer.unhighlightAllTreeNodes(minimizer.tree);
   minimizer.unhighlightAll(minimizer.referenceGraph);
   minimizer.jsav.umsg("Since we do not have any more splits, the resulting tree represents the nodes in the minimized DFA.");
-  minimizer.jsav.step();
-  return minimizer.done(newGraphDimensions);
+
+  var minimizerDone = function (newGraphDimensions) {
+    var leaves = minimizer.getLeaves(minimizer.tree.root());
+    for (var i = 0; i < leaves.length; i++) {
+      var leaf = leaves[i].split(',');
+      for (var k = 0; k < minimizer.alphabet.length; k++) {
+        var dArr = [],
+          letter = minimizer.alphabet[k];
+        for (var j = 0; j < leaf.length; j++) {
+          var node = minimizer.referenceGraph.getNodeWithValue(leaf[j]);
+          var next = minimizer.referenceGraph.transitionFunction(node, letter);
+          if (next[0]) {
+            dArr.push(next[0]);
+          }
+        }
+        if (!_.find(leaves, function (v) { return _.difference(dArr, v.split(',')).length === 0 }) && dArr.length !== 0) {
+          minimizer.jsav.umsg("There are distinguishable states remaining");
+          return;
+        }
+      }
+    }
+    // if complete create minimized DFA
+
+    var graph = minimizer.jsav.ds.FA({
+      width: newGraphDimensions.width,
+      height: newGraphDimensions.height,
+      layout: 'automatic',
+      left: newGraphDimensions.left,
+      top: newGraphDimensions.top
+    });
+    for (var i = 0; i < leaves.length; i++) {
+      var node = graph.addNode({ value: leaves[i] });
+      //node.stateLabel(leaves[i]);
+      var leaf = leaves[i].split(',');
+      for (var j = 0; j < leaf.length; j++) {
+        var n = minimizer.referenceGraph.getNodeWithValue(leaf[j]);
+        if (n.equals(minimizer.referenceGraph.initial)) {
+          graph.makeInitial(node);
+          break;
+        } else if (n.hasClass('final')) {
+          node.addClass('final');
+          break;
+        }
+      }
+    }
+    var edges = minimizer.referenceGraph.edges();
+    // "create" edges, store as a reference
+    for (var next = edges.next(); next; next = edges.next()) {
+      // get nodes make edges
+      var ns = next.start().value(),
+        ne = next.end().value(),
+        nodes = graph.nodes(),
+        node1,
+        node2;
+      for (var next2 = nodes.next(); next2; next2 = nodes.next()) {
+        if (next2.value().split(',').indexOf(ns) !== -1) {
+          node1 = next2;
+        }
+        if (next2.value().split(',').indexOf(ne) !== -1) {
+          node2 = next2;
+        }
+      }
+      // graph.addEdge(node1, node2, {weight: next.weight()});
+      if (!minimizer.minimizedEdges.hasOwnProperty(node1.value())) {
+        minimizer.minimizedEdges[node1.value()] = [];
+      }
+      var edgesFrom1 = minimizer.minimizedEdges[node1.value()];
+      if (!edgesFrom1.hasOwnProperty(node2.value())) {
+        edgesFrom1[node2.value()] = [];
+      }
+      edgesFrom1[node2.value()] = _.union(edgesFrom1[node2.value()],
+        next.weight().split("<br>"));
+    }
+    graph.layout();
+    minimizer.jsav.step();
+    //graph.click(nodeClickHandlers);
+    minimizer.jsav.umsg("Finish the DFA by finding the transisitons between nodes.");
+    studentGraph = graph;
+
+    var minimizerComplete = function (studentGraph) {
+      for (var i in minimizer.minimizedEdges) {
+        for (var j in minimizer.minimizedEdges[i]) {
+          var n1 = studentGraph.getNodeWithValue(i),
+            n2 = studentGraph.getNodeWithValue(j),
+            w = minimizer.minimizedEdges[i][j].join('<br>');
+          jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+          jsav.step();
+          questionsIndex++;
+          var newEdge = studentGraph.addEdge(n1, n2, { weight: w });
+          if (newEdge) {
+            newEdge.layout();
+          }
+        }
+      }
+      studentGraph.disableDragging();
+      minimizer.jsav.umsg("The resulting DFA is finished.");
+      return studentGraph;
+    };
+    return minimizerComplete(graph);
+  };
+
+
+  return minimizerDone(newGraphDimensions);
 };
 
 /*
@@ -650,9 +760,103 @@ var getAllStepsForMinimizeDFA = function(minimizer, jsav, referenceGraph, tree) 
     listOfLeaves = _.difference(minimizer.getLeaves(minimizer.tree.root()), listOfVisitedLeaves);
   }
 
+  var minimizerDone = function () {
+    var leaves = minimizer.getLeaves(minimizer.tree.root());
+    for (var i = 0; i < leaves.length; i++) {
+      var leaf = leaves[i].split(',');
+      for (var k = 0; k < minimizer.alphabet.length; k++) {
+        var dArr = [],
+          letter = minimizer.alphabet[k];
+        for (var j = 0; j < leaf.length; j++) {
+          var node = minimizer.referenceGraph.getNodeWithValue(leaf[j]);
+          var next = minimizer.referenceGraph.transitionFunction(node, letter);
+          if (next[0]) {
+            dArr.push(next[0]);
+          }
+        }
+        if (!_.find(leaves, function (v) { return _.difference(dArr, v.split(',')).length === 0 }) && dArr.length !== 0) {
+          //minimizer.jsav.umsg("There are distinguishable states remaining");
+          return;
+        }
+      }
+    }
+    // if complete create minimized DFA
 
+    var graph = minimizer.jsav.ds.FA({
+      layout: 'automatic'
+    });
+    for (var i = 0; i < leaves.length; i++) {
+      var node = graph.addNode({ value: leaves[i] });
+      //node.stateLabel(leaves[i]);
+      var leaf = leaves[i].split(',');
+      for (var j = 0; j < leaf.length; j++) {
+        var n = minimizer.referenceGraph.getNodeWithValue(leaf[j]);
+        if (n.equals(minimizer.referenceGraph.initial)) {
+          graph.makeInitial(node);
+          break;
+        } else if (n.hasClass('final')) {
+          node.addClass('final');
+          break;
+        }
+      }
+    }
+    var edges = minimizer.referenceGraph.edges();
+    // "create" edges, store as a reference
+    for (var next = edges.next(); next; next = edges.next()) {
+      // get nodes make edges
+      var ns = next.start().value(),
+        ne = next.end().value(),
+        nodes = graph.nodes(),
+        node1,
+        node2;
+      for (var next2 = nodes.next(); next2; next2 = nodes.next()) {
+        if (next2.value().split(',').indexOf(ns) !== -1) {
+          node1 = next2;
+        }
+        if (next2.value().split(',').indexOf(ne) !== -1) {
+          node2 = next2;
+        }
+      }
+
+      if (!minimizer.minimizedEdges.hasOwnProperty(node1.value())) {
+        minimizer.minimizedEdges[node1.value()] = [];
+      }
+      var edgesFrom1 = minimizer.minimizedEdges[node1.value()];
+      if (!edgesFrom1.hasOwnProperty(node2.value())) {
+        edgesFrom1[node2.value()] = [];
+      }
+      edgesFrom1[node2.value()] = _.union(edgesFrom1[node2.value()],
+        next.weight().split("<br>"));
+    }
+
+    studentGraph = graph;
+    var minimizerComplete = function (studentGraph) {
+      for (var i in minimizer.minimizedEdges) {
+        for (var j in minimizer.minimizedEdges[i]) {
+          var n1 = studentGraph.getNodeWithValue(i),
+            n2 = studentGraph.getNodeWithValue(j),
+            w = minimizer.minimizedEdges[i][j].join('<br>');
+          var newEdge = studentGraph.addEdge(n1, n2, { weight: w });
+          if (newEdge) {
+            res.push([{
+              "node" : n1.value(),
+              "relatedTo" : n2.value(),
+              "type" : "edge",
+              "weight" : w
+            }]);
+            newEdge.layout();
+          }
+        }
+      }
+    };
+
+    minimizerComplete(studentGraph);
+    graph.hide();
+  };
+  minimizerDone();
   //must delete this part when use otherwise student can see the answer
   //console.log(res);
+
   return res;
 };
 
