@@ -190,10 +190,10 @@
       // ******************************************************************************
       function checkRule(str) {
         if (str.charAt(0) == "T") {
-          str = str.substr(1)
+          str = str.substr(1);
           return true;
         } else {
-          str = str.substr(1)
+          str = str.substr(1);
           return false;
         }
       }
@@ -212,25 +212,25 @@
 
       function stringGenerate() {
         if (trueCounter < totalTrueCases) {
-          str = "T"
+          str = "T";
           var str1 = Generater();
-          str += str1
-          str += "c"
+          str += str1;
+          str += "c";
           str += str1.split("").reverse().join("");
         } else {
-          str = "F"
+          str = "F";
           if (falseCounter == 0) {
-            return str
+            return str;
           } else {
             var str1 = Generater();
-            str += str1
-            str += "c"
+            str += str1;
+            str += "c";
             var str2 = Generater();
-            str1 = str1.split("").reverse().join("")
+            str1 = str1.split("").reverse().join("");
             while (str2 == str1) {
               str2 = Generater();
             }
-            str += str2
+            str += str2;
           }
         }
         return str;
