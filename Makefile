@@ -52,7 +52,7 @@ pull:
 	git submodule init
 	git submodule update
 	make --silent min
-	
+
 clean:
 	- $(RM) *~
 	- $(RM) Books
@@ -148,7 +148,7 @@ lib/%-min.js:: lib/%.js
 
 lib/%-min.css:: lib/%.css
 	@$(CSS_MINIFY) $^ > $@
-	
+
 # one file has a special minify process:
 lib/odsaAV-min.css: lib/normalize.css lib/odsaAV.css
 	@$(CSS_MINIFY) lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
@@ -168,7 +168,7 @@ allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormalLang
 $(BOOKS): % : config/%.json min venv
 	$(ACTIVATE) && python -bb $(CONFIG_SCRIPT) $< --no-lms
 	@echo "Created an eBook in Books/: $@"
-	
+
 $(SLIDE_BOOKS) : % : config/%.json min venv
 	$(ACTIVATE) && python -bb $(CONFIG_SCRIPT) --slides $< --no-lms
 	@echo "Created an Slide-eBook in Books/: $@"
