@@ -1,71 +1,121 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="FAEditor">
-		<meta name="author" content="Bill Yu">
 
-        <title>Regular Expression Exercises</title>
-        <script>
-            getExerciseLocation = function(){ return "./sheet3exercise1.json"};
-          </script>
-        <link rel="stylesheet" href="../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-        <link rel="stylesheet" href="../../../../../lib/odsaAV-min.css" type="text/css" />
-        <link rel="stylesheet" href="../../../../../lib/odsaStyle-min.css" type="text/css" />
-        <link rel="stylesheet" href="../../../css/customPrompt.css" type="text/css" />
-        <link rel="stylesheet" href="../../../css/FA.css" type="text/css" />
-        <link rel="stylesheet" href="../../../css/tester.css" type="text/css" />
-        <style>
-            .jsavhorizontalarray .jsavnode {
-                min-width: 200px !important;
-                max-width: 400px !important;
-            }
-        </style>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FAEditor">
+    <meta name="author" content="Bill Yu">
 
-    <body>
-        <div id="container">
-            <h1 id="Exercise">Regular Expression Exercise</h1>
-            <h2 id="description"></h2>
-            <p id="percentage"></p>
-            <table id="testResults"></table>
-                <div id="jsavcontainer">
-                  <a class="jsavsettings" href="#">Settings</a>
-                  <p align="center" class="jsavexercisecontrols"></p>
-                  <p class="jsavscore"></p>
-                  <p class="jsavoutput jsavline"></p>
-                  <div id = "RE">
-                      <LABEL>Enter your answer here</LABEL>
-                      <INPUT ID="tb1" TYPE="Text" value="" NAME="textBox1">
-                      <!--
+    <title>Regular Expression Exercises</title>
+    <script>
+        getExerciseLocation = function () {
+            return "./sheet3exercise1.json"
+        };
+    </script>
+    <link rel="stylesheet" href="../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title"
+        charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../css/customPrompt.css" type="text/css" />
+    <link rel="stylesheet" href="../../../css/FA.css" type="text/css" />
+    <link rel="stylesheet" href="../../../css/tester.css" type="text/css" />
+    <style>
+        .jsavhorizontalarray .jsavnode {
+            min-width: 200px !important;
+            max-width: 400px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1 id="Exercise">Regular Expression Exercise</h1>
+        <h2 id="description"></h2>
+        <p id="percentage"></p>
+        <table id="testResults"></table>
+        <div id="jsavcontainer">
+            <a class="jsavsettings" href="#">Settings</a>
+            <p align="center" class="jsavexercisecontrols"></p>
+            <p class="jsavscore"></p>
+            <p class="jsavoutput jsavline"></p>
+            <div id="RE">
+                <LABEL>Enter your answer here</LABEL>
+                <INPUT ID="tb1" TYPE="Text" value="" NAME="textBox1">
+                <!--
                       <button id="testSolution">Test</button>
                       <button id="showResult">Show Results</button>
                       -->
-                  </div>
-                </div>
-
-            <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-            <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-            <script src="../../../../../lib/paper-core.min.js"></script>
-            <script src="../../../../../lib/jquery.transit.js"></script>
-            <script src="../../../../../lib/raphael.js"></script>
-            <script src="../../../../../lib/dagre.min.js"></script>
-            <script src="../../../../../lib/JSAV.js"></script>
-            <script src="../../../../../lib/odsaUtils-min.js"></script>
-            <script src="../../../../../lib/odsaAV-min.js"></script>
-            <script src="../../../../../lib/underscore.js"></script>
-            <script src="../../../../../DataStructures/FLA/serializableGraph.js"></script>
-            <script src="../../../../../DataStructures/FLA/FA.js"></script>
-            <script src="../../../CustomPrompt.js"></script>
-            <script src="../../../../../DataStructures/FLA/Commands.js"></script>
-            <script src="../../../../../DataStructures/FLA/Discretizer.js"></script>
-            <script src="../../../../../DataStructures/FLA/REtoFAController.js"></script>
-            <script src="../../exerController/REExerciseController.js"></script>
-            <script src="../../../../../DataStructures/FLA/Grading.js"></script>
-            <script src="../../../REtoFA.js"></script>
+            </div>
         </div>
-    </body>
+        <script>
+            var totalTrueCases = 10; //how many true cases
+            var totalFalseCases = 10; //how many false cases
+            var containLetters = ['a', 'b']; // contain letters
+            var randomStringLength = [0, 15]; //string lengthe between 0 to 15
+            var trueCounter = 0; // number of hardcode true cases in json file 
+            var falseCounter = 0; // number of hardcode false cases in json file 
+            var str = "";
+            // ******************************************************************************
+            // ******************************************************************************
+            // Set up ruls for a single string.
+            // ******************************************************************************
+            // ******************************************************************************
+
+            function checkRule(str) {
+                var positions = new Array();
+                var pos = str.indexOf("bba");
+                while (pos > -1) {
+                    positions.push(pos);
+                    pos = str.indexOf("bba", pos + 1);
+                }
+                var i;
+                for (i = 0; i < positions.length; i++) {
+                    if (positions[i] % 2 == 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+
+            function stringGenerate() {
+                var min = randomStringLength[0];
+                var max = randomStringLength[1];
+                var stringLength = Math.round(Math.random() * (max - min)) + min;
+                for (var a = 0; a < stringLength; a++) {
+                    var pos = Math.round(Math.random() * (containLetters.length - 1));
+                    str += containLetters[pos];
+                }
+                if (caseCounter == 0) {
+                    str = "";
+                }
+                return str;
+            }
+        </script>
+        <script src="../../exerController/testCaseGenerater.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script src="../../../../../lib/paper-core.min.js"></script>
+        <script src="../../../../../lib/jquery.transit.js"></script>
+        <script src="../../../../../lib/raphael.js"></script>
+        <script src="../../../../../lib/dagre.min.js"></script>
+        <script src="../../../../../lib/JSAV.js"></script>
+        <script src="../../../../../lib/odsaUtils-min.js"></script>
+        <script src="../../../../../lib/odsaAV-min.js"></script>
+        <script src="../../../../../lib/underscore.js"></script>
+        <script src="../../../../../DataStructures/FLA/serializableGraph.js"></script>
+        <script src="../../../../../DataStructures/FLA/FA.js"></script>
+        <script src="../../../CustomPrompt.js"></script>
+        <script src="../../../../../DataStructures/FLA/Commands.js"></script>
+        <script src="../../../../../DataStructures/FLA/Discretizer.js"></script>
+        <script src="../../../../../DataStructures/FLA/REtoFAController.js"></script>
+        <script src="../../exerController/REExerciseController.js"></script>
+        <script src="../../../../../DataStructures/FLA/Grading.js"></script>
+        <script src="../../../REtoFA.js"></script>
+    </div>
+</body>
+
 </html>
