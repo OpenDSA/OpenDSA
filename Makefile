@@ -1,6 +1,3 @@
-ifeq ($(OS),Windows_NT)
-	SHELL=C:/Windows/System32/cmd.exe
-endif
 RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
 TARGET = build
@@ -14,7 +11,7 @@ MINIMIZE = uglifyjs
 all: alllint
 
 
-allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormaLang
+allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormalLang
 
 clean:
 	- $(RM) *~

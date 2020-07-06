@@ -65,6 +65,13 @@
   },
   "chapters": {
     "Stuff": {
+      "Indexing/BTree": {
+        "bPlusTreeInsertPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous"
+          }
+        }
+      }, 
       "NP/NPComplete": {},
       "SeniorAlgAnal/Impossible": {}
     },
