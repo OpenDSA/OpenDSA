@@ -33,6 +33,7 @@ class ValueBox{
         // AND the value, unit, etc. things
         this.element = {};
 
+        // Delete buttons
         this.element.deleteButton = globalJSAV.label(
             "&#x2702",
             {
@@ -41,6 +42,7 @@ class ValueBox{
             }
         ).addClass("activeEqMenu");
         this.element.deleteButton.element[0].dataset.selected="none";
+        this.element.deleteButton.element[0].setAttribute("title", "Click to delete the solved value");
         this.element.deleteButton.element[0].addEventListener(
             "click", e=> {
                 e.stopPropagation();
@@ -49,7 +51,26 @@ class ValueBox{
                 // see how you can connect this to deleting the object from the workspace
                 Window.windowManager.shiftUp(null, this);
             }
-        ); 
+        );
+        
+        // Help buttons
+        this.element.helpButton = globalJSAV.label(
+            "&#xFFFD",
+            {
+                left: element.visuals["POSITION_X"]+
+                this.element.deleteButton.element[0].offsetWidth+10,
+                top: element.visuals["POSITION_Y"] //added three for visual padding balance between solutions and equations
+            }
+        ).addClass("activeEqMenu");
+        this.element.helpButton.element[0].dataset.selected="none";
+        this.element.helpButton.element[0].setAttribute("title", "Click on box to get help");
+        this.element.helpButton.element[0].addEventListener(
+            "click", e=> {
+                e.stopPropagation();
+                console.log("Clicked on box, need help?");
+                // show help text
+            }
+        );
 
 
         // First, create a box, that can be replaced by a value and a unit element (same as variable boxes)
@@ -58,7 +79,9 @@ class ValueBox{
                 // element.dataset.variableDisplay+"="+element.dataset.valueDisplay+element.dataset.unitDisplay),
                 element.dataset.variableDisplay+"= \\Box"),
             {
-                left: element.visuals["POSITION_X"]+this.element.deleteButton.element[0].offsetWidth+13, // verify if +5 or +13 works on testing
+                left: element.visuals["POSITION_X"]+
+                this.element.deleteButton.element[0].offsetWidth+10+
+                this.element.helpButton.element[0].offsetWidth+13, // verify if +5 or +13 works on testing
                 top: element.visuals["POSITION_Y"]+3 //added three for visual padding balance between solutions and equations
             }
         ).addClass("solutionBox");
@@ -80,15 +103,14 @@ class ValueBox{
                     this.value = -1 * this.value;
                     this.valueDisplay = Window.valueStringRepr(this.value);
                     this.setValueUnit(this.valueDisplay,this.unitDisplay);
-
-                    this.globalPointerReference.currentClickedObject = null;
-                    this.globalPointerReference.currentClickedObjectType = null;
-                    this.globalPointerReference.currentClickedObjectDescription = null;
+                    Window.clearGlobalPointerReference();
                 }
                 else {
                     this.globalPointerReference.currentClickedObject = this;
                     this.globalPointerReference.currentClickedObjectType = "value-box";
                     this.globalPointerReference.currentClickedObjectDescription = "solved-value";
+                    this.globalPointerReference.currentClickedObject.element.visualComponent.element[0].classList.add("selectedvalue");
+                    Window.showBlankPrompt = false;
                 }
             }
         )

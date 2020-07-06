@@ -267,13 +267,21 @@ requirejs(["./mathjs.js"], function(){});
         {
             globalSolutionBoxes[index] = {"solution":null};
             solutionSubmissionBoxes[index].dataset.index = index;
-            console.log(solutionSubmissionBoxes[index]);
+            var helpbox = document.createElement("span");
+            solutionSubmissionBoxes[index].after(helpbox);
+            helpbox.classList.add("helpbutton");
+            helpbox.innerHTML = "&#xFFFD";
+            helpbox.setAttribute("title","Click to get help");
 
-            if(solutionSubmissionBoxes[index].dataset.inputtype="number") {
+            // console.log(solutionSubmissionBoxes[index]);
+
+            // Filling in data
+            if(solutionSubmissionBoxes[index].dataset.inputtype=="number") {
+                solutionSubmissionBoxes[index].setAttribute("title", "Click on your solved value in the workspace, then click here to add it");
                 solutionSubmissionBoxes[index].addEventListener(
                     // "click", e=> {
                     "click", function() {
-                            // console.log(
+                        // console.log(
                         //     globalPointerReference.currentClickedObject.valueDisplay,
                         //     globalPointerReference.currentClickedObject.unitDisplay);
                         // e.stopPropagation();
@@ -299,7 +307,7 @@ requirejs(["./mathjs.js"], function(){});
                     }, false
                 )
             }
-            else if(solutionSubmissionBoxes[index].dataset.inputtype="text") {
+            else if(solutionSubmissionBoxes[index].dataset.inputtype=="text") {
                 solutionSubmissionBoxes[index].addEventListener(
                     // "click", e=> {
                     "click", function() {
@@ -313,6 +321,54 @@ requirejs(["./mathjs.js"], function(){});
                     }, false
                 )
             }
+            else if(solutionSubmissionBoxes[index].dataset.inputtype=="choices") {
+                solutionSubmissionBoxes[index].setAttribute("title", "Click to show possible answer choices");
+                solutionSubmissionBoxes[index].addEventListener(
+                    // "click", e=> {
+                    "click", function() {
+                        event.stopPropagation();
+                        console.log(this);
+                        
+                        var choicesText = this.dataset.choices.split(",");
+                        var choicelistHTML = "<ul>";
+                        for(var choiceId=0; choiceId<choicesText.length; choiceId++)
+                            choicelistHTML+='<li data-choice="'+choicesText[choiceId]+'">'+choicesText[choiceId]+"</li>";
+                        choicelistHTML+="</ul>";
+                        var choiceBox = JSAV.utils.dialog(choicelistHTML, {width: 100});
+                        choiceBox[0].style.top = event.pageY+5+"px";
+                        choiceBox[0].style.left = event.pageX+10+"px";
+
+                        Window.showBlankPrompt = false;
+                        choiceBox[0].childNodes[0].childNodes.forEach(x => {
+                            x.addEventListener("click", e=> {
+                                e.stopPropagation();
+                                // console.log(event.target.parentNode.parentNode)
+                                this.innerHTML = event.target.dataset.choice;
+                                globalSolutionBoxes[this.dataset.index] = {
+                                    "solution": event.target.dataset.choice
+                                }
+                                choiceBox.close();
+                                Window.clearGlobalPointerReference();
+                            })
+                        });
+                    }, false
+                )
+            }
+
+            // Deleting answers/clearing data from solution boxes
+            solutionSubmissionBoxes[index].dataset.index = index;
+            var delcross = document.createElement("span")
+            solutionSubmissionBoxes[index].after(delcross);
+            delcross.classList.add("helpbutton");
+            delcross.innerHTML = "&#x2702";
+            delcross.setAttribute("title","Click to get help");
+            delcross.dataset.index = index;
+            delcross.addEventListener("click", function() {
+                event.stopPropagation();
+                console.log(this);
+                solutionSubmissionBoxes[this.dataset.index].innerHTML = "";
+                globalSolutionBoxes[this.dataset.index] = {"solution":null};
+            });
         }
 
         // Creating clickhandlers associated with the body to clear the globalPointerReference

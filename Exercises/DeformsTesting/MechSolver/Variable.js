@@ -110,6 +110,7 @@ class Variable{
                                 // this.globalPointerReference.currentClickedObjectType = null;
                                 // this.globalPointerReference.currentClickedObjectDescription = null;
                                 element.close();
+                                this.adjustParentEquationVisuals();
                             }
                         );
                         element[0].childNodes[0].childNodes[1].addEventListener(
@@ -119,6 +120,7 @@ class Variable{
                                 this.globalPointerReference.currentClickedObject = this;
                                 this.globalPointerReference.currentClickedObjectType = "var-box";
                                 this.globalPointerReference.currentClickedObjectDescription = "started new assoc";
+                                this.globalPointerReference.currentClickedObject.element.classList.add("selectedvalue");
                                 console.log("clicked first box");
                                 element.close();
                             }
@@ -128,25 +130,35 @@ class Variable{
                                 e2.stopPropagation();
                                 element.close();
                                 
+                                console.log("Renaming variables")
+
                                 var inputPromptHTML = 
                                 '<h4>Enter a variable name here.</h4>'+
                                 '<input type="text" id="varname" name="varname" size="8" />'+
                                 '<h4>Enter a subscript here.</h4>'+
                                 '<input type="text" id="subscriptname" name="subscriptname" size="8" />'+
-                                '<input type="button" id="submit" value="Set association name"/>';
+                                '<input type="button" id="submit" value="Set variable name"/>';
                                 var inputBox = JSAV.utils.dialog(inputPromptHTML, {width: 150});
                                 Window.box = inputBox;
                                 inputBox[0].querySelector("#submit").addEventListener("click", 
-                                    e=> { 
-                                        e.stopPropagation();
+                                    e3=> { 
+                                        e3.stopPropagation();
                                         this.valueNegated = false;
                                         this.changeVarName(
                                             Window.box[0].querySelector("#varname").value,
                                             Window.box[0].querySelector("#subscriptname").value
                                         );
                                         Window.box.close();
+                                        Window.clearGlobalPointerReference();
                                         delete Window.box;
+                                        this.adjustParentEquationVisuals();
                                     } 
+                                );
+                                inputBox[0].addEventListener("click", 
+                                    e3=> { 
+                                        e3.stopPropagation();
+                                        Window.showBlankPrompt = false;
+                                    }
                                 );
                             }
                         );
@@ -154,7 +166,7 @@ class Variable{
                             "click", e2=> {
                                 e2.stopPropagation();
                                 element.close();
-                                var listOfDomains = "--select a domain--";
+                                var listOfDomains = '<option value="--select a domain--"></option>';
                                 for (var d in Window.UNIT_DB)
                                     listOfDomains+=
                                     '<option value="'+d+'">'+d+'</option>';
@@ -171,8 +183,8 @@ class Variable{
                                 Window.box = inputBox;
 
                                 inputBox[0].querySelector("#domain").addEventListener("change", 
-                                    e=> { 
-                                        e.stopPropagation();
+                                    e3=> { 
+                                        e3.stopPropagation();
                                         console.log(this, Window.box[0])
                                         var unitlist = Window.box[0].querySelector("#unit");
                                         unitlist.innerHTML = "";
@@ -182,10 +194,25 @@ class Variable{
                                         }
                                     }
                                 );
+                                
+                                // inputBox[0].querySelector("#domain").addEventListener("click", 
+                                inputBox[0].addEventListener("click", 
+                                    e3=> { 
+                                        e3.stopPropagation();
+                                        Window.showBlankPrompt = false;
+                                    }
+                                );
+                                // inputBox[0].querySelector("#unit").addEventListener("click", 
+                                inputBox[0].addEventListener("click", 
+                                    e3=> { 
+                                        e3.stopPropagation();
+                                        Window.showBlankPrompt = false;
+                                    }
+                                );
 
                                 inputBox[0].querySelector("#submit").addEventListener("click", 
-                                    e=> { 
-                                        e.stopPropagation();
+                                    e3=> { 
+                                        e3.stopPropagation();
                                         this.valueNegated = false;
                                         var domain = Window.box[0].querySelector("#domain").value;
                                         var unit = Window.box[0].querySelector("#unit").value;
@@ -211,6 +238,7 @@ class Variable{
                                         this.clickAddValue();
                                         Window.clearGlobalPointerReference();
                                         Window.box.close();
+                                        this.adjustParentEquationVisuals();
                                         delete Window.box;
                                     }
                                 );
@@ -309,6 +337,7 @@ class Variable{
                                 // this.globalPointerReference.currentClickedObjectType = null;
                                 // this.globalPointerReference.currentClickedObjectDescription = null;
                                 element.close();
+                                this.adjustParentEquationVisuals();
                             }
                         );
                         element[0].childNodes[0].childNodes[1].addEventListener(
@@ -319,7 +348,10 @@ class Variable{
                                 this.globalPointerReference.currentClickedObject = this;
                                 this.globalPointerReference.currentClickedObjectType = "var-box";
                                 this.globalPointerReference.currentClickedObjectDescription = "copy number";
+                                this.globalPointerReference.currentClickedObject.element.classList.add("selectedvalue")
+
                                 element.close();
+                                this.adjustParentEquationVisuals();
                             }
                         )
                         element[0].childNodes[0].childNodes[2].addEventListener(
@@ -333,6 +365,7 @@ class Variable{
                                 // this.globalPointerReference.currentClickedObjectType = null;
                                 // this.globalPointerReference.currentClickedObjectDescription = null;
                                 element.close();
+                                this.adjustParentEquationVisuals();
                             }
                         )
                     }
@@ -382,7 +415,8 @@ class Variable{
                         console.log("copied a number over");
                     }
                 }
-                else if(this.valueType=="association"){
+                else if(this.valueType=="association")
+                {
                     if (this.globalPointerReference.currentClickedObject == null)
                     {
                         var element = JSAV.utils.dialog(
@@ -444,6 +478,7 @@ class Variable{
                                 // this.globalPointerReference.currentClickedObjectType = null;
                                 // this.globalPointerReference.currentClickedObjectDescription = null;
                                 element.close();
+                                this.adjustParentEquationVisuals();
                             }
                         );
                         element[0].childNodes[0].childNodes[1].addEventListener(
@@ -454,8 +489,11 @@ class Variable{
                                 this.globalPointerReference.currentClickedObject = this;
                                 this.globalPointerReference.currentClickedObjectType = "var-box";
                                 this.globalPointerReference.currentClickedObjectDescription = "started additional assoc";
+                                this.globalPointerReference.currentClickedObject.element.classList.add("selectedvalue");
+                                
                                 console.log("clicked existing assoc box");
                                 element.close();
+                                // this.adjustParentEquationVisuals();
                             }
                         );
                         element[0].childNodes[0].childNodes[2].addEventListener(
@@ -482,6 +520,7 @@ class Variable{
                                         );
                                         Window.box.close();
                                         delete Window.box;
+                                        this.adjustParentEquationVisuals();
                                     } 
                                 );
                             }
@@ -497,6 +536,7 @@ class Variable{
                                 // this.globalPointerReference.currentClickedObjectType = null;
                                 // this.globalPointerReference.currentClickedObjectDescription = null;
                                 element.close();
+                                this.adjustParentEquationVisuals()
                             }
                         );
                     }
@@ -541,18 +581,58 @@ class Variable{
                         // this.globalPointerReference.currentClickedObjectDescription = null;
                     }
                 }
-                var activeEq = Window.windowManager.shiftActiveEqDown(this.id);
-                console.log(id);
-                if(activeEq != null) {
-                    var split = id.split("_");
+
+                this.adjustParentEquationVisuals();
+                // console.log("Adjusting visuals of the equation")
+                // var activeEq = Window.windowManager.shiftActiveEqDown(this.id);
+                // // console.log(id);
+                // if(activeEq != null) {
+                //     var split = id.split("_");
         
-                    var wkspaceNum = split[0].substring(2, split[0].length);
-                    Window.windowManager.shiftDown(activeEq, wkspaceNum);
-                }
+                //     var wkspaceNum = split[0].substring(2, split[0].length);
+                //     Window.windowManager.shiftDown(activeEq, wkspaceNum);
+                // }
 
             }
         )
     }
+
+    adjustParentEquationVisuals()
+    {
+        // var shiftChain = Window.windowManager.shiftRight(equationObject);
+        // console.log(shiftChain);
+        // if(shiftChain == "shiftActiveEqDown") {
+        //     // console.log(Window.parentObject);
+        //     var extend = Window.windowManager.shiftActiveEqDown(equationObject.name);
+        //     if(extend != null) {
+        //         var split = equationObject.name.split("_");
+        //         var wkspaceNum = split[0].substring(2, split[0].length);
+        //         Window.windowManager.shiftDown(extend, wkspaceNum);
+        //     }
+            
+        // }
+        // else if(shiftChain == "shiftActiveEqUp") {
+        //     Window.windowManager.shiftActiveEqUp(equationObject.name);
+        
+        var extend = Window.windowManager.shiftActiveEqDown(this.id);
+        if(extend != null) {
+            var split = this.id.split("_");
+            var wkspaceNum = split[0].substring(2, split[0].length);
+            Window.windowManager.shiftDown(extend, wkspaceNum);
+        }
+        Window.windowManager.shiftActiveEqUp(this.id);
+
+        // console.log("Adjusting visuals of the equation")
+        // var activeEq = Window.windowManager.shiftActiveEqDown(this.id);
+        // // console.log(id);
+        // if(activeEq != null) {
+        //     var split = id.split("_");
+
+        //     var wkspaceNum = split[0].substring(2, split[0].length);
+        //     Window.windowManager.shiftDown(activeEq, wkspaceNum);
+        // }
+    }
+
     clickAddValue()
     {
         // Works just fine, no need for console.log()
@@ -744,6 +824,7 @@ class Variable{
                     Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unitDisp']);
                     element.close();
                     Window.clearGlobalPointerReference();
+                    this.adjustParentEquationVisuals();
                 }
             )
         });

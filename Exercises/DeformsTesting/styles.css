@@ -133,6 +133,17 @@
     border-color: black;
 }
 
+.helpbutton {
+    color: black;
+    font-weight: 600;
+    z-index: 500;
+    font-size: 150%;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 5px;
+    cursor: pointer;
+}
+
 #WorkspaceList {
     height: 0px;
     grid-area: workspace;
@@ -154,26 +165,31 @@
     z-index: 1000;
    }
 
-.addworkspace {
-    color: black;
+.workspacebutton {
+    /* color: black; */
     font-size: 120%;
     font-weight: 600;
     z-index: 500;
     cursor: pointer;
-   }
-
-.equationPageTitle {
-    color: black;
-    font-size: 120%;
-    font-weight: 300;
-    z-index: 500;
-    border-radius: 4px;
-    border-width: 2px;
     border-style: solid;
-    border-color: black;
+    border-width: 4px;
+    padding-left: 3px;
+    padding-right: 3px
    }
 
-.addequation {
+.workspacebutton[data-type="add"] {
+    color: blue !important;
+}
+
+.workspacebutton[data-type="remove"] {
+    color: red !important;
+}
+
+.workspacebutton[data-type="solve"] {
+    color: black !important;
+}
+
+/* .addequation {
     color: blue;
     font-size: 120%;
     font-weight: 600;
@@ -195,14 +211,34 @@
     font-weight: 600;
     z-index: 500;
     cursor: pointer;
-   }
+   } */
 
-
-.close_x {
+.addworkspace {
     color: black;
     font-size: 120%;
     font-weight: 600;
     z-index: 500;
+    cursor: pointer;
+   }
+
+.equationPageTitle {
+    color: black;
+    font-size: 120%;
+    font-weight: 300;
+    z-index: 500;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+   }
+
+.close_x {
+    color: black;
+    font-weight: 600;
+    z-index: 500;
+    font-size: 150%;
+    vertical-align: middle;
+    display: inline-block;
    }
 
 .close_x:hover {
@@ -253,8 +289,11 @@
 
 .boxedEquation {
     border: thin dashed black;
-    padding: 2px;
-    color: rgb(138, 100, 100);
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    color: black; /* rgb(138, 100, 100); */
     font-size: 120%;
     z-index: 500;
 }

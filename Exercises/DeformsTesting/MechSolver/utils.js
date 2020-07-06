@@ -44,14 +44,30 @@ Window.clearGlobalPointerReference = function() {
         Window.eqbank.currentSelectedEquationObject.element.dataset.status='no';
         Window.eqbank.currentSelectedEquationObject = null;
     }
+    else if(
+        Window.globalPointerReference.currentClickedObjectType == "var-box"  && 
+        Window.eqbank.currentSelectedEquationObject == null
+    )
+    {
+        // console.log(Window.eqbank.currentSelectedEquationObject);
+        Window.globalPointerReference.currentClickedObject.element.classList.remove("selectedvalue");
+    }
+    else if(
+        Window.globalPointerReference.currentClickedObjectType == "value-box"  && 
+        Window.globalPointerReference.currentClickedObjectDescription == "solved-value"
+    )
+    {
+        // console.log(Window.eqbank.currentSelectedEquationObject);
+        Window.globalPointerReference.currentClickedObject.element.visualComponent.element[0].classList.remove("selectedvalue");
+    }
 
     // Last but not the least, this always gets done.
     Window.globalPointerReference.currentClickedObject = null;
     Window.globalPointerReference.currentClickedObjectType = null;
     Window.globalPointerReference.currentClickedObjectDescription = null;
     Window.showBlankPrompt = true;
-    console.log("Came here");
-    console.trace();
+    // console.log("Came here");
+    // console.trace();
 }
 
 Window.isThereContext = function() {
@@ -63,17 +79,23 @@ Window.isThereContext = function() {
 }
 
 Window.showHelp = function(keyword) {
-    var helpText = Window.helpTexts[keyword];
-    var helpDialog = JSAV.utils.dialog(
-        helpText+`<button type="button" id="closeButton" class="jsavrow">OK</button>`, 
-        {width: 600, dialogClass: "helpPage"}
-        );
-    Window.globalPointerReference.currentClickedObjectType = "help";
-    Window.globalPointerReference.currentClickedObjectDescription = "main";
-    Window.showBlankPrompt = false;
-    helpDialog[0].querySelector("#closeButton").addEventListener("click", e=> {
-        e.stopPropagation();
-        helpDialog.close();
-        Window.clearGlobalPointerReference();
-    })
+    if(keyword in Window.helpTexts) {
+        var helpText = Window.helpTexts[keyword];
+        var helpDialog = JSAV.utils.dialog(
+            helpText+`<button type="button" id="closeButton" class="jsavrow">OK</button>`, 
+            {width: 600, dialogClass: "helpPage"}
+            );
+        Window.globalPointerReference.currentClickedObjectType = "help";
+        Window.globalPointerReference.currentClickedObjectDescription = "main";
+        Window.showBlankPrompt = false;
+        helpDialog[0].addEventListener("click", e=> {
+            e.stopPropagation();
+        })
+        helpDialog[0].querySelector("#closeButton").addEventListener("click", e=> {
+            e.stopPropagation();
+            helpDialog.close();
+            Window.clearGlobalPointerReference();
+        })
+    }
+    else console.log(`HelpText for ${keyword} requested`);
 }

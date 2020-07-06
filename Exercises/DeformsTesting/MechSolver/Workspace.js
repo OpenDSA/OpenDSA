@@ -107,23 +107,22 @@ class Workspace
         this.elements[2]["div"].setAttribute("id",this.name+"close");
         this.elements[2]["div"].setAttribute("title", "Click to remove the workspace, with all of its contents.");
         this.removebutton = document.getElementById(this.name+"close");
-        
-        
 
         // Adding the Add, Remove, Solve Buttons to add, remove, and solve equations
         this.elements[3] = {
             "jsav":
                 this.globalSectionObj.label("Add", 
                 {
-                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 75, 
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 93, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
                 })
-                .addClass("addequation"),
+                .addClass("workspacebutton"),
             "div": (list => 
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
         };
         this.elements[3]["div"].setAttribute("id",this.name+"addeq");
+        this.elements[3]["jsav"].element[0].dataset.type = "add";
         document.getElementById(this.name+"addeq").addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation addition here.
@@ -140,10 +139,10 @@ class Workspace
             "jsav":
                 this.globalSectionObj.label("Remove", 
                 {
-                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 41, 
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 45, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
                 })
-                .addClass("delequation"),
+                .addClass("workspacebutton"),
             "div": (list => 
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
@@ -153,6 +152,7 @@ class Workspace
         //     e.stopPropagation();
         //     // Add function call to equation deletion here.
         // });
+        this.elements[4]["jsav"].element[0].dataset.type = "remove";
         this.elements[4]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation deletion here.
@@ -165,10 +165,10 @@ class Workspace
             "jsav":
                 this.globalSectionObj.label("Solve", 
                 {
-                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 + 26, 
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 + 36, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
                 })
-                .addClass("solveequation"),
+                .addClass("workspacebutton"),
             "div": (list => 
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
@@ -178,6 +178,7 @@ class Workspace
         //     e.stopPropagation();
         //    // Add function call to equation set solving and result propagation here.
         // });
+        this.elements[5]["jsav"].element[0].dataset.type = "solve";
         this.elements[5]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
            // Add function call to equation set solving and result propagation here.
@@ -186,12 +187,12 @@ class Workspace
         });
         this.elements[5]["jsav"].element[0].setAttribute("title", "Click to solve the system of equations.");
 
-        // Adding the close X button/text
+        // Adding the Help button/text
         this.elements[6] = {
             "jsav":
                 this.globalSectionObj.label("&#xFFFD", 
                 {
-                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]-40, 
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]-42, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
                 })
                 .addClass("close_x"),
@@ -351,8 +352,27 @@ class Workspace
         // Add the event handler for deleting equations in here.
         newActiveEquation.visualComponents["delete"].element[0].addEventListener("click", e => {
             e.stopPropagation();
+            
             this.LIST_OF_EQUATIONS_IN_WORKSPACE[e.target.dataset.id].selected = true;
+            
+            var tempListofOtherSelectedEquations = {};
+            for(var eq in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+            {
+                if(!this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].selected) continue;
+                // Otherwise, unselect it temporarily and add it a list.
+                else {
+                    if(eq == e.target.dataset.id) continue;
+                    else {
+                        this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].selected = false;
+                        tempListofOtherSelectedEquations[eq] = null;
+                    }
+                }
+            }
             this.deleteEquations();
+
+            // Reset the list of equations to normalcy (those that were selected are returned to normal)
+            for(var eqindex in tempListofOtherSelectedEquations)
+                this.LIST_OF_EQUATIONS_IN_WORKSPACE[eqindex].selected = true;
         });
         
         // console.log(newActiveEquation);
@@ -512,7 +532,9 @@ class Workspace
                 There was likely a problem with the units of the values. Perhaps an unrecognized
                 unit was used, or the unit of a quantity could not be discerned. Please review your work and
                 try again.`, 
-            {width: 200, closeText: "OK"});
+            {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
+                e.stopPropagation();
+            });
             return;
         }
         // console.log(variableSet);
@@ -552,7 +574,9 @@ class Workspace
                 which by default are treated as unknowns.<br>Please also check that the remaining equation boxes are filled
                 with values.<br>Finally, please make sure to check all the boxes for the equations that are to be
                 included in the system to be solved.<br>`, 
-            {width: 200, closeText: "OK"});
+            {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
+                e.stopPropagation()
+            });
             return;
         }
         for(var i=0; i<listOfSolutions.length; i++)

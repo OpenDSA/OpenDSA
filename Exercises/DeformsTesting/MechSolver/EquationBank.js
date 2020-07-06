@@ -226,7 +226,7 @@ class EquationBank{
                         top: tempPositionIndex["POSITION_Y"]
                     }
                 ).addClass("selectableEquation");
-                tempPositionIndex["POSITION_Y"] += 15 + currentEqnObject["height"]; // replace with element height attribute.
+                tempPositionIndex["POSITION_Y"] += 15 + currentEqnObject["dispheight"]; // replaced with element dispheight attribute for EquationBanks only.
                 this.equation_pages[pagename]["pagejsav"][currentEqnObject["id"]] = jsavEq;
                 
                 jsavEq.hide();
@@ -308,6 +308,13 @@ class EquationBank{
             });
 
         this.showPage(this.equation_page_titles[0]);
+
+        var helpButton = this.globalSectionObj.label("&#xFFFD",
+            {
+                left: this.DIMENSIONS["POSITION_X"]+eqbank_ddl.offsetWidth+50, 
+                top: this.DIMENSIONS["POSITION_Y"]-16
+            })
+            .addClass("helpbutton")
         
         // Add clickhandlers to the equations in the equation pages here, that pass the
         // the object back to a tracker variable in DeformsProblemPRO
@@ -375,7 +382,7 @@ class EquationBank{
         ).addClass("selectableEquation");
         this.equation_pages["Favourites"]["equations"][currentEqnObject["id"]] = currentEqnObject;
         this.equation_pages["Favourites"]["pagejsav"][currentEqnObject["id"]] = jsavEq;
-        this.equation_pages["Favourites"]["visualComponents"]["POSITION_Y"] += 15 + currentEqnObject["height"];
+        this.equation_pages["Favourites"]["visualComponents"]["POSITION_Y"] += 15 + currentEqnObject["dispheight"];
         this.equation_pages["Favourites"]["equationsID"][currentEqnObject.id] = "";
         
         jsavEq.hide();

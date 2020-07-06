@@ -28,7 +28,7 @@ const solution = {
     },
     3 : {
         type: "string", 
-        solution : "T",
+        solution : "Tensile",
     },
     4 : {
         type: "number",
@@ -41,7 +41,7 @@ const solution = {
     },
     5 : {
         type: "string", 
-        solution : "C",
+        solution : "Compressive",
     },
 }
 // Find a way to specify sets of equations being solved at any stage,
