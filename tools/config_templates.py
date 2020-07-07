@@ -54,7 +54,7 @@ makefile_template = '''\
 PYTHON = %(python_executable)s  # should match the exec of the rest of OpenDSA (a pyVenv) 
 SPHINXBUILD   = sphinx-build
 HTMLDIR       = %(rel_book_output_path)s
-MINIMIZE      = java -jar "%(odsa_dir)stools/yuicompressor-2.4.7.jar"
+MINIMIZE      = uglifyjs
 TAGS = %(tag)s
 .PHONY: clean html
 
@@ -70,15 +70,15 @@ min: min-underscore min-doctools min-searchtools
 
 min-underscore:
 	@echo 'Minimizing $(HTMLDIR)_static/underscore.js'
-	-@$(MINIMIZE) $(HTMLDIR)_static/underscore.js -o $(HTMLDIR)_static/underscore.js
-
+	@$(MINIMIZE) $(HTMLDIR)_static/underscore.js > $(HTMLDIR)_static/underscore.js
+	
 min-doctools:
 	@echo 'Minimizing $(HTMLDIR)_static/doctools.js'
-	-@$(MINIMIZE) $(HTMLDIR)_static/doctools.js -o $(HTMLDIR)_static/doctools.js
+	@$(MINIMIZE) $(HTMLDIR)_static/doctools.js > $(HTMLDIR)_static/doctools.js
 
 min-searchtools:
 	@echo 'Minimizing $(HTMLDIR)_static/searchtools.js'
-	-@$(MINIMIZE) $(HTMLDIR)_static/searchtools.js -o $(HTMLDIR)_static/searchtools.js
+	@$(MINIMIZE) $(HTMLDIR)_static/searchtools.js > $(HTMLDIR)_static/searchtools.js
 
 html:
 	$(SPHINXBUILD) $(TAGS) -b html source $(HTMLDIR)
