@@ -35,7 +35,6 @@ Glossary
 
    abstract data type
       :to-term: ADT :label: abbreviation
-      :to-term: data structure :label: implements
       :to-term: interface :label: logically defines
 
       Abbreviated :term:`ADT`. The specification of a :term:`data type`
@@ -1186,6 +1185,7 @@ Glossary
 
    data structure
       :to-term: serialization :label: concept
+      :to-term: abstract data type :label: implements
 
       The implementation for an :term:`ADT`.
 
