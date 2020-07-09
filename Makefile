@@ -1,7 +1,4 @@
 SHELL := /bin/bash
-ifeq ($(OS),Windows_NT)
-	SHELL=C:/Windows/System32/cmd.exe
-endif
 RM = rm --recursive --force
 CONFIG_SCRIPT = tools/configure.py
 TARGET = build
@@ -11,6 +8,9 @@ CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 ODSA_ENV ?= DEV # Can be overridden by env varis, such as ODSA_ENV='PROD' 
 VENVDIR = .pyVenv
 ACTIVATE = source $(VENVDIR)/bin/activate 
+ifeq ($(OS),Windows_NT)
+	ACTIVATE = source $(VENVDIR)/Scripts/activate 
+endif
 PYTHON ?= python #  Can be overridden by env varis, such as PYTHON="python3.8"
 
 JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' -- 
