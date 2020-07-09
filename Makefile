@@ -5,17 +5,18 @@ TARGET = build
 LINT = eslint --no-color
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
-ODSA_ENV ?= DEV # Can be overridden by env varis, such as ODSA_ENV='PROD' 
+# Can be overridden by env varis, such as ODSA_ENV='PROD' or PYTHON="python3.8"
+ODSA_ENV ?= DEV
+PYTHON ?= python
 VENVDIR = .pyVenv
 ACTIVATE = source $(VENVDIR)/bin/activate 
 ifeq ($(OS),Windows_NT)
 	ACTIVATE = source $(VENVDIR)/Scripts/activate 
 endif
-PYTHON ?= python #  Can be overridden by env varis, such as PYTHON="python3.8"
 
 JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' -- 
 CSS_MINIFY = cleancss
-ifeq ($(ODSA_ENV),DEV)
+ifeq ($(strip $(ODSA_ENV)),DEV)
 	# fake-minify for easier debugging in DEV setups...
 	JS_MINIFY = cat 
 	CSS_MINIFY = cat
@@ -137,7 +138,7 @@ CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
 
 min: $(JS_MIN_FILES) $(CSS_MIN_FILES) 
-ifeq ($(ODSA_ENV),DEV)
+ifeq ($(strip $(ODSA_ENV)),DEV)
 	@echo 'Completed: FAKE-Minify of many .js and .css files (just copied)'
 else
 	@echo 'Completed: Minify of many .js and .css files'
