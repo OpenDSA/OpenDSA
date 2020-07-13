@@ -65,6 +65,15 @@
   },
   "chapters": {
     "Stuff": {
+      "PointersJava/BasicPointers1": {},
+      "Test/BasicPointers1t": {
+        "sections": {
+          "Employee": {
+            "long_name": "Employee Class",
+            "showhide": "hide"
+          }
+        }
+      },
       "Indexing/BTree": {
         "bPlusTreeInsertPRO": {
           "exer_options": {
