@@ -846,7 +846,7 @@
       var injector = this.Injector(json_data, av_name, skip_to, locations);
       PIFRAMES.table[av_name] = injector;
 
-      if(skip_to != 0){
+      if(skip_to !== 0){
         $(document).ready(function() {
           var counter = $("#"+av_name +" .jsavcounter").text().split("/");
           var limit = parseInt(counter[1]);

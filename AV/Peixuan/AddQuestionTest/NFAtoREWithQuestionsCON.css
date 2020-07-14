@@ -1,0 +1,17 @@
+#NFAtoREWithQuestionsCON {
+  height: 800px;
+}
+
+#NFAtoREWithQuestionsCON .jsavmatrix {
+  margin-left: 0;
+}
+
+#NFAtoREWithQuestionsCON .jsavhorizontalarray .jsavnode {
+  min-width: 50px !important;
+  max-width: 50px !important;
+}
+
+#NFAtoREWithQuestionsCON .jsavhorizontalarray .jsavnode:nth-child(3) {
+  min-width: 100px !important;
+  max-width: 100px !important;
+}

@@ -10,22 +10,6 @@
 Samples
 =======
 
-Turing Machine Ex
------------------
-
-.. avembed:: AV/Peixuan/TuringMachinesExercises/aNumsPowerOf2.html pe
-   :long_name: Turing Machines Exercise
-.. avembed:: AV/Peixuan/TuringMachinesExercises/ifaNumsPowerOf2.html pe
-   :long_name: Turing Machines Exercise
-.. avembed:: AV/Peixuan/TuringMachinesExercises/abcWInWWROut.html pe
-   :long_name: Turing Machines Exercise
-.. avembed:: AV/Peixuan/TuringMachinesExercises/abcNawlargerthanNbw.html pe
-   :long_name: Turing Machines Exercise
-.. avembed:: AV/Peixuan/TuringMachinesExercises/replaceABAbyACA.html pe
-   :long_name: Turing Machines Exercise
-.. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html pe
-   :long_name: Turing Machines Exercise
-
 Auto Generating Questions Test Case
 -----------------------------------
 .. inlineav:: AddQuestionTest ff
@@ -66,3 +50,11 @@ Auto Generating Questions for DFATrace
    :links: DataStructures/FLA/FLA.css AV/Peixuan/AddQuestionTest/TraceEvenBinaryDFAWithQCON.css
    :scripts: DataStructures/FLA/FA.js AV/Peixuan/AddQuestionTest/TraceEvenBinaryDFAWithQCON.js
    :output: show
+
+Auto Generating Questions for NFAtoRE
+--------------------------------------
+
+.. inlineav:: NFAtoREWithQuestionsCON ss
+  :links: AV/Peixuan/AddQuestionTest/NFAtoREWithQuestionsCON.css
+  :scripts: AV/Peixuan/AddQuestionTest/NFAtoREWithQuestionsCON.js
+  :output: show

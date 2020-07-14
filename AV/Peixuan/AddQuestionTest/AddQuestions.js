@@ -38,19 +38,12 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
   });
 
 
-  // $(".jsavcanvas").append(qButton);
-  // $(".jsavcanvas").append(question);
-
   $(container).append(qButton);
   $(container).append(question);
 
   $("#" + av_name + " > .SHOWQUESTION, #" + av_name + " > .PIFRAMES").wrapAll('<div class="picanvas"></div>');
-  //$(".SHOWQUESTION,.PIFRAMES").wrapAll('<div class="picanvas"></div>');
   $("#" + av_name + " > .picanvas").insertAfter($("#" + av_name + " > .jsavcanvas"));
-  //$(".picanvas").insertAfter($(".jsavcanvas"));
-
   $("#" + av_name + " > .jsavcanvas, #" + av_name + " > .picanvas").wrapAll('<div class="canvaswrapper"></div>');
-  //$(".jsavcanvas,.picanvas").wrapAll('<div class="canvaswrapper"></div>');
   $("#" + av_name + " > .canvaswrapper").css({
     display: "flex"
   });
@@ -67,7 +60,6 @@ var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}
     var parentAV = $(buttonGroup)
       .parent()
       .attr("id");
-    //console.log(parentAV);
     PIFRAMES.callInjector(parentAV, 1);
   }),
     //0 signifies a backward click; used by injector to decrement queue if necessary
@@ -208,6 +200,10 @@ var generateQuestions = function (steps, graph = null, configure) {
       }
       else{
         var qsForAState = configure["questionPattern"](steps[i][j]);
+        //if the generation function skiped a state
+        if(!Array.isArray(qsForAState)){
+          continue;
+        }
         if(qsForAState.length != 1){
           qsForAState.forEach(item => {
             questions["translations"]["en"][String("q" + questionsIndex)] = item;
@@ -1694,3 +1690,287 @@ var getStepsForAcceptorVisualize = function (acceptor, listOfStrings, arrayOptio
   }
   return res;
 };
+
+
+function getAllNonStartNorFinalStates(graph) {
+  var listOfNodes = graph.nodes();
+  var results = [];
+  listOfNodes.map(function (node) {
+    if (!node.hasClass("final") && !node.hasClass("start"))
+      results.push(node);
+  });
+  return results;
+}
+
+function drawTheFinalGraph(jsav, options, expression) {
+  var fa = jsav.ds.FA($.extend(options));
+  var start = fa.addNode({ left: '15px' });
+  var height = options.height || 440;
+  var width = options.width || 750;
+  var end = fa.addNode({ left: width - 10, top: height - 40 });
+  fa.makeInitial(start);
+  fa.makeFinal(end);
+  var t = fa.addEdge(start, end, { weight: expression });
+  return fa;
+}
+
+var visualizeConversionWithQuestions = function (fatoreController, url, av_name, transitionOptions = {}, finaGraphOptions = {}, piframesLocations){
+  var oldNFA = fatoreController.fa;
+  var tempNFA = new fatoreController.jsav.ds.FA({url: url});
+  fatoreController.fa = tempNFA;
+  var steps = getStepsForvisualizeConversion(fatoreController, transitionOptions, finaGraphOptions);
+
+  fatoreController.fa = oldNFA;
+  var split = 0;
+  for(var i = 0 ; i < steps.length ; i++){
+    if(steps[i][0]["type"] !== "missingTransition"){
+       split = i;
+       break;
+    }
+  }
+  var missingTransitions = steps.splice(0, split);
+  var nodes = getAllNonStartNorFinalStates(fatoreController.fa);
+  var strNodes = [];
+  nodes.forEach((item, i) => {
+    strNodes.push(item.value());
+  });
+  var allNodes = [];
+  fatoreController.fa.nodes().forEach((item, i) => {
+    allNodes.push(item.value());
+  });
+  var expCount = [];
+  var generatingFunction = function (state) {
+      if(state["type"] === "affectedTransition"){
+        return [{
+          "type": "textBoxStrict",
+          "question": "Example: a+a*b. Input \"none\" without quotes if there is no regular expression can be infered.",
+          "description": "What regular expression can be infered by reading the transiton of Node " + state["node"] + " to Node " + state["relatedTo"] + " ?",
+          "answer": state["weight"] === String.fromCharCode(248) ? "none" : state["weight"], //String if type is multiple, array of string if select
+          "choices": ""
+        }];
+      }
+      else if(state["type"] === "expCount"){
+        expCount.push(state["weight"]);
+        return "skip";
+      }
+      else{
+        return "skip";
+      }
+  }
+  var configure = {
+    "specialQuestionInedx" : [0],
+    "specialQuestion" : [{
+      "type":  strNodes.length == 1 ? "multiple" : "select",
+      "question": "",
+      "description": "Which of the following nodes we should collapse ?",
+      "answer": strNodes.length == 1 ?  strNodes[0] : strNodes, //String if type is multiple, array of string if select
+      "choices": allNodes
+    }],
+    "questionPattern" : generatingFunction
+  };
+  /*var missingNodes = [];
+  for(var i = 0 ; i < missingTransitions.length ; i++){
+    missingNodes.push([missingTransitions[i][0]["node"], missingTransitions[i][0]["relatedTo"]]);
+  }
+  console.log(missingNodes);
+
+  var allNodes = [];
+  oldNFA.nodes().forEach((item, i) => {
+    allNodes.push(item.value());
+  });
+  console.log(allNodes);*/
+
+  var questions = generateQuestions(steps, fatoreController.jsav, configure);
+  // initialize PI frame
+  var Frames = piInit(av_name, questions, piframesLocations);
+  var questionsIndex = 0;
+
+  fatoreController.visualize = true;
+  fatoreController.jsav.umsg("We need to complete all the missing tansitions for this Machine");
+  fatoreController.jsav.step();
+
+  fatoreController.completeTransitions();
+  fatoreController.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+  questionsIndex++;
+
+  for (var i = 0; i < nodes.length; i++) {
+    fatoreController.jsav.step();
+    fatoreController.jsav.umsg("We should collapse the node " + nodes[i].value());
+
+    nodes[i].highlight();
+    for (var j = 0 ; j < expCount[i] ; j++) {
+      fatoreController.jsav.step();
+      fatoreController.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+      questionsIndex++;
+    }
+    fatoreController.jsav.step();
+    localStorage.trans = 'false';
+    fatoreController.fa.selected = nodes[i];
+    fatoreController.collapseState(nodes[i], transitionOptions);
+    $("#" + av_name + " .jsavmatrixtable").css({
+      top: transitionOptions.top
+    });
+
+    fatoreController.jsav.umsg("You can click on each table row to heighlight the affected transitions.");
+    fatoreController.jsav.step();
+    nodes[i].unhighlight();
+    fatoreController.jsav.umsg("Removing the node " + nodes[i].value() + " will create an new but equivalent graph");
+    fatoreController.finalizeRE();
+  }
+  fatoreController.jsav.step();
+  fatoreController.jsav.umsg("After removing all nodes that are not final and not start, the resulting Regular Exepression is");
+  fatoreController.transitions.hide();
+  drawTheFinalGraph(fatoreController.jsav, finaGraphOptions, fatoreController.generateExpression());
+}
+
+var getStepsForvisualizeConversion = function (fatoreController, transitionOptions = {}, finaGraphOptions = {}){
+  var res = [];
+  fatoreController.visualize = true;
+  var nodes1 = fatoreController.fa.nodes();
+  var nodes2 = fatoreController.fa.nodes();
+  for (var from = nodes1.next(); from; from = nodes1.next()) {
+    for (var to = nodes2.next(); to; to = nodes2.next()) {
+      if (!fatoreController.fa.hasEdge(from, to)) {
+        res.push([{
+          "node" : from.value(),
+          "relatedTo" : to.value(),
+          "type" : "missingTransition",
+          "weight" : "none"
+        }]);
+        none = String.fromCharCode(248);
+        fatoreController.fa.addEdge(from, to, { weight: none });
+      }
+    }
+    nodes2.reset();
+  }
+  fatoreController.checkForTransitions();
+  var nodes = getAllNonStartNorFinalStates(fatoreController.fa);
+  res.push([{
+    "node" : nodes,
+    "relatedTo" : "",
+    "type" : "NorFinalStates",
+    "weight" : "none"
+  }]);
+  var finalExpression = "";
+  for (var i = 0; i < nodes.length; i++) {
+    localStorage.trans = 'false';
+    nodes[i].highlight();
+    fatoreController.fa.selected = nodes[i];
+
+    var table = [];
+    var collapseState = function (node, transitionOptions) {
+      function addStar(transition) {
+        if (transition.length == 1) return transition + "*";
+        var count = 0;
+        if (transition.charAt(0) !== "(") return "(" + transition + ")*";
+        for (var i = 0; i < transition.length; i++) {
+          if (transition.charAt(i) == "(") count++;
+          else if (transition.charAt(i) == ")") count--;
+          if (count == 0 && i < transition.length - 1) return "(" + transition + ")*";
+        }
+        return transition + "*";
+      }
+
+      if (localStorage.trans === "true") {
+        return;
+      }
+
+      var nodes1 = fatoreController.fa.nodes();
+      var nodes2 = fatoreController.fa.nodes();
+      var count = 0;
+      for (var from = nodes1.next(); from; from = nodes1.next()) {
+        nodes2.reset();
+        for (var to = nodes2.next(); to; to = nodes2.next()) {
+          if (from == fatoreController.fa.selected || to == fatoreController.fa.selected) continue;
+          var straight = fatoreController.fa.getEdge(from, to).weight();
+          var begin = fatoreController.fa.getEdge(from, node).weight();
+          var pause = fatoreController.fa.getEdge(node, node).weight();
+          var end = fatoreController.fa.getEdge(node, to).weight();
+          var indirect = "";
+          var direct = straight;
+          if (begin == none || end == none) {
+            res.push([{
+              "node" : from.value(),
+              "relatedTo" : to.value(),
+              "type" : "affectedTransition",
+              "weight" : direct
+            }]);
+            table.push([from.value(), to.value(), direct]);
+          } else {
+            var step1 = begin;
+            var step2 = pause;
+            var step3 = end;
+            if (step2 == none || step2 == lambda) {
+              if (step1 == lambda) {
+                indirect = step3;
+              } else if (step3 == lambda) {
+                indirect = step1;
+              } else {
+                indirect = step1 + step3;
+              }
+            } else if (step1 == lambda && step3 == lambda) {
+              indirect = addStar(step2);
+            } else if (step1 == lambda) {
+              indirect = addStar(step2) + step3;
+            } else if (step3 == lambda) {
+              indirect = step1 + addStar(step2);
+            } else {
+              indirect = step1 + addStar(step2) + step3;
+            }
+            if (direct == none) {
+              res.push([{
+                "node" : from.value(),
+                "relatedTo" : to.value(),
+                "type" : "affectedTransition",
+                "weight" : indirect
+              }]);
+              table.push([from.value(), to.value(), indirect]);
+            } else {
+              res.push([{
+                "node" : from.value(),
+                "relatedTo" : to.value(),
+                "type" : "affectedTransition",
+                "weight" : direct + "+" + indirect
+              }]);
+              table.push([from.value(), to.value(), direct + "+" + indirect]);
+            }
+          }
+          count++;
+        }
+      }
+      return count;
+    }
+
+    var expNum = collapseState(nodes[i], transitionOptions);
+    res.push([{
+      "node" : "",
+      "relatedTo" : "",
+      "type" : "expCount",
+      "weight" : expNum
+    }]);
+    for (var i = 0; i < table.length; i++) {
+      var row = table[i];
+      var from = fatoreController.fa.getNodeWithValue(row[0]);
+      var to = fatoreController.fa.getNodeWithValue(row[1]);
+      var newTransition = row[2];
+      fatoreController.fa.removeEdge(from, to);
+      fatoreController.fa.addEdge(from, to, { weight: newTransition });
+    }
+    fatoreController.fa.removeNode(fatoreController.fa.selected);
+    if (fatoreController.fa.nodes().length == 2) {
+      finalExpression = fatoreController.generateExpression();
+    }
+  }
+  var nodes = fatoreController.fa.nodes();
+  for (var node = nodes.next(); node; node = nodes.next()) {
+    fatoreController.fa.removeNode(node);
+  }
+  fatoreController.fa.hide();
+  res.push([{
+    "node" : "",
+    "relatedTo" : "",
+    "type" : "finalExpression",
+    "weight" : finalExpression
+  }]);
+  return res;
+}
