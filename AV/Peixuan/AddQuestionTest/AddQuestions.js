@@ -1739,18 +1739,23 @@ var visualizeConversionWithQuestions = function (fatoreController, url, av_name,
     allNodes.push(item.value());
   });
   var expCount = [];
+  var currentNode = "";
   var generatingFunction = function (state) {
       if(state["type"] === "affectedTransition"){
         return [{
           "type": "textBoxStrict",
           "question": "Example: a+a*b. Input \"none\" without quotes if there is no regular expression can be infered.",
-          "description": "What regular expression can be infered by reading the transiton of Node " + state["node"] + " to Node " + state["relatedTo"] + " ?",
+          "description": "Removing node $"+ currentNode +"$, what will be the new transition from $" + state["node"] + "$ to $"+state["relatedTo"]+"$?",
           "answer": state["weight"] === String.fromCharCode(248) ? "none" : state["weight"], //String if type is multiple, array of string if select
           "choices": ""
         }];
       }
       else if(state["type"] === "expCount"){
         expCount.push(state["weight"]);
+        return "skip";
+      }
+      else if(state["type"] === "currentNode"){
+        currentNode = state["node"];
         return "skip";
       }
       else{
@@ -1762,23 +1767,12 @@ var visualizeConversionWithQuestions = function (fatoreController, url, av_name,
     "specialQuestion" : [{
       "type":  strNodes.length == 1 ? "multiple" : "select",
       "question": "",
-      "description": "Which of the following nodes we should collapse ?",
+      "description": strNodes.length == 1 ? "Which of the following nodes we may collapse?" : "Select all the nodes we may collapse.",
       "answer": strNodes.length == 1 ?  strNodes[0] : strNodes, //String if type is multiple, array of string if select
       "choices": allNodes
     }],
     "questionPattern" : generatingFunction
   };
-  /*var missingNodes = [];
-  for(var i = 0 ; i < missingTransitions.length ; i++){
-    missingNodes.push([missingTransitions[i][0]["node"], missingTransitions[i][0]["relatedTo"]]);
-  }
-  console.log(missingNodes);
-
-  var allNodes = [];
-  oldNFA.nodes().forEach((item, i) => {
-    allNodes.push(item.value());
-  });
-  console.log(allNodes);*/
 
   var questions = generateQuestions(steps, fatoreController.jsav, configure);
   // initialize PI frame
@@ -1853,6 +1847,12 @@ var getStepsForvisualizeConversion = function (fatoreController, transitionOptio
   }]);
   var finalExpression = "";
   for (var i = 0; i < nodes.length; i++) {
+    res.push([{
+      "node" : nodes[i].value(),
+      "relatedTo" : "",
+      "type" : "currentNode",
+      "weight" : ""
+    }]);
     localStorage.trans = 'false';
     nodes[i].highlight();
     fatoreController.fa.selected = nodes[i];
