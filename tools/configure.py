@@ -533,13 +533,17 @@ def configure(config_file_path, options):
         job.append("html")
         job.append("min")
 
-    try:
-        print("$$$ Subprocess Started: " + " ".join(job))
-        proc = subprocess.run(job, check=True)
-        print("$$$ Subprocess Complete: " + " ".join(job))
-    except subprocess.CalledProcessError as e:
-        print_err("make of eBook failed.  See above error")
+    # if make is visible to shutil, then no need to use shell
+    shell_needed = shutil.which('make') is None
+    if shell_needed:
+        print("WARNING: 'make' command is not visible from python... Doing leap of faith...")
+
+    print("$$$ Subprocess Started: " + " ".join(job), flush=True)
+    proc = subprocess.run(job, shell=shell_needed, stdout=sys.stdout, stderr=sys.stderr)
+    if proc.returncode != 0:
+        print_err("Creating eBook failed.  See above error")
         exit(1)
+    print("$$$ Subprocess Complete: " + " ".join(job), flush=True)
     
     ''' TODO: Keep looking for encoding errors.
     These are because python 2.7 implicitly converted string encodings.  
