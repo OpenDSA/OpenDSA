@@ -80,21 +80,66 @@ $(document).ready(function() {
   NFA.layout();
   av.step();
   av.umsg("We can follow the ``RR Grammar from DFA'' proof from the slides to get the right linear grammar for $NFA_{rev}$. Thus, we have the right linear grammar for $L^R$.");
-  var arr = new Array(7);    // arbitrary array size
-    for (var i = 0; i < arr.length; i++) {
-        arr[i] = ["", arrow, ""];
-    }
-    var lastRow = 0;
-    var grammarMatrix = av.ds.matrix(arr, {style: "table", left: 0, top: 250});
-    // hide all of the empty rows
-    for (var i = lastRow + 1; i < arr.length; i++) {
-        grammarMatrix._arrays[i].hide();
-    }
-  var FAtoGrammar = new FAtoGrammarConverter(av, NFA);
+  var grammerMatrix = new GrammarMatrix( av,null, {style: "table", left: 10, top: 0});
+  grammerMatrix.createRow(["", arrow, ""]);
+  grammerMatrix.createRow(["", arrow, ""]);
+  grammerMatrix.createRow(["", arrow, ""]);
+  grammerMatrix.createRow(["", arrow, ""]);
+  
+  grammerMatrix.productions.push(["", arrow, ""]);
+  grammerMatrix.productions.push(["", arrow, ""]);
+  grammerMatrix.productions.push(["", arrow, ""]);
+  grammerMatrix.productions.push(["", arrow, ""]);
+  
   av.step();
-  convertToGrammarWithQuestions(av_name, av, FAtoGrammar, grammarMatrix, {top: -10, left: -20});
+  av.umsg("For the transition $\\delta(S, a) = S$ the right Gramamr will be $S\\rightarrow aS$");
   av.step();
+  grammerMatrix.modifyProduction(0,0,"$S$");
+  grammerMatrix.modifyProduction(0,2,"$aS$")
+  av.umsg("For the transition $\\delta(A, b) = A$ the right Gramamr will be $A\\rightarrow bA$");
+  av.step();
+  grammerMatrix.modifyProduction(1,0,"$A$");
+  grammerMatrix.modifyProduction(1,2,"$bA$")
+  av.umsg("For the transition $\\delta(A, c) = S$ the right Gramamr will be $A\\rightarrow cS$");
+  av.step();
+  grammerMatrix.modifyProduction(2,0,"$A$");
+  grammerMatrix.modifyProduction(2,2,"$cS$")
+  av.umsg("For the transition $\\delta(F, b) = A$ the right Gramamr will be $F\\rightarrow cA$");
+  av.step();
+  grammerMatrix.modifyProduction(3,0,"$F$");
+  grammerMatrix.modifyProduction(3,2,"$bA$")
   av.umsg("By reversing each production in the resulting Right Linear grammar, we will get the the Left Linear grammar for the reverse of $L^R$. So, we have the Left Linear grammar for $(L^R)^R = L$.");
+  av.step();
+  av.umsg("Reversing $S\\rightarrow aS$ will give $S\\rightarrow Sa$");
+  grammerMatrix.highlight(0);
+  av.step();
+  av.umsg("Reversing $S\\rightarrow aS$ will give $S\\rightarrow Sa$");
+  grammerMatrix.modifyProduction(0,2,"$Sa$")
+  av.step();
+  av.umsg("Reversing $A\\rightarrow bA$ will give $A\\rightarrow Ab$");
+  grammerMatrix.unhighlight(0);
+  grammerMatrix.highlight(1);
+  av.step();
+  av.umsg("Reversing $A\\rightarrow bA$ will give $A\\rightarrow Ab$");
+  grammerMatrix.modifyProduction(1,2,"$Ab$")
+  av.step();
+  av.umsg("Reversing $A\\rightarrow cS$ will give $A\\rightarrow Sc$");
+  grammerMatrix.unhighlight(1);
+  grammerMatrix.highlight(2);
+  av.step();
+  av.umsg("Reversing $A\\rightarrow cS$ will give $S\\rightarrow Sc$");
+  grammerMatrix.modifyProduction(2,2,"$Sc$")
+  av.step();
+  av.umsg("Reversing $F\\rightarrow bA$ will give $F\\rightarrow Ab$");
+  grammerMatrix.unhighlight(2);
+  grammerMatrix.highlight(3);
+  av.step();
+  av.umsg("Reversing $F\\rightarrow bA$ will give $F\\rightarrow Ab$");
+  grammerMatrix.modifyProduction(3,2,"$Ab$")
+  av.step();
+  av.umsg("The resulting Grammar is the Left Linear Grammar for the original Right Linear Grammar.")
+  grammerMatrix.unhighlight(3);
+  GToFAConverter.grammerMatrix.show();
   av.recorded();
 
 });
