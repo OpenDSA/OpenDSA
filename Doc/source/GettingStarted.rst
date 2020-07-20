@@ -341,7 +341,7 @@ IMPORTANT: Put it in Program Files, NOT Program Files (x86).
 Then, edit your environment variable PATH to add:
 C:/Program Files/GnuWin32/bin.
 If you don't know how to edit an environment variable on Windows,
-google for "windows set environment variable".</p>
+google for "windows set environment variable".
 
 Next, install nodejs (on Windows, you can get it from
 https://nodejs.org/en/download/).
@@ -359,8 +359,8 @@ Be sure to add it to your PATH variable.
 For example, if you choose to put it at the top level of your C:
 drive, then add C:/Python38 and C:/Python38/Scripts to your PATH.
 Note: We will create a python virtual environment specific for 
-OpenDSA to ensure that the python installations for your system or 
-other projects is not corrupted or in conflict.  
+OpenDSA to ensure that any other python installations that your system 
+or other projects depend on are not corrupted or in conflict.  
 
 To check and see if you have the correct version of python installed, 
 use the command ``python3.8 --version``.  It is very likely that other
@@ -380,6 +380,13 @@ Once the repository is cloned (we assume here into a directory named
    cd OpenDSA
    make venv #Takes less than 1 minute#
    make pull #This could take awhile#
+
+Remember to activate the python virtual environment before building
+any books.  This makes sure you are using the correct python for 
+OpenDSA. Depending on your system, simply use one of these commands::
+
+  source .pyVenv/bin/activate  # For Linux systems
+  . .pyVenv/Scripts/activate   # For Windows systems
 
 At this point, you should be all set up. To test things, you can try
 doing::

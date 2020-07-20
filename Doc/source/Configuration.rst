@@ -30,6 +30,7 @@ instance (given the existance of a configuration file named
 ``config/foo.json``) by issuing these commands::
 
   source .pyVenv/bin/activate  # to activate python venv
+  # . .pyVenv/Scripts/activate # alternative command for Windows
   python tools/configure.py config/foo.json --no-lms
   deactivate   # to exit python venv
 

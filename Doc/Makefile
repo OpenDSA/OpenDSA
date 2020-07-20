@@ -1,12 +1,15 @@
 # Makefile for Sphinx documentation
 SHELL := /bin/bash
+# Changes for installs on native Windows:
+ifeq ($(OS),Windows_NT) 
+	SHELL = bash.exe
+endif
 
 VENV_DIR = ../.pyVenv
-ACTIVATE = source $(VENV_DIR)/bin/activate
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
-SPHINXBUILD = $(ACTIVATE) && sphinx-build
+SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = build
 
@@ -17,12 +20,20 @@ ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) sou
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
+
+CHECK_ACTIVE = python -c "import sys; assert getattr(sys, 'base_prefix',  sys.exec_prefix) != sys.prefix, '$(INACTIVE_MSG)'"
+INACTIVE_MSG = pyVenv is not activated!!! \n
+INACTIVE_MSG +=Command to activate:   $(ACTIVATE) \n
+INACTIVE_MSG +=Command to deactivate: deactivate \n
+INACTIVE_MSG +=Retry after activating pyVenv.  Exiting now...
+
 .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
 
 all: html
 
-$(VENV_DIR):
-	cd .. && $(MAKE) venv
+.PHONY: pyVenvCheck
+pyVenvCheck:
+	make --directory=.. pyVenvCheck
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -51,38 +62,38 @@ clean:
 	-rm -rf manual
 	-rm -r *~
 
-html: $(VENV_DIR)
+html: pyVenvCheck
 	$(SPHINXBUILD) -b html $(SPHINXOPTS) source manual
 	@echo
 	@echo "Build finished. The HTML pages are in manual/."
 
-dirhtml: $(VENV_DIR)
+dirhtml: pyVenvCheck
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/dirhtml."
 
-singlehtml: $(VENV_DIR)
+singlehtml: pyVenvCheck
 	$(SPHINXBUILD) -b singlehtml $(ALLSPHINXOPTS) $(BUILDDIR)/singlehtml
 	@echo
 	@echo "Build finished. The HTML page is in $(BUILDDIR)/singlehtml."
 
-pickle: $(VENV_DIR)
+pickle: pyVenvCheck
 	$(SPHINXBUILD) -b pickle $(ALLSPHINXOPTS) $(BUILDDIR)/pickle
 	@echo
 	@echo "Build finished; now you can process the pickle files."
 
-json: $(VENV_DIR)
+json: pyVenvCheck
 	$(SPHINXBUILD) -b json $(ALLSPHINXOPTS) $(BUILDDIR)/json
 	@echo
 	@echo "Build finished; now you can process the JSON files."
 
-htmlhelp: $(VENV_DIR)
+htmlhelp: pyVenvCheck
 	$(SPHINXBUILD) -b htmlhelp $(ALLSPHINXOPTS) $(BUILDDIR)/htmlhelp
 	@echo
 	@echo "Build finished; now you can run HTML Help Workshop with the" \
 	      ".hhp project file in $(BUILDDIR)/htmlhelp."
 
-qthelp: $(VENV_DIR)
+qthelp: pyVenvCheck
 	$(SPHINXBUILD) -b qthelp $(ALLSPHINXOPTS) $(BUILDDIR)/qthelp
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
@@ -91,7 +102,7 @@ qthelp: $(VENV_DIR)
 	@echo "To view the help file:"
 	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/OpenDSA.qhc"
 
-devhelp: $(VENV_DIR)
+devhelp: pyVenvCheck
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
@@ -100,64 +111,64 @@ devhelp: $(VENV_DIR)
 	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/OpenDSA"
 	@echo "# devhelp"
 
-epub: $(VENV_DIR)
+epub: pyVenvCheck
 	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) $(BUILDDIR)/epub
 	@echo
 	@echo "Build finished. The epub file is in $(BUILDDIR)/epub."
 
-latex: $(VENV_DIR)
+latex: pyVenvCheck
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo
 	@echo "Build finished; the LaTeX files are in $(BUILDDIR)/latex."
 	@echo "Run \`make' in that directory to run these through (pdf)latex" \
 	      "(use \`make latexpdf' here to do that automatically)."
 
-latexpdf: $(VENV_DIR)
+latexpdf: pyVenvCheck
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo "Running LaTeX files through pdflatex..."
 	$(MAKE) -C $(BUILDDIR)/latex all-pdf
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
-text: $(VENV_DIR)
+text: pyVenvCheck
 	$(SPHINXBUILD) -b text $(ALLSPHINXOPTS) $(BUILDDIR)/text
 	@echo
 	@echo "Build finished. The text files are in $(BUILDDIR)/text."
 
-man: $(VENV_DIR)
+man: pyVenvCheck
 	$(SPHINXBUILD) -b man $(ALLSPHINXOPTS) $(BUILDDIR)/man
 	@echo
 	@echo "Build finished. The manual pages are in $(BUILDDIR)/man."
 
-texinfo: $(VENV_DIR)
+texinfo: pyVenvCheck
 	$(SPHINXBUILD) -b texinfo $(ALLSPHINXOPTS) $(BUILDDIR)/texinfo
 	@echo
 	@echo "Build finished. The Texinfo files are in $(BUILDDIR)/texinfo."
 	@echo "Run \`make' in that directory to run these through makeinfo" \
 	      "(use \`make info' here to do that automatically)."
 
-info: $(VENV_DIR)
+info: pyVenvCheck
 	$(SPHINXBUILD) -b texinfo $(ALLSPHINXOPTS) $(BUILDDIR)/texinfo
 	@echo "Running Texinfo files through makeinfo..."
 	make -C $(BUILDDIR)/texinfo info
 	@echo "makeinfo finished; the Info files are in $(BUILDDIR)/texinfo."
 
-gettext: $(VENV_DIR)
+gettext: pyVenvCheck
 	$(SPHINXBUILD) -b gettext $(I18NSPHINXOPTS) $(BUILDDIR)/locale
 	@echo
 	@echo "Build finished. The message catalogs are in $(BUILDDIR)/locale."
 
-changes: $(VENV_DIR)
+changes: pyVenvCheck
 	$(SPHINXBUILD) -b changes $(ALLSPHINXOPTS) $(BUILDDIR)/changes
 	@echo
 	@echo "The overview file is in $(BUILDDIR)/changes."
 
-linkcheck: $(VENV_DIR)
+linkcheck: pyVenvCheck
 	$(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck
 	@echo
 	@echo "Link check complete; look for any errors in the above output " \
 	      "or in $(BUILDDIR)/linkcheck/output.txt."
 
-doctest: $(VENV_DIR)
+doctest: pyVenvCheck
 	$(SPHINXBUILD) -b doctest $(ALLSPHINXOPTS) $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
