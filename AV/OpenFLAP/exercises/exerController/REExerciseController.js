@@ -111,7 +111,7 @@ controllerProto.updateExercise = function (id) {
 	var exercise = this.tests[id];
 	var type = exercise["type"];
 	this.testCases = exercise["testCases"];
-	generateTestCase(this.testCases, 1);
+	generateTestCase(exercise, 1);
 	if (type == "expression") {
 		$("#expression").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
 		$("#question").show();

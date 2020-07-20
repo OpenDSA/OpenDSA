@@ -6,5 +6,6 @@
     "graph": {
         "nodes": [],
         "edges": []
-    }
+    },
+    "solution": "ab(ab)*ba* + b*(ab)*"
 }]

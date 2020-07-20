@@ -88,28 +88,6 @@
       // ******************************************************************************
       // Set up ruls for a single string.
       // ******************************************************************************
-      function checkRule(str) {
-        var n = (str.split('a')).length - 1;
-        if (n % 2 == 1) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-
-      function stringGenerate() {
-        var min = randomStringLength[0];
-        var max = randomStringLength[1];
-        var stringLength = Math.round(Math.random() * (max - min)) + min;
-        for (var a = 0; a < stringLength; a++) {
-          var pos = Math.round(Math.random() * (containLetters.length - 1));
-          str += containLetters[pos];
-        }
-        if (caseCounter == 0) {
-          str = "";
-        }
-        return str;
-      }
     </script>
     <script src="../../exerController/testCaseGenerater.js"></script>
   </div>

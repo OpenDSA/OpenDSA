@@ -244,7 +244,7 @@ controllerProto.toExercise = function (button) {
 controllerProto.updateExercise = function (id) {
   var exercise = this.tests[id];
   this.testCases = exercise["testCases"];
-  generateTestCase(this.testCases, 1);
+  generateTestCase(exercise, 1);
   this.testChomskey = Object.keys(this.testCases[this.testCases.length - 1])[0] === 'CNF'; //identify weather studetns shoud transform the grammar to CNF or Not
   var type = exercise["type"];
   if (type == "expression") {
