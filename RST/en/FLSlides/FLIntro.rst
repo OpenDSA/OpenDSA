@@ -159,8 +159,8 @@ Formal Languages Course Introduction
    and classes of machines.
 
    .. inlineav:: HierarchyCON dgm
-      :links: AV/FormalLang/HierarchyCON.css
-      :scripts: AV/FormalLang/HierarchyCON.js
+      :links: AV/VisFormalLang/Intro/HierarchyCON.css
+      :scripts: AV/VisFormalLang/Intro/HierarchyCON.js
       :align: center
 
 
