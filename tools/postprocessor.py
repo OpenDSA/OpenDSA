@@ -6,7 +6,6 @@
 import sys
 import os
 import re
-import codecs
 import json
 import xml.dom.minidom as minidom
 from collections import Iterable
@@ -25,7 +24,7 @@ __author__ = 'breakid'
 # Reads the starting section number and section prefix from index.rst
 def parse_index_rst(source_dir):
   # Read contents of index.rst
-  with open(source_dir + 'index.rst', 'r') as index_rst_file:
+  with open(source_dir + 'index.rst', 'rt', encoding='utf-8') as index_rst_file:
     index_rst = index_rst_file.readlines()
 
   directive = False
@@ -50,7 +49,7 @@ def parse_index_rst(source_dir):
 # Updates the index.html page
 def update_index_html(dest_dir, sectnum):
   # Process index.html separately from the modules files
-  with open(dest_dir + 'index.html', 'rt') as index_html_file:
+  with open(dest_dir + 'index.html', 'rt', encoding='utf-8') as index_html_file:
     index_html = index_html_file.readlines()
 
   for line_num, line in enumerate(index_html):
@@ -72,14 +71,14 @@ def update_index_html(dest_dir, sectnum):
       index_html[line_num] = line.replace(title, new_title)
 
   # Write the modified contents back to index.html
-  with open(dest_dir + 'index.html', 'wt') as index_html_file:
+  with open(dest_dir + 'index.html', 'wt', encoding='utf-8') as index_html_file:
     index_html_file.writelines(index_html)
 
 
 # Update the headers and navigation hyperlinks in module HTML files
 def update_mod_html(file_path, data, prefix, standalone_modules):
   # Read contents of module HTML file
-  with open(file_path, 'r') as html_file:
+  with open(file_path, 'rt', encoding='utf-8') as html_file:
     html = html_file.readlines()
 
   mod_name = os.path.splitext(os.path.basename(file_path))[0]
@@ -144,7 +143,7 @@ def update_mod_html(file_path, data, prefix, standalone_modules):
         html[line_num] = line.replace(section_title, new_section_title)
 
   # Replace original HTML file with modified contents
-  with open(file_path, 'wt') as html_file:
+  with open(file_path, 'wt', encoding='utf-8') as html_file:
     html_file.writelines(html)
 
 
@@ -155,7 +154,7 @@ def update_TOC(source_dir, dest_dir, data = None, standalone_modules=False):
 
   if not data:
     # Load the JSON data used to store chapter number and title information
-    with open('page_chapter.json', 'r') as page_chapter_file:
+    with open('page_chapter.json', 'rt', encoding='utf-8') as page_chapter_file:
       data = json.load(page_chapter_file)
 
   html_files = [file for file in os.listdir(dest_dir) if file.endswith('.html')]
@@ -165,7 +164,7 @@ def update_TOC(source_dir, dest_dir, data = None, standalone_modules=False):
 
 
 def update_TermDef(glossary_file, terms_dict):
-  with codecs.open(glossary_file, 'r', 'utf-8') as html_glossary:
+  with open(glossary_file, 'rt', encoding='utf-8') as html_glossary:
     mod_data = html_glossary.readlines()
   i = 0
   while i < len(mod_data):
@@ -203,7 +202,7 @@ def break_up_sections(path, module_data, config, standalone_modules):
 
   # Read contents of module HTML file
   try:
-    with codecs.open(path, 'r', 'utf-8') as html_file:
+    with open(path, 'rt', encoding='utf-8') as html_file:
       html = html_file.read()
   except IOError:
     print("Error: Could not find HTML file for", path)
@@ -317,14 +316,14 @@ def break_up_sections(path, module_data, config, standalone_modules):
 
   filename = mod_name + '.html'
   single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
-  with codecs.open(single_file_path, 'w', 'utf-8') as o:
+  with open(single_file_path, 'wt', encoding='utf-8') as o:
     o.write(str(soup))
   return None
 
 def pretty_print_xml(data, file_path):
     ElementTree(data).write(file_path)
     xml = minidom.parse(file_path)
-    with open(file_path, 'w') as resaved_file:
+    with open(file_path, 'wt', encoding='utf-8') as resaved_file:
         # [23:] omits the stupid xml header
         resaved_file.write(xml.toprettyxml()[23:])
 
@@ -352,7 +351,7 @@ def make_lti(config, no_lms = False, standalone_modules = False):
 
   # save config object to use ut later for course update
   config_file_path = os.path.join(dest_dir, '..', 'lti_html', 'lti_config.json')
-  with codecs.open(config_file_path, 'w', 'utf-8') as o:
+  with open(config_file_path, 'wt', encoding='utf-8') as o:
     o.write(json.dumps(config.__dict__))
 
 

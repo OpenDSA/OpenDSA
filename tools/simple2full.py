@@ -904,7 +904,7 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
         print_err("ERROR: '{0}' is not a valid module path".format(mod_path))
         sys.exit(1)
 
-      with open(x, 'r') as rstfile:
+      with open(x, 'rt', encoding='utf-8') as rstfile:
         source = rstfile.read()
 
       source = remove_markup(source)
@@ -943,5 +943,5 @@ if __name__ == '__main__':
   output_file = args[1]
   full_conf = generate_full_config(config_file, False, options.expanded, options.verbose)
 
-  with open(output_file, 'w') as outfile:
+  with open(output_file, 'wt', encoding='utf-8') as outfile:
     json.dump(full_conf, outfile, indent=2)
