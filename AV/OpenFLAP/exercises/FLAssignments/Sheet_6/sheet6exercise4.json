@@ -1,39 +1,36 @@
-[
-    {
-        "description": "Give an equivalent CFG grammar in Chomsky Normal Form with no unit productions, lambda productions, or useless productions.",
-        "type": "description",
-        "testCases": [
-            {
-                "No_Lambda": true
-            },
-            {
-                "No_Unit": true
-            },
-            {
-                "No_Useless": true
-            },
-            {
-                "CNF": true
-            }
-        ],
-        "grammar": [
-            {
-                "left": "S",
-                "right": "A|C"
-            },
-            {
-                "left": "A",
-                "right": "aA|a|B"
-            },
-            {
-                "left": "B",
-                "right": "bB|b"
-            },
-            {
-                "left": "C",
-                "right": "cC|c|B"
-            }
-        ]
-        
-    }
-]
+[{
+    "description": "Give an equivalent CFG grammar in Chomsky Normal Form with no unit productions, lambda productions, or useless productions.",
+    "type": "description",
+    "testCases": [{
+            "No_Lambda": true
+        },
+        {
+            "No_Unit": true
+        },
+        {
+            "No_Useless": true
+        },
+        {
+            "CNF": true
+        }
+    ],
+    "grammar": [{
+            "left": "S",
+            "right": "A|C"
+        },
+        {
+            "left": "A",
+            "right": "aA|a|B"
+        },
+        {
+            "left": "B",
+            "right": "bB|b"
+        },
+        {
+            "left": "C",
+            "right": "cC|c|B"
+        }
+    ],
+    "solution": ""
+
+}]

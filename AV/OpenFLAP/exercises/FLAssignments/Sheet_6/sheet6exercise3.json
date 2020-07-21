@@ -1,40 +1,36 @@
-[
-    {
-        "description": "Give an equivalent CFG grammar with no unit productions,  lambda productions, or useless productions.",
-        "type": "description",
-        "testCases": [
-            {
-                "No_Lambda": true
-            },
-            {
-                "No_Unit": true
-            },
-            {
-                "No_Useless": true
-            }
-        ],
-        "grammar": [
-            {
-                "left": "S",
-                "right": "A|CB"
-            },
-            {
-                "left": "A",
-                "right": "C|D"
-            },
-            {
-                "left": "B",
-                "right": "bB|b"
-            },
-            {
-                "left": "C",
-                "right": "cC|c"
-            }
-            ,
-            {
-                "left": "D",
-                "right": "dD|d"
-            }
-        ]
-    }
-]
+[{
+    "description": "Give an equivalent CFG grammar with no unit productions,  lambda productions, or useless productions.",
+    "type": "description",
+    "testCases": [{
+            "No_Lambda": true
+        },
+        {
+            "No_Unit": true
+        },
+        {
+            "No_Useless": true
+        }
+    ],
+    "grammar": [{
+            "left": "S",
+            "right": "A|CB"
+        },
+        {
+            "left": "A",
+            "right": "C|D"
+        },
+        {
+            "left": "B",
+            "right": "bB|b"
+        },
+        {
+            "left": "C",
+            "right": "cC|c"
+        },
+        {
+            "left": "D",
+            "right": "dD|d"
+        }
+    ],
+    "solution": ""
+}]

@@ -175,43 +175,8 @@
         </tr>
       </table>
     </div>
-    <script>
-      var totalTrueCases = 10; //how many true cases
-      var totalFalseCases = 10; //how many false cases
-      var containLetters = ['a', 'b']; // contain letters
-      var randomStringLength = [0, 15]; //string lengthe between 0 to 15
-      var trueCounter = 0; // number of hardcode true cases in json file 
-      var falseCounter = 0; // number of hardcode false cases in json file 
-      var str = "";
-      // ******************************************************************************
-      // ******************************************************************************
-      // Set up ruls for a single string.
-      // ******************************************************************************
-      // ******************************************************************************
-      function checkRule(str) {
-        var a = (str.split('a')).length - 1;
-        var b = (str.split('b')).length - 1;
-        if (a % b == 0 && a / b == 2) {
-          return true;
-        } else {
-          return false;
-        }
-      }
 
-      function stringGenerate() {
-        var min = randomStringLength[0];
-        var max = randomStringLength[1];
-        var stringLength = Math.round(Math.random() * (max - min)) + min;
-        for (var a = 0; a < stringLength; a++) {
-          var pos = Math.round(Math.random() * (containLetters.length - 1));
-          str += containLetters[pos];
-        }
-        if (caseCounter == 0) {
-          str = "";
-        }
-        return str;
-      }
-    </script>
+    <script src="./sheet7exercise3.js"></script>
     <script src="../../exerController/testCaseGenerater.js"></script>
     <!-- Multi Line run Support: adapted from https://codepen.io/johnraiz/pen/jvYRey/-->
     <div id="multiRun"></div>
