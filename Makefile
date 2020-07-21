@@ -327,6 +327,8 @@ Peixuan: min
 Zinan: min
 	python $(CONFIG_SCRIPT) config/Zinan.json --no-lms
 
+Juwon: min
+	python $(CONFIG_SCRIPT) config/Juwon.json --no-lms
 nomin:
 	@cp lib/JSAV.js lib/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js
