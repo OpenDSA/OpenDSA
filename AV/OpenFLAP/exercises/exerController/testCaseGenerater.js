@@ -1,11 +1,6 @@
 'use strict';
 // ******************************************************************************
 // ******************************************************************************
-// If the true or false cases precentage are very low, do not use these 
-// function. Eg. There are 2^10 possible strings and only 10 true cases, 
-// please hardcode the true cases in json file, and correct the "trueCounter" 
-// in corresponding html file otherwise it will take a long time to 
-// generate correct true cases.
 // ******************************************************************************
 // ******************************************************************************
 var trueStringLimit = totalTrueCases;
@@ -16,7 +11,17 @@ var mark = 0;
 var markPos = 0;
 var tempFlag;
 var checkAllstar;
-
+var trueAlertCounter = 0;
+var falseAlertCounter = 0;
+/**
+ * Add strings alone with true or false to the test cases
+ *
+ * @param str  Testing string
+ * 
+ * @param TorF True or false
+ * 
+ * @param obj  Object that contain all info
+ */
 function addtoTestCase(str, obj, TorF) {
   testCaseList.push(str);
   var current = {};
@@ -38,10 +43,10 @@ function addtoTestCase(str, obj, TorF) {
       current[str] = false;
       obj.testCases[caseCounter] = current;
     }
-
   }
   caseCounter++;
 }
+
 
 /**
  * Given a regular expression, this will return the subexpressions that,
@@ -111,6 +116,7 @@ var cat = function (expression) {
   return se;
 }
 
+
 /**
  * Given a string, returns the string, or the empty string if the string is
  * the lambda string.
@@ -124,16 +130,42 @@ var delambda = function (string) {
   return string == lambda ? "" : string;
 }
 
+
+/**
+ * CheckREG for checking regular expression alone with the string
+ * 
+ * @param rule
+ *            The regular expression
+ * @param str 
+ *            Testing string
+ * @return true or false
+ */
 function checkREG(rule, str) {
   // str = "baaabaaaaaab"
   var res = helperREG(rule, str, 2, 0);
   if (res == str.length && mark == 0) {
+    falseAlertCounter = 0;
+    trueAlertCounter++;
+    if (trueAlertCounter > 5000) {
+      alert("Too few false strings can be randomly randomly.");
+      alert("Rewrite the generator, or hard code in Json file.");
+    }
     return true;
   } else {
+    trueAlertCounter = 0;
+    falseAlertCounter++;
+    if (falseAlertCounter > 5000) {
+      alert("Too few true strings can be randomly randomly.");
+      alert("Rewrite the generator, or hard code in Json file.");
+    }
     return false;
   }
 }
 
+
+/**
+ * helpfunction for reorder the regular expression
+ */
 function checkAfterOr(indexm, indexm1, m, obj, copy1, copy2) {
   for (var a = 0; a < indexm1.length; a++) {
     var inerpos = indexm.indexOf(indexm1[a])
@@ -149,10 +181,29 @@ function checkAfterOr(indexm, indexm1, m, obj, copy1, copy2) {
 }
 
 
+/**
+ * remove the parentheses.
+ * (a+b) ==> a+b
+ * 
+ * @param str
+ *            part of the regular expression
+ * @return string
+ */
 function rmParentheses(str, pos) {
   return str.substr(1, str.length - pos)
 }
 
+
+/**
+ * reorder the regular expression
+ * b*ba ==> bb*a
+ * 
+ * when b* follow by the same letter with star, reorder the regular expression. 
+ * So the check method can fit required letter first 
+ * @param sep
+ *            part of the regular expression
+ * @return string
+ */
 function reorder(sep) {
   for (var m = 0; m < sep.length - 1; m++) {
     if (sep[m] == sep[m + 1].substr(0, sep[m].length - 1) || sep[m + 1] == sep[m].substr(0, sep[m].length - 1)) {
@@ -182,6 +233,16 @@ function reorder(sep) {
   return sep
 }
 
+
+/**
+ * Check form m position to the end of the regular expression 
+ * whether all union contain a star symbol 
+ * @param sep
+ *            part of the regular expression
+ * @param m
+ *            check position 
+ * @return True/False
+ */
 function checkremindStar(sep, m) {
   for (m; m < sep.length; m++) {
     if (sep[m].charAt(sep[m].length - 1) != "*") {
@@ -191,17 +252,32 @@ function checkremindStar(sep, m) {
   return true;
 }
 
+
+/**
+ * remove all * 
+ * @param rule
+ *            part of the regular expression
+ */
 function lenthwithoudstar(rule) {
   return rule.replace(/\*/g, "");
-
 }
 
+
+/**
+ * main method for checking whether a string conformed to a regular expression
+ * @param rule
+ *            regular expression
+ * @param str
+ *            check string 
+ * @param currentpos
+ *            it is an iterative pointer point to the string. 
+ * @return iterative pointer position
+ */
 function helperREG(rule, str, pos, currentpos) {
   if (rule.charAt(0) == "(" && rule.charAt(rule.length - 1) == ")") {
     rule = rmParentheses(rule, pos)
   }
   var todoList = or(rule)
-
   var strCheckPos = currentpos;
   var record = strCheckPos;
   for (var i = 0; i < todoList.length; i++) {
@@ -219,7 +295,6 @@ function helperREG(rule, str, pos, currentpos) {
         while (str.charAt(strCheckPos) == sep[m].charAt(0)) {
           strCheckPos++;
         }
-
       } else if (sep[m].charAt(sep[m].length - 1) == "*" && sep[m].charAt(sep[m].length - 2) == ")") {
 
         while (strCheckPos < str.length) {
@@ -228,7 +303,6 @@ function helperREG(rule, str, pos, currentpos) {
           if (!temp2.includes("+")) {
             var len = lenthwithoudstar(temp2).length;
             strCheckPos = helperREG(temp2, str, 3, strCheckPos);
-
             if (!checkremindStar(sep, markPos + 1) || (strCheckPos >= recpos && !checkAllstar)) {
               strCheckPos = recpos;
               break;
@@ -250,7 +324,6 @@ function helperREG(rule, str, pos, currentpos) {
       } else {
         checkAllstar = checkremindStar(sep, m + 1)
       }
-
       markPos = m;
       if (strCheckPos == str.length && m != sep.length - 1 && !checkAllstar) {
         mark = -1;
@@ -267,20 +340,22 @@ function helperREG(rule, str, pos, currentpos) {
       break;
     }
   }
-
   return strCheckPos;
-
 }
 
 
-
+/**
+ * help function for adding test cases to object
+ * @param flag
+ *            True/false flag
+ * @param testCase
+ *            object
+ */
 function checkAdd(flag, testCase) {
-
   if (flag) {
     if (str.charAt(0) == "T") {
       str = str.substr(1);
     }
-
     if (trueCounter < trueStringLimit) {
       // if (flag == 0) {
       addtoTestCase(str, testCase, 1);
@@ -306,8 +381,10 @@ function checkAdd(flag, testCase) {
 }
 
 
-
-
+/**
+ * random string generator help function
+ * @return string
+ */
 function stringGenerate() {
   var min = randomStringLength[0];
   var max = randomStringLength[1];
@@ -323,12 +400,28 @@ function stringGenerate() {
 }
 
 
-
-
-
+/**
+ * dealing with regular expression and regular grammar
+ * the testcases store at different position in the object
+ * 
+ * @param testCase
+ *            object
+ * @param flag
+ *            regular expression exercise or regular grammar exercise flag
+ * 
+ */
 function randomStringGenerate(testCase, flag) {
   var solu;
-  str = stringGenerate();
+  if (generatorflag == 0) {
+    str = stringGenerate();
+  } else if (generatorflag == 1) {
+    str = customGenerator();
+    if (str === undefined) {
+      alert("Check the Customize generator. Should return string but return undefined.");
+    }
+  } else {
+    alert("Wrong generator flag.");
+  }
   var copy = str;
   if (copy.charAt(0) == "T" || copy.charAt(0) == "F") {
     copy = copy.substr(1);
@@ -354,6 +447,14 @@ function randomStringGenerate(testCase, flag) {
   }
 }
 
+
+
+/**
+ * check undefined 
+ * Lambda, Unit, useless
+ * @param testCase
+ *            object
+ */
 function generateTestCase(testCase, flag) {
   var title;
   tempFlag = flag
@@ -363,19 +464,20 @@ function generateTestCase(testCase, flag) {
     } else {
       title = Object.getOwnPropertyNames(testCase);
     }
-
   }
-
   if (title != "No_Lambda" && title != "No_Unit" && title != "No_Useless") {
     for (var b = 0;
       (trueCounter < trueStringLimit) || (falseCounter < falseStringLimit); b++) {
       str = "";
       randomStringGenerate(testCase, flag);
-
     }
   }
 }
 
+
+/**
+ * produce random number
+ */
 function randomNumber(min, max) {
   return Math.round(Math.random() * (max - min)) + min;
 }
