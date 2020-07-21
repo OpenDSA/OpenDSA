@@ -133,6 +133,11 @@
       </div>
     </div>
     <script>
+      // ******************************************************************************
+      // ******************************************************************************
+      // Set test cases rules.
+      // ******************************************************************************
+      // ******************************************************************************
       var totalTrueCases = 10; //how many true cases
       var totalFalseCases = 10; //how many false cases
       var containLetters = ['a', 'b']; // contain letters
@@ -140,59 +145,6 @@
       var trueCounter = 1; // number of hardcode true cases in json file 
       var falseCounter = 0; // number of hardcode false cases in json file 
       var str = "";
-      // ******************************************************************************
-      // ******************************************************************************
-      // Set up ruls for a single string.
-      // ******************************************************************************
-      // ******************************************************************************
-      function checkRule(str) {
-        if (str.charAt(0) == "T") {
-          str = str.substr(1)
-          return true;
-        } else {
-          str = str.substr(1)
-          return false;
-        }
-      }
-
-      function stringGenerate() {
-        if (trueCounter < totalTrueCases) {
-
-          str = "T";
-          str = subStringFun(str, "b", 2, 6)
-          str = subStringFun(str, "a", 3, 7)
-          return str;
-        } else if (falseCounter < totalFalseCases) {
-          str = "F";
-          var num1 = randomNumber(0, 3);
-          if (num1 == 0) {
-            str = subStringFun(str, "b", 0, 2)
-            str = subStringFun(str, "a", 0, 7)
-          } else if (num1 == 1) {
-            str = subStringFun(str, "b", 0, 7)
-            str = subStringFun(str, "a", 0, 3)
-          } else {
-            str = subStringFun(str, "b", 0, 2)
-            str = subStringFun(str, "a", 0, 3)
-          }
-          if (falseCounter == 0) {
-            str = "F";
-            return str;
-          }
-        }
-        return str;
-      }
-
-      function subStringFun(str, letter, min, max) {
-        if (letter.charAt(0) == "T" || letter.charAt(0) == "F") {
-          letter = letter.substr(1);
-        }
-        var num = randomNumber(min, max);
-        for (var a = 0; a < num; a++) {
-          str += letter;
-        }
-        return str;
-      }
     </script>
     <script src="../../exerController/testCaseGenerater.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
