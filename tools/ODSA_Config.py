@@ -449,33 +449,9 @@ def read_conf_file(config_file_path):
         with open(config_file_path) as config:
             # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
             conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
-    except ValueError as err:
-        # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
-        msg = err.message
-        print_err(msg)
-
-        if msg == 'No JSON object could be decoded':
-            print_err('ERROR: %s is not a valid JSON file or does not use a supported encoding\n' % config_file_path)
-        else:
-            err = parse_error(msg).groupdict()
-            # cast int captures to int
-            for k, v in list(err.items()):
-                if v and v.isdigit():
-                    err[k] = int(v)
-
-            with open(config_file_path) as config:
-                lines = config.readlines()
-
-            for ii, line in enumerate(lines):
-                if ii == err["lineno"] - 1:
-                    break
-
-            print_err("""
-    %s
-    %s^-- %s
-    """ % (line.replace("\n", ""), " " * (err["colno"] - 1), err["msg"]))
-
-        # TODO: Figure out how to get (simple)json to accept different encodings
+    except json.JSONDecodeError as err:
+        print_err("ERROR when parsing JSON file: "+ config_file_path)
+        print_err("    " + str(err) + "\n")
         sys.exit(1)
 
     return conf_data
