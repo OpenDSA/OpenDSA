@@ -431,6 +431,25 @@ class iframe(Directive):
   def run(self):
     return [nodes.raw('', '<iframe>null</iframe>', format='xml')]
 
+class showhidecontent(Directive):
+  '''
+  '''
+  def showhide(argument):
+    """Conversion function for the "showhide" option."""
+    return directives.choice(argument, ('show', 'hide', 'none'))
+
+  required_arguments = 1
+  optional_arguments = 2
+  has_content = True
+  final_argument_whitespace = True
+  option_spec = {
+                 'long_name': directives.unchanged,
+                 'showhide': showhide
+                }
+  
+  def run(self):
+    return [nodes.raw('', '<showhidecontent>null</showhidecontent>', format='xml')]
+
 def print_err(err_msg):
   '''
   '''
@@ -751,6 +770,7 @@ def register():
   directives.register_directive('slide', slide)
   directives.register_directive('slideconf', slideconf)
   directives.register_directive('iframe', iframe)
+  directives.register_directive('showhidecontent', showhidecontent)
 
 
 def remove_markup(source):
