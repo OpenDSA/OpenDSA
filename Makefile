@@ -150,6 +150,9 @@ Xiaolin: min
 Ning: min
 	python $(CONFIG_SCRIPT) config/Ning.json --no-lms
 
+Guoxin: min
+	python  $(CONFIG_SCRIPT) config/Guoxin.json --no-lms
+
 NP: min
 	python $(CONFIG_SCRIPT) config/NP.json --no-lms
 
