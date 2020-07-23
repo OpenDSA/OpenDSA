@@ -64,6 +64,9 @@
     "required": true
   },
   "chapters": {
+    "Test ShowHideContent": {
+      "Patrick/ShowHideContentTest": {}
+    },
     "Main Tests": {
       "NP/NPComplete": {},
       "Patrick/testInlineAV": {},
