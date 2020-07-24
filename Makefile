@@ -129,6 +129,9 @@ WeihaoVisFormalLang: min
 SimpleDemo: min
 	python $(CONFIG_SCRIPT) config/SimpleDemo.json --no-lms
 
+MDTest: min
+	python $(CONFIG_SCRIPT) config/MDTest.json --no-lms
+
 CT: min
 	python $(CONFIG_SCRIPT) config/CT.json --no-lms
 
