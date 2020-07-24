@@ -84,8 +84,8 @@ $(document).ready(function() {
     av.umsg("The resulting Grammar is the Left Regular Grammar for the regular expression $(a+b)^*aa(a+b)^*$");
     av.step();
     av.umsg("If you took a careful look at the process we followed you will notice that we have processed the RegEx from right to left and the result is a Left Linear Grammar.");
-    av,step();
-    av,umsg("Let us trace how the resulting grammar will generate ($\\textbf{Trace}$) the string $abaabbb$");
+    av.step();
+    av.umsg("Let us trace how the resulting grammar will generate ($\\textbf{Trace}$) the string $abaabbb$");
     av.step();
     av.umsg("We will start at the $\\textbf{end}$ of the string. So, the grammar will use the prduction $S\\rightarrow Sb$ 3 times to generate the $bbb$");
     av.step();

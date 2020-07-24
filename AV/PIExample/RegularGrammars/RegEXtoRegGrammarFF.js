@@ -81,7 +81,7 @@ $(document).ready(function() {
   av.step();
   av.umsg("In the following module we will see the same process but for converting RegEx to a Left Linear Grammar.");
   av.step();
-  av,umsg("Let us trace how the resulting grammar will generate ($\\textbf{Trace}$) the string $abaabbb$");
+  av.umsg("Let us trace how the resulting grammar will generate ($\\textbf{Trace}$) the string $abaabbb$");
   av.step();
   av.umsg("We will start at the $\\textbf{begining}$ of the string. So, the grammar will use the prduction $S\\rightarrow aS$ then the production $S\\rightarrow bS$ to generate the $ab$");
   av.step();
