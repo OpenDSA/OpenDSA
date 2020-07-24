@@ -59,7 +59,19 @@ Observe how the class diagram quickly communicates the name and characteristics 
    :figwidth: 90%
    :alt: Alternative text
 
+
    Bag image
+
+videos two ways:
+----------------
+
+The same video is here twice.  Once using the raw::html command, once using the iframe.  I'm putting them up here to figure out why they're different.
+
+.. raw:: html
+
+     <center>
+     <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_ioniqhja&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+     </center>
 
 
 
@@ -71,25 +83,15 @@ Molly is practicing adding a CW style question (still in progress)
 .. extrtoolembed:: 'changePointeeDataDirect'
 
 
-iframes
--------
 
 
-.. raw:: html
+KA style question
+-----------------
 
-   <center>
-   <iframe id="myVideo1"
-        src="https://codeworkout.cs.vt.edu/gym/workouts/embed?resource_name=changePointeeDataDirect"
-        width="900" height="800"
-        frameborder="1" marginwidth="0" marginheight="0"
-	scrolling="no">
-   </iframe>
-   </center>
+Practicing making a multiple choice question to mimic a Khan Academy question
 
+.. avembed:: Exercises/MDTest/MDTest_question1.html ka
 
+.. avembed:: Exercises/MDTest/MDTest_question2.html ka
 
-.. raw:: html
-
-      <center>
-      <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_ioniqhja&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
-      </center>   
+.. avembed:: Exercises/MDTest/MDTest_question3.html ka
