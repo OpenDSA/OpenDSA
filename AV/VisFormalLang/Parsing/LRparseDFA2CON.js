@@ -1,7 +1,7 @@
 $(document).ready(function() {
   "use strict";
 
-  var av = new JSAV("DFACON", {animationMode: "none"});
+  var av = new JSAV("LRparseDFA2CON", {animationMode: "none"});
 
   var l = 40;
   var xl = 60;
@@ -9,7 +9,7 @@ $(document).ready(function() {
 
   var width = 1.7*xl;
 
-  var l_border = 120;
+  var l_border = 270;
   var t_border = 20;
 
   var v_fill = 30;
@@ -23,17 +23,17 @@ $(document).ready(function() {
   av.label("S  → _ddX", {left:l_border+15, top:t_border+15});
   av.label("0:",{left:l_border-20, top:t_border-10});
   av.g.line(l_border + width, t_border + xl/2, l_border + h_fill, t_border + xl/2,
-		    {"arrow-end": "classic-wide-long"});
+            {"arrow-end": "classic-wide-long"});
   av.label("S",{left:l_border+h_fill*0.66, top:t_border-10});
   av.g.line(l_border + width/2, t_border + xl, l_border + width/2, t_border + xl + v_fill,
-                    {"arrow-end": "classic-wide-long"});
+            {"arrow-end": "classic-wide-long"});
   av.label("d",{left:l_border+width/2-20, top:t_border+xl-10});
 
   av.g.rect(l_border, t_border + v_fill + xl, width, l);
   av.label("S  → d_dX", {left:l_border+15, top:t_border+xl+v_fill-5});
   av.label("2:",{left:l_border-20, top:t_border+v_fill+xl-10});
   av.g.line(l_border + width/2, t_border +v_fill+ xl+l, l_border + width/2, t_border + xl+l +2*v_fill,
-                    {"arrow-end": "classic-wide-long"});
+            {"arrow-end": "classic-wide-long"});
   av.label("d",{left:l_border+width/2-20, top:t_border+xl+l+v_fill-10});
 
   av.g.rect(l_border, t_border+2*v_fill+xl+l, width, xxl);
@@ -43,10 +43,10 @@ $(document).ready(function() {
   av.g.rect(l_border+gap, t_border+2*v_fill+xl+l+gap, width -2*gap, xxl-2*gap);
   av.label("3:",{left:l_border-20, top:t_border+2*v_fill+xl+l-10});
   av.g.line(l_border + width/2, t_border +2*v_fill+xxl+l+xl, l_border + width/2, t_border + 3*v_fill+ xxl+l+xl,
-                    {"arrow-end": "classic-wide-long"});
+            {"arrow-end": "classic-wide-long"});
 
   av.g.line(l_border + width, t_border+3*v_fill+xxl+ xl/3, l_border + h_fill, t_border +3*v_fill+xxl+ xl/3,
-                    {"arrow-end": "classic-wide-long"});
+            {"arrow-end": "classic-wide-long"});
   av.label("a",{left:l_border+width/2-20, top:t_border+xl+l+2*v_fill+xxl-10});
 
   av.label("X",{left:l_border+h_fill*0.66, top:t_border+3*v_fill+xxl+xl/3-40});
@@ -59,7 +59,7 @@ $(document).ready(function() {
   av.label("5:",{left:l_border-20, top:t_border+3*v_fill+xl+l+xxl-10});
   av.g.polyline([[l_border+width/3, t_border+xl+l+2*xxl+3*v_fill], [l_border+width/4, t_border+xl+l+2*xxl+3*v_fill+15], [l_border+width/3, t_border+xl+l+2*xxl+3*v_fill+30], [l_border+0.6*width, t_border+xl+l+2*xxl+3*v_fill+30], [l_border+width*0.67, t_border+xl+l+2*xxl+3*v_fill+15], [l_border+width*0.58, t_border+xl+l+2*xxl+3*v_fill]],  {"arrow-end": "classic-wide-long"});
   av.g.line(l_border + width, t_border+3*v_fill+xxl+xl+l+ xl/3, l_border + h_fill, t_border +3*v_fill+xxl+xl+l+ xl/3,
-                    {"arrow-end": "classic-wide-long"});
+            {"arrow-end": "classic-wide-long"});
   av.label("a",{left:l_border+width/2-10, top:t_border+xl+l+2*xxl+3*v_fill-5});
   av.label("X",{left:l_border+h_fill*0.66, top:t_border+3*v_fill+xxl+xl+l+xl/3-40});
 

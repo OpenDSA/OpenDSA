@@ -569,12 +569,9 @@ we enter it into the table for any lookahead that is in
 
    Construct the DFA:
 
-   .. odsafig:: Images/lt13dfa1.png
-      :width: 350
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt13dfa1
+   .. inlineav:: LRparseDFA2CON dgm
+      :links: AV/VisFormalLang/Parsing/LRparseDFA2CON.css
+      :scripts: AV/VisFormalLang/Parsing/LRparseDFA2CON.js
 
    Construct the LR(1) Parse Table
 
