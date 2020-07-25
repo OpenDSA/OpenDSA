@@ -132,47 +132,45 @@ $(document).ready(function() {
   //frame 24
   grammerMatrix.modifyProduction(3,0,"$F$");
   grammerMatrix.modifyProduction(3,2,"$bA$")
+  av.umsg(Frames.addQuestion("q24"))
+  av.step();
+
+  //frame 25
   av.umsg("By reversing each production in the resulting Right Linear grammar, we will get the the Left Linear grammar for the reverse of $L^R$. So, we have the Left Linear grammar for $(L^R)^R = L$.");
   av.step();
   
-  av.umsg("Reversing $S\\rightarrow aS$ will give $S\\rightarrow Sa$");
+  //frame 26
+  av.umsg(Frames.addQuestion("q26"));
   grammerMatrix.highlight(0);
   av.step();
-   //frame 25
-  av.umsg("Reversing $S\\rightarrow aS$ will give $S\\rightarrow Sa$");
-  grammerMatrix.modifyProduction(0,2,"$Sa$")
-  av.step();
-  //frame 26
-  av.umsg("Reversing $A\\rightarrow bA$ will give $A\\rightarrow Ab$");
+  
+  //frame 27
+  av.umsg(Frames.addQuestion("q27"));
+  grammerMatrix.modifyProduction(0,2,"$Sa$");
   grammerMatrix.unhighlight(0);
   grammerMatrix.highlight(1);
   av.step();
-  //frame 27
-  av.umsg("Reversing $A\\rightarrow bA$ will give $A\\rightarrow Ab$");
-  grammerMatrix.modifyProduction(1,2,"$Ab$")
-  av.step();
+  
   //frame 28
-  av.umsg("Reversing $A\\rightarrow cS$ will give $A\\rightarrow Sc$");
+  av.umsg(Frames.addQuestion("q28"));
+  grammerMatrix.modifyProduction(1,2,"$Ab$")
   grammerMatrix.unhighlight(1);
   grammerMatrix.highlight(2);
   av.step();
+  
   //frame 29
-  av.umsg("Reversing $A\\rightarrow cS$ will give $S\\rightarrow Sc$");
+  av.umsg(Frames.addQuestion("q29"));
   grammerMatrix.modifyProduction(2,2,"$Sc$")
-  av.step();
-  //frame 30
-  av.umsg("Reversing $F\\rightarrow bA$ will give $F\\rightarrow Ab$");
   grammerMatrix.unhighlight(2);
   grammerMatrix.highlight(3);
   av.step();
-  //frame 31
-  av.umsg("Reversing $F\\rightarrow bA$ will give $F\\rightarrow Ab$");
+  //frame 30
+  av.umsg(Frames.addQuestion("q30"));
   grammerMatrix.modifyProduction(3,2,"$Ab$")
   av.step();
-  //frame 32
-  av.umsg("The resulting Grammar is the Left Linear Grammar for the original Right Linear Grammar.")
+  //frame 31
+  av.umsg("Exactly. The resulting Grammar is the Left Linear Grammar for the original Right Linear Grammar.")
   grammerMatrix.unhighlight(3);
   GToFAConverter.grammerMatrix.show();
   av.recorded();
-
 });
