@@ -8,7 +8,7 @@ import os
 import re
 import json
 import xml.dom.minidom as minidom
-from collections import Iterable
+from collections.abc import Iterable
 from pprint import pprint
 from xml.etree.ElementTree import ElementTree, SubElement, Element
 from bs4 import BeautifulSoup, element
@@ -85,10 +85,10 @@ def update_mod_html(file_path, data, prefix, standalone_modules):
 
   ignore_mods = ['index', 'Gradebook', 'search', 'RegisterBook']
 
-  link_pattern = re.compile('<a.+href="(?P<href>.*).html">(?P<text>.*)</a>')
-  title_pattern = re.compile('<title>(?P<title>.*)</title>')
-  h2_pattern = re.compile('<span>(?P<header>.*)</span>')
-  header_pattern = re.compile('<h\d>(?P<header>.*)<a')
+  link_pattern = re.compile(r'<a.+href="(?P<href>.*).html">(?P<text>.*)</a>')
+  title_pattern = re.compile(r'<title>(?P<title>.*)</title>')
+  h2_pattern = re.compile(r'<span>(?P<header>.*)</span>')
+  header_pattern = re.compile(r'<h\d>(?P<header>.*)<a')
 
   for line_num, line in enumerate(html):
     if 'id="prevmod"' in line or 'id="nextmod"' in line or 'id="prevmod1"' in line or 'id="nextmod1"' in line:
