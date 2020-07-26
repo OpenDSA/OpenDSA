@@ -20,7 +20,7 @@ import os
 import json
 import collections
 import codecs
-from collections import Iterable
+from collections.abc import Iterable
 from urllib.parse import urlparse
 
 error_count = 0

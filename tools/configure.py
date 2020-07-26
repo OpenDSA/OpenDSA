@@ -43,7 +43,7 @@ import threading
 import urllib.request, urllib.parse, urllib.error
 import simple2full
 
-from collections import Iterable
+from collections.abc import Iterable
 from argparse import ArgumentParser
 from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
