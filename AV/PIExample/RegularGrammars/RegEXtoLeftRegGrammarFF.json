@@ -1,0 +1,264 @@
+{
+	"translations": {
+  	"en": {
+      "q6": {
+      	"type": "select",
+        "description": "The process will be similar to what we covered in converting RegEx to Right Regular Grammar with a single difference.",
+        "question": "In RegEx to Right Regular Grammar, we processed the RegEx from",
+        "answer": "left to right",
+        "choices": [
+          "left to right", 
+          "right to left"
+        ]
+			},
+    	"q9": {
+      	"type": "select",
+        "description": "$\\textbf{Single Terminal}$: If the RegEx is simply $a$ ($a$ being any terminal)",
+        "question": "Suppse that $r = a$ is a RegEx. What is the $L(r)$",
+        "answer": [
+					"The language that has only one word $a$",
+					"$\\{a\\}$"
+        ],
+        "choices": [
+					"The language of all words with letter $a$",
+					"The language that has only one word $a$",
+					"$\\{a\\}$"
+        ]
+			},
+			"q10": {
+      	"type": "multiple",
+        "description": "$\\textbf{Single Terminal}$: If the RegEx is simply $a$ ($a$ being any terminal)",
+        "question": "Which of the following is the Left Linear Grammar for the language $\\{a\\}$",
+        "answer": "$S \\rightarrow a$",
+        "choices": [
+					"$S \\rightarrow a$",
+					"$S \\rightarrow aS \\mid a$",
+					"$S \\rightarrow A$"
+        ]
+			},
+			"q12": {
+      	"type": "select",
+        "description": "$\\textbf{Union Operation}$: If the RegEx is of the form $a + b$, where both $a$ and $b$ are terminals",
+        "question": "Suppse that $r = a + b$ is a RegEx. What is the $L(r)$",
+        "answer": [
+					"The language of two words $a$ and $b$ only",
+					"$\\{a, b\\}$"
+        ],
+        "choices": [
+					"The language of all words with letter $a$",
+					"The language of all words with letter $b$",
+					"The language of two words $a$ and $b$ only",
+					"$\\{a, b\\}$"
+        ]
+			},
+			"q13": {
+      	"type": "multiple",
+        "description": "$\\textbf{Union Operation}$: If the RegEx is of the form $a + b$, where both $a$ and $b$ are terminals",
+        "question": "Which of the following is the Left Linear Grammar for the language $\\{a, b\\}$",
+        "answer": "$S \\rightarrow a \\mid b$",
+        "choices": [
+					"$S \\rightarrow aS\\mid b$",
+					"$S \\rightarrow Sa \\mid b$",
+					"$S \\rightarrow A \\mid B$",
+					"$S \\rightarrow a \\mid b$"
+        ]
+			},
+			"q15": {
+      	"type": "select",
+        "description": "$\\textbf{Concatenation}$: If the RegEx is of the form $a \\cdot b$, where both $a$ and $b$ are terminals",
+        "question": "Suppse that $r = a \\cdot b$ is a RegEx. What is the $L(r)$",
+        "answer": [
+					"The language that has one word $ab$ only",
+					"$\\{ab\\}$"
+        ],
+        "choices": [
+					"The language of all words with letter $a$",
+					"The language of all words with letter $b$",
+					"The language that has one word $ab$ only",
+					"$\\{ab\\}$"
+        ]
+			},
+			"q16": {
+      	"type": "select",
+        "description": "$\\textbf{Concatenation}$: If the RegEx is of the form $a \\cdot b$, where both $a$ and $b$ are terminals",
+        "question": "Which of the following is the Left Linear Grammar for the language $\\{ab\\}$",
+				"answer": ["$S \\rightarrow ab$",
+					"$S \\rightarrow Ab$, $A \\rightarrow a$"],
+        "choices": [
+					"$S \\rightarrow aS\\mid bS \\mid \\lambda$",
+					"$S \\rightarrow Sa \\mid Sb \\mid \\lambda$",
+					"$S \\rightarrow AB$",
+					"$S \\rightarrow ab$",
+          "$S \\rightarrow aA$, $A \\rightarrow b$",
+          "$S \\rightarrow Ab$, $A \\rightarrow a$"
+        ]
+			},
+			"q18": {
+      	"type": "select",
+        "description": "$\\textbf{Star-Closure}$: If the RegEx is of the form $a^*$, where $a$  is a terminal and $*$  Kleene star closure operation",
+        "question": "Suppse that $r = a^*$ is a RegEx. What is the $L(r)$",
+        "answer": [
+					"The language of any word with zero or more a",
+					"$\\{a^n \\mid n\\ge 0\\}$"
+        ],
+        "choices": [
+					"The language of all words with letter $a$",
+					"The language of any word with zero or more a",
+					"The language that has one word $ab$ only",
+					"$\\{a^n \\mid n\\ge 0\\}$"
+        ]
+			},
+			"q19": {
+      	"type": "multiple",
+        "description": "$\\textbf{Star-Closure}$: If the RegEx is of the form $a^*$, where $a$  is a terminal and $*$  Kleene star closure operation",
+        "question": "Which of the following is the Left Linear Grammar for the language $\\{a^n \\mid n\\ge 0\\}$",
+				"answer": "$S \\rightarrow Sa \\mid \\lambda$",
+        "choices": [
+					"$S \\rightarrow aS\\mid \\lambda$",
+					"$S \\rightarrow Sa \\mid \\lambda$",
+					"$S \\rightarrow aS$, $S \\rightarrow a$"
+        ]
+			},
+			"q21": {
+      	"type": "select",
+        "description": "$\\textbf{Combination of Union and Star Closure}$: If the RegEx is of the form $(a + b)^*$, where both $a$ and $b$ are terminals",
+        "question": "Suppse that $r = (a + b)^*$ is a RegEx. What is the $L(r)$",
+        "answer": [
+					"The language of all words with letters $a$, and $b$",
+					"$\\{w \\mid w \\in {a,b}^*\\}$"
+        ],
+        "choices": [
+					"The language of all words with letters $a$, and $b$",
+					"The language of any word with zero or more a",
+					"The language that has one word $ab$ only",
+					"$\\{w \\mid w \\in {a,b}^*\\}$"
+        ]
+			},
+			"q22": {
+      	"type": "multiple",
+        "description": "$\\textbf{Combination of Union and Star Closure}$: If the RegEx is of the form $(a + b)^*$, where both $a$ and $b$ are terminals",
+        "question": "Which of the following is the Left Linear Grammar for the language $\\{w \\mid w \\in {a,b}^*\\}$",
+				"answer": "$S \\rightarrow Sa \\mid Sb \\mid \\lambda$",
+        "choices": [
+					"$S \\rightarrow aS \\mid bS \\mid \\lambda$",
+					"$S \\rightarrow Sa \\mid bS \\mid \\lambda$",
+					"$S \\rightarrow Sa \\mid Sb \\mid \\lambda$"
+        ]
+			},
+			"q24": {
+      	"type": "select",
+        "description": "$\\textbf{Combination of Concatenation and Star Closure}$: If the RegEx is of the form $(a\\cdot b)^*$, where both $a$ and $b$ are terminals",
+        "question": "Suppse that $r = (a\\cdot b)^*$ is a RegEx. What is the $L(r)$",
+        "answer": [
+					"The language of all words that are zero or more occurrence of $ab$",
+					"$\\{(ab)^n) \\mid n \\ge 0\\}$"
+        ],
+        "choices": [
+					"The language of all words that are zero or more occurrence of $ab$",
+					"The language of any word with zero or more a or b",
+					"The language that has one word $ab$ only",
+					"$\\{(ab)^n) \\mid n \\ge 0\\}$"
+        ]
+			},
+			"q25": {
+      	"type": "multiple",
+        "description": "$\\textbf{Combination of Concatenation and Star Closure}$: If the RegEx is of the form $(a\\cdot b)^*$, where both $a$ and $b$ are terminals",
+        "question": "Which of the following is the Right Linear Grammar for the language $\\{(ab)^n) \\mid n \\ge 0\\}$",
+				"answer": "$S \\rightarrow Ab \\mid \\lambda$, $A \\rightarrow Sa$",
+        "choices": [
+					"$S \\rightarrow aA \\mid \\lambda$, $A \\rightarrow bS$",
+					"$S \\rightarrow aA \\mid \\lambda$, $A \\rightarrow Sb$",
+          "$S \\rightarrow Ab \\mid \\lambda$, $A \\rightarrow Sa$",
+					"$S \\rightarrow Aa \\mid \\lambda$, $A \\rightarrow bS$"
+        ]
+			},
+			"q27": {
+      	"type": "multiple",
+        "description": "Let us see an example. We need to convert $r = (a+b)^*aa(a+b)^*$.",
+        "question": "What is the $L(r)$?",
+				"answer": "$L(G)$ is any string that has $aa$.",
+        "choices": [
+					"$L(G)$ is any string that has $aa$.",
+					"$L(G)$ is any string that has $a$ and $b$.",
+					"$L(G)$ is any string that has enev number of $a$s."
+        ]
+			},
+			"q28": {
+      	"type": "multiple",
+        "description": "To convert it to a Left Linear Grammar, we start with $(a+b)^*$.",
+        "question": "Whcih $(a+b)^*$ we should start with?",
+				"answer": "$(a+b)^*$ at the end of the expression",
+        "choices": [
+          "$(a+b)^*$ at the end of the expression",
+          "$(a+b)^*$ at the begining of the expression"
+        ]
+			},
+			"q29": {
+      	"type": "multiple",
+        "description": "To convert it to a Left Linear Grammar, we start with $(a+b)^*$.",
+        "question": "Based on the $\\textbf{Combination of Union and Star Closure}$, what is Right Regular Grammar for $(a+b)^*$?",
+				"answer": "$S \\rightarrow Sa \\mid Sb \\mid \\lambda$",
+        "choices": [
+					"$S \\rightarrow aS \\mid bS \\mid \\lambda$",
+					"$S \\rightarrow Sa \\mid Sb \\mid \\lambda$",
+					"$S \\rightarrow aS \\mid Sb \\mid \\lambda$",
+					"$S \\rightarrow Sa \\mid bS \\mid \\lambda$"
+        ]
+			},
+			"q30": {
+      	"type": "multiple",
+        "description": "We need to convert $r = (a+b)^*aa(a+b)^*$.",
+        "question": "Once the $(a+b)^*$ at the end is finished, which part should be generated?.",
+				"answer": "Since the part $(a+b)^*$ is preceeded by $aa$, once the last $(a+b)^*$ is finished, we need to generate the $aa$ part",
+        "choices": [
+					"Since the part $(a+b)^*$ is preceeded by $aa$, once the last $(a+b)^*$ is finished, we need to generate the $aa$ part",
+					"Since the part $(a+b)^*$ can be zero or more combination of $a$ and $b$, we shpuld generate $\\lambda$"
+        ]
+			},
+			"q31": {
+      	"type": "multiple",
+        "description": "We need to convert $r = (a+b)^*aa(a+b)^*$.",
+        "question": "What should we do to the higlighted production to generate the $aa$ part?",
+				"answer": "We should replace $\\lambda$ with a new variable that will represent the $aa$ part",
+        "choices": [
+					"We should replace $\\lambda$ with a new variable, say A, that will represent the $aa$ part",
+					"We should leave the production as it is."
+        ]
+			},
+			"q33": {
+      	"type": "select",
+        "description": "We need to convert $r = (a+b)^*aa(a+b)^*$.",
+        "question": "Then we need to convert the part $aa$. Based on the step $\\textbf{Concatenation}$, what is the grammar productions that are equivalent to the RegEx $aa$?",
+				"answer": [
+					"$A \\rightarrow Baa$",
+					"$A \\rightarrow Xa$, and $X\\rightarrow Ba$"],
+        "choices": [
+					"$A \\rightarrow aaB$",
+					"$A \\rightarrow aX$, and $X\\rightarrow aB$",
+					"$A \\rightarrow Baa$",
+					"$A \\rightarrow Xa$, and $X\\rightarrow Ba$"]
+			},
+			"q35": {
+      	"type": "multiple",
+        "description": "We need to convert $r = (a+b)^*aa(a+b)^*$.",
+        "question": "What does variable $B$ represent?",
+				"answer": "Since after we generate the substring $aa$, we should generate the $(a+b)^*$ at the begining of the expression. So, the variable $B$ will represents $(a+b)^*$",
+        "choices": [
+					"Since after we generate the substring $aa$, we should generate the $(a+b)^*$ at the begining of the expression. So, the variable $B$ will represents $(a+b)^*$",
+					"The variable $B$ should be $\\lambda$ and the grammar is finised",
+					"Since $S$ represents $(a+b)^*$ then $B$ should go to $S$ to generate the last $(a+b)^*$ part"
+					]
+			},
+			"q36": {
+      	"type": "multiple",
+        "description": "We need to convert $r = (a+b)^*aa(a+b)^*$.",
+        "question": "What is Left Regular Grammar for $(a+b)^*$?",
+				"answer": "$B\\rightarrow Ba\\mid Bb\\mid \\lambda$",
+				"choices": ["$B\\rightarrow aB\\mid bB\\mid \\lambda$",
+					"$B\\rightarrow Ba\\mid Bb\\mid \\lambda$",
+					"$B\\rightarrow aB\\mid bB\\mid \\a \\mid b$"
+					]
+			}
+    }
+  }
+}
