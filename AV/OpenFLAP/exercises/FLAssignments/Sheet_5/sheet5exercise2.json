@@ -1,49 +1,11 @@
-[
-    {
-        "expression": "a^mb^ic^n \\mid m > n, 0 \\leq i < 3,  n \\geq 0",
-        "description": "Construct a CFG over {a, b, c} whose language is {___}",
-        "type": "description",
-        "testCases": [
-            {
-                "": false
-            },
-            {
-                "bb": false
-            },
-            {
-                "bc": false
-            },
-            {
-                "a": true
-            },
-            {
-                "ab": true
-            },
-            {
-                "abb": true
-            },
-            {
-                "abbb": false
-            },
-            {
-                "abbc": false
-            },
-            {
-                "aabbc": true
-            },
-            {
-                "aaaaccc": true
-            },
-            {
-                "aaaaa": true
-            },
-            {
-                "aaabbccc": false
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "a^mb^ic^n \\mid m > n, 0 \\leq i < 3,  n \\geq 0",
+    "description": "Construct a CFG over {a, b, c} whose language is {___}",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

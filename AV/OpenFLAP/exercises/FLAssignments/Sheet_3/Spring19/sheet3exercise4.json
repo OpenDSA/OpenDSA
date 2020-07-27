@@ -1,77 +1,57 @@
-[
-    {
-        "expression": "",
-        "description": "Give a left-linear grammar for the following NFA",
-        "type": "description",
-        "testCases": [
-            {
-                "left-linear": true
+[{
+    "expression": "",
+    "description": "Give a left-linear grammar for the following NFA",
+    "type": "description",
+    "testCases": [{
+        "left-linear": true
+    }],
+    "graph": {
+        "nodes": [{
+                "left": 43.19999694824219,
+                "top": 22.76666259765625,
+                "i": true,
+                "f": true
             },
             {
-                "": true
+                "left": 213.1999969482422,
+                "top": 20.76666259765625,
+                "i": false,
+                "f": false
             },
             {
-                "1": false
-            },
-            {
-                "11111111111": false
-            },
-            {
-                "10": true
-            },
-            {
-                "10101010101010": true
+                "left": 131.1999969482422,
+                "top": 143.76666259765625,
+                "i": false,
+                "f": false
             }
         ],
-        "graph": {
-            "nodes": [
-                {
-                    "left": 43.19999694824219,
-                    "top": 22.76666259765625,
-                    "i": true,
-                    "f": true
-                },
-                {
-                    "left": 213.1999969482422,
-                    "top": 20.76666259765625,
-                    "i": false,
-                    "f": false
-                },
-                {
-                    "left": 131.1999969482422,
-                    "top": 143.76666259765625,
-                    "i": false,
-                    "f": false
-                }
-            ],
-            "edges": [
-                {
-                    "start": 0,
-                    "end": 1,
-                    "weight": "1"
-                },
-                {
-                    "start": 0,
-                    "end": 2,
-                    "weight": "&lambda;"
-                },
-                {
-                    "start": 1,
-                    "end": 0,
-                    "weight": "0"
-                },
-                {
-                    "start": 1,
-                    "end": 2,
-                    "weight": "0"
-                },
-                {
-                    "start": 2,
-                    "end": 2,
-                    "weight": "1"
-                }
-            ],
-            "shorthand": false
-        }
-    }
-]
+        "edges": [{
+                "start": 0,
+                "end": 1,
+                "weight": "1"
+            },
+            {
+                "start": 0,
+                "end": 2,
+                "weight": "&lambda;"
+            },
+            {
+                "start": 1,
+                "end": 0,
+                "weight": "0"
+            },
+            {
+                "start": 1,
+                "end": 2,
+                "weight": "0"
+            },
+            {
+                "start": 2,
+                "end": 2,
+                "weight": "1"
+            }
+        ],
+        "shorthand": false
+    },
+    "solution": ""
+}]

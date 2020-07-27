@@ -1,5 +1,6 @@
 const solution = {
     0 : {
+        type: "number",
         equations : [],
         variables : {
             '':"",
@@ -8,6 +9,7 @@ const solution = {
         unit: "N m",
     },
     1 : {
+        type: "number",
         equations : [],
         variables : {
             '':"",
@@ -16,6 +18,7 @@ const solution = {
         unit: "MPa",
     },
     2 : {
+        type: "number",
         equations : [],
         variables : {
             '':"",

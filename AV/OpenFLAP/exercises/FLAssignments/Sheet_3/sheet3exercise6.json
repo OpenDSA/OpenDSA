@@ -1,43 +1,13 @@
-[
-    {
-        "expression": "",
-        "description": "Find a regular grammar for the language over {a, b}, where the number of a's in any string is divisible by 3 .",
-        "type": "description",
-        "testCases": [
-            {
-                "regular-grammar": true
-            },
-            {
-                "": true
-            },
-            {
-                "aaa": true
-            },
-            {
-                "bbbbb": true
-            },
-            {
-                "bababa": true
-            },
-            {
-                "abbbbabbbbabb": true
-            },
-            {
-                "aabab": true
-            },
-            {
-                "bbabbabbbbabbababba": true
-            },
-            {
-                "ababbaaaaaaa": true
-            },
-            {
-                "bbbbbbbbbb": true
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "",
+    "description": "Find a regular grammar for the language over {a, b}, where the number of a's in any string is divisible by 3 .",
+    "type": "description",
+    "testCases": [{
+        "regular-grammar": true
+    }],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

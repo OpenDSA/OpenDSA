@@ -1,25 +1,11 @@
-[
-    {
-        "expression": "",
-        "description": "Give a DFA that accepts the language over Σ ={a} of any even number of a’s.",
-        "type": "description",
-        "testCases": [
-            {
-                "": true
-            },
-            {
-                "a": false
-            },
-            {
-                "aa": true
-            },
-            {
-                "aaa": false
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "",
+    "description": "Give a DFA that accepts the language over Σ ={a} of any even number of a’s.",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

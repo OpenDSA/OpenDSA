@@ -54,7 +54,7 @@
             long red brass shaft [ 
            	  E= 
               <span class="param" id="param4" 
-              data-value="115e9" data-unit="Pa" 
+              data-value="115" data-unit="GPa" 
               data-value-display="115"
               data-unit-display="GPa" data-domain="pressure">115 GPa
               </span>,
@@ -80,18 +80,18 @@
             away from wall (D). The diameter of the steel is
 
             <span class="param" id="param6" 
-            data-value="0.45" data-unit="mm" 
-            data-value-display="0.45"
-            data-unit-display="mm" data-domain="length"><code>d_{St} = </code>0.45 mm</span>
+            data-value="45" data-unit="mm" 
+            data-value-display="45"
+            data-unit-display="mm" data-domain="length"><code>d_{St} = </code>45 mm</span>
 
             and the diameter of the brass is 
             
             <span class="param" id="param6" 
-            data-value="0.25" data-unit="mm" 
-            data-value-display="0.25"
-            data-unit-display="mm" data-domain="length"><code>d_{Br} = </code> 0.25 mm</span>
+            data-value="25" data-unit="mm" 
+            data-value-display="25"
+            data-unit-display="mm" data-domain="length"><code>d_{Br} = </code> 25 mm</span>
 
-            .Determine:
+            . Determine:
         </p>
 
         <div class="question">
@@ -104,12 +104,13 @@
             data-unit-display="kN" data-domain="force">200 kN</span>
 
             is applied if the wall (D) <b>is not</b> present.
-            <span class="solution-box"></span>
+            <span class="solution-box" data-inputtype="number"></span>
           </p>
+
           <p class="question">
             2. The deflection of point (C) after a force of P=
 
-			<span class="param" id="param8" 
+			      <span class="param" id="param8" 
             data-value="200" data-unit="kN" 
             data-value-display="200"
             data-unit-display="kN" data-domain="force">200 kN</span>            
@@ -122,13 +123,14 @@
             data-unit-display="C" data-domain="temperature">25
             <code><var>"^{\\circ}C"</var></code></span>
 
-			if the wall (D) <b>is not</b> present.
-            <span class="solution-box"></span>
+			      if the wall (D) <b>is not</b> present.
+            <span class="solution-box" data-inputtype="number"></span>
           </p>
+
           <p class="question">
             3. The stress in section AB and in section BC after P=
 
-			<span class="param" id="param10" 
+			      <span class="param" id="param10" 
             data-value="200" data-unit="kN" 
             data-value-display="200"
             data-unit-display="kN" data-domain="force">200 kN</span>            
@@ -141,14 +143,22 @@
             data-unit-display="C" data-domain="temperature">25
             <code><var>"^{\\circ}C"</var></code></span>
 
-			if the wall (D) <b>is</b> present.
-            <span class="solution-box"></span>
+            if the wall (D) <b>is</b> present.
+            <br>
+            Magnitude of Force in Section AB (enter a positive quantity): <span class="solution-box" data-inputtype="number"></span>
+            <br>
+            Direction of Force in Section AB (click to show choices): <span class="solution-box" data-inputtype="choices"  data-choices="Compressive,Tensile"></span>
+            <br>
+            Magnitude of Force in Section BC (enter a positive quantity): <span class="solution-box" data-inputtype="number"></span>
+            <br>
+            Direction of Force in Section BC (click to show choices): <span class="solution-box" data-inputtype="choices" data-choices="Compressive,Tensile"></span>
           </p>
+
           <div>
-              <img class="figure1" src="./image3.gif"
+              <img class="figure1" src="./image3.png"
               alt="description">
-                <div class="text-overlay param" style="width: 26px; top: -193px;right: -336px; padding: 2px 7px" 
-                id="param8" data-value="0.025" data-unit="mm" data-value-display="0.025"
+                <div class="text-overlay param" style="width: 26px; top: -188px;right: -342px; padding: 2px 7px" 
+                id="param8" data-value="0.25" data-unit="mm" data-value-display="0.25"
                 data-unit-display="mm" data-domain="length">0.25<br>mm</div>
           </div>
           <br>
@@ -204,11 +214,14 @@
   <script src="MechSolver/Workspace.js"></script>
   <script src="MechSolver/WorkspaceList.js"></script>
   <script src="MechSolver/WindowManager.js"></script>
+  
+  <!-- Utility files -->
   <script src="MechSolver/Maps.js"></script>
+  <script src="MechSolver/HelpTexts.js"></script>
   <script src="MechSolver/utils.js"></script>
 
   <!-- Additional script files containing settings and solution files -->
-  <script src="DeformsProblemPROsolution.js"></script>
+  <script src="DeformsDifficultProblemPPROsolution.js"></script>
 
 </body>
 

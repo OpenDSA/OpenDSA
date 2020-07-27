@@ -1,49 +1,11 @@
-[
-    {
-        "expression": "",
-        "description": "Give a regular expression whose language is strings over {a,b} in which every string as only once occurrance of substring bbb.",
-        "type": "description",
-        "testCases": [
-            {
-                "": false
-            },
-            {
-                "bbb": true
-            },
-            {
-                "bbbb": false
-            },
-            {
-                "babbb": true
-            },
-            {
-                "bbbab": true
-            },
-            {
-                "bbabbb": true
-            },
-            {
-                "bbbabb": true
-            },
-            {
-                "ababbbbabb": false
-            },
-            {
-                "abbabbbabb": true
-            },
-            {
-                "aaaaabbbaaaaa": true
-            },
-            {
-                "babbbabb": true
-            },
-            {
-                "babbaabbbabbaab": true
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "",
+    "description": "Give a regular expression whose language is strings over {a,b} in which every string as only once occurrance of substring bbb.",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

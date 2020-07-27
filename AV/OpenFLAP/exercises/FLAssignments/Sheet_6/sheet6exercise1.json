@@ -1,40 +1,11 @@
-[
-    {
-        "expression": "L\\: =\\: \\{w \\in \\Sigma^* \\mid n_b(w) \b\\:mod\\: 3\\: =\\: 0 \\:and\\: does\\: not\\: have\\: the\\: substring\\: aab\\}",
-        "description": "Construct the DFA for the following language. ___ , Σ ={a, b}. For example, bbba, bababa, babbbbbaaandaaaa are in L.  But baababa is not.",
-        "type": "description",
-        "testCases": [
-            {
-                "bbba": true
-            },
-            {
-                "bababa": true
-            },
-            {
-                "babbbbbaa": true
-            },
-            {
-                "aaaa": true
-            },
-            {
-                "abbbabbaba": true
-            },
-            {
-                "ababababababa": true
-            },
-            {
-                "ababababa": false
-            },
-            {
-                "aababbbbba": false
-            },
-            {
-                "baababa": false
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "L\\: =\\: \\{w \\in \\Sigma^* \\mid n_b(w) \b\\:mod\\: 3\\: =\\: 0 \\:and\\: does\\: not\\: have\\: the\\: substring\\: aab\\}",
+    "description": "Construct the DFA for the following language. ___ , Σ ={a, b}. For example, bbba, bababa, babbbbbaaandaaaa are in L.  But baababa is not.",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

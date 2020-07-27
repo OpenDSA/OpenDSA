@@ -74,6 +74,7 @@ class Workspace
                 )(document.getElementsByTagName("rect"))
         };
         this.elements[0]["div"].setAttribute("id",this.name+"box");
+        // "Select an equation from the Equation Bank, and click here to add it"
 
         // Adding the name of the workspace
         this.elements[1] = {};
@@ -93,7 +94,7 @@ class Workspace
         // Adding the close X button/text
         this.elements[2] = {
             "jsav":
-                this.globalSectionObj.label("X", 
+                this.globalSectionObj.label("&#x2702", 
                 {
                     left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]-20, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
@@ -104,40 +105,44 @@ class Workspace
                 )(document.getElementsByClassName("jsavlabel")),
         };
         this.elements[2]["div"].setAttribute("id",this.name+"close");
+        this.elements[2]["div"].setAttribute("title", "Click to remove the workspace, with all of its contents.");
         this.removebutton = document.getElementById(this.name+"close");
-        
 
         // Adding the Add, Remove, Solve Buttons to add, remove, and solve equations
         this.elements[3] = {
             "jsav":
                 this.globalSectionObj.label("Add", 
                 {
-                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 75, 
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 93, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
                 })
-                .addClass("addequation"),
+                .addClass("workspacebutton"),
             "div": (list => 
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
         };
         this.elements[3]["div"].setAttribute("id",this.name+"addeq");
+        this.elements[3]["jsav"].element[0].dataset.type = "add";
         document.getElementById(this.name+"addeq").addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation addition here.
-            console.log(this.globalEquationBank.currentSelectedEquationObject.eqobject);
+            // console.log(this.globalEquationBank.currentSelectedEquationObject.eqobject);
+            
             // this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
             // this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
             this.addNewEquation();
         });
+        this.elements[3]["jsav"].element[0]
+        .setAttribute("title", "Add selected (highlighted) equation from the palette to this workspace.");
 
         this.elements[4] = {
             "jsav":
                 this.globalSectionObj.label("Remove", 
                 {
-                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 41, 
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 45, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
                 })
-                .addClass("delequation"),
+                .addClass("workspacebutton"),
             "div": (list => 
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
@@ -147,21 +152,23 @@ class Workspace
         //     e.stopPropagation();
         //     // Add function call to equation deletion here.
         // });
+        this.elements[4]["jsav"].element[0].dataset.type = "remove";
         this.elements[4]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation deletion here.
             this.globalSectionObj.logEvent({type: "Deleting equation"});
             this.deleteEquations();
         });
+        this.elements[4]["jsav"].element[0].setAttribute("title", "Remove selected (ticked) equations from this workspace.");
 
         this.elements[5] = {
             "jsav":
                 this.globalSectionObj.label("Solve", 
                 {
-                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 + 26, 
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 + 36, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
                 })
-                .addClass("solveequation"),
+                .addClass("workspacebutton"),
             "div": (list => 
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
@@ -171,12 +178,35 @@ class Workspace
         //     e.stopPropagation();
         //    // Add function call to equation set solving and result propagation here.
         // });
+        this.elements[5]["jsav"].element[0].dataset.type = "solve";
         this.elements[5]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
            // Add function call to equation set solving and result propagation here.
            this.solveEquations();
            this.globalSectionObj.logEvent({type: "Solution"});
         });
+        this.elements[5]["jsav"].element[0].setAttribute("title", "Click to solve the system of equations.");
+
+        // Adding the Help button/text
+        this.elements[6] = {
+            "jsav":
+                this.globalSectionObj.label("&#xFFFD", 
+                {
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]-42, 
+                    top: this.DIMENSIONS["POSITION_Y"]-15
+                })
+                .addClass("close_x"),
+            "div": (list => 
+                list[list.length-1]
+                )(document.getElementsByClassName("jsavlabel")),
+        };
+        this.elements[6]["div"].setAttribute("id",this.name+"help");
+        this.elements[6]["div"].setAttribute("title", "Click to get help.");
+        
+        this.elements[6].jsav.element[0].addEventListener("click", e=> {
+            e.stopPropagation();
+            Window.showHelp("workspace");
+        })
     }
     destroyBox()
     {
@@ -198,6 +228,7 @@ class Workspace
         this.elements[3]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
         this.elements[4]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
         this.elements[5]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
+        this.elements[6]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
     }
     selectWorkspaceColor()
     {
@@ -269,11 +300,6 @@ class Workspace
             this.globalSectionObj,
             this.globalPointerReference
         )
-        // If the equation already exists or was brought in once, preemptively
-        // add a subscript to this equation.
-        // This can be made more complex to update the subscripts for all of them
-        if(lastHashMapID > 1) newActiveEquation.setSubscript(null, String(lastHashMapID), newActiveEquation);
-        
         // console.log(this.DIMENSIONS.ELEMENTS["POSITION_Y"]);
         this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
         newActiveEquation.equationObjectReference.height+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
@@ -281,6 +307,23 @@ class Workspace
         // Handling the internal initial bookkeeping
         this.LIST_OF_EQUATIONS_IN_WORKSPACE[this.equationCounter] = newActiveEquation;
         //        |_>  To be elaborated for additional operations.
+        
+        // If the equation already exists or was brought in once, preemptively
+        // add a subscript to this equation.
+        // This can be made more complex to update the subscripts for all of them
+        if(lastHashMapID > 1)
+        {
+            newActiveEquation.setSubscript(null, String(lastHashMapID), newActiveEquation);
+            // TODO: To replace this part with the appropriate calls to each variable's
+            // changeVarName method that will change their parentSymbolTemplate, no the TemplateZero,
+            // so that any subsequent calls to setSubscript will be able to reset to the subscripted
+            // variable names as templates in grayed out boxes as well as in associations (where the
+            // original template is available as this.varDisplayTemplate).
+            for(var vIndex in newActiveEquation.variables)
+            {
+                newActiveEquation.variables[vIndex].changeVarName("", String(lastHashMapID));
+            }
+        }
         
         // TODO: This needs to be included into deletion of equations, where this also gets updated
         // To possibly reset the counter to 0 if required.
@@ -305,14 +348,42 @@ class Workspace
                 }
             ];
         }
+
+        // Add the event handler for deleting equations in here.
+        newActiveEquation.visualComponents["delete"].element[0].addEventListener("click", e => {
+            e.stopPropagation();
+            
+            this.LIST_OF_EQUATIONS_IN_WORKSPACE[e.target.dataset.id].selected = true;
+            
+            var tempListofOtherSelectedEquations = {};
+            for(var eq in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+            {
+                if(!this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].selected) continue;
+                // Otherwise, unselect it temporarily and add it a list.
+                else {
+                    if(eq == e.target.dataset.id) continue;
+                    else {
+                        this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].selected = false;
+                        tempListofOtherSelectedEquations[eq] = null;
+                    }
+                }
+            }
+            this.deleteEquations();
+
+            // Reset the list of equations to normalcy (those that were selected are returned to normal)
+            for(var eqindex in tempListofOtherSelectedEquations)
+                this.LIST_OF_EQUATIONS_IN_WORKSPACE[eqindex].selected = true;
+        });
+        
         // console.log(newActiveEquation);
         this.lastEquation = newActiveEquation;
         Window.windowManager.shiftDown(this.lastEquation, this.id);
+        Window.clearGlobalPointerReference();
         //console.log(this.equationHashMap);
         // console.log(this.DIMENSIONS);
     }
-    // OldSolveEquations()
-    // {
+    OldSolveEquations()
+    {
     //     // Step 1: See which equations are selected
     //     var equationSet = [];
     //     var equationObjectSet = [];
@@ -394,7 +465,7 @@ class Workspace
     //             currentEqn.selected = false;
     //         }
     //     }
-    // }
+    }
 
     deleteEquations()
     {
@@ -410,6 +481,7 @@ class Workspace
             }
         }
         Window.windowManager.shiftUp(this.id);
+        Window.clearGlobalPointerReference();
     }
 
     solveEquations()
@@ -460,7 +532,9 @@ class Workspace
                 There was likely a problem with the units of the values. Perhaps an unrecognized
                 unit was used, or the unit of a quantity could not be discerned. Please review your work and
                 try again.`, 
-            {width: 200, closeText: "OK"});
+            {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
+                e.stopPropagation();
+            });
             return;
         }
         // console.log(variableSet);
@@ -500,7 +574,9 @@ class Workspace
                 which by default are treated as unknowns.<br>Please also check that the remaining equation boxes are filled
                 with values.<br>Finally, please make sure to check all the boxes for the equations that are to be
                 included in the system to be solved.<br>`, 
-            {width: 200, closeText: "OK"});
+            {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
+                e.stopPropagation()
+            });
             return;
         }
         for(var i=0; i<listOfSolutions.length; i++)
@@ -554,6 +630,7 @@ class Workspace
             {
                 // currentEqn.visualComponents.tickmark.addClass("tickunselected");
                 // currentEqn.visualComponents.tickmark.removeClass("tickselected");
+                currentEqn.visualComponents["tickmark"].element[0].dataset.selected="unselected";
                 currentEqn.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
                 currentEqn.selected = false;
             }

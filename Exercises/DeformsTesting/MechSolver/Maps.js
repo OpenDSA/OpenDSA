@@ -178,7 +178,7 @@ Window.UNIT_DB = {
         "percentstrain-1": {'unit':'percentstrain^-1', 'unitDisp':'/%S'},
     },
     'dimensionless': {
-        'dimensionless': {'unit':'dless', 'unitDisp':''}
+        'dimensionless': {'unit':'', 'unitDisp':''}
     }
     // '': {
     //     "": {'unit':'', 'unitDisp':''},
@@ -281,8 +281,8 @@ Window.defaultDomains = {
         'imperial': 'strain-1'
     },
     'dimensionless': {
-        'SI': 'dless',
-        'imperial': 'dless'
+        'SI': '',
+        'imperial': ''
     }
     // '': {
     //     'SI': '',

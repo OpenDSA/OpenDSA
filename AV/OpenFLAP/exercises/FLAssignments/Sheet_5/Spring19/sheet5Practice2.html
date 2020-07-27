@@ -2,110 +2,118 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
   <title>Grammar Exercise</title>
   <script>
-    getExerciseLocation = function(){ return "./sheet5exercise2.json"};
+    getExerciseLocation = function () {
+      return "./sheet5exercise2.json"
+    };
   </script>
-	<link rel="stylesheet" href="../../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-	<link rel="stylesheet" href="../../../../../../lib/odsaAV-min.css" type="text/css" />
-	<link rel="stylesheet" href="../../../../../../lib/odsaStyle-min.css" type="text/css" />
-	<link rel="stylesheet" href="../../../../css/customPrompt.css" type="text/css" />
-	<link rel="stylesheet" href="../../../../css/FA.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../css/grammar.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
-	<link rel="stylesheet" href="../../../../css/parsing.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+  <link rel="stylesheet" href="../../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title"
+    charset="utf-8" />
+  <link rel="stylesheet" href="../../../../../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/customPrompt.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/FA.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/grammar.css" type="text/css" media="screen" title="no title"
+    charset="utf-8" />
+  <link rel="stylesheet" href="../../../../css/parsing.css" type="text/css" media="screen" title="no title"
+    charset="utf-8" />
   <link rel="stylesheet" href="../../../../css/help.css" type="text/css" />
   <link rel="stylesheet" href="../../../../css/grammarEditor.css" type="text/css" />
   <style>
-    		#graph {
-    			margin-top: 16px;
-    			margin-bottom: 16px;
-    			width: 45%;
-    			height: 440px;
-    			
-    			outline: 1px black solid;
-    			border: 10px transparent solid;
-          display: inline-block;
-        }
+    #graph {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      width: 45%;
+      height: 440px;
 
-        #av {
-          margin-top: 16px;
-    			margin-bottom: 16px;
-    			width: 45%;
-    			height: 440px;
-    			display: inline-block;
-        }
-        .hide {
-    			display: none;
-    		}
-		</style>
+      outline: 1px black solid;
+      border: 10px transparent solid;
+      display: inline-block;
+    }
+
+    #av {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      width: 45%;
+      height: 440px;
+      display: inline-block;
+    }
+
+    .hide {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- We now need to add some buttons related to grading the answer, and showing the results. These buttons taken from 
+  <!-- We now need to add some buttons related to grading the answer, and showing the results. These buttons taken from 
         FATester and the functionality of them are located on the ExerciseController JS file-->
-        <div id="container">
-                <h1 id="grammarexercise">Grammar Exercise</h1>
-                <button id="helpbutton"><img src="./help.png"/></button>
-                <div id="help" title="Help" style="display:none">
-                <div id="helpInfo">
-                    Help:
-                    To delete, click on "Delete" and click on the row you want to delete.
-                    To add, click on "Add Row" and click on any row to add a new row.
-                </div>
-                </div>
-                <h2 id="question">Write a grammar that generates the language: L(<span id="expression"></span>)</h2>
-                <h2 id="description"></h2>
-                <div id="dialogueoverlay"></div>
-                  <div id="dialoguebox">
-                       <div>
-                        <div id="dialogueboxhead"></div>
-                          <div id="dialogueboxbody"></div>
-                          <div id="dialogueboxfoot"></div>
-                    </div>
-                  </div>
-                <p align="center" class="arrayPlace"></p>
-                <button type="button" id="editbutton">Edit Grammar</button>
-                <button type="button" id="addrowbutton">Add Row</button>
-                <button type="button" id="deletebutton">Delete Row</button>
-                <button type="button" class="function" id="identifybutton">Identify Grammar</button>
+  <div id="container">
+    <h1 id="grammarexercise">Grammar Exercise</h1>
+    <button id="helpbutton"><img src="./help.png" /></button>
+    <div id="help" title="Help" style="display:none">
+      <div id="helpInfo">
+        Help:
+        To delete, click on "Delete" and click on the row you want to delete.
+        To add, click on "Add Row" and click on any row to add a new row.
+      </div>
+    </div>
+    <h2 id="question">Write a grammar that generates the language: L(<span id="expression"></span>)</h2>
+    <h2 id="description"></h2>
+    <div id="dialogueoverlay"></div>
+    <div id="dialoguebox">
+      <div>
+        <div id="dialogueboxhead"></div>
+        <div id="dialogueboxbody"></div>
+        <div id="dialogueboxfoot"></div>
+      </div>
+    </div>
+    <p align="center" class="arrayPlace"></p>
+    <button type="button" id="editbutton">Edit Grammar</button>
+    <button type="button" id="addrowbutton">Add Row</button>
+    <button type="button" id="deletebutton">Delete Row</button>
+    <button type="button" class="function" id="identifybutton">Identify Grammar</button>
     <div id="buttons" align="center">
-        <span id='mode'></span><br>
-        
-    <p id="percentage"></p>
+      <span id='mode'></span><br>
+
+      <p id="percentage"></p>
       <table id="testResults"></table>
-      
-      
+
+
       <div id="jsavcontainer">
         <a class="jsavsettings" href="#">Settings</a>
         <p align="center" class="jsavexercisecontrols"></p>
         <p class="jsavscore"></p>
         <p class="jsavoutput jsavline"></p>
-        
-    </div>
-    <div id="graph" class="jsavcanvas"></div>
-    <div id="files">
-      <input id="savefile" type="button" value="Save">
-      <input id="loadfile" type="file">
-      <div style='display: none;'id='download'></div>
-    </div>
-  </div>
 
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-	<script src="../../../../../../lib/jquery.transit.js"></script>
-	<script src="../../../../../../lib/raphael.js"></script>
-	<script src="../../../../../../lib/dagre.min.js"></script>
-	<script src="../../../../../../lib/JSAV.js"></script>
-	<script src="../../../../../../lib/odsaUtils-min.js"></script>
-  <script src="../../../../../../lib/odsaAV-min.js"></script>
-  <script src="../../../../../../DataStructures/FLA/serializableGraph.js"></script>
-	<script src="../../../../../../lib/underscore.js"></script>
-  <script src="../../../../../../DataStructures/FLA/FA.js"></script>
-  <script src="../../../../../../DataStructures/FLA/PDA.js"></script>
-  <script src="../../../../../../DataStructures/FLA/Grading.js"></script>
-  <script src="../../../../grammarEditorPROF.js"></script>
-  <script src="../../../../../../DataStructures/FLA/PDA.js"></script>
-  <script src="../../../exerController/GrammarExerciseController.js"></script>
+      </div>
+      <div id="graph" class="jsavcanvas"></div>
+      <div id="files">
+        <input id="savefile" type="button" value="Save">
+        <input id="loadfile" type="file">
+        <div style='display: none;' id='download'></div>
+      </div>
+    </div>
+    <script src="./sheet5exercise2.js"></script>
+    <script src="../../../exerController/testCaseGenerater.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="../../../../../../lib/jquery.transit.js"></script>
+    <script src="../../../../../../lib/raphael.js"></script>
+    <script src="../../../../../../lib/dagre.min.js"></script>
+    <script src="../../../../../../lib/JSAV.js"></script>
+    <script src="../../../../../../lib/odsaUtils-min.js"></script>
+    <script src="../../../../../../lib/odsaAV-min.js"></script>
+    <script src="../../../../../../DataStructures/FLA/serializableGraph.js"></script>
+    <script src="../../../../../../lib/underscore.js"></script>
+    <script src="../../../../../../DataStructures/FLA/FA.js"></script>
+    <script src="../../../../../../DataStructures/FLA/PDA.js"></script>
+    <script src="../../../../../../DataStructures/FLA/Grading.js"></script>
+    <script src="../../../../grammarEditorPROF.js"></script>
+    <script src="../../../../../../DataStructures/FLA/PDA.js"></script>
+    <script src="../../../exerController/GrammarExerciseController.js"></script>
 </body>
+
 </html>

@@ -1,46 +1,44 @@
-[
-    {
-        "expression": "\\{wcw^R \\mid w \\in \\{a, b\\}^*\\}",
-        "description": "Construct the PDA that accepts ",
-        "type": "both",
-        "testCases": [
-            {
-                "": false
-            },
-            {
-                "c": true
-            },
-            {
-                "aaacaaa": true
-            },
-            {
-                "bbbcbbb": true
-            },
-            {
-                "abcba": true
-            },
-            {
-                "abbabbaacaabbabba": true
-            },
-            {
-                "aaaaaaa": false
-            },
-            {
-                "abbcabb": false
-            },
-            {
-                "bbaacaabb": true
-            },
-            {
-                "ababacababa": true
-            },
-            {
-                "bbbbbb": false
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
+[{
+    "expression": "\\{wcw^R \\mid w \\in \\{a, b\\}^*\\}",
+    "description": "Construct the PDA that accepts ",
+    "type": "both",
+    "testCases": [{
+            "": false
+        },
+        {
+            "c": true
+        },
+        {
+            "aaacaaa": true
+        },
+        {
+            "bbbcbbb": true
+        },
+        {
+            "abcba": true
+        },
+        {
+            "abbabbaacaabbabba": true
+        },
+        {
+            "aaaaaaa": false
+        },
+        {
+            "abbcabb": false
+        },
+        {
+            "bbaacaabb": true
+        },
+        {
+            "ababacababa": true
+        },
+        {
+            "bbbbbb": false
         }
-    }
-]
+    ],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

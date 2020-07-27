@@ -1,108 +1,67 @@
-[
-    {
-        "expression": "",
-        "description": "Give a right-linear grammar for the following NFA",
-        "type": "description",
-        "testCases": [
-            {
-                "right-linear": true
+[{
+    "expression": "",
+    "description": "Give a right-linear grammar for the following NFA",
+    "type": "description",
+    "testCases": [{
+        "right-linear": true
+    }],
+    "graph": {
+        "nodes": [{
+                "left": 7,
+                "top": 20.203125,
+                "i": true,
+                "nodeValue": "S",
+                "f": false
             },
             {
-                "": false
+                "left": 177.203125,
+                "top": 0,
+                "nodeValue": "A",
+                "i": false,
+                "f": true
             },
             {
-                "aaaa": false
+                "left": 122.203125,
+                "top": 127.203125,
+                "nodeValue": "B",
+                "i": false,
+                "f": false
             },
             {
-                "a": true
-            },
-            {
-                "bb": true
-            },
-            {
-                "baa": false
-            },
-            {
-                "bbbb": true
-            },
-            {
-                "bbbbbb": true
-            },
-            {
-                "ababa": true
-            },
-            {
-                "bbb": false
-            },
-            {
-                "abbaa": true
-            },
-            {
-                "baaaaaab":true
-            },
-            {
-                "aababa": false
+                "left": 223.203125,
+                "top": 174.203125,
+                "nodeValue": "C",
+                "i": false,
+                "f": true
             }
         ],
-        "graph": {
-            "nodes": [
-                {
-                    "left": 7,
-                    "top": 20.203125,
-                    "i": true,
-                    "nodeValue": "S",
-                    "f": false
-                },
-                {
-                    "left": 177.203125,
-                    "top": 0,
-                    "nodeValue": "A",
-                    "i": false,
-                    "f": true
-                },
-                {
-                    "left": 122.203125,
-                    "top": 127.203125,
-                    "nodeValue": "B",
-                    "i": false,
-                    "f": false
-                },
-                {
-                    "left": 223.203125,
-                    "top": 174.203125,
-                    "nodeValue": "C",
-                    "i": false,
-                    "f": true
-                }
-            ],
-            "edges": [
-                {
-                    "start": 0,
-                    "end": 1,
-                    "weight": "a"
-                },
-                {
-                    "start": 0,
-                    "end": 2,
-                    "weight": "b"
-                },
-                {
-                    "start": 1,
-                    "end": 2,
-                    "weight": "a<br>b"
-                },
-                {
-                    "start": 2,
-                    "end": 1,
-                    "weight": "a<br>b"
-                },
-                {
-                    "start": 2,
-                    "end": 3,
-                    "weight": "a<br>b"
-                }
-            ],
-            "shorthand": false
-        }
-    }
-]
+        "edges": [{
+                "start": 0,
+                "end": 1,
+                "weight": "a"
+            },
+            {
+                "start": 0,
+                "end": 2,
+                "weight": "b"
+            },
+            {
+                "start": 1,
+                "end": 2,
+                "weight": "a<br>b"
+            },
+            {
+                "start": 2,
+                "end": 1,
+                "weight": "a<br>b"
+            },
+            {
+                "start": 2,
+                "end": 3,
+                "weight": "a<br>b"
+            }
+        ],
+        "shorthand": false
+    },
+    "solution": ""
+}]

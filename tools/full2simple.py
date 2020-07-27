@@ -78,7 +78,7 @@ def decide_defaults(conf_data, ex_types):
     },
     'extr': {
       'points': {}
-    }
+    },
     'ae' : {
       'points': {},
       'threshold': {},

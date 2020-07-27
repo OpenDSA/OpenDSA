@@ -1,46 +1,11 @@
-[
-    {
-        "expression": "((aa)^+bb)^*",
-        "description": "Construct the DFA that accepts the complement of ",
-        "type": "both",
-        "testCases": [
-            {
-                "": false
-            },
-            {
-                "aabb": false
-            },
-            {
-                "bbaa": true
-            },
-            {
-                "aabbaabb": false
-            },
-            {
-                "aaaabbaabbaaaaaabb": false
-            },
-            {
-                "a": true
-            },
-            {
-                "bb": true
-            },
-            {
-                "aabbbb": true
-            },
-            {
-                "ab": true
-            },
-            {
-                "aaaaaaaaaaaaaaaaaaa": true
-            },
-            {
-                "bbbbbbbbbbbbbbbbbb": true
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "((aa)^+bb)^*",
+    "description": "Construct the DFA that accepts the complement of ",
+    "type": "both",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

@@ -1,97 +1,108 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>FA Tester</title>
-    <script>
-      getExerciseLocation = function(){ return "./sheet2exercise4.json"};
-    </script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="FAEditor">
-    <meta name="author" content="Bill Yu">
-    <link rel="stylesheet" href="../../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-    <link rel="stylesheet" href="../../../../../../lib/odsaAV-min.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../../../lib/odsaStyle-min.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../css/customPrompt.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../css/FA.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../css/tester.css" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head>
+  <title>FA Tester</title>
+  <script>
+    getExerciseLocation = function () {
+      return "./sheet2exercise4.json"
+    };
+  </script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FAEditor">
+  <meta name="author" content="Bill Yu">
+  <link rel="stylesheet" href="../../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title"
+    charset="utf-8" />
+  <link rel="stylesheet" href="../../../../../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/customPrompt.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/FA.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/tester.css" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- add icon_button library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- PDF save link -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js" integrity="sha384-CchuzHs077vGtfhGYl9Qtc7Vx64rXBXdIAZIPbItbNyWIRTdG0oYAqki3Ry13Yzu" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script> -->
-    <style>
+  <!-- add icon_button library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- PDF save link -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"
+    integrity="sha384-CchuzHs077vGtfhGYl9Qtc7Vx64rXBXdIAZIPbItbNyWIRTdG0oYAqki3Ry13Yzu" crossorigin="anonymous">
+  </script>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script> -->
+  <style>
     .jsavhorizontalarray .jsavnode {
-    min-width: 200px !important;
-    max-width: 400px !important;
-}</style>
-  </head>
-  <body>
-    <div id="container">
-      <h1 id="tester">Finite Automaton Exercise</h1>
-      <h2 id="question">Give an NFA or DFA that accepts the language: L(<span id="expression"></span>)</h2>
-      <h2 id="description"></h2>
-      <div id="dialogueoverlay"></div>
+      min-width: 200px !important;
+      max-width: 400px !important;
+    }
+  </style>
+</head>
 
-      <div id="dialoguebox">
-        <div>
-          <div id="dialogueboxhead"></div>
-          <div id="dialogueboxbody"></div>
-          <div id="dialogueboxfoot"></div>
-        </div>
+<body>
+  <div id="container">
+    <h1 id="tester">Finite Automaton Exercise</h1>
+    <h2 id="question">Give an NFA or DFA that accepts the language: L(<span id="expression"></span>)</h2>
+    <h2 id="description"></h2>
+    <div id="dialogueoverlay"></div>
+
+    <div id="dialoguebox">
+      <div>
+        <div id="dialogueboxhead"></div>
+        <div id="dialogueboxbody"></div>
+        <div id="dialogueboxfoot"></div>
       </div>
-      <p align="center" class="arrayPlace"></p>      
-      <p id="percentage"></p>
-      <table id="testResults"></table>
-      <div id='download'></div>
-      <div id="rmenu"></div>
-      <div id="jsavcontainer">
-        <a class="jsavsettings" href="#">Settings</a>
-        <p align="center" class="jsavexercisecontrols"></p>
-        <div style="display:inline;">
-          <div style="float: right;" id="menu_options">
-            <button id="editButton" class="icon_btn"><i class="fa fa-mouse-pointer"></i></button>
-            <button id="nodeButton" class="icon_btn"><i class="fa fa-dot-circle-o"></i></button>
-            <button id="edgeButton" class="icon_btn"><i class="fa fa-long-arrow-right"></i></button>
-            <button id="deleteButton" class="icon_btn"><i class="fa fa-close"></i></button>
-            <button id="undoButton" class="icon_btn"><i class="fa fa-undo"></i></button>
-            <button id="redoButton" class="icon_btn"><i class="fa fa-undo fa-rotate-180 fa-flip-horizontal"></i></button>
-          </div>
-        </div>
-        <p class="jsavscore"></p>
-        <p class="jsavoutput jsavline"></p>
-      </div>
-      
     </div>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-			<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-			<script src="../../../../../../lib/jquery.transit.js"></script>
-			<script src="../../../../../../lib/raphael.js"></script>
-			<script src="../../../../../../lib/dagre.min.js"></script>
-			<script src="../../../../../../lib/JSAV.js"></script>
-			<script src="../../../../../../lib/odsaUtils-min.js"></script>
-			<script src="../../../../../../lib/odsaAV-min.js"></script>
-			<script src="../../../../../../lib/underscore.js"></script>
-      <script src="../../../../../../lib/html2canvas.js"></script>
-      <script src="../../../../../../DataStructures/FLA/serializableGraph.js"></script>
-			<script src="../../../../../../DataStructures/FLA/Commands.js"></script>
-			<script src="../../../../../../DataStructures/FLA/FA.js"></script>
-			<script src="../../../../../../DataStructures/FLA/TuringMachine.js"></script>
-			<script src="../../../../../../DataStructures/FLA/Commands.js"></script>
-			<script src="../../../../CustomPrompt.js"></script>
-      <script src="../../../exerController/ExerciseController.js"></script>
-      <script src="../../../../../../DataStructures/FLA/Grading.js"></script>
+    <p align="center" class="arrayPlace"></p>
+    <p id="percentage"></p>
+    <table id="testResults"></table>
+    <div id='download'></div>
+    <div id="rmenu"></div>
+    <div id="jsavcontainer">
+      <a class="jsavsettings" href="#">Settings</a>
+      <p align="center" class="jsavexercisecontrols"></p>
+      <div style="display:inline;">
+        <div style="float: right;" id="menu_options">
+          <button id="editButton" class="icon_btn"><i class="fa fa-mouse-pointer"></i></button>
+          <button id="nodeButton" class="icon_btn"><i class="fa fa-dot-circle-o"></i></button>
+          <button id="edgeButton" class="icon_btn"><i class="fa fa-long-arrow-right"></i></button>
+          <button id="deleteButton" class="icon_btn"><i class="fa fa-close"></i></button>
+          <button id="undoButton" class="icon_btn"><i class="fa fa-undo"></i></button>
+          <button id="redoButton" class="icon_btn"><i class="fa fa-undo fa-rotate-180 fa-flip-horizontal"></i></button>
+        </div>
+      </div>
+      <p class="jsavscore"></p>
+      <p class="jsavoutput jsavline"></p>
+    </div>
 
-			<script src="../../../../FAPROF.js"></script>
-			<script type="text/javascript"></script>
-      <!--              <script src="./FAEditor.js"></script>-->
-  </body>
+    <script src="./sheet2exercise4.js"></script>
+    <script src="../../../exerController/testCaseGenerater.js"></script>
+  </div>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  <script src="../../../../../../lib/jquery.transit.js"></script>
+  <script src="../../../../../../lib/raphael.js"></script>
+  <script src="../../../../../../lib/dagre.min.js"></script>
+  <script src="../../../../../../lib/JSAV.js"></script>
+  <script src="../../../../../../lib/odsaUtils-min.js"></script>
+  <script src="../../../../../../lib/odsaAV-min.js"></script>
+  <script src="../../../../../../lib/underscore.js"></script>
+  <script src="../../../../../../lib/html2canvas.js"></script>
+  <script src="../../../../../../DataStructures/FLA/serializableGraph.js"></script>
+  <script src="../../../../../../DataStructures/FLA/Commands.js"></script>
+  <script src="../../../../../../DataStructures/FLA/FA.js"></script>
+  <script src="../../../../../../DataStructures/FLA/TuringMachine.js"></script>
+  <script src="../../../../../../DataStructures/FLA/Commands.js"></script>
+  <script src="../../../../CustomPrompt.js"></script>
+  <script src="../../../exerController/ExerciseController.js"></script>
+  <script src="../../../../../../DataStructures/FLA/Grading.js"></script>
+
+  <script src="../../../../FAPROF.js"></script>
+  <script type="text/javascript"></script>
+  <!--              <script src="./FAEditor.js"></script>-->
+</body>
+
 </html>

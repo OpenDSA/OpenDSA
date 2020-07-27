@@ -4,6 +4,7 @@
   var completeFIB = {
     genAnswer: function(node, relation) {
       var num;
+      var maxnode = 11;
       switch (relation) {
       case 0: // parent
         if (node === 0) {
@@ -12,13 +13,13 @@
         return Math.floor((node - 1) / 2);
       case 1: // left child
         num = (node * 2) + 1;
-        if (num > 10) {
+        if (num > maxnode) {
           return "NONE";
         }
         return num;
       case 2: // right child
         num = (node * 2) + 2;
-        if (num > 10) {
+        if (num > maxnode) {
           return "NONE";
         }
         return num;
@@ -29,7 +30,7 @@
         return node - 1;
       case 4: // right sibling
         num = node + 1;
-        if (((node % 2) === 0) || (num > 10)) {
+        if (((node % 2) === 0) || (num > maxnode)) {
           return "NONE";
         }
         return num;

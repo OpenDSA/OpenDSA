@@ -1,52 +1,11 @@
-[
-    {
-        "expression": "",
-        "description": "Give a regular expression whose language is strings over {a, b, c} in which the total number of b’s and c’s sums to 3.",
-        "type": "description",
-        "testCases": [
-            {
-                "": false
-            },
-            {
-                "aaaaaaaaaaaa": false
-            },
-            {
-                "bbb": true
-            },
-            {
-                "ccc": true
-            },
-            {
-                "bcb": true
-            },
-            {
-                "cbb": true
-            },
-            {
-                "ababaca": true
-            },
-            {
-                "abababc": false
-            },
-            {
-                "aaaacaaabaaaacaaaa": true
-            },
-            {
-                "acacaba": true
-            },
-            {
-                "bccaaaaaaaaaaa": true
-            },
-            {
-                "bbbb": false
-            },
-            {
-                "bcbcbcb": false
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "",
+    "description": "Give a regular expression whose language is strings over {a, b, c} in which the total number of b’s and c’s sums to 3.",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

@@ -1,49 +1,11 @@
-[
-    {
-        "expression": "",
-        "description": "Give a DFA that accepts the language over Σ ={a, b} where every string does not have 3 consecutive a's.",
-        "type": "description",
-        "testCases": [
-            {
-                "": true
-            },
-            {
-                "bbbbbb": true
-            },
-            {
-                "aaa": false
-            },
-            {
-                "aa": true
-            },
-            {
-                "bbabb": true
-            },
-            {
-                "babbabbb": true
-            },
-            {
-                "bbbbaabbbaabbaa": true
-            },
-            {
-                "bbbbabababbbbbb": true
-            },
-            {
-                "baabaaa": false
-            },
-            {
-                "aabbabababbababbababa": true
-            },
-            {
-                "aabbabababbababbabaa": true
-            },
-            {
-                "aaabababbababbabaa": false
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "",
+    "description": "Give a DFA that accepts the language over Σ ={a, b} where every string does not have 3 consecutive a's.",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

@@ -160,6 +160,12 @@ pda.toggleLambda = function() {
   this.jsav.recorded();
 };*/
 
+var first_stack = 1;
+var endSymbol = "";
+pda.resetCount = function() {
+   first_stack = 1;
+   endSymbol = "";
+}
 pda.traverse = function(currentStates) {
   // currentStates is an array of configurations
   var nextStates = [];
@@ -169,6 +175,7 @@ pda.traverse = function(currentStates) {
         curStack = currentStates[i].stack,
         curIndex = currentStates[i].curIndex,
         s = currentStates[i].inputString,
+
         letter = s[curIndex];
     for (var next = successors.next(); next; next = successors.next()) {
       if(nextStates.length > 50){
@@ -192,7 +199,34 @@ pda.traverse = function(currentStates) {
               break;
             }
           }
-          if (t[1] === l.join('')) {
+          if(first_stack == 1 ){
+            if (t[1] === l.join('') || t[1] === "z") {
+              var nextConfig = new Configuration(this.configurations, next, curStack, s, nextIndex);
+              if (t[2] !== emptystring){
+                for (var h = t[2].length - 1; h >= 0; h--) {
+                  if(t[2].charAt(t[2].length - 1) != "" ){
+                    endSymbol = t[2].charAt(t[2].length - 1)
+                  }
+                  nextConfig.stack.push(t[2].charAt(h));
+                }
+              }
+              next.addClass('current');
+              nextStates.push(nextConfig);
+             } 
+          }
+          else if(first_stack == s.length + 1 && endSymbol == ""){
+            if (l.join('') === "Z" || l.join('') === "z") {
+              var nextConfig = new Configuration(this.configurations, next, curStack, s, nextIndex);
+              if (t[2] !== emptystring){
+                for (var h = t[2].length - 1; h >= 0; h--) {
+                  nextConfig.stack.push(t[2].charAt(h));
+                }
+              }
+              next.addClass('current');
+              nextStates.push(nextConfig);
+             } 
+          }
+          else if (t[1] === l.join('')) {
             var nextConfig = new Configuration(this.configurations, next, curStack, s, nextIndex);
             if (t[2] !== emptystring){
               for (var h = t[2].length - 1; h >= 0; h--) {
@@ -217,8 +251,10 @@ pda.traverse = function(currentStates) {
           continue;
         }
       }
+     
     }
   }
+  first_stack = first_stack + 1;
   nextStates = _.each(nextStates, function(x) {return x.toString();});
   nextStates = this.addLambdaClosure(nextStates);
   return nextStates;
@@ -249,6 +285,13 @@ pda.traverseOneInput = function(inputString){
   var cur;
   counter = 0;
   var stringAccepted = false;
+
+
+
+
+
+
+  
   while (true) {
     //this.jsav.step();
     counter++;
@@ -1803,7 +1846,7 @@ Stackproto.formStack = function() {
         configArray = graph.jsav.ds.array(this.configurations);
       //this.configViews.push(configArray.element);
     }
-  
+    graph.resetCount();
     return !stringAccepted;
   }
 

@@ -1,52 +1,11 @@
-[
-    {
-        "expression": "",
-        "description": "Give a regular expression whose language is strings over {a, b} in which there is no occurrence of the substring aa.",
-        "type": "description",
-        "testCases": [
-            {
-                "": true
-            },
-            {
-                "aaaaaaaaaaaa": false
-            },
-            {
-                "bbb": true
-            },
-            {
-                "ababababb": true
-            },
-            {
-                "bbbb": true
-            },
-            {
-                "abb": true
-            },
-            {
-                "abababba": true
-            },
-            {
-                "abbbba": true
-            },
-            {
-                "babbbba": true
-            },
-            {
-                "baaaa": false
-            },
-            {
-                "bbbba": true
-            },
-            {
-                "abbababbaba": true
-            },
-            {
-                "abbbab": true
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "",
+    "description": "Give a regular expression whose language is strings over {a, b} in which there is no occurrence of the substring aa.",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

@@ -1,46 +1,11 @@
-[
-    {
-        "expression": "\\{w \\mid w \\in \\{a, b\\}^* \\;\\;and\\;\\; w\\;\\; has\\;\\; twice\\;\\; as\\;\\; many\\;\\; n_a(w)\\;\\;as\\;\\; n_b(w)",
-        "description": "Construct the PDA that accepts ",
-        "type": "both",
-        "testCases": [
-            {
-                "": false
-            },
-            {
-                "aab": true
-            },
-            {
-                "aba": true
-            },
-            {
-                "baa": true
-            },
-            {
-                "aaabab": true
-            },
-            {
-                "baabbbaaaa": false
-            },
-            {
-                "bbbbaaaaaaaa": true
-            },
-            {
-                "bbbaaaaaabaa": true
-            },
-            {
-                "aaaaaa": false
-            },
-            {
-                "bbbbbbbbbb": false
-            },
-            {
-                "baabbaaaa": true
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "\\{w \\mid w \\in \\{a, b\\}^* \\;\\;and\\;\\; w\\;\\; has\\;\\; twice\\;\\; as\\;\\; many\\;\\; n_a(w)\\;\\;as\\;\\; n_b(w)",
+    "description": "Construct the PDA that accepts ",
+    "type": "both",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

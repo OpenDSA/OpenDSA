@@ -41,7 +41,7 @@ class WindowManager{
         // console.log(currWorkspace.DIMENSIONS["POSITION_Y"]);
         // console.log(currWorkspace.DIMENSIONS["HEIGHT"]);
         
-        if(currEquation != null && currEquation.positionObj["POSITION_Y"] > 
+        if(currEquation != null && currEquation.positionObj["POSITION_Y"]+currEquation.equationObjectReference.height > 
         currWorkspace.DIMENSIONS["POSITION_Y"] + currWorkspace.DIMENSIONS["HEIGHT"]) {
             
             needExpand = true;
@@ -74,15 +74,30 @@ class WindowManager{
                     currWorkspace2.elements[3]["div"].style.top = currWkspace2PosY-15+"px";
                     currWorkspace2.elements[4]["div"].style.top = currWkspace2PosY-15+"px";
                     currWorkspace2.elements[5]["div"].style.top = currWkspace2PosY-15+"px";
+                    currWorkspace2.elements[6]["div"].style.top = currWkspace2PosY-15+"px";
                     var equations = currWorkspace2.LIST_OF_EQUATIONS_IN_WORKSPACE;
 
                     //moves all equations down
                     for(const eq in equations) {
+                        // Fallback in case this messes up
                         // var amountShift = parseInt(equations[eq].visualComponents["tickmark"]["element"][0].style.top, 10) 
                         //     + currWkspaceElementHeight + currWkspaceElementHeightPad;
+                        // equations[eq].visualComponents["tickmark"]["element"][0].style.top = amountShift + "px";
+                        // equations[eq].visualComponents["text"]["element"][0].style.top = amountShift + 3 + "px";
+                        // equations[eq].visualComponents["delete"]["element"][0].style.top = amountShift + "px";
+                        // equations[eq].visualComponents["help"]["element"][0].style.top = amountShift + "px";
+                        // equations[eq].jsavequation["element"][0].style.top = amountShift + "px";
 
                         equations[eq].visualComponents["tickmark"]["element"][0].style.top = 
                             parseInt(equations[eq].visualComponents["tickmark"]["element"][0].style.top, 10) + 
+                            currWkspaceElementHeight + 
+                            currWkspaceElementHeightPad + "px";
+                        equations[eq].visualComponents["delete"]["element"][0].style.top = 
+                            parseInt(equations[eq].visualComponents["delete"]["element"][0].style.top, 10) + 
+                            currWkspaceElementHeight + 
+                            currWkspaceElementHeightPad + "px";
+                        equations[eq].visualComponents["help"]["element"][0].style.top = 
+                            parseInt(equations[eq].visualComponents["help"]["element"][0].style.top, 10) + 
                             currWkspaceElementHeight + 
                             currWkspaceElementHeightPad + "px";
                         equations[eq].visualComponents["text"]["element"][0].style.top = 
@@ -105,6 +120,9 @@ class WindowManager{
                         currSoln["element"]["visualComponent"]["element"][0].style.top = 
                             parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10)
                             + currWkspaceElementHeight + currWkspaceElementHeightPad + "px";
+                        // currSoln["element"]["deleteButton"]["element"][0].style.top = 
+                        //     parseInt(currSoln["element"]["deleteButton"]["element"][0].style.top,10)
+                        //     + currWkspaceElementHeight + currWkspaceElementHeightPad + "px";
                     }
                 }
             }
@@ -138,6 +156,13 @@ class WindowManager{
                         currWkspaceElementHeight - 
                         currWkspaceElementHeightPad;
 
+                        // Fallback: in case 158 to 176 doesn't work
+                        // equations[eq2].visualComponents["tickmark"]["element"][0].style.top = amountShift + "px";
+                        // equations[eq2].visualComponents["text"]["element"][0].style.top = amountShift + 3 + "px";
+                        // equations[eq2].visualComponents["delete"]["element"][0].style.top = amountShift + "px";
+                        // equations[eq2].visualComponents["help"]["element"][0].style.top = amountShift + "px";
+                        // equations[eq2].jsavequation["element"][0].style.top = amountShift + "px";
+
                     //shifting ONLY following equations in current workspace up
                     for(const eq2 in equations) {
                         if(parseInt(eq2) > parseInt(eq)) {
@@ -145,14 +170,25 @@ class WindowManager{
                             // currWkspaceElementHeight -
                             // currWkspaceElementHeightPad;
 
+                            // moving up non-equation elements
                             equations[eq2].visualComponents["tickmark"]["element"][0].style.top = 
                                 parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top, 10) - 
+                                currWkspaceElementHeight -
+                                currWkspaceElementHeightPad + "px";
+                            equations[eq2].visualComponents["delete"]["element"][0].style.top = 
+                                parseInt(equations[eq2].visualComponents["delete"]["element"][0].style.top, 10) - 
+                                currWkspaceElementHeight -
+                                currWkspaceElementHeightPad + "px";
+                            equations[eq2].visualComponents["help"]["element"][0].style.top = 
+                                parseInt(equations[eq2].visualComponents["help"]["element"][0].style.top, 10) - 
                                 currWkspaceElementHeight -
                                 currWkspaceElementHeightPad + "px";
                             equations[eq2].visualComponents["text"]["element"][0].style.top = 
                                 parseInt(equations[eq2].visualComponents["text"]["element"][0].style.top, 10) - 
                                 currWkspaceElementHeight -
                                 currWkspaceElementHeightPad + "px";
+                            
+                            // moving up equation elements
                             equations[eq2].jsavequation["element"][0].style.top = 
                                 parseInt(equations[eq2].jsavequation["element"][0].style.top, 10) - 
                                 currWkspaceElementHeight -
@@ -180,8 +216,11 @@ class WindowManager{
                         isLast = true;
                     }
 
+                    // clearing the texts for the equation in questions (selected for removal)
                     currEquation.jsavequation.clear();
                     currEquation.visualComponents["text"].clear();
+                    currEquation.visualComponents["delete"].clear();
+                    currEquation.visualComponents["help"].clear();
                     currEquation.visualComponents["tickmark"].clear();
                     delete currWkspace.LIST_OF_EQUATIONS_IN_WORKSPACE[eq];
 
@@ -199,7 +238,6 @@ class WindowManager{
                         }
                         // console.log(last);
                     }
-
 
                     var lastEqPos = 0;
                     if(currWkspace.lastEquation != null) {
@@ -288,7 +326,6 @@ class WindowManager{
                         currWkspaceElementHeightPad;
                         
                         console.log("deleted solution");
-
                             
                         //shifting ONLY following equations in current workspace up
                         var equations = currWkspace.LIST_OF_EQUATIONS_IN_WORKSPACE;
@@ -299,19 +336,31 @@ class WindowManager{
                                 // var amountShift = parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top, 10) - 
                                 // currWkspaceElementHeight -
                                 // currWkspaceElementHeightPad;
-                                console.log(parseInt(curSoln["element"]["visualComponent"]["element"][0].style.top, 10));
-                                console.log(parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top, 10));
+                                
+                                // DEBUG LINES
+                                // console.log(parseInt(curSoln["element"]["visualComponent"]["element"][0].style.top, 10));
+                                // console.log(parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top, 10));
 
+                                // Removing non-equation elements
                                 equations[eq2].visualComponents["tickmark"]["element"][0].style.top = 
                                     parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top, 10) - 
                                     currWkspaceElementHeight -
                                     currWkspaceElementHeightPad + "px";
-                                    console.log(parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top, 10));
-
+                                // console.log(parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top, 10));
+                                equations[eq2].visualComponents["delete"]["element"][0].style.top = 
+                                    parseInt(equations[eq2].visualComponents["delete"]["element"][0].style.top, 10) - 
+                                    currWkspaceElementHeight -
+                                    currWkspaceElementHeightPad + "px";
+                                equations[eq2].visualComponents["help"]["element"][0].style.top = 
+                                    parseInt(equations[eq2].visualComponents["help"]["element"][0].style.top, 10) - 
+                                    currWkspaceElementHeight -
+                                    currWkspaceElementHeightPad + "px";
                                 equations[eq2].visualComponents["text"]["element"][0].style.top = 
                                     parseInt(equations[eq2].visualComponents["text"]["element"][0].style.top, 10) - 
                                     currWkspaceElementHeight -
                                     currWkspaceElementHeightPad + "px";
+                                
+                                // Removing equation elements
                                 equations[eq2].jsavequation["element"][0].style.top = 
                                     parseInt(equations[eq2].jsavequation["element"][0].style.top, 10) - 
                                     currWkspaceElementHeight -
@@ -460,12 +509,16 @@ class WindowManager{
                 currWkspace.elements[3].div.style.top = parseInt(currWkspace.elements[3].div.style.top, 10) - totalShift + "px";
                 currWkspace.elements[4].div.style.top = parseInt(currWkspace.elements[4].div.style.top, 10) - totalShift + "px";
                 currWkspace.elements[5].div.style.top = parseInt(currWkspace.elements[5].div.style.top, 10) - totalShift + "px";
-
+                currWkspace.elements[6].div.style.top = parseInt(currWkspace.elements[6].div.style.top, 10) - totalShift + "px";
+                
                 var equations = currWkspace.LIST_OF_EQUATIONS_IN_WORKSPACE;
                 for(const eq in equations) {
                     var origHeight = parseInt(equations[eq].visualComponents["tickmark"]["element"][0].style.top, 10) - totalShift;
 
                     equations[eq].visualComponents["tickmark"]["element"][0].style.top = origHeight + "px";
+                    equations[eq].visualComponents["delete"]["element"][0].style.top = origHeight + "px";
+                    equations[eq].visualComponents["help"]["element"][0].style.top = origHeight + "px";
+                    
                     equations[eq].visualComponents["text"]["element"][0].style.top = origHeight + 3 + "px";
                     equations[eq].jsavequation["element"][0].style.top =  parseInt(equations[eq].jsavequation["element"][0].style.top, 10) - totalShift + "px";
                 }
@@ -480,7 +533,10 @@ class WindowManager{
 
                     currSoln["element"]["visualComponent"]["element"][0].style.top = 
                     parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) - totalShift + "px";
-
+                    
+                    // TODO: Change to help button
+                    // currSoln["element"]["deleteButton"]["element"][0].style.top = 
+                    // parseInt(currSoln["element"]["deleteButton"]["element"][0].style.top,10) - totalShift + "px";
                 }
             }
         }
@@ -512,6 +568,8 @@ class WindowManager{
                 currWorkspace2.elements[3].div.style.top = parseInt(currWorkspace2.elements[3].div.style.top, 10) - heightShift + "px";
                 currWorkspace2.elements[4].div.style.top = parseInt(currWorkspace2.elements[4].div.style.top, 10) - heightShift + "px";
                 currWorkspace2.elements[5].div.style.top = parseInt(currWorkspace2.elements[5].div.style.top, 10) - heightShift + "px";
+                currWorkspace2.elements[6].div.style.top = parseInt(currWorkspace2.elements[6].div.style.top, 10) - heightShift + "px";
+                
                 currWorkspace2.DIMENSIONS["POSITION_Y"] -= currWkspace.DIMENSIONS["HEIGHT"];
                 currWorkspace2.DIMENSIONS.ELEMENTS["POSITION_Y"] -= currWkspace.DIMENSIONS["HEIGHT"];
                 for(const eq2 in equations) {
@@ -519,6 +577,9 @@ class WindowManager{
                         heightShift;
 
                     equations[eq2].visualComponents["tickmark"]["element"][0].style.top = amountShift + "px";
+                    equations[eq2].visualComponents["delete"]["element"][0].style.top = amountShift + "px";
+                    equations[eq2].visualComponents["help"]["element"][0].style.top = amountShift + "px";
+
                     equations[eq2].visualComponents["text"]["element"][0].style.top = amountShift + 3 + "px";
                     equations[eq2].jsavequation["element"][0].style.top = amountShift + "px";
                     // equations[eq2].visualComponents["tickmark"]["element"][0].style.top = 
@@ -544,6 +605,11 @@ class WindowManager{
                     currSoln["element"]["visualComponent"]["element"][0].style.top = 
                         parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) - 
                         currWkspace.DIMENSIONS["HEIGHT"] + "px";
+                    
+                    // TODO when help button is added
+                    // currSoln["element"]["help"]["element"][0].style.top = 
+                    //     parseInt(currSoln["element"]["help"]["element"][0].style.top,10) - 
+                    //     currWkspace.DIMENSIONS["HEIGHT"] + "px";
                 }
             }
         }
@@ -553,7 +619,9 @@ class WindowManager{
             var deleteEq = currWkspace.LIST_OF_EQUATIONS_IN_WORKSPACE[eq];
             deleteEq.jsavequation.clear();
             deleteEq.visualComponents["text"].clear();
+            deleteEq.visualComponents["delete"].clear();
             deleteEq.visualComponents["tickmark"].clear();
+            deleteEq.visualComponents["help"].clear();
         }
 
         //deletes all solutions associated with workspace
@@ -561,35 +629,47 @@ class WindowManager{
             var deleteSoln = currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
             deleteSoln.element.deleteButton.clear();
             deleteSoln.element.visualComponent.clear();
+            // deleteSoln.element.deleteButton.clear();
         }
 
         this.extendCanvas(heightShift * -1);
     }
 
-    shiftRight() 
+    shiftRight(activeEqObject) 
     {
-        if(Window.parentObject == null) {
-            return "";
-        }
-        var eqWidth = Window.parentObject.visualComponents["text"]["element"][0].offsetWidth;
-        var eqLeft = parseInt(Window.parentObject.visualComponents["text"]["element"][0].style.left, 10);
-        var activeEqLeft = parseInt(Window.parentObject.jsavequation["element"][0].style.left, 10);
-        var activeEqWidth = Window.parentObject.jsavequation["element"][0].offsetWidth;
+        // if(activeEqObject == null) {
+        //     return "";
+        // }
+        // var eqWidth = Window.parentObject.visualComponents["text"]["element"][0].offsetWidth;
+        // var eqLeft = parseInt(Window.parentObject.visualComponents["text"]["element"][0].style.left, 10);
+        // var activeEqLeft = parseInt(Window.parentObject.jsavequation["element"][0].style.left, 10);
+        // var activeEqWidth = Window.parentObject.jsavequation["element"][0].offsetWidth;
+        var eqWidth = activeEqObject.visualComponents["text"]["element"][0].offsetWidth;
+        var eqLeft = parseInt(activeEqObject.visualComponents["text"]["element"][0].style.left, 10);
+        var activeEqLeft = parseInt(activeEqObject.jsavequation["element"][0].style.left, 10);
+        var activeEqWidth = activeEqObject.jsavequation["element"][0].offsetWidth;
 
 
 
-        if(Window.parentObject.visualComponents.height == Window.parentObject.equationObjectReference.height) {
-            if(eqWidth + eqLeft + 5 > activeEqLeft) {
-                Window.parentObject.jsavequation["element"][0].style.left = eqWidth + eqLeft + 5 + "px";
+        if(activeEqObject.visualComponents.height == activeEqObject.equationObjectReference.height) {
+            // if(eqWidth + eqLeft + 20 > activeEqLeft) {
+            //     activeEqObject.jsavequation["element"][0].style.left = eqWidth + eqLeft + 20 + "px";
+            //     return "shiftActiveEqDown";
+            // }
+            // else if(eqWidth + eqLeft + 20 < activeEqLeft) {
+            //     activeEqObject.jsavequation["element"][0].style.left = eqWidth + eqLeft + 20 + "px";
+            // }
+            if(eqWidth + eqLeft + 14 + activeEqWidth + 3 > this.canvasDims["WORKSPACE_LIST"]["WIDTH"]  ) {
+                activeEqObject.jsavequation["element"][0].style.left = eqWidth + eqLeft + 14 + "px";
+                // Logic being the shifts are made, but this is corrected by shiftActiveEqDown
                 return "shiftActiveEqDown";
             }
-            else if(eqWidth + eqLeft + 5 < activeEqLeft) {
-                Window.parentObject.jsavequation["element"][0].style.left = eqWidth + eqLeft + 15 + "px";
-            }
+            else activeEqObject.jsavequation["element"][0].style.left = eqWidth + eqLeft + 14 + "px";
         }
         else {
-            if(eqWidth + eqLeft + + activeEqLeft + activeEqWidth + 3 < this.canvasDims["WORKSPACE_LIST"]["WIDTH"]  ) {
-                return "shiftActiveEqUp";
+            // if(eqWidth + eqLeft + 20 + activeEqLeft + activeEqWidth + 3 < this.canvasDims["WORKSPACE_LIST"]["WIDTH"]  ) {
+            if(eqWidth + eqLeft + 14 + activeEqWidth + 3 < this.canvasDims["WORKSPACE_LIST"]["WIDTH"]  ) {
+                    return "shiftActiveEqUp";
             }
         }
         
@@ -606,6 +686,7 @@ class WindowManager{
         
         var currWkspace = this.workspace_list.workspace_list[wkspaceNum];
         var currActiveEq = currWkspace.LIST_OF_EQUATIONS_IN_WORKSPACE[eqNum];
+        console.log(eqNum, currWkspace.LIST_OF_EQUATIONS_IN_WORKSPACE)
         console.log(currActiveEq);
 
         var eqWidth = currActiveEq.jsavequation["element"][0].offsetWidth;
@@ -616,11 +697,16 @@ class WindowManager{
             eqWidth + eqLeft + 3 > this.canvasDims["WORKSPACE_LIST"]["WIDTH"]) {
 
             //move activeEq down
-            console.log(currActiveEq);
+            // console.log(currActiveEq);
             var currWkspaceElementHeightPad = currWkspace.DIMENSIONS["ELEMENTS"]["HEIGHT_PAD"];
-            var currWkspaceElementHeight = currActiveEq.visualComponents["height"];
-            currActiveEq.visualComponents["height"] = (currActiveEq.visualComponents["height"] * 2) + currWkspaceElementHeightPad;
+            // var currWkspaceElementHeight = currActiveEq.visualComponents["height"];
+            var currWkspaceElementHeight = currWkspace.DIMENSIONS["ELEMENTS"]["HEIGHT"]; // Change back to above if not working
 
+            // currActiveEq.visualComponents["height"] = (currActiveEq.visualComponents["height"] * 2) + currWkspaceElementHeightPad;
+            currActiveEq.visualComponents["height"] = (currActiveEq.visualComponents["height"]  // Change back to above if not working
+                + currWkspace.DIMENSIONS["ELEMENTS"]["HEIGHT"]) 
+                + currWkspaceElementHeightPad;
+            
             currActiveEq.jsavequation["element"][0].style.top = parseInt(currActiveEq.jsavequation["element"][0].style.top, 10) +  
             currWkspaceElementHeight + currWkspaceElementHeightPad + "px";
                 
@@ -634,10 +720,10 @@ class WindowManager{
             var solutions = currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE;
             for(const soln in solutions) {
                 var currSoln = solutions[soln];
-                console.log(currSoln);
-                console.log(currSoln["element"]["visualComponent"]["element"][0].style.top);
-                console.log(parseInt(currActiveEq.jsavequation["element"][0].style.top, 10));
-                console.log(currWkspaceElementHeight);
+                // console.log(currSoln);
+                // console.log(currSoln["element"]["visualComponent"]["element"][0].style.top);
+                // console.log(parseInt(currActiveEq.jsavequation["element"][0].style.top, 10));
+                // console.log(currWkspaceElementHeight);
 
                 var oldTop = parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top, 10);
                 if(oldTop > parseInt(currActiveEq.jsavequation["element"][0].style.top, 10)) {
@@ -677,23 +763,28 @@ class WindowManager{
                         parseInt(equations[eq].visualComponents["text"]["element"][0].style.top, 10) + 
                         currWkspaceElementHeight +
                         currWkspaceElementHeightPad + "px";
+                    equations[eq].visualComponents["help"]["element"][0].style.top = 
+                        parseInt(equations[eq].visualComponents["help"]["element"][0].style.top, 10) + 
+                        currWkspaceElementHeight +
+                        currWkspaceElementHeightPad + "px";
+                    equations[eq].visualComponents["delete"]["element"][0].style.top = 
+                        parseInt(equations[eq].visualComponents["delete"]["element"][0].style.top, 10) + 
+                        currWkspaceElementHeight +
+                        currWkspaceElementHeightPad + "px";
                     equations[eq].jsavequation["element"][0].style.top = 
                         parseInt(equations[eq].jsavequation["element"][0].style.top, 10) + 
                         currWkspaceElementHeight +
                         currWkspaceElementHeightPad + "px";
-
                     
-                    console.log("here");
-                    console.log(parseInt(equations[eq].jsavequation["element"][0].style.top, 10));
-                    console.log(currWkspaceElementHeight + currWkspaceElementHeightPad);
-                    console.log(currWkspace.DIMENSIONS["POSITION_Y"]);
-                    console.log(currWkspace.DIMENSIONS["HEIGHT"]);
+                    // console.log("here");
+                    // console.log(parseInt(equations[eq].jsavequation["element"][0].style.top, 10));
+                    // console.log(currWkspaceElementHeight + currWkspaceElementHeightPad);
+                    // console.log(currWkspace.DIMENSIONS["POSITION_Y"]);
+                    // console.log(currWkspace.DIMENSIONS["HEIGHT"]);
 
                     if(parseInt(equations[eq].jsavequation["element"][0].style.top, 10) + currWkspaceElementHeight + currWkspaceElementHeightPad > 
                         currWkspace.DIMENSIONS["POSITION_Y"] + currWkspace.DIMENSIONS["HEIGHT"]) {
-
                         extendWkspace = true;
-                        
                     }
                 }
                 else if(parseInt(eq) == parseInt(eqNum)) {
@@ -787,7 +878,9 @@ class WindowManager{
             console.log("move up");
             
             var currWkspaceElementHeightPad = currWkspace.DIMENSIONS["ELEMENTS"]["HEIGHT_PAD"];
-            var currWkspaceElementHeight = currActiveEq.equationObjectReference.height;
+            // var currWkspaceElementHeight = currActiveEq.equationObjectReference.height; // Change to this if necessary
+            var currWkspaceElementHeight = currWkspace.DIMENSIONS["ELEMENTS"]["HEIGHT"]
+            
             currActiveEq.visualComponents["height"] = currActiveEq.equationObjectReference.height;
 
             currActiveEq.jsavequation["element"][0].style.top = parseInt(currActiveEq.jsavequation["element"][0].style.top, 10) -  
@@ -803,10 +896,10 @@ class WindowManager{
             var solutions = currWkspace.LIST_OF_SOLUTIONS_IN_WORKSPACE;
             for(const soln in solutions) {
                 var currSoln = solutions[soln];
-                console.log(currSoln);
-                console.log(currSoln["element"]["visualComponent"]["element"][0].style.top);
-                console.log(parseInt(currActiveEq.jsavequation["element"][0].style.top, 10));
-                console.log(currWkspaceElementHeight);
+                // console.log(currSoln);
+                // console.log(currSoln["element"]["visualComponent"]["element"][0].style.top);
+                // console.log(parseInt(currActiveEq.jsavequation["element"][0].style.top, 10));
+                // console.log(currWkspaceElementHeight);
 
                 var oldTop = parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top, 10);
                 if(oldTop > parseInt(currActiveEq.jsavequation["element"][0].style.top, 10)) {
@@ -838,6 +931,14 @@ class WindowManager{
                         currWkspaceElementHeightPad + "px";
                     equations[eq].visualComponents["text"]["element"][0].style.top = 
                         parseInt(equations[eq].visualComponents["text"]["element"][0].style.top, 10) - 
+                        currWkspaceElementHeight -
+                        currWkspaceElementHeightPad + "px";
+                    equations[eq].visualComponents["delete"]["element"][0].style.top = 
+                        parseInt(equations[eq].visualComponents["delete"]["element"][0].style.top, 10) - 
+                        currWkspaceElementHeight -
+                        currWkspaceElementHeightPad + "px";
+                    equations[eq].visualComponents["help"]["element"][0].style.top = 
+                        parseInt(equations[eq].visualComponents["help"]["element"][0].style.top, 10) - 
                         currWkspaceElementHeight -
                         currWkspaceElementHeightPad + "px";
                     equations[eq].jsavequation["element"][0].style.top = 
@@ -944,6 +1045,7 @@ class WindowManager{
                     currWkspace.elements[3].div.style.top = parseInt(currWkspace.elements[3].div.style.top, 10) - totalShift + "px";
                     currWkspace.elements[4].div.style.top = parseInt(currWkspace.elements[4].div.style.top, 10) - totalShift + "px";
                     currWkspace.elements[5].div.style.top = parseInt(currWkspace.elements[5].div.style.top, 10) - totalShift + "px";
+                    currWkspace.elements[6].div.style.top = parseInt(currWkspace.elements[6].div.style.top, 10) - totalShift + "px";
     
                     var equations = currWkspace.LIST_OF_EQUATIONS_IN_WORKSPACE;
                     for(const eq in equations) {
@@ -951,6 +1053,9 @@ class WindowManager{
     
                         equations[eq].visualComponents["tickmark"]["element"][0].style.top = origHeight + "px";
                         equations[eq].visualComponents["text"]["element"][0].style.top = origHeight + 3 + "px";
+                        equations[eq].visualComponents["delete"]["element"][0].style.top = origHeight + "px";
+                        equations[eq].visualComponents["help"]["element"][0].style.top = origHeight + "px";
+                        
                         equations[eq].jsavequation["element"][0].style.top = parseInt(equations[eq].jsavequation["element"][0].style.top, 10) - totalShift + "px";
                     }
     

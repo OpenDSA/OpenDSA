@@ -1,46 +1,11 @@
-[
-    {
-        "expression": "",
-        "description": "Give a regular expression whose language is strings over {a, b} in which the number of a’s is divisible by 3.",
-        "type": "description",
-        "testCases": [
-            {
-                "": true
-            },
-            {
-                "bbbbbbbbbbb": true
-            },
-            {
-                "a": false
-            },
-            {
-                "babab": false
-            },
-            {
-                "aaa": true
-            },
-            {
-                "bbbaaa": true
-            },
-            {
-                "babaa": true
-            },
-            {
-                "bababa": true
-            },
-            {
-                "aaabbbbbb": true
-            },
-            {
-                "abaaabbbaaaabbaabaa": true
-            },
-            {
-                "aaaaaaaaaaaaaaa": true
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "",
+    "description": "Give a regular expression whose language is strings over {a, b} in which the number of a’s is divisible by 3.",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

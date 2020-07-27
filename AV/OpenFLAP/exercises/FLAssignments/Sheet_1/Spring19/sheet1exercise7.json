@@ -1,26 +1,18 @@
-[
-{
+[{
     "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{a^{2n}b^n \\mid n > 0\\}",
     "description": "",
     "type": "expression",
-    "testCases": [
-        {
-            "": false
-        },
-        {
-            "aa": false
+    "testCases": [{
+            "aaaabb": true
         },
         {
             "aab": true
         },
         {
-            "aaaabb": true
+            "aaaaaaaabbbb": true
         },
         {
-            "bbb": false
-        },
-        {
-            "bab": false
+            "aaaaaabbb": true
         },
         {
             "aaaaaaaaaabbbbb": true
@@ -29,6 +21,6 @@
     "graph": {
         "nodes": [],
         "edges": []
-    }
-}
-]
+    },
+    "solution": ""
+}]

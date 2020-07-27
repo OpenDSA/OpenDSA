@@ -1,5 +1,6 @@
 const solution = {
     0 : {
+        type: "number",
         equations : ["axialStress","add2"],
         variables : {
             'deform':"0.001",
@@ -11,6 +12,7 @@ const solution = {
         unit: "degC",
     },
     1 : {
+        type: "number",
         equations : [],
         variables : {
             '':"",

@@ -1,43 +1,13 @@
-[
-    {
-        "expression": "a^nb^m",
-        "description": "Find a regular grammar for the language L={___ where n+m is odd}.",
-        "type": "description",
-        "testCases": [
-            {
-                "regular-grammar": true
-            },
-            {
-                "": false
-            },
-            {
-                "a": true
-            },
-            {
-                "b": true
-            },
-            {
-                "aab": true
-            },
-            {
-                "abb": true
-            },
-            {
-                "aabb": false
-            },
-            {
-                "aaaaaabbbbb": true
-            },
-            {
-                "bababab": true
-            },
-            {
-                "ba": false
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "a^nb^m",
+    "description": "Find a regular grammar for the language L={___ where n+m is odd}.",
+    "type": "description",
+    "testCases": [{
+        "regular-grammar": true
+    }],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

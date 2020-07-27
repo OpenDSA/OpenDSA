@@ -1,31 +1,11 @@
-[
-    {
-        "expression": "\\{a^ib^jc^k \\mid i = j$ or $j = k\\}",
-        "description": "Construct the PDA that accepts ",
-        "type": "both",
-        "testCases": [
-            {
-                "": false
-            },
-            {
-                "aaabbb": true
-            },
-            {
-                "bbbbcccc": true
-            },
-            {
-                "aabbbccc": true
-            },
-            {
-                "aaabbbccc": true
-            },
-            {
-                "aaaabbbbc": true
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "\\{a^ib^jc^k \\mid i = j$ or $j = k\\}",
+    "description": "Construct the PDA that accepts ",
+    "type": "both",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

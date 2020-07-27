@@ -31,13 +31,13 @@ controllerProto.load = function () {
 	this.tests = tests;
 
 	for (i = 0; i < this.tests.length; i++) {
-		$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
+		$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i + 1) + "</a>");
 	}
 	var proto = this;
 	/*$('#testSolution').click(function() {Implemented in the REtoFA.js
 		proto.startTesting();
 	});*/
-	$('.links').click(function() {
+	$('.links').click(function () {
 		proto.toExercise(this);
 	});
 	$('#showResult').click(function () {
@@ -47,14 +47,14 @@ controllerProto.load = function () {
 	this.updateExercise(this.currentExercise);
 }
 
-controllerProto.startTesting = function(fa, solution) {
-    tryC++;
-    this.fa = fa;
+controllerProto.startTesting = function (fa, solution) {
+	tryC++;
+	this.fa = fa;
 	$("#testResults").empty();
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
 	var count = 0;
 	var testRes = [];
-	if(solution.indexOf('*') <0){
+	if (solution.indexOf('*') < 0) {
 		alert("Your Regular Expression is not generic");
 		return 0;
 	}
@@ -67,15 +67,14 @@ controllerProto.startTesting = function(fa, solution) {
 		var testNum = i + 1;
 		var testCase = this.testCases[i];
 		var input = Object.keys(testCase)[0];
-		var inputOrLambda = input ===""?lambda:input;
+		var inputOrLambda = input === "" ? lambda : input;
 		var inputResult = FiniteAutomaton.willReject(this.fa, input);
 		if (inputResult !== testCase[input]) {
-			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
+			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
 			count++;
-			testRes.push('Test' + testNum +':' + 'Correct');
-		}
-		else {
-			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject": "Accept") + "</td></tr>");
+			testRes.push('Test' + testNum + ':' + 'Correct');
+		} else {
+			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
 			testRes.push('Test' + testNum + ':' + 'Wrong');
 		}
 	}
@@ -83,8 +82,8 @@ controllerProto.startTesting = function(fa, solution) {
 	exer['Attempt' + tryC.toString()] = testRes;
 	exer['studentSolution'] = solution;
 	var exNum = parseInt(this.currentExercise) + 1;
-	if (count > logRecord['Exercise' + exNum +'_Highest']) {
-	 	logRecord['Exercise' + exNum +'_Highest'] = count;
+	if (count > logRecord['Exercise' + exNum + '_Highest']) {
+		logRecord['Exercise' + exNum + '_Highest'] = count;
 	}
 	logRecord['Exercise' + exNum].push(exer);
 	var end = new Date;
@@ -93,30 +92,31 @@ controllerProto.startTesting = function(fa, solution) {
 	$("#percentage").text("Correct cases: " + count + " / " + numberOfTestCases);
 	$("#percentage").show();
 	$("#testResults").show();
-	window.scrollTo(0,document.body.scrollHeight);
+	window.scrollTo(0, document.body.scrollHeight);
 	$('#container').scrollTop($('#container').prop("scrollHeight"));
 	return count / numberOfTestCases;
 };
 
-// binded with question links at the top of the page
+// binded with question links at the top of the page6
 // change the problem displayed
-controllerProto.toExercise = function(button) {
+controllerProto.toExercise = function (button) {
 	this.currentExercise = button.getAttribute('id');
-    this.updateExercise(this.currentExercise);
-    document.getElementById('tb1').value = "";
+	this.updateExercise(this.currentExercise);
+	document.getElementById('tb1').value = "";
 };
 
 // the function that really changes the problem displayed
 // called by toExercise
-controllerProto.updateExercise = function(id) {
+controllerProto.updateExercise = function (id) {
 	var exercise = this.tests[id];
 	var type = exercise["type"];
+	this.testCases = exercise["testCases"];
+	generateTestCase(exercise, 1);
 	if (type == "expression") {
 		$("#expression").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
 		$("#question").show();
 		$("#description").hide();
-	}
-	else {
+	} else {
 		$("#description").text(exercise["description"]);
 		$("#description").show();
 		$("#question").hide();

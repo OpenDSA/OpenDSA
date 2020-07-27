@@ -1,37 +1,11 @@
-[
-    {
-        "expression": "",
-        "description": "Give a DFA that accepts the language over Σ ={a, b} of any even number of a’s and at least three b’s.",
-        "type": "description",
-        "testCases": [
-            {
-                "bbb": true
-            },
-            {
-                "bbab": false
-            },
-            {
-                "babb": false
-            },
-            {
-                "babab": true
-            },
-            {
-                "aabbb": true
-            },
-            {
-                "aabbbaab": true
-            },
-            {
-                "aaaaaaaaabbb": false
-            },
-            {
-                "abababab": true
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "",
+    "description": "Give a DFA that accepts the language over Σ ={a, b} of any even number of a’s and at least three b’s.",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

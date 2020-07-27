@@ -1,49 +1,11 @@
-[
-    {
-        "expression": "a^mb^ia^n:i=m+n",
-        "description": "Construct a CFG over {a, b} whose language is {___}",
-        "type": "description",
-        "testCases": [
-            {
-                "": true
-            },
-            {
-                "ab": true
-            },
-            {
-                "ba": true
-            },
-            {
-                "abba": true
-            },
-            {
-                "aaaabbbbba": true
-            },
-            {
-                "aa": false
-            },
-            {
-                "abbbbaaa": true
-            },
-            {
-                "aba": false
-            },
-            {
-                "aaaaaaaaaaa": false
-            },
-            {
-                "bbbbbbb": false
-            },
-            {
-                "aaaabbbb": true
-            },
-            {
-                "bbbbaaaa": true
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "a^mb^ia^n:i=m+n",
+    "description": "Construct a CFG over {a, b} whose language is {___}",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

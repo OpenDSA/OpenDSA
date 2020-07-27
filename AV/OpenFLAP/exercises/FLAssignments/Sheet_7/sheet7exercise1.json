@@ -1,46 +1,11 @@
-[
-    {
-        "expression": "\\{a^ic^jb^i \\mid i, j \\geq 0\\}",
-        "description": "Construct the PDA that accepts ",
-        "type": "both",
-        "testCases": [
-            {
-                "": true
-            },
-            {
-                "ccccc": true
-            },
-            {
-                "ab": true
-            },
-            {
-                "aaaabbbb": true
-            },
-            {
-                "aaacccccccccccccbbb": true
-            },
-            {
-                "aaaaaaaacbbbbbbbb": true
-            },
-            {
-                "accccccccccccccccb": true
-            },
-            {
-                "aaaaaaaaa": false
-            },
-            {
-                "bbbbbbbbbbb": false
-            },
-            {
-                "aaccbbbb": false
-            },
-            {
-                "aaaccb": false
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "\\{a^ic^jb^i \\mid i, j \\geq 0\\}",
+    "description": "Construct the PDA that accepts ",
+    "type": "both",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

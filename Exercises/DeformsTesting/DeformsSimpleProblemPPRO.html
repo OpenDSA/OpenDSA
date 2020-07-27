@@ -3,6 +3,12 @@
 <head>
   <title>Deforms Simple Problem</title>
   <script src="./mathjs.js" type="text/javascript"></script>
+  
+  <!-- loading additional scripts for event logging capabilities -->
+  <!-- <script src="../../../../../lib/JSAV.js"></script>
+	<script src="../../../../../lib/odsaUtils-min.js"></script>
+	<script src="../../../../../lib/odsaMOD-min.js"></script> -->
+  
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
   <script src="../../khan-exercises/local-only/main.js"></script>
   <link rel = "stylesheet" type = "text/css" href = "./styles.css" />
@@ -68,8 +74,10 @@
         <div class="question">
           <p class="question">
             1. At what temperature does the gap close?
-            <span class="solution-box"></span>
+
+            <span class="solution-box" data-inputtype="number"></span>
           </p>
+
           <p class="question">
             2. What stress exists in the bar at a temperature of
             <span class="param" id="param7"
@@ -77,13 +85,15 @@
             data-value-display="100"
             data-unit-display="C" data-domain="temperature">100
             <code><var>"^{\\circ}C"</var></code></span>?
-            <span class="solution-box"></span>
+
+            <span class="solution-box" data-inputtype="number"></span>
           </p>
+          
           <div>
-              <img class="figure1" src="./deforms_figure.png"
+              <img class="figure1" src="./image1.png"
               alt="rigid bar attached to wall A, with a small gap between 
               right edge of bar and wall B">
-                <span class="text-overlay param" style="top: -23px;right: 229px; padding: 2px 7px" 
+                <span class="text-overlay param" style="top: -102px;right: 235px; padding: 2px 7px" 
                 id="param8" data-value="0.8" data-unit="m" data-value-display="0.8"
                 data-unit-display="m" data-domain="length">0.8m</span>
           </div>
@@ -140,9 +150,12 @@
   <script src="MechSolver/Workspace.js"></script>
   <script src="MechSolver/WorkspaceList.js"></script>
   <script src="MechSolver/WindowManager.js"></script>
+  
+  <!-- Utility files -->
   <script src="MechSolver/Maps.js"></script>
+  <script src="MechSolver/HelpTexts.js"></script>
   <script src="MechSolver/utils.js"></script>
-
+  
   <!-- Additional script files containing settings and solution files -->
   <script src="DeformsSimpleProblemPPROsolution.js"></script>
 

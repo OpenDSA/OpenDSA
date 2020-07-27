@@ -1,52 +1,11 @@
-[
-    {
-        "expression": "",
-        "description": "Give a regular expression whose language is strings over {a, b} in  w contains bba as a substring that starts in an even numbered position.",
-        "type": "description",
-        "testCases": [
-            {
-                "": false
-            },
-            {
-                "bba": true
-            },
-            {
-                "abababaa": false
-            },
-            {
-                "aabba": true
-            },
-            {
-                "babba": true
-            },
-            {
-                "bbaabaaa": true
-            },
-            {
-                "bbaabbabab": true
-            },
-            {
-                "bbabbbb": true
-            },
-            {
-                "bbaaaaa": true
-            },
-            {
-                "aaabbaaa": false
-            },
-            {
-                "bbbbabbab": true
-            },
-            {
-                "aaaabbabbbb": true
-            },
-            {
-                "abbabba": true
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "",
+    "description": "Give a regular expression whose language is strings over {a, b} in  w contains bba as a substring that starts in an even numbered position.",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

@@ -1,50 +1,11 @@
-[
-    {
-        "expression": "",
-        "description": "Construct the DFA that accepts the complement of L, where L is the language over Σ ={a,b} of any even number of a’s and at most three b’s",
-        "type": "",
-        "testCases": [
-            {
-                "aaaaaa": false
-            },
-            {
-                "aabbb": false
-            },
-            {
-                "ababaa": false
-            },
-            {
-                "b": false
-            },
-            {
-                "abababababab": false
-            },
-            {
-                "aabbbbbbbb": false
-            },
-            {
-                "bbabbbbbbb": true
-            },
-            {
-                "aabaaaaabb": false
-            },
-            {
-                "abbb": false
-            },
-            {
-                "aaabbbb": true
-            },
-            {
-                "ababababababa": true
-            },
-            {
-                "ababab": false
-            }
-
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "",
+    "description": "Construct the DFA that accepts the complement of L, where L is the language over Σ ={a,b} of any even number of a’s and at most three b’s",
+    "type": "",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

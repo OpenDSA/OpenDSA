@@ -29,6 +29,11 @@
     line-height: .8em;
 }
 
+.selectedvalue {
+    background-color: orange !important;
+    border: red 2px solid !important;
+}
+
 .param {
     padding: 1px 2px;
     border-radius: 4px;
@@ -63,6 +68,8 @@
     border: 0.05em solid black;
     border-radius: .2em;
     padding: 0px 0px;
+    color: black;
+    font-weight: normal;
 }
 
 .value[data-status='empty']{
@@ -126,6 +133,17 @@
     border-color: black;
 }
 
+.helpbutton {
+    color: black;
+    font-weight: 600;
+    z-index: 500;
+    font-size: 150%;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 5px;
+    cursor: pointer;
+}
+
 #WorkspaceList {
     height: 0px;
     grid-area: workspace;
@@ -147,26 +165,31 @@
     z-index: 1000;
    }
 
-.addworkspace {
-    color: black;
+.workspacebutton {
+    /* color: black; */
     font-size: 120%;
     font-weight: 600;
     z-index: 500;
     cursor: pointer;
-   }
-
-.equationPageTitle {
-    color: black;
-    font-size: 150%;
-    font-weight: 600;
-    z-index: 500;
-    border-radius: 4px;
-    border-width: 2px;
     border-style: solid;
-    border-color: black;
+    border-width: 4px;
+    padding-left: 3px;
+    padding-right: 3px
    }
 
-.addequation {
+.workspacebutton[data-type="add"] {
+    color: blue !important;
+}
+
+.workspacebutton[data-type="remove"] {
+    color: red !important;
+}
+
+.workspacebutton[data-type="solve"] {
+    color: black !important;
+}
+
+/* .addequation {
     color: blue;
     font-size: 120%;
     font-weight: 600;
@@ -187,15 +210,35 @@
     font-size: 120%;
     font-weight: 600;
     z-index: 500;
-    cursor: crosshair;
-   }
+    cursor: pointer;
+   } */
 
-
-.close_x {
+.addworkspace {
     color: black;
     font-size: 120%;
     font-weight: 600;
     z-index: 500;
+    cursor: pointer;
+   }
+
+.equationPageTitle {
+    color: black;
+    font-size: 120%;
+    font-weight: 300;
+    z-index: 500;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+   }
+
+.close_x {
+    color: black;
+    font-weight: 600;
+    z-index: 500;
+    font-size: 150%;
+    vertical-align: middle;
+    display: inline-block;
    }
 
 .close_x:hover {
@@ -246,26 +289,31 @@
 
 .boxedEquation {
     border: thin dashed black;
-    padding: 2px;
-    color: black;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    color: black; /* rgb(138, 100, 100); */
     font-size: 120%;
     z-index: 500;
 }
 
-.tickunselected {
+.activeEqMenu {
     border: thin dashed black;
     padding: 2px;
     font-size: 120%;
-    z-index: 500;
-    color: lightgrey;
-}
-
-.tickselected {
-    border: thin dashed black;
-    padding: 2px;
-    font-size: 120%;
+    font-weight: normal;
     z-index: 500;
     color: black;
+}
+
+.activeEqMenu[data-selected="selected"] {
+    font-weight: bold;
+}
+
+.activeEqMenu[data-selected="unselected"] {
+    font-weight: normal;
+    color: grey;
 }
 
 #float {
@@ -396,9 +444,9 @@ mjx-container:focus {
     outline: none !important;
 }
 
-.selected {
+/* .selected {
     border: red 2px solid;
-}
+} */
 
 
 .droppable {
@@ -430,6 +478,8 @@ mjx-container:focus {
 
 .helpPage {
     width: 500px;
+    max-height: 800px;
+    overflow: auto;
     padding: 20px;
 }
 

@@ -1,34 +1,26 @@
-[
-    {
-        "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq n\\}",
-        "description": "",
-        "type": "expression",
-        "testCases": [
-            {
-                "": false
-            },
-            {
-                "ab": true
-            },
-            {
-                "aaabbb": true
-            },
-            {
-                "bbbb": false
-            },
-            {
-                "abbbbbb": true
-            },
-            {
-                "aaaaaaab": false
-            },
-            {
-                "bab": false
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
+[{
+    "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq n\\}",
+    "description": "",
+    "type": "expression",
+    "testCases": [{
+            "abb": true
+        },
+        {
+            "aabbbbb": true
+        },
+        {
+            "aaaaabbbbbbb": true
+        },
+        {
+            "aabbbbb": true
+        },
+        {
+            "aaabbb": true
         }
-    }
-]
+    ],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

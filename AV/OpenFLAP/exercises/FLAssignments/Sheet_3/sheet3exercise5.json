@@ -1,43 +1,13 @@
-[
-    {
+[{
     "expression": "bbb^*aaaa^*",
     "description": "Give a left-linear grammar for the language L(___)",
     "type": "description",
-    "testCases": [
-        {
-            "left-linear": true
-        },
-        {
-            "": false
-        },
-        {
-            "bbbbb": false
-        },
-        {
-            "aaaa": false
-        },
-        {
-            "bbaa": false
-        },
-        {
-            "bbbbbaaa": true
-        },
-        {
-            "bbbaa": false
-        },
-        {
-            "bbaaa": true
-        },
-        {
-            "bbbbbbbbbbbaaa": true
-        },
-        {
-            "bbaaaaaa": true
-        }
-    ],
+    "testCases": [{
+        "left-linear": true
+    }],
     "graph": {
         "nodes": [],
         "edges": []
-    }
-}
-]
+    },
+    "solution": "bbb*aaaa*"
+}]

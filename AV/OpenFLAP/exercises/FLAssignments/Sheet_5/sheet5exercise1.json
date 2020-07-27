@@ -1,47 +1,12 @@
-[
-    {
-        "expression": "a^nb^m : m \\geq n, m-n\\> is\\> odd",
-        "description": "Construct a CFG over {a, b} whose language is {___}",
-        "type": "description",
-        "testCases": [
-            {
-                "": false
-            },
-            {
-                "b": true
-            },
-            {
-                "bb": false
-            },
-            {
-                "bbb": true
-            },
-            {
-                "bbbbb": true
-            },
-            {
-                "aaaa": false
-            },
-            {
-                "aaab": false
-            },
-            {
-                "aaabbb": false
-            },
-            {
-                "aaabbbb": true
-            },
-            {
-                "aaabbbbbb": true
-            },
-            {
-                "aaabbbbb": false
-            }
-        ],
-    
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "a^nb^m : m \\geq n, m-n\\> is\\> odd",
+    "description": "Construct a CFG over {a, b} whose language is {___}",
+    "type": "description",
+    "testCases": [],
+
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

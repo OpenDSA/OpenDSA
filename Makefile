@@ -38,7 +38,7 @@ all: alllint
 .PHONY: all alllint csslint lint lintExe jsonlint
 
 .PHONY: venv clean-venv pyVenvCheck # for the python virtual environment
-pyVenvCheck:
+pyVenvCheck: venv
 	@$(CHECK_ACTIVE)
 	@echo 'pyVenv seems activated, good'
 venv: $(VENVDIR)/.pipMarker
@@ -122,14 +122,13 @@ lintExe:
 	-@$(LINT) Exercises/RecurTutor2/*.js
 	-@$(LINT) Exercises/Sorting/*.js
 
-TODO$(LINT)lib:
+TODOlintlib:
 	@echo 'linting libraries'
 	-@$(LINT) lib/odsaUtils.js
 	-@$(LINT) lib/odsaAV.js
 	-@$(LINT) lib/odsaMOD.js
 	-@$(LINT) lib/gradebook.js
 	-@$(LINT) lib/registerbook.js
-	-@$(LINT) lib/createcourse.js
 	-@$(LINT) lib/conceptMap.js
 
 jsonlint:
@@ -138,8 +137,8 @@ jsonlint:
 	@jsonlint --quiet config/*.json
 	@jsonlint --quiet config/Old/*.json
 
-rst2json: venv
-	$(ACTIVATE) && python tools/rst2json.py
+rst2json: pyVenvCheck
+	python tools/rst2json.py
 
 JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook JSAV
 JS_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname).js)
@@ -186,6 +185,12 @@ $(SLIDE_BOOKS) : % : config/%.json min pyVenvCheck
 	python -bb $(CONFIG_SCRIPT) --slides $< --no-lms
 	@echo "Created an Slide-eBook in Books/: $@"
 
+
+# one book config that does not match the naming convention:
+FL2019: min
+	python $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
+
+
 # Target eBooks with unique recipies below:::
 CS3notes: min pyVenvCheck
 	python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
@@ -201,3 +206,4 @@ CS5040MasterN: min pyVenvCheck
 
 CS3SS18notes: min pyVenvCheck
 	python $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
+

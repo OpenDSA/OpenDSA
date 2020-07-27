@@ -59,11 +59,18 @@ Left Regular Grammars
    :output: show
 
 
-RegEx to Regular Grammar
+RegEx to Right Regular Grammar
 ------------------------
 .. inlineav:: RegEXtoRegGrammarFF ff
    :links: AV/PIExample/RegularGrammars/RegEXtoRegGrammarFF.css
    :scripts: AV/PIExample/RegularGrammars/RegEXtoRegGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js 
+   :output: show
+
+RegEx to Left Regular Grammar
+------------------------
+.. inlineav:: RegEXtoLeftRegGrammarFF ff
+   :links: AV/PIExample/RegularGrammars/RegEXtoLeftRegGrammarFF.css
+   :scripts: AV/PIExample/RegularGrammars/RegEXtoLeftRegGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js 
    :output: show
 
 

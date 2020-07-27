@@ -1,58 +1,11 @@
-[
-    {
-        "expression": "",
-        "description": "Construct a CFG over {a,b} whose language contains precisely the strings with the same number of a’s and b’s.",
-        "type": "description",
-        "testCases": [
-            {
-                "": true
-            },
-            {
-                "ab": true
-            },
-            {
-                "ba": true
-            },
-            {
-                "aabb": true
-            },
-            {
-                "bbaa": true
-            },
-            {
-                "abba": true
-            },
-            {
-                "abab": true
-            },
-            {
-                "baba": true
-            },
-            {
-                "baab": true
-            },
-            {
-                "ababa": false
-            },
-            {
-                "bbbbbaaa": false
-            },
-            {
-                "baababa": false
-            },
-            {
-                "abbaaabb": true
-            },
-            {
-                "abbab": false
-            },
-            {
-                "aaabbbab": true
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
-        }
-    }
-]
+[{
+    "expression": "",
+    "description": "Construct a CFG over {a,b} whose language contains precisely the strings with the same number of a’s and b’s.",
+    "type": "description",
+    "testCases": [],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]
