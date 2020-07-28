@@ -88,14 +88,8 @@ iframes
 
 
 
-
 .. raw:: html
 
-   <center>
-   <iframe id="myVideo2"
-        src="https://video.vt.edu/media/1_ioniqhja"
-        width="900" height="800"
-        frameborder="1" marginwidth="0" marginheight="0"
-	scrolling="no">
-   </iframe>
-   </center>
+      <center>
+      <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_ioniqhja&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+      </center>   
