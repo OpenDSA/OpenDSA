@@ -1,0 +1,224 @@
+{
+    "translations": {
+        "en": {
+            "q2": {
+                "type": "multiple",
+                "description": "We will construct an algorithm to convert any Right Linear grammar to a Left Linear grammar.",
+                "question": "[T|F] finding an algorithm to convert Right Regular Grammar (RRG) to Left Regular Grammar(LRG) means that we proved that any RRG has LRG.",
+                "answer": "True",
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q3": {
+                "type": "select",
+                "description": "During the construction of the algorithm, we will convert the following grammr to Left Linear Grammar.",
+                "question": "What is L(G)",
+                "answer": [
+                    "$a^*cbb^*$",
+                    "$\\{a^ncb^m \\mid n\\ge 0, m>0\\}$"
+                ],
+                "choices": [
+                    "$a^*cbb^*$",
+                    "$\\{a^ncb^m \\mid n\\ge 0, m>0\\}$"
+                ]
+            },
+            "q4": {
+                "type": "multiple",
+                "description": "Since the Language $L$ has a Right Linear grammar, we can follow ``NFA from Regular Grammar'' proof in the previous modules to construct an NFA for the language.",
+                "question": "What does it mean to follow ``NFA from Regular Grammar'' prrof?",
+                "answer": "Convert Regular Grammar to NFA",
+                "choices": [
+                    "Convert NFA to Regular grammar",
+                    "Convert Regular Grammar to NFA"
+                ]
+            },
+            "q11": {
+                "type": "select",
+                "description": "The next step in our algorithm is to REVERSE the NFA.",
+                "question": "How can we reverse an NFA?",
+                "answer": [
+                    "This means that we need to filp all transitions",
+                    "Swap the start and final states"
+                ],
+                "choices": [
+                    "This means that we need to filp all transitions",
+                    "Swap the start and final states"
+                ]
+            },
+            "q12": {
+                "type": "select",
+                "description": "Lest us start by reversing the transitions.",
+                "question": "What is the result of reversing the transitions $\\delta(S, a) = S$, and $\\delta(A, b) = A$?",
+                "answer": [
+                    "The edge that represent $\\delta(S, a) = S$ will not change as it is a loop.",
+                    "The edge that represent $\\delta(A, b) = A$ will not change as it is a loop."
+                ],
+                "choices": [
+                    "The edge that represent $\\delta(S, a) = S$ will not change as it is a loop.",
+                    "The edge that represent $\\delta(A, b) = A$ will not change as it is a loop."
+                ]
+            },
+            "q13": {
+                "type": "multiple",
+                "description": "Lest us start by reversing the transitions.",
+                "question": "What is the result of reversing the transition $\\delta(S, c) = A$?",
+                "answer": "$\\delta(A, c) = S$",
+                "choices": [
+                    "$\\delta(S, a) = S$",
+                    "$\\delta(A, b) = A$",
+                    "$\\delta(A, c) = S$",
+                    "$\\delta(S, c) = A$",
+                    "$\\delta(A, b) = F$",
+                    "$\\delta(F, b) = A$"
+                ]
+            },
+            "q14": {
+                "type": "multiple",
+                "description": "Lest us start by reversing the transitions.",
+                "question": "What is the result of reversing the transition $\\delta(A, b) = F$?",
+                "answer": "$\\delta(F, b) = A$",
+                "choices": [
+                    "$\\delta(S, a) = S$",
+                    "$\\delta(A, b) = A$",
+                    "$\\delta(A, c) = S$",
+                    "$\\delta(S, c) = A$",
+                    "$\\delta(A, b) = F$",
+                    "$\\delta(F, b) = A$"
+                ]
+            },
+            "q15": {
+                "type": "multiple",
+                "description": "All edges are reversed.",
+                "question": "What is the next step?",
+                "answer": "Swap the start and Final states",
+                "choices": [
+                    "Done, the NFA is reversed.",
+                    "Swap the start and Final states"
+                ]
+            },
+            "q17": {
+                "type": "multiple",
+                "description": "Convert the final state to be the initital state.",
+                "question": "In case that the NFA has multiple final states. How can we convert them to a start state?",
+                "answer": "Convert the NFA with multiple final states to an NFA with one final state. Then make the new final state a start state.",
+                "choices": [
+                    "Convert every final state to a start state",
+                    "Convert the NFA with multiple final states to an NFA with one final state. Then make the new final state a start state."
+                ]
+            },
+            "q19": {
+                "type": "multiple",
+                "description": "We can follow the ``RR Grammar from DFA'' proof from the slides to get the right linear grammar for $NFA_{rev}$. Thus, we have the right linear grammar for $L^R$.",
+                "question": "What does it mean to follow ``RR Grammar from DFA'' prrof?",
+                "answer": "Convert NFA to Regular grammar",
+                "choices": [
+                    "Convert NFA to Regular grammar",
+                    "Convert Regular Grammar to NFA"
+                ]
+            },
+            "q20": {
+                "type": "multiple",
+                "description": "We can follow the ``RR Grammar from DFA'' proof from the slides to get the right linear grammar for $NFA_{rev}$. Thus, we have the right linear grammar for $L^R$.",
+                "question": "What is the production equivelent to the transition $\\delta(S, a) = S$?",
+                "answer": "$S\\rightarrow aS$",
+                "choices": [
+                    "$S\\rightarrow aS$",
+                    "$S\\rightarrow Sa$"
+                ]
+            },
+            "q21": {
+                "type": "multiple",
+                "description": "We can follow the ``RR Grammar from DFA'' proof from the slides to get the right linear grammar for $NFA_{rev}$. Thus, we have the right linear grammar for $L^R$.",
+                "question": "What is the production equivelent to the transition $\\delta(A, b) = A$?",
+                "answer": "$A\\rightarrow bA$",
+                "choices": [
+                    "$A\\rightarrow bA$",
+                    "$A\\rightarrow Ab$"
+                ]
+            },
+            "q22": {
+                "type": "multiple",
+                "description": "We can follow the ``RR Grammar from DFA'' proof from the slides to get the right linear grammar for $NFA_{rev}$. Thus, we have the right linear grammar for $L^R$.",
+                "question": "What is the production equivelent to the transition $\\delta(A, c) = S$?",
+                "answer": "$A\\rightarrow cS$",
+                "choices": [
+                    "$A\\rightarrow Sc$",
+                    "$A\\rightarrow cS$"
+                ]
+            },
+            "q23": {
+                "type": "multiple",
+                "description": "We can follow the ``RR Grammar from DFA'' proof from the slides to get the right linear grammar for $NFA_{rev}$. Thus, we have the right linear grammar for $L^R$.",
+                "question": "What is the production equivelent to the transition $\\delta(F, b) = A$?",
+                "answer": "$F\\rightarrow cA$",
+                "choices": [
+                    "$F\\rightarrow cA$",
+                    "$F\\rightarrow Ac$"
+                ]
+            },
+            "q24": {
+                "type": "multiple",
+                "description": "We can follow the ``RR Grammar from DFA'' proof from the slides to get the right linear grammar for $NFA_{rev}$. Thus, we have the right linear grammar for $L^R$.",
+                "question": "What is the resulting Grammar Language?",
+                "answer": "The resulting Grammar is the Right Linear Grammar for the reverse of the original Language",
+                "choices": [
+                    "The resulting Grammar is the Right Linear Grammar for the original Language",
+                    "The resulting Grammar is the Right Linear Grammar for the reverse of the original Language"
+                ]
+            },
+            "q26": {
+                "type": "multiple",
+                "description": "By reversing each production in the resulting Right Linear grammar, we will get the the Left Linear grammar for the reverse of $L^R$. So, we have the Left Linear grammar for $(L^R)^R = L$.",
+                "question": "What is the result of reversing $S\\rightarrow aS$?",
+                "answer": "$S\\rightarrow Sa$",
+                "choices": [
+                    "$S\\rightarrow aS$",
+                    "$S\\rightarrow Sa$"
+                ]
+            },
+            "q27": {
+                "type": "multiple",
+                "description": "By reversing each production in the resulting Right Linear grammar, we will get the the Left Linear grammar for the reverse of $L^R$. So, we have the Left Linear grammar for $(L^R)^R = L$.",
+                "question": "What is the result of reversing $A\\rightarrow bA$?",
+                "answer": "$A\\rightarrow Ab$",
+                "choices": [
+                    "$A\\rightarrow bA$",
+                    "$A\\rightarrow Ab$"
+                ]
+            },
+            "q28": {
+                "type": "multiple",
+                "description": "By reversing each production in the resulting Right Linear grammar, we will get the the Left Linear grammar for the reverse of $L^R$. So, we have the Left Linear grammar for $(L^R)^R = L$.",
+                "question": "What is the result of reversing $A\\rightarrow cS$?",
+                "answer": "$A\\rightarrow cS$",
+                "choices": [
+                    "$A\\rightarrow Sc$",
+                    "$A\\rightarrow cS$"
+                ]
+            },
+            "q29": {
+                "type": "multiple",
+                "description": "By reversing each production in the resulting Right Linear grammar, we will get the the Left Linear grammar for the reverse of $L^R$. So, we have the Left Linear grammar for $(L^R)^R = L$.",
+                "question": "What is the result of reversing $F\\rightarrow bA$?",
+                "answer": "$F\\rightarrow Ab$",
+                "choices": [
+                    "$F\\rightarrow bA$",
+                    "$F\\rightarrow Ab$"
+                ]
+            },
+            "q30": {
+                "type": "multiple",
+                "description": "Done. We reversed all productions",
+                "question": "What is the type of the resulting grammar?",
+                "answer": "Left Regular Grammar",
+                "choices": [
+                    "Right Regular Grammar",
+                    "Left Regular Grammar",
+                    "Linear Grammar"
+                ]
+            }
+        }
+    }
+}

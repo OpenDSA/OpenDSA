@@ -10,19 +10,14 @@
 Samples
 =======
 
-Formal Languages Major Concepts
--------------------------------
-
-.. inlineav:: MajorConceptsFF ff
-   :links: AV/PIExample/MajorConceptsFF.css
-   :scripts: AV/PIExample/MajorConceptsFF.js AV/Peixuan/PIFrames/PIFrames.js
+PIFrames Test
+-------------
+.. inlineav:: LeftLinearGrammarFF ff
+   :links: AV/Peixuan/PIFrames/LeftLinearGrammarFF.css
+   :scripts:   AV/Peixuan/PIFrames/PIFrames.js lib/underscore.js DataStructures/FLA/FA.js AV/Peixuan/PIFrames/AddQuestions.js AV/Peixuan/PIFrames/LeftLinearGrammarFF.js
    :output: show
 
-
-Introduction to Grammars
-------------------------
-
-.. inlineav:: GrammarIntroFF ff
-   :links: AV/PIExample/GrammarIntroFF.css
-   :scripts: AV/PIExample/GrammarIntroFF.js  AV/Peixuan/PIFrames/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js
+.. inlineav:: MultipleAutoQuestionsTest ff
+   :links: AV/Peixuan/PIFrames/MultipleAutoQuestionsTest.css
+   :scripts:   AV/Peixuan/PIFrames/PIFrames.js DataStructures/FLA/GrammarMatrix.js DataStructures/FLA/FA.js AV/Peixuan/PIFrames/AddQuestions.js AV/Peixuan/PIFrames/MultipleAutoQuestionsTest.js
    :output: show
