@@ -78,9 +78,9 @@ iframes
 .. raw:: html
 
    <center>
-   <iframe id="BT_iframe"
-        src="https://video.vt.edu/media/1_ll44zj61"
-        width="1100" height="800"
+   <iframe id="myVideo"
+        src="https://video.vt.edu/media/1_ioniqhja"
+        width="900" height="800"
         frameborder="1" marginwidth="0" marginheight="0"
 	scrolling="no">
    </iframe>
