@@ -78,7 +78,21 @@ iframes
 .. raw:: html
 
    <center>
-   <iframe id="myVideo"
+   <iframe id="myVideo1"
+        src="https://codeworkout.cs.vt.edu/gym/workouts/embed?resource_name=changePointeeDataDirect"
+        width="900" height="800"
+        frameborder="1" marginwidth="0" marginheight="0"
+	scrolling="no">
+   </iframe>
+   </center>
+
+
+
+
+.. raw:: html
+
+   <center>
+   <iframe id="myVideo2"
         src="https://video.vt.edu/media/1_ioniqhja"
         width="900" height="800"
         frameborder="1" marginwidth="0" marginheight="0"
