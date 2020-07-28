@@ -14,7 +14,7 @@ VENVDIR = .pyVenv
 ACTIVATE = source $(VENVDIR)/bin/activate 
 VENV_PYTHON = $(VENVDIR)/bin/python
 PYTHON_FLAGS = -bb 
-PYTHON_FLAGS += -Werror 
+# PYTHON_FLAGS += -Werror 
 
 
 # Changes for installs on native Windows:
