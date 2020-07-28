@@ -3,6 +3,10 @@
 import sys, os
 import re
 
+print("WARNING: This file seems unused and obsolete.")
+print("WARNING: If this is not so, then remove this warning from:", __file__)
+input("Press enter to continue...")
+
 rst_dir = os.path.realpath(os.path.join(os.path.dirname(__file__), "..", "RST","en"))
 
 short_name_re = "^(\.\. )+(avembed|inlineav):: ([^\s]+/)*([^\s.]*)(\.html)? (ka|ss|ff|pe)"
@@ -71,8 +75,8 @@ def strip_rst_file(filename, root_dir):
                     else:
                         name_matches = re.match(short_name_re, line)
                         if name_matches is None:
-                            print "Could not generate section name for:", os.path.join(root_dir, filename)
-                            print line
+                            print("Could not generate section name for:", os.path.join(root_dir, filename))
+                            print(line)
                         else:
                             ex_name = name_matches.group(4)
                             out.write("\n" + ex_name + "\n")
@@ -101,4 +105,4 @@ if __name__ == "__main__":
                     with open(os.path.join(root, name), 'r') as rstfile:
                         strip_rst_file(name, root)
     
-    print "*_exs.rst files generation complete."
+    print("*_exs.rst files generation complete.")
