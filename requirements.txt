@@ -5,3 +5,4 @@ sphinx==2.4.4
 # hieroglyph==1.0.0 # Hieroglyph 1.0.0 is does not work with newer Sphinx
 # Use this 'dirty' version of hieroglyph by sublime09 in the meantime: 
 --editable lib/hieroglyph
+pylint==2.5.3

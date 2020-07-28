@@ -1,16 +1,21 @@
 SHELL := /bin/bash
 RM = rm --recursive --force
 CONFIG_SCRIPT = tools/configure.py
-TARGET = build
-LINT = eslint --no-color
-CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
-CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
+.DEFAULT_GOAL := alllint
+JS_LINT = eslint --no-color
+CSS_LINT = csslint --quiet --ignore=ids,adjoining-classes
+# CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
+JSON_LINT = jsonlint --quiet
+PYTHON_LINT = pyLint --disable=C --reports=y
 # Can be overridden by env varis, such as ODSA_ENV='PROD' or PYTHON="python3.8"
 ODSA_ENV ?= DEV
 PYTHON ?= python
 VENVDIR = .pyVenv
 ACTIVATE = source $(VENVDIR)/bin/activate 
 VENV_PYTHON = $(VENVDIR)/bin/python
+PYTHON_FLAGS = -bb 
+PYTHON_FLAGS += -Werror 
+
 
 # Changes for installs on native Windows:
 ifeq ($(OS),Windows_NT) 
@@ -33,10 +38,6 @@ INACTIVE_MSG +=Command to activate:   $(ACTIVATE) \n
 INACTIVE_MSG +=Command to deactivate: deactivate \n
 INACTIVE_MSG +=Retry after activating pyVenv.  Exiting now...
 
-all: alllint
-.PHONY: clean min pull Webserver 
-.PHONY: all alllint csslint lint lintExe jsonlint
-
 .PHONY: venv clean-venv pyVenvCheck # for the python virtual environment
 pyVenvCheck: venv
 	@$(CHECK_ACTIVE)
@@ -55,6 +56,7 @@ clean-venv:
 	- $(RM) $(VENVDIR)
 	@ echo "Note: Use 'deactivate' if $(VENVDIR) is still activated"
 
+.PHONY: clean min pull Webserver 
 Webserver:
 	@-echo -n "System is: " & uname -s
 	@echo "Using env variable: PYTHON=$(PYTHON)"
@@ -75,67 +77,72 @@ clean:
 	- $(RM) Scripts/*~
 	- $(RM) config/*~
 
-
-alllint: csslint lint jsonlint
+.PHONY: alllint jsonlint lint lintExe csslint pylint
+alllint: lint csslint jsonlint pyLint
 
 csslint:
 	@echo 'running csslint'
-	@csslint $(CSSLINTFLAGS) AV/Background/*.css
-	@csslint $(CSSLINTFLAGS) AV/Design/*.css
+	@$(CSS_LINT) AV/Background/*.css
+	@$(CSS_LINT) AV/Design/*.css
 
 TODOcsslint:
-	@csslint $(CSSLINTFLAGS) AV/List/*.css
-	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
-	@csslint $(CSSLINTFLAGS) AV/Hashing/*.css
-	@csslint $(CSSLINTFLAGS) AV/Searching/*.css
-	#@csslint $(CSSLINTFLAGS) AV/*.css
-	@csslint $(CSSLINTFLAGS) Doc/*.css
-	@csslint $(CSSLINTFLAGS) lib/*.css
+	@$(CSS_LINT) AV/List/*.css
+	@$(CSS_LINT) AV/Sorting/*.css
+	@$(CSS_LINT) AV/Hashing/*.css
+	@$(CSS_LINT) AV/Searching/*.css
+	#@$(CSS_LINT) AV/*.css
+	@$(CSS_LINT) Doc/*.css
+	@$(CSS_LINT) lib/*.css
 
 lint: lintExe
 	@echo 'running eslint'
-	-@$(LINT) AV/Background/*.js
-	-@$(LINT) AV/Design/*.js
+	-@$(JS_LINT) AV/Background/*.js
+	-@$(JS_LINT) AV/Design/*.js
 
 TODOlintAV:
 	@echo 'linting AVs'
-	-@$(LINT) AV/Binary/*.js
-	-@$(LINT) AV/General/*.js
-	-@$(LINT) AV/List/*.js
-	-@$(LINT) AV/Sorting/*.js
-	-@$(LINT) AV/Hashing/*.js
-	-@$(LINT) AV/Searching/*.js
-	-@$(LINT) AV/Sorting/*.js
+	-@$(JS_LINT) AV/Binary/*.js
+	-@$(JS_LINT) AV/General/*.js
+	-@$(JS_LINT) AV/List/*.js
+	-@$(JS_LINT) AV/Sorting/*.js
+	-@$(JS_LINT) AV/Hashing/*.js
+	-@$(JS_LINT) AV/Searching/*.js
+	-@$(JS_LINT) AV/Sorting/*.js
 
 lintExe:
 	@echo 'linting KA Exercises'
-	-@$(LINT) Exercises/AlgAnal/*.js
-	-@$(LINT) Exercises/Background/*.js
-	-@$(LINT) Exercises/Binary/*.js
-	-@$(LINT) Exercises/Design/*.js
-	-@$(LINT) Exercises/General/*.js
-	-@$(LINT) Exercises/Graph/*.js
-	-@$(LINT) Exercises/Hashing/*.js
-	-@$(LINT) Exercises/Indexing/*.js
-	-@$(LINT) Exercises/List/*.js
-	-@$(LINT) Exercises/RecurTutor/*.js
-	-@$(LINT) Exercises/RecurTutor2/*.js
-	-@$(LINT) Exercises/Sorting/*.js
+	-@$(JS_LINT) Exercises/AlgAnal/*.js
+	-@$(JS_LINT) Exercises/Background/*.js
+	-@$(JS_LINT) Exercises/Binary/*.js
+	-@$(JS_LINT) Exercises/Design/*.js
+	-@$(JS_LINT) Exercises/General/*.js
+	-@$(JS_LINT) Exercises/Graph/*.js
+	-@$(JS_LINT) Exercises/Hashing/*.js
+	-@$(JS_LINT) Exercises/Indexing/*.js
+	-@$(JS_LINT) Exercises/List/*.js
+	-@$(JS_LINT) Exercises/RecurTutor/*.js
+	-@$(JS_LINT) Exercises/RecurTutor2/*.js
+	-@$(JS_LINT) Exercises/Sorting/*.js
 
 TODOlintlib:
 	@echo 'linting libraries'
-	-@$(LINT) lib/odsaUtils.js
-	-@$(LINT) lib/odsaAV.js
-	-@$(LINT) lib/odsaMOD.js
-	-@$(LINT) lib/gradebook.js
-	-@$(LINT) lib/registerbook.js
-	-@$(LINT) lib/conceptMap.js
+	-@$(JS_LINT) lib/odsaUtils.js
+	-@$(JS_LINT) lib/odsaAV.js
+	-@$(JS_LINT) lib/odsaMOD.js
+	-@$(JS_LINT) lib/gradebook.js
+	-@$(JS_LINT) lib/registerbook.js
+	-@$(JS_LINT) lib/conceptMap.js
 
 jsonlint:
-	@jsonlint --quiet AV/Background/*.json
-	@jsonlint --quiet AV/Design/*.json
-	@jsonlint --quiet config/*.json
-	@jsonlint --quiet config/Old/*.json
+	@$(JSON_LINT) AV/Background/*.json
+	@$(JSON_LINT) AV/Design/*.json
+	@$(JSON_LINT) config/*.json
+	@$(JSON_LINT) config/Old/*.json
+
+
+pyLint:
+	$(PYTHON_LINT) server.py tools/*.py RST/ODSAextensions/**/*.py 
+	# $(PYTHON_LINT) SourceCode/Python/**/*.py # These are python 2!!!
 
 rst2json: pyVenvCheck
 	python tools/rst2json.py
@@ -178,11 +185,11 @@ allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormalLang
 # A Static-Pattern Rule for making Books
 # TODO: can remove -bb option once all py3 str encoding in odsa is debugged 
 $(BOOKS): % : config/%.json min pyVenvCheck
-	python -bb $(CONFIG_SCRIPT) $< --no-lms
+	python $(PYTHON_FLAGS) $(CONFIG_SCRIPT) $< --no-lms
 	@echo "Created an eBook in Books/: $@"
 
 $(SLIDE_BOOKS) : % : config/%.json min pyVenvCheck
-	python -bb $(CONFIG_SCRIPT) --slides $< --no-lms
+	python $(PYTHON_FLAGS) $(CONFIG_SCRIPT) --slides $< --no-lms
 	@echo "Created an Slide-eBook in Books/: $@"
 
 
