@@ -9,7 +9,7 @@ input("Press enter to continue...")
 
 rst_dir = os.path.realpath(os.path.join(os.path.dirname(__file__), "..", "RST","en"))
 
-short_name_re = "^(\.\. )+(avembed|inlineav):: ([^\s]+/)*([^\s.]*)(\.html)? (ka|ss|ff|pe)"
+short_name_re = r"^(\.\. )+(avembed|inlineav):: ([^\s]+/)*([^\s.]*)(\.html)? (ka|ss|ff|pe)"
 
 # the directories to be processed
 include_dirs = {"AlgAnal", "Background", "Binary", "Bounds", "BTRecurTutor",
@@ -47,7 +47,7 @@ def strip_rst_file(filename, root_dir):
             out.write("\n" + line)
             i += 1
             line = lines[i]
-            while re.match("^\s+:.+:", line) != None:
+            while re.match(r"^\s+:.+:", line) != None:
                 out.write(line)
                 i += 1
                 line = lines[i]
@@ -55,7 +55,7 @@ def strip_rst_file(filename, root_dir):
         else:
             # check for exercises (ss, ka, pe)
             #added support for (ff) option
-            matches = re.match("^(\.\. )+(avembed|inlineav):: .+ (ff|ss|pe|ka)", sline)
+            matches = re.match(r"^(\.\. )+(avembed|inlineav):: .+ (ff|ss|pe|ka)", sline)
             if matches != None:
                 exercise_count += 1
                 # now try to figure out what we should name the section
@@ -65,7 +65,7 @@ def strip_rst_file(filename, root_dir):
                     out.write("-" * len(ex_name) + "\n")
                     out.write(line)
                 else:
-                    name_matches = re.match("^\s+:long_name: (.+)", lines[i + 1])
+                    name_matches = re.match(r"^\s+:long_name: (.+)", lines[i + 1])
                     if name_matches != None:
                         ex_name = name_matches.group(1)
                         out.write("\n" + ex_name + "\n")

@@ -183,11 +183,11 @@ def isSlideConf(item):
   return False
 
 def is_index_option(mod_data, i, line):
-  if re.match('^\w+:.+$', line) != None:
+  if re.match(r'^\w+:.+$', line) != None:
     i -= 1
     while i >= 0:
       line = mod_data[i].strip()
-      if re.match('^\w+:.+$', line) != None:
+      if re.match(r'^\w+:.+$', line) != None:
         i -= 1
       elif line.startswith('.. index::'):
         return True
@@ -410,8 +410,8 @@ class ODSA_RST_Module:
             section_title_found = True
           elif module_title_found and not section_title_found \
           and not content_before_section \
-          and (re.match('^(\.\. )+(avembed|inlineav):: [^\s]+( )?(pe|ka)?$', line) != None \
-               or re.match('^(\.\. )+(extrtoolembed):: [^\r\n]+$', line) != None):
+          and (re.match(r'^(\.\. )+(avembed|inlineav):: [^\s]+( )?(pe|ka)?$', line) != None \
+               or re.match(r'^(\.\. )+(extrtoolembed):: [^\r\n]+$', line) != None):
               content_before_section = True
               errors.append(("%sERROR: %s: line %s ('%s') - exercises must be inside a section" % (console_msg_prefix, mod_path, i, line), True))
           
