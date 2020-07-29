@@ -5,6 +5,13 @@
 #          David Goodger <goodger@python.org>
 # Copyright: This module has been placed in the public domain.
 
+
+print("WARNING: This file seems unused and obsolete.")
+print("WARNING: If this is not so, then remove this warning from:", __file__)
+input("Press enter to continue...")
+# pylint: skip-file
+
+
 try:
     import locale
     locale.setlocale(locale.LC_ALL, '')
