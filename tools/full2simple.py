@@ -5,7 +5,6 @@ import sys, os, re, json
 import simple2full
 from ODSA_Config import read_conf_file
 from collections import OrderedDict
-from docutils.core import publish_parts
 
 
 ex_re = re.compile(r'\s*\.\. (avembed|inlineav):: ([^\s]+/)*([^\s.]*)(\.html)? (ka|ss|ff|pe)')

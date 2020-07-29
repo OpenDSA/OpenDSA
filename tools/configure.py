@@ -34,22 +34,17 @@ import shutil
 import distutils.dir_util
 import distutils.file_util
 import json
-import collections
-import re
 import subprocess
 import codecs
 import datetime
-import threading
-import urllib.request, urllib.parse, urllib.error
 import simple2full
 
 from collections.abc import Iterable
 from argparse import ArgumentParser
 from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
-from ODSA_Config import ODSA_Config, parse_error
+from ODSA_Config import ODSA_Config
 from postprocessor import update_TOC, update_TermDef, make_lti
-from urllib.parse import urlparse
 
 # List ocanvas_module_idf exercises encountered in RST files that do not appear in the
 # configuration file

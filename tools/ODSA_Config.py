@@ -19,7 +19,6 @@ import sys
 import os
 import json
 import collections
-import codecs
 from collections.abc import Iterable
 from urllib.parse import urlparse
 

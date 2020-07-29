@@ -7,9 +7,9 @@ import json
 import xmltodict
 import re
 
-from docutils import nodes, utils
+from docutils import nodes
 from docutils.parsers.rst import Directive
-from docutils.parsers.rst import directives, states
+from docutils.parsers.rst import directives
 from collections import OrderedDict
 from docutils.core import publish_parts
 from optparse import OptionParser

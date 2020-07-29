@@ -1,6 +1,6 @@
 # A script to create stripped down rst files containing only exercises and AV for each module
 
-import sys, os
+import os
 import re
 
 print("WARNING: This file seems unused and obsolete.")

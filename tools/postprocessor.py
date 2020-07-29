@@ -9,14 +9,10 @@ import re
 import json
 import xml.dom.minidom as minidom
 from collections.abc import Iterable
-from pprint import pprint
-from xml.etree.ElementTree import ElementTree, SubElement, Element
-from bs4 import BeautifulSoup, element
-from bs4.element import NavigableString
-from collections import defaultdict
-import tarfile
+
+from xml.etree.ElementTree import ElementTree
+from bs4 import BeautifulSoup
 import shutil
-import urllib.parse
 
 __author__ = 'breakid'
 
