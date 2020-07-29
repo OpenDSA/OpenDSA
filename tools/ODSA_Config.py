@@ -83,24 +83,6 @@ def get_odsa_dir():
 
 lang_file = get_odsa_dir() +  '/tools/language_msg.json'
 
-# Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
-def parse_error(err):
-    """
-    "Parse" error string (formats) raised by (simple)json:
-    '%s: line %d column %d (char %d)'
-    '%s: line %d column %d - line %d column %d (char %d - %d)'
-    """
-    return re.match(r"""^
-      (?P<msg>.+):\s+
-      line\ (?P<lineno>\d+)\s+
-      column\ (?P<colno>\d+)\s+
-      (?:-\s+
-        line\ (?P<endlineno>\d+)\s+
-        column\ (?P<endcolno>\d+)\s+
-      )?
-      \(char\ (?P<pos>\d+)(?:\ -\ (?P<end>\d+))?\)
-  $""", err, re.VERBOSE)
-
 
 def validate_origin(origin, origin_type):
     """Validate the protocol, domain, and path of an origin"""
@@ -404,33 +386,9 @@ def get_translated_text(lang_):
                 print_err('WARNING: Translation for "' + lang_ + '" not found, the language has been switched to english')
                 lang_text = lang_text_json["en"]["jinja"]
                 final_lang = "en"
-    except ValueError as err:
-        # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
-        msg = err.message
-        print_err(msg)
-
-        if msg == 'No JSON object could be decoded':
-            print_err('ERROR: %s is not a valid JSON file or does not use a supported encoding\n' % lang_file)
-        else:
-            err = parse_error(msg).groupdict()
-            # cast int captures to int
-            for k, v in list(err.items()):
-                if v and v.isdigit():
-                    err[k] = int(v)
-
-            with open(lang_file) as lang_lines:
-                lines = lang_lines.readlines()
-
-            for ii, line in enumerate(lines):
-                if ii == err["lineno"] - 1:
-                    break
-
-            print_err("""
-        %s
-        %s^-- %s
-        """ % (line.replace("\n", ""), " " * (err["colno"] - 1), err["msg"]))
-
-        # TODO: Figure out how to get (simple)json to accept different encodings
+    except json.JSONDecodeError as err:
+        print_err("ERROR when parsing lang JSON file: "+ lang_file)
+        print_err("    " + str(err) + "\n")
         sys.exit(1)
     return lang_text, final_lang
 
@@ -449,7 +407,7 @@ def read_conf_file(config_file_path):
             # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
             conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
     except json.JSONDecodeError as err:
-        print_err("ERROR when parsing JSON file: "+ config_file_path)
+        print_err("ERROR when parsing config JSON file: "+ config_file_path)
         print_err("    " + str(err) + "\n")
         sys.exit(1)
 
