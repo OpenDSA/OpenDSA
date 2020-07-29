@@ -74,8 +74,8 @@ module_chap_map = {}
 num_ref_map = {}
 
 # Prints the given string to standard error
-def print_err(err_msg):
-    sys.stderr.write('%s\n' % err_msg)
+def print_err(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
 
 # Processes a chapter or section of the book
 #   - config - a dictionary containing all the configuration options

@@ -27,8 +27,8 @@ import codecs
 sys.path.append(os.path.abspath('./source'))
 import conf
 
-def print_err(err_msg):
-  sys.stderr.writelines('CODEINCLUDE ERROR: %s\n' % err_msg)
+def print_err(*args, **kwargs):
+  print("CODEINCLUDE ERROR:", *args, file=sys.stderr, **kwargs)
 
 
 def setup(app):

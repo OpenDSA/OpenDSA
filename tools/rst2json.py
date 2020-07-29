@@ -344,10 +344,10 @@ class odsafig(Directive):
     return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
 
 
-def print_err(err_msg):
+def print_err(*args, **kwargs):
   '''
   '''
-  sys.stderr.write('%s\n' % err_msg)
+  print(*args, file=sys.stderr, **kwargs)
 
 
 def extract_mod_config(mod_json):

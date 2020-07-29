@@ -105,8 +105,8 @@ def getDimensions(exer_path):
   return {'err': 'No body tag detected'}
 
 # Prints the given string to standard error
-def print_err(err_msg):
-  sys.stderr.write('%s\n' % err_msg)
+def print_err(*args, **kwargs):
+  print(*args, file=sys.stderr, **kwargs)
 
 # Loads translation file
 def loadTable():

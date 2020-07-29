@@ -450,10 +450,10 @@ class showhidecontent(Directive):
   def run(self):
     return [nodes.raw('', '<showhidecontent>null</showhidecontent>', format='xml')]
 
-def print_err(err_msg):
+def print_err(*args, **kwargs):
   '''
   '''
-  sys.stderr.write('%s\n' % err_msg)
+  print(*args, file=sys.stderr, **kwargs)
 
 def get_default_ex_option(ex_type, option, learning_tool=None):
   if ex_type in ['ka', 'ff', 'ss', 'pe', 'ae']:

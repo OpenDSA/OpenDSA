@@ -78,8 +78,8 @@ CONTAINER_HTML= '''\
 '''
 
 # Prints the given string to standard error
-def print_err(err_msg):
-  sys.stderr.write('%s\n' % err_msg)
+def print_err(*args, **kwargs):
+  print(*args, file=sys.stderr, **kwargs)
 
 class extrtoolembed(Directive):
   required_arguments = 0

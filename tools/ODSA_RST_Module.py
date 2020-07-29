@@ -34,8 +34,8 @@ from config_templates import *
 from collections import OrderedDict
 
 # Prints the given string to standard error
-def print_err(err_msg):
-  sys.stderr.write('%s\n' % err_msg)
+def print_err(*args, **kwargs):
+  print(*args, file=sys.stderr, **kwargs)
 
 # Generates a string that will be appended to the RST module header that sets the module options appropriately
 def format_mod_options(options):
