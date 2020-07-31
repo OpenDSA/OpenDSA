@@ -47,6 +47,26 @@ var addFinals = function (g1, g2) {
     }
   }
 };
+var getAllNonStartNorFinalStates = function (graph) {
+  var listOfNodes = graph.nodes();
+  var results = [];
+  listOfNodes.map(function (node) {
+    if (!node.hasClass("final") && !node.hasClass("start"))
+      results.push(node);
+  });
+  return results;
+}
+var drawTheFinalGraph = function (jsav, options, expression) {
+  var fa = jsav.ds.FA($.extend(options));
+  var start = fa.addNode({ left: '15px' });
+  var height = options.height || 440;
+  var width = options.width || 750;
+  var end = fa.addNode({ left: width - 10, top: height - 40 });
+  fa.makeInitial(start);
+  fa.makeFinal(end);
+  var t = fa.addEdge(start, end, { weight: expression });
+  return fa;
+}
 
 //shuffle array
 var shuffle = function (array) {
@@ -74,6 +94,18 @@ var updateAutoQuestionStack = function (av_name){
     currentAutoStack[av_name] = currentAutoStack[av_name] + 1;
     return currentAutoStack[av_name];
   }
+}
+
+//store what left on the canvas after a function finished
+var graphStack = {};
+//hide every stored graph for a jsav 
+var cleanRemaingGraph = function (av_name){
+  if(!graphStack.hasOwnProperty(av_name)){
+    return false;
+  }
+  graphStack[av_name].forEach((item) => {
+    item.hide();
+  });
 }
 
 //generate questions in json format by the graph
@@ -552,8 +584,12 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
     return minimizerComplete(graph);
   };
 
-
-  return minimizerDone(newGraphDimensions);
+  var res = minimizerDone(newGraphDimensions);
+  graphStack[av_name] = [];
+  graphStack[av_name].push(minimizer.referenceGraph);
+  graphStack[av_name].push(minimizer.tree);
+  graphStack[av_name].push(res);
+  return res;
 };
 
 /*
@@ -870,8 +906,10 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
   // jsav.step();"
 
   // Get the first converted state
+  var questionsIndex = 0;
   if (visualizable)
-    jsav.umsg(Frames.addQuestion(String("q" + 0)));
+    jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+    questionsIndex++;
     jsav.step();
 
   var first = lambdaClosure([startState.value()], graph).sort().join();
@@ -903,12 +941,12 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
 
     jsav.umsg("Nest step is to identify the transitions out of the DFA start state. For each letter in the alphabet, consider all states reachable in the NFA from any state in the start state on that letter. minimizer becomes the name of the target state on that transition.");
     jsav.step();
-    jsav.umsg(Frames.addQuestion(String("q" + 1)));
+    jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+    questionsIndex++;
     g.layout();
     jsav.step();
   }
 
-  var count = 2;
   // Repeatedly get next states and apply lambda closure
   while (temp.length > 0) {
     var val = temp.pop(),
@@ -940,11 +978,11 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
 
         //put it here to let questions correspond to each state
         if (visualizable) {
-          if (count < Object.keys(questions["translations"]["en"]).length) {
-            jsav.umsg(Frames.addQuestion(String("q" + count)));
+          if (questionsIndex < Object.keys(questions["translations"]["en"]).length) {
+            jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+            questionsIndex++;
             g.layout();
             jsav.step();
-            count++;
           }
         }
       }
@@ -967,6 +1005,9 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
     g.updateNodes();
     g.layout();
     //g.disableDragging();
+    graphStack[av_name] = [];
+    graphStack[av_name].push(g);
+    graphStack[av_name].push(graph);
     return g;
 };
 
@@ -1139,6 +1180,10 @@ var gToFAConverterWithQuestion = function (av_name, converter, nFAoptions, pifra
   }
 
   converter.jsav.umsg("This is the equivalent NFA for this Regular Grammer.");
+
+  graphStack[av_name] = [];
+  graphStack[av_name].push(converter.builtDFA);
+  graphStack[av_name].push(converter.grammerMatrix);
   return converter;
 }
 
@@ -1181,7 +1226,6 @@ var getStepsForGToFAConverter = function (converter, nFAoptions){
       }]);
     }
   }
-  //console.log(res);
   return res;
 }
 
@@ -1322,6 +1366,10 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
     edge._label.removeClass("testingLambda");
   });
   converted = converted.concat(finals);
+
+  graphStack[av_name] = [];
+  graphStack[av_name].push(grammarMatrix);
+  graphStack[av_name].push(FAtoGrammar.FA);
   // save resulting grammar as an array of arrays of strings
   // (same format as how the grammarEditor reads grammars)
 
@@ -1538,6 +1586,10 @@ var acceptorVisualizeWithQuestions = function (av_name, av, acceptor, listOfStri
     acceptor.resetFA();
     run(acceptor, listOfStrings[i], i);
   }
+
+  graphStack[av_name] = [];
+  graphStack[av_name].push(acceptor.FA);
+  graphStack[av_name].push(acceptor.matrix);
 }
 
 var getStepsForAcceptorVisualize = function (acceptor, listOfStrings, arrayOptions) {
@@ -1615,29 +1667,6 @@ var getStepsForAcceptorVisualize = function (acceptor, listOfStrings, arrayOptio
   }
   return res;
 };
-
-
-function getAllNonStartNorFinalStates(graph) {
-  var listOfNodes = graph.nodes();
-  var results = [];
-  listOfNodes.map(function (node) {
-    if (!node.hasClass("final") && !node.hasClass("start"))
-      results.push(node);
-  });
-  return results;
-}
-
-function drawTheFinalGraph(jsav, options, expression) {
-  var fa = jsav.ds.FA($.extend(options));
-  var start = fa.addNode({ left: '15px' });
-  var height = options.height || 440;
-  var width = options.width || 750;
-  var end = fa.addNode({ left: width - 10, top: height - 40 });
-  fa.makeInitial(start);
-  fa.makeFinal(end);
-  var t = fa.addEdge(start, end, { weight: expression });
-  return fa;
-}
 
 var visualizeConversionWithQuestions = function (fatoreController, url, av_name, transitionOptions = {}, finaGraphOptions = {}, piframesLocations){
   var oldNFA = fatoreController.fa;
@@ -1740,7 +1769,12 @@ var visualizeConversionWithQuestions = function (fatoreController, url, av_name,
   fatoreController.jsav.step();
   fatoreController.jsav.umsg("After removing all nodes that are not final and not start, the resulting Regular Exepression is");
   fatoreController.transitions.hide();
-  drawTheFinalGraph(fatoreController.jsav, finaGraphOptions, fatoreController.generateExpression());
+  var final = drawTheFinalGraph(fatoreController.jsav, finaGraphOptions, fatoreController.generateExpression());
+
+  //TODO
+  graphStack[av_name] = [];
+  graphStack[av_name].push(fatoreController.fa);
+  graphStack[av_name].push(final);
 }
 
 var getStepsForvisualizeConversion = function (fatoreController, transitionOptions = {}, finaGraphOptions = {}){
