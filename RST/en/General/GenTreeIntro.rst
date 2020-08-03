@@ -173,14 +173,7 @@ to that node's right sibling, and so on.
    :scripts: AV/General/GenTreePostTravCON.js
    :output: show
 
-To perform a preorder traversal, it is necessary to visit each of the
-children for a given node (say :math:`R`) from left to right.
-This is accomplished by starting at R's leftmost child
-(call it :math:`T`).
-From :math:`T`, we can move to :math:`T`'s right sibling, and then
-to that node's right sibling, and so on.
-
-Using the General Tree ADT show above, here is an
+Using the General Tree ADT shown above, here is an
 implementation to print the nodes of a general tree in
 preorder.
 Note the `while` loop at the end, which processes the list of
