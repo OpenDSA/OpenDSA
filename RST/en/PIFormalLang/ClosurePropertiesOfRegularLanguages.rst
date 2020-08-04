@@ -15,27 +15,31 @@ Closure Properties of Regular Grammars
 Closure Concept
 ---------------
 
-.. inlineav:: ClosureConcept ff
-      :links: AV/PIExample/ClosurePropertiesRegularGrammars/ClosureConcept.css
-   :scripts: AV/PIExample/ClosurePropertiesRegularGrammars/ClosureConcept.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+.. inlineav:: ClosureConceptFF ff
+      :links: AV/PIExample/ClosurePropertiesRegularGrammars/ClosureConceptFF.css
+   :scripts: AV/PIExample/ClosurePropertiesRegularGrammars/ClosureConceptFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
-Closure of Regular Languages
-----------------------------
+Closure Properties of Regular Languages - Basic Operations
+----------------------------------------------------------
 
-.. inlineav:: ClosureRegularLang ff
-      :links: AV/PIExample/ClosurePropertiesRegularGrammars/ClosureRegularLang.css
-   :scripts: AV/PIExample/ClosurePropertiesRegularGrammars/ClosureRegularLang.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+.. inlineav:: ClosureRegularLangFF ff
+      :links: AV/PIExample/ClosurePropertiesRegularGrammars/ClosureRegularLangFF.css
+   :scripts: AV/PIExample/ClosurePropertiesRegularGrammars/ClosureRegularLangFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
-Remaining Regular languages Closure Properties
-----------------------------------------------
+Closure Properties of Regular Languages - More Operations
+---------------------------------------------------------
 
 .. inlineav:: RegularLangClosedUnder ff
       :links: AV/PIExample/ClosurePropertiesRegularGrammars/RegularLangClosedUnder.css
-   :scripts: AV/PIExample/ClosurePropertiesRegularGrammars/RegularLangClosedUnder.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+   :scripts: AV/PIExample/ClosurePropertiesRegularGrammars/RegularLangClosedUnder.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
+Questions about Regular Languages
+---------------------------------
 
-
-
+.. inlineav:: RegularLangQuestionsFF ff
+      :links: AV/PIExample/ClosurePropertiesRegularGrammars/RegularLangQuestionsFF.css
+   :scripts: AV/PIExample/ClosurePropertiesRegularGrammars/RegularLangQuestionsFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
+   :output: show

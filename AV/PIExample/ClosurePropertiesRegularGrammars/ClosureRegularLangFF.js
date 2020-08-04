@@ -1,6 +1,6 @@
 $(document).ready(function () {
     "use strict";
-    var av_name = "ClosureRegularLang";
+    var av_name = "ClosureRegularLangFF";
     var av = new JSAV(av_name);
     var Frames = PIFRAMES.init(av_name);
      // Load the config object with interpreter and code created by odsaUtils.js
@@ -13,10 +13,17 @@ $(document).ready(function () {
         
 
     //frame 1
-    av.umsg("Consider regular languages $L_1$ and $L_2$. Since they are regular languages, we know that there exist regular expressions $r_1$ and $r_2$ such that $L_1=L(r_1)$ and $L_2=L(r_2)$.");
+    av.umsg("Now let us study the Regular Properties for Regular Languages.");
     av.displayInit();
 
     //frame 2
+    av.umsg(Frames.addQuestion("q2"));
+    av.step();
+
+    //frame 3
+    av.umsg("Consider regular languages $L_1$ and $L_2$. Since they are regular languages, we know that there exist regular expressions $r_1$ and $r_2$ such that $L_1=L(r_1)$ and $L_2=L(r_2)$.");
+    av.step();
+
     av.umsg("$r1+r2$ is a regular expression denoting $L_1 \\cup L_2$So, regular languages are closed under union.<br> $r1r2$ is a regular expression denoting $L_1L_2$. So, regular languages are closed under concatenation.<br> $r_1^*$ is a regular expression denoting $L_1^*$. So, regular languages are closed under star-closure.");
     av.step();
 
