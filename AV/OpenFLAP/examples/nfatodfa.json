@@ -1,7 +1,7 @@
 [
     {
         "expression": "",
-        "description": "Conver the following NFA to DFA",
+        "description": "Convert the following NFA to DFA",
         "type": "description",
         "testCases": [
             {
