@@ -66,11 +66,11 @@ controllerProto.startTesting = function () {
 			numberOfTestCases++;
 			var isDFA = !this.testND();
 			if (isDFA) {
-				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='correct'>" + (inputResult ? "Yes" : "No") + "</td></tr>");
+				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='correct'>" + "Yes" + "</td></tr>");
 				count++;
 				testRes.push('Test' + testNum + ':' + 'Correct');
 			} else {
-				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='wrong'>" + (inputResult ? "Yes" : "No") + "</td></tr>");
+				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='wrong'>" + "No" + "</td></tr>");
 				testRes.push('Test' + testNum + ':' + 'Wrong');
 				return 0;
 			}

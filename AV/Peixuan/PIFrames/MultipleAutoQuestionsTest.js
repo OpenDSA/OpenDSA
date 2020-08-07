@@ -13,6 +13,10 @@ $(document).ready(function(){
   nfa.layout();
   av.step();
 
+  //need insert step() before this function
+  //USE this to clean the remaning graphs
+  cleanRemaingGraph(av_name);
+
   var url = "../../../AV/VisFormalLang/FA/Machines/EvenBinaryDFACON.jff";
   av.umsg("In this slideshow, we will trace the acceptance or rejections of some strings. The given machine can accept any even number. You can click on any cell to see the process again starting from the clicked cell");
   /*********************************************/
@@ -29,5 +33,6 @@ $(document).ready(function(){
                       ["0", "1", "0", "1", "0", "0", "0", "1", "0"]],
                       {left: 80, top: 260},
                       piframesLocations);
+  /*Make sure only call recorded at the end*/
   av.recorded();
 });

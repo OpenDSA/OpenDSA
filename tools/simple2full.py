@@ -12,7 +12,7 @@ from docutils.parsers.rst import Directive
 from docutils.parsers.rst import directives
 from collections import OrderedDict
 from docutils.core import publish_parts
-from optparse import OptionParser
+from argparse import ArgumentParser
 from ODSA_Config import read_conf_file, get_odsa_dir
 
 mod_options = None    # custom options specified for modules
@@ -950,18 +950,18 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
   return full_config
 
 if __name__ == '__main__':
-  parser = OptionParser()
-  parser.add_option("--expanded", help="Generates an expanded configuration with extra details",dest="expanded", action="store_true", default=False)
-  parser.add_option("--verbose", help="Prints progress information.",dest="verbose", action="store_true", default=False)
-  (options, args) = parser.parse_args()
+  parser = ArgumentParser()
+  expandHelp = "Generates an expanded configuration with extra details"
+  parser.add_argument("--expanded", help=expandHelp, action="store_true", default=False)
+  verboseHelp = "Prints progress information"
+  parser.add_argument("--verbose", help=verboseHelp, action="store_true", default=False)
+  parser.add_argument("config", help="input JSON config file path")
+  parser.add_argument("output", help="output JSON file path")
+  args = parser.parse_args()
 
-  if len(args) != 2:
-    print_err("Usage: " + sys.argv[0] + " config_file_path output_file_path [--expanded]")
-    sys.exit(1)
-
-  config_file = args[0]
-  output_file = args[1]
-  full_conf = generate_full_config(config_file, False, options.expanded, options.verbose)
+  config_file = args.config
+  output_file = args.output
+  full_conf = generate_full_config(config_file, False, args.expanded, args.verbose)
 
   with open(output_file, 'wt', encoding='utf-8') as outfile:
     json.dump(full_conf, outfile, indent=2)

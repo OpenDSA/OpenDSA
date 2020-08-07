@@ -22,7 +22,7 @@ from docutils.parsers.rst import Directive
 from docutils.parsers.rst import directives
 from collections import OrderedDict
 from docutils.core import publish_parts
-from optparse import OptionParser
+from argparse import ArgumentParser
 
 folder_names = {
     "AlgAnal": "Algorithm Analysis",
@@ -711,21 +711,18 @@ def collect_mods(everything_config, mod_list):
 
 if __name__ == '__main__':
 
-  parser = OptionParser()
-  parser.add_option("-d", "--dev", help="Causes rst2json.py to run in development mode",dest="dev_mode", action="store_true", default=False)
-  (options, args) = parser.parse_args()
+  parser = ArgumentParser()
+  configHelp = 'simple config JSON files'
+  parser.add_argument("config", action="extend", nargs="*", type=str, help=configHelp)
+  devHelp = "Causes rst2json.py to run in development mode"
+  parser.add_argument("-d", "--dev", help=devHelp, dest="dev_mode", action="store_true", default=False)
+  args = parser.parse_args()
 
-  simple_configs = None
-
-  if len(args) > 0:
-    simple_configs = args[0]
-    simple_configs = simple_configs.split("|")
-
-    for config in simple_configs:
-      simple_config_path = "config/"+config+"_simple.json"
-      if not os.path.exists(simple_config_path):
-          print_err("Error: Simple configuration file \"%s_simple.json\" doesn't exist uner config folder\n" % config)
-          sys.exit(1)
+  for config in args.config:
+    simple_config_path = "config/" + config + "_simple.json"
+    if not os.path.exists(simple_config_path):
+      print_err("Error: Simple configuration file doesn't exist:", simple_config_path)
+      sys.exit(1)
 
   register()
 
@@ -772,14 +769,14 @@ if __name__ == '__main__':
       everything_config['chapters'][folder_names[rst_dir_name]] = OrderedDict()
     everything_config['chapters'][folder_names[rst_dir_name]][rst_dir_name+'/'+rst_fname] = mod_config
 
-    if options.dev_mode:
+    if args.dev_mode:
       save_debug_files(rst_parts['whole'], mod_json, rst_fname)
 
   everything_config = add_chapter(everything_config, "Appendix")
-  if options.dev_mode:
+  if args.dev_mode:
     everything_config = sort_by_keys(everything_config)
 
   save_generated_config(everything_config, simple_configs)
 
-  if options.dev_mode:
+  if args.dev_mode:
     reorder_orig_config()
