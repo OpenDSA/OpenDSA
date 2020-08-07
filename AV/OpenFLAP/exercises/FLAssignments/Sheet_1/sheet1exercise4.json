@@ -1,4 +1,15 @@
 [{
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "exerciseType": "DFA",
+    "totalTrueCases": 2,
+    "totalFalseCases": 2,
+    "containLetters": ["a", "b"],
+    "randomStringLength": [0, 15],
+    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
+    "trueCounter": 0,
+    "falseCounter": 0,
+    "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
+    "generatorflag": 0,
     "expression": "",
     "description": "Give a DFA that accepts the language over Σ ={a, b} where every string does not have 3 consecutive a's.",
     "type": "description",
@@ -7,5 +18,5 @@
         "nodes": [],
         "edges": []
     },
-    "solution": ""
+    "solution": "./sheet1exercise4.jff"
 }]
