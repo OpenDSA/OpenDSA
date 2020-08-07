@@ -62,10 +62,8 @@ Observe how the class diagram quickly communicates the name and characteristics 
 
    Bag image
 
-videos two ways:
+Dr. Shaffer's video style:
 ----------------
-
-The same video is here twice.  Once using the raw::html command, once using the iframe.  I'm putting them up here to figure out why they're different.
 
 .. raw:: html
 
@@ -74,11 +72,34 @@ The same video is here twice.  Once using the raw::html command, once using the 
      </center>
 
 
+Changing uniconf_id but not entry_id
+------------------------------------
 
-.. iframe:: AV/MDTest/video_embed.html
-   :name: IframeTest
-   :width: 1100
-   :height: 800
+.. raw:: html
+
+    <center>
+    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950392/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_ioniqhja&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+    </center>
+
+
+Changing entry_id but not uiconf_id
+------------------------------------
+
+.. raw:: html
+
+     <center>
+     <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_2khwqw42&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+     </center>
+
+
+Changing BOTH entry_id and uiconf_id
+------------------------------------
+
+.. raw:: html
+
+    <center>
+    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950392/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_2khwqw42&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+    </center>
 
 
 
