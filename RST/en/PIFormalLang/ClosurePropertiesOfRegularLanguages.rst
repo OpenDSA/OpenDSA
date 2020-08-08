@@ -28,12 +28,12 @@ Closure Properties of Regular Languages - Basic Operations
    :scripts: AV/PIExample/ClosurePropertiesRegularGrammars/ClosureRegularLangFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
-Closure Properties of Regular Languages - More Operations
----------------------------------------------------------
+Closure Properties of Regular Languages - Intersection and difference
+---------------------------------------------------------------------
 
-.. inlineav:: RegularLangClosedUnder ff
-      :links: AV/PIExample/ClosurePropertiesRegularGrammars/RegularLangClosedUnder.css
-   :scripts: AV/PIExample/ClosurePropertiesRegularGrammars/RegularLangClosedUnder.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
+.. inlineav:: RegularLangClosedInterFF ff
+      :links: AV/PIExample/ClosurePropertiesRegularGrammars/RegularLangClosedInterFF.css
+   :scripts: AV/PIExample/ClosurePropertiesRegularGrammars/RegularLangClosedInterFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
 Questions about Regular Languages

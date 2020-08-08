@@ -64,8 +64,41 @@ $(document).ready(function () {
   av.umsg("Exactly. So, Regular Languages are closed under complementation.");
   av.step();
 
+  //frame 14
+  av.umsg(Frames.addQuestion("q14"));
+  av.step();
+  
+  //frame 15
+  av.umsg("Exactly. So, Regular Languages are closed under reverse.");
+  av.step();
 
-  //frame 6 sub
+  //frame 16
+  av.umsg(Frames.addQuestion("q16"));
+  av.step();
+  
+  //frame 17
+  av.umsg(Frames.addQuestion("q17"));
+  av.step();
+  
+  //frame 18
+  av.umsg("Exactly. So, Regular Languages are closed under intersection.");
+  av.step();
+
+  //frame 19
+  av.umsg(Frames.addQuestion("q19"));
+  av.step();
+  
+  //frame 20
+  av.umsg(Frames.addQuestion("q20"));
+  av.step();
+
+  //frame 
+  av.umsg("Exactly. So, Regular Languages are closed under difference.");
+  av.step();
+  
+  
+  av.umsg("We learned about some easy to proof regular languages closure properties.")
+ /* //frame 6 sub
   av.umsg("Now, construct $M′=(Q′,\\sum′,\\delta′,p_0,F_0)$<br> $Q′=(Q×P)$<br> $\\delta$′:<br> $\\delta′((q_i,p_j),a)=(q_k,p_l)$ if <br> $\\delta_1((q_i,a)=qk)\\in M_1$ and $\\delta_2((p_j,a)=pl)\\in M_1$.<br> $F′=\\{(q_i,p_j)\\in Q′ | q_i \\in F_1 and p_j\\in F_2\\}$<br> $w\\in L(M′)\\Leftrightarrow w \\in L_1 \\cap L_2 \\rightarrow$ is closed under intersection");
   av.step();
  
@@ -112,7 +145,7 @@ $(document).ready(function () {
   newFA.addEdge(q7, q7, {weight: "a"});
   newFA.addEdge(q7, q8, {weight: "b"});
 
-
+*/
 
 
 

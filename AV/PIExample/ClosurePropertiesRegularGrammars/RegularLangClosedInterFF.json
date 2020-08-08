@@ -1,0 +1,42 @@
+{
+    "translations": {
+      "en": {
+        "q3": {
+          "type": "select",
+          "description": "We need to construct an NFA $M$ for the intersection between $L_1$ and $L_2$.",
+          "question": "What are the components of $M$?",
+          "answer": ["$Q$, states", "$\\sigma$, alphabets", "$\\delta$, transition function", "$q_0$, start state", "F, set of finall states"],
+          "choices": ["$Q$, states", "$\\sigma$, alphabets", "$\\delta$, transition function", "$q_0$, start state", "F, set of finall states"]
+        },
+        "q2": {
+          "type": "multiple",
+          "description": ,
+          "question": "Are regular languages closed under complementation? Think about it.",
+          "answer": "Yes, replacing all final states to be non-final states, and all non-final states to final states will give the Complete NFA for the complement of $L$.",
+          "choices": ["Yes, replacing all final states to be non-final states, and all non-final states to final states will give the Complete NFA for the complement of $L$.", "No"]
+        },
+        "q_1": {
+          "type": "multiple",
+          "description": "$L_1 = \\{a^*b^* \\cup b^*a^*\\}$ <br> $L_2 = \\{b^n | n is even, n > 0\\}$",
+          "question": "What is $\\dfrac{L_1}{L_2}?$",
+          "answer": "$a^*b^*$",
+          "choices": ["$a^*b^*$", "$ab^*$", "$a^*b$", "$a*b^*$"]
+        },
+        "q_2": {
+            "type": "multiple",
+            "description": "$\\sum = \\{a, b, c\\}$, $Γ=\\{0,1\\}$",
+            "question": "What is $h(bc)$?",
+            "answer": "000",
+            "choices": ["000", "00", "0", "11"]
+        },
+        "q_3": {
+            "type": "multiple",
+            "description": "$\\sum = \\{a, b, c\\}$, $Γ=\\{0,1\\}$",
+            "question": "What is $h(ab^*)$",
+            "answer": "$11(00)^*$",
+            "choices": ["1100", "11", "00", "$11(00)^*$", "$1100^*$"]
+          }
+      }
+    }
+  }
+  
