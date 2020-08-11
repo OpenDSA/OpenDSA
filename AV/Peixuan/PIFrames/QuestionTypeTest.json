@@ -13,7 +13,7 @@
 				"description": "This is a true/false question",
                 "question": "Anwser is True",
                 "answer": "True",
-                "choices": ["True", "False"]
+                "choices": []
             },
             "q2": {
                 "type": "select",
