@@ -1,0 +1,198 @@
+{
+    "translations": {
+      "en": {
+        "q3": {
+          "type": "select",
+          "description": "The algorithm will create an NFA $M_{intersection}$ for the intersection between $N_1 = (Q, \\Sigma, \\delta_1, q_0, F_1)$ and $N_2 = M_2 = (P, \\Sigma, \\delta_2, p_0, F_2)$.",
+          "question": "What are the components of $M_{intersection}$?",
+          "answer": ["$Q\\prime$, states", "$\\Sigma$, alphabets", "$\\delta\\prime$, transition function", "start state", "$F\\prime$, set of finall states"],
+          "choices": ["$Q\\prime$, states", "$\\Sigma$, alphabets", "$\\delta\\prime$, transition function", "start state", "$F\\prime$, set of finall states"]
+        },
+        "q4": {
+          "type": "multiple",
+          "description": "The algorithm will create an NFA $M_{intersection}$ for the intersection between $N_1$ and $N_2$.",
+          "question": "What is the main idea for the intersection operator?",
+          "answer": "The idea is to construct an NFA so that it accepts only if both $N_1$ and $M_2$ accept",
+          "choices": ["The idea is to construct an NFA so that it accepts only if both $N_1$ and $M_2$ accept",
+            "The idea is to construct an NFA so that it accepts only if $N_1$ ",
+            "The idea is to construct an NFA so that it accepts only if $M_2$ accept"]
+        },
+        "q5": {
+          "type": "multiple",
+          "description": "The states for $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$ will be the cartesian product between the sates for $N_1 = (Q, \\Sigma, \\delta_1, q_0, F_1)$ and $N_2 = M_2 = (P, \\Sigma, \\delta_2, p_0, F_2)$.",
+          "question": "What is the value of $Q\\prime$.",
+          "answer": "$Q * P$",
+          "choices": ["$Q * P$", "$F_1 * F_2$", "$q_0 * p_0$"]
+        },
+        "q6": {
+          "type": "multiple",
+          "description": "The states for $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$ will be the cartesian product between the sates for $N_1 = (Q, \\Sigma, \\delta_1, q_0, F_1)$ and $N_2 = M_2 = (P, \\Sigma, \\delta_2, p_0, F_2)$.",
+          "question": "What is the start state for $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$?",
+          "answer": "$(q_0, p_0)$",
+          "choices": ["$q_0$", "$p_0$", "$(q_0, p_0)$"]
+        },
+        "q7": {
+          "type": "multiple",
+          "description": "Let us think about the transition function for $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, (q_0, p_0), F\\prime)$.",
+          "question": "Suppose that $\\delta_1(q_i, a) = q_k \\in N_1$ and $\\delta_2(p_j, a) = p_l) \\in N_2$. What is $\\delta((q_i, p_j), a)$?",
+          "answer": "$(q_k, p_l)$",
+          "choices": ["$p_l$", "$q_k$", "$(q_k, p_l)$"]
+        },
+        "q8": {
+          "type": "multiple",
+          "description": "Finally, the set of final states for $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, (q_0, p_0), F\\prime)$. Since we need to find the intersection for $L_1$ and $L_2$, we need to accept all string that are accepted in both $N_1$ and $N_2$.",
+          "question": "What should be the states $\\in F\\prime$?",
+          "answer": "all ordered pairs $(q_i, p_j)$ where $q_i \\in F_1$ and $p_j \\in F_2$",
+          "choices": ["all $q_i \\in F_1$", "all $p_j \\in F_2$", "all ordered pairs $(q_i, p_j)$ where $q_i \\in F_1$ and $p_j \\in F_2$"]
+        },
+        "q10": {
+          "type": "multiple",
+          "description": "We begin with the NFAs for the languages",
+          "question": "This NFA represents which language?",
+          "answer": "$L_1$",
+          "choices": ["$L_1$", "$L_2$"]
+        },
+        "q11": {
+          "type": "multiple",
+          "description": "We begin with the NFAs for the languages",
+          "question": "This NFA represents which language?",
+          "answer": "$L_2$",
+          "choices": ["$L_1$", "$L_2$"]
+        },
+        "q12": {
+          "type": "multiple",
+          "description": "Now let us define the intersection NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "Since the set $Q\\prime$ is the cartesian product between the states of both NFAs. What is $|Q\\prime|$?",
+          "answer": "6",
+          "choices": ["3", "2", "6"]
+        },
+        "q13": {
+          "type": "multiple",
+          "description": "Now let us define the intersection NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "What is the start state for $M_{intersection}$?",
+          "answer": "$(1,A)$",
+          "choices": ["$(1,A)$", "$(1,B)$", "$(1,C)$", "$(2,A)$", "$(2,B)$", "$(2,C)$"]
+        },
+        "q14": {
+          "type": "multiple",
+          "description": "Now let us define the intersection NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "What are the final states for $M_{intersection}$?",
+          "answer": "$(2,C)$",
+          "choices": ["$(1,A)$", "$(1,B)$", "$(1,C)$", "$(2,A)$", "$(2,B)$", "$(2,C)$"]
+        },
+        "q15": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "What is $\\delta((1, A), a)$?",
+          "answer": "$(1,B)$",
+          "choices": ["$(1,A)$", "$(1,B)$", "$(1,C)$", "$(2,A)$", "$(2,B)$", "$(2,C)$", "$\\phi$"]
+        },
+        "q16": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "[T|F] The first language can start with $b$",
+          "answer": "True",
+          "choices": ["True", "False"]
+        },
+        "q17": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "[T|F] The second language can start with $b$",
+          "answer": "False",
+          "choices": ["True", "False"]
+        },
+        "q18": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "[T|F]The interesection between $L_1$, and $L_2$ can start with $b$",
+          "answer": "False",
+          "choices": ["True", "False"]
+        },
+        "q19": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "What is $\\delta((1, A), b)$?",
+          "answer": "$\\phi$",
+          "choices": ["$(1,A)$", "$(1,B)$", "$(1,C)$", "$(2,A)$", "$(2,B)$", "$(2,C)$", "$\\phi$"]
+        },
+        "q20": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "What does $\\phi$ represent?",
+          "answer": "trap state",
+          "choices": ["nothing", "trap state"]
+        },
+        "q21": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "What is $\\delta((1, B), a)$?",
+          "answer": "$(1,C)$",
+          "choices": ["$(1,A)$", "$(1,B)$", "$(1,C)$", "$(2,A)$", "$(2,B)$", "$(2,C)$", "$\\phi$"]
+        },
+        "q22": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "What is $\\delta((1, B), b)$?",
+          "answer": "$\\phi$",
+          "choices": ["$(1,A)$", "$(1,B)$", "$(1,C)$", "$(2,A)$", "$(2,B)$", "$(2,C)$", "$\\phi$"]
+        },
+        "q23": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "What is $\\delta((1, C), a)$?",
+          "answer": "$(1,C)$",
+          "choices": ["$(1,A)$", "$(1,B)$", "$(1,C)$", "$(2,A)$", "$(2,B)$", "$(2,C)$", "$\\phi$"]
+        },
+        "q24": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "What is $\\delta((1, C), b)$?",
+          "answer": "$(2,C)$",
+          "choices": ["$(1,A)$", "$(1,B)$", "$(1,C)$", "$(2,A)$", "$(2,B)$", "$(2,C)$", "$\\phi$"]
+        },
+        "q25": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "What is $\\delta((2, C), a)$?",
+          "answer": "$\\phi$",
+          "choices": ["$(1,A)$", "$(1,B)$", "$(1,C)$", "$(2,A)$", "$(2,B)$", "$(2,C)$", "$\\phi$"]
+        },
+        "q26": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "What is $\\delta((2, C), b)$?",
+          "answer": "$\\phi$",
+          "choices": ["$(1,A)$", "$(1,B)$", "$(1,C)$", "$(2,A)$", "$(2,B)$", "$(2,C)$", "$\\phi$"]
+        },
+        "q27": {
+          "type": "multiple",
+          "description": "Now let us define the transition function for NFA $M_{intersection} = (Q\\prime, \\Sigma, \\delta\\prime, start state, F\\prime)$",
+          "question": "Should we consider the remaining states?",
+          "answer": "No, since we can not reach them from the start state, then these states will be unreachable and should be removed.",
+          "choices": ["Yes, we must consider all states", "No, since we can not reach them from the start state, then these states will be unreachable and should be removed."]
+        },
+        "q_1": {
+          "type": "multiple",
+          "description": "$L_1 = \\{a^*b^* \\cup b^*a^*\\}$ <br> $L_2 = \\{b^n | n is even, n > 0\\}$",
+          "question": "What is $\\dfrac{L_1}{L_2}?$",
+          "answer": "$a^*b^*$",
+          "choices": ["$a^*b^*$", "$ab^*$", "$a^*b$", "$a*b^*$"]
+        },
+        "q_2": {
+            "type": "multiple",
+            "description": "$\\sum = \\{a, b, c\\}$, $Γ=\\{0,1\\}$",
+            "question": "What is $h(bc)$?",
+            "answer": "000",
+            "choices": ["000", "00", "0", "11"]
+        },
+        "q_3": {
+            "type": "multiple",
+            "description": "$\\sum = \\{a, b, c\\}$, $Γ=\\{0,1\\}$",
+            "question": "What is $h(ab^*)$",
+            "answer": "$11(00)^*$",
+            "choices": ["1100", "11", "00", "$11(00)^*$", "$1100^*$"]
+          }
+      }
+    }
+  }
+  
