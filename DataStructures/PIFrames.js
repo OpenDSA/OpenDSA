@@ -1,47 +1,6 @@
 /** mbhatia@vt.edu */
 (function($) {
-  //Peixuan moved this part to init so it will listen to the right buttons
-  /*
-  $(document).ready(function() {
-    //disable jsavend, as it allows student to jump to last slide
-    //automatically enabled by injector once all questions for slideshow have been answered
-    // $(".jsavend").css("pointer-events", "none");
-    $(".jsavend").css("visibility", "hidden");
-
-    //edge case: what if first slide has question?
-    //1 signifies a forward click; used by injector to increment queue if necessary
-    $(".jsavforward").click(function() {
-      var buttonGroup = $(this).parent();
-      var parentAV = $(buttonGroup)
-        .parent()
-        .attr("id");
-
-      PIFRAMES.callInjector(parentAV, 1);
-    }),
-      //0 signifies a backward click; used by injector to decrement queue if necessary
-      $(".jsavbackward").click(function() {
-        var buttonGroup = $(this).parent();
-        var parentAV = $(buttonGroup)
-          .parent()
-          .attr("id");
-        PIFRAMES.callInjector(parentAV, 0);
-      }),
-      $(".jsavbegin").click(function() {
-        var buttonGroup = $(this).parent();
-        var parentAV = $(buttonGroup)
-          .parent()
-          .attr("id");
-        PIFRAMES.callInjector(parentAV, -1);
-      }),
-      $(".jsavend").click(function() {
-        var buttonGroup = $(this).parent();
-        var parentAV = $(buttonGroup)
-          .parent()
-          .attr("id");
-        PIFRAMES.callInjector(parentAV);
-      });
-  });*/
-
+  //Peixuan moved listeners to init so they will listen to the right buttons
   var PIFrames = {
     questionType: "",
     submit: `<br><input type="submit" value="Submit"> </br>`,
@@ -161,48 +120,9 @@
           }
         },
 
-        //TODO: may need to pass av_name in the future if there are multiple frames on the page
         //Peixuan updated selectors to the specfic one
         //so the css will not mess up if there are multiple frames on the page
         updateCanvas: function(theHtml) {
-          /*if ($(`.${this.class}`).children().length > 0) {
-            $(`.${this.class}`).empty();
-            $(`.${this.class}`).append(theHtml);
-          } else {
-            $(`.${this.class}`).append(theHtml);
-          }
-
-          if ($(".PIFRAMES").find("iframe").length > 0) {
-            $(".jsavoutput.jsavline").css("width", "0%");
-            $(".jsavoutput.jsavline").css("display", "none");
-            $(".picanvas").css({
-              width: "900px",
-              height: "600px"
-            });
-            $(".PIFRAMES").css({
-              width: "100%",
-              height: "100%",
-              left: 50
-            });
-          } else {
-            $(".jsavoutput.jsavline").css({
-              display: "inline-block",
-              width: "60%",
-              "vertical-align": "top"
-            });
-            $(".picanvas").css({
-              width: "0%",
-              height: "100%"
-            });
-            $(".PIFRAMES").css({
-              width: "100%",
-              height: "none",
-              left: 5,
-              position: "relative",
-              top: 10
-            }); //Mostafa added position:re;ative to fix the problem related to miss positioning the question in some frames(Mathmatical.js)
-            //So the width changed fromm 34 to 100, left from 690 to 5 and added the top.
-          }*/
           if ($("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").children().length > 0) {
             $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").empty();
             $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(theHtml);
@@ -339,12 +259,17 @@
 
         buildElement: function(question) {
           var type = question.type;
+          //Peixuan added this part to auto check if type is multiple or select
+          if(type === "select" && !Array.isArray(question.answer)){
+            type = "multiple";
+          }
 
           questionType = type;
           switch (type) {
             case "multiple":
               return this.buildMultipleChoice(question);
             case "true/false":
+              return this.buildTFChoice(question);
             case "textBox":
             case "textBoxStrict":
             case "textBoxFuzzy":
@@ -359,6 +284,19 @@
           }
         },
 
+        //Peixuan added this method to generate a random sequence including
+        //numbers of [0...'limit')
+        randomSeqGenerator: function(limit){
+          var seq = [];
+          while(seq.length < limit){
+            var num = Math.floor(Math.random()*limit);
+            if(seq.indexOf(num) === -1){
+              seq.push(num);
+            }
+          }
+          return seq;
+        },
+
         buildMultipleChoice: function(question) {
           var choices = question.choices;
           var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
@@ -368,14 +306,41 @@
           var html = [];
           var header = `<p>${question.question}</p>`;
           html.push(header);
+
+          //Peixuan changed this part or let it randomly lists choices
+          var seq = this.randomSeqGenerator(choices.length);
+          for (var i = 0; i < choices.length; i++) {
+            var radio = `<input type="radio" name=${this.av_name} value='${choices[seq[i]]}' style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
+            html.push(radio);
+          }
+
+          /*
           for (var i = 0; i < choices.length; i++) {
             var radio = `<input type="radio" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
             html.push(radio);
-          }
+          }*/
 
           html.push(PIFrames.submit);
           html.push(PIFrames.feedback);
 
+          return form.append(html.join(""));
+        },
+
+        //Peixuan added this question type
+        buildTFChoice: function(question) {
+          var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
+          var form = $(
+            `<form class=${this.av_name} onsubmit='return ${execute}'></form>`
+          );
+          var html = [];
+          var header = `<p>${question.question}</p>`;
+          html.push(header);
+          var tElement = `<input type="radio" name=${this.av_name} value='True' style='margin-right: 5px'>True</></br>`;
+          html.push(tElement);
+          var fElement = `<input type="radio" name=${this.av_name} value='False' style='margin-right: 5px'>False</></br>`;
+          html.push(fElement);
+          html.push(PIFrames.submit);
+          html.push(PIFrames.feedback);
           return form.append(html.join(""));
         },
 
@@ -429,10 +394,18 @@
           var html = [];
           var header = `<p>${question.question}</p>`;
           html.push(header);
+
+          //Peixuan changed this part or let it randomly lists choices
+          var seq = this.randomSeqGenerator(choices.length);
+          for (var i = 0; i < choices.length; i++) {
+            var checkbox = `<input type="checkbox" name=${this.av_name} value='${choices[seq[i]]}' style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
+            html.push(checkbox);
+          }
+          /*
           for (var i = 0; i < choices.length; i++) {
             var checkbox = `<input type="checkbox" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
             html.push(checkbox);
-          }
+          }*/
 
           html.push(PIFrames.submit);
           html.push(PIFrames.feedback);
@@ -554,48 +527,6 @@
             this.enableForwardButton();
 
             //Peixuan updated selectors
-            /*
-              if ($("input[type=submit]").is(":visible")) {
-                $("input[type=submit]").hide();
-                var timeFlag = 1;
-                if (question.correctFeedback != undefined) {
-                  //Hide the button and show the correct statement
-                  $(".PIFRAMES").append(
-                    `<p>Correct: ${question.correctFeedback}</p>`
-                  );
-                  var timeFlag = 2;
-                } else {
-                  $(".PIFRAMES").append(`<p>Correct!</p>`);
-                }
-                var forwardButton = $(`#${this.av_name}`).find(
-                  "span.jsavforward"
-                );
-                setTimeout(() => forwardButton.click(), 1000 * timeFlag);
-              }
-
-              //the last question in the slideshow has been answered correctly, so enable the jsavend button
-              if (current == this.queue.elements.length - 1) {
-                this.enableFastForwardButton();
-              }
-            } else {
-              //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
-              if ($("input[type=submit]").is(":visible")) {
-                $("input[type=submit]").hide();
-
-                var timeFlag = 1;
-                if (question.incorrectFeedback != undefined) {
-                  document.getElementById("feedback").innerHTML =
-                    "Incorrect: " + `${question.incorrectFeedback}`;
-                  timeFlag = 2;
-                }
-                $("#feedback").show();
-                this.disableForwardButton();
-                setTimeout(() => {
-                  $("input[type=submit]").show();
-                  $("#feedback").hide();
-                }, 1000 * timeFlag);
-              }
-            }*/
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
               $("." + av_name + "> input[type=submit]").hide();
               var timeFlag = 1;
@@ -805,23 +736,11 @@
       this.table[av_name].checkIfSlideHasQuestion(jsavControl);
     },
 
-    //Peixuan added locations parameter
-    getQuestions(av_name, locations = {top: 10, left: 5}) {
-      var json_url = $('script[src*="/' + av_name + '.js"]')[0].src + "on";
-      var json_data;
-      $.ajax({
-        url: json_url,
-        dataType: "json",
-        async: false,
-        success: function(data) {
-          json_data = data;
-        }
-      });
-
+    //Peixuan packaged checkpoint jump functions into this method
+    skipToCheckPoint(av_name) {
       let data = {
         "frame_name": av_name,
       };
-
       var skip_to;
       // get user checkout
       $.ajax({
@@ -838,19 +757,68 @@
           skip_to = parseInt(data.result)
         },
         error: function(err) {
-          skip_to = 0
+          skip_to = 0;
         }
       });
 
+      //skip the slides to the checkpoint by triggering the forward button
+      //this process need to be done after the page is fully loaded
+      if(skip_to !== 0){
+        $(document).ready(function() {
+          var counter = $("#"+av_name +" .jsavcounter").text().split("/");
+          var limit = parseInt(counter[1]);
+          var current = parseInt(counter[0]);
+          while($("#"+av_name +" span.jsavforward").css("pointer-events") === "auto" && current < limit){
+            current++;
+            $("#"+av_name +" span.jsavforward").trigger("click");
+          }
+        });
+      }
+      return skip_to;
+    },
+
+    //Peixuan added locations parameter
+    getQuestions(av_name, locations = {top: 10, left: 5}) {
+      var json_url = $('script[src*="/' + av_name + '.js"]')[0].src + "on";
+      var json_data;
+      $.ajax({
+        url: json_url,
+        dataType: "json",
+        async: false,
+        success: function(data) {
+          json_data = data;
+        }
+      });
+
+      var skip_to = this.skipToCheckPoint(av_name);
       var injector = this.Injector(json_data, av_name, skip_to, locations);
       PIFRAMES.table[av_name] = injector;
+
       return injector;
     },
 
-    //add div to the av_name's picanvas, so that dynamic questions have a hooking point
-    //Peixuan added locations parameter
-    init(av_name, av, locations = {top: 10, left: 5}) {
-      console.log(av_name + " init")
+    //Peixuan added this method to allow users can append multiple data
+    //into the same PIframme
+    appendQuestionData(av_name, locations = {top: 10, left: 5}, data){
+        //if this is the first question data, initialize the frame
+        if(typeof PIFRAMES.table[av_name] === "undefined"){
+          PIFRAMES.initElement(av_name);
+          var skip_to = this.skipToCheckPoint(av_name);
+          var injector = PIFRAMES.Injector(data, av_name, skip_to, locations);
+          PIFRAMES.table[av_name] = injector;
+          return injector;
+        }
+        else{ //append new dataset to the old data field
+          var injector = PIFRAMES.table[av_name];
+          var questions = injector.myData;
+          var newData = Object.assign(questions["translations"]["en"], data["translations"]["en"]);
+          questions["translations"]["en"] = newData;
+          return injector;
+        }
+    },
+
+    //Peixuan moved element initialization process to here
+    initElement(av_name){
       var container = $(`#${av_name}`);
 
       var qButton = $("<div />", {
@@ -891,31 +859,12 @@
         "min-height": "500px"
       });
 
-
-
-      // $(".jsavcanvas").append(qButton);
-      // $(".jsavcanvas").append(question);
-
       $(container).append(qButton);
       $(container).append(question);
 
       //Peixuan updated selectors, moved jsavControl buttons to here and added locations parameter
-      /*
-      $(".SHOWQUESTION,.PIFRAMES").wrapAll('<div class="picanvas"></div>');
-      $(".picanvas").insertAfter($(".jsavcanvas"));
-
-
-
-      $(".jsavcanvas,.picanvas").wrapAll('<div class="canvaswrapper"></div>');
-      $(".canvaswrapper").css({
-        display: "flex"
-      });
-
-      return this.getQuestions(av_name);*/
-
       $("#" + av_name + " > .SHOWQUESTION, #" + av_name + " > .PIFRAMES").wrapAll('<div class="picanvas"></div>');
       $("#" + av_name + " > .picanvas").insertAfter($("#" + av_name + " > .jsavcanvas"));
-
       $("#" + av_name + " > .jsavcanvas, #" + av_name + " > .picanvas").wrapAll('<div class="canvaswrapper"></div>');
       $("#" + av_name + " > .canvaswrapper").css({
         display: "flex"
@@ -957,8 +906,16 @@
             .attr("id");
           PIFRAMES.callInjector(parentAV);
         });
+    },
 
-      return this.getQuestions(av_name, locations);
+    //add div to the av_name's picanvas, so that dynamic questions have a hooking point
+    //Peixuan added locations parameter
+    //and moved initialization process to the method above
+    init(av_name, av, locations = {top: 10, left: 5}) {
+      console.log(av_name + " init")
+      this.initElement(av_name);
+      var injector = this.getQuestions(av_name, locations);
+      return injector;
     },
 
     revealQuestion: function(av_name) {
@@ -980,8 +937,8 @@
           checked.push(
             form.children(`input[name=${av_name}]:checked`)[i].defaultValue
           );
-        }
-      } else if (questionType === "multiple") {
+        }//Peixuan added true/false type
+      } else if (questionType === "multiple" || questionType === "true/false") {
         checked = form.children(`input[name=${av_name}]:checked`).val();
       }
       // console.log(checked);
