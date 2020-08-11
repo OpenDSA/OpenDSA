@@ -7,11 +7,11 @@
    :author: Peixuan Ge
    :topic: Samples
 
-Samples
-=======
-
 PIFrames Test
--------------
+=============
+
+multiple json datasets test
+---------------------------
 .. inlineav:: LeftLinearGrammarFF ff
    :links: AV/Peixuan/PIFrames/LeftLinearGrammarFF.css
    :scripts:   AV/Peixuan/PIFrames/PIFrames.js lib/underscore.js DataStructures/FLA/FA.js AV/Peixuan/PIFrames/AddQuestions.js AV/Peixuan/PIFrames/LeftLinearGrammarFF.js
@@ -20,4 +20,11 @@ PIFrames Test
 .. inlineav:: MultipleAutoQuestionsTest ff
    :links: AV/Peixuan/PIFrames/MultipleAutoQuestionsTest.css
    :scripts:   AV/Peixuan/PIFrames/PIFrames.js DataStructures/FLA/GrammarMatrix.js DataStructures/FLA/FA.js AV/Peixuan/PIFrames/AddQuestions.js AV/Peixuan/PIFrames/MultipleAutoQuestionsTest.js
+   :output: show
+
+question type test
+------------------
+.. inlineav:: QuestionTypeTest ff
+   :links: AV/Peixuan/PIFrames/QuestionTypeTest.css
+   :scripts:   AV/Peixuan/PIFrames/PIFrames.js  AV/Peixuan/PIFrames/QuestionTypeTest.js
    :output: show

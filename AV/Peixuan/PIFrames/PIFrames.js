@@ -1,46 +1,6 @@
 /** mbhatia@vt.edu */
 (function($) {
-  //Peixuan moved this part to init so it will listen to the right buttons
-  /*
-  $(document).ready(function() {
-    //disable jsavend, as it allows student to jump to last slide
-    //automatically enabled by injector once all questions for slideshow have been answered
-    // $(".jsavend").css("pointer-events", "none");
-    $(".jsavend").css("visibility", "hidden");
-
-    //edge case: what if first slide has question?
-    //1 signifies a forward click; used by injector to increment queue if necessary
-    $(".jsavforward").click(function() {
-      var buttonGroup = $(this).parent();
-      var parentAV = $(buttonGroup)
-        .parent()
-        .attr("id");
-
-      PIFRAMES.callInjector(parentAV, 1);
-    }),
-      //0 signifies a backward click; used by injector to decrement queue if necessary
-      $(".jsavbackward").click(function() {
-        var buttonGroup = $(this).parent();
-        var parentAV = $(buttonGroup)
-          .parent()
-          .attr("id");
-        PIFRAMES.callInjector(parentAV, 0);
-      }),
-      $(".jsavbegin").click(function() {
-        var buttonGroup = $(this).parent();
-        var parentAV = $(buttonGroup)
-          .parent()
-          .attr("id");
-        PIFRAMES.callInjector(parentAV, -1);
-      }),
-      $(".jsavend").click(function() {
-        var buttonGroup = $(this).parent();
-        var parentAV = $(buttonGroup)
-          .parent()
-          .attr("id");
-        PIFRAMES.callInjector(parentAV);
-      });
-  });*/
+  //Peixuan moved listeners to init so they will listen to the right buttons
 
   var PIFrames = {
     questionType: "",
@@ -161,7 +121,6 @@
           }
         },
 
-        //TODO: may need to pass av_name in the future if there are multiple frames on the page
         //Peixuan updated selectors to the specfic one
         //so the css will not mess up if there are multiple frames on the page
         updateCanvas: function(theHtml) {
@@ -301,12 +260,17 @@
 
         buildElement: function(question) {
           var type = question.type;
+          //Peixuan added this part to auto check if type is multiple or select
+          if(type === "select" && !Array.isArray(question.answer)){
+            type = "multiple";
+          }
 
           questionType = type;
           switch (type) {
             case "multiple":
               return this.buildMultipleChoice(question);
             case "true/false":
+              return this.buildTFChoice(question);
             case "textBox":
             case "textBoxStrict":
             case "textBoxFuzzy":
@@ -321,6 +285,19 @@
           }
         },
 
+        //Peixuan added this method to generate a random sequence including
+        //numbers of [0...'limit')
+        randomSeqGenerator: function(limit){
+          var seq = [];
+          while(seq.length < limit){
+            var num = Math.floor(Math.random()*limit);
+            if(seq.indexOf(num) === -1){
+              seq.push(num);
+            }
+          }
+          return seq;
+        },
+
         buildMultipleChoice: function(question) {
           var choices = question.choices;
           var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
@@ -330,14 +307,41 @@
           var html = [];
           var header = `<p>${question.question}</p>`;
           html.push(header);
+
+          //Peixuan changed this part or let it randomly lists choices
+          var seq = this.randomSeqGenerator(choices.length);
+          for (var i = 0; i < choices.length; i++) {
+            var radio = `<input type="radio" name=${this.av_name} value='${choices[seq[i]]}' style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
+            html.push(radio);
+          }
+
+          /*
           for (var i = 0; i < choices.length; i++) {
             var radio = `<input type="radio" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
             html.push(radio);
-          }
+          }*/
 
           html.push(PIFrames.submit);
           html.push(PIFrames.feedback);
 
+          return form.append(html.join(""));
+        },
+
+        //Peixuan added this question type
+        buildTFChoice: function(question) {
+          var execute = `PIFRAMES.saveAndCheckStudentAnswer("${this.av_name}")`;
+          var form = $(
+            `<form class=${this.av_name} onsubmit='return ${execute}'></form>`
+          );
+          var html = [];
+          var header = `<p>${question.question}</p>`;
+          html.push(header);
+          var tElement = `<input type="radio" name=${this.av_name} value='True' style='margin-right: 5px'>True</></br>`;
+          html.push(tElement);
+          var fElement = `<input type="radio" name=${this.av_name} value='False' style='margin-right: 5px'>False</></br>`;
+          html.push(fElement);
+          html.push(PIFrames.submit);
+          html.push(PIFrames.feedback);
           return form.append(html.join(""));
         },
 
@@ -391,10 +395,17 @@
           var html = [];
           var header = `<p>${question.question}</p>`;
           html.push(header);
+          //Peixuan changed this part or let it randomly lists choices
+          var seq = this.randomSeqGenerator(choices.length);
+          for (var i = 0; i < choices.length; i++) {
+            var checkbox = `<input type="checkbox" name=${this.av_name} value='${choices[seq[i]]}' style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
+            html.push(checkbox);
+          }
+          /*
           for (var i = 0; i < choices.length; i++) {
             var checkbox = `<input type="checkbox" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
             html.push(checkbox);
-          }
+          }*/
 
           html.push(PIFrames.submit);
           html.push(PIFrames.feedback);
@@ -934,8 +945,8 @@
           checked.push(
             form.children(`input[name=${av_name}]:checked`)[i].defaultValue
           );
-        }
-      } else if (questionType === "multiple") {
+        }//Peixuan added true/false type
+      } else if (questionType === "multiple" || questionType === "true/false") {
         checked = form.children(`input[name=${av_name}]:checked`).val();
       }
       // console.log(checked);

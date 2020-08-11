@@ -1,0 +1,27 @@
+{
+    "translations": {
+        "en": {
+            "q0": {
+                "type": "select",
+				"description": "This is a single answer select question(multiple question)",
+                "question": "Anwser is A",
+                "answer": "A",
+                "choices": ["A", "B", "C", "D"]
+            },
+            "q1": {
+                "type": "true/false",
+				"description": "This is a true/false question",
+                "question": "Anwser is True",
+                "answer": "True",
+                "choices": ["True", "False"]
+            },
+            "q2": {
+                "type": "select",
+                "description": "This is a multiple answer select question(select question)",
+                "question": "Anwser is A, B",
+                "answer": ["A", "B"],
+                "choices": ["A", "B", "C", "D"]
+            }
+        }
+    }
+}
