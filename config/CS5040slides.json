@@ -60,16 +60,16 @@
   }, 
   "chapters": {
     "Week 1, Day 1": {
-      "CS5040slides/CS5040Intro": {},
+      "CourseSpecific/CS5040Intro": {},
       "CS5040slides/Intro": {}
     },
     "Week 1, Day 2": {
-      "CS5040slides/P1": {},
+      "CourseSpecific/P1": {},
       "CS5040slides/MemManage": {},
       "CS5040slides/Math": {}
     },
     "Week 2, Day 1": {
-      "CS5040slides/P1D2": {},
+      "CourseSpecific/P1D2": {},
       "CS5040slides/ProjManage": {},
       "CS5040slides/AlgAnal": {}
     },
@@ -89,7 +89,7 @@
       "CS5040slides/BST": {}
     },
     "Week 5, Day 1": {
-      "CS5040slides/P2": {},
+      "CourseSpecific/P2": {},
       "CS5040slides/Binary3": {}
     },
     "Week 5, Day 2": {
@@ -98,7 +98,7 @@
       "CS5040slides/Comparison": {}
     },
     "Week 6, Day 1": {
-      "CS5040slides/Midterm1": {}
+      "CourseSpecific/Midterm1": {}
     },
     "Week 6, Day 2": {
       "CS5040slides/Huffman": {}
@@ -111,7 +111,7 @@
     "Week 7, Day 2": {
       "CS5040slides/Sorting2": {}
     },
-        "Week 8, Day 1": {
+    "Week 8, Day 1": {
       "CS5040slides/Sorting3": {}
     },
     "Week 8, Day 2": {
@@ -129,7 +129,7 @@
       "CS5040slides/BTree": {}
     },
     "Week 11.2": {
-      "CS5040slides/Mid2": {},
+      "CourseSpecific/Mid2": {},
       "CS5040slides/SkipList": {}
     },
     "Week 13": {

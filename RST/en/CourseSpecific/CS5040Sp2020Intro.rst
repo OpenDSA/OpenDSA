@@ -99,7 +99,7 @@ Introduction
      program" courses (CS 1114, CS 2114) and "content" courses.
    * To do well, you must be able to handle both
       * Programming (we focus on projects with dynamic memory allocation and
-        file processing, and they have signficant design challenges)
+        file processing, and they have significant design challenges)
       * Content, theory and analysis
 
    * The projects test programming proficiencies
@@ -110,7 +110,7 @@ Introduction
 
    Most graduates from our department will tell you that this is one
    of the two hardest courses, and also one of the two most important
-   for job preparation. So its both high effort and high value.
+   for job preparation. So it's both high effort and high value.
 
 
 .. slide:: OpenDSA
@@ -123,14 +123,14 @@ Introduction
 
   * Homework due periodically through the semester
 
-    * Small homework (Chapter 1) due at 11pm this Thursday (in 2 days)
+    * Small homework (Chapter 1) due at 11pm this Friday (in 2 days)
 
 .. slide:: Web-CAT
 
-  * Get the updated plugin
-  * Project submission
   * Support for junit testing
   * Auto-grading: Correctness, style
+  * Get the updated plugin
+  * Project submission
 
 .. slide:: Milestones
 
@@ -149,7 +149,7 @@ Introduction
    * Look at Canvas
    * Look at Piazza site, make sure you are enrolled there
    * Look at Project 1 spec: Will discuss next time
-   * Do Chapter 1 exercises in OpenDSA by 11:00pm Thursday (in 2 days)
+   * Do Chapter 1 exercises in OpenDSA by 11:00pm Friday (in 2 days)
 
 .. slide:: Before you leave today
 
