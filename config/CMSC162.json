@@ -1,0 +1,380 @@
+{
+  "title": "Longwood CMSC 162 Intro to Algorithms II",
+  "desc": "Supporting a relatively traditional CS2, using C++.  ADTs and implementations of the classic CS2 data structures.",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "code_lang": {
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    },
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    }
+  },
+  "build_JSAV": false,
+  "build_cmap": true,
+  "suppress_todo": true,
+  "dispModComp": false,
+  "tabbed_codeinc": true,
+  "narration_enabled": true,
+  "glob_exer_options": {
+    "JXOP-debug": "false"
+  },
+  "glob_ss_options": {
+    "required": false,
+    "points": 0,
+    "threshold": 1
+  },
+  "glob_ka_options": {
+    "required": false,
+    "points": 1,
+    "threshold": 5
+  },
+  "glob_pe_options": {
+    "required": false,
+    "points": 2,
+    "threshold": 0.9
+  },
+  "glob_ff_options": {
+    "required": false,
+    "points": 0,
+    "threshold": 1
+  },
+  "glob_extr_options": {
+    "points": 1,
+    "code-workout": {
+      "points": 2
+    },
+    "code-workout-jhavepop": {
+      "points": 1
+    },
+    "mastery-grid-java-animations": {
+      "points": 1
+    },
+    "mastery-grid-jsparsons-python": {
+      "points": 1
+    },
+    "mastery-grid-python-animations": {
+      "points": 1
+    }
+  },
+  "chapters": {
+    "Preface": {
+      "Intro": {}
+    },
+    "Designing and specifying data structures": {
+      "Background/IntroDSA": {},
+      "Design/ADT": {
+        "IntroADTSumm": {
+          "threshold": 4
+        }
+      },
+      "List/ListADT": {
+        "List ADT Programming Exercise": {
+          "points": 1
+        }
+      }
+    },
+    "Object Oriented Programming": {
+      "Design/IntroOO": {},
+      "Design/IntroUML": {}
+    },
+    "List Interface & Array based Lists": {
+      "List/ListArray": {
+        "AlistRemovePRO": {
+          "threshold": 4
+        },
+        "AlistInsertPRO": {
+          "threshold": 3
+        },
+        "ALSumm": {
+          "threshold": 3
+        }
+      }
+    },
+    "Pointers in Java (Not C++! See course notes)": {
+      "PointersJava/PointerIntro": {},
+      "PointersJava/BasicPointers1": {},
+      "PointersJava/BasicPointers2": {
+        "PointerEX2PRO": {
+          "threshold": 1
+        },
+        "PointerEX1PRO": {
+          "threshold": 1
+        }
+      },
+      "PointersJava/Syntax": {},
+      "PointersJava/LocalMem": {},
+      "PointersJava/HeapMem": {},
+      "PointersJava/Links1": {
+        "PointerEX3PRO": {
+          "threshold": 1
+        }
+      },
+      "PointersJava/Links2": {},
+      "PointersJava/PointersCM": {},
+      "PointersJava/Exercises": {}
+    },
+    "Pointers in C++": {
+      "PointersCPP/PointerIntro": {},
+      "PointersCPP/BasicPointers": {},
+      "PointersCPP/LocalMem": {},
+      "PointersCPP/HeapMem": {},
+      "PointersCPP/RefParam": {},
+      "PointersCPP/Exercises": {}
+    },
+    "Stacks": {
+      "List/StackArray": {},
+      "List/StackLinked": {}
+    },
+    "Recursion": {
+      "RecurTutor/RecIntro": {},
+      "RecurTutor/Write": {},
+      "RecurTutor/CodeCompletionEx": {
+        "Recursion Programming Exercise: Add odd positions": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Count Characters": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Cummulative Sum": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: GCD": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Largest": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Multiply": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Sum Of the Digits": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: log": {
+          "points": 1
+        }
+      },
+      "RecurTutor/HarderWrite": {},
+      "RecurTutor/HarderCodeCompletionEx": {
+        "Recursion Programming Exercise: Decimal to Binary": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Is Reverse": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Minimum of array": {
+          "points": 1
+        }
+      },
+      "RecurTutor/WritingEx": {
+        "Recursion Programming Exercise: Cannonballs": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Check Palindrome": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Pascal Triangle": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Subset Sum": {
+          "points": 1
+        }
+      },
+      "RecurTutor/Trace": {},
+      "RecurTutor/TracingEx": {
+        "RecTraceSummbckwrdFlow": {
+          "threshold": 1
+        },
+        "RecTraceSummFuncErr": {
+          "threshold": 1
+        },
+        "RecTraceSummFwdFlow": {
+          "threshold": 1
+        },
+        "RecTraceSummHard": {
+          "threshold": 1
+        },
+        "RecTraceSummHowmany": {
+          "threshold": 1
+        },
+        "RecTraceSummTwoRC": {
+          "threshold": 1
+        }
+      },
+      "RecurTutor/RecSummaryEx": {}
+    },
+    "Sorting": {
+      "Sorting/InSort": {},
+      "Sorting/SortNotation": {
+        "SortIntroSumm": {
+          "threshold": 3
+        }
+      },
+      "Design/Comparison": {},
+      "Sorting/InsertionSort": {},
+      "Sorting/BubbleSort": {
+        "BubsortPRO": {
+          "points": 2,
+          "threshold": 3
+        }
+      },
+      "Sorting/SelectionSort": {
+        "SelsortPRO": {
+          "points": 2
+        }
+      }
+    },
+    "Algorithm Analysis": {
+      "AlgAnal/AnalPrelim": {
+        "AnalPrelimSumm": {
+          "threshold": 4
+        }
+      },
+      "AlgAnal/AnalIntro": {
+        "CompareGrowth": {
+          "points": 2,
+          "threshold": 3
+        },
+        "GrowthRatesPRO": {
+          "threshold": 3
+        }
+      },
+      "AlgAnal/AnalCases": {},
+      "AlgAnal/AnalCompvsAlg": {
+        "FasterCorASumm": {
+          "threshold": 2
+        }
+      },
+      "AlgAnal/AnalAsymptotic": {
+        "UpperBoundsSumm": {
+          "threshold": 4
+        }
+      },
+      "AlgAnal/AnalProgram": {
+        "binarySearchPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          },
+          "points": 1,
+          "threshold": 1
+        }
+      },
+      "AlgAnal/AlgAnalSummCS2": {}
+    },
+    "Queues": {
+      "List/Queue": {},
+      "List/QueueLinked": {}
+    },
+    "Linked Lists": {
+      "List/ListLinked": {
+        "LlistRemovePRO": {
+          "points": 2
+        }
+      },
+      "List/ListAnalysis": {
+        "ListOverhead": {
+          "threshold": 3
+        },
+        "LLSumm": {
+          "points": 2,
+          "threshold": 6
+        }
+      },
+      "List/ListDouble": {},
+      "List/ListElement": {
+        "ListSumm": {
+          "threshold": 3
+        }
+      },
+      "List/Freelist": {},
+      "List/ListSumm": {
+        "ListChapterSumm": {
+          "points": 2,
+          "threshold": 10
+        },
+        "ListdsSumm": {
+          "points": 2
+        }
+      }
+    },
+    "Binary Trees": {
+      "Binary/BinaryTreeIntro": {},
+      "Binary/BinaryTree": {
+        "DefSumm": {
+          "points": 2,
+          "threshold": 8
+        },
+        "Treeprobs": {
+          "threshold": 4
+        }
+      },
+      "Binary/BinaryTreeTraversal": {
+        "btTravPreorderPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          },
+          "points": 1
+        },
+        "btTravInorderPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          },
+          "points": 1
+        },
+        "btTravPostorderPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          },
+          "points": 1
+        },
+        "TravSumm": {
+          "threshold": 3
+        }
+      },
+      "Binary/BST": {
+        "BSTSumm": {
+          "threshold": 2
+        },
+        "BSTinsertPRO": {
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          },
+          "points": 1
+        },
+        "BSTremovePRO": {
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          }
+        },
+        "BSTsearchPRO": {
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          },
+          "points": 1
+        }
+      }
+    },
+    "Appendix": {
+      "Glossary": {},
+      "Bibliography": {}
+    }
+  }
+}
