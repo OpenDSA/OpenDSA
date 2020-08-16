@@ -194,7 +194,7 @@
         "PIFormalLang/ClosurePropertiesOfRegularLanguages": {}
       },
       "Identifying Non-regular Languages":{
-        "VisFormalLang/NonRegular":{}
+        "PIFormalLang/NonRegular":{}
       },
       "Context-Free Grammars and Languages":{
         "PIFormalLang/ContexFreeLanguages": {},

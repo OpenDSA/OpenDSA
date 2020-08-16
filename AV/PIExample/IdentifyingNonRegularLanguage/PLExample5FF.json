@@ -1,0 +1,139 @@
+{
+    "translations": {
+      "en": {
+        "q2": {
+          "type": "select",
+          "description":"Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.",
+          "question": "What is the first step?",
+          "answer": "Assume $L$ is regular",
+          "choices": ["Assume $L$ is regular", "Assume $L$ is not regular"]
+        },
+        "q3": {
+          "type": "true/false",
+          "description":"Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.<br/>Assume $L$ is regular.",
+          "question": "[T|F] Since $L$ is regular, the pumping lemma holds",
+          "answer": "True",
+          "choices": []
+        },
+        "q4": {
+          "type": "select",
+          "description":"Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+          "question": "Based on the Pumping Lemma, what is the main condition for the length of the string $w$?",
+          "answer": "$|w| \\ge m$",
+          "choices": ["$|w| \\ge m$", "$|w| \\le m$", "$|w| = m$"]
+        },
+        "q5": {
+          "type": "true/false",
+          "description":"Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+          "question": "Based on the Pumping Lemma, $m$ is the number of states for any NFA that recognize $L$.",
+          "answer": "True",
+          "choices": []
+        },
+        "q6": {
+          "type": "select",
+          "description":"Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+          "question": "Which of the following is a correct string $\\in L$?",
+          "answer": "$w = a^{m+1}b^{m}$",
+          "choices": ["$w = a^{m+1}b^{m}$", "$w = aa^*b^*$", "$w = aaaaabbbb$"]
+        },
+        "q7": {
+          "type": "true/false",
+          "description":"Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+          "question": "We can not use the string $w = aaaaabbbb$ because It is not enough to pick our favorite value of $m$ for which the language would not be regular. We have to show that no satisfactory $m$ can exist",
+          "answer": "True",
+          "choices": []
+        },
+        "q8": {
+          "type": "select",
+          "description":"Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+          "question": "What is the length of $w = a^{m+1}b^{m}$?",
+          "answer": "$2m + 1$",
+          "choices": ["$2m$", "$m$", "$3m$", "$2m + 1$"]
+        },
+        "q9": {
+          "type": "select",
+          "description":"Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w = a^{m+1}b^{m}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+          "question": "The next step is to decompose the string $w$ int $xyz$. What does $x$ represent?",
+          "answer": "the part of the string that is captured by the NFA before the pump.",
+          "choices": ["the part of the string that is captured by the NFA before the pump.", "the part of the string that is captured by the pump (cycle).", "the part of the string that is captured by the NFA after the pump."]
+        },
+        "q10": {
+          "type": "select",
+          "description":"Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w = a^{m+1}b^{m}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+          "question": "The next step is to decompose the string $w$ int $xyz$. What does $y$ represent?",
+          "answer": "the part of the string that is captured by the pump (cycle).",
+          "choices": ["the part of the string that is captured by the NFA before the pump.", "the part of the string that is captured by the pump (cycle).", "the part of the string that is captured by the NFA after the pump."]
+        },
+        "q11": {
+          "type": "select",
+          "description":"Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w = a^{m+1}b^{m}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+          "question": "The next step is to decompose the string $w$ int $xyz$. What does $z$ represent?",
+          "answer": "the part of the string that is captured by the NFA after the pump.",
+          "choices": ["the part of the string that is captured by the NFA before the pump.", "the part of the string that is captured by the pump (cycle).", "the part of the string that is captured by the NFA after the pump."]
+        },
+        "q12": {
+          "type": "select",
+          "description":"Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w = a^{m+1}b^{m}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+          "question": "Based on the Pumping Lemma, what are the main conditions to successfully decomposing $w$ to $xyz$?",
+          "answer": ["$|xy| \\leq m$", "$|y| \\geq 1$", "$xy^iz \\in L$ for all $i \\ge 0$"],
+          "choices": ["$|xy| \\leq m$", "$|y| \\geq 1$", "$xy^iz \\in L$ for all $i \\ge 0$"]
+        },
+        "q13": {
+          "type": "select",
+          "description":"let $w = a^{m+1}b^{m}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$",
+          "question": "Since $|xy| \\le m$, which of the following is a correct substring for $xy$ part",
+          "answer": "$a^m$",
+          "choices": ["$a^m$", "$a^{m+1}$", "$a^{m+1}b$"]
+        },
+        "q14": {
+          "type": "select",
+          "description":"let $w = a^{m+1}b^{m}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$",
+          "question": "Since we selected $xy = a^m$, which of the following is a correct substring for $z$ part",
+          "answer": "$ab^m$",
+          "choices": ["$b^{m}$", "$ab^m$"]
+        },
+        "q15": {
+          "type": "select",
+          "description":"let $w = a^{m+1}b^{m}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>So the partition is:$x=a^{m -k}\\quad |\\quad y=a^k\\quad |\\quad z=ab^m$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+          "question": "Let us say that $i = 2$. What is the value of $xy^2z$?",
+          "answer": "$a^{m+k+1}b^m$",
+          "choices": ["$a^{m+k+1}b^m$", "$a^{m+3}b^m$", "$a^{m + 1 - k}b^m$"]
+        },
+        "q16": {
+          "type": "select",
+          "description":"let $w = a^{m+1}b^{m}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>So the partition is:$x=a^{m -k}\\quad |\\quad y=a^k\\quad |\\quad z=ab^m$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+          "question": "Is $a^{m+k+1}b^m \\in L$?",
+          "answer": "Yes, because the number of a's is bigger than the number of b's",
+          "choices": ["No", "Yes, because the number of a's is bigger than the number of b's"]
+        },
+        "q17": {
+            "type": "select",
+            "description":"let $w = a^{m+1}b^{m}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>So the partition is:$x=a^{m -k}\\quad |\\quad y=a^k\\quad |\\quad z=ab^m$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+            "question": "Since $i = 2$ is faild to find a string $\\not \\int L$, we need to try a different value for $i$. Let us say that $i = 0$. What is the value of $xy^0z$?",
+            "answer": "$a^{m + 1 - k}b^m$",
+            "choices": ["$a^{m+k+1}b^m$", "$a^{m+3}b^m$", "$a^{m + 1 - k}b^m$"]
+          },
+        "q18": {
+          "type": "select",
+          "description":"let $w = a^{m+1}b^{m}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>So the partition is:$x=a^{m -k}\\quad |\\quad y=a^k\\quad |\\quad z=ab^m$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+          "question": "Is $a^{m + 1 - k}b^m$ \\in L$?",
+          "answer": "No, because $k >1$ the number of a's will not be greater than the number of b's",
+          "choices": ["No, because $k >1$ the number of a's will not be greater than the number of b's", "Yes"]
+        },
+        "q19": {
+          "type": "true/false",
+          "description":"let $w = a^{m+1}b^{m}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>So the partition is:$x=a^{m -k}\\quad |\\quad y=a^k\\quad |\\quad z=ab^m$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+          "question": "[T|F] $xy^iz \\in L$ for all $i\\ge 0$",
+          "answer": "False",
+          "choices": []
+        },
+        "q20": {
+          "type": "true/false",
+          "description":"let $w = a^{m+1}b^{m}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>So the partition is:$x=a^{m -k}\\quad |\\quad y=a^k\\quad |\\quad z=ab^m$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$.<br/>But clearly this is not true. Contradiction",
+          "question": "[T|F] based on our previous steps, $L$ is regular.",
+          "answer": "False",
+          "choices": []
+        }
+      }
+    }
+  }

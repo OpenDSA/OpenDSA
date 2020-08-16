@@ -1,0 +1,188 @@
+{
+  "translations": {
+    "en": {
+      "q3": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.",
+        "question": "What is the first step?",
+        "answer": "Assume $L$ is regular",
+        "choices": ["Assume $L$ is regular", "Assume $L$ is not regular"]
+      },
+      "q4": {
+        "type": "true/false",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.<br/>Assume $L$ is regular.",
+        "question": "[T|F] Since $L$ is regular, the pumping lemma holds",
+        "answer": "True",
+        "choices": []
+      },
+      "q5": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "Based on the Pumping Lemma, what is the main condition for the length of the string $w$?",
+        "answer": "$|w| \\ge m$",
+        "choices": ["$|w| \\ge m$", "$|w| \\le m$", "$|w| = m$"]
+      },
+      "q6": {
+        "type": "true/false",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "Based on the Pumping Lemma, $m$ is the number of states for any NFA that recognize $L$.",
+        "answer": "True",
+        "choices": []
+      },
+      "q7": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "Which of the following is a correct string $\\in L$?",
+        "answer": "$w = a^3b^mc^{m-3}$",
+        "choices": ["$w = a^3b^mc^{m-3}$", "$w = b^mc^m-3$", "$w = aaabbbbc$"]
+      },
+      "q8": {
+        "type": "true/false",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "We can not use the string $w = aaabbbbc$ because It is not enough to pick our favorite value of $m$ for which the language would not be regular. We have to show that no satisfactory $m$ can exist",
+        "answer": "True",
+        "choices": []
+      },
+      "q9": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "What is the length of $w = a^3b^mc^{m-3}$?",
+        "answer": "$2m$",
+        "choices": ["$2m$", "$m$", "$2m - 3$", "$2m + 3$"]
+      },
+      "q10": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w = a^3b^mc^{m-3}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ int $xyz$. What does $x$ represent?",
+        "answer": "the part of the string that is captured by the NFA before the pump.",
+        "choices": ["the part of the string that is captured by the NFA before the pump.", "the part of the string that is captured by the pump (cycle).", "the part of the string that is captured by the NFA after the pump."]
+      },
+      "q11": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w = a^3b^mc^{m-3}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ int $xyz$. What does $y$ represent?",
+        "answer": "the part of the string that is captured by the pump (cycle).",
+        "choices": ["the part of the string that is captured by the NFA before the pump.", "the part of the string that is captured by the pump (cycle).", "the part of the string that is captured by the NFA after the pump."]
+      },
+      "q12": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w = a^3b^mc^{m-3}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ int $xyz$. What does $z$ represent?",
+        "answer": "the part of the string that is captured by the NFA after the pump.",
+        "choices": ["the part of the string that is captured by the NFA before the pump.", "the part of the string that is captured by the pump (cycle).", "the part of the string that is captured by the NFA after the pump."]
+      },
+      "q13": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w = a^3b^mc^{m-3}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "Based on the Pumping Lemma, what are the main conditions to successfully decomposing $w$ to $xyz$?",
+        "answer": ["$|xy| \\leq m$", "$|y| \\geq 1$", "$xy^iz \\in L$ for all $i \\ge 0$"],
+        "choices": ["$|xy| \\leq m$", "$|y| \\geq 1$", "$xy^iz \\in L$ for all $i \\ge 0$"]
+      },
+      "q14": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$",
+        "question": "How many ways exist to divide $w$ into $xyz$?",
+        "answer": "3",
+        "choices": ["1", "2", "3"]
+      },
+      "q15": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$",
+        "question": "Since $|xy| \\le m$, which of the following is a correct substring for $xy$ part",
+        "answer": ["$a^3$", "$a^3b^{m-3}$"],
+        "choices": ["$a^3$", "$a^3b^{m-3}$", "$a^3b^mc^{m-3}$"]
+      },
+      "q16": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$",
+        "question": "Can we find a string that allows only a single case for $xyz$ divison?",
+        "answer": "No, becasue all strings in the language must start with 3 a's",
+        "choices": ["No, becasue all strings in the language must start with 3 a's", "Yes"]
+      },
+      "q17": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$",
+        "question": "What are the 3 possible cases for the $y$ part?",
+        "answer": ["$y$ contains only a’s", "$y$ contains only b’s", "$y$ contains a’s and b’s"],
+        "choices": ["$y$ contains only a’s", "$y$ contains only b’s", "$y$ contains a’s and b’s"]
+      },
+      "q18": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>$\\textbf{Case 1}$ $y$ contains only a's. Then $x$ contains 0 to 2 a’s, $y$ contains 1 to 3 a’s, and $z$ contains 0 to 2 a’s concatenated with the rest of the string $b^mc^{m−3}$, such that there are exactly 3 a’s.<br/>So the partition is: $x=a^k\\quad |\\quad y=a^j\\quad |\\quad z=a^{3-k-j}b^{m}c^{m-3}$ where $k\\ge 0,j>0$, and $k+j\\le 3$ for some constants k and j.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+        "question": "Let us say that $i = 2$. What is the value of $xy^2z$?",
+        "answer": ["$xy^2z = (a^k)(a^j)(a^j)(a^{3-j-k}b^mc^{m-3})$", "$xy^2z = a^{3+j}b^{m}c^{m-3}$"],
+        "choices": ["$xy^2z = (a^k)(a^j)(a^j)(a^{3-j-k}b^mc^{m-3})$", "$xy^2z = a^{3+j}b^{m}c^{m-3}$"]
+      },
+      "q19": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>$\\textbf{Case 1}$ $y$ contains only a's. Then $x$ contains 0 to 2 a’s, $y$ contains 1 to 3 a’s, and $z$ contains 0 to 2 a’s concatenated with the rest of the string $b^mc^{m−3}$, such that there are exactly 3 a’s.<br/>So the partition is: $x=a^k\\quad |\\quad y=a^j\\quad |\\quad z=a^{3-k-j}b^{m}c^{m-3}$ where $k\\ge 0,j>0$, and $k+j\\le 3$ for some constants k and j.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+        "question": "Is $a^{3+j}b^{m}c^{m-3}$ \\in L$?",
+        "answer": "No, since $j>0$, there are too many a’s. Contradiction",
+        "choices": ["Yes", "No, since $j>0$, there are too many a’s. Contradiction"]
+      },
+      "q20": {
+        "type": "true/false",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>$\\textbf{Case 1}$ $y$ contains only a's. Then $x$ contains 0 to 2 a’s, $y$ contains 1 to 3 a’s, and $z$ contains 0 to 2 a’s concatenated with the rest of the string $b^mc^{m−3}$, such that there are exactly 3 a’s.<br/>So the partition is: $x=a^k\\quad |\\quad y=a^j\\quad |\\quad z=a^{3-k-j}b^{m}c^{m-3}$ where $k\\ge 0,j>0$, and $k+j\\le 3$ for some constants k and j.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+        "question": "[T|F] $xy^iz \\in L$ for all $i\\ge 0$",
+        "answer": "False",
+        "choices": []
+      },
+      "q21": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>$\\textbf{Case 1}$ $y$ contains only a's. Then $x$ contains 0 to 2 a’s, $y$ contains 1 to 3 a’s, and $z$ contains 0 to 2 a’s concatenated with the rest of the string $b^mc^{m−3}$, such that there are exactly 3 a’s.<br/>So the partition is: $x=a^k\\quad |\\quad y=a^j\\quad |\\quad z=a^{3-k-j}b^{m}c^{m-3}$ where $k\\ge 0,j>0$, and $k+j\\le 3$ for some constants k and j.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+        "question": "[T|F] based on our previous steps, $L$ is regular.",
+        "answer": "Not yet, we need to prove the other 2 cases.",
+        "choices": ["Yes", "Not yet, we need to prove the other 2 cases."]
+      },
+      "q22": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>$\\textbf{Case 2}$ $y$ contains only b's. Then $x$ contains 3 a’s followed by 0 or more b’s, $y$ contains 1 to $m−3$ b’s, and z contains 3 to $m−3$ b’s concatenated with the rest of the string $c^{m−3}$.<br/>So the partition is: $x=a^3b^k\\quad |\\quad y=b^j\\quad |\\quad z=b^{m-k-j}c^{m-3}$ where $k\\ge 0, j>0$, and $k+j\\le m−3$ for some constants $k$ and $j$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+        "question": "Let us say that $i = 0$. What is the value of $xy^0z$?",
+        "answer": ["$xy^0z = (x)(z)$", "$xy^0z = (a^3)b^{m-j}c^{m-3})$"],
+        "choices": ["$xy^0z = (x)(z)$", "$xy^0z = (a^3)b^{m-j}c^{m-3})$"]
+      },
+      "q23": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>$\\textbf{Case 2}$ $y$ contains only b's. Then $x$ contains 3 a’s followed by 0 or more b’s, $y$ contains 1 to $m−3$ b’s, and z contains 3 to $m−3$ b’s concatenated with the rest of the string $c^{m−3}$.<br/>So the partition is: $x=a^3b^k\\quad |\\quad y=b^j\\quad |\\quad z=b^{m-k-j}c^{m-3}$ where $k\\ge 0, j>0$, and $k+j\\le m−3$ for some constants $k$ and $j$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+        "question": "Is $(a^3)b^{m-j}c^{m-3})$ \\in L$?",
+        "answer": "No, there are too few b's. Contradiction",
+        "choices": ["Yes", "No, there are too few b's. Contradiction"]
+      },
+      "q24": {
+        "type": "true/false",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>$\\textbf{Case 2}$ $y$ contains only b's. Then $x$ contains 3 a’s followed by 0 or more b’s, $y$ contains 1 to $m−3$ b’s, and z contains 3 to $m−3$ b’s concatenated with the rest of the string $c^{m−3}$.<br/>So the partition is: $x=a^3b^k\\quad |\\quad y=b^j\\quad |\\quad z=b^{m-k-j}c^{m-3}$ where $k\\ge 0, j>0$, and $k+j\\le m−3$ for some constants $k$ and $j$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+        "question": "[T|F] $xy^iz \\in L$ for all $i\\ge 0$",
+        "answer": "False",
+        "choices": []
+      },
+      "q25": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>$\\textbf{Case 2}$ $y$ contains only b's. Then $x$ contains 3 a’s followed by 0 or more b’s, $y$ contains 1 to $m−3$ b’s, and z contains 3 to $m−3$ b’s concatenated with the rest of the string $c^{m−3}$.<br/>So the partition is: $x=a^3b^k\\quad |\\quad y=b^j\\quad |\\quad z=b^{m-k-j}c^{m-3}$ where $k\\ge 0, j>0$, and $k+j\\le m−3$ for some constants $k$ and $j$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+        "question": "[T|F] based on our previous steps, $L$ is regular.",
+        "answer": "Not yet, we need to prove the remaining case.",
+        "choices": ["Yes", "Not yet, we need to prove the remaining case."]
+      },
+      "q26": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>$\\textbf{Case 3}$ $y$ contains a's and b's. Then $x$ contains 0 to 2 a’s, $y$ contains 1 to 3 a’s, and 1 to m−3 b’s, $z$ contains 3 to m−1 b’s concatenated with the rest of the string $c^m−3$.<br/>So the partition is: $x=a^{3-k}\\quad |\\quad y=a^{k}b^j\\quad |\\quad z=b^{m-j}c^{m-3}$ where $3\\ge k>0$, and $m−3\\gej>0$ for some constants $k$ and $j$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+        "question": "Let us say that $i = 2$. $xy^2z = a^{3}b^ja^kb^mc^{m-3} \\not\\in L$?",
+        "answer": "Yes, there are b's before a's.",
+        "choices": ["Yes, there are b's before a's.", "No"]
+      },
+      "q27": {
+        "type": "true/false",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>$\\textbf{Case 3}$ $y$ contains a's and b's. Then $x$ contains 0 to 2 a’s, $y$ contains 1 to 3 a’s, and 1 to m−3 b’s, $z$ contains 3 to m−1 b’s concatenated with the rest of the string $c^m−3$.<br/>So the partition is: $x=a^{3-k}\\quad |\\quad y=a^{k}b^j\\quad |\\quad z=b^{m-j}c^{m-3}$ where $3\\ge k>0$, and $m−3\\gej>0$ for some constants $k$ and $j$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+        "question": "[T|F] $xy^iz \\in L$ for all $i\\ge 0$",
+        "answer": "False",
+        "choices": []
+      },
+      "q28": {
+        "type": "select",
+        "description":"let $w = a^3b^mc^{m-3}$ we need to partition $w$ to $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, $xy^iz \\in L$ for all $i \\ge 0$.<br/>$\\textbf{Case 3}$ $y$ contains a's and b's. Then $x$ contains 0 to 2 a’s, $y$ contains 1 to 3 a’s, and 1 to m−3 b’s, $z$ contains 3 to m−1 b’s concatenated with the rest of the string $c^m−3$.<br/>So the partition is: $x=a^{3-k}\\quad |\\quad y=a^{k}b^j\\quad |\\quad z=b^{m-j}c^{m-3}$ where $3\\ge k>0$, and $m−3\\gej>0$ for some constants $k$ and $j$.<br/>If $L$ is regular, It should be true that $xy^iz \\in L$ for all $i\\ge 0$",
+        "question": "[T|F] based on our previous steps, $L$ is regular.",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      }
+    }
+  }
+}

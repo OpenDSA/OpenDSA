@@ -1,0 +1,48 @@
+{
+    "translations": {
+      "en": {
+        "q2": {
+          "type": "select",
+          "description":"We need to prove that $L_1 = \\{a^nb^na^n\\ |\\ n > 0\\}$ is not regular by using the regular languages closure properties.<br/>The goal is to try to construct $\\{a^nb^n | n > 0\\}$  which we know is not regular.",
+          "question": "What is the first step?",
+          "answer": "Assume $L_1$ is regular",
+          "choices": ["Assume $L_1$ is regular", "Assume $L$ is not regular"]
+        },
+        "q3": {
+          "type": "select",
+          "description":"We need to prove that $L_1 = \\{a^nb^na^n\\ |\\ n > 0\\}$ is not regular by using the regular languages closure properties.",
+          "question": "Let us try intersect $L_1$ with $\\{a^*b^*\\}$. What will be the results?",
+          "answer": "$\\emptyset$",
+          "choices": ["$\\{a^nb^n | n > 0\\}$", "$\\emptyset$"]
+        },
+        "q4": {
+          "type": "select",
+          "description":"We need to prove that $L_1 = \\{a^nb^na^n\\ |\\ n > 0\\}$ is not regular by using the regular languages closure properties.<br/>Let $L_2 = \\{a^*\\}$",
+          "question": "Is $L_2$ regular?",
+          "answer": "Yes, because $L_1$ is described by a RegEx.",
+          "choices": ["Yes, because $L_1$ is described by a RegEx.", "No"]
+        },
+        "q5": {
+          "type": "true/false",
+          "description":"We need to prove that $L_1 = \\{a^nb^na^n\\ |\\ n > 0\\}$ is not regular by using the regular languages closure properties.<br/>Let $L_2 = \\{a^*\\}$",
+          "question": "By closure under right quotient $L_3 = L_1 \\backslash L_2 = \\{a^nb^na^p | 0 \\le p \\le n, n > 0\\}$. $L_3$ is regular",
+          "answer": "True",
+          "choices": []
+        },
+        "q6": {
+          "type": "true/false",
+          "description":"We need to prove that $L_1 = \\{a^nb^na^n\\ |\\ n > 0\\}$ is not regular by using the regular languages closure properties.<br/>Let $L_2 = \\{a^*\\}$<br/>By closure under right quotient $L_3 = L_1 \\backslash L_2 = \\{a^nb^na^p | 0 \\le p \\le n, n > 0\\}$.",
+          "question": "By closure under intersection, $L_4 = L_3 \\cap \\{a^{*}b^{*}\\} = \\{a^nb^n | n > 0\\}$. $L_4$ is regular?",
+          "answer": "True",
+          "choices": []
+        },
+        "q7": {
+          "type": "select",
+          "description":"We need to prove that $L_1 = \\{a^nb^na^n\\ |\\ n > 0\\}$ is not regular by using the regular languages closure properties.<br/>Let $L_2 = \\{a^*\\}$<br/>By closure under right quotient $L_3 = L_1 \\backslash L_2 = \\{a^nb^na^p | 0 \\le p \\le n, n > 0\\}$.<br/>By closure under intersection, $L_4 = L_3 \\cap \\{a^{*}b^{*}\\} = \\{a^nb^n | n > 0\\}$",
+          "question": "But, what do we know about $L_4$ for sure",
+          "answer": "We know that $L_4 = \\{a^nb^n | n > 0\\}$ is not regular",
+          "choices": ["We know that $L_4 = \\{a^nb^n | n > 0\\}$ is not regular", "it is regular"]
+        }
+      }
+    }
+  }

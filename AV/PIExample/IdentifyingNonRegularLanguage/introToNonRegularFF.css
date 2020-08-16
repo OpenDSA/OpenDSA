@@ -1,0 +1,11 @@
+#introToNonRegularFF {
+    height: 700px;
+    width: 900px;
+}
+.start {
+    font-style: italic;
+    font-weight: bold;
+}
+.final {
+    border: 3px double;
+}

@@ -1,0 +1,27 @@
+{
+  "translations": {
+    "en": {
+      "q2": {
+        "type": "select",
+        "description":"Let us revise the closure properties for regular languages.",
+        "question": "Suppose that $L$ is a regular laguage. Which of the following is also regular?",
+        "answer": ["Complement of L", "Homomorphism of L", "$L^*$"],
+        "choices": ["Complement of L", "Homomorphism of L", "$L^*$"]
+      },
+      "q3": {
+        "type": "select",
+        "description":"Let us revise the closure properties for regular languages.",
+        "question": "Suppose that $L_1$ and $L_2$ are regular laguages. Which of the following is also regular?",
+        "answer": ["$L_1 \\cap L_2$", "$L_1 \\cup L_2$", "$L_1 \\cdot L_2$", "$L_1 - L_2$", "$L_1 / L_2$"],
+        "choices": ["$L_1 \\cap L_2$", "$L_1 \\cup L_2$", "$L_1 \\cdot L_2$", "$L_1 - L_2$", "$L_1 / L_2$"]
+      },
+      "q5": {
+        "type": "select",
+        "description":"$\\textbf{Proof outlien:}$ Assume $L$ is regular<br/>Apply closure properties to $L$ and other regular languages, constructing $L\\prime$ that you know is not regular.",
+        "question": "But, since we applied a closure property operator on $L$, if $L$ is regular then $L\\prime$ must be",
+        "answer": "regular",
+        "choices": ["regular", "not regular"]
+      }
+    }
+  }
+}

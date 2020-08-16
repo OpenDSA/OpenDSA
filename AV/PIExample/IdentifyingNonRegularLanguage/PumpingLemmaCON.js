@@ -77,5 +77,49 @@ $(document).ready(function() {
 
   // Slide 6
   av.umsg("<b>Meaning:</b> Every sufficiently long string in $L$ (the constant m corresponds to the finite number of states in $M$) can be partitioned into three parts such that the middle part can be pumped, resulting in strings that must be in $L$.");
+  av.step();
+
+  //Slide 7
+  av.umsg("How To Use the Pumping Lemma to prove L is not regular:");
+  av.step();
+
+  //Slide 8
+  av.umsg("How To Use the Pumping Lemma to prove L is not regular:<br/>It is a proof by contradiction. So, we start with assuming that the language is regular.");
+  av.step();
+
+  //Slide 9
+  av.umsg("How To Use the Pumping Lemma to prove L is not regular:<br/>It is a proof by contradiction. So, we start with assuming that the language is regular.<br/>Therefore $L$ satisfies the pumping lemma");
+  av.step();
+
+  //Slide 10
+  av.umsg("How To Use the Pumping Lemma to prove L is not regular:<br/>It is a proof by contradiction. So, we start with assuming that the language is regular.<br/>Therefore $L$ satisfies the pumping lemma.<br/>Choose a long string $w \\in L$, $|w| \\ge m$. The choice of the string is crucial. We must pick a string that will yield a contradiction.");
+  av.step();
+  
+  //Slide 11
+  av.umsg("How To Use the Pumping Lemma to prove L is not regular:<br/>It is a proof by contradiction. So, we start with assuming that the language is regular.<br/>Therefore $L$ satisfies the pumping lemma.<br/>Choose a long string $w \\in L$, $|w| \\ge m$. The choice of the string is crucial. We must pick a string that will yield a contradiction.<br/>Show that there is NO division of $w$ into $xyz$ (we must consider all possible divisions) such that $|xy| \\le m$, $|y| \\ge 1$ and $xy^iz \\in L \\forall i \\ge 0$.");
+  av.step();
+
+  //Slide 12
+  av.umsg("How To Use the Pumping Lemma to prove L is not regular:<br/>It is a proof by contradiction. So, we start with assuming that the language is regular.<br/>Therefore $L$ satisfies the pumping lemma.<br/>Choose a long string $w \\in L$, $|w| \\ge m$. The choice of the string is crucial. We must pick a string that will yield a contradiction.<br/>Show that there is NO division of $w$ into $xyz$ (we must consider all possible divisions) such that $|xy| \\le m$, $|y| \\ge 1$ and $xy^iz \\in L \\forall i \\ge 0$.<br/>If we show that there is NO possible division, then we have a contradiction!");
+  av.step();
+
+  //Slide 13
+  av.umsg("How To Use the Pumping Lemma to prove L is not regular:<br/>It is a proof by contradiction. So, we start with assuming that the language is regular.<br/>Therefore $L$ satisfies the pumping lemma.<br/>Choose a long string $w \\in L$, $|w| \\ge m$. The choice of the string is crucial. We must pick a string that will yield a contradiction.<br/>Show that there is NO division of $w$ into $xyz$ (we must consider all possible divisions) such that $|xy| \\le m$, $|y| \\ge 1$ and $xy^iz \\in L \\forall i \\ge 0$.<br/>If we show that there is NO possible division, then we have a contradiction!<br/>$\\Rightarrow L$ is not regular.");
+  av.step();
+
+  //Slide 14
+  av.umsg("Note that, unfortunately, the pumping lemma is one-way: For (some) languages we can use the pumping lemma to prove that they are not regular.");
+  av.step();
+
+  //Slide 15
+  av.umsg("But we cannot use the pumping lemma to help us prove that a language is regular.");
+  av.step();
+
+  //Slide 16
+  av.umsg("And the pumping lemma is not a universal solution for determining that a language is non-regular. Its just a tool in the toolbox.");
+  av.step();
+
+  //slide 17
+  av.umsg("It is important to understand that the pumping lemma says that there is $\\textbf{some}$ way to define the language that meets the criteria. It is not enough to pick your favorite value of $m$ for which the language would not be regular. You have to show that no satisfactory $m$ can exist.");
   av.recorded();
 });

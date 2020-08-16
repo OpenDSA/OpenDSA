@@ -1,0 +1,48 @@
+{
+    "translations": {
+      "en": {
+        "q2": {
+          "type": "select",
+          "description":"We need to prove that $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is not regular by using the regular languages closure properties.",
+          "question": "What is the first step?",
+          "answer": "Assume $L$ is regular",
+          "choices": ["Assume $L$ is regular", "Assume $L$ is not regular"]
+        },
+        "q3": {
+          "type": "select",
+          "description":"Assume $L$ is regular",
+          "question": "Suppose we have $L_1 = \\{ bb^{*}aa^{*}\\}$. Is $L_1$ a regular language",
+          "answer": "Yes, because $L_1$ is described by a RegEx.",
+          "choices": ["Yes, because $L_1$ is described by a RegEx.", "No"]
+        },
+        "q4": {
+          "type": "true/false",
+          "description":"Assume $L$ is regular<br.> $L_1 = \\{ bb^{*}aa^{*}\\}$<br/>Let $L_2 = L \\cap L_1 = \\{b^na^n \\mid n > 0\\}$",
+          "question": "By closure under intersection, $L_2$ is regular",
+          "answer": "True",
+          "choices": []
+        },
+        "q5": {
+          "type": "select",
+          "description": "Assume $L$ is regular<br.> $L_1 = \\{ bb^{*}aa^{*}\\}$<br/>Let $L_2 = L \\cap L_1 = \\{b^na^n \\mid n > 0\\}$<br/>Define a homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$ as $h(a) = b\\quad |\\quad h(b) = a$",
+          "question": "What is $h(L_2)$?",
+          "answer": "$h(L_2) = \\{a^nb^n | n>0 \\}$",
+          "choices": ["$h(L_2) = \\{a^nb^n | n>0 \\}$", "$h(L_2) = \\{a^{2n} | n>0 \\}$", "$h(L_2) = \\{b^{2n} | n>0 \\}$"]
+        },
+        "q6": {
+          "type": "true/false",
+          "description":"Assume $L$ is regular<br.> $L_1 = \\{ bb^{*}aa^{*}\\}$<br/>Let $L_2 = L \\cap L_1 = \\{b^na^n \\mid n > 0\\}$<br/>Define a homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$ as $h(a) = b\\quad |\\quad h(b) = a$<br/>$h(L_2) = \\{a^nb^n | n>0 \\}$",
+          "question": "By closure under homomorphism, $h(L_2$ must be regular",
+          "answer": "True",
+          "choices": []
+        },
+        "q7": {
+          "type": "select",
+          "description":"Assume $L$ is regular<br.> $L_1 = \\{ bb^{*}aa^{*}\\}$<br/>Let $L_2 = L \\cap L_1 = \\{b^na^n \\mid n > 0\\}$<br/>Define a homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$ as $h(a) = b\\quad |\\quad h(b) = a$<br/>$h(L_2) = \\{a^nb^n | n>0 \\}$",
+          "question": "But, what do we know about $h(L_2)$ for sure",
+          "answer": "We know that $\\{a^nb^n | n > 0\\}$ is not regular",
+          "choices": ["We know that $\\{a^nb^n | n > 0\\}$ is not regular", "it is regular"]
+        }
+      }
+    }
+  }
