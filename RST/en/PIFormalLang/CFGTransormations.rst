@@ -14,7 +14,7 @@ Transforming Grammars
 
 Transforming Grammars
 ---------------------
-.. inlineav:: TransformGram ff
-   :links: AV/PIExample/CFL/TransformGram.css
-   :scripts: AV/PIExample/CFL/TransformGram.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+.. inlineav:: TransformGrammarsFF ff
+   :links: AV/PIExample/CFL/TransformGrammarsFF.css
+   :scripts: AV/PIExample/CFL/TransformGrammarsFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
    :output: show

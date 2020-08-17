@@ -1,0 +1,14 @@
+{
+  "translations": {
+    "en": {
+      "q2":{
+        "type": "select",
+        "description": "We use grammars to represent a programming language. Want to know: Is a given string (or program x) valid (syntactically correct)? Same as asking if it is in the language",
+        "question": "What do we call the problem of determining if a string is in the language?",
+        "answer": "the membership problem",
+        "choices": ["the membership problem", "Grammar ambiguity"]
+      },
+      
+    }
+  }
+}

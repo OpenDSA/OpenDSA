@@ -3,7 +3,7 @@
 
 $(document).ready(function() {
     "use strict";
-    var av_name = "AmbiguityExample";
+    var av_name = "DerivationTreesExampleFF";
     var av = new JSAV(av_name);
     var arrow = String.fromCharCode(8594);
     var grammar = "[[\"S\",\"→\",\"AcB\"],[\"A\",\"→\",\"aAa\"],[\"A\",\"→\",\"λ\"],[\"B\",\"→\",\"Bbb\"],[\"B\",\"→\",\"λ\"]]";

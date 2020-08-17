@@ -13,17 +13,33 @@ $(document).ready(function () {
 av.umsg("In previous module we covered how to derive a string by using sentential forms. Now we will take another, but visual, derivation method.")
 av.displayInit();
 //frame 2
-av.umsg("$\\textbf {Derivation Trees}$ (also known as 'parse trees'): A derivation tree represents a derivation, but does not show the order in which productions were applied.");
+av.umsg(Frames.addQuestion("q2"));
+av.step();
+
+//frame 3
+av.umsg(Frames.addQuestion("q3"));
+av.step();
+
+//frame 4
+av.umsg(Frames.addQuestion("q4"));
+av.step();
+
+//frame 5
+av.umsg(Frames.addQuestion("q5"));
 av.step();
 
 //frame 6
-av.umsg("A derivation tree for $G=(V,T,S,P)$:<br>root is labeled $S$ <br>leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$ <br> nonleaf vertices labeled $A$,$A\\in V$<br> For rule $A\\rightarrow a_1a_2a_3…a_n$, where $A\\in V$,$a_i\\in(T\\cup V\\cup \\{\\lambda \\}$)");
+av.umsg(Frames.addQuestion("q6"));
+av.step();
+
+//frame 7
+av.umsg("For example, a rule $A\\rightarrow a_1a_2a_3…a_n$, where $A\\in V$,$a_i\\in(T\\cup V\\cup \\{\\lambda \\}$) can be shown as:");
 var label = av.label("...", {left: 450, top: 93});
-var label2 = av.label("A", {left: 405, top: 4});
-var label3 = av.label("a\u2081", {left: 280, top: 93});
-var label4 = av.label("a\u2082", {left: 345, top: 93});
-var label5 = av.label("a\u2083", {left: 410, top: 93});
-var label6 = av.label("a\u2099", {left: 490, top: 93});
+var label2 = av.label("$A$", {left: 405, top: 4});
+var label3 = av.label("$a_1$", {left: 280, top: 93});
+var label4 = av.label("$a_2$", {left: 345, top: 93});
+var label5 = av.label("$a_3$", {left: 410, top: 93});
+var label6 = av.label("$a_n$", {left: 490, top: 93});
 var c = av.g.circle(410, 28, 17);
 var c1 = av.g.circle(285, 120, 17);
 var c2 = av.g.circle(350, 120, 17);
@@ -35,7 +51,8 @@ var l3 = av.g.line(410, 45, 415, 103);
 var l4 = av.g.line(410, 45, 495, 103);
 av.step();
 
-//av.umsg(Frames.addQuestion("q4"));
+//frame 8
+av.umsg(Frames.addQuestion("q8"));
 c.hide();
 c1.hide();
 c2.hide();
@@ -51,8 +68,9 @@ label3.hide();
 label4.hide();
 label5.hide();
 label6.hide();
+
 var tr = av.ds.tree({nodegap: 15});
-var root_s_1 = tr.root("s");
+var root_s_1 = tr.root("S");
 var A_1 = tr.newNode("A");
 var A_2 = tr.newNode("A");
 var a_1 = tr.newNode("a");
@@ -69,14 +87,30 @@ A_1.addChild(a_2);
 tr.layout();
 av.step();
 
-//frame 7
-av.umsg(Frames.addQuestion("q5"));
+
+//frame 9
+av.umsg(Frames.addQuestion("q9"));
 av.step();
 
-//frame 8
-av.umsg("A partial derivation tree that has root S (so it is a sentential form):");
+//frame 10
+av.umsg(Frames.addQuestion("q10"));
 av.step();
 
+//frame 11
+av.umsg(Frames.addQuestion("q11"));
+A_2.addChild(tr.newNode("$\\lambda$"));
+B_1.addChild(tr.newNode("$\\lambda$"));
+tr.layout();
+av.step();
+
+//frame 12
+av.umsg(Frames.addQuestion("q12"));
+av.step();
+
+//frame 13
+av.umsg(Frames.addQuestion("q13"));
+
+/*
 //frame 9
 av.umsg("$\\textbf {Membership}$: Given CFG $G$ and string $w\\in \\sum^*$, is $w\\in L(G)$? <br> If we can find a derivation of $w$, then we would know that $w$ is in L(G).")
 tr.hide();
@@ -110,6 +144,6 @@ av.step();
 av.umsg("Definition: Simple grammar (or s-grammar) has all productions of the form: <br>    $A\\rightarrow ax$ <br>where $A\\in V$, $a\\in T$, and $x\\in V^∗$ AND any pair (A,a) can occur in at most one rule.<br>    If you use the exhaustive search method to ask if $w\\in L(G)$, where $G$ is an s-grammar, the number of terminals increases with each step.")
 av.step();
 av.umsg("Completed");
-
+*/
 av.recorded();
 });
