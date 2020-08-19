@@ -1,0 +1,153 @@
+{
+  "translations": {
+    "en": {
+      "q2":{
+        "type": "select",
+        "description": "Consider this grammar $S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br> What can you say about this grammar?",
+        "question": "First think about the variable $C$. Can we reach variable $C$ from $S$ direct or indirect?",
+        "answer": "No",
+        "choices": ["No","Yes"]
+      },
+      "q3":{
+        "type": "select",
+        "description": "Consider this grammar $S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br> What can you say about this grammar?",
+        "question": "Is $C$ a useful of useless variable?",
+        "answer": "useless",
+        "choices": ["useless","useful"]
+      },
+      "q4":{
+        "type": "select",
+        "description": "Consider this grammar $S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br> What can you say about this grammar?",
+        "question": "Should we kwwp the variable $C$?",
+        "answer": "No, because it is useless variable",
+        "choices": ["Yes","No, because it is useless variable"]
+      },
+      "q5":{
+        "type": "select",
+        "description": "Consider this grammar $S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br> What can you say about this grammar?",
+        "question": "After we removed $C$, can you generate any string out of this grammar?",
+        "answer": "No",
+        "choices": ["Yes","No"]
+      },
+      "q6":{
+        "type": "true/false",
+        "description": "Consider this grammar $S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br> What can you say about this grammar?",
+        "question": "$A$ , $S$, and $B$ are useless variables since they can’t derive a string of terminals.",
+        "answer": "True",
+        "choices": []
+      },
+      "q7":{
+        "type": "true/false",
+        "description": "Theorem: (useless productions) Let $G$ be a CFG. Then $\\exists\\ G\\prime$ that does not contain any useless variables or productions such that $L(G)=L(G\\prime)$.",
+        "question": "Removing useless productions will affect the grammar power",
+        "answer": "False",
+        "choices": []
+      },
+      "q9":{
+        "type": "select",
+        "description": "As we saw, there are 2 types of useless productions.<br/>1. Productions that are unreachable. These are the productions that we can not reach from the start variable.",
+        "question": "In grammar $S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br>Which variable is unreachable?",
+        "answer": "C",
+        "choices": ["A","S","C","B"]
+      },
+      "q10":{
+        "type": "select",
+        "description": "As we saw, there are 2 types of useless productions.<br/>1. Productions that are unreachable. These are the productions that we can not reach from the start variable.<br/>2. Productions that are nonterminating. Means that entering these production will keep looping with the same/other productions without termination (so, no strings will come out of these production(s)).",
+        "question": "In grammar $S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br>Which variables are nonterminating?",
+        "answer": ["A","S","B"],
+        "choices": ["A","S","C","B"]
+      },
+      "q14":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>1. Compute $V_1$= {Variables that can derive strings of terminals}<br>$\\quad 1. V_1 = \\emptyset$<br/>$\\quad 2.$ Repeat until no more variables added<br/>$*\\quad$ For every $A \\in V$ with $A\\rightarrow x_1x_2\\ldots x_n$, $x_i \\in (T^* \\cup V_1)$, add $A$ to $V_1$",
+        "question": "Suppose the grammar on the left, let us calculate $V_1$. What is the initial value for $V_1$?",
+        "answer": "$\\emptyset$",
+        "choices": ["A","S","C","B","$\\emptyset$","E","D"]
+      },
+      "q15":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>1. Compute $V_1$= {Variables that can derive strings of terminals}<br>$\\quad 1. V_1 = \\emptyset$<br/>$\\quad 2.$ Repeat until no more variables added<br/>$*\\quad$ For every $A \\in V$ with $A\\rightarrow x_1x_2\\ldots x_n$, $x_i \\in (T^* \\cup V_1)$, add $A$ to $V_1$",
+        "question": "What should we add to $V_1$ in the fist iteration?",
+        "answer": ["B","C","E"],
+        "choices": ["A","S","C","B","$\\emptyset$","E","D"]
+      },
+      "q16":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>1. Compute $V_1$= {Variables that can derive strings of terminals}<br>$\\quad 1. V_1 = \\emptyset$<br/>$\\quad 2.$ Repeat until no more variables added<br/>$*\\quad$ For every $A \\in V$ with $A\\rightarrow x_1x_2\\ldots x_n$, $x_i \\in (T^* \\cup V_1)$, add $A$ to $V_1$",
+        "question": "What should we add to $V_1$ in the next iteration?",
+        "answer": ["S","D"],
+        "choices": ["A","S","$\\emptyset$","D"]
+      },
+      "q17":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>1. Compute $V_1$= {Variables that can derive strings of terminals}<br>$\\quad 1. V_1 = \\emptyset$<br/>$\\quad 2.$ Repeat until no more variables added<br/>$*\\quad$ For every $A \\in V$ with $A\\rightarrow x_1x_2\\ldots x_n$, $x_i \\in (T^* \\cup V_1)$, add $A$ to $V_1$",
+        "question": "What should we add to $V_1$ in the next iteration?",
+        "answer": "$\\emptyset$",
+        "choices": ["A","$\\emptyset$"]
+      },
+      "q18":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>1. Compute $V_1$= {Variables that can derive strings of terminals}<br>$\\quad 1. V_1 = \\emptyset$<br/>$\\quad 2.$ Repeat until no more variables added<br/>$*\\quad$ For every $A \\in V$ with $A\\rightarrow x_1x_2\\ldots x_n$, $x_i \\in (T^* \\cup V_1)$, add $A$ to $V_1$",
+        "question": "Should we continue?",
+        "answer": "No because there is no more variables that terminate",
+        "choices": ["Yes", "No because there is no more variables that terminate"]
+      },
+      "q19":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>1. Compute $V_1$= {Variables that can derive strings of terminals}<br>$\\quad 1. V_1 = \\emptyset$<br/>$\\quad 2.$ Repeat until no more variables added<br/>$*\\quad$ For every $A \\in V$ with $A\\rightarrow x_1x_2\\ldots x_n$, $x_i \\in (T^* \\cup V_1)$, add $A$ to $V_1$<br/>$\\quad 3. P_1=$ all productions in $P$ with symbols in $(V_1\\cup T)^*$",
+        "question": "Which productions should be added to $P_1$",
+        "answer": ["$S\\rightarrow aB$", "$B\\rightarrow Sa$", "$B\\rightarrow b$", "$C\\rightarrow cBc$", "$C\\rightarrow a$", "$D\\rightarrow bCb$", "$E\\rightarrow b$"],
+        "choices": ["$S\\rightarrow aB$", "$S\\rightarrow bA$", "$A\\rightarrow aA$", "$B\\rightarrow Sa$", "$B\\rightarrow b$", "$C\\rightarrow cBc$", "$C\\rightarrow a$", "$D\\rightarrow bCb$", "$E\\rightarrow Aa$", "$E\\rightarrow b$"]
+      },
+      "q20":{
+        "type": "select",
+        "description": "The resulting grammar $G_1=(V_1,T,S,P_1)$ has no variables that can’t derive strings",
+        "question": "Did we finish removing useless productions",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      },
+      "q22":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>2. Remove unreachable productions by using Variable Dependency Graph (VDG)<br/>Draw a node for every variable.",
+        "question": "How many nodes the VDG has?",
+        "answer": "5",
+        "choices": ["1", "2","3","4","5","6","7"]
+      },
+      "q23":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>2. Remove unreachable productions by using Variable Dependency Graph (VDG)<br/>Draw a node for every variable.<br/>For production $A\\rightarrow xBy$, draw an edge $A \\rightarrow B$.",
+        "question": "What is the edge for the highlighted production",
+        "answer": "S to B",
+        "choices": ["S to B", "B to S", "C to B", "D to C"]
+      },
+      "q24":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>2. Remove unreachable productions by using Variable Dependency Graph (VDG)<br/>Draw a node for every variable.<br/>For production $A\\rightarrow xBy$, draw an edge $A \\rightarrow B$.",
+        "question": "What is the edge for the highlighted production",
+        "answer": "B to S",
+        "choices": ["S to B", "B to S", "C to B", "D to C"]
+      },
+      "q25":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>2. Remove unreachable productions by using Variable Dependency Graph (VDG)<br/>Draw a node for every variable.<br/>For production $A\\rightarrow xBy$, draw an edge $A \\rightarrow B$.",
+        "question": "What is the edge for the highlighted production",
+        "answer": "C to B",
+        "choices": ["S to B", "B to S", "C to B", "D to C"]
+      },
+      "q26":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>2. Remove unreachable productions by using Variable Dependency Graph (VDG)<br/>Draw a node for every variable.<br/>For production $A\\rightarrow xBy$, draw an edge $A \\rightarrow B$.",
+        "question": "What is the edge for the highlighted production",
+        "answer": "D to C",
+        "choices": ["S to B", "B to S", "C to B", "D to C"]
+      },
+      "q27":{
+        "type": "select",
+        "description": "Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>2. Remove unreachable productions by using Variable Dependency Graph (VDG)<br/>Draw a node for every variable.<br/>For production $A\\rightarrow xBy$, draw an edge $A \\rightarrow B$.<br/>Remove productions for $V$ if there is no path from $S$ to $V$ in the dependency graph. Resulting Grammar $G\\prime$ is such that $L(G)=L(G\\prime)$ and $G\\prime$ has no useless productions.",
+        "question": "Which variables must be removed?",
+        "answer": ["E", "C", "D"],
+        "choices": ["E", "S", "B", "C", "D"]
+      }
+    }
+  }
+}
