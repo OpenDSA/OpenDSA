@@ -244,7 +244,9 @@
           "sheet7exercise4":{
             "points": 5.0
           }
-        }
+        },
+        "PIFormalLang/PDACFL": {},
+        "PIFormalLang/DPDA": {}
       },
       "Properties of Context-free Languages":{
         "VisFormalLang/CFLProp":{}

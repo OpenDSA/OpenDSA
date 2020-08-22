@@ -1,0 +1,119 @@
+{
+"translations": {
+"en": {
+    "q2": {
+        "type": "multiple",
+        "description": "Obviously it gets this name from its new ability to pushdown and store symbols on the stack. This adds a form of additional memory, letting the machine store and retrieve data from the stack.",
+        "question": "A PDA now has a form of memory of previous inputs.",
+        "answer": [
+            "True"
+        ],
+        "choices": [
+            "True",
+            "False"
+        ]
+    },
+    "q3": {
+        "type": "multiple",
+        "description": "Gamma shown with symbol $\\Gamma$, is the stack alphabet.This is a finite set with all the alphabet that will be used for the stack.",
+        "question": "$\\Gamma$ has to include all the alphabet from $\\Sigma$",
+        "answer": [
+            "False"
+        ],
+        "choices": [
+            "True",
+            "False"
+        ]
+    },
+    "q5": {
+        "type": "multiple",
+        "description": "z is our symbol for tracking when the stack is empty. If a stack has this symbol pop, it will know the stack is empty.",
+        "question": "The PDA can see the entire stack, thus it automaticly knows how many symbols are in the stack.",
+        "answer": [
+            "False"
+        ],
+        "choices": [
+            "True",
+            "False"
+        ]
+    },
+    "q6": {
+        "type": "multiple",
+        "description": "Correct! Since the stack only sees the symbol it pops off the stack (symbol removed). It never knows how many are in the stack. This is why the z symbol is needed to know if we are at the bottom of the stack.",
+        "question": "z is not an element of $\\Gamma$",
+        "answer": [
+            "False"
+        ],
+        "choices": [
+            "True",
+            "False"
+        ]
+    },
+    "q7": {
+        "type": "multiple",
+        "description": "The 3-tuple is ($Q,\\Sigma, \\Gamma$). This is the condition for the transition to be taken and in other words: (current state of PDA, symbol on the input tape, symbol POP from the stack). If any of these do not match, then the transition does not match and can not be taken. ",
+        "question": "A PDA must read from the input tape.",
+        "answer": [
+            "False"
+        ],
+        "choices": [
+            "True",
+            "False"
+        ]
+    },
+    "q9": {
+        "type": "select",
+        "description": "The 2-tuple is ($Q,\\Gamma$). This is what changes as a result of taking the transition. This will be (new state after transition, symbol(s) to PUSH on the stack).",
+        "question": "A PDA can push onto the stack:",
+        "answer": [
+            "$\\lambda$(nothing)",
+            "one symbol thats $\\in \\Gamma$",
+            "any number of symbols $\\in \\Gamma$"
+        ],
+        "choices": [
+            "$\\lambda$(nothing)",
+            "any single symbol",
+            " one symbol thats $\\in \\Sigma$",
+            "one symbol thats $\\in \\Gamma$",
+            "any number of symbols $\\in \\Gamma$"
+        ]
+    },
+    "q10": {
+        "type": "multiple",
+        "description": "A PDA can push multiple symbols onto the stack in one transition. For example, $\\delta$(q0,b,z)=(q1,bz). In this example, we see nothing on the stack and push symbol b ontop of the z (empty stack symbol)",
+        "question": "The symbol furthest to the left when pushing multple letters will be on the top of the stack after transition.",
+        "answer": [
+            "True"
+        ],
+        "choices": [
+            "True",
+            "False"
+        ]
+    },
+    "q11": {
+        "type": "multiple",
+        "description": "A PDA can push multiple symbols onto the stack in one transition. For example, $\\delta$(q0,b,z)=(q1,bz). In this example, we see nothing on the stack and push symbol b ontop of the z (empty stack symbol)",
+        "question": "A PDA must push the popped symbol back to the stack if it wants to keep that symbol on the stack.",
+        "answer": [
+            "True"
+        ],
+        "choices": [
+            "True",
+            "False"
+        ]
+    },
+    "q12": {
+        "type": "multiple",
+        "description": "Similar to DFAs, PDAs can not alter the input tape.",
+        "question": "A PDA can change the input tape",
+        "answer": [
+            "False"
+        ],
+        "choices": [
+            "True",
+            "False"
+        ]
+    }
+}
+}
+}

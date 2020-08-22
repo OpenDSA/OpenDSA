@@ -16,7 +16,8 @@ var xStart = 50;
 var yStart = 200;
     av.label("input tape", {left: xStart + 40, top: yStart - 45});
     var strings = ["a", "a", "a", "a", "b", "b", "", "", "", "", ""];
-    av.ds.tape(strings, xStart, yStart, "right");
+var tape = av.ds.tape(strings, xStart, yStart, "right");
+tape.highlightPosition(2);
     // av.ds.array(strings, {left: xStart, top: yStart});
   
     av.g.line(xStart + 80, yStart + 95, xStart + 80, yStart + 35,
@@ -96,6 +97,8 @@ av.step();
 //Frame 16
 av.umsg(Frames.addQuestion("q12"));
 av.step();
+
+av.umsg("Completed.");
 
 av.recorded();
 });
