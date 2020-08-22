@@ -259,9 +259,14 @@
 
         buildElement: function(question) {
           var type = question.type;
-          //Peixuan added this part to auto check if type is multiple or select
-          if(type === "select" && !Array.isArray(question.answer)){
-            type = "multiple";
+          //Peixuan added this part to auto check if type is multiple, select or T/F
+          if(type === "select"){
+            if(!Array.isArray(question.answer)){
+              type = "multiple";
+            }
+            if (question.answer === "True"){
+              type = "true/false";
+            }
           }
 
           questionType = type;
