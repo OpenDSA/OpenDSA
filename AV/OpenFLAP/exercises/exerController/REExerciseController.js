@@ -29,7 +29,7 @@ controllerProto.load = function () {
 		}
 	});
 	this.tests = tests;
-
+	generateTestCase(tests, 0);
 	for (i = 0; i < this.tests.length; i++) {
 		$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i + 1) + "</a>");
 	}
@@ -111,7 +111,6 @@ controllerProto.updateExercise = function (id) {
 	var exercise = this.tests[id];
 	var type = exercise["type"];
 	this.testCases = exercise["testCases"];
-	generateTestCase(exercise, 1);
 	if (type == "expression") {
 		$("#expression").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
 		$("#question").show();
@@ -135,5 +134,6 @@ controllerProto.updateExercise = function (id) {
 	var start = new Date();
 	logRecord['Exercise' + exNum + '_Time'] = [];
 	logRecord['Exercise' + exNum + '_Time'].push(start);
+	
 
 };

@@ -10,6 +10,7 @@ var initID = [];
 var finalID = [];
 var check = false;
 var id;
+var testCaseList2 = []
 
 
 /**
@@ -136,12 +137,14 @@ function travnfa(xmlDoc, id, str, strPos) {
 function faAdd(testCase, result, str) {
   if (!testCase.testCases.hasOwnProperty(str)) {
     if (result) {
-      if (trueCounter < trueStringLimit) {
+      if (trueCounter < trueStringLimit && testCaseList2.indexOf(str) == -1) {
+        testCaseList2.push(str);
         addtoTestCase(str, testCase, 1);
         trueCounter++;
       }
     } else {
-      if (falseCounter < falseStringLimit) {
+      if (falseCounter < falseStringLimit && testCaseList2.indexOf(str) == -1) {
+        testCaseList2.push(str);
         addtoTestCase(str, testCase, 0);
         falseCounter++;
       }
@@ -194,7 +197,7 @@ var pdaFinalID = [];
 var pdaCheck = false;
 var pdaId;
 var pdaStack = '';
-
+var testCaseList3 = []
 
 /**
  * find all edges that start from current tag ID
@@ -241,12 +244,14 @@ function findAlledgesFromOneNodePDA(xmlDoc, id) {
 function pdaAdd(testCase, result, str) {
   if (testCase.testCases.indexOf(str) == -1) {
     if (result) {
-      if (trueCounter < trueStringLimit) {
+      if (trueCounter < trueStringLimit && testCaseList3.indexOf(str) == -1) {
+        testCaseList3.push(str);
         addtoTestCase(str, testCase, 1);
         trueCounter++;
       }
     } else {
-      if (falseCounter < falseStringLimit) {
+      if (falseCounter < falseStringLimit && testCaseList3.indexOf(str) == -1) {
+        testCaseList3.push(str);
         addtoTestCase(str, testCase, 0);
         falseCounter++;
       }
@@ -362,7 +367,6 @@ function pdaHandler(testCase, flag, str) {
 
 /**
  * 
- * Start function.
  * Seprate FA and PDA.
  * 
  */

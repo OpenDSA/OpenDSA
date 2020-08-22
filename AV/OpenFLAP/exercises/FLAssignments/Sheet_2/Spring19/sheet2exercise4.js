@@ -1,33 +1,9 @@
       // ******************************************************************************
       // ******************************************************************************
-      // Necessary elements
-      // ******************************************************************************
-      // ******************************************************************************
-
-      var totalTrueCases = 10; //how many true cases
-      var totalFalseCases = 10; //how many false cases
-      var containLetters = ['a', 'b']; // contain letters
-      var randomStringLength = [0, 15]; //string lengthe between 0 to 15
-      var trueCounter = 0; // number of hardcode true cases in json file 
-      var falseCounter = 0; // number of hardcode false cases in json file 
-      var str = "";
-      var generatorflag = 1;
-      // generatorflag = 0 : random generator strings (by dafault)
-      // generatorflag = 1 : write your own generator below
-
-
-
-      // ******************************************************************************
-      // ******************************************************************************
-      // customize generator requirements:
       // Function Name: customGenerator
       // Return: String
-      // Use necessary element above.
       // ******************************************************************************
       // ******************************************************************************
-      // function customGenerator() {
-      //   //Change the flag and ReWrite here
-      // }
 
 
       function checkRule(str) {
@@ -41,13 +17,13 @@
       }
 
       function customGenerator() {
-        if (trueCounter < totalTrueCases) {
+        if (trueCounter < trueStringLimit) {
           str = "T";
-          if (trueCounter < (totalTrueCases / 2)) {
+          if (trueCounter < (trueStringLimit / 2)) {
             str = subStringFun(str, "ab", 0, 4);
             str += "ba";
           } else {
-            if (trueCounter == ((totalTrueCases / 2) + 1)) {
+            if (trueCounter == ((trueStringLimit / 2) + 1)) {
               str = subStringFun(str, "ab", 1, 4);
             } else {
               str = subStringFun(str, "b", 0, 3);
@@ -55,7 +31,7 @@
             }
           }
           return str;
-        } else if (falseCounter < totalFalseCases) {
+        } else if (falseCounter < falseStringLimit) {
           str = "F";
           if (falseCounter == 0) {
             return str;

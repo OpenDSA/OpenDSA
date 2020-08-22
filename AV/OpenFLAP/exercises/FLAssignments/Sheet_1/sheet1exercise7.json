@@ -2,7 +2,7 @@
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "GRAMMAR",
     "totalTrueCases": 5,
-    "totalFalseCases": 10,
+    "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
@@ -17,16 +17,16 @@
             "abb": true
         },
         {
-            "aabbbbb": true
+            "aabbbb": true
         },
         {
-            "aaaaabbbbbbb": true
+            "aaaaabbbbbbbbbb": true
         },
         {
-            "aabbbbb": true
+            "aaaabbbbbbbb": true
         },
         {
-            "aaabbb": true
+            "aaabbbbbb": true
         }
     ],
     "graph": {
