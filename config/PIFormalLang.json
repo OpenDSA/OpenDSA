@@ -249,7 +249,7 @@
         "PIFormalLang/DPDA": {}
       },
       "Properties of Context-free Languages":{
-        "VisFormalLang/CFLProp":{}
+        "PIFormalLang/CFLProp":{}
       },
       "Models of Computation":{
         "VisFormalLang/TuringIntro":{},

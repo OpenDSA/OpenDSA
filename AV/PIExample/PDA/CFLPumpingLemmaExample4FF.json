@@ -1,0 +1,13 @@
+{
+  "translations": {
+    "en": {
+      "q2": {
+        "type": "select",
+        "description": "We need to sutdy the closure properties of CFLs.",
+        "question": "Closure properties of CFLs means that if we applied an operator on 2 CFL languages, the result must be CFL.",
+        "answer": "True",
+        "choices": []
+      },
+    }
+  }
+}
