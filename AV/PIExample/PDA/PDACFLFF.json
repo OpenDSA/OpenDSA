@@ -96,43 +96,43 @@
         "type": "select",
         "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack",
         "question": "What is the transition from $q_0$ to $q_1$?",
-        "answer": "$\\delta(q_0, \\lambda, $z$) = (q_1, Sz)$",
-        "choices": ["$\\delta(q_0, \\lambda, $z$) = (q_1, Sz)$", "$\\delta(q_0, a, $z$) = (q_1, Sz)$", "$\\delta(q_0, S, $z$) = (q_1, Sz)$"]
+        "answer": "$\\delta(q_0, \\lambda, z) = (q_1, z)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_0, a, $z$) = (q_1, Sz)$", "$\\delta(q_0, S, $z$) = (q_1, Sz)$"]
       },
       "q19": {
         "type": "select",
         "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$ put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$<br/>In other words: (Pop A from the stack, read “a” from tape, and push $X_1 X_2 \\ldots X_n$ onto the stack)",
         "question": "What is the transition for the highlighted production?",
-        "answer": "$\\delta(q_1, a, $S$) = (q_1, SA)$",
-        "choices": ["$\\delta(q_1, a, $S$) = (q_1, SA)$", "$\\delta(q_1, a, $S$) = (q_1, SSA)$"]
+        "answer": "$\\delta(q_1, a, S) = (q_1, SA)$",
+        "choices": ["$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, $S$) = (q_1, SSA)$"]
       },
       "q20": {
         "type": "select",
         "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$ put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$<br/>In other words: (Pop A from the stack, read “a” from tape, and push $X_1 X_2 \\ldots X_n$ onto the stack)",
         "question": "What is the transition for the highlighted production?",
-        "answer": "$\\delta(q_1, a, $S$) = (q_1, AA)$",
-        "choices": ["$\\delta(q_1, a, $S$) = (q_1, AA)$", "$\\delta(q_1, a, $S$) = (q_1, AAS)$"]
+        "answer": "$\\delta(q_1, a, S) = (q_1, AA)$",
+        "choices": ["$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, a, S) = (q_1, AAS)$"]
       },
       "q21": {
         "type": "select",
         "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$ put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$<br/>In other words: (Pop A from the stack, read “a” from tape, and push $X_1 X_2 \\ldots X_n$ onto the stack)",
         "question": "What is the transition for the highlighted production?",
-        "answer": "$\\delta(q_1, b, $S$) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_1, b, $S$) = (q_1, \\lambda)$", "$\\delta(q_1, b, $S$) = (q_1, S)$"]
+        "answer": "$\\delta(q_1, b, S) = (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, S) = (q_1, S)$"]
       },
       "q22": {
         "type": "select",
         "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$ put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$<br/>In other words: (Pop A from the stack, read “a” from tape, and push $X_1 X_2 \\ldots X_n$ onto the stack)",
         "question": "What is the transition for the highlighted production?",
-        "answer": "$\\delta(q_1, b, $A$) = (q_1, BBB)$",
-        "choices": ["$\\delta(q_1, b, $A$) = (q_1, BBB)$", "$\\delta(q_1, b, $S$) = (q_1, BBB)$"]
+        "answer": "$\\delta(q_1, b, A) = (q_1, BBB)$",
+        "choices": ["$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, S) = (q_1, BBB)$"]
       },
       "q23": {
         "type": "select",
         "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$ put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$<br/>In other words: (Pop A from the stack, read “a” from tape, and push $X_1 X_2 \\ldots X_n$ onto the stack)",
         "question": "What is the transition for the highlighted production?",
-        "answer": "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_1, b, $B$) = (q_1, \\lambda)$", "$\\delta(q_1, b, $B$) = (q_1, B)$"]
+        "answer": "$\\delta(q_1, b, B) = (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, b, $B$) = (q_1, B)$"]
       },
       "q24": {
         "type": "select",
@@ -194,57 +194,57 @@
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "Let us do the same in the PDA, what is the transition we should start with?",
-        "answer": "$\\delta(q_0, \\lambda, $z$) = (q_1, Sz)$",
-        "choices": ["$\\delta(q_0, \\lambda, $z$) = (q_1, Sz)$", "$\\delta(q_1, a, $S$) = (q_1, SA)$", "$\\delta(q_1, a, $S$) = (q_1, AA)$", "$\\delta(q_1, b, $S$) = (q_1, \\lambda)$", "$\\delta(q_1, b, $A$) = (q_1, BBB)$", "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_0, \\lambda, z) = (q_1, Sz)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
       },
       "q35": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, a, $S$) = (q_1, SA)$",
-        "choices": ["$\\delta(q_0, \\lambda, $z$) = (q_1, Sz)$", "$\\delta(q_1, a, $S$) = (q_1, SA)$", "$\\delta(q_1, a, $S$) = (q_1, AA)$", "$\\delta(q_1, b, $S$) = (q_1, \\lambda)$", "$\\delta(q_1, b, $A$) = (q_1, BBB)$", "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, a, S) = (q_1, SA)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
       },
       "q36": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, b, $S$) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_0, \\lambda, $z$) = (q_1, Sz)$", "$\\delta(q_1, a, $S$) = (q_1, SA)$", "$\\delta(q_1, a, $S$) = (q_1, AA)$", "$\\delta(q_1, b, $S$) = (q_1, \\lambda)$", "$\\delta(q_1, b, $A$) = (q_1, BBB)$", "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, b, S) = (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
       },
       "q37": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, b, $A$) = (q_1, BBB)$",
-        "choices": ["$\\delta(q_0, \\lambda, $z$) = (q_1, Sz)$", "$\\delta(q_1, a, $S$) = (q_1, SA)$", "$\\delta(q_1, a, $S$) = (q_1, AA)$", "$\\delta(q_1, b, $S$) = (q_1, \\lambda)$", "$\\delta(q_1, b, $A$) = (q_1, BBB)$", "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, b, A) = (q_1, BBB)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
       },
       "q38": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_0, \\lambda, $z$) = (q_1, Sz)$", "$\\delta(q_1, a, $S$) = (q_1, SA)$", "$\\delta(q_1, a, $S$) = (q_1, AA)$", "$\\delta(q_1, b, $S$) = (q_1, \\lambda)$", "$\\delta(q_1, b, $A$) = (q_1, BBB)$", "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, b, B) = (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
       },
       "q39": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_0, \\lambda, $z$) = (q_1, Sz)$", "$\\delta(q_1, a, $S$) = (q_1, SA)$", "$\\delta(q_1, a, $S$) = (q_1, AA)$", "$\\delta(q_1, b, $S$) = (q_1, \\lambda)$", "$\\delta(q_1, b, $A$) = (q_1, BBB)$", "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, b, B) = (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
       },
       "q40": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_0, \\lambda, $z$) = (q_1, Sz)$", "$\\delta(q_1, a, $S$) = (q_1, SA)$", "$\\delta(q_1, a, $S$) = (q_1, AA)$", "$\\delta(q_1, b, $S$) = (q_1, \\lambda)$", "$\\delta(q_1, b, $A$) = (q_1, BBB)$", "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, b, B) = (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
       },
       "q41": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
         "answer": "$\\delta(q_1, \\lambda, z) = (q_f, z)$",
-        "choices": ["$\\delta(q_0, \\lambda, $z$) = (q_1, Sz)$", "$\\delta(q_1, a, $S$) = (q_1, SA)$", "$\\delta(q_1, a, $S$) = (q_1, AA)$", "$\\delta(q_1, b, $S$) = (q_1, \\lambda)$", "$\\delta(q_1, b, $A$) = (q_1, BBB)$", "$\\delta(q_1, b, $B$) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
       }
     }
   }
