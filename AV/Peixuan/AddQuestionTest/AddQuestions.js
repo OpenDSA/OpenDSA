@@ -1760,7 +1760,6 @@ var visualizeConversionWithQuestions = function (fatoreController, url, av_name,
   fatoreController.transitions.hide();
   var final = drawTheFinalGraph(fatoreController.jsav, finaGraphOptions, fatoreController.generateExpression());
 
-  //TODO
   graphStack[av_name] = [];
   graphStack[av_name].push(fatoreController.fa);
   graphStack[av_name].push(final);
@@ -2073,8 +2072,10 @@ var displayTreeWithQuestions = function (pt, av, av_name, piframesLocations){
 
     pt.parseTree.layout();
     pt.jsav.umsg("The resulting tree is finished.");
-    pt.jsav.recorded();
+    graphStack[av_name] = [];
+    graphStack[av_name].push(pt.parseTree);
   }
+
 }
 
 var getStepsForDisplayTree = function (pt){
