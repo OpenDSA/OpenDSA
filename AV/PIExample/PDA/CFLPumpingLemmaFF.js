@@ -84,7 +84,7 @@ $(document).ready(function() {
   //Frame 19
   av.umsg("Proof (sketch)<br/>There is a CFG $G$ such that $L=L(G)$<br/>Consider the parse tree of a long string in $L$.<br/>For any long string, some nonterminal $N$ must appear twice in the path<br/>$N \\stackrel{*}{\\Rightarrow} vNy$ and $N \\stackrel{*}{\\Rightarrow} x$<br/>$S \\stackrel{*}{\\Rightarrow} uNz \\stackrel{*}{\\Rightarrow} uvNyz \\stackrel{*}{\\Rightarrow} uvxyz$<br/>By repeating the $v$ and $y$ subtrees, get $N \\stackrel{*}{\\Rightarrow} v^iNy^i \\stackrel{*}{\\Rightarrow} v^ixy^i$");
   //TODO add image
-  av.step();
+  av.recorded();
 
 
 

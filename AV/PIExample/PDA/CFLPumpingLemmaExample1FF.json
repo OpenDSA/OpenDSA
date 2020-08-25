@@ -3,11 +3,47 @@
     "en": {
       "q2": {
         "type": "select",
-        "description": "We need to sutdy the closure properties of CFLs.",
-        "question": "Closure properties of CFLs means that if we applied an operator on 2 CFL languages, the result must be CFL.",
+        "description": "Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not a CFL",
+        "question": "What is the first step?.",
+        "answer": "Assume that $L$ is a CFL",
+        "choices": ["Assume that $L$ is a CFL", "Assume that $L$ is not a CFL"]
+      },
+      "q3": {
+        "type": "true/false",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL.",
+        "question": "[T|F] Since $L$ is CFL, the pumping lemma holds",
         "answer": "True",
         "choices": []
       },
+      "q4": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "Based on the Pumping Lemma, what is the main condition for the length of the string $w$?",
+        "answer": "$|w| \\ge m$",
+        "choices": ["$|w| \\ge m$", "$|w| \\le m$", "$|w| = m$"]
+      },
+      "q5": {
+        "type": "true/false",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "Based on the Pumping Lemma, $m$ is the number of states for any PDA that recognize $L$.",
+        "answer": "True",
+        "choices": []
+      },
+      "q6": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "Which of the following is a correct string $\\in L$?",
+        "answer": "$w = a^mb^mc^m$",
+        "choices": ["$w = a^mb^mc^m$", "$w = w = a^mb^nc^k$", "$w = a^mb^mc^k"]
+      },
+      "q7": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^n | n \\geq 0\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "What is the length of $a^mb^mc^m$?",
+        "answer": "$3m$",
+        "choices": ["$2m$", "$m$", "$3m$"]
+      }
+
     }
   }
 }

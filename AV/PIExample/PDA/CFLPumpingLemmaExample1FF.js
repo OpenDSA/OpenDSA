@@ -9,10 +9,51 @@ $(document).ready(function() {
   var goNext = false;
 
   //Frame 1
-  av.umsg("We need a tool that helps us to identify if a language is not CFL.");
+  av.umsg("Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not a CFL");
   av.displayInit();
 
   //Frame 2
   av.umsg(Frames.addQuestion("q2"));
   av.step();
+
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
+  av.step();
+
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
+  av.step();
+
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
+  av.step();
+
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
+  av.step();
+
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
+  av.step();
+
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
+  av.step();
+
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
+  av.step();
+
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
+  av.step();
+
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
+  av.step();
+
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
+  av.step();
+
 });

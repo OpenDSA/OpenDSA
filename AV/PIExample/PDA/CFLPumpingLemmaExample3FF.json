@@ -7,7 +7,7 @@
         "question": "Closure properties of CFLs means that if we applied an operator on 2 CFL languages, the result must be CFL.",
         "answer": "True",
         "choices": []
-      },
+      }
     }
   }
 }
