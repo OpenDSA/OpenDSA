@@ -1,25 +1,24 @@
-[
-    {
-        "expression": "",
-        "description": "Create a machine that increases the number of a's in the string",
-        "type": "description",
-        "testCases": [
-            {
-                "aaa": "aaaa"
-            },
-            {
-                "": "a"
-            },
-            {
-                "aaaaa": "aaaaaa"
-            },
-            {
-                "aaaaaaa": "aaaaaaaa"
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
+[{
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "exerciseType": "TM",
+    "expression": "",
+    "description": "Create a machine that increases the number of a's in the string",
+    "type": "description",
+    "testCases": [{
+            "aaa": "aaaa"
+        },
+        {
+            "": "a"
+        },
+        {
+            "aaaaa": "aaaaaa"
+        },
+        {
+            "aaaaaaa": "aaaaaaaa"
         }
+    ],
+    "graph": {
+        "nodes": [],
+        "edges": []
     }
-]
+}]

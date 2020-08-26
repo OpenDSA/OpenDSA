@@ -1,12 +1,12 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "GRAMMAR",
-    "totalTrueCases": 5,
+    "totalTrueCases": 10,
     "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 1,
+    "trueCounter": 10,
     "falseCounter": 0,
     "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
     "generatorflag": 0,
@@ -14,8 +14,36 @@
     "description": "Find a regular grammar for the language over {a, b}, where the number of a's in any string is divisible by 3 .",
     "type": "description",
     "testCases": [{
-        "regular-grammar": true
-    }],
+            "regular-grammar": true
+        },
+        {
+            "": true
+        },
+        {
+            "aaa": true
+        },
+        {
+            "bbbbb": true
+        },
+        {
+            "bababa": true
+        },
+        {
+            "abbbbabbbbabb": true
+        },
+        {
+            "aabab": true
+        },
+        {
+            "bbabbabbbbabbababba": true
+        },
+        {
+            "ababbaaaaaaa": true
+        },
+        {
+            "bbbbbbbbbb": true
+        }
+    ],
     "graph": {
         "nodes": [],
         "edges": []

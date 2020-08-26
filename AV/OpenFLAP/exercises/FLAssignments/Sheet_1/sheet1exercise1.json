@@ -6,14 +6,59 @@
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 0,
-    "falseCounter": 0,
+    "trueCounter": 9,
+    "falseCounter": 6,
     "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
     "generatorflag": 0,
     "expression": "",
     "description": "Give a DFA that accepts the language over Σ ={a, b} of any odd number of a’s.",
     "type": "description",
-    "testCases": [],
+    "testCases": [{
+            "a": true
+        },
+        {
+            "bbbba": true
+        },
+        {
+            "abbbb": true
+        },
+        {
+            "aa": false
+        },
+        {
+            "bbbbb": false
+        },
+        {
+            "aaa": true
+        },
+        {
+            "abbabbba": true
+        },
+        {
+            "aaabbbb": true
+        },
+        {
+            "bbbbaaa": true
+        },
+        {
+            "aaaa": false
+        },
+        {
+            "aba": false
+        },
+        {
+            "abbbbbba": false
+        },
+        {
+            "abbbbbaaabbbbba": true
+        },
+        {
+            "bab": true
+        },
+        {
+            "baba": false
+        }
+    ],
     "graph": {
         "nodes": [],
         "edges": []

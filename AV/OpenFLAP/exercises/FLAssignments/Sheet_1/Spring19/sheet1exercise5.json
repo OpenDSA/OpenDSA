@@ -7,7 +7,7 @@
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "trueCounter": 3,
-    "falseCounter": 1,
+    "falseCounter": 3,
     "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
     "generatorflag": 0,
     "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{b, ab, bab\\}",
@@ -24,6 +24,12 @@
         },
         {
             "": false
+        },
+        {
+            "a": false
+        },
+        {
+            "bb": false
         }
     ],
     "graph": {

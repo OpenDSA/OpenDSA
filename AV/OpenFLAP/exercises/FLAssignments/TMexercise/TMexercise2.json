@@ -1,28 +1,27 @@
-[
-    {
-        "expression": "",
-        "description": "Create a machine that erases a string of a's, b's, and c's",
-        "type": "description",
-        "testCases": [
-            {
-                "aaa": ""
-            },
-            {
-                "bbb": ""
-            },
-            {
-                "ccc": ""
-            },
-            {
-                "abcabcbacb": ""
-            },
-            {
-                "": ""
-            }
-        ],
-        "graph": {
-            "nodes": [],
-            "edges": []
+[{
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "exerciseType": "TM",
+    "expression": "",
+    "description": "Create a machine that erases a string of a's, b's, and c's",
+    "type": "description",
+    "testCases": [{
+            "aaa": ""
+        },
+        {
+            "bbb": ""
+        },
+        {
+            "ccc": ""
+        },
+        {
+            "abcabcbacb": ""
+        },
+        {
+            "": ""
         }
+    ],
+    "graph": {
+        "nodes": [],
+        "edges": []
     }
-]
+}]

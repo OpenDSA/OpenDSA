@@ -6,14 +6,56 @@
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 10],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 0,
-    "falseCounter": 0,
+    "trueCounter": 10,
+    "falseCounter": 4,
     "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
     "generatorflag": 0,
     "expression": "",
     "description": "Construct a CFG over {a,b} whose language contains precisely the strings with the same number of a’s and b’s.",
     "type": "description",
-    "testCases": [],
+    "testCases": [{
+            "": true
+        },
+        {
+            "ab": true
+        },
+        {
+            "ba": true
+        },
+        {
+            "aabb": true
+        },
+        {
+            "bbaa": true
+        },
+        {
+            "abba": true
+        },
+        {
+            "abab": true
+        },
+        {
+            "baab": true
+        },
+        {
+            "ababa": false
+        },
+        {
+            "bbbbbaaa": false
+        },
+        {
+            "baababa": false
+        },
+        {
+            "abbaaabb": true
+        },
+        {
+            "abbab": false
+        },
+        {
+            "aaabbbab": true
+        }
+    ],
     "graph": {
         "nodes": [],
         "edges": []

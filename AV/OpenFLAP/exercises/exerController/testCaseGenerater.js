@@ -351,7 +351,7 @@ function checkAdd(flag, testCase) {
     if (str.charAt(0) == 'T') {
       str = str.substr(1);
     }
-    if (testCaseList.indexOf(str) != -1) {
+    if (loopkey(testCaseList, str)) {
       return 0
     }
     if (trueCounter < trueStringLimit) {
@@ -362,7 +362,8 @@ function checkAdd(flag, testCase) {
     if (str.charAt(0) == 'F') {
       str = str.substr(1);
     }
-    if (testCaseList.indexOf(str) != -1) {
+
+    if (loopkey(testCaseList, str)) {
       return 0
     } else if (falseCounter < falseStringLimit) {
       addtoTestCase(str, testCase, 0);
@@ -371,6 +372,14 @@ function checkAdd(flag, testCase) {
   }
 }
 
+function loopkey(testCases, str) {
+  for (var name in testCases) {
+    if (Object.keys(testCases[name]) == str) {
+      return true;
+    }
+  }
+  return false;
+}
 /**
  * random string generator help function
  * @return string
@@ -403,7 +412,7 @@ function randomStringGenerate(testCase, flag) {
   var solu;
   var copy = str;
 
-  if (testCaseList.indexOf(copy) == -1) {
+  if (!loopkey(testCaseList, copy)) {
     if (flag != 0) {
       if (testCase[0].solution != '') {
         testCase[0].solution = testCase[0].solution.split(' ').join('');
@@ -424,6 +433,8 @@ function randomStringGenerate(testCase, flag) {
     }
   }
 }
+
+
 
 function hardcode(copyObj, flag, str) {
   checkAdd(checkRule(str), copyObj)
@@ -476,13 +487,11 @@ function generateTestCase(testCase, flag) {
       } else {
         alert('Wrong generator flag.');
       }
-
-
-
       if (str == "") {
         emptyStr = true;
       }
       if (copyObj.solution === "") {
+        testCaseList = copyObj.testCases
         hardcode(copyObj, flag, str)
       } else if (
         copyObj.exerciseType == 'DFA' ||
@@ -491,6 +500,7 @@ function generateTestCase(testCase, flag) {
       ) {
         dfaNfaPdaHandler(copyObj, flag, str);
       } else if (copyObj.exerciseType == 'REGEXP') {
+        testCaseList = copyObj.testCases
         randomStringGenerate(copyObj, flag);
       } else if (copyObj.exerciseType == 'GRAMMAR') {
         graHandler(copyObj, flag, str);

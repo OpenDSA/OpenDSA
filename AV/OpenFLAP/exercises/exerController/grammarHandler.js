@@ -155,7 +155,14 @@ function grammarTrav(rule, string, flag, key, pos) {
   }
 }
 
-
+function loopkey(testCases, str) {
+  for (var name in testCases) {
+    if (Object.keys(testCases[name]) == str) {
+      return true;
+    }
+  }
+  return false;
+}
 
 /**
  * add string to testCases
@@ -170,13 +177,13 @@ function grammarTrav(rule, string, flag, key, pos) {
 function gramAdd(testCase, result, str) {
   if (testCase.testCases.indexOf(str) == -1) {
     if (result) {
-      if (trueCounter < trueStringLimit && testCaseList4.indexOf(str) == -1) {
+      if (trueCounter < trueStringLimit && !loopkey(testCaseList4, str)) {
         testCaseList4.push(str);
         addtoTestCase(str, testCase, 1);
         trueCounter++;
       }
     } else {
-      if (falseCounter < falseStringLimit && testCaseList4.indexOf(str) == -1) {
+      if (falseCounter < falseStringLimit && !loopkey(testCaseList4, str)) {
         testCaseList4.push(str);
         addtoTestCase(str, testCase, 0);
         falseCounter++;
@@ -196,6 +203,7 @@ var specialCase
  */
 function graHandler(testCase, flag, string) {
   var rule = testCase.solution;
+  testCaseList4 = testCase.testCases
   var key = 'S';
   finalCheck = false;
   if (string == "") {

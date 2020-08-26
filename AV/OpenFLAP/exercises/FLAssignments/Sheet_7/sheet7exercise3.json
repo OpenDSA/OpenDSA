@@ -6,14 +6,47 @@
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 0,
-    "falseCounter": 0,
+    "trueCounter": 7,
+    "falseCounter": 4,
     "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
     "generatorflag": 0,
     "expression": "\\{w \\mid w \\in \\{a, b\\}^* \\;\\;and\\;\\; w\\;\\; has\\;\\; twice\\;\\; as\\;\\; many\\;\\; n_a(w)\\;\\;as\\;\\; n_b(w)",
     "description": "Construct the PDA that accepts ",
     "type": "both",
-    "testCases": [],
+    "testCases": [{
+            "": false
+        },
+        {
+            "aab": true
+        },
+        {
+            "aba": true
+        },
+        {
+            "baa": true
+        },
+        {
+            "aaabab": true
+        },
+        {
+            "baabbbaaaa": false
+        },
+        {
+            "bbbbaaaaaaaa": true
+        },
+        {
+            "bbbaaaaaabaa": true
+        },
+        {
+            "aaaaaa": false
+        },
+        {
+            "bbbbbbbbbb": false
+        },
+        {
+            "baabbaaaa": true
+        }
+    ],
     "graph": {
         "nodes": [],
         "edges": []

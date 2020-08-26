@@ -32,9 +32,10 @@ controllerProto.load = function () {
 		}
 	});
 	this.tests = tests;
-	// 0 flag represent regular graph test cases
-	// 1 flag represent grammar test cases
-	generateTestCase(tests, 0);
+	if(this.tests[0].exerciseType != "TM"){
+		generateTestCase(tests, 0);
+	}
+	
 	var proto = this;
 	$('#testSolution').click(function () {
 		proto.startTesting();
