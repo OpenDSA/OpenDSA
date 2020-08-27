@@ -201,11 +201,11 @@
         "choices": ["$aba$", "$ab$", "$c$","$bc$", "$bcc$"]
       },
       "q16": {
-        "type": "multiple",
+        "type": "select",
         "description": "In languages, $\\Sigma^*$  represents the Universe set $U$. For example, the complement of $L$ will be the set of all strings in $\\Sigma$ except the strings in $L$. In other words, $\\bar{L}$ = $\\Sigma^* - L$",
         "question": "Let $\\Sigma=\\{a,b,c\\}$, $L_1=\\{ab,bc,aba\\}$, $L_2=\\{c,bc,bcc\\}$, what is $\\overline{L_1∩L_2}$?",
-        "answer": ["$\\Sigma^*$ - {bc}"],
-        "choices": ["{bc}", "$\\Sigma^*$ - {bc}", " $\\Sigma^*$ \\cup {bc}", "$\\Sigma$ - {bc}"]
+        "answer": "$\\Sigma^* - \\{bc\\}$",
+        "choices": ["$\\{bc\\}$", "$\\Sigma^* - \\{bc\\}$", " $\\Sigma^* \\cup \\{bc\\}$", "$\\Sigma - \\{bc\\}$"]
       },
       "q17": {
         "type": "multiple",
