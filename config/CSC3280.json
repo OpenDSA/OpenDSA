@@ -78,7 +78,7 @@
     "Preface": {
       "Intro": {}
     },
-    "Chapter 1: Introduction to Data Structures": {
+    "Introduction to Data Structures": {
       "Background/IntroDSA": {},
       "Searching/SearchIntro": {},
       "Searching/UnsortedSearch": {},
@@ -86,7 +86,7 @@
       "Searching/BinarySearch": {},
       "Searching/SelfOrg": {}
     },
-    "Chapter 2: Linked Lists": {
+    "Linked Lists": {
       "List/ListIntro": {},
       "List/ListADT": {},
       "List/ListArray": {},
@@ -94,7 +94,7 @@
       "List/ListDouble": {},
       "List/ListAnalysis": {}
     },
-    "Chapter 3: Recursion": {
+    "Recursion": {
       "RecurTutor/RecIntro": {},
       "RecurTutor/Write": {},
       "RecurTutor/CodeCompletionEx": {},
@@ -102,7 +102,7 @@
       "RecurTutor/Trace": {},
       "RecurTutor/TracingEx": {}
     },
-    "Chapter 4: Algorithm Analysis": {
+    "Algorithm Analysis": {
       "AlgAnal/AnalChap": {},
       "AlgAnal/AnalIntro": {},
       "AlgAnal/AnalCases": {},
@@ -111,13 +111,13 @@
       "AlgAnal/AnalProblem": {},
       "AlgAnal/AnalMisunderstanding": {}
     },
-    "Chapter 5: Stacks & Queues": {
+    "Stacks & Queues": {
       "List/StackArray": {},
       "List/StackLinked": {},
       "List/Queue": {},
       "List/QueueLinked": {}
     },
-    "Chapter 6: Trees": {
+    "Trees": {
       "Binary/BinaryTreeIntro": {},
       "Binary/BinaryTree": {},
       "Binary/BinaryTreeTraversal": {},
@@ -130,7 +130,7 @@
       "Binary/BSTDict": {},
       "Binary/BinaryChapSumm": {}
     },
-    "Chapter 7: Heaps & Hash Tables": {
+    "Heaps & Hash Tables": {
       "Binary/Heaps": {},
       "Binary/CompleteTree": {},
       "Hashing/HashIntro": {},
@@ -144,7 +144,7 @@
       "Hashing/HashDel": {},
       "Hashing/HashSumm": {}
     },
-    "Chapter 8: Sorting": {
+    "Sorting": {
       "Sorting/InSort": {},
       "Sorting/SelectionSort": {},
       "Sorting/InsertionSort": {},
