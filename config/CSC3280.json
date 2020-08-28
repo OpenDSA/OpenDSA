@@ -18,6 +18,13 @@
       ],
       "label": "Pseudo Code",
       "lang": "pseudo"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
     }
   },
   "build_JSAV": false,
