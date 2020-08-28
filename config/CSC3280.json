@@ -1,0 +1,157 @@
+{
+  "title": "An Introduction to Data Structures and Algorithm Analysis",
+  "desc": "CSC3280. Covers the design, analysis, and implementation of the fundamental data structures of Computer Science, as well as recursion, an introduction to runtime analysis, and searching and sorting techniques.",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Pseudo": {
+      "ext": [
+        "txt"
+      ],
+      "label": "Pseudo Code",
+      "lang": "pseudo"
+    }
+  },
+  "build_JSAV": false,
+  "build_cmap": false,
+  "suppress_todo": true,
+  "dispModComp": true,
+  "tabbed_codeinc": true,
+  "narration_enabled": true,
+  "glob_exer_options": {
+    "JXOP-debug": "false"
+  },
+  "glob_ss_options": {
+    "required": false,
+    "points": 0,
+    "threshold": 1
+  },
+  "glob_ka_options": {
+    "required": true,
+    "points": 1,
+    "threshold": 5
+  },
+  "glob_pe_options": {
+    "required": true,
+    "points": 1,
+    "threshold": 1
+  },
+  "glob_ff_options": {
+    "required": false,
+    "points": 0,
+    "threshold": 1
+  },
+  "glob_extr_options": {
+    "points": 1,
+    "code-workout": {
+      "points": 1
+    },
+    "code-workout-jhavepop": {
+      "points": 1
+    },
+    "mastery-grid-java-animations": {
+      "points": 1
+    },
+    "mastery-grid-jsparsons-python": {
+      "points": 1
+    },
+    "mastery-grid-python-animations": {
+      "points": 1
+    }
+  },
+  "chapters": {
+    "Preface": {
+      "Intro": {}
+    },
+    "Chapter 1: Introduction to Data Structures": {
+      "Background/IntroDSA": {},
+      "Searching/SearchIntro": {},
+      "Searching/UnsortedSearch": {},
+      "Searching/SortedSearch": {},
+      "Searching/BinarySearch": {},
+      "Searching/SelfOrg": {}
+    },
+    "Chapter 2: Linked Lists": {
+      "List/ListIntro": {},
+      "List/ListADT": {},
+      "List/ListArray": {},
+      "List/ListLinked": {},
+      "List/ListDouble": {},
+      "List/ListAnalysis": {}
+    },
+    "Chapter 3: Recursion": {
+      "RecurTutor/RecIntro": {},
+      "RecurTutor/Write": {},
+      "RecurTutor/CodeCompletionEx": {},
+      "RecurTutor/HarderWrite": {},
+      "RecurTutor/Trace": {},
+      "RecurTutor/TracingEx": {}
+    },
+    "Chapter 4: Algorithm Analysis": {
+      "AlgAnal/AnalChap": {},
+      "AlgAnal/AnalIntro": {},
+      "AlgAnal/AnalCases": {},
+      "AlgAnal/AnalCompvsAlg": {},
+      "AlgAnal/AnalAsymptotic": {},
+      "AlgAnal/AnalProblem": {},
+      "AlgAnal/AnalMisunderstanding": {}
+    },
+    "Chapter 5: Stacks & Queues": {
+      "List/StackArray": {},
+      "List/StackLinked": {},
+      "List/Queue": {},
+      "List/QueueLinked": {}
+    },
+    "Chapter 6: Trees": {
+      "Binary/BinaryTreeIntro": {},
+      "Binary/BinaryTree": {},
+      "Binary/BinaryTreeTraversal": {},
+      "Binary/WritingTraversals": {},
+      "Binary/BinaryTreeImpl": {},
+      "Binary/BinaryTreeNodeSpace": {},
+      "Binary/RecursiveDS": {},
+      "Binary/BinaryTreeFullThm": {},
+      "Binary/BST": {},
+      "Binary/BSTDict": {},
+      "Binary/BinaryChapSumm": {}
+    },
+    "Chapter 7: Heaps & Hash Tables": {
+      "Binary/Heaps": {},
+      "Binary/CompleteTree": {},
+      "Hashing/HashIntro": {},
+      "Hashing/HashFunc": {},
+      "Hashing/HashFuncExamp": {},
+      "Hashing/OpenHash": {},
+      "Hashing/BucketHash": {},
+      "Hashing/HashCSimple": {},
+      "Hashing/HashCImproved": {},
+      "Hashing/HashAnal": {},
+      "Hashing/HashDel": {},
+      "Hashing/HashSumm": {}
+    },
+    "Chapter 8: Sorting": {
+      "Sorting/InSort": {},
+      "Sorting/SelectionSort": {},
+      "Sorting/InsertionSort": {},
+      "Sorting/BubbleSort": {},
+      "Sorting/ExchangeSort": {},
+      "Sorting/Mergesort": {},
+      "Sorting/MergesortImpl": {},
+      "Sorting/Quicksort": {},
+      "Sorting/Heapsort": {},
+      "Sorting/SortingEmpirical": {}
+    },
+    "Appendix": {
+      "Glossary": {},
+      "Bibliography": {}
+    }
+  }
+}
