@@ -6,12 +6,16 @@
   height: 30px;
 }
 
-#BSTsearchCON .jsavcode{
+#BSTsearchCON .jsavcode {
   margin-left: 310px;
 }
 
 #BSTinsertCON {
   height: 540px;
+}
+
+#BSTinsertCON .jsavoutput.jsavline {
+  height: 30px;
 }
 
 #BSTinsertCON .jsavtree { 

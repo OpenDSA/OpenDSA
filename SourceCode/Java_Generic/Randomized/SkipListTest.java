@@ -7,7 +7,7 @@
 
 import java.io.*;
 
-public class Skipmain {
+public class SkipListTest {
   final static int maxValue = 100;
 
   public static void main(String args[]) throws IOException {

@@ -253,3 +253,19 @@ build/Sequential/success: Searching/Sequential.java
 	cd build/Sequential; \
 	javac $(CFLAGS) Sequential.java; \
 	$(JAVA) $(RFLAGS) Sequential
+
+Randomized: SkipList
+
+SkipList: build/SkipListTest/success
+
+build/SkipListTest/success: Randomized/SkipList.java Randomized/SkipListTest.java Design/Dictionary.java Utils/KVPair.java
+	@echo "SkipList Test"
+	-@rm -rf build/SkipListTest
+	@mkdir build/SkipListTest
+	cp Randomized/SkipListTest.java build/SkipListTest
+	cp Randomized/SkipList.java build/SkipListTest
+	@cp Design/Dictionary.java build/SkipListTest
+	@cp Utils/KVPair.java build/SkipListTest
+	cd build/SkipListTest; \
+	javac $(CFLAGS) SkipListTest.java; \
+	$(JAVA) $(RFLAGS) SkipListTest
