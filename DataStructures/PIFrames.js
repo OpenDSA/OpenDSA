@@ -315,7 +315,8 @@
           //Peixuan changed this part or let it randomly lists choices
           var seq = this.randomSeqGenerator(choices.length);
           for (var i = 0; i < choices.length; i++) {
-            var radio = `<input type="radio" name=${this.av_name} value='${choices[seq[i]]}' style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
+            //Peixuan changed the ' to " to make the choices can have ' sign
+            var radio = `<input type="radio" name=${this.av_name} value="${choices[seq[i]]}" style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
             html.push(radio);
           }
 
@@ -406,11 +407,6 @@
             var checkbox = `<input type="checkbox" name=${this.av_name} value='${choices[seq[i]]}' style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
             html.push(checkbox);
           }
-          /*
-          for (var i = 0; i < choices.length; i++) {
-            var checkbox = `<input type="checkbox" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
-            html.push(checkbox);
-          }*/
 
           html.push(PIFrames.submit);
           html.push(PIFrames.feedback);
