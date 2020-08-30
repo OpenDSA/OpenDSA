@@ -28,6 +28,13 @@
                 "question": "Anwser is True",
                 "answer": "True",
                 "choices": []
+            },
+            "q4": {
+                "type": "select",
+                "description": "This is a multiple answer select question(select question)",
+                "question": "Anwser is A ' , B",
+                "answer": ["A ' ", "B"],
+                "choices": ["A ' ", "B", "C", "D"]
             }
         }
     }

@@ -18,5 +18,7 @@ $(document).ready(function(){
   av.step();
   av.umsg(Frames.addQuestion("q3"));
   av.step();
+  av.umsg(Frames.addQuestion("q4"));
+  av.step();
   av.recorded();
 });
