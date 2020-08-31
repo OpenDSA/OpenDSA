@@ -3,7 +3,7 @@
  *
  * Container ID: splitCON
  */
-(function () {
+$(document).ready(function() {
   "use strict";
   var jsav = new JSAV("splitCON");
 
@@ -206,4 +206,4 @@
   // Mark the slide show as finished.
   jsav.recorded();
 
-}());
+});
