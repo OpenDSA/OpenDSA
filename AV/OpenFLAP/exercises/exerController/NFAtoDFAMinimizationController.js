@@ -135,12 +135,7 @@ controllerProto.updateExercise = function(id) {
 	var start = new Date();
 	logRecord['Exercise' + exNum + '_Time'] = [];
 	logRecord['Exercise' + exNum + '_Time'].push(start);
-	var OStype = window.navigator.platform.toLowerCase();
-	if (OStype.indexOf('mac') > -1) {
-		this.fa.getSvg().canvas.style.position = "relative";
-	  } 
-	else
-		this.fa.getSvg().canvas.style.position = "absolute";
+	
 };
 var exerciseLog = {
     errorsCount:0,
