@@ -16,10 +16,10 @@ controllerProto.init = function (jsav, fa, filePath, dataType, options) {
 	this.initGraph = options.initGraph;
 	var OStype = window.navigator.platform.toLowerCase();
 	if (OStype.indexOf('mac') > -1) {
-		modelDFA.getSvg().canvas.style.position = "relative";
+		fa.getSvg().canvas.style.position = "relative";
 	  } 
 	else
-		modelDFA.getSvg().canvas.style.position = "absolute";
+		fa.getSvg().canvas.style.position = "absolute";
 }
 
 controllerProto.load = function () {
