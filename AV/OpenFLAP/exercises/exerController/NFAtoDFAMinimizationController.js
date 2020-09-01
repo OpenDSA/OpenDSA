@@ -14,12 +14,7 @@ controllerProto.init = function (jsav, fa, filePath, dataType, options) {
 	this.currentExercise = 0;
 	this.testCases;
 	this.initGraph = options.initGraph;
-	var OStype = window.navigator.platform.toLowerCase();
-	if (OStype.indexOf('mac') > -1) {
-		fa.getSvg().canvas.style.position = "relative";
-	  } 
-	else
-		fa.getSvg().canvas.style.position = "absolute";
+	
 }
 
 controllerProto.load = function () {
@@ -140,7 +135,12 @@ controllerProto.updateExercise = function(id) {
 	var start = new Date();
 	logRecord['Exercise' + exNum + '_Time'] = [];
 	logRecord['Exercise' + exNum + '_Time'].push(start);
-
+	var OStype = window.navigator.platform.toLowerCase();
+	if (OStype.indexOf('mac') > -1) {
+		this.fa.getSvg().canvas.style.position = "relative";
+	  } 
+	else
+		this.fa.getSvg().canvas.style.position = "absolute";
 };
 var exerciseLog = {
     errorsCount:0,
