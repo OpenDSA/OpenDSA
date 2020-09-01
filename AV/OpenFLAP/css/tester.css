@@ -104,7 +104,7 @@ td {
 	overflow-y: auto;
 }
 .jsavcanvas {
-	overflow-x: initial;
+	overflow-x: auto;
 }
 .jsavmatrix {
 	margin-left: 0;
