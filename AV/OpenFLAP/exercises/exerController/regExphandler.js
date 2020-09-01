@@ -3,20 +3,12 @@
 // ******************************************************************************
 // ******************************************************************************
 // ******************************************************************************
-var trueStringLimit;
-var falseStringLimit;
-var caseCounter;
-var testCaseList = [];
+
+var testCaseList5 = [];
 var mark = 0;
 var markPos = 0;
 var tempFlag;
 var checkAllstar;
-var str = '';
-var trueCounter; // number of hardcode true cases in json file
-var falseCounter; // number of hardcode false cases in json file
-var generatorflag = 0;
-var containLetters; // contain letters
-var randomStringLength; //string lengthe between 0 to 15
 var emptyStr;
 /**
  * Add strings alone with true or false to the test cases
@@ -28,7 +20,7 @@ var emptyStr;
  * @param obj  Object that contain all info
  */
 function addtoTestCase(str, obj, TorF) {
-  testCaseList.push(str);
+  testCaseList5.push(str);
   var current = {};
   if (tempFlag != 1) {
     var inobj = obj.testCases;
@@ -351,7 +343,7 @@ function checkAdd(flag, testCase) {
     if (str.charAt(0) == 'T') {
       str = str.substr(1);
     }
-    if (loopkey(testCaseList, str)) {
+    if (loopkey(testCaseList5, str)) {
       return 0
     }
     if (trueCounter < trueStringLimit) {
@@ -363,7 +355,7 @@ function checkAdd(flag, testCase) {
       str = str.substr(1);
     }
 
-    if (loopkey(testCaseList, str)) {
+    if (loopkey(testCaseList5, str)) {
       return 0
     } else if (falseCounter < falseStringLimit) {
       addtoTestCase(str, testCase, 0);
@@ -380,23 +372,23 @@ function loopkey(testCases, str) {
   }
   return false;
 }
-/**
- * random string generator help function
- * @return string
- */
-function stringGenerate() {
-  var min = randomStringLength[0];
-  var max = randomStringLength[1];
-  var stringLength = Math.round(Math.random() * (max - min)) + min;
-  for (var a = 0; a < stringLength; a++) {
-    var pos = Math.round(Math.random() * (containLetters.length - 1));
-    str += containLetters[pos];
-  }
-  if (caseCounter == 0) {
-    str = '';
-  }
-  return str;
-}
+// /**
+//  * random string generator help function
+//  * @return string
+//  */
+// function stringGenerate() {
+//   var min = randomStringLength[0];
+//   var max = randomStringLength[1];
+//   var stringLength = Math.round(Math.random() * (max - min)) + min;
+//   for (var a = 0; a < stringLength; a++) {
+//     var pos = Math.round(Math.random() * (containLetters.length - 1));
+//     str += containLetters[pos];
+//   }
+//   if (caseCounter == 0) {
+//     str = '';
+//   }
+//   return str;
+// }
 
 /**
  * dealing with regular expression
@@ -408,11 +400,12 @@ function stringGenerate() {
  *            regular expression exercise or regular grammar exercise flag
  *
  */
-function randomStringGenerate(testCase, flag) {
+function regExpHandler(testCase, flag) {
   var solu;
   var copy = str;
+  testCaseList5 = testCase.testCases
 
-  if (!loopkey(testCaseList, copy)) {
+  if (!loopkey(testCaseList5, copy)) {
     if (flag != 0) {
       if (testCase[0].solution != '') {
         testCase[0].solution = testCase[0].solution.split(' ').join('');
@@ -436,83 +429,10 @@ function randomStringGenerate(testCase, flag) {
 
 
 
-function hardcode(copyObj, str) {
+function hardcode(copyObj, flag, str) {
   checkAdd(checkRule(str), copyObj)
 }
 
-
-/**
- * check undefined
- * Lambda, Unit, useless
- * @param testCase
- *            object
- */
-function generateTestCase(testCase, flag) {
-  var copyObj;
-  if (flag == 1) {
-    copyObj = testCase;
-  } else {
-    copyObj = testCase[0];
-  }
-  trueStringLimit = copyObj.totalTrueCases;
-  falseStringLimit = copyObj.totalFalseCases;
-  trueCounter = copyObj.trueCounter;
-  falseCounter = copyObj.falseCounter;
-  generatorflag = copyObj.generatorflag;
-  containLetters = copyObj.containLetters;
-  randomStringLength = copyObj.randomStringLength;
-  caseCounter = trueCounter + falseCounter;
-  var title;
-  tempFlag = flag;
-  if (
-    typeof Object.keys(testCase) !== 'undefined' &&
-    Object.keys(testCase).length > 0
-  ) {
-    title = Object.getOwnPropertyNames(copyObj);
-  }
-  if (title != 'No_Lambda' && title != 'No_Unit' && title != 'No_Useless') {
-    for (
-      var b = 0; trueCounter < trueStringLimit || falseCounter < falseStringLimit; b++
-    ) {
-      str = '';
-      if (generatorflag == 0) {
-        str = stringGenerate();
-      } else if (generatorflag == 1) {
-        str = customGenerator();
-        if (str === undefined) {
-          alert(
-            'Check the Customize generator. Should return string but return undefined.'
-          );
-        }
-      } else {
-        alert('Wrong generator flag.');
-      }
-      if (str == "") {
-        emptyStr = true;
-      }
-      if (copyObj.solution === "") {
-        testCaseList = copyObj.testCases
-        hardcode(copyObj, str)
-      } else if (
-        copyObj.exerciseType == 'DFA' ||
-        copyObj.exerciseType == 'NFA' ||
-        copyObj.exerciseType == 'PDA'
-      ) {
-        dfaNfaPdaHandler(copyObj, flag, str);
-      } else if (copyObj.exerciseType == 'REGEXP') {
-        regExpHandler(copyObj, flag);
-      } else if (copyObj.exerciseType == 'GRAMMAR') {
-        graHandler(copyObj, flag, str);
-      }
-      else if (copyObj.exerciseType == "TM") {
-        tmHandler(copyObj, flag, str);
-      }
-      else {
-        alert('exercise type error. Check json file!');
-      }
-    }
-  }
-}
 
 /**
  * produce random number

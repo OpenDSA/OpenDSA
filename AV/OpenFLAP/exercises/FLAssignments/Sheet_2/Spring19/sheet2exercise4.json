@@ -1,6 +1,6 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
-    "exerciseType": "DFA",
+    "exerciseType": "REGEXP",
     "totalTrueCases": 5,
     "totalFalseCases": 5,
     "containLetters": ["a", "b"],
