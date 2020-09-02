@@ -92,6 +92,7 @@ class extrtoolembed(Directive):
                  'learning_tool': directives.unchanged,
                  'launch_url': directives.unchanged,
                  'id': directives.unchanged,
+                 'workout_id': directives.unchanged
                  }
 
   def run(self):
@@ -103,6 +104,12 @@ class extrtoolembed(Directive):
     if 'learning_tool' not in self.options or self.options['learning_tool'] =='' :
         print('ERROR: External learning tool is not properly configured missing learning_tool option')
         sys.exit()
+    
+    # if 'workout_id' not in self.options or self.options['workout_id'] =='' :
+    #     print('ERROR: External learning tool is not properly configured missing workout_id option')
+    #     sys.exit()
+
+
 
     self.options['type'] = 'external_tool'
     self.options['content'] = ''
@@ -117,16 +124,21 @@ class extrtoolembed(Directive):
       self.options['tool_address'] = self.options['launch_url']
     else:
       url_params = {}
+      print("\n\n\nself.options: =========================================\n", self.options, "\n\n\n")
+      # url_params['workout_id'] = 1  # this needs to be workout_id
       url_params['resource_name'] = self.options['long_name']
       self.options['tool_address'] = external_tool['url']
       self.options['tool_address'] += '?'
+      print("\n\n\nurl_params: =========================================\n", url_params, "\n\n\n")
+      # self.options['tool_address'] += urllib.parse.urlencode(url_params).replace('&', '&amp;')
       self.options['tool_address'] += urllib.parse.urlencode(url_params).replace('&', '&amp;')
 
     if 'id' not in self.options:
       self.options['id'] = ''
 
+    print("\n\n\nself.options['tool_address']: =========================================\n", self.options['tool_address'], "\n\n\n")
     res = CONTAINER_HTML % (self.options)
-
+    print("\n\n\nres: =========================================\n", res, "\n\n\n")
     return [nodes.raw('', res, format='html')]
 
 
@@ -143,7 +155,7 @@ if __name__ == '__main__':
   from docutils.core import publish_parts
 
   directives.register_directive('extrtoolembed',extrtoolembed)
-
+  print("\n\nMaybe Here? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n")
   doc_parts = publish_parts(source,
           settings_overrides={'output_encoding': 'utf8',
           'initial_header_level': 2},
