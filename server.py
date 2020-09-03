@@ -13,7 +13,6 @@ import sys
 import argparse
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 from socket import gethostname, getfqdn, gethostbyname
-from collections import Counter
 
 def makeSimpleServer(port=8080, bind=""):
     server_address = (bind, port)
@@ -24,14 +23,14 @@ def makeSimpleServer(port=8080, bind=""):
         if host == "0.0.0.0":
             hosts = ["localhost", "127.0.0.1", gethostname(), getfqdn(), gethostbyname(gethostname())]
             print("Server now live at these addresses:")
-            for realHost in Counter(hosts):
+            for realHost in set(hosts):
                 print("    http://{0}:{1}/".format(realHost, port))
         else:
             print("Server now live at http://{0}:{1}/".format(host, port))
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
-            print("\nKeyboard interrupt received, exiting.")
+            print("\nKeyboard interrupt received, stopping server.")
             sys.exit(0)
 
 if __name__ == '__main__':
