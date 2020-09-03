@@ -1,4 +1,13 @@
-#!/usr/bin/env python3
+#! /usr/bin/env python
+
+""" Runs a simple web server for viewing OpenDSA books. 
+This allows us to see the Khan Academy exercises and JSAV code objects 
+correctly without a full webserver running.  
+With python 3 installed, just run the command: 'python3 server.py'.
+Then point your web browser to one of the addresses listed.  
+Any created will be in the 'Books' directory.
+Pressing Ctrl + C at the command line should stop the webserver at any time.
+"""
 
 import sys
 import argparse
