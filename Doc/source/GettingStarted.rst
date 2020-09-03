@@ -333,7 +333,7 @@ Use the third option for the path environment:
 "Use Git and optional Unix tools from the Windows Command Prompt".
 Choose "checkout as-is, commit Unix-style line endings",
 and then use "MinTTY".
-You can then check if git is installed with the `git --version` command from a fresh terminal.
+You can then check if git is installed with the ``git --version`` command from a fresh terminal.
 
 Then on Windows you will need to install "make"
 from http://gnuwin32.sourceforge.net/packages/make.htm.
@@ -342,7 +342,7 @@ Then, edit your environment variable PATH to add:
 C:/Program Files/GnuWin32/bin.
 If you don't know how to edit an environment variable on Windows,
 google for "windows set environment variable".
-You can then check if make is installed with the `make --version` command from a fresh terminal.
+You can then check if make is installed with the ``make --version`` command from a fresh terminal.
 
 Next, install nodejs (on Windows, you can get it from
 https://nodejs.org/en/download/).
