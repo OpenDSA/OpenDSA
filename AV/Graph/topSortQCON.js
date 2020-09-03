@@ -21,19 +21,10 @@ $(document).ready(function() {
   queue = jsav.ds.array(["<b>Queue</b>","","","","","","","",""],
                         {left: arrleft, top: 200}).css({"font-size": "10px",
                                                         "width": "100px"});
+  queue.css(0, {"background-color":"#CC6633"});
 
-  var data = ["<b>&nbsp;Nodes&nbsp;</b>", "&nbsp;1114&nbsp;",
-              "&nbsp;2114&nbsp;", "&nbsp;2505&nbsp;", "&nbsp;2506&nbsp;",
-              "&nbsp;3114&nbsp;", "&nbsp;3304&nbsp;", "&nbsp;3214&nbsp;",
-              "&nbsp;3604&nbsp;"];
-  
-  queue.css(0,{"background-color":"#CC6633"});
-
-  Courses = new jsav.ds.array(data,{left: arrleft, top: 90}).css({"font-size" : "10px"});
-  Courses.css(0, {width:80, "background-color": "#CC6633"});
-
-  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>", "", "", "", "", "", "", "", ""],
-                             {left: arrleft, top:135}).css({"font-size": "10px"});
+  //  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp</b>", "", "", "", "", "", "", "", ""],
+  Ecount = new jsav.ds.array(["<b>&nbsp;Count&nbsp;</b>"], {left: arrleft, top:135}).css({"font-size": "10px"});
   Ecount.css(0,{"background-color":"#CC6633"});
 
   oparr = jsav.ds.array(["<b>Output</b>", "", "", "", "", "", "", "", ""],
@@ -91,34 +82,33 @@ $(document).ready(function() {
     var opnode;
     while(output.length > 0) {
       opnode=output.shift();
-      str += "CS-" + opnode+ "   ";
+      str += "CS" + opnode+ "   ";
     }
     return str;
   }
 
-  function markIt(node,q) {
+  function markIt(node, q) {
     node.addClass("marked");
-    jsav.umsg("Enqueue "+ node.value() +" since it has no incoming edges.");
-    for(var i=0;i<q.length;i++)
-      queue.value(i+1,q[i].value());
+    jsav.umsg("Enqueue "+ node.value() +" since it has no unsatisfied prerequisite.");
+    for(var i = 0; i < q.length; i++)
+      queue.value(i + 1, q[i].value());
     node.highlight();
     jsav.step();
   }
 
-  function dequeueIt(node,q) {
+  function dequeueIt(node, q) {
+    var i;
     node.addClass("dequeued");
-    jsav.umsg("Dequeue " + node.value()+ ", put it into the Output array and discard its outgoing edges.");
-    for(var i=0;i<q.length;i++)
-      queue.value(i+1,q[i].value());
-    queue.value(i+1,"");
-    var i=g.nodes().indexOf(node);
-    oparr.value(oparrcnt,node.value());
-    oparr.css(oparrcnt,{"background-color":"#66CC99", "font-size": "10px"});
+    for(i = 0; i < q.length; i++)
+      queue.value(i + 1, q[i].value());
+    queue.value(i + 1, "");
+    i = g.nodes().indexOf(node);
+    oparr.value(oparrcnt, node.value());
+    oparr.css(oparrcnt, {"background-color":"#66CC99", "font-size": "10px"});
     oparrcnt++;
-    Ecount.addClass(i+1,"marked");
-    Courses.unhighlight(i+1);
-    Ecount.unhighlight(i+1);
-    jsav.step();
+    Ecount.addClass(i + 1, "marked");
+    Courses.unhighlight(i + 1);
+    Ecount.unhighlight(i + 1);
   }
 
   function updateCount(adjnodes){
@@ -131,14 +121,15 @@ $(document).ready(function() {
       str += " " + node.value() + " ";
     }
     jsav.umsg("Mark " + str + " and update the number of incoming edges.");
-    for(var i=0;i<g.nodeCount();i++){
-      var temp=Ecount[i+1];
-      Ecount.value(i+1,Count[i]);
-      if(Count[i]==0 && temp!=0)
-        if(!Ecount.hasClass(i+1,"marked")){
-          Courses.highlight(i+1);
-          Ecount.highlight(i+1);
+    for(var i = 0;i < g.nodeCount(); i++) {
+      var temp = Ecount[i + 1];
+      Ecount.value(i + 1, Count[i]);
+      if(Count[i] == 0 && temp != 0) {
+        if(!Ecount.hasClass(i + 1, "marked")){
+          Courses.highlight(i + 1);
+          Ecount.highlight(i + 1);
         }
+      }
     }
     jsav.step();
   }
@@ -168,12 +159,15 @@ $(document).ready(function() {
     // Process the queue until it is empty
     while(q.length > 0) {
       node = q.shift();
-      dequeueIt(node,q);
+      jsav.umsg("Dequeue " + node.value()+ ", put it into the Output array and reduce the prerequisite count of its neighbors.");
+      dequeueIt(node, q);
+      jsav.step();
       // console.log("node " + node.value());
       output.push(node.value());
       adjNode = node.neighbors();
       // console.log("adjNode " + adjNode.length);
       ctr = 0;
+
       // Process the neighbors
       for(i = 0; i < adjNode.length; i++) {
         j = (g.nodes()).indexOf(adjNode[i]);
@@ -188,10 +182,10 @@ $(document).ready(function() {
       }
       if(ctr > 0)
         updateCount(adjNode);
-      while(cntZero.length > 0){
+      while(cntZero.length > 0) {
         node=cntZero.shift();
         q.push(node);
-        markIt(node,q);
+        markIt(node, q);
       }
     }
 
@@ -217,5 +211,14 @@ $(document).ready(function() {
     g.addEdge(c6, c8);
 
     g.addEdge(c7, c6);
+    
+    var gNodes = g.nodes();
+    var data = new Array();
+    data[0] = "Nodes"
+    for(var i = 0; i < g.nodeCount(); i++) {
+      data[i + 1] = gNodes[i].value();
+    }
+    Courses = new jsav.ds.array(data, {left: arrleft, top: 90}).css({"font-size" : "10px"});
+    Courses.css(0, {width:80, "background-color": "#CC6633"});
   }
 });
