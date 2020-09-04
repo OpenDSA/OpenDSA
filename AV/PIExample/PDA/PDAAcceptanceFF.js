@@ -46,7 +46,7 @@ $(document).ready(function() {
 
   //Frame 10
   av.umsg(Frames.addQuestion("q10"));
-  var url = "../../../AV/PIExample/PDA/Machines/PDAExample1.jff";
+  var url = "../../../AV/PIExample/PDA/machines/PDAExample1.jff";
   var PDA = new av.ds.PDA({width: 500, height: 200, left:-20, url: url});
   var q0 = PDA.getNodeWithValue("q0");
   var q1 = PDA.getNodeWithValue("q1");
