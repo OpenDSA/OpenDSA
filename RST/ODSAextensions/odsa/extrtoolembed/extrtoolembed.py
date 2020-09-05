@@ -69,6 +69,7 @@ CONTAINER_HTML= '''\
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
     data-type="%(type)s"
+    data-workout-id="%(workout_id)s"
     data-exer-id="%(id)s">
   %(content)s
   <div class="center">
@@ -111,11 +112,15 @@ class extrtoolembed(Directive):
 
 
 
+    print("\n\nself options: =====================================", self.options, "\n\n")
     self.options['type'] = 'external_tool'
     self.options['content'] = ''
     self.options['exer_name'] = self.options['long_name'].replace(":", "").replace(" ", "_")
     self.options['short_name'] = self.options['long_name']
+    if 'workout_id' not in self.options:
+      self.options['workout_id'] = 0
 
+    print("\n\nid after: =====================================", self.options['workout_id'], "\n\n")
     external_tool = external_tools_urls[self.options['learning_tool']]
     self.options['width'] = external_tool['width']
     self.options['height'] = external_tool['height']
@@ -124,21 +129,15 @@ class extrtoolembed(Directive):
       self.options['tool_address'] = self.options['launch_url']
     else:
       url_params = {}
-      print("\n\n\nself.options: =========================================\n", self.options, "\n\n\n")
-      # url_params['workout_id'] = 1  # this needs to be workout_id
       url_params['resource_name'] = self.options['long_name']
       self.options['tool_address'] = external_tool['url']
       self.options['tool_address'] += '?'
-      print("\n\n\nurl_params: =========================================\n", url_params, "\n\n\n")
-      # self.options['tool_address'] += urllib.parse.urlencode(url_params).replace('&', '&amp;')
       self.options['tool_address'] += urllib.parse.urlencode(url_params).replace('&', '&amp;')
 
     if 'id' not in self.options:
       self.options['id'] = ''
 
-    print("\n\n\nself.options['tool_address']: =========================================\n", self.options['tool_address'], "\n\n\n")
     res = CONTAINER_HTML % (self.options)
-    print("\n\n\nres: =========================================\n", res, "\n\n\n")
     return [nodes.raw('', res, format='html')]
 
 
@@ -155,7 +154,6 @@ if __name__ == '__main__':
   from docutils.core import publish_parts
 
   directives.register_directive('extrtoolembed',extrtoolembed)
-  print("\n\nMaybe Here? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n\n")
   doc_parts = publish_parts(source,
           settings_overrides={'output_encoding': 'utf8',
           'initial_header_level': 2},
