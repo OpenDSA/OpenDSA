@@ -2,38 +2,40 @@
 	<type>fa</type>
 	<automaton>
 		<state id="0" name="q0">
-			<x>138.203125</x>
-			<y>129.203125</y>
+			<x>138.1944522857666</x>
+			<y>129.20140075683594</y>
 			<initial/>
 		</state>
 		<state id="1" name="q1">
-			<x>305.203125</x>
-			<y>124.203125</y>
+			<x>305.1909885406494</x>
+			<y>124.20140075683594</y>
+			<final/>
 		</state>
 		<state id="2" name="q2">
-			<x>445.203125</x>
-			<y>121.203125</y>
+			<x>445.1909885406494</x>
+			<y>121.19792175292969</y>
+			<final/>
 		</state>
 		<state id="3" name="q3">
-			<x>607.203125</x>
-			<y>118.203125</y>
+			<x>607.1875400543213</x>
+			<y>118.1944580078125</y>
+			<final/>
 		</state>
 		<state id="4" name="q4">
-			<x>140.203125</x>
-			<y>273.203125</y>
+			<x>140.19097328186035</x>
+			<y>273.19447326660156</y>
 		</state>
 		<state id="5" name="q5">
-			<x>298.203125</x>
-			<y>269.203125</y>
+			<x>298.19446754455566</x>
+			<y>269.20140075683594</y>
 		</state>
 		<state id="6" name="q6">
-			<x>428.203125</x>
-			<y>263.203125</y>
+			<x>428.19446754455566</x>
+			<y>263.19447326660156</y>
 		</state>
 		<state id="7" name="q7">
-			<x>600.203125</x>
-			<y>255.203125</y>
-			<final/>
+			<x>602.1875400543213</x>
+			<y>253.17710876464844</y>
 		</state>
 		<transition>
 			<from>0</from>
@@ -71,11 +73,6 @@
 			<read>a</read>
 		</transition>
 		<transition>
-			<from>3</from>
-			<to>3</to>
-			<read>b</read>
-		</transition>
-		<transition>
 			<from>4</from>
 			<to>0</to>
 			<read>a</read>
@@ -109,11 +106,6 @@
 			<from>7</from>
 			<to>3</to>
 			<read>a</read>
-		</transition>
-		<transition>
-			<from>7</from>
-			<to>7</to>
-			<read>b</read>
 		</transition>
 	</automaton>
 </structure>
