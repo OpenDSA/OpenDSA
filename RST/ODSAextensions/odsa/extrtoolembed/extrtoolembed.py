@@ -112,7 +112,6 @@ class extrtoolembed(Directive):
 
 
 
-    print("\n\nself options: =====================================", self.options, "\n\n")
     self.options['type'] = 'external_tool'
     self.options['content'] = ''
     self.options['exer_name'] = self.options['long_name'].replace(":", "").replace(" ", "_")
@@ -120,7 +119,6 @@ class extrtoolembed(Directive):
     if 'workout_id' not in self.options:
       self.options['workout_id'] = 0
 
-    print("\n\nid after: =====================================", self.options['workout_id'], "\n\n")
     external_tool = external_tools_urls[self.options['learning_tool']]
     self.options['width'] = external_tool['width']
     self.options['height'] = external_tool['height']
