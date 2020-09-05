@@ -1,47 +1,47 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "DFA",
-    "totalTrueCases": 3,
-    "totalFalseCases": 7,
+    "totalTrueCases": 6,
+    "totalFalseCases": 4,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 3,
-    "falseCounter": 7,
+    "trueCounter": 6,
+    "falseCounter": 4,
     "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
     "generatorflag": 1,
     "expression": "((aa)^+bb)^*",
     "description": "Construct the DFA that accepts the complement of ",
     "type": "both",
     "testCases": [{
-            "": true
+            "": false
         },
         {
-            "aabb": true
+            "aabb": false
         },
         {
-            "aabbaabb": true
+            "aabbaabb": false
         },
         {
-            "aaaabbaabbaaaaaabb": true
+            "aaaabbaabbaaaaaabb": false
         },
         {
-            "a": false
+            "a": true
         },
         {
-            "bb": false
+            "bb": true
         },
         {
-            "aabbbb": false
+            "aabbbb": true
         },
         {
-            "ab": false
+            "ab": true
         },
         {
-            "aaaaaaaaaaaaaaaaaaa": false
+            "aaaaaaaaaaaaaaaaaaa": true
         },
         {
-            "bbbbbbbbbbbbbbbbbb": false
+            "bbbbbbbbbbbbbbbbbb": true
         }
     ],
     "graph": {
