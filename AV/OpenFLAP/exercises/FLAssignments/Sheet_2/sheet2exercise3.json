@@ -1,53 +1,53 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "DFA",
-    "totalTrueCases": 5,
-    "totalFalseCases": 7,
+    "totalTrueCases": 7,
+    "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 5,
-    "falseCounter": 7,
+    "trueCounter": 7,
+    "falseCounter": 5,
     "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
     "generatorflag": 0,
     "expression": "",
     "description": "Construct the DFA that accepts the complement of L, where L is the language over Σ ={a,b} of any even number of a’s and at most three b’s",
     "type": "description",
     "testCases": [{
-            "aaaaaa": true
+            "aaaaaa": false
         },
         {
-            "aabbb": true
+            "aabbb": false
         },
         {
-            "ababaa": true
+            "ababaa": false
         },
         {
-            "b": true
+            "b": false
         },
         {
-            "abababababab": false
+            "abababababab": true
         },
         {
-            "aabbbbbbbb": false
+            "aabbbbbbbb": true
         },
         {
-            "bbabbbbbbb": false
+            "bbabbbbbbb": true
         },
         {
-            "aabaaaaabb": false
+            "aabaaaaabb": true
         },
         {
-            "abbb": false
+            "abbb": true
         },
         {
-            "aaaabbb": true
+            "aaaabbb": false
         },
         {
-            "ababababababa": false
+            "ababababababa": true
         },
         {
-            "ababab": false
+            "ababab": true
         }
 
     ],
@@ -55,6 +55,6 @@
         "nodes": [],
         "edges": []
     },
-    "solution": "./sheet2exercise3.jff"
+    "solution": ""
 
 }]
