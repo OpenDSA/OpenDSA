@@ -57,3 +57,4 @@ Binary Search Tree Small Count Exercise
 ---------------------------------------
 
 .. extrtoolembed:: 'Binary Search Tree Small Count Exercise'
+   :workout_id: 64

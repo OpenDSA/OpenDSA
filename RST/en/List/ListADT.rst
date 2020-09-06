@@ -189,6 +189,7 @@ List ADT Programming Exercise
 -----------------------------
 
 .. extrtoolembed:: 'List ADT Programming Exercise'
+   :workout_id: 62
 
 .. TODO::
    :type: Exercise
