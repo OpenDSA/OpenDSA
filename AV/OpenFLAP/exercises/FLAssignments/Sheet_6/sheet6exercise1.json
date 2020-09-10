@@ -1,8 +1,46 @@
 [{
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "exerciseType": "DFA",
+    "totalTrueCases": 8,
+    "totalFalseCases": 7,
+    "containLetters": ["a", "b"],
+    "randomStringLength": [0, 15],
+    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
+    "trueCounter": 6,
+    "falseCounter": 3,
+    "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
+    "generatorflag": 0,
     "expression": "L\\: =\\: \\{w \\in \\Sigma^* \\mid n_b(w) \b\\:mod\\: 3\\: =\\: 0 \\:and\\: does\\: not\\: have\\: the\\: substring\\: aab\\}",
     "description": "Construct the DFA for the following language. ___ , Σ ={a, b}. For example, bbba, bababa, babbbbbaaandaaaa are in L.  But baababa is not.",
     "type": "description",
-    "testCases": [],
+    "testCases": [{
+            "bbba": true
+        },
+        {
+            "bababa": true
+        },
+        {
+            "babbbbbaa": true
+        },
+        {
+            "aaaa": true
+        },
+        {
+            "abbbabbaba": true
+        },
+        {
+            "ababababababa": true
+        },
+        {
+            "ababababa": false
+        },
+        {
+            "aababbbbba": false
+        },
+        {
+            "baababa": false
+        }
+    ],
     "graph": {
         "nodes": [],
         "edges": []

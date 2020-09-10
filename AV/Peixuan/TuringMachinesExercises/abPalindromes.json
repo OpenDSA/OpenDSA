@@ -1,18 +1,27 @@
-[
-  {
-    "expression":"",
-    "description":"Write a (Turing decidable) program for a Turing machine to recognize the languageof all palindromes over a, b.",
-    "type":"description",
-    "testCases":[
-      {"aaa":"Y"},
-      {"aba":"Y"},
-      {"aaab":"N"},
-      {"aababaa":"Y"},
-      {"bbabb":"Y"}
-    ],
-    "graph":{
-      "nodes":[],
-      "edges":[]
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM.",
+  "exerciseType": "TM",
+  "expression": "",
+  "description": "Write a (Turing decidable) program for a Turing machine to recognize the languageof all palindromes over a, b.",
+  "type": "description",
+  "testCases": [{
+      "aaa": "Y"
+    },
+    {
+      "aba": "Y"
+    },
+    {
+      "aaab": "N"
+    },
+    {
+      "aababaa": "Y"
+    },
+    {
+      "bbabb": "Y"
     }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
   }
-]
+}]

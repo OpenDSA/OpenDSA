@@ -1,11 +1,33 @@
 [{
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "exerciseType": "DFA",
+    "totalTrueCases": 5,
+    "totalFalseCases": 5,
+    "containLetters": ["a"],
+    "randomStringLength": [0, 15],
+    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
+    "trueCounter": 2,
+    "falseCounter": 1,
+    "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
+    "generatorflag": 0,
     "expression": "",
     "description": "Give a DFA that accepts the language over Σ ={a} of any even number of a’s.",
     "type": "description",
-    "testCases": [],
+    "testCases": [{
+            "a": false
+        },
+        {
+            "aa": true
+        },
+        {
+            "aaa": false
+        }
+
+    ],
     "graph": {
         "nodes": [],
         "edges": []
     },
-    "solution": ""
+    "solution": "./sheet1practice1.jff"
+
 }]

@@ -2901,7 +2901,7 @@ Glossary
 
    lower bound
       In :term:`algorithm analysis`, a :term:`growth rate` that is
-      always less than or equal to the that of the
+      always less than or equal to the growth rate of the
       :term:`algorithm` in question.
       In practice, this is the fastest-growing function that we know
       grows no faster than all but a constant number of inputs.
@@ -5182,7 +5182,7 @@ Glossary
 
    upper bound
       In :term:`algorithm analysis`, a :term:`growth rate` that is
-      always greater than or equal to the that of the
+      always greater than or equal to the growth rate of the
       :term:`algorithm` in question.
       In practice, this is the slowest-growing function that we know
       grows at least as fast as all but a constant number of inputs.

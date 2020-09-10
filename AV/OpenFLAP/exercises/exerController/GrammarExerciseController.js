@@ -42,7 +42,7 @@ controllerProto.load = function () {
     }
   });
   this.tests = tests;
-
+  generateTestCase(tests, 0);
   for (i = 0; i < this.tests.length; i++) {
     $("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i + 1) + "</a>");
   }
@@ -244,7 +244,7 @@ controllerProto.toExercise = function (button) {
 controllerProto.updateExercise = function (id) {
   var exercise = this.tests[id];
   this.testCases = exercise["testCases"];
-  generateTestCase(exercise, 1);
+ 
   this.testChomskey = Object.keys(this.testCases[this.testCases.length - 1])[0] === 'CNF'; //identify weather studetns shoud transform the grammar to CNF or Not
   var type = exercise["type"];
   if (type == "expression") {

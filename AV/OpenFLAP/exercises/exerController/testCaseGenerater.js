@@ -17,6 +17,7 @@ var falseCounter; // number of hardcode false cases in json file
 var generatorflag = 0;
 var containLetters; // contain letters
 var randomStringLength; //string lengthe between 0 to 15
+var emptyStr;
 /**
  * Add strings alone with true or false to the test cases
  *
@@ -132,6 +133,7 @@ var delambda = function (string) {
  * @return true or false
  */
 function checkREG(rule, str) {
+
   var res = helperREG(rule, str, 2, 0);
   if (res == str.length && mark == 0) {
     return true;
@@ -316,15 +318,18 @@ function helperREG(rule, str, pos, currentpos) {
         checkAllstar = checkremindStar(sep, m + 1);
       }
       markPos = m;
-      //       if (m != sep.length - 1 && !checkAllstar) {
-      //         mark = -1
-      //         break
-      //       }
-      if (recordpos2 == strCheckPos || strCheckPos == str.length) {
+      if (m != sep.length - 1 && !checkAllstar && strCheckPos == str.length && !emptyStr) {
+        mark = -1
+        break
+      }
+      if (emptyStr && i == todoList.length - 1 && !checkAllstar) {
+        mark = -1
+      }
+      if (recordpos2 == strCheckPos || strCheckPos == str.length && !emptyStr) {
         break;
       }
     }
-    if (strCheckPos == str.length) {
+    if (strCheckPos == str.length && checkAllstar) {
       break;
     }
     if (i < todoList.length) {
@@ -346,6 +351,9 @@ function checkAdd(flag, testCase) {
     if (str.charAt(0) == 'T') {
       str = str.substr(1);
     }
+    if (loopkey(testCaseList, str)) {
+      return 0
+    }
     if (trueCounter < trueStringLimit) {
       addtoTestCase(str, testCase, 1);
       trueCounter++;
@@ -354,13 +362,24 @@ function checkAdd(flag, testCase) {
     if (str.charAt(0) == 'F') {
       str = str.substr(1);
     }
-    if (falseCounter < falseStringLimit) {
+
+    if (loopkey(testCaseList, str)) {
+      return 0
+    } else if (falseCounter < falseStringLimit) {
       addtoTestCase(str, testCase, 0);
       falseCounter++;
     }
   }
 }
 
+function loopkey(testCases, str) {
+  for (var name in testCases) {
+    if (Object.keys(testCases[name]) == str) {
+      return true;
+    }
+  }
+  return false;
+}
 /**
  * random string generator help function
  * @return string
@@ -393,7 +412,7 @@ function randomStringGenerate(testCase, flag) {
   var solu;
   var copy = str;
 
-  if (testCaseList.indexOf(copy) == -1) {
+  if (!loopkey(testCaseList, copy)) {
     if (flag != 0) {
       if (testCase[0].solution != '') {
         testCase[0].solution = testCase[0].solution.split(' ').join('');
@@ -414,6 +433,13 @@ function randomStringGenerate(testCase, flag) {
     }
   }
 }
+
+
+
+function hardcode(copyObj, str) {
+  checkAdd(checkRule(str), copyObj)
+}
+
 
 /**
  * check undefined
@@ -461,21 +487,26 @@ function generateTestCase(testCase, flag) {
       } else {
         alert('Wrong generator flag.');
       }
-
-      if (
+      if (str == "") {
+        emptyStr = true;
+      }
+      if (copyObj.solution === "") {
+        testCaseList = copyObj.testCases
+        hardcode(copyObj, str)
+      } else if (
         copyObj.exerciseType == 'DFA' ||
         copyObj.exerciseType == 'NFA' ||
         copyObj.exerciseType == 'PDA'
       ) {
         dfaNfaPdaHandler(copyObj, flag, str);
       } else if (copyObj.exerciseType == 'REGEXP') {
-        randomStringGenerate(copyObj, flag);
+        regExpHandler(copyObj, flag);
       } else if (copyObj.exerciseType == 'GRAMMAR') {
         graHandler(copyObj, flag, str);
       }
-      // else if (copyObj.exerciseType == "TM") {
-      //   grammarHandler(copyObj, flag)
-      // }
+      else if (copyObj.exerciseType == "TM") {
+        tmHandler(copyObj, flag, str);
+      }
       else {
         alert('exercise type error. Check json file!');
       }

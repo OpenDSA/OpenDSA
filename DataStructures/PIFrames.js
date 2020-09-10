@@ -259,9 +259,14 @@
 
         buildElement: function(question) {
           var type = question.type;
-          //Peixuan added this part to auto check if type is multiple or select
-          if(type === "select" && !Array.isArray(question.answer)){
-            type = "multiple";
+          //Peixuan added this part to auto check if type is multiple, select or T/F
+          if(type === "select"){
+            if(!Array.isArray(question.answer)){
+              type = "multiple";
+            }
+            if (question.answer === "True"){
+              type = "true/false";
+            }
           }
 
           questionType = type;
@@ -310,7 +315,8 @@
           //Peixuan changed this part or let it randomly lists choices
           var seq = this.randomSeqGenerator(choices.length);
           for (var i = 0; i < choices.length; i++) {
-            var radio = `<input type="radio" name=${this.av_name} value='${choices[seq[i]]}' style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
+            //Peixuan changed the ' to " to make the choices can have ' sign
+            var radio = `<input type="radio" name=${this.av_name} value="${choices[seq[i]]}" style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
             html.push(radio);
           }
 
@@ -398,14 +404,10 @@
           //Peixuan changed this part or let it randomly lists choices
           var seq = this.randomSeqGenerator(choices.length);
           for (var i = 0; i < choices.length; i++) {
-            var checkbox = `<input type="checkbox" name=${this.av_name} value='${choices[seq[i]]}' style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
+            //Peixuan changed the ' to " to make the choices can have ' sign
+            var checkbox = `<input type="checkbox" name=${this.av_name} value="${choices[seq[i]]}" style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
             html.push(checkbox);
           }
-          /*
-          for (var i = 0; i < choices.length; i++) {
-            var checkbox = `<input type="checkbox" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
-            html.push(checkbox);
-          }*/
 
           html.push(PIFrames.submit);
           html.push(PIFrames.feedback);

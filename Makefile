@@ -39,6 +39,7 @@ INACTIVE_MSG +=Command to deactivate: deactivate \n
 INACTIVE_MSG +=Retry after activating pyVenv.  Exiting now...
 
 .PHONY: venv clean-venv pyVenvCheck # for the python virtual environment
+
 pyVenvCheck: venv
 	@$(CHECK_ACTIVE)
 	@echo 'pyVenv seems activated, good'
@@ -57,6 +58,7 @@ clean-venv:
 	@ echo "Note: Use 'deactivate' if $(VENVDIR) is still activated"
 
 .PHONY: clean min pull Webserver 
+
 Webserver:
 	@-echo -n "System is: " & uname -s
 	@echo "Using env variable: PYTHON=$(PYTHON)"

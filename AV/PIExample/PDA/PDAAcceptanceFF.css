@@ -1,0 +1,11 @@
+#PDAAcceptanceFF {
+    height: 800px;
+}
+
+.accepted {
+	background-color: green;
+}
+
+.rejected {
+	background-color: red;
+}

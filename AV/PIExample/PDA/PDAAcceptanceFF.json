@@ -1,0 +1,244 @@
+{
+  "translations": {
+    "en": {
+      "q2": {
+        "type": "select",
+        "description": "PDAs have 2 different types of language acceptance.",
+        "question": "What about NFAs, how many model of acceptance they have?",
+        "answer": "Only one, which is accept by final states",
+        "choices": ["Only one, which is accept by final states", "Two"]
+      },
+      "q3": {
+        "type": "true/false",
+        "description": "PDAs have 2 different types of language acceptance.<br/>1. Accept by final states",
+        "question": "Acceptance by final states means that if the machine ended in a final state then the string is accepted.",
+        "answer": ["True"],
+        "choices": []
+      },
+      "q4": {
+        "type": "select",
+        "description": "$\\textbf{Definition:}$ Let $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$ be a NPDA $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, u), p \\in F, u \\in \\Gamma^*\\}$",
+        "question": "What is $\\Gamma$?",
+        "answer": "Set of stack symbols",
+        "choices": ["Start state", "Final state", "Set of alphabets", "Set of stack symbols", "Set of states", "Stack start symbol"]
+      },
+      "q5": {
+        "type": "select",
+        "description": "$\\textbf{Definition:}$ Let $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$ be a NPDA $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, u), p \\in F, u \\in \\Gamma^*\\}$",
+        "question": "What is $Z$",
+        "answer": "Stack start symbol",
+        "choices": ["Start state", "Final state", "Set of alphabets", "Set of stack symbols", "Set of states", "Stack start symbol"]
+      },
+      "q6": {
+        "type": "select",
+        "description": "$\\textbf{Definition:}$ Let $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$ be a NPDA $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, u), p \\in F, u \\in \\Gamma^*\\}$",
+        "question": "By reading $(q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, u), p \\in F, u \\in \\Gamma^*$. What does it mean that $q_0$ changed to $p$?",
+        "answer": "The machine moved from start state to a final state",
+        "choices": ["The machine moved from start state to a final state", "The string is consumed by machine", "The stack content is changed based on the transitions"]
+      },
+      "q7": {
+        "type": "select",
+        "description": "$\\textbf{Definition:}$ Let $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$ be a NPDA $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, u), p \\in F, u \\in \\Gamma^*\\}$",
+        "question": "By reading $(q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, u), p \\in F, u \\in \\Gamma^*$. What does it mean that $w$ changed to $\\lambda$",
+        "answer": "The string is consumed by machine",
+        "choices": ["The machine moved from start state to a final state", "The string is consumed by machine", "The stack content is changed based on the transitions"]
+      },
+      "q8": {
+        "type": "select",
+        "description": "$\\textbf{Definition:}$ Let $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$ be a NPDA $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, u), p \\in F, u \\in \\Gamma^*\\}$",
+        "question": "By reading $(q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, u), p \\in F, u \\in \\Gamma^*$. What does it mean that $z$ changed to $u$",
+        "answer": "The stack content is changed based on the transitions",
+        "choices": ["The machine moved from start state to a final state", "The string is consumed by machine", "The stack content is changed based on the transitions"]
+      },
+      "q9": {
+        "type": "select",
+        "description": "$\\textbf{Definition:}$ Let $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$ be a NPDA $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, u), p \\in F, u \\in \\Gamma^*\\}$<br/>The NPDA accepts all strings that start in $q_0$ and end in a final state.",
+        "question": "Do the stack contents are irrelevant if it ends the string in a final state",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q10": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ Consider the following PDA",
+        "question": "What is the language represented by the PDA?",
+        "answer": "$\\{a^nb^n\\mid n> 0\\}$",
+        "choices": ["$\\{a^nb^n\\mid n> 0\\}$", "$\\{a^nb^m\\mid n> 0, m>0\\}$", "$\\{a^nb^n\\mid n\\ge 0\\}$"]
+      },
+      "q11": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Is string $aaabbb$ in the language?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q12": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "What is the memory we need to trace the string",
+        "answer": "Stack",
+        "choices": ["Stack", "Queue"]
+      },
+      "q13": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the machine?",
+        "answer": "Move to $q_1$",
+        "choices": ["Move to $q_0$", "Move to $q_1$", "Move to $q_2$", "Move to $q_3$", "Stay at $q_1$", "Stay at $q_2$"]
+      },
+      "q14": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the Stack?",
+        "answer": "Push $a$",
+        "choices": ["Push $a$", "Push $b$", "Pop the top", "Push $\\lambda$"]
+      },
+      "q15": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the machine?",
+        "answer": "Stay at $q_1$",
+        "choices": ["Move to $q_0$", "Move to $q_1$", "Move to $q_2$", "Move to $q_3$", "Stay at $q_1$", "Stay at $q_2$"]
+      },
+      "q16": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the Stack?",
+        "answer": "Push $a$",
+        "choices": ["Push $a$", "Push $b$", "Pop the top", "Push $\\lambda$"]
+      },
+      "q17": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the machine?",
+        "answer": "Stay at $q_1$",
+        "choices": ["Move to $q_0$", "Move to $q_1$", "Move to $q_2$", "Move to $q_3$", "Stay at $q_1$", "Stay at $q_2$"]
+      },
+      "q18": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the Stack?",
+        "answer": "Push $a$",
+        "choices": ["Push $a$", "Push $b$", "Pop the top", "Push $\\lambda$"]
+      },
+      "q19": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the machine?",
+        "answer": "Move to $q_2$",
+        "choices": ["Move to $q_0$", "Move to $q_1$", "Move to $q_2$", "Move to $q_3$", "Stay at $q_1$", "Stay at $q_2$"]
+      },
+      "q20": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the Stack?",
+        "answer": "Pop the top",
+        "choices": ["Push $a$", "Push $b$", "Pop the top", "Push $\\lambda$"]
+      },
+      "q21": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the machine?",
+        "answer": "Stay at $q_2$",
+        "choices": ["Move to $q_0$", "Move to $q_1$", "Move to $q_2$", "Move to $q_3$", "Stay at $q_1$", "Stay at $q_2$"]
+      },
+      "q22": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the Stack?",
+        "answer": "Pop the top",
+        "choices": ["Push $a$", "Push $b$", "Pop the top", "Push $\\lambda$"]
+      },
+      "q23": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the machine?",
+        "answer": "Stay at $q_2$",
+        "choices": ["Move to $q_0$", "Move to $q_1$", "Move to $q_2$", "Move to $q_3$", "Stay at $q_1$", "Stay at $q_2$"]
+      },
+      "q24": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the Stack?",
+        "answer": "Pop the top",
+        "choices": ["Push $a$", "Push $b$", "Pop the top", "Push $\\lambda$"]
+      },
+      "q25": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the machine?",
+        "answer": "Move to $q_3$",
+        "choices": ["Move to $q_0$", "Move to $q_1$", "Move to $q_2$", "Move to $q_3$", "Stay at $q_1$", "Stay at $q_2$"]
+      },
+      "q26": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the Stack?",
+        "answer": "Push $Z$ back",
+        "choices": ["Push $a$", "Push $b$", "Pop the top", "Push $\\lambda$", "Push $Z$ back"]
+      },
+      "q27": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Will the string be accepted?",
+        "answer": "Yes, the machine ended in a final state",
+        "choices": ["Yes, the machine ended in a final state", "No", "Yes, the stack reached $Z$ againe"]
+      },
+      "q28": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $aaabbb$",
+        "question": "Does the stack content affect the acceptance of the string",
+        "answer": "No, in this model of acceptance we use the stack as a memory",
+        "choices": ["No, in this model of acceptance we use the stack as a memory", "Yes"]
+      },
+      "q29": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $abab$",
+        "question": "What about the string $abab$, will it be accepted?",
+        "answer": "No, it is not in the language",
+        "choices": ["No, it is not in the language", "Yes, the string has the same number of $a$ and $b$"]
+      },
+      "q30": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $abab$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the machine?",
+        "answer": "Move to $q_1$",
+        "choices": ["Move to $q_0$", "Move to $q_1$", "Move to $q_2$", "Move to $q_3$", "Stay at $q_1$", "Stay at $q_2$"]
+      },
+      "q31": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $abab$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the Stack?",
+        "answer": "Push $a$",
+        "choices": ["Push $a$", "Push $b$", "Pop the top", "Push $\\lambda$", "Push $Z$ back"]
+      },
+      "q32": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $abab$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the machine?",
+        "answer": "Move to $q_2$",
+        "choices": ["Move to $q_0$", "Move to $q_1$", "Move to $q_2$", "Move to $q_3$", "Stay at $q_1$", "Stay at $q_2$"]
+      },
+      "q33": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $abab$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the Stack?",
+        "answer": "Pop the top",
+        "choices": ["Push $a$", "Push $b$", "Pop the top", "Push $\\lambda$", "Push $Z$ back"]
+      },
+      "q34": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $abab$",
+        "question": "Based on the top of the stack and the heighlighted input letter, what will happen to the machine?",
+        "answer": "There is no possible transition",
+        "choices": ["Move to $q_0$", "Move to $q_1$", "Move to $q_2$", "Move to $q_3$", "Stay at $q_1$", "Stay at $q_2$", "There is no possible transition"]
+      },
+      "q35": {
+        "type": "true/false",
+        "description": "$\\textbf{Example}$ $L = \\{a^nb^n | n \\ge 0\\}, \\Sigma = \\{a, b\\}, \\Gamma = \\{z,a\\}$<br/>Let us see the trace for the string $abab$",
+        "question": "Since the machine did not find any possible transition, it will $\\textbf{hang}$ on a non-final state and reject the string",
+        "answer": "True",
+        "choices": []
+      }
+    }
+  }
+}

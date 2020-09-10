@@ -33,7 +33,7 @@ var jsav,
 			exerciseController.load();
 			var exercise = jsav.flexercise(modelSolution, initialize,
 				{feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), checkSolutionFunction: testSolution});
-			  exercise.reset();
+				exercise.reset()
 		}
 		$('#nextStep').click(function() {
 			controller.completeStep();

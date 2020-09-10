@@ -1,0 +1,14 @@
+#PDACFLFF {
+    height: 800px;
+}
+.jsavhorizontalarray .jsavnode {
+    min-width: 70px !important;
+}
+
+.start {
+	font-style: italic;
+	font-weight: bold;
+}
+.final {
+	border: 3px double;
+}

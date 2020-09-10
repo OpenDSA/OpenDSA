@@ -203,7 +203,7 @@ Formal Languages Course Introduction
 
 .. slide:: To do by next class
 
-  * Read Linz Chapter 1, and also look at the OpenDSA materials
+  * Read Chapter 1, and also look at the OpenDSA materials
 
   * Look at Homework Assignment 1, find a partner
 

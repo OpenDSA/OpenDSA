@@ -10,6 +10,7 @@ var initID = [];
 var finalID = [];
 var check = false;
 var id;
+var testCaseList2 = []
 
 
 /**
@@ -122,6 +123,14 @@ function travnfa(xmlDoc, id, str, strPos) {
   }
 }
 
+function loopkey(testCases, str) {
+  for (var name in testCases) {
+    if (Object.keys(testCases[name]) == str) {
+      return true;
+    }
+  }
+  return false;
+}
 
 /**
  * add string to testCases
@@ -136,12 +145,14 @@ function travnfa(xmlDoc, id, str, strPos) {
 function faAdd(testCase, result, str) {
   if (!testCase.testCases.hasOwnProperty(str)) {
     if (result) {
-      if (trueCounter < trueStringLimit) {
+      if (trueCounter < trueStringLimit && !loopkey(testCaseList2, str)) {
+        testCaseList2.push(str);
         addtoTestCase(str, testCase, 1);
         trueCounter++;
       }
     } else {
-      if (falseCounter < falseStringLimit) {
+      if (falseCounter < falseStringLimit && !loopkey(testCaseList2, str)) {
+        testCaseList2.push(str);
         addtoTestCase(str, testCase, 0);
         falseCounter++;
       }
@@ -194,7 +205,7 @@ var pdaFinalID = [];
 var pdaCheck = false;
 var pdaId;
 var pdaStack = '';
-
+var testCaseList3 = []
 
 /**
  * find all edges that start from current tag ID
@@ -241,12 +252,14 @@ function findAlledgesFromOneNodePDA(xmlDoc, id) {
 function pdaAdd(testCase, result, str) {
   if (testCase.testCases.indexOf(str) == -1) {
     if (result) {
-      if (trueCounter < trueStringLimit) {
+      if (trueCounter < trueStringLimit && !loopkey(testCaseList3.str)) {
+        testCaseList3.push(str);
         addtoTestCase(str, testCase, 1);
         trueCounter++;
       }
     } else {
-      if (falseCounter < falseStringLimit) {
+      if (falseCounter < falseStringLimit && !loopkey(testCaseList3.str)) {
+        testCaseList3.push(str);
         addtoTestCase(str, testCase, 0);
         falseCounter++;
       }
@@ -362,14 +375,15 @@ function pdaHandler(testCase, flag, str) {
 
 /**
  * 
- * Start function.
  * Seprate FA and PDA.
  * 
  */
 function dfaNfaPdaHandler(testCase, flag, string) {
   if (testCase.exerciseType == 'DFA' || testCase.exerciseType == 'NFA') {
+    testCaseList2 = testCase.testCases
     faHandler(testCase, flag, string);
   } else if (testCase.exerciseType == 'PDA') {
+    testCaseList3 = testCase.testCases
     pdaCheck = false;
     // PDA stack
     pdaStack = 'Z';

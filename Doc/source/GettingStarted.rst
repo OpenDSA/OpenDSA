@@ -324,8 +324,7 @@ These instructions are geared toward Windows, since that is the
 hardest to install.
 For Linux or Mac, you can do pretty much the same thing (using sudo
 for root permissions, and getting the tools from your package
-manager),
-but can skip some of the steps.
+manager), but can skip some of the steps.
 
 First, install Git.
 On Windows, a good choice is  "Git for Windows" at
@@ -334,6 +333,7 @@ Use the third option for the path environment:
 "Use Git and optional Unix tools from the Windows Command Prompt".
 Choose "checkout as-is, commit Unix-style line endings",
 and then use "MinTTY".
+You can then check if git is installed with the ``git --version`` command from a fresh terminal.
 
 Then on Windows you will need to install "make"
 from http://gnuwin32.sourceforge.net/packages/make.htm.
@@ -342,6 +342,7 @@ Then, edit your environment variable PATH to add:
 C:/Program Files/GnuWin32/bin.
 If you don't know how to edit an environment variable on Windows,
 google for "windows set environment variable".
+You can then check if make is installed with the ``make --version`` command from a fresh terminal.
 
 Next, install nodejs (on Windows, you can get it from
 https://nodejs.org/en/download/).
@@ -358,13 +359,13 @@ Next, install Python 3.8 from https://www.python.org/.
 Be sure to add it to your PATH variable.
 For example, if you choose to put it at the top level of your C:
 drive, then add C:/Python38 and C:/Python38/Scripts to your PATH.
-Note: We will create a python virtual environment specific for 
-OpenDSA to ensure that any other python installations that your system 
-or other projects depend on are not corrupted or in conflict.  
-
-To check and see if you have the correct version of python installed, 
-use the command ``python3.8 --version``.  It is very likely that other
-versions of python will **not** work.  
+It is likely that other versions of python will **not** work.  
+You can then check which version of python your system uses by default 
+with the ``python --version`` command from a fresh terminal.  
+For more control, you can override the python command used by OpenDSA 
+by setting the ``PYTHON`` environment variable to the command you wish 
+to be used.
+Later on, we will create a python virtual environment for OpenDSA. 
 
 Finally pop open a **new** Git Bash window, and you are ready to get
 started.
@@ -378,18 +379,27 @@ Once the repository is cloned (we assume here into a directory named
 ``OpenDSA``) then do the following::
 
    cd OpenDSA
-   make venv #Takes less than 1 minute#
    make pull #This could take awhile#
+   make venv #Takes less than 1 minute#
 
-Remember to activate the python virtual environment before building
-any books.  This makes sure you are using the correct python for 
-OpenDSA. Depending on your system, simply use one of these commands::
+These commands initialize the submodules and install the python 
+package requirements of OpenDSA.
+Note: We created a python virtual environment specifically for OpenDSA. 
+This ensures that any other python installations that your system or 
+other projects depend on do not become corrupted or conflicted. 
+Changes to OpenDSA or to your system should not affect the other.
+
+If you attempt to build a book at this point, OpenDSA will give you 
+a warning that the python virtual environment is not activated yet, 
+and the command needed to activate it on your system.  
+On most systems, activating the python virtual environment it will 
+be one of these commands::
 
   source .pyVenv/bin/activate  # For Linux systems
   . .pyVenv/Scripts/activate   # For Windows systems
 
-At this point, you should be all set up. To test things, you can try
-doing::
+After activation, you are ready to build a book.  
+For a small test book, you can try ::
 
   make Test
 
@@ -402,22 +412,27 @@ To see most OpenDSA content properly, it must be viewed through a web
 server.
 It won't work just to point your browser at the local HTML files.
 But you probably don't want to install a real web server like Apache
-on your local machine.
-Fortunately, there is a simple alternative.
-Take a look at the file ``[OpenDSA]/WebServer``.
-This gives easy instructions on starting up a web server to view your
-OpenDSA content.
-Simply open a new command window, go to the top level of your copy of
-the OpenDSA repository, and type ``./WebServer``.
-This will start up the local webserver script
-(leave the command window open, it will be dedicated to running the
-webserver until you are done with it).
-Then go to a browser window, and point your browser to the URL shown
-in the ``WebServer`` script file.
+on your local machine.  So we have made a simple solution: :: 
+
+  make Webserver
+
+This will start a basic server where you can view your OpenDSA content.
+Then go to your web browser, and point it to one of the URLs where 
+the web server is responding (http://localhost:8080/ is usually one).  
 This will be the top level of the OpenDSA directory, and you can
 browse through it in the normal way.
-Any books that you compiled will be in the ``Books`` directory.
+Any books that you have made will be in the ``Books`` directory.
 
+You can stop the server with CTRL + C (sending an interrupt signal).
+If you want the sever running continuously, we advise you to run this 
+command in a second terminal window and leave it open.  
+To see the more specialized options for running this simple web server, 
+use the ``python server.py --help`` command.
+
+Note that Make commands can be easily chained to run in sequence.  
+For instance: ``make Test Webserver`` will attempt to create the "Test" 
+book, and if successful, will start the Webserver so that you can view 
+your recent changes to that book.
 
 ------------------------------------
 Writing Visualizations and Exercises

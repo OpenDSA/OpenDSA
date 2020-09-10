@@ -71,6 +71,8 @@ NULL pointer, because there is no object to catch the call.
 This problem could be avoided by using a
 :ref:`Flyweight <Flyweight> <DesignPatterns>`
 to implement empty nodes.
+If the composite implementation is for a :term:`full tree`, then it is
+unnecesary to explicitly check if the children are null.
 
 Typically, the non-composite version would be
 preferred in this example if ``traverse`` is a member function of

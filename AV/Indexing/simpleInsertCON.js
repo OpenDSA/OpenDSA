@@ -3,7 +3,7 @@
  *
  * Container ID: simpleInsertCON
  */
-(function () {
+$(document).ready(function() {
   "use strict";
   var jsav = new JSAV("simpleInsertCON");
 
@@ -75,4 +75,4 @@
 
   jsav.recorded();
 
-}());
+});
