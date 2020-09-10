@@ -39,6 +39,7 @@ INACTIVE_MSG +=Command to deactivate: deactivate \n
 INACTIVE_MSG +=Retry after activating pyVenv.  Exiting now...
 
 .PHONY: venv clean-venv pyVenvCheck # for the python virtual environment
+
 pyVenvCheck: venv
 	@$(CHECK_ACTIVE)
 	@echo 'pyVenv seems activated, good'
