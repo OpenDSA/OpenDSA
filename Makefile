@@ -57,6 +57,7 @@ clean-venv:
 	@ echo "Note: Use 'deactivate' if $(VENVDIR) is still activated"
 
 .PHONY: clean min pull Webserver 
+
 Webserver:
 	@-echo -n "System is: " & uname -s
 	@echo "Using env variable: PYTHON=$(PYTHON)"
