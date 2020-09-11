@@ -765,7 +765,7 @@
           var counter = $("#"+av_name +" .jsavcounter").text().split("/");
           var limit = parseInt(counter[1]);
           var current = parseInt(counter[0]);
-          while($("#"+av_name +" span.jsavforward").css("pointer-events") === "auto" && current <= limit){
+          while($("#"+av_name +" span.jsavforward").css("pointer-events") === "auto" && current < limit){
             current++;
             $("#"+av_name +" span.jsavforward").trigger("click");
           }
