@@ -88,7 +88,7 @@ class WorkspaceList
         helpButtonText.element[0].addEventListener("click", e=> {
             // e.stopPropagation();
             e.stopImmediatePropagation();
-            Window.showHelp("general");
+            Window.showHelp("general", null);
             this.globalJSAVobject.logEvent({type: "getting help from the workspace", "id": this.workspaceCounter-1});
             // console.log(this.globalJSAVobject);
         });

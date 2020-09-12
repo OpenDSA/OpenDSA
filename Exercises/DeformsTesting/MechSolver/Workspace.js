@@ -53,7 +53,7 @@ class Workspace
         this.removebutton = null;
 
         this.createBox();
-        console.log(this);
+        // console.log(this);
     }
     createBox()
     {
@@ -205,7 +205,7 @@ class Workspace
         
         this.elements[6].jsav.element[0].addEventListener("click", e=> {
             e.stopPropagation();
-            Window.showHelp("workspace");
+            Window.showHelp("workspace", e);
         })
     }
     destroyBox()
@@ -537,8 +537,8 @@ class Workspace
             });
             return;
         }
-        // console.log(variableSet);
-        // console.log(equationSet);
+        console.log(variableSet);
+        console.log(equationSet);
         
         // Computing solutions
         var soln = {};
@@ -581,7 +581,7 @@ class Workspace
         }
         for(var i=0; i<listOfSolutions.length; i++)
             soln[listOfSolutions[i][0]] = listOfSolutions[i][1];
-        // console.log(soln);
+        console.log(soln);
         
         // console.log("Before printing solutions", this.DIMENSIONS);
         for(var unknownName in variableSet)

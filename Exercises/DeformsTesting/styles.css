@@ -19,6 +19,18 @@
     background-color: orange !important;
 }
 
+.jsavdialog.ui-draggable > p {
+    margin: 5px;
+}
+
+.jsavdialog.ui-draggable > hr {
+    margin: 20px 0px 20px 0px;
+}
+
+.jsavdialog.ui-draggable > div > p {
+    margin: 5px;
+}
+
 /* #equationbox {
     grid-area: equations;
     height: 0px;

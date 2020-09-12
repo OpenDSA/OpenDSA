@@ -62,17 +62,20 @@
     "required": true
   }, 
   "chapters": {
-    "Preface": {
-      "Intro": {}
-    },
-    "DeformsExampleWithScroll": {
-      "DeformsTesting/DeformsExample": {}
-    },
-    "DeformsExampleWithoutScroll": {
-      "DeformsTesting/DeformsModerateExample": {}
-    },
-    "AnotherKAExample": {
-      "DeformsTesting/NotDeformsKA": {}
+    "Deforms Problems": {
+      "DeformsTesting/DeformsExample": {},
+      "DeformsTesting/DeformsModerateExample": {},
+      "DeformsTesting/DeformsDifficultExample": {},
+      "DeformsTesting/deformsf2020-p1": {},
+      "DeformsTesting/deformsf2020-p2": {},
+      "DeformsTesting/deformsf2020-p3": {},
+      "DeformsTesting/deformsf2020-p4": {},
+      "DeformsTesting/deformsf2020-p5": {},
+      "DeformsTesting/deformsf2020-p6": {},
+      "DeformsTesting/deformsf2020-p7": {},
+      "DeformsTesting/deformsf2020-p8": {},
+      "DeformsTesting/deformsf2020-p9": {},
+      "DeformsTesting/deformsf2020-p10": {}
     }
   }
 }

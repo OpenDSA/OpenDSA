@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="jsav math MechSolverCommon">
 <head>
-  <title>Deforms Medium Problem</title>
+  <title>Problem 2</title>
   <script src="./mathjs.js" type="text/javascript"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
   <script src="../../khan-exercises/local-only/main.js"></script>
@@ -12,81 +12,65 @@
 <body data-height="860" data-width="965" data-vertical-scrolling="yes">
   <div class="exercise">
     <div class="vars">
-      <var id="JSAV">mechSolverCommon.initJSAV("DeformsMediumProblemPPRO", "SI")</var>
+      <var id="JSAV">mechSolverCommon.initJSAV("f2020p2PPRO","SI")</var>
     </div>
 
     <div class="problems">
-      <div id="DeformsMediumProblemPPROp">
+      <div id="f2020p2PPROp">
         <p class="problem">
-            A 
+          Two aluminium rods of circular cross-section 
+          
+          <span class="param" id="param" 
+          data-value="1" data-unit="mm" 
+          data-value-display="1"
+          data-unit-display="mm" data-domain="length">1 mm</span> 
 
-            <span class="param" id="param1" 
-            data-value="20" data-unit="mm" 
-            data-value-display="20"
-            data-unit-display="mm" data-domain="length">20 mm</span> 
-            
-            diameter brass rod and a 
-            
-            <span class="param" id="param2" 
-            data-value="25" data-unit="mm" 
-            data-value-display="25"
-            data-unit-display="mm" data-domain="length">25 mm</span> 
-
-            diameter aluminium rod are rigidly joined together at a point (2) 
-            and each is rigidly attached to fixed walls at ends. A torque of
-            T = 
-            
-            <span class="param" id="param3" 
-            data-value="600" data-unit="N m" 
-            data-value-display="600"
-            data-unit-display="N m" data-domain="torque">600 N m</span>
-            
-            is applied at point (2).
-            
-            Knowing the following 
-            ( 
-              Brass: G =
-              <span class="param" id="param5" 
-              data-value="40" data-unit="GPa" 
-              data-value-display="40"
-              data-unit-display="GPa" data-domain="pressure">40 GPa
-              </span>,
-              Aluminium: G =
-              <span class="param" id="param5" 
-              data-value="25" data-unit="GPa" 
-              data-value-display="25"
-              data-unit-display="GPa" data-domain="pressure">25 GPa
-              </span>
-            ):
+          are stretched by means of a hanging weight 
+          
+          <span class="param" id="param" 
+          data-value="1200" data-unit="N" 
+          data-value-display="1200"
+          data-unit-display="N" data-domain="force">1200 N</span>
+          
+          as shown in the figure. Assume that the rod material follows Hooke's Law and its Young's modulus is that of aluminium 
+          (E= 
+            <span class="param" id="param" 
+            data-value="70" data-unit="GPa" 
+            data-value-display="70"
+            data-unit-display="GPa" data-domain="pressure">70 GPa
+            </span>
+          )
+          
+          .
         </p>
 
         <div class="question">
           <p class="question">
-            1. What is the torque in the brass rod?
+            1. What is the tension in the rods? 
             <span class="solution-box" data-inputtype="number"></span>
           </p>
+
           <p class="question">
-            2. What is the maximum shear stress in the brass rod?
+            2. If the triangle ABC is equilateral, find the axial elongation of the rods. 
+            <br>
             <span class="solution-box" data-inputtype="number"></span>
           </p>
-          <p class="question">
-            3. What is the angle of twist at point (2)?
-            <span class="solution-box"></span>
-          </p>
+
           <div>
-              <img class="figure1" src="./problemfigures/image2.png"
-              alt="description text for accessibility">
-                <span class="text-overlay param" style="top: -40px;right: 300px; padding: 2px 7px" 
-                id="param8" data-value="0.7" data-unit="m" data-value-display="0.7"
-                data-unit-display="m" data-domain="length">0.7 m</span>
-                <span class="text-overlay param" style="top: -40px;right: 195px; padding: 2px 7px" 
-                id="param9" data-value="1.0" data-unit="m" data-value-display="1.0"
-                data-unit-display="m" data-domain="length">1.0 m</span>
+              <img class="figure1" src="./problemfigures/ph2-p2.png" style="width: 350px;" alt="description">
+              <div class="text-overlay param" id="param"
+              style="width: 26px; top: -346px;right: -224px; padding: 2px 7px" 
+              data-value="1" data-unit="m" data-value-display="1"
+              data-unit-display="m" data-domain="length">1 m</div>
+              <div class="text-overlay param" id="param"
+              style="width: 26px; top: -374px;right: -89px; padding: 2px 7px" 
+              data-value="1" data-unit="m" data-value-display="1"
+              data-unit-display="m" data-domain="length">1 m</div>
           </div>
           <br>
         </div>
         
-        <div id="DeformsMediumProblemPPRO" class="jsavcanvas"></div>
+        <div id="f2020p2PPRO" class="jsavcanvas"></div>
         
         <div class="solution" data-type="custom">
           <div class="guess"> 
@@ -143,7 +127,7 @@
   <script src="MechSolver/utils.js"></script>
 
   <!-- Additional script files containing settings and solution files -->
-  <script src="DeformsMediumProblemPPROsolution.js"></script>
+  <script src="DeformsDifficultProblemPPROsolution.js"></script>
 
 </body>
 

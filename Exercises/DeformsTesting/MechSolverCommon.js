@@ -272,6 +272,10 @@ requirejs(["./mathjs.js"], function(){});
             helpbox.classList.add("helpbutton");
             helpbox.innerHTML = "&#xFFFD";
             helpbox.setAttribute("title","Click to get help");
+            helpbox.addEventListener("click", e=> {
+                e.stopPropagation();
+                Window.showHelp("submissionBox", e);
+            })
 
             // console.log(solutionSubmissionBoxes[index]);
 
@@ -371,21 +375,6 @@ requirejs(["./mathjs.js"], function(){});
             });
         }
 
-        // Creating clickhandlers associated with the body to clear the globalPointerReference
-        document.body.addEventListener("click", e=> {
-            e.stopPropagation();
-            // console.log("Inside the body snatcher");
-            if(Window.showBlankPrompt) {
-                var messageBox = JSAV.utils.dialog("Add an equation from the bank to begin.", {modal: false, width: 100})
-                messageBox[0].style.top = e.pageY+5+"px";
-                messageBox[0].style.left = e.pageX+10+"px";
-                setTimeout(messageBox.close, 900)
-            }
-            else {
-                Window.clearGlobalPointerReference();
-            }
-        });
-
         // Creating list of usable variables
         for(var i=0; i<26; i++)
         {
@@ -404,7 +393,13 @@ requirejs(["./mathjs.js"], function(){});
         //     }
         // ).addClass("equationPageTitle");
         // questionSign.element[0].addEventListener("click", e => { e.stopPropagation(); Window.showHelp("general") } );
+        
+        // This loads the general help menu; for now, work is delegated to Intro.js
         Window.showHelp("general");
+        // Window.tutorialSteps();
+
+        // Body Clicks registered as directive message was included here, now delegated to utils.
+        Window.bodyClickPrompt();
     }
 
     window.mechSolverCommon = window.mechSolverCommon || mechSolverCommon;
