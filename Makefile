@@ -32,17 +32,11 @@ ifeq ($(strip $(ODSA_ENV)),DEV)
 	CSS_MINIFY = cat
 endif
 
-CHECK_ACTIVE = python -c "import sys; assert getattr(sys, 'base_prefix',  sys.exec_prefix) != sys.prefix, '$(INACTIVE_MSG)'"
-INACTIVE_MSG = pyVenv is not activated!!! \n
-INACTIVE_MSG +=Command to activate:   $(ACTIVATE) \n
-INACTIVE_MSG +=Command to deactivate: deactivate \n
-INACTIVE_MSG +=Retry after activating pyVenv.  Exiting now...
 
-.PHONY: venv clean-venv pyVenvCheck # for the python virtual environment
-
+# For the python virtual environment:
+.PHONY: venv clean-venv pyVenvCheck 
 pyVenvCheck: venv
-	@$(CHECK_ACTIVE)
-	@echo 'pyVenv seems activated, good'
+	$(PYTHON) tools/pyVenvCheck.py
 venv: $(VENVDIR)/.pipMarker
 $(VENVDIR)/.pipMarker: $(VENVDIR)/.venvMarker requirements.txt
 	$(ACTIVATE) && pip install --requirement requirements.txt
