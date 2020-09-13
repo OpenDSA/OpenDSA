@@ -10,11 +10,6 @@
    :topic: Broader subject consisting of this
 
 
-Deforms
-=================================
-Deforms exercise
---------------------------------------
-
 .. avembed:: Exercises/List/LlistInsertPRO.html ka
    :long_name: Not a Deforms problem, only for testing
 

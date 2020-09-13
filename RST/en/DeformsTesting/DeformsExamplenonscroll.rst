@@ -10,6 +10,6 @@
    :topic: Broader subject consisting of this
 
 
-.. avembed:: Exercises/DeformsTesting/DeformsSimpleProblemPPRO.html ka
-   :long_name: Simple Deforms Problem example.
+.. avembed:: Exercises/DeformsTesting/DeformsSimpleProblemnonscrollPPRO.html ka
+   :long_name: Simple Deforms Problem example, nonscrolling.
 
