@@ -9,6 +9,10 @@
    :satisfies: Current topic name
    :topic: Broader subject consisting of this
 
+Deforms
+=================================
+Deforms exercise
+--------------------------------------
 
 .. avembed:: Exercises/DeformsTesting/DeformsSimpleProblemPPRO.html ka
    :long_name: Simple Deforms Problem example.
