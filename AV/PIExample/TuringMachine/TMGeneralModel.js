@@ -13,11 +13,59 @@ $(document).ready(function () {
     var yStart = 0;
 
     //frame 1
-    av.umsg("\"State machines\" are simple to understand. There are a number of different state machines, with a range of capabilities. We will discuss a particular one, called a $Turing$ $machine$. As we define \"capability\", the key is ability, not efficiency.");
+    av.umsg("So far we have seen a few simple machine types, such as DFA, NFA, PDA, RegEx.");
     av.displayInit();
-
+    
     //frame 2
-    av.umsg(Frames.addQuestion("q1"));
+    av.umsg(Frames.addQuestion("q2"));
+    av.step();
+    
+    //frame 3
+    av.umsg(Frames.addQuestion("q3"));
+    av.step();
+
+    //frame 4
+    av.umsg(Frames.addQuestion("q4"));
+    av.step();
+
+    //frame 5
+    av.umsg(Frames.addQuestion("q5"));
+    av.step();
+
+    //frame 6
+    av.umsg(Frames.addQuestion("q6"));
+    av.step();
+
+    //frame 7
+    av.umsg(Frames.addQuestion("q7"));
+    av.step();
+
+    //frame 8
+    av.umsg(Frames.addQuestion("q8"));
+    av.step();
+
+    //frame 9
+    av.umsg("In its most general form, we can think of everything that a computer does as taking some string as input, and then providing some string as output. Of course, modern peripheral devices like keyboards, mice, and computer monitors give us rich ways to express input strings (perhaps as button presses), and rich ways to interpret output strings (say, as pictures). But it’s not a huge stretch of the imagination to consider computation as converting an input string to an output string.")
+    av.step();
+
+    //frame 10
+    av.umsg("This concept of converting is far more powerful than simple accepting. A machine that takes an input and provides an output is called a transducer.");
+    av.step();
+
+    //frame 11
+    av.umsg("In this section, we will introduce a simple machine, the $\\textbf{Turing Machine}$, that is a transducer. It is only slightly more complicated than the machines that we have seen so far, and only slightly different in its operation. But these differences are significant. Ultimately, we will see that a Turing Machine can do any computation that even the most sophisticated modern computer can do.");
+    av.step();
+
+    //frame 12
+    av.umsg("We would like to define a general model of computation that is as simple as possible. The reason is that we want to be able to understand the limits of what is possible in computing, but that is rather hard to do with a complicated definition for a “computer” is. But then, we need to be confident that whatever model we do pick, that it actually represents all of the fundamental capabilities of a $\\textbf{computer}$.");
+    av.step();
+
+    //frame 13
+    av.umsg(Frames.addQuestion("q13"));
+    av.step();
+
+    //frame 14
+    av.umsg(Frames.addQuestion("q14"));
     av.step();
     
     //frame 3
