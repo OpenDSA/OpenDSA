@@ -50,7 +50,7 @@ We’ll be examining simpler languages and grammars and then building up
 to how programming languages are formed.
 We start with :term:`finite automata` (also called
 :term:`finite state machines <finite state machine>`).
-We will see that an automaton represents a simple language,
+We will see that any finite automaton represents a simple language,
 and that a type of grammar (:term:`regular grammar`) can represent the
 same language.
 Also we will look at :term:`regular expressions <regular expression>`.
