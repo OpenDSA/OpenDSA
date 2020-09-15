@@ -8,14 +8,16 @@ class WindowManager{
         this.canvasDims = dim_obj;
         this.workspace_list = wkspaceList;
         
-        document.styleSheets[2].rules[0].style.height = 1000+"px";
+        document.styleSheets[2].rules[0].style.height = 600+"px";
 	}
 
 
 	extendCanvas(shiftAmount) {
-        var minHeight = 1000;
-        // console.log(document.styleSheets[2].rules[0].style.height);
+        var minHeight = 600;
+	// console.log(window.parent.ODSA.UTILS.logUserAction("inside","WindowManager"))
+	// console.log(window.parent.document.querySelector("iframe#DeformsSimpleProblemPPRO_iframe").style.height)
         document.styleSheets[2].rules[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
+	Window.updateExerciseWindowHeight(shiftAmount);
 	}
 
     /*

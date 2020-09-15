@@ -209,6 +209,14 @@ requirejs(["./mathjs.js"], function(){});
         //     console.log(eventData);
         // }});
         Window.jsavObject = av;
+	if(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe")!=null)
+		Window.updateExerciseWindowHeight = function(shiftAmount) {	
+			var minWindowHeight = 1200;
+			var currentHeight = parseInt(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height);
+			window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
+				Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
+		}
+	else Window.updateExerciseWindowHeight = function() {} ;
         Window.eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         Window.wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
             Window.eqbank, globalPointerReference);
@@ -224,9 +232,11 @@ requirejs(["./mathjs.js"], function(){});
         globalPointerReference.currentClickedObjectType = null;
         globalPointerReference.currentClickedObjectDescription = null;
 
-        // $("body").on("jsav-log-event", function(event, eventData) {
+         $("body").on("jsav-log-event", function(event, eventData) {
         //     console.log(eventData);
-        //   });
+            if(window.parent.ODSA != undefined)
+	    console.log(window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc))
+        });
         
         // Setting up value boxes for those inside the question body
         var selectableParameters = document.getElementsByClassName("param");
@@ -397,8 +407,11 @@ requirejs(["./mathjs.js"], function(){});
         // This loads the general help menu; for now, work is delegated to Intro.js
         // Window.showHelp("general");
         // Window.tutorialSteps();
-
-        // Body Clicks registered as directive message was included here, now delegated to utils.
+        
+	
+	// console.log(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height)
+        
+	// Body Clicks registered as directive message was included here, now delegated to utils.
         Window.bodyClickPrompt();
     }
 
