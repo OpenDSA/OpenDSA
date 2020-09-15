@@ -395,7 +395,7 @@ requirejs(["./mathjs.js"], function(){});
         // questionSign.element[0].addEventListener("click", e => { e.stopPropagation(); Window.showHelp("general") } );
         
         // This loads the general help menu; for now, work is delegated to Intro.js
-        Window.showHelp("general");
+        // Window.showHelp("general");
         // Window.tutorialSteps();
 
         // Body Clicks registered as directive message was included here, now delegated to utils.

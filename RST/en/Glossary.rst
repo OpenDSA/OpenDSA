@@ -4146,13 +4146,16 @@ Glossary
       reflexive if :math:`aRa` for all :math:`a \in \mathbf{S}`.
 
    Region Quadtree
-
       A :term:`spatial data structure` for storing 2D pixel data. The
       idea is that the root of the tree represents the entire image,
       and it is recursively divided into four equal subquadrants
       if not all pixels associated with the current node have the
       same value. This is structurally equivalent to a
       :term:`PR quadtree`, only the decomposition rule is changed.
+
+   regular grammar
+     And grammar that is either right-regular or left-regular.
+     Every regular grammar describes a regular language.
 
    regular language
       A language :math:`L` is a regular language if and only if
