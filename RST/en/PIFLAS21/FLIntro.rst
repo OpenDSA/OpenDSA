@@ -9,8 +9,8 @@
    :satisfies: FL Introduction
    :topic: Introduction
 
-About This Course
-=================
+About this Course and this Book
+===============================
 
 Introduction
 ------------
@@ -27,6 +27,7 @@ Complexity theory (also known as NP-completeness, which relates to
 undestanding what is expensive versus not so expensive to compute);
 and Computability (the study of where the limits are in terms of what
 problems are possible for a computer program to solve).
+
 
 Prerequisites
 -------------
@@ -56,6 +57,54 @@ following:
 * Basic data structures and algorithms including lists, search
   structures such as BSTs, sorting algorithms, heaps, hashing, and
   standard graph algorithms.
+
+
+How this Book Works
+-------------------
+
+This book is not like your typical textbook, in a lot of ways.
+You might have previously used an OpenDSA eTextbook for another class.
+If so, some of this will be familiar.
+But even if you have used OpenDSA before, some basic features in this
+book will probably be new to you.
+
+First, a lot of the content is presented using a technique called
+"Programmed Instruction".
+The idea beind Programmed Instruction is to keep you engaged with the
+material by constantly asking you questions about what you are
+reading.
+So what you will see is a type of slideshow, that we call a
+"Programmed Instruction frameset".
+Each slide in the frameset will present a small amount of
+information, perhaps with some graphics to help make things clear.
+But frequently, to make progress in the frameset, you will have to
+answer a question.
+We hope that you will find these to mostly be easy questions
+(at least, most of them are supposed to be easy).
+Their goal is to keep you focused on what the content means, forcing you to
+learn it as you go by constantly challenging your understanding.
+So, besides keeping you engaged, being able to answer the questions as
+you go through the content means that you can be confident that you
+really understood what you read.
+
+Second, this book is filled with many auto-graded exercises.
+They also help to make sure that you understand what you have read, at
+a more integrated level than the simple questions given in the
+framesets.
+
+Third, since this book all about simple types of "machines",
+we have provided many tools to create and (visually) simulate the
+behavior of these machines.
+And we integrate these simulations into some of the exercises.
+This is a lot like writing small programs.
+It's just that instead of writing in a normal programming language
+like Java, you will be writing with a machine editor.
+You machine is typically expressed as a graph.
+Sometimes you will define a different type of "machine" by writing a
+grammar.
+But it's a lot like programming either way,
+and internally we verify that your machine is correct by running unit
+tests against your machine to see if its answers match ours.
 
 
 What we will do
@@ -220,51 +269,3 @@ the following.
 
 * What is the relative "power" of a Push-down Automata, a Finate State
   Automata, a Non-Deterministic Finite Automata, and a Turing Machine?
-
-
-How this Book Works
-===================
-
-This book is not like your typical textbook, in a lot of ways.
-You might have previously used an OpenDSA eTextbook for another class.
-If so, some of this will be familiar.
-But even if you have used OpenDSA before, some basic features in this
-book will probably be new to you.
-
-First, a lot of the content is presented using a technique called
-"Programmed Instruction".
-The idea beind Programmed Instruction is to keep you engaged with the
-material by constantly asking you questions about what you are
-reading.
-So what you will see is a type of slideshow, that we call a
-"Programmed Instruction frameset".
-Each slide in the frameset will present a small amount of
-information, perhaps with some graphics to help make things clear.
-But frequently, to make progress in the frameset, you will have to
-answer a question.
-We hope that you will find these to mostly be easy questions
-(at least, most of them are supposed to be easy).
-Their goal is to keep you focused on what the content means, forcing you to
-learn it as you go by constantly challenging your understanding.
-So, besides keeping you engaged, being able to answer the questions as
-you go through the content means that you can be confident that you
-really understood what you read.
-
-Second, this book is filled with many auto-graded exercises.
-They also help to make sure that you understand what you have read, at
-a more integrated level than the simple questions given in the
-framesets.
-
-Third, since this book all about simple types of "machines",
-we have provided many tools to create and (visually) simulate the
-behavior of these machines.
-And we integrate these simulations into some of the exercises.
-This is a lot like writing small programs.
-It's just that instead of writing in a normal programming language
-like Java, you will be writing with a machine editor.
-You machine is typically expressed as a graph.
-Sometimes you will define a different type of "machine" by writing a
-grammar.
-But it's a lot like programming either way,
-and internally we verify that your machine is correct by running unit
-tests against your machine to see if its answers match ours.
