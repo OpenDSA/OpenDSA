@@ -37,16 +37,18 @@ requirejs(["./mathjs.js"], function(){});
             "HEIGHT": 500
         },
     };
+    var LTI_CANVAS_HEIGHT ; //This is only relevant when the exercise is served inside Canvas LMS - to prevent scrolling too much and to allow the content to fit.
 
     Window.showBlankPrompt = true;
 
     var mechSolverCommon = {
 
         //initializer, creates all the necessary object instances
-        initJSAV: function(exerciseId, unitFamily){
+        initJSAV: function(exerciseId, unitFamily, ltiCanvasHeight){
             // Creating one rectangle in the middle that allows scrolling through
             // the list of equations.
             Window.unitFamily = unitFamily; // Setting this here since resetting is not going to change this.
+		LTI_CANVAS_HEIGHT = ltiCanvasHeight;
             reset(exerciseId);
         },
         
@@ -211,7 +213,7 @@ requirejs(["./mathjs.js"], function(){});
         Window.jsavObject = av;
 	if(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe")!=null)
 		Window.updateExerciseWindowHeight = function(shiftAmount) {	
-			var minWindowHeight = 1200;
+			var minWindowHeight = LTI_CANVAS_HEIGHT;
 			var currentHeight = parseInt(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height);
 			window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
 				Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
