@@ -2,7 +2,7 @@
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "GRAMMAR",
     "totalTrueCases": 10,
-    "totalFalseCases": 5,
+    "totalFalseCases": 3,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
