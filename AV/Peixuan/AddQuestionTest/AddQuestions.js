@@ -1,121 +1,13 @@
 //initialize PI frame with generated questions
 var piInit = function(av_name, questions, piframesLocations = {top: 10, left: 5}) {
-  console.log(av_name + " init with questions")
-  var container = $(`#${av_name}`);
-
-  var qButton = $("<div />", {
-    class: "SHOWQUESTION"
-  });
-
-  var question = $("<div />", {
-    class: "PIFRAMES"
-  });
-
-  $("#" + av_name + " .picanvas").css({
-    width: "0px",
-    overflow: "inherit"
-  });
-
-  $(question).css({
-    position: "absolute",
-    top: 69,
-    left: 590,
-    width: "34%",
-    overflow: "hidden"
-  });
-
-  $("#" + av_name + " .jsavoutput.jsavline").css({
-    display: "inline-block",
-    width: "60%"
-  });
-
-  $("#" + av_name + " .jsavcanvas").css({
-    //"min-width": "0px",
-    width: "60%",
-    overflow: "hidden",
-    "margin-left": 0,
-    //"min-height": "500px"
-  });
-
-
-  $(container).append(qButton);
-  $(container).append(question);
-
-  $("#" + av_name + " > .SHOWQUESTION, #" + av_name + " > .PIFRAMES").wrapAll('<div class="picanvas"></div>');
-  $("#" + av_name + " > .picanvas").insertAfter($("#" + av_name + " > .jsavcanvas"));
-  $("#" + av_name + " > .jsavcanvas, #" + av_name + " > .picanvas").wrapAll('<div class="canvaswrapper"></div>');
-  $("#" + av_name + " > .canvaswrapper").css({
-    display: "flex"
-  });
-
-  //disable jsavend, as it allows student to jump to last slide
-  //automatically enabled by injector once all questions for slideshow have been answered
-  // $(".jsavend").css("pointer-events", "none");
-  $("#" + av_name + " > .jsavcontrols > .jsavend").css("visibility", "hidden");
-
-  //edge case: what if first slide has question?
-  //1 signifies a forward click; used by injector to increment queue if necessary
-  $("#" + av_name + " > .jsavcontrols > .jsavforward").click(function() {
-    var buttonGroup = $(this).parent();
-    var parentAV = $(buttonGroup)
-      .parent()
-      .attr("id");
-    PIFRAMES.callInjector(parentAV, 1);
-  }),
-    //0 signifies a backward click; used by injector to decrement queue if necessary
-  $("#" + av_name + " > .jsavcontrols > .jsavbackward").click(function() {
-      var buttonGroup = $(this).parent();
-      var parentAV = $(buttonGroup)
-        .parent()
-        .attr("id");
-      PIFRAMES.callInjector(parentAV, 0);
-    }),
-  $("#" + av_name + " > .jsavcontrols > .jsavbegin").click(function() {
-      var buttonGroup = $(this).parent();
-      var parentAV = $(buttonGroup)
-        .parent()
-        .attr("id");
-      PIFRAMES.callInjector(parentAV, -1);
-    }),
-  $("#" + av_name + " > .jsavcontrols > .jsavend").click(function() {
-      var buttonGroup = $(this).parent();
-      var parentAV = $(buttonGroup)
-        .parent()
-        .attr("id");
-      PIFRAMES.callInjector(parentAV);
-  });
-
-  let data = {
-    "frame_name": av_name,
-  };
-
-  var skip_to;
-  // get user checkout
-  $.ajax({
-    url: "/pi_attempts/get_checkpoint",
-    type: "POST",
-    async: false,
-    data: JSON.stringify(data),
-    contentType: "application/json; charset=utf-8",
-    datatype: "json",
-    xhrFields: {
-      withCredentials: true
-    },
-    success: function(data) {
-      skip_to = parseInt(data.result)
-    },
-    error: function(err) {
-      skip_to = 0
-    }
-  });
-
-  // point the injector to generated questions
-  var injector = PIFRAMES.Injector(questions, av_name, skip_to, piframesLocations);
-  PIFRAMES.table[av_name] = injector;
+  console.log(av_name + " init with questions");
+  var injector = PIFRAMES.appendQuestionData(av_name, piframesLocations, questions);
   return injector;
 }
+
 //helper functions
-// *copied from FA.js
+//some of them are copied from FA.js
+//----------------------------------------------------------------
 var highlightAllNodes = function (listOfNodes, graph) {
   for (var i = 0; i < listOfNodes.length; i++) {
     graph.getNodeWithValue(listOfNodes[i]).highlight("green");
@@ -144,6 +36,26 @@ var addFinals = function (g1, g2) {
     }
   }
 };
+var getAllNonStartNorFinalStates = function (graph) {
+  var listOfNodes = graph.nodes();
+  var results = [];
+  listOfNodes.map(function (node) {
+    if (!node.hasClass("final") && !node.hasClass("start"))
+      results.push(node);
+  });
+  return results;
+}
+var drawTheFinalGraph = function (jsav, options, expression) {
+  var fa = jsav.ds.FA($.extend(options));
+  var start = fa.addNode({ left: '15px' });
+  var height = options.height || 440;
+  var width = options.width || 750;
+  var end = fa.addNode({ left: width - 10, top: height - 40 });
+  fa.makeInitial(start);
+  fa.makeFinal(end);
+  var t = fa.addEdge(start, end, { weight: expression });
+  return fa;
+}
 
 //shuffle array
 var shuffle = function (array) {
@@ -156,72 +68,6 @@ var shuffle = function (array) {
       array[randomIndex] = temporaryValue;
     }
     return array;
-}
-
-//generate questions in json format by the graph
-//so it can be used by PI frame
-var generateQuestions = function (steps, graph = null, configure) {
-  //Example:
-  /*{
-    "translations": {
-      "en": {
-        "q0": {
-          "type": "multiple",
-          "question":"What is transition from start state $\\{q0, q1, q2\\}$ with the alphabet a. Select the appropriate state:",
-          "description": "Let's begin with the start state. Closure($q0$) in $M_N$ is $\\{q0,q1,q2\\}$. So minimizer is the start state.",
-          "answer": "q3, q4",
-          "choices": ["q0, q1, q2", "q3, q4","q3" ,"q4"]
-        },
-        ...,
-        "q13": {
-          "type": "select",
-          "question":"What are the final state? Note that, any state that include states $q5$ or $q6$ should be a final state",
-          "answer": ["q5, q1", "q1, q5, q6", "q6"],
-          "choices": ["q0, q1, q2", "q3, q4","q4", "q1, q5, q6", "q3", "q6", "q5, q1"]
-        }
-      }
-    }
-  }*/
-  var questions = {
-    "translations": {
-      "en": {}
-    }
-  }
-
-  var questionsIndex = 0;
-  var specialQuestionInedx = 0;
-  var i, j;
-  for (i = 0; i < steps.length; i++) {
-    for (j = 0; j < steps[i].length; j++){
-      if(questionsIndex === configure["specialQuestionInedx"][specialQuestionInedx]){
-        questions["translations"]["en"][String("q" + questionsIndex)] = configure["specialQuestion"][specialQuestionInedx];
-        specialQuestionInedx++;
-        questionsIndex++;
-      }
-      else{
-        var qsForAState = configure["questionPattern"](steps[i][j]);
-        //if the generation function skiped a state
-        if(!Array.isArray(qsForAState)){
-          continue;
-        }
-        if(qsForAState.length != 1){
-          qsForAState.forEach(item => {
-            questions["translations"]["en"][String("q" + questionsIndex)] = item;
-            questionsIndex++;
-          });
-        }
-        else{
-          questions["translations"]["en"][String("q" + questionsIndex)] = qsForAState[0];
-          questionsIndex++;
-        }
-      }
-    }
-  }
-
-  //must delete this part when use otherwise student can see the answer
-  //console.log(questions["translations"]["en"]);
-
-  return questions;
 }
 
 var toStrChoice = function (array){
@@ -265,7 +111,104 @@ var containsChoice = function(choice, set){
   }
   return false;
 }
+var arrow = String.fromCharCode(8594);
+//----------------------------------------------------------------
+//helper functions end
 
+//trace how many auto functions have been used
+//the field is used to create keys for questions object
+var currentAutoStack = {};
+
+var updateAutoQuestionStack = function (av_name){
+  if(!currentAutoStack.hasOwnProperty(av_name)){
+    currentAutoStack[av_name] = 0;
+    return 0;
+  }
+  else{
+    currentAutoStack[av_name] = currentAutoStack[av_name] + 1;
+    return currentAutoStack[av_name];
+  }
+}
+
+//store what left on the canvas after a function finished
+var graphStack = {};
+//hide every stored graph for a jsav
+var cleanRemaingGraph = function (av_name){
+  if(!graphStack.hasOwnProperty(av_name)){
+    return false;
+  }
+  graphStack[av_name].forEach((item) => {
+    item.hide();
+  });
+}
+
+//generate questions in json format by the graph
+//so it can be used by PIframe
+var generateQuestions = function (steps, graph = null, configure, av_name) {
+  //Example:
+  /*{
+    "translations": {
+      "en": {
+        "q0": {
+          "type": "multiple",
+          "question":"What is transition from start state $\\{q0, q1, q2\\}$ with the alphabet a. Select the appropriate state:",
+          "description": "Let's begin with the start state. Closure($q0$) in $M_N$ is $\\{q0,q1,q2\\}$. So minimizer is the start state.",
+          "answer": "q3, q4",
+          "choices": ["q0, q1, q2", "q3, q4","q3" ,"q4"]
+        },
+        ...,
+        "q13": {
+          "type": "select",
+          "question":"What are the final state? Note that, any state that include states $q5$ or $q6$ should be a final state",
+          "answer": ["q5, q1", "q1, q5, q6", "q6"],
+          "choices": ["q0, q1, q2", "q3, q4","q4", "q1, q5, q6", "q3", "q6", "q5, q1"]
+        }
+      }
+    }
+  }*/
+  var questions = {
+    "translations": {
+      "en": {}
+    }
+  }
+
+  var questionsIndex = 0;
+  var specialQuestionInedx = 0;
+  var i, j;
+  for (i = 0; i < steps.length; i++) {
+    for (j = 0; j < steps[i].length; j++){
+      if(questionsIndex === configure["specialQuestionInedx"][specialQuestionInedx]){
+        questions["translations"]["en"][String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)] = configure["specialQuestion"][specialQuestionInedx];
+        specialQuestionInedx++;
+        questionsIndex++;
+      }
+      else{
+        var qsForAState = configure["questionPattern"](steps[i][j]);
+        //if the generation function skiped a state
+        if(!Array.isArray(qsForAState)){
+          continue;
+        }
+        if(qsForAState.length != 1){
+          qsForAState.forEach(item => {
+            questions["translations"]["en"][String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)] = item;
+            questionsIndex++;
+          });
+        }
+        else{
+          questions["translations"]["en"][String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)] = qsForAState[0];
+          questionsIndex++;
+        }
+      }
+    }
+  }
+
+  //must delete this part when use otherwise student can see the answer
+  //console.log(questions["translations"]["en"]);
+
+  return questions;
+}
+
+//following are auto generation functions based on the corresponding one in FA.js
 var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph, tree, newGraphDimensions, piframesLocations) {
   var steps = getAllStepsForMinimizeDFA(minimizer, jsav, referenceGraph, tree);
 
@@ -393,7 +336,8 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
     "questionPattern" : generateMinimizeDFAQuestions
   };
 
-  var questions = generateQuestions(steps, referenceGraph, configureForMinimizeDFA);
+  var currentStack = updateAutoQuestionStack(av_name);
+  var questions = generateQuestions(steps, referenceGraph, configureForMinimizeDFA, av_name);
   // initialize PI frame
   var Frames = piInit(av_name, questions, piframesLocations);
 
@@ -412,14 +356,16 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
   minimizer.addTrapState();
   var val = minimizer.getReachable();
   minimizer.initTree(val);
-
-  jsav.umsg(Frames.addQuestion(String("q" + 0)));
+  var questionsIndex = 0;
+  jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+  questionsIndex++;
 
   //minimizer.jsav.umsg("Initially, the tree will consist of 2 nodes. A node for nonfinal states, and another state for final states.")
   minimizer.jsav.step();
 
   //minimizer.jsav.umsg("These are the nonfinal states.")
-  jsav.umsg(Frames.addQuestion(String("q" + 1)));
+  jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+  questionsIndex++;
   highlightAllNodes(minimizer.nonfinals, minimizer.referenceGraph);
   getTreeNode(minimizer.nonfinals.sort().join(), minimizer.tree.root()).highlight();
   minimizer.jsav.step();
@@ -438,7 +384,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
   var moreToSplit = true;
   minimizer.jsav.umsg("Now we will test the terminals against the states in that subset to see if they all go to the same subset. Split them up when they do not go to the same place.");
   jsav.step();
-  var questionsIndex = 2;
+
 
   var autoPartitionWithQuestions = function (treeNode) {
     var leaves = minimizer.getLeaves(minimizer.tree.root());
@@ -467,8 +413,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
         //minimizer.selectedNode = null;
         //minimizer.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will not be divided.");
         if(questionsIndex < Object.keys(questions["translations"]["en"]).length){
-          //console.log(questions["translations"]["en"][String("q" + questionsIndex)]);
-          jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+          jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
           questionsIndex++;
           jsav.step();
         }
@@ -477,12 +422,10 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
         return false;
       }
     }
-    //console.log(questions["translations"]["en"][String("q" + questionsIndex)]);
-    jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+    jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
     jsav.step();
     questionsIndex++;
-    //console.log(questions["translations"]["en"][String("q" + questionsIndex)]);
-    jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+    jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
     jsav.step();
     questionsIndex++;
 
@@ -615,7 +558,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
           var n1 = studentGraph.getNodeWithValue(i),
             n2 = studentGraph.getNodeWithValue(j),
             w = minimizer.minimizedEdges[i][j].join('<br>');
-          jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+          jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
           jsav.step();
           questionsIndex++;
           var newEdge = studentGraph.addEdge(n1, n2, { weight: w });
@@ -631,8 +574,12 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
     return minimizerComplete(graph);
   };
 
-
-  return minimizerDone(newGraphDimensions);
+  var res = minimizerDone(newGraphDimensions);
+  graphStack[av_name] = [];
+  graphStack[av_name].push(minimizer.referenceGraph);
+  graphStack[av_name].push(minimizer.tree);
+  graphStack[av_name].push(res);
+  return res;
 };
 
 /*
@@ -927,7 +874,8 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
     "questionPattern" : generateDFAQuestionsForAState
   };
 
-  var questions = generateQuestions(steps, graph, configureForDFA);
+  var currentStack = updateAutoQuestionStack(av_name);
+  var questions = generateQuestions(steps, graph, configureForDFA, av_name);
   // initialize PI frame
   var Frames = piInit(av_name, questions);
   //PIFRAMES.init(av_name);
@@ -948,8 +896,10 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
   // jsav.step();"
 
   // Get the first converted state
+  var questionsIndex = 0;
   if (visualizable)
-    jsav.umsg(Frames.addQuestion(String("q" + 0)));
+    jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+    questionsIndex++;
     jsav.step();
 
   var first = lambdaClosure([startState.value()], graph).sort().join();
@@ -981,12 +931,12 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
 
     jsav.umsg("Nest step is to identify the transitions out of the DFA start state. For each letter in the alphabet, consider all states reachable in the NFA from any state in the start state on that letter. minimizer becomes the name of the target state on that transition.");
     jsav.step();
-    jsav.umsg(Frames.addQuestion(String("q" + 1)));
+    jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+    questionsIndex++;
     g.layout();
     jsav.step();
   }
 
-  var count = 2;
   // Repeatedly get next states and apply lambda closure
   while (temp.length > 0) {
     var val = temp.pop(),
@@ -1018,11 +968,11 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
 
         //put it here to let questions correspond to each state
         if (visualizable) {
-          if (count < Object.keys(questions["translations"]["en"]).length) {
-            jsav.umsg(Frames.addQuestion(String("q" + count)));
+          if (questionsIndex < Object.keys(questions["translations"]["en"]).length) {
+            jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+            questionsIndex++;
             g.layout();
             jsav.step();
-            count++;
           }
         }
       }
@@ -1045,6 +995,9 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
     g.updateNodes();
     g.layout();
     //g.disableDragging();
+    graphStack[av_name] = [];
+    graphStack[av_name].push(g);
+    graphStack[av_name].push(graph);
     return g;
 };
 
@@ -1170,7 +1123,8 @@ var gToFAConverterWithQuestion = function (av_name, converter, nFAoptions, pifra
     "questionPattern" : generatingFunction
   };
 
-  var questions = generateQuestions(steps, null, configure);
+  var currentStack = updateAutoQuestionStack(av_name);
+  var questions = generateQuestions(steps, null, configure, av_name);
   // initialize PI frame
   var Frames = piInit(av_name, questions, piframesLocations);
   var questionsIndex = 0;
@@ -1189,7 +1143,7 @@ var gToFAConverterWithQuestion = function (av_name, converter, nFAoptions, pifra
   }
   newStates = _.uniq(newStates);
 
-  converter.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+  converter.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
   questionsIndex++;
   converter.jsav.step();
 
@@ -1209,13 +1163,17 @@ var gToFAConverterWithQuestion = function (av_name, converter, nFAoptions, pifra
 
   //converter.loopOverEachRow();
   for (var i = 0; i < converter.grammerArray.length - 1; i++) {
-    converter.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+    converter.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
     questionsIndex++;
     converter.jsav.step();
     converter.convertGrammarHandler(i);
   }
 
   converter.jsav.umsg("This is the equivalent NFA for this Regular Grammer.");
+
+  graphStack[av_name] = [];
+  graphStack[av_name].push(converter.builtDFA);
+  graphStack[av_name].push(converter.grammerMatrix);
   return converter;
 }
 
@@ -1258,7 +1216,6 @@ var getStepsForGToFAConverter = function (converter, nFAoptions){
       }]);
     }
   }
-  //console.log(res);
   return res;
 }
 
@@ -1268,7 +1225,6 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
   var s = FAtoGrammar.FA.initial;
   var newVariables = [s];
   var nodes = FAtoGrammar.FA.nodes();
-  var arrow = String.fromCharCode(8594);
   var converted = [];
   var matrixIndex = 0;
 
@@ -1331,7 +1287,8 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
     "questionPattern" : generatingFunction
   };
 
-  var questions = generateQuestions(steps, null, configure);
+  var currentStack = updateAutoQuestionStack(av_name);
+  var questions = generateQuestions(steps, null, configure, av_name);
   // initialize PI frame
   var Frames = piInit(av_name, questions, piframesLocations);
   var questionsIndex = 0;
@@ -1341,7 +1298,7 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
 
   for (var i = 0; i < newVariables.length; i++) {
     var edges = newVariables[i].getOutgoing();
-    FAtoGrammar.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+    FAtoGrammar.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
     questionsIndex++;
     FAtoGrammar.jsav.step();
 
@@ -1366,7 +1323,7 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
       var weight = edges[j].weight().split("<br>");
 
       for (var k = 0; k < weight.length; k++) {
-        FAtoGrammar.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+        FAtoGrammar.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
         questionsIndex++;
         FAtoGrammar.jsav.step();
         var terminal = weight[k];
@@ -1381,7 +1338,7 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
     }
 
     if (newVariables[i].hasClass('final')) {
-      FAtoGrammar.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+      FAtoGrammar.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
       questionsIndex++;
       FAtoGrammar.jsav.step();
       finals.push([variables[i], arrow, emptystring]);
@@ -1398,6 +1355,10 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
     edge._label.removeClass("testingLambda");
   });
   converted = converted.concat(finals);
+
+  graphStack[av_name] = [];
+  graphStack[av_name].push(grammarMatrix);
+  graphStack[av_name].push(FAtoGrammar.FA);
   // save resulting grammar as an array of arrays of strings
   // (same format as how the grammarEditor reads grammars)
 
@@ -1517,7 +1478,8 @@ var acceptorVisualizeWithQuestions = function (av_name, av, acceptor, listOfStri
     "questionPattern" : generatingFunction
   };
 
-  var questions = generateQuestions(steps, av, configure);
+  var currentStack = updateAutoQuestionStack(av_name);
+  var questions = generateQuestions(steps, av, configure, av_name);
   // initialize PI frame
   var Frames = piInit(av_name, questions, piframesLocations);
   var questionsIndex = 0;
@@ -1561,10 +1523,10 @@ var acceptorVisualizeWithQuestions = function (av_name, av, acceptor, listOfStri
     }
 
     var rejected = true;
-    acceptor.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+    acceptor.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
     questionsIndex++;
     acceptor.jsav.step();
-    acceptor.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+    acceptor.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
     questionsIndex++;
     acceptor.jsav.step();
 
@@ -1613,6 +1575,10 @@ var acceptorVisualizeWithQuestions = function (av_name, av, acceptor, listOfStri
     acceptor.resetFA();
     run(acceptor, listOfStrings[i], i);
   }
+
+  graphStack[av_name] = [];
+  graphStack[av_name].push(acceptor.FA);
+  graphStack[av_name].push(acceptor.matrix);
 }
 
 var getStepsForAcceptorVisualize = function (acceptor, listOfStrings, arrayOptions) {
@@ -1691,29 +1657,6 @@ var getStepsForAcceptorVisualize = function (acceptor, listOfStrings, arrayOptio
   return res;
 };
 
-
-function getAllNonStartNorFinalStates(graph) {
-  var listOfNodes = graph.nodes();
-  var results = [];
-  listOfNodes.map(function (node) {
-    if (!node.hasClass("final") && !node.hasClass("start"))
-      results.push(node);
-  });
-  return results;
-}
-
-function drawTheFinalGraph(jsav, options, expression) {
-  var fa = jsav.ds.FA($.extend(options));
-  var start = fa.addNode({ left: '15px' });
-  var height = options.height || 440;
-  var width = options.width || 750;
-  var end = fa.addNode({ left: width - 10, top: height - 40 });
-  fa.makeInitial(start);
-  fa.makeFinal(end);
-  var t = fa.addEdge(start, end, { weight: expression });
-  return fa;
-}
-
 var visualizeConversionWithQuestions = function (fatoreController, url, av_name, transitionOptions = {}, finaGraphOptions = {}, piframesLocations){
   var oldNFA = fatoreController.fa;
   var tempNFA = new fatoreController.jsav.ds.FA({url: url});
@@ -1774,7 +1717,8 @@ var visualizeConversionWithQuestions = function (fatoreController, url, av_name,
     "questionPattern" : generatingFunction
   };
 
-  var questions = generateQuestions(steps, fatoreController.jsav, configure);
+  var currentStack = updateAutoQuestionStack(av_name);
+  var questions = generateQuestions(steps, fatoreController.jsav, configure, av_name);
   // initialize PI frame
   var Frames = piInit(av_name, questions, piframesLocations);
   var questionsIndex = 0;
@@ -1784,7 +1728,7 @@ var visualizeConversionWithQuestions = function (fatoreController, url, av_name,
   fatoreController.jsav.step();
 
   fatoreController.completeTransitions();
-  fatoreController.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+  fatoreController.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
   questionsIndex++;
 
   for (var i = 0; i < nodes.length; i++) {
@@ -1794,7 +1738,7 @@ var visualizeConversionWithQuestions = function (fatoreController, url, av_name,
     nodes[i].highlight();
     for (var j = 0 ; j < expCount[i] ; j++) {
       fatoreController.jsav.step();
-      fatoreController.jsav.umsg(Frames.addQuestion(String("q" + questionsIndex)));
+      fatoreController.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
       questionsIndex++;
     }
     fatoreController.jsav.step();
@@ -1814,7 +1758,12 @@ var visualizeConversionWithQuestions = function (fatoreController, url, av_name,
   fatoreController.jsav.step();
   fatoreController.jsav.umsg("After removing all nodes that are not final and not start, the resulting Regular Exepression is");
   fatoreController.transitions.hide();
-  drawTheFinalGraph(fatoreController.jsav, finaGraphOptions, fatoreController.generateExpression());
+  var final = drawTheFinalGraph(fatoreController.jsav, finaGraphOptions, fatoreController.generateExpression());
+
+  //TODO
+  graphStack[av_name] = [];
+  graphStack[av_name].push(fatoreController.fa);
+  graphStack[av_name].push(final);
 }
 
 var getStepsForvisualizeConversion = function (fatoreController, transitionOptions = {}, finaGraphOptions = {}){
@@ -1972,5 +1921,197 @@ var getStepsForvisualizeConversion = function (fatoreController, transitionOptio
     "type" : "finalExpression",
     "weight" : finalExpression
   }]);
+  return res;
+}
+
+var displayTreeWithQuestions = function (pt, av, av_name, piframesLocations){
+
+  var productions = [];
+  var grammarVariables = [];
+  var start = pt.productions[0][0];
+  pt.productions.forEach((item) => {
+    productions.push(item.join(''));
+    grammarVariables.push(item[0]);
+  });
+  grammarVariables = Array.from(new Set(grammarVariables));
+  var steps = getStepsForDisplayTree(pt);
+  steps.unshift([{
+    "node" : "",
+    "relatedTo" : "",
+    "type" : "empty",
+    "weight" : ""
+  }]);
+  var generatingFunction = function (state) {
+    if(state["type"] === "empty"){
+      return null;
+    }
+    else {
+      return [{
+        "type": "multiple",
+        "question": "",
+        "description": "Which of the following productions we should next substitute in to build the tree?",
+        "answer": state["weight"], //String if type is multiple, array of string if select
+        "choices": productions
+      }]
+    }
+  }
+  var configure = {
+    "specialQuestionInedx" : [0],
+    "specialQuestion" : [{
+      "type": "multiple",
+      "question": "",
+      "description": "Which of the following is the grammar start variable?",
+      "answer": start, //String if type is multiple, array of string if select
+      "choices": grammarVariables
+    }],
+    "questionPattern" : generatingFunction
+  };
+
+  var currentStack = updateAutoQuestionStack(av_name);
+  var questions = generateQuestions(steps, av, configure, av_name);
+  // initialize PI frame
+  var Frames = piInit(av_name, questions, piframesLocations);
+  var questionsIndex = 0;
+
+  pt.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+  questionsIndex++;
+  pt.jsav.step();
+
+  var inputString = pt.inputString;
+  var productions = pt.productions;
+
+  var table = {};   // maps each sentential form to the rule that produces it
+  var next;
+  var accepted = pt.stringAccepted(inputString);
+  if (accepted[0]) {
+
+    table = pt.derivationTree;
+    var temp = accepted[1];
+    var results = [];   // derivation table
+    counter = 0;
+    // go through the map of sentential forms to productions in order to get the trace
+    do {                // handles the case where inputstring is the emptystring
+      counter++;
+      if (counter > 500) {
+        console.warn(counter);
+        break;
+      }
+      var rp = table[temp][0].join("");
+      results.push([rp, temp]);
+      temp = table[temp][1];
+    } while (table[temp] && temp);
+
+
+    results.reverse();
+    // set up display
+
+    //var displayOrder = [];  // order in which to display the nodes of the parse tree
+    // create the parse tree using the derivation table
+    pt.jsav.umsg("The root of the parse tree is the grammar start variable");
+    pt.parseTree.root(results[0][0].split(arrow)[0]);
+    var root = pt.parseTree.root();
+    var sentential = [root]; //order of sentential form nodes
+
+    pt.jsav.step();
+    for (var i = 0; i < results.length; i++) {
+      pt.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+      questionsIndex++;
+      pt.jsav.step();
+
+      var lhsProd = results[i][0].split(arrow)[0];
+      var rhsProd = results[i][0].split(arrow)[1];
+      //find correct lhs in sentential
+      var sententialString = "";
+      for(var j = 0; j < sentential.length; j++){
+        //join all nodes to make a sentential string
+        sententialString += sentential[j].value();
+      }
+      //make the production compatible to pt.replaceLHS function
+      var pro = results[i][0].split(arrow);
+      pro.push(pro[1]);
+      pro[1] = "" ;
+      var lhsOccur;
+      //compare pt.replaceLHS to results[i][1]
+      for(var j = 0; j < pt.replaceLHS([pro],sententialString).length; j++){
+        if(pt.replaceLHS([pro], sententialString)[j] === results[i][1]){
+          //record the jth occurrence of lhs
+          lhsOccur = j;
+        }
+      }
+
+      //convert lhsOccur to actual index number of the sententialString
+      var count = 0;
+      var realIndex = 0;
+      while(true){
+        var index = sententialString.indexOf(results[i][0].split(arrow)[0]);
+        realIndex += index;
+        if(count === lhsOccur){
+          break;
+        }else{
+          sententialString = sententialString.substring(index+1);
+          realIndex++;
+        }
+        count++;
+      }
+
+      //addEdgesFromLHStoRHS();
+      var children = [];
+      for(var l = 0; l < rhsProd.length; l++){
+        var newNode = pt.parseTree.newNode(rhsProd[l]);
+        children.push(newNode);
+        for(var r = 0; r < lhsProd.length; r++){
+          sentential[realIndex + r].addChild(newNode);
+
+        }
+        pt.parseTree.layout();
+      }
+      var temp1 = sentential.slice(0, realIndex);
+      var temp2 = sentential.slice(realIndex + lhsProd.length);
+      sentential = temp1.concat(children);
+      sentential = sentential.concat(temp2);
+    }
+
+    pt.parseTree.layout();
+    pt.jsav.umsg("The resulting tree is finished.");
+    pt.jsav.recorded();
+  }
+}
+
+var getStepsForDisplayTree = function (pt){
+  var res = [];
+  var inputString = pt.inputString;
+  var productions = pt.productions;
+
+  var table = {};   // maps each sentential form to the rule that produces it
+  var next;
+  var accepted = pt.stringAccepted(inputString);
+  if (accepted[0]) {
+    table = pt.derivationTree;
+    var temp = accepted[1];
+    var results = [];   // derivation table
+    counter = 0;
+    // go through the map of sentential forms to productions in order to get the trace
+    do {                // handles the case where inputstring is the emptystring
+      counter++;
+      if (counter > 500) {
+        console.warn(counter);
+        break;
+      }
+      var rp = table[temp][0].join("");
+      results.push([rp, temp]);
+      temp = table[temp][1];
+    } while (table[temp] && temp);
+
+    results.reverse();
+
+    for (var i = 0; i < results.length; i++) {
+      res.push([{
+        "node" : results[i][0].split(arrow)[0],
+        "relatedTo" : results[i][0].split(arrow)[1],
+        "type" : "parseTree",
+        "weight" : results[i][0]
+      }]);
+    }
+  }
   return res;
 }

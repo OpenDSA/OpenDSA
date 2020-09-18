@@ -325,7 +325,13 @@
       }
     }
   }
+  matrixproto.hideRow = function(index){
+    this._arrays[index].hide();
+  }
 
+  matrixproto.showRow = function(index){
+    this._arrays[index].show();
+  }
 
   matrixproto.highlightProductionGivenFromTO = function(from, to){
     for(var i = 0; i<this._arrays.length; i++)  {

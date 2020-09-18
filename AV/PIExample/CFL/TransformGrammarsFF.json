@@ -1,0 +1,175 @@
+{
+  "translations": {
+    "en": {
+      "q2":{
+        "type": "select",
+        "description": "We use grammars to represent a programming language. Want to know: Is a given string (or program x) valid (syntactically correct)? Same as asking if it is in the language",
+        "question": "What do we call the problem of determining if a string is in the language?",
+        "answer": "the membership problem",
+        "choices": ["the membership problem", "Grammar ambiguity"]
+      },
+      "q3":{
+        "type": "true/false",
+        "description": "Last time we showed that if we could transform a CFG into a CFG with no $\\lambda$-productions, and no rules like $A \\rightarrow B$, then we could determine if $w$ is in or not in $L(G)$ in $2|w|$ rounds, each step adding a terminal or increasing in length.",
+        "question": "[T|F]Productions in the form $A \\rightarrow \\lambda$ is called $\\lambda$-productions",
+        "answer": "True",
+        "choices": []
+      },
+      "q6":{
+        "type": "true/false",
+        "description": "What do we mean by tramsforming grammars is to restrict the grammars such that<br/>1)We can process efficiently<br/>not restrect the power of CFGs",
+        "question": "[T|F]CFGs will be less powerful after applying grammar transformations",
+        "answer": "False",
+        "choices": []
+      },
+      "q7":{
+        "type": "select",
+        "description": "We will consider CFL without $\\lambda$. It would be easy to add $\\lambda$ to any grammar by adding a new start symbol $S_0$",
+        "question": "Suppose that the original grammar has a start variable $S$. What is the production rule that we should add to the grammar to make it generate $\\lambda$",
+        "answer": "$S_0 \\rightarrow S \\mid \\lambda$",
+        "choices": ["$S_0 \\rightarrow S \\mid \\lambda$", "$S_0 \\rightarrow S\\ S_0 \\mid \\lambda$", "$S_0 \\rightarrow \\lambda$"]
+      },
+      "q8":{
+        "type": "select",
+        "description": "$\\textbf{Substitution Theorem}$ Let $G$ be a CFG. Suppose $G$ contains $A\\rightarrow x_1Bx_2$ where $x_i \\in (V\\cup T)^*$, $A$ and $B$ are different variables, and $B$ has the productions $B \\rightarrow y_1|y_2|\\ldot |y_n$.",
+        "question": "Can we substitute the value of $B$, the RHS of $B \\rightarrow y_1|y_2|\\ldot |y_n$, into the production $A\\rightarrow x_1Bx_2$?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q9":{
+        "type": "select",
+        "description": "$\\textbf{Substitution Theorem}$ Let $G$ be a CFG. Suppose $G$ contains $A\\rightarrow x_1Bx_2$ where $x_i \\in (V\\cup T)^*$, $A$ and $B$ are different variables, and $B$ has the productions $B \\rightarrow y_1|y_2|\\ldot |y_n$.<br/>Then, we can construct $G\\prime$ from $G$ by deleting $A \\rightarrow x_1Bx_2$ from $P$ and adding to it $A\\rightarrow x_1y_1x_2|x_1y_2x_2|\\ldot|x_1y_nx_2$.",
+        "question": "Is $L(G) = L(G\\prime)$",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q10":{
+        "type": "select",
+        "description": "$\\textbf{Substitution Theorem}$ Let $G$ be a CFG. Suppose $G$ contains $A\\rightarrow x_1Bx_2$ where $x_i \\in (V\\cup T)^*$, $A$ and $B$ are different variables, and $B$ has the productions $B \\rightarrow y_1|y_2|\\ldot |y_n$.<br/>Then, we can construct $G\\prime$ from $G$ by deleting $A \\rightarrow x_1Bx_2$ from $P$ and adding to it $A\\rightarrow x_1y_1x_2|x_1y_2x_2|\\ldot|x_1y_nx_2$.",
+        "question": "What do we mean by $P$?",
+        "answer": "Productions set",
+        "choices": ["Productions set","Variables set", "Terminals set"]
+      },
+      "q11":{
+        "type": "select",
+        "description": "$\\textbf{Substitution Theorem}$ Let $G$ be a CFG. Suppose $G$ contains $A\\rightarrow x_1Bx_2$ where $x_i \\in (V\\cup T)^*$, $A$ and $B$ are different variables, and $B$ has the productions $B \\rightarrow y_1|y_2|\\ldot |y_n$.<br/>Then, we can construct $G\\prime$ from $G$ by deleting $A \\rightarrow x_1Bx_2$ from $P$ and adding to it $A\\rightarrow x_1y_1x_2|x_1y_2x_2|\\ldot|x_1y_nx_2$.",
+        "question": "After this substitution of $B$ int $A$, should we remove the production for $B$?",
+        "answer": "No, $B$ productions might be used by another production",
+        "choices": ["Yes", "No, $B$ productions might be used by another production"]
+      },
+      "q12":{
+        "type": "select",
+        "description": "$\\textbf{Substitution Theorem}$ Let $G$ be a CFG. Suppose $G$ contains $A\\rightarrow x_1Bx_2$ where $x_i \\in (V\\cup T)^*$, $A$ and $B$ are different variables, and $B$ has the productions $B \\rightarrow y_1|y_2|\\ldot |y_n$.<br/>Then, we can construct $G\\prime$ from $G$ by deleting $A \\rightarrow x_1Bx_2$ from $P$ and adding to it $A\\rightarrow x_1y_1x_2|x_1y_2x_2|\\ldot|x_1y_nx_2$.",
+        "question": "What if $B$ productions are not used by anyother variable?",
+        "answer": "Then the B productions become useless productions.",
+        "choices": ["Then the B productions become useless productions.", "We should keep them just in case"]
+      },
+      "q13":{
+        "type": "select",
+        "description": "$\\textbf{Definition:}$ A production of the form $A\\rightarrow Ax$, $A\\in V$, $x\\in (V\\cup T)^*$ is left recursive.",
+        "question": "Consider this grammar:<br/>$E \\rightarrow E+T \\mid T$<br/>$T \\rightarrow T*F \\mid F$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>This grammar is ",
+        "answer": "left recursive",
+        "choices": ["left recursive", "right recursive"]
+      },
+      "q15":{
+        "type": "select",
+        "description": "Consider the derivation of $a+b+a+a$ is: $E \\Rightarrow E+T \\Rightarrow E+T+T \\Rightarrow E+T+T+T\\stackrel{*}{\\Rightarrow} a+T+T+T$",
+        "question": "What is the leftmost terminal in the string $a+b+a+a$",
+        "answer": "$a$",
+        "choices": ["$a$","$+$", "$b$"]
+      },
+      "q16":{
+        "type": "select",
+        "description": "Consider the derivation of $a+b+a+a$ is: $E \\Rightarrow E+T \\Rightarrow E+T+T \\Rightarrow E+T+T+T\\stackrel{*}{\\Rightarrow} a+T+T+T$",
+        "question": "Based on the derivation in the left, did we able to derive the string by finding the leftmost terminal first?",
+        "answer": "No, we used the second terminal in the string to derive it from the grammar",
+        "choices": ["Yes","No, we used the second terminal in the string to derive it from the grammar"]
+      },
+      "q17":{
+        "type": "select",
+        "description": "Consider the derivation of $a+b+a+a$ is: $E \\Rightarrow E+T \\Rightarrow E+T+T \\Rightarrow E+T+T+T\\stackrel{*}{\\Rightarrow} a+T+T+T$",
+        "question": "Why could not we able to derive the leftmost terminal first?",
+        "answer": "Because the grammar is left recursive",
+        "choices": ["Because the grammar is left recursive","Because the string is not correct"]
+      },
+      "q19":{
+        "type": "select",
+        "description": "$\\textbf{Theorem (Removing Left recursion)}$ Let $G=(V,T,S,P)$ be a CFG. Divide productions for variable $A$ into left-recursive and non left-recursive productions:<br/>$A \rightarrow Ax_1 \\mid Ax_2 \\mid \\ldots \\mid Ax_n$<br/>$A \rightarrow y_1 \\mid y_2 \\mid \\ldots \\mid y_m$<br/>where $x_i$, $y_i$ are in $(V\\cup T)^*$.",
+        "question": "Consider this grammar:<br/>$E \\rightarrow E+T \\mid T$<br/>$T \\rightarrow T*F \\mid F$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>What are the left-recursive productios for $E$?",
+        "answer": "$E \\rightarrow E+T$",
+        "choices": ["$E \\rightarrow E+T$","$E \\rightarrow T$"]
+      },
+      "q20":{
+        "type": "select",
+        "description": "$\\textbf{Theorem (Removing Left recursion)}$ Let $G=(V,T,S,P)$ be a CFG. Divide productions for variable $A$ into left-recursive and non left-recursive productions:<br/>$A \rightarrow Ax_1 \\mid Ax_2 \\mid \\ldots \\mid Ax_n$<br/>$A \rightarrow y_1 \\mid y_2 \\mid \\ldots \\mid y_m$<br/>where $x_i$, $y_i$ are in $(V\\cup T)^*$.",
+        "question": "Consider this grammar:<br/>$E \\rightarrow E+T \\mid T$<br/>$T \\rightarrow T*F \\mid F$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>What are the non left-recursive productios for $E$?",
+        "answer": "$E \\rightarrow T$",
+        "choices": ["$E \\rightarrow E+T$","$E \\rightarrow T$"]
+      },
+      "q21":{
+        "type": "true/false",
+        "description": "$\\textbf{Theorem (Removing Left recursion)}$ Let $G=(V,T,S,P)$ be a CFG. Divide productions for variable $A$ into left-recursive and non left-recursive productions:<br/>$A \rightarrow Ax_1 \\mid Ax_2 \\mid \\ldots \\mid Ax_n$<br/>$A \rightarrow y_1 \\mid y_2 \\mid \\ldots \\mid y_m$<br/>where $x_i$, $y_i$ are in $(V\\cup T)^*$.<br/>Any derivation will start with $y_i$",
+        "question": "Consider this grammar:<br/>$E \\rightarrow E+T \\mid T$<br/>$T \\rightarrow T*F \\mid F$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>After any number of substituting $E$ with $E+R$, we will end by making the last $E$ value to be $T$",
+        "answer": "True",
+        "choices": []
+      },
+      "q22":{
+        "type": "select",
+        "description": "$\\textbf{Theorem (Removing Left recursion)}$ Let $G=(V,T,S,P)$ be a CFG. Divide productions for variable $A$ into left-recursive and non left-recursive productions:<br/>$A \rightarrow Ax_1 \\mid Ax_2 \\mid \\ldots \\mid Ax_n$<br/>$A \rightarrow y_1 \\mid y_2 \\mid \\ldots \\mid y_m$<br/>where $x_i$, $y_i$ are in $(V\\cup T)^*$.<br/>Any derivation will start with $y_i$<br/>Then $G=(V\\cup \\{Z\\},T,S,P\\prime)$ and $P\\prime$ replaces rules of form above by<br/>$A \rightarrow y_i \\mid y_iZ, i = 1, 2, \\ldots, m$<br/>$Z \rightarrow x_i \\mid x_iZ, i = 1, 2, \\ldots, n$",
+        "question": "Consider this grammar:<br/>$E \\rightarrow E+T \\mid T$<br/>$T \\rightarrow T*F \\mid F$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>Applying the same steps on variable $E$, what will be the new productions for $E$",
+        "answer": "$E\\rightarrow T\\mid TZ\\quad Z\\rightarrow+T\\mid +TZ$",
+        "choices": ["$E\\rightarrow T\\mid TZ\\quad Z\\rightarrow+T\\mid +TZ$", "$E\\rightarrow Z\\mid TZ\\quad Z\\rightarrow+T\\mid +TZ$"]
+      },
+      "q23":{
+        "type": "select",
+        "description": "$\\textbf{Theorem (Removing Left recursion)}$ Let $G=(V,T,S,P)$ be a CFG. Divide productions for variable $A$ into left-recursive and non left-recursive productions:<br/>$A \rightarrow Ax_1 \\mid Ax_2 \\mid \\ldots \\mid Ax_n$<br/>$A \rightarrow y_1 \\mid y_2 \\mid \\ldots \\mid y_m$<br/>where $x_i$, $y_i$ are in $(V\\cup T)^*$.<br/>Any derivation will start with $y_i$<br/>Then $G=(V\\cup \\{Z\\},T,S,P\\prime)$ and $P\\prime$ replaces rules of form above by<br/>$A \rightarrow y_i \\mid y_iZ, i = 1, 2, \\ldots, m$<br/>$Z \rightarrow x_i \\mid x_iZ, i = 1, 2, \\ldots, n$",
+        "question": "Consider this grammar:<br/>$E \\rightarrow E+T \\mid T$<br/>$T \\rightarrow T*F \\mid F$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>What are the left-recursive productios for $T$?",
+        "answer": "$T \\rightarrow T*F$",
+        "choices": ["$T \\rightarrow T*F$","$T \\rightarrow F$"]
+      },
+      "q24":{
+        "type": "select",
+        "description": "$\\textbf{Theorem (Removing Left recursion)}$ Let $G=(V,T,S,P)$ be a CFG. Divide productions for variable $A$ into left-recursive and non left-recursive productions:<br/>$A \rightarrow Ax_1 \\mid Ax_2 \\mid \\ldots \\mid Ax_n$<br/>$A \rightarrow y_1 \\mid y_2 \\mid \\ldots \\mid y_m$<br/>where $x_i$, $y_i$ are in $(V\\cup T)^*$.<br/>Any derivation will start with $y_i$<br/>Then $G=(V\\cup \\{Z\\},T,S,P\\prime)$ and $P\\prime$ replaces rules of form above by<br/>$A \rightarrow y_i \\mid y_iZ, i = 1, 2, \\ldots, m$<br/>$Z \rightarrow x_i \\mid x_iZ, i = 1, 2, \\ldots, n$",
+        "question": "Consider this grammar:<br/>$E \\rightarrow E+T \\mid T$<br/>$T \\rightarrow T*F \\mid F$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>What are the non left-recursive productios for $T$?",
+        "answer": "$T \\rightarrow F$",
+        "choices": ["$T \\rightarrow T*F$","$T \\rightarrow F$"]
+      },
+      "q25":{
+        "type": "true/false",
+        "description": "$\\textbf{Theorem (Removing Left recursion)}$ Let $G=(V,T,S,P)$ be a CFG. Divide productions for variable $A$ into left-recursive and non left-recursive productions:<br/>$A \rightarrow Ax_1 \\mid Ax_2 \\mid \\ldots \\mid Ax_n$<br/>$A \rightarrow y_1 \\mid y_2 \\mid \\ldots \\mid y_m$<br/>where $x_i$, $y_i$ are in $(V\\cup T)^*$.<br/>Any derivation will start with $y_i$<br/>Then $G=(V\\cup \\{Z\\},T,S,P\\prime)$ and $P\\prime$ replaces rules of form above by<br/>$A \rightarrow y_i \\mid y_iZ, i = 1, 2, \\ldots, m$<br/>$Z \rightarrow x_i \\mid x_iZ, i = 1, 2, \\ldots, n$",
+        "question": "Consider this grammar:<br/>$E \\rightarrow E+T \\mid T$<br/>$T \\rightarrow T*F \\mid F$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>After any number of substituting $E$ with $E+R$, we will end by making the last $T$ value to be $F$",
+        "answer": "True",
+        "choices": []
+      },
+      "q26":{
+        "type": "select",
+        "description": "$\\textbf{Theorem (Removing Left recursion)}$ Let $G=(V,T,S,P)$ be a CFG. Divide productions for variable $A$ into left-recursive and non left-recursive productions:<br/>$A \rightarrow Ax_1 \\mid Ax_2 \\mid \\ldots \\mid Ax_n$<br/>$A \rightarrow y_1 \\mid y_2 \\mid \\ldots \\mid y_m$<br/>where $x_i$, $y_i$ are in $(V\\cup T)^*$.<br/>Any derivation will start with $y_i$<br/>Then $G=(V\\cup \\{Z\\},T,S,P\\prime)$ and $P\\prime$ replaces rules of form above by<br/>$A \rightarrow y_i \\mid y_iZ, i = 1, 2, \\ldots, m$<br/>$Z \rightarrow x_i \\mid x_iZ, i = 1, 2, \\ldots, n$",
+        "question": "Consider this grammar:<br/>$E \\rightarrow E+T \\mid T$<br/>$T \\rightarrow T*F \\mid F$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>Applying the same steps on variable $T$, what will be the new productions for $T$",
+        "answer": "$T \\rightarrow F\\mid FY\\quad Y\\rightarrow *F\\mid *FY$",
+        "choices": ["$T \\rightarrow F\\mid FY\\quad Y\\rightarrow *F\\mid *FY$","$T \\rightarrow Y\\mid FY\\quad Y\\rightarrow *F\\mid *FY$"]
+      },
+      "q27":{
+        "type": "select",
+        "description": "$\\textbf{Theorem (Removing Left recursion)}$ Let $G=(V,T,S,P)$ be a CFG. Divide productions for variable $A$ into left-recursive and non left-recursive productions:<br/>$A \rightarrow Ax_1 \\mid Ax_2 \\mid \\ldots \\mid Ax_n$<br/>$A \rightarrow y_1 \\mid y_2 \\mid \\ldots \\mid y_m$<br/>where $x_i$, $y_i$ are in $(V\\cup T)^*$.<br/>Any derivation will start with $y_i$<br/>Then $G=(V\\cup \\{Z\\},T,S,P\\prime)$ and $P\\prime$ replaces rules of form above by<br/>$A \rightarrow y_i \\mid y_iZ, i = 1, 2, \\ldots, m$<br/>$Z \rightarrow x_i \\mid x_iZ, i = 1, 2, \\ldots, n$",
+        "question": "Consider this grammar:<br/>$E \\rightarrow E+T \\mid T$<br/>$T \\rightarrow T*F \\mid F$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>What about the variables $F$, and $I$",
+        "answer": "They will not change as they are not left-recursive",
+        "choices": ["They will not change as they are not left-recursive", "We should do the same"]
+      },
+      "q29":{
+        "type": "true/false",
+        "description": "The new expression grammar will be: $E\\rightarrow T\\mid TZ\\quad Z\\rightarrow+T\\mid +TZ$<br/>$T \\rightarrow F\\mid FY\\quad Y\\rightarrow *F\\mid *FY$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>Let us try to derive $a+b+a+a$ will give us $E \\Rightarrow TZ \\Rightarrow FZ \\Rightarrow IZ \\Rightarrow aZ$",
+        "question": "The modified grammar is better than the original one because it was able to derive the leftmost terminal in the string $a+b+a+a$",
+        "answer": "True",
+        "choices": []
+      },
+      "q30":{
+        "type": "true/false",
+        "description": "The new expression grammar will be: $E\\rightarrow T\\mid TZ\\quad Z\\rightarrow+T\\mid +TZ$<br/>$T \\rightarrow F\\mid FY\\quad Y\\rightarrow *F\\mid *FY$<br/>$F \\rightarrow I \\mid (E)$<br/>$I \\rightarrow a \\mid b$<br/>Let us try to derive $a+b+a+a$ will give us $E \\Rightarrow TZ \\Rightarrow FZ \\Rightarrow IZ \\Rightarrow aZ$",
+        "question": "The modified grammar is less powerful that the original grammar as it has more variables",
+        "answer": "False",
+        "choices": []
+      }
+
+    }
+  }
+}

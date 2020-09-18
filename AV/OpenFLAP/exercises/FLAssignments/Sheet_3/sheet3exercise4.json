@@ -1,10 +1,59 @@
 [{
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "exerciseType": "GRAMMAR",
+    "totalTrueCases": 8,
+    "totalFalseCases": 5,
+    "containLetters": ["a", "b"],
+    "randomStringLength": [0, 15],
+    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
+    "trueCounter": 8,
+    "falseCounter": 5,
+    "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
+    "generatorflag": 1,
     "expression": "",
     "description": "Give a right-linear grammar for the following NFA",
     "type": "description",
     "testCases": [{
-        "right-linear": true
-    }],
+            "right-linear": true
+        },
+        {
+            "": false
+        },
+        {
+            "aaaa": false
+        },
+        {
+            "a": true
+        },
+        {
+            "bb": true
+        },
+        {
+            "baa": false
+        },
+        {
+            "bbbb": true
+        },
+        {
+            "bbbbbb": true
+        },
+        {
+            "ababa": true
+        },
+        {
+            "bbb": false
+        },
+        {
+            "abbaa": true
+        },
+        {
+            "baaaaaab": true
+        },
+        {
+            "aababa": false
+        }
+
+    ],
     "graph": {
         "nodes": [{
                 "left": 7,

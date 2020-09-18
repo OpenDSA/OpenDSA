@@ -1,0 +1,55 @@
+{
+  "translations": {
+    "en": {
+      "q2": {
+        "type": "select",
+        "description":"In general, consider a DFAs with or without cycles.",
+        "question": "If there is no cycle, the language accepted must be",
+        "answer": "Finite",
+        "choices": ["Finite", "Infinite"]
+      },
+      "q3": {
+        "type": "select",
+        "description":"In general, consider a DFAs with or without cycles.",
+        "question": "If there is one or more cycle, the language accepted must be",
+        "answer": "Infinite",
+        "choices": ["Finite", "Infinite"]
+      },
+      "q4": {
+        "type": "select",
+        "description":"To explain the pumping concept, suppose that there is an exactly one cycle in the NFA.",
+        "question": "What can happened to that cycle?",
+        "answer": ["the cycle might be skipped", "the cycle might be executed once", "the cycle might be executed more than once"],
+        "choices": ["the cycle might be skipped", "the cycle might be executed once", "the cycle might be executed more than once"]
+      },
+      "q6": {
+        "type": "select",
+        "description":"Let us say that the part captured by the NFA before the loop is denoted by $w_1$, the part captured by loop is denoted by $v$, and the part captured after the cycle is denoted by $w_2$.",
+        "question": "What is the form that any string, $w$, accepted by this NFA when the cycle is executed exactly once?",
+        "answer": "$w = w_1vw_2$",
+        "choices": ["$w = w_1vw_2$", "$w = w_1w_2$", "$w = w_1v^2w_2$", "$w = w_1v^*w_2$"]
+      },
+      "q7": {
+        "type": "select",
+        "description":"Let us say that the part captured by the NFA before the loop is denoted by $w_1$, the part captured by loop is denoted by $v$, and the part captured after the cycle is denoted by $w_2$.",
+        "question": "What is the form that any string, $w$, accepted by this NFA when the cycle is skipped?",
+        "answer": "$w = w_1w_2$",
+        "choices": ["$w = w_1vw_2$", "$w = w_1w_2$", "$w = w_1v^2w_2$", "$w = w_1v^*w_2$"]
+      },
+      "q8": {
+        "type": "select",
+        "description":"Let us say that the part captured by the NFA before the loop is denoted by $w_1$, the part captured by loop is denoted by $v$, and the part captured after the cycle is denoted by $w_2$.",
+        "question": "What is the form that any string, $w$, accepted by this NFA when the cycle is executed twice?",
+        "answer": "$w = w_1v^2w_2$",
+        "choices": ["$w = w_1vw_2$", "$w = w_1w_2$", "$w = w_1v^2w_2$", "$w = w_1v^*w_2$"]
+      },
+      "q9": {
+        "type": "select",
+        "description":"Let us say that the part captured by the NFA before the loop is denoted by $w_1$, the part captured by loop is denoted by $v$, and the part captured after the cycle is denoted by $w_2$.",
+        "question": "In general, the NFA accepts all strings in the form",
+        "answer": "$w = w_1v^*w_2$",
+        "choices": ["$w = w_1vw_2$", "$w = w_1w_2$", "$w = w_1v^2w_2$", "$w = w_1v^*w_2$"]
+      }
+    }
+  }
+}

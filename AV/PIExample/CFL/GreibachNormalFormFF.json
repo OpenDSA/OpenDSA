@@ -1,0 +1,176 @@
+{
+  "translations": {
+    "en": {
+      "q2":{
+        "type": "select",
+        "description": "$\\textbf{Definition:}$ A CFG is in Greibach normal form (GNF) if all productions are of the form<br/>$A \\rightarrow ax$<br/>where $x \\in V^*$ and $a \\in T$",
+        "question": "What do we mean by $a$?",
+        "answer": "Single terminal",
+        "choices": ["Single terminal", "Zero or more terminals", "Single variable", "Zero or more variables"]
+      },
+      "q3":{
+        "type": "select",
+        "description": "$\\textbf{Definition:}$ A CFG is in Greibach normal form (GNF) if all productions are of the form<br/>$A \\rightarrow ax$<br/>where $x \\in V^*$ and $a \\in T$",
+        "question": "What do we mean by $x$?",
+        "answer": "Zero or more variables",
+        "choices": ["Single terminal", "Zero or more terminals", "Single variable", "Zero or more variables"]
+      },
+      "q4":{
+        "type": "select",
+        "description": "$\\textbf{Definition:}$ A CFG is in Greibach normal form (GNF) if all productions are of the form<br/>$A \\rightarrow ax$<br/>where $x \\in V^*$ and $a \\in T$",
+        "question": "We saw a similar type of grammars where every production start with single $\\textbf{unique}$ terminal, do you remember its name?",
+        "answer": "S-Grammar or Simple-Grammar",
+        "choices": ["CFG", "S-Grammar or Simple-Grammar", "Linear Grammar", "Regular Grammar"]
+      },
+      "q5":{
+        "type": "true/false",
+        "description": "$\\textbf{Definition:}$ A CFG is in Greibach normal form (GNF) if all productions are of the form<br/>$A \\rightarrow ax$<br/>where $x \\in V^*$ and $a \\in T$",
+        "question": "The benifit of having a terminal is that you wouldn’t have to backtrack (only one choice to match the derivation of a string). So it very restrictive.",
+        "answer": "True",
+        "choices": []
+      },
+      "q7":{
+        "type": "true/false",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "CNF is an abbreviation for Chomsky Normal Form?",
+        "answer": "True",
+        "choices": []
+      },
+      "q8":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Which of the following productions are in CNF?",
+        "answer": ["$S \\rightarrow a$", "$S \\rightarrow BC$"],
+        "choices": ["$S \\rightarrow \\lambda$", "$S \\rightarrow a$", "$S \\rightarrow A$", "$S \\rightarrow BC$", "$S \\rightarrow aBC$"]
+      },
+      "q9":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Being in CNF means that the grammar must have no ...",
+        "answer": ["unit productions", "useless productions", "$\\lambda$-productions"],
+        "choices": ["unit productions", "useless productions", "$\\lambda$-productions"]
+      },
+      "q10":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Which of the following productions are $lambda$-productions?",
+        "answer": "$S \\rightarrow \\lambda$",
+        "choices": ["$S \\rightarrow \\lambda$", "$S \\rightarrow a$", "$S \\rightarrow A$", "$S \\rightarrow BC$", "$S \\rightarrow aBC$"]
+      },
+      "q11":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Which of the following productions are unit productions?",
+        "answer": "$S \\rightarrow A$",
+        "choices": ["$S \\rightarrow \\lambda$", "$S \\rightarrow a$", "$S \\rightarrow A$", "$S \\rightarrow BC$", "$S \\rightarrow aBC$"]
+      },
+      "q12":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Consider the highlighted production on the left, is that production is in CNF?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q13":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Consider the highlighted production on the left, is that production is in CNF?",
+        "answer": "No, we should change the RHS to be $A\\ C_1$ and add new production $C_1 \\rightarrow a$",
+        "choices": ["Yes", "No, we should change the RHS to be $A\\ C_1$ and add new production $C_1 \\rightarrow a$"]
+      },
+      "q14":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Consider the highlighted production on the left, is that production is in CNF?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q15":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Consider the highlighted production on the left, is that production is in CNF?",
+        "answer": "No, we should change the RHS to be $C_2\\ A$ and add new production $C_2 \\rightarrow c$",
+        "choices": ["Yes", "No, we should change the RHS to be $C_2\\ A$ and add new production $C_2 \\rightarrow c$"]
+      },
+      "q16":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Consider the highlighted production on the left, is that production is in CNF?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q17":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Consider the highlighted production on the left, is that production is in CNF?",
+        "answer": "No, we should change the RHS to be $A\\ C_3$ and add new production $C_3 \\rightarrow d$",
+        "choices": ["Yes", "No, we should change the RHS to be $A\\ C_3$ and add new production $C_3 \\rightarrow d$"]
+      },
+      "q18":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Consider the highlighted production on the left, is that production is in CNF?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q19":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.",
+        "question": "Is the Grammar in CNF?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q21":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.<br/>2. Relabel Variables $A_1, A_2, \\ldots A_n$<br/>3. Eliminate left recursion and use substitution to get all productions into the form:<br/>$\\quad A_i \\rightarrow A_jx_j, j > i$<br/>$\\quad Z_i \\rightarrow A_jx_j, j \\le n$<br/>$\\quad A_i \\rightarrow ax_i$<br/>where $a\\in T$, $x_i \\in V^*$, and $Z_i$ are new variables introduced for left recursion.",
+        "question": "Does this grammar contains left recursion?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q22":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.<br/>2. Relabel Variables $A_1, A_2, \\ldots A_n$<br/>3. Eliminate left recursion and use substitution to get all productions into the form:<br/>$\\quad A_i \\rightarrow A_jx_j, j > i$<br/>$\\quad Z_i \\rightarrow A_jx_j, j \\le n$<br/>$\\quad A_i \\rightarrow ax_i$<br/>where $a\\in T$, $x_i \\in V^*$, and $Z_i$ are new variables introduced for left recursion.<br/>All productions with $A_n$ are in the correct form, $A_n \\rightarrow ax_n$. Use these productions as substitutions to get $A_{n−1}$ productions in the correct form. Repeat with $A_{n−2}$, $A_{n−3}$, etc until all productions are in the correct form",
+        "question": "Look at the right hand side of all productions, which variable we should start to substitute in remaining productions?",
+        "answer": "$A_5$",
+        "choices": ["$A_1$", "$A_2$", "$A_3$", "$A_4$", "$A_5$", "$A_6$"]
+      },
+      "q23":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.<br/>2. Relabel Variables $A_1, A_2, \\ldots A_n$<br/>3. Eliminate left recursion and use substitution to get all productions into the form:<br/>$\\quad A_i \\rightarrow A_jx_j, j > i$<br/>$\\quad Z_i \\rightarrow A_jx_j, j \\le n$<br/>$\\quad A_i \\rightarrow ax_i$<br/>where $a\\in T$, $x_i \\in V^*$, and $Z_i$ are new variables introduced for left recursion.<br/>All productions with $A_n$ are in the correct form, $A_n \\rightarrow ax_n$. Use these productions as substitutions to get $A_{n−1}$ productions in the correct form. Repeat with $A_{n−2}$, $A_{n−3}$, etc until all productions are in the correct form",
+        "question": "Look at the right hand side of all productions, which variable we should start to substitute in remaining productions?",
+        "answer": "$A_2$",
+        "choices": ["$A_1$", "$A_2$", "$A_3$", "$A_4$", "$A_5$", "$A_6$"]
+      },
+      "q24":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.<br/>2. Relabel Variables $A_1, A_2, \\ldots A_n$<br/>3. Eliminate left recursion and use substitution to get all productions into the form:<br/>$\\quad A_i \\rightarrow A_jx_j, j > i$<br/>$\\quad Z_i \\rightarrow A_jx_j, j \\le n$<br/>$\\quad A_i \\rightarrow ax_i$<br/>where $a\\in T$, $x_i \\in V^*$, and $Z_i$ are new variables introduced for left recursion.<br/>All productions with $A_n$ are in the correct form, $A_n \\rightarrow ax_n$. Use these productions as substitutions to get $A_{n−1}$ productions in the correct form. Repeat with $A_{n−2}$, $A_{n−3}$, etc until all productions are in the correct form",
+        "question": "What will be the RHS for the heighlighted production?",
+        "answer": "$A_1 \\rightarrow cA_3\\quad A_1 \\rightarrow cA_2A_3$",
+        "choices": ["$A_1 \\rightarrow cA_3$", "$A_1 \\rightarrow cA_2A_3$", "$A_1 \\rightarrow cA_3\\quad A_1 \\rightarrow cA_2A_3$"]
+      },
+      "q25":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.<br/>2. Relabel Variables $A_1, A_2, \\ldots A_n$<br/>3. Eliminate left recursion and use substitution to get all productions into the form:<br/>$\\quad A_i \\rightarrow A_jx_j, j > i$<br/>$\\quad Z_i \\rightarrow A_jx_j, j \\le n$<br/>$\\quad A_i \\rightarrow ax_i$<br/>where $a\\in T$, $x_i \\in V^*$, and $Z_i$ are new variables introduced for left recursion.<br/>All productions with $A_n$ are in the correct form, $A_n \\rightarrow ax_n$. Use these productions as substitutions to get $A_{n−1}$ productions in the correct form. Repeat with $A_{n−2}$, $A_{n−3}$, etc until all productions are in the correct form",
+        "question": "What will be the RHS for the heighlighted production?",
+        "answer": "$A_1 \\rightarrow cA_4\\quad A_1 \\rightarrow cA_2A_4$",
+        "choices": ["$A_1 \\rightarrow cA_4$", "$A_1 \\rightarrow cA_2A_4$", "$A_1 \\rightarrow cA_4\\quad A_1 \\rightarrow cA_2A_4$"]
+      },
+      "q26":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.<br/>2. Relabel Variables $A_1, A_2, \\ldots A_n$<br/>3. Eliminate left recursion and use substitution to get all productions into the form:<br/>$\\quad A_i \\rightarrow A_jx_j, j > i$<br/>$\\quad Z_i \\rightarrow A_jx_j, j \\le n$<br/>$\\quad A_i \\rightarrow ax_i$<br/>where $a\\in T$, $x_i \\in V^*$, and $Z_i$ are new variables introduced for left recursion.<br/>All productions with $A_n$ are in the correct form, $A_n \\rightarrow ax_n$. Use these productions as substitutions to get $A_{n−1}$ productions in the correct form. Repeat with $A_{n−2}$, $A_{n−3}$, etc until all productions are in the correct form",
+        "question": "What will be the RHS for the heighlighted production?",
+        "answer": "$A_3 \\rightarrow cA_6\\quad A_3 \\rightarrow cA_2A_6$",
+        "choices": ["$A_3 \\rightarrow cA_6$", "$A_3 \\rightarrow cA_2A_6$", "$A_3 \\rightarrow cA_6\\quad A_3 \\rightarrow cA_2A_6$"]
+      },
+      "q27":{
+        "type": "select",
+        "description": "$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.<br/>2. Relabel Variables $A_1, A_2, \\ldots A_n$<br/>3. Eliminate left recursion and use substitution to get all productions into the form:<br/>$\\quad A_i \\rightarrow A_jx_j, j > i$<br/>$\\quad Z_i \\rightarrow A_jx_j, j \\le n$<br/>$\\quad A_i \\rightarrow ax_i$<br/>where $a\\in T$, $x_i \\in V^*$, and $Z_i$ are new variables introduced for left recursion.<br/>All productions with $A_n$ are in the correct form, $A_n \\rightarrow ax_n$. Use these productions as substitutions to get $A_{n−1}$ productions in the correct form. Repeat with $A_{n−2}$, $A_{n−3}$, etc until all productions are in the correct form",
+        "question": "Are we done?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      }
+
+
+    }
+  }
+}

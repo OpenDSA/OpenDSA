@@ -3,7 +3,7 @@
  *
  * Container ID: promoteCON
  */
-(function () {
+$(document).ready(function() {
   "use strict";
   var jsav = new JSAV("promoteCON");
 
@@ -100,4 +100,4 @@
   // Mark the slide show as finished.
   jsav.recorded();
 
-}());
+});

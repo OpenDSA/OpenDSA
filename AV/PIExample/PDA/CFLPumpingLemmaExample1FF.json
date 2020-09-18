@@ -1,0 +1,202 @@
+{
+  "translations": {
+    "en": {
+      "q2": {
+        "type": "select",
+        "description": "Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not a CFL",
+        "question": "What is the first step?.",
+        "answer": "Assume that $L$ is a CFL",
+        "choices": ["Assume that $L$ is a CFL", "Assume that $L$ is not a CFL"]
+      },
+      "q3": {
+        "type": "true/false",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL.",
+        "question": "[T|F] Since $L$ is CFL, the pumping lemma holds",
+        "answer": "True",
+        "choices": []
+      },
+      "q4": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "Based on the Pumping Lemma, what is the main condition for the length of the string $w$?",
+        "answer": "$|w| \\ge m$",
+        "choices": ["$|w| \\ge m$", "$|w| \\le m$", "$|w| = m$"]
+      },
+      "q5": {
+        "type": "true/false",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "Based on the Pumping Lemma, $m$ is the number of states for any PDA that recognize $L$.",
+        "answer": "True",
+        "choices": []
+      },
+      "q6": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "Which of the following is a correct string $\\in L$?",
+        "answer": "$w = a^mb^mc^m$",
+        "choices": ["$w = a^mb^mc^m$", "$w = a^mb^nc^k$", "$w = a^mb^mc^k$"]
+      },
+      "q7": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n | n \\geq 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "What is the length of $a^mb^mc^m$?",
+        "answer": "$3m$",
+        "choices": ["$2m$", "$m$", "$3m$"]
+      },
+      "q8": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w=a^mb^mc^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ to...?",
+        "answer": "$uvxyz$",
+        "choices": ["$xyz$", "$uvxyz$"]
+      },
+      "q9": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w=a^mb^mc^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ to $uvxyz$. What does $u$ represent?",
+        "answer": "Part of the string that is captured by the PDA before the first pump",
+        "choices": ["Part of the string that is captured by the PDA before the first pump", "Part of the string that is captured by the PDA before the second pump and after the first pump", "Part of the string that is captured by the PDA after the second pump", "part of the string that is captured by the first pump (cycle)", "part of the string that is captured by the second pump (cycle)"]
+      },
+      "q10": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w=a^mb^mc^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ to $uvxyz$. What does $v$ represent?",
+        "answer": "part of the string that is captured by the first pump (cycle)",
+        "choices": ["Part of the string that is captured by the PDA before the first pump", "Part of the string that is captured by the PDA before the second pump and after the first pump", "Part of the string that is captured by the PDA after the second pump", "part of the string that is captured by the first pump (cycle)", "part of the string that is captured by the second pump (cycle)"]
+      },
+      "q11": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w=a^mb^mc^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ to $uvxyz$. What does $x$ represent?",
+        "answer": "Part of the string that is captured by the PDA before the second pump and after the first pump",
+        "choices": ["Part of the string that is captured by the PDA before the first pump", "Part of the string that is captured by the PDA before the second pump and after the first pump", "Part of the string that is captured by the PDA after the second pump", "part of the string that is captured by the first pump (cycle)", "part of the string that is captured by the second pump (cycle)"]
+      },
+      "q12": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w=a^mb^mc^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ to $uvxyz$. What does $y$ represent?",
+        "answer": "part of the string that is captured by the second pump (cycle)",
+        "choices": ["Part of the string that is captured by the PDA before the first pump", "Part of the string that is captured by the PDA before the second pump and after the first pump", "Part of the string that is captured by the PDA after the second pump", "part of the string that is captured by the first pump (cycle)", "part of the string that is captured by the second pump (cycle)"]
+      },
+      "q13": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w=a^mb^mc^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ to $uvxyz$. What does $z$ represent?",
+        "answer": "Part of the string that is captured by the PDA after the second pump",
+        "choices": ["Part of the string that is captured by the PDA before the first pump", "Part of the string that is captured by the PDA before the second pump and after the first pump", "Part of the string that is captured by the PDA after the second pump", "part of the string that is captured by the first pump (cycle)", "part of the string that is captured by the second pump (cycle)"]
+      },
+      "q14": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w=a^mb^mc^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "Based on the Pumping Lemma, what are the main conditions to successfully decomposing $w$ to $uvxyz$?",
+        "answer": ["$|vxy| \\le m$", "$|vy| \\geq 1$", "$uv^ixy^iz \\in L$ for all $i \\ge 0$"],
+        "choices": ["$|vxy| \\le m$", "$|vy| \\geq 1$", "$uv^ixy^iz \\in L$ for all $i \\ge 0$"]
+      },
+      "q15": {
+        "type": "select",
+        "description":"The first condition that we need to think about is $|vxy| \\le m$. This condition means that we must test every possible $m$ letters substring in $w$",
+        "question": "Think about $w = a^mb^mc^m$, select the distincted substrings with length $\\le m$",
+        "answer": ["substring of $a\\prime$s only", "substring of some $a\\prime$s followed by some $b\\prime$s", "substring of $b\\prime$s only", "substring of some $b\\prime$s followed by some $c\\prime$s", "substring of $c\\prime$s only"],
+        "choices": ["substring of $a\\prime$s only", "substring of some $a\\prime$s followed by some $b\\prime$s", "substring of $b\\prime$s only", "substring of some $b\\prime$s followed by some $c\\prime$s", "substring of $c\\prime$s only", "substring of a's followed by b's followed by c's"]
+      },
+      "q16": {
+        "type": "select",
+        "description":"The first condition that we need to think about is $|vxy| \\le m$. This condition means that we must test every possible $m$ letters substring in $w$",
+        "question": "Think about $w = a^mb^mc^m$, the substring of a's followed by b's followed by c's is not a valid substring for the pumping lemma as the length of that substring is $>m$",
+        "answer": "True",
+        "choices": []
+      },
+      "q17": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 1:}$ $vxy$ is $a$'s only, let $u = a^{t_1}$ and $v = a^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
+        "answer": "$a^{m+t_1+t_2}b^mc^m$",
+        "choices": ["$a^{m+t_1+t_2}b^mc^m$", "$a^{m+t_1}b^mc^m$", "$a^{m+t_2}b^mc^m$"]
+      },
+      "q18": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 1:}$ $vxy$ is $a$'s only, let $u = a^{t_1}$ and $v = a^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "question": "Is $a^{m+t_1+t_2}b^mc^m$ $\\in L$?",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      },
+      "q19": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 2:}$ $vxy$ is some $a$'s followed by some $b$'s, let $u = a^{t_1}$ and $v = b^{t_3}$",
+        "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
+        "answer": "$a^{m+t_1}b^{m + t_3}c^m$",
+        "choices": ["$a^{m+t_1}b^{m + t_3}c^m$", "$a^{m+t_1 + t_2}b^{m + t_3}c^m$", "$a^{m}b^{m + t_1 + t_3}c^m$"]
+      },
+      "q20": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 2:}$ $vxy$ is some $a$'s followed by some $b$'s, let $u = a^{t_1}$ and $v = b^{t_3}$",
+        "question": "Is $a^{m+t_1}b^{m + t_3}c^m$ $\\in L$?",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      },
+      "q21": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 3:}$ $vxy$ is $b$'s only, let $u = b^{t_1}$ and $v = b^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
+        "answer": "$a^mb^{m+t_1+t_2}c^m$",
+        "choices": ["$a^mb^{m+t_1+t_2}c^m$", "$a^mb^{m+t_2}c^m$", "$a^mb^{m+t_1}c^m$"]
+      },
+      "q22": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 3:}$ $vxy$ is $b$'s only, let $u = b^{t_1}$ and $v = b^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "question": "Is $a^mb^{m+t_1+t_2}c^m$ $\\in L$?",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      },
+      "q23": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 4:}$ $vxy$ is some $b$'s followed by some $c$'s, let $u = b^{t_1}$ and $v = c^{t_3}$",
+        "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
+        "answer": "$a^mb^{m+t_1}c^{m + t_3}$",
+        "choices": ["$a^mb^{m+t_1}c^{m + t_3}$", "$a^mb^{m+t_1 + t_3}c^{m}$", "$a^mb^{m}c^{m + t_1 + t_3}$"]
+      },
+      "q24": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 4:}$ $vxy$ is some $b$'s followed by some $c$'s, let $u = b^{t_1}$ and $v = c^{t_3}$",
+        "question": "Is $a^mb^{m+t_1}c^{m + t_3}$ $\\in L$?",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      },
+      "q25": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 5:}$ $vxy$ is $c$'s only, let $u = c^{t_1}$ and $v = c^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
+        "answer": "$a^mb^mc^{m+t_1+t_2}$",
+        "choices": ["$a^mb^mc^{m+t_1+t_2}$", "$a^mb^mc^{m+t_2}$", "$a^mb^mc^{m+t_1}$"]
+      },
+      "q26": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 5:}$ $vxy$ is $c$'s only, let $u = c^{t_1}$ and $v = c^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "question": "Is $a^mb^mc^{m+t_1+t_2}$ $\\in L$?",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      },
+      "q27": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 1:}$ $vxy$ is $a$'s only<br/>$\\textbf{Case 2:}$ $vxy$ is some $a$'s followed by some $b$'s<br/>$\\textbf{Case 3:}$ $vxy$ is $b$'s only<br/>$\\textbf{Case 4:}$ $vxy$ is some $b$'s followed by some $c$'s<br/>$\\textbf{Case 5:}$ $vxy$ is $c$'s only",
+        "question": "Are we done from all cases?",
+        "answer": "No, there are some more cases",
+        "choices": ["No, there are some more cases", "Yes"]
+      },
+      "q28": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 1:}$ $vxy$ is $a$'s only<br/>$\\textbf{Case 2:}$ $vxy$ is some $a$'s followed by some $b$'s<br/>$\\textbf{Case 3:}$ $vxy$ is $b$'s only<br/>$\\textbf{Case 4:}$ $vxy$ is some $b$'s followed by some $c$'s<br/>$\\textbf{Case 5:}$ $vxy$ is $c$'s only",
+        "question": "Yes, we have cases where $u$ or $v$ contain 2 or more distinct symbols. If $v$ contains $a$ ‘s and $b$ ‘s, then $uv^2xy^2z \\notin L$",
+        "answer": "Yes, since there will be $b\\prime$s before $a\\prime$s",
+        "choices": ["No", "Yes, since there will be $b\\prime$s before $a\\prime$s"]
+      },
+      "q29": {
+        "type": "select",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$",
+        "question": "Now, is L CFL?",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      }
+    }
+  }
+}

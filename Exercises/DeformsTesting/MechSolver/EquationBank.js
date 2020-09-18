@@ -133,6 +133,7 @@ class EquationBank{
         // Creating the page objects (JSAV objects)
         var eqbank_ddl = document.createElement("select");
         eqbank_ddl.classList.add("equationPageTitle");
+        eqbank_ddl.id = "equationPageTitle";
 
         for(var pagename in this.equation_pages)
         {
@@ -254,7 +255,7 @@ class EquationBank{
                             else this.currentSelectedEquationObject = null;
                         }
                         else {
-                            console.log("Initial click on empty"); 
+                            // console.log("Initial click on empty"); 
                             e.target.dataset.status = 'yes';
                             this.currentSelectedEquationObject = {
                                 element: 
@@ -315,7 +316,10 @@ class EquationBank{
                 top: this.DIMENSIONS["POSITION_Y"]-16
             })
             .addClass("helpbutton")
-        
+        helpButton.element[0].addEventListener("click", e=> {
+            e.stopPropagation();
+            Window.showHelp("eqbank", e);
+        })
         // Add clickhandlers to the equations in the equation pages here, that pass the
         // the object back to a tracker variable in DeformsProblemPRO
         // TODO: Add these event handlers in a global context, or keep it local? because, this is
@@ -342,7 +346,7 @@ class EquationBank{
                 this.equation_pages[currentObj["group"]] = 
                 {
                     "pagetitlejsav": null,  // JSAV label for pagename
-                    "pagejsav": {},       // JSAV for the list; currently av.ds.array type
+                    "pagejsav": {},       // JSAV for the list;
                     "equations": {}          // actual list of equations
                          // Effectively a number and the object reference.
                         // The index itself draws from the index on the array for that page.
@@ -409,7 +413,7 @@ class EquationBank{
                     else this.currentSelectedEquationObject = null;
                 }
                 else {
-                    console.log("Initial click on empty"); 
+                    // console.log("Initial click on empty"); 
                     e.target.dataset.status = 'yes';
                     this.currentSelectedEquationObject = {
                         element: 

@@ -3319,9 +3319,9 @@ $(document).ready(function () {
       
       $('.jsavmatrix').addClass("editMode");
 
-      var exercise = jsav.flexercise(modelSolution, initializeGrammarExercise,
-        {feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController});
-      exercise.reset();
+     var exercise = jsav.flexercise(modelSolution, initializeGrammarExercise, 
+     {feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController}); 
+     exercise.reset();
 
     } 
     else if (type == "transformation") {//grammar transformation exercise

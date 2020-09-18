@@ -1,0 +1,105 @@
+{
+  "translations": {
+    "en": {
+      "q2": {
+        "type": "select",
+        "description": "We need a tool that helps us to identify if a language is not CFL.",
+        "question": "How can we determine if a language is CFL?",
+        "answer": ["Write CFG", "Build a PDA"],
+        "choices": ["Write CFG", "Build a PDA", "Prove that the language is not Regular"]
+      },
+      "q3": {
+        "type": "select",
+        "description": "We need a tool that helps us to identify if a language is not CFL.",
+        "question": "Recall the Regular Languages, how can we prove that a language is not Regular?",
+        "answer": "Use the Pumping Lemma proofs",
+        "choices": ["Use the Pumping Lemma proofs", "Write a CFG for the language"]
+      },
+      "q4": {
+        "type": "select",
+        "description": "We need a tool that helps us to identify if a language is not CFL.",
+        "question": "Suppose that we have $L = \\{a^nb^nc^j \\mid 0 < n\\le j\\}$. Is $L$ regular?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q5": {
+        "type": "select",
+        "description": "We need a tool that helps us to identify if a language is not CFL.",
+        "question": "Suppose that we have $L = \\{a^nb^ja^nb^j \\mid n>0, j>0\\}$. Is $L$ regular?",
+        "answer": "No, after we push $a\\prime$s then $b\\prime$s, we need to pop the $a$\\prime$s from the buttom of the stack. This is impossible",
+        "choices": ["Yes", "No, after we push $a\\prime$s then $b\\prime$s, we need to pop the $a$\\prime$s from the buttom of the stack. This is impossible"]
+      },
+      "q6": {
+        "type": "select",
+        "description": "We need a tool that helps us to identify if a language is not CFL.",
+        "question": "Suppose that we have $L = \\{a^nb^ja^kb^p \\mid n+j \\le k+p, n>0, j>0, k>0, p>0 \\}$. Is $L$ regular?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q7": {
+        "type": "select",
+        "description": "We need a tool that helps us to identify if a language is not CFL.",
+        "question": "Suppose that we have $L = \\{a^nb^ja^jb^n \\mid n>0, j>0\\}$. Is $L$ regular?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q8": {
+        "type": "select",
+        "description": "Similar to Regular Languages, to prove that a language is not CFL we need also a Pumping Lemma.",
+        "question": "Do you think that the same Pumping Lemma proof for regular languages can be used for CFL?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q9": {
+        "type": "select",
+        "description": "Let us recall the PL for regular languages. Let $L$ be a regular language, then there is a constant $m$ such that $w \\in L$, $|w|\\ge m$, $w=xyz$ such that<br/>$|xy| \\le m$<br/>$|y| \\ge 1$<br/>for all $i\\ge 0, xy^iz \\in L$",
+        "question": "$m$ represents an arbitrary number NFA that accepts $L$ if it is a Regular Language",
+        "answer": "True",
+        "choices": []
+      },
+      "q10": {
+        "type": "select",
+        "description": "Let us recall the PL for regular languages. Let $L$ be a regular language, then there is a constant $m$ such that $w \\in L$, $|w|\\ge m$, $w=xyz$ such that<br/>$|xy| \\le m$<br/>$|y| \\ge 1$<br/>for all $i\\ge 0, xy^iz \\in L$",
+        "question": "for all $i\\ge 0, xy^iz \\in L$, means that if $L$ is regular, then $y$ can pumped any number of times and resulting strings are in $L$",
+        "answer": "True",
+        "choices": []
+      },
+      "q11": {
+        "type": "select",
+        "description": "$\\textbf{Pumping Lemma for CFL’s}$<br/>Let L be any infinite CFL. Then there is a constant $m$ depending only on $L$, such that for every string $w$ in $L$, with $|w|\\ge m$, we may partition $w=uvxyz$ such that:",
+        "question": "What if $L$ is finite?",
+        "answer": "$L$ is regular",
+        "choices": ["$L$ is regular", "$L$ is CFL"]
+      },
+      "q12": {
+        "type": "select",
+        "description": "$\\textbf{Pumping Lemma for CFL’s}$<br/>Let L be any infinite CFL. Then there is a constant $m$ depending only on $L$, such that for every string $w$ in $L$, with $|w|\\ge m$, we may partition $w=uvxyz$ such that:",
+        "question": "What is the difference between PL for Regular languages and PL for CFL until now?",
+        "answer": "In PL for Regular Languages, $w$ is decomposed into $xyz$ but in PL for CFL $w$ is decomposed into $uvxyz$",
+        "choices": ["In PL for Regular Languages, $w$ is decomposed into $xyz$ but in PL for CFL $w$ is decomposed into $uvxyz$", "They are the same"]
+      },
+      "q13": {
+        "type": "select",
+        "description": "$\\textbf{Pumping Lemma for CFL’s}$<br/>Let L be any infinite CFL. Then there is a constant $m$ depending only on $L$, such that for every string $w$ in $L$, with $|w|\\ge m$, we may partition $w=uvxyz$ such that:<br/>$|vxy| \\le m$ , (limit on size of substring)<br/>$|vy| \\ge 1$, ($v$ and $y$ not both empty)<br/>For all $i \\ge 0$, $uv^ixy^iz \\in L$",
+        "question": "What is the difference between PL for Regular languages and PL for CFL until now?",
+        "answer": "In PL for Regular Languages, $w$ is decomposed into $xyz$ but in PL for CFL $w$ is decomposed into $uvxyz$",
+        "choices": ["In PL for Regular Languages, $w$ is decomposed into $xyz$ but in PL for CFL $w$ is decomposed into $uvxyz$", "They are the same"]
+      },
+      "q14": {
+        "type": "select",
+        "description": "$\\textbf{Pumping Lemma for CFL’s}$<br/>Let L be any infinite CFL. Then there is a constant $m$ depending only on $L$, such that for every string $w$ in $L$, with $|w|\\ge m$, we may partition $w=uvxyz$ such that:<br/>$|vxy| \\le m$ , (limit on size of substring)<br/>$|vy| \\ge 1$, ($v$ and $y$ not both empty)<br/>For all $i \\ge 0$, $uv^ixy^iz \\in L$",
+        "question": "For all $i \\ge 0$, $uv^ixy^iz \\in L$ means that in CFLs there should be 2 pumps $v$ and $y$",
+        "answer": "True",
+        "choices": []
+      },
+      "q15": {
+        "type": "select",
+        "description": "$\\textbf{Pumping Lemma for CFL’s}$<br/>Let L be any infinite CFL. Then there is a constant $m$ depending only on $L$, such that for every string $w$ in $L$, with $|w|\\ge m$, we may partition $w=uvxyz$ such that:<br/>$|vxy| \\le m$ , (limit on size of substring)<br/>$|vy| \\ge 1$, ($v$ and $y$ not both empty)<br/>For all $i \\ge 0$, $uv^ixy^iz \\in L$",
+        "question": "Thinking about the stack in PDAs, we always need to loops (pumps) one of them to push letters to the stack and the other pump to empty the stack",
+        "answer": "True",
+        "choices": []
+      }
+      
+    }
+  }
+}

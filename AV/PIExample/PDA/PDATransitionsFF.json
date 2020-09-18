@@ -1,0 +1,109 @@
+{
+  "translations": {
+    "en": {
+      "q2": {
+        "type": "true/false",
+        "description": "In this part, we will study the transition function for Pushdown Automata.",
+        "question": "A PDA has a form of memory",
+        "answer": [
+          "True"
+        ],
+        "choices": []
+      },
+      "q3": {
+        "type": "select",
+        "description": "In this part, we will study the transition function for Pushdown Automata.",
+        "question": "What is the memory type the PDA has?",
+        "answer": "Stack",
+        "choices": [
+          "Stack",
+          "Tape"
+        ]
+      },
+      "q5": {
+        "type": "true/false",
+        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either",
+        "question": "PDAs always pop the top of the stack in every transition.",
+        "answer": "True",
+        "choices":[]
+      },
+      "q6": {
+        "type": "select",
+        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack",
+        "question": "Does the stack status changed before and after this transition?",
+        "answer": "No",
+        "choices":["No", "Yes"]
+      },
+      "q7": {
+        "type": "select",
+        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.",
+        "question": "Does the stack status changed before and after this transition?",
+        "answer": "Yes",
+        "choices":["No", "Yes"]
+      },
+      "q8": {
+        "type": "select",
+        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.",
+        "question": "What will be the top of the stack?",
+        "answer": "a",
+        "choices":["a", "b"]
+      },
+      "q9": {
+        "type": "select",
+        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.<br/>3. go to $q_3$ and do not push any thing to the stack",
+        "question": "Does the stack status changed before and after this transition?",
+        "answer": "Yes",
+        "choices":["No", "Yes"]
+      },
+      "q10": {
+        "type": "true/false",
+        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.<br/>3. go to $q_3$ and do not push any thing to the stack",
+        "question": "$\\lambda$ in $\\delta(q_0, a, b) = \\{(q_3, \\lambda)\\}$ means do push anything to the stack",
+        "answer": "True",
+        "choices":[]
+      },
+      "q11": {
+        "type": "select",
+        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Each arc is labeled by a triple $<x, y; z>$",
+        "question": "Looking at the transition function and the graph on the left, what $x$ represent?",
+        "answer": "the input letter",
+        "choices":["the input letter", "the top of the stack", "the string that is pushed onto the stack"]
+      },
+      "q12": {
+        "type": "select",
+        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Each arc is labeled by a triple $<x, y; z>$",
+        "question": "Looking at the transition function and the graph on the left, what $y$ represent?",
+        "answer": "the top of the stack",
+        "choices":["the input letter", "the top of the stack", "the string that is pushed onto the stack"]
+      },
+      "q13": {
+        "type": "select",
+        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Each arc is labeled by a triple $<x, y; z>$",
+        "question": "Looking at the transition function and the graph on the left, what $z$ represent?",
+        "answer": "the string that is pushed onto the stack",
+        "choices":["the input letter", "the top of the stack", "the string that is pushed onto the stack"]
+      },
+      "q15": {
+        "type": "true/false",
+        "description": "$\\textbf{Description of a Move:}$ A move means one transition in the PDA. We describe a move in the form:<br/>$(q_1, aw, bx) \\vdash (q_2, w, yx)\\quad$ iff $(q_2, y) \\in \\delta(q_1, a, b)$",
+        "question": "The change from $q_1$ to $q_2$ means that the machine moved from $q_1$ to $q_2$",
+        "answer": "True",
+        "choices":[]
+      },
+      "q16": {
+        "type": "true/false",
+        "description": "$\\textbf{Description of a Move:}$ A move means one transition in the PDA. We describe a move in the form:<br/>$(q_1, aw, bx) \\vdash (q_2, w, yx)\\quad$ iff $(q_2, y) \\in \\delta(q_1, a, b)$",
+        "question": "The change from $aw$ to $w$ means that the machine read and consumed the input letter $a$",
+        "answer": "True",
+        "choices":[]
+      },
+      "q17": {
+        "type": "select",
+        "description": "$\\textbf{Description of a Move:}$ A move means one transition in the PDA. We describe a move in the form:<br/>$(q_1, aw, bx) \\vdash (q_2, w, yx)\\quad$ iff $(q_2, y) \\in \\delta(q_1, a, b)$",
+        "question": "The change from $bx$ to $yx$ means that the machine changed ",
+        "answer": "the stack contents",
+        "choices":["the stack contents", "the state", "the input"]
+      }
+    }
+  }
+}

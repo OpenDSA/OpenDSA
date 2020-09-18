@@ -1,7 +1,7 @@
 .jsavcanvas {
     display: grid;
     width: 767px;
-    height: 1400px;
+    height: 600px;
     grid-template-columns: 500px 110px;
     grid-template-areas: "workspace equations";
 }
@@ -17,6 +17,18 @@
 
 .jsavdialog.ui-draggable > ul > li:hover {
     background-color: orange !important;
+}
+
+.jsavdialog.ui-draggable > p {
+    margin: 5px;
+}
+
+.jsavdialog.ui-draggable > hr {
+    margin: 20px 0px 20px 0px;
+}
+
+.jsavdialog.ui-draggable > div > p {
+    margin: 5px;
 }
 
 /* #equationbox {

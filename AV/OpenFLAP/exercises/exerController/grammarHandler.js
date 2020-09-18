@@ -1,3 +1,4 @@
+var testCaseList4 = [];
 /**
  * find all grammars that have same left hand variable
  *
@@ -91,7 +92,6 @@ var finalCheck = false;
 
 function grammarTrav(rule, string, flag, key, pos) {
   var backupPos = pos;
-
   var keyPackage = findSameKey(rule, key);
   var backRem = rem;
   for (var i = 0; i < keyPackage.length; i++) {
@@ -105,6 +105,7 @@ function grammarTrav(rule, string, flag, key, pos) {
     if (aftClean[1] != 'False' && aftClean[0] != 'False') {
       string = aftClean[1];
       tempRule = aftClean[0];
+      specialCase = true;
     } else {
       continue;
     }
@@ -144,7 +145,7 @@ function grammarTrav(rule, string, flag, key, pos) {
       break;
     }
   }
-  if (pos == string.length) {
+  if (pos == string.length && specialCase) {
     if (pos == 0) {
       finalCheck = true;
     }
@@ -154,7 +155,14 @@ function grammarTrav(rule, string, flag, key, pos) {
   }
 }
 
-
+function loopkey(testCases, str) {
+  for (var name in testCases) {
+    if (Object.keys(testCases[name]) == str) {
+      return true;
+    }
+  }
+  return false;
+}
 
 /**
  * add string to testCases
@@ -169,23 +177,22 @@ function grammarTrav(rule, string, flag, key, pos) {
 function gramAdd(testCase, result, str) {
   if (testCase.testCases.indexOf(str) == -1) {
     if (result) {
-      if (trueCounter < trueStringLimit) {
+      if (trueCounter < trueStringLimit && !loopkey(testCaseList4, str)) {
+        testCaseList4.push(str);
         addtoTestCase(str, testCase, 1);
         trueCounter++;
       }
     } else {
-      if (falseCounter < falseStringLimit) {
+      if (falseCounter < falseStringLimit && !loopkey(testCaseList4, str)) {
+        testCaseList4.push(str);
         addtoTestCase(str, testCase, 0);
         falseCounter++;
-
       }
     }
   }
 }
 
-
-
-
+var specialCase
 /**
  * Grammar traverse start funtion. 
  *
@@ -196,8 +203,13 @@ function gramAdd(testCase, result, str) {
  */
 function graHandler(testCase, flag, string) {
   var rule = testCase.solution;
+  testCaseList4 = testCase.testCases
   var key = 'S';
   finalCheck = false;
+  if (string == "") {
+    specialCase = false;
+  }
+
   grammarTrav(rule, string, flag, key, 0);
   rem = '';
   gramAdd(testCase, finalCheck, string);

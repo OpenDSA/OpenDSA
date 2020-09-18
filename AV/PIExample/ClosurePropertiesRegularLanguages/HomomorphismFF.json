@@ -1,0 +1,62 @@
+{
+  "translations": {
+    "en": {
+      "q4": {
+        "type": "multiple",
+        "description": "Example, \\Sigma=\\{a, b, c\\}, \\Gamma = \\{0,1\\}, the homomorphism function is defined as: $h(a) = 11$, $h(b) = 00$, and $h(c) = 0$",
+        "question": "What is the value of h(bc)?",
+        "answer": "$000$",
+        "choices": ["$11$", "$00$", "$0$", "$000$", "$1100$", "$1100^*$"]
+      },
+      "q5": {
+        "type": "multiple",
+        "description": "Example, \\Sigma=\\{a, b, c\\}, \\Gamma = \\{0,1\\}, the homomorphism function is defined as: $h(a) = 11$, $h(b) = 00$, and $h(c) = 0$",
+        "question": "What is the value of h(ab^*)?",
+        "answer": "$1100^*$",
+        "choices": ["$11$", "$00$", "$0$", "$000$", "$1100$", "$1100^*$"]
+      },
+      "q6": {
+        "type": "multiple",
+        "description": "Example, \\Sigma=\\{a, b\\}, \\Gamma = \\{a,b,c\\}, the homomorphism function is defined as: $h(a) = ab$, $h(b) = bbc$",
+        "question": "What is the value of h(aa)?",
+        "answer": "$abab$",
+        "choices": ["$ab$", "$bbc$", "$abbbcab$", "$bbcad$", "$abbbc$", "$abab$"]
+      },
+      "q7": {
+        "type": "multiple",
+        "description": "Example, \\Sigma=\\{a, b\\}, \\Gamma = \\{a,b,c\\}, the homomorphism function is defined as: $h(a) = ab$, $h(b) = bbc$",
+        "question": "What is the value of h(aba)?",
+        "answer": "$abbbcab$",
+        "choices": ["$ab$", "$bbc$", "$abbbcab$", "$bbcad$", "$abbbc$", "$abab$"]
+      },
+      "q8": {
+        "type": "multiple",
+        "description": "Example, \\Sigma=\\{0, 1\\}, \\Gamma = \\{a, b\\}, the homomorphism function is defined as: $h(0) = ab$, $h(1) = \\lambda$",
+        "question": "What is the value of h(01010)?",
+        "answer": "$ababab$",
+        "choices": ["$ab$", "$bb$", "$ababab$", "$bbad$", "$abbb$", "$abab$"]
+      },
+      "q11": {
+        "type": "multiple",
+        "description": "Example, \\Sigma=\\{a, b\\}, \\Gamma = \\{b, c, d\\}, the homomorphism function is defined as: $h(a) = db$, $h(b) = cc$",
+        "question": "What is the value of $h((a + b^*)^*)$?",
+        "answer": "$(db + (cc)^*)^*$",
+        "choices": ["$(a + b^*)^*$", "$(db + b^*)^*$", "$(db + c^*)^*$", "$(db + (cc)^*)^*$"]
+      },
+      "q12": {
+        "type": "multiple",
+        "description": "Example, \\Sigma=\\{a, b\\}, \\Gamma = \\{b, c, d\\}, the homomorphism function is defined as: $h(a) = db$, $h(b) = cc$",
+        "question": "[T|F]The result for $h((a + b^*)^*)$ is a regular expression.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "q13": {
+        "type": "multiple",
+        "description": "Example, \\Sigma=\\{a, b\\}, \\Gamma = \\{b, c, d\\}, the homomorphism function is defined as: $h(a) = db$, $h(b) = cc$",
+        "question": "[T|F]The resulting language is regular.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      }
+    }
+  }
+}

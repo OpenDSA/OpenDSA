@@ -49,10 +49,10 @@ Recursion Programming Exercise: Cummulative Sum
 .. extrtoolembed:: 'Recursion Programming Exercise: Cummulative Sum'
 
 
-Recursion Programming Exercise: Add odd positions
--------------------------------------------------
+Recursion Programming Exercise: Add odd values
+----------------------------------------------
 
-.. extrtoolembed:: 'Recursion Programming Exercise: Add odd positions'
+.. extrtoolembed:: 'Recursion Programming Exercise: Add odd values'
 
 
 Recursion Programming Exercise: Sum Of the Digits

@@ -76,6 +76,12 @@ if computational complexity is a concern, should be changed to use a union-find 
 	function initializeBT() {
 		$('#editable').empty();
 		bt = jsav.ds.tree();
+		var OStype = window.navigator.platform.toLowerCase();
+		if (OStype.indexOf('mac') > -1) {
+			bt.getSvg().canvas.style.position = "relative";
+	  	} 
+		else
+			bt.getSvg().canvas.style.position = "absolute";
 		addTrapState();
 		var val = [],
 			finals = [],

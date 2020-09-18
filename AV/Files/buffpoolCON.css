@@ -1,17 +1,17 @@
 #buffintroCON {
-  height: 465px;
+  height: 485px;
 }
 
 #LRUCON {
-  height: 465px;
+  height: 485px;
 }
 
 #LRUwriteCON {
-  height: 500px;
+  height: 510px;
 }
 
 #LRUwriteCON .jsavline {
-  height: 90px;
+  height: 100px;
 }
 
 .jsavverticalarray .jsavnode.buffer {

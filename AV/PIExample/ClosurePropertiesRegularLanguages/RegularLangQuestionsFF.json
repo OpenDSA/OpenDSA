@@ -1,0 +1,13 @@
+{
+  "translations": {
+    "en": {
+      "q4": {
+        "type": "multiple",
+        "description": "Example, \\Sigma=\\{a, b, c\\}, \\Gamma = \\{0,1\\}, the homomorphism function is defined as: $h(a) = 11$, $h(b) = 00$, and $h(c) = 0$",
+        "question": "What is the value of h(bc)?",
+        "answer": "$000$",
+        "choices": ["$11$", "$00$", "$0$", "$000$", "$1100$", "$1100^*$"]
+      }
+    }
+  }
+}
