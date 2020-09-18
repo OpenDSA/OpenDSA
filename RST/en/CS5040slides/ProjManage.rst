@@ -202,16 +202,16 @@ Project Management
 
    | Big positive effect with milestones (S16) vs without (F14)
 
-   ====  ===   ===
-         S16   F14
-   ====  ===   ===
-   A     43%   23%
-   B     16%   22%
-   C     11%   11%
-   D/C-   8%    6%
-   F      4%    5%
-   Drop  19%   33%
-   ====  ===   ===
+   =====  ===   ===
+   Grade  F14   S16
+   =====  ===   ===
+   A      23%   43%
+   B      22%   16%
+   C      11%   11%
+   C-/D    6%    8%
+   F       5%    4%
+   Drop   33%   19%
+   =====  ===   ===
 
 
 .. slide:: Working with a Partner (1)
