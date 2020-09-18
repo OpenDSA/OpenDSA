@@ -42,10 +42,10 @@ Introduction
 
 .. slide:: Data Structure
 
-   * A data structure is the physical implementation of an ADT.
+   * A data structure is the physical implementation of an *Abstract Datatype* (ADT).
       * Each operation associated with the ADT is implemented by one
         or more subroutines in the implementation.
-   * Data structure usually refers to an organization for data in main
+   * "Data structure" usually refers to an organization for data in main
      memory.
    * File structure: an organization for data on peripheral storage, such
      as a disk drive.
