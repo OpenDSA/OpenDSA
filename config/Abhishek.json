@@ -1,6 +1,42 @@
 {
-  "name": "config",
-  "version": "1.0.0",
-  "dependencies": {
+  "title": "Dynamic Programming",
+  "desc": "For testing purposes only.",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "build_cmap": false,
+  "suppress_todo": true,
+  "dispModComp": true,
+  "tag": "CPP;CS2",
+
+  "chapters": {
+    "Stuff": {
+      "Abhishek/DynamicProgramming": {}
+    }
   }
 }
