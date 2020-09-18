@@ -3,6 +3,7 @@
   "desc": "Testing interactive exercises for solving deforms problems",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
+  "lang": "en",
   "code_lang": {
     "Java": {
       "ext": [
@@ -66,16 +67,16 @@
       "DeformsTesting/DeformsExample": {},
       "DeformsTesting/DeformsModerateExample": {},
       "DeformsTesting/DeformsDifficultExample": {},
-      "DeformsTesting/deformsf2020-p1": {},
-      "DeformsTesting/deformsf2020-p2": {},
-      "DeformsTesting/deformsf2020-p3": {},
-      "DeformsTesting/deformsf2020-p4": {},
-      "DeformsTesting/deformsf2020-p5": {},
-      "DeformsTesting/deformsf2020-p6": {},
-      "DeformsTesting/deformsf2020-p7": {},
-      "DeformsTesting/deformsf2020-p8": {},
-      "DeformsTesting/deformsf2020-p9": {},
-      "DeformsTesting/deformsf2020-p10": {}
+      "DeformsTesting/deformsf2020p1": {},
+      "DeformsTesting/deformsf2020p2": {},
+      "DeformsTesting/deformsf2020p3": {},
+      "DeformsTesting/deformsf2020p4": {},
+      "DeformsTesting/deformsf2020p5": {},
+      "DeformsTesting/deformsf2020p6": {},
+      "DeformsTesting/deformsf2020p7": {},
+      "DeformsTesting/deformsf2020p8": {},
+      "DeformsTesting/deformsf2020p9": {},
+      "DeformsTesting/deformsf2020p10": {}
     }
   }
 }

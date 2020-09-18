@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="jsav math MechSolverCommon">
 <head>
-  <title>Problem 6</title>
+  <title>Problem 5</title>
   <script src="./mathjs.js" type="text/javascript"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
   <script src="../../khan-exercises/local-only/main.js"></script>
@@ -9,60 +9,86 @@
   <style></style>
 </head>
 
-<body data-height="860" data-width="965" data-vertical-scrolling="yes">
+<body data-height="400" data-width="970" data-canvas-height="1000">
   <div class="exercise">
     <div class="vars">
-      <var id="JSAV">mechSolverCommon.initJSAV("f2020p6PPRO","SI")</var>
+      <var id="JSAV">mechSolverCommon.initJSAV("f2020p5PPRO","SI",1000)</var>
     </div>
 
     <div class="problems">
-      <div id="f2020p6PPROp">
+      <div id="f2020p5PPROp">
         <p class="problem">
-          A solid circular shaft of
+            A
 
-          <span class="param" id="param" 
-          data-value="1" 
-          data-unit="in" 
-          data-value-display="1"
-          data-unit-display="in" 
-          data-domain="length">1 inch</span>
+            <span class="param"
+            id="param" 
+            data-value="200"
+            data-unit="mm" 
+            data-value-display="200"
+            data-unit-display="mm"
+            data-domain="length">200 mm</span>
+            
+            long cylindrical rod with a radius of
 
-          diameter transmits
+            <span class="param"
+            id="param" 
+            data-value="20"
+            data-unit="mm" 
+            data-value-display="20"
+            data-unit-display="mm"
+            data-domain="length">20 mm</span>
 
-          <span class="param" id="param" 
-          data-value="20" 
-          data-unit="hp" 
-          data-value-display="20"
-          data-unit-display="hp" 
-          data-domain="power">20 horsepower</span>
+            is subjected to an axial force of
+            
+            <span class="param"
+            id="param" 
+            data-value="4"
+            data-unit="kN" 
+            data-value-display="4"
+            data-unit-display="kN"
+            data-domain="force">4 kN</span>
 
-          (1 HP = 33,000 ft lb/min)
+            . After loading, the length of the rod increases by 
 
-          at
+            <span class="param"
+            id="param" 
+            data-value="3"
+            data-unit="mm" 
+            data-value-display="3"
+            data-unit-display="mm"
+            data-domain="length">3 mm</span>
 
-          <span class="param" id="param" 
-          data-value="3000" 
-          data-unit="rpm" 
-          data-value-display="3000"
-          data-unit-display="rpm" 
-          data-domain="angularvelocity">3000 rpm</span>
-          
-          .
+            and its radius decreases by
+            
+            <span class="param"
+            id="param" 
+            data-value="0.09"
+            data-unit="mm" 
+            data-value-display="0.09"
+            data-unit-display="mm"
+            data-domain="length">0.09 mm</span>
+            
+            .
         </p>
 
         <div class="question">
           <p class="question">
-            What is the maximum shear stress in the shaft?
+            What is the Young's modulus of the rod material? 
+            <span class="solution-box" data-inputtype="number"></span>
+          </p>
+
+          <p class="question">
+            What is the Poisson's ratio of the rod material? 
             <span class="solution-box" data-inputtype="number"></span>
           </p>
 
           <div>
-              <!-- no images -->
+              <!-- No images -->
           </div>
           <br>
         </div>
         
-        <div id="f2020p6PPRO" class="jsavcanvas"></div>
+        <div id="f2020p5PPRO" class="jsavcanvas"></div>
         
         <div class="solution" data-type="custom">
           <div class="guess"> 

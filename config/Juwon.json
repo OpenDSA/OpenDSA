@@ -65,7 +65,8 @@
   },
   "chapters": {
     "Stuff": {
-      "Juwon/GeneralOverview": {}
+      "Juwon/GeneralOverview": {},
+      "Juwon/REtoRG": {}
     }
   }
 }

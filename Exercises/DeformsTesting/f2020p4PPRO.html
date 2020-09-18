@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="jsav math MechSolverCommon">
 <head>
-  <title>Problem 2</title>
+  <title>Problem 4</title>
   <script src="./mathjs.js" type="text/javascript"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
   <script src="../../khan-exercises/local-only/main.js"></script>
@@ -9,68 +9,77 @@
   <style></style>
 </head>
 
-<body data-height="860" data-width="965" data-vertical-scrolling="yes">
+<body data-height="400" data-width="970" data-canvas-height="1100">
   <div class="exercise">
     <div class="vars">
-      <var id="JSAV">mechSolverCommon.initJSAV("f2020p2PPRO","SI")</var>
+      <var id="JSAV">mechSolverCommon.initJSAV("f2020p4PPRO","SI",1100)</var>
     </div>
 
     <div class="problems">
-      <div id="f2020p2PPROp">
+      <div id="f2020p4PPROp">
         <p class="problem">
-          Two aluminium rods of circular cross-section 
-          
-          <span class="param" id="param" 
-          data-value="1" data-unit="mm" 
-          data-value-display="1"
-          data-unit-display="mm" data-domain="length">1 mm</span> 
+          A rotating shaft is being designed to carry
 
-          are stretched by means of a hanging weight 
+          <span class="param" id="param" 
+          data-value="6" data-unit="MW" 
+          data-value-display="6"
+          data-unit-display="MW" data-domain="power">6 MW</span>
+
+          of power at a speed of
           
           <span class="param" id="param" 
-          data-value="1200" data-unit="N" 
-          data-value-display="1200"
-          data-unit-display="N" data-domain="force">1200 N</span>
-          
-          as shown in the figure. Assume that the rod material follows Hooke's Law and its Young's modulus is that of aluminium 
-          (E= 
-            <span class="param" id="param" 
-            data-value="70" data-unit="GPa" 
-            data-value-display="70"
-            data-unit-display="GPa" data-domain="pressure">70 GPa
-            </span>
-          )
-          
+          data-value="3000" data-unit="rpm" 
+          data-value-display="3000"
+          data-unit-display="rpm" data-domain="angularvelocity">3000 rpm</span>
           .
         </p>
 
         <div class="question">
           <p class="question">
-            1. What is the tension in the rods? 
+            1. What is the smallest diameter solid steel shaft
+
+            [ 
+              G= 
+              <span class="param" id="param2" 
+              data-value="85" data-unit="GPa" 
+              data-value-display="85"
+              data-unit-display="GPa" data-domain="pressure">85 GPa
+              </span>,
+              <code><var>"{\\tau_{failure}}"</var></code>=
+              <span class="param" id="param3"
+              data-value="100" data-unit="MPa"
+              data-value-display="100"
+              data-unit-display="MPa" data-domain="pressure">100 MPa
+              </span>
+            ] 
+
+            that can be used if the power factor of safety is
+
+            <span class="param" id="param" 
+            data-value="2.3" data-unit="" 
+            data-value-display="2.3"
+            data-unit-display="" data-domain="dimensionless">2.3</span>
+            ?
             <span class="solution-box" data-inputtype="number"></span>
           </p>
 
           <p class="question">
-            2. If the triangle ABC is equilateral, find the axial elongation of the rods. 
-            <br>
+            2. At rated power, what is the maximum shear strain in the shaft?
+            <span class="solution-box" data-inputtype="number"></span>
+          </p>
+
+          <p class="question">
+            3. At rated power, what is the angle of twist per unit length of the shaft?
             <span class="solution-box" data-inputtype="number"></span>
           </p>
 
           <div>
-              <img class="figure1" src="./problemfigures/ph2-p2.png" style="width: 350px;" alt="description">
-              <div class="text-overlay param" id="param"
-              style="width: 26px; top: -346px;right: -224px; padding: 2px 7px" 
-              data-value="1" data-unit="m" data-value-display="1"
-              data-unit-display="m" data-domain="length">1 m</div>
-              <div class="text-overlay param" id="param"
-              style="width: 26px; top: -374px;right: -89px; padding: 2px 7px" 
-              data-value="1" data-unit="m" data-value-display="1"
-              data-unit-display="m" data-domain="length">1 m</div>
+              <!-- No figures here -->
           </div>
           <br>
         </div>
         
-        <div id="f2020p2PPRO" class="jsavcanvas"></div>
+        <div id="f2020p4PPRO" class="jsavcanvas"></div>
         
         <div class="solution" data-type="custom">
           <div class="guess"> 

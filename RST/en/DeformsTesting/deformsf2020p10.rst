@@ -9,11 +9,10 @@
    :satisfies: Current topic name
    :topic: Broader subject consisting of this
 
-
 Deforms
 =================================
 Deforms exercise
 --------------------------------------
 
-.. avembed:: Exercises/DeformsTesting/f2020-p1.html ka
-   :long_name: Problem 1
+.. avembed:: Exercises/DeformsTesting/f2020p10PPRO.html ka
+   :long_name: Problem 10
