@@ -3,6 +3,7 @@
   "desc": "Testing interactive exercises for solving deforms problems",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
+  "lang": "en",
   "code_lang": {
     "Java": {
       "ext": [
@@ -65,8 +66,14 @@
     "Preface": {
       "Intro": {}
     },
-    "Example": {
+    "DeformsExampleWithScroll": {
       "DeformsTesting/DeformsExample": {}
+    },
+    "DeformsExampleWithoutScroll": {
+      "DeformsTesting/DeformsExamplenonscroll": {}
+    },
+    "AnotherKAExample": {
+      "DeformsTesting/NotDeformsKA": {}
     }
   }
 }

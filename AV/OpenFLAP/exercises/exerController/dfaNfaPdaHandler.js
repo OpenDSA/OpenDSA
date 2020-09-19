@@ -379,6 +379,7 @@ function pdaHandler(testCase, flag, str) {
  * 
  */
 function dfaNfaPdaHandler(testCase, flag, string) {
+ 
   if (testCase.exerciseType == 'DFA' || testCase.exerciseType == 'NFA') {
     testCaseList2 = testCase.testCases
     faHandler(testCase, flag, string);
