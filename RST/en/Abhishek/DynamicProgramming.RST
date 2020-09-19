@@ -89,7 +89,7 @@ Note that the first occurrence of each recursive call invokes two recursive call
 However, subsequent occurrences of such a call do not produce additional calls because they just read the contents of its corresponding cell.
 
 .. image:: /Images/FibTree.png
-	:width: 1400
+	:width: 1200
 
 
 .. image:: /Images/FibGraph.png
