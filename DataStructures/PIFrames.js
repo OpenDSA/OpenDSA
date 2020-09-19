@@ -756,7 +756,7 @@
           withCredentials: true
         },
         success: function(data) {
-          skip_to = parseInt(data.result)
+          skip_to = parseInt(data.result) || 0
         },
         error: function(err) {
           skip_to = 0;
