@@ -756,16 +756,20 @@
           withCredentials: true
         },
         success: function(data) {
-          skip_to = parseInt(data.result) || 0
+          skip_to = parseInt(data.result) || -1
         },
         error: function(err) {
-          skip_to = 0;
+          skip_to = -1;
         }
       });
 
       //skip the slides to the checkpoint by triggering the forward button
       //this process need to be done after the page is fully loaded
-      if(skip_to !== 0){
+      // first question has index of 0
+      // if skip_to = 0, it means the first questions has completed by the user
+      // therefore, continue to second question.
+      // if user has not completed any question for the frame, then the default is set to -1.
+      if(skip_to >= 0){
         $(document).ready(function() {
           var counter = $("#"+av_name +" .jsavcounter").text().split("/");
           var limit = parseInt(counter[1]);
