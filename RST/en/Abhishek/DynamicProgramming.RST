@@ -88,7 +88,7 @@ The corresponding recursion tree is shown below.
 Note that the first occurrence of each recursive call invokes two recursive calls. 
 However, subsequent occurrences of such a call do not produce additional calls because they just read the contents of its corresponding cell.
 
-.. image::  RST/Images/FibTree.png
+.. image::  ../../Images/FibTree.png
 	:width: 1200
 
 
