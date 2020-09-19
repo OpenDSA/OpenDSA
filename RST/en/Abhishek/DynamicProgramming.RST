@@ -13,8 +13,8 @@ Dynamic Programming
 ====================
 
 Dynamic programming is an algorithm design technique for optimization problems that can improve the efficiency of any inherently recursive algorithm that repeatedly re-solves the same subproblems. Using dynamic programming requires two steps:
-1.You find a recursive solution to a problem where subproblems are redundantly solved many times.
-2.Optimize the recursive algorithm to eliminate re-solving subproblems. The resulting algorithm may be recursive or iterative. The iterative form is commonly referred to by the term dynamic programming.
+|1.You find a recursive solution to a problem where subproblems are redundantly solved many times.
+|2.Optimize the recursive algorithm to eliminate re-solving subproblems. The resulting algorithm may be recursive or iterative. The iterative form is commonly referred to by the term dynamic programming.
 
 We will see first how to remove redundancy with a simple, non-optimization problem. We then go to an optimization problem, which will be efficiently solved by dynamic programming.
 
