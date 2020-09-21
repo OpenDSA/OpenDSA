@@ -25,7 +25,7 @@ NFA to DFA Conversion Example 1
 
 .. inlineav:: NFA2DFAFrames ff
    :links: AV/PIExample/NFA2DFAFrames.css
-   :scripts:AV/PIExample/NFA2DFAFrames.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
+   :scripts: AV/DanielleFormalLang/NFAConversion/NFA2DFA1.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
    :output: show
 
 NFA to DFA Conversion Example 2

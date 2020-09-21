@@ -28,9 +28,10 @@ question type test
    :links: AV/Peixuan/PIFrames/QuestionTypeTest.css
    :scripts:   DataStructures/PIFrames.js  AV/Peixuan/PIFrames/QuestionTypeTest.js
    :output: show
+
 fix for "'"
 -----------
 .. inlineav:: CFLPumpingLemmaExample1FF ff
-  :links: AV/Peixuan/PIFrames/CFLPumpingLemmaExample1FF.css
-  :scripts: AV/Peixuan/PIFrames/CFLPumpingLemmaExample1FF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js lib/underscore.js
-  :output: show
+   :links: AV/Peixuan/PIFrames/CFLPumpingLemmaExample1FF.css
+   :scripts: AV/Peixuan/PIFrames/CFLPumpingLemmaExample1FF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js lib/underscore.js
+   :output: show

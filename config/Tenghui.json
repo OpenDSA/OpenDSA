@@ -1,6 +1,5 @@
-
 {
-  "title": "Test",
+  "title": "THTest",
   "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
@@ -65,8 +64,7 @@
   },
   "chapters": {
     "Stuff": {
-      "Juwon/GeneralOverview": {},
-      "Juwon/REtoRG": {}
+      "Tenghui/DFA": {}
     }
   }
 }
