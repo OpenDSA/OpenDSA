@@ -10,10 +10,10 @@
 
 
 Reductions Part 1
-================================
+=================
 
 Reduction Introduction and The Pairing Problem
----------------------------------------------------
+----------------------------------------------
 .. inlineav:: PairToSortCONPI ff
    :links: AV/PIExample/NPComplete/PairToSortCONPI.css
    :scripts: AV/PIExample/NPComplete/PairToSortCONPI.js DataStructures/PIFrames.js  

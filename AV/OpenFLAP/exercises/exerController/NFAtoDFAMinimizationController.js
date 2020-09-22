@@ -14,6 +14,7 @@ controllerProto.init = function (jsav, fa, filePath, dataType, options) {
 	this.currentExercise = 0;
 	this.testCases;
 	this.initGraph = options.initGraph;
+	
 }
 
 controllerProto.load = function () {
@@ -134,7 +135,7 @@ controllerProto.updateExercise = function(id) {
 	var start = new Date();
 	logRecord['Exercise' + exNum + '_Time'] = [];
 	logRecord['Exercise' + exNum + '_Time'].push(start);
-
+	
 };
 var exerciseLog = {
     errorsCount:0,

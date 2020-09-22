@@ -1,19 +1,30 @@
-[
-  {
-    "expression":"L = \\{a^{2^n}\\mid n>0\\},  \\Sigma = \\{a\\}",
-  	"description":"Give a Turing Machine that accepts all strings that has a number of a’s that is a power of two.___. In other words, it implements the language in Turing Acceptable form.",
-  	"type":"description",
-    "testCases":[
-      {"λ":false},
-      {"a":false},
-      {"aa":true},
-      {"aaa":false},
-      {"aaaa":true},
-      {"aaaaaaaa":true}
-    ],
-    "graph":{
-      "nodes":[],
-      "edges":[]
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM.",
+  "exerciseType": "TM",
+  "expression": "L = \\{a^{2^n}\\mid n>0\\},  \\Sigma = \\{a\\}",
+  "description": "Give a Turing Machine that accepts all strings that has a number of a’s that is a power of two.___. In other words, it implements the language in Turing Acceptable form.",
+  "type": "description",
+  "testCases": [{
+      "λ": false
+    },
+    {
+      "a": false
+    },
+    {
+      "aa": true
+    },
+    {
+      "aaa": false
+    },
+    {
+      "aaaa": true
+    },
+    {
+      "aaaaaaaa": true
     }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
   }
-]
+}]

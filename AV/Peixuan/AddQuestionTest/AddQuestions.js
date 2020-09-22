@@ -111,6 +111,7 @@ var containsChoice = function(choice, set){
   }
   return false;
 }
+var arrow = String.fromCharCode(8594);
 //----------------------------------------------------------------
 //helper functions end
 
@@ -1224,7 +1225,6 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
   var s = FAtoGrammar.FA.initial;
   var newVariables = [s];
   var nodes = FAtoGrammar.FA.nodes();
-  var arrow = String.fromCharCode(8594);
   var converted = [];
   var matrixIndex = 0;
 
@@ -1921,5 +1921,197 @@ var getStepsForvisualizeConversion = function (fatoreController, transitionOptio
     "type" : "finalExpression",
     "weight" : finalExpression
   }]);
+  return res;
+}
+
+var displayTreeWithQuestions = function (pt, av, av_name, piframesLocations){
+
+  var productions = [];
+  var grammarVariables = [];
+  var start = pt.productions[0][0];
+  pt.productions.forEach((item) => {
+    productions.push(item.join(''));
+    grammarVariables.push(item[0]);
+  });
+  grammarVariables = Array.from(new Set(grammarVariables));
+  var steps = getStepsForDisplayTree(pt);
+  steps.unshift([{
+    "node" : "",
+    "relatedTo" : "",
+    "type" : "empty",
+    "weight" : ""
+  }]);
+  var generatingFunction = function (state) {
+    if(state["type"] === "empty"){
+      return null;
+    }
+    else {
+      return [{
+        "type": "multiple",
+        "question": "",
+        "description": "Which of the following productions we should next substitute in to build the tree?",
+        "answer": state["weight"], //String if type is multiple, array of string if select
+        "choices": productions
+      }]
+    }
+  }
+  var configure = {
+    "specialQuestionInedx" : [0],
+    "specialQuestion" : [{
+      "type": "multiple",
+      "question": "",
+      "description": "Which of the following is the grammar start variable?",
+      "answer": start, //String if type is multiple, array of string if select
+      "choices": grammarVariables
+    }],
+    "questionPattern" : generatingFunction
+  };
+
+  var currentStack = updateAutoQuestionStack(av_name);
+  var questions = generateQuestions(steps, av, configure, av_name);
+  // initialize PI frame
+  var Frames = piInit(av_name, questions, piframesLocations);
+  var questionsIndex = 0;
+
+  pt.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+  questionsIndex++;
+  pt.jsav.step();
+
+  var inputString = pt.inputString;
+  var productions = pt.productions;
+
+  var table = {};   // maps each sentential form to the rule that produces it
+  var next;
+  var accepted = pt.stringAccepted(inputString);
+  if (accepted[0]) {
+
+    table = pt.derivationTree;
+    var temp = accepted[1];
+    var results = [];   // derivation table
+    counter = 0;
+    // go through the map of sentential forms to productions in order to get the trace
+    do {                // handles the case where inputstring is the emptystring
+      counter++;
+      if (counter > 500) {
+        console.warn(counter);
+        break;
+      }
+      var rp = table[temp][0].join("");
+      results.push([rp, temp]);
+      temp = table[temp][1];
+    } while (table[temp] && temp);
+
+
+    results.reverse();
+    // set up display
+
+    //var displayOrder = [];  // order in which to display the nodes of the parse tree
+    // create the parse tree using the derivation table
+    pt.jsav.umsg("The root of the parse tree is the grammar start variable");
+    pt.parseTree.root(results[0][0].split(arrow)[0]);
+    var root = pt.parseTree.root();
+    var sentential = [root]; //order of sentential form nodes
+
+    pt.jsav.step();
+    for (var i = 0; i < results.length; i++) {
+      pt.jsav.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+      questionsIndex++;
+      pt.jsav.step();
+
+      var lhsProd = results[i][0].split(arrow)[0];
+      var rhsProd = results[i][0].split(arrow)[1];
+      //find correct lhs in sentential
+      var sententialString = "";
+      for(var j = 0; j < sentential.length; j++){
+        //join all nodes to make a sentential string
+        sententialString += sentential[j].value();
+      }
+      //make the production compatible to pt.replaceLHS function
+      var pro = results[i][0].split(arrow);
+      pro.push(pro[1]);
+      pro[1] = "" ;
+      var lhsOccur;
+      //compare pt.replaceLHS to results[i][1]
+      for(var j = 0; j < pt.replaceLHS([pro],sententialString).length; j++){
+        if(pt.replaceLHS([pro], sententialString)[j] === results[i][1]){
+          //record the jth occurrence of lhs
+          lhsOccur = j;
+        }
+      }
+
+      //convert lhsOccur to actual index number of the sententialString
+      var count = 0;
+      var realIndex = 0;
+      while(true){
+        var index = sententialString.indexOf(results[i][0].split(arrow)[0]);
+        realIndex += index;
+        if(count === lhsOccur){
+          break;
+        }else{
+          sententialString = sententialString.substring(index+1);
+          realIndex++;
+        }
+        count++;
+      }
+
+      //addEdgesFromLHStoRHS();
+      var children = [];
+      for(var l = 0; l < rhsProd.length; l++){
+        var newNode = pt.parseTree.newNode(rhsProd[l]);
+        children.push(newNode);
+        for(var r = 0; r < lhsProd.length; r++){
+          sentential[realIndex + r].addChild(newNode);
+
+        }
+        pt.parseTree.layout();
+      }
+      var temp1 = sentential.slice(0, realIndex);
+      var temp2 = sentential.slice(realIndex + lhsProd.length);
+      sentential = temp1.concat(children);
+      sentential = sentential.concat(temp2);
+    }
+
+    pt.parseTree.layout();
+    pt.jsav.umsg("The resulting tree is finished.");
+    pt.jsav.recorded();
+  }
+}
+
+var getStepsForDisplayTree = function (pt){
+  var res = [];
+  var inputString = pt.inputString;
+  var productions = pt.productions;
+
+  var table = {};   // maps each sentential form to the rule that produces it
+  var next;
+  var accepted = pt.stringAccepted(inputString);
+  if (accepted[0]) {
+    table = pt.derivationTree;
+    var temp = accepted[1];
+    var results = [];   // derivation table
+    counter = 0;
+    // go through the map of sentential forms to productions in order to get the trace
+    do {                // handles the case where inputstring is the emptystring
+      counter++;
+      if (counter > 500) {
+        console.warn(counter);
+        break;
+      }
+      var rp = table[temp][0].join("");
+      results.push([rp, temp]);
+      temp = table[temp][1];
+    } while (table[temp] && temp);
+
+    results.reverse();
+
+    for (var i = 0; i < results.length; i++) {
+      res.push([{
+        "node" : results[i][0].split(arrow)[0],
+        "relatedTo" : results[i][0].split(arrow)[1],
+        "type" : "parseTree",
+        "weight" : results[i][0]
+      }]);
+    }
+  }
   return res;
 }

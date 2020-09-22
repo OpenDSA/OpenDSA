@@ -1,8 +1,55 @@
 [{
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "exerciseType": "GRAMMAR",
+    "totalTrueCases": 10,
+    "totalFalseCases": 10,
+    "containLetters": ["a", "b"],
+    "randomStringLength": [0, 10],
+    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
+    "trueCounter": 8,
+    "falseCounter": 4,
+    "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
+    "generatorflag": 1,
     "expression": "a^mb^ia^n:i=m+n",
     "description": "Construct a CFG over {a, b} whose language is {___}",
     "type": "description",
-    "testCases": [],
+    "testCases": [{
+            "": true
+        },
+        {
+            "ab": true
+        },
+        {
+            "ba": true
+        },
+        {
+            "abba": true
+        },
+        {
+            "aaaabbbbba": true
+        },
+        {
+            "aa": false
+        },
+        {
+            "abbbbaaa": true
+        },
+        {
+            "aba": false
+        },
+        {
+            "aaaaaaaaaaa": false
+        },
+        {
+            "bbbbbbb": false
+        },
+        {
+            "aaaabbbb": true
+        },
+        {
+            "bbbbaaaa": true
+        }
+    ],
     "graph": {
         "nodes": [],
         "edges": []

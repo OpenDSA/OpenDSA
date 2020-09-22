@@ -1,8 +1,52 @@
 [{
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "exerciseType": "PDA",
+    "totalTrueCases": 10,
+    "totalFalseCases": 10,
+    "containLetters": ["a", "b", "c"],
+    "randomStringLength": [0, 15],
+    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
+    "trueCounter": 7,
+    "falseCounter": 4,
+    "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
+    "generatorflag": 1,
     "expression": "\\{a^ic^jb^i \\mid i, j \\geq 0\\}",
     "description": "Construct the PDA that accepts ",
     "type": "both",
-    "testCases": [],
+    "testCases": [{
+            "": true
+        },
+        {
+            "ccccc": true
+        },
+        {
+            "ab": true
+        },
+        {
+            "aaaabbbb": true
+        },
+        {
+            "aaacccccccccccccbbb": true
+        },
+        {
+            "aaaaaaaacbbbbbbbb": true
+        },
+        {
+            "accccccccccccccccb": true
+        },
+        {
+            "aaaaaaaaa": false
+        },
+        {
+            "bbbbbbbbbbb": false
+        },
+        {
+            "aaccbbbb": false
+        },
+        {
+            "aaaccb": false
+        }
+    ],
     "graph": {
         "nodes": [],
         "edges": []

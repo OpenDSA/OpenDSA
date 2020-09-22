@@ -1,10 +1,18 @@
-#!/usr/bin/env python3
+#! /usr/bin/env python
+
+""" Runs a simple web server for viewing OpenDSA books. 
+This allows us to see the Khan Academy exercises and JSAV code objects 
+correctly without a full webserver running.  
+With python 3 installed, just run the command: 'python3 server.py'.
+Then point your web browser to one of the addresses listed.  
+Any created will be in the 'Books' directory.
+Pressing Ctrl + C at the command line should stop the webserver at any time.
+"""
 
 import sys
 import argparse
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 from socket import gethostname, getfqdn, gethostbyname
-from collections import Counter
 
 def makeSimpleServer(port=8080, bind=""):
     server_address = (bind, port)
@@ -15,14 +23,14 @@ def makeSimpleServer(port=8080, bind=""):
         if host == "0.0.0.0":
             hosts = ["localhost", "127.0.0.1", gethostname(), getfqdn(), gethostbyname(gethostname())]
             print("Server now live at these addresses:")
-            for realHost in Counter(hosts):
+            for realHost in set(hosts):
                 print("    http://{0}:{1}/".format(realHost, port))
         else:
             print("Server now live at http://{0}:{1}/".format(host, port))
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
-            print("\nKeyboard interrupt received, exiting.")
+            print("\nKeyboard interrupt received, stopping server.")
             sys.exit(0)
 
 if __name__ == '__main__':

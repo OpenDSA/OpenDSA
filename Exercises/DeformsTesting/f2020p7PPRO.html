@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html data-require="jsav math MechSolverCommon">
+<head>
+  <title>Problem 7</title>
+  <script src="./mathjs.js" type="text/javascript"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="../../khan-exercises/local-only/main.js"></script>
+  <link rel = "stylesheet" type = "text/css" href = "./styles.css" />
+  <style></style>
+</head>
+
+<body data-height="400" data-width="970" data-canvas-height="1600">
+  <div class="exercise">
+    <div class="vars">
+      <var id="JSAV">mechSolverCommon.initJSAV("f2020p7PPRO","imperial",1600)</var>
+    </div>
+
+    <div class="problems">
+      <div id="f2020p7PPROp">
+        <p class="problem">
+          A rigid bar is pinned at the top and attached to opposing walls by two
+
+          <span class="param" id="param"
+          data-value="8"
+          data-unit="in"
+          data-value-display="8"
+          data-unit-display="in"
+          data-domain="length">8 in</span>
+          
+          long steel wires, A and B, with 
+          E= 
+          <span class="param" id="param2" 
+          data-value="29000"
+          data-unit="ksi" 
+          data-value-display="29000"
+          data-unit-display="ksi"
+          data-domain="pressure">29000 ksi
+          </span>,
+
+          A = 
+          <span class="param" id="param2" 
+          data-value="0.03"
+          data-unit="in^2" 
+          data-value-display="0.03"
+          data-unit-display="in^2"
+          data-domain="length2">0.03 <code>in^{2}</code>
+          </span>,
+
+          and 
+          
+          <code><var>"{\\alpha}"</var></code>=
+          <span class="param" id="param3"
+          data-value="6.6e-6" 
+          data-unit="degF^-1"
+          data-value-display="6.6e-6"
+          data-unit-display="/F"
+          data-domain="temperature-1">
+          <code>
+            <var>"6.6\\times10^{-6} /^{\\circ}F"</var>
+          </code>
+          </span>
+          
+          .
+        </p>
+
+        <div class="question">
+          <p class="question">
+            Initially, the forces in both wires are zero. What are the stresses in wire A and wire B in this state?
+            <br>
+            Stress in wire A: <span class="solution-box" data-inputtype="number"></span>
+            <br>
+            Stress in wire B: <span class="solution-box" data-inputtype="number"></span>
+          </p>
+
+          <p class="question">
+            Then, the temperature of rod A decreased by
+
+            <span class="param" id="param3"
+            data-value="50" 
+            data-unit="degF"
+            data-value-display="50"
+            data-unit-display="F"
+            data-domain="temperature">
+            <code>
+              <var>"50 ^{\\circ}F"</var>
+            </code>
+            </span>
+
+            . What are the stresses in wire A and wire B following this temperature change?
+            <br>
+            Stress in wire A: <span class="solution-box" data-inputtype="number"></span>
+            <br>
+            Stress in wire B: <span class="solution-box" data-inputtype="number"></span>
+          </p>
+
+          <div>
+              <img class="figure1" src="./problemfigures/ph2-p7.png" style="width: 250px;" alt="description">
+
+              <div class="text-overlay param"style="width: 28px; top: -270px;right: -20px; padding: 2px 7px" 
+              id="param8"
+              data-value="12"
+              data-unit="in"
+              data-value-display="12"
+              data-unit-display="in"
+              data-domain="length">12 in</div>
+
+              <div class="text-overlay param"style="width: 28px; top: -175px;right: -20px; padding: 2px 7px"  
+              id="param8"
+              data-value="12"
+              data-unit="in"
+              data-value-display="12"
+              data-unit-display="in"
+              data-domain="length">12 in</div>
+          </div>
+          <br>
+        </div>
+        
+        <div id="f2020p7PPRO" class="jsavcanvas"></div>
+        
+        <div class="solution" data-type="custom">
+          <div class="guess"> 
+            [ mechSolverCommon.globalSolutionBoxes ]
+          </div>
+          <div class="validator-function">
+            var answer = mechSolverCommon.checkAnswer();
+            if (!guess[0] && !answer) {
+              return ""; // User did not click, and correct answer is not
+                         // initial array state
+            } else {
+              return answer;
+            }
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="hints">
+      <p>
+        Add different levels of hints corresponding to reaction from
+        the evaluator function in JS file.
+      </p>
+    </div> -->
+
+  </div>
+
+  <!-- Nerdamer solver-exclusive scripts -->
+  <script src="./jiggzson-nerdamer-432dd54/nerdamer.core.js"></script> 
+  <script src="./jiggzson-nerdamer-432dd54/Algebra.js"></script>
+  <script src="./jiggzson-nerdamer-432dd54/Calculus.js"></script>
+  <script src="./jiggzson-nerdamer-432dd54/Solve.js"></script>
+  <script src="./jiggzson-nerdamer-432dd54/Extra.js"></script>
+
+  <!-- MathJS scripts for unit conversion, etc. -->
+  <!-- <script src="./mathjs.js" type="text/javascript"></script> -->
+  <!-- This gets used in Variable.js, line 232 changeUnits() onwards -->
+
+  <!--- Scripts exclusive to MechSolver -->
+  <script src="MechSolver/Variable.js"></script>
+  <script src="MechSolver/ActiveEquation.js"></script>
+  <script src="MechSolver/Association.js"></script>
+  <script src="MechSolver/ValueBox.js"></script>
+  <script src="MechSolver/EquationBank.js"></script>
+  <script src="MechSolver/equation_bank.js"></script>
+  <script src="MechSolver/Workspace.js"></script>
+  <script src="MechSolver/WorkspaceList.js"></script>
+  <script src="MechSolver/WindowManager.js"></script>
+  
+  <!-- Utility files -->
+  <script src="MechSolver/Maps.js"></script>
+  <script src="MechSolver/HelpTexts.js"></script>
+  <script src="MechSolver/utils.js"></script>
+
+  <!-- Additional script files containing settings and solution files -->
+  <script src="DeformsDifficultProblemPPROsolution.js"></script>
+
+</body>
+
+</html>

@@ -1,19 +1,30 @@
-[
-  {
-    "expression":"L_1 = \\{w \\in \\{a, b, c\\}^* | n_a(w) > n_b(w), n_a(w) > n_c(w)\\}.",
-    "description":"Write a turing machine that accepts the language:___",
-    "type":"description",
-    "testCases":[
-      {"aaaaaa":true},
-      {"acaccaa":false},
-      {"bbaaba":false},
-      {"acaccaaa":true},
-      {"babaaba":true},
-      {"abccbabaa":true}
-    ],
-    "graph":{
-      "nodes":[],
-      "edges":[]
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM.",
+  "exerciseType": "TM",
+  "expression": "L_1 = \\{w \\in \\{a, b, c\\}^* | n_a(w) > n_b(w), n_a(w) > n_c(w)\\}.",
+  "description": "Write a turing machine that accepts the language:___",
+  "type": "description",
+  "testCases": [{
+      "aaaaaa": true
+    },
+    {
+      "acaccaa": false
+    },
+    {
+      "bbaaba": false
+    },
+    {
+      "acaccaaa": true
+    },
+    {
+      "babaaba": true
+    },
+    {
+      "abccbabaa": true
     }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
   }
-]
+}]

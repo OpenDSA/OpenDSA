@@ -170,7 +170,8 @@
           "threshold": 5
         }
       },
-      "PointersJava/Exercises": {}
+      "PointersJava/Exercises": {},
+      "PointersJava/LinkedChains": {}
     }, 
     "Stacks": {
       "List/StackArray": {},
@@ -195,7 +196,7 @@
         "Recursion Programming Exercise: Cummulative Sum": {
           "points": 1.0
         }, 
-        "Recursion Programming Exercise: Add odd positions": {
+        "Recursion Programming Exercise: Add odd values": {
           "points": 1.0
         }, 
         "Recursion Programming Exercise: Sum Of the Digits": {

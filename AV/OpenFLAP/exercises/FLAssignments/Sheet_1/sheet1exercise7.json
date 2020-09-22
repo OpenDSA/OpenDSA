@@ -2,12 +2,12 @@
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "GRAMMAR",
     "totalTrueCases": 5,
-    "totalFalseCases": 10,
+    "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "trueCounter": 5,
-    "falseCounter": 0,
+    "falseCounter": 2,
     "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
     "generatorflag": 0,
     "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^{2n} \\mid n > 0\\}",
@@ -17,16 +17,22 @@
             "abb": true
         },
         {
-            "aabbbbb": true
+            "aabbbb": true
         },
         {
-            "aaaaabbbbbbb": true
+            "aaaaabbbbbbbbbb": true
         },
         {
-            "aabbbbb": true
+            "aaaabbbbbbbb": true
         },
         {
-            "aaabbb": true
+            "aaabbbbbb": true
+        },
+        {
+            "bb": false
+        },
+        {
+            "aaaa": false
         }
     ],
     "graph": {

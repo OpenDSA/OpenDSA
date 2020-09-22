@@ -46,7 +46,7 @@ class ValueBox{
         this.element.deleteButton.element[0].addEventListener(
             "click", e=> {
                 e.stopPropagation();
-                console.log("Clicked on box, Want to delete?");
+                // console.log("Clicked on box, Want to delete?");
                 // Insert function call deleting visual component here, together with calls to shiftup/down, etc.
                 // see how you can connect this to deleting the object from the workspace
                 Window.windowManager.shiftUp(null, this);
@@ -67,11 +67,11 @@ class ValueBox{
         this.element.helpButton.element[0].addEventListener(
             "click", e=> {
                 e.stopPropagation();
-                console.log("Clicked on box, need help?");
+                // console.log("Clicked on box, need help?");
                 // show help text
+                Window.showHelp("valuebox", e);
             }
         );
-
 
         // First, create a box, that can be replaced by a value and a unit element (same as variable boxes)
         this.element.visualComponent = globalJSAV.label(
@@ -91,6 +91,8 @@ class ValueBox{
         boxList[0].innerHTML = '<span class="mord value"></span><span class="mord unit"></span>';
         this.element.valueDisplay = boxList[0].childNodes[0];
         this.element.unitDisplay = boxList[0].childNodes[1];
+        this.element.valueDisplay.setAttribute("title", "Click on value to select it, double click to negate it.");
+        this.element.unitDisplay.setAttribute("title", "Click to change the units.");
 
         // Then, populate the valueDisplay and unitDisplay fields
         this.setValueUnit(this.valueDisplay, this.unitDisplay);
@@ -180,7 +182,7 @@ class ValueBox{
                     // Change internals
                     var oldUnit = this.unit;
                     this.unit = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unit'];
-                    console.log(this.unit);
+                    // console.log(this.unit);
                     this.value = mathjs.evaluate("number("+this.value+" "+oldUnit+", "+this.unit+")")
                     // this.valueDisplay = Window.valueTruncate(this.value);
                     this.valueDisplay = Window.valueStringRepr(this.value);

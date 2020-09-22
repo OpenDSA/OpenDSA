@@ -1,0 +1,48 @@
+{
+  "translations": {
+    "en": {
+      "q2": {
+        "type": "select",
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL",
+        "question": "What do we mean by CFL?",
+        "answer": "Nondeterministic Context Free Language",
+        "choices": ["Nondeterministic Context Free Language", "Deterministic Context Free Language"]
+      },
+      "q3": {
+        "type": "select",
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL",
+        "question": "What do we mean by DCFL?",
+        "answer": "Deterministic Context Free Language",
+        "choices": ["Nondeterministic Context Free Language", "Deterministic Context Free Language"]
+      },
+      "q4": {
+        "type": "select",
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL",
+        "question": "Recall NFAs and DFAs, who was more powerful than the other?",
+        "answer": "Both have the same power as any NFA can be DFA, and any DFA is an NFA",
+        "choices": ["Both have the same power as any NFA can be DFA, and any DFA is an NFA", "DFA", "NFA"]
+      },
+      "q5": {
+        "type": "select",
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL",
+        "question": "More powerful means accepting more languages",
+        "answer": "True",
+        "choices": []
+      },
+      "q6": {
+        "type": "select",
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL",
+        "question": "What about CFL and DCFL? are they have the same power",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      },
+      "q7": {
+        "type": "select",
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL",
+        "question": "Who is more powerful",
+        "answer": "CFL, as it can accept more languages than DCFL",
+        "choices": ["CFL, as it can accept more languages than DCFL", "DCFL"]
+      }
+    }
+  }
+}

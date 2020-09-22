@@ -1,0 +1,9 @@
+.yellowedge { /* Make a tree edge to be green */
+    stroke: yellow;
+    stroke-width: 3;
+  }
+
+  .defaultedge { /* Make a tree edge to be green */
+    stroke: black;
+    stroke-width: 3;
+  }

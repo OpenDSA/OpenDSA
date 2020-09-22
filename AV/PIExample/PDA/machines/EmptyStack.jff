@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><structure>
+	<type>pda</type>
+	<automaton>
+		<state id="0" name="q0">
+			<x>20.203125</x>
+			<y>22.203125</y>
+			<initial/>
+		</state>
+		<state id="1" name="q1">
+			<x>163.203125</x>
+			<y>23.203125</y>
+		</state>
+		<state id="2" name="q2">
+			<x>252.203125</x>
+			<y>64.203125</y>
+		</state>
+		<state id="3" name="q3">
+			<x>369.203125</x>
+			<y>43.203125</y>
+		</state>
+		<state id="4" name="q4">
+			<x>489.203125</x>
+			<y>45.203125</y>
+		</state>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>a</read>
+			<pop>Z</pop>
+			<push>0Z</push>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>1</to>
+			<read>a</read>
+			<pop>0</pop>
+			<push>00</push>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>b</read>
+			<pop>0</pop>
+			<push>00</push>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>2</to>
+			<read>b</read>
+			<pop>0</pop>
+			<push>00</push>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>3</to>
+			<read>c</read>
+			<pop>0</pop>
+			<push/>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>3</to>
+			<read>c</read>
+			<pop>0</pop>
+			<push/>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>4</to>
+			<read/>
+			<pop>Z</pop>
+			<push/>
+		</transition>
+	</automaton>
+</structure>
