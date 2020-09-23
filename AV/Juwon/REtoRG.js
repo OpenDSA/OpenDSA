@@ -19,7 +19,7 @@ $(document).ready(function() {
             return 0;
         return 0;
     }
-
+    //do ex_parse
     ex_parse(expression);
     //display
     av.displayInit();
