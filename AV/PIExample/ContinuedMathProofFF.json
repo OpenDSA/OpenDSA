@@ -60,7 +60,7 @@
         "q8": {
             "type": "multiple",
             "question":"What is the first step in the induction proof?",
-            "description": "We need to prove that the sum of the first n positive integers $\\textbf {S}$(n) $=$ n(n+1)/2. We proved that already by using Direct prrof. Now we need to prove it by using Mathematical Induction",
+            "description": "We need to prove that the sum of the first n positive integers $\\textbf {S}$(n) $=$ n(n+1)/2. We proved that already by using Direct proof. Now we need to prove it by using Mathematical Induction",
             "answer": "Check the base case",
             "choices": ["Check the base case", "State the hypothesis"]
         },

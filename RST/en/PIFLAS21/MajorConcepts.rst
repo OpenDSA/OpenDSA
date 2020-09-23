@@ -16,8 +16,8 @@ Formal Languages Major Concepts
 -------------------------------
 
 .. inlineav:: MajorConceptsFF ff
-   :links: AV/PIExample/MajorConceptsFF.css
-   :scripts: AV/PIExample/MajorConceptsFF.js DataStructures/PIFrames.js
+   :links: AV/PIFLAS21/MajorConceptsFF.css
+   :scripts: DataStructures/PIFrames.js AV/PIFLAS21/MajorConceptsFF.js
    :output: show
 
 
