@@ -78,33 +78,47 @@ $(document).ready(function () {
   av.step();
 
   //frame 17
+  av.umsg("The letters that can appear on the tape are an important part of the definition for a given Turing machine.");
+  tempTape.hide();
+  var tape2 = av.ds.tape(["", "a", "a", "a", "a", "", "", ""], 50, 90, "both");
+  av.step();
+
+  //frame 18
+  av.umsg("The alphabet of the machine is these letters that may appear in the input. In addition to the letters of the alphabet that can define an input string, there is also the blank character.");
+  av.step();
+
+  //frame 19
+  av.umsg("When talking about strings, since a blank is hard to see, we will use the # character to represent a blank character. Note that including # in the alphabet is for convenience only. We want to be able to read our specifications without being confused.");
+  av.step();
+
+  //frame 20
   av.umsg(Frames.addQuestion("q17"));
   av.step();
 
 
-  //frame 18
+  //frame 21
   av.umsg("A Turing machine is defined as follows. It has a one-dimensional tape, divided into squares. This tape extends infinitely to the left and to the right.<br/>Each square can store one character.<br/>The machine has a single I/O head that at any instant in time is \"on\" one of the squares.");
-  tempTape.hide();
+  tape2.hide();
   var tape = av.ds.tape(["#", "a", "a", "a", "a", "#", "#", "#"], 50, 90, "both");
   var rect = av.g.rect(350 + xStart, 150 + yStart, 110, 80);
   var p3 = av.g.line(365 + xStart, 150 + yStart, 365 + xStart, 85 + yStart, {"arrow-end": "classic-wide-long"});
   tape.highlightPosition(1);
   av.step();
 
-  //frame 19
-  av.umsg(Frames.addQuestion("q19"));
+  //frame 22
+  av.umsg(Frames.addQuestion("q22"));
   var url = "../../../../AV/VisFormalLang/TM/Machines/TMexample1.jff";
   var tm = new av.ds.TM({width: 600, height: 200, left: 50, top:300, url: url});
   av.step();
 
-  //frame 20
-  av.umsg(Frames.addQuestion("q20"));
+  //frame 23
+  av.umsg(Frames.addQuestion("q23"));
   var c1 = av.label("q0", {left: 355 + xStart, top: 130 + yStart});
   var c2 = av.label("q1", {left: 355 + xStart, top: 160 + yStart});
   av.step();
 
-  //frame 21
-  av.umsg(Frames.addQuestion("q21"));
+  //frame 24
+  av.umsg(Frames.addQuestion("q24"));
   var p4 = av.g.line(420 + xStart, 195 + yStart, 390 + xStart, 185 + yStart, {"arrow-end": "classic-wide-long"});
   var g = av.g.set(); // A set to hold the tape head graphical objects
   var node = tm.nodes();
@@ -114,44 +128,17 @@ $(document).ready(function () {
   node[0].highlight();
   av.step();
   
-  //frame 22
-  av.umsg(Frames.addQuestion("q22"));
-  av.step();
-
-  //frame 23
-  av.umsg(Frames.addQuestion("q23"));
-  tape.setCurrentValue("#");
-  av.step();
-
-  //frame 24
-  av.umsg(Frames.addQuestion("q24"));
-  tape.moveRight();
-  g.translateX(30);
-  c1.translateX(30);
-  c2.translateX(30);
-  av.step();
-
   //frame 25
   av.umsg(Frames.addQuestion("q25"));
-  tape.setCurrentValue("#");
-  tape.moveRight();
-  g.translateX(30);
-  c1.translateX(30);
-  c2.translateX(30);
   av.step();
 
   //frame 26
   av.umsg(Frames.addQuestion("q26"));
   tape.setCurrentValue("#");
-  tape.moveRight();
-  g.translateX(30);
-  c1.translateX(30);
-  c2.translateX(30);
   av.step();
 
   //frame 27
   av.umsg(Frames.addQuestion("q27"));
-  tape.setCurrentValue("#");
   tape.moveRight();
   g.translateX(30);
   c1.translateX(30);
@@ -169,20 +156,94 @@ $(document).ready(function () {
 
   //frame 29
   av.umsg(Frames.addQuestion("q29"));
+  tape.setCurrentValue("#");
+  tape.moveRight();
+  g.translateX(30);
+  c1.translateX(30);
+  c2.translateX(30);
+  av.step();
+
+  //frame 30
+  av.umsg(Frames.addQuestion("q30"));
+  tape.setCurrentValue("#");
+  tape.moveRight();
+  g.translateX(30);
+  c1.translateX(30);
+  c2.translateX(30);
+  av.step();
+
+  //frame 31
+  av.umsg(Frames.addQuestion("q31"));
+  tape.setCurrentValue("#");
+  tape.moveRight();
+  g.translateX(30);
+  c1.translateX(30);
+  c2.translateX(30);
+  av.step();
+
+  //frame 32
+  av.umsg(Frames.addQuestion("q32"));
   node[0].unhighlight();
   node[1].highlight();
   av.step();
   
-  //frame 30
-  av.umsg(Frames.addQuestion("q30"));
+  //frame 33
+  av.umsg(Frames.addQuestion("q33"));
   p4.hide();
   var lastArrow = av.g.line(570 + xStart, 195 + yStart, 540 + xStart, 212 + yStart, {"arrow-end": "classic-wide-long"});
   av.step();
   
-  //frame 31
-  
+  //frame 34
+  av.umsg(Frames.addQuestion("q34"));
+  lastArrow.hide();
+  g.hide();
+  c1.hide();
+  c2.hide();
+  av.step();
 
+  //frame 35
+  av.umsg(Frames.addQuestion("q35"));
+  av.step();
 
+  //frame 36
+  av.umsg(Frames.addQuestion("q36"));
+  av.step();
+
+  //frame 37
+  av.umsg(Frames.addQuestion("q37"));
+  av.step();
+
+  //frame 38
+  av.umsg(Frames.addQuestion("q38"));
+  av.step();
+
+  //frame 39
+  av.umsg(Frames.addQuestion("q39"));
+  av.step();
+
+  //frame 40
+  av.umsg(Frames.addQuestion("q40"));
+  av.step();
+
+  //frame 41
+  av.umsg(Frames.addQuestion("q41"));
+  av.step();
+
+  //frame 42
+  av.umsg(Frames.addQuestion("q42"));
+  av.step();
+
+  //frame 40
+  av.umsg(Frames.addQuestion("q40"));
+  av.step();
+
+  //frame 40
+  av.umsg(Frames.addQuestion("q40"));
+  av.step();
+
+  //frame 40
+  av.umsg(Frames.addQuestion("q40"));
+  av.step();
 
   //frame 5
   av.umsg("To do computation, we have to have some conventions about starting and ending the process. The machine stops immediately if (1) it enters any $final$ $state$, or (2) it is in a state and scans a character for which there is no transition. (Note that there are many ways to define Turing Machines, and some definitions require an explicit reject state. We do not.)");
