@@ -46,9 +46,7 @@ Consider the recursive function for computing the :math:`n^{th}` Fibonacci numbe
 
 
 
-The cost of this algorithm (in terms of function calls) is the size of the n'th Fibonacci number itself, which our analysis of Module 
-.. :ref`summation <summation> <Summation>`
-showed to be exponential (approximately 1.62n). 
+The cost of this algorithm (in terms of function calls) is the size of the n'th Fibonacci number itself, which our analysis of Module showed to be exponential (approximately 1.62n). 
 Why is this so expensive? Primarily because two recursive calls are made by the function, and the work that they do is largely redundant. 
 That is, each of the two calls is recomputing most of the series, as is each sub-call, and so on. Thus, the smaller values of the function are being recomputed a huge number of times. 
 If we could eliminate this redundancy, the cost would be greatly reduced. The approach that we will use can also improve any algorithm that spends most of its time recomputing common subproblems.
@@ -93,13 +91,15 @@ The corresponding recursion tree is shown below.
 Note that the first occurrence of each recursive call invokes two recursive calls. 
 However, subsequent occurrences of such a call do not produce additional calls because they just read the contents of its corresponding cell.
 
-.. odsafig::  Images/FibTree.png
-	:width: 1200
-
-
-.. odsafig::  Images/FibGraph.png
-	:width: 600
-	:align: center
+.. odsafig:: Images/FibTree.png
+   :width: 800
+   :align: center
+   :figwidth: 90%
+              
+.. odsafig:: Images/FibGraph.png
+   :width: 800
+   :align: center
+   :figwidth: 90%
 
 A second technique is called tabulation. 
 The dependency graph must be analyzed to infer an alternative computation order for the subproblems. 
@@ -260,7 +260,26 @@ In other words, a new slot in the array gets its solution by looking at most at 
 
 .. topic:: Example
 
-	Consider again the instance of the Knapsack Problem for K=10 and five items with sizes 9, 2, 7, 4, 1. 
+	Consider again the instance of the Knapsack Problem for K=10 and five items with sizes 9, 2, 7, 4, 1.
+
+   .. math::
+
+      \begin{array}{l|ccccccccccc}
+      &0&1&2&3&4&5&6&7&8&9&10\\
+      \hline
+      k_1\!=\!9&O&-&-&-&-&-&-&-&-&I&-\\
+      k_2\!=\!2&O&-&I&-&-&-&-&-&-&O&-\\
+      k_3\!=\!7&O&-&O&-&-&-&-&I&-&I/O&-\\
+      k_4\!=\!4&O&-&O&-&I&-&I&O&-&O&-\\
+      k_5\!=\!1&O&I&O&I&O&I&O&I/O&I&O&I
+      \end{array}
+
+
+   | Key:
+   |   -:  No solution for :math:`P(i, k)`.
+   |   O: Solution(s) for :math:`P(i, k)` with :math:`i` omitted.
+   |   I: Solution(s) for :math:`P(i, k)` with :math:`i` included.
+   |   I/O: Solutions for :math:`P(i, k)` with :math:`i` included AND omitted.
 
 	A tabulation algorithm will fill a table of size n×K+1 starting from object i=0 up to object i=4, filling all the cells in the table in a top-down fashion.
 
