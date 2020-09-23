@@ -35,3 +35,10 @@ fix for "'"
    :links: AV/Peixuan/PIFrames/CFLPumpingLemmaExample1FF.css
    :scripts: AV/Peixuan/PIFrames/CFLPumpingLemmaExample1FF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js lib/underscore.js
    :output: show
+
+fix for skip question bug
+-------------------------
+.. inlineav:: MajorConceptsFF ff
+   :links: AV/PIFLAS21/MajorConceptsFF.css
+   :scripts: AV/PIFLAS21/MajorConceptsFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js
+   :output: show
