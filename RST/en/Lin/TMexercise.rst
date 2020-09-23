@@ -12,9 +12,10 @@
 Turing Machine Exercises
 ========================
 
-Exercise 1
+
+Exercise 3
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/addOnea.html ae
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/keepABC.html pe
    :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
