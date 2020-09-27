@@ -503,7 +503,15 @@
             });
           }
 
-          //TODO
+          if(answer === undefined || (Array.isArray(answer) && answer.length === 0) || answer === ""){
+            $("." + av_name + "> #feedback").html(
+              `<p>You need to answer the question first!</p>`
+            );
+            $("." + av_name + "> #feedback").show();
+            this.disableForwardButton();
+            return;
+          }
+
           if (question.type == "textBoxAny") {
             //case where we accept any string as an answer
             this.setStudentAnswer(
@@ -517,9 +525,9 @@
               $("." + av_name + "> input[type=submit]").hide();
               $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);
 
-              var forwardButton = $(`#${this.av_name}`).find(
+              /*var forwardButton = $(`#${this.av_name}`).find(
                 "span.jsavforward"
-              );
+              );*/
               //setTimeout(() => forwardButton.click(), 2000);
             }
           } else if (
@@ -568,10 +576,14 @@
 
               //var timeFlag = 1;
               if (question.incorrectFeedback != undefined) {
-                $("." + av_name + "> #feedback").html("Incorrect: " + `${question.incorrectFeedback}`);
+                $("." + av_name + "> #feedback").html(
+                  "Incorrect: " + `${question.incorrectFeedback}`
+                );
                 //timeFlag = 2;
+              } else{
+                $("." + av_name + "> #feedback").html("Incorrect!");
               }
-              $("." + av_name + "> input[type=submit]").show();
+              //$("." + av_name + "> input[type=submit]").show();
               $("." + av_name + "> #feedback").show();
               this.disableForwardButton();
               /*setTimeout(() => {

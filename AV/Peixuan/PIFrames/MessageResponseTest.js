@@ -20,5 +20,8 @@ $(document).ready(function(){
   av.step();
   av.umsg(Frames.addQuestion("q4"));
   av.step();
+  av.umsg(Frames.addQuestion("q5"));
+  av.step();
+  av.umsg("This is the last slideshow")
   av.recorded();
 });

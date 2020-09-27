@@ -39,6 +39,15 @@
                 "question": "Anwser is A ' , B",
                 "answer": ["A ' ", "B"],
                 "choices": ["A ' ", "B", "C", "D"]
+            },
+			"q5": {
+                "type": "textBox",
+                "description": "This is a textbox question",
+                "question": "Anwser is 'ABC'",
+                "answer": "ABC",
+                "choices": "",
+				"correctFeedback": ["You inputed the right answer"],
+				"incorrectFeedback": ["The right anwser is ABC"]
             }
         }
     }
