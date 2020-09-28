@@ -13,7 +13,7 @@ Dynamic Programming
 Dynamic Programming
 -------------------
 
-Dynamic programming is an algorithm design technique for optimization problems that can improve
+Dynamic programming is an algorithm design technique that can improve
 the efficiency of any inherently recursive algorithm that repeatedly
 re-solves the same subproblems.
 Using dynamic programming requires two steps:
@@ -62,7 +62,10 @@ However, the lower half of the figure shows that the number of
 unique subproblems is only n+1=9.
 The latter graphical representation is called a dependency graph, and
 was obtained from the recursion tree by joining different occurrences
-of the same recursive call, preserving their corresponding arcs. 
+of the same recursive call, preserving their corresponding arcs.
+In each node, the top half (in blue) shows the parameter values on the
+recursive call, while the bottom half (in red) shows the return value
+for the call.
 
 .. odsafig:: Images/FibTree.png
    :width: 800
@@ -95,7 +98,20 @@ algorithm.
 .. codeinclude:: Misc/Fibonnaci 
    :tag: FibRT
 
-This version of the algorithm will not compute a value more than once, so its cost is linear. The corresponding recursion tree is shown below. Note that the first occurrence of each recursive call invokes two recursive calls. However, subsequent occurrences of such a call do not produce additional calls because they just read the contents of its corresponding cell.
+This version of the algorithm will not compute a value more than once,
+so its cost is linear.
+The corresponding recursion tree is shown below.
+Note that the first occurrence of each recursive call invokes
+two recursive calls.
+However, subsequent occurrences of such a call do
+not produce additional calls because they just read the contents of
+its corresponding cell.
+
+.. TODO::
+   :type: Figure
+
+   Put the figure here that was specified in the original document
+   (top of the 3rd page), showing the recursion tree.
 
 A second technique is called :term:`tabulation`.
 The dependency graph must be analyzed to infer an alternative
@@ -158,42 +174,39 @@ a knapsack, and so we will refer to this as the
 We will first define a particular formulation of the knapsack problem,
 and then we will discuss an algorithm to solve it based on dynamic
 programming.
-There are many other versions for the problem
+There are many other versions for the problem.
+Some versions ask for the greatest amount that will fit, others
+introduce values to the items along with size.
+We will look at a fairly easy to understand variation.
 
 Assume that we have a knapsack with a certain amount of space that we
 will define using integer value :math:`K`.
 We also have :math:`n` items each with a certain size such that
-item :math:`i` has integer size :math:`k_i`.
+that item :math:`i` has integer size :math:`k_i`.
 The problem is to find a subset of the :math:`n` items whose sizes
-sum  as closest as possible to :math:`K`, if one exists.
+exactly sum to :math:`K`, if one exists.
 For example, if our knapsack has capacity :math:`K = 5` and the two
 items are of size :math:`k_1 = 2` and :math:`k_2 = 4`,
-then the second object can be selected, occupying 4 units of the knapsack.
+then no such subset exists.
 But if we add a third item of size :math:`k_3 = 1`,
-then we can also select the third item, filling the knapsack exactly
+then we can fill the knapsack exactly with the second and third
+items.
 We can define the problem more formally as:
 Find :math:`S \subset \{1, 2, ..., n\}` such that
 
 .. math::
 
-   \sum_{i \in S} k_i 
-
-is maximized
-
-and
-
-.. math::
-
-   \sum_{i \in S} k_i \leq K.
+   \sum_{i \in S} k_i = K.
 
 .. topic:: Example
 
    Assume that we are given a knapsack of size :math:`K = 163` and
    10 items of sizes 4, 9, 15, 19, 27, 44, 54, 68, 73, 101.
-   What subset of the items fills the knapsack the most? You should take a few minutes and try to do this before reading on and looking at the answer.
+   Can we find a subset of the items that exactly fills the knapsack?
+   You should take a few minutes and try to do this before reading on
+   and looking at the answer.
 
-
-   One solution to the problem exactly fills the knapsack: 19, 27, 44, 73.
+   One solution to the problem is: 19, 27, 44, 73.
 
 .. topic:: Example
 
@@ -203,8 +216,7 @@ and
 
    Unfortunately, knowing the answer for 163 is of almost no use at
    all when solving for 164.
-   One solution that also fills the knapsack  is: 9, 54, 101.
-
+   One solution is: 9, 54, 101.
 
 If you tried solving these examples, you probably found yourself doing
 a lot of trial-and-error and a lot of backtracking.
@@ -236,9 +248,9 @@ To organize this process, we can define the problem in terms of
 two parameters: the knapsack size :math:`K` and the number of items
 :math:`n`. 
 Denote a given instance of the problem as :math:`P(n, K)`.
-Now we can say that :math:`P(n, K)` computes an optimal solution by choosing the best solution
-from either :math:`P(n-1, K)` or
-:math:`P(n-1, K-k_n) + k_n`.
+Now we can say that :math:`P(n, K)` has a solution if and only if
+there exists a solution for either :math:`P(n-1, K)` or
+:math:`P(n-1, K-k_n)`.
 That is, we can solve :math:`P(n, K)` only if we can solve one of the
 sub problems where we use or do not use the :math:`n` th item.
 Of course, the ordering of the items is arbitrary.
@@ -246,12 +258,25 @@ We just need to give them some order to keep things straight.
 
 Continuing this idea, to solve any subproblem of size :math:`n-1`,
 we need only to solve two subproblems of size :math:`n-2`.
-And so on, until we are down to only one item that either fits the knapsack or not. Assuming that :math:`P(i, S)` represents the problem for object i and after, and with size s still free in the knapsack, the following algorithm expresses the ideas ideas:
+And so on, until we are down to only one item that either fills the
+knapsack or not.
 
-.. codeinclude:: Misc/Knapsack 
-   :tag: FibR
+Continuing this idea, to solve any subproblem of size :math:`n-1`,
+we need only to solve two subproblems of size :math:`n-2`.
+And so on, until we are down to only one item that either fits the
+knapsack or not.
+Assuming that :math:`P(i, S)` represents the problem for object i and
+after, and with size s still free in the knapsack, the following
+algorithm expresses the ideas.
 
-Although this algorithm is correct, it naturally leads to a cost expressed by the recurrence relation
+| **if** :math:`P(n-1, K)` has a solution,
+|   **then** :math:`P(n, K)` has a solution
+|   **else if** :math:`P(n-1, K-k_n)` has a solution
+|     **then** :math:`P(n, K)` has a solution
+|     **else** :math:`P(n, K)` has no solution.
+
+Although this algorithm is correct, it naturally leads to a cost
+expressed by the recurrence relation
 :math:`\mathbf{T}(n) = 2\mathbf{T}(n-1) + c = \Theta(2^n)`.
 That can be pretty expensive!
 
@@ -269,65 +294,90 @@ solutions for all subproblems
 
 .. topic:: Example
 
-   Consider the instance of the Knapsack Problem for K=10 and five items with sizes 9, 2, 7, 4, 1. The recursion tree generated by the recursive algorithm follows, where each node contains the index of the object under consideration (from 0 to 4) and the size available of the knapsack.
+   Consider the instance of the Knapsack Problem for :math:`K=10` and five items
+   with sizes 9, 2, 7, 4, 1.
+   The recursion tree generated by the recursive algorithm follows, where
+   each node contains the index of the object under consideration (from 0
+   to 4) and the size available of the knapsack.
 
-   .. odsafig:: Images/knapsack4_10.png
+   .. odsafig:: Images/knapsack4_10CAS.png
 
-   The dependency graph for this problem instance, laid out in a table of size n×K+1 follows:
+   The dependency graph for this problem instance, laid out in a table of
+   size :math:`n × K + 1`, follows:
 
-   .. odsafig:: Images/knapsack_depgraph.png
+   .. odsafig:: Images/knapsack_depgraphCAS.png
 
-   As mentioned above, there are two approaches to actually solving the
-   problem.
-   One is memoization, that is, to start with our problem of size
-   :math:`P(n, K)` and make recursive calls to solve the subproblems,
-   each time checking the array 
-   to see if a subproblem has been solved, and filling in the
-   corresponding cell in the array whenever we get a new subproblem
-   solution.
-   The other is tabulation.
-   Conceivably we could adopt one of several computation orders,
-   although the most "natural" is to start filling the array for row 0
-   (which indicates a successful solution only for a knapsack of size
-   :math:`k_0`).
-   We then fill in the succeeding rows
-   from :math:`i=1` to :math:`n`.
+As mentioned above, there are two approaches to actually solving the
+problem.
+One is memoization, that is, to start with our problem of size
+:math:`P(n, K)` and make recursive calls to solve the subproblems,
+each time checking the array 
+to see if a subproblem has been solved, and filling in the
+corresponding cell in the array whenever we get a new subproblem
+solution.
+The other is tabulation.
+Conceivably we could adopt one of several computation orders,
+although the most "natural" is to start filling the array for row 0
+(which indicates a successful solution only for a knapsack of size
+:math:`k_0`).
+We then fill in the succeeding rows
+from :math:`i=1` to :math:`n`.
 
-   | **if** :math:`P(n-1, K)` has a solution,
-   |   **then** :math:`P(n, K)` has a solution
-   |   **else if** :math:`P(n-1, K-k_n)` has a solution
-   |     **then** :math:`P(n, K)` has a solution
-   |     **else** :math:`P(n, K)` has no solution.
+.. codeinclude:: Dynamic/Knapsack
+   :tag: Knapsack
 
-   In other words, a new slot in the array gets its solution by looking
-   at most at two slots in the preceding row.
-   Since filling each slot in the array takes constant time, the total
-   cost of the algorithm is :math:`\Theta(nK)`.
+In other words, a new slot in the array gets its solution by looking
+at most at two slots in the preceding row.
+Since filling each slot in the array takes constant time, the total
+cost of the algorithm is :math:`\Theta(nK)`.
 
+.. topic:: Example
+   
+   Consider again the instance of the Knapsack Problem for K=10 and
+   five items with sizes 9, 2, 7, 4, 1.
+   A tabulation algorithm will fill a table of size n×K+1 starting
+   from object i=0 up to object i=4, filling all the cells in the
+   table in a top-down fashion. 
 
+   .. math::
 
-      Consider again the instance of the Knapsack Problem for K=10 and five items with sizes 9, 2, 7, 4, 1. A tabulation algorithm will fill a table of size n×K+1 starting from object i=0 up to object i=4, filling all the cells in the table in a top-down fashion.
+      \begin{array}{l|ccccccccccc}
+      &0&1&2&3&4&5&6&7&8&9&10\\
+      \hline
+      k_0\!=\!9&O&-&-&-&-&-&-&-&-&I&\\
+      k_1\!=\!2&O&-&I&-&-&-&-&-&-&O&-\\
+      k_2\!=\!7&O&-&O&-&-&-&-&I&-&I/O&-\\
+      k_3\!=\!4&O&-&O&-&I&-&I&O&-&O&-\\
+      k_4\!=\!1&O&I&O&I&O&I&O&I/O&I&O&I
+      \end{array}
 
+   | Key:
+   |   -:  No solution for :math:`P(i, k)`.
+   |   O: Solution(s) for :math:`P(i, k)` with :math:`i` omitted.
+   |   I: Solution(s) for :math:`P(i, k)` with :math:`i` included.
+   |   I/O: Solutions for :math:`P(i, k)` with :math:`i` included AND omitted.
 
-      .. math::
+   For example, :math:`P(2, 9)` stores value I/O.
+   It contains O because :math:`P(1, 9)` has a solution (so, this item
+   is not needed along that path).
+   It contains I because :math:`P(1,2) = P(1, 9-7)` has a solution
+   (so, this item is needed along that path).
+   Since :math:`P(4, 10)` is marked with I, it has a solution.
+   We can determine what that solution actually is by recognizing that
+   it includes :math:`k_4` (of size 1), which then leads us to look at
+   the solution for :math:`P(3, 9)`.
+   This in turn has a solution that omits :math:`k_3` (of size 4),
+   leading us to :math:`P(2, 9)`.
+   At this point, we can either use item :math:`k_2` or not.
+   We can find a solution by taking one valid path through the table.
+   We can find all solutions by following all branches when there is a
+   choice.
 
-         \begin{array}{l|ccccccccccc}
-         &0&1&2&3&4&5&6&7&8&9&10\\
-         \hline
-         k_1\!=\!9&O&-&-&-&-&-&-&-&-&I&-\\
-         k_2\!=\!2&O&-&I&-&-&-&-&-&-&O&-\\
-         k_3\!=\!7&O&-&O&-&-&-&-&I&-&I/O&-\\
-         k_4\!=\!4&O&-&O&-&I&-&I&O&-&O&-\\
-         k_5\!=\!1&O&I&O&I&O&I&O&I/O&I&O&I
-         \end{array}
-
-
-      | Key:
-      |   -:  No solution for :math:`P(i, k)`.
-      |   O: Solution(s) for :math:`P(i, k)` with :math:`i` omitted.
-      |   I: Solution(s) for :math:`P(i, k)` with :math:`i` included.
-      |   I/O: Solutions for :math:`P(i, k)` with :math:`i` included AND omitted.
-
-      In the table shown above, :math:`P(4, 10)` stores value 10, thus the five objects allow filling completely the knapsack.:math:`P(4, 10)`  is computed from two other cells, :math:`P(3, 9)` and :math:`P(3, 10)` . The former contains the value 9, which added to :math:`k_4`=1 is equal to 10; the latter equals 9. The maximum of both values is 10. Thus, object 4 must be inserted into the knapsack. By tracing back :math:`P(3, 9)`, we may determine the sequence of decisions that lead to this optimal solution. We will find out that an optimal solution to this subproblem comes from taking any of two equally-valued solutions: including :math:`k_0`=9, or including :math:`k_1` and :math:`k_2`, of sizes 2 and 7, respectively.
-
-      Note that the table is first filled top-down (in the figure) with the values of the different subproblems, and we later infer bottom-up (in the figure) the sequence of decisions that produced the optimal solution contained in the table cell that represents the complete problem. This last phase of the algorithm precludes the possibility of actually reducing the size of the table. Otherwise, the table for the knapsack problem could have been reduced to a one dimensional array.
+   Note that the table is first filled with the values of the
+   different subproblems, and later we inferred the sequence of
+   decisions that allows computing an optimal solution from the values
+   stored in the table.
+   This last phase of the algorithm precludes the possibility of
+   actually reducing the size of the table.
+   Otherwise, the table for the knapsack problem could have been
+   reduced to a one dimensional array.
