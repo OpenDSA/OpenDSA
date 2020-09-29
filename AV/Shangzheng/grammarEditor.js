@@ -740,12 +740,6 @@ $(document).ready(function () {
             dsArray[i].hide();
         }
         var noUnit = removeUnit();
-        for (var i = 0; i < dsArray.length; i++)
-        {
-
-            dsArray[i].hide();
-
-        }
         var newArr = [];
         dsArray = [];
         for (var j = 0; j < noUnit.length; j++)
