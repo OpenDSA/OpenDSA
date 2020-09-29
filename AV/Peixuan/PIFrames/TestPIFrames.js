@@ -1,7 +1,6 @@
 /** mbhatia@vt.edu */
 (function($) {
   //Peixuan moved listeners to init so they will listen to the right buttons
-
   var PIFrames = {
     questionType: "",
     submit: `<br><input type="submit" value="Submit"> </br>`,
@@ -260,9 +259,14 @@
 
         buildElement: function(question) {
           var type = question.type;
-          //Peixuan added this part to auto check if type is multiple or select
-          if(type === "select" && !Array.isArray(question.answer)){
-            type = "multiple";
+          //Peixuan added this part to auto check if type is multiple, select or T/F
+          if(type === "select"){
+            if(!Array.isArray(question.answer)){
+              type = "multiple";
+            }
+            if (question.answer === "True"){
+              type = "true/false";
+            }
           }
 
           questionType = type;
@@ -311,7 +315,8 @@
           //Peixuan changed this part or let it randomly lists choices
           var seq = this.randomSeqGenerator(choices.length);
           for (var i = 0; i < choices.length; i++) {
-            var radio = `<input type="radio" name=${this.av_name} value='${choices[seq[i]]}' style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
+            //Peixuan changed the ' to " to make the choices can have ' sign
+            var radio = `<input type="radio" name=${this.av_name} value="${choices[seq[i]]}" style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
             html.push(radio);
           }
 
@@ -395,17 +400,14 @@
           var html = [];
           var header = `<p>${question.question}</p>`;
           html.push(header);
+
           //Peixuan changed this part or let it randomly lists choices
           var seq = this.randomSeqGenerator(choices.length);
           for (var i = 0; i < choices.length; i++) {
-            var checkbox = `<input type="checkbox" name=${this.av_name} value='${choices[seq[i]]}' style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
+            //Peixuan changed the ' to " to make the choices can have ' sign
+            var checkbox = `<input type="checkbox" name=${this.av_name} value="${choices[seq[i]]}" style='margin-right: 5px'>${choices[seq[i]]}</></br>`;
             html.push(checkbox);
           }
-          /*
-          for (var i = 0; i < choices.length; i++) {
-            var checkbox = `<input type="checkbox" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
-            html.push(checkbox);
-          }*/
 
           html.push(PIFrames.submit);
           html.push(PIFrames.feedback);
@@ -481,22 +483,34 @@
             "question":  this.queue.current,
             "correct":   correct
           };
-          $.ajax({
-            url: "/pi_attempts",
-            type: "POST",
-            data: JSON.stringify(data),
-            contentType: "application/json; charset=utf-8",
-            datatype: "json",
-            xhrFields: {
-              withCredentials: true
-            },
-            success: function(data) {
-              console.log(data)
-            },
-            error: function(err) {
-              console.log(err)
-            }
-          });
+          if (ODSA.UTILS.scoringServerEnabled())
+          {
+            $.ajax({
+              url: "/pi_attempts",
+              type: "POST",
+              data: JSON.stringify(data),
+              contentType: "application/json; charset=utf-8",
+              datatype: "json",
+              xhrFields: {
+                withCredentials: true
+              },
+              success: function(data) {
+                console.log(data)
+              },
+              error: function(err) {
+                console.log(err)
+              }
+            });
+          }
+
+          if(answer === undefined || (Array.isArray(answer) && answer.length === 0) || answer === ""){
+            $("." + av_name + "> #feedback").html(
+              `<p>You need to answer the question first!</p>`
+            );
+            $("." + av_name + "> #feedback").show();
+            this.disableForwardButton();
+            return;
+          }
 
           if (question.type == "textBoxAny") {
             //case where we accept any string as an answer
@@ -507,17 +521,14 @@
             this.enableForwardButton();
 
             //Peixuan updated selectors
-            /*if ($("input[type=submit]").is(":visible")) {
-              $("input[type=submit]").hide();
-              $(".PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);*/
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
               $("." + av_name + "> input[type=submit]").hide();
               $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);
 
-              var forwardButton = $(`#${this.av_name}`).find(
+              /*var forwardButton = $(`#${this.av_name}`).find(
                 "span.jsavforward"
-              );
-              setTimeout(() => forwardButton.click(), 2000);
+              );*/
+              //setTimeout(() => forwardButton.click(), 2000);
             }
           } else if (
             this.studentHasAnsweredQuestionCorrectly(
@@ -529,20 +540,29 @@
             //Peixuan updated selectors
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
               $("." + av_name + "> input[type=submit]").hide();
-              var timeFlag = 1;
-              if (question.correctFeedback != undefined) {
+              //var timeFlag = 1;
+              /*if (question.correctFeedback != undefined) {
                 //Hide the button and show the correct statement
                 $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(
                   `<p>Correct: ${question.correctFeedback}</p>`
                 );
-                var timeFlag = 2;
+                //var timeFlag = 2;
               } else {
                 $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(`<p>Correct!</p>`);
-              }
-              var forwardButton = $(`#${this.av_name}`).find(
+              }*/
+              /*var forwardButton = $(`#${this.av_name}`).find(
                 "span.jsavforward"
-              );
-              setTimeout(() => forwardButton.click(), 1000 * timeFlag);
+              );*/
+              //setTimeout(() => forwardButton.click(), 1000 * timeFlag);
+              if (question.correctFeedback != undefined) {
+                //Hide the button and show the correct statement
+                $("." + av_name + "> #feedback").html(
+                  `<p>Correct: ${question.correctFeedback}</p>`
+                );
+              } else {
+                $("." + av_name + "> #feedback").html(`<p>Correct!</p>`);
+              }
+              $("." + av_name + "> #feedback").show();
             }
 
             //the last question in the slideshow has been answered correctly, so enable the jsavend button
@@ -552,19 +572,24 @@
           } else {
             //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
-              $("." + av_name + "> input[type=submit]").hide();
+              //$("." + av_name + "> input[type=submit]").hide();
 
-              var timeFlag = 1;
+              //var timeFlag = 1;
               if (question.incorrectFeedback != undefined) {
-                $("." + av_name + "> #feedback").html("Incorrect: " + `${question.incorrectFeedback}`);
-                timeFlag = 2;
+                $("." + av_name + "> #feedback").html(
+                  "Incorrect: " + `${question.incorrectFeedback}`
+                );
+                //timeFlag = 2;
+              } else{
+                $("." + av_name + "> #feedback").html("Incorrect!");
               }
+              //$("." + av_name + "> input[type=submit]").show();
               $("." + av_name + "> #feedback").show();
               this.disableForwardButton();
-              setTimeout(() => {
-                $("." + av_name + "> input[type=submit]").show();
+              /*setTimeout(() => {
+
                 $("." + av_name + "> #feedback").hide();
-              }, 1000 * timeFlag);
+              }, 1000 * timeFlag);*/
             }
           }
         },
@@ -736,7 +761,12 @@
       this.table[av_name].checkIfSlideHasQuestion(jsavControl);
     },
 
+    //Peixuan packaged checkpoint jump functions into this method
     skipToCheckPoint(av_name) {
+      if (!ODSA.UTILS.scoringServerEnabled())
+      {
+          return -1;
+      }
       let data = {
         "frame_name": av_name,
       };
@@ -753,14 +783,20 @@
           withCredentials: true
         },
         success: function(data) {
-          skip_to = parseInt(data.result)
+          skip_to = parseInt(data.result) || -1
         },
         error: function(err) {
-          skip_to = 0;
+          skip_to = -1;
         }
       });
 
-      if(skip_to !== 0){
+      //skip the slides to the checkpoint by triggering the forward button
+      //this process need to be done after the page is fully loaded
+      // first question has index of 0
+      // if skip_to = 0, it means the first questions has completed by the user
+      // therefore, continue to second question.
+      // if user has not completed any question for the frame, then the default is set to -1.
+      if(skip_to >= 0){
         $(document).ready(function() {
           var counter = $("#"+av_name +" .jsavcounter").text().split("/");
           var limit = parseInt(counter[1]);
@@ -794,21 +830,9 @@
       return injector;
     },
 
+    //Peixuan added this method to allow users can append multiple data
+    //into the same PIframme
     appendQuestionData(av_name, locations = {top: 10, left: 5}, data){
-        /*
-        //get data by av_name
-        if(data === null){
-          var json_url = $('script[src*="/' + av_name + '.js"]')[0].src + "on";
-          $.ajax({
-            url: json_url,
-            dataType: "json",
-            async: false,
-            success: function(json_data) {
-              data = json_data;
-            }
-          });
-        }*/
-
         //if this is the first question data, initialize the frame
         if(typeof PIFRAMES.table[av_name] === "undefined"){
           PIFRAMES.initElement(av_name);
@@ -826,6 +850,7 @@
         }
     },
 
+    //Peixuan moved element initialization process to here
     initElement(av_name){
       var container = $(`#${av_name}`);
 
@@ -918,13 +943,13 @@
 
     //add div to the av_name's picanvas, so that dynamic questions have a hooking point
     //Peixuan added locations parameter
+    //and moved initialization process to the method above
     init(av_name, av, locations = {top: 10, left: 5}) {
-      console.log(av_name + " init");
+      console.log(av_name + " init")
       this.initElement(av_name);
       var injector = this.getQuestions(av_name, locations);
       return injector;
     },
-
 
     revealQuestion: function(av_name) {
       this.table[av_name].appendQuestion();
