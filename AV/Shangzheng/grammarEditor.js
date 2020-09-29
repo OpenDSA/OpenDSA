@@ -486,7 +486,8 @@ $(document).ready(function () {
     $('#removeLambda').hide();
     $('#removeLambda').click(removeLambdaDisplay);
     $('#startTransform').click(startTransform);
-    S('#toUnitproduction').click();
+    $('#toUnitproduction').hide();
+    $('#toUnitproduction').click(unitProductions);
 
     $(document).click(defocus);
     $(document).keyup(function (e) {
@@ -528,8 +529,54 @@ $(document).ready(function () {
             }
         }
         return false;
-    };
-
+    }
+    function removeUnitHelper(productions, pDict) {
+        for (var i = 0; i < productions.length; i++) {
+            if (productions[i][2].length === 1 && variables.indexOf(productions[i][2]) !== -1) {
+                var p = pDict[productions[i][2]];
+                var n;
+                for (var j = 0; j < p.length; j++) {
+                    if (p[j].length === 1 && variables.indexOf(p[j]) !== -1) {
+                        continue;
+                    } else if (!_.find(productions, function(x){ return x[0] === productions[i][0] && x[2] === p[j];})) {
+                        n = p[j];
+                        break;
+                    }
+                }
+                if (n) {
+                    productions.push([productions[i][0], arrow, n]);
+                    pDict[productions[i][0]].push(n);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    function removeUnit() {
+        var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+        var pDict = {};
+        // a dictionary mapping left sides to right sides
+        for (var i = 0; i < productions.length; i++) {
+            if (!(productions[i][0] in pDict)) {
+                pDict[productions[i][0]] = [];
+            }
+            pDict[productions[i][0]].push(productions[i][2]);
+        }
+        var counter = 0;
+        while (removeUnitHelper(productions, pDict)) {
+            counter++;
+            if (counter > 500) {
+                console.log(counter);
+                break;
+            }
+        }
+        // remove original unit productions
+        productions = _.filter(productions, function(x) {
+            return !(x[2].length === 1 && variables.indexOf(x[2]) !== -1);
+        });
+        var ret = _.map(productions, function(x) {return x.join('');});
+        return ret;
+    }
     function removeLambda() {
         var derivers = {};  // variables that derive lambda
         var productions = _.map(_.filter(arr, function (x) {
@@ -635,7 +682,7 @@ $(document).ready(function () {
 
     function isContextFreeGrammar() {
         var productions = _.filter(arr, function (x) {
-            return x[0]
+            return x[0];
         });
         for (var i = 0; i < productions.length; i++) {
             var lhs = productions[i][0];
@@ -647,28 +694,13 @@ $(document).ready(function () {
     }
 
 
-    function checkLHSVariables() {
-        //check if there is more than one variable on the LHS
-        var productions = _.filter(arr, function (x) {
-            return x[0]
-        });
-        for (var i = 0; i < productions.length; i++) {
-            var lhs = productions[i][0];
-            if (lhs.length !== 1) {
-                return true;
-            } else if (variables.indexOf(lhs) === -1) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     function clearAll() {
         window.location.href = "";
     }
 
     function removeLambdaDisplay()
     {
+        var noLambda = removeLambda();
         if (dsArray.length ===0)
         {
             alert('dsArray is empty');
@@ -677,25 +709,61 @@ $(document).ready(function () {
 
         for (var i = 0; i < dsArray.length; i++)
         {
-            if (dsArray[i].isHighlight())
-            {
-                dsArray[i].hide();
-            }
+
+            dsArray[i].hide();
+
         }
-        alert("All lambda productions removed");
+        var newArr = [];
+        dsArray = [];
+        for (var j = 0; j < noLambda.length; j++)
+        {
+            var splitedProduction = [];
+            splitedProduction[0]  = noLambda[j].split(arrow)[0];
+            splitedProduction[1] = arrow;
+            splitedProduction[2] = noLambda[j].split(arrow)[1];
+            newArr[j] = splitedProduction;
+            dsArray[j] = jsav.ds.array(splitedProduction, {center:false});
+        }
+        jsav.umsg("All lambda productions removed");
+        arr = newArr;
         document.getElementById('removeLambda').disabled = true;
+        $('#toUnitproduction').show();
+        $('#removeLambda').hide();
         return;
     }
+    function unitProductions()
+    {
+        $('#')
+        jsav.umsg("Next Step is to remove unit porductions");
+        for (var i = 0; i < dsArray.length;i++)
+        {
+            dsArray[i].hide();
+        }
+        var noUnit = removeUnit();
+        for (var i = 0; i < dsArray.length; i++)
+        {
+
+            dsArray[i].hide();
+
+        }
+        var newArr = [];
+        dsArray = [];
+        for (var j = 0; j < noUnit.length; j++)
+        {
+            var splitedProduction = [];
+            splitedProduction[0]  = noUnit[j].split(arrow)[0];
+            splitedProduction[1] = arrow;
+            splitedProduction[2] = noUnit[j].split(arrow)[1];
+            newArr[j] = splitedProduction;
+            dsArray[j] = jsav.ds.array(splitedProduction, {center:false});
+        }
+        jsav.umsg("All lambda productions removed");
+        arr = newArr;
+        document.getElementById('removeLambda').disabled = true;
+    }
     function startTransform() {
-        // for (var i = 0; i < arr.length; i++){
-        //   if (arr[i][0] == '' && arr[i][2] == '')
-        //   {
-        //     continue;
-        //   }
-        //   jsav.ds.array(arr[i]);
-        // }
         document.getElementById('startTransform').disabled = true;
-        var noLambda = removeLambda();
+
 
         var highlightCounter = 0;
         for (var i = 0; i < arr.length; i++) {
