@@ -204,7 +204,7 @@
       "q38": {
         "type": "select",
         "description":"Let $w = a^{m/2}b^{m/2}$.<br/>Case 2: $y$ is only $b\\prime$s. This means that $x$ will be all $a$'s, $y$ is some $b$'s, and $z$ is the remaining.<br/>let $x=a^{m/2}\\quad |\\quad y=b^k\\quad |\\quad z=b^{m/2 - k}$.",
-        "question": "Is $a^{m/2}b^{m/2+k}$ \\in L$?",
+        "question": "Is $a^{m/2}b^{m/2+k} \\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
@@ -260,7 +260,7 @@
       "q48": {
         "type": "select",
         "description":"As you see, proving a language is not regular using the pumping lemma may be easy (straight forward) or complex and length. This is based on selecting a good string.",
-        "question": "Which of the used strings is a good string to use to prove that $L = \\{a^nb^n | n\\geq 0\\}",
+        "question": "Which of the used strings is a good string to use to prove that $L = \\{a^nb^n | n\\geq 0\\}$",
         "answer": "$w = a^{m}b^{m}$",
         "choices": ["$w = a^{m/2}b^{m/2}$", "$w = a^{m}b^{m}$"]
       }

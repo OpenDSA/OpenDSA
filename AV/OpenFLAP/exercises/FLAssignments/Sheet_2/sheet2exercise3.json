@@ -1,13 +1,13 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "DFA",
-    "totalTrueCases": 6,
-    "totalFalseCases": 6,
+    "totalTrueCases": 7,
+    "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 6,
-    "falseCounter": 6,
+    "trueCounter": 7,
+    "falseCounter": 5,
     "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
     "generatorflag": 0,
     "expression": "",
@@ -26,28 +26,28 @@
             "b": false
         },
         {
-            "abababababab": false
+            "abababababaab": true
         },
         {
-            "aabbbbbbbb": false
+            "aaabbbbbbbb": true
         },
         {
             "bbabbbbbbb": true
         },
         {
-            "aabaaaaabb": true
+            "aabaabaaabb": true
         },
         {
-            "abbb": true
+            "babbb": true
         },
         {
-            "aaabbb": true
+            "aaaaaaabbbb": true
         },
         {
             "ababababababa": true
         },
         {
-            "ababab": true
+            "abbabab": true
         }
 
     ],
@@ -55,6 +55,6 @@
         "nodes": [],
         "edges": []
     },
-    "solution": "./sheet2exercise3.jff"
+    "solution": ""
 
 }]

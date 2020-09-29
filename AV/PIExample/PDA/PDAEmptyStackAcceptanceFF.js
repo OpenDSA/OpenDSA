@@ -7,7 +7,7 @@ $(document).ready(function() {
     interpret = config.interpreter,
     code = config.code;
   var goNext = false;
-  var url = "../../../AV/PIExample/PDA/Machines/EmptyStack.jff";
+  var url = "../../../AV/PIExample/PDA/machines/EmptyStack.jff";
   var PDA = new av.ds.PDA({width: 500, height: 200, left:-20, url: url});
   var q0 = PDA.getNodeWithValue("q0");
   var q1 = PDA.getNodeWithValue("q1");

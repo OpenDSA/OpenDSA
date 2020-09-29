@@ -140,10 +140,10 @@ Window.UNIT_DB = {
         'pound-feet/s': {'unit':'lbf ft/s', 'unitDisp':'lb-force ft/s'}
     },
     'torque': {
-        'newtonmetre': {'unit': 'N m', 'unitDisp': 'Nm'},
-        'newtonmillimetre': {'unit': 'N mm', 'unitDisp': 'Nmm'},
-        'kilonewtonmetre': {'unit': 'kN n', 'unitDisp': 'kNm'},
-        'kilonewtonmillimetre': {'unit': 'kN mm', 'unitDisp': 'kNmm'},
+        'newtonmetre': {'unit': 'N m', 'unitDisp': 'N m'},
+        'newtonmillimetre': {'unit': 'N mm', 'unitDisp': 'N mm'},
+        'kilonewtonmetre': {'unit': 'kN m', 'unitDisp': 'kN m'},
+        'kilonewtonmillimetre': {'unit': 'kN mm', 'unitDisp': 'kN mm'},
         'footpound': {'unit': 'lbf ft', 'unitDisp':'ft-lb'},
         'footmip': {'unit': 'kip ft', 'unitDisp':'ft-kip'},
         // 'footkip': {'unit': 'mip ft', 'unitDisp':'ft-mip'}, // Disabled until further notice

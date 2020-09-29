@@ -18,7 +18,7 @@ $(document).ready(function() {
   av.g.line(60 + xStart, 110 + yStart, 60 + xStart, 138 + yStart,
             {"arrow-end": "classic-wide-long"});
   av.g.rect(0 + xStart, 140 + yStart, 125, 40);
-  av.label("syntactic analysis", {left: 10 + xStart, top: 135 + yStart});
+  av.label("syntactic analysis", {left: 8 + xStart, top: 135 + yStart});
 
   av.label("parse tree", {left: 70 + xStart, top: 170 + yStart});
 
@@ -30,8 +30,8 @@ $(document).ready(function() {
   av.g.line(60 + xStart, 250 + yStart, 60 + xStart, 278 + yStart,
             {"arrow-end": "classic-wide-long"});
 
-  av.label("Assembly Language (C++)", {left: -10 + xStart, top: 270 + yStart});
-  av.label("Byte Code (Java)", {left: 15 + xStart, top: 290 + yStart});
+  av.label("Assembly Language (C++)", {left: -20 + xStart, top: 270 + yStart});
+  av.label("Byte Code (Java)", {left: 10 + xStart, top: 290 + yStart});
 
   av.displayInit();
   av.recorded();
