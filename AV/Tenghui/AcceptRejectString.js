@@ -4,7 +4,10 @@ $(document).ready(function() {
     var av_name = "TraceEvenBinaryDFACON";
     var av = new JSAV(av_name);
     var RDNumber = Math.floor(Math.random() * 4).toString();
-    var url = "../../../AV/Tenghui/AcceptRejectString" + RDNumber + ".jff";
+    var filenameList = ["DFA_noTrapState", "DFA_withTrapState", "EvenBinaryDFACON", "EvenBinaryEvenOnesDFA", "NFA2DFA2a", "NFA2DFA2b", "NFA2DFAexample1"];
+    var pickNumber = Math.floor(Math.random() * 6);
+    var url = "../../../AV/VisFormalLang/FA/Machines/" + filenameList[pickNumber] + ".jff";
+    //var url = "../../../AV/Tenghui/AcceptRejectString" + RDNumber + ".jff";
     //var url = "../../../AV/Tenghui/AcceptRejectString0.jff";
     av.umsg("In this slideshow, we will trace the acceptance or rejections of some strings. The given machine can accept any even number. You can click on any cell to see the process again starting from the clicked cell");
     av.displayInit();
