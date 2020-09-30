@@ -483,22 +483,26 @@
             "question":  this.queue.current,
             "correct":   correct
           };
-          $.ajax({
-            url: "/pi_attempts",
-            type: "POST",
-            data: JSON.stringify(data),
-            contentType: "application/json; charset=utf-8",
-            datatype: "json",
-            xhrFields: {
-              withCredentials: true
-            },
-            success: function(data) {
-              console.log(data)
-            },
-            error: function(err) {
-              console.log(err)
-            }
-          });
+          if (ODSA.UTILS.scoringServerEnabled())
+          {
+            $.ajax({
+              url: "/pi_attempts",
+              type: "POST",
+              data: JSON.stringify(data),
+              contentType: "application/json; charset=utf-8",
+              datatype: "json",
+              xhrFields: {
+                withCredentials: true
+              },
+              success: function(data) {
+                console.log(data)
+              },
+              error: function(err) {
+                console.log(err)
+              }
+            });
+          }
+
 
           if (question.type == "textBoxAny") {
             //case where we accept any string as an answer
@@ -717,7 +721,7 @@
           }
           var current = this.queue.current;
           if (
-             current < this.skip_to || this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])
+             current <= this.skip_to || this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])
           ) {
             this.enableForwardButton();
             // if (($(`#${this.av_name}`).find('.REVEAL').length)) {
@@ -740,6 +744,10 @@
 
     //Peixuan packaged checkpoint jump functions into this method
     skipToCheckPoint(av_name) {
+      if (!ODSA.UTILS.scoringServerEnabled())
+      {
+          return -1;
+      }
       let data = {
         "frame_name": av_name,
       };
@@ -756,16 +764,20 @@
           withCredentials: true
         },
         success: function(data) {
-          skip_to = parseInt(data.result)
+          skip_to = parseInt(data.result) || -1
         },
         error: function(err) {
-          skip_to = 0;
+          skip_to = -1;
         }
       });
 
       //skip the slides to the checkpoint by triggering the forward button
       //this process need to be done after the page is fully loaded
-      if(skip_to !== 0){
+      // first question has index of 0
+      // if skip_to = 0, it means the first questions has completed by the user
+      // therefore, continue to second question.
+      // if user has not completed any question for the frame, then the default is set to -1.
+      if(skip_to >= 0){
         $(document).ready(function() {
           var counter = $("#"+av_name +" .jsavcounter").text().split("/");
           var limit = parseInt(counter[1]);

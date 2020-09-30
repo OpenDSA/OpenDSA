@@ -64,14 +64,190 @@
           "answer": "Read",
           "choices": ["Compute", "Write", "Read"]
         },
-        "q2": {
+        "q15": {
           "type": "select",
-          "description": "A Turing machine is defined as follows. It has a one-dimensional tape, divided into squares. This tape extends infinitely to the left and to the right. Each square can store one character. The machine has a single I/O head that at any instant in time is \"on\" one of the squares. The control unit of the machine is defined by a set of abstract $states$. At any given instant, the machine is said to be \"in\" one of the states, and has a set of actions that can be performed when in that state. From the current state, the machine will read the symbol on the current square, and will then do the following (depending on the value of the symbol that it sees): <br> 1. Overwrite that symbol with a new symbol, <br> 2. Move the tape head either left (L), right (R), or stay (S)",
-          "question": "Which of the following action can't a Turing Machine do?",
-          "answer": "Pop",
-          "choices": ["Go left", "Stay", "Pop", "Write"]
+          "description": "A Turing machine is defined as follows. It has a one-dimensional tape, divided into squares. This tape extends infinitely to the left and to the right.",
+          "question":"How many squares does the tape on the left have?",
+          "answer": "infinite",
+          "choices": ["infinite", "Zero", "8"]
         },
-        "q3": {
+        "q16": {
+          "type": "select",
+          "description": "A Turing machine is defined as follows. It has a one-dimensional tape, divided into squares. This tape extends infinitely to the left and to the right.<br/>Each square can store one character.",
+          "question":"How many squares are requiered to store the string $aaaa$ on the tape on the left?",
+          "answer": "4",
+          "choices": ["4", "1", "8"]
+        },
+        "q20": {
+          "type": "select",
+          "description": "A Turing machine is defined as follows. It has a one-dimensional tape, divided into squares. This tape extends infinitely to the left and to the right.<br/>Each square can store one character.",
+          "question":"The remaining squares will be marked blank by using the # symbol",
+          "answer": "True",
+          "choices": []
+        },
+        "q22": {
+          "type": "select",
+          "description": "A Turing machine is defined as follows. It has a one-dimensional tape, divided into squares. This tape extends infinitely to the left and to the right.<br/>Each square can store one character.<br/>The machine has a single I/O head that at any instant in time is \"on\" one of the squares.<br/>The control unit of the machine is defined by a set of abstract $states$.",
+          "question":"Suppose the TM on the left, how many states the TM have?",
+          "answer": "2",
+          "choices": ["2", "1", "3"]
+        },
+        "q23": {
+          "type": "select",
+          "description": "A Turing machine is defined as follows. It has a one-dimensional tape, divided into squares. This tape extends infinitely to the left and to the right.<br/>Each square can store one character.<br/>The machine has a single I/O head that at any instant in time is \"on\" one of the squares.<br/>The control unit of the machine is defined by a set of abstract $states$.<br/>At any given instant, the machine is said to be \"in\" one of the states, and has a set of actions that can be performed when in that state.",
+          "question":"In which state the machie is now?",
+          "answer": "$q_0$",
+          "choices": ["$q_0$", "$q_1$"]
+        },
+        "q24": {
+          "type": "select",
+          "description": "It is worth to note that once the TM starts, the tape head will start at the leftmost non-blank tape cell.<br/>From the current state, the machine will read the symbol on the current square",
+          "question":"The machine head will start at index 1 and will read the current cell letter: $a$",
+          "answer": "True",
+          "choices": []
+        },
+        "q25": {
+          "type": "select",
+          "description": "From the current state, the machine will read the symbol on the current square, and will then do the following (depending on the value of the symbol that it sees): <br> 1. Overwrite that symbol with a new symbol, <br> 2. Move the tape head either left (L), right (R), or stay (S)",
+          "question": "In TM tape, the # symbole means empty cell, or erase the current cell. Based on the current trasition, what will be the new value for the current tape cell?",
+          "answer": "#",
+          "choices": ["a", "#"]
+        },
+        "q26": {
+          "type": "select",
+          "description": "From the current state, the machine will read the symbol on the current square, and will then do the following (depending on the value of the symbol that it sees): <br> 1. Overwrite that symbol with a new symbol, <br> 2. Move the tape head either left (L), right (R), or stay (S)",
+          "question": "Based on the current trasition, what will be the head movement direction?",
+          "answer": "R: go to the cell on the right",
+          "choices": ["R: go to the cell on the right", "L: go to the cell on the left", "S: stay on the current cell"]
+        },
+        "q27": {
+          "type": "select",
+          "description": "From the current state, the machine will read the symbol on the current square, and will then do the following (depending on the value of the symbol that it sees): <br> 1. Overwrite that symbol with a new symbol, <br> 2. Move the tape head either left (L), right (R), or stay (S)",
+          "question": "Based on the current trasition, what will happen to the tape and the head?",
+          "answer": "erase the current letter and go to the cell on the right",
+          "choices": ["erase the current letter and go to the cell on the right", "leave the current letter and go to the cell on the right", "erase the current letter and go to the cell on the left", "leave the current letter and go to the cell on the left", "erase the current letter and stay at the current cell", "leave the current letter and stay at the current cell"]
+        },
+        "q28": {
+          "type": "select",
+          "description": "From the current state, the machine will read the symbol on the current square, and will then do the following (depending on the value of the symbol that it sees): <br> 1. Overwrite that symbol with a new symbol, <br> 2. Move the tape head either left (L), right (R), or stay (S)",
+          "question": "Based on the current trasition, what will happen to the tape and the head?",
+          "answer": "erase the current letter and go to the cell on the right",
+          "choices": ["erase the current letter and go to the cell on the right", "leave the current letter and go to the cell on the right", "erase the current letter and go to the cell on the left", "leave the current letter and go to the cell on the left", "erase the current letter and stay at the current cell", "leave the current letter and stay at the current cell"]
+        },
+        "q29": {
+          "type": "select",
+          "description": "From the current state, the machine will read the symbol on the current square, and will then do the following (depending on the value of the symbol that it sees): <br> 1. Overwrite that symbol with a new symbol, <br> 2. Move the tape head either left (L), right (R), or stay (S)",
+          "question": "Based on the current trasition, what will happen to the tape and the head?",
+          "answer": "erase the current letter and go to the cell on the right",
+          "choices": ["erase the current letter and go to the cell on the right", "leave the current letter and go to the cell on the right", "erase the current letter and go to the cell on the left", "leave the current letter and go to the cell on the left", "erase the current letter and stay at the current cell", "leave the current letter and stay at the current cell"]
+        },
+        "q30": {
+          "type": "select",
+          "description": "From the current state, the machine will read the symbol on the current square, and will then do the following (depending on the value of the symbol that it sees): <br> 1. Overwrite that symbol with a new symbol, <br> 2. Move the tape head either left (L), right (R), or stay (S)",
+          "question": "Based on the current trasition, what will happen to the tape and the head?",
+          "answer": "erase the current letter and go to the cell on the right",
+          "choices": ["erase the current letter and go to the cell on the right", "leave the current letter and go to the cell on the right", "erase the current letter and go to the cell on the left", "leave the current letter and go to the cell on the left", "erase the current letter and stay at the current cell", "leave the current letter and stay at the current cell"]
+        },
+        "q31": {
+          "type": "select",
+          "description": "From the current state, the machine will read the symbol on the current square, and will then do the following (depending on the value of the symbol that it sees): <br> 1. Overwrite that symbol with a new symbol, <br> 2. Move the tape head either left (L), right (R), or stay (S)",
+          "question": "Based on the current trasition, what will be the new state?",
+          "answer": "$q_1$",
+          "choices": ["$q_0$", "$q_1$"]
+        },
+        "q32": {
+          "type": "select",
+          "description": "From the current state, the machine will read the symbol on the current square, and will then do the following (depending on the value of the symbol that it sees): <br> 1. Overwrite that symbol with a new symbol, <br> 2. Move the tape head either left (L), right (R), or stay (S)",
+          "question": "Based on the current trasition, what will happen to the tape and the head?",
+          "answer": "leave the current letter and stay at the current cell",
+          "choices": ["erase the current letter and go to the cell on the right", "leave the current letter and go to the cell on the right", "erase the current letter and go to the cell on the left", "leave the current letter and go to the cell on the left", "erase the current letter and stay at the current cell", "leave the current letter and stay at the current cell"]
+        },
+        "q33": {
+          "type": "select",
+          "description": "Since $q_1$ is a member of the Final State set $F$, the machine immediately halts.",
+          "question": "Based on the current trasition, what will happen to the tape and the head?",
+          "answer": "leave the current letter and stay at the current cell",
+          "choices": ["erase the current letter and go to the cell on the right", "leave the current letter and go to the cell on the right", "erase the current letter and go to the cell on the left", "leave the current letter and go to the cell on the left", "erase the current letter and stay at the current cell", "leave the current letter and stay at the current cell"]
+        },
+        "q34": {
+          "type": "select",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$",
+          "question": "What is $Q$?",
+          "answer": "Set of states",
+          "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
+        },
+        "q35": {
+          "type": "select",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/> $Q$ is the set of states.",
+          "question": "What is $F$?",
+          "answer": "Set of Final states",
+          "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
+        },
+        "q36": {
+          "type": "select",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "question": "What is the value of $F$ for the machine on the left?",
+          "answer": "$\\{q_1\\}$",
+          "choices": ["$q_1$", "$\\{q_1\\}$"]
+        },
+        "q37": {
+          "type": "select",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "question": "What is $\\delta$?",
+          "answer": "Trasnition function",
+          "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
+        },
+        "q38": {
+          "type": "select",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states<br/>$\\delta$ is the tranisition function. $\\delta$ is a partial function from $Q \\times \\Gamma$ to $Q \\times \\Gamma \\times \\{L, R, S\\})$.",
+          "question": "$\\delta$ is a partial function from $Q \\times \\Gamma$ to $Q \\times \\Gamma \\times \\{L, R, S\\})$ means that the $\\delta$ function takes the current state and the current tape letter as parameters",
+          "answer": "True",
+          "choices": []
+        },
+        "q39": {
+          "type": "select",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states<br/>$\\delta$ is the tranisition function. $\\delta$ is a partial function from $Q \\times \\Gamma$ to $Q \\times \\Gamma \\times \\{L, R, S\\})$.",
+          "question": "$\\delta$ is a partial function from $Q \\times \\Gamma$ to $Q \\times \\Gamma \\times \\{L, R, S\\})$ means that the result of the $\\delta$ function is",
+          "answer": ["the target state", "the new tape letter that will be written on the current tape", "Move the head after writing the letter"],
+          "choices": ["the target state", "the new tape letter that will be written on the current tape", "Move the head after writing the letter", "Move the head before writing the letter"]
+        },
+        "q38": {
+          "type": "select",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "question": "What is $s$?",
+          "answer": "Start state",
+          "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
+        },
+        "q39": {
+          "type": "select",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "question": "What is $\\Sigma$?",
+          "answer": "Set of language alphabet",
+          "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
+        },
+        "q40": {
+          "type": "select",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "question": "What is $\\Sigma$ for the machine in the left?",
+          "answer": "$\\{a\\}$",
+          "choices": ["$\\{a\\}$", "$\\{a, #\\}$"]
+        },
+        "q41": {
+          "type": "select",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "question": "What is $\\Gamma$?",
+          "answer": "Set of tape alphabets",
+          "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
+        },
+        "q42": {
+          "type": "select",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "question": "What is $\\Gamma$ for the machine in the left?",
+          "answer": "$\\{a, #\\}$",
+          "choices": ["$\\{a\\}$", "$\\{a, #\\}$"]
+        },
+
+        "q_3": {
             "type":"select",
             "description":"The letters that can appear on the tape are an important part of the definition for a given Turing machine. The alphabet of the machine is these letters that may appear in the input. In addition to the letters of the alphabet that can define an input string, there is also the blank character. When talking about strings, since a blank is hard to see, we will use the # character to represent a blank character. Note that including # in the alphabet is for convenience only. We want to be able to read our specifications without being confused.",
             "question":"Which of the following definition about \"#\" in Turing Machine's $\\textbf{string}$ is correct?",
