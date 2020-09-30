@@ -483,22 +483,26 @@
             "question":  this.queue.current,
             "correct":   correct
           };
-          $.ajax({
-            url: "/pi_attempts",
-            type: "POST",
-            data: JSON.stringify(data),
-            contentType: "application/json; charset=utf-8",
-            datatype: "json",
-            xhrFields: {
-              withCredentials: true
-            },
-            success: function(data) {
-              console.log(data)
-            },
-            error: function(err) {
-              console.log(err)
-            }
-          });
+          if (ODSA.UTILS.scoringServerEnabled())
+          {
+            $.ajax({
+              url: "/pi_attempts",
+              type: "POST",
+              data: JSON.stringify(data),
+              contentType: "application/json; charset=utf-8",
+              datatype: "json",
+              xhrFields: {
+                withCredentials: true
+              },
+              success: function(data) {
+                console.log(data)
+              },
+              error: function(err) {
+                console.log(err)
+              }
+            });
+          }
+
 
           if (question.type == "textBoxAny") {
             //case where we accept any string as an answer
@@ -740,6 +744,10 @@
 
     //Peixuan packaged checkpoint jump functions into this method
     skipToCheckPoint(av_name) {
+      if (!ODSA.UTILS.scoringServerEnabled())
+      {
+          return -1;
+      }
       let data = {
         "frame_name": av_name,
       };
