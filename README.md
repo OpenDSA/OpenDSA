@@ -7,7 +7,7 @@ Data Structures and Algorithms courses, that deeply integrates textbook-quality
 content with algorithm visualizations and interactive, automatically assessed
 exercises.
 
-## Documentation
+## The Documentation
 
 System documentation can be found at http://opendsa.readthedocs.io/.
 
