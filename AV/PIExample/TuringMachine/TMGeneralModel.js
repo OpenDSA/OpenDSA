@@ -92,7 +92,7 @@ $(document).ready(function () {
   av.step();
 
   //frame 20
-  av.umsg(Frames.addQuestion("q17"));
+  av.umsg(Frames.addQuestion("q20"));
   av.step();
 
 
@@ -233,23 +233,89 @@ $(document).ready(function () {
   av.umsg(Frames.addQuestion("q42"));
   av.step();
 
-  //frame 40
-  av.umsg(Frames.addQuestion("q40"));
+  //frame 43
+  av.umsg(Frames.addQuestion("q43"));
   av.step();
 
-  //frame 40
-  av.umsg(Frames.addQuestion("q40"));
+  //frame 44
+  av.umsg(Frames.addQuestion("q44"));
   av.step();
 
-  //frame 40
-  av.umsg(Frames.addQuestion("q40"));
-  av.step();
-
-  //frame 5
-  av.umsg("To do computation, we have to have some conventions about starting and ending the process. The machine stops immediately if (1) it enters any $final$ $state$, or (2) it is in a state and scans a character for which there is no transition. (Note that there are many ways to define Turing Machines, and some definitions require an explicit reject state. We do not.)");
+  //frame 45
+  av.umsg("Turing machines operate as follows: For $q\\in Q$, $a \\in \\Sigma$ and $\\delta(q,a)=(p,b,m)$, when in state $q$ and scanning $a$, enter state $p$, replace $a$ with $b$, and move the head ($m$ is $L$, $R$, or $S$).");
   av.step();
   
-  
+  //frame 46
+  av.umsg("To do computation, we have to have some conventions about starting and ending the process. The machine stops immediately if (1) it enters any final state, or (2) it is in a state and scans a character for which there is no transition. (Note that there are many ways to define Turing Machines, and some definitions require an explicit reject state. We do not.)");
+  av.step();
 
+  //frame 47
+  av.umsg("However, this specification is missing something important. Regardless of what input you give it on the tape, it will execute something and eventually halt. But how do we know if the machine has determined that the string is in the language or not?");
+  av.step();
+
+  //frame 48
+  av.umsg("However, this specification is missing something important. Regardless of what input you give it on the tape, it will execute something and eventually halt. But how do we know if the machine has determined that the string is in the language or not?<br/>The answer is that we use a convention. First, we only care about what happens when the machine starts with the head scanning the first non-blank character.");
+  av.step();
+
+  //frame 49
+  av.umsg("However, this specification is missing something important. Regardless of what input you give it on the tape, it will execute something and eventually halt. But how do we know if the machine has determined that the string is in the language or not?<br/>The answer is that we use a convention. First, we only care about what happens when the machine starts with the head scanning the first non-blank character.<br/>Second, we use the convention that the string is accepted as being in the language if the machine halts in a Final State, and the string is rejected if the machine halts by following an undefined transition.");
+  av.step();
+
+  //frame 50
+  av.umsg(Frames.addQuestion("q50"));
+  av.step();
+
+  //frame 51
+  av.umsg(Frames.addQuestion("q51"));
+  av.step();
+
+  //frame 52
+  av.umsg("Here is the graphical view of the machine.");
+  var url = "../../../../AV/VisFormalLang/TM/Machines/TMabc.jff";
+  var graph1 = av.ds.TM({left: 50, top: 200, width: 600, height: 325, url: url});
+  av.step();
+
+  //frame 53
+  av.umsg(Frames.addQuestion("q53"));
+  var complicatedTape = av.ds.tape(["#", "a", "b", "c", "#", "#", "#"], 50, 90, "both");
+  av.step();
+
+  //frame 54
+  av.umsg(Frames.addQuestion("q54"));
+  complicatedTape.moveRight();
+  av.step();
+
+  //frame 55
+  av.umsg(Frames.addQuestion("q55"));
+  complicatedTape.moveRight();
+  av.step();
+
+  //frame 56
+  av.umsg(Frames.addQuestion("q56"));
+  complicatedTape.moveRight();
+  av.step();
+
+  //frame 57
+  av.umsg(Frames.addQuestion("q57"));
+  av.step();
+
+  //frame 58
+  av.umsg(Frames.addQuestion("q58"));
+  av.step();
+
+  //frame 59
+  av.umsg(Frames.addQuestion("q59"));
+  av.step();
+
+  //frame 60
+  av.umsg(Frames.addQuestion("q60"));
+  av.step();
+
+  //frame 61
+  av.umsg(Frames.addQuestion("q61"));
+  av.step();
+
+  //frame 62
+  av.umsg("Completed.");
   av.recorded();
 });
