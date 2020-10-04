@@ -1,10 +1,10 @@
 {
   "translations": {
     "en": {
-      "q1": {
+      "alph": {
         "type": "select",
-        "description": "Start with the alphabet set. We normally represent an alphabet set with $\\Sigma$. The alphabet set is a set of symbols (typically letters or characters, but it could include any symbols}.",
-        "question": "Which of the following are  alphabet sets?",
+        "description": "Start with an alphabet. We normally represent an alphabet with the symbol $\\Sigma$ (Sigma). An alphabet $\\Sigma$ is just a set of symbols. The symbols we typically use are letters or digits, but an alphabet could include any symbols}.",
+        "question": "Which of the following is an alphabet?",
         "answer": ["$\\{a, b, c\\}$", "$\\{0, 1\\}$", "$\\{?, a, x\\}$"],
         "choices": ["$\\{a, b, c\\}$", "$\\{0, 1\\}$", "$A$", "$\\{?, a, x\\}$"]
       },
@@ -164,7 +164,7 @@
       },
       "q13": {
         "type": "select",
-        "description": "Slightly different from the * operator, sometimes we want to have at least one copy of the thing that we are concatenating. Then we use +. One way of thinking of this: $\\Sigma^+ = \\Sigma^∗ − {\\lambda}.",
+        "description": "Slightly different from the * operator, sometimes we want to have at least one copy of the thing that we are concatenating. Then we use +. One way to think about this: $\\Sigma^+ = \\Sigma^∗ − {\\lambda}$.",
         "question": "Let $\\Sigma = \\{a, b\\}$, Which of the following are strings in $\\Sigma^+$?",
         "answer": ["$a$", "$b$", "$aa$", "$abbabb$"],
         "choices": [
@@ -179,7 +179,7 @@
       "q14": {
         "type": "select",
         "description": "Since languages are sets, all set operations can be applied to them.",
-        "question": " Let $\\Sigma$={$a$,$b$,$c$}, $L_1$={$ab$,$bc$,$aba$}, $L_2$={$c$,$bc$,$bcc$}. Which string sare included in $L_1∪L_2$ ?",
+        "question": " Let $\\Sigma$={$a$,$b$,$c$}, $L_1$={$ab$,$bc$,$aba$}, $L_2$={$c$,$bc$,$bcc$}. Which string sare included in $L_1 \\cup L_2$ ?",
         "answer": ["ab" ,"bc","aba","c","bcc"],
         "choices": ["ab", "bc","a", "bca", "aba","c", "bcc","cb"]
       },

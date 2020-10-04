@@ -12,12 +12,24 @@
 Introduction to Formal Languages
 ================================
 
-Formal Languages Major Concepts
--------------------------------
+Introduction
+------------
 
-.. inlineav:: MajorConceptsFF ff
-   :links: AV/PIFLAS21/MajorConceptsFF.css
-   :scripts: DataStructures/PIFrames.js AV/PIFLAS21/MajorConceptsFF.js
+In this module, we present the three major concepts for the semester:
+Languages, Grammars, and Automata.
+We also will introduce helpful notation that we will use throughout
+our discussions.
+
+
+Languages
+---------
+
+First we'll present the basic ideas related to a Language, as this
+word is used in Formal Languages.
+
+.. inlineav:: LanguagesFS ff
+   :links: AV/PIFLAS21/LanguagesFS.css
+   :scripts: AV/Peixuan/PIFrames/TestPIFrames.js AV/PIFLAS21/LanguagesFS.js
    :output: show
 
 
@@ -26,7 +38,7 @@ Introduction to Grammars
 
 .. inlineav:: GrammarIntroFF ff
    :links: AV/PIExample/GrammarIntroFF.css
-   :scripts: AV/PIExample/GrammarIntroFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+   :scripts: AV/Peixuan/PIFrames/TestPIFrames.js AV/PIExample/GrammarIntroFF.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
    :output: show
 
 Practicing Grammars
