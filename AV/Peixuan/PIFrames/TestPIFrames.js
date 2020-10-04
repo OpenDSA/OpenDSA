@@ -4,11 +4,14 @@
   var PIFrames = {
     questionType: "",
     submit: `<br><input type="submit" value="Submit"> </br>`,
-    feedback: `<p hidden id="feedback">Incorrect!</p>`,
+    correctFeedback: `<p hidden id="correctFeedback">Correct!</p>`,
+    incorrectFeedback: `<p hidden id="incorrectFeedback">Incorrect!</p>`,
     ParseTree: null,
     //Peixuan added locations parameter to let people can change frames location
     Injector(data, av_name, skip_to, locations = {top: 10, left: 5}) {
       var obj = {
+        debugFlag: window.PIFramesDebugFlag !== undefined ? window.PIFramesDebugFlag : false,
+
         myData: data,
 
         //if there are multiple frames on one page, we need a reference to the correct one
@@ -189,7 +192,11 @@
             this.queue.current = this.queue.elements.length - 1;
           }
         },
+
         disableForwardButton: function() {
+          if (this.debugFlag) {
+            return;
+          }
           var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
           $(forwardButton).css({
             "pointer-events": "none",
@@ -289,6 +296,22 @@
           }
         },
 
+        buildFeedback : function(question) {
+          feedback = ""
+          if (question.correctFeedback != undefined) {
+            feedback += `<p hidden id="correctFeedback">Correct: ${question.correctFeedback}</p>`;
+          } else {
+            feedback += PIFrames.correctFeedback
+          }
+          if (question.incorrectFeedback != undefined) {
+            feedback += `<p hidden id="incorrectFeedback">Incorrect: ${question.incorrectFeedback}</p>`;
+          } else {
+            feedback += PIFrames.incorrectFeedback
+          }
+          feedback += `<p hidden id="noAnswerFeedback">You need to answer the question first!</p>`;
+          return feedback
+        },
+
         //Peixuan added this method to generate a random sequence including
         //numbers of [0...'limit')
         randomSeqGenerator: function(limit){
@@ -327,7 +350,7 @@
           }*/
 
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
 
           return form.append(html.join(""));
         },
@@ -346,7 +369,7 @@
           var fElement = `<input type="radio" name=${this.av_name} value='False' style='margin-right: 5px'>False</></br>`;
           html.push(fElement);
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
           return form.append(html.join(""));
         },
 
@@ -366,7 +389,7 @@
           html.push(textBox);
 
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
 
           return form.append(html.join(""));
         },
@@ -410,7 +433,7 @@
           }
 
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
 
           return form.append(html.join(""));
         },
@@ -504,10 +527,9 @@
           }
 
           if(answer === undefined || (Array.isArray(answer) && answer.length === 0) || answer === ""){
-            $("." + av_name + "> #feedback").html(
-              `<p>You need to answer the question first!</p>`
-            );
-            $("." + av_name + "> #feedback").show();
+            $("." + av_name + "> #noAnswerFeedback").show();
+            $("." + av_name + "> #correctFeedback").hide();
+            $("." + av_name + "> #incorrectFeedback").hide();
             this.disableForwardButton();
             return;
           }
@@ -524,11 +546,6 @@
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
               $("." + av_name + "> input[type=submit]").hide();
               $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);
-
-              /*var forwardButton = $(`#${this.av_name}`).find(
-                "span.jsavforward"
-              );*/
-              //setTimeout(() => forwardButton.click(), 2000);
             }
           } else if (
             this.studentHasAnsweredQuestionCorrectly(
@@ -536,33 +553,11 @@
             )
           ) {
             this.enableForwardButton();
-
-            //Peixuan updated selectors
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
               $("." + av_name + "> input[type=submit]").hide();
-              //var timeFlag = 1;
-              /*if (question.correctFeedback != undefined) {
-                //Hide the button and show the correct statement
-                $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(
-                  `<p>Correct: ${question.correctFeedback}</p>`
-                );
-                //var timeFlag = 2;
-              } else {
-                $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(`<p>Correct!</p>`);
-              }*/
-              /*var forwardButton = $(`#${this.av_name}`).find(
-                "span.jsavforward"
-              );*/
-              //setTimeout(() => forwardButton.click(), 1000 * timeFlag);
-              if (question.correctFeedback != undefined) {
-                //Hide the button and show the correct statement
-                $("." + av_name + "> #feedback").html(
-                  `<p>Correct: ${question.correctFeedback}</p>`
-                );
-              } else {
-                $("." + av_name + "> #feedback").html(`<p>Correct!</p>`);
-              }
-              $("." + av_name + "> #feedback").show();
+              $("." + av_name + "> #noAnswerFeedback").hide();
+              $("." + av_name + "> #correctFeedback").show();
+              $("." + av_name + "> #incorrectFeedback").hide();
             }
 
             //the last question in the slideshow has been answered correctly, so enable the jsavend button
@@ -572,24 +567,10 @@
           } else {
             //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
-              //$("." + av_name + "> input[type=submit]").hide();
-
-              //var timeFlag = 1;
-              if (question.incorrectFeedback != undefined) {
-                $("." + av_name + "> #feedback").html(
-                  "Incorrect: " + `${question.incorrectFeedback}`
-                );
-                //timeFlag = 2;
-              } else{
-                $("." + av_name + "> #feedback").html("Incorrect!");
-              }
-              //$("." + av_name + "> input[type=submit]").show();
-              $("." + av_name + "> #feedback").show();
+              $("." + av_name + "> #noAnswerFeedback").hide();
+              $("." + av_name + "> #correctFeedback").hide();
+              $("." + av_name + "> #incorrectFeedback").show();
               this.disableForwardButton();
-              /*setTimeout(() => {
-
-                $("." + av_name + "> #feedback").hide();
-              }, 1000 * timeFlag);*/
             }
           }
         },

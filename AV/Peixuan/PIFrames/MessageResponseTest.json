@@ -48,6 +48,15 @@
                 "choices": "",
 				"correctFeedback": ["You inputed the right answer"],
 				"incorrectFeedback": ["The right anwser is ABC"]
+            },
+			"q6": {
+                "type": "select",
+				"description": "This is a single answer select question(multiple question)",
+                "question": "Anwser is $A$",
+                "answer": "$A$",
+                "choices": ["$A$", "B", "C", "D"],
+				"correctFeedback": ["$A$ is the right answer"],
+				"incorrectFeedback": ["The right anwser is $A$"]
             }
         }
     }
