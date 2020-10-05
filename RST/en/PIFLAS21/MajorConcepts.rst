@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Eunoh Cho, Mostafa Mohammed
+   :author: Susan Rodger, Mostafa Mohammed, Cliff Shaffer
    :satisfies: 
    :topic: Formal Languages Major Concepts
 
@@ -33,13 +33,17 @@ word is used in Formal Languages.
    :output: show
 
 
-Introduction to Grammars
-------------------------
+Grammars
+--------
 
-.. inlineav:: GrammarIntroFF ff
-   :links: AV/PIExample/GrammarIntroFF.css
-   :scripts: AV/Peixuan/PIFrames/TestPIFrames.js AV/PIExample/GrammarIntroFF.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+The following frameset will provide an introduction to the concept of
+a grammar, as used in Formal Languages.
+
+.. inlineav:: GrammarIntroFS ff
+   :links: AV/PIFLAS21/GrammarIntroFS.css
+   :scripts: AV/Peixuan/PIFrames/TestPIFrames.js AV/PIFLAS21/GrammarIntroFS.js
    :output: show
+
 
 Practicing Grammars
 -------------------
@@ -50,6 +54,7 @@ Practicing Grammars
 
 .. avembed:: Exercises/FLA/CharacterizeLang2.html ka
    :long_name: Characterizing a Language, Problem 2
+
 
 Automata
 --------
