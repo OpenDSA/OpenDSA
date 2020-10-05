@@ -11,6 +11,7 @@
       },
       "char":{
         "type": "multiple",
+        "description": "Start with an alphabet. We normally represent an alphabet with the symbol $\\Sigma$ (Sigma). An alphabet $\\Sigma$ is just a set of symbols. The symbols we typically use are letters or digits, but an alphabet could include any symbols}.",
         "question": "[T/F] c) $A$ is not an alphabet because it is just a character",
         "answer": "True",
         "choices": ["True", "False"]
@@ -225,9 +226,9 @@
       },
       "selfconset": {
         "type": "multiple",
-        "description": "Concatenating a set $L$ with itself $n$ times is written $L^n$. So $L^1$ is just $L$. Concatenating a set zero times ($L^0$) will give the empty set.",
+        "description": "Concatenating a set $L$ with itself $n$ times is written $L^n$. So $L^1$ is just $L$. Concatenating a set zero times ($L^0$) will give the set $\\{\\lambda\\}$. To help undestand why this is true, remember that the $L^* = L^+ \\cup \\{\\lambda\\}$",
         "question": "Let $\\Sigma$={$a$,$b$}, $L$={$ab$,$aba$}, What is $L^0$?",
-        "answer": ["$\\{\\}$"],
+        "answer": ["$\\{\\lambda\\}$"],
         "choices": ["$\\{\\lambda\\}$", "$\\{\\}$", "$\\lambda$"]
       },
       "setconx": {
@@ -240,7 +241,7 @@
       "setcon3": {
         "type": "multiple",
         "description": "We can concatenate a set with itself some number of times. For set $L$ concatenated $n$ times, as you might expect, we write this $L^n$.",
-        "question": "[T, F] For $L$=$\\{a, b\\}$, $L^3$ is all 3 letter combinations of $a$ and $b$.",
+        "question": "[T, F] For $L = \\{a, b\\}$, $L^3$ is all 3 letter combinations of $a$ and $b$.",
         "answer": "True",
         "choices": ["True", "False"]
       }

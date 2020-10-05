@@ -29,7 +29,7 @@ word is used in Formal Languages.
 
 .. inlineav:: LanguagesFS ff
    :links: AV/PIFLAS21/LanguagesFS.css
-   :scripts: AV/Peixuan/PIFrames/TestPIFrames.js AV/PIFLAS21/LanguagesFS.js
+   :scripts: DataStructures/PIFrames.js AV/PIFLAS21/LanguagesFS.js
    :output: show
 
 
@@ -41,7 +41,7 @@ a grammar, as used in Formal Languages.
 
 .. inlineav:: GrammarIntroFS ff
    :links: AV/PIFLAS21/GrammarIntroFS.css
-   :scripts: AV/Peixuan/PIFrames/TestPIFrames.js AV/PIFLAS21/GrammarIntroFS.js
+   :scripts: DataStructures/PIFrames.js AV/PIFLAS21/GrammarIntroFS.js
    :output: show
 
 
