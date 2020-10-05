@@ -18,13 +18,12 @@
       "label": "Java",
       "lang": "java"
     },
-    "C++": {
+    "Pseudo": {
       "ext": [
-        "cpp",
-        "h"
+        "txt"
       ],
-      "label": "C++",
-      "lang": "C++"
+      "label": "Pseudo",
+      "lang": "pseudo"
     }
   },
   "lang": "en",
@@ -37,6 +36,9 @@
   "chapters": {
     "Stuff": {
       "Abhishek/DynamicProgramming": {}
+    },
+    "Appendix": {
+      "Glossary": {}
     }
   }
 }

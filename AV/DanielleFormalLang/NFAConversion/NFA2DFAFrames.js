@@ -4,6 +4,7 @@ $(document).ready(function() {
     var av = new JSAV(av_name);
     var Frames = PIFRAMES.init(av_name);
     
+    var highlighted_nodes = [];
     // Load the config object with interpreter and code created by odsaUtils.js
     var config = ODSA.UTILS.loadConfig({av_name: av_name}),
         interpret = config.interpreter, // get the interpreter
@@ -23,9 +24,21 @@ $(document).ready(function() {
     var q4 = FA.addNode({left: 200, top: 210});
     var q5 = FA.addNode({left: 300, top: 10});
     var q6 = FA.addNode({left: 300, top: 210});
-    $(".jsavnode").onClick(function(e) {
-      console.log("Node was clicked!");
-      e.highlight();
+    $(".jsavnode").click(function(e) {
+      //console.log(e)
+      var selectedNode = FA.getNodeWithValue(e.currentTarget.outerText);
+      if (e.currentTarget.classList.contains("jsavhighlight")) {
+        selectedNode.unhighlight();
+        const index = highlighted_nodes.indexOf(selectedNode);
+        highlighted_nodes.splice(index, 1);
+        //console.log(highlighted_nodes)
+      }
+      else {
+        highlighted_nodes.push(selectedNode);
+        //console.log(selectedNode);
+        //console.log(highlighted_nodes);
+        selectedNode.highlight();
+      }
     });
     FA.disableDragging();
     toggleInitial(FA, q0);

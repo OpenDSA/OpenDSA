@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Eunoh Cho, Mostafa Mohammed
+   :author: Susan Rodger, Mostafa Mohammed, Cliff Shaffer
    :satisfies: 
    :topic: Formal Languages Major Concepts
 
@@ -12,22 +12,38 @@
 Introduction to Formal Languages
 ================================
 
-Formal Languages Major Concepts
--------------------------------
+Introduction
+------------
 
-.. inlineav:: MajorConceptsFF ff
-   :links: AV/PIFLAS21/MajorConceptsFF.css
-   :scripts: DataStructures/PIFrames.js AV/PIFLAS21/MajorConceptsFF.js
+In this module, we present the three major concepts for the semester:
+Languages, Grammars, and Automata.
+We also will introduce helpful notation that we will use throughout
+our discussions.
+
+
+Languages
+---------
+
+First we'll present the basic ideas related to a Language, as this
+word is used in Formal Languages.
+
+.. inlineav:: LanguagesFS ff
+   :links: AV/PIFLAS21/LanguagesFS.css
+   :scripts: DataStructures/PIFrames.js AV/PIFLAS21/LanguagesFS.js
    :output: show
 
 
-Introduction to Grammars
-------------------------
+Grammars
+--------
 
-.. inlineav:: GrammarIntroFF ff
-   :links: AV/PIExample/GrammarIntroFF.css
-   :scripts: AV/PIExample/GrammarIntroFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js 
+The following frameset will provide an introduction to the concept of
+a grammar, as used in Formal Languages.
+
+.. inlineav:: GrammarIntroFS ff
+   :links: AV/PIFLAS21/GrammarIntroFS.css
+   :scripts: DataStructures/PIFrames.js AV/PIFLAS21/GrammarIntroFS.js
    :output: show
+
 
 Practicing Grammars
 -------------------
@@ -38,6 +54,7 @@ Practicing Grammars
 
 .. avembed:: Exercises/FLA/CharacterizeLang2.html ka
    :long_name: Characterizing a Language, Problem 2
+
 
 Automata
 --------

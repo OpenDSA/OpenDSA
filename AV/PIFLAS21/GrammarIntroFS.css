@@ -1,0 +1,7 @@
+#GrammarIntroFS{
+    height: 500px;
+}
+
+#GrammarIntroFS .jsavhorizontalarray .jsavnode {
+    min-width: 160px !important;
+}

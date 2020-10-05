@@ -1,12 +1,75 @@
 {
   "translations": {
     "en": {
-      "q1": {
+      "q2": {
         "type": "multiple",
-        "description": "Recall the TM example that erases all a's from the tape. <br>Here are the configurations for the input \"aaaa\". <br><br> <i>($q_0$,<u>a</u> a a a) ⊢M ($q_0$,<u>#</u> a a a) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_0$,# <u>#</u> a a) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_0$,# # <u>#</u> a) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_0$,# # # <u>#</u>) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ⊢M ($q_1$,# # # # <u>#</u>) </i> <br><br> <b>Notation</b>: Given a string w, the notation <u>w</u> for a configuration means that the read/write head is scanning the leftmost character in w. <br><br> M is said to <b>halt</b> on input w iff (s,<u>w</u>) yields some halted configuration. <br> <br> M is said to <b>hang</b> on input w if (s,<u>w</u>) yields some hanging configuration.",
-        "question":"which of the description below about the underline <br> for \"a\" in \"$q_0$,<u>a</u> a a a\" is definitely correct?",
-        "answer": "the machine is scanning \"a\" now",
-        "choices": ["the machine is scanning \"a\" now", "the machine halt on input \"a\"", "the machine hang on input \"a\""]
+        "description": "A<b>configuration</b> for a Turing machine looks like this: <i>(q, <u>a</u>aba)</i> <br><br> This means that the TM is on state <i>q</i>, the tape contains <i><u>a</u>aba</i> and the read/write head position is on the underlined 'a'. Recall that we assume at the start of processing input for any TM, the read/write head position is on the leftmost non-blank character. <br> <br> Don't forget that the tape is infinite in both directions. So to the left of the leftmost 'a' in this configuration is an infinite number of blank squares, and to the right of the rightmost a is also an infinite number of blank squares.",
+        "question":"How many cells exists in a TM tape?",
+        "answer": "Infinity",
+        "choices": ["Infinity", "The same as the length of the input string", "The same as the length of the input string + some empry cells"]
+      },
+      "q6": {
+        "type": "multiple",
+        "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
+        "question":"What is the meanin of this configuration $(q_0, \\underline{a}aaa)$?",
+        "answer": ["The current state is $q_0$", "The tape has the letters $aaaa$", "The underlined $a$ represents the current read/write head location"],
+        "choices": ["The current state is $q_0$", "The tape has the letters $aaaa$", "The underlined $a$ represents the current read/write head location"]
+      },
+      "q7": {
+        "type": "multiple",
+        "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
+        "question":"Based on the current configuration $(q_0, \\underline{a}aaa)$, what is the next configuration?",
+        "answer": "$(q_0, \\underline{\\#}aaa)$",
+        "choices": ["$(q_0, \\#\\underline{\\#}aa)$", "$(q_0, \\#\\#\\underline{\\#}a)$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\underline{\\#}aaa)$"]
+      },
+      "q8": {
+        "type": "multiple",
+        "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
+        "question":"Based on the current configuration $(q_0, \\underline{a}aaa)\\vdash_M(q_0, \\underline{\\#}aaa)$, what is the next configuration?",
+        "answer": "$(q_0, \\#\\underline{\\#}aa)$",
+        "choices": ["$(q_0, \\#\\underline{\\#}aa)$", "$(q_0, \\#\\#\\underline{\\#}a)$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\underline{\\#}aaa)$"]
+      },
+      "q9": {
+        "type": "multiple",
+        "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
+        "question":"Based on the current configuration $(q_0, \\underline{a}aaa)\\vdash_M(q_0, \\underline{\\#}aaa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\underline{\\#}aa)$, what is the next configuration?",
+        "answer": "$(q_0, \\#\\#\\underline{\\#}a)$",
+        "choices": ["$(q_0, \\#\\underline{\\#}aa)$", "$(q_0, \\#\\#\\underline{\\#}a)$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\underline{\\#}aaa)$"]
+      },
+      "q10": {
+        "type": "multiple",
+        "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
+        "question":"Based on the current configuration $(q_0, \\underline{a}aaa)\\vdash_M(q_0, \\underline{\\#}aaa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\underline{\\#}aa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\#\\underline{\\#}a)$, what is the next configuration?",
+        "answer": "$(q_0, \\#\\#\\#\\underline{\\#})$",
+        "choices": ["$(q_0, \\#\\underline{\\#}aa)$", "$(q_0, \\#\\#\\underline{\\#}a)$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\underline{\\#}aaa)$"]
+      },
+      "q11": {
+        "type": "multiple",
+        "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
+        "question":"Based on the current configuration $(q_0, \\underline{a}aaa)\\vdash_M(q_0, \\underline{\\#}aaa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\underline{\\#}aa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\#\\underline{\\#}a)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\#\\#\\underline{\\#})$, what is the next configuration?",
+        "answer": "$(q_1, \\#\\#\\#\\#\\underline{\\#})$",
+        "choices": ["$(q_0, \\#\\underline{\\#}aa)$", "$(q_0, \\#\\#\\underline{\\#}a)$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\underline{\\#}aaa)$"]
+      },
+      "q15": {
+        "type": "multiple",
+        "description": "What is a \"hanging\" configuration? The machine hangs when it goes into an infinite loop. Anytime you provide the mechanism to create loops that only end on a condition, you have also created the conditions that might allow an infinite loop to happen. <br><br><br><br<br><br><br><br><br><br>Consider this machine on strings of a's and b's that scans right until it sees a 'b'. If it never sees a 'b', then it will never halt. This means that it goes into an infinite loop (or hangs) anytime the input string does not contain a 'b'.",
+        "question":"What will happen if the tape has no $b$?",
+        "answer": "The machine will go to infinite loop",
+        "choices": ["The machine will go to infinite loop", "The machine will halt and reject the string", "The machine will halt and accept the string"]
+      },
+      "q16": {
+        "type": "multiple",
+        "description": "What is a \"hanging\" configuration? The machine hangs when it goes into an infinite loop. Anytime you provide the mechanism to create loops that only end on a condition, you have also created the conditions that might allow an infinite loop to happen. <br><br><br><br<br><br><br><br><br><br>Consider this machine on strings of a's and b's that scans right until it sees a 'b'. If it never sees a 'b', then it will never halt. This means that it goes into an infinite loop (or hangs) anytime the input string does not contain a 'b'.",
+        "question":"Since the machine entered an infinity loop, it is in hanging configuration",
+        "answer": "True",
+        "choices": []
+      },
+      "q17": {
+        "type": "multiple",
+        "description": "<i>Turing Acceptors and Turing Transducers</i> <br><br>Turing machines accpets and recjects string based on the language they represent.",
+        "question":"What are other models we know that can accept/reject strings?",
+        "answer": ["NFA", "DFA", "PDA"],
+        "choices": ["NFA", "DFA", "PDA"]
       },
       "q2": {
         "type": "multiple",

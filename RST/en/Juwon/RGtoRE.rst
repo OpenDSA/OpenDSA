@@ -7,15 +7,13 @@
    :author: Juwon Park
    :requires: Testing building book
    :satisfies:
-   :topic: RE to RG
+   :topic: RG to RE
 
-Regular Expression to Regular Grammar
+Regular Grammar to Regular Expression
 =======================
 
-JF
+RGtoRE
 ----------
 
-.. inlineav:: REtoRG ss
-    :links: AV/Juwon/REtoRG.css
-    :scripts: AV/Juwon/REtoRG.js
-    :align: justify
+.. avembed:: AV\Juwon\RGtoRE.html ss
+   :long_name: Regular Grammar to Regular Exp
