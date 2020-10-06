@@ -125,18 +125,26 @@ Quadratic Sorts
 
    .. math::
 
-      \begin{array}{rccc}
-      &\textbf{Insertion}&\textbf{Bubble}&\textbf{Selection}\\
-      \textbf{Comparisons:}\\
-      \textrm{Best Case}&\Theta(n)&\Theta(n^2)&\Theta(n^2)\\
-      \textrm{Average Case}&\Theta(n^2)&\Theta(n^2)&\Theta(n^2)\\
-      \textrm{Worst Case}&\Theta(n^2)&\Theta(n^2)&\Theta(n^2)\\
-      \\
-      \textbf{Swaps:}\\
-      \textrm{Best Case}&0&0&\Theta(n)\\
-      \textrm{Average Case}&\Theta(n^2)&\Theta(n^2)&\Theta(n)\\
-      \textrm{Worst Case}&\Theta(n^2)&\Theta(n^2)&\Theta(n)\\
-      \end{array}
+   +--------------------+--------------------+---------------------+--------------------+
+   |  Comparisons       | Insertion          | Bubble              | Selection          |
+   +====================+====================+=====================+====================+
+   |  Best Case         | :math:`\theta(n)`  | :math:`\theta(n^2)` | :math:`\theta(n^2)`|
+   +--------------------+--------------------+---------------------+--------------------+
+   |  Average Case      | :math:`\theta(n^2)`| :math:`\theta(n^2)` | :math:`\theta(n^2)`|
+   +--------------------+--------------------+---------------------+--------------------+
+   |  Worst Case        | :math:`\theta(n^2)`| :math:`\theta(n^2)` | :math:`\theta(n^2)`|
+   +--------------------+--------------------+---------------------+--------------------+
+
+   +--------------------+--------------------+---------------------+--------------------+
+   |  Swaps             | Insertion          | Bubble              | Selection          |
+   +====================+====================+=====================+====================+
+   |  Best Case         | :math:`0`          | :math:`0`           | :math:`\theta(n)`  |
+   +--------------------+--------------------+---------------------+--------------------+
+   |  Average Case      | :math:`\theta(n^2)`| :math:`\theta(n^2)` | :math:`\theta(n)`  |
+   +--------------------+--------------------+---------------------+--------------------+
+   |  Worst Case        | :math:`\theta(n^2)`| :math:`\theta(n^2)` | :math:`\theta(n)`  |
+   +--------------------+--------------------+---------------------+--------------------+
+
 
 .. slide:: Code Tuning (1)
 
