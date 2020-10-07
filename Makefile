@@ -189,11 +189,6 @@ $(SLIDE_BOOKS) : % : config/%.json min pyVenvCheck
 	@echo "Created an Slide-eBook in Books/: $@"
 
 
-# one book config that does not match the naming convention:
-FL2019: min
-	python $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
-
-
 # Target eBooks with unique recipies below:::
 CS3notes: min pyVenvCheck
 	python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms

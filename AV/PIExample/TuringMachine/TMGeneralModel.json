@@ -171,88 +171,157 @@
         },
         "q34": {
           "type": "select",
-          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, q_0, F, \\delta)$",
           "question": "What is $Q$?",
           "answer": "Set of states",
           "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
         },
         "q35": {
           "type": "select",
-          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/> $Q$ is the set of states.",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, q_0, F, \\delta)$.",
           "question": "What is $F$?",
           "answer": "Set of Final states",
           "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
         },
         "q36": {
           "type": "select",
-          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, q_0, F, \\delta)$.",
           "question": "What is the value of $F$ for the machine on the left?",
           "answer": "$\\{q_1\\}$",
           "choices": ["$q_1$", "$\\{q_1\\}$"]
         },
         "q37": {
           "type": "select",
-          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, q_0, F, \\delta)$.",
           "question": "What is $\\delta$?",
           "answer": "Trasnition function",
           "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
         },
         "q38": {
           "type": "select",
-          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states<br/>$\\delta$ is the tranisition function. $\\delta$ is a partial function from $Q \\times \\Gamma$ to $Q \\times \\Gamma \\times \\{L, R, S\\})$.",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, q_0, F, \\delta)$.",
           "question": "$\\delta$ is a partial function from $Q \\times \\Gamma$ to $Q \\times \\Gamma \\times \\{L, R, S\\})$ means that the $\\delta$ function takes the current state and the current tape letter as parameters",
           "answer": "True",
           "choices": []
         },
         "q39": {
           "type": "select",
-          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states<br/>$\\delta$ is the tranisition function. $\\delta$ is a partial function from $Q \\times \\Gamma$ to $Q \\times \\Gamma \\times \\{L, R, S\\})$.",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, q_0, F, \\delta)$.",
           "question": "$\\delta$ is a partial function from $Q \\times \\Gamma$ to $Q \\times \\Gamma \\times \\{L, R, S\\})$ means that the result of the $\\delta$ function is",
           "answer": ["the target state", "the new tape letter that will be written on the current tape", "Move the head after writing the letter"],
           "choices": ["the target state", "the new tape letter that will be written on the current tape", "Move the head after writing the letter", "Move the head before writing the letter"]
         },
-        "q38": {
+        "q40": {
           "type": "select",
-          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
-          "question": "What is $s$?",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, q_0, F, \\delta)$.",
+          "question": "What is $q_0$?",
           "answer": "Start state",
           "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
         },
-        "q39": {
+        "q41": {
           "type": "select",
-          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, q_0, F, \\delta)$.",
           "question": "What is $\\Sigma$?",
           "answer": "Set of language alphabet",
           "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
         },
-        "q40": {
+        "q42": {
           "type": "select",
-          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, q_0, F, \\delta)$.",
           "question": "What is $\\Sigma$ for the machine in the left?",
           "answer": "$\\{a\\}$",
           "choices": ["$\\{a\\}$", "$\\{a, #\\}$"]
         },
-        "q41": {
+        "q43": {
           "type": "select",
-          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, q_0, F, \\delta)$.",
           "question": "What is $\\Gamma$?",
           "answer": "Set of tape alphabets",
           "choices": ["Set of states", "Set of language alphabet", "Set of tape alphabets", "Set of Final states", "Start state", "Trasnition function"]
         },
-        "q42": {
+        "q44": {
           "type": "select",
-          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, s, F, \\delta)$, where<br/>$Q$ is the set of states.<br/>$F$ is the set of Final states",
+          "description": "A Turing machine is $\\textbf{formally defined}$ as $(Q, \\Sigma, \\Gamma, q_0, F, \\delta)$.",
           "question": "What is $\\Gamma$ for the machine in the left?",
           "answer": "$\\{a, #\\}$",
           "choices": ["$\\{a\\}$", "$\\{a, #\\}$"]
         },
-
-        "q_3": {
-            "type":"select",
-            "description":"The letters that can appear on the tape are an important part of the definition for a given Turing machine. The alphabet of the machine is these letters that may appear in the input. In addition to the letters of the alphabet that can define an input string, there is also the blank character. When talking about strings, since a blank is hard to see, we will use the # character to represent a blank character. Note that including # in the alphabet is for convenience only. We want to be able to read our specifications without being confused.",
-            "question":"Which of the following definition about \"#\" in Turing Machine's $\\textbf{string}$ is correct?",
-            "answer":"A blank character",
-            "choices": ["Stay at current state", "Pop the letter in current state", "Overwrite letter in current state with \"#\"", "A blank character"]
+        "q50": {
+          "type": "select",
+          "description": "Here is an example of a machine that is slightly more complicated. This Turing machine accepts the language $L(a^*b^*c^*)$ <br> <br> $M = (Q, &Sigma;, &Gamma;, s, F, &delta;)$ <br> &bull; $Q = \\{q_0, q_1, q_2, q_3\\}$, <br> &bull; $&Sigma; = \\{a, b, c\\}$, <br> &bull; $&Gamma; = &Sigma; &cup; \\{\\#\\} $, <br> &bull; $s = q_0$, <br> &bull; $F = q_2$, <br> &bull; $&delta; = $ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;--------------------------------- <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q$ &nbsp; &nbsp; $&Gamma;$ &nbsp; &nbsp; $(q, &Gamma;, \\{L, R, S\\})$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;---------------------------------<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_0$ &nbsp;&nbsp;$a$ &nbsp; &nbsp;&nbsp; $(q_0, a, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_0$ &nbsp;&nbsp;$b$ &nbsp; &nbsp;&nbsp; $(q_1, b, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_0$ &nbsp;&nbsp;$c$ &nbsp; &nbsp;&nbsp; $(q_2, c, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_0$ &nbsp;&nbsp;$\\#$ &nbsp; &nbsp; $(q_3, \\#, S)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_1$ &nbsp;&nbsp;$b$ &nbsp; &nbsp;&nbsp; $(q_1, b, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_1$ &nbsp;&nbsp;$c$ &nbsp; &nbsp;&nbsp; $(q_2, c, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_1$ &nbsp;&nbsp;$\\#$ &nbsp;&nbsp;&nbsp; $(q_3, \\#, S)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_2$ &nbsp;&nbsp;$c$ &nbsp; &nbsp;&nbsp; $(q_2, c, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_2$ &nbsp;&nbsp;$\\#$ &nbsp;&nbsp;&nbsp; $(q_3, \\#, S)$",
+          "question": "What is the type of this language?",
+          "answer": "Regular",
+          "choices": ["Regular", "Context-Free", "Neither"]
+        },
+        "q51": {
+          "type": "select",
+          "description": "Here is an example of a machine that is slightly more complicated. This Turing machine accepts the language $L(a^*b^*c^*)$ <br> <br> $M = (Q, &Sigma;, &Gamma;, s, F, &delta;)$ <br> &bull; $Q = \\{q_0, q_1, q_2, q_3\\}$, <br> &bull; $&Sigma; = \\{a, b, c\\}$, <br> &bull; $&Gamma; = &Sigma; &cup; \\{\\#\\} $, <br> &bull; $s = q_0$, <br> &bull; $F = q_2$, <br> &bull; $&delta; = $ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;--------------------------------- <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q$ &nbsp; &nbsp; $&Gamma;$ &nbsp; &nbsp; $(q, &Gamma;, \\{L, R, S\\})$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;---------------------------------<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_0$ &nbsp;&nbsp;$a$ &nbsp; &nbsp;&nbsp; $(q_0, a, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_0$ &nbsp;&nbsp;$b$ &nbsp; &nbsp;&nbsp; $(q_1, b, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_0$ &nbsp;&nbsp;$c$ &nbsp; &nbsp;&nbsp; $(q_2, c, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_0$ &nbsp;&nbsp;$\\#$ &nbsp; &nbsp; $(q_3, \\#, S)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_1$ &nbsp;&nbsp;$b$ &nbsp; &nbsp;&nbsp; $(q_1, b, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_1$ &nbsp;&nbsp;$c$ &nbsp; &nbsp;&nbsp; $(q_2, c, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_1$ &nbsp;&nbsp;$\\#$ &nbsp;&nbsp;&nbsp; $(q_3, \\#, S)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_2$ &nbsp;&nbsp;$c$ &nbsp; &nbsp;&nbsp; $(q_2, c, R)$ <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $q_2$ &nbsp;&nbsp;$\\#$ &nbsp;&nbsp;&nbsp; $(q_3, \\#, S)$",
+          "question": "Does the machine change the tape content while processing language strings?",
+          "answer": "No",
+          "choices": ["No", "Yes"]
+        },
+        "q53": {
+          "type": "select",
+          "description": "Let us see how this machine will accept/reject strings<br/>Let us start by the string $abc$",
+          "question": "What is the result of $\\delta(q_0, a)$",
+          "answer": "$q_0, a, R$",
+          "choices": ["$q_0, a, R$", "$q_1, b, R$", "$q_2, c, R$"]
+        },
+        "q54": {
+          "type": "select",
+          "description": "Let us see how this machine will accept/reject strings<br/>Let us start by the string $abc$",
+          "question": "What is the result of $\\delta(q_0, b)$",
+          "answer": "$q_1, b, R$",
+          "choices": ["$q_0, a, R$", "$q_1, b, R$", "$q_2, c, R$"]
+        },
+        "q55": {
+          "type": "select",
+          "description": "Let us see how this machine will accept/reject strings<br/>Let us start by the string $abc$",
+          "question": "What is the result of $\\delta(q_1, c)$",
+          "answer": "$q_2, c, R$",
+          "choices": ["$q_3, #, S$", "$q_1, b, R$", "$q_2, c, R$"]
+        },
+        "q56": {
+          "type": "select",
+          "description": "Let us see how this machine will accept/reject strings<br/>Let us start by the string $abc$",
+          "question": "What is the result of $\\delta(q_2, #)$",
+          "answer": "$q_3, #, S$",
+          "choices": ["$q_3, #, S$", "$q_2, c, R$"]
+        },
+        "q57": {
+          "type": "select",
+          "description": "Let us see how this machine will accept/reject strings<br/>Let us start by the string $abc$",
+          "question": "The machine will accept the string as the machine entered a final state.",
+          "answer": "True",
+          "choices": []
+        },
+        "q58": {
+          "type": "select",
+          "description": "Let us see how this machine will accept/reject strings<br/>What about the string $abac$?",
+          "question": "What is the result of $\\delta(q_0, a)$",
+          "answer": "$q_0, a, R$",
+          "choices": ["$q_0, a, R$", "$q_1, b, R$", "$q_2, c, R$"]
+        },
+        "q59": {
+          "type": "select",
+          "description": "Let us see how this machine will accept/reject strings<br/>What about the string $abac$?",
+          "question": "What is the result of $\\delta(q_0, b)$",
+          "answer": "$q_1, b, R$",
+          "choices": ["$q_0, a, R$", "$q_1, b, R$", "$q_2, c, R$"]
+        },
+        "q60": {
+          "type": "select",
+          "description": "Let us see how this machine will accept/reject strings<br/>What about the string $abac$?",
+          "question": "What is the result of $\\delta(q_1, a)$",
+          "answer": "There is no trabsition for $\\delta(q_1, a)$",
+          "choices": ["There is no trabsition for $\\delta(q_1, a)$", "$q_1, b, R$", "$q_2, c, R$"]
+        },
+        "q61": {
+          "type": "select",
+          "description": "Let us see how this machine will accept/reject strings<br/>What about the string $abac$?",
+          "question": "What will happen?",
+          "answer": "The machine will halt by following an undefined transition. So the string is rejected",
+          "choices": ["The machine will halt by following an undefined transition. So the string is rejected", "The machine will try other transitions"]
         }
       }
     }

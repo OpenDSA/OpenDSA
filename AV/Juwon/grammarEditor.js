@@ -2577,6 +2577,7 @@ $(document).ready(function () {
 
   // interactive converting regular grammar(RG) to regular expression(RE)
   var RGtoRE = function () {
+    var result = "";
     if(checkLHSVariables()){
         alert('Your production is unrestricted on the left hand side');
         return;
@@ -2585,12 +2586,50 @@ $(document).ready(function () {
     startParse();
     $('.jsavcontrols').hide();
     $(m.element).css("margin-left", "auto");
-    jsav.umsg('Complete the RG to RE.');
     if (productions.length === 0) {
         alert('No grammar.');
         return;
       }
-    alert(productions[0][2]);
+    var pDict = {};     // a dictionary mapping left sides to right sides
+    for (var i = 0; i < productions.length; i++) {
+       if (!(productions[i][0] in pDict)) {
+         pDict[productions[i][0]] = [];
+        }
+        pDict[productions[i][0]].push(productions[i][2]);
+    }
+
+    // Start writting expression first with the starting state
+    writeRE(productions[0][0]);
+    
+    // function for writing regular expression
+    function writeRE (state) {
+      for (var i = 0; i < pDict[state].length; i++){
+        var productstr = pDict[state][i];
+        if ((pDict[state].length > 1) && (i === 0)){
+          result += "(";
+        }
+        for (var j = 0; j < productstr.length; j++){
+          var product = productstr.charAt(j)
+          if (variables.indexOf(product) === -1){
+            var temp = "";
+            result = result.concat(temp, product);
+          }
+          else{
+            writeRE(product);
+          }
+        }
+        if (pDict[state].length > 1){
+          if (i === (pDict[state].length-1)){
+            result += ")";
+          }
+          else{
+            result += " + ";
+          }
+        }
+      }
+    }
+    jsav.umsg("The regular Expression is: \n" + result);
+
   }
 
   // interactive converting context-free grammar to NPDA
