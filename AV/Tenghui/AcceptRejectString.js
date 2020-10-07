@@ -4,7 +4,7 @@ $(document).ready(function() {
     var av_name = "TraceEvenBinaryDFACON";
     var av = new JSAV(av_name);
     var RDNumber = Math.floor(Math.random() * 4).toString();
-    var filenameList = ["EvenBinaryDFACON", "EvenBinaryEvenOnesDFA", "DFA_noTrapState", "DFA_withTrapState", "NFA2DFA2a", "NFA2DFA2b", "NFA2DFAexample1"];
+    var filenameList = ["EvenBinaryDFACON", "EvenBinaryEvenOnesDFA", "DFA_noTrapState", "DFA_withTrapState", "NFA2DFA2a", "NFA2DFA2b", "NFA2DFAexample1", "NFA2DFAexample2", "NFAexample1", "NFAexample2", "NFAtoRE", "stminDFA1", "stminDFAE2"];
     var pickNumber = Math.floor(Math.random() * 6);
     var url = "../../../AV/VisFormalLang/FA/Machines/" + filenameList[pickNumber] + ".jff";
     //var url = "../../../AV/Tenghui/AcceptRejectString" + RDNumber + ".jff";
