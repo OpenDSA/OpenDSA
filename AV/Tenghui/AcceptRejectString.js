@@ -4,7 +4,7 @@ $(document).ready(function() {
     var av_name = "TraceEvenBinaryDFACON";
     var av = new JSAV(av_name);
     var RDNumber = Math.floor(Math.random() * 4).toString();
-    var filenameList = ["DFA_noTrapState", "DFA_withTrapState", "EvenBinaryDFACON", "EvenBinaryEvenOnesDFA", "NFA2DFA2a", "NFA2DFA2b", "NFA2DFAexample1"];
+    var filenameList = ["EvenBinaryDFACON", "EvenBinaryEvenOnesDFA", "DFA_noTrapState", "DFA_withTrapState", "NFA2DFA2a", "NFA2DFA2b", "NFA2DFAexample1"];
     var pickNumber = Math.floor(Math.random() * 6);
     var url = "../../../AV/VisFormalLang/FA/Machines/" + filenameList[pickNumber] + ".jff";
     //var url = "../../../AV/Tenghui/AcceptRejectString" + RDNumber + ".jff";
@@ -16,8 +16,16 @@ $(document).ready(function() {
     var stringLength = Math.floor(Math.random() * 10) + 1;
     var inputString = [];
     var i;
-    for (i = 0; i < stringLength; i++){
-        inputString.push(Math.floor(Math.random() * 2).toString());
+    var abString= ["a", "b"];
+    if (pickNumber === 0 || pickNumber === 1) {
+        for (i = 0; i < stringLength; i++) {
+            inputString.push(Math.floor(Math.random() * 2).toString());
+        }
+    }
+    else{
+        for (i = 0; i < stringLength; i++) {
+            inputString.push(abString[(Math.floor(Math.random() * 2).toString())]);
+        }
     }
     acceptor.visualize([inputString],
         {left: 500});
