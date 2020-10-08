@@ -77,6 +77,11 @@ for the call.
    :align: center
    :figwidth: 90%
 
+.. odsafig:: Images/FibGraph.png
+   :width: 800
+   :align: center
+   :figwidth: 90%
+
 
 .. inlineav:: FibGraphCON dgm
    :links:   /AV/Abhishek/FibGraphCON.css
@@ -328,7 +333,7 @@ The other is tabulation.
 Conceivably we could adopt one of several computation orders,
 although the most "natural" is to start filling the array for row 0
 (which indicates a successful solution only for a knapsack of size
-:math:`k_0`).
+:math:`k_0`).	
 We then fill in the succeeding rows
 from :math:`i=1` to :math:`n`.
 
