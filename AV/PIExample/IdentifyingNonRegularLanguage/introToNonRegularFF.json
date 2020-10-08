@@ -24,7 +24,7 @@
         },
         "q7": {
           "type": "select",
-          "question":"Let’s start with some basic questions. Socend, if a language $L$ is infinite, is $L$ regular?",
+          "question":"Let’s start with some basic questions. Second, if a language $L$ is infinite, is $L$ regular?",
           "description": "What do you think?",
           "answer": "Maybe",
           "choices": ["Yes! All infinite languages are regular.", "No", "Maybe"]

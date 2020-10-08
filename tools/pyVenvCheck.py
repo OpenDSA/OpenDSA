@@ -10,13 +10,13 @@ venvErrMsg = '''\
 This is not an activated python virtual environment!!!
 
 Platform    Shell             Activation Command
-POSIX       bash/zsh          source .pyVenv/bin/activate
-            fish              . .pyVenv/bin/activate.fish
+Linux       bash/zsh          source .pyVenv/bin/activate
+            fish              source .pyVenv/bin/activate.fish
             csh/tcsh          source .pyVenv/bin/activate.csh
             PowerShell Core   .pyVenv/bin/Activate.ps1
 Windows     cmd.exe           .pyVenv\\Scripts\\activate.bat
             PowerShell        .pyVenv\\Scripts\\Activate.ps1
-            others            .pyVenv\\Scripts\\activate
+            others            . .pyVenv\\Scripts\\activate
 
 Deactivation command:     deactivate
 To make a fresh pyVenv:   make clean-venv pull venv

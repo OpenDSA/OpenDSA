@@ -4,11 +4,15 @@
   var PIFrames = {
     questionType: "",
     submit: `<br><input type="submit" value="Submit"> </br>`,
-    feedback: `<p hidden id="feedback">Incorrect!</p>`,
+    correctFeedback: `<p hidden id="correctFeedback">Correct!</p>`,
+    incorrectFeedback: `<p hidden id="incorrectFeedback">Incorrect!</p>`,
     ParseTree: null,
     //Peixuan added locations parameter to let people can change frames location
     Injector(data, av_name, skip_to, locations = {top: 10, left: 5}) {
       var obj = {
+        //set the parameter to "true" to enable debug mode
+        debugFlag: window.PIFramesDebugFlag !== undefined ? window.PIFramesDebugFlag : false,
+
         myData: data,
 
         //if there are multiple frames on one page, we need a reference to the correct one
@@ -189,7 +193,12 @@
             this.queue.current = this.queue.elements.length - 1;
           }
         },
+
         disableForwardButton: function() {
+          //don't disable forward button if debug mode is on
+          if (this.debugFlag) {
+            return;
+          }
           var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
           $(forwardButton).css({
             "pointer-events": "none",
@@ -289,6 +298,23 @@
           }
         },
 
+        //build feedback element here to support the Latex
+        buildFeedback : function(question) {
+          feedback = ""
+          if (question.correctFeedback != undefined) {
+            feedback += `<p hidden id="correctFeedback">Correct: ${question.correctFeedback}</p>`;
+          } else {
+            feedback += PIFrames.correctFeedback
+          }
+          if (question.incorrectFeedback != undefined) {
+            feedback += `<p hidden id="incorrectFeedback">Incorrect: ${question.incorrectFeedback}</p>`;
+          } else {
+            feedback += PIFrames.incorrectFeedback
+          }
+          feedback += `<p hidden id="noAnswerFeedback">You need to answer the question first!</p>`;
+          return feedback
+        },
+
         //Peixuan added this method to generate a random sequence including
         //numbers of [0...'limit')
         randomSeqGenerator: function(limit){
@@ -320,14 +346,8 @@
             html.push(radio);
           }
 
-          /*
-          for (var i = 0; i < choices.length; i++) {
-            var radio = `<input type="radio" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
-            html.push(radio);
-          }*/
-
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
 
           return form.append(html.join(""));
         },
@@ -346,7 +366,7 @@
           var fElement = `<input type="radio" name=${this.av_name} value='False' style='margin-right: 5px'>False</></br>`;
           html.push(fElement);
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
           return form.append(html.join(""));
         },
 
@@ -366,7 +386,7 @@
           html.push(textBox);
 
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
 
           return form.append(html.join(""));
         },
@@ -410,7 +430,7 @@
           }
 
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
 
           return form.append(html.join(""));
         },
@@ -483,23 +503,27 @@
             "question":  this.queue.current,
             "correct":   correct
           };
-          $.ajax({
-            url: "/pi_attempts",
-            type: "POST",
-            data: JSON.stringify(data),
-            contentType: "application/json; charset=utf-8",
-            datatype: "json",
-            xhrFields: {
-              withCredentials: true
-            },
-            success: function(data) {
-              console.log(data)
-            },
-            error: function(err) {
-              console.log(err)
-            }
-          });
+          if (ODSA.UTILS.scoringServerEnabled())
+          {
+            $.ajax({
+              url: "/pi_attempts",
+              type: "POST",
+              data: JSON.stringify(data),
+              contentType: "application/json; charset=utf-8",
+              datatype: "json",
+              xhrFields: {
+                withCredentials: true
+              },
+              success: function(data) {
+                console.log(data)
+              },
+              error: function(err) {
+                console.log(err)
+              }
+            });
+          }
 
+          /*
           if (question.type == "textBoxAny") {
             //case where we accept any string as an answer
             this.setStudentAnswer(
@@ -508,10 +532,6 @@
             );
             this.enableForwardButton();
 
-            //Peixuan updated selectors
-            /*if ($("input[type=submit]").is(":visible")) {
-              $("input[type=submit]").hide();
-              $(".PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);*/
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
               $("." + av_name + "> input[type=submit]").hide();
               $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);
@@ -567,6 +587,57 @@
                 $("." + av_name + "> input[type=submit]").show();
                 $("." + av_name + "> #feedback").hide();
               }, 1000 * timeFlag);
+            }
+          }*/
+
+          //feedback elements are built when the question is injected to the slideshow
+          //so we only need to show or hide them accordingly
+          //the auto advance is disabled to allow students to read the feedback
+          if(answer === undefined || (Array.isArray(answer) && answer.length === 0) || answer === ""){
+            $("." + av_name + "> #noAnswerFeedback").show();
+            $("." + av_name + "> #correctFeedback").hide();
+            $("." + av_name + "> #incorrectFeedback").hide();
+            this.disableForwardButton();
+            return;
+          }
+
+          if (question.type == "textBoxAny") {
+            //case where we accept any string as an answer
+            this.setStudentAnswer(
+              this.queue.elements[current],
+              question.answer
+            );
+            this.enableForwardButton();
+
+            //Peixuan updated selectors
+            if ($("." + av_name + "> input[type=submit]").is(":visible")) {
+              $("." + av_name + "> input[type=submit]").hide();
+              $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);
+            }
+          } else if (
+            this.studentHasAnsweredQuestionCorrectly(
+              this.queue.elements[current]
+            )
+          ) {
+            this.enableForwardButton();
+            if ($("." + av_name + "> input[type=submit]").is(":visible")) {
+              $("." + av_name + "> input[type=submit]").hide();
+              $("." + av_name + "> #noAnswerFeedback").hide();
+              $("." + av_name + "> #correctFeedback").show();
+              $("." + av_name + "> #incorrectFeedback").hide();
+            }
+
+            //the last question in the slideshow has been answered correctly, so enable the jsavend button
+            if (current == this.queue.elements.length - 1) {
+              this.enableFastForwardButton();
+            }
+          } else {
+            //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
+            if ($("." + av_name + "> input[type=submit]").is(":visible")) {
+              $("." + av_name + "> #noAnswerFeedback").hide();
+              $("." + av_name + "> #correctFeedback").hide();
+              $("." + av_name + "> #incorrectFeedback").show();
+              this.disableForwardButton();
             }
           }
         },
@@ -717,7 +788,7 @@
           }
           var current = this.queue.current;
           if (
-             current < this.skip_to || this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])
+             current <= this.skip_to || this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])
           ) {
             this.enableForwardButton();
             // if (($(`#${this.av_name}`).find('.REVEAL').length)) {
@@ -740,6 +811,10 @@
 
     //Peixuan packaged checkpoint jump functions into this method
     skipToCheckPoint(av_name) {
+      if (!ODSA.UTILS.scoringServerEnabled())
+      {
+          return -1;
+      }
       let data = {
         "frame_name": av_name,
       };
@@ -756,16 +831,20 @@
           withCredentials: true
         },
         success: function(data) {
-          skip_to = parseInt(data.result)
+          skip_to = parseInt(data.result) || -1
         },
         error: function(err) {
-          skip_to = 0;
+          skip_to = -1;
         }
       });
 
       //skip the slides to the checkpoint by triggering the forward button
       //this process need to be done after the page is fully loaded
-      if(skip_to !== 0){
+      // first question has index of 0
+      // if skip_to = 0, it means the first questions has completed by the user
+      // therefore, continue to second question.
+      // if user has not completed any question for the frame, then the default is set to -1.
+      if(skip_to >= 0){
         $(document).ready(function() {
           var counter = $("#"+av_name +" .jsavcounter").text().split("/");
           var limit = parseInt(counter[1]);

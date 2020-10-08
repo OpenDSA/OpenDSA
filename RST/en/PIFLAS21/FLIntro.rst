@@ -107,7 +107,7 @@ and internally we verify that your machine is correct by running unit
 tests against your machine to see if its answers match ours.
 
 
-What we will do
+What We Will Do
 ---------------
 
 It is really hard to reason about the abilities of a modern Intel or AMD

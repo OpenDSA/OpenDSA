@@ -40,7 +40,7 @@
         "type": "select",
         "description": "$\\textbf{Theorem}$ (Remove unit productions):<br/>Let $G=(V,T,S,P)$ be a CFG without $\\lambda$-productions. Then $\\exists$ CFG $G=(V\\prime,T\\prime,S,P\\prime)$ that does not have any unit-productions and $L(G)=L(G\\prime)$.",
         "question": "What if the grammar has $\\lambda$-productions",
-        "answer": "We must rempve $\\lambda$-productions first before removing unit productions",
+        "answer": "We must remove $\\lambda$-productions first before removing unit productions",
         "choices": ["We must remove $\\lambda$-productions first before removing unit productions", "In this case, unit productions can not be removed"]
       },
       "q9":{

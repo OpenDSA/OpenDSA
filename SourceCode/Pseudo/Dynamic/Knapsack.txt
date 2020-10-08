@@ -1,0 +1,13 @@
+/* *** ODSATag: Knapsack *** */
+A[0, 0] = OMIT;
+for (k=1; i<=K; k++)
+  A[0, k] = NONE;
+A[0, item[0]] = INCLUDE;
+for (i=1; i<n; i++) {
+  A[i, 0] = OMIT;
+  for (k=1; k<=K; k++) {
+    if ((k <= item[i]) and (A[i-1, k - item[i]] != NONE))
+      A[i, k] = A[i-1, k - item[i]];
+    else
+      A[i, k] A[i-1, k];
+/* *** ODSAendTag: Knapsack *** */

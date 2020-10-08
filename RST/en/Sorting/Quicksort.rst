@@ -263,7 +263,7 @@ occur.
 To simplify things, we assumed that every permutation is equally
 likely to occur.
 Thus, finding the average means summing up the cost for every
-permutation and dividing by the number of permuations
+permutation and dividing by the number of permutations
 (which is :math:`n!`).
 We know that some of these :math:`n!` inputs cost :math:`O(n^2)`.
 But the sum of all the permutation costs has to be
