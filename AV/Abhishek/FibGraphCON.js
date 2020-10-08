@@ -23,7 +23,6 @@ $(document).ready(function() {
         // BOTTOM
         av.g.rect(bx, 5, 60, 15);
 
-        if (parseInt(index) >= 0)
         av.label(index,
             {top:  -13, left: bx+25});
         bx = bx + 60;
