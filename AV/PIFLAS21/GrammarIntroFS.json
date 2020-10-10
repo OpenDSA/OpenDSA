@@ -1,206 +1,183 @@
 {
   "translations": {
     "en": {
-      "q1": {
+      "grammar": {
         "type": "multiple",
-        "description":"One way to describe a language is in the form of a grammar. ",
+        "description": "One way to describe a language is in the form of a <b>grammar</b>. Below is a grammar that describes a really small subset of the English language.",
         "question":"What is a grammar?",
         "answer": "A way to describe languages",
-        "choices": ["A way to describe languages", "A way to spell sentence right", "A way to write languages", "A way to arrange words in sentence"]
+        "choices": ["A way to describe languages", "A way to spell sentence right", "A way to arrange words in sentences"]
       },
-      "q111": {
+      "terminal": {
         "type": "select",
-        "description": "Any grammar has variables (also called 'non-terminals') and terminals. Terminals are generally strings. Variables are things that ultimately are replaced by terminals.",
+        "description": "Any grammar has <b>variables</b> (also called <b>non-terminals</b>) and <b>terminals</b>. Terminals are generally strings. Variables are things that ultimately are replaced by terminals. In our example grammar, the variables are in brackets $\\lt \\gt$. (We won't always use brackets around variables for every example, though.)",
         "question": "Which of these are terminals?",
         "answer": ["a", "ball", "hit"],
-        "choices": ["&lt;noun&gt;", "a", "ball", "&lt;verb&gt;", "hit"]
+        "choices": ["$\\lt noun\\gt$", "a", "ball", "$\\lt verb\\gt$", "hit"],
+        "correctFeedback": ["Variables have brackets. Terminals do not."],
+        "incorrectFeedback": ["Variables have brackets. Terminals do not."]
       },
-      "q121": {
+      "nonterminal": {
         "type": "select",
-        "description": "Any grammar has variables (also called 'non-terminals') and terminals. Terminals are generally strings. Variables are things that ultimately are replaced by terminals.",
+        "description": "Any grammar has <b>variables</b> (also called <b>non-terminals</b>) and <b>terminals</b>. Terminals are generally strings. Variables are things that ultimately are replaced by terminals. In our example grammar, the variables are in brackets $\\lt \\gt$. (We won't always use brackets around variables for every example, though.)",
         "question": "Which of these are variables (non-terminals)?",
-        "answer": ["<noun>", "<verb>"],
-        "choices": ["&lt;noun&gt;", "a", "ball", "&lt;verb&gt;", "hit"]
+        "answer": ["$\\lt noun\\gt$", "$\\lt verb\\gt$"],
+        "choices": ["$\\lt noun\\gt$", "a", "ball", "$\\lt verb\\gt$", "hit"],
+        "correctFeedback": ["Variables have brackets. Terminals do not."],
+        "incorrectFeedback": ["Variables have brackets. Terminals do not."]
       },
-      "q2": {
-        "type": "multiple",
-        "description": "Below is the example of a language. You can form any sentence using the language",
-        "question":" Which sentence belongs to the example language?",
-        "answer": "The ball hit the Fritz",
-        "choices": ["The hit ball Frits","The ball hit the Fritz","The Frits hit ran","Ran Frits"]
-        
-      },
-      "q2_2":{
+      "production": {
         "type": "select",
-        "description": "In this example, we put <> brackets around all of the variables to make them easier to recognize.",
-        "question":"What are the variables in the given grammar?",
-        "answer": ["<sentence>", "<subject>","<verb>", "<d.o.>", "<article>", "<noun>"],
-        "choices": ["&lt;sentence&gt;", "&lt;subject&gt;", "&lt;verb&gt;", "&lt;d.o.&gt;", "&lt;article&gt;", "&lt;noun&gt;", "a", "the", "Fritz", "ran", "ate"]
+        "description": "Grammars have a collection of productions. Productions are separated by '|'. In this example, each production replaces a variable with some series of variables and terminals.",
+        "question": "The $\\lt d.o.\\gt$ variable has two productions associated with it. Which are they?",
+        "answer": ["$\\lt article\\gt\\lt noun\\gt$", "$\\lt noun\\gt$"],
+        "choices": ["$\\lt article\\gt\\lt noun\\gt$", "$\\lt noun\\gt$", "$\\lt d.o.\\gt$", "$\\lt subject\\gt$", "Fritz", "$\\lt article\\gt$", "$\\lt noun\\gt | \\lt noun\\gt$"]
       },
-      "q3": {
-        "type": "select",
-        "description": "In this example, we put <> brackets around all of the variables to make them easier to recognize.",
-        "question":"What are the terminals in the given grammar?",
-        "answer":  ["a", "the", "Fritz", "ran", "ate"],
-        "choices": ["&lt;sentence&gt;", "&lt;subject&gt;", "&lt;verb&gt;", "&lt;d.o.&gt;", "&lt;article&gt;", "&lt;noun&gt;", "a", "the", "Fritz", "ran", "ate" ]
-      },
-      "q4":{
-        "type": "select",
-        "description": "Grammars have a collection of productions. In this example, each production replaces a variable with some series of variables and terminals. ",
-        "question":"The &lt;d.o.&gt; variable has two productions associated with it. Select two productions of &lt;d.o.&gt;.",
-        "answer": ["<article><noun>", "<noun>"],
-        "choices": ["&lt;article&gt;&lt;noun&gt;", "&lt;noun&gt;", "&lt;verb&gt;", "&lt;subject&gt;", "&lt;sentence&gt;"]
-      },
-      "q5":{
+      "start":{
         "type": "multiple",
-        "description": " All 'sentences' in the 'language' are generated by starting with the &lt;sentence&gt; variable and using productions to reach the desired sentence. Let’s derive “Fritz hit the ball” from",
-        "question":"Which variable we must start with to derive sentence 'Fritz hit the ball'?",
-        "answer": "<sentence>",
-        "choices": ["&lt;sentence&gt;", "&lt;subject&gt;", "&lt;verb&gt;", "&lt;d.o.&gt;", "&lt;article&gt;", "&lt;noun&gt;"]
+        "description": "All sentences in the language are generated by starting with the $\\lt sentence\\gt$ variable and using productions to reach the desired sentence.",
+        "question":"Which variable must we start with?",
+        "answer": "$\\lt sentence\\gt$",
+        "choices": ["$\\lt sentence\\gt$", "$\\lt subject\\gt$", "$\\lt verb\\gt$", "$\\lt d.o.\\gt$", "$\\lt article\\gt$", "$\\lt noun\\gt$"]
       },
-      "q6":{
+      "sentence": {
         "type": "multiple",
-        "description": "The first step is to replace &lt;sentence&gt; with &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt;",
-        "question":"What is the substitute for &lt;subject&gt; variable to derive sentence ‘Frits hit the ball’?",
-        "answer": "<noun>",
-        "choices": ["&lt;sentence&gt;","&lt;verb&gt;","&lt;noun&gt;","&lt;d.o&gt;","&lt;article&gt;"]
+        "description": "You can form only certain sentences using the language",
+        "question": "Which sentence belongs to this language?",
+        "answer": "the ball hit the Fritz",
+        "choices": ["the hit ball Fritz", "the ball hit the Fritz", "the Fritz hit ran", "ran Fritz"],
+        "correctFeedback": ["See if you can determine which series of productions were used to generate this sentence when starting at $\\lt sentence\\gt$."],
+        "incorrectFeedback": ["There is no way to start with $\\lt sentence\\gt$ and replace each variable through production rules to reach this sentence."]
       },
-      "q7":{
+      "first":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt;",
-        "question": "What is the substitute for &lt;noun&gt; to derive sentence ‘Frits hit the ball’?",
+        "description": "We are now going to show how to <b>derive</b> a sentence from the grammar, beginning with the start variable and using a series of productions. The sentence is 'Fritz hit the ball'. The first step is to replace $\\lt sentence\\gt$ with the only production available: $\\lt subject\\gt\\lt verb\\gt\\lt d.o.\\gt$. The next steps will replace these variables in turn.",
+        "question":"What is the substitute for $\\lt subject\\gt$ to derive the sentence ‘Fritz hit the ball’?",
+        "answer": "$\\lt noun\\gt$",
+        "choices": ["$\\lt sentence\\gt$", "$\\lt noun\\gt$", "$\\lt article\\gt$", "$\\lt article\\gt\\lt noun\\gt$", "Fritz"],
+        "correctFeedback": ["$\\lt subject\\gt$ has two productions to chose from, but only one of them can lead to a sentence that starts with 'Fritz'."]
+      },
+      "Fritz":{
+        "type": "multiple",
+        "description": "We used the symbol $\\rightarrow$ to indicate that a substitution takes place. So far, we have $\\lt sentence\\gt\\ \\rightarrow\\ \\lt subject\\gt\\lt verb\\gt\\lt d.o.\\gt\\ \\rightarrow\\ \\lt noun\\gt\\lt verb\\gt\\lt d.o.\\gt$.",
+        "question": "What is the substitute for $\\lt noun\\gt$ to derive the sentence 'Fritz hit the ball'?",
         "answer": "Fritz",
-        "choices": ["hit", "ran", "ate", "Fritz", "ball"]
+        "choices": ["$\\lt sentence\\gt$", "$\\lt noun\\gt$", "$\\lt article\\gt$", "$\\lt article\\gt\\lt noun\\gt$", "Fritz"]
       },
-      "q8":{
+      "verb":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt;",
-        "question":"What is the substitute for &lt;verb&gt; to derive sentence ‘Frits hit the ball’?",
+        "description": "Now we have 'Fritz $\\lt verb\\gt\\lt d.o.\\gt$'. Continue substituting variables.",
+        "question":"What is the substitute for $\\lt verb\\gt$ to derive the sentence 'Fritz hit the ball'?",
         "answer": "hit",
         "choices": ["hit", "ran", "ate", "ball", "the"]
       },
-      "q9":{
+      "do":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz &lt;verb&gt;&lt;d.o&gt; $\\rightarrow$ Fritz hit &lt;d.o&gt;",
-        "question":"What is the substitute for &lt;d.o.&gt;? to continue deriving the sentence ‘Frits hit the ball’",
-        "answer":  "<article><noun>",
-        "choices": ["&lt;noun&gt;", "&lt;article&gt;&lt;noun&gt;", "&lt;sentence&gt;", "&lt;verb&gt;", "&lt;article&gt;"]
+        "description": "Now we have 'Fritz hit $\\lt d.o.\\gt$'. Continue substituting variables.",
+        "question":"What is the substitute for $\\lt d.o.\\gt$ to continue deriving the sentence 'Fritz hit the ball'?",
+        "answer": "$\\lt article\\gt\\lt noun\\gt$",
+        "choices": ["$\\lt article\\gt\\lt noun\\gt$", "$\\lt noun\\gt$", "the", "ball", "the ball"]
       },
-      "q10":{
+      "article":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz &lt;verb&gt;&lt;d.o&gt; $\\rightarrow$ Fritz hit &lt;d.o.&gt; $\\rightarrow$ Fritz hit &lt;article&gt;&lt;noun&gt;",
-        "question":"What is the substitute for &lt;article&gt; to derive sentence ‘Frits hit the ball’?",
+        "description": "Now we have 'Fritz hit $\\lt article\\gt\\lt noun\\gt$'. Continue substituting variables.",
+        "question":"What is the substitute for $\\lt article\\gt$ to derive the sentence 'Fritz hit the ball'?",
         "answer": "the",
         "choices": ["ran", "ate", "ball", "the", "an"]
-
       },
-      "q11":{
+      "noun":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz &lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz hit &lt;d.o.&gt; $\\rightarrow$ Fritz hit &lt;article&gt;&lt;noun&gt; $\\rightarrow$ Fritz hit the &lt;noun&gt;",
-        "question":"What is the substitute for &lt;noun&gt; to derive sentence ‘Frits hit the ball’?",
+        "description": "Last step! Now we have 'Fritz hit the $\\lt noun\\gt$'.",
+        "question":"What is the substitute for $\\lt noun\\gt$ to derive the sentence `Fritz hit the ball'?",
         "answer":"ball",
         "choices": ["ran", "ate", "ball", "an", "a"]
       },
-      "q12":{
+      "bad":{
         "type": "multiple",
-        "description": "Continue substituting variables &lt;sentence&gt; $\\rightarrow$ &lt;subject&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ &lt;noun&gt;&lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz &lt;verb&gt;&lt;d.o.&gt; $\\rightarrow$ Fritz hit &lt;d.o.&gt; $\\rightarrow$ Fritz hit &lt;article&gt;&lt;noun&gt; $\\rightarrow$ Fritz hit the &lt;noun&gt;",
-        "question":"Can we derive these sentences 'The ball hit Fritz', or 'The ball ate the ball'?",
+        "description": "The final derivation is: $\\lt sentence\\gt\\ \\rightarrow\\ \\lt subject\\gt\\lt verb\\gt\\lt d.o.\\gt\\ \\rightarrow\\ \\lt noun\\gt\\lt verb\\gt\\lt d.o.\\gt\\ \\rightarrow$ Fritz $\\lt verb\\gt\\lt d.o.\\gt\\ \\rightarrow$ Fritz hit $\\lt d.o.\\gt\\ \\rightarrow$ Fritz hit $\\lt article\\gt\\lt noun\\gt\\ \\rightarrow$ Fritz hit the $\\lt noun\\gt\\ \\rightarrow$ Fritz hit the ball.",
+        "question":"Can we derive these two sentences? 'The ball hit Fritz' or 'The ball ate the ball'?",
         "answer":"Yes",
         "choices": ["Yes", "No"]
       },
-      "q13":{
+      "syntax":{
         "type": "multiple",
-        "description": "The reason why we can derive “The ball hit Fritz”, and “The ball ate the ball” is that grammars only focus on the correct syntax sentences.",
-        "question":"Do grammars provide sentences with incorrect semantics (meaning)?",
+        "description": "The reason why we can derive “The ball hit Fritz”, and “The ball ate the ball” is that grammars only focus on the correct <b>syntax</b>.",
+        "question":"Can grammars generate sentences with bad <b>semantics</b> (they are meaningless)?",
         "answer":"Yes",
         "choices": ["Yes", "No"]
       },
-      "q14":{
+      "leftside":{
         "type": "select",
-        "description": "The formal definition of grammar is G=(V,T,S,P) where V is a finite set of variables (nonterminals) T is a finite set of terminals (generally, these are strings). S is the start variable (S∈V) P is a set of productions (rules) in the form x→y means to replace x by y",
-        "question":"What does x represent?",
+        "description": "The formal definition for a grammar is $G = (V, T, S, P)$ where $V$ is a finite set of variables (nonterminals), $T$ is a finite set of terminals (generally, these are strings), $S$ is the start variable $(S \\in V$), and $P$ is a set of productions (rules) of the form $x \\rightarrow y$. This means to replace $x$ by $y$",
+        "question":"What does $x$ represent?",
         "answer":["Variables", "Terminals"],
-        "choices": ["Variables", "Terminals"]
-
+        "choices": ["Variables", "Terminals"],
+        "correctFeedback": ["It might seem strange that $x$ can include both variables and terminals. But we will see later on that certain types of grammars can be quite flexible."]
       },
-      "q15":{
+      "rightside":{
         "type": "select",
-        "description": "The formal definition of grammar is G=(V,T,S,P) where V is a finite set of variables (nonterminals) T is a finite set of terminals (generally, these are strings). S is the start variable (S∈V) P is a set of productions (rules) in the form x→y means to replace x by y",
-        "question":"What does y represent?",
+        "description": "The formal definition for a grammar is $G = (V, T, S, P)$ where $V$ is a finite set of variables (nonterminals), $T$ is a finite set of terminals (generally, these are strings), $S$ is the start variable $(S \\in V$), and $P$ is a set of productions (rules) of the form $x \\rightarrow y$. This means to replace $x$ by $y$",
+        "question":"What does $y$ represent?",
         "answer":["Variables", "Terminals"],
-        "choices": ["Variables", "Terminals"]
+        "choices": ["Variables", "Terminals"],
+        "correctFeedback": ["It should be no surprise that the right-hand side of a production can contain a mix of variables and terminals."]
       },
-      "q16":{
+      "parts":{
         "type": "select",
-        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
-        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is S?",
-        "answer":["Start Variable"],
-        "choices": ["Variables", "Terminals", "Start Variable", "Grammar Production Rules", "Alphabet Set"]
+        "description": "What is the language of the grammar? Answer: It is all strings formed from the set of terminals ($T^∗$ is all possible strings over $T$), such that if you start with $S$ (the start symbol for the grammar), then you can derive the string.",
+        "question":"Consider the grammar: $G = (\\{S\\},\\ \\{a,b\\},\\ S,\\ P)$, where $P=\\{S \\rightarrow aaS,\\ S \\rightarrow b\\}$. What is $S$?",
+        "answer":["Start Variable", "Variables"],
+        "choices": ["Variables", "Terminals", "Start Variable", "Grammar Production Rules"]
       },
-      "q17":{
+      "parts2":{
         "type": "select",
-        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
-        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is T?",
+        "description": "What is the language of the grammar? Answer: It is all strings formed from the set of terminals ($T^∗$ is all possible strings over $T$), such that if you start with $S$ (the start symbol for the grammar), then you can derive the string.",
+        "question":"Consider the grammar: $G = (\\{S\\},\\ \\{a, b\\},\\ S,\\ P)$, where $P=\\{S \\rightarrow aaS,\\ S \\rightarrow b\\}$. What is $\\{a, b\\}$?",
         "answer":["Terminals"],
-        "choices": ["Variables", "Terminals", "Start Variable", "Grammar Production Rules", "Alphabet Set"]
+        "choices": ["Variables", "Terminals", "Start Variable", "Grammar Production Rules"]
       },
-      "q18":{
+      "LG":{
         "type": "select",
-        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
-        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is V?",
-        "answer":["Variables"],
-        "choices": ["Variables", "Terminals", "Start Variable", "Grammar Production Rules", "Alphabet Set"]
+        "description": "What is the language of the grammar? Answer: It is all strings formed from the set of terminals ($T^∗$ is all possible strings over $T$), such that if you start with $S$ (the start symbol for the grammar), then you can derive the string.",
+        "question":"Consider the grammar: $G = (\\{S\\},\\ \\{a, b\\},\\ S,\\ P)$, where $P=\\{S \\rightarrow aaS,\\ S \\rightarrow b\\}$. What does $L(G)$ mean?",
+        "answer":["The language represented by the grammar"],
+        "choices": ["The language represented by the grammar", "The grammar"]
       },
-      "q19":{
+      "G":{
         "type": "select",
-        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
-        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is {a, b}?",
-        "answer":["Alphabet Set"],
-        "choices": ["Variables", "Terminals", "Start Variable", "Grammar Production Rules", "Alphabet Set"]
+        "description": "What is the language of the grammar? Answer: It is all strings formed from the set of terminals ($T^∗$ is all possible strings over $T$), such that if you start with $S$ (the start symbol for the grammar), then you can derive the string.",
+        "question":"Consider the grammar: $G = (\\{S\\},\\ \\{a, b\\},\\ S,\\ P)$, where $P=\\{S \\rightarrow aaS,\\ S \\rightarrow b\\}$. What is $G$?",
+        "answer":["The grammar"],
+        "choices": ["The language represented by the grammar", "The grammar"]
       },
-      "q20":{
+      "LGlist":{
         "type": "select",
-        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
-        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is L(G) means?",
-        "answer":["Language represented by the grammar"],
-        "choices": ["Language represented by the grammar", "The Grammar"]
+        "description": "What is the language of the grammar? Answer: It is all strings formed from the set of terminals ($T^∗$ is all possible strings over $T$), such that if you start with $S$ (the start symbol for the grammar), then you can derive the string.",
+        "question":"Consider the grammar: $G = (\\{S\\},\\ \\{a, b\\},\\ S,\\ P)$, where $P=\\{S \\rightarrow aaS,\\ S \\rightarrow b\\}$. What is $L(G)$?",
+        "answer":["$\\{b, aab, aaaab, ... \\} = \\{(aa)^nb\\ |\\ n \\ge 0\\}$"],
+        "choices": ["$\\{b, aab, aaaab, ... \\} = \\{(aa)^nb\\ |\\ n \\ge 0\\}$", "$\\{ab, aaab, aaaaab, ... \\} = \\{a(aa)^nb\\ |\\ n \\ge 0\\}$", "$\\{bb, aabb, aaaabb, ... \\} = \\{(aa)^nbb\\ |\\ n \\ge 0\\}$"]
       },
-      "q21":{
+      "whichrules":{
         "type": "select",
-        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
-        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is G?",
-        "answer":["The Grammar"],
-        "choices": ["Language represented by the grammar", "The Grammar"]
+        "description": "What is the language of the grammar? Answer: It is all strings formed from the set of terminals ($T^∗$ is all possible strings over $T$), such that if you start with $S$ (the start symbol for the grammar), then you can derive the string.",
+        "question":"Consider $L(G) = \\{a^nccb^n\\ |\\ n > 0\\}$. Which of the following sets of productions rules derive $L(G)$?",
+        "answer": ["$P = \\{S \\rightarrow aSb\\ |\\ aAb,\\ A \\rightarrow cc\\}$", "$P = \\{S \\rightarrow aSb\\ |\\ accb\\}$", "$P = \\{S \\rightarrow aSb\\ |\\ B,\\ B \\rightarrow aAb,\\ A \\rightarrow cc\\}$"],
+        "choices": ["$P = \\{S \\rightarrow aSb\\ |\\ aAb,\\ A \\rightarrow cc\\}$", "$P = \\{S \\rightarrow aSb\\ |\\ accb\\}$", "$P = \\{S \\rightarrow aSb\\ |\\ B,\\ B \\rightarrow aAb,\\ A \\rightarrow cc\\}$"]
       },
-      "q22":{
+      "pickstrings":{
         "type": "select",
-        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
-        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P=\\{S \\rightarrow aaS, S \\rightarrow b\\}$. What is L(G)?",
-        "answer":["$\\{b, aab, aaaab, ... \\} = \\{(aa)^nb | n \\ge 0\\}$"],
-        "choices": ["$\\{b, aab, aaaab, ... \\} = \\{(aa)^nb | n \\ge 0\\}$", "$\\{ab, aaab, aaaaab, ... \\} = \\{a(aa)^nb | n \\ge 0\\}$", "$\\{bb, aabb, aaaabb, ... \\} = \\{(aa)^nbb | n \\ge 0\\}$"]
-      },
-      "q23":{
-        "type": "select",
-        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
-        "question":"Suppose the following language: $L(G) = \\{a^nccb^n | n > 0\\}$, which of the following productions rules belong to the grammar for L(G)?",
-        "answer":["$P=\\{S \\rightarrow aSb | aAb, A \\rightarrow cc\\}$", "$P=\\{S \\rightarrow aSb | accb\\}$", "$P=\\{S \\rightarrow aSb | B, B \\rightarrow aAb, A \\rightarrow cc\\}$"],
-        "choices": ["$P=\\{S \\rightarrow aSb | aAb, A \\rightarrow cc\\}$", "$P=\\{S \\rightarrow aSb | accb\\}$", "$P=\\{S \\rightarrow aSb | B, B \\rightarrow aAb, A \\rightarrow cc\\}$"]
-      },
-      "q24":{
-        "type": "select",
-        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
-        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P = \\{S \\rightarrow aSb, S \\rightarrow SS, S \\rightarrow ab\\}$. Which of the following strings are in L(G)?",
+        "description": "What is the language of the grammar? Answer: It is all strings formed from the set of terminals ($T^∗$ is all possible strings over $T$), such that if you start with $S$ (the start symbol for the grammar), then you can derive the string.",
+        "question":"Consider grammar $G = (\\{S\\},\\ \\{a,b\\},\\ S,\\ P)$, where $P = \\{S \\rightarrow aSb,\\ S \\rightarrow SS,\\ S \\rightarrow ab\\}$. Which of the following strings are in $L(G)$?",
         "answer":["aabb", "abab"],
         "choices": ["aabb", "abab", "abba", "babab"]
       },
-      "q25":{
+      "whatlang":{
         "type": "select",
-        "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
-        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P = \\{S \\rightarrow aSb, S \\rightarrow SS, S \\rightarrow ab\\}$. [T/F] This grammar represents the language of matching parenthesis where a is left paren, and b is right paren. ",
+        "description": "What is the language of the grammar? Answer: It is all strings formed from the set of terminals ($T^∗$ is all possible strings over $T$), such that if you start with $S$ (the start symbol for the grammar), then you can derive the string.",
+        "question":"Consider grammar $G = (\\{S\\},\\ \\{(, )\\},\\ S,\\ P)$, where $P = \\{S \\rightarrow (S),\\ S \\rightarrow SS,\\ S \\rightarrow ()\\}$. [T/F] This grammar represents the language of matching parenthesis.",
         "answer":["True"],
         "choices": ["True", "False"]
       }
     }
   }
 }
-

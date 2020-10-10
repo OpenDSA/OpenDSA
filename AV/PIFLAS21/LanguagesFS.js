@@ -117,7 +117,5 @@ $(document).ready(function() {
   av.step();
   // Frame 37
   av.umsg("Congratulations! Frameset completed.");
-  av.step();
-
   av.recorded();
 });
