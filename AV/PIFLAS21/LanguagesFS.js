@@ -5,7 +5,6 @@ $(document).ready(function() {
   var av_name = "LanguagesFS";
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
-  var config = ODSA.UTILS.loadConfig({av_name: av_name});
 
   // Frame 1
   av.umsg("A <b>language</b> is simply a collection of strings. A fundamental thing to be able to do with a string is to determine whether or not it is part of a given language. We will give a way to formally define a particular language. But first we need some notation to use.");

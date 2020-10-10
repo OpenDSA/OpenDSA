@@ -1,6 +1,6 @@
 /*global PIFRAMES, ODSA */
 /* Written by Eunoh Cho, Mostafa Mohammed, Cliff Shaffer */
-$(document).ready(function(){
+$(document).ready(function() {
   "use strict";
   var av_name = "GrammarIntroFS";
   var av = new JSAV(av_name);
@@ -14,9 +14,6 @@ $(document).ready(function(){
   */
 
   var Frames = PIFRAMES.init(av_name);
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({av_name: av_name});
-
   var grammar = av.label("$\\begin{eqnarray*}" +
                          "\\lt sentence\\gt&\\rightarrow&\\lt subject\\gt\\lt verb\\gt\\lt d.o.\\gt\\\\" +
                          "\\lt subject\\gt&\\rightarrow&\\lt noun\\gt | \\lt article\\gt\\lt noun\\gt\\\\" +
@@ -95,7 +92,7 @@ $(document).ready(function(){
   // Frame 17
   av.umsg("A good mathematical definition for something identifies those parts that are necessary and ignores those parts that are not. Think for a moment before going on: If you want to describe a grammar precisely, then what do you need to know about it?. Take a look at the grammar below, and think about what you need to know to define and use it. Obviously, part of the defintion for this grammar is its productions. What else do we need?");
   av.step();
-  
+
   // Frame 18
   av.umsg(Frames.addQuestion("leftside"));
   av.step();
@@ -116,7 +113,7 @@ $(document).ready(function(){
   // Frame 22
   av.umsg("Now, try to describe this in words: What is the language of the grammar? Answer: It is all strings formed from the set of terminals ($T^∗$ is all possible strings over $T$), such that if you start with $S$ (the start symbol for the grammar), then you can derive the string.");
   av.step();
-  
+
   // Frame 23
   av.umsg(Frames.addQuestion("parts"));
   av.step();
@@ -128,7 +125,7 @@ $(document).ready(function(){
   // Frame 25
   av.umsg(Frames.addQuestion("LG"));
   av.step();
-  
+
   // Frame 26
   av.umsg(Frames.addQuestion("G"));
   av.step();
