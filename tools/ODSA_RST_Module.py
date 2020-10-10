@@ -361,19 +361,20 @@ class ODSA_RST_Module:
 
         line = mod_data[i].strip()
         next_line =  mod_data[i+1] if i+1 < len(mod_data) else ''
-        if next_line.startswith("=") or next_line.startswith("-"):
+        if next_line.startswith("=") or next_line.startswith("-") or next_line.startswith("~"):
           next_line = next_line.strip()
           is_chapter = next_line == "="*len(next_line) and len(next_line) > 0
           is_section = next_line == "-"*len(next_line) and len(next_line) > 0
+          is_sub_section = next_line == "~"*len(next_line) and len(next_line) > 0
         else:
           next_line = next_line.strip()
           is_chapter = False
           is_section = False
-          
-        if is_chapter or is_section:
+          is_sub_section = False
+
+        if is_chapter or is_section or is_sub_section:
           processed_sections.append(line)
           module_title_found = True
-          processed_sections.append(line)
         elif not module_title_found:
           if not content_before_module \
           and not (line == '' or line.startswith('.. ') or line.startswith(':')) \
@@ -414,7 +415,7 @@ class ODSA_RST_Module:
                or re.match(r'^(\.\. )+(extrtoolembed):: [^\r\n]+$', line) != None):
               content_before_section = True
               errors.append(("%sERROR: %s: line %s ('%s') - exercises must be inside a section" % (console_msg_prefix, mod_path, i, line), True))
-          
+
         # Determine the type of directive
         dir_type = get_directive_type(line)
 
@@ -549,7 +550,7 @@ class ODSA_RST_Module:
                     links_found = True
                     for link in link_opts:
                       if link not in links:
-                        links[link] = False 
+                        links[link] = False
                   del mod_data[j]
                   j -= 1
 
@@ -677,7 +678,7 @@ class ODSA_RST_Module:
               options = ['long_name', 'learning_tool', 'launch_url', 'id']
               dir_opts = parse_directive_options(mod_data, i)
               options = [option for option in options if option not in dir_opts]
-             
+
               rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
               mod_data[i] += ''.join(rst_options)
@@ -786,6 +787,11 @@ class ODSA_RST_Module:
 
       if error_shown:
         sys.exit(1)
+
+      # Add scroll depth script tag
+      footer_data = {}
+      footer_data['scroll_elements'] = ['.section#'+sec.lower().replace(' ', '-') for sec in processed_sections ]
+      mod_data.insert(0, rst_footer % footer_data)
 
       # Write the contents of the module file to the output src directory
       with codecs.open(''.join([config.book_src_dir, mod_name, '.rst']),'w', 'utf-8') as mod_file:
