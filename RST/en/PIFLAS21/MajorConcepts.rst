@@ -17,8 +17,6 @@ Introduction
 
 In this module, we present the three major concepts for the semester:
 Languages, Grammars, and Automata.
-We also will introduce helpful notation that we will use throughout
-our discussions.
 
 
 Languages
@@ -59,29 +57,41 @@ Practicing Grammars
 Automata
 --------
 
+Now we understand what a language is (some subset of strings over an
+alphabet), and what a grammar is (a way of defining a language using
+production rules).
+Our third major concept is a family of computation models called
+:term:`Automata`.
+Automata should be thought of as simple computers.
+The advantage to "simple" is that we can hope to completely understand
+how "powerful" the various types of machines are.
+Here "powerful" means what languages they can be programmed to
+:term:`recognize`, where "recognize" means to reliably determine if a
+string is in the langauge or not.
+
 .. inlineav:: AutomataCON dgm
    :links: AV/VisFormalLang/Intro/AutomataCON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Intro/AutomataCON.js
    :align: center
 
-   Abstract model of a digital computer.
-   Note that in the control unit, the numbers represent
-   "states", which are the specific positions on the dial that the
+   This diagram shows an abstract model of a digital computer.
+   It has a tape (to store information), a tape head (to read the
+   current square on the tape), a control unit, and possibly some
+   optional storage in the form of a stack.
+   Within the control unit, the numbers represent
+   :term:`states`, which are the specific positions on the dial that the
    arrow may point to.
-   While this picture shows the physical components of the "computer",
-   it is not showing the control behavior (what to do when we are in a
-   given state with a given symbol on the current square of the
-   tape, and a given value is at the current position in the storage
-   unit).
-   This control behavior is like the "software" of the computer.
-
-
-There is a program associated with the control unit,
-and the input is processed once from left to right.
-Some versions have an additional storage unit.
-We will define specific automata throughout the semester.
-
-This is the topic for the next chapter.
    
-
-
+While this picture shows the physical components of the "computer",
+it is not showing the control behavior (what to do when we are in a
+given state with a given symbol on the current square of the
+tape, and a given value is at the current position in the storage
+unit).
+This control behavior is like the "software" of the computer.
+The "program" used to control this machine will be a set of rules
+that check the current letter on the tape and the current state of
+the machine, and then decide what state to move to.
+In some machine types, the tape head then automatically moves to
+the right at each steps.
+Some machines are able to also alter the symbol in the current
+square, and maybe have a choice of whether to move right or left.
