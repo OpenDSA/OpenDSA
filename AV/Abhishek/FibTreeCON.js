@@ -9,8 +9,6 @@ $(document).ready(function() {
     var val;
     var fibtree = av.ds.tree({nodegap: 20});
 
-
-
     fibtree.root("6");
 
     val = "6" + "<br>" + fib[6].toString();
@@ -19,11 +17,10 @@ $(document).ready(function() {
 
 
     fibtree.layout();
-    av.umsg("TEST MSG 123");
+    av.umsg("Fibonacci Tree");
     av.displayInit();
     av.step();
 
-    av.umsg("TEST MSG 123");
 
     fibtree.root().unhighlight();
 

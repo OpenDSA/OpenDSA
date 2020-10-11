@@ -71,6 +71,7 @@ for the call.
    :links:   /AV/Abhishek/FibTreeCON.css
    :scripts: /AV/Abhishek/FibTreeCON.js
    :align: center
+   :output: show
 
 .. odsafig:: Images/FibTree.png
    :width: 800

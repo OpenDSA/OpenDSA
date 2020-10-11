@@ -2,17 +2,15 @@
     height: 500px/*700px*/;
     width: 900px/*900px*/;
 }
-
-.box {
-    width: 30px;
-    height: 20px;
-    text-align: center;
-    border: 1.2px solid black;
-}
-
-.box2{
-    width: 30px;
-    height: 20px;
-    text-align: center;
-    border: 1.2px solid black;
+#FibTreeCON .jsavtree .jsavnode {
+    width: 60px; !important;
+    height: 50%; !important;
+    line-height: 15px !important;
+    shape-rendering: ;
+    /*text-align: center; !important;*/
+    color: white; !important;
+    font-color: solid white; !important;
+    border: 1.2px solid black; !important;
+    /*background-color: lightblue; !important;*/
+    background: linear-gradient( 0deg, red, red 49%, white 49%, white 51%, blue 51% );!important;
 }
