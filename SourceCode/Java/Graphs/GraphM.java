@@ -30,8 +30,9 @@ class GraphM implements Graph {
   // Returns the new edge
   public void addEdge(int v, int w, int wgt) {
     if (wgt == 0) return; // Can't store weight of 0
+    if (matrix[v][w] == 0)
+      numEdge++;
     matrix[v][w] = wgt;
-    numEdge++;
   }
 
   // Get the weight value for an edge
@@ -39,8 +40,10 @@ class GraphM implements Graph {
 
   // Removes the edge from the graph.
   public void removeEdge(int v, int w) {
-    matrix[v][w] = 0;
-    numEdge--;
+    if (matrix[v][w] != 0) {
+      matrix[v][w] = 0;
+      numEdge--;
+    }
   }
   
   // Returns true iff the graph has the edge
