@@ -11,28 +11,28 @@
       },
       "q3":{
         "type": "true/false",
-        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node labele to be $S$",
+        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to be $S$",
         "question": "The reason for that is we always start deriving a string from the grammar start variable",
         "answer": "True",
         "choices": []
       },
       "q4":{
         "type": "true/false",
-        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node labele to be $S$<br/>The clidren of a node will be the RHS of the production rule that we need to use to derive the string.",
+        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to be $S$<br/>The clidren of a node will be the RHS of the production rule that we need to use to derive the string.",
         "question": "The children for any node can be variables and/or terminals",
         "answer": "True",
         "choices": []
       },
       "q5":{
         "type": "true/false",
-        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node labele to be $S$<br/>The clidren of a node will be the RHS of the production rule that we need to use to derive the string.<br>leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$",
+        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to be $S$<br/>The clidren of a node will be the RHS of the production rule that we need to use to derive the string.<br>leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$",
         "question": "The leaves nodes can be variables and/or terminals",
         "answer": "False",
         "choices": []
       },
       "q6":{
         "type": "true/false",
-        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node labele to be $S$<br/>The clidren of a node will be the RHS of the production rule that we need to use to derive the string.<br>leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$<br>Nonleaf vertices labeled $A$, where $A\\in V$",
+        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to be $S$<br/>The clidren of a node will be the RHS of the production rule that we need to use to derive the string.<br>leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$<br>Nonleaf vertices labeled $A$, where $A\\in V$",
         "question": "The non-leaves nodes will be variables",
         "answer": "True",
         "choices": []
