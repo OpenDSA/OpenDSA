@@ -62,7 +62,7 @@
         "description": "To prove that we need to construct a DFA $M\\prime=(Q, \\Sigma, \\delta, q_0, F\\prime)$ where $M = (Q, \\Sigma, \\delta, q_0, F)$ is the DFA for $L_1$.",
         "question": "What is the difference between $M$ (the DFA for $L_1$) and $M\\prime$ (the DFA for $L_1 \\backslash L_2$)?",
         "answer": "different final states",
-        "choices": ["They are identical", "differnt transition fumction", "different states", "different final states"]
+        "choices": ["They are identical", "differnt transition function", "different states", "different final states"]
       },
       "q17": {
         "type": "multiple",
