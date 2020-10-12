@@ -74,8 +74,8 @@ $(document).ready(function() {
   av.step();
 
   // Frame 13
-  av.umsg(Frames.addQuestion("noun"));
-  av.step();
+  // av.umsg(Frames.addQuestion("noun"));
+  // av.step();
 
   // Frame 14
   av.umsg(Frames.addQuestion("bad"));

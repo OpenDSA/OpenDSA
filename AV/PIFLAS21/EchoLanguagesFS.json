@@ -11,14 +11,14 @@
         },
         "char":{
           "type": "multiple",
-          "description": "Start with an alphabet. We normally represent an alphabet with the symbol $\\Sigma$ (Sigma). An alphabet $\\Sigma$ is just a set of symbols. The symbols we typically use are letters or digits, but an alphabet could include any symbols}.",
-          "question": "[T/F] c) $A$ is not an alphabet because it is just a character",
+          "description": "Let's start with an alphabet. We normally represent an alphabet with the symbol $\\Sigma$ (Sigma). An alphabet ($\\Sigma$) is just a set of symbols. The symbols we typically use are letters and digits which also contains all symbols.",
+          "question": "[T/F] $A$ is not an alphabet because it is just a character",
           "answer": "True",
           "choices": ["True", "False"]
         },
         "strings": {
           "type": "select",
-          "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = \\{a, b\\}$. Which of the following are valid strings?",
+          "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course).",
           "question": "Suppose we have $\\Sigma$ = $\\{a, b\\}$, which of the following are valid strings?",
           "answer": ["$babababbaba$", "$a$"],
           "choices": ["$babababbaba$", "$a$", "$\\{aaa, bbb\\}$", "$bacbabcba$"],
@@ -26,15 +26,15 @@
         },
         "stringnotset": {
           "type": "multiple",
-          "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = \\{a, b\\}$",
+          "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course).",
           "question": "Why is $\\{aaa, bbb\\}$ not a valid string?",
           "answer": "Because $\\{aaa, bbb\\}$ is a set, not a string",
           "choices": ["Because it has characters not in the alphabet", "Because $\\{aaa, bbb\\}$ is a set, not a string"]
         },
         "badchar": {
           "type": "multiple",
-          "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course). Suppose we have $\\Sigma = \\{a, b\\}$",
-          "question": "[T/F] $bacbabcba$ is a vaild string in $\\Sigma$",
+          "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course).",
+          "question": "[T/F] $bacbabcba$ is a vaild string in $\\Sigma$. $\\Sigma$ = $\\{a, b\\}$",
           "answer": "False",
           "choices": ["True", "False"],
           "correctFeedback": ["It contains characters not in the alphabet."]
@@ -42,7 +42,7 @@
         "examplelang": {
           "type": "select",
           "description": "A <b>language</b> is simply a collection of strings defined over $\\Sigma$.",
-          "question": "Which of the following are correct languages from their respective $\\Sigma$?",
+          "question": "Which of the following are correct languages from their respective $\\Sigma$ where $L$ is a language.",
           "answer": [
             "$\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$ $L=\\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,...\\}$",
             "$\\Sigma$={$a,b,c\\}$ $L=\\{ab,ac,cabb\\}$",
@@ -103,7 +103,7 @@
         "charname": {
           "type": "multiple",
           "description": "A language can have any symbols in its alphabet. But to get our ideas across, we nearly always use languages with simple alphabets of only a few characters. We typically use either digits or else letters near the start of the English alphabet. So, we nearly always use only $a, b, c, d, 0, 1$ in our alphabets. For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the English alphabet: $u, v, w, x, y, z$",
-          "question": "And if you see w in a sentence, it probably refers to ",
+          "question": "And if you see $w$ in a sentence, it probably refers to ",
           "answer": "Some string given the name $w$",
           "choices": ["The character ‘$w$’", "Some string given the name $w$"]
         },
