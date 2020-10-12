@@ -1,16 +1,12 @@
 #FibTreeCON {
-    height: 500px/*700px*/;
-    width: 900px/*900px*/;
+  height: 500px
 }
+
 #FibTreeCON .jsavtree .jsavnode {
-    width: 60px; !important;
-    height: 50%; !important;
-    line-height: 15px !important;
-    shape-rendering: ;
-    /*text-align: center; !important;*/
-    color: white; !important;
-    font-color: solid white; !important;
-    border: 1.2px solid black; !important;
-    /*background-color: lightblue; !important;*/
-    background: linear-gradient( 0deg, red, red 49%, white 49%, white 51%, blue 51% );!important;
+  border-radius: 1px;
+  width: 60px;
+  line-height: 15px;
+  color: white;
+  border: 1.2px solid black;
+  background: linear-gradient(0deg, red, red 49%, white 49%, white 51%, blue 51%);
 }
