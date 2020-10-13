@@ -8,50 +8,52 @@ $(document).ready(function() {
   var hx = 60;
   var fib = [1,1,2,3,5,8,13,21,34]
 
-  av.g.rect(20, 20, 60, 50);
-  av.g.rect(20, 5, 60, 15);
+    var offset = 175;
+
+  av.g.rect(offset + 20, 20, 60, 50);
+  av.g.rect(offset + 20, 5, 60, 15);
   bx = bx + 50;
   av.label("6",
-           {top:  -13, left: 45});
+           {top:  -13, left: offset +45});
 
   var index = "";
   for (var i = 0; i < 6; i++)
   {
     index = 5 - i;
     // TOP
-    av.g.rect(bx, 20, 60, 50);
+    av.g.rect(offset+ bx, 20, 60, 50);
     // BOTTOM
-    av.g.rect(bx, 5, 60, 15);
+    av.g.rect(offset + bx, 5, 60, 15);
 
     av.label(index,
-             {top:  -13, left: bx+25});
+             {top:  -13, left: offset+ bx+25});
     bx = bx + 60;
   }
 
   var lf = 0;
-  var p1 = 155;
-  var p2 = 65;
-  av.g.path("M 155 55 A 150 200 0 0 1 65 55",{"arrow-start": "classic-wide-long"});
+  var p1 = 155 + offset;
+  var p2 = 65 + offset;
+  av.g.path("M 330 55 A 150 200 0 0 1 240 55",{"arrow-start": "classic-wide-long"});
   for (var i = 0; i < 7; i++)
   {
-    av.g.rect(x, 30, 30, 15,{"fill": "blue"});
-    av.g.rect(x, 45, 30, 15, {"fill": "red"});
+    av.g.rect(offset +x, 30, 30, 15,{"fill": "blue"});
+    av.g.rect(offset + x, 45, 30, 15, {"fill": "red"});
     if(i < 5)
-      av.g.line(x +30 , 45 , x + 58,45, {"arrow-end": "classic-wide-long"});
+      av.g.line(offset + x +30 , 45 ,offset+ x + 58,45, {"arrow-end": "classic-wide-long"});
     x = x + len;
 
     var l = av.label(6-i,
-                     {top:  12, left: lf + 45}).css({"color": "white", "z-index": 1000});
+                     {top:  12, left: offset + lf + 45}).css({"color": "white", "z-index": 1000});
     l.show();
     // formatting numbers
     if (fib[6-i] > 10) {
       var lab1 = av.label(fib[6 - i],
-                          {top: 28, left: lf + 43}).css({"color": "white", "z-index": 1000});
+                          {top: 28, left: offset+ lf + 43}).css({"color": "white", "z-index": 1000});
       lab1.show();
     }
     else {
       var lab2 = av.label(fib[6 - i],
-                          {top: 28, left: lf + 45}).css({"color": "white", "z-index": 1000});
+                          {top: 28, left: offset + lf + 45}).css({"color": "white", "z-index": 1000});
       lab2.show();
     }
 
