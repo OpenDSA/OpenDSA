@@ -13,16 +13,16 @@ $(document).ready(function() {
 
     val = "6" + "<br>" + fib[6].toString();
     fibtree.root().value(val);
-    fibtree.root().highlight();
+    // fibtree.root().highlight();
 
 
     fibtree.layout();
-    av.umsg("Fibonacci Tree");
+    av.umsg("Fibonacci Tree for n = 6");
     av.displayInit();
     av.step();
 
 
-    fibtree.root().unhighlight();
+    // fibtree.root().unhighlight();
 
     fibtree.root().addChild("4").addChild("5");
 
@@ -32,10 +32,10 @@ $(document).ready(function() {
     val = "5" + "<br>" + fib[5].toString();
     fibtree.root().child(1).value(val);
 
-    fibtree.root().child(0).highlight();
+    // fibtree.root().child(0).highlight();
     fibtree.layout();
     av.step();
-    fibtree.root().child(0).unhighlight();
+    // fibtree.root().child(0).unhighlight();
 
 
     fibtree.root().child(0).addChild("2").addChild("3");
@@ -46,10 +46,10 @@ $(document).ready(function() {
     val = "3" + "<br>" + fib[3].toString();
     fibtree.root().child(0).child(1).value(val);
 
-    fibtree.root().child(0).child(0).highlight();
+    // fibtree.root().child(0).child(0).highlight();
     fibtree.layout();
     av.step();
-    fibtree.root().child(0).child(0).highlight();
+    // fibtree.root().child(0).child(0).highlight();
 
     fibtree.root().child(0).child(0).addChild("0").addChild("1");
 
@@ -61,7 +61,7 @@ $(document).ready(function() {
 
     fibtree.layout();
     av.step();
-    fibtree.root().child(0).child(0).unhighlight();
+    // fibtree.root().child(0).child(0).unhighlight();
     //3
     fibtree.root().child(0).child(1).addChild("1").addChild("2");
 
@@ -71,10 +71,10 @@ $(document).ready(function() {
     val = "2" + "<br>" + fib[2].toString();
     fibtree.root().child(0).child(1).child(1).value(val);
 
-    fibtree.root().child(0).child(1).highlight();
+    // fibtree.root().child(0).child(1).highlight();
     fibtree.layout();
     av.step();
-    fibtree.root().child(0).child(1).unhighlight();
+    // fibtree.root().child(0).child(1).unhighlight();
 
     fibtree.root().child(0).child(1).child(1).addChild("0").addChild("1");
 
@@ -84,10 +84,10 @@ $(document).ready(function() {
     val = "1" + "<br>" + fib[1].toString();
     fibtree.root().child(0).child(1).child(1).child(1).value(val);
 
-    fibtree.root().child(0).child(1).child(1).highlight();
+    // fibtree.root().child(0).child(1).child(1).highlight();
     fibtree.layout();
     av.step();
-    fibtree.root().child(0).child(1).child(1).unhighlight();
+    // fibtree.root().child(0).child(1).child(1).unhighlight();
 
 
     fibtree.root().child(1).addChild("3").addChild("4");
@@ -98,10 +98,10 @@ $(document).ready(function() {
     val = "4" + "<br>" + fib[4].toString();
     fibtree.root().child(1).child(1).value(val);
 
-    fibtree.root().child(1).highlight();
+    // fibtree.root().child(1).highlight();
     fibtree.layout();
     av.step();
-    fibtree.root().child(1).unhighlight();
+    // fibtree.root().child(1).unhighlight();
 
 
     fibtree.root().child(1).child(0).addChild("1").addChild("2");
@@ -111,10 +111,10 @@ $(document).ready(function() {
     val = "2" + "<br>" + fib[2].toString();
     fibtree.root().child(1).child(0).child(1).value(val);
 
-    fibtree.root().child(1).child(0).highlight();
+    // fibtree.root().child(1).child(0).highlight();
     fibtree.layout();
     av.step();
-    fibtree.root().child(1).child(0).unhighlight();
+    // fibtree.root().child(1).child(0).unhighlight();
 
 
     fibtree.root().child(1).child(0).child(1).addChild("0").addChild("1");
@@ -125,10 +125,10 @@ $(document).ready(function() {
     val = "1" + "<br>" + fib[1].toString();
     fibtree.root().child(1).child(0).child(1).child(1).value(val);
 
-    fibtree.root().child(1).child(0).child(1).highlight();
+    // fibtree.root().child(1).child(0).child(1).highlight();
     fibtree.layout();
     av.step();
-    fibtree.root().child(1).child(0).child(1).unhighlight();
+    // fibtree.root().child(1).child(0).child(1).unhighlight();
 
     fibtree.root().child(1).child(1).addChild("2").addChild("3");
 
@@ -138,10 +138,10 @@ $(document).ready(function() {
     val = "3" + "<br>" + fib[3].toString();
     fibtree.root().child(1).child(1).child(1).value(val);
 
-    fibtree.root().child(1).child(1).highlight();
+    // fibtree.root().child(1).child(1).highlight();
     fibtree.layout();
     av.step();
-    fibtree.root().child(1).child(1).unhighlight();
+    // fibtree.root().child(1).child(1).unhighlight();
 
     fibtree.root().child(1).child(1).child(0).addChild("0").addChild("1");
 
@@ -151,10 +151,10 @@ $(document).ready(function() {
     val = "1" + "<br>" + fib[1].toString();
     fibtree.root().child(1).child(1).child(0).child(1).value(val);
 
-    fibtree.root().child(1).child(1).child(0).highlight();
+    // fibtree.root().child(1).child(1).child(0).highlight();
     fibtree.layout();
     av.step();
-    fibtree.root().child(1).child(1).child(0).unhighlight();
+    // fibtree.root().child(1).child(1).child(0).unhighlight();
 
 
     fibtree.root().child(1).child(1).child(1).addChild("1").addChild("2");
@@ -165,10 +165,10 @@ $(document).ready(function() {
     val = "2" + "<br>" + fib[2].toString();
     fibtree.root().child(1).child(1).child(1).child(1).value(val);
 
-    fibtree.root().child(1).child(1).child(1).highlight();
+    // fibtree.root().child(1).child(1).child(1).highlight();
     fibtree.layout();
     av.step();
-    fibtree.root().child(1).child(1).child(1).unhighlight();
+    // fibtree.root().child(1).child(1).child(1).unhighlight();
 
     fibtree.root().child(1).child(1).child(1).child(1).addChild("0").addChild("1");
 
@@ -178,10 +178,10 @@ $(document).ready(function() {
     val = "1" + "<br>" + fib[1].toString();
     fibtree.root().child(1).child(1).child(1).child(1).child(1).value(val);
 
-    fibtree.root().child(1).child(1).child(1).child(1).highlight();
+    // fibtree.root().child(1).child(1).child(1).child(1).highlight();
     fibtree.layout();
     av.step();
-    fibtree.root().child(1).child(1).child(1).child(1).unhighlight();
+    // fibtree.root().child(1).child(1).child(1).child(1).unhighlight();
 
     av.recorded();
 });

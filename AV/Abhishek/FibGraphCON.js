@@ -34,21 +34,26 @@ $(document).ready(function() {
     av.g.path("M 155 55 A 150 200 0 0 1 65 55",{"arrow-start": "classic-wide-long"});
     for (var i = 0; i < 7; i++)
     {
-        av.g.rect(x, 30, 30, 15);
-        av.g.rect(x, 45, 30, 15);
+        av.g.rect(x, 30, 30, 15,{"fill": "blue"});
+        av.g.rect(x, 45, 30, 15, {"fill": "red"});
         if(i < 5)
         av.g.line(x +30 , 45 , x + 58,45, {"arrow-end": "classic-wide-long"});
         x = x + len;
 
-        av.label(6-i,
-            {top:  12, left: lf + 45});
+        var l = av.label(6-i,
+            {top:  12, left: lf + 45}).css({"color": "white"});
+        l.show();
         // formatting numbers
-        if (fib[6-i] > 10)
-        av.label(fib[6-i],
-            {top:  28, left: lf + 43});
-        else
-            av.label(fib[6-i],
-                {top:  28, left: lf + 45});
+        if (fib[6-i] > 10) {
+            var lab1 = av.label(fib[6 - i],
+                {top: 28, left: lf + 43}).css({"color": "white"});
+            lab1.show();
+        }
+        else {
+            var lab2 = av.label(fib[6 - i],
+                {top: 28, left: lf + 45}).css({"color": "white"});
+            lab2.show();
+        }
 
         lf = lf + 60;
         // set up param for path
