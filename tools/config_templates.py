@@ -44,7 +44,7 @@ rst_footer = '''\
     }
 
    $.scrollDepth({
-     elements: sections,
+     elements: sections.map(function(a) { return "#" + a }),
      userTiming: true,
      percentage: true,
      pixelDepth: true,
