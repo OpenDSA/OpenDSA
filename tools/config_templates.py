@@ -40,18 +40,19 @@ rst_footer = '''\
           var timeSpentOnSection = TimeMe.getTimeOnElementInSeconds(section);
           $('#'+section+'-time').text(timeSpentOnSection.toFixed(2));
         }
-      }, 100);
+      }, 500);
+
+      $.scrollDepth({
+        elements: sections.map(function(a) { return "#" + a }),
+        userTiming: true,
+        percentage: true,
+        pixelDepth: true,
+        eventHandler: function (data) {
+          console.log(data)
+        }
+      });
     }
 
-   $.scrollDepth({
-     elements: sections.map(function(a) { return "#" + a }),
-     userTiming: true,
-     percentage: true,
-     pixelDepth: true,
-     eventHandler: function (data) {
-       console.log(data)
-     }
-   });
    </script>
 '''
 
