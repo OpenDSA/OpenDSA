@@ -17,7 +17,8 @@ $(document).ready(function() {
 
 
     fibtree.layout();
-    av.umsg("Fibonacci Tree for n = 6");
+    av.umsg("Let's see how the recursive process works when we compute the value for F(6). " +
+        "We will build a tree showing the recursive function calls that take place. At the root of the tree we have the parameter value 6.");
     av.displayInit();
     av.step();
 
