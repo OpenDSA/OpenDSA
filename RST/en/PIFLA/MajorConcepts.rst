@@ -26,8 +26,8 @@ First we'll present the basic ideas related to a Language, as this
 word is used in Formal Languages.
 
 .. inlineav:: LanguagesFS ff
-   :links: AV/PIFLAS21/LanguagesFS.css
-   :scripts: DataStructures/PIFrames.js AV/PIFLAS21/LanguagesFS.js
+   :links: AV/PIFLA/Intro/LanguagesFS.css
+   :scripts: DataStructures/PIFrames.js AV/PIFLA/Intro/LanguagesFS.js
    :output: show
 
 
@@ -38,8 +38,8 @@ The following frameset will provide an introduction to the concept of
 a grammar, as used in Formal Languages.
 
 .. inlineav:: GrammarIntroFS ff
-   :links: AV/PIFLAS21/GrammarIntroFS.css
-   :scripts: DataStructures/PIFrames.js AV/PIFLAS21/GrammarIntroFS.js
+   :links: AV/PIFLA/Intro/GrammarIntroFS.css
+   :scripts: DataStructures/PIFrames.js AV/PIFLA/Intro/GrammarIntroFS.js
    :output: show
 
 
