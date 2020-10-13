@@ -13,27 +13,16 @@ rst_footer = '''\
 .. raw:: html
 
    <script type="text/javascript">
+   var moduleName = "%(module_name)s";
    var sections = %(sections)s;
-   var sections = [...new Set(sections)];
-
-   $.scrollDepth({
-     elements: sections,
-     userTiming: true,
-     percentage: true,
-     pixelDepth: true,
-     eventHandler: function (data) {
-       console.log(data)
-     }
-   });
-
-    var pageName = "testing";
 
     TimeMe.initialize({
-      currentPageName: pageName,
+      currentPageName: moduleName,
       idleTimeoutInSeconds: 5
     });
 
-    $(".content").append("<div id='console' style='z-index: 300;background: #aaa; width: 300px; position: fixed; top: 0; right: 0; text-align: center; padding: 20px; line-height: 1; font-family: sans-serif; font-size: 1em;'></div>");
+    $(".content").append("<div id='console' style='z-index: 600;background: #aaa; width: 300px; position: fixed; top: 0; right: 0; text-align: center; padding: 20px; line-height: 1; font-family: sans-serif; font-size: 1em;'></div>");
+    $("#console").append("<p>" + moduleName + " time = <span id='" + moduleName + "-time'></span></p>");
     for (const section of sections) {
       $("#console").append("<p>" + section + " time = <span id='" + section + "-time'></span></p>");
     }
@@ -44,12 +33,25 @@ rst_footer = '''\
       }
 
       setInterval(function () {
+        var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+        $('#'+moduleName+'-time').text(timeSpentOnPage.toFixed(2));
+
         for (const section of sections) {
-          var timeSpentOnPage = TimeMe.getTimeOnElementInSeconds(section);
-          $('#'+section+'-time').text(timeSpentOnPage.toFixed(2));
+          var timeSpentOnSection = TimeMe.getTimeOnElementInSeconds(section);
+          $('#'+section+'-time').text(timeSpentOnSection.toFixed(2));
         }
-      }, 25);
+      }, 100);
     }
+
+   $.scrollDepth({
+     elements: sections,
+     userTiming: true,
+     percentage: true,
+     pixelDepth: true,
+     eventHandler: function (data) {
+       console.log(data)
+     }
+   });
    </script>
 '''
 

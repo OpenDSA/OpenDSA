@@ -878,11 +878,15 @@ class ODSA_RST_Module:
             if error_shown:
                 sys.exit(1)
 
-            # Add scroll depth script tag
-            pattern = "[?/.!()@]"
+            # Add Timeme script tag
+            pattern = "[?/.!()@,]"
             footer_data = {}
+            module_name = mod_attrib['long_name'] if 'long_name' in mod_attrib else mod_name
+            sections = [s for s in processed_sections if s != module_name]
+            footer_data['module_name'] = re.sub(
+                pattern, "", module_name.lower().replace(' ', '-').replace('\'', '-'))
             footer_data['sections'] = [re.sub(pattern, "", sec.lower().replace(' ', '-').replace('\'', '-'))
-                                       for sec in processed_sections]
+                                       for sec in sections]
             mod_data.insert(0, rst_footer % footer_data)
 
             # Write the contents of the module file to the output src directory
