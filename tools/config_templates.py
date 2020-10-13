@@ -12,7 +12,45 @@ rst_header = '''\
 rst_footer = '''\
 .. raw:: html
 
-   <script>$.scrollDepth({elements: %(scroll_elements)s,userTiming: true,percentage: true,pixelDepth: true, eventHandler: function (data) {console.log(data)}})</script>
+   <script type="text/javascript">
+   var sections = %(sections)s;
+   var sections = [...new Set(sections)];
+
+   $.scrollDepth({
+     elements: sections,
+     userTiming: true,
+     percentage: true,
+     pixelDepth: true,
+     eventHandler: function (data) {
+       console.log(data)
+     }
+   });
+
+    var pageName = "testing";
+
+    TimeMe.initialize({
+      currentPageName: pageName,
+      idleTimeoutInSeconds: 5
+    });
+
+    $(".content").append("<div id='console' style='z-index: 300;background: #aaa; width: 300px; position: fixed; top: 0; right: 0; text-align: center; padding: 20px; line-height: 1; font-family: sans-serif; font-size: 1em;'></div>");
+    for (const section of sections) {
+      $("#console").append("<p>" + section + " time = <span id='" + section + "-time'></span></p>");
+    }
+
+    window.onload = function () {
+      for (const section of sections) {
+        TimeMe.trackTimeOnElement(section);
+      }
+
+      setInterval(function () {
+        for (const section of sections) {
+          var timeSpentOnPage = TimeMe.getTimeOnElementInSeconds(section);
+          $('#'+section+'-time').text(timeSpentOnPage.toFixed(2));
+        }
+      }, 25);
+    }
+   </script>
 '''
 
 rst_header_unicode = '''\
@@ -318,6 +356,7 @@ html_context = {"script_files": [
                   '%(eb2root)slib/odsaUtils-min.js',
                   '%(eb2root)slib/odsaMOD-min.js',
                   '%(eb2root)slib/jquery.scrolldepth.js',
+                  '%(eb2root)slib/timeme.js',
                   'https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js',
                   'https://d3js.org/d3-selection-multi.v1.min.js',
                   '%(eb2root)slib/dataStructures.js',

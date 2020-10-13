@@ -9,7 +9,6 @@
    :satisfies: Commmand line
    :topic:
 
-===================
 Command Line Basics
 ===================
 
