@@ -1,6 +1,6 @@
 [{
   "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
-  "exerciseType": "DFA",
+  "exerciseType": "GRAMMAR",
   "totalTrueCases": 3,
   "totalFalseCases": 7,
   "containLetters": ["a", "b"],
@@ -27,9 +27,15 @@
       "": false
     }
   ],
-  "graph": {
-    "nodes": [],
-    "edges": []
+  "solution":
+  [{
+    "S": "b"
   },
-  "solution": "./GramIntro3str.jff"
+   {
+     "S": "ab"
+   },
+   {
+     "S": "bab"
+   }
+  ]
 }]
