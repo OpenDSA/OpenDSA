@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Cliff Shaffer and Angel Velazquez
+   :author: Cliff Shaffer,Abhishek Jha, and Angel Velazquez
    :topic: Dynamic Programming
 
 Dynamic Programming
@@ -67,15 +67,30 @@ In each node, the top half (in blue) shows the parameter values on the
 recursive call, while the bottom half (in red) shows the return value
 for the call.
 
+.. inlineav:: FibTreeCON ss
+   :links:   /AV/Abhishek/FibTreeCON.css
+   :scripts: /AV/Abhishek/FibTreeCON.js
+   :align: center
+   :output: show
+
 .. odsafig:: Images/FibTree.png
    :width: 800
    :align: center
    :figwidth: 90%
-              
+
 .. odsafig:: Images/FibGraph.png
    :width: 800
    :align: center
    :figwidth: 90%
+
+
+.. inlineav:: FibGraphCON dgm
+   :links:   /AV/Abhishek/FibGraphCON.css
+   :scripts: /AV/Abhishek/FibGraphCON.js
+   :align: center
+	:output: show
+
+   Language Circles
 
 Note that the dependency graph was laid out on in a one dimensional
 table of size 9, corresponding to the unique subproblems invoked by
@@ -319,7 +334,7 @@ The other is tabulation.
 Conceivably we could adopt one of several computation orders,
 although the most "natural" is to start filling the array for row 0
 (which indicates a successful solution only for a knapsack of size
-:math:`k_0`).
+:math:`k_0`).	
 We then fill in the succeeding rows
 from :math:`i=1` to :math:`n`.
 

@@ -46,7 +46,7 @@
       "q10":{
         "type": "multiple",
         "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
-        "question": "Is it Rigular laguage?",
+        "question": "Is it Regular laguage?",
         "answer": "No, we proved that using Pumping Lemma",
         "choices": ["No, we proved that using Pumping Lemma", "Yes"]
       },
@@ -67,7 +67,7 @@
       "q13":{
         "type": "multiple",
         "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
-        "question": "Let us derive the sting $ababa$. Whcih production we should use first?",
+        "question": "Let us derive the sting $ababa$. Which production we should use first?",
         "answer": "$S \\rightarrow aSa$",
         "choices": ["$S \\rightarrow aSa$", "$S \\rightarrow bSb$", "$S \\rightarrow a$", "$S \\rightarrow b$", "$S \\rightarrow \\lambda$"]
       },

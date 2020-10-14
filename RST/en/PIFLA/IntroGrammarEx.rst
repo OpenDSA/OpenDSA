@@ -4,13 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed
+   :author: Mostafa Mohammed, Cliff Shaffer
    :requires:
    :satisfies:
    :topic: Introductory Grammars exercises
 
-Grammars exercises
-==================
+Grammar Exercises
+=================
 
 Exercise 1
 ----------

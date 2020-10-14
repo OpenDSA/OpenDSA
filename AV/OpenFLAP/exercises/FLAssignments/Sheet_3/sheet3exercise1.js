@@ -7,6 +7,7 @@ function customGenerator() {
 
 
 function checkRule(str) {
+  
   var positions = new Array();
   var pos = str.indexOf("bba");
   while (pos > -1) {
@@ -17,11 +18,11 @@ function checkRule(str) {
   for (i = 0; i < positions.length; i++) {
     if (positions[i] % 2 == 0) {
       return true;
-    } else {
-      return false;
-    }
+    } 
   }
   if (str == "") {
+    return false;
+  }else{
     return false;
   }
 }
