@@ -13,45 +13,28 @@ rst_footer = '''\
 .. raw:: html
 
    <script type="text/javascript">
-   var moduleName = "%(module_name)s";
-   var sections = %(sections)s;
-
-    TimeMe.initialize({
-      currentPageName: moduleName,
-      idleTimeoutInSeconds: 5
-    });
-
-    $(".content").append("<div id='console' style='z-index: 600;background: #aaa; width: 300px; position: fixed; top: 0; right: 0; text-align: center; padding: 20px; line-height: 1; font-family: sans-serif; font-size: 1em;'></div>");
-    $("#console").append("<p>" + moduleName + " time = <span id='" + moduleName + "-time'></span></p>");
-    for (const section of sections) {
-      $("#console").append("<p>" + section + " time = <span id='" + section + "-time'></span></p>");
-    }
-
-    window.onload = function () {
-      for (const section of sections) {
-        TimeMe.trackTimeOnElement(section);
-      }
-
-      setInterval(function () {
-        var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
-        $('#'+moduleName+'-time').text(timeSpentOnPage.toFixed(2));
-
-        for (const section of sections) {
-          var timeSpentOnSection = TimeMe.getTimeOnElementInSeconds(section);
-          $('#'+section+'-time').text(timeSpentOnSection.toFixed(2));
-        }
-      }, 500);
-
-      $.scrollDepth({
-        elements: sections.map(function(a) { return "#" + a }),
-        userTiming: true,
-        percentage: true,
-        pixelDepth: true,
-        eventHandler: function (data) {
-          console.log(data)
-        }
+    $(function () {
+      var moduleName = "%(module_name)s";
+      var sections = %(sections)s;
+      TimeMe.initialize({
+        idleTimeoutInSeconds: 10
       });
-    }
+
+      sections.forEach(function (section, i) {
+        TimeMe.trackTimeOnElement(section);
+      });
+
+      var timeObj = {};
+      setInterval(function () {
+        timeObj[moduleName.substring(0, 5)] = TimeMe.getTimeOnCurrentPageInSeconds().toFixed(2);
+        sections.forEach(function (section, i) {
+          timeObj[i + "-" + section.substring(0, 5)] = TimeMe.getTimeOnElementInSeconds(section).toFixed(2);
+        });
+        for (var sec of sections) {
+        }
+        console.log(JSON.stringify(timeObj))
+      }, 1000);
+    });
 
    </script>
 '''
