@@ -50,7 +50,7 @@ $(document).ready(function() {
 
     fibtree.root().child(0).child(0).child(0).addChild("2");
 
-    av.umsg("Which leads us to F(3-1) = F(2)");
+    av.umsg("Which leads us to compute F(3-1) = F(2)");
     val = "2" + "<br>" + "-" ;//fib[3].toString();
     fibtree.root().child(0).child(0).child(0).child(0).value(val);
 
@@ -75,7 +75,7 @@ $(document).ready(function() {
     fibtree.layout();
     av.step();
 
-    av.umsg("we get F(2) = F(2-1) + F(2-2) = 1 + 1 = 2");
+    av.umsg("We get F(2) = F(2-1) + F(2-2) = 1 + 1 = 2");
     val = "2" + "<br>" + fib[2].toString();
     fibtree.root().child(0).child(0).child(0).child(0).value(val);
 
@@ -84,7 +84,7 @@ $(document).ready(function() {
 
     fibtree.root().child(0).child(0).child(0).addChild("1");
 
-    av.umsg("then we get F(3) = F(3-1) + F(3-2) = 2 + F(1) ");
+    av.umsg("Then we get F(3) = F(3-1) + F(3-2) = 2 + F(1) ");
     val = "1" + "<br>" + fib[1].toString();
     fibtree.root().child(0).child(0).child(0).child(1).value(val);
 
@@ -230,7 +230,7 @@ $(document).ready(function() {
 
     fibtree.layout();
     av.step();
-    
+
     fibtree.root().child(1).child(0).addChild("1")
     val = "1" + "<br>" + fib[1].toString();
     fibtree.root().child(1).child(0).child(1).value(val);
