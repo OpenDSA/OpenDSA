@@ -1,0 +1,130 @@
+h1 {
+	text-align: center;
+}
+
+p {
+	font-size: 100%;
+}
+
+p .jsavoutput {
+	margin: 0;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+}
+
+a {
+	padding-left: 20px;
+	padding-right: 20px;
+	font-weight: bold;
+}
+
+button, input[type="file"] {
+	font-size: 100%;
+	border-radius: 3px;
+}
+
+#begin {
+	background-color: #000033;
+	color: white;
+}
+
+.correct {
+	background-color: green;
+}
+
+.wrong {
+	background-color: red;
+}
+
+table {
+	font-size: 120%;
+	width: 100%;
+	border: 1px solid black;
+}
+
+td {
+	width: 33%;
+	border: 1px solid black;
+}
+
+.currentExercise {
+	border: 1px solid black;
+}
+
+#rmenu {
+	z-index: 1000;
+	position: absolute;
+	background-color: white;
+	border: 1px solid black;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+	margin: 0l
+	list-style-type: none;
+	list-style: none;
+}
+#rmenu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#rmenu a {
+	padding: 0;
+}
+#rmenu .editNode {
+	padding-left: 10px;
+	padding-right: 10px;
+	cursor: pointer;
+	cursor: hand;
+}
+#rmenu .editNode:hover {
+	background-color: #cdc9c9;
+}
+
+#container {
+	width: 800px;
+	height: 800px;
+	overflow: scroll;
+}
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+.ui-dialog {
+	z-index: 1000;
+	background-color: #f8fff8;
+	border-radius: 5px;
+}
+#transitions > .jsavcanvas {
+	height: auto;
+}
+#transitions {
+	padding: 0;
+	margin: 0 auto;
+}
+.jsavcanvas {
+	overflow-x: initial;
+}
+.jsavhorizontalarray .jsavnode {
+	min-width: 50px !important;
+  max-width: 50px !important;
+}
+.ui-dialog-titlebar {
+	height: 20px;
+	background-color: #999999;
+	cursor: move;
+}
+.jsavoutput {
+	padding-top: 10px;
+	margin: 0 auto;
+	text-align: center;
+}
+.jsavoutput > div {
+	font-size: 120%;
+	-webkit-touch-callout: initial; /* iOS Safari */
+	-webkit-user-select: initial;   /* Chrome/Safari/Opera */
+	-khtml-user-select: initial;    /* Konqueror */
+	-moz-user-select: initial;      /* Firefox */
+	-ms-user-select: initial;       /* Internet Explorer/Edge */
+	user-select: initial;           /* Non-prefixed version, currently
+						                                  not supported by any browser */
+}

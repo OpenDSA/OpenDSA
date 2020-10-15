@@ -1,0 +1,63 @@
+{
+    "translations": {
+        "en": {
+            "q0": {
+                "type": "select",
+				"description": "This is a single answer select question(multiple question)",
+                "question": "Anwser is A",
+                "answer": "A",
+                "choices": ["A", "B", "C", "D"],
+				"correctFeedback": ["You selected the right answer"],
+				"incorrectFeedback": ["The right anwser is A"]
+            },
+            "q1": {
+                "type": "true/false",
+				"description": "This is a true/false question",
+                "question": "Anwser is True",
+                "answer": "True",
+                "choices": [],
+				"correctFeedback": ["You selected the right answer"],
+				"incorrectFeedback": ["Anwser is True"]
+            },
+            "q2": {
+                "type": "select",
+                "description": "This is a multiple answer select question(select question)",
+                "question": "Anwser is A, B",
+                "answer": ["A", "B"],
+                "choices": ["A", "B", "C", "D"]
+            },
+            "q3": {
+                "type": "select",
+                "description": "This is a select question with True answer",
+                "question": "Anwser is True",
+                "answer": "True",
+                "choices": []
+            },
+            "q4": {
+                "type": "select",
+                "description": "This is a multiple answer select question(select question)",
+                "question": "Anwser is A ' , B",
+                "answer": ["A ' ", "B"],
+                "choices": ["A ' ", "B", "C", "D"]
+            },
+			"q5": {
+                "type": "textBox",
+                "description": "This is a textbox question",
+                "question": "Anwser is 'ABC'",
+                "answer": "ABC",
+                "choices": "",
+				"correctFeedback": ["You inputed the right answer"],
+				"incorrectFeedback": ["The right anwser is ABC"]
+            },
+			"q6": {
+                "type": "select",
+				"description": "This is a single answer select question(multiple question)",
+                "question": "Anwser is $A$",
+                "answer": "$A$",
+                "choices": ["$A$", "B", "C", "D"],
+				"correctFeedback": ["$A$ is the right answer"],
+				"incorrectFeedback": ["The right anwser is $A$"]
+            }
+        }
+    }
+}

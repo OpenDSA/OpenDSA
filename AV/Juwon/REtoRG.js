@@ -14,6 +14,8 @@ $(document).ready(function() {
             return 0;
         if (expression.charAt(expression.length - 1) == '*')
             return 0;
+        if (expression.charAt(expression.length - 1) == '*')
+            return 0;
         if (expression.charAt(0) == '('
                 && expression.charAt(expression.length - 1) == ')')
             return 0;

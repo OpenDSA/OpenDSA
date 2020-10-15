@@ -34,8 +34,8 @@ By the end, you will know how things in this picture apply to
 compilers, and how hard some related problems are to solve.
 
 .. inlineav:: HierarchyCON dgm
-   :links: AV/VisFormalLang/Intro/HierarchyCON.css
-   :scripts: AV/VisFormalLang/Intro/HierarchyCON.js
+   :links: AV/PIFLA/Intro/HierarchyCON.css
+   :scripts: AV/PIFLA/Intro/HierarchyCON.js
    :align: center
 
 You are familiar with programming languages.
@@ -119,7 +119,7 @@ that, you would need to take a compiler course.
 
 .. inlineav:: CompileCON dgm
    :links: 
-   :scripts: AV/VisFormalLang/Intro/CompileCON.js
+   :scripts: AV/PIFLA/Intro/CompileCON.js
    :align: center
 
 You might think that understanding how to write a grammar to recognize
@@ -142,7 +142,7 @@ together in an acceptable way.
 
 .. inlineav:: CompileStagesCON dgm
    :links: 
-   :scripts: AV/VisFormalLang/Intro/CompileStagesCON.js
+   :scripts: AV/PIFLA/Intro/CompileStagesCON.js
 
 PART 1: Identifying the tokens in a program.
 Regular languages are the foundation for this.

@@ -16,8 +16,9 @@ $(document).ready(function () {
         fi,                 // input box for matrix
         row,              // row number for input box
         col,              // column number for input box
-        isCFG = false;    // if the input is CFG
-    var dsArray =[];
+        isCFG = false,    // if the input is CFG
+        modelDFA;
+    var dsArray = [];
     var parenthesis = "(";
 
     var lambda = String.fromCharCode(955),
@@ -486,7 +487,16 @@ $(document).ready(function () {
     $('#removeLambda').hide();
     $('#removeLambda').click(removeLambdaDisplay);
     $('#startTransform').click(startTransform);
-    S('#toUnitproduction').click();
+    $('#toUnitproduction').hide();
+    $('#toUnitproduction').click(toUnitProductionStep);
+    $('#removeUnitproduction').hide();
+    $('#removeUnitproduction').click(unitProductions);
+    $('#dependencyButton').hide();
+    $('#dependencyButton').click(showunitDependencyGraph);
+    $('#toUselessProduction').hide();
+    $('#toUselessProduction').click(toUselessProduction);
+    $('#uselessDependencyGraph').hide();
+    $('#uselessDependencyGraph').click(showUselessDependencyGraph);
 
     $(document).click(defocus);
     $(document).keyup(function (e) {
@@ -528,7 +538,64 @@ $(document).ready(function () {
             }
         }
         return false;
-    };
+    }
+
+    function removeUnitHelper(productions, pDict) {
+        for (var i = 0; i < productions.length; i++) {
+            if (productions[i][2].length === 1 && variables.indexOf(productions[i][2]) !== -1) {
+                var p = pDict[productions[i][2]];
+                var n;
+                for (var j = 0; j < p.length; j++) {
+                    if (p[j].length === 1 && variables.indexOf(p[j]) !== -1) {
+                        continue;
+                    } else if (!_.find(productions, function (x) {
+                        return x[0] === productions[i][0] && x[2] === p[j];
+                    })) {
+                        n = p[j];
+                        break;
+                    }
+                }
+                if (n) {
+                    productions.push([productions[i][0], arrow, n]);
+                    pDict[productions[i][0]].push(n);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    function removeUnit() {
+        var productions = _.map(_.filter(arr, function (x) {
+            return x[0];
+        }), function (x) {
+            return x.slice();
+        });
+        var pDict = {};
+        // a dictionary mapping left sides to right sides
+        for (var i = 0; i < productions.length; i++) {
+            if (!(productions[i][0] in pDict)) {
+                pDict[productions[i][0]] = [];
+            }
+            pDict[productions[i][0]].push(productions[i][2]);
+        }
+        var counter = 0;
+        while (removeUnitHelper(productions, pDict)) {
+            counter++;
+            if (counter > 500) {
+                console.log(counter);
+                break;
+            }
+        }
+        // remove original unit productions
+        productions = _.filter(productions, function (x) {
+            return !(x[2].length === 1 && variables.indexOf(x[2]) !== -1);
+        });
+        var ret = _.map(productions, function (x) {
+            return x.join('');
+        });
+        return ret;
+    }
 
     function removeLambda() {
         var derivers = {};  // variables that derive lambda
@@ -588,7 +655,66 @@ $(document).ready(function () {
         return ret;
     }
 
+    function removeUseless() {
+        var derivers = {};  // variables that derive a string of terminals
+        var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+        var counter = 0;
+        while (findDerivable(derivers, productions)) {
+            counter++;
+            if (counter > 500) {
+                console.log(counter);
+                break;
+            }
+        };
+        var transformed = [];
+        // remove productions which do not derive a string of terminals
+        for (var i = 0; i < productions.length; i++) {
+            if (_.every(productions[i][2], function(x) { return x in derivers || variables.indexOf(x) === -1;})) {
+                transformed.push(productions[i]);
+            }
+        }
+        var pDict = {};   // dictionary to hold reachable variables
+        //var start = transformed[0][0];//IT SHOULD BE S
+        var start = 'S';//I changed this to S.
+        for (var i = 0; i < transformed.length; i++) {
+            if (!(transformed[i][0] in pDict)) {
+                pDict[transformed[i][0]] = [];
+            }
+            // map left hand side to the variables in the right hand side
+            var r = _.uniq(_.filter(transformed[i][2], function(x) {return variables.indexOf(x) !== -1;}));
+            pDict[transformed[i][0]] = _.union(pDict[transformed[i][0]], r);
+        }
+        var visited = {};
+        visited[start] = true;
+        // find reachable variables and map them in pDict
+        findReachable(start, pDict, visited);
+        // remove unreachable productions
+        transformed = _.filter(transformed, function(x) { return x[0] === start || pDict[start].indexOf(x[0]) !== -1;});
+        var ret = _.map(transformed, function(x) {return x.join('');});
+        return ret;
+    }
+    // FADepthFirstSearch on the dictionary
+    var findReachable = function (start, pDict, visited) {
+        for (var i = 0; i < pDict[start].length; i++) {
+            if (!(pDict[start][i] in visited)) {
+                visited[pDict[start][i]] = true;
+                findReachable(pDict[start][i], pDict, visited);
+                pDict[start] = _.union(pDict[start], pDict[pDict[start][i]]);
+            }
+        }
+    };
 
+    var findDerivable = function (set, productions) {
+        for (var i = 0; i < productions.length; i++) {
+            if (_.every(productions[i][2], function(x) { return x in set || variables.indexOf(x) === -1;})) {
+                if (!(productions[i][0] in set)) {
+                    set[productions[i][0]] = true;
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
     function onLoadHandler() {
         $('#loadFile').hide();
         $('#saveFile').hide();
@@ -635,7 +761,7 @@ $(document).ready(function () {
 
     function isContextFreeGrammar() {
         var productions = _.filter(arr, function (x) {
-            return x[0]
+            return x[0];
         });
         for (var i = 0; i < productions.length; i++) {
             var lhs = productions[i][0];
@@ -647,93 +773,228 @@ $(document).ready(function () {
     }
 
 
-    function checkLHSVariables() {
-        //check if there is more than one variable on the LHS
-        var productions = _.filter(arr, function (x) {
-            return x[0]
-        });
-        for (var i = 0; i < productions.length; i++) {
-            var lhs = productions[i][0];
-            if (lhs.length !== 1) {
-                return true;
-            } else if (variables.indexOf(lhs) === -1) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     function clearAll() {
         window.location.href = "";
     }
 
-    function removeLambdaDisplay()
-    {
-        if (dsArray.length ===0)
-        {
+    function removeLambdaDisplay() {
+        var noLambda = removeLambda();
+        if (dsArray.length === 0) {
             alert('dsArray is empty');
             return;
         }
 
-        for (var i = 0; i < dsArray.length; i++)
-        {
-            if (dsArray[i].isHighlight())
-            {
-                dsArray[i].hide();
+        for (var i = 0; i < dsArray.length; i++) {
+
+            dsArray[i].hide();
+
+        }
+        var newArr = [];
+        dsArray = [];
+        for (var j = 0; j < noLambda.length; j++) {
+            var splitedProduction = [];
+            splitedProduction[0] = noLambda[j].split(arrow)[0];
+            splitedProduction[1] = arrow;
+            splitedProduction[2] = noLambda[j].split(arrow)[1];
+            newArr[j] = splitedProduction;
+            dsArray[j] = jsav.ds.array(splitedProduction, {center: false});
+        }
+        jsav.umsg("All lambda productions removed");
+        arr = newArr;
+        document.getElementById('removeLambda').disabled = true;
+
+        $('#toUnitproduction').show();
+        $('#removeLambda').hide();
+
+
+    }
+
+    function toUnitProductionStep() {
+
+        jsav.umsg("Next Step is to build the dependency graph for the grammar using the left grammar without lambda production");
+        $('#toUnitproduction').hide();
+        $('#dependencyButton').show();
+
+
+    }
+
+    function showunitDependencyGraph() {
+        $('#dependencyButton').hide();
+
+        var productions = _.map(_.filter(arr, function (x) {
+            return x[0];
+        }), function (x) {
+            return x.slice();
+        });
+        var v = [];
+        for (var i = 0; i < productions.length; i++) {
+            if (v.indexOf(productions[i][0]) === -1) {
+                v.push(productions[i][0]);
             }
         }
-        alert("All lambda productions removed");
-        document.getElementById('removeLambda').disabled = true;
-        return;
+        modelDFA = jsav.ds.graph({layout: "layered", directed: true, left: 400, top: 100}); //VDG
+        for (var i = 0; i < v.length; i++) {
+            modelDFA.addNode(v[i]);
+        }
+        modelDFA.layout();
+        var unitProductions = _.filter(productions, function (x) {
+            // return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
+            return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
+        });
+        var selectedNode = null;
+        var unitVdgHandler = function () {
+            this.highlight();
+            if (selectedNode) {
+                var self = this;
+                if (selectedNode.value() === this.value()) {
+                    selectedNode.unhighlight();
+                    self.unhighlight();
+                    selectedNode = null;
+                    return;
+                }
+                if (_.find(unitProductions, function (x) {
+                    return x[0] === selectedNode.value() && x[2] === self.value();
+                })) {
+                    var newEdge = modelDFA.addEdge(selectedNode, self);
+                    if (newEdge) {
+                        modelDFA.layout();
+                    }
+                    jsav.umsg('Transition added.');
+                    if (modelDFA.edgeCount() === unitProductions.length) {
+                        modelDFA.element.off();
+                        selectedNode.unhighlight();
+                        self.unhighlight();
+                        selectedNode = null;
+                        jsav.umsg('The dependency graph is completed.');
+                        $('#removeUnitproduction').show();
+                        return;
+                    }
+                } else {
+                    jsav.umsg('Transition is not part of VDG.');
+                }
+                selectedNode.unhighlight();
+                self.unhighlight();
+                selectedNode = null;
+            } else {
+                selectedNode = this;
+            }
+        };
+        modelDFA.click(unitVdgHandler);
     }
-    function startTransform() {
-        // for (var i = 0; i < arr.length; i++){
-        //   if (arr[i][0] == '' && arr[i][2] == '')
-        //   {
-        //     continue;
-        //   }
-        //   jsav.ds.array(arr[i]);
-        // }
-        document.getElementById('startTransform').disabled = true;
-        var noLambda = removeLambda();
 
+    function unitProductions() {
+        for (var i = 0; i < dsArray.length; i++) {
+            dsArray[i].hide();
+        }
+        var noUnit = removeUnit();
+        var newArr = [];
+
+        var tempDsArray = [];
+        for (var j = 0; j < noUnit.length; j++) {
+            var splitedProduction = [];
+            splitedProduction[0] = noUnit[j].split(arrow)[0];
+            splitedProduction[1] = arrow;
+            splitedProduction[2] = noUnit[j].split(arrow)[1];
+            newArr[j] = splitedProduction;
+            tempDsArray[j] = jsav.ds.array(splitedProduction, {center: false});
+        }
+
+        for (var k = 0; k < tempDsArray.length; k++) {
+            var found = false;
+            for (var a = 0; a < arr.length; a++) {
+                if (newArr[k][0] === arr[a][0] && newArr[k][2] === arr[a][2]) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                tempDsArray[k].highlight();
+            } else {
+                continue;
+            }
+        }
+        jsav.umsg("All unit productions removed");
+        arr = newArr;
+        dsArray = tempDsArray;
+        document.getElementById('removeLambda').disabled = true;
+        $('#removeUnitproduction').hide();
+        $('#toUselessProduction').show();
+    }
+
+    function showUselessDependencyGraph() {
+
+    }
+
+    function toUselessProduction() {
+        jsav.umsg("Next Step is to build the dependency graph for the grammar using the left grammar without unit production");
+        modelDFA.clear();
+        for (var i = 0; i < dsArray.length; i++) {
+            dsArray[i].unhighlight();
+        }
+        $('#toUselessProduction').hide();
+        $('#uselessDependencyGraph').show();
+    }
+
+    function startTransform() {
+        document.getElementById('startTransform').disabled = true;
+
+        var noLambda = removeLambda();
+        var noUnit = removeUnit();
+        var noUseless = removeUseless();
+        var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+        var strP = _.map(productions, function (x) {
+            return x.join('');
+        });
+        backup = "" + strP;
         var highlightCounter = 0;
         for (var i = 0; i < arr.length; i++) {
             if (arr[i][0] === '' && arr[i][2] === '') {
                 continue;
             }
-            if (arr[i][2] === lambda)
-            {
-                dsArray[i] = jsav.ds.array(arr[i],{center:false}).highlight();
+            if (arr[i][2] === lambda) {
+                dsArray[i] = jsav.ds.array(arr[i], {center: false}).highlight();
                 highlightCounter++;
-            }
-            else {
-                dsArray[i] = jsav.ds.array(arr[i],{center:false});
+            } else {
+                dsArray[i] = jsav.ds.array(arr[i], {center: false});
             }
         }
-        if (highlightCounter === 1)
-        {
-            $("#mode").html("the highlight production is the Lambda production. In the Transformation, we need to remove it firstly!");
-        }
-        else if (highlightCounter >1) {
-            $("#mode").html("the highlight productions are the Lambda productions. In the Transformation, we need to remove them firstly!");
 
-        }
-        else {
+        if (!checkTransform(strP, noLambda)) {
+            $('#removeLambda').show();
+
+            if (highlightCounter === 1) {
+                $("#mode").html("the highlight production is the Lambda production. In the Transformation, we need to remove it firstly!");
+            } else if (highlightCounter > 1) {
+                $("#mode").html("the highlight productions are the Lambda productions. In the Transformation, we need to remove them firstly!");
+            }
+        } else if (!checkTransform(strP, noUnit)) {
             $("#mode").html('You productions do not have any lambda productions! Move to remove unit productions phase');
-            //TODO: add unit produciton part
-            return;
+            $('#toUnitproduction').show();
+        } else if (!checkTransform(strP, noUseless))
+        {
+            $("#mode").html('You productions do not have any lambda productions and unit producitions! Move to remove useless productions phase');
+            $('#toUselessProduction').show();
+        } else {
+            backup = null;
+            jsav.umsg('Grammar already in Chomsky Normal Form.');
+            return true;
         }
 
-        $('#removeLambda').show();
-        return;
 
     }
 
+    var checkTransform = function (strP, g) {
+        var inter = _.intersection(strP, g);
+        if (inter.length === strP.length && inter.length === g.length) {
+            return true;
+        }
+        return false;
+    };
 
     function identifyGrammar() {
-        if (arr.length == 0) {
-            alert('Please enter your productions');
+        var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+        if (productions.length === 0) {
+            alert('No grammar.');
             return;
         }
         if (isContextFreeGrammar()) {
@@ -751,7 +1012,6 @@ $(document).ready(function () {
             $('.jsavmatrix').hide();
             $('#startTransform').show();
             $('#back').show();
-            $('#next').show();
             //document.getElementById("editor").innerHTML = 'First step:';
             $("#mode").html('After confirming the grammar is context free grammar, we need to remove some producitons as the following order:\n' +
                 '1. lambda production\n 2. unit production\n 3. useless production\n');
