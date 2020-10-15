@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Cliff Shaffer,Abhishek Jha, and Angel Velazquez
+   :author: Cliff Shaffer, Abhishek Jha, and Angel Velazquez
    :topic: Dynamic Programming
 
 Dynamic Programming
@@ -26,10 +26,10 @@ Using dynamic programming requires two steps:
    The iterative form is commonly referred to by the term dynamic
    programming.
 
-We will see first how to remove redundancy with a
-simple, non-optimization problem.
-We then go to an optimization problem, which will be efficiently
-solved by dynamic programming.
+We will see first how to remove redundancy with a simple problem,
+computing Fibonacci numbers.
+Then we introduce the knapsack problem, and show how it can be
+solved efficiently with dynamic programming.
 
 Computing Fibonacci Numbers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,10 +40,9 @@ Fibonacci number.
 .. codeinclude:: Misc/Fibonnaci 
    :tag: FibR
 
-The cost of this algorithm (in terms of function calls) is the size of
-the :math:`n`'th Fibonacci number itself, which our analysis of
-Module :ref:`summation <summation> <Summations>` showed to be exponential
-(approximately :math:`1.62^n` ).
+The cost of this recursive algorithm (in terms of function calls) is
+the size of the :math:`n`'th Fibonacci number itself, which is
+exponential on :math:`n` (approximately :math:`1.62^n` ).
 Why is this so expensive?
 Primarily because two recursive calls are made by the
 function, and the work that they do is largely redundant.
@@ -56,16 +55,7 @@ reduced.
 The approach that we will use can also improve any algorithm that
 spends most of its time recomputing common subproblems.
 
-The upper half of the following figure shows the recursion tree
-obtained for n=8, and it has 67 nodes.
-However, the lower half of the figure shows that the number of
-unique subproblems is only n+1=9.
-The latter graphical representation is called a dependency graph, and
-was obtained from the recursion tree by joining different occurrences
-of the same recursive call, preserving their corresponding arcs.
-In each node, the top half (in blue) shows the parameter values on the
-recursive call, while the bottom half (in red) shows the return value
-for the call.
+The following slideshow explains the redundancy problem.
 
 .. inlineav:: FibTreeCON ss
    :links:   /AV/Abhishek/FibTreeCON.css
@@ -73,28 +63,20 @@ for the call.
    :align: center
    :output: show
 
-.. odsafig:: Images/FibTree.png
-   :width: 800
-   :align: center
-   :figwidth: 90%
-
-.. odsafig:: Images/FibGraph.png
-   :width: 800
-   :align: center
-   :figwidth: 90%
-
+Looking at the final tree, we see that there are only seven unique
+subproblems to solve (for Fibonacci values 0 through 6).
+The graphical representation below is called a dependency graph, and
+shows the dependencies for the subproblems.
 
 .. inlineav:: FibGraphCON dgm
    :links:   /AV/Abhishek/FibGraphCON.css
    :scripts: /AV/Abhishek/FibGraphCON.js
    :align: center
-	:output: show
-
-   Language Circles
+   :output: show
 
 Note that the dependency graph was laid out on in a one dimensional
-table of size 9, corresponding to the unique subproblems invoked by
-the algorithm.
+table of size seven, corresponding to the unique subproblems invoked
+by the algorithm.
 This table can simply store the value of each subproblem.
 In this way, redundant calls can be avoided because the value of a
 subproblem which was previously computed can be read from its
