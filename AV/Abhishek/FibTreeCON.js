@@ -212,10 +212,13 @@ $(document).ready(function() {
     fibtree.layout();
     av.step();
 
-    fibtree.root().child(1).child(0).addChild("2").addChild("1");
+    fibtree.root().child(1).child(0).addChild("2");
 
     val = "2" + "<br>" + fib[2].toString();
     fibtree.root().child(1).child(0).child(0).value(val);
+
+    fibtree.layout();
+    av.step();
 
     fibtree.root().child(1).child(0).child(0).addChild("1").addChild("0");
 
@@ -225,7 +228,10 @@ $(document).ready(function() {
     val = "0" + "<br>" + fib[0].toString();
     fibtree.root().child(1).child(0).child(0).child(1).value(val);
 
-
+    fibtree.layout();
+    av.step();
+    
+    fibtree.root().child(1).child(0).addChild("1")
     val = "1" + "<br>" + fib[1].toString();
     fibtree.root().child(1).child(0).child(1).value(val);
 
