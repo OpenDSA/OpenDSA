@@ -1,0 +1,15 @@
+{
+  "translations" : {
+    "en": {
+      ".avTitle": "Context Free Pumping Lemma",
+      "av_Authors": "Yuhui",
+      "#about": "About",
+      "#enter": "Enter",
+      "#next": "Next Step",
+      "#clear": "Clear",
+      "#explain": "Explain",
+      "#reset": "Reset",
+      "#setuvxyz": "Set uvxyz"
+    }
+  }
+}

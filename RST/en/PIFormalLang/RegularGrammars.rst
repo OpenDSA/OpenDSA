@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Mostafa Mohammed
-   :satisfies: Regular Grammar
+   :satisfies:
    :topic: Regular Grammars
 
 
@@ -60,16 +60,14 @@ Left Regular Grammars
 
 
 RegEx to Right Regular Grammar
-------------------------------
-
+------------------------
 .. inlineav:: RegEXtoRegGrammarFF ff
    :links: AV/PIExample/RegularGrammars/RegEXtoRegGrammarFF.css
    :scripts: AV/PIExample/RegularGrammars/RegEXtoRegGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js 
    :output: show
 
 RegEx to Left Regular Grammar
------------------------------
-
+------------------------
 .. inlineav:: RegEXtoLeftRegGrammarFF ff
    :links: AV/PIExample/RegularGrammars/RegEXtoLeftRegGrammarFF.css
    :scripts: AV/PIExample/RegularGrammars/RegEXtoLeftRegGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js 

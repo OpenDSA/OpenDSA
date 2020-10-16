@@ -41,7 +41,7 @@ $(document).ready(function() {
 
   //Frame 9
   av.umsg(Frames.addQuestion("q9"));
-  var url = "../../../AV/PIExample/PDA/machines/PDAExample1.jff";
+  var url = "../../../AV/PIExample/PDA/Machines/PDAExample1.jff";
   var PDA = new av.ds.PDA({width: 500, height: 200, left:-20, url: url});
   av.step();
 
@@ -52,7 +52,7 @@ $(document).ready(function() {
   //Frame 11
   av.umsg(Frames.addQuestion("q11"));
   PDA.hide();
-  url = "../../../AV/PIExample/PDA/machines/WWrPDA.jff";
+  url = "../../../AV/PIExample/PDA/Machines/WWrPDA.jff";
   var PDA2 = new av.ds.PDA({width: 500, height: 200, left:-20, url: url});
   av.step();
 

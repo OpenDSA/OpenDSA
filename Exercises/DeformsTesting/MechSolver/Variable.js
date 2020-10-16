@@ -37,8 +37,6 @@ class Variable{
         this.valueDisplay.dataset.status = "empty";
         this.unitDisplay.dataset.status = "empty";
         // console.log(this.name, element);
-
-        this.unitChangeHandler = null;  // Used as a workaround for removing clickhandlers for changeUnits
         
         // Creating the grayed out symbol representation
         this.grayOut();
@@ -83,7 +81,7 @@ class Variable{
                     {
                         var element = JSAV.utils.dialog(
                             '<ul><li>multiply by -1</li><li>start an association</li><li>rename variables</li><li>insert value/unit</li></ul>',
-                            {width: 150}
+                            {width: 100}
                         );
                         element[0].style.top = e.pageY+5+"px"; element[0].style.left = e.pageX+10+"px";
                         element[0].childNodes[0].childNodes[0].addEventListener(
@@ -123,7 +121,7 @@ class Variable{
                                 this.globalPointerReference.currentClickedObjectType = "var-box";
                                 this.globalPointerReference.currentClickedObjectDescription = "started new assoc";
                                 this.globalPointerReference.currentClickedObject.element.classList.add("selectedvalue");
-                                // console.log("clicked first box");
+                                console.log("clicked first box");
                                 element.close();
                             }
                         );
@@ -132,7 +130,7 @@ class Variable{
                                 e2.stopPropagation();
                                 element.close();
                                 
-                                // console.log("Renaming variables")
+                                console.log("Renaming variables")
 
                                 var inputPromptHTML = 
                                 '<h4>Enter a variable name here.</h4>'+
@@ -187,7 +185,7 @@ class Variable{
                                 inputBox[0].querySelector("#domain").addEventListener("change", 
                                     e3=> { 
                                         e3.stopPropagation();
-                                        // console.log(this, Window.box[0])
+                                        console.log(this, Window.box[0])
                                         var unitlist = Window.box[0].querySelector("#unit");
                                         unitlist.innerHTML = "";
                                         for(var unit in Window.UNIT_DB[event.target.value])
@@ -275,12 +273,12 @@ class Variable{
                     else if(this.globalPointerReference.currentClickedObject.valueType == "association") // Clicked on an existing association
                     {
                         // "association type is always with a var-box type"
-                        // console.log("creating multiway association");
+                        console.log("creating multiway association");
                         this.valueType = "association";
                         this.globalPointerReference.currentClickedObject.value.addVariable(this);
                         this.value = this.globalPointerReference.currentClickedObject.value;
 
-                        // console.log(this.globalPointerReference.currentClickedObject.id);
+                        console.log(this.globalPointerReference.currentClickedObject.id);
                         Window.clearGlobalPointerReference();
                         // this.globalPointerReference.currentClickedObject = null;
                         // this.globalPointerReference.currentClickedObjectType = null;
@@ -288,14 +286,14 @@ class Variable{
                     }
                     else if(this.globalPointerReference.currentClickedObjectDescription == "started new assoc"){
                         // Create the 2-way association and clear the global pointer
-                        // console.log("creating two way association");
+                        console.log("creating two way association");
                         this.valueType = "association";
                         this.globalPointerReference.currentClickedObject.valueType = "association";
                         this.globalPointerReference.currentClickedObject.valueNegated = false; // for now, we reset that status.
                         this.value = new Association(this.globalPointerReference.currentClickedObject, this);
                         this.globalPointerReference.currentClickedObject.value = this.value;
 
-                        // console.log(this.globalPointerReference.currentClickedObject.id);
+                        console.log(this.globalPointerReference.currentClickedObject.id);
                         Window.clearGlobalPointerReference();
                         // this.globalPointerReference.currentClickedObject = null;
                         // this.globalPointerReference.currentClickedObjectType = null;
@@ -305,13 +303,13 @@ class Variable{
                     {
                         // If it's empty, or has a numerical value, just add/overwrite the values in here.
                         this.clickAddValue();
-                        // console.log("added value to a box");
+                        console.log("added value to a box");
                         Window.clearGlobalPointerReference();
                     }
                     else if(this.globalPointerReference.currentClickedObjectDescription == "copy number")
                     {
                         this.clickAddValue();
-                        // console.log("copied a number over");
+                        console.log("copied a number over");
                         Window.clearGlobalPointerReference();
                     }
                 }
@@ -321,8 +319,8 @@ class Variable{
                     // If there is no other complicated context, simply the number needs to be manipulated.
                     {
                         var element = JSAV.utils.dialog(
-                            "<ul><li>multiply by -1</li><li>copy</li><li>clear value from box</li></ul>",
-                            {width: 150}
+                            "<ul><li>multiply by -1</li><li>copy</li><li>clear</li></ul>",
+                            {width: 100}
                         );
                         element[0].style.top = e.pageY+5+"px"; element[0].style.left = e.pageX+10+"px";
                         element[0].childNodes[0].childNodes[0].addEventListener(
@@ -345,7 +343,7 @@ class Variable{
                         element[0].childNodes[0].childNodes[1].addEventListener(
                             "click", e2=> {
                                 e2.stopPropagation();
-                                // console.log("started copying variable");
+                                console.log("started copying variable");
 
                                 this.globalPointerReference.currentClickedObject = this;
                                 this.globalPointerReference.currentClickedObjectType = "var-box";
@@ -360,7 +358,7 @@ class Variable{
                             "click", e2=> {
                                 e2.stopPropagation();
                                 this.removeValue();
-                                // console.log("remove value from a box");
+                                console.log("remove value from a box");
 
                                 Window.clearGlobalPointerReference();
                                 // this.globalPointerReference.currentClickedObject = null;
@@ -376,12 +374,12 @@ class Variable{
                         this.removeValue();
                         // An existing association is involved
                         // "association type is always with a var-box type"
-                        // console.log("creating multiway association");
+                        console.log("creating multiway association");
                         this.valueType = "association";
                         this.globalPointerReference.currentClickedObject.value.addVariable(this);
                         this.value = this.globalPointerReference.currentClickedObject.value;
 
-                        // console.log(this.globalPointerReference.currentClickedObject.id);
+                        console.log(this.globalPointerReference.currentClickedObject.id);
                         Window.clearGlobalPointerReference();
                         // this.globalPointerReference.currentClickedObject = null;
                         // this.globalPointerReference.currentClickedObjectType = null;
@@ -391,13 +389,13 @@ class Variable{
                     {
                         this.removeValue();
                         // Create the 2-way association and clear the global pointer
-                        // console.log("creating two way association");
+                        console.log("creating two way association");
                         this.valueType = "association";
                         this.globalPointerReference.currentClickedObject.valueType = "association";
                         this.value = new Association(this.globalPointerReference.currentClickedObject, this);
                         this.globalPointerReference.currentClickedObject.value = this.value;
 
-                        // console.log(this.globalPointerReference.currentClickedObject.id);
+                        console.log(this.globalPointerReference.currentClickedObject.id);
                         Window.clearGlobalPointerReference();
                         // this.globalPointerReference.currentClickedObject = null;
                         // this.globalPointerReference.currentClickedObjectType = null;
@@ -408,15 +406,13 @@ class Variable{
                         // If it's empty, or has a numerical value, just add/overwrite the values in here.
                         this.removeValue();
                         this.clickAddValue();
-                        Window.clearGlobalPointerReference();
-                        // console.log("replaced a value in a box from prose");
+                        console.log("replaced a value in a box from prose");
                     }
                     else if(this.globalPointerReference.currentClickedObjectDescription == "copy number")
                     {
                         this.removeValue();
                         this.clickAddValue();
-                        Window.clearGlobalPointerReference();
-                        // console.log("copied a number over");
+                        console.log("copied a number over");
                     }
                 }
                 else if(this.valueType=="association")
@@ -424,8 +420,8 @@ class Variable{
                     if (this.globalPointerReference.currentClickedObject == null)
                     {
                         var element = JSAV.utils.dialog(
-                            "<ul><li>multiply by -1</li><li>add new to association</li><li>Rename association</li><li>clear association</li></ul>",
-                            {width: 150}
+                            "<ul><li>multiply by -1</li><li>add new to association</li><li>Rename association</li><li>clear</li></ul>",
+                            {width: 120}
                         );
                         element[0].style.top = e.pageY+5+"px"; element[0].style.left = e.pageX+10+"px";
                         element[0].childNodes[0].childNodes[0].addEventListener(
@@ -495,7 +491,7 @@ class Variable{
                                 this.globalPointerReference.currentClickedObjectDescription = "started additional assoc";
                                 this.globalPointerReference.currentClickedObject.element.classList.add("selectedvalue");
                                 
-                                // console.log("clicked existing assoc box");
+                                console.log("clicked existing assoc box");
                                 element.close();
                                 // this.adjustParentEquationVisuals();
                             }
@@ -503,7 +499,7 @@ class Variable{
                         element[0].childNodes[0].childNodes[2].addEventListener(
                             "click", e2=> {
                                 e2.stopPropagation();
-                                // console.log("started renaming variable association");
+                                console.log("started renaming variable association");
                                 element.close();
 
                                 var inputPromptHTML = 
@@ -533,7 +529,7 @@ class Variable{
                             "click", e2=> {
                                 e2.stopPropagation();
                                 this.value.removeAssociation(this);
-                                // console.log("assoc deletion");
+                                console.log("assoc deletion");
 
                                 Window.clearGlobalPointerReference();
                                 // this.globalPointerReference.currentClickedObject = null;
@@ -547,39 +543,38 @@ class Variable{
                     else if(this.globalPointerReference.currentClickedObjectType == "value-box") {
                         this.value.removeAssociation(this);
                         this.clickAddValue();
-                        // console.log("replaced association with value from prose");
+                        console.log("replaced association with value from prose");
                     }
                     else if(this.globalPointerReference.currentClickedObjectDescription == "copy number") {
                         this.value.removeAssociation(this);
                         this.clickAddValue();
-                        Window.clearGlobalPointerReference();
-                        // console.log("replaced association with value copied over");
+                        console.log("replaced association with value copied over");
                     }
                     else if(this.globalPointerReference.currentClickedObject.valueType == "association") {
                         this.value.removeAssociation(this);
-                        // console.log("creating multiway association");
+                        console.log("creating multiway association");
                         this.valueType = "association";
                         this.globalPointerReference.currentClickedObject.value.addVariable(this);
                         this.value = this.globalPointerReference.currentClickedObject.value;
 
-                        // console.log(this.globalPointerReference.currentClickedObject.id);
+                        console.log(this.globalPointerReference.currentClickedObject.id);
                         Window.clearGlobalPointerReference();
                         // this.globalPointerReference.currentClickedObject = null;
                         // this.globalPointerReference.currentClickedObjectType = null;
                         // this.globalPointerReference.currentClickedObjectDescription = null;
-                        // console.log("replacing an existing association with another existing association")
+                        console.log("replacing an existing association with another existing association")
                     }
                     else if(this.globalPointerReference.currentClickedObjectDescription == "started new assoc")
                     {
                         this.value.removeAssociation(this);
                         // Create the 2-way association and clear the global pointer
-                        // console.log("creating two way association");
+                        console.log("creating two way association");
                         this.valueType = "association";
                         this.globalPointerReference.currentClickedObject.valueType = "association";
                         this.value = new Association(this.globalPointerReference.currentClickedObject, this);
                         this.globalPointerReference.currentClickedObject.value = this.value;
 
-                        // console.log(this.globalPointerReference.currentClickedObject.id);
+                        console.log(this.globalPointerReference.currentClickedObject.id);
                         Window.clearGlobalPointerReference();
                         // this.globalPointerReference.currentClickedObject = null;
                         // this.globalPointerReference.currentClickedObjectType = null;
@@ -693,8 +688,10 @@ class Variable{
         //console.log(this.globalPointerReference);
 
         // clickHandler for unit changes()
-        this.unitChangeHandler = e => this.changeUnits(e, this);
-        this.unitDisplay.addEventListener("click", this.unitChangeHandler);
+        this.unitDisplay.addEventListener("click", e=>{
+            e.stopPropagation();
+            this.changeUnits(e);
+        });
     }
     setValueUnit(value, unit)
     {
@@ -717,7 +714,7 @@ class Variable{
     }
     removeValue()
     {
-        // console.log("removed value");
+        console.log("removed value");
         // Double click replaces the container with the empty box from before.
         // Possibly with the grayed out letters, once we've fixed that.
         this.element.setAttribute("data-domain","empty");
@@ -728,7 +725,7 @@ class Variable{
         this.valueType = null;
         this.valueNegated = false;
 
-        this.unitDisplay.removeEventListener("click", this.unitChangeHandler);
+        this.unitDisplay.removeEventListener("click", this.changeUnits);
         this.valueDisplay.dataset.status = "empty";
         this.grayOut();
 
@@ -775,7 +772,7 @@ class Variable{
     {
         return (x => x.slice(0,x.lastIndexOf("_")))(this.id);
     }
-    changeUnits(event, varObj){
+    changeUnits(event){
         /**
          * Define list of units and standard value conversions in here
          * grouped by domain
@@ -787,9 +784,7 @@ class Variable{
          * Populate var text with the list of units for this domain.
          * Click handlers are associated with each element, create data-unit domains for them
          * to match with.
-        */
-        event.stopPropagation();
-        console.log(event, varObj);
+         */
         
         var text = "<ul>";
         // console.log(UNIT_DB[event.target.parentNode.parentNode.dataset.domain]);
@@ -802,7 +797,12 @@ class Variable{
         }
         text+="</ul>";
 
-        var element = JSAV.utils.dialog(text, {width: 100});
+        var element = JSAV.utils.dialog(
+            text,
+            {
+                width: 100
+            }
+        );
         Window.obj = event.target;
         Window.showBlankPrompt = false; // TODO: Replace with explicit calls to createContext with details
         element[0].style.top = event.pageY+5+"px";
@@ -812,27 +812,19 @@ class Variable{
                 "click", e=> {
                     e.stopPropagation();
                     
-                    console.log(varObj.currentUnit, x.dataset.unitname);
-
                     // Change internals
-                    // var oldUnit = this.currentUnit;
-                    // this.currentUnit = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unit'];
-                    // this.value = mathjs.evaluate("number("+this.value+" "+oldUnit+", "+this.currentUnit+")")
-                    // // this.valueRepr = Window.valueTruncate(this.value);
-                    // this.valueRepr = Window.valueStringRepr(this.value);
-
-                    var oldUnit = varObj.currentUnit;
-                    varObj.currentUnit = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unit'];
-                    varObj.value = mathjs.evaluate("number("+varObj.value+" "+oldUnit+", "+varObj.currentUnit+")")
+                    var oldUnit = this.currentUnit;
+                    this.currentUnit = Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unit'];
+                    this.value = mathjs.evaluate("number("+this.value+" "+oldUnit+", "+this.currentUnit+")")
                     // this.valueRepr = Window.valueTruncate(this.value);
-                    varObj.valueRepr = Window.valueStringRepr(varObj.value);
+                    this.valueRepr = Window.valueStringRepr(this.value);
 
                     // Change external views
-                    varObj.setValueUnit(String(varObj.valueRepr),
+                    this.setValueUnit(String(this.valueRepr),
                     Window.UNIT_DB[event.target.parentNode.parentNode.dataset.domain][x.dataset.unitname]['unitDisp']);
                     element.close();
                     Window.clearGlobalPointerReference();
-                    varObj.adjustParentEquationVisuals();
+                    this.adjustParentEquationVisuals();
                 }
             )
         });

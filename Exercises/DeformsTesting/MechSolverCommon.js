@@ -37,18 +37,16 @@ requirejs(["./mathjs.js"], function(){});
             "HEIGHT": 500
         },
     };
-    var LTI_CANVAS_HEIGHT ; //This is only relevant when the exercise is served inside Canvas LMS - to prevent scrolling too much and to allow the content to fit.
 
     Window.showBlankPrompt = true;
 
     var mechSolverCommon = {
 
         //initializer, creates all the necessary object instances
-        initJSAV: function(exerciseId, unitFamily, ltiCanvasHeight){
+        initJSAV: function(exerciseId, unitFamily){
             // Creating one rectangle in the middle that allows scrolling through
             // the list of equations.
             Window.unitFamily = unitFamily; // Setting this here since resetting is not going to change this.
-		LTI_CANVAS_HEIGHT = ltiCanvasHeight;
             reset(exerciseId);
         },
         
@@ -211,14 +209,6 @@ requirejs(["./mathjs.js"], function(){});
         //     console.log(eventData);
         // }});
         Window.jsavObject = av;
-	if(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe")!=null)
-		Window.updateExerciseWindowHeight = function(shiftAmount) {	
-			var minWindowHeight = LTI_CANVAS_HEIGHT;
-			var currentHeight = parseInt(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height);
-			window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
-				Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
-		}
-	else Window.updateExerciseWindowHeight = function() {} ;
         Window.eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         Window.wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
             Window.eqbank, globalPointerReference);
@@ -234,11 +224,9 @@ requirejs(["./mathjs.js"], function(){});
         globalPointerReference.currentClickedObjectType = null;
         globalPointerReference.currentClickedObjectDescription = null;
 
-         $("body").on("jsav-log-event", function(event, eventData) {
+        // $("body").on("jsav-log-event", function(event, eventData) {
         //     console.log(eventData);
-            if(window.parent.ODSA != undefined)
-	    console.log(window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc))
-        });
+        //   });
         
         // Setting up value boxes for those inside the question body
         var selectableParameters = document.getElementsByClassName("param");
@@ -284,10 +272,6 @@ requirejs(["./mathjs.js"], function(){});
             helpbox.classList.add("helpbutton");
             helpbox.innerHTML = "&#xFFFD";
             helpbox.setAttribute("title","Click to get help");
-            helpbox.addEventListener("click", e=> {
-                e.stopPropagation();
-                Window.showHelp("submissionBox", e);
-            })
 
             // console.log(solutionSubmissionBoxes[index]);
 
@@ -387,6 +371,21 @@ requirejs(["./mathjs.js"], function(){});
             });
         }
 
+        // Creating clickhandlers associated with the body to clear the globalPointerReference
+        document.body.addEventListener("click", e=> {
+            e.stopPropagation();
+            // console.log("Inside the body snatcher");
+            if(Window.showBlankPrompt) {
+                var messageBox = JSAV.utils.dialog("Add an equation from the bank to begin.", {modal: false, width: 100})
+                messageBox[0].style.top = e.pageY+5+"px";
+                messageBox[0].style.left = e.pageX+10+"px";
+                setTimeout(messageBox.close, 900)
+            }
+            else {
+                Window.clearGlobalPointerReference();
+            }
+        });
+
         // Creating list of usable variables
         for(var i=0; i<26; i++)
         {
@@ -405,16 +404,7 @@ requirejs(["./mathjs.js"], function(){});
         //     }
         // ).addClass("equationPageTitle");
         // questionSign.element[0].addEventListener("click", e => { e.stopPropagation(); Window.showHelp("general") } );
-        
-        // This loads the general help menu; for now, work is delegated to Intro.js
-        // Window.showHelp("general");
-        // Window.tutorialSteps();
-        
-	
-	// console.log(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height)
-        
-	// Body Clicks registered as directive message was included here, now delegated to utils.
-        Window.bodyClickPrompt();
+        Window.showHelp("general");
     }
 
     window.mechSolverCommon = window.mechSolverCommon || mechSolverCommon;

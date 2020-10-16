@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Regular Pumping Lemma</title>
+  <link rel="stylesheet" href="../../../lib/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="PLGame.css" type="text/css" />
+</head>
+
+<body>
+  <div id="container">
+    <input type="button" id="about" name="about" />
+    <p class="instructions">
+      Regular Pumping Lemma <br />
+    </p>
+    <p id="anbn" style="visibility: hidden;" class="language1">
+      \(L = \{a^nb^n \text{: } n \geq 0 \}\)
+    </p>
+    <p id="nanb" style="visibility: hidden;" class="language2">
+      \(L = \{w \in \{a, b\}^*\text{: } n_a(w) < n_b(w)\}\) </p> <p id="wwr" style="visibility: hidden;" class="language3">
+        \(L = \{ww^R \text{: } w \in \{a, b\}^*\}\)
+    </p>
+    <p id="abnak" style="visibility: hidden;" class="language4">
+      \(L = \{(ab)^na^k \text{: } n > k, k \geq 0\}\)
+    </p>
+    <p id="anbkcnk" style="visibility: hidden;" class="language4">
+      \(L = \{a^nb^kc^{n+k} \text{: } n \geq 0, k \geq 0\}\)
+    </p>
+    <p id="anblak" style="visibility: hidden;" class="language5">
+      \(L = \{a^nb^la^k \text{: } n > 5, l > 3, k \leq l\}\)
+    </p>
+    <p id="an" style="visibility: hidden;" class="language1">
+      \(L = \{a^n \text{: n is even}\}\)
+    </p>
+    <p id="anbk" style="visibility: hidden;" class="language5">
+      \(L = \{a^nb^k \text{: n is odd or k is even.}\}\)
+    </p>
+    <p id="bbabanan1" style="visibility: hidden;" class="language1">
+      \(L = \{bba(ba)^na^{n-1}\}\)
+    </p>
+    <p id="b5w" style="visibility: hidden;" class="language6">
+      \(L = \{b^5w \text{: } w \in \{a, b\}^* \text{, } 2n_a(w) = 3n_b(w)\}\)
+    </p>
+    <p id="b5wmod" style="visibility: hidden;" class="language7">
+      \(L = \{b^5w \text{: } w \in \{a, b\}^* \text{, } (2n_a(w) + 5n_b(w)) \text{ mod } 3 = 0\}\)
+    </p>
+    <p id="bkabnban" style="visibility: hidden;" class="language6">
+      \(L = \{b^k(ab)^n(ba)^n \text{: } k \geq 4 \text{, } n = 1,2,...\}\)
+    </p>
+    <p id="ab2n" style="visibility: hidden;" class="language4">
+      \(L = \{(ab)^{2n} \text{: } n = 1,2,...\}\)
+    </p>
+    
+    <p id="lemmapara">
+      <br />
+      1. Select a lemma.<br />
+      <select id="lemma" size="14" onchange="setEnter2()">
+        <option id="myOption" value="select2" disabled>Pick a lemma</option>
+        <option value="anbn">L = (a^n)(b^n): n &#8805; 0</option>
+        <option value="nanb">L = {w &#8712; {a, b}*: n_a(w) &#60; n_b(w)}</option>
+        <option value="wwr">L = {ww^R: w &#8712 {a, b}*}</option>
+        <option value="abnak">L = {((ab)^n)(a^k): n > k, k &#8805; 0}</option>
+        <option value="anbkcnk">L = {(a^n)(b^k)(c^(n+k)): n &#8805; 0, k &#8805; 0}</option>
+        <option value="anblak">L = {(a^n)(b^l)(a^k): n > 5, l > 3, k &#8804; l}</option>
+        <option value="an">L = {a^n: n is even}</option>
+        <option value="anbk">L = {(a^n)(b^k): n is odd or k is even.}</option>
+        <option value="bbabanan1">L = {bba((ba)^n)(a^(n-1))}</option>
+        <option value="b5w">L = {b^5w: w &#8712; {a, b}*, 2n_a(w) = 3n_b(w)}</option>
+        <option value="b5wmod">L = {b^5w: w &#8712; {a, b}*, (2n_a(w) + 5n_b(w)) mod 3 = 0}</option>
+        <option value="bkabnban">L = {(b^k)((ab)^n)((ba)^n): k &#8805; 4, n = 1, 2...}</option>
+        <option value="ab2n">L = {(ab)^(2n): n = 1, 2...}</option>
+      </select>
+    </p>
+    <p id="movepara">
+      <br />
+      2. Choose who makes the first move. Press "Enter" to continue.<br />
+      <select id="move" onchange="setEnter1()">
+        <option value="select" selected disabled hidden>Pick who makes the first move</option>
+        <option value="user">You go first</option>
+        <option value="computer">Computer goes first</option>
+      </select>
+    </p>
+    <input type="button" id="enter" name="enter" disabled />
+    <input type="button" id="reset" name="reset" />
+    <input style="display: none" type="button" id="next" name="next" />
+    <p id="paraObjective"></p>
+    <p>
+      <input style="display: none" type="button" id="clear" name="clear" />
+      <input style="display: none" type="button" id="explain" name="explain" />
+      <input style="display: none" type="button" id="setxyz" name="setxyz" />
+    </p>
+    <!-- <p id="step1"></p> -->
+    <!-- <p class="output"></p> -->
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="../../../lib/JSAV-min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+  <script src="../../../lib/odsaUtils-min.js"></script>
+  <script src="../../../lib/odsaAV-min.js"></script>
+  <script src="PLGame.js"></script>
+  <script>
+    var bool1 = 0;
+    var bool2 = 0;
+
+    function updateTextInput1() {
+      var lemma = document.getElementById("lemma").value;
+      var input = document.getElementById("input1").value;
+      var arr = lemmarange(lemma);
+      var lowerbound = arr[0];
+      var upperbound = arr[1];
+      var hint = document.getElementById('hint');
+      if (!(input >= lowerbound && input <= upperbound)) {
+        hint.innerHTML = "Please enter a positive integer in range [" + lowerbound.toString() + ", " + upperbound.toString() + "] to avoid creating a too long or too short string.";
+      }
+      else {
+        document.getElementById("next").disabled = false;
+        hint.innerHTML = "Click \"Next Step\" to continue.";
+
+      }
+    }
+    function lemmarange(lemma) {
+      if (lemma == "anbn") { return [4, 18]; }
+      if (lemma == "nanb") { return [2, 17]; }
+      if (lemma == "wwr") { return [2, 10]; }
+      if (lemma == "abnak") { return [2, 11]; }
+      if (lemma == "anbkcnk") { return [2, 9]; }
+      if (lemma == "anblak") { return [2, 15]; }
+      if (lemma == "an") { return [2, 18]; }
+      if (lemma == "anbk") { return [3, 10]; }
+      if (lemma == "bbabanan1") { return [5, 10]; }
+      if (lemma == "b5w") { return [6, 10]; }
+      if (lemma == "b5wmod") { return [8, 20]; }
+      if (lemma == "bkabnban") { return [4, 15]; }
+      if (lemma == "ab2n") { return [4, 10]; }
+    }
+    function updateTextInput2(number) {
+      var lemma = document.getElementById("lemma").value;
+      var input2 = document.getElementById("input2").value;
+      var hint2 = document.getElementById("hint2");
+      if (input2.length < number) {
+        hint2.innerHTML = "Remember |w| must be >= m";
+      }
+      else {
+        if (lemma == "anbn") {
+          if (input2.length % 2 != 0) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+          }
+          else {
+            var head = input2.substring(0, input2.length / 2);
+            var tail = input2.substring(input2.length / 2);
+            var bool = 1;
+            var i;
+            for (i = 0; i < head.length; i++) {
+              if (head[i] != 'a' || tail[i] != 'b') {
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
+                bool = 0;
+                document.getElementById("next").disabled = true;
+                break;
+              }
+            }
+            if (bool == 1) {
+              hint2.innerHTML = "Press \"Next Step\" to continue";
+              document.getElementById("next").disabled = false;
+            }
+          }
+        }
+        if (lemma == "nanb") {
+          var acounter = 0;
+          var bcounter = 0;
+          for (i = 0; i < input2.length; i++) {
+            if (input2[i] == 'a') {
+              acounter++;
+            }
+            if (input2[i] == 'b') {
+              bcounter++;
+            }
+          }
+          if (acounter >= bcounter) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+          }
+          else {
+            hint2.innerHTML = "Press \"Next Step\" to continue";
+            document.getElementById("next").disabled = false;
+          }
+        }
+        if (lemma == "wwr") {
+          var bool = 1;
+          if (input2.length % 2 != 0) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+          }
+          else {
+            var head = input2.substring(0, input2.length / 2);
+            var tail = input2.substring(input2.length / 2);
+            var i;
+            var splitString = head.split("");
+            var reverseArray = splitString.reverse();
+            head = reverseArray.join("");
+            for (i = 0; i < head.length; i++) {
+              if (head[i] != tail[i]) {
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
+                bool = 0;
+                document.getElementById("next").disabled = true;
+                break;
+              }
+            }
+            if (bool == 1) {
+              hint2.innerHTML = "Press \"Next Step\" to continue";
+              document.getElementById("next").disabled = false;
+            }
+          }
+        }
+        if (lemma == "abnak") {
+          var i;
+          var bool = 1;
+          var lastb = 0;
+          for (i = 0; i < input2.length; i++) {
+            if (input2[i] == 'b') {
+              lastb = i;
+            }
+          }
+          var head = input2.substring(0, lastb + 1);
+          var tail = input2.substring(lastb + 1);
+          if (head.length % 2 != 0) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          if (tail.length < 0 || head.length / 2 <= tail.length) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] != 'a') {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+              break;
+            }
+          }
+          for (i = 0; i < head.length; i++) {
+            if (((i % 2 == 0) && (head[i] != 'a')) || ((i % 2 == 1) && (head[i] != 'b'))) {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+              break;
+            }
+          }
+          if (bool == 1) {
+            hint2.innerHTML = "Press \"Next Step\" to continue";
+            document.getElementById("next").disabled = false;
+          }
+        }
+        if (lemma == "anbkcnk") {
+          var i;
+          var firstb = -1;
+          var firstc = -1;
+          var bool = 1;
+          for (i = 0; i < input2.length; i++) {
+            if (input2[i] == 'b' && firstb == -1) {
+              firstb = i;
+            }
+            if (input2[i] == 'c' && firstc == -1) {
+              firstc = i;
+            }
+          }
+          if (firstc == -1) {   //which means there is no "c"s in the string, which is invalid.
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          var tail = input2.substring(firstc);
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] != 'c') {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+              break;
+            }
+          }
+          var head;
+          var mid;
+          if (firstb == -1) {   //which means there is no "b"s in the string.
+            head = input2.substring(0, firstc);
+            mid = "";
+          }
+          else {
+            mid = input2.substring(firstb, firstc);
+            for (i = 0; i < mid.length; i++) {
+              if (mid[i] != 'b') {
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
+                document.getElementById("next").disabled = true;
+                bool = 0;
+                break;
+              }
+            }
+            head = input2.substring(0, firstb);
+          }
+          if (head.length != 0) {
+            for (i = 0; i < head.length; i++) {
+              if (head[i] != 'a') {
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
+                document.getElementById("next").disabled = true;
+                bool = 0;
+                break;
+              }
+            }
+          }
+          if (head.length + mid.length != tail.length) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          if (bool == 1) {
+            hint2.innerHTML = "Press \"Next Step\" to continue";
+            document.getElementById("next").disabled = false;
+          }
+        }
+        if (lemma == "anblak") {
+          var head;
+          var mid;
+          var tail;
+          var firstb = -1;
+          var lastb = -1;
+          var bool = 1;
+          var i;
+          for (i = 0; i < input2.length; i++) {
+            if (input2[i] == 'b' && firstb == -1) {
+              firstb = i;
+            }
+            if (input2[i] == 'b') {
+              lastb = i;
+            }
+          }
+          if (firstb == -1) { //which means there is no "b"s in the string, which is invalid.
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          head = input2.substring(0, firstb);
+          mid = input2.substring(firstb, lastb + 1);
+          tail = input2.substring(lastb + 1);
+          if (head.length <= 5 || mid.length <= 3 || tail.length > mid.length) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          for (i = 0; i < head.length; i++) {
+            if (head[i] != 'a') {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+              break;
+            }
+          }
+          for (i = 0; i < mid.length; i++) {
+            if (mid[i] != 'b') {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+              break;
+            }
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] != 'a') {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+              break;
+            }
+          }
+          if (bool == 1) {
+            hint2.innerHTML = "Press \"Next Step\" to continue";
+            document.getElementById("next").disabled = false;
+          }
+        }
+        if (lemma == "an") {
+          var bool = 1;
+          if (input2.length % 2 != 0) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          var i;
+          for (i = 0; i < input2.length; i++) {
+            if (input2[i] != 'a') {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+              break;
+            }
+          }
+          if (bool == 1) {
+            hint2.innerHTML = "Press \"Next Step\" to continue";
+            document.getElementById("next").disabled = false;
+          }
+        }
+        if (lemma == "anbk") {
+          var i;
+          var firstb = -1;
+          var bool = 1;
+          for (i = 0; i < input2.length; i++) {
+            if (input2[i] == 'b' && firstb == -1) {
+              firstb = i;
+            }
+          }
+          if (firstb == -1) {   //the string does not contain any "b"s.
+            for (i = 0; i < input2.length; i++) {
+              if (input2[i] != 'a') {
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
+                document.getElementById("next").disabled = true;
+                bool = 0;
+                break;
+              }
+            }
+          }
+          else {
+            var head = input2.substring(0, firstb);
+            var tail = input2.substring(firstb);
+            if (head.length % 2 != 1 && tail.length % 2 != 0) {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+            }
+            for (i = 0; i < head.length; i++) {
+              if (head[i] != 'a') {
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
+                document.getElementById("next").disabled = true;
+                bool = 0;
+                break;
+              }
+            }
+            for (i = 0; i < tail.length; i++) {
+              if (tail[i] != 'b') {
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
+                document.getElementById("next").disabled = true;
+                bool = 0;
+                break;
+              }
+            }
+          }
+          if (bool == 1) {
+            hint2.innerHTML = "Press \"Next Step\" to continue";
+            document.getElementById("next").disabled = false;
+          }
+        }
+        if (lemma == "bbabanan1") {
+          var i;
+          var bool = 1;
+          var lastb = -1;
+          var head = input2.substring(0, 3);
+          var tail = input2.substring(3);
+          if (head != "bba" || input2[input2.length - 1] != 'a') {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] == 'b') {
+              lastb = i;
+            }
+          }
+          if (lastb == -1) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          var mid = tail.substring(0, lastb + 2);
+          tail = tail.substring(lastb + 2);
+          for (i = 0; i < mid.length; i++) {
+            if ((i % 2 == 0 && mid[i] != 'b') || (i % 2 == 1 && mid[i] != 'a')) {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+              break;
+            }
+          }
+          if (mid.length % 2 != 0) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          else {
+            if (mid.length / 2 - 1 != tail.length) {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+            }
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] != 'a') {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+              break;
+            }
+          }
+          if (bool == 1) {
+            hint2.innerHTML = "Press \"Next Step\" to continue";
+            document.getElementById("next").disabled = false;
+          }
+        }
+        if (lemma == "b5w") {
+          var i;
+          var bool = 1;
+          var head = input2.substring(0, 5);
+          var tail = input2.substring(5);
+          var acounter = 0;
+          var bcounter = 0;
+          if (head != "bbbbb") {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] == 'a') {
+              acounter++;
+            }
+            else if (tail[i] == 'b') {
+              bcounter++;
+            }
+            else {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+              break;
+            }
+          }
+          if (2 * acounter != 3 * bcounter) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          if (bool == 1) {
+            hint2.innerHTML = "Press \"Next Step\" to continue";
+            document.getElementById("next").disabled = false;
+          }
+        }
+        if (lemma == "b5wmod") {
+          var i;
+          var bool = 1;
+          var head = input2.substring(0, 5);
+          var tail = input2.substring(5);
+          var acounter = 0;
+          var bcounter = 0;
+          if (head != "bbbbb") {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          for (i = 0; i < tail.length; i++) {
+            if (tail[i] == 'a') {
+              acounter++;
+            }
+            else if (tail[i] == 'b') {
+              bcounter++;
+            }
+            else {
+              hint2.innerHTML = "That string is not in the language. Please enter another.";
+              document.getElementById("next").disabled = true;
+              bool = 0;
+              break;
+            }
+          }
+          if ((2 * acounter + 5 * bcounter) % 3 != 0) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          if (bool == 1) {
+            hint2.innerHTML = "Press \"Next Step\" to continue";
+            document.getElementById("next").disabled = false;
+          }
+        }
+        if (lemma == "bkabnban") {
+          var i;
+          var head;
+          var tail;
+          var bool = 1;
+          var first = -1;
+          for (i = 0; i < input2.length; i++) {
+            if (input2[i] != 'b' && first == -1) {
+              first = i;
+            }
+          }
+          if (first < 4) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          var tempstr = input2.substring(first);
+          if (tempstr.length % 2 != 0) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          else {
+            head = tempstr.substring(0, tempstr.length / 2);
+            tail = tempstr.substring(tempstr.length / 2);
+            for (i = 0; i < head.length; i++) {
+              if ((i % 2 == 0 && (head[i] != 'a' || tail[i] != 'b')) || (i % 2 == 1 && (head[i] != 'b' || tail[i] != 'a'))) {
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
+                document.getElementById("next").disabled = true;
+                bool = 0;
+                break;
+              }
+            }
+            if (bool == 1) {
+              hint2.innerHTML = "Press \"Next Step\" to continue";
+              document.getElementById("next").disabled = false;
+            }
+          }
+        }
+        if (lemma == "ab2n") {
+          var bool = 1;
+          if (input2.length % 4 != 0) {
+            hint2.innerHTML = "That string is not in the language. Please enter another.";
+            document.getElementById("next").disabled = true;
+            bool = 0;
+          }
+          else {
+            var i;
+            for (i = 0; i < input2.length; i++) {
+              if ((i % 2 == 0 && input2[i] != 'a') || (i % 2 == 1 && input2[i] != 'b')) {
+                hint2.innerHTML = "That string is not in the language. Please enter another.";
+                document.getElementById("next").disabled = true;
+                bool = 0;
+                break;
+              }
+            }
+            if (bool == 1) {
+              hint2.innerHTML = "Press \"Next Step\" to continue";
+              document.getElementById("next").disabled = false;
+            }
+          }
+        }
+      }
+    }
+    function updateTextInputi() {
+      var i = document.getElementById("i").value;
+      var hint4 = document.getElementById('hint4');
+      if ((i != 0 && (i < 2 || i > 12)) || i.length == 0)  {
+        hint4.innerHTML = "Please enter a possible integer in range [0, 2...12} for best results.";
+        document.getElementById("next").disabled = true;
+      }
+      else {
+        hint4.innerHTML = "Press \"Next Step\" to continue";
+        document.getElementById("next").disabled = false;
+      }
+    }
+    function updateTextInputx(val, str) {
+      document.getElementById("x").disabled = true;
+      document.getElementById("y").disabled = true;
+      document.getElementById("z").disabled = true;
+      var hint = document.getElementById('hint3');
+      var y = document.getElementById("y").value;
+      var z = document.getElementById("z").value;
+      document.getElementById("valueOfx").value = val;
+      document.getElementById("x").value = str.substring(0, val);
+      var x = document.getElementById("x").value;
+      if (y.length > 0) {
+        if (y.length + parseInt(val) <= document.getElementById("input1").value) {
+          if (x + y + z == str) {
+            if (y.length + z.length + parseInt(val) == str.length) {
+              document.getElementById("next").disabled = false;
+              hint.innerHTML = "Click \"next \" to set decomposition.";
+            }
+            else {
+              document.getElementById("next").disabled = true;
+              hint.innerHTML = "The sum of |x|, |y|, and |z| should equal to the length of string.";
+            }
+          }
+          else {
+            document.getElementById("next").disabled = true;
+            hint.innerHTML = "This is not a correct decomposition of w.";
+          }
+        }
+        else {
+          document.getElementById("next").disabled = true;
+          hint.innerHTML = "Condition violated: |xy| <= m";
+        }
+      }
+      else {
+        document.getElementById("next").disabled = true;
+        hint.innerHTML = "Condition violated: |y| > 0";
+      }
+    }
+    //update the text according to the change of ranger of y
+    function updateTextInputy(val, str) {
+      var hint = document.getElementById('hint3');
+      var x = document.getElementById("x").value;
+      var z = document.getElementById("z").value;
+      document.getElementById("valueOfy").value = val;
+      document.getElementById("y").value = str.substring(x.length, x.length + parseInt(val));
+      var y = document.getElementById("y").value;
+      if (val >= 1) {
+        if (x.length + parseInt(val) <= document.getElementById("input1").value) {
+          if (x + y + z == str) {
+            if (x.length + z.length + parseInt(val) == str.length) {
+              document.getElementById("next").disabled = false;
+              // set xyz -> next step 
+              hint.innerHTML = "Click \"Next Step \" to set decomposition.";
+            }
+            else {
+              document.getElementById("next").disabled = true;
+              hint.innerHTML = "The sum of |x|, |y|, and |z| should equal to the length of string.";
+            }
+          }
+          else {
+            document.getElementById("next").disabled = true;
+            hint.innerHTML = "This is not a correct decomposition of w.";
+          }
+        }
+        else {
+          document.getElementById("next").disabled = true;
+          hint.innerHTML = "Condition violated: |xy| <= m";
+        }
+      }
+      else {
+        document.getElementById("next").disabled = true;
+        hint.innerHTML = "Condition violated: |y| > 0";
+      }
+    }
+    //update the text according to the change of ranger of z
+    function updateTextInputz(val, str) {
+      var hint = document.getElementById('hint3');
+      var x = document.getElementById("x").value;
+      var y = document.getElementById("y").value;
+      document.getElementById("valueOfz").value = val;
+      document.getElementById("z").value = str.substring(x.length + y.length, x.length + y.length + parseInt(val));
+      var z = document.getElementById("z").value;
+      if (val >= 1) {
+        if (x.length + y.length <= document.getElementById("input1").value) {
+          if (x + y + z == str) {
+            if (x.length + y.length + parseInt(val) == str.length) {
+              document.getElementById("next").disabled = false;
+              hint.innerHTML = "Click \"Next Step \" to set decomposition.";
+            }
+            else {
+              document.getElementById("next").disabled = true;
+              hint.innerHTML = "The sum of |x|, |y|, and |z| should equal to the length of string.";
+            }
+          }
+          else {
+            document.getElementById("next").disabled = true;
+            hint.innerHTML = "This is not a correct decomposition of w.";
+          }
+        }
+        else {
+          document.getElementById("next").disabled = true;
+          hint.innerHTML = "Condition violated: |xy| <= m";
+        }
+      }
+      else {
+        document.getElementById("next").disabled = true;
+        hint.innerHTML = "Condition violated: |y| > 0";
+      }
+    }
+    function setEnter1() {
+      var x = document.getElementById("move").value;
+      if (x != "select") {
+        bool1 = 1;
+      }
+      if (x != "select" && bool2 == 1) {
+        document.getElementById("enter").disabled = false;
+      }
+    }
+    function setEnter2() {
+      var x = document.getElementById("lemma").value;
+      if (x != "select2") {
+        bool2 = 1;
+      }
+      if (x != "select2" && bool1 == 1) {
+        document.getElementById("enter").disabled = false;
+      }
+    }
+  </script>
+</body>
+
+</html>

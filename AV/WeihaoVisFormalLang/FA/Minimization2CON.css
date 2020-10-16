@@ -1,0 +1,12 @@
+#Minimization2CON {
+  height: 650px;
+}
+
+#Minimization2CON .jsavnode.jsavtreenode {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  max-width: 500px;
+  min-height: 0;
+  max-height: 500px;
+}

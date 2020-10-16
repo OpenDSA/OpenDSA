@@ -5,8 +5,6 @@
 // ******************************************************************************
 var trueStringLimit;
 var falseStringLimit;
-var totalTestCases;
-var tmCasesCounter;
 var caseCounter;
 var testCaseList = [];
 var mark = 0;
@@ -464,8 +462,6 @@ function generateTestCase(testCase, flag) {
   containLetters = copyObj.containLetters;
   randomStringLength = copyObj.randomStringLength;
   caseCounter = trueCounter + falseCounter;
-  totalTestCases = copyObj.totalTestCases;
-  tmCasesCounter= copyObj.hardCodeCasesCounter;
   var title;
   tempFlag = flag;
   if (
@@ -476,7 +472,7 @@ function generateTestCase(testCase, flag) {
   }
   if (title != 'No_Lambda' && title != 'No_Unit' && title != 'No_Useless') {
     for (
-      var b = 0; trueCounter < trueStringLimit || falseCounter < falseStringLimit || tmCasesCounter<totalTestCases; b++
+      var b = 0; trueCounter < trueStringLimit || falseCounter < falseStringLimit; b++
     ) {
       str = '';
       if (generatorflag == 0) {
@@ -509,7 +505,7 @@ function generateTestCase(testCase, flag) {
         graHandler(copyObj, flag, str);
       }
       else if (copyObj.exerciseType == "TM") {
-        tmHandler(copyObj, str);
+        tmHandler(copyObj, flag, str);
       }
       else {
         alert('exercise type error. Check json file!');

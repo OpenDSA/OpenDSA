@@ -87,19 +87,17 @@ function initGraph() {
   c5 = g.addNode("2505", {"left": 0, "top": 150});
   c7 = g.addNode("3114", {"left": 200, "top": 150});
   c3 = g.addNode("3604", {"left": 160, "top": 220});
-  c6 = g.addNode("2506", {"left": 0, "top": 270});
+  c6 = g.addNode("2506", {"left": 100, "top": 270});
   c4 = g.addNode("3304", {"left": 225, "top": 220});
-  c8 = g.addNode("3214", {"left": -20, "top": 350});
+  c8 = g.addNode("3214", {"left": -30, "top": 350});
 
   g.addEdge(c1, c2);
   g.addEdge(c2, c5);
   g.addEdge(c5, c7);
   g.addEdge(c5, c6);
-  g.addEdge(c7, c6);
   g.addEdge(c7, c3);
   g.addEdge(c7, c4);
   g.addEdge(c6, c8);
-
 }
 
 function displaySort(numberofnodes) {

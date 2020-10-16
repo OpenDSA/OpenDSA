@@ -1,8 +1,8 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "DFA",
-    "totalTrueCases": 8,
-    "totalFalseCases": 7,
+    "totalTrueCases": 10,
+    "totalFalseCases": 10,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",

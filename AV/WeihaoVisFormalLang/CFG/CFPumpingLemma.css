@@ -1,0 +1,88 @@
+#container {
+  width: 550px;
+  height: 700px;
+  position: relative;
+}
+
+.instructions {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.language1 {
+  position: absolute;
+  left: 165px;
+  top: 10px;
+}
+
+.language2 {
+  position: absolute;
+  left: 130px;
+  top: 10px;
+}
+
+.language3 {
+  position: absolute;
+  left: 147px;
+  top: 10px;
+}
+
+.language4 {
+  position: absolute;
+  left: 80px;
+  top: 15px;
+}
+
+.language5 {
+  position: absolute;
+  left: 120px;
+  top: 10px;
+}
+
+.language6 {
+  position: absolute;
+  left: 85px;
+  top: 10px;
+}
+
+.language7 {
+  position: absolute;
+  left: 40px;
+  top: 15px;
+}
+
+.stringsize {
+  position: absolute;
+  left: 55px;
+  top: 70px;
+}
+
+#enter {
+  position: absolute;
+  left: 5px;
+  top: 435px;
+}
+#next {
+  position: absolute;
+  left: 15px;
+  top: 672px;
+}
+#explain {
+  position: absolute;
+  left: 65px;
+  top: 86px;
+}
+
+#reset {
+  position: absolute;
+  right: 70px;
+  top: 5px;
+}
+
+#setuvxyz {
+  position: absolute;
+  right: 5px;
+  top: 370px;
+}

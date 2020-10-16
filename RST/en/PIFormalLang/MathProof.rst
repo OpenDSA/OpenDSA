@@ -9,10 +9,10 @@
 
 
 Mathematical Proof Technique
-============================
+=================
 
 Mathematical Proof
-------------------
+-------------------------
 
 .. inlineav:: MathProofFF ff
    :links: AV/PIExample/MathProofFF.css

@@ -56,8 +56,8 @@ $(document).ready(function() {
     if (again) {
       txt = $('#text').val();
       submited = true;
-      jsav.umsg("Submitted! now you can press insert and start inserting");
-      alert("Submitted with spliting value " + txt);
+      jsav.umsg("Submited! now you can press insert and start inserting");
+      alert("Subtmited with spliting value " + txt);
       again = false;
     }
     $('#submit').attr("disabled", true);

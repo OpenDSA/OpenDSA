@@ -88,7 +88,7 @@ class WorkspaceList
         helpButtonText.element[0].addEventListener("click", e=> {
             // e.stopPropagation();
             e.stopImmediatePropagation();
-            Window.showHelp("general", null);
+            Window.showHelp("general");
             this.globalJSAVobject.logEvent({type: "getting help from the workspace", "id": this.workspaceCounter-1});
             // console.log(this.globalJSAVobject);
         });
@@ -121,14 +121,11 @@ class WorkspaceList
             this.globalJSAVobject.logEvent({type: "deleting workspace", "id": delete_ID});
             this.updateShape();
         });
-
-	// TODO: Clean this up and replace with call to WindowManager functions
         // Window.windowManager.extendCanvas(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"]);
         // console.log(document.styleSheets[2].rules[0].style.height);
         document.styleSheets[2].rules[0].style.height = 
-        Math.max(600, (this.DIMENSIONS["HEIGHT"] + this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"] + this.DIMENSIONS["WK_PADDING"])) + "px";
-	
-	Window.updateExerciseWindowHeight(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"] + this.DIMENSIONS["WK_PADDING"]);
+        Math.max(1000, (this.DIMENSIONS["HEIGHT"] + this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"] + this.DIMENSIONS["WK_PADDING"])) + "px";
+
     }
     updateShape()
     {

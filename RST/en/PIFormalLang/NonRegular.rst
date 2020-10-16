@@ -136,16 +136,16 @@ Use Closure Properties to prove L is not regular: Example 3
    :output: show
 
 
-Adversary game
+Adersary game
 -------------
 
-.. inlineav:: AdversaryGameCON ss
-   :links: AV/PIExample/IdentifyingNonRegularLanguage/AdversaryGameCON.css
-   :scripts: AV/PIExample/IdentifyingNonRegularLanguage/AdversaryGameCON.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
+.. inlineav:: AdersaryGameCON ss
+   :links: AV/PIExample/IdentifyingNonRegularLanguage/AdersaryGameCON.css
+   :scripts: AV/PIExample/IdentifyingNonRegularLanguage/AdersaryGameCON.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
    :output: show
 
 
-Adversary game examples
+Adersary game examples
 ----------------------
 .. avembed:: AV/VisFormalLang/NonReg/PLGame.html ss
    :long_name: Regular Pumping Lemmma

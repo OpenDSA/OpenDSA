@@ -27,7 +27,7 @@
             "q4": {
                 "type": "multiple",
                 "description": "Since the Language $L$ has a Right Linear grammar, we can follow ``NFA from Regular Grammar'' proof in the previous modules to construct an NFA for the language.",
-                "question": "What does it mean to follow ``NFA from Regular Grammar'' proof?",
+                "question": "What does it mean to follow ``NFA from Regular Grammar'' prrof?",
                 "answer": "Convert Regular Grammar to NFA",
                 "choices": [
                     "Convert NFA to Regular grammar",
@@ -111,7 +111,7 @@
             "q19": {
                 "type": "multiple",
                 "description": "We can follow the ``RR Grammar from DFA'' proof from the slides to get the right linear grammar for $NFA_{rev}$. Thus, we have the right linear grammar for $L^R$.",
-                "question": "What does it mean to follow ``RR Grammar from DFA'' proof?",
+                "question": "What does it mean to follow ``RR Grammar from DFA'' prrof?",
                 "answer": "Convert NFA to Regular grammar",
                 "choices": [
                     "Convert NFA to Regular grammar",

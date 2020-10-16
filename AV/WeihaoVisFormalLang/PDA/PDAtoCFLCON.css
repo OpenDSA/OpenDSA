@@ -1,0 +1,10 @@
+#PDAtoCFLCON{
+    height: 550px;
+  }
+.final {
+    border: 3px double;
+}
+.jsavhorizontalarray .jsavnode {
+  min-width: 60px !important;
+  max-width: 1000px !important;
+}

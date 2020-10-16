@@ -32,9 +32,9 @@ controllerProto.load = function () {
 		}
 	});
 	this.tests = tests;
-// 	if (this.tests[0].exerciseType != "TM") {
+	if (this.tests[0].exerciseType != "TM") {
 		generateTestCase(tests, 0);
-// 	}
+	}
 
 	var proto = this;
 	$('#testSolution').click(function () {

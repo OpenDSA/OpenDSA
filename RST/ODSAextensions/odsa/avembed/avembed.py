@@ -44,7 +44,6 @@ CONTAINER_HTML= '''\
     data-frame-src="%(av_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
-    data-vertical-scrolling="%(vscroll)s"
     data-external="%(external)s"
     data-points="%(points)s"
     data-required="%(required)s"
@@ -98,13 +97,10 @@ def getDimensions(exer_path):
       except Exception as err:
         return {'err': err}
 
-      if 'data-height' not in attribs or 'data-width' not in attribs :
+      if 'data-height' not in attribs or 'data-width' not in attribs:
         return {'err': 'data-height or data-width not found'}
 
-      if 'data-vertical-scrolling' not in attribs :
-        attribs['data-vertical-scrolling'] = "no"
-
-      return {'height': attribs['data-height'], 'width': attribs['data-width'], 'vscroll': attribs['data-vertical-scrolling']}
+      return {'height': attribs['data-height'], 'width': attribs['data-width']}
 
   return {'err': 'No body tag detected'}
 
@@ -205,7 +201,6 @@ class avembed(Directive):
     # Use reasonable defaults
     self.options['width'] = 950
     self.options['height'] = 650
-    self.options['vscroll'] = "no"
 
     # Set av_address and dimensions (depends on whether it is an AV or a KA exercise)
     if self.options['type'] == 'ka':
@@ -214,7 +209,7 @@ class avembed(Directive):
 
       if 'height' in dimensions and 'width' in dimensions:
         self.options['height'] = dimensions['height']
-        self.options['width'] = dimensions['width'] 
+        self.options['width'] = dimensions['width']
       else:
         print_err('WARNING: Unable to parse dimensions of %s' % av_path)
 
@@ -226,11 +221,6 @@ class avembed(Directive):
         embed = embedlocal(av_path)
         self.options['width'] = embed[2]
         self.options['height'] = embed[3]
-      
-      # Temporary support for vertical scrolling in KA exercises
-      if 'vscroll' in dimensions:
-        self.options['vscroll'] = dimensions['vscroll']
-
     else:
       self.options['av_address'] = os.path.relpath(conf.av_dir, conf.ebook_path).replace('\\', '/')
 
