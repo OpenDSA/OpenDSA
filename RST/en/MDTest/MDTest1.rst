@@ -62,8 +62,8 @@ Observe how the class diagram quickly communicates the name and characteristics 
 
    Bag image
 
-Dr. Shaffer's video style:
-----------------
+Dr. Shaffer's video style
+-------------------------
 
 .. raw:: html
 
@@ -83,7 +83,7 @@ Changing uniconf_id but not entry_id
 
 
 Changing entry_id but not uiconf_id
-------------------------------------
+-----------------------------------
 
 .. raw:: html
 
