@@ -48,7 +48,7 @@
         "description": "Consider this grammar: $S \rightarrow aSbS \\mid \\lambda$<br/>This grammar is $LL(k)$. Think about one thing, can we know uniquely which production we should use every time by reading only $k$ letters every time or not.",
         "question": "Suppose we need to derive the string $abab$, which production we will use to get the second letter ($b$)",
         "answer": "To read $b$ we must use $S\\rightarrow \\lambda$",
-        "choices": ["To read $a$ we must use $S\\rightarrow aSbS$","To read $a$ we must use $S\\rightarrow \\lambda$"]
+        "choices": ["To read $b$ we must use $S\\rightarrow aSbS$","To read $b$ we must use $S\\rightarrow \\lambda$"]
       },
       "q18": {
         "type": "select",
