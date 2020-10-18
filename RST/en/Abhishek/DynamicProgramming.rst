@@ -297,12 +297,18 @@ solutions for all subproblems
    each node contains the index of the object under consideration (from 0
    to 4) and the size available of the knapsack.
 
-   .. odsafig:: Images/knapsack4_10CAS.png
+.. inlineav:: KnapTreeCON ss
+   :links:   /AV/Abhishek/KnapTreeCON.css
+   :scripts: /AV/Abhishek/KnapTreeCON.js
+   :align: center
+   :output: show
+
+.. odsafig:: Images/knapsack4_10CAS.png
 
    The dependency graph for this problem instance, laid out in a table of
    size :math:`n × K + 1`, follows:
 
-   .. odsafig:: Images/knapsack_depgraphCAS.png
+.. odsafig:: Images/knapsack_depgraphCAS.png
 
 As mentioned above, there are two approaches to actually solving the
 problem.
