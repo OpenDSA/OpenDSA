@@ -233,11 +233,14 @@ $(document).ready(function() {
 
     av.g.path("M 715 210 A 300 200 0 0 0 513 160",{"arrow-end": "classic-wide-long"});
 
-    av.g.path("M 715 174 A 300 200 0 0 1 323 117",{"arrow-end": "classic-wide-long"});
+    // av.g.path("M 715 174 A 300 200 0 0 1 323 117",{"arrow-end": "classic-wide-long"});
 
-    // av.g.path("M 715 144 A 300 200 0 0 0 333 97",{"arrow-end": "classic-wide-long"});
+    av.g.path("M 715 154 A 300 200 0 0 0 333 97",{"arrow-end": "classic-wide-long"});
 
     av.g.path("M 655 174 A 300 200 0 0 1 263 117",{"arrow-end": "classic-wide-long"});
+
+    // av.g.path("M 655 174 A 300 200 0 0 1 263 117",{"arrow-end": "classic-wide-long"});
+
 
 
     lx = 0;
