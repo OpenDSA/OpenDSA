@@ -308,7 +308,13 @@ solutions for all subproblems
    The dependency graph for this problem instance, laid out in a table of
    size :math:`n × K + 1`, follows:
 
-   .. odsafig:: Images/knapsack_depgraphCAS.png
+.. inlineav:: KnapGraphCON dgm
+   :links:   /AV/Abhishek/KnapGraphCON.css
+   :scripts: /AV/Abhishek/KnapGraphCON.js
+   :align: center
+   :output: show
+
+.. odsafig:: Images/knapsack_depgraphCAS.png
 
 As mentioned above, there are two approaches to actually solving the
 problem.
