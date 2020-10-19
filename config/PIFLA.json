@@ -64,6 +64,11 @@
       "PIFLA/MajorConcepts": {},
       "PIFLA/IntroGrammarEx": {}
     },
+    "Mathematical Background": {
+      "PIFLA/SetNotation": {},
+      "PIFLA/Relations": {},
+      "PIFLA/MathProof":{}
+    },
     "Appendix": {
       "Glossary": {}
     }

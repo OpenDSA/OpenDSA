@@ -180,7 +180,7 @@ controllerProto.startTesting = function () {
       }
       index++;
     }
-    //we need to convert the grammar to a PDA to test the gramm a PDA to test the grammar.
+    //we need to convert the grammar to a PDA to test the grammar.
     if (grammarType !== "LLG")
       parser = new ParseTreeController(this.jsav, JSON.stringify(arr), "", {
         visible: false

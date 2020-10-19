@@ -1,4 +1,4 @@
-/*global PIFRAMES, ODSA */
+/*global PIFRAMES */
 /* Written by Eunoh Cho, Mostafa Mohammed, Cliff Shaffer */
 $(document).ready(function() {
   "use strict";

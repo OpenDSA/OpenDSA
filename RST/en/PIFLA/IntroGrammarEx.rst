@@ -15,39 +15,18 @@ Grammar Exercises
 Exercise 1
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_1/sheet1exercise5.html pe
-   :long_name: Sheet 1 Exercise 5 write a grammar for a language
-
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntro3str.html pe
+   :long_name: Three string grammar
 
 Exercise 2
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_1/sheet1exercise6.html pe
-   :long_name: Sheet 1 Exercise 6 write a grammar for a language
-
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanbm.html pe
+   :long_name: anbm grammar
 
 Exercise 3
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_1/sheet1exercise7.html pe
-   :long_name: Sheet 1 Exercise 7 write a grammar for a language
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanb2n.html pe
+   :long_name: anb2n grammar
 
-Exercise 4
-----------
-
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_1/Spring19/sheet1Practice5.html pe
-   :long_name: Sheet 1 Practice Exercise 5 write a grammar for a language
-
-
-Exercise 5
-----------
-
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_1/Spring19/sheet1Practice6.html pe
-   :long_name: Sheet 1 Practice Exercise 6 write a grammar for a language
-
-
-Exercise 6
-----------
-
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_1/Spring19/sheet1Practice7.html pe
-   :long_name: Sheet 1 Practice Exercise 7 write a grammar for a language

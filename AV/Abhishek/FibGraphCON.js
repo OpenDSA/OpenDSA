@@ -6,20 +6,19 @@ $(document).ready(function() {
   var x = 35;
   var bx = 30;
   var hx = 60;
-  var fib = [1,1,2,3,5,8,13,21,34]
-
-    var offset = 175;
+  var fib = [1, 1, 2, 3, 5, 8, 13, 21, 34]
+  var offset = 175;
 
   av.g.rect(offset + 20, 20, 60, 50);
   av.g.rect(offset + 20, 5, 60, 15);
   bx = bx + 50;
-  av.label("6",
+  av.label("7",
            {top:  -13, left: offset +45});
 
   var index = "";
   for (var i = 0; i < 6; i++)
   {
-    index = 5 - i;
+    index = 6 - i;
     // TOP
     av.g.rect(offset+ bx, 20, 60, 50);
     // BOTTOM
@@ -42,7 +41,7 @@ $(document).ready(function() {
       av.g.line(offset + x +30 , 45 ,offset+ x + 58,45, {"arrow-end": "classic-wide-long"});
     x = x + len;
 
-    var l = av.label(6-i,
+    var l = av.label(7-i,
                      {top:  12, left: offset + lf + 45}).css({"color": "white", "z-index": 1000});
     l.show();
     // formatting numbers

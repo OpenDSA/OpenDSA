@@ -61,7 +61,7 @@
         "type": "select",
         "description": "The idea is simple, since we need to convert a final state machine to an empty stack machine, we need to connect all final states to a new state $q_f$ and the single function for the state $q_f$ is to pop every thing in the stack",
         "question": "On the left, we keep poping $x$, what is $x$?",
-        "answer": "$\\emptyset$ as the new machine will be an empty stack machine",
+        "answer": "$x$ is any symbol in ${\\Gamma}$",
         "choices": ["$x$ is any symbol in ${\\Gamma}^{'}$", "$x$ is any symbol in ${\\Gamma}$"]
       },
       "q13": {
