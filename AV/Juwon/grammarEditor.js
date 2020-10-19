@@ -2582,6 +2582,10 @@ $(document).ready(function () {
         alert('Your production is unrestricted on the left hand side');
         return;
       }
+    if (!checkRightLinear() || !checkLeftLinear()) {
+      alert('The grammar is not right-linear or left-linear!');
+      return;
+    }
     var productions = _.filter(arr, function(x) { return x[0];});
     startParse();
     $('.jsavcontrols').hide();
@@ -2597,34 +2601,50 @@ $(document).ready(function () {
         }
         pDict[productions[i][0]].push(productions[i][2]);
     }
-
-    // Start writting expression first with the starting state
-    writeRE(productions[0][0]);
     
+    // Start writting expression first with the starting state
+    writeRE(productions[0][0],0);
     // function for writing regular expression
-    function writeRE (state) {
-      for (var i = 0; i < pDict[state].length; i++){
-        var productstr = pDict[state][i];
-        if ((pDict[state].length > 1) && (i === 0)){
-          result += "(";
+    // function writeRE (state) {
+    //   for (var i = 0; i < pDict[state].length; i++){
+    //     var productstr = pDict[state][i];
+    //     if ((pDict[state].length > 1) && (i === 0)){
+    //       result += "(";
+    //     }
+    //     for (var j = 0; j < productstr.length; j++){
+    //       var product = productstr.charAt(j)
+    //       if (variables.indexOf(product) === -1){
+    //         var temp = "";
+    //         result = result.concat(temp, product);
+    //       }
+    //       else{
+    //         writeRE(product);
+    //       }
+    //     }
+    //     if (pDict[state].length > 1){
+    //       if (i === (pDict[state].length-1)){
+    //         result += ")";
+    //       }
+    //       else{
+    //         result += " + ";
+    //       }
+    //     }
+    //   }
+    // }
+
+    function writeRE (state, position) {
+      var productstr = pDict[state][position];
+      for (var i = 0; i < productstr.length; i++){
+        var product = productstr.charAt(i);
+        if (variables.indexOf(product) === -1){
+          result += product;
         }
-        for (var j = 0; j < productstr.length; j++){
-          var product = productstr.charAt(j)
-          if (variables.indexOf(product) === -1){
-            var temp = "";
-            result = result.concat(temp, product);
-          }
-          else{
-            writeRE(product);
-          }
+        else if (product === state){ // when the product is the same state
+          var next = position + 1;
+          writeRE(product, next);
         }
-        if (pDict[state].length > 1){
-          if (i === (pDict[state].length-1)){
-            result += ")";
-          }
-          else{
-            result += " + ";
-          }
+        else{ // when the product is other state
+          writeRE(product, 0);
         }
       }
     }

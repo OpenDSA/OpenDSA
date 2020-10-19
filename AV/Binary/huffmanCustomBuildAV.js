@@ -15,16 +15,14 @@ $(document).ready(function() {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({
-      "json_path": "/AV/Binary/huffmanCustomBuildAV.json"
-    }),
-    interpret = config.interpreter; // get the interpreter
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter;  // get the interpreter
 
   // create a new settings panel and specify the link to show it
   var settings = new JSAV.utils.Settings($(".jsavsettings")),
-    av = new JSAV($('.avcontainer'), {
-      settings: settings
-    });
+      av = new JSAV($('.avcontainer'), {
+        settings: settings
+      });
 
   var arr;
 
@@ -45,8 +43,8 @@ $(document).ready(function() {
   //TODO make sure to check that these values are valid
 
   var freqs = [], // The frequency counts
-    chars = [], // The characters
-    trees = []; // Pointers to all of the partial Huffman trees
+      chars = [], // The characters
+      trees = []; // Pointers to all of the partial Huffman trees
 
   var codeArray = [];
 
@@ -108,7 +106,7 @@ $(document).ready(function() {
       var matrixData = [
         ["<b>Char</b>", "<b>Freq</b>", "<b>Code</b>", "<b>Bits</b>"]
       ];
-      for (var i = 1; i < freqs.length; i++) {
+      for (var i = 0; i < freqs.length; i++) {
         matrixData.push([chars[i], freqs[i], codeArray[i], codeArray[i].length]);
       }
       var theMatrix = new av.ds.matrix(matrixData, {
@@ -123,12 +121,12 @@ $(document).ready(function() {
     upperLimit = (upperLimit) ? upperLimit : 999;
 
     var i,
-      initData = {},
-      minSize = 4, //$('#arraysize').data('min'),
-      maxSize = 16, //$('#arraysize').data('max'),
-      msg = "Please enter " + minSize + " to " + maxSize + " positive integers between 0 and " + upperLimit,
-      msg2 = "Please enter letters A-Z to match each frequency value (e.g. \"A, 77, B, 23, C, 32\")",
-      msg3 = "Please enter in at least two pairs of single alphabetical characters followed by numerical frequencies (e.g. \"A, 92, B, 28\", or \"A, 92, B, 28, C, 98, etc...\")";
+        initData = {},
+        minSize = 4, //$('#arraysize').data('min'),
+        maxSize = 16, //$('#arraysize').data('max'),
+        msg = "Please enter " + minSize + " to " + maxSize + " positive integers between 0 and " + upperLimit,
+        msg2 = "Please enter letters A-Z to match each frequency value (e.g. \"A, 77, B, 23, C, 32\")",
+        msg3 = "Please enter in at least two pairs of single alphabetical characters followed by numerical frequencies (e.g. \"A, 92, B, 28\", or \"A, 92, B, 28, C, 98, etc...\")";
 
     if (!minSize || !maxSize) {
       console.warn('processArrayValues() called without calling initArraySize()');

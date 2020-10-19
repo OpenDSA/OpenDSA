@@ -59,15 +59,16 @@ $(document).ready(function () {
   av.step();
 
   //frame 12
-  av.umsg("Now the machine entered a final state and will halt. The computation for  is the list of these configurations the current configuration $(q_0, \\underline{a}aaa)\\vdash_M(q_0, \\underline{\\#}aaa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\underline{\\#}aa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\#\\underline{\\#}a)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\#\\#\\underline{\\#})$<br/>$\\quad \\quad \\vdash_M(q_1, \\#\\#\\#\\#\\underline{\\#})$");
+  av.umsg("Now the machine entered a final state and will halt. The computation for the string $aaaa$ is the list of these configurations.<br/>$(q_0, \\underline{a}aaa)\\vdash_M(q_0, \\underline{\\#}aaa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\underline{\\#}aa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\#\\underline{\\#}a)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\#\\#\\underline{\\#})$<br/>$\\quad \\quad \\vdash_M(q_1, \\#\\#\\#\\#\\underline{\\#})$");
   av.step();
 
   //frame 13
-  av.umsg("Notation: Given a string $w$, the notation $\\underline{w}$ for a configuration means that the read/write head is scanning the leftmost character in $w$.<br/>M is said to <b>halt</b> on input w iff $(s, \\underline{w})$ yields some <b>halted</b> configuration.");
+  tm.hide();
+  av.umsg("Notation: Given a string $w$, the notation $\\underline{w}$ for a configuration means that the read/write head is scanning the leftmost character in $w$.<br/>$M$ is said to <b>halt</b> on input $w$ iff $(s, \\underline{w})$ yields some <b>halted</b> configuration.");
   av.step();
 
   //frame 14
-  av.umsg("Notation: Given a string $w$, the notation $\\underline{w}$ for a configuration means that the read/write head is scanning the leftmost character in $w$.<br/>M is said to <b>halt</b> on input w iff $(s, \\underline{w})$ yields some <b>halted</b> configuration.<br/>M  is said to <b>hang</b> on input w if $(s, \\underline{w})$ yields some <b>hanging</> configuration.");
+  av.umsg("Notation: Given a string $w$, the notation $\\underline{w}$ for a configuration means that the read/write head is scanning the leftmost character in $w$.<br/>$M$ is said to <b>halt</b> on input $w$ iff $(s, \\underline{w})$ yields some <b>halted</b> configuration.<br/>$M$  is said to <b>hang</b> on input $w$ if $(s, \\underline{w})$ yields some <b>hanging</> configuration.");
   av.step();
 
   //frame 15
@@ -86,7 +87,7 @@ $(document).ready(function () {
   av.step();
 
   //frame 18
-  av.umsg("<i>Turing Transducers</i> <br><br>Turing machines alos can compute functions from strings to strings. This means that, the machine will start with a string in the tape and after it finishs the execution, the tape will contain the output string");
+  av.umsg(Frames.addQuestion("q18"));
   av.step();
 
   //frame 19

@@ -19,5 +19,5 @@ whether or not it is part of a given language.
 
 .. inlineav:: UmsgGlossaryTest ff
    :links: AV/Peixuan/UmsgGlossaryTest/UmsgGlossaryTest.css
-   :scripts: AV/Peixuan/UmsgGlossaryTest/UmsgGlossaryTest.js
+   :scripts: DataStructures/PIFrames.js AV/Peixuan/UmsgGlossaryTest/UmsgGlossaryTest.js
    :output: show

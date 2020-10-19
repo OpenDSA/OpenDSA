@@ -59,33 +59,18 @@
       "Intro": {}
     },
     "Introduction": {
-      "PIFLAS21/FLIntro": {},
-      "PIFLAS21/FLOverview": {},
-      "PIFLAS21/MajorConcepts": {},
-      "PIFLAS21/IntroGrammarEx":{
-        "sheet1exercise5":{
-          "points": 2.0
-        },
-        "sheet1exercise6":{
-          "points": 2.0
-        },
-        "sheet1exercise7":{
-          "points": 2.0
-        },
-        "sheet1Practice5":{
-          "points": 2.0
-        },
-        "sheet1Practice6":{
-          "points": 2.0
-        },
-        "sheet1Practice7":{
-          "points": 2.0
-        }
-      }
+      "PIFLA/FLIntro": {},
+      "PIFLA/FLOverview": {},
+      "PIFLA/MajorConcepts": {},
+      "PIFLA/IntroGrammarEx": {}
+    },
+    "Mathematical Background": {
+      "PIFLA/SetNotation": {},
+      "PIFLA/Relations": {},
+      "PIFLA/MathProof":{}
     },
     "Appendix": {
       "Glossary": {}
     }
   }
 }
-

@@ -1,106 +1,170 @@
 $(document).ready(function() {
-    "use strict";
-    var av_name = "FibTreeCON";
-    var av = new JSAV(av_name);
+  "use strict";
+  var av_name = "FibTreeCON";
+  var av = new JSAV(av_name);
+  var fib = [1,1,2,3,5,8,13]
+  var val;
+  var fibtree = av.ds.tree({nodegap: 20});
 
-    var fibtree = av.ds.tree({nodegap: 20});
-    fibtree.css({node: "box"});
-    fibtree.root("6");
-    fibtree.root().addChild("4").addChild("5");
-    fibtree.root().child(0).addChild("2").addChild("3");
-    fibtree.root().child(1).addChild("3").addChild("4");
+  // Slide 1
+  fibtree.root("7");
+  val = "7" + "<br>" + "-" ;//fib[6].toString();
+  fibtree.root().value(val);
+  fibtree.layout();
+  av.umsg("Let's see how the recursive process works when we compute the value for Fib(7). We will build a tree showing the recursive function calls that take place. In each node, the top half (in blue) shows the parameter values on the recursive call, while the bottom half (in red) shows the return value for the call. So, the root of the tree represents the initial call to the function with an input of 7.");
+  av.displayInit();
 
-    fibtree.root().child(0).child(0).addChild("0").addChild("1");
-    fibtree.root().child(0).child(1).addChild("1").addChild("2");
-    fibtree.root().child(0).child(1).child(1).addChild("0").addChild("1");
+  // Slide 2
+  fibtree.root().addChild("6");
+  val = "6" + "<br>" + "-" ;// fib[4].toString();
+  fibtree.root().child(0).value(val);
+  av.umsg("To compute Fib(7), the algorithm will make recursive calls to compute Fib(6) and Fib(5). We start with the first call to Fib(6).");
+  fibtree.layout();
+  av.step();
 
-    fibtree.root().child(1).child(0).addChild("1").addChild("2");
-    fibtree.root().child(1).child(0).child(1).addChild("0").addChild("1");
+  // Slide 3
+  fibtree.root().child(0).addChild("5");
+  val = "5" + "<br>" + "-" ;//fib[2].toString();
+  fibtree.root().child(0).child(0).value(val);
+  av.umsg("To compute Fib(6), we will need to calculate Fib(5) and Fib(4). We first call Fib(5).");
+  fibtree.layout();
+  av.step();
 
-    fibtree.root().child(1).child(1).addChild("2").addChild("3");
-    fibtree.root().child(1).child(1).child(0).addChild("0").addChild("1");
+  // Slide 4
+  av.umsg("We continue in this way making recursive calls, until we reach a base-case at Fib(2). This gets computed and returns the value 1.");
+  fibtree.root().child(0).child(0).addChild("4");
+  val = "4" + "<br>" + "-" ;//fib[3].toString();
+  fibtree.root().child(0).child(0).child(0).value(val);
+  fibtree.root().child(0).child(0).child(0).addChild("3");
+  val = "3" + "<br>" + "-" ;//fib[3].toString();
+  fibtree.root().child(0).child(0).child(0).child(0).value(val);
+  fibtree.root().child(0).child(0).child(0).child(0).addChild("2");
+  val = "2" + "<br>" + fib[1].toString();
+  fibtree.root().child(0).child(0).child(0).child(0).child(0).value(val);
+  fibtree.layout();
+  av.step();
 
-    fibtree.root().child(1).child(1).child(1).addChild("1").addChild("2");
+  // Slide 5
+  av.umsg("Now, to finish computing Fib(3) we have to also calculate Fib(3-2) = Fib(1) by making a recursive call. This is also a base-case with value 1");
+  fibtree.root().child(0).child(0).child(0).child(0).addChild("2");
+  val = "1" + "<br>" + fib[0].toString();
+  fibtree.root().child(0).child(0).child(0).child(0).child(1).value(val);
+  fibtree.layout();
+  av.step();
 
+  // Slide 6
+  av.umsg("At this point, the recusion process pops back up to sum the two values from the subproblems for Fib(3). We get Fib(3) = Fib(3-1) + Fib(3-2) = 1 + 1 = 2");
+  val = "3" + "<br>" + fib[2].toString();
+  fibtree.root().child(0).child(0).child(0).child(0).value(val);
+  fibtree.layout();
+  av.step();
 
-    fibtree.root().child(1).child(1).child(1).child(1).addChild("0").addChild("1");
+  // Slide 7
+  av.umsg("Now the recursion pops back to computing Fib(4). This requires making the second recursive call to Fib(4-2) = Fib(2). This will be a base-case again, which returns the value 1. But notice that we already solved this subproblem earlier!");
+  fibtree.root().child(0).child(0).child(0).addChild("2");
+  val = "2" + "<br>" + fib[1].toString();
+  fibtree.root().child(0).child(0).child(0).child(1).value(val);
+  fibtree.layout();
+  av.step();
 
-    fibtree.layout();
-    av.displayInit();
-    av.recorded();
+  // Slide 8
+  av.umsg("Now we have the results of both recusive calls needed to compute Fib(4), and can return the value Fib(4) = Fib(4-1) + Fib(4-2) = 2 + 1 = 3");
+  val = "4" + "<br>" + fib[3].toString();
+  fibtree.root().child(0).child(0).child(0).value(val);
+  fibtree.layout();
+  av.step();
+
+  // Slide 9
+  av.umsg("Popping the recursion stack, we return to computing the solution for Fib(5). To do this, we have to compute Fib(5-2) = Fib(3)... again!");
+  fibtree.root().child(0).child(0).addChild("3");
+  val = "3" + "<br>" + "-"; // fib[3].toString();
+  fibtree.root().child(0).child(0).child(1).value(val);
+  fibtree.root().child(0).child(0).child(1).addChild("2");
+  val = "2" + "<br>" + fib[1].toString();
+  fibtree.root().child(0).child(0).child(1).child(0).value(val);
+  fibtree.root().child(0).child(0).child(1).addChild("1");
+  val = "1" + "<br>" + fib[0].toString();
+  fibtree.root().child(0).child(0).child(1).child(1).value(val);
+  fibtree.layout();
+  val = "3" + "<br>" +  fib[2].toString();
+  fibtree.root().child(0).child(0).child(1).value(val);
+  fibtree.layout();
+  av.step();
+
+  // Slide 10
+  av.umsg("Which lets us compute Fib(5) = 5.");
+  val = "5" + "<br>" + fib[4].toString();
+  fibtree.root().child(0).child(0).value(val);
+  fibtree.layout();
+  av.step();
+
+  // Slide 11
+  av.umsg("Now let's skip ahead to show the state of the tree after we have completed calculating Fib(6) and popped the recursion stack back to the root of the tre. Notice there are a lot of repeating numbers in blue.");
+  fibtree.root().child(0).addChild("4");
+  val = "4" + "<br>" + "-" ;//fib[2].toString();
+  fibtree.root().child(0).child(1).value(val);
+  fibtree.root().child(0).child(1).addChild("3");
+  val = "3" + "<br>" + "-" ;//fib[2].toString();
+  fibtree.root().child(0).child(1).child(0).value(val);
+  fibtree.root().child(0).child(1).child(0).addChild("2");
+  val = "2" + "<br>" +  fib[1].toString();
+  fibtree.root().child(0).child(1).child(0).child(0).value(val);
+  fibtree.root().child(0).child(1).child(0).addChild("1");
+  val = "1" + "<br>" +  fib[0].toString();
+  fibtree.root().child(0).child(1).child(0).child(1).value(val);
+  val = "3" + "<br>" + fib[2].toString();
+  fibtree.root().child(0).child(1).child(0).value(val);
+  fibtree.root().child(0).child(1).addChild("2");
+  val = "2" + "<br>" + fib[1].toString();
+  fibtree.root().child(0).child(1).child(1).value(val);
+  val = "4" + "<br>" + fib[3].toString();
+  fibtree.root().child(0).child(1).value(val);
+  val = "6" + "<br>" + fib[5].toString();
+  fibtree.root().child(0).value(val);
+  fibtree.layout();
+  av.step();
+
+  // Slide 12
+  av.umsg("Now we have to calculate Fib(5). Which, by the way, we have calcualted before.");
+  fibtree.root().addChild("5");
+  val = "5" + "<br>" + "-" ;// fib[4].toString();
+  fibtree.root().child(1).value(val);
+  fibtree.layout();
+  av.step();
+
+  // Slide 13
+  av.umsg("Here is the state of the recursion tree after calculating Fib(5).");
+  fibtree.root().child(1).addChild("4");
+  val = "4" + "<br>" + fib[3].toString();
+  fibtree.root().child(1).child(0).value(val);
+  fibtree.root().child(1).child(0).addChild("3");
+  val = "3" + "<br>" + fib[2].toString();
+  fibtree.root().child(1).child(0).child(0).value(val);
+  fibtree.root().child(1).child(0).child(0).addChild("1").addChild("0");
+  val = "2" + "<br>" + fib[1].toString();
+  fibtree.root().child(1).child(0).child(0).child(0).value(val);
+  val = "1" + "<br>" + fib[0].toString();
+  fibtree.root().child(1).child(0).child(0).child(1).value(val);
+  fibtree.root().child(1).child(0).addChild("2")
+  val = "2" + "<br>" + fib[1].toString();
+  fibtree.root().child(1).child(0).child(1).value(val);
+  fibtree.root().child(1).addChild("3");
+  val = "3" + "<br>" + fib[2].toString();
+  fibtree.root().child(1).child(1).value(val);
+  fibtree.root().child(1).child(1).addChild("1").addChild("1");
+  val = "2" + "<br>" + fib[1].toString();
+  fibtree.root().child(1).child(1).child(0).value(val);
+  val = "1" + "<br>" + fib[0].toString();
+  fibtree.root().child(1).child(1).child(1).value(val);
+  val = "5" + "<br>" +  fib[4].toString();
+  fibtree.root().child(1).value(val);
+  fibtree.layout();
+  av.step();
+
+  // Slide 14
+  av.umsg("We finally have the pieces needed to compute Fib(7) = Fib(7-1) + Fib(7-2) = 8 + 5 = 13 ");
+  val = "7" + "<br>" +  fib[6].toString();
+  fibtree.root().value(val);
+  fibtree.layout();
+  av.recorded();
 });
-
-/*
-$(document).ready(function() {
-    "use strict";
-    var av = new JSAV("FibGraphCON");
-
-    var len = 60;
-    var x = 35;
-    var bx = 30;
-    var hx = 60;
-    var fib = [1,1,2,3,5,8,13,21,34]
-
-    av.g.rect(20, 20, 60, 50);
-    av.g.rect(20, 5, 60, 15);
-    bx = bx + 50;
-    av.label("8",
-        {top:  -13, left: 45});
-    av.label("7",
-        {top:  -13, left: hx+45});
-
-    var index = "";
-    for (var i = 1; i < 9; i++)
-    {
-        index = 7 - i;
-        // TOP
-        av.g.rect(bx, 20, 60, 50);
-        // BOTTOM
-        av.g.rect(bx, 5, 60, 15);
-        bx = bx + 60;
-        if (parseInt(index) >= 0)
-        av.label(index,
-            {top:  -13, left: bx+25});
-    }
-
-    var lf = 0;
-    var p1 = 155;
-    var p2 = 65;
-    av.g.path("M 155 55 A 150 200 0 0 1 65 55",{"arrow-start": "classic-wide-long"});
-    for (var i = 0; i < 9z; i++)
-    {
-        av.g.rect(x, 30, 30, 15);
-        av.g.rect(x, 45, 30, 15);
-        if(i < 7)
-        av.g.line(x +30 , 45 , x + 58,45, {"arrow-end": "classic-wide-long"});
-        x = x + len;
-
-        av.label(8-i,
-            {top:  12, left: lf + 45});
-        // formatting numbers
-        if (fib[8-i] > 10)
-        av.label(fib[8-i],
-            {top:  28, left: lf + 43});
-        else
-            av.label(fib[8-i],
-                {top:  28, left: lf + 45});
-
-        lf = lf + 60;
-        // set up param for path
-        var pathParam = "M ";
-        p1 = p1 + 60;
-        pathParam += p1.toString();
-        var p = " 55 A 150 200 0 0 1 ";
-        pathParam += p;
-        p2 = p2 + 60;
-        pathParam += p2.toString();
-        pathParam += " 55";
-        // Double curved arrow
-        if(i < 6)
-        av.g.path(pathParam,{"arrow-start": "classic-wide-long"} );
-    }
-    av.displayInit();
-    av.recorded();
-});
-
-* */

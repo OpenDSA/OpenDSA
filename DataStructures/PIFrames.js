@@ -927,16 +927,14 @@
         overflow: "hidden"
       });
 
+      
+
       $("#" + av_name + " .jsavoutput.jsavline").css({
-        display: "inline-block",
-        width: "60%"
+        width: "100%"
       });
 
       $("#" + av_name + " .jsavcanvas").css({
         "min-width": "0px",
-        width: "60%",
-        overflow: "hidden",
-        "margin-left": 0,
         "min-height": "500px"
       });
 
@@ -944,13 +942,19 @@
       $(container).append(question);
 
       //Peixuan updated selectors, moved jsavControl buttons to here and added locations parameter
+      
+      $("#" + av_name + " > .jsavoutput.jsavline, #" + av_name + " > .jsavcanvas").wrapAll('<div class="canvaswrapper-left"></div>');
+      $("#" + av_name + " > .canvaswrapper-left, #" + av_name + " > .picanvas").wrapAll('<div class="canvaswrapper"></div>');
       $("#" + av_name + " > .SHOWQUESTION, #" + av_name + " > .PIFRAMES").wrapAll('<div class="picanvas"></div>');
-      $("#" + av_name + " > .picanvas").insertAfter($("#" + av_name + " > .jsavcanvas"));
-      $("#" + av_name + " > .jsavcanvas, #" + av_name + " > .picanvas").wrapAll('<div class="canvaswrapper"></div>');
+      $("#" + av_name + " > .picanvas").insertAfter($("#" + av_name + " > .canvaswrapper > .canvaswrapper-left"));
       $("#" + av_name + " > .canvaswrapper").css({
         display: "flex"
       });
 
+      $("#" + av_name + " .canvaswrapper-left").css({
+        width: "60%"
+      });
+      
       //disable jsavend, as it allows student to jump to last slide
       //automatically enabled by injector once all questions for slideshow have been answered
       // $(".jsavend").css("pointer-events", "none");
