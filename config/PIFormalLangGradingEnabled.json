@@ -37,7 +37,7 @@
     "JXOP-debug": "true"
   },
   "glob_ss_options": {
-    "threshold": 1.0, 
+    "threshold": 0.1, 
     "points": 1.0, 
     "required": true
   }, 
