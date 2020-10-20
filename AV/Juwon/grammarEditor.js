@@ -2582,10 +2582,10 @@ $(document).ready(function () {
         alert('Your production is unrestricted on the left hand side');
         return;
       }
-    if (!checkRightLinear() || !checkLeftLinear()) {
-      alert('The grammar is not right-linear or left-linear!');
-      return;
-    }
+      if (!checkRightLinear()) {
+        alert('The grammar is not right-linear!');
+        return;
+      }
     var productions = _.filter(arr, function(x) { return x[0];});
     startParse();
     $('.jsavcontrols').hide();
@@ -2594,62 +2594,72 @@ $(document).ready(function () {
         alert('No grammar.');
         return;
       }
-    var pDict = {};     // a dictionary mapping left sides to right sides
-    for (var i = 0; i < productions.length; i++) {
-       if (!(productions[i][0] in pDict)) {
-         pDict[productions[i][0]] = [];
-        }
-        pDict[productions[i][0]].push(productions[i][2]);
-    }
-    
-    // Start writting expression first with the starting state
-    writeRE(productions[0][0],0);
-    // function for writing regular expression
-    // function writeRE (state) {
-    //   for (var i = 0; i < pDict[state].length; i++){
-    //     var productstr = pDict[state][i];
-    //     if ((pDict[state].length > 1) && (i === 0)){
-    //       result += "(";
-    //     }
-    //     for (var j = 0; j < productstr.length; j++){
-    //       var product = productstr.charAt(j)
-    //       if (variables.indexOf(product) === -1){
-    //         var temp = "";
-    //         result = result.concat(temp, product);
-    //       }
-    //       else{
-    //         writeRE(product);
-    //       }
-    //     }
-    //     if (pDict[state].length > 1){
-    //       if (i === (pDict[state].length-1)){
-    //         result += ")";
-    //       }
-    //       else{
-    //         result += " + ";
-    //       }
-    //     }
-    //   }
-    // }
 
-    function writeRE (state, position) {
-      var productstr = pDict[state][position];
-      for (var i = 0; i < productstr.length; i++){
-        var product = productstr.charAt(i);
-        if (variables.indexOf(product) === -1){
-          result += product;
-        }
-        else if (product === state){ // when the product is the same state
-          var next = position + 1;
-          writeRE(product, next);
-        }
-        else{ // when the product is other state
-          writeRE(product, 0);
+      var pDict = {};     // a dictionary mapping left sides to right sides
+      for (var i = 0; i < productions.length; i++) {
+         if (!(productions[i][0] in pDict)) {
+           pDict[productions[i][0]] = [];
+          }
+          pDict[productions[i][0]].push(productions[i][2]);
+      }
+      
+      // Start writting expression first with the starting state
+      writeRE(productions[0][0]);
+
+      // function for writing regular expression
+      function writeRE (state) {
+        var has_lambda = false;
+        var samestate = false;
+        // looping through the state elements
+        for (var i = 0; i < pDict[state].length; i++){
+          var productstr = pDict[state][i];
+          if ((pDict[state].length > 1) && (i === 0)){
+            result += "(";
+          }
+          // looping through elements' characters
+          for (var j = 0; j < productstr.length; j++){
+            var product = productstr.charAt(j)
+            // when previous state calls the current state
+            if (samestate){
+              result += product;
+              samestate = false;
+            }
+            // adding + sign
+            if (variables.indexOf(product) === -1 && (product !== emptystring)){
+              if (pDict[state].length > 1 && j === 0 && i > 0){
+                result += " + ";
+              }
+              result += product;
+            }
+            else if(product === emptystring){
+              has_lambda = true;
+            }
+            else if(product !== state){
+              writeRE(product);
+            }
+            else if(product === state){
+              samestate = true;
+            }
+
+            // adding parantheses and star
+            if (pDict[state].length > 1){
+              if (i === (pDict[state].length-1) && !has_lambda && j === (productstr.length - 1)){
+                result += ")";
+              }
+              else if(i === (pDict[state].length-1) && has_lambda && j === (productstr.length - 1)){
+                result += ")*";
+                // change has lambda to false after writing star
+                has_lambda = false;
+              }
+            }
+          }
+          // write star when still has lambda
+          if(i === (pDict[state].length-1) && has_lambda){
+            result += "*";
+          }
         }
       }
-    }
     jsav.umsg("The regular Expression is: \n" + result);
-
   }
 
   // interactive converting context-free grammar to NPDA
