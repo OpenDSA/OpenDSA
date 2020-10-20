@@ -219,19 +219,7 @@ $(document).ready(function() {
               jsav.umsg("Step " + counter + ": " + phraseChanged + currState);
 
 
-                // add all the questions from here
-              if(counter === 3){
-                jsav.umsg(Frames.addQuestion("q1"));
-              }
-              if(counter === 5){
-                jsav.umsg(Frames.addQuestion("q2"));
-              }
-              if(counter === 20){
-                jsav.umsg(Frames.addQuestion("q3"))
-              }
-              if(counter === 23){
-                jsav.umsg(Frames.addQuestion("q4"));
-              }
+               
 
 
 
