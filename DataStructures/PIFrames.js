@@ -158,11 +158,7 @@
             $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").css({
               width: "100%",
               height: "none",
-              //left: 5,
-              left: locations.left,
               position: "relative",
-              //top: 10
-              top: locations.top
               //Peixuan changed the left and top parameter so they can be used to adjust frames locations
             }); //Mostafa added position:re;ative to fix the problem related to miss positioning the question in some frames(Mathmatical.js)
             //So the width changed fromm 34 to 100, left from 690 to 5 and added the top.
@@ -758,7 +754,7 @@
             this.questionSlideListener();
             PIFRAMES.revealQuestion(av_name);
             //Peixuan updated selector
-            //$(".picanvas").css({
+            // $(".picanvas").css({
             $("#" + av_name + " > .canvaswrapper > .picanvas").css({
               display: "inline-block",
               width: "39%"
@@ -909,90 +905,94 @@
       var question = $("<div />", {
         class: "PIFRAMES"
       });
-
-      //Peixuan updated selectors
-      $("#" + av_name + " .picanvas").css({
-        width: "0px",
-        //overflow: "inherit"
-        //Peixuan changed this style so it will display submit button correctly
-        //if multiple frames on the same page
-        overflow: "hidden"
-      });
-
-      $(question).css({
-        position: "absolute",
-        top: 69,
-        left: 590,
-        width: "34%",
-        overflow: "hidden"
-      });
-
       
-
-      $("#" + av_name + " .jsavoutput.jsavline").css({
-        width: "100%"
-      });
-
-      $("#" + av_name + " .jsavcanvas").css({
-        "min-width": "0px",
-        "min-height": "500px"
-      });
-
+      
       $(container).append(qButton);
       $(container).append(question);
-
+      
       //Peixuan updated selectors, moved jsavControl buttons to here and added locations parameter
       
       $("#" + av_name + " > .jsavoutput.jsavline, #" + av_name + " > .jsavcanvas").wrapAll('<div class="canvaswrapper-left"></div>');
       $("#" + av_name + " > .canvaswrapper-left, #" + av_name + " > .picanvas").wrapAll('<div class="canvaswrapper"></div>');
       $("#" + av_name + " > .SHOWQUESTION, #" + av_name + " > .PIFRAMES").wrapAll('<div class="picanvas"></div>');
       $("#" + av_name + " > .picanvas").insertAfter($("#" + av_name + " > .canvaswrapper > .canvaswrapper-left"));
+      
+      
+      // ===================================
+      // Define initial layout for Frameset
+      // ===================================
+      // Whole frameset
       $("#" + av_name + " > .canvaswrapper").css({
         display: "flex"
       });
-
+      
+      // umsg + canvas section (jsavline + jsavcanvas)
       $("#" + av_name + " .canvaswrapper-left").css({
         width: "60%"
       });
+      
+      // umsg section
+      $("#" + av_name + " .jsavoutput.jsavline").css({
+        width: "100%"
+      });
+  
+      // canvas section
+      $("#" + av_name + " .jsavcanvas").css({
+        "min-width": "0px",
+        "min-height": "500px"
+      });
+
+      //Peixuan updated selectors
+      // Question section
+      $("#" + av_name + " .picanvas").css({
+        width: "0px",
+        marginLeft: "20px",
+        marginRight: "5px",
+        //overflow: "inherit"
+        //Peixuan changed this style so it will display submit button correctly
+        //if multiple frames on the same page
+        overflow: "hidden"
+      }); 
+      
       
       //disable jsavend, as it allows student to jump to last slide
       //automatically enabled by injector once all questions for slideshow have been answered
       // $(".jsavend").css("pointer-events", "none");
       $("#" + av_name + " > .jsavcontrols > .jsavend").css("visibility", "hidden");
-
+      
       //edge case: what if first slide has question?
       //1 signifies a forward click; used by injector to increment queue if necessary
       $("#" + av_name + " > .jsavcontrols > .jsavforward").click(function() {
         var buttonGroup = $(this).parent();
         var parentAV = $(buttonGroup)
-          .parent()
-          .attr("id");
+        .parent()
+        .attr("id");
         PIFRAMES.callInjector(parentAV, 1);
       }),
       //0 signifies a backward click; used by injector to decrement queue if necessary
       $("#" + av_name + " > .jsavcontrols > .jsavbackward").click(function() {
-          var buttonGroup = $(this).parent();
-          var parentAV = $(buttonGroup)
-            .parent()
-            .attr("id");
-          PIFRAMES.callInjector(parentAV, 0);
-        }),
+        var buttonGroup = $(this).parent();
+        var parentAV = $(buttonGroup)
+        .parent()
+        .attr("id");
+        PIFRAMES.callInjector(parentAV, 0);
+      }),
       $("#" + av_name + " > .jsavcontrols > .jsavbegin").click(function() {
-          var buttonGroup = $(this).parent();
-          var parentAV = $(buttonGroup)
-            .parent()
-            .attr("id");
-          PIFRAMES.callInjector(parentAV, -1);
-        }),
+        var buttonGroup = $(this).parent();
+        var parentAV = $(buttonGroup)
+        .parent()
+        .attr("id");
+        PIFRAMES.callInjector(parentAV, -1);
+      }),
       $("#" + av_name + " > .jsavcontrols > .jsavend").click(function() {
-          var buttonGroup = $(this).parent();
-          var parentAV = $(buttonGroup)
-            .parent()
-            .attr("id");
-          PIFRAMES.callInjector(parentAV);
-        });
+        var buttonGroup = $(this).parent();
+        var parentAV = $(buttonGroup)
+        .parent()
+        .attr("id");
+        PIFRAMES.callInjector(parentAV);
+      });
     },
-
+    
     //add div to the av_name's picanvas, so that dynamic questions have a hooking point
     //Peixuan added locations parameter
     //and moved initialization process to the method above
@@ -1002,11 +1002,11 @@
       var injector = this.getQuestions(av_name, locations);
       return injector;
     },
-
+    
     revealQuestion: function(av_name) {
       this.table[av_name].appendQuestion();
     },
-
+    
     saveAndCheckStudentAnswer: function(av_name) {
       form = $(`form.${av_name}`);
       if (questionType.includes("textBox")) {
