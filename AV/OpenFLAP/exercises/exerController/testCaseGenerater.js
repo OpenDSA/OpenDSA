@@ -1,378 +1,48 @@
 'use strict'
-// ******************************************************************************
-// ******************************************************************************
-// ******************************************************************************
-// ******************************************************************************
 var trueStringLimit;
 var falseStringLimit;
-var totalTestCases;
-var tmCasesCounter;
-var caseCounter;
-var testCaseList = [];
-var mark = 0;
-var markPos = 0;
 var tempFlag;
-var checkAllstar;
+var randomStringLength;
+var trueCounter; 
+var falseCounter; 
+var containLetters;
+var caseCounter; 
+//For TM
+var tmtotalTestCases;
+var tmCasesCounter;
 var str = '';
-var trueCounter; // number of hardcode true cases in json file
-var falseCounter; // number of hardcode false cases in json file
-var generatorflag = 0;
-var containLetters; // contain letters
-var randomStringLength; //string lengthe between 0 to 15
-var emptyStr;
+
 /**
- * Add strings alone with true or false to the test cases
+ * find all id that start from the tag ID
  *
- * @param str  Testing string
- *
- * @param TorF True or false
- *
- * @param obj  Object that contain all info
+ * @param xmlDoc
+ *            FA machine
+ * @param tag
+ *            some specific tag: 'initial', 'final'.
+ * @returns tag ID
  */
-function addtoTestCase(str, obj, TorF) {
-  testCaseList.push(str);
-  var current = {};
-  if (tempFlag != 1) {
-    var inobj = obj.testCases;
-    if (TorF == 1) {
-      current[str] = true;
-      inobj[caseCounter] = current;
-    } else if (TorF == 0) {
-      current[str] = false;
-      inobj[caseCounter] = current;
-    }
-  } else {
-    if (TorF == 1) {
-      current[str] = true;
-      obj.testCases[caseCounter] = current;
-    } else if (TorF == 0) {
-      current[str] = false;
-      obj.testCases[caseCounter] = current;
-    }
-  }
-  caseCounter++;
-}
-
-/**
- * Given a regular expression, this will return the subexpressions that,
- * when ored together, will result in the expression.
- *
- * @param expression  the regular expression
- *
- * @return an array of the subexpressions
- */
-var or = function (expression) {
-  var se = []; // Subexpressions.
-  var start = 0,
-    level = 0
-  for (var i = 0; i < expression.length; i++) {
-    if (expression.charAt(i) == '(') level++;
-    if (expression.charAt(i) == ')') level--;
-    if (expression.charAt(i) != '+') continue;
-    if (level != 0) continue;
-    // First level or!
-    se.push(delambda(expression.substring(start, i)))
-    start = i + 1;
-  }
-  se.push(delambda(expression.substring(start)))
-  return se;
-}
-
-/**
- * Given a regular expression, this will return the subexpressions that,
- * when concatenated together, will result in the expression.
- *
- * @param expression
- *            the regular expression
- * @return an array of the subexpressions
- */
-var cat = function (expression) {
-  var se = []; // Subexpressions.
-  var start = 0,
-    level = 0
-  for (var i = 0; i < expression.length; i++) {
-    var c = expression.charAt(i);
-    if (c == ')') {
-      level--;
-      continue;
-    }
-    if (c == '(') level++;
-    if (!(c == '(' && level == 1) && level != 0) continue;
-    if (c == '+') {
-      // Hum. That shouldn't be...
-      alert('Error in the code. Sorry~');
-    }
-    if (c == '*') continue;
-    // Not an operator, and on the first level!
-    if (i == 0) continue;
-    se.push(delambda(expression.substring(start, i)));
-    start = i;
-  }
-  se.push(delambda(expression.substring(start)));
-  return se;
-}
-
-/**
- * Given a string, returns the string, or the empty string if the string is
- * the lambda string.
- *
- * @param string
- *            the string to possibly replace
- * @return the string, or the empty string if the string is the lambda
- *         string
- */
-var delambda = function (string) {
-  return string == lambda ? '' : string;
-}
-
-/**
- * CheckREG for checking regular expression alone with the string
- *
- * @param rule
- *            The regular expression
- * @param str
- *            Testing string
- * @return true or false
- */
-function checkREG(rule, str) {
-
-  var res = helperREG(rule, str, 2, 0);
-  if (res == str.length && mark == 0) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-/**
- * helpfunction for reorder the regular expression
- */
-function checkAfterOr(indexm, indexm1, m, obj, copy1, copy2) {
-  for (var a = 0; a < indexm1.length; a++) {
-    var inerpos = indexm.indexOf(indexm1[a]);
-    if (inerpos != -1) {
-      indexm.splice(inerpos, 1);
-    }
-  }
-  if (indexm.length == 0) {
-    obj[m] = copy2;
-    obj[m + 1] = copy1;
-  }
-  return obj;
-}
-
-/**
- * remove the parentheses.
- * (a+b) ==> a+b
- *
- * @param str
- *            part of the regular expression
- * @return string
- */
-function rmParentheses(str, pos) {
-  return str.substr(1, str.length - pos);
-}
-
-/**
- * reorder the regular expression
- * b*ba ==> bb*a
- *
- * when b* follow by the same letter with star, reorder the regular expression.
- * So the check method can fit required letter first
- * @param sep
- *            part of the regular expression
- * @return string
- */
-function reorder(sep) {
-  for (var m = 0; m < sep.length - 1; m++) {
-    if (
-      sep[m] == sep[m + 1].substr(0, sep[m].length - 1) ||
-      sep[m + 1] == sep[m].substr(0, sep[m].length - 1)
-    ) {
-      var temp = sep[m];
-      sep[m] = sep[m + 1];
-      sep[m + 1] = temp;
-    } else if (sep[m].includes(')') && sep[m + 1].includes(')')) {
-      var indexm;
-      var indexm1;
-      var copy1 = sep[m];
-      var copy2 = sep[m + 1];
-      if (sep[m].includes('*')) {
-        indexm = rmParentheses(sep[m], 3);
-        indexm1 = rmParentheses(sep[m + 1], 2);
-      } else if (sep[m + 1].includes('*')) {
-        continue;
-      } else {
-        indexm = rmParentheses(sep[m], 2);
-        indexm1 = rmParentheses(sep[m + 1], 2);
-      }
-      indexm = or(indexm);
-      indexm1 = or(indexm1);
-      sep = checkAfterOr(indexm, indexm1, m, sep, copy1, copy2);
-    }
-  }
-  return sep;
-}
-
-/**
- * Check form m position to the end of the regular expression
- * whether all union contain a star symbol
- * @param sep
- *            part of the regular expression
- * @param m
- *            check position
- * @return True/False
- */
-function checkremindStar(sep, m) {
-  for (m; m < sep.length; m++) {
-    if (sep[m].charAt(sep[m].length - 1) != '*') {
-      return false;
-    }
-  }
-  return true;
-}
-
-/**
- * remove all *
- * @param rule
- *            part of the regular expression
- */
-function lenthwithoudstar(rule) {
-  return rule.replace(/\*/g, '');
-}
-
-/**
- * main method for checking whether a string conformed to a regular expression
- * @param rule
- *            regular expression
- * @param str
- *            check string
- * @param currentpos
- *            it is an iterative pointer point to the string.
- * @return iterative pointer position
- */
-function helperREG(rule, str, pos, currentpos) {
-  if (rule.charAt(0) == '(' && rule.charAt(rule.length - 1) == ')') {
-    rule = rmParentheses(rule, pos);
-  }
-  var todoList = or(rule);
-  var strCheckPos = currentpos;
-  var record = strCheckPos;
-  for (var i = 0; i < todoList.length; i++) {
-    mark = 0;
-    markPos = 0;
-    strCheckPos = record;
-    var sep = cat(todoList[i]);
-    for (var m = 0; m < sep.length; m++) {
-      var recordpos2 = strCheckPos;
-      sep = reorder(sep);
-      // a = a
-      if (sep[m].length == 1 && str.charAt(strCheckPos) == sep[m]) {
-        strCheckPos++;
-      } else if (
-        //a* = aaa
-        sep[m].length == 2 &&
-        sep[m].charAt(1) == '*' &&
-        str.charAt(strCheckPos) == sep[m].charAt(0)
-      ) {
-        strCheckPos++;
-        while (str.charAt(strCheckPos) == sep[m].charAt(0)) {
-          strCheckPos++;
-        }
-      } else if (
-        //(ab)* = aaa
-        sep[m].charAt(sep[m].length - 1) == '*' &&
-        sep[m].charAt(sep[m].length - 2) == ')'
-      ) {
-        while (strCheckPos < str.length) {
-          var temp2 = rmParentheses(sep[m], 3);
-          var recpos = strCheckPos;
-          if (!temp2.includes('+') && !temp2.includes('*')) {
-            var len = lenthwithoudstar(temp2).length;
-            strCheckPos = helperREG(temp2, str, 3, strCheckPos);
-            if (
-              !checkremindStar(sep, markPos + 1) ||
-              (strCheckPos >= recpos && !checkAllstar)
-            ) {
-              if (recpos + len == strCheckPos) {
-                continue;
-              } else {
-                strCheckPos = recpos;
-                break;
-              }
-            }
-          } else {
-            strCheckPos = helperREG(temp2, str, 3, strCheckPos);
-          }
-        }
-        if (strCheckPos != str.length) {
-          continue;
-        }
-      } else if (sep[m].charAt(sep[m].length - 1) == ')') {
-        //(ab)
-        strCheckPos = helperREG(sep[m], str, 2, strCheckPos);
-      } else if (sep[m].charAt(sep[m].length - 1) == '*') {
-        continue;
-      }
-      if (recordpos2 == strCheckPos) {
-        checkAllstar = checkremindStar(sep, m);
-      } else {
-        checkAllstar = checkremindStar(sep, m + 1);
-      }
-      markPos = m;
-      if (m != sep.length - 1 && !checkAllstar && strCheckPos == str.length && !emptyStr) {
-        mark = -1
-        break
-      }
-      if (emptyStr && i == todoList.length - 1 && !checkAllstar) {
-        mark = -1
-      }
-      if (recordpos2 == strCheckPos || strCheckPos == str.length && !emptyStr) {
-        break;
+function findbytag(xmlDoc, tag) {
+  var temp = [];
+  var list = $(xmlDoc).find('automaton').children();
+  var counter = 0;
+  while (list[counter].localName != 'transition') {
+    if (list[counter].children.hasOwnProperty('2')) {
+      var t = list[counter].children[2].localName;
+      if (t == tag) {
+        temp.push(list[counter].attributes[0].nodeValue);
       }
     }
-    if (strCheckPos == str.length && checkAllstar) {
-      break;
+    if (list[counter].children.hasOwnProperty('3')) {
+      var f = list[counter].children[3].localName;
+      if (f == tag) {
+        temp.push(list[counter].attributes[0].nodeValue);
+      }
     }
-    if (i < todoList.length) {
-      continue;
-    }
+    counter++;
   }
-  return strCheckPos;
+  return temp;
 }
 
-/**
- * help function for adding test cases to object
- * @param flag
- *            True/false flag
- * @param testCase
- *            object
- */
-function checkAdd(flag, testCase) {
-  if (flag) {
-    if (str.charAt(0) == 'T') {
-      str = str.substr(1);
-    }
-    if (loopkey(testCaseList, str)) {
-      return 0
-    }
-    if (trueCounter < trueStringLimit) {
-      addtoTestCase(str, testCase, 1);
-      trueCounter++;
-    }
-  } else {
-    if (str.charAt(0) == 'F') {
-      str = str.substr(1);
-    }
-
-    if (loopkey(testCaseList, str)) {
-      return 0
-    } else if (falseCounter < falseStringLimit) {
-      addtoTestCase(str, testCase, 0);
-      falseCounter++;
-    }
-  }
-}
 
 function loopkey(testCases, str) {
   for (var name in testCases) {
@@ -382,10 +52,9 @@ function loopkey(testCases, str) {
   }
   return false;
 }
-/**
- * random string generator help function
- * @return string
- */
+
+
+
 function stringGenerate() {
   var min = randomStringLength[0];
   var max = randomStringLength[1];
@@ -400,127 +69,78 @@ function stringGenerate() {
   return str;
 }
 
-/**
- * dealing with regular expression
- * the testcases store at different position in the object
- *
- * @param testCase
- *            object
- * @param flag
- *            regular expression exercise or regular grammar exercise flag
- *
- */
-function randomStringGenerate(testCase, flag) {
-  var solu;
-  var copy = str;
-
-  if (!loopkey(testCaseList, copy)) {
-    if (flag != 0) {
-      if (testCase[0].solution != '') {
-        testCase[0].solution = testCase[0].solution.split(' ').join('');
-        testCase[0].solution = testCase[0].solution.replace(/\ /g, '');
-        solu = checkREG(testCase[0].solution, str);
-        checkAdd(solu, testCase);
-      } else {
-        checkAdd(checkRule(str), testCase);
-      }
-    } else {
-      if (testCase.solution != '') {
-        testCase.solution = testCase.solution.split(' ').join('');
-        solu = checkREG(testCase.solution, str);
-        checkAdd(solu, testCase);
-      } else {
-        checkAdd(checkRule(str), testCase);
-      }
-    }
-  }
-}
 
 
-
-function hardcode(copyObj, str) {
-  checkAdd(checkRule(str), copyObj)
-}
-
-
-/**
- * check undefined
- * Lambda, Unit, useless
- * @param testCase
- *            object
- */
-function generateTestCase(testCase, flag) {
+function generateTestCase(exObj, flag) {
   var copyObj;
   if (flag == 1) {
-    copyObj = testCase;
+    copyObj = exObj;
   } else {
-    copyObj = testCase[0];
+    copyObj = exObj[0];
   }
   trueStringLimit = copyObj.totalTrueCases;
   falseStringLimit = copyObj.totalFalseCases;
   trueCounter = copyObj.trueCounter;
   falseCounter = copyObj.falseCounter;
-  generatorflag = copyObj.generatorflag;
+  caseCounter = trueCounter + falseCounter;
   containLetters = copyObj.containLetters;
   randomStringLength = copyObj.randomStringLength;
-  caseCounter = trueCounter + falseCounter;
-  totalTestCases = copyObj.totalTestCases;
+  tmtotalTestCases = copyObj.totalTestCases;
   tmCasesCounter= copyObj.hardCodeCasesCounter;
-  var title;
   tempFlag = flag;
+  var checkcases;
   if (
-    typeof Object.keys(testCase) !== 'undefined' &&
-    Object.keys(testCase).length > 0
+    typeof Object.keys(exObj) !== 'undefined' &&
+    Object.keys(exObj).length > 0
   ) {
-    title = Object.getOwnPropertyNames(copyObj);
+    checkcases = Object.getOwnPropertyNames(copyObj);
   }
-  if (title != 'No_Lambda' && title != 'No_Unit' && title != 'No_Useless') {
+  if (checkcases != 'No_Lambda' && checkcases != 'No_Unit' && checkcases != 'No_Useless') {
     for (
-      var b = 0; trueCounter < trueStringLimit || falseCounter < falseStringLimit || tmCasesCounter<totalTestCases; b++
+      var b = 0; trueCounter < trueStringLimit || falseCounter < falseStringLimit || tmCasesCounter<tmtotalTestCases; b++
     ) {
-      str = '';
-      if (generatorflag == 0) {
-        str = stringGenerate();
-      } else if (generatorflag == 1) {
-        str = customGenerator();
-        if (str === undefined) {
-          alert(
-            'Check the Customize generator. Should return string but return undefined.'
-          );
-        }
-      } else {
-        alert('Wrong generator flag.');
-      }
-      if (str == "") {
-        emptyStr = true;
-      }
-      if (copyObj.solution === "") {
-        testCaseList = copyObj.testCases
-        hardcode(copyObj, str)
-      } else if (
+      if (
         copyObj.exerciseType == 'DFA' ||
-        copyObj.exerciseType == 'NFA' ||
-        copyObj.exerciseType == 'PDA'
+        copyObj.exerciseType == 'NFA' 
       ) {
-        dfaNfaPdaHandler(copyObj, flag, str);
+          dfaNfaHandler(copyObj);
+      } else if (copyObj.exerciseType == 'PDA') {
+          pdaHandler(copyObj);
       } else if (copyObj.exerciseType == 'REGEXP') {
-        regExpHandler(copyObj, flag);
+          regExpHandler(copyObj, flag);
       } else if (copyObj.exerciseType == 'GRAMMAR') {
-        graHandler(copyObj, flag, str);
-      }
-      else if (copyObj.exerciseType == "TM") {
+          graHandler(copyObj);
+      } else if (copyObj.exerciseType == "TM") {
+        str = stringGenerate();
         tmHandler(copyObj, str);
-      }
-      else {
-        alert('exercise type error. Check json file!');
+      } else {
+          alert('exercise type error. Check json file!');
       }
     }
   }
 }
 
-/**
- * produce random number
- */
-function randomNumber(min, max) {
-  return Math.round(Math.random() * (max - min)) + min;
+
+
+function addtoTestCase(str, obj, result) {
+  var current = {};
+  if (tempFlag != 1) {
+    var inobj = obj.testCases;
+    if (result) {
+      current[str] = true;
+      inobj[caseCounter] = current;
+    } else {
+      current[str] = false;
+      inobj[caseCounter] = current;
+    }
+  } else {
+    if (result) {
+      current[str] = true;
+      obj.testCases[caseCounter] = current;
+    } else {
+      current[str] = false;
+      obj.testCases[caseCounter] = current;
+    }
+  }
+  caseCounter++;
 }

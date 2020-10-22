@@ -9,7 +9,7 @@
    :satisfies:
    :topic:
 
-Sheet 2 Spring19 exercise
+Sheet 2 Practice
 ================
 
 Exercise 1
