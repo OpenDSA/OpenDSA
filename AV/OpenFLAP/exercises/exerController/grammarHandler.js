@@ -1,4 +1,5 @@
 var testCaseList4 = [];
+var check;
 /**
  * find all grammars that have same left hand variable
  *
@@ -6,7 +7,6 @@ var testCaseList4 = [];
  *            all grammar rules
  * @param key
  *            Left hand terminal variable
- * @returns array that contains "Id, From, To, EdgeValue". 
  */
 function findSameKey(rule, key) {
   var pack = [];
@@ -18,141 +18,78 @@ function findSameKey(rule, key) {
   return pack;
 }
 
-
-/**
- * Ex:
- * tempRule: A -> aAb
- * String: acb
- * Return: c
- * 
- * @param tempRule
- *            Current grammar rule
- * @param str
- *            Traverse string
- * @returns 
- *            string after remove some chars.
- */
-function cleanStr(tempRule, string) {
-  while (true) {
-    var tempChar = tempRule.charAt(0);
-    if (tempChar != tempChar.toUpperCase() && tempChar == string.charAt(0)) {
-      tempRule = tempRule.substring(0 + 1, tempRule.length);
-      string = string.substring(0 + 1, string.length);
-      continue;
-    }
-    break;
+function hasUpperCase(str) {
+  if (/[A-Z]/.test(str)) {
+    const regex = /[A-Z]/g;
+    const found = str.match(regex);
+    return found[0];
+  } else {
+    return '0';
   }
-  while (true) {
-    var charinRule = tempRule.charAt(tempRule.length - 1);
-    var charinStr = string.charAt(string.length - 1);
-    if (charinRule != charinRule.toUpperCase() && charinRule == charinStr) {
-      tempRule = tempRule.substring(0, tempRule.length - 1);
-      string = string.substring(0, string.length - 1);
-      continue;
-    }
-    break;
-  }
-  var char1 = tempRule.charAt(0);
-  var char2 = tempRule.charAt(tempRule.length - 1);
-  if (
-    char1 != char1.toUpperCase() ||
-    char2 != char2.toUpperCase() ||
-    (char1 == '' && char2 == '' && string != '')
-  ) {
-    tempRule = 'False';
-    string = 'False';
-  }
-
-  var obj = [];
-  obj.push(tempRule);
-  obj.push(string);
-  return obj;
 }
 
+function insertString(str1, str2, pos) {
+  let origString = str1;
+  let stringToAdd = str2;
+  let indexPosition = pos;
+  return (newString =
+    origString.slice(0, indexPosition) +
+    stringToAdd +
+    origString.slice(indexPosition));
+}
 
+function falseCases(rule) {
+  var res;
+  var tempStr;
+  do {
+    tempStr = stringGenerate();
+    res = travGram(rule, tempStr, 0);
+  } while (res);
+  return tempStr;
+}
 
-/**
- * Traverse Grammar
- *
- * @param rule
- *            Grammar rules 
- * @param string
- *            Traverse string
- * @param key
- *            left hand of current grammar
- * @param pos
- *            string traverse position pointer
- * 
- * @returns true or false
- * 
- */
-var lambdaCheck = false;
-var rem = '';
-var finalCheck = false;
-
-function grammarTrav(rule, string, flag, key, pos) {
-  var backupPos = pos;
+function travGram(rule, tempStr, pos) {
   var keyPackage = findSameKey(rule, key);
-  var backRem = rem;
-  for (var i = 0; i < keyPackage.length; i++) {
-    rem = backRem;
-    backRem = keyPackage[i][0];
-    pos = backupPos;
-    var tempRule = keyPackage[i][0];
-    var rulePointer = 0;
-    var backUpRulePointer;
-    var aftClean = cleanStr(tempRule, string);
-    if (aftClean[1] != 'False' && aftClean[0] != 'False') {
-      string = aftClean[1];
-      tempRule = aftClean[0];
-      specialCase = true;
+}
+
+function grammarTrav(rule, key) {
+  var operation = Math.floor(Math.random() * rule.length * 3 + 1);
+  var keyPackage = findSameKey(rule, key);
+  var index = Math.floor(Math.random() * keyPackage.length);
+  var str = keyPackage[index][0];
+  for (var i = 1; i < operation; i++) {
+    var letter = hasUpperCase(str);
+    if (letter != '0') {
+      keyPackage = findSameKey(rule, letter);
+      index = Math.floor(Math.random() * keyPackage.length);
+      str2 = keyPackage[index][0];
+      str = str.replace(letter, str2);
     } else {
-      continue;
-    }
-    while (pos < string.length || tempRule.length > 0) {
-      if (
-        rulePointer + 1 > tempRule.length &&
-        tempRule.length != 0 &&
-        pos >= string.length
-      ) {
-        return pos;
-      }
-      var curChar = tempRule.charAt(rulePointer);
-
-      if (curChar == '') {
-        break;
-      }
-      if (curChar == curChar.toUpperCase()) {
-        backUpRulePointer = rulePointer;
-        rem = tempRule.substring(rulePointer + 1, tempRule.length) + rem;
-        var tempV = grammarTrav(rule, string, flag, curChar, pos);
-
-        if (tempV != -1) {
-          pos = tempV;
-        }
-        rulePointer = backUpRulePointer + 1;
-      } else {
-        if (curChar == string.charAt(pos)) {
-          pos = pos + 1;
-          rulePointer = rulePointer + 1;
-          lambdaCheck = false;
-        } else {
-          break;
-        }
-      }
-    }
-    if (pos == string.length) {
       break;
     }
   }
-  if (pos == string.length && specialCase) {
-    if (pos == 0) {
-      finalCheck = true;
-    }
-    return true;
+  if (hasUpperCase(str) != '0') {
+    check = false;
+    // str = falseCases(rule);
   } else {
-    return false;
+    check = true;
   }
+  return str;
+}
+
+/**
+ * random string generator help function
+ * @return string
+ */
+function stringGenerate() {
+  var min = randomStringLength[0];
+  var max = randomStringLength[1];
+  var stringLength = Math.round(Math.random() * (max - min)) + min;
+  for (var a = 0; a < stringLength; a++) {
+    var pos = Math.round(Math.random() * (containLetters.length - 1));
+    str += containLetters[pos];
+  }
+  return str;
 }
 
 function loopkey(testCases, str) {
@@ -192,26 +129,39 @@ function gramAdd(testCase, result, str) {
   }
 }
 
-var specialCase
+function addtoTestCase(str, obj, result) {
+  var current = {};
+  if (tempFlag != 1) {
+    var inobj = obj.testCases;
+    if (result) {
+      current[str] = true;
+      inobj[caseCounter] = current;
+    } else {
+      current[str] = false;
+      inobj[caseCounter] = current;
+    }
+  } else {
+    if (result) {
+      current[str] = true;
+      obj.testCases[caseCounter] = current;
+    } else {
+      current[str] = false;
+      obj.testCases[caseCounter] = current;
+    }
+  }
+  caseCounter++;
+}
 /**
- * Grammar traverse start funtion. 
+ * Grammar traverse start funtion.
  *
  * @param testCase
  *            object
- * @param str
- *            test string
  */
-function graHandler(testCase, flag, string) {
+function graHandler(testCase) {
   var rule = testCase.solution;
-  testCaseList4 = testCase.testCases
-  var key = 'S';
-  finalCheck = false;
-  if (string == "") {
-    specialCase = false;
-  }
-
-  grammarTrav(rule, string, flag, key, 0);
-  rem = '';
-  gramAdd(testCase, finalCheck, string);
+  testCaseList4 = testCase.testCases;
+  check = false;
+  var str = grammarTrav(rule, 'S');
+  gramAdd(testCase, check, str);
   return 0;
 }

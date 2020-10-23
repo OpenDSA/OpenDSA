@@ -17,7 +17,8 @@ $(document).ready(function () {
         row,              // row number for input box
         col,              // column number for input box
         isCFG = false,    // if the input is CFG
-        modelDFA;
+        modelDFA,
+        state = "editing";
     var dsArray = [];
     var parenthesis = "(";
 
@@ -102,10 +103,14 @@ $(document).ready(function () {
                 alert("Can't delete the last row");
                 return;
             }
-            // recreates the matrix when deleting a row...
-            arr.splice(index, 1);
-            lastRow--;
-            m = init();
+            // recreates the matrix when deleting a row..
+            var result = confirm("Are you sre you want to delete this production you selected?")
+            if (result){
+                arr.splice(index, 1);
+                lastRow--;
+                m = init();
+            }
+
             $('.jsavmatrix').addClass('deleteMode');
         } else if ($('.jsavmatrix').hasClass('editMode')) {
             // ignore if the user clicked an arrow
@@ -170,30 +175,31 @@ $(document).ready(function () {
                 arr[index][index2] = input;
                 layoutTable(m, 2);
                 switch (keyCode) {
-                    case 13:
+                    case 13: // enter key
                         if (index2 == 0) {
                             focus(index, 2);
-                        } else {
-                            // adding a new production
-                            addRow(index);
-                        }
+                         }
+                            // else {
+                        //     // adding a new production
+                        //     addRow(index);
+                        // }
                         break;
-                    case 37:
+                    case 37: // arrow left key
                         if (index2 == 2) {
                             focus(index, 0);
                         }
                         break;
-                    case 38:
+                    case 38:  // arrow up key
                         if (index > 0) {
                             focus(index - 1, index2);
                         }
                         break;
-                    case 39:
+                    case 39: // arrow right key
                         if (index2 == 0) {
                             focus(index, 2);
                         }
                         break;
-                    case 40:
+                    case 40: // arrow down key
                         var newProduction = addProduction(index);
                         layoutTable(m);
                         if (newProduction) {
@@ -268,6 +274,7 @@ $(document).ready(function () {
         $('.jsavmatrix').removeClass("deleteMode");
         $('.jsavmatrix').removeClass("addrowMode");
         $("#mode").html('Editing');
+
     };
     var deleteMode = function () {
         $('#firstinput').remove();
@@ -281,7 +288,27 @@ $(document).ready(function () {
         $('.jsavmatrix').removeClass("deleteMode");
         $('.jsavmatrix').removeClass("editMode");
         $("#mode").html('Adding');
-    }
+
+        if(lastRow === arr.length - 1 || lastRow === arr.length) {
+            var l = arr.length;
+            for (var i = 0; i < l; i++) {
+                arr.push(['', arrow, '']);
+            }
+            m = init();
+            $('.jsavmatrix').addClass('editMode');
+            // if (!arr[index][2]) {
+            //     arr[index][2] = lambda;
+            //     m.value(index, 2, lambda);
+            // }
+
+        }
+        m._arrays[lastRow + 1].show();
+        lastRow++;
+        layoutTable(m);
+        $('.jsavmatrix').addClass("editMode");
+        $('.jsavmatrix').removeClass("deleteMode");
+        $('.jsavmatrix').removeClass("addrowMode");
+    };
 
 
     //=================================

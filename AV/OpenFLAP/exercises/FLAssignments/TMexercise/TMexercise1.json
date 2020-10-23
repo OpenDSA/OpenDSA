@@ -1,24 +1,33 @@
-[{
+[
+  {
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "TM",
+    "totalTestCases": 6,
+    "containLetters": ["a"],
+    "randomStringLength": [0, 15],
+    "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
+    "hardCodeCasesCounter": 4,
     "expression": "",
     "description": "Create a machine that increases the number of a's in the string",
     "type": "description",
-    "testCases": [{
-            "aaa": "aaaa"
-        },
-        {
-            "": "a"
-        },
-        {
-            "aaaaa": "aaaaaa"
-        },
-        {
-            "aaaaaaa": "aaaaaaaa"
-        }
+    "testCases": [
+      {
+        "aaa": "aaaa"
+      },
+      {
+        "": "a"
+      },
+      {
+        "aaaaa": "aaaaaa"
+      },
+      {
+        "aaaaaaa": "aaaaaaaa"
+      }
     ],
     "graph": {
-        "nodes": [],
-        "edges": []
-    }
-}]
+      "nodes": [],
+      "edges": []
+    },
+    "solution": "./addOnea.xml"
+  }
+]

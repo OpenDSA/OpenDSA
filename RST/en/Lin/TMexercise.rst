@@ -15,15 +15,20 @@ Turing Machine Exercises
 Exercise 1
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/addOnea.html ae
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/addOnea.html pe
    :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
 Exercise 2
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/eraseABC.html ae
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/eraseABC.html pe
    :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
+Exercise 3
+----------
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/keepABC.html pe
+   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
 Exercise 4
 ----------
@@ -63,6 +68,7 @@ Exercise 9
    :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 =======
 .. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html pe
+<<<<<<< HEAD
    :long_name: Turing Machines Exercise
 >>>>>>> master
 
@@ -102,3 +108,6 @@ Exercise 9 For testing purposes. It worth zero points
 .. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html ae
    :long_name: Turing Machines Exercise
 
+=======
+   :long_name: Turing Machines Exercise
+>>>>>>> origin/master
