@@ -24,11 +24,47 @@ Exercise 2
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/eraseABC.html ae
    :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
-Exercise 3
+
+Exercise 4
 ----------
 
+.. avembed:: AV/Peixuan/TuringMachinesExercises/aNumsPowerOf2.html pe
+   :long_name: Turing Machines Exercise
+
+Exercise 5
+----------
+
+.. avembed:: AV/Peixuan/TuringMachinesExercises/ifaNumsPowerOf2.html pe
+   :long_name: Turing Machines Exercise
+
+Exercise 6
+----------
+
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abcWInWWROut.html pe
+   :long_name: Turing Machines Exercise
+
+Exercise 7
+----------
+
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abcNawlargerthanNbw.html pe
+   :long_name: Turing Machines Exercise
+
+Exercise 8
+----------
+
+.. avembed:: AV/Peixuan/TuringMachinesExercises/replaceABAbyACA.html pe
+   :long_name: Turing Machines Exercise
+
+Exercise 9
+----------
+
+<<<<<<< HEAD
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/keepABC.html ae
    :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
+=======
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html pe
+   :long_name: Turing Machines Exercise
+>>>>>>> master
 
 Exercise 4 For testing purposes. It worth zero points
 -----------------------------------------------------

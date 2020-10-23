@@ -4,11 +4,15 @@
   var PIFrames = {
     questionType: "",
     submit: `<br><input type="submit" value="Submit"> </br>`,
-    feedback: `<p hidden id="feedback">Incorrect!</p>`,
+    correctFeedback: `<p hidden id="correctFeedback">Correct!</p>`,
+    incorrectFeedback: `<p hidden id="incorrectFeedback">Incorrect!</p>`,
     ParseTree: null,
     //Peixuan added locations parameter to let people can change frames location
     Injector(data, av_name, skip_to, locations = {top: 10, left: 5}) {
       var obj = {
+        //set the parameter to "true" to enable debug mode
+        debugFlag: window.PIFramesDebugFlag !== undefined ? window.PIFramesDebugFlag : false,
+
         myData: data,
 
         //if there are multiple frames on one page, we need a reference to the correct one
@@ -154,11 +158,7 @@
             $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").css({
               width: "100%",
               height: "none",
-              //left: 5,
-              left: locations.left,
               position: "relative",
-              //top: 10
-              top: locations.top
               //Peixuan changed the left and top parameter so they can be used to adjust frames locations
             }); //Mostafa added position:re;ative to fix the problem related to miss positioning the question in some frames(Mathmatical.js)
             //So the width changed fromm 34 to 100, left from 690 to 5 and added the top.
@@ -189,7 +189,12 @@
             this.queue.current = this.queue.elements.length - 1;
           }
         },
+
         disableForwardButton: function() {
+          //don't disable forward button if debug mode is on
+          if (this.debugFlag) {
+            return;
+          }
           var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
           $(forwardButton).css({
             "pointer-events": "none",
@@ -289,6 +294,23 @@
           }
         },
 
+        //build feedback element here to support the Latex
+        buildFeedback : function(question) {
+          feedback = ""
+          if (question.correctFeedback != undefined) {
+            feedback += `<p hidden id="correctFeedback">Correct: ${question.correctFeedback}</p>`;
+          } else {
+            feedback += PIFrames.correctFeedback
+          }
+          if (question.incorrectFeedback != undefined) {
+            feedback += `<p hidden id="incorrectFeedback">Incorrect: ${question.incorrectFeedback}</p>`;
+          } else {
+            feedback += PIFrames.incorrectFeedback
+          }
+          feedback += `<p hidden id="noAnswerFeedback">You need to answer the question first!</p>`;
+          return feedback
+        },
+
         //Peixuan added this method to generate a random sequence including
         //numbers of [0...'limit')
         randomSeqGenerator: function(limit){
@@ -320,14 +342,8 @@
             html.push(radio);
           }
 
-          /*
-          for (var i = 0; i < choices.length; i++) {
-            var radio = `<input type="radio" name=${this.av_name} value='${choices[i]}' style='margin-right: 5px'>${choices[i]}</></br>`;
-            html.push(radio);
-          }*/
-
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
 
           return form.append(html.join(""));
         },
@@ -346,7 +362,7 @@
           var fElement = `<input type="radio" name=${this.av_name} value='False' style='margin-right: 5px'>False</></br>`;
           html.push(fElement);
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
           return form.append(html.join(""));
         },
 
@@ -366,7 +382,7 @@
           html.push(textBox);
 
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
 
           return form.append(html.join(""));
         },
@@ -410,7 +426,7 @@
           }
 
           html.push(PIFrames.submit);
-          html.push(PIFrames.feedback);
+          html.push(this.buildFeedback(question));
 
           return form.append(html.join(""));
         },
@@ -483,23 +499,27 @@
             "question":  this.queue.current,
             "correct":   correct
           };
-          $.ajax({
-            url: "/pi_attempts",
-            type: "POST",
-            data: JSON.stringify(data),
-            contentType: "application/json; charset=utf-8",
-            datatype: "json",
-            xhrFields: {
-              withCredentials: true
-            },
-            success: function(data) {
-              console.log(data)
-            },
-            error: function(err) {
-              console.log(err)
-            }
-          });
+          if (ODSA.UTILS.scoringServerEnabled())
+          {
+            $.ajax({
+              url: "/pi_attempts",
+              type: "POST",
+              data: JSON.stringify(data),
+              contentType: "application/json; charset=utf-8",
+              datatype: "json",
+              xhrFields: {
+                withCredentials: true
+              },
+              success: function(data) {
+                console.log(data)
+              },
+              error: function(err) {
+                console.log(err)
+              }
+            });
+          }
 
+          /*
           if (question.type == "textBoxAny") {
             //case where we accept any string as an answer
             this.setStudentAnswer(
@@ -508,10 +528,6 @@
             );
             this.enableForwardButton();
 
-            //Peixuan updated selectors
-            /*if ($("input[type=submit]").is(":visible")) {
-              $("input[type=submit]").hide();
-              $(".PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);*/
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
               $("." + av_name + "> input[type=submit]").hide();
               $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);
@@ -567,6 +583,57 @@
                 $("." + av_name + "> input[type=submit]").show();
                 $("." + av_name + "> #feedback").hide();
               }, 1000 * timeFlag);
+            }
+          }*/
+
+          //feedback elements are built when the question is injected to the slideshow
+          //so we only need to show or hide them accordingly
+          //the auto advance is disabled to allow students to read the feedback
+          if(answer === undefined || (Array.isArray(answer) && answer.length === 0) || answer === ""){
+            $("." + av_name + "> #noAnswerFeedback").show();
+            $("." + av_name + "> #correctFeedback").hide();
+            $("." + av_name + "> #incorrectFeedback").hide();
+            this.disableForwardButton();
+            return;
+          }
+
+          if (question.type == "textBoxAny") {
+            //case where we accept any string as an answer
+            this.setStudentAnswer(
+              this.queue.elements[current],
+              question.answer
+            );
+            this.enableForwardButton();
+
+            //Peixuan updated selectors
+            if ($("." + av_name + "> input[type=submit]").is(":visible")) {
+              $("." + av_name + "> input[type=submit]").hide();
+              $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);
+            }
+          } else if (
+            this.studentHasAnsweredQuestionCorrectly(
+              this.queue.elements[current]
+            )
+          ) {
+            this.enableForwardButton();
+            if ($("." + av_name + "> input[type=submit]").is(":visible")) {
+              $("." + av_name + "> input[type=submit]").hide();
+              $("." + av_name + "> #noAnswerFeedback").hide();
+              $("." + av_name + "> #correctFeedback").show();
+              $("." + av_name + "> #incorrectFeedback").hide();
+            }
+
+            //the last question in the slideshow has been answered correctly, so enable the jsavend button
+            if (current == this.queue.elements.length - 1) {
+              this.enableFastForwardButton();
+            }
+          } else {
+            //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
+            if ($("." + av_name + "> input[type=submit]").is(":visible")) {
+              $("." + av_name + "> #noAnswerFeedback").hide();
+              $("." + av_name + "> #correctFeedback").hide();
+              $("." + av_name + "> #incorrectFeedback").show();
+              this.disableForwardButton();
             }
           }
         },
@@ -687,7 +754,7 @@
             this.questionSlideListener();
             PIFRAMES.revealQuestion(av_name);
             //Peixuan updated selector
-            //$(".picanvas").css({
+            // $(".picanvas").css({
             $("#" + av_name + " > .canvaswrapper > .picanvas").css({
               display: "inline-block",
               width: "39%"
@@ -830,86 +897,94 @@
       var question = $("<div />", {
         class: "PIFRAMES"
       });
+      
+      
+      $(container).append(qButton);
+      $(container).append(question);
+      
+      //Peixuan updated selectors, moved jsavControl buttons to here and added locations parameter
+      
+      $("#" + av_name + " > .jsavoutput.jsavline, #" + av_name + " > .jsavcanvas").wrapAll('<div class="canvaswrapper-left"></div>');
+      $("#" + av_name + " > .canvaswrapper-left, #" + av_name + " > .picanvas").wrapAll('<div class="canvaswrapper"></div>');
+      $("#" + av_name + " > .SHOWQUESTION, #" + av_name + " > .PIFRAMES").wrapAll('<div class="picanvas"></div>');
+      $("#" + av_name + " > .picanvas").insertAfter($("#" + av_name + " > .canvaswrapper > .canvaswrapper-left"));
+      
+      
+      // ===================================
+      // Define initial layout for Frameset
+      // ===================================
+      // Whole frameset
+      $("#" + av_name + " > .canvaswrapper").css({
+        display: "flex"
+      });
+      
+      // umsg + canvas section (jsavline + jsavcanvas)
+      $("#" + av_name + " .canvaswrapper-left").css({
+        width: "60%"
+      });
+      
+      // umsg section
+      $("#" + av_name + " .jsavoutput.jsavline").css({
+        width: "100%"
+      });
+  
+      // canvas section
+      $("#" + av_name + " .jsavcanvas").css({
+        "min-width": "0px",
+        "min-height": "500px"
+      });
 
       //Peixuan updated selectors
+      // Question section
       $("#" + av_name + " .picanvas").css({
         width: "0px",
+        marginLeft: "20px",
+        marginRight: "5px",
         //overflow: "inherit"
         //Peixuan changed this style so it will display submit button correctly
         //if multiple frames on the same page
         overflow: "hidden"
-      });
-
-      $(question).css({
-        position: "absolute",
-        top: 69,
-        left: 590,
-        width: "34%",
-        overflow: "hidden"
-      });
-
-      $("#" + av_name + " .jsavoutput.jsavline").css({
-        display: "inline-block",
-        width: "60%"
-      });
-
-      $("#" + av_name + " .jsavcanvas").css({
-        "min-width": "0px",
-        width: "60%",
-        overflow: "hidden",
-        "margin-left": 0,
-        "min-height": "500px"
-      });
-
-      $(container).append(qButton);
-      $(container).append(question);
-
-      //Peixuan updated selectors, moved jsavControl buttons to here and added locations parameter
-      $("#" + av_name + " > .SHOWQUESTION, #" + av_name + " > .PIFRAMES").wrapAll('<div class="picanvas"></div>');
-      $("#" + av_name + " > .picanvas").insertAfter($("#" + av_name + " > .jsavcanvas"));
-      $("#" + av_name + " > .jsavcanvas, #" + av_name + " > .picanvas").wrapAll('<div class="canvaswrapper"></div>');
-      $("#" + av_name + " > .canvaswrapper").css({
-        display: "flex"
-      });
-
+      }); 
+      
+      
       //disable jsavend, as it allows student to jump to last slide
       //automatically enabled by injector once all questions for slideshow have been answered
       // $(".jsavend").css("pointer-events", "none");
       $("#" + av_name + " > .jsavcontrols > .jsavend").css("visibility", "hidden");
-
+      
       //edge case: what if first slide has question?
       //1 signifies a forward click; used by injector to increment queue if necessary
       $("#" + av_name + " > .jsavcontrols > .jsavforward").click(function() {
         var buttonGroup = $(this).parent();
         var parentAV = $(buttonGroup)
-          .parent()
-          .attr("id");
+        .parent()
+        .attr("id");
         PIFRAMES.callInjector(parentAV, 1);
       }),
       //0 signifies a backward click; used by injector to decrement queue if necessary
       $("#" + av_name + " > .jsavcontrols > .jsavbackward").click(function() {
-          var buttonGroup = $(this).parent();
-          var parentAV = $(buttonGroup)
-            .parent()
-            .attr("id");
-          PIFRAMES.callInjector(parentAV, 0);
-        }),
+        var buttonGroup = $(this).parent();
+        var parentAV = $(buttonGroup)
+        .parent()
+        .attr("id");
+        PIFRAMES.callInjector(parentAV, 0);
+      }),
       $("#" + av_name + " > .jsavcontrols > .jsavbegin").click(function() {
-          var buttonGroup = $(this).parent();
-          var parentAV = $(buttonGroup)
-            .parent()
-            .attr("id");
-          PIFRAMES.callInjector(parentAV, -1);
-        }),
+        var buttonGroup = $(this).parent();
+        var parentAV = $(buttonGroup)
+        .parent()
+        .attr("id");
+        PIFRAMES.callInjector(parentAV, -1);
+      }),
       $("#" + av_name + " > .jsavcontrols > .jsavend").click(function() {
-          var buttonGroup = $(this).parent();
-          var parentAV = $(buttonGroup)
-            .parent()
-            .attr("id");
-          PIFRAMES.callInjector(parentAV);
-        });
+        var buttonGroup = $(this).parent();
+        var parentAV = $(buttonGroup)
+        .parent()
+        .attr("id");
+        PIFRAMES.callInjector(parentAV);
+      });
     },
-
+    
     //add div to the av_name's picanvas, so that dynamic questions have a hooking point
     //Peixuan added locations parameter
     //and moved initialization process to the method above
@@ -919,11 +994,11 @@
       var injector = this.getQuestions(av_name, locations);
       return injector;
     },
-
+    
     revealQuestion: function(av_name) {
       this.table[av_name].appendQuestion();
     },
-
+    
     saveAndCheckStudentAnswer: function(av_name) {
       form = $(`form.${av_name}`);
       if (questionType.includes("textBox")) {

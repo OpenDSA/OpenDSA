@@ -64,6 +64,7 @@
   },
   "chapters": {
     "Stuff": {
+      "Design/IntroOO": {}, 
       "PointersJava/BasicPointers1": {},
       "MDTest/MDTest1": {},
       "PointersJava/Exercises": {},

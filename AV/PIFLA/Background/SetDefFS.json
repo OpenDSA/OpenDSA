@@ -1,0 +1,27 @@
+{
+    "translations": {
+      "en": {
+        "duporder": {
+          "type": "select",
+          "description": "An element is in the set, or it's not. When you write out the values for a set, it doesn't matter if you write them more than once, or what order you write them in. It's the same set.",
+          "question": "Let $P = \\{7, 11, 42\\}$. What are some other ways that you can write $P$?",
+          "answer": ["$\\{42, 11, 7\\}$", "$\\{42, 7, 7, 11\\}$"],
+          "choices": ["$\\{42, 11, 7\\}$", "$\\{42, 7\\}$", "$\\{42, 7, 7, 11\\}$","$\\{42, 7, 6, 11\\}$"]
+        },
+        "elements": {
+          "type": "multiple",
+          "description": "Set members are typically drawn from some larger population known as the base type",
+          "question": "If $P = \\{7, 11, 42\\}$, what is the base type of it's elements?",
+          "answer": ["Integers"],
+          "choices": ["Integers", "Letters", "Real Numbers"]
+        },
+        "members": {
+          "type": "select",
+          "description": "Each member of a set is either a primitive element of the base type or is a set itself.",
+          "question": "Let $P = \\{a, b, c, \\{d, e\\}, \\{f\\}\\}$. Which of the followings are an element in the set?",
+          "answer": ["$a$","$b$","$c$","$\\{d, e\\}$","$\\{f\\}$"],
+          "choices": ["$a$","$b$", "$c$", "$d$", "$e$","$\\{d\\}$","$\\{d, e\\}$","$f$","$\\{f\\}$"]
+        }
+      }
+    }
+  }

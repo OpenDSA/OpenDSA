@@ -116,7 +116,7 @@
         "q20": {
           "type": "multiple",
           "description": "$\\textbf {Definition}$: A linear grammar has at most one variable on the right hand side of any production. Thus, right linear and left linear grammars are also linear grammars.",
-          "question": "What makes a grammar Linea?",
+          "question": "What makes a grammar Linear?",
           "answer": "It has a single Variable at most in the RHS",
           "choices": ["It has a single Variable at most in the RHS", "It has only one variable in every production rule LHS", "It has a single production rule"]
         },
@@ -139,15 +139,15 @@
           "type": "select",
           "description": "$\\textbf {Definition}$: A linear grammar has at most one variable on the right hand side of any production. Thus, right linear and left linear grammars are also linear grammars.",
           "question": "What does the grammar called if it has a single varable(at most) at the $\\textbf{end}$ of the RHS of every production rule",
-          "answer": ["Right Liear Grammar", "Right Regular Grammar", "Context-Free Grammar because it (ALSO) has only one Variable on the LHS of each production rule"],
-          "choices": ["Right Liear Grammar", "Right Regular Grammar", "Left Liear Grammar", "Left Regular Grammar", "Context-Free Grammar because it (ALSO) has only one Variable on the LHS of each production rule"]
+          "answer": ["Right Linear Grammar", "Right Regular Grammar", "Context-Free Grammar because it (ALSO) has only one Variable on the LHS of each production rule"],
+          "choices": ["Right Linear Grammar", "Right Regular Grammar", "Left Linear Grammar", "Left Regular Grammar", "Context-Free Grammar because it (ALSO) has only one Variable on the LHS of each production rule"]
         },
         "q24": {
           "type": "select",
           "description": "$\\textbf {Definition}$: A linear grammar has at most one variable on the right hand side of any production. Thus, right linear and left linear grammars are also linear grammars.",
           "question": "What does the grammar called if it has a single varable(at most) at the $\\textbf{begining}$ of the RHS of every production rule",
-          "answer": ["Left Liear Grammar", "Left Regular Grammar", "Context-Free Grammar because it (ALSO) has only one Variable on the LHS of each production rule"],
-          "choices": ["Right Liear Grammar", "Right Regular Grammar", "Left Liear Grammar", "Left Regular Grammar", "Context-Free Grammar because it (ALSO) has only one Variable on the LHS of each production rule"]
+          "answer": ["Left Linear Grammar", "Left Regular Grammar", "Context-Free Grammar because it (ALSO) has only one Variable on the LHS of each production rule"],
+          "choices": ["Right Linear Grammar", "Right Regular Grammar", "Left Linear Grammar", "Left Regular Grammar", "Context-Free Grammar because it (ALSO) has only one Variable on the LHS of each production rule"]
         }
       }
     }
