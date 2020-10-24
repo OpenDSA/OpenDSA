@@ -492,7 +492,7 @@
     readyTraversal();
     for (var i = 0; i < inputs.length; i++) {
       // Create an array of the input strings.
-      if (inputs[i]) {
+      if (inputs[i]) { //added "" to allow empty string
         if(willRejectFunction(g,inputs[i])){
           travArray.push(inputs[i]+"(" + String.fromCharCode(10005) + ")");
         }else{
@@ -500,10 +500,13 @@
         }
       }
       else {
-        travArray.push(emptystring);
+        travArray.push(emptystring); //Add an if statement in the for loop below (or above the for loop) that will deal with when it's an emptystring. It will need to make sure that it is for empty stack 
       }
     }
     // Use this array to populate the JSAV array.
+    if (typeof jsavArray !== 'undefined'){
+      jsavArray.clear();
+    }
     jsavArray = jsav.ds.array(travArray, {top: 0, left: 0});//element: $('.arrayPlace')});
     for (var j = 0; j < inputs.length; j++) {
     /*
@@ -546,10 +549,10 @@
   // Function to open the graph in another window and run the input string on it.
   // Triggered by clicking on an input string in the JSAV array.
   var play = function (inputString) {
-    localStorage['graph'] = serialize(g);
+    localStorage['graph'] = serialize(g); //Use local storage to send if it should be empty stack or not; localStorage['empty'] = true/false, true is empty stack acceptance
     localStorage['traversal'] = inputString.slice(0, -3);
     localStorage['stepBy'] = stepBy;
-    window.open("./PDATraversal.html", "popupWindow", "width=830, height=800, scrollbars=yes");
+    window.open("../../AV/OpenFLAP/PDATraversal.html", "popupWindow", "width=830, height=800, scrollbars=yes"); //Changed from ./PDATraversal. Traversal does not work however
   };
 
   var willAccept = function(graph, input) {
