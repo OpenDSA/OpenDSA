@@ -290,41 +290,62 @@ can be used.
   .. _Chrome Developer Tools documentation: https://developers.google.com/web/tools/chrome-devtools/
   .. _Firefox developer tools documentation: https://developer.mozilla.org/en-US/docs/Tools
 
+
 ------------------------------------------
 Setting up a Local Development Environment
 ------------------------------------------
 
-There are two ways to set up your system to do local development on
-OpenDSA content: set up in a virtual box, or install the toolchain
-manually.
+The local development environment for OpenDSA content is provided using Docker.
 
 
-Using a Virtual Box
+Docker Introduction
 ~~~~~~~~~~~~~~~~~~~
 
-If all that you want to do is compile OpenDSA content, then you could
-set up the toolchain manually (see the next section), or use the
-virtual box to set everything up automatically.
-If you plan to do more, including running the OpenDSA or Code
-Workout back-end servers, then the only practical approach is to
-install the OpenDSA DevStack in a virtual box.
-To make this relatively easy for most developers, we have created a
-package to deliver a complete "OpenDSA in a box" on a virtual
-machine.
-Complete instructions can be found at:
-https://github.com/OpenDSA/OpenDSA-DevStack.
+Docker is a containerization solution to provide all of the dependencies
+required to run OpenDSA.
 
 
-Installing the Toolchain Manually
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Installing Docker on Windows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Here are instructions for installing the toolchain manually,
+First, download Docker Desktop for Windows at
+https://docs.docker.com/docker-for-windows/install/.
+NOTE: If you have Windows Home Edition, use the following link instead
+https://docs.docker.com/docker-for-windows/install-windows-home/
+and make sure you use the WSL2 with these instructions
+https://docs.docker.com/docker-for-windows/wsl/.
+
+
+Installing Docker on Mac
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, download Docker Desktop for Mac
+https://docs.docker.com/docker-for-mac/install/
+
+
+Installing Docker on Linux
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, install the Docker Engine for your Linux distribution
+https://docs.docker.com/engine/install/.
+Next, follow the post-installation steps here to finish your setup
+https://docs.docker.com/engine/install/linux-postinstall/.
+Finally, you should install docker-compose using these steps
+https://docs.docker.com/compose/install/.
+
+
+Installing OpenDSA
+~~~~~~~~~~~~~~~~~~
+
+Here are instructions for installing the toolchain using Docker,
 which should then allow you to compile OpenDSA books.
+
 These instructions are geared toward Windows, since that is the
 hardest to install.
 For Linux or Mac, you can do pretty much the same thing (using sudo
 for root permissions, and getting the tools from your package
 manager), but can skip some of the steps.
+
 
 First, install Git.
 On Windows, a good choice is  "Git for Windows" at
@@ -334,38 +355,6 @@ Use the third option for the path environment:
 Choose "checkout as-is, commit Unix-style line endings",
 and then use "MinTTY".
 You can then check if git is installed with the ``git --version`` command from a fresh terminal.
-
-Then on Windows you will need to install "make"
-from http://gnuwin32.sourceforge.net/packages/make.htm.
-IMPORTANT: Put it in Program Files, NOT Program Files (x86).
-Then, edit your environment variable PATH to add:
-C:/Program Files/GnuWin32/bin.
-If you don't know how to edit an environment variable on Windows,
-google for "windows set environment variable".
-You can then check if make is installed with the ``make --version`` command from a fresh terminal.
-
-Next, install nodejs (on Windows, you can get it from
-https://nodejs.org/en/download/).
-
-Now, open a Git Bash window and do::
-
-   npm install -g eslint  [If this is a fresh install of nodejs, this could take awhile]
-   npm install -g csslint
-   npm install -g jsonlint
-   npm install -g uglify-js
-   npm install -g clean-css-cli
-
-Next, install Python 3.8 from https://www.python.org/.  
-Be sure to add it to your PATH variable.
-For example, if you choose to put it at the top level of your C:
-drive, then add C:/Python38 and C:/Python38/Scripts to your PATH.
-It is likely that other versions of python will **not** work.  
-You can then check which version of python your system uses by default 
-with the ``python --version`` command from a fresh terminal.  
-For more control, you can override the python command used by OpenDSA 
-by setting the ``PYTHON`` environment variable to the command you wish 
-to be used.
-Later on, we will create a python virtual environment for OpenDSA. 
 
 Finally pop open a **new** Git Bash window, and you are ready to get
 started.
@@ -378,32 +367,39 @@ ways to do the cloning operation.
 Once the repository is cloned (we assume here into a directory named
 ``OpenDSA``) then do the following::
 
-   cd OpenDSA
-   make pull #This could take awhile#
-   make venv #Takes less than 1 minute#
+    cd OpenDSA
+    docker-compose up
 
-These commands initialize the submodules and install the python 
-package requirements of OpenDSA.
-Note: We created a python virtual environment specifically for OpenDSA. 
-This ensures that any other python installations that your system or 
-other projects depend on do not become corrupted or conflicted. 
-Changes to OpenDSA or to your system should not affect the other.
+This command will first pull and build the OpenDSA images before
+instantiating the OpenDSA container.
+This command runs several setup commands in the background to
+initialize the submodules and install the python packages requirements
+of OpenDSA.
+Note: We created a python virtual environment specifically for OpenDSA.
+This ensures complete control over the python environment in the container
+and allows easy version updating.
+This command also starts the virtual environment that can be started manually
+using the following command::
 
-If you attempt to build a book at this point, OpenDSA will give you 
-a warning that the python virtual environment is not activated yet, 
-and the command needed to activate it on your system.  
-On most systems, activating the python virtual environment it will 
-be one of these commands::
+    . .pyVenv/bin/activate
 
-  source .pyVenv/bin/activate  # For Linux systems
-  . .pyVenv/Scripts/activate   # For Windows systems
+but the Docker container runs this command automatically.
 
-After activation, you are ready to build a book.  
-For a small test book, you can try ::
+In order to interact with OpenDSA, you must open a bash shell within the container
+to run commands using the following command::
 
-  make Test
+    docker-compose exec opendsa bash
+
+This command automatically starts the virtual environment and places you in the OpenDSA
+directory of the container. After activation, you are ready to build a book.
+For a small test book (within the container), you can try::
+
+    make Test
 
 This should put a test book into ``[OpenDSA]/Books/Test``.
+
+When you want to bring the container down, you can stop the server with CTRL+C and
+run docker-compose up again to restart OpenDSA.
 
 Running a Local Web Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -416,23 +412,24 @@ on your local machine.  So we have made a simple solution: ::
 
   make Webserver
 
-This will start a basic server where you can view your OpenDSA content.
-Then go to your web browser, and point it to one of the URLs where 
-the web server is responding (http://localhost:8080/ is usually one).  
-This will be the top level of the OpenDSA directory, and you can
-browse through it in the normal way.
+This command is run automatically when docker-compose up runs and
+starts a basic server where you can view your OpenDSA content.
+Once the container starts, you can go to your web browser, and
+point it to one of the URLs where the web server is responding
+(http://localhost:8080/ is usually one). This will be the top level
+of the OpenDSA directory, and you can browse through it in the normal way.
 Any books that you have made will be in the ``Books`` directory.
 
-You can stop the server with CTRL + C (sending an interrupt signal).
-If you want the sever running continuously, we advise you to run this 
-command in a second terminal window and leave it open.  
-To see the more specialized options for running this simple web server, 
-use the ``python server.py --help`` command.
+You can stop the container with CTRL + C (sending an interrupt signal).
+If you want the sever running continuously, we advise you to either run this
+command in a second terminal window and leave it open or run docker in detached
+mode using::
 
-Note that Make commands can be easily chained to run in sequence.  
-For instance: ``make Test Webserver`` will attempt to create the "Test" 
-book, and if successful, will start the Webserver so that you can view 
-your recent changes to that book.
+    docker-compose up -d
+
+In order to stop the server, you can always run::
+
+    docker-compose down
 
 ------------------------------------
 Writing Visualizations and Exercises
@@ -444,13 +441,16 @@ Depending on what you want to do, there might be a lot
 to learn.
 To get you productive quickly, we created the ``SimpleDemo``
 materials.
-Once you have your development environment installed, you should
+Once you have your development environment with Docker installed, you should
 compile the ``SimpleDemo`` book instance.
-This is done by typing ``make SimpleDemo`` from the top level of the
-OpenDSA repository.
-At that point, you can find the book by running the simple web server
-described above, and navigating to ``Books/SimpleDemo``.
+This is done by typing ``make SimpleDemo`` from within the docker container using
+docker-compose exec opendsa bash.
+At that point, you can find the book by accessing the simple web server
+started by Docker, and navigating to ``Books/SimpleDemo``.
 Read the module, but also look at the sourcecode for both the
 module and the various examples.
 These will show you a lot of what you will need to implement your own
 visualizations and exercises.
+
+This Docker development environment is structured to allow you to edit files
+on your host machine and have them mirrored to the container.

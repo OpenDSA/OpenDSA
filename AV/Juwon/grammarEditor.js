@@ -2596,68 +2596,62 @@ $(document).ready(function () {
       }
 
       var pDict = {};     // a dictionary mapping left sides to right sides
+      var flag = {};      // check where the pointer at
       for (var i = 0; i < productions.length; i++) {
          if (!(productions[i][0] in pDict)) {
            pDict[productions[i][0]] = [];
+           flag[productions[i][0]] = 0;   // initial pointer index
           }
           pDict[productions[i][0]].push(productions[i][2]);
       }
       
       // Start writting expression first with the starting state
-      writeRE(productions[0][0]);
+      result += writeRE(productions[0][0], 0);
 
       // function for writing regular expression
-      function writeRE (state) {
-        var has_lambda = false;
-        var samestate = false;
-        // looping through the state elements
-        for (var i = 0; i < pDict[state].length; i++){
+      function writeRE (state, index) {
+        var temp_result = "";
+        var has_lambda = checkLambda(state);
+        var has_parentheses = false;
+        for (var i = index; i < pDict[state].length; i++) {   // loop through state elements
+          flag[state] += 1;
           var productstr = pDict[state][i];
-          if ((pDict[state].length > 1) && (i === 0)){
-            result += "(";
+          if ((pDict[state].length > 1) && (i === 0)){ // open parentheses
+            temp_result += "(";
+            has_parentheses = true;
           }
-          // looping through elements' characters
-          for (var j = 0; j < productstr.length; j++){
-            var product = productstr.charAt(j)
-            // when previous state calls the current state
-            if (samestate){
-              result += product;
-              samestate = false;
-            }
-            // adding + sign
+          for (var j = 0; j < productstr.length; j++) { //loop through the element string
+            var product = productstr.charAt(j);
             if (variables.indexOf(product) === -1 && (product !== emptystring)){
-              if (pDict[state].length > 1 && j === 0 && i > 0){
-                result += " + ";
+              if ((pDict[state].length > 1) && (i > index) && j === 0){
+                temp_result += " + ";
               }
-              result += product;
+              temp_result += product;
             }
-            else if(product === emptystring){
-              has_lambda = true;
+            else if(product !== emptystring){
+              temp_result += writeRE(product, flag[product]);
             }
-            else if(product !== state){
-              writeRE(product);
+            if ((pDict[state].length > 1) && !has_lambda && (i === (pDict[state].length-1)) && (j === (productstr.length - 1)) && has_parentheses) {
+              temp_result += ")";
             }
-            else if(product === state){
-              samestate = true;
+            else if ((pDict[state].length > 1) && has_lambda && (i === (pDict[state].length-1)) && (j === (productstr.length - 1)) && has_parentheses) {
+              temp_result += ")*";
             }
-
-            // adding parantheses and star
-            if (pDict[state].length > 1){
-              if (i === (pDict[state].length-1) && !has_lambda && j === (productstr.length - 1)){
-                result += ")";
-              }
-              else if(i === (pDict[state].length-1) && has_lambda && j === (productstr.length - 1)){
-                result += ")*";
-                // change has lambda to false after writing star
-                has_lambda = false;
-              }
-            }
-          }
-          // write star when still has lambda
-          if(i === (pDict[state].length-1) && has_lambda){
-            result += "*";
           }
         }
+        flag[state] = 0;   // set pointer index to initial
+        return temp_result;
+      }
+
+      // check if the state has lambda
+      function checkLambda (state) {
+        var has_lambda = false;
+        for (var i = 0; i < pDict[state].length; i++) {
+          if (pDict[state][i] === emptystring){
+            has_lambda = true;
+          }
+        }
+        return has_lambda;
       }
     jsav.umsg("The regular Expression is: \n" + result);
   }

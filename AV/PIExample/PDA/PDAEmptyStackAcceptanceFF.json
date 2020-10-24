@@ -10,35 +10,35 @@
       },
       "q3": {
         "type": "select",
-        "description": "$\\textbf{Definition:}$ LEt NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, \\emptyset)$ accepts $L(M)$ by empty stack, $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$",
+        "description": "$\\textbf{Definition:}$ Let NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, \\emptyset)$ accepts $L(M)$ by empty stack, $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$",
         "question": "Look carefully at the definition of $M$. What is missing?",
         "answer": "Set of final states",
         "choices": ["Start state", "Set of final states", "Set of alphabets", "Set of stack symbols", "Set of states", "Stack start symbol"]
       },
       "q4": {
         "type": "select",
-        "description": "$\\textbf{Definition:}$ LEt NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, \\emptyset)$ accepts $L(M)$ by empty stack, $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$",
+        "description": "$\\textbf{Definition:}$ Let NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, \\emptyset)$ accepts $L(M)$ by empty stack, $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$",
         "question": "By reading $(q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$. What does it mean that $q_0$ changed to $p$?",
         "answer": "The machine moved from start stat to another state $q$",
         "choices": ["The machine moved from start stat to another state $q$", "The string is consumed by machine", "The stack content is changed based on the transitions"]
       },
       "q5": {
         "type": "select",
-        "description": "$\\textbf{Definition:}$ LEt NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, \\emptyset)$ accepts $L(M)$ by empty stack, $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$",
+        "description": "$\\textbf{Definition:}$ Let NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, \\emptyset)$ accepts $L(M)$ by empty stack, $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$",
         "question": "By reading $(q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$. Is $p$ a final state?",
         "answer": "No, we do not have a final state in this type of acceptance",
         "choices": ["No, we do not have a final state in this type of acceptance", "Yes"]
       },
       "q6": {
         "type": "select",
-        "description": "$\\textbf{Definition:}$ LEt NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, \\emptyset)$ accepts $L(M)$ by empty stack, $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$",
+        "description": "$\\textbf{Definition:}$ Let NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, \\emptyset)$ accepts $L(M)$ by empty stack, $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$",
         "question": "By reading $(q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$. What does it mean that $w$ changed to $\\lambda$?",
         "answer": "The string is consumed by machine",
         "choices": ["The machine moved from start stat to another state $q$", "The string is consumed by machine", "The stack content is changed based on the transitions"]
       },
       "q7": {
         "type": "select",
-        "description": "$\\textbf{Definition:}$ LEt NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, \\emptyset)$ accepts $L(M)$ by empty stack, $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$",
+        "description": "$\\textbf{Definition:}$ Let NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, \\emptyset)$ accepts $L(M)$ by empty stack, $L(M) = \\{w \\in \\Sigma^* | (q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$",
         "question": "By reading $(q_0, w, z) \\stackrel{*}{\\vdash} (p, \\lambda, \\lambda)\\}$. What does it mean that $z$ changed to $\\lambda$?",
         "answer": "The stack is empty",
         "choices": ["The machine moved from start stat to another state $q$", "The string is consumed by machine", "The stack is empty"]

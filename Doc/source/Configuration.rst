@@ -29,10 +29,11 @@ From the top level of an OpenDSA repository
 instance (given the existance of a configuration file named
 ``config/foo.json``) by issuing these commands::
 
-  source .pyVenv/bin/activate  # to activate python venv
-  # . .pyVenv/Scripts/activate # alternative command for Windows
+  docker-compose up -d # to start the container
+  docker-compose exec opendsa bash # to enter into the container
   python tools/configure.py config/foo.json --no-lms
-  deactivate   # to exit python venv
+  CTRL + C # to exit the container
+  docker-compose down # to take down the container
 
 .. |devstack_link| raw:: html
 

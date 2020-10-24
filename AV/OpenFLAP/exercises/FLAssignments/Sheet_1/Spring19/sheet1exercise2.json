@@ -8,8 +8,6 @@
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "trueCounter": 5,
     "falseCounter": 2,
-    "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
-    "generatorflag": 0,
     "expression": "",
     "description": "Give a DFA that accepts the language over Σ ={a, b} of any even number of a’s and any odd number of b’s.",
     "type": "description",
